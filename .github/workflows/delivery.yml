@@ -49,4 +49,5 @@ jobs:
       - name: Record immutable image reference
         env:
           DIGEST: ${{ steps.image.outputs.digest }}
-        run: printf 'Deployment image (verify anonymous pull before using): `ghcr.io/turbo998/voice-agent-lab@%s`\n' "$DIGEST" >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          printf 'Deployment image (verify anonymous pull before using): `ghcr.io/turbo998/voice-agent-lab@%s`\n' "$DIGEST" >> "$GITHUB_STEP_SUMMARY"
