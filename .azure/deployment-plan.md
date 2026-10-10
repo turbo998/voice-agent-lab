@@ -309,3 +309,13 @@ Actual currency and notification routing must be established before creating a
 budget resource, not guessed from USD retail estimates. Raw private outputs are
 `.azure/actual-cost.json` and `.azure/budgets.json`. No new billing/network resource
 was created while awaiting the user's significant private-topology decision.
+
+Application continuation has verified scoped session links/customer-order restoration,
+budget/gate refresh, cloud bilingual UI with disabled unverified voice, and waiting
+for durable final settlement during graceful Live shutdown (mock provider only).
+Root58/imported33 tests and both actual-browser synthetic workflows pass.
+Actual image publish run38070645434 succeeded for source
+658c241e2ade90a09e1d7bcf48b73b2516fe76e5; anonymous registry manifest200:
+`ghcr.io/turbo998/voice-agent-lab@sha256:431a5786ff538f58cbbdd995010442c90300ed740e00140bd7ec2e967d6b88e2`.
+Private mapping `.azure/image-reference-current.json`; no cloud application deploy
+or live provider call occurred. Later document commits are not that image's source.

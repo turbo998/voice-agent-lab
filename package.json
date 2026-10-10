@@ -23,6 +23,7 @@
     "evidence": "tsx scripts/evaluate.ts",
     "test:browser": "tsx scripts/browser-smoke.ts",
     "test:browser:live": "tsx scripts/live-browser-smoke.ts",
+    "record:demo": "tsx scripts/record-demo.ts",
     "check:public": "node scripts/check-public.mjs"
   },
   "dependencies": {

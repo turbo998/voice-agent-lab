@@ -42,7 +42,7 @@ GPT Live 云界面提供运营审批入口，创建会话后携带服务端业�
 （5项Create；既有8项Ignore而非修改），尚未创建 Search；
 不将整套模板重放并覆盖组织设置。受治理约束的应用部署与数据面
 验证、Retell 原生服务配置/固定版本、实际计量映射、shutdown 后恢复、
-GPT 会话与运营审批页面关联的真实跨应用/供应商验收、原创演示资产。
+GPT 会话与运营审批页面关联的真实跨应用/供应商验收、原创视频资产。
 真实麦克风及公开人声音频需用户参与/同意，模拟测试不能替代。
 
 Retell 控制台登录已过期，最近一小时余额/无付款/无充值状态未能重新核验；
@@ -59,15 +59,16 @@ Policy/deny。无法读取的继承策略仍是未知，必须以获授权的验
 
 ## 实际镜像来源
 
-[成功构建与发布运行](https://github.com/turbo998/voice-agent-lab/actions/runs/38068588950)
-对应源码 `064396944bba708865a30d11a388c6194612447b`，而非后续提交。
+[成功构建与发布运行](https://github.com/turbo998/voice-agent-lab/actions/runs/38070645434)
+对应源码 `658c241e2ade90a09e1d7bcf48b73b2516fe76e5`，而非后续文档提交。
 
 ```text
-ghcr.io/turbo998/voice-agent-lab@sha256:a9eef8b6f2ce6bf56592a2c723557557b32ac4fca56499e30cd23d45d6d4522e
+ghcr.io/turbo998/voice-agent-lab@sha256:431a5786ff538f58cbbdd995010442c90300ed740e00140bd7ec2e967d6b88e2
 ```
 
 匿名 registry manifest 返回 HTTP200；没有通过假 digest、示例镜像或仓库
 CI定义替代发布验收。云端容器启动与私网数据面仍未验证。
+此前 source `0643969` 的镜像/运行只是旧阶段，不代表现在的应用修改。
 
 阶段 draft PR 用于保存可继续的代码，不是部署批准或最终完成标记。
 
@@ -77,5 +78,11 @@ CI定义替代发布验收。云端容器启动与私网数据面仍未验证。
 没有真实语音或模型调用。截图仅包含随机合成业务标识，不含账号/密钥。
 
 ![中文运营界面的合成工单提交与回访计划撤回结果](assets/synthetic-ops.png)
+
+新增[架构源、SVG及PNG](architecture.md)、[场景咨询](scenario.md)、
+[配置和关停手册](operations.md)、[能力证据矩阵](capabilities.md)。
+`npm run record:demo` 已实际生成约21秒的私密合成UI视频草稿，只有video
+stream，没有音频或供应商调用；录制绕过画面中的密码输入，但不是绕过认证。
+文件仅在忽略的私密证据目录，没有同步GitHub，待单独公开审核。
 
 本文由 GitHub Copilot 辅助编写，证据分层有意保留未验证项。

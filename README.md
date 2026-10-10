@@ -13,6 +13,10 @@ Foundry/Search 推理与 GPT Live 语音、供应商签名回调仍待验证。
 详情见 [交付状态](docs/delivery-status.md) 与
 [部署计划](.azure/deployment-plan.md)。
 私网阻塞、最小候选和成本差异见 [网络决策依据](docs/network-decision.md)。
+学习路径：[场景咨询与演练](docs/scenario.md) →
+[架构与边界](docs/architecture.md) →
+[私密配置/运行/关停恢复](docs/operations.md) →
+[能力证据矩阵](docs/capabilities.md)。
 
 ## 两个独立实验
 
@@ -71,6 +75,8 @@ npm run build
 npm run test:gpt-live
 npm run check:gpt-live
 npm run check:public
+npm run test:browser
+npm run test:browser:live
 ```
 
 详细知识条目见 [原创合成知识库](docs/knowledge.md)，价格事实与尚未完成的

@@ -19,6 +19,7 @@ const reviewedImages = new Set([
   "experiments/gpt-live/docs/images/interface-en.png",
   "experiments/gpt-live/docs/images/interface-zh-CN.png",
   "docs/assets/synthetic-ops.png",
+  "docs/assets/architecture.png",
 ]);
 const failures = [];
 for (const path of files) {

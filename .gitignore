@@ -3,6 +3,7 @@ dist/
 coverage/
 .private/
 .scratch/
+.copilot-tracking/
 .env
 .env.*
 !.env.example

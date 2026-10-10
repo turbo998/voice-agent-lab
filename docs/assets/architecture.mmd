@@ -1,0 +1,52 @@
+flowchart TB
+    accTitle: Voice Lab partial foundation and unapproved private network candidate
+    accDescr: The existing isolated foundation has no runtime or models. Storage and Key Vault public access are disabled. All application, private endpoint, DNS and provider paths are unimplemented or unverified candidate links.
+    browser["Browser: Chinese operations / English voice"]
+    retell["Retell native flow: NOT configured"]
+    registry["Public GHCR: verified immutable image"]
+    subgraph existing["Existing isolated foundation: partially deployed, NO runtime"]
+        currentaca["ACA Consumption environment: NO custom VNet"]
+        mi["User-assigned managed identity"]
+        storage[("Blob / Queue: public access DISABLED")]
+        vault["Key Vault: public access DISABLED"]
+        foundry["SEA Foundry account + project: NO models"]
+        live["South India OpenAI account: NO Live model"]
+        logs[("Log Analytics: 0.1 GB/day setting")]
+    end
+    subgraph candidate["Candidate only: user network/cost decision REQUIRED"]
+        subgraph vnet["New VNet: NOT created"]
+            appsubnet["Delegated ACA subnet: new Consumption environment"]
+            ops["Retell operations app: NOT deployed"]
+            liveapp["Independent GPT Live app: NOT deployed"]
+            worker["Finite post-call job: NOT deployed"]
+            bootstrap["One-time private bootstrap: NOT implemented"]
+            pes["Separate subnet: Blob + Queue + KV private endpoints"]
+            dns["Three linked private DNS zones"]
+        end
+        search[("Free Search: NOT created; public/AAD policy unresolved")]
+    end
+    browser -. authorized HTTPS .-> ops
+    browser -. independent HTTPS .-> liveapp
+    browser -. consented audio only .-> retell
+    retell -. raw signed functions/events .-> ops
+    registry -. digest pinned .-> ops
+    registry -. digest pinned .-> liveapp
+    ops -. managed identity .-> mi
+    liveapp -. managed identity .-> mi
+    worker -. managed identity .-> mi
+    appsubnet -. hosts .-> ops
+    appsubnet -. hosts .-> liveapp
+    appsubnet -. hosts .-> worker
+    bootstrap -. temporary scoped MI .-> pes
+    ops -. normal service hostnames .-> dns
+    liveapp -. normal service hostnames .-> dns
+    worker -. normal service hostnames .-> dns
+    dns -. private resolution .-> pes
+    pes -. blob / queue .-> storage
+    pes -. secrets .-> vault
+    ops -. bounded Responses .-> foundry
+    liveapp -. independent live/sessions .-> live
+    liveapp -. bounded reasoning .-> foundry
+    foundry -. native tool: UNVERIFIED .-> search
+    currentaca --> logs
+    appsubnet -. bounded diagnostics .-> logs
