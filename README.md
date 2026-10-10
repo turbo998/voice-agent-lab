@@ -4,11 +4,15 @@
 覆盖售前咨询、订单查询、安全故障诊断、运营审批工单与同意后的回访计划。
 不代表真实品牌政策，也不会拨号、发送短信、退款、支付或寄送商品。
 
-**当前是未部署的阶段实现，不是生产服务或完整验收交付。** 真实语音默认关闭。
-Retell API 只读鉴权已验证；未创建真实通话或付费测试。Azure 部署、实际
+**当前是部分基础设施部署、尚无云运行时，不是完整验收交付。** 真实语音关闭。
+独立资源组已创建 Foundry/OpenAI 空账号、项目、Consumption 环境、Storage、
+Key Vault 与日志。组织 modify Policy 将 Storage/Key Vault 公网访问关闭；
+不重新启用，待确认合规私网拓扑与费用后继续应用部署。
+Retell API 只读鉴权已验证；未创建真实通话或付费测试。实际
 Foundry/Search 推理与 GPT Live 语音、供应商签名回调仍待验证。
 详情见 [交付状态](docs/delivery-status.md) 与
 [部署计划](.azure/deployment-plan.md)。
+私网阻塞、最小候选和成本差异见 [网络决策依据](docs/network-decision.md)。
 
 ## 两个独立实验
 

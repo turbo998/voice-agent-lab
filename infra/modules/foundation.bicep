@@ -41,7 +41,7 @@ module storage 'br/public:avm/res/storage/storage-account:0.33.1' = {
     defaultToOAuthAuthentication: true
     minimumTlsVersion: 'TLS1_2'
     supportsHttpsTrafficOnly: true
-    publicNetworkAccess: 'Enabled'
+    publicNetworkAccess: 'Disabled'
     networkAcls: {
       bypass: 'None'
       defaultAction: 'Allow'
@@ -90,7 +90,7 @@ module vault 'br/public:avm/res/key-vault/vault:0.14.2' = {
     enableVaultForDeployment: false
     enableVaultForTemplateDeployment: false
     enableVaultForDiskEncryption: false
-    publicNetworkAccess: 'Enabled'
+    publicNetworkAccess: 'Disabled'
     roleAssignments: [{
       name: guid(resourceGroup().id, name, 'runtime-secrets')
       principalId: identity.outputs.principalId
@@ -170,55 +170,15 @@ resource projectUse 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   }
 }
 
-module search 'br/public:avm/res/search/search-service:0.13.0' = {
-  name: 'free-simple-search'
-  dependsOn: [foundry]
+module grounding 'search-grounding.bicep' = {
+  name: 'search-grounding'
   params: {
-    name: 'srch-${name}'
+    name: name
     location: location
     tags: tags
-    sku: 'free'
-    replicaCount: 1
-    partitionCount: 1
-    disableLocalAuth: true
-    publicNetworkAccess: 'Enabled'
-    roleAssignments: [
-      {
-        name: guid(resourceGroup().id, name, 'foundry-search-data')
-        principalId: foundryAccount.identity.principalId
-        principalType: 'ServicePrincipal'
-        roleDefinitionIdOrName: 'Search Index Data Contributor'
-      }
-      {
-        name: guid(resourceGroup().id, name, 'foundry-search-service')
-        principalId: foundryAccount.identity.principalId
-        principalType: 'ServicePrincipal'
-        roleDefinitionIdOrName: 'Search Service Contributor'
-      }
-      {
-        name: guid(resourceGroup().id, name, 'runtime-search-read')
-        principalId: identity.outputs.principalId
-        principalType: 'ServicePrincipal'
-        roleDefinitionIdOrName: 'Search Index Data Reader'
-      }
-    ]
-    enableTelemetry: false
-  }
-}
-
-resource searchConnection 'Microsoft.CognitiveServices/accounts/projects/connections@2025-06-01' = {
-  parent: project
-  name: 'lumanest-search'
-  dependsOn: [foundry]
-  properties: {
-    category: 'AISearch'
-    authType: 'AAD'
-    target: 'https://${search.outputs.name}.search.windows.net'
-    isSharedToAll: true
-    metadata: {
-      ApiType: 'Azure'
-      ResourceId: search.outputs.resourceId
-    }
+    accountName: foundry.outputs.aiServicesName
+    projectName: foundry.outputs.aiProjectName
+    runtimePrincipalId: identity.outputs.principalId
   }
 }
 
@@ -258,8 +218,8 @@ output runtime object = {
   keyVaultName: vault.outputs.name
   foundryAccountName: foundry.outputs.aiServicesName
   foundryProjectName: foundry.outputs.aiProjectName
-  searchName: search.outputs.name
-  searchConnectionId: searchConnection.id
+  searchName: grounding.outputs.searchName
+  searchConnectionId: grounding.outputs.connectionId
   liveAccountName: liveAccount.outputs.name
   logWorkspaceId: logs.outputs.resourceId
 }

@@ -1,6 +1,6 @@
 # Voice Agent Lab deployment plan
 
-Status: Validated (foundation only)
+Status: Validation blocked (network decision; partial foundation, no runtime)
 
 ## Authorization and scope
 
@@ -243,3 +243,61 @@ names; final preview resolves all 25 resource IDs. Existing lab group count is z
 Standard Vault API 2026-02-01 was accepted by provider validation despite the
 compiler type-cache warning. Search provider remains NotRegistered; registration
 is a separately logged subscription mutation during azure-deploy, not quota proof.
+
+## First deployment and bounded recovery
+
+Search provider was registered through azure-deploy on 2026-10-10. First deployment
+partially created the new group, runtime identity, logs, storage, vault, SEA Foundry
+account/project, SI OpenAI account and Consumption environment. No app, job, model,
+voice or paid test was created. It failed on the foundation's existing-account
+identity reference before the Foundry nested deployment completed, even though the
+account subsequently completed successfully. Resource names match the planned names.
+
+Move Search and its connection into a child module whose account/project names
+are passed via completed Foundry outputs. This establishes the ARM nested-module
+evaluation boundary instead of relying on an existing-resource reference during
+parent initialization. Preserve all existing resources; revalidate/what-if must
+show only intended creation or safe template reconciliation, never deletion.
+Private operation/error evidence remains in ignored `.azure/` files.
+
+Recovery what-if revealed deployed Storage and Key Vault publicNetworkAccess
+Disabled even though the first template requested Enabled. The cause is not yet
+attributed at that checkpoint. Subsequent resource Activity Log confirms successful
+`KeyVault_PublicNetwork_Modify` and `StorageAccount_PublicNetwork_Modify` actions
+on the publicNetworkAccess aliases. **Do not flip these existing settings back to Enabled.** Adopt Disabled
+in the source template and pause the application stage until permitted private
+connectivity and its cost are resolved. No policy/ACL exception or re-enable is
+authorized. The broad foundation recovery is not validated for execution.
+
+Only the missing Search + three scoped role assignments + Foundry connection will
+be validated/deployed directly through `infra/modules/search-grounding.bicep` at
+the existing lab group scope. Parameters come from actual Foundry/identity outputs;
+private IDs remain only in ignored runtime parameters. This narrow recovery must
+have no changes to Storage, vault, environment, identity or preexisting resources.
+Consumption runtime-core quota is now observed: limit500, used0; proposed
+0.75 CPU combined app/job fits, but app network/admission remains blocked.
+
+Actual GHCR workflow dispatch run 38068588950 completed success; offline job tested
+and built the image, publish job pushed it. Anonymous registry lookup of exact
+commit tag 064396944bba708865a30d11a388c6194612447b returns HTTP200 and digest
+sha256:a9eef8b6f2ce6bf56592a2c723557557b32ac4fca56499e30cd23d45d6d4522e.
+Image publication is proven; app execution and data-plane connectivity are not.
+
+Current network decision evidence and exact cost differences are recorded in
+`docs/network-decision.md`. No VNet, PE, replacement environment or bootstrap job
+has been created. The existing environment cannot change network type in place.
+Parent is obtaining the significant network/cost decision. Foundry account MI
+Search role requirements and `CognitiveSearch`/AAD connection category were checked
+against the official new Agents tool documentation updated 2026-10-08.
+Search remains uncreated; narrow validation only does not establish that all
+inherited network policy allows a public Free search service.
+
+Narrow Search group Provider validation and what-if succeeded on 2026-10-10:
+five Create (Search, three scoped roles, connection), eight Ignore for existing
+group resources. Ignore is not modification: zero changes to existing Storage,
+KV or environment. Shell inline JSON quoting first failed before ARM admission;
+generated private `.azure/search.parameters.json` fixed serialization. Raw proof:
+`.azure/search-validation.json` and `.azure/search-whatif.json`.
+No missing Search resource was created; do not treat validation as full inherited
+network-policy permission or bypass the pending private-topology decision.
+Current status is not Validated for any further writes.

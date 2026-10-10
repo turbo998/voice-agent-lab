@@ -1,6 +1,6 @@
 # 阶段交付状态
 
-更新时间：2026-10-10。**未部署；不声称真实语音端到端通过。**
+更新时间：2026-10-10。**部分基础部署，无云应用运行时；不声称真实语音通过。**
 
 ## 已实现
 
@@ -17,18 +17,24 @@ Foundry Prompt Agent/Search 配置代码与严格引用校验。独立 MIT GPT L
 
 | 检查 | 结果 | 不能据此推断 |
 |---|---|---|
-| 主应用离线测试 | 56 项通过 | 真实麦克风/供应商服务通过 |
+| 主应用离线测试 / 合成评估 | 57 项 / 6 场景通过 | 真实麦克风/供应商服务通过 |
 | TypeScript / 生产构建 | 通过；JS bundle 有体积警告 | 公网服务已经部署 |
 | GPT Live 原始测试 / 发布扫描 | 33 项通过 / 通过 | Azure Live 协议实际鉴权通过 |
 | Retell scoped agent-list | 一次非付费 API 鉴权成功 | 余额、完整费率或真实 webhook 已验证 |
-| SEA ACA 环境配额 | limit 50 / used 2 | 继承策略、资源区域许可、数据权限均通过 |
-| Search inventory | 可见服务 0；provider 未注册 | Free SKU 在部署时必然可用 |
+| SEA ACA 新环境 CPU 配额 | Consumption cores limit 500 / used 0 | 合规私网拓扑已经配置 |
+| Search inventory | 尚未创建；provider 已注册 | Free SKU 的数据面/原生工具已可用 |
+| 实际基础资源 | 独立新 RG 内8项顶层/项目资源已创建，第一次部署部分失败 | ARM验证能代替实际部署/数据面验收 |
+| 实际网络治理 | Storage/KV 公网 Disabled；资源活动日志确认 modify Policy | 可以重新启用公网或绕过组织治理 |
+| GitHub Actions 镜像 | 实际 offline/build/publish 成功，匿名 manifest 200 | 当前后续修改已包含于镜像 |
 
 ## 仍需完成
 
 已生成并编译固定 AVM Bicep，增加容器与离线 CI/可选镜像发布定义；
 空计算基础阶段的 Provider ARM validation 与 what-if 已通过（25项 Create，
-无修改/删除/未解析项）；受治理约束的实际部署与数据面
+无修改/删除/未解析项）；第一次部署暴露 Foundry 身份跨模块提前读取的
+依赖问题，资源已部分创建。已修正模块边界，窄范围 Search Provider 预检通过
+（5项Create；既有8项Ignore而非修改），尚未创建 Search；
+不将整套模板重放并覆盖组织设置。受治理约束的应用部署与数据面
 验证、Retell 原生服务配置/固定版本、实际计量映射、shutdown 后恢复、
 GPT 会话与运营审批页面关联、浏览器双语操作证据与原创演示资产。
 真实麦克风及公开人声音频需用户参与/同意，模拟测试不能替代。
@@ -42,6 +48,20 @@ Retell 控制台登录已过期，最近一小时余额/无付款/无充值状�
 Azure 只读发现了既有资源范围的六项系统 deny，不能据此排除管理组继承
 Policy/deny。无法读取的继承策略仍是未知，必须以获授权的验证和实际部署
 结果确认；不修改治理、不放松网络、不自动升级付费 SKU。
+本次资源活动日志可读取，已确认两项公网 modify 效果；完整继承定义
+不可见与 Policy state 尚无记录的问题仍保留，不等同全策略通过。
+
+## 实际镜像来源
+
+[成功构建与发布运行](https://github.com/turbo998/voice-agent-lab/actions/runs/38068588950)
+对应源码 `064396944bba708865a30d11a388c6194612447b`，而非后续提交。
+
+```text
+ghcr.io/turbo998/voice-agent-lab@sha256:a9eef8b6f2ce6bf56592a2c723557557b32ac4fca56499e30cd23d45d6d4522e
+```
+
+匿名 registry manifest 返回 HTTP200；没有通过假 digest、示例镜像或仓库
+CI定义替代发布验收。云端容器启动与私网数据面仍未验证。
 
 阶段 draft PR 用于保存可继续的代码，不是部署批准或最终完成标记。
 
