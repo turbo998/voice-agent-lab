@@ -67,4 +67,18 @@ For user-facing changes, also exercise the real browser flow. For provider chang
 
 See [the roadmap](ROADMAP.md) for proposed work and [the release checklist](RELEASE.md) for publishing.
 
+## Voice Lab cloud adaptation / Voice Lab 云适配
+
+The cloud entrypoint adds a server-configured operations link. Once a provider
+session returns its lab session ID, the link opens the matching approval view;
+the operations server still requires login and ownership checks. Unverified cloud
+voice disables Connect without changing the independent local setup wizard.
+Graceful shutdown waits for durable settlement; timeout/failure retains reservations
+and reports unconfirmed shutdown. Crash/orphan provider recovery remains unverified.
+
+云入口增加服务端指定的运营审批链接，供应商会话返回业务会话ID后定位到
+对应审批页面；运营服务仍要求登录与所有者检查。未验证云语音时连接按钮
+禁用，不改变原独立本地向导。正常退出等待持久化结算，超时或失败保留
+预留并显式报告未确认状态；崩溃/孤儿供应商会话恢复仍未验证。
+
 后续候选任务见[路线图](ROADMAP.md)，发布流程见[发布检查](RELEASE.zh-CN.md)。

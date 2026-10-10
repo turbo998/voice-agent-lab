@@ -18,6 +18,8 @@
     "main.hero.sessionInfo": { "zh-CN": "会话信息", en: "Session information" },
     "main.badge.realtime": { "zh-CN": "实时语音", en: "Live voice" },
     "main.badge.serverCredentials": { "zh-CN": "凭据只在服务端", en: "Credentials stay on the server" },
+    "main.settings.operatorApproval": { "zh-CN": "打开运营审批", en: "Open operator approvals" },
+    "main.settings.liveGateClosed": { "zh-CN": "真实语音门禁未通过；不会创建付费会话。", en: "Live verification is incomplete; no billable session will be created." },
 
     "main.control.title": { "zh-CN": "会话控制", en: "Session controls" },
     "main.control.subtitle": { "zh-CN": "浏览器只负责语音和会话信令", en: "Your browser handles voice and session signaling" },

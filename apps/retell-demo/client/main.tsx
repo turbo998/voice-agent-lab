@@ -9,10 +9,12 @@ interface Bootstrap { mode: string; liveEnabled: boolean; foundryEnabled: boolea
   products: Product[]; customers: { id: string; label: string; market: string }[]; budget: Budget[] }
 interface Draft { id: string; version: number; summary: string; priority: string; status: string; ticketId?: string }
 interface Consent { id: string; evidence: string; withdrawnAt?: number }
-interface Snapshot { drafts: Draft[]; tickets: { id: string; summary: string }[]; consents: Consent[];
+interface Snapshot { id?: string; customerId?: string; drafts: Draft[]; tickets: { id: string; summary: string }[]; consents: Consent[];
   followups: { id: string; window: string; status: string }[]; calls: { id: string; status: string; aiStopped: boolean }[] }
+interface SessionSnapshot extends Snapshot { id: string; customerId: string }
 interface Line { role: string; text: string; at: string }
 const initial: Snapshot = { drafts: [], tickets: [], consents: [], followups: [], calls: [] };
+const exampleOrder = (customerId: string) => customerId === "demo-my" ? "LN-MY-2001" : customerId === "demo-th" ? "LN-TH-3001" : "LN-SG-1001";
 
 function Lab() {
   const [auth, setAuth] = useState<{ csrf: string; owner: string } | null>(null);
@@ -41,7 +43,13 @@ function Lab() {
   async function run(operation: () => Promise<void>) {
     setError(""); setBusy(true);
     try { await operation(); } catch (failure) { setError(failure instanceof Error ? failure.message : "操作失败"); }
-    finally { setBusy(false); }
+    finally {
+      if (auth) {
+        try { setConfig(await api<Bootstrap>("/api/bootstrap")); }
+        catch (failure) { setError(failure instanceof Error ? failure.message : "无法刷新成本与门禁状态"); }
+      }
+      setBusy(false);
+    }
   }
   useEffect(() => {
     void fetch("/api/me").then(async response => { if (response.ok) setAuth(await response.json()); })
@@ -50,7 +58,25 @@ function Lab() {
   }, []);
   useEffect(() => {
     if (!auth) return;
-    void run(async () => setConfig(await api<Bootstrap>("/api/bootstrap")));
+    let active = true;
+    async function refresh() {
+      try {
+        const value = await api<Bootstrap>("/api/bootstrap");
+        if (active) setConfig(value);
+      } catch (failure) { if (active) setError(failure instanceof Error ? failure.message : "无法刷新成本与门禁状态"); }
+    }
+    void refresh();
+    const timer = setInterval(() => void refresh(), 5000);
+    const linkedSession = new URL(location.href).searchParams.get("session");
+    if (linkedSession) {
+      void api<SessionSnapshot>(`/api/sessions/${encodeURIComponent(linkedSession)}`).then(value => {
+        if (!active) return;
+        setSessionId(value.id); setCustomer(value.customerId); setSnapshot(value);
+        setOrder(exampleOrder(value.customerId));
+        setStatus("已定位授权业务会话 · 等待运营审批");
+      }).catch(failure => { if (active) setError(`无法打开授权业务会话：${failure.message}`); });
+    }
+    return () => { active = false; clearInterval(timer); };
   }, [auth]);
   useEffect(() => {
     if (!sessionId || !auth) return;
@@ -164,7 +190,7 @@ function Lab() {
       <section className="panel voice-panel">
         <div className="section-title"><span className="step">01</span><div><h2>场景与语音</h2><p>客户身份由运营员绑定，Agent 不能越权改变。</p></div></div>
         <div className="fields">
-          <label>合成客户<select value={customer} disabled={Boolean(sessionId)} onChange={event => { setCustomer(event.target.value); setOrder(event.target.value === "demo-my" ? "LN-MY-2001" : event.target.value === "demo-th" ? "LN-TH-3001" : "LN-SG-1001"); }}>
+          <label>合成客户<select value={customer} disabled={Boolean(sessionId)} onChange={event => { setCustomer(event.target.value); setOrder(exampleOrder(event.target.value)); }}>
             {config?.customers.map(c => <option key={c.id} value={c.id}>{c.label} · {c.market}</option>)}</select></label>
           <label>产品<select value={product} onChange={event => setProduct(event.target.value)}>
             {config?.products.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}</select></label>
@@ -191,7 +217,10 @@ function Lab() {
         <div className="controls"><button disabled={busy} onClick={() => void run(async () => { await tool("get_order_status", { order_id: order }); })}>查订单</button>
           <button disabled={busy} onClick={() => void run(async () => { await tool("diagnose_device", { product_id: product, symptom }); })}>有来源诊断</button></div>
         <button className="wide exercise" disabled={busy || config?.paused} onClick={() => void run(scenario)}>运行合成业务演练 <small>不会启动语音</small></button>
-        {sessionId && <button className="text wide" disabled={voiceActive || busy} onClick={() => { setSessionId(""); setSnapshot(initial); setLines([]); setResult(null); setStatus("未连接"); }}>重新绑定客户 / 新会话</button>}
+        {sessionId && <button className="text wide" disabled={voiceActive || busy} onClick={() => {
+          const url = new URL(location.href); url.searchParams.delete("session"); history.replaceState(null, "", url);
+          setSessionId(""); setSnapshot(initial); setLines([]); setResult(null); setStatus("未连接");
+        }}>重新绑定客户 / 新会话</button>}
       </section>
       <section className="panel transcript-panel">
         <div className="section-title"><span className="step">02</span><div><h2>对话与工具轨迹</h2><p>时间戳是文本观察时间，不冒充端到端音频延迟。</p></div></div>

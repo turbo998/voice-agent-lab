@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { scryptSync } from "node:crypto";
 import http, { type IncomingMessage } from "node:http";
+import { WebSocketServer } from "ws";
 import { startServer, type CloudContext, type LiveConfig } from "../experiments/gpt-live/server.mjs";
 import { createLiveRuntime, liveReady } from "../integrations/gpt-live/runtime.js";
 import { loadConfig } from "../apps/retell-demo/server/config.js";
@@ -103,4 +104,56 @@ test("cloud HTTP locks provider settings/probes, enforces CSRF, and keeps origin
     assert.equal(JSON.parse(config.text).limits.sessionMinutes, 3);
     assert.doesNotMatch(config.text, /synthetic-private-bearer|openai\.azure\.com/);
   } finally { await app.close(); }
+});
+test("graceful shutdown waits for final durable Live settlement", async () => {
+  const { runtime, store, cookie, csrf } = await loggedIn();
+  const provider = http.createServer((_req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ session: { id: "live_shutdown_fixture", expires_at: Math.floor(Date.now() / 1000) + 1800 },
+      transport: { sdp: "synthetic-answer" } }));
+  });
+  const sockets = new WebSocketServer({ server: provider });
+  sockets.on("connection", socket => socket.on("message", raw => {
+    if (JSON.parse(raw.toString()).type === "session.close") {
+      socket.send(JSON.stringify({ type: "session.closed", usage: { seconds: 12 }, reason: "synthetic_test" }));
+    }
+  }));
+  await new Promise<void>(resolve => provider.listen(0, "127.0.0.1", resolve));
+  const address = provider.address();
+  assert.ok(address && typeof address !== "string");
+  const originalSettings = runtime.settingsStore.get();
+  runtime.settingsStore.get = () => ({ ...originalSettings,
+    voice: { ...originalSettings.voice, baseUrl: `http://127.0.0.1:${address.port}` } });
+  let release!: () => void, settlementStarted!: () => void;
+  const held = new Promise<void>(resolve => { release = resolve; });
+  const started = new Promise<void>(resolve => { settlementStarted = resolve; });
+  const originalClosed = runtime.onClosed;
+  runtime.onClosed = async (...args) => { settlementStarted(); await held; await originalClosed(...args); };
+  const app = await startServer({ host: "127.0.0.1", port: 0, mode: "remote",
+    publicOrigin: "https://live.example.invalid", cloud: runtime, quiet: true });
+  try {
+    const created = await new Promise<{ status: number }>((resolve, reject) => {
+      const req = http.request({ hostname: "127.0.0.1", port: app.port, path: "/api/session", method: "POST",
+        headers: { Host: "live.example.invalid", Origin: "https://live.example.invalid", Cookie: cookie,
+          "Content-Type": "application/json", "X-CSRF-Token": csrf } }, res => {
+        res.resume(); res.on("end", () => resolve({ status: res.statusCode! }));
+      });
+      req.on("error", reject); req.end(JSON.stringify({ sdp: "v=0\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111", config: sessionConfig }));
+    });
+    assert.equal(created.status, 200);
+    let completed = false;
+    const closing = app.close().then(() => { completed = true; });
+    await started;
+    await new Promise(resolve => setTimeout(resolve, 30));
+    assert.equal(completed, false);
+    release(); await closing;
+    const state = await store.read();
+    assert.equal(state.liveCalls.live_shutdown_fixture?.status, "ended");
+    assert.equal(state.reservations[state.liveCalls.live_shutdown_fixture!.reservationId]?.status, "ended");
+  } finally {
+    release(); await app.close();
+    for (const socket of sockets.clients) socket.terminate();
+    await new Promise<void>(resolve => sockets.close(() => resolve()));
+    await new Promise<void>(resolve => provider.close(() => resolve()));
+  }
 });

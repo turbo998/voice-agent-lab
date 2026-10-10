@@ -34,6 +34,16 @@ export async function startServer(options={}){
   const probes={voice:options.probes?.voice||probeVoice,backend:options.probes?.backend||probeBackend,search:options.probes?.search||probeSearch};
   const verified=new Map();
   const sessions=new Map(),recentStatuses=new Map();
+  const pendingPersistence=new Set();
+  let persistenceFailed=false;
+  function persist(operation,code){
+    const pending=operation.catch(()=>{
+      persistenceFailed=true;console.error(JSON.stringify({event:'live_persistence_failed',code}));
+    });
+    pendingPersistence.add(pending);
+    void pending.then(()=>pendingPersistence.delete(pending));
+    return pending;
+  }
   let creating=false;
   function safeMessage(message){
     let value=String(message||'');const current=store.get();
@@ -60,13 +70,12 @@ function cleanup(record){
   record.closed=true;record.abort.abort();record.delivery?.dispose();clearTimeout(record.expiry);clearTimeout(record.cleanupTimer);clearInterval(record.authorizationTimer);
   record.backendStatus=record.backendStatus==='正在回答'?'已结束':record.backendStatus;
   rememberStatus(record);sessions.delete(record.id);record.history.length=0;
-  if(cloud)record.persisted=cloud.onClosed(record.context,record.id,record.confirmedClose===true,record.usage.voiceSeconds)
-    .catch(()=>console.error(JSON.stringify({event:'live_persistence_failed',code:'CLOSE_UNCONFIRMED'})));
+  if(cloud)record.persisted=persist(cloud.onClosed(record.context,record.id,record.confirmedClose===true,record.usage.voiceSeconds),'CLOSE_UNCONFIRMED');
 }
 function closeSession(id){
   const record=sessions.get(id);if(!record||record.closing)return;
   record.closing=true;record.abort.abort();clearTimeout(record.expiry);
-  if(cloud)cloud.onClosing(record.context,record.id).catch(()=>console.error(JSON.stringify({event:'live_persistence_failed',code:'CLOSING_UNCONFIRMED'})));
+  if(cloud)persist(cloud.onClosing(record.context,record.id),'CLOSING_UNCONFIRMED');
   send(record,{type:'session.close',event_id:'local_close'});
   record.cleanupTimer=setTimeout(()=>{record.socket.terminate();cleanup(record);},5000);
 }
@@ -265,7 +274,16 @@ async function attach(id,config,backend,voice,context){
   port=server.address().port;if(mode==='local')origin=`http://127.0.0.1:${port}`;
   if(!options.quiet){console.log(`Ready: ${origin}`);if(auth.needsSetupToken())console.log(`Setup: ${origin}/setup#setup-token=${encodeURIComponent(auth.initialToken)}`);}
   let closing;
-  async function close(){if(closing)return closing;closing=(async()=>{for(const id of sessions.keys())closeSession(id);const until=Date.now()+5500;while(sessions.size&&Date.now()<until)await delay(100);await new Promise(resolve=>{server.close(resolve);server.closeAllConnections?.();});})();return closing;}
+  async function close(){if(closing)return closing;closing=(async()=>{
+    for(const id of sessions.keys())closeSession(id);
+    const until=Date.now()+5500;while(sessions.size&&Date.now()<until)await delay(100);
+    await new Promise(resolve=>{server.close(resolve);server.closeAllConnections?.();});
+    let persistenceTimer;
+    const persisted=await Promise.race([Promise.all([...pendingPersistence]).then(()=>true),
+      new Promise(resolve=>{persistenceTimer=setTimeout(()=>resolve(false),10000);})]);
+    clearTimeout(persistenceTimer);
+    if(!persisted||persistenceFailed)throw new Error('Live shutdown persistence is unconfirmed; retain reservations and reconcile before restarting calls.');
+  })();return closing;}
   return {url:origin,port,dataDir:store.dataDir,close,server};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){

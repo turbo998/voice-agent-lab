@@ -1207,6 +1207,8 @@
             <a class="button secondary settings-link" id="connectionSettingsLink" href="/setup" data-i18n="main.settings.connectionLink">连接设置</a>
           </div>
           <div class="settings-status" id="configStatus" role="status" aria-live="polite">正在加载服务配置…<button id="reloadConfigButton" type="button" hidden data-i18n="main.settings.reload">重新加载</button></div>
+          <p><a id="operatorApprovalLink" target="_blank" rel="noopener noreferrer" hidden data-i18n="main.settings.operatorApproval">打开运营审批</a></p>
+          <p id="liveGateNotice" hidden data-i18n="main.settings.liveGateClosed">真实语音门禁未通过；不会创建付费会话。</p>
           <div class="settings-grid" id="settingsGrid">
             <div class="settings-field">
               <label for="voiceSelect" data-i18n="main.settings.voice">语音音色</label>
@@ -1337,6 +1339,16 @@
       const maxOutputTokensInput = $("#maxOutputTokensInput");
       const reasoningEffortSelect = $("#reasoningEffortSelect");
       const sessionMinutesInput = $("#sessionMinutesInput");
+      const operatorApprovalLink = $("#operatorApprovalLink");
+
+      function updateOperatorLink(sessionId) {
+        const base = configCatalog && configCatalog.operatorUrl;
+        operatorApprovalLink.hidden = !base;
+        if (!base) return;
+        const url = new URL(base);
+        if (sessionId) url.searchParams.set("session", sessionId);
+        operatorApprovalLink.href = url.href;
+      }
 
       function refreshLocalizedUi() {
         if (window.AppI18n && typeof window.AppI18n.apply === "function") window.AppI18n.apply(document);
@@ -1651,7 +1663,7 @@
         controls.forEach((control) => { if (control) control.disabled = !configReady || locked; });
         if (webSearchCheckbox) webSearchCheckbox.disabled = !configReady || locked || !(configCatalog && configCatalog.webSearchAvailable);
         if (testWebSearchButton) testWebSearchButton.disabled = !configReady || locked || Boolean(currentAttempt || microphoneTest) || webSearchTestInFlight || !(configCatalog && configCatalog.backendReady !== false);
-        if (connectButton) connectButton.disabled = locked || !configReady;
+        if (connectButton) connectButton.disabled = locked || !configReady || Boolean(configCatalog && configCatalog.liveEnabled === false);
       }
 
       function validateSessionConfig(config) {
@@ -1686,8 +1698,12 @@
               webSearchAvailable: Boolean(payload.webSearchAvailable),
               backendReady: payload.backendReady !== false,
               backendModel: textValue(payload.defaults && payload.defaults.backendModel, "", 120),
+              operatorUrl: payload.cloudMode && typeof payload.operatorUrl === "string" ? payload.operatorUrl : null,
+              liveEnabled: payload.cloudMode ? payload.liveEnabled === true : true,
               limits: payload.limits || null
             };
+            updateOperatorLink();
+            $("#liveGateNotice").hidden = configCatalog.liveEnabled;
             const stored = readStoredConfig();
             sessionConfig = normalizeConfig(Object.assign({}, defaults, stored), defaults);
             configReady = true;
@@ -2827,6 +2843,7 @@
             throw new Error("session_response_incomplete");
           }
           attempt.sessionId = session.sessionId;
+          if (typeof session.labSessionId === "string") updateOperatorLink(session.labSessionId);
           startBackendStatusPolling(attempt);
           if (isCanceled(attempt)) {
             await closeBackendSession(attempt);
