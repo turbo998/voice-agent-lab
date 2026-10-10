@@ -62,16 +62,16 @@ Policy/deny。无法读取的继承策略仍是未知，必须以获授权的验
 
 ## 实际镜像来源
 
-[成功构建与发布运行](https://github.com/turbo998/voice-agent-lab/actions/runs/38070645434)
-对应源码 `658c241e2ade90a09e1d7bcf48b73b2516fe76e5`，而非后续文档提交。
+[成功构建与发布运行](https://github.com/turbo998/voice-agent-lab/actions/runs/38071803181)
+对应源码 `588e01977d834a63f3edeffda4ad0150584b9a5e`，而非后续文档提交。
 
 ```text
-ghcr.io/turbo998/voice-agent-lab@sha256:431a5786ff538f58cbbdd995010442c90300ed740e00140bd7ec2e967d6b88e2
+ghcr.io/turbo998/voice-agent-lab@sha256:5ad61dec6173b66861e09bf5ab5e2991e63cef53dc516c7e164a2492d24b7db7
 ```
 
 匿名 registry manifest 返回 HTTP200；没有通过假 digest、示例镜像或仓库
 CI定义替代发布验收。云端容器启动与私网数据面仍未验证。
-此前 source `0643969` 的镜像/运行只是旧阶段，不代表现在的应用修改。
+此前 source `0643969`、`658c241` 的镜像/运行只是旧阶段，不代表现在的应用修改。
 
 阶段 draft PR 用于保存可继续的代码，不是部署批准或最终完成标记。
 

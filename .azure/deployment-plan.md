@@ -319,3 +319,15 @@ Actual image publish run38070645434 succeeded for source
 `ghcr.io/turbo998/voice-agent-lab@sha256:431a5786ff538f58cbbdd995010442c90300ed740e00140bd7ec2e967d6b88e2`.
 Private mapping `.azure/image-reference-current.json`; no cloud application deploy
 or live provider call occurred. Later document commits are not that image's source.
+
+Latest application validation adds restart closure of correlated known Live IDs,
+stored creation-rate/horizon settlement and fail-closed legacy/unknown/corrupt
+correlations. Root61/imported33, both browser workflows, type/build and public scan
+pass with mock providers only. Actual successful image run38071803181 supersedes
+the earlier image, with source588e01977d834a63f3edeffda4ad0150584b9a5e and
+anonymous manifest200:
+`ghcr.io/turbo998/voice-agent-lab@sha256:5ad61dec6173b66861e09bf5ab5e2991e63cef53dc516c7e164a2492d24b7db7`.
+Original scenario/architecture Mermaid+SVG+PNG/runbook/capability assets are public.
+A 21.2s synthetic UI video draft is private, has only a video stream and no provider
+calls, is explicitly watermarked, and has not been approved/published.
+All Azure network/runtime/provider gates remain unchanged and blocked.
