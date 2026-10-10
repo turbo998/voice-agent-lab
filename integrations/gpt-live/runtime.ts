@@ -93,7 +93,13 @@ export async function createLiveRuntime(config: Config, store: StateStore, optio
     },
     async publicConfig(req) {
       const auth = await authorization(req);
-      return { configured: true, cloudMode: true, csrf: auth.csrf, liveEnabled: liveReady(config),
+      const state = await store.read();
+      const pendingReservations = Object.values(state.reservations).filter(reservation =>
+        reservation.bucket === "live" && ["reserved", "active", "uncertain"].includes(reservation.status)).length;
+      const pendingSessions = Object.values(state.liveCalls).filter(call => call.status !== "ended").length;
+      return { configured: true, cloudMode: true, csrf: auth.csrf,
+        liveEnabled: liveReady(config) && !state.paused && pendingReservations === 0 && pendingSessions === 0,
+        pendingReservations, pendingSessions,
         voices: [{ id: "marin", label: "Marin" }], defaults: runtime.validateConfig({ ...settings.preferences,
           backendReady: true, backendModel: immutable.reasoningModel, backendProvider: "managed-identity" }),
         backendReady: true, backendModels: [{ id: immutable.reasoningModel, label: "LumaNest bounded reasoning" }],
@@ -113,12 +119,27 @@ export async function createLiveRuntime(config: Config, store: StateStore, optio
     async beforeCreate(req, input) {
       if (!liveReady(config)) throw new LabError("LIVE_GATE_CLOSED", 503, "Live verification is absent or expired. No billable session was created.");
       const auth = await authorization(req);
+      if (Object.values((await store.read()).liveCalls).some(call => call.status !== "ended")) {
+        throw new LabError("LIVE_RECOVERY_PENDING", 409, "Another operation has an unsettled provider session; recover it before creating billable work.");
+      }
       const { session } = await business.createSession(auth.owner, "demo-sg");
       // Reserve the verified provider expiry horizon, not just the normal UI timer.
       const cents = Math.ceil(config.LIVE_PROVIDER_MAX_SECONDS! / 60 * config.LIVE_RATE_CENTS_PER_MINUTE!);
       const reservation = await reserve(store, "live", session.id, cents, input.sessionMinutes);
       return { sessionId: session.id, owner: auth.owner, reservationId: reservation.id,
         deadline: Date.now() + input.sessionMinutes * 60000, expiresAt: auth.expiresAt };
+    },
+    async recoverableSessions() {
+      const state = await store.read();
+      return Object.values(state.liveCalls).filter(call => call.status !== "ended").slice(0, 1).map(call => {
+        const reservation = state.reservations[call.reservationId], session = state.sessions[call.sessionId];
+        if (!reservation || reservation.bucket !== "live" || reservation.callId !== call.id ||
+          !session || session.owner !== call.owner) {
+          throw new LabError("LIVE_RECOVERY_CORRELATION_INVALID", 503, "Live recovery correlation is invalid; keep the reservation and review the private ledger.");
+        }
+        return { id: call.id, context: { sessionId: call.sessionId, owner: call.owner,
+          reservationId: call.reservationId, deadline: Date.now(), expiresAt: 0 } };
+      });
     },
     async onCreated(context, id, expiresAt) {
       context.providerValid = typeof expiresAt === "number" && Number.isFinite(expiresAt) && expiresAt * 1000 > Date.now() &&
@@ -127,6 +148,8 @@ export async function createLiveRuntime(config: Config, store: StateStore, optio
       await store.update(state => {
         state.liveCalls[id] = { id, sessionId: context.sessionId, owner: context.owner, reservationId: context.reservationId,
           createdAt: Date.now(), deadline: context.deadline,
+          rateCentsPerMinute: config.LIVE_RATE_CENTS_PER_MINUTE,
+          providerMaxSeconds: config.LIVE_PROVIDER_MAX_SECONDS,
           providerExpiresAt: typeof expiresAt === "number" && Number.isFinite(expiresAt) ? expiresAt * 1000 : undefined, status: "active" };
         const reservation = state.reservations[context.reservationId]!;
         reservation.callId = id; reservation.status = "active";
@@ -144,12 +167,15 @@ export async function createLiveRuntime(config: Config, store: StateStore, optio
         const call = state.liveCalls[id], reservation = state.reservations[context.reservationId];
         if (!call || !reservation) throw new LabError("LIVE_LEDGER_MISSING", 503, "Durable live session correlation is missing.");
         if (call.status === "ended") return;
-        const valid = confirmed && Number.isFinite(seconds) && seconds >= 0 && seconds <= config.LIVE_PROVIDER_MAX_SECONDS!;
+        const rate = call.rateCentsPerMinute, horizon = call.providerMaxSeconds;
+        const valid = confirmed && typeof rate === "number" && Number.isFinite(rate) && rate > 0 &&
+          typeof horizon === "number" && Number.isFinite(horizon) && horizon > 0 &&
+          Number.isFinite(seconds) && seconds >= 0 && seconds <= horizon;
         call.status = valid ? "ended" : "uncertain";
         reservation.status = valid ? "ended" : "uncertain";
         if (valid) {
           call.usageSeconds = seconds;
-          reservation.cents = Math.max(1, Math.ceil(Math.max(15, seconds) / 60 * config.LIVE_RATE_CENTS_PER_MINUTE!));
+          reservation.cents = Math.max(1, Math.ceil(Math.max(15, seconds) / 60 * rate));
           reservation.minutes = Math.max(0.25, seconds / 60);
         }
       });

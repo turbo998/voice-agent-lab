@@ -30,6 +30,7 @@ export interface CloudRuntime {
   publicConfig(req: IncomingMessage): Promise<object>; validateConfig(config: LiveConfig): LiveConfig;
   voiceHeaders(): Promise<Record<string, string>>; liveInstructions(config: LiveConfig): string;
   beforeCreate(req: IncomingMessage, config: LiveConfig): Promise<CloudContext>;
+  recoverableSessions?(): Promise<{ id: string; context: CloudContext }[]>;
   onCreated(context: CloudContext, id: string, expiresAt: unknown): Promise<void>;
   onCreateFailed(context: CloudContext, id: string | undefined, attempted: boolean): Promise<void>;
   onClosing(context: CloudContext, id: string): Promise<void>;

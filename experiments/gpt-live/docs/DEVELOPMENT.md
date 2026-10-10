@@ -74,11 +74,16 @@ session returns its lab session ID, the link opens the matching approval view;
 the operations server still requires login and ownership checks. Unverified cloud
 voice disables Connect without changing the independent local setup wizard.
 Graceful shutdown waits for durable settlement; timeout/failure retains reservations
-and reports unconfirmed shutdown. Crash/orphan provider recovery remains unverified.
+and reports unconfirmed shutdown. Startup bounds attach/close recovery to a correlated
+known provider ID, never resumes model/business work, and uses its original stored
+rate/horizon. Unknown IDs, missing pricing facts or invalid correlation fail closed.
+Real provider crash/orphan recovery remains unverified.
 
 云入口增加服务端指定的运营审批链接，供应商会话返回业务会话ID后定位到
 对应审批页面；运营服务仍要求登录与所有者检查。未验证云语音时连接按钮
 禁用，不改变原独立本地向导。正常退出等待持久化结算，超时或失败保留
-预留并显式报告未确认状态；崩溃/孤儿供应商会话恢复仍未验证。
+预留并显式报告未确认状态。启动仅对已知关联provider ID有界attach/close，
+不恢复模型/业务写入；按创建时保存的费率/范围结算。未知ID、费率事实缺失或
+关联错误保持fail-closed；真实供应商崩溃/孤儿会话恢复仍未验证。
 
 后续候选任务见[路线图](ROADMAP.md)，发布流程见[发布检查](RELEASE.zh-CN.md)。

@@ -157,3 +157,89 @@ test("graceful shutdown waits for final durable Live settlement", async () => {
     await new Promise<void>(resolve => provider.close(() => resolve()));
   }
 });
+test("Live settlement uses the reserved rate; legacy or over-horizon usage remains uncertain", async () => {
+  const { runtime, store, cookie } = await loggedIn();
+  const context = await runtime.beforeCreate(fakeRequest(cookie, "POST"), sessionConfig);
+  await runtime.onCreated(context, "live_rate_fixture", Math.floor(Date.now() / 1000) + 1800);
+  const changed = await createLiveRuntime({ ...config(), LIVE_RATE_CENTS_PER_MINUTE: 40 }, store, { credential });
+  await changed.onClosed(context, "live_rate_fixture", true, 60);
+  assert.equal((await store.read()).reservations[context.reservationId]?.cents, 5);
+  const second = await runtime.beforeCreate(fakeRequest(cookie, "POST"), sessionConfig);
+  await runtime.onCreated(second, "live_legacy_fixture", Math.floor(Date.now() / 1000) + 1800);
+  await runtime.onClosed(second, "live_legacy_fixture", true, 1801);
+  assert.equal((await store.read()).liveCalls.live_legacy_fixture?.status, "uncertain");
+  await store.update(state => {
+    delete state.liveCalls.live_legacy_fixture!.rateCentsPerMinute;
+    delete state.liveCalls.live_legacy_fixture!.providerMaxSeconds;
+  });
+  await changed.onClosed(second, "live_legacy_fixture", true, 12);
+  assert.equal((await store.read()).reservations[second.reservationId]?.status, "uncertain");
+  assert.equal((await store.read()).reservations[second.reservationId]?.cents, 150);
+});
+test("invalid orphan correlation never makes new Live work available", async () => {
+  const { runtime, store, cookie } = await loggedIn();
+  const context = await runtime.beforeCreate(fakeRequest(cookie, "POST"), sessionConfig);
+  await runtime.onCreated(context, "live_invalid_correlation", Math.floor(Date.now() / 1000) + 1800);
+  await store.update(state => {
+    state.reservations[context.reservationId]!.callId = "different_provider_session";
+    state.reservations[context.reservationId]!.status = "ended";
+  });
+  await assert.rejects(runtime.recoverableSessions!(), /correlation is invalid/);
+  const publicState = await runtime.publicConfig(fakeRequest(cookie));
+  assert.equal((publicState as { liveEnabled: boolean }).liveEnabled, false);
+  await assert.rejects(runtime.beforeCreate(fakeRequest(cookie, "POST"), sessionConfig), /unsettled provider session/);
+});
+test("restart closes correlated Live orphans but never guesses unknown create IDs", async () => {
+  const { runtime, store, cookie } = await loggedIn();
+  const context = await runtime.beforeCreate(fakeRequest(cookie, "POST"), sessionConfig);
+  await runtime.onCreated(context, "live_orphan_fixture", Math.floor(Date.now() / 1000) + 1800);
+  const provider = http.createServer((_req, res) => { res.writeHead(404); res.end(); });
+  const sockets = new WebSocketServer({ server: provider });
+  let attached = 0, closed = 0;
+  sockets.on("connection", socket => {
+    attached++;
+    socket.on("message", raw => {
+      if (JSON.parse(raw.toString()).type === "session.close") {
+        closed++;
+        socket.send(JSON.stringify({ type: "session.closed", usage: { seconds: 12 }, reason: "synthetic_recovery" }));
+      }
+    });
+  });
+  await new Promise<void>(resolve => provider.listen(0, "127.0.0.1", resolve));
+  const address = provider.address();
+  assert.ok(address && typeof address !== "string");
+  const originalSettings = runtime.settingsStore.get();
+  runtime.settingsStore.get = () => ({ ...originalSettings,
+    voice: { ...originalSettings.voice, baseUrl: `http://127.0.0.1:${address.port}` } });
+  let settled!: () => void;
+  const settlement = new Promise<void>(resolve => { settled = resolve; });
+  const originalClosed = runtime.onClosed;
+  runtime.onClosed = async (...args) => { await originalClosed(...args); settled(); };
+  let app: Awaited<ReturnType<typeof startServer>> | undefined, secondApp: typeof app;
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+  try {
+    app = await startServer({ host: "127.0.0.1", port: 0, mode: "remote",
+      publicOrigin: "https://live.example.invalid", cloud: runtime, quiet: true });
+    await Promise.race([settlement, new Promise<never>((_resolve, reject) => {
+      timeout = setTimeout(() => reject(new Error("Synthetic recovery did not settle.")), 5000);
+    })]);
+    assert.equal(attached, 1); assert.equal(closed, 1);
+    assert.equal((await store.read()).liveCalls.live_orphan_fixture?.status, "ended");
+    const unknown = await runtime.beforeCreate(fakeRequest(cookie, "POST"), sessionConfig);
+    await runtime.onCreateFailed(unknown, undefined, true);
+    assert.deepEqual(await runtime.recoverableSessions!(), []);
+    const publicState = await runtime.publicConfig(fakeRequest(cookie));
+    assert.equal((publicState as { liveEnabled: boolean }).liveEnabled, false);
+    secondApp = await startServer({ host: "127.0.0.1", port: 0, mode: "remote",
+      publicOrigin: "https://live.example.invalid", cloud: runtime, quiet: true });
+    assert.equal(attached, 1);
+    assert.equal((await store.read()).reservations[unknown.reservationId]?.status, "uncertain");
+    await assert.rejects(runtime.beforeCreate(fakeRequest(cookie, "POST"), sessionConfig), /Another operation/);
+  } finally {
+    clearTimeout(timeout);
+    await secondApp?.close(); await app?.close();
+    for (const socket of sockets.clients) socket.terminate();
+    await new Promise<void>(resolve => sockets.close(() => resolve()));
+    await new Promise<void>(resolve => provider.close(() => resolve()));
+  }
+});

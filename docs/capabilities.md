@@ -20,7 +20,7 @@
 | GPT Live独立导入 | MIT固定基线48文件，原始33测试/扫描通过 | 没有真实Azure Live会话 |
 | GPT Live云UI | 实际浏览器中英切换、独立语音语言、草稿保留、门禁关闭 | 无人声/供应商调用 |
 | GPT Live工具/审批关联 | 同严格业务工具；创建响应业务ID到运营链接，按owner恢复 | 跨云应用/真实provider待验收 |
-| GPT Live正常关停 | 模拟attach/close最终用量与延迟持久化等待回归通过 | 真实MI/expiry/孤儿恢复/直接浏览器费用边界未验证 |
+| GPT Live关停/启动恢复 | 模拟attach/close、等待持久化；仅已知ID有界关闭，创建费率固定，未知/旧账本/错误关联fail-closed | 真实MI/expiry/孤儿恢复/直接浏览器费用边界未验证 |
 | 运营业务 | 实际浏览器查单、诊断、审批、幂等提交、合成同意/撤回 | 仅原创合成系统，无真实CRM/退款 |
 | 云基础 | 实际独立RG基础创建，组织公网modify效果确认 | 部分失败，无应用运行时；私网方案待决定 |
 | 镜像发布 | 实际Actions build/push与匿名manifest200，固定source/digest | 不是ACA容器启动/数据面证明 |

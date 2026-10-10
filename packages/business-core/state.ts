@@ -33,6 +33,7 @@ export interface InboxEvent {
 export interface LiveCall {
   id: string; sessionId: string; owner: string; reservationId: string;
   createdAt: number; deadline: number; providerExpiresAt?: number;
+  rateCentsPerMinute?: number; providerMaxSeconds?: number;
   status: "active" | "closing" | "ended" | "uncertain";
   usageSeconds?: number;
 }

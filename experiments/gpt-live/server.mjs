@@ -272,6 +272,25 @@ async function attach(id,config,backend,voice,context){
     catch(error){if(error.code==='EADDRINUSE'&&options.autoPort&&!process.env.PORT&&attempt<20){port++;continue;}throw new Error(error.code==='EADDRINUSE'?'端口已被占用，请关闭旧实例或设置其他 PORT':'服务无法启动，请检查监听地址和端口');}
   }
   port=server.address().port;if(mode==='local')origin=`http://127.0.0.1:${port}`;
+  if(cloud?.recoverableSessions){
+    try{
+      for(const recovery of await cloud.recoverableSessions()){
+        await cloud.onClosing(recovery.context,recovery.id);
+        try{
+          const settings=store.get();
+          await attach(recovery.id,cloud.validateConfig(validateConfig(settings.preferences,settings)),
+            backendConnection(settings),settings.voice,recovery.context);
+          closeSession(recovery.id);
+        }catch{
+          closeSession(recovery.id);
+          await cloud.onClosed(recovery.context,recovery.id,false,0);
+          console.error(JSON.stringify({event:'live_recovery_unconfirmed',code:'PROVIDER_CLOSE_UNCONFIRMED'}));
+        }
+      }
+    }catch{
+      console.error(JSON.stringify({event:'live_recovery_unconfirmed',code:'DURABLE_RECOVERY_FAILED'}));
+    }
+  }
   if(!options.quiet){console.log(`Ready: ${origin}`);if(auth.needsSetupToken())console.log(`Setup: ${origin}/setup#setup-token=${encodeURIComponent(auth.initialToken)}`);}
   let closing;
   async function close(){if(closing)return closing;closing=(async()=>{
