@@ -33,6 +33,34 @@ max 1、Standard_LRS 小存储、标准 Key Vault、受限日志、Search **Free
 不用 PTU、AKS、GPU、Dedicated 或付费 Search Basic 自动兜底。
 基础服务与网络成本尚未全部核验，不能把资源清单当作已获证的总价。
 
+### 两阶段运行估算（不计共享免费额度）
+
+基础阶段不部署 app/job/model，语音和推理产生的使用费为零；
+不把 S0 空账号当成已完成模型集成。官方零售查询另外匹配 SEA：
+Analytics Logs ingestion USD2.99/GB（5GB 以上价格阶梯，保守忽略免费额度；
+2018-02-01 生效）、Standard Key Vault Operations USD0.03/10K
+（2015-08-01）、General Block Blob v2 Hot LRS USD0.02/GB/月、
+写入 USD0.05/10K、读取 USD0.004/10K，Queues v2 Standard LRS
+USD0.045/GB/月、Class1/Class2 USD0.004/10K。
+这些产品/区域匹配行部分 `isPrimaryMeterRegion=false`，并非零价缺失；
+HSM、证书续期、Key Rotation、Files、层次命名空间费用不是本方案用途。
+
+| 完整运行阶段项目 | 保守月额 USD | 假设 |
+|---|---:|---|
+| 两个应用 CPU/内存 | 55.19 | 两个0.25CPU/0.5Gi副本连续730小时；无免费额度 |
+| 队列任务 CPU/内存 | 27.60 | 一个0.25CPU/0.5Gi副本连续730小时上界 |
+| 推理与 Live 预留 | 30.00 | 用途须另外验证后开启，不等于计费硬 cap |
+| 日志 | 9.27 | 0.1GB/日 × 31日 × USD2.99；每日限额可能短暂超收 |
+| Blob/Queue 容量及操作 | 2.00 | 合成小数据≤1GB、低频操作；不是存储服务硬 cap |
+| Key Vault 操作 | 0.30 | 每月≤100K次，不使用HSM/付费轮换 |
+| 网络、请求、治理差额及余量 | 13.42 | 需对新增政策强制服务再检查 |
+| **合计** | **137.78** | 不超过150目标；不含不可预测/未批准的新服务 |
+
+Consumption-only 环境不选择 Dedicated、private endpoint 或 planned
+maintenance；这些功能可能增加环境管理费。若组织要求新增这些功能或
+付费 Search，先重新核算，不自动改 SKU、修改策略或绕过网络要求。
+小流量估算不是对恶意客户端攻击的账单硬上限；告警与日志每日限额亦不是。
+
 应用持久化预留：Live USD 10 / 60 分钟，推理 USD 20/月。
 不确定请求保留预留与并发；Live 的 provider 过期窗口也需预留，不能只用
 前端三分钟计时器声称 provider 硬限时。预算告警不是硬 cap，也不允许绕过

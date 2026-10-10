@@ -21,6 +21,7 @@
     "seed:search": "tsx integrations/foundry/seed-search.ts",
     "worker": "node dist/server/apps/retell-demo/server/worker.js",
     "evidence": "tsx scripts/evaluate.ts",
+    "test:browser": "tsx scripts/browser-smoke.ts",
     "check:public": "node scripts/check-public.mjs"
   },
   "dependencies": {

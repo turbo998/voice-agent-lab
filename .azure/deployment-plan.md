@@ -1,6 +1,6 @@
 # Voice Agent Lab deployment plan
 
-Status: Preparing implementation
+Status: Validated (foundation only)
 
 ## Authorization and scope
 
@@ -84,8 +84,9 @@ status will be recorded progressively.
 - Retail pricing MCP returned no matching reasoning rows and a parser error
   for the Live service-family value. Pricing verification remains incomplete;
   these failures do not authorize estimated meter values or deployment spending.
-- No Azure resources, provider registrations, model invocations, Retell calls,
-  implementation commits, pushes, or delivery PR have been created.
+- At this original preflight checkpoint no Azure resources, provider registrations,
+  model invocations or Retell calls had been created. The subsequent stage was
+  committed and pushed as c33f507 with an open draft delivery PR; it is not deployed.
 
 ## Current official retail observations
 
@@ -97,3 +98,148 @@ See `docs/costs.md` for exact SKU and meter identifiers.
 These observations supersede the failed MCP lookup, but do not prove a mapping
 to an actual model deployment or authorize a different GlobalStandard rate.
 Live control/expiry and full selected model/voice costs remain closed gates.
+
+## Prepared deployment recipe and stage boundary
+
+Standalone Bicep + Azure CLI selected because a verified Bicep compiler and Azure
+CLI are installed, while Docker/azd are not. GitHub Actions can build the public
+container without credentials or deploying Azure. Module selection followed AVM
+pattern -> resource -> utility: use basic Foundry pattern 0.7.0; do not use the
+larger ACA landing-zone pattern because it introduces infrastructure outside this
+bounded lab. Resource modules provide the small Consumption environment.
+
+`infra/main.bicep` creates a uniquely suffixed **new** `rg-voice-lab-*` group.
+First stage has `deployApps=false`: no replicas or model deployments, inference,
+hosted agents or telephone capability. Second stage requires a digest-pinned,
+anonymously pullable GHCR image, securely provisioned Key Vault secrets and
+discovered provider endpoints. No existing resource or global default is changed.
+
+| Component | SKU / configuration |
+|---|---|
+| SEA Container Apps environment | Consumption profile only; no Dedicated, planned maintenance or environment private endpoint |
+| Retell / GPT Live apps (second stage) | 0.25 CPU / 0.5Gi each; min 0 / max 1; HTTPS; readiness/liveness/startup probes |
+| Post-call job (second stage) | 0.25 CPU / 0.5Gi; one execution; 60s timeout; no automatic replica retries |
+| State / queue | Standard_LRS; private blob container; no Shared Key / public blobs; TLS 1.2 |
+| Secrets | Key Vault Standard, RBAC, soft delete and purge protection; no template secret values |
+| Logs | PerGB2018, 30-day retention, 0.1GB daily ingestion quota |
+| Foundry | SEA S0 account + basic project, MI, no model/capability-host/associated-resource defaults |
+| GPT Live | Independent South India S0 OpenAI account, Entra-only, no model deployment yet |
+| Search | Free, one index planned, simple queries, Entra-only; never auto-upgrade |
+
+Shared runtime MI is limited to this lab's blob/queue data, vault reads, Search
+query and Foundry/inference access. Foundry account MI gets the documented Search
+tool roles. The builtin role formerly named Azure AI User is currently named
+**Foundry User**, verified from the selected subscription's role definitions.
+Bootstrap data-plane role grants for the configuring operator have not been made.
+Public network endpoints are authenticated; private **data access** is not a claim
+of private-network isolation. Mandatory inherited network policy must be respected.
+What-if exposed AVM Storage's implicit Deny ACL, incompatible with this prepared
+public-endpoint/MI design. The **new, unprovisioned** storage account now explicitly
+uses Allow with no trusted-service bypass, while shared keys and public blobs are
+disabled. This changes no existing network resource/policy; rerun provider-level
+admission. If organizational policy denies it, stop rather than deploy/bypass.
+
+Pinned AVM modules: identity 0.6.0; workspace 0.16.1; storage 0.33.1;
+vault 0.14.2; environment 0.16.0; Foundry pattern 0.7.0; Search 0.13.0;
+OpenAI account 0.19.1; container app 0.23.0; job 0.7.2.
+Official sources: `https://github.com/Azure/bicep-registry-modules`.
+
+## Provisioning inventory and admission checks
+
+Actual selected-subscription reads use explicit subscription arguments; identifiers
+and eventual deployment outputs stay private. Limits source:
+`https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits`.
+
+| Resource | First-stage count | Observed usage / resulting usage | Admission evidence |
+|---|---|---|---|
+| Resource group | 1 | 21 -> 22 subscription groups | Documented limit 980 |
+| Managed environment | 1 | SEA 2 -> 3 | CLI ManagedEnvironmentCount limit 50 |
+| Storage account | 1 | SEA 4 -> 5 | CLI StorageAccounts limit 250; refreshed observation |
+| Key Vault | 1 | Subscription 3 -> 4 | Quota CLI BadRequest; vault API admission must be validated; do not apply the unrelated Backup-vault limit |
+| AI account | 2 (one each SEA/SI) | SEA 0 -> 1; SI 0 -> 1 | CLI quota BadRequest; visible seven accounts elsewhere; docs 100/type and 200 mixed per region |
+| Search Free | 1 | Visible subscription services 0 -> 1 | Documented one Free/subscription; quota endpoint requires provider registration |
+| MI | 1 | One runtime identity in new group | Documented 80 creations/20s/subscription/region; tenant object admission must be validated |
+| Workspace | 1 | One workspace in new group | ARM per-resource-type/RG bound; provider admission must be validated |
+| Foundry project / connection / scoped IAM | 1 / 1 / 9 | New group resources only | ARM template/provider/RBAC validation required |
+| Apps / jobs / model deployments | 0 / 0 / 0 | None first stage | Environment Consumption-core quota only observable after environment creation; second-stage deployment remains gated |
+
+No quota increase or subscription provider registration was performed. Search
+quota discovery returned provider-not-registered, not proof of no quota. The first
+stage's ARM validation and what-if must confirm region/API/policy/IAM admission;
+only azure-deploy may perform an approved needed registration as a separately
+recorded subscription mutation. Unknown inherited policies remain unknown.
+
+## Functional verification and current validation inputs
+
+Main 57 offline tests and typecheck pass. Production build and independent GPT
+Live baseline 33 tests/release scan pass. Actual browser synthetic workflow
+passes login, tools, approval/commit, plan and withdrawal; no human audio or
+model/provider invocation. Reviewed screenshot is `docs/assets/synthetic-ops.png`.
+All task-owned browser/server helpers are stopped.
+
+`az bicep build --file infra/main.bicep` succeeds using compiler 0.42.1.
+Known warning BCP081: pinned vault module uses API 2026-02-01, absent from this
+compiler's type cache. Do not silence it or assume acceptance; ARM validation is
+required. All outputs compile into ignored `.azure/compiled-main.json`.
+Digest/secret/provider roots remain mandatory before the app stage; native model/
+voice integration is intentionally disabled pending independent validation.
+
+## Cost envelope for the prepared first stage
+
+The first stage allocates no running apps/jobs/models, so it creates no app,
+voice or inference compute usage. It retains bounded logs/storage/KV, not a
+promise that governance adds no charges. No Dedicated/PE/planned maintenance
+features are enabled.
+
+Current SEA Consumption retail active CPU USD 0.000034/CPU-second and memory
+USD 0.000004/GiB-second imply about USD 55.19/month for both app replicas running
+continuously, before free grants; worker worst-case continuous additional replica
+about USD 27.59/month. Add USD 30 model/Live reserved budget and a USD 25
+storage/logs/requests/contingency envelope: USD 137.78 conservative prepared
+operating estimate. This estimate requires remaining service meter/policy checks,
+and is not an invoice-hard cap.
+Official ACA billing says Consumption-only environments have no Dedicated plan
+management fee unless chargeable features such as private endpoints/planned
+maintenance are used. If policy requires those features or higher SKUs, stop and
+revise rather than exceed USD 150 or bypass policy.
+
+## Validation proof
+
+azure-validate executed. This status authorizes only the prepared empty-compute
+foundation stage. Apps, models and live calls require their separate validation.
+
+### All validation checks pass
+
+- [x] Authentication: explicit selected subscription Enabled/AzureCloud.
+- [x] Bicep Compilation: compiler succeeds; known vault schema warning remains.
+- [x] Template Validation: subscription-scope explicit Provider validation succeeded.
+- [x] What-If Preview: 25 Create, zero Unsupported/Modify/Delete, all in new lab group.
+- [x] Build Verification: staged application build, 57 + 33 tests, browser and six
+  offline evaluation cases pass, no model/human voice evidence claimed.
+- [x] Static Role Verification: shared runtime MI has blob/queue read-write,
+  vault-secret read, Search query, Foundry project use and both inference-account
+  use; Foundry account MI has Search tool data/service access. All service-scoped,
+  no Owner/Contributor subscription grants. Local configuration data-plane access
+  is a separately pending bootstrap/postdeployment check, not inferred from CLI login.
+- [x] Azure Policy Validation: subscription MCP returned inherited assignments too,
+  but without rule/parameter serialization; previously denied management-group
+  definitions remain unknown. Explicit Provider-level ARM validation/what-if accepted
+  the first-stage template without policy denials. This is admission evidence only,
+  not a claim of full inherited-policy visibility or eventual runtime compliance.
+- [x] Container Verification: not required for no-app/no-job foundation; remote
+  image build remains a mandatory separate second-stage gate.
+
+`infra/main.parameters.json` contains only public environment/location/stage
+values. Actual subscription and outputs remain outside tracked parameters.
+
+Final commands:
+`az deployment sub validate --validation-level Provider` and
+`az deployment sub what-if --validation-level Provider --no-pretty-print`,
+with explicit selected subscription, SEA location, `infra/main.bicep` and
+`infra/main.parameters.json`; both Succeeded. Raw private proof is in ignored
+`.azure/arm-validation.json` and `.azure/arm-whatif.json`.
+Eight initial unidentifiable AVM role names were corrected with deterministic
+names; final preview resolves all 25 resource IDs. Existing lab group count is zero.
+Standard Vault API 2026-02-01 was accepted by provider validation despite the
+compiler type-cache warning. Search provider remains NotRegistered; registration
+is a separately logged subscription mutation during azure-deploy, not quota proof.
