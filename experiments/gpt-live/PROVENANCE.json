@@ -1,0 +1,210 @@
+{
+  "repository": "https://github.com/turbo998/gpt-live-1-demo",
+  "upstream": "https://github.com/kylefu8/gpt-live-1-demo",
+  "revision": "a33041496fb1f54dbc1673b74d1fb8957e6ce7fb",
+  "license": "MIT",
+  "baselineVersion": "0.3.1",
+  "excluded": [
+    ".github workflows",
+    ".env",
+    "settings.json",
+    "data",
+    "logs",
+    "recordings",
+    "node_modules"
+  ],
+  "importedFiles": [
+    {
+      "path": ".dockerignore",
+      "gitBlob": "4aa088bfb439c425d38243441a5de62bdae43f78"
+    },
+    {
+      "path": ".env.example",
+      "gitBlob": "dafbd98ff69cd7f8045466a15f1d459451f568a9"
+    },
+    {
+      "path": ".gitattributes",
+      "gitBlob": "4b887bf0f0d287bea91fabb7e143fe0b4ca46a20"
+    },
+    {
+      "path": ".gitignore",
+      "gitBlob": "023a8ccaf70f615524cb6362e15139974c72a9c0"
+    },
+    {
+      "path": "AGENTS.md",
+      "gitBlob": "59e8b157289d866052dd53e18b9b0c47d4722743"
+    },
+    {
+      "path": "Dockerfile",
+      "gitBlob": "6a45e7aaf218a0513126f0355504142107c4d8a2"
+    },
+    {
+      "path": "LICENSE",
+      "gitBlob": "c6d8354d42ff417dc23bb024d883c38544052983"
+    },
+    {
+      "path": "README.md",
+      "gitBlob": "93c7830e77a9150c4087cb89da40b7d0b82ae8e2"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "gitBlob": "96c6b65bc36898ffa009fd5337a3cd5e47da84a6"
+    },
+    {
+      "path": "auth.mjs",
+      "gitBlob": "5013927ae87024a788f0b6c580977cd528952899"
+    },
+    {
+      "path": "backend.mjs",
+      "gitBlob": "069bca7686ed9965affa762b706467d57be8413a"
+    },
+    {
+      "path": "compose.remote.yml",
+      "gitBlob": "3c4efe40b689e27cab8d2ded6a443758b60a78da"
+    },
+    {
+      "path": "compose.yml",
+      "gitBlob": "b238be09cab756dd00b575d8abd100a977c08a5f"
+    },
+    {
+      "path": "config.mjs",
+      "gitBlob": "abf8d11ad7feb8d215de67b46f98ecfa34561d5c"
+    },
+    {
+      "path": "connections.mjs",
+      "gitBlob": "07640a88acf500bb6c503ded7da31ee7cc40a245"
+    },
+    {
+      "path": "delivery.mjs",
+      "gitBlob": "b5756155dc9e2078fc19ffc3808bd4f4f7e73c38"
+    },
+    {
+      "path": "delivery.test.mjs",
+      "gitBlob": "5e83ea5eb6c3be7716e9a910db2e85e0f1a30b47"
+    },
+    {
+      "path": "docs/DEPLOYMENT.md",
+      "gitBlob": "e974fb69c4421b20d8cb781a26ccfdf172a5c4c7"
+    },
+    {
+      "path": "docs/DEPLOYMENT.zh-CN.md",
+      "gitBlob": "6ae3983c9b7a16f922a02473e9ca61f9c04400fc"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "gitBlob": "b1b6bab4a54a44f29a8ffb405aeee629c6c5698c"
+    },
+    {
+      "path": "docs/RELEASE-NOTES.md",
+      "gitBlob": "ef0b0bc387f2d418d21636065b12272d7db52d00"
+    },
+    {
+      "path": "docs/RELEASE.md",
+      "gitBlob": "55b018e19f2b5e7c7461f8835b72c44c35735ba3"
+    },
+    {
+      "path": "docs/RELEASE.zh-CN.md",
+      "gitBlob": "03128dc67451e31a58d71292d6566e68abfe1d05"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "gitBlob": "adba6b72eae7c76ff4f80bce45071cb536b4361c"
+    },
+    {
+      "path": "docs/images/interface-en.png",
+      "gitBlob": "af902929719115f583687cc1f965ddc4dc8d5032"
+    },
+    {
+      "path": "docs/images/interface-zh-CN.png",
+      "gitBlob": "12b35f830bfed799163853e16e1758d9cc41edb0"
+    },
+    {
+      "path": "fast-time.mjs",
+      "gitBlob": "04e13ebb0c59e5c1da0752bf20d53206613eecec"
+    },
+    {
+      "path": "fast-time.test.mjs",
+      "gitBlob": "f1e11fdc2214fe54cf8d9efa347f4637ea3ccbfc"
+    },
+    {
+      "path": "launcher.mjs",
+      "gitBlob": "a75e76bf78b58311c39231cfbc9a2e19b053f8f2"
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlob": "fe7499f62d697f2fa738173b572e6828acd3c122"
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "7afbb23d04ade15438a3645b6da8b41e9e05f9dc"
+    },
+    {
+      "path": "public/i18n.js",
+      "gitBlob": "08898135eebf73b2242077eadb3acedbdf196930"
+    },
+    {
+      "path": "public/index.html",
+      "gitBlob": "70acfafae1c7525368762b85fc377b27e5a95f03"
+    },
+    {
+      "path": "public/locales/main.js",
+      "gitBlob": "8782d1d8a1e6347e9841db629db6128e4a35ad8f"
+    },
+    {
+      "path": "public/locales/messages.json",
+      "gitBlob": "691a5c5c249413310529613ec933ca573abd5b58"
+    },
+    {
+      "path": "public/locales/setup.js",
+      "gitBlob": "28d5c8ae7d2bec7e7ee71dffb0422ce09f03480f"
+    },
+    {
+      "path": "public/setup.html",
+      "gitBlob": "901501277a2e038fee98b53440bd52c4338e6dc3"
+    },
+    {
+      "path": "render.yaml",
+      "gitBlob": "7766aadc50960e763e48def65811c70feb04a392"
+    },
+    {
+      "path": "scripts/build-release.mjs",
+      "gitBlob": "a409886a33197bb101ad1b6db9fb452338c692df"
+    },
+    {
+      "path": "scripts/check-release.mjs",
+      "gitBlob": "3f6c6cbe57a7ca35009391a244a782cbc4707cf0"
+    },
+    {
+      "path": "server.mjs",
+      "gitBlob": "4520a976ae67b72521a1f60d603acceb31a2310b"
+    },
+    {
+      "path": "settings-store.mjs",
+      "gitBlob": "2d66bce61030c6cfc9e05d3a913cfaa9d2b6b0bd"
+    },
+    {
+      "path": "tests/backend-search.test.mjs",
+      "gitBlob": "f2bf0bc6ca05351511734cf1d17392a4b0876fe7"
+    },
+    {
+      "path": "tests/i18n.test.mjs",
+      "gitBlob": "8c12c201d5ac9651ff6b0a623917cba1a5e6ca1a"
+    },
+    {
+      "path": "tests/setup.test.mjs",
+      "gitBlob": "a83a4b27307cafa2b0db93824343a3cf372e0fc9"
+    },
+    {
+      "path": "tools.mjs",
+      "gitBlob": "21c18f7fba7570906b4c8a96f52aae9a4c83d067"
+    },
+    {
+      "path": "tools.test.mjs",
+      "gitBlob": "cdffb721adfde6672201f7463f642fff1b54952e"
+    },
+    {
+      "path": "ui-messages.mjs",
+      "gitBlob": "be0a85c367f60511e942064b0a93af7c69cdbd8a"
+    }
+  ]
+}

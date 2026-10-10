@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "outDir": "dist/server", "rootDir": ".", "sourceMap": false },
+  "include": ["apps/retell-demo/server/**/*.ts", "apps/gpt-live/server/**/*.ts", "packages/**/*.ts", "integrations/**/*.ts"],
+  "exclude": ["integrations/retell/configure.ts", "integrations/foundry/configure.ts", "integrations/foundry/seed-search.ts"]
+}

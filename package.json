@@ -1,0 +1,53 @@
+{
+  "name": "voice-agent-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "setup:local": "node scripts/setup-local.mjs",
+    "dev": "tsx --env-file=.private/lab.env apps/retell-demo/server/index.ts",
+    "dev:ui": "vite --host 127.0.0.1",
+    "build": "tsc -p tsconfig.server.json && node scripts/stage-runtime.mjs && vite build",
+    "start": "node dist/server/apps/retell-demo/server/index.js",
+    "start:gpt-live": "node dist/server/apps/gpt-live/server/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "import:gpt-live": "node scripts/import-gpt-live.mjs",
+    "test:gpt-live": "npm --prefix experiments/gpt-live test",
+    "check:gpt-live": "npm --prefix experiments/gpt-live run check:release",
+    "configure:retell": "tsx integrations/retell/configure.ts",
+    "configure:foundry": "tsx integrations/foundry/configure.ts",
+    "seed:search": "tsx integrations/foundry/seed-search.ts",
+    "worker": "node dist/server/apps/retell-demo/server/worker.js",
+    "evidence": "tsx scripts/evaluate.ts",
+    "check:public": "node scripts/check-public.mjs"
+  },
+  "dependencies": {
+    "@azure/ai-projects": "2.8.0",
+    "@azure/core-auth": "^1.10.0",
+    "@azure/identity": "^4.13.0",
+    "@azure/search-documents": "^12.2.0",
+    "@azure/storage-blob": "^12.28.0",
+    "@azure/storage-queue": "^12.27.0",
+    "express": "^5.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "retell-client-js-sdk": "3.0.2",
+    "retell-sdk": "6.0.1",
+    "ws": "^8.18.3",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.7.0",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@types/ws": "^8.18.1",
+    "@vitejs/plugin-react": "5.0.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "7.1.9"
+  }
+}
