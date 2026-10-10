@@ -63,6 +63,9 @@ try {
   if (await page.getByRole("alert").count()) throw new Error("Browser operation reported an error.");
   await mkdir(".private\\evidence", { recursive: true });
   await page.screenshot({ path: ".private\\evidence\\synthetic-ops.png", fullPage: true });
+  await page.getByRole("button", { name: "退出", exact: true }).click();
+  await page.getByLabel("运营员密码").waitFor();
+  if (await page.getByRole("alert").count()) throw new Error("Logout incorrectly reported a post-authentication refresh failure.");
   console.log(JSON.stringify({ browser: "synthetic_workflow_passed", realVoice: false,
     modelCalls: 0, artifact: ".private/evidence/synthetic-ops.png" }));
 } finally {

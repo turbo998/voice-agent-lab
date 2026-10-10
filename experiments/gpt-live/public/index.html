@@ -1340,13 +1340,15 @@
       const reasoningEffortSelect = $("#reasoningEffortSelect");
       const sessionMinutesInput = $("#sessionMinutesInput");
       const operatorApprovalLink = $("#operatorApprovalLink");
+      let operatorSessionId = null;
 
       function updateOperatorLink(sessionId) {
+        if (typeof sessionId === "string") operatorSessionId = sessionId;
         const base = configCatalog && configCatalog.operatorUrl;
         operatorApprovalLink.hidden = !base;
         if (!base) return;
         const url = new URL(base);
-        if (sessionId) url.searchParams.set("session", sessionId);
+        if (operatorSessionId) url.searchParams.set("session", operatorSessionId);
         operatorApprovalLink.href = url.href;
       }
 

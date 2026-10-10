@@ -40,11 +40,11 @@ function Lab() {
     if (!response.ok) throw new Error(`${data.code ?? response.status}: ${data.error ?? "操作失败"}`);
     return data as T;
   }
-  async function run(operation: () => Promise<void>) {
+  async function run(operation: () => Promise<void>, refresh = true) {
     setError(""); setBusy(true);
     try { await operation(); } catch (failure) { setError(failure instanceof Error ? failure.message : "操作失败"); }
     finally {
-      if (auth) {
+      if (auth && refresh) {
         try { setConfig(await api<Bootstrap>("/api/bootstrap")); }
         catch (failure) { setError(failure instanceof Error ? failure.message : "无法刷新成本与门禁状态"); }
       }
@@ -176,7 +176,7 @@ function Lab() {
       <a className="logo" href="/"><span className="brand-mark small">VL</span><span>Voice Agent Lab<small>中国品牌出海 · 场景到落地</small></span></a>
       <nav aria-label="实验导航"><a href="#workspace" className="active">Retell 原生实验</a>
         {config?.gptLiveUrl ? <a href={config.gptLiveUrl} target="_blank" rel="noreferrer">GPT Live 独立实验 ↗</a> : <a href="#independent">GPT Live 导入基线</a>}
-        <button className="text" onClick={() => void run(async () => { await api("/api/logout", {}); setAuth(null); })}>退出</button></nav>
+        <button className="text" onClick={() => void run(async () => { await api("/api/logout", {}); setAuth(null); }, false)}>退出</button></nav>
     </header>
     <section className="hero">
       <div><p className="eyebrow">SOLUTIONS ARCHITECT + FDE PLAYGROUND</p><h1>让下一次出海服务<br /><em>从一段对话开始。</em></h1>
