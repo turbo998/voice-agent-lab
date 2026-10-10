@@ -301,3 +301,11 @@ generated private `.azure/search.parameters.json` fixed serialization. Raw proof
 No missing Search resource was created; do not treat validation as full inherited
 network-policy permission or bypass the pending private-topology decision.
 Current status is not Validated for any further writes.
+
+Postdeployment-only reads verified both owned accounts have zero model deployments
+and the lab group has zero apps/jobs. Scoped ActualCost/MonthToDate query succeeded
+with zero rows/no pagination (billing delay, not evidence of USD0); budget count0.
+Actual currency and notification routing must be established before creating a
+budget resource, not guessed from USD retail estimates. Raw private outputs are
+`.azure/actual-cost.json` and `.azure/budgets.json`. No new billing/network resource
+was created while awaiting the user's significant private-topology decision.

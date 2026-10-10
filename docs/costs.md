@@ -64,6 +64,9 @@ HSM、证书续期、Key Rotation、Files、层次命名空间费用不是本方
 不会为了维持旧估算覆盖 Disabled、自动升级SKU或绕过治理。
 资源组预算告警、账单货币/收件配置与实际发生成本仍待核验；
 没有把源码中的USD目标冒充已存在的Azure预算资源。
+本次仅针对新lab RG的 ActualCost/MonthToDate 查询成功，返回0行、
+无下一页；新资源账单延迟，因此不是USD0的证明，也不能据空数据推断
+实际账单货币。该组预算资源当前0项，尚无Azure预算告警。
 
 Consumption-only 环境不选择 Dedicated、private endpoint 或 planned
 maintenance；这些功能可能增加环境管理费。若组织要求新增这些功能或
