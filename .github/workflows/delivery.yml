@@ -27,7 +27,12 @@ jobs:
         run: |
           docker build --target runtime --tag voice-lab:check .
           docker build --target controller --tag voice-lab-controller:check .
-          docker run --rm voice-lab-controller:check > controller-smoke.log 2>&1 && exit 1 || code=$?
+          if docker run --rm voice-lab-controller:check > controller-smoke.log 2>&1; then
+            echo 'Controller unexpectedly succeeded without configuration'
+            exit 1
+          else
+            code=$?
+          fi
           test "$code" -eq 1
           grep -Fx '{"event":"operating_controller_failed","code":"DEACTIVATION_UNCONFIRMED"}' controller-smoke.log
   publish:
