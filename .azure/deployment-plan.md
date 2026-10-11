@@ -1,11 +1,45 @@
 # Voice Agent Lab deployment plan
 
-Status: Partially Deployed (private foundation, budget and secrets; no app runtime)
+Status: Partially Deployed (narrow control identity added; no app runtime)
+
+## Approved runtime control permission preparation
+
+Identity stage Succeeded. Exact three container assignments read back, controller
+has only lab-control BlobReader. Removed and verified absence of the one known
+old account-wide runtime BlobContributor grant after scoped roles were present.
+No protected Storage/KV settings changed. Data-plane authorization/cache effects
+still require in-VNet verification; grant listings alone are not that proof.
+
+Within the approved lab scope, create a dedicated independent controller MI.
+Custom management role allows only revision read/deactivate; assign at each of
+the two app resources once those exist (not RG-wide). Controller reads only the
+lab-control container. Existing runtime MI gets BlobContributor on lab-private
+and BlobReader on lab-control, never bootstrap-private or control write. After
+these scoped assignments are verified, remove only its known old account-wide
+BlobContributor grant; existing KV/Queue roles retained. No app enabled yet.
+Operator window command runs inside a bounded VNet job using temporary
+control-container write permission, not app-owned credentials, and CAS-reserves
+time before operator create/activate. Independent controller must be verified
+before the first app activation; any uncertain operation preserves reservation.
+Identity template compiled after replacing a runtime MI-output role-name seed
+with a deterministic deployment-time seed. Actual Microsoft.App provider
+operations confirms both exact read/deactivate actions. Validation now limited
+to one MI, three scoped container grants and one role definition; no role granted
+to nonexistent app resources and no account-wide grant deletion in this stage.
+
+### Section 7: Narrow runtime-control identity validation proof
+
+2026-10-11 Bicep compilation, actual Provider validation and what-if Succeeded
+with5Create/25Ignore/0diagnostics. Exact creations: controller MI, management
+role definition containing only revision read/deactivate, lab-private runtime
+Contributor, lab-control runtime Reader and controller Reader. No protected
+resource modifications/deletes, no apps or controller job. Role definition's
+assignable RG scope is not a grant; later assignments must use two app scopes.
 
 Fresh init and commit Succeeded. Four KV versions verified via private MI
 metadata. Actual versioned ACA reference probe emitted resolved count4 and
-replica exit0; execution status Failed, retained as a discrepancy because its
-30second deadline includes scheduling/pull. No claim of whole-job success.
+replica exit0; execution status Failed, retained as an unexplained discrepancy.
+Scheduling/deadline attribution is not proven. No claim of whole-job success.
 Authorized temporary jobs, exact three grants and MI deleted, actual counts0.
 Storage/KV publicNetworkAccess remains Disabled. Private foundation retained.
 Next prepare narrower runtime/controller identities and operating-window command,

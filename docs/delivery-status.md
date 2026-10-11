@@ -39,7 +39,7 @@ GPT Live 云界面提供运营审批入口，创建会话后携带服务端业�
 | 实际网络治理 | Storage/KV 公网 Disabled；资源活动日志确认 modify Policy | 可以重新启用公网或绕过组织治理 |
 | GitHub Actions 镜像 | 实际 offline/build/publish 成功，匿名 manifest 200 | 当前后续修改已包含于镜像 |
 | 私网 bootstrap | 新 binding 的 init 与一次性 leased commit 均 Succeeded；四项 KV secret 版本元数据确认，Blob CAS/私网 MI 访问通过 | 应用已启动或真实供应商调用通过 |
-| 实际 ACA secret 引用 | 四项 versioned KV 引用已解析，有限 probe 返回 count4、容器 exit0；execution 状态仍 Failed，30秒期限包含调度/拉取 | 可以把容器输出冒充整个 execution Succeeded |
+| 实际 ACA secret 引用 | 四项 versioned KV 引用已解析，有限 probe 返回 count4、容器 exit0；execution 状态仍 Failed，原因尚未归因 | 可以把容器输出冒充整个 execution Succeeded |
 | 临时配置清理 | 两个临时 job 名均不存在；三项具体临时授权及 MI 实际计数均0；Storage/KV仍 Disabled | 删除 live key 等同物理擦除；Storage软删除保留7天 |
 
 ## 仍需完成

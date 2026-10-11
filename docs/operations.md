@@ -116,4 +116,23 @@ Live门禁需 `LIVE_RATE_CENTS_PER_MINUTE`, `LIVE_PROVIDER_MAX_SECONDS`,
 | 模型/费用门禁过期 | 保持禁用，重新取得真实协议/余额/费率证据，不只刷新时间戳 |
 | Cost查询0行 | 新账单可能延迟；不是零费用证明，预算告警也不是硬cap |
 
+## 私网配置与控制权限证据
+
+实际一次性私网 init/commit 均成功，四项 KV 配置已创建。临时配置 job、
+三项授权、MI 已查询确认不存在。Storage/KV 公网仍 Disabled。操作员密码
+仅在本机 CurrentUser DPAPI 文件，不能复制进公开参数或输出。
+
+实际 ACA versioned secret 引用 probe 返回 count4、容器 exit0，但 execution
+状态 Failed；不将其写成全任务成功。有限系统日志查询返回 SEM0100：
+`ContainerAppSystemLogs_CL` 不存在，失败原因尚未确认，不自动推断为超时。
+
+独立控制器 MI 已创建，目前只读 `lab-control`。运行时 MI 已改为
+`lab-private` BlobContributor 与 `lab-control` BlobReader；已撤销其唯一已知
+账户级 BlobContributor。控制器的 revision read/deactivate 自定义角色已定义，
+但尚未授予两个 app（app 尚不存在）。角色存在不等于停用能力已验证。
+
+`integrations/private/window-operator.ts` 是私网内管理任务入口：CAS 原子预留
+两个 app 的窗口，或设置 blocked。身份必须是临时、仅控制容器写权限，不能
+给 app 该权限。命令尚未部署执行；不得把本地代码当作云端费用停止机制。
+
 本文由 GitHub Copilot 辅助编写；安全与业务责任人需审阅真实部署配置。
