@@ -1,6 +1,74 @@
 # Voice Agent Lab deployment plan
 
-Status: Blocked (zero-replica shell Provider rejection; private foundation/secrets deployed)
+Status: Approved (diagnosed controller deadline; scoped image reduction preparation)
+
+Actual30s proof execution Failed, but environment events now prove image pull
+4.29s, container start~16.5s later, process exit0~2.5s after start, then platform
+DeadlineExceeded. ARM activity confirms dedicated controller principal's two
+exact app revision deactivate actions Succeeded before deadline. Both shells
+inactive/actualreplicas0 before safety finally; operator stop not needed on this
+proof. Finite proof job deleted. Actual app-scoped process behavior verified,
+whole execution and schedule acceptance NOT passed. AppLens MCP denied read403;
+supported CLI environment system events and ARM activity provided diagnosis.
+Keep approved20min/30s/26min; do not retry unchanged jobs or increase timeout.
+Build a dedicated bundled controller image without UI/Retell/GPT dependencies,
+using existing esbuild in the project's installed build toolchain and official
+Node Alpine runtime. Verify actual image/source/digest/pull size; one new cold
+proof still required because slimming does not guarantee scheduling latency.
+
+### Section 7: Approved30second cold stop proof validation
+
+Template compilation and four targeted reservation/controller regressions passed.
+Actual Provider validation/what-if Succeeded1Create/28Ignore/0diagnostics,
+sole finite Manual30s/retry0 job creation. Two app scopes already exist and grants
+confirmed; no identity/role/Storage/KV/app change in deployment. Harmless shell
+activation only for user-approved deactivation test, always safety-stop on error.
+
+First proof is Manual30s/retry0, distinct finite name, same controller MI/image/
+private path and two app grants. No failed recurring schedule left during test.
+Successful proof permits separate Schedule*/20minute validation/deployment.
+26minute lease source regression passed; not yet in a newly published image.
+Current old image is acceptable only for blocked-shell stop (no lease allowed).
+
+User explicitly selected20minute checks,30second timeout and26minute shutdown
+reservation margin. Replace previous15s/10minute cadence; retain worker30h/month,
+budgetUSD150 and app100h/month. Controller plus hourly30s postcall worst31days
+24.8h; all bootstrap/diagnostics/manual tests count separately in remaining5.2h.
+Run one actual cold-start stop acceptance against only empty shells. Failure
+requires safety deactivate/zero-replica verification, stop failed schedule and
+system/event diagnosis; no repeated cadence/timeout redesign. No real runtime
+window or provider calls until independent actual stop works.
+
+Approved shells/grants deployed Succeeded. Each initially had1actual replica;
+not zero-compute. Scheduled controller15s manual execution Failed, no replicas/
+logs found; failure cause unconfirmed. Operator safety deactivated both exact
+shell revisions, actual --all inactive/replicas0. Failed scheduled job deleted,
+absence verified. Controller grants exactly control Reader plus two app scopes.
+No business runtime, ingress, secrets or operating windows.
+Prepare one Manual120s/retry0 controller proof job with the same approved MI/code.
+This is a bounded permission-path test, not an enlarged recurring schedule.
+Only the two harmless shell revisions may be activated for this stop acceptance,
+with operator safety deactivation in finally if the proof fails. Delete finite
+proof job after acceptance. Schedule timeout/cadence tradeoff remains a separate
+decision within shared30h limit; do not enable real app runtime before that proof.
+
+### Section 7: Approved shell/controller validation proof
+
+2026-10-11 both templates compiled and actual Provider validations/what-if
+Succeeded. Shell stage4Create/26Ignore/0diagnostics: two exact containerApps
+and two exact app-scoped read/deactivate grants. Controller stage1Create/
+26Ignore/0diagnostics: Schedule*/10min,15s/retry0/.25CPU/.5Gi, concrete existing
+MI/environment/image. No protected resource updates, no secrets/ingress/scalers
+on shells. Real image source874db2b/digest69f12d... retained.
+
+User explicitly approved restricted shells through ask_user: min0/max1, no
+ingress/scaler trigger/business program/secret injection. Create only two exact
+future app shells and app-scoped stop grants; immediately inspect actual
+replicas/revisions, then verify independent controller execution and schedule.
+max1 is an upper limit, not zero-replica proof. Record any initial provider
+workload/pull activity and stop via approved exact scope. No RG-wide grant,
+runtime permission expansion, provider calls, network/SKU changes or windows.
+blocked=true/windows0 remains. Prior failed max0 proposal is superseded.
 
 Actual Provider shell validation failed ContainerAppInvalidScaleSpec:
 maxReplicas must be greater than0. No app deployment executed. Do not use this
@@ -13,14 +81,14 @@ Corrected exact runtime access execution Succeeded: four references resolved,
 normal control read, private Blob CAS/Queue metadata passed; control-container
 create and bootstrap-container read both403 AuthorizationPermissionMismatch.
 CAS block operation Succeeded withblocked=true/windows0. No permission relaxation.
-Temporary operating job/writer and access job still exist for current operations;
-not the previously deleted bootstrap identity/grants.
+Temporary operating job/writer and access job were cleaned and absence verified;
+their earlier creation/execution records below are historical evidence.
 
 ## Independent stop acceptance before application enablement
 
-Prepare the two exact future app resources as zero-replica, no-ingress shells
+Prepare the two exact future app resources as min0/max1, no-ingress shells
 using the verified image, no business runtime/secret references/voice calls.
-No HTTP/scaling trigger and min/max0 means no workload activation. This permits
+No HTTP/scaling trigger; actual replica count must be checked. This permits
 app-scoped read/deactivate grants without RG-wide access. Deploy the existing
 15second/10minute controller, then confirm it deactivates shell revisions while
 blocked=true. If zero-replica shells/provider limitations reject this, preserve

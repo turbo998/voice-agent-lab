@@ -48,7 +48,7 @@ async function main(): Promise<void> {
   }, appIds);
   console.log(JSON.stringify({ event: "operating_controller_completed", ...result }));
 }
-await main().catch(() => {
+void main().catch(() => {
   console.error(JSON.stringify({ event: "operating_controller_failed", code: "DEACTIVATION_UNCONFIRMED" }));
   process.exitCode = 1;
 });

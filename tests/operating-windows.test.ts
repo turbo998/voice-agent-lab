@@ -23,7 +23,8 @@ test("operating lease binds exact app and reserves activation plus shutdown marg
 test("operating lease never refunds an old reservation or crosses month boundary", () => {
   let state: OperatingControl = initialControl();
   let start = now;
-  for (let i = 0; i < 30; i++) {
+  const count = Math.floor(100 * 60 * 60_000 / (3 * 60 * 60_000 + SHUTDOWN_MARGIN_MS));
+  for (let i = 0; i < count; i++) {
     state = reserveOperatingWindow(state, app, 3 * 60 * 60_000, start);
     start += 3 * 60 * 60_000 + SHUTDOWN_MARGIN_MS;
   }
@@ -32,5 +33,6 @@ test("operating lease never refunds an old reservation or crosses month boundary
     Date.UTC(2026, 9, 31, 23, 50)), /MONTH_BOUNDARY/);
   assert.throws(() => reserveOperatingWindow(initialControl(), app, 4 * 60 * 60_000, now), /INVALID/);
   assert.equal(scheduledWorkerHours(31), 24.8);
+  assert.equal(SHUTDOWN_MARGIN_MS, 26 * 60_000);
   assert.ok(scheduledWorkerHours(31) + 0.2 < 30);
 });

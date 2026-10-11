@@ -44,6 +44,15 @@ GPT Live 云界面提供运营审批入口，创建会话后携带服务端业�
 | 运行时私网权限 | 有限 execution Succeeded：4KV引用/control读/BlobCAS/Queue；control写与bootstrap读均403 AuthorizationPermissionMismatch | 控制器已经具备实际停用权限 |
 | 窗口管理 | 私网 CAS block execution Succeeded，blocked=true/windows0；临时管理及access job/写授权/MI已清理确认0 | 已开放窗口或应用活跃 |
 | 独立停用预检 | zero-replica/no-ingress shell Provider拒绝：maxReplicas必须大于0；未创建app | 可以擅自改为max1或RG-wide停用权限 |
+| 用户批准的受限shell | min0/max1、无入口/业务/密钥shell与两项app范围停用授权已创建；初始各1副本，操作员安全停用后各0副本且revision inactive | max1或无入口等同零计算 |
+| 独立控制器 | 15秒调度job创建成功，首次execution Failed且无replica日志；已删除失败job，停用由操作员完成 | 独立MI已完成实际停用或调度验收 |
+| 30秒独立停用证明 | 实际controller MI两项deactivate活动均Succeeded、shell各0副本；进程exit0，但平台随后DeadlineExceeded、execution Failed，有限job已清理 | 全execution或20分钟调度已成功 |
+
+用户已批准每20分钟/timeout30s及26分钟预留余量，31日控制器+每小时30秒
+worker合计24.8h，其他bootstrap/diagnostics仍计入30h总量。实际事件显示
+30秒proof拉取4.29s、创建/启动延迟约16.5s、进程约2.5s后exit0，随后deadline
+失败。正在构建仅控制器依赖的专用镜像以缩小拉取成本；不加超时、不开窗口，
+新镜像还需真实coldstart与schedule验收，不能保证缩小镜像就解决平台延迟。
 
 ## 仍需完成
 

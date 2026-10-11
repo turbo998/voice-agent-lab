@@ -24,7 +24,12 @@ jobs:
       - run: npm run test:gpt-live && npm run check:gpt-live && npm run check:public
       - run: npm run evidence
       - name: Build container without pushing
-        run: docker build --tag voice-lab:check .
+        run: |
+          docker build --target runtime --tag voice-lab:check .
+          docker build --target controller --tag voice-lab-controller:check .
+          docker run --rm voice-lab-controller:check > controller-smoke.log 2>&1 && exit 1 || code=$?
+          test "$code" -eq 1
+          grep -Fx '{"event":"operating_controller_failed","code":"DEACTIVATION_UNCONFIRMED"}' controller-smoke.log
   publish:
     if: github.event_name == 'workflow_dispatch' && inputs.publish_image
     needs: offline
@@ -44,6 +49,7 @@ jobs:
         uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
         with:
           context: .
+          target: runtime
           push: true
           tags: ghcr.io/turbo998/voice-agent-lab:${{ github.sha }}
       - name: Record immutable image reference
@@ -51,3 +57,15 @@ jobs:
           DIGEST: ${{ steps.image.outputs.digest }}
         run: |
           printf 'Deployment image (verify anonymous pull before using): `ghcr.io/turbo998/voice-agent-lab@%s`\n' "$DIGEST" >> "$GITHUB_STEP_SUMMARY"
+      - id: controller
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+        with:
+          context: .
+          target: controller
+          push: true
+          tags: ghcr.io/turbo998/voice-agent-lab:controller-${{ github.sha }}
+      - name: Record immutable controller image reference
+        env:
+          DIGEST: ${{ steps.controller.outputs.digest }}
+        run: |
+          printf 'Controller image (verify anonymous pull before using): `ghcr.io/turbo998/voice-agent-lab@%s`\n' "$DIGEST" >> "$GITHUB_STEP_SUMMARY"

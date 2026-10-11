@@ -30,7 +30,7 @@ resource apps 'Microsoft.App/containerApps@2025-01-01' = [for kind in ['retell',
         args: ['-e', 'console.error("INACTIVE_SHELL_UNEXPECTED_START");process.exit(1)']
         resources: { cpu: json('0.25'), memory: '0.5Gi' }
       }]
-      scale: { minReplicas: 0, maxReplicas: 0 }
+      scale: { minReplicas: 0, maxReplicas: 1 }
     }
   }
 }]

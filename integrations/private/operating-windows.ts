@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const SHUTDOWN_MARGIN_MS = 16 * 60_000;
+export const SHUTDOWN_MARGIN_MS = 26 * 60_000;
 const APP_MONTH_MS = 100 * 60 * 60_000;
 const MAX_WINDOW_MS = 3 * 60 * 60_000;
 const month = (time: number): string => new Date(time).toISOString().slice(0, 7);
@@ -66,5 +66,5 @@ export function operatingWindowAllowed(input: unknown, appId: string, now = Date
 export function scheduledWorkerHours(days: number): number {
   if (!Number.isInteger(days) || days < 28 || days > 31) throw new Error("OPERATING_MONTH_DAYS_INVALID");
   // Conservative full timeout for every scheduled execution, without free grants.
-  return days * 24 * (6 * 15 + 30) / 3600;
+  return days * 24 * (3 * 30 + 30) / 3600;
 }
