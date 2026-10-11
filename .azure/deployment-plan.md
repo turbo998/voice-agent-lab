@@ -1,6 +1,140 @@
 # Voice Agent Lab deployment plan
 
-Status: Validation blocked (network decision; partial foundation, no runtime)
+Status: Budget and private-network stages deployed (runtime/bootstrap not validated)
+
+## Private-network actual result and next budget stage
+
+`voice-lab-private-20261011` Succeeded. All three PE Succeeded/Approved; three
+DNS zones each have one A record and completed unregistered VNet links. New
+external Consumption environment Succeeded with configured delegated subnet.
+Original environment Succeeded/VNet null preserved; Storage/KV Disabled,
+shared-key false/RBAC true preserved. Managed infrastructure actually contains
+one Standard Regional LB (two rules) and one Standard Regional Static IPv4.
+No application runtime/data-plane bootstrap/model/Retell call is present.
+Private endpoint Approval/DNS records are not in-VNet connectivity proof.
+
+Next narrow budget stage: subscription-scoped USD150 monthly budget filtered
+to only the original lab RG and its newly created ACA managed infrastructure RG,
+so network fixed fees are not accidentally excluded. User selected a single
+private notification recipient through parent ask_user; load only from protected
+budget-notifications.json, never publish. Actual thresholdsUSD75/100/120, no
+Action Group or extra recipient. Budget is notification, not stop/hard cap.
+Use Microsoft.Consumption/budgets direct Bicep: official AVM sub-scope source
+exists but its thresholds int[] cannot express the exact USD100/150 threshold
+66.66666666666667%. Keep secure contact input and exact approved amounts rather
+than silently rounding the user's notification point. No unrelated cost scope.
+Official 2024-08-01 resource schema reviewed; secure notification object compiles.
+Private parameter file protected to current user/SYSTEM. No notification values
+emitted. Only budget creation is allowed; network evidence above remains actual.
+
+### Section 7: Budget-only validation proof
+
+2026-10-11: `az bicep build --file infra/budget.bicep` passes after using secure
+object (Bicep secure array is invalid). Provider subscription validation and
+what-if `voice-lab-budget-preflight` succeeded with exactly1Create/0Modify/0Delete.
+Raw outputs and private parameters inherit current-user/SYSTEM-only file ACLs.
+Subscription is explicit and previous Billing Property reportsUSD; budget filter
+contains only lab and its managed infrastructure groups. No resource/secret/grant
+writes besides budget. All thresholds actual and exact approved75/100/120 amounts.
+Actual email delivery cannot be claimed until triggered/provider delivery proof.
+Inherited policy visibility remains unknown; preview reports no violation.
+No application build or data-plane access needed for notification-only stage.
+
+Budget execution `voice-lab-budget-20261011` Succeeded; GET2024-08-01 read back
+150Monthly, actualSpend.unitUSD,2RG filter, enabledActual50/66.66666666666667/80%
+notifications each one approved contact. Raw response protected; no contacts
+emitted or public. No trigger/mail-delivery/hard-stop claim. Root62 tests/build
+and public scan129 files pass with added bootstrap crypto; no cloud job yet.
+Prepare then Provider validation/what-if must show only budget Create before deploy.
+
+## User-approved private continuation (2026-10-11)
+
+The parent relayed the user's explicit ask_user choice: accept the limited POC
+and continue private-network validation/deployment. Approved: new external-HTTPS
+Consumption ACA environment in a dedicated VNet/delegated subnet, separate PE
+subnet, Blob/Queue/KV three PE and three linked private DNS zones. Preserve the
+original empty environment; never overwrite Storage/KV Disabled. No ACA inbound
+PE, NAT, Firewall, Resolver or VPN. Free/public-AAD Search remains conditional on
+actual organizational policy; no automatic Basic upgrade.
+
+Accepted operating limits: each app at most100 active hours/month, worker30 total
+hours/month, modelsUSD30/month, estimateUSD119.21 including20 buffer, total new
+cost remainsUSD150/month maximum. Implement bounded operating windows and an
+independent stop mechanism plus monitoring; stopping apps does not stop PE/LB/IP
+fixed charges. Retail estimates are not a billing hard cap.
+
+Next preparation must verify live partial state, nonoverlapping unpeered address
+space, current policy/provider quota, AVM VNet/private DNS/PE configuration,
+deployment order and private bootstrap. One-time MI configuration job is allowed
+within this path only with protected management input, no secrets in parameters,
+argv/logs/public files, scoped temporary write grants and cleanup. Confirm actual
+billing currency/notification routing before budget creation; zero cost rows do
+not establish either. No real Retell/model calls depend on this network stage.
+Re-enter azure-validate then azure-deploy only for the reviewed narrow stage.
+
+Private-stage preparation: Microsoft.Network already Registered. Existing listed
+VNet prefixes were read only; selected10.196.0.0/24 does not overlap them. No peering,
+enterprise routing or connection is being introduced; cross-tenant corporate ranges
+remain unknown and future connectivity needs separate address review. Apps subnet
+/27, separate endpoints/27. Existing Storage/KV still Disabled/shared-key off/RBAC.
+An additional Storage Event Grid system topic has appeared since the prior checkpoint;
+its successful source-linked metadata was read, attribution/charges not yet established.
+Do not remove it or call that a new application workload.
+
+Pinned AVM network0.10.0/private-endpoint0.12.0/private-DNS0.8.0/new ACA0.16.0
+compile successfully. Narrow `infra/private-network.bicep` references protected
+Storage/KV/logs as existing, creates network+3zones+3links+3PE+3zonegroups+new ACA,
+does not redeploy foundation/accounts/Search/apps or change old environment.
+Parameter file and raw metadata remain ignored .azure assets.
+Actual Billing Property GET2024-04-01 returned billingCurrencyUSD (not inferred
+from empty cost rows). Notification contact/action group not configured yet.
+
+Bootstrap feasibility design: first finite VNet job with dedicated temporary MI
+uses private Blob+Queue+KV paths to verify DNS/RBAC and generates a one-time RSA
+keypair, storing private material only in private Blob and returning public key.
+Operator encrypts bounded config locally with RSA-OAEP/AES-GCM; only ciphertext
+is passed as protected ACA job management input. Subsequent job decrypts internally
+and writes KV values without logging/argv/plaintext files. Revoke temporary grants,
+remove input/job and delete transient private key afterward. Must implement/test
+this protocol and validate the actual data plane before app secret references.
+Do not send plaintext secrets as ARM parameters or trust an unauthenticated public
+bootstrap endpoint. No bootstrap input submitted in this network-only stage.
+
+Runtime control design pending implementation: conservative pre-reserved time slots
+and a separate scoped scheduled controller to stop apps outside a short operating
+window; monthly compute margins include controller/bootstrap/worker. App request
+gates supplement, not replace actual stop/deactivate controls. Do not deploy or
+enable apps until controller and actual Stop permissions/behaviour are verified.
+First network stage adds fixed costs only, no application runtime/model spend;
+estimate fixed network48.95/month, existing idle Consumption environment has no
+Dedicated/PE/maintenance feature. Existing policy-created services/traffic still
+need monitoring. All cumulative stage billing stays subject to150/month guard.
+
+## Section 7: Private-stage validation proof (2026-10-11)
+
+- Bicep Compilation: `az bicep build --file infra/private-network.bicep` passes
+  after correcting the pinned PE zone-group property to privateDnsZoneResourceId.
+- Authentication: explicitly selected subscription state Enabled.
+- Provider template validation: group `voice-lab-private-preflight`,
+  validation-levelProvider succeeded; raw `.azure/private-validation.json`.
+- Provider What-if: `.azure/private-whatif.json`, statusSucceeded,16Create/9Ignore.
+  No Modify/Delete/Unsupported/Deploy/unknown changes. Includes only the dedicated
+  VNet/2subnets,3zones/3links,3PE/3zonegroups and new Consumption environment.
+- Existing foundation objects are Ignore; storage/vault publicDisabled and original
+  environment untouched. No model/Search/application/secret/RBAC writes in stage.
+- Static RBAC: network-only resources have no application identity or new grants;
+  existing data-plane roles retained. Actual local data plane remains unreachable
+  until private infrastructure/bootstrap is proved, not claimed functional.
+- Policy: actual authorized Provider validation/what-if reported no violations.
+  Existing confirmed publicNetwork modify policies are preserved. Full management-
+  group definitions previously unreadable remain unknown and are not retried/bypassed;
+  actual deployment effects still require post-read verification.
+- App build/function evidence is unchanged from source588e019 and successful actual
+  image run38071803181; network stage does not deploy that image or enable spend.
+
+This validation authorizes only `infra/private-network.bicep` narrow deployment.
+Bootstrap/controller/apps and Search must have their own completed validation before
+execution. Fixed network cost remains incurred even while apps are not deployed.
 
 ## Authorization and scope
 

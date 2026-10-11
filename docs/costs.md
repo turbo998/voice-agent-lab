@@ -60,13 +60,16 @@ HSM、证书续期、Key Rotation、Files、层次命名空间费用不是本方
 继续作为私网方案总价。当前是**部分基础设施部署，无应用/模型运行时**；
 空环境/空账号、KV和小存储仍应监控实际账单，不是“从未部署”。
 新的私网网络固定成本、现有环境状态和受限用量档见
-[网络决策依据](network-decision.md)。尚未创建PE/VNet/新环境，
-不会为了维持旧估算覆盖 Disabled、自动升级SKU或绕过治理。
-资源组预算告警、账单货币/收件配置与实际发生成本仍待核验；
-没有把源码中的USD目标冒充已存在的Azure预算资源。
+[网络决策依据](network-decision.md)。2026-10-11批准的3PE/3DNS、
+专用VNet/新外部Consumption环境已实际部署，原环境保留；Storage/KV
+Disabled未覆盖。实际托管资源为1Standard Regional LB/2规则和1Static
+IPv4；保留候选两IP估算的余量，后续部署应用再核对。
 本次仅针对新lab RG的 ActualCost/MonthToDate 查询成功，返回0行、
 无下一页；新资源账单延迟，因此不是USD0的证明，也不能据空数据推断
-实际账单货币。该组预算资源当前0项，尚无Azure预算告警。
+实际账单货币。随后实际Billing Property与预算currentSpend.unit均确认
+USD；现已创建USD150月预算，筛选仅lab与其ACA托管RG（固定网络费用
+不能漏算），Actual75/100/120金额通知已读回，各仅1位用户批准的私密
+收件人。预算创建与配置验证不等于邮件已送达或费用硬cap。
 
 Consumption-only 环境不选择 Dedicated、private endpoint 或 planned
 maintenance；这些功能可能增加环境管理费。若组织要求新增这些功能或

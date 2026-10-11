@@ -1,6 +1,12 @@
 # 私网部署决策依据
 
-2026-10-10，**候选方案，尚未批准/部署新的网络资源**。
+2026-10-11，**受限POC已由用户批准，窄私网阶段已实际部署；应用尚未部署**。
+
+Provider validation/what-if实际通过16Create/9Ignore，随后部署Succeeded。
+三个数据PE均Succeeded/Approved；三个DNS zone各1条A记录、VNet link
+Completed且不自动注册。新外部Consumption环境有委派子网；旧环境未修改。
+Storage/KV仍Disabled、shared-key关闭、RBAC开启。尚无VNet内job数据面
+连通性证明，不把管理面连接批准当作bootstrap验收。
 
 ## 已确认的阻塞
 
@@ -15,7 +21,7 @@
 现有 ACA 是 workload-profile 环境，仅配置 Consumption，未接自有 VNet，
 无 private endpoint。[官方网络文档](https://learn.microsoft.com/azure/container-apps/networking)
 说明创建后不能改变 network type，因此不能把现有环境就地接入 VNet。
-当前不会删除/重建它，也不会创建替代环境，等待拓扑和预算决定。
+用户明确批准创建独立新环境并保留原空环境，实际已按此执行。
 
 ## 最小候选
 
@@ -86,13 +92,20 @@ maintenance，多个功能收费可叠加。现有环境没有这些特性；候
 加日志9.27、存储2、KV0.30和网络48.95后约 **USD173.31/月，未留余量**。
 因此先前的公共端点运行估算不能沿用到私网方案。
 
-一个可讨论的 **受限 POC 用量档** 是每app100活跃小时/月、job总30小时/月：
+用户已接受的 **受限 POC 用量档** 是每app100活跃小时/月、job总30小时/月：
 compute约8.69 + 固定网络48.95 + 模型预算30 + 日志9.27 +
 存储/KV2.30 + 余量20 = **USD119.21/月**，不计免费额度。
 此档必须落实运行窗口、暂停/恢复、日常监控和使用边界；不是任意恶意流量的
 账单硬cap。模型门禁仍单独关闭，未经费率/协议核验不消费该预算。
 治理强制的其他付费资源、 bootstrap 和实际 meter 需继续核对。
 
-需要决定的是受限运行档/私网新环境是否接受，以及是否有已批准的企业
-部署机/私网通路或更严格的 Search/入口私有化要求。未决定前只做离线资产、
-只读核验和缺失 Search 的窄范围预检，不创建新的网络资源。
+最新实际托管RG只有1个Standard Regional LB（2条规则）和1个Standard
+Regional Static IPv4，不用候选的两个IP数量冒充实物。先保留原两IP保守
+费用余量，未来app部署后重新核对。三个PE/三DNS已存在并产生固定费用，
+不能标记“尚未创建”；没有ACA入站PE/NAT/Firewall/Resolver/VPN。
+
+实际USD150月预算创建Succeeded，筛选仅lab和其ACA托管RG，以免漏掉
+LB/IP费用；Actual75/100/120通知配置已读回，各仅用户指定的私密收件人。
+账单USD由实际Billing Property和budget currentSpend.unit确认，不是
+从空成本行推断。邮件实际触发/送达与停止策略仍未验证；不声称硬cap。
+仍需完成私网bootstrap/临时授权收尾和独立运行窗口控制，再启用应用。

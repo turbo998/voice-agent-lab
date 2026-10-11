@@ -1,8 +1,9 @@
 # 架构与部署边界
 
-2026-10-10。图的输入为 `infra/modules/foundation.bicep`、
+2026-10-11。图的输入为 `infra/modules/foundation.bicep`、
 `search-grounding.bicep`、`apps.bicep` 和本次实际资源观察。
-源文件存在不等于资源已经部署。以下图刻意将实际基础与未批准候选分区。
+源文件存在不等于资源已经部署。用户已批准受限私网并实际部署成功；
+以下内嵌图更新实际基础，文末SVG/PNG保留为2026-10-10历史设计快照。
 
 ## Voice Lab Architecture
 
@@ -19,13 +20,13 @@ flowchart TB
         live["South India OpenAI: NO Live model"]
         logs[("Log Analytics")]
     end
-    subgraph candidate["Candidate: network/cost decision REQUIRED"]
-        subgraph vnet["New VNet: NOT created"]
-            ops["Retell operations app"]
-            liveapp["Independent GPT Live app"]
-            worker["Finite post-call job"]
-            pes["Blob + Queue + KV private endpoints"]
-            dns["Three private DNS zones"]
+    subgraph candidate["Approved private foundation; runtime NOT deployed"]
+        subgraph vnet["New VNet + delegated Consumption environment: deployed"]
+            ops["Retell operations app: NOT deployed"]
+            liveapp["Independent GPT Live app: NOT deployed"]
+            worker["Finite post-call job: NOT deployed"]
+            pes["Blob + Queue + KV PE: Approved"]
+            dns["Three private DNS zones: A records + linked"]
         end
         search[("Free Search: NOT created")]
     end
@@ -39,9 +40,9 @@ flowchart TB
     ops -. normal hostnames .-> dns
     liveapp -. normal hostnames .-> dns
     worker -. normal hostnames .-> dns
-    dns -. private resolution .-> pes
-    pes -. blob / queue .-> storage
-    pes -. secrets .-> vault
+    dns --> pes
+    pes --> storage
+    pes --> vault
     ops -. bounded Responses .-> foundry
     liveapp -. live/sessions .-> live
     liveapp -. bounded reasoning .-> foundry
@@ -68,18 +69,18 @@ Retell 原生流程不由自定义 LLM 替代。Foundry 只承担有限、有来
 费用预留和协议/费率门禁在服务端；直接浏览器连接的成本信任边界仍需验证。
 
 现有 ACA 的网络类型不能就地改为自有 VNet。Storage/KV 的 Disabled 是
-实际组织 modify 效果，不重新启用。候选新环境、三数据 PE、private DNS
-与 bootstrap 均尚未实施。新环境不需要 ACA 入站 PE；浏览器/Retell 回调仍
+实际组织 modify 效果，不重新启用。新环境、三数据PE和DNS已实际配置，
+bootstrap/私网数据面仍未验收。新环境没有ACA入站PE；浏览器/Retell回调仍
 需要受保护的公网 HTTPS。Free Search 不能私有化，basic Foundry 工具路径
 也不能假定能访问私有 Search。详见[网络决定与成本](network-decision.md)。
 
-完整导出源为 [architecture.mmd](assets/architecture.mmd)，包含镜像、
+2026-10-10历史导出源为 [architecture.mmd](assets/architecture.mmd)，包含镜像、
 委派子网与未实施的 bootstrap。它是静态设计资产，不是实时拓扑发现。
 
 [可缩放 SVG 架构图](assets/architecture.svg)保留所有状态标签；
 下图是同一原创源的PNG导出，不依赖颜色区分实际与候选。
 
-![现有部分基础与待批准的新私网方案；没有运行时，Storage和Key Vault公网关闭](assets/architecture.png)
+![2026-10-10历史候选快照：当时私网未批准；当前私网实际状态见上方图与说明](assets/architecture.png)
 
 导出使用固定 `@mermaid-js/mermaid-cli@11.12.0` 所带 Mermaid bundle，
 `scripts/render-architecture.ts` 通过已安装的 Playwright 浏览器离线渲染，
@@ -87,4 +88,4 @@ Retell 原生流程不由自定义 LLM 替代。Foundry 只承担有限、有来
 不提交个人缓存路径。CLI自身的浏览器渲染等待被有界停止后改用此路径；
 最终SVG/PNG来自真实成功的离线render，不是空白/示例占位图。
 
-本文由 GitHub Copilot 辅助编写；候选部署仍需用户确认，不能据此实施网络。
+本文由 GitHub Copilot 辅助编写；后续运行时仍需独立验证，不据静态图声称接通。
