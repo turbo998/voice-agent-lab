@@ -25,7 +25,7 @@ GPT Live 云界面提供运营审批入口，创建会话后携带服务端业�
 
 | 检查 | 结果 | 不能据此推断 |
 |---|---|---|
-| 主应用离线测试 / 合成评估 | 62项 / 6场景通过；包括bootstrap加密回归 | 真实麦克风/供应商服务通过 |
+| 主应用离线测试 / 合成评估 | 66项 / 6场景通过；包括bootstrap加密、运行窗口及停用控制回归 | 真实麦克风/供应商服务通过 |
 | TypeScript / 生产构建 | 通过；JS bundle 有体积警告 | 公网服务已经部署 |
 | GPT Live 原始测试 / 发布扫描 | 33 项通过 / 通过 | Azure Live 协议实际鉴权通过 |
 | 实际浏览器 | 运营页恢复会话/客户订单、预算刷新；GPT云页中英切换、草稿及独立语音语言保留、关闭的语音门禁 | 模拟配置可替代真实供应商/人声验收 |
@@ -38,6 +38,9 @@ GPT Live 云界面提供运营审批入口，创建会话后携带服务端业�
 | 实际预算 | USD150/月、仅lab及其ACA托管RG；Actual金额75/100/120、各1个用户批准的私密收件人 | 告警已触发/送达，或预算是硬停止 |
 | 实际网络治理 | Storage/KV 公网 Disabled；资源活动日志确认 modify Policy | 可以重新启用公网或绕过组织治理 |
 | GitHub Actions 镜像 | 实际 offline/build/publish 成功，匿名 manifest 200 | 当前后续修改已包含于镜像 |
+| 私网 bootstrap | 新 binding 的 init 与一次性 leased commit 均 Succeeded；四项 KV secret 版本元数据确认，Blob CAS/私网 MI 访问通过 | 应用已启动或真实供应商调用通过 |
+| 实际 ACA secret 引用 | 四项 versioned KV 引用已解析，有限 probe 返回 count4、容器 exit0；execution 状态仍 Failed，30秒期限包含调度/拉取 | 可以把容器输出冒充整个 execution Succeeded |
+| 临时配置清理 | 两个临时 job 名均不存在；三项具体临时授权及 MI 实际计数均0；Storage/KV仍 Disabled | 删除 live key 等同物理擦除；Storage软删除保留7天 |
 
 ## 仍需完成
 
@@ -57,9 +60,10 @@ Retell 控制台登录已过期，最近一小时余额/无付款/无充值状�
 用户已批准受限POC档：每app≤100活跃小时/月、所有worker≤30小时/月、
 模型≤USD30/月，估算USD119.21含20余量，不是硬cap。
 实际私网部署保留Storage/KV Disabled、shared-key false/RBAC true。
-下一阶段必须先实现并验证运行窗口、独立revision停用、私网一次性MI
-bootstrap和暂时权限回收，再部署应用。离线RSA-OAEP/AES-GCM封装回归
-已通过绑定、过期、篡改/非白名单拒绝；它不是云配置job已运行的证明。
+私网一次性MI bootstrap、四项KV配置及暂时权限回收已实际完成。
+下一阶段必须验证运行窗口、独立revision停用及窄范围运行时身份权限，
+再部署应用。离线RSA-OAEP/AES-GCM封装回归已通过绑定、过期、
+篡改/非白名单拒绝；旧过期binding没有延长或复用。
 CLI没有app stop/start命令；官方生命周期文档确认revision deactivate会
 关闭容器。具体独立控制器权限、调度和实际停用仍待实现/验证。
 
@@ -74,15 +78,16 @@ Policy/deny。无法读取的继承策略仍是未知，必须以获授权的验
 
 ## 实际镜像来源
 
-[成功构建与发布运行](https://github.com/turbo998/voice-agent-lab/actions/runs/38071803181)
-对应源码 `588e01977d834a63f3edeffda4ad0150584b9a5e`，而非后续文档提交。
+[成功构建与发布运行](https://github.com/turbo998/voice-agent-lab/actions/runs/38107674282)
+对应源码 `f7f108da5f8e8185cac4525f10367614e45b92df`，而非后续代码或文档提交。
 
 ```text
-ghcr.io/turbo998/voice-agent-lab@sha256:5ad61dec6173b66861e09bf5ab5e2991e63cef53dc516c7e164a2492d24b7db7
+ghcr.io/turbo998/voice-agent-lab@sha256:fcd886806e1f7bf61dafdbe1ea27b10727bb8c5b152bdba5675df9bb4eca1efb
 ```
 
 匿名 registry manifest 返回 HTTP200；没有通过假 digest、示例镜像或仓库
-CI定义替代发布验收。云端容器启动与私网数据面仍未验证。
+CI定义替代发布验收。该镜像已运行私网bootstrap；尚无应用启动验收。
+后续运行窗口的服务入口接线不在该已发布镜像中。
 此前 source `0643969`、`658c241` 的镜像/运行只是旧阶段，不代表现在的应用修改。
 
 阶段 draft PR 用于保存可继续的代码，不是部署批准或最终完成标记。

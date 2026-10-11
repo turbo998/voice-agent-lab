@@ -1,6 +1,48 @@
 # Voice Agent Lab deployment plan
 
-Status: Preparing fresh bootstrap/control image after bounded transport failure
+Status: Partially Deployed (private foundation, budget and secrets; no app runtime)
+
+Fresh init and commit Succeeded. Four KV versions verified via private MI
+metadata. Actual versioned ACA reference probe emitted resolved count4 and
+replica exit0; execution status Failed, retained as a discrepancy because its
+30second deadline includes scheduling/pull. No claim of whole-job success.
+Authorized temporary jobs, exact three grants and MI deleted, actual counts0.
+Storage/KV publicNetworkAccess remains Disabled. Private foundation retained.
+Next prepare narrower runtime/controller identities and operating-window command,
+then separately validate/deploy; this status is not app-stage validation.
+
+Fresh commit execution Succeeded and returned four secret name/version records.
+Now replace only the existing temporary job configuration with a finite manual
+Key Vault-reference probe, using the same VNet and temporary MI. Four exact
+versioned references; verify presence/format in-process, emit count only.
+No secret values, network bypass, new topology, paid provider call or app ingress.
+Remove ciphertext from live job configuration. Then delete this temporary job,
+its three scoped grants and temporary identity, verifying each is absent.
+Existing private foundation and recovered secrets are retained.
+
+### Section 7: Secret reference probe validation proof
+
+Compile passed. First Provider validation rejected an empty optional location
+parameter; removed the null entry, using the template's approved SEA default.
+Corrected Provider validation and what-if Succeeded,1Modify/26Ignore/
+0diagnostics. Sole existing finite job changes timeout120s to30s, adds four exact
+versioned MI Key Vault references and replaces the container input/command.
+No roles or protected foundation updates; ciphertext removed from live job env.
+
+Distinct finite-job deployment and its single init execution Succeeded. Fresh
+binding returned ready only after private DNS, MI service access, Blob CAS probe
+and blocked control initialization. Use its unchanged expiry and key for one
+encrypted commit; revalidate the sole job container update before execution.
+No prior expired binding is reused and no app/provider call is enabled.
+
+### Section 7: Fresh encrypted commit validation proof
+
+Bicep compilation, actual Provider validation and what-if Succeeded:
+1Modify/26Ignore/0diagnostics. Exact sole update is the distinct finite bootstrap
+job, delta properties.template.containers. Protected foundation remains Ignore.
+Unchanged fresh ready binding had300seconds remaining after validation.
+Encrypted input only; temporary identity/grants exist and init proved private
+data-plane access. Source f7f108d digest remains pinned. No app/paid call stage.
 
 ## Approved bootstrap/control preparation
 
@@ -97,8 +139,33 @@ Transient old key soft-deleted residual may remain private until7day retention;
 new init uses a newUUID/key/TTL, not old material. New bootstrap will additionally
 prove BlobCAS and create blocked control document; commits return only secret name/
 version metadata. No values printed and no credential replacement by guessed config.
+Fresh published sourcef7f108da5f8e8185cac4525f10367614e45b92df, successfulrun38107674282,
+anonymousmanifest200, digestfcd886806e1f7bf61dafdbe1ea27b10727bb8c5b152bdba5675df9bb4eca1efb.
+Contains privateCAS/blockedcontrol/versionmetadata and controller core, not later
+runtime-window wiring. Renew identity-only validation because prior temporary
+identity/grants were actually deleted. New binding generated only after restored
+identity succeeds; never extend/reuse old input.
+Section7 fresh identity proof: actual Provider validate and what-if
+voice-lab-bootstrap-id2-preflight pass4Create/25Ignore/0diagnostics; exact same
+temporary MI/three resource-scope grants, no existing protected modifications.
+Fresh identity stageSucceeded; three exact new-principal grants visible.
+NewUUID/15min binding and actual publishedf7f108d image ready for job-only preview;
+not same old binding and no credential loaded before ready public metadata.
+Section7 fresh job proof: Provider validate/what-if pass1Create/26Ignore/
+0diagnostics with concrete newMI and publishedf7f108d digest; protected resources
+untouched, manual120s/retry0/.25CPU/.5Gi retained.
+Fresh recreation failed terminal IdentityDoesNotExist despite actual inputMI
+matching live existing identity. Failed provider message references missing
+internal job identity association, not a nonexistent inputMI. Actualjob show/
+execution list bothResourceNotFound; no new execution. Rootcause not established.
+Use one distinct finitejob name(job-vly4b73c-bootstrap2) after original absent,
+same environment/MI/limits, no security/topology change; revalidate actual creation
+before a single attempt. Do not repeatedly recreate same failed provider object.
+Section7 distinct-name actual Provider validation/what-if1Create/26Ignore/
+0diagnostics, same concrete MI/private environment/digest/limits, no policy/
+network bypass. Only planned new job name differs; no apps enabled.
 
-Runtime controls: independent scheduled job every5minutes with read/deactivate-only
+Runtime controls: independent scheduled job every10minutes with read/deactivate-only
 permissions on the two lab apps, no job start/listSecrets/write. Conservative
 durable monthly operating leases include shutdown/check delay, each app100h,
 all workers30h; missing/expired/unreadable lease fails closed to revision deactivation.
@@ -106,6 +173,13 @@ Do not resume/create an app without reserving its complete management-activation
 window including provisioning and controller delay. Request middleware and worker
 reservation enforce expired-window refusal but cannot replace revision deactivation.
 Model/Retell readiness stays false. Controller runtime cost counts in worker margin.
+Controller timeout15s at6/hour plus finite postcall timeout30s at1/hour gives
+worst-case24.8worker-hours/31day month, excluding bounded bootstrap<0.2h allowance.
+Replace unbounded event trigger with hourly finite worker; no continuous queue
+polling or arbitrary retries. Operator manual interventions must also be reserved/
+accounted; schedule/timeout not a tenant-wide hard cap. Runtime closes HTTP/WebSocket
+services on expired/unavailable lease and startup refuses a missing window;
+independent revisiondeactivate is still required to prevent endless restarts.
 
 ## Private-network actual result and next budget stage
 

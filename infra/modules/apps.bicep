@@ -77,6 +77,7 @@ module app 'br/public:avm/res/app/container-app:0.23.0' = [for kind in ['retell'
         { name: 'APP_ORIGIN', value: kind == 'retell' ? operatorOrigin : liveOrigin }
         { name: 'OPERATOR_APP_URL', value: operatorOrigin }
         { name: 'GPT_LIVE_URL', value: liveOrigin }
+        { name: 'OPERATING_APP_ID', value: resourceId('Microsoft.App/containerApps', kind == 'retell' ? operatorName : liveName) }
       ], kind == 'live' ? [
         { name: 'LIVE_PROVIDER_ENDPOINT', value: liveProviderEndpoint }
         { name: 'LIVE_REASONING_ENDPOINT', value: liveReasoningEndpoint }
@@ -100,28 +101,14 @@ module worker 'br/public:avm/res/app/job:0.7.2' = {
     environmentResourceId: environmentId
     managedIdentities: { userAssignedResourceIds: [identityId] }
     workloadProfileName: 'Consumption'
-    triggerType: 'Event'
-    replicaTimeout: 60
+    triggerType: 'Schedule'
+    replicaTimeout: 30
     replicaRetryLimit: 0
     secrets: commonSecrets
-    eventTriggerConfig: {
+    scheduleTriggerConfig: {
+      cronExpression: '0 * * * *'
       parallelism: 1
       replicaCompletionCount: 1
-      scale: {
-        minExecutions: 0
-        maxExecutions: 1
-        pollingInterval: 60
-        rules: [{
-          name: 'postcall'
-          type: 'azure-queue'
-          identity: identityId
-          metadata: {
-            queueName: 'postcall'
-            queueLength: '1'
-            accountName: first(split(last(split(storageQueueEndpoint, '//')), '.'))
-          }
-        }]
-      }
     }
     containers: [{
       name: 'worker'
@@ -129,7 +116,10 @@ module worker 'br/public:avm/res/app/job:0.7.2' = {
       command: ['node']
       args: ['dist/server/apps/retell-demo/server/worker.js']
       resources: { cpu: '0.25', memory: '0.5Gi' }
-      env: concat(commonEnv, [{ name: 'APP_ORIGIN', value: operatorOrigin }])
+      env: concat(commonEnv, [
+        { name: 'APP_ORIGIN', value: operatorOrigin }
+        { name: 'OPERATING_APP_ID', value: resourceId('Microsoft.App/containerApps', operatorName) }
+      ])
     }]
     enableTelemetry: false
   }

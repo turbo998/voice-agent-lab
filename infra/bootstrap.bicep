@@ -1,6 +1,7 @@
 targetScope = 'resourceGroup'
 
 param name string
+param jobName string
 param location string = 'southeastasia'
 param environmentId string
 param identityId string
@@ -25,7 +26,7 @@ var verifiedImage = imageIsValid ? image : fail('A verified digest-pinned Voice 
 module job 'br/public:avm/res/app/job:0.7.2' = {
   name: 'private-bootstrap-job'
   params: {
-    name: 'job-${name}-bootstrap'
+    name: jobName
     location: location
     tags: { project: 'voice-agent-lab', purpose: 'temporary-bootstrap' }
     environmentResourceId: environmentId

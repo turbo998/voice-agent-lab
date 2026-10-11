@@ -9,6 +9,7 @@ const schema = z.object({
   LOCAL_STATE_PATH: z.string().default(".private/state.json"),
   AZURE_STORAGE_BLOB_ENDPOINT: z.string().url().optional(),
   AZURE_STORAGE_QUEUE_ENDPOINT: z.string().url().optional(),
+  OPERATING_APP_ID: z.string().optional(),
   RETELL_API_KEY: z.string().min(10).optional(),
   RETELL_WEBHOOK_SIGNING_KEY: z.string().min(10).optional(),
   RETELL_AGENT_ID: z.string().regex(/^agent_[\w-]+$/).optional(),

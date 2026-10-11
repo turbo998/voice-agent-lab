@@ -27,8 +27,31 @@
 由MI读取；尚未完成私网bootstrap，不能声称密钥已经注入Azure。
 
 Storage/KV实际公网Disabled，不能为了初始化而开启。普通电脑尚无
-获准的私网路径；候选一次性私网job/企业部署机还需批准与实现。
+获准的直连私网路径；已批准的VNet内有限job完成第一次DNS/MI
+Blob/Queue与KV metadata验证。首次加密commit管理面网络重置，
+确定部署名两次DeploymentNotFound，未启动commit；临时job/3授权/MI
+真实清理计数均0。不能因此声称secret已写入；用新binding恢复，不延长旧TTL。
 Bootstrap临时写权必须限定资源、独立于常规读取身份，并在完成后回收。
+
+## 受限运行窗口
+
+仅已批准的每app100h/月、worker总30h/月、模型30USD边界。服务端Blob CAS
+预留完整activation窗口及16min关停余量；最长单窗口3h，不能跨月或重叠，
+退出不退款。缺失/过期/损坏控制文件不允许新runtime启动，已运行服务
+15s检查后关闭服务；这只是补充，不能阻止平台重启费用。
+
+独立controller设计仅拥有两app的revision read/deactivate动作与私密控制
+Blob读取，不能activate、start任意job、listSecrets或修改app。每10min、
+timeout15s/retry0；postcall每小时timeout30s/retry0，31日最坏24.8h，
+另计有限bootstrap，保留worker30h余量。尚未声称controller实际部署/停用
+验收完成。调度失败需立即人工停用revision；运行小时不是恶意流量账单硬cap。
+关闭app不消除PE/LB/IP/DNS固定费用。
+
+RSA3072-OAEP/SHA256 + AES256-GCM一次性密文绑定UUID和15minTTL。
+私钥只在private Blob，临时写权/输入按目的回收。Storage7日soft-delete
+保留可恢复残余，删除不是物理清除/cryptographic shredding；不关闭治理
+保留或purge protection。Operator密码仅DPAPI CurrentUser私密文件，
+hash/token在进程内生成；不经命令行或日志传入。
 
 ## 本地无供应商演练
 
