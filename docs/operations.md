@@ -58,7 +58,39 @@ RSA3072-OAEP/SHA256 + AES256-GCM一次性密文绑定UUID和15minTTL。
 保留或purge protection。Operator密码仅DPAPI CurrentUser私密文件，
 hash/token在进程内生成；不经命令行或日志传入。
 
-## 本地无供应商演练
+## 30秒期限只读调查（2026-10-11）
+
+用户选择保持应用停用、调查但不提交支持工单。本轮没有启动job、激活shell、
+创建schedule/window，也没有修改20min/30s/26min、权限或网络。
+
+| 核对项 | 已证实事实 | 尚不能得出的结论 |
+|---|---|---|
+| 期限合同 | [Azure Jobs文档](https://learn.microsoft.com/azure/container-apps/jobs#advanced-job-configuration)定义为等待replica完成的最大秒数；[REST2025-01-01](https://learn.microsoft.com/en-us/rest/api/resource-manager/containerapps/jobs/get?view=rest-resource-manager-containerapps-2025-01-01)称replica允许运行的最大秒数 | 两者未明确从ARM请求、execution start、Pod创建或主容器启动哪一时刻计时，也未保证只计算Node进程时间 |
+| 实际配置 | 保留的部署参数只读回查：Manual、timeout30、retry0、parallelism1、completionCount1；执行快照只有一个业务container，initContainers空，node直接运行controller.cjs | 未发现completionCount超过parallelism、额外业务container或应用重试配置错误；不能据此推断平台注入容器/Pod状态 |
+| 时间线 | execution start14:53:19UTC；Pulled14:53:29.325；Started14:53:42.888；主进程exit0于14:53:45.272；DeletedPod14:53:49；DeadlineExceeded14:53:51 | Started至exit约2.383s、start至Started约23.888s、exit至deadline约5.728s是事件时间差，不是平台内部timer/计费秒数 |
+| 完成状态 | 两项MI ARM deactivate均Succeeded；主容器exit0；execution Failed | exit0与业务动作成功不等于replica/Pod已终态成功或jobCompleted。现有流中没有捕获JobCompleted，不能说该事件在平台从未出现 |
+| 退出路径 | main等待stopOutsideWindows；它等待两app的所有停用Promise。成功打印completed后自然退出，失败设置exitCode1；没有业务循环、setInterval或成功路径强制exit | 这次平台记录exit0，未证实Node挂住；不能靠强制process.exit(0)修复或将未知改成成功 |
+
+Azure Jobs文档说明Pod可能含平台sidecar（例如Envoy），并保证主容器启动前其
+ready；这解释了不能把单一业务container配置视为底层只有一个容器，但
+**不证明本次sidecar阻塞完成**。作为语义对照，
+[Kubernetes Jobs文档](https://kubernetes.io/docs/concepts/workloads/controllers/job/#terminal-job-conditions)
+区分容器退出、Pod终态与Job终态；托管ACA底层版本、activeDeadline映射、
+sidecar退出/Pod conditions及控制器reconcile时序没有可读证据，不能直接套用
+Kubernetes机制宣称根因。
+
+结论仅到：本次记录在execution开始约32秒报期限失败，而Node仅运行约2.4秒；
+**30秒整体执行没有验收，期限起算和exit0后为何未及时完成仍未知**。
+6.64秒成功拉取不是image pull failure；缩镜像后失败也不能证明容量、策略、
+网络或权限有问题。此前AppLens403及日志表不可用边界保留，不重复相同拒绝。
+
+已更正私密ledger：30秒是配置值而非计费/worker硬上界，记录约32秒平台事件
+区间与包括shell启停核验的操作区间；实际费用和所有jobs仍待总账核对。
+最小下一步是保持停用并保留现有证据；如获准的只读诊断能提供Pod完整容器终态、
+Job conditions和timer起算，再对照此时间线。若不可取得，就明确无法确认，
+不新增执行或工单，也不自动采用未批准的60s/40min候选。
+
+## 本地无供应商演练步骤
 
 1. 按[README安装步骤](../README.md#本地离线业务演练)生成本地私密配置、
    构建并启动；不要覆盖旧配置。

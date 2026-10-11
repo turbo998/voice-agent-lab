@@ -2,6 +2,16 @@
 
 Status: Partial deployment (slim controller proof failed deadline; runtime blocked)
 
+User explicitly chose keep apps inactive and investigate read-only, without
+support ticket. No job/start/activation/schedule/window or topology/permission/
+cadence/timeout/margin change is authorized by this investigation. Retained
+deployment inputs read back Manual30/retry0/parallelism1/completion1. Official
+Jobs and REST docs do not specify the exact lifecycle timer starting point.
+Container exit0 is not proof of replica/Job completion; platform Pod conditions,
+injected-container lifecycle and timer mapping remain unknown. See existing
+operations runbook for cited facts and bounded next evidence; no platform
+root cause or parameter fix claimed. Offline four controller/window tests pass.
+
 2026-10-11 dedicated image finite proof executed once: whole executionFailed.
 Start14:53:19UTC; pull6.64s/56,623,104bytes; container start14:53:42.888,
 exit0 at14:53:45.272; platformDeadlineExceeded14:53:51. Both exact app

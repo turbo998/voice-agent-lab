@@ -72,6 +72,12 @@ Storage/KVDisabled。未创建20分钟schedule，未开window或runtime。
 实际账单未到；不能只以2.4秒业务进程计worker用量。所有有限job、
 bootstrap、诊断/重试与恢复均须纳入30h/月台账，预算告警不构成硬cap。
 
+后续用户选择保持停用、只读调查且不提交工单。只读回查实际部署参数
+Manual30/retry0/parallelism1/completion1无矛盾；官方文档未定义精确timer
+起算点，平台Pod/注入容器终态及Job conditions未取得。现有exit0后
+DeadlineExceeded不能确认sidecar或控制器延迟为根因，不再自动调参/试跑。
+引用、退出路径及未知见[期限调查runbook](operations.md#30秒期限只读调查2026-10-11)。
+
 ## 仍需完成
 
 已生成并编译固定 AVM Bicep，增加容器与离线 CI/可选镜像发布定义；
