@@ -72,7 +72,7 @@ module app 'br/public:avm/res/app/container-app:0.23.0' = [for kind in ['retell'
       image: verifiedImage
       command: ['node']
       args: [kind == 'retell' ? 'dist/server/apps/retell-demo/server/index.js' : 'dist/server/apps/gpt-live/server/index.js']
-      resources: { cpu: json('0.25'), memory: '0.5Gi' }
+      resources: { cpu: '0.25', memory: '0.5Gi' }
       env: concat(commonEnv, [
         { name: 'APP_ORIGIN', value: kind == 'retell' ? operatorOrigin : liveOrigin }
         { name: 'OPERATOR_APP_URL', value: operatorOrigin }
@@ -128,7 +128,7 @@ module worker 'br/public:avm/res/app/job:0.7.2' = {
       image: verifiedImage
       command: ['node']
       args: ['dist/server/apps/retell-demo/server/worker.js']
-      resources: { cpu: json('0.25'), memory: '0.5Gi' }
+      resources: { cpu: '0.25', memory: '0.5Gi' }
       env: concat(commonEnv, [{ name: 'APP_ORIGIN', value: operatorOrigin }])
     }]
     enableTelemetry: false

@@ -1,6 +1,6 @@
 # Voice Agent Lab deployment plan
 
-Status: Preparing one-time bootstrap and runtime stop controls (no runtime)
+Status: Preparing fresh bootstrap/control image after bounded transport failure
 
 ## Approved bootstrap/control preparation
 
@@ -15,6 +15,88 @@ explicit failed manifest and require operator intervention, never success fallba
 Cleanup job/input/temporary grants/identity after successful verification; no app
 deployment before cleanup proof. Use existing verified image only after new source
 has actually built/published. Finite execution timeout120s/retry0/max1.
+Actual image source059aed96d9c3e32efe6081a62b84c8fcc3dd75ea, successful run38097835318,
+anonymous manifest200, digest4e3d2dcd771597216ca5c950980048b471216432c03424c70a41f664decefb55.
+This image has bootstrap code, not subsequent uncommitted controller code.
+Storage soft-delete is7days: removal of the live key blob is NOT physical erasure;
+recoverable residual stays behind private Storage/RBAC until retention expires.
+Do not disable retention/purge protection or claim cryptographic shredding.
+The envelope expires15min and temporary write identity/grants are revoked.
+Initial combined bootstrap what-if had4Create/23Ignore but
+NestedDeploymentShortCircuited explicitly skipped the job because new MI/reference
+inputs were unknown. This is NOT complete validation and was NOT deployed.
+Split identity/grants-only stage, then feed actual known MI/endpoint values to
+job-only AVM stage and require concrete JobCreate preview without diagnostics.
+No protected Storage/KV updates; no bootstrap invocation before job validation.
+Split templates compile; identity/grant-only parameters contain no secrets.
+
+### Section 7: Bootstrap identity-only validation proof
+
+2026-10-11 split Bicep compilation, Provider group validation and what-if
+voice-lab-bootstrap-id-preflight succeeded with4Create/23Ignore/0diagnostics,
+no Modify/Delete. Exact creations: one temporary MI plus three scoped grants
+Blob/Queue Contributor on existing lab Storage and Secrets Officer on lab KV.
+Both protected resources Ignore; no job or secret input. Initial diagnostic
+counter treated null as an array item; corrected interpretation on saved output
+without repeated network validation. No skipped resources in corrected preview.
+Temporary grants must be checked live and revoked after configuration, not left
+as app/runtime permission. Inherited definitions remain unknown.
+
+Identity-only deployment voice-lab-bootstrap-id-20261011 Succeeded. Initial RG-only
+role query returned[] because grants are on child resources, not the RG itself;
+assignee-filtered `--all` actual query confirms exact three ServicePrincipal roles
+on the expected protected resources. These are not data-plane propagation proof.
+Concrete job inputs now use actual MI resourceId/clientId and known private-service
+hostnames; no new-identity reference() expressions and no credential loaded.
+Concrete job Provider validation caught an actual AVM typed input mismatch:
+container.resources.cpu must be string '0.25', not json float. Fixed job and
+matching pending app/worker inputs, preserving actual0.25CPU intent. No job
+deployment executed on that failed validation.
+
+### Section 7: Concrete private bootstrap job validation proof
+
+2026-10-11 corrected AVM string CPU compiles; Provider validation and what-if
+voice-lab-bootstrap-job-preflight Succeeded with1Create/24Ignore/0diagnostics.
+The creation is actual Microsoft.App/jobs, not a skipped nested placeholder.
+New MI exists and all three exact scoped roles read back; actual job will prove
+propagation/data-plane connectivity. No protected foundation modifications.
+Manual/max1/retry0/120s/.25CPU/.5Gi; encrypted input absent in init mode.
+Actual anonymous verified source059aed9 image; subsequent IaC corrections are
+not claimed to be image source. No app endpoint/model/Retell calls involved.
+
+Job deployment voice-lab-bootstrap-job-20261011 Succeeded; actual Manual/retry0/
+120s/.25CPU/.5Gi read back. Init execution created its ready manifest/key and
+returned public encryption key only; authenticated Blob/Queue create/properties
+and KV metadata-list plus private DNS checks all passed before that event.
+CLI json log format wrapped an unescaped `F {event...}` frame; extracted only
+known public ready event into private metadata. This is not credential output.
+First local env-file attempt failed because .private/lab.env did not exist,
+before encryption/provider calls. Replaced with generated operator password,
+CurrentUser DPAPI encrypted private file and in-process env only; generated
+scrypt hash/token and authenticated envelope ready. No plaintext credentials
+written to local env/file/argv/log. Encrypted commit changes only job phase/input,
+will be Provider-validated and then executed max once on ready leased manifest.
+
+### Section 7: Encrypted commit validation proof
+
+2026-10-11 Provider group validation and what-if Succeeded,1Modify/24Ignore/
+0diagnostics. Sole changed resource Microsoft.App/jobs/job-vly4b73c-bootstrap;
+sole delta path properties.template.containers (phase and ciphertext).
+Actual preview retains Manual/120s/retry0/.25CPU; all protected resources ignored.
+No plaintext credentials in parameters or logs; envelope uses existing15min
+ready binding, crypto regression passed. Only job update+one commit execution
+allowed, no app/model/provider call. Inputs and private raw outputs not published.
+
+Actual commit create failed ConnectionResetError10054; named deployment returned
+DeploymentNotFound twice in explicit original RG. No commit execution started;
+init execution Succeeded. Old binding expired/not extended/reused. Temporary job,
+three exact grants and temporary MI deleted; actual count queries all0. Initial
+cleanup JMESPath length(@) quoting failed on Windows; JSON-count checks then proved
+cleanup, never relied on the success-shaped final shell line.
+Transient old key soft-deleted residual may remain private until7day retention;
+new init uses a newUUID/key/TTL, not old material. New bootstrap will additionally
+prove BlobCAS and create blocked control document; commits return only secret name/
+version metadata. No values printed and no credential replacement by guessed config.
 
 Runtime controls: independent scheduled job every5minutes with read/deactivate-only
 permissions on the two lab apps, no job start/listSecrets/write. Conservative

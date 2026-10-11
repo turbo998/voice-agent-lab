@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { randomBytes, scryptSync } from "node:crypto";
 import { z } from "zod";
 import { encryptBootstrap } from "../integrations/private/bootstrap-crypto.js";
 
@@ -12,14 +13,16 @@ const publicInput = z.object({
   publicKey: z.string().max(2048),
 }).strict().parse(JSON.parse(await readFile(inputPath, "utf8")));
 const runtime = z.object({
-  TOKEN_SECRET: z.string().min(32),
-  OPERATOR_PASSWORD_HASH: z.string().min(32),
+  BOOTSTRAP_OPERATOR_PASSWORD: z.string().min(32).max(512),
   RETELL_API_KEY: z.string().min(16),
   RETELL_WEBHOOK_SIGNING_KEY: z.string().min(16),
 }).parse(process.env);
 const envelope = encryptBootstrap({
-  "token-secret": runtime.TOKEN_SECRET,
-  "operator-password-hash": runtime.OPERATOR_PASSWORD_HASH,
+  "token-secret": randomBytes(48).toString("hex"),
+  "operator-password-hash": (() => {
+    const salt = randomBytes(16).toString("hex");
+    return `scrypt$${salt}$${scryptSync(runtime.BOOTSTRAP_OPERATOR_PASSWORD, salt, 64).toString("hex")}`;
+  })(),
   "retell-api-key": runtime.RETELL_API_KEY,
   "retell-webhook-signing-key": runtime.RETELL_WEBHOOK_SIGNING_KEY,
 }, publicInput.publicKey, {

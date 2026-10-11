@@ -5,6 +5,7 @@ import { lookup } from "node:dns/promises";
 import { z } from "zod";
 import { azureCredential } from "../azure/credential.js";
 import { decryptBootstrap, generateBootstrapKeys } from "./bootstrap-crypto.js";
+import { initialControl } from "./operating-windows.js";
 
 async function main(): Promise<void> {
 const config = z.object({
@@ -75,6 +76,18 @@ async function writeManifest(status: string, conditions: { leaseId?: string; ifN
 if (config.BOOTSTRAP_PHASE === "init") {
   await container.createIfNotExists();
   await blobService.getContainerClient("lab-private").createIfNotExists();
+  const controlContainer = blobService.getContainerClient("lab-control");
+  await controlContainer.createIfNotExists();
+  const control = controlContainer.getBlockBlobClient("operating-windows.json");
+  if (!(await control.exists())) {
+    const body = JSON.stringify(initialControl());
+    await control.upload(body, Buffer.byteLength(body), { conditions: { ifNoneMatch: "*" } });
+  }
+  const probe = controlContainer.getBlockBlobClient(`${binding.bootstrapId}.probe`);
+  await probe.uploadData(Buffer.from("synthetic-private-cas-probe"), { conditions: { ifNoneMatch: "*" } });
+  const etag = (await probe.getProperties()).etag;
+  await probe.uploadData(Buffer.from("synthetic-private-cas-updated"), { conditions: { ifMatch: etag } });
+  await probe.delete();
   await queue.createIfNotExists();
   await queue.getProperties();
   // Metadata-only KV request: no secret values are collected or emitted.
@@ -106,13 +119,31 @@ if (config.BOOTSTRAP_PHASE === "init") {
     const values = decryptBootstrap(JSON.parse(config.BOOTSTRAP_ENVELOPE), privateKey, binding);
     await writeManifest("applying", { leaseId: lease.leaseId });
     claimed = true;
+    const versions: { name: string; version: string }[] = [];
     for (const [name, value] of Object.entries(values)) {
       if (Date.now() >= binding.expiresAt) throw new Error("BOOTSTRAP_EXPIRED_DURING_WRITE");
       await lease.renewLease();
       await (await vaultRequest(`secrets/${name}`, "PUT", { value })).body?.cancel();
+      const metadata = z.object({
+        value: z.array(z.object({ id: z.url() })).max(25),
+        nextLink: z.string().nullable().optional(),
+      }).parse(await (await vaultRequest(`secrets/${name}/versions`)).json());
+      if (metadata.nextLink || metadata.value.length !== 1) {
+        throw new Error("BOOTSTRAP_SECRET_VERSION_UNCONFIRMED");
+      }
+      const id = new URL(metadata.value[0]!.id);
+      const segments = id.pathname.split("/");
+      const version = segments[3];
+      if (id.origin !== vaultUrl.origin || segments[1] !== "secrets" ||
+          segments[2] !== name || !version || !/^[a-f0-9]{32}$/.test(version)) {
+        throw new Error("BOOTSTRAP_SECRET_METADATA_INVALID");
+      }
+      versions.push({ name, version });
     }
     await writeManifest("complete", { leaseId: lease.leaseId });
-    console.log(JSON.stringify({ event: "bootstrap_complete", secretCount: Object.keys(values).length }));
+    console.log(JSON.stringify({
+      event: "bootstrap_complete", secretCount: Object.keys(values).length, versions,
+    }));
   } catch (error) {
     if (claimed) await writeManifest("failed_requires_operator", { leaseId: lease.leaseId });
     throw error;
