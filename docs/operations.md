@@ -24,13 +24,13 @@
 本地可用操作员限定的受保护输入与 DPAPI 解密，将两个 Retell字段仅设置在
 当前 PowerShell进程，然后由其启动的Node进程继承。不得把值拼接到 argv，
 写入明文.env，或输出解密内容。云端候选是Key Vault secret reference，
-由MI读取；尚未完成私网bootstrap，不能声称密钥已经注入Azure。
+由MI读取；四个目的secret已写入并通过实际运行身份引用验收，不输出值。
 
 Storage/KV实际公网Disabled，不能为了初始化而开启。普通电脑尚无
 获准的直连私网路径；已批准的VNet内有限job完成第一次DNS/MI
-Blob/Queue与KV metadata验证。首次加密commit管理面网络重置，
-确定部署名两次DeploymentNotFound，未启动commit；临时job/3授权/MI
-真实清理计数均0。不能因此声称secret已写入；用新binding恢复，不延长旧TTL。
+Blob/Queue与KV metadata验证。旧commit管理面重置后用全新绑定恢复，
+实际init/commit Succeeded，四目的版本元数据和runtime引用通过。
+临时job/3授权/MI真实清理计数均0；旧过期绑定未复用或延长。
 Bootstrap临时写权必须限定资源、独立于常规读取身份，并在完成后回收。
 
 ## 受限运行窗口
@@ -43,8 +43,13 @@ Bootstrap临时写权必须限定资源、独立于常规读取身份，并在�
 独立controller设计仅拥有两app的revision read/deactivate动作与私密控制
 Blob读取，不能activate、start任意job、listSecrets或修改app。每20min、
 timeout30s/retry0；postcall每小时timeout30s/retry0，31日最坏24.8h，
-另计有限bootstrap，保留worker30h余量。尚未声称controller实际部署/停用
-验收完成。调度失败需立即人工停用revision；运行小时不是恶意流量账单硬cap。
+另计所有bootstrap/diagnostic/manual/retry/其他job，保留worker30h余量。
+实际controller MI两app停用动作Succeeded且进程exit0，但30秒job整体
+DeadlineExceeded；调度尚未验收。专用bundle镜像已通过Linux入口检查并发布，
+仅打包控制器依赖，不包含业务UI/provider工具。先单次coldproof整体成功，
+再真实scheduled触发成功，才可开window。失败须立即人工停用revision，
+删除有限proof/失败schedule，不增加timeout或无限重试。
+运行小时不是恶意流量账单硬cap。
 关闭app不消除PE/LB/IP/DNS固定费用。
 
 RSA3072-OAEP/SHA256 + AES256-GCM一次性密文绑定UUID和15minTTL。

@@ -1,6 +1,42 @@
 # Voice Agent Lab deployment plan
 
-Status: Approved (diagnosed controller deadline; scoped image reduction preparation)
+Status: Partial deployment (slim controller proof failed deadline; runtime blocked)
+
+2026-10-11 dedicated image finite proof executed once: whole executionFailed.
+Start14:53:19UTC; pull6.64s/56,623,104bytes; container start14:53:42.888,
+exit0 at14:53:45.272; platformDeadlineExceeded14:53:51. Both exact app
+deactivate activitiesSucceeded14:53:45, caller verified controller principal.
+Image shrinking reduced bytes but did not fix platform lifecycle/completion
+overhead. Do not deploy a recurring schedule or retry/change timeout/cadence.
+Both shells inactive/actual0replicas after deactivation propagation. The finite
+proof job deleted, actualjobinventoryempty. Storage/KVstillDisabled.
+Controlblockedtrue/windows0 retained; no runtime/provider/window launched.
+No application endpoint. Approval/platform investigation needed for next path.
+
+Current deployment scope supersedes historical controller proposals below:
+one distinct Manual30s/retry0 job using the newly published controller digest,
+existing private environment/controller MI and exact two app grants. No app,
+identity, RBAC, Storage/KV, network or recurring schedule changes in this stage.
+Only harmless shells may be activated for the proof; failure triggers exact
+operator safety deactivation and replica verification. Delete the finite job.
+
+### Section 7: Dedicated controller validation proof
+
+Local bundled entrypoint emitted the fixed missing-configuration failure and
+exit1; typecheck/public scan passed. First Linux CI build failed because esbuild's
+Linux ELF executable was incorrectly invoked with Node. Portable esbuild JS API
+fix committed separately; corrected CI Linux container build and fail-closed
+entrypoint passed. Run38147768932 offline/publishSucceeded for sourceb223a3d.
+Controller digest74f22c95...47d942d anonymous manifest200, compressed layers
+56,795,606bytes; runtime digest99139783...dfb650e anonymous200.
+Actual `az bicep build`, `az deployment group validate --validation-level Provider`
+and `az deployment group what-if --validation-level Provider` passed using the
+concrete finite Manual job parameters:1Create/28Ignore/0diagnostics.
+Only the new finite controller job is created; no protected resource update.
+Initial deployment transportConnectionReset; exact deployment and job not found,
+second exact deployment read alsoNotFound. One compiled-template no-wait retry
+accepted correlation6e23e6a6-c757-49eb-b4d3-1eda5be9122e andSucceeded.
+Actual execution/job lifecycle proof above is failed, not schedule acceptance.
 
 Actual30s proof execution Failed, but environment events now prove image pull
 4.29s, container start~16.5s later, process exit0~2.5s after start, then platform
@@ -24,11 +60,11 @@ sole finite Manual30s/retry0 job creation. Two app scopes already exist and gran
 confirmed; no identity/role/Storage/KV/app change in deployment. Harmless shell
 activation only for user-approved deactivation test, always safety-stop on error.
 
-First proof is Manual30s/retry0, distinct finite name, same controller MI/image/
+First proof is Manual30s/retry0, distinct finite name, same controller MI/
 private path and two app grants. No failed recurring schedule left during test.
 Successful proof permits separate Schedule*/20minute validation/deployment.
-26minute lease source regression passed; not yet in a newly published image.
-Current old image is acceptable only for blocked-shell stop (no lease allowed).
+26minute lease source regression passed; updated runtime image must be verified
+before any future lease is allowed.
 
 User explicitly selected20minute checks,30second timeout and26minute shutdown
 reservation margin. Replace previous15s/10minute cadence; retain worker30h/month,
@@ -45,12 +81,8 @@ logs found; failure cause unconfirmed. Operator safety deactivated both exact
 shell revisions, actual --all inactive/replicas0. Failed scheduled job deleted,
 absence verified. Controller grants exactly control Reader plus two app scopes.
 No business runtime, ingress, secrets or operating windows.
-Prepare one Manual120s/retry0 controller proof job with the same approved MI/code.
-This is a bounded permission-path test, not an enlarged recurring schedule.
-Only the two harmless shell revisions may be activated for this stop acceptance,
-with operator safety deactivation in finally if the proof fails. Delete finite
-proof job after acceptance. Schedule timeout/cadence tradeoff remains a separate
-decision within shared30h limit; do not enable real app runtime before that proof.
+The earlier proposed Manual120s proof was NOT executed and is superseded by
+the user's approved30s/20minute/26minute decision. No120s job is permitted here.
 
 ### Section 7: Approved shell/controller validation proof
 

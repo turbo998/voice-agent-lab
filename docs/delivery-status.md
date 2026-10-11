@@ -51,8 +51,26 @@ GPT Live 云界面提供运营审批入口，创建会话后携带服务端业�
 用户已批准每20分钟/timeout30s及26分钟预留余量，31日控制器+每小时30秒
 worker合计24.8h，其他bootstrap/diagnostics仍计入30h总量。实际事件显示
 30秒proof拉取4.29s、创建/启动延迟约16.5s、进程约2.5s后exit0，随后deadline
-失败。正在构建仅控制器依赖的专用镜像以缩小拉取成本；不加超时、不开窗口，
-新镜像还需真实coldstart与schedule验收，不能保证缩小镜像就解决平台延迟。
+失败。专用镜像已发布并执行单次真实coldproof，**仍Failed/DeadlineExceeded**。
+Azure实际拉取56,623,104bytes/6.64s；execution14:53:19UTC开始，
+container14:53:42.888启动、14:53:45.272退出0、14:53:51报deadline。
+两app实际MI停用均Succeeded，但不足以证明整个job成功。
+有限proof已删除、job inventory空，两shellinactive/实际0副本，
+Storage/KVDisabled。未创建20分钟schedule，未开window或runtime。
+不继续换timeout/cadence/重复试跑；30秒平台生命周期门禁当前不可通过。
+
+镜像对应真实source `b223a3de5b0a61c902c2391842c5d22b763aee8f`，
+[offline/publish成功run](https://github.com/turbo998/voice-agent-lab/actions/runs/38147768932)
+已验证Linux镜像入口fail-closed与匿名manifest200：
+
+| 用途 | 不可变镜像 |
+|---|---|
+| controller（无业务UI/provider工具） | `ghcr.io/turbo998/voice-agent-lab@sha256:74f22c95d83e6423245ccbe0deb3b7c53a9ba50596d808f847ea060cf47d942d` |
+| runtime（26分钟margin，尚未上线） | `ghcr.io/turbo998/voice-agent-lab@sha256:99139783a645e67e6646ce8d39593ef036b0d1680c46ae8c2e32bfbd6dfb650e` |
+
+后续证据commit不是以上镜像源码。此proof观察到约32秒平台生命周期，
+实际账单未到；不能只以2.4秒业务进程计worker用量。所有有限job、
+bootstrap、诊断/重试与恢复均须纳入30h/月台账，预算告警不构成硬cap。
 
 ## 仍需完成
 
