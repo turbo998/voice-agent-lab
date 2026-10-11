@@ -41,6 +41,9 @@ GPT Live 云界面提供运营审批入口，创建会话后携带服务端业�
 | 私网 bootstrap | 新 binding 的 init 与一次性 leased commit 均 Succeeded；四项 KV secret 版本元数据确认，Blob CAS/私网 MI 访问通过 | 应用已启动或真实供应商调用通过 |
 | 实际 ACA secret 引用 | 四项 versioned KV 引用已解析，有限 probe 返回 count4、容器 exit0；execution 状态仍 Failed，原因尚未归因 | 可以把容器输出冒充整个 execution Succeeded |
 | 临时配置清理 | 两个临时 job 名均不存在；三项具体临时授权及 MI 实际计数均0；Storage/KV仍 Disabled | 删除 live key 等同物理擦除；Storage软删除保留7天 |
+| 运行时私网权限 | 有限 execution Succeeded：4KV引用/control读/BlobCAS/Queue；control写与bootstrap读均403 AuthorizationPermissionMismatch | 控制器已经具备实际停用权限 |
+| 窗口管理 | 私网 CAS block execution Succeeded，blocked=true/windows0；临时管理及access job/写授权/MI已清理确认0 | 已开放窗口或应用活跃 |
+| 独立停用预检 | zero-replica/no-ingress shell Provider拒绝：maxReplicas必须大于0；未创建app | 可以擅自改为max1或RG-wide停用权限 |
 
 ## 仍需完成
 
@@ -78,16 +81,16 @@ Policy/deny。无法读取的继承策略仍是未知，必须以获授权的验
 
 ## 实际镜像来源
 
-[成功构建与发布运行](https://github.com/turbo998/voice-agent-lab/actions/runs/38107674282)
-对应源码 `f7f108da5f8e8185cac4525f10367614e45b92df`，而非后续代码或文档提交。
+[成功构建与发布运行](https://github.com/turbo998/voice-agent-lab/actions/runs/38109652735)
+对应源码 `874db2b267aa0cdab2bbb538db68f75dd50054c2`，而非后续代码或文档提交。
 
 ```text
-ghcr.io/turbo998/voice-agent-lab@sha256:fcd886806e1f7bf61dafdbe1ea27b10727bb8c5b152bdba5675df9bb4eca1efb
+ghcr.io/turbo998/voice-agent-lab@sha256:69f12d7825c7585b285f936211fbc7f8720cd4f7daa2e7679fcf3c380f0d04e4
 ```
 
 匿名 registry manifest 返回 HTTP200；没有通过假 digest、示例镜像或仓库
-CI定义替代发布验收。该镜像已运行私网bootstrap；尚无应用启动验收。
-后续运行窗口的服务入口接线不在该已发布镜像中。
+CI定义替代发布验收。该镜像已运行私网权限与CAS控制任务；尚无应用启动验收。
+包含运行窗口服务入口接线；后续helper IaC不是该镜像源码。
 此前 source `0643969`、`658c241` 的镜像/运行只是旧阶段，不代表现在的应用修改。
 
 阶段 draft PR 用于保存可继续的代码，不是部署批准或最终完成标记。

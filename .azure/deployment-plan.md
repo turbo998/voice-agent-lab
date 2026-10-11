@@ -1,6 +1,101 @@
 # Voice Agent Lab deployment plan
 
-Status: Partially Deployed (narrow control identity added; no app runtime)
+Status: Blocked (zero-replica shell Provider rejection; private foundation/secrets deployed)
+
+Actual Provider shell validation failed ContainerAppInvalidScaleSpec:
+maxReplicas must be greater than0. No app deployment executed. Do not use this
+failed stage as app approval. Bounded min0/max1/no-ingress shell alternative
+requires explicit disposition; no broad RG controller role or window enabled.
+Temporary access/window jobs, writer grant and writer MI cleaned, actual0 each.
+Durable control remains last verified blocked=true/windows0.
+
+Corrected exact runtime access execution Succeeded: four references resolved,
+normal control read, private Blob CAS/Queue metadata passed; control-container
+create and bootstrap-container read both403 AuthorizationPermissionMismatch.
+CAS block operation Succeeded withblocked=true/windows0. No permission relaxation.
+Temporary operating job/writer and access job still exist for current operations;
+not the previously deleted bootstrap identity/grants.
+
+## Independent stop acceptance before application enablement
+
+Prepare the two exact future app resources as zero-replica, no-ingress shells
+using the verified image, no business runtime/secret references/voice calls.
+No HTTP/scaling trigger and min/max0 means no workload activation. This permits
+app-scoped read/deactivate grants without RG-wide access. Deploy the existing
+15second/10minute controller, then confirm it deactivates shell revisions while
+blocked=true. If zero-replica shells/provider limitations reject this, preserve
+blocked state and report; do not launch apps or increase recurring worker costs.
+Only after actual stop/RBAC/schedule proof, reserve time and update shells to
+the real HTTPS application configuration under a separately validated stage.
+
+Diagnostic execution reached control_write_denial and returned DENIAL_UNCONFIRMED.
+Positive runtime references/control read/BlobCAS/Queue metadata passed before
+that stage. Previous probe used a deliberately mismatched ETag; a conditional
+failure cannot establish missing write permission. Replace with a unique
+synthetic probe blob create (never the ledger), requiring403; delete probe if
+unexpectedly permitted, fail explicitly and do not enable apps. Preserve numeric
+denial status before wrapping errors. This tests exact permission rather than
+the unrelated ETag precondition; no role changes or provider calls.
+Require403 plus AuthorizationPermissionMismatch (not generic403/network denial),
+using the actual runtime MI and already successfully read control container.
+
+### Section 7: Exact permission-denial probe validation proof
+
+Updated compiled template and actual Provider validation/what-if Succeeded:
+1Modify/28Ignore/0diagnostics. Sole finite probe container command update,
+same runtime MI and concrete private endpoints/image, unchanged120s/retry0.
+No ledger write, permission/network change, app or paid call.
+
+Both finite jobs deployed Succeeded; blocked-control execution Succeeded and
+confirmed blocked=true/reservationCount0. Runtime access execution Failed with
+generic ACCESS_UNCONFIRMED; no claimed successful access or denial proof.
+Add stage plus numeric HTTP status and a fixed code allowlist only to this same
+finite probe; no raw provider messages/values. Revalidate sole container update,
+then one diagnostic execution. No permission/network relaxation or app launch.
+
+### Section 7: Diagnostic probe validation proof
+
+Compile and public scan147 passed. Actual Provider validation and what-if
+Succeeded1Modify/28Ignore/0diagnostics, sole properties.template.containers
+update on the existing access job. No role, network, timeout, retry or identity
+change. Exactly one diagnostic execution authorized by this validated stage.
+
+Temporary control-writer identity deployed Succeeded. Next concrete finite stages
+are two Manual120s/retry0/max1 jobs: runtime MI positive/negative access probe
+and temporary control MI block operation. Both use actual source874db2b digest,
+existing private environment and known identity IDs; no reference to new unknown
+identity outputs inside job deployments. No reservation/activation yet.
+
+### Section 7: Concrete finite helper job validation proof
+
+2026-10-11 both compiled templates, actual Provider validations and what-if
+Succeeded independently, each1Create/27Ignore/0diagnostics. Exact creations
+are the respective Manual120s/retry0/max1 Microsoft.App/jobs. No protected
+foundation modifications, no app and no roles. Actual digest/source mapping
+verified, temporary writer stage Succeeded. Access probe requires explicit403
+for control write and bootstrap read;412 or other failure is not denial proof.
+
+## Approved bounded operating helper preparation
+
+Add a temporary operator MI with Contributor only on lab-control, no KV, Queue,
+app or management-plane permissions. Finite VNet manual job updates operating
+reservations via strict CAS and emits only timestamps/counts. No provider calls.
+Add a runtime-MI finite probe of Blob CAS, Queue, control read and exact versioned
+KV references; require control write and bootstrap-container read to be denied.
+120second/retry0/manual/max1 tests count toward the shared30h worker envelope.
+Cleanup temporary operator job/grant/MI after reservations/blocking are verified.
+New image run38109652735 completed offline/publish Succeeded, exact source
+874db2b267aa0cdab2bbb538db68f75dd50054c2, anonymous manifest200, digest
+69f12d7825c7585b285f936211fbc7f8720cd4f7daa2e7679fcf3c380f0d04e4.
+Subsequent helper IaC is not that image source. Identity stage compiles; now
+validate only temporary MI plus one lab-control Contributor grant.
+
+### Section 7: Temporary operating identity validation proof
+
+2026-10-11 compiled template and actual Provider validate/what-if Succeeded
+2Create/26Ignore/0diagnostics: one temporary MI and one container-scoped
+lab-control Contributor. No app, job, protected-resource modify/delete or KV/
+Queue/management-plane grant. Cleanup required after finite operations.
 
 ## Approved runtime control permission preparation
 
