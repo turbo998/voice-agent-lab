@@ -3,6 +3,7 @@ targetScope = 'resourceGroup'
 param name string
 param location string
 param tags object
+@maxLength(130)
 param image string
 param environmentId string
 param identityId string
@@ -13,9 +14,10 @@ param vaultUri string
 param liveProviderEndpoint string
 param liveReasoningEndpoint string
 
-var verifiedImage = startsWith(image, 'ghcr.io/turbo998/voice-agent-lab@sha256:') && length(last(split(image, ':'))) == 64
-  ? image
-  : fail('A digest-pinned public Voice Agent Lab image is required.')
+var digest = last(split(image, ':'))
+var digestIsHex = empty(filter(range(0, length(digest)), i => !contains('0123456789abcdef', substring(digest, i, 1))))
+var imageIsValid = startsWith(image, 'ghcr.io/turbo998/voice-agent-lab@sha256:') && length(digest) == 64 && digestIsHex
+var verifiedImage = imageIsValid ? image : fail('A digest-pinned public Voice Agent Lab image is required.')
 
 resource environment 'Microsoft.App/managedEnvironments@2025-01-01' existing = {
   name: last(split(environmentId, '/'))

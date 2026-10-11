@@ -1,6 +1,29 @@
 # Voice Agent Lab deployment plan
 
-Status: Budget and private-network stages deployed (runtime/bootstrap not validated)
+Status: Preparing one-time bootstrap and runtime stop controls (no runtime)
+
+## Approved bootstrap/control preparation
+
+Implement a bounded finite job in the new private environment, dedicated temporary
+MI with Blob/Queue Contributor and KV Secrets Officer only on lab resources.
+Job init verifies private DNS/connectivity via authenticated Blob/Queue/KV metadata,
+creates private container/queue and expiring RSA key material. Commit is one-time,
+leased and expires15minutes; only authenticated ciphertext crosses management
+input, writes the four allowlisted KV secrets, destroys transient key material.
+Never log secret/environment/provider-response values. On partial write keep an
+explicit failed manifest and require operator intervention, never success fallback.
+Cleanup job/input/temporary grants/identity after successful verification; no app
+deployment before cleanup proof. Use existing verified image only after new source
+has actually built/published. Finite execution timeout120s/retry0/max1.
+
+Runtime controls: independent scheduled job every5minutes with read/deactivate-only
+permissions on the two lab apps, no job start/listSecrets/write. Conservative
+durable monthly operating leases include shutdown/check delay, each app100h,
+all workers30h; missing/expired/unreadable lease fails closed to revision deactivation.
+Do not resume/create an app without reserving its complete management-activation
+window including provisioning and controller delay. Request middleware and worker
+reservation enforce expired-window refusal but cannot replace revision deactivation.
+Model/Retell readiness stays false. Controller runtime cost counts in worker margin.
 
 ## Private-network actual result and next budget stage
 
