@@ -1,4 +1,26 @@
-# Voice Agent Lab
+# Voice Agent Lab · 企业级实时语音智能体售前方案、竞对分析与全栈实验室
+
+[![GitHub Pages Presales Portal](https://img.shields.io/badge/GitHub%20Pages-H5%20Presales%20%26%20Sandbox%20Portal-2563EB?style=for-the-badge)](https://turbo998.github.io/voice-agent-lab/)
+[![7-Card 4:5 Benchmark Report](https://img.shields.io/badge/Benchmark-7--Card%204%3A5%20Visual%20Deck-10B981?style=for-the-badge)](https://turbo998.github.io/voice-agent-lab/benchmark-cards.html)
+[![Live Azure S2S Companion](https://img.shields.io/badge/Azure%20Voice%20Live-gpt--live--1%20Demo-8B5CF6?style=for-the-badge)](https://gpt-live-demo-0922-qc.azurewebsites.net/)
+
+本仓库整合了**面向合作伙伴与政企/出海客户的实时语音智能体 (Voice Agent) 售前方案库、深度竞对打单卡、多引擎交互 H5 沙盒**，以及合成硬件品牌 **LumaNest** 的全栈参考实现（Retell AI + Azure AI Foundry + 双语坐席审批工作台）。
+
+## 🌐 在线演示门户与核心售前资产 (Presales & Engineering Hub)
+
+| 资产模块 | 在线访问 / 仓库路径 | 核心内容说明 |
+|---|---|---|
+| **H5 售前方案与多引擎交互总门户** | [**`https://turbo998.github.io/voice-agent-lab/`**](https://turbo998.github.io/voice-agent-lab/) (`site/index.html`) | 支持**简/繁/英三语切换**；涵盖 4 大高 ROI 场景、4 套参考架构蓝图、交互式选型决策器、竞对打单表、**Web Audio 多引擎实时语音沙盒（支持打断/噪音/安全越狱测试与中文坐席审批）** 及 **FinOps TCO 测算器** |
+| **7-Card (4:5) 模型基准评测报告** | [**`https://turbo998.github.io/voice-agent-lab/benchmark-cards.html`**](https://turbo998.github.io/voice-agent-lab/benchmark-cards.html) (`site/benchmark-cards.html`) | 遵循 7-Card 4:5 竖版评测规范：基于 Azure East US 2 实测 (`gpt-4.1-mini` / `gpt-4.1` / `gpt-5.4-mini` / `gpt-live-1`) 与 6 大客服场景确定性护栏数据 (`site/data/voice-agent-benchmark-report.json`) |
+| **业务场景与 ROI 白皮书** | [`docs/business-scenarios.md`](docs/business-scenarios.md) | 深度拆解智能硬件出海售后、快餐 Drive-Thru 点餐、金融车险报案 (FNOL)、医疗/IT 服务台 4 大场景痛点与 10 万通/月 TCO 收益模型 |
+| **三范式方案架构设计指南** | [`docs/solution-architecture.md`](docs/solution-architecture.md) | 对比 **Paradigm A (Azure Voice Live `gpt-live-1` 原生 S2S)**、**Paradigm B (Constellation 级联多模型路由)** 与 **Paradigm C (Retell AI + Azure Foundry 混合云)** 架构与状态机设计 |
+| **深度竞对分析与售前打单卡** | [`docs/competitive-analysis.md`](docs/competitive-analysis.md) | 全面剖析 **Sierra AI** ($10B Outcome 定价与 Constellation 架构)、**Retell AI**、**ElevenLabs (ElevenAgents)**、**Vapi / LiveKit** 的架构软肋、计费陷阱及微软 **Compete / Co-Sell** 话术 |
+| **Azure Speech 本地容器部署指南** | [`docs/speech-container-guide.md`](docs/speech-container-guide.md) | 针对金融/政企内网“音频不出域”场景的 STT/TTS Docker 容器部署、防火墙白名单、计量心跳与性能评测手册 |
+| **全域语音技术资产总目录** | [`docs/asset-catalog.md`](docs/asset-catalog.md) | 汇总 `turbo998/voice-agent-lab`、`turbo998/gpt-live-1-demo`、`turbo998/ai-gaming-lab` 与 Azure 实测环境资产 |
+
+---
+
+## 🧪 LumaNest 全栈语音工程实验室说明
 
 中国智能硬件品牌出海东南亚的浏览器语音实验室。原创合成品牌 **LumaNest**，
 覆盖售前咨询、订单查询、安全故障诊断、运营审批工单与同意后的回访计划。
