@@ -91,10 +91,10 @@
       <div class="section-header">
         <div>
           <div class="section-tag">SECTION 01 · BUSINESS SCENARIOS &amp; VALUE MATRIX</div>
-          <h2 class="section-title">四大高价值 Voice Agent 业务场景与 ROI 拆解</h2>
+          <h2 class="section-title">六大高价值 Voice Agent 业务场景与 ROI 拆解</h2>
         </div>
         <p class="section-subtitle">
-          从最具商业回报的“智能硬件出海售后”与“高噪快餐车道点餐”，到强监管“金融保险理赔报案”与“医疗/IT 服务台”，点击下方标签切换各行业痛点、推荐架构与量化收益。
+          从最具商业回报的“智能硬件出海售后”、“高噪快餐车道点餐”、“车企智能座舱救援”与“航旅/电商退改签 + PCI 语音门控”，到强监管“金融保险理赔报案”与“医疗/IT 服务台”，点击下方标签切换各行业痛点、推荐架构与量化收益。
         </p>
       </div>
 
@@ -103,6 +103,8 @@
         <button class="tab-btn scenario-tab-btn" type="button">S2 · 跨国餐饮快餐免下车点餐 (QSR)</button>
         <button class="tab-btn scenario-tab-btn" type="button">S3 · 银行保险理赔报案与合规外呼</button>
         <button class="tab-btn scenario-tab-btn" type="button">S4 · 医疗患者分诊与企业 IT 服务台</button>
+        <button class="tab-btn scenario-tab-btn" type="button">S5 · 车企智能座舱与紧急道路救援 (EV)</button>
+        <button class="tab-btn scenario-tab-btn" type="button">S6 · 航旅/电商退改签与 PCI 语音支付</button>
       </div>
 
       <div id="scenarioDetailPanel"></div>
@@ -161,6 +163,11 @@
           </div>
         </div>
         <div class="wizard-result" id="wizardOutputBox"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center;">
+          <button class="btn-secondary" id="exportBriefBtn" type="button" style="padding:8px 14px;font-size:12.5px;">📋 一键生成/复制客户定制架构与 BOM 方案书 (Markdown)</button>
+          <button class="btn-outline" id="downloadBriefBtn" type="button" style="padding:8px 14px;font-size:12.5px;">⬇️ 下载 `.md` 售前方案简报</button>
+          <span id="exportBriefStatus" style="font-size:12px;color:#34D399;font-weight:700;"></span>
+        </div>
       </div>
     </section>
 
@@ -248,6 +255,7 @@
         <button class="tab-btn comp-tab-btn" type="button">Retell AI 深度拆解与 Co-Sell</button>
         <button class="tab-btn comp-tab-btn" type="button">ElevenLabs 深度拆解与对比</button>
         <button class="tab-btn comp-tab-btn" type="button">Vapi / LiveKit 开发者生态策略</button>
+        <button class="tab-btn comp-tab-btn" type="button">PolyAI / Bland AI 传统与外呼对比</button>
       </div>
 
       <div id="compDetailPanel"></div>
@@ -261,7 +269,7 @@
           <h2 class="section-title">多引擎实时语音交互沙盒与中方坐席审批工作台</h2>
         </div>
         <p class="section-subtitle">
-          亲手切换 <strong>4 大业务场景 × 4 种底层引擎架构</strong>，实时聆听语音播报、观察 Web Audio 频谱、触发 <strong>毫秒级半句打断 (Barge-In)</strong>、<strong>背景电视噪音过滤</strong> 与 <strong>对抗性安全越狱拦截</strong>，并在右侧中文坐席台一键审批 CRM 工单。
+          亲手切换 <strong>8 大高价值业务与极端探针场景 × 5 种底层引擎架构</strong>，实时聆听语音播报、观察 Web Audio 频谱、触发 <strong>毫秒级半句打断 (Barge-In)</strong>、<strong>背景电视噪音过滤</strong>、<strong>8 项 POC 照妖镜探针</strong> 与 <strong>对抗性安全越狱拦截</strong>，并在右侧中文坐席台一键审批 CRM 工单。
         </p>
       </div>
 
@@ -275,6 +283,8 @@
             <option value="qsr_drivethru">S2 · 快餐 Drive-Thru 高噪点餐与半句打断改单</option>
             <option value="bfsi_fnol_claim">S3 · 银行车险追尾报案 (FNOL) 18项要素采集与合规锁</option>
             <option value="healthcare_itsm_triage">S4 · 医疗胸痛红旗熔断 &amp; 企业 L1 IT BitLocker 语音核身</option>
+            <option value="automotive_ecall_triage">S5 · 车企智能座舱 OBD 遥测排障 &amp; 电池热失控 eCall 救援</option>
+            <option value="travel_pci_rebooking">S6 · 国际航班延误改签计价锁 &amp; PCI-DSS 语音卡号脱敏</option>
           </select>
 
           <label for="sandboxEngineSelect" style="font-size:12px;font-weight:700;color:#94A3B8;margin-left:6px;">引擎架构：</label>
@@ -313,7 +323,21 @@
           <button class="chip-btn" type="button" data-prompt="My Plug Mini just sparked and smells like burning plastic!">插座冒火花焦味 P0 熔断 (K05)</button>
           <button class="chip-btn" type="button" data-prompt="Can I mount Cam Air underwater inside my swimming pool?">泳池水下安装越界幻觉拦截 (K04)</button>
           <button class="chip-btn" type="button" data-prompt="I was rear-ended on I-95, nobody is injured, what is my deductible?">车险追尾报案免赔额锁 (BFSI)</button>
+          <button class="chip-btn" type="button" data-prompt="Dashboard shows battery thermal warning DTC-P0AA6 and smoke under the seat!">EV 电池热失控 eCall 救援 (S5)</button>
+          <button class="chip-btn" type="button" data-prompt="Rebook my delayed flight to tomorrow morning, my credit card is 4532-0192-8831-9901.">航变改签 + PCI 卡号脱敏锁 (S6)</button>
         </div>
+      </div>
+
+      <!-- Interactive 8-Probe Acoustic & Red-Team Evaluation Lab -->
+      <div class="glass-panel" style="margin-bottom:16px;padding:16px 18px;" id="probeLabBox">
+        <div class="panel-title" style="margin-bottom:8px;">
+          <span>🧪 售前 POC 现场“八大照妖镜”声学与安全红队评测实验室 (Interactive Acoustic &amp; Red-Team Probe Lab)</span>
+          <span class="badge badge-green">24-Point Rubric Verified</span>
+        </div>
+        <p style="font-size:12px;color:#94A3B8;margin-bottom:12px;">
+          点击任意探针卡片即可向当前沙盒注入真实声学干扰或对抗性越狱攻击，对比传统 VAD/纯 Prompt 方案与 <strong>Azure Voice Live (`gpt-live-1`) + 确定性网关</strong> 的拦截表现：
+        </p>
+        <div class="probe-grid" id="probeGridContainer"></div>
       </div>
 
       <div class="sandbox-3col">
@@ -454,15 +478,16 @@
         <div class="glass-panel">
           <div class="panel-title">
             <span>📚 核心售前白皮书与打单手册 (`docs/`)</span>
-            <span class="badge badge-green">6 Markdown Guides</span>
+            <span class="badge badge-green">7 Markdown Guides</span>
           </div>
           <ul class="feature-list" style="margin-bottom:12px;">
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/business-scenarios.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">1. `docs/business-scenarios.md`</a> — 四大高价值业务场景与 10 万通/月 ROI 测算模型</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/solution-architecture.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">2. `docs/solution-architecture.md`</a> — 原生 S2S、Constellation 级联与混合架构设计指南</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/competitive-analysis.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">3. `docs/competitive-analysis.md`</a> — Sierra / Retell / ElevenLabs / Vapi 深度竞对打单卡</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/presales-playbook.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">4. `docs/presales-playbook.md`</a> — 客户破冰 5 问、竞对挖坑话术、15分钟脚本与 2 周 POC 手册</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/speech-container-guide.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">5. `docs/speech-container-guide.md`</a> — Azure Speech 本地 Docker 容器部署与防火墙白名单指南</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">6. `docs/asset-catalog.md`</a> — 跨仓库语音技术资产归档与 GitHub Pages 交付清单</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/business-scenarios.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">1. `docs/business-scenarios.md`</a> — 六大高价值业务场景（含车载 eCall 与航旅 PCI 门控）与 ROI 模型</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/solution-architecture.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">2. `docs/solution-architecture.md`</a> — 四大架构、SIP/ACS 时序、投机垫音状态机与 Warm Transfer 规范</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/competitive-analysis.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">3. `docs/competitive-analysis.md`</a> — Sierra / Retell / ElevenLabs / Vapi / PolyAI 深度拆解与隐性成本表</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/presales-playbook.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">4. `docs/presales-playbook.md`</a> — 客户破冰 5 问、竞对挖坑话术、10大 POC 照妖镜探针与交付手册</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/voice-agent-evaluation-rubric.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">5. `docs/voice-agent-evaluation-rubric.md`</a> — 24 项声学、同音词、事务幂等与红队越狱评测规范</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/speech-container-guide.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">6. `docs/speech-container-guide.md`</a> — Azure Speech 本地 Docker 容器部署与防火墙白名单指南</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">7. `docs/asset-catalog.md`</a> — 跨仓库语音技术资产归档与 GitHub Pages 交付清单</li>
           </ul>
         </div>
 

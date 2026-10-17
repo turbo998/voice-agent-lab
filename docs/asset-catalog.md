@@ -23,10 +23,11 @@
 
 | 文档路径 | 主题 | 核心内容摘要 |
 | :--- | :--- | :--- |
-| [docs/business-scenarios.md](business-scenarios.md) | **业务场景与 ROI 白皮书** | 跨境智能硬件排障（LumaNest）、全球新零售实时点单、金融保险高合规报案、医疗/ITSM 分诊四大场景拆解及 10 万通电话 ROI 测算 |
-| [docs/solution-architecture.md](solution-architecture.md) | **三大参考架构与选型指南** | Native S2S 三平面架构、Enterprise Cascaded + Constellation 多模型路由架构、Hybrid (Retell AI + Azure Foundry) 混合架构及选型决策树 |
-| [docs/competitive-analysis.md](competitive-analysis.md) | **深度竞对分析与 Battlecards** | Sierra AI、Retell AI、ElevenLabs (ElevenAgents)、Vapi/LiveKit 与 Azure 全栈方案的八维对比、定价拆解、攻防话术（Compete vs Co-sell）与异议处理 |
-| [docs/presales-playbook.md](presales-playbook.md) | **售前实战打单手册与 POC 指南** | 客户首轮 5 维 Discovery 问卷、三大竞对设伏提问（Trap-Setting Questions）、15 分钟现场演示脚本与 2 周 POC 验收评分卡 |
+| [docs/business-scenarios.md](business-scenarios.md) | **业务场景与 ROI 白皮书** | 跨境智能硬件排障（LumaNest）、全球新零售实时点单、金融保险高合规报案、医疗/ITSM 分诊、车企智能座舱与 eCall 道路救援、航旅退改签与 PCI 语音门控六大场景拆解及 ROI 测算 |
+| [docs/solution-architecture.md](solution-architecture.md) | **四大参考架构与电信互联指南** | Native S2S 三平面架构、Cascaded Constellation 路由架构、Hybrid (Retell + Foundry)、Sovereign 本地容器，以及 PSTN/SIP ↔ ACS 时序、投机垫音状态机与双语热转接 JSON 契约 |
+| [docs/competitive-analysis.md](competitive-analysis.md) | **深度竞对分析与 Battlecards** | Sierra AI、Retell AI、ElevenLabs、Vapi/LiveKit、PolyAI/Bland AI 与 Azure 全栈方案对比、真实账单隐性乘数拆解、攻防话术（Compete vs Co-sell）与异议处理 |
+| [docs/presales-playbook.md](presales-playbook.md) | **售前实战打单手册与 POC 指南** | 客户首轮 5 维 Discovery 问卷、三大竞对设伏提问、15 分钟现场演示脚本、2 周 POC 验收评分卡与 10 大现场照妖镜探针 |
+| [docs/voice-agent-evaluation-rubric.md](voice-agent-evaluation-rubric.md) | **24 项声学、语义与安全红队评测规范** | 覆盖声学全双工 (`A01–A06`)、同音词与领域接地 (`L01–L06`)、事务幂等锁 (`T01–T06`) 与语音安全红队 (`S01–S06`) 的可复现探针矩阵 |
 | [docs/speech-container-guide.md](speech-container-guide.md) | **Azure Speech 本地容器部署指南** | 本地联网计量容器与完全离线容器（Disconnected Containers）选型、4 个核心防火墙 FQDN 白名单、10–15 分钟计量上报机制、STT/TTS 延迟科学评估口径 |
 | [docs/scenario.md](scenario.md) | **LumaNest 出海智能硬件咨询演练** | 面向东南亚（SG/MY/TH）市场的英语语音客服 + 中文运营审批端到端 6 步旅程与 FDE 定制交接规范 |
 | [docs/architecture.md](architecture.md) | **受治理私网部署架构与边界** | Azure Container Apps + VNet 委派子网 + Blob/Queue/Key Vault Private Endpoints + 私网 DNS 拓扑及静态离线渲染图 (`assets/architecture.svg`) |

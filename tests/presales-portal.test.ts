@@ -2,14 +2,15 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, and speech containers", async () => {
+test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
-    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC"] },
+    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "ROI"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜"] },
+    { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html"] }
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md"] }
   ];
 
   for (const item of files) {
@@ -66,7 +67,23 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
   assert.ok(indexHtml.includes("id=\"sandboxWaterfallBox\""), "index.html missing #sandboxWaterfallBox");
   assert.ok(indexHtml.includes("./deck.html"), "index.html missing link to ./deck.html");
 
-  for (const keyword of ["Sierra AI", "Retell AI", "ElevenLabs", "LiveKit", "gpt-live-1", "gpt-4.1-mini", "pending_approval", "elevenlabs_agents", "bfsi_fnol_claim", "handleCustomUtterance"]) {
+  for (const keyword of [
+    "Sierra AI",
+    "Retell AI",
+    "ElevenLabs",
+    "LiveKit",
+    "PolyAI",
+    "gpt-live-1",
+    "gpt-4.1-mini",
+    "pending_approval",
+    "elevenlabs_agents",
+    "bfsi_fnol_claim",
+    "automotive_ecall_triage",
+    "travel_pci_rebooking",
+    "probeMatrixData",
+    "generateCustomProposalMarkdown",
+    "handleCustomUtterance"
+  ]) {
     assert.ok(indexHtml.includes(keyword) || appJs.includes(keyword), `Portal missing key concept: ${keyword}`);
   }
 });
