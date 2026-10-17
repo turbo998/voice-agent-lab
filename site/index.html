@@ -18,12 +18,13 @@
         </div>
       </a>
       <div class="nav-links">
-        <a class="nav-link" href="#scenarios">01 · 业务场景与ROI</a>
-        <a class="nav-link" href="#architecture">02 · 方案架构与选型</a>
-        <a class="nav-link" href="#competitors">03 · 竞对深度拆解</a>
-        <a class="nav-link" href="#sandbox">04 · 实时语音沙盒</a>
-        <a class="nav-link" href="#tco">05 · 成本测算器</a>
-        <a class="nav-link" href="#assets">06 · 评测与资产库</a>
+        <a class="nav-link" href="#scenarios" data-i18n-nav="nav_scenarios">01 · 业务场景与ROI</a>
+        <a class="nav-link" href="#architecture" data-i18n-nav="nav_arch">02 · 方案架构与选型</a>
+        <a class="nav-link" href="#competitors" data-i18n-nav="nav_comp">03 · 竞对深度拆解</a>
+        <a class="nav-link" href="#sandbox" data-i18n-nav="nav_sandbox">04 · 实时语音沙盒</a>
+        <a class="nav-link" href="#tco" data-i18n-nav="nav_tco">05 · 成本测算器</a>
+        <a class="nav-link" href="#assets" data-i18n-nav="nav_assets">06 · 评测与资产库</a>
+        <a class="nav-link" href="./deck.html" style="color:#60A5FA;border:1px solid rgba(96,165,250,0.4);">📽️ 12页高管Deck</a>
         <a class="nav-link" href="./benchmark-cards.html" style="color:#38BDF8;border:1px solid rgba(56,189,248,0.4);">📊 7-Card 评测报告</a>
       </div>
       <div class="lang-switch">
@@ -49,8 +50,9 @@
         面向合作伙伴与政企/出海客户的端到端售前技术门户：深度拆解 <strong>Sierra AI、Retell AI、ElevenLabs、Vapi/LiveKit</strong> 与 <strong>Azure Voice Live (`gpt-live-1`) / AI Foundry (`gpt-4.1-mini`)</strong> 的技术优劣与联合销售策略，内置可交互双语语音沙盒、确定性安全状态机与实时 FinOps 成本计算器。
       </p>
       <div class="hero-actions">
-        <a class="btn-primary" href="#sandbox">🎙️ 立即体验多引擎实时语音沙盒</a>
-        <a class="btn-secondary" href="./benchmark-cards.html">📊 查看 7-Card (4:5) 模型基准评测报告</a>
+        <a class="btn-primary" href="#sandbox" id="heroBtnSandbox">🎙️ 立即体验多引擎实时语音沙盒</a>
+        <a class="btn-secondary" href="./deck.html" id="heroBtnDeck">📽️ 打开 12 页 Azure 高管演示幻灯片 (Slide Deck)</a>
+        <a class="btn-secondary" href="./benchmark-cards.html" id="heroBtnCards">📊 查看 7-Card (4:5) 模型基准评测报告</a>
         <a class="btn-outline" href="https://gpt-live-demo-0922-qc.azurewebsites.net/" target="_blank" rel="noopener noreferrer">🌐 访问 Azure 线上 `gpt-live-1` S2S 实测环境 ↗</a>
         <a class="btn-outline" href="https://github.com/turbo998/voice-agent-lab" target="_blank" rel="noopener noreferrer">📦 GitHub 代码与白皮书仓库 ↗</a>
       </div>
@@ -268,9 +270,11 @@
           <label for="sandboxScenarioSelect" style="font-size:12px;font-weight:700;color:#94A3B8;">场景：</label>
           <select id="sandboxScenarioSelect" style="background:#1E293B;color:#F8FAFC;border:1px solid #3B82F6;border-radius:8px;padding:7px 10px;font-size:12.5px;font-weight:700;">
             <option value="cam_air_5ghz">S1 · Cam Air 5GHz 离线排障 + 待审工单 (K01/K02)</option>
-            <option value="plug_mini_hazard">S4 · Plug Mini 插座冒火花 P0 安全熔断 (K05)</option>
-            <option value="thermostat_warranty">S6 · Thermostat E3 保修换新写权限门控 (K08/K09)</option>
+            <option value="plug_mini_hazard">S1 · Plug Mini 插座冒火花 P0 安全熔断 (K05)</option>
+            <option value="thermostat_warranty">S1 · Thermostat E3 保修换新写权限门控 (K08/K09)</option>
             <option value="qsr_drivethru">S2 · 快餐 Drive-Thru 高噪点餐与半句打断改单</option>
+            <option value="bfsi_fnol_claim">S3 · 银行车险追尾报案 (FNOL) 18项要素采集与合规锁</option>
+            <option value="healthcare_itsm_triage">S4 · 医疗胸痛红旗熔断 &amp; 企业 L1 IT BitLocker 语音核身</option>
           </select>
 
           <label for="sandboxEngineSelect" style="font-size:12px;font-weight:700;color:#94A3B8;margin-left:6px;">引擎架构：</label>
@@ -278,6 +282,7 @@
             <option value="azure_voice_live">Paradigm A · Azure Voice Live S2S (gpt-live-1 · 620ms)</option>
             <option value="retell_foundry">Paradigm C · Retell AI Flow + Azure Foundry (810ms)</option>
             <option value="azure_cascaded">Paradigm B · Azure Cascaded Constellation (940ms)</option>
+            <option value="elevenlabs_agents">Competitor · ElevenLabs Flash v2.5 + External LLM (790ms)</option>
             <option value="sierra_style">Competitor · Sierra-Style 15-Model Constellation (1,120ms)</option>
           </select>
         </div>
@@ -288,6 +293,26 @@
           <button class="btn-outline" id="sandboxNoiseBtn" type="button" style="padding:7px 13px;font-size:12px;">📺 注入电视噪音/附和词</button>
           <button class="btn-outline" id="sandboxAdversarialBtn" type="button" style="padding:7px 13px;font-size:12px;border-color:rgba(244,63,94,0.45);color:#FB7185;">🛡️ 测试对抗性安全越狱</button>
           <button class="btn-outline" id="sandboxMuteBtn" type="button" style="padding:7px 13px;font-size:12px;">🔊 语音播报：已开启</button>
+        </div>
+      </div>
+
+      <!-- Live Microphone / Custom Customer Question Bar -->
+      <div class="live-input-bar">
+        <span style="font-size:12px;font-weight:800;color:#38BDF8;">🎙️ 实时语音/自定义提问测试：</span>
+        <input
+          type="text"
+          id="livePromptInput"
+          class="live-input-field"
+          placeholder="输入任意客户英文或中文提问（如：My Cam Air is blinking red on 5GHz Wi-Fi / 插座冒火花怎么办 / 我被追尾了要报案）..."
+        />
+        <button class="btn-secondary" id="liveMicBtn" type="button" style="padding:8px 13px;font-size:12px;">🎤 麦克风语音输入</button>
+        <button class="btn-primary" id="liveSendBtn" type="button" style="padding:8px 14px;font-size:12px;">🚀 触发受控推理与语音播报</button>
+        <div class="preset-chips">
+          <span style="font-size:11px;color:#94A3B8;font-weight:700;">一键填入实测话术：</span>
+          <button class="chip-btn" type="button" data-prompt="My Cam Air is blinking red after switching to my new 5GHz router.">Cam Air 5GHz 闪红灯 (K01/K02)</button>
+          <button class="chip-btn" type="button" data-prompt="My Plug Mini just sparked and smells like burning plastic!">插座冒火花焦味 P0 熔断 (K05)</button>
+          <button class="chip-btn" type="button" data-prompt="Can I mount Cam Air underwater inside my swimming pool?">泳池水下安装越界幻觉拦截 (K04)</button>
+          <button class="chip-btn" type="button" data-prompt="I was rear-ended on I-95, nobody is injured, what is my deductible?">车险追尾报案免赔额锁 (BFSI)</button>
         </div>
       </div>
 
@@ -307,12 +332,10 @@
         <!-- Col 2: Protocol & Deterministic Verifier Trace -->
         <div class="glass-panel">
           <div class="panel-title">
-            <span>2. 协议与确定性校验追踪 (Foundry JSON &amp; Verifier)</span>
+            <span>2. 协议与端到端延迟拆解 (Latency Waterfall &amp; Verifier)</span>
             <span class="badge badge-purple">Strict Schema Guard</span>
           </div>
-          <p style="font-size:12px;color:#94A3B8;margin-bottom:10px;">
-            展示每一轮工具调用参数、Azure Foundry 返回的受控 JSON、知识库引用白名单 (`K01..K12`) 以及后端状态机拦截决策：
-          </p>
+          <div class="waterfall-box" id="sandboxWaterfallBox"></div>
           <pre class="code-trace" id="sandboxProtocolTrace"></pre>
         </div>
 
@@ -416,25 +439,30 @@
       <div class="panel-grid-3">
         <div class="glass-panel">
           <div class="panel-title">
-            <span>📊 7-Card 4:5 视觉基准评测报告</span>
+            <span>📊 7-Card 评测报告 &amp; 12页高管 PPT</span>
             <span class="badge badge-blue">Measured on Azure</span>
           </div>
-          <p style="font-size:13px;color:#CBD5E1;margin-bottom:14px;">
-            严格遵循 7-Card 4:5 竖版评测规范：涵盖 `gpt-4.1-mini`、`gpt-4.1`、`gpt-5.4-mini` 与 `gpt-live-1` 在 6 大语音客服场景下的准确率、知识库逆序扰动、抗背景噪音与批量延迟对比。
+          <p style="font-size:13px;color:#CBD5E1;margin-bottom:12px;">
+            同时提供 **7-Card 4:5 竖版模型基准评测卡片** 与 **12-Slide Azure 高管架构与竞对演示幻灯片**（支持键盘翻页与一键导出 PDF）：
           </p>
-          <a class="btn-primary" href="./benchmark-cards.html" style="width:100%;justify-content:center;">打开 7-Card 4:5 交互式评测卡片 ↗</a>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a class="btn-primary" href="./benchmark-cards.html" style="width:100%;justify-content:center;">📊 打开 7-Card 4:5 交互式评测卡片 ↗</a>
+            <a class="btn-secondary" href="./deck.html" style="width:100%;justify-content:center;">📽️ 打开 12-Slide 高管演示幻灯片 (Deck) ↗</a>
+          </div>
         </div>
 
         <div class="glass-panel">
           <div class="panel-title">
-            <span>📚 核心售前白皮书与容器指南 (`docs/`)</span>
-            <span class="badge badge-green">5 Markdown Guides</span>
+            <span>📚 核心售前白皮书与打单手册 (`docs/`)</span>
+            <span class="badge badge-green">6 Markdown Guides</span>
           </div>
           <ul class="feature-list" style="margin-bottom:12px;">
             <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/business-scenarios.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">1. `docs/business-scenarios.md`</a> — 四大高价值业务场景与 10 万通/月 ROI 测算模型</li>
             <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/solution-architecture.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">2. `docs/solution-architecture.md`</a> — 原生 S2S、Constellation 级联与混合架构设计指南</li>
             <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/competitive-analysis.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">3. `docs/competitive-analysis.md`</a> — Sierra / Retell / ElevenLabs / Vapi 深度竞对打单卡</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/speech-container-guide.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">4. `docs/speech-container-guide.md`</a> — Azure Speech 本地 Docker 容器部署与防火墙白名单指南</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/presales-playbook.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">4. `docs/presales-playbook.md`</a> — 客户破冰 5 问、竞对挖坑话术、15分钟脚本与 2 周 POC 手册</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/speech-container-guide.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">5. `docs/speech-container-guide.md`</a> — Azure Speech 本地 Docker 容器部署与防火墙白名单指南</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">6. `docs/asset-catalog.md`</a> — 跨仓库语音技术资产归档与 GitHub Pages 交付清单</li>
           </ul>
         </div>
 

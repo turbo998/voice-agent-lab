@@ -8,7 +8,8 @@
 
 | 资产名称 | 类型 | 访问地址 / 仓库路径 | 核心能力与演示看点 |
 | :--- | :--- | :--- | :--- |
-| **Voice Agent 售前方案与竞对沙盒总门户** | 🌐 H5 交互门户 (`github.io`) | `https://turbo998.github.io/voice-agent-lab/` (`site/index.html`) | 涵盖 4 大业务场景、3 大参考架构、Sierra/Retell/ElevenLabs/Azure 深度竞对 Battlecards、多引擎实时语音仿真沙盒与 FinOps TCO 计算器 |
+| **Voice Agent 售前方案与竞对沙盒总门户** | 🌐 H5 交互门户 (`github.io`) | `https://turbo998.github.io/voice-agent-lab/` (`site/index.html`) | 涵盖 4 大业务场景、4 大参考架构、Sierra/Retell/ElevenLabs/Azure 深度竞对 Battlecards、支持实时麦克风/自由提问的多引擎语音沙盒、分段延迟瀑布与 FinOps TCO 计算器 |
+| **企业级 Voice Agent 高管售前演示幻灯片** | 📽️ Azure Slide Deck (`github.io`) | `https://turbo998.github.io/voice-agent-lab/deck.html` (`site/deck.html`) | 遵循 `azure-style-presentation` 规范的 12 页 16:9 零依赖高管简报幻灯片（支持键盘翻页、双语呈现与 PDF 打印导出） |
 | **企业级 Voice Agent 7-Card 4:5 视觉评测报告** | 📊 7-Card 评测卡 (`github.io`) | `https://turbo998.github.io/voice-agent-lab/benchmark-cards.html` | 对齐 `benchmark-harness-engineering` 规范，展示 Azure 多模型路由与实时语音实测延迟、声学抗扰、同音词归一化与安全护栏评测 |
 | **GPT-Live (`gpt-live-1`) 合作伙伴工程师技术培训门户** | 🎓 三语培训 H5 (`github.io`) | `https://turbo998.github.io/gpt-live-1-demo/training.html` | 6 大工程模块、3 张高清架构图深度价值拆解（Voice Live 全景 / 4 层流式管道 / 三平面解耦）、FinOps 计算器与现场通关测验 |
 | **GPT-Live 7-Card 专项基准测试报告** | 📊 7-Card 评测卡 (`github.io`) | `https://turbo998.github.io/gpt-live-1-demo/benchmark-cards.html` | 聚焦 `gpt-live-1` vs `gpt-realtime-2` 在 8 类全双工打断探针、12 项饮品同音词与 DragonHDFlash 盲测 MOS 的对比 |
@@ -25,6 +26,7 @@
 | [docs/business-scenarios.md](business-scenarios.md) | **业务场景与 ROI 白皮书** | 跨境智能硬件排障（LumaNest）、全球新零售实时点单、金融保险高合规报案、医疗/ITSM 分诊四大场景拆解及 10 万通电话 ROI 测算 |
 | [docs/solution-architecture.md](solution-architecture.md) | **三大参考架构与选型指南** | Native S2S 三平面架构、Enterprise Cascaded + Constellation 多模型路由架构、Hybrid (Retell AI + Azure Foundry) 混合架构及选型决策树 |
 | [docs/competitive-analysis.md](competitive-analysis.md) | **深度竞对分析与 Battlecards** | Sierra AI、Retell AI、ElevenLabs (ElevenAgents)、Vapi/LiveKit 与 Azure 全栈方案的八维对比、定价拆解、攻防话术（Compete vs Co-sell）与异议处理 |
+| [docs/presales-playbook.md](presales-playbook.md) | **售前实战打单手册与 POC 指南** | 客户首轮 5 维 Discovery 问卷、三大竞对设伏提问（Trap-Setting Questions）、15 分钟现场演示脚本与 2 周 POC 验收评分卡 |
 | [docs/speech-container-guide.md](speech-container-guide.md) | **Azure Speech 本地容器部署指南** | 本地联网计量容器与完全离线容器（Disconnected Containers）选型、4 个核心防火墙 FQDN 白名单、10–15 分钟计量上报机制、STT/TTS 延迟科学评估口径 |
 | [docs/scenario.md](scenario.md) | **LumaNest 出海智能硬件咨询演练** | 面向东南亚（SG/MY/TH）市场的英语语音客服 + 中文运营审批端到端 6 步旅程与 FDE 定制交接规范 |
 | [docs/architecture.md](architecture.md) | **受治理私网部署架构与边界** | Azure Container Apps + VNet 委派子网 + Blob/Queue/Key Vault Private Endpoints + 私网 DNS 拓扑及静态离线渲染图 (`assets/architecture.svg`) |

@@ -182,5 +182,84 @@
       "baseline_label": "Legacy IVR + Uncached LLM",
       "baseline_ms": 1850
     }
-  ]
+  ],
+  "latency_waterfalls": [
+    {
+      "engine_id": "azure_voice_live",
+      "name": "Paradigm A · Azure Voice Live S2S (gpt-live-1)",
+      "p50_total_ms": 620,
+      "barge_in_ms": 165,
+      "stages": [
+        { "stage": "WebRTC Edge / AEC Ingress", "ms": 45 },
+        { "stage": "Semantic VAD & Acoustic Endpointing", "ms": 115 },
+        { "stage": "gpt-live-1 Native Audio Token Generation", "ms": 340 },
+        { "stage": "Sidecar Guardrail / Citation Check (Async)", "ms": 75 },
+        { "stage": "WebRTC PCM Frame Egress", "ms": 45 }
+      ]
+    },
+    {
+      "engine_id": "retell_foundry",
+      "name": "Paradigm C · Retell AI Flow + Azure Foundry (gpt-4.1-mini)",
+      "p50_total_ms": 810,
+      "barge_in_ms": 195,
+      "stages": [
+        { "stage": "SIP/WebRTC Telephony & Streaming ASR", "ms": 160 },
+        { "stage": "Retell Turn-Taking Model & State Node", "ms": 95 },
+        { "stage": "Signed HMAC Webhook + Foundry Fast Route", "ms": 390 },
+        { "stage": "Streaming TTS First-Byte Synthesis", "ms": 120 },
+        { "stage": "Telephony Media Egress", "ms": 45 }
+      ]
+    },
+    {
+      "engine_id": "azure_cascaded",
+      "name": "Paradigm B · Azure Cascaded Constellation (Speech + Foundry + DragonHDFlash)",
+      "p50_total_ms": 940,
+      "barge_in_ms": 230,
+      "stages": [
+        { "stage": "Azure Fast STT (MAI-transcription-2 / Custom Speech)", "ms": 210 },
+        { "stage": "Content Safety & PII Redaction Gate", "ms": 55 },
+        { "stage": "gpt-5.4-mini / gpt-4.1-mini Strict JSON Routing", "ms": 470 },
+        { "stage": "Deterministic Policy Verifier & SSML Lock", "ms": 50 },
+        { "stage": "DragonHDFlash Neural TTS (First Byte)", "ms": 155 }
+      ]
+    },
+    {
+      "engine_id": "elevenlabs_agents",
+      "name": "Competitor · ElevenLabs ElevenAgents (Flash v2.5 + External LLM)",
+      "p50_total_ms": 790,
+      "barge_in_ms": 215,
+      "stages": [
+        { "stage": "Scribe Streaming ASR & Endpointing", "ms": 195 },
+        { "stage": "Cross-Cloud External LLM Hop", "ms": 440 },
+        { "stage": "Basic Tool Webhook Roundtrip", "ms": 80 },
+        { "stage": "Flash v2.5 Expressive TTS Inference", "ms": 75 }
+      ]
+    },
+    {
+      "engine_id": "sierra_style",
+      "name": "Competitor · Sierra AI 15-Model Constellation OS",
+      "p50_total_ms": 1120,
+      "barge_in_ms": 260,
+      "stages": [
+        { "stage": "Telephony Ingress & Streaming ASR", "ms": 210 },
+        { "stage": "Constellation Intent & Policy Router", "ms": 240 },
+        { "stage": "Multi-Model Knowledge & Supervisor Check", "ms": 460 },
+        { "stage": "Third-Party TTS Synthesis & Egress", "ms": 210 }
+      ]
+    }
+  ],
+  "competitor_tco_benchmarks": {
+    "monthly_calls_reference": 100000,
+    "avg_minutes_per_call": 3.5,
+    "fcr_rate": 0.70,
+    "unit_costs": {
+      "sierra_per_resolution_usd": 1.50,
+      "retell_all_in_per_min_usd": 0.145,
+      "elevenlabs_per_min_usd": 0.115,
+      "vapi_stacked_per_min_usd": 0.135,
+      "hybrid_retell_azure_per_min_usd": 0.078,
+      "azure_voice_live_per_min_usd": 0.062,
+      "azure_cascaded_per_min_usd": 0.048
+    }
+  }
 }

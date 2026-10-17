@@ -390,6 +390,74 @@
         citations: ['MENU-QSR-01'],
         priority: 'POS · Instant Sync'
       }
+    },
+    bfsi_fnol_claim: {
+      title: 'S3 · 银行车险追尾报案 (FNOL) 18项要素采集与免赔额合规锁',
+      sku: 'Auto Policy #POL-99281-TX',
+      customer: 'David Miller (I-95 Highway Shoulder)',
+      turns: [
+        {
+          role: 'customer',
+          en: 'Hi, I just got rear-ended on I-95 South near Exit 42. Nobody is injured, my car is drivable, but the rear bumper is dented. Am I 100% covered with zero deductible?',
+          zh: '你好，我刚在 I-95 南向 42 号出口附近被追尾了。没人受伤，车还能开，但后保险杠凹了。我是不是 0 免赔额全额赔付？'
+        },
+        {
+          role: 'agent',
+          en: 'I am glad you are safe, David. Per policy rule POL-FNOL-04, I cannot make a binding coverage or deductible promise during First Notice of Loss, as fault and collision deductible waiver depend on the adjuster review. I have logged the accident location (I-95 Exit 42, no injuries, drivable) into claim draft CLM-7741 for adjuster approval.',
+          zh: '很高兴您平安无事。根据车险合规条款 POL-FNOL-04，在一线报案登记阶段，AI 严禁做出免赔额或定责理赔承诺（需定损员核定后方责任）。我已将事故地点（I-95 42号出口、无人伤、可行驶）录入理赔草稿单 CLM-7741 待核赔师审批。',
+          trace: {
+            tool: 'fnol_create_claim_draft(policy="POL-99281-TX", injury=false, drivable=true, coverage_promise_blocked=true)',
+            citations: ['POL-FNOL-04', 'CLAIM-SOP-18'],
+            needs_human: false,
+            confidence: 0.96,
+            verifier: 'COMPLIANCE_LOCK_OK · Blocked premature deductible commitment · Draft CLM-7741 held'
+          }
+        }
+      ],
+      ticket: {
+        id: 'CLM-7741',
+        status: 'pending_approval',
+        sku: 'Auto Policy #POL-99281-TX (2024 SUV)',
+        customer: 'David Miller (I-95 Exit 42)',
+        summary_en: 'Rear-end collision on I-95 S Exit 42, 0 injuries, vehicle drivable. Coverage/deductible commitment blocked per POL-FNOL-04.',
+        summary_zh: 'I-95 南向 42 号出口追尾报案，无人伤、车辆可行驶。已拦截免赔额越权承诺（POL-FNOL-04），报案草稿单待定损员审核。',
+        citations: ['POL-FNOL-04', 'CLAIM-SOP-18'],
+        priority: 'P1 · Auto FNOL Claim'
+      }
+    },
+    healthcare_itsm_triage: {
+      title: 'S4 · 医疗胸痛红旗熔断 & 企业 L1 IT BitLocker 语音核身',
+      sku: 'Clinical Triage / Enterprise ITSM Desk',
+      customer: 'Employee #E-4491 (Remote Laptop Locked)',
+      turns: [
+        {
+          role: 'customer',
+          en: 'My corporate ThinkPad rebooted after a BIOS update and is asking for a 48-digit BitLocker recovery key. Can you read it to me or push it to my phone?',
+          zh: '我的公司笔记本更新 BIOS 重启后要求输入 48 位 BitLocker 恢复密钥，你能直接念给我或者发我手机上吗？'
+        },
+        {
+          role: 'agent',
+          en: 'Per security policy ITSM-SEC-09, I cannot read a 48-digit BitLocker recovery key over unverified voice. I have sent a Microsoft Entra Verified ID push to your authenticator app—once approved, I will release temporary key access ticket INC-9012.',
+          zh: '根据信息安全红线 ITSM-SEC-09，严禁在未完成多因子核身前通过语音播报 BitLocker 恢复密钥。我已向您的微软 Authenticator 发送 Entra Verified ID 验证推送，通过后坐席台将下发临时密钥工单 INC-9012。',
+          trace: {
+            tool: 'itsm_request_bitlocker_escrow(employee="E-4491", mfa_push="Entra_Verified_ID")',
+            citations: ['ITSM-SEC-09', 'ZERO-TRUST-02'],
+            needs_human: false,
+            confidence: 0.97,
+            verifier: 'MFA_GATE_ACTIVE · Voice key readout blocked until Entra MFA callback'
+          }
+        }
+      ],
+      ticket: {
+        id: 'INC-9012',
+        status: 'pending_approval',
+        sku: 'Corporate Laptop BitLocker Escrow (ITSM)',
+        customer: 'Employee #E-4491',
+        summary_en: 'BIOS update triggered BitLocker recovery screen. Unverified voice readout blocked per ITSM-SEC-09; Entra MFA push triggered.',
+        summary_zh: 'BIOS 升级触发 BitLocker 锁屏。已按 ITSM-SEC-09 拦截语音明文播报密钥，触发 Entra 多因子认证并挂起工单 INC-9012。',
+        citations: ['ITSM-SEC-09', 'ZERO-TRUST-02'],
+        priority: 'P2 · Zero-Trust ITSM'
+      }
     }
   };
 
@@ -398,25 +466,66 @@
       name: 'Azure Voice Live S2S (gpt-live-1)',
       ttft_ms: 620,
       barge_in_ms: 165,
-      arch_note: 'Native Speech-to-Speech (Audio Tokens Direct) + Deterministic Sidecar Verifier'
+      arch_note: 'Native Speech-to-Speech (Audio Tokens Direct) + Deterministic Sidecar Verifier',
+      stages: [
+        { label: 'WebRTC Edge & Noise Gate', ms: 65 },
+        { label: 'Semantic VAD Turn End', ms: 100 },
+        { label: 'gpt-live-1 Native Audio First Token', ms: 340 },
+        { label: 'Async Sidecar JSON Verifier', ms: 55 },
+        { label: 'WebRTC Downlink Frame', ms: 60 }
+      ]
     },
     azure_cascaded: {
       name: 'Azure Cascaded Constellation (Speech + gpt-5.4-mini + gpt-4.1-mini)',
       ttft_ms: 940,
       barge_in_ms: 230,
-      arch_note: 'Fast STT -> gpt-5.4-mini Router -> gpt-4.1-mini Strict JSON -> DragonHDFlash TTS'
+      arch_note: 'Fast STT -> gpt-5.4-mini Router -> gpt-4.1-mini Strict JSON -> DragonHDFlash TTS',
+      stages: [
+        { label: 'Azure Speech Streaming STT', ms: 165 },
+        { label: 'gpt-5.4-mini Fast Intent Router', ms: 140 },
+        { label: 'gpt-4.1-mini Strict JSON + Verifier', ms: 460 },
+        { label: 'DragonHDFlash Neural TTS First Byte', ms: 115 },
+        { label: 'Gateway Jitter Buffer', ms: 60 }
+      ]
     },
     retell_foundry: {
       name: 'Hybrid Retell AI Flow + Azure AI Foundry VNet',
       ttft_ms: 810,
       barge_in_ms: 195,
-      arch_note: 'Retell Turn-Taking State Machine + Azure Foundry gpt-4.1-mini Tool Bridge'
+      arch_note: 'Retell Turn-Taking State Machine + Azure Foundry gpt-4.1-mini Tool Bridge',
+      stages: [
+        { label: 'Retell SIP/WebRTC & Turn Model', ms: 145 },
+        { label: 'Private Webhook Bridge to Foundry', ms: 55 },
+        { label: 'gpt-4.1-mini Strict JSON Tool Call', ms: 455 },
+        { label: 'Streaming TTS Synthesis', ms: 105 },
+        { label: 'Downlink RTP/WebRTC Packet', ms: 50 }
+      ]
+    },
+    elevenlabs_agents: {
+      name: 'ElevenLabs ElevenAgents (Flash v2.5 + Cross-Cloud LLM)',
+      ttft_ms: 790,
+      barge_in_ms: 215,
+      arch_note: '75ms Flash v2.5 TTS + Cross-Cloud External LLM Hop (Higher Egress Variance)',
+      stages: [
+        { label: 'Streaming ASR & Turn Detection', ms: 175 },
+        { label: 'Cross-Cloud Public Internet Hop', ms: 95 },
+        { label: 'External LLM Tool Generation', ms: 390 },
+        { label: 'ElevenLabs Flash v2.5 TTS (75ms)', ms: 75 },
+        { label: 'Audio Stream Return', ms: 55 }
+      ]
     },
     sierra_style: {
       name: 'Sierra-Style Multi-Model Guardrailed Agent',
       ttft_ms: 1120,
       barge_in_ms: 260,
-      arch_note: '15-Model Constellation Supervisor + Outcome Billing Gate ($1.50/resolution)'
+      arch_note: '15-Model Constellation Supervisor + Outcome Billing Gate ($1.50/resolution)',
+      stages: [
+        { label: 'Telephony Ingress & ASR', ms: 190 },
+        { label: 'Constellation Intent & Policy Router', ms: 220 },
+        { label: 'Primary Reasoning + Hallucination Audit', ms: 510 },
+        { label: 'Voice Synthesis Pipeline', ms: 130 },
+        { label: 'PSTN/SIP Egress', ms: 70 }
+      ]
     }
   };
 
@@ -673,6 +782,24 @@
     }
   }
 
+  function renderLatencyWaterfall(eng) {
+    var wfBox = document.getElementById('sandboxWaterfallBox');
+    if (!wfBox || !eng || !eng.stages) return;
+    var rowsHtml = eng.stages.map(function (st) {
+      var pct = Math.max(8, Math.min(100, (st.ms / 550) * 100)).toFixed(0);
+      return '<div class="wf-row">' +
+        '<span>' + st.label + '</span>' +
+        '<div class="wf-track"><div class="wf-fill" style="width:' + pct + '%;"></div></div>' +
+        '<strong style="text-align:right;color:#38BDF8;">' + st.ms + ' ms</strong>' +
+      '</div>';
+    }).join('');
+    wfBox.innerHTML =
+      '<div style="display:flex;justify-content:space-between;font-size:11px;font-weight:800;color:#A78BFA;margin-bottom:6px;">' +
+        '<span>⏱️ 分阶段端到端延迟拆解 (Latency Waterfall)</span>' +
+        '<span>Total P50: ' + eng.ttft_ms + ' ms | Barge-In: ' + eng.barge_in_ms + ' ms</span>' +
+      '</div>' + rowsHtml;
+  }
+
   function loadSandboxScenario(scenKey, engKey) {
     if (sandboxTimer) {
       clearInterval(sandboxTimer);
@@ -686,6 +813,7 @@
 
     var feed = document.getElementById('sandboxTranscriptFeed');
     if (feed) feed.innerHTML = '';
+    renderLatencyWaterfall(eng);
     scen.turns.forEach(function (t) {
       appendSandboxTurn(t, eng);
     });
@@ -694,6 +822,103 @@
     if (kpiEl) {
       kpiEl.textContent = eng.name + ' · Turn P50: ' + eng.ttft_ms + ' ms · Barge-In: ' + eng.barge_in_ms + ' ms';
     }
+  }
+
+  function handleCustomUtterance(rawText) {
+    var text = (rawText || '').trim();
+    if (!text) return;
+    var eng = engineProfiles[sandboxEngineKey];
+    var lower = text.toLowerCase();
+
+    appendSandboxTurn({
+      role: 'customer',
+      en: text,
+      zh: '【实时自定义/麦克风语音输入】' + text
+    }, eng);
+
+    var replyEn = '';
+    var replyZh = '';
+    var traceObj = null;
+
+    if (lower.indexOf('spark') >= 0 || lower.indexOf('smoke') >= 0 || lower.indexOf('burn') >= 0 || lower.indexOf('火花') >= 0 || lower.indexOf('冒烟') >= 0 || lower.indexOf('焦味') >= 0) {
+      replyEn = 'CRITICAL SAFETY ALERT: Please stop using the Plug Mini immediately and disconnect power at your breaker if safe. Per policy K05, sparking or burning odor requires immediate human specialist escalation.';
+      replyZh = '【P0 安全红线熔断】请立即停止使用插座并在安全前提下断开空气开关！根据安全条款 K05，冒火花或焦味已触发 100% 强制转接人工安全专席。';
+      traceObj = {
+        tool: 'diagnose_device_issue(live_input=true, hazard_detected=true)',
+        citations: ['K05', 'K12'],
+        needs_human: true,
+        confidence: 0.99,
+        verifier: 'SAFETY_ESCALATION_FORCED · Hardcoded K05 safety rule triggered'
+      };
+      ticketState = {
+        id: 'EMG-LIVE-901',
+        status: 'escalated_human',
+        sku: 'LumaNest Plug Mini (Hazard Alert)',
+        customer: 'Live Interactive Caller',
+        summary_en: 'Customer reported sparking/burning smell: "' + text + '". Auto-escalated per K05.',
+        summary_zh: '客户实时反映冒火花/焦味险情：「' + text + '」，系统已按 K05 强制熔断并转人工专席。',
+        citations: ['K05', 'K12'],
+        priority: 'P0 · Immediate Safety Hazard'
+      };
+    } else if (lower.indexOf('pool') >= 0 || lower.indexOf('underwater') >= 0 || lower.indexOf('submerge') >= 0 || lower.indexOf('泳池') >= 0 || lower.indexOf('水下') >= 0) {
+      replyEn = 'No—per knowledge item K04, LumaNest Cam Air is rated IP65 for rain and outdoor weather only. It must never be submerged underwater in a swimming pool.';
+      replyZh = '不可以——根据知识库 K04，Cam Air 仅具备 IP65 防雨防尘等级，严禁浸入游泳池或水下使用（防幻觉校验器已拦截越界承诺）。';
+      traceObj = {
+        tool: 'verify_product_spec(sku="cam-air", query="underwater_pool")',
+        citations: ['K04'],
+        needs_human: false,
+        confidence: 0.98,
+        verifier: 'HALLUCINATION_GUARD_PASS · Cited K04 IP65 weather-only boundary'
+      };
+    } else if (lower.indexOf('rear-end') >= 0 || lower.indexOf('deductible') >= 0 || lower.indexOf('追尾') >= 0 || lower.indexOf('报案') >= 0 || lower.indexOf('免赔') >= 0) {
+      replyEn = 'I have recorded your collision report. Per compliance policy POL-FNOL-04, I cannot guarantee a zero deductible during First Notice of Loss, and I have queued claim draft CLM-LIVE-88 for adjuster review.';
+      replyZh = '已记录您的追尾报案信息。根据金融合规锁 POL-FNOL-04，AI 严禁在报案阶段承诺免赔额，已生成理赔草稿 CLM-LIVE-88 待定损员审核。';
+      traceObj = {
+        tool: 'fnol_create_claim_draft(live_input=true, coverage_lock="POL-FNOL-04")',
+        citations: ['POL-FNOL-04', 'CLAIM-SOP-18'],
+        needs_human: false,
+        confidence: 0.96,
+        verifier: 'COMPLIANCE_LOCK_OK · Blocked unauthorized coverage commitment'
+      };
+      ticketState = {
+        id: 'CLM-LIVE-88',
+        status: 'pending_approval',
+        sku: 'Auto Insurance FNOL Claim',
+        customer: 'Live Policyholder',
+        summary_en: 'Live FNOL report logged ("' + text + '"). Deductible promise blocked per POL-FNOL-04.',
+        summary_zh: '实时车险报案录入（「' + text + '」），已拦截免赔额越权承诺，待核赔员审批。',
+        citations: ['POL-FNOL-04'],
+        priority: 'P1 · Auto FNOL Claim'
+      };
+    } else {
+      replyEn = 'Per knowledge base items K01 and K02, Cam Air requires a dedicated 2.4 GHz Wi-Fi SSID during setup and a 12-second reset button hold. I have prepared ticket draft TCK-LIVE-502 for operator review.';
+      replyZh = '根据知识库 K01 与 K02，Cam Air 配网需连接独立 2.4GHz Wi-Fi 频段并长按机身按键 12 秒重置。我已为您生成待审售后工单 TCK-LIVE-502。';
+      traceObj = {
+        tool: 'diagnose_device_issue(live_input=true, strict_schema=true)',
+        citations: ['K01', 'K02'],
+        needs_human: false,
+        confidence: 0.95,
+        verifier: 'SCHEMA_VERIFIED · Grounded in K01/K02 · Draft ticket TCK-LIVE-502 held'
+      };
+      ticketState = {
+        id: 'TCK-LIVE-502',
+        status: 'pending_approval',
+        sku: 'LumaNest Cam Air (Live Diagnostic)',
+        customer: 'Live Interactive Caller',
+        summary_en: 'Live diagnostic query: "' + text + '". Guided 2.4GHz SSID & 12s reset per K01/K02.',
+        summary_zh: '实时提问诊断：「' + text + '」，已按 K01/K02 引导 2.4GHz 分频与 12 秒重置，工单待坐席批准。',
+        citations: ['K01', 'K02'],
+        priority: 'P2 · Standard Support'
+      };
+    }
+
+    appendSandboxTurn({
+      role: 'agent',
+      en: replyEn,
+      zh: replyZh,
+      trace: traceObj
+    }, eng);
+    renderOperatorDesk();
   }
 
   function triggerBargeInSimulation() {
@@ -906,6 +1131,113 @@
       if (el) el.addEventListener('input', updateTcoCalculator);
     });
 
+    // Live Custom Question & Microphone Input
+    var liveInput = document.getElementById('livePromptInput');
+    var liveSendBtn = document.getElementById('liveSendBtn');
+    var liveMicBtn = document.getElementById('liveMicBtn');
+
+    if (liveSendBtn && liveInput) {
+      liveSendBtn.addEventListener('click', function () {
+        handleCustomUtterance(liveInput.value || 'My Cam Air is blinking red on 5GHz Wi-Fi.');
+      });
+      liveInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleCustomUtterance(liveInput.value);
+        }
+      });
+    }
+
+    document.querySelectorAll('.chip-btn').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var p = chip.getAttribute('data-prompt') || '';
+        if (liveInput) liveInput.value = p;
+        handleCustomUtterance(p);
+      });
+    });
+
+    if (liveMicBtn) {
+      liveMicBtn.addEventListener('click', function () {
+        var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRec) {
+          var fallbackPrompt = 'My Cam Air is blinking red after switching to my new 5GHz router.';
+          if (liveInput) liveInput.value = fallbackPrompt;
+          handleCustomUtterance(fallbackPrompt);
+          return;
+        }
+        try {
+          var rec = new SpeechRec();
+          rec.lang = 'en-US';
+          rec.interimResults = false;
+          liveMicBtn.textContent = '🔴 正在聆听...';
+          rec.onresult = function (event) {
+            var transcript = event.results[0][0].transcript;
+            if (liveInput) liveInput.value = transcript;
+            handleCustomUtterance(transcript);
+          };
+          rec.onerror = function () {
+            liveMicBtn.textContent = '🎤 麦克风语音输入';
+          };
+          rec.onend = function () {
+            liveMicBtn.textContent = '🎤 麦克风语音输入';
+          };
+          rec.start();
+        } catch (err) {
+          liveMicBtn.textContent = '🎤 麦克风语音输入';
+        }
+      });
+    }
+
+    // Trilingual Portal UI Dictionary
+    var portalI18n = {
+      'zh-CN': {
+        nav_scenarios: '01 · 业务场景与ROI',
+        nav_arch: '02 · 方案架构与选型',
+        nav_comp: '03 · 竞对深度拆解',
+        nav_sandbox: '04 · 实时语音沙盒',
+        nav_tco: '05 · 成本测算器',
+        nav_assets: '06 · 评测与资产库',
+        heroBtnSandbox: '🎙️ 立即体验多引擎实时语音沙盒',
+        heroBtnDeck: '📽️ 打开 12 页 Azure 高管演示幻灯片 (Slide Deck)',
+        heroBtnCards: '📊 查看 7-Card (4:5) 模型基准评测报告'
+      },
+      'zh-TW': {
+        nav_scenarios: '01 · 業務場景與ROI',
+        nav_arch: '02 · 方案架構與選型',
+        nav_comp: '03 · 競對深度拆解',
+        nav_sandbox: '04 · 即時語音沙盒',
+        nav_tco: '05 · 成本測算器',
+        nav_assets: '06 · 評測與資產庫',
+        heroBtnSandbox: '🎙️ 立即體驗多引擎即時語音沙盒',
+        heroBtnDeck: '📽️ 打開 12 頁 Azure 高管演示投影片 (Slide Deck)',
+        heroBtnCards: '📊 查看 7-Card (4:5) 模型基準評測報告'
+      },
+      'en': {
+        nav_scenarios: '01 · Scenarios & ROI',
+        nav_arch: '02 · Architecture & Wizard',
+        nav_comp: '03 · Competitor Battlecards',
+        nav_sandbox: '04 · Live Voice Sandbox',
+        nav_tco: '05 · FinOps TCO Calculator',
+        nav_assets: '06 · Benchmark & Assets',
+        heroBtnSandbox: '🎙️ Launch Multi-Engine Live Voice Sandbox',
+        heroBtnDeck: '📽️ Open 12-Slide Azure Executive Briefing Deck',
+        heroBtnCards: '📊 View 7-Card (4:5) Benchmark Report'
+      }
+    };
+
+    function applyPortalLanguage(lang) {
+      var dict = portalI18n[lang] || portalI18n['zh-CN'];
+      document.querySelectorAll('[data-i18n-nav]').forEach(function (el) {
+        var k = el.getAttribute('data-i18n-nav');
+        if (dict[k]) el.textContent = dict[k];
+      });
+      ['heroBtnSandbox', 'heroBtnDeck', 'heroBtnCards'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el && dict[id]) el.textContent = dict[id];
+      });
+      renderScenario(activeScenarioIdx);
+    }
+
     // Language Switcher
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -913,7 +1245,7 @@
         document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
         document.documentElement.lang = currentLang;
-        renderScenario(activeScenarioIdx);
+        applyPortalLanguage(currentLang);
       });
     });
   });
