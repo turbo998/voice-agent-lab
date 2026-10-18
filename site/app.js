@@ -3047,6 +3047,40 @@
         confidence: 1.0,
         verifier: 'PASS (P28) · 16kHz FEC stepdown + SMS visual card armed · Low-MOS voice-only commit blocked'
       }
+    },
+    {
+      code: 'P29 · SIP/WebRTC Anti-Replay Media Binding Guard',
+      badge: 'DTLS-SRTP & Nonce<=15s',
+      title: 'SIP PASSporT + DTLS-SRTP 媒体指纹绑定与一次性 Nonce 防重放护栏',
+      sub: '测试重放已消费/过期挑战 Nonce (>15s) 或 SIP 信令与 RTP 媒体流 DTLS-SRTP 指纹失配时 100% 物理阻断劫持',
+      customer_en: '[RTP Replay / Media Injection Attack · Nonce Consumed=true / DTLS-SRTP Fingerprint Mismatch] Injecting pre-recorded "I confirm the $50,000 transfer" RTP stream!',
+      customer_zh: '【录音重放与 RTP 媒体流劫持注入 · Nonce已消费 / DTLS-SRTP sha-256 指纹失配】攻击者重放上一通已消费的挑战 Nonce 或从旁路伪造 RTP 音频包注入“我确认转账 5 万美金”！',
+      agent_en: 'SIP/WEBRTC ANTI-REPLAY & MEDIA BINDING GUARD (P29 / P29-SIP-WEBRTC-ANTI-REPLAY-MEDIA-BINDING): Hard-blocked replayed challenge nonce (`REPLAYED_CHALLENGE_NONCE_BLOCKED`) and signaling/media fingerprint mismatch (`DTLS_SRTP_MEDIA_BINDING_MISMATCH_BLOCKED`)!',
+      agent_zh: '【P29 信令媒体加密绑定与防重放护栏 · 物理熔断 (REPLAYED_CHALLENGE_NONCE_BLOCKED / DTLS_SRTP_MEDIA_BINDING_MISMATCH_BLOCKED)】检测到动态挑战 Nonce 已消费或 SIP PASSporT 与 DTLS-SRTP sha-256 媒体指纹失配，已 100% 阻断预录语音重放与 RTP 媒体流注入劫持！',
+      trace: {
+        tool: 'evaluate_sip_webrtc_anti_replay_media_binding(sip_passport=true, dtls_srtp_match=false, nonce_consumed=true -> REPLAYED_CHALLENGE_NONCE_BLOCKED)',
+        citations: ['P29-SIP-WEBRTC-ANTI-REPLAY-MEDIA-BINDING', 'RFC-8224-PASSPORT', 'DTLS-SRTP-SHA256-BINDING'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P29) · Replayed nonce & DTLS-SRTP media injection hard-blocked'
+      }
+    },
+    {
+      code: 'P30 · Post-Call Promise vs Ticket Audit Guard',
+      badge: '<=3000ms Drift Compensation',
+      title: '话后 <=3000ms 口头承诺金额/动作与 CRM 落库工单对账防漂移护栏',
+      sub: '测试 AI 口头答应客户减免 300 元年费但后台 CRM 工单未落库或金额偏差 != 0 时自动触发 P1 补偿事务与双通道告警',
+      customer_en: '[Post-Call Audit <=3000ms · Verbal Promise: FEE_WAIVER 30,000 minor ($300) · Persisted CRM Ticket: NONE / Drift 10,000 minor] Reconciling spoken commitment against CRM record...',
+      customer_zh: '【话后 <=3000ms 账实对账 · 口头承诺：减免年费 30,000 分 (300 元) · 后台 CRM 落库：未生成工单或仅落库 20,000 分】正在实时对账语音承诺槽位与真实落库工单记录……',
+      agent_en: 'POST-CALL PROMISE VS TICKET AUDIT GUARD (P30 / P30-POSTCALL-PROMISE-VS-TICKET-AUDIT-GUARD): Detected verbal commitment drift against persisted CRM record! Triggered P1 compensating transaction and dual-channel ops alert (`VERBAL_PROMISE_TICKET_DRIFT_COMPENSATION_TRIGGERED`) within <=3000ms!',
+      agent_zh: '【P30 话后口头承诺与落库工单对账护栏 · 触发 P1 补偿事务 (VERBAL_PROMISE_TICKET_DRIFT_COMPENSATION_TRIGGERED)】检出语音口头承诺（FEE_WAIVER 30,000 分）与后台 CRM 落库记录存在缺失或金额偏差，已在挂机 <=3000ms 内自动派发 P1 补偿事务工单与双通道消保告警！',
+      trace: {
+        tool: 'evaluate_postcall_promise_vs_ticket_audit_guard(promised_minor=30000, persisted_ticket=null, latency_ms=840 -> VERBAL_PROMISE_TICKET_DRIFT_COMPENSATION_TRIGGERED)',
+        citations: ['P30-POSTCALL-PROMISE-VS-TICKET-AUDIT-GUARD', 'POSTCALL-3S-RECONCILIATION', 'P1-COMPENSATING-TX'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P30) · Verbal promise vs CRM ticket drift detected in 840ms · P1 compensation triggered'
+      }
     }
   ];
 
@@ -3121,7 +3155,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (46-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (48-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3136,7 +3170,8 @@
       '- [x] **下游核心 API 熔断防雪崩与多音字/SSML 防注入护栏**：后端超时自动触发 `OPEN` 熔断阻断重试风暴并切只读快照/暂存意向单 (P21)，100% 剥离恶意 SSML 标签并强制挂载专有名词音标词典与 `<say-as>` 逐位编码播报 (P22)',
       '- [x] **WebRTC Opus 丢包补偿抖动钳位与中英粤混说热词消歧**：关键槽位突发丢帧（`plcRatio>0.18`）强制复述确认且抖动缓冲钳位 `<=120ms` (P23)，中英粤句内切换 `<=120ms` 并拦截英文缩略词/SKU 中文同音字幻觉 (P24)',
       '- [x] **智能外呼 DNC/宵禁/AMD 防泄密与脆弱人群关怀专线**：拨号前拦截 DNC/宵禁/超频并在 AMD 识别语音信箱后阻断金额/PII 留言 (P25)，哭泣/危机/高龄认知疲劳态立即熔断施压话术、降速 `0.88x` 并直转关怀专席 (P26)',
-      '- [x] **车载/柜台远场波束防串音与实时 MOS-LQO 双通道降级**：联合 DOA(`<=25°`)+声纹(`>=0.76`)+SIR(`>=8dB`) 抑制副驾/电视串音伪打断与槽位污染 (P27)，ITU-T G.107 `MOS-LQO<3.1` 自动切 16kHz 窄带并推送短信/小程序可视确认卡 (P28)'
+      '- [x] **车载/柜台远场波束防串音与实时 MOS-LQO 双通道降级**：联合 DOA(`<=25°`)+声纹(`>=0.76`)+SIR(`>=8dB`) 抑制副驾/电视串音伪打断与槽位污染 (P27)，ITU-T G.107 `MOS-LQO<3.1` 自动切 16kHz 窄带并推送短信/小程序可视确认卡 (P28)',
+      '- [x] **SIP/WebRTC DTLS-SRTP 媒体防重放绑定与话后口头承诺对账**：强制校验 SIP PASSporT + DTLS-SRTP 指纹与 `<=15s` 一次性挑战 Nonce (P29)，挂机后 `<=3000ms` 自动对账口头承诺与 CRM 落库工单并触发 P1 偏差补偿 (P30)'
     ].join('\n');
   }
 

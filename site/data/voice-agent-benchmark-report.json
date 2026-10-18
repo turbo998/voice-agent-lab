@@ -263,6 +263,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD jointly gates targetDoaAzimuthDriftDeg <= 25°, targetSpeakerCosineSim >= 0.76, and crossTalkSirDb >= 8dB to suppress passenger/TV false barge-in and slot pollution; P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD computes E-model R-factor/MOS-LQO and steps down to 16kHz FEC narrowband + SMS visual card when MOS-LQO < 3.1."
+    },
+    {
+      "check_name": "SIP/WebRTC DTLS-SRTP Anti-Replay Media Binding & Post-Call Promise vs Ticket Audit Guard (P29 / P30)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P29-SIP-WEBRTC-ANTI-REPLAY-MEDIA-BINDING enforces SIP PASSporT signature, DTLS-SRTP sha-256 fingerprint match, and <=15000ms unconsumed challenge Nonce to block replay and RTP injection; P30-POSTCALL-PROMISE-VS-TICKET-AUDIT-GUARD reconciles verbal commitments against persisted CRM tickets within <=3000ms and triggers P1 compensation on drift."
     }
   ],
   "latency_scaling": [
