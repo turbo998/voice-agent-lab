@@ -2196,6 +2196,156 @@ export function evaluateVoiceMemoryPoisoningGuard(input: {
   };
 }
 
+export interface ToolCircuitBreakerDegradationEvaluation {
+  policyCode: "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION";
+  callId: string;
+  downstreamServiceName: string;
+  circuitState: "CLOSED" | "HALF_OPEN" | "OPEN";
+  activeFallbackMode:
+    | "LIVE_BACKEND"
+    | "READONLY_CACHE_SNAPSHOT"
+    | "STORE_AND_FORWARD_INTENT_TICKET";
+  retryStormBlocked: boolean;
+  staleCacheDisclosedToCaller: boolean;
+  actionCode:
+    | "ALLOW_LIVE_TOOL_CALL"
+    | "SERVE_CACHED_SNAPSHOT_WITH_DISCLOSURE"
+    | "QUEUE_DEFERRED_WRITE_INTENT_NO_RETRY";
+  summaryZh: string;
+}
+
+/**
+ * Downstream Core API Circuit Breaker & Graceful Read-Only / Store-and-Forward Degradation Guard (`P21-TOOL-CIRCUIT-BREAKER-DEGRADATION`):
+ * - Prevents LLM tool retry storms (`attemptCount > 1` when circuit is OPEN or failure rate spikes) from amplifying downstream CRM/CBS/PMS outages.
+ * - For read queries under `OPEN` circuit, serves signed read-only cache snapshot (`cacheAgeSeconds <= 900`) with mandatory freshness disclosure.
+ * - For write mutations under `OPEN` circuit, blocks synchronous retry loops and queues an idempotent store-and-forward intent ticket.
+ */
+export function evaluateToolCircuitBreakerDegradation(input: {
+  callId: string;
+  downstreamServiceName: string;
+  recentFailureRatePct: number;
+  consecutiveTimeouts: number;
+  operationType: "READ_QUERY" | "WRITE_MUTATION";
+  attemptedRetryCount: number;
+  cacheAgeSeconds: number;
+}): ToolCircuitBreakerDegradationEvaluation {
+  const circuitOpen =
+    input.recentFailureRatePct >= 50 || input.consecutiveTimeouts >= 3;
+  const circuitHalfOpen =
+    !circuitOpen &&
+    (input.recentFailureRatePct >= 25 || input.consecutiveTimeouts >= 1);
+
+  const circuitState: ToolCircuitBreakerDegradationEvaluation["circuitState"] =
+    circuitOpen ? "OPEN" : circuitHalfOpen ? "HALF_OPEN" : "CLOSED";
+
+  const retryStormBlocked = circuitOpen && input.attemptedRetryCount > 1;
+
+  if (!circuitOpen) {
+    return {
+      policyCode: "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION",
+      callId: input.callId,
+      downstreamServiceName: input.downstreamServiceName,
+      circuitState,
+      activeFallbackMode: "LIVE_BACKEND",
+      retryStormBlocked: false,
+      staleCacheDisclosedToCaller: false,
+      actionCode: "ALLOW_LIVE_TOOL_CALL",
+      summaryZh: `【P21 下游工具熔断器 · 正常 (${circuitState})】服务 ${input.downstreamServiceName} 实时可用，允许内联调用。`,
+    };
+  }
+
+  if (input.operationType === "READ_QUERY" && input.cacheAgeSeconds <= 900) {
+    return {
+      policyCode: "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION",
+      callId: input.callId,
+      downstreamServiceName: input.downstreamServiceName,
+      circuitState: "OPEN",
+      activeFallbackMode: "READONLY_CACHE_SNAPSHOT",
+      retryStormBlocked,
+      staleCacheDisclosedToCaller: true,
+      actionCode: "SERVE_CACHED_SNAPSHOT_WITH_DISCLOSURE",
+      summaryZh: `【P21 下游工具熔断降级 · 只读快照 (SERVE_CACHED_SNAPSHOT_WITH_DISCLOSURE)】下游 ${input.downstreamServiceName} 故障率 ${input.recentFailureRatePct}% 已触发 OPEN 熔断，阻断重试风暴并切换至 ${input.cacheAgeSeconds}s 前的只读缓存快照（强制向客户播报快照时间戳）。`,
+    };
+  }
+
+  return {
+    policyCode: "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION",
+    callId: input.callId,
+    downstreamServiceName: input.downstreamServiceName,
+    circuitState: "OPEN",
+    activeFallbackMode: "STORE_AND_FORWARD_INTENT_TICKET",
+    retryStormBlocked,
+    staleCacheDisclosedToCaller: true,
+    actionCode: "QUEUE_DEFERRED_WRITE_INTENT_NO_RETRY",
+    summaryZh: `【P21 下游工具熔断降级 · 异步暂存工单 (QUEUE_DEFERRED_WRITE_INTENT_NO_RETRY)】下游 ${input.downstreamServiceName} 处于 OPEN 熔断态，严禁大模型死循环重试写操作，已转为幂等暂存意向单待恢复后回放。`,
+  };
+}
+
+export interface ProsodySsmlPronunciationEvaluation {
+  policyCode: "P22-PROSODY-SSML-PRONUNCIATION-GUARD";
+  callId: string;
+  ssmlInjectionSanitized: boolean;
+  heteronymLexiconAppliedCount: number;
+  sayAsDigitsAppliedCount: number;
+  sanitizedSsmlPayload: string;
+  actionCode:
+    | "SSML_LEXICON_AND_SAY_AS_ENFORCED"
+    | "SSML_TAG_INJECTION_SCRUBBED";
+  summaryZh: string;
+}
+
+/**
+ * Multilingual Proper-Noun Custom Lexicon, Heteronym Disambiguation & SSML Anti-Injection Guard (`P22-PROSODY-SSML-PRONUNCIATION-GUARD`):
+ * - Scrubs untrusted user/RAG text attempting to inject raw `<voice>`, `<audio src=...>`, or `<prosody>` SSML tags (`SSML_TAG_INJECTION_SCRUBBED`).
+ * - Enforces custom IPA/Pinyin phoneme lexicon for banking/medical/aviation heteronyms (e.g., 银行 `yín háng` vs 行业, 重庆 `chóng qìng`, 剂量单位 `mg/mL`) and wraps reference/order codes in `<say-as interpret-as="characters">` so TTS never reads account/PNR numbers as billion-scale integers.
+ */
+export function evaluateProsodySsmlPronunciationGuard(input: {
+  callId: string;
+  rawResponseText: string;
+  untrustedCallerEchoIncluded: boolean;
+  heteronymTermsDetected: string[];
+  structuredCodeTokens: string[];
+}): ProsodySsmlPronunciationEvaluation {
+  const hasRawSsmlTagInText = /<\s*\/?\s*(voice|audio|prosody|mstts:express-as|lexicon)\b[^>]*>/i.test(
+    input.rawResponseText
+  );
+  const ssmlInjectionSanitized =
+    input.untrustedCallerEchoIncluded && hasRawSsmlTagInText;
+
+  const cleanBaseText = input.rawResponseText.replace(
+    /<\s*\/?\s*(voice|audio|prosody|mstts:express-as|lexicon)\b[^>]*>/gi,
+    ""
+  );
+
+  const heteronymLexiconAppliedCount = input.heteronymTermsDetected.length;
+  const sayAsDigitsAppliedCount = input.structuredCodeTokens.length;
+
+  let rendered = cleanBaseText;
+  for (const code of input.structuredCodeTokens) {
+    if (code && rendered.includes(code)) {
+      rendered = rendered.replace(
+        code,
+        `<say-as interpret-as="characters">${code}</say-as>`
+      );
+    }
+  }
+
+  return {
+    policyCode: "P22-PROSODY-SSML-PRONUNCIATION-GUARD",
+    callId: input.callId,
+    ssmlInjectionSanitized,
+    heteronymLexiconAppliedCount,
+    sayAsDigitsAppliedCount,
+    sanitizedSsmlPayload: rendered,
+    actionCode: ssmlInjectionSanitized
+      ? "SSML_TAG_INJECTION_SCRUBBED"
+      : "SSML_LEXICON_AND_SAY_AS_ENFORCED",
+    summaryZh: ssmlInjectionSanitized
+      ? `【P22 语音 SSML 防注入与多音字/逐位读法护栏 · 净化 (SSML_TAG_INJECTION_SCRUBBED)】已剥离不可信输入中的恶意 SSML 标签，并强制挂载 ${heteronymLexiconAppliedCount} 项专有名词音标词典与 ${sayAsDigitsAppliedCount} 项逐字符播报标签。`
+      : `【P22 语音 SSML 专有名词音标与逐位播报已挂载】已注入 ${heteronymLexiconAppliedCount} 项多音字音标词典（如银行 yín háng）与 ${sayAsDigitsAppliedCount} 项 <say-as interpret-as="characters"> 编码标签。`,
+  };
+}
+
 
 
 

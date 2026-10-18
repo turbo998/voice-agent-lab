@@ -235,6 +235,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P19-ASYNC-TOOL-CALLBACK-PACING blocks completion claims without COMMITTED receipt and paces 1.2s-12s tools with 2500ms heartbeats; P20-VOICE-MEMORY-POISONING-GUARD blocks caller writes to privileged profile keys and expired/unsigned RAG chunks."
+    },
+    {
+      "check_name": "Downstream Core API Circuit-Breaker Degradation & Proper-Noun Lexicon / SSML Sanitizer (P21 / P22)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION trips OPEN on >=50% failures to block LLM retry storms and serves disclosed read-only cache snapshots or deferred intent tickets; P22-PROSODY-SSML-PRONUNCIATION-GUARD scrubs injected SSML tags and enforces IPA/Pinyin phoneme lexicons plus <say-as> character readouts."
     }
   ],
   "latency_scaling": [

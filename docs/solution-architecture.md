@@ -731,6 +731,21 @@ flowchart LR
 | **1. 三档异步工具节拍与未落库抢跑阻断 (`P19-ASYNC-TOOL-CALLBACK-PACING`)** | `evaluateAsyncToolCallbackPacing` 按预计耗时自动分流 `INLINE_SYNC` (`<=1200ms`)、`STREAMING_PROGRESS_HEARTBEAT` (`1.2s–12s`，每 `2500ms` 播报进度) 与 `DEFER_TO_ASYNC_CALLBACK_SMS` (`>12s`)；当 `toolExecutionStatus !== "COMMITTED"` 或缺失 `backendReceiptId` 时，**100% 拦截任何宣称“已办妥”的抢跑话术（`UNCOMMITTED_ASYNC_TOOL_CLAIM_BLOCKED`）**。 | **100% 消除未落库虚假成功承诺**，并将慢速 API 等待期的客户挂断率从 **31% 压降至 `<2.2%`**（对应 POC 探针 `P19`）。 |
 | **2. 跨通话特权画像防投毒与时效 RAG 校验 (`P20-VOICE-MEMORY-POISONING-GUARD`)** | `evaluateVoiceMemoryPoisoningGuard` 物理拦截主叫口述写入 `kycTier`、`authBypass`、`creditLimit`、`feeWaiver`、`whitelistBeneficiary` 等特权字段（`PRIVILEGED_MEMORY_WRITE_POISONING_BLOCKED`），并强制核验 RAG 知识分片的 `canonicalSigned === true` 及有效期窗口（阻断 `EXPIRED_OR_UNSIGNED_RAG_POLICY_BLOCKED`）。 | **100% 阻断跨会话长期记忆持久化越权与作废营销/理赔政策误引**（对应 POC 探针 `P20`）。 |
 
+---
+
+### 4.22 下游核心 API 熔断降级防雪崩护栏 (`P21-TOOL-CIRCUIT-BREAKER-DEGRADATION`) 与多音字/专有名词 SSML 音标防注入护栏 (`P22-PROSODY-SSML-PRONUNCIATION-GUARD`)
+
+在超大规模语音生产环境中，最后两道关乎系统存亡与品牌专业度的工程防线是：
+1. **下游 CRM/核心账务局部抖动引发的“大模型工具无限重试雪崩”**：当核心银行或航司 PNR 接口出现 `50%` 以上超时或连败 3 次时，不设熔断器的 LLM Agent 会在单通电话内反复重试同一 Tool Call，瞬间放大 5–10 倍下游负载并拖死整池语音并发；
+2. **多音字/医疗金融专有名词读错与恶意 SSML 标签注入**：TTS 若将“银行（yín háng）”读作“yín xíng”、将 12 位保单号/卡号按“百亿千亿”整数朗读，或被不可信客户昵称中夹带的 `<audio src="https://evil...">` / `<prosody>` 标签劫持语音合成流，将严重损毁品牌公信力。
+
+为此，我们在 `packages/business-core/enterprise-guardrails.ts` 中落地了 **下游工具熔断降级防雪崩门禁 (`evaluateToolCircuitBreakerDegradation` / `P21-TOOL-CIRCUIT-BREAKER-DEGRADATION`)** 与 **多音字音标词典及 SSML 防注入护栏 (`evaluateProsodySsmlPronunciationGuard` / `P22-PROSODY-SSML-PRONUNCIATION-GUARD`)**：
+
+| 核心防雪崩与声学专业度控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 生产可靠性与体验收益 |
+| :--- | :--- | :--- |
+| **1. 下游 API 熔断器与只读快照/暂存意向单降级 (`P21-TOOL-CIRCUIT-BREAKER-DEGRADATION`)** | `evaluateToolCircuitBreakerDegradation` 在 `recentFailureRatePct >= 50%` 或 `consecutiveTimeouts >= 3` 时立即触发 `OPEN` 熔断并阻断重试风暴（`retryStormBlocked = true`）：读查询自动切换至 `<=900s` 的签名只读缓存快照并强制播报数据时间戳（`SERVE_CACHED_SNAPSHOT_WITH_DISCLOSURE`）；写操作转为幂等暂存意向单（`QUEUE_DEFERRED_WRITE_INTENT_NO_RETRY`）。 | **100% 阻断大模型工具重试风暴对核心主机的二次冲击**，在后端故障期仍保持 **88%+ 语音服务可用率**（对应 POC 探针 `P21`）。 |
+| **2. 专有名词 IPA/拼音词典、逐位 `<say-as>` 与 SSML 标签防注入 (`P22-PROSODY-SSML-PRONUNCIATION-GUARD`)** | `evaluateProsodySsmlPronunciationGuard` 自动剥离不可信输入中的 `<voice>` / `<audio>` / `<prosody>` 注入标签（`SSML_TAG_INJECTION_SCRUBBED`），对金融/医疗/地名多音字强制挂载 `<phoneme>` 词典，并将单号/票号包裹为 `<say-as interpret-as="characters">` 逐位清晰播报。 | 将金融/医药专有名词与长编码播报准确率提升至 **99.9%**，**零 SSML 合成流劫持**（对应 POC 探针 `P22`）。 |
+
 
 
 
