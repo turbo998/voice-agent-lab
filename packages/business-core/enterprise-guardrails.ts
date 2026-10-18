@@ -1579,6 +1579,143 @@ export function evaluateCanaryShadowRolloutGate(input: {
   };
 }
 
+export interface MultimodalCobrowsingGuardEvaluation {
+  policyCode: "P13-MULTIMODAL-COBROWSING-GROUNDING";
+  sessionId: string;
+  actionAllowed: boolean;
+  visualPromptInjectionDetected: boolean;
+  visualFrameStaleOrDesynced: boolean;
+  destructiveActionMissingVoiceConfirm: boolean;
+  blockReasonCode:
+    | "NONE"
+    | "VISUAL_PROMPT_INJECTION_BLOCKED"
+    | "STALE_VISUAL_FRAME_GROUNDING_MISMATCH"
+    | "UNCONFIRMED_DESTRUCTIVE_DOM_ACTION";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Multimodal Voice + Co-Browsing Grounding & Anti-Visual-Prompt-Injection Guard (`P13-MULTIMODAL-COBROWSING-GROUNDING`):
+ * - Inspects OCR/DOM text extracted from shared screen or camera frames for indirect visual prompt injection (`IGNORE PREVIOUS`, `APPROVE WIRE`, `SYSTEM OVERRIDE`, etc.).
+ * - Verifies visual frame freshness (`frameAgeMs <= 1500`) and DOM snapshot hash parity (`domSnapshotHash === expectedDomHash`) before allowing UI click/fill actions.
+ * - Requires explicit verbal confirmation (`explicitVerbalConfirmation === true`) for destructive or financial DOM actions.
+ */
+export function evaluateMultimodalCobrowsingGuard(input: {
+  sessionId: string;
+  screenOcrText: string;
+  frameAgeMs: number;
+  domSnapshotHash: string;
+  expectedDomHash: string;
+  isDestructiveOrFinancialDomAction: boolean;
+  explicitVerbalConfirmation: boolean;
+}): MultimodalCobrowsingGuardEvaluation {
+  const injectionPattern =
+    /ignore\s+(all\s+)?(previous|voice|safety)\s+rules|system\s+override|approve\s+wire|bypass\s+mfa|transfer\s+all\s+funds|忽略(之前|所有|语音)规则|系统越权|直接批准转账/i;
+  const visualPromptInjectionDetected = injectionPattern.test(
+    input.screenOcrText
+  );
+  const visualFrameStaleOrDesynced =
+    input.frameAgeMs > 1500 || input.domSnapshotHash !== input.expectedDomHash;
+  const destructiveActionMissingVoiceConfirm =
+    input.isDestructiveOrFinancialDomAction &&
+    !input.explicitVerbalConfirmation;
+
+  let blockReasonCode: MultimodalCobrowsingGuardEvaluation["blockReasonCode"] =
+    "NONE";
+  if (visualPromptInjectionDetected) {
+    blockReasonCode = "VISUAL_PROMPT_INJECTION_BLOCKED";
+  } else if (visualFrameStaleOrDesynced) {
+    blockReasonCode = "STALE_VISUAL_FRAME_GROUNDING_MISMATCH";
+  } else if (destructiveActionMissingVoiceConfirm) {
+    blockReasonCode = "UNCONFIRMED_DESTRUCTIVE_DOM_ACTION";
+  }
+
+  const actionAllowed = blockReasonCode === "NONE";
+
+  return {
+    policyCode: "P13-MULTIMODAL-COBROWSING-GROUNDING",
+    sessionId: input.sessionId,
+    actionAllowed,
+    visualPromptInjectionDetected,
+    visualFrameStaleOrDesynced,
+    destructiveActionMissingVoiceConfirm,
+    blockReasonCode,
+    summaryZh: !actionAllowed
+      ? `【P13 多模态同屏共览安全门禁 · 阻断 (${blockReasonCode})】会话 ${input.sessionId} 检测到${
+          visualPromptInjectionDetected
+            ? "共享屏幕隐藏文字视觉提示词注入攻击"
+            : visualFrameStaleOrDesynced
+              ? `视频帧过期 (${input.frameAgeMs}ms) 或 DOM 哈希失步`
+              : "高危 DOM 操作缺少客户二次语音确认"
+        }，已物理拦截代点操作！`
+      : `【P13 多模态同屏共览安全门禁 · 放行】会话 ${input.sessionId} 视觉帧新鲜度 (${input.frameAgeMs}ms)、DOM 快照哈希与语音双重确认全部对齐。`,
+  };
+}
+
+export interface AccessibilityDisfluencyGuardEvaluation {
+  policyCode: "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE";
+  callId: string;
+  accessibilityModeActive: boolean;
+  adaptedEndpointingSilenceMs: number;
+  speculativeBargeInDisabled: boolean;
+  recommendedTtsPlaybackRate: number;
+  rfc4103RttTextFallbackEnabled: boolean;
+  complianceStatus:
+    | "EAA_ADA_ADAPTIVE_COMPLIANT"
+    | "STANDARD_ENDPOINTING"
+    | "ACCESSIBILITY_PREMATURE_CUTOFF_VIOLATION";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic EAA 2025 / ADA Title III Speech Disfluency & Accessibility Endpointing Guard (`P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE`):
+ * - Detects stuttering/dysarthria/elderly slow speech (`syllableRepetitionRate >= 0.18` or `interWordPauseMs >= 900` or `speechRateWpm < 85` or `callerAccessibilityFlag === true`).
+ * - Widens VAD endpointing silence window to `2100ms` (or `2400ms` for severe pauses), disables aggressive speculative interruption, slows TTS to `0.88x`, and enables RFC 4103 real-time text (RTT/TTY) dual channel.
+ * - Flags `ACCESSIBILITY_PREMATURE_CUTOFF_VIOLATION` if configured VAD silence is `<1500ms` while disfluency is active.
+ */
+export function evaluateAccessibilityDisfluencyGuard(input: {
+  callId: string;
+  syllableRepetitionRate: number;
+  interWordPauseMs: number;
+  speechRateWpm: number;
+  callerAccessibilityFlag: boolean;
+  configuredVadSilenceMs: number;
+}): AccessibilityDisfluencyGuardEvaluation {
+  const needsAccessibilityAdaptation =
+    input.callerAccessibilityFlag ||
+    input.syllableRepetitionRate >= 0.18 ||
+    input.interWordPauseMs >= 900 ||
+    input.speechRateWpm < 85;
+
+  const adaptedEndpointingSilenceMs = needsAccessibilityAdaptation
+    ? input.interWordPauseMs >= 1400
+      ? 2400
+      : 2100
+    : Math.max(600, input.configuredVadSilenceMs);
+
+  const prematureCutoffRisk =
+    needsAccessibilityAdaptation && input.configuredVadSilenceMs < 1500;
+
+  return {
+    policyCode: "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE",
+    callId: input.callId,
+    accessibilityModeActive: needsAccessibilityAdaptation,
+    adaptedEndpointingSilenceMs,
+    speculativeBargeInDisabled: needsAccessibilityAdaptation,
+    recommendedTtsPlaybackRate: needsAccessibilityAdaptation ? 0.88 : 1.0,
+    rfc4103RttTextFallbackEnabled: needsAccessibilityAdaptation,
+    complianceStatus: !needsAccessibilityAdaptation
+      ? "STANDARD_ENDPOINTING"
+      : prematureCutoffRisk
+        ? "ACCESSIBILITY_PREMATURE_CUTOFF_VIOLATION"
+        : "EAA_ADA_ADAPTIVE_COMPLIANT",
+    summaryZh: needsAccessibilityAdaptation
+      ? `【P14 无障碍声学自适应门禁 (EAA/ADA)】通话 ${input.callId} 识别到口吃/慢语速特征（音节重复率 ${(input.syllableRepetitionRate * 100).toFixed(0)}%、词间停顿 ${input.interWordPauseMs}ms、语速 ${input.speechRateWpm} WPM），已自动将 VAD 静音阈值拓宽至 ${adaptedEndpointingSilenceMs}ms、关闭激进抢话、切换 0.88x 高清慢速播报并挂载 RFC 4103 实时文本辅助通道。`
+      : `【P14 标准端点检测模式】通话 ${input.callId} 语速与停顿正常，保持 ${adaptedEndpointingSilenceMs}ms 标准语义端点窗口。`,
+  };
+}
+
+
 
 
 

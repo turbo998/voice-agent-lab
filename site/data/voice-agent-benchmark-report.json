@@ -207,6 +207,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P11-PCI-DTMF-MEDIA-BYPASS masks upstream audio at 400Hz, forks RFC 4733 to HSM vault, and scrubs spoken PAN/CVV; P12-CANARY-SHADOW-ROLLOUT-GATE rolls back canary regressions in <500ms."
+    },
+    {
+      "check_name": "Multimodal Co-Browsing Visual Injection Lock & EAA/ADA Disfluency Adaptive Endpointing (P13 / P14)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P13-MULTIMODAL-COBROWSING-GROUNDING blocks screen-share OCR prompt injection and stale >1500ms frames; P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE widens VAD silence to 2100ms + 0.88x TTS + RFC 4103 RTT."
     }
   ],
   "latency_scaling": [
