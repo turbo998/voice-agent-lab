@@ -179,6 +179,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "S11-TCPA-CONSENT-GUARD blocks >21:00 curfew dials and commits DNC in 140ms with C2PA provenance; PHARMA-PV-01 blocks unblinding and drafts E2B(R3) SAE report."
+    },
+    {
+      "check_name": "Sev-1 NOC Change Freeze Dual-Token Lock & Sovereign Edge / ASIL-D AEB Reflex (S13 / S14)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "CLOUD-NOC-01 blocks unapproved destructive restarts during freeze; S14-SOVEREIGN-EDGE-GUARD blocks cross-border PII audio, switches to Edge NPU in 118ms, and locks AEB."
     }
   ],
   "latency_scaling": [

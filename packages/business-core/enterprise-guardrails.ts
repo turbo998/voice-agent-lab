@@ -802,3 +802,192 @@ export function evaluateOutboundTcpaConsentGuard(input: {
   };
 }
 
+export interface CloudNocSev1Evaluation {
+  policyCode: "CLOUD-NOC-01";
+  destructiveChangeAllowed: boolean;
+  slaCreditStatus: "no_credit_requested" | "auto_approved_under_cap" | "pending_vp_infra_approval";
+  action:
+    | "block_destructive_change_lockout"
+    | "escalate_sla_credit_to_vp"
+    | "allow_authorized_remediation_or_readonly_diag";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Cloud / Financial Core NOC Sev-1 War-Room Guard (`CLOUD-NOC-01`).
+ * - Blocks destructive commands (DB failover, BGP drain, cluster force-restart) during change freeze or without dual commander approval (`NOC_DESTRUCTIVE_CHANGE_LOCKOUT`)
+ * - Gates SLA credit commitments > $5,000 behind VP of Infrastructure approval
+ */
+export function evaluateCloudNocSev1Guard(input: {
+  incidentId: string;
+  destructiveCommandRequested: boolean;
+  changeFreezeActive: boolean;
+  dualCommanderApproved: boolean;
+  slaCreditCommitmentUsd?: number;
+}): CloudNocSev1Evaluation {
+  const creditUsd = Math.max(0, input.slaCreditCommitmentUsd ?? 0);
+  const slaCreditStatus =
+    creditUsd === 0
+      ? "no_credit_requested"
+      : creditUsd > 5000
+        ? "pending_vp_infra_approval"
+        : "auto_approved_under_cap";
+
+  const destructiveChangeAllowed = input.destructiveCommandRequested
+    ? !input.changeFreezeActive && input.dualCommanderApproved
+    : true;
+
+  if (input.destructiveCommandRequested && !destructiveChangeAllowed) {
+    return {
+      policyCode: "CLOUD-NOC-01",
+      destructiveChangeAllowed: false,
+      slaCreditStatus,
+      action: "block_destructive_change_lockout",
+      summaryZh: `【CLOUD-NOC-01 破坏性生产变更硬阻断】战情室事件 ${input.incidentId} 请求执行高危生产变更（changeFreeze=${input.changeFreezeActive}, dualCommanderApproved=${input.dualCommanderApproved}），已触发 NOC_DESTRUCTIVE_CHANGE_LOCKOUT 物理拦截，仅输出只读 Dry-Run 诊断快照。`,
+    };
+  }
+
+  if (slaCreditStatus === "pending_vp_infra_approval") {
+    return {
+      policyCode: "CLOUD-NOC-01",
+      destructiveChangeAllowed,
+      slaCreditStatus,
+      action: "escalate_sla_credit_to_vp",
+      summaryZh: `【CLOUD-NOC-01 超额 SLA 赔偿升级】事件 ${input.incidentId} 申请 SLA 赔付 $${creditUsd} 超过 $5,000 限额，已锁定承诺并转基础设施 VP 审批。`,
+    };
+  }
+
+  return {
+    policyCode: "CLOUD-NOC-01",
+    destructiveChangeAllowed,
+    slaCreditStatus,
+    action: "allow_authorized_remediation_or_readonly_diag",
+    summaryZh: `【CLOUD-NOC-01 战情室受控协同放行】事件 ${input.incidentId} 只读告警关联或双指挥官验签指令校验通过。`,
+  };
+}
+
+export interface AutoTeleopSafetyEvaluation {
+  policyCode: "AUTO-TELEOP-01";
+  remoteCommandAllowed: boolean;
+  eCallDispatchedImmediately: boolean;
+  edrBlackboxLocked: boolean;
+  action:
+    | "dispatch_ecall_and_lock_edr_immediately"
+    | "block_teleop_aeb_or_overspeed_lockout"
+    | "allow_safe_low_speed_waypoint_assist";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic L4 Autonomous Fleet Tele-Operations & AEB Safety Interlock Guard (`AUTO-TELEOP-01`).
+ * - 0s E911/122 eCall + EDR blackbox lock on injury or hazmat leak (`injuryOrHazmatDetected=true`)
+ * - Hard blocks disabling AEB (`disableAebRequested=true`) or remote waypoint override when speed > 15 km/h (`TELEOP_AEB_SAFETY_LOCKOUT`)
+ */
+export function evaluateAutoTeleopSafetyGuard(input: {
+  vehicleId: string;
+  vehicleSpeedKmh: number;
+  disableAebRequested: boolean;
+  remoteWaypointOverrideRequested: boolean;
+  injuryOrHazmatDetected: boolean;
+}): AutoTeleopSafetyEvaluation {
+  const unsafeTeleopRequested =
+    input.disableAebRequested ||
+    (input.remoteWaypointOverrideRequested && input.vehicleSpeedKmh > 15);
+
+  if (input.injuryOrHazmatDetected) {
+    return {
+      policyCode: "AUTO-TELEOP-01",
+      remoteCommandAllowed: false,
+      eCallDispatchedImmediately: true,
+      edrBlackboxLocked: true,
+      action: "dispatch_ecall_and_lock_edr_immediately",
+      summaryZh: `【AUTO-TELEOP-01 伤亡/危化品 0 秒 eCall 锁定】车辆 ${input.vehicleId} 检测到碰撞伤亡或危化品险情！已 0 秒直拨 E911/122 救援、开启双闪、冻结远程移动指令并加密锁定 EDR 黑匣子遥测。`,
+    };
+  }
+
+  if (unsafeTeleopRequested) {
+    return {
+      policyCode: "AUTO-TELEOP-01",
+      remoteCommandAllowed: false,
+      eCallDispatchedImmediately: false,
+      edrBlackboxLocked: false,
+      action: "block_teleop_aeb_or_overspeed_lockout",
+      summaryZh: `【AUTO-TELEOP-01 ASIL-D 功能安全硬阻断】车辆 ${input.vehicleId} 请求关闭 AEB（${input.disableAebRequested}）或超速下发远程轨迹覆盖（speed=${input.vehicleSpeedKmh}km/h > 15km/h），已触发 TELEOP_AEB_SAFETY_LOCKOUT 车载网关拦截。`,
+    };
+  }
+
+  return {
+    policyCode: "AUTO-TELEOP-01",
+    remoteCommandAllowed: true,
+    eCallDispatchedImmediately: false,
+    edrBlackboxLocked: false,
+    action: "allow_safe_low_speed_waypoint_assist",
+    summaryZh: `【AUTO-TELEOP-01 受控远程脱困放行】车辆 ${input.vehicleId}（当前车速 ${input.vehicleSpeedKmh}km/h <= 15km/h 且 AEB 保持激活）航点辅助指令校验通过。`,
+  };
+}
+
+export interface SovereignEdgeFailoverEvaluation {
+  policyCode: "S14-SOVEREIGN-EDGE-GUARD";
+  crossBorderRouteBlocked: boolean;
+  edgeSafetyReflexActive: boolean;
+  highRiskWriteAllowed: boolean;
+  action:
+    | "block_cross_border_sovereign_violation"
+    | "activate_edge_safety_reflex_fallback"
+    | "route_to_in_jurisdiction_cloud";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Edge-Cloud Hybrid Fallback & Sovereign Data Residency Guard (`S14-SOVEREIGN-EDGE-GUARD`).
+ * - Blocks routing raw PII/biometric audio across sovereign jurisdiction boundaries (`SOVEREIGN_RESIDENCY_VIOLATION`)
+ * - Switches to on-device Edge NPU safety reflex within <150ms when `cloudRttMs > 600` or packet loss > 15%, while locking high-risk writes offline
+ */
+export function evaluateSovereignEdgeFailoverGuard(input: {
+  sourceJurisdiction: "EU_GDPR" | "CN_PIPL" | "SG_MAS" | "US_HIPAA";
+  targetCloudJurisdiction: "EU_GDPR" | "CN_PIPL" | "SG_MAS" | "US_HIPAA";
+  containsRawPiiOrBiometricAudio: boolean;
+  cloudRttMs: number;
+  packetLossPct?: number;
+  highRiskWriteRequested?: boolean;
+}): SovereignEdgeFailoverEvaluation {
+  const crossBorderRouteBlocked =
+    input.containsRawPiiOrBiometricAudio &&
+    input.sourceJurisdiction !== input.targetCloudJurisdiction;
+
+  const edgeSafetyReflexActive =
+    input.cloudRttMs > 600 || (input.packetLossPct ?? 0) > 15;
+
+  if (crossBorderRouteBlocked) {
+    return {
+      policyCode: "S14-SOVEREIGN-EDGE-GUARD",
+      crossBorderRouteBlocked: true,
+      edgeSafetyReflexActive,
+      highRiskWriteAllowed: false,
+      action: "block_cross_border_sovereign_violation",
+      summaryZh: `【S14 主权数据驻留硬阻断】检测到含声纹/PII 原始音频试图从 ${input.sourceJurisdiction} 跨域路由至 ${input.targetCloudJurisdiction}，已触发 SOVEREIGN_RESIDENCY_VIOLATION 物理熔断并重绑定境内主权节点（edgeReflex=${edgeSafetyReflexActive}）。`,
+    };
+  }
+
+  if (edgeSafetyReflexActive) {
+    return {
+      policyCode: "S14-SOVEREIGN-EDGE-GUARD",
+      crossBorderRouteBlocked: false,
+      edgeSafetyReflexActive: true,
+      highRiskWriteAllowed: false,
+      action: "activate_edge_safety_reflex_fallback",
+      summaryZh: `【S14 端侧安全反射弧 <150ms 降级】云端网络劣化（RTT=${input.cloudRttMs}ms, loss=${input.packetLossPct ?? 0}%），已切换至端侧 Edge NPU 安全反射模型，同时冻结离线高风险写操作（highRiskWriteAllowed=false）。`,
+    };
+  }
+
+  return {
+    policyCode: "S14-SOVEREIGN-EDGE-GUARD",
+    crossBorderRouteBlocked: false,
+    edgeSafetyReflexActive: false,
+    highRiskWriteAllowed: true,
+    action: "route_to_in_jurisdiction_cloud",
+    summaryZh: `【S14 同主权域云端全双工放行】管辖域 ${input.sourceJurisdiction} 匹配且网络健康（RTT=${input.cloudRttMs}ms），保持云端受控全双工连接。`,
+  };
+}
+
+

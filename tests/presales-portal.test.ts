@@ -4,15 +4,15 @@ import { readFile } from "node:fs/promises";
 
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
-    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "C2PA"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12"] },
+    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "ROI"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "C2PA"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01"] },
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01"] },
     { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
-    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "turnEpoch"] }
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -95,6 +95,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "cold_chain_telex_customs",
     "grid_storm_outage_lock",
     "pharma_clinical_sae_guard",
+    "cloud_noc_sev1_guard",
+    "auto_teleop_aeb_lock",
     "Nova Sonic",
     "L04 · Spec Hallucination Block",
     "T04 · Post-Takeover Late-Write Block",
@@ -110,6 +112,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "S10 · eSIM SIM-Swap Fraud Block",
     "S11 · Outbound TCPA & <200ms DNC",
     "S12 · Double-Blind & SAE Gate",
+    "S13 · Sev-1 NOC Change Freeze Gate",
+    "S14 · Sovereign Edge & AEB Reflex",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -123,6 +127,8 @@ import {
   assertActiveTurnEpoch,
   evaluateAirlineIrropsGuard,
   evaluateAudioDeepfakeGuard,
+  evaluateAutoTeleopSafetyGuard,
+  evaluateCloudNocSev1Guard,
   evaluateColdChainCustomsGuard,
   evaluateGridStormOutageGuard,
   evaluateHospitalityPmsGuard,
@@ -130,6 +136,7 @@ import {
   evaluateMultiSpeakerRoleGuard,
   evaluateOutboundTcpaConsentGuard,
   evaluatePharmaPvSaeGuard,
+  evaluateSovereignEdgeFailoverGuard,
   evaluateTelcoEsimGuard,
   evaluateTurnEpochWriteFence,
   evaluateWealthDualRecordingGuard,
@@ -480,6 +487,92 @@ test("S11-TCPA-CONSENT-GUARD outbound compliance guard blocks curfew calls, requ
   assert.equal(compliantDial.c2paWatermarkAttached, true);
   assert.equal(compliantDial.action, "allow_compliant_outbound_call");
 });
+
+test("CLOUD-NOC-01 Sev-1 war-room guard blocks destructive changes during freeze or without dual commander token and escalates >$5,000 SLA credit", () => {
+  const freezeBlocked = evaluateCloudNocSev1Guard({
+    incidentId: "INC-904",
+    destructiveCommandRequested: true,
+    changeFreezeActive: true,
+    dualCommanderApproved: false,
+    slaCreditCommitmentUsd: 20000,
+  });
+  assert.equal(freezeBlocked.destructiveChangeAllowed, false);
+  assert.equal(freezeBlocked.slaCreditStatus, "pending_vp_infra_approval");
+  assert.equal(freezeBlocked.action, "block_destructive_change_lockout");
+  assert.equal(freezeBlocked.policyCode, "CLOUD-NOC-01");
+
+  const readOnlyWithHighCredit = evaluateCloudNocSev1Guard({
+    incidentId: "INC-904",
+    destructiveCommandRequested: false,
+    changeFreezeActive: true,
+    dualCommanderApproved: false,
+    slaCreditCommitmentUsd: 12000,
+  });
+  assert.equal(readOnlyWithHighCredit.destructiveChangeAllowed, true);
+  assert.equal(readOnlyWithHighCredit.action, "escalate_sla_credit_to_vp");
+});
+
+test("AUTO-TELEOP-01 L4 autonomous fleet guard dispatches 0s eCall on injury/hazmat and blocks disabling AEB or >15km/h remote waypoint overrides", () => {
+  const hazmatEmergency = evaluateAutoTeleopSafetyGuard({
+    vehicleId: "AV-808",
+    vehicleSpeedKmh: 28,
+    disableAebRequested: false,
+    remoteWaypointOverrideRequested: true,
+    injuryOrHazmatDetected: true,
+  });
+  assert.equal(hazmatEmergency.remoteCommandAllowed, false);
+  assert.equal(hazmatEmergency.eCallDispatchedImmediately, true);
+  assert.equal(hazmatEmergency.edrBlackboxLocked, true);
+  assert.equal(hazmatEmergency.action, "dispatch_ecall_and_lock_edr_immediately");
+  assert.equal(hazmatEmergency.policyCode, "AUTO-TELEOP-01");
+
+  const aebDisableBlocked = evaluateAutoTeleopSafetyGuard({
+    vehicleId: "AV-808",
+    vehicleSpeedKmh: 32,
+    disableAebRequested: true,
+    remoteWaypointOverrideRequested: true,
+    injuryOrHazmatDetected: false,
+  });
+  assert.equal(aebDisableBlocked.remoteCommandAllowed, false);
+  assert.equal(aebDisableBlocked.action, "block_teleop_aeb_or_overspeed_lockout");
+
+  const safeLowSpeedAssist = evaluateAutoTeleopSafetyGuard({
+    vehicleId: "AV-808",
+    vehicleSpeedKmh: 8,
+    disableAebRequested: false,
+    remoteWaypointOverrideRequested: true,
+    injuryOrHazmatDetected: false,
+  });
+  assert.equal(safeLowSpeedAssist.remoteCommandAllowed, true);
+  assert.equal(safeLowSpeedAssist.action, "allow_safe_low_speed_waypoint_assist");
+});
+
+test("S14-SOVEREIGN-EDGE-GUARD blocks cross-border raw PII audio routing and switches to on-device safety reflex when RTT > 600ms", () => {
+  const crossBorderBlocked = evaluateSovereignEdgeFailoverGuard({
+    sourceJurisdiction: "EU_GDPR",
+    targetCloudJurisdiction: "US_HIPAA",
+    containsRawPiiOrBiometricAudio: true,
+    cloudRttMs: 780,
+  });
+  assert.equal(crossBorderBlocked.crossBorderRouteBlocked, true);
+  assert.equal(crossBorderBlocked.edgeSafetyReflexActive, true);
+  assert.equal(crossBorderBlocked.highRiskWriteAllowed, false);
+  assert.equal(crossBorderBlocked.action, "block_cross_border_sovereign_violation");
+  assert.equal(crossBorderBlocked.policyCode, "S14-SOVEREIGN-EDGE-GUARD");
+
+  const tunnelEdgeFallback = evaluateSovereignEdgeFailoverGuard({
+    sourceJurisdiction: "CN_PIPL",
+    targetCloudJurisdiction: "CN_PIPL",
+    containsRawPiiOrBiometricAudio: true,
+    cloudRttMs: 720,
+    packetLossPct: 18,
+  });
+  assert.equal(tunnelEdgeFallback.crossBorderRouteBlocked, false);
+  assert.equal(tunnelEdgeFallback.edgeSafetyReflexActive, true);
+  assert.equal(tunnelEdgeFallback.highRiskWriteAllowed, false);
+  assert.equal(tunnelEdgeFallback.action, "activate_edge_safety_reflex_fallback");
+});
+
 
 
 

@@ -477,5 +477,41 @@ sequenceDiagram
 | **3. `<200ms` 一句话免打扰熔断 (`Zero-Retention DNC Opt-Out`)** | 一旦语义路由检测到被叫表达任何拒接/退订意图（*"别再打了" / "Put me on Do Not Call" / "退订"*），**严禁大模型生成任何挽留话术**，在 `<200ms` 内原子写入全局 DNC 表、吊销 `consentId` 并礼貌挂断。 | 对应 POC 照妖镜探针 `S11`，实现退订指令零延迟生效、零二次骚扰。 |
 | **4. C2PA 密码学清单与心理声学水印溯源 (`C2PA Audio Provenance`)** | 所有下行合成音频流实时嵌入 **C2PA (Coalition for Content Provenance and Authenticity)** 签名清单与不可听扩频水印（含 `tenantId`、`sessionId`、时间戳哈希），即使被翻录重放也可毫秒级溯源真伪。 | 防止外呼语音被恶意剪辑造谣，同时与 `S08-DEEPFAKE-GUARD` 形成收发双向防伪闭环。 |
 
+---
+
+### 4.14 端云协同韧性降级（Edge-Cloud Hybrid Fallback）与主权数据驻留越境熔断架构 (`S14-SOVEREIGN-EDGE-GUARD`)
+
+在跨国车联网 L4 远程救援（S5/S20）、深海/矿山工业现场排障（S10/S14）以及受严格数据主权监管的跨国金融医疗场景（欧盟 GDPR、中国《个人信息保护法》PIPL / 汽车数据不出境安全要求、新加坡 MAS TRM）中，单纯依赖单一公有云中心节点面临两大红线挑战：**① 地下隧道/偏远矿区弱网断连导致云端语音完全失联；② 跨国漫游或全局负载均衡错误地将含未脱敏生物声纹/PII 的原始音频流路由至境外数据中心**。为此，我们设计了 **端云混合韧性降级与主权域硬围栏架构（`S14-SOVEREIGN-EDGE-GUARD`）**：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Edge as 车载/现场边缘安全节点 (Edge NPU + 本地量化语音模型)
+    participant Router as 主权域与健康度路由器 (S14-SOVEREIGN-EDGE-GUARD)
+    participant RegionalCloud as 境内合规主权云节点 (e.g. Azure Germany West Central / China North 3)
+    participant ForeignCloud as 境外非主权云节点 (Cross-Border Region)
+
+    Edge->>Router: 发起语音会话 (dataJurisdiction="EU-GDPR", cloudRttMs=740, containsRawPiiAudio=true)
+    Router->>Router: 1) 校验主权驻留: sourceJurisdiction vs targetCloudJurisdiction
+    alt 目标云区域跨主权边界 且 包含原始未脱敏音频/PII
+        Router--xForeignCloud: 🚨 SOVEREIGN_RESIDENCY_VIOLATION (物理熔断跨境 WebRTC/WebSocket 路由)
+        Router->>RegionalCloud: 强制锁定同主权域境内端点 (In-Jurisdiction Pinning)
+    end
+    Router->>Router: 2) 校验网络 RTT 与丢包率 (cloudRttMs = 740ms > 600ms 阈值)
+    alt 云端 RTT > 600ms 或 心跳超时 (隧道/矿井断网)
+        Router->>Edge: ⚡ <150ms 触发 EDGE_SAFETY_REFLEX_FALLBACK (切换端侧离线安全反射弧)
+        Edge-->>Edge: 本地执行 LOTO 急停 / 车载 MRC 靠边停车 / 离线 eCall 播报 (只读安全指令集)
+    else 境内主权云健康 (RTT <= 600ms)
+        Router->>RegionalCloud: 建立同主权域 mTLS 加密全双工语音流
+    end
+```
+
+| 核心架构控制点 | 工程确定性准则 | 解决的业务与合规痛点 |
+| :--- | :--- | :--- |
+| **1. 主权数据驻留硬围栏 (`In-Jurisdiction Sovereign Pinning`)** | 路由层强制比对租户数据管辖域 `sourceJurisdiction`（如 `EU_GDPR`、`CN_PIPL`、`SG_MAS`、`US_HIPAA`）与目标云推理节点所属主权域 `targetCloudJurisdiction`。当 `containsRawPiiOrBiometricAudio === true` 且主权域不匹配时，100% 触发 `SOVEREIGN_RESIDENCY_VIOLATION` 阻断跨境连接，绝不允许因跨国流量调度造成违规数据出境。 | 满足跨国车企、外资银行与跨国药企的数据驻留审计要求（对应 POC 照妖镜探针 `S14`）。 |
+| **2. `<150ms` 端侧安全反射弧降级 (`Edge Safety Reflex Fallback`)** | 当车载或工业边缘网关检测到云端 WebRTC 往返时延 `cloudRttMs > 600ms` 或连续丢包 `> 15%`（如驶入地下隧道、矿井或台风基站受损）时，在 `<150ms` 内自动将语音控制权切换至端侧 NPU 量化模型（如 Phi-4-mini-audio / Whisper-tiny + 本地规则引擎）。 | 确保极端断网下仍能0秒响应“紧急停车 / 拨打 122 / 播报断电规程”等保命指令。 |
+| **3. 端侧降级态写权限收紧 (`Offline Read-Only & Safety-Only Envelope`)** | 在端侧离线降级模式（`edgeFallbackActive === true`）下，仅开放**本地安全急停、紧急呼救与离线 SOP 播报**，严禁在无云端实时风控账本校验时离线批准高额退款、放货或生产变更。 | 防止攻击者通过伪造断网/信号屏蔽诱导端侧小模型越权放行高价值业务事务。 |
+
+
 
 
