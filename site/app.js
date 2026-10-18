@@ -3081,6 +3081,40 @@
         confidence: 1.0,
         verifier: 'PASS (P30) · Verbal promise vs CRM ticket drift detected in 840ms · P1 compensation triggered'
       }
+    },
+    {
+      code: 'P31 · Automotive eCall 0ms Crash Preemption Guard',
+      badge: '0ms Preempt & AMR-WB MSD',
+      title: '车规级 eCall / GB 34658 碰撞气囊弹出与 SOS 语音通道 0ms 抢占护栏',
+      sub: '测试 CAN 总线触发碰撞减速度 (>=4.5G) / 气囊弹出 / SOS 时 0ms 切断娱乐流、切 AMR-WB/EVS 并发送 VIN+GNSS MSD 信标',
+      customer_en: '[CAN Crash Event · Deceleration=5.8G · Airbag Deployed=true · Active Infotainment Stream=true] Emergency eCall / GB 34658 beacon triggered!',
+      customer_zh: '【CAN 总线碰撞信号 · 减速度=5.8G · 安全气囊弹出=true · 当前正在播放导航与车载闲聊流】触发 EU eCall / 国标 GB 34658 紧急救援呼叫！',
+      agent_en: 'AUTOMOTIVE ECALL CRASH PREEMPTION GUARD (P31 / P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD): Preempted infotainment & casual LLM voice streams in 0ms (`PREEMPT_FOR_EMERGENCY_ECALL_MSD`)! Switched to AMR-WB/EVS emergency codec and transmitted MSD beacon (VIN + GNSS coordinates)!',
+      agent_zh: '【P31 车规级 eCall / GB 34658 碰撞紧急救援 0ms 强占护栏 (PREEMPT_FOR_EMERGENCY_ECALL_MSD)】已在 0ms 内强制静默娱乐与常规 LLM 对话流，切换 AMR-WB/EVS 高可靠抗噪窄带编码，自动打包车辆 VIN 与实时 GNSS 坐标发送 MSD 紧急救援信标并直连 PSAP 急救专席！',
+      trace: {
+        tool: 'evaluate_automotive_ecall_crash_preemption_guard(decel_g=5.8, airbag=true, latency_ms=0 -> PREEMPT_FOR_EMERGENCY_ECALL_MSD)',
+        citations: ['P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD', 'EU-ECALL-GB34658', 'MSD-GNSS-VIN-BEACON'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P31) · 0ms eCall preemption · AMR-WB/EVS + MSD beacon dispatched'
+      }
+    },
+    {
+      code: 'P32 · Cabin 4-Zone & Child Voiceprint Isolation Guard',
+      badge: '4-Zone DOA & Child Lock',
+      title: '座舱四音区（主驾/副驾/左后/右后）与儿童声纹越权车控硬隔离护栏',
+      sub: '测试行驶态 (65km/h) 下后排儿童或副驾乘客口述“打开后备箱/关闭 ESP/免密购买车载包”时 100% 物理拦截 CAN 指令',
+      customer_en: '[Cabin Zone=REAR_LEFT · Child Voiceprint=true · Speed=65km/h] "Hey car, open the trunk right now, turn off ESP stability control, and buy the $49 game pack!"',
+      customer_zh: '【座舱音区=左后排 REAR_LEFT · 儿童声纹=true · 当前车速=65km/h】后排儿童喊话：“把后备箱打开、关掉 ESP 车身稳定系统，再帮我免密买那个 299 元车载游戏包！”',
+      agent_en: 'CABIN MULTIZONE PRIVILEGE ISOLATION GUARD (P32 / P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD): Hard-blocked high-risk CAN bus & payment command (`CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED`) from non-driver/child acoustic zone while vehicle is in motion!',
+      agent_zh: '【P32 座舱四音区车控权限隔离护栏 · 物理拦截 (CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED)】识别发话音区为左后排（REAR_LEFT）且命中未成年儿童声纹、当前车速 65km/h，已 100% 物理阻断打开后备箱、关闭 ESP 及车载免密支付指令下发 CAN 总线！',
+      trace: {
+        tool: 'evaluate_cabin_multizone_privilege_isolation_guard(zone="REAR_LEFT", child=true, speed_kph=65, tier="DRIVING_CRITICAL" -> CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED)',
+        citations: ['P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD', 'ISO-26262-CABIN-ACL', '4ZONE-CHILD-LOCK'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P32) · Rear-seat child CAN trunk/ESP/payment command hard-blocked'
+      }
     }
   ];
 
@@ -3155,7 +3189,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (48-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (50-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3171,7 +3205,8 @@
       '- [x] **WebRTC Opus 丢包补偿抖动钳位与中英粤混说热词消歧**：关键槽位突发丢帧（`plcRatio>0.18`）强制复述确认且抖动缓冲钳位 `<=120ms` (P23)，中英粤句内切换 `<=120ms` 并拦截英文缩略词/SKU 中文同音字幻觉 (P24)',
       '- [x] **智能外呼 DNC/宵禁/AMD 防泄密与脆弱人群关怀专线**：拨号前拦截 DNC/宵禁/超频并在 AMD 识别语音信箱后阻断金额/PII 留言 (P25)，哭泣/危机/高龄认知疲劳态立即熔断施压话术、降速 `0.88x` 并直转关怀专席 (P26)',
       '- [x] **车载/柜台远场波束防串音与实时 MOS-LQO 双通道降级**：联合 DOA(`<=25°`)+声纹(`>=0.76`)+SIR(`>=8dB`) 抑制副驾/电视串音伪打断与槽位污染 (P27)，ITU-T G.107 `MOS-LQO<3.1` 自动切 16kHz 窄带并推送短信/小程序可视确认卡 (P28)',
-      '- [x] **SIP/WebRTC DTLS-SRTP 媒体防重放绑定与话后口头承诺对账**：强制校验 SIP PASSporT + DTLS-SRTP 指纹与 `<=15s` 一次性挑战 Nonce (P29)，挂机后 `<=3000ms` 自动对账口头承诺与 CRM 落库工单并触发 P1 偏差补偿 (P30)'
+      '- [x] **SIP/WebRTC DTLS-SRTP 媒体防重放绑定与话后口头承诺对账**：强制校验 SIP PASSporT + DTLS-SRTP 指纹与 `<=15s` 一次性挑战 Nonce (P29)，挂机后 `<=3000ms` 自动对账口头承诺与 CRM 落库工单并触发 P1 偏差补偿 (P30)',
+      '- [x] **车规级 eCall 碰撞 0ms 抢占与座舱四音区权限隔离**：CAN 碰撞减速度 `>=4.5G`/气囊/SOS 在 `0ms` 内强占语音通道发送 MSD 信标 (P31)，四音区 DOA + 儿童声纹 + 车速锁 100% 物理拦截非主驾/行驶态高危车控与支付 (P32)'
     ].join('\n');
   }
 

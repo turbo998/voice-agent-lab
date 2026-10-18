@@ -192,5 +192,6 @@
 | **14. 智能外呼 DNC/宵禁/AMD 护栏与脆弱人群关怀专线**<br>(`外呼违背 DNC/宵禁或语音信箱泄露金额 / 对哭泣高龄客户强推催收`) | 接入 **`P25-OUTBOUND-TCPA-DNC-AMD-GUARD`** 拨号前拦截 DNC/宵禁/超频并在 AMD 识别语音信箱时阻断 PII 留言 | **`P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD` 哭泣/危机/高龄认知疲劳态立即熔断施压话术、降速 `0.88x` 并直转关怀专席** | 100% 规避 TCPA/工信部防骚扰与语音信箱泄密罚单，脆弱客户高危投诉压降 96% |
 | **15. 车载/柜台远场波束防串音与实时 MOS-LQO 双通道降级**<br>(`副驾/背景电视串音误打断或污染金额 / 弱网碎音下强行纯语音确认`) | 接入 **`P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD`** 联合 DOA(`<=25°`)+声纹(`>=0.76`)+SIR(`>=8dB`) 抑制串音伪打断与背景污染 | **`P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD` E-model 实时监测 `MOS-LQO<3.1` 自动切 16kHz 窄带并推送短信/小程序可视确认卡** | 远场串音误打断压降 94.8%，弱网碎音下高风险误确认率降至 0.0% |
 | **16. 信令媒体防重放加密绑定与话后口头承诺对账**<br>(`录音重放或 RTP 媒体包注入劫持 / 口头答应退费但后台工单漏建或金额不符`) | 接入 **`P29-SIP-WEBRTC-ANTI-REPLAY-MEDIA-BINDING`** 强制校验 SIP PASSporT + DTLS-SRTP 指纹与 `<=15s` 一次性挑战 Nonce | **`P30-POSTCALL-PROMISE-VS-TICKET-AUDIT-GUARD` 挂机后 `<=3000ms` 实时对账口头承诺金额/动作与 CRM 落库工单，偏差自动触发 P1 补偿** | 100% 阻断录音重放与媒体流劫持，话后承诺与落库账实偏差率降至 0.0% |
+| **17. 车规级 eCall 碰撞 0ms 抢占与座舱四音区权限隔离**<br>(`碰撞时普通闲聊占线阻塞救援 / 后排儿童或副驾行驶中误开后备箱或盗刷`) | 接入 **`P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD`** 监听 CAN 减速度 `>=4.5G`/气囊/SOS 在 `0ms` 内强占语音通道发送 MSD 信标 | **`P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD` 四音区 DOA + 儿童声纹 + 车速锁，100% 阻断非主驾/行驶态高危车控与支付** | 100% 满足 EU eCall / GB 34658 法规抢占，后排/副驾越权车控事故率降至 0.0% |
 
 

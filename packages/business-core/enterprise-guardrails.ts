@@ -3005,6 +3005,151 @@ export function evaluatePostCallPromiseVsTicketAuditGuard(input: {
   };
 }
 
+export interface AutomotiveEcallCrashPreemptionGuardEvaluation {
+  readonly policyCode: "P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD";
+  readonly vehicleVin: string;
+  readonly emergencyTriggered: boolean;
+  readonly allowed: boolean;
+  readonly preemptionLatencyMs: number;
+  readonly msdPayloadReady: boolean;
+  readonly activeCodec: "AMR-WB_EVS_EMERGENCY" | "OPUS_48KHZ_INFOTAINMENT";
+  readonly action:
+    | "PREEMPT_FOR_EMERGENCY_ECALL_MSD"
+    | "ALLOW_STANDARD_CABIN_VOICE";
+  readonly actionCode:
+    | "PREEMPT_FOR_EMERGENCY_ECALL_MSD"
+    | "ALLOW_STANDARD_CABIN_VOICE";
+  readonly summaryZh: string;
+}
+
+/**
+ * Deterministic Automotive eCall / GB 34658 Crash & SOS 0ms Voice Preemption Guard (`P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD`).
+ * - Immediately preempts all infotainment/media/casual LLM voice streams within 0ms when CAN bus reports crash deceleration (`impactDecelerationG >= 4.5`), airbag deployment (`airbagDeployed === true`), rollover, or physical SOS button press (`sosButtonPressed === true`).
+ * - Switches voice channel to ultra-resilient narrowband `AMR-WB / EVS` and packages Minimum Set of Data (MSD: VIN, GNSS coordinates, heading, rollover, passenger count) for emergency PSAP dispatch.
+ */
+export function evaluateAutomotiveEcallCrashPreemptionGuard(input: {
+  vehicleVin: string;
+  impactDecelerationG: number;
+  airbagDeployed: boolean;
+  sosButtonPressed: boolean;
+  activeInfotainmentStream: boolean;
+  gnssCoordinatesValid: boolean;
+  occupantCount?: number;
+}): AutomotiveEcallCrashPreemptionGuardEvaluation {
+  const emergencyTriggered =
+    input.airbagDeployed ||
+    input.impactDecelerationG >= 4.5 ||
+    input.sosButtonPressed;
+  const msdPayloadReady = Boolean(
+    input.vehicleVin && input.vehicleVin.trim().length > 0 && input.gnssCoordinatesValid
+  );
+
+  if (emergencyTriggered) {
+    return {
+      policyCode: "P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD",
+      vehicleVin: input.vehicleVin,
+      emergencyTriggered: true,
+      allowed: false,
+      preemptionLatencyMs: 0,
+      msdPayloadReady,
+      activeCodec: "AMR-WB_EVS_EMERGENCY",
+      action: "PREEMPT_FOR_EMERGENCY_ECALL_MSD",
+      actionCode: "PREEMPT_FOR_EMERGENCY_ECALL_MSD",
+      summaryZh: `【P31 车规级 eCall / GB 34658 碰撞紧急救援 0ms 强占护栏 (PREEMPT_FOR_EMERGENCY_ECALL_MSD)】检测到 CAN 碰撞减速度=${input.impactDecelerationG}G / 气囊弹出=${input.airbagDeployed} / SOS=${input.sosButtonPressed}，已在 0ms 内强制静默娱乐与常规 LLM 会话流，切换 AMR-WB/EVS 高抗噪编码并打包发送 MSD 信标（VIN=${input.vehicleVin}，GNSS就绪=${msdPayloadReady}）。`,
+    };
+  }
+
+  return {
+    policyCode: "P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD",
+    vehicleVin: input.vehicleVin,
+    emergencyTriggered: false,
+    allowed: true,
+    preemptionLatencyMs: 0,
+    msdPayloadReady,
+    activeCodec: "OPUS_48KHZ_INFOTAINMENT",
+    action: "ALLOW_STANDARD_CABIN_VOICE",
+    actionCode: "ALLOW_STANDARD_CABIN_VOICE",
+    summaryZh: `【P31 车载 eCall 碰撞监控正常】CAN 减速度=${input.impactDecelerationG}G，无碰撞或 SOS 触发，保持常规 48kHz 座舱语音交互。`,
+  };
+}
+
+export interface CabinMultiZonePrivilegeIsolationGuardEvaluation {
+  readonly policyCode: "P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD";
+  readonly speakerZone: "DRIVER" | "FRONT_PASSENGER" | "REAR_LEFT" | "REAR_RIGHT";
+  readonly commandSafetyTier:
+    | "DRIVING_CRITICAL"
+    | "CABIN_SECURITY"
+    | "PAYMENT"
+    | "MEDIA_COMFORT";
+  readonly vehicleSpeedKph: number;
+  readonly isChildVoiceprint: boolean;
+  readonly allowed: boolean;
+  readonly reason:
+    | "CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED"
+    | "CABIN_ZONE_COMMAND_AUTHORIZED";
+  readonly actionCode:
+    | "CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED"
+    | "CABIN_ZONE_COMMAND_AUTHORIZED";
+  readonly summaryZh: string;
+}
+
+/**
+ * Deterministic 4-Zone Automotive Cabin Privilege Isolation & Child/Passenger Safety Guard (`P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD`).
+ * - Blocks high-risk vehicle CAN bus commands (`DRIVING_CRITICAL`, `CABIN_SECURITY`, `PAYMENT`) when issued from non-driver acoustic zones (`speakerZone !== "DRIVER"`), by a child voiceprint (`isChildVoiceprint === true`), or while the vehicle is in motion (`vehicleSpeedKph > 0` for critical trunk/door/ESP actions) without explicit driver confirmation (`driverExplicitConfirmed === true`).
+ */
+export function evaluateCabinMultiZonePrivilegeIsolationGuard(input: {
+  speakerZone: "DRIVER" | "FRONT_PASSENGER" | "REAR_LEFT" | "REAR_RIGHT";
+  vehicleSpeedKph: number;
+  isChildVoiceprint: boolean;
+  commandSafetyTier:
+    | "DRIVING_CRITICAL"
+    | "CABIN_SECURITY"
+    | "PAYMENT"
+    | "MEDIA_COMFORT";
+  driverExplicitConfirmed?: boolean;
+  commandName?: string;
+}): CabinMultiZonePrivilegeIsolationGuardEvaluation {
+  const isHighRiskCommand =
+    input.commandSafetyTier === "DRIVING_CRITICAL" ||
+    input.commandSafetyTier === "CABIN_SECURITY" ||
+    input.commandSafetyTier === "PAYMENT";
+
+  const unauthorizedZoneOrChild =
+    input.isChildVoiceprint ||
+    (input.speakerZone !== "DRIVER" && !input.driverExplicitConfirmed);
+  const unsafeInMotion =
+    input.vehicleSpeedKph > 0 &&
+    (input.commandSafetyTier === "DRIVING_CRITICAL" ||
+      (input.commandSafetyTier === "CABIN_SECURITY" && input.speakerZone !== "DRIVER"));
+
+  if (isHighRiskCommand && (unauthorizedZoneOrChild || unsafeInMotion)) {
+    return {
+      policyCode: "P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD",
+      speakerZone: input.speakerZone,
+      commandSafetyTier: input.commandSafetyTier,
+      vehicleSpeedKph: input.vehicleSpeedKph,
+      isChildVoiceprint: input.isChildVoiceprint,
+      allowed: false,
+      reason: "CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED",
+      actionCode: "CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED",
+      summaryZh: `【P32 座舱四音区车控权限隔离护栏 · 硬阻断 (CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED)】音区=${input.speakerZone}（儿童声纹=${input.isChildVoiceprint}，车速=${input.vehicleSpeedKph}km/h）请求执行 ${input.commandSafetyTier} 级高危指令 ${input.commandName ?? ""}，因越权音区/未成年声纹或行驶态安全锁已物理拦截 CAN 指令下发。`,
+    };
+  }
+
+  return {
+    policyCode: "P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD",
+    speakerZone: input.speakerZone,
+    commandSafetyTier: input.commandSafetyTier,
+    vehicleSpeedKph: input.vehicleSpeedKph,
+    isChildVoiceprint: input.isChildVoiceprint,
+    allowed: true,
+    reason: "CABIN_ZONE_COMMAND_AUTHORIZED",
+    actionCode: "CABIN_ZONE_COMMAND_AUTHORIZED",
+    summaryZh: `【P32 座舱四音区权限校验通过】音区=${input.speakerZone} 请求执行 ${input.commandSafetyTier} 级指令已通过主驾声纹与车速安全门禁。`,
+  };
+}
+
+
 
 
 

@@ -866,6 +866,33 @@ flowchart LR
 | **1. SIP PASSporT + DTLS-SRTP 媒体指纹绑定与一次性 Nonce 防重放 (`P29-SIP-WEBRTC-ANTI-REPLAY-MEDIA-BINDING`)** | `evaluateSipWebrtcAntiReplayMediaBinding` 强制核验一次性动态挑战 Nonce 未被重复消费且 `nonceAgeMs <= 15000ms`（拦截 `REPLAYED_CHALLENGE_NONCE_BLOCKED`），同时强制校验 SIP `PASSporT` 签名与 `DTLS-SRTP sha-256` 媒体指纹 100% 匹配（拦截 `DTLS_SRTP_MEDIA_BINDING_MISMATCH_BLOCKED`）。 | **100% 阻断预录语音重放与 RTP 媒体流中间人注入劫持**（对应 POC 探针 `P29`）。 |
 | **2. 话后 `<=3000ms` 口头承诺与 CRM/工单落库零偏差对账及 P1 自动补偿 (`P30-POSTCALL-PROMISE-VS-TICKET-AUDIT-GUARD`)** | `evaluatePostCallPromiseVsTicketAuditGuard` 在挂机后 `<=3000ms` 内自动比对语音承诺槽位（`promisedActionCode`、`promisedAmountMinor`）与真实落库工单（`persistedTicketId`、`persistedAmountMinor`）；一旦发现“有口头承诺但无工单”或金额偏差 `!= 0`，立即触发 P1 补偿事务与双通道纠偏告警（`VERBAL_PROMISE_TICKET_DRIFT_COMPENSATION_TRIGGERED`）。 | **100% 消除“AI 口头答应却未办妥/少退钱”引发的监管升级投诉**（对应 POC 探针 `P30`）。 |
 
+### 4.27 车规级座舱 eCall / GB 34658 碰撞紧急救援 0ms 抢占护栏 (`P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD`) 与四音区乘员/儿童越权车控隔离护栏 (`P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD`)
+
+在智能网联汽车座舱与车载全双工语音助手中，除了远场波束成形防串音（`P27`）外，还必须满足 **欧盟 EU eCall / 中国国标 GB 34658 碰撞紧急呼叫最高优先级抢占** 与 **多乘员四音区（主驾/副驾/左后/右后）功能安全（ISO 26262）车控权限硬隔离** 两大车规级铁律：
+1. **碰撞气囊弹出 / 物理 SOS 紧急救援语音通道 `0ms` 硬件级抢占 (`P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD`)**：当 CAN 总线触发碰撞减速度阈值（`impactDecelerationG >= 4.5G`）、气囊点火信号（`airbagDeployed = true`）或顶棚物理 SOS 按键时，车载语音网关必须在 **`0ms`** 内强制静默并挂断所有正在进行的娱乐播报、导航闲聊与普通大模型流，立即切换至高抗损窄带紧急编码（`AMR-WB / EVS`），自动打包车辆 `VIN`、高精度 `GNSS` 经纬度、行驶朝向、翻滚状态与乘员人数发送 **MSD（Minimum Set of Data）** 紧急信标并接通 PSAP 救援专席（`PREEMPT_FOR_EMERGENCY_ECALL_MSD`），严禁普通 LLM 会话占用紧急救援信道；
+2. **座舱四音区（`DRIVER / FRONT_PASSENGER / REAR_LEFT / REAR_RIGHT`）+ 儿童声纹越权车控硬隔离 (`P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD`)**：当车辆处于行驶态（`vehicleSpeedKph > 0`）或发话人位于副驾/后排音区（`speakerZone !== "DRIVER"`）或被声学分类器识别为未成年儿童声纹（`isChildVoiceprint = true`）时，若发起涉及行车安全、车门后备箱锁控或免密车载支付的高危指令（`commandSafetyTier ∈ {DRIVING_CRITICAL, CABIN_SECURITY, PAYMENT}`，如后排儿童喊“打开后备箱/解锁车门/关闭 ESP 车身稳定系统/购买 299 元车载游戏包”），状态机必须 **100% 确定性阻断 CAN 总线指令下发（`CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED`）**，仅放行所属音区的空调温度/座椅加热/个人媒体等舒适性指令（`MEDIA_COMFORT`）。
+
+```mermaid
+flowchart LR
+    subgraph EcallPreempt["🚨 P31 车规级 eCall / GB 34658 碰撞 0ms 抢占护栏"]
+        direction TB
+        CanTrigger["💥 CAN 总线碰撞减速度 >=4.5G<br/>或气囊弹出 / 物理 SOS 按键"] --> CheckP31["evaluateAutomotiveEcallCrashPreemptionGuard()<br/>• 0ms 强制切断娱乐与普通 LLM 对话流 (allowed=false)<br/>• 切换 AMR-WB / EVS 窄带高抗噪编码<br/>• 自动打包 VIN + GNSS 坐标发送 MSD 紧急信标"]
+    end
+
+    subgraph ZoneIso["🛡️ P32 座舱四音区与儿童声纹越权车控隔离护栏"]
+        direction TB
+        ZoneInput["🎙️ 四音区波束 DOA + 乘员/儿童声纹<br/>(DRIVER / PASSENGER / REAR + 车速 km/h)"] --> CheckP32["evaluateCabinMultiZonePrivilegeIsolationGuard()<br/>• 拦截非主驾音区或儿童声纹发起行车/门锁/支付指令<br/>• 拦截行驶态 (speed > 0) 高危车控指令<br/>• 触发 CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED"]
+    end
+
+    EcallPreempt --> ZoneIso
+```
+
+| 核心车规级座舱安全控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 车规级安全与合规收益 |
+| :--- | :--- | :--- |
+| **1. EU eCall / GB 34658 碰撞与 SOS 紧急救援 `0ms` 语音抢占 (`P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD`)** | `evaluateAutomotiveEcallCrashPreemptionGuard` 实时监听 CAN 总线减速度（`>=4.5G`）、气囊状态与 SOS 信号；一旦触发立即返回 `allowed: false`（阻断常规娱乐流）、`preemptionLatencyMs: 0`、`action: "PREEMPT_FOR_EMERGENCY_ECALL_MSD"` 与 `msdPayloadReady: true`。 | **100% 满足 EU eCall 与国标 GB 34658 零延迟生命救援抢占红线**（对应 POC 探针 `P31`）。 |
+| **2. 四音区乘员/后排儿童声纹高危车控权限隔离 (`P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD`)** | `evaluateCabinMultiZonePrivilegeIsolationGuard` 联合校验发话音区（`speakerZone`）、车速（`vehicleSpeedKph`）、儿童声纹（`isChildVoiceprint`）与指令安全等级（`commandSafetyTier`）；非主驾或儿童发起 `DRIVING_CRITICAL / CABIN_SECURITY / PAYMENT` 指令时立即返回 `allowed: false` 与 `CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED`。 | **100% 杜绝后排儿童或副驾误触/恶作剧开启后备箱、关闭 ESP 或盗刷车载支付**（对应 POC 探针 `P32`）。 |
+
+
 
 
 

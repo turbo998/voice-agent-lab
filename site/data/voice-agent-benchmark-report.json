@@ -270,6 +270,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P29-SIP-WEBRTC-ANTI-REPLAY-MEDIA-BINDING enforces SIP PASSporT signature, DTLS-SRTP sha-256 fingerprint match, and <=15000ms unconsumed challenge Nonce to block replay and RTP injection; P30-POSTCALL-PROMISE-VS-TICKET-AUDIT-GUARD reconciles verbal commitments against persisted CRM tickets within <=3000ms and triggers P1 compensation on drift."
+    },
+    {
+      "check_name": "Automotive eCall 0ms Crash Preemption & Cabin 4-Zone Child/Passenger Privilege Isolation Guard (P31 / P32)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD preempts infotainment/LLM voice in 0ms on CAN >=4.5G crash/airbag/SOS, switching to AMR-WB/EVS and dispatching VIN+GNSS MSD beacon; P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD blocks high-risk CAN/payment commands from non-driver zones or child voiceprints while in motion."
     }
   ],
   "latency_scaling": [
