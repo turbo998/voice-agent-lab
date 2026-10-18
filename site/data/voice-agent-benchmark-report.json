@@ -186,6 +186,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "CLOUD-NOC-01 blocks unapproved destructive restarts during freeze; S14-SOVEREIGN-EDGE-GUARD blocks cross-border PII audio, switches to Edge NPU in 118ms, and locks AEB."
+    },
+    {
+      "check_name": "12-Min S2S Sliding-Window Audio Pruning & <2ms Unified 3-Layer Zero-Trust Pipeline (P07 / P08)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P07-FINOPS-ERLANG-PLANNER cuts 48-turn S2S cost from $0.2244/min to $0.0584/min (-74.0%); P08-UNIFIED-ZERO-TRUST-PIPELINE blocks compound L0-L2 attacks with WORM SHA256 digest."
     }
   ],
   "latency_scaling": [

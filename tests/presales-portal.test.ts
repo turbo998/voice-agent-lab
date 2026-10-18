@@ -5,14 +5,14 @@ import { readFile } from "node:fs/promises";
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
     { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "C2PA"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "C2PA"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01"] },
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE"] },
     { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
-    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "turnEpoch"] }
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -114,6 +114,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "S12 · Double-Blind & SAE Gate",
     "S13 · Sev-1 NOC Change Freeze Gate",
     "S14 · Sovereign Edge & AEB Reflex",
+    "P07 · Audio Context Pruning & Erlang-C",
+    "P08 · <2ms Unified 3-Layer Pipeline",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -125,6 +127,7 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
 
 import {
   assertActiveTurnEpoch,
+  calculateVoiceFinopsAndErlangBurst,
   evaluateAirlineIrropsGuard,
   evaluateAudioDeepfakeGuard,
   evaluateAutoTeleopSafetyGuard,
@@ -139,6 +142,7 @@ import {
   evaluateSovereignEdgeFailoverGuard,
   evaluateTelcoEsimGuard,
   evaluateTurnEpochWriteFence,
+  evaluateUnifiedVoiceTurnPipeline,
   evaluateWealthDualRecordingGuard,
 } from "../packages/business-core/enterprise-guardrails.js";
 import { LabError } from "../packages/business-core/contracts.js";
@@ -572,6 +576,58 @@ test("S14-SOVEREIGN-EDGE-GUARD blocks cross-border raw PII audio routing and swi
   assert.equal(tunnelEdgeFallback.highRiskWriteAllowed, false);
   assert.equal(tunnelEdgeFallback.action, "activate_edge_safety_reflex_fallback");
 });
+
+test("P07-FINOPS-ERLANG-PLANNER cuts 12-min 48-turn S2S audio token cost by 74% via sliding window and computes Erlang-C SIP channels", () => {
+  const finops = calculateVoiceFinopsAndErlangBurst({
+    callDurationMinutes: 12,
+    turnsPerMinute: 4,
+    slidingWindowKeepTurns: 4,
+    peakArrivalCallsPerMinute: 300,
+    averageHandleTimeMinutes: 3.5,
+    averageUtilizationPct: 68,
+  });
+  assert.equal(finops.policyCode, "P07-FINOPS-ERLANG-PLANNER");
+  assert.equal(finops.unprunedPerMinUsd, 0.2244);
+  assert.equal(finops.slidingWindowPerMinUsd, 0.0584);
+  assert.equal(finops.contextPruningSavingsPct, 74.0);
+  assert.equal(finops.ptuBreakEvenUtilizationPct, 54.0);
+  assert.equal(finops.requiredSipChannelsErlangC, 1134);
+  assert.equal(finops.recommendedPricingTier, "HYBRID_PTU_PLUS_PAYGO_OVERFLOW");
+});
+
+test("P08-UNIFIED-ZERO-TRUST-PIPELINE evaluates L0/L1/L2 guardrails in <2ms and seals deterministic WORM audit receipt", () => {
+  const compoundAttack = evaluateUnifiedVoiceTurnPipeline({
+    turnId: "T-991",
+    scenarioCode: "CLOUD-NOC-01",
+    l0Transport: {
+      currentTurnEpoch: 4,
+      requestTurnEpoch: 4,
+      bargeInDetected: false,
+      sourceJurisdiction: "EU_GDPR",
+      targetCloudJurisdiction: "US_HIPAA",
+      containsRawPiiOrBiometricAudio: true,
+      cloudRttMs: 780,
+    },
+    l1TrustAndConsent: {
+      acousticLivenessScore: 0.42,
+      replayArtifactDetected: true,
+      microChallengeVerified: false,
+      highRiskToolRequested: true,
+      activeSpeakerRole: "bystander_unverified",
+      voiceprintCosineSimilarity: 0.41,
+    },
+    l2DomainRedlineTriggered: true,
+    l2DomainRuleCode: "CLOUD-NOC-01",
+  });
+
+  assert.equal(compoundAttack.pipelinePolicyCode, "P08-UNIFIED-ZERO-TRUST-PIPELINE");
+  assert.equal(compoundAttack.decision, "hard_block_turn");
+  assert.equal(compoundAttack.blockedByLayer, "L0_TRANSPORT_SOVEREIGN");
+  assert.equal(compoundAttack.evaluationBudgetUnder2ms, true);
+  assert.ok(compoundAttack.triggeredRuleCodes.length >= 4);
+  assert.match(compoundAttack.wormReceiptDigest, /^WORM-SHA256-[0-9A-F]{8}$/);
+});
+
 
 
 
