@@ -5,14 +5,14 @@ import { readFile } from "node:fs/promises";
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
     { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "C2PA"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "C2PA"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08", "P09", "P10"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE"] },
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC"] },
     { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
-    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "turnEpoch"] }
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -116,6 +116,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "S14 · Sovereign Edge & AEB Reflex",
     "P07 · Audio Context Pruning & Erlang-C",
     "P08 · <2ms Unified 3-Layer Pipeline",
+    "P09 · RFC 5589 Warm Handoff & Whisper",
+    "P10 · 100-Pt Post-Call QA & Veto",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -139,10 +141,12 @@ import {
   evaluateMultiSpeakerRoleGuard,
   evaluateOutboundTcpaConsentGuard,
   evaluatePharmaPvSaeGuard,
+  evaluatePostCallQaRubric,
   evaluateSovereignEdgeFailoverGuard,
   evaluateTelcoEsimGuard,
   evaluateTurnEpochWriteFence,
   evaluateUnifiedVoiceTurnPipeline,
+  evaluateWarmHandoffWhisperPacket,
   evaluateWealthDualRecordingGuard,
 } from "../packages/business-core/enterprise-guardrails.js";
 import { LabError } from "../packages/business-core/contracts.js";
@@ -627,6 +631,81 @@ test("P08-UNIFIED-ZERO-TRUST-PIPELINE evaluates L0/L1/L2 guardrails in <2ms and 
   assert.ok(compoundAttack.triggeredRuleCodes.length >= 4);
   assert.match(compoundAttack.wormReceiptDigest, /^WORM-SHA256-[0-9A-F]{8}$/);
 });
+
+test("P09-WARM-HANDOFF-WHISPER generates RFC 5589 CTI screen-pop + 3.5s 1.35x whisper and masks unverified caller PII", () => {
+  const unverifiedHandoff = evaluateWarmHandoffWhisperPacket({
+    callId: "CALL-WM-901",
+    scenarioCode: "WM-DUAL-01",
+    callerIdentityVerified: false,
+    triggeredRedlineCode: "SUITABILITY_MISMATCH_C2_TO_R5",
+    pinnedEntities: {
+      cardNumber: "4532991088217743",
+      nationalId: "310101199001018829",
+      productCode: "R5-QUANT-NOTE",
+    },
+    severityLevel: "REGULATORY_COMPLIANCE",
+  });
+  assert.equal(unverifiedHandoff.policyCode, "P09-WARM-HANDOFF-WHISPER");
+  assert.equal(unverifiedHandoff.transferProtocol, "RFC5589_ATTENDED_TRANSFER_WITH_WHISPER");
+  assert.equal(unverifiedHandoff.piiMaskingApplied, true);
+  assert.equal(unverifiedHandoff.piiMaskingRuleCode, "PII_MASKED_UNTIL_HUMAN_KYC");
+  assert.equal(unverifiedHandoff.sanitizedEntities.cardNumber, "***MASKED-7743***");
+  assert.equal(unverifiedHandoff.sanitizedEntities.productCode, "R5-QUANT-NOTE");
+  assert.equal(unverifiedHandoff.whisperBriefingRateMultiplier, 1.35);
+  assert.equal(unverifiedHandoff.whisperBriefingDurationSec, 3.5);
+  assert.match(unverifiedHandoff.sipUuiHeaderDigest, /^UUI-CTX-[0-9A-F]{8}$/);
+
+  const verifiedMedicalHandoff = evaluateWarmHandoffWhisperPacket({
+    callId: "CALL-PV-112",
+    scenarioCode: "PHARMA-PV-01",
+    callerIdentityVerified: true,
+    triggeredRedlineCode: "SAE_RED_FLAG_CHEST_PAIN",
+    pinnedEntities: {
+      medicalRecordId: "MRN-884920",
+      symptom: "Syncope & Chest Pain",
+    },
+    severityLevel: "CRITICAL_SAFETY_OR_MEDICAL",
+  });
+  assert.equal(verifiedMedicalHandoff.piiMaskingApplied, false);
+  assert.equal(verifiedMedicalHandoff.piiMaskingRuleCode, "PII_VERIFIED_CLEAR_FOR_SPECIALIST");
+  assert.equal(verifiedMedicalHandoff.sanitizedEntities.medicalRecordId, "MRN-884920");
+  assert.equal(verifiedMedicalHandoff.slaTransferDeadlineMs, 5000);
+});
+
+test("P10-POSTCALL-QA-RUBRIC scores 5 deterministic dimensions out of 100 and enforces 1-strike 0/100 veto on regulatory breaches or missing WORM digest", () => {
+  const vetoedCall = evaluatePostCallQaRubric({
+    callId: "CALL-QA-404",
+    mandatoryDisclosureCompleted: false,
+    unblockedDomainRedlineBreachCount: 0,
+    wormAuditDigestPresent: true,
+    p95LatencyMs: 640,
+    bargeInFalseInterruptionCount: 0,
+    staleEpochWriteLeakCount: 1,
+    warmHandoffContextPreserved: true,
+  });
+  assert.equal(vetoedCall.policyCode, "P10-POSTCALL-QA-RUBRIC");
+  assert.equal(vetoedCall.autoFailTriggered, true);
+  assert.equal(vetoedCall.autoFailReasonCode, "AUTO_FAIL_REGULATORY_BREACH");
+  assert.equal(vetoedCall.totalScore100, 0);
+  assert.equal(vetoedCall.qaGrade, "F_AUTO_FAIL_VETO");
+  assert.equal(vetoedCall.remediationTicketRequired, true);
+
+  const platinumCall = evaluatePostCallQaRubric({
+    callId: "CALL-QA-200",
+    mandatoryDisclosureCompleted: true,
+    unblockedDomainRedlineBreachCount: 0,
+    wormAuditDigestPresent: true,
+    p95LatencyMs: 620,
+    bargeInFalseInterruptionCount: 0,
+    staleEpochWriteLeakCount: 0,
+    warmHandoffContextPreserved: true,
+  });
+  assert.equal(platinumCall.autoFailTriggered, false);
+  assert.equal(platinumCall.totalScore100, 100);
+  assert.equal(platinumCall.qaGrade, "A_PLATINUM_COMPLIant");
+  assert.equal(platinumCall.remediationTicketRequired, false);
+});
+
 
 
 

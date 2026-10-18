@@ -1237,5 +1237,193 @@ export function calculateVoiceFinopsAndErlangBurst(input: {
   };
 }
 
+export interface WarmHandoffWhisperEvaluation {
+  policyCode: "P09-WARM-HANDOFF-WHISPER";
+  callId: string;
+  transferProtocol: "RFC5589_ATTENDED_TRANSFER_WITH_WHISPER";
+  sipUuiHeaderDigest: string;
+  triggeredRedlineCode: string;
+  piiMaskingApplied: boolean;
+  piiMaskingRuleCode: "PII_MASKED_UNTIL_HUMAN_KYC" | "PII_VERIFIED_CLEAR_FOR_SPECIALIST";
+  sanitizedEntities: Record<string, string>;
+  whisperBriefingRateMultiplier: number;
+  whisperBriefingDurationSec: number;
+  whisperScriptZh: string;
+  recommendedFirstHumanUtterance: string;
+  slaTransferDeadlineMs: number;
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Dual-Leg Warm Handoff & Whisper Coaching Protocol (`P09-WARM-HANDOFF-WHISPER`).
+ * - Eliminates Cold-Transfer Amnesia by generating an RFC 5589 Attended Transfer CTI Screen-Pop packet (`SIP UUI` / `X-Voice-Context-Digest`) and a 3.5s 1.35x TTS Whisper briefing for the receiving human specialist while the caller hears calming hold audio.
+ * - Enforces `PII_MASKED_UNTIL_HUMAN_KYC` whenever `callerIdentityVerified === false`, masking sensitive fields (card numbers, national IDs, medical record numbers) so social engineers cannot exploit warm handoff to bypass human agent KYC.
+ */
+export function evaluateWarmHandoffWhisperPacket(input: {
+  callId: string;
+  scenarioCode: string;
+  callerIdentityVerified: boolean;
+  triggeredRedlineCode: string;
+  pinnedEntities: Record<string, string>;
+  severityLevel: "CRITICAL_SAFETY_OR_MEDICAL" | "REGULATORY_COMPLIANCE" | "HIGH_VALUE_COMMERCIAL";
+}): WarmHandoffWhisperEvaluation {
+  const piiMaskingApplied = !input.callerIdentityVerified;
+  const piiMaskingRuleCode = piiMaskingApplied
+    ? "PII_MASKED_UNTIL_HUMAN_KYC"
+    : "PII_VERIFIED_CLEAR_FOR_SPECIALIST";
+
+  const sensitiveKeys = /card|ssn|id|account|medical|passport|pin|iban/i;
+  const sanitizedEntities: Record<string, string> = {};
+  for (const [key, val] of Object.entries(input.pinnedEntities)) {
+    if (piiMaskingApplied && sensitiveKeys.test(key)) {
+      const tail = val.length >= 4 ? val.slice(-4) : "****";
+      sanitizedEntities[key] = `***MASKED-${tail}***`;
+    } else {
+      sanitizedEntities[key] = val;
+    }
+  }
+
+  const slaTransferDeadlineMs =
+    input.severityLevel === "CRITICAL_SAFETY_OR_MEDICAL"
+      ? 5000
+      : input.severityLevel === "REGULATORY_COMPLIANCE"
+        ? 12000
+        : 20000;
+
+  const canonicalUui = `${input.callId}|${input.scenarioCode}|${input.triggeredRedlineCode}|${piiMaskingRuleCode}`;
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < canonicalUui.length; i += 1) {
+    hash ^= canonicalUui.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  const sipUuiHeaderDigest = `UUI-CTX-${hash.toString(16).padStart(8, "0").toUpperCase()}`;
+
+  const entitySummary = Object.entries(sanitizedEntities)
+    .map(([k, v]) => `${k}=${v}`)
+    .join(", ");
+
+  const whisperScriptZh = piiMaskingApplied
+    ? `【1.35x 坐席耳语 · 未核身脱敏】场景 ${input.scenarioCode} 触发红线 ${input.triggeredRedlineCode}。注意：主叫尚未完成声纹/OTP核身，敏感字段已掩码（${entitySummary}），接听后请先执行人工核身再处理业务。`
+    : `【1.35x 坐席耳语 · 已核身直通】场景 ${input.scenarioCode} 触发红线 ${input.triggeredRedlineCode}。主叫已完成核身，锁定实体（${entitySummary}），请直接承接无需重复盘问。`;
+
+  const recommendedFirstHumanUtterance = piiMaskingApplied
+    ? `您好，我是高级专席，AI 已同步您的诉求（触发项：${input.triggeredRedlineCode}）。为保障账户安全，我先跟您核对一下身份信息，无需您重复刚才的问题。`
+    : `您好，我是高级专席，您刚才提供的信息（${entitySummary}）我这边屏幕已经全部同步了，不用再重复一遍，我现在直接为您办理。`;
+
+  return {
+    policyCode: "P09-WARM-HANDOFF-WHISPER",
+    callId: input.callId,
+    transferProtocol: "RFC5589_ATTENDED_TRANSFER_WITH_WHISPER",
+    sipUuiHeaderDigest,
+    triggeredRedlineCode: input.triggeredRedlineCode,
+    piiMaskingApplied,
+    piiMaskingRuleCode,
+    sanitizedEntities,
+    whisperBriefingRateMultiplier: 1.35,
+    whisperBriefingDurationSec: 3.5,
+    whisperScriptZh,
+    recommendedFirstHumanUtterance,
+    slaTransferDeadlineMs,
+    summaryZh: `【P09 双腿协商热转接与耳语包】通话 ${input.callId}（${input.scenarioCode}）触发 ${input.triggeredRedlineCode}，通过 RFC 5589 注入 ${sipUuiHeaderDigest} 弹屏包（${piiMaskingRuleCode}，SLA <= ${slaTransferDeadlineMs}ms）并播报 3.5s 1.35x 坐席耳语，彻底消除盲转二次盘问。`,
+  };
+}
+
+export interface PostCallQaRubricEvaluation {
+  policyCode: "P10-POSTCALL-QA-RUBRIC";
+  callId: string;
+  totalScore100: number;
+  autoFailTriggered: boolean;
+  autoFailReasonCode: "NONE" | "AUTO_FAIL_REGULATORY_BREACH" | "AUTO_FAIL_WORM_AUDIT_MISSING";
+  dimensionBreakdown: {
+    mandatoryDisclosure25: number;
+    domainRedlineZeroBreach30: number;
+    bargeInLatency15: number;
+    toolIdempotencyEpoch15: number;
+    resolutionOrWarmHandoff15: number;
+  };
+  remediationTicketRequired: boolean;
+  qaGrade: "A_PLATINUM_COMPLIant" | "B_ACCEPTABLE" | "F_AUTO_FAIL_VETO";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic 100-Point Post-Call Automated Compliance & QA Rubric Engine (`P10-POSTCALL-QA-RUBRIC`).
+ * - Scores 100% of voice sessions across 5 deterministic dimensions:
+ *   (1) Mandatory Regulatory/AI Disclosure (25 pts)
+ *   (2) Domain Redline Zero-Breach (30 pts)
+ *   (3) Barge-In Recovery & P95 Latency SLA (15 pts)
+ *   (4) Tool Idempotency & turnEpoch Fence Integrity (15 pts)
+ *   (5) Closed-Loop Resolution or Warm Handoff Completeness (15 pts)
+ * - Enforces one-strike veto (`AUTO_FAIL_REGULATORY_BREACH` or `AUTO_FAIL_WORM_AUDIT_MISSING`), zeroing totalScore100 and opening an immediate remediation ticket if any regulatory redline was breached or WORM audit digest is missing.
+ */
+export function evaluatePostCallQaRubric(input: {
+  callId: string;
+  mandatoryDisclosureCompleted: boolean;
+  unblockedDomainRedlineBreachCount: number;
+  wormAuditDigestPresent: boolean;
+  p95LatencyMs: number;
+  bargeInFalseInterruptionCount: number;
+  staleEpochWriteLeakCount: number;
+  warmHandoffContextPreserved: boolean;
+}): PostCallQaRubricEvaluation {
+  const mandatoryDisclosure25 = input.mandatoryDisclosureCompleted ? 25 : 0;
+  const domainRedlineZeroBreach30 = input.unblockedDomainRedlineBreachCount === 0 ? 30 : 0;
+  const bargeInLatency15 = Math.max(
+    0,
+    15 -
+      (input.p95LatencyMs > 900 ? 8 : 0) -
+      Math.min(7, input.bargeInFalseInterruptionCount * 4)
+  );
+  const toolIdempotencyEpoch15 = input.staleEpochWriteLeakCount === 0 ? 15 : 0;
+  const resolutionOrWarmHandoff15 = input.warmHandoffContextPreserved ? 15 : 5;
+
+  let autoFailReasonCode:
+    | "NONE"
+    | "AUTO_FAIL_REGULATORY_BREACH"
+    | "AUTO_FAIL_WORM_AUDIT_MISSING" = "NONE";
+
+  if (input.unblockedDomainRedlineBreachCount > 0 || !input.mandatoryDisclosureCompleted || input.staleEpochWriteLeakCount > 0) {
+    autoFailReasonCode = "AUTO_FAIL_REGULATORY_BREACH";
+  } else if (!input.wormAuditDigestPresent) {
+    autoFailReasonCode = "AUTO_FAIL_WORM_AUDIT_MISSING";
+  }
+
+  const autoFailTriggered = autoFailReasonCode !== "NONE";
+  const rawSum =
+    mandatoryDisclosure25 +
+    domainRedlineZeroBreach30 +
+    bargeInLatency15 +
+    toolIdempotencyEpoch15 +
+    resolutionOrWarmHandoff15;
+  const totalScore100 = autoFailTriggered ? 0 : rawSum;
+  const remediationTicketRequired = autoFailTriggered || totalScore100 < 85;
+  const qaGrade = autoFailTriggered
+    ? "F_AUTO_FAIL_VETO"
+    : totalScore100 >= 90
+      ? "A_PLATINUM_COMPLIant"
+      : "B_ACCEPTABLE";
+
+  return {
+    policyCode: "P10-POSTCALL-QA-RUBRIC",
+    callId: input.callId,
+    totalScore100,
+    autoFailTriggered,
+    autoFailReasonCode,
+    dimensionBreakdown: {
+      mandatoryDisclosure25,
+      domainRedlineZeroBreach30,
+      bargeInLatency15,
+      toolIdempotencyEpoch15,
+      resolutionOrWarmHandoff15,
+    },
+    remediationTicketRequired,
+    qaGrade,
+    summaryZh: autoFailTriggered
+      ? `【P10 事后全量质检 · 一票否决归零】通话 ${input.callId} 触发 ${autoFailReasonCode}（原始分 ${rawSum} 强制清零为 0/100），已自动派发 P0 合规整改工单。`
+      : `【P10 事后全量质检 · ${totalScore100}/100 分 (${qaGrade})】通话 ${input.callId} 通过五维确定性审计（披露 ${mandatoryDisclosure25}/25 · 红线 ${domainRedlineZeroBreach30}/30 · 延迟 ${bargeInLatency15}/15 · 幂等 ${toolIdempotencyEpoch15}/15 · 闭环/热转接 ${resolutionOrWarmHandoff15}/15）。`,
+  };
+}
+
+
 
 

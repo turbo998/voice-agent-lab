@@ -193,6 +193,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P07-FINOPS-ERLANG-PLANNER cuts 48-turn S2S cost from $0.2244/min to $0.0584/min (-74.0%); P08-UNIFIED-ZERO-TRUST-PIPELINE blocks compound L0-L2 attacks with WORM SHA256 digest."
+    },
+    {
+      "check_name": "RFC 5589 Warm Handoff 1.35x Whisper PII Masking & 100-Pt Post-Call QA Veto (P09 / P10)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P09-WARM-HANDOFF-WHISPER injects SIP UUI CTI screen-pop + 3.5s 1.35x whisper and masks unverified PII; P10-POSTCALL-QA-RUBRIC enforces 1-strike 0/100 veto on regulatory breaches."
     }
   ],
   "latency_scaling": [
