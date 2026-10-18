@@ -2843,6 +2843,40 @@
         confidence: 1.0,
         verifier: 'PASS (P16) · Unconfirmed 15/50 & B7N code blocked until NATO readback verified'
       }
+    },
+    {
+      code: 'P17 · Swarm Loop & Privilege Guard',
+      badge: '0 Ping-Pong',
+      title: '多智能体语音蜂群 A2A 路由防死循环与最小权限门禁',
+      sub: '测试专员 Agent 内部踢皮球环路 (Triage->Billing->Claims->Billing) 及子 Agent 越权请求高敏工具拦截',
+      customer_en: '[Multi-Agent Swarm Trace] Triage-Agent -> Billing-Agent -> Claims-Agent -> attempting loop back to Billing-Agent while requesting unauthorized tool `approve_wire_transfer`!',
+      customer_zh: '【多智能体蜂群路由轨迹】总机 Agent -> 账单 Agent -> 理赔 Agent -> 试图再次转回账单 Agent（踢皮球环路），且子 Agent 越权请求调用 `approve_wire_transfer`！',
+      agent_en: 'MULTI-AGENT SWARM LOOP & PRIVILEGE GUARD (P17 / P17-MULTI-AGENT-SWARM-LOOP-GUARD): HARD BLOCK (`SWARM_ROUTING_PING_PONG_LOOP` + `SUBAGENT_PRIVILEGE_ESCALATION_BLOCKED`)! Detected A2A routing cycle (`visitedAgentIds` already contains `Billing-Agent`, `hopCount=3/3`) and unauthorized tool request outside `delegatedAllowedTools`. Aborting bot-to-bot transfer and escalating directly to a human specialist!',
+      agent_zh: '【P17 多智能体蜂群防死循环与最小权限门禁 · 阻断】检测到 A2A 路由踢皮球环路（`visitedAgentIds` 已包含 `Billing-Agent`，跳数 `3/3`）且目标子 Agent 请求了超出父级授权集合的 `approve_wire_transfer` 工具（`SWARM_ROUTING_PING_PONG_LOOP`），已立即熔断机器互转并直连高优人工专家！',
+      trace: {
+        tool: 'evaluate_multi_agent_swarm_loop_guard(visited=["Triage","Billing","Claims"], target="Billing" -> SWARM_ROUTING_PING_PONG_LOOP)',
+        citations: ['P17-MULTI-AGENT-SWARM-LOOP-GUARD', 'LEAST-PRIVILEGE-A2A-TOKEN', 'ZERO-BOT-PING-PONG'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P17) · A2A ping-pong loop & subagent privilege escalation 100% blocked'
+      }
+    },
+    {
+      code: 'P18 · Acoustic Emotion De-Escalation',
+      badge: '0 Upsell on Rage',
+      title: '实时声学情绪降级与禁推销/班长静默监听护栏',
+      sub: '测试客户暴怒/事故高压态 (基频+38% / 声强+12dB) 时 100% 剥离交叉营销话术并调为 0.92x/-1.5st 共情语调',
+      customer_en: '[Angry Caller · Pitch +38%, Energy +12dB, Distress 0.86] "My flight was canceled twice and my insulin bag is missing! Stop wasting my time!" (Bot template has trailing credit-card upsell)',
+      customer_zh: '【暴怒/焦虑主叫 · 基频 +38%，声强 +12dB，压力分 0.86】“我的航班被取消两次，装着胰岛素的行李也丢了！别再耽误我时间！”（原话术末尾含联名信用卡推广）',
+      agent_en: 'ACOUSTIC EMOTION DE-ESCALATION GUARD (P18 / P18-ACOUSTIC-EMOTION-DEESCALATION): High caller distress detected (`score=0.86`, `pitch=+38%`, `energy=+12dB`). Triggered `COMMERCIAL_UPSELL_SUPPRESSED_ON_DISTRESS` (stripped trailing credit-card promotion), adapted TTS prosody to `0.92x` rate / `-1.5st` calm empathetic tone, and attached live supervisor silent listen!',
+      agent_zh: '【P18 实时声学情绪降级与禁推销护栏】检测到主叫高压力声学特征（`distress=0.86`，基频 `+38%`，声强 `+12dB`），已强制剥离末尾联名卡交叉营销话术（`COMMERCIAL_UPSELL_SUPPRESSED_ON_DISTRESS`），自动将 TTS 调至 `0.92x` 慢速 / `-1.5st` 沉稳共情音调，并同步向值班班长席挂载实时静默监听！',
+      trace: {
+        tool: 'evaluate_acoustic_emotion_deescalation_guard(distress=0.86, upsell=true -> COMMERCIAL_UPSELL_SUPPRESSED_ON_DISTRESS, tts=0.92x/-1.5st)',
+        citations: ['P18-ACOUSTIC-EMOTION-DEESCALATION', 'PROSODY-EMPATHY-MODULATION', 'SUPERVISOR-SILENT-LISTEN'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P18) · Promotional upsell stripped · 0.92x/-1.5st calm TTS + supervisor listen active'
+      }
     }
   ];
 
@@ -2917,7 +2951,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (34-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (36-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -2926,7 +2960,8 @@
       '- [x] **RFC 5589 热转接耳语与事后 100 分全量质检**：双腿协商转接 + `1.35x` 耳语消除盲转二次盘问且未核身强制掩码 PII (P09)，五维 100 分全量质检红线违例一票否决归零 (P10)',
       '- [x] **PCI-DSS v4.0 媒体面旁路与金丝雀自动回滚**：400Hz 掩码 + RFC 4733 直通 HSM 使大模型 100% 脱离 PCI CDE (P11)，金丝雀五维门禁退化 `<500ms` 自动回滚 (P12)',
       '- [x] **多模态同屏防注入与 EAA/ADA 无障碍自适应**：100% 阻断共享屏幕隐藏文字注入与过期帧误操作 (P13)，口吃/慢语速自动拓宽 VAD 至 `2100ms` 并开启 `0.88x` + RFC 4103 实时文本 (P14)',
-      '- [x] **通话中途零掉线热备切换与北约字母逐位复诵**：主 S2S 异常 `<300ms` 无感热切且保留已核身状态与 `turnEpoch` (P15)，`15 vs 50` 及 `B/P/M/N` 编码强制北约字母复诵确认零差错 (P16)'
+      '- [x] **通话中途零掉线热备切换与北约字母逐位复诵**：主 S2S 异常 `<300ms` 无感热切且保留已核身状态与 `turnEpoch` (P15)，`15 vs 50` 及 `B/P/M/N` 编码强制北约字母复诵确认零差错 (P16)',
+      '- [x] **多智能体蜂群防死循环与声学情绪降级护栏**：100% 拦截 A2A 踢皮球环路与子 Agent 越权工具调用 (P17)，客户暴怒/事故高压态 100% 剥离交叉营销并切换 `0.92x/-1.5st` 共情语调与班长静默监听 (P18)'
     ].join('\n');
   }
 

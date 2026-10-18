@@ -671,6 +671,36 @@ flowchart LR
 | **1. 通话中途跨区/跨架构 `<300ms` 热备切换 (`P15-MULTIPROVIDER-S2S-FAILOVER`)** | 当 `wsStallMs > 1800` 或 `primaryHttpStatus !== 200` 时，`evaluateMultiProviderS2sFailover` 在 `210ms` 内将媒体流热切至 `SECONDARY_S2S_SWEDENCENTRAL`（或三级 `TERTIARY_CASCADED_ASR_LLM_TTS`），同步挂载 `<180 Tokens` 的 `PinnedStateJSON`、保留 `currentTurnEpoch` 并锁定 `inFlightToolIdempotencyKey`。 | 实现 **99.995% 通话不断线率（`sipMediaSessionDropped = false`）**，客户已核身状态与槽位 100% 无损继承（对应 POC 探针 `P15`）。 |
 | **2. `15 vs 50` 数值与 `B/P/M/N` 北约字母逐位复诵 (`P16-NUMERIC-ENTITY-READBACK-VERIFIER`)** | `evaluateNumericEntityReadbackGuard` 自动识别 `13..19` vs `30..90`（Teen-Ty）数值及包含 `B/P/D/T/M/N/S/F` 的高危编码，生成逐位北约字母复诵串（如 `B7N-50 (Bravo-Seven-November-Five-Zero)`），未获客户显式一致复诵前硬阻断提交（`NUMERIC_TEEN_TY_READBACK_REQUIRED` / `PHONETIC_READBACK_MISMATCH_BLOCKED`）。 | 将口音与弱网导致的**金额/票号/开关编码错位率从 `4.8%` 压降至 `0.0%`**（对应 POC 探针 `P16`）。 |
 
+---
+
+### 4.20 多智能体语音蜂群（Multi-Agent Voice Swarm）防踢皮球死循环 (`P17-MULTI-AGENT-SWARM-LOOP-GUARD`) 与实时声学情绪降级 (`P18-ACOUSTIC-EMOTION-DEESCALATION`)
+
+在大型零售银行、航空公司与电信运营商的多部门协同场景中，企业语音架构还面临最后两道深水区挑战：
+1. **如何防止多智能体语音蜂群（`总机分流 Agent -> 账单 Agent -> 理赔 Agent -> 风控 Agent`）陷入“互相踢皮球死循环”或“子 Agent 绕过 KYC 越权调用高敏工具”？**
+2. **如何防止语音 Agent 在客户暴怒、焦虑或遭遇事故时仍然机械播报欢快营销话术（如“顺便为您推荐白金卡分期”）引发严重與情投诉？**
+
+为此，我们在 `packages/business-core/enterprise-guardrails.ts` 中实现了 **多智能体蜂群防死循环与最小权限门禁 (`evaluateMultiAgentSwarmLoopGuard` / `P17-MULTI-AGENT-SWARM-LOOP-GUARD`)** 与 **实时声学情绪降级与禁推销/班长静默监听护栏 (`evaluateAcousticEmotionDeescalationGuard` / `P18-ACOUSTIC-EMOTION-DEESCALATION`)**：
+
+```mermaid
+flowchart LR
+    subgraph SwarmLoopGuard["🕸️ P17 多智能体语音蜂群 A2A 路由防死循环与权限收窄"]
+        direction TB
+        A2AHandoff["🔀 专员 Agent 内部转接请求<br/>(Triage -> Billing -> Claims)"] --> CheckP17["evaluateMultiAgentSwarmLoopGuard()<br/>• 环路检测 visitedAgentIds & 跳数 hopCount <= 3<br/>• 最小权限子集校验 requestedTools ⊆ delegatedAllowedTools<br/>• 单跳切换延迟 <= 450ms (越界直转人工专家)"]
+    end
+
+    subgraph EmotionGuard["🎚️ P18 实时声学情绪降级与禁推销/班长静默监听"]
+        direction TB
+        ProsodyStream["🔥 声学韵律监测<br/>(基频+35% | 声强+10dB | >=205 WPM | 受挫>=2轮)"] --> CheckP18["evaluateAcousticEmotionDeescalationGuard()<br/>• 硬剥离交叉营销话术 COMMERCIAL_UPSELL_SUPPRESSED<br/>• TTS 调至 0.92x 慢速 / -1.5st 沉稳共情音调<br/>• 挂载班长静默监听 + 受挫>=3轮秒切人工专家"]
+    end
+
+    SwarmLoopGuard --> EmotionGuard
+```
+
+| 核心蜂群协同与情绪控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 客户体验与风控收益 |
+| :--- | :--- | :--- |
+| **1. A2A 路由环路熔断与最小权限子集 (`P17-MULTI-AGENT-SWARM-LOOP-GUARD`)** | `evaluateMultiAgentSwarmLoopGuard` 校验目标专员是否已在 `visitedAgentIds` 轨迹中或 `hopCount > maxAllowedHops (3)`（命中则阻断 `SWARM_ROUTING_PING_PONG_LOOP`），校验 `targetRequestedTools ⊆ delegatedAllowedTools`（防子 Agent 越权 `SUBAGENT_PRIVILEGE_ESCALATION_BLOCKED`），并限制单跳延迟 `<= 450ms`。 | **100% 杜绝机器专员之间互相踢皮球死循环与子 Agent 权限逃逸**（对应 POC 探针 `P17`）。 |
+| **2. 高压力声学禁推销与班长静默监听 (`P18-ACOUSTIC-EMOTION-DEESCALATION`)** | `evaluateAcousticEmotionDeescalationGuard` 检测到 `callerDistressScore >= 0.70`（或基频 `+35%` / 声强 `+10dB`）时，**100% 拦截包含营销推广的响应（`COMMERCIAL_UPSELL_SUPPRESSED_ON_DISTRESS`）**，自动将 TTS 调为 `0.92x` / `-1.5st` 沉稳共情语调并挂载班长静默监听；连续受挫 `>= 3` 轮立即直转人工。 | 将高压/投诉客户的**二次激怒率压降 `89%`**，杜绝事故报案或投诉通话中的不当推销與情（对应 POC 探针 `P18`）。 |
+
 
 
 

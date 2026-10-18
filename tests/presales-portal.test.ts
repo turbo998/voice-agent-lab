@@ -5,14 +5,14 @@ import { readFile } from "node:fs/promises";
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
     { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "C2PA"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15", "P16"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "C2PA"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15", "P16", "P17", "P18"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER"] },
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION"] },
     { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
-    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "turnEpoch"] }
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -124,6 +124,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "P14 · EAA/ADA Disfluency Adaptive",
     "P15 · <300ms Mid-Call S2S Failover",
     "P16 · 15 vs 50 & NATO Readback Gate",
+    "P17 · Swarm Loop & Privilege Guard",
+    "P18 · Acoustic Emotion De-Escalation",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -137,6 +139,7 @@ import {
   assertActiveTurnEpoch,
   calculateVoiceFinopsAndErlangBurst,
   evaluateAccessibilityDisfluencyGuard,
+  evaluateAcousticEmotionDeescalationGuard,
   evaluateAirlineIrropsGuard,
   evaluateAudioDeepfakeGuard,
   evaluateAutoTeleopSafetyGuard,
@@ -146,6 +149,7 @@ import {
   evaluateGridStormOutageGuard,
   evaluateHospitalityPmsGuard,
   evaluateIndustrialFieldGuard,
+  evaluateMultiAgentSwarmLoopGuard,
   evaluateMultimodalCobrowsingGuard,
   evaluateMultiProviderS2sFailover,
   evaluateMultiSpeakerRoleGuard,
@@ -914,6 +918,90 @@ test("P16-NUMERIC-ENTITY-READBACK-VERIFIER blocks unconfirmed 15 vs 50 Teen-Ty n
   });
   assert.equal(verifiedReadback.commitAllowed, true);
   assert.equal(verifiedReadback.blockReasonCode, "NONE");
+});
+
+test("P17-MULTI-AGENT-SWARM-LOOP-GUARD blocks A2A routing ping-pong cycles, subagent tool privilege escalation, and slow handoffs", () => {
+  const pingPongLoop = evaluateMultiAgentSwarmLoopGuard({
+    callId: "SWARM-1001",
+    sourceAgentId: "Claims-Agent",
+    targetAgentId: "Billing-Agent",
+    visitedAgentIds: ["Triage-Agent", "Billing-Agent", "Claims-Agent"],
+    maxAllowedHops: 3,
+    delegatedAllowedTools: ["get_order_status", "draft_support_ticket"],
+    targetRequestedTools: ["get_order_status"],
+    estimatedSwitchLatencyMs: 280,
+  });
+  assert.equal(pingPongLoop.policyCode, "P17-MULTI-AGENT-SWARM-LOOP-GUARD");
+  assert.equal(pingPongLoop.cycleDetected, true);
+  assert.equal(pingPongLoop.handoffAllowed, false);
+  assert.equal(pingPongLoop.blockReasonCode, "SWARM_ROUTING_PING_PONG_LOOP");
+
+  const privilegeEscalation = evaluateMultiAgentSwarmLoopGuard({
+    callId: "SWARM-1002",
+    sourceAgentId: "Triage-Agent",
+    targetAgentId: "Claims-Agent",
+    visitedAgentIds: ["Triage-Agent"],
+    maxAllowedHops: 3,
+    delegatedAllowedTools: ["get_order_status"],
+    targetRequestedTools: ["get_order_status", "approve_wire_transfer"],
+    estimatedSwitchLatencyMs: 240,
+  });
+  assert.equal(privilegeEscalation.privilegeEscalationAttempted, true);
+  assert.equal(privilegeEscalation.handoffAllowed, false);
+  assert.equal(
+    privilegeEscalation.blockReasonCode,
+    "SUBAGENT_PRIVILEGE_ESCALATION_BLOCKED"
+  );
+
+  const validSwarmHandoff = evaluateMultiAgentSwarmLoopGuard({
+    callId: "SWARM-1003",
+    sourceAgentId: "Triage-Agent",
+    targetAgentId: "Billing-Agent",
+    visitedAgentIds: ["Triage-Agent"],
+    maxAllowedHops: 3,
+    delegatedAllowedTools: ["get_order_status", "draft_support_ticket"],
+    targetRequestedTools: ["get_order_status"],
+    estimatedSwitchLatencyMs: 220,
+  });
+  assert.equal(validSwarmHandoff.handoffAllowed, true);
+  assert.equal(validSwarmHandoff.blockReasonCode, "NONE");
+});
+
+test("P18-ACOUSTIC-EMOTION-DEESCALATION strips promotional upsells on high caller distress, shifts TTS to 0.92x/-1.5st, and escalates repeated frustration", () => {
+  const distressedUpsellAttempt = evaluateAcousticEmotionDeescalationGuard({
+    callId: "EMO-1101",
+    pitchDeltaPct: 38,
+    energyDeltaDb: 12,
+    speechRateWpm: 215,
+    consecutiveFrustrationTurns: 2,
+    callerDistressScore: 0.84,
+    containsPromotionalUpsell: true,
+  });
+  assert.equal(distressedUpsellAttempt.policyCode, "P18-ACOUSTIC-EMOTION-DEESCALATION");
+  assert.equal(distressedUpsellAttempt.highDistressDetected, true);
+  assert.equal(distressedUpsellAttempt.promotionalUpsellSuppressed, true);
+  assert.equal(distressedUpsellAttempt.adaptedTtsSpeakingRate, 0.92);
+  assert.equal(distressedUpsellAttempt.adaptedTtsPitchSemitones, -1.5);
+  assert.equal(distressedUpsellAttempt.supervisorSilentListenAttached, true);
+  assert.equal(
+    distressedUpsellAttempt.actionCode,
+    "COMMERCIAL_UPSELL_SUPPRESSED_ON_DISTRESS"
+  );
+
+  const severeFrustrationEscalation = evaluateAcousticEmotionDeescalationGuard({
+    callId: "EMO-1102",
+    pitchDeltaPct: 45,
+    energyDeltaDb: 14,
+    speechRateWpm: 228,
+    consecutiveFrustrationTurns: 3,
+    callerDistressScore: 0.92,
+    containsPromotionalUpsell: false,
+  });
+  assert.equal(severeFrustrationEscalation.immediateHumanEscalationRequired, true);
+  assert.equal(
+    severeFrustrationEscalation.actionCode,
+    "IMMEDIATE_EMPATHETIC_HUMAN_ESCALATION"
+  );
 });
 
 

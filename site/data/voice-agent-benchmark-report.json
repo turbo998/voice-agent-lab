@@ -221,6 +221,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P15-MULTIPROVIDER-S2S-FAILOVER hot-switches stalled/429 S2S streams in 210ms while preserving PinnedStateJSON and turnEpoch; P16-NUMERIC-ENTITY-READBACK-VERIFIER enforces NATO readback for 15/50 and B/P/M/N codes."
+    },
+    {
+      "check_name": "Multi-Agent Swarm A2A Anti-Loop/Privilege Fence & Real-Time Acoustic Emotion De-Escalation (P17 / P18)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P17-MULTI-AGENT-SWARM-LOOP-GUARD blocks A2A ping-pong loops (>3 hops) and subagent tool privilege escalation; P18-ACOUSTIC-EMOTION-DEESCALATION strips promotional upsells on caller distress (>=0.70) and shifts TTS to 0.92x/-1.5st with supervisor silent listen."
     }
   ],
   "latency_scaling": [

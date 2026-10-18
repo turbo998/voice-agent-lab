@@ -1898,6 +1898,161 @@ export function evaluateNumericEntityReadbackGuard(input: {
   };
 }
 
+export interface MultiAgentSwarmLoopEvaluation {
+  policyCode: "P17-MULTI-AGENT-SWARM-LOOP-GUARD";
+  callId: string;
+  sourceAgentId: string;
+  targetAgentId: string;
+  hopCount: number;
+  maxAllowedHops: number;
+  cycleDetected: boolean;
+  privilegeEscalationAttempted: boolean;
+  latencyBudgetExceeded: boolean;
+  handoffAllowed: boolean;
+  blockReasonCode:
+    | "NONE"
+    | "SWARM_ROUTING_PING_PONG_LOOP"
+    | "SUBAGENT_PRIVILEGE_ESCALATION_BLOCKED"
+    | "SWARM_HANDOFF_LATENCY_BUDGET_EXCEEDED";
+  summaryZh: string;
+}
+
+/**
+ * Multi-Agent Voice Swarm A2A Loop & Least-Privilege Delegation Guard (`P17-MULTI-AGENT-SWARM-LOOP-GUARD`):
+ * - Detects A2A routing ping-pong loops (`visitedAgentIds.includes(targetAgentId)` or `hopCount > maxAllowedHops`).
+ * - Enforces least-privilege tool scoping (`requestedTools` must be a subset of `delegatedAllowedTools`).
+ * - Bounds single-hop swarm switchover latency (`estimatedSwitchLatencyMs <= 450`).
+ */
+export function evaluateMultiAgentSwarmLoopGuard(input: {
+  callId: string;
+  sourceAgentId: string;
+  targetAgentId: string;
+  visitedAgentIds: string[];
+  maxAllowedHops?: number;
+  delegatedAllowedTools: string[];
+  targetRequestedTools: string[];
+  estimatedSwitchLatencyMs: number;
+}): MultiAgentSwarmLoopEvaluation {
+  const maxAllowedHops = input.maxAllowedHops ?? 3;
+  const hopCount = input.visitedAgentIds.length;
+  const cycleDetected =
+    input.visitedAgentIds.includes(input.targetAgentId) ||
+    hopCount > maxAllowedHops;
+
+  const allowedSet = new Set(input.delegatedAllowedTools);
+  const privilegeEscalationAttempted = input.targetRequestedTools.some(
+    (tool) => !allowedSet.has(tool)
+  );
+
+  const latencyBudgetExceeded = input.estimatedSwitchLatencyMs > 450;
+
+  let blockReasonCode: MultiAgentSwarmLoopEvaluation["blockReasonCode"] =
+    "NONE";
+  if (cycleDetected) {
+    blockReasonCode = "SWARM_ROUTING_PING_PONG_LOOP";
+  } else if (privilegeEscalationAttempted) {
+    blockReasonCode = "SUBAGENT_PRIVILEGE_ESCALATION_BLOCKED";
+  } else if (latencyBudgetExceeded) {
+    blockReasonCode = "SWARM_HANDOFF_LATENCY_BUDGET_EXCEEDED";
+  }
+
+  const handoffAllowed = blockReasonCode === "NONE";
+
+  return {
+    policyCode: "P17-MULTI-AGENT-SWARM-LOOP-GUARD",
+    callId: input.callId,
+    sourceAgentId: input.sourceAgentId,
+    targetAgentId: input.targetAgentId,
+    hopCount,
+    maxAllowedHops,
+    cycleDetected,
+    privilegeEscalationAttempted,
+    latencyBudgetExceeded,
+    handoffAllowed,
+    blockReasonCode,
+    summaryZh: !handoffAllowed
+      ? `【P17 多智能体蜂群防死循环与最小权限门禁 · 阻断 (${blockReasonCode})】通话 ${input.callId} 从 ${input.sourceAgentId} 转往 ${input.targetAgentId} 被拦截（跳数=${hopCount}/${maxAllowedHops}，环路=${cycleDetected}，越权工具=${privilegeEscalationAttempted}，延迟=${input.estimatedSwitchLatencyMs}ms），已熔断机器互转并直连高优人工专家！`
+      : `【P17 多智能体蜂群路由合规】通话 ${input.callId} 专员切换 ${input.sourceAgentId} -> ${input.targetAgentId} 通过环路、权限子集与 ${input.estimatedSwitchLatencyMs}ms 延迟校验。`,
+  };
+}
+
+export interface AcousticEmotionDeescalationEvaluation {
+  policyCode: "P18-ACOUSTIC-EMOTION-DEESCALATION";
+  callId: string;
+  callerDistressScore: number;
+  highDistressDetected: boolean;
+  promotionalUpsellSuppressed: boolean;
+  adaptedTtsSpeakingRate: number;
+  adaptedTtsPitchSemitones: number;
+  supervisorSilentListenAttached: boolean;
+  immediateHumanEscalationRequired: boolean;
+  actionCode:
+    | "NORMAL_CONVERSATIONAL_FLOW"
+    | "COMMERCIAL_UPSELL_SUPPRESSED_ON_DISTRESS"
+    | "SUPERVISOR_SILENT_WHISPER_ATTACHED"
+    | "IMMEDIATE_EMPATHETIC_HUMAN_ESCALATION";
+  summaryZh: string;
+}
+
+/**
+ * Real-Time Acoustic Emotion De-Escalation, Upsell Suppression & Supervisor Silent Listen Guard (`P18-ACOUSTIC-EMOTION-DEESCALATION`):
+ * - Computes or evaluates caller distress from acoustic prosody (`pitchDeltaPct >= 35`, `energyDeltaDb >= 10`, `speechRateWpm >= 205`, or `callerDistressScore >= 0.70`).
+ * - Hard-suppresses commercial upsells / cross-selling when the caller is distressed or frustrated.
+ * - Adapts TTS prosody (`0.92x` speaking rate, `-1.5` semitones calm empathetic tone), attaches supervisor silent listen, and escalates to a human specialist when `consecutiveFrustrationTurns >= 3`.
+ */
+export function evaluateAcousticEmotionDeescalationGuard(input: {
+  callId: string;
+  pitchDeltaPct: number;
+  energyDeltaDb: number;
+  speechRateWpm: number;
+  consecutiveFrustrationTurns: number;
+  callerDistressScore: number;
+  containsPromotionalUpsell: boolean;
+}): AcousticEmotionDeescalationEvaluation {
+  const highDistressDetected =
+    input.callerDistressScore >= 0.7 ||
+    input.pitchDeltaPct >= 35 ||
+    input.energyDeltaDb >= 10 ||
+    input.speechRateWpm >= 205 ||
+    input.consecutiveFrustrationTurns >= 2;
+
+  const promotionalUpsellSuppressed =
+    highDistressDetected && input.containsPromotionalUpsell;
+
+  const immediateHumanEscalationRequired =
+    input.consecutiveFrustrationTurns >= 3 || input.callerDistressScore >= 0.88;
+
+  const supervisorSilentListenAttached = highDistressDetected;
+  const adaptedTtsSpeakingRate = highDistressDetected ? 0.92 : 1.0;
+  const adaptedTtsPitchSemitones = highDistressDetected ? -1.5 : 0.0;
+
+  let actionCode: AcousticEmotionDeescalationEvaluation["actionCode"] =
+    "NORMAL_CONVERSATIONAL_FLOW";
+  if (immediateHumanEscalationRequired) {
+    actionCode = "IMMEDIATE_EMPATHETIC_HUMAN_ESCALATION";
+  } else if (promotionalUpsellSuppressed) {
+    actionCode = "COMMERCIAL_UPSELL_SUPPRESSED_ON_DISTRESS";
+  } else if (highDistressDetected) {
+    actionCode = "SUPERVISOR_SILENT_WHISPER_ATTACHED";
+  }
+
+  return {
+    policyCode: "P18-ACOUSTIC-EMOTION-DEESCALATION",
+    callId: input.callId,
+    callerDistressScore: input.callerDistressScore,
+    highDistressDetected,
+    promotionalUpsellSuppressed,
+    adaptedTtsSpeakingRate,
+    adaptedTtsPitchSemitones,
+    supervisorSilentListenAttached,
+    immediateHumanEscalationRequired,
+    actionCode,
+    summaryZh: highDistressDetected
+      ? `【P18 声学情绪降级与禁推销护栏 (${actionCode})】检测到主叫高压力/受挫声学特征（distress=${input.callerDistressScore}，基频+${input.pitchDeltaPct}%，声强+${input.energyDeltaDb}dB，连续受挫=${input.consecutiveFrustrationTurns}轮），已自动剥离交叉营销话术=${promotionalUpsellSuppressed}、将 TTS 调至 ${adaptedTtsSpeakingRate}x / ${adaptedTtsPitchSemitones}st 沉稳共情语调，并挂载值班班长静默监听！`
+      : `【P18 声学情绪平稳】通话 ${input.callId} 声学韵律正常，保持标准播报语速与交互流程。`,
+  };
+}
+
 
 
 
