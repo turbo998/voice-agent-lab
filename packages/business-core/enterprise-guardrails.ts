@@ -2495,6 +2495,205 @@ export function evaluateMultilingualCodeSwitchAsrStability(input: {
   };
 }
 
+export interface OutboundTcpaDncAmdGuardEvaluation {
+  policyCode: "P25-OUTBOUND-TCPA-DNC-AMD-GUARD";
+  callId: string;
+  dncOrOptOutClean: boolean;
+  callingWindowLegal: boolean;
+  frequencyCapOk: boolean;
+  amdDetectionWithinBudget: boolean;
+  voicemailPiiSafe: boolean;
+  mutationAllowed: boolean;
+  actionCode:
+    | "DNC_REGISTRY_OR_OPT_OUT_BLOCKED"
+    | "CALLING_WINDOW_CURFEW_BLOCKED"
+    | "OUTBOUND_FREQUENCY_CAP_EXCEEDED"
+    | "VOICEMAIL_PII_LEAK_BLOCKED"
+    | "OUTBOUND_CAMPAIGN_COMPLIANT";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Outbound Campaign Compliance, DNC/TCPA/MIIT Curfew, Frequency Cap & Answering Machine Detection (AMD) Guard (`P25-OUTBOUND-TCPA-DNC-AMD-GUARD`).
+ * - Blocks dialing if `onDncRegistry === true` or `priorOptOut === true` (`DNC_REGISTRY_OR_OPT_OUT_BLOCKED`).
+ * - Enforces callee local calling window `08:00–21:00` (`CALLING_WINDOW_CURFEW_BLOCKED`) and frequency cap (`callsLast24h <= 1 && callsLast7d <= 3` -> `OUTBOUND_FREQUENCY_CAP_EXCEEDED`).
+ * - Enforces AMD (`<= 1500ms`) voicemail privacy: if `voicemailDetected === true`, strictly forbids speaking sensitive debt amounts or PII (`VOICEMAIL_PII_LEAK_BLOCKED`).
+ */
+export function evaluateOutboundTcpaDncAmdGuard(input: {
+  callId: string;
+  onDncRegistry: boolean;
+  priorOptOut: boolean;
+  calleeLocalHour24: number;
+  callsLast24h: number;
+  callsLast7d: number;
+  amdLatencyMs: number;
+  voicemailDetected: boolean;
+  voicemailScriptContainsPiiOrDebt: boolean;
+}): OutboundTcpaDncAmdGuardEvaluation {
+  const dncOrOptOutClean = !input.onDncRegistry && !input.priorOptOut;
+  const callingWindowLegal = input.calleeLocalHour24 >= 8 && input.calleeLocalHour24 < 21;
+  const frequencyCapOk = input.callsLast24h <= 1 && input.callsLast7d <= 3;
+  const amdDetectionWithinBudget = input.amdLatencyMs <= 1500;
+  const voicemailPiiSafe = !input.voicemailDetected || !input.voicemailScriptContainsPiiOrDebt;
+
+  if (!dncOrOptOutClean) {
+    return {
+      policyCode: "P25-OUTBOUND-TCPA-DNC-AMD-GUARD",
+      callId: input.callId,
+      dncOrOptOutClean: false,
+      callingWindowLegal,
+      frequencyCapOk,
+      amdDetectionWithinBudget,
+      voicemailPiiSafe,
+      mutationAllowed: false,
+      actionCode: "DNC_REGISTRY_OR_OPT_OUT_BLOCKED",
+      summaryZh: `【P25 智能外呼 DNC/TCPA/AMD 护栏 · 阻断 (DNC_REGISTRY_OR_OPT_OUT_BLOCKED)】被叫号码命中全国/租户级禁呼名单（DNC=${input.onDncRegistry}，历史退订=${input.priorOptOut}），已在拨号前物理熔断。`,
+    };
+  }
+
+  if (!callingWindowLegal) {
+    return {
+      policyCode: "P25-OUTBOUND-TCPA-DNC-AMD-GUARD",
+      callId: input.callId,
+      dncOrOptOutClean: true,
+      callingWindowLegal: false,
+      frequencyCapOk,
+      amdDetectionWithinBudget,
+      voicemailPiiSafe,
+      mutationAllowed: false,
+      actionCode: "CALLING_WINDOW_CURFEW_BLOCKED",
+      summaryZh: `【P25 智能外呼 DNC/TCPA/AMD 护栏 · 阻断 (CALLING_WINDOW_CURFEW_BLOCKED)】被叫归属地当前时间 ${input.calleeLocalHour24}:00 处于法定静默宵禁窗口（仅允许 08:00-21:00），已阻断跨时区扰民外呼。`,
+    };
+  }
+
+  if (!frequencyCapOk) {
+    return {
+      policyCode: "P25-OUTBOUND-TCPA-DNC-AMD-GUARD",
+      callId: input.callId,
+      dncOrOptOutClean: true,
+      callingWindowLegal: true,
+      frequencyCapOk: false,
+      amdDetectionWithinBudget,
+      voicemailPiiSafe,
+      mutationAllowed: false,
+      actionCode: "OUTBOUND_FREQUENCY_CAP_EXCEEDED",
+      summaryZh: `【P25 智能外呼 DNC/TCPA/AMD 护栏 · 阻断 (OUTBOUND_FREQUENCY_CAP_EXCEEDED)】单用户外呼频次超限（24h=${input.callsLast24h}次/上限1次，7d=${input.callsLast7d}次/上限3次），已拦截防骚扰违规。`,
+    };
+  }
+
+  if (!voicemailPiiSafe) {
+    return {
+      policyCode: "P25-OUTBOUND-TCPA-DNC-AMD-GUARD",
+      callId: input.callId,
+      dncOrOptOutClean: true,
+      callingWindowLegal: true,
+      frequencyCapOk: true,
+      amdDetectionWithinBudget,
+      voicemailPiiSafe: false,
+      mutationAllowed: false,
+      actionCode: "VOICEMAIL_PII_LEAK_BLOCKED",
+      summaryZh: `【P25 智能外呼 DNC/TCPA/AMD 护栏 · 阻断 (VOICEMAIL_PII_LEAK_BLOCKED)】AMD 在 ${input.amdLatencyMs}ms 内判定进入语音信箱（Voicemail），已拦截包含客户敏感账单金额/PII 的留言话术，仅允许留下标准回拨号码或安全挂机。`,
+    };
+  }
+
+  return {
+    policyCode: "P25-OUTBOUND-TCPA-DNC-AMD-GUARD",
+    callId: input.callId,
+    dncOrOptOutClean: true,
+    callingWindowLegal: true,
+    frequencyCapOk: true,
+    amdDetectionWithinBudget,
+    voicemailPiiSafe: true,
+    mutationAllowed: true,
+    actionCode: "OUTBOUND_CAMPAIGN_COMPLIANT",
+    summaryZh: `【P25 智能外呼合规通过】DNC/退订核验洁净，当地时间 ${input.calleeLocalHour24}:00 合规，24h/7d 频次达标（${input.callsLast24h}/${input.callsLast7d}），AMD 判别耗时 ${input.amdLatencyMs}ms（<=1500ms）且零语音信箱 PII 泄露。`,
+  };
+}
+
+export interface EmotionalDistressVulnerableCallerGuardEvaluation {
+  policyCode: "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD";
+  callId: string;
+  crisisOrVulnerabilityDetected: boolean;
+  pressureTacticBlocked: boolean;
+  recommendedTtsRateMultiplier: number;
+  complexSubordinateClausesDisabled: boolean;
+  empathyDeskHandoffTriggered: boolean;
+  mutationAllowed: boolean;
+  actionCode:
+    | "VULNERABLE_CALLER_PRESSURE_TACTIC_BLOCKED"
+    | "EMPATHY_DESK_PRIORITY_HANDOFF"
+    | "STANDARD_CONVERSATION_FLOW";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Emotional Crisis & Vulnerable Caller (Bereavement, Severe Illness, Elderly Cognitive Fatigue) Protection Guard (`P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD`).
+ * - Detects crying/panic prosody (`pitchJitterPct >= 25` or `cryingOrPanicDetected === true`), bereavement/medical crisis, or `elderlyCognitiveFatigue === true`.
+ * - Immediately blocks cross-selling, retention pressure, or aggressive debt collection scripts (`VULNERABLE_CALLER_PRESSURE_TACTIC_BLOCKED`).
+ * - Slows TTS rate to `0.88x–0.92x`, disables complex clauses, and routes to the Empathy & Vulnerable Customer Desk (`EMPATHY_DESK_PRIORITY_HANDOFF`).
+ */
+export function evaluateEmotionalDistressVulnerableCallerGuard(input: {
+  callId: string;
+  cryingOrPanicDetected: boolean;
+  pitchJitterPct: number;
+  bereavementOrMedicalCrisis: boolean;
+  elderlyCognitiveFatigue: boolean;
+  containsRetentionPressureOrCollectionScript: boolean;
+}): EmotionalDistressVulnerableCallerGuardEvaluation {
+  const crisisOrVulnerabilityDetected =
+    input.cryingOrPanicDetected ||
+    input.pitchJitterPct >= 25 ||
+    input.bereavementOrMedicalCrisis ||
+    input.elderlyCognitiveFatigue;
+
+  if (!crisisOrVulnerabilityDetected) {
+    return {
+      policyCode: "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD",
+      callId: input.callId,
+      crisisOrVulnerabilityDetected: false,
+      pressureTacticBlocked: false,
+      recommendedTtsRateMultiplier: 1.0,
+      complexSubordinateClausesDisabled: false,
+      empathyDeskHandoffTriggered: false,
+      mutationAllowed: true,
+      actionCode: "STANDARD_CONVERSATION_FLOW",
+      summaryZh: `【P26 脆弱人群与情绪危机护栏 · 正常】未检测到哭泣/恐慌抖动（pitchJitter=${input.pitchJitterPct}%）或高龄认知疲劳，保持 1.0x 标准对话流。`,
+    };
+  }
+
+  const recommendedTtsRateMultiplier = input.elderlyCognitiveFatigue ? 0.88 : 0.9;
+  const pressureTacticBlocked = input.containsRetentionPressureOrCollectionScript;
+
+  if (pressureTacticBlocked) {
+    return {
+      policyCode: "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD",
+      callId: input.callId,
+      crisisOrVulnerabilityDetected: true,
+      pressureTacticBlocked: true,
+      recommendedTtsRateMultiplier,
+      complexSubordinateClausesDisabled: true,
+      empathyDeskHandoffTriggered: true,
+      mutationAllowed: false,
+      actionCode: "VULNERABLE_CALLER_PRESSURE_TACTIC_BLOCKED",
+      summaryZh: `【P26 脆弱人群与情绪危机护栏 · 阻断 (VULNERABLE_CALLER_PRESSURE_TACTIC_BLOCKED)】检测到客户处于情绪崩溃/突发危机或高龄认知疲劳状态（pitchJitter=${input.pitchJitterPct}%），已物理熔断挽留施压/催收/交叉销售话术，降速至 ${recommendedTtsRateMultiplier}x 并直转人文关怀专席。`,
+    };
+  }
+
+  return {
+    policyCode: "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD",
+    callId: input.callId,
+    crisisOrVulnerabilityDetected: true,
+    pressureTacticBlocked: false,
+    recommendedTtsRateMultiplier,
+    complexSubordinateClausesDisabled: true,
+    empathyDeskHandoffTriggered: true,
+    mutationAllowed: false,
+    actionCode: "EMPATHY_DESK_PRIORITY_HANDOFF",
+    summaryZh: `【P26 脆弱人群与情绪危机护栏 · 关怀转接 (EMPATHY_DESK_PRIORITY_HANDOFF)】识别到突发困境/高龄认知疲劳，已禁用复杂长从句、将 TTS 语速调至 ${recommendedTtsRateMultiplier}x 并一键触发人文关怀专线热转接。`,
+  };
+}
+
+
 
 
 

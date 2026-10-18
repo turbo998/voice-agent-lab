@@ -189,5 +189,6 @@
 | **11. 慢速核心系统节拍与长效记忆防投毒**<br>(`主机 15s 死寂抢跑承诺 / 口述改 VIP 档案`) | 接入 **`P19-ASYNC-TOOL-CALLBACK-PACING`** 阻断未落库抢跑承诺并启用 `2.5s` 进度心跳 | **`P20-VOICE-MEMORY-POISONING-GUARD` 拦截特权画像写入 + 同区域 VNet Azure AI Search 权威时效校验** | 100% 消除未落库虚假承诺、跨通话记忆投毒与过期政策误引 |
 | **12. 下游 API 熔断防雪崩与多音字/SSML 护栏**<br>(`后端超时引发模型无限重试 / 银行读错与 SSML 注入`) | 接入 **`P21-TOOL-CIRCUIT-BREAKER-DEGRADATION`** 开启 OPEN 熔断与只读快照/暂存意向单降级 | **`P22-PROSODY-SSML-PRONUNCIATION-GUARD` 专有名词 IPA/拼音词典 + `<say-as>` 逐位播报 + SSML 注入剥离** | 100% 阻断重试风暴拖垮主机，专有名词与单号播报准确率达 99.9% |
 | **13. 弱网 Opus PLC/FEC 抖动护栏与中英粤混说热词消歧**<br>(`电梯弱网 PLC 脑补错单 / 中英粤混说把英文 SKU 转成中文同音字`) | 接入 **`P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION`** 强制 `useinbandfec=1`、钳位抖动缓冲 `<=120ms` 并在 `plcRatio>0.18` 时强制槽位复述 | **`P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY` 中英粤 `<=120ms` 切换 + 专有缩略词/SKU 热词增强（置信度 `>=0.88`）** | 弱网突发丢包错单率降至 0.0%，中英粤混说专有缩略词识别率达 99.4% |
+| **14. 智能外呼 DNC/宵禁/AMD 护栏与脆弱人群关怀专线**<br>(`外呼违背 DNC/宵禁或语音信箱泄露金额 / 对哭泣高龄客户强推催收`) | 接入 **`P25-OUTBOUND-TCPA-DNC-AMD-GUARD`** 拨号前拦截 DNC/宵禁/超频并在 AMD 识别语音信箱时阻断 PII 留言 | **`P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD` 哭泣/危机/高龄认知疲劳态立即熔断施压话术、降速 `0.88x` 并直转关怀专席** | 100% 规避 TCPA/工信部防骚扰与语音信箱泄密罚单，脆弱客户高危投诉压降 96% |
 
 

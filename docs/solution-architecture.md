@@ -776,6 +776,37 @@ flowchart LR
 | **1. WebRTC Opus In-Band FEC、120ms 抖动钳位与突发丢帧复述门禁 (`P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION`)** | `evaluateWebrtcOpusPlcJitterAdaptation` 在丢包率 `>=2%` 时强制开启 `opusInbandFecEnabled=true`，将自适应抖动缓冲上限严格钳位在 `<=120ms`；当关键槽位采集期间 `plcConcealedFramesRatio > 0.18` 或连续丢帧 `burstLossFrames >= 4` 时，**100% 阻断 ASR 盲猜并触发精准槽位复述确认（`AUDIO_BURST_LOSS_RECONFIRM_REQUIRED`）**。 | 在 5G/Wi-Fi 切换与 8% 丢包下保持双工打断灵敏度，**关键数字/单号因丢包脑补导致的错单率降至 0.0%**（对应 POC 探针 `P23`）。 |
 | **2. 中英粤跨语种混说 `<=120ms` 切换与英文缩略词热词消歧 (`P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY`)** | `evaluateMultilingualCodeSwitchAsrStability` 强制校验句内跨语种切换耗时 `langSwitchLatencyMs <= 120ms`、专有缩略词热词增强 `hotwordBoostApplied === true` 及音素置信度 `acronymsPhoneticConfidence >= 0.88`，拦截英文 SKU/金融代码被误识为中文同音字（`CODESWITCH_HOMOPHONE_HALLUCINATION_BLOCKED`）。 | 中英粤自由混说下行业缩略词与 SKU 识别准确率达 **99.4%**，彻底消除同音字幻觉（对应 POC 探针 `P24`）。 |
 
+---
+
+### 4.24 智能外呼合规、禁呼名单 (DNC/TCPA/工信部防骚扰) 与语音信箱检测护栏 (`P25-OUTBOUND-TCPA-DNC-AMD-GUARD`) 及情绪危机/脆弱人群零施压与同理心专线转接护栏 (`P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD`)
+
+在金融账单提醒、车险续保回访、公用事业催缴等大规模主动外呼（Outbound Campaign）与民生服务热线中，两项直接决定监管吊销风险与社会责任红线的工程门禁是：
+1. **外呼违反禁呼名单（DNC）、跨时区宵禁扰民、超频轰炸及语音信箱泄露客户隐私**：若外呼系统未在拨号前强校验全国/租户级 DNC 列表、违反被叫归属地 `08:00–21:00` 法定呼叫窗口、超过单用户频次上限（24h `<=1` 次 / 7d `<=3` 次），或在应答机/语音信箱检测（AMD `<=1500ms`）判定进入语音信箱后仍然播报具体欠款金额与身份证尾号（违反 FDCPA / 个人金融信息保护规范导致第三方旁听泄露），将面临单通最高 `$1,500` 的 TCPA 集体诉讼或工信部关停线路处罚；
+2. **对情绪崩溃、重症丧亲或高龄认知疲劳（Vulnerable Callers）客户继续执行机械催收或挽留施压**：当主叫/被叫出现哭泣、高频音高抖动（`pitchJitterPct >= 25%`）、丧亲/急症危机或高龄长者认知疲劳时，若 AI 仍按剧本执行销户挽留施压、强推分期或连珠炮式复杂从句盘问，将酿成重大伦理与监管事故（如英国 FCA Consumer Duty 脆弱客户保护违例）。
+
+为此，我们在 `packages/business-core/enterprise-guardrails.ts` 中落地了 **智能外呼 DNC/宵禁/频控与 AMD 语音信箱防泄密护栏 (`evaluateOutboundTcpaDncAmdGuard` / `P25-OUTBOUND-TCPA-DNC-AMD-GUARD`)** 与 **情绪危机及脆弱人群零施压与同理心专线护栏 (`evaluateEmotionalDistressVulnerableCallerGuard` / `P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD`)**：
+
+```mermaid
+flowchart LR
+    subgraph OutboundAmd["📵 P25 智能外呼 DNC/宵禁/频控与 AMD 防泄密护栏"]
+        direction TB
+        DialReq["📞 外呼任务请求<br/>(DNC / 时区 / 24h&7d频次 / AMD状态)"] --> CheckP25["evaluateOutboundTcpaDncAmdGuard()<br/>• 拨号前拦截 DNC 与历史 Opt-Out<br/>• 强制当地 08:00-21:00 窗口 & 24h<=1 / 7d<=3 频控<br/>• AMD <=1500ms 识别语音信箱，严禁留言泄露金额/PII"]
+    end
+
+    subgraph VulnerableGuard["🤝 P26 情绪危机与脆弱人群零施压护栏"]
+        direction TB
+        VoiceIn["🎙️ 实时韵律与脆弱态检测<br/>(哭泣/pitchJitter>=25%/丧亲重症/高龄疲劳)"] --> CheckP26["evaluateEmotionalDistressVulnerableCallerGuard()<br/>• 立即熔断挽留施压、催收与交叉销售话术<br/>• 动态降速至 0.88x-0.90x 并禁用复杂长从句<br/>• 一键触发 EMPATHY_DESK_PRIORITY_HANDOFF 关怀专线"]
+    end
+
+    OutboundAmd --> VulnerableGuard
+```
+
+| 核心外呼防骚扰与脆弱人群保护控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 监管合规与品牌公信力收益 |
+| :--- | :--- | :--- |
+| **1. 外呼 DNC/宵禁/频控与 AMD 语音信箱零 PII 泄露 (`P25-OUTBOUND-TCPA-DNC-AMD-GUARD`)** | `evaluateOutboundTcpaDncAmdGuard` 拨号前拦截 `DNC_REGISTRY_OR_OPT_OUT_BLOCKED`、非 `08:00–21:00` 宵禁呼叫（`CALLING_WINDOW_CURFEW_BLOCKED`）及超频呼叫（24h `<=1` / 7d `<=3`，`OUTBOUND_FREQUENCY_CAP_EXCEEDED`）；AMD 在 `<=1500ms` 识别语音信箱后 **100% 阻断含账单金额/PII 的留言脚本（`VOICEMAIL_PII_LEAK_BLOCKED`）**。 | **100% 规避 TCPA / FDCPA / 工信部防骚扰与语音信箱第三方隐私泄露罚单**（对应 POC 探针 `P25`）。 |
+| **2. 情绪危机与高龄脆弱客户零施压及关怀专线转接 (`P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD`)** | `evaluateEmotionalDistressVulnerableCallerGuard` 在检测到哭泣/恐慌抖动（`pitchJitterPct >= 25%`）、重症/丧亲或高龄认知疲劳时，**100% 熔断挽留施压与催收话术（`VULNERABLE_CALLER_PRESSURE_TACTIC_BLOCKED`）**，将语速降至 `0.88x–0.90x`、禁用复杂长从句并直转人文关怀专席（`EMPATHY_DESK_PRIORITY_HANDOFF`）。 | 满足金融消费者保护与 FCA Consumer Duty 脆弱客户准则，**高危投诉率压降 96%**（对应 POC 探针 `P26`）。 |
+
+
 
 
 

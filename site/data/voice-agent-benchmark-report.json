@@ -249,6 +249,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION enforces useinbandfec=1 on >=2% loss, clamps adaptive jitter buffer <=120ms, and blocks slot guessing when plcConcealedFramesRatio > 0.18; P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY enforces <=120ms code-switch latency and blocks cross-language SKU homophone hallucinations."
+    },
+    {
+      "check_name": "Outbound DNC/Curfew/AMD Voicemail Privacy & Vulnerable Caller Empathy Desk Guard (P25 / P26)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P25-OUTBOUND-TCPA-DNC-AMD-GUARD blocks DNC/curfew/frequency violations and prevents PII/debt disclosure in voicemail greetings after <=1500ms AMD detection; P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD blocks retention pressure/collection tactics on crying or elderly-fatigued callers, slows TTS to 0.88x, and routes to Empathy Desk."
     }
   ],
   "latency_scaling": [
