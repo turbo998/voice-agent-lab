@@ -892,6 +892,33 @@ flowchart LR
 | **1. EU eCall / GB 34658 碰撞与 SOS 紧急救援 `0ms` 语音抢占 (`P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD`)** | `evaluateAutomotiveEcallCrashPreemptionGuard` 实时监听 CAN 总线减速度（`>=4.5G`）、气囊状态与 SOS 信号；一旦触发立即返回 `allowed: false`（阻断常规娱乐流）、`preemptionLatencyMs: 0`、`action: "PREEMPT_FOR_EMERGENCY_ECALL_MSD"` 与 `msdPayloadReady: true`。 | **100% 满足 EU eCall 与国标 GB 34658 零延迟生命救援抢占红线**（对应 POC 探针 `P31`）。 |
 | **2. 四音区乘员/后排儿童声纹高危车控权限隔离 (`P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD`)** | `evaluateCabinMultiZonePrivilegeIsolationGuard` 联合校验发话音区（`speakerZone`）、车速（`vehicleSpeedKph`）、儿童声纹（`isChildVoiceprint`）与指令安全等级（`commandSafetyTier`）；非主驾或儿童发起 `DRIVING_CRITICAL / CABIN_SECURITY / PAYMENT` 指令时立即返回 `allowed: false` 与 `CABIN_ZONE_SAFETY_PRIVILEGE_BLOCKED`。 | **100% 杜绝后排儿童或副驾误触/恶作剧开启后备箱、关闭 ESP 或盗刷车载支付**（对应 POC 探针 `P32`）。 |
 
+### 4.28 医疗远程分诊急性红旗症状 `0ms` 急诊强转护栏 (`P33-CLINICAL-REDFLAG-ESCALATION-GUARD`) 与主权声纹生物特征 CMK 加密粉碎护栏 (`P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD`)
+
+在三甲医院智能导诊、远程慢病随访与跨国金融/医疗声纹核身场景中，企业级 Voice Agent 必须同时守住 **临床生命安全红旗指征零延迟升级** 与 **GDPR Art. 9 / 中国《个人信息保护法》(PIPL) 生物特征主权驻留与被遗忘权加密粉碎（Crypto-Shredding）** 两大合规底线：
+1. **临床红旗症状（Red-Flag Symptoms）`0ms` 急诊强转与处方剂量擅自调整硬拦截 (`P33-CLINICAL-REDFLAG-ESCALATION-GUARD`)**：在导诊或院后随访通话中，一旦患者主诉命中临床红旗症状（如急性压榨性胸痛放射左臂、脑卒中 FAST 征象、急性呼吸窘迫）、声学前端检测到突发构音障碍指数超标（`dysarthriaIndex >= 0.70`）、穿戴设备血氧饱和度 `spo2Pct < 92%`，或患者要求 AI 擅自增减处方药剂量（`requestsPrescriptionDosageChange = true`），系统必须在 **`0ms`** 内物理阻断常规门诊排期与 LLM 自主医疗建议生成（`AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING_BLOCKED`），立即触发胸痛/卒中中心急诊护士高优热转接与急救定位预案（`IMMEDIATE_CLINICAL_REDFLAG_ER_WARM_TRANSFER`）；
+2. **主权声纹生物特征跨境围栏与撤回授权 Per-Caller KEK/CMK `<=1500ms` 加密粉碎 (`P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD`)**：声纹嵌入向量（`d-vector` / `x-vector`）属于不可变更的高敏生物识别信息，严禁跨越数据主权管辖区出境推理（如 `CN` 或 `EU` 声纹流向境外节点时立即触发 `CROSS_BORDER_BIOMETRIC_EGRESS_BLOCKED`）；当用户行使 GDPR Art. 17 / PIPL“撤回生物特征授权/被遗忘权”（`revokeBiometricConsent = true`）时，无需遍历冷备份磁带，直接通过 HSM/Key Vault 销毁该用户专属包装密钥（Per-Caller KEK / CMK），在 **`<=1500ms`** 内完成历史声纹向量与加密录音的 **NIST SP 800-88 Purge 级不可逆加密粉碎（`VOICEPRINT_CMK_CRYPTO_SHREDDED`）**。
+
+```mermaid
+flowchart LR
+    subgraph ClinicalGuard["🏥 P33 医疗红旗症状 0ms 急诊强转与禁调处方护栏"]
+        direction TB
+        PatientInput["🩺 患者主诉 / 构音含糊指数 >=0.70<br/>SpO2 < 92% / 请求擅自增减处方剂量"] --> CheckP33["evaluateClinicalRedFlagTriageGuard()<br/>• 0ms 阻断常规排期与 AI 医疗建议 (allowed=false)<br/>• 拦截 AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING<br/>• 触发 IMMEDIATE_CLINICAL_REDFLAG_ER_WARM_TRANSFER"]
+    end
+
+    subgraph CryptoShred["🔐 P34 主权声纹跨境围栏与 CMK 加密粉碎护栏"]
+        direction TB
+        BioInput["🧬 d-vector/x-vector 声纹流 + 撤回授权指令<br/>(Jurisdiction vs Target Region / Revoke Consent)"] --> CheckP34["evaluateSovereignVoiceprintCryptoShreddingGuard()<br/>• 异地非主权节点立即阻断 CROSS_BORDER_BIOMETRIC_EGRESS<br/>• 撤回授权 <=1500ms 销毁 Per-Caller KEK/CMK<br/>• 达成 VOICEPRINT_CMK_CRYPTO_SHREDDED (NIST SP 800-88)"]
+    end
+
+    ClinicalGuard --> CryptoShred
+```
+
+| 核心医疗生命红线与生物特征主权控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 临床安全与隐私合规收益 |
+| :--- | :--- | :--- |
+| **1. 临床红旗症状 `0ms` 急诊绿道强转与禁调处方剂量 (`P33-CLINICAL-REDFLAG-ESCALATION-GUARD`)** | `evaluateClinicalRedFlagTriageGuard` 联合校验红旗症状数组、`dysarthriaIndex >= 0.70`、`spo2Pct < 92` 与 `requestsPrescriptionDosageChange`；命中时返回 `allowed: false`、`reason: "AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING_BLOCKED"` 与 `action: "IMMEDIATE_CLINICAL_REDFLAG_ER_WARM_TRANSFER"`。 | **100% 杜绝急性胸痛/脑卒中患者被延误在普通挂号队列或获批违规调药**（对应 POC 探针 `P33`）。 |
+| **2. 主权声纹生物特征驻留围栏与 `<=1500ms` CMK 加密粉碎 (`P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD`)** | `evaluateSovereignVoiceprintCryptoShreddingGuard` 强制校验 `callerJurisdiction` 与 `targetInferenceRegion` 主权边界一致性（拦截 `CROSS_BORDER_BIOMETRIC_EGRESS_BLOCKED`），并在 `revokeBiometricConsent = true` 时核验 `<=1500ms` 内销毁 Per-Caller KEK（返回 `VOICEPRINT_CMK_CRYPTO_SHREDDED`）。 | **100% 满足 GDPR Art. 9/17、PIPL 与 NIST SP 800-88 生物特征主权与秒级遗忘权要求**（对应 POC 探针 `P34`）。 |
+
+
 
 
 

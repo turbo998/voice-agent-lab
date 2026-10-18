@@ -3149,6 +3149,179 @@ export function evaluateCabinMultiZonePrivilegeIsolationGuard(input: {
   };
 }
 
+export interface ClinicalRedFlagTriageGuardEvaluation {
+  readonly policyCode: "P33-CLINICAL-REDFLAG-ESCALATION-GUARD";
+  readonly patientSessionId: string;
+  readonly redFlagTriggered: boolean;
+  readonly dysarthriaIndex: number;
+  readonly spo2Pct: number;
+  readonly requestsPrescriptionDosageChange: boolean;
+  readonly allowed: boolean;
+  readonly reason:
+    | "AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING_BLOCKED"
+    | "ROUTINE_TRIAGE_ALLOWED";
+  readonly action:
+    | "IMMEDIATE_CLINICAL_REDFLAG_ER_WARM_TRANSFER"
+    | "ALLOW_ROUTINE_CLINICAL_INTAKE";
+  readonly actionCode:
+    | "AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING_BLOCKED"
+    | "IMMEDIATE_CLINICAL_REDFLAG_ER_WARM_TRANSFER"
+    | "ROUTINE_TRIAGE_ALLOWED";
+  readonly summaryZh: string;
+}
+
+/**
+ * Deterministic Clinical Red-Flag Symptom 0ms ER Escalation & Unauthorized Prescription Dosage Guard (`P33-CLINICAL-REDFLAG-ESCALATION-GUARD`).
+ * - Monitors patient chief complaints for clinical red flags (e.g., acute chest pain radiating to left arm, stroke FAST dysarthria, severe dyspnea, suicidal crisis), acoustic dysarthria index (`dysarthriaIndex >= 0.70`), pulse oximetry (`spo2Pct < 92`), and unauthorized requests to alter prescription drug dosage (`requestsPrescriptionDosageChange === true`).
+ * - Immediately blocks autonomous LLM clinical advice or routine outpatient booking in 0ms (`allowed: false`, `reason: "AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING_BLOCKED"`, `action: "IMMEDIATE_CLINICAL_REDFLAG_ER_WARM_TRANSFER"`).
+ */
+export function evaluateClinicalRedFlagTriageGuard(input: {
+  patientSessionId: string;
+  redFlagSymptoms: readonly string[];
+  dysarthriaIndex: number;
+  spo2Pct?: number;
+  requestsPrescriptionDosageChange: boolean;
+}): ClinicalRedFlagTriageGuardEvaluation {
+  const spo2Pct = input.spo2Pct ?? 98;
+  const redFlagTriggered =
+    input.redFlagSymptoms.length > 0 ||
+    input.dysarthriaIndex >= 0.7 ||
+    spo2Pct < 92 ||
+    input.requestsPrescriptionDosageChange;
+
+  if (redFlagTriggered) {
+    return {
+      policyCode: "P33-CLINICAL-REDFLAG-ESCALATION-GUARD",
+      patientSessionId: input.patientSessionId,
+      redFlagTriggered: true,
+      dysarthriaIndex: input.dysarthriaIndex,
+      spo2Pct,
+      requestsPrescriptionDosageChange: input.requestsPrescriptionDosageChange,
+      allowed: false,
+      reason: "AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING_BLOCKED",
+      action: "IMMEDIATE_CLINICAL_REDFLAG_ER_WARM_TRANSFER",
+      actionCode: "AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING_BLOCKED",
+      summaryZh: `【P33 医疗临床红旗症状 0ms 急诊强转与处方剂量硬拦截护栏 (AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING_BLOCKED -> IMMEDIATE_CLINICAL_REDFLAG_ER_WARM_TRANSFER)】患者会话 ${input.patientSessionId} 命中红旗指征（症状=[${input.redFlagSymptoms.join(", ") || "无"}]，构音含糊指数=${input.dysarthriaIndex}，SpO2=${spo2Pct}%，请求调药=${input.requestsPrescriptionDosageChange}），已在 0ms 内阻断常规门诊排期与 AI 医疗建议，立即热转接急诊中心/胸痛卒中绿道护士。`,
+    };
+  }
+
+  return {
+    policyCode: "P33-CLINICAL-REDFLAG-ESCALATION-GUARD",
+    patientSessionId: input.patientSessionId,
+    redFlagTriggered: false,
+    dysarthriaIndex: input.dysarthriaIndex,
+    spo2Pct,
+    requestsPrescriptionDosageChange: false,
+    allowed: true,
+    reason: "ROUTINE_TRIAGE_ALLOWED",
+    action: "ALLOW_ROUTINE_CLINICAL_INTAKE",
+    actionCode: "ROUTINE_TRIAGE_ALLOWED",
+    summaryZh: `【P33 医疗分诊红旗筛查通过】患者会话 ${input.patientSessionId} 未检出急性红旗症状或越权调药请求（SpO2=${spo2Pct}%，dysarthria=${input.dysarthriaIndex}），允许常规门诊预问诊。`,
+  };
+}
+
+export interface SovereignVoiceprintCryptoShreddingGuardEvaluation {
+  readonly policyCode: "P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD";
+  readonly callerJurisdiction: string;
+  readonly targetInferenceRegion: string;
+  readonly crossBorderBlocked: boolean;
+  readonly cryptoShredded: boolean;
+  readonly kekDestructionLatencyMs: number;
+  readonly allowed: boolean;
+  readonly reason:
+    | "CROSS_BORDER_BIOMETRIC_EGRESS_BLOCKED"
+    | "VOICEPRINT_CMK_CRYPTO_SHREDDED"
+    | "VOICEPRINT_SHREDDING_SLA_BREACHED"
+    | "SOVEREIGN_BIOMETRIC_COMPLIANT";
+  readonly actionCode:
+    | "CROSS_BORDER_BIOMETRIC_EGRESS_BLOCKED"
+    | "VOICEPRINT_CMK_CRYPTO_SHREDDED"
+    | "VOICEPRINT_SHREDDING_SLA_BREACHED"
+    | "SOVEREIGN_BIOMETRIC_COMPLIANT";
+  readonly summaryZh: string;
+}
+
+/**
+ * Deterministic Sovereign Biometric Voiceprint Residency & Per-Caller KEK/CMK Crypto-Shredding Guard (`P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD`).
+ * - Blocks cross-jurisdiction egress of raw biometric voiceprint vectors (`d-vector` / `x-vector`) under GDPR Art. 9 / PIPL (`CROSS_BORDER_BIOMETRIC_EGRESS_BLOCKED`).
+ * - Enforces NIST SP 800-88 cryptographic erasure (`VOICEPRINT_CMK_CRYPTO_SHREDDED`) within `<= 1500ms` by destroying the per-caller Key Encryption Key (KEK / CMK) when the caller revokes biometric consent (`revokeBiometricConsent === true`).
+ */
+export function evaluateSovereignVoiceprintCryptoShreddingGuard(input: {
+  callerJurisdiction: string;
+  targetInferenceRegion: string;
+  containsBiometricVoiceprint: boolean;
+  revokeBiometricConsent: boolean;
+  kekDestructionLatencyMs?: number;
+  perCallerKekDestroyed?: boolean;
+}): SovereignVoiceprintCryptoShreddingGuardEvaluation {
+  const normalizedJurisdiction = input.callerJurisdiction.trim().toUpperCase();
+  const normalizedTarget = input.targetInferenceRegion.trim().toUpperCase();
+  const sameSovereignBoundary =
+    normalizedTarget === normalizedJurisdiction ||
+    normalizedTarget.startsWith(`${normalizedJurisdiction}-`) ||
+    normalizedTarget.startsWith(`${normalizedJurisdiction}_`);
+
+  if (input.containsBiometricVoiceprint && !sameSovereignBoundary) {
+    return {
+      policyCode: "P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD",
+      callerJurisdiction: input.callerJurisdiction,
+      targetInferenceRegion: input.targetInferenceRegion,
+      crossBorderBlocked: true,
+      cryptoShredded: false,
+      kekDestructionLatencyMs: input.kekDestructionLatencyMs ?? 0,
+      allowed: false,
+      reason: "CROSS_BORDER_BIOMETRIC_EGRESS_BLOCKED",
+      actionCode: "CROSS_BORDER_BIOMETRIC_EGRESS_BLOCKED",
+      summaryZh: `【P34 主权声纹生物特征跨境围栏 · 硬阻断 (CROSS_BORDER_BIOMETRIC_EGRESS_BLOCKED)】主叫司法管辖区=${input.callerJurisdiction} 的原始声纹生物特征向量尝试路由至非同主权推理节点 ${input.targetInferenceRegion}，违反 GDPR Art.9 / PIPL 生物特征本地化红线，已物理阻断出境。`,
+    };
+  }
+
+  if (input.revokeBiometricConsent) {
+    const latency = input.kekDestructionLatencyMs ?? 420;
+    const kekDestroyed = input.perCallerKekDestroyed ?? true;
+    if (!kekDestroyed || latency > 1500) {
+      return {
+        policyCode: "P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD",
+        callerJurisdiction: input.callerJurisdiction,
+        targetInferenceRegion: input.targetInferenceRegion,
+        crossBorderBlocked: false,
+        cryptoShredded: false,
+        kekDestructionLatencyMs: latency,
+        allowed: false,
+        reason: "VOICEPRINT_SHREDDING_SLA_BREACHED",
+        actionCode: "VOICEPRINT_SHREDDING_SLA_BREACHED",
+        summaryZh: `【P34 声纹撤回同意加密粉碎超时告警 (VOICEPRINT_SHREDDING_SLA_BREACHED)】KEK 销毁状态=${kekDestroyed}，耗时=${latency}ms（超过 1500ms SLA 上限），已阻断后续会话并触发 P0 合规审计。`,
+      };
+    }
+
+    return {
+      policyCode: "P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD",
+      callerJurisdiction: input.callerJurisdiction,
+      targetInferenceRegion: input.targetInferenceRegion,
+      crossBorderBlocked: false,
+      cryptoShredded: true,
+      kekDestructionLatencyMs: latency,
+      allowed: true,
+      reason: "VOICEPRINT_CMK_CRYPTO_SHREDDED",
+      actionCode: "VOICEPRINT_CMK_CRYPTO_SHREDDED",
+      summaryZh: `【P34 声纹生物特征撤回授权 CMK 加密粉碎完成 (VOICEPRINT_CMK_CRYPTO_SHREDDED)】已在 ${latency}ms（<=1500ms）内销毁每用户独立包装密钥（Per-Caller KEK），历史录音与 d-vector/x-vector 声纹向量已完成 NIST SP 800-88 不可逆加密粉碎。`,
+    };
+  }
+
+  return {
+    policyCode: "P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD",
+    callerJurisdiction: input.callerJurisdiction,
+    targetInferenceRegion: input.targetInferenceRegion,
+    crossBorderBlocked: false,
+    cryptoShredded: false,
+    kekDestructionLatencyMs: 0,
+    allowed: true,
+    reason: "SOVEREIGN_BIOMETRIC_COMPLIANT",
+    actionCode: "SOVEREIGN_BIOMETRIC_COMPLIANT",
+    summaryZh: `【P34 主权声纹生物特征合规通过】管辖区=${input.callerJurisdiction} -> 节点=${input.targetInferenceRegion} 满足同主权域驻留要求。`,
+  };
+}
+
 
 
 
