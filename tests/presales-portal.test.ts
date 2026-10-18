@@ -4,15 +4,15 @@ import { readFile } from "node:fs/promises";
 
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
-    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10"] },
+    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "ROI"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "C2PA"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01"] },
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01"] },
     { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
-    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "turnEpoch"] }
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -93,6 +93,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "industrial_plc_field_triage",
     "telco_esim_simswap_guard",
     "cold_chain_telex_customs",
+    "grid_storm_outage_lock",
+    "pharma_clinical_sae_guard",
     "Nova Sonic",
     "L04 · Spec Hallucination Block",
     "T04 · Post-Takeover Late-Write Block",
@@ -106,6 +108,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "S08 · Deepfake Voice Clone Guard",
     "S09 · Speaker Role Auth Gate",
     "S10 · eSIM SIM-Swap Fraud Block",
+    "S11 · Outbound TCPA & <200ms DNC",
+    "S12 · Double-Blind & SAE Gate",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -120,9 +124,12 @@ import {
   evaluateAirlineIrropsGuard,
   evaluateAudioDeepfakeGuard,
   evaluateColdChainCustomsGuard,
+  evaluateGridStormOutageGuard,
   evaluateHospitalityPmsGuard,
   evaluateIndustrialFieldGuard,
   evaluateMultiSpeakerRoleGuard,
+  evaluateOutboundTcpaConsentGuard,
+  evaluatePharmaPvSaeGuard,
   evaluateTelcoEsimGuard,
   evaluateTurnEpochWriteFence,
   evaluateWealthDualRecordingGuard,
@@ -374,6 +381,106 @@ test("S09-SPEAKER-ROLE-AUTH multi-party speaker diarization guard blocks bystand
   assert.equal(primaryVerified.writeToolAuthorized, true);
   assert.equal(primaryVerified.action, "allow_primary_speaker_tool");
 });
+
+test("GRID-STORM-01 smart grid storm guard dispatches P0 downed-wire rescue, prioritizes life-support, and hard-blocks remote AMI reclosing when crew is on line", () => {
+  const downedWireAndReclose = evaluateGridStormOutageGuard({
+    feederId: "FD-109",
+    downedHotWire: true,
+    lifeSupportRegistered: true,
+    requestsRemoteMeterReclose: true,
+    fieldCrewOnLine: true,
+    groundFaultActive: false,
+    compensationClaimUsd: 350,
+  });
+  assert.equal(downedWireAndReclose.remoteRecloseAllowed, false);
+  assert.equal(downedWireAndReclose.emergencyPriority, "P0_DOWNED_WIRE");
+  assert.equal(downedWireAndReclose.compensationWaiverStatus, "pending_grid_supervisor_approval");
+  assert.equal(downedWireAndReclose.action, "dispatch_hot_wire_rescue_immediately");
+  assert.equal(downedWireAndReclose.policyCode, "GRID-STORM-01");
+
+  const crewOnLineLockout = evaluateGridStormOutageGuard({
+    feederId: "FD-109",
+    downedHotWire: false,
+    lifeSupportRegistered: false,
+    requestsRemoteMeterReclose: true,
+    fieldCrewOnLine: true,
+    groundFaultActive: false,
+  });
+  assert.equal(crewOnLineLockout.remoteRecloseAllowed, false);
+  assert.equal(crewOnLineLockout.action, "block_remote_reclose_lockout");
+
+  const lifeSupportPriority = evaluateGridStormOutageGuard({
+    feederId: "FD-204",
+    downedHotWire: false,
+    lifeSupportRegistered: true,
+    requestsRemoteMeterReclose: false,
+    fieldCrewOnLine: false,
+    groundFaultActive: false,
+    compensationClaimUsd: 100,
+  });
+  assert.equal(lifeSupportPriority.emergencyPriority, "P0_LIFE_SUPPORT");
+  assert.equal(lifeSupportPriority.action, "prioritize_life_support_restoration");
+  assert.equal(lifeSupportPriority.compensationWaiverStatus, "auto_approved_under_cap");
+});
+
+test("PHARMA-PV-01 clinical trial guard escalates SAE with E2B(R3) draft, blocks double-blind unblinding, and forbids dosage modification advice", () => {
+  const saeAndUnblindAttempt = evaluatePharmaPvSaeGuard({
+    trialId: "ONC-309",
+    saeRedFlag: true,
+    unblindRequest: true,
+    piEmergencyUnblindTokenVerified: false,
+    dosageChangeRequested: true,
+  });
+  assert.equal(saeAndUnblindAttempt.e2bR3ReportDrafted, true);
+  assert.equal(saeAndUnblindAttempt.unblindingBlocked, true);
+  assert.equal(saeAndUnblindAttempt.dosageAdviceBlocked, true);
+  assert.equal(saeAndUnblindAttempt.action, "escalate_sae_and_block_violations");
+  assert.equal(saeAndUnblindAttempt.policyCode, "PHARMA-PV-01");
+
+  const unblindOnly = evaluatePharmaPvSaeGuard({
+    trialId: "ONC-309",
+    saeRedFlag: false,
+    unblindRequest: true,
+    piEmergencyUnblindTokenVerified: false,
+    dosageChangeRequested: false,
+  });
+  assert.equal(unblindOnly.unblindingBlocked, true);
+  assert.equal(unblindOnly.action, "block_double_blind_unblinding");
+});
+
+test("S11-TCPA-CONSENT-GUARD outbound compliance guard blocks curfew calls, requires C2PA & 5s AI disclosure, and executes <200ms DNC opt-out", () => {
+  const curfewBlocked = evaluateOutboundTcpaConsentGuard({
+    calleeTimezoneHour: 21.5,
+    priorExpressConsent: true,
+    aiDisclosureWithin5s: true,
+    c2paWatermarkEnabled: true,
+  });
+  assert.equal(curfewBlocked.dialAllowed, false);
+  assert.equal(curfewBlocked.action, "block_outbound_dial_curfew_or_no_consent");
+  assert.equal(curfewBlocked.policyCode, "S11-TCPA-CONSENT-GUARD");
+
+  const instantOptOut = evaluateOutboundTcpaConsentGuard({
+    calleeTimezoneHour: 14,
+    priorExpressConsent: true,
+    userSaidStopCalling: true,
+    aiDisclosureWithin5s: true,
+    c2paWatermarkEnabled: true,
+  });
+  assert.equal(instantOptOut.dialAllowed, false);
+  assert.equal(instantOptOut.dncRegisteredImmediately, true);
+  assert.equal(instantOptOut.action, "revoke_consent_and_hangup_under_200ms");
+
+  const compliantDial = evaluateOutboundTcpaConsentGuard({
+    calleeTimezoneHour: 10,
+    priorExpressConsent: true,
+    aiDisclosureWithin5s: true,
+    c2paWatermarkEnabled: true,
+  });
+  assert.equal(compliantDial.dialAllowed, true);
+  assert.equal(compliantDial.c2paWatermarkAttached, true);
+  assert.equal(compliantDial.action, "allow_compliant_outbound_call");
+});
+
 
 
 

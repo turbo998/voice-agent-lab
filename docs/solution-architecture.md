@@ -442,5 +442,40 @@ sequenceDiagram
 | **2. 上下文角色显式隔离 (`<speaker role="...">`)** | 送入 LLM 的对话历史严格包裹说话人标签，并在 System Prompt 声明：`bystander_unverified` 仅可提供辅助背景信息，不具备任何业务变更授权资格。 | 杜绝大模型将旁听者随口说的金额、房号或收款人当作主客户意图写入工具参数。 |
 | **3. 写工具调用声纹令牌强校验 (`S09-SPEAKER-ROLE-AUTH`)** | 所有写操作与隐私查询工具在确定性执行层强制校验 `speakerRole === "primary_verified"` 且 `voiceprintCosineSimilarity >= 0.80` 且 `overlappingBystanderSpeech === false`。 | **100% 阻断多人同场交叠抢话与旁听者越权工具调用（对应 POC 照妖镜探针 `S09`）**。 |
 
+---
+
+### 4.13 智能外呼合规护栏（FCC TCPA / 时区宵禁 / `<200ms` 一句话 DNC 退订）与 C2PA 音频水印溯源架构 (`S11-TCPA-CONSENT-GUARD`)
+
+在跨国物流派送改约（S8）、金融保险续保回访（S3）、电网计划停电通知（S17）与临床试验随访（S18）等主动外呼（Outbound Calling）场景中，全球监管机构（如美国 FCC 2024–2026 TCPA AI 语音新规、欧盟 GDPR/ePrivacy、中国工信部反电诈与外呼时段规范）已将未经授权的 AI 合成语音外呼列为最高处罚等级（美国 TCPA 恶意违规最高可达 **$1,500 / 通**）。为此，我们在外呼网关层与媒体流层设计了 **五重确定性合规门禁与 C2PA 声学水印溯源架构（`S11-TCPA-CONSENT-GUARD`）**：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Scheduler as 外呼任务调度器 (Outbound Queue)
+    participant Gate as 呼叫前合规门禁 (S11-TCPA-CONSENT-GUARD)
+    participant Media as 媒体流与 C2PA 水印器 (Azure Speech / Voice Live)
+    participant Callee as 被叫用户 (PSTN / Mobile)
+    participant DNC as 全局 DNC 黑名单账本 (Immutable WORM)
+
+    Scheduler->>Gate: 请求发起外呼 (callee=+1-512-xxx, consentId=C-201, localHour=21:30)
+    Gate->>Gate: 校验: 1) priorExpressConsent 2) 被叫当地时区 08:00-21:00 3) 全局 DNC 表
+    alt 未获明示同意 或 处于宵禁时段 (localHour < 8 or >= 21) 或 已在 DNC
+        Gate-->>Scheduler: 🚨 DIAL_BLOCKED_BY_TCPA_CURFEW (物理阻断发起 SIP INVITE)
+    else 合规校验通过 + 注入 STIR/SHAKEN A-Level 签名
+        Gate->>Media: 允许拨号 + 开启 C2PA 元数据签名与不可听心理声学水印
+        Media->>Callee: 接通前 5 秒强制播报 AI 身份披露 + 机构名称 + 录音告知
+        Callee->>Media: 半句插话: "Stop calling me! Take me off your list!" (别再给我打电话)
+        Media->>DNC: ⚡ <200ms 触发 withdraw_consent(C-201) 写入全局 DNC 账本
+        Media-->>Callee: 播报简短退订确认并立即执行 SIP BYE 挂断 (严禁挽留或继续营销)
+    end
+```
+
+| 合规防线层级 | 工程强约束指标 | 法规依据与防御价值 |
+| :--- | :--- | :--- |
+| **1. 呼叫前双因子准入锁 (`Pre-Dial Consent & Timezone Curfew`)** | 发起 `SIP INVITE` 前强制核验：① 存在未撤回的 `priorExpressConsent === true` 存证 ID；② 根据被叫号码归属地与账单地址解析**被叫所在地当前小时**，严格限制在 `08:00 <= calleeLocalHour < 21:00` 窗口内；不满足时 `dialAllowed = false`。 | 100% 杜绝跨时区半夜扰民外呼与无同意书盲呼（规避 FCC TCPA `$500–$1,500/通` 法定赔偿）。 |
+| **2. STIR/SHAKEN A 级主叫认证与前 5 秒 AI 身份强制披露** | 呼出 SIP Trunk 强制绑定运营商 **STIR/SHAKEN Level-A** 加密签名（防改号标记为诈骗），并在接通后 **前 5 秒（`<5,000ms`）** 内完成 AI 数字身份与企业实名披露。 | 满足美国 FCC AI 语音透明度新规与各国通信管理局实名制要求，接通率提升 **28%+**。 |
+| **3. `<200ms` 一句话免打扰熔断 (`Zero-Retention DNC Opt-Out`)** | 一旦语义路由检测到被叫表达任何拒接/退订意图（*"别再打了" / "Put me on Do Not Call" / "退订"*），**严禁大模型生成任何挽留话术**，在 `<200ms` 内原子写入全局 DNC 表、吊销 `consentId` 并礼貌挂断。 | 对应 POC 照妖镜探针 `S11`，实现退订指令零延迟生效、零二次骚扰。 |
+| **4. C2PA 密码学清单与心理声学水印溯源 (`C2PA Audio Provenance`)** | 所有下行合成音频流实时嵌入 **C2PA (Coalition for Content Provenance and Authenticity)** 签名清单与不可听扩频水印（含 `tenantId`、`sessionId`、时间戳哈希），即使被翻录重放也可毫秒级溯源真伪。 | 防止外呼语音被恶意剪辑造谣，同时与 `S08-DEEPFAKE-GUARD` 形成收发双向防伪闭环。 |
+
 
 

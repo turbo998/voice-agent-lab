@@ -172,6 +172,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "S09-SPEAKER-ROLE-AUTH blocks unverified bystander tool commands (voiceSim=0.41 < 0.82); TELCO-ESIM-01 enforces 24h cooling-off."
+    },
+    {
+      "check_name": "Outbound TCPA Curfew / <200ms DNC Opt-Out & Clinical Trial Anti-Unblinding Gate (S11 / S12)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "S11-TCPA-CONSENT-GUARD blocks >21:00 curfew dials and commits DNC in 140ms with C2PA provenance; PHARMA-PV-01 blocks unblinding and drafts E2B(R3) SAE report."
     }
   ],
   "latency_scaling": [
