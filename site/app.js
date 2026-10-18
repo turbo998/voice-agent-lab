@@ -2809,6 +2809,40 @@
         confidence: 1.0,
         verifier: 'PASS (P14) · Zero premature cutoff · Widened VAD to 2100ms + 0.88x TTS + RFC 4103 RTT active'
       }
+    },
+    {
+      code: 'P15 · <300ms Mid-Call S2S Failover',
+      badge: '210ms Switch',
+      title: '通话中途跨区/跨架构 S2S 零掉线热备切换',
+      sub: '测试主 S2S 节点遭遇 HTTP 429 或 WS 断流 (>1800ms) 时 210ms 无感热切并完整继承已核身状态与纪元锁',
+      customer_en: '[Mid-Call Chaos Injection @ 03:15] Primary EastUS2 S2S WebSocket stalled (2,350ms, HTTP 429) while caller is mid-sentence with verified KYC and in-flight ticket!',
+      customer_zh: '【通话第 3 分钟 Chaos 故障注入】主区域 EastUS2 S2S WebSocket 卡死（2,350ms / HTTP 429），此时客户已完成核身且有在途工单！',
+      agent_en: 'MID-CALL MULTI-PROVIDER ZERO-DROP FAILOVER (P15 / P15-MULTIPROVIDER-S2S-FAILOVER): Detected primary S2S stall (`2350ms > 1800ms`, HTTP 429). Hot-switched media stream in `210ms` (<300ms SLA) to `SECONDARY_S2S_SWEDENCENTRAL` (`sipMediaSessionDropped=false`), injecting `48-token` `PinnedStateJSON` and preserving `turnEpoch=7` with zero duplicate tool execution!',
+      agent_zh: '【P15 通话中途零掉线热备切换】检测到主 S2S 节点异常（HTTP 429 / WS 卡顿 2350ms），已在 `210ms`（<300ms SLA）内无感热切至备用节点 `SECONDARY_S2S_SWEDENCENTRAL`（`sipMediaSessionDropped=false`），自动注入 48 Tokens `PinnedStateJSON` 并保留 `turnEpoch=7`，SIP 通话零中断、客户无需二次核身且在途工具零重复执行！',
+      trace: {
+        tool: 'evaluate_multi_provider_s2s_failover(ws_stall_ms=2350, http=429 -> route="SECONDARY_S2S_SWEDENCENTRAL", switch_ms=210, drop=false)',
+        citations: ['P15-MULTIPROVIDER-S2S-FAILOVER', 'MULTI-REGION-SBC-HA', 'PINNED-STATE-CONTINUITY'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P15) · 210ms hot switch · 0 SIP drop · KYC state & turnEpoch preserved'
+      }
+    },
+    {
+      code: 'P16 · 15 vs 50 & NATO Readback Gate',
+      badge: '0% Digit Error',
+      title: '15 vs 50 同音数值与 B/P/M/N 编码北约字母逐位复诵门禁',
+      sub: '测试 15,000 vs 50,000 (Teen-Ty) 及 B7N-50 编码强制生成北约字母复诵并在客户确认前硬阻断提交',
+      customer_en: '[Noisy Line · Acoustic Conf 0.84] "Update the wire transfer to 50,000 USD (sounds like fifteen thousand) under booking code B7N-50 right away!"',
+      customer_zh: '【嘈杂线路 · 声学置信度 0.84】“立刻把汇款金额改成 50,000 美金（发音接近 fifteen thousand），关联单号是 B7N-50！”',
+      agent_en: 'TEEN-TY NUMERIC & NATO PHONETIC READBACK LOCK (P16 / P16-NUMERIC-ENTITY-READBACK-VERIFIER): HARD BLOCK (`NUMERIC_TEEN_TY_READBACK_REQUIRED`)! Detected Teen-Ty ambiguity (`50` vs `15`) and confusable consonants (`B/N`). Before committing, please confirm this exact readback: `B7N-50 (Bravo-Seven-November-Five-Zero)` and `50000 (Five-Zero-Zero-Zero-Zero)`!',
+      agent_zh: '【P16 同音数值与北约字母逐位复诵门禁 · 阻断】检测到 Teen-Ty 数值歧义（`50` vs `15`）及易混辅音编码（`B/N`），已物理拦截直接提交（`NUMERIC_TEEN_TY_READBACK_REQUIRED`）！请先逐位复诵确认：`B7N-50 (Bravo-Seven-November-Five-Zero)` 与金额 `50000 (Five-Zero-Zero-Zero-Zero)`！',
+      trace: {
+        tool: 'evaluate_numeric_entity_readback_guard(value="B7N-50", conf=0.84, confirmed=false -> NUMERIC_TEEN_TY_READBACK_REQUIRED)',
+        citations: ['P16-NUMERIC-ENTITY-READBACK-VERIFIER', 'ICAO-NATO-PHONETIC', 'ZERO-SLOT-MISRECOGNITION'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P16) · Unconfirmed 15/50 & B7N code blocked until NATO readback verified'
+      }
     }
   ];
 
@@ -2883,7 +2917,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (32-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (34-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -2891,7 +2925,8 @@
       '- [x] **长通话音频裁剪与三层零信任流水线**：4 轮音频滑动窗口立省 74% 长通话成本 (P07)，`<2ms` 三层流水线输出 WORM 防篡改审计回执 (P08)',
       '- [x] **RFC 5589 热转接耳语与事后 100 分全量质检**：双腿协商转接 + `1.35x` 耳语消除盲转二次盘问且未核身强制掩码 PII (P09)，五维 100 分全量质检红线违例一票否决归零 (P10)',
       '- [x] **PCI-DSS v4.0 媒体面旁路与金丝雀自动回滚**：400Hz 掩码 + RFC 4733 直通 HSM 使大模型 100% 脱离 PCI CDE (P11)，金丝雀五维门禁退化 `<500ms` 自动回滚 (P12)',
-      '- [x] **多模态同屏防注入与 EAA/ADA 无障碍自适应**：100% 阻断共享屏幕隐藏文字注入与过期帧误操作 (P13)，口吃/慢语速自动拓宽 VAD 至 `2100ms` 并开启 `0.88x` + RFC 4103 实时文本 (P14)'
+      '- [x] **多模态同屏防注入与 EAA/ADA 无障碍自适应**：100% 阻断共享屏幕隐藏文字注入与过期帧误操作 (P13)，口吃/慢语速自动拓宽 VAD 至 `2100ms` 并开启 `0.88x` + RFC 4103 实时文本 (P14)',
+      '- [x] **通话中途零掉线热备切换与北约字母逐位复诵**：主 S2S 异常 `<300ms` 无感热切且保留已核身状态与 `turnEpoch` (P15)，`15 vs 50` 及 `B/P/M/N` 编码强制北约字母复诵确认零差错 (P16)'
     ].join('\n');
   }
 

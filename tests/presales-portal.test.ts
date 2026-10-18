@@ -5,14 +5,14 @@ import { readFile } from "node:fs/promises";
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
     { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "C2PA"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "C2PA"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15", "P16"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE"] },
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER"] },
     { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
-    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "turnEpoch"] }
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -122,6 +122,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "P12 · Canary Shadow <500ms Rollback",
     "P13 · Multimodal Co-Browsing Guard",
     "P14 · EAA/ADA Disfluency Adaptive",
+    "P15 · <300ms Mid-Call S2S Failover",
+    "P16 · 15 vs 50 & NATO Readback Gate",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -145,7 +147,9 @@ import {
   evaluateHospitalityPmsGuard,
   evaluateIndustrialFieldGuard,
   evaluateMultimodalCobrowsingGuard,
+  evaluateMultiProviderS2sFailover,
   evaluateMultiSpeakerRoleGuard,
+  evaluateNumericEntityReadbackGuard,
   evaluateOutboundTcpaConsentGuard,
   evaluatePciDtmfMediaBypassGuard,
   evaluatePharmaPvSaeGuard,
@@ -835,6 +839,81 @@ test("P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE widens VAD silence to 2100-2400ms, s
     prematureCutoffViolation.complianceStatus,
     "ACCESSIBILITY_PREMATURE_CUTOFF_VIOLATION"
   );
+});
+
+test("P15-MULTIPROVIDER-S2S-FAILOVER switches stalled or HTTP 429 S2S streams in <300ms while preserving KYC state and turnEpoch", () => {
+  const failoverSecondary = evaluateMultiProviderS2sFailover({
+    callId: "CALL-HA-901",
+    wsStallMs: 2350,
+    primaryHttpStatus: 429,
+    secondaryS2sHealthy: true,
+    currentTurnEpoch: 7,
+    pinnedEntities: {
+      callerVerifiedKyc: true,
+      customerTier: "DIAMOND",
+      inFlightTicketId: "TCK-8821",
+    },
+    inFlightToolIdempotencyKey: "IDEMP-7701",
+  });
+  assert.equal(failoverSecondary.policyCode, "P15-MULTIPROVIDER-S2S-FAILOVER");
+  assert.equal(failoverSecondary.failoverTriggered, true);
+  assert.equal(failoverSecondary.activeRoute, "SECONDARY_S2S_SWEDENCENTRAL");
+  assert.equal(failoverSecondary.failoverSwitchLatencyMs, 210);
+  assert.equal(failoverSecondary.sipMediaSessionDropped, false);
+  assert.ok(failoverSecondary.pinnedStateTokenCount <= 180);
+  assert.equal(failoverSecondary.preservedTurnEpoch, 7);
+  assert.equal(failoverSecondary.duplicateInFlightToolPrevented, true);
+
+  const cascadeFallback = evaluateMultiProviderS2sFailover({
+    callId: "CALL-HA-902",
+    wsStallMs: 3100,
+    primaryHttpStatus: 503,
+    secondaryS2sHealthy: false,
+    currentTurnEpoch: 4,
+    pinnedEntities: {
+      callerVerifiedKyc: true,
+      note: "x".repeat(900),
+    },
+    inFlightToolIdempotencyKey: null,
+  });
+  assert.equal(cascadeFallback.activeRoute, "TERTIARY_CASCADED_ASR_LLM_TTS");
+  assert.equal(cascadeFallback.pinnedStateTokenCount, 175);
+  assert.equal(cascadeFallback.sipMediaSessionDropped, false);
+});
+
+test("P16-NUMERIC-ENTITY-READBACK-VERIFIER blocks unconfirmed 15 vs 50 Teen-Ty numbers and B/P/M/N alphanumeric codes until NATO readback is verified", () => {
+  const unconfirmedTeenTy = evaluateNumericEntityReadbackGuard({
+    entityType: "CURRENCY_AMOUNT",
+    rawValue: "50,000",
+    acousticConfidence: 0.84,
+    callerConfirmedReadback: false,
+  });
+  assert.equal(unconfirmedTeenTy.policyCode, "P16-NUMERIC-ENTITY-READBACK-VERIFIER");
+  assert.equal(unconfirmedTeenTy.teenTyAmbiguityDetected, true);
+  assert.equal(unconfirmedTeenTy.commitAllowed, false);
+  assert.equal(unconfirmedTeenTy.blockReasonCode, "NUMERIC_TEEN_TY_READBACK_REQUIRED");
+  assert.ok(unconfirmedTeenTy.natoPhoneticReadbackPrompt.includes("Five-Zero-Zero-Zero-Zero"));
+
+  const mismatchedBookingEcho = evaluateNumericEntityReadbackGuard({
+    entityType: "ALPHANUMERIC_CODE",
+    rawValue: "B7N-50",
+    acousticConfidence: 0.91,
+    callerConfirmedReadback: true,
+    callerEchoValue: "P7M-15",
+  });
+  assert.equal(mismatchedBookingEcho.confusableConsonantDetected, true);
+  assert.equal(mismatchedBookingEcho.commitAllowed, false);
+  assert.equal(mismatchedBookingEcho.blockReasonCode, "PHONETIC_READBACK_MISMATCH_BLOCKED");
+
+  const verifiedReadback = evaluateNumericEntityReadbackGuard({
+    entityType: "ALPHANUMERIC_CODE",
+    rawValue: "B7N-50",
+    acousticConfidence: 0.91,
+    callerConfirmedReadback: true,
+    callerEchoValue: "B7N-50",
+  });
+  assert.equal(verifiedReadback.commitAllowed, true);
+  assert.equal(verifiedReadback.blockReasonCode, "NONE");
 });
 
 

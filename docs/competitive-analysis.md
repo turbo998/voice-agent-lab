@@ -184,6 +184,7 @@
 | **6. 转人工交接与事后全量质检**<br>(`Cold SIP REFER / 2% 人工抽检`) | 接入 **`P09-WARM-HANDOFF-WHISPER`** 生成 CTI 弹屏摘要与未核身 PII 掩码 | **ACS RFC 5589 双腿协商热转接 (`1.35x` 坐席耳语)** + **`P10-POSTCALL-QA-RUBRIC` 100 分全量一票否决质检** | 消除盲转二次盘问（AHT 省 42s），合规质检覆盖率从 2% 升至 100% |
 | **7. PCI 收银脱敏与金丝雀安全发布**<br>(`全量录音含卡号 / 手工切流`) | 接入 **`P11-PCI-DTMF-MEDIA-BYPASS`** 实时抹除口述 PAN/CVV 并注入 `400Hz` 掩码 | **SBC RFC 4733 媒体面直通 HSM (`tok_pci_...`)** + **`P12-CANARY-SHADOW-ROLLOUT-GATE` `<500ms` 自动回滚** | 大模型与录音 100% 脱离 PCI CDE 审计范围，版本灰度零生产事故 |
 | **8. 多模态同屏导览与无障碍合规**<br>(`纯语音盲聊 / 固定 500ms 抢话截断`) | 接入 **`P13-MULTIMODAL-COBROWSING-GROUNDING`** 拦截屏幕 OCR 注入与过期帧误操作 | **WebRTC 同屏 DOM 哈希对齐** + **`P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE` 口吃/慢语速 `2100ms` 自适应端点 & RFC 4103** | 100% 拦截视觉提示词注入，满足欧盟 EAA 2025 / 美国 ADA 无障碍法案 |
-| **9. 知识库检索**<br>(`Hosted Vector DB`) | 切换为 **Azure AI Search（语义重排 + K01–K12 强引用锚点）** | 同区域 VNet Private Endpoint 直连 Azure AI Search | 消除跨云检索延迟，超纲问题拒答率达 100% |
+| **9. 通话中途灾备热切与北约字母复诵**<br>(`单区 WS 断流掉线 / 15 vs 50 听错直写`) | 接入 **`P16-NUMERIC-ENTITY-READBACK-VERIFIER`** 强制 `15/50` 与 `B/P/M/N` 逐位复诵确认 | **`P15-MULTIPROVIDER-S2S-FAILOVER` `<300ms` 跨区/跨架构带状态零掉线热切** | 达成 99.995% 通话不断线 SLA，金额与票号同音错位率降至 0.0% |
+| **10. 知识库检索**<br>(`Hosted Vector DB`) | 切换为 **Azure AI Search（语义重排 + K01–K12 强引用锚点）** | 同区域 VNet Private Endpoint 直连 Azure AI Search | 消除跨云检索延迟，超纲问题拒答率达 100% |
 
 
