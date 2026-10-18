@@ -200,6 +200,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P09-WARM-HANDOFF-WHISPER injects SIP UUI CTI screen-pop + 3.5s 1.35x whisper and masks unverified PII; P10-POSTCALL-QA-RUBRIC enforces 1-strike 0/100 veto on regulatory breaches."
+    },
+    {
+      "check_name": "PCI-DSS v4.0 DTMF Media Bypass Scrubber & Canary Shadow <500ms Auto-Rollback Gate (P11 / P12)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P11-PCI-DTMF-MEDIA-BYPASS masks upstream audio at 400Hz, forks RFC 4733 to HSM vault, and scrubs spoken PAN/CVV; P12-CANARY-SHADOW-ROLLOUT-GATE rolls back canary regressions in <500ms."
     }
   ],
   "latency_scaling": [

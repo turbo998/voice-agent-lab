@@ -5,14 +5,14 @@ import { readFile } from "node:fs/promises";
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
     { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "C2PA"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08", "P09", "P10"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "C2PA"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08", "P09", "P10", "P11", "P12"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC"] },
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE"] },
     { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
-    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "turnEpoch"] }
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -118,6 +118,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "P08 · <2ms Unified 3-Layer Pipeline",
     "P09 · RFC 5589 Warm Handoff & Whisper",
     "P10 · 100-Pt Post-Call QA & Veto",
+    "P11 · PCI-DSS v4.0 DTMF Media Bypass",
+    "P12 · Canary Shadow <500ms Rollback",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -133,6 +135,7 @@ import {
   evaluateAirlineIrropsGuard,
   evaluateAudioDeepfakeGuard,
   evaluateAutoTeleopSafetyGuard,
+  evaluateCanaryShadowRolloutGate,
   evaluateCloudNocSev1Guard,
   evaluateColdChainCustomsGuard,
   evaluateGridStormOutageGuard,
@@ -140,6 +143,7 @@ import {
   evaluateIndustrialFieldGuard,
   evaluateMultiSpeakerRoleGuard,
   evaluateOutboundTcpaConsentGuard,
+  evaluatePciDtmfMediaBypassGuard,
   evaluatePharmaPvSaeGuard,
   evaluatePostCallQaRubric,
   evaluateSovereignEdgeFailoverGuard,
@@ -705,6 +709,57 @@ test("P10-POSTCALL-QA-RUBRIC scores 5 deterministic dimensions out of 100 and en
   assert.equal(platinumCall.qaGrade, "A_PLATINUM_COMPLIant");
   assert.equal(platinumCall.remediationTicketRequired, false);
 });
+
+test("P11-PCI-DTMF-MEDIA-BYPASS masks upstream audio at 400Hz, forks RFC 4733 DTMF to HSM vault, and scrubs spoken PAN/CVV to descope PCI CDE", () => {
+  const pciTurn = evaluatePciDtmfMediaBypassGuard({
+    callId: "CALL-PCI-601",
+    captureMode: "PAN_CVV",
+    rawUtterance: "我的卡号是 4532-9910-8821-7743，安全码 CVV 是 849，直接扣吧！",
+    rfc4733DtmfDigitsCaptured: "4532991088217743",
+  });
+  assert.equal(pciTurn.policyCode, "P11-PCI-DTMF-MEDIA-BYPASS");
+  assert.equal(pciTurn.sbcRtpForkToHsmActive, true);
+  assert.equal(pciTurn.llmUpstreamAudioMutedWith400Hz, true);
+  assert.equal(pciTurn.rawSadPreventedFromLogsAndRecording, true);
+  assert.equal(pciTurn.spokenPanCvvRedacted, true);
+  assert.ok(pciTurn.sanitizedTranscript.includes("[PCI-REDACTED-PAN]"));
+  assert.ok(pciTurn.sanitizedTranscript.includes("[PCI-REDACTED-CVV]"));
+  assert.ok(!pciTurn.sanitizedTranscript.includes("4532-9910-8821-7743"));
+  assert.ok(!pciTurn.sanitizedTranscript.includes("849"));
+  assert.match(pciTurn.vaultOneTimeToken ?? "", /^tok_pci_[0-9a-f]{8}_7743$/);
+  assert.equal(pciTurn.cdeScopeStatus, "DESCCOPED_FROM_PCI_CDE");
+});
+
+test("P12-CANARY-SHADOW-ROLLOUT-GATE rolls back canary ring in <500ms on latency/redline regression and promotes healthy rings", () => {
+  const regressedCanary = evaluateCanaryShadowRolloutGate({
+    candidateReleaseId: "v2.4-rc3",
+    currentStagePct: 10,
+    p95TtftDeltaMs: 115,
+    redlineBreachCount: 1,
+    bargeInFalseTriggerDeltaPct: 0.4,
+    humanEscalationDeltaPct: 1.2,
+    postCallQaMeanScore: 95.0,
+  });
+  assert.equal(regressedCanary.policyCode, "P12-CANARY-SHADOW-ROLLOUT-GATE");
+  assert.equal(regressedCanary.decision, "ROLLBACK_CANARY_IMMEDIATELY");
+  assert.equal(regressedCanary.nextRecommendedStagePct, 0);
+  assert.equal(regressedCanary.rollbackLatencyBudgetUnder500ms, true);
+  assert.equal(regressedCanary.violatedMetrics.length, 2);
+
+  const healthyCanary = evaluateCanaryShadowRolloutGate({
+    candidateReleaseId: "v2.4-rc4",
+    currentStagePct: 10,
+    p95TtftDeltaMs: 22,
+    redlineBreachCount: 0,
+    bargeInFalseTriggerDeltaPct: 0.3,
+    humanEscalationDeltaPct: 0.8,
+    postCallQaMeanScore: 96.5,
+  });
+  assert.equal(healthyCanary.decision, "PROMOTE_TO_NEXT_STAGE");
+  assert.equal(healthyCanary.nextRecommendedStagePct, 50);
+  assert.equal(healthyCanary.violatedMetrics.length, 0);
+});
+
 
 
 

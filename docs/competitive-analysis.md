@@ -182,6 +182,7 @@
 | **大脑推理与提示词**<br>(`OpenAI Public API / Claude`) | 切换为 **Azure AI Foundry (`gpt-4.1-mini` / `gpt-5.4-mini` Responses API)** | 主路 `gpt-live-1` S2S + 旁路 `gpt-4.1-mini` 确定性校验器 | 推理数据 100% 不出企业租户，全额抵扣 MACC |
 | **5. 业务工具调用**<br>(`Custom Function Webhook`) | 接入本仓 **`apps/retell-demo` 签名网关**（HMAC 校验 + Zod 剥离 `customerId` + Blob ETag CAS） | 保持同一套 **`packages/business-core`** 确定性状态机与审批工作台 | **业务代码 100% 复用**，从第一天起杜绝越权与脏写 |
 | **6. 转人工交接与事后全量质检**<br>(`Cold SIP REFER / 2% 人工抽检`) | 接入 **`P09-WARM-HANDOFF-WHISPER`** 生成 CTI 弹屏摘要与未核身 PII 掩码 | **ACS RFC 5589 双腿协商热转接 (`1.35x` 坐席耳语)** + **`P10-POSTCALL-QA-RUBRIC` 100 分全量一票否决质检** | 消除盲转二次盘问（AHT 省 42s），合规质检覆盖率从 2% 升至 100% |
-| **7. 知识库检索**<br>(`Hosted Vector DB`) | 切换为 **Azure AI Search（语义重排 + K01–K12 强引用锚点）** | 同区域 VNet Private Endpoint 直连 Azure AI Search | 消除跨云检索延迟，超纲问题拒答率达 100% |
+| **7. PCI 收银脱敏与金丝雀安全发布**<br>(`全量录音含卡号 / 手工切流`) | 接入 **`P11-PCI-DTMF-MEDIA-BYPASS`** 实时抹除口述 PAN/CVV 并注入 `400Hz` 掩码 | **SBC RFC 4733 媒体面直通 HSM (`tok_pci_...`)** + **`P12-CANARY-SHADOW-ROLLOUT-GATE` `<500ms` 自动回滚** | 大模型与录音 100% 脱离 PCI CDE 审计范围，版本灰度零生产事故 |
+| **8. 知识库检索**<br>(`Hosted Vector DB`) | 切换为 **Azure AI Search（语义重排 + K01–K12 强引用锚点）** | 同区域 VNet Private Endpoint 直连 Azure AI Search | 消除跨云检索延迟，超纲问题拒答率达 100% |
 
 

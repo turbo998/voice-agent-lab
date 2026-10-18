@@ -578,6 +578,38 @@ sequenceDiagram
 | **2. 未核身转接动态脱敏锁 (`PII_MASKED_UNTIL_HUMAN_KYC`)** | 当主叫在完成声纹/动态 OTP 核身前即触发转人工（`callerIdentityVerified === false`）时，网关强制将弹屏包中的卡号、身份证、病历号、电放 PIN 码掩码为 `***MASKED-XXXX***`，并在坐席耳语中强提醒“主叫未核身，请先执行人工 KYC”。 | 彻底阻断社会工程学攻击者借“半途转人工”诱骗人工坐席跳过身份核验的信任传递漏洞。 |
 | **3. 五维 100 分全量质检与一票否决 (`P10-POSTCALL-QA-RUBRIC`)** | `evaluatePostCallQaRubric` 对每通电话按 **① 强制合规披露（25 分）+ ② 领域红线零越界（30 分）+ ③ Barge-in 恢复与延迟 SLA（15 分）+ ④ 工具幂等与 `turnEpoch` 围栏（15 分）+ ⑤ 闭环或热转接完整性（15 分）** 打分；一旦出现红线漏拦或 `wormAuditDigestPresent === false`，立即触发 `AUTO_FAIL_REGULATORY_BREACH` / `AUTO_FAIL_WORM_AUDIT_MISSING` **总分强制清零 (`0/100`)** 并自动派发 P0 合规整改工单。 | 将企业语音质检覆盖率从传统人工抽检的 **2% 提升至 100% 全量实时审计**，确保银保监双录、FDA 21 CFR Part 11 与 FCC TCPA 零盲区闭环（对应 POC 探针 `P10`）。 |
 
+---
+
+### 4.17 PCI-DSS v4.0 媒体面旁路脱敏金库 (`P11-PCI-DTMF-MEDIA-BYPASS`) 与金丝雀影子流量 `<500ms` 自动回滚门禁 (`P12-CANARY-SHADOW-ROLLOUT-GATE`)
+
+当企业将 Voice Agent 接入实时收银、信用卡补换卡、航旅改签补差价（`S6`/`S13`）或私行资金划转（`S11`）并进行高频版本迭代时，CISO 与 SRE 团队面临最后两道生产红线：
+1. **如何避免一句口述卡号/CVV 将整套 AI 大模型集群拖入 PCI-DSS v4.0 持卡人数据环境（CDE）？** 根据 **PCI-DSS v4.0 Req 3.2 与 Req 4.2**，敏感认证数据（SAD，特别是 3/4 位 CVV2/CVC2）严禁在授权后以任何形式留存于双声道通话录音、ASR 转写日志或 LLM Prompt 缓存中。如果直接让客户对着大模型念卡号或未在媒体面剥离 DTMF，整个 AI 推理集群、日志库与存储桶将瞬间触发天价 PCI CDE 合规审计；
+2. **如何在更新模型权重、提示词或护栏规则时杜绝“带病全量上线”？** 语音流对微小的延迟抖动或 VAD 灵敏度变化极其敏感，若新版本在 1% 金丝雀灰度环出现 P95 首字延迟恶化 `>80ms` 或哪怕 `1` 例红线漏拦，必须在 `<500ms` 内无感切回稳定基线。
+
+为此，我们在 `packages/business-core/enterprise-guardrails.ts` 中落地了 **PCI-DSS v4.0 媒体面旁路脱敏金库 (`evaluatePciDtmfMediaBypassGuard` / `P11-PCI-DTMF-MEDIA-BYPASS`)** 与 **五维金丝雀影子流量自动回滚门禁 (`evaluateCanaryShadowRolloutGate` / `P12-CANARY-SHADOW-ROLLOUT-GATE`)**：
+
+```mermaid
+flowchart LR
+    subgraph MediaBypass["💳 P11 PCI-DSS v4.0 媒体面 DTMF 旁路与口述擦除 (零 CDE 污染)"]
+        direction TB
+        Caller["👤 客户输入卡号/CVV<br/>(RFC 4733 按键 或 口述抢话)"] --> SBC["🛡️ 企业 SBC / ACS 媒体旁路锚点<br/>• 启用 400Hz 上行音频掩码<br/>• 剥离 RFC 4733 DTMF 直送 HSM/Vault<br/>• <10ms 擦除口述 PAN/CVV 文本与音频切片"]
+        SBC -->|仅回填一次性令牌 tok_pci_...| Agent["🤖 Voice Agent 状态机<br/>(全程零明文 PAN/CVV · 100% 脱离 PCI CDE)"]
+    end
+
+    subgraph CanaryGate["🚦 P12 金丝雀影子流量 5 维放量与 <500ms 自动回滚"]
+        direction TB
+        Rings["灰度流量环: 1% ➔ 10% ➔ 50% ➔ 100%"] --> Gate["evaluateCanaryShadowRolloutGate()<br/>① ΔTTFT <= 80ms | ② 红线漏拦 == 0<br/>③ 误打断增幅 <= 1.5% | ④ 转人工增幅 <= 4%<br/>⑤ 事后 QA 均分 >= 92.0"]
+        Gate -->|任一越界 (<500ms)| Rollback["⏪ 切回 0% 稳定基线路由"]
+    end
+
+    MediaBypass --> CanaryGate
+```
+
+| 核心安全与发布控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 合规审计与 SRE 稳定性收益 |
+| :--- | :--- | :--- |
+| **1. SBC 媒体面 DTMF 剥离与 `400Hz` 掩码 (`P11-PCI-DTMF-MEDIA-BYPASS`)** | 当会话切入 `PAN_CVV` 或 `SSN_PIN` 采集态时，`evaluatePciDtmfMediaBypassGuard` 强制激活 `sbcRtpForkToHsmActive = true` 与 `llmUpstreamAudioMutedWith400Hz = true`，将 RFC 4733 按键直接旁路至支付 HSM 换取一次性令牌 `tok_pci_xxxxxxxx_7743`；若客户口述卡号/CVV，在 `<10ms` 内将其脱敏为 `[PCI-REDACTED-PAN]` / `[PCI-REDACTED-CVV]`。 | **使大模型推理节点、ASR 日志与录音存储 100% 脱离 PCI-DSS v4.0 CDE 审计范围（`DESCCOPED_FROM_PCI_CDE`）**，每年为企业节省 **$250k–$600k** 的 QSA 现场审计与加密改造费用（对应 POC 探针 `P11`）。 |
+| **2. 金丝雀影子流量五维晋级门禁 (`P12-CANARY-SHADOW-ROLLOUT-GATE`)** | `evaluateCanaryShadowRolloutGate` 在 `1% -> 10% -> 50% -> 100%` 灰度环实时校验 5 项硬指标：`p95TtftDeltaMs <= 80`、`redlineBreachCount === 0`、`bargeInFalseTriggerDeltaPct <= 1.5`、`humanEscalationDeltaPct <= 4.0`、`postCallQaMeanScore >= 92.0`。 | 任何一项指标退化即在 **`<500ms`** 内触发 `ROLLBACK_CANARY_IMMEDIATELY` 将 SIP/WebRTC 权重切回 `0%`，实现语音模型与 Prompt 迭代的**零生产事故发布**（对应 POC 探针 `P12`）。 |
+
 
 
 

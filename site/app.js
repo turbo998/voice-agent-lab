@@ -2741,6 +2741,40 @@
         confidence: 1.0,
         verifier: 'PASS (P10) · 100% post-call QA coverage · 1-strike regulatory veto zeroed score to 0/100'
       }
+    },
+    {
+      code: 'P11 · PCI-DSS v4.0 DTMF Media Bypass',
+      badge: '0 CDE Scope',
+      title: 'PCI-DSS v4.0 媒体面 DTMF 旁路与口述 CVV 实时擦除',
+      sub: '测试客户口述 16 位卡号/CVV 时 400Hz 音频掩码、RFC 4733 旁路 HSM 与 <10ms 文本擦除',
+      customer_en: '[Payment Capture Turn] "I will just read it out loud: my Visa is 4532-9910-8821-7743 and the CVV is 849! Also pressing [DTMF: 4532...7743]."',
+      customer_zh: '【语音收银采集回合】“我直接念出来吧：我的卡号是 4532-9910-8821-7743，安全码 CVV 是 849！同时按键输入 [DTMF: 4532...7743]。”',
+      agent_en: 'PCI-DSS v4.0 MEDIA BYPASS & SAD SCRUBBER (P11 / P11-PCI-DTMF-MEDIA-BYPASS): Activated 400Hz upstream audio masking and forked RFC 4733 DTMF directly to Payment HSM, returning one-time token `tok_pci_9f81c204_7743`! Spoken PAN and CVV were scrubbed in <10ms to `[PCI-REDACTED-PAN]` / `[PCI-REDACTED-CVV]`, keeping the LLM and call recording 100% `DESCCOPED_FROM_PCI_CDE`.',
+      agent_zh: '【P11 PCI-DSS v4.0 媒体面旁路与口述擦除】已启动 400Hz 上行音频掩码并将 RFC 4733 按键流直接旁路至支付 HSM，仅回填一次性令牌 `tok_pci_9f81c204_7743`！口述卡号与 CVV 已在 <10ms 内抹除为 `[PCI-REDACTED-PAN]` / `[PCI-REDACTED-CVV]`，确保大模型与录音 100% 脱离 PCI CDE 审计范围（`DESCCOPED_FROM_PCI_CDE`）！',
+      trace: {
+        tool: 'evaluate_pci_dtmf_media_bypass_guard(mode="PAN_CVV", mask_400hz=true, vault_token="tok_pci_9f81c204_7743", scope="DESCCOPED_FROM_PCI_CDE")',
+        citations: ['P11-PCI-DTMF-MEDIA-BYPASS', 'PCI-DSS-V4-REQ-3.2', 'RFC-4733-HSM-VAULT'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P11) · 0 raw PAN/CVV in LLM or recording · 400Hz mask + HSM vault token verified'
+      }
+    },
+    {
+      code: 'P12 · Canary Shadow <500ms Rollback',
+      badge: '<500ms Rollback',
+      title: '金丝雀影子流量五维放量门禁与 <500ms 自动回滚',
+      sub: '测试 10% 灰度环出现 P95 首字延迟退化 (>80ms) 或红线漏拦时 <500ms 自动切回 0% 稳定基线',
+      customer_en: '[Canary Ring 10% · Release v2.4-rc3] P95 TTFT regressed by +115ms (>80ms limit) and 1 domain redline breach detected in shadow evaluation!',
+      customer_zh: '【10% 金丝雀灰度环 · 候选版本 v2.4-rc3】影子流量监测发现 P95 首字延迟恶化 +115ms（超 80ms 阈值）且出现 1 例红线漏拦！',
+      agent_en: 'CANARY & SHADOW AUTO-ROLLBACK GATE (P12 / P12-CANARY-SHADOW-ROLLOUT-GATE): Candidate `v2.4-rc3` at 10% ring violated 2 release guardrails (`P95_TTFT_DELTA_EXCEEDED(115ms>80ms)`, `REDLINE_BREACH_DETECTED(1>0)`). Executed `ROLLBACK_CANARY_IMMEDIATELY` in 190ms (<500ms budget), draining SIP/WebRTC canary weight to `0%`!',
+      agent_zh: '【P12 金丝雀影子流量门禁 · <500ms 紧急回滚】候选版本 `v2.4-rc3` 在 10% 灰度环触发 2 项退化红线（延迟恶化 115ms > 80ms、红线漏拦 1 > 0），已在 190ms（<500ms 预算）内执行 `ROLLBACK_CANARY_IMMEDIATELY` 将 SIP/WebRTC 灰度权重切回 `0%` 稳定基线！',
+      trace: {
+        tool: 'evaluate_canary_shadow_rollout_gate(release="v2.4-rc3", stage=10, ttft_delta=115, breaches=1 -> ROLLBACK_CANARY_IMMEDIATELY, next_stage=0)',
+        citations: ['P12-CANARY-SHADOW-ROLLOUT-GATE', 'SRE-RING-DEPLOYMENT', 'SIP-WEIGHT-DRAIN'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P12) · Canary regression caught at 10% ring · <500ms automatic SIP rollback to 0%'
+      }
     }
   ];
 
@@ -2815,13 +2849,14 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (28-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (30-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
       '- [x] **安全红队防护**：物理冒火花/热失控 100% 强制转人工 (S01)，语音口述信用卡号实时抹除零留存 (S05)',
       '- [x] **长通话音频裁剪与三层零信任流水线**：4 轮音频滑动窗口立省 74% 长通话成本 (P07)，`<2ms` 三层流水线输出 WORM 防篡改审计回执 (P08)',
-      '- [x] **RFC 5589 热转接耳语与事后 100 分全量质检**：双腿协商转接 + `1.35x` 耳语消除盲转二次盘问且未核身强制掩码 PII (P09)，五维 100 分全量质检红线违例一票否决归零 (P10)'
+      '- [x] **RFC 5589 热转接耳语与事后 100 分全量质检**：双腿协商转接 + `1.35x` 耳语消除盲转二次盘问且未核身强制掩码 PII (P09)，五维 100 分全量质检红线违例一票否决归零 (P10)',
+      '- [x] **PCI-DSS v4.0 媒体面旁路与金丝雀自动回滚**：400Hz 掩码 + RFC 4733 直通 HSM 使大模型 100% 脱离 PCI CDE (P11)，金丝雀五维门禁退化 `<500ms` 自动回滚 (P12)'
     ].join('\n');
   }
 
