@@ -379,9 +379,9 @@
     </div>
   </section>
 
-  <!-- SLIDE 3: TWELVE BUSINESS SCENARIOS -->
+  <!-- SLIDE 3: FOURTEEN BUSINESS SCENARIOS -->
   <section class="slide">
-    <h1>02 · 十二大高 ROI 行业业务场景与量化价值矩阵 (S1–S12)</h1>
+    <h1>02 · 十四大高 ROI 行业业务场景与量化价值矩阵 (S1–S14)</h1>
     <table class="comparison-table">
       <thead>
         <tr>
@@ -394,18 +394,11 @@
       </thead>
       <tbody>
         <tr class="highlight-row">
-          <td><strong>S1 · 智能硬件与消费电子出海售后</strong><br/><span class="badge ga">Flagship POC</span></td>
-          <td>欧美/东南亚外包坐席 $6.5–$12/通；2.4G/5G 配网排障复杂；物理安全风险高</td>
-          <td><strong style="color:var(--azure-blue);">Paradigm C (Retell + Foundry)</strong> 或 <strong>Paradigm A (Voice Live)</strong></td>
-          <td>K01–K12 强制引用 + 冒火花硬熔断 (K05) + 中文坐席工单版本锁</td>
-          <td><strong>FCR 68%–76%</strong><br/>单通成本降 92%+</td>
-        </tr>
-        <tr>
-          <td><strong>S2 · 跨国快餐免下车车道点餐 (QSR)</strong><br/><span class="badge">Ultra-Low Latency</span></td>
-          <td>引擎轰鸣、风噪与后排闲聊干扰；顾客高频半句打断改单；专有菜单同音词多</td>
-          <td><strong style="color:var(--azure-blue);">Paradigm A · Azure Voice Live (`gpt-live-1`)</strong> + 菜单归一化工具</td>
-          <td>确定性购物车计价 (<code>committed=false</code>) + 过敏原强制二次确认</td>
-          <td><strong>P50 580–650ms</strong><br/>车道吞吐量 +22%</td>
+          <td><strong>S1/S2 · 智能硬件出海售后 &amp; 快餐车道点餐</strong><br/><span class="badge ga">Flagship POC</span></td>
+          <td>欧美坐席 $6.5–$12/通、2.4G/5G 配网复杂；QSR 车道引擎风噪与半句打断改单</td>
+          <td><strong style="color:var(--azure-blue);">Paradigm C (Retell + Foundry)</strong> &amp; <strong>Paradigm A (`gpt-live-1`)</strong></td>
+          <td>K01–K12 引用 + 冒火花熔断 (K05) + 购物车预览锁 (<code>committed=false</code>)</td>
+          <td><strong>FCR 74% · P50 620ms</strong><br/>车道吞吐量 +22%</td>
         </tr>
         <tr>
           <td><strong>S3/S4 · 银行理赔报案 &amp; 医疗/IT 服务台</strong><br/><span class="badge arch">Zero Hallucination</span></td>
@@ -441,6 +434,13 @@
           <td><strong style="color:var(--azure-blue);">Paradigm D/B (双录容器) &amp; Paradigm A/C (`gpt-live-1` + Opera PMS)</strong></td>
           <td>C2→R5 适当性跨级与零保本锁 (`WM-DUAL-01`) + 挂房账 PIN 核身与反社工查房锁 (`HOSP-PMS-01`)</td>
           <td><strong>双录一次通过 99.1%</strong><br/>酒店直销转化 84%</td>
+        </tr>
+        <tr>
+          <td><strong>S13/S14 · 航空 IRROPS 航延索赔 &amp; 高端制造 PLC 排障</strong><br/><span class="badge risk">EU261 &amp; PLC Gate</span></td>
+          <td>台风航延 EU261 口算幻觉、联程甩段与高卡降舱；晶圆/CNC 产线停机未上锁开柜及高价值备件盲发</td>
+          <td><strong style="color:var(--azure-blue);">Paradigm B/C (NDC/WorldTracer) &amp; Paradigm D/A (OPC-UA/Modbus)</strong></td>
+          <td>EU261 确定性矩阵 + 联程/防降舱锁 (`AIR-IRROPS-01`) + LOTO 零能量与 &gt;$2k 备件锁 (`IND-FIELD-01`)</td>
+          <td><strong>航延等待 -98.9%</strong><br/>产线 MTTR 降 67.8%</td>
         </tr>
       </tbody>
     </table>

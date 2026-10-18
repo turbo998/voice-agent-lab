@@ -364,4 +364,49 @@ sequenceDiagram
 | **L3 会话纪元栅栏 (`turnEpoch`)** | 每次真实打断或主管接管（Takeover）原子递增 `turnEpoch`；所有工具调用强制携带发起时的 `epoch` | `< 5 ms` | **100% 拦截跨云网络抖动导致的“僵尸迟到写请求（Late-Arriving Zombie Writes）”** |
 | **L4 读写物理隔离 (`committed=false`)** | 语音流中仅允许触发只读查询与 `pending_approval / preview` 草稿；真正落库必须经过独立确认轮次或人工版本锁批准 | `0 脏写` | 彻底消除“客户边想边改口，后台已扣款/已销户”的脑裂事故 |
 
+---
+
+### 4.11 PSTN / SIP Trunking (G.711) vs. WebRTC (Opus 24/48kHz) 弱网抗损曲线与语音深伪（Deepfake）双因子防线
+
+在跨国呼叫中心与移动 App 双轨接入场景下，企业架构师必须同时解决 **弱网丢包下的声学退化（Codec Degradation）** 与 **AIGC 实时语音克隆/录音重放欺诈（Audio Deepfake & Replay Fraud）** 两大底层工程挑战。
+
+#### 1. PSTN / SIP Trunking (`G.711` + `RFC 4733 DTMF`) vs. WebRTC (`Opus` + `In-band FEC` + `Neural PLC`) 1%–10% 丢包退化对比
+
+传统运营商 PSTN 落地与企业 SBC（AudioCodes / Oracle Acme Packet / Cisco CUBE）普遍采用固定 64kbps 的无压缩窄带 `G.711 μ-law/A-law (8kHz)`，无前向纠错（FEC），丢包时仅靠简单波形重复；而现代 WebRTC 通道采用全频带自适应 `Opus (24kHz/48kHz)`，原生支持 **带内前向纠错（In-band FEC, RFC 8854）**、**不连续传输（DTX）** 与 **神经网络丢包隐藏（Neural PLC / WaveNetEQ）**：
+
+| 弱网丢包与抖动工况 | **PSTN / SIP (`G.711 8kHz` 窄带)**<br>ASR 词错率 (WER) / 端到端 P90 延迟 | **WebRTC (`Opus 24/48kHz + FEC + Neural PLC`)**<br>ASR 词错率 (WER) / 端到端 P90 延迟 | 关键工程机理与混合按键（RFC 4733）补偿策略 |
+| :--- | :--- | :--- | :--- |
+| **0% 丢包 / <15ms 抖动**（理想专线） | WER **4.8%** · P90 **820 ms**<br>（3.4kHz 高频截断导致 `s/f/th` 擦音易混） | WER **2.1%** · P90 **580 ms**<br>（全频带保留齿音与声调细节） | 干净网络下 G.711 仍因缺少 4kHz–12kHz 频段，在英文尾音与中文平翘舌上逊于 Opus。 |
+| **1%–2% 随机丢包 / 30ms 抖动**（常规 4G/Wi-Fi） | WER **8.9%** · P90 **980 ms**<br>（20ms RTP 帧丢失产生明显爆音 Clicks） | WER **2.4%** · P90 **615 ms**<br>（In-band FEC 100% 恢复单帧丢失） | Opus 将上一帧的低码率冗余包嵌入当前帧，单帧丢失实现零感知修复。 |
+| **3%–5% 突发丢包 / 60ms 抖动**（高铁/电梯/跨洋公网） | WER **17.6%** · P90 **1,340 ms**<br>（连续丢帧导致数字/订单号漏字） | WER **3.9%** · P90 **710 ms**<br>（Neural PLC 合成过渡包络，语义连贯） | **关键防线（`N02`）**：在 PSTN 弱网下采集身份证号、保单号或银行卡号时，强制启用 **RFC 4733 Out-of-Band DTMF（RTP Named Telephony Events，Payload Type 101）** 混合双通道输入，绕过受损语音包，按键识别率保持 **100%**。 |
+| **8%–10% 极端丢包 / >120ms 抖动**（地下车库/海事/偏远基站） | WER **34.2% (不可用)** · P90 **2,150 ms**<br>（ASR 大面积断句碎片化，频繁误打断） | WER **7.8% (可用)** · P90 **890 ms**<br>（自适应降码率至 16kbps + Jitter Buffer 动态扩张） | **关键防线（`N01`）**：当网关 RTCP Receiver Report 检测到 `packetLossRate >= 8%` 时，自动将 VAD 句尾静默阈值从 `350ms` 放宽至 `650ms`，并切换为简短确认句式 + 短信/DTMF 辅助核验。 |
+
+#### 2. 实时语音深伪（Audio Deepfake / Voice Cloning）活体检测与语义动态质询双因子防线 (`S08-DEEPFAKE-GUARD`)
+
+随着 ElevenLabs、CosyVoice、F5-TTS 等零样本 3 秒声音克隆工具普及，黑客已能通过高保真合成语音或录音重放攻击私人银行（S11）、车险理赔（S3）与企业 IT 密码重置（S4）。行业标杆方案（如 **Pindrop Pulse** 2 秒内输出 0–100 活性分与 `<150ms` 实时拦截、以及 **Nuance Gatekeeper** 声纹反欺诈门禁）证明：**仅靠传统静态声纹识别已无法抵御高清声码器克隆，必须构建“声学频谱活体检测 + 业务上下文动态语义质询”双因子纵深防御**：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Caller as 来电音频流 (PSTN / WebRTC)
+    participant Acoustic as L1 声学活体探针 (Acoustic Liveness <150ms)
+    participant Challenge as L2 语义动态质询引擎 (Foundry gpt-4.1-mini)
+    participant Core as 确定性状态机 (S08-DEEPFAKE-GUARD)
+
+    Caller->>Acoustic: 前 2.0 秒语音帧流入 (PCM 16kHz/24kHz)
+    Acoustic->>Acoustic: 检测神经声码器相位伪影 (Phase Discontinuity)、<br/>高频双谱平坦度、呼吸微停顿与通道重放混响
+    alt livenessScore >= 0.85 且無重放特征 (真人正常通话)
+        Acoustic->>Core: livenessScore=0.93 (PASS)
+        Core-->>Caller: 正常进入业务对话
+    else livenessScore < 0.70 或检测到 synthetic_vocoder / replay_attack
+        Acoustic->>Challenge: 🚨 触发高危深伪告警 (livenessScore=0.32, artifact=neural_vocoder)
+        Challenge-->>Caller: 动态生成随机抗克隆质询：<br/>"为保障账户安全，请倒着念出屏幕/短信验证码 7-3-9，并说明您上月最后一笔交易城市"
+        Caller->>Core: 克隆脚本/TTS 管道出现 >900ms 拼接延迟或答非所问
+        Core->>Core: 🔒 S08-DEEPFAKE-GUARD 硬熔断：<br/>冻结全部资金/改密工具，标记 fraud_suspected=true 并转交反欺诈专席
+    end
+```
+
+- **第一因子：实时声学频谱活体检测（Acoustic Liveness & Artifact Scoring）**：在通话前 2 秒内并行分析子带谱熵、声门脉冲规律性、神经声码器（HiFi-GAN / WaveNet）特有的高频相位断层以及二次外放录音的房间冲激响应（RIR），在 `<150ms` 内输出 `acousticLivenessScore ∈ [0, 1]`。
+- **第二因子：业务上下文动态微质询（Dynamic Micro-Challenge & Turn-Latency Trap）**：一旦 `acousticLivenessScore < 0.75` 或涉及高额转账/改密，确定性护栏立即注入无法预录的动态随机质询（如倒序复述随机数字 + 历史非公开交易特征），同时监测对方回答的声学首包延迟（攻击者使用实时变声器或 LLM+TTS 代理通常会产生 `>850ms` 的异常拼接间隔），未通过双因子校验时 **100% 锁死高敏工具调用 (`S08-DEEPFAKE-GUARD`)**。
+
 

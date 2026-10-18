@@ -158,6 +158,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "Incrementing turnEpoch (4 -> 5) deterministically drops late-arriving epoch 4 tool callbacks (0 split-brain writes)."
+    },
+    {
+      "check_name": "8% Packet Loss Opus In-Band FEC/PLC vs Synthetic Voice Clone Attack (N01 / S08)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "Opus FEC+PLC keeps WER at 5.4% (vs 34.2% G.711); S08-DEEPFAKE-GUARD blocks cloned voice via liveness + micro-challenge."
     }
   ],
   "latency_scaling": [

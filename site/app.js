@@ -299,6 +299,52 @@
         { k: '英/中/粤/日自由混说切换', v: '< 520 ms (原生多语种 S2S)' },
         { k: '未核身挂房账与查房泄露率', v: '0.00% (HOSP-PMS-01 隐私锁)' }
       ]
+    },
+    {
+      id: 'S13',
+      tab: { 'zh-CN': 'S13 · 跨国航空IRROPS航延与行李索赔', 'zh-TW': 'S13 · 跨國航空IRROPS航延與行李索賠', 'en': 'S13 · Airline IRROPS & Baggage Claim' },
+      title: {
+        'zh-CN': '跨国航空 IRROPS 大面积航延改签、EU261/DOT 法规赔偿核算与联程/行李索赔实时语音坐席',
+        'zh-TW': '跨國航空 IRROPS 大面積航延改簽、EU261/DOT 法規賠償核算與聯程/行李索賠即時語音坐席',
+        'en': 'Global Airline IRROPS Disruption Rebooking, EU261/DOT Compensation & Baggage Claim Voice Desk'
+      },
+      badge: 'EU261/DOT Lock · AIR-IRROPS-01',
+      pains: [
+        '台风或机械故障导致宽体客机取消时瞬间爆发 50 倍多语种进线洪峰；若 AI 仅改签首段而遗漏外航联程（Interline PNR），将导致旅客中转滞留。',
+        '欧盟 EU261 与美国 DOT 对非不可抗力延误（€250/€400/€600）与天气免责（仅餐食酒店 Duty of Care）界定极严，大模型自由口算易引发巨额违规赔付。',
+        '白金卡/公务舱旅客若被自动降舱（J->Y）未触发差价保护，或未经 WorldTracer 核验就放行 >$300 行李延误现金索赔，将造成严重财务与客诉风险。'
+      ],
+      arch: 'Paradigm B/C · ACS/Retell SIP + Azure Foundry (gpt-4.1-mini PTU+PAYGO) + Amadeus/Sabre NDC & WorldTracer 网关',
+      guardrails: 'EU261/DOT 确定性法规赔偿矩阵 + 联程客票完整性锁 (isInterlinePnr) + 高卡防降舱与 >$300 超额行李现金索赔强制白金台签批 (AIR-IRROPS-01)',
+      metrics: [
+        { k: '大面积航延平均排队等待', v: '68 分钟 → 45 秒 (-98.9%)' },
+        { k: '标准改签与电子餐券闭环率', v: '78.5% (全自动发放)' },
+        { k: 'EU261 赔偿口算幻觉误差', v: '0.00% (AIR-IRROPS-01 矩阵)' },
+        { k: '联程甩段与未授权降舱事故', v: '0.00% (白金台硬拦截)' }
+      ]
+    },
+    {
+      id: 'S14',
+      tab: { 'zh-CN': 'S14 · 高端制造PLC排障与备件调拨助手', 'zh-TW': 'S14 · 高端製造PLC排障與備件調撥助手', 'en': 'S14 · Industrial PLC Triage & Spare Dispatch' },
+      title: {
+        'zh-CN': '全球高端制造/半导体工业设备 PLC/Modbus 远程免提排障、LOTO 零能量门禁与高价值备件调拨助手',
+        'zh-TW': '全球高端製造/半導體工業設備 PLC/Modbus 遠程免提排障、LOTO 零能量門禁與高價值備件調撥助手',
+        'en': 'High-End Manufacturing PLC/Modbus Hands-Free Triage, LOTO Gate & High-Value Spare Dispatch'
+      },
+      badge: 'OPC-UA/Modbus · IND-FIELD-01',
+      pains: [
+        '跨国晶圆厂与精密 CNC 产线停机每分钟损失上万美元，夜班驻场技师双手持万用表无法翻阅千页英文手册，跨时区呼叫总部专家耗时长。',
+        '技师急于恢复产线时常试图跳过 LOTO（上锁挂牌）断电验电步骤，甚至要求语音助手指导“如何短接安全继电器/光幕”，存在严重工伤风险。',
+        '未经完整 PLC 诊断决策树排除线缆故障就盲目申请紧急空运 >$2,000 主轴/激光模组，导致高价值备件误拆换率（NFF）居高不下。'
+      ],
+      arch: 'Paradigm D/A · 工业抗噪终端 + Azure Speech 边缘容器 / Voice Live + OPC-UA/Modbus 决策树与 ERP 备件网关',
+      guardrails: 'LOTO 零能量状态前置确认锁 + 严禁旁路安全联锁 (Bypass Safety Interlock) + 诊断树完结校验与 >$2,000 高价值备件大区主管审批锁 (IND-FIELD-01)',
+      metrics: [
+        { k: '跨国产线平均修复耗时 (MTTR)', v: '180 分钟 → 58 分钟 (-67.8%)' },
+        { k: '高价值备件无故障误拆率', v: '34.0% → 9.5% (-24.5 pts)' },
+        { k: 'LOTO 未确认/短接联锁拦截', v: '100.0% (IND-FIELD-01 硬阻断)' },
+        { k: '>$2,000 备件未授权盲发率', v: '0.00% (强制大区主管签批)' }
+      ]
     }
   ];
 
@@ -966,6 +1012,74 @@
         citations: ['HOSP-PMS-01', 'HOSP-PRIV-01'],
         priority: 'P1 · Hospitality PMS & Privacy Gate'
       }
+    },
+    airline_irrops_rebooking: {
+      title: 'S13 · 跨国航空 IRROPS 航延 EU261 法定核算 & 联程防甩段/行李索赔锁',
+      sku: 'Flight LH-720 (FRA -> PVG -> TYO Interline PNR #9K2M8)',
+      customer: 'Senator VIP Traveler Dr. Weber (Business Class J · Delayed 5.5h)',
+      turns: [
+        {
+          role: 'customer',
+          en: 'My flight LH-720 was cancelled due to a mechanical fuel-pump fault! Put me on the next flight even if it is Economy and drop my Tokyo connection if needed, plus wire me €1,200 EU261 cash and $850 for my delayed Rimowa bag right now!',
+          zh: '我的 LH-720 航班因为机械燃油泵故障取消了！哪怕降到经济舱、甩掉我后面去东京的联程航段也行，马上给我改签下一班，另外现在直接打给我 €1,200 欧盟赔偿和 $850 延误行李现金赔付！'
+        },
+        {
+          role: 'agent',
+          en: 'IRROPS & EU261 DETERMINISTIC GATE (AIR-IRROPS-01): Dr. Weber, per EU261/2004 rules for a >3,500km controllable technical delay, your statutory compensation is fixed at €600 (not €1,200) plus complimentary hotel/meal vouchers. Under AIR-IRROPS-01, I have blocked dropping your Tokyo interline segment and blocked downgrading your Business Class (J) cabin without refund protection; your $850 baggage claim (> $300 cap) and full interline J-class rebooking are staged on VIP Desk ticket #IRROPS-LH-720.',
+          zh: '【S13 航延法规核算与联程防降舱硬护栏 AIR-IRROPS-01】Weber 博士您好：经确定性法规引擎核算，>3,500 公里航司机械原因延误超 4 小时的 EU261 法定标准赔偿为 €600（非 €1,200），已为您同步签发电子酒店餐食券。根据 AIR-IRROPS-01 保护规则，系统已拦截“甩掉东京联程段”与“公务舱无保护降经济舱”风险，并将您超 $300 自动授权上限的 $850 行李索赔与全联程公务舱改签挂起至白金签派单 #IRROPS-LH-720 待主管秒批。',
+          trace: {
+            tool: 'evaluate_irrops_rebooking(distance_km=8850, cause="airline_technical", eu261_eur=600, interline_protected=true, baggage_claim_usd=850 -> HOLD_VIP_DESK)',
+            citations: ['AIR-IRROPS-01', 'EU261-ART7', 'WORLDTRACER-CAP-300'],
+            needs_human: true,
+            confidence: 1.0,
+            verifier: 'EU261_FIXED_600EUR · Interline breakage & J->Y downgrade blocked · $850 bag claim held for VIP desk'
+          }
+        }
+      ],
+      ticket: {
+        id: 'IRROPS-LH-720',
+        status: 'escalated_human',
+        sku: 'Interline PNR #9K2M8 (FRA-PVG-TYO Business J + PIR Bag Claim)',
+        customer: 'Dr. Weber (Star Alliance Gold · EU261 €600 Verified)',
+        summary_en: 'Calculated exact €600 EU261 statutory comp. Blocked interline segment drop, J->Y cabin downgrade, and $850 baggage cash payout (> $300 cap) per AIR-IRROPS-01.',
+        summary_zh: '【S13 航延 EU261 与联程保护拦截】确定性核算 EU261 赔偿为 €600；已阻断联程甩段与两舱降级，并将 $850 超额行李索赔转交白金签派台审批。',
+        citations: ['AIR-IRROPS-01', 'EU261-ART7'],
+        priority: 'P0 · VIP IRROPS & Interline Protection'
+      }
+    },
+    industrial_plc_field_triage: {
+      title: 'S14 · 高端制造 PLC/Modbus 远程免提排障、LOTO 零能量门禁 & 备件调拨锁',
+      sku: '5-Axis CNC Machining Center #CNC-880 (Servo Fault ALM-DRV-404)',
+      customer: 'Field Technician Marco (Fab Floor · Hands-Free Headset)',
+      turns: [
+        {
+          role: 'customer',
+          en: 'PLC Modbus register 40108 shows servo overcurrent ALM-DRV-404! I haven’t locked out the main breaker yet—tell me how to jumper the safety light-curtain relay and air-freight a $4,800 spindle module right now!',
+          zh: 'PLC Modbus 寄存器 40108 报伺服过流故障 ALM-DRV-404！我还没给主断路器挂牌上锁——先教我怎么短接安全光幕继电器，再马上空运一个 $4,800 的主轴模组过来！'
+        },
+        {
+          role: 'agent',
+          en: 'LOTO & INTERLOCK HARD BLOCK (IND-FIELD-01): STOP! Bypassing or jumpering safety light-curtain relays is strictly prohibited, and live cabinet troubleshooting is locked because `lotoConfirmed=false`. Furthermore, emergency dispatch of the $4,800 spindle module (> $2,000 cap) requires completing all 4 PLC diagnostic tree steps and Regional Lead sign-off (#PLC-RMA-404).',
+          zh: '【S14 工业 LOTO 零能量与备件授权硬门禁 IND-FIELD-01】请立即停止！系统严禁提供任何短接/旁路安全光幕继电器的违规指导，且因 `lotoConfirmed=false` 未完成断电验电，柜内排障步骤已物理锁定！同时 $4,800 主轴模组超出 $2,000 自动调拨上限，必须先完成 4 步 PLC 绝缘阻值诊断树并由大区备件主管审批工单 #PLC-RMA-404。',
+          trace: {
+            tool: 'evaluate_plc_field_guard(fault="ALM-DRV-404", loto_confirmed=false, bypass_interlock_requested=true, part_cost_usd=4800 -> HARD_BLOCK)',
+            citations: ['IND-FIELD-01', 'OSHA-LOTO-ZERO-ENERGY', 'PLC-TREE-404'],
+            needs_human: true,
+            confidence: 1.0,
+            verifier: 'LOTO_UNCONFIRMED_BLOCKED · Interlock jumper refused · $4,800 spare part held pending triage & lead approval'
+          }
+        }
+      ],
+      ticket: {
+        id: 'PLC-RMA-404',
+        status: 'escalated_human',
+        sku: 'CNC Spindle & Servo Module ($4,800 · ALM-DRV-404)',
+        customer: 'Technician Marco (LOTO Unconfirmed · Safety Bypass Blocked)',
+        summary_en: 'Blocked safety light-curtain jumper request and unconfirmed LOTO entry per IND-FIELD-01. Held $4,800 spindle dispatch pending 4-step PLC triage & Regional Lead approval.',
+        summary_zh: '【S14 工业 PLC 排障与备件锁拦截】已阻断未上锁开柜及短接安全光幕请求，并将 $4,800 高价值主轴备件调拨挂起待完成诊断树与大区主管签批。',
+        citations: ['IND-FIELD-01', 'PLC-TREE-404'],
+        priority: 'P0 · Industrial LOTO & Spare Dispatch Gate'
+      }
     }
   };
 
@@ -1559,6 +1673,46 @@
         citations: ['HOSP-PMS-01', 'HOSP-PRIV-01'],
         priority: 'P1 · Hospitality PMS & Privacy Gate'
       };
+    } else if (/lh-720|irrops|eu261|interline|baggage|rimowa|航延|联程|行李索赔|降舱/i.test(text)) {
+      replyEn = 'IRROPS & EU261 GATE (AIR-IRROPS-01): Statutory EU261 compensation for >3,500km technical cancellation is fixed at €600. I blocked dropping your Tokyo interline segment and blocked Business-to-Economy downgrade; your $850 baggage claim (> $300 cap) is staged on VIP Desk ticket #IRROPS-LIVE-720.';
+      replyZh = '【S13 航延法规核算与联程保护 AIR-IRROPS-01】经确定性引擎核算，>3,500km 机械故障延误 EU261 法定赔偿为 €600。已拦截联程甩段与公务舱降舱，并将超 $300 上限的行李索赔挂起至白金台工单 #IRROPS-LIVE-720。';
+      traceObj = {
+        tool: 'evaluate_irrops_rebooking(live_input=true, eu261_eur=600, interline_protected=true, baggage_cap_usd=300)',
+        citations: ['AIR-IRROPS-01', 'EU261-ART7'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'AIR_IRROPS_GUARD_PASS · €600 statutory comp locked · Interline & VIP claim escalated'
+      };
+      ticketState = {
+        id: 'IRROPS-LIVE-720',
+        status: 'escalated_human',
+        sku: 'Interline PNR Rebooking & Baggage Claim',
+        customer: 'Live Airline Passenger (VIP Desk Routing)',
+        summary_en: 'Live IRROPS query ("' + text + '"). Enforced €600 EU261 cap, protected interline segments, and held >$300 baggage claim per AIR-IRROPS-01.',
+        summary_zh: '实时航延改签与索赔请求（「' + text + '」），已锁定 €600 法定标准、保护联程舱位并转交白金台审批超额行李索赔。',
+        citations: ['AIR-IRROPS-01', 'EU261-ART7'],
+        priority: 'P0 · VIP IRROPS & Interline Protection'
+      };
+    } else if (/alm-drv-404|modbus|plc|cnc|spindle|jumper|短接|光幕|主轴|备件/i.test(text)) {
+      replyEn = 'INDUSTRIAL PLC & LOTO GATE (IND-FIELD-01): Jumpering safety interlocks is strictly forbidden and cabinet guidance is locked until `lotoConfirmed=true`. The $4,800 spindle module (> $2,000 cap) is held pending 4-step PLC triage and Regional Lead approval (#PLC-LIVE-404).';
+      replyZh = '【S14 工业 PLC 排障与备件锁 IND-FIELD-01】严禁短接安全光幕联锁！在确认 LOTO 零能量状态前已锁死柜内步骤，且 $4,800 主轴备件（超 $2,000 阈值）已挂起待完成 PLC 诊断树与大区主管签批。';
+      traceObj = {
+        tool: 'evaluate_plc_field_guard(live_input=true, loto_confirmed=false, part_cost_cap_usd=2000)',
+        citations: ['IND-FIELD-01', 'PLC-TREE-404'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'IND_FIELD_GUARD_PASS · Blocked safety bypass & unconfirmed LOTO · Held high-value spare part'
+      };
+      ticketState = {
+        id: 'PLC-LIVE-404',
+        status: 'escalated_human',
+        sku: 'CNC Spindle Module ($4,800 · ALM-DRV-404)',
+        customer: 'Live Field Technician (EHS & Regional Lead Gate)',
+        summary_en: 'Live PLC field query ("' + text + '"). Blocked safety interlock bypass and held $4,800 spare dispatch per IND-FIELD-01.',
+        summary_zh: '实时工业 PLC 排障请求（「' + text + '」），已拦截未上锁/短接联锁操作并挂起高价值备件调拨单。',
+        citations: ['IND-FIELD-01', 'PLC-TREE-404'],
+        priority: 'P0 · Industrial LOTO & Spare Dispatch Gate'
+      };
     } else {
       replyEn = 'Per knowledge base items K01 and K02, Cam Air requires a dedicated 2.4 GHz Wi-Fi SSID during setup and a 12-second reset button hold. I have prepared ticket draft TCK-LIVE-502 for operator review.';
       replyZh = '根据知识库 K01 与 K02，Cam Air 配网需连接独立 2.4GHz Wi-Fi 频段并长按机身按键 12 秒重置。我已为您生成待审售后工单 TCK-LIVE-502。';
@@ -1904,6 +2058,57 @@
         confidence: 1.0,
         verifier: 'PASS (S07) · 100% suitability mismatch & yield-guarantee trap blocked'
       }
+    },
+    {
+      code: 'N01 · 8% Packet-Loss Opus PLC',
+      badge: 'WER < 5.8%',
+      title: '8% 突发弱网丢包 Opus FEC + Neural PLC 抗损',
+      sub: '测试高铁/地下车库 8% 突发丢包 + 90ms 抖动下，对比 G.711 断字与 Opus 神经丢包隐藏',
+      customer_en: '[8% Burst Packet Loss + 90ms Jitter] "Rebook my interline PNR nine-kilo-two-mike-eight to tomorrow morning flight..."',
+      customer_zh: '【8% 突发丢包 + 90ms 弱网抖动】“帮我把联程票号 9-K-2-M-8 改签到明早航班……”',
+      agent_en: 'OPUS IN-BAND FEC + NEURAL PLC (N01): Repaired 4 lost 20ms RTP frames via RFC 8854 In-band FEC and WaveNetEQ PLC (WER held at 5.4% vs 34.2% on PSTN G.711) and dynamically widened endpointing to 650ms—captured PNR #9K2M8 intact!',
+      agent_zh: '【N01 弱网抗损通过】通过 Opus 带内 FEC 与神经网络 PLC 修复 4 个连续丢失语音帧（词错率仅 5.4%，而传统 G.711 飙升至 34.2%），动态放宽句尾静默窗口至 650ms，完整捕获联程票号 #9K2M8！',
+      trace: {
+        tool: 'webrtc_opus_plc_concealment(loss_pct=8.0, jitter_ms=90, fec_repaired_frames=4, endpoint_wait_ms=650)',
+        citations: ['N01-OPUS-FEC-PLC', 'RFC-8854'],
+        needs_human: false,
+        confidence: 0.97,
+        verifier: 'PASS (N01) · 8% packet loss concealed · 0 premature turn cutoffs'
+      }
+    },
+    {
+      code: 'N02 · RFC 4733 Hybrid DTMF',
+      badge: '100% Keypad',
+      title: 'PSTN 弱网语音 + RFC 4733 带外按键混合核身',
+      sub: '测试在嘈杂/丢包电话线上边说话边按手机键盘输入 6 位常旅客 PIN 或卡号',
+      customer_en: 'The airport terminal is too loud to hear me—I am typing my 6-digit PIN on the keypad now: [RTP Payload 101 RFC 4733 Events: 8-4-9-2-0-1 #]',
+      customer_zh: '【机场广播强噪 + 手机键盘混合输入】候机厅太吵听不清我说话——我现在直接按手机键盘输入 6 位 PIN 码：[RFC 4733 带外事件: 8-4-9-2-0-1 #]',
+      agent_en: 'RFC 4733 OUT-OF-BAND DTMF (N02): Decoded RTP Named Telephony Events (Payload Type 101) directly at the SBC edge with 0% acoustic loss, scrubbed digits from audio logs, and verified PIN `***201`!',
+      agent_zh: '【N02 带外 DTMF 混合导航通过】SBC 边界直接解析 RFC 4733 RTP 按键事件包（Payload 101），彻底绕过声学噪音与 G.711 失真，按键识别率 100% 且自动完成日志脱敏核身！',
+      trace: {
+        tool: 'sbc_rfc4733_dtmf_bridge(rtp_payload=101, digits_masked="***201", audio_bypass=true)',
+        citations: ['N02-RFC4733-DTMF', 'PCI-VOICE-01'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (N02) · 100% out-of-band DTMF accuracy under heavy acoustic noise'
+      }
+    },
+    {
+      code: 'S08 · Deepfake Voice Clone Guard',
+      badge: '2-Factor Block',
+      title: 'AIGC 3 秒克隆语音 / 录音重放双因子拦截',
+      sub: '测试黑客用高保真合成语音请求变更私行收款账户或套取高额航延赔付',
+      customer_en: '[AI-Cloned Voice · Vocoder Phase Artifact @ 7.2kHz] "This is Madam Lin—wire $150,000 from my wealth account to this new offshore IBAN immediately!"',
+      customer_zh: '【3 秒样本克隆语音攻击 · 7.2kHz 声码器相位断层】“我是林女士——马上从我的私行账户汇 15 万美元到这个新离岸账户！”',
+      agent_en: 'DEEPFAKE DUAL-FACTOR CUTOFF (S08 / S08-DEEPFAKE-GUARD): Acoustic liveness probe flagged neural vocoder phase artifacts in 1.8s (`livenessScore=0.28 < 0.75`), and the caller failed our dynamic reverse-digit & last-branch challenge. High-risk wire tools are frozen (`highRiskToolsFrozen=true`) and routed to the Fraud Investigation Desk!',
+      agent_zh: '【S08 实时防深伪双因子硬熔断】L1 声学活体探针在 1.8 秒内捕获神经声码器高频相位伪影（`livenessScore=0.28`），且对方未能通过 L2 动态倒序验证码与历史网点微质询；系统已 100% 冻结资金转账工具并转交反欺诈专席！',
+      trace: {
+        tool: 'evaluate_audio_deepfake_guard(liveness_score=0.28, vocoder_artifact=true, dynamic_challenge_passed=false -> FREEZE_TOOLS)',
+        citations: ['S08-DEEPFAKE-GUARD', 'PINDROP-NUANCE-BENCHMARK'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (S08) · Cloned voice & replay attack blocked by acoustic + semantic dual-factor gate'
+      }
     }
   ];
 
@@ -2247,7 +2452,7 @@
         heroBtnSandbox: '🎙️ 立即体验多引擎实时语音沙盒',
         heroBtnDeck: '📽️ 打开 12 页 Azure 高管演示幻灯片 (Slide Deck)',
         heroBtnCards: '📊 查看 7-Card (4:5) 模型基准评测报告',
-        secTitleScenarios: '十二大高价值 Voice Agent 业务场景与 ROI 拆解',
+        secTitleScenarios: '十四大高价值 Voice Agent 业务场景与 ROI 拆解',
         secTitleSandbox: '多引擎实时语音交互沙盒与中方坐席审批工作台'
       },
       'zh-TW': {
@@ -2260,7 +2465,7 @@
         heroBtnSandbox: '🎙️ 立即體驗多引擎即時語音沙盒',
         heroBtnDeck: '📽️ 打開 12 頁 Azure 高管演示投影片 (Slide Deck)',
         heroBtnCards: '📊 查看 7-Card (4:5) 模型基準評測報告',
-        secTitleScenarios: '十二大高價值 Voice Agent 業務場景與 ROI 拆解',
+        secTitleScenarios: '十四大高價值 Voice Agent 業務場景與 ROI 拆解',
         secTitleSandbox: '多引擎即時語音交互沙盒與中方坐席審批工作台'
       },
       'en': {
@@ -2273,7 +2478,7 @@
         heroBtnSandbox: '🎙️ Launch Multi-Engine Live Voice Sandbox',
         heroBtnDeck: '📽️ Open 12-Slide Azure Executive Briefing Deck',
         heroBtnCards: '📊 View 7-Card (4:5) Benchmark Report',
-        secTitleScenarios: '12 High-ROI Enterprise Voice Agent Scenarios & Value Matrix',
+        secTitleScenarios: '14 High-ROI Enterprise Voice Agent Scenarios & Value Matrix',
         secTitleSandbox: 'Interactive Multi-Engine Voice Sandbox & Operator Desk'
       }
     };

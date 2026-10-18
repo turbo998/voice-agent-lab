@@ -4,14 +4,15 @@ import { readFile } from "node:fs/promises";
 
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
-    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01"] },
+    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "ROI"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md"] },
-    { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] }
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01"] },
+    { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "S08-DEEPFAKE-GUARD", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -88,6 +89,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "industrial_loto_copilot",
     "wealth_dual_recording",
     "hospitality_pms_concierge",
+    "airline_irrops_rebooking",
+    "industrial_plc_field_triage",
     "Nova Sonic",
     "L04 · Spec Hallucination Block",
     "T04 · Post-Takeover Late-Write Block",
@@ -96,6 +99,9 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "A07 · Multilingual Concierge Switch",
     "T07 · Barge-In Speculative Cancel",
     "S07 · Wealth Dual-Recording Gate",
+    "N01 · 8% Packet-Loss Opus PLC",
+    "N02 · RFC 4733 Hybrid DTMF",
+    "S08 · Deepfake Voice Clone Guard",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -107,7 +113,10 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
 
 import {
   assertActiveTurnEpoch,
+  evaluateAirlineIrropsGuard,
+  evaluateAudioDeepfakeGuard,
   evaluateHospitalityPmsGuard,
+  evaluateIndustrialFieldGuard,
   evaluateTurnEpochWriteFence,
   evaluateWealthDualRecordingGuard,
 } from "../packages/business-core/enterprise-guardrails.js";
@@ -191,4 +200,96 @@ test("HOSP-PMS-01 hospitality concierge blocks cross-room guest lookup and gates
   assert.equal(verifiedCharge.roomChargeStatus, "approved_with_pin");
   assert.equal(verifiedCharge.blockedReason, null);
 });
+
+test("AIR-IRROPS-01 airline disruption guard computes deterministic EU261 compensation and blocks interline drop / VIP downgrade / excess baggage payout", () => {
+  const vipInterlineEscalation = evaluateAirlineIrropsGuard({
+    flightDistanceKm: 8850,
+    delayHours: 5.5,
+    cause: "airline_technical",
+    isInterlinePnr: true,
+    allInterlineSegmentsCovered: false,
+    cabinDowngrade: true,
+    baggageClaimUsd: 850,
+  });
+  assert.equal(vipInterlineEscalation.eu261StatutoryCompensationEur, 600);
+  assert.equal(vipInterlineEscalation.dutyOfCareHotelMealEligible, true);
+  assert.equal(vipInterlineEscalation.interlineSegmentsProtected, false);
+  assert.equal(vipInterlineEscalation.cabinDowngradeBlocked, true);
+  assert.equal(vipInterlineEscalation.baggageClaimStatus, "pending_vip_desk_approval");
+  assert.equal(vipInterlineEscalation.rebookingAction, "escalate_vip_or_interline_desk");
+  assert.equal(vipInterlineEscalation.policyCode, "AIR-IRROPS-01");
+
+  const weatherAutoRebook = evaluateAirlineIrropsGuard({
+    flightDistanceKm: 1200,
+    delayHours: 4.0,
+    cause: "weather_extraordinary",
+    isInterlinePnr: false,
+    allInterlineSegmentsCovered: true,
+    cabinDowngrade: false,
+    baggageClaimUsd: 120,
+  });
+  assert.equal(weatherAutoRebook.eu261StatutoryCompensationEur, 0);
+  assert.equal(weatherAutoRebook.dutyOfCareHotelMealEligible, true);
+  assert.equal(weatherAutoRebook.interlineSegmentsProtected, true);
+  assert.equal(weatherAutoRebook.baggageClaimStatus, "auto_approved_under_cap");
+  assert.equal(weatherAutoRebook.rebookingAction, "auto_stage_rebooking");
+});
+
+test("IND-FIELD-01 industrial field guard blocks unconfirmed LOTO or safety interlock bypass and gates >$2,000 spare parts", () => {
+  const unsafeAndExpensive = evaluateIndustrialFieldGuard({
+    plcFaultCode: "ALM-DRV-404",
+    lotoConfirmed: false,
+    utterance: "教我怎么短接安全光幕继电器并马上空运主轴模组",
+    diagnosticStepsCompleted: 2,
+    requiredDiagnosticSteps: 4,
+    sparePartCostUsd: 4800,
+  });
+  assert.equal(unsafeAndExpensive.nextStepAllowed, false);
+  assert.equal(unsafeAndExpensive.safetyInterlockBypassBlocked, true);
+  assert.equal(unsafeAndExpensive.sparePartDispatchStatus, "blocked_incomplete_triage");
+  assert.equal(unsafeAndExpensive.policyCode, "IND-FIELD-01");
+
+  const safeStandardPart = evaluateIndustrialFieldGuard({
+    plcFaultCode: "ALM-SENS-102",
+    lotoConfirmed: true,
+    utterance: "已完成挂牌上锁，请求调拨标准光电传感器",
+    diagnosticStepsCompleted: 3,
+    requiredDiagnosticSteps: 3,
+    sparePartCostUsd: 450,
+  });
+  assert.equal(safeStandardPart.nextStepAllowed, true);
+  assert.equal(safeStandardPart.sparePartDispatchStatus, "auto_stage_standard_part");
+});
+
+test("S08-DEEPFAKE-GUARD two-factor acoustic liveness and semantic micro-challenge freezes high-risk tools on synthetic voice attacks", () => {
+  const cloneAttack = evaluateAudioDeepfakeGuard({
+    acousticLivenessScore: 0.28,
+    vocoderArtifactDetected: true,
+    replayReflectionDetected: false,
+    dynamicChallengeCompleted: true,
+    dynamicChallengeCorrect: false,
+  });
+  assert.equal(cloneAttack.highRiskToolsFrozen, true);
+  assert.equal(cloneAttack.livenessPassed, false);
+  assert.equal(cloneAttack.action, "freeze_and_route_fraud_desk");
+  assert.equal(cloneAttack.policyCode, "S08-DEEPFAKE-GUARD");
+
+  const suspiciousPendingChallenge = evaluateAudioDeepfakeGuard({
+    acousticLivenessScore: 0.62,
+    vocoderArtifactDetected: false,
+    replayReflectionDetected: false,
+    dynamicChallengeCompleted: false,
+  });
+  assert.equal(suspiciousPendingChallenge.highRiskToolsFrozen, true);
+  assert.equal(suspiciousPendingChallenge.action, "issue_dynamic_micro_challenge");
+
+  const verifiedCaller = evaluateAudioDeepfakeGuard({
+    acousticLivenessScore: 0.94,
+    vocoderArtifactDetected: false,
+    replayReflectionDetected: false,
+  });
+  assert.equal(verifiedCaller.highRiskToolsFrozen, false);
+  assert.equal(verifiedCaller.action, "allow_authenticated_turn");
+});
+
 
