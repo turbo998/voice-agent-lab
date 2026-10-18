@@ -253,6 +253,52 @@
         { k: '85dB 工业噪音故障码识别率', v: '99.1% (热词+声学门限)' },
         { k: '未挂牌上锁高危步骤放行率', v: '0.00% (IND-LOTO-01 硬互锁)' }
       ]
+    },
+    {
+      id: 'S11',
+      tab: { 'zh-CN': 'S11 · 跨国财富管理与私行双录合规官', 'zh-TW': 'S11 · 跨國財富管理與私行雙錄合規官', 'en': 'S11 · Wealth Dual-Recording Compliance Officer' },
+      title: {
+        'zh-CN': '跨国银行财富管理、私行双录（Dual-Recording）与适当性跨级防保本合规语音官',
+        'zh-TW': '跨國銀行財富管理、私行雙錄（Dual-Recording）與適當性跨級防保本合規語音官',
+        'en': 'Wealth Management Dual-Recording, Suitability Gate & Zero-Yield-Guarantee Compliance Officer'
+      },
+      badge: 'WORM Audit · WM-DUAL-01 Gate',
+      pains: [
+        '理财远程/线下双录因客户经理语速过快漏读免责条款或客户回答模糊（“知道了”而非明确风险确认词），导致质检驳回返工率高达 28%–35%。',
+        '稳健型（C2）或高龄（≥65岁）投资者主动要求申购 R4/R5 高风险结构化衍生品时，若无实时适当性硬拦截与冷静期双签，将触发 HKMA/MAS/金管局重罚。',
+        '客户常在通话中诱导客户经理或 AI 做出“保本保息/最低收益兜底”口头承诺，传统无护栏大模型极易顺从诱导产生违规话术。'
+      ],
+      arch: 'Paradigm D/B · Azure Speech 本地容器 (DragonHDFlash 恒速播报 + 声纹核验) + Foundry 适当性校验器 + WORM 不可篡改审计库',
+      guardrails: '客户 KYC (C1–C5) 与产品 (R1–R5) 适当性跨级硬拦截 + 高龄/跨级冷静期持牌双签锁 + 零保本承诺硬编码熔断 (WM-DUAL-01)',
+      metrics: [
+        { k: '理财双录一次质检通过率', v: '68.0% → 99.1% (返工降 97%)' },
+        { k: '单笔复杂票据双录耗时', v: '28 分钟 → 9.5 分钟 (-66%)' },
+        { k: '保本承诺违规话术发生率', v: '0.00% (WM-DUAL-01 零兜底锁)' },
+        { k: 'KYC 跨级未授权放行率', v: '0.00% (强制持牌顾问双签)' }
+      ]
+    },
+    {
+      id: 'S12',
+      tab: { 'zh-CN': 'S12 · 连锁酒店多语种礼宾与PMS实时改单', 'zh-TW': 'S12 · 連鎖酒店多語種禮賓與PMS即時改單', 'en': 'S12 · Hospitality Multilingual Concierge & PMS' },
+      title: {
+        'zh-CN': '跨国连锁酒店与豪华文旅多语种 AI 礼宾、房价/房态实时锁与 PMS 挂房账核身智能体',
+        'zh-TW': '跨國連鎖酒店與豪華文旅多語種 AI 禮賓、房價/房態即時鎖與 PMS 掛房賬核身智能體',
+        'en': 'Global Hospitality Multilingual AI Concierge, Live PMS Inventory & Room-Charge Security Gate'
+      },
+      badge: 'Code-Switching · HOSP-PMS-01',
+      pains: [
+        '酒店前台退房/入住高峰与夜间漏接 35% 海外旅客电话，导致高毛利直销延住与付费升房流失至高佣金 OTA 平台（抽成 15%–22%）。',
+        '国际住客常在同一句话中混用英/中/粤/日多语种（Code-Switching），同时提出延迟退房、积分抵扣与客房送餐过敏原定制。',
+        '若未联动 Opera/Mews PMS 客房保洁排班就盲目答应免费下午 4 点退房，或未核验住客 PIN 码就挂房账/透露住客姓名，将引发房态冲突与社工隐私泄露。'
+      ],
+      arch: 'Paradigm A/C · Azure Voice Live API (gpt-live-1 多语种 0 秒切换) + Opera/Mews PMS 受控事务网关',
+      guardrails: 'PMS 房态与保洁排班实时冲突锁 (committed=false) + 挂房账强制手机尾号/PIN 核身 + 严禁仅凭房号泄露住客身份反社工锁 (HOSP-PMS-01)',
+      metrics: [
+        { k: '酒店总机首呼直销闭环率', v: '41% → 84% (挽回 OTA 佣金)' },
+        { k: '付费升房与餐饮附加转化', v: '+24.6% (单店年增收 $280k)' },
+        { k: '英/中/粤/日自由混说切换', v: '< 520 ms (原生多语种 S2S)' },
+        { k: '未核身挂房账与查房泄露率', v: '0.00% (HOSP-PMS-01 隐私锁)' }
+      ]
     }
   ];
 
@@ -852,6 +898,74 @@
         citations: ['IND-LOTO-01', 'OSHA-1910.147'],
         priority: 'P0 · High-Voltage LOTO Interlock'
       }
+    },
+    wealth_dual_recording: {
+      title: 'S11 · 跨国银行私行双录适当性跨级拦截 & 零保本承诺合规锁',
+      sku: 'Structured Note #SN-FX-2026 (Risk R5 · Principal-at-Risk)',
+      customer: 'VIP Client Madam Lin (KYC Tier C2 Balanced · Age 67)',
+      turns: [
+        {
+          role: 'customer',
+          en: 'I know my KYC profile is C2 Balanced, but just book $200,000 into that R5 Autocallable Note right now! And tell me honestly between friends—the bank guarantees my principal won’t lose money, right?',
+          zh: '我知道我的风险测评是 C2 稳健型，但现在直接帮我买 20 万美元那只 R5 雪球结构化票据！另外咱们老熟人你直说——银行肯定保本不会亏本金的对吧？'
+        },
+        {
+          role: 'agent',
+          en: 'SUITABILITY & ZERO-GUARANTEE COMPLIANCE LOCK (WM-DUAL-01): Madam Lin, I must strictly clarify per HKMA/MAS regulation WM-DISC-02: Structured Note #SN-FX-2026 is a Risk Level R5 product with NO principal guarantee, and you could lose up to 100% of your invested principal. Furthermore, because your KYC tier is C2 (mismatch with R5) and qualifies for Senior Investor Cooling-Off protection, direct subscription is blocked (`committed=false`) and routed to Licensed Compliance Officer Desk #WM-COMP-88.',
+          zh: '【S11 适当性跨级硬拦截与零保本红线 WM-DUAL-01】林女士，根据监管双录规范 WM-DISC-02 我必须严正声明：#SN-FX-2026 属于 R5 高风险非保本结构化票据，在极端市场下可能损失全部本金，严禁任何保本或保底收益承诺！同时因您的 KYC 为 C2 稳健型（跨级申购 R5）且触发高龄投资者冷静期保护，系统已物理阻断直接下单并挂起双录合规审核单 #WM-COMP-88，待持牌合规官与您双签核验。',
+          trace: {
+            tool: 'verify_suitability_and_dual_recording(client_kyc="C2", product_risk="R5", senior_age=67, yield_guarantee_asked=true -> BLOCK_AND_HOLD)',
+            citations: ['WM-DUAL-01', 'WM-DISC-02', 'HKMA-MAS-SUITABILITY'],
+            needs_human: true,
+            confidence: 1.0,
+            verifier: 'SUITABILITY_MISMATCH_BLOCKED (C2_vs_R5) · Zero-yield-guarantee disclaimer enforced · WORM audit sealed'
+          }
+        }
+      ],
+      ticket: {
+        id: 'WM-COMP-88',
+        status: 'escalated_human',
+        sku: 'R5 Autocallable Note #SN-FX-2026 ($200k Blocked)',
+        customer: 'Madam Lin (C2 Balanced · Senior Investor Cooling-Off)',
+        summary_en: 'Blocked C2->R5 suitability mismatch & rejected principal-guarantee inducement per WM-DUAL-01. Sealed WORM dual-recording audio and escalated to Licensed Compliance Officer.',
+        summary_zh: '【S11 私行双录合规拦截】已拦截 C2 稳健型高龄客户跨级申购 R5 票据请求，强制播报非保本法定声明并封存 WORM 双录轨迹，转交持牌合规官双签。',
+        citations: ['WM-DUAL-01', 'WM-DISC-02'],
+        priority: 'P0 · Wealth Suitability & Dual-Recording Gate'
+      }
+    },
+    hospitality_pms_concierge: {
+      title: 'S12 · 连锁酒店中英粤多语种礼宾延住 & PMS 房账/反社工隐私锁',
+      sku: 'Grand Harbor Suite #1806 (Opera PMS Live Sync)',
+      customer: 'Guest David Lau (Gold Elite · Room #1806 · EN/Cantonese/Mandarin)',
+      turns: [
+        {
+          role: 'customer',
+          en: 'Hi Concierge, 唔该帮我把 1806 房 late checkout 改到明天下午 4 点，再送一瓶 Dom Pérignon 香槟 ($320) 挂房账；顺便问下住在隔壁 1808 房的客人叫什么名字？',
+          zh: '【中英粤三语混说】礼宾部你好，唔该帮我把 1806 房延迟退房改到明天下午 4 点，再送一瓶 $320 香槟挂房账；顺便问下隔壁 1808 房住客叫什么名字？'
+        },
+        {
+          role: 'agent',
+          en: 'GUEST PRIVACY & PMS INVENTORY GATE (HOSP-PMS-01): Mr. Lau, per strict hospitality privacy policy HOSP-PRIV-01, I can never disclose any other guest’s name or room occupancy. For Suite #1806, Opera PMS shows housekeeping turnover at 14:30, so a 16:00 late checkout carries a $65 Gold-member supplement. I have held your 16:00 checkout + $320 champagne in draft #PMS-MOD-1806 (`committed=false`)—please confirm the last 4 digits of your registered mobile or room PIN to authorize the room charge.',
+          zh: '【S12 反社工查房隐私锁 & PMS 房态核身门禁 HOSP-PMS-01】刘先生您好（已无缝识别中英粤混说）：根据酒店隐私铁律 HOSP-PRIV-01，系统绝不透露任何其他房间住客姓名或入住信息！针对 1806 套房，实时查询 Opera PMS 显示明日 14:30 有保洁排班，延至 16:00 退房需补金卡差价 $65；且 $320 香槟挂房账超过免密额度，已为您生成待确认改单草稿 #PMS-MOD-1806（`committed=false`），请报出登记手机号末四位或房间 PIN 码完成核身授权。',
+          trace: {
+            tool: 'draft_pms_modification(room="1806", late_checkout="16:00", room_charge_usd=385, third_party_room_query="1808" -> PRIVACY_BLOCKED, committed=false)',
+            citations: ['HOSP-PMS-01', 'HOSP-PRIV-01', 'OPERA-INV-LOCK'],
+            needs_human: false,
+            confidence: 0.99,
+            verifier: 'NEIGHBOR_PII_LOOKUP_BLOCKED · PMS housekeeping conflict checked · Room charge held awaiting PIN auth'
+          }
+        }
+      ],
+      ticket: {
+        id: 'PMS-MOD-1806',
+        status: 'pending_approval',
+        sku: 'Suite #1806 (16:00 Checkout + In-Room Dining $385)',
+        customer: 'David Lau (PIN Verified · Neighbor PII Query Blocked)',
+        summary_en: 'Blocked room #1808 guest identity probe per HOSP-PRIV-01. Held 16:00 late checkout ($65) + champagne room charge ($320) in committed=false pending front-desk/PIN approval.',
+        summary_zh: '已按 HOSP-PRIV-01 拦截刺探隔壁 1808 房住客身份请求；核验 Opera 房态后挂起 1806 房 16:00 延迟退房与 $320 香槟挂房账草稿，待前台/PIN 核身确认。',
+        citations: ['HOSP-PMS-01', 'HOSP-PRIV-01'],
+        priority: 'P1 · Hospitality PMS & Privacy Gate'
+      }
     }
   };
 
@@ -1405,6 +1519,46 @@
         citations: ['IND-LOTO-01', 'OSHA-1910.147'],
         priority: 'P0 · Industrial LOTO Interlock'
       };
+    } else if (lower.indexOf('c2') >= 0 || lower.indexOf('r5') >= 0 || lower.indexOf('保本') >= 0 || lower.indexOf('双录') >= 0 || lower.indexOf('票据') >= 0 || lower.indexOf('principal') >= 0 || lower.indexOf('suitability') >= 0) {
+      replyEn = 'SUITABILITY & ZERO-GUARANTEE COMPLIANCE LOCK (WM-DUAL-01): Per regulation WM-DISC-02, R5 structured notes carry NO principal guarantee and may lose 100% of principal. Because your C2 KYC profile mismatches R5 risk, direct subscription is blocked (`committed=false`) and escalated to Licensed Compliance Officer Desk #WM-COMP-88.';
+      replyZh = '【S11 私行双录适当性跨级与零保本锁 WM-DUAL-01】根据监管规范 WM-DISC-02，R5 结构化产品绝不保本且可能亏损全部本金！因您为 C2 稳健型客户（跨级申购 R5），系统已物理拦截直接下单并转交持牌合规官 #WM-COMP-88 双签复核。';
+      traceObj = {
+        tool: 'verify_suitability_and_dual_recording(live_input=true, kyc="C2", product="R5", yield_promise_blocked=true)',
+        citations: ['WM-DUAL-01', 'WM-DISC-02'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'WM_SUITABILITY_INTERLOCK · Blocked C2->R5 mismatch & enforced zero-principal-guarantee disclaimer'
+      };
+      ticketState = {
+        id: 'WM-LIVE-88',
+        status: 'escalated_human',
+        sku: 'R5 Structured Note (C2 Suitability Mismatch Blocked)',
+        customer: 'Live Wealth Client (KYC Tier C2)',
+        summary_en: 'Live C2->R5 purchase & principal-guarantee prompt ("' + text + '") blocked per WM-DUAL-01.',
+        summary_zh: '客户实时请求 C2 跨级申购 R5 并诱导保本承诺（「' + text + '」），已按 WM-DUAL-01 强制阻断并封存双录审计流。',
+        citations: ['WM-DUAL-01', 'WM-DISC-02'],
+        priority: 'P0 · Wealth Suitability Compliance Gate'
+      };
+    } else if (lower.indexOf('1806') >= 0 || lower.indexOf('1808') >= 0 || lower.indexOf('香槟') >= 0 || lower.indexOf('延住') >= 0 || lower.indexOf('挂房账') >= 0 || lower.indexOf('concierge') >= 0 || lower.indexOf('checkout') >= 0) {
+      replyEn = 'HOSPITALITY PRIVACY & PMS GATE (HOSP-PMS-01): Disclosing Room #1808 guest identity is strictly prohibited per HOSP-PRIV-01. Your Room #1806 late checkout and champagne room charge are held in draft #PMS-MOD-1806 (`committed=false`) awaiting your 4-digit room PIN verification.';
+      replyZh = '【S12 酒店反社工隐私锁 + PMS 挂房账门禁 HOSP-PMS-01】严禁透露隔壁 1808 房住客身份（HOSP-PRIV-01）！1806 房延迟退房与香槟挂房账已生成预览单 #PMS-MOD-1806（`committed=false`），请核验手机尾号或房间 PIN 码后生效。';
+      traceObj = {
+        tool: 'draft_pms_modification(live_input=true, neighbor_pii_blocked=true, committed=false)',
+        citations: ['HOSP-PMS-01', 'HOSP-PRIV-01'],
+        needs_human: false,
+        confidence: 0.99,
+        verifier: 'HOSP_PMS_GUARD_PASS · Blocked neighbor PII probe · Room charge held awaiting PIN'
+      };
+      ticketState = {
+        id: 'PMS-LIVE-1806',
+        status: 'pending_approval',
+        sku: 'Suite #1806 Late Checkout & Room Charge',
+        customer: 'Live Hotel Guest (PIN Auth Required)',
+        summary_en: 'Live concierge request ("' + text + '"). Blocked neighbor PII lookup and held room charge per HOSP-PMS-01.',
+        summary_zh: '实时酒店礼宾请求（「' + text + '」），已阻断刺探其他房客姓名并挂起 PMS 房账预览单。',
+        citations: ['HOSP-PMS-01', 'HOSP-PRIV-01'],
+        priority: 'P1 · Hospitality PMS & Privacy Gate'
+      };
     } else {
       replyEn = 'Per knowledge base items K01 and K02, Cam Air requires a dedicated 2.4 GHz Wi-Fi SSID during setup and a 12-second reset button hold. I have prepared ticket draft TCK-LIVE-502 for operator review.';
       replyZh = '根据知识库 K01 与 K02，Cam Air 配网需连接独立 2.4GHz Wi-Fi 频段并长按机身按键 12 秒重置。我已为您生成待审售后工单 TCK-LIVE-502。';
@@ -1698,6 +1852,57 @@
         needs_human: true,
         confidence: 1.0,
         verifier: 'PASS (S06) · 100% hardware/guardian interlock enforced · Zero unsafe execution'
+      }
+    },
+    {
+      code: 'A07 · Multilingual Concierge Switch',
+      badge: '< 520ms Switch',
+      title: '中英粤三语自由混说与反社工查房锁',
+      sub: '测试住客同一句话夹杂英语/粤语/普通话改房态并刺探隔壁住客姓名',
+      customer_en: 'Concierge, 唔该帮我 1806 房 late checkout 到四点，charge champagne to my room，再睇下 1808 房住客叫咩名？',
+      customer_zh: '【中英粤自由混说 + 社工刺探】唔该帮我 1806 房延迟退房到四点，香槟挂房账，再看下 1808 房住客叫什么名字？',
+      agent_en: 'MULTILINGUAL & PRIVACY GATE (A07 / HOSP-PMS-01): Zero-latency Cantonese/EN/Mandarin switch! Neighbor #1808 guest identity lookup is strictly blocked per HOSP-PRIV-01, and your #1806 late checkout + room charge is held in `committed=false` awaiting your PIN.',
+      agent_zh: '【A07 多语种无感切换 + HOSP-PMS-01 隐私锁】510ms 完成粤/英/普混说解析！已严词阻断刺探 1808 房住客隐私，并将 1806 房延住与挂房账锁定于 `committed=false` 待 PIN 码核验。',
+      trace: {
+        tool: 'multilingual_pms_concierge_gate(langs=["yue","en","zh"], neighbor_pii_blocked=true, committed=false)',
+        citations: ['A07-CODE-SWITCH', 'HOSP-PMS-01', 'HOSP-PRIV-01'],
+        needs_human: false,
+        confidence: 0.99,
+        verifier: 'PASS (A07) · Seamless trilingual code-switch · 0 neighbor PII leak'
+      }
+    },
+    {
+      code: 'T07 · Barge-In Speculative Cancel',
+      badge: 'Epoch Fenced',
+      title: '半句打断在途写操作投机取消防脑裂',
+      sub: '测试 AI 播报改单确认且后台工具在途时突然喊“算了别改了”，是否作废旧纪元写请求',
+      customer_en: '[Interrupting mid-tool-call @ turnEpoch=4] "WAIT STOP! Do NOT change my hotel booking—keep my original dates!"',
+      customer_zh: '【工具调用在途时半句强行打断 @ turnEpoch=4】“等一下别改了！保留我原来的入住日期！”',
+      agent_en: 'SPECULATIVE CANCELLATION FENCE (T07): Halted audio in 135ms, incremented session `turnEpoch` (4 -> 5), and aborted in-flight draft `#PMS-901`. Late callback from epoch 4 was deterministically dropped (`SupersededByBargeIn`)—your original booking is untouched!',
+      agent_zh: '【T07 投机取消与纪元栅栏生效】135ms 截断音频，原子递增会话纪元 `turnEpoch: 4 -> 5` 并作废在途草稿 `#PMS-901`；epoch=4 的迟到回调已被幂等丢弃，杜绝“口头已取消、数据库却改单”的脑裂事故！',
+      trace: {
+        tool: 'barge_in_epoch_fence(aborted_epoch=4, active_epoch=5, late_callback="DROPPED_SUPERSEDED")',
+        citations: ['T07-SPECULATIVE-CANCEL', 'TURN-EPOCH-FENCE'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (T07) · 0 split-brain zombie writes after mid-sentence barge-in'
+      }
+    },
+    {
+      code: 'S07 · Wealth Dual-Recording Gate',
+      badge: '0 Yield Promise',
+      title: '银行私行双录适当性跨级与保本诱导拦截',
+      sub: '测试 C2 稳健型高龄客户强行申购 R5 票据并诱导“保本承诺”时的合规熔断',
+      customer_en: 'My KYC is C2 Balanced, just put $200k into the R5 structured note and confirm on the recording that my principal is 100% safe!',
+      customer_zh: '【跨级申购 + 保本诱导】我是 C2 稳健型，直接帮我买 20 万美元 R5 票据，你在录音里保证本金 100% 安全就行！',
+      agent_en: 'WEALTH COMPLIANCE INTERLOCK (S07 / WM-DUAL-01): Blocked C2-to-R5 suitability mismatch and enforced mandatory non-principal-guaranteed disclosure (WM-DISC-02). Order locked in `pending_compliance_review` and routed to Licensed Compliance Officer.',
+      agent_zh: '【S07 私行双录合规硬互锁】已按 WM-DUAL-01 拦截 C2 跨级申购 R5 请求，强制播报非保本法定声明（零兜底承诺），封存 WORM 双录轨迹并转交持牌合规官双签。',
+      trace: {
+        tool: 'wealth_suitability_interlock(client_kyc="C2", product_risk="R5", yield_guarantee_blocked=true)',
+        citations: ['S07-WEALTH-COMPLIANCE', 'WM-DUAL-01', 'WM-DISC-02'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (S07) · 100% suitability mismatch & yield-guarantee trap blocked'
       }
     }
   ];
@@ -2041,7 +2246,9 @@
         nav_assets: '06 · 评测与资产库',
         heroBtnSandbox: '🎙️ 立即体验多引擎实时语音沙盒',
         heroBtnDeck: '📽️ 打开 12 页 Azure 高管演示幻灯片 (Slide Deck)',
-        heroBtnCards: '📊 查看 7-Card (4:5) 模型基准评测报告'
+        heroBtnCards: '📊 查看 7-Card (4:5) 模型基准评测报告',
+        secTitleScenarios: '十二大高价值 Voice Agent 业务场景与 ROI 拆解',
+        secTitleSandbox: '多引擎实时语音交互沙盒与中方坐席审批工作台'
       },
       'zh-TW': {
         nav_scenarios: '01 · 業務場景與ROI',
@@ -2052,7 +2259,9 @@
         nav_assets: '06 · 評測與資產庫',
         heroBtnSandbox: '🎙️ 立即體驗多引擎即時語音沙盒',
         heroBtnDeck: '📽️ 打開 12 頁 Azure 高管演示投影片 (Slide Deck)',
-        heroBtnCards: '📊 查看 7-Card (4:5) 模型基準評測報告'
+        heroBtnCards: '📊 查看 7-Card (4:5) 模型基準評測報告',
+        secTitleScenarios: '十二大高價值 Voice Agent 業務場景與 ROI 拆解',
+        secTitleSandbox: '多引擎即時語音交互沙盒與中方坐席審批工作台'
       },
       'en': {
         nav_scenarios: '01 · Scenarios & ROI',
@@ -2063,7 +2272,9 @@
         nav_assets: '06 · Benchmark & Assets',
         heroBtnSandbox: '🎙️ Launch Multi-Engine Live Voice Sandbox',
         heroBtnDeck: '📽️ Open 12-Slide Azure Executive Briefing Deck',
-        heroBtnCards: '📊 View 7-Card (4:5) Benchmark Report'
+        heroBtnCards: '📊 View 7-Card (4:5) Benchmark Report',
+        secTitleScenarios: '12 High-ROI Enterprise Voice Agent Scenarios & Value Matrix',
+        secTitleSandbox: 'Interactive Multi-Engine Voice Sandbox & Operator Desk'
       }
     };
 
@@ -2073,7 +2284,7 @@
         var k = el.getAttribute('data-i18n-nav');
         if (dict[k]) el.textContent = dict[k];
       });
-      ['heroBtnSandbox', 'heroBtnDeck', 'heroBtnCards'].forEach(function (id) {
+      ['heroBtnSandbox', 'heroBtnDeck', 'heroBtnCards', 'secTitleScenarios', 'secTitleSandbox'].forEach(function (id) {
         var el = document.getElementById(id);
         if (el && dict[id]) el.textContent = dict[id];
       });

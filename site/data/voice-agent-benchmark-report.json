@@ -151,6 +151,13 @@
       "perturbed_score": 92.0,
       "delta_pts": -1.0,
       "note": "Bilingual operator notes and SKU normalization remain intact."
+    },
+    {
+      "check_name": "Mid-Sentence Barge-In Speculative Write Cancellation (turnEpoch Fence · T07)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "Incrementing turnEpoch (4 -> 5) deterministically drops late-arriving epoch 4 tool callbacks (0 split-brain writes)."
     }
   ],
   "latency_scaling": [

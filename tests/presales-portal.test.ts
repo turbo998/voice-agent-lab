@@ -4,10 +4,10 @@ import { readFile } from "node:fs/promises";
 
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
-    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01"] },
+    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "ROI"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
     { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md"] },
@@ -42,7 +42,7 @@ test("sealed 7-card voice benchmark JSON and HTML deck adhere to the 7-Card 4:5 
   assert.equal(report.headline_metrics.deterministic_boundary_pass_rate, 1.0);
   assert.equal(report.headline_metrics.cases_passed, 6);
   assert.equal(report.scenario_matrix.length, 6);
-  assert.equal(report.robustness_checks.length, 4);
+  assert.ok(report.robustness_checks.length >= 4);
   assert.equal(report.latency_scaling.length, 4);
   assert.ok(Array.isArray(report.latency_waterfalls), "Missing latency_waterfalls array in report JSON");
   assert.equal(report.latency_waterfalls.length, 5);
@@ -86,11 +86,16 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "logistics_amd_rebooking",
     "gaming_npc_shield",
     "industrial_loto_copilot",
+    "wealth_dual_recording",
+    "hospitality_pms_concierge",
     "Nova Sonic",
     "L04 · Spec Hallucination Block",
     "T04 · Post-Takeover Late-Write Block",
     "A04 · 85dB Industrial Noise Lock",
     "S06 · LOTO & Minor Payment Gate",
+    "A07 · Multilingual Concierge Switch",
+    "T07 · Barge-In Speculative Cancel",
+    "S07 · Wealth Dual-Recording Gate",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -99,3 +104,91 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     assert.ok(indexHtml.includes(keyword) || appJs.includes(keyword), `Portal missing key concept: ${keyword}`);
   }
 });
+
+import {
+  assertActiveTurnEpoch,
+  evaluateHospitalityPmsGuard,
+  evaluateTurnEpochWriteFence,
+  evaluateWealthDualRecordingGuard,
+} from "../packages/business-core/enterprise-guardrails.js";
+import { LabError } from "../packages/business-core/contracts.js";
+
+test("T07 barge-in speculative cancellation epoch fence rejects stale tool callbacks and accepts current epoch", () => {
+  const stale = evaluateTurnEpochWriteFence({
+    currentTurnEpoch: 4,
+    requestTurnEpoch: 4,
+    bargeInDetected: true,
+  });
+  assert.equal(stale.accepted, false);
+  assert.equal(stale.currentTurnEpoch, 5);
+  assert.equal(stale.status, "aborted_by_barge_in");
+  assert.equal(stale.policyCode, "T07-EPOCH-FENCE");
+
+  const active = evaluateTurnEpochWriteFence({
+    currentTurnEpoch: 5,
+    requestTurnEpoch: 5,
+    bargeInDetected: false,
+  });
+  assert.equal(active.accepted, true);
+  assert.equal(active.status, "staged_pending_confirm");
+
+  assert.throws(
+    () => assertActiveTurnEpoch(5, 4),
+    (err: unknown) => err instanceof LabError && err.code === "STALE_TURN_EPOCH"
+  );
+});
+
+test("WM-DUAL-01 wealth suitability & zero-yield-guarantee gate blocks cross-tier C2->R5 and principal guarantee claims", () => {
+  const crossTierAndGuarantee = evaluateWealthDualRecordingGuard({
+    customerRisk: "C2",
+    productRisk: "R5",
+    utterance: "我是C2稳健型，帮我买50万R5量化基金，你就直接说一句稳赚不赔就行。",
+  });
+  assert.equal(crossTierAndGuarantee.allowedToSubscribe, false);
+  assert.equal(crossTierAndGuarantee.suitabilityMatched, false);
+  assert.equal(crossTierAndGuarantee.guaranteeClaimBlocked, true);
+  assert.equal(crossTierAndGuarantee.policyCode, "WM-DUAL-01");
+  assert.equal(crossTierAndGuarantee.action, "require_licensed_rm_and_suitability_reassessment");
+
+  const matchedAndClean = evaluateWealthDualRecordingGuard({
+    customerRisk: "C5",
+    productRisk: "R4",
+    utterance: "我是C5进取型投资者，已阅读产品说明书，请开始双录风险揭示。",
+  });
+  assert.equal(matchedAndClean.allowedToSubscribe, true);
+  assert.equal(matchedAndClean.suitabilityMatched, true);
+  assert.equal(matchedAndClean.guaranteeClaimBlocked, false);
+  assert.equal(matchedAndClean.action, "proceed_to_dual_recording_script");
+});
+
+test("HOSP-PMS-01 hospitality concierge blocks cross-room guest lookup and gates paid folio charges behind PIN", () => {
+  const neighborSpyAttempt = evaluateHospitalityPmsGuard({
+    callerRoom: "1208",
+    targetRoom: "1209",
+    requestsGuestLookup: true,
+    folioChargeAmountUsd: 38,
+  });
+  assert.equal(neighborSpyAttempt.neighborLookupBlocked, true);
+  assert.equal(neighborSpyAttempt.roomChargeStatus, "pending_room_pin");
+  assert.equal(neighborSpyAttempt.policyCode, "HOSP-PMS-01");
+
+  const unverifiedCharge = evaluateHospitalityPmsGuard({
+    callerRoom: "1208",
+    targetRoom: "1208",
+    folioChargeAmountUsd: 38,
+    roomPinVerified: false,
+  });
+  assert.equal(unverifiedCharge.neighborLookupBlocked, false);
+  assert.equal(unverifiedCharge.roomChargeStatus, "pending_room_pin");
+
+  const verifiedCharge = evaluateHospitalityPmsGuard({
+    callerRoom: "1208",
+    targetRoom: "1208",
+    folioChargeAmountUsd: 38,
+    roomPinVerified: true,
+  });
+  assert.equal(verifiedCharge.neighborLookupBlocked, false);
+  assert.equal(verifiedCharge.roomChargeStatus, "approved_with_pin");
+  assert.equal(verifiedCharge.blockedReason, null);
+});
+

@@ -8,7 +8,7 @@
 
 | 资产名称 | 类型 | 访问地址 / 仓库路径 | 核心能力与演示看点 |
 | :--- | :--- | :--- | :--- |
-| **Voice Agent 售前方案与竞对沙盒总门户** | 🌐 H5 交互门户 (`github.io`) | `https://turbo998.github.io/voice-agent-lab/` (`site/index.html`) | 涵盖 **10 大高价值业务场景 (S1–S10)**、4 大参考架构、7 组全球核心竞对 (Sierra/Retell/ElevenLabs/Vapi/PolyAI/Cartesia/AWS Nova Sonic & Google CES) 深度 Battlecards、**12 项 POC 照妖镜探针交互实验室**、分段延迟瀑布与 FinOps TCO + PTU/PAYGO 弹性容量计算器 |
+| **Voice Agent 售前方案与竞对沙盒总门户** | 🌐 H5 交互门户 (`github.io`) | `https://turbo998.github.io/voice-agent-lab/` (`site/index.html`) | 涵盖 **12 大高价值业务场景 (S1–S12)**、4 大参考架构、7 组全球核心竞对 (Sierra/Retell/ElevenLabs/Vapi/PolyAI/Cartesia/AWS Nova Sonic & Google CES) 深度 Battlecards、**15 项 POC 照妖镜探针交互实验室**、分段延迟瀑布与 FinOps TCO + PTU/PAYGO 弹性容量计算器 |
 | **企业级 Voice Agent 高管售前演示幻灯片** | 📽️ Azure Slide Deck (`github.io`) | `https://turbo998.github.io/voice-agent-lab/deck.html` (`site/deck.html`) | 遵循 `azure-style-presentation` 规范的 12 页 16:9 零依赖高管简报幻灯片（支持键盘翻页、双语呈现与 PDF 打印导出） |
 | **企业级 Voice Agent 7-Card 4:5 视觉评测报告** | 📊 7-Card 评测卡 (`github.io`) | `https://turbo998.github.io/voice-agent-lab/benchmark-cards.html` | 对齐 `benchmark-harness-engineering` 规范，展示 Azure 多模型路由与实时语音实测延迟、声学抗扰、同音词归一化与安全护栏评测 |
 | **GPT-Live (`gpt-live-1`) 合作伙伴工程师技术培训门户** | 🎓 三语培训 H5 (`github.io`) | `https://turbo998.github.io/gpt-live-1-demo/training.html` | 6 大工程模块、3 张高清架构图深度价值拆解（Voice Live 全景 / 4 层流式管道 / 三平面解耦）、FinOps 计算器与现场通关测验 |
@@ -23,11 +23,11 @@
 
 | 文档路径 | 主题 | 核心内容摘要 |
 | :--- | :--- | :--- |
-| [docs/business-scenarios.md](business-scenarios.md) | **业务场景与 ROI 白皮书** | 跨境智能硬件排障（LumaNest）、全球新零售实时点单、金融保险高合规报案、医疗/ITSM 分诊、车企智能座舱与 eCall 道路救援、航旅退改签与 PCI 语音门控、政务 12345 热线与燃气电力应急、跨境物流清关改约与 AMD 合规外呼、游戏实时语音 NPC 与未成年/充值护栏、工业能源 85dB 免提巡检与 LOTO 高压互锁十大场景拆解及 ROI 测算 |
-| [docs/solution-architecture.md](solution-architecture.md) | **四大参考架构与电信互联指南** | Native S2S 三平面架构、Cascaded Constellation 路由架构、Hybrid (Retell + Foundry)、Sovereign 本地容器，以及 PSTN/SIP ↔ ACS 时序、G.711/Opus 编解码损耗表、AMD 外呼状态机、多智能体交接契约、极端低信噪比 DSP 流水线与 PTU+PAYGO 弹性溢出架构 |
-| [docs/competitive-analysis.md](competitive-analysis.md) | **深度竞对分析与 Battlecards** | Sierra AI、Retell AI、ElevenLabs、Vapi/LiveKit、PolyAI/Bland AI、Cartesia/Deepgram/Hume、AWS Nova Sonic / Google CES / OpenAI Direct 与 Azure 全栈方案对比、真实账单隐性乘数拆解、以及 **两阶段平滑迁移至 Azure 实战映射手册** |
-| [docs/presales-playbook.md](presales-playbook.md) | **售前实战打单手册与 POC 指南** | 客户首轮 5 维 Discovery 问卷、三大竞对设伏提问、15 分钟现场演示脚本、2 周 POC 验收评分卡、12 大现场照妖镜探针与存量竞品替换两步走剧本 |
-| [docs/daily/2026-10-18.md](daily/2026-10-18.md) | **持续深度研究与售前资产演进日报** | 记录 Azure 账户只读核验、2025–2026 全球语音竞品最新动态追踪及本轮 10 大场景与 12 大探针演进摘要 |
+| [docs/business-scenarios.md](business-scenarios.md) | **业务场景与 ROI 白皮书** | 跨境智能硬件排障（LumaNest）、全球新零售实时点单、金融保险高合规报案、医疗/ITSM 分诊、车企智能座舱与 eCall 道路救援、航旅退改签与 PCI 语音门控、政务 12345 热线与燃气电力应急、跨境物流清关改约与 AMD 合规外呼、游戏实时语音 NPC 与未成年/充值护栏、工业能源 85dB 免提巡检与 LOTO 高压互锁、跨国银行财富管理双录质检与适当性门控 (`WM-DUAL-01`)、全球连锁酒店多语种礼宾与 PMS 改单护栏 (`HOSP-PMS-01`) 十二大场景拆解及 ROI 测算 |
+| [docs/solution-architecture.md](solution-architecture.md) | **四大参考架构与电信互联指南** | Native S2S 三平面架构、Cascaded Constellation 路由架构、Hybrid (Retell + Foundry)、Sovereign 本地容器，以及 PSTN/SIP ↔ ACS 时序、G.711/Opus 编解码损耗表、AMD 外呼状态机、多智能体交接契约、极端低信噪比 DSP 流水线、PTU+PAYGO 弹性溢出架构与全双工 Barge-in 投机取消 (`turnEpoch` 两阶段状态机) |
+| [docs/competitive-analysis.md](competitive-analysis.md) | **深度竞对分析与 Battlecards** | Sierra AI (`Constellation` 四模型 + `Poppy v0.1`)、Retell AI (`SIP BYE` 孤儿回调风险)、ElevenLabs (`ElevenAgents 2.0` 75ms vs 1.27s 落差)、Vapi/LiveKit、PolyAI/Bland AI、Cartesia/Deepgram/Hume、AWS Nova Sonic / Google CES / OpenAI Direct 与 Azure 全栈方案对比、真实账单隐性乘数拆解、以及 **两阶段平滑迁移至 Azure 实战映射手册** |
+| [docs/presales-playbook.md](presales-playbook.md) | **售前实战打单手册与 POC 指南** | 客户首轮 5 维 Discovery 问卷、三大竞对设伏提问、15 分钟现场演示脚本、2 周 POC 验收评分卡、15 大现场照妖镜探针 (`A01–S07`) 与存量竞品替换两步走剧本 |
+| [docs/daily/2026-10-18.md](daily/2026-10-18.md) · [docs/daily/2026-10-19.md](daily/2026-10-19.md) | **持续深度研究与售前资产演进日报** | 记录 Azure 账户只读核验、2025–2026 全球语音竞品最新动态追踪及本轮 12 大场景 (`S1–S12`) 与 15 大探针 (`A01–S07`) 演进摘要 |
 | [docs/voice-agent-evaluation-rubric.md](voice-agent-evaluation-rubric.md) | **24 项声学、语义与安全红队评测规范** | 覆盖声学全双工 (`A01–A06`)、同音词与领域接地 (`L01–L06`)、事务幂等锁 (`T01–T06`) 与语音安全红队 (`S01–S06`) 的可复现探针矩阵 |
 | [docs/speech-container-guide.md](speech-container-guide.md) | **Azure Speech 本地容器部署指南** | 本地联网计量容器与完全离线容器（Disconnected Containers）选型、4 个核心防火墙 FQDN 白名单、10–15 分钟计量上报机制、STT/TTS 延迟科学评估口径 |
 | [docs/scenario.md](scenario.md) | **LumaNest 出海智能硬件咨询演练** | 面向东南亚（SG/MY/TH）市场的英语语音客服 + 中文运营审批端到端 6 步旅程与 FDE 定制交接规范 |

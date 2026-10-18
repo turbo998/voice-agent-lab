@@ -323,6 +323,45 @@ flowchart LR
 - **FinOps 黄金配比公式（节省 38%–45% 算力成本）**：
   1. **稳态水位（P65 日常并发）买 PTU**：利用 Azure Provisioned Managed (PTU) 锁定全天 70%–80% 的稳态通话并发，享受大幅包月折扣与确定性低延迟（消除冷启动与共享池排队抖动）。
   2. **波峰尖刺（Peak Burst）走 Global Standard PAYGO 溢出**：突发 3–10 倍洪峰（仅占全年时间的 5%–8%）由 AI Gateway 自动溢出至按量付费（PAYGO）部署，无需按全年最高峰值常年闲置高昂 PTU。
-  3. **预算熔断与优雅降级（Fail-Closed & Graceful Degradation）**：当单日异常消耗触及预设安全水位或遇到极端主备故障时，网关自动将非核心闲聊切换为轻量 `gpt-4.1-mini` 受控模板或引导转接传统 IVR/人工队列，确保核心生产账单与可用性 100% 受控。
+### 4.10 全双工 Barge-in 投机取消与两阶段幂等事务状态机（Speculative Cancellation & Two-Phase Transaction Safety）
+
+在全双工语音对话中，最危险的工程故障并非“声音没停下来”，而是 **“声音停下来了，但后台在途的数据库写请求仍在继续执行（Zombie Write / Split-Brain）”**——例如 AI 正在播报“正在为您退订明日早班机并扣取 $120 手续费……”，客户在听到一半时突然喊出“等等！算了我不退了！”，此时若仅清空前端 WebRTC 音频缓冲而未中止或隔离后端工具调用，就会酿成严重的客诉与资金风险。
+
+为此，我们在 **Azure Voice Live (`gpt-live-1`) + Foundry 业务底座** 中设计了 **四步原子级 Barge-in 投机取消与事务栅栏协议（Speculative Cancellation Protocol）**：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant User as 客户终端 (WebRTC/SIP)
+    participant Edge as 声学与语义 VAD 网关 (gpt-live-1)
+    participant Brain as 推理与编排引擎 (Foundry Responses)
+    participant Store as 确定性状态机 (Business Core / CAS)
+
+    Note over User,Store: 阶段一：正常轮次（只读与预览允许投机并发，写操作严禁自动 Commit）
+    User->>Edge: "帮我把明晚 1806 房退掉，改订下周二"
+    Edge->>Brain: 转写流 + 意图触发
+    par 投机语音垫音 (150ms)
+        Brain-->>User: TTS 流式播报："好的，正在为您核对 1806 房改期差价..."
+    and 仅生成未提交预览草稿 (committed=false)
+        Brain->>Store: draft_pms_modification(turnEpoch=4, committed=false)
+        Store-->>Brain: 返回 Draft#D-901 (version=1, status=pending_confirmation)
+    end
+
+    Note over User,Store: 阶段二：客户半句打断（Barge-in > 220ms 真实语义介入）
+    User->>Edge: ⚡ "等一下！别改了，下周二我不去上海了！"
+    Edge->>Edge: Semantic VAD 判定为真实打断 (非 "嗯哼" 附和)
+    Edge->>User: 1. 立即发送 output_audio_buffer.clear (<120ms 截断播放)
+    Edge->>Brain: 2. 触发 response.cancel 并递增会话纪元 (turnEpoch: 4 -> 5)
+    Brain->>Store: 3. 传播 AbortSignal 并标记 epoch<=4 关联草稿为 superseded_by_barge_in
+    Note right of Store: 4. 即使网络延迟导致 epoch=4 的迟到回调抵达，<br/>因 epoch < currentEpoch(5) 立即被幂等栅栏丢弃！
+    Brain-->>User: "明白，已为您取消刚才的改期操作，您的原订单保持不变。"
+```
+
+| 防护层级 | 核心技术机制 | 延迟预算 | 杜绝的生产事故 |
+| :--- | :--- | :--- | :--- |
+| **L1 声学与语义鉴别** | `Semantic VAD` 能量持续度（`>220ms`）+ 词汇否定意图检测 | `< 80 ms` | 防止客户说“嗯对”或轻微咳嗽时误杀正在执行的正常查询 |
+| **L2 客户端声道瞬时清空** | WebRTC `output_audio_buffer.clear` + `conversation.item.truncate`（对齐已听到的毫秒偏移） | `< 65 ms` | 保证模型上下文只记住“客户实际听到的前半句话”，不把未播完的后半句当成既成事实 |
+| **L3 会话纪元栅栏 (`turnEpoch`)** | 每次真实打断或主管接管（Takeover）原子递增 `turnEpoch`；所有工具调用强制携带发起时的 `epoch` | `< 5 ms` | **100% 拦截跨云网络抖动导致的“僵尸迟到写请求（Late-Arriving Zombie Writes）”** |
+| **L4 读写物理隔离 (`committed=false`)** | 语音流中仅允许触发只读查询与 `pending_approval / preview` 草稿；真正落库必须经过独立确认轮次或人工版本锁批准 | `0 脏写` | 彻底消除“客户边想边改口，后台已扣款/已销户”的脑裂事故 |
 
 
