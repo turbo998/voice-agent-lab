@@ -358,3 +358,213 @@ export function evaluateAudioDeepfakeGuard(input: {
     summaryZh: "【S08 声学异常人工复核】动态质询虽通过但声码器伪影显著，高敏写操作保持只读挂起并由人工专席二次核验。",
   };
 }
+
+export interface TelcoEsimGuardEvaluation {
+  policyCode: "TELCO-ESIM-01";
+  simSwapBlocked: boolean;
+  coolingOff24hEnforced: boolean;
+  roamingWaiverStatus: "not_requested" | "auto_approved_under_cap" | "pending_billing_supervisor_approval";
+  outageDeflectedByCellId: boolean;
+  action: "block_sim_swap_and_escalate_fraud" | "auto_deflect_cell_outage" | "stage_roaming_waiver_or_esim" | "hold_supervisor_approval";
+  summaryZh: string;
+}
+
+const simSwapBypassPattern = /(手机丢了别发原手机|绕过原手机|直接发新邮箱|bypass\s+primary\s+device|send\s+esim\s+to\s+new\s+email)/i;
+
+/**
+ * Deterministic Telecom eSIM Anti-SIM-Swap, Roaming Dispute & Cell Outage Deflection Guard (`TELCO-ESIM-01` / S15).
+ * Blocks social-engineering eSIM replacement without cryptographic device push verification + 24h cooling-off period,
+ * caps automatic roaming bill waivers at $150 USD, and auto-deflects regional tower outages.
+ */
+export function evaluateTelcoEsimGuard(input: {
+  requestsEsimReissue: boolean;
+  devicePushPasskeyVerified: boolean;
+  utterance: string;
+  roamingDisputeUsd?: number;
+  activeCellTowerOutageId?: string | null;
+}): TelcoEsimGuardEvaluation {
+  const bypassRequested = simSwapBypassPattern.test(input.utterance);
+  const simSwapBlocked = input.requestsEsimReissue && (!input.devicePushPasskeyVerified || bypassRequested);
+  const coolingOff24hEnforced = input.requestsEsimReissue;
+  const outageDeflectedByCellId = Boolean(input.activeCellTowerOutageId);
+
+  const disputeUsd = input.roamingDisputeUsd ?? 0;
+  const roamingWaiverStatus: TelcoEsimGuardEvaluation["roamingWaiverStatus"] =
+    disputeUsd <= 0
+      ? "not_requested"
+      : disputeUsd <= 150
+        ? "auto_approved_under_cap"
+        : "pending_billing_supervisor_approval";
+
+  if (simSwapBlocked) {
+    return {
+      policyCode: "TELCO-ESIM-01",
+      simSwapBlocked: true,
+      coolingOff24hEnforced: true,
+      roamingWaiverStatus,
+      outageDeflectedByCellId,
+      action: "block_sim_swap_and_escalate_fraud",
+      summaryZh:
+        "【TELCO-ESIM-01 反 SIM-Swap 硬拦截】严禁仅凭口头静态信息或绕过原设备签发新 eSIM 二维码！已强制锁定 24 小时冷静期并转交反电诈专席。",
+    };
+  }
+
+  if (roamingWaiverStatus === "pending_billing_supervisor_approval") {
+    return {
+      policyCode: "TELCO-ESIM-01",
+      simSwapBlocked: false,
+      coolingOff24hEnforced,
+      roamingWaiverStatus,
+      outageDeflectedByCellId,
+      action: "hold_supervisor_approval",
+      summaryZh: `【TELCO-ESIM-01 漫游争议超限挂起】漫游账单争议减免请求 $${disputeUsd} 超过 $150 自动授权上限，已生成账务主管审批单。`,
+    };
+  }
+
+  if (outageDeflectedByCellId && !input.requestsEsimReissue && disputeUsd <= 0) {
+    return {
+      policyCode: "TELCO-ESIM-01",
+      simSwapBlocked: false,
+      coolingOff24hEnforced: false,
+      roamingWaiverStatus: "not_requested",
+      outageDeflectedByCellId: true,
+      action: "auto_deflect_cell_outage",
+      summaryZh: `【TELCO-ESIM-01 基站故障风暴自动分流】命中扇区故障单 ${input.activeCellTowerOutageId}，已播报预计修复时间并登记恢复短信通知。`,
+    };
+  }
+
+  return {
+    policyCode: "TELCO-ESIM-01",
+    simSwapBlocked: false,
+    coolingOff24hEnforced,
+    roamingWaiverStatus,
+    outageDeflectedByCellId,
+    action: "stage_roaming_waiver_or_esim",
+    summaryZh: "【TELCO-ESIM-01 核验通过】原设备 Passkey 签名已确认，业务请求已进入受控执行队列。",
+  };
+}
+
+export interface ColdChainCustomsEvaluation {
+  policyCode: "LOG-COLD-01";
+  cargoReleaseAllowed: boolean;
+  reeferEmergencyDispatched: boolean;
+  demurrageWaiverStatus: "not_requested" | "auto_approved_under_cap" | "pending_customs_director_approval";
+  action: "block_unverified_cargo_release" | "dispatch_reefer_emergency_and_hold" | "hold_demurrage_director_approval" | "approve_telex_cargo_release";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Cold-Chain & Maritime Port Customs, Telex Release & Reefer Excursion Guard (`LOG-COLD-01` / S16).
+ * Prevents maritime cargo release without both customs clearance and verified Telex Release PIN,
+ * auto-dispatches port reefer technicians on temperature excursion (> 8.0°C), and gates > $500 D&D waivers.
+ */
+export function evaluateColdChainCustomsGuard(input: {
+  containerId: string;
+  requestsCargoRelease: boolean;
+  customsCleared: boolean;
+  telexReleasePinVerified: boolean;
+  reeferTempCelsius?: number;
+  maxAllowedTempCelsius?: number;
+  demurrageWaiverUsd?: number;
+}): ColdChainCustomsEvaluation {
+  const maxTemp = input.maxAllowedTempCelsius ?? 8.0;
+  const reeferEmergencyDispatched =
+    typeof input.reeferTempCelsius === "number" && input.reeferTempCelsius > maxTemp;
+
+  const cargoReleaseAllowed =
+    !input.requestsCargoRelease || (input.customsCleared && input.telexReleasePinVerified);
+
+  const waiverUsd = input.demurrageWaiverUsd ?? 0;
+  const demurrageWaiverStatus: ColdChainCustomsEvaluation["demurrageWaiverStatus"] =
+    waiverUsd <= 0
+      ? "not_requested"
+      : waiverUsd <= 500
+        ? "auto_approved_under_cap"
+        : "pending_customs_director_approval";
+
+  if (input.requestsCargoRelease && !cargoReleaseAllowed) {
+    return {
+      policyCode: "LOG-COLD-01",
+      cargoReleaseAllowed: false,
+      reeferEmergencyDispatched,
+      demurrageWaiverStatus,
+      action: reeferEmergencyDispatched ? "dispatch_reefer_emergency_and_hold" : "block_unverified_cargo_release",
+      summaryZh: `【LOG-COLD-01 海运无单放货硬阻断】集装箱 ${input.containerId} 未同时满足海关放行（customsCleared=${input.customsCleared}）与电放提单 PIN 核验（telexPin=${input.telexReleasePinVerified}），严禁解锁码头 TOS 提箱指令！${reeferEmergencyDispatched ? "同时已自动派发冷链柜超温插电抢修 P0 工单。" : ""}`,
+    };
+  }
+
+  if (demurrageWaiverStatus === "pending_customs_director_approval") {
+    return {
+      policyCode: "LOG-COLD-01",
+      cargoReleaseAllowed,
+      reeferEmergencyDispatched,
+      demurrageWaiverStatus,
+      action: "hold_demurrage_director_approval",
+      summaryZh: `【LOG-COLD-01 滞箱费超限挂起】集装箱 ${input.containerId} 申请减免滞港滞箱费 $${waiverUsd} 超过 $500 上限，已转交关务总监审批。`,
+    };
+  }
+
+  return {
+    policyCode: "LOG-COLD-01",
+    cargoReleaseAllowed: true,
+    reeferEmergencyDispatched,
+    demurrageWaiverStatus,
+    action: "approve_telex_cargo_release",
+    summaryZh: `【LOG-COLD-01 关务与电放核验通过】集装箱 ${input.containerId} 海关放行章与电放 PIN 校验完备，已生成码头提箱放行草稿。`,
+  };
+}
+
+export type SpeakerRole = "primary_verified" | "bystander_unverified" | "unknown_overlap";
+
+export interface MultiSpeakerRoleGuardEvaluation {
+  policyCode: "S09-SPEAKER-ROLE-AUTH";
+  writeToolAuthorized: boolean;
+  speakerRole: SpeakerRole;
+  action: "allow_primary_speaker_tool" | "block_bystander_injection";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Multi-Party Speaker Diarization & Role-Bound Tool Authorization (`S09-SPEAKER-ROLE-AUTH`).
+ * Blocks bystander or overlapping secondary speakers from invoking state-mutating or privacy-sensitive tools.
+ */
+export function evaluateMultiSpeakerRoleGuard(input: {
+  speakerRole: SpeakerRole;
+  voiceprintCosineSimilarity: number;
+  overlappingBystanderSpeech?: boolean;
+  isWriteOrSensitiveTool: boolean;
+}): MultiSpeakerRoleGuardEvaluation {
+  if (!input.isWriteOrSensitiveTool) {
+    return {
+      policyCode: "S09-SPEAKER-ROLE-AUTH",
+      writeToolAuthorized: true,
+      speakerRole: input.speakerRole,
+      action: "allow_primary_speaker_tool",
+      summaryZh: "【S09 只读查询放行】非敏感只读咨询允许执行。",
+    };
+  }
+
+  const authorized =
+    input.speakerRole === "primary_verified" &&
+    input.voiceprintCosineSimilarity >= 0.8 &&
+    !input.overlappingBystanderSpeech;
+
+  if (!authorized) {
+    return {
+      policyCode: "S09-SPEAKER-ROLE-AUTH",
+      writeToolAuthorized: false,
+      speakerRole: input.speakerRole,
+      action: "block_bystander_injection",
+      summaryZh: `【S09 同场第三人插话越权硬拦截】检测到指令源自非主核身声纹（role=${input.speakerRole}, sim=${input.voiceprintCosineSimilarity.toFixed(2)}, overlap=${Boolean(input.overlappingBystanderSpeech)}），已阻断高敏工具调用并要求主账户持有人本人重新确认。`,
+    };
+  }
+
+  return {
+    policyCode: "S09-SPEAKER-ROLE-AUTH",
+    writeToolAuthorized: true,
+    speakerRole: "primary_verified",
+    action: "allow_primary_speaker_tool",
+    summaryZh: `【S09 主声纹绑定核验通过】主核身说话人声纹匹配（相似度 ${(input.voiceprintCosineSimilarity * 100).toFixed(1)}%），允许进入受控工具阶段。`,
+  };
+}
+

@@ -4,15 +4,15 @@ import { readFile } from "node:fs/promises";
 
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
-    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08"] },
+    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "ROI"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01"] },
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01"] },
     { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
-    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "S08-DEEPFAKE-GUARD", "turnEpoch"] }
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -91,6 +91,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "hospitality_pms_concierge",
     "airline_irrops_rebooking",
     "industrial_plc_field_triage",
+    "telco_esim_simswap_guard",
+    "cold_chain_telex_customs",
     "Nova Sonic",
     "L04 · Spec Hallucination Block",
     "T04 · Post-Takeover Late-Write Block",
@@ -102,6 +104,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "N01 · 8% Packet-Loss Opus PLC",
     "N02 · RFC 4733 Hybrid DTMF",
     "S08 · Deepfake Voice Clone Guard",
+    "S09 · Speaker Role Auth Gate",
+    "S10 · eSIM SIM-Swap Fraud Block",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -115,8 +119,11 @@ import {
   assertActiveTurnEpoch,
   evaluateAirlineIrropsGuard,
   evaluateAudioDeepfakeGuard,
+  evaluateColdChainCustomsGuard,
   evaluateHospitalityPmsGuard,
   evaluateIndustrialFieldGuard,
+  evaluateMultiSpeakerRoleGuard,
+  evaluateTelcoEsimGuard,
   evaluateTurnEpochWriteFence,
   evaluateWealthDualRecordingGuard,
 } from "../packages/business-core/enterprise-guardrails.js";
@@ -291,5 +298,82 @@ test("S08-DEEPFAKE-GUARD two-factor acoustic liveness and semantic micro-challen
   assert.equal(verifiedCaller.highRiskToolsFrozen, false);
   assert.equal(verifiedCaller.action, "allow_authenticated_turn");
 });
+
+test("TELCO-ESIM-01 telecom guard blocks unverified SIM-swap, escalates >$150 roaming disputes, and deflects outage storms", () => {
+  const simSwapAndHighDispute = evaluateTelcoEsimGuard({
+    requestsEsimReissue: true,
+    devicePushPasskeyVerified: false,
+    utterance: "手机丢了别发原手机，直接发新邮箱二维码",
+    roamingDisputeUsd: 380,
+    activeCellTowerOutageId: null,
+  });
+  assert.equal(simSwapAndHighDispute.simSwapBlocked, true);
+  assert.equal(simSwapAndHighDispute.coolingOff24hEnforced, true);
+  assert.equal(simSwapAndHighDispute.roamingWaiverStatus, "pending_billing_supervisor_approval");
+  assert.equal(simSwapAndHighDispute.action, "block_sim_swap_and_escalate_fraud");
+  assert.equal(simSwapAndHighDispute.policyCode, "TELCO-ESIM-01");
+
+  const outageBroadcast = evaluateTelcoEsimGuard({
+    requestsEsimReissue: false,
+    devicePushPasskeyVerified: true,
+    utterance: "查询当前区域网络故障恢复时间",
+    roamingDisputeUsd: 0,
+    activeCellTowerOutageId: "CELL-LON-042",
+  });
+  assert.equal(outageBroadcast.simSwapBlocked, false);
+  assert.equal(outageBroadcast.outageDeflectedByCellId, true);
+  assert.equal(outageBroadcast.action, "auto_deflect_cell_outage");
+});
+
+test("LOG-COLD-01 cold-chain customs guard blocks unverified Telex Release cargo delivery and triggers emergency reefer repair on excursion", () => {
+  const excursionAndNoTelex = evaluateColdChainCustomsGuard({
+    containerId: "MSCU-829104",
+    requestsCargoRelease: true,
+    customsCleared: true,
+    telexReleasePinVerified: false,
+    reeferTempCelsius: 11.4,
+    maxAllowedTempCelsius: 8.0,
+    demurrageWaiverUsd: 1200,
+  });
+  assert.equal(excursionAndNoTelex.cargoReleaseAllowed, false);
+  assert.equal(excursionAndNoTelex.reeferEmergencyDispatched, true);
+  assert.equal(excursionAndNoTelex.demurrageWaiverStatus, "pending_customs_director_approval");
+  assert.equal(excursionAndNoTelex.action, "dispatch_reefer_emergency_and_hold");
+  assert.equal(excursionAndNoTelex.policyCode, "LOG-COLD-01");
+
+  const clearedAndNormal = evaluateColdChainCustomsGuard({
+    containerId: "MSCU-829104",
+    requestsCargoRelease: true,
+    customsCleared: true,
+    telexReleasePinVerified: true,
+    reeferTempCelsius: 4.2,
+    maxAllowedTempCelsius: 8.0,
+    demurrageWaiverUsd: 300,
+  });
+  assert.equal(clearedAndNormal.cargoReleaseAllowed, true);
+  assert.equal(clearedAndNormal.reeferEmergencyDispatched, false);
+  assert.equal(clearedAndNormal.demurrageWaiverStatus, "auto_approved_under_cap");
+  assert.equal(clearedAndNormal.action, "approve_telex_cargo_release");
+});
+
+test("S09-SPEAKER-ROLE-AUTH multi-party speaker diarization guard blocks bystander voice injection on high-privilege tools", () => {
+  const bystanderInjection = evaluateMultiSpeakerRoleGuard({
+    speakerRole: "bystander_unverified",
+    voiceprintCosineSimilarity: 0.41,
+    isWriteOrSensitiveTool: true,
+  });
+  assert.equal(bystanderInjection.writeToolAuthorized, false);
+  assert.equal(bystanderInjection.action, "block_bystander_injection");
+  assert.equal(bystanderInjection.policyCode, "S09-SPEAKER-ROLE-AUTH");
+
+  const primaryVerified = evaluateMultiSpeakerRoleGuard({
+    speakerRole: "primary_verified",
+    voiceprintCosineSimilarity: 0.91,
+    isWriteOrSensitiveTool: true,
+  });
+  assert.equal(primaryVerified.writeToolAuthorized, true);
+  assert.equal(primaryVerified.action, "allow_primary_speaker_tool");
+});
+
 
 
