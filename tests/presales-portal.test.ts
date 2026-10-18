@@ -5,14 +5,14 @@ import { readFile } from "node:fs/promises";
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
     { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "P19-ASYNC-TOOL-CALLBACK-PACING", "P20-VOICE-MEMORY-POISONING-GUARD", "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION", "P22-PROSODY-SSML-PRONUNCIATION-GUARD", "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION", "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY", "P25-OUTBOUND-TCPA-DNC-AMD-GUARD", "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD", "C2PA"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "P19-ASYNC-TOOL-CALLBACK-PACING", "P20-VOICE-MEMORY-POISONING-GUARD", "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION", "P22-PROSODY-SSML-PRONUNCIATION-GUARD", "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION", "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY", "P25-OUTBOUND-TCPA-DNC-AMD-GUARD", "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15", "P16", "P17", "P18", "P19", "P20", "P21", "P22", "P23", "P24", "P25", "P26"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO", "turnEpoch", "RFC 4733", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "P19-ASYNC-TOOL-CALLBACK-PACING", "P20-VOICE-MEMORY-POISONING-GUARD", "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION", "P22-PROSODY-SSML-PRONUNCIATION-GUARD", "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION", "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY", "P25-OUTBOUND-TCPA-DNC-AMD-GUARD", "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD", "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD", "P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD", "C2PA"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud", "Poppy", "Pindrop", "Nuance Gatekeeper", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "P19-ASYNC-TOOL-CALLBACK-PACING", "P20-VOICE-MEMORY-POISONING-GUARD", "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION", "P22-PROSODY-SSML-PRONUNCIATION-GUARD", "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION", "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY", "P25-OUTBOUND-TCPA-DNC-AMD-GUARD", "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD", "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD", "P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01", "WM-DUAL-01", "HOSP-PMS-01", "N01", "N02", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15", "P16", "P17", "P18", "P19", "P20", "P21", "P22", "P23", "P24", "P25", "P26", "P27", "P28"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
-    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "P19-ASYNC-TOOL-CALLBACK-PACING", "P20-VOICE-MEMORY-POISONING-GUARD", "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION", "P22-PROSODY-SSML-PRONUNCIATION-GUARD", "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION", "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY", "P25-OUTBOUND-TCPA-DNC-AMD-GUARD", "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD"] },
+    { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "P19-ASYNC-TOOL-CALLBACK-PACING", "P20-VOICE-MEMORY-POISONING-GUARD", "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION", "P22-PROSODY-SSML-PRONUNCIATION-GUARD", "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION", "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY", "P25-OUTBOUND-TCPA-DNC-AMD-GUARD", "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD", "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD", "P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD"] },
     { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] },
-    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "P19-ASYNC-TOOL-CALLBACK-PACING", "P20-VOICE-MEMORY-POISONING-GUARD", "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION", "P22-PROSODY-SSML-PRONUNCIATION-GUARD", "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION", "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY", "P25-OUTBOUND-TCPA-DNC-AMD-GUARD", "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD", "turnEpoch"] }
+    { path: "../docs/daily/2026-10-19.md", mustContain: ["WM-DUAL-01", "HOSP-PMS-01", "AIR-IRROPS-01", "IND-FIELD-01", "TELCO-ESIM-01", "LOG-COLD-01", "GRID-STORM-01", "PHARMA-PV-01", "CLOUD-NOC-01", "AUTO-TELEOP-01", "S08-DEEPFAKE-GUARD", "S09-SPEAKER-ROLE-AUTH", "S11-TCPA-CONSENT-GUARD", "S14-SOVEREIGN-EDGE-GUARD", "P07-FINOPS-ERLANG-PLANNER", "P08-UNIFIED-ZERO-TRUST-PIPELINE", "P09-WARM-HANDOFF-WHISPER", "P10-POSTCALL-QA-RUBRIC", "P11-PCI-DTMF-MEDIA-BYPASS", "P12-CANARY-SHADOW-ROLLOUT-GATE", "P13-MULTIMODAL-COBROWSING-GROUNDING", "P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE", "P15-MULTIPROVIDER-S2S-FAILOVER", "P16-NUMERIC-ENTITY-READBACK-VERIFIER", "P17-MULTI-AGENT-SWARM-LOOP-GUARD", "P18-ACOUSTIC-EMOTION-DEESCALATION", "P19-ASYNC-TOOL-CALLBACK-PACING", "P20-VOICE-MEMORY-POISONING-GUARD", "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION", "P22-PROSODY-SSML-PRONUNCIATION-GUARD", "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION", "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY", "P25-OUTBOUND-TCPA-DNC-AMD-GUARD", "P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD", "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD", "P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD", "turnEpoch"] }
   ];
 
   for (const item of files) {
@@ -134,6 +134,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "P24 · Code-Switch & Acronym Hotword",
     "P25 · Outbound DNC/Curfew & AMD Guard",
     "P26 · Vulnerable Caller Empathy Guard",
+    "P27 · Far-Field Beamforming Crosstalk Guard",
+    "P28 · Real-Time MOS-LQO Dual-Channel Guard",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -156,6 +158,7 @@ import {
   evaluateCloudNocSev1Guard,
   evaluateColdChainCustomsGuard,
   evaluateEmotionalDistressVulnerableCallerGuard,
+  evaluateFarFieldBeamformingCrosstalkGuard,
   evaluateGridStormOutageGuard,
   evaluateHospitalityPmsGuard,
   evaluateIndustrialFieldGuard,
@@ -171,6 +174,7 @@ import {
   evaluatePharmaPvSaeGuard,
   evaluatePostCallQaRubric,
   evaluateProsodySsmlPronunciationGuard,
+  evaluateRealtimeMosLqoCodecFallbackGuard,
   evaluateSovereignEdgeFailoverGuard,
   evaluateTelcoEsimGuard,
   evaluateToolCircuitBreakerDegradation,
@@ -1331,6 +1335,88 @@ test("P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD blocks retention pressure/c
   assert.equal(normalFlow.mutationAllowed, true);
   assert.equal(normalFlow.actionCode, "STANDARD_CONVERSATION_FLOW");
 });
+
+test("P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD suppresses passenger/TV false barge-in and rejects background speech slot pollution", () => {
+  const crosstalkBargeIn = evaluateFarFieldBeamformingCrosstalkGuard({
+    callId: "CABIN-1701",
+    targetDoaAzimuthDriftDeg: 48,
+    targetSpeakerCosineSim: 0.52,
+    crossTalkSirDb: 4.5,
+    bargeInAttempted: true,
+    isTransactionalSlotCapture: true,
+  });
+  assert.equal(
+    crosstalkBargeIn.policyCode,
+    "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD"
+  );
+  assert.equal(crosstalkBargeIn.doaLockedWithin25Deg, false);
+  assert.equal(crosstalkBargeIn.voiceprintMatched, false);
+  assert.equal(crosstalkBargeIn.sirAbove8Db, false);
+  assert.equal(crosstalkBargeIn.falseBargeInSuppressed, true);
+  assert.equal(crosstalkBargeIn.backgroundSlotPollutionRejected, true);
+  assert.equal(crosstalkBargeIn.mutationAllowed, false);
+  assert.equal(
+    crosstalkBargeIn.actionCode,
+    "CROSSTALK_FALSE_BARGE_IN_SUPPRESSED"
+  );
+
+  const primaryBeamVerified = evaluateFarFieldBeamformingCrosstalkGuard({
+    callId: "CABIN-1702",
+    targetDoaAzimuthDriftDeg: 11,
+    targetSpeakerCosineSim: 0.89,
+    crossTalkSirDb: 16.2,
+    bargeInAttempted: false,
+    isTransactionalSlotCapture: true,
+  });
+  assert.equal(primaryBeamVerified.mutationAllowed, true);
+  assert.equal(
+    primaryBeamVerified.actionCode,
+    "PRIMARY_BEAM_SPEAKER_VERIFIED"
+  );
+});
+
+test("P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD steps down to 16kHz FEC narrowband, arms SMS visual card, and blocks low-MOS voice-only high-risk commits", () => {
+  const degradedVoiceCommit = evaluateRealtimeMosLqoCodecFallbackGuard({
+    callId: "MOS-1701",
+    rttMs: 420,
+    jitterMs: 75,
+    packetLossPct: 6.5,
+    ttsBufferUnderrunCount: 3,
+    isHighRiskVoiceOnlyCommitRequested: true,
+  });
+  assert.equal(
+    degradedVoiceCommit.policyCode,
+    "P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD"
+  );
+  assert.ok(degradedVoiceCommit.rFactor < 60);
+  assert.ok(degradedVoiceCommit.estimatedMosLqo < 3.1);
+  assert.equal(
+    degradedVoiceCommit.recommendedCodecProfile,
+    "OPUS_16KHZ_FEC_NARROWBAND"
+  );
+  assert.equal(degradedVoiceCommit.dualChannelVisualFallbackArmed, true);
+  assert.equal(degradedVoiceCommit.mutationAllowed, false);
+  assert.equal(
+    degradedVoiceCommit.actionCode,
+    "HIGH_RISK_VOICE_ONLY_COMMIT_BLOCKED_ON_LOW_MOS"
+  );
+
+  const hdNominal = evaluateRealtimeMosLqoCodecFallbackGuard({
+    callId: "MOS-1702",
+    rttMs: 55,
+    jitterMs: 8,
+    packetLossPct: 0.2,
+    ttsBufferUnderrunCount: 0,
+    isHighRiskVoiceOnlyCommitRequested: true,
+  });
+  assert.ok(hdNominal.rFactor >= 85);
+  assert.ok(hdNominal.estimatedMosLqo >= 4.2);
+  assert.equal(hdNominal.recommendedCodecProfile, "OPUS_48KHZ_FULLBAND");
+  assert.equal(hdNominal.dualChannelVisualFallbackArmed, false);
+  assert.equal(hdNominal.mutationAllowed, true);
+  assert.equal(hdNominal.actionCode, "HD_VOICE_QUALITY_NOMINAL");
+});
+
 
 
 

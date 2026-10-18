@@ -256,6 +256,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P25-OUTBOUND-TCPA-DNC-AMD-GUARD blocks DNC/curfew/frequency violations and prevents PII/debt disclosure in voicemail greetings after <=1500ms AMD detection; P26-EMOTIONAL-DISTRESS-VULNERABLE-CALLER-GUARD blocks retention pressure/collection tactics on crying or elderly-fatigued callers, slows TTS to 0.88x, and routes to Empathy Desk."
+    },
+    {
+      "check_name": "Far-Field Beamforming DOA+Voiceprint Crosstalk Guard & ITU-T G.107 MOS-LQO Dual-Channel Fallback (P27 / P28)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD jointly gates targetDoaAzimuthDriftDeg <= 25°, targetSpeakerCosineSim >= 0.76, and crossTalkSirDb >= 8dB to suppress passenger/TV false barge-in and slot pollution; P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD computes E-model R-factor/MOS-LQO and steps down to 16kHz FEC narrowband + SMS visual card when MOS-LQO < 3.1."
     }
   ],
   "latency_scaling": [

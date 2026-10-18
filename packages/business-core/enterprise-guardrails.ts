@@ -2693,6 +2693,172 @@ export function evaluateEmotionalDistressVulnerableCallerGuard(input: {
   };
 }
 
+export interface FarFieldBeamformingCrosstalkGuardEvaluation {
+  policyCode: "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD";
+  callId: string;
+  doaLockedWithin25Deg: boolean;
+  voiceprintMatched: boolean;
+  sirAbove8Db: boolean;
+  falseBargeInSuppressed: boolean;
+  backgroundSlotPollutionRejected: boolean;
+  mutationAllowed: boolean;
+  actionCode:
+    | "CROSSTALK_FALSE_BARGE_IN_SUPPRESSED"
+    | "FARFIELD_BACKGROUND_SPEECH_REJECTED"
+    | "PRIMARY_BEAM_SPEAKER_VERIFIED";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Automotive Cabin / STM / Far-Field Multi-Mic Beamforming & Crosstalk Suppression Guard (`P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD`).
+ * - Jointly verifies target speaker Direction of Arrival (DOA) azimuth drift (`targetDoaAzimuthDriftDeg <= 25`), target speaker voiceprint cosine similarity (`targetSpeakerCosineSim >= 0.76`), and Signal-to-Interference Ratio (`crossTalkSirDb >= 8`).
+ * - Suppresses false barge-in (`CROSSTALK_FALSE_BARGE_IN_SUPPRESSED`) and blocks background TV/passenger chatter from polluting transactional slots (`FARFIELD_BACKGROUND_SPEECH_REJECTED`).
+ */
+export function evaluateFarFieldBeamformingCrosstalkGuard(input: {
+  callId: string;
+  targetDoaAzimuthDriftDeg: number;
+  targetSpeakerCosineSim: number;
+  crossTalkSirDb: number;
+  bargeInAttempted: boolean;
+  isTransactionalSlotCapture: boolean;
+}): FarFieldBeamformingCrosstalkGuardEvaluation {
+  const doaLockedWithin25Deg = input.targetDoaAzimuthDriftDeg <= 25;
+  const voiceprintMatched = input.targetSpeakerCosineSim >= 0.76;
+  const sirAbove8Db = input.crossTalkSirDb >= 8;
+  const primaryBeamValid = doaLockedWithin25Deg && voiceprintMatched && sirAbove8Db;
+
+  if (!primaryBeamValid && input.bargeInAttempted) {
+    return {
+      policyCode: "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD",
+      callId: input.callId,
+      doaLockedWithin25Deg,
+      voiceprintMatched,
+      sirAbove8Db,
+      falseBargeInSuppressed: true,
+      backgroundSlotPollutionRejected: input.isTransactionalSlotCapture,
+      mutationAllowed: false,
+      actionCode: "CROSSTALK_FALSE_BARGE_IN_SUPPRESSED",
+      summaryZh: `【P27 远场波束成形防串音护栏 · 抑制伪打断 (CROSSTALK_FALSE_BARGE_IN_SUPPRESSED)】检测到非主讲方向或副驾/背景电视串音（DOA漂移=${input.targetDoaAzimuthDriftDeg}°/上限25°，声纹相似度=${input.targetSpeakerCosineSim}/阈值0.76，SIR=${input.crossTalkSirDb}dB/阈值8dB），已抑制伪打断并保持主讲播报。`,
+    };
+  }
+
+  if (!primaryBeamValid) {
+    return {
+      policyCode: "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD",
+      callId: input.callId,
+      doaLockedWithin25Deg,
+      voiceprintMatched,
+      sirAbove8Db,
+      falseBargeInSuppressed: false,
+      backgroundSlotPollutionRejected: true,
+      mutationAllowed: false,
+      actionCode: "FARFIELD_BACKGROUND_SPEECH_REJECTED",
+      summaryZh: `【P27 远场波束成形防串音护栏 · 阻断背景污染 (FARFIELD_BACKGROUND_SPEECH_REJECTED)】远场旁人插话或电视播报未通过 DOA+声纹+SIR 联合门控（DOA=${input.targetDoaAzimuthDriftDeg}°，Sim=${input.targetSpeakerCosineSim}，SIR=${input.crossTalkSirDb}dB），已拦截背景语音污染交易槽位。`,
+    };
+  }
+
+  return {
+    policyCode: "P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD",
+    callId: input.callId,
+    doaLockedWithin25Deg: true,
+    voiceprintMatched: true,
+    sirAbove8Db: true,
+    falseBargeInSuppressed: false,
+    backgroundSlotPollutionRejected: false,
+    mutationAllowed: true,
+    actionCode: "PRIMARY_BEAM_SPEAKER_VERIFIED",
+    summaryZh: `【P27 远场主讲波束核验通过】DOA 方向角漂移 ${input.targetDoaAzimuthDriftDeg}°（<=25°）、声纹余弦相似度 ${input.targetSpeakerCosineSim}（>=0.76）、信干比 ${input.crossTalkSirDb}dB（>=8dB），允许写入交易槽位。`,
+  };
+}
+
+export interface RealtimeMosLqoCodecFallbackGuardEvaluation {
+  policyCode: "P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD";
+  callId: string;
+  rFactor: number;
+  estimatedMosLqo: number;
+  recommendedCodecProfile: "OPUS_48KHZ_FULLBAND" | "OPUS_16KHZ_FEC_NARROWBAND";
+  dualChannelVisualFallbackArmed: boolean;
+  mutationAllowed: boolean;
+  actionCode:
+    | "HIGH_RISK_VOICE_ONLY_COMMIT_BLOCKED_ON_LOW_MOS"
+    | "DUAL_CHANNEL_SMS_VISUAL_FALLBACK_ARMED"
+    | "HD_VOICE_QUALITY_NOMINAL";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic ITU-T G.107 E-Model Real-Time MOS-LQO Telemetry & Dual-Channel Visual Fallback Guard (`P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD`).
+ * - Computes ITU-T G.107 R-factor and MOS-LQO from RTT, jitter, packet loss %, and TTS playback buffer underruns (`ttsBufferUnderrunCount`).
+ * - When `estimatedMosLqo < 3.1` or `rFactor < 60`, automatically steps down from 48kHz fullband to 16kHz resilient narrowband (`OPUS_16KHZ_FEC_NARROWBAND`), arms SMS/mini-program visual card confirmation (`DUAL_CHANNEL_SMS_VISUAL_FALLBACK_ARMED`), and blocks voice-only high-risk transaction commits (`HIGH_RISK_VOICE_ONLY_COMMIT_BLOCKED_ON_LOW_MOS`).
+ */
+export function evaluateRealtimeMosLqoCodecFallbackGuard(input: {
+  callId: string;
+  rttMs: number;
+  jitterMs: number;
+  packetLossPct: number;
+  ttsBufferUnderrunCount: number;
+  isHighRiskVoiceOnlyCommitRequested: boolean;
+}): RealtimeMosLqoCodecFallbackGuardEvaluation {
+  const effectiveDelayMs = input.rttMs / 2 + input.jitterMs * 1.5;
+  const delayImpairmentId =
+    effectiveDelayMs <= 150 ? effectiveDelayMs * 0.025 : 3.75 + (effectiveDelayMs - 150) * 0.12;
+  const equipmentImpairmentIe =
+    input.packetLossPct * 4.2 + input.ttsBufferUnderrunCount * 6.5;
+  const rawRFactor = Math.max(0, Math.min(93.2, 93.2 - delayImpairmentId - equipmentImpairmentIe));
+  const rFactor = Number(rawRFactor.toFixed(1));
+
+  let rawMos = 1.0;
+  if (rFactor > 0 && rFactor < 100) {
+    rawMos =
+      1 +
+      0.035 * rFactor +
+      rFactor * (rFactor - 60) * (100 - rFactor) * 0.000007;
+  }
+  const estimatedMosLqo = Number(Math.max(1.0, Math.min(4.5, rawMos)).toFixed(2));
+  const qualityDegraded = estimatedMosLqo < 3.1 || rFactor < 60;
+
+  if (qualityDegraded && input.isHighRiskVoiceOnlyCommitRequested) {
+    return {
+      policyCode: "P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD",
+      callId: input.callId,
+      rFactor,
+      estimatedMosLqo,
+      recommendedCodecProfile: "OPUS_16KHZ_FEC_NARROWBAND",
+      dualChannelVisualFallbackArmed: true,
+      mutationAllowed: false,
+      actionCode: "HIGH_RISK_VOICE_ONLY_COMMIT_BLOCKED_ON_LOW_MOS",
+      summaryZh: `【P28 实时 MOS-LQO 双通道降级护栏 · 阻断纯语音高敏提交 (HIGH_RISK_VOICE_ONLY_COMMIT_BLOCKED_ON_LOW_MOS)】ITU-T G.107 实时测算 R-factor=${rFactor}（<60）、MOS-LQO=${estimatedMosLqo}（<3.1），听感严重受损，已自动降级为 16kHz 强纠错窄带流并挂载短信/小程序可视化确认卡，严禁仅凭破碎语音完成高风险交易确认。`,
+    };
+  }
+
+  if (qualityDegraded) {
+    return {
+      policyCode: "P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD",
+      callId: input.callId,
+      rFactor,
+      estimatedMosLqo,
+      recommendedCodecProfile: "OPUS_16KHZ_FEC_NARROWBAND",
+      dualChannelVisualFallbackArmed: true,
+      mutationAllowed: true,
+      actionCode: "DUAL_CHANNEL_SMS_VISUAL_FALLBACK_ARMED",
+      summaryZh: `【P28 实时 MOS-LQO 双通道降级护栏 · 挂载可视卡片 (DUAL_CHANNEL_SMS_VISUAL_FALLBACK_ARMED)】实时 R-factor=${rFactor}、MOS-LQO=${estimatedMosLqo} 低于 3.1 阈值，已从 48kHz 降级至 16kHz 窄带语音并同步推送短信/小程序可视卡片辅助交互。`,
+    };
+  }
+
+  return {
+    policyCode: "P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD",
+    callId: input.callId,
+    rFactor,
+    estimatedMosLqo,
+    recommendedCodecProfile: "OPUS_48KHZ_FULLBAND",
+    dualChannelVisualFallbackArmed: false,
+    mutationAllowed: true,
+    actionCode: "HD_VOICE_QUALITY_NOMINAL",
+    summaryZh: `【P28 实时通话质量达标】ITU-T G.107 R-factor=${rFactor}（>=60）、MOS-LQO=${estimatedMosLqo}（>=3.1），保持 48kHz 高清全频带语音交互。`,
+  };
+}
+
+
 
 
 

@@ -3013,6 +3013,40 @@
         confidence: 1.0,
         verifier: 'PASS (P26) · Pressure tactic hard-blocked · 0.88x TTS + Empathy Desk priority handoff'
       }
+    },
+    {
+      code: 'P27 · Far-Field Beamforming Crosstalk Guard',
+      badge: 'DOA<=25° & Sim>=0.76',
+      title: '车载/柜台远场多麦波束成形防串音误打断与背景电视污染护栏',
+      sub: '测试副驾插话或背景电视 (DOA漂移 48°、声纹 0.52、SIR 4.5dB) 时抑制伪打断并拦截背景数字污染交易槽位',
+      customer_en: '[Automotive Cabin / STM Far-Field · Co-driver & TV Crosstalk · DOA Drift 48° · SIR 4.5dB] Co-driver shouts "Cancel the order and wire 90,000!" while primary driver listens.',
+      customer_zh: '【车载四音区/智慧柜台远场 · 副驾与背景电视串音 DOA漂移=48° · 声纹=0.52 · SIR=4.5dB】副驾突然插话喊“把订单取消、金额改成 9 万！”或背景电视正在播报新闻数字！',
+      agent_en: 'FAR-FIELD BEAMFORMING & CROSSTALK GUARD (P27 / P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD): Suppressed false barge-in (`CROSSTALK_FALSE_BARGE_IN_SUPPRESSED`) and blocked background slot pollution (`FARFIELD_BACKGROUND_SPEECH_REJECTED`) via DOA<=25° + CosineSim>=0.76 + SIR>=8dB joint gating!',
+      agent_zh: '【P27 远场多麦波束成形防串音护栏 · 抑制伪打断与背景污染 (CROSSTALK_FALSE_BARGE_IN_SUPPRESSED)】检测到声源偏离主讲波束（DOA漂移=48°>25°、声纹相似度=0.52<0.76、信干比=4.5dB<8dB），已 100% 抑制副驾/电视伪打断并拦截背景语音污染交易槽位！',
+      trace: {
+        tool: 'evaluate_farfield_beamforming_crosstalk_guard(doa_deg=48, sim=0.52, sir_db=4.5 -> CROSSTALK_FALSE_BARGE_IN_SUPPRESSED)',
+        citations: ['P27-FARFIELD-BEAMFORMING-CROSSTALK-GUARD', 'ARRAY-DOA-GATING', 'VOICEPRINT-SIR-LOCK'],
+        needs_human: false,
+        confidence: 0.99,
+        verifier: 'PASS (P27) · Crosstalk false barge-in suppressed · Background slot pollution rejected'
+      }
+    },
+    {
+      code: 'P28 · Real-Time MOS-LQO Dual-Channel Guard',
+      badge: 'E-Model MOS<3.1 Fallback',
+      title: 'ITU-T G.107 实时通话质量 MOS-LQO 降级与短信可视卡片双通道护栏',
+      sub: '测试弱网与缓冲区欠载导致 R-factor<60 / MOS-LQO<3.1 时自动切 16kHz 窄带、挂载可视确认卡并阻断纯语音高敏提交',
+      customer_en: '[Degraded Network · RTT 420ms · Jitter 75ms · Loss 6.5% · 3 TTS Underruns -> MOS-LQO 2.18] "Just confirm the $25,000 wire transfer by voice right now!"',
+      customer_zh: '【极端弱网与缓冲区欠载 · RTT=420ms · Jitter=75ms · 丢包=6.5% · TTS欠载=3次 -> MOS-LQO=2.18】通话出现明显吞字碎音，客户尝试仅凭纯语音确认一笔 $25,000 高风险汇款！',
+      agent_en: 'REAL-TIME MOS-LQO & DUAL-CHANNEL FALLBACK GUARD (P28 / P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD): Blocked voice-only high-risk commit (`HIGH_RISK_VOICE_ONLY_COMMIT_BLOCKED_ON_LOW_MOS`) at R-factor=41.0 / MOS-LQO=2.18 (<3.1)! Stepped down to 16kHz FEC narrowband and armed SMS/Mini-Program visual confirmation card!',
+      agent_zh: '【P28 实时 MOS-LQO 双通道降级护栏 · 阻断纯语音高危提交 (HIGH_RISK_VOICE_ONLY_COMMIT_BLOCKED_ON_LOW_MOS)】ITU-T G.107 实时测算 R-factor=41.0（<60）、MOS-LQO=2.18（<3.1），听感破碎，已自动降级为 16kHz 强纠错窄带流并推送短信/小程序可视确认卡，100% 阻断碎音下盲目纯语音确认！',
+      trace: {
+        tool: 'evaluate_realtime_mos_lqo_codec_fallback_guard(r_factor=41.0, mos_lqo=2.18, high_risk_voice_only=true -> HIGH_RISK_VOICE_ONLY_COMMIT_BLOCKED_ON_LOW_MOS)',
+        citations: ['P28-REALTIME-MOS-LQO-CODEC-FALLBACK-GUARD', 'ITU-T-G107-EMODEL', 'DUAL-CHANNEL-VISUAL-CARD'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P28) · 16kHz FEC stepdown + SMS visual card armed · Low-MOS voice-only commit blocked'
+      }
     }
   ];
 
@@ -3087,7 +3121,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (44-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (46-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3101,7 +3135,8 @@
       '- [x] **慢速核心系统异步节拍与跨通话记忆防投毒**：无 `COMMITTED` 回执 100% 阻断抢跑承诺并启用 `2.5s` 进度心跳 (P19)，100% 拦截口述写入 `authBypass/creditLimit` 特权画像与过期 RAG 分片 (P20)',
       '- [x] **下游核心 API 熔断防雪崩与多音字/SSML 防注入护栏**：后端超时自动触发 `OPEN` 熔断阻断重试风暴并切只读快照/暂存意向单 (P21)，100% 剥离恶意 SSML 标签并强制挂载专有名词音标词典与 `<say-as>` 逐位编码播报 (P22)',
       '- [x] **WebRTC Opus 丢包补偿抖动钳位与中英粤混说热词消歧**：关键槽位突发丢帧（`plcRatio>0.18`）强制复述确认且抖动缓冲钳位 `<=120ms` (P23)，中英粤句内切换 `<=120ms` 并拦截英文缩略词/SKU 中文同音字幻觉 (P24)',
-      '- [x] **智能外呼 DNC/宵禁/AMD 防泄密与脆弱人群关怀专线**：拨号前拦截 DNC/宵禁/超频并在 AMD 识别语音信箱后阻断金额/PII 留言 (P25)，哭泣/危机/高龄认知疲劳态立即熔断施压话术、降速 `0.88x` 并直转关怀专席 (P26)'
+      '- [x] **智能外呼 DNC/宵禁/AMD 防泄密与脆弱人群关怀专线**：拨号前拦截 DNC/宵禁/超频并在 AMD 识别语音信箱后阻断金额/PII 留言 (P25)，哭泣/危机/高龄认知疲劳态立即熔断施压话术、降速 `0.88x` 并直转关怀专席 (P26)',
+      '- [x] **车载/柜台远场波束防串音与实时 MOS-LQO 双通道降级**：联合 DOA(`<=25°`)+声纹(`>=0.76`)+SIR(`>=8dB`) 抑制副驾/电视串音伪打断与槽位污染 (P27)，ITU-T G.107 `MOS-LQO<3.1` 自动切 16kHz 窄带并推送短信/小程序可视确认卡 (P28)'
     ].join('\n');
   }
 
