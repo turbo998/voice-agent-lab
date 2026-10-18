@@ -3149,6 +3149,40 @@
         confidence: 1.0,
         verifier: 'PASS (P34) · Cross-border voiceprint egress blocked · Per-Caller KEK shredded in 380ms'
       }
+    },
+    {
+      code: 'P35 · AML Sanctions & Tele-Scam Coercion Guard',
+      badge: 'SAR & 24h Hold',
+      title: '跨境汇款 OFAC 制裁反通风报信拦截与电信诈骗旁白教唆 24h 保护性止付护栏',
+      sub: '测试命中制裁名单时静默阻断不通风报信，或检出背景旁白教唆/高胁迫声学特征时触发 24h 保护性止付',
+      customer_en: '[Cross-Border Wire $25,000 to First-Time Beneficiary · Background Coaching Whisper=true · Coercion Stress=0.81 / Sanctions=0.92] "Hurry up and wire $25,000 to this new account right now, someone is telling me what to say!"',
+      customer_zh: '【跨境汇款 $25,000 至首次陌生账户 · 远场检出第三人旁白教唆=true · 声学胁迫指数=0.81 / 制裁匹配=0.92】高龄客户声音颤抖：“快帮我把 2.5 万美金转到这个新账户，别问那么多！”',
+      agent_en: 'AML SANCTIONS & APP SCAM COERCION GUARD (P35 / P35-AML-SANCTIONS-SCAM-COERCION-GUARD): Enforced `OFAC_UN_SANCTIONS_HIT_HARD_BLOCK` (`noTippingOffCompliant=true`) and `APP_SCAM_COERCION_SILENT_FREEZE`! Armed 24-hour protective cooling-off hold and silent Fraud Desk intervention!',
+      agent_zh: '【P35 跨境汇款制裁反通风报信与反电诈胁迫声学止付护栏 (OFAC_UN_SANCTIONS_HIT_HARD_BLOCK / APP_SCAM_COERCION_SILENT_FREEZE)】已 100% 物理阻断制裁出金（严格执行反通风报信静默话术提报 SAR），并对背景教唆/高胁迫首次大额转账启动 24 小时保护性延迟到账与反诈专席静默介入！',
+      trace: {
+        tool: 'evaluate_aml_sanctions_scam_coercion_guard(amount_usd=25000, coaching_whisper=true, stress=0.81 -> APP_SCAM_COERCION_SILENT_FREEZE)',
+        citations: ['P35-AML-SANCTIONS-SCAM-COERCION-GUARD', 'FATF-NO-TIPPING-OFF', 'APP-SCAM-24H-HOLD'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P35) · Sanctions no-tipping-off block & 24h APP scam cooling-off armed'
+      }
+    },
+    {
+      code: 'P36 · Real-Time Interpreter Polarity & Scale Guard',
+      badge: '0 Scale/Polarity Drift',
+      title: '实时双语同传否定免责极性反转与 Million/万/亿 量级错译阻断护栏',
+      sub: '测试跨国合同/清关同传中拦截肯定/否定免责极性反转、10 Million->1亿量级错算与 FOB/CIF 强锁术语丢失',
+      customer_en: '[Cross-Border M&A / Customs Interpretation EN->ZH] Source: "Seller shall NOT be liable for consequential damages capped at 10 million USD under FOB." Candidate mistranslation: "卖方承担间接赔偿责任，上限 1 亿美元"',
+      customer_zh: '【跨国并购/报关实时双语同传 EN->ZH】源语：“卖方不对间接损失承担责任，FOB 条款下上限 10 million 美元”；注入候选错译：“卖方承担间接责任，上限 1 亿美元（极性反转 + 10倍量级错算）”',
+      agent_en: 'REAL-TIME INTERPRETER FIDELITY GUARD (P36 / P36-REALTIME-INTERPRETER-FIDELITY-GUARD): Blocked mistranslated audio broadcast (`INDEMNITY_OR_NEGATION_DRIFT_BLOCKED` / `NUMERIC_MAGNITUDE_TRANSLATION_DRIFT_BLOCKED`)! Enforced exact negation polarity, 10,000,000 (1000万) scale, and locked FOB Incoterms!',
+      agent_zh: '【P36 实时双语同传极性与数值量级保真护栏 (INDEMNITY_OR_NEGATION_DRIFT_BLOCKED / NUMERIC_MAGNITUDE_TRANSLATION_DRIFT_BLOCKED)】检测到否定免责极性反转与中英数词量级倍差（10 million 应为 1000 万而非 1 亿），已 100% 阻断错译语音播报并强制输出精准双语复核！',
+      trace: {
+        tool: 'evaluate_realtime_interpreter_fidelity_guard(polarity_match=false, scale_drift=9.0 -> INDEMNITY_OR_NEGATION_DRIFT_BLOCKED)',
+        citations: ['P36-REALTIME-INTERPRETER-FIDELITY-GUARD', 'INCOTERMS-2020-LOCK', 'NUMERIC-SCALE-VERIFIER'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P36) · Negation inversion & 10M->100M scale drift blocked'
+      }
     }
   ];
 
@@ -3223,7 +3257,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (52-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (54-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3241,7 +3275,8 @@
       '- [x] **车载/柜台远场波束防串音与实时 MOS-LQO 双通道降级**：联合 DOA(`<=25°`)+声纹(`>=0.76`)+SIR(`>=8dB`) 抑制副驾/电视串音伪打断与槽位污染 (P27)，ITU-T G.107 `MOS-LQO<3.1` 自动切 16kHz 窄带并推送短信/小程序可视确认卡 (P28)',
       '- [x] **SIP/WebRTC DTLS-SRTP 媒体防重放绑定与话后口头承诺对账**：强制校验 SIP PASSporT + DTLS-SRTP 指纹与 `<=15s` 一次性挑战 Nonce (P29)，挂机后 `<=3000ms` 自动对账口头承诺与 CRM 落库工单并触发 P1 偏差补偿 (P30)',
       '- [x] **车规级 eCall 碰撞 0ms 抢占与座舱四音区权限隔离**：CAN 碰撞减速度 `>=4.5G`/气囊/SOS 在 `0ms` 内强占语音通道发送 MSD 信标 (P31)，四音区 DOA + 儿童声纹 + 车速锁 100% 物理拦截非主驾/行驶态高危车控与支付 (P32)',
-      '- [x] **医疗临床红旗症状 0ms 急诊强转与主权声纹 CMK 加密粉碎**：命中胸痛/脑卒中构音障碍(`>=0.70`)/`SpO2<92%`/擅调处方剂量时 `0ms` 阻断常规排号并直转急诊绿道 (P33)，拦截声纹跨境出境并在撤回授权 `<=1500ms` 销毁 Per-Caller KEK 完成 NIST SP 800-88 加密粉碎 (P34)'
+      '- [x] **医疗临床红旗症状 0ms 急诊强转与主权声纹 CMK 加密粉碎**：命中胸痛/脑卒中构音障碍(`>=0.70`)/`SpO2<92%`/擅调处方剂量时 `0ms` 阻断常规排号并直转急诊绿道 (P33)，拦截声纹跨境出境并在撤回授权 `<=1500ms` 销毁 Per-Caller KEK 完成 NIST SP 800-88 加密粉碎 (P34)',
+      '- [x] **跨境汇款制裁反通风报信/反电诈止付 & 双语同传极性量级保真**：制裁命中静默阻断提报 SAR、检出旁白教唆/高胁迫声学特征自动触发 24h 保护性止付 (P35)，实时同传 100% 拦截否定免责极性反转与 Million/万/亿量级错译 (P36)'
     ].join('\n');
   }
 

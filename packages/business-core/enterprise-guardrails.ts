@@ -3322,6 +3322,190 @@ export function evaluateSovereignVoiceprintCryptoShreddingGuard(input: {
   };
 }
 
+export interface AmlSanctionsScamCoercionGuardEvaluation {
+  readonly policyCode: "P35-AML-SANCTIONS-SCAM-COERCION-GUARD";
+  readonly wireTransferId: string;
+  readonly sanctionsHitDetected: boolean;
+  readonly appScamCoercionDetected: boolean;
+  readonly noTippingOffCompliant: boolean;
+  readonly protectiveCoolingOffHours: number;
+  readonly allowed: boolean;
+  readonly reason:
+    | "OFAC_UN_SANCTIONS_HIT_HARD_BLOCK"
+    | "APP_SCAM_COERCION_SILENT_FREEZE"
+    | "AML_WIRE_TRANSFER_CLEARED";
+  readonly action:
+    | "HOLD_WIRE_AND_FILE_CONFIDENTIAL_SAR"
+    | "ARM_24H_COOLING_OFF_AND_FRAUD_DESK_WHISPER"
+    | "ALLOW_WIRE_SETTLEMENT";
+  readonly actionCode:
+    | "OFAC_UN_SANCTIONS_HIT_HARD_BLOCK"
+    | "APP_SCAM_COERCION_SILENT_FREEZE"
+    | "AML_WIRE_TRANSFER_CLEARED";
+  readonly summaryZh: string;
+}
+
+/**
+ * Deterministic AML Sanctions Screening & APP Tele-Scam Acoustic Coercion Guard (`P35-AML-SANCTIONS-SCAM-COERCION-GUARD`).
+ * - Hard-blocks wire transfers when the beneficiary matches OFAC/UN/EU sanctions lists (`sanctionsMatchScore >= 0.85`) while enforcing anti-tipping-off rules (`noTippingOffCompliant: true`).
+ * - Detects Authorized Push Payment (APP) tele-scam coercion when background coaching whispers (`backgroundCoachingDetected === true`) or high vocal stress (`coercionStressIndex >= 0.72`) accompany a first-time high-value transfer (`isFirstTimeBeneficiary && amountUsd >= 10000`), triggering a 24-hour cooling-off hold and silent fraud-desk escalation.
+ */
+export function evaluateAmlSanctionsScamCoercionGuard(input: {
+  wireTransferId: string;
+  amountUsd: number;
+  sanctionsMatchScore: number;
+  isFirstTimeBeneficiary: boolean;
+  backgroundCoachingDetected: boolean;
+  coercionStressIndex: number;
+}): AmlSanctionsScamCoercionGuardEvaluation {
+  if (input.sanctionsMatchScore >= 0.85) {
+    return {
+      policyCode: "P35-AML-SANCTIONS-SCAM-COERCION-GUARD",
+      wireTransferId: input.wireTransferId,
+      sanctionsHitDetected: true,
+      appScamCoercionDetected: false,
+      noTippingOffCompliant: true,
+      protectiveCoolingOffHours: 0,
+      allowed: false,
+      reason: "OFAC_UN_SANCTIONS_HIT_HARD_BLOCK",
+      action: "HOLD_WIRE_AND_FILE_CONFIDENTIAL_SAR",
+      actionCode: "OFAC_UN_SANCTIONS_HIT_HARD_BLOCK",
+      summaryZh: `【P35 跨境汇款制裁筛查 · 硬阻断 (OFAC_UN_SANCTIONS_HIT_HARD_BLOCK)】汇款单 ${input.wireTransferId}（$${input.amountUsd}）命中 OFAC/UN 制裁名单（匹配度=${input.sanctionsMatchScore} >= 0.85），已物理阻断出金并启用反通风报信静默话术（noTippingOffCompliant=true），自动提报保密可疑交易报告 (SAR)。`,
+    };
+  }
+
+  const appScamCoercion =
+    input.isFirstTimeBeneficiary &&
+    input.amountUsd >= 10000 &&
+    (input.backgroundCoachingDetected || input.coercionStressIndex >= 0.72);
+
+  if (appScamCoercion) {
+    return {
+      policyCode: "P35-AML-SANCTIONS-SCAM-COERCION-GUARD",
+      wireTransferId: input.wireTransferId,
+      sanctionsHitDetected: false,
+      appScamCoercionDetected: true,
+      noTippingOffCompliant: true,
+      protectiveCoolingOffHours: 24,
+      allowed: false,
+      reason: "APP_SCAM_COERCION_SILENT_FREEZE",
+      action: "ARM_24H_COOLING_OFF_AND_FRAUD_DESK_WHISPER",
+      actionCode: "APP_SCAM_COERCION_SILENT_FREEZE",
+      summaryZh: `【P35 电信诈骗/胁迫转账声学识别护栏 · 24h 保护性止付 (APP_SCAM_COERCION_SILENT_FREEZE)】汇款单 ${input.wireTransferId}（首次收款人，金额=$${input.amountUsd}）检出背景旁白教唆=${input.backgroundCoachingDetected}、声学胁迫压力指数=${input.coercionStressIndex}，已触发 24 小时保护性延迟到账并静默连线反诈专员。`,
+    };
+  }
+
+  return {
+    policyCode: "P35-AML-SANCTIONS-SCAM-COERCION-GUARD",
+    wireTransferId: input.wireTransferId,
+    sanctionsHitDetected: false,
+    appScamCoercionDetected: false,
+    noTippingOffCompliant: true,
+    protectiveCoolingOffHours: 0,
+    allowed: true,
+    reason: "AML_WIRE_TRANSFER_CLEARED",
+    action: "ALLOW_WIRE_SETTLEMENT",
+    actionCode: "AML_WIRE_TRANSFER_CLEARED",
+    summaryZh: `【P35 反洗钱与反电诈筛查通过】汇款单 ${input.wireTransferId}（$${input.amountUsd}）未命中制裁或电诈胁迫指征，允许结算。`,
+  };
+}
+
+export interface RealtimeInterpreterFidelityGuardEvaluation {
+  readonly policyCode: "P36-REALTIME-INTERPRETER-FIDELITY-GUARD";
+  readonly utteranceId: string;
+  readonly negationPolarityMatched: boolean;
+  readonly numericMagnitudeExact: boolean;
+  readonly lockedGlossaryPreserved: boolean;
+  readonly allowed: boolean;
+  readonly reason:
+    | "INDEMNITY_OR_NEGATION_DRIFT_BLOCKED"
+    | "NUMERIC_MAGNITUDE_TRANSLATION_DRIFT_BLOCKED"
+    | "LOCKED_INCOTERMS_GLOSSARY_VIOLATION_BLOCKED"
+    | "BILINGUAL_INTERPRETATION_VERIFIED";
+  readonly actionCode:
+    | "INDEMNITY_OR_NEGATION_DRIFT_BLOCKED"
+    | "NUMERIC_MAGNITUDE_TRANSLATION_DRIFT_BLOCKED"
+    | "LOCKED_INCOTERMS_GLOSSARY_VIOLATION_BLOCKED"
+    | "BILINGUAL_INTERPRETATION_VERIFIED";
+  readonly summaryZh: string;
+}
+
+/**
+ * Deterministic Real-Time Bilingual Legal/Commercial Interpreter Fidelity Guard (`P36-REALTIME-INTERPRETER-FIDELITY-GUARD`).
+ * - Prevents S2S translation hallucinations in cross-border contracts, customs declarations, and clinical interpretation by verifying:
+ *   1. Negation & liability polarity (`sourceNegationPolarity === targetNegationPolarity`);
+ *   2. Exact numeric magnitude across unit systems (`numericScaleRatioDrift === 0`, e.g., preventing English `10 million` from becoming `1亿` instead of `1000万`);
+ *   3. Mandatory legal/Incoterms glossary lock (`lockedGlossaryTermsPreserved === true`).
+ */
+export function evaluateRealtimeInterpreterFidelityGuard(input: {
+  utteranceId: string;
+  sourceLang: string;
+  targetLang: string;
+  sourceNegationPolarity: "AFFIRMATIVE" | "NEGATIVE_EXCLUSION";
+  targetNegationPolarity: "AFFIRMATIVE" | "NEGATIVE_EXCLUSION";
+  numericScaleRatioDrift: number;
+  lockedGlossaryTermsPreserved: boolean;
+}): RealtimeInterpreterFidelityGuardEvaluation {
+  const negationMatched =
+    input.sourceNegationPolarity === input.targetNegationPolarity;
+  const numericExact = Math.abs(input.numericScaleRatioDrift) < 1e-6;
+
+  if (!negationMatched) {
+    return {
+      policyCode: "P36-REALTIME-INTERPRETER-FIDELITY-GUARD",
+      utteranceId: input.utteranceId,
+      negationPolarityMatched: false,
+      numericMagnitudeExact: numericExact,
+      lockedGlossaryPreserved: input.lockedGlossaryTermsPreserved,
+      allowed: false,
+      reason: "INDEMNITY_OR_NEGATION_DRIFT_BLOCKED",
+      actionCode: "INDEMNITY_OR_NEGATION_DRIFT_BLOCKED",
+      summaryZh: `【P36 实时双语同传极性保真护栏 · 硬阻断 (INDEMNITY_OR_NEGATION_DRIFT_BLOCKED)】语段 ${input.utteranceId}（${input.sourceLang}->${input.targetLang}）发生肯定/否定免责极性反转（源=${input.sourceNegationPolarity}，译=${input.targetNegationPolarity}），已拦截错译音频播报并强制原句双语复核。`,
+    };
+  }
+
+  if (!numericExact) {
+    return {
+      policyCode: "P36-REALTIME-INTERPRETER-FIDELITY-GUARD",
+      utteranceId: input.utteranceId,
+      negationPolarityMatched: true,
+      numericMagnitudeExact: false,
+      lockedGlossaryPreserved: input.lockedGlossaryTermsPreserved,
+      allowed: false,
+      reason: "NUMERIC_MAGNITUDE_TRANSLATION_DRIFT_BLOCKED",
+      actionCode: "NUMERIC_MAGNITUDE_TRANSLATION_DRIFT_BLOCKED",
+      summaryZh: `【P36 实时双语同传数值量级护栏 · 硬阻断 (NUMERIC_MAGNITUDE_TRANSLATION_DRIFT_BLOCKED)】语段 ${input.utteranceId}（${input.sourceLang}->${input.targetLang}）跨语种数词量级换算存在倍差（drift=${input.numericScaleRatioDrift}，如 million/万/亿 错位），已阻断播报并触发逐位数字确认。`,
+    };
+  }
+
+  if (!input.lockedGlossaryTermsPreserved) {
+    return {
+      policyCode: "P36-REALTIME-INTERPRETER-FIDELITY-GUARD",
+      utteranceId: input.utteranceId,
+      negationPolarityMatched: true,
+      numericMagnitudeExact: true,
+      lockedGlossaryPreserved: false,
+      allowed: false,
+      reason: "LOCKED_INCOTERMS_GLOSSARY_VIOLATION_BLOCKED",
+      actionCode: "LOCKED_INCOTERMS_GLOSSARY_VIOLATION_BLOCKED",
+      summaryZh: `【P36 实时双语同传强锁术语表护栏 · 硬阻断 (LOCKED_INCOTERMS_GLOSSARY_VIOLATION_BLOCKED)】语段 ${input.utteranceId} 未保留强锁法律/贸易术语（如 FOB/CIF/Without Prejudice），已拦截自由意译。`,
+    };
+  }
+
+  return {
+    policyCode: "P36-REALTIME-INTERPRETER-FIDELITY-GUARD",
+    utteranceId: input.utteranceId,
+    negationPolarityMatched: true,
+    numericMagnitudeExact: true,
+    lockedGlossaryPreserved: true,
+    allowed: true,
+    reason: "BILINGUAL_INTERPRETATION_VERIFIED",
+    actionCode: "BILINGUAL_INTERPRETATION_VERIFIED",
+    summaryZh: `【P36 实时双语同传保真校验通过】语段 ${input.utteranceId}（${input.sourceLang}->${input.targetLang}）否定极性、数值量级与强锁术语表 100% 对齐。`,
+  };
+}
+
+
 
 
 

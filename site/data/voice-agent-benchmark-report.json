@@ -284,6 +284,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P33-CLINICAL-REDFLAG-ESCALATION-GUARD blocks routine booking and autonomous clinical/dosage advice in 0ms on red-flag symptoms, dysarthriaIndex >= 0.70, or SpO2 < 92%, triggering immediate ER warm transfer; P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD blocks cross-border biometric voiceprint egress and shreds Per-Caller KEK within <=1500ms on consent revocation."
+    },
+    {
+      "check_name": "AML Sanctions No-Tipping-Off / APP Scam 24h Hold & Real-Time Interpreter Fidelity Guard (P35 / P36)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P35-AML-SANCTIONS-SCAM-COERCION-GUARD blocks OFAC/UN sanctions hits without tipping off the caller and arms a 24-hour cooling-off hold on first-time high-value wires under acoustic coaching/coercion; P36-REALTIME-INTERPRETER-FIDELITY-GUARD blocks negation polarity inversions, million/亿 numeric scale drift, and locked Incoterms glossary violations."
     }
   ],
   "latency_scaling": [

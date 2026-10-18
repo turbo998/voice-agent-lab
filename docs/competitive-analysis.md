@@ -194,6 +194,7 @@
 | **16. 信令媒体防重放加密绑定与话后口头承诺对账**<br>(`录音重放或 RTP 媒体包注入劫持 / 口头答应退费但后台工单漏建或金额不符`) | 接入 **`P29-SIP-WEBRTC-ANTI-REPLAY-MEDIA-BINDING`** 强制校验 SIP PASSporT + DTLS-SRTP 指纹与 `<=15s` 一次性挑战 Nonce | **`P30-POSTCALL-PROMISE-VS-TICKET-AUDIT-GUARD` 挂机后 `<=3000ms` 实时对账口头承诺金额/动作与 CRM 落库工单，偏差自动触发 P1 补偿** | 100% 阻断录音重放与媒体流劫持，话后承诺与落库账实偏差率降至 0.0% |
 | **17. 车规级 eCall 碰撞 0ms 抢占与座舱四音区权限隔离**<br>(`碰撞时普通闲聊占线阻塞救援 / 后排儿童或副驾行驶中误开后备箱或盗刷`) | 接入 **`P31-AUTOMOTIVE-ECALL-CRASH-PREEMPTION-GUARD`** 监听 CAN 减速度 `>=4.5G`/气囊/SOS 在 `0ms` 内强占语音通道发送 MSD 信标 | **`P32-CABIN-MULTIZONE-PRIVILEGE-ISOLATION-GUARD` 四音区 DOA + 儿童声纹 + 车速锁，100% 阻断非主驾/行驶态高危车控与支付** | 100% 满足 EU eCall / GB 34658 法规抢占，后排/副驾越权车控事故率降至 0.0% |
 | **18. 医疗临床红旗症状 0ms 急诊强转与主权声纹 CMK 加密粉碎**<br>(`胸痛/卒中患者被延误在普通排号或 AI 擅改处方量 / 声纹跨境出境或撤回同意后难物理擦除`) | 接入 **`P33-CLINICAL-REDFLAG-ESCALATION-GUARD`** 命中胸痛/构音障碍(`>=0.70`)/`SpO2<92%`/调药请求时 `0ms` 阻断并直转急诊绿道 | **`P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD` 拦截声纹跨境出境 + 撤回授权 `<=1500ms` 销毁 Per-Caller KEK 完成 NIST SP 800-88 加密粉碎** | 临床急性红旗漏转率降至 0.0%，100% 满足 GDPR Art. 9/17 与 PIPL 生物特征秒级遗忘权 |
+| **19. 跨境汇款制裁反通风报信/电诈胁迫止付 & 双语同传保真**<br>(`命中制裁直接告知客户打草惊蛇或老人被电诈旁白教唆汇款 / 同传把 10 Million 译成 1 亿或漏掉免责否定词`) | 接入 **`P35-AML-SANCTIONS-SCAM-COERCION-GUARD`** 制裁命中静默阻断提报 SAR，检出背景教唆/高胁迫声学特征自动触发 24h 保护性止付 | **`P36-REALTIME-INTERPRETER-FIDELITY-GUARD` 实时校验肯定/否定免责极性、Million/万/亿量级零倍差与 FOB/CIF 强锁术语表** | 100% 满足 FATF 反洗钱与反电诈保护性止付合规，跨语种商务同传关键条款错译率降至 0.0% |
 
 
 

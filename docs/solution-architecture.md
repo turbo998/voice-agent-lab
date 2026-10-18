@@ -918,6 +918,32 @@ flowchart LR
 | **1. 临床红旗症状 `0ms` 急诊绿道强转与禁调处方剂量 (`P33-CLINICAL-REDFLAG-ESCALATION-GUARD`)** | `evaluateClinicalRedFlagTriageGuard` 联合校验红旗症状数组、`dysarthriaIndex >= 0.70`、`spo2Pct < 92` 与 `requestsPrescriptionDosageChange`；命中时返回 `allowed: false`、`reason: "AUTONOMOUS_CLINICAL_ADVICE_OR_DELAYED_BOOKING_BLOCKED"` 与 `action: "IMMEDIATE_CLINICAL_REDFLAG_ER_WARM_TRANSFER"`。 | **100% 杜绝急性胸痛/脑卒中患者被延误在普通挂号队列或获批违规调药**（对应 POC 探针 `P33`）。 |
 | **2. 主权声纹生物特征驻留围栏与 `<=1500ms` CMK 加密粉碎 (`P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD`)** | `evaluateSovereignVoiceprintCryptoShreddingGuard` 强制校验 `callerJurisdiction` 与 `targetInferenceRegion` 主权边界一致性（拦截 `CROSS_BORDER_BIOMETRIC_EGRESS_BLOCKED`），并在 `revokeBiometricConsent = true` 时核验 `<=1500ms` 内销毁 Per-Caller KEK（返回 `VOICEPRINT_CMK_CRYPTO_SHREDDED`）。 | **100% 满足 GDPR Art. 9/17、PIPL 与 NIST SP 800-88 生物特征主权与秒级遗忘权要求**（对应 POC 探针 `P34`）。 |
 
+### 4.29 跨境汇款制裁筛查/反电诈胁迫声学识别护栏 (`P35-AML-SANCTIONS-SCAM-COERCION-GUARD`) 与实时双语同传极性/量级保真护栏 (`P36-REALTIME-INTERPRETER-FIDELITY-GUARD`)
+
+在跨国零售/私人银行大额汇款、跨境并购法律谈判与海关清关双语坐席场景中，企业级 Voice Agent 必须防御 **制裁名单洗钱/电信诈骗胁迫转账（APP Scam Coercion）** 与 **实时双语同传中的否定极性反转/数词量级错译（`million` vs `万/亿`）**：
+1. **OFAC/UN 制裁名单实时硬阻断与电信诈骗胁迫声学识别 24h 保护性止付 (`P35-AML-SANCTIONS-SCAM-COERCION-GUARD`)**：当收款方命中 OFAC/UN/EU 制裁名单（`sanctionsMatchScore >= 0.85`）时，立即物理阻断出金并严格遵守反洗钱“反通风报信（No Tipping-Off）”原则（`OFAC_UN_SANCTIONS_HIT_HARD_BLOCK`、`noTippingOffCompliant = true`），仅播报中性合规复核话术并后台提报保密可疑交易报告（SAR）；当首次收款人且大额汇款（`amountUsd >= $10,000`）同时伴随远场背景第三人旁白教唆（`backgroundCoachingDetected = true`）或声学胁迫压力指数超标（`coercionStressIndex >= 0.72`）时，自动判定为授权推送支付电诈（APP Scam），触发 **24 小时保护性延迟到账（`protectiveCoolingOffHours = 24`）** 与反诈专席静默介入（`APP_SCAM_COERCION_SILENT_FREEZE`）；
+2. **实时双语同传否定免责极性、数词量级与强锁贸易术语保真门禁 (`P36-REALTIME-INTERPRETER-FIDELITY-GUARD`)**：针对中英/多语种实时同传，逐句核验源语言与目标语言的肯定/否定免责极性一致性（`sourceNegationPolarity === targetNegationPolarity`，防止把“不含赔偿责任”错译为“包含赔偿责任” `INDEMNITY_OR_NEGATION_DRIFT_BLOCKED`）、跨语种数词量级零倍差（`numericScaleRatioDrift === 0`，防止英语 `10 million` 错译为中文 `1亿` 而非 `1000万` `NUMERIC_MAGNITUDE_TRANSLATION_DRIFT_BLOCKED`），以及强锁法律/国贸术语表（`FOB/CIF/Without Prejudice`）100% 保真（`LOCKED_INCOTERMS_GLOSSARY_VIOLATION_BLOCKED`）。
+
+```mermaid
+flowchart LR
+    subgraph AmlScamGuard["🏦 P35 制裁筛查与反电诈胁迫声学止付护栏"]
+        direction TB
+        WireInput["💸 跨境汇款请求 + 声学胁迫/旁白教唆检测<br/>(Sanctions Score / Coaching Whisper / Stress >=0.72)"] --> CheckP35["evaluateAmlSanctionsScamCoercionGuard()<br/>• 制裁命中 >=0.85 阻断 OFAC_UN_SANCTIONS_HIT_HARD_BLOCK<br/>• 遵守反通风报信 (noTippingOffCompliant=true)<br/>• 电诈胁迫触发 24h 止付 APP_SCAM_COERCION_SILENT_FREEZE"]
+    end
+
+    subgraph InterpreterGuard["🌐 P36 实时双语同传极性与数值量级保真护栏"]
+        direction TB
+        TransInput["🗣️ 双语同传语段 (Source <-> Target)<br/>(Negation Polarity / Numeric Scale / Incoterms)"] --> CheckP36["evaluateRealtimeInterpreterFidelityGuard()<br/>• 极性反转阻断 INDEMNITY_OR_NEGATION_DRIFT_BLOCKED<br/>• Million/万/亿倍差阻断 NUMERIC_MAGNITUDE_TRANSLATION_DRIFT<br/>• 强锁术语违例阻断 LOCKED_INCOTERMS_GLOSSARY_VIOLATION"]
+    end
+
+    AmlScamGuard --> InterpreterGuard
+```
+
+| 核心跨境金融反洗钱与双语同传控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 金融风控与跨国法务收益 |
+| :--- | :--- | :--- |
+| **1. OFAC/UN 制裁名单硬阻断与 APP 电诈胁迫 24h 保护性止付 (`P35-AML-SANCTIONS-SCAM-COERCION-GUARD`)** | `evaluateAmlSanctionsScamCoercionGuard` 联合校验 `sanctionsMatchScore >= 0.85`（返回 `OFAC_UN_SANCTIONS_HIT_HARD_BLOCK` 且 `noTippingOffCompliant: true`）与首次大额汇款下的 `backgroundCoachingDetected / coercionStressIndex >= 0.72`（返回 `APP_SCAM_COERCION_SILENT_FREEZE` 与 `protectiveCoolingOffHours: 24`）。 | **100% 满足 FATF 反通风报信红线，拦截高龄/受胁迫客户被电诈诱导实时转账**（对应 POC 探针 `P35`）。 |
+| **2. 实时双语同传极性、量级与强锁术语保真门禁 (`P36-REALTIME-INTERPRETER-FIDELITY-GUARD`)** | `evaluateRealtimeInterpreterFidelityGuard` 校验肯定/否定极性、数值量级漂移率与强锁术语保留状态，拦截错译音频播报。 | **100% 消除跨国谈判与报关同传中的免责极性反转与 `Million/亿` 量级错译事故**（对应 POC 探针 `P36`）。 |
+
 
 
 
