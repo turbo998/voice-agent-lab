@@ -297,3 +297,32 @@ stateDiagram-v2
 1. **保持单一媒体流不断连（Single Media Session, Swappable Brain）**：当客户从“综合账单咨询”转向“高压硬件冒烟报修”时，底层 WebRTC / SIP 媒体连接保持不断开（零盲转等待音），仅在服务端将当前会话的控制权从 `TriageAgent` 原子切换至 `SafetySpecialistAgent`。
 2. **结构化槽位继承与零重复提问（Zero Re-Verification Handoff）**：交接瞬间注入紧凑的 `HandoffContextEnvelope`（控制在 `< 180 tokens`，耗时 `< 40ms`），专科 Agent 开口第一句即承接上文（如：*“我已从总机同步了您的订单号 LN-SG-1001 和 Cam Air 5GHz 闪红灯情况，现在直接带您做配网频段拆分……”*），彻底消灭传统呼叫中心转接后“请再报一遍您的姓名和单号”的糟糕体验。
 
+### 4.8 车载/工业极端低信噪比（SNR < 5dB）前端声学增强与语义 VAD 协同流水线
+
+针对 S2 快餐车道、S5 高速智能座舱及 S10 85dB+ 工业风机车间等极端声学场景，单纯依赖云端通用 VAD 会导致严重误唤醒或截断。生产级推荐采用 **四级声学前端 + 云端语义 VAD 协同架构**：
+
+| 处理层级 | 核心算法 / 模块 | 作用与物理指标 | 解决的典型现场故障 |
+| :--- | :--- | :--- | :--- |
+| **Stage 1: 端侧硬件波束成形** | 双麦/骨传导近场差分阵列 + 硬件 AEC | 抑制 `> 18dB` 远场稳态噪音与扬声器自激回声 | 消除车载音响导航播报或工业空压机轰鸣引起的自打断 |
+| **Stage 2: 边缘稳态降噪门限** | RNNoise / WebRTC NS + 动态能量门限 | 过滤非人声频段（`< 85Hz` 引擎低频与 `> 7kHz` 风噪） | 防止高速开窗风噪持续占用上行带宽并触发无意义账单 |
+| **Stage 3: 语义轮次检测 (`Semantic VAD`)** | `gpt-live-1` 原生多模态轮次感知 / Azure Semantic Turn Detection | 联合评估声学停顿与句法完整性（如识别“单号是 LN...【换气 1.5s】...1001”） | 区分“思考换气”、“附和词（嗯/对）”与“真正说完了” |
+| **Stage 4: 领域热词与纠错锁** | Custom Speech Phrase List + 工具层拼音/编辑距离归一化 | 对 SKU、故障码（`DTC-P0AA6`、`ALM-INV-409`）提升 `+15dB` 等效识别权重 | 在高噪窄带下仍保持 **0.0% 关键实体槽位错识率** |
+
+### 4.9 跨国多区域高可用、PTU 预留算力弹性溢出（PTU + PAYGO Spillover）与防雪崩架构
+
+当企业将 Voice Agent 投入每日数十万通电话的生产环境（尤其是遭遇航变 IRROPS、台风停水停电或双十一大促）时，必须解决 **云端限流（HTTP 429）与 PTU 固定成本浪费** 的矛盾。我们设计了 **Azure API Management (APIM) / AI Gateway + PTU 基线 + PAYGO 弹性溢出架构**：
+
+```mermaid
+flowchart LR
+    Calls["高并发语音网关集群<br/>(ACS / Retell / WebRTC)"] --> APIM["Azure AI Gateway (APIM)<br/>令牌桶限流 · 区域健康探测"]
+    APIM -->|"优先路由 80% 稳态流量<br/>(零 429 · 稳定 <550ms P90)"| PTU["主区域 Foundry PTU 预留池<br/>(East US 2 / Southeast Asia)"]
+    APIM -->|"当 PTU 利用率 >92% 或突发洪峰<br/>0ms 自动无感溢出"| PAYGO["同区域/跨区域 PAYGO 弹性池<br/>(Global Standard Deployment)"]
+    APIM -->|"若主区域网络抖动 >1200ms<br/>熔断切换"| DR["灾备区域 Voice Live + Foundry<br/>(West US 2 / Sweden Central)"]
+```
+
+- **FinOps 黄金配比公式（节省 38%–45% 算力成本）**：
+  1. **稳态水位（P65 日常并发）买 PTU**：利用 Azure Provisioned Managed (PTU) 锁定全天 70%–80% 的稳态通话并发，享受大幅包月折扣与确定性低延迟（消除冷启动与共享池排队抖动）。
+  2. **波峰尖刺（Peak Burst）走 Global Standard PAYGO 溢出**：突发 3–10 倍洪峰（仅占全年时间的 5%–8%）由 AI Gateway 自动溢出至按量付费（PAYGO）部署，无需按全年最高峰值常年闲置高昂 PTU。
+  3. **预算熔断与优雅降级（Fail-Closed & Graceful Degradation）**：当单日异常消耗触及预设安全水位或遇到极端主备故障时，网关自动将非核心闲聊切换为轻量 `gpt-4.1-mini` 受控模板或引导转接传统 IVR/人工队列，确保核心生产账单与可用性 100% 受控。
+
+

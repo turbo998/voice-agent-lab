@@ -135,6 +135,23 @@
 
 ---
 
+### 3.6 对标云厂商与模型直连方案（AWS Nova Sonic + Amazon Connect / Google Cloud CES / OpenAI Direct API）
+
+在大型跨国企业与政企招标中，客户架构委员会常将 **Microsoft Azure (Voice Live + Foundry)** 与 **AWS (Amazon Connect + Bedrock Nova Sonic)**、**Google Cloud (Customer Engagement Suite + Gemini Live)** 以及 **OpenAI 官方直连 API** 进行底座级比拼：
+
+| 对比维度 | **AWS (Amazon Connect + Nova Sonic)** | **Google Cloud (CES / Dialogflow CX + Gemini Live)** | **OpenAI Platform Direct (`Realtime API`)** | **Microsoft Azure (`Voice Live + Foundry + Speech`)** |
+| :--- | :--- | :--- | :--- | :--- |
+| **端到端语音与多模型协同** | `Nova Sonic` 具备良好英文 S2S 性价比，但复杂工具推理与顶尖代码/逻辑模型生态弱于 OpenAI GPT 系列 | `Dialogflow CX` 状态机成熟，但传统意图槽位配置极其繁重；Gemini 语音在企业严谨 JSON 契约稳定性上存在波动 | 原生 `gpt-realtime` 能力强，但**仅提供裸模型 WebSocket**，无官方电信网关、无高清级联 TTS 兜底、无内网容器 | **唯一集齐 OpenAI 顶尖 S2S (`gpt-live-1`) + `gpt-5.4/4.1` 星座路由 + 自研 `DragonHDFlash` (4.34 MOS) 的全栈底座** |
+| **混合云与本地离线容器** | ❌ Amazon Transcribe/Polly 与 Nova Sonic 均无通用客户机房离线 Docker 容器 | ❌ 仅限特定电信运营商专区，通用企业机房获取本地断网语音容器门槛极高 | ❌ 100% 公有云美区/欧区托管，不支持任何本地容器或中国/亚太专属合规落地 | ✅ **独家提供 Azure Speech 本地联网容器与完全离线容器（Disconnected Containers）**，音频 100% 不出机房 |
+| **中文与亚太出海语种表现** | 英文客服优秀，但中文商务自然度及东南亚混合口音（Singlish/粤英混杂）弱于 Azure | 亚太语种覆盖较好，但在国内与出海企业生态（Teams / M365 / Dynamics 集成）粘性弱 | 默认美式英语语调浓重，中文客服场景偶有欧美腔调与高单价（纯音频 Token 计费较贵） | ✅ **支持 140+ 语言区域与 Custom Speech 热词增强**，`DragonHDFlash` 中文盲测超越真人录音 |
+| **企业办公与安全生态协同** | 强绑定 AWS IAM 与 Connect 坐席台，与企业 Entra ID / Teams 协同需额外跨云桥接 | 独立 GCP IAM 体系，企业内部 IT 服务台（Intune / Entra / ServiceNow）打通成本高 | 无企业 VNet Private Link、无 ExpressRoute 专线、无 MACC 额度抵扣 | ✅ **原生打通 Microsoft Entra ID、Teams 电话热转接、ExpressRoute 私网与 MACC 承诺消费抵扣** |
+
+#### 🛡️ 微软售前针对云竞对的决胜话术
+1. **打 AWS (Connect + Nova Sonic)**：*“Nova Sonic 降低了单点语音成本，但在处理复杂多步保修排障、跨国多语种代码切换与高准度 JSON Schema 工具调用时，Azure AI Foundry 上的 `gpt-live-1` + `gpt-4.1-mini` 星座组合在准确率与防幻觉护栏上领先一代；更重要的是，只有 Azure 能为您提供本地 Docker 语音容器满足金融政企内网红线。”*
+2. **打 OpenAI 官方直连 (OpenAI Direct)**：*“直接调 OpenAI 公网 API 既无法接入贵司的 ExpressRoute 专线与 VNet 私有端点，也无法抵扣贵司的微软 MACC 承诺额度；而在 Azure AI Foundry 上，您不仅拥有同源的实时语音与推理模型，还免费获得了企业级 RBAC、内容安全护栏、PTU+PAYGO 自动溢出以及 140+ 语种的 Azure Speech HD 级联兜底能力。”*
+
+---
+
 ## 5. 竞对真实账单拆解：为什么宣传 "$0.07/min" 落地后变成 "$0.22/min"？
 
 在售前商务谈判中，客户经常拿着 Retell、Vapi 或 ElevenLabs 官网首页的“起步价”来对比。架构师应当场展开以下 **全链路隐性加项（Hidden Stack Multipliers）** 拆解表：

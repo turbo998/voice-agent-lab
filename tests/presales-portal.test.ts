@@ -4,14 +4,14 @@ import { readFile } from "node:fs/promises";
 
 test("presales whitepapers exist and cover business scenarios, architectures, competitors, playbook, evaluation rubric, and speech containers", async () => {
   const files = [
-    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "ROI"] },
-    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm"] },
-    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume"] },
-    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一"] },
+    { path: "../docs/business-scenarios.md", mustContain: ["LumaNest", "Drive-Thru", "BFSI", "eCall", "PCI-DSS", "12345", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "ROI"] },
+    { path: "../docs/solution-architecture.md", mustContain: ["范式 A", "范式 B", "范式 C", "gpt-live-1", "Warm Transfer", "Speculative", "G.711", "AMD", "Multi-Agent Swarm", "PTU", "PAYGO"] },
+    { path: "../docs/competitive-analysis.md", mustContain: ["Sierra", "Retell", "ElevenLabs", "Vapi", "PolyAI", "Bland AI", "Cartesia Sonic", "Deepgram", "Hume", "Nova Sonic", "Google Cloud"] },
+    { path: "../docs/presales-playbook.md", mustContain: ["Discovery", "Sierra AI", "Retell AI", "ElevenLabs", "POC", "照妖镜", "阶段一", "IND-LOTO-01"] },
     { path: "../docs/voice-agent-evaluation-rubric.md", mustContain: ["A01", "L01", "T02", "S01", "S05", "PCI-DSS"] },
     { path: "../docs/speech-container-guide.md", mustContain: ["Billing=", "Disconnected Containers", "SynthesisFirstByteLatencyMs"] },
     { path: "../docs/asset-catalog.md", mustContain: ["turbo998/voice-agent-lab", "turbo998/gpt-live-1-demo", "deck.html", "voice-agent-evaluation-rubric.md", "2026-10-18.md"] },
-    { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01"] }
+    { path: "../docs/daily/2026-10-18.md", mustContain: ["Voice Live", "Cartesia", "GOV-GAS-01", "LOG-TCPA-01", "GAME-SAFE-01", "IND-LOTO-01", "Nova Sonic"] }
   ];
 
   for (const item of files) {
@@ -84,8 +84,14 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "travel_pci_rebooking",
     "gov_12345_gas_emergency",
     "logistics_amd_rebooking",
+    "gaming_npc_shield",
+    "industrial_loto_copilot",
+    "Nova Sonic",
     "L04 · Spec Hallucination Block",
     "T04 · Post-Takeover Late-Write Block",
+    "A04 · 85dB Industrial Noise Lock",
+    "S06 · LOTO & Minor Payment Gate",
+    "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
     "handleCustomUtterance"
