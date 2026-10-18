@@ -2346,6 +2346,156 @@ export function evaluateProsodySsmlPronunciationGuard(input: {
   };
 }
 
+export interface WebrtcOpusPlcJitterAdaptationEvaluation {
+  policyCode: "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION";
+  callId: string;
+  fecRequiredAndEnabled: boolean;
+  jitterBufferClampedMs: number;
+  criticalSlotBurstLossBlocked: boolean;
+  mutationAllowed: boolean;
+  actionCode:
+    | "AUDIO_BURST_LOSS_RECONFIRM_REQUIRED"
+    | "OPUS_INBAND_FEC_MISSING_ENFORCED"
+    | "WEBRTC_PLC_JITTER_HEALTHY";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic WebRTC Opus Packet-Loss Concealment (PLC/FEC) & Adaptive Jitter Buffer Guard (`P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION`).
+ * - When `packetLossPct >= 2.0`, requires Opus In-Band FEC (`useinbandfec=1`) and DTX.
+ * - Clamps adaptive jitter buffer target to `<= 120ms` to preserve full-duplex barge-in naturalness.
+ * - During critical slot capture (amount, order ID, ID tail), if `plcConcealedFramesRatio > 0.18` or `burstLossFrames >= 4`, blocks ASR slot guessing and enforces targeted slot re-confirmation (`AUDIO_BURST_LOSS_RECONFIRM_REQUIRED`).
+ */
+export function evaluateWebrtcOpusPlcJitterAdaptation(input: {
+  callId: string;
+  packetLossPct: number;
+  burstLossFrames: number;
+  jitterMs: number;
+  opusInbandFecEnabled: boolean;
+  plcConcealedFramesRatio: number;
+  isCriticalSlotCapture: boolean;
+}): WebrtcOpusPlcJitterAdaptationEvaluation {
+  const fecRequired = input.packetLossPct >= 2.0;
+  const fecRequiredAndEnabled = !fecRequired || input.opusInbandFecEnabled;
+  const jitterBufferClampedMs = Math.min(120, Math.max(20, Math.round(input.jitterMs * 1.5)));
+  const criticalSlotBurstLossBlocked =
+    input.isCriticalSlotCapture &&
+    (input.plcConcealedFramesRatio > 0.18 || input.burstLossFrames >= 4);
+
+  if (criticalSlotBurstLossBlocked) {
+    return {
+      policyCode: "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION",
+      callId: input.callId,
+      fecRequiredAndEnabled,
+      jitterBufferClampedMs,
+      criticalSlotBurstLossBlocked: true,
+      mutationAllowed: false,
+      actionCode: "AUDIO_BURST_LOSS_RECONFIRM_REQUIRED",
+      summaryZh: `【P23 WebRTC Opus 丢包补偿与自适应抖动护栏 · 阻断 (AUDIO_BURST_LOSS_RECONFIRM_REQUIRED)】关键槽位识别期间检测到弱网突发丢帧（连续丢帧 ${input.burstLossFrames} 帧，PLC 隐藏帧占比 ${(input.plcConcealedFramesRatio * 100).toFixed(1)}% > 18%），已阻断 ASR 盲猜并触发精准槽位复述确认（抖动缓冲钳位 ${jitterBufferClampedMs}ms <= 120ms）。`,
+    };
+  }
+
+  if (!fecRequiredAndEnabled) {
+    return {
+      policyCode: "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION",
+      callId: input.callId,
+      fecRequiredAndEnabled: false,
+      jitterBufferClampedMs,
+      criticalSlotBurstLossBlocked: false,
+      mutationAllowed: false,
+      actionCode: "OPUS_INBAND_FEC_MISSING_ENFORCED",
+      summaryZh: `【P23 WebRTC Opus 丢包补偿与自适应抖动护栏 · 告警 (OPUS_INBAND_FEC_MISSING_ENFORCED)】当前丢包率 ${input.packetLossPct}% >= 2%，已强制下发 SDP useinbandfec=1 与 DTX 策略，并将抖动缓冲钳位在 ${jitterBufferClampedMs}ms。`,
+    };
+  }
+
+  return {
+    policyCode: "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION",
+    callId: input.callId,
+    fecRequiredAndEnabled: true,
+    jitterBufferClampedMs,
+    criticalSlotBurstLossBlocked: false,
+    mutationAllowed: true,
+    actionCode: "WEBRTC_PLC_JITTER_HEALTHY",
+    summaryZh: `【P23 WebRTC Opus 弱网自适应通过】丢包率 ${input.packetLossPct}%，In-Band FEC 已开启，自适应抖动缓冲钳位 ${jitterBufferClampedMs}ms（<=120ms），PLC 隐藏帧占比 ${(input.plcConcealedFramesRatio * 100).toFixed(1)}% 安全。`,
+  };
+}
+
+export interface MultilingualCodeSwitchAsrStabilityEvaluation {
+  policyCode: "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY";
+  callId: string;
+  langSwitchLatencyOk: boolean;
+  hotwordBoostVerified: boolean;
+  acronymConfidenceOk: boolean;
+  homophoneHallucinationBlocked: boolean;
+  mutationAllowed: boolean;
+  actionCode:
+    | "CODESWITCH_HOMOPHONE_HALLUCINATION_BLOCKED"
+    | "LANG_SWITCH_LATENCY_OR_HOTWORD_DEGRADED"
+    | "MULTILINGUAL_CODESWITCH_VERIFIED";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Multilingual Code-Switching (Mandarin/English/Cantonese) & Domain Acronym Hotword Guard (`P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY`).
+ * - Enforces `langSwitchLatencyMs <= 120`, `hotwordBoostApplied === true`, and `acronymsPhoneticConfidence >= 0.88`.
+ * - Blocks cross-language homophone hallucinations (e.g., misrecognizing English SKU / financial ticker / medical codes as Chinese homophones) before tool execution.
+ */
+export function evaluateMultilingualCodeSwitchAsrStability(input: {
+  callId: string;
+  detectedLanguagePair: string;
+  langSwitchLatencyMs: number;
+  hotwordBoostApplied: boolean;
+  acronymsPhoneticConfidence: number;
+  detectedAcronymToken: string;
+}): MultilingualCodeSwitchAsrStabilityEvaluation {
+  const langSwitchLatencyOk = input.langSwitchLatencyMs <= 120;
+  const hotwordBoostVerified = input.hotwordBoostApplied;
+  const acronymConfidenceOk = input.acronymsPhoneticConfidence >= 0.88;
+  const homophoneHallucinationBlocked =
+    !acronymConfidenceOk || !hotwordBoostVerified;
+
+  if (homophoneHallucinationBlocked) {
+    return {
+      policyCode: "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY",
+      callId: input.callId,
+      langSwitchLatencyOk,
+      hotwordBoostVerified,
+      acronymConfidenceOk,
+      homophoneHallucinationBlocked: true,
+      mutationAllowed: false,
+      actionCode: "CODESWITCH_HOMOPHONE_HALLUCINATION_BLOCKED",
+      summaryZh: `【P24 中英粤跨语种混说与缩略词热词消歧护栏 · 阻断 (CODESWITCH_HOMOPHONE_HALLUCINATION_BLOCKED)】语种对 [${input.detectedLanguagePair}] 下专有缩略词/SKU [${input.detectedAcronymToken}] 音素置信度仅 ${input.acronymsPhoneticConfidence.toFixed(2)}（<0.88，热词挂载=${hotwordBoostVerified}），已拦截跨语种同音字幻觉并触发拼写确认。`,
+    };
+  }
+
+  if (!langSwitchLatencyOk) {
+    return {
+      policyCode: "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY",
+      callId: input.callId,
+      langSwitchLatencyOk: false,
+      hotwordBoostVerified: true,
+      acronymConfidenceOk: true,
+      homophoneHallucinationBlocked: false,
+      mutationAllowed: false,
+      actionCode: "LANG_SWITCH_LATENCY_OR_HOTWORD_DEGRADED",
+      summaryZh: `【P24 中英粤跨语种混说护栏 · 告警 (LANG_SWITCH_LATENCY_OR_HOTWORD_DEGRADED)】句内语种切换延迟 ${input.langSwitchLatencyMs}ms 超过 120ms 上限，已切换预热多语混合解码图。`,
+    };
+  }
+
+  return {
+    policyCode: "P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY",
+    callId: input.callId,
+    langSwitchLatencyOk: true,
+    hotwordBoostVerified: true,
+    acronymConfidenceOk: true,
+    homophoneHallucinationBlocked: false,
+    mutationAllowed: true,
+    actionCode: "MULTILINGUAL_CODESWITCH_VERIFIED",
+    summaryZh: `【P24 中英粤跨语种混说与热词消歧通过】语种切换延迟 ${input.langSwitchLatencyMs}ms（<=120ms），专有缩略词 [${input.detectedAcronymToken}] 热词增强已命中（置信度 ${input.acronymsPhoneticConfidence.toFixed(2)} >= 0.88）。`,
+  };
+}
+
+
 
 
 

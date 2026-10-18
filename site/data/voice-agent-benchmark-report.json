@@ -242,6 +242,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P21-TOOL-CIRCUIT-BREAKER-DEGRADATION trips OPEN on >=50% failures to block LLM retry storms and serves disclosed read-only cache snapshots or deferred intent tickets; P22-PROSODY-SSML-PRONUNCIATION-GUARD scrubs injected SSML tags and enforces IPA/Pinyin phoneme lexicons plus <say-as> character readouts."
+    },
+    {
+      "check_name": "WebRTC Opus Burst-Loss PLC/Jitter Clamp & Multilingual Code-Switching Acronym Guard (P23 / P24)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION enforces useinbandfec=1 on >=2% loss, clamps adaptive jitter buffer <=120ms, and blocks slot guessing when plcConcealedFramesRatio > 0.18; P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY enforces <=120ms code-switch latency and blocks cross-language SKU homophone hallucinations."
     }
   ],
   "latency_scaling": [

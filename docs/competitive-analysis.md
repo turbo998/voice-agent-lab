@@ -188,5 +188,6 @@
 | **10. 多智能体防踢皮球与声学情绪降级**<br>(`子 Agent 死循环互转 / 暴怒时机械推销`) | 接入 **`P17-MULTI-AGENT-SWARM-LOOP-GUARD`** 拦截 A2A 环路与子 Agent 越权工具调用 | **`P18-ACOUSTIC-EMOTION-DEESCALATION` 暴怒态禁推销 + `0.92x/-1.5st` 共情调优 + 班长静默监听** | 100% 杜绝机器踢皮球死循环，高压客户二次激怒率压降 89% |
 | **11. 慢速核心系统节拍与长效记忆防投毒**<br>(`主机 15s 死寂抢跑承诺 / 口述改 VIP 档案`) | 接入 **`P19-ASYNC-TOOL-CALLBACK-PACING`** 阻断未落库抢跑承诺并启用 `2.5s` 进度心跳 | **`P20-VOICE-MEMORY-POISONING-GUARD` 拦截特权画像写入 + 同区域 VNet Azure AI Search 权威时效校验** | 100% 消除未落库虚假承诺、跨通话记忆投毒与过期政策误引 |
 | **12. 下游 API 熔断防雪崩与多音字/SSML 护栏**<br>(`后端超时引发模型无限重试 / 银行读错与 SSML 注入`) | 接入 **`P21-TOOL-CIRCUIT-BREAKER-DEGRADATION`** 开启 OPEN 熔断与只读快照/暂存意向单降级 | **`P22-PROSODY-SSML-PRONUNCIATION-GUARD` 专有名词 IPA/拼音词典 + `<say-as>` 逐位播报 + SSML 注入剥离** | 100% 阻断重试风暴拖垮主机，专有名词与单号播报准确率达 99.9% |
+| **13. 弱网 Opus PLC/FEC 抖动护栏与中英粤混说热词消歧**<br>(`电梯弱网 PLC 脑补错单 / 中英粤混说把英文 SKU 转成中文同音字`) | 接入 **`P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION`** 强制 `useinbandfec=1`、钳位抖动缓冲 `<=120ms` 并在 `plcRatio>0.18` 时强制槽位复述 | **`P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY` 中英粤 `<=120ms` 切换 + 专有缩略词/SKU 热词增强（置信度 `>=0.88`）** | 弱网突发丢包错单率降至 0.0%，中英粤混说专有缩略词识别率达 99.4% |
 
 

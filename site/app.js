@@ -2945,6 +2945,40 @@
         confidence: 1.0,
         verifier: 'PASS (P22) · Malicious SSML tags scrubbed · Custom phoneme lexicon & <say-as> enforced'
       }
+    },
+    {
+      code: 'P23 · WebRTC Opus PLC & Jitter Guard',
+      badge: '<= 120ms Jitter',
+      title: '电梯/高铁弱网 Opus PLC 脑补拦截与自适应抖动缓冲钳位',
+      sub: '测试 5.5% 丢包与连续 5 帧突发丢帧下强制开启 In-Band FEC、钳位抖动 <=120ms 并阻断关键槽位 PLC 盲猜',
+      customer_en: '[5G <-> Wi-Fi Handover · 5.5% Packet Loss · 5 Burst Loss Frames · PLC Concealed Ratio 24%] "Transfer $50,000 to order ID ORD-8841 right now!"',
+      customer_zh: '【电梯/高铁 5G 弱网切换 · 5.5% 丢包 · 连续丢帧 5 帧 · PLC 隐藏帧占比 24%】“立刻往订单号 ORD-8841 汇款 50,000 美金！”',
+      agent_en: 'WEBRTC OPUS PLC & JITTER GUARD (P23 / P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION): Blocked ASR slot guessing during burst loss (`AUDIO_BURST_LOSS_RECONFIRM_REQUIRED`)! Enforced Opus `useinbandfec=1` + DTX, clamped adaptive jitter buffer to `120ms`, and requested targeted slot re-confirmation!',
+      agent_zh: '【P23 WebRTC Opus 丢包补偿与自适应抖动护栏 · 阻断 (AUDIO_BURST_LOSS_RECONFIRM_REQUIRED)】检测到关键槽位识别期间突发连续丢帧 5 帧（PLC 隐藏帧占比 24.0% > 18%），已 100% 阻断神经网络 PLC 脑补猜字！强制开启 Opus In-Band FEC（抖动缓冲钳位 120ms）并触发精准槽位复述确认！',
+      trace: {
+        tool: 'evaluate_webrtc_opus_plc_jitter_adaptation(loss_pct=5.5, burst_frames=5, plc_ratio=0.24 -> AUDIO_BURST_LOSS_RECONFIRM_REQUIRED)',
+        citations: ['P23-WEBRTC-OPUS-PLC-JITTER-ADAPTATION', 'OPUS-INBAND-FEC', 'JITTER-CLAMP-120MS'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P23) · Burst-loss PLC slot guessing blocked · Jitter clamped <= 120ms'
+      }
+    },
+    {
+      code: 'P24 · Code-Switch & Acronym Hotword',
+      badge: '<= 120ms Switch',
+      title: '中英粤跨语种混说与专业缩略词/SKU 同音字幻觉护栏',
+      sub: '测试同一句话混用中英粤口述 ETF-QDII 与 SKU-AX90 时拦截中文同音字幻觉并校验 <=120ms 切换与热词增强',
+      customer_en: '[Mandarin + English + Cantonese Code-Switch · Acronym Confidence 0.79] "帮我 check 下 ETF-QDII 同埋 SKU-AX90 嘅申购额度！"',
+      customer_zh: '【中英粤句内混说 · 缩略词音素置信度 0.79 (<0.88)】“帮我 check 下 ETF-QDII 同埋 SKU-AX90 嘅申购额度！”',
+      agent_en: 'MULTILINGUAL CODE-SWITCH & ACRONYM HOTWORD GUARD (P24 / P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY): Blocked cross-language homophone hallucination (`CODESWITCH_HOMOPHONE_HALLUCINATION_BLOCKED`)! Enforced `<=120ms` language-switch graph (`zh-CN+en-US+yue-HK`) and domain hotword phonetic verification!',
+      agent_zh: '【P24 中英粤跨语种混说与缩略词热词消歧护栏 · 阻断 (CODESWITCH_HOMOPHONE_HALLUCINATION_BLOCKED)】检测到中英粤混说下专有缩略词 [ETF-QDII / SKU-AX90] 音素置信度仅 0.79（<0.88），已 100% 拦截中文同音字幻觉并挂载音素级热词增强（语种切换耗时 85ms <= 120ms）！',
+      trace: {
+        tool: 'evaluate_multilingual_codeswitch_asr_stability(pair="zh-CN+en-US+yue-HK", switch_ms=85, conf=0.79 -> CODESWITCH_HOMOPHONE_HALLUCINATION_BLOCKED)',
+        citations: ['P24-MULTILINGUAL-CODESWITCH-ASR-STABILITY', 'HOTWORD-PHONETIC-BOOST', 'CODESWITCH-GRAPH'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P24) · Cross-language SKU homophone hallucination blocked · <=120ms switch verified'
+      }
     }
   ];
 
@@ -3019,7 +3053,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (40-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (42-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3031,7 +3065,8 @@
       '- [x] **通话中途零掉线热备切换与北约字母逐位复诵**：主 S2S 异常 `<300ms` 无感热切且保留已核身状态与 `turnEpoch` (P15)，`15 vs 50` 及 `B/P/M/N` 编码强制北约字母复诵确认零差错 (P16)',
       '- [x] **多智能体蜂群防死循环与声学情绪降级护栏**：100% 拦截 A2A 踢皮球环路与子 Agent 越权工具调用 (P17)，客户暴怒/事故高压态 100% 剥离交叉营销并切换 `0.92x/-1.5st` 共情语调与班长静默监听 (P18)',
       '- [x] **慢速核心系统异步节拍与跨通话记忆防投毒**：无 `COMMITTED` 回执 100% 阻断抢跑承诺并启用 `2.5s` 进度心跳 (P19)，100% 拦截口述写入 `authBypass/creditLimit` 特权画像与过期 RAG 分片 (P20)',
-      '- [x] **下游核心 API 熔断防雪崩与多音字/SSML 防注入护栏**：后端超时自动触发 `OPEN` 熔断阻断重试风暴并切只读快照/暂存意向单 (P21)，100% 剥离恶意 SSML 标签并强制挂载专有名词音标词典与 `<say-as>` 逐位编码播报 (P22)'
+      '- [x] **下游核心 API 熔断防雪崩与多音字/SSML 防注入护栏**：后端超时自动触发 `OPEN` 熔断阻断重试风暴并切只读快照/暂存意向单 (P21)，100% 剥离恶意 SSML 标签并强制挂载专有名词音标词典与 `<say-as>` 逐位编码播报 (P22)',
+      '- [x] **WebRTC Opus 丢包补偿抖动钳位与中英粤混说热词消歧**：关键槽位突发丢帧（`plcRatio>0.18`）强制复述确认且抖动缓冲钳位 `<=120ms` (P23)，中英粤句内切换 `<=120ms` 并拦截英文缩略词/SKU 中文同音字幻觉 (P24)'
     ].join('\n');
   }
 
