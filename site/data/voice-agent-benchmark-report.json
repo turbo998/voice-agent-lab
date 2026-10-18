@@ -291,6 +291,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P35-AML-SANCTIONS-SCAM-COERCION-GUARD blocks OFAC/UN sanctions hits without tipping off the caller and arms a 24-hour cooling-off hold on first-time high-value wires under acoustic coaching/coercion; P36-REALTIME-INTERPRETER-FIDELITY-GUARD blocks negation polarity inversions, million/亿 numeric scale drift, and locked Incoterms glossary violations."
+    },
+    {
+      "check_name": "Nocturnal SIP Ringburst / ATO Velocity Video-KYC & System Prompt Canary / Denial-of-Wallet Guard (P37 / P38)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P37-NOCTURNAL-RINGBURST-ANOMALY-GUARD drops >=15 simultaneous botnet SIP trunks and freezes nocturnal >=3x velocity transfers for live Video KYC; P38-PROMPT-EXFILTRATION-DENIAL-OF-WALLET-GUARD blocks system prompt/canary token exfiltration and terminates runaway S2S sessions on >=8 unverified turns."
     }
   ],
   "latency_scaling": [

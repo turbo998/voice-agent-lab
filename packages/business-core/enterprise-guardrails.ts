@@ -3505,6 +3505,186 @@ export function evaluateRealtimeInterpreterFidelityGuard(input: {
   };
 }
 
+export interface StilleNightFraudAnomalyInput {
+  sessionId: string;
+  localHour24: number;
+  transactionAmountUsd: number;
+  historical90dMaxUsd: number;
+  isNewDeviceOrGeoMismatch: boolean;
+  simultaneousRingburstCallsCount: number;
+  videoKycCompleted: boolean;
+}
+
+export interface StilleNightFraudAnomalyDecision {
+  policyCode: "P37-NOCTURNAL-RINGBURST-ANOMALY-GUARD";
+  sessionId: string;
+  nocturnalHighRiskWindow: boolean;
+  ringburstBotnetAttackDetected: boolean;
+  amountVelocityRatio: number;
+  allowed: boolean;
+  reason:
+    | "NOCTURNAL_BOTNET_RINGBURST_BLOCKED"
+    | "ABNORMAL_NIGHT_VELOCITY_VIDEO_KYC_REQUIRED"
+    | "NOCTURNAL_RISK_CHECK_PASSED";
+  action:
+    | "DROP_BOTNET_SIP_TRUNK_AND_BLACKLIST_ASN"
+    | "FREEZE_NIGHT_TX_REQUIRE_LIVE_VIDEO_KYC"
+    | "ALLOW_STANDARD_VOICE_FLOW";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Nocturnal High-Value Velocity & SIP Ringburst Botnet Guard (P37-NOCTURNAL-RINGBURST-ANOMALY-GUARD).
+ * Defends against:
+ * 1) Automated SIP credential-stuffing / ringburst botnet attacks (`simultaneousRingburstCallsCount >= 15`)
+ *    targeting IVR/Voice Agents to enumerate accounts or exhaust S2S concurrency pools;
+ * 2) Nocturnal account takeover (ATO) cash-outs (`localHour24` between 00:00 and 05:59) where an attacker
+ *    attempts a transfer >= 3x the caller's 90-day historical maximum or from a new device/geography
+ *    without live Video KYC verification.
+ */
+export function evaluateNocturnalRingburstAnomalyGuard(
+  input: StilleNightFraudAnomalyInput,
+): StilleNightFraudAnomalyDecision {
+  const nocturnalHighRiskWindow =
+    input.localHour24 >= 0 && input.localHour24 <= 5;
+  const ringburstBotnetAttackDetected =
+    input.simultaneousRingburstCallsCount >= 15;
+  const safeBaseline = Math.max(input.historical90dMaxUsd, 100);
+  const amountVelocityRatio = Number(
+    (input.transactionAmountUsd / safeBaseline).toFixed(2),
+  );
+
+  if (ringburstBotnetAttackDetected) {
+    return {
+      policyCode: "P37-NOCTURNAL-RINGBURST-ANOMALY-GUARD",
+      sessionId: input.sessionId,
+      nocturnalHighRiskWindow,
+      ringburstBotnetAttackDetected: true,
+      amountVelocityRatio,
+      allowed: false,
+      reason: "NOCTURNAL_BOTNET_RINGBURST_BLOCKED",
+      action: "DROP_BOTNET_SIP_TRUNK_AND_BLACKLIST_ASN",
+      summaryZh: `【P37 夜间 SIP 群呼风暴与盗号提现护栏 · 僵尸网络熔断 (NOCTURNAL_BOTNET_RINGBURST_BLOCKED)】会话 ${input.sessionId} 检测到瞬时并发群呼冲击（${input.simultaneousRingburstCallsCount} 路 >= 15 路阈值），已在 SBC 边缘切断恶意 SIP 源并拉黑 ASN，保护 S2S 算力池。`,
+    };
+  }
+
+  if (
+    nocturnalHighRiskWindow &&
+    (amountVelocityRatio >= 3.0 || input.isNewDeviceOrGeoMismatch) &&
+    !input.videoKycCompleted
+  ) {
+    return {
+      policyCode: "P37-NOCTURNAL-RINGBURST-ANOMALY-GUARD",
+      sessionId: input.sessionId,
+      nocturnalHighRiskWindow: true,
+      ringburstBotnetAttackDetected: false,
+      amountVelocityRatio,
+      allowed: false,
+      reason: "ABNORMAL_NIGHT_VELOCITY_VIDEO_KYC_REQUIRED",
+      action: "FREEZE_NIGHT_TX_REQUIRE_LIVE_VIDEO_KYC",
+      summaryZh: `【P37 夜间异常大额动账护栏 · 强制视频面签 (ABNORMAL_NIGHT_VELOCITY_VIDEO_KYC_REQUIRED)】会话 ${input.sessionId} 在凌晨高危时段（${input.localHour24}:00）发起 $${input.transactionAmountUsd} 交易（达 90 天极值 ${amountVelocityRatio} 倍，异地/新设备=${input.isNewDeviceOrGeoMismatch}）且未完成真人视频核身，已临时冻结动账并转视频远程柜台。`,
+    };
+  }
+
+  return {
+    policyCode: "P37-NOCTURNAL-RINGBURST-ANOMALY-GUARD",
+    sessionId: input.sessionId,
+    nocturnalHighRiskWindow,
+    ringburstBotnetAttackDetected: false,
+    amountVelocityRatio,
+    allowed: true,
+    reason: "NOCTURNAL_RISK_CHECK_PASSED",
+    action: "ALLOW_STANDARD_VOICE_FLOW",
+    summaryZh: `【P37 夜间与群呼异常护栏校验通过】会话 ${input.sessionId} 呼叫并发与动账速率正常（倍比=${amountVelocityRatio}x），允许继续标准语音办理。`,
+  };
+}
+
+export interface SovereignPromptLeakAndTokenQuotaInput {
+  sessionId: string;
+  utteranceContainsSystemPromptExtraction: boolean;
+  outputContainsInternalCanaryToken: boolean;
+  sessionAudioMinutesElapsed: number;
+  maxAllowedSessionMinutes: number;
+  unverifiedLoopTurnsCount: number;
+}
+
+export interface SovereignPromptLeakAndTokenQuotaDecision {
+  policyCode: "P38-PROMPT-EXFILTRATION-DENIAL-OF-WALLET-GUARD";
+  sessionId: string;
+  promptExfiltrationBlocked: boolean;
+  denialOfWalletTripped: boolean;
+  allowed: boolean;
+  reason:
+    | "SYSTEM_PROMPT_CANARY_EXFILTRATION_BLOCKED"
+    | "DENIAL_OF_WALLET_SESSION_QUOTA_EXCEEDED"
+    | "PROMPT_AND_WALLET_GUARD_PASSED";
+  actionCode:
+    | "SCRUB_OUTPUT_AND_ROTATE_CANARY_SEED"
+    | "TERMINATE_RUNAWAY_S2S_STREAM"
+    | "CONTINUE_PROTECTED_VOICE_TURN";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic System Prompt Canary Exfiltration & S2S Denial-of-Wallet Quota Guard
+ * (P38-PROMPT-EXFILTRATION-DENIAL-OF-WALLET-GUARD).
+ * Prevents:
+ * 1) Voice jailbreakers from tricking the agent into reading aloud its internal system prompt,
+ *    tool schemas, or honey-token canary strings (`utteranceContainsSystemPromptExtraction` or
+ *    `outputContainsInternalCanaryToken`);
+ * 2) Malicious "Denial-of-Wallet" (DoW) resource exhaustion where attackers keep an expensive
+ *    Speech-to-Speech (S2S) stream open in endless unverified chatter (`sessionAudioMinutesElapsed > maxAllowedSessionMinutes`
+ *    or `unverifiedLoopTurnsCount >= 8`).
+ */
+export function evaluatePromptExfiltrationDenialOfWalletGuard(
+  input: SovereignPromptLeakAndTokenQuotaInput,
+): SovereignPromptLeakAndTokenQuotaDecision {
+  const promptExfiltrationBlocked =
+    input.utteranceContainsSystemPromptExtraction ||
+    input.outputContainsInternalCanaryToken;
+  const denialOfWalletTripped =
+    input.sessionAudioMinutesElapsed > input.maxAllowedSessionMinutes ||
+    input.unverifiedLoopTurnsCount >= 8;
+
+  if (promptExfiltrationBlocked) {
+    return {
+      policyCode: "P38-PROMPT-EXFILTRATION-DENIAL-OF-WALLET-GUARD",
+      sessionId: input.sessionId,
+      promptExfiltrationBlocked: true,
+      denialOfWalletTripped,
+      allowed: false,
+      reason: "SYSTEM_PROMPT_CANARY_EXFILTRATION_BLOCKED",
+      actionCode: "SCRUB_OUTPUT_AND_ROTATE_CANARY_SEED",
+      summaryZh: `【P38 系统提示词防套取与金丝雀护栏 · 硬阻断 (SYSTEM_PROMPT_CANARY_EXFILTRATION_BLOCKED)】会话 ${input.sessionId} 检测到语音套取系统提示词/工具 Schema 或下行响应命中金丝雀蜜罐标记，已立即剥离响应并切换安全标准拒答。`,
+    };
+  }
+
+  if (denialOfWalletTripped) {
+    return {
+      policyCode: "P38-PROMPT-EXFILTRATION-DENIAL-OF-WALLET-GUARD",
+      sessionId: input.sessionId,
+      promptExfiltrationBlocked: false,
+      denialOfWalletTripped: true,
+      allowed: false,
+      reason: "DENIAL_OF_WALLET_SESSION_QUOTA_EXCEEDED",
+      actionCode: "TERMINATE_RUNAWAY_S2S_STREAM",
+      summaryZh: `【P38 语音算力钱包防耗尽护栏 · 熔断挂机 (DENIAL_OF_WALLET_SESSION_QUOTA_EXCEEDED)】会话 ${input.sessionId} 通话时长（${input.sessionAudioMinutesElapsed}m > ${input.maxAllowedSessionMinutes}m）或未核身空转轮次（${input.unverifiedLoopTurnsCount} 轮 >= 8）越界，已终止 S2S 音频流防止恶意刷单耗尽配额。`,
+    };
+  }
+
+  return {
+    policyCode: "P38-PROMPT-EXFILTRATION-DENIAL-OF-WALLET-GUARD",
+    sessionId: input.sessionId,
+    promptExfiltrationBlocked: false,
+    denialOfWalletTripped: false,
+    allowed: true,
+    reason: "PROMPT_AND_WALLET_GUARD_PASSED",
+    actionCode: "CONTINUE_PROTECTED_VOICE_TURN",
+    summaryZh: `【P38 提示词金丝雀与算力配额校验通过】会话 ${input.sessionId} 无提示词泄露且算力消耗处于受控配额内（${input.sessionAudioMinutesElapsed}/${input.maxAllowedSessionMinutes}m）。`,
+  };
+}
+
+
 
 
 
