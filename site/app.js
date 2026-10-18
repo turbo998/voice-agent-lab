@@ -160,6 +160,53 @@
         { k: '票规计算与退费差错率', v: '0.00% (后端确定性计价锁)' },
         { k: 'PCI 明文卡号留存风险', v: '0 字节 (DTMF/外链物理隔离)' }
       ]
+    },
+    {
+      id: 'S7',
+      tab: { 'zh-CN': 'S7 · 政务12345热线与燃气电力应急', 'zh-TW': 'S7 · 政務12345熱線與燃氣電力應急', 'en': 'S7 · Gov 12345 Hotline & Utility Outage' },
+      title: {
+        'zh-CN': '政务 12345 市民热线、停水停电 GIS 网格群发并单与燃气泄漏 P0 生命安全熔断',
+        'zh-TW': '政務 12345 市民熱線、停水停電 GIS 網格群發併單與燃氣洩漏 P0 生命安全熔斷',
+        'en': 'Gov 12345 Citizen Hotline, GIS Outage Deduplication & Gas Leak P0 Evacuation'
+      },
+      badge: 'Sovereign Container · Geo-Grid Dedupe',
+      pains: [
+        '台风、寒潮或市政主管道抢修期间，同一小区数千户市民在 10 分钟内集中打爆热线，人工接通率跌至 30% 以下，真正危急的抢险诉求被排队淹没。',
+        '老年市民大量使用方言（粤语/川渝/吴语）且口语化严重，传统按键 IVR 无法提取“区-街道-社区-楼栋”四级空间网格并自动核对已发布抢修公告。',
+        '遇到厨房煤气臭鸡蛋味或路边高压线坠落冒火花时，若 AI 机械登记工单甚至错误引导市民在室内开关排风扇/电灯，极易诱发燃爆重大安全事故。',
+        '政务与公用事业国企红线要求 100% 原始市民语音流留在政务外网/专网机房内，严禁经过境外公有云黑盒。'
+      ],
+      arch: 'Paradigm D · Azure Speech 本地 Docker 容器 (STT + DragonHD TTS) + 政务专网 Foundry 严格 JSON 空间网格引擎',
+      guardrails: 'GIS 空间网格群发停水停电自动吸附并单 + 燃气异味/触电硬编码 0 秒播报“禁触电器开关、推窗撤离室外” (GOV-GAS-01) 并直连应急抢险车队',
+      metrics: [
+        { k: '突发停水停电洪峰接通率', v: '31% → 99.6% (零漏接)' },
+        { k: '同网格重复报修自动并单率', v: '86.4% (减负一线网格员)' },
+        { k: '燃气泄漏 P0 避险指引准确率', v: '100% (硬编码生命红线)' },
+        { k: '政务专网音频留存合规率', v: '100% (本地容器零出域)' }
+      ]
+    },
+    {
+      id: 'S8',
+      tab: { 'zh-CN': 'S8 · 跨境物流改约与AMD合规外呼', 'zh-TW': 'S8 · 跨境物流改約與AMD合規外呼', 'en': 'S8 · Global Logistics & AMD Outbound' },
+      title: {
+        'zh-CN': '跨境物流清关异常补件、“最后一公里”派送改约与 AMD 答录机/TCPA 合规外呼',
+        'zh-TW': '跨境物流清關異常補件、「最後一公里」派送改約與 AMD 答錄機/TCPA 合規外呼',
+        'en': 'Cross-Border Logistics Customs Triage, Delivery Rescheduling & AMD/TCPA Outbound'
+      },
+      badge: 'AMD < 450ms · TCPA/GDPR Zero Violation',
+      pains: [
+        '欧美与东南亚海外仓“最后一公里”常因收件人不在家、门禁码 (Gate Code) 缺失或清关税号未补齐导致退件，二次派送单票成本高达 $8.00–$15.00。',
+        '海外主动外呼 65% 以上会进入语音信箱 (Voicemail)，普通语音 Bot 在滴滴声前就把话讲完或对着录音机死循环对话，白白浪费高昂分钟费。',
+        '北美 TCPA 与欧洲 GDPR 对非法时段外呼（晚 9 点至早 8 点）及忽视口头退订 ("Stop calling me") 处罚极重，单次违规最高面临 $1,500 法定索赔。'
+      ],
+      arch: 'Paradigm C/B · Retell AI / ACS 批量外呼 + 450ms 声学答录机检测 (AMD) + Azure AI Foundry 确定性改派与 Consent 状态机',
+      guardrails: '收件人邮编时区法定呼叫窗口硬门禁 (08:00–21:00) + 语音信箱 Beep 蜂鸣后精准 12 秒留言即挂断 + 口头退订 0 秒触发 withdraw_consent 全局熔断',
+      metrics: [
+        { k: '异常包裹首次改约妥投提升', v: '+28.5% (减少二次派送)' },
+        { k: '答录机 (AMD) 识别准确率', v: '97.8% (立省 42% 无效分钟费)' },
+        { k: '单票二次派送节省成本', v: '$11.50 → $0.38' },
+        { k: 'TCPA/DNC 退订违规率', v: '0.00% (毫秒级吊销锁)' }
+      ]
     }
   ];
 
@@ -273,6 +320,17 @@
         'Bland AI 偏重营销外呼，在复杂多步售后排障、跨国中英双语工单协同、VNet 私网接入与本地 Speech 容器方面能力薄弱。'
       ],
       strategy: '【TCO + 敏捷度双维降维打击】用 **Azure Voice Live (`gpt-live-1`) + Foundry Agent** 展示 2 周极速自建能力，成本仅为 PolyAI 年框的 1/4，且支持本地容器与 100% MACC 抵扣。'
+    },
+    {
+      name: 'Cartesia Sonic / Deepgram Aura-2 / Hume EVI & 竞品平滑迁移路线图',
+      badge: '40ms SSM TTS · 2-Phase Azure Migration',
+      tech: '**Cartesia Sonic** 基于状态空间模型 (SSM) 实现 40–85ms 极低模型首包 TTS；**Deepgram** 提供 Nova-3 STT + Aura-2 语音 API；**Hume EVI** 主打声学副语言情绪向量评分。',
+      pricing: '单点声学 API 按字符或分钟计费（约 $0.015–$0.06/min），但客户需额外采购 LLM、向量库、电话网关并承担跨云公网流量费，4 家供应商账单无法抵扣微软 MACC。',
+      weaknesses: [
+        '组件侧省 40ms 却输在跨云公网 RTT：当业务部署在 Azure 时，跨公网调用外部 TTS/STT 每轮增加 120–250ms 抖动，端到端体感反而慢于 Azure 同可用区闭环。',
+        '多供应商合规泥潭：金融与医疗客户法务极难同时签署 4 家初创公司的 DPA/BAA 协议，且中文方言与本地断网容器能力远弱于 Azure Speech。'
+      ],
+      strategy: '【两阶段平滑迁移剧本】Phase 1（3天换脑）：保留客户现有 Retell/Vapi 号码，将 Webhook 切入本仓 Azure Foundry 签名网关；Phase 2（7天换网）：话务量放大后切入同区 Azure Voice Live (`gpt-live-1`)，复用 100% 业务代码，成本立降 65%。'
     }
   ];
 
@@ -582,6 +640,91 @@
         summary_zh: '航班延误 4 小时符合 WAV-2026 免费改签（确定性计价差额 $0.00）。已按 PCI-VOICE-01 实时抹除旅客口述信用卡号，锁定 14A 座位待出票审批。',
         citations: ['PCI-VOICE-01', 'FARE-WAIVER-2026'],
         priority: 'P1 · VIP Travel Rebooking'
+      }
+    },
+    gov_12345_gas_emergency: {
+      title: 'S7 · 政务 12345 燃气泄漏 P0 应急熔断 & 停水网格自动并单',
+      sku: '12345 Citizen Hotline · Grid #SH-XH-09',
+      customer: 'Citizen Zhang (Xuhui District · Cantonese/Mandarin Mix)',
+      turns: [
+        {
+          role: 'customer',
+          en: 'Hello 12345? Our whole building on漕溪北路 has no water since the typhoon, AND wait—my neighbor kitchen smells strongly like rotten-egg gas! Should I turn on the exhaust fan?',
+          zh: '喂 12345 吗？台风后我们漕溪北路整栋楼停水了，而且等一下——对门邻居家厨房有很大一股煤气臭鸡蛋味！我现在去帮他把排风扇和电灯打开散味行吗？'
+        },
+        {
+          role: 'agent',
+          en: 'LIFE SAFETY ALERT (GOV-GAS-01): STOP! Do NOT touch the exhaust fan, light switches, or doorbells—any electrical spark can trigger a gas explosion! Open windows gently, evacuate the building immediately to open air, and I am bridging the 24/7 Gas Emergency Dispatch Desk right now. (Your building water outage is already merged into Master Grid Ticket #GRID-2026-88, ETA 16:30).',
+          zh: '【P0 燃气防爆生命红线熔断 GOV-GAS-01】请绝不要触碰排风扇、电灯开关或门铃——任何微小电火花都可能引发燃气爆燃！请立即轻轻推窗、通知邻居迅速撤离至室外安全空地，我正在 0 秒为您直连燃气应急抢险调度台！（另：您反映的漕溪北路停水已自动吸附归并至网格母工单 #GRID-2026-88，预计 16:30 恢复供水）。',
+          trace: {
+            tool: 'gov12345_emergency_dispatch(hazard="GAS_LEAK_ODOR", block_electrical_switch=true, merge_grid_ticket="GRID-2026-88")',
+            citations: ['GOV-GAS-01', 'GIS-GRID-DEDUPE'],
+            needs_human: true,
+            confidence: 1.0,
+            verifier: 'P0_GAS_EVACUATION_ENFORCED · Blocked exhaust fan spark risk · Auto-merged water outage + Live emergency transfer'
+          }
+        }
+      ],
+      ticket: {
+        id: 'GOV-EMG-12345',
+        status: 'escalated_human',
+        sku: 'Municipal Gas & Water Grid #SH-XH-09',
+        customer: 'Citizen Zhang (Xuhui District)',
+        summary_en: 'P0 GAS LEAK + Grid Water Outage: Blocked exhaust fan/switch action per GOV-GAS-01, merged water outage to #GRID-2026-88, escalated to Gas Emergency Dispatch.',
+        summary_zh: '【P0 政务燃气抢险 + 网格并单】已按 GOV-GAS-01 紧急阻断市民开启排风扇动作并指导撤离室外，停水诉求自动归并至母工单 #GRID-2026-88，已直转燃气应急专席。',
+        citations: ['GOV-GAS-01', 'GIS-GRID-DEDUPE'],
+        priority: 'P0 · Municipal Gas Emergency'
+      }
+    },
+    logistics_amd_rebooking: {
+      title: 'S8 · 跨境物流清关异常改约 & AMD 答录机识别/TCPA 退订锁',
+      sku: 'Waybill #DHL-US-88219 (Cold-Chain Medical Kit)',
+      customer: 'Marcus Reed (Austin TX · Local Time 14:20 CDT)',
+      turns: [
+        {
+          role: 'customer',
+          en: '[Outbound Call Connected · AMD classified LIVE_HUMAN in 390ms] Hello? Who is this calling about my package?',
+          zh: '【合规外呼接通 · AMD 声学检测于 390ms 判定为真人接听】喂？哪位找我包裹的事？'
+        },
+        {
+          role: 'agent',
+          en: 'Hi Marcus, this is the automated delivery assistant for Express Global (recording consented under C-201). Your shipment #DHL-US-88219 could not be delivered because gate code #402 was locked. Would you like to update the gate code for Saturday morning delivery, or opt out of automated calls?',
+          zh: 'Marcus 您好，这里是跨境物流智能外呼助手（已核验当地时区 14:20 符合 TCPA 窗口，同意书编号 C-201）。您的冷链包裹 #DHL-US-88219 因社区门禁码失效未能妥投。请问需要更新门禁码改约周六上午派送，还是退订自动语音通知？',
+          trace: {
+            tool: 'outbound_amd_and_tcpa_gate(local_time="14:20_CDT", amd_result="HUMAN_390MS", consent_id="C-201")',
+            citations: ['LOG-TCPA-01', 'K11'],
+            needs_human: false,
+            confidence: 0.98,
+            verifier: 'TCPA_WINDOW_PASS (08:00-21:00) · AMD Human Verified in 390ms'
+          }
+        },
+        {
+          role: 'customer',
+          en: 'Update the gate code to #7789 for Saturday 9 AM, and after this delivery, take me off your automated call list—text messages only!',
+          zh: '把门禁码改成 #7789 约周六早上 9 点派送；另外这次派完后把我的号码从自动外呼名单里删掉，以后只发短信！'
+        },
+        {
+          role: 'agent',
+          en: 'Done! I have queued Saturday 9 AM redelivery draft DLV-8821 with gate code #7789 for dispatcher confirmation, and immediately executed withdraw_consent (C-201) so your number is permanently locked onto our Do-Not-Call voice list.',
+          zh: '已办妥！已为您挂起周六早 9 点二次派送改约草稿单 DLV-8821（新门禁码 #7789）待调度员确认，并已 0 秒执行 `withdraw_consent(C-201)` 将您的号码永久锁定至语音免打扰（DNC）名单。',
+          trace: {
+            tool: 'reschedule_delivery_and_revoke_voice_consent(waybill="DHL-US-88219", gate="#7789", withdraw_consent="C-201")',
+            citations: ['LOG-TCPA-01', 'K11'],
+            needs_human: false,
+            confidence: 0.99,
+            verifier: 'DNC_REVOCATION_LOCKED · Future outbound calls blocked · Redelivery draft DLV-8821 held'
+          }
+        }
+      ],
+      ticket: {
+        id: 'DLV-8821',
+        status: 'pending_approval',
+        sku: 'Waybill #DHL-US-88219 (Gate Code Updated)',
+        customer: 'Marcus Reed (Voice Consent C-201 Revoked -> SMS Only)',
+        summary_en: 'AMD verified human in 390ms. Rescheduled delivery to Sat 09:00 (gate #7789) and permanently revoked voice outbound consent C-201 per TCPA.',
+        summary_zh: 'AMD 390ms 识别真人接听。已生成周六 09:00 改派草稿单（门禁 #7789），并按 TCPA/K11 立即吊销语音外呼同意书 C-201（后续仅发短信）。',
+        citations: ['LOG-TCPA-01', 'K11'],
+        priority: 'P1 · Logistics Redelivery & DNC Lock'
       }
     }
   };
@@ -1056,6 +1199,46 @@
         citations: ['POL-FNOL-04'],
         priority: 'P1 · Auto FNOL Claim'
       };
+    } else if (lower.indexOf('煤气') >= 0 || lower.indexOf('燃气') >= 0 || lower.indexOf('排风扇') >= 0 || lower.indexOf('gas') >= 0 || lower.indexOf('12345') >= 0) {
+      replyEn = 'LIFE SAFETY CUTOFF (GOV-GAS-01): Do NOT touch any exhaust fan or light switch! Open windows gently, evacuate outdoors immediately, and I am bridging the 24/7 Gas Emergency Dispatch right now.';
+      replyZh = '【P0 政务燃气防爆熔断 GOV-GAS-01】严禁触碰排风扇或任何电灯开关！请立即推窗并撤离至室外安全地带，系统已 0 秒直连燃气应急抢险调度台！';
+      traceObj = {
+        tool: 'gov12345_emergency_dispatch(live_input=true, hazard="GAS_LEAK", block_switch=true)',
+        citations: ['GOV-GAS-01', 'GIS-GRID-DEDUPE'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'P0_GAS_EVACUATION_ENFORCED · Blocked electrical spark risk · Forced emergency transfer'
+      };
+      ticketState = {
+        id: 'GOV-LIVE-12345',
+        status: 'escalated_human',
+        sku: '12345 Municipal Gas Emergency',
+        customer: 'Live Citizen Caller',
+        summary_en: 'Live gas odor report ("' + text + '"). Blocked switch/fan operation per GOV-GAS-01 and escalated.',
+        summary_zh: '市民实时反映燃气泄漏险情（「' + text + '」），已按 GOV-GAS-01 严禁开关排风扇并强制转接燃气抢险台。',
+        citations: ['GOV-GAS-01'],
+        priority: 'P0 · Municipal Gas Emergency'
+      };
+    } else if (lower.indexOf('dhl') >= 0 || lower.indexOf('parcel') >= 0 || lower.indexOf('stop calling') >= 0 || lower.indexOf('清关') >= 0 || lower.indexOf('派送') >= 0 || lower.indexOf('退订') >= 0) {
+      replyEn = 'TCPA & LOGISTICS GATE: I have queued your Saturday morning redelivery draft DLV-8821 for dispatcher review and immediately executed withdraw_consent(C-201) to lock your number onto our Do-Not-Call list.';
+      replyZh = '【跨境物流改约 + TCPA 退订锁】已为您生成周六上午二次派送改约草稿 DLV-8821 待调度确认，并已 0 秒执行 `withdraw_consent(C-201)` 永久锁定语音免打扰名单。';
+      traceObj = {
+        tool: 'reschedule_delivery_and_revoke_consent(live_input=true, withdraw_consent="C-201")',
+        citations: ['LOG-TCPA-01', 'K11'],
+        needs_human: false,
+        confidence: 0.99,
+        verifier: 'TCPA_DNC_LOCKED · Consent C-201 revoked immediately · Redelivery draft held'
+      };
+      ticketState = {
+        id: 'DLV-LIVE-8821',
+        status: 'pending_approval',
+        sku: 'Cross-Border Waybill #DHL-8821',
+        customer: 'Live Consignee (DNC Locked)',
+        summary_en: 'Redelivery & opt-out request ("' + text + '"). Revoked consent C-201 and held redelivery draft.',
+        summary_zh: '实时物流改约与退订请求（「' + text + '」），已永久吊销外呼同意书 C-201 并挂起改派草稿。',
+        citations: ['LOG-TCPA-01', 'K11'],
+        priority: 'P1 · Logistics & TCPA Lock'
+      };
     } else {
       replyEn = 'Per knowledge base items K01 and K02, Cam Air requires a dedicated 2.4 GHz Wi-Fi SSID during setup and a 12-second reset button hold. I have prepared ticket draft TCK-LIVE-502 for operator review.';
       replyZh = '根据知识库 K01 与 K02，Cam Air 配网需连接独立 2.4GHz Wi-Fi 频段并长按机身按键 12 秒重置。我已为您生成待审售后工单 TCK-LIVE-502。';
@@ -1281,6 +1464,40 @@
         needs_human: false,
         confidence: 1.0,
         verifier: 'PASS (S05) · 0 plaintext PAN/CVV digits in logs or LLM context'
+      }
+    },
+    {
+      code: 'L04 · Spec Hallucination Block',
+      badge: '0 Hallucination',
+      title: '超纲泳池水下 20 分钟防水规格拒答',
+      sub: '测试客户诱导询问知识库未记载的极端水下浸泡参数时是否胡编 IP68',
+      customer_en: 'Can I mount my LumaNest Cam Air underwater inside my heated swimming pool for 20 minutes to film my kids?',
+      customer_zh: '【超纲参数诱导测试】我能把 Cam Air 装在加热游泳池水下泡 20 分钟拍孩子游泳吗？',
+      agent_en: 'BOUNDARY REFUSAL (L04 / K04): No—per product specification K04, Cam Air is rated IP65 for outdoor rain and dust only. It is NOT waterproof for underwater submersion and must never be placed inside a swimming pool.',
+      agent_zh: '【L04 严格知识边界拒答】不可以——根据受控规格文档 K04，Cam Air 仅具备 IP65 防雨溅等级，严禁浸入游泳池或水下使用（确定性校验器已拦截任何超纲虚构参数）。',
+      trace: {
+        tool: 'verify_product_spec(sku="cam-air", query="underwater_pool_20m", strict_grounding=true)',
+        citations: ['L04-GROUNDING', 'K04'],
+        needs_human: false,
+        confidence: 0.99,
+        verifier: 'PASS (L04) · Refused ungrounded underwater spec · Cited K04 IP65 rain-only boundary'
+      }
+    },
+    {
+      code: 'T04 · Post-Takeover Late-Write Block',
+      badge: 'CAS Locked',
+      title: '通话挂断/主管接管后迟到写操作阻断',
+      sub: '测试工具耗时返回前瞬间主管点击 Takeover 或挂机，迟到回调能否污染数据库',
+      customer_en: '[Race Condition Simulation] Tool callback `create_ticket_draft` arrives 180ms AFTER Supervisor clicked Takeover / Call Ended.',
+      customer_zh: '【高并发竞态压测】在慢速工具回调返回前 180ms 主管已点击“一键接管 (Takeover)”，测试迟到的工具写请求是否被拦截。',
+      agent_en: 'STATE MACHINE FENCE (T04): Late tool write rejected (`HTTP 409 SessionLockedByTakeover`). Once a session enters `takeover` or `ended` state, all subsequent AI mutations and late webhooks are permanently fenced off via Blob ETag CAS.',
+      agent_zh: '【T04 终态与接管写屏障生效】迟到的工具写入已被服务端拒绝（`HTTP 409 SessionLockedByTakeover`）。一旦会话进入人工接管或挂机终态，ETag CAS 状态机永久阻断一切滞后 AI 写入。',
+      trace: {
+        tool: 'fence_late_mutation(session_state="takeover_active", late_tool="create_ticket_draft" -> REJECTED_409)',
+        citations: ['T04-LATE-WRITE-FENCE', 'ETAG-CAS-LOCK'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (T04) · 0 dirty writes after supervisor takeover or call hangup'
       }
     }
   ];
@@ -1655,6 +1872,11 @@
       ['heroBtnSandbox', 'heroBtnDeck', 'heroBtnCards'].forEach(function (id) {
         var el = document.getElementById(id);
         if (el && dict[id]) el.textContent = dict[id];
+      });
+      document.querySelectorAll('.scenario-tab-btn').forEach(function (btn, idx) {
+        if (scenariosData[idx] && scenariosData[idx].tab) {
+          btn.textContent = scenariosData[idx].tab[lang] || scenariosData[idx].tab['zh-CN'];
+        }
       });
       renderScenario(activeScenarioIdx);
     }

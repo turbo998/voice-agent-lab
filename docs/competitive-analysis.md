@@ -116,6 +116,25 @@
 
 ---
 
+### 3.5 对标垂直超低延迟声学组件（Cartesia Sonic / Deepgram Aura-2 & Nova-3 / Hume EVI）
+
+在面向技术型买方（AI 实验室负责人、语音算法总监）时，客户常会问到用 **Deepgram + Cartesia Sonic + 开源框架** 或 **Hume EVI** 自建管线的方案：
+
+#### 🔍 深度技术与商业拆解
+- **Cartesia Sonic (Sonic-2 / Sonic-Turbo)**：
+  1. **核心优势**：基于状态空间模型（State Space Models, SSM）而非传统 Transformer 架构，模型侧首包音频生成耗时（Model TTFB）低至 **`40ms – 85ms`**，长句流式发音稳定性好。
+  2. **核心软肋**：属于纯粹的单点 TTS 合成 API（无完整企业 SIP 网关、无工具状态机、无本地断网容器），当客户业务后端部署在 Azure 时，每一次句子合成都需跨公网请求 Cartesia 云端，公网 RTT 加上音频流回传往往抵消了模型侧省下的 40ms。
+- **Deepgram (`Nova-3` STT + `Aura-2` TTS + Voice Agent API)**：
+  1. **核心优势**：英文流式转录吞吐量高，支持热词增强（Keyterm Prompting），其 `Aura-2` TTS 针对英文客服对话做了节奏调优。
+  2. **核心软肋**：中文方言（粤语/川渝/吴语）与东南亚小语种混合识别率显著弱于 Azure Speech 多语种引擎；且缺乏企业级知识库（Azure AI Search 混合检索）与 Entra ID RBAC 级联治理。
+- **Hume AI (`EVI 2/3` 共情语音接口)**：
+  1. **核心优势**：专注声学副语言情绪维度打分（Prosody Emotion Scoring），能输出数十种情绪特征向量。
+  2. **核心软肋**：企业复杂工具调用（Multi-step Tool Calling）与长上下文 Schema 遵循率较弱，更偏向心理陪伴/C端社交，难以胜任银行核身、工单 CAS 审批等严肃交易场景。
+- **⚔️ Azure 破局策略**：
+  - 强调 **“组件侧 40ms 优势 $\neq$ 端到端客户体感优势”**：通过同可用区（Same-AZ）部署 **Azure Voice Live (`gpt-live-1`)** 或 **Azure Speech `DragonHDFlash` + Foundry**，省去 2–3 次跨云公网 TLS 往返（节省 `140ms–260ms`），端到端 P50 延迟反而更低，且 **100% 消耗客户既有微软 MACC 承诺额度，免去签 4 份第三方 DPA 数据合规协议的法务泥潭**。
+
+---
+
 ## 5. 竞对真实账单拆解：为什么宣传 "$0.07/min" 落地后变成 "$0.22/min"？
 
 在售前商务谈判中，客户经常拿着 Retell、Vapi 或 ElevenLabs 官网首页的“起步价”来对比。架构师应当场展开以下 **全链路隐性加项（Hidden Stack Multipliers）** 拆解表：
@@ -129,4 +148,19 @@
 | **5. 电话网/并发/合规附加费** | PSTN +$0.015/min；HIPAA +$1,000/mo；知识库 +$0.005/min | Twilio +$0.014/min + 并发通道预留费 | 年保底 $150k–$350k+；实施费 $50k+ | ACS / 自有 SIP 直连：**~$0.009/min** | ACS / WebRTC 直连：**~$0.008/min** |
 | **🔥 真实单分钟总成本 (TCO)** | **$0.135 – $0.205 / min** | **$0.137 – $0.187 / min** | **折合 $0.375 – $0.625 / min** (按4分钟/通计) | **$0.038 – $0.048 / min** | **$0.056 – $0.068 / min** |
 | **是否可抵扣企业 Azure MACC** | ❌ 仅后端 Foundry 部分可抵扣 | ❌ 4 张碎账单无法统一抵扣 | ❌ 0% 抵扣 | ✅ **100% 全额抵扣 MACC** | ✅ **100% 全额抵扣 MACC** |
+
+---
+
+## 6. 存量竞品（Retell / Vapi / ElevenLabs）平滑迁移至 Azure 实战映射手册
+
+当客户已经用 Retell AI 或 Vapi 跑通了早期 Demo，但因 **月账单高昂（>$30,000/mo）、跨云延迟抖动或安全团队要求接入企业 VNet** 而寻求替代方案时，切忌让客户推倒重来。我们提供 **“3 天换脑（Phase 1）$\rightarrow$ 7 天换网（Phase 2）”** 的零停机平滑迁移表：
+
+| 竞品原有模块 (Retell / Vapi / ElevenLabs) | **Phase 1：3 天换脑（混合共生范式 C）** | **Phase 2：7 天全栈收口（Azure 原生范式 A/B）** | 迁移后核心收益 |
+| :--- | :--- | :--- | :--- |
+| **电话号与 SIP 接入**<br>(`Twilio / Retell Managed Numbers`) | 保持不变（零号码割接风险） | **Azure Communication Services (ACS)** 或企业自有 SBC Direct Routing | 消除每分钟 $0.05–$0.07 的第三方平台过路抽成 |
+| **轮次检测与防打断**<br>(`Retell Turn-taking / Silero VAD`) | 保持前端轮次配置，后端开启幂等去重锁 | **Azure Voice Live Semantic VAD (`gpt-live-1`)**（实测抗附和误断率 95.2%） | 免除繁琐的分贝阈值调参，识别句中停顿与附和词 |
+| **大脑推理与提示词**<br>(`OpenAI Public API / Claude`) | 切换为 **Azure AI Foundry (`gpt-4.1-mini` / `gpt-5.4-mini` Responses API)** | 主路 `gpt-live-1` S2S + 旁路 `gpt-4.1-mini` 确定性校验器 | 推理数据 100% 不出企业租户，全额抵扣 MACC |
+| **业务工具调用**<br>(`Custom Function Webhook`) | 接入本仓 **`apps/retell-demo` 签名网关**（HMAC 校验 + Zod 剥离 `customerId` + Blob ETag CAS） | 保持同一套 **`packages/business-core`** 确定性状态机与审批工作台 | **业务代码 100% 复用**，从第一天起杜绝越权与脏写 |
+| **知识库检索**<br>(`Hosted Vector DB`) | 切换为 **Azure AI Search（语义重排 + K01–K12 强引用锚点）** | 同区域 VNet Private Endpoint 直连 Azure AI Search | 消除跨云检索延迟，超纲问题拒答率达 100% |
+
 
