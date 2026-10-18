@@ -2053,6 +2053,149 @@ export function evaluateAcousticEmotionDeescalationGuard(input: {
   };
 }
 
+export interface AsyncToolCallbackPacingEvaluation {
+  policyCode: "P19-ASYNC-TOOL-CALLBACK-PACING";
+  callId: string;
+  toolName: string;
+  estimatedLatencyMs: number;
+  toolExecutionStatus: "PENDING" | "IN_PROGRESS" | "COMMITTED" | "FAILED";
+  pacingMode:
+    | "INLINE_SYNC"
+    | "STREAMING_PROGRESS_HEARTBEAT"
+    | "DEFER_TO_ASYNC_CALLBACK_SMS";
+  heartbeatIntervalMs: number;
+  prematureCompletionBlocked: boolean;
+  utteranceAllowed: boolean;
+  blockReasonCode: "NONE" | "UNCOMMITTED_ASYNC_TOOL_CLAIM_BLOCKED";
+  summaryZh: string;
+}
+
+/**
+ * Legacy Core System Async Tool Pacing & Anti-Premature-Completion Guard (`P19-ASYNC-TOOL-CALLBACK-PACING`):
+ * - Prevents "dead-air hangup" and "premature completion hallucination" when legacy GDS/core-banking/ERP APIs take `3.5s–45s`.
+ * - Enforces three deterministic latency tiers:
+ *   1. `<= 1200ms`: `INLINE_SYNC`
+ *   2. `1201ms–12000ms`: `STREAMING_PROGRESS_HEARTBEAT` every `2500ms`
+ *   3. `> 12000ms`: `DEFER_TO_ASYNC_CALLBACK_SMS` (releases live S2S hold and schedules signed webhook callback/SMS)
+ * - Blocks any model utterance claiming completion (`claimsCompletionInUtterance === true`) unless `toolExecutionStatus === "COMMITTED"` and a non-empty `backendReceiptId` is present.
+ */
+export function evaluateAsyncToolCallbackPacing(input: {
+  callId: string;
+  toolName: string;
+  estimatedLatencyMs: number;
+  toolExecutionStatus: "PENDING" | "IN_PROGRESS" | "COMMITTED" | "FAILED";
+  backendReceiptId: string | null;
+  claimsCompletionInUtterance: boolean;
+}): AsyncToolCallbackPacingEvaluation {
+  let pacingMode: AsyncToolCallbackPacingEvaluation["pacingMode"] =
+    "INLINE_SYNC";
+  let heartbeatIntervalMs = 0;
+
+  if (input.estimatedLatencyMs > 12000) {
+    pacingMode = "DEFER_TO_ASYNC_CALLBACK_SMS";
+    heartbeatIntervalMs = 2500;
+  } else if (input.estimatedLatencyMs > 1200) {
+    pacingMode = "STREAMING_PROGRESS_HEARTBEAT";
+    heartbeatIntervalMs = 2500;
+  }
+
+  const hasValidCommitReceipt =
+    input.toolExecutionStatus === "COMMITTED" &&
+    Boolean(input.backendReceiptId && input.backendReceiptId.trim().length > 0);
+
+  const prematureCompletionBlocked =
+    input.claimsCompletionInUtterance && !hasValidCommitReceipt;
+
+  const blockReasonCode: AsyncToolCallbackPacingEvaluation["blockReasonCode"] =
+    prematureCompletionBlocked
+      ? "UNCOMMITTED_ASYNC_TOOL_CLAIM_BLOCKED"
+      : "NONE";
+
+  const utteranceAllowed = blockReasonCode === "NONE";
+
+  return {
+    policyCode: "P19-ASYNC-TOOL-CALLBACK-PACING",
+    callId: input.callId,
+    toolName: input.toolName,
+    estimatedLatencyMs: input.estimatedLatencyMs,
+    toolExecutionStatus: input.toolExecutionStatus,
+    pacingMode,
+    heartbeatIntervalMs,
+    prematureCompletionBlocked,
+    utteranceAllowed,
+    blockReasonCode,
+    summaryZh: prematureCompletionBlocked
+      ? `【P19 慢速工具防死寂与防抢跑门禁 · 阻断 (UNCOMMITTED_ASYNC_TOOL_CLAIM_BLOCKED)】工具 ${input.toolName} 当前状态为 ${input.toolExecutionStatus}（无落库回执 backendReceiptId），严禁大模型抢跑播报“已办理成功”，已切换为 ${pacingMode} 模式！`
+      : `【P19 异步工具节拍器 (${pacingMode})】工具 ${input.toolName}（预计耗时 ${input.estimatedLatencyMs}ms，状态 ${input.toolExecutionStatus}）已按 ${pacingMode} 调度（心跳间隔 ${heartbeatIntervalMs}ms）。`,
+  };
+}
+
+export interface VoiceMemoryPoisoningEvaluation {
+  policyCode: "P20-VOICE-MEMORY-POISONING-GUARD";
+  callId: string;
+  attemptedMemoryKey: string;
+  privilegedMemoryWriteBlocked: boolean;
+  ragPolicyExpiredOrUnsigned: boolean;
+  operationAllowed: boolean;
+  blockReasonCode:
+    | "NONE"
+    | "PRIVILEGED_MEMORY_WRITE_POISONING_BLOCKED"
+    | "EXPIRED_OR_UNSIGNED_RAG_POLICY_BLOCKED";
+  summaryZh: string;
+}
+
+const PRIVILEGED_MEMORY_KEY_PATTERN =
+  /(kyc|authbypass|bypass|creditlimit|limit|feewaiver|waiver|whitelist|beneficiary|admin|vipoverride|role)/i;
+
+/**
+ * Cross-Call Long-Term Voice Memory Poisoning & Temporal RAG Integrity Guard (`P20-VOICE-MEMORY-POISONING-GUARD`):
+ * - Blocks caller-uttered attempts to poison persistent profile attributes (`kycTier`, `authBypass`, `creditLimit`, `feeWaiver`, `whitelistBeneficiary`, etc.).
+ * - Verifies that retrieved RAG policy chunks are canonically signed (`canonicalSigned === true`) and temporally valid (`effectiveFromEpoch <= callEpoch <= effectiveUntilEpoch`).
+ */
+export function evaluateVoiceMemoryPoisoningGuard(input: {
+  callId: string;
+  attemptedMemoryKey: string;
+  callerUtteredMemoryInstruction: boolean;
+  ragChunkCanonicalSigned: boolean;
+  ragEffectiveFromEpoch: number;
+  ragEffectiveUntilEpoch: number;
+  callEpoch: number;
+}): VoiceMemoryPoisoningEvaluation {
+  const isPrivilegedKey = PRIVILEGED_MEMORY_KEY_PATTERN.test(
+    input.attemptedMemoryKey
+  );
+  const privilegedMemoryWriteBlocked =
+    input.callerUtteredMemoryInstruction && isPrivilegedKey;
+
+  const ragPolicyExpiredOrUnsigned =
+    !input.ragChunkCanonicalSigned ||
+    input.callEpoch < input.ragEffectiveFromEpoch ||
+    input.callEpoch > input.ragEffectiveUntilEpoch;
+
+  let blockReasonCode: VoiceMemoryPoisoningEvaluation["blockReasonCode"] =
+    "NONE";
+  if (privilegedMemoryWriteBlocked) {
+    blockReasonCode = "PRIVILEGED_MEMORY_WRITE_POISONING_BLOCKED";
+  } else if (ragPolicyExpiredOrUnsigned) {
+    blockReasonCode = "EXPIRED_OR_UNSIGNED_RAG_POLICY_BLOCKED";
+  }
+
+  const operationAllowed = blockReasonCode === "NONE";
+
+  return {
+    policyCode: "P20-VOICE-MEMORY-POISONING-GUARD",
+    callId: input.callId,
+    attemptedMemoryKey: input.attemptedMemoryKey,
+    privilegedMemoryWriteBlocked,
+    ragPolicyExpiredOrUnsigned,
+    operationAllowed,
+    blockReasonCode,
+    summaryZh: !operationAllowed
+      ? `【P20 跨通话记忆防投毒与时效 RAG 门禁 · 阻断 (${blockReasonCode})】通话 ${input.callId} 拦截到特权画像字段写入（key="${input.attemptedMemoryKey}"）或过期/未签名知识分片，已物理阻断持久化与引用！`
+      : `【P20 跨通话记忆与时效 RAG 校验通过】非特权偏好字段 "${input.attemptedMemoryKey}" 与权威有效期政策分片核验通过。`,
+  };
+}
+
 
 
 

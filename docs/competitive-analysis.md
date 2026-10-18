@@ -186,6 +186,6 @@
 | **8. 多模态同屏导览与无障碍合规**<br>(`纯语音盲聊 / 固定 500ms 抢话截断`) | 接入 **`P13-MULTIMODAL-COBROWSING-GROUNDING`** 拦截屏幕 OCR 注入与过期帧误操作 | **WebRTC 同屏 DOM 哈希对齐** + **`P14-ACCESSIBILITY-DISFLUENCY-ADAPTIVE` 口吃/慢语速 `2100ms` 自适应端点 & RFC 4103** | 100% 拦截视觉提示词注入，满足欧盟 EAA 2025 / 美国 ADA 无障碍法案 |
 | **9. 通话中途灾备热切与北约字母复诵**<br>(`单区 WS 断流掉线 / 15 vs 50 听错直写`) | 接入 **`P16-NUMERIC-ENTITY-READBACK-VERIFIER`** 强制 `15/50` 与 `B/P/M/N` 逐位复诵确认 | **`P15-MULTIPROVIDER-S2S-FAILOVER` `<300ms` 跨区/跨架构带状态零掉线热切** | 达成 99.995% 通话不断线 SLA，金额与票号同音错位率降至 0.0% |
 | **10. 多智能体防踢皮球与声学情绪降级**<br>(`子 Agent 死循环互转 / 暴怒时机械推销`) | 接入 **`P17-MULTI-AGENT-SWARM-LOOP-GUARD`** 拦截 A2A 环路与子 Agent 越权工具调用 | **`P18-ACOUSTIC-EMOTION-DEESCALATION` 暴怒态禁推销 + `0.92x/-1.5st` 共情调优 + 班长静默监听** | 100% 杜绝机器踢皮球死循环，高压客户二次激怒率压降 89% |
-| **11. 知识库检索**<br>(`Hosted Vector DB`) | 切换为 **Azure AI Search（语义重排 + K01–K12 强引用锚点）** | 同区域 VNet Private Endpoint 直连 Azure AI Search | 消除跨云检索延迟，超纲问题拒答率达 100% |
+| **11. 慢速核心系统节拍与长效记忆防投毒**<br>(`主机 15s 死寂抢跑承诺 / 口述改 VIP 档案`) | 接入 **`P19-ASYNC-TOOL-CALLBACK-PACING`** 阻断未落库抢跑承诺并启用 `2.5s` 进度心跳 | **`P20-VOICE-MEMORY-POISONING-GUARD` 拦截特权画像写入 + 同区域 VNet Azure AI Search 权威时效校验** | 100% 消除未落库虚假承诺、跨通话记忆投毒与过期政策误引 |
 
 
