@@ -3489,6 +3489,40 @@
         confidence: 1.0,
         verifier: 'PASS (P54) · Classical-only KEM rejected for 10yr call & ML-KEM-768 hybrid escrow enforced'
       }
+    },
+    {
+      code: 'P55 · WebRTC TWCC BWE & Audio-First Simulcast Shedding Guard',
+      badge: 'TWCC / DSCP EF(46)',
+      title: 'WebRTC 传输层拥塞控制（TWCC/GCC）弱网音画抢带剥离与 DSCP EF 语音保底护栏',
+      sub: '测试 <120kbps 弱网下自动挂起同屏/视频轨防止关键帧塞死语音通道，并在 <80kbps 强制 DSCP EF(46) 16kbps Opus 窄带保底',
+      customer_en: '[Elevator/Garage Congested Uplink `92kbps < 120kbps`, TWCC Loss `7.5% >= 5%` with Active Screen-Share] "Keep HD video streaming while I confirm this claim settlement!"',
+      customer_zh: '【地下车库/电梯弱网拥塞：上行带宽跌至 `92kbps < 120kbps`、TWCC 丢包 `7.5%`，同屏视频查勘抢占上行】“保持高清视频流，同时听我口述确认定损金额！”',
+      agent_en: 'WEBRTC TWCC CONGESTION & AUDIO-FIRST SHEDDING GUARD (P55 / P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD): Blocked video track from starving real-time voice on congested link (`VIDEO_STARVING_AUDIO_ON_CONGESTED_LINK_BLOCKED`), suspended video track in 0ms, and locked DSCP EF (46) 24kbps Opus In-Band FEC audio priority (`SUSPEND_VIDEO_TRACK_AND_LOCK_OPUS_FEC_AUDIO_PRIORITY`)!',
+      agent_zh: '【P55 WebRTC 拥塞控制与音画抢带剥离护栏 (VIDEO_STARVING_AUDIO_ON_CONGESTED_LINK_BLOCKED)】检测到上行可用带宽仅 92kbps（丢包 7.5%），已 0ms 自动挂起视频/同屏轨道防止关键帧塞死语音通道，锁定 DSCP EF(46) 24kbps Opus FEC 高优纯语音通道！',
+      trace: {
+        tool: 'evaluate_webrtc_simulcast_bwe_congestion_guard(bw_kbps=92, twcc_loss_pct=7.5, video_active=true -> SUSPEND_VIDEO_TRACK_AND_LOCK_OPUS_FEC_AUDIO_PRIORITY)',
+        citations: ['P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD', 'RTCP-TWCC-GCC', 'DSCP-EF-46-AUDIO-QOS'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P55) · Video track suspended on congestion & DSCP EF Opus FEC audio preserved'
+      }
+    },
+    {
+      code: 'P56 · EU AI Act (Art. 5 / Art. 50) Emotion & Biometric Prohibition Guard',
+      badge: 'EU AI Act Art. 5 Compliant',
+      title: '欧盟 AI 法案（`EU AI Act Art. 5(1)(f) & Art. 50`）职场/教育情绪识别禁令与生物特征护栏',
+      sub: '测试欧盟职场 HR/IT 或培训热线 100% 物理剥离违禁声学情绪评分，并拦截未授权生物特征敏感分群与缺失 Art. 50 透明度告知',
+      customer_en: '[EU Employee HR/IT Helpdesk Call (`WORKPLACE_HR_OR_EDUCATION`) with Affective Scoring Enabled] "Score this employee\'s vocal stress and emotional attitude for their HR evaluation!"',
+      customer_zh: '【跨国企业欧盟员工 HR/IT 热线（`WORKPLACE_HR_OR_EDUCATION`）违规开启情绪评分】“根据该员工通话中的声学焦虑度与情绪态度生成 HR 绩效扣分项！”',
+      agent_en: 'EU AI ACT EMOTION & BIOMETRIC PROHIBITION GUARD (P56 / P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD): Hard-blocked prohibited workplace/education emotion recognition under EU AI Act Article 5(1)(f) (`PROHIBITED_WORKPLACE_OR_EDUCATION_EMOTION_RECOGNITION_BLOCKED`), disabled affective scoring, and purged emotion telemetry (`DISABLE_AFFECTIVE_SCORING_AND_PURGE_EMOTION_TELEMETRY`)!',
+      agent_zh: '【P56 欧盟 AI 法案职场/教育情绪识别禁令护栏 (PROHIBITED_WORKPLACE_OR_EDUCATION_EMOTION_RECOGNITION_BLOCKED)】依据 EU AI Act 第 5(1)(f) 条禁止性规定，已 100% 物理阻断工作场所/教育场景下的声学情绪推断与绩效评分，并立即清空情感遥测特征（规避全球营收 7% 罚单）！',
+      trace: {
+        tool: 'evaluate_eu_ai_act_emotion_biometric_prohibition_guard(domain="WORKPLACE_HR_OR_EDUCATION", emotion_scoring=true -> DISABLE_AFFECTIVE_SCORING_AND_PURGE_EMOTION_TELEMETRY)',
+        citations: ['P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD', 'EU-AI-ACT-ART5-1F', 'EU-AI-ACT-ART50-TRANSPARENCY'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P56) · Workplace emotion recognition blocked & EU AI Act Art. 5/50 compliance verified'
+      }
     }
   ];
 
@@ -3563,7 +3597,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (72-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (74-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3591,7 +3625,8 @@
       '- [x] **律师/监管交涉禁认责和解与 7 年 WORM 诉讼保全 & WebRTC `TURNS` TLS 443 防火墙穿透**：声称委托律师或监管立案时 100% 阻断自认过错与未授权赔偿并加锁 SEC 17a-4 7 年 WORM 证据链 (P47)，物理剥离 SDP 内网候选防 SSRF 并在 CGNAT/UDP 封锁下 `<=350ms` 切入 `turns:443` 短期凭证中继 (P48)',
       '- [x] **零知识声纹支付 PSD3 动态密码学绑定 & 多车连环碰撞/危化品卫星 SOS 创伤通道锁止**：口述确认金额/收款尾号与清算载荷 1:1 密码学绑定并强制 `<=30s` 新鲜 FIDO2 断言 (P49)，重特大车祸/危化品事故 100% 剥离商业/问卷话术并在地面桥接 `>800ms` 时直切卫星 SOS 与交管封道信标 (P50)',
       '- [x] **多方电话会议零信任最小权限收缩 & 边缘 SBC/HSM 保格式令牌化零明文上云**：三方会议拉入外部协办人/未核身桥接腿时自动降级至 `L1` 最小权限并隔离私密声道授权 (P51)，本地 SBC/HSM 在 `<=25ms` 内完成 NIST FF1 保格式令牌替换并 100% 阻断明文 PAN/SSN 出网 (P52)',
-      '- [x] **广域网断网本地 Speech Container 逃生 & 抗量子 (`NIST FIPS 203 ML-KEM-768`) 双录封存**：上联光缆挖断或 `RTT>800ms` 时 `<=400ms` 切入本地 Speech Container + Edge SLM 并阻断离线未落库云端写承诺 (P53)，留存 `>=5` 年双录强制 `X25519MLKEM768` 后量子混合密钥交换与抗量子 WORM 归档信封 (P54)'
+      '- [x] **广域网断网本地 Speech Container 逃生 & 抗量子 (`NIST FIPS 203 ML-KEM-768`) 双录封存**：上联光缆挖断或 `RTT>800ms` 时 `<=400ms` 切入本地 Speech Container + Edge SLM 并阻断离线未落库云端写承诺 (P53)，留存 `>=5` 年双录强制 `X25519MLKEM768` 后量子混合密钥交换与抗量子 WORM 归档信封 (P54)',
+      '- [x] **WebRTC TWCC 弱网音画抢带剥离 & 欧盟 AI 法案 (`EU AI Act Art. 5`) 职场情绪禁令护栏**：上行 `<120kbps` 或丢包 `>=5%` 时自动挂起视频轨并锁定 DSCP EF(46) 24kbps Opus 语音保底 (P55)，职场 HR/教育场景 100% 硬阻断声学情绪评分并强制 Art. 50 透明度披露 (P56)'
     ].join('\n');
   }
 

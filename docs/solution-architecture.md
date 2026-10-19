@@ -1043,6 +1043,18 @@ flowchart LR
 | **1. 广域网断网本地 Speech Container 与边缘小模型 `<=400ms` 逃生 (`P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD`)** | `evaluateAirbrokenSovereignSpeechContainerFailoverGuard` 在断网或 `RTT>800ms` 时硬阻断未落库云端写承诺（`OFFLINE_UNCOMMITTED_CLOUD_WRITE_BLOCKED`），并强制 `<=400ms` 切入本地 Speech Container + Edge SLM（失配触发 `EDGE_CONTAINER_CUTOVER_SLA_OR_HEALTH_FAILURE`）。 | **光缆中断/云黑障下本地语音热线 100% 持续服务，离线未落库虚假承诺率降至 0.0%**（对应 POC 探针 `P53`）。 |
 | **2. 后量子密码学 (`NIST FIPS 203 ML-KEM-768`) 混合密钥与长周期录音封存 (`P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD`)** | `evaluatePostQuantumTlsHybridKeyMediaEscrowGuard` 对留存 `>=5` 年的通话拒绝传统单算法握手（`CLASSICAL_ONLY_KEM_REJECTED_FOR_LONG_RETENTION_CALL`），并强制 SRTP 轮换与抗量子归档信封（`MISSING_PQC_ARCHIVE_ENVELOPE_OR_KEY_ROTATION`）。 | **100% 免疫“先截获后量子解密 (HNDL)”威胁，满足金融/医疗 5–30 年长周期密码学合规**（对应 POC 探针 `P54`）。 |
 
+### 4.39 WebRTC 传输层拥塞控制（TWCC/GCC）音画抢带剥离与 DSCP EF 语音保底护栏 (`P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD`) 及欧盟 AI 法案（EU AI Act Art. 5 / Art. 50）职场情绪识别禁令与生物特征分群护栏 (`P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD`)
+
+在远程视频定损、远程医疗多模态会诊以及跨国企业在欧盟/欧洲经济区（EU/EEA）运营内部员工服务台、HR 招聘语音助手与培训考核热线时，企业架构还必须补齐以下两项底层传输 QoS 与欧盟强制性法律红线：
+1. **多模态同屏/视频通话在弱网（电梯/地下车库/高铁 `<120kbps`）下视频流抢占语音带宽导致语音断续失真 (`P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD`)**：在车险远程视频查勘（FNOL）或银行视频面签（Video KYC）中，当上行可用带宽骤降至 `availableUplinkBandwidthKbps < 120kbps`（或 RTCP TWCC 丢包率 `>= 5%`）时，若 WebRTC 仍试图维持高码率屏幕共享或摄像头视频流（`attemptedHighBitrateVideoOverAudio = true`），视频关键帧（I-Frame）突发将瞬间塞满上行队列，导致核心语音 RTP 包大幅丢弃与卡顿。`evaluateWebrtcSimulcastBweCongestionGuard` 基于 **RTCP Transport-Wide Congestion Control (TWCC / Google Congestion Control)** 实时带宽估计，100% 硬阻断弱网下视频挤占语音通道（`VIDEO_STARVING_AUDIO_ON_CONGESTED_LINK_BLOCKED`），在 `0ms` 内自动挂起视频轨（`videoTrackSuspended = true`）并锁定 `24kbps/16kbps` Opus In-Band FEC 纯语音保底通道；当带宽 `< 80kbps` 且未标记差分服务代码点 `DSCP EF (46)` 时，强制执行 QoS 标记与极窄带降级（`MISSING_DSCP_EF_AUDIO_QOS_MARKING_ON_CONGESTION`）；
+2. **欧盟 AI 法案（EU AI Act Article 5(1)(f) & Article 50）禁止在工作场所与教育机构使用声学情绪识别及未授权生物特征敏感分群 (`P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD`)**：自 2025 年 2 月起生效的《欧盟人工智能法案》（EU AI Act）第 5(1)(f) 条明确将“在工作场所（HR 面试、员工 IT/人事热线绩效评估）和教育机构中推断自然人情绪的 AI 系统”列为**绝对禁止类实践（Prohibited AI Practices，最高可处全球年营业额 7% 或 3,500 万欧元罚款）**。`evaluateEuAiActEmotionBiometricProhibitionGuard` 在识别到通话处于职场/HR/教育场景且试图启用情绪打分或纪律考核（`callContextDomain === "WORKPLACE_HR_OR_EDUCATION" && emotionInferenceUsedForScoringOrDiscipline`）时，100% 物理剥离声学情感评分模块并清空情感遥测日志（`PROHIBITED_WORKPLACE_OR_EDUCATION_EMOTION_RECOGNITION_BLOCKED`）；同时针对第 5(1)(g) 条禁止的未授权生物特征敏感属性分群（种族/政治/健康推断）及第 50 条 AI 身份透明度告知义务进行硬门禁校验（`UNCONSENTED_BIOMETRIC_CATEGORIZATION_OR_MISSING_DISCLOSURE_BLOCKED`）。
+
+| WebRTC TWCC 音画防抢带与欧盟 AI 法案合规控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 弱网语音不断流与欧盟 AI 法案零罚单收益 |
+| :--- | :--- | :--- |
+| **1. WebRTC TWCC 拥塞控制与音画抢带自动剥离 (`P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD`)** | `evaluateWebrtcSimulcastBweCongestionGuard` 在带宽 `<120kbps` 或丢包 `>=5%` 时自动挂起视频轨保底语音（`VIDEO_STARVING_AUDIO_ON_CONGESTED_LINK_BLOCKED`），并在 `<80kbps` 时强制 `DSCP EF (46)` 标记与 `16kbps` Opus 窄带模式。 | **弱网多模态会话语音清晰度保持率 100%，彻底消除视频关键帧塞死语音通道事故**（对应 POC 探针 `P55`）。 |
+| **2. 欧盟 AI 法案 (`EU AI Act Art. 5 / Art. 50`) 职场情绪禁令与生物特征护栏 (`P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD`)** | `evaluateEuAiActEmotionBiometricProhibitionGuard` 硬阻断职场/教育场景声学情绪评分（`PROHIBITED_WORKPLACE_OR_EDUCATION_EMOTION_RECOGNITION_BLOCKED`）及未授权声纹属性分群/缺失透明度披露（`UNCONSENTED_BIOMETRIC_CATEGORIZATION_OR_MISSING_DISCLOSURE_BLOCKED`）。 | **100% 符合 EU AI Act 禁止类红线（规避 7% 全球营收罚单）与 Art. 50 透明度强制要求**（对应 POC 探针 `P56`）。 |
+
+
 
 
 

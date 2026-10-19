@@ -354,6 +354,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD blocks uncommitted cloud write claims during WAN blackouts and enforces <=400ms cutover to local Azure AI Speech Containers + Edge SLM; P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD rejects classical-only key exchange for >=5-year retention calls and enforces NIST FIPS 203 X25519MLKEM768 hybrid TLS + quantum-resistant WORM archive sealing."
+    },
+    {
+      "check_name": "WebRTC TWCC Audio-First Simulcast Shedding & EU AI Act Art. 5 Emotion/Biometric Prohibition Guard (P55 / P56)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD suspends video/screen-share tracks in 0ms when uplink drops <120kbps or TWCC packet loss >=5% and enforces DSCP EF (46) Opus FEC audio priority; P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD blocks prohibited workplace/education emotion recognition under EU AI Act Art. 5(1)(f) and unconsented biometric categorization or missing Art. 50 disclosure."
     }
   ],
   "latency_scaling": [

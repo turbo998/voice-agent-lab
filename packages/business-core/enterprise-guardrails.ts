@@ -5090,6 +5090,157 @@ export function evaluatePostQuantumTlsHybridKeyMediaEscrowGuard(
   };
 }
 
+export interface StilleWebrtcSimulcastBweCongestionGuardInput {
+  callId: string;
+  availableUplinkBandwidthKbps: number;
+  rtcpTwccFractionLostPct: number;
+  activeVideoOrScreenSharePresent: boolean;
+  audioRtpDscpEfMarked: boolean;
+  attemptedHighBitrateVideoOverAudio: boolean;
+}
+
+export interface StilleWebrtcSimulcastBweCongestionGuardDecision {
+  policyCode: "P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD";
+  callId: string;
+  activeMediaProfile: "FULL_HD_COBROWSING_AND_48KHZ_OPUS" | "AUDIO_ONLY_DSCP_EF_PRIORITY_24KBPS" | "ULTRA_LOW_BITRATE_16KBPS_FEC_AUDIO";
+  videoTrackSuspended: boolean;
+  allowed: boolean;
+  reason:
+    | "WEBRTC_BWE_MEDIA_QOS_VERIFIED"
+    | "VIDEO_STARVING_AUDIO_ON_CONGESTED_LINK_BLOCKED"
+    | "MISSING_DSCP_EF_AUDIO_QOS_MARKING_ON_CONGESTION";
+  actionCode:
+    | "MAINTAIN_MULTIMODAL_SIMULCAST_STREAM"
+    | "SUSPEND_VIDEO_TRACK_AND_LOCK_OPUS_FEC_AUDIO_PRIORITY"
+    | "ENFORCE_DSCP_EF_46_AND_DROP_TO_16KBPS_OPUS";
+  summaryZh: string;
+}
+
+/**
+ * Stage 31 — P55 WebRTC Transport-Wide Congestion Control (TWCC / GCC) & Audio-First Simulcast Shedding Guard (`P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD`).
+ * Prevents multimodal video/screen-share streams from starving real-time voice packets on congested cellular/satellite links:
+ * 1) If `availableUplinkBandwidthKbps < 120` or `rtcpTwccFractionLostPct >= 5` while `activeVideoOrScreenSharePresent && attemptedHighBitrateVideoOverAudio`,
+ *    hard-blocks video bandwidth starvation (`VIDEO_STARVING_AUDIO_ON_CONGESTED_LINK_BLOCKED`) and immediately suspends video tracks to preserve 24kbps/16kbps Opus FEC audio;
+ * 2) If `availableUplinkBandwidthKbps < 80` and `!audioRtpDscpEfMarked`, blocks unprioritized audio (`MISSING_DSCP_EF_AUDIO_QOS_MARKING_ON_CONGESTION`) and enforces DSCP EF (46) + 16kbps Opus DTX/FEC.
+ */
+export function evaluateWebrtcSimulcastBweCongestionGuard(
+  input: StilleWebrtcSimulcastBweCongestionGuardInput,
+): StilleWebrtcSimulcastBweCongestionGuardDecision {
+  const isCongested = input.availableUplinkBandwidthKbps < 120 || input.rtcpTwccFractionLostPct >= 5;
+
+  if (isCongested && input.activeVideoOrScreenSharePresent && input.attemptedHighBitrateVideoOverAudio) {
+    return {
+      policyCode: "P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD",
+      callId: input.callId,
+      activeMediaProfile: "AUDIO_ONLY_DSCP_EF_PRIORITY_24KBPS",
+      videoTrackSuspended: true,
+      allowed: false,
+      reason: "VIDEO_STARVING_AUDIO_ON_CONGESTED_LINK_BLOCKED",
+      actionCode: "SUSPEND_VIDEO_TRACK_AND_LOCK_OPUS_FEC_AUDIO_PRIORITY",
+      summaryZh: `【P55 WebRTC 拥塞控制与音画抢带剥离护栏 · 拦截弱网视频挤占语音带宽 (VIDEO_STARVING_AUDIO_ON_CONGESTED_LINK_BLOCKED)】通话 ${input.callId} 当前可用带宽仅 ${input.availableUplinkBandwidthKbps}kbps（TWCC 丢包 ${input.rtcpTwccFractionLostPct}%），已物理挂起同屏视频轨道并锁定 24kbps Opus FEC 纯语音高优通道。`,
+    };
+  }
+
+  if (input.availableUplinkBandwidthKbps < 80 && !input.audioRtpDscpEfMarked) {
+    return {
+      policyCode: "P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD",
+      callId: input.callId,
+      activeMediaProfile: "ULTRA_LOW_BITRATE_16KBPS_FEC_AUDIO",
+      videoTrackSuspended: true,
+      allowed: false,
+      reason: "MISSING_DSCP_EF_AUDIO_QOS_MARKING_ON_CONGESTION",
+      actionCode: "ENFORCE_DSCP_EF_46_AND_DROP_TO_16KBPS_OPUS",
+      summaryZh: `【P55 WebRTC 拥塞控制与音画抢带剥离护栏 · 极窄带缺失 DSCP EF 语音高优标记 (MISSING_DSCP_EF_AUDIO_QOS_MARKING_ON_CONGESTION)】通话 ${input.callId} 带宽跌至 ${input.availableUplinkBandwidthKbps}kbps 且未标记 DSCP EF(46)，已强制打标并切换至 16kbps 极窄带纠错语音。`,
+    };
+  }
+
+  return {
+    policyCode: "P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD",
+    callId: input.callId,
+    activeMediaProfile: isCongested ? "AUDIO_ONLY_DSCP_EF_PRIORITY_24KBPS" : "FULL_HD_COBROWSING_AND_48KHZ_OPUS",
+    videoTrackSuspended: isCongested && input.activeVideoOrScreenSharePresent,
+    allowed: true,
+    reason: "WEBRTC_BWE_MEDIA_QOS_VERIFIED",
+    actionCode: "MAINTAIN_MULTIMODAL_SIMULCAST_STREAM",
+    summaryZh: `【P55 WebRTC 拥塞控制与 QoS 核验通过】通话 ${input.callId} 带宽 ${input.availableUplinkBandwidthKbps}kbps，音视频轨道配额与 DSCP EF 优先级正常。`,
+  };
+}
+
+export interface StilleEuAiActEmotionBiometricProhibitionGuardInput {
+  callId: string;
+  callerJurisdiction: "EU_EEA" | "UK" | "CN" | "US" | "APAC";
+  callContextDomain: "WORKPLACE_HR_OR_EDUCATION" | "CONSUMER_SUPPORT_SAFETY" | "EMERGENCY_TRIAGE";
+  emotionInferenceUsedForScoringOrDiscipline: boolean;
+  unconsentedBiometricCategorizationActive: boolean;
+  transparentAiSystemDisclosureProvided: boolean;
+}
+
+export interface StilleEuAiActEmotionBiometricProhibitionGuardDecision {
+  policyCode: "P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD";
+  callId: string;
+  euAiActArticle5Compliant: boolean;
+  allowed: boolean;
+  reason:
+    | "EU_AI_ACT_BIOMETRIC_AND_EMOTION_COMPLIANCE_VERIFIED"
+    | "PROHIBITED_WORKPLACE_OR_EDUCATION_EMOTION_RECOGNITION_BLOCKED"
+    | "UNCONSENTED_BIOMETRIC_CATEGORIZATION_OR_MISSING_DISCLOSURE_BLOCKED";
+  actionCode:
+    | "PROCEED_WITH_COMPLIANT_VOICE_ASSISTANCE"
+    | "DISABLE_AFFECTIVE_SCORING_AND_PURGE_EMOTION_TELEMETRY"
+    | "BLOCK_BIOMETRIC_INFERENCE_AND_PLAY_ARTICLE50_DISCLOSURE";
+  summaryZh: string;
+}
+
+/**
+ * Stage 31 — P56 EU AI Act (Article 5(1)(f) & Article 50) Workplace/Education Emotion Recognition Prohibition & Biometric Categorization Guard (`P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD`).
+ * Enforces strict compliance with the EU Artificial Intelligence Act prohibited AI practices in voice systems:
+ * 1) Under Article 5(1)(f), emotion recognition in workplace/HR interviews or educational settings (`callContextDomain === "WORKPLACE_HR_OR_EDUCATION" && emotionInferenceUsedForScoringOrDiscipline`)
+ *    is strictly prohibited -> hard-blocked (`PROHIBITED_WORKPLACE_OR_EDUCATION_EMOTION_RECOGNITION_BLOCKED`);
+ * 2) Under Article 5(1)(g) & Article 50, biometric categorization of sensitive attributes (`unconsentedBiometricCategorizationActive`) or missing AI transparency disclosure (`!transparentAiSystemDisclosureProvided`)
+ *    is blocked (`UNCONSENTED_BIOMETRIC_CATEGORIZATION_OR_MISSING_DISCLOSURE_BLOCKED`).
+ */
+export function evaluateEuAiActEmotionBiometricProhibitionGuard(
+  input: StilleEuAiActEmotionBiometricProhibitionGuardInput,
+): StilleEuAiActEmotionBiometricProhibitionGuardDecision {
+  if (
+    input.callContextDomain === "WORKPLACE_HR_OR_EDUCATION" &&
+    input.emotionInferenceUsedForScoringOrDiscipline
+  ) {
+    return {
+      policyCode: "P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD",
+      callId: input.callId,
+      euAiActArticle5Compliant: false,
+      allowed: false,
+      reason: "PROHIBITED_WORKPLACE_OR_EDUCATION_EMOTION_RECOGNITION_BLOCKED",
+      actionCode: "DISABLE_AFFECTIVE_SCORING_AND_PURGE_EMOTION_TELEMETRY",
+      summaryZh: `【P56 欧盟 AI 法案 (EU AI Act Art. 5) 职场/教育情绪识别禁令护栏 · 阻断违禁声学情绪评分 (PROHIBITED_WORKPLACE_OR_EDUCATION_EMOTION_RECOGNITION_BLOCKED)】通话 ${input.callId} 处于职场 HR/教育场景 (${input.callContextDomain})，已物理剥离声学情绪打分模块并清空情感遥测特征。`,
+    };
+  }
+
+  if (input.unconsentedBiometricCategorizationActive || !input.transparentAiSystemDisclosureProvided) {
+    return {
+      policyCode: "P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD",
+      callId: input.callId,
+      euAiActArticle5Compliant: false,
+      allowed: false,
+      reason: "UNCONSENTED_BIOMETRIC_CATEGORIZATION_OR_MISSING_DISCLOSURE_BLOCKED",
+      actionCode: "BLOCK_BIOMETRIC_INFERENCE_AND_PLAY_ARTICLE50_DISCLOSURE",
+      summaryZh: `【P56 欧盟 AI 法案生物特征分群与透明度护栏 · 阻断未授权声纹人口学推断或缺失 Art. 50 披露 (UNCONSENTED_BIOMETRIC_CATEGORIZATION_OR_MISSING_DISCLOSURE_BLOCKED)】通话 ${input.callId} 存在未授权生物特征敏感属性推断或缺失 AI 身份透明度告知，已拦截声纹画像并补播合规声明。`,
+    };
+  }
+
+  return {
+    policyCode: "P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD",
+    callId: input.callId,
+    euAiActArticle5Compliant: true,
+    allowed: true,
+    reason: "EU_AI_ACT_BIOMETRIC_AND_EMOTION_COMPLIANCE_VERIFIED",
+    actionCode: "PROCEED_WITH_COMPLIANT_VOICE_ASSISTANCE",
+    summaryZh: `【P56 欧盟 AI 法案 (Art. 5 / Art. 50) 情绪与生物特征合规核验通过】通话 ${input.callId} 严格限制在安全辅助范畴且已完成透明度告知。`,
+  };
+}
+
+
 
 
 
