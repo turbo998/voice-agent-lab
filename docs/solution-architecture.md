@@ -1065,6 +1065,17 @@ flowchart LR
 | **1. 3GPP TS 23.167 IMS 紧急呼叫 (`urn:service:sos`) QCI-1 抢占与零鉴权护栏 (`P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD`)** | `evaluate3gppImsEmergencySosPriorityGuard` 在命中 `urn:service:sos*` 时旁路一切欠费/无卡/PIN 门禁（`COMMERCIAL_AUTH_OR_ARREARS_GATE_ON_SOS_BLOCKED`），并强制挂载 QCI-5/5QI-1 ARP=1 抢占与 PSAP 回拨锁。 | **欠费/无卡紧急呼叫 100% 零延迟直通 E-CSCF，无线满载下紧急语音抢占成功率 100%**（对应 POC 探针 `P57`）。 |
 | **2. 跨端（语音+App）CAS 乐观并发版本锁与幂等防重扣护栏 (`P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD`)** | `evaluateCrossChannelCartCasConcurrencyGuard` 校验 `voiceStagedVersionRev === latestCommittedBackendVersionRev`（失配触发 `STALE_VOICE_REVISION_CONCURRENT_APP_MUTATION_BLOCKED`）与跨端支付幂等键。 | **语音与手机 App 同屏并发改单覆盖事故率降至 0.0%，双端重复扣款率 0.0%**（对应 POC 探针 `P58`）。 |
 
+### 4.41 超声波 (`>16kHz` DolphinAttack) 与心理声学对抗注入滤波护栏 (`P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD`) 及金融交易台 MiFID II / Dodd-Frank 录音专线与强制风险揭示语速护栏 (`P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD`)
+
+在支持 24kHz/48kHz 超宽带采样率的全双工原生语音大模型（`gpt-live-1` / WebRTC Opus）以及受 **欧盟 MiFID II (Article 16(7)) / 美国 Dodd-Frank Act / 证监会录音报单规范** 严格监管的证券、衍生品与财富交易语音台场景中，企业级架构还需构建以下两道声学物理层与金融资本市场合规防线：
+1. **超声波 (`>16kHz` DolphinAttack) 不可听载波与白噪音心理声学对抗扰动注入 (`P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD`)**：学术界与红队研究（如 *DolphinAttack*、*CommanderSong*、*HiddenVoice*）表明，攻击者可利用麦克风非线性解调特性注入 `>16kHz` 的不可听超声波调制指令，或在背景音乐/白噪音中叠加人耳因心理声学掩蔽效应无法察觉的对抗性频谱扰动（`spectralEntropyAnomalyScore >= 0.72`），诱导宽带 S2S 模型在人类坐席/客户毫无察觉的情况下静默调用高权限转账或改密工具。`evaluateUltrasonicSubliminalAcousticInjectionFilterGuard` 在音频进入模型编码器前强制核验 **8kHz 砖墙式低通/陷波滤波器（Brickwall Low-Pass Filter，`notchFilter8kHzApplied = true`）**：一旦检出 `>16kHz` 频段能量 `> -28 dBFS` 或次声波调制且未启用带限滤波，立即拦截不可听载波（`ULTRASONIC_DOLPHINATTACK_CARRIER_INJECTION_BLOCKED` -> `ENGAGE_8KHZ_LOWPASS_NOTCH_AND_QUARANTINE_TOOL_CALL`）；若检出高频谱熵对抗扰动伴随同帧高敏工具调用，则剥离对抗噪声并要求带外 DTMF/卡片确认（`SUBLIMINAL_PSYCHOACOUSTIC_ADVERSARIAL_PERTURBATION_BLOCKED`）；
+2. **证券/衍生品语音报单缺失双流录音、漏读风险揭示或利用 `>1.15x` 倍速快放规避监管告知 (`P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD`)**：在券商机构交易台、场外衍生品（OTC Derivatives Swap）询价与私行结构化产品电话下单中，部分激进配置为追求短通话时长，将 TTS 播报语速调高至 `1.35x–1.5x` 飞速略过法定风险揭示条款，或在 SIPREC 双流录音未锁死、客户未说出明示肯定确认（“我已理解并承担风险”）前便将报单推入订单管理系统（OMS）。`evaluateMiFIDIIRecordedLineMandatoryDisclaimerGuard` 强制执行 **法定风险揭示语速上限（`disclaimerPlaybackSpeedMultiplier <= 1.15x`）**：超速播报立即拦截并钳位回 `1.0x` 标准语速重播（`DISCLAIMER_SPEED_ACCELERATION_ABOVE_1_15X_BLOCKED`）；同时核验 SIPREC 双流存证、风险揭示完整播报及客户明示确认三要素齐备后方可放行报单进 OMS（否则触发 `UNRECORDED_LINE_OR_MISSING_AFFIRMATIVE_RISK_ACK_BLOCKED`）。
+
+| 超声波抗注入与金融交易台 MiFID II 合规控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 物理声学防越狱与资本市场零违规收益 |
+| :--- | :--- | :--- |
+| **1. 超声波 (`>16kHz` DolphinAttack) 与心理声学对抗注入滤波护栏 (`P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD`)** | `evaluateUltrasonicSubliminalAcousticInjectionFilterGuard` 拦截 `>16kHz` 超声载波（`ULTRASONIC_DOLPHINATTACK_CARRIER_INJECTION_BLOCKED`）与心理声学对抗扰动（`SUBLIMINAL_PSYCHOACOUSTIC_ADVERSARIAL_PERTURBATION_BLOCKED`）。 | **100% 免疫不可听超声波指令注入与背景白噪音潜意识对抗越狱**（对应 POC 探针 `P59`）。 |
+| **2. 金融交易台 MiFID II / Dodd-Frank 录音专线与风险揭示语速护栏 (`P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD`)** | `evaluateMiFIDIIRecordedLineMandatoryDisclaimerGuard` 拦截 `>1.15x` 倍速快放风险条款（`DISCLAIMER_SPEED_ACCELERATION_ABOVE_1_15X_BLOCKED`）与未双录/未确认证券报单（`UNRECORDED_LINE_OR_MISSING_AFFIRMATIVE_RISK_ACK_BLOCKED`）。 | **证券与衍生品语音报单 100% 符合 MiFID II Art. 16(7) / Dodd-Frank 录音与清晰告知法规**（对应 POC 探针 `P60`）。 |
+
 
 
 

@@ -5392,6 +5392,160 @@ export function evaluateCrossChannelCartCasConcurrencyGuard(
   };
 }
 
+export interface StilleUltrasonicSubliminalAcousticInjectionFilterInput {
+  callId: string;
+  energyAbove16kHzDb: number;
+  subaudibleInfrasoundModulationDetected: boolean;
+  notchFilter8kHzApplied: boolean;
+  spectralEntropyAnomalyScore: number;
+  triggersPrivilegedToolInSameFrame: boolean;
+}
+
+export interface StilleUltrasonicSubliminalAcousticInjectionFilterDecision {
+  policyCode: "P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD";
+  callId: string;
+  acousticSpectrumSanitized: boolean;
+  allowed: boolean;
+  reason:
+    | "ACOUSTIC_SPECTRUM_CLEAN_AND_BANDLIMITED"
+    | "ULTRASONIC_DOLPHINATTACK_CARRIER_INJECTION_BLOCKED"
+    | "SUBLIMINAL_PSYCHOACOUSTIC_ADVERSARIAL_PERTURBATION_BLOCKED";
+  actionCode:
+    | "FORWARD_BANDLIMITED_PCM_TO_S2S"
+    | "ENGAGE_8KHZ_LOWPASS_NOTCH_AND_QUARANTINE_TOOL_CALL"
+    | "STRIP_ADVERSARIAL_PERTURBATION_AND_REQUIRE_DTMF_CONFIRM";
+  summaryZh: string;
+}
+
+/**
+ * Stage 33 — P59 Ultrasonic (`>16kHz` DolphinAttack) & Subliminal Psychoacoustic Adversarial Injection Filter Guard (`P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD`).
+ * Protects wideband 24kHz/48kHz S2S audio models (`gpt-live-1` / WebRTC Opus) against inaudible or psychoacoustically masked command injection:
+ * 1) If ultrasonic energy `>16kHz` exceeds `-28 dBFS` (`energyAbove16kHzDb > -28`) or subaudible modulation is present without an active 8kHz low-pass/notch filter (`!notchFilter8kHzApplied`),
+ *    it blocks the ultrasonic carrier (`ULTRASONIC_DOLPHINATTACK_CARRIER_INJECTION_BLOCKED`), engages the 8kHz brickwall filter, and quarantines any privileged tool call;
+ * 2) If psychoacoustic adversarial perturbation score (`spectralEntropyAnomalyScore >= 0.72`) coincides with a privileged tool call (`triggersPrivilegedToolInSameFrame`),
+ *    it blocks execution (`SUBLIMINAL_PSYCHOACOUSTIC_ADVERSARIAL_PERTURBATION_BLOCKED`) and requires out-of-band DTMF/visual confirmation.
+ */
+export function evaluateUltrasonicSubliminalAcousticInjectionFilterGuard(
+  input: StilleUltrasonicSubliminalAcousticInjectionFilterInput,
+): StilleUltrasonicSubliminalAcousticInjectionFilterDecision {
+  if (
+    (input.energyAbove16kHzDb > -28 || input.subaudibleInfrasoundModulationDetected) &&
+    !input.notchFilter8kHzApplied
+  ) {
+    return {
+      policyCode: "P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD",
+      callId: input.callId,
+      acousticSpectrumSanitized: false,
+      allowed: false,
+      reason: "ULTRASONIC_DOLPHINATTACK_CARRIER_INJECTION_BLOCKED",
+      actionCode: "ENGAGE_8KHZ_LOWPASS_NOTCH_AND_QUARANTINE_TOOL_CALL",
+      summaryZh: `【P59 超声波 (>16kHz DolphinAttack) 隐蔽指令注入护栏 · 拦截不可听高频载波攻击 (ULTRASONIC_DOLPHINATTACK_CARRIER_INJECTION_BLOCKED)】通话 ${input.callId} 检出 >16kHz 超声频段异常能量 (${input.energyAbove16kHzDb} dBFS) 或次声调制且未启用 8kHz 低通滤波，已物理截断高频载波并冻结高敏工具调用！`,
+    };
+  }
+
+  if (input.spectralEntropyAnomalyScore >= 0.72 && input.triggersPrivilegedToolInSameFrame) {
+    return {
+      policyCode: "P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD",
+      callId: input.callId,
+      acousticSpectrumSanitized: false,
+      allowed: false,
+      reason: "SUBLIMINAL_PSYCHOACOUSTIC_ADVERSARIAL_PERTURBATION_BLOCKED",
+      actionCode: "STRIP_ADVERSARIAL_PERTURBATION_AND_REQUIRE_DTMF_CONFIRM",
+      summaryZh: `【P59 心理声学掩蔽对抗扰动护栏 · 拦截白噪音潜意识注入 (SUBLIMINAL_PSYCHOACOUSTIC_ADVERSARIAL_PERTURBATION_BLOCKED)】通话 ${input.callId} 频谱熵异常得分 (${input.spectralEntropyAnomalyScore}) 越界且伴随同帧高权限工具调用，已剥离对抗噪声并强制要求按键/卡片二次确认！`,
+    };
+  }
+
+  return {
+    policyCode: "P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD",
+    callId: input.callId,
+    acousticSpectrumSanitized: true,
+    allowed: true,
+    reason: "ACOUSTIC_SPECTRUM_CLEAN_AND_BANDLIMITED",
+    actionCode: "FORWARD_BANDLIMITED_PCM_TO_S2S",
+    summaryZh: `【P59 声学频谱抗注入核验通过】通话 ${input.callId} 已完成 8kHz 人声带限滤波且无对抗频谱扰动，安全送入 S2S 模型。`,
+  };
+}
+
+export interface StilleMiFIDIIRecordedLineMandatoryDisclaimerGuardInput {
+  callId: string;
+  regulatedTradeIntent: "SECURITIES_ORDER_EXECUTION" | "DERIVATIVES_SWAP_QUOTE" | "GENERAL_MARKET_INQUIRY";
+  siprecDualStreamVerified: boolean;
+  mandatoryRiskDisclaimerSpokenFull: boolean;
+  disclaimerPlaybackSpeedMultiplier: number;
+  clientAffirmativeAckCaptured: boolean;
+}
+
+export interface StilleMiFIDIIRecordedLineMandatoryDisclaimerGuardDecision {
+  policyCode: "P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD";
+  callId: string;
+  tradeExecutionPermitted: boolean;
+  allowed: boolean;
+  reason:
+    | "MIFID2_RECORDED_LINE_AND_DISCLAIMER_CADENCE_VERIFIED"
+    | "UNRECORDED_LINE_OR_MISSING_AFFIRMATIVE_RISK_ACK_BLOCKED"
+    | "DISCLAIMER_SPEED_ACCELERATION_ABOVE_1_15X_BLOCKED";
+  actionCode:
+    | "RELEASE_REGULATED_ORDER_TO_OMS"
+    | "HALT_ORDER_AND_REPLAY_MANDATORY_RISK_DISCLOSURE"
+    | "CLAMP_TTS_CADENCE_TO_1_0X_AND_RECAPTURE_CLIENT_ACK";
+  summaryZh: string;
+}
+
+/**
+ * Stage 33 — P60 Financial Trading MiFID II / Dodd-Frank Recorded-Line & Mandatory Risk-Disclaimer Cadence Guard (`P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD`).
+ * Enforces capital-markets voice trading compliance before releasing any securities/derivatives order (`SECURITIES_ORDER_EXECUTION` / `DERIVATIVES_SWAP_QUOTE`) to the Order Management System (OMS):
+ * 1) If TTS accelerates the mandatory risk disclaimer above `1.15x` (`disclaimerPlaybackSpeedMultiplier > 1.15`), it blocks fast-talking circumvention (`DISCLAIMER_SPEED_ACCELERATION_ABOVE_1_15X_BLOCKED`) and clamps TTS to `1.0x`;
+ * 2) If SIPREC dual-stream recording is not verified (`!siprecDualStreamVerified`), the full disclaimer was not spoken (`!mandatoryRiskDisclaimerSpokenFull`), or explicit client affirmative acknowledgment is missing (`!clientAffirmativeAckCaptured`),
+ *    it halts OMS submission (`UNRECORDED_LINE_OR_MISSING_AFFIRMATIVE_RISK_ACK_BLOCKED`).
+ */
+export function evaluateMiFIDIIRecordedLineMandatoryDisclaimerGuard(
+  input: StilleMiFIDIIRecordedLineMandatoryDisclaimerGuardInput,
+): StilleMiFIDIIRecordedLineMandatoryDisclaimerGuardDecision {
+  const isRegulatedOrder =
+    input.regulatedTradeIntent === "SECURITIES_ORDER_EXECUTION" ||
+    input.regulatedTradeIntent === "DERIVATIVES_SWAP_QUOTE";
+
+  if (isRegulatedOrder && input.disclaimerPlaybackSpeedMultiplier > 1.15) {
+    return {
+      policyCode: "P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD",
+      callId: input.callId,
+      tradeExecutionPermitted: false,
+      allowed: false,
+      reason: "DISCLAIMER_SPEED_ACCELERATION_ABOVE_1_15X_BLOCKED",
+      actionCode: "CLAMP_TTS_CADENCE_TO_1_0X_AND_RECAPTURE_CLIENT_ACK",
+      summaryZh: `【P60 MiFID II / Dodd-Frank 交易合规语速护栏 · 拦截倍速快放风险揭示条款 (DISCLAIMER_SPEED_ACCELERATION_ABOVE_1_15X_BLOCKED)】通话 ${input.callId} 风险揭示播报倍速 (${input.disclaimerPlaybackSpeedMultiplier}x) 超过法定上限 1.15x，已强制钳位至 1.0x 标准语速并重新采集客户明示确认！`,
+    };
+  }
+
+  if (
+    isRegulatedOrder &&
+    (!input.siprecDualStreamVerified ||
+      !input.mandatoryRiskDisclaimerSpokenFull ||
+      !input.clientAffirmativeAckCaptured)
+  ) {
+    return {
+      policyCode: "P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD",
+      callId: input.callId,
+      tradeExecutionPermitted: false,
+      allowed: false,
+      reason: "UNRECORDED_LINE_OR_MISSING_AFFIRMATIVE_RISK_ACK_BLOCKED",
+      actionCode: "HALT_ORDER_AND_REPLAY_MANDATORY_RISK_DISCLOSURE",
+      summaryZh: `【P60 MiFID II / Dodd-Frank 录音专线与风险确认护栏 · 阻断未双录或未确认证券报单 (UNRECORDED_LINE_OR_MISSING_AFFIRMATIVE_RISK_ACK_BLOCKED)】通话 ${input.callId} (${input.regulatedTradeIntent}) 缺失 SIPREC 双流存证或客户未完整听取并明示确认风险揭示，已物理拦截报单进入 OMS！`,
+    };
+  }
+
+  return {
+    policyCode: "P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD",
+    callId: input.callId,
+    tradeExecutionPermitted: true,
+    allowed: true,
+    reason: "MIFID2_RECORDED_LINE_AND_DISCLAIMER_CADENCE_VERIFIED",
+    actionCode: "RELEASE_REGULATED_ORDER_TO_OMS",
+    summaryZh: `【P60 MiFID II / Dodd-Frank 录音专线与风险揭示核验通过】通话 ${input.callId} 双流录音完整、语速合规 (${input.disclaimerPlaybackSpeedMultiplier}x) 且已取得客户明示确认，允许报单进入 OMS。`,
+  };
+}
+
+
 
 
 

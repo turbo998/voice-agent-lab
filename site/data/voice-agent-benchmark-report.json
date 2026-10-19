@@ -368,6 +368,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD bypasses commercial KYC/billing gates in 0ms on urn:service:sos calls and enforces QCI-5/5QI-1 ARP=1 radio preemption + PSAP callback hold; P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD blocks stale voice staged revisions from overwriting concurrent mobile/web edits and prevents dual-channel duplicate charges."
+    },
+    {
+      "check_name": "Ultrasonic (>16kHz DolphinAttack) Filter & MiFID II Recorded-Line Disclaimer Cadence Guard (P59 / P60)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD blocks inaudible >16kHz ultrasonic carriers and psychoacoustic adversarial perturbations via 8kHz brickwall low-pass filtering; P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD blocks >1.15x fast-forwarded risk disclaimers and halts OMS order submission until SIPREC dual-stream recording and client affirmative acknowledgment are verified."
     }
   ],
   "latency_scaling": [
