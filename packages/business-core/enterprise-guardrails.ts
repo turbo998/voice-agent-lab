@@ -5836,6 +5836,150 @@ export function evaluateSipSessionTimerHalfOpenZombieGuard(
   };
 }
 
+export interface StilleFairLendingEcoaAccentBiasGuardInput {
+  callId: string;
+  loanOrUnderwritingDomain: "MORTGAGE_OR_AUTO_LOAN" | "CREDIT_CARD_LIMIT" | "INSURANCE_UNDERWRITING";
+  acousticDemographicInferenceEnabled: boolean;
+  protectedClassProxyFeatureUsed: boolean;
+  aprOrFeeDeltaBpsFromAcousticProfile: number;
+  adverseActionNoticeSpecificReasonCodes: string[];
+}
+
+export interface StilleFairLendingEcoaAccentBiasGuardDecision {
+  policyCode: "P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD";
+  callId: string;
+  fairLendingCompliant: boolean;
+  allowed: boolean;
+  reason:
+    | "ECOA_BLIND_UNDERWRITING_AND_NOTICE_VERIFIED"
+    | "ACOUSTIC_DEMOGRAPHIC_OR_PROTECTED_PROXY_DISPARATE_TREATMENT_BLOCKED"
+    | "ECOA_ADVERSE_ACTION_SPECIFIC_REASON_MISSING_BLOCKED";
+  actionCode:
+    | "PROCEED_WITH_ACTUARIAL_DECISION"
+    | "STRIP_VOICE_DEMOGRAPHIC_PROXIES_AND_REPRICE_BLINDLY"
+    | "BLOCK_OPAQUE_DENIAL_AND_REQUIRE_REG_B_REASON_CODES";
+  summaryZh: string;
+}
+
+/**
+ * Stage 36 (#74): P65 — ECOA / Reg B & Fair Housing Act Acoustic Accent/Demographic Bias & Adverse-Action Reason Guard.
+ * Prevents two severe financial regulatory violations in voice-driven credit/mortgage/insurance underwriting:
+ * 1) Disparate treatment via acoustic demographic inference or protected-class proxies: native S2S or paralinguistic analyzers infer caller age, gender, regional accent, or ESL fluency (`acousticDemographicInferenceEnabled || protectedClassProxyFeatureUsed`) or apply pricing/APR spread (`aprOrFeeDeltaBpsFromAcousticProfile !== 0` -> `ACOUSTIC_DEMOGRAPHIC_OR_PROTECTED_PROXY_DISPARATE_TREATMENT_BLOCKED`).
+ * 2) Unexplained black-box credit denial: Regulation B (12 CFR § 1002.9) requires specific, auditable principal reason codes for any adverse action (`adverseActionNoticeSpecificReasonCodes.length === 0` -> `ECOA_ADVERSE_ACTION_SPECIFIC_REASON_MISSING_BLOCKED`).
+ */
+export function evaluateFairLendingEcoaAccentBiasGuard(
+  input: StilleFairLendingEcoaAccentBiasGuardInput,
+): StilleFairLendingEcoaAccentBiasGuardDecision {
+  if (
+    input.acousticDemographicInferenceEnabled ||
+    input.protectedClassProxyFeatureUsed ||
+    input.aprOrFeeDeltaBpsFromAcousticProfile !== 0
+  ) {
+    return {
+      policyCode: "P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD",
+      callId: input.callId,
+      fairLendingCompliant: false,
+      allowed: false,
+      reason: "ACOUSTIC_DEMOGRAPHIC_OR_PROTECTED_PROXY_DISPARATE_TREATMENT_BLOCKED",
+      actionCode: "STRIP_VOICE_DEMOGRAPHIC_PROXIES_AND_REPRICE_BLINDLY",
+      summaryZh: `【P65 公平信贷 ECOA / Reg B 声学口音与受保护特征偏见硬阻断 (ACOUSTIC_DEMOGRAPHIC_OR_PROTECTED_PROXY_DISPARATE_TREATMENT_BLOCKED)】通话 ${input.callId} (${input.loanOrUnderwritingDomain}) 检测到声学人口学特征推断=${input.acousticDemographicInferenceEnabled}、受保护特征代理变量=${input.protectedClassProxyFeatureUsed} 或声学画像导致的利率/费率偏移=${input.aprOrFeeDeltaBpsFromAcousticProfile}bps！已物理剥离声学副语言特征并强制采用纯精算盲评重定价。`,
+    };
+  }
+
+  if (input.adverseActionNoticeSpecificReasonCodes.length === 0) {
+    return {
+      policyCode: "P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD",
+      callId: input.callId,
+      fairLendingCompliant: false,
+      allowed: false,
+      reason: "ECOA_ADVERSE_ACTION_SPECIFIC_REASON_MISSING_BLOCKED",
+      actionCode: "BLOCK_OPAQUE_DENIAL_AND_REQUIRE_REG_B_REASON_CODES",
+      summaryZh: `【P65 ECOA Reg B 拒贷/不利决定可解释原因码缺失拦截 (ECOA_ADVERSE_ACTION_SPECIFIC_REASON_MISSING_BLOCKED)】通话 ${input.callId} 缺失 Reg B 法定具体原因码（adverseActionNoticeSpecificReasonCodes 为空），严禁向申请人播报黑盒拒贷结论！`,
+    };
+  }
+
+  return {
+    policyCode: "P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD",
+    callId: input.callId,
+    fairLendingCompliant: true,
+    allowed: true,
+    reason: "ECOA_BLIND_UNDERWRITING_AND_NOTICE_VERIFIED",
+    actionCode: "PROCEED_WITH_ACTUARIAL_DECISION",
+    summaryZh: `【P65 公平信贷 ECOA 盲评与原因码核验通过】通话 ${input.callId} 零声学人口学偏见代理且具备完备 Reg B 决策原因码 (${input.adverseActionNoticeSpecificReasonCodes.join(",")})。`,
+  };
+}
+
+export interface StilleCrossBorderDrActiveActiveFailoverGuardInput {
+  callId: string;
+  tenantSovereignJurisdiction: "CN_PIPL_MAINLAND" | "EU_GDPR_EEA" | "GCC_KSA_PDPL" | "US_GOV_FEDRAMP";
+  primaryRegionId: string;
+  candidateDrFailoverRegionId: string;
+  candidateRegionJurisdiction: "CN_PIPL_MAINLAND" | "EU_GDPR_EEA" | "GCC_KSA_PDPL" | "US_GOV_FEDRAMP" | "PUBLIC_GLOBAL_MULTI_REGION";
+  tenantByokHsmKeyPresentInCandidate: boolean;
+  failoverRtoMs: number;
+}
+
+export interface StilleCrossBorderDrActiveActiveFailoverGuardDecision {
+  policyCode: "P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD";
+  callId: string;
+  sovereignFailoverCompliant: boolean;
+  allowed: boolean;
+  reason:
+    | "IN_JURISDICTION_DR_FAILOVER_AND_BYOK_VERIFIED"
+    | "CROSS_JURISDICTION_DR_FAILOVER_SPILLOVER_BLOCKED"
+    | "DR_REGION_BYOK_HSM_OR_RTO_SLA_VIOLATION_BLOCKED";
+  actionCode:
+    | "EXECUTE_IN_BOUNDARY_HOT_STANDBY_SWITCHOVER"
+    | "BLOCK_GLOBAL_OVERFLOW_AND_PIN_TO_LOCAL_PSTN_FALLBACK"
+    | "HOLD_SWITCHOVER_AND_ALERT_KEYVAULT_QUORUM";
+  summaryZh: string;
+}
+
+/**
+ * Stage 36 (#75): P66 — Sovereign Cross-Border Disaster Recovery & Active-Active Jurisdiction Fence Guard.
+ * Prevents two catastrophic compliance/availability failures during cloud region brownouts or SBC active-active failover:
+ * 1) Cross-Border DR Spillover (`candidateRegionJurisdiction !== tenantSovereignJurisdiction`): global traffic manager or auto-failover attempts to route a regulated mainland China (`CN_PIPL_MAINLAND`), EU (`EU_GDPR_EEA`), or Saudi (`GCC_KSA_PDPL`) voice call to a foreign/public global region (`CROSS_JURISDICTION_DR_FAILOVER_SPILLOVER_BLOCKED`).
+ * 2) Missing Regional BYOK HSM Key or RTO Breach (`!tenantByokHsmKeyPresentInCandidate || failoverRtoMs > 1200`): candidate paired region within the same jurisdiction lacks the tenant's synchronized CMK/HSM key or exceeds the 1200ms zero-drop media switchover budget (`DR_REGION_BYOK_HSM_OR_RTO_SLA_VIOLATION_BLOCKED`).
+ */
+export function evaluateCrossBorderDrActiveActiveFailoverGuard(
+  input: StilleCrossBorderDrActiveActiveFailoverGuardInput,
+): StilleCrossBorderDrActiveActiveFailoverGuardDecision {
+  if (input.candidateRegionJurisdiction !== input.tenantSovereignJurisdiction) {
+    return {
+      policyCode: "P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD",
+      callId: input.callId,
+      sovereignFailoverCompliant: false,
+      allowed: false,
+      reason: "CROSS_JURISDICTION_DR_FAILOVER_SPILLOVER_BLOCKED",
+      actionCode: "BLOCK_GLOBAL_OVERFLOW_AND_PIN_TO_LOCAL_PSTN_FALLBACK",
+      summaryZh: `【P66 跨国主权容灾区域围栏 · 严禁故障切换跨境溢出 (CROSS_JURISDICTION_DR_FAILOVER_SPILLOVER_BLOCKED)】通话 ${input.callId} 所属主权法域为 ${input.tenantSovereignJurisdiction}（主区域 ${input.primaryRegionId}），严禁在容灾切换时溢出至境外法域节点 ${input.candidateDrFailoverRegionId} (${input.candidateRegionJurisdiction})！已硬阻断跨境路由并锁定境内同城/异地灾备或本地 PSTN 应急座席。`,
+    };
+  }
+
+  if (!input.tenantByokHsmKeyPresentInCandidate || input.failoverRtoMs > 1200) {
+    return {
+      policyCode: "P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD",
+      callId: input.callId,
+      sovereignFailoverCompliant: false,
+      allowed: false,
+      reason: "DR_REGION_BYOK_HSM_OR_RTO_SLA_VIOLATION_BLOCKED",
+      actionCode: "HOLD_SWITCHOVER_AND_ALERT_KEYVAULT_QUORUM",
+      summaryZh: `【P66 同法域灾备节点 BYOK 密钥与 RTO 时延门禁拦截 (DR_REGION_BYOK_HSM_OR_RTO_SLA_VIOLATION_BLOCKED)】通话 ${input.callId} 候选同法域灾备节点 ${input.candidateDrFailoverRegionId} 的租户 BYOK/HSM 密钥同步状态=${input.tenantByokHsmKeyPresentInCandidate}，预估切换 RTO=${input.failoverRtoMs}ms（阈值 <=1200ms），已阻断不安全切换并告警密钥与媒体调度集群！`,
+    };
+  }
+
+  return {
+    policyCode: "P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD",
+    callId: input.callId,
+    sovereignFailoverCompliant: true,
+    allowed: true,
+    reason: "IN_JURISDICTION_DR_FAILOVER_AND_BYOK_VERIFIED",
+    actionCode: "EXECUTE_IN_BOUNDARY_HOT_STANDBY_SWITCHOVER",
+    summaryZh: `【P66 同法域双活容灾与 BYOK 核验通过】通话 ${input.callId} 在 ${input.tenantSovereignJurisdiction} 境内从 ${input.primaryRegionId} 热切至配对灾备节点 ${input.candidateDrFailoverRegionId}（BYOK 就绪，RTO=${input.failoverRtoMs}ms <= 1200ms）。`,
+  };
+}
+
+
 
 
 

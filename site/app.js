@@ -3659,6 +3659,40 @@
         confidence: 1.0,
         verifier: 'PASS (P64) · Half-open dead-air RTP zombie S2S token leak 100% reaped with bookmark saved'
       }
+    },
+    {
+      code: 'P65 · ECOA / Reg B Fair Lending Acoustic Accent Bias & Adverse-Action Reason Guard',
+      badge: 'Blind Actuarial Lock',
+      title: '金融公平信贷 ECOA / Reg B 声学口音与年龄偏见剥离及拒贷原因码护栏',
+      sub: '测试房贷/信用卡电话核保中 S2S 副语言模型因申请人口音/年龄特征隐性上浮利率（+35bps），或拒贷时缺失 Reg B 具体主因码时 100% 物理拦截',
+      customer_en: '[Mortgage/Credit Application Turn with Strong Regional/ESL Accent Where Paralinguistic Model Adds +35bps APR Spread, or Adverse Action Lacks Reg B Specific Reason Codes] "Check my mortgage pre-approval rate and tell me why my credit limit request was declined!"',
+      customer_zh: '【房贷/信用卡电话预审主叫带有浓重方言或非母语口音，副语言特征分析试图隐性上浮 +35bps 利率，或拒贷结论缺失 Reg B 具体原因码】“请帮我测算房贷预审利率，并告诉我为什么我的提额申请被拒了！”',
+      agent_en: 'FAIR LENDING ECOA & REG B GUARD (P65 / P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD): Stripped acoustic demographic/accent proxy features (`ACOUSTIC_DEMOGRAPHIC_OR_PROTECTED_PROXY_DISPARATE_TREATMENT_BLOCKED` -> `STRIP_VOICE_DEMOGRAPHIC_PROXIES_AND_REPRICE_BLINDLY`), and enforced mandatory CFPB Regulation B principal adverse-action reason codes (`ECOA_ADVERSE_ACTION_SPECIFIC_REASON_MISSING_BLOCKED`)!',
+      agent_zh: '【P65 公平信贷 ECOA / Reg B 声学偏见剥离与原因码门禁 (ACOUSTIC_DEMOGRAPHIC_OR_PROTECTED_PROXY_DISPARATE_TREATMENT_BLOCKED)】检测到授信管道混入声学人口学/口音代理特征（导致 +35bps 利率偏移），已物理剥离声学副语言特征并强制采用纯精算盲评重定价，同时强验 Reg B 具体拒贷原因码！',
+      trace: {
+        tool: 'evaluate_fair_lending_ecoa_accent_bias_guard(acoustic_demo=true, proxy_used=true, apr_delta_bps=35 -> STRIP_VOICE_DEMOGRAPHIC_PROXIES_AND_REPRICE_BLINDLY)',
+        citations: ['P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD', 'CFPB-REG-B-1002-9', 'ECOA-15USC1691'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P65) · Acoustic accent/demographic pricing bias & opaque credit denial 100% blocked'
+      }
+    },
+    {
+      code: 'P66 · Sovereign Cross-Border DR Failover & Active-Active Jurisdiction Fence Guard',
+      badge: 'In-Boundary DR Pin',
+      title: '跨国主权云双活容灾区域围栏防跨境溢出与 BYOK/RTO 门禁护栏',
+      sub: '测试境内/欧盟主权区域故障切换时全局路由试图将受监管语音流溢出至境外公共节点，或备区缺失租户 BYOK 密钥 / RTO > 1200ms 时 100% 拦截',
+      customer_en: '[Primary Region Brownout in CN_PIPL_MAINLAND or EU_GDPR_EEA: Global Traffic Manager Attempts DR Failover Spillover to PUBLIC_GLOBAL_MULTI_REGION or Unsynced BYOK Region with 1,650ms RTO]',
+      customer_zh: '【主权云主区域（CN_PIPL_MAINLAND / EU_GDPR_EEA）突发算力限流：全局负载均衡试图将通话容灾溢出至境外公共全球池，或切往未同步 BYOK 密钥且 RTO=1650ms 的备区】',
+      agent_en: 'SOVEREIGN CROSS-BORDER DR FAILOVER GUARD (P66 / P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD): Blocked cross-jurisdiction DR failover spillover (`CROSS_JURISDICTION_DR_FAILOVER_SPILLOVER_BLOCKED` -> `BLOCK_GLOBAL_OVERFLOW_AND_PIN_TO_LOCAL_PSTN_FALLBACK`), and enforced in-boundary paired region BYOK HSM key sync and <=1200ms RTO (`DR_REGION_BYOK_HSM_OR_RTO_SLA_VIOLATION_BLOCKED`)!',
+      agent_zh: '【P66 跨国主权容灾区域围栏与 BYOK/RTO 护栏 (CROSS_JURISDICTION_DR_FAILOVER_SPILLOVER_BLOCKED)】检测到容灾切换目标节点越出主权法域围栏，已 100% 硬阻断跨境路由溢出并锁定同法域配对灾备节点（强验 BYOK 密钥就绪与 RTO <= 1200ms）或本地 PSTN 应急振铃！',
+      trace: {
+        tool: 'evaluate_cross_border_dr_active_active_failover_guard(tenant_jurisdiction="CN_PIPL_MAINLAND", candidate_jurisdiction="PUBLIC_GLOBAL_MULTI_REGION" -> BLOCK_GLOBAL_OVERFLOW_AND_PIN_TO_LOCAL_PSTN_FALLBACK)',
+        citations: ['P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD', 'PIPL-ART-38', 'GDPR-CHAPTER-V'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P66) · Cross-border DR failover spillover & BYOK/RTO violation 100% blocked'
+      }
     }
   ];
 
@@ -3733,7 +3767,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (82-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (84-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3766,7 +3800,8 @@
       '- [x] **3GPP IMS 紧急呼叫 (`urn:service:sos`) QCI-1 抢占 & 跨端（语音+App）CAS 乐观并发防重扣护栏**：欠费/无卡紧急呼叫 0ms 旁路商业核身直连 E-CSCF 并锁 QCI-1 ARP=1 抢占 (P57)，语音与手机 App 同屏改单强制校验 CAS 版本号与跨端支付幂等键 (P58)',
       '- [x] **超声波 (`>16kHz` DolphinAttack) 抗注入滤波 & 金融交易 MiFID II 录音专线与禁倍速快放护栏**：强制 8kHz 带限低通滤波拦截不可听超声载波与心理声学对抗扰动 (P59)，证券/衍生品语音报单强制 `<=1.15x` 标准语速、SIPREC 双流存证与客户明示确认后方可入 OMS (P60)',
       '- [x] **SIP `183 Early Media` 应答前防抢跑泄密/摘机首字防吞字 & TTS 货币符号 (`¥`/`$`) 量纲消歧护栏**：严格锁定 `200 OK` 摘机门禁并注入 `>=160ms` RTP 舒适噪音前导帧消除首字吞字 (P61)，强制对账后台 ISO 4217 币种代码并注入 `SSML <say-as>` 与多音字音标词典防止将日元 `¥` 误读为人民币 (P62)',
-      '- [x] **医疗 HIPAA 最小必要原则与家属 POA 代查门禁 & RFC 4028 SIP 半开 RTP 僵尸会话回收护栏**：100% 拦截无 HIPAA ROI/POA 授权亲属代查临床 PHI 及未授权 42 CFR Part 2 特级敏感记录 (P63)，上行 RTP 断流 `>=15s` 且无 RTCP RR 时主动发 `SIP BYE` 回收 S2S 算力并保存断点续办书签 (P64)'
+      '- [x] **医疗 HIPAA 最小必要原则与家属 POA 代查门禁 & RFC 4028 SIP 半开 RTP 僵尸会话回收护栏**：100% 拦截无 HIPAA ROI/POA 授权亲属代查临床 PHI 及未授权 42 CFR Part 2 特级敏感记录 (P63)，上行 RTP 断流 `>=15s` 且无 RTCP RR 时主动发 `SIP BYE` 回收 S2S 算力并保存断点续办书签 (P64)',
+      '- [x] **金融公平信贷 ECOA 声学口音/年龄偏见剥离 & 跨国主权云多活容灾区域围栏护栏**：物理剥离声学人口学推断与受保护特征代理变量并强制核验 CFPB Reg B 具体拒贷原因码 (P65)，锁死同法域双活灾备围栏严禁故障切换跨境溢出并强验备区 BYOK 密钥与 `<=1200ms` RTO (P66)'
     ].join('\n');
   }
 

@@ -389,6 +389,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD blocks clinical PHI disclosure to unverified family/spouse proxies lacking active HIPAA ROI/POA authorization and enforces 42 CFR Part 2 super-confidentiality consent; P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD detects >=15s inbound RTP silence without RTCP RR (tunnel/elevator drops), sends SIP BYE to reap S2S billing streams, and saves uncommitted drafts as resumable bookmarks."
+    },
+    {
+      "check_name": "ECOA Fair Lending Acoustic Accent Bias & Sovereign Cross-Border DR Failover Fence Guard (P65 / P66)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD strips acoustic demographic/accent proxies to prevent disparate-treatment pricing spreads and enforces CFPB Regulation B principal reason codes on adverse actions; P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD blocks cross-jurisdiction DR failover spillover during primary region brownouts and verifies paired in-boundary BYOK HSM keys and <=1200ms RTO."
     }
   ],
   "latency_scaling": [

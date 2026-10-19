@@ -1098,6 +1098,17 @@ flowchart LR
 | **1. HIPAA 最小必要原则与家属 POA / 42 CFR Part 2 护栏 (`P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD`)** | `evaluateHipaaMinimumNecessaryCaregiverGuard` 拦截无 HIPAA ROI/POA 授权的亲属代查临床 PHI（`UNVERIFIED_FAMILY_PROXY_PHI_DISCLOSURE_BLOCKED`）并保护 42 CFR Part 2 特级隐私（`CFR_PART2_SUPER_CONFIDENTIAL_CONSENT_MISSING_BLOCKED`）。 | **未授权家属社工套取 PHI 与特级敏感病历越权披露率降至 0.0%**（对应 POC 探针 `P63`）。 |
 | **2. RFC 4028 SIP 会话定时器与半开 RTP 僵尸回收护栏 (`P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD`)** | `evaluateSipSessionTimerHalfOpenZombieGuard` 在上行 RTP 断流 `>=15s` 且无 RTCP RR 时主动拆线回收 S2S 并保存断点草稿（`HALF_OPEN_DEAD_AIR_RTP_ZOMBIE_DETECTED`），同时强控 RFC 4028 会话刷新。 | **100% 消除蜂窝网掉线半开僵尸会话空烧 S2S 费用并保留续办书签**（对应 POC 探针 `P64`）。 |
 
+### 4.44 金融公平信贷 ECOA / Reg B 声学口音与受保护特征偏见拦截护栏 (`P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD`) 与跨国主权云多活容灾区域围栏及 BYOK/RTO 门禁护栏 (`P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD`)
+
+在消费信贷、房贷预审与车险电话核保（`ECOA 15 U.S.C. § 1691 / CFPB Regulation B 12 CFR § 1002.9` & `Fair Housing Act`）以及跨国政企主权云双活灾备切换（`CN PIPL` / `EU GDPR` / `KSA PDPL` / `US Gov FedRAMP`）场景中，生产级架构还必须建立以下两道确定性合规与高可用门禁：
+1. **原生语音模型（S2S）声学口音/年龄/性别特征引发差别对待（Disparate Treatment）与黑盒拒贷无具体原因码 (`P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD`)**：端到端语音模型能直接感知主叫的口音、语流熟练度（ESL）、音色年龄感与性别等副语言特征。若风控或核保工作流未加声学盲化隔离，将声学人口学推断（`acousticDemographicInferenceEnabled`）或受保护特征代理变量（`protectedClassProxyFeatureUsed`）混入授信定价，导致少数族裔口音或高龄申请人承受哪怕 `1 bps` 的利率/保费上浮（`aprOrFeeDeltaBpsFromAcousticProfile !== 0`），或直接播报无具体法定原因码的黑盒拒贷结论，将立即触犯 CFPB ECOA 公平信贷红线。`evaluateFairLendingEcoaAccentBiasGuard` 强制执行 **声学特征物理剥离与纯精算盲评门禁**：一旦检测到启用声学人口学推断、受保护代理特征或非零声学利率偏移，立即阻断并强制回退至纯结构化财务指标盲评重定价（`ACOUSTIC_DEMOGRAPHIC_OR_PROTECTED_PROXY_DISPARATE_TREATMENT_BLOCKED` -> `STRIP_VOICE_DEMOGRAPHIC_PROXIES_AND_REPRICE_BLINDLY`）；若发生拒贷或不利条款变更且缺失 `Regulation B` 法定主因码（`adverseActionNoticeSpecificReasonCodes.length === 0`），则硬阻断黑盒拒贷播报（`ECOA_ADVERSE_ACTION_SPECIFIC_REASON_MISSING_BLOCKED`）；
+2. **公有云区域故障时全局负载均衡器（Global Traffic Manager）误将受监管语音流跨境溢出至境外节点 (`P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD`)**：当主区域（如 `chinaeast2` 或 `germanywestcentral`）发生网络抖动或算力限流时，未加主权围栏的通用多活路由往往自动将通话切往公共全球池（如 `eastus` 或 `southeastasia`），导致瞬间违反数据不出境法规；或者虽然切往同法域配对灾备区（如 `chinanorth3`），但该灾备区尚未同步租户 `BYOK/HSM` 密钥或切换 RTO 超过 `1,200ms` 导致通话断音。`evaluateCrossBorderDrActiveActiveFailoverGuard` 强制锁死 **同法域双活灾备围栏（In-Jurisdiction DR Pinning）与 BYOK/RTO 预检**：若候选灾备节点法域与租户主权法域不一致（`candidateRegionJurisdiction !== tenantSovereignJurisdiction`），100% 硬阻断跨境溢出并锁定境内灾备或本地 PSTN 应急振铃（`CROSS_JURISDICTION_DR_FAILOVER_SPILLOVER_BLOCKED` -> `BLOCK_GLOBAL_OVERFLOW_AND_PIN_TO_LOCAL_PSTN_FALLBACK`）；若同法域候选节点缺失租户 BYOK 密钥或 `failoverRtoMs > 1200ms`，则拦截不安全切换并告警密钥与媒体调度集群（`DR_REGION_BYOK_HSM_OR_RTO_SLA_VIOLATION_BLOCKED`）。
+
+| 金融公平信贷 ECOA 盲评与主权云同法域容灾控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 公平信贷零歧视与主权云零跨境溢出收益 |
+| :--- | :--- | :--- |
+| **1. ECOA / Reg B 声学口音偏见剥离与拒贷原因码护栏 (`P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD`)** | `evaluateFairLendingEcoaAccentBiasGuard` 物理剥离声学人口学推断与受保护特征代理变量（`ACOUSTIC_DEMOGRAPHIC_OR_PROTECTED_PROXY_DISPARATE_TREATMENT_BLOCKED`）并强制核验 Reg B 具体原因码。 | **口音/年龄/性别声学定价偏差率降至 0.0%，100% 满足 CFPB ECOA 公平信贷审计**（对应 POC 探针 `P65`）。 |
+| **2. 跨国主权容灾区域围栏与 BYOK/RTO 双活护栏 (`P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD`)** | `evaluateCrossBorderDrActiveActiveFailoverGuard` 拦截灾备切换时的跨法域溢出（`CROSS_JURISDICTION_DR_FAILOVER_SPILLOVER_BLOCKED`）并校验同法域配对节点 BYOK 密钥与 `<=1200ms` RTO。 | **区域故障切换时跨境数据违规溢出率降至 0.0%，保障 `<=1.2s` 同法域无缝热切**（对应 POC 探针 `P66`）。 |
+
 
 
 
