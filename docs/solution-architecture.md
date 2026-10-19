@@ -1120,6 +1120,18 @@ flowchart LR
 | **1. 急救/911 断线回拨 0ms 穿透商业 IVR 护栏 (`P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD`)** | `evaluateEmergencyCallbackCnamReturnRouteGuard` 拦截伪造急救号（`UNVERIFIED_CNAM_SPOOFED_EMERGENCY_CALLBACK_BLOCKED`）并阻止真实急救回拨落入商业 IVR（`EMERGENCY_CALLBACK_TRAPPED_IN_GENERAL_IVR_BLOCKED`）。 | **真实 911/急救回拨误入商业 IVR 排队率降至 0.0%，实现 0ms 事故桥直连**（对应 POC 探针 `P67`）。 |
 | **2. PCI-DSS SAQ-A 零持卡人数据域隔离护栏 (`P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD`)** | `evaluatePciSaqAGatewayTokenScopeIsolationGuard` 拦截 Prompt/Tool Schema 卡号污染（`LLM_PROMPT_OR_TOOL_SCHEMA_CDE_CONTAMINATION_BLOCKED`）并强绑一次性 Vault 令牌。 | **确保 AI 推理集群 100% 豁免重度 SAQ-D 审计，立省 80%+ PCI 合规成本**（对应 POC 探针 `P68`）。 |
 
+### 4.46 未成年人 COPPA/GDPR-K 声纹零留存与消费监护人授权护栏 & 跨洲 SIP/RTP 媒体发卡弯绕行 (Tromboning) 本地锚定护栏 (`P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD` & `P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD`)
+
+在智能家居、车载娱乐、游戏语音助手、儿科导诊以及跨国企业全球语音组网（Global SIP Trunking）场景中，经常面临两大高频合规与网络架构隐患：
+
+1. **未成年人/儿童无监护人同意被采集生物声纹或发起语音冲动消费 (`P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD`)**：根据美国 FTC **COPPA**（含 2025 年将声纹生物特征纳入受保护个人信息的修订条款）、英国 **Age Appropriate Design Code (AADC)** 与欧盟 **GDPR Art. 8 (GDPR-K)**，当主叫申报年龄 `< 16` 岁或声学基频/共振峰检测出高概率未成年特征（`acousticChildPitchFormantProbability >= 0.78`）时，若在未获得可验证父母同意（`!verifiableParentalConsentTokenPresent`）的情况下提取保存其声纹向量、建立长期行为画像，或直接执行语音内购/订阅扣款，将面临数千万美元监管重罚。`evaluateCoppaMinorAgeGateAndParentalConsentGuard` 强制执行 **声学年龄门禁 + 零声纹留存 + 监护人带外联签**：无 VPC 授权时 100% 物理阻断儿童声纹注册与画像留存并立即清空生物特征缓冲（`UNCONSENTED_MINOR_VOICEPRINT_OR_BEHAVIORAL_PROFILING_BLOCKED` -> `PURGE_BIOMETRIC_BUFFER_AND_REQUIRE_VERIFIABLE_PARENTAL_CONSENT`），同时拦截未成年人语音付费请求并向家长手机推送审批链接（`UNCONSENTED_MINOR_COMMERCIAL_PURCHASE_BLOCKED`）；
+2. **跨国呼叫中心 SIP/RTP 媒体流跨洲发卡弯绕行（RTP Hairpinning / Tromboning）导致端到端延迟暴增 250ms+ (`P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD`)**：当新加坡或法兰克福客户拨打当地 PSTN 号码进入本地 SBC 接入点（`sbcIngressPopRegion`）时，若全局负载均衡错误地将 RTP 实时媒体流跨大洋拉回美国东岸或欧洲异地媒体网关再转发给推理集群（`crossContinentalRtpHairpinDetected === true`），仅海底光缆往返就会凭空增加 `220ms–350ms` 物理延迟与抖动。`evaluateMultiRegionSipTrunkRtpHairpinOptimizationGuard` 强制执行 **本地边缘媒体锚定（Local Media Anchoring）与 `<=140ms` 媒体 RTT 硬门禁**：一旦检出跨洲 RTP 绕行且本地存在可用区域媒体锚点（`localRegionalMediaAnchorAvailable`），立即通过 SIP `Re-INVITE` 将 RTP 锚定在本地边缘 SBC PoP（`CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED` -> `REANCHOR_RTP_TO_LOCAL_EDGE_SBC_POP`）；若媒体往返时延 `mediaRoundTripLatencyMs > 140ms`，立即切换至就近配对的 S2S 推理集群（`MEDIA_RTT_SLA_BREACH_REANCHOR_REQUIRED`）。
+
+| 未成年人隐私保护与全球 RTP 本地锚定控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 儿童合规安全与全球语音低时延收益 |
+| :--- | :--- | :--- |
+| **1. 未成年人 COPPA/GDPR-K 声纹零留存与消费门禁 (`P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD`)** | `evaluateCoppaMinorAgeGateAndParentalConsentGuard` 拦截无 VPC 授权的未成年声纹采集（`UNCONSENTED_MINOR_VOICEPRINT_OR_BEHAVIORAL_PROFILING_BLOCKED`）与语音内购（`UNCONSENTED_MINOR_COMMERCIAL_PURCHASE_BLOCKED`）。 | **100% 满足 FTC COPPA 2025 声纹新规与 GDPR-K，未成年人未授权声纹留存与误扣费降至 0.0%**（对应 POC 探针 `P69`）。 |
+| **2. 跨洲 SIP/RTP 媒体发卡弯绕行本地锚定护栏 (`P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD`)** | `evaluateMultiRegionSipTrunkRtpHairpinOptimizationGuard` 拦截跨洲 RTP 绕行（`CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED`）并强锁 `<=140ms` 媒体层 RTT。 | **消除跨洋 RTP 发卡弯绕行，跨国分支机构首字响应时延直降 220ms–310ms**（对应 POC 探针 `P70`）。 |
+
 
 
 

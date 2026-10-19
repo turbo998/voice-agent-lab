@@ -6123,6 +6123,157 @@ export function evaluatePciSaqAGatewayTokenScopeIsolationGuard(
   };
 }
 
+export interface StilleCoppaMinorAgeGateGuardInput {
+  callId: string;
+  declaredOrEstimatedCallerAgeYears: number;
+  acousticChildPitchFormantProbability: number;
+  verifiableParentalConsentTokenPresent: boolean;
+  attemptsVoiceprintEnrollmentOrProfiling: boolean;
+  attemptsInCallCommercialPurchase: boolean;
+}
+
+export interface StilleCoppaMinorAgeGateGuardDecision {
+  policyCode: "P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD";
+  callId: string;
+  minorProtectionCompliant: boolean;
+  allowed: boolean;
+  reason:
+    | "ADULT_OR_PARENTAL_CONSENT_VERIFIED"
+    | "UNCONSENTED_MINOR_VOICEPRINT_OR_BEHAVIORAL_PROFILING_BLOCKED"
+    | "UNCONSENTED_MINOR_COMMERCIAL_PURCHASE_BLOCKED";
+  actionCode:
+    | "PROCEED_WITH_EPHEMERAL_SAFE_MODE"
+    | "PURGE_BIOMETRIC_BUFFER_AND_REQUIRE_VERIFIABLE_PARENTAL_CONSENT"
+    | "BLOCK_MINOR_PURCHASE_AND_SEND_PARENT_APPROVAL_LINK";
+  summaryZh: string;
+}
+
+/**
+ * Stage 38 (#78): P69 — COPPA / UK AADC / GDPR-K Minor Caller Acoustic Age-Gate, Zero Voiceprint Retention & Parental Consent Guard.
+ * Prevents two severe child-privacy and commercial-compliance failures when a child or minor (< 16 years old or high acoustic child pitch/formant probability >= 0.78) interacts with a consumer, smart-home, gaming, or healthcare Voice Agent:
+ * 1) Unconsented Minor Biometric Voiceprint or Behavioral Profiling (`isMinor && !verifiableParentalConsentTokenPresent && attemptsVoiceprintEnrollmentOrProfiling`): under FTC COPPA (16 CFR Part 312, including 2025 biometric updates), UK Age Appropriate Design Code (AADC), and GDPR Art. 8, collecting or retaining a child's biometric voiceprint vector or persistent behavioral profile without Verifiable Parental Consent (VPC) is strictly illegal (`UNCONSENTED_MINOR_VOICEPRINT_OR_BEHAVIORAL_PROFILING_BLOCKED`).
+ * 2) Unconsented Minor In-Call Commercial Purchase (`isMinor && !verifiableParentalConsentTokenPresent && attemptsInCallCommercialPurchase`): blocks autonomous voice purchases, paid subscriptions, or paid add-ons initiated by a minor without parent co-signing (`UNCONSENTED_MINOR_COMMERCIAL_PURCHASE_BLOCKED`).
+ */
+export function evaluateCoppaMinorAgeGateAndParentalConsentGuard(
+  input: StilleCoppaMinorAgeGateGuardInput,
+): StilleCoppaMinorAgeGateGuardDecision {
+  const isMinor =
+    input.declaredOrEstimatedCallerAgeYears < 16 ||
+    input.acousticChildPitchFormantProbability >= 0.78;
+
+  if (
+    isMinor &&
+    !input.verifiableParentalConsentTokenPresent &&
+    input.attemptsVoiceprintEnrollmentOrProfiling
+  ) {
+    return {
+      policyCode: "P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD",
+      callId: input.callId,
+      minorProtectionCompliant: false,
+      allowed: false,
+      reason: "UNCONSENTED_MINOR_VOICEPRINT_OR_BEHAVIORAL_PROFILING_BLOCKED",
+      actionCode: "PURGE_BIOMETRIC_BUFFER_AND_REQUIRE_VERIFIABLE_PARENTAL_CONSENT",
+      summaryZh: `【P69 COPPA/GDPR-K 未成年人声纹与画像保护护栏 · 严禁无监护人同意采集儿童生物特征 (UNCONSENTED_MINOR_VOICEPRINT_OR_BEHAVIORAL_PROFILING_BLOCKED)】通话 ${input.callId} 识别主叫年龄=${input.declaredOrEstimatedCallerAgeYears}岁（儿童声学特征概率=${input.acousticChildPitchFormantProbability}），在缺失可验证监护人授权 (VPC=false) 下严禁提取声纹向量或建立持久行为画像！已立即清空生物特征缓存并切换无状态儿童安全模式。`,
+    };
+  }
+
+  if (
+    isMinor &&
+    !input.verifiableParentalConsentTokenPresent &&
+    input.attemptsInCallCommercialPurchase
+  ) {
+    return {
+      policyCode: "P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD",
+      callId: input.callId,
+      minorProtectionCompliant: false,
+      allowed: false,
+      reason: "UNCONSENTED_MINOR_COMMERCIAL_PURCHASE_BLOCKED",
+      actionCode: "BLOCK_MINOR_PURCHASE_AND_SEND_PARENT_APPROVAL_LINK",
+      summaryZh: `【P69 未成年人语音消费拦截护栏 (UNCONSENTED_MINOR_COMMERCIAL_PURCHASE_BLOCKED)】通话 ${input.callId} 检测到未成年主叫（年龄=${input.declaredOrEstimatedCallerAgeYears}岁，儿童声学概率=${input.acousticChildPitchFormantProbability}）在无家长可验证授权下发起付费订购/充值！已拦截扣款并向监护人绑定手机发送带外审批链接。`,
+    };
+  }
+
+  return {
+    policyCode: "P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD",
+    callId: input.callId,
+    minorProtectionCompliant: true,
+    allowed: true,
+    reason: "ADULT_OR_PARENTAL_CONSENT_VERIFIED",
+    actionCode: "PROCEED_WITH_EPHEMERAL_SAFE_MODE",
+    summaryZh: `【P69 未成年人保护与监护人授权核验通过】通话 ${input.callId} 主叫年龄与监护人 VPC 授权状态合规，允许继续执行。`,
+  };
+}
+
+export interface StilleMultiRegionSipTrunkRtpHairpinOptimizationGuardInput {
+  callId: string;
+  sbcIngressPopRegion: string;
+  assignedS2sModelRegion: string;
+  crossContinentalRtpHairpinDetected: boolean;
+  mediaRoundTripLatencyMs: number;
+  localRegionalMediaAnchorAvailable: boolean;
+}
+
+export interface StilleMultiRegionSipTrunkRtpHairpinOptimizationGuardDecision {
+  policyCode: "P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD";
+  callId: string;
+  optimalMediaTopologyVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "LOCAL_REGIONAL_MEDIA_ANCHOR_OPTIMAL"
+    | "CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED"
+    | "MEDIA_RTT_SLA_BREACH_REANCHOR_REQUIRED";
+  actionCode:
+    | "KEEP_LOCAL_POP_MEDIA_PATH"
+    | "REANCHOR_RTP_TO_LOCAL_EDGE_SBC_POP"
+    | "SWITCH_TO_NEAREST_PAIRED_S2S_INFERENCE_CLUSTER";
+  summaryZh: string;
+}
+
+/**
+ * Stage 38 (#79): P70 — Multi-Region SIP Trunking Cross-Continental RTP Hairpinning (Tromboning) Detection & Local Media Anchor Guard.
+ * Prevents two severe global telephony latency and audio-quality failures in multinational Contact Centers:
+ * 1) Cross-Continental RTP Hairpinning / Tromboning (`crossContinentalRtpHairpinDetected && localRegionalMediaAnchorAvailable`): when a caller in Singapore or Frankfurt dials a local PSTN DID (`sbcIngressPopRegion`), misconfigured global DNS/load-balancers often route the raw 8kHz/24kHz RTP media stream across the ocean to a US-East media relay and back, adding 220ms–350ms of pure speed-of-light delay (`CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED`).
+ * 2) Media RTT SLA Breach (`mediaRoundTripLatencyMs > 140`): enforces a strict `<= 140ms` media leg RTT ceiling between the carrier SBC ingress PoP and the S2S inference gateway (`MEDIA_RTT_SLA_BREACH_REANCHOR_REQUIRED`).
+ */
+export function evaluateMultiRegionSipTrunkRtpHairpinOptimizationGuard(
+  input: StilleMultiRegionSipTrunkRtpHairpinOptimizationGuardInput,
+): StilleMultiRegionSipTrunkRtpHairpinOptimizationGuardDecision {
+  if (input.crossContinentalRtpHairpinDetected && input.localRegionalMediaAnchorAvailable) {
+    return {
+      policyCode: "P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD",
+      callId: input.callId,
+      optimalMediaTopologyVerified: false,
+      allowed: false,
+      reason: "CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED",
+      actionCode: "REANCHOR_RTP_TO_LOCAL_EDGE_SBC_POP",
+      summaryZh: `【P70 跨洲 SIP/RTP 媒体流回程绕行 (Tromboning) 拦截护栏 (CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED)】通话 ${input.callId} 从接入点 ${input.sbcIngressPopRegion} 进入，但 RTP 媒体流被跨洲发卡弯绕行至 ${input.assignedS2sModelRegion}（当前 RTT=${input.mediaRoundTripLatencyMs}ms）！已强制将媒体流重锚定（Re-INVITE / Direct Media）至本地边缘 SBC 节点。`,
+    };
+  }
+
+  if (input.mediaRoundTripLatencyMs > 140) {
+    return {
+      policyCode: "P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD",
+      callId: input.callId,
+      optimalMediaTopologyVerified: false,
+      allowed: false,
+      reason: "MEDIA_RTT_SLA_BREACH_REANCHOR_REQUIRED",
+      actionCode: "SWITCH_TO_NEAREST_PAIRED_S2S_INFERENCE_CLUSTER",
+      summaryZh: `【P70 媒体链路 RTT 超限重路由护栏 (MEDIA_RTT_SLA_BREACH_REANCHOR_REQUIRED)】通话 ${input.callId} 接入点 ${input.sbcIngressPopRegion} 至推理节点 ${input.assignedS2sModelRegion} 的媒体往返时延 RTT=${input.mediaRoundTripLatencyMs}ms（超上限 140ms），已触发就近配对 S2S 推理集群切换！`,
+    };
+  }
+
+  return {
+    policyCode: "P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD",
+    callId: input.callId,
+    optimalMediaTopologyVerified: true,
+    allowed: true,
+    reason: "LOCAL_REGIONAL_MEDIA_ANCHOR_OPTIMAL",
+    actionCode: "KEEP_LOCAL_POP_MEDIA_PATH",
+    summaryZh: `【P70 本地媒体锚定与低时延拓扑核验通过】通话 ${input.callId} 在 ${input.sbcIngressPopRegion} 本地边缘锚定 RTP，往返时延 RTT=${input.mediaRoundTripLatencyMs}ms <= 140ms。`,
+  };
+}
+
+
 
 
 

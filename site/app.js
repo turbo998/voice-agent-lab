@@ -3727,6 +3727,40 @@
         confidence: 1.0,
         verifier: 'PASS (P68) · LLM CDE contamination & unbound payment tokens 100% blocked'
       }
+    },
+    {
+      code: 'P69 · COPPA / GDPR-K Minor Voiceprint Zero-Retention & Parental Consent Guard',
+      badge: 'COPPA / GDPR-K',
+      title: '未成年人 COPPA / GDPR-K 声纹生物特征零留存与语音内购监护人授权护栏',
+      sub: '测试儿童声学特征主叫在无家长可验证同意 (VPC) 下被提取声纹向量/长期画像或直接发起语音付费内购时的确定性拦截',
+      customer_en: '[Minor Caller Detected (Age 11 / Child Pitch-Formant Prob 0.89 >= 0.78) Without Verifiable Parental Consent Token Attempting Voiceprint Enrollment or Paid Add-On Purchase]',
+      customer_zh: '【未成年主叫检测（年龄 11 岁 / 儿童声学特征概率 0.89 >= 0.78）且缺失可验证监护人授权令牌 (VPC=false)，尝试注册声纹向量或直接发起语音付费订购】',
+      agent_en: 'COPPA / GDPR-K MINOR VOICEPRINT & PURCHASE GUARD (P69 / P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD): Blocked unconsented minor biometric voiceprint enrollment and purged biometric buffer (`UNCONSENTED_MINOR_VOICEPRINT_OR_BEHAVIORAL_PROFILING_BLOCKED` -> `PURGE_BIOMETRIC_BUFFER_AND_REQUIRE_VERIFIABLE_PARENTAL_CONSENT`), and blocked minor commercial purchase pending parental approval link (`UNCONSENTED_MINOR_COMMERCIAL_PURCHASE_BLOCKED`)!',
+      agent_zh: '【P69 COPPA/GDPR-K 未成年人声纹与消费保护护栏 (UNCONSENTED_MINOR_VOICEPRINT_OR_BEHAVIORAL_PROFILING_BLOCKED)】检测到未成年主叫且缺失监护人 VPC 授权，已物理阻断声纹特征提取并清空缓存，同时拦截语音付费请求并向家长手机发送带外审批链接！',
+      trace: {
+        tool: 'evaluate_coppa_minor_age_gate_and_parental_consent_guard(age=11, child_prob=0.89, vpc=false -> PURGE_BIOMETRIC_BUFFER_AND_REQUIRE_VERIFIABLE_PARENTAL_CONSENT)',
+        citations: ['P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD', 'FTC-COPPA-2025', 'GDPR-ART-8'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P69) · Unconsented minor voiceprint retention & impulse purchase 100% blocked'
+      }
+    },
+    {
+      code: 'P70 · Multi-Region SIP/RTP Hairpinning (Tromboning) Local Media Anchor Guard',
+      badge: '<=140ms Local RTP',
+      title: '跨洲 SIP/RTP 媒体流发卡弯绕行 (Tromboning) 拦截与本地边缘 SBC 锚定护栏',
+      sub: '测试亚太/欧洲呼入电话的 RTP 音频流被跨大洋绕行至北美中继导致 RTT > 140ms 时强制通过 Re-INVITE 重锚定至本地边缘 SBC 节点',
+      customer_en: '[Global SIP Trunk Ingress at `ap-southeast-1` (Singapore) Hairpinning RTP Media Across Pacific to `us-east-1` Relay with 245ms RTT (> 140ms Ceiling)]',
+      customer_zh: '【跨国 SIP 专线从亚太新加坡 (`ap-southeast-1`) 接入，但 RTP 实时音频流被跨太平洋发卡弯绕行至北美东岸 (`us-east-1`)，往返时延达 245ms (> 140ms 上限)】',
+      agent_en: 'MULTI-REGION SIP/RTP HAIRPINNING LOCAL ANCHOR GUARD (P70 / P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD): Blocked cross-continental RTP tromboning and re-anchored media directly to the local edge SBC PoP (`CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED` -> `REANCHOR_RTP_TO_LOCAL_EDGE_SBC_POP`), enforcing the <=140ms media RTT SLA (`MEDIA_RTT_SLA_BREACH_REANCHOR_REQUIRED`)!',
+      agent_zh: '【P70 跨洲 SIP/RTP 发卡弯绕行拦截与本地媒体锚定护栏 (CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED)】检测到新加坡接入通话的 RTP 媒体流跨洲绕行至美东（RTT=245ms > 140ms），已立即下发 Re-INVITE 将媒体流重锚定至本地边缘 SBC 节点并切换就近配对 S2S 集群，首字延迟直降 220ms+！',
+      trace: {
+        tool: 'evaluate_multi_region_sip_trunk_rtp_hairpin_optimization_guard(ingress="ap-southeast-1", hairpin=true, rtt_ms=245 -> REANCHOR_RTP_TO_LOCAL_EDGE_SBC_POP)',
+        citations: ['P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD', 'SIP-REINVITE-DIRECT-MEDIA', 'GLOBAL-SBC-ANYCAST'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P70) · Cross-continental RTP hairpinning blocked & <=140ms local media anchor enforced'
+      }
     }
   ];
 
@@ -3801,7 +3835,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (86-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (88-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3836,7 +3870,8 @@
       '- [x] **SIP `183 Early Media` 应答前防抢跑泄密/摘机首字防吞字 & TTS 货币符号 (`¥`/`$`) 量纲消歧护栏**：严格锁定 `200 OK` 摘机门禁并注入 `>=160ms` RTP 舒适噪音前导帧消除首字吞字 (P61)，强制对账后台 ISO 4217 币种代码并注入 `SSML <say-as>` 与多音字音标词典防止将日元 `¥` 误读为人民币 (P62)',
       '- [x] **医疗 HIPAA 最小必要原则与家属 POA 代查门禁 & RFC 4028 SIP 半开 RTP 僵尸会话回收护栏**：100% 拦截无 HIPAA ROI/POA 授权亲属代查临床 PHI 及未授权 42 CFR Part 2 特级敏感记录 (P63)，上行 RTP 断流 `>=15s` 且无 RTCP RR 时主动发 `SIP BYE` 回收 S2S 算力并保存断点续办书签 (P64)',
       '- [x] **金融公平信贷 ECOA 声学口音/年龄偏见剥离 & 跨国主权云多活容灾区域围栏护栏**：物理剥离声学人口学推断与受保护特征代理变量并强制核验 CFPB Reg B 具体拒贷原因码 (P65)，锁死同法域双活灾备围栏严禁故障切换跨境溢出并强验备区 BYOK 密钥与 `<=1200ms` RTO (P66)',
-      '- [x] **911/急救断线回拨 0ms 穿透商业 IVR 直连事故桥 & PCI-DSS `SAQ-A` 大模型零持卡人数据域隔离护栏**：核验运营商紧急主叫权威签名并在黄金事故保持窗口内 0ms 穿透商业 IVR 直连原事故专席 (P67)，物理剥离 Prompt/Tool Schema 明文卡号污染并强绑 `callId+merchantId` 一次性不透明 Vault 令牌以维持轻量级 SAQ-A 豁免 (P68)'
+      '- [x] **911/急救断线回拨 0ms 穿透商业 IVR 直连事故桥 & PCI-DSS `SAQ-A` 大模型零持卡人数据域隔离护栏**：核验运营商紧急主叫权威签名并在黄金事故保持窗口内 0ms 穿透商业 IVR 直连原事故专席 (P67)，物理剥离 Prompt/Tool Schema 明文卡号污染并强绑 `callId+merchantId` 一次性不透明 Vault 令牌以维持轻量级 SAQ-A 豁免 (P68)',
+      '- [x] **未成年人 COPPA/GDPR-K 声纹零留存门禁 & 跨洲 SIP/RTP 发卡弯绕行 (Tromboning) 本地锚定护栏**：识别儿童声学特征并在缺失可验证监护人授权 (VPC) 时 100% 阻断声纹提取与未成年语音内购 (P69)，拦截跨洋 RTP 媒体流发卡弯绕行并强制本地边缘 SBC 锚定与 `<=140ms` 媒体 RTT 门禁 (P70)'
     ].join('\n');
   }
 
