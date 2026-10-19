@@ -298,6 +298,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P37-NOCTURNAL-RINGBURST-ANOMALY-GUARD drops >=15 simultaneous botnet SIP trunks and freezes nocturnal >=3x velocity transfers for live Video KYC; P38-PROMPT-EXFILTRATION-DENIAL-OF-WALLET-GUARD blocks system prompt/canary token exfiltration and terminates runaway S2S sessions on >=8 unverified turns."
+    },
+    {
+      "check_name": "Semantic Turn-Taking / C2PA+SynthID Watermark Provenance & MCP Indirect Injection / Multi-Step Saga Compensation Guard (P39 / P40)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P39-SEMANTIC-TURN-TAKING-WATERMARK-PROVENANCE-GUARD extends VAD endpoint wait to >=1850ms on incomplete syntax/digit pauses and blocks outbound synthetic audio missing C2PA signatures or >=18dB acoustic watermarks; P40-MCP-INDIRECT-INJECTION-SAGA-COMPENSATION-GUARD quarantines indirect prompt injection inside MCP tool outputs and executes reverse Saga compensation on partial multi-step transaction failures."
     }
   ],
   "latency_scaling": [

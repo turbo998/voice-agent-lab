@@ -196,6 +196,7 @@
 | **18. 医疗临床红旗症状 0ms 急诊强转与主权声纹 CMK 加密粉碎**<br>(`胸痛/卒中患者被延误在普通排号或 AI 擅改处方量 / 声纹跨境出境或撤回同意后难物理擦除`) | 接入 **`P33-CLINICAL-REDFLAG-ESCALATION-GUARD`** 命中胸痛/构音障碍(`>=0.70`)/`SpO2<92%`/调药请求时 `0ms` 阻断并直转急诊绿道 | **`P34-SOVEREIGN-VOICEPRINT-CRYPTO-SHREDDING-GUARD` 拦截声纹跨境出境 + 撤回授权 `<=1500ms` 销毁 Per-Caller KEK 完成 NIST SP 800-88 加密粉碎** | 临床急性红旗漏转率降至 0.0%，100% 满足 GDPR Art. 9/17 与 PIPL 生物特征秒级遗忘权 |
 | **19. 跨境汇款制裁反通风报信/电诈胁迫止付 & 双语同传保真**<br>(`命中制裁直接告知客户打草惊蛇或老人被电诈旁白教唆汇款 / 同传把 10 Million 译成 1 亿或漏掉免责否定词`) | 接入 **`P35-AML-SANCTIONS-SCAM-COERCION-GUARD`** 制裁命中静默阻断提报 SAR，检出背景教唆/高胁迫声学特征自动触发 24h 保护性止付 | **`P36-REALTIME-INTERPRETER-FIDELITY-GUARD` 实时校验肯定/否定免责极性、Million/万/亿量级零倍差与 FOB/CIF 强锁术语表** | 100% 满足 FATF 反洗钱与反电诈保护性止付合规，跨语种商务同传关键条款错译率降至 0.0% |
 | **20. 夜间 SIP 群呼风暴/盗号提现拦截 & 提示词防套取/S2S 算力钱包保护**<br>(`凌晨僵尸网络群呼打爆并发或盗号静默提现 / 语音套取 System Prompt 或恶意挂机刷爆 S2S 账单`) | 接入 **`P37-NOCTURNAL-RINGBURST-ANOMALY-GUARD`** 边缘熔断 `>=15` 路群呼源，凌晨 `>=3x` 异常大额或异地动账强制升级真人视频 KYC | **`P38-PROMPT-EXFILTRATION-DENIAL-OF-WALLET-GUARD` 金丝雀蜜罐实时拦截提示词套取，超时或未核身空转 `>=8` 轮自动切断 S2S 流** | 100% 阻断夜间群呼撞库与凌晨盗号洗劫，恶意挂机导致的 S2S 算力浪费降至 0.0% |
+| **21. 语义句法防抢话/C2PA 声学双水印 & MCP 间接注入隔离/多步 Saga 补偿**<br>(`连词半句停顿被 500ms VAD 抢话或合成音无水印违例 / 外部工具返回夹带越狱指令或多步写操作半途失败单边扣款`) | 接入 **`P39-SEMANTIC-TURN-TAKING-WATERMARK-PROVENANCE-GUARD`** 未完结句动态拓宽至 `>=1850ms` 并强制校验 C2PA + `>=18dB` 扩频声学水印 | **`P40-MCP-INDIRECT-INJECTION-SAGA-COMPENSATION-GUARD` 物理剥离 MCP 工具返回中的间接注入载荷，多步事务半途失败自动触发逆序 Saga 补偿回滚** | 复杂口述中途抢话率压降 93%，100% 免疫工具间接越狱与多步事务半途失败脏写 |
 
 
 

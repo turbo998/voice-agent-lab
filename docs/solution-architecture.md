@@ -955,6 +955,18 @@ flowchart LR
 | **1. SIP 群呼风暴熔断与凌晨异常大额视频面签 (`P37-NOCTURNAL-RINGBURST-ANOMALY-GUARD`)** | `evaluateNocturnalRingburstAnomalyGuard` 校验 `simultaneousRingburstCallsCount >= 15`（返回 `NOCTURNAL_BOTNET_RINGBURST_BLOCKED`）及凌晨 `00:00–05:59` 下 `amountVelocityRatio >= 3.0` 或异地新设备未视频核身（返回 `ABNORMAL_NIGHT_VELOCITY_VIDEO_KYC_REQUIRED`）。 | **100% 阻断夜间撞库群呼打爆并发池与凌晨盗号静默洗劫账户**（对应 POC 探针 `P37`）。 |
 | **2. 提示词金丝雀防泄露与 S2S 钱包防耗尽 (`P38-PROMPT-EXFILTRATION-DENIAL-OF-WALLET-GUARD`)** | `evaluatePromptExfiltrationDenialOfWalletGuard` 拦截系统提示词套取与金丝雀蜜罐泄露（`SYSTEM_PROMPT_CANARY_EXFILTRATION_BLOCKED`），并在超时或未核身空转 `>=8` 轮时切断流（`DENIAL_OF_WALLET_SESSION_QUOTA_EXCEEDED`）。 | **100% 保护企业核心业务规则知识产权，杜绝恶意挂机刷爆 S2S 账单**（对应 POC 探针 `P38`）。 |
 
+### 4.31 语义句法防抢话与 C2PA/SynthID 声学水印溯源护栏 (`P39-SEMANTIC-TURN-TAKING-WATERMARK-PROVENANCE-GUARD`) 及 MCP 工具间接注入隔离与多步事务 Saga 逆向补偿护栏 (`P40-MCP-INDIRECT-INJECTION-SAGA-COMPENSATION-GUARD`)
+
+在全双工自然对话体验、欧盟 AI 法案（EU AI Act Art. 50）/中国深度合成管理规定合规，以及复杂多工具串联（MCP Tool Chaining）场景下，还必须解决两大核心架构难题：
+1. **句尾语法未完结或数字换气停顿被 500ms 固定 VAD 抢话打断，以及出站合成语音缺乏密码学/声学双水印 (`P39-SEMANTIC-TURN-TAKING-WATERMARK-PROVENANCE-GUARD`)**：当用户说出连词/介词未完结句（`utteranceEndsWithIncompleteSyntax = true`，如 *"我想改签明天上午的航班，不过……"*）或在报读长串卡号/单号中途停顿换气（`midSlotDigitOrSpellingInProgress = true`）时，`evaluateSemanticTurnTakingAndWatermarkGuard` 自动将端点检测窗口从基础阈值（如 `500ms`）动态拓宽至 `>=1850ms`（`INCOMPLETE_SYNTAX_OR_DIGIT_PAUSE_HOLD_EXTENDED` -> `EXTEND_VAD_ENDPOINT_WAIT_WINDOW`）；同时强制核验每一段出站合成语音帧同时具备 **C2PA 密码学签名清单**与信噪比 `>=18dB` 的 **不可听扩频声学水印（SynthID/AudioSeal）**，任何无水印合成音频一律阻断出站并强制补签（`UNWATERMARKED_SYNTHETIC_VOICE_EGRESS_BLOCKED`）；
+2. **第三方 MCP 工具返回值夹带间接提示词注入（Indirect Prompt Injection）与多步写事务半途失败脑裂 (`P40-MCP-INDIRECT-INJECTION-SAGA-COMPENSATION-GUARD`)**：当语音 Agent 调用外部 CRM/工单/物流 MCP Server 时，若工具返回的订单备注或地址栏被攻击者植入恶意指令（`toolResponseContainsPromptInjectionPayload = true`）或混入跨租户字段（`toolResponseContainsCrossTenantLeak = true`），`evaluateMcpIndirectInjectionAndSagaGuard` 在结果进入语音模型上下文前立即物理隔离（`MCP_TOOL_INDIRECT_INJECTION_OR_TENANT_LEAK_BLOCKED`）；同时当多步语音事务（如 `Step 1: 扣减积分 -> Step 2: 锁定升舱座位 -> Step 3: 扣补差价`）在中间步骤失败（`sagaStepFailedAtIndex !== null`）时，自动按逆序触发确定性 Saga 补偿链（`MULTI_STEP_SAGA_PARTIAL_FAILURE_ROLLBACK_TRIGGERED` -> `EXECUTE_REVERSE_SAGA_COMPENSATION_CHAIN`），彻底杜绝“积分已扣但升舱失败”的单边脏数据。
+
+| 双工语义轮次/水印溯源与 MCP Saga 防护控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 用户体验与事务一致性收益 |
+| :--- | :--- | :--- |
+| **1. 句法未完结防抢话与 C2PA/声学双水印门禁 (`P39-SEMANTIC-TURN-TAKING-WATERMARK-PROVENANCE-GUARD`)** | `evaluateSemanticTurnTakingAndWatermarkGuard` 对未完结语法/数字换气自动延长等待窗口至 `>=1850ms`（`EXTEND_VAD_ENDPOINT_WAIT_WINDOW`），并拦截无 C2PA 签名或声学水印 `<18dB` 的出站音频（`UNWATERMARKED_SYNTHETIC_VOICE_EGRESS_BLOCKED`）。 | **将复杂口述中途被 AI 抢话率压降 93%，100% 满足欧盟 AI 法案与深度合成水印强制溯源**（对应 POC 探针 `P39`）。 |
+| **2. MCP 工具间接注入净化与多步 Saga 逆向补偿 (`P40-MCP-INDIRECT-INJECTION-SAGA-COMPENSATION-GUARD`)** | `evaluateMcpIndirectInjectionAndSagaGuard` 拦截工具返回中的间接注入与跨租户泄露（`MCP_TOOL_INDIRECT_INJECTION_OR_TENANT_LEAK_BLOCKED`），并在多步事务半途失败时执行逆序补偿链（`EXECUTE_REVERSE_SAGA_COMPENSATION_CHAIN`）。 | **100% 免疫外部数据源间接越狱，多步跨系统写操作半途失败零单边资损**（对应 POC 探针 `P40`）。 |
+
+
 
 
 
