@@ -5979,6 +5979,150 @@ export function evaluateCrossBorderDrActiveActiveFailoverGuard(
   };
 }
 
+export interface StilleEmergencyCallbackCnamReturnRouteGuardInput {
+  callId: string;
+  isPostEmergencyCallback: boolean;
+  callerOriginalPsapOrDispatcherId: string;
+  targetInboundQueueType: "GENERAL_COMMERCIAL_IVR" | "DEDICATED_PSAP_INCIDENT_RETURN_BRIDGE";
+  cnamVerifiedEmergencyAuthority: boolean;
+  incidentBridgeHoldTimeMinutesRemaining: number;
+}
+
+export interface StilleEmergencyCallbackCnamReturnRouteGuardDecision {
+  policyCode: "P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD";
+  callId: string;
+  emergencyReturnBridgeReady: boolean;
+  allowed: boolean;
+  reason:
+    | "EMERGENCY_CALLBACK_DIRECT_INCIDENT_BRIDGE_ROUTED"
+    | "EMERGENCY_CALLBACK_TRAPPED_IN_GENERAL_IVR_BLOCKED"
+    | "UNVERIFIED_CNAM_SPOOFED_EMERGENCY_CALLBACK_BLOCKED";
+  actionCode:
+    | "BYPASS_IVR_AND_RECONNECT_ORIGINAL_INCIDENT_SESSION"
+    | "ABORT_COMMERCIAL_IVR_AND_FORCE_INCIDENT_BRIDGE"
+    | "CHALLENGE_UNVERIFIED_EMERGENCY_CALLER_ID";
+  summaryZh: string;
+}
+
+/**
+ * Stage 37 (#76): P67 — Emergency PSAP / ER Triage Disconnected Callback Direct Incident-Bridge & IVR-Bypass Guard.
+ * Prevents two life-safety and security failures when an emergency call (911/112 PSAP, eCall dispatcher, or ER triage nurse) drops and the dispatcher dials back the enterprise trunk or virtual DID:
+ * 1) Emergency Callback Trapped in Commercial IVR (`isPostEmergencyCallback && targetInboundQueueType === "GENERAL_COMMERCIAL_IVR"`): when a PSAP dispatcher calls back within the sticky incident window (`incidentBridgeHoldTimeMinutesRemaining > 0`), routing them into a promotional IVR tree or general AI receptionist wastes critical seconds (`EMERGENCY_CALLBACK_TRAPPED_IN_GENERAL_IVR_BLOCKED`).
+ * 2) Spoofed Emergency Callback (`isPostEmergencyCallback && !cnamVerifiedEmergencyAuthority`): attacker spoofs a PSAP/police callback number without carrier STIR/SHAKEN / CNAM emergency authority verification to hijack an active incident bridge (`UNVERIFIED_CNAM_SPOOFED_EMERGENCY_CALLBACK_BLOCKED`).
+ */
+export function evaluateEmergencyCallbackCnamReturnRouteGuard(
+  input: StilleEmergencyCallbackCnamReturnRouteGuardInput,
+): StilleEmergencyCallbackCnamReturnRouteGuardDecision {
+  if (input.isPostEmergencyCallback && !input.cnamVerifiedEmergencyAuthority) {
+    return {
+      policyCode: "P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD",
+      callId: input.callId,
+      emergencyReturnBridgeReady: false,
+      allowed: false,
+      reason: "UNVERIFIED_CNAM_SPOOFED_EMERGENCY_CALLBACK_BLOCKED",
+      actionCode: "CHALLENGE_UNVERIFIED_EMERGENCY_CALLER_ID",
+      summaryZh: `【P67 紧急回呼防伪造门禁 · 拦截未验签伪造 911/急救中心回拨 (UNVERIFIED_CNAM_SPOOFED_EMERGENCY_CALLBACK_BLOCKED)】通话 ${input.callId} 声称为急救调度台 (${input.callerOriginalPsapOrDispatcherId}) 断线回拨，但未通过运营商紧急主叫权威验签 (cnamVerifiedEmergencyAuthority=false)，已拦截直接桥接请求！`,
+    };
+  }
+
+  if (
+    input.isPostEmergencyCallback &&
+    input.incidentBridgeHoldTimeMinutesRemaining > 0 &&
+    input.targetInboundQueueType === "GENERAL_COMMERCIAL_IVR"
+  ) {
+    return {
+      policyCode: "P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD",
+      callId: input.callId,
+      emergencyReturnBridgeReady: false,
+      allowed: false,
+      reason: "EMERGENCY_CALLBACK_TRAPPED_IN_GENERAL_IVR_BLOCKED",
+      actionCode: "ABORT_COMMERCIAL_IVR_AND_FORCE_INCIDENT_BRIDGE",
+      summaryZh: `【P67 紧急电话断线回拨零延迟穿透护栏 · 严禁落入普通商业 IVR 排队 (EMERGENCY_CALLBACK_TRAPPED_IN_GENERAL_IVR_BLOCKED)】通话 ${input.callId} 为急救中心/胸痛中心 (${input.callerOriginalPsapOrDispatcherId}) 在黄金黏性窗口（剩余 ${input.incidentBridgeHoldTimeMinutesRemaining} 分钟）内的断线回拨！已强制跳过普通商业 IVR 菜单并 0ms 直连原事故会话当事人/值班长。`,
+    };
+  }
+
+  return {
+    policyCode: "P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD",
+    callId: input.callId,
+    emergencyReturnBridgeReady: true,
+    allowed: true,
+    reason: "EMERGENCY_CALLBACK_DIRECT_INCIDENT_BRIDGE_ROUTED",
+    actionCode: "BYPASS_IVR_AND_RECONNECT_ORIGINAL_INCIDENT_SESSION",
+    summaryZh: `【P67 紧急断线回拨直连通道就绪】通话 ${input.callId} 已通过急救权威主叫核验并穿透 IVR 直连原事故专席 (${input.callerOriginalPsapOrDispatcherId})。`,
+  };
+}
+
+export interface StillePciSaqAGatewayTokenScopeIsolationGuardInput {
+  callId: string;
+  agentPromptContextContainsCardDigits: boolean;
+  llmToolSchemaAcceptsRawPanOrCvv: boolean;
+  paymentGatewayTokenFormat: "OPAQUE_ONE_TIME_VAULT_TOKEN" | "REVERSIBLE_BASE64_CARD" | "PLAINTEXT_DIGITS";
+  tokenBoundToCallIdAndMerchantId: boolean;
+}
+
+export interface StillePciSaqAGatewayTokenScopeIsolationGuardDecision {
+  policyCode: "P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD";
+  callId: string;
+  saqAScopeIsolated: boolean;
+  allowed: boolean;
+  reason:
+    | "PCI_SAQ_A_ZERO_LLM_CDE_EXPOSURE_VERIFIED"
+    | "LLM_PROMPT_OR_TOOL_SCHEMA_CDE_CONTAMINATION_BLOCKED"
+    | "UNBOUND_OR_REVERSIBLE_PAYMENT_TOKEN_REJECTED";
+  actionCode:
+    | "AUTHORIZE_WITH_SCOPED_ONE_TIME_VAULT_TOKEN"
+    | "PURGE_LLM_CONTEXT_AND_STRIP_RAW_CARD_SCHEMA_FIELDS"
+    | "REJECT_INSECURE_TOKEN_AND_ROTATE_VAULT_NONCE";
+  summaryZh: string;
+}
+
+/**
+ * Stage 37 (#77): P68 — PCI-DSS v4.0 SAQ-A LLM Zero-Cardholder-Data Scope Isolation & Single-Use Vault Token Binding Guard.
+ * Ensures the AI Voice Agent cluster remains 100% out of PCI Cardholder Data Environment (CDE) scope (qualifying for light SAQ-A rather than heavy SAQ-D audit):
+ * 1) LLM Context or Tool Schema CDE Contamination (`agentPromptContextContainsCardDigits || llmToolSchemaAcceptsRawPanOrCvv`): if card digits enter the LLM context window or if a function-calling tool schema defines `card_number`/`cvv` parameters that invite the LLM to solicit/process raw card data, the entire LLM cluster falls into PCI SAQ-D scope (`LLM_PROMPT_OR_TOOL_SCHEMA_CDE_CONTAMINATION_BLOCKED`).
+ * 2) Insecure or Unbound Payment Token (`paymentGatewayTokenFormat !== "OPAQUE_ONE_TIME_VAULT_TOKEN" || !tokenBoundToCallIdAndMerchantId`): edge SBC DTMF capture must emit an opaque, single-use vault token cryptographically bound to `callId` + `merchantId` (`UNBOUND_OR_REVERSIBLE_PAYMENT_TOKEN_REJECTED`).
+ */
+export function evaluatePciSaqAGatewayTokenScopeIsolationGuard(
+  input: StillePciSaqAGatewayTokenScopeIsolationGuardInput,
+): StillePciSaqAGatewayTokenScopeIsolationGuardDecision {
+  if (input.agentPromptContextContainsCardDigits || input.llmToolSchemaAcceptsRawPanOrCvv) {
+    return {
+      policyCode: "P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD",
+      callId: input.callId,
+      saqAScopeIsolated: false,
+      allowed: false,
+      reason: "LLM_PROMPT_OR_TOOL_SCHEMA_CDE_CONTAMINATION_BLOCKED",
+      actionCode: "PURGE_LLM_CONTEXT_AND_STRIP_RAW_CARD_SCHEMA_FIELDS",
+      summaryZh: `【P68 PCI-DSS v4.0 SAQ-A 零持卡人数据域隔离护栏 · 阻断大模型污染 CDE 审计边界 (LLM_PROMPT_OR_TOOL_SCHEMA_CDE_CONTAMINATION_BLOCKED)】通话 ${input.callId} 检测到 Prompt 上下文残留卡号数字=${input.agentPromptContextContainsCardDigits} 或工具 Schema 开放明文 PAN/CVV 入参=${input.llmToolSchemaAcceptsRawPanOrCvv}！已立即净化上下文并剥离明文卡号字段，防止推理集群坠入重度 SAQ-D 审计范围。`,
+    };
+  }
+
+  if (
+    input.paymentGatewayTokenFormat !== "OPAQUE_ONE_TIME_VAULT_TOKEN" ||
+    !input.tokenBoundToCallIdAndMerchantId
+  ) {
+    return {
+      policyCode: "P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD",
+      callId: input.callId,
+      saqAScopeIsolated: false,
+      allowed: false,
+      reason: "UNBOUND_OR_REVERSIBLE_PAYMENT_TOKEN_REJECTED",
+      actionCode: "REJECT_INSECURE_TOKEN_AND_ROTATE_VAULT_NONCE",
+      summaryZh: `【P68 支付网关一次性 Vault 令牌绑定校验失败 (UNBOUND_OR_REVERSIBLE_PAYMENT_TOKEN_REJECTED)】通话 ${input.callId} 的支付令牌格式为 ${input.paymentGatewayTokenFormat}，或未与当前 CallID+商户号强绑定 (bound=${input.tokenBoundToCallIdAndMerchantId})，已拒绝扣款调用并强制轮换 Vault Nonce！`,
+    };
+  }
+
+  return {
+    policyCode: "P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD",
+    callId: input.callId,
+    saqAScopeIsolated: true,
+    allowed: true,
+    reason: "PCI_SAQ_A_ZERO_LLM_CDE_EXPOSURE_VERIFIED",
+    actionCode: "AUTHORIZE_WITH_SCOPED_ONE_TIME_VAULT_TOKEN",
+    summaryZh: `【P68 PCI-DSS SAQ-A 域外隔离核验通过】通话 ${input.callId} 大模型零持卡人数据接触，仅凭绑定当前通话的边缘一次性不透明 Vault 令牌完成扣款授权。`,
+  };
+}
+
 
 
 

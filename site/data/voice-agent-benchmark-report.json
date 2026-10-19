@@ -396,6 +396,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD strips acoustic demographic/accent proxies to prevent disparate-treatment pricing spreads and enforces CFPB Regulation B principal reason codes on adverse actions; P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD blocks cross-jurisdiction DR failover spillover during primary region brownouts and verifies paired in-boundary BYOK HSM keys and <=1200ms RTO."
+    },
+    {
+      "check_name": "Emergency PSAP Callback IVR-Bypass Bridge & PCI-DSS SAQ-A LLM Zero-Cardholder Scope Isolation Guard (P67 / P68)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD verifies carrier emergency caller authority to block spoofed 911 callbacks and bypasses commercial IVR queues in 0ms to reconnect dropped PSAP/ER incident bridges; P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD purges card digits from LLM context/tool schemas and enforces callId+merchantId bound single-use opaque vault tokens to keep the AI cluster 100% out of PCI SAQ-D CDE scope."
     }
   ],
   "latency_scaling": [

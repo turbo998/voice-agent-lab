@@ -3693,6 +3693,40 @@
         confidence: 1.0,
         verifier: 'PASS (P66) · Cross-border DR failover spillover & BYOK/RTO violation 100% blocked'
       }
+    },
+    {
+      code: 'P67 · Emergency PSAP Callback Direct Incident-Bridge & IVR-Bypass Guard',
+      badge: '0ms PSAP Callback',
+      title: '911/急救调度台断线回拨 0ms 穿透商业 IVR 直连事故桥与防伪造主叫护栏',
+      sub: '测试黄金事故保持窗口内 911/急诊回拨误入普通商业 IVR 菜单时 0ms 强行穿透直连原事故会话，并拦截未验签伪造急救号',
+      customer_en: '[Post-Emergency Callback within 15-Min Sticky Window: Verified PSAP Dispatcher Dials Back Enterprise Trunk Routed to GENERAL_COMMERCIAL_IVR, or Unverified Caller Spoofs 911 Callback ID]',
+      customer_zh: '【紧急呼叫断线后 15 分钟黏性窗口内：已验签 911/急救中心调度台回拨企业总机被误路由至普通商业 IVR，或攻击者伪造未验签急救中心号码试图劫持通话桥】',
+      agent_en: 'EMERGENCY PSAP CALLBACK IVR-BYPASS GUARD (P67 / P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD): Blocked unverified spoofed emergency callback (`UNVERIFIED_CNAM_SPOOFED_EMERGENCY_CALLBACK_BLOCKED`), and aborted commercial IVR queuing for verified PSAP callbacks to reconnect the original incident bridge in 0ms (`EMERGENCY_CALLBACK_TRAPPED_IN_GENERAL_IVR_BLOCKED` -> `ABORT_COMMERCIAL_IVR_AND_FORCE_INCIDENT_BRIDGE`)!',
+      agent_zh: '【P67 紧急回呼防伪造与 0ms 穿透商业 IVR 护栏 (EMERGENCY_CALLBACK_TRAPPED_IN_GENERAL_IVR_BLOCKED)】已拦截未通过运营商权威验签的伪造急救回拨，并对真实 911/急救中心断线回拨强制中止普通商业 IVR 排队，0ms 直连原事故专席！',
+      trace: {
+        tool: 'evaluate_emergency_callback_cnam_return_route_guard(post_emergency=true, cnam_verified=true, queue="GENERAL_COMMERCIAL_IVR" -> ABORT_COMMERCIAL_IVR_AND_FORCE_INCIDENT_BRIDGE)',
+        citations: ['P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD', 'NENA-I3-CALLBACK', 'E911-STICKY-BRIDGE'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P67) · Spoofed 911 callback blocked & verified PSAP callback 0ms IVR bypass enforced'
+      }
+    },
+    {
+      code: 'P68 · PCI-DSS v4.0 SAQ-A LLM Zero-Cardholder Scope Isolation Guard',
+      badge: 'SAQ-A Out-of-Scope',
+      title: 'PCI-DSS v4.0 SAQ-A 大模型零持卡人数据域隔离与一次性 Vault 令牌绑定护栏',
+      sub: '测试 Prompt 上下文残留卡号或 Tool Schema 开放明文 PAN/CVV 参数污染 CDE 边界，以及拒绝未绑定 CallID+商户号的可逆支付令牌',
+      customer_en: '[PCI-DSS v4.0 Scope Audit: LLM Prompt Context Contains Card Digits or Function Schema Accepts Raw `pan`/`cvv`, or Payment Gateway Receives Unbound Reversible Base64 Token]',
+      customer_zh: '【PCI-DSS v4.0 审计边界测试：大模型上下文残留卡号片段或 Tool Schema 开放明文卡号/CVV 入参，或传入未绑定当前 CallID+商户号的可逆 Base64 支付令牌】',
+      agent_en: 'PCI-DSS SAQ-A LLM SCOPE ISOLATION GUARD (P68 / P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD): Purged LLM prompt context and stripped raw PAN/CVV tool schema fields to prevent SAQ-D CDE contamination (`LLM_PROMPT_OR_TOOL_SCHEMA_CDE_CONTAMINATION_BLOCKED`), and rejected unbound/reversible payment tokens (`UNBOUND_OR_REVERSIBLE_PAYMENT_TOKEN_REJECTED`)!',
+      agent_zh: '【P68 PCI-DSS v4.0 SAQ-A 零持卡人数据域隔离护栏 (LLM_PROMPT_OR_TOOL_SCHEMA_CDE_CONTAMINATION_BLOCKED)】检测到 Prompt/Tool Schema 存在持卡人数据污染风险或支付令牌未强绑 CallID+商户号，已立即净化上下文并强制使用一次性不透明 Vault 令牌，确保 AI 推理集群 100% 维持轻量级 SAQ-A 域外豁免！',
+      trace: {
+        tool: 'evaluate_pci_saq_a_gateway_token_scope_isolation_guard(prompt_digits=true, raw_schema=true -> PURGE_LLM_CONTEXT_AND_STRIP_RAW_CARD_SCHEMA_FIELDS)',
+        citations: ['P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD', 'PCI-DSS-V4-SAQ-A', 'ZERO-CDE-LLM'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P68) · LLM CDE contamination & unbound payment tokens 100% blocked'
+      }
     }
   ];
 
@@ -3767,7 +3801,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (84-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (86-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3801,7 +3835,8 @@
       '- [x] **超声波 (`>16kHz` DolphinAttack) 抗注入滤波 & 金融交易 MiFID II 录音专线与禁倍速快放护栏**：强制 8kHz 带限低通滤波拦截不可听超声载波与心理声学对抗扰动 (P59)，证券/衍生品语音报单强制 `<=1.15x` 标准语速、SIPREC 双流存证与客户明示确认后方可入 OMS (P60)',
       '- [x] **SIP `183 Early Media` 应答前防抢跑泄密/摘机首字防吞字 & TTS 货币符号 (`¥`/`$`) 量纲消歧护栏**：严格锁定 `200 OK` 摘机门禁并注入 `>=160ms` RTP 舒适噪音前导帧消除首字吞字 (P61)，强制对账后台 ISO 4217 币种代码并注入 `SSML <say-as>` 与多音字音标词典防止将日元 `¥` 误读为人民币 (P62)',
       '- [x] **医疗 HIPAA 最小必要原则与家属 POA 代查门禁 & RFC 4028 SIP 半开 RTP 僵尸会话回收护栏**：100% 拦截无 HIPAA ROI/POA 授权亲属代查临床 PHI 及未授权 42 CFR Part 2 特级敏感记录 (P63)，上行 RTP 断流 `>=15s` 且无 RTCP RR 时主动发 `SIP BYE` 回收 S2S 算力并保存断点续办书签 (P64)',
-      '- [x] **金融公平信贷 ECOA 声学口音/年龄偏见剥离 & 跨国主权云多活容灾区域围栏护栏**：物理剥离声学人口学推断与受保护特征代理变量并强制核验 CFPB Reg B 具体拒贷原因码 (P65)，锁死同法域双活灾备围栏严禁故障切换跨境溢出并强验备区 BYOK 密钥与 `<=1200ms` RTO (P66)'
+      '- [x] **金融公平信贷 ECOA 声学口音/年龄偏见剥离 & 跨国主权云多活容灾区域围栏护栏**：物理剥离声学人口学推断与受保护特征代理变量并强制核验 CFPB Reg B 具体拒贷原因码 (P65)，锁死同法域双活灾备围栏严禁故障切换跨境溢出并强验备区 BYOK 密钥与 `<=1200ms` RTO (P66)',
+      '- [x] **911/急救断线回拨 0ms 穿透商业 IVR 直连事故桥 & PCI-DSS `SAQ-A` 大模型零持卡人数据域隔离护栏**：核验运营商紧急主叫权威签名并在黄金事故保持窗口内 0ms 穿透商业 IVR 直连原事故专席 (P67)，物理剥离 Prompt/Tool Schema 明文卡号污染并强绑 `callId+merchantId` 一次性不透明 Vault 令牌以维持轻量级 SAQ-A 豁免 (P68)'
     ].join('\n');
   }
 

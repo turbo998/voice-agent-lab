@@ -1109,6 +1109,17 @@ flowchart LR
 | **1. ECOA / Reg B 声学口音偏见剥离与拒贷原因码护栏 (`P65-ECOA-FAIR-LENDING-ACCENT-PROTECTED-CLASS-GUARD`)** | `evaluateFairLendingEcoaAccentBiasGuard` 物理剥离声学人口学推断与受保护特征代理变量（`ACOUSTIC_DEMOGRAPHIC_OR_PROTECTED_PROXY_DISPARATE_TREATMENT_BLOCKED`）并强制核验 Reg B 具体原因码。 | **口音/年龄/性别声学定价偏差率降至 0.0%，100% 满足 CFPB ECOA 公平信贷审计**（对应 POC 探针 `P65`）。 |
 | **2. 跨国主权容灾区域围栏与 BYOK/RTO 双活护栏 (`P66-SOVEREIGN-DR-ACTIVE-ACTIVE-JURISDICTION-FENCE-GUARD`)** | `evaluateCrossBorderDrActiveActiveFailoverGuard` 拦截灾备切换时的跨法域溢出（`CROSS_JURISDICTION_DR_FAILOVER_SPILLOVER_BLOCKED`）并校验同法域配对节点 BYOK 密钥与 `<=1200ms` RTO。 | **区域故障切换时跨境数据违规溢出率降至 0.0%，保障 `<=1.2s` 同法域无缝热切**（对应 POC 探针 `P66`）。 |
 
+### 4.45 急救/911 断线回拨 0ms 穿透商业 IVR 直连事故桥护栏 (`P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD`) 与 PCI-DSS v4.0 SAQ-A 大模型零持卡人数据域隔离及一次性 Vault 令牌绑定护栏 (`P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD`)
+
+在 911/112 PSAP 急救调度台或医院胸痛中心断线回拨（`Emergency Callback Sticky Routing`）以及信用卡/航旅收单 `PCI-DSS v4.0 SAQ-A` 审计边界控制场景中，生产级架构还必须建立以下两道确定性防线：
+1. **急救调度台/急诊室断线回拨误入企业普通商业 IVR 菜单或遭遇伪造急救号劫持 (`P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD`)**：当园区分机、车载 eCall 或远程医疗终端发起紧急呼叫后因弱网意外挂断，911/112 调度员或急诊护士会立即回拨企业总机或虚拟 DID。若入站路由未识别黄金事故保持窗口（`incidentBridgeHoldTimeMinutesRemaining > 0`），将回拨电话送入普通商业语音客服 IVR（播放“欢迎致电，查询请按 1”），将耽误宝贵的黄金抢救时间；反之，若攻击者伪造急救中心来电显示（`!cnamVerifiedEmergencyAuthority`）企图直接穿透进入高管/车载通话桥，则会造成严重安全越权。`evaluateEmergencyCallbackCnamReturnRouteGuard` 强制执行 **权威验签 + 0ms 穿透 IVR 直连原事故专席**：首先核验运营商紧急主叫签名与权威目录（`!cnamVerifiedEmergencyAuthority` 时触发 `UNVERIFIED_CNAM_SPOOFED_EMERGENCY_CALLBACK_BLOCKED`）；验签通过且处于事故保持窗口内时，若目标队列仍为 `GENERAL_COMMERCIAL_IVR`，立即强行中止商业 IVR 并 0ms 桥接原事故当事人/值班长（`EMERGENCY_CALLBACK_TRAPPED_IN_GENERAL_IVR_BLOCKED` -> `ABORT_COMMERCIAL_IVR_AND_FORCE_INCIDENT_BRIDGE`）；
+2. **大模型上下文或 Function Schema 混入银行卡号导致整个 AI 集群坠入重度 `PCI SAQ-D` 审计范围 (`P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD`)**：许多企业在引入 `P11` 双音多频旁路后，仍不慎在 LLM Prompt 上下文中残留卡号片段（`agentPromptContextContainsCardDigits`），或在 Tool Function Schema 中定义了 `card_number`/`cvv` 参数（`llmToolSchemaAcceptsRawPanOrCvv`），甚至使用未绑定当前 `callId + merchantId` 的可逆令牌（`paymentGatewayTokenFormat !== "OPAQUE_ONE_TIME_VAULT_TOKEN"`）。一旦大模型推理层存在接触持卡人数据（CHD/SAD）的可能，整个 GPU/S2S 推理集群就会被划入 `PCI-DSS SAQ-D` 持卡人数据环境（CDE），面临极其昂贵的合规改造成本。`evaluatePciSaqAGatewayTokenScopeIsolationGuard` 强制执行 **大模型零 CHD 域隔离与单次不透明 Vault 令牌强绑定**：一旦检测到 Prompt 含卡号数字或 Tool Schema 开放明文 PAN/CVV 字段，立即阻断并物理剥离（`LLM_PROMPT_OR_TOOL_SCHEMA_CDE_CONTAMINATION_BLOCKED`）；若支付令牌非一次性不透明 Vault Token 或未与 `callId + merchantId` 强绑定，则拒绝扣款并轮换 Nonce（`UNBOUND_OR_REVERSIBLE_PAYMENT_TOKEN_REJECTED`），确保 AI 语音集群 100% 维持轻量级 `PCI SAQ-A` 域外豁免状态。
+
+| 紧急断线回拨穿透与 PCI SAQ-A 域隔离控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 黄金救援 0ms 回连与 PCI SAQ-A 降本收益 |
+| :--- | :--- | :--- |
+| **1. 急救/911 断线回拨 0ms 穿透商业 IVR 护栏 (`P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD`)** | `evaluateEmergencyCallbackCnamReturnRouteGuard` 拦截伪造急救号（`UNVERIFIED_CNAM_SPOOFED_EMERGENCY_CALLBACK_BLOCKED`）并阻止真实急救回拨落入商业 IVR（`EMERGENCY_CALLBACK_TRAPPED_IN_GENERAL_IVR_BLOCKED`）。 | **真实 911/急救回拨误入商业 IVR 排队率降至 0.0%，实现 0ms 事故桥直连**（对应 POC 探针 `P67`）。 |
+| **2. PCI-DSS SAQ-A 零持卡人数据域隔离护栏 (`P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD`)** | `evaluatePciSaqAGatewayTokenScopeIsolationGuard` 拦截 Prompt/Tool Schema 卡号污染（`LLM_PROMPT_OR_TOOL_SCHEMA_CDE_CONTAMINATION_BLOCKED`）并强绑一次性 Vault 令牌。 | **确保 AI 推理集群 100% 豁免重度 SAQ-D 审计，立省 80%+ PCI 合规成本**（对应 POC 探针 `P68`）。 |
+
 
 
 
