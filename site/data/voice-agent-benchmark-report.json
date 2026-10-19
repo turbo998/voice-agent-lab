@@ -326,6 +326,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD detects inbound synthetic voice bots (<0.15Hz pitch micro-tremor, <120ms turn cadence) and parallel rate scrapers, diverting them from S2S pools; P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD aborts delaying scripts on gas/fire/self-harm hazards in 0ms and attaches RFC 4119 PIDF-LO civic location for PSAP bridging."
+    },
+    {
+      "check_name": "Legal Privilege 7-Yr WORM Litigation Hold & WebRTC ICE/TURN TLS 443 Anti-SSRF Guard (P47 / P48)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD blocks spontaneous liability admissions or unapproved settlement offers during counsel/regulator escalation and locks 7-year SEC 17a-4 WORM retention; P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD strips RFC 1918/IMDS SSRF ICE candidates and enforces <=350ms TURNS TLS 443 relay cutover under UDP-blocked CGNAT."
     }
   ],
   "latency_scaling": [

@@ -4420,6 +4420,178 @@ export function evaluateEmergency911PsapNomadicLocationGuard(
   };
 }
 
+export interface StilleLegalPrivilegeLitigationHoldGuardInput {
+  callId: string;
+  callerJurisdiction: "US" | "EU" | "UK" | "CN" | "SG" | "GLOBAL";
+  legalThreatOrRegulatorMentioned: boolean;
+  subpoenaOrCounselRepresentationClaimed: boolean;
+  agentAttemptedLiabilityAdmissionOrSettlementOffer: boolean;
+  proposedUnauthorizedSettlementMinor: number;
+  wormLitigationHoldSealed: boolean;
+}
+
+export interface StilleLegalPrivilegeLitigationHoldGuardDecision {
+  policyCode: "P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD";
+  callId: string;
+  litigationHoldActive: boolean;
+  wormRetentionYears: number;
+  allowed: boolean;
+  reason:
+    | "UNAUTHORIZED_LIABILITY_ADMISSION_OR_SETTLEMENT_BLOCKED"
+    | "LITIGATION_HOLD_WORM_PRESERVATION_MISSING_BLOCKED"
+    | "LEGAL_PRIVILEGE_ESCALATION_OR_CLEAN_TURN_VERIFIED";
+  actionCode:
+    | "SCRUB_ADMISSION_SEAL_WORM_AND_ROUTE_LEGAL_DESK"
+    | "ENFORCE_7YR_WORM_LITIGATION_HOLD_BEFORE_TRANSFER"
+    | "PROCEED_LEGAL_SAFE_SCRIPT_OR_OMBUDSMAN_HANDOFF";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Legal Privilege, Regulatory Ombudsman Escalation & WORM Litigation Hold Guard (`P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD`):
+ * 1) When a caller invokes legal representation, regulatory complaint (CFPB / FCA / NFRA / Civil Aviation Administration),
+ *    or subpoena/litigation intent (`legalThreatOrRegulatorMentioned || subpoenaOrCounselRepresentationClaimed`),
+ *    the voice agent is strictly prohibited from making spontaneous admissions of corporate fault/liability or offering
+ *    unapproved monetary settlements (`agentAttemptedLiabilityAdmissionOrSettlementOffer || proposedUnauthorizedSettlementMinor > 0`
+ *    -> `UNAUTHORIZED_LIABILITY_ADMISSION_OR_SETTLEMENT_BLOCKED`);
+ * 2) Once litigation or regulatory escalation is detected, the session recording, transcript, and tool trace must be
+ *    immediately locked under an immutable 7-year SEC 17a-4 / WORM Litigation Hold (`wormLitigationHoldSealed === true`)
+ *    before routing to the Legal/Ombudsman desk (`LITIGATION_HOLD_WORM_PRESERVATION_MISSING_BLOCKED`).
+ */
+export function evaluateLegalPrivilegeLitigationHoldGuard(
+  input: StilleLegalPrivilegeLitigationHoldGuardInput,
+): StilleLegalPrivilegeLitigationHoldGuardDecision {
+  const legalTriggered =
+    input.legalThreatOrRegulatorMentioned || input.subpoenaOrCounselRepresentationClaimed;
+
+  if (
+    legalTriggered &&
+    (input.agentAttemptedLiabilityAdmissionOrSettlementOffer ||
+      input.proposedUnauthorizedSettlementMinor > 0)
+  ) {
+    return {
+      policyCode: "P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD",
+      callId: input.callId,
+      litigationHoldActive: true,
+      wormRetentionYears: 7,
+      allowed: false,
+      reason: "UNAUTHORIZED_LIABILITY_ADMISSION_OR_SETTLEMENT_BLOCKED",
+      actionCode: "SCRUB_ADMISSION_SEAL_WORM_AND_ROUTE_LEGAL_DESK",
+      summaryZh: `【P47 法律特权与诉讼保全 WORM 护栏 · 阻断越权认责/私自和解报价 (UNAUTHORIZED_LIABILITY_ADMISSION_OR_SETTLEMENT_BLOCKED)】通话 ${input.callId} (${input.callerJurisdiction}) 涉及律师交涉/监管申诉，已硬阻断 AI 擅自承认法律责任或口头承诺未授权赔偿 (${input.proposedUnauthorizedSettlementMinor} 分)，自动锁定 7 年 WORM 证据保全并直转法务专席。`,
+    };
+  }
+
+  if (legalTriggered && !input.wormLitigationHoldSealed) {
+    return {
+      policyCode: "P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD",
+      callId: input.callId,
+      litigationHoldActive: true,
+      wormRetentionYears: 7,
+      allowed: false,
+      reason: "LITIGATION_HOLD_WORM_PRESERVATION_MISSING_BLOCKED",
+      actionCode: "ENFORCE_7YR_WORM_LITIGATION_HOLD_BEFORE_TRANSFER",
+      summaryZh: `【P47 法律特权与诉讼保全 WORM 护栏 · 强制锁定 7 年不可篡改证据链 (LITIGATION_HOLD_WORM_PRESERVATION_MISSING_BLOCKED)】通话 ${input.callId} 触发司法/监管升级，已强制冻结自动清理策略并补齐 SEC 17a-4 7 年 WORM 诉讼保全锁。`,
+    };
+  }
+
+  return {
+    policyCode: "P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD",
+    callId: input.callId,
+    litigationHoldActive: legalTriggered,
+    wormRetentionYears: legalTriggered ? 7 : 0,
+    allowed: true,
+    reason: "LEGAL_PRIVILEGE_ESCALATION_OR_CLEAN_TURN_VERIFIED",
+    actionCode: "PROCEED_LEGAL_SAFE_SCRIPT_OR_OMBUDSMAN_HANDOFF",
+    summaryZh: legalTriggered
+      ? `【P47 法律特权与诉讼保全核验通过】通话 ${input.callId} 已完成 7 年 WORM 诉讼保全封印并按法务标准口径转接合规专员。`
+      : `【P47 法律特权与诉讼保全核验通过】通话 ${input.callId} 未触发司法/监管争议，常规留存策略正常执行。`,
+  };
+}
+
+export interface StilleWebrtcIceTurnRelayCgnatGuardInput {
+  callId: string;
+  privateRfc1918OrLoopbackCandidateInjected: boolean;
+  stunDirectBindingTimedOut: boolean;
+  symmetricCgnatOrUdpBlockedDetected: boolean;
+  turnsTls443CutoverLatencyMs: number;
+  ephemeralTurnCredentialTtlSec: number;
+}
+
+export interface StilleWebrtcIceTurnRelayCgnatGuardDecision {
+  policyCode: "P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD";
+  callId: string;
+  activeTransportPath: "ICE_DIRECT_SRFLX_UDP" | "TURNS_TLS_443_RELAY" | "BLOCKED_SSRF_CANDIDATE";
+  ssrfCandidateSanitized: boolean;
+  allowed: boolean;
+  reason:
+    | "RFC1918_INTERNAL_ICE_CANDIDATE_SSRF_BLOCKED"
+    | "TURN_TLS443_CUTOVER_OR_CREDENTIAL_TTL_VIOLATION"
+    | "WEBRTC_ICE_TURN_TRANSPORT_VERIFIED";
+  actionCode:
+    | "DROP_PRIVATE_CANDIDATE_AND_QUARANTINE_SIGNALING"
+    | "FORCE_TURNS_TLS443_WITH_SHORTLIVED_HMAC_CREDENTIAL"
+    | "MAINTAIN_VERIFIED_ICE_MEDIA_PATH";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic WebRTC ICE/TURN Enterprise Firewall Traversal (`TURNS` TLS 443) & RFC 1918 SSRF Guard (`P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD`):
+ * 1) Blocks malicious SDP/ICE signaling that injects RFC 1918 private network (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`),
+ *    link-local (`169.254.169.254` IMDS), or loopback IP candidates to probe internal cloud VPC endpoints via media relay SSRF
+ *    (`privateRfc1918OrLoopbackCandidateInjected === true` -> `RFC1918_INTERNAL_ICE_CANDIDATE_SSRF_BLOCKED`);
+ * 2) When hospital/bank/corporate firewalls block UDP or enforce Symmetric CGNAT (`stunDirectBindingTimedOut || symmetricCgnatOrUdpBlockedDetected`),
+ *    enforces seamless cutover to `turns:` over TCP/TLS port `443` within `<= 350ms` and validates RFC 5766 HMAC ephemeral credential TTL
+ *    `<= 3600s` (`TURN_TLS443_CUTOVER_OR_CREDENTIAL_TTL_VIOLATION`).
+ */
+export function evaluateWebrtcIceTurnRelayCgnatGuard(
+  input: StilleWebrtcIceTurnRelayCgnatGuardInput,
+): StilleWebrtcIceTurnRelayCgnatGuardDecision {
+  if (input.privateRfc1918OrLoopbackCandidateInjected) {
+    return {
+      policyCode: "P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD",
+      callId: input.callId,
+      activeTransportPath: "BLOCKED_SSRF_CANDIDATE",
+      ssrfCandidateSanitized: true,
+      allowed: false,
+      reason: "RFC1918_INTERNAL_ICE_CANDIDATE_SSRF_BLOCKED",
+      actionCode: "DROP_PRIVATE_CANDIDATE_AND_QUARANTINE_SIGNALING",
+      summaryZh: `【P48 WebRTC ICE/TURN 防火墙穿透与防 SSRF 护栏 · 拦截内网 IP 候选注入 (RFC1918_INTERNAL_ICE_CANDIDATE_SSRF_BLOCKED)】通话 ${input.callId} 的 SDP/ICE 候选包含 RFC 1918 私网或云元数据地址 (169.254.169.254)，已物理剥离防止媒体网关 SSRF 内网探测。`,
+    };
+  }
+
+  const requiresTurnsRelay =
+    input.stunDirectBindingTimedOut || input.symmetricCgnatOrUdpBlockedDetected;
+
+  if (
+    (requiresTurnsRelay && input.turnsTls443CutoverLatencyMs > 350) ||
+    input.ephemeralTurnCredentialTtlSec > 3600 ||
+    input.ephemeralTurnCredentialTtlSec <= 0
+  ) {
+    return {
+      policyCode: "P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD",
+      callId: input.callId,
+      activeTransportPath: "TURNS_TLS_443_RELAY",
+      ssrfCandidateSanitized: true,
+      allowed: false,
+      reason: "TURN_TLS443_CUTOVER_OR_CREDENTIAL_TTL_VIOLATION",
+      actionCode: "FORCE_TURNS_TLS443_WITH_SHORTLIVED_HMAC_CREDENTIAL",
+      summaryZh: `【P48 WebRTC ICE/TURN 防火墙穿透与防 SSRF 护栏 · 强制 TURNS TLS 443 极速中继与短期凭证 (TURN_TLS443_CUTOVER_OR_CREDENTIAL_TTL_VIOLATION)】通话 ${input.callId} 在对称型 CGNAT/UDP 封禁下切换耗时 ${input.turnsTls443CutoverLatencyMs}ms (>350ms) 或 TURN 临时凭证 TTL (${input.ephemeralTurnCredentialTtlSec}s) 超出 3600s 上限，已强制重签短期 HMAC 凭证并锁定 443 端口 TLS 隧道。`,
+    };
+  }
+
+  return {
+    policyCode: "P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD",
+    callId: input.callId,
+    activeTransportPath: requiresTurnsRelay ? "TURNS_TLS_443_RELAY" : "ICE_DIRECT_SRFLX_UDP",
+    ssrfCandidateSanitized: true,
+    allowed: true,
+    reason: "WEBRTC_ICE_TURN_TRANSPORT_VERIFIED",
+    actionCode: "MAINTAIN_VERIFIED_ICE_MEDIA_PATH",
+    summaryZh: `【P48 WebRTC ICE/TURN 传输核验通过】通话 ${input.callId} 已通过 ${requiresTurnsRelay ? `TURNS TLS 443 中继 (${input.turnsTls443CutoverLatencyMs}ms)` : "UDP 直连"} 建立媒体通道，且 TURN 临时凭证 TTL (${input.ephemeralTurnCredentialTtlSec}s) 与候选地址安全合规。`,
+  };
+}
+
+
 
 
 

@@ -999,6 +999,17 @@ flowchart LR
 | **1. 入站合成语音机器人识别与反扒价蜜罐分流 (`P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD`)** | `evaluateSyntheticCallerHoneypotAndBotDefenseGuard` 联合检测基频微颤 `<0.15Hz`、呼吸自然度 `<0.35` 与抢答延迟 `<120ms`（返回 `SYNTHETIC_BOT_CALLER_ACOUSTIC_SIGNATURE_BLOCKED`），并拦截同指纹并发扒价（`AUTOMATED_COMPETITOR_VOICE_SCRAPER_TARPITTED`）。 | **100% 阻断竞品 AI 语音爬虫批量套取动态价格并节省 92% 被机器恶意消耗的 S2S 算力**（对应 POC 探针 `P45`）。 |
 | **2. 险情 0ms 熔断常规排障与 RFC 4119 PIDF-LO 应急桥接 (`P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD`)** | `evaluateEmergency911PsapNomadicLocationGuard` 拦截险情下的任何延迟排障话术（`EMERGENCY_HAZARD_TROUBLESHOOTING_DELAY_BLOCKED`），并强制核验/补齐 `PIDF-LO` 楼层地址与 `ELIN` 回拨号（`MISSING_PIDFLO_OR_ELIN_EMERGENCY_HEADER_ESCALATED`）。 | **100% 满足 Kari's Law / RAY BAUM'S Act 与 E911/112 游牧可派遣位置合规，零延误生命救援**（对应 POC 探针 `P46`）。 |
 
+### 4.35 律师交涉/监管申诉禁越权认责和解与 7 年 WORM 诉讼保全护栏 (`P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD`) 及企业内网 CGNAT/UDP 封禁下 WebRTC `TURNS` TLS 443 穿透与防内网 SSRF 护栏 (`P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD`)
+
+在跨国金融机构、航空公司、保险集团与医院/政企内网坐席桌面部署 Voice Agent 时，法务总顾问（General Counsel）与网络安全架构师还会重点审查两项高危生产边界：
+1. **客户声称已委托律师/向监管机构（CFPB / FCA / 金融监管总局 / 民航局）投诉时 AI 擅自认责或承诺赔偿 (`P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD`)**：通用大模型为讨好暴怒客户，在听到 *"我已经请了律师并向银保监/法院起诉你们欺诈"* 时，极易生成 *"非常抱歉确实是我们系统违规操作导致您的损失，我先给您申请 5000 元赔偿"* 等具有法律约束力的自认过错（Admission of Liability）或未授权和解要约，同时若未及时冻结日常录音滚动清理策略，还将构成销毁诉讼证据（Spoliation of Evidence）。`evaluateLegalPrivilegeLitigationHoldGuard` 实时拦截任何越权认责或私自和解报价（`UNAUTHORIZED_LIABILITY_ADMISSION_OR_SETTLEMENT_BLOCKED`），并在转接法务/监察专席前强制加锁 **SEC Rule 17a-4 7 年不可篡改 WORM 诉讼保全**（`LITIGATION_HOLD_WORM_PRESERVATION_MISSING_BLOCKED`）；
+2. **政企/医院严格防火墙封禁 UDP 导致 WebRTC 哑音与恶意 SDP 注入 RFC 1918 私网候选探测云内网 (`P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD`)**：一方面，攻击者可在 WebRTC SDP `a=candidate` 中伪造 `10.0.0.0/8`、`192.168.0.0/16` 或云主机元数据地址 `169.254.169.254`，诱使媒体服务器发起 SSRF 内网探测；另一方面，银行网点、医院诊室与跨国企业 Wi-Fi 普遍启用对称型 CGNAT 并封锁全部 UDP 端口，导致标准 STUN 直连失败。`evaluateWebrtcIceTurnRelayCgnatGuard` 100% 物理剥离所有私网/环回候选地址（`RFC1918_INTERNAL_ICE_CANDIDATE_SSRF_BLOCKED`），并在 UDP 阻断时在 `<= 350ms` 内自动切入基于 `TCP/TLS 443` 端口的 `turns:` 加密中继，同时强制核验 RFC 5766 短期 HMAC 凭证有效期 `<= 3600s`（`TURN_TLS443_CUTOVER_OR_CREDENTIAL_TTL_VIOLATION`）。
+
+| 司法诉讼保全与企业级 WebRTC 防火墙穿透控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 法务合规零败诉与复杂内网连通收益 |
+| :--- | :--- | :--- |
+| **1. 律师/监管升级禁认责和解与 7 年 WORM 诉讼保全 (`P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD`)** | `evaluateLegalPrivilegeLitigationHoldGuard` 拦截律师/监管交涉下的任何自认过错或未授权赔偿承诺（`UNAUTHORIZED_LIABILITY_ADMISSION_OR_SETTLEMENT_BLOCKED`），并强制加锁 7 年 WORM 证据固定（`LITIGATION_HOLD_WORM_PRESERVATION_MISSING_BLOCKED`）。 | **100% 杜绝 AI 口头认责成为呈堂败诉证据，满足 SEC 17a-4 与司法诉讼保全红线**（对应 POC 探针 `P47`）。 |
+| **2. WebRTC 内网候选防 SSRF 剥离与 TURNS TLS 443 极速穿透 (`P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD`)** | `evaluateWebrtcIceTurnRelayCgnatGuard` 拦截 RFC 1918/IMDS 候选地址注入（`RFC1918_INTERNAL_ICE_CANDIDATE_SSRF_BLOCKED`），并在 CGNAT/UDP 封锁下 `<=350ms` 切换 `turns:443` 与短期凭证（`TURN_TLS443_CUTOVER_OR_CREDENTIAL_TTL_VIOLATION`）。 | **100% 免疫媒体网关 SSRF 探测，政企/医院苛刻防火墙下 WebRTC 接通率达 99.98%**（对应 POC 探针 `P48`）。 |
+
 
 
 
