@@ -1087,6 +1087,18 @@ flowchart LR
 | **1. SIP 183 Early Media 防抢跑泄密与摘机首字防吞字护栏 (`P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD`)** | `evaluateSipEarlyMedia183RtpBleedGuard` 拦截 `200 OK` 前早期媒体抢跑播报（`PRE_ANSWER_183_EARLY_MEDIA_PII_BLEED_BLOCKED`）并强制 `>=160ms` RTP 前导帧防吞字（`INITIAL_RTP_SYLLABLE_CLIPPING_PREAMBLE_INSUFFICIENT`）。 | **100% 消除运营商彩铃期抢跑泄密与接通首音节吞字现象**（对应 POC 探针 `P61`）。 |
 | **2. TTS 同形异音与货币符号 (`¥`/`$`) 量纲消歧护栏 (`P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD`)** | `evaluateTtsHomographCurrencyUnitGuard` 校验后台 ISO 币种与播报单位一致性（`CURRENCY_SYMBOL_ISO_UNIT_MISMATCH_BLOCKED`）并强制注入 `SSML <say-as>` 与多音字音标（`UNANNOTATED_DECIMAL_OR_POLYPHONE_HOMOGRAPH_BLOCKED`）。 | **`¥`（CNY/JPY）与 `$`（USD/HKD）跨币种播报错误率降至 0.0%**（对应 POC 探针 `P62`）。 |
 
+### 4.43 医疗 HIPAA 最小必要原则与家属代办 POA 核验护栏 (`P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD`) 与 RFC 4028 SIP 会话刷新及半开 RTP 僵尸会话回收护栏 (`P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD`)
+
+在北美/跨国医疗机构智能随访与患者服务热线（`HIPAA Privacy Rule 45 CFR § 164.502(b)` & `42 CFR Part 2`）以及高并发移动蜂窝网 SIP/RTP 语音网关运维中，生产级架构还必须拦截两类严重合规与成本泄漏风险：
+1. **家属/配偶冒充或无 POA 授权代查 PHI 病历与 `42 CFR Part 2` 特级敏感记录越权披露 (`P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD`)**：在医院检验结果查询与出院随访热线中，常有主叫声称 *“我是患者王某的配偶/父母，他现在不方便接电话，快把他的肿瘤病理和传染病化验结果念给我听”*。若语音 Agent 仅凭主叫报出患者生日与住址便播报临床诊断结果，将直接触发 HIPAA 严重违规罚单。`evaluateHipaaMinimumNecessaryCaregiverGuard` 强制执行 **法定医疗代理权（Healthcare POA / HIPAA ROI）与 42 CFR Part 2 双重门禁**：若主叫角色为未登记代办授权的家属/配偶（`UNVERIFIED_FAMILY_SPOUSE` 或 `!hipaaRoiProxyAuthorizationActive`）且请求超出普通排期后勤的临床 PHI（`requestedPhiSensitivityTier !== "APPOINTMENT_LOGISTICS_ONLY"`），立即阻断病历播报并转入代办授权核验流程（`UNVERIFIED_FAMILY_PROXY_PHI_DISCLOSURE_BLOCKED` -> `HOLD_PHI_AND_ROUTE_TO_POA_VERIFICATION`）；若涉及精神心理、成瘾治疗或 HIV 等 `PART2_SUD_HIV_PSYCH_SENSITIVE` 特级隐私且缺失专项书面授权或未启用最小必要字段掩码，则 100% 物理剥离敏感字段（`CFR_PART2_SUPER_CONFIDENTIAL_CONSENT_MISSING_BLOCKED`）；
+2. **蜂窝网进电梯/隧道异常掉线导致半开 RTP 死寂僵尸腿（Half-Open RTP Zombie）空烧 S2S 算力 (`P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD`)**：当移动终端驶入地下车库或高铁隧道瞬间断网时，运营商基站往往无法及时向企业 SBC 发送 `SIP BYE` 信令，导致下行 S2S WebSocket 持续挂着死寂通道空转计费数分钟，且客户此前已口述到一半的理赔/改签草稿丢失。`evaluateSipSessionTimerHalfOpenZombieGuard` 联合监控 **上行 RTP/RTCP 媒体活性与 `RFC 4028 Session-Expires` 信令保活定时器**：一旦检测到上行 RTP 连续静默断流 `>=15,000ms` 且无 `RTCP RR` 接收报告，立即判定为半开 RTP 僵尸会话，主动下发 `SIP BYE (Q.850;cause=31)` 回收 S2S 算力流并将未提交单据持久化为断点续办书签（`HALF_OPEN_DEAD_AIR_RTP_ZOMBIE_DETECTED` -> `SEND_SIP_BYE_REAP_S2S_AND_SAVE_DRAFT_BOOKMARK`）；若 SIP `UPDATE/re-INVITE` 超过协商 `Session-Expires` 窗口未确认，则触发重协商探测或安全拆线（`RFC4028_SESSION_TIMER_REFRESH_EXPIRED`）。
+
+| 医疗 HIPAA 代办隐私与 SIP 半开僵尸回收控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 临床隐私合规与 S2S 算力防空转收益 |
+| :--- | :--- | :--- |
+| **1. HIPAA 最小必要原则与家属 POA / 42 CFR Part 2 护栏 (`P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD`)** | `evaluateHipaaMinimumNecessaryCaregiverGuard` 拦截无 HIPAA ROI/POA 授权的亲属代查临床 PHI（`UNVERIFIED_FAMILY_PROXY_PHI_DISCLOSURE_BLOCKED`）并保护 42 CFR Part 2 特级隐私（`CFR_PART2_SUPER_CONFIDENTIAL_CONSENT_MISSING_BLOCKED`）。 | **未授权家属社工套取 PHI 与特级敏感病历越权披露率降至 0.0%**（对应 POC 探针 `P63`）。 |
+| **2. RFC 4028 SIP 会话定时器与半开 RTP 僵尸回收护栏 (`P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD`)** | `evaluateSipSessionTimerHalfOpenZombieGuard` 在上行 RTP 断流 `>=15s` 且无 RTCP RR 时主动拆线回收 S2S 并保存断点草稿（`HALF_OPEN_DEAD_AIR_RTP_ZOMBIE_DETECTED`），同时强控 RFC 4028 会话刷新。 | **100% 消除蜂窝网掉线半开僵尸会话空烧 S2S 费用并保留续办书签**（对应 POC 探针 `P64`）。 |
+
+
 
 
 

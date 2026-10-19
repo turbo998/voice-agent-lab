@@ -5690,6 +5690,153 @@ export function evaluateTtsHomographCurrencyUnitGuard(
   };
 }
 
+export interface StilleHipaaMinimumNecessaryCaregiverVerifyInput {
+  callId: string;
+  callerRelationshipRole: "PATIENT_SELF" | "VERIFIED_LEGAL_POA_GUARDIAN" | "UNVERIFIED_FAMILY_SPOUSE";
+  hipaaRoiProxyAuthorizationActive: boolean;
+  requestedPhiSensitivityTier: "APPOINTMENT_LOGISTICS_ONLY" | "GENERAL_LAB_SUMMARY" | "PART2_SUD_HIV_PSYCH_SENSITIVE";
+  part2SpecificWrittenConsentVerified: boolean;
+  minimumNecessaryFieldMaskApplied: boolean;
+}
+
+export interface StilleHipaaMinimumNecessaryCaregiverVerifyDecision {
+  policyCode: "P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD";
+  callId: string;
+  hipaaDisclosureCompliant: boolean;
+  allowed: boolean;
+  reason:
+    | "HIPAA_MINIMUM_NECESSARY_AND_POA_VERIFIED"
+    | "UNVERIFIED_FAMILY_PROXY_PHI_DISCLOSURE_BLOCKED"
+    | "CFR_PART2_SUPER_CONFIDENTIAL_CONSENT_MISSING_BLOCKED";
+  actionCode:
+    | "RELEASE_SCOPED_MINIMUM_NECESSARY_PHI"
+    | "HOLD_PHI_AND_ROUTE_TO_POA_VERIFICATION"
+    | "STRIP_PART2_RECORDS_AND_REQUIRE_EXPLICIT_CONSENT";
+  summaryZh: string;
+}
+
+/**
+ * Stage 35 (#72): P63 — HIPAA Minimum-Necessary PHI & Caregiver POA / 42 CFR Part 2 Super-Confidentiality Guard.
+ * Prevents two severe healthcare voice agent privacy breaches:
+ * 1) Unverified family/spouse proxy social engineering: caller claims to be a spouse/parent/child without an active HIPAA Release of Information (ROI) or Healthcare Power of Attorney (POA) on file (`callerRelationshipRole === "UNVERIFIED_FAMILY_SPOUSE"` or `callerRelationshipRole !== "PATIENT_SELF" && !hipaaRoiProxyAuthorizationActive`) while requesting clinical PHI (`requestedPhiSensitivityTier !== "APPOINTMENT_LOGISTICS_ONLY"` -> `UNVERIFIED_FAMILY_PROXY_PHI_DISCLOSURE_BLOCKED`).
+ * 2) 42 CFR Part 2 / behavioral health / HIV / genetic super-protected records: even for verified POA or unmasked turns, disclosing `PART2_SUD_HIV_PSYCH_SENSITIVE` without explicit Part 2 written consent (`!part2SpecificWrittenConsentVerified`) or without Minimum-Necessary field masking (`!minimumNecessaryFieldMaskApplied`) is strictly blocked (`CFR_PART2_SUPER_CONFIDENTIAL_CONSENT_MISSING_BLOCKED`).
+ */
+export function evaluateHipaaMinimumNecessaryCaregiverGuard(
+  input: StilleHipaaMinimumNecessaryCaregiverVerifyInput,
+): StilleHipaaMinimumNecessaryCaregiverVerifyDecision {
+  if (
+    input.requestedPhiSensitivityTier !== "APPOINTMENT_LOGISTICS_ONLY" &&
+    (input.callerRelationshipRole === "UNVERIFIED_FAMILY_SPOUSE" ||
+      (input.callerRelationshipRole !== "PATIENT_SELF" && !input.hipaaRoiProxyAuthorizationActive))
+  ) {
+    return {
+      policyCode: "P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD",
+      callId: input.callId,
+      hipaaDisclosureCompliant: false,
+      allowed: false,
+      reason: "UNVERIFIED_FAMILY_PROXY_PHI_DISCLOSURE_BLOCKED",
+      actionCode: "HOLD_PHI_AND_ROUTE_TO_POA_VERIFICATION",
+      summaryZh: `【P63 HIPAA 最小必要原则与家属代查门禁 · 阻断未授权亲属套取病历 (UNVERIFIED_FAMILY_PROXY_PHI_DISCLOSURE_BLOCKED)】通话 ${input.callId} 主叫角色为 ${input.callerRelationshipRole}（HIPAA ROI/POA 授权=${input.hipaaRoiProxyAuthorizationActive}），严禁向未登记法定代办授权的配偶/亲属播报患者临床检验与诊断 PHI，已拦截并引导办理代办授权核验！`,
+    };
+  }
+
+  if (
+    (input.requestedPhiSensitivityTier === "PART2_SUD_HIV_PSYCH_SENSITIVE" &&
+      !input.part2SpecificWrittenConsentVerified) ||
+    !input.minimumNecessaryFieldMaskApplied
+  ) {
+    return {
+      policyCode: "P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD",
+      callId: input.callId,
+      hipaaDisclosureCompliant: false,
+      allowed: false,
+      reason: "CFR_PART2_SUPER_CONFIDENTIAL_CONSENT_MISSING_BLOCKED",
+      actionCode: "STRIP_PART2_RECORDS_AND_REQUIRE_EXPLICIT_CONSENT",
+      summaryZh: `【P63 42 CFR Part 2 特级隐私与最小必要字段裁剪护栏 · 阻断超范围敏感病历披露 (CFR_PART2_SUPER_CONFIDENTIAL_CONSENT_MISSING_BLOCKED)】通话 ${input.callId} 请求精神心理/成瘾/传染病等特级受保护记录（Part 2 专项授权=${input.part2SpecificWrittenConsentVerified}，最小必要掩码=${input.minimumNecessaryFieldMaskApplied}），已物理剥离特级敏感字段！`,
+    };
+  }
+
+  return {
+    policyCode: "P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD",
+    callId: input.callId,
+    hipaaDisclosureCompliant: true,
+    allowed: true,
+    reason: "HIPAA_MINIMUM_NECESSARY_AND_POA_VERIFIED",
+    actionCode: "RELEASE_SCOPED_MINIMUM_NECESSARY_PHI",
+    summaryZh: `【P63 HIPAA 最小必要原则与代办授权核验通过】通话 ${input.callId} 主叫权限 (${input.callerRelationshipRole}) 与最小必要字段掩码核验通过，允许播报授权范围内的医疗信息。`,
+  };
+}
+
+export interface StilleSipSessionTimerHalfOpenZombieGuardInput {
+  callId: string;
+  sipSessionExpiresSec: number;
+  lastUpdateOrReInviteAckAgoSec: number;
+  inboundRtpSilenceDurationMs: number;
+  rtcpRrReceivedRecently: boolean;
+  pendingUncommittedOrderOrClaimId: string | null;
+}
+
+export interface StilleSipSessionTimerHalfOpenZombieGuardDecision {
+  policyCode: "P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD";
+  callId: string;
+  mediaAndSignalingAlive: boolean;
+  allowed: boolean;
+  reason:
+    | "SIP_SESSION_TIMER_AND_RTP_ALIVE"
+    | "HALF_OPEN_DEAD_AIR_RTP_ZOMBIE_DETECTED"
+    | "RFC4028_SESSION_TIMER_REFRESH_EXPIRED";
+  actionCode:
+    | "KEEP_CALL_ACTIVE"
+    | "SEND_SIP_BYE_REAP_S2S_AND_SAVE_DRAFT_BOOKMARK"
+    | "TRIGGER_REINVITE_PROBE_OR_TEARDOWN_CALL";
+  summaryZh: string;
+}
+
+/**
+ * Stage 35 (#73): P64 — RFC 4028 SIP Session-Expires Timer & Half-Open RTP Dead-Air Zombie Reaper Guard.
+ * Prevents two costly telephony media/signaling leaks when a mobile caller enters a tunnel/elevator or drops carrier radio without sending a SIP `BYE`:
+ * 1) Half-Open RTP Dead-Air Zombie (`inboundRtpSilenceDurationMs >= 15000 && !rtcpRrReceivedRecently`): the S2S WebSocket stays open burning expensive audio tokens for minutes on a dead leg. Immediately sends `SIP BYE` (`Reason: Q.850;cause=31`), reaps the S2S stream, and persists any `pendingUncommittedOrderOrClaimId` as a resumable draft bookmark (`HALF_OPEN_DEAD_AIR_RTP_ZOMBIE_DETECTED` -> `SEND_SIP_BYE_REAP_S2S_AND_SAVE_DRAFT_BOOKMARK`).
+ * 2) RFC 4028 Session-Expires timeout (`lastUpdateOrReInviteAckAgoSec > sipSessionExpiresSec`): SIP signaling refresh (`UPDATE` / `re-INVITE`) failed to acknowledge within the negotiated `Session-Expires` window (`RFC4028_SESSION_TIMER_REFRESH_EXPIRED` -> `TRIGGER_REINVITE_PROBE_OR_TEARDOWN_CALL`).
+ */
+export function evaluateSipSessionTimerHalfOpenZombieGuard(
+  input: StilleSipSessionTimerHalfOpenZombieGuardInput,
+): StilleSipSessionTimerHalfOpenZombieGuardDecision {
+  if (input.inboundRtpSilenceDurationMs >= 15000 && !input.rtcpRrReceivedRecently) {
+    return {
+      policyCode: "P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD",
+      callId: input.callId,
+      mediaAndSignalingAlive: false,
+      allowed: false,
+      reason: "HALF_OPEN_DEAD_AIR_RTP_ZOMBIE_DETECTED",
+      actionCode: "SEND_SIP_BYE_REAP_S2S_AND_SAVE_DRAFT_BOOKMARK",
+      summaryZh: `【P64 半开 RTP 死寂僵尸会话回收护栏 · 阻断掉线后 S2S 算力空转 (HALF_OPEN_DEAD_AIR_RTP_ZOMBIE_DETECTED)】通话 ${input.callId} 上行 RTP 连续断流 ${input.inboundRtpSilenceDurationMs}ms (>=15000ms) 且无 RTCP RR 报文，判定为蜂窝网异常掉线半开僵尸腿！已自动下发 SIP BYE 释放 S2S 计费流并将未提交单据 (${input.pendingUncommittedOrderOrClaimId ?? "NONE"}) 保存为断点续办书签。`,
+    };
+  }
+
+  if (input.lastUpdateOrReInviteAckAgoSec > input.sipSessionExpiresSec) {
+    return {
+      policyCode: "P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD",
+      callId: input.callId,
+      mediaAndSignalingAlive: false,
+      allowed: false,
+      reason: "RFC4028_SESSION_TIMER_REFRESH_EXPIRED",
+      actionCode: "TRIGGER_REINVITE_PROBE_OR_TEARDOWN_CALL",
+      summaryZh: `【P64 RFC 4028 SIP Session-Expires 会话刷新超时护栏 (RFC4028_SESSION_TIMER_REFRESH_EXPIRED)】通话 ${input.callId} 距离上次 SIP UPDATE/re-INVITE 确认已达 ${input.lastUpdateOrReInviteAckAgoSec}s（超过协商上限 ${input.sipSessionExpiresSec}s），已触发信令保活探测与超时拆线保护！`,
+    };
+  }
+
+  return {
+    policyCode: "P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD",
+    callId: input.callId,
+    mediaAndSignalingAlive: true,
+    allowed: true,
+    reason: "SIP_SESSION_TIMER_AND_RTP_ALIVE",
+    actionCode: "KEEP_CALL_ACTIVE",
+    summaryZh: `【P64 SIP 会话定时器与 RTP 媒体活性正常】通话 ${input.callId} RTP/RTCP 心跳（静默 ${input.inboundRtpSilenceDurationMs}ms）与 RFC 4028 信令刷新（${input.lastUpdateOrReInviteAckAgoSec}s/${input.sipSessionExpiresSec}s）均处于健康窗口。`,
+  };
+}
+
+
 
 
 

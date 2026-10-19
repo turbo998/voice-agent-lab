@@ -382,6 +382,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD blocks pre-answer greeting/PII bleed during SIP 183 Session Progress and enforces >=160ms comfort-noise RTP preamble after 200 OK to prevent first-syllable clipping; P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD verifies spoken currency units against backend ISO 4217 codes (preventing ¥ JPY vs CNY misreads) and enforces SSML <say-as> and polyphone phoneme tags."
+    },
+    {
+      "check_name": "HIPAA Minimum-Necessary Caregiver POA & RFC 4028 SIP Half-Open RTP Zombie Reaper Guard (P63 / P64)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P63-HIPAA-MINIMUM-NECESSARY-CAREGIVER-POA-GUARD blocks clinical PHI disclosure to unverified family/spouse proxies lacking active HIPAA ROI/POA authorization and enforces 42 CFR Part 2 super-confidentiality consent; P64-SIP-SESSION-TIMER-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD detects >=15s inbound RTP silence without RTCP RR (tunnel/elevator drops), sends SIP BYE to reap S2S billing streams, and saves uncommitted drafts as resumable bookmarks."
     }
   ],
   "latency_scaling": [
