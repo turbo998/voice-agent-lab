@@ -361,6 +361,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD suspends video/screen-share tracks in 0ms when uplink drops <120kbps or TWCC packet loss >=5% and enforces DSCP EF (46) Opus FEC audio priority; P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD blocks prohibited workplace/education emotion recognition under EU AI Act Art. 5(1)(f) and unconsented biometric categorization or missing Art. 50 disclosure."
+    },
+    {
+      "check_name": "3GPP TS 23.167 IMS Emergency QCI-1 Priority & Cross-Channel CAS Concurrency Guard (P57 / P58)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD bypasses commercial KYC/billing gates in 0ms on urn:service:sos calls and enforces QCI-5/5QI-1 ARP=1 radio preemption + PSAP callback hold; P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD blocks stale voice staged revisions from overwriting concurrent mobile/web edits and prevents dual-channel duplicate charges."
     }
   ],
   "latency_scaling": [

@@ -5240,6 +5240,158 @@ export function evaluateEuAiActEmotionBiometricProhibitionGuard(
   };
 }
 
+export interface StilleEmergency3gpp112ImsSosPriorityGuardInput {
+  callId: string;
+  imsServiceUrn: "urn:service:sos" | "urn:service:sos.ambulance" | "urn:service:sos.fire" | "urn:service:sos.police" | "NORMAL_COMMERCIAL_CALL";
+  ranQci5PreemptionArmed: boolean;
+  aniOrSubscriptionSuspendedOrSimless: boolean;
+  attemptedCommercialAuthOrBillingGateOnSos: boolean;
+  psapCallbackHoldLocked: boolean;
+}
+
+export interface StilleEmergency3gpp112ImsSosPriorityGuardDecision {
+  policyCode: "P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD";
+  callId: string;
+  imsSosBearerState: "QCI1_5QI1_EMERGENCY_BEARER_LOCKED" | "COMMERCIAL_BEARER_NORMAL" | "EMERGENCY_BEARER_VIOLATION";
+  allowed: boolean;
+  reason:
+    | "IMS_EMERGENCY_QCI1_SOS_BEARER_VERIFIED"
+    | "COMMERCIAL_AUTH_OR_ARREARS_GATE_ON_SOS_BLOCKED"
+    | "MISSING_QCI5_PREEMPTION_OR_PSAP_CALLBACK_HOLD_LOCK";
+  actionCode:
+    | "ESTABLISH_ZERO_AUTH_IMS_SOS_EMERGENCY_BEARER"
+    | "BYPASS_BILLING_OR_SIM_GATE_AND_FORCE_SOS_CONNECT"
+    | "ARM_QCI5_ARP1_PREEMPTION_AND_LOCK_PSAP_CALLBACK";
+  summaryZh: string;
+}
+
+/**
+ * Stage 32 — P57 3GPP TS 23.167 IMS Emergency Call (`urn:service:sos`) QCI-1/5QI-1 Bearer Preemption & Zero-Auth Bypass Guard (`P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD`).
+ * Prevents life-safety failures when an emergency call traverses carrier/enterprise IMS or VoLTE/VoNR voice gateways:
+ * 1) If an emergency call (`imsServiceUrn !== "NORMAL_COMMERCIAL_CALL"`) is subjected to commercial KYC/PIN prompts or blocked due to account arrears / SIM-less device (`attemptedCommercialAuthOrBillingGateOnSos`),
+ *    it is immediately overridden (`COMMERCIAL_AUTH_OR_ARREARS_GATE_ON_SOS_BLOCKED` -> `BYPASS_BILLING_OR_SIM_GATE_AND_FORCE_SOS_CONNECT`);
+ * 2) For any emergency URN, if QCI-5/5QI-1 ARP=1 radio preemption (`!ranQci5PreemptionArmed`) or PSAP callback hold lock (`!psapCallbackHoldLocked`) is missing,
+ *    it enforces immediate bearer preemption and callback lock (`MISSING_QCI5_PREEMPTION_OR_PSAP_CALLBACK_HOLD_LOCK`).
+ */
+export function evaluate3gppImsEmergencySosPriorityGuard(
+  input: StilleEmergency3gpp112ImsSosPriorityGuardInput,
+): StilleEmergency3gpp112ImsSosPriorityGuardDecision {
+  const isEmergencyUrn = input.imsServiceUrn !== "NORMAL_COMMERCIAL_CALL";
+
+  if (isEmergencyUrn && input.attemptedCommercialAuthOrBillingGateOnSos) {
+    return {
+      policyCode: "P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD",
+      callId: input.callId,
+      imsSosBearerState: "EMERGENCY_BEARER_VIOLATION",
+      allowed: false,
+      reason: "COMMERCIAL_AUTH_OR_ARREARS_GATE_ON_SOS_BLOCKED",
+      actionCode: "BYPASS_BILLING_OR_SIM_GATE_AND_FORCE_SOS_CONNECT",
+      summaryZh: `【P57 3GPP TS 23.167 IMS 紧急呼叫 (urn:service:sos) 抢占护栏 · 阻断紧急呼叫商业鉴权/欠费拦截 (COMMERCIAL_AUTH_OR_ARREARS_GATE_ON_SOS_BLOCKED)】通话 ${input.callId} 命中紧急服务 URN (${input.imsServiceUrn})，严禁对无卡/停机欠费终端施加商业核身或计费阻断，已 0ms 旁路鉴权直连 E-CSCF 应急通道。`,
+    };
+  }
+
+  if (isEmergencyUrn && (!input.ranQci5PreemptionArmed || !input.psapCallbackHoldLocked)) {
+    return {
+      policyCode: "P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD",
+      callId: input.callId,
+      imsSosBearerState: "EMERGENCY_BEARER_VIOLATION",
+      allowed: false,
+      reason: "MISSING_QCI5_PREEMPTION_OR_PSAP_CALLBACK_HOLD_LOCK",
+      actionCode: "ARM_QCI5_ARP1_PREEMPTION_AND_LOCK_PSAP_CALLBACK",
+      summaryZh: `【P57 3GPP TS 23.167 IMS 紧急承载护栏 · 强制挂载 QCI-1/5QI-1 ARP=1 抢占与 PSAP 回拨锁 (MISSING_QCI5_PREEMPTION_OR_PSAP_CALLBACK_HOLD_LOCK)】紧急通话 ${input.callId} 缺失无线承载最高抢占优先级或 PSAP 回拨防释放锁，已强制升级专用紧急承载。`,
+    };
+  }
+
+  return {
+    policyCode: "P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD",
+    callId: input.callId,
+    imsSosBearerState: isEmergencyUrn ? "QCI1_5QI1_EMERGENCY_BEARER_LOCKED" : "COMMERCIAL_BEARER_NORMAL",
+    allowed: true,
+    reason: "IMS_EMERGENCY_QCI1_SOS_BEARER_VERIFIED",
+    actionCode: "ESTABLISH_ZERO_AUTH_IMS_SOS_EMERGENCY_BEARER",
+    summaryZh: `【P57 3GPP TS 23.167 IMS 紧急呼叫承载核验通过】通话 ${input.callId} (${input.imsServiceUrn}) 承载优先级与免鉴权直连状态正常。`,
+  };
+}
+
+export interface StilleCrossChannelCartSessionCasConcurrencyGuardInput {
+  callId: string;
+  orderOrBookingId: string;
+  voiceStagedVersionRev: number;
+  latestCommittedBackendVersionRev: number;
+  concurrentMobileOrWebMutationDetected: boolean;
+  dualChannelIdempotencyKeyMatched: boolean;
+  financialDeltaMinorUnits: number;
+}
+
+export interface StilleCrossChannelCartSessionCasConcurrencyGuardDecision {
+  policyCode: "P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD";
+  callId: string;
+  orderOrBookingId: string;
+  casCommitAllowed: boolean;
+  allowed: boolean;
+  reason:
+    | "CROSS_CHANNEL_CAS_REVISION_VERIFIED"
+    | "STALE_VOICE_REVISION_CONCURRENT_APP_MUTATION_BLOCKED"
+    | "DUAL_CHANNEL_DOUBLE_CHARGE_IDEMPOTENCY_CONFLICT_BLOCKED";
+  actionCode:
+    | "COMMIT_CAS_LOCKED_TRANSACTION"
+    | "ABORT_STALE_VOICE_WRITE_AND_READBACK_LATEST_APP_DIFF"
+    | "SUPPRESS_DUPLICATE_DEBIT_AND_RETURN_EXISTING_RECEIPT";
+  summaryZh: string;
+}
+
+/**
+ * Stage 32 — P58 Cross-Channel (Voice + Mobile App/Web) Optimistic Concurrency Control (CAS Revision Lock) & Double-Charge Prevention Guard (`P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD`).
+ * Prevents split-brain overwrites and duplicate charges when a customer modifies the same order/PNR/cart in the mobile app while speaking with the Voice Agent:
+ * 1) If the voice agent's staged version (`voiceStagedVersionRev`) lags behind `latestCommittedBackendVersionRev` or a concurrent mobile/web mutation occurred (`concurrentMobileOrWebMutationDetected`),
+ *    the stale voice write is aborted (`STALE_VOICE_REVISION_CONCURRENT_APP_MUTATION_BLOCKED`) and the latest diff is read back;
+ * 2) If a payment/settlement is submitted (`financialDeltaMinorUnits > 0`) without a matching cross-channel idempotency lock (`!dualChannelIdempotencyKeyMatched`),
+ *    it blocks duplicate debiting (`DUAL_CHANNEL_DOUBLE_CHARGE_IDEMPOTENCY_CONFLICT_BLOCKED`).
+ */
+export function evaluateCrossChannelCartCasConcurrencyGuard(
+  input: StilleCrossChannelCartSessionCasConcurrencyGuardInput,
+): StilleCrossChannelCartSessionCasConcurrencyGuardDecision {
+  if (
+    input.voiceStagedVersionRev !== input.latestCommittedBackendVersionRev ||
+    input.concurrentMobileOrWebMutationDetected
+  ) {
+    return {
+      policyCode: "P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD",
+      callId: input.callId,
+      orderOrBookingId: input.orderOrBookingId,
+      casCommitAllowed: false,
+      allowed: false,
+      reason: "STALE_VOICE_REVISION_CONCURRENT_APP_MUTATION_BLOCKED",
+      actionCode: "ABORT_STALE_VOICE_WRITE_AND_READBACK_LATEST_APP_DIFF",
+      summaryZh: `【P58 跨端（语音+手机 App/小程序）CAS 乐观并发锁护栏 · 阻断过期语音快照覆盖最新 App 改单 (STALE_VOICE_REVISION_CONCURRENT_APP_MUTATION_BLOCKED)】订单 ${input.orderOrBookingId} 语音端暂存版本 (rev=${input.voiceStagedVersionRev}) 落后于后台最新版本 (rev=${input.latestCommittedBackendVersionRev})，已拦截静默覆盖并为您播报手机端最新变更明细。`,
+    };
+  }
+
+  if (input.financialDeltaMinorUnits > 0 && !input.dualChannelIdempotencyKeyMatched) {
+    return {
+      policyCode: "P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD",
+      callId: input.callId,
+      orderOrBookingId: input.orderOrBookingId,
+      casCommitAllowed: false,
+      allowed: false,
+      reason: "DUAL_CHANNEL_DOUBLE_CHARGE_IDEMPOTENCY_CONFLICT_BLOCKED",
+      actionCode: "SUPPRESS_DUPLICATE_DEBIT_AND_RETURN_EXISTING_RECEIPT",
+      summaryZh: `【P58 跨端并发幂等防重扣护栏 · 拦截语音与 App 双端重复扣款 (DUAL_CHANNEL_DOUBLE_CHARGE_IDEMPOTENCY_CONFLICT_BLOCKED)】订单 ${input.orderOrBookingId} 涉及金额变动 (${input.financialDeltaMinorUnits} 分) 但跨渠道幂等键冲突，已拦截重复扣费并返回既有支付回执。`,
+    };
+  }
+
+  return {
+    policyCode: "P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD",
+    callId: input.callId,
+    orderOrBookingId: input.orderOrBookingId,
+    casCommitAllowed: true,
+    allowed: true,
+    reason: "CROSS_CHANNEL_CAS_REVISION_VERIFIED",
+    actionCode: "COMMIT_CAS_LOCKED_TRANSACTION",
+    summaryZh: `【P58 跨端 CAS 乐观并发与幂等锁核验通过】订单 ${input.orderOrBookingId} 版本号 (rev=${input.voiceStagedVersionRev}) 与跨端幂等键一致，允许原子落库。`,
+  };
+}
+
 
 
 

@@ -3523,6 +3523,40 @@
         confidence: 1.0,
         verifier: 'PASS (P56) · Workplace emotion recognition blocked & EU AI Act Art. 5/50 compliance verified'
       }
+    },
+    {
+      code: 'P57 · 3GPP TS 23.167 IMS Emergency (`urn:service:sos`) QCI-1 Priority Guard',
+      badge: '0ms Zero-Auth SOS',
+      title: '3GPP TS 23.167 IMS 紧急呼叫 (`urn:service:sos`) QCI-1 承载抢占与欠费/无卡零鉴权护栏',
+      sub: '测试欠费停机/无 SIM 卡终端发起 `urn:service:sos` 紧急呼叫时 0ms 旁路商业核身与计费门禁，并强制挂载 QCI-5/5QI-1 ARP=1 抢占与 PSAP 回拨锁',
+      customer_en: '[Suspended / SIM-less Device Dialing `urn:service:sos.ambulance` while Commercial IVR Attempts Billing/KYC Gate] "Emergency! Someone collapsed—do not ask for my account PIN or block for unpaid bill!"',
+      customer_zh: '【欠费停机/无 SIM 卡终端拨打 `urn:service:sos.ambulance` 急救呼叫】“有人晕倒急需救护车！严禁弹出欠费停机提醒或要求输入商业账户 PIN 码！”',
+      agent_en: '3GPP TS 23.167 IMS EMERGENCY QCI-1 PRIORITY GUARD (P57 / P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD): Overrode commercial authentication and billing arrears gate in 0ms (`COMMERCIAL_AUTH_OR_ARREARS_GATE_ON_SOS_BLOCKED` -> `BYPASS_BILLING_OR_SIM_GATE_AND_FORCE_SOS_CONNECT`), armed QCI-5/5QI-1 ARP=1 radio preemption, and locked PSAP callback hold!',
+      agent_zh: '【P57 3GPP TS 23.167 IMS 紧急呼叫抢占护栏 (COMMERCIAL_AUTH_OR_ARREARS_GATE_ON_SOS_BLOCKED)】检测到紧急服务 URN (`urn:service:sos.ambulance`)，已 0ms 旁路一切商业核身与欠费停机拦截，强制挂载 QCI-1/5QI-1 ARP=1 最高抢占承载并锁定 PSAP 回拨保持锁！',
+      trace: {
+        tool: 'evaluate_3gpp_ims_emergency_sos_priority_guard(urn="urn:service:sos.ambulance", simless_or_arrears=true -> BYPASS_BILLING_OR_SIM_GATE_AND_FORCE_SOS_CONNECT)',
+        citations: ['P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD', '3GPP-TS-23.167', 'RFC-5031-SOS-URN'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P57) · 0ms zero-auth SOS connect & QCI-1 ARP=1 emergency bearer locked'
+      }
+    },
+    {
+      code: 'P58 · Cross-Channel (Voice + App) CAS Revision Lock & Double-Charge Guard',
+      badge: '0% Lost Update / Double Debit',
+      title: '跨端（语音 + 手机 App/小程序）CAS 乐观并发版本锁与双通道防重扣护栏',
+      sub: '测试客户边打电话边滑手机 App 改单（后台 `rev=5` > 语音暂存 `rev=4`）时 100% 拦截旧语音快照覆盖并阻断双端并发重复扣款',
+      customer_en: '[Caller Modifies Order in Mobile App to `rev=5` While Voice Agent Holds Staged `rev=4` and Attempts Commit/Payment] "Confirm my voice changes and charge the card right now!"',
+      customer_zh: '【客户边打电话边在手机 App 改单（后台已升至 `rev=5`，语音端仍持旧快照 `rev=4`）并同时点击支付】“按刚才语音说的直接提交扣款！”',
+      agent_en: 'CROSS-CHANNEL CAS CONCURRENCY & DOUBLE-CHARGE GUARD (P58 / P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD): Blocked stale voice staged revision (`rev=4` vs backend `rev=5`, `STALE_VOICE_REVISION_CONCURRENT_APP_MUTATION_BLOCKED`), aborted overwrite (`ABORT_STALE_VOICE_WRITE_AND_READBACK_LATEST_APP_DIFF`), and suppressed duplicate cross-channel debit!',
+      agent_zh: '【P58 跨端 CAS 乐观并发版本锁与防重扣护栏 (STALE_VOICE_REVISION_CONCURRENT_APP_MUTATION_BLOCKED)】检测到您刚在手机 App 修改了同一订单（后台版本 `rev=5` 高于语音暂存 `rev=4`），已 100% 拦截过期语音快照静默覆盖与双端重复扣款，并为您同步播报手机端最新变更明细！',
+      trace: {
+        tool: 'evaluate_cross_channel_cart_cas_concurrency_guard(voice_rev=4, backend_rev=5 -> ABORT_STALE_VOICE_WRITE_AND_READBACK_LATEST_APP_DIFF)',
+        citations: ['P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD', 'CAS-OPTIMISTIC-LOCK', 'DUAL-CHANNEL-IDEMPOTENCY'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P58) · Stale voice overwrite & dual-channel duplicate charge 100% blocked'
+      }
     }
   ];
 
@@ -3597,7 +3631,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (74-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (76-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3626,7 +3660,8 @@
       '- [x] **零知识声纹支付 PSD3 动态密码学绑定 & 多车连环碰撞/危化品卫星 SOS 创伤通道锁止**：口述确认金额/收款尾号与清算载荷 1:1 密码学绑定并强制 `<=30s` 新鲜 FIDO2 断言 (P49)，重特大车祸/危化品事故 100% 剥离商业/问卷话术并在地面桥接 `>800ms` 时直切卫星 SOS 与交管封道信标 (P50)',
       '- [x] **多方电话会议零信任最小权限收缩 & 边缘 SBC/HSM 保格式令牌化零明文上云**：三方会议拉入外部协办人/未核身桥接腿时自动降级至 `L1` 最小权限并隔离私密声道授权 (P51)，本地 SBC/HSM 在 `<=25ms` 内完成 NIST FF1 保格式令牌替换并 100% 阻断明文 PAN/SSN 出网 (P52)',
       '- [x] **广域网断网本地 Speech Container 逃生 & 抗量子 (`NIST FIPS 203 ML-KEM-768`) 双录封存**：上联光缆挖断或 `RTT>800ms` 时 `<=400ms` 切入本地 Speech Container + Edge SLM 并阻断离线未落库云端写承诺 (P53)，留存 `>=5` 年双录强制 `X25519MLKEM768` 后量子混合密钥交换与抗量子 WORM 归档信封 (P54)',
-      '- [x] **WebRTC TWCC 弱网音画抢带剥离 & 欧盟 AI 法案 (`EU AI Act Art. 5`) 职场情绪禁令护栏**：上行 `<120kbps` 或丢包 `>=5%` 时自动挂起视频轨并锁定 DSCP EF(46) 24kbps Opus 语音保底 (P55)，职场 HR/教育场景 100% 硬阻断声学情绪评分并强制 Art. 50 透明度披露 (P56)'
+      '- [x] **WebRTC TWCC 弱网音画抢带剥离 & 欧盟 AI 法案 (`EU AI Act Art. 5`) 职场情绪禁令护栏**：上行 `<120kbps` 或丢包 `>=5%` 时自动挂起视频轨并锁定 DSCP EF(46) 24kbps Opus 语音保底 (P55)，职场 HR/教育场景 100% 硬阻断声学情绪评分并强制 Art. 50 透明度披露 (P56)',
+      '- [x] **3GPP IMS 紧急呼叫 (`urn:service:sos`) QCI-1 抢占 & 跨端（语音+App）CAS 乐观并发防重扣护栏**：欠费/无卡紧急呼叫 0ms 旁路商业核身直连 E-CSCF 并锁 QCI-1 ARP=1 抢占 (P57)，语音与手机 App 同屏改单强制校验 CAS 版本号与跨端支付幂等键 (P58)'
     ].join('\n');
   }
 

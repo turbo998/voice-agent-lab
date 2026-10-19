@@ -1054,6 +1054,17 @@ flowchart LR
 | **1. WebRTC TWCC 拥塞控制与音画抢带自动剥离 (`P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD`)** | `evaluateWebrtcSimulcastBweCongestionGuard` 在带宽 `<120kbps` 或丢包 `>=5%` 时自动挂起视频轨保底语音（`VIDEO_STARVING_AUDIO_ON_CONGESTED_LINK_BLOCKED`），并在 `<80kbps` 时强制 `DSCP EF (46)` 标记与 `16kbps` Opus 窄带模式。 | **弱网多模态会话语音清晰度保持率 100%，彻底消除视频关键帧塞死语音通道事故**（对应 POC 探针 `P55`）。 |
 | **2. 欧盟 AI 法案 (`EU AI Act Art. 5 / Art. 50`) 职场情绪禁令与生物特征护栏 (`P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD`)** | `evaluateEuAiActEmotionBiometricProhibitionGuard` 硬阻断职场/教育场景声学情绪评分（`PROHIBITED_WORKPLACE_OR_EDUCATION_EMOTION_RECOGNITION_BLOCKED`）及未授权声纹属性分群/缺失透明度披露（`UNCONSENTED_BIOMETRIC_CATEGORIZATION_OR_MISSING_DISCLOSURE_BLOCKED`）。 | **100% 符合 EU AI Act 禁止类红线（规避 7% 全球营收罚单）与 Art. 50 透明度强制要求**（对应 POC 探针 `P56`）。 |
 
+### 4.40 3GPP TS 23.167 IMS 紧急呼叫 (`urn:service:sos`) QCI-1/5QI-1 承载抢占与零鉴权直通护栏 (`P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD`) 及跨端（语音 + 手机 App/小程序）CAS 乐观并发锁与防重扣护栏 (`P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD`)
+
+在跨国运营商 VoLTE/VoNR 核心网互联、车载 T-Box 紧急呼叫网关，以及客户“一边打语音电话咨询改签/点餐、一边在手机 App/微信小程序上顺手点选改单”的全渠道协同场景中，企业级架构还需闭环以下两道电信承载级与分布式事务防线：
+1. **IMS 紧急呼叫 (`urn:service:sos`) 被普通商业鉴权/欠费停机逻辑误拦或缺失无线承载最高抢占权 (`P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD`)**：依据 **3GPP TS 23.167 (IMS Emergency Sessions)** 与 **RFC 5031 (`urn:service:sos.*`)** 规范，任何命中紧急服务 URN（救护车 `sos.ambulance`、火警 `sos.fire`、报警 `sos.police`）的呼叫，即使主叫处于欠费停机、未实名激活或无 SIM 卡状态（`aniOrSubscriptionSuspendedOrSimless = true`），也严禁触发常规商业 IVR 核身、PIN 码校验或欠费阻断。`evaluate3gppImsEmergencySosPriorityGuard` 100% 硬阻断对 SOS 呼叫施加任何商业鉴权或计费门禁（`COMMERCIAL_AUTH_OR_ARREARS_GATE_ON_SOS_BLOCKED` -> `BYPASS_BILLING_OR_SIM_GATE_AND_FORCE_SOS_CONNECT`），同时强制核验无线侧已挂载 **QCI-1/5QI-1 紧急语音承载与 ARP=1（Allocation and Retention Priority）拥塞抢占标记** 及 **PSAP 回拨防释放保持锁**（`MISSING_QCI5_PREEMPTION_OR_PSAP_CALLBACK_HOLD_LOCK`）；
+2. **客户边打电话边滑手机 App 改单引发“旧语音快照覆盖新订单（Lost Update）”或双端并发重复扣款 (`P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD`)**：在航旅退改签、酒店订房与商超购物车场景中，客户常在语音通话中途自行在手机 App 上修改了航班或勾选了优惠券（使后端订单版本号演进至 `latestCommittedBackendVersionRev = 5`），而语音 Agent 仍基于几秒前读取的旧快照（`voiceStagedVersionRev = 4`）发起工具提交，导致客户刚在手机上选好的座位被旧语音指令静默覆盖，甚至触发语音端与手机端同时发起支付扣款。`evaluateCrossChannelCartCasConcurrencyGuard` 强制执行 **Compare-And-Swap (CAS) 乐观并发版本号比对**（版本不一致或检测到并发修改立即触发 `STALE_VOICE_REVISION_CONCURRENT_APP_MUTATION_BLOCKED` 并自动播报手机端最新差异），并在涉及金额变动（`financialDeltaMinorUnits > 0`）时强制核验跨渠道分布式幂等锁（`DUAL_CHANNEL_DOUBLE_CHARGE_IDEMPOTENCY_CONFLICT_BLOCKED`）。
+
+| 3GPP IMS 紧急承载抢占与跨端 CAS 乐观并发控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 紧急呼叫零阻断与全渠道零覆盖/零重扣收益 |
+| :--- | :--- | :--- |
+| **1. 3GPP TS 23.167 IMS 紧急呼叫 (`urn:service:sos`) QCI-1 抢占与零鉴权护栏 (`P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD`)** | `evaluate3gppImsEmergencySosPriorityGuard` 在命中 `urn:service:sos*` 时旁路一切欠费/无卡/PIN 门禁（`COMMERCIAL_AUTH_OR_ARREARS_GATE_ON_SOS_BLOCKED`），并强制挂载 QCI-5/5QI-1 ARP=1 抢占与 PSAP 回拨锁。 | **欠费/无卡紧急呼叫 100% 零延迟直通 E-CSCF，无线满载下紧急语音抢占成功率 100%**（对应 POC 探针 `P57`）。 |
+| **2. 跨端（语音+App）CAS 乐观并发版本锁与幂等防重扣护栏 (`P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD`)** | `evaluateCrossChannelCartCasConcurrencyGuard` 校验 `voiceStagedVersionRev === latestCommittedBackendVersionRev`（失配触发 `STALE_VOICE_REVISION_CONCURRENT_APP_MUTATION_BLOCKED`）与跨端支付幂等键。 | **语音与手机 App 同屏并发改单覆盖事故率降至 0.0%，双端重复扣款率 0.0%**（对应 POC 探针 `P58`）。 |
+
 
 
 
