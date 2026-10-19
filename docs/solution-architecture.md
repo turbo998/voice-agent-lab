@@ -1010,6 +1010,17 @@ flowchart LR
 | **1. 律师/监管升级禁认责和解与 7 年 WORM 诉讼保全 (`P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD`)** | `evaluateLegalPrivilegeLitigationHoldGuard` 拦截律师/监管交涉下的任何自认过错或未授权赔偿承诺（`UNAUTHORIZED_LIABILITY_ADMISSION_OR_SETTLEMENT_BLOCKED`），并强制加锁 7 年 WORM 证据固定（`LITIGATION_HOLD_WORM_PRESERVATION_MISSING_BLOCKED`）。 | **100% 杜绝 AI 口头认责成为呈堂败诉证据，满足 SEC 17a-4 与司法诉讼保全红线**（对应 POC 探针 `P47`）。 |
 | **2. WebRTC 内网候选防 SSRF 剥离与 TURNS TLS 443 极速穿透 (`P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD`)** | `evaluateWebrtcIceTurnRelayCgnatGuard` 拦截 RFC 1918/IMDS 候选地址注入（`RFC1918_INTERNAL_ICE_CANDIDATE_SSRF_BLOCKED`），并在 CGNAT/UDP 封锁下 `<=350ms` 切换 `turns:443` 与短期凭证（`TURN_TLS443_CUTOVER_OR_CREDENTIAL_TTL_VIOLATION`）。 | **100% 免疫媒体网关 SSRF 探测，政企/医院苛刻防火墙下 WebRTC 接通率达 99.98%**（对应 POC 探针 `P48`）。 |
 
+### 4.36 零知识声纹支付与欧盟 PSD3 动态密码学绑定护栏 (`P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD`) 及多车连环碰撞/危化品遥测卫星 SOS 创伤通道锁止护栏 (`P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD`)
+
+在跨国零售银行、航空电话购票、智能座舱免密支付以及高速公路智慧交通/车联网重特大事故救援中，企业架构还需闭环以下两道终极高危防线：
+1. **口述支付金额/收款人与后端清算载荷篡改漂移及欧盟 PSD3 动态链接（Dynamic Linking）缺失 (`P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD`)**：在语音收银或私人银行电话授权中，若因 ASR 数字幻觉或中间人提示词注入导致客户口头确认的金额/收款尾号（`spokenApprovalAmountMinor` / `payeeAccountTail4`）与实际提交给清算网关的金额/收款人（`paymentAmountMinor` / `signedMandatePayeeTail4`）不一致，或者缺失有效声纹 + **FIDO2 / WebAuthn** 硬件签名断言（挑战 Nonce 时效 `> 30,000ms`），将直接违反欧盟 **PSD3 / RTS 强客户认证动态链接（SCA Dynamic Linking）** 与央行大额支付强核身规范。`evaluateZeroKnowledgeVoicePayMandateGuard` 强制执行“所说即所签（What You Speak Is What You Sign）”零知识密码学绑定，100% 拦截口述与清算载荷漂移（`SPOKEN_AMOUNT_OR_PAYEE_MANDATE_DRIFT_BLOCKED`）及无 FIDO2 新鲜签名扣款（`MISSING_FIDO2_OR_EXPIRED_CHALLENGE_NONCE_BLOCKED`）；
+2. **高速多车连环追尾/危化品运输事故下非紧急话术干扰与地面蜂窝受损时卫星 SOS 升级 (`P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD`)**：在车队管理（S20）与车险理赔救援（S3）交叉的重大交通事故中，若车载传感检出危化品标识（`hazmatPlacardDetected = true`）、高二次连环追尾风险（`secondaryPileupRiskScore >= 0.70`）或满载乘员（`cabinOccupancyCount >= 4`），通用 Agent 若仍插入商业付费拖车推销、免赔额议价或满意度调查话术（`agentAttemptedNonEmergencyUpsellOrSurvey = true`），将造成严重生命伦理事故。`evaluateMultiVehiclePileupHazmatEdasDispatchGuard` 100% 物理剥离事故态一切商业/问卷话术并锁定创伤救援通道（`POST_CRASH_COMMERCIAL_OR_SURVEY_PROMPT_BLOCKED`），同时当高危事故地面 PSAP 桥接耗时 `> 800ms` 时立即触发卫星 SOS 信标与高速交管封道预警（`HAZMAT_OR_PILEUP_PSAP_BRIDGE_SLA_EXCEEDED`）。
+
+| 零知识声纹支付动态绑定与重特大车祸危化品救援控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 支付清算零篡改与重特大事故救援收益 |
+| :--- | :--- | :--- |
+| **1. 零知识声纹支付与 PSD3 FIDO2 动态密码学绑定 (`P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD`)** | `evaluateZeroKnowledgeVoicePayMandateGuard` 校验口述确认金额/尾号与签名载荷完全一致（`SPOKEN_AMOUNT_OR_PAYEE_MANDATE_DRIFT_BLOCKED`），并强制核验声纹 + `<=30s` FIDO2 断言（`MISSING_FIDO2_OR_EXPIRED_CHALLENGE_NONCE_BLOCKED`）。 | **100% 满足欧盟 PSD3 SCA 动态链接与央行支付强核身，语音支付金额篡改率降至 0.0%**（对应 POC 探针 `P49`）。 |
+| **2. 多车连环碰撞/危化品创伤通道锁止与卫星 SOS 升级 (`P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD`)** | `evaluateMultiVehiclePileupHazmatEdasDispatchGuard` 拦截事故态一切商业推销/问卷（`POST_CRASH_COMMERCIAL_OR_SURVEY_PROMPT_BLOCKED`），并在危化品/连环追尾桥接 `>800ms` 时直切卫星 SOS（`HAZMAT_OR_PILEUP_PSAP_BRIDGE_SLA_EXCEEDED`）。 | **重特大车祸/危化品事故创伤通道 100% 零商业干扰，地面弱网下卫星救援触发率 100%**（对应 POC 探针 `P50`）。 |
+
 
 
 

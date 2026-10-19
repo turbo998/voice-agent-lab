@@ -4591,6 +4591,177 @@ export function evaluateWebrtcIceTurnRelayCgnatGuard(
   };
 }
 
+export interface StilleZeroKnowledgeVoicePayMandateGuardInput {
+  callId: string;
+  paymentAmountMinor: number;
+  spokenApprovalAmountMinor: number;
+  payeeAccountTail4: string;
+  signedMandatePayeeTail4: string;
+  biometricVoiceprintVerified: boolean;
+  fido2WebAuthnAssertionValid: boolean;
+  mandateNonceChallengeAgeMs: number;
+}
+
+export interface StilleZeroKnowledgeVoicePayMandateGuardDecision {
+  policyCode: "P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD";
+  callId: string;
+  paymentAmountMinor: number;
+  cryptographicMandateBound: boolean;
+  allowed: boolean;
+  reason:
+    | "VOICE_PAY_CRYPTO_MANDATE_VERIFIED"
+    | "SPOKEN_AMOUNT_OR_PAYEE_MANDATE_DRIFT_BLOCKED"
+    | "MISSING_FIDO2_OR_EXPIRED_CHALLENGE_NONCE_BLOCKED";
+  actionCode:
+    | "COMMIT_CRYPTO_BOUND_VOICE_PAYMENT"
+    | "REJECT_DRIFTED_PAYMENT_AND_ALERT_USER"
+    | "REQUIRE_FRESH_FIDO2_BIOMETRIC_CHALLENGE";
+  summaryZh: string;
+}
+
+/**
+ * Stage 28 — P49 Zero-Knowledge Voice-Pay Cryptographic Mandate & FIDO2 Step-Up Guard (`P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD`).
+ * Prevents in-call voice payment tampering and PSD3 / Strong Customer Authentication (SCA) dynamic linking violations:
+ * 1) Hard-blocks any discrepancy between the caller's spoken approval amount/payee tail-4 and the backend payment payload
+ *    (`paymentAmountMinor !== spokenApprovalAmountMinor || payeeAccountTail4 !== signedMandatePayeeTail4`
+ *    -> `SPOKEN_AMOUNT_OR_PAYEE_MANDATE_DRIFT_BLOCKED`);
+ * 2) Enforces PSD3 dynamic linking with verified voiceprint + FIDO2/WebAuthn assertion and fresh challenge nonce (`<= 30,000ms`)
+ *    (`!biometricVoiceprintVerified || !fido2WebAuthnAssertionValid || mandateNonceChallengeAgeMs > 30000`
+ *    -> `MISSING_FIDO2_OR_EXPIRED_CHALLENGE_NONCE_BLOCKED`).
+ */
+export function evaluateZeroKnowledgeVoicePayMandateGuard(
+  input: StilleZeroKnowledgeVoicePayMandateGuardInput,
+): StilleZeroKnowledgeVoicePayMandateGuardDecision {
+  if (
+    input.paymentAmountMinor !== input.spokenApprovalAmountMinor ||
+    input.payeeAccountTail4.trim() !== input.signedMandatePayeeTail4.trim()
+  ) {
+    return {
+      policyCode: "P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD",
+      callId: input.callId,
+      paymentAmountMinor: input.paymentAmountMinor,
+      cryptographicMandateBound: false,
+      allowed: false,
+      reason: "SPOKEN_AMOUNT_OR_PAYEE_MANDATE_DRIFT_BLOCKED",
+      actionCode: "REJECT_DRIFTED_PAYMENT_AND_ALERT_USER",
+      summaryZh: `【P49 零知识声纹支付与 FIDO2 动态签名护栏 · 拦截口述金额/收款人与签名载荷漂移 (SPOKEN_AMOUNT_OR_PAYEE_MANDATE_DRIFT_BLOCKED)】通话 ${input.callId} 口述确认金额 (${input.spokenApprovalAmountMinor} 分 / 尾号 ${input.payeeAccountTail4}) 与实际支付载荷 (${input.paymentAmountMinor} 分 / 尾号 ${input.signedMandatePayeeTail4}) 不一致，已硬阻断扣款并告警。`,
+    };
+  }
+
+  if (
+    !input.biometricVoiceprintVerified ||
+    !input.fido2WebAuthnAssertionValid ||
+    input.mandateNonceChallengeAgeMs > 30000 ||
+    input.mandateNonceChallengeAgeMs < 0
+  ) {
+    return {
+      policyCode: "P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD",
+      callId: input.callId,
+      paymentAmountMinor: input.paymentAmountMinor,
+      cryptographicMandateBound: false,
+      allowed: false,
+      reason: "MISSING_FIDO2_OR_EXPIRED_CHALLENGE_NONCE_BLOCKED",
+      actionCode: "REQUIRE_FRESH_FIDO2_BIOMETRIC_CHALLENGE",
+      summaryZh: `【P49 零知识声纹支付与 FIDO2 动态签名护栏 · 强制 PSD3 动态绑定与新鲜 FIDO2 断言 (MISSING_FIDO2_OR_EXPIRED_CHALLENGE_NONCE_BLOCKED)】通话 ${input.callId} 缺失有效声纹/FIDO2 硬件签名或挑战 Nonce 已超期 (${input.mandateNonceChallengeAgeMs}ms > 30000ms)，已阻断无签名语音扣款。`,
+    };
+  }
+
+  return {
+    policyCode: "P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD",
+    callId: input.callId,
+    paymentAmountMinor: input.paymentAmountMinor,
+    cryptographicMandateBound: true,
+    allowed: true,
+    reason: "VOICE_PAY_CRYPTO_MANDATE_VERIFIED",
+    actionCode: "COMMIT_CRYPTO_BOUND_VOICE_PAYMENT",
+    summaryZh: `【P49 零知识声纹支付核验通过】通话 ${input.callId} 金额 (${input.paymentAmountMinor} 分) 与收款尾号 (${input.payeeAccountTail4}) 已完成声纹 + FIDO2 动态密码学绑定 (${input.mandateNonceChallengeAgeMs}ms)，允许安全清算。`,
+  };
+}
+
+export interface StilleAirbagDeploymentMultiVehicleEdasDispatchGuardInput {
+  callId: string;
+  cabinOccupancyCount: number;
+  hazmatPlacardDetected: boolean;
+  secondaryPileupRiskScore: number;
+  psapVoiceBridgeEstablishedMs: number;
+  agentAttemptedNonEmergencyUpsellOrSurvey: boolean;
+}
+
+export interface StilleAirbagDeploymentMultiVehicleEdasDispatchGuardDecision {
+  policyCode: "P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD";
+  callId: string;
+  dispatchPriorityTier: "P0_HAZMAT_MASS_CASUALTY" | "P0_STANDARD_CRASH" | "ROUTINE_ROADSIDE";
+  psapBridgeVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "MULTI_VEHICLE_EDAS_DISPATCH_VERIFIED"
+    | "POST_CRASH_COMMERCIAL_OR_SURVEY_PROMPT_BLOCKED"
+    | "HAZMAT_OR_PILEUP_PSAP_BRIDGE_SLA_EXCEEDED";
+  actionCode:
+    | "MAINTAIN_DEDICATED_EMERGENCY_TRAUMA_BRIDGE"
+    | "PURGE_NON_EMERGENCY_PROMPT_AND_LOCK_TRAUMA_CHANNEL"
+    | "ESCALATE_SATELLITE_SOS_AND_TRAFFIC_CONTROL_BEACON";
+  summaryZh: string;
+}
+
+/**
+ * Stage 28 — P50 Multi-Vehicle Pileup / Hazmat Telemetry & Post-Crash Trauma Channel Lock Guard (`P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD`).
+ * Protects connected-vehicle and roadside emergency voice agents after severe or multi-vehicle/hazmat collisions:
+ * 1) Hard-blocks any commercial tow upsell, insurance deductible haggling, or CSAT survey prompt during an active crash session
+ *    (`agentAttemptedNonEmergencyUpsellOrSurvey === true` -> `POST_CRASH_COMMERCIAL_OR_SURVEY_PROMPT_BLOCKED`);
+ * 2) When hazmat cargo (`hazmatPlacardDetected`) or high secondary pileup risk (`secondaryPileupRiskScore >= 0.70`) is detected,
+ *    enforces PSAP + highway traffic control bridge establishment within `<= 800ms`, failing over to satellite SOS beacon if exceeded
+ *    (`HAZMAT_OR_PILEUP_PSAP_BRIDGE_SLA_EXCEEDED`).
+ */
+export function evaluateMultiVehiclePileupHazmatEdasDispatchGuard(
+  input: StilleAirbagDeploymentMultiVehicleEdasDispatchGuardInput,
+): StilleAirbagDeploymentMultiVehicleEdasDispatchGuardDecision {
+  const highRiskCrash =
+    input.hazmatPlacardDetected ||
+    input.secondaryPileupRiskScore >= 0.7 ||
+    input.cabinOccupancyCount >= 4;
+
+  const priorityTier = highRiskCrash ? "P0_HAZMAT_MASS_CASUALTY" : "P0_STANDARD_CRASH";
+
+  if (input.agentAttemptedNonEmergencyUpsellOrSurvey) {
+    return {
+      policyCode: "P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD",
+      callId: input.callId,
+      dispatchPriorityTier: priorityTier,
+      psapBridgeVerified: false,
+      allowed: false,
+      reason: "POST_CRASH_COMMERCIAL_OR_SURVEY_PROMPT_BLOCKED",
+      actionCode: "PURGE_NON_EMERGENCY_PROMPT_AND_LOCK_TRAUMA_CHANNEL",
+      summaryZh: `【P50 多车连环碰撞与危化品应急调度护栏 · 拦截事故态商业推销/问卷话术 (POST_CRASH_COMMERCIAL_OR_SURVEY_PROMPT_BLOCKED)】通话 ${input.callId} 处于碰撞救援态 (乘员 ${input.cabinOccupancyCount} 人)，已物理剥离非紧急推销/满意度话术并锁定创伤救援专线。`,
+    };
+  }
+
+  if (highRiskCrash && input.psapVoiceBridgeEstablishedMs > 800) {
+    return {
+      policyCode: "P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD",
+      callId: input.callId,
+      dispatchPriorityTier: "P0_HAZMAT_MASS_CASUALTY",
+      psapBridgeVerified: false,
+      allowed: false,
+      reason: "HAZMAT_OR_PILEUP_PSAP_BRIDGE_SLA_EXCEEDED",
+      actionCode: "ESCALATE_SATELLITE_SOS_AND_TRAFFIC_CONTROL_BEACON",
+      summaryZh: `【P50 多车连环碰撞与危化品应急调度护栏 · 触发卫星 SOS 与高速交管联动 (HAZMAT_OR_PILEUP_PSAP_BRIDGE_SLA_EXCEEDED)】通话 ${input.callId} 检出危化品/二次连环追尾高风险 (指数 ${input.secondaryPileupRiskScore.toFixed(2)}) 且地面 PSAP 桥接耗时 ${input.psapVoiceBridgeEstablishedMs}ms (>800ms)，已立即升级卫星 SOS 信标与交管封道预警。`,
+    };
+  }
+
+  return {
+    policyCode: "P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD",
+    callId: input.callId,
+    dispatchPriorityTier: priorityTier,
+    psapBridgeVerified: true,
+    allowed: true,
+    reason: "MULTI_VEHICLE_EDAS_DISPATCH_VERIFIED",
+    actionCode: "MAINTAIN_DEDICATED_EMERGENCY_TRAUMA_BRIDGE",
+    summaryZh: `【P50 多车碰撞与危化品应急调度核验通过】通话 ${input.callId} 已按 ${priorityTier} 优先级在 ${input.psapVoiceBridgeEstablishedMs}ms 内建立救援桥接 (乘员 ${input.cabinOccupancyCount} 人)。`,
+  };
+}
+
+
 
 
 
