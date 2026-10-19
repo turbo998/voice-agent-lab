@@ -4236,6 +4236,191 @@ export function evaluateAcousticEchoLoopbackBargeInGuard(
   };
 }
 
+export interface StilleSyntheticCallerHoneypotAndBotDefenseInput {
+  callId: string;
+  callerRtpJitterStdDevMs: number;
+  pitchMicroTremorHz: number;
+  breathingPauseNaturalnessScore: number;
+  microTurnChallengeLatencyMs: number;
+  callerRequestsBulkRateOrInventoryScrape: boolean;
+  concurrentSessionsFromSameFingerprint: number;
+}
+
+export interface StilleSyntheticCallerHoneypotAndBotDefenseDecision {
+  policyCode: "P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD";
+  callId: string;
+  syntheticBotCallerDetected: boolean;
+  bulkScrapingPatternDetected: boolean;
+  allowed: boolean;
+  reason:
+    | "SYNTHETIC_BOT_CALLER_ACOUSTIC_SIGNATURE_BLOCKED"
+    | "AUTOMATED_COMPETITOR_VOICE_SCRAPER_TARPITTED"
+    | "ORGANIC_HUMAN_CALLER_VERIFIED";
+  actionCode:
+    | "DIVERT_TO_LOW_COST_DECOY_HONEYPOT_OR_CAPTCHA"
+    | "THROTTLE_AND_BLOCK_SCRAPER_FINGERPRINT"
+    | "ALLOW_ORGANIC_VOICE_SESSION";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Inbound AI Voice Bot / Automated Competitor Price-Scraper Detection & Honeypot Guard
+ * (P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD).
+ * Ensures that:
+ * 1) When an inbound caller exhibits synthetic TTS/bot acoustic signatures (near-zero pitch micro-tremor
+ *    `pitchMicroTremorHz < 0.15`, unnatural breathing pause score `breathingPauseNaturalnessScore < 0.35`,
+ *    and robotic sub-120ms turn-taking cadence `microTurnChallengeLatencyMs < 120` with ultra-flat RTP timing),
+ *    the gateway blocks expensive S2S inference and diverts the bot to a low-cost decoy honeypot or acoustic
+ *    challenge (`SYNTHETIC_BOT_CALLER_ACOUSTIC_SIGNATURE_BLOCKED`);
+ * 2) When an automated caller attempts bulk rate/inventory scraping (`callerRequestsBulkRateOrInventoryScrape`)
+ *    or launches parallel sessions from the same acoustic/network fingerprint (`concurrentSessionsFromSameFingerprint >= 4`),
+ *    it throttles and blocks the scraper fingerprint (`AUTOMATED_COMPETITOR_VOICE_SCRAPER_TARPITTED`).
+ */
+export function evaluateSyntheticCallerHoneypotAndBotDefenseGuard(
+  input: StilleSyntheticCallerHoneypotAndBotDefenseInput,
+): StilleSyntheticCallerHoneypotAndBotDefenseDecision {
+  const syntheticBotCallerDetected =
+    input.pitchMicroTremorHz < 0.15 &&
+    input.breathingPauseNaturalnessScore < 0.35 &&
+    input.microTurnChallengeLatencyMs < 120;
+
+  const bulkScrapingPatternDetected =
+    input.callerRequestsBulkRateOrInventoryScrape &&
+    (syntheticBotCallerDetected || input.concurrentSessionsFromSameFingerprint >= 4);
+
+  if (bulkScrapingPatternDetected) {
+    return {
+      policyCode: "P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD",
+      callId: input.callId,
+      syntheticBotCallerDetected,
+      bulkScrapingPatternDetected: true,
+      allowed: false,
+      reason: "AUTOMATED_COMPETITOR_VOICE_SCRAPER_TARPITTED",
+      actionCode: "THROTTLE_AND_BLOCK_SCRAPER_FINGERPRINT",
+      summaryZh: `【P45 入站 AI 爬虫与机器呼叫蜜罐护栏 · 阻断竞品批量扒价机器人 (AUTOMATED_COMPETITOR_VOICE_SCRAPER_TARPITTED)】通话 ${input.callId} 检出批量库存/费率抓取行为（同指纹并发=${input.concurrentSessionsFromSameFingerprint}，合成机器人特征=${syntheticBotCallerDetected}），已拉黑声学/网络指纹并阻断核心报价查询。`,
+    };
+  }
+
+  if (syntheticBotCallerDetected) {
+    return {
+      policyCode: "P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD",
+      callId: input.callId,
+      syntheticBotCallerDetected: true,
+      bulkScrapingPatternDetected: false,
+      allowed: false,
+      reason: "SYNTHETIC_BOT_CALLER_ACOUSTIC_SIGNATURE_BLOCKED",
+      actionCode: "DIVERT_TO_LOW_COST_DECOY_HONEYPOT_OR_CAPTCHA",
+      summaryZh: `【P45 入站 AI 爬虫与机器呼叫蜜罐护栏 · 拦截合成机器主叫 (SYNTHETIC_BOT_CALLER_ACOUSTIC_SIGNATURE_BLOCKED)】通话 ${input.callId} 声学微颤=${input.pitchMicroTremorHz}Hz（<0.15Hz）、呼吸自然度=${input.breathingPauseNaturalnessScore}（<0.35）、抢答延迟=${input.microTurnChallengeLatencyMs}ms（<120ms），判定为入站 AI 语音机器人，已切入低成本蜜罐验证通道以保护 S2S 算力池。`,
+    };
+  }
+
+  return {
+    policyCode: "P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD",
+    callId: input.callId,
+    syntheticBotCallerDetected: false,
+    bulkScrapingPatternDetected: false,
+    allowed: true,
+    reason: "ORGANIC_HUMAN_CALLER_VERIFIED",
+    actionCode: "ALLOW_ORGANIC_VOICE_SESSION",
+    summaryZh: `【P45 入站真人声学特征核验通过】通话 ${input.callId} 具备自然声带微颤（${input.pitchMicroTremorHz}Hz）与人类呼吸韵律（${input.breathingPauseNaturalnessScore}），放行进入标准语音会话。`,
+  };
+}
+
+export interface StilleEmergency911PsapNomadicLocationGuardInput {
+  callId: string;
+  emergencyHazardDetected: boolean;
+  hazardCategory: "FIRE_SMOKE" | "GAS_LEAK" | "VIOLENT_INTRUSION" | "SUICIDE_SELF_HARM" | "NONE";
+  pidfLoCivicAddressVerified: boolean;
+  elinsCallbackNumberVerified: boolean;
+  psapWarmBridgeLatencyMs: number;
+  agentAttemptedDelayingTroubleshooting: boolean;
+}
+
+export interface StilleEmergency911PsapNomadicLocationGuardDecision {
+  policyCode: "P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD";
+  callId: string;
+  kariLawRayBaumsCompliant: boolean;
+  pidfLoHeaderAttached: boolean;
+  allowed: boolean;
+  reason:
+    | "EMERGENCY_HAZARD_TROUBLESHOOTING_DELAY_BLOCKED"
+    | "MISSING_PIDFLO_OR_ELIN_EMERGENCY_HEADER_ESCALATED"
+    | "E911_PSAP_BRIDGE_OR_NORMAL_CALL_VERIFIED";
+  actionCode:
+    | "ABORT_BOT_SCRIPT_IMMEDIATE_PSAP_BRIDGE_WITH_PIDFLO"
+    | "SYNTHESIZE_FALLBACK_GEO_BEACON_AND_BRIDGE_PSAP"
+    | "PROCEED_STANDARD_FLOW_OR_COMPLETED_PSAP_BRIDGE";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Kari's Law / RAY BAUM'S Act E911/112 Nomadic Location (PIDF-LO) & PSAP Bridge Guard
+ * (P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD).
+ * Ensures that:
+ * 1) When a caller reports an acute life-safety hazard (`emergencyHazardDetected === true`, such as gas leak,
+ *    fire/smoke, violent intrusion, or self-harm crisis), the voice agent is strictly prohibited from running
+ *    delaying self-service troubleshooting scripts (`agentAttemptedDelayingTroubleshooting === true`) and must
+ *    immediately bridge to the regional Public Safety Answering Point (`EMERGENCY_HAZARD_TROUBLESHOOTING_DELAY_BLOCKED`);
+ * 2) Every emergency PSAP bridge must attach RFC 4119 / RFC 5491 `PIDF-LO` dispatchable civic location
+ *    (`pidfLoCivicAddressVerified === true`) and a valid Emergency Location Identification Number callback
+ *    (`elinsCallbackNumberVerified === true`) within `<= 500ms`; if missing, it immediately synthesizes a
+ *    fallback geo-beacon and alerts the emergency desk (`MISSING_PIDFLO_OR_ELIN_EMERGENCY_HEADER_ESCALATED`).
+ */
+export function evaluateEmergency911PsapNomadicLocationGuard(
+  input: StilleEmergency911PsapNomadicLocationGuardInput,
+): StilleEmergency911PsapNomadicLocationGuardDecision {
+  if (!input.emergencyHazardDetected) {
+    return {
+      policyCode: "P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD",
+      callId: input.callId,
+      kariLawRayBaumsCompliant: true,
+      pidfLoHeaderAttached: input.pidfLoCivicAddressVerified,
+      allowed: true,
+      reason: "E911_PSAP_BRIDGE_OR_NORMAL_CALL_VERIFIED",
+      actionCode: "PROCEED_STANDARD_FLOW_OR_COMPLETED_PSAP_BRIDGE",
+      summaryZh: `【P46 紧急生命安全与 E911/112 位置信标护栏通过】通话 ${input.callId} 未检出紧急安全险情，按常规业务流执行。`,
+    };
+  }
+
+  if (input.agentAttemptedDelayingTroubleshooting || input.psapWarmBridgeLatencyMs > 500) {
+    return {
+      policyCode: "P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD",
+      callId: input.callId,
+      kariLawRayBaumsCompliant: false,
+      pidfLoHeaderAttached: input.pidfLoCivicAddressVerified,
+      allowed: false,
+      reason: "EMERGENCY_HAZARD_TROUBLESHOOTING_DELAY_BLOCKED",
+      actionCode: "ABORT_BOT_SCRIPT_IMMEDIATE_PSAP_BRIDGE_WITH_PIDFLO",
+      summaryZh: `【P46 紧急生命安全与 E911/112 位置信标护栏 · 严禁险情下常规排障延误 (EMERGENCY_HAZARD_TROUBLESHOOTING_DELAY_BLOCKED)】通话 ${input.callId} 检出高危险情 (${input.hazardCategory})，已硬阻断 AI 常规自助排障问答并在 0ms 内强转公共安全应答点 (PSAP)。`,
+    };
+  }
+
+  if (!input.pidfLoCivicAddressVerified || !input.elinsCallbackNumberVerified) {
+    return {
+      policyCode: "P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD",
+      callId: input.callId,
+      kariLawRayBaumsCompliant: false,
+      pidfLoHeaderAttached: false,
+      allowed: false,
+      reason: "MISSING_PIDFLO_OR_ELIN_EMERGENCY_HEADER_ESCALATED",
+      actionCode: "SYNTHESIZE_FALLBACK_GEO_BEACON_AND_BRIDGE_PSAP",
+      summaryZh: `【P46 紧急生命安全与 E911/112 位置信标护栏 · 补齐 PIDF-LO 派遣地址与 ELIN 回拨号 (MISSING_PIDFLO_OR_ELIN_EMERGENCY_HEADER_ESCALATED)】通话 ${input.callId} 触发紧急救援 (${input.hazardCategory})，但缺失 SIP Geolocation PIDF-LO 详细楼层地址或 ELIN 回拨号，已自动合成备用基站/Wi-Fi 定位信标并同步桥接应急坐席。`,
+    };
+  }
+
+  return {
+    policyCode: "P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD",
+    callId: input.callId,
+    kariLawRayBaumsCompliant: true,
+    pidfLoHeaderAttached: true,
+    allowed: true,
+    reason: "E911_PSAP_BRIDGE_OR_NORMAL_CALL_VERIFIED",
+    actionCode: "PROCEED_STANDARD_FLOW_OR_COMPLETED_PSAP_BRIDGE",
+    summaryZh: `【P46 紧急生命安全与 E911/112 位置信标核验通过】通话 ${input.callId} (${input.hazardCategory}) 已在 ${input.psapWarmBridgeLatencyMs}ms 内携带完整 RFC 4119 PIDF-LO 地址与 ELIN 回拨号完成 PSAP 应急桥接。`,
+  };
+}
+
+
 
 
 

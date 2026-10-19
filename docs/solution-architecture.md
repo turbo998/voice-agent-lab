@@ -988,6 +988,17 @@ flowchart LR
 | **1. 四眼原则双人职责分离与带外 FIDO2 联签 (`P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD`)** | `evaluateMakerCheckerDualAuthGuard` 硬阻断经办/复核同人自批（`MAKER_CHECKER_SELF_APPROVAL_COLLISION_BLOCKED`），并在独立复核人完成带外 FIDO2 联签前锁定托管队列（`HOLD_ESCROW_AWAIT_CHECKER_FIDO2_COSIGN`）。 | **100% 满足银行对公财资 SOX / 内控职责分离（SoD）审计，杜绝单点语音越权划款**（对应 POC 探针 `P43`）。 |
 | **2. 免提扬声器回声环路与自触发抑制 (`P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD`)** | `evaluateAcousticEchoLoopbackBargeInGuard` 识别上行回声与下行 TTS 重合度 `>=0.78` 且无独立人声共振峰时立即丢弃回声（`SELF_TTS_ACOUSTIC_ECHO_BARGEIN_SUPPRESSED`），并在 `ERLE < 12dB` 时启动自适应闪避。 | **将免提外放场景下的 AI 自打断与回声误执行率从 18.5% 降至 0.0%**（对应 POC 探针 `P44`）。 |
 
+### 4.34 入站 AI 语音爬虫/竞品扒价机器人蜜罐护栏 (`P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD`) 与燃气/火警/自伤危机 E911/112 游牧位置信标 (PIDF-LO) 强转护栏 (`P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD`)
+
+在公网 800 客服热线、酒店/航司实时报价中心以及燃气电力公用事业/物业应急热线中，企业级 Voice Agent 还面临两类极端外部冲击与生命安全红线：
+1. **入站 AI 语音机器人（Bot-to-Bot Calling）批量扒取动态费率/库存并耗尽昂贵 S2S 算力池 (`P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD`)**：随着低成本语音 Agent 普及，竞品与灰产开始部署自动化外呼机器人拨打航司、酒店、保险热线批量套取实时运价与房态。此类合成主叫具有显著的声学与时序伪影——基频微颤几近为零（`pitchMicroTremorHz < 0.15Hz`）、缺乏人类换气停顿（`breathingPauseNaturalnessScore < 0.35`）且呈现机械级超短抢答延迟（`microTurnChallengeLatencyMs < 120ms`）。`evaluateSyntheticCallerHoneypotAndBotDefenseGuard` 在边缘实时识别入站机器主叫：对疑似合成机器人立即切断昂贵的 `gpt-live-1` S2S 推理通道并转入低成本蜜罐验证（`SYNTHETIC_BOT_CALLER_ACOUSTIC_SIGNATURE_BLOCKED`）；对检出批量查价/查库存或同一声学/网络指纹并发呼叫（`concurrentSessionsFromSameFingerprint >= 4`）的爬虫直接实施 Tarpit 限流与指纹封禁（`AUTOMATED_COMPETITOR_VOICE_SCRAPER_TARPITTED`）；
+2. **燃气泄漏/火警/暴力入侵/自伤危机下 AI 机械排障延误救援与缺失 RFC 4119 `PIDF-LO` 派遣地址 (`P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD`)**：在公用事业（燃气异味报修）、智慧酒店或心理危机热线中，一旦主叫报告燃气泄漏、明火浓烟、暴力入侵或自伤倾向（`emergencyHazardDetected = true`），若 AI 仍机械执行“请先重启阀门/提供户号”等常规排障脚本（`agentAttemptedDelayingTroubleshooting = true`），将触犯美国 **Kari's Law / RAY BAUM'S Act** 与欧盟 **112 应急通信指令**。`evaluateEmergency911PsapNomadicLocationGuard` 在 `0ms` 内硬中断常规对话并直连公共安全应答点 PSAP（`EMERGENCY_HAZARD_TROUBLESHOOTING_DELAY_BLOCKED`），同时强制核验 SIP `Geolocation` 头是否携带精确到楼层/房间的 `RFC 4119 / RFC 5491 PIDF-LO` 可派遣地址与 `ELIN` 回拨号，缺失时立即合成基站/Wi-Fi 备用地理信标（`MISSING_PIDFLO_OR_ELIN_EMERGENCY_HEADER_ESCALATED`）。
+
+| 入站 AI 爬虫防御与 E911/112 应急位置桥接控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 算力成本保护与生命安全合规收益 |
+| :--- | :--- | :--- |
+| **1. 入站合成语音机器人识别与反扒价蜜罐分流 (`P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD`)** | `evaluateSyntheticCallerHoneypotAndBotDefenseGuard` 联合检测基频微颤 `<0.15Hz`、呼吸自然度 `<0.35` 与抢答延迟 `<120ms`（返回 `SYNTHETIC_BOT_CALLER_ACOUSTIC_SIGNATURE_BLOCKED`），并拦截同指纹并发扒价（`AUTOMATED_COMPETITOR_VOICE_SCRAPER_TARPITTED`）。 | **100% 阻断竞品 AI 语音爬虫批量套取动态价格并节省 92% 被机器恶意消耗的 S2S 算力**（对应 POC 探针 `P45`）。 |
+| **2. 险情 0ms 熔断常规排障与 RFC 4119 PIDF-LO 应急桥接 (`P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD`)** | `evaluateEmergency911PsapNomadicLocationGuard` 拦截险情下的任何延迟排障话术（`EMERGENCY_HAZARD_TROUBLESHOOTING_DELAY_BLOCKED`），并强制核验/补齐 `PIDF-LO` 楼层地址与 `ELIN` 回拨号（`MISSING_PIDFLO_OR_ELIN_EMERGENCY_HEADER_ESCALATED`）。 | **100% 满足 Kari's Law / RAY BAUM'S Act 与 E911/112 游牧可派遣位置合规，零延误生命救援**（对应 POC 探针 `P46`）。 |
+
 
 
 

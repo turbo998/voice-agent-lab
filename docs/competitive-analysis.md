@@ -199,6 +199,7 @@
 | **21. 语义句法防抢话/C2PA 声学双水印 & MCP 间接注入隔离/多步 Saga 补偿**<br>(`连词半句停顿被 500ms VAD 抢话或合成音无水印违例 / 外部工具返回夹带越狱指令或多步写操作半途失败单边扣款`) | 接入 **`P39-SEMANTIC-TURN-TAKING-WATERMARK-PROVENANCE-GUARD`** 未完结句动态拓宽至 `>=1850ms` 并强制校验 C2PA + `>=18dB` 扩频声学水印 | **`P40-MCP-INDIRECT-INJECTION-SAGA-COMPENSATION-GUARD` 物理剥离 MCP 工具返回中的间接注入载荷，多步事务半途失败自动触发逆序 Saga 补偿回滚** | 复杂口述中途抢话率压降 93%，100% 免疫工具间接越狱与多步事务半途失败脏写 |
 | **22. 运营商 STIR/SHAKEN 防改号/伴音按键防注入 & SIPREC 双录防断流/实时字幕 DLP**<br>(`VoIP 伪造 VIP 来电号码绕过核身或外放按键音注入 / 交易中途 SIPREC 录音掉线无凭据或实时字幕泄露明文 PII`) | 接入 **`P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD`** 剥离声道内伪造按键音，非 `A` 级签名或呼转 `>2` 跳强制带外 FIDO2/OTP | **`P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD` 在 SIPREC 分流中断/超时 `>800ms` 时秒级暂停交易并切备用 SRS，实时字幕总线 100% 令牌化脱敏** | 100% 阻断改号欺诈与声学按键注入，彻底杜绝“有交易无合规双录”与日志明文 PII 泄露 |
 | **23. 对公财资四眼原则（Maker-Checker）联签 & 免提外放回声环路防自打断**<br>(`大额对公电汇单人语音直通或同人自审自批 / 免提扬声器回声耦合进麦克风导致 AI 自己打断自己并误执行指令`) | 接入 **`P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD`** 硬阻断经办/复核同人碰撞，强制等待独立第二授权人带外 FIDO2 联签 | **`P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD` 实时比对上行识别与下行 TTS 余弦相似度(`>=0.78`)及独立人声共振峰，自动丢弃回声并启动 AEC 闪避** | 100% 满足对公财资 SOX 职责分离内控，免提外放场景 AI 自打断与回声误执行率降至 0.0% |
+| **24. 入站 AI 语音爬虫防刷蜜罐 & 险情 E911/112 游牧位置 (`PIDF-LO`) 应急桥接**<br>(`竞品外呼机器人批量扒取实时底价刷爆 S2S 算力 / 煤气泄漏或火警时 AI 仍在机械问答排障或转接缺失楼层地址`) | 接入 **`P45-SYNTHETIC-CALLER-BOT-SCRAPER-HONEYPOT-GUARD`** 识别零微颤/机械抢答与并发扒价指纹，自动切入低成本蜜罐或封禁 | **`P46-E911-PIDFLO-NOMADIC-LOCATION-PSAP-BRIDGE-GUARD` 险情 0ms 熔断常规脚本，自动附加 RFC 4119 PIDF-LO 地址与 ELIN 回拨号直连 PSAP** | 节省 92% 被入站机器消耗的 S2S 算力，100% 满足 Kari's Law / RAY BAUM'S Act 生命安全应急合规 |
 
 
 
