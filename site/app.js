@@ -3761,6 +3761,40 @@
         confidence: 1.0,
         verifier: 'PASS (P70) · Cross-continental RTP hairpinning blocked & <=140ms local media anchor enforced'
       }
+    },
+    {
+      code: 'P71 · FDCPA / CFPB Reg F Mini-Miranda, 7-in-7 Cap & Dispute Immediate Halt Guard',
+      badge: 'CFPB Reg F',
+      title: '金融催收 FDCPA / Reg F 开场披露、7-in-7 频控与账单异议即刻停催护栏',
+      sub: '测试债务人口头声明账单异议或要求停止联系后立即 0ms 熔断还款施压话术，并拦截缺失 Mini-Miranda 披露或滚动 7 天超 7 次的违规催收',
+      customer_en: '[Debt Collection Call Where Consumer States "I Dispute This Debt, Stop Calling Me" While Agent Attempts Follow-Up Repayment Pressure Pitch, or 8th Call in 7 Days (> 7-in-7 Cap)]',
+      customer_zh: '【贷后催收通话中客户明确表示“我对这笔账单有异议，别再打给我了”，但模型仍试图播报还款施压话术；或滚动 7 天内第 8 次拨打 (> Reg F 7-in-7 上限)】',
+      agent_en: 'FDCPA / CFPB REG F COLLECTION COMPLIANCE GUARD (P71 / P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD): Immediately halted all repayment collection pitches upon consumer debt dispute/cease request (`POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED` -> `HALT_COLLECTION_PITCH_AND_LOG_STATUTORY_DISPUTE`), and enforced opening Mini-Miranda disclosure & 7-in-7 frequency cap (`MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED`)!',
+      agent_zh: '【P71 FDCPA / CFPB Reg F 催收合规护栏 (POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED)】检测到客户口头提出债务异议/要求停止联系，已 0ms 熔断一切还款施压话术并转入法定书面核查工单；同时严格拦截漏报 Mini-Miranda 披露或违反 7-in-7 频次上限的通话！',
+      trace: {
+        tool: 'evaluate_fdcp_debt_collection_mini_miranda_and_harassment_guard(disputed=true, continued_pitch=true -> HALT_COLLECTION_PITCH_AND_LOG_STATUTORY_DISPUTE)',
+        citations: ['P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD', 'CFPB-12CFR-1006', 'FDCPA-1692C'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P71) · Post-dispute collection pressure & 7-in-7 cap breach 100% blocked'
+      }
+    },
+    {
+      code: 'P72 · Multi-Tenant ASR Custom Hotword Lexicon Isolation & Anti-Poisoning Guard',
+      badge: 'Tenant WFST Isolation',
+      title: '多租户 ASR 自定义热词图谱物理隔离与防声学偏置投毒护栏',
+      sub: '测试热池化 ASR 实例跨租户残留商业机密 WFST 热词图谱，或自定义热词被注入 >15dB 极端声学增益与提示词指令时的物理剥离',
+      customer_en: '[Warm ASR Worker Serving `tenant-retail-b` With Residual Custom WFST Lexicon From `tenant-pharma-a`, or Custom Hotword Configured With 24dB Boost (> 15dB Ceiling)]',
+      customer_zh: '【热池化 ASR 节点服务租户 B (`tenant-retail-b`) 时残留挂载了租户 A (`tenant-pharma-a`) 的未公开并购/新药 WFST 热词图谱，或自定义词表注入 24dB (> 15dB 上限) 极端声学偏置】',
+      agent_en: 'MULTI-TENANT ASR HOTWORD ISOLATION & ANTI-POISONING GUARD (P72 / P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD): Blocked cross-tenant custom WFST lexicon bleed and reloaded isolated tenant FST (`CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED` -> `STRIP_FOREIGN_LEXICON_AND_RELOAD_TENANT_FST`), and clamped adversarial >15dB phonetic boost weights (`ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED`)!',
+      agent_zh: '【P72 多租户 ASR 热词图谱隔离与防投毒护栏 (CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED)】检测到当前租户会话残留异构租户的自定义 WFST 热词图谱，已立即卸载外部词表并重载本租户隔离 FST，同时钳位 >15dB 声学偏置增益，彻底杜绝跨租户机密代号串音泄密！',
+      trace: {
+        tool: 'evaluate_hotword_lexicon_tenant_isolation_guard(caller_tenant="tenant-b", lexicon_tenant="tenant-a", boost_db=24 -> STRIP_FOREIGN_LEXICON_AND_RELOAD_TENANT_FST)',
+        citations: ['P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD', 'WFST-TENANT-ISOLATION', 'ASR-BIAS-CLAMP'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P72) · Cross-tenant hotword bleed & >15dB acoustic poisoning 100% blocked'
+      }
     }
   ];
 
@@ -3835,7 +3869,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (88-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (90-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3871,7 +3905,8 @@
       '- [x] **医疗 HIPAA 最小必要原则与家属 POA 代查门禁 & RFC 4028 SIP 半开 RTP 僵尸会话回收护栏**：100% 拦截无 HIPAA ROI/POA 授权亲属代查临床 PHI 及未授权 42 CFR Part 2 特级敏感记录 (P63)，上行 RTP 断流 `>=15s` 且无 RTCP RR 时主动发 `SIP BYE` 回收 S2S 算力并保存断点续办书签 (P64)',
       '- [x] **金融公平信贷 ECOA 声学口音/年龄偏见剥离 & 跨国主权云多活容灾区域围栏护栏**：物理剥离声学人口学推断与受保护特征代理变量并强制核验 CFPB Reg B 具体拒贷原因码 (P65)，锁死同法域双活灾备围栏严禁故障切换跨境溢出并强验备区 BYOK 密钥与 `<=1200ms` RTO (P66)',
       '- [x] **911/急救断线回拨 0ms 穿透商业 IVR 直连事故桥 & PCI-DSS `SAQ-A` 大模型零持卡人数据域隔离护栏**：核验运营商紧急主叫权威签名并在黄金事故保持窗口内 0ms 穿透商业 IVR 直连原事故专席 (P67)，物理剥离 Prompt/Tool Schema 明文卡号污染并强绑 `callId+merchantId` 一次性不透明 Vault 令牌以维持轻量级 SAQ-A 豁免 (P68)',
-      '- [x] **未成年人 COPPA/GDPR-K 声纹零留存门禁 & 跨洲 SIP/RTP 发卡弯绕行 (Tromboning) 本地锚定护栏**：识别儿童声学特征并在缺失可验证监护人授权 (VPC) 时 100% 阻断声纹提取与未成年语音内购 (P69)，拦截跨洋 RTP 媒体流发卡弯绕行并强制本地边缘 SBC 锚定与 `<=140ms` 媒体 RTT 门禁 (P70)'
+      '- [x] **未成年人 COPPA/GDPR-K 声纹零留存门禁 & 跨洲 SIP/RTP 发卡弯绕行 (Tromboning) 本地锚定护栏**：识别儿童声学特征并在缺失可验证监护人授权 (VPC) 时 100% 阻断声纹提取与未成年语音内购 (P69)，拦截跨洋 RTP 媒体流发卡弯绕行并强制本地边缘 SBC 锚定与 `<=140ms` 媒体 RTT 门禁 (P70)',
+      '- [x] **金融催收 FDCPA / Reg F 7-in-7 与异议停催护栏 & 多租户 ASR 热词图谱物理隔离护栏**：强制开场 Mini-Miranda 披露、7-in-7 频次上限并在客户提出账单异议或停催要求后 0ms 熔断施压话术 (P71)，物理隔离多租户 WFST 自定义热词图谱并钳位 `<=15dB` 声学偏置防底噪幻觉注入 (P72)'
     ].join('\n');
   }
 

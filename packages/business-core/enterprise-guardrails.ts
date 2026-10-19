@@ -6273,6 +6273,154 @@ export function evaluateMultiRegionSipTrunkRtpHairpinOptimizationGuard(
   };
 }
 
+export interface StilleFdcpDebtCollectionMiniMirandaAndHarassmentGuardInput {
+  callId: string;
+  isDebtCollectionCall: boolean;
+  miniMirandaDisclosureSpokenInOpening: boolean;
+  callsInRolling7DaysCount: number;
+  callerRequestedCeaseCommunicationOrDisputedDebt: boolean;
+  agentContinuedCollectionPitchAfterCeaseOrDispute: boolean;
+}
+
+export interface StilleFdcpDebtCollectionMiniMirandaAndHarassmentGuardDecision {
+  policyCode: "P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD";
+  callId: string;
+  fdcpaRegFCompliant: boolean;
+  allowed: boolean;
+  reason:
+    | "FDCPA_REG_F_COLLECTION_COMPLIANCE_VERIFIED"
+    | "MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED"
+    | "POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED";
+  actionCode:
+    | "ALLOW_COMPLIant_DEBT_RESOLUTION_DIALOGUE"
+    | "INJECT_MINI_MIRANDA_OR_SUPPRESS_7IN7_EXCESS_DIAL"
+    | "HALT_COLLECTION_PITCH_AND_LOG_STATUTORY_DISPUTE";
+  summaryZh: string;
+}
+
+/**
+ * Stage 39 (#80): P71 — CFPB Regulation F / FDCPA Debt Collection Mini-Miranda Disclosure, 7-in-7 Call Cap & Cease/Dispute Immediate Halt Guard.
+ * Prevents two severe statutory consumer-finance violations in outbound/inbound collections and arrears recovery Voice Agents:
+ * 1) Missing Mini-Miranda Disclosure or Regulation F 7-in-7 Call Cap Breach (`isDebtCollectionCall && (!miniMirandaDisclosureSpokenInOpening || callsInRolling7DaysCount > 7)`): under 15 U.S.C. § 1692e(11) and CFPB Regulation F (12 CFR § 1006.14(b)), every debt-collection call must disclose that the communication is from a debt collector and any information obtained will be used for that purpose, and placing >7 calls within 7 consecutive days for a specific debt constitutes presumptive harassment (`MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED`).
+ * 2) Continued Collection Pressure After Cease-Communication or Debt Dispute (`isDebtCollectionCall && callerRequestedCeaseCommunicationOrDisputedDebt && agentContinuedCollectionPitchAfterCeaseOrDispute`): once a consumer states they dispute the debt or demands the collector stop calling (§ 1692c(c) / § 1006.6(c)), the Voice Agent must immediately halt all repayment pressure and log the statutory dispute (`POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED`).
+ */
+export function evaluateFdcpDebtCollectionMiniMirandaAndHarassmentGuard(
+  input: StilleFdcpDebtCollectionMiniMirandaAndHarassmentGuardInput,
+): StilleFdcpDebtCollectionMiniMirandaAndHarassmentGuardDecision {
+  if (
+    input.isDebtCollectionCall &&
+    input.callerRequestedCeaseCommunicationOrDisputedDebt &&
+    input.agentContinuedCollectionPitchAfterCeaseOrDispute
+  ) {
+    return {
+      policyCode: "P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD",
+      callId: input.callId,
+      fdcpaRegFCompliant: false,
+      allowed: false,
+      reason: "POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED",
+      actionCode: "HALT_COLLECTION_PITCH_AND_LOG_STATUTORY_DISPUTE",
+      summaryZh: `【P71 FDCPA / CFPB Reg F 催收合规护栏 · 账单异议或停催声明后严禁继续施压 (POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED)】通话 ${input.callId} 中债务人已口头提出债务异议或要求停止联系，但语音 Agent 仍继续播报还款施压话术！已立即熔断催收分支并生成法定书面核查工单。`,
+    };
+  }
+
+  if (
+    input.isDebtCollectionCall &&
+    (!input.miniMirandaDisclosureSpokenInOpening || input.callsInRolling7DaysCount > 7)
+  ) {
+    return {
+      policyCode: "P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD",
+      callId: input.callId,
+      fdcpaRegFCompliant: false,
+      allowed: false,
+      reason: "MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED",
+      actionCode: "INJECT_MINI_MIRANDA_OR_SUPPRESS_7IN7_EXCESS_DIAL",
+      summaryZh: `【P71 FDCPA / Reg F 催收披露与 7-in-7 频次红线拦截 (MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED)】通话 ${input.callId} 缺失开场 Mini-Miranda 法定催收身份披露（spoken=${input.miniMirandaDisclosureSpokenInOpening}）或滚动 7 天拨打次数=${input.callsInRolling7DaysCount}（超过 Reg F 7 次上限）！已强制拦截违规通话。`,
+    };
+  }
+
+  return {
+    policyCode: "P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD",
+    callId: input.callId,
+    fdcpaRegFCompliant: true,
+    allowed: true,
+    reason: "FDCPA_REG_F_COLLECTION_COMPLIANCE_VERIFIED",
+    actionCode: "ALLOW_COMPLIant_DEBT_RESOLUTION_DIALOGUE",
+    summaryZh: `【P71 FDCPA / Reg F 催收合规核验通过】通话 ${input.callId} 已完成 Mini-Miranda 法定披露且满足 7-in-7 频控与异议静默门禁。`,
+  };
+}
+
+export interface StilleHotwordLexiconTenantIsolationGuardInput {
+  callId: string;
+  callerTenantId: string;
+  injectedCustomLexiconTenantId: string;
+  phoneticBoostWeightDb: number;
+  unverifiedDynamicHotwordContainsPromptDirective: boolean;
+}
+
+export interface StilleHotwordLexiconTenantIsolationGuardDecision {
+  policyCode: "P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD";
+  callId: string;
+  lexiconIsolationVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "TENANT_SCOPED_HOTWORD_LEXICON_VERIFIED"
+    | "CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED"
+    | "ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED";
+  actionCode:
+    | "MOUNT_SANITIZED_TENANT_HOTWORD_GRAPH"
+    | "STRIP_FOREIGN_LEXICON_AND_RELOAD_TENANT_FST"
+    | "CLAMP_PHONETIC_BOOST_AND_REJECT_DIRECTIVE_HOTWORD";
+  summaryZh: string;
+}
+
+/**
+ * Stage 39 (#81): P72 — Multi-Tenant ASR Custom Hotword Lexicon Isolation & Phonetic Boost Anti-Poisoning Guard.
+ * Prevents two subtle acoustic/ASR security vulnerabilities in multi-tenant enterprise Voice Agent platforms:
+ * 1) Cross-Tenant Custom Lexicon Bleed (`callerTenantId !== injectedCustomLexiconTenantId`): if warm ASR worker pools reuse a previous tenant's compiled WFST/phrase-list biasing graph, confidential project codenames, unannounced M&A ticker symbols, or proprietary drug names from Tenant A leak into Tenant B's transcription candidates (`CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED`).
+ * 2) Adversarial Phonetic Boost Hijacking or Hotword Directive Injection (`phoneticBoostWeightDb > 15 || unverifiedDynamicHotwordContainsPromptDirective`): attackers or misconfigured tenant admins injecting extreme acoustic boost weights (`> 15 dB`) force the ASR decoder to hallucinate target phrases on background noise, or smuggle prompt-injection directives inside custom vocabulary strings (`ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED`).
+ */
+export function evaluateHotwordLexiconTenantIsolationGuard(
+  input: StilleHotwordLexiconTenantIsolationGuardInput,
+): StilleHotwordLexiconTenantIsolationGuardDecision {
+  if (input.callerTenantId !== input.injectedCustomLexiconTenantId) {
+    return {
+      policyCode: "P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD",
+      callId: input.callId,
+      lexiconIsolationVerified: false,
+      allowed: false,
+      reason: "CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED",
+      actionCode: "STRIP_FOREIGN_LEXICON_AND_RELOAD_TENANT_FST",
+      summaryZh: `【P72 多租户 ASR 热词词典隔离护栏 · 严禁跨租户专有词表串音泄露 (CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED)】通话 ${input.callId} 当前租户 (${input.callerTenantId}) 挂载了异构租户 (${input.injectedCustomLexiconTenantId}) 的自定义 WFST 热词图谱！已立即卸载外部词表并重载本租户隔离 FST，防止商业机密代号在同音识别中跨租户泄露。`,
+    };
+  }
+
+  if (
+    input.phoneticBoostWeightDb > 15 ||
+    input.unverifiedDynamicHotwordContainsPromptDirective
+  ) {
+    return {
+      policyCode: "P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD",
+      callId: input.callId,
+      lexiconIsolationVerified: false,
+      allowed: false,
+      reason: "ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED",
+      actionCode: "CLAMP_PHONETIC_BOOST_AND_REJECT_DIRECTIVE_HOTWORD",
+      summaryZh: `【P72 ASR 热词声学偏置防投毒护栏 (ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED)】通话 ${input.callId} 检测到热词声学增益权重过高（boost=${input.phoneticBoostWeightDb}dB > 15dB 上限）或动态热词夹带提示词控制指令！已钳位增益并剔除恶意词条，防止底噪被强制解码为伪造指令。`,
+    };
+  }
+
+  return {
+    policyCode: "P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD",
+    callId: input.callId,
+    lexiconIsolationVerified: true,
+    allowed: true,
+    reason: "TENANT_SCOPED_HOTWORD_LEXICON_VERIFIED",
+    actionCode: "MOUNT_SANITIZED_TENANT_HOTWORD_GRAPH",
+    summaryZh: `【P72 多租户 ASR 热词隔离与声学偏置核验通过】通话 ${input.callId} 租户 (${input.callerTenantId}) 词表已物理隔离且增益权重 (${input.phoneticBoostWeightDb}dB <= 15dB) 合规。`,
+  };
+}
+
+
 
 
 

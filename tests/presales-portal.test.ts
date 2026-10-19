@@ -178,6 +178,8 @@ test("H5 presales portal index.html and app.js include all 6 interactive section
     "P68 · PCI-DSS v4.0 SAQ-A LLM Zero-Cardholder Scope Isolation Guard",
     "P69 · COPPA / GDPR-K Minor Voiceprint Zero-Retention & Parental Consent Guard",
     "P70 · Multi-Region SIP/RTP Hairpinning (Tromboning) Local Media Anchor Guard",
+    "P71 · FDCPA / CFPB Reg F Mini-Miranda, 7-in-7 Cap & Dispute Immediate Halt Guard",
+    "P72 · Multi-Tenant ASR Custom Hotword Lexicon Isolation & Anti-Poisoning Guard",
     "recommendedPtuBaseline",
     "probeMatrixData",
     "generateCustomProposalMarkdown",
@@ -3450,6 +3452,141 @@ test("P70 multi-region SIP trunk RTP hairpinning optimization guard blocks cross
     "LOCAL_REGIONAL_MEDIA_ANCHOR_OPTIMAL"
   );
 });
+
+import {
+  evaluateFdcpDebtCollectionMiniMirandaAndHarassmentGuard,
+  evaluateHotwordLexiconTenantIsolationGuard,
+} from "../packages/business-core/enterprise-guardrails.js";
+
+test("P71 FDCPA / CFPB Reg F debt collection Mini-Miranda, 7-in-7 cap & dispute halt guard immediately halts collection pitches after dispute and enforces 7-in-7 cap", () => {
+  // 1. Consumer disputes debt or requests cease communication, but agent attempts continued collection pitch -> blocked
+  const disputeContinued = evaluateFdcpDebtCollectionMiniMirandaAndHarassmentGuard({
+    callId: "call-p71-dispute-01",
+    isDebtCollectionCall: true,
+    miniMirandaDisclosureSpokenInOpening: true,
+    callsInRolling7DaysCount: 2,
+    callerRequestedCeaseCommunicationOrDisputedDebt: true,
+    agentContinuedCollectionPitchAfterCeaseOrDispute: true,
+  });
+  assert.equal(disputeContinued.allowed, false);
+  assert.equal(disputeContinued.fdcpaRegFCompliant, false);
+  assert.equal(
+    disputeContinued.actionCode,
+    "HALT_COLLECTION_PITCH_AND_LOG_STATUTORY_DISPUTE"
+  );
+  assert.equal(
+    disputeContinued.reason,
+    "POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED"
+  );
+  assert.equal(
+    disputeContinued.policyCode,
+    "P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD"
+  );
+
+  // 2. 8th call in rolling 7 days (> 7-in-7 cap) -> blocked
+  const sevenInSevenBreach = evaluateFdcpDebtCollectionMiniMirandaAndHarassmentGuard({
+    callId: "call-p71-cap-02",
+    isDebtCollectionCall: true,
+    miniMirandaDisclosureSpokenInOpening: true,
+    callsInRolling7DaysCount: 8,
+    callerRequestedCeaseCommunicationOrDisputedDebt: false,
+    agentContinuedCollectionPitchAfterCeaseOrDispute: false,
+  });
+  assert.equal(sevenInSevenBreach.allowed, false);
+  assert.equal(sevenInSevenBreach.fdcpaRegFCompliant, false);
+  assert.equal(
+    sevenInSevenBreach.actionCode,
+    "INJECT_MINI_MIRANDA_OR_SUPPRESS_7IN7_EXCESS_DIAL"
+  );
+  assert.equal(
+    sevenInSevenBreach.reason,
+    "MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED"
+  );
+
+  // 3. Compliant debt collection call -> allowed
+  const compliantCall = evaluateFdcpDebtCollectionMiniMirandaAndHarassmentGuard({
+    callId: "call-p71-valid-03",
+    isDebtCollectionCall: true,
+    miniMirandaDisclosureSpokenInOpening: true,
+    callsInRolling7DaysCount: 3,
+    callerRequestedCeaseCommunicationOrDisputedDebt: false,
+    agentContinuedCollectionPitchAfterCeaseOrDispute: false,
+  });
+  assert.equal(compliantCall.allowed, true);
+  assert.equal(compliantCall.fdcpaRegFCompliant, true);
+  assert.equal(
+    compliantCall.actionCode,
+    "ALLOW_COMPLIant_DEBT_RESOLUTION_DIALOGUE"
+  );
+  assert.equal(
+    compliantCall.reason,
+    "FDCPA_REG_F_COLLECTION_COMPLIANCE_VERIFIED"
+  );
+});
+
+test("P72 multi-tenant ASR custom hotword lexicon isolation & anti-poisoning guard blocks cross-tenant WFST bleed and clamps >15dB phonetic boost", () => {
+  // 1. Cross-tenant custom WFST lexicon bleed -> blocked
+  const crossTenantBleed = evaluateHotwordLexiconTenantIsolationGuard({
+    callId: "call-p72-bleed-01",
+    callerTenantId: "tenant-retail-b",
+    injectedCustomLexiconTenantId: "tenant-pharma-a",
+    phoneticBoostWeightDb: 9,
+    unverifiedDynamicHotwordContainsPromptDirective: false,
+  });
+  assert.equal(crossTenantBleed.allowed, false);
+  assert.equal(crossTenantBleed.lexiconIsolationVerified, false);
+  assert.equal(
+    crossTenantBleed.actionCode,
+    "STRIP_FOREIGN_LEXICON_AND_RELOAD_TENANT_FST"
+  );
+  assert.equal(
+    crossTenantBleed.reason,
+    "CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED"
+  );
+  assert.equal(
+    crossTenantBleed.policyCode,
+    "P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD"
+  );
+
+  // 2. Adversarial >15dB boost weight or prompt directive in hotword -> blocked
+  const boostPoisoning = evaluateHotwordLexiconTenantIsolationGuard({
+    callId: "call-p72-poison-02",
+    callerTenantId: "tenant-retail-b",
+    injectedCustomLexiconTenantId: "tenant-retail-b",
+    phoneticBoostWeightDb: 24,
+    unverifiedDynamicHotwordContainsPromptDirective: true,
+  });
+  assert.equal(boostPoisoning.allowed, false);
+  assert.equal(boostPoisoning.lexiconIsolationVerified, false);
+  assert.equal(
+    boostPoisoning.actionCode,
+    "CLAMP_PHONETIC_BOOST_AND_REJECT_DIRECTIVE_HOTWORD"
+  );
+  assert.equal(
+    boostPoisoning.reason,
+    "ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED"
+  );
+
+  // 3. Isolated tenant WFST with bounded <=15dB boost -> allowed
+  const isolatedValid = evaluateHotwordLexiconTenantIsolationGuard({
+    callId: "call-p72-valid-03",
+    callerTenantId: "tenant-retail-b",
+    injectedCustomLexiconTenantId: "tenant-retail-b",
+    phoneticBoostWeightDb: 10,
+    unverifiedDynamicHotwordContainsPromptDirective: false,
+  });
+  assert.equal(isolatedValid.allowed, true);
+  assert.equal(isolatedValid.lexiconIsolationVerified, true);
+  assert.equal(
+    isolatedValid.actionCode,
+    "MOUNT_SANITIZED_TENANT_HOTWORD_GRAPH"
+  );
+  assert.equal(
+    isolatedValid.reason,
+    "TENANT_SCOPED_HOTWORD_LEXICON_VERIFIED"
+  );
+});
+
 
 
 

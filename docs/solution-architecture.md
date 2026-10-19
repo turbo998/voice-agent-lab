@@ -1132,6 +1132,18 @@ flowchart LR
 | **1. 未成年人 COPPA/GDPR-K 声纹零留存与消费门禁 (`P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD`)** | `evaluateCoppaMinorAgeGateAndParentalConsentGuard` 拦截无 VPC 授权的未成年声纹采集（`UNCONSENTED_MINOR_VOICEPRINT_OR_BEHAVIORAL_PROFILING_BLOCKED`）与语音内购（`UNCONSENTED_MINOR_COMMERCIAL_PURCHASE_BLOCKED`）。 | **100% 满足 FTC COPPA 2025 声纹新规与 GDPR-K，未成年人未授权声纹留存与误扣费降至 0.0%**（对应 POC 探针 `P69`）。 |
 | **2. 跨洲 SIP/RTP 媒体发卡弯绕行本地锚定护栏 (`P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD`)** | `evaluateMultiRegionSipTrunkRtpHairpinOptimizationGuard` 拦截跨洲 RTP 绕行（`CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED`）并强锁 `<=140ms` 媒体层 RTT。 | **消除跨洋 RTP 发卡弯绕行，跨国分支机构首字响应时延直降 220ms–310ms**（对应 POC 探针 `P70`）。 |
 
+### 4.47 金融催收 FDCPA / CFPB Reg F 开场 Mini-Miranda 披露、7-in-7 频控与停催/异议即刻熔断护栏 & 多租户 ASR 自定义热词图谱物理隔离与防声学偏置投毒护栏 (`P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD` & `P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD`)
+
+在消费金融贷后催收、信用卡逾期提醒以及大型多租户企业级语音 SaaS 平台中，还存在两项极易引发法定集体诉讼与跨租户商业机密泄露的生产级隐患：
+
+1. **贷后催收漏报 Mini-Miranda 法定身份披露、违反 7-in-7 呼叫上限或在客户提出账单异议/停催后继续机械施压 (`P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD`)**：根据美国《公平债务催收作业法》（**FDCPA, 15 U.S.C. § 1692e(11) & § 1692c(c)**）与 **CFPB Regulation F (12 CFR § 1006.14(b))**：（a）催收语音 Agent 开场必须明确披露催收机构身份及“通话所获信息将用于债务催收”（Mini-Miranda Warning）；（b）针对同一笔债务在连续 7 天内拨打不得超过 7 次（7-in-7 规则）；（c）一旦债务人在通话中口头表示“我对这笔账单有异议（I dispute this debt）”或要求“停止给我打电话（Cease communication）”，AI 必须立即停止一切还款施压话术并转入法定书面核查流程。`evaluateFdcpDebtCollectionMiniMirandaAndHarassmentGuard` 强制核验：若债务人提出异议或要求停催后模型仍继续输出催收施压话术，0ms 硬熔断并登记法定异议工单（`POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED` -> `HALT_COLLECTION_PITCH_AND_LOG_STATUTORY_DISPUTE`）；若开场缺失 Mini-Miranda 披露或滚动 7 天拨打次数 `> 7`，立即拦截外呼（`MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED`）；
+2. **多租户 ASR 热词图谱（WFST / Custom Phrase List）跨租户残留串音与高增益声学偏置投毒 (`P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD`)**：为了提升专有名词识别率，企业往往向 ASR 引擎注入自定义热词表（如未公开并购标的代码、新药研发代号、内部高管姓名）。若底层热池化的 ASR Worker 在会话切换时复用了上一租户编译好的 WFST 偏置图谱（`callerTenantId !== injectedCustomLexiconTenantId`），租户 B 说的同音词会被自动解码成租户 A 的未公开商业机密代号！此外，若恶意租户配置了极端的声学偏置权重（`phoneticBoostWeightDb > 15 dB`）或在热词字符串中夹带提示词指令（`unverifiedDynamicHotwordContainsPromptDirective`），会导致环境白噪音被强行转录为攻击指令。`evaluateHotwordLexiconTenantIsolationGuard` 强制执行 **租户级 WFST 物理隔离 + `<=15 dB` 声学偏置钳位**：严禁跨租户词表挂载（`CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED` -> `STRIP_FOREIGN_LEXICON_AND_RELOAD_TENANT_FST`），并拦截超高增益偏置与带指令热词投毒（`ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED`）。
+
+| 贷后催收法定合规与多租户 ASR 热词隔离控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 金融监管免罚与多租户商业机密隔离收益 |
+| :--- | :--- | :--- |
+| **1. FDCPA / Reg F 催收披露、7-in-7 与异议即刻停催护栏 (`P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD`)** | `evaluateFdcpDebtCollectionMiniMirandaAndHarassmentGuard` 拦截异议/停催后继续施压（`POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED`）及漏报 Mini-Miranda / 超 7-in-7 上限（`MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED`）。 | **100% 满足 CFPB Regulation F 与 FDCPA 法定红线，消除违规催收集体诉讼风险**（对应 POC 探针 `P71`）。 |
+| **2. 多租户 ASR 热词图谱隔离与防声学偏置投毒护栏 (`P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD`)** | `evaluateHotwordLexiconTenantIsolationGuard` 拦截跨租户 WFST 词表残留（`CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED`）并钳位 `<=15dB` 热词增益（`ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED`）。 | **彻底杜绝多租户专有热词跨会话串音泄密与高增益底噪幻觉注入**（对应 POC 探针 `P72`）。 |
+
 
 
 

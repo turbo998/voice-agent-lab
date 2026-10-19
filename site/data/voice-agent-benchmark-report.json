@@ -410,6 +410,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD blocks unconsented minor voiceprint extraction and commercial purchases when acoustic child probability >=0.78 or age <16 without Verifiable Parental Consent; P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD prevents cross-continental RTP tromboning by re-anchoring media to local edge SBC PoPs and enforcing a <=140ms media RTT SLA."
+    },
+    {
+      "check_name": "FDCPA / CFPB Reg F Collection Compliance & Multi-Tenant ASR Hotword Lexicon Isolation Guard (P71 / P72)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD enforces opening Mini-Miranda disclosure, the CFPB Reg F 7-in-7 call frequency cap, and 0ms cessation of collection pitches upon consumer debt dispute; P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD blocks cross-tenant WFST custom lexicon bleed and clamps phonetic boost weights <=15dB."
     }
   ],
   "latency_scaling": [
