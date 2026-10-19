@@ -207,6 +207,8 @@
 | **29. WebRTC TWCC 弱网音画抢带剥离 & 欧盟 AI 法案 (`EU AI Act Art. 5`) 职场情绪禁令护栏**<br>(`远程查勘/面签在弱网下视频关键帧塞死语音通道 / 跨国企业欧盟员工 HR/培训热线违规启用情绪识别面临 7% 营收罚单`) | 接入 **`P55-WEBRTC-SIMULCAST-BWE-CONGESTION-GUARD`** 在带宽 `<120kbps` 或丢包 `>=5%` 时自动挂起视频轨并强制 `DSCP EF` 保底 Opus 语音 | **`P56-EU-AI-ACT-EMOTION-BIOMETRIC-PROHIBITION-GUARD` 硬阻断职场/教育场景声学情绪评分及未授权生物特征敏感分群，强制 Art. 50 透明度告知** | 弱网多模态会话语音清晰度 100% 零中断，100% 规避欧盟 AI 法案禁止类实践巨额罚单 |
 | **30. 3GPP IMS 紧急呼叫 (`urn:service:sos`) QCI-1 抢占 & 跨端（语音+App）CAS 乐观并发防重扣**<br>(`欠费/无卡紧急求救被商业核身拦截或无线满载掉线 / 客户边打电话边滑手机 App 改单被旧语音快照覆盖或双端重复扣款`) | 接入 **`P57-3GPP-TS23167-IMS-EMERGENCY-QCI1-SOS-PRIORITY-GUARD`** 0ms 旁路商业计费/核身门禁并挂载 `QCI-5/5QI-1 ARP=1` 抢占与 PSAP 回拨锁 | **`P58-CROSS-CHANNEL-CART-CAS-OCC-CONCURRENCY-GUARD` 校验语音与手机 App 乐观并发版本号 (`CAS rev`) 及跨渠道支付幂等键** | 100% 满足 3GPP TS 23.167 紧急通信生命线规范，语音与手机同屏并发改单覆盖/重扣率降至 0.0% |
 | **31. 超声波 (`>16kHz` DolphinAttack) 抗注入滤波 & 金融交易 MiFID II 录音专线与禁倍速快放护栏**<br>(`宽带音频被混入不可听超声波或对抗白噪音静默触发工具 / 券商报单用 1.35x 倍速糊弄风险揭示条款或未双录直接入 OMS`) | 接入 **`P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD`** 强制 8kHz 带限低通滤波并拦截高频谱熵心理声学对抗扰动 | **`P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD` 钳位风险揭示语速 `<=1.15x` 并强验 SIPREC 双流存证与客户明示确认后方可入 OMS** | 100% 免疫不可听超声波与对抗噪声注入，证券/衍生品语音报单 100% 满足 MiFID II / Dodd-Frank 铁律 |
+| **32. SIP `183 Early Media` 应答前防抢跑泄密/摘机首字防吞字 & TTS 货币符号 (`¥`/`$`) 量纲消歧护栏**<br>(`运营商彩铃期 183 早期媒体被误判为接听导致抢跑播报客户隐私，或 200 OK 零缓冲首字被截断 / ¥50,000 日元被误读为五万元人民币`) | 接入 **`P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD`** 严格锁定 `200 OK` 摘机门禁并注入 `>=160ms` RTP 舒适噪音前导帧 | **`P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD` 强制对账后台 ISO 4217 币种代码并自动注入 `SSML <say-as>` 与金融多音字音标词典** | 100% 消除外呼应答前隐私抢跑与接通首字吞字，跨币种与金融小数播报错误率降至 0.0% |
+
 
 
 

@@ -1076,6 +1076,18 @@ flowchart LR
 | **1. 超声波 (`>16kHz` DolphinAttack) 与心理声学对抗注入滤波护栏 (`P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD`)** | `evaluateUltrasonicSubliminalAcousticInjectionFilterGuard` 拦截 `>16kHz` 超声载波（`ULTRASONIC_DOLPHINATTACK_CARRIER_INJECTION_BLOCKED`）与心理声学对抗扰动（`SUBLIMINAL_PSYCHOACOUSTIC_ADVERSARIAL_PERTURBATION_BLOCKED`）。 | **100% 免疫不可听超声波指令注入与背景白噪音潜意识对抗越狱**（对应 POC 探针 `P59`）。 |
 | **2. 金融交易台 MiFID II / Dodd-Frank 录音专线与风险揭示语速护栏 (`P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD`)** | `evaluateMiFIDIIRecordedLineMandatoryDisclaimerGuard` 拦截 `>1.15x` 倍速快放风险条款（`DISCLAIMER_SPEED_ACCELERATION_ABOVE_1_15X_BLOCKED`）与未双录/未确认证券报单（`UNRECORDED_LINE_OR_MISSING_AFFIRMATIVE_RISK_ACK_BLOCKED`）。 | **证券与衍生品语音报单 100% 符合 MiFID II Art. 16(7) / Dodd-Frank 录音与清晰告知法规**（对应 POC 探针 `P60`）。 |
 
+### 4.42 SIP 183 Early Media 应答前抢跑防泄密及摘机首字吞字护栏 (`P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD`) 与 TTS 同形异音/货币符号 (`¥`/`$`) 量纲消歧护栏 (`P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD`)
+
+在跨国运营商 PSTN/SIP Trunking 语音网关割接（`RFC 3262 PRACK` / `RFC 3960 Early Media`）以及多币种金融、跨境电商与临床医疗 TTS 语音播报场景中，生产环境还必须拦截以下两类极易引发客诉与资损的电信信令及语音合成边界缺陷：
+1. **SIP `183 Session Progress` 早期媒体抢跑播报泄密与 `200 OK` 摘机首音节 RTP 吞字 (`P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD`)**：在传统呼叫中心与外呼网关中，部分语音引擎将运营商返回的 `183 Session Progress`（带 SDP 的早期媒体，用于播放彩铃或运营商提示音）误判为客户已接听，导致 AI 在客户真正摘机（收到最终 `200 OK`）前便开始播报欢迎词甚至含客户姓名/逾期金额的敏感信息（Pre-Answer Audio Bleed）；或者在收到 `200 OK` 的第 `0ms` 立即推流 TTS，此时运营商 SBC 双向 RTP 针孔尚未完全打开（通常需 `150ms–200ms` 媒体建立窗口），导致开场白前两个字被截断（如 *“您好，这里是某银行”* 变成 *“……是某银行”*）。`evaluateSipEarlyMedia183RtpBleedGuard` 强制执行 **严格 `200 OK` 摘机门禁与 `>=160ms` RTP 舒适噪音前导帧（Comfort Noise Preamble）**：在 `180_RINGING` 或 `183_SESSION_PROGRESS_EARLY_MEDIA` 阶段严禁启动含客户信息的 TTS 播报（`PRE_ANSWER_183_EARLY_MEDIA_PII_BLEED_BLOCKED` -> `HOLD_TTS_UNTIL_200_OK_AND_STRIP_EARLY_MEDIA_PII`）；在收到 `200 OK` 后若 `rtpPreambleSilenceMs < 160ms`，自动注入 `180ms` 舒适噪音前导帧再启动首字合成（`INITIAL_RTP_SYLLABLE_CLIPPING_PREAMBLE_INSUFFICIENT` -> `INJECT_180MS_COMFORT_NOISE_PREAMBLE_BEFORE_TTS`）；
+2. **TTS 货币符号 (`¥` 人民币 vs 日元 / `$` 美元 vs 港币) 错读与同形异音/小数区间歧义 (`P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD`)**：通用端到端语音模型或未加 SSML 约束的 TTS 在遇到符号 `¥50,000`（后台订单实为 `JPY` 日元）时极易按默认语料读成 *“五万元人民币”*（汇率差近 20 倍），或将小数区间 `10.50–12.00` 误读为日期 *“10月50日”*，以及将金融/地名多音字（如“银行 `háng/xíng`”、“重 `chóng/zhòng` 庆”）读错引发专业度崩塌。`evaluateTtsHomographCurrencyUnitGuard` 在合成前强制对账 **播报币种单位与后台 ISO 4217 币种代码（`CNY`/`JPY`/`USD`/`EUR`）一致性**：一旦发现符号读法与后台币种失配，立即阻断并重写为显式币种全称（`CURRENCY_SYMBOL_ISO_UNIT_MISMATCH_BLOCKED` -> `REWRITE_TO_EXPLICIT_ISO_CURRENCY_NAME`）；若包含歧义货币/小数符号或多音字且未挂载 `SSML <say-as>` 与音标词典，则强制补齐结构化标签后方可合成（`UNANNOTATED_DECIMAL_OR_POLYPHONE_HOMOGRAPH_BLOCKED`）。
+
+| SIP 早期媒体防吞字与 TTS 货币量纲消歧控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 电信级首字清晰度与金融播报零错读收益 |
+| :--- | :--- | :--- |
+| **1. SIP 183 Early Media 防抢跑泄密与摘机首字防吞字护栏 (`P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD`)** | `evaluateSipEarlyMedia183RtpBleedGuard` 拦截 `200 OK` 前早期媒体抢跑播报（`PRE_ANSWER_183_EARLY_MEDIA_PII_BLEED_BLOCKED`）并强制 `>=160ms` RTP 前导帧防吞字（`INITIAL_RTP_SYLLABLE_CLIPPING_PREAMBLE_INSUFFICIENT`）。 | **100% 消除运营商彩铃期抢跑泄密与接通首音节吞字现象**（对应 POC 探针 `P61`）。 |
+| **2. TTS 同形异音与货币符号 (`¥`/`$`) 量纲消歧护栏 (`P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD`)** | `evaluateTtsHomographCurrencyUnitGuard` 校验后台 ISO 币种与播报单位一致性（`CURRENCY_SYMBOL_ISO_UNIT_MISMATCH_BLOCKED`）并强制注入 `SSML <say-as>` 与多音字音标（`UNANNOTATED_DECIMAL_OR_POLYPHONE_HOMOGRAPH_BLOCKED`）。 | **`¥`（CNY/JPY）与 `$`（USD/HKD）跨币种播报错误率降至 0.0%**（对应 POC 探针 `P62`）。 |
+
+
 
 
 

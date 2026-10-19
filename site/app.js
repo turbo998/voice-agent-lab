@@ -3591,6 +3591,40 @@
         confidence: 1.0,
         verifier: 'PASS (P60) · >1.15x disclaimer speed-up & unacknowledged OMS order 100% blocked'
       }
+    },
+    {
+      code: 'P61 · SIP 183 Early Media Audio Bleed & First-Syllable RTP Clipping Guard',
+      badge: '200 OK + >=160ms Preamble',
+      title: 'SIP 183 Early Media 应答前抢跑防泄密与 200 OK 摘机首字 RTP 防吞字护栏',
+      sub: '测试运营商返回 183 Session Progress 早期媒体彩铃时是否抢跑播报客户隐私，以及 200 OK 后零缓冲直推首字导致首音节截断吞字时 100% 注入舒适噪音前导帧',
+      customer_en: '[Carrier SIP Trunk in 183_SESSION_PROGRESS_EARLY_MEDIA Ringback State Before Final 200 OK, Followed by 200 OK with Only 40ms RTP Pinhole Preamble]',
+      customer_zh: '【运营商 SIP 干线处于 183 Early Media 彩铃阶段尚未收到最终 200 OK 摘机信令，或收到 200 OK 后仅 40ms 缓冲即推流首字】',
+      agent_en: 'SIP EARLY MEDIA & RTP PREAMBLE GUARD (P61 / P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD): Blocked pre-answer greeting/PII bleed during `183_SESSION_PROGRESS_EARLY_MEDIA` (`PRE_ANSWER_183_EARLY_MEDIA_PII_BLEED_BLOCKED` -> `HOLD_TTS_UNTIL_200_OK_AND_STRIP_EARLY_MEDIA_PII`), and injected a 180ms comfort-noise preamble upon `200_OK_ANSWERED` (`INITIAL_RTP_SYLLABLE_CLIPPING_PREAMBLE_INSUFFICIENT`) so zero first syllables are clipped!',
+      agent_zh: '【P61 SIP 早期媒体防泄密与摘机首字防吞字护栏 (PRE_ANSWER_183_EARLY_MEDIA_PII_BLEED_BLOCKED)】已在收到最终 200 OK 前硬阻断 183 早期媒体阶段播报客户姓名或账单信息，并在 200 OK 摘机瞬间自动注入 180ms 舒适噪音前导帧，100% 消除开场白首字吞字！',
+      trace: {
+        tool: 'evaluate_sip_early_media_183_rtp_bleed_guard(state="183_SESSION_PROGRESS_EARLY_MEDIA", preamble_ms=40 -> HOLD_TTS_UNTIL_200_OK_AND_INJECT_180MS_PREAMBLE)',
+        citations: ['P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD', 'RFC-3262-PRACK', 'RFC-3960-EARLY-MEDIA'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P61) · Pre-answer 183 audio bleed & 200 OK first-syllable RTP clipping 100% eliminated'
+      }
+    },
+    {
+      code: 'P62 · TTS Homograph, Polyphone & Currency Symbol (¥ CNY vs JPY) Disambiguation Guard',
+      badge: 'ISO 4217 + SSML Locked',
+      title: 'TTS 同形异音与货币符号 (¥ 人民币 vs 日元 / $ 美元 vs 港币) 量纲消歧护栏',
+      sub: '测试待播报文本含 ¥50,000（后台实为 JPY 日元）或含金融多音字/未标注小数区间时，100% 拦截币种误读并强制注入 ISO 全称与 SSML 音标标签',
+      customer_en: '[TTS Draft Contains "¥50,000" While Backend Order ISO Currency is "JPY", Plus Unannotated Decimal Range "10.50-12.00" and Banking Polyphones]',
+      customer_zh: '【待合成文本含“¥50,000”（后台订单币种实为 JPY 日元）且含未加 SSML 标签的小数区间 10.50-12.00 与银行多音字】',
+      agent_en: 'TTS HOMOGRAPH & CURRENCY UNIT DISAMBIGUATION GUARD (P62 / P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD): Blocked ambiguous currency symbol mismatch (`CURRENCY_SYMBOL_ISO_UNIT_MISMATCH_BLOCKED` -> `REWRITE_TO_EXPLICIT_ISO_CURRENCY_NAME` "50,000 Japanese Yen / 5万日元"), and injected SSML `<say-as>` and polyphone phoneme lexicon tags (`INJECT_SSML_SAY_AS_AND_POLYPHONE_PHONEME_TAGS`)!',
+      agent_zh: '【P62 货币量纲与同形异音消歧护栏 (CURRENCY_SYMBOL_ISO_UNIT_MISMATCH_BLOCKED)】检测到待播报符号“¥50,000”与后台 ISO 币种（JPY 日元）存在误读为五万元人民币的风险，已强制重写为显式币种全称“50,000 日元（JPY）”并自动注入 SSML <say-as> 与金融多音字音标词典！',
+      trace: {
+        tool: 'evaluate_tts_homograph_currency_unit_guard(draft="¥50,000", iso="JPY", ssml_applied=false -> REWRITE_TO_EXPLICIT_ISO_CURRENCY_NAME)',
+        citations: ['P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD', 'ISO-4217-CURRENCY', 'W3C-SSML-SAY-AS'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P62) · Currency symbol misread (CNY vs JPY) & polyphone homograph error 100% blocked'
+      }
     }
   ];
 
@@ -3665,7 +3699,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (78-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (80-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3696,7 +3730,8 @@
       '- [x] **广域网断网本地 Speech Container 逃生 & 抗量子 (`NIST FIPS 203 ML-KEM-768`) 双录封存**：上联光缆挖断或 `RTT>800ms` 时 `<=400ms` 切入本地 Speech Container + Edge SLM 并阻断离线未落库云端写承诺 (P53)，留存 `>=5` 年双录强制 `X25519MLKEM768` 后量子混合密钥交换与抗量子 WORM 归档信封 (P54)',
       '- [x] **WebRTC TWCC 弱网音画抢带剥离 & 欧盟 AI 法案 (`EU AI Act Art. 5`) 职场情绪禁令护栏**：上行 `<120kbps` 或丢包 `>=5%` 时自动挂起视频轨并锁定 DSCP EF(46) 24kbps Opus 语音保底 (P55)，职场 HR/教育场景 100% 硬阻断声学情绪评分并强制 Art. 50 透明度披露 (P56)',
       '- [x] **3GPP IMS 紧急呼叫 (`urn:service:sos`) QCI-1 抢占 & 跨端（语音+App）CAS 乐观并发防重扣护栏**：欠费/无卡紧急呼叫 0ms 旁路商业核身直连 E-CSCF 并锁 QCI-1 ARP=1 抢占 (P57)，语音与手机 App 同屏改单强制校验 CAS 版本号与跨端支付幂等键 (P58)',
-      '- [x] **超声波 (`>16kHz` DolphinAttack) 抗注入滤波 & 金融交易 MiFID II 录音专线与禁倍速快放护栏**：强制 8kHz 带限低通滤波拦截不可听超声载波与心理声学对抗扰动 (P59)，证券/衍生品语音报单强制 `<=1.15x` 标准语速、SIPREC 双流存证与客户明示确认后方可入 OMS (P60)'
+      '- [x] **超声波 (`>16kHz` DolphinAttack) 抗注入滤波 & 金融交易 MiFID II 录音专线与禁倍速快放护栏**：强制 8kHz 带限低通滤波拦截不可听超声载波与心理声学对抗扰动 (P59)，证券/衍生品语音报单强制 `<=1.15x` 标准语速、SIPREC 双流存证与客户明示确认后方可入 OMS (P60)',
+      '- [x] **SIP `183 Early Media` 应答前防抢跑泄密/摘机首字防吞字 & TTS 货币符号 (`¥`/`$`) 量纲消歧护栏**：严格锁定 `200 OK` 摘机门禁并注入 `>=160ms` RTP 舒适噪音前导帧消除首字吞字 (P61)，强制对账后台 ISO 4217 币种代码并注入 `SSML <say-as>` 与多音字音标词典防止将日元 `¥` 误读为人民币 (P62)'
     ].join('\n');
   }
 

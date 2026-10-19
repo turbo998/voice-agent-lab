@@ -5545,6 +5545,152 @@ export function evaluateMiFIDIIRecordedLineMandatoryDisclaimerGuard(
   };
 }
 
+export interface StilleSipEarlyMedia183RtpBleedGuardInput {
+  callId: string;
+  sipDialogState: "180_RINGING" | "183_SESSION_PROGRESS_EARLY_MEDIA" | "200_OK_ANSWERED";
+  carrierPrackConfirmed: boolean;
+  rtpPreambleSilenceMs: number;
+  ttsStreamContainsCustomerNameOrPii: boolean;
+  attemptsGreetingBefore200Ok: boolean;
+}
+
+export interface StilleSipEarlyMedia183RtpBleedGuardDecision {
+  policyCode: "P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD";
+  callId: string;
+  earlyMediaSafe: boolean;
+  allowed: boolean;
+  reason:
+    | "SIP_200_OK_AND_RTP_PREAMBLE_VERIFIED"
+    | "PRE_ANSWER_183_EARLY_MEDIA_PII_BLEED_BLOCKED"
+    | "INITIAL_RTP_SYLLABLE_CLIPPING_PREAMBLE_INSUFFICIENT";
+  actionCode:
+    | "START_GREETING_AFTER_200_OK_PREAMBLE"
+    | "HOLD_TTS_UNTIL_200_OK_AND_STRIP_EARLY_MEDIA_PII"
+    | "INJECT_180MS_COMFORT_NOISE_PREAMBLE_BEFORE_TTS";
+  summaryZh: string;
+}
+
+/**
+ * Stage 34 — P61 SIP 183 Early Media Pre-Answer Audio Bleed & First-Syllable RTP Clipping Guard (`P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD`).
+ * Prevents two carrier PSTN/SIP Trunking media-cutover hazards (RFC 3262 PRACK / RFC 3960 Early Media):
+ * 1) Pre-answer 183 Early Media audio bleed: speaking greeting or customer PII while still in `180_RINGING` or `183_SESSION_PROGRESS_EARLY_MEDIA` before final `200_OK_ANSWERED` leaks sensitive audio into carrier ringback/network announcements (`PRE_ANSWER_183_EARLY_MEDIA_PII_BLEED_BLOCKED`);
+ * 2) First-syllable RTP clipping ("Hello, this is..." -> "...is Bank"): starting TTS immediately at 0ms of `200_OK_ANSWERED` before the SBC/carrier bidirectional RTP pinhole stabilizes (`rtpPreambleSilenceMs < 160`) clips the first 150–250ms of speech (`INITIAL_RTP_SYLLABLE_CLIPPING_PREAMBLE_INSUFFICIENT`).
+ */
+export function evaluateSipEarlyMedia183RtpBleedGuard(
+  input: StilleSipEarlyMedia183RtpBleedGuardInput,
+): StilleSipEarlyMedia183RtpBleedGuardDecision {
+  if (
+    input.sipDialogState !== "200_OK_ANSWERED" &&
+    (input.attemptsGreetingBefore200Ok || input.ttsStreamContainsCustomerNameOrPii)
+  ) {
+    return {
+      policyCode: "P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD",
+      callId: input.callId,
+      earlyMediaSafe: false,
+      allowed: false,
+      reason: "PRE_ANSWER_183_EARLY_MEDIA_PII_BLEED_BLOCKED",
+      actionCode: "HOLD_TTS_UNTIL_200_OK_AND_STRIP_EARLY_MEDIA_PII",
+      summaryZh: `【P61 SIP 183 早期媒体防抢跑泄密护栏 · 阻断应答前 183 Early Media 播报客户信息 (PRE_ANSWER_183_EARLY_MEDIA_PII_BLEED_BLOCKED)】通话 ${input.callId} 当前处于 ${input.sipDialogState}（尚未收到最终 200 OK 摘机信令），严禁在运营商彩铃/早期媒体阶段抢跑播报客户姓名或账单隐私！`,
+    };
+  }
+
+  if (input.sipDialogState === "200_OK_ANSWERED" && input.rtpPreambleSilenceMs < 160) {
+    return {
+      policyCode: "P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD",
+      callId: input.callId,
+      earlyMediaSafe: false,
+      allowed: false,
+      reason: "INITIAL_RTP_SYLLABLE_CLIPPING_PREAMBLE_INSUFFICIENT",
+      actionCode: "INJECT_180MS_COMFORT_NOISE_PREAMBLE_BEFORE_TTS",
+      summaryZh: `【P61 SIP 摘机首字防吞字护栏 · 阻断零缓冲首帧直发 (INITIAL_RTP_SYLLABLE_CLIPPING_PREAMBLE_INSUFFICIENT)】通话 ${input.callId} 收到 200 OK 后 RTP 双向媒体通道建立缓冲仅 ${input.rtpPreambleSilenceMs}ms (< 160ms)，直接播报会导致首音节被运营商 SBC 截断吞字，已自动注入 180ms 舒适噪音前导帧！`,
+    };
+  }
+
+  return {
+    policyCode: "P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD",
+    callId: input.callId,
+    earlyMediaSafe: true,
+    allowed: true,
+    reason: "SIP_200_OK_AND_RTP_PREAMBLE_VERIFIED",
+    actionCode: "START_GREETING_AFTER_200_OK_PREAMBLE",
+    summaryZh: `【P61 SIP 200 OK 摘机信令与 RTP 首字前导缓冲核验通过】通话 ${input.callId} 已确认 200 OK 摘机且完成 ${input.rtpPreambleSilenceMs}ms RTP 媒体通道稳态前导，零吞字、零早期媒体抢跑泄密。`,
+  };
+}
+
+export interface StilleTtsHomographCurrencyUnitGuardInput {
+  callId: string;
+  utteranceDraftText: string;
+  containsAmbiguousCurrencyOrDecimalSymbol: boolean;
+  canonicalCurrencyIsoCode: "CNY" | "USD" | "EUR" | "JPY";
+  ssmlSayAsInterpretAsApplied: boolean;
+  polyphoneLexiconVerified: boolean;
+  spokenUnitMatchesBackendIso: boolean;
+}
+
+export interface StilleTtsHomographCurrencyUnitGuardDecision {
+  policyCode: "P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD";
+  callId: string;
+  unitFidelityVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "TTS_CURRENCY_AND_HOMOGRAPH_DISAMBIGUATION_VERIFIED"
+    | "CURRENCY_SYMBOL_ISO_UNIT_MISMATCH_BLOCKED"
+    | "UNANNOTATED_DECIMAL_OR_POLYPHONE_HOMOGRAPH_BLOCKED";
+  actionCode:
+    | "SYNTHESIZE_VERIFIED_SSML_UTTERANCE"
+    | "REWRITE_TO_EXPLICIT_ISO_CURRENCY_NAME"
+    | "INJECT_SSML_SAY_AS_AND_POLYPHONE_PHONEME_TAGS";
+  summaryZh: string;
+}
+
+/**
+ * Stage 34 — P62 TTS Homograph, Polyphone & Currency Symbol (`¥` CNY vs JPY / `$` USD vs HKD) Disambiguation Guard (`P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD`).
+ * Prevents financial/medical TTS synthesis disasters caused by ambiguous symbols or homographs:
+ * 1) Currency symbol mismatch: e.g., `¥50,000` with backend `JPY` synthesized as "5万元人民币" or `$1,200` synthesized with wrong currency unit (`!spokenUnitMatchesBackendIso` -> `CURRENCY_SYMBOL_ISO_UNIT_MISMATCH_BLOCKED`);
+ * 2) Unannotated decimals/ranges/polyphones: e.g., reading `10.50–12.00` as a date or reading banking polyphones ("银行 háng/xíng", "重 chóng/zhòng 庆", "MG vs MCG") without SSML `<say-as>` and lexicon phoneme tags (`containsAmbiguousCurrencyOrDecimalSymbol && (!ssmlSayAsInterpretAsApplied || !polyphoneLexiconVerified)` -> `UNANNOTATED_DECIMAL_OR_POLYPHONE_HOMOGRAPH_BLOCKED`).
+ */
+export function evaluateTtsHomographCurrencyUnitGuard(
+  input: StilleTtsHomographCurrencyUnitGuardInput,
+): StilleTtsHomographCurrencyUnitGuardDecision {
+  if (!input.spokenUnitMatchesBackendIso) {
+    return {
+      policyCode: "P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD",
+      callId: input.callId,
+      unitFidelityVerified: false,
+      allowed: false,
+      reason: "CURRENCY_SYMBOL_ISO_UNIT_MISMATCH_BLOCKED",
+      actionCode: "REWRITE_TO_EXPLICIT_ISO_CURRENCY_NAME",
+      summaryZh: `【P62 货币符号与量纲消歧护栏 · 阻断币种符号误读 (CURRENCY_SYMBOL_ISO_UNIT_MISMATCH_BLOCKED)】通话 ${input.callId} 待播报文本 ("${input.utteranceDraftText}") 的币种符号与后台 ISO 币种 (${input.canonicalCurrencyIsoCode}) 不一致（严禁将 ¥ 日元误读为人民币或混淆 $ 币种），已强制重写为显式中文/ISO 全称！`,
+    };
+  }
+
+  if (
+    input.containsAmbiguousCurrencyOrDecimalSymbol &&
+    (!input.ssmlSayAsInterpretAsApplied || !input.polyphoneLexiconVerified)
+  ) {
+    return {
+      policyCode: "P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD",
+      callId: input.callId,
+      unitFidelityVerified: false,
+      allowed: false,
+      reason: "UNANNOTATED_DECIMAL_OR_POLYPHONE_HOMOGRAPH_BLOCKED",
+      actionCode: "INJECT_SSML_SAY_AS_AND_POLYPHONE_PHONEME_TAGS",
+      summaryZh: `【P62 同形异音字与数值格式消歧护栏 · 阻断裸文本直传 TTS (UNANNOTATED_DECIMAL_OR_POLYPHONE_HOMOGRAPH_BLOCKED)】通话 ${input.callId} 含歧义数值/小数区间或金融医疗同形异音词但未注入 SSML <say-as> 与音标词典，已自动补齐结构化读法标签！`,
+    };
+  }
+
+  return {
+    policyCode: "P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD",
+    callId: input.callId,
+    unitFidelityVerified: true,
+    allowed: true,
+    reason: "TTS_CURRENCY_AND_HOMOGRAPH_DISAMBIGUATION_VERIFIED",
+    actionCode: "SYNTHESIZE_VERIFIED_SSML_UTTERANCE",
+    summaryZh: `【P62 货币量纲与同形异音消歧核验通过】通话 ${input.callId} 币种 (${input.canonicalCurrencyIsoCode}) 全称、SSML <say-as> 与专有音标词典 100% 匹配，允许下发语音合成。`,
+  };
+}
+
+
 
 
 

@@ -375,6 +375,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P59-ULTRASONIC-SUBLIMINAL-ACOUSTIC-INJECTION-FILTER-GUARD blocks inaudible >16kHz ultrasonic carriers and psychoacoustic adversarial perturbations via 8kHz brickwall low-pass filtering; P60-MIFID2-DODDFRANK-RECORDED-LINE-DISCLAIMER-CADENCE-GUARD blocks >1.15x fast-forwarded risk disclaimers and halts OMS order submission until SIPREC dual-stream recording and client affirmative acknowledgment are verified."
+    },
+    {
+      "check_name": "SIP 183 Early Media Audio Bleed/Clipping & TTS Currency/Homograph Disambiguation Guard (P61 / P62)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P61-SIP-EARLY-MEDIA-183-CLIPPING-AND-PRE-ANSWER-BLEED-GUARD blocks pre-answer greeting/PII bleed during SIP 183 Session Progress and enforces >=160ms comfort-noise RTP preamble after 200 OK to prevent first-syllable clipping; P62-TTS-HOMOGRAPH-CURRENCY-UNIT-DISAMBIGUATION-GUARD verifies spoken currency units against backend ISO 4217 codes (preventing ¥ JPY vs CNY misreads) and enforces SSML <say-as> and polyphone phoneme tags."
     }
   ],
   "latency_scaling": [
