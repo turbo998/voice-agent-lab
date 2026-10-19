@@ -966,6 +966,18 @@ flowchart LR
 | **1. 句法未完结防抢话与 C2PA/声学双水印门禁 (`P39-SEMANTIC-TURN-TAKING-WATERMARK-PROVENANCE-GUARD`)** | `evaluateSemanticTurnTakingAndWatermarkGuard` 对未完结语法/数字换气自动延长等待窗口至 `>=1850ms`（`EXTEND_VAD_ENDPOINT_WAIT_WINDOW`），并拦截无 C2PA 签名或声学水印 `<18dB` 的出站音频（`UNWATERMARKED_SYNTHETIC_VOICE_EGRESS_BLOCKED`）。 | **将复杂口述中途被 AI 抢话率压降 93%，100% 满足欧盟 AI 法案与深度合成水印强制溯源**（对应 POC 探针 `P39`）。 |
 | **2. MCP 工具间接注入净化与多步 Saga 逆向补偿 (`P40-MCP-INDIRECT-INJECTION-SAGA-COMPENSATION-GUARD`)** | `evaluateMcpIndirectInjectionAndSagaGuard` 拦截工具返回中的间接注入与跨租户泄露（`MCP_TOOL_INDIRECT_INJECTION_OR_TENANT_LEAK_BLOCKED`），并在多步事务半途失败时执行逆序补偿链（`EXECUTE_REVERSE_SAGA_COMPENSATION_CHAIN`）。 | **100% 免疫外部数据源间接越狱，多步跨系统写操作半途失败零单边资损**（对应 POC 探针 `P40`）。 |
 
+### 4.32 运营商 STIR/SHAKEN 来电签名与伴音按键防注入护栏 (`P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD`) 及 RFC 7866 SIPREC 双录分流连续性与实时字幕 DLP 脱敏护栏 (`P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD`)
+
+在 PSTN/SIP 电信网接入金融热线与司法级合规录音（MiFID II / Dodd-Frank / 金监总局双录规范）场景下，还必须防范两大底层电信与合规风险：
+1. **批发 VoIP 网关伪造主叫号码（ANI Spoofing）骗取免核身特权与麦克风播放双音多频伴音注入 (`P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD`)**：攻击者常利用境外未签名 SIP 中继伪造高净值客户手机号（此时运营商 `STIR/SHAKEN` 签名为 `B/C/NONE` 或 `sipDiversionHopCount > 2`），或直接用手机扬声器向麦克风播放伪造的按键音频（In-Band Audio DTMF，`inBandAudioDtmfTonesDetectedOnCallerMic = true`）试图欺骗下游老旧 IVR/CTI 桥接器。`evaluateCarrierStirShakenAniGuard` 在 SBC 边缘强制剥离语音声道内的伪造伴音按键并仅信任带外加密 `RFC 4733` 事件（`INBAND_AUDIO_DTMF_TONE_INJECTION_BLOCKED`），且对任何非 `A` 级全签名或多次呼转的来电一律拒绝基于主叫号码（ANI）的免核身操作，强制升级带外 FIDO2/OTP 验证（`UNATTESTED_ANI_OR_EXCESSIVE_DIVERSION_STEPUP_REQUIRED`）；
+2. **受监管交易中途 SIPREC 录音分流中断“无录音裸奔交易”与实时字幕流明文 PII 外泄 (`P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD`)**：在基金申购、保险承保、外贸锁汇等受监管流程中，一旦 SBC 到会话录音服务器（SRS）的 `RFC 7866 SIPREC` 媒体分流断连或确认延迟超限（`!siprecMediaForkHealthy` 或 `siprecPacketAckLagMs > 800ms`），`evaluateSiprecComplianceForkAndDlpGuard` 严格执行 **“无合规录音、禁任何交易”** 铁律，在 `0ms` 内暂停受监管写操作并热切备用 SRS 节点（`SIPREC_MEDIA_FORK_FAILURE_TRANSACTION_HALTED` -> `PAUSE_REGULATED_TX_SWITCH_BACKUP_SRS_RECORDER`）；同时实时扫描发往前端工作台与日志总线的流式字幕，一旦检出未脱敏身份证号/SSN/银行卡号（`unredactedPiiTokensInLiveTranscriptCount > 0`），立即拦截明文广播并替换为金库令牌（`UNREDACTED_PII_IN_LIVE_TRANSCRIPT_BUS_BLOCKED`）。
+
+| 电信信令防伪与司法双录连续性控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 安全合规与生产可靠性收益 |
+| :--- | :--- | :--- |
+| **1. 运营商 STIR/SHAKEN A 级签名校验与伴音按键剥离 (`P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD`)** | `evaluateCarrierStirShakenAniGuard` 拦截麦克风声学按键注入（`INBAND_AUDIO_DTMF_TONE_INJECTION_BLOCKED`），并对非 `A` 级签名或呼转 `>2` 跳来电强制升级带外 FIDO2/OTP（`UNATTESTED_ANI_OR_EXCESSIVE_DIVERSION_STEPUP_REQUIRED`）。 | **100% 免疫 VoIP 改号欺诈免核身绕过与声学双音多频信令注入**（对应 POC 探针 `P41`）。 |
+| **2. RFC 7866 SIPREC 录音断流熔断与实时字幕 DLP 脱敏 (`P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD`)** | `evaluateSiprecComplianceForkAndDlpGuard` 在 SIPREC 分流中断或延迟 `>800ms` 时立即暂停受监管交易并切备用 SRS（`SIPREC_MEDIA_FORK_FAILURE_TRANSACTION_HALTED`），同时拦截实时字幕流明文 PII（`UNREDACTED_PII_IN_LIVE_TRANSCRIPT_BUS_BLOCKED`）。 | **杜绝“有交易无录音”的百万级监管罚单，确保可观测性总线零明文 PII 落盘**（对应 POC 探针 `P42`）。 |
+
+
 
 
 

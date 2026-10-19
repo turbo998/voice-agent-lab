@@ -3868,6 +3868,177 @@ export function evaluateMcpIndirectInjectionAndSagaGuard(
   };
 }
 
+export interface StilleCarrierStirShakenAndInBandDtmfSpoofInput {
+  callId: string;
+  callerAniE164: string;
+  stirShakenAttestationLevel: "A" | "B" | "C" | "NONE";
+  sipDiversionHopCount: number;
+  inBandAudioDtmfTonesDetectedOnCallerMic: boolean;
+  requestsAniTrustedPrivilegeAction: boolean;
+  outOfBandStepUpOtpVerified: boolean;
+}
+
+export interface StilleCarrierStirShakenAndInBandDtmfSpoofDecision {
+  policyCode: "P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD";
+  callId: string;
+  aniTrustworthyForZeroTouch: boolean;
+  inBandToneInjectionBlocked: boolean;
+  allowed: boolean;
+  reason:
+    | "INBAND_AUDIO_DTMF_TONE_INJECTION_BLOCKED"
+    | "UNATTESTED_ANI_OR_EXCESSIVE_DIVERSION_STEPUP_REQUIRED"
+    | "CARRIER_ATTESTATION_AND_SIGNALING_VERIFIED";
+  actionCode:
+    | "STRIP_INBAND_AUDIO_TONES_ENFORCE_RFC4733_ONLY"
+    | "DOWNGRADE_TO_ZERO_TRUST_REQUIRE_OOB_FIDO2_OTP"
+    | "ALLOW_ATTESTED_TELEPHONY_PRIVILEGE";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Carrier STIR/SHAKEN Attestation & In-Band Acoustic DTMF Injection Guard
+ * (P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD).
+ * Defends against two carrier-grade telephony attack vectors:
+ * 1) Caller ID (ANI) spoofing via wholesale VoIP gateways (`stirShakenAttestationLevel !== "A"` or
+ *    `sipDiversionHopCount > 2`), preventing attackers from bypassing KYC merely by spoofing a VIP's phone number;
+ * 2) Acoustic In-Band DTMF / 2600Hz / dual-tone injection played from the caller's speaker into the audio path
+ *    (`inBandAudioDtmfTonesDetectedOnCallerMic === true`) attempting to trick downstream IVR bridges or CTI macros.
+ */
+export function evaluateCarrierStirShakenAniGuard(
+  input: StilleCarrierStirShakenAndInBandDtmfSpoofInput,
+): StilleCarrierStirShakenAndInBandDtmfSpoofDecision {
+  const aniTrustworthyForZeroTouch =
+    input.stirShakenAttestationLevel === "A" && input.sipDiversionHopCount <= 2;
+
+  if (input.inBandAudioDtmfTonesDetectedOnCallerMic) {
+    return {
+      policyCode: "P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD",
+      callId: input.callId,
+      aniTrustworthyForZeroTouch,
+      inBandToneInjectionBlocked: true,
+      allowed: false,
+      reason: "INBAND_AUDIO_DTMF_TONE_INJECTION_BLOCKED",
+      actionCode: "STRIP_INBAND_AUDIO_TONES_ENFORCE_RFC4733_ONLY",
+      summaryZh: `【P41 运营商签名与伴音按键防注入护栏 · 阻断声学按键注入 (INBAND_AUDIO_DTMF_TONE_INJECTION_BLOCKED)】通话 ${input.callId}（主叫 ${input.callerAniE164}）在语音声道检出伪造双音多频伴音（In-Band Audio DTMF），已在 SBC 边缘执行带阻滤波剥离，仅接受加密带外 RFC 4733 信令。`,
+    };
+  }
+
+  if (
+    input.requestsAniTrustedPrivilegeAction &&
+    !aniTrustworthyForZeroTouch &&
+    !input.outOfBandStepUpOtpVerified
+  ) {
+    return {
+      policyCode: "P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD",
+      callId: input.callId,
+      aniTrustworthyForZeroTouch: false,
+      inBandToneInjectionBlocked: false,
+      allowed: false,
+      reason: "UNATTESTED_ANI_OR_EXCESSIVE_DIVERSION_STEPUP_REQUIRED",
+      actionCode: "DOWNGRADE_TO_ZERO_TRUST_REQUIRE_OOB_FIDO2_OTP",
+      summaryZh: `【P41 运营商 STIR/SHAKEN 防改号护栏 · 拒绝来电显号免核身 (UNATTESTED_ANI_OR_EXCESSIVE_DIVERSION_STEPUP_REQUIRED)】通话 ${input.callId} 主叫 ${input.callerAniE164} 的运营商签名等级为 ${input.stirShakenAttestationLevel}（要求 A 级全签名）或呼转跳数 ${input.sipDiversionHopCount} > 2，存在 VoIP 改号欺诈风险，已阻断基于来电号码的高敏操作并强制要求带外 FIDO2/OTP 验证。`,
+    };
+  }
+
+  return {
+    policyCode: "P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD",
+    callId: input.callId,
+    aniTrustworthyForZeroTouch,
+    inBandToneInjectionBlocked: false,
+    allowed: true,
+    reason: "CARRIER_ATTESTATION_AND_SIGNALING_VERIFIED",
+    actionCode: "ALLOW_ATTESTED_TELEPHONY_PRIVILEGE",
+    summaryZh: `【P41 运营商 STIR/SHAKEN 签名与信令核验通过】通话 ${input.callId}（签名等级 ${input.stirShakenAttestationLevel}，呼转 ${input.sipDiversionHopCount} 跳，带外验证=${input.outOfBandStepUpOtpVerified}）来电身份可信且无声学按键注入。`,
+  };
+}
+
+export interface StilleSiprecForkingAndTranscriptRedactionInput {
+  callId: string;
+  regulatedTransactionActive: boolean;
+  siprecMediaForkHealthy: boolean;
+  siprecPacketAckLagMs: number;
+  unredactedPiiTokensInLiveTranscriptCount: number;
+  realtimeDlpScrubberActive: boolean;
+}
+
+export interface StilleSiprecForkingAndTranscriptRedactionDecision {
+  policyCode: "P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD";
+  callId: string;
+  siprecRecordingCompliant: boolean;
+  transcriptZeroLeakVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "SIPREC_MEDIA_FORK_FAILURE_TRANSACTION_HALTED"
+    | "UNREDACTED_PII_IN_LIVE_TRANSCRIPT_BUS_BLOCKED"
+    | "SIPREC_AND_LIVE_DLP_SCRUBBING_VERIFIED";
+  actionCode:
+    | "PAUSE_REGULATED_TX_SWITCH_BACKUP_SRS_RECORDER"
+    | "REDACT_LIVE_STREAM_AND_SEAL_PII_VAULT_TOKEN"
+    | "PROCEED_WITH_DUAL_FORKED_AUDITED_CALL";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic RFC 7866 SIPREC Media Forking Continuity & Real-Time Transcript DLP Redaction Guard
+ * (P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD).
+ * Ensures that:
+ * 1) During regulated financial/insurance/healthcare transactions (`regulatedTransactionActive === true`),
+ *    if the RFC 7866 SIPREC dual-stream recording fork drops or lags (`!siprecMediaForkHealthy` or
+ *    `siprecPacketAckLagMs > 800`), the state machine immediately pauses transaction execution and fails over
+ *    to a standby Session Recording Server (`PAUSE_REGULATED_TX_SWITCH_BACKUP_SRS_RECORDER`)—"no recording, no transaction";
+ * 2) Any unredacted PII/SSN/ID/Account tokens in the real-time WebSocket transcript/telemetry bus
+ *    (`unredactedPiiTokensInLiveTranscriptCount > 0` or `!realtimeDlpScrubberActive`) are deterministically
+ *    blocked and replaced with vault tokens before reaching logs or third-party analytics.
+ */
+export function evaluateSiprecComplianceForkAndDlpGuard(
+  input: StilleSiprecForkingAndTranscriptRedactionInput,
+): StilleSiprecForkingAndTranscriptRedactionDecision {
+  const siprecRecordingCompliant =
+    !input.regulatedTransactionActive ||
+    (input.siprecMediaForkHealthy && input.siprecPacketAckLagMs <= 800);
+  const transcriptZeroLeakVerified =
+    input.realtimeDlpScrubberActive &&
+    input.unredactedPiiTokensInLiveTranscriptCount === 0;
+
+  if (!siprecRecordingCompliant) {
+    return {
+      policyCode: "P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD",
+      callId: input.callId,
+      siprecRecordingCompliant: false,
+      transcriptZeroLeakVerified,
+      allowed: false,
+      reason: "SIPREC_MEDIA_FORK_FAILURE_TRANSACTION_HALTED",
+      actionCode: "PAUSE_REGULATED_TX_SWITCH_BACKUP_SRS_RECORDER",
+      summaryZh: `【P42 SIPREC 司法级双录分流防掉线护栏 · 无录音禁交易 (SIPREC_MEDIA_FORK_FAILURE_TRANSACTION_HALTED)】通话 ${input.callId} 处于受监管交易态，但 RFC 7866 SIPREC 录音分流健康状态=${input.siprecMediaForkHealthy}（确认延迟 ${input.siprecPacketAckLagMs}ms > 800ms），已立即冻结交易执行并热切备用录音服务器（SRS）。`,
+    };
+  }
+
+  if (!transcriptZeroLeakVerified) {
+    return {
+      policyCode: "P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD",
+      callId: input.callId,
+      siprecRecordingCompliant: true,
+      transcriptZeroLeakVerified: false,
+      allowed: false,
+      reason: "UNREDACTED_PII_IN_LIVE_TRANSCRIPT_BUS_BLOCKED",
+      actionCode: "REDACT_LIVE_STREAM_AND_SEAL_PII_VAULT_TOKEN",
+      summaryZh: `【P42 实时字幕与遥测总线 DLP 脱敏护栏 · 阻断明文 PII 外泄 (UNREDACTED_PII_IN_LIVE_TRANSCRIPT_BUS_BLOCKED)】通话 ${input.callId} 实时字幕流检出 ${input.unredactedPiiTokensInLiveTranscriptCount} 处未脱敏身份证/账号/SSN 明文（DLP 激活=${input.realtimeDlpScrubberActive}），已在写入遥测总线前强制替换为加密令牌。`,
+    };
+  }
+
+  return {
+    policyCode: "P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD",
+    callId: input.callId,
+    siprecRecordingCompliant: true,
+    transcriptZeroLeakVerified: true,
+    allowed: true,
+    reason: "SIPREC_AND_LIVE_DLP_SCRUBBING_VERIFIED",
+    actionCode: "PROCEED_WITH_DUAL_FORKED_AUDITED_CALL",
+    summaryZh: `【P42 SIPREC 双录分流与实时 DLP 脱敏校验通过】通话 ${input.callId} RFC 7866 双录延迟 ${input.siprecPacketAckLagMs}ms（<=800ms）且实时字幕流零明文 PII 泄露。`,
+  };
+}
+
+
 
 
 

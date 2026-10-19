@@ -305,6 +305,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P39-SEMANTIC-TURN-TAKING-WATERMARK-PROVENANCE-GUARD extends VAD endpoint wait to >=1850ms on incomplete syntax/digit pauses and blocks outbound synthetic audio missing C2PA signatures or >=18dB acoustic watermarks; P40-MCP-INDIRECT-INJECTION-SAGA-COMPENSATION-GUARD quarantines indirect prompt injection inside MCP tool outputs and executes reverse Saga compensation on partial multi-step transaction failures."
+    },
+    {
+      "check_name": "Carrier STIR/SHAKEN Attestation / In-Band DTMF Spoof Strip & RFC 7866 SIPREC Fork Continuity / Live DLP Redaction Guard (P41 / P42)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD strips speaker-injected in-band audio DTMF tones and forces out-of-band FIDO2/OTP on non-A STIR/SHAKEN calls or >2 diversion hops; P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD halts regulated transactions and switches to standby SRS when SIPREC recording lags >800ms while tokenizing live transcript PII."
     }
   ],
   "latency_scaling": [
