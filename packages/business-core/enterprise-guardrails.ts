@@ -4761,6 +4761,181 @@ export function evaluateMultiVehiclePileupHazmatEdasDispatchGuard(
   };
 }
 
+export type ConferenceParticipantClearanceTier = "L3_ACCOUNT_OWNER" | "L2_DELEGATED_INTERPRETER" | "L1_EXTERNAL_VENDOR_OR_GUEST";
+
+export interface StilleFederatedMultipartyConferencePrivilegeDropGuardInput {
+  callId: string;
+  activeParticipantClearances: ConferenceParticipantClearanceTier[];
+  unverifiedExternalBridgeLegPresent: boolean;
+  attemptedDisclosureTier: "L3_SENSITIVE_ACCOUNT_PII" | "L2_ORDER_STATUS" | "L1_PUBLIC_FAQ";
+  attemptedHighPrivilegeWriteAction: boolean;
+  explicitOwnerPerLegAuthorizationGranted: boolean;
+}
+
+export interface StilleFederatedMultipartyConferencePrivilegeDropGuardDecision {
+  policyCode: "P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD";
+  callId: string;
+  effectiveConferenceClearance: ConferenceParticipantClearanceTier;
+  allowed: boolean;
+  reason:
+    | "MULTIPARTY_LEAST_PRIVILEGE_VERIFIED"
+    | "EXTERNAL_CONFERENCE_LEG_PII_DISCLOSURE_BLOCKED"
+    | "MULTIPARTY_WRITE_WITHOUT_OWNER_STEPUP_BLOCKED";
+  actionCode:
+    | "PROCEED_WITH_SCOPED_CONFERENCE_TURN"
+    | "DOWNGRADE_TO_L1_MASKED_SUMMARY_AND_MUTE_SENSITIVE_READOUT"
+    | "ISOLATE_OWNER_PRIVATE_LEG_FOR_STEPUP_AUTH";
+  summaryZh: string;
+}
+
+/**
+ * Stage 29 — P51 Federated Multi-Party Conference Zero-Trust Least-Privilege & Blind-Bridge Redaction Guard (`P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD`).
+ * Protects enterprise voice agents when a 1-on-1 authenticated call is bridged into a 3-way/multi-party conference
+ * (e.g., adding a third-party broker, family member, external vendor, or unverified PSTN bridge leg):
+ * 1) Automatically drops the effective session clearance to the lowest participant tier (`min(activeParticipantClearances)` or `L1` if an unverified leg joins)
+ *    and hard-blocks speaking out L3 sensitive account balances/PII (`EXTERNAL_CONFERENCE_LEG_PII_DISCLOSURE_BLOCKED`);
+ * 2) Hard-blocks high-privilege write mutations while third-party legs are bridged unless the primary owner completes an isolated private-leg step-up authorization
+ *    (`MULTIPARTY_WRITE_WITHOUT_OWNER_STEPUP_BLOCKED`).
+ */
+export function evaluateFederatedMultipartyConferencePrivilegeDropGuard(
+  input: StilleFederatedMultipartyConferencePrivilegeDropGuardInput,
+): StilleFederatedMultipartyConferencePrivilegeDropGuardDecision {
+  const hasL1Guest =
+    input.unverifiedExternalBridgeLegPresent ||
+    input.activeParticipantClearances.includes("L1_EXTERNAL_VENDOR_OR_GUEST") ||
+    input.activeParticipantClearances.length === 0;
+  const hasL2Interpreter = input.activeParticipantClearances.includes("L2_DELEGATED_INTERPRETER");
+
+  const effectiveClearance: ConferenceParticipantClearanceTier = hasL1Guest
+    ? "L1_EXTERNAL_VENDOR_OR_GUEST"
+    : hasL2Interpreter
+      ? "L2_DELEGATED_INTERPRETER"
+      : "L3_ACCOUNT_OWNER";
+
+  if (
+    input.attemptedDisclosureTier === "L3_SENSITIVE_ACCOUNT_PII" &&
+    effectiveClearance !== "L3_ACCOUNT_OWNER"
+  ) {
+    return {
+      policyCode: "P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD",
+      callId: input.callId,
+      effectiveConferenceClearance: effectiveClearance,
+      allowed: false,
+      reason: "EXTERNAL_CONFERENCE_LEG_PII_DISCLOSURE_BLOCKED",
+      actionCode: "DOWNGRADE_TO_L1_MASKED_SUMMARY_AND_MUTE_SENSITIVE_READOUT",
+      summaryZh: `【P51 多方电话会议零信任最小权限护栏 · 拦截外部旁路在场播报高敏资产信息 (EXTERNAL_CONFERENCE_LEG_PII_DISCLOSURE_BLOCKED)】通话 ${input.callId} 检出第三方/未核身会议桥接腿，会话有效权限已自动收窄至 ${effectiveClearance}，严禁公开播报 L3 账户余额与隐私明细。`,
+    };
+  }
+
+  if (
+    input.attemptedHighPrivilegeWriteAction &&
+    effectiveClearance !== "L3_ACCOUNT_OWNER" &&
+    !input.explicitOwnerPerLegAuthorizationGranted
+  ) {
+    return {
+      policyCode: "P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD",
+      callId: input.callId,
+      effectiveConferenceClearance: effectiveClearance,
+      allowed: false,
+      reason: "MULTIPARTY_WRITE_WITHOUT_OWNER_STEPUP_BLOCKED",
+      actionCode: "ISOLATE_OWNER_PRIVATE_LEG_FOR_STEPUP_AUTH",
+      summaryZh: `【P51 多方电话会议零信任最小权限护栏 · 拦截多方混音态高危写操作 (MULTIPARTY_WRITE_WITHOUT_OWNER_STEPUP_BLOCKED)】通话 ${input.callId} 存在外部与会方 (${effectiveClearance}) 且未完成号主独立私密声道二次授权，已阻断交易变更并请求切入私密声道核验。`,
+    };
+  }
+
+  return {
+    policyCode: "P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD",
+    callId: input.callId,
+    effectiveConferenceClearance: effectiveClearance,
+    allowed: true,
+    reason: "MULTIPARTY_LEAST_PRIVILEGE_VERIFIED",
+    actionCode: "PROCEED_WITH_SCOPED_CONFERENCE_TURN",
+    summaryZh: `【P51 多方电话会议最小权限核验通过】通话 ${input.callId} 按有效权限 ${effectiveClearance} 安全执行信息播报与协作。`,
+  };
+}
+
+export interface StilleEdgeHsmTokenizationZeroPlaintextCloudGuardInput {
+  callId: string;
+  cloudInferencePayloadContainsRawPanOrSsn: boolean;
+  edgeHsmFormatPreservingTokenIssued: boolean;
+  edgeTokenizationLatencyMs: number;
+  cloudRegionMatchesDataResidencyPolicy: boolean;
+}
+
+export interface StilleEdgeHsmTokenizationZeroPlaintextCloudGuardDecision {
+  policyCode: "P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD";
+  callId: string;
+  zeroPlaintextCloudEgressVerified: boolean;
+  edgeTokenizationLatencyMs: number;
+  allowed: boolean;
+  reason:
+    | "EDGE_HSM_TOKENIZED_CLOUD_INFERENCE_VERIFIED"
+    | "RAW_PII_OR_PAN_IN_CLOUD_PAYLOAD_BLOCKED"
+    | "EDGE_HSM_TOKENIZATION_MISSING_OR_RESIDENCY_VIOLATION";
+  actionCode:
+    | "FORWARD_FPE_TOKENIZED_PAYLOAD_TO_CLOUD_LLM"
+    | "SCRUB_PLAINTEXT_AT_SBC_EDGE_AND_BLOCK_EGRESS"
+    | "FAILOVER_TO_LOCAL_SOVEREIGN_HSM_CONTAINER";
+  summaryZh: string;
+}
+
+/**
+ * Stage 29 — P52 Edge SBC/HSM Format-Preserving Tokenization & Zero-Plaintext Cloud LLM Egress Guard (`P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD`).
+ * Ensures regulated banking/healthcare/government voice agents never transmit raw PAN, SSN, national ID, or account numbers
+ * to public cloud LLM endpoints:
+ * 1) Hard-blocks any cloud LLM inference payload that still contains raw PAN/SSN/ID digits (`cloudInferencePayloadContainsRawPanOrSsn === true`
+ *    -> `RAW_PII_OR_PAN_IN_CLOUD_PAYLOAD_BLOCKED`);
+ * 2) Enforces local SBC/HSM Format-Preserving Encryption (FPE NIST SP 800-38G FF1) tokenization within `<= 25ms` and verifies target cloud region residency
+ *    (`!edgeHsmFormatPreservingTokenIssued || edgeTokenizationLatencyMs > 25 || !cloudRegionMatchesDataResidencyPolicy`
+ *    -> `EDGE_HSM_TOKENIZATION_MISSING_OR_RESIDENCY_VIOLATION`).
+ */
+export function evaluateEdgeHsmTokenizationZeroPlaintextCloudGuard(
+  input: StilleEdgeHsmTokenizationZeroPlaintextCloudGuardInput,
+): StilleEdgeHsmTokenizationZeroPlaintextCloudGuardDecision {
+  if (input.cloudInferencePayloadContainsRawPanOrSsn) {
+    return {
+      policyCode: "P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD",
+      callId: input.callId,
+      zeroPlaintextCloudEgressVerified: false,
+      edgeTokenizationLatencyMs: input.edgeTokenizationLatencyMs,
+      allowed: false,
+      reason: "RAW_PII_OR_PAN_IN_CLOUD_PAYLOAD_BLOCKED",
+      actionCode: "SCRUB_PLAINTEXT_AT_SBC_EDGE_AND_BLOCK_EGRESS",
+      summaryZh: `【P52 边缘 HSM 保格式令牌化与零明文上云护栏 · 拦截明文卡号/身份证出境上云 (RAW_PII_OR_PAN_IN_CLOUD_PAYLOAD_BLOCKED)】通话 ${input.callId} 待发送云端推理载荷检出原始未脱敏卡号/证件号，已在本地 SBC 边缘网关硬阻断出网。`,
+    };
+  }
+
+  if (
+    !input.edgeHsmFormatPreservingTokenIssued ||
+    input.edgeTokenizationLatencyMs > 25 ||
+    input.edgeTokenizationLatencyMs < 0 ||
+    !input.cloudRegionMatchesDataResidencyPolicy
+  ) {
+    return {
+      policyCode: "P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD",
+      callId: input.callId,
+      zeroPlaintextCloudEgressVerified: false,
+      edgeTokenizationLatencyMs: input.edgeTokenizationLatencyMs,
+      allowed: false,
+      reason: "EDGE_HSM_TOKENIZATION_MISSING_OR_RESIDENCY_VIOLATION",
+      actionCode: "FAILOVER_TO_LOCAL_SOVEREIGN_HSM_CONTAINER",
+      summaryZh: `【P52 边缘 HSM 保格式令牌化与零明文上云护栏 · 令牌化超限或数据驻留区失配 (EDGE_HSM_TOKENIZATION_MISSING_OR_RESIDENCY_VIOLATION)】通话 ${input.callId} 边缘 HSM FPE 令牌状态异常 (耗时 ${input.edgeTokenizationLatencyMs}ms / 驻留合规=${input.cloudRegionMatchesDataResidencyPolicy})，已回退本地主权容器推理。`,
+    };
+  }
+
+  return {
+    policyCode: "P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD",
+    callId: input.callId,
+    zeroPlaintextCloudEgressVerified: true,
+    edgeTokenizationLatencyMs: input.edgeTokenizationLatencyMs,
+    allowed: true,
+    reason: "EDGE_HSM_TOKENIZED_CLOUD_INFERENCE_VERIFIED",
+    actionCode: "FORWARD_FPE_TOKENIZED_PAYLOAD_TO_CLOUD_LLM",
+    summaryZh: `【P52 边缘 HSM 零明文令牌化核验通过】通话 ${input.callId} 已在 ${input.edgeTokenizationLatencyMs}ms 内完成 NIST FF1 保格式令牌替换并核验合规区域，允许零明文上云推理。`,
+  };
+}
+
+
 
 
 

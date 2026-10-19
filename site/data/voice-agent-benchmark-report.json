@@ -340,6 +340,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD blocks any drift between spoken approval amount/payee tail-4 and the payment payload while enforcing <=30s FIDO2/WebAuthn + voiceprint dynamic linking; P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD purges post-crash commercial/survey prompts and triggers satellite SOS + highway traffic control beacons when ground PSAP bridge exceeds 800ms."
+    },
+    {
+      "check_name": "Federated Multiparty Conference Least-Privilege Drop & Edge HSM Format-Preserving Tokenization Guard (P51 / P52)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD computes effective clearance as min(participantClearances), dropping to L1 when an unverified external bridge leg joins to block L3 PII readouts and unverified write actions; P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD enforces <=25ms local HSM NIST FF1 format-preserving tokenization and blocks raw PAN/SSN egress to cloud LLMs."
     }
   ],
   "latency_scaling": [

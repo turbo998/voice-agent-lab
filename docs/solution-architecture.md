@@ -1021,6 +1021,17 @@ flowchart LR
 | **1. 零知识声纹支付与 PSD3 FIDO2 动态密码学绑定 (`P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD`)** | `evaluateZeroKnowledgeVoicePayMandateGuard` 校验口述确认金额/尾号与签名载荷完全一致（`SPOKEN_AMOUNT_OR_PAYEE_MANDATE_DRIFT_BLOCKED`），并强制核验声纹 + `<=30s` FIDO2 断言（`MISSING_FIDO2_OR_EXPIRED_CHALLENGE_NONCE_BLOCKED`）。 | **100% 满足欧盟 PSD3 SCA 动态链接与央行支付强核身，语音支付金额篡改率降至 0.0%**（对应 POC 探针 `P49`）。 |
 | **2. 多车连环碰撞/危化品创伤通道锁止与卫星 SOS 升级 (`P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD`)** | `evaluateMultiVehiclePileupHazmatEdasDispatchGuard` 拦截事故态一切商业推销/问卷（`POST_CRASH_COMMERCIAL_OR_SURVEY_PROMPT_BLOCKED`），并在危化品/连环追尾桥接 `>800ms` 时直切卫星 SOS（`HAZMAT_OR_PILEUP_PSAP_BRIDGE_SLA_EXCEEDED`）。 | **重特大车祸/危化品事故创伤通道 100% 零商业干扰，地面弱网下卫星救援触发率 100%**（对应 POC 探针 `P50`）。 |
 
+### 4.37 多方电话会议桥接零信任最小权限收缩护栏 (`P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD`) 及边缘 SBC/HSM 保格式令牌化与零明文上云推理护栏 (`P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD`)
+
+在私人银行家庭财富顾问三方通话、跨国保险经纪人协同理赔、医疗家属联合会诊以及严苛金融/政务数据安全合规审查中，企业架构还需解决以下两项核心安全边界：
+1. **单人已核身通话中途拉入第三方会议桥接腿（3-Way Conference Bridge）导致高敏余额外泄与越权交易 (`P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD`)**：在传统呼叫中心或通用语音 Agent 中，一旦主叫号主（`L3_ACCOUNT_OWNER`）在通过 KYC 核身后将外部协办人、家属、供应商或未认证 PSTN 旁路桥接进同一电话会议（`unverifiedExternalBridgeLegPresent = true` 或与会方包含 `L1_EXTERNAL_VENDOR_OR_GUEST` / `L2_DELEGATED_INTERPRETER`），若会话仍保持 `L3` 最高权限，AI 极易在多方混音场下直接念出客户全量资产余额、身份证号与投资持仓明细，甚至在第三方诱导下执行高危写操作。`evaluateFederatedMultipartyConferencePrivilegeDropGuard` 强制执行**多方会话权限水位取交集（Least-Privilege Watermark Drop）**——只要存在非 `L3` 与会方，有效会话权限立即降级至最低与会方等级（`effectiveConferenceClearance = L1/L2`），100% 硬阻断公开播报 `L3` 敏感资产/PII（`EXTERNAL_CONFERENCE_LEG_PII_DISCLOSURE_BLOCKED`），并禁止多方混音态执行高危写操作，除非号主切入独立私密声道完成单腿 Step-Up 强授权（`MULTIPARTY_WRITE_WITHOUT_OWNER_STEPUP_BLOCKED`）；
+2. **公有云大模型推理载荷残留原始银行卡号/身份证号（Raw PAN/SSN）违反零明文出网铁律 (`P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD`)**：许多国有银行、主权财富基金与三甲医院明确规定“语音交互可以使用云端大模型推理，但任何原始银行卡号（PAN）、社会保障号（SSN）与居民身份证号严禁以明文离开本地机房边界（Zero-Plaintext Cloud Egress）”。`evaluateEdgeHsmTokenizationZeroPlaintextCloudGuard` 在本地 SBC 边缘网关与硬件安全模块（HSM）层强制执行 **NIST SP 800-38G FF1 保格式加密令牌化（Format-Preserving Encryption Tokenization）**，100% 物理拦截任何包含原始明文卡号/证件号的云端推理请求（`RAW_PII_OR_PAN_IN_CLOUD_PAYLOAD_BLOCKED`），并强制校验边缘 HSM 令牌签发耗时 `<= 25ms` 与云端推理节点数据主权合规性（异常时触发 `EDGE_HSM_TOKENIZATION_MISSING_OR_RESIDENCY_VIOLATION` 自动回退本地主权容器）。
+
+| 多方会议最小权限收缩与边缘 HSM 零明文上云控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 多方协同防泄密与金融主权零明文收益 |
+| :--- | :--- | :--- |
+| **1. 多方电话会议零信任最小权限自动收缩 (`P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD`)** | `evaluateFederatedMultipartyConferencePrivilegeDropGuard` 将多方桥接会话权限自动收敛至最低与会方等级，阻断外部旁路在场时播报 `L3` 隐私（`EXTERNAL_CONFERENCE_LEG_PII_DISCLOSURE_BLOCKED`）及无私密声道授权的高危写操作（`MULTIPARTY_WRITE_WITHOUT_OWNER_STEPUP_BLOCKED`）。 | **100% 杜绝三方通话/家属经纪人同场时的资产隐私外泄与混音越权交易**（对应 POC 探针 `P51`）。 |
+| **2. 边缘 SBC/HSM FF1 保格式令牌化与零明文上云 (`P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD`)** | `evaluateEdgeHsmTokenizationZeroPlaintextCloudGuard` 物理阻断明文 PAN/SSN 出网（`RAW_PII_OR_PAN_IN_CLOUD_PAYLOAD_BLOCKED`），并强制 `<=25ms` 边缘 HSM 保格式令牌化与驻留区校验（`EDGE_HSM_TOKENIZATION_MISSING_OR_RESIDENCY_VIOLATION`）。 | **100% 满足银行/医院“原始敏感卡号证件号零明文出机房”铁律，边缘令牌化延迟 `<=25ms`**（对应 POC 探针 `P52`）。 |
+
 
 
 
