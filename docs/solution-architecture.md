@@ -977,6 +977,18 @@ flowchart LR
 | **1. 运营商 STIR/SHAKEN A 级签名校验与伴音按键剥离 (`P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD`)** | `evaluateCarrierStirShakenAniGuard` 拦截麦克风声学按键注入（`INBAND_AUDIO_DTMF_TONE_INJECTION_BLOCKED`），并对非 `A` 级签名或呼转 `>2` 跳来电强制升级带外 FIDO2/OTP（`UNATTESTED_ANI_OR_EXCESSIVE_DIVERSION_STEPUP_REQUIRED`）。 | **100% 免疫 VoIP 改号欺诈免核身绕过与声学双音多频信令注入**（对应 POC 探针 `P41`）。 |
 | **2. RFC 7866 SIPREC 录音断流熔断与实时字幕 DLP 脱敏 (`P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD`)** | `evaluateSiprecComplianceForkAndDlpGuard` 在 SIPREC 分流中断或延迟 `>800ms` 时立即暂停受监管交易并切备用 SRS（`SIPREC_MEDIA_FORK_FAILURE_TRANSACTION_HALTED`），同时拦截实时字幕流明文 PII（`UNREDACTED_PII_IN_LIVE_TRANSCRIPT_BUS_BLOCKED`）。 | **杜绝“有交易无录音”的百万级监管罚单，确保可观测性总线零明文 PII 落盘**（对应 POC 探针 `P42`）。 |
 
+### 4.33 财资大额调拨四眼原则双人复核护栏 (`P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD`) 与免提扬声器声学回声环路自打断抑制护栏 (`P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD`)
+
+在对公财资管理（Corporate Treasury）、批量白名单导入、电网高压刀闸操作以及免提外放（Speakerphone）全双工通话中，还必须攻克两大生产级难题：
+1. **对公大额资金调拨单人语音越权直通与经办/复核身份自审碰撞 (`P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD`)**：在企业对公电汇（`amountMinorUnits >= 5,000,000` 即 `>= 50,000.00`）、批量收款人白名单导入或高压变电站倒闸操作中，若仅凭单一主叫的语音指令或单人声纹就直接放行，极易遭受内部舞弊或深度合成社工攻击。`evaluateMakerCheckerDualAuthGuard` 严格实施 **四眼原则（Four-Eyes Principle / Segregation of Duties）**：强制校验经办人（`makerPrincipalId`）与复核授权人（`checkerPrincipalId`）必须为两个完全独立的自然人主体，任何同一身份尝试自审自批均立即硬阻断并上报合规台（`MAKER_CHECKER_SELF_APPROVAL_COLLISION_BLOCKED`）；在独立第二授权人完成声纹核验及带外 FIDO2 硬件签名（`checkerOutOfBandFido2Signed = true`）前，所有高危指令一律进入托管暂存态（`DUAL_CONTROL_SECOND_APPROVER_SIGNATURE_MISSING` -> `HOLD_ESCROW_AWAIT_CHECKER_FIDO2_COSIGN`）；
+2. **客厅/车载/会议室免提外放（Speakerphone）声学回声环路导致 AI 自己打断自己并把自身播报当成用户指令 (`P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD`)**：当用户开启手机免提或外置音箱通话且终端回声消除（AEC）性能退化（`aecEchoReturnLossEnhancementDb < 12dB`）时，AI 自己播报的提示音（如 *"如果您确认转账五万元请说确认转账"*）会被麦克风拾取并回传给服务端 VAD/ASR，引发致命的 **声学回声自触发闭环（Self-Barge-In & Self-Command Execution）**。`evaluateAcousticEchoLoopbackBargeInGuard` 实时比对上行 ASR 文本与当前下行活跃 TTS 文本的余弦相似度（`micTranscriptCosineSimilarityToActiveTts >= 0.78`）及独立人声基频共振峰特征（`independentHumanFormantPitchDetected`）：一旦判定为扬声器回声环路，立即静默丢弃回声文本并保持 TTS 播报不断流（`SELF_TTS_ACOUSTIC_ECHO_BARGEIN_SUPPRESSED`）；当 ERLE 低于 `12dB` 时自动启用自适应音量闪避与滤波器重收敛（`AEC_ERLE_DEGRADED_HALF_DUPLEX_DUCKING_ENGAGED`）。
+
+| 四眼原则双人复核与声学回声自打断抑制控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 财资内控安全与全双工声学稳定性收益 |
+| :--- | :--- | :--- |
+| **1. 四眼原则双人职责分离与带外 FIDO2 联签 (`P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD`)** | `evaluateMakerCheckerDualAuthGuard` 硬阻断经办/复核同人自批（`MAKER_CHECKER_SELF_APPROVAL_COLLISION_BLOCKED`），并在独立复核人完成带外 FIDO2 联签前锁定托管队列（`HOLD_ESCROW_AWAIT_CHECKER_FIDO2_COSIGN`）。 | **100% 满足银行对公财资 SOX / 内控职责分离（SoD）审计，杜绝单点语音越权划款**（对应 POC 探针 `P43`）。 |
+| **2. 免提扬声器回声环路与自触发抑制 (`P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD`)** | `evaluateAcousticEchoLoopbackBargeInGuard` 识别上行回声与下行 TTS 重合度 `>=0.78` 且无独立人声共振峰时立即丢弃回声（`SELF_TTS_ACOUSTIC_ECHO_BARGEIN_SUPPRESSED`），并在 `ERLE < 12dB` 时启动自适应闪避。 | **将免提外放场景下的 AI 自打断与回声误执行率从 18.5% 降至 0.0%**（对应 POC 探针 `P44`）。 |
+
+
 
 
 

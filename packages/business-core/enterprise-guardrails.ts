@@ -4038,6 +4038,205 @@ export function evaluateSiprecComplianceForkAndDlpGuard(
   };
 }
 
+export interface StilleMakerCheckerDualAuthInput {
+  callId: string;
+  transactionType:
+    | "CORPORATE_TREASURY_WIRE"
+    | "BULK_BENEFICIARY_WHITELIST_IMPORT"
+    | "GRID_HIGH_VOLTAGE_SWITCHGEAR"
+    | "ROUTINE_BALANCE_INQUIRY";
+  amountMinorUnits: number;
+  makerVoiceprintVerified: boolean;
+  checkerSeparateIdentityVerified: boolean;
+  makerPrincipalId: string;
+  checkerPrincipalId: string | null;
+  checkerOutOfBandFido2Signed: boolean;
+}
+
+export interface StilleMakerCheckerDualAuthDecision {
+  policyCode: "P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD";
+  callId: string;
+  requiresDualControl: boolean;
+  distinctPrincipalsVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "MAKER_CHECKER_SELF_APPROVAL_COLLISION_BLOCKED"
+    | "DUAL_CONTROL_SECOND_APPROVER_SIGNATURE_MISSING"
+    | "DUAL_CONTROL_FOUR_EYES_VERIFIED";
+  actionCode:
+    | "REJECT_SELF_APPROVAL_AND_ALERT_COMPLIANCE"
+    | "HOLD_ESCROW_AWAIT_CHECKER_FIDO2_COSIGN"
+    | "COMMIT_DUAL_AUTHORIZED_TRANSACTION";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Four-Eyes Maker-Checker Dual Authorization & Out-of-Band Co-Sign Guard
+ * (P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD).
+ * Ensures that:
+ * 1) High-value corporate treasury wires (`amountMinorUnits >= 5000000` i.e. >= 50,000.00),
+ *    bulk beneficiary whitelist imports, or high-voltage grid operations require dual authorization;
+ * 2) The initiating caller (`makerPrincipalId`) and the approving officer (`checkerPrincipalId`)
+ *    must be strictly distinct principals (`makerPrincipalId !== checkerPrincipalId`); any attempt
+ *    by the same person or voiceprint to act as both Maker and Checker is hard-blocked
+ *    (`MAKER_CHECKER_SELF_APPROVAL_COLLISION_BLOCKED`);
+ * 3) Until the independent Checker completes out-of-band FIDO2/cryptographic co-signing
+ *    (`checkerSeparateIdentityVerified && checkerOutOfBandFido2Signed`), the voice agent holds the
+ *    instruction in escrow (`HOLD_ESCROW_AWAIT_CHECKER_FIDO2_COSIGN`).
+ */
+export function evaluateMakerCheckerDualAuthGuard(
+  input: StilleMakerCheckerDualAuthInput,
+): StilleMakerCheckerDualAuthDecision {
+  const requiresDualControl =
+    input.transactionType === "BULK_BENEFICIARY_WHITELIST_IMPORT" ||
+    input.transactionType === "GRID_HIGH_VOLTAGE_SWITCHGEAR" ||
+    (input.transactionType === "CORPORATE_TREASURY_WIRE" &&
+      input.amountMinorUnits >= 5_000_000);
+
+  const distinctPrincipalsVerified =
+    Boolean(input.checkerPrincipalId) &&
+    input.checkerPrincipalId !== input.makerPrincipalId;
+
+  if (
+    requiresDualControl &&
+    input.checkerPrincipalId !== null &&
+    input.checkerPrincipalId === input.makerPrincipalId
+  ) {
+    return {
+      policyCode: "P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD",
+      callId: input.callId,
+      requiresDualControl: true,
+      distinctPrincipalsVerified: false,
+      allowed: false,
+      reason: "MAKER_CHECKER_SELF_APPROVAL_COLLISION_BLOCKED",
+      actionCode: "REJECT_SELF_APPROVAL_AND_ALERT_COMPLIANCE",
+      summaryZh: `【P43 四眼原则双人复核护栏 · 阻断自审自批碰撞 (MAKER_CHECKER_SELF_APPROVAL_COLLISION_BLOCKED)】通话 ${input.callId} 交易类型 ${input.transactionType}（金额 ${input.amountMinorUnits} 分）经办人 ${input.makerPrincipalId} 与复核人 ${input.checkerPrincipalId} 为同一主体，违反职责分离（SoD）铁律，已硬阻断并上报合规审计。`,
+    };
+  }
+
+  if (
+    requiresDualControl &&
+    (!input.makerVoiceprintVerified ||
+      !distinctPrincipalsVerified ||
+      !input.checkerSeparateIdentityVerified ||
+      !input.checkerOutOfBandFido2Signed)
+  ) {
+    return {
+      policyCode: "P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD",
+      callId: input.callId,
+      requiresDualControl: true,
+      distinctPrincipalsVerified,
+      allowed: false,
+      reason: "DUAL_CONTROL_SECOND_APPROVER_SIGNATURE_MISSING",
+      actionCode: "HOLD_ESCROW_AWAIT_CHECKER_FIDO2_COSIGN",
+      summaryZh: `【P43 四眼原则双人复核护栏 · 挂起等待独立复核人联签 (DUAL_CONTROL_SECOND_APPROVER_SIGNATURE_MISSING)】通话 ${input.callId} 高价值指令（${input.transactionType}）要求经办人声纹核验且由独立第二授权人完成带外 FIDO2 硬件联签（当前复核人=${input.checkerPrincipalId ?? "NONE"}, FIDO2=${input.checkerOutOfBandFido2Signed}），已转入托管暂存队列。`,
+    };
+  }
+
+  return {
+    policyCode: "P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD",
+    callId: input.callId,
+    requiresDualControl,
+    distinctPrincipalsVerified: requiresDualControl ? distinctPrincipalsVerified : true,
+    allowed: true,
+    reason: "DUAL_CONTROL_FOUR_EYES_VERIFIED",
+    actionCode: "COMMIT_DUAL_AUTHORIZED_TRANSACTION",
+    summaryZh: `【P43 四眼原则双人复核校验通过】通话 ${input.callId}（双控要求=${requiresDualControl}，经办人=${input.makerPrincipalId}，复核人=${input.checkerPrincipalId ?? "N/A"}）职责分离与带外 FIDO2 联签核验完备。`,
+  };
+}
+
+export interface StilleAcousticEchoLoopbackAndBargeInGuardInput {
+  callId: string;
+  farEndTtsPlaybackActive: boolean;
+  aecEchoReturnLossEnhancementDb: number;
+  micTranscriptCosineSimilarityToActiveTts: number;
+  independentHumanFormantPitchDetected: boolean;
+  speakerphoneAcousticCouplingSuspected: boolean;
+}
+
+export interface StilleAcousticEchoLoopbackAndBargeInGuardDecision {
+  policyCode: "P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD";
+  callId: string;
+  selfEchoLoopbackDetected: boolean;
+  genuineHumanBargeInVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "SELF_TTS_ACOUSTIC_ECHO_BARGEIN_SUPPRESSED"
+    | "AEC_ERLE_DEGRADED_HALF_DUPLEX_DUCKING_ENGAGED"
+    | "GENUINE_USER_BARGEIN_OR_CLEAN_DUPLEX_VERIFIED";
+  actionCode:
+    | "DROP_ECHO_TRANSCRIPT_KEEP_TTS_STREAM"
+    | "ENGAGE_ADAPTIVE_DUCKING_AND_RECALIBRATE_AEC"
+    | "ALLOW_USER_BARGEIN_TURN_COMMIT";
+  summaryZh: string;
+}
+
+/**
+ * Deterministic Acoustic Echo Cancellation (AEC) Loopback & Self-Barge-In Suppression Guard
+ * (P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD).
+ * Ensures that:
+ * 1) When callers use open speakerphones in reverberant rooms or car cabins during active TTS playback
+ *    (`farEndTtsPlaybackActive === true`), if the upstream microphone transcript closely matches the
+ *    agent's own outgoing TTS text (`micTranscriptCosineSimilarityToActiveTts >= 0.78`) without independent
+ *    human pitch/formant tracks (`!independentHumanFormantPitchDetected`), the state machine suppresses
+ *    false self-interruption and drops the echoed transcript (`SELF_TTS_ACOUSTIC_ECHO_BARGEIN_SUPPRESSED`)
+ *    so the agent never interrupts itself or executes its own spoken examples as user commands;
+ * 2) When AEC Echo Return Loss Enhancement degrades below 12 dB (`aecEchoReturnLossEnhancementDb < 12`)
+ *    under speakerphone coupling (`speakerphoneAcousticCouplingSuspected === true`), it engages adaptive
+ *    audio ducking and AEC filter recalibration (`AEC_ERLE_DEGRADED_HALF_DUPLEX_DUCKING_ENGAGED`).
+ */
+export function evaluateAcousticEchoLoopbackBargeInGuard(
+  input: StilleAcousticEchoLoopbackAndBargeInGuardInput,
+): StilleAcousticEchoLoopbackAndBargeInGuardDecision {
+  const selfEchoLoopbackDetected =
+    input.farEndTtsPlaybackActive &&
+    input.micTranscriptCosineSimilarityToActiveTts >= 0.78 &&
+    !input.independentHumanFormantPitchDetected;
+
+  if (selfEchoLoopbackDetected) {
+    return {
+      policyCode: "P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD",
+      callId: input.callId,
+      selfEchoLoopbackDetected: true,
+      genuineHumanBargeInVerified: false,
+      allowed: false,
+      reason: "SELF_TTS_ACOUSTIC_ECHO_BARGEIN_SUPPRESSED",
+      actionCode: "DROP_ECHO_TRANSCRIPT_KEEP_TTS_STREAM",
+      summaryZh: `【P44 声学回声环路与自打断抑制护栏 · 拦截扬声器回声自触发 (SELF_TTS_ACOUSTIC_ECHO_BARGEIN_SUPPRESSED)】通话 ${input.callId} 在播报期间上行识别文本与下行 TTS 相似度达 ${(input.micTranscriptCosineSimilarityToActiveTts * 100).toFixed(1)}% 且无独立人声基频共振峰，判定为扬声器声学回声环路，已丢弃回声文本并保持当前播报不中断。`,
+    };
+  }
+
+  if (
+    input.farEndTtsPlaybackActive &&
+    input.speakerphoneAcousticCouplingSuspected &&
+    input.aecEchoReturnLossEnhancementDb < 12 &&
+    !input.independentHumanFormantPitchDetected
+  ) {
+    return {
+      policyCode: "P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD",
+      callId: input.callId,
+      selfEchoLoopbackDetected: false,
+      genuineHumanBargeInVerified: false,
+      allowed: false,
+      reason: "AEC_ERLE_DEGRADED_HALF_DUPLEX_DUCKING_ENGAGED",
+      actionCode: "ENGAGE_ADAPTIVE_DUCKING_AND_RECALIBRATE_AEC",
+      summaryZh: `【P44 声学回声消除 (AEC) 退化保护护栏 · 启动自适应闪避 (AEC_ERLE_DEGRADED_HALF_DUPLEX_DUCKING_ENGAGED)】通话 ${input.callId} 免提扬声器耦合导致 ERLE 降至 ${input.aecEchoReturnLossEnhancementDb}dB（<12dB），已启动自适应音量闪避与 AEC 滤波器重收敛。`,
+    };
+  }
+
+  return {
+    policyCode: "P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD",
+    callId: input.callId,
+    selfEchoLoopbackDetected: false,
+    genuineHumanBargeInVerified: true,
+    allowed: true,
+    reason: "GENUINE_USER_BARGEIN_OR_CLEAN_DUPLEX_VERIFIED",
+    actionCode: "ALLOW_USER_BARGEIN_TURN_COMMIT",
+    summaryZh: `【P44 声学回声消除与真实打断核验通过】通话 ${input.callId}（ERLE=${input.aecEchoReturnLossEnhancementDb}dB，TTS 重合度=${(input.micTranscriptCosineSimilarityToActiveTts * 100).toFixed(1)}%）确认为真实主叫语音或高隔离全双工状态。`,
+  };
+}
+
+
 
 
 

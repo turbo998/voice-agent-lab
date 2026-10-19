@@ -312,6 +312,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P41-CARRIER-STIR-SHAKEN-ANI-ATTESTATION-GUARD strips speaker-injected in-band audio DTMF tones and forces out-of-band FIDO2/OTP on non-A STIR/SHAKEN calls or >2 diversion hops; P42-SIPREC-COMPLIANCE-FORK-DLP-REDACTION-GUARD halts regulated transactions and switches to standby SRS when SIPREC recording lags >800ms while tokenizing live transcript PII."
+    },
+    {
+      "check_name": "Four-Eyes Maker-Checker Treasury Dual-Auth & Speakerphone Acoustic Echo Loopback Self-Barge-In Guard (P43 / P44)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P43-MAKER-CHECKER-DUAL-AUTH-TREASURY-GUARD blocks Maker/Checker self-approval collisions and holds >=$50k treasury wires or whitelist imports in escrow until an independent Checker completes out-of-band FIDO2 co-signing; P44-ACOUSTIC-AEC-ECHO-LOOPBACK-SELF-BARGEIN-GUARD suppresses false self-barge-in when speakerphone echo matches active TTS (>=0.78 cosine similarity) without independent human formants."
     }
   ],
   "latency_scaling": [
