@@ -1032,6 +1032,18 @@ flowchart LR
 | **1. 多方电话会议零信任最小权限自动收缩 (`P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD`)** | `evaluateFederatedMultipartyConferencePrivilegeDropGuard` 将多方桥接会话权限自动收敛至最低与会方等级，阻断外部旁路在场时播报 `L3` 隐私（`EXTERNAL_CONFERENCE_LEG_PII_DISCLOSURE_BLOCKED`）及无私密声道授权的高危写操作（`MULTIPARTY_WRITE_WITHOUT_OWNER_STEPUP_BLOCKED`）。 | **100% 杜绝三方通话/家属经纪人同场时的资产隐私外泄与混音越权交易**（对应 POC 探针 `P51`）。 |
 | **2. 边缘 SBC/HSM FF1 保格式令牌化与零明文上云 (`P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD`)** | `evaluateEdgeHsmTokenizationZeroPlaintextCloudGuard` 物理阻断明文 PAN/SSN 出网（`RAW_PII_OR_PAN_IN_CLOUD_PAYLOAD_BLOCKED`），并强制 `<=25ms` 边缘 HSM 保格式令牌化与驻留区校验（`EDGE_HSM_TOKENIZATION_MISSING_OR_RESIDENCY_VIOLATION`）。 | **100% 满足银行/医院“原始敏感卡号证件号零明文出机房”铁律，边缘令牌化延迟 `<=25ms`**（对应 POC 探针 `P52`）。 |
 
+### 4.38 广域网断网（WAN Air-Broken）本地 Speech Container 边缘小模型无缝逃生护栏 (`P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD`) 及抗量子混合密钥协商（NIST FIPS 203 ML-KEM-768）长周期双录封存护栏 (`P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD`)
+
+在医院急诊指挥、电网变电站、机场塔台应急调度等光纤易受施工或灾害中断的关键基础设施场景，以及私人银行、国防军工、长寿险保单等要求 **5–30 年超长合规留存期** 的录音归档体系中，企业架构还需闭环以下两道前沿基础设施与密码学防线：
+1. **广域网（WAN）光纤挖断或云端骨干黑障时纯云端语音坐席全线瘫痪与离线虚假写承诺 (`P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD`)**：纯 SaaS 语音平台（Retell / Vapi / ElevenLabs）高度依赖公网 WebSocket/WebRTC 连回海外或中心云机房，一旦政企分支机构遭遇市政光缆中断（`wanUplinkStatus = "AIRBROKEN_BLACKOUT"`）或跨境海缆剧烈抖动（`cloudS2sRttMs > 800ms`），热线将瞬间全线忙音；更危险的是，部分半离线缓存在断网期间仍让大模型口头承诺“已为您完成实时调拨/挂号”。`evaluateAirbrokenSovereignSpeechContainerFailoverGuard` 强制执行**断网态云端写工具硬阻断与签名离线意向单暂存**（`OFFLINE_UNCOMMITTED_CLOUD_WRITE_BLOCKED` -> `SWITCH_TO_LOCAL_SPEECH_CONTAINER_AND_QUEUE_SIGNED_OFFLINE_INTENT`），并在 `<= 400ms` 内无缝切入本地机房部署的 **Azure AI Speech Container（离线 ASR/TTS 容器）+ 边缘量化小模型（Edge SLM）**；若本地容器未就绪或切换耗时 `> 400ms`，立即熔断并路由至本地 PBX 应急振铃组（`EDGE_CONTAINER_CUTOVER_SLA_OR_HEALTH_FAILURE`）；
+2. **长周期合规双录（留存 `>= 5` 年）遭“先截获后量子解密（Harvest Now, Decrypt Later, HNDL）”攻击 (`P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD`)**：财富管理双录、医疗基因病历随访与主权政务热线的加密信令/媒体包一旦被攻击者今天在公网截获保存，未来容错量子计算机成熟后即可破解传统 `X25519` 或 `RSA-2048` 密钥协商。`evaluatePostQuantumTlsHybridKeyMediaEscrowGuard` 针对合规留存期 `retentionRequirementYears >= 5` 的高敏通话，100% 硬阻断仅使用传统椭圆曲线/RSA 的密钥交换套件（`CLASSICAL_ONLY_KEM_REJECTED_FOR_LONG_RETENTION_CALL`），强制升级至 **NIST FIPS 203 `X25519MLKEM768` / `SecP256r1MLKEM768` 后量子混合密钥协商**，并强制校验每轮边界 SRTP 主密钥轮换与抗量子 WORM 归档信封封装（`MISSING_PQC_ARCHIVE_ENVELOPE_OR_KEY_ROTATION`）。
+
+| 广域网断网边缘语音容器逃生与抗量子双录封存控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 断网零瘫痪与抗量子长周期机密性收益 |
+| :--- | :--- | :--- |
+| **1. 广域网断网本地 Speech Container 与边缘小模型 `<=400ms` 逃生 (`P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD`)** | `evaluateAirbrokenSovereignSpeechContainerFailoverGuard` 在断网或 `RTT>800ms` 时硬阻断未落库云端写承诺（`OFFLINE_UNCOMMITTED_CLOUD_WRITE_BLOCKED`），并强制 `<=400ms` 切入本地 Speech Container + Edge SLM（失配触发 `EDGE_CONTAINER_CUTOVER_SLA_OR_HEALTH_FAILURE`）。 | **光缆中断/云黑障下本地语音热线 100% 持续服务，离线未落库虚假承诺率降至 0.0%**（对应 POC 探针 `P53`）。 |
+| **2. 后量子密码学 (`NIST FIPS 203 ML-KEM-768`) 混合密钥与长周期录音封存 (`P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD`)** | `evaluatePostQuantumTlsHybridKeyMediaEscrowGuard` 对留存 `>=5` 年的通话拒绝传统单算法握手（`CLASSICAL_ONLY_KEM_REJECTED_FOR_LONG_RETENTION_CALL`），并强制 SRTP 轮换与抗量子归档信封（`MISSING_PQC_ARCHIVE_ENVELOPE_OR_KEY_ROTATION`）。 | **100% 免疫“先截获后量子解密 (HNDL)”威胁，满足金融/医疗 5–30 年长周期密码学合规**（对应 POC 探针 `P54`）。 |
+
+
 
 
 

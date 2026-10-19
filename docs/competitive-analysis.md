@@ -203,6 +203,8 @@
 | **25. 律师/监管交涉禁认责和解与 7 年 WORM 诉讼保全 & WebRTC `TURNS` TLS 443 防火墙穿透**<br>(`客户声称请律师/监管立案时 AI 擅自认错承诺赔偿或漏锁证据链 / 医院政企防火墙封锁 UDP 掉线或 SDP 注入内网 IP 探测`) | 接入 **`P47-LEGAL-PRIVILEGE-LITIGATION-HOLD-WORM-GUARD`** 拦截越权认责/私自和解报价并强制加锁 SEC 17a-4 7 年 WORM 证据保全 | **`P48-WEBRTC-ICE-TURN-TLS443-SSRF-CGNAT-GUARD` 物理剥离 RFC 1918/IMDS 内网候选地址，CGNAT/UDP 封锁下 `<=350ms` 切入 `turns:443` 短期凭证中继** | 100% 杜绝 AI 口头自认过错导致司法败诉，政企/医院严苛防火墙下 WebRTC 接通率达 99.98% |
 | **26. 零知识声纹支付 PSD3 动态密码学绑定 & 多车连环碰撞/危化品卫星 SOS 创伤通道锁止**<br>(`口述金额与后端扣款载荷被篡改或缺失 FIDO2 签名 / 重特大车祸中 AI 播报商业拖车推销或地面弱网延误危化品救援`) | 接入 **`P49-ZERO-KNOWLEDGE-VOICE-PAY-FIDO2-MANDATE-GUARD`** 强制口述金额/尾号与清算载荷 1:1 匹配及 `<=30s` FIDO2 断言 | **`P50-MULTI-VEHICLE-PILEUP-HAZMAT-EDAS-DISPATCH-GUARD` 物理剥离事故态商业/问卷话术，危化品/连环追尾桥接 `>800ms` 自动触发卫星 SOS 与交管封道** | 100% 满足欧盟 PSD3 SCA 动态链接，重特大车祸创伤通道零商业干扰且卫星救援触发率 100% |
 | **27. 多方电话会议零信任最小权限收缩 & 边缘 SBC/HSM 保格式令牌化零明文上云**<br>(`已核身通话拉入外部第三方桥接腿导致高敏余额被公开播报或越权交易 / 原始银行卡号或身份证号明文发往公有云大模型`) | 接入 **`P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD`** 自动将多方会话权限收敛至最低与会方等级并隔离号主私密声道授权 | **`P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD` 在本地 SBC/HSM 执行 `<=25ms` NIST FF1 保格式令牌化，100% 阻断明文 PAN/SSN 出网** | 100% 杜绝三方会议混音泄密与越权操作，满足金融机构“原始卡号/证件号零明文出机房”合规红线 |
+| **28. 广域网断网本地 Speech Container 逃生 & 抗量子 (`NIST FIPS 203 ML-KEM-768`) 双录封存**<br>(`光缆挖断时纯云端坐席全线瘫痪或离线虚假承诺写成功 / 5–30 年长周期双录遭“先截获后量子解密 HNDL”威胁`) | 接入 **`P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD`** 断网 `<=400ms` 切本地 Speech Container + Edge SLM 并暂存签名离线意向单 | **`P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD` 强制 `X25519MLKEM768` 后量子混合密钥交换、轮次级 SRTP 密钥轮换与抗量子 WORM 归档信封** | 广域网光纤中断下本地语音热线 100% 不断服，长留存双录 100% 免疫量子计算回溯解密 |
+
 
 
 

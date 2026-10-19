@@ -4935,6 +4935,162 @@ export function evaluateEdgeHsmTokenizationZeroPlaintextCloudGuard(
   };
 }
 
+export interface StilleAirbrokenSovereignSpeechContainerFailoverGuardInput {
+  callId: string;
+  wanUplinkStatus: "HEALTHY" | "AIRBROKEN_BLACKOUT" | "HIGH_JITTER_DEGRADED";
+  cloudS2sRttMs: number;
+  localSpeechContainerHealthy: boolean;
+  localEdgeSlmLoaded: boolean;
+  localCutoverLatencyMs: number;
+  attemptedCloudOnlyWriteToolWhileOffline: boolean;
+}
+
+export interface StilleAirbrokenSovereignSpeechContainerFailoverGuardDecision {
+  policyCode: "P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD";
+  callId: string;
+  activeInferencePlane: "CLOUD_PRIMARY_S2S" | "EDGE_SOVEREIGN_CONTAINER_SLM" | "SAFE_OFFLINE_HOLD";
+  localCutoverLatencyMs: number;
+  allowed: boolean;
+  reason:
+    | "CLOUD_OR_EDGE_FAILOVER_CONTINUITY_VERIFIED"
+    | "OFFLINE_UNCOMMITTED_CLOUD_WRITE_BLOCKED"
+    | "EDGE_CONTAINER_CUTOVER_SLA_OR_HEALTH_FAILURE";
+  actionCode:
+    | "CONTINUE_ACTIVE_VOICE_PLANE"
+    | "SWITCH_TO_LOCAL_SPEECH_CONTAINER_AND_QUEUE_SIGNED_OFFLINE_INTENT"
+    | "ESCALATE_TO_LOCAL_PBX_EMERGENCY_RINGGROUP";
+  summaryZh: string;
+}
+
+/**
+ * Stage 30 — P53 Air-Gapped / WAN-Blackout Local Speech Container & Edge SLM Continuity Guard (`P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD`).
+ * Protects mission-critical hospital, energy substation, airport, and defense voice agents during WAN fiber cuts or cloud blackouts:
+ * 1) Hard-blocks any attempt to execute or claim completion of cloud-dependent write tools while WAN is air-broken (`wanUplinkStatus !== "HEALTHY" && attemptedCloudOnlyWriteToolWhileOffline` -> `OFFLINE_UNCOMMITTED_CLOUD_WRITE_BLOCKED`);
+ * 2) Enforces `<= 400ms` local cutover to on-premise Azure AI Speech Containers + quantized Edge SLM when `wanUplinkStatus !== "HEALTHY"` or `cloudS2sRttMs > 800ms` (`!localSpeechContainerHealthy || !localEdgeSlmLoaded || localCutoverLatencyMs > 400` -> `EDGE_CONTAINER_CUTOVER_SLA_OR_HEALTH_FAILURE`).
+ */
+export function evaluateAirbrokenSovereignSpeechContainerFailoverGuard(
+  input: StilleAirbrokenSovereignSpeechContainerFailoverGuardInput,
+): StilleAirbrokenSovereignSpeechContainerFailoverGuardDecision {
+  const wanDegraded = input.wanUplinkStatus !== "HEALTHY" || input.cloudS2sRttMs > 800;
+
+  if (wanDegraded && input.attemptedCloudOnlyWriteToolWhileOffline) {
+    return {
+      policyCode: "P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD",
+      callId: input.callId,
+      activeInferencePlane: "EDGE_SOVEREIGN_CONTAINER_SLM",
+      localCutoverLatencyMs: input.localCutoverLatencyMs,
+      allowed: false,
+      reason: "OFFLINE_UNCOMMITTED_CLOUD_WRITE_BLOCKED",
+      actionCode: "SWITCH_TO_LOCAL_SPEECH_CONTAINER_AND_QUEUE_SIGNED_OFFLINE_INTENT",
+      summaryZh: `【P53 断网主权语音容器与边缘小模型逃生护栏 · 拦截离线状态下云端写操作承诺 (OFFLINE_UNCOMMITTED_CLOUD_WRITE_BLOCKED)】通话 ${input.callId} 处于广域网中断/高时延态 (${input.wanUplinkStatus}, RTT=${input.cloudS2sRttMs}ms)，严禁直接调用云端写接口，已切换至本地 Speech Container 并暂存签名离线工单。`,
+    };
+  }
+
+  if (
+    wanDegraded &&
+    (!input.localSpeechContainerHealthy ||
+      !input.localEdgeSlmLoaded ||
+      input.localCutoverLatencyMs > 400 ||
+      input.localCutoverLatencyMs < 0)
+  ) {
+    return {
+      policyCode: "P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD",
+      callId: input.callId,
+      activeInferencePlane: "SAFE_OFFLINE_HOLD",
+      localCutoverLatencyMs: input.localCutoverLatencyMs,
+      allowed: false,
+      reason: "EDGE_CONTAINER_CUTOVER_SLA_OR_HEALTH_FAILURE",
+      actionCode: "ESCALATE_TO_LOCAL_PBX_EMERGENCY_RINGGROUP",
+      summaryZh: `【P53 断网主权语音容器与边缘小模型逃生护栏 · 本地容器切换超时或未就绪 (EDGE_CONTAINER_CUTOVER_SLA_OR_HEALTH_FAILURE)】通话 ${input.callId} 边缘容器健康度=${input.localSpeechContainerHealthy}、切换耗时=${input.localCutoverLatencyMs}ms (>400ms 红线)，已瞬时路由至本地 PBX 应急人工振铃组。`,
+    };
+  }
+
+  return {
+    policyCode: "P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD",
+    callId: input.callId,
+    activeInferencePlane: wanDegraded ? "EDGE_SOVEREIGN_CONTAINER_SLM" : "CLOUD_PRIMARY_S2S",
+    localCutoverLatencyMs: input.localCutoverLatencyMs,
+    allowed: true,
+    reason: "CLOUD_OR_EDGE_FAILOVER_CONTINUITY_VERIFIED",
+    actionCode: "CONTINUE_ACTIVE_VOICE_PLANE",
+    summaryZh: `【P53 主权语音容器连续性核验通过】通话 ${input.callId} 当前运行平面 ${wanDegraded ? "EDGE_SOVEREIGN_CONTAINER_SLM" : "CLOUD_PRIMARY_S2S"} (切换耗时 ${input.localCutoverLatencyMs}ms) 满足高可用连续性要求。`,
+  };
+}
+
+export interface StillePostQuantumTlsHybridKeyMediaEscrowGuardInput {
+  callId: string;
+  negotiatedKeyExchangeGroup: "X25519MLKEM768" | "SecP256r1MLKEM768" | "CLASSIC_X25519_ONLY" | "LEGACY_RSA2048";
+  retentionRequirementYears: number;
+  srtpMasterKeyRotatedOnTurnBoundary: boolean;
+  quantumResistantArchiveEnvelopeSealed: boolean;
+}
+
+export interface StillePostQuantumTlsHybridKeyMediaEscrowGuardDecision {
+  policyCode: "P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD";
+  callId: string;
+  harvestNowDecryptLaterProtected: boolean;
+  allowed: boolean;
+  reason:
+    | "PQC_HYBRID_KEM_AND_ARCHIVE_SEAL_VERIFIED"
+    | "CLASSICAL_ONLY_KEM_REJECTED_FOR_LONG_RETENTION_CALL"
+    | "MISSING_PQC_ARCHIVE_ENVELOPE_OR_KEY_ROTATION";
+  actionCode:
+    | "ESTABLISH_PQC_HYBRID_SRTP_AND_WORM_ESCROW"
+    | "FORCE_TLS13_MLKEM768_REHANDSHAKE_BEFORE_SENSITIVE_TURN"
+    | "BLOCK_UNSEALED_LONG_TERM_VOICE_RECORDING_WRITE";
+  summaryZh: string;
+}
+
+/**
+ * Stage 30 — P54 Post-Quantum Cryptography (NIST FIPS 203 ML-KEM-768) Hybrid TLS/SRTP & Long-Term Voice Archive Guard (`P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD`).
+ * Defends long-retention wealth management, defense, and sovereign healthcare voice recordings (retention >= 5 years) against
+ * "Harvest Now, Decrypt Later" (HNDL) quantum adversaries:
+ * 1) Rejects classical-only ECDH/RSA key exchange (`negotiatedKeyExchangeGroup === "CLASSIC_X25519_ONLY" || "LEGACY_RSA2048"`) when `retentionRequirementYears >= 5` (`CLASSICAL_ONLY_KEM_REJECTED_FOR_LONG_RETENTION_CALL`);
+ * 2) Enforces SRTP master key rotation and NIST FIPS 203 ML-KEM-768 quantum-resistant archive envelope sealing (`!srtpMasterKeyRotatedOnTurnBoundary || !quantumResistantArchiveEnvelopeSealed` -> `MISSING_PQC_ARCHIVE_ENVELOPE_OR_KEY_ROTATION`).
+ */
+export function evaluatePostQuantumTlsHybridKeyMediaEscrowGuard(
+  input: StillePostQuantumTlsHybridKeyMediaEscrowGuardInput,
+): StillePostQuantumTlsHybridKeyMediaEscrowGuardDecision {
+  const isPqcHybridKem =
+    input.negotiatedKeyExchangeGroup === "X25519MLKEM768" ||
+    input.negotiatedKeyExchangeGroup === "SecP256r1MLKEM768";
+
+  if (input.retentionRequirementYears >= 5 && !isPqcHybridKem) {
+    return {
+      policyCode: "P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD",
+      callId: input.callId,
+      harvestNowDecryptLaterProtected: false,
+      allowed: false,
+      reason: "CLASSICAL_ONLY_KEM_REJECTED_FOR_LONG_RETENTION_CALL",
+      actionCode: "FORCE_TLS13_MLKEM768_REHANDSHAKE_BEFORE_SENSITIVE_TURN",
+      summaryZh: `【P54 抗量子混合密钥协商与长周期录音封存护栏 · 拦截传统算法长周期裸奔风险 (CLASSICAL_ONLY_KEM_REJECTED_FOR_LONG_RETENTION_CALL)】通话 ${input.callId} 合规留存期达 ${input.retentionRequirementYears} 年，当前协商套件 ${input.negotiatedKeyExchangeGroup} 不具备抗“先截获后量子解密 (HNDL)”能力，已强制升级至 NIST FIPS 203 ML-KEM-768 混合密钥握手。`,
+    };
+  }
+
+  if (!input.srtpMasterKeyRotatedOnTurnBoundary || !input.quantumResistantArchiveEnvelopeSealed) {
+    return {
+      policyCode: "P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD",
+      callId: input.callId,
+      harvestNowDecryptLaterProtected: false,
+      allowed: false,
+      reason: "MISSING_PQC_ARCHIVE_ENVELOPE_OR_KEY_ROTATION",
+      actionCode: "BLOCK_UNSEALED_LONG_TERM_VOICE_RECORDING_WRITE",
+      summaryZh: `【P54 抗量子混合密钥协商与长周期录音封存护栏 · 缺失抗量子归档信封或 SRTP 轮换 (MISSING_PQC_ARCHIVE_ENVELOPE_OR_KEY_ROTATION)】通话 ${input.callId} 未完成 SRTP 会话密钥轮换或抗量子 WORM 归档信封封装，已阻断长周期双录落盘。`,
+    };
+  }
+
+  return {
+    policyCode: "P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD",
+    callId: input.callId,
+    harvestNowDecryptLaterProtected: true,
+    allowed: true,
+    reason: "PQC_HYBRID_KEM_AND_ARCHIVE_SEAL_VERIFIED",
+    actionCode: "ESTABLISH_PQC_HYBRID_SRTP_AND_WORM_ESCROW",
+    summaryZh: `【P54 抗量子混合密钥与录音封存核验通过】通话 ${input.callId} 采用 ${input.negotiatedKeyExchangeGroup} 混合密钥交换并完成 NIST FIPS 203 抗量子归档封装（留存期 ${input.retentionRequirementYears} 年）。`,
+  };
+}
+
+
 
 
 

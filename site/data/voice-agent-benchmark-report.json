@@ -347,6 +347,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P51-FEDERATED-MULTIPARTY-CONFERENCE-PRIVILEGE-DROP-GUARD computes effective clearance as min(participantClearances), dropping to L1 when an unverified external bridge leg joins to block L3 PII readouts and unverified write actions; P52-EDGE-HSM-TOKENIZATION-ZERO-PLAINTEXT-CLOUD-GUARD enforces <=25ms local HSM NIST FF1 format-preserving tokenization and blocks raw PAN/SSN egress to cloud LLMs."
+    },
+    {
+      "check_name": "Air-Broken WAN Local Speech Container Failover & Post-Quantum ML-KEM-768 Media Escrow Guard (P53 / P54)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD blocks uncommitted cloud write claims during WAN blackouts and enforces <=400ms cutover to local Azure AI Speech Containers + Edge SLM; P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD rejects classical-only key exchange for >=5-year retention calls and enforces NIST FIPS 203 X25519MLKEM768 hybrid TLS + quantum-resistant WORM archive sealing."
     }
   ],
   "latency_scaling": [

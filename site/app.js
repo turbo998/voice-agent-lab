@@ -3455,6 +3455,40 @@
         confidence: 1.0,
         verifier: 'PASS (P52) · 0 plaintext PAN/SSN egress to cloud LLM & <=25ms HSM FPE verified'
       }
+    },
+    {
+      code: 'P53 · Air-Broken WAN Local Speech Container Failover Guard',
+      badge: '<=400ms Edge Cutover / 0 False Write',
+      title: '广域网光纤断网（WAN Air-Broken）本地 Speech Container 与边缘小模型 `<=400ms` 逃生护栏',
+      sub: '测试上联光纤挖断或 RTT>800ms 时 100% 阻断未落库云端写承诺，并在 <=400ms 内无缝切入本地 Speech Container + Edge SLM',
+      customer_en: '[WAN Fiber Blackout: `wanUplinkStatus="AIRBROKEN_BLACKOUT"`, RTT 1,400ms] "Submit my emergency inpatient bed reservation to the cloud HIS right now!"',
+      customer_zh: '【分支机构广域网光纤挖断：`wanUplinkStatus="AIRBROKEN_BLACKOUT"`，云端 RTT 1,400ms】“立刻帮我向云端医院 HIS 系统提交急诊住院床位锁号！”',
+      agent_en: 'AIR-BROKEN WAN SOVEREIGN SPEECH CONTAINER FAILOVER GUARD (P53 / P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD): Hard-blocked uncommitted cloud write claim during WAN blackout (`OFFLINE_UNCOMMITTED_CLOUD_WRITE_BLOCKED`), cut over to on-prem Azure AI Speech Container + quantized Edge SLM in `185ms <= 400ms`, and queued signed offline intent (`SWITCH_TO_LOCAL_SPEECH_CONTAINER_AND_QUEUE_SIGNED_OFFLINE_INTENT`)!',
+      agent_zh: '【P53 断网主权语音容器与边缘小模型逃生护栏 (OFFLINE_UNCOMMITTED_CLOUD_WRITE_BLOCKED)】检出广域网光纤中断，已 100% 物理阻断离线态未落库云端写成功承诺，在 `185ms <= 400ms` 内无缝切入本地机房 Azure Speech Container + Edge SLM 并暂存签名离线工单！',
+      trace: {
+        tool: 'evaluate_airbroken_sovereign_speech_container_failover_guard(wan="AIRBROKEN_BLACKOUT", cutover_ms=185, offline_write=true -> SWITCH_TO_LOCAL_SPEECH_CONTAINER_AND_QUEUE_SIGNED_OFFLINE_INTENT)',
+        citations: ['P53-AIRBROKEN-SOVEREIGN-SPEECH-CONTAINER-FAILOVER-GUARD', 'AZURE-SPEECH-CONTAINER-EDGE', 'OFFLINE-SIGNED-INTENT-QUEUE'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P53) · Offline cloud write claim blocked & <=400ms local Speech Container cutover verified'
+      }
+    },
+    {
+      code: 'P54 · Post-Quantum (NIST ML-KEM-768) Hybrid TLS & Archive Guard',
+      badge: 'FIPS 203 ML-KEM-768 / Anti-HNDL',
+      title: '抗量子混合密钥协商（`NIST FIPS 203 ML-KEM-768`）与长周期双录防 HNDL 封存护栏',
+      sub: '测试 5-30 年长留存期财富/医疗双录拒绝传统单算法握手，强制 X25519MLKEM768 混合密钥交换与抗量子 WORM 归档信封',
+      customer_en: '[10-Year Wealth Dual-Recording Call Negotiated with Classical `CLASSIC_X25519_ONLY` Without PQC Envelope] "Seal my 10-year private banking trust mandate recording!"',
+      customer_zh: '【10 年合规留存期私行家族信托双录通话：仅使用传统 `CLASSIC_X25519_ONLY` 握手且未封装抗量子信封】“请归档封存我这笔 10 年期家族信托授权双录录音！”',
+      agent_en: 'POST-QUANTUM HYBRID TLS & MEDIA ESCROW GUARD (P54 / P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD): Rejected classical-only key exchange for >=5yr retention call (`CLASSICAL_ONLY_KEM_REJECTED_FOR_LONG_RETENTION_CALL`) and enforced NIST FIPS 203 `X25519MLKEM768` hybrid TLS 1.3 re-handshake + quantum-resistant WORM archive envelope (`FORCE_TLS13_MLKEM768_REHANDSHAKE_BEFORE_SENSITIVE_TURN`)!',
+      agent_zh: '【P54 抗量子混合密钥协商与长周期录音封存护栏 (CLASSICAL_ONLY_KEM_REJECTED_FOR_LONG_RETENTION_CALL)】通话合规留存期达 10 年（>=5 年），已 100% 拒绝传统单算法握手防“先截获后量子解密 (HNDL)”，强制升级至 `NIST FIPS 203 X25519MLKEM768` 混合密钥交换并封装抗量子 WORM 归档信封！',
+      trace: {
+        tool: 'evaluate_post_quantum_tls_hybrid_key_media_escrow_guard(kem="CLASSIC_X25519_ONLY", retention_yr=10 -> FORCE_TLS13_MLKEM768_REHANDSHAKE_BEFORE_SENSITIVE_TURN)',
+        citations: ['P54-PQC-HYBRID-TLS-KEM-MEDIA-ESCROW-GUARD', 'NIST-FIPS-203-ML-KEM-768', 'ANTI-HNDL-WORM-ESCROW'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P54) · Classical-only KEM rejected for 10yr call & ML-KEM-768 hybrid escrow enforced'
+      }
     }
   ];
 
@@ -3529,7 +3563,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (70-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (72-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -3556,7 +3590,8 @@
       '- [x] **入站 AI 语音爬虫防刷蜜罐 & 险情 E911/112 游牧位置 (`PIDF-LO`) 应急桥接**：识别零声带微颤与同指纹并发扒价自动切入低成本蜜罐 (P45)，燃气泄漏/火警/自伤险情 0ms 熔断常规排障并附带 RFC 4119 PIDF-LO 地址直连 PSAP (P46)',
       '- [x] **律师/监管交涉禁认责和解与 7 年 WORM 诉讼保全 & WebRTC `TURNS` TLS 443 防火墙穿透**：声称委托律师或监管立案时 100% 阻断自认过错与未授权赔偿并加锁 SEC 17a-4 7 年 WORM 证据链 (P47)，物理剥离 SDP 内网候选防 SSRF 并在 CGNAT/UDP 封锁下 `<=350ms` 切入 `turns:443` 短期凭证中继 (P48)',
       '- [x] **零知识声纹支付 PSD3 动态密码学绑定 & 多车连环碰撞/危化品卫星 SOS 创伤通道锁止**：口述确认金额/收款尾号与清算载荷 1:1 密码学绑定并强制 `<=30s` 新鲜 FIDO2 断言 (P49)，重特大车祸/危化品事故 100% 剥离商业/问卷话术并在地面桥接 `>800ms` 时直切卫星 SOS 与交管封道信标 (P50)',
-      '- [x] **多方电话会议零信任最小权限收缩 & 边缘 SBC/HSM 保格式令牌化零明文上云**：三方会议拉入外部协办人/未核身桥接腿时自动降级至 `L1` 最小权限并隔离私密声道授权 (P51)，本地 SBC/HSM 在 `<=25ms` 内完成 NIST FF1 保格式令牌替换并 100% 阻断明文 PAN/SSN 出网 (P52)'
+      '- [x] **多方电话会议零信任最小权限收缩 & 边缘 SBC/HSM 保格式令牌化零明文上云**：三方会议拉入外部协办人/未核身桥接腿时自动降级至 `L1` 最小权限并隔离私密声道授权 (P51)，本地 SBC/HSM 在 `<=25ms` 内完成 NIST FF1 保格式令牌替换并 100% 阻断明文 PAN/SSN 出网 (P52)',
+      '- [x] **广域网断网本地 Speech Container 逃生 & 抗量子 (`NIST FIPS 203 ML-KEM-768`) 双录封存**：上联光缆挖断或 `RTT>800ms` 时 `<=400ms` 切入本地 Speech Container + Edge SLM 并阻断离线未落库云端写承诺 (P53)，留存 `>=5` 年双录强制 `X25519MLKEM768` 后量子混合密钥交换与抗量子 WORM 归档信封 (P54)'
     ].join('\n');
   }
 
