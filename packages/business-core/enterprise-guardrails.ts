@@ -10099,6 +10099,196 @@ export function evaluateWebRtcRfc8843BundleRtcpMuxAndIceLiteRoleConflictGuard(
   };
 }
 
+export interface EducationFerpaDirectoryOptOutAndParentConsentGuardInput {
+  sessionId: string;
+  studentEnrolledInPostsecondaryOrAge18Plus: boolean;
+  callerIsThirdPartyOrParentWithoutFerpaWaiver: boolean;
+  requestsNonDirectoryGradesDisciplineOrFinancialAid: boolean;
+  studentHasDirectoryInformationOptOutBlock: boolean;
+  agentDraftDisclosesDirectoryPresenceOrContactInfo: boolean;
+  articulableCampusHealthOrSafetyEmergencyThreatDetected: boolean;
+  emergencyThreatDispatchedToCampusSafetyAndTitleIx: boolean;
+}
+
+export interface EducationFerpaDirectoryOptOutAndParentConsentGuardResult {
+  allowed: boolean;
+  ferpaPrivacyCompliant: boolean;
+  directoryOptOutHonored: boolean;
+  healthSafetyEmergencyEscalated: boolean;
+  reason:
+    | "FERPA_34CFR99_36_ARTICULABLE_CAMPUS_HEALTH_SAFETY_THREAT_MISSING_IMMEDIATE_DISPATCH"
+    | "FERPA_34CFR99_30_POSTSECONDARY_NON_DIRECTORY_GRADE_DISCIPLINE_OR_FAFSA_DISCLOSURE_WITHOUT_CONSENT_BLOCKED"
+    | "FERPA_34CFR99_37_DIRECTORY_INFORMATION_OPT_OUT_CONFIDENTIALITY_BLOCK_VIOLATED"
+    | "FERPA_34CFR99_EDUCATION_RECORD_PRIVACY_AND_CAMPUS_SAFETY_COMPLIANT";
+  actionCode: string;
+  policyCode: "P117-EDUCATION-FERPA-34CFR99-PPRA-DIRECTORY-OPT-OUT-STUDENT-DISCIPLINE-GRADE-GATE-AND-CRISIS-THREAT-GUARD";
+}
+
+export function evaluateEducationFerpaDirectoryOptOutAndParentConsentGuard(
+  input: EducationFerpaDirectoryOptOutAndParentConsentGuardInput,
+): EducationFerpaDirectoryOptOutAndParentConsentGuardResult {
+  if (
+    input.articulableCampusHealthOrSafetyEmergencyThreatDetected &&
+    !input.emergencyThreatDispatchedToCampusSafetyAndTitleIx
+  ) {
+    return {
+      allowed: false,
+      ferpaPrivacyCompliant: false,
+      directoryOptOutHonored: true,
+      healthSafetyEmergencyEscalated: false,
+      reason:
+        "FERPA_34CFR99_36_ARTICULABLE_CAMPUS_HEALTH_SAFETY_THREAT_MISSING_IMMEDIATE_DISPATCH",
+      actionCode:
+        "INVOKE_34CFR99_36_EMERGENCY_EXCEPTION_AND_BRIDGE_CAMPUS_SAFETY_THREAT_TEAM",
+      policyCode:
+        "P117-EDUCATION-FERPA-34CFR99-PPRA-DIRECTORY-OPT-OUT-STUDENT-DISCIPLINE-GRADE-GATE-AND-CRISIS-THREAT-GUARD",
+    };
+  }
+
+  if (
+    input.studentEnrolledInPostsecondaryOrAge18Plus &&
+    input.callerIsThirdPartyOrParentWithoutFerpaWaiver &&
+    input.requestsNonDirectoryGradesDisciplineOrFinancialAid
+  ) {
+    return {
+      allowed: false,
+      ferpaPrivacyCompliant: false,
+      directoryOptOutHonored: true,
+      healthSafetyEmergencyEscalated: true,
+      reason:
+        "FERPA_34CFR99_30_POSTSECONDARY_NON_DIRECTORY_GRADE_DISCIPLINE_OR_FAFSA_DISCLOSURE_WITHOUT_CONSENT_BLOCKED",
+      actionCode:
+        "HARD_BLOCK_EDUCATION_RECORD_READOUT_AND_SEND_STUDENT_PORTAL_FERPA_PROXY_WAIVER_LINK",
+      policyCode:
+        "P117-EDUCATION-FERPA-34CFR99-PPRA-DIRECTORY-OPT-OUT-STUDENT-DISCIPLINE-GRADE-GATE-AND-CRISIS-THREAT-GUARD",
+    };
+  }
+
+  if (
+    input.studentHasDirectoryInformationOptOutBlock &&
+    input.agentDraftDisclosesDirectoryPresenceOrContactInfo
+  ) {
+    return {
+      allowed: false,
+      ferpaPrivacyCompliant: true,
+      directoryOptOutHonored: false,
+      healthSafetyEmergencyEscalated: true,
+      reason:
+        "FERPA_34CFR99_37_DIRECTORY_INFORMATION_OPT_OUT_CONFIDENTIALITY_BLOCK_VIOLATED",
+      actionCode:
+        "SUPPRESS_ENROLLMENT_CONFIRMATION_AND_RETURN_UNIFORM_NO_PUBLIC_RECORD_RESPONSE",
+      policyCode:
+        "P117-EDUCATION-FERPA-34CFR99-PPRA-DIRECTORY-OPT-OUT-STUDENT-DISCIPLINE-GRADE-GATE-AND-CRISIS-THREAT-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    ferpaPrivacyCompliant: true,
+    directoryOptOutHonored: true,
+    healthSafetyEmergencyEscalated: true,
+    reason:
+      "FERPA_34CFR99_EDUCATION_RECORD_PRIVACY_AND_CAMPUS_SAFETY_COMPLIANT",
+    actionCode: "ALLOW_AUTHORIZED_STUDENT_SERVICE_TRANSACTION",
+    policyCode:
+      "P117-EDUCATION-FERPA-34CFR99-PPRA-DIRECTORY-OPT-OUT-STUDENT-DISCIPLINE-GRADE-GATE-AND-CRISIS-THREAT-GUARD",
+  };
+}
+
+export interface RtpRfc3550SsrcCollisionLoopAndRfc5285HeaderExtensionGuardInput {
+  sessionId: string;
+  ssrcCollisionOrLoopDetectedAcrossSourceTransports: boolean;
+  rtcpByeDispatchedAndNewRandomSsrcAllocated: boolean;
+  sameSourceTransportLoopPersistsAfterRekey: boolean;
+  oneByteHeaderExtensionElementPayloadBytes: number;
+  twoByteHeaderExtensionProfile0x1000Negotiated: boolean;
+  totalRtpPacketSizeBytes: number;
+  pathMtuPayloadLimitBytes: number;
+}
+
+export interface RtpRfc3550SsrcCollisionLoopAndRfc5285HeaderExtensionGuardResult {
+  allowed: boolean;
+  ssrcNamespaceConflictFree: boolean;
+  headerExtensionBoundsValid: boolean;
+  mtuSafetyGuaranteed: boolean;
+  reason:
+    | "RFC3550_SECTION_8_2_SSRC_COLLISION_OR_MEDIA_LOOP_UNRESOLVED_WITHOUT_RTCP_BYE_AND_REALLOCATION"
+    | "RFC5285_ONE_BYTE_RTP_HEADER_EXTENSION_0XBEDE_EXCEEDS_16BYTE_ELEMENT_LIMIT"
+    | "RTP_PACKET_WITH_CSRC_AND_HEADER_EXTENSIONS_EXCEEDS_IPV6_PATH_MTU_FRAGMENTATION_THRESHOLD"
+    | "RFC3550_SSRC_NAMESPACE_AND_RFC5285_HEADER_EXTENSION_MTU_HEALTHY";
+  actionCode: string;
+  policyCode: "P118-RTP-RFC3550-SSRC-COLLISION-LOOP-RESOLUTION-AND-RFC5285-TWOBYTE-HEADER-EXTENSION-CSRC-OVERFLOW-GUARD";
+}
+
+export function evaluateRtpRfc3550SsrcCollisionLoopAndRfc5285HeaderExtensionGuard(
+  input: RtpRfc3550SsrcCollisionLoopAndRfc5285HeaderExtensionGuardInput,
+): RtpRfc3550SsrcCollisionLoopAndRfc5285HeaderExtensionGuardResult {
+  if (
+    input.ssrcCollisionOrLoopDetectedAcrossSourceTransports &&
+    (!input.rtcpByeDispatchedAndNewRandomSsrcAllocated ||
+      input.sameSourceTransportLoopPersistsAfterRekey)
+  ) {
+    return {
+      allowed: false,
+      ssrcNamespaceConflictFree: false,
+      headerExtensionBoundsValid: true,
+      mtuSafetyGuaranteed: true,
+      reason:
+        "RFC3550_SECTION_8_2_SSRC_COLLISION_OR_MEDIA_LOOP_UNRESOLVED_WITHOUT_RTCP_BYE_AND_REALLOCATION",
+      actionCode:
+        "DISPATCH_RTCP_BYE_ALLOCATE_NEW_CSPRNG_SSRC_AND_QUARANTINE_LOOPED_TRANSPORT",
+      policyCode:
+        "P118-RTP-RFC3550-SSRC-COLLISION-LOOP-RESOLUTION-AND-RFC5285-TWOBYTE-HEADER-EXTENSION-CSRC-OVERFLOW-GUARD",
+    };
+  }
+
+  if (
+    input.oneByteHeaderExtensionElementPayloadBytes > 16 &&
+    !input.twoByteHeaderExtensionProfile0x1000Negotiated
+  ) {
+    return {
+      allowed: false,
+      ssrcNamespaceConflictFree: true,
+      headerExtensionBoundsValid: false,
+      mtuSafetyGuaranteed: true,
+      reason:
+        "RFC5285_ONE_BYTE_RTP_HEADER_EXTENSION_0XBEDE_EXCEEDS_16BYTE_ELEMENT_LIMIT",
+      actionCode:
+        "UPGRADE_RTP_HEADER_EXTENSION_TO_RFC5285_TWO_BYTE_0X1000_PROFILE_OR_STRIP_OVERLONG_METADATA",
+      policyCode:
+        "P118-RTP-RFC3550-SSRC-COLLISION-LOOP-RESOLUTION-AND-RFC5285-TWOBYTE-HEADER-EXTENSION-CSRC-OVERFLOW-GUARD",
+    };
+  }
+
+  if (input.totalRtpPacketSizeBytes > input.pathMtuPayloadLimitBytes) {
+    return {
+      allowed: false,
+      ssrcNamespaceConflictFree: true,
+      headerExtensionBoundsValid: true,
+      mtuSafetyGuaranteed: false,
+      reason:
+        "RTP_PACKET_WITH_CSRC_AND_HEADER_EXTENSIONS_EXCEEDS_IPV6_PATH_MTU_FRAGMENTATION_THRESHOLD",
+      actionCode:
+        "CLAMP_CSRC_LIST_AND_FRAGMENT_LARGE_METADATA_OUT_OF_BAND_TO_PREVENT_UDP_DROP",
+      policyCode:
+        "P118-RTP-RFC3550-SSRC-COLLISION-LOOP-RESOLUTION-AND-RFC5285-TWOBYTE-HEADER-EXTENSION-CSRC-OVERFLOW-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    ssrcNamespaceConflictFree: true,
+    headerExtensionBoundsValid: true,
+    mtuSafetyGuaranteed: true,
+    reason:
+      "RFC3550_SSRC_NAMESPACE_AND_RFC5285_HEADER_EXTENSION_MTU_HEALTHY",
+    actionCode: "FORWARD_RTP_MEDIA_FRAME",
+    policyCode:
+      "P118-RTP-RFC3550-SSRC-COLLISION-LOOP-RESOLUTION-AND-RFC5285-TWOBYTE-HEADER-EXTENSION-CSRC-OVERFLOW-GUARD",
+  };
+}
+
+
 
 
 

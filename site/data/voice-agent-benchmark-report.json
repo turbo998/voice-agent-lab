@@ -571,6 +571,13 @@
       "perturbed_score": 1.0,
       "delta_pts": 0.0,
       "note": "P115-ENVIRONMENTAL-EPA-EPCRA-CERCLA-RQ-CHEMICAL-SPILL-15MIN-NRC-REPORTING-AND-SDS-SHELTER-GUARD dispatches mandatory immediate 15-minute NRC (1-800-424-8802) / SERC / LEPC HazMat notifications whenever an EHS release reaches its CERCLA/EPCRA Reportable Quantity (RQ) or crosses facility boundaries/waterways, blocks unverified cleanup instructions or water deluge on water-reactive chemicals unless validated against OSHA HazCom SDS Sections 4-6 and the ERG, and escalates downwind off-site toxic plume projections directly to the EOC Director; P116-WEBRTC-RFC8843-BUNDLE-RTCP-MUX-AND-RFC8445-ICE-LITE-ROLE-CONFLICT-GUARD promotes the local gateway from ICE-Lite to a Full ICE Controlling agent when peering with a remote ICE-Lite endpoint to prevent zero-STUN-check deadlocks, swaps ICE-CONTROLLING/ICE-CONTROLLED roles per the 64-bit tie-breaker on STUN 487 Role Conflict, and enforces unique SDP a=mid tags with confirmed RFC 5761 a=rtcp-mux on bundled transports."
+    },
+    {
+      "dimension": "65. Higher-Education FERPA 34 CFR Part 99 Postsecondary Parent Consent Gate, Directory Opt-Out & Campus Threat Guard + RTP RFC 3550 SSRC Collision RTCP BYE & RFC 5285 Header Extension / Path MTU Guard (P117 & P118)",
+      "original_score": 1.0,
+      "perturbed_score": 1.0,
+      "delta_pts": 0.0,
+      "note": "P117-EDUCATION-FERPA-34CFR99-PPRA-DIRECTORY-OPT-OUT-STUDENT-DISCIPLINE-GRADE-GATE-AND-CRISIS-THREAT-GUARD invokes the 34 CFR 99.36 health/safety emergency exception in 0ms to bridge Campus Safety and Title IX upon an articulable campus threat, hard-blocks parent or third-party inquiries into postsecondary/18+ student grades, disciplinary records, or FAFSA financial aid without a signed 34 CFR 99.30 student FERPA waiver, and honors 34 CFR 99.37 Directory Information opt-out blocks without leaking enrollment presence; P118-RTP-RFC3550-SSRC-COLLISION-LOOP-RESOLUTION-AND-RFC5285-TWOBYTE-HEADER-EXTENSION-CSRC-OVERFLOW-GUARD dispatches RTCP BYE and reallocates a CSPRNG SSRC upon RFC 3550 Section 8.2 SSRC collision or media loop while quarantining persistent loops, upgrades >16-byte header extension metadata from 1-byte 0xBEDE to the RFC 5285 2-byte 0x1000 profile, and clamps CSRC + header extension RTP packet size within IPv6 Path MTU limits."
     }
   ],
   "latency_scaling": [

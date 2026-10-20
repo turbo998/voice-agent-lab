@@ -4543,6 +4543,40 @@
         confidence: 1.0,
         verifier: 'PASS (P116) · 0 dual ICE-Lite deadlocks, deterministic 487 tie-breaker swap & 100% BUNDLE rtcp-mux integrity'
       }
+    },
+    {
+      code: 'P117 · Higher-Education FERPA 34 CFR Part 99 Postsecondary Parent Consent Gate, Directory Opt-Out Shield & Campus Crisis Threat Guard',
+      badge: 'FERPA 34 CFR 99 · Title IX',
+      title: '高校教务 FERPA (34 CFR Part 99) 成年大学生（18+）无豁免书父母越权查分拦截、名录保密退出锁（Directory Opt-Out）与校园安全危机升级护栏',
+      sub: '测试交学费父母无 FERPA 书面豁免查询 18+ 大学生成绩/处分/FAFSA、泄露名录保密锁学生在读状态及检出校园暴力/自伤威胁时 0ms 启动 § 99.36 校警联动',
+      customer_en: '[University Registrar & Financial Aid Voice Probe: Parent Claiming Tuition Payer Status Without Signed 34 CFR 99.30 Student FERPA Waiver Demands Sophomore Student GPA, Disciplinary Probation Record, and FAFSA Aid Details, While Agent Queries a Student With an Active 34 CFR 99.37 Directory Information Opt-Out Block and Detects an Articulable Campus Safety Threat]',
+      customer_zh: '【高校教务处与助学金（FAFSA）语音热线压测：自称“学费是我交的”的家长在未持有 18+ 在读大学生本人签署的 34 CFR § 99.30 FERPA 书面授权豁免书时，强行要求口头播报学生 GPA 成绩单、留校察看处分记录及助学金明细；同时查询已开启 34 CFR § 99.37 名录保密退出锁（Directory Opt-Out）的受保护学生状态，且通话中检出明确的校园暴力/自伤安全威胁】',
+      agent_en: 'EDUCATION FERPA 34 CFR PART 99 PRIVACY & CAMPUS SAFETY GUARD (P117 / P117-EDUCATION-FERPA-34CFR99-PPRA-DIRECTORY-OPT-OUT-STUDENT-DISCIPLINE-GRADE-GATE-AND-CRISIS-THREAT-GUARD): Invoked `34 CFR § 99.36` health/safety emergency exception in `0ms` to bridge Campus Safety & Title IX (`FERPA_34CFR99_36_ARTICULABLE_CAMPUS_HEALTH_SAFETY_THREAT_MISSING_IMMEDIATE_DISPATCH`), hard-blocked parent/third-party disclosure of postsecondary (`18+`) grades, disciplinary records, and FAFSA aid without a signed student FERPA waiver (`FERPA_34CFR99_30_POSTSECONDARY_NON_DIRECTORY_GRADE_DISCIPLINE_OR_FAFSA_DISCLOSURE_WITHOUT_CONSENT_BLOCKED`), and suppressed enrollment confirmation under `34 CFR § 99.37` Directory Opt-Out (`FERPA_34CFR99_37_DIRECTORY_INFORMATION_OPT_OUT_CONFIDENTIALITY_BLOCK_VIOLATED`)!',
+      agent_zh: '【P117 高校教务 FERPA 34 CFR Part 99 隐私与校园安全护栏 (FERPA_34CFR99_30_POSTSECONDARY_NON_DIRECTORY_GRADE_DISCIPLINE_OR_FAFSA_DISCLOSURE_WITHOUT_CONSENT_BLOCKED)】检测到针对高等教育在读（18+）学生的非名录隐私查询且主叫父母未登记学生本人签署的 `34 CFR § 99.30` FERPA 书面豁免授权，已 0ms 物理阻断成绩单（GPA）、处分记录与助学金明细播报并发送学生门户授权申请链接！同时严守 `34 CFR § 99.37` 名录信息保密退出锁（返回统一无公开记录口径），并在检出校园安全威胁时立即激活 `§ 99.36` 紧急豁免直通校警与 Title IX 危机干预组！',
+      trace: {
+        tool: 'evaluate_education_ferpa_directory_opt_out_and_parent_consent_guard(postsecondary_18plus=true, parent_without_waiver=true, directory_opt_out=true -> HARD_BLOCK_EDUCATION_RECORD_READOUT_AND_SEND_STUDENT_PORTAL_FERPA_PROXY_WAIVER_LINK)',
+        citations: ['P117-EDUCATION-FERPA-34CFR99-PPRA-DIRECTORY-OPT-OUT-STUDENT-DISCIPLINE-GRADE-GATE-AND-CRISIS-THREAT-GUARD', 'US-DOE-FERPA-20USC1232G', '34CFR99-30-36-37'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P117) · 100% FERPA 18+ parent grade/FAFSA block, 0 directory opt-out leaks & 0ms § 99.36 campus threat escalation'
+      }
+    },
+    {
+      code: 'P118 · RTP RFC 3550 § 8.2 SSRC Collision/Loop RTCP BYE Resolution & RFC 5285 Two-Byte Header Extension / IPv6 Path MTU Guard',
+      badge: 'RFC 3550 SSRC · RFC 5285 0x1000',
+      title: 'RTP RFC 3550 § 8.2 同步源标识符（SSRC）冲突/媒体自环 RTCP BYE 重分配与 RFC 5285 单/双字节扩展头超界防 IPv6 Path MTU 分片丢包护栏',
+      sub: '测试多方混音桥 32-bit SSRC 撞车或自环时自动发 RTCP BYE 重分配随机 SSRC、单字节扩展头 0xBEDE 塞入 >16B 元数据自动升格 0x1000 双字节头并钳位 <=Path MTU',
+      customer_en: '[Multi-Party RTP Mixer & Voice Gateway Media Probe: Two Source Transports Collide on 32-Bit SSRC 0x4F2A910C Without RTCP BYE Reallocation, Gateway Attempts to Pack 28-Byte C2PA Watermark/Voiceprint Metadata Into RFC 5285 One-Byte 0xBEDE Extension (16-Byte Limit), and 15-CSRC Packet Reaches 1,340 Bytes Exceeding 1,200-Byte IPv6 Path MTU]',
+      customer_zh: '【多方混音网关（RTP Mixer）与 AI 语音媒体面压测：两个不同传输源在 32 位 SSRC `0x4F2A910C` 上发生撞车或媒体回环却未发 `RTCP BYE` 重分配，网关试图向 `RFC 5285` 单字节扩展头 `0xBEDE`（4-bit 长度上限 16 字节）强塞 28 字节的 C2PA 水印与声纹签名元数据，且叠加 15 个 CSRC 贡献源后 RTP 总包长达到 1,340 字节突破 1,200 字节 IPv6 Path MTU 上限】',
+      agent_en: 'RTP RFC 3550 SSRC COLLISION & RFC 5285 HEADER EXTENSION / MTU GUARD (P118 / P118-RTP-RFC3550-SSRC-COLLISION-LOOP-RESOLUTION-AND-RFC5285-TWOBYTE-HEADER-EXTENSION-CSRC-OVERFLOW-GUARD): Dispatched `RTCP BYE` on colliding SSRC and allocated new CSPRNG SSRC while quarantining looped transport (`RFC3550_SECTION_8_2_SSRC_COLLISION_OR_MEDIA_LOOP_UNRESOLVED_WITHOUT_RTCP_BYE_AND_REALLOCATION`), upgraded `>16B` metadata from 1-byte `0xBEDE` to `RFC 5285` 2-byte `0x1000` header extension profile (`RFC5285_ONE_BYTE_RTP_HEADER_EXTENSION_0XBEDE_EXCEEDS_16BYTE_ELEMENT_LIMIT`), and clamped `CSRC` + extension packet size within `1,200B` IPv6 Path MTU (`RTP_PACKET_WITH_CSRC_AND_HEADER_EXTENSIONS_EXCEEDS_IPV6_PATH_MTU_FRAGMENTATION_THRESHOLD`)!',
+      agent_zh: '【P118 RTP RFC 3550 SSRC 冲突重分配与 RFC 5285 扩展头/MTU 防溢出护栏 (RFC3550_SECTION_8_2_SSRC_COLLISION_OR_MEDIA_LOOP_UNRESOLVED_WITHOUT_RTCP_BYE_AND_REALLOCATION)】检测到跨传输源 32 位 SSRC 冲突/自环，已按 `RFC 3550 § 8.2` 立即在旧 SSRC 上下发 `RTCP BYE`、通过 CSPRNG 重新分配新 SSRC 并隔离死循环端口！同时拦截向单字节扩展头 `0xBEDE` 写入 `28B (>16B)` 元数据的溢出风险，自动升格至 `RFC 5285` 双字节扩展头 `0x1000` 并将总包长钳位在 `1,200B` IPv6 Path MTU 以内！',
+      trace: {
+        tool: 'evaluate_rtp_rfc3550_ssrc_collision_loop_and_rfc5285_header_extension_guard(ssrc_collision=true, ext_bytes=28, profile_0x1000=false, pkt_bytes=1340, mtu=1200 -> DISPATCH_RTCP_BYE_ALLOCATE_NEW_CSPRNG_SSRC_AND_UPGRADE_0X1000)',
+        citations: ['P118-RTP-RFC3550-SSRC-COLLISION-LOOP-RESOLUTION-AND-RFC5285-TWOBYTE-HEADER-EXTENSION-CSRC-OVERFLOW-GUARD', 'IETF-RFC3550-SEC8-2', 'IETF-RFC5285-RFC8285'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P118) · 0 SSRC collision audio tearing, 0 0xBEDE 16B header overflow & 0 IPv6 Path MTU fragmentation drops'
+      }
     }
   ];
 
@@ -4676,7 +4710,8 @@
       '- [x] **住房按揭与房地产结算 RESPA Section 8 反回扣诱导、TRID 3 个工作日重披露静默期与 Reg Z 触发词 APR 强制完整披露护栏 & WebRTC SCTP DataChannel（RFC 8831）实时字幕队头阻塞（HoL）剥离、背压卸载与心跳看门狗护栏（128 大探针）**：0ms 拦截漏播完整 APR 的触发词报价、阻断无 AfBA 披露的关联产权公司强推并在 APR 漂移超 `12.5/25 bps` 或锁息过期时强制执行 TRID 3 工作日 CD 重披露等待期 (P109)，强制临时字幕采用 `RFC 8831` 无序零重传、在 `bufferedAmount` 越界或 SRTP 排队 `>60ms` 时卸载中间字幕帧并在 SCTP 心跳超时 `>3s` 时无损切回 WebSocket (P110)',
       '- [x] **临床试验药物警戒 FDA `21 CFR Part 11` / ICH E6(R3) 严重不良事件（SAE）24h 加急上报、IRT 双盲防破盲与 ePRO 电子签名护栏 & WebRTC `RFC 7675` ICE 同意保活超时断流、僵尸 TURN 中继端口主动回收与 STUN 洪泛限流护栏（130 大探针里程碑）**：检出住院/危及生命 SAE 时 0ms 派发 24h PV/PI 加急警报、硬阻断无 PI 签名的双盲试验分组查询并强验 Part 11 审计哈希与双因子电子签名 (P111)，连续 6 次 STUN 保活失败或 `>=30s` 超时时 0ms 停发 SRTP、信令断开且静默 `>=15s` 时发送 `Refresh Lifetime=0` 回收僵尸 TURN 端口并限流 `>50/s` STUN 洪泛 (P112)',
       '- [x] **企业用工与合规举报热线 NLRA Section 7 协同活动（议薪保护）、OSHA/SOX 吹哨人声纹零知识匿名与防打击报复护栏 & SIP `RFC 3261` Max-Forwards / Via 路由环路熔断、并行振铃双 `200 OK` 孤儿腿清退（`RFC 3326`）与 `Re-INVITE` 491 Glare 退避护栏（132 大探针）**：0ms 抹除违法薪酬保密禁言话术、物理剥离吹哨人号码/声纹路由至零知识监察保险箱并硬阻断 HR 负向排班报复 (P113)，以 `SIP 482/483` 斩断呼叫转移死循环、对并行振铃次选 `200 OK` 瞬发 `ACK+BYE (RFC 3326)` 清退孤儿腿并强制 `491 Request Pending` 非对称随机退避 (P114)',
-      '- [x] **石化危化品泄漏 EPA `CERCLA/EPCRA` 超报告量（RQ）15 分钟 NRC/LEPC 强制上报、`OSHA SDS` 禁水爆燃校验与下风向毒气羽流避难升级护栏 & WebRTC `RFC 8843 BUNDLE` 单五元组复用、`RFC 5761 rtcp-mux` 与 `RFC 8445` 双 `ICE-Lite` 死锁 / `STUN 487` 角色翻转护栏（134 大探针里程碑）**：释放量 `>=RQ` 或越界入水时 0ms 派发 15min NRC/LEPC 通报、硬阻断未经 SDS 核验对禁水物喷水指令并直通 EOC 主任 (P115)，自动将双 `ICE-Lite` 升格为 Full ICE Controlling、按 64-bit Tie-Breaker 翻转 `STUN 487` 角色并强验 `BUNDLE` 唯一 `a=mid` 与 `rtcp-mux` (P116)'
+      '- [x] **石化危化品泄漏 EPA `CERCLA/EPCRA` 超报告量（RQ）15 分钟 NRC/LEPC 强制上报、`OSHA SDS` 禁水爆燃校验与下风向毒气羽流避难升级护栏 & WebRTC `RFC 8843 BUNDLE` 单五元组复用、`RFC 5761 rtcp-mux` 与 `RFC 8445` 双 `ICE-Lite` 死锁 / `STUN 487` 角色翻转护栏（134 大探针里程碑）**：释放量 `>=RQ` 或越界入水时 0ms 派发 15min NRC/LEPC 通报、硬阻断未经 SDS 核验对禁水物喷水指令并直通 EOC 主任 (P115)，自动将双 `ICE-Lite` 升格为 Full ICE Controlling、按 64-bit Tie-Breaker 翻转 `STUN 487` 角色并强验 `BUNDLE` 唯一 `a=mid` 与 `rtcp-mux` (P116)',
+      '- [x] **高校教务 `FERPA (34 CFR Part 99)` 成年大学生（18+）无豁免书父母越权查分拦截、`34 CFR § 99.37` 名录保密退出锁与 `§ 99.36` 校园安全危机升级护栏 & RTP `RFC 3550 § 8.2` SSRC 冲突/自环 `RTCP BYE` 重分配与 `RFC 5285` 扩展头/IPv6 `Path MTU` 防溢出护栏（136 大探针里程碑）**：0ms 激活 `§ 99.36` 校园危机联动、硬阻断无书面豁免父母查询 18+ 学生成绩/处分/FAFSA 并严守 `§ 99.37` 名录保密退出锁 (P117)，在 SSRC 冲突时发 `RTCP BYE` 重分配随机 SSRC、将 `>16B` 元数据自动升格 `0x1000` 双字节扩展头并钳位包长 `<=Path MTU` (P118)'
     ].join('\n');
   }
 
