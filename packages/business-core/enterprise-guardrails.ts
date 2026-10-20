@@ -6881,6 +6881,156 @@ export function evaluateRtpJitterBufferUnderrunAndClockDriftGuard(
   };
 }
 
+export interface StilleMaritimeSolasMaydayGmdssPreemptionGuardInput {
+  callId: string;
+  maydayOrPanPanProwordDetected: boolean;
+  gmdssDscDistressAlertActive: boolean;
+  imoSmcpSafetyOrderIssued: boolean;
+  mmsiAndVesselNameVerified: boolean;
+  verbatimSmcpReadbackConfirmed: boolean;
+}
+
+export interface StilleMaritimeSolasMaydayGmdssPreemptionGuardDecision {
+  policyCode: "P79-MARITIME-SOLAS-MAYDAY-VHF-CH16-GMDSS-PREEMPTION-GUARD";
+  callId: string;
+  maritimeCommsSafeToContinueRoutine: boolean;
+  allowed: boolean;
+  reason:
+    | "SOLAS_GMDSS_MAYDAY_PREEMPTION_TRIGGERED"
+    | "IMO_SMCP_MANEUVER_READBACK_OR_MMSI_MISSING_BLOCKED"
+    | "SOLAS_GMDSS_AND_IMO_SMCP_VERIFIED";
+  actionCode:
+    | "PREEMPT_COMMERCIAL_VTS_AND_BRIDGE_MRCC_RESCUE_CH16"
+    | "HOLD_BERTHING_ORDER_AND_DEMAND_SMCP_MMSI_READBACK"
+    | "PERMIT_ROUTINE_PORT_VTS_LOGISTICS";
+  summaryZh: string;
+}
+
+/**
+ * Stage 43 (#88): P79 — Maritime SOLAS Chapter IV GMDSS / VHF Ch 16 MAYDAY Preemption & IMO SMCP Readback Guard.
+ * Prevents two maritime VTS (Vessel Traffic Service) / port dispatch & offshore logistics hazards:
+ * 1) SOLAS GMDSS / VHF Ch 16 (156.8 MHz) MAYDAY or PAN-PAN distress preemption: if a vessel issues "MAYDAY" / "PAN-PAN" or triggers a DSC/EPIRB/AIS-SART distress beacon (`maydayOrPanPanProwordDetected || gmdssDscDistressAlertActive`),
+ *    commercial berth/cargo dialogue must be preempted in 0ms (`SOLAS_GMDSS_MAYDAY_PREEMPTION_TRIGGERED` -> `PREEMPT_COMMERCIAL_VTS_AND_BRIDGE_MRCC_RESCUE_CH16`) with `SEELONCE MAYDAY` channel lock and MRCC Coast Guard bridge;
+ * 2) IMO Resolution A.918(22) SMCP (Standard Marine Communication Phrases) readback & MMSI identity verification: safety-critical helm, tugboat, or berth-approach orders (`imoSmcpSafetyOrderIssued`) cannot be committed unless 9-digit MMSI + vessel name and verbatim SMCP readback are verified (`IMO_SMCP_MANEUVER_READBACK_OR_MMSI_MISSING_BLOCKED`).
+ */
+export function evaluateMaritimeSolasMaydayGmdssPreemptionGuard(
+  input: StilleMaritimeSolasMaydayGmdssPreemptionGuardInput,
+): StilleMaritimeSolasMaydayGmdssPreemptionGuardDecision {
+  if (input.maydayOrPanPanProwordDetected || input.gmdssDscDistressAlertActive) {
+    return {
+      policyCode: "P79-MARITIME-SOLAS-MAYDAY-VHF-CH16-GMDSS-PREEMPTION-GUARD",
+      callId: input.callId,
+      maritimeCommsSafeToContinueRoutine: false,
+      allowed: false,
+      reason: "SOLAS_GMDSS_MAYDAY_PREEMPTION_TRIGGERED",
+      actionCode: "PREEMPT_COMMERCIAL_VTS_AND_BRIDGE_MRCC_RESCUE_CH16",
+      summaryZh: `【P79 海事 SOLAS GMDSS / VHF Ch16 遇险抢占护栏 (SOLAS_GMDSS_MAYDAY_PREEMPTION_TRIGGERED)】通话 ${input.callId} 检出 MAYDAY/PAN-PAN 国际呼救信号或 GMDSS DSC/EPIRB 遇险信标！已 0ms 强占常规港口调度通道、广播 SEELONCE MAYDAY 静默令并锁定船舶 MMSI/GNSS 坐标直连海事搜救中心 (MRCC)！`,
+    };
+  }
+
+  if (
+    input.imoSmcpSafetyOrderIssued &&
+    (!input.mmsiAndVesselNameVerified || !input.verbatimSmcpReadbackConfirmed)
+  ) {
+    return {
+      policyCode: "P79-MARITIME-SOLAS-MAYDAY-VHF-CH16-GMDSS-PREEMPTION-GUARD",
+      callId: input.callId,
+      maritimeCommsSafeToContinueRoutine: false,
+      allowed: false,
+      reason: "IMO_SMCP_MANEUVER_READBACK_OR_MMSI_MISSING_BLOCKED",
+      actionCode: "HOLD_BERTHING_ORDER_AND_DEMAND_SMCP_MMSI_READBACK",
+      summaryZh: `【P79 国际海事组织 IMO SMCP 标准航海用语复诵护栏 (IMO_SMCP_MANEUVER_READBACK_OR_MMSI_MISSING_BLOCKED)】通话 ${input.callId} 下发靠泊/拖轮/航道转向安全指令时缺失 9 位 MMSI 船名核验或船长 IMO SMCP 逐字复诵，已挂起指令执行并强制要求标准复诵！`,
+    };
+  }
+
+  return {
+    policyCode: "P79-MARITIME-SOLAS-MAYDAY-VHF-CH16-GMDSS-PREEMPTION-GUARD",
+    callId: input.callId,
+    maritimeCommsSafeToContinueRoutine: true,
+    allowed: true,
+    reason: "SOLAS_GMDSS_AND_IMO_SMCP_VERIFIED",
+    actionCode: "PERMIT_ROUTINE_PORT_VTS_LOGISTICS",
+    summaryZh: `【P79 海事 SOLAS GMDSS 与 IMO SMCP 通信核验通过】通话 ${input.callId} 无遇险抢占且 MMSI 与标准航海复诵完整。`,
+  };
+}
+
+export interface StilleTtsProsodyCadenceAndEmotionalContagionGuardInput {
+  callId: string;
+  mirroringCallerScreamingOrSarcasticLaughterDetected: boolean;
+  outputPitchF0Hz: number;
+  outputEnergyRmsDb: number;
+  speakingRateWpm: number;
+}
+
+export interface StilleTtsProsodyCadenceAndEmotionalContagionGuardDecision {
+  policyCode: "P80-TTS-PROSODY-EMOTIONAL-CONTAGION-AND-CADENCE-STABILITY-GUARD";
+  callId: string;
+  prosodyCadenceStable: boolean;
+  allowed: boolean;
+  reason:
+    | "S2S_EMOTIONAL_CONTAGION_OR_SCREAM_MIRRORING_BLOCKED"
+    | "WHISPER_DROPOUT_OR_ERRATIC_WPM_CADENCE_BLOCKED"
+    | "S2S_PROSODY_ENVELOPE_AND_LUFS_WITHIN_BOUNDS";
+  actionCode:
+    | "CLAMP_S2S_PROSODY_TO_CALM_NEUTRAL_ANCHOR_AND_LIMIT_GAIN"
+    | "NORMALIZE_ITU_BS1770_LUFS_AND_STABILIZE_WPM_CADENCE"
+    | "STREAM_STABILIZED_PROFESSIONAL_PROSODY";
+  summaryZh: string;
+}
+
+/**
+ * Stage 43 (#89): P80 — Native S2S / Expressive TTS Emotional Contagion Mirroring & ITU-R BS.1770 LUFS / WPM Cadence Stability Guard.
+ * Prevents two acoustic-instability failures unique to native Speech-to-Speech (`gpt-live-1` / Realtime API) and zero-shot expressive neural TTS:
+ * 1) S2S Emotional Contagion / Acoustic Mirroring Runaway: when a caller shouts in anger or laughs sarcastically, unguarded autoregressive audio models condition on input acoustic tokens and shout back (`outputPitchF0Hz > 310` or `outputEnergyRmsDb > -8` or `mirroringCallerScreamingOrSarcasticLaughterDetected`), requiring immediate prosody anchor clamping (`S2S_EMOTIONAL_CONTAGION_OR_SCREAM_MIRRORING_BLOCKED`);
+ * 2) Whispering Dropout & Erratic WPM Cadence: when a caller whispers in a quiet room or background noise confuses latent prosody tokens, the model drops into an unintelligible whisper (`outputEnergyRmsDb < -34`) or runaway/slurred speaking rate (`speakingRateWpm > 220` or `< 105`), requiring ITU-R BS.1770 `-16 LUFS` loudness normalization and `145–165 WPM` cadence stabilization (`WHISPER_DROPOUT_OR_ERRATIC_WPM_CADENCE_BLOCKED`).
+ */
+export function evaluateTtsProsodyCadenceAndEmotionalContagionGuard(
+  input: StilleTtsProsodyCadenceAndEmotionalContagionGuardInput,
+): StilleTtsProsodyCadenceAndEmotionalContagionGuardDecision {
+  if (
+    input.mirroringCallerScreamingOrSarcasticLaughterDetected ||
+    input.outputPitchF0Hz > 310 ||
+    input.outputEnergyRmsDb > -8
+  ) {
+    return {
+      policyCode: "P80-TTS-PROSODY-EMOTIONAL-CONTAGION-AND-CADENCE-STABILITY-GUARD",
+      callId: input.callId,
+      prosodyCadenceStable: false,
+      allowed: false,
+      reason: "S2S_EMOTIONAL_CONTAGION_OR_SCREAM_MIRRORING_BLOCKED",
+      actionCode: "CLAMP_S2S_PROSODY_TO_CALM_NEUTRAL_ANCHOR_AND_LIMIT_GAIN",
+      summaryZh: `【P80 原生 S2S 情绪传染与咆哮镜像抑制护栏 (S2S_EMOTIONAL_CONTAGION_OR_SCREAM_MIRRORING_BLOCKED)】通话 ${input.callId} 检出 S2S 模型受主叫激烈情绪传染出现高亢咆哮/冷笑镜像（基频 F0=${input.outputPitchF0Hz}Hz，能量=${input.outputEnergyRmsDb}dBFS）！已实时钳位声学潜空间至沉稳中性锚点并启动硬件限幅器。`,
+    };
+  }
+
+  if (
+    input.outputEnergyRmsDb < -34 ||
+    input.speakingRateWpm > 220 ||
+    input.speakingRateWpm < 105
+  ) {
+    return {
+      policyCode: "P80-TTS-PROSODY-EMOTIONAL-CONTAGION-AND-CADENCE-STABILITY-GUARD",
+      callId: input.callId,
+      prosodyCadenceStable: false,
+      allowed: false,
+      reason: "WHISPER_DROPOUT_OR_ERRATIC_WPM_CADENCE_BLOCKED",
+      actionCode: "NORMALIZE_ITU_BS1770_LUFS_AND_STABILIZE_WPM_CADENCE",
+      summaryZh: `【P80 TTS 气声塌陷与语速失控归一化护栏 (WHISPER_DROPOUT_OR_ERRATIC_WPM_CADENCE_BLOCKED)】通话 ${input.callId} 检出下行语音气声塌陷（${input.outputEnergyRmsDb}dBFS < -34dBFS）或语速失控（${input.speakingRateWpm} WPM），已强制执行 ITU-R BS.1770 (-16 LUFS) 响度归一化并将语速锁定至 155 WPM 标准锚点！`,
+    };
+  }
+
+  return {
+    policyCode: "P80-TTS-PROSODY-EMOTIONAL-CONTAGION-AND-CADENCE-STABILITY-GUARD",
+    callId: input.callId,
+    prosodyCadenceStable: true,
+    allowed: true,
+    reason: "S2S_PROSODY_ENVELOPE_AND_LUFS_WITHIN_BOUNDS",
+    actionCode: "STREAM_STABILIZED_PROFESSIONAL_PROSODY",
+    summaryZh: `【P80 S2S/TTS 韵律包络与响度稳定核验通过】通话 ${input.callId} 基频 (${input.outputPitchF0Hz}Hz)、响度 (${input.outputEnergyRmsDb}dBFS) 与语速 (${input.speakingRateWpm} WPM) 均在专业服务包络内。`,
+  };
+}
+
+
 
 
 

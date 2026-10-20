@@ -2,7 +2,7 @@
 
 > 🌐 **Language / 语言切换**: **[中文版 (`docs/solution-architecture.md`)](./solution-architecture.md)** | **English (Current)** · **[Back to Home (`README.en.md`)](../README.en.md)** · **[中文首页 (`README.md`)](../README.md)**
 >
-> **Scope**: Written from the perspective of a Cloud Solution Architect (CSA) and Forward Deployed Engineer (FDE), this whitepaper defines the **4 Enterprise Voice Agent Architectural Paradigms**, **Constellation Multi-Model Routing**, **Full-Duplex `turnEpoch` Speculative Cancellation**, **PSTN/SIP vs. WebRTC Opus Resilience**, and **87 Deterministic Enterprise Guardrails (Sections 4.10–4.50, `T07` through `P78`)** implemented in `packages/business-core/enterprise-guardrails.ts`.
+> **Scope**: Written from the perspective of a Cloud Solution Architect (CSA) and Forward Deployed Engineer (FDE), this whitepaper defines the **4 Enterprise Voice Agent Architectural Paradigms**, **Constellation Multi-Model Routing**, **Full-Duplex `turnEpoch` Speculative Cancellation**, **PSTN/SIP vs. WebRTC Opus Resilience**, and **89 Deterministic Enterprise Guardrails (Sections 4.10–4.51, `T07` through `P80`)** implemented in `packages/business-core/enterprise-guardrails.ts`.
 
 ---
 
@@ -30,7 +30,7 @@ Production voice agents must decouple the **Ultra-Low-Latency Media Plane (<600m
 
 ---
 
-## 3. Summary of Sections 4.10–4.50 (87 Deterministic Enterprise Guardrails)
+## 3. Summary of Sections 4.10–4.51 (89 Deterministic Enterprise Guardrails)
 
 | Section | Guardrail Policy Codes | Engineering Function (`packages/business-core/enterprise-guardrails.ts`) | Core Regulatory & Production Guarantee |
 | :--- | :--- | :--- | :--- |
@@ -47,3 +47,4 @@ Production voice agents must decouple the **Ultra-Low-Latency Media Plane (<600m
 | **4.48** | `P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD`, `P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD` | `evaluateTelehealthControlledSubstanceEpcsGuard`, `evaluateWebrtcMdnsLocalIpAndSdpSanitizerGuard` | **Stage 40**: Enforces Ryan Haight Act & DEA 21 CFR Part 1311 EPCS rules by blocking autonomous AI or early refills of Schedule II controlled substances and requiring interstate PDMP query + clinician FIPS 140-2 2FA signature (`P73`); enforces RFC 8828 `.local` mDNS candidate obfuscation and signaling-log SDP IP redaction to prevent corporate LAN VLAN & EUI-64 MAC reconnaissance (`P74`). |
 | **4.49** | `P75-AVIATION-ATFM-NOTAM-RUNWAY-READBACK-HEARBACK-GUARD`, `P76-VOICE-BIOMETRIC-BIPA-WRITTEN-CONSENT-AND-RETENTION-GUARD` | `evaluateAviationNotamRunwayReadbackHearbackGuard`, `evaluateBipaBiometricWrittenConsentAndRetentionGuard` | **Stage 41**: Enforces ICAO Doc 9432 / FAA JO 7110.65 verbatim readback-hearback verification for runway/hold-short clearances and `<=15min` signed digital NOTAM/METAR freshness (`P75`); enforces Illinois BIPA (`740 ILCS 14/15`) / Texas CUBI prior written release before voiceprint extraction, zero biometric profiteering, and mandatory 3-year (`1,095-day`) retention purge (`P76`). |
 | **4.50** | `P77-UTILITY-WINTER-MORATORIUM-LIFE-SUPPORT-SHUTOFF-GUARD`, `P78-RTP-JITTER-BUFFER-UNDERRUN-CLOCK-DRIFT-RESYNC-GUARD` | `evaluateUtilityWinterMoratoriumAndLifeSupportShutoffGuard`, `evaluateRtpJitterBufferUnderrunAndClockDriftGuard` | **Stage 42**: Enforces PUC / Ofgem utility shutoff protection by blocking remote smart-meter disconnection for medical life-support households or during extreme weather moratoriums and requiring LIHEAP/payment-plan disclosures (`P77`); enforces ASRC fractional resampling on `>150ppm` RTP clock drift / `>3.5%` jitter buffer underrun and injects RFC 3389 comfort noise during `>=1200ms` tool silence gaps (`P78`). |
+| **4.51** | `P79-MARITIME-SOLAS-MAYDAY-VHF-CH16-GMDSS-PREEMPTION-GUARD`, `P80-TTS-PROSODY-EMOTIONAL-CONTAGION-AND-CADENCE-STABILITY-GUARD` | `evaluateMaritimeSolasMaydayGmdssPreemptionGuard`, `evaluateTtsProsodyCadenceAndEmotionalContagionGuard` | **Stage 43**: Enforces SOLAS Chapter IV GMDSS / VHF Ch 16 `0ms` MAYDAY/PAN-PAN/DSC distress preemption to MRCC Coast Guard and IMO Resolution A.918(22) SMCP verbatim readback + 9-digit MMSI verification (`P79`); prevents native S2S / expressive TTS emotional contagion (screaming/sarcastic-laughter mirroring `F0 > 310Hz`) and whisper dropouts (`<-34dBFS`) via ITU-R BS.1770 `-16 LUFS` & `145–165 WPM` cadence clamping (`P80`). |

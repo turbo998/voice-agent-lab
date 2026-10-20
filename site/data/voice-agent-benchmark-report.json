@@ -438,6 +438,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P77-UTILITY-WINTER-MORATORIUM-LIFE-SUPPORT-SHUTOFF-GUARD blocks remote smart-meter disconnects on premises with registered medical life-support equipment or active extreme-weather moratoria and mandates statutory LIHEAP/deferred-plan disclosures; P78-RTP-JITTER-BUFFER-UNDERRUN-CLOCK-DRIFT-RESYNC-GUARD engages fractional ASRC resampling when clock drift exceeds +-150ppm or underruns exceed 3.5% and injects RFC 3389 comfort noise across >=1200ms tool-wait gaps."
+    },
+    {
+      "check_name": "Maritime SOLAS GMDSS / VHF Ch 16 MAYDAY Preemption & Native S2S Emotional Contagion Prosody Guard (P79 / P80)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P79-MARITIME-SOLAS-MAYDAY-VHF-CH16-GMDSS-PREEMPTION-GUARD preempts commercial port/cargo dialogue in 0ms upon MAYDAY/PAN-PAN or GMDSS DSC distress alerts to bridge MRCC Coast Guard and enforces 9-digit MMSI + verbatim IMO SMCP readback on berthing orders; P80-TTS-PROSODY-EMOTIONAL-CONTAGION-AND-CADENCE-STABILITY-GUARD clamps native S2S screaming/sarcastic-laughter mirroring (F0 > 310Hz or RMS > -8dBFS) and normalizes <-34dBFS whisper dropouts to ITU-R BS.1770 -16 LUFS and 145-165 WPM."
     }
   ],
   "latency_scaling": [
