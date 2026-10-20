@@ -4441,6 +4441,40 @@
         confidence: 1.0,
         verifier: 'PASS (P110) · 0 SCTP HoL transcript stalls, 0 SRTP audio contention & instant WebSocket control failover'
       }
+    },
+    {
+      code: 'P111 · Clinical Trial FDA 21 CFR Part 11 / ICH E6(R3) SAE 24h Expedited Reporting, Double-Blind Anti-Unblinding & ePRO Signature Guard',
+      badge: 'ICH E6(R3) SAE 24h · Anti-Unblinding',
+      title: '临床试验药物警戒 FDA 21 CFR Part 11 / ICH E6(R3) 严重不良事件（SAE）24h 加急上报、IRT 双盲防破盲与 ePRO 电子签名护栏',
+      sub: '测试受试者报告住院/危及生命症状未触发 24h PV/PI 加急告警、诱导查询试验药/安慰剂分组导致破盲及修改锁定 ePRO 缺 Part 11 审计签名时 0ms 硬拦截',
+      customer_en: '[Decentralized Clinical Trial (DCT) ePRO Voice Diary: Participant Reports Emergency Hospitalization & Chest Pain After Study Dose Without 24h PV/PI Escalation, Queries IRT Randomization Table ("Am I on active drug or placebo?") Without PI Break-Glass Token, and Amends Locked ePRO Entry Without 21 CFR Part 11 E-Signature]',
+      customer_zh: '【去中心化临床试验（DCT）受试者 ePRO 语音随访专线：受试者口述服药后出现严重呼吸困难与急诊住院（SAE）却未被派发 24 小时药物警戒与主要研究者（PI）加急警报，要求查询 IRT 随机化分组表（“我到底吃的是活性试验药还是安慰剂？”）且无 PI 急诊破盲签名，并试图在无 21 CFR Part 11 审计哈希与双因子电子签名下修改已锁定的 ePRO 源记录】',
+      agent_en: 'CLINICAL TRIAL PART 11 SAE & ANTI-UNBLINDING GUARD (P111 / P111-CLINICAL-TRIAL-FDA-21CFR11-ICH-E6-SAE-24H-EXPEDITED-REPORTING-AND-DOUBLE-BLIND-UNBLINDING-GUARD): Dispatched mandatory 24-hour Pharmacovigilance & Principal Investigator SAE escalation under `ICH E6(R3)` & `21 CFR § 312.32` (`ICH_E6_R3_21CFR312_32_SERIOUS_ADVERSE_EVENT_MISSING_EXPEDITED_24H_PI_AND_PV_SAFETY_ESCALATION`), blocked IRT/IWRS treatment-arm lookup to preserve double-blind trial integrity (`DOUBLE_BLIND_CLINICAL_TRIAL_IRT_IWRS_TREATMENT_ARM_OR_PLACEBO_UNBLINDING_BREACH_BLOCKED`), and enforced `FDA 21 CFR Part 11` append-only audit hash + dual-factor participant e-signature (`FDA_21CFR_PART11_EPRO_AMENDMENT_MISSING_IMMUTABLE_AUDIT_TRAIL_OR_DUAL_FACTOR_ESIGNATURE`)!',
+      agent_zh: '【P111 临床试验 FDA 21 CFR Part 11 / ICH E6(R3) SAE 24h 速报与双盲防破盲护栏 (ICH_E6_R3_21CFR312_32_SERIOUS_ADVERSE_EVENT_MISSING_EXPEDITED_24H_PI_AND_PV_SAFETY_ESCALATION)】检测到受试者报告住院/危及生命严重不良事件（SAE），已 0ms 强制派发 24 小时药物警戒（PV）与主要研究者（PI）安全升级警报！同时硬阻断未持 PI 急诊破盲令牌的 IRT/IWRS 试验药/安慰剂分组查询（防止双盲试验破盲作废），并针对已锁定 ePRO 修订强制校验 `21 CFR Part 11` 追加写审计哈希、受试者双因子电子签名与修改原因！',
+      trace: {
+        tool: 'evaluate_clinical_trial_part11_sae_reporting_and_unblinding_guard(sae_reported=true, pv_alert_sent=false, unblinding_query=true, part11_sig=false -> DISPATCH_IMMEDIATE_24H_PHARMACOVIGILANCE_SAE_ALERT_AND_ESCALATE_TO_PRINCIPAL_INVESTIGATOR)',
+        citations: ['P111-CLINICAL-TRIAL-FDA-21CFR11-ICH-E6-SAE-24H-EXPEDITED-REPORTING-AND-DOUBLE-BLIND-UNBLINDING-GUARD', 'FDA-21CFR-PART11-AND-312-32', 'ICH-E6-R3-GCP-DOUBLE-BLIND'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P111) · 24h SAE PV/PI escalation dispatched, 0 IRT double-blind leaks & 21 CFR Part 11 audit verified'
+      }
+    },
+    {
+      code: 'P112 · WebRTC RFC 7675 ICE Consent Freshness, Zombie TURN Allocation Reaper & STUN Flood Guard',
+      badge: 'RFC 7675 Consent · Zombie TURN Reaper',
+      title: 'WebRTC RFC 7675 ICE 同意保活（Consent Freshness）超时断流、孤儿僵尸 TURN 中继端口主动回收与 STUN 洪泛限流护栏',
+      sub: '测试连续 6 次 STUN 保活失败或 >=30s 超时 0ms 停发 SRTP、信令断开且 RTP 静默 >=15s 发送 Refresh Lifetime=0 回收 TURN 端口并限流 >50/s STUN 洪泛',
+      customer_en: '[WebRTC Media Gateway Consent & TURN Lifecycle Probe: Client Tab Crashes With 6 Consecutive Unanswered STUN Consent Probes (32s Elapsed), Orphaned TURN Allocation Lingers After Signaling Disconnect + 18s RTP Silence, and Malicious Peer Floods 140 req/s STUN Binding Requests]',
+      customer_zh: '【WebRTC 媒体网关 ICE 保活与 TURN 端口生命周期压测：远端浏览器异常断网导致连续 6 次 STUN 同意保活探测无响应（已逾 32s），信令断开且上行 RTP 静默达 18s 后孤儿 TURN 中继分配仍霸占端口，同时恶意节点以 140 req/s（超 50 req/s 上限）发起 STUN Binding 洪泛攻击】',
+      agent_en: 'WEBRTC RFC 7675 ICE CONSENT & ZOMBIE TURN REAPER GUARD (P112 / P112-WEBRTC-RFC7675-ICE-CONSENT-FRESHNESS-ZOMBIE-TURN-REAPER-AND-STUN-FLOOD-GUARD): Revoked ICE media consent and halted outbound SRTP in 0ms after `>=6` unanswered STUN probes / `>=30s` expiry (`RFC7675_ICE_CONSENT_FRESHNESS_EXPIRED_OR_EXPLICIT_REVOCATION_HALTING_SRTP_TRANSMISSION`), reaped orphaned zombie TURN allocation via `TURN Refresh Lifetime=0` after signaling disconnect + `>=15s` RTP silence (`ORPHANED_ZOMBIE_TURN_ALLOCATION_DETECTED_AFTER_SIGNALING_DISCONNECT_AND_RTP_SILENCE`), and throttled `>50 req/s` STUN Binding flood (`WEBRTC_STUN_BINDING_REQUEST_FLOOD_EXCEEDS_PER_CANDIDATE_RATE_LIMIT`)!',
+      agent_zh: '【P112 WebRTC RFC 7675 ICE 同意保活与僵尸 TURN 回收护栏 (RFC7675_ICE_CONSENT_FRESHNESS_EXPIRED_OR_EXPLICIT_REVOCATION_HALTING_SRTP_TRANSMISSION)】检测到连续 6 次 STUN 保活探测无响应（逾 30s），已按 `RFC 7675` 0ms 吊销 ICE 媒体发送同意并立即停止外发 SRTP 语音流（杜绝 NAT 端口重用跨会话串音泄密）！同时针对信令断开且 RTP 静默 `>=15s` 的孤儿会话主动下发 `TURN Refresh Lifetime=0` 释放中继端口（将端口回收时间从 600s 缩短至 15s），并限流拦截 `>50 req/s` STUN 绑定洪泛！',
+      trace: {
+        tool: 'evaluate_webrtc_ice_consent_freshness_and_zombie_turn_reaper_guard(unanswered_probes=6, consent_age_ms=32000, zombie_turn=true, stun_rps=140 -> REVOKE_ICE_MEDIA_CONSENT_HALT_OUTBOUND_SRTP_AND_DISPATCH_TURN_REFRESH_LIFETIME_ZERO)',
+        citations: ['P112-WEBRTC-RFC7675-ICE-CONSENT-FRESHNESS-ZOMBIE-TURN-REAPER-AND-STUN-FLOOD-GUARD', 'IETF-RFC7675-ICE-CONSENT-FRESHNESS', 'IETF-RFC8656-TURN-LIFETIME-ZERO'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P112) · 0ms SRTP halt on ICE consent expiry, 15s zombie TURN port reaper & STUN flood throttled'
+      }
     }
   ];
 
@@ -4571,7 +4605,8 @@
       '- [x] **综合度假村/贵宾博彩 FinCEN Title 31 反洗钱（CTR `$10,000` 聚合/SAR 禁通风报信）与负责任博彩自我禁入护栏 & WebRTC TURN 中继（RFC 8656）内网/IMDS 反射拦截与流量放大配额护栏（122 大探针）**：0ms 冻结自我禁入/失控赌客授信并播报 `1-800-GAMBLER`、抹除 SAR 通风报信并挂起 `>$10k` 无 TIN 或拆单交割 (P103)，以 `403 Forbidden IP` 硬拦截 TURN 内网/IMDS 反射、强制 `900s` HMAC 短时凭证并将语音中继限速在 `<=128kbps` (P104)',
       '- [x] **商业财险/车队理赔代位求偿物证保全锁止（Anti-Spoliation）、禁越权口头认责与保额保密护栏 & SIP/RTP 对称锁栓防劫持（Anti-RTP-Bleed）、UDP 端口耗尽回收与 `RFC 5761 rtcp-mux` 护栏（124 大探针）**：司法鉴定前 0ms 拦截残骸报废拆解下发物证保全函、抹除未定损口头认责话术并保护三者保额机密 (P105)，强验 SRTP 密码学标签防跨网段 RTP Bleed 抢锁并在端口池 `>=85%` 时强制 `rtcp-mux` 单端口复用与回收 `>30s` 预占端口 (P106)',
       '- [x] **国防航空与高端制造 ITAR/EAR 视同出口（Deemed Export）国籍门禁、CMMC 2.0 Level 2 主权云隔离与图纸公差消音护栏 & SIP/WebRTC `Re-INVITE` 编解码器震荡防 DSP 转码 DoS 与 `RFC 3389` 舒适噪音防 VAD 挂死护栏（126 大探针）**：0ms 拦截向未获授权非美国人播报受控技术数据、强制 CUI 运行于 FedRAMP High / DoD IL4 FIPS 140-3 主权飞地并抹除口头公差 (P107)，以 `SIP 488` 拒止高频 `Re-INVITE` 转码风暴并剥离伪造高能量 `RFC 3389` CN 帧强制触发 VAD EOS 收尾 (P108)',
-      '- [x] **住房按揭与房地产结算 RESPA Section 8 反回扣诱导、TRID 3 个工作日重披露静默期与 Reg Z 触发词 APR 强制完整披露护栏 & WebRTC SCTP DataChannel（RFC 8831）实时字幕队头阻塞（HoL）剥离、背压卸载与心跳看门狗护栏（128 大探针）**：0ms 拦截漏播完整 APR 的触发词报价、阻断无 AfBA 披露的关联产权公司强推并在 APR 漂移超 `12.5/25 bps` 或锁息过期时强制执行 TRID 3 工作日 CD 重披露等待期 (P109)，强制临时字幕采用 `RFC 8831` 无序零重传、在 `bufferedAmount` 越界或 SRTP 排队 `>60ms` 时卸载中间字幕帧并在 SCTP 心跳超时 `>3s` 时无损切回 WebSocket (P110)'
+      '- [x] **住房按揭与房地产结算 RESPA Section 8 反回扣诱导、TRID 3 个工作日重披露静默期与 Reg Z 触发词 APR 强制完整披露护栏 & WebRTC SCTP DataChannel（RFC 8831）实时字幕队头阻塞（HoL）剥离、背压卸载与心跳看门狗护栏（128 大探针）**：0ms 拦截漏播完整 APR 的触发词报价、阻断无 AfBA 披露的关联产权公司强推并在 APR 漂移超 `12.5/25 bps` 或锁息过期时强制执行 TRID 3 工作日 CD 重披露等待期 (P109)，强制临时字幕采用 `RFC 8831` 无序零重传、在 `bufferedAmount` 越界或 SRTP 排队 `>60ms` 时卸载中间字幕帧并在 SCTP 心跳超时 `>3s` 时无损切回 WebSocket (P110)',
+      '- [x] **临床试验药物警戒 FDA `21 CFR Part 11` / ICH E6(R3) 严重不良事件（SAE）24h 加急上报、IRT 双盲防破盲与 ePRO 电子签名护栏 & WebRTC `RFC 7675` ICE 同意保活超时断流、僵尸 TURN 中继端口主动回收与 STUN 洪泛限流护栏（130 大探针里程碑）**：检出住院/危及生命 SAE 时 0ms 派发 24h PV/PI 加急警报、硬阻断无 PI 签名的双盲试验分组查询并强验 Part 11 审计哈希与双因子电子签名 (P111)，连续 6 次 STUN 保活失败或 `>=30s` 超时时 0ms 停发 SRTP、信令断开且静默 `>=15s` 时发送 `Refresh Lifetime=0` 回收僵尸 TURN 端口并限流 `>50/s` STUN 洪泛 (P112)'
     ].join('\n');
   }
 

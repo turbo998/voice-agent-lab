@@ -9540,6 +9540,195 @@ export function evaluateWebRtcSctpDataChannelBackpressureAndHoLWatchdogGuard(
   };
 }
 
+export interface ClinicalTrialPart11SaeReportingAndUnblindingGuardInput {
+  trialId: string;
+  subjectPseudonymId: string;
+  reportsDeathOrLifeThreateningEvent: boolean;
+  reportsInpatientHospitalizationOrDisability: boolean;
+  saeExpedited24hPiAndPvAlertDispatched: boolean;
+  requestsTreatmentArmOrPlaceboAllocation: boolean;
+  emergencyMedicalUnblindingPiSignedTokenVerified: boolean;
+  amendsLockedEproSourceRecord: boolean;
+  hasPart11AppendOnlyAuditHashAndUtcTimestamp: boolean;
+  hasDualFactorParticipantESignatureAndReasonForChange: boolean;
+}
+
+export interface ClinicalTrialPart11SaeReportingAndUnblindingGuardResult {
+  allowed: boolean;
+  saeEscalationCompliant: boolean;
+  doubleBlindIntegrityPreserved: boolean;
+  part11AuditTrailVerified: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: string;
+}
+
+export function evaluateClinicalTrialPart11SaeReportingAndUnblindingGuard(
+  input: ClinicalTrialPart11SaeReportingAndUnblindingGuardInput,
+): ClinicalTrialPart11SaeReportingAndUnblindingGuardResult {
+  const isSae =
+    input.reportsDeathOrLifeThreateningEvent ||
+    input.reportsInpatientHospitalizationOrDisability;
+
+  if (isSae && !input.saeExpedited24hPiAndPvAlertDispatched) {
+    return {
+      allowed: false,
+      saeEscalationCompliant: false,
+      doubleBlindIntegrityPreserved: true,
+      part11AuditTrailVerified: true,
+      reason:
+        "ICH_E6_R3_21CFR312_32_SERIOUS_ADVERSE_EVENT_MISSING_EXPEDITED_24H_PI_AND_PV_SAFETY_ESCALATION",
+      actionCode:
+        "DISPATCH_IMMEDIATE_24H_PHARMACOVIGILANCE_SAE_ALERT_AND_ESCALATE_TO_PRINCIPAL_INVESTIGATOR",
+      policyCode:
+        "P111-CLINICAL-TRIAL-FDA-21CFR11-ICH-E6-SAE-24H-EXPEDITED-REPORTING-AND-DOUBLE-BLIND-UNBLINDING-GUARD",
+    };
+  }
+
+  if (
+    input.requestsTreatmentArmOrPlaceboAllocation &&
+    !input.emergencyMedicalUnblindingPiSignedTokenVerified
+  ) {
+    return {
+      allowed: false,
+      saeEscalationCompliant: true,
+      doubleBlindIntegrityPreserved: false,
+      part11AuditTrailVerified: true,
+      reason:
+        "DOUBLE_BLIND_CLINICAL_TRIAL_IRT_IWRS_TREATMENT_ARM_OR_PLACEBO_UNBLINDING_BREACH_BLOCKED",
+      actionCode:
+        "HARD_BLOCK_IRT_RANDOMIZATION_LOOKUP_AND_REQUIRE_PI_SIGNED_EMERGENCY_UNBLINDING_TOKEN",
+      policyCode:
+        "P111-CLINICAL-TRIAL-FDA-21CFR11-ICH-E6-SAE-24H-EXPEDITED-REPORTING-AND-DOUBLE-BLIND-UNBLINDING-GUARD",
+    };
+  }
+
+  if (
+    input.amendsLockedEproSourceRecord &&
+    (!input.hasPart11AppendOnlyAuditHashAndUtcTimestamp ||
+      !input.hasDualFactorParticipantESignatureAndReasonForChange)
+  ) {
+    return {
+      allowed: false,
+      saeEscalationCompliant: true,
+      doubleBlindIntegrityPreserved: true,
+      part11AuditTrailVerified: false,
+      reason:
+        "FDA_21CFR_PART11_EPRO_AMENDMENT_MISSING_IMMUTABLE_AUDIT_TRAIL_OR_DUAL_FACTOR_ESIGNATURE",
+      actionCode:
+        "ENFORCE_21CFR11_APPEND_ONLY_AUDIT_HASH_DUAL_FACTOR_ESIGNATURE_AND_REASON_FOR_CHANGE",
+      policyCode:
+        "P111-CLINICAL-TRIAL-FDA-21CFR11-ICH-E6-SAE-24H-EXPEDITED-REPORTING-AND-DOUBLE-BLIND-UNBLINDING-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    saeEscalationCompliant: true,
+    doubleBlindIntegrityPreserved: true,
+    part11AuditTrailVerified: true,
+    reason:
+      "CLINICAL_TRIAL_ICH_E6_R3_SAE_SURVEILLANCE_DOUBLE_BLIND_AND_21CFR11_COMPLIANT",
+    actionCode:
+      "COMMIT_PART11_SIGNED_EPRO_DIARY_ENTRY",
+    policyCode:
+      "P111-CLINICAL-TRIAL-FDA-21CFR11-ICH-E6-SAE-24H-EXPEDITED-REPORTING-AND-DOUBLE-BLIND-UNBLINDING-GUARD",
+  };
+}
+
+export interface WebRtcIceConsentFreshnessAndZombieTurnReaperGuardInput {
+  sessionId: string;
+  consecutiveUnansweredStunConsentProbes: number;
+  millisSinceLastConsentResponse: number;
+  explicitIcmpUnreachableOrStunForbiddenReceived: boolean;
+  turnAllocationActive: boolean;
+  signalingConnected: boolean;
+  rtpInboundSilenceMs: number;
+  inboundStunBindingRequestsPerSec: number;
+  maxAllowedStunRequestsPerSec: number;
+}
+
+export interface WebRtcIceConsentFreshnessAndZombieTurnReaperGuardResult {
+  allowed: boolean;
+  iceConsentFresh: boolean;
+  turnAllocationHealthy: boolean;
+  stunRateWithinLimit: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: string;
+}
+
+export function evaluateWebRtcIceConsentFreshnessAndZombieTurnReaperGuard(
+  input: WebRtcIceConsentFreshnessAndZombieTurnReaperGuardInput,
+): WebRtcIceConsentFreshnessAndZombieTurnReaperGuardResult {
+  if (
+    input.explicitIcmpUnreachableOrStunForbiddenReceived ||
+    input.consecutiveUnansweredStunConsentProbes >= 6 ||
+    input.millisSinceLastConsentResponse >= 30000
+  ) {
+    return {
+      allowed: false,
+      iceConsentFresh: false,
+      turnAllocationHealthy: !input.turnAllocationActive,
+      stunRateWithinLimit: true,
+      reason:
+        "RFC7675_ICE_CONSENT_FRESHNESS_EXPIRED_OR_EXPLICIT_REVOCATION_HALTING_SRTP_TRANSMISSION",
+      actionCode:
+        "REVOKE_ICE_MEDIA_CONSENT_HALT_OUTBOUND_SRTP_AND_DISPATCH_TURN_REFRESH_LIFETIME_ZERO",
+      policyCode:
+        "P112-WEBRTC-RFC7675-ICE-CONSENT-FRESHNESS-ZOMBIE-TURN-REAPER-AND-STUN-FLOOD-GUARD",
+    };
+  }
+
+  if (
+    input.turnAllocationActive &&
+    !input.signalingConnected &&
+    input.rtpInboundSilenceMs >= 15000
+  ) {
+    return {
+      allowed: false,
+      iceConsentFresh: true,
+      turnAllocationHealthy: false,
+      stunRateWithinLimit: true,
+      reason:
+        "ORPHANED_ZOMBIE_TURN_ALLOCATION_DETECTED_AFTER_SIGNALING_DISCONNECT_AND_RTP_SILENCE",
+      actionCode:
+        "REAP_ZOMBIE_TURN_ALLOCATION_WITH_REFRESH_LIFETIME_ZERO_AND_RELEASE_RELAY_PORT",
+      policyCode:
+        "P112-WEBRTC-RFC7675-ICE-CONSENT-FRESHNESS-ZOMBIE-TURN-REAPER-AND-STUN-FLOOD-GUARD",
+    };
+  }
+
+  if (input.inboundStunBindingRequestsPerSec > input.maxAllowedStunRequestsPerSec) {
+    return {
+      allowed: false,
+      iceConsentFresh: true,
+      turnAllocationHealthy: true,
+      stunRateWithinLimit: false,
+      reason:
+        "WEBRTC_STUN_BINDING_REQUEST_FLOOD_EXCEEDS_PER_CANDIDATE_RATE_LIMIT",
+      actionCode:
+        "THROTTLE_INBOUND_STUN_TRANSACTIONS_AND_DROP_EXCESS_BINDING_PROBES",
+      policyCode:
+        "P112-WEBRTC-RFC7675-ICE-CONSENT-FRESHNESS-ZOMBIE-TURN-REAPER-AND-STUN-FLOOD-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    iceConsentFresh: true,
+    turnAllocationHealthy: true,
+    stunRateWithinLimit: true,
+    reason:
+      "RFC7675_ICE_CONSENT_FRESH_TURN_LIFECYCLE_AND_STUN_RATE_HEALTHY",
+    actionCode:
+      "CONTINUE_CONSENTED_SRTP_MEDIA_STREAMING",
+    policyCode:
+      "P112-WEBRTC-RFC7675-ICE-CONSENT-FRESHNESS-ZOMBIE-TURN-REAPER-AND-STUN-FLOOD-GUARD",
+  };
+}
+
+
 
 
 

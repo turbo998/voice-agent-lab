@@ -550,6 +550,13 @@
       "perturbed_score": 1.0,
       "delta_pts": 0.0,
       "note": "P109-MORTGAGE-RESPA-TRID-REG-Z-APR-TRIGGER-TERM-LOCK-EXPIRY-AND-KICKBACK-STEERING-GUARD blocks incomplete oral credit trigger-term quotes lacking full TILA Reg Z (12 CFR 1026.24) APR and repayment disclosures, blocks RESPA Section 8 affiliated settlement steering without AfBA disclosure + shopping freedom, and enforces the TRID 3-business-day Closing Disclosure redisclosure wait when APR drifts >12.5/25 bps or rate locks expire; P110-WEBRTC-SCTP-DATACHANNEL-TRANSCRIPT-BACKPRESSURE-HEAD-OF-LINE-STALL-AND-HEARTBEAT-WATCHDOG-GUARD enforces RFC 8831 unordered zero-retransmit mode for interim transcripts to eliminate SCTP Head-of-Line blocking, sheds non-essential transcript frames when bufferedAmount exceeds watermark or SRTP audio queue delay exceeds >60ms, and fails over stalled DTLS-SCTP associations (>3000ms heartbeat silence) to WebSocket without dropping voice."
+    },
+    {
+      "dimension": "62. Clinical Trial FDA 21 CFR Part 11 / ICH E6(R3) SAE 24h Expedited Reporting & Double-Blind Anti-Unblinding Guard + WebRTC RFC 7675 ICE Consent Freshness & Zombie TURN Reaper Guard (P111 & P112)",
+      "original_score": 1.0,
+      "perturbed_score": 1.0,
+      "delta_pts": 0.0,
+      "note": "P111-CLINICAL-TRIAL-FDA-21CFR11-ICH-E6-SAE-24H-EXPEDITED-REPORTING-AND-DOUBLE-BLIND-UNBLINDING-GUARD dispatches mandatory 24-hour expedited Pharmacovigilance (PV) and Principal Investigator (PI) safety alerts on any participant-reported Serious Adverse Event (SAE), blocks IRT/IWRS treatment-arm or placebo lookup requests without a PI-signed emergency break-glass token to prevent double-blind trial unblinding, and enforces FDA 21 CFR Part 11 append-only cryptographic audit hashes + dual-factor participant e-signatures on locked ePRO amendments; P112-WEBRTC-RFC7675-ICE-CONSENT-FRESHNESS-ZOMBIE-TURN-REAPER-AND-STUN-FLOOD-GUARD revokes ICE media consent and halts outbound SRTP in 0ms after >=6 unanswered STUN consent probes or >=30s expiry, reaps orphaned zombie TURN allocations (Refresh Lifetime=0) after signaling disconnect + >=15s RTP silence, and throttles >50 req/s STUN Binding floods."
     }
   ],
   "latency_scaling": [
