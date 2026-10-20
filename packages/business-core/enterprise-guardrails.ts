@@ -7030,6 +7030,165 @@ export function evaluateTtsProsodyCadenceAndEmotionalContagionGuard(
   };
 }
 
+export interface StilleInsuranceFnolTimelineAndCoachingFraudGuardInput {
+  callId: string;
+  incidentBeforePolicyEffectiveOrWithinInceptionWait: boolean;
+  telematicsOrEdrTimestampMismatchMinutes: number;
+  thirdPartyWhisperCoachingDetected: boolean;
+  solelyVoiceStressOrJitterUsedForDenial: boolean;
+}
+
+export interface StilleInsuranceFnolTimelineAndCoachingFraudGuardDecision {
+  policyCode: "P81-INSURANCE-FNOL-TIMELINE-CONSISTENCY-AND-COACHING-GUARD";
+  callId: string;
+  fnolFastTrackPayoutEligible: boolean;
+  allowed: boolean;
+  reason:
+    | "INCEPTION_BACKDATING_EDR_MISMATCH_OR_COACHING_DETECTED"
+    | "UNFAIR_CLAIMS_VOICE_STRESS_PSEUDOSCIENCE_DENIAL_BLOCKED"
+    | "FNOL_TIMELINE_AND_TELEMATICS_VERIFIED_FOR_STP";
+  actionCode:
+    | "HOLD_AUTO_PAYOUT_AND_ROUTE_TO_SIU_INVESTIGATION"
+    | "STRIP_VOICE_STRESS_SCORE_AND_EVALUATE_OBJECTIVE_FACTS_ONLY"
+    | "APPROVE_STRAIGHT_THROUGH_FNOL_SETTLEMENT";
+  summaryZh: string;
+}
+
+/**
+ * P81 — Insurance FNOL Claims Timeline Consistency, EDR Telemetry Cross-Check & Anti-Coaching / Anti-Voice-Stress-Pseudoscience Guard
+ *
+ * 1. In auto/property First Notice of Loss (FNOL) voice claims, blocks instant Straight-Through
+ *    Processing (STP) payouts and silently routes to the Special Investigations Unit (SIU) when
+ *    an incident is backdated prior to policy effective/reinstatement window, vehicle OBD-II/EDR
+ *    telematics crash timestamps diverge by >15 minutes from the spoken claim timeline, or
+ *    third-party background whisper coaching is acoustically detected.
+ * 2. Under the NAIC Unfair Claims Settlement Practices Act and EU AI Act high-risk insurance rules,
+ *    strictly blocks denying or penalizing a claim based solely on pseudoscientific Voice Stress
+ *    Analysis (VSA) or vocal tremor/jitter scores without objective factual contradiction.
+ */
+export function evaluateInsuranceFnolTimelineAndCoachingFraudGuard(
+  input: StilleInsuranceFnolTimelineAndCoachingFraudGuardInput
+): StilleInsuranceFnolTimelineAndCoachingFraudGuardDecision {
+  if (
+    input.incidentBeforePolicyEffectiveOrWithinInceptionWait ||
+    input.telematicsOrEdrTimestampMismatchMinutes > 15 ||
+    input.thirdPartyWhisperCoachingDetected
+  ) {
+    return {
+      policyCode: "P81-INSURANCE-FNOL-TIMELINE-CONSISTENCY-AND-COACHING-GUARD",
+      callId: input.callId,
+      fnolFastTrackPayoutEligible: false,
+      allowed: false,
+      reason: "INCEPTION_BACKDATING_EDR_MISMATCH_OR_COACHING_DETECTED",
+      actionCode: "HOLD_AUTO_PAYOUT_AND_ROUTE_TO_SIU_INVESTIGATION",
+      summaryZh: `【P81 车险/财险 FNOL 出险时间轴对账与反旁白教唆护栏 (INCEPTION_BACKDATING_EDR_MISMATCH_OR_COACHING_DETECTED)】报案通话 ${input.callId} 检出倒签保单生效期 (${input.incidentBeforePolicyEffectiveOrWithinInceptionWait})、车载 EDR 碰撞遥测时间偏差 (${input.telematicsOrEdrTimestampMismatchMinutes}min > 15min) 或第三人旁白教唆 (${input.thirdPartyWhisperCoachingDetected})！已 0ms 冻结秒级自动闪赔并静默移交 SIU 反欺诈调查组。`,
+    };
+  }
+
+  if (input.solelyVoiceStressOrJitterUsedForDenial) {
+    return {
+      policyCode: "P81-INSURANCE-FNOL-TIMELINE-CONSISTENCY-AND-COACHING-GUARD",
+      callId: input.callId,
+      fnolFastTrackPayoutEligible: false,
+      allowed: false,
+      reason: "UNFAIR_CLAIMS_VOICE_STRESS_PSEUDOSCIENCE_DENIAL_BLOCKED",
+      actionCode: "STRIP_VOICE_STRESS_SCORE_AND_EVALUATE_OBJECTIVE_FACTS_ONLY",
+      summaryZh: `【P81 保险公平理赔禁凭“声学测谎/声音颤抖”拒赔护栏 (UNFAIR_CLAIMS_VOICE_STRESS_PSEUDOSCIENCE_DENIAL_BLOCKED)】通话 ${input.callId} 试图仅凭主叫车祸惊魂态声音微颤或声学压力分 (VSA) 拒赔！已按 NAIC 公平理赔法与欧盟 AI 法案剥离伪科学声学测谎分，强制仅依据客观时间轴与遥测证据核赔。`,
+    };
+  }
+
+  return {
+    policyCode: "P81-INSURANCE-FNOL-TIMELINE-CONSISTENCY-AND-COACHING-GUARD",
+    callId: input.callId,
+    fnolFastTrackPayoutEligible: true,
+    allowed: true,
+    reason: "FNOL_TIMELINE_AND_TELEMATICS_VERIFIED_FOR_STP",
+    actionCode: "APPROVE_STRAIGHT_THROUGH_FNOL_SETTLEMENT",
+    summaryZh: `【P81 FNOL 理赔时间轴与车载 EDR 遥测对账通过】报案通话 ${input.callId} 出险时间、EDR 遥测偏差 (${input.telematicsOrEdrTimestampMismatchMinutes}min) 与独立陈述核验一致，准予进入自动快赔通道。`,
+  };
+}
+
+export interface StillePacketLossBurstAsrHallucinationGuardInput {
+  callId: string;
+  burstLossDurationMs: number;
+  consecutiveLostRtpPackets: number;
+  highRiskToolOrNegationSpanOverlapsLossWindow: boolean;
+  rtcpNackRFC4585Enabled: boolean;
+  opusInbandFecRedundancyActive: boolean;
+}
+
+export interface StillePacketLossBurstAsrHallucinationGuardDecision {
+  policyCode: "P82-PACKET-LOSS-BURST-ASR-HALLUCINATION-AND-NACK-FEC-GUARD";
+  callId: string;
+  transcriptIntegrityVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "BURST_LOSS_OVERLAPS_CRITICAL_NEGATION_OR_ENTITY_SPAN_BLOCKED"
+    | "MISSING_RTCP_NACK_OR_OPUS_RED_FEC_ON_BURST_LOSS_LINK"
+    | "RTP_STREAM_CONTINUOUS_AND_PHONEME_SPAN_INTACT";
+  actionCode:
+    | "ABORT_SPECULATIVE_TOOL_CALL_AND_REQUEST_TARGETED_REPEAT"
+    | "ENABLE_RFC4585_NACK_AND_OPUS_INBAND_FEC_REDUNDANCY"
+    | "COMMIT_VERIFIED_UTTERANCE_TO_TURN_STATE";
+  summaryZh: string;
+}
+
+/**
+ * P82 — Gilbert-Elliott Burst Packet-Loss ASR Inpainting Hallucination & RFC 4585 NACK / Opus RED-FEC Guard
+ *
+ * 1. When a mobile caller experiences a Gilbert-Elliott burst packet loss event (>=240ms or >=12
+ *    consecutive 20ms RTP packets) that overlaps a critical negation ("not", "don't", "cancel")
+ *    or financial numeric/entity span, neural PLC or native S2S decoders can hallucinate/inpaint
+ *    missing phonemes and invert caller intent. Deterministically aborts speculative tool execution
+ *    and asks a targeted 3-second repeat of the dropped span.
+ * 2. When moderate burst loss (>=120ms or >=6 consecutive packets) occurs without RFC 4585 RTCP
+ *    Generic NACK retransmission and Opus in-band FEC / RFC 2198 RED redundancy, dynamically
+ *    enforces NACK + FEC before accepting transcripts.
+ */
+export function evaluatePacketLossBurstAsrHallucinationGuard(
+  input: StillePacketLossBurstAsrHallucinationGuardInput
+): StillePacketLossBurstAsrHallucinationGuardDecision {
+  if (
+    (input.burstLossDurationMs >= 240 || input.consecutiveLostRtpPackets >= 12) &&
+    input.highRiskToolOrNegationSpanOverlapsLossWindow
+  ) {
+    return {
+      policyCode: "P82-PACKET-LOSS-BURST-ASR-HALLUCINATION-AND-NACK-FEC-GUARD",
+      callId: input.callId,
+      transcriptIntegrityVerified: false,
+      allowed: false,
+      reason: "BURST_LOSS_OVERLAPS_CRITICAL_NEGATION_OR_ENTITY_SPAN_BLOCKED",
+      actionCode: "ABORT_SPECULATIVE_TOOL_CALL_AND_REQUEST_TARGETED_REPEAT",
+      summaryZh: `【P82 突发连续丢包防 PLC 脑补幻觉与关键否定词保护护栏 (BURST_LOSS_OVERLAPS_CRITICAL_NEGATION_OR_ENTITY_SPAN_BLOCKED)】通话 ${input.callId} 在关键否定词或金额实体槽位发生连续突发丢包（${input.burstLossDurationMs}ms / ${input.consecutiveLostRtpPackets} 个 RTP 包）！已 0ms 拦截基于神经网络脑补 (Inpainting) 的高危工具调用，并追问客户精准复述丢字片段。`,
+    };
+  }
+
+  if (
+    (input.burstLossDurationMs >= 120 || input.consecutiveLostRtpPackets >= 6) &&
+    (!input.rtcpNackRFC4585Enabled || !input.opusInbandFecRedundancyActive)
+  ) {
+    return {
+      policyCode: "P82-PACKET-LOSS-BURST-ASR-HALLUCINATION-AND-NACK-FEC-GUARD",
+      callId: input.callId,
+      transcriptIntegrityVerified: false,
+      allowed: false,
+      reason: "MISSING_RTCP_NACK_OR_OPUS_RED_FEC_ON_BURST_LOSS_LINK",
+      actionCode: "ENABLE_RFC4585_NACK_AND_OPUS_INBAND_FEC_REDUNDANCY",
+      summaryZh: `【P82 弱网突发丢包强制开启 RFC 4585 RTCP NACK 与 Opus FEC 冗余护栏 (MISSING_RTCP_NACK_OR_OPUS_RED_FEC_ON_BURST_LOSS_LINK)】通话 ${input.callId} 检出突发丢包 (${input.burstLossDurationMs}ms) 但未开启 RTCP NACK 重传或 Opus 带内 FEC 冗余，已实时激活双保险抗损编码！`,
+    };
+  }
+
+  return {
+    policyCode: "P82-PACKET-LOSS-BURST-ASR-HALLUCINATION-AND-NACK-FEC-GUARD",
+    callId: input.callId,
+    transcriptIntegrityVerified: true,
+    allowed: true,
+    reason: "RTP_STREAM_CONTINUOUS_AND_PHONEME_SPAN_INTACT",
+    actionCode: "COMMIT_VERIFIED_UTTERANCE_TO_TURN_STATE",
+    summaryZh: `【P82 RTP 连续性与关键音素完整性核验通过】通话 ${input.callId} 无关键槽位突发丢包覆盖（最大丢包窗口 ${input.burstLossDurationMs}ms），转写语义完整可信。`,
+  };
+}
+
 
 
 

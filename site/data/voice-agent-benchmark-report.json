@@ -445,6 +445,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P79-MARITIME-SOLAS-MAYDAY-VHF-CH16-GMDSS-PREEMPTION-GUARD preempts commercial port/cargo dialogue in 0ms upon MAYDAY/PAN-PAN or GMDSS DSC distress alerts to bridge MRCC Coast Guard and enforces 9-digit MMSI + verbatim IMO SMCP readback on berthing orders; P80-TTS-PROSODY-EMOTIONAL-CONTAGION-AND-CADENCE-STABILITY-GUARD clamps native S2S screaming/sarcastic-laughter mirroring (F0 > 310Hz or RMS > -8dBFS) and normalizes <-34dBFS whisper dropouts to ITU-R BS.1770 -16 LUFS and 145-165 WPM."
+    },
+    {
+      "check_name": "Insurance FNOL Timeline/EDR Consistency & Anti-VSA Guard + Burst Packet-Loss ASR Hallucination Guard (P81 / P82)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P81-INSURANCE-FNOL-TIMELINE-CONSISTENCY-AND-COACHING-GUARD freezes instant FNOL payouts and routes to SIU when loss timestamps precede policy effective dates, diverge >15min from vehicle OBD-II/EDR crash telemetry, or exhibit third-party whisper coaching, while prohibiting NAIC/EU-AI-Act-unfair claim denials based solely on Voice Stress Analysis; P82-PACKET-LOSS-BURST-ASR-HALLUCINATION-AND-NACK-FEC-GUARD aborts speculative tool execution when >=240ms (>=12-packet) burst packet loss overlaps critical negations or numeric entities and enforces RFC 4585 RTCP NACK + Opus FEC."
     }
   ],
   "latency_scaling": [

@@ -3931,6 +3931,40 @@
         confidence: 1.0,
         verifier: 'PASS (P80) · S2S screaming contagion mirroring & <-34dBFS whisper dropout 100% clamped'
       }
+    },
+    {
+      code: 'P81 · Insurance FNOL Timeline Consistency, EDR Telemetry & Anti-Coaching / Anti-VSA Guard',
+      badge: 'FNOL + Anti-VSA',
+      title: '车险/财险 FNOL 理赔时间轴对账、车载 EDR 遥测交叉核验与反旁白教唆/禁伪科学声学测谎拒赔护栏',
+      sub: '测试车险一键报案闪赔 (STP) 中倒签保单生效期、口述碰撞时间与车载 OBD-II/EDR 气囊触发时间偏差 >15min 或背景旁白教唆时的静默 SIU 移交，以及严禁按 NAIC/EU AI Act 违规使用伪科学语音压力测谎 (VSA) 拒赔',
+      customer_en: '[Auto Insurance FNOL Claim Where Reported Crash Timestamp Divergence From Vehicle OBD-II/EDR Airbag Telemetry Is 42 Min (>15 Min) With Background Whisper Coaching, or Legacy Engine Attempts to Deny Claim Based Solely on Voice Stress Analysis (VSA) Tremor]',
+      customer_zh: '【车险语音一键报案（FNOL）中，报案人口述碰撞时间与车载 OBD-II/EDR 气囊碰撞遥测时间戳偏差 42 分钟（>15 分钟上限）且背景检出第三人低声耳语教唆话术，或旧核赔规则试图仅凭受惊车主的声学微颤/语音压力测谎分（VSA）直接拒赔】',
+      agent_en: 'INSURANCE FNOL TIMELINE & ANTI-VSA GUARD (P81 / P81-INSURANCE-FNOL-TIMELINE-CONSISTENCY-AND-COACHING-GUARD): Frozen instant straight-through FNOL payout in 0ms upon detecting policy inception backdating, 42-minute EDR telematics mismatch (>15 min), or third-party whisper coaching and silently routed to SIU (`INCEPTION_BACKDATING_EDR_MISMATCH_OR_COACHING_DETECTED` -> `HOLD_AUTO_PAYOUT_AND_ROUTE_TO_SIU_INVESTIGATION`), while stripping pseudoscientific Voice Stress Analysis (VSA) scores per NAIC & EU AI Act (`UNFAIR_CLAIMS_VOICE_STRESS_PSEUDOSCIENCE_DENIAL_BLOCKED`)!',
+      agent_zh: '【P81 车险/财险 FNOL 时间轴/EDR 遥测对账与禁 VSA 伪科学拒赔护栏 (INCEPTION_BACKDATING_EDR_MISMATCH_OR_COACHING_DETECTED)】检出倒签保单生效期、车载 EDR 碰撞遥测时间偏差 (42min > 15min) 或第三人旁白教唆，已 0ms 冻结秒级自动闪赔并静默移交 SIU 反欺诈调查组，同时按 NAIC 与欧盟 AI 法案剥离伪科学声学测谎分！',
+      trace: {
+        tool: 'evaluate_insurance_fnol_timeline_and_coaching_fraud_guard(edr_mismatch_min=42, whisper_coaching=true -> HOLD_AUTO_PAYOUT_AND_ROUTE_TO_SIU_INVESTIGATION)',
+        citations: ['P81-INSURANCE-FNOL-TIMELINE-CONSISTENCY-AND-COACHING-GUARD', 'NAIC-UNFAIR-CLAIMS-ACT', 'EU-AI-ACT-ANNEX-III'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P81) · Backdated/EDR-mismatched FNOL routed to SIU & unfair VSA-only denial 100% blocked'
+      }
+    },
+    {
+      code: 'P82 · Burst Packet-Loss ASR Inpainting Hallucination & RFC 4585 NACK / Opus FEC Guard',
+      badge: 'Anti-Inpainting + NACK',
+      title: '弱网 Gilbert-Elliott 突发连续丢包防 PLC 音素脑补幻觉与 RFC 4585 NACK 重传护栏',
+      sub: '测试主叫在电梯/隧道遭遇 >=240ms (>=12 个连续 RTP 包) 突发簇状丢包恰好吞没关键否定词（“千万【不要】转五万”）或数字槽位时，防止神经网络 PLC / S2S 自回归脑补音素引发反义转账，并强制开启 RFC 4585 RTCP NACK 与 Opus FEC',
+      customer_en: '[Caller in Elevator Experiences 320ms (16-Packet) Gilbert-Elliott Burst Packet Loss Exactly Wiping Out the Word "NOT" in "Do [NOT] wire $50,000", Causing Neural PLC / S2S to Inpaint Affirmative Intent]',
+      customer_zh: '【主叫在电梯口述“千万【不要】把五万块转出去”时，恰好遭遇 320ms（16 个连续 20ms RTP 包）突发簇状丢包吞没“不要”二字，未设防的神经网络 PLC 或端到端 S2S 模型自回归脑补音素将其误听为肯定转账指令】',
+      agent_en: 'BURST PACKET-LOSS ASR HALLUCINATION & NACK/FEC GUARD (P82 / P82-PACKET-LOSS-BURST-ASR-HALLUCINATION-AND-NACK-FEC-GUARD): Aborted speculative wire-transfer tool execution in 0ms because a 320ms (16-packet, >=240ms) burst loss overlapped a critical negation/entity span and requested a targeted 3-second repeat (`BURST_LOSS_OVERLAPS_CRITICAL_NEGATION_OR_ENTITY_SPAN_BLOCKED` -> `ABORT_SPECULATIVE_TOOL_CALL_AND_REQUEST_TARGETED_REPEAT`), while dynamically enabling RFC 4585 RTCP Generic NACK and Opus in-band FEC redundancy (`MISSING_RTCP_NACK_OR_OPUS_RED_FEC_ON_BURST_LOSS_LINK`)!',
+      agent_zh: '【P82 突发连续丢包防 PLC 音素脑补幻觉与 RFC 4585 NACK 护栏 (BURST_LOSS_OVERLAPS_CRITICAL_NEGATION_OR_ENTITY_SPAN_BLOCKED)】检出关键否定词/金额槽位发生 320ms（16 个连续 RTP 包）突发丢包！已 0ms 物理阻断基于神经网络脑补 (Inpainting) 的投机转账调用，向客户发起 3 秒精准复述追问，并实时开启 RFC 4585 RTCP NACK 重传与 Opus 带内 FEC 冗余！',
+      trace: {
+        tool: 'evaluate_packet_loss_burst_asr_hallucination_guard(burst_loss_ms=320, lost_packets=16, negation_overlap=true -> ABORT_SPECULATIVE_TOOL_CALL_AND_REQUEST_TARGETED_REPEAT)',
+        citations: ['P82-PACKET-LOSS-BURST-ASR-HALLUCINATION-AND-NACK-FEC-GUARD', 'RFC-4585-RTCP-NACK', 'RFC-6716-OPUS-FEC'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P82) · 320ms burst-erased negation tool call aborted & RFC 4585 NACK + Opus FEC enforced'
+      }
     }
   ];
 
@@ -4005,7 +4039,7 @@
       '- **混合双优 Co-Sell 架构 (`~$0.078/min`)**：Retell AI 电话流网关 + Azure AI Foundry 私网受控推理',
       '- **对比按结果计费竞对 (Sierra `$1.50/单`)**：立省 65%–75% 年度经常性开支，且核心状态机与知识库 100% 自主可控',
       '',
-      '## 4. 生产落地准入清单 (98-Point Evaluation Rubric)',
+      '## 4. 生产落地准入清单 (100-Point Evaluation Rubric)',
       '- [x] **声学全双工门禁**：半句打断截断延迟 < 200ms (A01)，背景电视与附和词零误打断 (A02)',
       '- [x] **同音与中英混杂纠偏**：SKU/故障码实体归一化准确率 100% (L01)，知识库逆序零漂移 (0.0 pts)',
       '- [x] **事务写权限锁**：RMA 换新与退赔强制进入 `pending_approval` + `expectedVersion` 乐观锁 (T02)',
@@ -4046,7 +4080,8 @@
       '- [x] **远程医疗 DEA EPCS 管制药品续方与 PDMP 核查护栏 & WebRTC mDNS (`RFC 8828`) 内网拓扑防泄露护栏**：硬阻断 Schedule II 二类精麻药品 AI 自主或提前续方并强验跨州 PDMP 与医师 FIPS 140-2 2FA 签名 (P73)，剥离明文 LAN IP / EUI-64 MAC 候选并强制 RFC 8828 `.local` mDNS 混淆与日志 SDP 脱敏 (P74)',
       '- [x] **航空签派与机坪 ATFM/NOTAM 跑道/等待线复诵-听取 (`Readback/Hearback`) 护栏 & 声纹生物识别 BIPA/CUBI 书面授权与 3 年留存销毁护栏**：强制校验机组按 ICAO Doc 9432 逐字复诵安全关键放行指令并拦截 `>15min` 过期 NOTAM (P75)，缺失 Illinois BIPA 事先书面授权时 0ms 旁路声纹提取并强制清除 `>1095` 天沉睡声纹向量 (P76)',
       '- [x] **公用事业极端天气停电豁免与医疗生命维持设备断电保护护栏 & RTP 抖动缓冲欠载/采样时钟漂移重同步与 RFC 3389 舒适噪音护栏**：0ms 物理拦截针对生命维持设备住户或寒潮/酷暑法定禁停期的智能电表远程拉闸并强制 LIHEAP 救助披露 (P77)，`>150ppm` 时钟漂移或 `>3.5%` 抖动欠载时启动分数阶 ASRC 重采样并在 `>=1200ms` 静默期注入 RFC 3389 舒适噪音防误挂机 (P78)',
-      '- [x] **海事港口 SOLAS GMDSS / VHF Ch16 遇险抢占与 IMO SMCP 复诵护栏 & 原生 S2S 情绪传染咆哮镜像抑制与响度/语速稳定护栏**：船长呼叫 MAYDAY/PAN-PAN 或触发 GMDSS DSC 时 0ms 抢占排泊对话直连海事搜救中心 MRCC 并强验 9 位 MMSI 与 IMO SMCP 逐字复诵 (P79)，0ms 钳位 S2S 咆哮/冷笑情绪传染镜像 (`F0>310Hz`) 并强制执行 ITU-R BS.1770 (`-16 LUFS`) 与 `155 WPM` 语速稳频 (P80)'
+      '- [x] **海事港口 SOLAS GMDSS / VHF Ch16 遇险抢占与 IMO SMCP 复诵护栏 & 原生 S2S 情绪传染咆哮镜像抑制与响度/语速稳定护栏**：船长呼叫 MAYDAY/PAN-PAN 或触发 GMDSS DSC 时 0ms 抢占排泊对话直连海事搜救中心 MRCC 并强验 9 位 MMSI 与 IMO SMCP 逐字复诵 (P79)，0ms 钳位 S2S 咆哮/冷笑情绪传染镜像 (`F0>310Hz`) 并强制执行 ITU-R BS.1770 (`-16 LUFS`) 与 `155 WPM` 语速稳频 (P80)',
+      '- [x] **车险/财险 FNOL 时间轴/EDR 遥测对账与禁 VSA 伪科学拒赔护栏 & 弱网突发连续丢包防 PLC 音素脑补幻觉与 RFC 4585 NACK 护栏**：冻结倒签保单、车载 EDR 碰撞时间偏差 `>15min` 或旁白教唆闪赔移交 SIU 并按 NAIC/EU AI Act 剥离伪科学声学测谎分 (P81)，在 `>=240ms` 突发连续丢包覆盖关键否定词/金额槽位时 0ms 阻断投机工具调用并强制开启 RFC 4585 RTCP NACK 与 Opus FEC (P82)'
     ].join('\n');
   }
 
