@@ -1,5 +1,7 @@
 # 企业级 Voice Agent 深度竞对分析与售前攻防手册 (Battlecards)
 
+> 🌐 **语言 / Language**: **中文 (Chinese)** | **[English (`docs/competitive-analysis.en.md`)](./competitive-analysis.en.md)** · **[返回首页 (`README.md`)](../README.md)** · **[English Home (`README.en.md`)](../README.en.md)**
+>
 > **对标对象**：**Sierra AI** · **Retell AI** · **ElevenLabs (ElevenAgents / Conversational AI 2.0)** · **Vapi / LiveKit** vs **Microsoft Azure (Voice Live API + AI Foundry + AI Speech + ACS)**  
 > **适用读者**：微软云解决方案架构师（CSA）、AI 售前专家（ATSSP）、FDE 工程师及核心生态合作伙伴。  
 > **战略原则**：清晰界定 **何时正面竞争（Compete to Win）** 与 **何时联合销售/底座赋能（Co-sell & Attach Azure Foundry / Speech）**。
@@ -213,9 +215,4 @@
 | **35. 911/急救断线回拨 0ms 穿透商业 IVR 直连事故桥 & PCI-DSS `SAQ-A` 大模型零持卡人数据域隔离护栏**<br>(`急救中心断线回拨误入企业普通商业 IVR 排队延误抢救 / Tool Schema 开放卡号参数导致整个 GPU 推理集群坠入重度 SAQ-D 审计范围`) | 接入 **`P67-EMERGENCY-PSAP-CALLBACK-BYPASS-IVR-BRIDGE-GUARD`** 核验运营商紧急主叫签名并 0ms 穿透商业 IVR 直连原事故会话 | **`P68-PCI-SAQ-A-LLM-ZERO-CARDHOLDER-SCOPE-ISOLATION-GUARD` 严禁 Prompt/Schema 接触明文卡号并强制绑定 `callId+merchantId` 一次性不透明 Vault 令牌** | 真实急救回拨误入商业 IVR 率降至 0.0%，AI 语音集群 100% 维持轻量级 PCI SAQ-A 域外豁免 |
 | **36. 未成年人 COPPA/GDPR-K 声纹零留存门禁 & 跨洲 SIP/RTP 发卡弯绕行 (Tromboning) 本地锚定护栏**<br>(`无家长授权采集儿童生物声纹或发生未成年语音冲动内购 / 亚太欧洲呼入 RTP 媒体流跨洋绕行美东网关导致延迟暴增 250ms+`) | 接入 **`P69-COPPA-AADC-MINOR-VOICEPRINT-PURCHASE-CONSENT-GUARD`** 识别儿童声学特征并硬阻断无 VPC 授权的声纹留存与语音消费 | **`P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD` 拦截跨洲 RTP 发卡弯绕行，强制本地边缘 SBC 媒体锚定与 `<=140ms` 媒体 RTT 门禁** | 100% 满足 FTC COPPA 2025 与 GDPR-K 儿童保护，跨国分支机构首字响应时延直降 220ms–310ms |
 | **37. 金融催收 FDCPA / Reg F 7-in-7 与停催护栏 & 多租户 ASR 热词图谱物理隔离护栏**<br>(`催收漏报 Mini-Miranda、超 7 天 7 次上限或客户提异议后仍机械施压 / 热池 ASR 跨租户残留商业机密热词或 >15dB 偏置投毒`) | 接入 **`P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD`** 强制开场披露、7-in-7 频控与异议/停催 0ms 熔断施压 | **`P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD` 物理隔离租户级 WFST 热词图谱并钳位 `<=15dB` 声学增益防底噪幻觉注入** | 100% 满足 CFPB Reg F / FDCPA 法定催收红线，多租户专有热词跨会话串音泄密率降至 0.0% |
-
-
-
-
-
-
+| **38. 远程医疗 DEA EPCS 管制药品续方与 PDMP 核查护栏 & WebRTC mDNS (`RFC 8828`) 内网拓扑防泄露护栏**<br>(`AI 擅自对二类精麻药自动/提前续方或漏检跨州 PDMP 与医师 FIPS 2FA 签名 / WebRTC SDP 暴露企业内网 IPv4 或网卡 EUI-64 MAC 指纹`) | 接入 **`P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD`** 硬阻断 Schedule II 自动续方并强验 PDMP 与医师 FIPS 2FA 硬件签名 | **`P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD` 剥离明文 LAN IP / EUI-64 MAC 候选，强制 RFC 8828 `.local` mDNS 混淆与日志 SDP 脱敏** | 100% 满足 DEA 21 CFR Part 1311 药事红线，企业内网 VLAN 拓扑与物理网卡指纹通过 SDP 泄露率降至 0.0% |

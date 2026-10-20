@@ -1,5 +1,7 @@
 # 企业级 Voice Agent 业务场景全景与 ROI 价值白皮书
 
+> 🌐 **语言 / Language**: **中文 (Chinese)** | **[English (`docs/business-scenarios.en.md`)](./business-scenarios.en.md)** · **[返回首页 (`README.md`)](../README.md)** · **[English Home (`README.en.md`)](../README.en.md)**
+>
 > **文档定位**：面向解决方案架构师（SA）、前线部署工程师（FDE）、技术合作伙伴与企业业务决策者的售前咨询与场景设计指南。  
 > **核心理念**：企业级 Voice Agent 的核心价值不在于“会说话的聊天机器人”，而在于 **以低于 600ms 的全双工自然语音交互为入口，通过受控的确定性状态机、多模型协同路由（Constellation Routing）与企业安全护栏（Action Guardrails），将非结构化的口语对话转化为可审计、幂等、可由人工随时接管的闭环业务事务**。
 

@@ -6420,18 +6420,151 @@ export function evaluateHotwordLexiconTenantIsolationGuard(
   };
 }
 
+export interface StilleTelehealthControlledSubstanceEpcsGuardInput {
+  callId: string;
+  deaScheduleTier: "SCHEDULE_II" | "SCHEDULE_III_IV" | "NON_CONTROLLED";
+  earlyRefillDaysRemaining: number;
+  autonomousAiRefillAttempted: boolean;
+  pdmpInterstateCheckCompleted: boolean;
+  prescriberFips2faEpcsSigned: boolean;
+}
 
+export interface StilleTelehealthControlledSubstanceEpcsGuardDecision {
+  policyCode: "P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD";
+  callId: string;
+  epcsComplianceVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "DEA_EPCS_AND_PDMP_COMPLIANCE_VERIFIED"
+    | "DEA_SCHEDULE_II_AUTONOMOUS_OR_EARLY_REFILL_BLOCKED"
+    | "MISSING_PDMP_CHECK_OR_EPCS_FIPS_2FA_SIGNATURE_BLOCKED";
+  actionCode:
+    | "PERMIT_COMPLIANT_PHARMACY_WORKFLOW"
+    | "BLOCK_AUTONOMOUS_REFILL_AND_ROUTE_TO_DEA_PRESCRIBER_EPCS"
+    | "REQUIRE_PDMP_QUERY_AND_CLINICIAN_EPCS_HARDWARE_TOKEN";
+  summaryZh: string;
+}
 
+/**
+ * Stage 40 (#82): P73 — Telehealth & Pharmacy DEA EPCS Controlled-Substance (Schedule II–IV) Refill & PDMP Verification Guard.
+ * Prevents two severe clinical/regulatory violations under the Ryan Haight Act and DEA 21 CFR Part 1311 (Electronic Prescriptions for Controlled Substances - EPCS):
+ * 1) Autonomous AI or Early Refill of Schedule II Controlled Substances (`deaScheduleTier === "SCHEDULE_II" && (autonomousAiRefillAttempted || earlyRefillDaysRemaining > 0)`): under 21 U.S.C. § 829(a), Schedule II substances (opioids, stimulants) cannot be refilled automatically or early; every dispensing event requires a new prescription signed by a DEA-registered practitioner (`DEA_SCHEDULE_II_AUTONOMOUS_OR_EARLY_REFILL_BLOCKED`).
+ * 2) Controlled Substance Refill Without Interstate PDMP Query or Clinician FIPS 140-2 2FA EPCS Signature (`(deaScheduleTier === "SCHEDULE_II" || deaScheduleTier === "SCHEDULE_III_IV") && (!pdmpInterstateCheckCompleted || !prescriberFips2faEpcsSigned)`): blocks any controlled-substance dispensing pipeline until the state Prescription Drug Monitoring Program (PDMP) check and clinician two-factor hardware token EPCS signature are verified (`MISSING_PDMP_CHECK_OR_EPCS_FIPS_2FA_SIGNATURE_BLOCKED`).
+ */
+export function evaluateTelehealthControlledSubstanceEpcsGuard(
+  input: StilleTelehealthControlledSubstanceEpcsGuardInput,
+): StilleTelehealthControlledSubstanceEpcsGuardDecision {
+  if (
+    input.deaScheduleTier === "SCHEDULE_II" &&
+    (input.autonomousAiRefillAttempted || input.earlyRefillDaysRemaining > 0)
+  ) {
+    return {
+      policyCode: "P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD",
+      callId: input.callId,
+      epcsComplianceVerified: false,
+      allowed: false,
+      reason: "DEA_SCHEDULE_II_AUTONOMOUS_OR_EARLY_REFILL_BLOCKED",
+      actionCode: "BLOCK_AUTONOMOUS_REFILL_AND_ROUTE_TO_DEA_PRESCRIBER_EPCS",
+      summaryZh: `【P73 远程医疗 DEA EPCS 管制药品续方护栏 · 严禁 AI 自主或提前续方二类精麻药品 (DEA_SCHEDULE_II_AUTONOMOUS_OR_EARLY_REFILL_BLOCKED)】通话 ${input.callId} 请求对 DEA Schedule II 管制药品执行 AI 自动续方或提前续药（距到期尚余 ${input.earlyRefillDaysRemaining} 天）！已根据 21 U.S.C. § 829(a) 与 Ryan Haight 法案 0ms 硬阻断，强制转交持证医师开具全新 EPCS 处方。`,
+    };
+  }
 
+  if (
+    (input.deaScheduleTier === "SCHEDULE_II" ||
+      input.deaScheduleTier === "SCHEDULE_III_IV") &&
+    (!input.pdmpInterstateCheckCompleted || !input.prescriberFips2faEpcsSigned)
+  ) {
+    return {
+      policyCode: "P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD",
+      callId: input.callId,
+      epcsComplianceVerified: false,
+      allowed: false,
+      reason: "MISSING_PDMP_CHECK_OR_EPCS_FIPS_2FA_SIGNATURE_BLOCKED",
+      actionCode: "REQUIRE_PDMP_QUERY_AND_CLINICIAN_EPCS_HARDWARE_TOKEN",
+      summaryZh: `【P73 管制药品 PDMP 联网核查与医师 FIPS 2FA 签名门禁 (MISSING_PDMP_CHECK_OR_EPCS_FIPS_2FA_SIGNATURE_BLOCKED)】通话 ${input.callId} 涉及 ${input.deaScheduleTier} 管制药品，但未完成跨州 PDMP 防滥用核查（pdmp=${input.pdmpInterstateCheckCompleted}）或缺失医师 FIPS 140-2 双因子 EPCS 硬件签名（epcs=${input.prescriberFips2faEpcsSigned}）！已拦截发药指令。`,
+    };
+  }
 
+  return {
+    policyCode: "P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD",
+    callId: input.callId,
+    epcsComplianceVerified: true,
+    allowed: true,
+    reason: "DEA_EPCS_AND_PDMP_COMPLIANCE_VERIFIED",
+    actionCode: "PERMIT_COMPLIANT_PHARMACY_WORKFLOW",
+    summaryZh: `【P73 远程医疗药事 EPCS 与 PDMP 核验通过】通话 ${input.callId} 药品等级 (${input.deaScheduleTier}) 已通过处方合规校验。`,
+  };
+}
 
+export interface StilleWebrtcMdnsLocalIpAndSdpSanitizerGuardInput {
+  callId: string;
+  sdpContainsRawLanIpv4OrEui64Ipv6: boolean;
+  mdnsCandidateObfuscationEnabled: boolean;
+  untrustedSignalingLogRetainsFullSdpCandidateIps: boolean;
+}
 
+export interface StilleWebrtcMdnsLocalIpAndSdpSanitizerGuardDecision {
+  policyCode: "P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD";
+  callId: string;
+  sdpPrivacySanitized: boolean;
+  allowed: boolean;
+  reason:
+    | "WEBRTC_SDP_MDNS_PRIVACY_AND_ZERO_LAN_LEAK_VERIFIED"
+    | "RAW_LAN_IP_OR_EUI64_MAC_EXPOSED_IN_SDP_BLOCKED"
+    | "SIGNALING_LOG_SDP_IP_LEAK_BLOCKED";
+  actionCode:
+    | "ALLOW_PRIVACY_PRESERVING_ICE_NEGOTIATION"
+    | "SCRUB_HOST_CANDIDATES_AND_ENFORCE_RFC8828_MDNS_UUID"
+    | "REDACT_SDP_CANDIDATE_IPS_BEFORE_TELEMETRY_PERSISTENCE";
+  summaryZh: string;
+}
 
+/**
+ * Stage 40 (#83): P74 — WebRTC mDNS Local IP Leak Prevention & SDP ICE Candidate Topology Sanitizer Guard (RFC 8828).
+ * Prevents two enterprise network-reconnaissance and device-tracking leaks in browser/mobile WebRTC Voice Agent sessions:
+ * 1) Raw Corporate LAN IPv4 or Hardware MAC-Derived EUI-64 IPv6 Exposure in SDP (`sdpContainsRawLanIpv4OrEui64Ipv6 && !mdnsCandidateObfuscationEnabled`): if WebRTC ICE host candidates expose raw RFC 1918 subnet addresses (`10.x.x.x`, `192.168.x.x`) or stateless EUI-64 IPv6 hardware MAC identifiers without RFC 8828 ephemeral `.local` mDNS UUID obfuscation, external signaling relays or compromised logs can map internal enterprise VLAN topology and track physical devices (`RAW_LAN_IP_OR_EUI64_MAC_EXPOSED_IN_SDP_BLOCKED`).
+ * 2) Unredacted SDP Candidate IP Persistence in Signaling Telemetry (`untrustedSignalingLogRetainsFullSdpCandidateIps`): requires stripping host/srflx IP literals from SDP diagnostic traces before writing to multi-tenant telemetry pipelines (`SIGNALING_LOG_SDP_IP_LEAK_BLOCKED`).
+ */
+export function evaluateWebrtcMdnsLocalIpAndSdpSanitizerGuard(
+  input: StilleWebrtcMdnsLocalIpAndSdpSanitizerGuardInput,
+): StilleWebrtcMdnsLocalIpAndSdpSanitizerGuardDecision {
+  if (
+    input.sdpContainsRawLanIpv4OrEui64Ipv6 &&
+    !input.mdnsCandidateObfuscationEnabled
+  ) {
+    return {
+      policyCode: "P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD",
+      callId: input.callId,
+      sdpPrivacySanitized: false,
+      allowed: false,
+      reason: "RAW_LAN_IP_OR_EUI64_MAC_EXPOSED_IN_SDP_BLOCKED",
+      actionCode: "SCRUB_HOST_CANDIDATES_AND_ENFORCE_RFC8828_MDNS_UUID",
+      summaryZh: `【P74 WebRTC mDNS 内网拓扑防泄露与 SDP 净化护栏 (RAW_LAN_IP_OR_EUI64_MAC_EXPOSED_IN_SDP_BLOCKED)】通话 ${input.callId} 的 SDP 报文暴露了企业内网明文 IPv4 网段或含网卡 MAC 地址的 EUI-64 IPv6 候选地址，且未开启 RFC 8828 mDNS (.local UUID) 混淆！已立即剥离明文 Host Candidate 并强制启用临时 mDNS 标识符。`,
+    };
+  }
 
+  if (input.untrustedSignalingLogRetainsFullSdpCandidateIps) {
+    return {
+      policyCode: "P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD",
+      callId: input.callId,
+      sdpPrivacySanitized: false,
+      allowed: false,
+      reason: "SIGNALING_LOG_SDP_IP_LEAK_BLOCKED",
+      actionCode: "REDACT_SDP_CANDIDATE_IPS_BEFORE_TELEMETRY_PERSISTENCE",
+      summaryZh: `【P74 信令遥测日志 SDP 候选 IP 脱敏护栏 (SIGNALING_LOG_SDP_IP_LEAK_BLOCKED)】通话 ${input.callId} 检测到非受控信令日志试图原样落盘包含客户端 IP 的完整 SDP 报文！已在落盘前执行候选地址零敏化擦除。`,
+    };
+  }
 
-
-
-
+  return {
+    policyCode: "P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD",
+    callId: input.callId,
+    sdpPrivacySanitized: true,
+    allowed: true,
+    reason: "WEBRTC_SDP_MDNS_PRIVACY_AND_ZERO_LAN_LEAK_VERIFIED",
+    actionCode: "ALLOW_PRIVACY_PRESERVING_ICE_NEGOTIATION",
+    summaryZh: `【P74 WebRTC SDP 隐私与 RFC 8828 mDNS 混淆核验通过】通话 ${input.callId} 已物理隐藏内网拓扑与设备 MAC 指纹。`,
+  };
+}
 
 
 

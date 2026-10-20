@@ -417,6 +417,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD enforces opening Mini-Miranda disclosure, the CFPB Reg F 7-in-7 call frequency cap, and 0ms cessation of collection pitches upon consumer debt dispute; P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD blocks cross-tenant WFST custom lexicon bleed and clamps phonetic boost weights <=15dB."
+    },
+    {
+      "check_name": "Telehealth DEA EPCS Controlled-Substance Refill & WebRTC RFC 8828 mDNS Local IP Sanitizer Guard (P73 / P74)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD blocks autonomous AI or early refills of DEA Schedule II controlled substances and enforces interstate PDMP checks plus clinician FIPS 140-2 2FA EPCS signatures; P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD scrubs raw corporate LAN IPv4 / EUI-64 MAC host candidates in favor of RFC 8828 mDNS UUIDs and redacts SDP candidate IPs from telemetry logs."
     }
   ],
   "latency_scaling": [

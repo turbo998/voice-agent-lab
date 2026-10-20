@@ -1,5 +1,7 @@
 # 企业级 Voice Agent 方案设计与三大参考架构指南
 
+> 🌐 **语言 / Language**: **中文 (Chinese)** | **[English (`docs/solution-architecture.en.md`)](./solution-architecture.en.md)** · **[返回首页 (`README.md`)](../README.md)** · **[English Home (`README.en.md`)](../README.en.md)**
+>
 > **文档定位**：从解决方案架构师（Cloud Solution Architect）与前线部署工程师（Forward Deployed Engineer）视角，系统化定义企业级 Voice Agent 的三大技术架构范式、多模型协同路由（Constellation Routing）、关键事务安全边界与混合云/容器部署规范。
 
 ---
@@ -1144,21 +1146,14 @@ flowchart LR
 | **1. FDCPA / Reg F 催收披露、7-in-7 与异议即刻停催护栏 (`P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD`)** | `evaluateFdcpDebtCollectionMiniMirandaAndHarassmentGuard` 拦截异议/停催后继续施压（`POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED`）及漏报 Mini-Miranda / 超 7-in-7 上限（`MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED`）。 | **100% 满足 CFPB Regulation F 与 FDCPA 法定红线，消除违规催收集体诉讼风险**（对应 POC 探针 `P71`）。 |
 | **2. 多租户 ASR 热词图谱隔离与防声学偏置投毒护栏 (`P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD`)** | `evaluateHotwordLexiconTenantIsolationGuard` 拦截跨租户 WFST 词表残留（`CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED`）并钳位 `<=15dB` 热词增益（`ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED`）。 | **彻底杜绝多租户专有热词跨会话串音泄密与高增益底噪幻觉注入**（对应 POC 探针 `P72`）。 |
 
+### 4.48 远程医疗 DEA EPCS 管制药品（Schedule II–IV）续方与跨州 PDMP 核查护栏 & WebRTC mDNS (`RFC 8828`) 内网拓扑防泄露与 SDP 候选地址净化护栏 (`P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD` & `P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD`)
 
+在远程医疗药房处方续订热线以及政企/金融机构内网浏览器 WebRTC 语音通话中，还存在两项极易触发联邦缉毒署（DEA）吊销牌照与企业内网拓扑/物理网卡指纹泄露的红线隐患：
 
+1. **远程医疗药房对 DEA Schedule II–IV 精麻管制药品的违规 AI 自动续方、提前续药或漏检跨州 PDMP 与医师 FIPS 2FA 签名 (`P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD`)**：根据美国《瑞安·海特法案》（**Ryan Haight Act**）、联邦管制物质法（**21 U.S.C. § 829(a)**）及 **DEA 21 CFR Part 1311 (EPCS 电子管制处方规范)**：（a）针对 **Schedule II 二类高危管制药品**（如阿片类止痛药、中枢兴奋剂），法律严禁任何自动续方（No Refills）或未到期提前续药，每次发药必须由持 DEA 执照医师重新评估并开具全新处方；（b）针对 Schedule II–IV 管制药品，发药前必须完成跨州处方药监测计划（**PDMP**）防滥用联网查询，并由医师通过 **FIPS 140-2 认证的双因子硬件令牌（EPCS 2FA）** 完成数字签名。`evaluateTelehealthControlledSubstanceEpcsGuard` 在药事网关层强制拦截：一旦检测到 AI 尝试对 Schedule II 管制药品执行自主续方或提前续药（`earlyRefillDaysRemaining > 0`），0ms 硬阻断并转交持证医师开具全新 EPCS 处方（`DEA_SCHEDULE_II_AUTONOMOUS_OR_EARLY_REFILL_BLOCKED` -> `BLOCK_AUTONOMOUS_REFILL_AND_ROUTE_TO_DEA_PRESCRIBER_EPCS`）；若未完成跨州 PDMP 核查或缺失医师 FIPS 140-2 2FA 硬件签名，立即拦截发药流程（`MISSING_PDMP_CHECK_OR_EPCS_FIPS_2FA_SIGNATURE_BLOCKED`）；
+2. **WebRTC SDP 报文暴露企业内网明文 IPv4 网段 / EUI-64 网卡 MAC 指纹与非受控信令日志 IP 泄露 (`P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD`)**：当企业员工或客户通过浏览器/桌面端发起 WebRTC 语音通话时，若终端 ICE Agent 未启用 **RFC 8828 mDNS (`.local` 临时 UUID 候选地址混淆)**，SDP `a=candidate` 行会直接暴露客户端所在的企业内网私有网段（如 `10.x.x.x`、`192.168.x.x`）或基于网卡物理 MAC 地址生成的无状态 **EUI-64 IPv6** 地址，导致外部信令中继或第三方日志可逆向测绘企业内网 VLAN 拓扑并跨会话追踪物理设备！此外，若非受控信令遥测日志直接原样落盘包含客户端 IP 的完整 SDP 报文，会造成大规模网络指纹泄露。`evaluateWebrtcMdnsLocalIpAndSdpSanitizerGuard` 强制执行 **RFC 8828 mDNS 临时 UUID 混淆 + 信令遥测 SDP 零敏化脱敏**：严禁暴露明文内网 IP 或 EUI-64 MAC 地址（`RAW_LAN_IP_OR_EUI64_MAC_EXPOSED_IN_SDP_BLOCKED` -> `SCRUB_HOST_CANDIDATES_AND_ENFORCE_RFC8828_MDNS_UUID`），并在落盘前擦除信令遥测中的全部 SDP 候选 IP（`SIGNALING_LOG_SDP_IP_LEAK_BLOCKED`）。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| 远程医疗管制药品合规与 WebRTC SDP 内网防泄露控制点 | 确定性工程实现 (`packages/business-core/enterprise-guardrails.ts`) | 医疗药事免罚与企业内网零拓扑泄露收益 |
+| :--- | :--- | :--- |
+| **1. 远程医疗 DEA EPCS 管制药品续方与 PDMP 核查护栏 (`P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD`)** | `evaluateTelehealthControlledSubstanceEpcsGuard` 拦截 Schedule II 药品 AI 自主/提前续方（`DEA_SCHEDULE_II_AUTONOMOUS_OR_EARLY_REFILL_BLOCKED`）并强验跨州 PDMP 与医师 FIPS 2FA 签名（`MISSING_PDMP_CHECK_OR_EPCS_FIPS_2FA_SIGNATURE_BLOCKED`）。 | **100% 满足 DEA 21 CFR Part 1311 与 Ryan Haight 法案，精麻管制药品违规自动续方率降至 0.0%**（对应 POC 探针 `P73`）。 |
+| **2. WebRTC mDNS 内网拓扑防泄露与 SDP 净化护栏 (`P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD`)** | `evaluateWebrtcMdnsLocalIpAndSdpSanitizerGuard` 剥离明文 LAN IPv4 / EUI-64 MAC 候选并强制 RFC 8828 mDNS 混淆（`RAW_LAN_IP_OR_EUI64_MAC_EXPOSED_IN_SDP_BLOCKED`），擦除日志 SDP IP（`SIGNALING_LOG_SDP_IP_LEAK_BLOCKED`）。 | **100% 阻断通过 WebRTC SDP 探测企业内网 VLAN 拓扑与物理网卡 MAC 追踪**（对应 POC 探针 `P74`）。 |

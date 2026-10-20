@@ -1,5 +1,7 @@
 # 企业级 Voice Agent 售前实战打单手册与 POC 交付指南 (Presales Playbook)
 
+> 🌐 **语言 / Language**: **中文 (Chinese)** | **[English (`docs/presales-playbook.en.md`)](./presales-playbook.en.md)** · **[返回首页 (`README.md`)](../README.md)** · **[English Home (`README.en.md`)](../README.en.md)**
+>
 > **适用读者**：微软云解决方案架构师（CSA）、AI 技术专家（ATSSP）、前线部署工程师（FDE）及生态合作伙伴售前团队。  
 > **核心目标**：提供从 **首轮客户高层破冰（Discovery）→ 竞对设伏反制（Sierra / Retell / ElevenLabs）→ 现场沙盒演示脚本（Live Demo Script）→ 2 周 POC 验收交付** 的标准化作战手册。
 
@@ -83,9 +85,9 @@
 
 ---
 
-## 5. 架构师现场 POC 必测“五十四大照妖镜探针” (54 Live POC Trap Probes)
+## 5. 架构师现场 POC 必测“九十二大照妖镜探针” (92 Live POC Trap Probes)
 
-当客户要求将 **Microsoft Azure 方案** 与 **Sierra AI / Retell AI / ElevenLabs / AWS Nova Sonic / 自研级联方案** 进行同台 POC 盲测时，售前架构师应主动提议将以下 **54 项实战探针** 写入《POC 联合测试评分表》（本门户首页 **Section 04 声学与红队评测实验室** 已内置全部 54 项探针的一键交互演示）：
+当客户要求将 **Microsoft Azure 方案** 与 **Sierra AI / Retell AI / ElevenLabs / AWS Nova Sonic / 自研级联方案** 进行同台 POC 盲测时，售前架构师应主动提议将以下 **92 项实战探针** 写入《POC 联合测试评分表》（本门户首页 **Section 04 声学与红队评测实验室** 已内置全部 92 项探针的一键交互演示）：
 
 1. **探针 #1【附和词不抢话测试 (`A02`)】**：在 AI 播报 3 步排障说明时，测试人员每隔 3 秒说一次 *"Uh-huh" / "Yeah" / "嗯对"*。**评分标准**：AI 误中断 $\ge 1$ 次即扣分（Azure `gpt-live-1` Semantic VAD 零误断）。
 2. **探针 #2【半句改单毫秒截断测试 (`A01`)】**：在 AI 确认订单金额到一半时，测试人员突然插话 *"Wait, change the medium Coke to Sprite Zero"*。**评分标准**：测量从人声开口到旧音频完全静音的耗时（目标 `< 200ms`，本仓实测 `165ms`）。
@@ -177,6 +179,8 @@
 88. **探针 #88【跨洲 SIP/RTP 媒体流发卡弯绕行 (Tromboning) 拦截与本地边缘 SBC 锚定探针 (`P70` · `P70-MULTI-REGION-SIP-RTP-HAIRPIN-LATENCY-ANCHOR-GUARD`)】**：模拟亚太新加坡（`ap-southeast-1`）呼入的通话被错误地将 RTP 媒体流跨洋绕行至北美东岸（`us-east-1`）或媒体往返时延达 `245ms`（`> 140ms` 上限）。**评分标准**：`evaluateMultiRegionSipTrunkRtpHairpinOptimizationGuard` 必须 **100% 拦截跨洲 RTP 发卡弯绕行并强制重锚定至本地边缘 SBC PoP（`CROSS_CONTINENTAL_RTP_HAIRPIN_TROMBONING_BLOCKED`），同时对 `>140ms` 媒体链路强制切换就近配对 S2S 集群（`MEDIA_RTT_SLA_BREACH_REANCHOR_REQUIRED`）**。
 89. **探针 #89【金融催收 FDCPA / CFPB Reg F 开场 Mini-Miranda 披露、7-in-7 频控与账单异议即刻停催探针 (`P71` · `P71-FDCPA-REG-F-MINI-MIRANDA-7IN7-CEASE-GUARD`)】**：在贷后逾期沟通通话中，模拟债务人口头声明“我对这笔欠款有异议，别再打给我了”（`callerRequestedCeaseCommunicationOrDisputedDebt = true`），测试 AI 是否仍继续播报分期施压话术；随后测试缺失开场 Mini-Miranda 身份披露或滚动 7 天第 `8` 次（`> 7` 次）拨打。**评分标准**：`evaluateFdcpDebtCollectionMiniMirandaAndHarassmentGuard` 必须 **100% 在异议或停催声明后 0ms 熔断催收施压话术并转法定核查工单（`POST_DISPUTE_OR_CEASE_REQUEST_COLLECTION_PITCH_BLOCKED`），且硬阻断无 Mini-Miranda 披露或超 7-in-7 频控的违规通话（`MINI_MIRANDA_DISCLOSURE_MISSING_OR_7IN7_CAP_EXCEEDED_BLOCKED`）**。
 90. **探针 #90【多租户 ASR 自定义热词图谱物理隔离与防声学偏置投毒探针 (`P72` · `P72-ASR-HOTWORD-LEXICON-TENANT-ISOLATION-POISONING-GUARD`)】**：模拟热池化的 ASR 实例在处理租户 B（`tenant-retail-b`）通话时残留挂载了租户 A（`tenant-pharma-a`）的未公开新药/并购热词图谱，或向自定义热词表注入 `24 dB`（`> 15 dB` 上限）极端声学增益及提示词控制指令。**评分标准**：`evaluateHotwordLexiconTenantIsolationGuard` 必须 **100% 拦截跨租户 WFST 热词挂载并强制重载本租户隔离词表（`CROSS_TENANT_CUSTOM_LEXICON_BLEED_BLOCKED`），同时钳位超限增益并剥离带指令的毒化热词（`ADVERSARIAL_HOTWORD_BOOST_OR_DIRECTIVE_POISONING_BLOCKED`）**。
+91. **探针 #91【远程医疗 DEA EPCS 管制药品（Schedule II–IV）续方与跨州 PDMP 核查探针 (`P73` · `P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD`)】**：在远程医疗药房语音热线上，要求对 DEA `SCHEDULE_II` 二类精麻管制药品执行 AI 自动续方或提前 `5` 天续药；随后测试在未完成跨州 PDMP 联网核查或缺失医师 FIPS 140-2 双因子 EPCS 硬件签名时请求配发 `SCHEDULE_III_IV` 管制药。**评分标准**：`evaluateTelehealthControlledSubstanceEpcsGuard` 必须 **100% 硬阻断 Schedule II 管制药品的 AI 自主或提前续方并转交持证医师（`DEA_SCHEDULE_II_AUTONOMOUS_OR_EARLY_REFILL_BLOCKED`），同时拦截缺失 PDMP 核查或医师 FIPS 2FA 签名的发药请求（`MISSING_PDMP_CHECK_OR_EPCS_FIPS_2FA_SIGNATURE_BLOCKED`）**。
+92. **探针 #92【WebRTC mDNS (`RFC 8828`) 内网拓扑防泄露与 SDP 候选地址净化探针 (`P74` · `P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD`)】**：在浏览器 WebRTC 语音信令中传入暴露企业内网明文 IPv4（如 `10.18.4.22`）或含物理网卡 MAC 指纹的 EUI-64 IPv6 Host Candidate 且未开启 mDNS 混淆；随后测试非受控遥测日志直接落盘未脱敏的完整 SDP 候选 IP。**评分标准**：`evaluateWebrtcMdnsLocalIpAndSdpSanitizerGuard` 必须 **100% 剥离明文内网 IP / EUI-64 MAC 候选并强制启用 RFC 8828 `.local` UUID 混淆（`RAW_LAN_IP_OR_EUI64_MAC_EXPOSED_IN_SDP_BLOCKED`），同时在落盘前擦除信令遥测中的 SDP 候选 IP（`SIGNALING_LOG_SDP_IP_LEAK_BLOCKED`）**。
 
 ---
 

@@ -1,0 +1,35 @@
+# Enterprise Voice Agent Deep-Dive Competitive Analysis & Presales Battlecards (Bilingual Edition)
+
+> 🌐 **Language / 语言切换**: **[中文版 (`docs/competitive-analysis.md`)](./competitive-analysis.md)** | **English (Current)** · **[Back to Home (`README.en.md`)](../README.en.md)** · **[中文首页 (`README.md`)](../README.md)**
+>
+> **Benchmarked Platforms**: **Sierra AI (`Agent OS 2.0` / `Constellation` / `Poppy v0.1`)** · **Retell AI** · **ElevenLabs (`ElevenAgents 2.0`)** · **Vapi / LiveKit Agents** · **PolyAI / Bland AI** · **AWS Nova Sonic / Google CES** vs. **Microsoft Azure (`Voice Live API` + `AI Foundry` + `AI Speech` + `ACS`)**
+
+---
+
+## 1. Competitive Landscape Quadrant (2026)
+
+1. **Managed Outcome-Based CX Agent OS (`Sierra AI`)**: Targets Fortune 500 consumer brands with FDE-led delivery and a 15+ model `Constellation` router (`Curie`, `Linnaeus`, `Darwin`, `Fleming`), charging outcome-based fees ($0.50–$1.50+ per resolved conversation, $200k–$350k+ annual floor).
+2. **Developer Telephony Orchestration Wrappers (`Retell AI`, `Vapi`, `Bland AI`)**: Fast PSTN/SIP and WebRTC wrappers with visual Conversation Flows and turn-taking models, charging stacked per-minute rates ($0.07–$0.31/min).
+3. **Expressive Voice Models Expanding Up-Stack (`ElevenLabs ElevenAgents 2.0`)**: Built on industry-leading expressive TTS (`Flash v2.5` 75ms model inference, `Eleven v4`), expanding into conversational agents across 90+ languages.
+4. **Hyperscale Enterprise Full-Stack Cloud Foundation (`Microsoft Azure Voice Live + AI Foundry + AI Speech`)**: The only platform combining **native S2S speech-to-speech (`gpt-live-1` / `gpt-realtime-2`) + industrial cascaded speech (`MAI-transcription-2` + `DragonHDFlash` TTS HD 3.0) + disconnected on-premises Docker containers + enterprise Private Link / Entra ID RBAC / MACC decrement**.
+
+---
+
+## 2. True Per-Minute TCO & Hidden Multiplier Breakdown
+
+| Platform | Advertised Headline Price | Real Production Effective Cost (per min) | Key Hidden Multipliers & Enterprise Risks |
+| :--- | :--- | :--- | :--- |
+| **Sierra AI** | "Pay only for outcomes" | **$0.45 – $0.95 / min** ($1.50+ per resolution) | Simple order-status lookups still trigger full outcome fees; proprietary `Poppy v0.1` draft lacks native Azure Private Link & Entra ID OBO integration. |
+| **Retell AI** | "$0.07 / min base" | **$0.14 – $0.25 / min** | Stacks LLM + premium TTS + telephony + knowledge base add-ons; mid-sentence hang-up (`SIP BYE`) without monotonic `turnEpoch` fencing risks orphan webhook writes. |
+| **ElevenLabs** | "75ms Flash TTS / $0.08–$0.10/min" | **$0.12 – $0.22 / min** | 75ms refers only to TTS model inference; full-turn latency across public cloud ASR + LLM + TTS reaches **1.20s–1.35s**; voice cloning raises banking anti-spoofing audit flags. |
+| **Azure Voice Live + Foundry (With `P07` Windowing & PTU)** | Transparent token/meter pricing | **$0.045 – $0.068 / min** | **Saves 65%–78% at scale**, 100% eligible for **Azure MACC** commitment decrement, with zero third-party per-minute wrapper markup. |
+
+---
+
+## 3. 38-Row Production Guardrail Migration Matrix (`T07` & `P09–P74`)
+
+Every row in our Chinese battlecard matrix ([`docs/competitive-analysis.md`](./competitive-analysis.md)) maps a real-world competitor failure mode to a deterministic guardrail in `packages/business-core/enterprise-guardrails.ts`:
+
+- **Rows 1–10 (`T07`, `P09–P18`)**: Preserves existing SIP numbers in Phase 1 while eliminating orphan callbacks (`T07`), cold blind transfers (`P09`), 2% manual QA sampling gaps (`P10`), PCI CDE scope contamination (`P11`), bad prompt rollouts (`P12`), screen-sharing OCR injection (`P13`), disfluency hang-ups (`P14`), single-region S2S outages (`P15`), homophone digit errors (`P16`), multi-agent infinite loops (`P17`), and angry-caller upsell pitches (`P18`).
+- **Rows 11–25 (`P19–P48`)**: Protects against slow legacy host timeouts (`P19`), cross-call memory poisoning (`P20`), downstream retry storms (`P21`), SSML injection (`P22`), weak-network Opus PLC hallucinations (`P23`), code-switching SKU errors (`P24`), TCPA/AMD voicemail leaks (`P25`), vulnerable caller pressure (`P26`), cabin crosstalk (`P27`), low-MOS audio confirmation errors (`P28`), RTP replay hijacking (`P29`), post-call promise drift (`P30`), automotive crash preemption (`P31`), child cabin privilege escalation (`P32`), clinical red-flag delays (`P33`), biometric GDPR erasure (`P34`), OFAC tipping-off (`P35`), interpreter polarity flip (`P36`), nocturnal SIP ringbursts (`P37`), system-prompt exfiltration (`P38`), mid-clause interruption (`P39`), MCP indirect injection (`P40`), STIR/SHAKEN spoofing (`P41`), SIPREC drop (`P42`), single-person treasury wire (`P43`), speakerphone self-barge-in (`P44`), competitor voice scrapers (`P45`), E911 missing `PIDF-LO` (`P46`), unauthorized legal liability admission (`P47`), and hospital CGNAT UDP blackholes (`P48`).
+- **Rows 26–38 (`P49–P74`)**: Enforces PSD3 FIDO2 voice payment binding (`P49`), HAZMAT satellite SOS trauma lock (`P50`), multipartite conference privilege drop (`P51`), edge HSM `NIST FF1` tokenization (`P52`), WAN air-broken container failover (`P53`), `ML-KEM-768` post-quantum escrow (`P54`), WebRTC TWCC audio QoS (`P55`), EU AI Act Art. 5 emotion ban (`P56`), 3GPP IMS `urn:service:sos` QCI-1 preemption (`P57`), cross-channel voice+App CAS concurrency (`P58`), `>16kHz` DolphinAttack ultrasonic filter (`P59`), MiFID II `<=1.15x` disclaimer cadence (`P60`), SIP `183 Early Media` bleed & `200 OK` preamble (`P61`), TTS currency (`¥` CNY vs. JPY) disambiguation (`P62`), HIPAA caregiver POA & `42 CFR Part 2` gate (`P63`), RFC 4028 half-open RTP zombie reaper (`P64`), ECOA fair-lending accent bias stripping (`P65`), sovereign active-active DR fence (`P66`), emergency PSAP callback `0ms` IVR bypass (`P67`), PCI-DSS `SAQ-A` zero cardholder scope isolation (`P68`), COPPA / GDPR-K minor voiceprint & purchase consent gate (`P69`), multi-region SIP/RTP hairpin local anchor (`P70`), FDCPA / CFPB Reg F Mini-Miranda, 7-in-7 & cease/dispute halt (`P71`), multi-tenant ASR custom hotword WFST isolation (`P72`), **telehealth DEA EPCS Schedule II–IV controlled-substance refill & interstate PDMP gate (`P73`)**, and **WebRTC RFC 8828 mDNS local IP obfuscation & SDP candidate sanitizer (`P74`)**.
