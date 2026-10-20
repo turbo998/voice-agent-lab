@@ -8471,6 +8471,186 @@ export function evaluateWebRtcAec3ResidualEchoFalseBargeInAndDelayDriftGuard(
   };
 }
 
+export interface StilleAutomotiveUneceR155Iso26262CanBusAndEcallGuardInput {
+  callId: string;
+  vehicleVin: string;
+  airbagDeployedOrCrashDetected: boolean;
+  crashDeltaVKph: number;
+  vehicleSpeedKph: number;
+  gearState: "PARK" | "REVERSE" | "NEUTRAL" | "DRIVE";
+  speakerSeatZone: "DRIVER" | "FRONT_PASSENGER" | "REAR_LEFT" | "REAR_RIGHT";
+  requestedCommandDomain:
+    | "POWERTRAIN_CHASSIS_SAFETY_ASIL_OVERRIDE"
+    | "MOVING_HAZARD_ACTUATION_TRUNK_OTA_RESET"
+    | "DRIVER_ONLY_PROFILE_OR_CHILD_LOCK_CHANGE"
+    | "EYES_FREE_HVAC_MEDIA_NAVIGATION_SAFE";
+}
+
+export interface StilleAutomotiveUneceR155Iso26262CanBusAndEcallGuardDecision {
+  allowed: boolean;
+  iso26262AndUneceR155Compliant: boolean;
+  en15722EcallMsdTransmitted: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P99-AUTOMOTIVE-UNECE-R155-ISO26262-CAN-BUS-SAFETY-LOCK-SPEED-DISTRACTION-AND-ECALL-EN15722-GUARD";
+}
+
+export function evaluateAutomotiveUneceR155Iso26262CanBusAndEcallGuard(
+  input: StilleAutomotiveUneceR155Iso26262CanBusAndEcallGuardInput
+): StilleAutomotiveUneceR155Iso26262CanBusAndEcallGuardDecision {
+  if (input.airbagDeployedOrCrashDetected || input.crashDeltaVKph >= 25) {
+    return {
+      allowed: false,
+      iso26262AndUneceR155Compliant: false,
+      en15722EcallMsdTransmitted: true,
+      reason:
+        "EN15722_ECALL_CRASH_OR_AIRBAG_DEPLOYED_ZERO_MS_PREEMPTION_TRIGGERED",
+      actionCode:
+        "PREEMPT_COMMERCIAL_SESSION_TRANSMIT_EN15722_MSD_AND_BRIDGE_PSAP_VOICE",
+      policyCode:
+        "P99-AUTOMOTIVE-UNECE-R155-ISO26262-CAN-BUS-SAFETY-LOCK-SPEED-DISTRACTION-AND-ECALL-EN15722-GUARD",
+    };
+  }
+
+  if (
+    input.requestedCommandDomain === "POWERTRAIN_CHASSIS_SAFETY_ASIL_OVERRIDE" ||
+    (input.requestedCommandDomain ===
+      "MOVING_HAZARD_ACTUATION_TRUNK_OTA_RESET" &&
+      (input.vehicleSpeedKph > 0 || input.gearState !== "PARK"))
+  ) {
+    return {
+      allowed: false,
+      iso26262AndUneceR155Compliant: false,
+      en15722EcallMsdTransmitted: false,
+      reason:
+        "ISO26262_UNECE_R155_SAFETY_CRITICAL_CAN_BUS_OR_IN_MOTION_ACTUATION_BLOCKED",
+      actionCode:
+        "BLOCK_CAN_GATEWAY_WRITE_AND_ENFORCE_PARK_STATE_SAFETY_INTERLOCK",
+      policyCode:
+        "P99-AUTOMOTIVE-UNECE-R155-ISO26262-CAN-BUS-SAFETY-LOCK-SPEED-DISTRACTION-AND-ECALL-EN15722-GUARD",
+    };
+  }
+
+  if (
+    input.requestedCommandDomain ===
+      "DRIVER_ONLY_PROFILE_OR_CHILD_LOCK_CHANGE" &&
+    input.speakerSeatZone !== "DRIVER"
+  ) {
+    return {
+      allowed: false,
+      iso26262AndUneceR155Compliant: false,
+      en15722EcallMsdTransmitted: false,
+      reason:
+        "CABIN_BEAMFORMING_SEAT_ZONE_AUTHORIZATION_VIOLATION_REAR_OR_PASSENGER_BLOCKED",
+      actionCode:
+        "REJECT_NON_DRIVER_ZONE_PRIVILEGED_COMMAND_AND_KEEP_CHILD_LOCK_ENGAGED",
+      policyCode:
+        "P99-AUTOMOTIVE-UNECE-R155-ISO26262-CAN-BUS-SAFETY-LOCK-SPEED-DISTRACTION-AND-ECALL-EN15722-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    iso26262AndUneceR155Compliant: true,
+    en15722EcallMsdTransmitted: false,
+    reason:
+      "ISO26262_UNECE_R155_CABIN_COMMAND_AND_SEAT_ZONE_SAFETY_VERIFIED",
+    actionCode: "EXECUTE_EYES_FREE_CABIN_VOICE_COMMAND",
+    policyCode:
+      "P99-AUTOMOTIVE-UNECE-R155-ISO26262-CAN-BUS-SAFETY-LOCK-SPEED-DISTRACTION-AND-ECALL-EN15722-GUARD",
+  };
+}
+
+export interface StilleMultimodalCobrowsingVisualPromptInjectionAndDomMaskingGuardInput {
+  callId: string;
+  sessionId: string;
+  visualPromptInjectionDetected: boolean;
+  untrustedViewportInstructionScore: number;
+  unmaskedSensitiveSelectorsDetected: boolean;
+  clientSideBlurRedactionApplied: boolean;
+  viewportFrameAgeMs: number;
+  domMutationVersionMismatch: boolean;
+  requestedAction:
+    | "CO_BROWSE_CLICK_SUBMIT"
+    | "PASSIVE_VIEWPORT_GUIDANCE_READONLY";
+}
+
+export interface StilleMultimodalCobrowsingVisualPromptInjectionAndDomMaskingGuardDecision {
+  allowed: boolean;
+  multimodalViewportSafe: boolean;
+  frameIngestionAllowed: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P100-MULTIMODAL-COBROWSING-VISUAL-PROMPT-INJECTION-DOM-MASKING-AND-VIEWPORT-SYNC-GUARD";
+}
+
+export function evaluateMultimodalCobrowsingVisualPromptInjectionAndDomMaskingGuard(
+  input: StilleMultimodalCobrowsingVisualPromptInjectionAndDomMaskingGuardInput
+): StilleMultimodalCobrowsingVisualPromptInjectionAndDomMaskingGuardDecision {
+  if (
+    input.unmaskedSensitiveSelectorsDetected &&
+    !input.clientSideBlurRedactionApplied
+  ) {
+    return {
+      allowed: false,
+      multimodalViewportSafe: false,
+      frameIngestionAllowed: false,
+      reason:
+        "UNMASKED_SENSITIVE_DOM_SELECTOR_PASSWORD_CVV_SSN_IN_VIEWPORT_FRAME_BLOCKED",
+      actionCode:
+        "DROP_UNREDACTED_VIDEO_FRAME_AND_ENFORCE_CLIENT_BOUNDING_BOX_DOM_MASKING",
+      policyCode:
+        "P100-MULTIMODAL-COBROWSING-VISUAL-PROMPT-INJECTION-DOM-MASKING-AND-VIEWPORT-SYNC-GUARD",
+    };
+  }
+
+  if (
+    input.visualPromptInjectionDetected ||
+    input.untrustedViewportInstructionScore >= 0.7
+  ) {
+    return {
+      allowed: false,
+      multimodalViewportSafe: false,
+      frameIngestionAllowed: false,
+      reason:
+        "INDIRECT_VISUAL_OCR_OR_HIDDEN_CSS_PROMPT_INJECTION_IN_SHARED_SCREEN_BLOCKED",
+      actionCode:
+        "QUARANTINE_VISUAL_INJECTION_PAYLOAD_AND_REQUIRE_EXPLICIT_SPOKEN_USER_INTENT",
+      policyCode:
+        "P100-MULTIMODAL-COBROWSING-VISUAL-PROMPT-INJECTION-DOM-MASKING-AND-VIEWPORT-SYNC-GUARD",
+    };
+  }
+
+  if (
+    input.requestedAction === "CO_BROWSE_CLICK_SUBMIT" &&
+    (input.viewportFrameAgeMs > 1500 || input.domMutationVersionMismatch)
+  ) {
+    return {
+      allowed: false,
+      multimodalViewportSafe: false,
+      frameIngestionAllowed: true,
+      reason:
+        "CROSS_MODAL_VIEWPORT_STALE_FRAME_OR_DOM_MUTATION_VERSION_DESYNC",
+      actionCode:
+        "HALT_STALE_CO_BROWSE_CLICK_AND_REQUEST_FRESH_DOM_VIEWPORT_KEYFRAME",
+      policyCode:
+        "P100-MULTIMODAL-COBROWSING-VISUAL-PROMPT-INJECTION-DOM-MASKING-AND-VIEWPORT-SYNC-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    multimodalViewportSafe: true,
+    frameIngestionAllowed: true,
+    reason:
+      "MULTIMODAL_COBROWSING_DOM_MASKING_AND_VIEWPORT_SYNCHRONIZATION_VERIFIED",
+    actionCode: "PERMIT_SYNCHRONIZED_CO_BROWSE_VOICE_VISUAL_ASSISTANCE",
+    policyCode:
+      "P100-MULTIMODAL-COBROWSING-VISUAL-PROMPT-INJECTION-DOM-MASKING-AND-VIEWPORT-SYNC-GUARD",
+  };
+}
+
+
 
 
 

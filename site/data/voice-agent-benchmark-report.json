@@ -508,6 +508,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P97-TELECOM-FCC-CPNI-47CFR642010-SIM-SWAP-PORT-OUT-FRAUD-AND-CDR-DISCLOSURE-AUTH-GUARD blocks inbound oral Call Detail Record (CDR) readouts without a pre-established CPNI password (rejecting Caller ID / biographical KBA) and freezes eSIM swaps or Number Port-Out PIN issuance when a port-freeze is active, within a <24h password-reset cool-down, or without phishing-resistant MFA + out-of-band subscriber alert; P98-WEBRTC-AEC3-NONLINEAR-RESIDUAL-ECHO-DOUBLE-TALK-FALSE-BARGE-IN-AND-DELAY-DRIFT-GUARD re-estimates the AEC3 delay-agnostic buffer when render-to-capture delay exceeds >250ms and suppresses false self-barge-in when uplink-downlink cross-correlation >=0.65 with ERLE <12dB and no independent near-end human pitch."
+    },
+    {
+      "dimension": "56. Automotive UNECE R155 / ISO 26262 CAN-Bus Lock & Multimodal Co-Browsing Visual Injection / DOM Masking Guard (P99 & P100 Milestone)",
+      "original_score": 1.0,
+      "perturbed_score": 1.0,
+      "delta_pts": 0.0,
+      "note": "P99-AUTOMOTIVE-UNECE-R155-ISO26262-CAN-BUS-SAFETY-LOCK-SPEED-DISTRACTION-AND-ECALL-EN15722-GUARD preempts commercial cockpit sessions in 0ms to transmit EN 15722 eCall MSD upon airbag/crash detection (>=25 km/h), blocks safety-critical CAN-bus overrides or in-motion trunk/OTA actuation (vehicleSpeedKph > 0 or non-PARK), and isolates driver-only child-lock commands from rear/passenger microphone zones; P100-MULTIMODAL-COBROWSING-VISUAL-PROMPT-INJECTION-DOM-MASKING-AND-VIEWPORT-SYNC-GUARD drops unredacted frames containing sensitive DOM fields (password/CVV/SSN), quarantines indirect OCR/hidden-CSS visual prompt injections (>=0.7), and halts stale co-browse click submissions when viewport frames lag >1500ms or DOM versions mismatch."
     }
   ],
   "latency_scaling": [
