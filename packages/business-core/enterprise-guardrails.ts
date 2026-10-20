@@ -10288,6 +10288,204 @@ export function evaluateRtpRfc3550SsrcCollisionLoopAndRfc5285HeaderExtensionGuar
   };
 }
 
+// ============================================================================
+// Stage 63: P119 (Railway FRA 49 CFR Part 220 Radio Emergency / PTC Readback & HOS Fatigue Guard)
+//           & P120 (SIP RFC 3515 REFER / RFC 3891 Replaces Hijack, Toll-Fraud & RFC 4488 Subscription Guard)
+// ============================================================================
+
+export interface RailwayFraPart220PtcReadbackAndHosFatigueGuardInput {
+  sessionId: string;
+  radioEmergencyTripleCallDetected: boolean;
+  channelClearedAndChiefDispatcherBridgedImmediately: boolean;
+  isMandatoryTrackWarrantOrFoulTimeDirective: boolean;
+  verbatimMilepostAndLocomotiveIdReadbackVerified: boolean;
+  ptcDigitalAuthorityTokenMatched: boolean;
+  crewOnDutyMinutes: number;
+  maxStatutoryOnDutyMinutes: number;
+  attemptsActiveTrainMovementAssignment: boolean;
+}
+
+export interface RailwayFraPart220PtcReadbackAndHosFatigueGuardResult {
+  allowed: boolean;
+  emergencyChannelPreempted: boolean;
+  mandatoryDirectiveReadbackValid: boolean;
+  hoursOfServiceCompliant: boolean;
+  reason:
+    | "FRA_49CFR220_47_RADIO_EMERGENCY_TRIPLE_CALL_MISSING_IMMEDIATE_CHANNEL_PREEMPTION"
+    | "FRA_49CFR220_61_MANDATORY_TRACK_WARRANT_MISSING_VERBATIM_MILEPOST_READBACK_OR_PTC_TOKEN"
+    | "FRA_49USC21103_HOURS_OF_SERVICE_12HR_ON_DUTY_CEILING_EXCEEDED_RELIEF_CREW_REQUIRED"
+    | "FRA_49CFR220_RADIO_DIRECTIVE_PTC_AUTHORITY_AND_HOURS_OF_SERVICE_COMPLIANT";
+  actionCode: string;
+  policyCode: "P119-RAILWAY-FRA-49CFR220-PTC-MANDATORY-DIRECTIVE-READBACK-EMERGENCY-PREEMPTION-AND-HOS-FATIGUE-GUARD";
+}
+
+export function evaluateRailwayFraPart220PtcReadbackAndHosFatigueGuard(
+  input: RailwayFraPart220PtcReadbackAndHosFatigueGuardInput,
+): RailwayFraPart220PtcReadbackAndHosFatigueGuardResult {
+  if (
+    input.radioEmergencyTripleCallDetected &&
+    !input.channelClearedAndChiefDispatcherBridgedImmediately
+  ) {
+    return {
+      allowed: false,
+      emergencyChannelPreempted: false,
+      mandatoryDirectiveReadbackValid: true,
+      hoursOfServiceCompliant: true,
+      reason:
+        "FRA_49CFR220_47_RADIO_EMERGENCY_TRIPLE_CALL_MISSING_IMMEDIATE_CHANNEL_PREEMPTION",
+      actionCode:
+        "PREEMPT_RADIO_CHANNEL_TRIGGER_PTC_EMERGENCY_STOP_AND_BRIDGE_CHIEF_DISPATCHER",
+      policyCode:
+        "P119-RAILWAY-FRA-49CFR220-PTC-MANDATORY-DIRECTIVE-READBACK-EMERGENCY-PREEMPTION-AND-HOS-FATIGUE-GUARD",
+    };
+  }
+
+  if (
+    input.isMandatoryTrackWarrantOrFoulTimeDirective &&
+    (!input.verbatimMilepostAndLocomotiveIdReadbackVerified ||
+      !input.ptcDigitalAuthorityTokenMatched)
+  ) {
+    return {
+      allowed: false,
+      emergencyChannelPreempted: true,
+      mandatoryDirectiveReadbackValid: false,
+      hoursOfServiceCompliant: true,
+      reason:
+        "FRA_49CFR220_61_MANDATORY_TRACK_WARRANT_MISSING_VERBATIM_MILEPOST_READBACK_OR_PTC_TOKEN",
+      actionCode:
+        "HOLD_TRACK_AUTHORITY_AND_DEMAND_VERBATIM_MILEPOST_LOCOMOTIVE_READBACK_WITH_PTC_SYNC",
+      policyCode:
+        "P119-RAILWAY-FRA-49CFR220-PTC-MANDATORY-DIRECTIVE-READBACK-EMERGENCY-PREEMPTION-AND-HOS-FATIGUE-GUARD",
+    };
+  }
+
+  if (
+    input.attemptsActiveTrainMovementAssignment &&
+    input.crewOnDutyMinutes >= input.maxStatutoryOnDutyMinutes
+  ) {
+    return {
+      allowed: false,
+      emergencyChannelPreempted: true,
+      mandatoryDirectiveReadbackValid: true,
+      hoursOfServiceCompliant: false,
+      reason:
+        "FRA_49USC21103_HOURS_OF_SERVICE_12HR_ON_DUTY_CEILING_EXCEEDED_RELIEF_CREW_REQUIRED",
+      actionCode:
+        "BLOCK_MOVEMENT_ORDER_AND_DISPATCH_RELIEF_DOGCATCH_CREW_FOR_MANDATORY_10HR_REST",
+      policyCode:
+        "P119-RAILWAY-FRA-49CFR220-PTC-MANDATORY-DIRECTIVE-READBACK-EMERGENCY-PREEMPTION-AND-HOS-FATIGUE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    emergencyChannelPreempted: true,
+    mandatoryDirectiveReadbackValid: true,
+    hoursOfServiceCompliant: true,
+    reason:
+      "FRA_49CFR220_RADIO_DIRECTIVE_PTC_AUTHORITY_AND_HOURS_OF_SERVICE_COMPLIANT",
+    actionCode: "COMMIT_RAILWAY_DISPATCH_COMMUNICATION",
+    policyCode:
+      "P119-RAILWAY-FRA-49CFR220-PTC-MANDATORY-DIRECTIVE-READBACK-EMERGENCY-PREEMPTION-AND-HOS-FATIGUE-GUARD",
+  };
+}
+
+export interface SipRfc3515ReferReplacesHijackAndTollFraudGuardInput {
+  sessionId: string;
+  referToTargetDomainOrNumberAllowlisted: boolean;
+  referToUriContainsInjectedSipHeaders: boolean;
+  isAttendedTransferWithReplacesHeader: boolean;
+  replacesTargetDialogSameTenantAndHmacVerified: boolean;
+  implicitReferSubscriptionActiveWithoutRfc4488Suppression: boolean;
+  transferRingingDurationMs: number;
+  maxTransferRingingTimeoutMs: number;
+}
+
+export interface SipRfc3515ReferReplacesHijackAndTollFraudGuardResult {
+  allowed: boolean;
+  referToTargetSafe: boolean;
+  replacesDialogIsolated: boolean;
+  referSubscriptionBounded: boolean;
+  reason:
+    | "RFC3515_SIP_REFER_TO_UNAPPROVED_TRUNK_TOLL_FRAUD_OR_EMBEDDED_HEADER_INJECTION_BLOCKED"
+    | "RFC3891_SIP_REPLACES_CROSS_TENANT_OR_UNAUTHENTICATED_DIALOG_HIJACK_BLOCKED"
+    | "RFC3515_ORPHANED_IMPLICIT_REFER_SUBSCRIPTION_EXCEEDS_RINGING_TIMEOUT_WITHOUT_RFC4488"
+    | "RFC3515_SIP_REFER_REPLACES_AND_RFC4488_SUBSCRIPTION_STATE_HEALTHY";
+  actionCode: string;
+  policyCode: "P120-SIP-RFC3515-REFER-REPLACES-DIALOG-HIJACK-TOLL-FRAUD-URI-INJECTION-AND-SUBSCRIPTION-LEAK-GUARD";
+}
+
+export function evaluateSipRfc3515ReferReplacesHijackAndTollFraudGuard(
+  input: SipRfc3515ReferReplacesHijackAndTollFraudGuardInput,
+): SipRfc3515ReferReplacesHijackAndTollFraudGuardResult {
+  if (
+    !input.referToTargetDomainOrNumberAllowlisted ||
+    input.referToUriContainsInjectedSipHeaders
+  ) {
+    return {
+      allowed: false,
+      referToTargetSafe: false,
+      replacesDialogIsolated: true,
+      referSubscriptionBounded: true,
+      reason:
+        "RFC3515_SIP_REFER_TO_UNAPPROVED_TRUNK_TOLL_FRAUD_OR_EMBEDDED_HEADER_INJECTION_BLOCKED",
+      actionCode:
+        "REJECT_SIP_REFER_403_FORBIDDEN_AND_STRIP_EMBEDDED_URI_HEADERS",
+      policyCode:
+        "P120-SIP-RFC3515-REFER-REPLACES-DIALOG-HIJACK-TOLL-FRAUD-URI-INJECTION-AND-SUBSCRIPTION-LEAK-GUARD",
+    };
+  }
+
+  if (
+    input.isAttendedTransferWithReplacesHeader &&
+    !input.replacesTargetDialogSameTenantAndHmacVerified
+  ) {
+    return {
+      allowed: false,
+      referToTargetSafe: true,
+      replacesDialogIsolated: false,
+      referSubscriptionBounded: true,
+      reason:
+        "RFC3891_SIP_REPLACES_CROSS_TENANT_OR_UNAUTHENTICATED_DIALOG_HIJACK_BLOCKED",
+      actionCode:
+        "REJECT_ATTENDED_TRANSFER_AND_ENFORCE_SAME_TENANT_HMAC_DIALOG_OWNERSHIP",
+      policyCode:
+        "P120-SIP-RFC3515-REFER-REPLACES-DIALOG-HIJACK-TOLL-FRAUD-URI-INJECTION-AND-SUBSCRIPTION-LEAK-GUARD",
+    };
+  }
+
+  if (
+    input.implicitReferSubscriptionActiveWithoutRfc4488Suppression &&
+    input.transferRingingDurationMs > input.maxTransferRingingTimeoutMs
+  ) {
+    return {
+      allowed: false,
+      referToTargetSafe: true,
+      replacesDialogIsolated: true,
+      referSubscriptionBounded: false,
+      reason:
+        "RFC3515_ORPHANED_IMPLICIT_REFER_SUBSCRIPTION_EXCEEDS_RINGING_TIMEOUT_WITHOUT_RFC4488",
+      actionCode:
+        "TERMINATE_IMPLICIT_REFER_SUBSCRIPTION_AND_ENFORCE_RFC4488_REFER_SUB_FALSE",
+      policyCode:
+        "P120-SIP-RFC3515-REFER-REPLACES-DIALOG-HIJACK-TOLL-FRAUD-URI-INJECTION-AND-SUBSCRIPTION-LEAK-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    referToTargetSafe: true,
+    replacesDialogIsolated: true,
+    referSubscriptionBounded: true,
+    reason:
+      "RFC3515_SIP_REFER_REPLACES_AND_RFC4488_SUBSCRIPTION_STATE_HEALTHY",
+    actionCode: "EXECUTE_VALIDATED_SIP_CALL_TRANSFER",
+    policyCode:
+      "P120-SIP-RFC3515-REFER-REPLACES-DIALOG-HIJACK-TOLL-FRAUD-URI-INJECTION-AND-SUBSCRIPTION-LEAK-GUARD",
+  };
+}
+
+
 
 
 

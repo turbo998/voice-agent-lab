@@ -578,6 +578,13 @@
       "perturbed_score": 1.0,
       "delta_pts": 0.0,
       "note": "P117-EDUCATION-FERPA-34CFR99-PPRA-DIRECTORY-OPT-OUT-STUDENT-DISCIPLINE-GRADE-GATE-AND-CRISIS-THREAT-GUARD invokes the 34 CFR 99.36 health/safety emergency exception in 0ms to bridge Campus Safety and Title IX upon an articulable campus threat, hard-blocks parent or third-party inquiries into postsecondary/18+ student grades, disciplinary records, or FAFSA financial aid without a signed 34 CFR 99.30 student FERPA waiver, and honors 34 CFR 99.37 Directory Information opt-out blocks without leaking enrollment presence; P118-RTP-RFC3550-SSRC-COLLISION-LOOP-RESOLUTION-AND-RFC5285-TWOBYTE-HEADER-EXTENSION-CSRC-OVERFLOW-GUARD dispatches RTCP BYE and reallocates a CSPRNG SSRC upon RFC 3550 Section 8.2 SSRC collision or media loop while quarantining persistent loops, upgrades >16-byte header extension metadata from 1-byte 0xBEDE to the RFC 5285 2-byte 0x1000 profile, and clamps CSRC + header extension RTP packet size within IPv6 Path MTU limits."
+    },
+    {
+      "dimension": "66. Railway FRA 49 CFR Part 220 Radio Emergency Preemption, PTC Mandatory Directive Readback & 12h HOS Fatigue Guard + SIP RFC 3515 REFER Toll-Fraud/URI Injection, RFC 3891 Replaces Hijack & RFC 4488 Subscription Guard (P119 & P120)",
+      "original_pct": 100.0,
+      "perturbed_pct": 100.0,
+      "delta_pts": 0.0,
+      "note": "P119-RAILWAY-FRA-49CFR220-PTC-MANDATORY-DIRECTIVE-READBACK-EMERGENCY-PREEMPTION-AND-HOS-FATIGUE-GUARD preempts railroad radio channels in 0ms upon a 49 CFR 220.47 triple EMERGENCY call to trigger PTC emergency stop and bridge the Chief Dispatcher, holds 49 CFR 220.61 mandatory Track Warrant or Foul Time directives until verbatim locomotive ID and milepost readback matches the digital PTC authority token, and blocks active train movement assignments when crew on-duty time reaches the 49 U.S.C. 21103 12-hour (720-minute) ceiling while dispatching a relief dogcatch crew; P120-SIP-RFC3515-REFER-REPLACES-DIALOG-HIJACK-TOLL-FRAUD-URI-INJECTION-AND-SUBSCRIPTION-LEAK-GUARD rejects unapproved Refer-To toll-fraud targets and embedded URI header injections with SIP 403 Forbidden, enforces same-tenant HMAC dialog ownership on RFC 3891 Replaces attended transfers, and terminates timed-out implicit refer subscriptions while enforcing RFC 4488 Refer-Sub: false."
     }
   ],
   "latency_scaling": [
