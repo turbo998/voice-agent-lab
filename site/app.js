@@ -3999,6 +3999,40 @@
         confidence: 1.0,
         verifier: 'PASS (P84) · Narrowband F/S/B/P confusion blocked & NATO readback + TRFO passthrough enforced'
       }
+    },
+    {
+      code: 'P85 · EU Omnibus 30-Day Lowest Price Transparency, Promo Stacking Cap & Serial Chargeback Abuse Guard',
+      badge: 'EU Omnibus + Promo Cap',
+      title: '欧盟 Omnibus 指令 30 天最低价锚点核验、促销码折上折封顶与恶意拒付/假称未收到货 (DNR) 护栏',
+      sub: '测试主叫拥有 >=2 次历史拒付/DNR 索赔记录要求免退货秒退，或诱导叠加互斥优惠码突破 25% 折扣上限，或播报降价优惠时缺失过去 30 天真实最低价披露时的 0ms 拦截',
+      customer_en: '[E-Commerce Caller with 3 Prior DNR/Chargeback Claims Demands Stackable VIP30 + FLASH20 + Retention Credit (52% Off vs. 25% Cap) Plus Instant Refund Without Returning Item, While Agent Drafts "50% Off $299 Anchor Price" Without 30-Day Lowest Price]',
+      customer_zh: '【近 90 天已有 3 次信用卡拒付/DNR 索赔的买家要求同时叠加 VIP30 + FLASH20 + 挽留补贴（总折扣 52% 突破 25% 红线）并免退货秒退款，且待播报促销话术缺失欧盟 Omnibus 过去 30 天最低成交价披露】',
+      agent_en: 'OMNIBUS PRICE TRANSPARENCY & PROMO ABUSE GUARD (P85 / P85-OMNIBUS-PRICE-TRANSPARENCY-PROMO-ABUSE-AND-CHARGEBACK-GUARD): Blocked serial DNR/chargeback refund abuse (`activeChargebackOrSerialDnrCount=3 >= 2`) and mutually exclusive promo stacking (`52% > 25% cap` -> `SERIAL_CHARGEBACK_ABUSE_OR_NON_STACKABLE_MARGIN_FLOOR_BREACH_BLOCKED` / `BLOCK_INSTANT_REFUND_AND_LOCK_SINGLE_PROMO_CAP_WITH_POD_AUDIT`), and enforced EU Omnibus Directive (EU) 2019/2161 Article 6a 30-day lowest benchmark price disclosure (`INJECT_VERIFIED_30DAY_LOWEST_BENCHMARK_PRICE_DISCLOSURE`)!',
+      agent_zh: '【P85 欧盟 Omnibus 价格透明与促销防薅护栏 (SERIAL_CHARGEBACK_ABUSE_OR_NON_STACKABLE_MARGIN_FLOOR_BREACH_BLOCKED)】检出主叫存在 >=2 次历史拒付/DNR 异常记录且试图叠加互斥优惠码突破 25% 折扣上限！已 0ms 阻断免退货秒退、锁定单一合规促销档位并强制调取物流妥投 GPS/照片存证，同时按欧盟 Omnibus 指令自动补齐过去 30 天最低成交价披露！',
+      trace: {
+        tool: 'evaluate_omnibus_price_transparency_and_promo_abuse_guard(dnr_count=3, stack_attempt=true, discount_pct=52, cap_pct=25 -> BLOCK_INSTANT_REFUND_AND_LOCK_SINGLE_PROMO_CAP_WITH_POD_AUDIT)',
+        citations: ['P85-OMNIBUS-PRICE-TRANSPARENCY-PROMO-ABUSE-AND-CHARGEBACK-GUARD', 'EU-OMNIBUS-2019-2161-ART-6A', 'FTC-16-CFR-233'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P85) · Serial DNR/chargeback & 52% promo stacking blocked + 30-day lowest price enforced'
+      }
+    },
+    {
+      code: 'P86 · Bluetooth HFP/SCO Profile Handover Pop-Glitch & CVSD 8kHz Narrowband Codec Renegotiation Guard',
+      badge: '800ms Hold + 8kHz Recal',
+      title: '车载/TWS 蓝牙 HFP/SCO 路由切换瞬态爆音防误打断与 CVSD 8kHz 窄带降级重校准护栏',
+      sub: '测试手机从扬声器切入车载蓝牙 HFP 产生 -1.5dBFS 瞬态爆音与 420ms 静默黑洞引发误打断/截断半句话，以及蓝牙退化为 CVSD 8kHz 时未重校准 ASR 前端的确定性防护',
+      customer_en: '[Caller Enters Vehicle During Active Call: Audio Switches from iPhone Mic to Car Bluetooth HFP, Causing a -1.5dBFS Pop Spike + 420ms Silence Gap and Degrading Link from mSBC 16kHz to Legacy CVSD 8kHz Without ASR Recalibration]',
+      customer_zh: '【主叫在通话中上车点火：音频由手机麦克风切换至车载蓝牙 HFP，产生 -1.5dBFS 瞬态爆音脉冲与 420ms 静默空洞，且蓝牙链路从 mSBC 16kHz 退化为老旧 CVSD 8kHz 窄带而未重校准 ASR 采样前端】',
+      agent_en: 'BLUETOOTH HFP HANDOVER GLITCH & CODEC GUARD (P86 / P86-BLUETOOTH-HFP-SCO-HANDOVER-GLITCH-AND-CODEC-RENEGOTIATION-GUARD): Muted `-1.5dBFS` hardware pop and froze VAD/EOU endpointing for an `800ms` Bluetooth route handover window (`BLUETOOTH_HFP_HANDOVER_TRANSIENT_POP_OR_EOU_PREMATURE_CUTOFF_BLOCKED` -> `MUTE_TRANSIENT_POP_AND_FREEZE_VAD_EOU_FOR_800MS_HANDOVER_WINDOW`), and recalibrated ASR acoustic frontend to 8kHz narrowband upon CVSD fallback (`RECALIBRATE_ASR_8KHZ_FRONTEND_AND_REQUEST_POST_HANDOVER_CONFIRMATION`)!',
+      agent_zh: '【P86 蓝牙 HFP 切换防爆音打断与 CVSD 8kHz 重校准护栏 (BLUETOOTH_HFP_HANDOVER_TRANSIENT_POP_OR_EOU_PREMATURE_CUTOFF_BLOCKED)】检出车载蓝牙路由切换引发 -1.5dBFS 硬件爆音与 420ms 切换静默，已立即静音瞬态脉冲并冻结 VAD/EOU 判停窗口 800ms（0 误打断、0 半句截断），同时针对 CVSD 8kHz 窄带降级自动重校准 ASR 声学前端！',
+      trace: {
+        tool: 'evaluate_bluetooth_hfp_handover_glitch_and_codec_guard(route_switch=true, pop_dbfs=-1.5, gap_ms=420, cvsd_8khz=true -> MUTE_TRANSIENT_POP_AND_FREEZE_VAD_EOU_FOR_800MS_HANDOVER_WINDOW)',
+        citations: ['P86-BLUETOOTH-HFP-SCO-HANDOVER-GLITCH-AND-CODEC-RENEGOTIATION-GUARD', 'BLUETOOTH-HFP-1.8-MSBC-CVSD', 'WEBRTC-DEVICE-CHANGE-HOLD'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P86) · Bluetooth handover pop/gap muted (800ms EOU hold) & CVSD 8kHz ASR recalibrated'
+      }
     }
   ];
 
@@ -4116,7 +4150,8 @@
       '- [x] **公用事业极端天气停电豁免与医疗生命维持设备断电保护护栏 & RTP 抖动缓冲欠载/采样时钟漂移重同步与 RFC 3389 舒适噪音护栏**：0ms 物理拦截针对生命维持设备住户或寒潮/酷暑法定禁停期的智能电表远程拉闸并强制 LIHEAP 救助披露 (P77)，`>150ppm` 时钟漂移或 `>3.5%` 抖动欠载时启动分数阶 ASRC 重采样并在 `>=1200ms` 静默期注入 RFC 3389 舒适噪音防误挂机 (P78)',
       '- [x] **海事港口 SOLAS GMDSS / VHF Ch16 遇险抢占与 IMO SMCP 复诵护栏 & 原生 S2S 情绪传染咆哮镜像抑制与响度/语速稳定护栏**：船长呼叫 MAYDAY/PAN-PAN 或触发 GMDSS DSC 时 0ms 抢占排泊对话直连海事搜救中心 MRCC 并强验 9 位 MMSI 与 IMO SMCP 逐字复诵 (P79)，0ms 钳位 S2S 咆哮/冷笑情绪传染镜像 (`F0>310Hz`) 并强制执行 ITU-R BS.1770 (`-16 LUFS`) 与 `155 WPM` 语速稳频 (P80)',
       '- [x] **车险/财险 FNOL 时间轴/EDR 遥测对账与禁 VSA 伪科学拒赔护栏 & 弱网突发连续丢包防 PLC 音素脑补幻觉与 RFC 4585 NACK 护栏**：冻结倒签保单、车载 EDR 碰撞时间偏差 `>15min` 或旁白教唆闪赔移交 SIU 并按 NAIC/EU AI Act 剥离伪科学声学测谎分 (P81)，在 `>=240ms` 突发连续丢包覆盖关键否定词/金额槽位时 0ms 阻断投机工具调用并强制开启 RFC 4585 RTCP NACK 与 Opus FEC (P82)',
-      '- [x] **跨境海关 HS 编码防逃税改写/Section 321 免税拆单与 OFAC 制裁筛查护栏 & PSTN 跨网 AMR-WB/G.711 级联转码清擦音防混淆与 TRFO 护栏**：0ms 冻结命中 OFAC SDN / BIS 实体清单 (`>=0.85`) 的报关单并硬阻断口头篡改免税 HS 编码、`<$800` 免税拆单与 `>=25%` 低报货值 (P83)，在 `3.4kHz` 窄带砖墙滤波 (`<=-28dB`) 抹除 `F/S/B/P` 清擦音或 `>=2` 跳级联转码时强制北约字母逐位复诵与 SBC TRFO 免转码透传 (P84)'
+      '- [x] **跨境海关 HS 编码防逃税改写/Section 321 免税拆单与 OFAC 制裁筛查护栏 & PSTN 跨网 AMR-WB/G.711 级联转码清擦音防混淆与 TRFO 护栏**：0ms 冻结命中 OFAC SDN / BIS 实体清单 (`>=0.85`) 的报关单并硬阻断口头篡改免税 HS 编码、`<$800` 免税拆单与 `>=25%` 低报货值 (P83)，在 `3.4kHz` 窄带砖墙滤波 (`<=-28dB`) 抹除 `F/S/B/P` 清擦音或 `>=2` 跳级联转码时强制北约字母逐位复诵与 SBC TRFO 免转码透传 (P84)',
+      '- [x] **欧盟 Omnibus 指令 30 天最低价核验/促销码折上折封顶与恶意拒付拦截护栏 & 车载/TWS 蓝牙 HFP/SCO 路由切换爆音屏蔽与 CVSD 8kHz 重校准护栏**：0ms 阻断 `>=2` 次拒付/DNR 惯犯免退货秒退与互斥优惠码折上折破底线并强制披露过去 30 天最低成交价 (P85)，在车载蓝牙切换产生 `>=-3dBFS` 瞬态爆音或 `>=200ms` 静默黑洞时冻结 VAD/EOU `800ms` 并针对 `CVSD 8kHz` 窄带降级重校准 ASR 前端 (P86)'
     ].join('\n');
   }
 

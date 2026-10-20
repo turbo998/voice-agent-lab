@@ -7353,6 +7353,175 @@ export function evaluateAmrWbG711TandemTranscodingFricativeGuard(
   };
 }
 
+export interface StilleOmnibusPriceTransparencyPromoAbuseGuardInput {
+  callId: string;
+  priceReductionAnnouncementIssued: boolean;
+  prior30DayLowestPriceDisclosed: boolean;
+  fakeAnchorReferencePriceClaimed: boolean;
+  mutuallyExclusivePromoStackAttempted: boolean;
+  effectiveDiscountPercent: number;
+  maxAllowedDiscountCapPercent: number;
+  activeChargebackOrSerialDnrCount: number;
+}
+
+export interface StilleOmnibusPriceTransparencyPromoAbuseGuardDecision {
+  policyCode: "P85-OMNIBUS-PRICE-TRANSPARENCY-PROMO-ABUSE-AND-CHARGEBACK-GUARD";
+  callId: string;
+  promoOrRefundApproved: boolean;
+  allowed: boolean;
+  reason:
+    | "SERIAL_CHARGEBACK_ABUSE_OR_NON_STACKABLE_MARGIN_FLOOR_BREACH_BLOCKED"
+    | "EU_OMNIBUS_30DAY_LOWEST_PRICE_OR_FTC_ANCHOR_VIOLATION_BLOCKED"
+    | "OMNIBUS_PRICE_TRANSPARENCY_AND_PROMO_ELIGIBILITY_VERIFIED";
+  actionCode:
+    | "BLOCK_INSTANT_REFUND_AND_LOCK_SINGLE_PROMO_CAP_WITH_POD_AUDIT"
+    | "INJECT_VERIFIED_30DAY_LOWEST_BENCHMARK_PRICE_DISCLOSURE"
+    | "APPLY_VERIFIED_SINGLE_TIER_PROMOTION";
+  summaryZh: string;
+}
+
+/**
+ * P85 — E-Commerce / Retail EU Omnibus Directive (Art. 6a) 30-Day Lowest Price Transparency, Non-Stackable Coupon Margin Floor & Serial Chargeback / DNR Abuse Guard
+ *
+ * 1. Prevents social-engineering promo stacking (combining mutually exclusive VIP/employee/compensation
+ *    coupons that breach the merchant's margin floor `maxAllowedDiscountCapPercent`) and blocks instant
+ *    voice refunds when the caller has >=2 active credit-card chargebacks or serial "Delivered Not Received"
+ *    (DNR) claims pending Proof-of-Delivery (POD) investigation.
+ * 2. Enforces EU Omnibus Directive (Directive (EU) 2019/2161 Art. 6a) and FTC 16 CFR Part 233 Against
+ *    Deceptive Pricing: whenever the voice agent announces a price reduction or promotional discount,
+ *    it must state the verified lowest price charged in the prior 30 days and never cite an unverified
+ *    or inflated strike-through anchor price.
+ */
+export function evaluateOmnibusPriceTransparencyAndPromoAbuseGuard(
+  input: StilleOmnibusPriceTransparencyPromoAbuseGuardInput
+): StilleOmnibusPriceTransparencyPromoAbuseGuardDecision {
+  if (
+    input.activeChargebackOrSerialDnrCount >= 2 ||
+    (input.mutuallyExclusivePromoStackAttempted &&
+      input.effectiveDiscountPercent > input.maxAllowedDiscountCapPercent)
+  ) {
+    return {
+      policyCode: "P85-OMNIBUS-PRICE-TRANSPARENCY-PROMO-ABUSE-AND-CHARGEBACK-GUARD",
+      callId: input.callId,
+      promoOrRefundApproved: false,
+      allowed: false,
+      reason: "SERIAL_CHARGEBACK_ABUSE_OR_NON_STACKABLE_MARGIN_FLOOR_BREACH_BLOCKED",
+      actionCode: "BLOCK_INSTANT_REFUND_AND_LOCK_SINGLE_PROMO_CAP_WITH_POD_AUDIT",
+      summaryZh: `【P85 电商恶意拒付/DNR 欺诈与互斥神券叠加击穿毛利红线拦截护栏 (SERIAL_CHARGEBACK_ABUSE_OR_NON_STACKABLE_MARGIN_FLOOR_BREACH_BLOCKED)】通话 ${input.callId} 检出高频拒付/DNR 异常记录 (${input.activeChargebackOrSerialDnrCount} 次) 或试图强行叠加互斥优惠券导致总折扣率 (${input.effectiveDiscountPercent}%) 击穿毛利上限 (${input.maxAllowedDiscountCapPercent}%)！已硬阻断秒退并锁定单券折扣上限、转交签收底单 (POD) 稽核。`,
+    };
+  }
+
+  if (
+    input.priceReductionAnnouncementIssued &&
+    (!input.prior30DayLowestPriceDisclosed || input.fakeAnchorReferencePriceClaimed)
+  ) {
+    return {
+      policyCode: "P85-OMNIBUS-PRICE-TRANSPARENCY-PROMO-ABUSE-AND-CHARGEBACK-GUARD",
+      callId: input.callId,
+      promoOrRefundApproved: false,
+      allowed: false,
+      reason: "EU_OMNIBUS_30DAY_LOWEST_PRICE_OR_FTC_ANCHOR_VIOLATION_BLOCKED",
+      actionCode: "INJECT_VERIFIED_30DAY_LOWEST_BENCHMARK_PRICE_DISCLOSURE",
+      summaryZh: `【P85 欧盟 Omnibus 指令 (Art. 6a) 30 天最低基准价披露与 FTC 防虚构原价护栏 (EU_OMNIBUS_30DAY_LOWEST_PRICE_OR_FTC_ANCHOR_VIOLATION_BLOCKED)】通话 ${input.callId} 在播报促销降价时未披露过去 30 天真实最低成交价 (disclosed=${input.prior30DayLowestPriceDisclosed}) 或引用虚构划线原价 (fakeAnchor=${input.fakeAnchorReferencePriceClaimed})！已拦截违规话术并强制注入经核验的 30 天最低历史基准价。`,
+    };
+  }
+
+  return {
+    policyCode: "P85-OMNIBUS-PRICE-TRANSPARENCY-PROMO-ABUSE-AND-CHARGEBACK-GUARD",
+    callId: input.callId,
+    promoOrRefundApproved: true,
+    allowed: true,
+    reason: "OMNIBUS_PRICE_TRANSPARENCY_AND_PROMO_ELIGIBILITY_VERIFIED",
+    actionCode: "APPLY_VERIFIED_SINGLE_TIER_PROMOTION",
+    summaryZh: `【P85 欧盟 Omnibus 30 天最低价透明披露与单券折扣核验通过】通话 ${input.callId} 折扣率 (${input.effectiveDiscountPercent}% <= ${input.maxAllowedDiscountCapPercent}%) 与历史基准价披露完全合规。`,
+  };
+}
+
+export interface StilleBluetoothHfpHandoverGlitchAndCodecGuardInput {
+  callId: string;
+  bluetoothAudioRouteSwitchDetected: boolean;
+  transientPopPeakDbFs: number;
+  routeSwitchGapDurationMs: number;
+  bluetoothScoLinkDegradedToCvsd8kHz: boolean;
+  bargeInAndEouHoldWindowActive: boolean;
+  asrFrontendSampleRateRecalibrated: boolean;
+}
+
+export interface StilleBluetoothHfpHandoverGlitchAndCodecGuardDecision {
+  policyCode: "P86-BLUETOOTH-HFP-SCO-HANDOVER-GLITCH-AND-CODEC-RENEGOTIATION-GUARD";
+  callId: string;
+  bluetoothStreamStable: boolean;
+  allowed: boolean;
+  reason:
+    | "BLUETOOTH_HFP_HANDOVER_TRANSIENT_POP_OR_EOU_PREMATURE_CUTOFF_BLOCKED"
+    | "UNRECALIBRATED_BLUETOOTH_CVSD_8KHZ_NARROWBAND_FALLBACK_BLOCKED"
+    | "BLUETOOTH_HFP_LE_AUDIO_ROUTE_AND_CODEC_STABLE";
+  actionCode:
+    | "MUTE_TRANSIENT_POP_AND_FREEZE_VAD_EOU_FOR_800MS_HANDOVER_WINDOW"
+    | "RECALIBRATE_ASR_8KHZ_FRONTEND_AND_REQUEST_POST_HANDOVER_CONFIRMATION"
+    | "CONTINUE_FULL_DUPLEX_BLUETOOTH_VOICE_STREAM";
+  summaryZh: string;
+}
+
+/**
+ * P86 — Bluetooth HFP 1.8 / CarPlay / LE Audio Mid-Call Route Handover Transient Pop Barge-In Suppression, EOU Hold & mSBC-to-CVSD 8kHz Codec Fallback Guard
+ *
+ * 1. When a mobile caller enters/exits a vehicle or switches audio routes mid-call (iPhone Speaker <->
+ *    AirPods <-> CarPlay / Bluetooth HFP SCO), the OS audio HAL emits a transient DC offset pop
+ *    (`transientPopPeakDbFs >= -3 dBFS`) followed by a `200ms–750ms` silence gap while Bluetooth SCO
+ *    renegotiates. Without protection, the transient pop falsely triggers Barge-In (cutting off the AI)
+ *    and the handover gap prematurely triggers End-of-Utterance (EOU) mid-sentence. Mutes the transient
+ *    pop and freezes VAD/EOU for an 800ms handover stabilization window.
+ * 2. When RF interference degrades Bluetooth HFP from wideband `mSBC (16kHz)` to narrowband `CVSD (8kHz)`
+ *    without recalibrating the ASR acoustic front-end sample-rate filter, blocks uncalibrated transcription
+ *    and recalibrates the 8kHz front-end.
+ */
+export function evaluateBluetoothHfpHandoverGlitchAndCodecGuard(
+  input: StilleBluetoothHfpHandoverGlitchAndCodecGuardInput
+): StilleBluetoothHfpHandoverGlitchAndCodecGuardDecision {
+  if (
+    input.bluetoothAudioRouteSwitchDetected &&
+    (input.transientPopPeakDbFs >= -3 || input.routeSwitchGapDurationMs >= 200) &&
+    !input.bargeInAndEouHoldWindowActive
+  ) {
+    return {
+      policyCode: "P86-BLUETOOTH-HFP-SCO-HANDOVER-GLITCH-AND-CODEC-RENEGOTIATION-GUARD",
+      callId: input.callId,
+      bluetoothStreamStable: false,
+      allowed: false,
+      reason: "BLUETOOTH_HFP_HANDOVER_TRANSIENT_POP_OR_EOU_PREMATURE_CUTOFF_BLOCKED",
+      actionCode: "MUTE_TRANSIENT_POP_AND_FREEZE_VAD_EOU_FOR_800MS_HANDOVER_WINDOW",
+      summaryZh: `【P86 蓝牙耳机/车载 CarPlay 音频路由切换瞬态爆音防伪打断与 EOU 保持护栏 (BLUETOOTH_HFP_HANDOVER_TRANSIENT_POP_OR_EOU_PREMATURE_CUTOFF_BLOCKED)】通话 ${input.callId} 检出蓝牙 HFP/CarPlay 音频路由切换瞬态冲击 (${input.transientPopPeakDbFs}dBFS, 切换断流 ${input.routeSwitchGapDurationMs}ms) 且未激活 800ms 路由切换保持窗！已静默剥离切换爆音并冻结 VAD 打断与句末 EOU 判定。`,
+    };
+  }
+
+  if (
+    input.bluetoothScoLinkDegradedToCvsd8kHz &&
+    !input.asrFrontendSampleRateRecalibrated
+  ) {
+    return {
+      policyCode: "P86-BLUETOOTH-HFP-SCO-HANDOVER-GLITCH-AND-CODEC-RENEGOTIATION-GUARD",
+      callId: input.callId,
+      bluetoothStreamStable: false,
+      allowed: false,
+      reason: "UNRECALIBRATED_BLUETOOTH_CVSD_8KHZ_NARROWBAND_FALLBACK_BLOCKED",
+      actionCode: "RECALIBRATE_ASR_8KHZ_FRONTEND_AND_REQUEST_POST_HANDOVER_CONFIRMATION",
+      summaryZh: `【P86 蓝牙 SCO 链路从 mSBC 16kHz 降级至 CVSD 8kHz 窄带前端重校准护栏 (UNRECALIBRATED_BLUETOOTH_CVSD_8KHZ_NARROWBAND_FALLBACK_BLOCKED)】通话 ${input.callId} 蓝牙链路已降级为 CVSD 8kHz 窄带但 ASR 声学前端尚未重校准采样率！已拦截失真识别并动态重校准 8kHz 窄带滤波器。`,
+    };
+  }
+
+  return {
+    policyCode: "P86-BLUETOOTH-HFP-SCO-HANDOVER-GLITCH-AND-CODEC-RENEGOTIATION-GUARD",
+    callId: input.callId,
+    bluetoothStreamStable: true,
+    allowed: true,
+    reason: "BLUETOOTH_HFP_LE_AUDIO_ROUTE_AND_CODEC_STABLE",
+    actionCode: "CONTINUE_FULL_DUPLEX_BLUETOOTH_VOICE_STREAM",
+    summaryZh: `【P86 蓝牙 HFP / LE Audio 音频路由与编解码状态稳定】通话 ${input.callId} 蓝牙路由平稳或已完成切换重校准，全双工流正常继续。`,
+  };
+}
+
+
 
 
 

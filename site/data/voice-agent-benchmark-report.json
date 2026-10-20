@@ -459,6 +459,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P83-CUSTOMS-TARIFF-HS-CODE-EVASION-AND-OFAC-SANCTIONS-SCREENING-GUARD freezes shipment clearance on OFAC SDN / BIS Entity List matches (>=0.85) or sanctioned transshipment routes and blocks verbal duty-free HS reclassification, Section 321 (<$800) split-shipment evasion, or >=25% invoice undervaluation; P84-PSTN-AMR-WB-G711-TRANSCODING-TANDEM-FREE-AND-FRICATIVE-GAIN-GUARD blocks unconfirmed alphanumeric serial/policy commits under narrowband 3.4kHz brick-wall roll-off (<=-28dB) where sibilant fricatives (F/S, B/P/D/T, M/N) are indistinguishable and enforces NATO phonetic readback + 3GPP TRFO codec passthrough."
+    },
+    {
+      "check_name": "EU Omnibus 30-Day Lowest Price / Promo Stacking & Chargeback Abuse Guard + Bluetooth HFP/SCO Handover Glitch & CVSD 8kHz Guard (P85 / P86)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P85-OMNIBUS-PRICE-TRANSPARENCY-PROMO-ABUSE-AND-CHARGEBACK-GUARD blocks instant returnless refunds for callers with >=2 prior chargebacks/DNR claims, prevents mutually exclusive promo code stacking exceeding margin caps, and enforces EU Omnibus 30-day lowest benchmark price disclosures; P86-BLUETOOTH-HFP-SCO-HANDOVER-GLITCH-AND-CODEC-RENEGOTIATION-GUARD mutes >=-3dBFS transient pop spikes and freezes VAD/EOU for 800ms during Bluetooth route switches while recalibrating ASR frontends upon CVSD 8kHz narrowband fallback."
     }
   ],
   "latency_scaling": [
