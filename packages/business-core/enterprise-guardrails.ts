@@ -7972,4 +7972,161 @@ export function evaluateMultipartyConferenceSpeakerDiarizationAndRoleIsolationGu
   };
 }
 
+export interface StilleSecuritiesRegBiSuitabilityGuardInput {
+  callId: string;
+  investorRiskProfile: "CONSERVATIVE" | "MODERATE" | "AGGRESSIVE_SPECULATIVE";
+  productComplexityTier:
+    | "CORE_INDEX_OR_TREASURY"
+    | "LEVERAGED_INVERSE_ETF_OR_COMPLEX_DERIVATIVE";
+  agentSuggestedOrHighlightedTicker: boolean;
+  orderMarkedSolicitedFlag: boolean;
+  complexProductRiskDisclosureAcknowledged: boolean;
+  annualizedTurnoverRatio: number;
+  annualizedCostToEquityRatioPct: number;
+}
+
+export interface StilleSecuritiesRegBiSuitabilityGuardDecision {
+  allowed: boolean;
+  regBiSuitabilityVerified: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P93-SECURITIES-FINRA-RULE3240-SUITABILITY-BEST-INTEREST-REG-BI-CHURNING-AND-LEVERAGED-ETF-GUARD";
+}
+
+export function evaluateSecuritiesRegBiSuitabilityChurningAndLeveragedEtfGuard(
+  input: StilleSecuritiesRegBiSuitabilityGuardInput
+): StilleSecuritiesRegBiSuitabilityGuardDecision {
+  if (
+    input.agentSuggestedOrHighlightedTicker &&
+    !input.orderMarkedSolicitedFlag
+  ) {
+    return {
+      allowed: false,
+      regBiSuitabilityVerified: false,
+      reason: "REG_BI_SOLICITED_ORDER_MISCLASSIFICATION_EVASION_BLOCKED",
+      actionCode:
+        "FORCE_SOLICITED_ORDER_TAG_AND_REG_BI_DISCLOSURE_AUDIT",
+      policyCode:
+        "P93-SECURITIES-FINRA-RULE3240-SUITABILITY-BEST-INTEREST-REG-BI-CHURNING-AND-LEVERAGED-ETF-GUARD",
+    };
+  }
+
+  if (
+    input.productComplexityTier ===
+      "LEVERAGED_INVERSE_ETF_OR_COMPLEX_DERIVATIVE" &&
+    (input.investorRiskProfile === "CONSERVATIVE" ||
+      !input.complexProductRiskDisclosureAcknowledged)
+  ) {
+    return {
+      allowed: false,
+      regBiSuitabilityVerified: false,
+      reason: "REG_BI_CARE_OBLIGATION_UNSUITABLE_COMPLEX_PRODUCT_BLOCKED",
+      actionCode:
+        "BLOCK_COMPLEX_ORDER_AND_ROUTE_TO_SERIES_7_24_PRINCIPAL_REVIEW",
+      policyCode:
+        "P93-SECURITIES-FINRA-RULE3240-SUITABILITY-BEST-INTEREST-REG-BI-CHURNING-AND-LEVERAGED-ETF-GUARD",
+    };
+  }
+
+  if (
+    input.annualizedTurnoverRatio > 6 ||
+    input.annualizedCostToEquityRatioPct > 20
+  ) {
+    return {
+      allowed: false,
+      regBiSuitabilityVerified: false,
+      reason: "FINRA_QUANTITATIVE_SUITABILITY_CHURNING_THRESHOLD_EXCEEDED",
+      actionCode:
+        "FREEZE_AUTOMATED_SOLICITATION_AND_ESCALATE_SUPERVISORY_COMPLIANCE",
+      policyCode:
+        "P93-SECURITIES-FINRA-RULE3240-SUITABILITY-BEST-INTEREST-REG-BI-CHURNING-AND-LEVERAGED-ETF-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    regBiSuitabilityVerified: true,
+    reason: "SEC_REG_BI_CARE_OBLIGATION_AND_QUANTITATIVE_SUITABILITY_VERIFIED",
+    actionCode: "AUTHORIZE_SUITABLE_OMS_ORDER_SUBMISSION",
+    policyCode:
+      "P93-SECURITIES-FINRA-RULE3240-SUITABILITY-BEST-INTEREST-REG-BI-CHURNING-AND-LEVERAGED-ETF-GUARD",
+  };
+}
+
+export interface StilleSipSdpRfc3264NegotiationGuardInput {
+  callId: string;
+  offeredTelephoneEventPt: number;
+  answeredTelephoneEventPt: number;
+  offeredTelephoneEventClockHz: number;
+  answeredTelephoneEventClockHz: number;
+  configuredOutboundPtimeMs: number;
+  remoteMaxPtimeMs: number;
+  intersectedAudioCodecCount: number;
+}
+
+export interface StilleSipSdpRfc3264NegotiationGuardDecision {
+  allowed: boolean;
+  sdpNegotiationHealthy: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P94-SIP-SDP-RFC3264-CODEC-PAYLOAD-TYPE-MISMATCH-TELEPHONE-EVENT-ASYMMETRY-AND-PTIME-BUFFER-OVERFLOW-GUARD";
+}
+
+export function evaluateSipSdpRfc3264PayloadTypeSymmetryAndPtimeGuard(
+  input: StilleSipSdpRfc3264NegotiationGuardInput
+): StilleSipSdpRfc3264NegotiationGuardDecision {
+  if (input.intersectedAudioCodecCount <= 0) {
+    return {
+      allowed: false,
+      sdpNegotiationHealthy: false,
+      reason: "SDP_RFC3264_ZERO_COMMON_CODEC_INTERSECTION_488_NOT_ACCEPTABLE",
+      actionCode:
+        "ENGAGE_SBC_PCMU_OPUS_TRANSCODER_OR_RETURN_SIP_488_WITH_WARNING_304",
+      policyCode:
+        "P94-SIP-SDP-RFC3264-CODEC-PAYLOAD-TYPE-MISMATCH-TELEPHONE-EVENT-ASYMMETRY-AND-PTIME-BUFFER-OVERFLOW-GUARD",
+    };
+  }
+
+  if (
+    input.offeredTelephoneEventPt !== input.answeredTelephoneEventPt ||
+    input.offeredTelephoneEventClockHz !== input.answeredTelephoneEventClockHz
+  ) {
+    return {
+      allowed: false,
+      sdpNegotiationHealthy: false,
+      reason: "SDP_RFC3264_TELEPHONE_EVENT_DYNAMIC_PT_OR_CLOCK_ASYMMETRY_DETECTED",
+      actionCode:
+        "PIN_SYMMETRIC_SDP_DYNAMIC_PAYLOAD_TYPE_AND_CLOCK_RATE_TO_OFFER",
+      policyCode:
+        "P94-SIP-SDP-RFC3264-CODEC-PAYLOAD-TYPE-MISMATCH-TELEPHONE-EVENT-ASYMMETRY-AND-PTIME-BUFFER-OVERFLOW-GUARD",
+    };
+  }
+
+  if (
+    input.configuredOutboundPtimeMs > input.remoteMaxPtimeMs ||
+    input.configuredOutboundPtimeMs <= 0 ||
+    input.configuredOutboundPtimeMs % 10 !== 0
+  ) {
+    return {
+      allowed: false,
+      sdpNegotiationHealthy: false,
+      reason: "SDP_RFC3264_PTIME_EXCEEDS_MAXPTIME_SBC_BUFFER_OVERFLOW_RISK",
+      actionCode:
+        "CLAMP_RTP_PACKETIZATION_PTIME_TO_20MS_WITHIN_REMOTE_MAXPTIME",
+      policyCode:
+        "P94-SIP-SDP-RFC3264-CODEC-PAYLOAD-TYPE-MISMATCH-TELEPHONE-EVENT-ASYMMETRY-AND-PTIME-BUFFER-OVERFLOW-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    sdpNegotiationHealthy: true,
+    reason: "SDP_RFC3264_SYMMETRIC_DYNAMIC_PT_CLOCK_AND_PTIME_VERIFIED",
+    actionCode: "ESTABLISH_RFC3264_COMPLIANT_RTP_MEDIA_SESSION",
+    policyCode:
+      "P94-SIP-SDP-RFC3264-CODEC-PAYLOAD-TYPE-MISMATCH-TELEPHONE-EVENT-ASYMMETRY-AND-PTIME-BUFFER-OVERFLOW-GUARD",
+  };
+}
+
+
 

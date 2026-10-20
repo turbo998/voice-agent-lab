@@ -4135,6 +4135,40 @@
         confidence: 1.0,
         verifier: 'PASS (P92) · Cross-talk tool mutation suspended & non-primary speaker slot isolated'
       }
+    },
+    {
+      code: 'P93 · Securities SEC Reg BI (17 CFR 240.15l-1) & FINRA Rule 2111 Leveraged ETF Suitability, Anti-Unsolicited Misclassification & Churning Guard',
+      badge: 'SEC Reg BI + Anti-Churning',
+      title: '证券经纪与财富管理 SEC Reg BI / FINRA 2111 复杂杠杆 ETF 适当性拦截、主动劝诱伪装被动下单（Unsolicited Evasion）与高频换手率（Churning）熔断护栏',
+      sub: '测试 AI 主动推荐标的却在 OMS 报单时伪标为客户自发非劝诱单（UNSOLICITED）、向保守型养老金客户售卖 3 倍杠杆/反向 ETF，或纵容年化换手率 >6.0 / 费率 >20% 刷佣金的 0ms 拦截',
+      customer_en: '[Wealth Management Brokerage Call: Voice Agent Highlights 3x Leveraged ETF Ticker While Marking OMS Order as UNSOLICITED; Conservative Retirement Investor (Risk Profile: CONSERVATIVE) Requests 3x Leveraged Derivative Order with Annualized Turnover Ratio 8.4 (>6.0) and Cost-to-Equity 24% (>20%)]',
+      customer_zh: '【证券财富管理报单热线：AI 在对话中主动提及推荐某 3 倍杠杆 ETF 却在 OMS 中伪标为“客户自发非劝诱单（UNSOLICITED）”，且向保守型养老金客户（CONSERVATIVE）下达复杂杠杆衍生品委托，账户年化换手率已达 8.4（>6.0）】',
+      agent_en: 'SECURITIES SEC REG BI & FINRA SUITABILITY GUARD (P93 / P93-SECURITIES-FINRA-RULE3240-SUITABILITY-BEST-INTEREST-REG-BI-CHURNING-AND-LEVERAGED-ETF-GUARD): Blocked false UNSOLICITED order tagging (`REG_BI_SOLICITED_ORDER_MISCLASSIFICATION_EVASION_BLOCKED` -> `FORCE_SOLICITED_ORDER_TAG_AND_REG_BI_DISCLOSURE_AUDIT`), blocked unsuitable 3x leveraged ETF order for conservative investor pending Series 7/24 principal review (`REG_BI_CARE_OBLIGATION_UNSUITABLE_COMPLEX_PRODUCT_BLOCKED` -> `BLOCK_COMPLEX_ORDER_AND_ROUTE_TO_SERIES_7_24_PRINCIPAL_REVIEW`), and froze automated solicitation on quantitative churning breach (`FINRA_QUANTITATIVE_SUITABILITY_CHURNING_THRESHOLD_EXCEEDED`)!',
+      agent_zh: '【P93 证券经纪 SEC Reg BI 适当性与反刷单护栏 (REG_BI_SOLICITED_ORDER_MISCLASSIFICATION_EVASION_BLOCKED)】检出 AI 主动提及标的却伪标 UNSOLICITED 非劝诱单及向保守型客户下单 3 倍杠杆 ETF！已 0ms 强制挂载 Reg BI 劝诱披露审计，硬阻断复杂杠杆衍生品报单移交 Series 7/24 合规主管复核，并在触发年化换手率 >6.0 红线时冻结自动劝诱！',
+      trace: {
+        tool: 'evaluate_securities_reg_bi_suitability_churning_guard(agent_suggested=true, marked_solicited=false, risk="CONSERVATIVE", turnover=8.4 -> FORCE_SOLICITED_ORDER_TAG_AND_REG_BI_DISCLOSURE_AUDIT)',
+        citations: ['P93-SECURITIES-FINRA-RULE3240-SUITABILITY-BEST-INTEREST-REG-BI-CHURNING-AND-LEVERAGED-ETF-GUARD', 'SEC-REG-BI-17CFR240-15L1', 'FINRA-RULE-2111-NOTICE-22-08'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P93) · Unsolicited evasion blocked, leveraged ETF routed to Series 7/24 & churning frozen'
+      }
+    },
+    {
+      code: 'P94 · SIP/SDP RFC 3264 Dynamic Payload Type Symmetry, telephone-event Clock Alignment & maxptime Overflow Guard',
+      badge: 'RFC 3264 PT + ptime Lock',
+      title: 'SIP/SDP RFC 3264 动态负载类型（PT 96–127）对称锚定、telephone-event 采样率对齐与 a=maxptime 帧长防溢出护栏',
+      sub: '测试企业硬件 SBC 发来 INVITE SDP Offer 声明 PT 101 telephone-event/8000 与 maxptime:60 时，200 OK Answer 错误返回非对称 PT 96 / 48kHz 时钟致 DTMF 静默丢失，或 ptime=80ms 撑爆缓冲区的 0ms 修正',
+      customer_en: '[Enterprise SIP Trunk Interconnect: Remote SBC INVITE SDP Offer Specifies a=rtpmap:101 telephone-event/8000 and a=maxptime:60, While Gateway Attempts 200 OK SDP Answer with Asymmetric PT 96 / 48000Hz Clock and 80ms Outbound RTP Packetization (>60ms maxptime)]',
+      customer_zh: '【企业 SIP 专网与硬件 SBC 互联：远端 SBC INVITE SDP Offer 声明 a=rtpmap:101 telephone-event/8000 与 a=maxptime:60，网关试图在 200 OK Answer 中返回非对称 PT 96 / 48000Hz 采样率，并配置 80ms（>60ms maxptime）RTP 打包周期】',
+      agent_en: 'SIP/SDP RFC 3264 PAYLOAD SYMMETRY & PTIME GUARD (P94 / P94-SIP-SDP-RFC3264-CODEC-PAYLOAD-TYPE-MISMATCH-TELEPHONE-EVENT-ASYMMETRY-AND-PTIME-BUFFER-OVERFLOW-GUARD): Pinned SDP Answer dynamic payload type and clock rate symmetrically to remote Offer (`PT 101 / 8000Hz`, `SDP_RFC3264_TELEPHONE_EVENT_DYNAMIC_PT_OR_CLOCK_ASYMMETRY_DETECTED` -> `PIN_SYMMETRIC_SDP_DYNAMIC_PAYLOAD_TYPE_AND_CLOCK_RATE_TO_OFFER`), and clamped outbound RTP packetization `ptime` from `80ms` to `20ms` within `remoteMaxPtimeMs=60ms` (`SDP_RFC3264_PTIME_EXCEEDS_MAXPTIME_SBC_BUFFER_OVERFLOW_RISK` -> `CLAMP_RTP_PACKETIZATION_PTIME_TO_20MS_WITHIN_REMOTE_MAXPTIME`)!',
+      agent_zh: '【P94 SIP/SDP RFC 3264 动态 PT 对称锚定与 maxptime 防溢出护栏 (SDP_RFC3264_TELEPHONE_EVENT_DYNAMIC_PT_OR_CLOCK_ASYMMETRY_DETECTED)】检出 SDP Offer/Answer 动态 PT 非对称失配（96 != 101）及出站 ptime=80ms 超越远端 maxptime=60ms！已强制将 Answer 动态 PT 与 8000Hz 时钟对称锚定至 Offer，并将 RTP 打包周期钳位回 20ms 标准帧消除 SBC 缓冲区爆音与 DTMF 静默丢失！',
+      trace: {
+        tool: 'evaluate_sip_sdp_rfc3264_pt_symmetry_and_ptime_guard(offered_pt=101, answered_pt=96, ptime_ms=80, maxptime_ms=60 -> PIN_SYMMETRIC_SDP_DYNAMIC_PAYLOAD_TYPE_AND_CLOCK_RATE_TO_OFFER)',
+        citations: ['P94-SIP-SDP-RFC3264-CODEC-PAYLOAD-TYPE-MISMATCH-TELEPHONE-EVENT-ASYMMETRY-AND-PTIME-BUFFER-OVERFLOW-GUARD', 'IETF-RFC-3264-SDP', 'RFC-4733-TELEPHONE-EVENT'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P94) · SDP dynamic PT 101 / 8000Hz symmetrically pinned & RTP ptime clamped to 20ms'
+      }
     }
   ];
 
@@ -4256,7 +4290,8 @@
       '- [x] **欧盟 Omnibus 指令 30 天最低价核验/促销码折上折封顶与恶意拒付拦截护栏 & 车载/TWS 蓝牙 HFP/SCO 路由切换爆音屏蔽与 CVSD 8kHz 重校准护栏**：0ms 阻断 `>=2` 次拒付/DNR 惯犯免退货秒退与互斥优惠码折上折破底线并强制披露过去 30 天最低成交价 (P85)，在车载蓝牙切换产生 `>=-3dBFS` 瞬态爆音或 `>=200ms` 静默黑洞时冻结 VAD/EOU `800ms` 并针对 `CVSD 8kHz` 窄带降级重校准 ASR 前端 (P86)',
       '- [x] **航空 DOT 24 小时原路退现/停机坪延误及 ACAA 电动轮椅 CRO 强制升级护栏 & WebRTC Opus DTX (`usedtx=1`) 稀疏帧 VAD 死锁解除与 80ms 唤醒预卷护栏**：残障轮椅受损或停机坪超限滞留 0ms 强转航司法定 CRO 官员并硬拦截 24h/重大航延代金券诱导强制退现 (P87)，DTX 稀疏帧致 VAD 沉默 `>=1600ms` 自动注入 `160ms` 零值 PCM 尾帧推进轮次并强制 `80ms` 环形缓冲唤醒预卷防吃字 (P88)',
       '- [x] **医药 GxP / FDA 21 CFR 314.80 不良事件 MedWatch 四要素强制采集与防超说明书推广护栏 & 超长通话 SRTP RFC 3711 `ROC` 回绕防失步与 DTLS-SRTP 双密钥轮换护栏**：0ms 阻断未获批适应症/剂量回答转交医学事务部 MIRF 并强锁 MedWatch 四要素采集与 24h `E2B(R3)` 药物警戒上报 (P89)，`>21.85` 分钟长通话 16-bit 序列号跨丢包回绕失步时触发 `ROC ± 1` 试解密重同步并在 60 分钟密钥轮换时启用 `500ms` 双 `MKI` 重叠窗口 (P90)',
-      '- [x] **零售银行 CFPB Regulation E (`12 CFR § 1005`) 未授权转账口头受理、责任阶梯与 10 日临时垫付护栏 & 多方会议/免提声纹分离串音纠偏与旁人角色写隔离护栏**：0ms 拦截“先找商户/先交报警回执”违法前置条件、钳位 `$0/$50/$500` 法定责任上限并强制排期 10 工作日临时信用垫付 (P91)，双讲重叠 `>=30%` 挂起写操作并物理隔离非主叫声纹槽位（`<0.78`）防旁人越权注入 (P92)'
+      '- [x] **零售银行 CFPB Regulation E (`12 CFR § 1005`) 未授权转账口头受理、责任阶梯与 10 日临时垫付护栏 & 多方会议/免提声纹分离串音纠偏与旁人角色写隔离护栏**：0ms 拦截“先找商户/先交报警回执”违法前置条件、钳位 `$0/$50/$500` 法定责任上限并强制排期 10 工作日临时信用垫付 (P91)，双讲重叠 `>=30%` 挂起写操作并物理隔离非主叫声纹槽位（`<0.78`）防旁人越权注入 (P92)',
+      '- [x] **证券经纪 SEC Reg BI / FINRA 2111 复杂杠杆 ETF 适当性、防伪装非劝诱单与反刷单护栏 & SIP/SDP RFC 3264 动态 PT 对称锚定与 `maxptime` 防溢出护栏**：0ms 拦截 AI 推荐标的却伪标 `UNSOLICITED` 非劝诱单、阻断保守型客户 3x 杠杆 ETF 委托并冻结换手率 `>6.0` / 费率 `>20%` 过度交易劝诱 (P93)，强制 SDP Answer 动态 PT 与采样率对称镜像 Offer 并将 RTP `ptime` 钳位在 `<= remoteMaxPtimeMs`（20ms）防硬件 SBC 失灵断音 (P94)'
     ].join('\n');
   }
 

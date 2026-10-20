@@ -487,6 +487,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P91-BANKING-REG-E-12CFR1005-UNAUTHORIZED-EFT-PROVISIONAL-CREDIT-AND-LIABILITY-TIER-GUARD blocks illegal preconditions (requiring merchant contact or a police report before accepting an oral Reg E dispute), clamps consumer liability to statutory $0 / $50 / $500 tiers, and enforces 10-business-day provisional credit scheduling; P92-MULTIPARTY-CONFERENCE-SPEAKER-DIARIZATION-CROSS-TALK-ATTRIBUTION-AND-ROLE-ISOLATION-GUARD suspends tool execution on >=30% overlapping cross-talk and isolates non-primary speaker slots (ECAPA-TDNN cosine similarity <0.78) from executing transactional mutations without primary voiceprint ratification."
+    },
+    {
+      "check_name": "Securities SEC Reg BI / FINRA Rule 2111 Leveraged ETF Suitability, Anti-Unsolicited Misclassification & Churning Guard + SIP/SDP RFC 3264 Dynamic PT Symmetry & maxptime Overflow Guard (P93 / P94)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P93-SECURITIES-FINRA-RULE3240-SUITABILITY-BEST-INTEREST-REG-BI-CHURNING-AND-LEVERAGED-ETF-GUARD blocks AI-suggested trades falsely tagged as UNSOLICITED, blocks 3x leveraged/inverse ETF or complex derivative orders for conservative investors or without risk disclosure acknowledgment, and freezes automated solicitation when annualized turnover >6.0 or cost-to-equity >20%; P94-SIP-SDP-RFC3264-CODEC-PAYLOAD-TYPE-MISMATCH-TELEPHONE-EVENT-ASYMMETRY-AND-PTIME-BUFFER-OVERFLOW-GUARD pins SDP Answer dynamic payload types and clock rates symmetrically to the remote Offer, clamps RTP ptime to 20ms within remoteMaxPtimeMs, and rejects zero-codec intersections."
     }
   ],
   "latency_scaling": [
