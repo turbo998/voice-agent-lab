@@ -10485,6 +10485,199 @@ export function evaluateSipRfc3515ReferReplacesHijackAndTollFraudGuard(
   };
 }
 
+export interface NuclearNrc10Cfr50ThreeWayReadbackAndEmergencyClassGuardInput {
+  sessionId: string;
+  ealEmergencyClassDeclared: "NONE" | "NOUE" | "ALERT" | "SAE" | "GE";
+  stateAndLocalAuthoritiesNotifiedWithin15Min: boolean;
+  nrcHooEnsBridgeInitiated: boolean;
+  involvesReactivityOrSafetySystemActuation: boolean;
+  inpoThreeWayPhoneticReadbackConfirmed: boolean;
+  twoPersonRuleLicensedSroDualAuthVerified: boolean;
+}
+
+export interface NuclearNrc10Cfr50ThreeWayReadbackAndEmergencyClassGuardResult {
+  allowed: boolean;
+  emergencyNotificationCompliant: boolean;
+  threeWayReadbackValid: boolean;
+  twoPersonRuleSatisfied: boolean;
+  reason:
+    | "NRC_10CFR50_72_APPENDIX_E_EMERGENCY_CLASS_MISSING_15MIN_OFFSITE_OR_HOO_ENS_PREEMPTION"
+    | "INPO_THREE_WAY_PHONETIC_READBACK_MISSING_FOR_SAFETY_RELATED_COMPONENT"
+    | "NRC_10CFR73_55_TWO_PERSON_RULE_DUAL_SRO_AUTHORIZATION_MISSING_FOR_REACTIVITY_CONTROL"
+    | "NRC_10CFR50_THREE_WAY_COMMUNICATION_TWO_PERSON_RULE_AND_EAL_COMPLIANT";
+  actionCode: string;
+  policyCode: "P121-NUCLEAR-NRC-10CFR50-EMERGENCY-CLASS-15MIN-NOTIFICATION-THREE-WAY-READBACK-AND-TWO-PERSON-RULE-GUARD";
+}
+
+export function evaluateNuclearNrc10Cfr50ThreeWayReadbackAndEmergencyClassGuard(
+  input: NuclearNrc10Cfr50ThreeWayReadbackAndEmergencyClassGuardInput,
+): NuclearNrc10Cfr50ThreeWayReadbackAndEmergencyClassGuardResult {
+  if (
+    input.ealEmergencyClassDeclared !== "NONE" &&
+    (!input.stateAndLocalAuthoritiesNotifiedWithin15Min ||
+      !input.nrcHooEnsBridgeInitiated)
+  ) {
+    return {
+      allowed: false,
+      emergencyNotificationCompliant: false,
+      threeWayReadbackValid: true,
+      twoPersonRuleSatisfied: true,
+      reason:
+        "NRC_10CFR50_72_APPENDIX_E_EMERGENCY_CLASS_MISSING_15MIN_OFFSITE_OR_HOO_ENS_PREEMPTION",
+      actionCode:
+        "PREEMPT_ROUTINE_COMMS_AND_DISPATCH_15MIN_STATE_LOCAL_EAL_NOTIFICATION_AND_NRC_ENS_BRIDGE",
+      policyCode:
+        "P121-NUCLEAR-NRC-10CFR50-EMERGENCY-CLASS-15MIN-NOTIFICATION-THREE-WAY-READBACK-AND-TWO-PERSON-RULE-GUARD",
+    };
+  }
+
+  if (
+    input.involvesReactivityOrSafetySystemActuation &&
+    !input.inpoThreeWayPhoneticReadbackConfirmed
+  ) {
+    return {
+      allowed: false,
+      emergencyNotificationCompliant: true,
+      threeWayReadbackValid: false,
+      twoPersonRuleSatisfied: true,
+      reason:
+        "INPO_THREE_WAY_PHONETIC_READBACK_MISSING_FOR_SAFETY_RELATED_COMPONENT",
+      actionCode:
+        "HOLD_COMPONENT_MANIPULATION_AND_DEMAND_INPO_PHONETIC_THREE_WAY_READBACK",
+      policyCode:
+        "P121-NUCLEAR-NRC-10CFR50-EMERGENCY-CLASS-15MIN-NOTIFICATION-THREE-WAY-READBACK-AND-TWO-PERSON-RULE-GUARD",
+    };
+  }
+
+  if (
+    input.involvesReactivityOrSafetySystemActuation &&
+    !input.twoPersonRuleLicensedSroDualAuthVerified
+  ) {
+    return {
+      allowed: false,
+      emergencyNotificationCompliant: true,
+      threeWayReadbackValid: true,
+      twoPersonRuleSatisfied: false,
+      reason:
+        "NRC_10CFR73_55_TWO_PERSON_RULE_DUAL_SRO_AUTHORIZATION_MISSING_FOR_REACTIVITY_CONTROL",
+      actionCode:
+        "BLOCK_SINGLE_OPERATOR_REACTIVITY_ACTUATION_AND_REQUIRE_SRO_CONCURRENT_VERIFICATION",
+      policyCode:
+        "P121-NUCLEAR-NRC-10CFR50-EMERGENCY-CLASS-15MIN-NOTIFICATION-THREE-WAY-READBACK-AND-TWO-PERSON-RULE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    emergencyNotificationCompliant: true,
+    threeWayReadbackValid: true,
+    twoPersonRuleSatisfied: true,
+    reason:
+      "NRC_10CFR50_THREE_WAY_COMMUNICATION_TWO_PERSON_RULE_AND_EAL_COMPLIANT",
+    actionCode: "PERMIT_VERIFIED_NUCLEAR_CONTROL_ROOM_PROCEDURE_LOG",
+    policyCode:
+      "P121-NUCLEAR-NRC-10CFR50-EMERGENCY-CLASS-15MIN-NOTIFICATION-THREE-WAY-READBACK-AND-TWO-PERSON-RULE-GUARD",
+  };
+}
+
+export interface WebrtcRfc8627FlexfecOpusLbrrCongestionSpiralGuardInput {
+  sessionId: string;
+  twccAvailableUplinkKbps: number;
+  sourceAudioBitrateKbps: number;
+  fecRedundancyBitrateKbps: number;
+  observedPacketLossRatePct: number;
+  consecutiveBurstLossFrames: number;
+  opusInBandLbrrEnabled: boolean;
+  rfc8627Flexfec2dMatrixActive: boolean;
+}
+
+export interface WebrtcRfc8627FlexfecOpusLbrrCongestionSpiralGuardResult {
+  allowed: boolean;
+  congestionSpiralAvoided: boolean;
+  burstFecCoverageAdequate: boolean;
+  redundancyBudgetCompliant: boolean;
+  reason:
+    | "RFC8627_FEC_REDUNDANCY_EXCEEDS_TWCC_LINK_HEADROOM_SELF_INFLICTED_CONGESTION_SPIRAL_BLOCKED"
+    | "HIGH_BURST_PACKET_LOSS_WITH_HEADROOM_MISSING_OPUS_LBRR_OR_2D_FLEXFEC_PARITY"
+    | "FEC_REDUNDANCY_RATIO_EXCEEDS_MAXIMUM_AUDIO_OVERHEAD_CEILING"
+    | "WEBRTC_RFC8627_FLEXFEC_AND_OPUS_LBRR_BITRATE_ALLOCATION_HEALTHY";
+  actionCode: string;
+  policyCode: "P122-WEBRTC-RFC8627-FLEXFEC-OPUS-LBRR-REDUNDANCY-OVERHEAD-CONGESTION-SPIRAL-AND-BURST-RECOVERY-GUARD";
+}
+
+export function evaluateWebrtcRfc8627FlexfecOpusLbrrCongestionSpiralGuard(
+  input: WebrtcRfc8627FlexfecOpusLbrrCongestionSpiralGuardInput,
+): WebrtcRfc8627FlexfecOpusLbrrCongestionSpiralGuardResult {
+  const totalTransmitKbps =
+    input.sourceAudioBitrateKbps + input.fecRedundancyBitrateKbps;
+
+  if (
+    totalTransmitKbps > input.twccAvailableUplinkKbps * 0.9 ||
+    (input.twccAvailableUplinkKbps < 28 && input.fecRedundancyBitrateKbps > 4)
+  ) {
+    return {
+      allowed: false,
+      congestionSpiralAvoided: false,
+      burstFecCoverageAdequate: true,
+      redundancyBudgetCompliant: false,
+      reason:
+        "RFC8627_FEC_REDUNDANCY_EXCEEDS_TWCC_LINK_HEADROOM_SELF_INFLICTED_CONGESTION_SPIRAL_BLOCKED",
+      actionCode:
+        "SHED_OUT_OF_BAND_FLEXFEC_DOWNSHIFT_OPUS_TO_12KBPS_SILK_AND_KEEP_LIGHTWEIGHT_LBRR_ONLY",
+      policyCode:
+        "P122-WEBRTC-RFC8627-FLEXFEC-OPUS-LBRR-REDUNDANCY-OVERHEAD-CONGESTION-SPIRAL-AND-BURST-RECOVERY-GUARD",
+    };
+  }
+
+  if (
+    input.twccAvailableUplinkKbps >= 64 &&
+    (input.observedPacketLossRatePct >= 8 ||
+      input.consecutiveBurstLossFrames >= 3) &&
+    (!input.opusInBandLbrrEnabled || !input.rfc8627Flexfec2dMatrixActive)
+  ) {
+    return {
+      allowed: false,
+      congestionSpiralAvoided: true,
+      burstFecCoverageAdequate: false,
+      redundancyBudgetCompliant: true,
+      reason:
+        "HIGH_BURST_PACKET_LOSS_WITH_HEADROOM_MISSING_OPUS_LBRR_OR_2D_FLEXFEC_PARITY",
+      actionCode:
+        "ACTIVATE_OPUS_INBAND_LBRR_AND_RFC8627_2D_INTERLEAVED_FLEXFEC_PARITY",
+      policyCode:
+        "P122-WEBRTC-RFC8627-FLEXFEC-OPUS-LBRR-REDUNDANCY-OVERHEAD-CONGESTION-SPIRAL-AND-BURST-RECOVERY-GUARD",
+    };
+  }
+
+  if (input.fecRedundancyBitrateKbps > input.sourceAudioBitrateKbps) {
+    return {
+      allowed: false,
+      congestionSpiralAvoided: true,
+      burstFecCoverageAdequate: true,
+      redundancyBudgetCompliant: false,
+      reason:
+        "FEC_REDUNDANCY_RATIO_EXCEEDS_MAXIMUM_AUDIO_OVERHEAD_CEILING",
+      actionCode:
+        "CAP_FEC_PARITY_BITRATE_TO_100PCT_OF_SOURCE_OPUS_PAYLOAD",
+      policyCode:
+        "P122-WEBRTC-RFC8627-FLEXFEC-OPUS-LBRR-REDUNDANCY-OVERHEAD-CONGESTION-SPIRAL-AND-BURST-RECOVERY-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    congestionSpiralAvoided: true,
+    burstFecCoverageAdequate: true,
+    redundancyBudgetCompliant: true,
+    reason:
+      "WEBRTC_RFC8627_FLEXFEC_AND_OPUS_LBRR_BITRATE_ALLOCATION_HEALTHY",
+    actionCode: "TRANSMIT_RATE_ADAPTED_OPUS_AND_FLEXFEC_STREAM",
+    policyCode:
+      "P122-WEBRTC-RFC8627-FLEXFEC-OPUS-LBRR-REDUNDANCY-OVERHEAD-CONGESTION-SPIRAL-AND-BURST-RECOVERY-GUARD",
+  };
+}
+
+
 
 
 

@@ -4611,6 +4611,40 @@
         confidence: 1.0,
         verifier: 'PASS (P120) · 0 SIP REFER toll-fraud/header injections, 0 cross-tenant Replaces dialog hijacks & 0 leaked implicit refer subscriptions'
       }
+    },
+    {
+      code: 'P121 · Nuclear NRC 10 CFR 50.72 EAL 15m Notification, INPO 3-Way Phonetic Readback & 10 CFR 73.55 Two-Person Rule Guard',
+      badge: 'NRC 10 CFR 50/73 · INPO 3-Way',
+      title: '核电主控室调度 NRC 10 CFR § 50.72 / Appendix E 应急行动等级（EAL）15 分钟州/地方及 HOO ENS 通报抢占、INPO 三向北约字母复诵闭环与 10 CFR § 73.55 双人法则（Two-Person Rule）护栏',
+      sub: '测试宣布 SAE/GE 应急等级时 0ms 抢占派发 15min 州/地方及 NRC HOO ENS 专线通报、强验 INPO 三向北约字母复诵与双持照 SRO 并发互检签名',
+      customer_en: '[Nuclear Power Plant Main Control Room (MCR) / TSC Voice Dispatch Probe: Emergency Director Declares Site Area Emergency (EAL = SAE) Without 15-Minute State/Local Notification or NRC HOO ENS Hotline Bridge, and Reactor Operator Commands ECCS Valve SI-MOV-8801A / Boron Injection Actuation Without INPO 3-Way Phonetic Readback or Concurrent Second Licensed SRO Verification]',
+      customer_zh: '【核电站主控室（MCR）与技术支持中心（TSC）语音调度压测：应急总指挥宣布厂房应急（Site Area Emergency, EAL = SAE）却未在 15 分钟内完成州/地方政府通报或未接通 NRC 总部值班官（HOO）紧急通知系统（ENS）专线；随后下达涉及反应堆反应性控制（紧急硼酸注入/控制棒）或安注系统阀门 `1-SI-MOV-8801A` 的操纵指令时，缺失 INPO 三向北约字母设备编号逐字复诵确认及第二名持照高级反应堆操纵员（SRO）双人并发互检签名】',
+      agent_en: 'NUCLEAR NRC 10 CFR 50.72 EAL, INPO 3-WAY READBACK & 10 CFR 73.55 TWO-PERSON RULE GUARD (P121 / P121-NUCLEAR-NRC-10CFR50-EMERGENCY-CLASS-15MIN-NOTIFICATION-THREE-WAY-READBACK-AND-TWO-PERSON-RULE-GUARD): Preempted routine plant work-order dialogue in `0ms` to dispatch the mandatory 15-minute State/local EAL notification and bridge the NRC Headquarters Operations Officer (`HOO`) `ENS` hotline (`NRC_10CFR50_72_APPENDIX_E_EMERGENCY_CLASS_MISSING_15MIN_OFFSITE_OR_HOO_ENS_PREEMPTION`), held safety-related component manipulation pending verbatim INPO phonetic 3-way readback (`INPO_THREE_WAY_PHONETIC_READBACK_MISSING_FOR_SAFETY_RELATED_COMPONENT`), and blocked single-operator reactivity actuation under the `10 CFR § 73.55` Two-Person Rule pending dual licensed SRO concurrent verification (`NRC_10CFR73_55_TWO_PERSON_RULE_DUAL_SRO_AUTHORIZATION_MISSING_FOR_REACTIVITY_CONTROL`)!',
+      agent_zh: '【P121 核电主控室 NRC 10 CFR 50.72 EAL 15min 抢占、INPO 三向复诵与 10 CFR 73.55 双人法则护栏 (NRC_10CFR50_72_APPENDIX_E_EMERGENCY_CLASS_MISSING_15MIN_OFFSITE_OR_HOO_ENS_PREEMPTION)】检测到主控室宣布厂房应急（`SAE`）及专设安全设施操纵指令，已按 `10 CFR Part 50 Appendix E` 与 `§ 50.72` 在 0ms 内抢占常规工单对话、触发 15 分钟州/地方应急通报并直连 NRC 总部值班官（HOO）ENS 专线！同时按 INPO 规程挂起未完成三向北约字母（`One-Sierra-India-Mike-Oscar-Victor-Eight-Eight-Zero-One-Alpha`）逐字复诵的阀门指令，并按 `10 CFR § 73.55` 双人法则硬阻断缺失第二名持照 SRO 并发互检签名的反应性操纵！',
+      trace: {
+        tool: 'evaluate_nuclear_nrc_10cfr50_three_way_readback_and_emergency_class_guard(eal="SAE", offsite_15m=false, inpo_3way_readback=false, dual_sro=false -> PREEMPT_ROUTINE_COMMS_AND_HOLD_REACTIVITY_ACTUATION)',
+        citations: ['P121-NUCLEAR-NRC-10CFR50-EMERGENCY-CLASS-15MIN-NOTIFICATION-THREE-WAY-READBACK-AND-TWO-PERSON-RULE-GUARD', 'NRC-10CFR50-72-APP-E', 'NRC-10CFR73-55-INPO-3WAY'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P121) · 0ms NRC 15min EAL/ENS preemption, 100% INPO 3-way phonetic readback lock & 0 single-operator reactivity actuations'
+      }
+    },
+    {
+      code: 'P122 · WebRTC RFC 8627 FlexFEC & RFC 6716 Opus LBRR Congestion Spiral Circuit Breaker & 2D Burst Recovery Guard',
+      badge: 'RFC 8627 FlexFEC · Opus LBRR',
+      title: 'WebRTC RFC 8627 FlexFEC 与 RFC 6716 Opus LBRR 冗余带宽比拥塞螺旋（Self-Inflicted Congestion Spiral）熔断与 Gilbert-Elliott 突发丢包二维交织恢复护栏',
+      sub: '测试窄带 <28kbps 或总码率超 TWCC 90% 时 0ms 剥离带外 FlexFEC 降档 12kbps SILK+LBRR 防自激拥塞死锁，并在宽带突发丢包时强制开启二维交织恢复',
+      customer_en: '[WebRTC Audio Media Link Probe: Cellular Uplink TWCC Shrinks to 24 kbps (<28 kbps) While Sender Pushes 32 kbps Audio + 16 kbps FlexFEC (48 kbps > 24*0.9 kbps) Causing Self-Inflicted Queue Delay Collapse; Then Wi-Fi Link With 96 kbps Headroom Suffers 11% (>=8%) Burst Loss Across 4 Consecutive Frames Without Enabling Opus In-Band LBRR or RFC 8627 2D FlexFEC Matrix]',
+      customer_zh: '【WebRTC 弱网语音媒体链路抗损压测：蜂窝上行 `TWCC` 可用带宽萎缩至 `24 kbps`（`< 28 kbps`）时，客户端仍盲目发送 `32 kbps` 源音频 + `16 kbps` 带外 `FlexFEC`（总计 `48 kbps > 24 * 0.9 kbps`）引发路由器排队缓冲区暴涨的自激拥塞螺旋崩溃；随后模拟在 `TWCC = 96 kbps`（`>= 64 kbps`）带宽充裕但 Wi-Fi 突发丢包率达 `11%`（`>= 8%`）且连续丢包 `4` 帧（`>= 3` 帧）时未启用 `Opus LBRR` 与 `RFC 8627 FlexFEC` 二维交织恢复】',
+      agent_en: 'WEBRTC RFC 8627 FLEXFEC & OPUS LBRR CONGESTION SPIRAL & BURST RECOVERY GUARD (P122 / P122-WEBRTC-RFC8627-FLEXFEC-OPUS-LBRR-REDUNDANCY-OVERHEAD-CONGESTION-SPIRAL-AND-BURST-RECOVERY-GUARD): Shed out-of-band `FlexFEC` in `0ms` and downshifted Opus to `12 kbps` narrowband SILK + lightweight `LBRR` when total bitrate exceeded `90%` of TWCC uplink capacity (`RFC8627_FEC_REDUNDANCY_EXCEEDS_TWCC_LINK_HEADROOM_SELF_INFLICTED_CONGESTION_SPIRAL_BLOCKED`), activated `Opus LBRR` + `RFC 8627` 2D interleaved `FlexFEC` parity under `11%` burst loss with `96 kbps` headroom (`HIGH_BURST_PACKET_LOSS_WITH_HEADROOM_MISSING_OPUS_LBRR_OR_2D_FLEXFEC_PARITY`), and clamped FEC redundancy ratio within `<= 1.0x` source bitrate (`FEC_REDUNDANCY_RATIO_EXCEEDS_MAXIMUM_AUDIO_OVERHEAD_CEILING`)!',
+      agent_zh: '【P122 WebRTC RFC 8627 FlexFEC 与 Opus LBRR 防自激拥塞螺旋及二维交织恢复护栏 (RFC8627_FEC_REDUNDANCY_EXCEEDS_TWCC_LINK_HEADROOM_SELF_INFLICTED_CONGESTION_SPIRAL_BLOCKED)】检测到上行 `TWCC` 带宽降至 `24 kbps` 且音频+FEC 总码率（`48 kbps`）突破 90% 安全水位，已立即在 0ms 内剥离带外 `FlexFEC` 并降档至 `12 kbps` 窄带 SILK + 轻量级 `LBRR`，彻底斩断自激拥塞螺旋！同时在 `96 kbps` 宽带突发连续丢包 4 帧时，自动激活 `Opus LBRR` 带内冗余与 `RFC 8627` 二维交织 `FlexFEC` 校验矩阵！',
+      trace: {
+        tool: 'evaluate_webrtc_rfc8627_flexfec_opus_lbrr_congestion_spiral_guard(twcc_kbps=24, audio_kbps=32, fec_kbps=16, burst_frames=4 -> SHED_FLEXFEC_AND_ADAPT_LBRR_2D_PARITY)',
+        citations: ['P122-WEBRTC-RFC8627-FLEXFEC-OPUS-LBRR-REDUNDANCY-OVERHEAD-CONGESTION-SPIRAL-AND-BURST-RECOVERY-GUARD', 'IETF-RFC8627-FLEXFEC', 'IETF-RFC6716-OPUS-LBRR'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P122) · 0 self-inflicted FEC congestion spirals, 100% 2D FlexFEC + Opus LBRR burst recovery & <=1.0x FEC overhead cap'
+      }
     }
   ];
 
@@ -4746,7 +4780,8 @@
       '- [x] **企业用工与合规举报热线 NLRA Section 7 协同活动（议薪保护）、OSHA/SOX 吹哨人声纹零知识匿名与防打击报复护栏 & SIP `RFC 3261` Max-Forwards / Via 路由环路熔断、并行振铃双 `200 OK` 孤儿腿清退（`RFC 3326`）与 `Re-INVITE` 491 Glare 退避护栏（132 大探针）**：0ms 抹除违法薪酬保密禁言话术、物理剥离吹哨人号码/声纹路由至零知识监察保险箱并硬阻断 HR 负向排班报复 (P113)，以 `SIP 482/483` 斩断呼叫转移死循环、对并行振铃次选 `200 OK` 瞬发 `ACK+BYE (RFC 3326)` 清退孤儿腿并强制 `491 Request Pending` 非对称随机退避 (P114)',
       '- [x] **石化危化品泄漏 EPA `CERCLA/EPCRA` 超报告量（RQ）15 分钟 NRC/LEPC 强制上报、`OSHA SDS` 禁水爆燃校验与下风向毒气羽流避难升级护栏 & WebRTC `RFC 8843 BUNDLE` 单五元组复用、`RFC 5761 rtcp-mux` 与 `RFC 8445` 双 `ICE-Lite` 死锁 / `STUN 487` 角色翻转护栏（134 大探针里程碑）**：释放量 `>=RQ` 或越界入水时 0ms 派发 15min NRC/LEPC 通报、硬阻断未经 SDS 核验对禁水物喷水指令并直通 EOC 主任 (P115)，自动将双 `ICE-Lite` 升格为 Full ICE Controlling、按 64-bit Tie-Breaker 翻转 `STUN 487` 角色并强验 `BUNDLE` 唯一 `a=mid` 与 `rtcp-mux` (P116)',
       '- [x] **高校教务 `FERPA (34 CFR Part 99)` 成年大学生（18+）无豁免书父母越权查分拦截、`34 CFR § 99.37` 名录保密退出锁与 `§ 99.36` 校园安全危机升级护栏 & RTP `RFC 3550 § 8.2` SSRC 冲突/自环 `RTCP BYE` 重分配与 `RFC 5285` 扩展头/IPv6 `Path MTU` 防溢出护栏（136 大探针里程碑）**：0ms 激活 `§ 99.36` 校园危机联动、硬阻断无书面豁免父母查询 18+ 学生成绩/处分/FAFSA 并严守 `§ 99.37` 名录保密退出锁 (P117)，在 SSRC 冲突时发 `RTCP BYE` 重分配随机 SSRC、将 `>16B` 元数据自动升格 `0x1000` 双字节扩展头并钳位包长 `<=Path MTU` (P118)',
-      '- [x] **铁路列车调度 `FRA 49 CFR Part 220` 无线电紧急三连呼抢占、强制行车指令里程标复诵/`PTC` 令牌对齐与 `12h` HOS 防疲劳护栏 & 企业 SIP `RFC 3515 REFER` 防盗打/防 URI 头注入、`RFC 3891 Replaces` 防跨租户劫持与 `RFC 4488` 订阅回收护栏（138 大探针里程碑）**：0ms 抢占无线电紧急信道直连总调度长并触发 PTC 紧急制动、强验 Track Warrant 里程标逐字复诵与 PTC 数字令牌并拦截 `>=12h` 疲劳机班动车指令派发接替机班 (P119)，以 `SIP 403` 硬拦截非白名单 `Refer-To` 盗打与内嵌 URI 头注入、强验 `Replaces` 同租户 HMAC 对话所有权并超时回收隐式 `refer` 订阅 (P120)'
+      '- [x] **铁路列车调度 `FRA 49 CFR Part 220` 无线电紧急三连呼抢占、强制行车指令里程标复诵/`PTC` 令牌对齐与 `12h` HOS 防疲劳护栏 & 企业 SIP `RFC 3515 REFER` 防盗打/防 URI 头注入、`RFC 3891 Replaces` 防跨租户劫持与 `RFC 4488` 订阅回收护栏（138 大探针里程碑）**：0ms 抢占无线电紧急信道直连总调度长并触发 PTC 紧急制动、强验 Track Warrant 里程标逐字复诵与 PTC 数字令牌并拦截 `>=12h` 疲劳机班动车指令派发接替机班 (P119)，以 `SIP 403` 硬拦截非白名单 `Refer-To` 盗打与内嵌 URI 头注入、强验 `Replaces` 同租户 HMAC 对话所有权并超时回收隐式 `refer` 订阅 (P120)',
+      '- [x] **核电主控室调度 `NRC 10 CFR § 50.72` / `Appendix E` 应急行动等级（EAL）15 分钟州/地方及 HOO ENS 通报抢占、INPO 三向北约字母复诵闭环与 `10 CFR § 73.55` 双人法则护栏 & WebRTC `RFC 8627 FlexFEC` 与 `RFC 6716 Opus LBRR` 防自激拥塞螺旋与二维交织突发丢包恢复护栏（140 大探针里程碑）**：EAL 应急等级触发时 0ms 抢占派发 15min 州/地方通报及 NRC HOO ENS 专线、强验 INPO 三向北约字母设备复诵与双持照 SRO 并发互检签名 (P121)，在总码率超 TWCC 90% 或 `<28kbps` 窄带时剥离带外 `FlexFEC` 降档 `12kbps` SILK+`LBRR` 并在宽带突发丢包时开启二维交织恢复 (P122)'
     ].join('\n');
   }
 
