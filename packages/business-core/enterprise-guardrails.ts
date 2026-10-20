@@ -8128,5 +8128,204 @@ export function evaluateSipSdpRfc3264PayloadTypeSymmetryAndPtimeGuard(
   };
 }
 
+export interface StilleMedicarePartDPriorAuthExpeditedAppealGuardInput {
+  callId: string;
+  enrolleeId: string;
+  requestType: "PART_D_FORMULARY_EXCEPTION" | "PART_C_PRIOR_AUTH_APPEAL";
+  lifeOrHealthJeopardyIndicated: boolean;
+  prescriberCertifiedUrgency: boolean;
+  configuredQueueTurnaroundHours: number;
+  stepTherapyRequiredByFormulary: boolean;
+  continuityOfCareStableOnDrugDays: number;
+  contraindicationOrPriorStepFailureDocumented: boolean;
+  aiProposedClinicalDecision: "APPROVE" | "DENY" | "PEND";
+  licensedMedicalDirectorOrPharmacistSignedOff: boolean;
+}
+
+export interface StilleMedicarePartDPriorAuthExpeditedAppealGuardDecision {
+  allowed: boolean;
+  cmsPartDPriorAuthCompliant: boolean;
+  expeditedMaxTurnaroundHours: 24 | 72 | 168;
+  stepTherapyOverrideGranted: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P95-HEALTHCARE-CMS-MEDICARE-PART-D-PRIOR-AUTHORIZATION-APPEAL-EXPEDITED-72HR-AND-STEP-THERAPY-OVERRIDE-GUARD";
+}
+
+export function evaluateMedicarePartDPriorAuthExpeditedAppealAndStepTherapyGuard(
+  input: StilleMedicarePartDPriorAuthExpeditedAppealGuardInput
+): StilleMedicarePartDPriorAuthExpeditedAppealGuardDecision {
+  const isExpeditedRequired =
+    input.lifeOrHealthJeopardyIndicated || input.prescriberCertifiedUrgency;
+  const expeditedMaxTurnaroundHours: 24 | 72 | 168 = isExpeditedRequired
+    ? input.requestType === "PART_D_FORMULARY_EXCEPTION"
+      ? 24
+      : 72
+    : 168;
+  const stepTherapyOverrideGranted =
+    !input.stepTherapyRequiredByFormulary ||
+    input.continuityOfCareStableOnDrugDays >= 90 ||
+    input.contraindicationOrPriorStepFailureDocumented;
+
+  if (
+    input.aiProposedClinicalDecision === "DENY" &&
+    !input.licensedMedicalDirectorOrPharmacistSignedOff
+  ) {
+    return {
+      allowed: false,
+      cmsPartDPriorAuthCompliant: false,
+      expeditedMaxTurnaroundHours,
+      stepTherapyOverrideGranted,
+      reason:
+        "CMS_MA_PART_D_AUTONOMOUS_AI_CLINICAL_DENIAL_WITHOUT_PEER_CLINICIAN_BLOCKED",
+      actionCode:
+        "BLOCK_AUTONOMOUS_AI_DENIAL_AND_ROUTE_TO_LICENSED_MEDICAL_DIRECTOR_WITH_CMS10146_HOLD",
+      policyCode:
+        "P95-HEALTHCARE-CMS-MEDICARE-PART-D-PRIOR-AUTHORIZATION-APPEAL-EXPEDITED-72HR-AND-STEP-THERAPY-OVERRIDE-GUARD",
+    };
+  }
+
+  if (
+    isExpeditedRequired &&
+    input.configuredQueueTurnaroundHours > expeditedMaxTurnaroundHours
+  ) {
+    return {
+      allowed: false,
+      cmsPartDPriorAuthCompliant: false,
+      expeditedMaxTurnaroundHours,
+      stepTherapyOverrideGranted,
+      reason:
+        "CMS_42CFR423_570_EXPEDITED_URGENCY_ROUTED_TO_STANDARD_QUEUE_VIOLATION",
+      actionCode:
+        "UPGRADE_TO_CMS_EXPEDITED_24H_72H_FAST_TRACK_AND_AUTHORIZE_30DAY_TRANSITION_FILL",
+      policyCode:
+        "P95-HEALTHCARE-CMS-MEDICARE-PART-D-PRIOR-AUTHORIZATION-APPEAL-EXPEDITED-72HR-AND-STEP-THERAPY-OVERRIDE-GUARD",
+    };
+  }
+
+  if (
+    input.stepTherapyRequiredByFormulary &&
+    stepTherapyOverrideGranted &&
+    input.aiProposedClinicalDecision !== "APPROVE"
+  ) {
+    return {
+      allowed: false,
+      cmsPartDPriorAuthCompliant: false,
+      expeditedMaxTurnaroundHours,
+      stepTherapyOverrideGranted: true,
+      reason:
+        "CMS_STEP_THERAPY_FAIL_FIRST_ENFORCED_DESPITE_CONTINUITY_OR_CONTRAINDICATION",
+      actionCode:
+        "GRANT_MANDATORY_STEP_THERAPY_EXCEPTION_AND_BYPASS_FAIL_FIRST_GATE",
+      policyCode:
+        "P95-HEALTHCARE-CMS-MEDICARE-PART-D-PRIOR-AUTHORIZATION-APPEAL-EXPEDITED-72HR-AND-STEP-THERAPY-OVERRIDE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    cmsPartDPriorAuthCompliant: true,
+    expeditedMaxTurnaroundHours,
+    stepTherapyOverrideGranted,
+    reason:
+      "CMS_42CFR423_570_EXPEDITED_SLA_STEP_THERAPY_AND_CLINICIAN_SIGN_OFF_VERIFIED",
+    actionCode: "COMMIT_CMS_COMPLIANT_PRIOR_AUTH_DETERMINATION",
+    policyCode:
+      "P95-HEALTHCARE-CMS-MEDICARE-PART-D-PRIOR-AUTHORIZATION-APPEAL-EXPEDITED-72HR-AND-STEP-THERAPY-OVERRIDE-GUARD",
+  };
+}
+
+export interface StilleWebRtcAvLipSyncSkewAndRtcpSrGuardInput {
+  callId: string;
+  audioPlayoutTimestampMs: number;
+  videoVisemeRenderTimestampMs: number;
+  rtcpSenderReportAgeMs: number;
+  ntpWallclockStepJumpMs: number;
+  appliedAudioDelayBufferMs: number;
+}
+
+export interface StilleWebRtcAvLipSyncSkewAndRtcpSrGuardDecision {
+  allowed: boolean;
+  lipSyncWithinItuBt1359Window: boolean;
+  measuredAvSkewMs: number;
+  recommendedAudioDelayBufferMs: number;
+  decoupleAudioFromStalledVideo: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P96-WEBRTC-RTP-MULTI-STREAM-LIPSYNC-AV-SKEW-ITU-R-BT1359-RTCP-SR-NTP-WALLCLOCK-DRIFT-GUARD";
+}
+
+export function evaluateWebRtcAvLipSyncSkewAndRtcpSrWallclockGuard(
+  input: StilleWebRtcAvLipSyncSkewAndRtcpSrGuardInput
+): StilleWebRtcAvLipSyncSkewAndRtcpSrGuardDecision {
+  const rawAvSkewMs =
+    input.audioPlayoutTimestampMs - input.videoVisemeRenderTimestampMs;
+  const effectiveAvSkewMs = rawAvSkewMs + input.appliedAudioDelayBufferMs;
+
+  if (
+    input.rtcpSenderReportAgeMs > 5000 ||
+    Math.abs(input.ntpWallclockStepJumpMs) > 500
+  ) {
+    return {
+      allowed: false,
+      lipSyncWithinItuBt1359Window: false,
+      measuredAvSkewMs: effectiveAvSkewMs,
+      recommendedAudioDelayBufferMs: 0,
+      decoupleAudioFromStalledVideo: true,
+      reason: "RTCP_SR_RFC3550_NTP_WALLCLOCK_STALE_OR_STEP_JUMP_DESYNC",
+      actionCode:
+        "DECOUPLE_AUDIO_CLOCK_FROM_STALE_RTCP_SR_AND_RESET_RTP_NTP_CORRELATION",
+      policyCode:
+        "P96-WEBRTC-RTP-MULTI-STREAM-LIPSYNC-AV-SKEW-ITU-R-BT1359-RTCP-SR-NTP-WALLCLOCK-DRIFT-GUARD",
+    };
+  }
+
+  if (effectiveAvSkewMs < -180 || input.appliedAudioDelayBufferMs > 150) {
+    return {
+      allowed: false,
+      lipSyncWithinItuBt1359Window: false,
+      measuredAvSkewMs: effectiveAvSkewMs,
+      recommendedAudioDelayBufferMs: 0,
+      decoupleAudioFromStalledVideo: true,
+      reason:
+        "AVATAR_VIDEO_RENDER_STALL_EXCEEDS_180MS_VOICE_INTERACTIVITY_BUDGET",
+      actionCode:
+        "DETACH_STALLED_AVATAR_VIDEO_SWITCH_TO_IDLE_LOOP_AND_PLAY_OPUS_AUDIO_IMMEDIATELY",
+      policyCode:
+        "P96-WEBRTC-RTP-MULTI-STREAM-LIPSYNC-AV-SKEW-ITU-R-BT1359-RTCP-SR-NTP-WALLCLOCK-DRIFT-GUARD",
+    };
+  }
+
+  if (effectiveAvSkewMs < -45 || effectiveAvSkewMs > 125) {
+    const targetDelay =
+      rawAvSkewMs < 0 ? Math.min(150, Math.abs(rawAvSkewMs) - 20) : 0;
+    return {
+      allowed: false,
+      lipSyncWithinItuBt1359Window: false,
+      measuredAvSkewMs: effectiveAvSkewMs,
+      recommendedAudioDelayBufferMs: targetDelay,
+      decoupleAudioFromStalledVideo: false,
+      reason: "ITU_R_BT1359_AV_LIPSYNC_SKEW_THRESHOLD_EXCEEDED",
+      actionCode:
+        "INJECT_BOUNDED_AUDIO_DELAY_BUFFER_OR_DROP_LATE_VISEME_FRAMES_TO_RESTORE_BT1359",
+      policyCode:
+        "P96-WEBRTC-RTP-MULTI-STREAM-LIPSYNC-AV-SKEW-ITU-R-BT1359-RTCP-SR-NTP-WALLCLOCK-DRIFT-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    lipSyncWithinItuBt1359Window: true,
+    measuredAvSkewMs: effectiveAvSkewMs,
+    recommendedAudioDelayBufferMs: input.appliedAudioDelayBufferMs,
+    decoupleAudioFromStalledVideo: false,
+    reason: "ITU_R_BT1359_LIPSYNC_WINDOW_AND_RTCP_SR_WALLCLOCK_VERIFIED",
+    actionCode: "MAINTAIN_SYNCHRONIZED_MULTIMODAL_AVATAR_PLAYOUT",
+    policyCode:
+      "P96-WEBRTC-RTP-MULTI-STREAM-LIPSYNC-AV-SKEW-ITU-R-BT1359-RTCP-SR-NTP-WALLCLOCK-DRIFT-GUARD",
+  };
+}
+
+
 
 

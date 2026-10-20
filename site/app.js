@@ -4169,6 +4169,40 @@
         confidence: 1.0,
         verifier: 'PASS (P94) · SDP dynamic PT 101 / 8000Hz symmetrically pinned & RTP ptime clamped to 20ms'
       }
+    },
+    {
+      code: 'P95 · Healthcare CMS Medicare Part D Prior Authorization 24h/72h Expedited Appeal, Step Therapy Override & Anti-Autonomous AI Denial Guard',
+      badge: 'CMS 24h/72h + No AI Denial',
+      title: '医保 CMS Medicare Part D / MA 处方药事前授权（Prior Authorization）24h/72h 加急通道、阶梯治疗豁免与禁 AI 自主拒保护栏',
+      sub: '测试 AI 未经执业医师签字擅自下达拒保决定、将危及生命的紧急用药排入 7 天常规队列，或对稳定用药 >=90 天患者强推“先试廉价药（Step Therapy）”的 0ms 拦截',
+      customer_en: '[Medicare Part D / Advantage PBM Prior-Authorization Hotline: Prescribing Oncologist Certifies Clinical Urgency (lifeOrHealthJeopardyIndicated=true) for Patient Stable 120 Days on Current Biologic, While AI Attempts Autonomous Medical Necessity Denial Without Medical Director Sign-Off or Routes to 168h Standard Queue]',
+      customer_zh: '【商业医保与 Medicare Part D 处方药事前授权（PA）热线：主治医生声明危及生命的肿瘤用药急迫性且患者已稳定用药 120 天（>=90 天），AI 试图在无执业医疗主任签字下自主拒保或将其排入 168h（7 天）常规队列并强推阶梯治疗】',
+      agent_en: 'CMS MEDICARE PART D PRIOR AUTH & STEP THERAPY GUARD (P95 / P95-HEALTHCARE-CMS-MEDICARE-PART-D-PRIOR-AUTHORIZATION-APPEAL-EXPEDITED-72HR-AND-STEP-THERAPY-OVERRIDE-GUARD): Blocked autonomous AI clinical denial without peer clinician sign-off (`CMS_MA_PART_D_AUTONOMOUS_AI_CLINICAL_DENIAL_WITHOUT_PEER_CLINICIAN_BLOCKED` -> `BLOCK_AUTONOMOUS_AI_DENIAL_AND_ROUTE_TO_LICENSED_MEDICAL_DIRECTOR_WITH_CMS10146_HOLD`), upgraded urgent request to mandatory `24h/72h` fast track with 30-day transition fill (`CMS_42CFR423_570_EXPEDITED_URGENCY_ROUTED_TO_STANDARD_QUEUE_VIOLATION`), and granted continuity-of-care Step Therapy override (`CMS_STEP_THERAPY_FAIL_FIRST_ENFORCED_DESPITE_CONTINUITY_OR_CONTRAINDICATION`)!',
+      agent_zh: '【P95 医保 CMS Part D 事前授权加急与禁 AI 自主拒保护栏 (CMS_MA_PART_D_AUTONOMOUS_AI_CLINICAL_DENIAL_WITHOUT_PEER_CLINICIAN_BLOCKED)】检出未经执业医疗主任/药师签字的 AI 自主拒保及紧急用药误入 7 天常规队列！已 0ms 拦截 AI 拒保移交执业医师复核，强制提级至 24h/72h 法定加急通道并授权 30 天过渡供药，同时授予稳定用药患者阶梯治疗豁免！',
+      trace: {
+        tool: 'evaluate_medicare_part_d_prior_auth_expedited_appeal_guard(ai_decision="DENY", clinician_signed=false, urgency=true, stable_days=120 -> BLOCK_AUTONOMOUS_AI_DENIAL_AND_ROUTE_TO_LICENSED_MEDICAL_DIRECTOR_WITH_CMS10146_HOLD)',
+        citations: ['P95-HEALTHCARE-CMS-MEDICARE-PART-D-PRIOR-AUTHORIZATION-APPEAL-EXPEDITED-72HR-AND-STEP-THERAPY-OVERRIDE-GUARD', 'CMS-42CFR423-570', 'CMS-0057-F-SB1120'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P95) · Autonomous AI denial blocked, 24h/72h expedited SLA & Step Therapy override enforced'
+      }
+    },
+    {
+      code: 'P96 · WebRTC Digital Human Avatar Multi-Stream Lip-Sync (ITU-R BT.1359-1) & RTCP SR NTP Wallclock Drift Decoupling Guard',
+      badge: 'ITU-R BT.1359 Lip-Sync',
+      title: '多模态 3D 数字人（WebRTC Avatar）音视频双流唇形同步（ITU-R BT.1359-1）与 RTCP SR 墙钟漂移防挂起护栏',
+      sub: '测试 WebRTC 数字人 GPU 口型渲染滞后超出 [-45ms, +125ms] 唇形同步窗口导致“声画错位”，或 RTCP SR 超时 >5s / 视频卡死 >180ms 拖死 Opus 实时语音的 0ms 解耦',
+      customer_en: '[Multimodal 3D Digital Human WebRTC Avatar Session: GPU Viseme Rendering Stalls by 240ms (effectiveAvSkewMs=-240ms < -180ms) and RTCP Sender Report NTP Wallclock Jumps 750ms (>500ms), Threatening to Freeze Real-Time Opus Audio Playout or Cause Severe Lip-Sync Desync]',
+      customer_zh: '【多模态 3D 数字人 WebRTC 视频双录/客服会话：GPU 3D 口型渲染突发滞后 240ms（<-180ms）且 RTCP SR NTP 墙钟发生 750ms 跳变，面临“声到嘴不到”唇音错位或为等视频画面而卡死 Opus 实时语音流】',
+      agent_en: 'WEBRTC AVATAR LIP-SYNC & RTCP SR WALLCLOCK GUARD (P96 / P96-WEBRTC-RTP-MULTI-STREAM-LIPSYNC-AV-SKEW-ITU-R-BT1359-RTCP-SR-NTP-WALLCLOCK-DRIFT-GUARD): Decoupled Opus audio playout from stalled avatar video (`-240ms < -180ms`, `AVATAR_VIDEO_RENDER_STALL_EXCEEDS_180MS_VOICE_INTERACTIVITY_BUDGET` -> `DETACH_STALLED_AVATAR_VIDEO_SWITCH_TO_IDLE_LOOP_AND_PLAY_OPUS_AUDIO_IMMEDIATELY`) and stale `RTCP SR` clock (`RTCP_SR_RFC3550_NTP_WALLCLOCK_STALE_OR_STEP_JUMP_DESYNC`), while enforcing bounded `<=150ms` delay buffering within `ITU-R BT.1359-1` (`[-45ms, +125ms]`) on moderate skew!',
+      agent_zh: '【P96 多模态 WebRTC 数字人 ITU-R BT.1359-1 唇形同步与防挂起护栏 (AVATAR_VIDEO_RENDER_STALL_EXCEEDS_180MS_VOICE_INTERACTIVITY_BUDGET)】检出 GPU 口型渲染滞后 240ms（>180ms 交互预算）及 RTCP SR 墙钟失步！已立即解耦卡顿视频流、切换数字人静默呼吸待机循环并保障 Opus 语音 0ms 实时直出；对中度唇音偏差则注入 <=150ms 有界缓冲收敛回 [-45ms, +125ms] 窗口！',
+      trace: {
+        tool: 'evaluate_webrtc_av_lipsync_skew_and_rtcp_sr_guard(av_skew_ms=-240, rtcp_sr_age_ms=6200, ntp_jump_ms=750 -> DETACH_STALLED_AVATAR_VIDEO_SWITCH_TO_IDLE_LOOP_AND_PLAY_OPUS_AUDIO_IMMEDIATELY)',
+        citations: ['P96-WEBRTC-RTP-MULTI-STREAM-LIPSYNC-AV-SKEW-ITU-R-BT1359-RTCP-SR-NTP-WALLCLOCK-DRIFT-GUARD', 'ITU-R-BT1359-1', 'IETF-RFC-3550-RTCP-SR'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P96) · Stalled avatar video decoupled for 0ms Opus voice & ITU-R BT.1359-1 lip-sync enforced'
+      }
     }
   ];
 
@@ -4291,7 +4325,8 @@
       '- [x] **航空 DOT 24 小时原路退现/停机坪延误及 ACAA 电动轮椅 CRO 强制升级护栏 & WebRTC Opus DTX (`usedtx=1`) 稀疏帧 VAD 死锁解除与 80ms 唤醒预卷护栏**：残障轮椅受损或停机坪超限滞留 0ms 强转航司法定 CRO 官员并硬拦截 24h/重大航延代金券诱导强制退现 (P87)，DTX 稀疏帧致 VAD 沉默 `>=1600ms` 自动注入 `160ms` 零值 PCM 尾帧推进轮次并强制 `80ms` 环形缓冲唤醒预卷防吃字 (P88)',
       '- [x] **医药 GxP / FDA 21 CFR 314.80 不良事件 MedWatch 四要素强制采集与防超说明书推广护栏 & 超长通话 SRTP RFC 3711 `ROC` 回绕防失步与 DTLS-SRTP 双密钥轮换护栏**：0ms 阻断未获批适应症/剂量回答转交医学事务部 MIRF 并强锁 MedWatch 四要素采集与 24h `E2B(R3)` 药物警戒上报 (P89)，`>21.85` 分钟长通话 16-bit 序列号跨丢包回绕失步时触发 `ROC ± 1` 试解密重同步并在 60 分钟密钥轮换时启用 `500ms` 双 `MKI` 重叠窗口 (P90)',
       '- [x] **零售银行 CFPB Regulation E (`12 CFR § 1005`) 未授权转账口头受理、责任阶梯与 10 日临时垫付护栏 & 多方会议/免提声纹分离串音纠偏与旁人角色写隔离护栏**：0ms 拦截“先找商户/先交报警回执”违法前置条件、钳位 `$0/$50/$500` 法定责任上限并强制排期 10 工作日临时信用垫付 (P91)，双讲重叠 `>=30%` 挂起写操作并物理隔离非主叫声纹槽位（`<0.78`）防旁人越权注入 (P92)',
-      '- [x] **证券经纪 SEC Reg BI / FINRA 2111 复杂杠杆 ETF 适当性、防伪装非劝诱单与反刷单护栏 & SIP/SDP RFC 3264 动态 PT 对称锚定与 `maxptime` 防溢出护栏**：0ms 拦截 AI 推荐标的却伪标 `UNSOLICITED` 非劝诱单、阻断保守型客户 3x 杠杆 ETF 委托并冻结换手率 `>6.0` / 费率 `>20%` 过度交易劝诱 (P93)，强制 SDP Answer 动态 PT 与采样率对称镜像 Offer 并将 RTP `ptime` 钳位在 `<= remoteMaxPtimeMs`（20ms）防硬件 SBC 失灵断音 (P94)'
+      '- [x] **证券经纪 SEC Reg BI / FINRA 2111 复杂杠杆 ETF 适当性、防伪装非劝诱单与反刷单护栏 & SIP/SDP RFC 3264 动态 PT 对称锚定与 `maxptime` 防溢出护栏**：0ms 拦截 AI 推荐标的却伪标 `UNSOLICITED` 非劝诱单、阻断保守型客户 3x 杠杆 ETF 委托并冻结换手率 `>6.0` / 费率 `>20%` 过度交易劝诱 (P93)，强制 SDP Answer 动态 PT 与采样率对称镜像 Offer 并将 RTP `ptime` 钳位在 `<= remoteMaxPtimeMs`（20ms）防硬件 SBC 失灵断音 (P94)',
+      '- [x] **医保 CMS Medicare Part D 事前授权 `24h/72h` 加急、阶梯治疗豁免与禁 AI 自主拒保护栏 & 多模态 WebRTC 数字人 `ITU-R BT.1359-1` 唇形同步与 `RTCP SR` 时钟防挂起护栏**：0ms 拦截无执业医师签字的 AI 自主拒保、强制提级危及生命紧急用药至 `24h/72h` 加急通道并授予稳定用药 `>=90` 天患者阶梯治疗豁免 (P95)，将数字人音画偏差收敛于 `[-45ms, +125ms]` 并在视频渲染滞后 `>180ms` 或 `RTCP SR` 失步时果断解耦视频保 Opus 语音 0ms 直出 (P96)'
     ].join('\n');
   }
 

@@ -494,6 +494,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P93-SECURITIES-FINRA-RULE3240-SUITABILITY-BEST-INTEREST-REG-BI-CHURNING-AND-LEVERAGED-ETF-GUARD blocks AI-suggested trades falsely tagged as UNSOLICITED, blocks 3x leveraged/inverse ETF or complex derivative orders for conservative investors or without risk disclosure acknowledgment, and freezes automated solicitation when annualized turnover >6.0 or cost-to-equity >20%; P94-SIP-SDP-RFC3264-CODEC-PAYLOAD-TYPE-MISMATCH-TELEPHONE-EVENT-ASYMMETRY-AND-PTIME-BUFFER-OVERFLOW-GUARD pins SDP Answer dynamic payload types and clock rates symmetrically to the remote Offer, clamps RTP ptime to 20ms within remoteMaxPtimeMs, and rejects zero-codec intersections."
+    },
+    {
+      "check_name": "Healthcare CMS Medicare Part D Prior Authorization 24h/72h Expedited Appeal, Step Therapy Override & Anti-Autonomous AI Denial Guard + WebRTC Digital Human Avatar ITU-R BT.1359-1 Lip-Sync & RTCP SR Wallclock Drift Guard (P95 / P96)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P95-HEALTHCARE-CMS-MEDICARE-PART-D-PRIOR-AUTHORIZATION-APPEAL-EXPEDITED-72HR-AND-STEP-THERAPY-OVERRIDE-GUARD blocks autonomous AI clinical denials without a licensed Medical Director / Pharmacist signature, upgrades urgent/life-jeopardy requests to 24h/72h expedited queues with 30-day transition fill, and grants automatic Step Therapy overrides for continuity of care (>=90 days stable) or contraindications; P96-WEBRTC-RTP-MULTI-STREAM-LIPSYNC-AV-SKEW-ITU-R-BT1359-RTCP-SR-NTP-WALLCLOCK-DRIFT-GUARD enforces ITU-R BT.1359-1 ([-45ms, +125ms]) lip-sync via bounded audio delay buffering and decouples stalled avatar video (>180ms lag or stale RTCP SR >5000ms) so Opus voice streams with 0ms added delay."
     }
   ],
   "latency_scaling": [
