@@ -6566,6 +6566,168 @@ export function evaluateWebrtcMdnsLocalIpAndSdpSanitizerGuard(
   };
 }
 
+export interface StilleAviationNotamRunwayReadbackHearbackGuardInput {
+  callId: string;
+  safetyCriticalClearanceIssued: boolean;
+  verbatimReadbackReceived: boolean;
+  phoneticDesignatorAndRunwayNumberMatched: boolean;
+  notamOrMetarFeedStaleAgeMinutes: number;
+  digitalNotamSignatureVerified: boolean;
+}
+
+export interface StilleAviationNotamRunwayReadbackHearbackGuardDecision {
+  policyCode: "P75-AVIATION-ATFM-NOTAM-RUNWAY-READBACK-HEARBACK-GUARD";
+  callId: string;
+  readbackHearbackVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "ICAO_READBACK_HEARBACK_AND_NOTAM_VERIFIED"
+    | "SAFETY_CRITICAL_CLEARANCE_READBACK_MISMATCH_OR_MISSING_BLOCKED"
+    | "STALE_OR_UNSIGNED_NOTAM_METAR_FEED_BLOCKED";
+  actionCode:
+    | "COMMIT_VERIFIED_DISPATCH_CLEARANCE"
+    | "HOLD_CLEARANCE_COMMIT_AND_DEMAND_VERBATIM_ICAO_READBACK"
+    | "REJECT_STALE_AERONAUTICAL_FEED_AND_ROUTE_TO_DISPATCH_OFFICER";
+  summaryZh: string;
+}
+
+/**
+ * Stage 41 (#84): P75 — Aviation Dispatch / Apron Ground-Ops ICAO Doc 9432 Readback-Hearback & Digital NOTAM Freshness Guard.
+ * Prevents two catastrophic aviation dispatch and airport apron ground-handling voice operational hazards:
+ * 1) Safety-Critical Runway / Hold-Short / Gate / De-Icing Clearance Committed Without Verbatim Readback-Hearback (`safetyCriticalClearanceIssued && (!verbatimReadbackReceived || !phoneticDesignatorAndRunwayNumberMatched)`): under ICAO Doc 9432 and FAA JO 7110.65, any runway/taxiway/hold-short/altimeter/NOTAM instruction (e.g., `09L` vs. `09R`) must be read back verbatim by the crew and verified ("hearback") before the operational clearance state transitions to active (`SAFETY_CRITICAL_CLEARANCE_READBACK_MISMATCH_OR_MISSING_BLOCKED`).
+ * 2) Stale or Unsigned Aeronautical NOTAM / METAR Weather Feed (`notamOrMetarFeedStaleAgeMinutes > 15 || !digitalNotamSignatureVerified`): blocks voice dispatch advisories when weather/NOTAM telemetry exceeds the 15-minute freshness window or lacks cryptographic AIS/SWIM signature verification (`STALE_OR_UNSIGNED_NOTAM_METAR_FEED_BLOCKED`).
+ */
+export function evaluateAviationNotamRunwayReadbackHearbackGuard(
+  input: StilleAviationNotamRunwayReadbackHearbackGuardInput,
+): StilleAviationNotamRunwayReadbackHearbackGuardDecision {
+  if (
+    input.safetyCriticalClearanceIssued &&
+    (!input.verbatimReadbackReceived ||
+      !input.phoneticDesignatorAndRunwayNumberMatched)
+  ) {
+    return {
+      policyCode: "P75-AVIATION-ATFM-NOTAM-RUNWAY-READBACK-HEARBACK-GUARD",
+      callId: input.callId,
+      readbackHearbackVerified: false,
+      allowed: false,
+      reason: "SAFETY_CRITICAL_CLEARANCE_READBACK_MISMATCH_OR_MISSING_BLOCKED",
+      actionCode: "HOLD_CLEARANCE_COMMIT_AND_DEMAND_VERBATIM_ICAO_READBACK",
+      summaryZh: `【P75 航空签派与机坪调度 ICAO 复诵/听诵（Readback-Hearback）闭环护栏 (SAFETY_CRITICAL_CLEARANCE_READBACK_MISMATCH_OR_MISSING_BLOCKED)】通话 ${input.callId} 下发了跑道/滑行等待/除冰位关键安全指令，但未收到机组逐字复诵或跑道编号/左中右标识（如 09L vs 09R）校验不匹配！已根据 ICAO Doc 9432 0ms 挂起放行落库并强制要求标准航空字母逐字复诵。`,
+    };
+  }
+
+  if (
+    input.notamOrMetarFeedStaleAgeMinutes > 15 ||
+    !input.digitalNotamSignatureVerified
+  ) {
+    return {
+      policyCode: "P75-AVIATION-ATFM-NOTAM-RUNWAY-READBACK-HEARBACK-GUARD",
+      callId: input.callId,
+      readbackHearbackVerified: false,
+      allowed: false,
+      reason: "STALE_OR_UNSIGNED_NOTAM_METAR_FEED_BLOCKED",
+      actionCode: "REJECT_STALE_AERONAUTICAL_FEED_AND_ROUTE_TO_DISPATCH_OFFICER",
+      summaryZh: `【P75 航行通告 NOTAM / METAR 气象源时效与签名门禁 (STALE_OR_UNSIGNED_NOTAM_METAR_FEED_BLOCKED)】通话 ${input.callId} 引用的 NOTAM/METAR 数据已滞后 ${input.notamOrMetarFeedStaleAgeMinutes} 分钟（>15分钟上限）或缺失 SWIM 数字签名（sig=${input.digitalNotamSignatureVerified}）！已拦截自动语音签派播报并转交持证签派员。`,
+    };
+  }
+
+  return {
+    policyCode: "P75-AVIATION-ATFM-NOTAM-RUNWAY-READBACK-HEARBACK-GUARD",
+    callId: input.callId,
+    readbackHearbackVerified: true,
+    allowed: true,
+    reason: "ICAO_READBACK_HEARBACK_AND_NOTAM_VERIFIED",
+    actionCode: "COMMIT_VERIFIED_DISPATCH_CLEARANCE",
+    summaryZh: `【P75 航空 ICAO 复诵/听诵闭环与 NOTAM 签名核验通过】通话 ${input.callId} 关键指令已完成双向核对（数据账龄 ${input.notamOrMetarFeedStaleAgeMinutes} 分钟）。`,
+  };
+}
+
+export type BiometricPrivacyJurisdiction =
+  | "IL_BIPA"
+  | "TX_CUBI"
+  | "WA_MHMDA"
+  | "STANDARD_OPT_IN";
+
+export interface StilleBipaBiometricWrittenConsentAndRetentionGuardInput {
+  callId: string;
+  callerJurisdictionState: BiometricPrivacyJurisdiction;
+  priorWrittenReleaseExecuted: boolean;
+  retentionScheduleAndPurposeDisclosed: boolean;
+  commercialSaleOrLeaseOfVoiceprintAttempted: boolean;
+  daysSinceLastCustomerInteraction: number;
+}
+
+export interface StilleBipaBiometricWrittenConsentAndRetentionGuardDecision {
+  policyCode: "P76-VOICE-BIOMETRIC-BIPA-WRITTEN-CONSENT-AND-RETENTION-GUARD";
+  callId: string;
+  bipaBiometricCompliant: boolean;
+  allowed: boolean;
+  reason:
+    | "BIPA_CUBI_BIOMETRIC_CONSENT_AND_RETENTION_VERIFIED"
+    | "BIPA_CUBI_UNCONSENTED_VOICEPRINT_EXTRACTION_BLOCKED"
+    | "BIOMETRIC_PROFITEERING_OR_3YR_RETENTION_EXPIRY_BLOCKED";
+  actionCode:
+    | "ALLOW_CONSENTED_VOICEPRINT_VERIFICATION"
+    | "BYPASS_BIOMETRIC_EXTRACTION_AND_FALLBACK_TO_KNOWLEDGE_OR_FIDO2_AUTH"
+    | "PURGE_EXPIRED_BIOMETRIC_VECTOR_AND_BLOCK_THIRD_PARTY_EXPORT";
+  summaryZh: string;
+}
+
+/**
+ * Stage 41 (#85): P76 — Voice Biometric Illinois BIPA (`740 ILCS 14/15`) / Texas CUBI Written Release, Zero-Profiteering & 3-Year Retention Purge Guard.
+ * Prevents two massive statutory class-action liabilities ($1,000–$5,000 per scan/call under Illinois BIPA):
+ * 1) Unconsented Voiceprint Biometric Extraction (`(callerJurisdictionState === "IL_BIPA" || callerJurisdictionState === "TX_CUBI" || callerJurisdictionState === "WA_MHMDA") && (!priorWrittenReleaseExecuted || !retentionScheduleAndPurposeDisclosed)`): blocks acoustic voiceprint embedding extraction if the caller has not executed a prior written release after receiving written disclosure of the specific purpose and retention schedule (`BIPA_CUBI_UNCONSENTED_VOICEPRINT_EXTRACTION_BLOCKED`), falling back cleanly to non-biometric FIDO2/OTP authentication.
+ * 2) Biometric Profiteering or Retention Beyond 3-Year Statutory Ceiling (`commercialSaleOrLeaseOfVoiceprintAttempted || daysSinceLastCustomerInteraction > 1095`): under BIPA § 15(a) & § 15(c), strictly prohibits selling/leasing/profiting from voiceprint templates and mandates permanent destruction once the initial purpose is satisfied or within 3 years (`1,095 days`) of the individual's last interaction (`BIOMETRIC_PROFITEERING_OR_3YR_RETENTION_EXPIRY_BLOCKED`).
+ */
+export function evaluateBipaBiometricWrittenConsentAndRetentionGuard(
+  input: StilleBipaBiometricWrittenConsentAndRetentionGuardInput,
+): StilleBipaBiometricWrittenConsentAndRetentionGuardDecision {
+  if (
+    (input.callerJurisdictionState === "IL_BIPA" ||
+      input.callerJurisdictionState === "TX_CUBI" ||
+      input.callerJurisdictionState === "WA_MHMDA") &&
+    (!input.priorWrittenReleaseExecuted ||
+      !input.retentionScheduleAndPurposeDisclosed)
+  ) {
+    return {
+      policyCode: "P76-VOICE-BIOMETRIC-BIPA-WRITTEN-CONSENT-AND-RETENTION-GUARD",
+      callId: input.callId,
+      bipaBiometricCompliant: false,
+      allowed: false,
+      reason: "BIPA_CUBI_UNCONSENTED_VOICEPRINT_EXTRACTION_BLOCKED",
+      actionCode:
+        "BYPASS_BIOMETRIC_EXTRACTION_AND_FALLBACK_TO_KNOWLEDGE_OR_FIDO2_AUTH",
+      summaryZh: `【P76 声纹生物识别 BIPA/CUBI 书面授权门禁 (BIPA_CUBI_UNCONSENTED_VOICEPRINT_EXTRACTION_BLOCKED)】通话 ${input.callId} 来电归属严苛生物识别隐私法域 (${input.callerJurisdictionState})，但缺失事先书面授权（release=${input.priorWrittenReleaseExecuted}）或留存期限披露（disclosed=${input.retentionScheduleAndPurposeDisclosed}）！已根据 740 ILCS 14/15 0ms 物理旁路声纹特征提取，自动降级为非生物特征 FIDO2/OTP 核身，规避最高 $5,000/通 法定集体诉讼赔偿。`,
+    };
+  }
+
+  if (
+    input.commercialSaleOrLeaseOfVoiceprintAttempted ||
+    input.daysSinceLastCustomerInteraction > 1095
+  ) {
+    return {
+      policyCode: "P76-VOICE-BIOMETRIC-BIPA-WRITTEN-CONSENT-AND-RETENTION-GUARD",
+      callId: input.callId,
+      bipaBiometricCompliant: false,
+      allowed: false,
+      reason: "BIOMETRIC_PROFITEERING_OR_3YR_RETENTION_EXPIRY_BLOCKED",
+      actionCode: "PURGE_EXPIRED_BIOMETRIC_VECTOR_AND_BLOCK_THIRD_PARTY_EXPORT",
+      summaryZh: `【P76 声纹禁止商业牟利与 3 年到期销毁护栏 (BIOMETRIC_PROFITEERING_OR_3YR_RETENTION_EXPIRY_BLOCKED)】通话 ${input.callId} 检测到声纹向量商业共享/出租企图（sale=${input.commercialSaleOrLeaseOfVoiceprintAttempted}）或距客户末次交互已达 ${input.daysSinceLastCustomerInteraction} 天（超过 BIPA 1095 天/3 年法定留存红线）！已立即执行声纹模板不可逆清除并阻断第三方导出。`,
+    };
+  }
+
+  return {
+    policyCode: "P76-VOICE-BIOMETRIC-BIPA-WRITTEN-CONSENT-AND-RETENTION-GUARD",
+    callId: input.callId,
+    bipaBiometricCompliant: true,
+    allowed: true,
+    reason: "BIPA_CUBI_BIOMETRIC_CONSENT_AND_RETENTION_VERIFIED",
+    actionCode: "ALLOW_CONSENTED_VOICEPRINT_VERIFICATION",
+    summaryZh: `【P76 声纹生物识别 BIPA/CUBI 合规核验通过】通话 ${input.callId} (${input.callerJurisdictionState}) 已核验书面授权与留存周期（距末次交互 ${input.daysSinceLastCustomerInteraction} 天 <= 1095 天）。`,
+  };
+}
+
+
 
 
 

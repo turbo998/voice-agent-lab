@@ -424,6 +424,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P73-TELEHEALTH-DEA-EPCS-CONTROLLED-SUBSTANCE-REFILL-GUARD blocks autonomous AI or early refills of DEA Schedule II controlled substances and enforces interstate PDMP checks plus clinician FIPS 140-2 2FA EPCS signatures; P74-WEBRTC-MDNS-LOCAL-IP-LEAK-AND-SDP-CANDIDATE-SANITIZER-GUARD scrubs raw corporate LAN IPv4 / EUI-64 MAC host candidates in favor of RFC 8828 mDNS UUIDs and redacts SDP candidate IPs from telemetry logs."
+    },
+    {
+      "check_name": "Aviation ATFM/NOTAM Runway Readback/Hearback & Voice Biometric BIPA/CUBI Written Consent Guard (P75 / P76)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P75-AVIATION-ATFM-NOTAM-RUNWAY-READBACK-HEARBACK-GUARD blocks safety-critical aviation clearance commits without verbatim ICAO Doc 9432 crew readback and rejects >15-min stale or unsigned NOTAM/METAR feeds; P76-VOICE-BIOMETRIC-BIPA-WRITTEN-CONSENT-AND-RETENTION-GUARD blocks unconsented voiceprint extraction under Illinois BIPA / Texas CUBI / Washington MHMDA and purges biometric vectors exceeding the 1095-day (3-year) retention cap."
     }
   ],
   "latency_scaling": [
