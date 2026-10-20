@@ -4033,6 +4033,40 @@
         confidence: 1.0,
         verifier: 'PASS (P86) · Bluetooth handover pop/gap muted (800ms EOU hold) & CVSD 8kHz ASR recalibrated'
       }
+    },
+    {
+      code: 'P87 · Aviation DOT 24-Hour Risk-Free Cash Refund, Tarmac Delay & ACAA Powered Wheelchair SSR (WCHC/WCLB) CRO Guard',
+      badge: 'DOT Cash + CRO Lock',
+      title: '航空 DOT 24 小时无损原路退票、停机坪超限延误与 ACAA 残障旅客电动轮椅 CRO 强制升级护栏',
+      sub: '测试残障旅客报告锂电池电动轮椅受损或停机坪滞留超 3.5 小时未派单 CRO 官员，或在 24h/重大航延下强推航司代金券拒退现金时的 0ms 拦截',
+      customer_en: '[Airline Passenger Reports Damaged Lithium-Battery Powered Wheelchair (SSR WCLB) at Arrival Gate & 3.5-Hour Tarmac Delay Without CRO Escalation, or Requests Statutory Cash Refund Within 24h / 4h Flight Delay While Agent Pushes Travel Voucher]',
+      customer_zh: '【残障旅客在登机口报告锂电池电动轮椅（SSR WCLB）托运摔坏且停机坪延误达 3.5 小时未派单法定无障碍裁决官 CRO，或在购票 24 小时内/延误 4 小时要求原路退现却被 AI 强推受限航司代金券】',
+      agent_en: 'AVIATION DOT 24HR REFUND & ACAA WHEELCHAIR CRO GUARD (P87 / P87-AVIATION-DOT-24HR-TARMAC-DELAY-AND-WHEELCHAIR-ASSISTANCE-GUARD): Escalated ACAA powered wheelchair mishandling / tarmac delay emergency in 0ms to a certified Complaint Resolution Official (CRO) with SSR battery code lock (`ACAA_WHEELCHAIR_MISHANDLING_OR_TARMAC_DELAY_CRO_ESCALATION_REQUIRED` -> `DISPATCH_CRO_OFFICIAL_AND_LOCK_PRIORITY_MOBILITY_DEVICE_RECOVERY`), and blocked travel-voucher coercion in favor of mandatory US DOT 14 CFR Part 260 original-payment cash refund (`ISSUE_ORIGINAL_PAYMENT_CASH_REFUND_WITHOUT_VOUCHER_COERCION`)!',
+      agent_zh: '【P87 航空 DOT 24h 原路退现与 ACAA 电动轮椅 CRO 护栏 (ACAA_WHEELCHAIR_MISHANDLING_OR_TARMAC_DELAY_CRO_ESCALATION_REQUIRED)】检出残障旅客电动轮椅受损/停机坪超限延误或 24h/重大航延退票请求！已 0ms 强转航司法定无障碍投诉裁决官（CRO）并锁定 SSR WCLB 轮椅优先追回，同时按 US DOT 14 CFR Part 260 硬拦截代金券诱导、执行原支付渠道全额现金退款！',
+      trace: {
+        tool: 'evaluate_aviation_dot_24hr_refund_and_wheelchair_ada_guard(wheelchair_or_tarmac=true, cro_dispatched=false, voucher_coercion=true -> DISPATCH_CRO_OFFICIAL_AND_LOCK_PRIORITY_MOBILITY_DEVICE_RECOVERY)',
+        citations: ['P87-AVIATION-DOT-24HR-TARMAC-DELAY-AND-WHEELCHAIR-ASSISTANCE-GUARD', 'US-DOT-14-CFR-260', 'ACAA-14-CFR-382-CRO'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P87) · ACAA wheelchair/tarmac CRO dispatched & DOT mandatory cash refund enforced'
+      }
+    },
+    {
+      code: 'P88 · WebRTC Opus DTX (usedtx=1) Sparse-Frame VAD Hangover Mutual-Silence Deadlock & 80ms Onset Pre-Roll Guard',
+      badge: '160ms Zero-Tail + 80ms Pre-Roll',
+      title: 'WebRTC Opus DTX (usedtx=1) 稀疏静音帧 VAD 挂起死锁解除与 80ms 唤醒预卷防吃字护栏',
+      sub: '测试移动端开启 Opus DTX 省流模式每 400ms 仅发 1 字节 SID 帧导致云端 VAD 无法触发 speech_stopped 陷入双方沉默死锁，以及唤醒首辅音被截断的防护',
+      customer_en: '[Mobile WebRTC Client Enables Opus DTX (usedtx=1), Emitting Only 1-Byte SID Frames Every 400ms After Utterance Ends so Cloud VAD Never Fires speech_stopped (1,850ms Mutual Silence Deadlock), Then Clips Initial "/k/" on DTX Wakeup With 20ms Pre-Roll]',
+      customer_zh: '【移动端 WebRTC 开启 Opus DTX (usedtx=1) 省流模式后用户说完话进入静音，客户端每 400ms 仅发 1 字节 SID 帧导致云端 VAD 未触发 speech_stopped 陷入 1850ms 双方沉默死锁，且再开口时 20ms 预卷吞掉句首清辅音】',
+      agent_en: 'WEBRTC OPUS DTX VAD DEADLOCK & ONSET PREROLL GUARD (P88 / P88-WEBRTC-OPUS-DTX-COMFORT-NOISE-VAD-DEADLOCK-AND-TURN-KEEPALIVE-GUARD): Detected Opus DTX sparse-frame cloud VAD hangover stall (`mutualSilenceDurationMs=1850 >= 1600`, `trailingSpeechStoppedEventFired=false` -> `OPUS_DTX_SPARSE_FRAME_VAD_HANGOVER_MUTUAL_SILENCE_DEADLOCK`); injected a `160ms` synthetic zero-PCM tail to force immediate `speech_stopped` turn commit (`INJECT_160MS_ZERO_PCM_TAIL_AND_FORCE_VAD_SPEECH_STOPPED_COMMIT`) and enforced an `80ms` ringbuffer lookback pre-roll on DTX voice onset (`ENFORCE_80MS_RINGBUFFER_PREROLL_ON_DTX_VOICE_ONSET`)!',
+      agent_zh: '【P88 WebRTC Opus DTX 防死锁与 80ms 唤醒预卷护栏 (OPUS_DTX_SPARSE_FRAME_VAD_HANGOVER_MUTUAL_SILENCE_DEADLOCK)】检出移动端 Opus DTX 稀疏 SID 帧导致云端 VAD 挂起计时器卡死（双方沉默 1850ms 未触发 speech_stopped）！已自动注入 160ms 合成零值 PCM 尾帧强制推进轮次提交，并开启 80ms 环形缓冲唤醒预卷确保句首清辅音零截断！',
+      trace: {
+        tool: 'evaluate_webrtc_opus_dtx_vad_mutual_silence_deadlock_guard(dtx_active=true, speech_stopped=false, silence_ms=1850, preroll_ms=20 -> INJECT_160MS_ZERO_PCM_TAIL_AND_FORCE_VAD_SPEECH_STOPPED_COMMIT)',
+        citations: ['P88-WEBRTC-OPUS-DTX-COMFORT-NOISE-VAD-DEADLOCK-AND-TURN-KEEPALIVE-GUARD', 'IETF-RFC-6716-OPUS-DTX', 'RFC-3389-COMFORT-NOISE'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P88) · 160ms zero-PCM tail broke DTX VAD deadlock & 80ms onset pre-roll active'
+      }
     }
   ];
 
@@ -4151,7 +4185,8 @@
       '- [x] **海事港口 SOLAS GMDSS / VHF Ch16 遇险抢占与 IMO SMCP 复诵护栏 & 原生 S2S 情绪传染咆哮镜像抑制与响度/语速稳定护栏**：船长呼叫 MAYDAY/PAN-PAN 或触发 GMDSS DSC 时 0ms 抢占排泊对话直连海事搜救中心 MRCC 并强验 9 位 MMSI 与 IMO SMCP 逐字复诵 (P79)，0ms 钳位 S2S 咆哮/冷笑情绪传染镜像 (`F0>310Hz`) 并强制执行 ITU-R BS.1770 (`-16 LUFS`) 与 `155 WPM` 语速稳频 (P80)',
       '- [x] **车险/财险 FNOL 时间轴/EDR 遥测对账与禁 VSA 伪科学拒赔护栏 & 弱网突发连续丢包防 PLC 音素脑补幻觉与 RFC 4585 NACK 护栏**：冻结倒签保单、车载 EDR 碰撞时间偏差 `>15min` 或旁白教唆闪赔移交 SIU 并按 NAIC/EU AI Act 剥离伪科学声学测谎分 (P81)，在 `>=240ms` 突发连续丢包覆盖关键否定词/金额槽位时 0ms 阻断投机工具调用并强制开启 RFC 4585 RTCP NACK 与 Opus FEC (P82)',
       '- [x] **跨境海关 HS 编码防逃税改写/Section 321 免税拆单与 OFAC 制裁筛查护栏 & PSTN 跨网 AMR-WB/G.711 级联转码清擦音防混淆与 TRFO 护栏**：0ms 冻结命中 OFAC SDN / BIS 实体清单 (`>=0.85`) 的报关单并硬阻断口头篡改免税 HS 编码、`<$800` 免税拆单与 `>=25%` 低报货值 (P83)，在 `3.4kHz` 窄带砖墙滤波 (`<=-28dB`) 抹除 `F/S/B/P` 清擦音或 `>=2` 跳级联转码时强制北约字母逐位复诵与 SBC TRFO 免转码透传 (P84)',
-      '- [x] **欧盟 Omnibus 指令 30 天最低价核验/促销码折上折封顶与恶意拒付拦截护栏 & 车载/TWS 蓝牙 HFP/SCO 路由切换爆音屏蔽与 CVSD 8kHz 重校准护栏**：0ms 阻断 `>=2` 次拒付/DNR 惯犯免退货秒退与互斥优惠码折上折破底线并强制披露过去 30 天最低成交价 (P85)，在车载蓝牙切换产生 `>=-3dBFS` 瞬态爆音或 `>=200ms` 静默黑洞时冻结 VAD/EOU `800ms` 并针对 `CVSD 8kHz` 窄带降级重校准 ASR 前端 (P86)'
+      '- [x] **欧盟 Omnibus 指令 30 天最低价核验/促销码折上折封顶与恶意拒付拦截护栏 & 车载/TWS 蓝牙 HFP/SCO 路由切换爆音屏蔽与 CVSD 8kHz 重校准护栏**：0ms 阻断 `>=2` 次拒付/DNR 惯犯免退货秒退与互斥优惠码折上折破底线并强制披露过去 30 天最低成交价 (P85)，在车载蓝牙切换产生 `>=-3dBFS` 瞬态爆音或 `>=200ms` 静默黑洞时冻结 VAD/EOU `800ms` 并针对 `CVSD 8kHz` 窄带降级重校准 ASR 前端 (P86)',
+      '- [x] **航空 DOT 24 小时原路退现/停机坪延误及 ACAA 电动轮椅 CRO 强制升级护栏 & WebRTC Opus DTX (`usedtx=1`) 稀疏帧 VAD 死锁解除与 80ms 唤醒预卷护栏**：残障轮椅受损或停机坪超限滞留 0ms 强转航司法定 CRO 官员并硬拦截 24h/重大航延代金券诱导强制退现 (P87)，DTX 稀疏帧致 VAD 沉默 `>=1600ms` 自动注入 `160ms` 零值 PCM 尾帧推进轮次并强制 `80ms` 环形缓冲唤醒预卷防吃字 (P88)'
     ].join('\n');
   }
 

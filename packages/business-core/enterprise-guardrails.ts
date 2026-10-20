@@ -7521,6 +7521,143 @@ export function evaluateBluetoothHfpHandoverGlitchAndCodecGuard(
   };
 }
 
+export interface StilleAviationDot24HrRefundAndWheelchairAdaGuardInput {
+  callId: string;
+  acaaWheelchairMishandledOrTarmacDelayEmergency: boolean;
+  croComplaintResolutionOfficialDispatched: boolean;
+  ssrWheelchairBatteryCodeVerified: boolean;
+  within24HrRiskFreeWindowOrSignificantDelay: boolean;
+  agentForcesVoucherInsteadOfCashRefund: boolean;
+}
+
+export interface StilleAviationDot24HrRefundAndWheelchairAdaGuardDecision {
+  allowed: boolean;
+  dotAcaaComplianceVerified: boolean;
+  reason:
+    | "ACAA_WHEELCHAIR_MISHANDLING_OR_TARMAC_DELAY_CRO_ESCALATION_REQUIRED"
+    | "DOT_24HR_OR_SIGNIFICANT_DELAY_MANDATORY_CASH_REFUND_VOUCHER_TRAP_BLOCKED"
+    | "DOT_24HR_REFUND_AND_ACAA_SSR_COMPLIANCE_VERIFIED";
+  actionCode:
+    | "DISPATCH_CRO_OFFICIAL_AND_LOCK_PRIORITY_MOBILITY_DEVICE_RECOVERY"
+    | "ISSUE_ORIGINAL_PAYMENT_CASH_REFUND_WITHOUT_VOUCHER_COERCION"
+    | "COMMIT_COMPLIANT_PASSENGER_ITINERARY_RESOLUTION";
+  policyCode: "P87-AVIATION-DOT-24HR-TARMAC-DELAY-AND-WHEELCHAIR-ASSISTANCE-GUARD";
+}
+
+export function evaluateAviationDot24HrRefundAndWheelchairAdaGuard(
+  input: StilleAviationDot24HrRefundAndWheelchairAdaGuardInput
+): StilleAviationDot24HrRefundAndWheelchairAdaGuardDecision {
+  if (
+    input.acaaWheelchairMishandledOrTarmacDelayEmergency &&
+    (!input.croComplaintResolutionOfficialDispatched ||
+      !input.ssrWheelchairBatteryCodeVerified)
+  ) {
+    return {
+      allowed: false,
+      dotAcaaComplianceVerified: false,
+      reason:
+        "ACAA_WHEELCHAIR_MISHANDLING_OR_TARMAC_DELAY_CRO_ESCALATION_REQUIRED",
+      actionCode:
+        "DISPATCH_CRO_OFFICIAL_AND_LOCK_PRIORITY_MOBILITY_DEVICE_RECOVERY",
+      policyCode:
+        "P87-AVIATION-DOT-24HR-TARMAC-DELAY-AND-WHEELCHAIR-ASSISTANCE-GUARD",
+    };
+  }
+
+  if (
+    input.within24HrRiskFreeWindowOrSignificantDelay &&
+    input.agentForcesVoucherInsteadOfCashRefund
+  ) {
+    return {
+      allowed: false,
+      dotAcaaComplianceVerified: false,
+      reason:
+        "DOT_24HR_OR_SIGNIFICANT_DELAY_MANDATORY_CASH_REFUND_VOUCHER_TRAP_BLOCKED",
+      actionCode:
+        "ISSUE_ORIGINAL_PAYMENT_CASH_REFUND_WITHOUT_VOUCHER_COERCION",
+      policyCode:
+        "P87-AVIATION-DOT-24HR-TARMAC-DELAY-AND-WHEELCHAIR-ASSISTANCE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    dotAcaaComplianceVerified: true,
+    reason: "DOT_24HR_REFUND_AND_ACAA_SSR_COMPLIANCE_VERIFIED",
+    actionCode: "COMMIT_COMPLIANT_PASSENGER_ITINERARY_RESOLUTION",
+    policyCode:
+      "P87-AVIATION-DOT-24HR-TARMAC-DELAY-AND-WHEELCHAIR-ASSISTANCE-GUARD",
+  };
+}
+
+export interface StilleWebrtcOpusDtxVadMutualSilenceDeadlockGuardInput {
+  callId: string;
+  opusDtxActiveWithSparseSidFrames: boolean;
+  trailingSpeechStoppedEventFired: boolean;
+  mutualSilenceDurationMs: number;
+  syntheticZeroPcmTailInjected: boolean;
+  dtxWakeupLookbackPreRollMs: number;
+}
+
+export interface StilleWebrtcOpusDtxVadMutualSilenceDeadlockGuardDecision {
+  allowed: boolean;
+  dtxTurnFlowHealthy: boolean;
+  reason:
+    | "OPUS_DTX_SPARSE_FRAME_VAD_HANGOVER_MUTUAL_SILENCE_DEADLOCK"
+    | "DTX_WAKEUP_INITIAL_CONSONANT_CLIPPING_PREROLL_INSUFFICIENT"
+    | "OPUS_DTX_VAD_ENDPOINTING_AND_ONSET_PREROLL_HEALTHY";
+  actionCode:
+    | "INJECT_160MS_ZERO_PCM_TAIL_AND_FORCE_VAD_SPEECH_STOPPED_COMMIT"
+    | "ENFORCE_80MS_RINGBUFFER_PREROLL_ON_DTX_VOICE_ONSET"
+    | "MAINTAIN_FULL_DUPLEX_DTX_TURN_FLOW";
+  policyCode: "P88-WEBRTC-OPUS-DTX-COMFORT-NOISE-VAD-DEADLOCK-AND-TURN-KEEPALIVE-GUARD";
+}
+
+export function evaluateWebrtcOpusDtxVadMutualSilenceDeadlockGuard(
+  input: StilleWebrtcOpusDtxVadMutualSilenceDeadlockGuardInput
+): StilleWebrtcOpusDtxVadMutualSilenceDeadlockGuardDecision {
+  if (
+    input.opusDtxActiveWithSparseSidFrames &&
+    !input.trailingSpeechStoppedEventFired &&
+    input.mutualSilenceDurationMs >= 1600 &&
+    !input.syntheticZeroPcmTailInjected
+  ) {
+    return {
+      allowed: false,
+      dtxTurnFlowHealthy: false,
+      reason: "OPUS_DTX_SPARSE_FRAME_VAD_HANGOVER_MUTUAL_SILENCE_DEADLOCK",
+      actionCode:
+        "INJECT_160MS_ZERO_PCM_TAIL_AND_FORCE_VAD_SPEECH_STOPPED_COMMIT",
+      policyCode:
+        "P88-WEBRTC-OPUS-DTX-COMFORT-NOISE-VAD-DEADLOCK-AND-TURN-KEEPALIVE-GUARD",
+    };
+  }
+
+  if (
+    input.opusDtxActiveWithSparseSidFrames &&
+    input.dtxWakeupLookbackPreRollMs < 60
+  ) {
+    return {
+      allowed: false,
+      dtxTurnFlowHealthy: false,
+      reason: "DTX_WAKEUP_INITIAL_CONSONANT_CLIPPING_PREROLL_INSUFFICIENT",
+      actionCode: "ENFORCE_80MS_RINGBUFFER_PREROLL_ON_DTX_VOICE_ONSET",
+      policyCode:
+        "P88-WEBRTC-OPUS-DTX-COMFORT-NOISE-VAD-DEADLOCK-AND-TURN-KEEPALIVE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    dtxTurnFlowHealthy: true,
+    reason: "OPUS_DTX_VAD_ENDPOINTING_AND_ONSET_PREROLL_HEALTHY",
+    actionCode: "MAINTAIN_FULL_DUPLEX_DTX_TURN_FLOW",
+    policyCode:
+      "P88-WEBRTC-OPUS-DTX-COMFORT-NOISE-VAD-DEADLOCK-AND-TURN-KEEPALIVE-GUARD",
+  };
+}
+
+
 
 
 

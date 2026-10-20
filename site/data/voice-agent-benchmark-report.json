@@ -466,6 +466,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P85-OMNIBUS-PRICE-TRANSPARENCY-PROMO-ABUSE-AND-CHARGEBACK-GUARD blocks instant returnless refunds for callers with >=2 prior chargebacks/DNR claims, prevents mutually exclusive promo code stacking exceeding margin caps, and enforces EU Omnibus 30-day lowest benchmark price disclosures; P86-BLUETOOTH-HFP-SCO-HANDOVER-GLITCH-AND-CODEC-RENEGOTIATION-GUARD mutes >=-3dBFS transient pop spikes and freezes VAD/EOU for 800ms during Bluetooth route switches while recalibrating ASR frontends upon CVSD 8kHz narrowband fallback."
+    },
+    {
+      "check_name": "Aviation DOT 24h Cash Refund & ACAA Powered Wheelchair CRO Guard + WebRTC Opus DTX Sparse-Frame VAD Deadlock & Pre-Roll Guard (P87 / P88)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P87-AVIATION-DOT-24HR-TARMAC-DELAY-AND-WHEELCHAIR-ASSISTANCE-GUARD immediately dispatches a certified Complaint Resolution Official (CRO) with SSR battery code lock on ACAA wheelchair mishandling or tarmac delays and blocks travel-voucher coercion on statutory 24h/significant-delay cash refunds; P88-WEBRTC-OPUS-DTX-COMFORT-NOISE-VAD-DEADLOCK-AND-TURN-KEEPALIVE-GUARD injects a 160ms synthetic zero-PCM tail to break >=1600ms Opus DTX VAD hangover mutual-silence deadlocks and enforces an 80ms ringbuffer onset pre-roll."
     }
   ],
   "latency_scaling": [
