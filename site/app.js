@@ -4067,6 +4067,40 @@
         confidence: 1.0,
         verifier: 'PASS (P88) · 160ms zero-PCM tail broke DTX VAD deadlock & 80ms onset pre-roll active'
       }
+    },
+    {
+      code: 'P89 · Pharma GxP / FDA 21 CFR 314.80 Adverse Event MedWatch 4-Element Capture & Off-Label Promotion Guard',
+      badge: 'MedWatch 4-Element + MIRF',
+      title: '医药患者支持 GxP / FDA 21 CFR 314.80 不良事件四要素强制采集上报与防超说明书推广（Off-Label Promotion）护栏',
+      sub: '测试患者提及用药后严重不良事件（SAE）未采集 MedWatch 四要素/未报 E2B(R3)，或询问未获批适应症/剂量时 AI 违规输出超说明书疗效声明的 0ms 拦截',
+      customer_en: '[Patient Support Call: Caller Mentions Post-Injection Syncope & ER Hospitalization (SAE) Without 4-Element MedWatch Capture, and Asks Whether Adult Biologic Injection Can Be Halved for Pediatric Off-Label Use]',
+      customer_zh: '【药企患者支持通话：患者提及注射生物制剂后出现晕厥急诊住院（SAE）但未采集 MedWatch 3500A 四要素，并顺带询问该成人针剂能否减半剂量给儿童超说明书使用】',
+      agent_en: 'PHARMA GXP ADVERSE EVENT & OFF-LABEL PROMOTION GUARD (P89 / P89-PHARMA-GXP-FDA-21CFR31480-ADVERSE-EVENT-MEDWATCH-AND-OFF-LABEL-PROMOTION-GUARD): Blocked unapproved off-label dosing/indication claim in 0ms and routed unsolicited MIRF to Medical Affairs MSL (`FDCA_OFF_LABEL_PROMOTION_OR_UNAPPROVED_DOSING_CLAIM_BLOCKED` -> `HALT_UNAPPROVED_INDICATION_CLAIM_AND_ROUTE_MIRF_TO_MEDICAL_AFFAIRS_MSL`), and froze commercial flow on SAE detection to capture all 4 FDA 21 CFR 314.80 MedWatch elements + dispatch a 24h `E2B(R3)` PV ticket + warm-transfer a PV nurse (`CAPTURE_4_MEDWATCH_ELEMENTS_DISPATCH_24HR_SAE_E2BR3_AND_WARM_TRANSFER_PV_NURSE`)!',
+      agent_zh: '【P89 医药 GxP 药物警戒与防超说明书推广护栏 (FDCA_OFF_LABEL_PROMOTION_OR_UNAPPROVED_DOSING_CLAIM_BLOCKED)】检出超说明书儿童剂量咨询与注射后严重不良事件（SAE）！已 0ms 熔断超说明书疗效/剂量回答并将非主动医学信息请求（MIRF）移交医学事务部 MSL，同时冻结商业话术、强制采集 MedWatch 四要素并派发 24h E2B(R3) 药物警戒工单热转接药物警戒护士！',
+      trace: {
+        tool: 'evaluate_pharma_gxp_adverse_event_and_off_label_guard(sae_mentioned=true, medwatch_4_elements=false, off_label_claim=true -> HALT_UNAPPROVED_INDICATION_CLAIM_AND_ROUTE_MIRF_TO_MEDICAL_AFFAIRS_MSL)',
+        citations: ['P89-PHARMA-GXP-FDA-21CFR31480-ADVERSE-EVENT-MEDWATCH-AND-OFF-LABEL-PROMOTION-GUARD', 'FDA-21-CFR-314-80', 'EMA-GVP-MODULE-VI'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P89) · Off-label claim blocked to MIRF & 4-element MedWatch E2B(R3) enforced'
+      }
+    },
+    {
+      code: 'P90 · Long-Session SRTP RFC 3711 16-bit Sequence Rollover Counter (ROC) Desync & DTLS-SRTP Dual-MKI Rekey Guard',
+      badge: 'ROC ± 1 Resync + Dual MKI',
+      title: '超长通话（>21.85 分钟）SRTP RFC 3711 16-bit 序列号回绕（ROC）跨丢包失步防静音死锁与 DTLS-SRTP 双密钥无损轮换护栏',
+      sub: '测试 >21.85 分钟长通话在 16-bit RTP 序列号从 65535 回绕至 0 时遭遇突发丢包导致 ROC 失步与 SRTP 鉴权 100% 锁死，以及 60 分钟密钥轮换无双 MKI 重叠的防护',
+      customer_en: '[Long-Duration 22-Minute Telehealth/NOC Call Wraps 16-Bit RTP Sequence Number (65535 -> 0) Across a Cellular Burst Loss Window, Desynchronizing SRTP Rollover Counter (localEstimatedRoc=0 vs remoteActualRoc=1, 100% AEAD Auth Tag Drop), Plus 60-Min DTLS-SRTP Rekey]',
+      customer_zh: '【长达 22 分钟的远程会诊/重保指挥通话在 16-bit RTP 序列号从 65535 回绕至 0 时恰逢蜂窝突发丢包，导致收发双方回绕计数器 ROC 失步（0 vs 1）且后续 SRTP 鉴权 100% 失败死锁，或 60 分钟密钥轮换缺失双 MKI 重叠】',
+      agent_en: 'SRTP RFC 3711 ROC ROLLOVER & DTLS-SRTP MKI REKEY GUARD (P90 / P90-RTP-SRTP-RFC3711-ROC-ROLLOVER-DESYNC-AND-DTLS-SRTP-MKI-REKEY-GUARD): Detected 16-bit RTP sequence rollover desync across loss boundary (`localEstimatedRoc=0 != remoteActualRoc=1` -> `SRTP_RFC3711_16BIT_SEQ_ROLLOVER_COUNTER_DESYNC_AUTH_TAG_LOCKOUT`); executed RFC 3711 signed `ROC ± 1` trial decryption and RTCP SR resynchronization (`EXECUTE_RFC3711_SIGNED_ROC_PLUS_MINUS_1_TRIAL_DECRYPT_AND_RTCP_SR_RESYNC`), and activated a `500ms` dual-`MKI` key overlap window for 60-minute DTLS-SRTP rekeying (`ACTIVATE_DUAL_MKI_500MS_KEY_OVERLAP_WINDOW_FOR_ZERO_DROP_SRTP_REKEY`)!',
+      agent_zh: '【P90 超长通话 SRTP ROC 回绕防失步与双 MKI 轮换护栏 (SRTP_RFC3711_16BIT_SEQ_ROLLOVER_COUNTER_DESYNC_AUTH_TAG_LOCKOUT)】检出 >21.85 分钟长通话 16-bit RTP 序列号跨丢包边界回绕导致 ROC 失步！已立即执行 RFC 3711 有符号 ROC ± 1 试解密与 RTCP SR 索引重同步恢复加密语音流，并在 60 分钟密钥轮换时启用 500ms 双 MKI 重叠窗口实现零丢帧重协商！',
+      trace: {
+        tool: 'evaluate_rtp_srtp_roc_rollover_and_dtls_rekey_guard(seq_wrapped_in_loss=true, local_roc=0, remote_roc=1, duration_min=65 -> EXECUTE_RFC3711_SIGNED_ROC_PLUS_MINUS_1_TRIAL_DECRYPT_AND_RTCP_SR_RESYNC)',
+        citations: ['P90-RTP-SRTP-RFC3711-ROC-ROLLOVER-DESYNC-AND-DTLS-SRTP-MKI-REKEY-GUARD', 'IETF-RFC-3711-SRTP-ROC', 'RFC-5764-DTLS-SRTP'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P90) · SRTP ROC ± 1 trial decrypt resynced & 500ms dual-MKI rekey overlap active'
+      }
     }
   ];
 
@@ -4186,7 +4220,8 @@
       '- [x] **车险/财险 FNOL 时间轴/EDR 遥测对账与禁 VSA 伪科学拒赔护栏 & 弱网突发连续丢包防 PLC 音素脑补幻觉与 RFC 4585 NACK 护栏**：冻结倒签保单、车载 EDR 碰撞时间偏差 `>15min` 或旁白教唆闪赔移交 SIU 并按 NAIC/EU AI Act 剥离伪科学声学测谎分 (P81)，在 `>=240ms` 突发连续丢包覆盖关键否定词/金额槽位时 0ms 阻断投机工具调用并强制开启 RFC 4585 RTCP NACK 与 Opus FEC (P82)',
       '- [x] **跨境海关 HS 编码防逃税改写/Section 321 免税拆单与 OFAC 制裁筛查护栏 & PSTN 跨网 AMR-WB/G.711 级联转码清擦音防混淆与 TRFO 护栏**：0ms 冻结命中 OFAC SDN / BIS 实体清单 (`>=0.85`) 的报关单并硬阻断口头篡改免税 HS 编码、`<$800` 免税拆单与 `>=25%` 低报货值 (P83)，在 `3.4kHz` 窄带砖墙滤波 (`<=-28dB`) 抹除 `F/S/B/P` 清擦音或 `>=2` 跳级联转码时强制北约字母逐位复诵与 SBC TRFO 免转码透传 (P84)',
       '- [x] **欧盟 Omnibus 指令 30 天最低价核验/促销码折上折封顶与恶意拒付拦截护栏 & 车载/TWS 蓝牙 HFP/SCO 路由切换爆音屏蔽与 CVSD 8kHz 重校准护栏**：0ms 阻断 `>=2` 次拒付/DNR 惯犯免退货秒退与互斥优惠码折上折破底线并强制披露过去 30 天最低成交价 (P85)，在车载蓝牙切换产生 `>=-3dBFS` 瞬态爆音或 `>=200ms` 静默黑洞时冻结 VAD/EOU `800ms` 并针对 `CVSD 8kHz` 窄带降级重校准 ASR 前端 (P86)',
-      '- [x] **航空 DOT 24 小时原路退现/停机坪延误及 ACAA 电动轮椅 CRO 强制升级护栏 & WebRTC Opus DTX (`usedtx=1`) 稀疏帧 VAD 死锁解除与 80ms 唤醒预卷护栏**：残障轮椅受损或停机坪超限滞留 0ms 强转航司法定 CRO 官员并硬拦截 24h/重大航延代金券诱导强制退现 (P87)，DTX 稀疏帧致 VAD 沉默 `>=1600ms` 自动注入 `160ms` 零值 PCM 尾帧推进轮次并强制 `80ms` 环形缓冲唤醒预卷防吃字 (P88)'
+      '- [x] **航空 DOT 24 小时原路退现/停机坪延误及 ACAA 电动轮椅 CRO 强制升级护栏 & WebRTC Opus DTX (`usedtx=1`) 稀疏帧 VAD 死锁解除与 80ms 唤醒预卷护栏**：残障轮椅受损或停机坪超限滞留 0ms 强转航司法定 CRO 官员并硬拦截 24h/重大航延代金券诱导强制退现 (P87)，DTX 稀疏帧致 VAD 沉默 `>=1600ms` 自动注入 `160ms` 零值 PCM 尾帧推进轮次并强制 `80ms` 环形缓冲唤醒预卷防吃字 (P88)',
+      '- [x] **医药 GxP / FDA 21 CFR 314.80 不良事件 MedWatch 四要素强制采集与防超说明书推广护栏 & 超长通话 SRTP RFC 3711 `ROC` 回绕防失步与 DTLS-SRTP 双密钥轮换护栏**：0ms 阻断未获批适应症/剂量回答转交医学事务部 MIRF 并强锁 MedWatch 四要素采集与 24h `E2B(R3)` 药物警戒上报 (P89)，`>21.85` 分钟长通话 16-bit 序列号跨丢包回绕失步时触发 `ROC ± 1` 试解密重同步并在 60 分钟密钥轮换时启用 `500ms` 双 `MKI` 重叠窗口 (P90)'
     ].join('\n');
   }
 

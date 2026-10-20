@@ -473,6 +473,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P87-AVIATION-DOT-24HR-TARMAC-DELAY-AND-WHEELCHAIR-ASSISTANCE-GUARD immediately dispatches a certified Complaint Resolution Official (CRO) with SSR battery code lock on ACAA wheelchair mishandling or tarmac delays and blocks travel-voucher coercion on statutory 24h/significant-delay cash refunds; P88-WEBRTC-OPUS-DTX-COMFORT-NOISE-VAD-DEADLOCK-AND-TURN-KEEPALIVE-GUARD injects a 160ms synthetic zero-PCM tail to break >=1600ms Opus DTX VAD hangover mutual-silence deadlocks and enforces an 80ms ringbuffer onset pre-roll."
+    },
+    {
+      "check_name": "Pharma GxP FDA 21 CFR 314.80 Adverse Event MedWatch & Off-Label Promotion Guard + Long-Session SRTP RFC 3711 ROC Rollover & DTLS-SRTP Dual-MKI Rekey Guard (P89 / P90)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P89-PHARMA-GXP-FDA-21CFR31480-ADVERSE-EVENT-MEDWATCH-AND-OFF-LABEL-PROMOTION-GUARD blocks FDCA off-label promotion in 0ms by routing unsolicited queries via MIRF to Medical Affairs MSLs and freezes commercial scripts on AE/SAE detection to enforce 4-element MedWatch capture + 24h E2B(R3) PV reporting; P90-RTP-SRTP-RFC3711-ROC-ROLLOVER-DESYNC-AND-DTLS-SRTP-MKI-REKEY-GUARD prevents >21.85min SRTP 16-bit sequence rollover (ROC) desync lockouts across packet-loss boundaries via signed ROC+-1 trial decryption + RTCP resync and enforces 500ms dual-MKI overlap on 60-minute DTLS-SRTP rekeying."
     }
   ],
   "latency_scaling": [

@@ -7657,14 +7657,132 @@ export function evaluateWebrtcOpusDtxVadMutualSilenceDeadlockGuard(
   };
 }
 
+export interface StillePharmaGxpAdverseEventAndOffLabelGuardInput {
+  callId: string;
+  adverseEventOrSaeMentioned: boolean;
+  saeLifeThreateningOrHospitalization: boolean;
+  medwatchFourCoreElementsCaptured: boolean;
+  pharmacovigilanceE2bR3TicketDispatched: boolean;
+  offLabelIndicationOrDosingQueried: boolean;
+  agentProvidesOffLabelEfficacyOrDosingClaim: boolean;
+  unsolicitedMirfRoutedToMedicalAffairs: boolean;
+}
 
+export interface StillePharmaGxpAdverseEventAndOffLabelGuardDecision {
+  allowed: boolean;
+  gxpPharmacovigilanceCompliant: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P89-PHARMA-GXP-FDA-21CFR31480-ADVERSE-EVENT-MEDWATCH-AND-OFF-LABEL-PROMOTION-GUARD";
+}
 
+export function evaluatePharmaceuticalGxpAdverseEventMedWatchAndOffLabelPromotionGuard(
+  input: StillePharmaGxpAdverseEventAndOffLabelGuardInput
+): StillePharmaGxpAdverseEventAndOffLabelGuardDecision {
+  if (
+    input.offLabelIndicationOrDosingQueried &&
+    (input.agentProvidesOffLabelEfficacyOrDosingClaim ||
+      !input.unsolicitedMirfRoutedToMedicalAffairs)
+  ) {
+    return {
+      allowed: false,
+      gxpPharmacovigilanceCompliant: false,
+      reason: "FDCA_OFF_LABEL_PROMOTION_OR_UNAPPROVED_DOSING_CLAIM_BLOCKED",
+      actionCode:
+        "HALT_UNAPPROVED_INDICATION_CLAIM_AND_ROUTE_MIRF_TO_MEDICAL_AFFAIRS_MSL",
+      policyCode:
+        "P89-PHARMA-GXP-FDA-21CFR31480-ADVERSE-EVENT-MEDWATCH-AND-OFF-LABEL-PROMOTION-GUARD",
+    };
+  }
 
+  if (
+    input.adverseEventOrSaeMentioned &&
+    (!input.medwatchFourCoreElementsCaptured ||
+      !input.pharmacovigilanceE2bR3TicketDispatched)
+  ) {
+    return {
+      allowed: false,
+      gxpPharmacovigilanceCompliant: false,
+      reason: "FDA_21CFR31480_ADVERSE_EVENT_INCOMPLETE_CAPTURE_OR_MISSING_E2BR3_REPORT",
+      actionCode: input.saeLifeThreateningOrHospitalization
+        ? "CAPTURE_4_MEDWATCH_ELEMENTS_DISPATCH_24HR_SAE_E2BR3_AND_WARM_TRANSFER_PV_NURSE"
+        : "FREEZE_COMMERCIAL_FLOW_CAPTURE_4_MEDWATCH_ELEMENTS_AND_FILE_E2BR3_PV_CASE",
+      policyCode:
+        "P89-PHARMA-GXP-FDA-21CFR31480-ADVERSE-EVENT-MEDWATCH-AND-OFF-LABEL-PROMOTION-GUARD",
+    };
+  }
 
+  return {
+    allowed: true,
+    gxpPharmacovigilanceCompliant: true,
+    reason: "GXP_PHARMACOVIGILANCE_AE_REPORTING_AND_ON_LABEL_BOUNDARY_VERIFIED",
+    actionCode: "PROCEED_WITH_ON_LABEL_PATIENT_SUPPORT_AND_PV_AUDIT_TRAIL",
+    policyCode:
+      "P89-PHARMA-GXP-FDA-21CFR31480-ADVERSE-EVENT-MEDWATCH-AND-OFF-LABEL-PROMOTION-GUARD",
+  };
+}
 
+export interface StilleRtpSrtpRocRolloverAndDtlsRekeyGuardInput {
+  callId: string;
+  rtpSeqWrappedAcrossLossBoundary: boolean;
+  localEstimatedRoc: number;
+  remoteActualRoc: number;
+  srtpAuthTagFailureRatePct: number;
+  rtcpRocTrialDecryptResyncEnabled: boolean;
+  sessionDurationMinutes: number;
+  proactiveDtlsSrtpMkiDualKeyOverlapActive: boolean;
+}
 
+export interface StilleRtpSrtpRocRolloverAndDtlsRekeyGuardDecision {
+  allowed: boolean;
+  srtpCryptoContinuityHealthy: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P90-RTP-SRTP-RFC3711-ROC-ROLLOVER-DESYNC-AND-DTLS-SRTP-MKI-REKEY-GUARD";
+}
 
+export function evaluateRtpSrtpRocRolloverAndDtlsSrtpRekeyingContinuityGuard(
+  input: StilleRtpSrtpRocRolloverAndDtlsRekeyGuardInput
+): StilleRtpSrtpRocRolloverAndDtlsRekeyGuardDecision {
+  if (
+    (input.rtpSeqWrappedAcrossLossBoundary &&
+      input.localEstimatedRoc !== input.remoteActualRoc) ||
+    (input.srtpAuthTagFailureRatePct >= 25 &&
+      !input.rtcpRocTrialDecryptResyncEnabled)
+  ) {
+    return {
+      allowed: false,
+      srtpCryptoContinuityHealthy: false,
+      reason: "SRTP_RFC3711_16BIT_SEQ_ROLLOVER_COUNTER_DESYNC_AUTH_TAG_LOCKOUT",
+      actionCode:
+        "EXECUTE_RFC3711_SIGNED_ROC_PLUS_MINUS_1_TRIAL_DECRYPT_AND_RTCP_SR_RESYNC",
+      policyCode:
+        "P90-RTP-SRTP-RFC3711-ROC-ROLLOVER-DESYNC-AND-DTLS-SRTP-MKI-REKEY-GUARD",
+    };
+  }
 
+  if (
+    input.sessionDurationMinutes >= 60 &&
+    !input.proactiveDtlsSrtpMkiDualKeyOverlapActive
+  ) {
+    return {
+      allowed: false,
+      srtpCryptoContinuityHealthy: false,
+      reason: "LONG_SESSION_DTLS_SRTP_KEY_ROTATION_WITHOUT_MKI_OVERLAP_RISK",
+      actionCode:
+        "ACTIVATE_DUAL_MKI_500MS_KEY_OVERLAP_WINDOW_FOR_ZERO_DROP_SRTP_REKEY",
+      policyCode:
+        "P90-RTP-SRTP-RFC3711-ROC-ROLLOVER-DESYNC-AND-DTLS-SRTP-MKI-REKEY-GUARD",
+    };
+  }
 
-
+  return {
+    allowed: true,
+    srtpCryptoContinuityHealthy: true,
+    reason: "SRTP_ROC_SYNCHRONIZED_AND_DTLS_MKI_KEY_CONTINUITY_VERIFIED",
+    actionCode: "MAINTAIN_CONTINUOUS_ENCRYPTED_SRTP_MEDIA_STREAM",
+    policyCode:
+      "P90-RTP-SRTP-RFC3711-ROC-ROLLOVER-DESYNC-AND-DTLS-SRTP-MKI-REKEY-GUARD",
+  };
+}
 
