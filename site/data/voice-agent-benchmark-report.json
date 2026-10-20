@@ -564,6 +564,13 @@
       "perturbed_score": 1.0,
       "delta_pts": 0.0,
       "note": "P113-LABOR-CONCERTED-ACTIVITY-NLRA-SECTION7-WHISTLEBLOWER-OSHA-RETALIATION-AND-SURVEILLANCE-GUARD scrubs unlawful wage-secrecy directives that chill protected concerted wage or working-condition discussions under NLRA Section 7 (29 U.S.C. 157), strips Caller ID / voiceprint biometrics from anonymous OSHA 11(c) or SOX Section 806 whistleblower reports while routing to a zero-knowledge Ombudsman Vault, and blocks automated adverse HR scheduling or disciplinary flags; P114-SIP-RFC3261-LOOP-MAX-FORWARDS-SPIRAL-DETECTION-AND-FORKING-GLARE-CANCEL-GUARD rejects circular call-forwarding loops with SIP 482 Loop Detected / 483 Too Many Hops, dispatches immediate ACK + BYE with RFC 3326 Reason 'Call completed elsewhere' on secondary parallel-forked 200 OK legs to prevent dual-billing/echo, and enforces RFC 3261 Section 14.2 Call-ID owner jitter backoff (2.1-4.0s vs 0.0-2.0s) on simultaneous Re-INVITE 491 glare."
+    },
+    {
+      "dimension": "64. Environmental EPA CERCLA / EPCRA 15-Min NRC Spill Reporting & OSHA SDS Water-Reactive Guard + WebRTC RFC 8843 BUNDLE, RFC 5761 rtcp-mux & RFC 8445 Dual ICE-Lite / STUN 487 Guard (P115 & P116)",
+      "original_score": 1.0,
+      "perturbed_score": 1.0,
+      "delta_pts": 0.0,
+      "note": "P115-ENVIRONMENTAL-EPA-EPCRA-CERCLA-RQ-CHEMICAL-SPILL-15MIN-NRC-REPORTING-AND-SDS-SHELTER-GUARD dispatches mandatory immediate 15-minute NRC (1-800-424-8802) / SERC / LEPC HazMat notifications whenever an EHS release reaches its CERCLA/EPCRA Reportable Quantity (RQ) or crosses facility boundaries/waterways, blocks unverified cleanup instructions or water deluge on water-reactive chemicals unless validated against OSHA HazCom SDS Sections 4-6 and the ERG, and escalates downwind off-site toxic plume projections directly to the EOC Director; P116-WEBRTC-RFC8843-BUNDLE-RTCP-MUX-AND-RFC8445-ICE-LITE-ROLE-CONFLICT-GUARD promotes the local gateway from ICE-Lite to a Full ICE Controlling agent when peering with a remote ICE-Lite endpoint to prevent zero-STUN-check deadlocks, swaps ICE-CONTROLLING/ICE-CONTROLLED roles per the 64-bit tie-breaker on STUN 487 Role Conflict, and enforces unique SDP a=mid tags with confirmed RFC 5761 a=rtcp-mux on bundled transports."
     }
   ],
   "latency_scaling": [

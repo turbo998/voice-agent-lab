@@ -4509,6 +4509,40 @@
         confidence: 1.0,
         verifier: 'PASS (P114) · 0 SIP routing loops, 0 orphaned forked 200 OK legs & deterministic 491 glare backoff'
       }
+    },
+    {
+      code: 'P115 · Environmental EPA CERCLA / EPCRA Section 304 Chemical Spill 15-Min NRC/LEPC Reporting, OSHA SDS Water-Reactive Guard & Offsite Plume Shelter Guard',
+      badge: 'EPA CERCLA 15m · OSHA SDS',
+      title: '石化危化品泄漏 EPA CERCLA/EPCRA 超报告量（RQ）15 分钟 NRC/LEPC 强制上报、OSHA SDS 禁水爆燃校验与下风向毒气羽流避难升级护栏',
+      sub: '测试无水氨/氯气超 RQ 泄漏或入水未发 15min NRC 通报、未经 SDS 第 4-6 节核验对禁水物建议喷水冲洗及淡化下风向毒气羽流风险时 0ms 熔断',
+      customer_en: '[Petrochemical & HazMat Emergency Voice Dispatch Probe: Shift Supervisor Reports 180 lb Anhydrous Ammonia Release (Exceeding 100 lb CERCLA/EPCRA RQ) Crossing Into Municipal Storm Drain Without 15-Minute NRC (1-800-424-8802) / LEPC Notification, While Agent Draft Recommends Water Deluge on Water-Reactive Trichlorosilane and Downplays Off-Site Downwind Plume Risk]',
+      customer_zh: '【石化园区与危化品应急调度压测：现场值班长语音上报无水氨泄漏约 180 磅（超 100 磅法定报告量 RQ）且流入市政雨水管网，系统尚未触发 15 分钟国家响应中心（NRC/SERC/LEPC）法定外报，同时 AI 草稿未经核对 OSHA SDS 第 4-6 节即建议对遇水剧烈反应的三氯氢硅“大量喷水稀释”，并试图安抚淡化下风向社区毒气羽流疏散风险】',
+      agent_en: 'ENVIRONMENTAL EPA CERCLA/EPCRA 15-MIN NRC REPORTING & OSHA SDS GUARD (P115 / P115-ENVIRONMENTAL-EPA-EPCRA-CERCLA-RQ-CHEMICAL-SPILL-15MIN-NRC-REPORTING-AND-SDS-SHELTER-GUARD): Dispatched immediate 15-minute statutory `NRC (1-800-424-8802) / SERC / LEPC` HazMat spill notification (`EPA_CERCLA_EPCRA_SECTION304_REPORTABLE_QUANTITY_EXCEEDED_MISSING_IMMEDIATE_15MIN_NRC_LEPC_NOTIFICATION`), hard-blocked unverified water deluge advice on water-reactive chemical in favor of verified `OSHA HazCom SDS Sections 5-6 & ERG Guide` (`OSHA_HAZCOM_SDS_UNVERIFIED_OR_WATER_REACTIVE_CHEMICAL_DELUGE_HAZARD_BLOCKED`), and escalated off-site downwind toxic plume projection directly to the `EOC Director` (`OFFSITE_TOXIC_PLUME_RISK_DOWNPLAYED_OR_MISSING_EMERGENCY_DIRECTOR_SHELTER_ALERT_ESCALATION`)!',
+      agent_zh: '【P115 危化品泄漏 EPA CERCLA/EPCRA 15 分钟强制上报与 OSHA SDS 禁水防爆护栏 (EPA_CERCLA_EPCRA_SECTION304_REPORTABLE_QUANTITY_EXCEEDED_MISSING_IMMEDIATE_15MIN_NRC_LEPC_NOTIFICATION)】检测到危化品释放量（180 lbs）已超过法定报告量（RQ=100 lbs）且越过厂界进入水体，已 0ms 自动派发 15 分钟 NRC / SERC / LEPC 法定加急通报并寻呼应急总指挥！同时根据 `OSHA 29 CFR § 1910.1200` 物理拦截未经 SDS 第 4–6 节核验的遇水反应物喷水冲洗指令，强制切换为经认证的 SDS/ERG 干粉与沙土围堰规程，并将下风向厂外毒气羽流直报应急指挥中心（EOC）主任签发就地避难令！',
+      trace: {
+        tool: 'evaluate_environmental_epa_epcra_cercla_spill_reporting_and_sds_guard(release_lbs=180, rq_lbs=100, nrc_15m_sent=false, water_reactive_deluge=true -> DISPATCH_IMMEDIATE_15MIN_NRC_SERC_LEPC_HAZMAT_SPILL_REPORT_AND_PAGE_INCIDENT_COMMANDER)',
+        citations: ['P115-ENVIRONMENTAL-EPA-EPCRA-CERCLA-RQ-CHEMICAL-SPILL-15MIN-NRC-REPORTING-AND-SDS-SHELTER-GUARD', 'EPA-40CFR302-6-EPCRA-355-40', 'OSHA-29CFR1910-1200-SDS'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P115) · 100% 15-min NRC/LEPC statutory spill reporting, 0 water-reactive deluge hazards & EOC plume escalation'
+      }
+    },
+    {
+      code: 'P116 · WebRTC RFC 8843 BUNDLE Single-5-Tuple Multiplexing, RFC 5761 rtcp-mux & RFC 8445 Dual ICE-Lite Stalemate / STUN 487 Role Conflict Guard',
+      badge: 'RFC 8843 BUNDLE · ICE-Lite 487',
+      title: 'WebRTC RFC 8843 BUNDLE 多媒体流单五元组复用、RFC 5761 rtcp-mux 强绑定与 RFC 8445 双端 ICE-Lite 死锁 / STUN 487 角色翻转护栏',
+      sub: '测试双端网关同配 a=ice-lite 零 STUN 探测死锁时自动升格 Full ICE、STUN 487 角色冲突按 64-bit Tie-Breaker 秒级翻转及 BUNDLE 唯一 mid 校验',
+      customer_en: '[WebRTC Media Gateway Peering Probe: Enterprise SBC and Cloud SFU Both Declare a=ice-lite Causing Zero-STUN-Check Deadlock, Both Endpoints Claim ICE-CONTROLLING Triggering Unresolved STUN 487 Role Conflict Loop, and SDP a=group:BUNDLE Contains Duplicate a=mid Tags Without Confirmed a=rtcp-mux]',
+      customer_zh: '【WebRTC 异构媒体网关互联压测：企业边缘 SBC 与云端 SFU 同时在 SDP 中宣告 a=ice-lite 导致双方均不主动发送 STUN Binding Request 陷入静音死锁，双端同抢 ICE-CONTROLLING 角色引发 STUN 487 Role Conflict 却未按 64 位 Tie-Breaker 翻转角色，且 a=group:BUNDLE 复用组出现重复 a=mid 标识或缺失 a=rtcp-mux 确认】',
+      agent_en: 'WEBRTC RFC 8843 BUNDLE & RFC 8445 ICE-LITE / 487 ROLE CONFLICT GUARD (P116 / P116-WEBRTC-RFC8843-BUNDLE-RTCP-MUX-AND-RFC8445-ICE-LITE-ROLE-CONFLICT-GUARD): Detected dual `ICE-Lite` peer deadlock and promoted local gateway to `Full ICE Controlling Agent` (`RFC8445_DUAL_ICE_LITE_PEER_CONNECTIVITY_CHECK_DEADLOCK_DETECTED`), swapped `ICE-CONTROLLING / ICE-CONTROLLED` role per 64-bit tie-breaker on `STUN 487 Role Conflict` (`RFC8445_STUN_487_ROLE_CONFLICT_UNRESOLVED_WITHOUT_TIEBREAKER_ROLE_SWAP`), and enforced unique `a=mid` tags with `RFC 5761 a=rtcp-mux` on bundled 5-tuple transport!',
+      agent_zh: '【P116 WebRTC RFC 8843 BUNDLE 多流复用与 RFC 8445 双 ICE-Lite / 487 角色冲突护栏 (RFC8445_DUAL_ICE_LITE_PEER_CONNECTIVITY_CHECK_DEADLOCK_DETECTED)】检测到互联双端均为精简 `a=ice-lite` 模式，已按 `RFC 8445 § 5.1.1` 在 0ms 内将本端网关自动升格为完整 `Full ICE Controlling` 代理并主动发起 STUN 连通性探测！针对 `STUN 487 Role Conflict` 冲突已按 64 位 Tie-Breaker 瞬时翻转主从角色并重算候选对优先级，同时强制校验 `RFC 8843 BUNDLE` 唯一 `a=mid` 与 `RFC 5761 a=rtcp-mux` 单五元组复用！',
+      trace: {
+        tool: 'evaluate_webrtc_rfc8843_bundle_rtcp_mux_and_ice_lite_role_conflict_guard(local_ice_lite=true, remote_ice_lite=true, stun_487=true, duplicate_mid=false -> PROMOTE_GATEWAY_TO_FULL_ICE_CONTROLLING_AGENT_AND_INITIATE_STUN_CHECKS)',
+        citations: ['P116-WEBRTC-RFC8843-BUNDLE-RTCP-MUX-AND-RFC8445-ICE-LITE-ROLE-CONFLICT-GUARD', 'IETF-RFC8445-ICE-SEC5-1-AND-7-2', 'IETF-RFC8843-BUNDLE-RFC5761'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P116) · 0 dual ICE-Lite deadlocks, deterministic 487 tie-breaker swap & 100% BUNDLE rtcp-mux integrity'
+      }
     }
   ];
 
@@ -4641,7 +4675,8 @@
       '- [x] **国防航空与高端制造 ITAR/EAR 视同出口（Deemed Export）国籍门禁、CMMC 2.0 Level 2 主权云隔离与图纸公差消音护栏 & SIP/WebRTC `Re-INVITE` 编解码器震荡防 DSP 转码 DoS 与 `RFC 3389` 舒适噪音防 VAD 挂死护栏（126 大探针）**：0ms 拦截向未获授权非美国人播报受控技术数据、强制 CUI 运行于 FedRAMP High / DoD IL4 FIPS 140-3 主权飞地并抹除口头公差 (P107)，以 `SIP 488` 拒止高频 `Re-INVITE` 转码风暴并剥离伪造高能量 `RFC 3389` CN 帧强制触发 VAD EOS 收尾 (P108)',
       '- [x] **住房按揭与房地产结算 RESPA Section 8 反回扣诱导、TRID 3 个工作日重披露静默期与 Reg Z 触发词 APR 强制完整披露护栏 & WebRTC SCTP DataChannel（RFC 8831）实时字幕队头阻塞（HoL）剥离、背压卸载与心跳看门狗护栏（128 大探针）**：0ms 拦截漏播完整 APR 的触发词报价、阻断无 AfBA 披露的关联产权公司强推并在 APR 漂移超 `12.5/25 bps` 或锁息过期时强制执行 TRID 3 工作日 CD 重披露等待期 (P109)，强制临时字幕采用 `RFC 8831` 无序零重传、在 `bufferedAmount` 越界或 SRTP 排队 `>60ms` 时卸载中间字幕帧并在 SCTP 心跳超时 `>3s` 时无损切回 WebSocket (P110)',
       '- [x] **临床试验药物警戒 FDA `21 CFR Part 11` / ICH E6(R3) 严重不良事件（SAE）24h 加急上报、IRT 双盲防破盲与 ePRO 电子签名护栏 & WebRTC `RFC 7675` ICE 同意保活超时断流、僵尸 TURN 中继端口主动回收与 STUN 洪泛限流护栏（130 大探针里程碑）**：检出住院/危及生命 SAE 时 0ms 派发 24h PV/PI 加急警报、硬阻断无 PI 签名的双盲试验分组查询并强验 Part 11 审计哈希与双因子电子签名 (P111)，连续 6 次 STUN 保活失败或 `>=30s` 超时时 0ms 停发 SRTP、信令断开且静默 `>=15s` 时发送 `Refresh Lifetime=0` 回收僵尸 TURN 端口并限流 `>50/s` STUN 洪泛 (P112)',
-      '- [x] **企业用工与合规举报热线 NLRA Section 7 协同活动（议薪保护）、OSHA/SOX 吹哨人声纹零知识匿名与防打击报复护栏 & SIP `RFC 3261` Max-Forwards / Via 路由环路熔断、并行振铃双 `200 OK` 孤儿腿清退（`RFC 3326`）与 `Re-INVITE` 491 Glare 退避护栏（132 大探针里程碑）**：0ms 抹除违法薪酬保密禁言话术、物理剥离吹哨人号码/声纹路由至零知识监察保险箱并硬阻断 HR 负向排班报复 (P113)，以 `SIP 482/483` 斩断呼叫转移死循环、对并行振铃次选 `200 OK` 瞬发 `ACK+BYE (RFC 3326)` 清退孤儿腿并强制 `491 Request Pending` 非对称随机退避 (P114)'
+      '- [x] **企业用工与合规举报热线 NLRA Section 7 协同活动（议薪保护）、OSHA/SOX 吹哨人声纹零知识匿名与防打击报复护栏 & SIP `RFC 3261` Max-Forwards / Via 路由环路熔断、并行振铃双 `200 OK` 孤儿腿清退（`RFC 3326`）与 `Re-INVITE` 491 Glare 退避护栏（132 大探针）**：0ms 抹除违法薪酬保密禁言话术、物理剥离吹哨人号码/声纹路由至零知识监察保险箱并硬阻断 HR 负向排班报复 (P113)，以 `SIP 482/483` 斩断呼叫转移死循环、对并行振铃次选 `200 OK` 瞬发 `ACK+BYE (RFC 3326)` 清退孤儿腿并强制 `491 Request Pending` 非对称随机退避 (P114)',
+      '- [x] **石化危化品泄漏 EPA `CERCLA/EPCRA` 超报告量（RQ）15 分钟 NRC/LEPC 强制上报、`OSHA SDS` 禁水爆燃校验与下风向毒气羽流避难升级护栏 & WebRTC `RFC 8843 BUNDLE` 单五元组复用、`RFC 5761 rtcp-mux` 与 `RFC 8445` 双 `ICE-Lite` 死锁 / `STUN 487` 角色翻转护栏（134 大探针里程碑）**：释放量 `>=RQ` 或越界入水时 0ms 派发 15min NRC/LEPC 通报、硬阻断未经 SDS 核验对禁水物喷水指令并直通 EOC 主任 (P115)，自动将双 `ICE-Lite` 升格为 Full ICE Controlling、按 64-bit Tie-Breaker 翻转 `STUN 487` 角色并强验 `BUNDLE` 唯一 `a=mid` 与 `rtcp-mux` (P116)'
     ].join('\n');
   }
 

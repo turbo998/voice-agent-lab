@@ -9912,6 +9912,194 @@ export function evaluateSipRfc3261LoopSpiralAndForkingGlareGuard(
   };
 }
 
+export interface EnvironmentalEpaEpcraCerclaSpillReportingAndSdsGuardInput {
+  incidentId: string;
+  chemicalCasNumber: string;
+  estimatedReleasePounds: number;
+  cerclaEpcraReportableQuantityPounds: number;
+  releaseCrossesFacilityBoundaryOrEntersWaterway: boolean;
+  nrcAndLepc15MinImmediateNotificationDispatched: boolean;
+  agentDraftRecommendsCleanupOrNeutralizationProcedure: boolean;
+  sdsSection4To6Verified: boolean;
+  waterReactiveChemicalWaterDelugeRecommended: boolean;
+  downwindOffsiteToxicPlumeProjected: boolean;
+  authorizedEmergencyDirectorShelterInPlaceSignoff: boolean;
+  agentDraftDownplaysPublicRiskOrDelaysEvacuationAlert: boolean;
+}
+
+export interface EnvironmentalEpaEpcraCerclaSpillReportingAndSdsGuardResult {
+  allowed: boolean;
+  cerclaEpcraReportingCompliant: boolean;
+  sdsCountermeasureSafe: boolean;
+  offsitePlumeEscalationValid: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: string;
+}
+
+export function evaluateEnvironmentalEpaEpcraCerclaSpillReportingAndSdsGuard(
+  input: EnvironmentalEpaEpcraCerclaSpillReportingAndSdsGuardInput,
+): EnvironmentalEpaEpcraCerclaSpillReportingAndSdsGuardResult {
+  const exceedsRqOrOffsite =
+    input.estimatedReleasePounds >= input.cerclaEpcraReportableQuantityPounds ||
+    input.releaseCrossesFacilityBoundaryOrEntersWaterway;
+
+  if (exceedsRqOrOffsite && !input.nrcAndLepc15MinImmediateNotificationDispatched) {
+    return {
+      allowed: false,
+      cerclaEpcraReportingCompliant: false,
+      sdsCountermeasureSafe: true,
+      offsitePlumeEscalationValid: true,
+      reason:
+        "EPA_CERCLA_EPCRA_SECTION304_REPORTABLE_QUANTITY_EXCEEDED_MISSING_IMMEDIATE_15MIN_NRC_LEPC_NOTIFICATION",
+      actionCode:
+        "DISPATCH_IMMEDIATE_15MIN_NRC_SERC_LEPC_HAZMAT_SPILL_REPORT_AND_PAGE_INCIDENT_COMMANDER",
+      policyCode:
+        "P115-ENVIRONMENTAL-EPA-EPCRA-CERCLA-RQ-CHEMICAL-SPILL-15MIN-NRC-REPORTING-AND-SDS-SHELTER-GUARD",
+    };
+  }
+
+  if (
+    input.agentDraftRecommendsCleanupOrNeutralizationProcedure &&
+    (!input.sdsSection4To6Verified || input.waterReactiveChemicalWaterDelugeRecommended)
+  ) {
+    return {
+      allowed: false,
+      cerclaEpcraReportingCompliant: true,
+      sdsCountermeasureSafe: false,
+      offsitePlumeEscalationValid: true,
+      reason:
+        "OSHA_HAZCOM_SDS_UNVERIFIED_OR_WATER_REACTIVE_CHEMICAL_DELUGE_HAZARD_BLOCKED",
+      actionCode:
+        "HARD_BLOCK_UNSAFE_CLEANUP_ADVICE_AND_READ_VERIFIED_SDS_SECTION_5_6_ERG_GUIDE",
+      policyCode:
+        "P115-ENVIRONMENTAL-EPA-EPCRA-CERCLA-RQ-CHEMICAL-SPILL-15MIN-NRC-REPORTING-AND-SDS-SHELTER-GUARD",
+    };
+  }
+
+  if (
+    input.downwindOffsiteToxicPlumeProjected &&
+    (!input.authorizedEmergencyDirectorShelterInPlaceSignoff ||
+      input.agentDraftDownplaysPublicRiskOrDelaysEvacuationAlert)
+  ) {
+    return {
+      allowed: false,
+      cerclaEpcraReportingCompliant: true,
+      sdsCountermeasureSafe: true,
+      offsitePlumeEscalationValid: false,
+      reason:
+        "OFFSITE_TOXIC_PLUME_RISK_DOWNPLAYED_OR_MISSING_EMERGENCY_DIRECTOR_SHELTER_ALERT_ESCALATION",
+      actionCode:
+        "SCRUB_RISK_MINIMIZATION_AND_ESCALATE_OFFSITE_PLUME_TO_EOC_DIRECTOR",
+      policyCode:
+        "P115-ENVIRONMENTAL-EPA-EPCRA-CERCLA-RQ-CHEMICAL-SPILL-15MIN-NRC-REPORTING-AND-SDS-SHELTER-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    cerclaEpcraReportingCompliant: true,
+    sdsCountermeasureSafe: true,
+    offsitePlumeEscalationValid: true,
+    reason:
+      "ENVIRONMENTAL_EPA_CERCLA_EPCRA_REPORTING_AND_OSHA_SDS_ERG_COMPLIANT",
+    actionCode:
+      "AUTHORIZE_VERIFIED_HAZMAT_CONTAINMENT_LOG_AND_STATUTORY_FILING",
+    policyCode:
+      "P115-ENVIRONMENTAL-EPA-EPCRA-CERCLA-RQ-CHEMICAL-SPILL-15MIN-NRC-REPORTING-AND-SDS-SHELTER-GUARD",
+  };
+}
+
+export interface WebRtcRfc8843BundleRtcpMuxAndIceLiteRoleConflictGuardInput {
+  sessionId: string;
+  localPeerIsIceLite: boolean;
+  remotePeerIsIceLite: boolean;
+  stun487RoleConflictReceived: boolean;
+  roleSwappedAccordingToTieBreakerUint64: boolean;
+  bundleGroupNegotiated: boolean;
+  duplicateSdpMidAcrossMlines: boolean;
+  rtcpMuxConfirmedOnBundledTransport: boolean;
+}
+
+export interface WebRtcRfc8843BundleRtcpMuxAndIceLiteRoleConflictGuardResult {
+  allowed: boolean;
+  iceNominationViable: boolean;
+  roleConflictResolved: boolean;
+  bundleRtcpMuxValid: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: string;
+}
+
+export function evaluateWebRtcRfc8843BundleRtcpMuxAndIceLiteRoleConflictGuard(
+  input: WebRtcRfc8843BundleRtcpMuxAndIceLiteRoleConflictGuardInput,
+): WebRtcRfc8843BundleRtcpMuxAndIceLiteRoleConflictGuardResult {
+  if (input.localPeerIsIceLite && input.remotePeerIsIceLite) {
+    return {
+      allowed: false,
+      iceNominationViable: false,
+      roleConflictResolved: true,
+      bundleRtcpMuxValid: true,
+      reason:
+        "RFC8445_DUAL_ICE_LITE_PEER_CONNECTIVITY_CHECK_DEADLOCK_DETECTED",
+      actionCode:
+        "PROMOTE_GATEWAY_TO_FULL_ICE_CONTROLLING_AGENT_AND_INITIATE_STUN_CHECKS",
+      policyCode:
+        "P116-WEBRTC-RFC8843-BUNDLE-RTCP-MUX-AND-RFC8445-ICE-LITE-ROLE-CONFLICT-GUARD",
+    };
+  }
+
+  if (
+    input.stun487RoleConflictReceived &&
+    !input.roleSwappedAccordingToTieBreakerUint64
+  ) {
+    return {
+      allowed: false,
+      iceNominationViable: true,
+      roleConflictResolved: false,
+      bundleRtcpMuxValid: true,
+      reason:
+        "RFC8445_STUN_487_ROLE_CONFLICT_UNRESOLVED_WITHOUT_TIEBREAKER_ROLE_SWAP",
+      actionCode:
+        "SWAP_ICE_CONTROLLING_CONTROLLED_ROLE_PER_64BIT_TIEBREAKER_AND_RECOMPUTE_PAIR_PRIORITIES",
+      policyCode:
+        "P116-WEBRTC-RFC8843-BUNDLE-RTCP-MUX-AND-RFC8445-ICE-LITE-ROLE-CONFLICT-GUARD",
+    };
+  }
+
+  if (
+    input.bundleGroupNegotiated &&
+    (input.duplicateSdpMidAcrossMlines || !input.rtcpMuxConfirmedOnBundledTransport)
+  ) {
+    return {
+      allowed: false,
+      iceNominationViable: true,
+      roleConflictResolved: true,
+      bundleRtcpMuxValid: false,
+      reason:
+        "RFC8843_BUNDLE_DUPLICATE_MID_OR_MISSING_RTCP_MUX_ON_SHARED_TRANSPORT",
+      actionCode:
+        "ENFORCE_UNIQUE_SDP_MID_AND_RFC5761_RTCP_MUX_ON_BUNDLED_5TUPLE",
+      policyCode:
+        "P116-WEBRTC-RFC8843-BUNDLE-RTCP-MUX-AND-RFC8445-ICE-LITE-ROLE-CONFLICT-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    iceNominationViable: true,
+    roleConflictResolved: true,
+    bundleRtcpMuxValid: true,
+    reason:
+      "RFC8843_BUNDLE_RTCP_MUX_AND_RFC8445_ICE_ROLE_NEGOTIATION_HEALTHY",
+    actionCode:
+      "ESTABLISH_MULTIPLEXED_WEBRTC_MEDIA_TRANSPORT",
+    policyCode:
+      "P116-WEBRTC-RFC8843-BUNDLE-RTCP-MUX-AND-RFC8445-ICE-LITE-ROLE-CONFLICT-GUARD",
+  };
+}
+
+
 
 
 
