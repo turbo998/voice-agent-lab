@@ -9177,6 +9177,187 @@ export function evaluateSipRtpSymmetricLatchingHijackAndPortExhaustionMuxGuard(
   };
 }
 
+export interface StilleDefenseItarEarDeemedExportAndCmmcCuiGuardInput {
+  sessionId: string;
+  partOrSystemIdentifier: string;
+  technicalDataClassification:
+    | "PUBLIC_COMMERCIAL_CATALOG"
+    | "CUI_CTI_DFARS_7012"
+    | "EAR_ECCN_9E003_CONTROLLED"
+    | "ITAR_USML_CATEGORY_IV_VIII";
+  callerVerifiedUsPersonOrValidExportLicenseOnFile: boolean;
+  containsControlledUnclassifiedInfoCui: boolean;
+  modelEndpointEnclave:
+    | "PUBLIC_MULTI_TENANT_COMMERCIAL"
+    | "FEDRAMP_HIGH_DOD_IL4_SOVEREIGN_ENCLAVE";
+  fips140_3ValidatedCryptoAndZeroRetentionActive: boolean;
+  agentDraftContainsExactBlueprintTolerancesOrMunitionsSpecs: boolean;
+}
+
+export interface StilleDefenseItarEarDeemedExportAndCmmcCuiGuardDecision {
+  allowed: boolean;
+  deemedExportComplianceIntact: boolean;
+  cmmcLevel2SovereignEnclaveVerified: boolean;
+  verbalBlueprintReadoutPermitted: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P107-DEFENSE-ITAR-EAR-DEEMED-EXPORT-CITIZENSHIP-GATE-AND-CMMC-L2-CUI-SOVEREIGN-ENCLAVE-GUARD";
+}
+
+export function evaluateDefenseItarEarDeemedExportAndCmmcCuiEnclaveGuard(
+  input: StilleDefenseItarEarDeemedExportAndCmmcCuiGuardInput
+): StilleDefenseItarEarDeemedExportAndCmmcCuiGuardDecision {
+  const isExportControlled =
+    input.technicalDataClassification === "ITAR_USML_CATEGORY_IV_VIII" ||
+    input.technicalDataClassification === "EAR_ECCN_9E003_CONTROLLED";
+
+  if (
+    isExportControlled &&
+    !input.callerVerifiedUsPersonOrValidExportLicenseOnFile
+  ) {
+    return {
+      allowed: false,
+      deemedExportComplianceIntact: false,
+      cmmcLevel2SovereignEnclaveVerified:
+        input.modelEndpointEnclave === "FEDRAMP_HIGH_DOD_IL4_SOVEREIGN_ENCLAVE" &&
+        input.fips140_3ValidatedCryptoAndZeroRetentionActive,
+      verbalBlueprintReadoutPermitted: false,
+      reason:
+        "ITAR_22CFR120_EAR_15CFR734_DEEMED_EXPORT_FOREIGN_PERSON_TECHNICAL_DATA_BLOCKED",
+      actionCode:
+        "BLOCK_VERBAL_TECHNICAL_DATA_DISCLOSURE_RESTRICT_TO_PUBLIC_CATALOG_AND_ESCALATE_TO_EXPORT_COMPLIANCE_OFFICER",
+      policyCode:
+        "P107-DEFENSE-ITAR-EAR-DEEMED-EXPORT-CITIZENSHIP-GATE-AND-CMMC-L2-CUI-SOVEREIGN-ENCLAVE-GUARD",
+    };
+  }
+
+  if (
+    (input.containsControlledUnclassifiedInfoCui || isExportControlled) &&
+    (input.modelEndpointEnclave !== "FEDRAMP_HIGH_DOD_IL4_SOVEREIGN_ENCLAVE" ||
+      !input.fips140_3ValidatedCryptoAndZeroRetentionActive)
+  ) {
+    return {
+      allowed: false,
+      deemedExportComplianceIntact: true,
+      cmmcLevel2SovereignEnclaveVerified: false,
+      verbalBlueprintReadoutPermitted: false,
+      reason:
+        "CMMC_L2_DFARS_2522047012_CUI_NON_SOVEREIGN_OR_NON_FIPS140_3_ENDPOINT_BLOCKED",
+      actionCode:
+        "ABORT_COMMERCIAL_CLOUD_INFERENCE_AND_REROUTE_TO_FEDRAMP_HIGH_DOD_IL4_FIPS140_3_SOVEREIGN_ENCLAVE",
+      policyCode:
+        "P107-DEFENSE-ITAR-EAR-DEEMED-EXPORT-CITIZENSHIP-GATE-AND-CMMC-L2-CUI-SOVEREIGN-ENCLAVE-GUARD",
+    };
+  }
+
+  if (input.agentDraftContainsExactBlueprintTolerancesOrMunitionsSpecs) {
+    return {
+      allowed: false,
+      deemedExportComplianceIntact: true,
+      cmmcLevel2SovereignEnclaveVerified: true,
+      verbalBlueprintReadoutPermitted: false,
+      reason:
+        "ITAR_CUI_EXACT_BLUEPRINT_TOLERANCE_OR_MUNITIONS_SPEC_VERBAL_READOUT_SCRUBBED",
+      actionCode:
+        "SCRUB_EXACT_CAD_TOLERANCES_FROM_TTS_AND_DISPATCH_WATERMARKED_VDI_ENCLAVE_VIEWER_LINK",
+      policyCode:
+        "P107-DEFENSE-ITAR-EAR-DEEMED-EXPORT-CITIZENSHIP-GATE-AND-CMMC-L2-CUI-SOVEREIGN-ENCLAVE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    deemedExportComplianceIntact: true,
+    cmmcLevel2SovereignEnclaveVerified: true,
+    verbalBlueprintReadoutPermitted: true,
+    reason:
+      "ITAR_EAR_US_PERSON_VERIFIED_AND_CMMC_L2_FEDRAMP_HIGH_SOVEREIGN_ENCLAVE_COMPLIANT",
+    actionCode:
+      "PERMIT_SOVEREIGN_ENCLAVE_MRO_VOICE_ASSISTANCE_WITH_AUDIT_TRAIL",
+    policyCode:
+      "P107-DEFENSE-ITAR-EAR-DEEMED-EXPORT-CITIZENSHIP-GATE-AND-CMMC-L2-CUI-SOVEREIGN-ENCLAVE-GUARD",
+  };
+}
+
+export interface StilleSipWebRtcSdpReinviteCodecChurnAndCnVadGuardInput {
+  sessionId: string;
+  sdpReinviteCountPerMinute: number;
+  maxAllowedReinvitesPerMinute: number;
+  transcodingCodecSwitchRequested: boolean;
+  mediaGatewayDspCpuUtilizationPercent: number;
+  rfc3389ComfortNoisePayloadDetected: boolean;
+  comfortNoiseSidEnergyDbov: number;
+  continuousVadSpeechHangoverDurationMs: number;
+  maxAllowedVadHangoverMs: number;
+}
+
+export interface StilleSipWebRtcSdpReinviteCodecChurnAndCnVadGuardDecision {
+  allowed: boolean;
+  codecNegotiationStable: boolean;
+  dspTranscodingHealthy: boolean;
+  vadHangoverHealthy: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P108-SIP-WEBRTC-SDP-REINVITE-CODEC-CHURN-TRANSCODING-AMPLIFICATION-DOS-AND-RFC3389-CN-VAD-GUARD";
+}
+
+export function evaluateSipWebRtcSdpReinviteCodecChurnAndRfc3389CnVadGuard(
+  input: StilleSipWebRtcSdpReinviteCodecChurnAndCnVadGuardInput
+): StilleSipWebRtcSdpReinviteCodecChurnAndCnVadGuardDecision {
+  if (
+    input.sdpReinviteCountPerMinute > input.maxAllowedReinvitesPerMinute ||
+    (input.transcodingCodecSwitchRequested &&
+      input.mediaGatewayDspCpuUtilizationPercent >= 80)
+  ) {
+    return {
+      allowed: false,
+      codecNegotiationStable: false,
+      dspTranscodingHealthy: input.mediaGatewayDspCpuUtilizationPercent < 80,
+      vadHangoverHealthy: true,
+      reason:
+        "SDP_REINVITE_CODEC_CHURN_OR_DSP_TRANSCODING_CPU_AMPLIFICATION_DOS_BLOCKED",
+      actionCode:
+        "REJECT_REINVITE_WITH_SIP_488_LOCK_ZERO_TRANSCODE_PASSTHROUGH_CODEC_AND_THROTTLE_SIGNALING",
+      policyCode:
+        "P108-SIP-WEBRTC-SDP-REINVITE-CODEC-CHURN-TRANSCODING-AMPLIFICATION-DOS-AND-RFC3389-CN-VAD-GUARD",
+    };
+  }
+
+  if (
+    input.rfc3389ComfortNoisePayloadDetected &&
+    (input.comfortNoiseSidEnergyDbov > -45 ||
+      input.continuousVadSpeechHangoverDurationMs >
+        input.maxAllowedVadHangoverMs)
+  ) {
+    return {
+      allowed: false,
+      codecNegotiationStable: true,
+      dspTranscodingHealthy: true,
+      vadHangoverHealthy: false,
+      reason:
+        "RFC3389_COMFORT_NOISE_SPOOFED_ENERGY_OR_PERPETUAL_VAD_HANGOVER_LOCK_MITIGATED",
+      actionCode:
+        "STRIP_MALFORMED_RFC3389_CN_FRAMES_RECALIBRATE_NOISE_FLOOR_AND_FORCE_VAD_EOS_COMMIT",
+      policyCode:
+        "P108-SIP-WEBRTC-SDP-REINVITE-CODEC-CHURN-TRANSCODING-AMPLIFICATION-DOS-AND-RFC3389-CN-VAD-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    codecNegotiationStable: true,
+    dspTranscodingHealthy: true,
+    vadHangoverHealthy: true,
+    reason:
+      "SDP_CODEC_SESSION_STABLE_AND_RFC3389_CN_VAD_FLOOR_CALIBRATED",
+    actionCode:
+      "PERMIT_PASSTHROUGH_MEDIA_AND_NORMAL_VAD_ENDPOINTING",
+    policyCode:
+      "P108-SIP-WEBRTC-SDP-REINVITE-CODEC-CHURN-TRANSCODING-AMPLIFICATION-DOS-AND-RFC3389-CN-VAD-GUARD",
+  };
+}
+
+
 
 
 
