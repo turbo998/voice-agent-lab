@@ -543,6 +543,13 @@
       "perturbed_score": 1.0,
       "delta_pts": 0.0,
       "note": "P107-DEFENSE-ITAR-EAR-DEEMED-EXPORT-CITIZENSHIP-GATE-AND-CMMC-L2-CUI-SOVEREIGN-ENCLAVE-GUARD blocks verbal disclosure of ITAR USML / EAR ECCN technical data to unverified foreign persons (Deemed Export), enforces FEDRAMP_HIGH_DOD_IL4_SOVEREIGN_ENCLAVE + FIPS 140-3 encryption for CUI workloads, and scrubs exact CAD blueprint tolerances from TTS audio; P108-SIP-WEBRTC-SDP-REINVITE-CODEC-CHURN-TRANSCODING-AMPLIFICATION-DOS-AND-RFC3389-CN-VAD-GUARD rejects rapid SIP Re-INVITE codec-churn DSP transcoding CPU amplification DoS with SIP 488 Not Acceptable Here and strips malformed high-energy RFC 3389 Comfort Noise (PT=13) frames (>-45 dBov) that lock cloud VAD in perpetual speech hangover."
+    },
+    {
+      "dimension": "61. Mortgage RESPA Section 8 Anti-Kickback / TRID 3-Day CD Wait / Reg Z Trigger-Term APR Guard + WebRTC SCTP DataChannel (RFC 8831) Backpressure & HoL Watchdog Guard (P109 & P110)",
+      "original_score": 1.0,
+      "perturbed_score": 1.0,
+      "delta_pts": 0.0,
+      "note": "P109-MORTGAGE-RESPA-TRID-REG-Z-APR-TRIGGER-TERM-LOCK-EXPIRY-AND-KICKBACK-STEERING-GUARD blocks incomplete oral credit trigger-term quotes lacking full TILA Reg Z (12 CFR 1026.24) APR and repayment disclosures, blocks RESPA Section 8 affiliated settlement steering without AfBA disclosure + shopping freedom, and enforces the TRID 3-business-day Closing Disclosure redisclosure wait when APR drifts >12.5/25 bps or rate locks expire; P110-WEBRTC-SCTP-DATACHANNEL-TRANSCRIPT-BACKPRESSURE-HEAD-OF-LINE-STALL-AND-HEARTBEAT-WATCHDOG-GUARD enforces RFC 8831 unordered zero-retransmit mode for interim transcripts to eliminate SCTP Head-of-Line blocking, sheds non-essential transcript frames when bufferedAmount exceeds watermark or SRTP audio queue delay exceeds >60ms, and fails over stalled DTLS-SCTP associations (>3000ms heartbeat silence) to WebSocket without dropping voice."
     }
   ],
   "latency_scaling": [

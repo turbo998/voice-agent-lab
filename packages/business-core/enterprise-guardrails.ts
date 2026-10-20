@@ -9357,6 +9357,190 @@ export function evaluateSipWebRtcSdpReinviteCodecChurnAndRfc3389CnVadGuard(
   };
 }
 
+export interface StilleMortgageRespaTridRegZTriggerTermAndKickbackGuardInput {
+  sessionId: string;
+  triggerTermQuotedInSpeech: boolean;
+  fullAprAndRepaymentTermsDisclosed: boolean;
+  affiliatedSettlementProviderRecommended: boolean;
+  respaAfbaDisclosureDelivered: boolean;
+  requiredUseOfAffiliateImplied: boolean;
+  aprDeltaFromLastClosingDisclosureBps: number;
+  isVariableRateProduct: boolean;
+  promisedClosingWaitBusinessDays: number;
+  rateLockExpiredWithoutWrittenExtension: boolean;
+}
+
+export interface StilleMortgageRespaTridRegZTriggerTermAndKickbackGuardDecision {
+  allowed: boolean;
+  regZTriggerTermCompliant: boolean;
+  respaSection8AfbaCompliant: boolean;
+  tridWaitingPeriodAndRateLockValid: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P109-MORTGAGE-RESPA-TRID-REG-Z-APR-TRIGGER-TERM-LOCK-EXPIRY-AND-KICKBACK-STEERING-GUARD";
+}
+
+export function evaluateMortgageRespaTridRegZTriggerTermAndKickbackGuard(
+  input: StilleMortgageRespaTridRegZTriggerTermAndKickbackGuardInput
+): StilleMortgageRespaTridRegZTriggerTermAndKickbackGuardDecision {
+  if (input.triggerTermQuotedInSpeech && !input.fullAprAndRepaymentTermsDisclosed) {
+    return {
+      allowed: false,
+      regZTriggerTermCompliant: false,
+      respaSection8AfbaCompliant: true,
+      tridWaitingPeriodAndRateLockValid: true,
+      reason:
+        "TILA_REG_Z_1026_24_TRIGGERING_TERM_QUOTED_WITHOUT_MANDATORY_APR_AND_REPAYMENT_DISCLOSURE_BLOCKED",
+      actionCode:
+        "INJECT_MANDATORY_REG_Z_FULL_APR_REPAYMENT_SCHEDULE_AND_RATE_VARIABILITY_DISCLOSURE",
+      policyCode:
+        "P109-MORTGAGE-RESPA-TRID-REG-Z-APR-TRIGGER-TERM-LOCK-EXPIRY-AND-KICKBACK-STEERING-GUARD",
+    };
+  }
+
+  if (
+    input.affiliatedSettlementProviderRecommended &&
+    (!input.respaAfbaDisclosureDelivered || input.requiredUseOfAffiliateImplied)
+  ) {
+    return {
+      allowed: false,
+      regZTriggerTermCompliant: true,
+      respaSection8AfbaCompliant: false,
+      tridWaitingPeriodAndRateLockValid: true,
+      reason:
+        "RESPA_SECTION_8_AFFILIATED_SETTLEMENT_STEERING_OR_MISSING_AFBA_DISCLOSURE_BLOCKED",
+      actionCode:
+        "BLOCK_AFFILIATE_STEERING_DELIVER_RESPA_AFBA_NOTICE_AND_ENFORCE_SHOPPING_FREEDOM",
+      policyCode:
+        "P109-MORTGAGE-RESPA-TRID-REG-Z-APR-TRIGGER-TERM-LOCK-EXPIRY-AND-KICKBACK-STEERING-GUARD",
+    };
+  }
+
+  const maxAllowedAprDeltaBps = input.isVariableRateProduct ? 25 : 12.5;
+  if (
+    (input.aprDeltaFromLastClosingDisclosureBps > maxAllowedAprDeltaBps &&
+      input.promisedClosingWaitBusinessDays < 3) ||
+    input.rateLockExpiredWithoutWrittenExtension
+  ) {
+    return {
+      allowed: false,
+      regZTriggerTermCompliant: true,
+      respaSection8AfbaCompliant: true,
+      tridWaitingPeriodAndRateLockValid: false,
+      reason:
+        "TRID_CLOSING_DISCLOSURE_3_DAY_REDISCLOSURE_WAIT_OR_UNEXTENDED_RATE_LOCK_PROMISE_BLOCKED",
+      actionCode:
+        "ENFORCE_TRID_3_BUSINESS_DAY_CD_WAIT_PERIOD_AND_ROUTE_RATE_LOCK_TO_NMLS_LOAN_OFFICER",
+      policyCode:
+        "P109-MORTGAGE-RESPA-TRID-REG-Z-APR-TRIGGER-TERM-LOCK-EXPIRY-AND-KICKBACK-STEERING-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    regZTriggerTermCompliant: true,
+    respaSection8AfbaCompliant: true,
+    tridWaitingPeriodAndRateLockValid: true,
+    reason:
+      "MORTGAGE_REG_Z_APR_DISCLOSED_RESPA_AFBA_COMPLIANT_AND_TRID_CD_TIMELINE_VERIFIED",
+    actionCode:
+      "PERMIT_COMPLIANT_MORTGAGE_INTAKE_AND_LOAN_ESTIMATE_ROUTING",
+    policyCode:
+      "P109-MORTGAGE-RESPA-TRID-REG-Z-APR-TRIGGER-TERM-LOCK-EXPIRY-AND-KICKBACK-STEERING-GUARD",
+  };
+}
+
+export interface StilleWebRtcSctpDataChannelBackpressureAndHoLWatchdogGuardInput {
+  sessionId: string;
+  payloadCategory: "INTERIM_TRANSCRIPT" | "FINAL_TRANSCRIPT" | "CRITICAL_TOOL_STATE";
+  dataChannelOrdered: boolean;
+  dataChannelMaxRetransmits: number | null;
+  bufferedAmountBytes: number;
+  maxAllowedBufferedAmountBytes: number;
+  srtpAudioQueueDelayMs: number;
+  sctpHeartbeatSilenceMs: number;
+  sctpSmoothedRttMs: number;
+}
+
+export interface StilleWebRtcSctpDataChannelBackpressureAndHoLWatchdogGuardDecision {
+  allowed: boolean;
+  ephemeralReliabilityConfigured: boolean;
+  backpressureHealthy: boolean;
+  sctpAssociationHealthy: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P110-WEBRTC-SCTP-DATACHANNEL-TRANSCRIPT-BACKPRESSURE-HEAD-OF-LINE-STALL-AND-HEARTBEAT-WATCHDOG-GUARD";
+}
+
+export function evaluateWebRtcSctpDataChannelBackpressureAndHoLWatchdogGuard(
+  input: StilleWebRtcSctpDataChannelBackpressureAndHoLWatchdogGuardInput
+): StilleWebRtcSctpDataChannelBackpressureAndHoLWatchdogGuardDecision {
+  if (
+    input.payloadCategory === "INTERIM_TRANSCRIPT" &&
+    (input.dataChannelOrdered || input.dataChannelMaxRetransmits !== 0)
+  ) {
+    return {
+      allowed: false,
+      ephemeralReliabilityConfigured: false,
+      backpressureHealthy: true,
+      sctpAssociationHealthy: true,
+      reason:
+        "WEBRTC_SCTP_INTERIM_TRANSCRIPT_ORDERED_RELIABLE_HEAD_OF_LINE_BLOCKING_MISCONFIGURATION",
+      actionCode:
+        "ENFORCE_RFC8831_UNORDERED_ZERO_RETRANSMIT_DATACHANNEL_FOR_EPHEMERAL_TRANSCRIPTS",
+      policyCode:
+        "P110-WEBRTC-SCTP-DATACHANNEL-TRANSCRIPT-BACKPRESSURE-HEAD-OF-LINE-STALL-AND-HEARTBEAT-WATCHDOG-GUARD",
+    };
+  }
+
+  if (
+    input.bufferedAmountBytes > input.maxAllowedBufferedAmountBytes ||
+    input.srtpAudioQueueDelayMs > 60
+  ) {
+    return {
+      allowed: false,
+      ephemeralReliabilityConfigured: true,
+      backpressureHealthy: false,
+      sctpAssociationHealthy: true,
+      reason:
+        "SCTP_BUFFERED_AMOUNT_BACKPRESSURE_OVERFLOW_OR_SRTP_AUDIO_QUEUE_CONTENTION_SHEDDING_TRIGGERED",
+      actionCode:
+        "SHED_INTERIM_TRANSCRIPT_FRAMES_COALESCE_STATE_DELTAS_AND_PRIORITIZE_DSCP_EF_SRTP_AUDIO",
+      policyCode:
+        "P110-WEBRTC-SCTP-DATACHANNEL-TRANSCRIPT-BACKPRESSURE-HEAD-OF-LINE-STALL-AND-HEARTBEAT-WATCHDOG-GUARD",
+    };
+  }
+
+  if (input.sctpHeartbeatSilenceMs > 3000 || input.sctpSmoothedRttMs > 1200) {
+    return {
+      allowed: false,
+      ephemeralReliabilityConfigured: true,
+      backpressureHealthy: true,
+      sctpAssociationHealthy: false,
+      reason:
+        "DTLS_SCTP_HEARTBEAT_TIMEOUT_OR_ASSOCIATION_ZOMBIE_STALL_DETECTED",
+      actionCode:
+        "RECYCLE_SCTP_STREAM_FAILOVER_TO_WEBSOCKET_CONTROL_PLANE_AND_PRESERVE_SRTP_VOICE",
+      policyCode:
+        "P110-WEBRTC-SCTP-DATACHANNEL-TRANSCRIPT-BACKPRESSURE-HEAD-OF-LINE-STALL-AND-HEARTBEAT-WATCHDOG-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    ephemeralReliabilityConfigured: true,
+    backpressureHealthy: true,
+    sctpAssociationHealthy: true,
+    reason:
+      "WEBRTC_SCTP_DATACHANNEL_LOW_LATENCY_AND_SRTP_ISOLATION_HEALTHY",
+    actionCode:
+      "DISPATCH_SYNCHRONIZED_DATACHANNEL_PAYLOAD",
+    policyCode:
+      "P110-WEBRTC-SCTP-DATACHANNEL-TRANSCRIPT-BACKPRESSURE-HEAD-OF-LINE-STALL-AND-HEARTBEAT-WATCHDOG-GUARD",
+  };
+}
+
+
 
 
 
