@@ -7786,3 +7786,190 @@ export function evaluateRtpSrtpRocRolloverAndDtlsSrtpRekeyingContinuityGuard(
   };
 }
 
+export interface StilleBankingRegEUnauthorizedEftGuardInput {
+  callId: string;
+  unauthorizedEftReportedOrally?: boolean;
+  oralUnauthorizedEftDisputeStated?: boolean;
+  agentRequiresMerchantContactOrPoliceReportBeforeIntake?: boolean;
+  agentDemandsMerchantContactOrPoliceReportFirst?: boolean;
+  accessDeviceLostOrStolen?: boolean;
+  cardPhysicallyLostOrStolen?: boolean;
+  businessDaysSinceLossDiscovered?: number;
+  reportingDelayBusinessDays?: number;
+  calendarDaysSinceStatementTransmitted?: number;
+  calculatedConsumerLiabilityCapUsd?: number;
+  proposedConsumerLiabilityUsd?: number;
+  investigationExpectedExceedsTenBusinessDays?: boolean;
+  provisionalCreditScheduledWithinTenBusinessDays?: boolean;
+  provisionalCredit10BusinessDayScheduled?: boolean;
+}
+
+export interface StilleBankingRegEUnauthorizedEftGuardDecision {
+  allowed: boolean;
+  regECompliant: boolean;
+  statutoryLiabilityCapUsd: number;
+  reason: string;
+  actionCode: string;
+  policyCode: "P91-BANKING-REG-E-12CFR1005-UNAUTHORIZED-EFT-PROVISIONAL-CREDIT-AND-LIABILITY-TIER-GUARD";
+}
+
+export function evaluateBankingRegEUnaffiliatedEftProvisionalCreditAndLiabilityTierGuard(
+  input: StilleBankingRegEUnauthorizedEftGuardInput
+): StilleBankingRegEUnauthorizedEftGuardDecision {
+  const oralDispute =
+    input.unauthorizedEftReportedOrally ?? input.oralUnauthorizedEftDisputeStated ?? false;
+  const demandsIllegalPrecondition =
+    input.agentRequiresMerchantContactOrPoliceReportBeforeIntake ??
+    input.agentDemandsMerchantContactOrPoliceReportFirst ??
+    false;
+  const deviceLostOrStolen =
+    input.accessDeviceLostOrStolen ?? input.cardPhysicallyLostOrStolen ?? false;
+  const delayBusinessDays =
+    input.businessDaysSinceLossDiscovered ?? input.reportingDelayBusinessDays ?? 0;
+  const calendarDaysStatement =
+    input.calendarDaysSinceStatementTransmitted ?? delayBusinessDays;
+  const proposedLiability =
+    input.calculatedConsumerLiabilityCapUsd ?? input.proposedConsumerLiabilityUsd ?? 0;
+  const provisionalCreditScheduled =
+    input.provisionalCreditScheduledWithinTenBusinessDays ??
+    input.provisionalCredit10BusinessDayScheduled ??
+    true;
+  const exceedsTenDays =
+    input.investigationExpectedExceedsTenBusinessDays ?? !provisionalCreditScheduled;
+
+  let statutoryCapUsd = Number.POSITIVE_INFINITY;
+  if (!deviceLostOrStolen && calendarDaysStatement <= 60) {
+    statutoryCapUsd = 0;
+  } else if (deviceLostOrStolen && delayBusinessDays <= 2) {
+    statutoryCapUsd = 50;
+  } else if (
+    deviceLostOrStolen &&
+    delayBusinessDays > 2 &&
+    calendarDaysStatement <= 60
+  ) {
+    statutoryCapUsd = 500;
+  }
+
+  if (oralDispute && demandsIllegalPrecondition) {
+    return {
+      allowed: false,
+      regECompliant: false,
+      statutoryLiabilityCapUsd: statutoryCapUsd,
+      reason: "CFPB_REG_E_12CFR1005_ILLEGAL_PRECONDITION_MERCHANT_CONTACT_OR_POLICE_REPORT_BLOCKED",
+      actionCode:
+        "ACCEPT_ORAL_REG_E_NOTICE_IMMEDIATELY_AND_START_10_DAY_INVESTIGATION_CLOCK",
+      policyCode:
+        "P91-BANKING-REG-E-12CFR1005-UNAUTHORIZED-EFT-PROVISIONAL-CREDIT-AND-LIABILITY-TIER-GUARD",
+    };
+  }
+
+  if (proposedLiability > statutoryCapUsd) {
+    return {
+      allowed: false,
+      regECompliant: false,
+      statutoryLiabilityCapUsd: statutoryCapUsd,
+      reason: "REG_E_12CFR1005_6_CONSUMER_LIABILITY_TIER_OVERCHARGE_BLOCKED",
+      actionCode:
+        "CLAMP_CONSUMER_LIABILITY_TO_STATUTORY_REG_E_TIER_AND_LOG_CFPB_AUDIT",
+      policyCode:
+        "P91-BANKING-REG-E-12CFR1005-UNAUTHORIZED-EFT-PROVISIONAL-CREDIT-AND-LIABILITY-TIER-GUARD",
+    };
+  }
+
+  if (oralDispute && exceedsTenDays && !provisionalCreditScheduled) {
+    return {
+      allowed: false,
+      regECompliant: false,
+      statutoryLiabilityCapUsd: statutoryCapUsd,
+      reason: "REG_E_12CFR1005_11_MISSING_10_BUSINESS_DAY_PROVISIONAL_CREDIT_MANDATE",
+      actionCode:
+        "SCHEDULE_10_BUSINESS_DAY_PROVISIONAL_CREDIT_AND_45_DAY_RESOLUTION_SLA",
+      policyCode:
+        "P91-BANKING-REG-E-12CFR1005-UNAUTHORIZED-EFT-PROVISIONAL-CREDIT-AND-LIABILITY-TIER-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    regECompliant: true,
+    statutoryLiabilityCapUsd: statutoryCapUsd,
+    reason: "CFPB_REG_E_ORAL_DISPUTE_INTAKE_LIABILITY_CAP_AND_PROVISIONAL_CREDIT_VERIFIED",
+    actionCode: "ISSUE_REG_E_CLAIM_ID_AND_PROVISIONAL_CREDIT_TIMELINE",
+    policyCode:
+      "P91-BANKING-REG-E-12CFR1005-UNAUTHORIZED-EFT-PROVISIONAL-CREDIT-AND-LIABILITY-TIER-GUARD",
+  };
+}
+
+export interface StilleMultipartySpeakerDiarizationGuardInput {
+  callId: string;
+  activeSpeakerId: string;
+  authenticatedPrimarySpeakerId: string;
+  speakerRole:
+    | "PRIMARY_ACCOUNT_HOLDER"
+    | "AUTHORIZED_INTERPRETER"
+    | "UNVERIFIED_BYSTANDER"
+    | "UNAUTHENTICATED_BYSTANDER";
+  speakerEmbeddingCosineSimilarity: number;
+  crossTalkOverlapRatioPct: number;
+  attemptsTransactionalStateMutation?: boolean;
+  transactionalToolMutationRequested?: boolean;
+  primaryHolderExplicitVerbalRatificationCaptured: boolean;
+}
+
+export interface StilleMultipartySpeakerDiarizationGuardDecision {
+  allowed: boolean;
+  speakerAttributionTrusted: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P92-MULTIPARTY-CONFERENCE-SPEAKER-DIARIZATION-CROSS-TALK-ATTRIBUTION-AND-ROLE-ISOLATION-GUARD";
+}
+
+export function evaluateMultipartyConferenceSpeakerDiarizationAndRoleIsolationGuard(
+  input: StilleMultipartySpeakerDiarizationGuardInput
+): StilleMultipartySpeakerDiarizationGuardDecision {
+  const attemptsMutation =
+    input.attemptsTransactionalStateMutation ??
+    input.transactionalToolMutationRequested ??
+    false;
+
+  if (input.crossTalkOverlapRatioPct >= 30 && attemptsMutation) {
+    return {
+      allowed: false,
+      speakerAttributionTrusted: false,
+      reason: "MULTIPARTY_CROSS_TALK_OVERLAP_DIARIZATION_CONTAMINATION_RISK",
+      actionCode:
+        "SUSPEND_TOOL_EXECUTION_AND_REQUEST_SINGLE_SPEAKER_REPEAT_FROM_PRIMARY_HOLDER",
+      policyCode:
+        "P92-MULTIPARTY-CONFERENCE-SPEAKER-DIARIZATION-CROSS-TALK-ATTRIBUTION-AND-ROLE-ISOLATION-GUARD",
+    };
+  }
+
+  if (
+    attemptsMutation &&
+    (input.activeSpeakerId !== input.authenticatedPrimarySpeakerId ||
+      input.speakerRole !== "PRIMARY_ACCOUNT_HOLDER" ||
+      input.speakerEmbeddingCosineSimilarity < 0.78) &&
+    !input.primaryHolderExplicitVerbalRatificationCaptured
+  ) {
+    return {
+      allowed: false,
+      speakerAttributionTrusted: false,
+      reason: "UNAUTHENTICATED_BYSTANDER_OR_INTERPRETER_TRANSACTIONAL_INJECTION_BLOCKED",
+      actionCode:
+        "ISOLATE_NON_PRIMARY_SPEAKER_SLOT_AND_REQUIRE_PRIMARY_VOICEPRINT_RATIFICATION",
+      policyCode:
+        "P92-MULTIPARTY-CONFERENCE-SPEAKER-DIARIZATION-CROSS-TALK-ATTRIBUTION-AND-ROLE-ISOLATION-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    speakerAttributionTrusted: true,
+    reason: "SPEAKER_DIARIZATION_ROLE_ISOLATION_AND_PRIMARY_ATTRIBUTION_VERIFIED",
+    actionCode: "COMMIT_ROLE_ISOLATED_DIARIZED_TRANSCRIPT_TURN",
+    policyCode:
+      "P92-MULTIPARTY-CONFERENCE-SPEAKER-DIARIZATION-CROSS-TALK-ATTRIBUTION-AND-ROLE-ISOLATION-GUARD",
+  };
+}
+
+

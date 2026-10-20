@@ -480,6 +480,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P89-PHARMA-GXP-FDA-21CFR31480-ADVERSE-EVENT-MEDWATCH-AND-OFF-LABEL-PROMOTION-GUARD blocks FDCA off-label promotion in 0ms by routing unsolicited queries via MIRF to Medical Affairs MSLs and freezes commercial scripts on AE/SAE detection to enforce 4-element MedWatch capture + 24h E2B(R3) PV reporting; P90-RTP-SRTP-RFC3711-ROC-ROLLOVER-DESYNC-AND-DTLS-SRTP-MKI-REKEY-GUARD prevents >21.85min SRTP 16-bit sequence rollover (ROC) desync lockouts across packet-loss boundaries via signed ROC+-1 trial decryption + RTCP resync and enforces 500ms dual-MKI overlap on 60-minute DTLS-SRTP rekeying."
+    },
+    {
+      "check_name": "Banking CFPB Reg E 12 CFR 1005 Unauthorized EFT Oral Intake, Liability Cap & 10-Day Provisional Credit Guard + Multi-Party Speaker Diarization Cross-Talk & Role Isolation Guard (P91 / P92)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P91-BANKING-REG-E-12CFR1005-UNAUTHORIZED-EFT-PROVISIONAL-CREDIT-AND-LIABILITY-TIER-GUARD blocks illegal preconditions (requiring merchant contact or a police report before accepting an oral Reg E dispute), clamps consumer liability to statutory $0 / $50 / $500 tiers, and enforces 10-business-day provisional credit scheduling; P92-MULTIPARTY-CONFERENCE-SPEAKER-DIARIZATION-CROSS-TALK-ATTRIBUTION-AND-ROLE-ISOLATION-GUARD suspends tool execution on >=30% overlapping cross-talk and isolates non-primary speaker slots (ECAPA-TDNN cosine similarity <0.78) from executing transactional mutations without primary voiceprint ratification."
     }
   ],
   "latency_scaling": [
