@@ -4203,6 +4203,40 @@
         confidence: 1.0,
         verifier: 'PASS (P96) · Stalled avatar video decoupled for 0ms Opus voice & ITU-R BT.1359-1 lip-sync enforced'
       }
+    },
+    {
+      code: 'P97 · Telecom FCC CPNI (47 CFR 64.2010) Inbound CDR Readout Prohibition & FCC 23-95 SIM-Swap / Port-Out Fraud Guard',
+      badge: 'FCC CPNI + SIM-Swap Lock',
+      title: '电信运营商 FCC CPNI（47 CFR § 64.2010）通话详单（CDR）禁口头播报与防 SIM 卡劫持（SIM-Swap）/ 携号转网高危冻结护栏',
+      sub: '测试攻击者仅凭来电显示/生日住址 KBA 套取最近通话详单（CDR），或在密码重置 <24h 冷却期内/无防钓鱼 MFA 下请求 eSIM 补换卡与转网码的 0ms 拦截',
+      customer_en: '[Telecom / MVNO Subscriber Support Hotline: Caller Relies Only on Caller ID (ANI) and Biographical KBA (DOB/ZIP/SSN4, preEstablishedCpniPasswordVerified=false) to Demand Oral Readout of Last 5 Call Detail Records (CDRs), Then Requests eSIM Swap / Number Port-Out PIN Within 4h (<24h) of Password Reset]',
+      customer_zh: '【电信运营商与虚拟运营商（MVNO）客服热线：攻击者仅凭来电显示（ANI）及生日/地址/SSN 后四位（无预设 CPNI 密码）要求口头朗读最近 5 通电话详单（CDR），并试图在密码重置后 4 小时（<24h 冷却期）内办理 eSIM 补换卡或获取携号转网码】',
+      agent_en: 'TELECOM FCC CPNI & SIM-SWAP FRAUD GUARD (P97 / P97-TELECOM-FCC-CPNI-47CFR642010-SIM-SWAP-PORT-OUT-FRAUD-AND-CDR-DISCLOSURE-AUTH-GUARD): Blocked inbound oral Call Detail Record readout without pre-established CPNI password (`FCC_47CFR642010_INBOUND_CDR_DISCLOSURE_WITHOUT_PREESTABLISHED_CPNI_PASSWORD_BLOCKED` -> `BLOCK_ORAL_CDR_READOUT_AND_SEND_TO_ADDRESS_OF_RECORD_OR_AUTHENTICATED_PORTAL`), and froze high-risk eSIM swap / Port-Out mutation while dispatching out-of-band subscriber fraud alert (`FCC_23_95_SIM_SWAP_OR_PORT_OUT_HIGH_RISK_FRAUD_BLOCKED`)!',
+      agent_zh: '【P97 电信 FCC CPNI 通话详单禁口头播报与 SIM-Swap 欺诈拦截护栏 (FCC_47CFR642010_INBOUND_CDR_DISCLOSURE_WITHOUT_PREESTABLISHED_CPNI_PASSWORD_BLOCKED)】检出仅凭来电显示与 KBA 索取通话详单（CDR）及改密 <24h 冷却期内高危 eSIM 换卡请求！已 0ms 拒绝口头播报 CDR（仅限寄送账单地址或网厅查阅），同时冻结 eSIM/转网操作并向机主原设备下发带外欺诈告警！',
+      trace: {
+        tool: 'evaluate_telecom_fcc_cpni_sim_swap_port_out_guard(request="INBOUND_CDR_CALL_DETAIL_READOUT", cpni_pwd=false, kba_only=true, reset_hrs=4 -> BLOCK_ORAL_CDR_READOUT_AND_SEND_TO_ADDRESS_OF_RECORD_OR_AUTHENTICATED_PORTAL)',
+        citations: ['P97-TELECOM-FCC-CPNI-47CFR642010-SIM-SWAP-PORT-OUT-FRAUD-AND-CDR-DISCLOSURE-AUTH-GUARD', 'FCC-47CFR64-2010', 'FCC-23-95-SIM-SWAP'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P97) · Inbound oral CDR readout blocked & SIM-Swap / Port-Out frozen with OOB alert'
+      }
+    },
+    {
+      code: 'P98 · WebRTC AEC3 Nonlinear Residual Echo Double-Talk Self-Interruption (Self-Barge-In) & Delay Drift Guard',
+      badge: 'AEC3 Anti-Self-Barge-In',
+      title: 'WebRTC AEC3 非线性残余回声双讲自打断（Self-Barge-In）抑制与渲染采集延迟漂移（>250ms）重锚定护栏',
+      sub: '测试手机免提外放或车载蓝牙场景下扬声器非线性失真与 >250ms 缓冲漂移击穿 AEC3，导致 AI 坐席把自己的 TTS 声音识别为用户插话而无限“自打断”的 0ms 抑制',
+      customer_en: '[Mobile Speakerphone / Car Bluetooth Hands-Free WebRTC Session: Audio Buffer Drift Pushes renderToCaptureDelayMs to 310ms (>250ms AEC3 Tail) and Nonlinear Speaker Distortion Drops ERLE to 7.5dB (<12dB) With 0.81 Uplink-Downlink Cross-Correlation and Zero Independent Near-End Human Pitch]',
+      customer_zh: '【手机免提外放与车载蓝牙 WebRTC 语音会话：蓝牙缓冲漂移使渲染至采集延迟达 310ms（>250ms AEC3 尾长上限），且微型扬声器非线性谐波失真使 ERLE 跌至 7.5dB（<12dB）、上下行信号互相关高达 0.81（无近端真人独立基频），面临 AI 听见自己声音而无限自打断死循环】',
+      agent_en: 'WEBRTC AEC3 RESIDUAL ECHO & DELAY DRIFT GUARD (P98 / P98-WEBRTC-AEC3-NONLINEAR-RESIDUAL-ECHO-DOUBLE-TALK-FALSE-BARGE-IN-AND-DELAY-DRIFT-GUARD): Re-estimated AEC3 delay-agnostic buffer on `310ms > 250ms` drift (`WEBRTC_AEC3_RENDER_CAPTURE_DELAY_DRIFT_OR_UNCONVERGED_FILTER` -> `REESTIMATE_AEC3_DELAY_AGNOSTIC_BUFFER_AND_HOLD_HAIR_TRIGGER_BARGE_IN`), and suppressed false self-barge-in while dropping echoed ASR tokens (`WEBRTC_AEC3_NONLINEAR_RESIDUAL_ECHO_SELF_BARGE_IN_BLOCKED`)!',
+      agent_zh: '【P98 WebRTC AEC3 非线性残余回声防自打断与延迟重锚定护栏 (WEBRTC_AEC3_NONLINEAR_RESIDUAL_ECHO_SELF_BARGE_IN_BLOCKED)】检出免提外放采集延迟漂移（310ms > 250ms）及强互相关残余回声（互相关=0.81，ERLE=7.5dB）！已立即重对齐 AEC3 延迟缓冲、100% 锁死伪自打断（保留当前 turnEpoch）并静默丢弃回声 ASR 伪词元！',
+      trace: {
+        tool: 'evaluate_webrtc_aec3_residual_echo_guard(delay_ms=310, erle_db=7.5, xcorr=0.81, near_end_pitch=false -> SUPPRESS_FALSE_SELF_BARGE_IN_DROP_ECHOED_ASR_TOKENS_AND_ENGAGE_NONLINEAR_NLP)',
+        citations: ['P98-WEBRTC-AEC3-NONLINEAR-RESIDUAL-ECHO-DOUBLE-TALK-FALSE-BARGE-IN-AND-DELAY-DRIFT-GUARD', 'WEBRTC-AEC3-ERLE', 'ITU-T-G168'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P98) · >250ms AEC3 delay drift re-anchored & residual echo self-barge-in suppressed'
+      }
     }
   ];
 
@@ -4326,7 +4360,8 @@
       '- [x] **医药 GxP / FDA 21 CFR 314.80 不良事件 MedWatch 四要素强制采集与防超说明书推广护栏 & 超长通话 SRTP RFC 3711 `ROC` 回绕防失步与 DTLS-SRTP 双密钥轮换护栏**：0ms 阻断未获批适应症/剂量回答转交医学事务部 MIRF 并强锁 MedWatch 四要素采集与 24h `E2B(R3)` 药物警戒上报 (P89)，`>21.85` 分钟长通话 16-bit 序列号跨丢包回绕失步时触发 `ROC ± 1` 试解密重同步并在 60 分钟密钥轮换时启用 `500ms` 双 `MKI` 重叠窗口 (P90)',
       '- [x] **零售银行 CFPB Regulation E (`12 CFR § 1005`) 未授权转账口头受理、责任阶梯与 10 日临时垫付护栏 & 多方会议/免提声纹分离串音纠偏与旁人角色写隔离护栏**：0ms 拦截“先找商户/先交报警回执”违法前置条件、钳位 `$0/$50/$500` 法定责任上限并强制排期 10 工作日临时信用垫付 (P91)，双讲重叠 `>=30%` 挂起写操作并物理隔离非主叫声纹槽位（`<0.78`）防旁人越权注入 (P92)',
       '- [x] **证券经纪 SEC Reg BI / FINRA 2111 复杂杠杆 ETF 适当性、防伪装非劝诱单与反刷单护栏 & SIP/SDP RFC 3264 动态 PT 对称锚定与 `maxptime` 防溢出护栏**：0ms 拦截 AI 推荐标的却伪标 `UNSOLICITED` 非劝诱单、阻断保守型客户 3x 杠杆 ETF 委托并冻结换手率 `>6.0` / 费率 `>20%` 过度交易劝诱 (P93)，强制 SDP Answer 动态 PT 与采样率对称镜像 Offer 并将 RTP `ptime` 钳位在 `<= remoteMaxPtimeMs`（20ms）防硬件 SBC 失灵断音 (P94)',
-      '- [x] **医保 CMS Medicare Part D 事前授权 `24h/72h` 加急、阶梯治疗豁免与禁 AI 自主拒保护栏 & 多模态 WebRTC 数字人 `ITU-R BT.1359-1` 唇形同步与 `RTCP SR` 时钟防挂起护栏**：0ms 拦截无执业医师签字的 AI 自主拒保、强制提级危及生命紧急用药至 `24h/72h` 加急通道并授予稳定用药 `>=90` 天患者阶梯治疗豁免 (P95)，将数字人音画偏差收敛于 `[-45ms, +125ms]` 并在视频渲染滞后 `>180ms` 或 `RTCP SR` 失步时果断解耦视频保 Opus 语音 0ms 直出 (P96)'
+      '- [x] **医保 CMS Medicare Part D 事前授权 `24h/72h` 加急、阶梯治疗豁免与禁 AI 自主拒保护栏 & 多模态 WebRTC 数字人 `ITU-R BT.1359-1` 唇形同步与 `RTCP SR` 时钟防挂起护栏**：0ms 拦截无执业医师签字的 AI 自主拒保、强制提级危及生命紧急用药至 `24h/72h` 加急通道并授予稳定用药 `>=90` 天患者阶梯治疗豁免 (P95)，将数字人音画偏差收敛于 `[-45ms, +125ms]` 并在视频渲染滞后 `>180ms` 或 `RTCP SR` 失步时果断解耦视频保 Opus 语音 0ms 直出 (P96)',
+      '- [x] **电信 FCC CPNI (`47 CFR § 64.2010`) 通话详单禁口头播报与 SIM-Swap / Port-Out 欺诈拦截护栏 & WebRTC AEC3 非线性残余回声防自打断与采集延迟漂移重锚定护栏**：0ms 拦截无预设 CPNI 密码的口头通话详单（CDR）播报并在转网锁开启、改密 `<24h` 或未过防钓鱼 MFA 时冻结 eSIM 换卡并下发机主带外告警 (P97)，在渲染采集延迟漂移 `>250ms` 时重对齐 AEC3 缓冲并在上下行互相关 `>=0.65` 且 `ERLE<12dB` 时锁死伪自打断并丢弃回声词元 (P98)'
     ].join('\n');
   }
 

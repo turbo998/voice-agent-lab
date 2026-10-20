@@ -8326,6 +8326,152 @@ export function evaluateWebRtcAvLipSyncSkewAndRtcpSrWallclockGuard(
   };
 }
 
+export interface StilleTelecomFccCpniSimSwapPortOutGuardInput {
+  callId: string;
+  subscriberMsisdn: string;
+  requestType:
+    | "INBOUND_CDR_CALL_DETAIL_READOUT"
+    | "SIM_SWAP_ESIM_REPROVISION"
+    | "NUMBER_PORT_OUT_PIN"
+    | "GENERAL_BILLING_BALANCE_INQUIRY";
+  preEstablishedCpniPasswordVerified: boolean;
+  relyingOnCallerIdOrBiographicalKbaOnly: boolean;
+  accountSimLockOrPortFreezeActive: boolean;
+  hoursSinceLastPasswordOrAuthReset: number;
+  highAssuranceMfaOrBiometricIdVerified: boolean;
+}
+
+export interface StilleTelecomFccCpniSimSwapPortOutGuardDecision {
+  allowed: boolean;
+  fccCpniAndSimSwapCompliant: boolean;
+  outboundSubscriberAlertTriggered: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P97-TELECOM-FCC-CPNI-47CFR642010-SIM-SWAP-PORT-OUT-FRAUD-AND-CDR-DISCLOSURE-AUTH-GUARD";
+}
+
+export function evaluateTelecomFccCpniSimSwapPortOutAndCdrDisclosureGuard(
+  input: StilleTelecomFccCpniSimSwapPortOutGuardInput
+): StilleTelecomFccCpniSimSwapPortOutGuardDecision {
+  if (
+    input.requestType === "INBOUND_CDR_CALL_DETAIL_READOUT" &&
+    (!input.preEstablishedCpniPasswordVerified ||
+      input.relyingOnCallerIdOrBiographicalKbaOnly)
+  ) {
+    return {
+      allowed: false,
+      fccCpniAndSimSwapCompliant: false,
+      outboundSubscriberAlertTriggered: true,
+      reason:
+        "FCC_47CFR642010_INBOUND_CDR_DISCLOSURE_WITHOUT_PREESTABLISHED_CPNI_PASSWORD_BLOCKED",
+      actionCode:
+        "BLOCK_ORAL_CDR_READOUT_AND_SEND_TO_ADDRESS_OF_RECORD_OR_AUTHENTICATED_PORTAL",
+      policyCode:
+        "P97-TELECOM-FCC-CPNI-47CFR642010-SIM-SWAP-PORT-OUT-FRAUD-AND-CDR-DISCLOSURE-AUTH-GUARD",
+    };
+  }
+
+  if (
+    input.requestType === "SIM_SWAP_ESIM_REPROVISION" ||
+    input.requestType === "NUMBER_PORT_OUT_PIN"
+  ) {
+    if (
+      input.accountSimLockOrPortFreezeActive ||
+      input.hoursSinceLastPasswordOrAuthReset < 24 ||
+      !input.highAssuranceMfaOrBiometricIdVerified ||
+      input.relyingOnCallerIdOrBiographicalKbaOnly
+    ) {
+      return {
+        allowed: false,
+        fccCpniAndSimSwapCompliant: false,
+        outboundSubscriberAlertTriggered: true,
+        reason: "FCC_23_95_SIM_SWAP_OR_PORT_OUT_HIGH_RISK_FRAUD_BLOCKED",
+        actionCode:
+          "FREEZE_ESIM_PORT_OUT_MUTATION_AND_DISPATCH_OOB_SUBSCRIBER_FRAUD_ALERT",
+        policyCode:
+          "P97-TELECOM-FCC-CPNI-47CFR642010-SIM-SWAP-PORT-OUT-FRAUD-AND-CDR-DISCLOSURE-AUTH-GUARD",
+      };
+    }
+  }
+
+  return {
+    allowed: true,
+    fccCpniAndSimSwapCompliant: true,
+    outboundSubscriberAlertTriggered:
+      input.requestType === "SIM_SWAP_ESIM_REPROVISION" ||
+      input.requestType === "NUMBER_PORT_OUT_PIN",
+    reason: "FCC_47CFR642010_CPNI_PASSWORD_AND_HIGH_ASSURANCE_MFA_VERIFIED",
+    actionCode: "AUTHORIZE_VERIFIED_SUBSCRIBER_CPNI_OR_PROVISIONING_ACTION",
+    policyCode:
+      "P97-TELECOM-FCC-CPNI-47CFR642010-SIM-SWAP-PORT-OUT-FRAUD-AND-CDR-DISCLOSURE-AUTH-GUARD",
+  };
+}
+
+export interface StilleWebRtcAec3ResidualEchoGuardInput {
+  callId: string;
+  renderToCaptureDelayMs: number;
+  aec3FilterConverged: boolean;
+  measuredErleDb: number;
+  uplinkDownlinkCrossCorrelation: number;
+  nearEndIndependentPitchDetected: boolean;
+}
+
+export interface StilleWebRtcAec3ResidualEchoGuardDecision {
+  allowed: boolean;
+  aec3EchoSuppressionHealthy: boolean;
+  allowVadBargeInTrigger: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P98-WEBRTC-AEC3-NONLINEAR-RESIDUAL-ECHO-DOUBLE-TALK-FALSE-BARGE-IN-AND-DELAY-DRIFT-GUARD";
+}
+
+export function evaluateWebRtcAec3ResidualEchoFalseBargeInAndDelayDriftGuard(
+  input: StilleWebRtcAec3ResidualEchoGuardInput
+): StilleWebRtcAec3ResidualEchoGuardDecision {
+  if (input.renderToCaptureDelayMs > 250 || !input.aec3FilterConverged) {
+    return {
+      allowed: false,
+      aec3EchoSuppressionHealthy: false,
+      allowVadBargeInTrigger: false,
+      reason:
+        "WEBRTC_AEC3_RENDER_CAPTURE_DELAY_DRIFT_OR_UNCONVERGED_FILTER",
+      actionCode:
+        "REESTIMATE_AEC3_DELAY_AGNOSTIC_BUFFER_AND_HOLD_HAIR_TRIGGER_BARGE_IN",
+      policyCode:
+        "P98-WEBRTC-AEC3-NONLINEAR-RESIDUAL-ECHO-DOUBLE-TALK-FALSE-BARGE-IN-AND-DELAY-DRIFT-GUARD",
+    };
+  }
+
+  if (
+    input.uplinkDownlinkCrossCorrelation >= 0.65 &&
+    input.measuredErleDb < 12 &&
+    !input.nearEndIndependentPitchDetected
+  ) {
+    return {
+      allowed: false,
+      aec3EchoSuppressionHealthy: false,
+      allowVadBargeInTrigger: false,
+      reason: "WEBRTC_AEC3_NONLINEAR_RESIDUAL_ECHO_SELF_BARGE_IN_BLOCKED",
+      actionCode:
+        "SUPPRESS_FALSE_SELF_BARGE_IN_DROP_ECHOED_ASR_TOKENS_AND_ENGAGE_NONLINEAR_NLP",
+      policyCode:
+        "P98-WEBRTC-AEC3-NONLINEAR-RESIDUAL-ECHO-DOUBLE-TALK-FALSE-BARGE-IN-AND-DELAY-DRIFT-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    aec3EchoSuppressionHealthy: true,
+    allowVadBargeInTrigger: true,
+    reason:
+      "WEBRTC_AEC3_ERLE_CONVERGED_AND_GENUINE_NEAR_END_DOUBLE_TALK_VERIFIED",
+    actionCode: "PERMIT_GENUINE_USER_BARGE_IN_AND_STREAM_CLEAN_UPLINK",
+    policyCode:
+      "P98-WEBRTC-AEC3-NONLINEAR-RESIDUAL-ECHO-DOUBLE-TALK-FALSE-BARGE-IN-AND-DELAY-DRIFT-GUARD",
+  };
+}
+
+
 
 
 

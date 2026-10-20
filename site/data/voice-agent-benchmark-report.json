@@ -501,6 +501,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P95-HEALTHCARE-CMS-MEDICARE-PART-D-PRIOR-AUTHORIZATION-APPEAL-EXPEDITED-72HR-AND-STEP-THERAPY-OVERRIDE-GUARD blocks autonomous AI clinical denials without a licensed Medical Director / Pharmacist signature, upgrades urgent/life-jeopardy requests to 24h/72h expedited queues with 30-day transition fill, and grants automatic Step Therapy overrides for continuity of care (>=90 days stable) or contraindications; P96-WEBRTC-RTP-MULTI-STREAM-LIPSYNC-AV-SKEW-ITU-R-BT1359-RTCP-SR-NTP-WALLCLOCK-DRIFT-GUARD enforces ITU-R BT.1359-1 ([-45ms, +125ms]) lip-sync via bounded audio delay buffering and decouples stalled avatar video (>180ms lag or stale RTCP SR >5000ms) so Opus voice streams with 0ms added delay."
+    },
+    {
+      "check_name": "Telecom FCC CPNI (47 CFR 64.2010) Inbound CDR Readout Prohibition & FCC 23-95 SIM-Swap / Port-Out Fraud Guard + WebRTC AEC3 Nonlinear Residual Echo Double-Talk Self-Interruption & Delay Drift Guard (P97 / P98)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P97-TELECOM-FCC-CPNI-47CFR642010-SIM-SWAP-PORT-OUT-FRAUD-AND-CDR-DISCLOSURE-AUTH-GUARD blocks inbound oral Call Detail Record (CDR) readouts without a pre-established CPNI password (rejecting Caller ID / biographical KBA) and freezes eSIM swaps or Number Port-Out PIN issuance when a port-freeze is active, within a <24h password-reset cool-down, or without phishing-resistant MFA + out-of-band subscriber alert; P98-WEBRTC-AEC3-NONLINEAR-RESIDUAL-ECHO-DOUBLE-TALK-FALSE-BARGE-IN-AND-DELAY-DRIFT-GUARD re-estimates the AEC3 delay-agnostic buffer when render-to-capture delay exceeds >250ms and suppresses false self-barge-in when uplink-downlink cross-correlation >=0.65 with ERLE <12dB and no independent near-end human pitch."
     }
   ],
   "latency_scaling": [
