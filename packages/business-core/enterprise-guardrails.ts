@@ -8650,6 +8650,183 @@ export function evaluateMultimodalCobrowsingVisualPromptInjectionAndDomMaskingGu
   };
 }
 
+export interface StillePublicSector311And988CrisisSuicideTriageGuardInput {
+  callId: string;
+  activeSuicidalIdeationOrSelfHarmDetected: boolean;
+  domesticViolenceOrChildElderAbuseDetected: boolean;
+  generativeLlmFreeformCounselingAttempted: boolean;
+  blindTransferOrHangupBeforeCounselorAccepts: boolean;
+  warmTransfer988CounselorConnected: boolean;
+  crisisTranscriptIsolatedFromMarketingCrm: boolean;
+}
+
+export interface StillePublicSector311And988CrisisSuicideTriageGuardDecision {
+  allowed: boolean;
+  crisisSafetyProtocolCompliant: boolean;
+  warmHandoffBridgeLocked: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P101-GOVERNMENT-311-988-CRISIS-SUICIDE-TRIAGE-ZERO-HALLUCINATION-WARM-HANDOFF-AND-MANDATORY-REPORTING-GUARD";
+}
+
+export function evaluatePublicSector311And988CrisisSuicideTriageWarmHandoffGuard(
+  input: StillePublicSector311And988CrisisSuicideTriageGuardInput
+): StillePublicSector311And988CrisisSuicideTriageGuardDecision {
+  const isCrisisActive =
+    input.activeSuicidalIdeationOrSelfHarmDetected ||
+    input.domesticViolenceOrChildElderAbuseDetected;
+
+  if (isCrisisActive && input.generativeLlmFreeformCounselingAttempted) {
+    return {
+      allowed: false,
+      crisisSafetyProtocolCompliant: false,
+      warmHandoffBridgeLocked: true,
+      reason:
+        "SAMHSA_988_CRISIS_FREEFORM_LLM_COUNSELING_HALLUCINATION_RISK_BLOCKED",
+      actionCode:
+        "LOCK_GENERATIVE_LLM_PLAY_APPROVED_CRISIS_STABILIZATION_SCRIPT_AND_INITIATE_988_WARM_BRIDGE",
+      policyCode:
+        "P101-GOVERNMENT-311-988-CRISIS-SUICIDE-TRIAGE-ZERO-HALLUCINATION-WARM-HANDOFF-AND-MANDATORY-REPORTING-GUARD",
+    };
+  }
+
+  if (
+    isCrisisActive &&
+    (input.blindTransferOrHangupBeforeCounselorAccepts ||
+      !input.warmTransfer988CounselorConnected)
+  ) {
+    return {
+      allowed: false,
+      crisisSafetyProtocolCompliant: false,
+      warmHandoffBridgeLocked: true,
+      reason:
+        "CRISIS_988_BLIND_TRANSFER_OR_PREMATURE_DISCONNECT_BEFORE_COUNSELOR_BRIDGE_BLOCKED",
+      actionCode:
+        "HOLD_CALLER_ON_MONITORED_WARM_BRIDGE_UNTIL_LIVE_988_COUNSELOR_ACCEPTS_AUDIO",
+      policyCode:
+        "P101-GOVERNMENT-311-988-CRISIS-SUICIDE-TRIAGE-ZERO-HALLUCINATION-WARM-HANDOFF-AND-MANDATORY-REPORTING-GUARD",
+    };
+  }
+
+  if (isCrisisActive && !input.crisisTranscriptIsolatedFromMarketingCrm) {
+    return {
+      allowed: false,
+      crisisSafetyProtocolCompliant: false,
+      warmHandoffBridgeLocked: true,
+      reason:
+        "CRISIS_OR_MANDATORY_REPORTING_TRANSCRIPT_LEAK_TO_GENERAL_CRM_BLOCKED",
+      actionCode:
+        "SEGREGATE_CRISIS_RECORD_TO_RESTRICTED_SAMHSA_VAULT_AND_TRIGGER_STATUTORY_SAFEGUARDING_WORKFLOW",
+      policyCode:
+        "P101-GOVERNMENT-311-988-CRISIS-SUICIDE-TRIAGE-ZERO-HALLUCINATION-WARM-HANDOFF-AND-MANDATORY-REPORTING-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    crisisSafetyProtocolCompliant: true,
+    warmHandoffBridgeLocked: isCrisisActive,
+    reason:
+      "SAMHSA_988_ZERO_HALLUCINATION_WARM_HANDOFF_AND_SAFEGUARDING_ISOLATION_VERIFIED",
+    actionCode: "MAINTAIN_VERIFIED_988_WARM_HANDOFF_OR_STANDARD_311_SERVICE",
+    policyCode:
+      "P101-GOVERNMENT-311-988-CRISIS-SUICIDE-TRIAGE-ZERO-HALLUCINATION-WARM-HANDOFF-AND-MANDATORY-REPORTING-GUARD",
+  };
+}
+
+export interface StilleRealtimeToolCallCircuitBreakerAndIdempotencyGuardInput {
+  callId: string;
+  toolName: string;
+  toolMutatesState: boolean;
+  downstreamErrorRatePct: number;
+  circuitBreakerState: "CLOSED" | "OPEN" | "HALF_OPEN";
+  elapsedLatencyMs: number;
+  deadlineBudgetMs: number;
+  hedgedReadTriggerMs: number;
+  idempotencyKeyPresent: boolean;
+  retryAttemptedOnTimeout: boolean;
+  hedgedReadReplicaDispatched: boolean;
+}
+
+export interface StilleRealtimeToolCallCircuitBreakerAndIdempotencyGuardDecision {
+  allowed: boolean;
+  toolResilienceAndIdempotencyVerified: boolean;
+  hedgedReadActivated: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P102-REALTIME-TOOL-CALL-CIRCUIT-BREAKER-HEDGED-FALLBACK-IDEMPOTENCY-KEY-AND-DEADLINE-PROPAGATION-GUARD";
+}
+
+export function evaluateRealtimeToolCallCircuitBreakerHedgedReadAndIdempotencyGuard(
+  input: StilleRealtimeToolCallCircuitBreakerAndIdempotencyGuardInput
+): StilleRealtimeToolCallCircuitBreakerAndIdempotencyGuardDecision {
+  if (
+    input.circuitBreakerState === "OPEN" ||
+    input.downstreamErrorRatePct >= 50
+  ) {
+    return {
+      allowed: false,
+      toolResilienceAndIdempotencyVerified: false,
+      hedgedReadActivated: false,
+      reason:
+        "DOWNSTREAM_MICROSERVICE_CIRCUIT_BREAKER_OPEN_FAIL_FAST_ACTIVATED",
+      actionCode:
+        "SHORT_CIRCUIT_IN_15MS_SERVE_STALE_READ_CACHE_OR_ENQUEUE_DURABLE_ASYNC_CALLBACK",
+      policyCode:
+        "P102-REALTIME-TOOL-CALL-CIRCUIT-BREAKER-HEDGED-FALLBACK-IDEMPOTENCY-KEY-AND-DEADLINE-PROPAGATION-GUARD",
+    };
+  }
+
+  if (
+    input.toolMutatesState &&
+    (!input.idempotencyKeyPresent ||
+      (input.retryAttemptedOnTimeout &&
+        input.elapsedLatencyMs > input.deadlineBudgetMs))
+  ) {
+    return {
+      allowed: false,
+      toolResilienceAndIdempotencyVerified: false,
+      hedgedReadActivated: false,
+      reason:
+        "MUTATING_TOOL_CALL_MISSING_IDEMPOTENCY_KEY_OR_UNSAFE_TIMEOUT_RETRY_BLOCKED",
+      actionCode:
+        "ABORT_DUPLICATE_WRITE_RETRY_PROPAGATE_GRPC_DEADLINE_AND_QUERY_RECONCILIATION_LEDGER",
+      policyCode:
+        "P102-REALTIME-TOOL-CALL-CIRCUIT-BREAKER-HEDGED-FALLBACK-IDEMPOTENCY-KEY-AND-DEADLINE-PROPAGATION-GUARD",
+    };
+  }
+
+  if (
+    !input.toolMutatesState &&
+    input.elapsedLatencyMs > input.hedgedReadTriggerMs &&
+    !input.hedgedReadReplicaDispatched
+  ) {
+    return {
+      allowed: false,
+      toolResilienceAndIdempotencyVerified: false,
+      hedgedReadActivated: true,
+      reason:
+        "READ_ONLY_TOOL_P95_TAIL_LATENCY_EXCEEDED_WITHOUT_HEDGED_REPLICA_REQUEST",
+      actionCode:
+        "DISPATCH_HEDGED_READ_TO_WARM_SECONDARY_REPLICA_AND_STREAM_LATENCY_MASKING_FILLER",
+      policyCode:
+        "P102-REALTIME-TOOL-CALL-CIRCUIT-BREAKER-HEDGED-FALLBACK-IDEMPOTENCY-KEY-AND-DEADLINE-PROPAGATION-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    toolResilienceAndIdempotencyVerified: true,
+    hedgedReadActivated: input.hedgedReadReplicaDispatched,
+    reason:
+      "REALTIME_TOOL_DEADLINE_IDEMPOTENCY_AND_CIRCUIT_HEALTH_VERIFIED",
+    actionCode: "COMMIT_BOUNDED_LATENCY_TOOL_RESPONSE_TO_VOICE_TURN",
+    policyCode:
+      "P102-REALTIME-TOOL-CALL-CIRCUIT-BREAKER-HEDGED-FALLBACK-IDEMPOTENCY-KEY-AND-DEADLINE-PROPAGATION-GUARD",
+  };
+}
+
+
 
 
 

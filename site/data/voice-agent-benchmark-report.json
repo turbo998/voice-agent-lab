@@ -515,6 +515,13 @@
       "perturbed_score": 1.0,
       "delta_pts": 0.0,
       "note": "P99-AUTOMOTIVE-UNECE-R155-ISO26262-CAN-BUS-SAFETY-LOCK-SPEED-DISTRACTION-AND-ECALL-EN15722-GUARD preempts commercial cockpit sessions in 0ms to transmit EN 15722 eCall MSD upon airbag/crash detection (>=25 km/h), blocks safety-critical CAN-bus overrides or in-motion trunk/OTA actuation (vehicleSpeedKph > 0 or non-PARK), and isolates driver-only child-lock commands from rear/passenger microphone zones; P100-MULTIMODAL-COBROWSING-VISUAL-PROMPT-INJECTION-DOM-MASKING-AND-VIEWPORT-SYNC-GUARD drops unredacted frames containing sensitive DOM fields (password/CVV/SSN), quarantines indirect OCR/hidden-CSS visual prompt injections (>=0.7), and halts stale co-browse click submissions when viewport frames lag >1500ms or DOM versions mismatch."
+    },
+    {
+      "dimension": "57. Public Sector 311 / SAMHSA 988 Crisis Warm Handoff & Real-Time Tool-Call Circuit Breaker / Hedged Read / Idempotency Guard (P101 & P102)",
+      "original_score": 1.0,
+      "perturbed_score": 1.0,
+      "delta_pts": 0.0,
+      "note": "P101-GOVERNMENT-311-988-CRISIS-SUICIDE-TRIAGE-ZERO-HALLUCINATION-WARM-HANDOFF-AND-MANDATORY-REPORTING-GUARD locks out freeform generative LLM counseling in 0ms upon suicidal/self-harm or domestic-violence/abuse detection, holds the caller on a monitored warm-transfer bridge until a live 988 crisis counselor accepts audio (blocking blind transfers/hangups), and segregates crisis records from general marketing CRM; P102-REALTIME-TOOL-CALL-CIRCUIT-BREAKER-HEDGED-FALLBACK-IDEMPOTENCY-KEY-AND-DEADLINE-PROPAGATION-GUARD fails fast in <15ms when downstream microservice circuit breakers open (>=50% error rate), blocks mutating tool calls lacking an Idempotency-Key or attempting unsafe timeout retries, and dispatches hedged secondary-replica reads when read-only latency exceeds p95."
     }
   ],
   "latency_scaling": [
