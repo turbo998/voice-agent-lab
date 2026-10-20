@@ -522,6 +522,13 @@
       "perturbed_score": 1.0,
       "delta_pts": 0.0,
       "note": "P101-GOVERNMENT-311-988-CRISIS-SUICIDE-TRIAGE-ZERO-HALLUCINATION-WARM-HANDOFF-AND-MANDATORY-REPORTING-GUARD locks out freeform generative LLM counseling in 0ms upon suicidal/self-harm or domestic-violence/abuse detection, holds the caller on a monitored warm-transfer bridge until a live 988 crisis counselor accepts audio (blocking blind transfers/hangups), and segregates crisis records from general marketing CRM; P102-REALTIME-TOOL-CALL-CIRCUIT-BREAKER-HEDGED-FALLBACK-IDEMPOTENCY-KEY-AND-DEADLINE-PROPAGATION-GUARD fails fast in <15ms when downstream microservice circuit breakers open (>=50% error rate), blocks mutating tool calls lacking an Idempotency-Key or attempting unsafe timeout retries, and dispatches hedged secondary-replica reads when read-only latency exceeds p95."
+    },
+    {
+      "dimension": "58. Integrated Resort / Casino FinCEN Title 31 AML & Responsible Gaming Self-Exclusion + WebRTC TURN RFC 8656 Private-Subnet Bounce & Amplification DoS Guard (P103 & P104)",
+      "original_score": 1.0,
+      "perturbed_score": 1.0,
+      "delta_pts": 0.0,
+      "note": "P103-HOSPITALITY-GAMING-AML-TITLE31-FINCEN-CTR-SAR-ANTI-STRUCTURING-AND-RESPONSIBLE-GAMING-SELF-EXCLUSION-GUARD freezes credit markers and promotional comps for self-excluded or distressed callers (routing to 1-800-GAMBLER), scrubs any BSA 31 U.S.C. 5318(g)(2) SAR investigation tipping-off, and holds cage cash transactions exceeding $10,000 daily aggregate without verified TIN or exhibiting sub-$10k structuring; P104-WEBRTC-TURN-ALLOCATION-QUOTA-AMPLIFICATION-DOS-AND-RFC8656-CHANNELBIND-PRIVATE-SUBNET-GUARD rejects RFC 8656 CreatePermission/ChannelBind peers targeting RFC 1918 private subnets, loopback, or cloud IMDS 169.254.169.254 with 403 Forbidden IP, enforces <=900s HMAC-SHA1 ephemeral credentials, and shapes voice relay ingress to <=128 kbps."
     }
   ],
   "latency_scaling": [

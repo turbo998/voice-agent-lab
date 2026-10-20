@@ -8826,6 +8826,179 @@ export function evaluateRealtimeToolCallCircuitBreakerHedgedReadAndIdempotencyGu
   };
 }
 
+export interface StilleCasinoGamingTitle31AmlAndResponsibleGamingGuardInput {
+  callId: string;
+  patronId: string;
+  callerOnSelfExclusionRegistry: boolean;
+  problemGamblingDistressOrChasingLossesDetected: boolean;
+  structuringOrSuspiciousCageActivityDetected: boolean;
+  agentDisclosesSarInvestigationToCaller: boolean;
+  gamingDayAggregateCashUsd: number;
+  verifiedGovIdAndSsnTinOnFile: boolean;
+  multipleSub10kStructuringAttemptsDetected: boolean;
+}
+
+export interface StilleCasinoGamingTitle31AmlAndResponsibleGamingGuardDecision {
+  allowed: boolean;
+  title31AmlAndResponsibleGamingCompliant: boolean;
+  silentFinCenSarDispatched: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P103-HOSPITALITY-GAMING-AML-TITLE31-FINCEN-CTR-SAR-ANTI-STRUCTURING-AND-RESPONSIBLE-GAMING-SELF-EXCLUSION-GUARD";
+}
+
+export function evaluateCasinoGamingTitle31AmlAndResponsibleGamingSelfExclusionGuard(
+  input: StilleCasinoGamingTitle31AmlAndResponsibleGamingGuardInput
+): StilleCasinoGamingTitle31AmlAndResponsibleGamingGuardDecision {
+  if (
+    input.callerOnSelfExclusionRegistry ||
+    input.problemGamblingDistressOrChasingLossesDetected
+  ) {
+    return {
+      allowed: false,
+      title31AmlAndResponsibleGamingCompliant: false,
+      silentFinCenSarDispatched: false,
+      reason:
+        "RESPONSIBLE_GAMING_SELF_EXCLUSION_OR_COMPULSIVE_DISTRESS_MARKER_BLOCKED",
+      actionCode:
+        "BLOCK_WAGER_AND_CREDIT_MARKER_LOCK_PROMOTIONS_AND_OFFER_1800GAMBLER_HELPLINE",
+      policyCode:
+        "P103-HOSPITALITY-GAMING-AML-TITLE31-FINCEN-CTR-SAR-ANTI-STRUCTURING-AND-RESPONSIBLE-GAMING-SELF-EXCLUSION-GUARD",
+    };
+  }
+
+  if (
+    input.structuringOrSuspiciousCageActivityDetected &&
+    input.agentDisclosesSarInvestigationToCaller
+  ) {
+    return {
+      allowed: false,
+      title31AmlAndResponsibleGamingCompliant: false,
+      silentFinCenSarDispatched: true,
+      reason: "BSA_31USC5318_SAR_ANTI_TIPPING_OFF_DISCLOSURE_BLOCKED",
+      actionCode:
+        "SCRUB_SAR_MENTION_PLAY_NEUTRAL_COMPLIANCE_HOLD_AND_SILENTLY_ALERT_AML_OFFICER",
+      policyCode:
+        "P103-HOSPITALITY-GAMING-AML-TITLE31-FINCEN-CTR-SAR-ANTI-STRUCTURING-AND-RESPONSIBLE-GAMING-SELF-EXCLUSION-GUARD",
+    };
+  }
+
+  if (
+    (input.gamingDayAggregateCashUsd >= 10000 &&
+      !input.verifiedGovIdAndSsnTinOnFile) ||
+    input.multipleSub10kStructuringAttemptsDetected
+  ) {
+    return {
+      allowed: false,
+      title31AmlAndResponsibleGamingCompliant: false,
+      silentFinCenSarDispatched: input.multipleSub10kStructuringAttemptsDetected,
+      reason:
+        "FINCEN_31CFR1021_CTR_10K_AGGREGATION_OR_STRUCTURING_EVASION_BLOCKED",
+      actionCode:
+        "HOLD_CAGE_TRANSACTION_REQUIRE_GOV_ID_TIN_FOR_CTR_AND_FLAG_STRUCTURING_SAR",
+      policyCode:
+        "P103-HOSPITALITY-GAMING-AML-TITLE31-FINCEN-CTR-SAR-ANTI-STRUCTURING-AND-RESPONSIBLE-GAMING-SELF-EXCLUSION-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    title31AmlAndResponsibleGamingCompliant: true,
+    silentFinCenSarDispatched:
+      input.structuringOrSuspiciousCageActivityDetected,
+    reason:
+      "TITLE31_AML_CTR_AND_RESPONSIBLE_GAMING_COMPLIANCE_VERIFIED",
+    actionCode: "ALLOW_COMPLIANT_RESORT_OR_VIP_HOST_SERVICE",
+    policyCode:
+      "P103-HOSPITALITY-GAMING-AML-TITLE31-FINCEN-CTR-SAR-ANTI-STRUCTURING-AND-RESPONSIBLE-GAMING-SELF-EXCLUSION-GUARD",
+  };
+}
+
+export interface StilleWebRtcTurnRelayAmplificationAndChannelBindGuardInput {
+  callId: string;
+  turnUsername: string;
+  peerIpTargetsRfc1918LoopbackOrImds169254: boolean;
+  turnCredentialTtlSec: number;
+  ephemeralHmacSha1TokenValid: boolean;
+  concurrentAllocationsForUser: number;
+  maxAllowedAllocationsPerUser: number;
+  relayIngressKbps: number;
+  maxVoiceRelayQuotaKbps: number;
+}
+
+export interface StilleWebRtcTurnRelayAmplificationAndChannelBindGuardDecision {
+  allowed: boolean;
+  turnRelaySecurityHealthy: boolean;
+  allocationPermitted: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P104-WEBRTC-TURN-ALLOCATION-QUOTA-AMPLIFICATION-DOS-AND-RFC8656-CHANNELBIND-PRIVATE-SUBNET-GUARD";
+}
+
+export function evaluateWebRtcTurnRelayAmplificationDosAndChannelBindSubnetGuard(
+  input: StilleWebRtcTurnRelayAmplificationAndChannelBindGuardInput
+): StilleWebRtcTurnRelayAmplificationAndChannelBindGuardDecision {
+  if (input.peerIpTargetsRfc1918LoopbackOrImds169254) {
+    return {
+      allowed: false,
+      turnRelaySecurityHealthy: false,
+      allocationPermitted: false,
+      reason:
+        "RFC8656_TURN_CREATEPERMISSION_INTERNAL_SUBNET_OR_IMDS_BOUNCE_BLOCKED",
+      actionCode:
+        "REJECT_TURN_PEER_WITH_403_FORBIDDEN_IP_AND_ENFORCE_DENY_PEER_IP_ACL",
+      policyCode:
+        "P104-WEBRTC-TURN-ALLOCATION-QUOTA-AMPLIFICATION-DOS-AND-RFC8656-CHANNELBIND-PRIVATE-SUBNET-GUARD",
+    };
+  }
+
+  if (
+    input.turnCredentialTtlSec > 3600 ||
+    !input.ephemeralHmacSha1TokenValid
+  ) {
+    return {
+      allowed: false,
+      turnRelaySecurityHealthy: false,
+      allocationPermitted: false,
+      reason:
+        "TURN_STATIC_OR_EXPIRED_LONG_LIVED_CREDENTIAL_ABUSE_BLOCKED",
+      actionCode:
+        "REVOKE_ALLOCATION_AND_ISSUE_SHORT_LIVED_900S_REST_API_HMAC_CREDENTIAL",
+      policyCode:
+        "P104-WEBRTC-TURN-ALLOCATION-QUOTA-AMPLIFICATION-DOS-AND-RFC8656-CHANNELBIND-PRIVATE-SUBNET-GUARD",
+    };
+  }
+
+  if (
+    input.concurrentAllocationsForUser > input.maxAllowedAllocationsPerUser ||
+    input.relayIngressKbps > input.maxVoiceRelayQuotaKbps
+  ) {
+    return {
+      allowed: false,
+      turnRelaySecurityHealthy: false,
+      allocationPermitted: false,
+      reason:
+        "TURN_RELAY_BANDWIDTH_AMPLIFICATION_OR_ALLOCATION_QUOTA_EXCEEDED",
+      actionCode:
+        "SHED_EXCESS_TURN_ALLOCATIONS_AND_CLAMP_VOICE_RELAY_TO_128KBPS_SHAPER",
+      policyCode:
+        "P104-WEBRTC-TURN-ALLOCATION-QUOTA-AMPLIFICATION-DOS-AND-RFC8656-CHANNELBIND-PRIVATE-SUBNET-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    turnRelaySecurityHealthy: true,
+    allocationPermitted: true,
+    reason:
+      "RFC8656_TURN_EPHEMERAL_AUTH_PEER_ACL_AND_RATE_SHAPER_VERIFIED",
+    actionCode: "PERMIT_SCOPED_WEBRTC_TURN_VOICE_MEDIA_RELAY",
+    policyCode:
+      "P104-WEBRTC-TURN-ALLOCATION-QUOTA-AMPLIFICATION-DOS-AND-RFC8656-CHANNELBIND-PRIVATE-SUBNET-GUARD",
+  };
+}
+
+
 
 
 
