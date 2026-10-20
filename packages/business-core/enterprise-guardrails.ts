@@ -6727,6 +6727,161 @@ export function evaluateBipaBiometricWrittenConsentAndRetentionGuard(
   };
 }
 
+export interface StilleUtilityWinterMoratoriumAndLifeSupportShutoffGuardInput {
+  callId: string;
+  remoteSmartMeterShutoffRequested: boolean;
+  medicalLifeSupportRegistered: boolean;
+  pendingMedicalCertificationOnFile: boolean;
+  extremeWeatherMoratoriumActive: boolean;
+  statutoryPaymentPlanAndAssistanceDisclosed: boolean;
+}
+
+export interface StilleUtilityWinterMoratoriumAndLifeSupportShutoffGuardDecision {
+  policyCode: "P77-UTILITY-WINTER-MORATORIUM-LIFE-SUPPORT-SHUTOFF-GUARD";
+  callId: string;
+  utilityShutoffComplianceVerified: boolean;
+  allowed: boolean;
+  reason:
+    | "UTILITY_SHUTOFF_MORATORIUM_AND_HARDSHIP_RULES_VERIFIED"
+    | "MEDICAL_LIFE_SUPPORT_OR_WEATHER_MORATORIUM_SHUTOFF_BLOCKED"
+    | "MISSING_STATUTORY_PAYMENT_PLAN_OR_LIHEAP_DISCLOSURE_BLOCKED";
+  actionCode:
+    | "PERMIT_COMPLIANT_UTILITY_BILLING_ACTION"
+    | "ABORT_REMOTE_SHUTOFF_AND_ENROLL_HARDSHIP_PROTECTION_PLAN"
+    | "MANDATE_DEFERRED_PAYMENT_PLAN_AND_LIHEAP_DISCLOSURE_BEFORE_NOTICE";
+  summaryZh: string;
+}
+
+/**
+ * Stage 42 (#86): P77 — Utility Smart-Meter Winter/Extreme-Heat Moratorium & Medical Baseline Life-Support Shutoff Prohibition Guard.
+ * Prevents two life-safety and regulatory violations under state Public Utility Commission (PUC — e.g., CPUC, NYPSC, PUCT, Ofgem) disconnection protection rules:
+ * 1) Remote AMI Smart-Meter Disconnection of Medical Life-Support Households or During Extreme Weather Moratoria (`remoteSmartMeterShutoffRequested && (medicalLifeSupportRegistered || pendingMedicalCertificationOnFile || extremeWeatherMoratoriumActive)`): strictly blocks any automated or scheduled remote power/gas/water shutoff when the premise has a registered life-support medical device (ventilator, oxygen concentrator, home dialysis), a pending clinician certification, or an active winter freeze / extreme heat moratorium (`MEDICAL_LIFE_SUPPORT_OR_WEATHER_MORATORIUM_SHUTOFF_BLOCKED`).
+ * 2) Disconnection Warning or Collection Action Without Mandatory Deferred Payment Plan & LIHEAP Hardship Disclosure (`remoteSmartMeterShutoffRequested && !statutoryPaymentPlanAndAssistanceDisclosed`): blocks shutoff workflows until the customer is explicitly offered a statutory amortized payment arrangement and low-income energy assistance (LIHEAP) eligibility screening (`MISSING_STATUTORY_PAYMENT_PLAN_OR_LIHEAP_DISCLOSURE_BLOCKED`).
+ */
+export function evaluateUtilityWinterMoratoriumAndLifeSupportShutoffGuard(
+  input: StilleUtilityWinterMoratoriumAndLifeSupportShutoffGuardInput,
+): StilleUtilityWinterMoratoriumAndLifeSupportShutoffGuardDecision {
+  if (
+    input.remoteSmartMeterShutoffRequested &&
+    (input.medicalLifeSupportRegistered ||
+      input.pendingMedicalCertificationOnFile ||
+      input.extremeWeatherMoratoriumActive)
+  ) {
+    return {
+      policyCode: "P77-UTILITY-WINTER-MORATORIUM-LIFE-SUPPORT-SHUTOFF-GUARD",
+      callId: input.callId,
+      utilityShutoffComplianceVerified: false,
+      allowed: false,
+      reason: "MEDICAL_LIFE_SUPPORT_OR_WEATHER_MORATORIUM_SHUTOFF_BLOCKED",
+      actionCode: "ABORT_REMOTE_SHUTOFF_AND_ENROLL_HARDSHIP_PROTECTION_PLAN",
+      summaryZh: `【P77 公用事业极端天气停电保护与医疗维生设备禁断电护栏 (MEDICAL_LIFE_SUPPORT_OR_WEATHER_MORATORIUM_SHUTOFF_BLOCKED)】通话 ${input.callId} 请求触发远程智能电表/燃气表拉闸断供，但该户登记有医疗维生设备（lifeSupport=${input.medicalLifeSupportRegistered} / pendingCert=${input.pendingMedicalCertificationOnFile}）或当前处于寒潮/高温法定禁断电期（moratorium=${input.extremeWeatherMoratoriumActive}）！已 0ms 硬阻断远程拉闸指令并自动转入民生关怀保供计划。`,
+    };
+  }
+
+  if (
+    input.remoteSmartMeterShutoffRequested &&
+    !input.statutoryPaymentPlanAndAssistanceDisclosed
+  ) {
+    return {
+      policyCode: "P77-UTILITY-WINTER-MORATORIUM-LIFE-SUPPORT-SHUTOFF-GUARD",
+      callId: input.callId,
+      utilityShutoffComplianceVerified: false,
+      allowed: false,
+      reason: "MISSING_STATUTORY_PAYMENT_PLAN_OR_LIHEAP_DISCLOSURE_BLOCKED",
+      actionCode:
+        "MANDATE_DEFERRED_PAYMENT_PLAN_AND_LIHEAP_DISCLOSURE_BEFORE_NOTICE",
+      summaryZh: `【P77 公用事业分期缓缴与 LIHEAP 能源救助强制告知门禁 (MISSING_STATUTORY_PAYMENT_PLAN_OR_LIHEAP_DISCLOSURE_BLOCKED)】通话 ${input.callId} 未向客户完整播报法定分期缓缴方案（Deferred Payment Plan）与低收入能源补贴（LIHEAP）申请途径！已拦截欠费停供流程并强制补充民生救助条款披露。`,
+    };
+  }
+
+  return {
+    policyCode: "P77-UTILITY-WINTER-MORATORIUM-LIFE-SUPPORT-SHUTOFF-GUARD",
+    callId: input.callId,
+    utilityShutoffComplianceVerified: true,
+    allowed: true,
+    reason: "UTILITY_SHUTOFF_MORATORIUM_AND_HARDSHIP_RULES_VERIFIED",
+    actionCode: "PERMIT_COMPLIANT_UTILITY_BILLING_ACTION",
+    summaryZh: `【P77 公用事业民生保供与 PUC 合规核验通过】通话 ${input.callId} 已完成医疗维生豁免、极端天气保护期及分期救助披露核查。`,
+  };
+}
+
+export interface StilleRtpJitterBufferUnderrunAndClockDriftGuardInput {
+  callId: string;
+  clockDriftPpm: number;
+  jitterBufferUnderrunRatePct: number;
+  asrcFractionalResamplerActive: boolean;
+  silenceGapDurationMs: number;
+  rfc3389ComfortNoiseInjectionActive: boolean;
+}
+
+export interface StilleRtpJitterBufferUnderrunAndClockDriftGuardDecision {
+  policyCode: "P78-RTP-JITTER-BUFFER-UNDERRUN-CLOCK-DRIFT-RESYNC-GUARD";
+  callId: string;
+  rtpClockAndPlayoutHealthy: boolean;
+  allowed: boolean;
+  reason:
+    | "RTP_CLOCK_SYNCHRONIZED_AND_COMFORT_NOISE_ACTIVE"
+    | "CLOCK_DRIFT_OR_JITTER_UNDERRUN_ARTIFACT_BLOCKED"
+    | "DEAD_AIR_ANXIETY_GAP_WITHOUT_RFC3389_CN_BLOCKED";
+  actionCode:
+    | "STREAM_SYNCHRONIZED_PCM_FRAMES"
+    | "ENGAGE_ASRC_FRACTIONAL_RESAMPLER_AND_RESET_PLAYOUT_ANCHOR"
+    | "INJECT_RFC3389_COMFORT_NOISE_AND_HOLD_VAD_FLOOR";
+  summaryZh: string;
+}
+
+/**
+ * Stage 42 (#87): P78 — RTP Adaptive Jitter Buffer Underrun, Sample-Rate Clock Drift (`ppm`) & RFC 3389 Comfort-Noise Resync Guard.
+ * Prevents two acoustic degradation hazards in long-duration PSTN/TDM-to-WebRTC/S2S media bridges:
+ * 1) Sample-Rate Crystal Clock Skew (`|clockDriftPpm| > 150`) or High Jitter Buffer Underrun Rate (`jitterBufferUnderrunRatePct > 3.5%`) Without Active ASRC Resampling (`!asrcFractionalResamplerActive`): blocks raw PCM frame pass-through that would cause cumulative ring-buffer starvation, robotic WSOLA time-stretching pitch warble, or syllable drops (`CLOCK_DRIFT_OR_JITTER_UNDERRUN_ARTIFACT_BLOCKED`), engaging fractional Asynchronous Sample Rate Conversion (ASRC) and re-anchoring the playout timestamp.
+ * 2) Extended Silence Gap Without RFC 3389 Comfort Noise (`silenceGapDurationMs >= 1200 && !rfc3389ComfortNoiseInjectionActive`): prevents total digital zero-fill "dead air" during DTX silence suppression or backend reasoning pauses that causes callers to think the call dropped and hang up (`DEAD_AIR_ANXIETY_GAP_WITHOUT_RFC3389_CN_BLOCKED`).
+ */
+export function evaluateRtpJitterBufferUnderrunAndClockDriftGuard(
+  input: StilleRtpJitterBufferUnderrunAndClockDriftGuardInput,
+): StilleRtpJitterBufferUnderrunAndClockDriftGuardDecision {
+  if (
+    (Math.abs(input.clockDriftPpm) > 150 ||
+      input.jitterBufferUnderrunRatePct > 3.5) &&
+    !input.asrcFractionalResamplerActive
+  ) {
+    return {
+      policyCode: "P78-RTP-JITTER-BUFFER-UNDERRUN-CLOCK-DRIFT-RESYNC-GUARD",
+      callId: input.callId,
+      rtpClockAndPlayoutHealthy: false,
+      allowed: false,
+      reason: "CLOCK_DRIFT_OR_JITTER_UNDERRUN_ARTIFACT_BLOCKED",
+      actionCode: "ENGAGE_ASRC_FRACTIONAL_RESAMPLER_AND_RESET_PLAYOUT_ANCHOR",
+      summaryZh: `【P78 RTP 采样时钟漂移与抖动缓冲欠载重同步护栏 (CLOCK_DRIFT_OR_JITTER_UNDERRUN_ARTIFACT_BLOCKED)】通话 ${input.callId} 检出 PSTN/WebRTC 采样晶振时钟频偏超标（drift=${input.clockDriftPpm} ppm）或抖动缓冲欠载率过高（underrun=${input.jitterBufferUnderrunRatePct}% > 3.5%）且未启用 ASRC 分数倍重采样！已立即启用 ASRC 锁相环重采样并重置播放时间戳锚点，消除机械电音与吞字伪影。`,
+    };
+  }
+
+  if (
+    input.silenceGapDurationMs >= 1200 &&
+    !input.rfc3389ComfortNoiseInjectionActive
+  ) {
+    return {
+      policyCode: "P78-RTP-JITTER-BUFFER-UNDERRUN-CLOCK-DRIFT-RESYNC-GUARD",
+      callId: input.callId,
+      rtpClockAndPlayoutHealthy: false,
+      allowed: false,
+      reason: "DEAD_AIR_ANXIETY_GAP_WITHOUT_RFC3389_CN_BLOCKED",
+      actionCode: "INJECT_RFC3389_COMFORT_NOISE_AND_HOLD_VAD_FLOOR",
+      summaryZh: `【P78 RFC 3389 舒适噪音防死寂断线焦虑护栏 (DEAD_AIR_ANXIETY_GAP_WITHOUT_RFC3389_CN_BLOCKED)】通话 ${input.callId} 下行静音间隙达 ${input.silenceGapDurationMs}ms（>=1200ms）且未注入 RFC 3389 舒适背景噪（CN）！已立即注入 -62 dBFS 舒适噪底并锁定 VAD 门限，防止客户误判电话掉线挂机。`,
+    };
+  }
+
+  return {
+    policyCode: "P78-RTP-JITTER-BUFFER-UNDERRUN-CLOCK-DRIFT-RESYNC-GUARD",
+    callId: input.callId,
+    rtpClockAndPlayoutHealthy: true,
+    allowed: true,
+    reason: "RTP_CLOCK_SYNCHRONIZED_AND_COMFORT_NOISE_ACTIVE",
+    actionCode: "STREAM_SYNCHRONIZED_PCM_FRAMES",
+    summaryZh: `【P78 RTP 采样时钟同步与 RFC 3389 舒适噪音核验通过】通话 ${input.callId} 时钟频偏 (${input.clockDriftPpm} ppm) 与欠载率 (${input.jitterBufferUnderrunRatePct}%) 处于健康阈值内。`,
+  };
+}
+
+
 
 
 

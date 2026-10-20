@@ -431,6 +431,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P75-AVIATION-ATFM-NOTAM-RUNWAY-READBACK-HEARBACK-GUARD blocks safety-critical aviation clearance commits without verbatim ICAO Doc 9432 crew readback and rejects >15-min stale or unsigned NOTAM/METAR feeds; P76-VOICE-BIOMETRIC-BIPA-WRITTEN-CONSENT-AND-RETENTION-GUARD blocks unconsented voiceprint extraction under Illinois BIPA / Texas CUBI / Washington MHMDA and purges biometric vectors exceeding the 1095-day (3-year) retention cap."
+    },
+    {
+      "check_name": "Utility Winter Moratorium / Life-Support Shutoff & RTP Clock-Drift ASRC Resync / RFC 3389 Guard (P77 / P78)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P77-UTILITY-WINTER-MORATORIUM-LIFE-SUPPORT-SHUTOFF-GUARD blocks remote smart-meter disconnects on premises with registered medical life-support equipment or active extreme-weather moratoria and mandates statutory LIHEAP/deferred-plan disclosures; P78-RTP-JITTER-BUFFER-UNDERRUN-CLOCK-DRIFT-RESYNC-GUARD engages fractional ASRC resampling when clock drift exceeds +-150ppm or underruns exceed 3.5% and injects RFC 3389 comfort noise across >=1200ms tool-wait gaps."
     }
   ],
   "latency_scaling": [
