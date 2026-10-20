@@ -7189,14 +7189,169 @@ export function evaluatePacketLossBurstAsrHallucinationGuard(
   };
 }
 
+export interface StilleCustomsTariffHsCodeAndSanctionsScreeningGuardInput {
+  callId: string;
+  ofacSdnOrBisEntityListFuzzyScore: number;
+  sanctionedTransshipmentOrOriginCountry: boolean;
+  callerRequestsDutyFreeHsReclassification: boolean;
+  deMinimisSplitShipmentEvadingThreshold: boolean;
+  declaredValueDropPercentVsCommercialInvoice: number;
+}
 
+export interface StilleCustomsTariffHsCodeAndSanctionsScreeningGuardDecision {
+  policyCode: "P83-CUSTOMS-TARIFF-HS-CODE-EVASION-AND-OFAC-SANCTIONS-SCREENING-GUARD";
+  callId: string;
+  customsClearanceEligible: boolean;
+  allowed: boolean;
+  reason:
+    | "OFAC_SDN_OR_BIS_ENTITY_LIST_SANCTIONS_MATCH_BLOCKED"
+    | "CUSTOMS_HS_TARIFF_RECLASSIFICATION_OR_DE_MINIMIS_EVASION_BLOCKED"
+    | "CUSTOMS_DECLARATION_AND_SANCTIONS_SCREENING_VERIFIED";
+  actionCode:
+    | "FREEZE_SHIPMENT_CLEARANCE_AND_ESCALATE_TRADE_COMPLIANCE_HOLD"
+    | "LOCK_COMMERCIAL_INVOICE_HS_CODE_AND_REQUIRE_LICENSED_CUSTOMS_BROKER"
+    | "SUBMIT_ACE_ABI_CUSTOMS_MANIFEST_CLEARANCE";
+  summaryZh: string;
+}
 
+/**
+ * P83 — Cross-Border Logistics Customs HS Code Tariff Evasion, Section 321 De Minimis Split-Shipment & OFAC/BIS Sanctions Screening Guard
+ *
+ * 1. Immediately freezes customs clearance and escalates to Trade Compliance when the shipper,
+ *    consignee, or vessel matches OFAC SDN / BIS Entity List screening (`ofacSdnOrBisEntityListFuzzyScore >= 0.85`)
+ *    or involves a sanctioned origin/transshipment country.
+ * 2. Blocks verbal requests to reclassify commercial freight into duty-free HS chapters, split a
+ *    single consignment into multiple <$800 Section 321 De Minimis parcels, or under-declare value
+ *    by >=25% vs. the original commercial invoice without a licensed customs broker audit.
+ */
+export function evaluateCustomsTariffHsCodeAndSanctionsScreeningGuard(
+  input: StilleCustomsTariffHsCodeAndSanctionsScreeningGuardInput
+): StilleCustomsTariffHsCodeAndSanctionsScreeningGuardDecision {
+  if (
+    input.ofacSdnOrBisEntityListFuzzyScore >= 0.85 ||
+    input.sanctionedTransshipmentOrOriginCountry
+  ) {
+    return {
+      policyCode: "P83-CUSTOMS-TARIFF-HS-CODE-EVASION-AND-OFAC-SANCTIONS-SCREENING-GUARD",
+      callId: input.callId,
+      customsClearanceEligible: false,
+      allowed: false,
+      reason: "OFAC_SDN_OR_BIS_ENTITY_LIST_SANCTIONS_MATCH_BLOCKED",
+      actionCode: "FREEZE_SHIPMENT_CLEARANCE_AND_ESCALATE_TRADE_COMPLIANCE_HOLD",
+      summaryZh: `【P83 跨境物流 OFAC/BIS 制裁实体名单与中转港合规阻断护栏 (OFAC_SDN_OR_BIS_ENTITY_LIST_SANCTIONS_MATCH_BLOCKED)】清关通话 ${input.callId} 检出收发货人/承运方命中 OFAC SDN 或 BIS 实体清单模糊分 (${input.ofacSdnOrBisEntityListFuzzyScore} >= 0.85) 或途经受制裁中转港 (${input.sanctionedTransshipmentOrOriginCountry})！已 0ms 冻结报关放行并升级贸易合规官审查。`,
+    };
+  }
 
+  if (
+    input.callerRequestsDutyFreeHsReclassification ||
+    input.deMinimisSplitShipmentEvadingThreshold ||
+    input.declaredValueDropPercentVsCommercialInvoice >= 25
+  ) {
+    return {
+      policyCode: "P83-CUSTOMS-TARIFF-HS-CODE-EVASION-AND-OFAC-SANCTIONS-SCREENING-GUARD",
+      callId: input.callId,
+      customsClearanceEligible: false,
+      allowed: false,
+      reason: "CUSTOMS_HS_TARIFF_RECLASSIFICATION_OR_DE_MINIMIS_EVASION_BLOCKED",
+      actionCode: "LOCK_COMMERCIAL_INVOICE_HS_CODE_AND_REQUIRE_LICENSED_CUSTOMS_BROKER",
+      summaryZh: `【P83 海关 HS 编码伪报免税、De Minimis 拆单避税与低报货值拦截护栏 (CUSTOMS_HS_TARIFF_RECLASSIFICATION_OR_DE_MINIMIS_EVASION_BLOCKED)】通话 ${input.callId} 试图口头篡改 HS 税号归入零关税章节 (${input.callerRequestsDutyFreeHsReclassification})、拆单规避 $800 免税额 (${input.deMinimisSplitShipmentEvadingThreshold}) 或较商业发票低报货值 ${input.declaredValueDropPercentVsCommercialInvoice}% (>=25%)！已锁定原始商业发票并强制移交持牌报关行审核。`,
+    };
+  }
 
+  return {
+    policyCode: "P83-CUSTOMS-TARIFF-HS-CODE-EVASION-AND-OFAC-SANCTIONS-SCREENING-GUARD",
+    callId: input.callId,
+    customsClearanceEligible: true,
+    allowed: true,
+    reason: "CUSTOMS_DECLARATION_AND_SANCTIONS_SCREENING_VERIFIED",
+    actionCode: "SUBMIT_ACE_ABI_CUSTOMS_MANIFEST_CLEARANCE",
+    summaryZh: `【P83 跨境海关 HS 归类与制裁筛查通过】通话 ${input.callId} 商业发票货值一致、无拆单避税且 OFAC/BIS 筛查通过 (${input.ofacSdnOrBisEntityListFuzzyScore})，准予提交海关电子舱单。`,
+  };
+}
 
+export interface StilleAmrWbG711TandemTranscodingFricativeGuardInput {
+  callId: string;
+  highFrequencyRollOffAbove3400HzDb: number;
+  alphanumericSerialOrPolicyCodeInUtterance: boolean;
+  natoPhoneticOrDigitPairReadbackConfirmed: boolean;
+  asrCharacterConfidenceMin: number;
+  tandemTranscodingHopCount: number;
+  trfoOrCodecPassthroughNegotiated: boolean;
+}
 
+export interface StilleAmrWbG711TandemTranscodingFricativeGuardDecision {
+  policyCode: "P84-PSTN-AMR-WB-G711-TRANSCODING-TANDEM-FREE-AND-FRICATIVE-GAIN-GUARD";
+  callId: string;
+  alphanumericCodeSafeToCommit: boolean;
+  allowed: boolean;
+  reason:
+    | "NARROWBAND_3400HZ_BRICKWALL_FRICATIVE_AMBIGUITY_UNCONFIRMED"
+    | "DESTRUCTIVE_TANDEM_TRANSCODING_CHAIN_WITHOUT_TRFO_PASSTHROUGH"
+    | "WIDEBAND_SPECTRUM_OR_PHONETIC_READBACK_VERIFIED";
+  actionCode:
+    | "ENFORCE_NATO_PHONETIC_READBACK_OR_SMS_DATA_CHANNEL_FALLBACK"
+    | "RENEGOTIATE_SDP_CODEC_PASSTHROUGH_AND_APPLY_SPECTRAL_BAND_EXTENSION"
+    | "COMMIT_VERIFIED_ALPHANUMERIC_IDENTIFIER";
+  summaryZh: string;
+}
 
+/**
+ * P84 — PSTN-to-VoLTE AMR-WB / G.711 Tandem Transcoding Detection, 3.4kHz Brick-Wall Fricative Ambiguity (S vs F) & NATO Phonetic Readback Guard
+ *
+ * 1. When PSTN interconnect downsamples VoLTE AMR-WB (16kHz) to narrowband G.711 (8kHz, brick-wall
+ *    cut above 3400Hz, roll-off <= -28dB), high-frequency sibilant/fricative energy is destroyed,
+ *    making 'S' vs 'F', 'B' vs 'P', and 'M' vs 'N' acoustically indistinguishable. Blocks committing
+ *    alphanumeric serial/policy/VIN identifiers unless NATO phonetic spelling ("Sierra" vs "Foxtrot")
+ *    or SMS/visual confirmation is completed and minimum character confidence >= 0.88.
+ * 2. When >=2 tandem transcoding hops (e.g., AMR-WB -> G.711 -> Opus) are detected without 3GPP
+ *    TrFO (Transcoder Free Operation) or SDP codec passthrough, triggers SDP codec passthrough
+ *    renegotiation and spectral band extension.
+ */
+export function evaluateAmrWbG711TandemTranscodingFricativeGuard(
+  input: StilleAmrWbG711TandemTranscodingFricativeGuardInput
+): StilleAmrWbG711TandemTranscodingFricativeGuardDecision {
+  if (
+    input.highFrequencyRollOffAbove3400HzDb <= -28 &&
+    input.alphanumericSerialOrPolicyCodeInUtterance &&
+    (!input.natoPhoneticOrDigitPairReadbackConfirmed ||
+      input.asrCharacterConfidenceMin < 0.88)
+  ) {
+    return {
+      policyCode: "P84-PSTN-AMR-WB-G711-TRANSCODING-TANDEM-FREE-AND-FRICATIVE-GAIN-GUARD",
+      callId: input.callId,
+      alphanumericCodeSafeToCommit: false,
+      allowed: false,
+      reason: "NARROWBAND_3400HZ_BRICKWALL_FRICATIVE_AMBIGUITY_UNCONFIRMED",
+      actionCode: "ENFORCE_NATO_PHONETIC_READBACK_OR_SMS_DATA_CHANNEL_FALLBACK",
+      summaryZh: `【P84 G.711 窄带 3.4kHz 截断摩擦音 (S/F、B/P) 混淆与北约字母解释法复诵护栏 (NARROWBAND_3400HZ_BRICKWALL_FRICATIVE_AMBIGUITY_UNCONFIRMED)】通话 ${input.callId} 检出 3.4kHz 以上高频能量陡降 (${input.highFrequencyRollOffAbove3400HzDb}dB <= -28dB)，保单号/车架号字母置信度仅 ${input.asrCharacterConfidenceMin} 且未完成北约字母解释法 (Sierra/Foxtrot) 复诵！已拦截盲目落库并启动 NATO 字母拼读确认或短信通道补录。`,
+    };
+  }
 
+  if (
+    input.tandemTranscodingHopCount >= 2 &&
+    !input.trfoOrCodecPassthroughNegotiated
+  ) {
+    return {
+      policyCode: "P84-PSTN-AMR-WB-G711-TRANSCODING-TANDEM-FREE-AND-FRICATIVE-GAIN-GUARD",
+      callId: input.callId,
+      alphanumericCodeSafeToCommit: false,
+      allowed: false,
+      reason: "DESTRUCTIVE_TANDEM_TRANSCODING_CHAIN_WITHOUT_TRFO_PASSTHROUGH",
+      actionCode: "RENEGOTIATE_SDP_CODEC_PASSTHROUGH_AND_APPLY_SPECTRAL_BAND_EXTENSION",
+      summaryZh: `【P84 运营商级联多次转码 (AMR-WB->G.711->Opus) 检测与 TrFO 免转码直通护栏 (DESTRUCTIVE_TANDEM_TRANSCODING_CHAIN_WITHOUT_TRFO_PASSTHROUGH)】通话 ${input.callId} 检出 ${input.tandemTranscodingHopCount} 跳有损级联转码且未协商 3GPP TrFO 编解码直通，已触发 SDP 宽带直通重协商并激活高频频带扩展补偿！`,
+    };
+  }
+
+  return {
+    policyCode: "P84-PSTN-AMR-WB-G711-TRANSCODING-TANDEM-FREE-AND-FRICATIVE-GAIN-GUARD",
+    callId: input.callId,
+    alphanumericCodeSafeToCommit: true,
+    allowed: true,
+    reason: "WIDEBAND_SPECTRUM_OR_PHONETIC_READBACK_VERIFIED",
+    actionCode: "COMMIT_VERIFIED_ALPHANUMERIC_IDENTIFIER",
+    summaryZh: `【P84 宽带频谱或北约字母解释法复诵核验通过】通话 ${input.callId} 频谱完整 (${input.highFrequencyRollOffAbove3400HzDb}dB) 或已完成北约字母复诵，字母数字编号安全落库。`,
+  };
+}
 
 
 

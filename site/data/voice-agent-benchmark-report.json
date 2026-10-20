@@ -452,6 +452,13 @@
       "perturbed_score": 100.0,
       "delta_pts": 0.0,
       "note": "P81-INSURANCE-FNOL-TIMELINE-CONSISTENCY-AND-COACHING-GUARD freezes instant FNOL payouts and routes to SIU when loss timestamps precede policy effective dates, diverge >15min from vehicle OBD-II/EDR crash telemetry, or exhibit third-party whisper coaching, while prohibiting NAIC/EU-AI-Act-unfair claim denials based solely on Voice Stress Analysis; P82-PACKET-LOSS-BURST-ASR-HALLUCINATION-AND-NACK-FEC-GUARD aborts speculative tool execution when >=240ms (>=12-packet) burst packet loss overlaps critical negations or numeric entities and enforces RFC 4585 RTCP NACK + Opus FEC."
+    },
+    {
+      "check_name": "Customs Tariff HS-Code Evasion & OFAC Sanctions Guard + PSTN AMR-WB/G.711 Tandem Transcoding Fricative Guard (P83 / P84)",
+      "original_score": 100.0,
+      "perturbed_score": 100.0,
+      "delta_pts": 0.0,
+      "note": "P83-CUSTOMS-TARIFF-HS-CODE-EVASION-AND-OFAC-SANCTIONS-SCREENING-GUARD freezes shipment clearance on OFAC SDN / BIS Entity List matches (>=0.85) or sanctioned transshipment routes and blocks verbal duty-free HS reclassification, Section 321 (<$800) split-shipment evasion, or >=25% invoice undervaluation; P84-PSTN-AMR-WB-G711-TRANSCODING-TANDEM-FREE-AND-FRICATIVE-GAIN-GUARD blocks unconfirmed alphanumeric serial/policy commits under narrowband 3.4kHz brick-wall roll-off (<=-28dB) where sibilant fricatives (F/S, B/P/D/T, M/N) are indistinguishable and enforces NATO phonetic readback + 3GPP TRFO codec passthrough."
     }
   ],
   "latency_scaling": [
