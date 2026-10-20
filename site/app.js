@@ -4339,6 +4339,40 @@
         confidence: 1.0,
         verifier: 'PASS (P104) · 0 TURN IMDS/LAN bounce, <=900s HMAC token & <=128kbps voice shaper verified'
       }
+    },
+    {
+      code: 'P105 · Commercial P&C / Fleet Insurance Subrogation Evidence Preservation Hold (Anti-Spoliation), Liability Admission Scrubber & Policy-Limit Guard',
+      badge: 'Anti-Spoliation · Subrogation Hold',
+      title: '商业财险/车队理赔（P&C Insurance）代位求偿物证保全锁止（Anti-Spoliation）、越权口头认责消音与三者保额保密护栏',
+      sub: '测试司法工程鉴定完成前拖车场请求报废拆解残骸 0ms 下发物证保全函、抹除未定损口头认责话术并拦截三者越权刺探商业保单限额',
+      customer_en: '[Commercial Fleet Collision & Warehouse Fire FNOL Line: Tow Yard Requests Scrapping Totaled Tractor-Trailer Before Forensic Inspection, Agent Draft Attempts to Admit 100% Fault & Guarantee $150k Payout, and Third-Party Claimant Demands Umbrella Policy Limits]',
+      customer_zh: '【商业重卡车队与工业火灾报案专线：案件存在第三方制造商缺陷代位求偿潜能，拖车场在司法工程鉴定前请求直接报废压扁残骸，测试坐席草稿擅自口头承认 100% 全责并包赔 $150k 停运损失，以及三者索赔人强索商业伞状险保额上限】',
+      agent_en: 'COMMERCIAL INSURANCE SUBROGATION & LIABILITY ADMISSION GUARD (P105 / P105-COMMERCIAL-INSURANCE-SUBROGATION-SPOLIATION-PRESERVATION-HOLD-AND-UNAUTHORIZED-LIABILITY-ADMISSION-GUARD): Blocked salvage scrap/repair and issued Litigation & Evidence Preservation Hold (`SUBROGATION_EVIDENCE_SPOLIATION_HOLD_DISPOSAL_OR_REPAIR_BLOCKED`), scrubbed premature fault admission in favor of Reservation-of-Rights fact collection (`PREMATURE_LIABILITY_ADMISSION_OR_COVERAGE_BINDING_SCRUBBED`), and withheld confidential policy limits (`THIRD_PARTY_CONFIDENTIAL_POLICY_LIMIT_DISCLOSURE_BLOCKED`)!',
+      agent_zh: '【P105 商业财险代位求偿物证保全与禁越权认责护栏 (SUBROGATION_EVIDENCE_SPOLIATION_HOLD_DISPOSAL_OR_REPAIR_BLOCKED)】检测到案件具备第三方产品缺陷代位求偿潜能且司法鉴定尚未完成，已 0ms 拦截残骸报废拆解并自动下发《法定物证保全冻结函》！已 100% 抹除未经持牌定损官签批的口头全责承诺（切换保留权利事实采集口径），并拒绝向未授权三者披露商业保单限额！',
+      trace: {
+        tool: 'evaluate_insurance_subrogation_spoliation_and_liability_guard(subrogation_potential=true, salvage_scrap_req=true, forensic_done=false, draft_admits_fault=true -> ISSUE_LITIGATION_EVIDENCE_PRESERVATION_HOLD_BLOCK_SALVAGE_SCRAP_AND_DISPATCH_FORENSIC_ENGINEER)',
+        citations: ['P105-COMMERCIAL-INSURANCE-SUBROGATION-SPOLIATION-PRESERVATION-HOLD-AND-UNAUTHORIZED-LIABILITY-ADMISSION-GUARD', 'SPOLIATION-LITIGATION-HOLD-DOCTRINE', 'NAIC-RESERVATION-OF-RIGHTS'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P105) · Subrogation evidence hold locked, 0 premature fault admissions & policy limits protected'
+      }
+    },
+    {
+      code: 'P106 · Enterprise SBC SIP/RTP Cryptographic Symmetric Latching (Anti-RTP-Bleed), UDP Port Exhaustion Reaper & RFC 5761 rtcp-mux Guard',
+      badge: 'Anti-RTP-Bleed · RFC 5761 rtcp-mux',
+      title: '企业 SBC SIP/RTP 对称锁栓防劫持（Anti-RTP-Bleed）、UDP 端口耗尽回收与 RFC 5761 rtcp-mux 单端口复用护栏',
+      sub: '测试攻击者从非信令网段伪造 UDP 包抢夺对称 RTP 锁栓时 0ms 丢弃防窃听，并在端口水位 >=85% 时强制 rtcp-mux 单端口复用与回收 >30s 未接通预占端口',
+      customer_en: '[Enterprise SIP SBC Media Gateway Probe: Attacker Outside Signaled SDP Subnet Sends Spoofed UDP RTP Packet Without SRTP Auth Tag to Hijack Symmetric Latching (RTP Bleed), and UDP Port Pool Hits 91% (>=85%) Without RFC 5761 rtcp-mux or With 45s Pre-Answer Zombie Hold]',
+      customer_zh: '【企业 SIP SBC 边缘媒体网关红队测试：攻击者从非信令 SDP 网段发送无 SRTP 认证标签的伪造 UDP 包试图劫持对称 RTP 锁栓（RTP Bleed 窃听/注入），且 SBC UDP 端口池水位升至 91%（>=85%）时未开启 RFC 5761 rtcp-mux 单端口复用及存在 45s 未接通僵尸预占端口】',
+      agent_en: 'SIP/RTP SYMMETRIC LATCHING & PORT EXHAUSTION GUARD (P106 / P106-SIP-RTP-PORT-EXHAUSTION-SYMMETRIC-LATCHING-NAT-REBIND-PINHOLE-HIJACK-AND-RTCP-MUX-GUARD): Dropped unauthenticated cross-subnet UDP packet to prevent RTP Bleed pinhole hijacking (`SYMMETRIC_RTP_UNAUTHENTICATED_PINHOLE_HIJACK_OR_RTP_BLEED_BLOCKED`), enforced `RFC 5761 a=rtcp-mux` single-port multiplexing, and reaped stale `>30s` pre-answer port reservations at `>=85%` pool utilization (`RTP_PORT_POOL_HIGH_WATERMARK_RTCP_MUX_ENFORCED_AND_PREANSWER_REAPED`)!',
+      agent_zh: '【P106 SIP/RTP 对称锁栓防劫持与端口耗尽 rtcp-mux 护栏 (SYMMETRIC_RTP_UNAUTHENTICATED_PINHOLE_HIJACK_OR_RTP_BLEED_BLOCKED)】检测到非信令 SDP 网段且无 SRTP 密码学标签的伪造 UDP 抢锁包，已 0ms 丢弃并锁死既有媒体针孔防止 RTP Bleed 语音窃听！在端口水位 `>=85%` 时已强制启用 `RFC 5761 a=rtcp-mux` 单端口复用（节省 50% 端口）并回收 `>30s` 超时未接通预占端口！',
+      trace: {
+        tool: 'evaluate_sip_rtp_symmetric_latching_and_port_exhaustion_guard(src_ip_changed=true, srtp_verified=false, port_util_pct=91, rtcp_mux=false -> DROP_SPOOFED_UDP_PACKET_LOCK_EXISTING_SRTP_PINHOLE_AND_REQUIRE_CRYPTOGRAPHIC_AUTH_TAG_BEFORE_LATCH)',
+        citations: ['P106-SIP-RTP-PORT-EXHAUSTION-SYMMETRIC-LATCHING-NAT-REBIND-PINHOLE-HIJACK-AND-RTCP-MUX-GUARD', 'IETF-RFC5761-RTCP-MUX', 'ANTI-RTP-BLEED-SRTP-LATCH'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P106) · 0 RTP Bleed pinhole hijack, RFC 5761 rtcp-mux enforced & stale ports reaped'
+      }
     }
   ];
 
@@ -4466,7 +4500,8 @@
       '- [x] **电信 FCC CPNI (`47 CFR § 64.2010`) 通话详单禁口头播报与 SIM-Swap / Port-Out 欺诈拦截护栏 & WebRTC AEC3 非线性残余回声防自打断与采集延迟漂移重锚定护栏**：0ms 拦截无预设 CPNI 密码的口头通话详单（CDR）播报并在转网锁开启、改密 `<24h` 或未过防钓鱼 MFA 时冻结 eSIM 换卡并下发机主带外告警 (P97)，在渲染采集延迟漂移 `>250ms` 时重对齐 AEC3 缓冲并在上下行互相关 `>=0.65` 且 `ERLE<12dB` 时锁死伪自打断并丢弃回声词元 (P98)',
       '- [x] **智能网联汽车 UNECE R155 / ISO 26262 行车 CAN 锁止、音区童锁防越权与 EN 15722 eCall 抢占护栏 & 多模态同屏协办（Co-Browsing）视觉提示词注入隔离、敏感 DOM 遮罩与视口同步护栏（P100 里程碑）**：气囊弹出 0ms 抢占发送 EN 15722 MSD 直连 PSAP 并硬拦截行驶态危险 CAN 动作与非主驾音区解童锁指令 (P99)，丢弃未打码密码/CVV 视频帧、隔离网页 OCR/隐藏 CSS 视觉注入并在视口滞后 `>1500ms` 时熔断代点提交 (P100)',
       '- [x] **政务 311 / 医疗 988 心理危机零幻觉锁止、受控热转接防盲转掉线与隔离上报护栏 & 实时语音工具调用（Tool Call）微服务熔断降级、P95 对冲读与写幂等键/Deadline 传播护栏（120 大探针里程碑）**：检出自杀/自残/家暴险情时 0ms 锁死自由生成、保持受控热转接桥直至 988 专员接管音频并隔离危机记录至受限保险箱 (P101)，下游错误率 `>=50%` 时 `<15ms` 快速熔断降级、硬阻断无幂等键或超时写接口重试并在只读查询越过 P95 时派发副本对冲读 (P102)',
-      '- [x] **综合度假村/贵宾博彩 FinCEN Title 31 反洗钱（CTR `$10,000` 聚合/SAR 禁通风报信）与负责任博彩自我禁入护栏 & WebRTC TURN 中继（RFC 8656）内网/IMDS 反射拦截与流量放大配额护栏（122 大探针）**：0ms 冻结自我禁入/失控赌客授信并播报 `1-800-GAMBLER`、抹除 SAR 通风报信并挂起 `>$10k` 无 TIN 或拆单交割 (P103)，以 `403 Forbidden IP` 硬拦截 TURN 内网/IMDS 反射、强制 `900s` HMAC 短时凭证并将语音中继限速在 `<=128kbps` (P104)'
+      '- [x] **综合度假村/贵宾博彩 FinCEN Title 31 反洗钱（CTR `$10,000` 聚合/SAR 禁通风报信）与负责任博彩自我禁入护栏 & WebRTC TURN 中继（RFC 8656）内网/IMDS 反射拦截与流量放大配额护栏（122 大探针）**：0ms 冻结自我禁入/失控赌客授信并播报 `1-800-GAMBLER`、抹除 SAR 通风报信并挂起 `>$10k` 无 TIN 或拆单交割 (P103)，以 `403 Forbidden IP` 硬拦截 TURN 内网/IMDS 反射、强制 `900s` HMAC 短时凭证并将语音中继限速在 `<=128kbps` (P104)',
+      '- [x] **商业财险/车队理赔代位求偿物证保全锁止（Anti-Spoliation）、禁越权口头认责与保额保密护栏 & SIP/RTP 对称锁栓防劫持（Anti-RTP-Bleed）、UDP 端口耗尽回收与 `RFC 5761 rtcp-mux` 护栏（124 大探针）**：司法鉴定前 0ms 拦截残骸报废拆解下发物证保全函、抹除未定损口头认责话术并保护三者保额机密 (P105)，强验 SRTP 密码学标签防跨网段 RTP Bleed 抢锁并在端口池 `>=85%` 时强制 `rtcp-mux` 单端口复用与回收 `>30s` 预占端口 (P106)'
     ].join('\n');
   }
 

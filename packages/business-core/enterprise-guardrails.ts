@@ -8998,6 +8998,186 @@ export function evaluateWebRtcTurnRelayAmplificationDosAndChannelBindSubnetGuard
   };
 }
 
+export interface StilleInsuranceSubrogationSpoliationAndLiabilityGuardInput {
+  claimId: string;
+  lossLineOfBusiness: "COMMERCIAL_FLEET_AUTO" | "INDUSTRIAL_PROPERTY_FIRE" | "PRODUCT_LIABILITY" | "GENERAL_CASUALTY";
+  estimatedLossAmountUsd: number;
+  subrogationOrProductDefectPotential: boolean;
+  salvageDisposalScrapOrRepairRequested: boolean;
+  forensicEngineeringInspectionCompleted: boolean;
+  agentDraftAdmitsFaultOrGuaranteesUncappedIndemnity: boolean;
+  licensedAdjusterWrittenLiabilityDeterminationIssued: boolean;
+  thirdPartyClaimantDemandsPolicyLimitsDisclosure: boolean;
+  statutoryRequirementOrInsuredWrittenDisclosureConsent: boolean;
+}
+
+export interface StilleInsuranceSubrogationSpoliationAndLiabilityGuardDecision {
+  allowed: boolean;
+  subrogationPreservationIntact: boolean;
+  salvageDisposalPermitted: boolean;
+  liabilityStatementPermitted: boolean;
+  policyLimitDisclosurePermitted: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P105-COMMERCIAL-INSURANCE-SUBROGATION-SPOLIATION-PRESERVATION-HOLD-AND-UNAUTHORIZED-LIABILITY-ADMISSION-GUARD";
+}
+
+export function evaluateInsuranceSubrogationSpoliationHoldAndLiabilityAdmissionGuard(
+  input: StilleInsuranceSubrogationSpoliationAndLiabilityGuardInput
+): StilleInsuranceSubrogationSpoliationAndLiabilityGuardDecision {
+  if (
+    input.subrogationOrProductDefectPotential &&
+    input.salvageDisposalScrapOrRepairRequested &&
+    !input.forensicEngineeringInspectionCompleted
+  ) {
+    return {
+      allowed: false,
+      subrogationPreservationIntact: false,
+      salvageDisposalPermitted: false,
+      liabilityStatementPermitted: false,
+      policyLimitDisclosurePermitted: false,
+      reason:
+        "SUBROGATION_EVIDENCE_SPOLIATION_HOLD_DISPOSAL_OR_REPAIR_BLOCKED",
+      actionCode:
+        "ISSUE_LITIGATION_EVIDENCE_PRESERVATION_HOLD_BLOCK_SALVAGE_SCRAP_AND_DISPATCH_FORENSIC_ENGINEER",
+      policyCode:
+        "P105-COMMERCIAL-INSURANCE-SUBROGATION-SPOLIATION-PRESERVATION-HOLD-AND-UNAUTHORIZED-LIABILITY-ADMISSION-GUARD",
+    };
+  }
+
+  if (
+    input.agentDraftAdmitsFaultOrGuaranteesUncappedIndemnity &&
+    !input.licensedAdjusterWrittenLiabilityDeterminationIssued
+  ) {
+    return {
+      allowed: false,
+      subrogationPreservationIntact: true,
+      salvageDisposalPermitted: false,
+      liabilityStatementPermitted: false,
+      policyLimitDisclosurePermitted: false,
+      reason:
+        "PREMATURE_LIABILITY_ADMISSION_OR_COVERAGE_BINDING_SCRUBBED",
+      actionCode:
+        "SCRUB_FAULT_ADMISSION_REPLACE_WITH_RESERVATION_OF_RIGHTS_FACT_COLLECTION_AND_ESCALATE_TO_ADJUSTER",
+      policyCode:
+        "P105-COMMERCIAL-INSURANCE-SUBROGATION-SPOLIATION-PRESERVATION-HOLD-AND-UNAUTHORIZED-LIABILITY-ADMISSION-GUARD",
+    };
+  }
+
+  if (
+    input.thirdPartyClaimantDemandsPolicyLimitsDisclosure &&
+    !input.statutoryRequirementOrInsuredWrittenDisclosureConsent
+  ) {
+    return {
+      allowed: false,
+      subrogationPreservationIntact: true,
+      salvageDisposalPermitted: !input.salvageDisposalScrapOrRepairRequested,
+      liabilityStatementPermitted: true,
+      policyLimitDisclosurePermitted: false,
+      reason:
+        "THIRD_PARTY_CONFIDENTIAL_POLICY_LIMIT_DISCLOSURE_BLOCKED",
+      actionCode:
+        "WITHHOLD_POLICY_LIMITS_DISCLOSURE_AND_ROUTE_TO_COMPLEX_CASUALTY_COUNSEL_DESK",
+      policyCode:
+        "P105-COMMERCIAL-INSURANCE-SUBROGATION-SPOLIATION-PRESERVATION-HOLD-AND-UNAUTHORIZED-LIABILITY-ADMISSION-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    subrogationPreservationIntact: true,
+    salvageDisposalPermitted: true,
+    liabilityStatementPermitted: true,
+    policyLimitDisclosurePermitted: true,
+    reason:
+      "SUBROGATION_CHAIN_OF_CUSTODY_AND_RESERVATION_OF_RIGHTS_COMPLIANT",
+    actionCode:
+      "PERMIT_FNOL_FACT_RECORDING_AND_VERIFIED_SUBROGATION_WORKFLOW",
+    policyCode:
+      "P105-COMMERCIAL-INSURANCE-SUBROGATION-SPOLIATION-PRESERVATION-HOLD-AND-UNAUTHORIZED-LIABILITY-ADMISSION-GUARD",
+  };
+}
+
+export interface StilleSipRtpSymmetricLatchingAndPortExhaustionGuardInput {
+  sessionId: string;
+  inboundRtpSourceAddressChanged: boolean;
+  remotePacketSourceIpMatchesSignaledSdpSubnet: boolean;
+  srtpAuthTagVerifiedBeforeLatchUpdate: boolean;
+  sbcUdpPortPoolUtilizationPercent: number;
+  rtcpMuxRfc5761Negotiated: boolean;
+  callAnswered200Ok: boolean;
+  preAnswerPortReservedDurationMs: number;
+  maxAllowedPreAnswerPortHoldMs: number;
+}
+
+export interface StilleSipRtpSymmetricLatchingAndPortExhaustionGuardDecision {
+  allowed: boolean;
+  mediaPlaneLatchSecure: boolean;
+  portPoolHealthy: boolean;
+  rtcpMuxSinglePortActive: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P106-SIP-RTP-PORT-EXHAUSTION-SYMMETRIC-LATCHING-NAT-REBIND-PINHOLE-HIJACK-AND-RTCP-MUX-GUARD";
+}
+
+export function evaluateSipRtpSymmetricLatchingHijackAndPortExhaustionMuxGuard(
+  input: StilleSipRtpSymmetricLatchingAndPortExhaustionGuardInput
+): StilleSipRtpSymmetricLatchingAndPortExhaustionGuardDecision {
+  if (
+    input.inboundRtpSourceAddressChanged &&
+    !input.remotePacketSourceIpMatchesSignaledSdpSubnet &&
+    !input.srtpAuthTagVerifiedBeforeLatchUpdate
+  ) {
+    return {
+      allowed: false,
+      mediaPlaneLatchSecure: false,
+      portPoolHealthy: input.sbcUdpPortPoolUtilizationPercent < 85,
+      rtcpMuxSinglePortActive: input.rtcpMuxRfc5761Negotiated,
+      reason:
+        "SYMMETRIC_RTP_UNAUTHENTICATED_PINHOLE_HIJACK_OR_RTP_BLEED_BLOCKED",
+      actionCode:
+        "DROP_SPOOFED_UDP_PACKET_LOCK_EXISTING_SRTP_PINHOLE_AND_REQUIRE_CRYPTOGRAPHIC_AUTH_TAG_BEFORE_LATCH",
+      policyCode:
+        "P106-SIP-RTP-PORT-EXHAUSTION-SYMMETRIC-LATCHING-NAT-REBIND-PINHOLE-HIJACK-AND-RTCP-MUX-GUARD",
+    };
+  }
+
+  if (
+    input.sbcUdpPortPoolUtilizationPercent >= 85 &&
+    (!input.rtcpMuxRfc5761Negotiated ||
+      (!input.callAnswered200Ok &&
+        input.preAnswerPortReservedDurationMs >
+          input.maxAllowedPreAnswerPortHoldMs))
+  ) {
+    return {
+      allowed: false,
+      mediaPlaneLatchSecure: true,
+      portPoolHealthy: false,
+      rtcpMuxSinglePortActive: false,
+      reason:
+        "RTP_PORT_POOL_HIGH_WATERMARK_RTCP_MUX_ENFORCED_AND_PREANSWER_REAPED",
+      actionCode:
+        "ENFORCE_RFC5761_RTCP_MUX_SINGLE_PORT_REAP_STALE_PREANSWER_RESERVATIONS_AND_SPILL_TO_SECONDARY_MEDIA_POOL",
+      policyCode:
+        "P106-SIP-RTP-PORT-EXHAUSTION-SYMMETRIC-LATCHING-NAT-REBIND-PINHOLE-HIJACK-AND-RTCP-MUX-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    mediaPlaneLatchSecure: true,
+    portPoolHealthy: true,
+    rtcpMuxSinglePortActive: input.rtcpMuxRfc5761Negotiated,
+    reason:
+      "CRYPTOGRAPHIC_SRTP_LATCH_VERIFIED_AND_RFC5761_RTCP_MUX_PORT_POOL_HEALTHY",
+    actionCode:
+      "PERMIT_AUTHENTICATED_SRTP_MEDIA_FLOW_WITH_SINGLE_PORT_RTCP_MUX",
+    policyCode:
+      "P106-SIP-RTP-PORT-EXHAUSTION-SYMMETRIC-LATCHING-NAT-REBIND-PINHOLE-HIJACK-AND-RTCP-MUX-GUARD",
+  };
+}
+
+
 
 
 
