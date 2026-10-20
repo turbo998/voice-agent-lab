@@ -9728,6 +9728,191 @@ export function evaluateWebRtcIceConsentFreshnessAndZombieTurnReaperGuard(
   };
 }
 
+export interface LaborNlraConcertedActivityAndWhistleblowerGuardInput {
+  sessionId: string;
+  employeeDiscussesWagesOrWorkingConditionsWithCoworkers: boolean;
+  agentDraftEnforcesWageSecrecyOrChillsConcertedActivity: boolean;
+  reportsOshaSafetyHazardOrSox806AccountingWhistleblower: boolean;
+  callerRequestsAnonymity: boolean;
+  voiceprintBiometricOrAniExtractedOrDisclosedToSupervisor: boolean;
+  automatedAdverseSchedulingOrDisciplinaryFlagTriggered: boolean;
+}
+
+export interface LaborNlraConcertedActivityAndWhistleblowerGuardResult {
+  allowed: boolean;
+  nlraSection7Protected: boolean;
+  whistleblowerAnonymityPreserved: boolean;
+  antiRetaliationEnforced: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: string;
+}
+
+export function evaluateLaborNlraConcertedActivityAndWhistleblowerGuard(
+  input: LaborNlraConcertedActivityAndWhistleblowerGuardInput,
+): LaborNlraConcertedActivityAndWhistleblowerGuardResult {
+  if (
+    input.employeeDiscussesWagesOrWorkingConditionsWithCoworkers &&
+    input.agentDraftEnforcesWageSecrecyOrChillsConcertedActivity
+  ) {
+    return {
+      allowed: false,
+      nlraSection7Protected: false,
+      whistleblowerAnonymityPreserved: true,
+      antiRetaliationEnforced: true,
+      reason:
+        "NLRA_SECTION_7_29USC157_PROTECTED_CONCERTED_WAGE_OR_WORKING_CONDITION_DISCUSSION_CHILLED_OR_RESTRICTED",
+      actionCode:
+        "SCRUB_UNLAWFUL_WAGE_SECRECY_DIRECTIVE_AND_AFFIRM_NLRA_SECTION_7_RIGHTS",
+      policyCode:
+        "P113-LABOR-CONCERTED-ACTIVITY-NLRA-SECTION7-WHISTLEBLOWER-OSHA-RETALIATION-AND-SURVEILLANCE-GUARD",
+    };
+  }
+
+  if (
+    input.reportsOshaSafetyHazardOrSox806AccountingWhistleblower &&
+    (input.callerRequestsAnonymity || true) &&
+    input.voiceprintBiometricOrAniExtractedOrDisclosedToSupervisor
+  ) {
+    return {
+      allowed: false,
+      nlraSection7Protected: true,
+      whistleblowerAnonymityPreserved: false,
+      antiRetaliationEnforced: true,
+      reason:
+        "WHISTLEBLOWER_ANONYMITY_BREACH_VOICEPRINT_BIOMETRIC_OR_SUPERVISOR_DISCLOSURE_BLOCKED",
+      actionCode:
+        "STRIP_ANI_AND_VOICEPRINT_METADATA_AND_ROUTE_TO_ZERO_KNOWLEDGE_OMBUDSMAN_VAULT",
+      policyCode:
+        "P113-LABOR-CONCERTED-ACTIVITY-NLRA-SECTION7-WHISTLEBLOWER-OSHA-RETALIATION-AND-SURVEILLANCE-GUARD",
+    };
+  }
+
+  if (
+    (input.reportsOshaSafetyHazardOrSox806AccountingWhistleblower ||
+      input.employeeDiscussesWagesOrWorkingConditionsWithCoworkers) &&
+    input.automatedAdverseSchedulingOrDisciplinaryFlagTriggered
+  ) {
+    return {
+      allowed: false,
+      nlraSection7Protected: true,
+      whistleblowerAnonymityPreserved: true,
+      antiRetaliationEnforced: false,
+      reason:
+        "OSHA_11C_SOX_806_ADVERSE_EMPLOYMENT_RETALIATION_WORKFLOW_BLOCKED",
+      actionCode:
+        "HARD_BLOCK_ADVERSE_HR_FLAG_AND_LOCK_ANTI_RETALIATION_LEGAL_HOLD",
+      policyCode:
+        "P113-LABOR-CONCERTED-ACTIVITY-NLRA-SECTION7-WHISTLEBLOWER-OSHA-RETALIATION-AND-SURVEILLANCE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    nlraSection7Protected: true,
+    whistleblowerAnonymityPreserved: true,
+    antiRetaliationEnforced: true,
+    reason:
+      "LABOR_NLRA_SECTION_7_CONCERTED_ACTIVITY_AND_WHISTLEBLOWER_SAFEGUARD_COMPLIANT",
+    actionCode:
+      "RECORD_PROTECTED_ETHICS_OR_HR_INQUIRY_WITH_ZERO_RETALIATION",
+    policyCode:
+      "P113-LABOR-CONCERTED-ACTIVITY-NLRA-SECTION7-WHISTLEBLOWER-OSHA-RETALIATION-AND-SURVEILLANCE-GUARD",
+  };
+}
+
+export interface SipRfc3261LoopSpiralAndForkingGlareGuardInput {
+  callId: string;
+  maxForwardsHeaderValue: number;
+  viaBranchLoopOrCircularDiversionDetected: boolean;
+  parallelForkedTwoHundredOkCount: number;
+  secondaryWinningLegAckAndByeWithRfc3326Dispatched: boolean;
+  simultaneousReInviteGlare491Detected: boolean;
+  rfc3261OwnerDeterministicBackoffTimerApplied: boolean;
+}
+
+export interface SipRfc3261LoopSpiralAndForkingGlareGuardResult {
+  allowed: boolean;
+  loopFreeRouting: boolean;
+  forkingLegClean: boolean;
+  reinviteGlareResolved: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: string;
+}
+
+export function evaluateSipRfc3261LoopSpiralAndForkingGlareGuard(
+  input: SipRfc3261LoopSpiralAndForkingGlareGuardInput,
+): SipRfc3261LoopSpiralAndForkingGlareGuardResult {
+  if (
+    input.maxForwardsHeaderValue <= 0 ||
+    input.viaBranchLoopOrCircularDiversionDetected
+  ) {
+    return {
+      allowed: false,
+      loopFreeRouting: false,
+      forkingLegClean: true,
+      reinviteGlareResolved: true,
+      reason:
+        "SIP_RFC3261_MAX_FORWARDS_EXHAUSTED_OR_VIA_LOOP_SPIRAL_DETECTED",
+      actionCode:
+        "REJECT_WITH_SIP_482_LOOP_DETECTED_OR_483_TOO_MANY_HOPS_AND_HALT_DIVERSION",
+      policyCode:
+        "P114-SIP-RFC3261-LOOP-MAX-FORWARDS-SPIRAL-DETECTION-AND-FORKING-GLARE-CANCEL-GUARD",
+    };
+  }
+
+  if (
+    input.parallelForkedTwoHundredOkCount > 1 &&
+    !input.secondaryWinningLegAckAndByeWithRfc3326Dispatched
+  ) {
+    return {
+      allowed: false,
+      loopFreeRouting: true,
+      forkingLegClean: false,
+      reinviteGlareResolved: true,
+      reason:
+        "SIP_PARALLEL_FORKING_MULTIPLE_200_OK_ORPHAN_LEG_GLARE_DETECTED",
+      actionCode:
+        "DISPATCH_IMMEDIATE_ACK_AND_BYE_WITH_RFC3326_COMPLETED_ELSEWHERE_ON_SECONDARY_LEG",
+      policyCode:
+        "P114-SIP-RFC3261-LOOP-MAX-FORWARDS-SPIRAL-DETECTION-AND-FORKING-GLARE-CANCEL-GUARD",
+    };
+  }
+
+  if (
+    input.simultaneousReInviteGlare491Detected &&
+    !input.rfc3261OwnerDeterministicBackoffTimerApplied
+  ) {
+    return {
+      allowed: false,
+      loopFreeRouting: true,
+      forkingLegClean: true,
+      reinviteGlareResolved: false,
+      reason:
+        "SIP_RFC3261_491_REINVITE_GLARE_MISSING_DETERMINISTIC_JITTER_BACKOFF",
+      actionCode:
+        "ENFORCE_RFC3261_SECTION_14_2_CALLID_OWNER_JITTER_BACKOFF_TIMER",
+      policyCode:
+        "P114-SIP-RFC3261-LOOP-MAX-FORWARDS-SPIRAL-DETECTION-AND-FORKING-GLARE-CANCEL-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    loopFreeRouting: true,
+    forkingLegClean: true,
+    reinviteGlareResolved: true,
+    reason:
+      "SIP_RFC3261_ROUTING_HOPS_PARALLEL_FORKING_AND_REINVITE_STATE_HEALTHY",
+    actionCode:
+      "CONTINUE_SIP_DIALOG_SIGNALING",
+    policyCode:
+      "P114-SIP-RFC3261-LOOP-MAX-FORWARDS-SPIRAL-DETECTION-AND-FORKING-GLARE-CANCEL-GUARD",
+  };
+}
+
+
 
 
 
