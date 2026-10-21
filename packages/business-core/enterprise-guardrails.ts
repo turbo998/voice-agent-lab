@@ -11252,6 +11252,204 @@ export function evaluateSipRfc3263DnsNaptrSrvTransportDowngradeAndFailoverGuard(
   };
 }
 
+// ============================================================================
+// Stage 68 · P129 Underground Mining MSHA 30 CFR § 50.10 15-Minute Accident
+// Hotline, 30 CFR § 75.323 Methane (>=1.0%) Face De-Energization & § 75.1502
+// Mine Evacuation / SCSR Readback Guard
+// ============================================================================
+export interface MiningMsha30Cfr50ImmediateAccidentMethaneAndEvacuationGuardInput {
+  sessionId: string;
+  mineIdOrSection: string;
+  reportableMineAccidentOrEntrapmentDetected: boolean;
+  msha15MinTollFreeNoticeAndRescueDispatched: boolean;
+  involvesWorkingFaceEquipmentEnergization: boolean;
+  methaneConcentrationPct: number;
+  mainVentilationFanAndMethaneMonitorHealthy: boolean;
+  involvesMineEvacuationOrEscapewayReroute: boolean;
+  scsrRefugeAndUndergroundMinerReadbackVerified: boolean;
+}
+
+export interface MiningMsha30Cfr50ImmediateAccidentMethaneAndEvacuationGuardResult {
+  allowed: boolean;
+  msha15MinAccidentNoticeEnforced: boolean;
+  methaneAndVentilationInterlockSafe: boolean;
+  mineEvacuationAndScsrReadbackVerified: boolean;
+  reason:
+    | "MSHA_30CFR50_10_IMMEDIATE_15MIN_ACCIDENT_OR_ENTRAPMENT_MISSING_MSHA_HOTLINE_AND_RESCUE_DISPATCH"
+    | "MSHA_30CFR75_323_METHANE_EXCEEDS_1PCT_OR_VENTILATION_LOSS_EQUIPMENT_ENERGIZATION_BLOCKED"
+    | "MSHA_30CFR75_1502_EVACUATION_ORDER_MISSING_SCSR_REFUGE_OR_UNDERGROUND_MINER_READBACK"
+    | "MSHA_30CFR50_75_UNDERGROUND_MINE_DISPATCH_METHANE_AND_EVACUATION_COMPLIANT";
+  actionCode: string;
+  policyCode: "P129-MINING-MSHA-30CFR50-10-15MIN-ACCIDENT-HOTLINE-75-323-METHANE-POWER-DEENERGIZATION-AND-75-1502-MINE-EVACUATION-GUARD";
+}
+
+export function evaluateMiningMsha30Cfr50ImmediateAccidentMethaneAndEvacuationGuard(
+  input: MiningMsha30Cfr50ImmediateAccidentMethaneAndEvacuationGuardInput,
+): MiningMsha30Cfr50ImmediateAccidentMethaneAndEvacuationGuardResult {
+  if (
+    input.reportableMineAccidentOrEntrapmentDetected &&
+    !input.msha15MinTollFreeNoticeAndRescueDispatched
+  ) {
+    return {
+      allowed: false,
+      msha15MinAccidentNoticeEnforced: false,
+      methaneAndVentilationInterlockSafe: true,
+      mineEvacuationAndScsrReadbackVerified: true,
+      reason:
+        "MSHA_30CFR50_10_IMMEDIATE_15MIN_ACCIDENT_OR_ENTRAPMENT_MISSING_MSHA_HOTLINE_AND_RESCUE_DISPATCH",
+      actionCode:
+        "PREEMPT_ROUTINE_MINE_DISPATCH_AND_INITIATE_15MIN_MSHA_50_10_HOTLINE_AND_MINE_RESCUE_BRIDGE",
+      policyCode:
+        "P129-MINING-MSHA-30CFR50-10-15MIN-ACCIDENT-HOTLINE-75-323-METHANE-POWER-DEENERGIZATION-AND-75-1502-MINE-EVACUATION-GUARD",
+    };
+  }
+
+  if (
+    input.involvesWorkingFaceEquipmentEnergization &&
+    (input.methaneConcentrationPct >= 1.0 ||
+      !input.mainVentilationFanAndMethaneMonitorHealthy)
+  ) {
+    return {
+      allowed: false,
+      msha15MinAccidentNoticeEnforced: true,
+      methaneAndVentilationInterlockSafe: false,
+      mineEvacuationAndScsrReadbackVerified: true,
+      reason:
+        "MSHA_30CFR75_323_METHANE_EXCEEDS_1PCT_OR_VENTILATION_LOSS_EQUIPMENT_ENERGIZATION_BLOCKED",
+      actionCode:
+        "TRIP_SECTION_FEEDER_BREAKER_LOCK_OUT_FACE_MACHINERY_AND_ENFORCE_VENTILATION_SWEEP",
+      policyCode:
+        "P129-MINING-MSHA-30CFR50-10-15MIN-ACCIDENT-HOTLINE-75-323-METHANE-POWER-DEENERGIZATION-AND-75-1502-MINE-EVACUATION-GUARD",
+    };
+  }
+
+  if (
+    input.involvesMineEvacuationOrEscapewayReroute &&
+    !input.scsrRefugeAndUndergroundMinerReadbackVerified
+  ) {
+    return {
+      allowed: false,
+      msha15MinAccidentNoticeEnforced: true,
+      methaneAndVentilationInterlockSafe: true,
+      mineEvacuationAndScsrReadbackVerified: false,
+      reason:
+        "MSHA_30CFR75_1502_EVACUATION_ORDER_MISSING_SCSR_REFUGE_OR_UNDERGROUND_MINER_READBACK",
+      actionCode:
+        "ACTIVATE_THROUGH_THE_EARTH_PED_EVACUATION_ALARM_AND_REQUIRE_SCSR_LIFELINE_CONFIRMATION",
+      policyCode:
+        "P129-MINING-MSHA-30CFR50-10-15MIN-ACCIDENT-HOTLINE-75-323-METHANE-POWER-DEENERGIZATION-AND-75-1502-MINE-EVACUATION-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    msha15MinAccidentNoticeEnforced: true,
+    methaneAndVentilationInterlockSafe: true,
+    mineEvacuationAndScsrReadbackVerified: true,
+    reason:
+      "MSHA_30CFR50_75_UNDERGROUND_MINE_DISPATCH_METHANE_AND_EVACUATION_COMPLIANT",
+    actionCode: "ALLOW_VERIFIED_UNDERGROUND_MINE_OPERATIONS_COMMAND",
+    policyCode:
+      "P129-MINING-MSHA-30CFR50-10-15MIN-ACCIDENT-HOTLINE-75-323-METHANE-POWER-DEENERGIZATION-AND-75-1502-MINE-EVACUATION-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 68 · P130 WebRTC / RTP RFC 5109 ULPFEC Unequal Level Protection Header
+// Length Overflow, L-Bit 16/48-Bit Mask Desync & XOR Reconstruction Guard
+// ============================================================================
+export interface WebrtcRtpRfc5109UlpfecProtectionLengthAndMaskGuardInput {
+  sessionId: string;
+  declaredProtectionLengthBytes: number;
+  availableFecPayloadBytes: number;
+  lBitMaskLengthConsistentWithPacketSize: boolean;
+  snBaseDistanceFromMediaWindow: number;
+  ssrcAndRocWindowAligned: boolean;
+  reconstructedRtpHeaderAndPayloadTypeValid: boolean;
+}
+
+export interface WebrtcRtpRfc5109UlpfecProtectionLengthAndMaskGuardResult {
+  allowed: boolean;
+  rfc5109ProtectionLengthAndMaskBoundsValid: boolean;
+  rfc5109SnBaseAndRocWindowAligned: boolean;
+  rfc5109XorReconstructedPacketSafe: boolean;
+  reason:
+    | "RFC5109_ULPFEC_PROTECTION_LENGTH_EXCEEDS_PAYLOAD_OR_LBIT_MASK_OOB_BLOCKED"
+    | "RFC5109_ULPFEC_SN_BASE_OUTSIDE_48_PACKET_MASK_WINDOW_OR_SSRC_ROC_DESYNC_BLOCKED"
+    | "RFC5109_ULPFEC_XOR_RECONSTRUCTED_PACKET_INVALID_RTP_HEADER_OR_PT_POISONED"
+    | "WEBRTC_RTP_RFC5109_ULPFEC_PARITY_AND_XOR_RECOVERY_HEALTHY";
+  actionCode: string;
+  policyCode: "P130-WEBRTC-RTP-RFC5109-ULPFEC-UNEQUAL-LEVEL-PROTECTION-HEADER-LENGTH-OVERFLOW-AND-L0-L1-MASK-DESYNC-GUARD";
+}
+
+export function evaluateWebrtcRtpRfc5109UlpfecProtectionLengthAndMaskGuard(
+  input: WebrtcRtpRfc5109UlpfecProtectionLengthAndMaskGuardInput,
+): WebrtcRtpRfc5109UlpfecProtectionLengthAndMaskGuardResult {
+  if (
+    input.declaredProtectionLengthBytes <= 0 ||
+    input.declaredProtectionLengthBytes > input.availableFecPayloadBytes ||
+    !input.lBitMaskLengthConsistentWithPacketSize
+  ) {
+    return {
+      allowed: false,
+      rfc5109ProtectionLengthAndMaskBoundsValid: false,
+      rfc5109SnBaseAndRocWindowAligned: true,
+      rfc5109XorReconstructedPacketSafe: true,
+      reason:
+        "RFC5109_ULPFEC_PROTECTION_LENGTH_EXCEEDS_PAYLOAD_OR_LBIT_MASK_OOB_BLOCKED",
+      actionCode:
+        "DROP_MALFORMED_RFC5109_ULPFEC_PACKET_AND_PROTECT_FEC_RECONSTRUCTION_BUFFER",
+      policyCode:
+        "P130-WEBRTC-RTP-RFC5109-ULPFEC-UNEQUAL-LEVEL-PROTECTION-HEADER-LENGTH-OVERFLOW-AND-L0-L1-MASK-DESYNC-GUARD",
+    };
+  }
+
+  if (
+    input.snBaseDistanceFromMediaWindow < 0 ||
+    input.snBaseDistanceFromMediaWindow > 48 ||
+    !input.ssrcAndRocWindowAligned
+  ) {
+    return {
+      allowed: false,
+      rfc5109ProtectionLengthAndMaskBoundsValid: true,
+      rfc5109SnBaseAndRocWindowAligned: false,
+      rfc5109XorReconstructedPacketSafe: true,
+      reason:
+        "RFC5109_ULPFEC_SN_BASE_OUTSIDE_48_PACKET_MASK_WINDOW_OR_SSRC_ROC_DESYNC_BLOCKED",
+      actionCode:
+        "DISCARD_OUT_OF_WINDOW_ULPFEC_PARITY_FRAME_AND_FALLBACK_TO_OPUS_INBAND_FEC",
+      policyCode:
+        "P130-WEBRTC-RTP-RFC5109-ULPFEC-UNEQUAL-LEVEL-PROTECTION-HEADER-LENGTH-OVERFLOW-AND-L0-L1-MASK-DESYNC-GUARD",
+    };
+  }
+
+  if (!input.reconstructedRtpHeaderAndPayloadTypeValid) {
+    return {
+      allowed: false,
+      rfc5109ProtectionLengthAndMaskBoundsValid: true,
+      rfc5109SnBaseAndRocWindowAligned: true,
+      rfc5109XorReconstructedPacketSafe: false,
+      reason:
+        "RFC5109_ULPFEC_XOR_RECONSTRUCTED_PACKET_INVALID_RTP_HEADER_OR_PT_POISONED",
+      actionCode: "QUARANTINE_CORRUPTED_XOR_RECOVERED_RTP_FRAME_AND_TRIGGER_PLC",
+      policyCode:
+        "P130-WEBRTC-RTP-RFC5109-ULPFEC-UNEQUAL-LEVEL-PROTECTION-HEADER-LENGTH-OVERFLOW-AND-L0-L1-MASK-DESYNC-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc5109ProtectionLengthAndMaskBoundsValid: true,
+    rfc5109SnBaseAndRocWindowAligned: true,
+    rfc5109XorReconstructedPacketSafe: true,
+    reason: "WEBRTC_RTP_RFC5109_ULPFEC_PARITY_AND_XOR_RECOVERY_HEALTHY",
+    actionCode: "COMMIT_VERIFIED_RFC5109_ULPFEC_RECOVERED_AUDIO_PACKET",
+    policyCode:
+      "P130-WEBRTC-RTP-RFC5109-ULPFEC-UNEQUAL-LEVEL-PROTECTION-HEADER-LENGTH-OVERFLOW-AND-L0-L1-MASK-DESYNC-GUARD",
+  };
+}
+
+
 
 
 
