@@ -12244,6 +12244,201 @@ export function evaluateWebrtcRtpRfc3550Rfc3611RtcpXrReportBlockAndRttWrapGuard(
   };
 }
 
+// ============================================================================
+// Stage 73 · P139 Semiconductor Fab Cleanroom SEMI S2 / S6 & NFPA 318 Toxic /
+// Pyrophoric Hydride Gas (SiH4 / AsH3 / PH3 / WF6 / HF) TGMS TLV/IDLH
+// Evacuation Preemption, Exhaust Scrubber Static Pressure Interlock & HF
+// Calcium Gluconate Emergency Medical Guard
+// ============================================================================
+export interface SemiconductorFabSemiS2S6ToxicGasTgmsAndExhaustGuardInput {
+  fabBayId: string;
+  gasType: "SIH4_SILANE" | "ASH3_ARSINE" | "PH3_PHOSPHINE" | "HF_VAPOR" | "N2_INERT";
+  tgmsConcentrationRatioToTlv: number;
+  pyrophoricUvIrFlameOrSmokeDetected: boolean;
+  exhaustScrubberHealthy: boolean;
+  gasCabinetNegativePressurePa: number;
+  requestsProcessGasMfcOpenOrInterlockBypass: boolean;
+  hfAcidDermalOrOcularSplashReported: boolean;
+}
+
+export interface SemiconductorFabSemiS2S6ToxicGasTgmsAndExhaustGuardResult {
+  allowed: boolean;
+  tgmsHighAlarmEsovAndEvacuationEnforced: boolean;
+  semiS6ExhaustScrubberInterlockVerified: boolean;
+  hfAcidCalciumGluconateProtocolSafe: boolean;
+  reason:
+    | "SEMI_S2_NFPA318_TGMS_TOXIC_OR_PYROPHORIC_GAS_LEAK_IDLH_ESOV_SHUTOFF_AND_FAB_EVACUATION_PREEMPTED"
+    | "SEMI_S6_SUBFAB_SCRUBBER_EXHAUST_PRESSURE_LOSS_PROCESS_GAS_MFC_OR_INTERLOCK_BYPASS_BLOCKED"
+    | "SEMI_S2_HYDROFLUORIC_ACID_SPLASH_15MIN_FLUSH_AND_CALCIUM_GLUCONATE_ERT_MANDATED"
+    | "SEMICONDUCTOR_FAB_SEMI_S2_S6_NFPA318_CLEANROOM_OPERATION_SAFE";
+  actionCode: string;
+  policyCode: "P139-SEMICONDUCTOR-FAB-SEMI-S2-S6-NFPA318-TOXIC-PYROPHORIC-GAS-SIH4-ASH3-HF-TGMS-IDLH-EVACUATION-EXHAUST-SCRUBBER-INTERLOCK-AND-FOUP-ABORT-GUARD";
+}
+
+export function evaluateSemiconductorFabSemiS2S6ToxicGasTgmsAndExhaustGuard(
+  input: SemiconductorFabSemiS2S6ToxicGasTgmsAndExhaustGuardInput,
+): SemiconductorFabSemiS2S6ToxicGasTgmsAndExhaustGuardResult {
+  if (
+    input.pyrophoricUvIrFlameOrSmokeDetected ||
+    (input.gasType !== "N2_INERT" && input.tgmsConcentrationRatioToTlv >= 1.0)
+  ) {
+    return {
+      allowed: false,
+      tgmsHighAlarmEsovAndEvacuationEnforced: false,
+      semiS6ExhaustScrubberInterlockVerified: true,
+      hfAcidCalciumGluconateProtocolSafe: true,
+      reason:
+        "SEMI_S2_NFPA318_TGMS_TOXIC_OR_PYROPHORIC_GAS_LEAK_IDLH_ESOV_SHUTOFF_AND_FAB_EVACUATION_PREEMPTED",
+      actionCode:
+        "CLOSE_CYLINDER_ESOV_ABORT_FOUP_TOOL_AND_EVACUATE_CLEANROOM_BAY_WITH_ERT_HAZMAT",
+      policyCode:
+        "P139-SEMICONDUCTOR-FAB-SEMI-S2-S6-NFPA318-TOXIC-PYROPHORIC-GAS-SIH4-ASH3-HF-TGMS-IDLH-EVACUATION-EXHAUST-SCRUBBER-INTERLOCK-AND-FOUP-ABORT-GUARD",
+    };
+  }
+
+  if (
+    (!input.exhaustScrubberHealthy || input.gasCabinetNegativePressurePa < 60) &&
+    input.requestsProcessGasMfcOpenOrInterlockBypass
+  ) {
+    return {
+      allowed: false,
+      tgmsHighAlarmEsovAndEvacuationEnforced: true,
+      semiS6ExhaustScrubberInterlockVerified: false,
+      hfAcidCalciumGluconateProtocolSafe: true,
+      reason:
+        "SEMI_S6_SUBFAB_SCRUBBER_EXHAUST_PRESSURE_LOSS_PROCESS_GAS_MFC_OR_INTERLOCK_BYPASS_BLOCKED",
+      actionCode:
+        "HARD_LOCK_PROCESS_GAS_MFC_AND_TRIGGER_INERT_N2_MANIFOLD_PURGE_ON_EXHAUST_LOSS",
+      policyCode:
+        "P139-SEMICONDUCTOR-FAB-SEMI-S2-S6-NFPA318-TOXIC-PYROPHORIC-GAS-SIH4-ASH3-HF-TGMS-IDLH-EVACUATION-EXHAUST-SCRUBBER-INTERLOCK-AND-FOUP-ABORT-GUARD",
+    };
+  }
+
+  if (input.hfAcidDermalOrOcularSplashReported) {
+    return {
+      allowed: false,
+      tgmsHighAlarmEsovAndEvacuationEnforced: true,
+      semiS6ExhaustScrubberInterlockVerified: true,
+      hfAcidCalciumGluconateProtocolSafe: false,
+      reason:
+        "SEMI_S2_HYDROFLUORIC_ACID_SPLASH_15MIN_FLUSH_AND_CALCIUM_GLUCONATE_ERT_MANDATED",
+      actionCode:
+        "MANDATE_15MIN_SAFETY_SHOWER_2_5PCT_CALCIUM_GLUCONATE_GEL_AND_EMS_DISPATCH",
+      policyCode:
+        "P139-SEMICONDUCTOR-FAB-SEMI-S2-S6-NFPA318-TOXIC-PYROPHORIC-GAS-SIH4-ASH3-HF-TGMS-IDLH-EVACUATION-EXHAUST-SCRUBBER-INTERLOCK-AND-FOUP-ABORT-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    tgmsHighAlarmEsovAndEvacuationEnforced: true,
+    semiS6ExhaustScrubberInterlockVerified: true,
+    hfAcidCalciumGluconateProtocolSafe: true,
+    reason: "SEMICONDUCTOR_FAB_SEMI_S2_S6_NFPA318_CLEANROOM_OPERATION_SAFE",
+    actionCode: "ALLOW_VERIFIED_SEMICONDUCTOR_CLEANROOM_PROCESS_STEP",
+    policyCode:
+      "P139-SEMICONDUCTOR-FAB-SEMI-S2-S6-NFPA318-TOXIC-PYROPHORIC-GAS-SIH4-ASH3-HF-TGMS-IDLH-EVACUATION-EXHAUST-SCRUBBER-INTERLOCK-AND-FOUP-ABORT-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 73 · P140 SIP / WebRTC RFC 8224 / RFC 8225 / RFC 8226 STIR/SHAKEN
+// PASSporT x5u Certificate SSRF / Untrusted STI-CA Block, iat Freshness Replay
+// Window, orig/dest TN Mismatch & A/B/C Attestation Step-Up Guard
+// ============================================================================
+export interface StirShakenRfc8224PassportX5uSsrfAndAttestationGuardInput {
+  callId: string;
+  x5uHttpsAndStiCaTrusted: boolean;
+  x5uResolvesToPrivateOrLoopbackIp: boolean;
+  passportIatSkewSeconds: number;
+  origDestTnMatchesSipHeaders: boolean;
+  es256SignatureValid: boolean;
+  shakenAttestationLevel: "A" | "B" | "C";
+  requestsHighRiskAccountActionUsingAniTrust: boolean;
+}
+
+export interface StirShakenRfc8224PassportX5uSsrfAndAttestationGuardResult {
+  allowed: boolean;
+  x5uCertificateFetchSafeAndTrusted: boolean;
+  passportIatAndTnSignatureValid: boolean;
+  attestationLevelSufficientForHighRiskAuth: boolean;
+  reason:
+    | "RFC8224_PASSPORT_X5U_NON_HTTPS_PRIVATE_IP_SSRF_OR_UNTRUSTED_STI_CA_BLOCKED_436"
+    | "RFC8224_RFC8225_PASSPORT_IAT_STALE_REPLAY_TN_MISMATCH_OR_ES256_SIGNATURE_INVALID_438"
+    | "SHAKEN_PARTIAL_B_OR_GATEWAY_C_ATTESTATION_INSUFFICIENT_FOR_ANI_HIGH_RISK_AUTH"
+    | "SIP_RFC8224_RFC8225_STIR_SHAKEN_PASSPORT_IDENTITY_VERIFIED";
+  actionCode: string;
+  policyCode: "P140-SIP-RFC8224-RFC8225-STIR-SHAKEN-PASSPORT-X5U-SSRF-ATTESTATION-SPOOF-IAT-REPLAY-AND-ORIG-DEST-TN-MISMATCH-GUARD";
+}
+
+export function evaluateStirShakenRfc8224PassportX5uSsrfAndAttestationGuard(
+  input: StirShakenRfc8224PassportX5uSsrfAndAttestationGuardInput,
+): StirShakenRfc8224PassportX5uSsrfAndAttestationGuardResult {
+  if (!input.x5uHttpsAndStiCaTrusted || input.x5uResolvesToPrivateOrLoopbackIp) {
+    return {
+      allowed: false,
+      x5uCertificateFetchSafeAndTrusted: false,
+      passportIatAndTnSignatureValid: true,
+      attestationLevelSufficientForHighRiskAuth: true,
+      reason:
+        "RFC8224_PASSPORT_X5U_NON_HTTPS_PRIVATE_IP_SSRF_OR_UNTRUSTED_STI_CA_BLOCKED_436",
+      actionCode:
+        "BLOCK_X5U_SSRF_FETCH_AND_REJECT_SIP_436_BAD_IDENTITY_INFO",
+      policyCode:
+        "P140-SIP-RFC8224-RFC8225-STIR-SHAKEN-PASSPORT-X5U-SSRF-ATTESTATION-SPOOF-IAT-REPLAY-AND-ORIG-DEST-TN-MISMATCH-GUARD",
+    };
+  }
+
+  if (
+    Math.abs(input.passportIatSkewSeconds) > 60 ||
+    !input.origDestTnMatchesSipHeaders ||
+    !input.es256SignatureValid
+  ) {
+    return {
+      allowed: false,
+      x5uCertificateFetchSafeAndTrusted: true,
+      passportIatAndTnSignatureValid: false,
+      attestationLevelSufficientForHighRiskAuth: true,
+      reason:
+        "RFC8224_RFC8225_PASSPORT_IAT_STALE_REPLAY_TN_MISMATCH_OR_ES256_SIGNATURE_INVALID_438",
+      actionCode:
+        "REJECT_SIP_438_INVALID_IDENTITY_HEADER_ON_IAT_REPLAY_OR_TN_MISMATCH",
+      policyCode:
+        "P140-SIP-RFC8224-RFC8225-STIR-SHAKEN-PASSPORT-X5U-SSRF-ATTESTATION-SPOOF-IAT-REPLAY-AND-ORIG-DEST-TN-MISMATCH-GUARD",
+    };
+  }
+
+  if (
+    input.shakenAttestationLevel !== "A" &&
+    input.requestsHighRiskAccountActionUsingAniTrust
+  ) {
+    return {
+      allowed: false,
+      x5uCertificateFetchSafeAndTrusted: true,
+      passportIatAndTnSignatureValid: true,
+      attestationLevelSufficientForHighRiskAuth: false,
+      reason:
+        "SHAKEN_PARTIAL_B_OR_GATEWAY_C_ATTESTATION_INSUFFICIENT_FOR_ANI_HIGH_RISK_AUTH",
+      actionCode:
+        "DISTRUST_NON_A_ATTESTATION_ANI_AND_REQUIRE_OUT_OF_BAND_STEP_UP_MFA",
+      policyCode:
+        "P140-SIP-RFC8224-RFC8225-STIR-SHAKEN-PASSPORT-X5U-SSRF-ATTESTATION-SPOOF-IAT-REPLAY-AND-ORIG-DEST-TN-MISMATCH-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    x5uCertificateFetchSafeAndTrusted: true,
+    passportIatAndTnSignatureValid: true,
+    attestationLevelSufficientForHighRiskAuth: true,
+    reason: "SIP_RFC8224_RFC8225_STIR_SHAKEN_PASSPORT_IDENTITY_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_STIR_SHAKEN_FULL_A_ATTESTED_SIP_SESSION",
+    policyCode:
+      "P140-SIP-RFC8224-RFC8225-STIR-SHAKEN-PASSPORT-X5U-SSRF-ATTESTATION-SPOOF-IAT-REPLAY-AND-ORIG-DEST-TN-MISMATCH-GUARD",
+  };
+}
+
+
 
 
 
