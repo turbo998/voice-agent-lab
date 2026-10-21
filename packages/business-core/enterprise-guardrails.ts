@@ -13040,6 +13040,211 @@ export function evaluateSipRfc3261Rfc6026Invite2xxRetransmissionAckLoopAndBranch
   };
 }
 
+// ============================================================================
+// Stage 77 · P147 High-Speed Rail & Urban Metro CBTC / ERTMS-ETCS Level 2
+// (IEEE 1474.1 / EN 50126/50128/50129 SIL-4 / NFPA 130) Movement Authority (MA)
+// Overrun / SPAD 0ms Emergency Brake Preemption, Third-Rail / 25kV Catenary
+// TPSS Track-Access LOTO Interlock & Tunnel Fire Ventilation Guard
+// ============================================================================
+export interface MetroCbtcErtmsMovementAuthorityTpssLotoAndNfpa130TunnelGuardInput {
+  occSectorId: string;
+  spadOrMovementAuthorityLimitBreach: boolean;
+  undergroundTunnelFireSmokeAlarmActive: boolean;
+  requestsTrackbedEntryOrPointMachineOverride: boolean;
+  tractionPowerTpssDeenergizedAndGrounded: boolean;
+  waysideBlueLightSwitchAndPadlockVerified: boolean;
+  vitalInterlockingRouteLocked: boolean;
+  requestsAtoDriverlessDepartureOrDoorRelease: boolean;
+  platformScreenDoorsPsdClosedAndLocked: boolean;
+  psdObstacleGapLaserTriggered: boolean;
+}
+
+export interface MetroCbtcErtmsMovementAuthorityTpssLotoAndNfpa130TunnelGuardResult {
+  allowed: boolean;
+  sil4MovementAuthorityAndTunnelFireSafe: boolean;
+  tpssTractionPowerLotoAndInterlockingSafe: boolean;
+  psdDoorAndGapLaserInterlockSafe: boolean;
+  reason:
+    | "IEEE1474_ERTMS_SIL4_SPAD_MOVEMENT_AUTHORITY_BREACH_OR_NFPA130_TUNNEL_FIRE_PREEMPTED"
+    | "EN50129_IEEE1474_ENERGIZED_THIRD_RAIL_25KV_CATENARY_OR_UNLOCKED_INTERLOCKING_TRACK_ACCESS_BLOCKED"
+    | "IEEE1474_CBTC_PSD_INTERLOCK_OPEN_OR_GAP_OBSTACLE_DETECTED_DEPARTURE_BLOCKED"
+    | "METRO_CBTC_ERTMS_SIL4_MA_TPSS_LOTO_AND_PSD_INTERLOCK_SAFE";
+  actionCode: string;
+  policyCode: "P147-METRO-CBTC-ERTMS-ETCS-IEEE1474-SIL4-MOVEMENT-AUTHORITY-SPAD-PREEMPTION-THIRD-RAIL-25KV-CATENARY-TPSS-LOTO-AND-NFPA130-TUNNEL-VENTILATION-GUARD";
+}
+
+export function evaluateMetroCbtcErtmsMovementAuthorityTpssLotoAndNfpa130TunnelGuard(
+  input: MetroCbtcErtmsMovementAuthorityTpssLotoAndNfpa130TunnelGuardInput,
+): MetroCbtcErtmsMovementAuthorityTpssLotoAndNfpa130TunnelGuardResult {
+  if (
+    input.spadOrMovementAuthorityLimitBreach ||
+    input.undergroundTunnelFireSmokeAlarmActive
+  ) {
+    return {
+      allowed: false,
+      sil4MovementAuthorityAndTunnelFireSafe: false,
+      tpssTractionPowerLotoAndInterlockingSafe: true,
+      psdDoorAndGapLaserInterlockSafe: true,
+      reason:
+        "IEEE1474_ERTMS_SIL4_SPAD_MOVEMENT_AUTHORITY_BREACH_OR_NFPA130_TUNNEL_FIRE_PREEMPTED",
+      actionCode:
+        "PREEMPT_OCC_VOICE_TRIGGER_SIL4_EMERGENCY_BRAKE_AND_NFPA130_SMOKE_EXHAUST_EVACUATION",
+      policyCode:
+        "P147-METRO-CBTC-ERTMS-ETCS-IEEE1474-SIL4-MOVEMENT-AUTHORITY-SPAD-PREEMPTION-THIRD-RAIL-25KV-CATENARY-TPSS-LOTO-AND-NFPA130-TUNNEL-VENTILATION-GUARD",
+    };
+  }
+
+  if (
+    input.requestsTrackbedEntryOrPointMachineOverride &&
+    (!input.tractionPowerTpssDeenergizedAndGrounded ||
+      !input.waysideBlueLightSwitchAndPadlockVerified ||
+      !input.vitalInterlockingRouteLocked)
+  ) {
+    return {
+      allowed: false,
+      sil4MovementAuthorityAndTunnelFireSafe: true,
+      tpssTractionPowerLotoAndInterlockingSafe: false,
+      psdDoorAndGapLaserInterlockSafe: true,
+      reason:
+        "EN50129_IEEE1474_ENERGIZED_THIRD_RAIL_25KV_CATENARY_OR_UNLOCKED_INTERLOCKING_TRACK_ACCESS_BLOCKED",
+      actionCode:
+        "HARD_LOCK_TRACK_ACCESS_GATE_AND_POINT_MACHINE_UNTIL_TPSS_GROUND_AND_BLUE_LIGHT_LOTO",
+      policyCode:
+        "P147-METRO-CBTC-ERTMS-ETCS-IEEE1474-SIL4-MOVEMENT-AUTHORITY-SPAD-PREEMPTION-THIRD-RAIL-25KV-CATENARY-TPSS-LOTO-AND-NFPA130-TUNNEL-VENTILATION-GUARD",
+    };
+  }
+
+  if (
+    input.requestsAtoDriverlessDepartureOrDoorRelease &&
+    (!input.platformScreenDoorsPsdClosedAndLocked ||
+      input.psdObstacleGapLaserTriggered)
+  ) {
+    return {
+      allowed: false,
+      sil4MovementAuthorityAndTunnelFireSafe: true,
+      tpssTractionPowerLotoAndInterlockingSafe: true,
+      psdDoorAndGapLaserInterlockSafe: false,
+      reason:
+        "IEEE1474_CBTC_PSD_INTERLOCK_OPEN_OR_GAP_OBSTACLE_DETECTED_DEPARTURE_BLOCKED",
+      actionCode:
+        "INHIBIT_ATO_TRACTION_HOLD_STATION_BRAKES_AND_ALARM_PSD_GAP_INTERLOCK",
+      policyCode:
+        "P147-METRO-CBTC-ERTMS-ETCS-IEEE1474-SIL4-MOVEMENT-AUTHORITY-SPAD-PREEMPTION-THIRD-RAIL-25KV-CATENARY-TPSS-LOTO-AND-NFPA130-TUNNEL-VENTILATION-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    sil4MovementAuthorityAndTunnelFireSafe: true,
+    tpssTractionPowerLotoAndInterlockingSafe: true,
+    psdDoorAndGapLaserInterlockSafe: true,
+    reason: "METRO_CBTC_ERTMS_SIL4_MA_TPSS_LOTO_AND_PSD_INTERLOCK_SAFE",
+    actionCode:
+      "ALLOW_VERIFIED_OCC_CBTC_ERTMS_TRAIN_AND_STATION_DISPATCH",
+    policyCode:
+      "P147-METRO-CBTC-ERTMS-ETCS-IEEE1474-SIL4-MOVEMENT-AUTHORITY-SPAD-PREEMPTION-THIRD-RAIL-25KV-CATENARY-TPSS-LOTO-AND-NFPA130-TUNNEL-VENTILATION-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 77 · P148 WebRTC / RTP RFC 8829 (JSEP) / RFC 8842 / RFC 9143 SDP
+// Offer/Answer State-Machine Glare & Implicit Rollback, a=msid / a=mid
+// Transceiver m= Line Order Desync & DTLS a=fingerprint SHA-256 Pinning Guard
+// ============================================================================
+export interface WebrtcRfc8829JsepSdpStateMachineMsidOrderAndFingerprintGuardInput {
+  peerConnectionId: string;
+  dtlsFingerprintSha256MatchesPinnedCert: boolean;
+  usesDeprecatedMd5OrSha1Fingerprint: boolean;
+  jsepSignalingStateTransitionValid: boolean;
+  unresolvedHaveLocalOfferGlare: boolean;
+  recycledMLineIndexDecreasedOrMidOrderSwapped: boolean;
+  msidTrackToTransceiverBindingConsistent: boolean;
+}
+
+export interface WebrtcRfc8829JsepSdpStateMachineMsidOrderAndFingerprintGuardResult {
+  allowed: boolean;
+  dtlsCertificateFingerprintVerified: boolean;
+  jsepSignalingStateAndGlareValid: boolean;
+  mLineOrderAndMsidBindingConsistent: boolean;
+  reason:
+    | "RFC8842_RFC8122_SDP_DTLS_FINGERPRINT_MISMATCH_OR_WEAK_HASH_MITM_BLOCKED"
+    | "RFC8829_JSEP_INVALID_SIGNALING_STATE_TRANSITION_OR_UNRESOLVED_OFFER_GLARE_BLOCKED"
+    | "RFC8829_RFC8830_M_LINE_ORDER_MUTATION_OR_MSID_TRANSCEIVER_CROSS_BINDING_BLOCKED"
+    | "WEBRTC_RFC8829_RFC8842_JSEP_STATE_MID_MSID_AND_DTLS_FINGERPRINT_HEALTHY";
+  actionCode: string;
+  policyCode: "P148-WEBRTC-RFC8829-JSEP-SDP-OFFER-ANSWER-STATE-MACHINE-VIOLATION-MID-MSID-TRANSCEIVER-ORDER-DESYNC-AND-RFC8842-DTLS-FINGERPRINT-MISMATCH-GUARD";
+}
+
+export function evaluateWebrtcRfc8829JsepSdpStateMachineMsidOrderAndFingerprintGuard(
+  input: WebrtcRfc8829JsepSdpStateMachineMsidOrderAndFingerprintGuardInput,
+): WebrtcRfc8829JsepSdpStateMachineMsidOrderAndFingerprintGuardResult {
+  if (
+    !input.dtlsFingerprintSha256MatchesPinnedCert ||
+    input.usesDeprecatedMd5OrSha1Fingerprint
+  ) {
+    return {
+      allowed: false,
+      dtlsCertificateFingerprintVerified: false,
+      jsepSignalingStateAndGlareValid: true,
+      mLineOrderAndMsidBindingConsistent: true,
+      reason:
+        "RFC8842_RFC8122_SDP_DTLS_FINGERPRINT_MISMATCH_OR_WEAK_HASH_MITM_BLOCKED",
+      actionCode:
+        "ABORT_PEERCONNECTION_REJECT_SDP_FINGERPRINT_SPOOF_AND_ALERT_SOC",
+      policyCode:
+        "P148-WEBRTC-RFC8829-JSEP-SDP-OFFER-ANSWER-STATE-MACHINE-VIOLATION-MID-MSID-TRANSCEIVER-ORDER-DESYNC-AND-RFC8842-DTLS-FINGERPRINT-MISMATCH-GUARD",
+    };
+  }
+
+  if (
+    !input.jsepSignalingStateTransitionValid ||
+    input.unresolvedHaveLocalOfferGlare
+  ) {
+    return {
+      allowed: false,
+      dtlsCertificateFingerprintVerified: true,
+      jsepSignalingStateAndGlareValid: false,
+      mLineOrderAndMsidBindingConsistent: true,
+      reason:
+        "RFC8829_JSEP_INVALID_SIGNALING_STATE_TRANSITION_OR_UNRESOLVED_OFFER_GLARE_BLOCKED",
+      actionCode:
+        "ENFORCE_JSEP_IMPLICIT_SDP_ROLLBACK_AND_POLITE_PEER_GLARE_RESOLUTION",
+      policyCode:
+        "P148-WEBRTC-RFC8829-JSEP-SDP-OFFER-ANSWER-STATE-MACHINE-VIOLATION-MID-MSID-TRANSCEIVER-ORDER-DESYNC-AND-RFC8842-DTLS-FINGERPRINT-MISMATCH-GUARD",
+    };
+  }
+
+  if (
+    input.recycledMLineIndexDecreasedOrMidOrderSwapped ||
+    !input.msidTrackToTransceiverBindingConsistent
+  ) {
+    return {
+      allowed: false,
+      dtlsCertificateFingerprintVerified: true,
+      jsepSignalingStateAndGlareValid: true,
+      mLineOrderAndMsidBindingConsistent: false,
+      reason:
+        "RFC8829_RFC8830_M_LINE_ORDER_MUTATION_OR_MSID_TRANSCEIVER_CROSS_BINDING_BLOCKED",
+      actionCode:
+        "REJECT_MALFORMED_SDP_PRESERVE_CANONICAL_M_LINE_MID_AND_MSID_TRANSCEIVER_SLOTS",
+      policyCode:
+        "P148-WEBRTC-RFC8829-JSEP-SDP-OFFER-ANSWER-STATE-MACHINE-VIOLATION-MID-MSID-TRANSCEIVER-ORDER-DESYNC-AND-RFC8842-DTLS-FINGERPRINT-MISMATCH-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    dtlsCertificateFingerprintVerified: true,
+    jsepSignalingStateAndGlareValid: true,
+    mLineOrderAndMsidBindingConsistent: true,
+    reason:
+      "WEBRTC_RFC8829_RFC8842_JSEP_STATE_MID_MSID_AND_DTLS_FINGERPRINT_HEALTHY",
+    actionCode: "ALLOW_VERIFIED_JSEP_SDP_OFFER_ANSWER_COMMIT",
+    policyCode:
+      "P148-WEBRTC-RFC8829-JSEP-SDP-OFFER-ANSWER-STATE-MACHINE-VIOLATION-MID-MSID-TRANSCEIVER-ORDER-DESYNC-AND-RFC8842-DTLS-FINGERPRINT-MISMATCH-GUARD",
+  };
+}
+
 
 
 
