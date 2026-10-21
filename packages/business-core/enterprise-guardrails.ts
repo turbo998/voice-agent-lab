@@ -13245,6 +13245,197 @@ export function evaluateWebrtcRfc8829JsepSdpStateMachineMsidOrderAndFingerprintG
   };
 }
 
+export interface CleanroomGmpEuAnnex1GradeAIso5HepaAsepticMediaFillAndVhpBiGuardInput {
+  gradeADifferentialPressurePa: number;
+  gradeALafVelocityMetersPerSec: number;
+  gradeAParticlesGe5MicronPerCubicMeter: number;
+  gradeAViableCfuCount: number;
+  bypassGradeAIso5LafParticleOrViableExcursionRequested: boolean;
+  asepticMediaFillContaminatedUnitsCount: number;
+  isolatorVhpDecontamination6LogBiPassed: boolean;
+  isolatorVhpResidualPpm: number;
+  openIsolatorRabsGlovePortOrReleaseBatchRequested: boolean;
+  qpSterilityAssuranceDualSignoffVerified: boolean;
+}
+
+export interface CleanroomGmpEuAnnex1GradeAIso5HepaAsepticMediaFillAndVhpBiGuardAssessment {
+  allowed: boolean;
+  gradeAIso5EnvironmentalPreemptionTriggered: boolean;
+  asepticMediaFillAndVhpBiInterlockLocked: boolean;
+  qpSterilityAssuranceDualSignoffVerified: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P149-CLEANROOM-EU-GMP-ANNEX1-FDA-21CFR211-GRADE-A-ISO5-LAF-AIRFLOW-PARTICLE-EXCURSION-ASEPTIC-MEDIA-FILL-AND-ISOLATOR-VHP-BI-SPORE-GUARD";
+}
+
+/**
+ * P149: Pharmaceutical Sterile Fill-Finish & Cleanroom GMP (EU GMP Annex 1 2022 /
+ * FDA 21 CFR § 211.42 / ISO 14644-1) Grade A (ISO 5) Unidirectional Airflow (0.36–0.54 m/s),
+ * >=5.0µm Non-Viable Particle & Viable Settle Plate/Glove-Print (0 CFU) Excursion 0ms Line-Stop,
+ * Aseptic Process Simulation (Media Fill) Zero-Contamination Gate & Isolator/RABS VHP
+ * 6-Log Geobacillus stearothermophilus Spore Biological Indicator (BI) Interlock Guard.
+ */
+export function evaluateCleanroomGmpEuAnnex1GradeAIso5HepaAsepticMediaFillAndVhpBiGuard(
+  input: CleanroomGmpEuAnnex1GradeAIso5HepaAsepticMediaFillAndVhpBiGuardInput,
+): CleanroomGmpEuAnnex1GradeAIso5HepaAsepticMediaFillAndVhpBiGuardAssessment {
+  if (
+    input.gradeADifferentialPressurePa < 15.0 ||
+    input.gradeALafVelocityMetersPerSec < 0.36 ||
+    input.gradeALafVelocityMetersPerSec > 0.54 ||
+    input.gradeAParticlesGe5MicronPerCubicMeter > 29 ||
+    input.gradeAViableCfuCount > 0 ||
+    input.bypassGradeAIso5LafParticleOrViableExcursionRequested
+  ) {
+    return {
+      allowed: false,
+      gradeAIso5EnvironmentalPreemptionTriggered: true,
+      asepticMediaFillAndVhpBiInterlockLocked: true,
+      qpSterilityAssuranceDualSignoffVerified: false,
+      reason:
+        "EU_GMP_ANNEX1_21CFR211_GRADE_A_ISO5_LAF_AIRFLOW_PARTICLE_OR_VIABLE_CFU_EXCURSION_0MS_LINE_STOP",
+      actionCode:
+        "PREEMPT_FILL_FINISH_STOP_STOPPERING_BOWL_QUARANTINE_OPEN_VIALS_AND_ALERT_QA_MICROBIOLOGY",
+      policyCode:
+        "P149-CLEANROOM-EU-GMP-ANNEX1-FDA-21CFR211-GRADE-A-ISO5-LAF-AIRFLOW-PARTICLE-EXCURSION-ASEPTIC-MEDIA-FILL-AND-ISOLATOR-VHP-BI-SPORE-GUARD",
+    };
+  }
+
+  if (
+    input.openIsolatorRabsGlovePortOrReleaseBatchRequested &&
+    (input.asepticMediaFillContaminatedUnitsCount > 0 ||
+      !input.isolatorVhpDecontamination6LogBiPassed ||
+      input.isolatorVhpResidualPpm > 1.0 ||
+      !input.qpSterilityAssuranceDualSignoffVerified)
+  ) {
+    return {
+      allowed: false,
+      gradeAIso5EnvironmentalPreemptionTriggered: false,
+      asepticMediaFillAndVhpBiInterlockLocked: true,
+      qpSterilityAssuranceDualSignoffVerified:
+        input.qpSterilityAssuranceDualSignoffVerified,
+      reason:
+        "EU_GMP_ANNEX1_ASEPTIC_MEDIA_FILL_FAILURE_OR_ISOLATOR_VHP_6LOG_BI_RESIDUAL_INTERLOCK_VIOLATION_BLOCKED",
+      actionCode:
+        "HARD_LOCK_ISOLATOR_GLOVE_DOORS_HOLD_STERILE_BATCH_AND_REQUIRE_VHP_BI_REVALIDATION_AND_QP_SIGNOFF",
+      policyCode:
+        "P149-CLEANROOM-EU-GMP-ANNEX1-FDA-21CFR211-GRADE-A-ISO5-LAF-AIRFLOW-PARTICLE-EXCURSION-ASEPTIC-MEDIA-FILL-AND-ISOLATOR-VHP-BI-SPORE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    gradeAIso5EnvironmentalPreemptionTriggered: false,
+    asepticMediaFillAndVhpBiInterlockLocked: false,
+    qpSterilityAssuranceDualSignoffVerified:
+      input.qpSterilityAssuranceDualSignoffVerified,
+    reason:
+      "CLEANROOM_EU_GMP_ANNEX1_GRADE_A_ISO5_ASEPTIC_MEDIA_FILL_AND_VHP_BI_COMPLIANT",
+    actionCode: "ALLOW_VERIFIED_STERILE_FILL_FINISH_OPERATION",
+    policyCode:
+      "P149-CLEANROOM-EU-GMP-ANNEX1-FDA-21CFR211-GRADE-A-ISO5-LAF-AIRFLOW-PARTICLE-EXCURSION-ASEPTIC-MEDIA-FILL-AND-ISOLATOR-VHP-BI-SPORE-GUARD",
+  };
+}
+
+export interface SipRfc5626OutboundFlowTokenRfc3327PathLooseRouteAndRfc6665NotifyGuardInput {
+  sipOutboundFlowTokenHmacValid: boolean;
+  sipInstanceUuidAndRegIdBoundToTlsTuple: boolean;
+  preloadedRouteOrPathTargetsInternalOrUnallowlistedUri: boolean;
+  looseRoutingLrParameterStrippedOrSpiralDetected: boolean;
+  unsolicitedOutOfDialogNotifyDetected: boolean;
+  activeSubscriptionsPerAorCount: number;
+  maxAllowedSubscriptionsPerAor: number;
+  subscribeExpiresSec: number;
+}
+
+export interface SipRfc5626OutboundFlowTokenRfc3327PathLooseRouteAndRfc6665NotifyGuardAssessment {
+  allowed: boolean;
+  sipOutboundFlowAndRegIdVerified: boolean;
+  routeAndPathLooseRoutingSafe: boolean;
+  rfc6665SubscriptionAndNotifyHealthy: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P150-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HIJACK-RFC3327-PATH-ROUTE-OPEN-RELAY-SSRF-AND-RFC6665-UNSOLICITED-NOTIFY-SUBSCRIPTION-STORM-GUARD";
+}
+
+/**
+ * P150: SIP Edge Proxy Outbound Flow-Token & Registration Binding Security (RFC 5626
+ * +sip.instance / reg-id / ob Flow-Token HMAC Pinning), Pre-Loaded Route / Path /
+ * Service-Route (RFC 3261 § 16.4 / RFC 3327 / RFC 3608) Loose-Routing (;lr) Open-Relay
+ * SSRF & Spiral Loop Prevention, and RFC 6665 SUBSCRIBE/NOTIFY Event-State Unsolicited
+ * Out-of-Dialog NOTIFY & Subscription Exhaustion Guard.
+ */
+export function evaluateSipRfc5626OutboundFlowTokenRfc3327PathLooseRouteAndRfc6665NotifyGuard(
+  input: SipRfc5626OutboundFlowTokenRfc3327PathLooseRouteAndRfc6665NotifyGuardInput,
+): SipRfc5626OutboundFlowTokenRfc3327PathLooseRouteAndRfc6665NotifyGuardAssessment {
+  if (
+    !input.sipOutboundFlowTokenHmacValid ||
+    !input.sipInstanceUuidAndRegIdBoundToTlsTuple
+  ) {
+    return {
+      allowed: false,
+      sipOutboundFlowAndRegIdVerified: false,
+      routeAndPathLooseRoutingSafe: false,
+      rfc6665SubscriptionAndNotifyHealthy: false,
+      reason:
+        "RFC5626_SIP_OUTBOUND_FLOW_TOKEN_HMAC_FORGERY_OR_SIP_INSTANCE_REG_ID_HIJACK_BLOCKED",
+      actionCode:
+        "REJECT_SIP_403_FORBIDDEN_FLOW_FAILED_PURGE_SPOOFED_BINDING_AND_ALERT_SOC",
+      policyCode:
+        "P150-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HIJACK-RFC3327-PATH-ROUTE-OPEN-RELAY-SSRF-AND-RFC6665-UNSOLICITED-NOTIFY-SUBSCRIPTION-STORM-GUARD",
+    };
+  }
+
+  if (
+    input.preloadedRouteOrPathTargetsInternalOrUnallowlistedUri ||
+    input.looseRoutingLrParameterStrippedOrSpiralDetected
+  ) {
+    return {
+      allowed: false,
+      sipOutboundFlowAndRegIdVerified: true,
+      routeAndPathLooseRoutingSafe: false,
+      rfc6665SubscriptionAndNotifyHealthy: false,
+      reason:
+        "RFC3261_RFC3327_PRELOADED_ROUTE_PATH_OPEN_RELAY_SSRF_OR_STRICT_ROUTING_SPIRAL_BLOCKED",
+      actionCode:
+        "STRIP_UNTRUSTED_ROUTE_PATH_HEADERS_REJECT_SIP_403_OPEN_RELAY_AND_ENFORCE_EDGE_LR_PINNING",
+      policyCode:
+        "P150-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HIJACK-RFC3327-PATH-ROUTE-OPEN-RELAY-SSRF-AND-RFC6665-UNSOLICITED-NOTIFY-SUBSCRIPTION-STORM-GUARD",
+    };
+  }
+
+  if (
+    input.unsolicitedOutOfDialogNotifyDetected ||
+    input.activeSubscriptionsPerAorCount > input.maxAllowedSubscriptionsPerAor ||
+    input.subscribeExpiresSec < 60
+  ) {
+    return {
+      allowed: false,
+      sipOutboundFlowAndRegIdVerified: true,
+      routeAndPathLooseRoutingSafe: true,
+      rfc6665SubscriptionAndNotifyHealthy: false,
+      reason:
+        "RFC6665_UNSOLICITED_OUT_OF_DIALOG_NOTIFY_OR_HIGH_FREQUENCY_SUBSCRIBE_AMPLIFICATION_BLOCKED",
+      actionCode:
+        "REJECT_SIP_481_OR_423_INTERVAL_TOO_BRIEF_AND_CAP_AOR_SUBSCRIPTION_QUOTA",
+      policyCode:
+        "P150-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HIJACK-RFC3327-PATH-ROUTE-OPEN-RELAY-SSRF-AND-RFC6665-UNSOLICITED-NOTIFY-SUBSCRIPTION-STORM-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    sipOutboundFlowAndRegIdVerified: true,
+    routeAndPathLooseRoutingSafe: true,
+    rfc6665SubscriptionAndNotifyHealthy: true,
+    reason:
+      "SIP_RFC5626_OUTBOUND_RFC3327_PATH_ROUTE_AND_RFC6665_SUBSCRIPTION_HEALTHY",
+    actionCode: "ALLOW_VERIFIED_SIP_OUTBOUND_FLOW_AND_EVENT_DIALOG",
+    policyCode:
+      "P150-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HIJACK-RFC3327-PATH-ROUTE-OPEN-RELAY-SSRF-AND-RFC6665-UNSOLICITED-NOTIFY-SUBSCRIPTION-STORM-GUARD",
+  };
+}
+
+
 
 
 
