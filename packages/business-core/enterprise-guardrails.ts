@@ -11449,6 +11449,206 @@ export function evaluateWebrtcRtpRfc5109UlpfecProtectionLengthAndMaskGuard(
   };
 }
 
+// ============================================================================
+// Stage 69 · P131 Offshore Oil & Gas Drilling BSEE 30 CFR Part 250 (§ 250.730
+// Well Control / Blowout Preventer Shear Ram, § 250.490 H2S >=10ppm SCBA Muster
+// & USCG 33 CFR Abandon-Platform Dual-Command Guard)
+// ============================================================================
+export interface OffshoreBsee30Cfr250WellControlBopAndH2sMusterGuardInput {
+  sessionId: string;
+  rigOrPlatformId: string;
+  wellKickBlowoutOrSubseaEdsDetected: boolean;
+  bseeWellControlBridgeAndDrillerShutInDispatched: boolean;
+  involvesHotWorkOrCraneLift: boolean;
+  h2sConcentrationPpm: number;
+  lelCombustibleGasPct: number;
+  scbaAndWindSockMusterVerified: boolean;
+  involvesBopShearRamOrAbandonPlatformCommand: boolean;
+  oimAndToolpusherDualCommandReadbackVerified: boolean;
+}
+
+export interface OffshoreBsee30Cfr250WellControlBopAndH2sMusterGuardResult {
+  allowed: boolean;
+  bseeWellControlShutInEnforced: boolean;
+  h2sAndLelHotWorkInterlockSafe: boolean;
+  oimDualCommandReadbackVerified: boolean;
+  reason:
+    | "BSEE_30CFR250_730_WELL_KICK_OR_SUBSEA_BOP_EDS_MISSING_IMMEDIATE_DRILLER_SHUT_IN_AND_OIM_BRIDGE"
+    | "BSEE_30CFR250_490_H2S_SOUR_GAS_OR_LEL_EXCEEDANCE_HOT_WORK_AND_CRANE_LIFT_BLOCKED"
+    | "BSEE_USCG_33CFR_SUBCHAPTER_N_BOP_SHEAR_RAM_OR_ABANDON_PLATFORM_MISSING_OIM_DUAL_READBACK"
+    | "BSEE_30CFR250_OFFSHORE_WELL_CONTROL_H2S_SAFETY_AND_OIM_READBACK_COMPLIANT";
+  actionCode: string;
+  policyCode: "P131-OFFSHORE-BSEE-30CFR250-BLOWOUT-PREVENTER-BOP-WELL-CONTROL-SHEAR-RAM-AND-H2S-MUSTER-ABANDON-PLATFORM-GUARD";
+}
+
+export function evaluateOffshoreBsee30Cfr250WellControlBopAndH2sMusterGuard(
+  input: OffshoreBsee30Cfr250WellControlBopAndH2sMusterGuardInput,
+): OffshoreBsee30Cfr250WellControlBopAndH2sMusterGuardResult {
+  if (
+    input.wellKickBlowoutOrSubseaEdsDetected &&
+    !input.bseeWellControlBridgeAndDrillerShutInDispatched
+  ) {
+    return {
+      allowed: false,
+      bseeWellControlShutInEnforced: false,
+      h2sAndLelHotWorkInterlockSafe: true,
+      oimDualCommandReadbackVerified: true,
+      reason:
+        "BSEE_30CFR250_730_WELL_KICK_OR_SUBSEA_BOP_EDS_MISSING_IMMEDIATE_DRILLER_SHUT_IN_AND_OIM_BRIDGE",
+      actionCode:
+        "PREEMPT_ROUTINE_RIG_LOGISTICS_AND_INITIATE_BSEE_WELL_CONTROL_HARD_SHUT_IN_BRIDGE",
+      policyCode:
+        "P131-OFFSHORE-BSEE-30CFR250-BLOWOUT-PREVENTER-BOP-WELL-CONTROL-SHEAR-RAM-AND-H2S-MUSTER-ABANDON-PLATFORM-GUARD",
+    };
+  }
+
+  if (
+    input.involvesHotWorkOrCraneLift &&
+    (input.h2sConcentrationPpm >= 10 ||
+      input.lelCombustibleGasPct >= 10 ||
+      !input.scbaAndWindSockMusterVerified)
+  ) {
+    return {
+      allowed: false,
+      bseeWellControlShutInEnforced: true,
+      h2sAndLelHotWorkInterlockSafe: false,
+      oimDualCommandReadbackVerified: true,
+      reason:
+        "BSEE_30CFR250_490_H2S_SOUR_GAS_OR_LEL_EXCEEDANCE_HOT_WORK_AND_CRANE_LIFT_BLOCKED",
+      actionCode:
+        "REVOKE_OFFSHORE_HOT_WORK_PERMIT_ACTIVATE_H2S_UPWIND_MUSTER_AND_REQUIRE_SCBA",
+      policyCode:
+        "P131-OFFSHORE-BSEE-30CFR250-BLOWOUT-PREVENTER-BOP-WELL-CONTROL-SHEAR-RAM-AND-H2S-MUSTER-ABANDON-PLATFORM-GUARD",
+    };
+  }
+
+  if (
+    input.involvesBopShearRamOrAbandonPlatformCommand &&
+    !input.oimAndToolpusherDualCommandReadbackVerified
+  ) {
+    return {
+      allowed: false,
+      bseeWellControlShutInEnforced: true,
+      h2sAndLelHotWorkInterlockSafe: true,
+      oimDualCommandReadbackVerified: false,
+      reason:
+        "BSEE_USCG_33CFR_SUBCHAPTER_N_BOP_SHEAR_RAM_OR_ABANDON_PLATFORM_MISSING_OIM_DUAL_READBACK",
+      actionCode:
+        "HOLD_BOP_SHEAR_RAM_OR_LIFEBOAT_LAUNCH_UNTIL_OIM_AND_TOOLPUSHER_DUAL_READBACK_CONFIRMED",
+      policyCode:
+        "P131-OFFSHORE-BSEE-30CFR250-BLOWOUT-PREVENTER-BOP-WELL-CONTROL-SHEAR-RAM-AND-H2S-MUSTER-ABANDON-PLATFORM-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    bseeWellControlShutInEnforced: true,
+    h2sAndLelHotWorkInterlockSafe: true,
+    oimDualCommandReadbackVerified: true,
+    reason:
+      "BSEE_30CFR250_OFFSHORE_WELL_CONTROL_H2S_SAFETY_AND_OIM_READBACK_COMPLIANT",
+    actionCode: "ALLOW_VERIFIED_OFFSHORE_PLATFORM_OPERATIONS_COMMAND",
+    policyCode:
+      "P131-OFFSHORE-BSEE-30CFR250-BLOWOUT-PREVENTER-BOP-WELL-CONTROL-SHEAR-RAM-AND-H2S-MUSTER-ABANDON-PLATFORM-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 69 · P132 WebRTC / RTP RFC 6904 Encrypted SRTP Header Extensions
+// (urn:ietf:params:rtp-hdrext:encrypt), RFC 6464 ssrc-audio-level VAD Side-
+// Channel Leak & RFC 5285 / RFC 8285 Extmap ID Collision Guard
+// ============================================================================
+export interface WebrtcRtpRfc6904EncryptedHeaderExtensionAndVadLeakGuardInput {
+  sessionId: string;
+  containsSensitiveAudioLevelOrMetadataExtension: boolean;
+  rfc6904EncryptedHeaderExtensionActive: boolean;
+  duplicateOrReservedExtmapIdDetected: boolean;
+  extmapAllowMixedNegotiatedForTwoByteIds: boolean;
+  rfc6904HeaderExtensionAuthTagAndMaskValid: boolean;
+}
+
+export interface WebrtcRtpRfc6904EncryptedHeaderExtensionAndVadLeakGuardResult {
+  allowed: boolean;
+  rfc6904HeaderExtensionEncrypted: boolean;
+  rfc8285ExtmapIdsCollisionFree: boolean;
+  rfc6904AuthTagAndMaskIntegrityValid: boolean;
+  reason:
+    | "RFC6904_CLEARTEXT_RTP_HEADER_EXTENSION_VAD_AUDIO_LEVEL_SIDE_CHANNEL_LEAK_BLOCKED"
+    | "RFC5285_RFC8285_EXTMAP_ID_COLLISION_OR_MISSING_EXTMAP_ALLOW_MIXED_NEGOTIATION_BLOCKED"
+    | "RFC6904_SRTP_HEADER_EXTENSION_CIPHERTEXT_MASK_OR_AUTH_TAG_TAMPER_DETECTED"
+    | "WEBRTC_RTP_RFC6904_ENCRYPTED_HEADER_EXTENSION_AND_RFC8285_EXTMAP_HEALTHY";
+  actionCode: string;
+  policyCode: "P132-WEBRTC-RTP-RFC5285-EXTMAP-ENCRYPT-RFC6904-SRTP-HEADER-EXTENSION-PLAINTEXT-VAD-VOLUME-LEAK-AND-ID-COLLISION-GUARD";
+}
+
+export function evaluateWebrtcRtpRfc6904EncryptedHeaderExtensionAndVadLeakGuard(
+  input: WebrtcRtpRfc6904EncryptedHeaderExtensionAndVadLeakGuardInput,
+): WebrtcRtpRfc6904EncryptedHeaderExtensionAndVadLeakGuardResult {
+  if (
+    input.containsSensitiveAudioLevelOrMetadataExtension &&
+    !input.rfc6904EncryptedHeaderExtensionActive
+  ) {
+    return {
+      allowed: false,
+      rfc6904HeaderExtensionEncrypted: false,
+      rfc8285ExtmapIdsCollisionFree: true,
+      rfc6904AuthTagAndMaskIntegrityValid: true,
+      reason:
+        "RFC6904_CLEARTEXT_RTP_HEADER_EXTENSION_VAD_AUDIO_LEVEL_SIDE_CHANNEL_LEAK_BLOCKED",
+      actionCode:
+        "ENFORCE_RFC6904_SRTP_ENCRYPTED_HEADER_EXTENSION_OR_STRIP_VAD_AUDIO_LEVEL_TAG",
+      policyCode:
+        "P132-WEBRTC-RTP-RFC5285-EXTMAP-ENCRYPT-RFC6904-SRTP-HEADER-EXTENSION-PLAINTEXT-VAD-VOLUME-LEAK-AND-ID-COLLISION-GUARD",
+    };
+  }
+
+  if (
+    input.duplicateOrReservedExtmapIdDetected ||
+    !input.extmapAllowMixedNegotiatedForTwoByteIds
+  ) {
+    return {
+      allowed: false,
+      rfc6904HeaderExtensionEncrypted: true,
+      rfc8285ExtmapIdsCollisionFree: false,
+      rfc6904AuthTagAndMaskIntegrityValid: true,
+      reason:
+        "RFC5285_RFC8285_EXTMAP_ID_COLLISION_OR_MISSING_EXTMAP_ALLOW_MIXED_NEGOTIATION_BLOCKED",
+      actionCode:
+        "REJECT_COLLIDING_SDP_EXTMAP_ID_AND_NORMALIZE_RFC8285_MIXED_ONE_TWO_BYTE_HEADER",
+      policyCode:
+        "P132-WEBRTC-RTP-RFC5285-EXTMAP-ENCRYPT-RFC6904-SRTP-HEADER-EXTENSION-PLAINTEXT-VAD-VOLUME-LEAK-AND-ID-COLLISION-GUARD",
+    };
+  }
+
+  if (!input.rfc6904HeaderExtensionAuthTagAndMaskValid) {
+    return {
+      allowed: false,
+      rfc6904HeaderExtensionEncrypted: true,
+      rfc8285ExtmapIdsCollisionFree: true,
+      rfc6904AuthTagAndMaskIntegrityValid: false,
+      reason:
+        "RFC6904_SRTP_HEADER_EXTENSION_CIPHERTEXT_MASK_OR_AUTH_TAG_TAMPER_DETECTED",
+      actionCode:
+        "DROP_TAMPERED_RFC6904_RTP_HEADER_EXTENSION_PACKET_AND_ALERT_SRTP_INTEGRITY_MONITOR",
+      policyCode:
+        "P132-WEBRTC-RTP-RFC5285-EXTMAP-ENCRYPT-RFC6904-SRTP-HEADER-EXTENSION-PLAINTEXT-VAD-VOLUME-LEAK-AND-ID-COLLISION-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc6904HeaderExtensionEncrypted: true,
+    rfc8285ExtmapIdsCollisionFree: true,
+    rfc6904AuthTagAndMaskIntegrityValid: true,
+    reason:
+      "WEBRTC_RTP_RFC6904_ENCRYPTED_HEADER_EXTENSION_AND_RFC8285_EXTMAP_HEALTHY",
+    actionCode: "ALLOW_VERIFIED_RFC6904_ENCRYPTED_RTP_HEADER_EXTENSION_STREAM",
+    policyCode:
+      "P132-WEBRTC-RTP-RFC5285-EXTMAP-ENCRYPT-RFC6904-SRTP-HEADER-EXTENSION-PLAINTEXT-VAD-VOLUME-LEAK-AND-ID-COLLISION-GUARD",
+  };
+}
+
+
 
 
 
