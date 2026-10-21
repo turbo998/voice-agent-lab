@@ -11648,6 +11648,206 @@ export function evaluateWebrtcRtpRfc6904EncryptedHeaderExtensionAndVadLeakGuard(
   };
 }
 
+// ============================================================================
+// Stage 70 · P133 Food & Cold-Chain Manufacturing FDA FSMA 21 CFR Part 117
+// HACCP Critical Control Point (CCP) Deviation, Class I Undeclared Allergen /
+// Pathogen Recall 24h Reportable Food Registry (RFR) & Lot Quarantine Guard
+// ============================================================================
+export interface FoodColdchainFdaFsma21Cfr117HaccpAndRecallGuardInput {
+  lotId: string;
+  class1AllergenOrPathogenHazardDetected: boolean;
+  fdaRfr24HrReportMinutesElapsed: number;
+  lotHardQuarantinedInWms: boolean;
+  haccpCriticalLimitExcursionDetected: boolean;
+  requestedVoiceLotReleaseOrShipmentOverride: boolean;
+  pcqiCorrectiveActionSignedOff: boolean;
+  allergenLineChangeoverRestartRequested: boolean;
+  ssopAllergenSwabVerifiedPass: boolean;
+}
+
+export interface FoodColdchainFdaFsma21Cfr117HaccpAndRecallGuardResult {
+  allowed: boolean;
+  fdaRfr24HrReportAndLotQuarantineActive: boolean;
+  haccpCcpExcursionPcqiCleared: boolean;
+  allergenChangeoverSwabVerified: boolean;
+  reason:
+    | "FDA_21USC350F_CLASS1_ALLERGEN_OR_PATHOGEN_RECALL_24HR_RFR_AND_WMS_QUARANTINE_PREEMPTION"
+    | "FDA_21CFR117_150_HACCP_CCP_TEMP_OR_PASTEURIZATION_EXCURSION_LOT_RELEASE_WITHOUT_PCQI_BLOCKED"
+    | "FDA_21CFR117_135_ALLERGEN_CHANGEOVER_LINE_RESTART_WITHOUT_VERIFIED_SWAB_PASS_BLOCKED"
+    | "FOOD_COLDCHAIN_FSMA_21CFR117_HACCP_AND_ALLERGEN_CONTROLS_VERIFIED";
+  actionCode: string;
+  policyCode: "P133-FOOD-COLDCHAIN-FDA-FSMA-21CFR117-HACCP-CRITICAL-CONTROL-POINT-DEVIATION-CLASS1-ALLERGEN-RECALL-24HR-RFR-AND-TEMP-EXCURSION-RELEASE-GUARD";
+}
+
+export function evaluateFoodColdchainFdaFsma21Cfr117HaccpAndRecallGuard(
+  input: FoodColdchainFdaFsma21Cfr117HaccpAndRecallGuardInput,
+): FoodColdchainFdaFsma21Cfr117HaccpAndRecallGuardResult {
+  if (
+    input.class1AllergenOrPathogenHazardDetected &&
+    (!input.lotHardQuarantinedInWms ||
+      input.fdaRfr24HrReportMinutesElapsed > 1440)
+  ) {
+    return {
+      allowed: false,
+      fdaRfr24HrReportAndLotQuarantineActive: false,
+      haccpCcpExcursionPcqiCleared: true,
+      allergenChangeoverSwabVerified: true,
+      reason:
+        "FDA_21USC350F_CLASS1_ALLERGEN_OR_PATHOGEN_RECALL_24HR_RFR_AND_WMS_QUARANTINE_PREEMPTION",
+      actionCode:
+        "HARD_LOCK_WMS_LOT_SHIPMENT_FILE_24HR_FDA_RFR_REPORT_AND_ESCALATE_RECALL_COORDINATOR",
+      policyCode:
+        "P133-FOOD-COLDCHAIN-FDA-FSMA-21CFR117-HACCP-CRITICAL-CONTROL-POINT-DEVIATION-CLASS1-ALLERGEN-RECALL-24HR-RFR-AND-TEMP-EXCURSION-RELEASE-GUARD",
+    };
+  }
+
+  if (
+    input.haccpCriticalLimitExcursionDetected &&
+    input.requestedVoiceLotReleaseOrShipmentOverride &&
+    !input.pcqiCorrectiveActionSignedOff
+  ) {
+    return {
+      allowed: false,
+      fdaRfr24HrReportAndLotQuarantineActive: true,
+      haccpCcpExcursionPcqiCleared: false,
+      allergenChangeoverSwabVerified: true,
+      reason:
+        "FDA_21CFR117_150_HACCP_CCP_TEMP_OR_PASTEURIZATION_EXCURSION_LOT_RELEASE_WITHOUT_PCQI_BLOCKED",
+      actionCode:
+        "BLOCK_VOICE_QA_HOLD_RELEASE_REQUIRE_PCQI_21CFR117_150_CORRECTIVE_ACTION_DISPOSITION",
+      policyCode:
+        "P133-FOOD-COLDCHAIN-FDA-FSMA-21CFR117-HACCP-CRITICAL-CONTROL-POINT-DEVIATION-CLASS1-ALLERGEN-RECALL-24HR-RFR-AND-TEMP-EXCURSION-RELEASE-GUARD",
+    };
+  }
+
+  if (
+    input.allergenLineChangeoverRestartRequested &&
+    !input.ssopAllergenSwabVerifiedPass
+  ) {
+    return {
+      allowed: false,
+      fdaRfr24HrReportAndLotQuarantineActive: true,
+      haccpCcpExcursionPcqiCleared: true,
+      allergenChangeoverSwabVerified: false,
+      reason:
+        "FDA_21CFR117_135_ALLERGEN_CHANGEOVER_LINE_RESTART_WITHOUT_VERIFIED_SWAB_PASS_BLOCKED",
+      actionCode:
+        "INTERLOCK_PRODUCTION_LINE_START_UNTIL_CIP_ALLERGEN_ELISA_ATP_SWAB_PASS_LOGGED",
+      policyCode:
+        "P133-FOOD-COLDCHAIN-FDA-FSMA-21CFR117-HACCP-CRITICAL-CONTROL-POINT-DEVIATION-CLASS1-ALLERGEN-RECALL-24HR-RFR-AND-TEMP-EXCURSION-RELEASE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    fdaRfr24HrReportAndLotQuarantineActive: true,
+    haccpCcpExcursionPcqiCleared: true,
+    allergenChangeoverSwabVerified: true,
+    reason:
+      "FOOD_COLDCHAIN_FSMA_21CFR117_HACCP_AND_ALLERGEN_CONTROLS_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_FSMA_21CFR117_COLDCHAIN_QA_OPERATION",
+    policyCode:
+      "P133-FOOD-COLDCHAIN-FDA-FSMA-21CFR117-HACCP-CRITICAL-CONTROL-POINT-DEVIATION-CLASS1-ALLERGEN-RECALL-24HR-RFR-AND-TEMP-EXCURSION-RELEASE-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 70 · P134 WebRTC / RTP RFC 8888 RTCP Congestion Control Feedback
+// (CCFB) Metric Block Overflow, Arrival Time Offset (ATO) Sentinel Desync &
+// RFC 6679 Spoofed ECN-CE Congestion Collapse Guard
+// ============================================================================
+export interface WebrtcRtpRfc8888RtcpCcfbFeedbackAndEcnGuardInput {
+  sessionId: string;
+  declaredNumReportsCount: number;
+  requiredMetricBlockBytes: number;
+  remainingRtcpPacketBytes: number;
+  maxAllowedReportsPerInterval: number;
+  lostPacketWithNonSentinelAtoOrReceivedWith0x1fffDetected: boolean;
+  reportTimestampWallclockSkewMs: number;
+  unnegotiatedEcnMarkingsOrSpoofedEcnCeStormDetected: boolean;
+}
+
+export interface WebrtcRtpRfc8888RtcpCcfbFeedbackAndEcnGuardResult {
+  allowed: boolean;
+  ccfbMetricBlockBoundsValid: boolean;
+  atoSentinelAndReportTimestampConsistent: boolean;
+  ecnMarkingAuthenticityVerified: boolean;
+  reason:
+    | "RFC8888_RTCP_CCFB_NUM_REPORTS_METRIC_BLOCK_PACKET_BOUNDS_OR_INTERVAL_OVERFLOW_BLOCKED"
+    | "RFC8888_RTCP_CCFB_ATO_SENTINEL_0X1FFF_DESYNC_OR_REPORT_TIMESTAMP_SKEW_INJECTION_BLOCKED"
+    | "RFC6679_RFC8888_UNNEGOTIATED_ECN_OR_SPOOFED_ECN_CE_CONGESTION_COLLAPSE_STORM_BLOCKED"
+    | "WEBRTC_RTP_RFC8888_RTCP_CCFB_AND_RFC6679_ECN_FEEDBACK_HEALTHY";
+  actionCode: string;
+  policyCode: "P134-WEBRTC-RTP-RFC8888-RTCP-CCFB-CONGESTION-CONTROL-FEEDBACK-REPORT-METRIC-BLOCK-OVERFLOW-ECN-CE-DESYNC-AND-ARRIVAL-TIME-OFFSET-WRAP-GUARD";
+}
+
+export function evaluateWebrtcRtpRfc8888RtcpCcfbFeedbackAndEcnGuard(
+  input: WebrtcRtpRfc8888RtcpCcfbFeedbackAndEcnGuardInput,
+): WebrtcRtpRfc8888RtcpCcfbFeedbackAndEcnGuardResult {
+  if (
+    input.requiredMetricBlockBytes > input.remainingRtcpPacketBytes ||
+    input.declaredNumReportsCount > input.maxAllowedReportsPerInterval
+  ) {
+    return {
+      allowed: false,
+      ccfbMetricBlockBoundsValid: false,
+      atoSentinelAndReportTimestampConsistent: true,
+      ecnMarkingAuthenticityVerified: true,
+      reason:
+        "RFC8888_RTCP_CCFB_NUM_REPORTS_METRIC_BLOCK_PACKET_BOUNDS_OR_INTERVAL_OVERFLOW_BLOCKED",
+      actionCode:
+        "DROP_OVERFLOWING_RFC8888_CCFB_PACKET_AND_CAP_PER_SSRC_METRIC_REPORT_WINDOW",
+      policyCode:
+        "P134-WEBRTC-RTP-RFC8888-RTCP-CCFB-CONGESTION-CONTROL-FEEDBACK-REPORT-METRIC-BLOCK-OVERFLOW-ECN-CE-DESYNC-AND-ARRIVAL-TIME-OFFSET-WRAP-GUARD",
+    };
+  }
+
+  if (
+    input.lostPacketWithNonSentinelAtoOrReceivedWith0x1fffDetected ||
+    Math.abs(input.reportTimestampWallclockSkewMs) > 500
+  ) {
+    return {
+      allowed: false,
+      ccfbMetricBlockBoundsValid: true,
+      atoSentinelAndReportTimestampConsistent: false,
+      ecnMarkingAuthenticityVerified: true,
+      reason:
+        "RFC8888_RTCP_CCFB_ATO_SENTINEL_0X1FFF_DESYNC_OR_REPORT_TIMESTAMP_SKEW_INJECTION_BLOCKED",
+      actionCode:
+        "DISCARD_CORRUPTED_ATO_DELAY_SAMPLE_AND_REANCHOR_RFC8888_1024HZ_REPORT_CLOCK",
+      policyCode:
+        "P134-WEBRTC-RTP-RFC8888-RTCP-CCFB-CONGESTION-CONTROL-FEEDBACK-REPORT-METRIC-BLOCK-OVERFLOW-ECN-CE-DESYNC-AND-ARRIVAL-TIME-OFFSET-WRAP-GUARD",
+    };
+  }
+
+  if (input.unnegotiatedEcnMarkingsOrSpoofedEcnCeStormDetected) {
+    return {
+      allowed: false,
+      ccfbMetricBlockBoundsValid: true,
+      atoSentinelAndReportTimestampConsistent: true,
+      ecnMarkingAuthenticityVerified: false,
+      reason:
+        "RFC6679_RFC8888_UNNEGOTIATED_ECN_OR_SPOOFED_ECN_CE_CONGESTION_COLLAPSE_STORM_BLOCKED",
+      actionCode:
+        "IGNORE_UNAUTHENTICATED_ECN_CE_BITS_AND_HOLD_MIN_24KBPS_VOICE_BITRATE_FLOOR",
+      policyCode:
+        "P134-WEBRTC-RTP-RFC8888-RTCP-CCFB-CONGESTION-CONTROL-FEEDBACK-REPORT-METRIC-BLOCK-OVERFLOW-ECN-CE-DESYNC-AND-ARRIVAL-TIME-OFFSET-WRAP-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    ccfbMetricBlockBoundsValid: true,
+    atoSentinelAndReportTimestampConsistent: true,
+    ecnMarkingAuthenticityVerified: true,
+    reason: "WEBRTC_RTP_RFC8888_RTCP_CCFB_AND_RFC6679_ECN_FEEDBACK_HEALTHY",
+    actionCode: "ALLOW_VERIFIED_RFC8888_CCFB_CONGESTION_CONTROL_UPDATE",
+    policyCode:
+      "P134-WEBRTC-RTP-RFC8888-RTCP-CCFB-CONGESTION-CONTROL-FEEDBACK-REPORT-METRIC-BLOCK-OVERFLOW-ECN-CE-DESYNC-AND-ARRIVAL-TIME-OFFSET-WRAP-GUARD",
+  };
+}
+
+
 
 
 
