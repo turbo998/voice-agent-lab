@@ -592,6 +592,13 @@
       "perturbed_pct": 100.0,
       "delta_pts": 0.0,
       "note": "P121-NUCLEAR-NRC-10CFR50-EMERGENCY-CLASS-15MIN-NOTIFICATION-THREE-WAY-READBACK-AND-TWO-PERSON-RULE-GUARD preempts routine nuclear plant communications in 0ms upon an NRC 10 CFR 50.72 / Appendix E Emergency Action Level (NOUE/Alert/SAE/GE) to dispatch the 15-minute State/local emergency notification and bridge the NRC HOO ENS hotline, holds safety-related component manipulations pending verbatim INPO 3-way phonetic readback, and enforces the 10 CFR 73.55 Two-Person Rule with concurrent dual licensed SRO verification; P122-WEBRTC-RFC8627-FLEXFEC-OPUS-LBRR-REDUNDANCY-OVERHEAD-CONGESTION-SPIRAL-AND-BURST-RECOVERY-GUARD sheds out-of-band FlexFEC and downshifts Opus to 12 kbps SILK + lightweight LBRR when total audio + FEC bitrate exceeds 90% of TWCC uplink headroom to prevent self-inflicted congestion collapse spirals, while activating Opus LBRR + RFC 8627 2D interleaved FlexFEC parity under >=8% or >=3-frame burst loss when bandwidth headroom (>=64 kbps) is available."
+    },
+    {
+      "dimension": "68. Oil & Gas Pipeline PHMSA 49 CFR 192/195 Control Room SCADA MAOP, 1-Hour NRC Rupture Notice & 14h Fatigue Guard + Carrier VoLTE/IMS SIP RFC 3262 PRACK (100rel), RFC 3312 QoS Precondition & RFC 6141 Rollback Guard (P123 & P124)",
+      "original_pct": 100.0,
+      "perturbed_pct": 100.0,
+      "delta_pts": 0.0,
+      "note": "P123-PIPELINE-PHMSA-49CFR192-195-CONTROL-ROOM-SCADA-MAOP-ESD-1HR-NRC-AND-FATIGUE-GUARD preempts routine pipeline dispatch in 0ms upon a rupture or reportable release to trigger RMV/ESD valve isolation and bridge the mandatory 1-hour PHMSA NRC telephonic report (49 CFR 191.5 / 195.52), blocks mainline RCV valve or MAOP pressure setpoint overrides while an unacknowledged CPM leak alarm is active or point-to-point SCADA tag verification is incomplete (49 CFR 192.631 / API RP 1168), and blocks solo SCADA operations when controller on-duty time exceeds 14 hours (840 minutes) or lacks 10-hour off-duty rest; P124-SIP-RFC3262-PRACK-100REL-RETRANSMISSION-FLOOD-RFC3312-QOS-PRECONDITION-AND-RFC6141-ROLLBACK-GUARD enforces RFC 3262 PRACK with matching RAck headers within T1 to prevent 100rel provisional retransmission floods, holds initial TTS greeting playback until RFC 3312 mandatory QCI-1 dedicated bearer QoS UPDATE 200 OK is confirmed, and executes atomic rollback to pre-offer negotiated SDP state upon a rejected mid-call Re-INVITE or UPDATE per RFC 6141."
     }
   ],
   "latency_scaling": [

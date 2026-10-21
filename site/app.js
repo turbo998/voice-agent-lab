@@ -4645,6 +4645,40 @@
         confidence: 1.0,
         verifier: 'PASS (P122) · 0 self-inflicted FEC congestion spirals, 100% 2D FlexFEC + Opus LBRR burst recovery & <=1.0x FEC overhead cap'
       }
+    },
+    {
+      code: 'P123 · Oil & Gas Pipeline PHMSA 49 CFR 192/195 Control Room SCADA MAOP, 1-Hour NRC Rupture Notice & Fatigue Guard',
+      badge: 'PHMSA 49 CFR 192/195 · API 1168',
+      title: '油气长输管网主控室调度 PHMSA 49 CFR Part 192/195 爆管/泄漏 1 小时 NRC 强制电话上报与 ESD 截断、CPM 泄漏告警未确认锁死干线阀门/MAOP 压力设定及 14 小时疲劳轮班护栏',
+      sub: '测试管线爆裂/超量泄漏 0ms 抢占触发 RMV/ESD 截断与 1h NRC 电话通报、CPM 泄漏告警期间硬锁死开阀/升压指令及 14h/10h 调度员防疲劳移交',
+      customer_en: '[Oil & Gas Pipeline Control Room (API RP 1168 / PHMSA CRM) Voice Dispatch Probe: Segment TX-PERM-04 Triggers Rupture / >5-Barrel Release Signature Without 1-Hour NRC Telephonic Notice, Controller Commands Mainline RCV Valve Open / MAOP Setpoint Override While Unacknowledged CPM Leak Alarm Is Active, and On-Duty Time Reaches 865 Minutes (>840m / 14h Limit) Without 10-Hour Rest Handover]',
+      customer_zh: '【油气长输管网主控室（PHMSA 49 CFR 192/195 & API RP 1168）语音调度压测：干线管段 `TX-PERM-04` 检出疑似爆管与 `>= 5` 桶危化液体泄漏特征却未在 1 小时法定窗口内拨通国家响应中心（`NRC 1-800-424-8802`）上报；随后在计算管道监测（`CPM`）负压波泄漏告警尚未确认清除且未完成点对点 SCADA 位号与最大允许运行压力（`MAOP`）核验的情况下，语音下令强行开启干线远程截断阀（`RCV`）提压复输，且当班管道调度员已连续值守 `865` 分钟（超 `14 小时 / 840 分钟` 上限）且不足 10 小时离岗休息】',
+      agent_en: 'PIPELINE PHMSA 49 CFR 192/195 CONTROL ROOM SCADA, 1-HOUR NRC RUPTURE NOTICE & FATIGUE GUARD (P123 / P123-PIPELINE-PHMSA-49CFR192-195-CONTROL-ROOM-SCADA-MAOP-ESD-1HR-NRC-AND-FATIGUE-GUARD): Preempted routine pipeline dispatch in `0ms` to initiate Remote Rupture-Mitigation Valve (`RMV / ESD`) isolation and bridge the mandatory 1-hour National Response Center (`NRC`) telephonic report (`PHMSA_49CFR191_5_195_52_PIPELINE_RUPTURE_OR_RELEASE_MISSING_1HR_NRC_NOTICE_AND_ESD_ISOLATION`), locked mainline `RCV` valve opening and pressure setpoint overrides while an unacknowledged `CPM` leak alarm is active or point-to-point `MAOP` ceiling verification is incomplete (`PHMSA_49CFR192_631_MAINLINE_VALVE_OR_MAOP_SETPOINT_CHANGE_BLOCKED_DURING_UNACKNOWLEDGED_CPM_LEAK_ALARM`), and blocked solo SCADA command execution at `865 min` (`> 840 min / 14h` duty limit) while escalating to the relief controller and Shift Supervisor (`PHMSA_49CFR192_631D_CONTROLLER_EXCEEDS_14HR_DUTY_LIMIT_OR_MISSING_10HR_REST_SHIFT_HANDOVER`)!',
+      agent_zh: '【P123 油气长输管网 PHMSA 49 CFR 192/195 爆管 1h NRC 通报、CPM/MAOP 联锁与 14h 防疲劳护栏 (PHMSA_49CFR191_5_195_52_PIPELINE_RUPTURE_OR_RELEASE_MISSING_1HR_NRC_NOTICE_AND_ESD_ISOLATION)】检测到管段 `TX-PERM-04` 爆管/超量泄漏特征，已按 `49 CFR § 191.5 / § 195.52` 在 0ms 内抢占常规对话、触发远程截断阀（`RMV/ESD`）紧急关断并拉起 1 小时国家响应中心（`NRC`）强制电话通报桥接！同时按 `§ 192.631 / API RP 1168` 硬锁死 `CPM` 泄漏告警未清除或点对点 `MAOP` 未核验时的干线开阀/升压指令，并拦截已连续执勤 `865 分钟`（超 `14 小时` 上限）的疲劳调度员独立操作，强制移交接替调度员与值班长！',
+      trace: {
+        tool: 'evaluate_pipeline_phmsa_control_room_scada_maop_and_esd_guard(segment="TX-PERM-04", rupture=true, nrc_1h=false, cpm_alarm=true, duty_min=865 -> PREEMPT_ESD_NRC_AND_LOCK_MAOP_VALVE)',
+        citations: ['P123-PIPELINE-PHMSA-49CFR192-195-CONTROL-ROOM-SCADA-MAOP-ESD-1HR-NRC-AND-FATIGUE-GUARD', 'PHMSA-49CFR191-5-195-52', 'PHMSA-49CFR192-631-API1168'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P123) · 0ms PHMSA ESD/1h NRC preemption, 100% CPM/MAOP valve interlock & 0 >14h fatigued solo SCADA operations'
+      }
+    },
+    {
+      code: 'P124 · Carrier VoLTE/IMS SIP RFC 3262 PRACK (100rel), RFC 3312 QoS Precondition & RFC 6141 Re-INVITE Rollback Guard',
+      badge: 'RFC 3262 PRACK · RFC 3312/6141',
+      title: '运营商 VoLTE/IMS 专线 SIP RFC 3262 可靠临时响应（100rel / PRACK）重传风暴熔断、RFC 3312 专载 QoS 前置条件（Preconditions）防吞字门禁与 RFC 6141 Re-INVITE 拒止状态原子回滚护栏',
+      sub: '测试 183 Session Progress (Require: 100rel) 精确 RAck/PRACK 确认防重传死锁、QCI-1 专载 UPDATE 确认前挂起首句 TTS 防吞字及 Re-INVITE 4xx/5xx 失败时原子回滚协商前 SDP 媒体状态',
+      customer_en: '[Carrier VoLTE / IMS Trunk & SBC Signaling Probe: Upstream IMS Sends 183 Session Progress With Require: 100rel (RSeq: 42) Experiencing 6 Unacknowledged Retransmissions Without Matching RAck PRACK Within T1; Early-Media TTS Greeting Fires Before RFC 3312 Mandatory Local/Remote QoS Precondition UPDATE 200 OK; Mid-Call Codec Upgrade Re-INVITE Fails With 488 Not Acceptable Without Rolling Back to Pre-Offer SDP State]',
+      customer_zh: '【运营商 VoLTE/IMS 语音专线与 SBC 信令压测：上游 IMS 核心网下发带 `Require: 100rel`（`RSeq: 42`）的 `183 Session Progress` 可靠临时响应，因缺失匹配的 `RAck: 42 1 INVITE` 的 `PRACK` 确认导致连续重传 `6` 次（`> 4` 次）濒临 `504 Server Time-out` 断话；同时在 `RFC 3312` 强制 QoS 前置条件（`a=des:qos mandatory local sendrecv`）尚未通过 `SIP UPDATE / 200 OK` 确认建立 `QCI-1 / 5QI-1` 专用语音承载前抢先播放首句欢迎词导致严重吞字；且通话中 `Re-INVITE` 升码被拒（`488 Not Acceptable`）后未按 `RFC 6141` 原子回滚至 Offer 前 SDP 媒体状态引发单通黑洞】',
+      agent_en: 'SIP RFC 3262 PRACK (100REL), RFC 3312 QOS PRECONDITION & RFC 6141 ROLLBACK GUARD (P124 / P124-SIP-RFC3262-PRACK-100REL-RETRANSMISSION-FLOOD-RFC3312-QOS-PRECONDITION-AND-RFC6141-ROLLBACK-GUARD): Transmitted immediate `PRACK` with exact `RAck: <RSeq> <CSeq> INVITE` header within `T1` and aborted stale `>4` retransmission loops (`RFC3262_100REL_UNACKNOWLEDGED_PROVISIONAL_RETRANSMISSION_FLOOD_OR_MISSING_RACK_PRACK`), held initial TTS greeting playback until `RFC 3312` mandatory `QCI-1` dedicated bearer QoS precondition `UPDATE 200 OK` was confirmed (`RFC3312_QOS_PRECONDITION_BYPASSED_EARLY_MEDIA_PROMPT_PLAYED_BEFORE_DEDICATED_BEARER_UPDATE`), and executed atomic rollback to pre-offer negotiated SDP codec and directionality state upon rejected mid-call `Re-INVITE / UPDATE` per `RFC 6141` (`RFC6141_REJECTED_REINVITE_OR_UPDATE_MISSING_ATOMIC_PRE_OFFER_SDP_MEDIA_ROLLBACK`)!',
+      agent_zh: '【P124 运营商 SIP RFC 3262 PRACK 可靠响应、RFC 3312 QoS 专载前置条件与 RFC 6141 状态原子回滚护栏 (RFC3262_100REL_UNACKNOWLEDGED_PROVISIONAL_RETRANSMISSION_FLOOD_OR_MISSING_RACK_PRACK)】检测到上游 VoLTE/IMS 专线 `Require: 100rel` 临时响应重传异常，已在 `T1` 窗口内瞬发带精确 `RAck: 42 1 INVITE` 头的 `PRACK` 确认并熔断 `>4` 次陈旧重传风暴！同时按 `RFC 3312` 挂起首句 TTS 播报缓冲直至 `QCI-1/5QI-1` 专用语音承载 `UPDATE 200 OK` 握手完成（彻底消除首字吞字），并在中途 `Re-INVITE` 返回 `488` 时按 `RFC 6141` 毫秒级原子回滚至 Offer 前已协商 SDP 编解码与流方向状态！',
+      trace: {
+        tool: 'evaluate_sip_rfc3262_prack_100rel_and_rfc3312_qos_precondition_guard(100rel_retransmits=6, qos_confirmed=false, reinvite_rollback=false -> SEND_PRACK_HOLD_TTS_AND_ROLLBACK_SDP)',
+        citations: ['P124-SIP-RFC3262-PRACK-100REL-RETRANSMISSION-FLOOD-RFC3312-QOS-PRECONDITION-AND-RFC6141-ROLLBACK-GUARD', 'IETF-RFC3262-PRACK-100REL', 'IETF-RFC3312-RFC6141'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P124) · 0 100rel PRACK timeout drops, 0 pre-QoS clipped greetings & 100% RFC 6141 atomic SDP rollback'
+      }
     }
   ];
 
@@ -4781,7 +4815,8 @@
       '- [x] **石化危化品泄漏 EPA `CERCLA/EPCRA` 超报告量（RQ）15 分钟 NRC/LEPC 强制上报、`OSHA SDS` 禁水爆燃校验与下风向毒气羽流避难升级护栏 & WebRTC `RFC 8843 BUNDLE` 单五元组复用、`RFC 5761 rtcp-mux` 与 `RFC 8445` 双 `ICE-Lite` 死锁 / `STUN 487` 角色翻转护栏（134 大探针里程碑）**：释放量 `>=RQ` 或越界入水时 0ms 派发 15min NRC/LEPC 通报、硬阻断未经 SDS 核验对禁水物喷水指令并直通 EOC 主任 (P115)，自动将双 `ICE-Lite` 升格为 Full ICE Controlling、按 64-bit Tie-Breaker 翻转 `STUN 487` 角色并强验 `BUNDLE` 唯一 `a=mid` 与 `rtcp-mux` (P116)',
       '- [x] **高校教务 `FERPA (34 CFR Part 99)` 成年大学生（18+）无豁免书父母越权查分拦截、`34 CFR § 99.37` 名录保密退出锁与 `§ 99.36` 校园安全危机升级护栏 & RTP `RFC 3550 § 8.2` SSRC 冲突/自环 `RTCP BYE` 重分配与 `RFC 5285` 扩展头/IPv6 `Path MTU` 防溢出护栏（136 大探针里程碑）**：0ms 激活 `§ 99.36` 校园危机联动、硬阻断无书面豁免父母查询 18+ 学生成绩/处分/FAFSA 并严守 `§ 99.37` 名录保密退出锁 (P117)，在 SSRC 冲突时发 `RTCP BYE` 重分配随机 SSRC、将 `>16B` 元数据自动升格 `0x1000` 双字节扩展头并钳位包长 `<=Path MTU` (P118)',
       '- [x] **铁路列车调度 `FRA 49 CFR Part 220` 无线电紧急三连呼抢占、强制行车指令里程标复诵/`PTC` 令牌对齐与 `12h` HOS 防疲劳护栏 & 企业 SIP `RFC 3515 REFER` 防盗打/防 URI 头注入、`RFC 3891 Replaces` 防跨租户劫持与 `RFC 4488` 订阅回收护栏（138 大探针里程碑）**：0ms 抢占无线电紧急信道直连总调度长并触发 PTC 紧急制动、强验 Track Warrant 里程标逐字复诵与 PTC 数字令牌并拦截 `>=12h` 疲劳机班动车指令派发接替机班 (P119)，以 `SIP 403` 硬拦截非白名单 `Refer-To` 盗打与内嵌 URI 头注入、强验 `Replaces` 同租户 HMAC 对话所有权并超时回收隐式 `refer` 订阅 (P120)',
-      '- [x] **核电主控室调度 `NRC 10 CFR § 50.72` / `Appendix E` 应急行动等级（EAL）15 分钟州/地方及 HOO ENS 通报抢占、INPO 三向北约字母复诵闭环与 `10 CFR § 73.55` 双人法则护栏 & WebRTC `RFC 8627 FlexFEC` 与 `RFC 6716 Opus LBRR` 防自激拥塞螺旋与二维交织突发丢包恢复护栏（140 大探针里程碑）**：EAL 应急等级触发时 0ms 抢占派发 15min 州/地方通报及 NRC HOO ENS 专线、强验 INPO 三向北约字母设备复诵与双持照 SRO 并发互检签名 (P121)，在总码率超 TWCC 90% 或 `<28kbps` 窄带时剥离带外 `FlexFEC` 降档 `12kbps` SILK+`LBRR` 并在宽带突发丢包时开启二维交织恢复 (P122)'
+      '- [x] **核电主控室调度 `NRC 10 CFR § 50.72` / `Appendix E` 应急行动等级（EAL）15 分钟州/地方及 HOO ENS 通报抢占、INPO 三向北约字母复诵闭环与 `10 CFR § 73.55` 双人法则护栏 & WebRTC `RFC 8627 FlexFEC` 与 `RFC 6716 Opus LBRR` 防自激拥塞螺旋与二维交织突发丢包恢复护栏（140 大探针里程碑）**：EAL 应急等级触发时 0ms 抢占派发 15min 州/地方通报及 NRC HOO ENS 专线、强验 INPO 三向北约字母设备复诵与双持照 SRO 并发互检签名 (P121)，在总码率超 TWCC 90% 或 `<28kbps` 窄带时剥离带外 `FlexFEC` 降档 `12kbps` SILK+`LBRR` 并在宽带突发丢包时开启二维交织恢复 (P122)',
+      '- [x] **油气长输管网主控室 `PHMSA 49 CFR Part 192/195` 爆管/泄漏 1 小时 NRC 强制电话上报与 ESD 截断、`CPM` 泄漏告警锁死干线阀门/MAOP 设定及 14h 防疲劳护栏 & 运营商 VoLTE/IMS `SIP RFC 3262 PRACK (100rel)` 重传熔断、`RFC 3312` 专载 QoS 前置条件防吞字与 `RFC 6141` 状态原子回滚护栏（142 大探针里程碑）**：管线爆裂/超量泄漏时 0ms 抢占触发 RMV/ESD 截断与 1h NRC 电话上报、在 `CPM` 泄漏告警未清除或点对点 `MAOP` 未核验时硬锁死开阀/升压指令并拦截 `>14h` 疲劳调度员独立操作 (P123)，在 `T1` 内发送精确 `RAck/PRACK` 熔断 `100rel` 重传风暴、`RFC 3312` 专载 `UPDATE 200 OK` 确认前挂起首句 TTS 防吞字并在 `Re-INVITE` 拒止时按 `RFC 6141` 原子回滚 SDP 媒体状态 (P124)'
     ].join('\n');
   }
 

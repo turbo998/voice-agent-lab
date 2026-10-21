@@ -8328,7 +8328,7 @@ export function evaluateWebRtcAvLipSyncSkewAndRtcpSrWallclockGuard(
 
 export interface StilleTelecomFccCpniSimSwapPortOutGuardInput {
   callId: string;
-  subscriberMsisdn: string;
+  subscriberMsisdn?: string;
   requestType:
     | "INBOUND_CDR_CALL_DETAIL_READOUT"
     | "SIM_SWAP_ESIM_REPROVISION"
@@ -8473,7 +8473,7 @@ export function evaluateWebRtcAec3ResidualEchoFalseBargeInAndDelayDriftGuard(
 
 export interface StilleAutomotiveUneceR155Iso26262CanBusAndEcallGuardInput {
   callId: string;
-  vehicleVin: string;
+  vehicleVin?: string;
   airbagDeployedOrCrashDetected: boolean;
   crashDeltaVKph: number;
   vehicleSpeedKph: number;
@@ -8483,7 +8483,8 @@ export interface StilleAutomotiveUneceR155Iso26262CanBusAndEcallGuardInput {
     | "POWERTRAIN_CHASSIS_SAFETY_ASIL_OVERRIDE"
     | "MOVING_HAZARD_ACTUATION_TRUNK_OTA_RESET"
     | "DRIVER_ONLY_PROFILE_OR_CHILD_LOCK_CHANGE"
-    | "EYES_FREE_HVAC_MEDIA_NAVIGATION_SAFE";
+    | "EYES_FREE_HVAC_MEDIA_NAVIGATION_SAFE"
+    | "CABIN_HVAC_MEDIA_NAVIGATION";
 }
 
 export interface StilleAutomotiveUneceR155Iso26262CanBusAndEcallGuardDecision {
@@ -8563,7 +8564,7 @@ export function evaluateAutomotiveUneceR155Iso26262CanBusAndEcallGuard(
 
 export interface StilleMultimodalCobrowsingVisualPromptInjectionAndDomMaskingGuardInput {
   callId: string;
-  sessionId: string;
+  sessionId?: string;
   visualPromptInjectionDetected: boolean;
   untrustedViewportInstructionScore: number;
   unmaskedSensitiveSelectorsDetected: boolean;
@@ -8572,7 +8573,8 @@ export interface StilleMultimodalCobrowsingVisualPromptInjectionAndDomMaskingGua
   domMutationVersionMismatch: boolean;
   requestedAction:
     | "CO_BROWSE_CLICK_SUBMIT"
-    | "PASSIVE_VIEWPORT_GUIDANCE_READONLY";
+    | "PASSIVE_VIEWPORT_GUIDANCE_READONLY"
+    | "PASSIVE_VISUAL_GUIDANCE";
 }
 
 export interface StilleMultimodalCobrowsingVisualPromptInjectionAndDomMaskingGuardDecision {
@@ -10677,16 +10679,196 @@ export function evaluateWebrtcRfc8627FlexfecOpusLbrrCongestionSpiralGuard(
   };
 }
 
+export interface PipelinePhmsaControlRoomScadaMaopAndEsdGuardInput {
+  sessionId: string;
+  pipelineSegmentId: string;
+  pipelineRuptureFireOrReportableReleaseDetected: boolean;
+  phmsaNrcOneHourTelephonicNoticeDispatched: boolean;
+  involvesMainlineValveOrPressureSetpointChange: boolean;
+  unacknowledgedCpmLeakOrPressureDropAlarmActive: boolean;
+  pointToPointScadaTagAndMaopCeilingVerified: boolean;
+  controllerOnDutyMinutes: number;
+  tenHourOffDutyRestAndShiftHandoverVerified: boolean;
+}
 
+export interface PipelinePhmsaControlRoomScadaMaopAndEsdGuardResult {
+  allowed: boolean;
+  nrcImmediateNoticeEnforced: boolean;
+  scadaMaopAndCpmInterlockVerified: boolean;
+  controllerFatigueCompliant: boolean;
+  reason:
+    | "PHMSA_49CFR191_5_195_52_PIPELINE_RUPTURE_OR_RELEASE_MISSING_1HR_NRC_NOTICE_AND_ESD_ISOLATION"
+    | "PHMSA_49CFR192_631_MAINLINE_VALVE_OR_MAOP_SETPOINT_CHANGE_BLOCKED_DURING_UNACKNOWLEDGED_CPM_LEAK_ALARM"
+    | "PHMSA_49CFR192_631D_CONTROLLER_EXCEEDS_14HR_DUTY_LIMIT_OR_MISSING_10HR_REST_SHIFT_HANDOVER"
+    | "PHMSA_49CFR192_195_PIPELINE_CONTROL_ROOM_SCADA_COMPLIANT";
+  actionCode: string;
+  policyCode: "P123-PIPELINE-PHMSA-49CFR192-195-CONTROL-ROOM-SCADA-MAOP-ESD-1HR-NRC-AND-FATIGUE-GUARD";
+}
 
+export function evaluatePipelinePhmsaControlRoomScadaMaopAndEsdGuard(
+  input: PipelinePhmsaControlRoomScadaMaopAndEsdGuardInput,
+): PipelinePhmsaControlRoomScadaMaopAndEsdGuardResult {
+  if (
+    input.pipelineRuptureFireOrReportableReleaseDetected &&
+    !input.phmsaNrcOneHourTelephonicNoticeDispatched
+  ) {
+    return {
+      allowed: false,
+      nrcImmediateNoticeEnforced: false,
+      scadaMaopAndCpmInterlockVerified: false,
+      controllerFatigueCompliant: true,
+      reason:
+        "PHMSA_49CFR191_5_195_52_PIPELINE_RUPTURE_OR_RELEASE_MISSING_1HR_NRC_NOTICE_AND_ESD_ISOLATION",
+      actionCode:
+        "PREEMPT_ROUTINE_DISPATCH_INITIATE_RMV_ESD_ISOLATION_AND_OPEN_1HR_NRC_TELEPHONIC_REPORT_BRIDGE",
+      policyCode:
+        "P123-PIPELINE-PHMSA-49CFR192-195-CONTROL-ROOM-SCADA-MAOP-ESD-1HR-NRC-AND-FATIGUE-GUARD",
+    };
+  }
 
+  if (
+    input.involvesMainlineValveOrPressureSetpointChange &&
+    (input.unacknowledgedCpmLeakOrPressureDropAlarmActive ||
+      !input.pointToPointScadaTagAndMaopCeilingVerified)
+  ) {
+    return {
+      allowed: false,
+      nrcImmediateNoticeEnforced: true,
+      scadaMaopAndCpmInterlockVerified: false,
+      controllerFatigueCompliant: true,
+      reason:
+        "PHMSA_49CFR192_631_MAINLINE_VALVE_OR_MAOP_SETPOINT_CHANGE_BLOCKED_DURING_UNACKNOWLEDGED_CPM_LEAK_ALARM",
+      actionCode:
+        "LOCK_RCV_VALVE_AND_PRESSURE_SETPOINT_UNTIL_CPM_LEAK_ALARM_CLEARED_AND_POINT_TO_POINT_MAOP_VERIFIED",
+      policyCode:
+        "P123-PIPELINE-PHMSA-49CFR192-195-CONTROL-ROOM-SCADA-MAOP-ESD-1HR-NRC-AND-FATIGUE-GUARD",
+    };
+  }
 
+  if (
+    input.controllerOnDutyMinutes > 840 ||
+    !input.tenHourOffDutyRestAndShiftHandoverVerified
+  ) {
+    return {
+      allowed: false,
+      nrcImmediateNoticeEnforced: true,
+      scadaMaopAndCpmInterlockVerified: true,
+      controllerFatigueCompliant: false,
+      reason:
+        "PHMSA_49CFR192_631D_CONTROLLER_EXCEEDS_14HR_DUTY_LIMIT_OR_MISSING_10HR_REST_SHIFT_HANDOVER",
+      actionCode:
+        "BLOCK_SOLO_SCADA_EXECUTION_AND_ESCALATE_TO_RELIEF_PIPELINE_CONTROLLER_AND_SHIFT_SUPERVISOR",
+      policyCode:
+        "P123-PIPELINE-PHMSA-49CFR192-195-CONTROL-ROOM-SCADA-MAOP-ESD-1HR-NRC-AND-FATIGUE-GUARD",
+    };
+  }
 
+  return {
+    allowed: true,
+    nrcImmediateNoticeEnforced: true,
+    scadaMaopAndCpmInterlockVerified: true,
+    controllerFatigueCompliant: true,
+    reason: "PHMSA_49CFR192_195_PIPELINE_CONTROL_ROOM_SCADA_COMPLIANT",
+    actionCode: "ALLOW_VERIFIED_PIPELINE_CONTROL_ROOM_SCADA_COMMAND",
+    policyCode:
+      "P123-PIPELINE-PHMSA-49CFR192-195-CONTROL-ROOM-SCADA-MAOP-ESD-1HR-NRC-AND-FATIGUE-GUARD",
+  };
+}
 
+export interface SipRfc3262Prack100relAndRfc3312QosPreconditionGuardInput {
+  sessionId: string;
+  require100relNegotiated: boolean;
+  matchingRackPrackSentWithinT1: boolean;
+  unacknowledged100relRetransmitCount: number;
+  rfc3312QosPreconditionMandatory: boolean;
+  dedicatedBearerQosUpdateConfirmedBeforePromptPlay: boolean;
+  midCallReInviteOrUpdateRejected: boolean;
+  atomicRollbackToPreOfferSdpStateCompleted: boolean;
+}
 
+export interface SipRfc3262Prack100relAndRfc3312QosPreconditionGuardResult {
+  allowed: boolean;
+  prack100relTransactionHealthy: boolean;
+  rfc3312QosPreconditionSatisfied: boolean;
+  rfc6141OfferAnswerRollbackClean: boolean;
+  reason:
+    | "RFC3262_100REL_UNACKNOWLEDGED_PROVISIONAL_RETRANSMISSION_FLOOD_OR_MISSING_RACK_PRACK"
+    | "RFC3312_QOS_PRECONDITION_BYPASSED_EARLY_MEDIA_PROMPT_PLAYED_BEFORE_DEDICATED_BEARER_UPDATE"
+    | "RFC6141_REJECTED_REINVITE_OR_UPDATE_MISSING_ATOMIC_PRE_OFFER_SDP_MEDIA_ROLLBACK"
+    | "SIP_RFC3262_PRACK_RFC3312_QOS_AND_RFC6141_SDP_STATE_HEALTHY";
+  actionCode: string;
+  policyCode: "P124-SIP-RFC3262-PRACK-100REL-RETRANSMISSION-FLOOD-RFC3312-QOS-PRECONDITION-AND-RFC6141-ROLLBACK-GUARD";
+}
 
+export function evaluateSipRfc3262Prack100relAndRfc3312QosPreconditionGuard(
+  input: SipRfc3262Prack100relAndRfc3312QosPreconditionGuardInput,
+): SipRfc3262Prack100relAndRfc3312QosPreconditionGuardResult {
+  if (
+    input.require100relNegotiated &&
+    (!input.matchingRackPrackSentWithinT1 ||
+      input.unacknowledged100relRetransmitCount > 4)
+  ) {
+    return {
+      allowed: false,
+      prack100relTransactionHealthy: false,
+      rfc3312QosPreconditionSatisfied: true,
+      rfc6141OfferAnswerRollbackClean: true,
+      reason:
+        "RFC3262_100REL_UNACKNOWLEDGED_PROVISIONAL_RETRANSMISSION_FLOOD_OR_MISSING_RACK_PRACK",
+      actionCode:
+        "TRANSMIT_IMMEDIATE_PRACK_WITH_EXACT_RACK_RSEQ_CSEQ_HEADER_OR_ABORT_STALE_100REL_DIALOG",
+      policyCode:
+        "P124-SIP-RFC3262-PRACK-100REL-RETRANSMISSION-FLOOD-RFC3312-QOS-PRECONDITION-AND-RFC6141-ROLLBACK-GUARD",
+    };
+  }
 
+  if (
+    input.rfc3312QosPreconditionMandatory &&
+    !input.dedicatedBearerQosUpdateConfirmedBeforePromptPlay
+  ) {
+    return {
+      allowed: false,
+      prack100relTransactionHealthy: true,
+      rfc3312QosPreconditionSatisfied: false,
+      rfc6141OfferAnswerRollbackClean: true,
+      reason:
+        "RFC3312_QOS_PRECONDITION_BYPASSED_EARLY_MEDIA_PROMPT_PLAYED_BEFORE_DEDICATED_BEARER_UPDATE",
+      actionCode:
+        "HOLD_TTS_GREETING_BUFFER_UNTIL_RFC3312_MANDATORY_QOS_SENDRECV_UPDATE_200OK_CONFIRMED",
+      policyCode:
+        "P124-SIP-RFC3262-PRACK-100REL-RETRANSMISSION-FLOOD-RFC3312-QOS-PRECONDITION-AND-RFC6141-ROLLBACK-GUARD",
+    };
+  }
 
+  if (
+    input.midCallReInviteOrUpdateRejected &&
+    !input.atomicRollbackToPreOfferSdpStateCompleted
+  ) {
+    return {
+      allowed: false,
+      prack100relTransactionHealthy: true,
+      rfc3312QosPreconditionSatisfied: true,
+      rfc6141OfferAnswerRollbackClean: false,
+      reason:
+        "RFC6141_REJECTED_REINVITE_OR_UPDATE_MISSING_ATOMIC_PRE_OFFER_SDP_MEDIA_ROLLBACK",
+      actionCode:
+        "RESTORE_PRE_OFFER_NEGOTIATED_SDP_CODEC_AND_DIRECTIONALITY_STATE_PER_RFC6141",
+      policyCode:
+        "P124-SIP-RFC3262-PRACK-100REL-RETRANSMISSION-FLOOD-RFC3312-QOS-PRECONDITION-AND-RFC6141-ROLLBACK-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    prack100relTransactionHealthy: true,
+    rfc3312QosPreconditionSatisfied: true,
+    rfc6141OfferAnswerRollbackClean: true,
+    reason: "SIP_RFC3262_PRACK_RFC3312_QOS_AND_RFC6141_SDP_STATE_HEALTHY",
+    actionCode: "COMMIT_RELIABLE_PROVISIONAL_QOS_AND_OFFER_ANSWER_STATE",
+    policyCode:
+      "P124-SIP-RFC3262-PRACK-100REL-RETRANSMISSION-FLOOD-RFC3312-QOS-PRECONDITION-AND-RFC6141-ROLLBACK-GUARD",
+  };
+}
 
 
 
