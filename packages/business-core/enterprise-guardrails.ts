@@ -11847,6 +11847,204 @@ export function evaluateWebrtcRtpRfc8888RtcpCcfbFeedbackAndEcnGuard(
   };
 }
 
+// ============================================================================
+// Stage 71 · P135 Blood Bank, Plasma & Cellular Therapy (CAR-T / HPC)
+// Biovigilance FDA 21 CFR Part 606 / Part 1271 ABO/Rh Hemolytic Reaction &
+// Lookback Quarantine, ISBT 128 DIN Chain-of-Identity Dual-RN Readback &
+// Cryogenic LN2 Excursion Lockout Guard
+// ============================================================================
+export interface BloodBiologicsFda21Cfr6061271AboChainOfIdentityAndCryoGuardInput {
+  sessionId: string;
+  unitDinOrCoiId: string;
+  acuteHemolyticReactionOrAboRhMismatchOrLookbackHitDetected: boolean;
+  immediateTransfusionStopAndDinCoComponentQuarantineActive: boolean;
+  involvesBedsideTransfusionOrAutologousCarTInfusionStart: boolean;
+  dualRnIsbt128DinAndChainOfIdentityReadbackVerified: boolean;
+  cryoLn2BelowMinus150COrRbc1To6CColdChainBreached: boolean;
+  requestedVoiceQuarantineReleaseOverride: boolean;
+  medicalDirectorAndQaStabilityDispositionSigned: boolean;
+}
+
+export interface BloodBiologicsFda21Cfr6061271AboChainOfIdentityAndCryoGuardResult {
+  allowed: boolean;
+  hemolyticReactionAndLookbackQuarantineEnforced: boolean;
+  isbt128DinAndChainOfIdentityDualRnVerified: boolean;
+  cryoAndColdChainStabilityDispositionValid: boolean;
+  reason:
+    | "FDA_21CFR606_170_ACUTE_HEMOLYTIC_REACTION_ABO_MISMATCH_OR_LOOKBACK_UNIT_QUARANTINE_PREEMPTION"
+    | "FDA_21CFR1271_FACT_JACIE_CAR_T_CHAIN_OF_IDENTITY_OR_ISBT128_DUAL_RN_READBACK_MISSING_BLOCKED"
+    | "FDA_21CFR600_15_CRYO_LN2_OR_RBC_COLD_CHAIN_EXCURSION_RELEASE_WITHOUT_MEDICAL_DIRECTOR_BLOCKED"
+    | "BLOOD_BIOLOGICS_FDA_21CFR606_1271_ISBT128_AND_CRYO_CHAIN_VERIFIED";
+  actionCode: string;
+  policyCode: "P135-BLOOD-BIOLOGICS-FDA-21CFR606-1271-ISBT128-ABO-RH-MISMATCH-CAR-T-CHAIN-OF-IDENTITY-LOOKBACK-QUARANTINE-AND-CRYO-EXCURSION-GUARD";
+}
+
+export function evaluateBloodBiologicsFda21Cfr6061271AboChainOfIdentityAndCryoGuard(
+  input: BloodBiologicsFda21Cfr6061271AboChainOfIdentityAndCryoGuardInput,
+): BloodBiologicsFda21Cfr6061271AboChainOfIdentityAndCryoGuardResult {
+  if (
+    input.acuteHemolyticReactionOrAboRhMismatchOrLookbackHitDetected &&
+    !input.immediateTransfusionStopAndDinCoComponentQuarantineActive
+  ) {
+    return {
+      allowed: false,
+      hemolyticReactionAndLookbackQuarantineEnforced: false,
+      isbt128DinAndChainOfIdentityDualRnVerified: true,
+      cryoAndColdChainStabilityDispositionValid: true,
+      reason:
+        "FDA_21CFR606_170_ACUTE_HEMOLYTIC_REACTION_ABO_MISMATCH_OR_LOOKBACK_UNIT_QUARANTINE_PREEMPTION",
+      actionCode:
+        "STOP_TRANSFUSION_IMMEDIATELY_QUARANTINE_ISBT128_DIN_COCOMPONENTS_AND_PAGE_PATHOLOGIST",
+      policyCode:
+        "P135-BLOOD-BIOLOGICS-FDA-21CFR606-1271-ISBT128-ABO-RH-MISMATCH-CAR-T-CHAIN-OF-IDENTITY-LOOKBACK-QUARANTINE-AND-CRYO-EXCURSION-GUARD",
+    };
+  }
+
+  if (
+    input.involvesBedsideTransfusionOrAutologousCarTInfusionStart &&
+    !input.dualRnIsbt128DinAndChainOfIdentityReadbackVerified
+  ) {
+    return {
+      allowed: false,
+      hemolyticReactionAndLookbackQuarantineEnforced: true,
+      isbt128DinAndChainOfIdentityDualRnVerified: false,
+      cryoAndColdChainStabilityDispositionValid: true,
+      reason:
+        "FDA_21CFR1271_FACT_JACIE_CAR_T_CHAIN_OF_IDENTITY_OR_ISBT128_DUAL_RN_READBACK_MISSING_BLOCKED",
+      actionCode:
+        "BLOCK_CELL_THERAPY_ADMINISTRATION_REQUIRE_DUAL_RN_ISBT128_DIN_AND_COI_BARCODE_VERIFICATION",
+      policyCode:
+        "P135-BLOOD-BIOLOGICS-FDA-21CFR606-1271-ISBT128-ABO-RH-MISMATCH-CAR-T-CHAIN-OF-IDENTITY-LOOKBACK-QUARANTINE-AND-CRYO-EXCURSION-GUARD",
+    };
+  }
+
+  if (
+    input.cryoLn2BelowMinus150COrRbc1To6CColdChainBreached &&
+    input.requestedVoiceQuarantineReleaseOverride &&
+    !input.medicalDirectorAndQaStabilityDispositionSigned
+  ) {
+    return {
+      allowed: false,
+      hemolyticReactionAndLookbackQuarantineEnforced: true,
+      isbt128DinAndChainOfIdentityDualRnVerified: true,
+      cryoAndColdChainStabilityDispositionValid: false,
+      reason:
+        "FDA_21CFR600_15_CRYO_LN2_OR_RBC_COLD_CHAIN_EXCURSION_RELEASE_WITHOUT_MEDICAL_DIRECTOR_BLOCKED",
+      actionCode:
+        "LOCK_EXCURSION_BIOLOGIC_UNIT_IN_LIS_AND_REQUIRE_MEDICAL_DIRECTOR_STABILITY_DISPOSITION",
+      policyCode:
+        "P135-BLOOD-BIOLOGICS-FDA-21CFR606-1271-ISBT128-ABO-RH-MISMATCH-CAR-T-CHAIN-OF-IDENTITY-LOOKBACK-QUARANTINE-AND-CRYO-EXCURSION-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    hemolyticReactionAndLookbackQuarantineEnforced: true,
+    isbt128DinAndChainOfIdentityDualRnVerified: true,
+    cryoAndColdChainStabilityDispositionValid: true,
+    reason:
+      "BLOOD_BIOLOGICS_FDA_21CFR606_1271_ISBT128_AND_CRYO_CHAIN_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_BIOLOGICS_AND_TRANSFUSION_OPERATION",
+    policyCode:
+      "P135-BLOOD-BIOLOGICS-FDA-21CFR606-1271-ISBT128-ABO-RH-MISMATCH-CAR-T-CHAIN-OF-IDENTITY-LOOKBACK-QUARANTINE-AND-CRYO-EXCURSION-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 71 · P136 SIP RFC 3261 / RFC 8760 Digest Authentication MD5 / qop-less
+// Downgrade, Stale Nonce / Nonce-Count (nc) Replay, Low-Entropy cnonce &
+// SIP Trunk Credential-Stuffing Guard
+// ============================================================================
+export interface SipRfc3261DigestAuthNonceReplayAndQopDowngradeGuardInput {
+  sessionId: string;
+  digestAlgorithmSha256AndQopAuthIntEnforced: boolean;
+  sdpBodyHashMatchesAuthIntEntityBody: boolean;
+  nonceFreshAndNonceCountStrictlyMonotonic: boolean;
+  cnonceEntropyBitsSufficient: boolean;
+  failedAuthAttemptsInWindow: number;
+  maxAllowedFailedAuthAttempts: number;
+}
+
+export interface SipRfc3261DigestAuthNonceReplayAndQopDowngradeGuardResult {
+  allowed: boolean;
+  rfc8760Sha256AndQopAuthIntValid: boolean;
+  nonceCountAndCnonceReplaySafe: boolean;
+  credentialStuffingRateWithinBounds: boolean;
+  reason:
+    | "RFC3261_RFC8760_SIP_DIGEST_MD5_OR_QOPLESS_DOWNGRADE_AND_SDP_BODY_TAMPER_BLOCKED"
+    | "RFC3261_SIP_DIGEST_NONCE_COUNT_REPLAY_EXPIRED_NONCE_OR_LOW_ENTROPY_CNONCE_BLOCKED"
+    | "RFC3261_SIP_DIGEST_CREDENTIAL_STUFFING_OR_BRUTE_FORCE_CHALLENGE_FLOOD_BLOCKED"
+    | "SIP_RFC3261_RFC8760_DIGEST_AUTH_AND_NONCE_INTEGRITY_HEALTHY";
+  actionCode: string;
+  policyCode: "P136-SIP-RFC3261-RFC8760-DIGEST-AUTH-MD5-DOWNGRADE-STALE-NONCE-NC-REPLAY-CNONCE-ENTROPY-AND-CREDENTIAL-STUFFING-GUARD";
+}
+
+export function evaluateSipRfc3261DigestAuthNonceReplayAndQopDowngradeGuard(
+  input: SipRfc3261DigestAuthNonceReplayAndQopDowngradeGuardInput,
+): SipRfc3261DigestAuthNonceReplayAndQopDowngradeGuardResult {
+  if (
+    !input.digestAlgorithmSha256AndQopAuthIntEnforced ||
+    !input.sdpBodyHashMatchesAuthIntEntityBody
+  ) {
+    return {
+      allowed: false,
+      rfc8760Sha256AndQopAuthIntValid: false,
+      nonceCountAndCnonceReplaySafe: true,
+      credentialStuffingRateWithinBounds: true,
+      reason:
+        "RFC3261_RFC8760_SIP_DIGEST_MD5_OR_QOPLESS_DOWNGRADE_AND_SDP_BODY_TAMPER_BLOCKED",
+      actionCode:
+        "REJECT_SIP_DIGEST_DOWNGRADE_ENFORCE_RFC8760_SHA256_AND_QOP_AUTH_INT",
+      policyCode:
+        "P136-SIP-RFC3261-RFC8760-DIGEST-AUTH-MD5-DOWNGRADE-STALE-NONCE-NC-REPLAY-CNONCE-ENTROPY-AND-CREDENTIAL-STUFFING-GUARD",
+    };
+  }
+
+  if (
+    !input.nonceFreshAndNonceCountStrictlyMonotonic ||
+    !input.cnonceEntropyBitsSufficient
+  ) {
+    return {
+      allowed: false,
+      rfc8760Sha256AndQopAuthIntValid: true,
+      nonceCountAndCnonceReplaySafe: false,
+      credentialStuffingRateWithinBounds: true,
+      reason:
+        "RFC3261_SIP_DIGEST_NONCE_COUNT_REPLAY_EXPIRED_NONCE_OR_LOW_ENTROPY_CNONCE_BLOCKED",
+      actionCode:
+        "DROP_REPLAYED_SIP_AUTHORIZATION_AND_CHALLENGE_WITH_FRESH_NONCE_STALE_FALSE",
+      policyCode:
+        "P136-SIP-RFC3261-RFC8760-DIGEST-AUTH-MD5-DOWNGRADE-STALE-NONCE-NC-REPLAY-CNONCE-ENTROPY-AND-CREDENTIAL-STUFFING-GUARD",
+    };
+  }
+
+  if (input.failedAuthAttemptsInWindow > input.maxAllowedFailedAuthAttempts) {
+    return {
+      allowed: false,
+      rfc8760Sha256AndQopAuthIntValid: true,
+      nonceCountAndCnonceReplaySafe: true,
+      credentialStuffingRateWithinBounds: false,
+      reason:
+        "RFC3261_SIP_DIGEST_CREDENTIAL_STUFFING_OR_BRUTE_FORCE_CHALLENGE_FLOOD_BLOCKED",
+      actionCode:
+        "QUARANTINE_SIP_SOURCE_IP_TARPIT_403_FORBIDDEN_AND_ROTATE_TRUNK_DIGEST_SECRET",
+      policyCode:
+        "P136-SIP-RFC3261-RFC8760-DIGEST-AUTH-MD5-DOWNGRADE-STALE-NONCE-NC-REPLAY-CNONCE-ENTROPY-AND-CREDENTIAL-STUFFING-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc8760Sha256AndQopAuthIntValid: true,
+    nonceCountAndCnonceReplaySafe: true,
+    credentialStuffingRateWithinBounds: true,
+    reason: "SIP_RFC3261_RFC8760_DIGEST_AUTH_AND_NONCE_INTEGRITY_HEALTHY",
+    actionCode: "ALLOW_VERIFIED_RFC8760_SIP_DIGEST_AUTHENTICATED_REQUEST",
+    policyCode:
+      "P136-SIP-RFC3261-RFC8760-DIGEST-AUTH-MD5-DOWNGRADE-STALE-NONCE-NC-REPLAY-CNONCE-ENTROPY-AND-CREDENTIAL-STUFFING-GUARD",
+  };
+}
+
 
 
 
