@@ -12639,6 +12639,204 @@ export function evaluateWebrtcRfc5764Rfc7983DtlsSrtpDemuxAndSetupDeadlockGuard(
   };
 }
 
+// ============================================================================
+// Stage 75 · P143 High-Containment Biosafety Lab (BSL-3 / BSL-4) & Federal
+// Select Agent CDC / USDA 42 CFR Part 73 / NIH BMBL Negative-Pressure Cascade
+// Reversal, Autoclave / EDS Biowaste Interlock & Two-Person Rule Guard
+// ============================================================================
+export interface BiosafetyBsl3Bsl4SelectAgent42Cfr73PressureAndEdsGuardInput {
+  containmentSuiteId: string;
+  roomDifferentialPressurePa: number;
+  inwardAirflowCascadeLostOrSuitHepaBreach: boolean;
+  requestsAirlockSimultaneousDoorOverrideOrUnvalidatedWasteRelease: boolean;
+  autoclaveOrEdsBiologicalIndicatorCycleValidated: boolean;
+  requestsTier1SelectAgentAccessOrTransfer: boolean;
+  twoPersonSelectAgentRuleAndRoVerified: boolean;
+  selectAgentExposureOrInventoryDiscrepancyDetected: boolean;
+}
+
+export interface BiosafetyBsl3Bsl4SelectAgent42Cfr73PressureAndEdsGuardResult {
+  allowed: boolean;
+  negativePressureCascadeAndSuitHepaIntact: boolean;
+  autoclaveEdsAndAirlockInterlockEnforced: boolean;
+  selectAgentTwoPersonAndForm3Compliant: boolean;
+  reason:
+    | "BSL3_BSL4_NEGATIVE_PRESSURE_CASCADE_REVERSAL_OR_SUIT_HEPA_EXHAUST_BREACH_PREEMPTED"
+    | "CDC_42CFR73_12_UNVALIDATED_AUTOCLAVE_EDS_BIOWASTE_RELEASE_OR_AIRLOCK_INTERLOCK_BYPASS_BLOCKED"
+    | "CDC_USDA_42CFR73_TIER1_SELECT_AGENT_TWO_PERSON_RULE_VIOLATION_OR_FORM3_RELEASE_REPORT_REQUIRED"
+    | "BIOSAFETY_BSL3_BSL4_42CFR73_CONTAINMENT_AND_SELECT_AGENT_OPERATION_SAFE";
+  actionCode: string;
+  policyCode: "P143-BIOSAFETY-BSL3-BSL4-CDC-USDA-42CFR73-SELECT-AGENT-NEGATIVE-PRESSURE-CASCADE-LOSS-AUTOCLAVE-EDS-INTERLOCK-AND-TWO-PERSON-INVENTORY-GUARD";
+}
+
+export function evaluateBiosafetyBsl3Bsl4SelectAgent42Cfr73PressureAndEdsGuard(
+  input: BiosafetyBsl3Bsl4SelectAgent42Cfr73PressureAndEdsGuardInput,
+): BiosafetyBsl3Bsl4SelectAgent42Cfr73PressureAndEdsGuardResult {
+  if (
+    input.roomDifferentialPressurePa > -12.5 ||
+    input.inwardAirflowCascadeLostOrSuitHepaBreach
+  ) {
+    return {
+      allowed: false,
+      negativePressureCascadeAndSuitHepaIntact: false,
+      autoclaveEdsAndAirlockInterlockEnforced: true,
+      selectAgentTwoPersonAndForm3Compliant: true,
+      reason:
+        "BSL3_BSL4_NEGATIVE_PRESSURE_CASCADE_REVERSAL_OR_SUIT_HEPA_EXHAUST_BREACH_PREEMPTED",
+      actionCode:
+        "PREEMPT_VOICE_LOCK_AIRLOCK_CONTAINMENT_SEAL_AND_INITIATE_CHEMICAL_SHOWER_EGRESS",
+      policyCode:
+        "P143-BIOSAFETY-BSL3-BSL4-CDC-USDA-42CFR73-SELECT-AGENT-NEGATIVE-PRESSURE-CASCADE-LOSS-AUTOCLAVE-EDS-INTERLOCK-AND-TWO-PERSON-INVENTORY-GUARD",
+    };
+  }
+
+  if (
+    input.requestsAirlockSimultaneousDoorOverrideOrUnvalidatedWasteRelease ||
+    !input.autoclaveOrEdsBiologicalIndicatorCycleValidated
+  ) {
+    return {
+      allowed: false,
+      negativePressureCascadeAndSuitHepaIntact: true,
+      autoclaveEdsAndAirlockInterlockEnforced: false,
+      selectAgentTwoPersonAndForm3Compliant: true,
+      reason:
+        "CDC_42CFR73_12_UNVALIDATED_AUTOCLAVE_EDS_BIOWASTE_RELEASE_OR_AIRLOCK_INTERLOCK_BYPASS_BLOCKED",
+      actionCode:
+        "HARD_LOCK_AUTOCLAVE_PASS_THROUGH_AND_EDS_DRAIN_VALVE_UNTIL_BI_CYCLE_VERIFIED",
+      policyCode:
+        "P143-BIOSAFETY-BSL3-BSL4-CDC-USDA-42CFR73-SELECT-AGENT-NEGATIVE-PRESSURE-CASCADE-LOSS-AUTOCLAVE-EDS-INTERLOCK-AND-TWO-PERSON-INVENTORY-GUARD",
+    };
+  }
+
+  if (
+    input.selectAgentExposureOrInventoryDiscrepancyDetected ||
+    (input.requestsTier1SelectAgentAccessOrTransfer &&
+      !input.twoPersonSelectAgentRuleAndRoVerified)
+  ) {
+    return {
+      allowed: false,
+      negativePressureCascadeAndSuitHepaIntact: true,
+      autoclaveEdsAndAirlockInterlockEnforced: true,
+      selectAgentTwoPersonAndForm3Compliant: false,
+      reason:
+        "CDC_USDA_42CFR73_TIER1_SELECT_AGENT_TWO_PERSON_RULE_VIOLATION_OR_FORM3_RELEASE_REPORT_REQUIRED",
+      actionCode:
+        "BLOCK_SELECT_AGENT_VAULT_ACCESS_AND_DISPATCH_IMMEDIATE_RO_CDC_FORM3_INCIDENT_REPORT",
+      policyCode:
+        "P143-BIOSAFETY-BSL3-BSL4-CDC-USDA-42CFR73-SELECT-AGENT-NEGATIVE-PRESSURE-CASCADE-LOSS-AUTOCLAVE-EDS-INTERLOCK-AND-TWO-PERSON-INVENTORY-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    negativePressureCascadeAndSuitHepaIntact: true,
+    autoclaveEdsAndAirlockInterlockEnforced: true,
+    selectAgentTwoPersonAndForm3Compliant: true,
+    reason:
+      "BIOSAFETY_BSL3_BSL4_42CFR73_CONTAINMENT_AND_SELECT_AGENT_OPERATION_SAFE",
+    actionCode:
+      "ALLOW_VERIFIED_BSL3_BSL4_CONTAINMENT_LAB_AND_SELECT_AGENT_STEP",
+    policyCode:
+      "P143-BIOSAFETY-BSL3-BSL4-CDC-USDA-42CFR73-SELECT-AGENT-NEGATIVE-PRESSURE-CASCADE-LOSS-AUTOCLAVE-EDS-INTERLOCK-AND-TWO-PERSON-INVENTORY-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 75 · P144 WebRTC / RTP RFC 4585 / RFC 5104 RTCP Feedback (AVPF / CCM)
+// NACK / PLI / FIR Retransmission Storm Amplification, RFC 4588 RTX OSN/Apt
+// Mapping Desync & trr-int Minimum Feedback Interval Guard
+// ============================================================================
+export interface WebrtcRtpRfc4585Rfc5104AvpfNackPliStormAndRtxOsnGuardInput {
+  streamId: string;
+  nackRequestedPacketsPerSec: number;
+  rtxRetransmissionBitrateRatio: number;
+  rtxAptAndOsnHistoryWindowValid: boolean;
+  rtcpFbIntervalMs: number;
+  negotiatedTrrIntFloorMs: number;
+  pliOrFirRequestsPerSec: number;
+}
+
+export interface WebrtcRtpRfc4585Rfc5104AvpfNackPliStormAndRtxOsnGuardResult {
+  allowed: boolean;
+  nackRtxBandwidthRatioBounded: boolean;
+  rtxAptAndOsnWindowSynced: boolean;
+  trrIntAndPliFirRateRespected: boolean;
+  reason:
+    | "RFC4585_RTCP_NACK_BITMASK_RETRANSMISSION_AMPLIFICATION_STORM_BLOCKED"
+    | "RFC4588_RTX_ASSOCIATED_PAYLOAD_TYPE_OR_OSN_REPLAY_WINDOW_DESYNC_BLOCKED"
+    | "RFC4585_RFC5104_TRR_INT_VIOLATION_OR_PLI_FIR_KEYFRAME_FLOOD_BLOCKED"
+    | "WEBRTC_RTP_RFC4585_RFC5104_AVPF_NACK_PLI_AND_RTX_OSN_HEALTHY";
+  actionCode: string;
+  policyCode: "P144-WEBRTC-RTP-RFC4585-RFC5104-RTCP-AVPF-NACK-PLI-FIR-RETRANSMISSION-STORM-RTX-RFC4588-OSN-DESYNC-AND-TRR-INT-THROTTLE-GUARD";
+}
+
+export function evaluateWebrtcRtpRfc4585Rfc5104AvpfNackPliStormAndRtxOsnGuard(
+  input: WebrtcRtpRfc4585Rfc5104AvpfNackPliStormAndRtxOsnGuardInput,
+): WebrtcRtpRfc4585Rfc5104AvpfNackPliStormAndRtxOsnGuardResult {
+  if (
+    input.nackRequestedPacketsPerSec > 250 ||
+    input.rtxRetransmissionBitrateRatio > 0.35
+  ) {
+    return {
+      allowed: false,
+      nackRtxBandwidthRatioBounded: false,
+      rtxAptAndOsnWindowSynced: true,
+      trrIntAndPliFirRateRespected: true,
+      reason:
+        "RFC4585_RTCP_NACK_BITMASK_RETRANSMISSION_AMPLIFICATION_STORM_BLOCKED",
+      actionCode:
+        "THROTTLE_RTCP_NACK_BLP_QUEUE_AND_CAP_RTX_EGRESS_AT_20PCT_MEDIA_BW",
+      policyCode:
+        "P144-WEBRTC-RTP-RFC4585-RFC5104-RTCP-AVPF-NACK-PLI-FIR-RETRANSMISSION-STORM-RTX-RFC4588-OSN-DESYNC-AND-TRR-INT-THROTTLE-GUARD",
+    };
+  }
+
+  if (!input.rtxAptAndOsnHistoryWindowValid) {
+    return {
+      allowed: false,
+      nackRtxBandwidthRatioBounded: true,
+      rtxAptAndOsnWindowSynced: false,
+      trrIntAndPliFirRateRespected: true,
+      reason:
+        "RFC4588_RTX_ASSOCIATED_PAYLOAD_TYPE_OR_OSN_REPLAY_WINDOW_DESYNC_BLOCKED",
+      actionCode:
+        "DROP_DESYNCED_RFC4588_RTX_PACKET_AND_ISOLATE_PRIMARY_JITTER_BUFFER",
+      policyCode:
+        "P144-WEBRTC-RTP-RFC4585-RFC5104-RTCP-AVPF-NACK-PLI-FIR-RETRANSMISSION-STORM-RTX-RFC4588-OSN-DESYNC-AND-TRR-INT-THROTTLE-GUARD",
+    };
+  }
+
+  if (
+    input.rtcpFbIntervalMs < input.negotiatedTrrIntFloorMs ||
+    input.pliOrFirRequestsPerSec > 5
+  ) {
+    return {
+      allowed: false,
+      nackRtxBandwidthRatioBounded: true,
+      rtxAptAndOsnWindowSynced: true,
+      trrIntAndPliFirRateRespected: false,
+      reason:
+        "RFC4585_RFC5104_TRR_INT_VIOLATION_OR_PLI_FIR_KEYFRAME_FLOOD_BLOCKED",
+      actionCode:
+        "ENFORCE_RFC4585_TRR_INT_COOLDOWN_AND_COALESCE_PLI_FIR_REQUESTS",
+      policyCode:
+        "P144-WEBRTC-RTP-RFC4585-RFC5104-RTCP-AVPF-NACK-PLI-FIR-RETRANSMISSION-STORM-RTX-RFC4588-OSN-DESYNC-AND-TRR-INT-THROTTLE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    nackRtxBandwidthRatioBounded: true,
+    rtxAptAndOsnWindowSynced: true,
+    trrIntAndPliFirRateRespected: true,
+    reason: "WEBRTC_RTP_RFC4585_RFC5104_AVPF_NACK_PLI_AND_RTX_OSN_HEALTHY",
+    actionCode: "ALLOW_VERIFIED_RTCP_AVPF_FEEDBACK_AND_RFC4588_RTX_RECOVERY",
+    policyCode:
+      "P144-WEBRTC-RTP-RFC4585-RFC5104-RTCP-AVPF-NACK-PLI-FIR-RETRANSMISSION-STORM-RTX-RFC4588-OSN-DESYNC-AND-TRR-INT-THROTTLE-GUARD",
+  };
+}
+
+
 
 
 
