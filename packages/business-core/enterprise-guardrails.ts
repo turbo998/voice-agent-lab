@@ -12438,6 +12438,208 @@ export function evaluateStirShakenRfc8224PassportX5uSsrfAndAttestationGuard(
   };
 }
 
+// ============================================================================
+// Stage 74 · P141 Commercial Space Launch & Satellite Telemetry Range Safety
+// FAA 14 CFR Part 450 Flight Safety System (AFTS), Hypergolic Hydrazine (N2H4)
+// & Cryogenic LOX/LH2 Pad Evacuation, T-0 Hold Preemption & CCSDS 355.0-B-2
+// Telecommand Uplink Dual-Key Guard
+// ============================================================================
+export interface SpaceLaunchRangeFaa14Cfr450FlightSafetyAndPadCryoGuardInput {
+  launchComplexOrSpacecraftId: string;
+  flightSafetyHoldOrAftsAnomalyTriggered: boolean;
+  padHypergolicOrCryoLeakDetected: boolean;
+  rangeWeatherLightningAndKeepOutZoneClear: boolean;
+  padPersonnelCountInBlastDangerArea: number;
+  requestsTerminalCountProceedOrOrdnanceArm: boolean;
+  requestsSpacecraftBusManeuverOrPayloadDeploy: boolean;
+  ccsdsTcAuthenticationVerified: boolean;
+  flightDirectorAndMissionControlDualReadbackVerified: boolean;
+}
+
+export interface SpaceLaunchRangeFaa14Cfr450FlightSafetyAndPadCryoGuardResult {
+  allowed: boolean;
+  rangeSafetyHoldAndPadEvacuationEnforced: boolean;
+  terminalCountBlastZoneAndLlccVerified: boolean;
+  ccsdsTelecommandAndDualReadbackSafe: boolean;
+  reason:
+    | "FAA_14CFR450_RANGE_SAFETY_HOLD_AFTS_ANOMALY_OR_HYPERGOLIC_CRYO_PAD_LEAK_EMERGENCY_PREEMPTED"
+    | "FAA_14CFR450_163_PAD_PERSONNEL_IN_BLAST_ZONE_KEEP_OUT_INTRUSION_OR_LIGHTNING_LLCC_VIOLATION_BLOCKED"
+    | "CCSDS_355_SATELLITE_TELECOMMAND_UPLINK_MISSING_CRYPTO_AUTH_OR_FLIGHT_DIRECTOR_DUAL_READBACK_BLOCKED"
+    | "AEROSPACE_LAUNCH_RANGE_FAA_14CFR450_AND_CCSDS_TELECOMMAND_SAFE";
+  actionCode: string;
+  policyCode: "P141-AEROSPACE-LAUNCH-RANGE-FAA-14CFR450-AFTS-FLIGHT-TERMINATION-HYPERGOLIC-HYDRAZINE-CRYO-LOX-PAD-EVACUATION-T0-HOLD-PREEMPTION-AND-TELECOMMAND-UPLINK-GUARD";
+}
+
+export function evaluateSpaceLaunchRangeFaa14Cfr450FlightSafetyAndPadCryoGuard(
+  input: SpaceLaunchRangeFaa14Cfr450FlightSafetyAndPadCryoGuardInput,
+): SpaceLaunchRangeFaa14Cfr450FlightSafetyAndPadCryoGuardResult {
+  if (
+    input.flightSafetyHoldOrAftsAnomalyTriggered ||
+    input.padHypergolicOrCryoLeakDetected
+  ) {
+    return {
+      allowed: false,
+      rangeSafetyHoldAndPadEvacuationEnforced: false,
+      terminalCountBlastZoneAndLlccVerified: true,
+      ccsdsTelecommandAndDualReadbackSafe: true,
+      reason:
+        "FAA_14CFR450_RANGE_SAFETY_HOLD_AFTS_ANOMALY_OR_HYPERGOLIC_CRYO_PAD_LEAK_EMERGENCY_PREEMPTED",
+      actionCode:
+        "BROADCAST_RSO_HOLD_ABORT_SEQUENCE_VENT_CRYO_AND_EVACUATE_LAUNCH_PAD_BLAST_ZONE",
+      policyCode:
+        "P141-AEROSPACE-LAUNCH-RANGE-FAA-14CFR450-AFTS-FLIGHT-TERMINATION-HYPERGOLIC-HYDRAZINE-CRYO-LOX-PAD-EVACUATION-T0-HOLD-PREEMPTION-AND-TELECOMMAND-UPLINK-GUARD",
+    };
+  }
+
+  if (
+    input.requestsTerminalCountProceedOrOrdnanceArm &&
+    (!input.rangeWeatherLightningAndKeepOutZoneClear ||
+      input.padPersonnelCountInBlastDangerArea > 0)
+  ) {
+    return {
+      allowed: false,
+      rangeSafetyHoldAndPadEvacuationEnforced: true,
+      terminalCountBlastZoneAndLlccVerified: false,
+      ccsdsTelecommandAndDualReadbackSafe: true,
+      reason:
+        "FAA_14CFR450_163_PAD_PERSONNEL_IN_BLAST_ZONE_KEEP_OUT_INTRUSION_OR_LIGHTNING_LLCC_VIOLATION_BLOCKED",
+      actionCode:
+        "HARD_LOCK_TERMINAL_COUNT_AND_ORDNANCE_ARM_UNTIL_PAD_BDA_AND_LLCC_VERIFIED",
+      policyCode:
+        "P141-AEROSPACE-LAUNCH-RANGE-FAA-14CFR450-AFTS-FLIGHT-TERMINATION-HYPERGOLIC-HYDRAZINE-CRYO-LOX-PAD-EVACUATION-T0-HOLD-PREEMPTION-AND-TELECOMMAND-UPLINK-GUARD",
+    };
+  }
+
+  if (
+    input.requestsSpacecraftBusManeuverOrPayloadDeploy &&
+    (!input.ccsdsTcAuthenticationVerified ||
+      !input.flightDirectorAndMissionControlDualReadbackVerified)
+  ) {
+    return {
+      allowed: false,
+      rangeSafetyHoldAndPadEvacuationEnforced: true,
+      terminalCountBlastZoneAndLlccVerified: true,
+      ccsdsTelecommandAndDualReadbackSafe: false,
+      reason:
+        "CCSDS_355_SATELLITE_TELECOMMAND_UPLINK_MISSING_CRYPTO_AUTH_OR_FLIGHT_DIRECTOR_DUAL_READBACK_BLOCKED",
+      actionCode:
+        "BLOCK_ORBITAL_MANEUVER_UPLINK_REQUIRE_CCSDS_CRYPTO_TOKEN_AND_FD_DUAL_READBACK",
+      policyCode:
+        "P141-AEROSPACE-LAUNCH-RANGE-FAA-14CFR450-AFTS-FLIGHT-TERMINATION-HYPERGOLIC-HYDRAZINE-CRYO-LOX-PAD-EVACUATION-T0-HOLD-PREEMPTION-AND-TELECOMMAND-UPLINK-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rangeSafetyHoldAndPadEvacuationEnforced: true,
+    terminalCountBlastZoneAndLlccVerified: true,
+    ccsdsTelecommandAndDualReadbackSafe: true,
+    reason: "AEROSPACE_LAUNCH_RANGE_FAA_14CFR450_AND_CCSDS_TELECOMMAND_SAFE",
+    actionCode: "ALLOW_VERIFIED_LAUNCH_COUNTDOWN_AND_SATELLITE_TELEMETRY_STEP",
+    policyCode:
+      "P141-AEROSPACE-LAUNCH-RANGE-FAA-14CFR450-AFTS-FLIGHT-TERMINATION-HYPERGOLIC-HYDRAZINE-CRYO-LOX-PAD-EVACUATION-T0-HOLD-PREEMPTION-AND-TELECOMMAND-UPLINK-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 74 · P142 WebRTC / RTP RFC 5764 / RFC 7983 DTLS-SRTP First-Byte Demux
+// Collision, DTLS 1.2/1.3 Stateless Cookie Amplification DoS, SRTP Key/Salt
+// Length & SDP a=setup Active/Passive Deadlock Guard
+// ============================================================================
+export interface WebrtcRfc5764Rfc7983DtlsSrtpDemuxAndSetupDeadlockGuardInput {
+  sessionId: string;
+  packetFirstByteMatchesRfc7983DemuxRange: boolean;
+  malformedRtpVersionOnDtlsPort: boolean;
+  unverifiedClientHelloRatePerSec: number;
+  dtlsStatelessCookieVerified: boolean;
+  sdpOfferAndAnswerBothPassiveOrBothActive: boolean;
+  srtpProtectionProfileAndSaltLengthValid: boolean;
+}
+
+export interface WebrtcRfc5764Rfc7983DtlsSrtpDemuxAndSetupDeadlockGuardResult {
+  allowed: boolean;
+  rfc7983FirstByteDemuxIsolated: boolean;
+  dtlsCookieAntiAmplificationEnforced: boolean;
+  sdpSetupRoleAndSrtpSaltValid: boolean;
+  reason:
+    | "RFC7983_SINGLE_PORT_MUX_FIRST_BYTE_COLLISION_OR_MALFORMED_DTLS_RTP_DEMUX_SPOOF_BLOCKED"
+    | "RFC6347_RFC9147_UNVERIFIED_DTLS_CLIENT_HELLO_CERTIFICATE_AMPLIFICATION_FLOOD_BLOCKED"
+    | "RFC5763_RFC5764_SDP_SETUP_ROLE_DEADLOCK_OR_SRTP_PROFILE_SALT_LENGTH_DESYNC_BLOCKED"
+    | "WEBRTC_RFC5764_RFC7983_DTLS_SRTP_DEMUX_AND_SETUP_HEALTHY";
+  actionCode: string;
+  policyCode: "P142-WEBRTC-RTP-RFC5764-RFC7983-DTLS-SRTP-FIRST-BYTE-DEMUX-COLLISION-HELLO-COOKIE-AMPLIFICATION-DOS-AND-ACTIVE-PASSIVE-SETUP-DEADLOCK-GUARD";
+}
+
+export function evaluateWebrtcRfc5764Rfc7983DtlsSrtpDemuxAndSetupDeadlockGuard(
+  input: WebrtcRfc5764Rfc7983DtlsSrtpDemuxAndSetupDeadlockGuardInput,
+): WebrtcRfc5764Rfc7983DtlsSrtpDemuxAndSetupDeadlockGuardResult {
+  if (
+    !input.packetFirstByteMatchesRfc7983DemuxRange ||
+    input.malformedRtpVersionOnDtlsPort
+  ) {
+    return {
+      allowed: false,
+      rfc7983FirstByteDemuxIsolated: false,
+      dtlsCookieAntiAmplificationEnforced: true,
+      sdpSetupRoleAndSrtpSaltValid: true,
+      reason:
+        "RFC7983_SINGLE_PORT_MUX_FIRST_BYTE_COLLISION_OR_MALFORMED_DTLS_RTP_DEMUX_SPOOF_BLOCKED",
+      actionCode:
+        "DROP_MALFORMED_RFC7983_MUX_PACKET_AND_ISOLATE_DTLS_SRTP_PARSER",
+      policyCode:
+        "P142-WEBRTC-RTP-RFC5764-RFC7983-DTLS-SRTP-FIRST-BYTE-DEMUX-COLLISION-HELLO-COOKIE-AMPLIFICATION-DOS-AND-ACTIVE-PASSIVE-SETUP-DEADLOCK-GUARD",
+    };
+  }
+
+  if (
+    input.unverifiedClientHelloRatePerSec > 25 &&
+    !input.dtlsStatelessCookieVerified
+  ) {
+    return {
+      allowed: false,
+      rfc7983FirstByteDemuxIsolated: true,
+      dtlsCookieAntiAmplificationEnforced: false,
+      sdpSetupRoleAndSrtpSaltValid: true,
+      reason:
+        "RFC6347_RFC9147_UNVERIFIED_DTLS_CLIENT_HELLO_CERTIFICATE_AMPLIFICATION_FLOOD_BLOCKED",
+      actionCode:
+        "ENFORCE_STATELESS_DTLS_COOKIE_CHALLENGE_AND_SUPPRESS_CERT_CHAIN_AMPLIFICATION",
+      policyCode:
+        "P142-WEBRTC-RTP-RFC5764-RFC7983-DTLS-SRTP-FIRST-BYTE-DEMUX-COLLISION-HELLO-COOKIE-AMPLIFICATION-DOS-AND-ACTIVE-PASSIVE-SETUP-DEADLOCK-GUARD",
+    };
+  }
+
+  if (
+    input.sdpOfferAndAnswerBothPassiveOrBothActive ||
+    !input.srtpProtectionProfileAndSaltLengthValid
+  ) {
+    return {
+      allowed: false,
+      rfc7983FirstByteDemuxIsolated: true,
+      dtlsCookieAntiAmplificationEnforced: true,
+      sdpSetupRoleAndSrtpSaltValid: false,
+      reason:
+        "RFC5763_RFC5764_SDP_SETUP_ROLE_DEADLOCK_OR_SRTP_PROFILE_SALT_LENGTH_DESYNC_BLOCKED",
+      actionCode:
+        "RESOLVE_SDP_SETUP_ROLE_AND_ENFORCE_RFC5764_SRTP_AEAD_KEY_SALT_DERIVATION",
+      policyCode:
+        "P142-WEBRTC-RTP-RFC5764-RFC7983-DTLS-SRTP-FIRST-BYTE-DEMUX-COLLISION-HELLO-COOKIE-AMPLIFICATION-DOS-AND-ACTIVE-PASSIVE-SETUP-DEADLOCK-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc7983FirstByteDemuxIsolated: true,
+    dtlsCookieAntiAmplificationEnforced: true,
+    sdpSetupRoleAndSrtpSaltValid: true,
+    reason: "WEBRTC_RFC5764_RFC7983_DTLS_SRTP_DEMUX_AND_SETUP_HEALTHY",
+    actionCode: "ALLOW_VERIFIED_RFC5764_RFC7983_DTLS_SRTP_MEDIA_SESSION",
+    policyCode:
+      "P142-WEBRTC-RTP-RFC5764-RFC7983-DTLS-SRTP-FIRST-BYTE-DEMUX-COLLISION-HELLO-COOKIE-AMPLIFICATION-DOS-AND-ACTIVE-PASSIVE-SETUP-DEADLOCK-GUARD",
+  };
+}
+
+
 
 
 
