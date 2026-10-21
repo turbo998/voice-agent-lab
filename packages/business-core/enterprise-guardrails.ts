@@ -13435,6 +13435,218 @@ export function evaluateSipRfc5626OutboundFlowTokenRfc3327PathLooseRouteAndRfc66
   };
 }
 
+export interface DatacenterTier4Nfpa2001CleanAgentDischargeEpoAndBessThermalRunawayGuardInput {
+  facilityZoneId: string;
+  bessCellTempCelsius: number;
+  bessOffGasLelPercent: number;
+  bessThermalRunawayDetected: boolean;
+  attemptCloseBessDcContactorOrSuppressExhaust: boolean;
+  authorizeBatteryRoomEntryDuringRunaway: boolean;
+  cleanAgentDischargeCountdownActive: boolean;
+  personnelInWhiteSpaceDuringDischarge: boolean;
+  attemptRemoteBypassPreDischargeAlarmOrAbortSwitch: boolean;
+  voiceRequestsHallWideEpoOrChillerShutdown: boolean;
+  dualOperatorChiefEngineerAndFacilityManagerVerified: boolean;
+}
+
+export interface DatacenterTier4Nfpa2001CleanAgentDischargeEpoAndBessThermalRunawayGuardResult {
+  allowed: boolean;
+  bessThermalRunawayContained: boolean;
+  nfpa2001CleanAgentDischargeSafe: boolean;
+  epoAndLiquidCoolingDualAuthVerified: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P151-DATA-CENTER-UPTIME-TIER4-NFPA75-76-2001-NOVEC1230-FM200-ABORT-INTERLOCK-EPO-DUAL-CONFIRM-AND-BESS-UL9540A-THERMAL-RUNAWAY-GUARD";
+}
+
+/**
+ * P151: Hyperscale Data Center & AI Cluster Critical Facilities Operations (UL 9540A /
+ * NFPA 855 Lithium-Ion BESS Thermal Runaway Off-Gas H2/CO Deflagration Venting & DC Contactor
+ * Interlock, NFPA 2001 Clean Agent Novec 1230 / FM-200 / Inergen Pre-Discharge Occupied-Space
+ * Abort Interlock & NFPA 75 / NEC 645 / Uptime Tier IV EPO & Liquid-Cooling CDU Dual-Authority Lock).
+ */
+export function evaluateDatacenterTier4Nfpa2001CleanAgentDischargeEpoAndBessThermalRunawayGuard(
+  input: DatacenterTier4Nfpa2001CleanAgentDischargeEpoAndBessThermalRunawayGuardInput
+): DatacenterTier4Nfpa2001CleanAgentDischargeEpoAndBessThermalRunawayGuardResult {
+  const thermalRunawayActive =
+    input.bessThermalRunawayDetected ||
+    input.bessCellTempCelsius >= 130 ||
+    input.bessOffGasLelPercent >= 10;
+
+  if (
+    thermalRunawayActive &&
+    (input.attemptCloseBessDcContactorOrSuppressExhaust ||
+      input.authorizeBatteryRoomEntryDuringRunaway)
+  ) {
+    return {
+      allowed: false,
+      bessThermalRunawayContained: false,
+      nfpa2001CleanAgentDischargeSafe: !input.personnelInWhiteSpaceDuringDischarge,
+      epoAndLiquidCoolingDualAuthVerified:
+        !input.voiceRequestsHallWideEpoOrChillerShutdown ||
+        input.dualOperatorChiefEngineerAndFacilityManagerVerified,
+      reason:
+        "UL9540A_NFPA855_BESS_THERMAL_RUNAWAY_CONTACTOR_RECLOSE_OR_ROOM_ENTRY_BLOCKED",
+      actionCode:
+        "TRIP_BESS_DC_BREAKER_ACTIVATE_DEFLAGRATION_EXHAUST_VENTING_AND_DISPATCH_FIRE_HAZMAT",
+      policyCode:
+        "P151-DATA-CENTER-UPTIME-TIER4-NFPA75-76-2001-NOVEC1230-FM200-ABORT-INTERLOCK-EPO-DUAL-CONFIRM-AND-BESS-UL9540A-THERMAL-RUNAWAY-GUARD",
+    };
+  }
+
+  if (
+    (input.cleanAgentDischargeCountdownActive &&
+      input.personnelInWhiteSpaceDuringDischarge) ||
+    input.attemptRemoteBypassPreDischargeAlarmOrAbortSwitch
+  ) {
+    return {
+      allowed: false,
+      bessThermalRunawayContained: true,
+      nfpa2001CleanAgentDischargeSafe: false,
+      epoAndLiquidCoolingDualAuthVerified:
+        !input.voiceRequestsHallWideEpoOrChillerShutdown ||
+        input.dualOperatorChiefEngineerAndFacilityManagerVerified,
+      reason:
+        "NFPA2001_CLEAN_AGENT_DISCHARGE_OCCUPIED_SPACE_OR_REMOTE_ABORT_BYPASS_BLOCKED",
+      actionCode:
+        "HOLD_NFPA2001_CLEAN_AGENT_RELEASE_ENFORCE_WHITE_SPACE_EGRESS_AND_FORBID_REMOTE_ABORT_BYPASS",
+      policyCode:
+        "P151-DATA-CENTER-UPTIME-TIER4-NFPA75-76-2001-NOVEC1230-FM200-ABORT-INTERLOCK-EPO-DUAL-CONFIRM-AND-BESS-UL9540A-THERMAL-RUNAWAY-GUARD",
+    };
+  }
+
+  if (
+    input.voiceRequestsHallWideEpoOrChillerShutdown &&
+    !input.dualOperatorChiefEngineerAndFacilityManagerVerified
+  ) {
+    return {
+      allowed: false,
+      bessThermalRunawayContained: true,
+      nfpa2001CleanAgentDischargeSafe: true,
+      epoAndLiquidCoolingDualAuthVerified: false,
+      reason:
+        "NFPA75_UPTIME_TIER4_UNVERIFIED_VOICE_EPO_OR_CDU_COOLING_SHUTDOWN_BLOCKED",
+      actionCode:
+        "REQUIRE_DUAL_OPERATOR_CHIEF_ENGINEER_AND_FACILITY_MANAGER_HARDWARE_KEY_FOR_EPO_OR_CDU_SHUTDOWN",
+      policyCode:
+        "P151-DATA-CENTER-UPTIME-TIER4-NFPA75-76-2001-NOVEC1230-FM200-ABORT-INTERLOCK-EPO-DUAL-CONFIRM-AND-BESS-UL9540A-THERMAL-RUNAWAY-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    bessThermalRunawayContained: true,
+    nfpa2001CleanAgentDischargeSafe: true,
+    epoAndLiquidCoolingDualAuthVerified: true,
+    reason:
+      "DATACENTER_TIER4_NFPA2001_CLEAN_AGENT_EPO_AND_BESS_THERMAL_SAFETY_COMPLIANT",
+    actionCode: "ALLOW_VERIFIED_CRITICAL_FACILITY_NOC_OPERATION",
+    policyCode:
+      "P151-DATA-CENTER-UPTIME-TIER4-NFPA75-76-2001-NOVEC1230-FM200-ABORT-INTERLOCK-EPO-DUAL-CONFIRM-AND-BESS-UL9540A-THERMAL-RUNAWAY-GUARD",
+  };
+}
+
+export interface WebrtcRfc7741Rfc9626SvcDependencyDescriptorLayerSwitchAndBitrateThrashGuardInput {
+  sessionId: string;
+  codecType: "VP8" | "VP9-SVC" | "AV1-SVC";
+  dependencyTemplateCount: number;
+  decodeTargetLayerIndexOutOfBounds: boolean;
+  extensionPayloadBytesExceedRemainingHeader: boolean;
+  currentSpatialLayerId: number;
+  targetSpatialLayerId: number;
+  upswitchOnNonKeyframeWithoutIntraRefresh: boolean;
+  interLayerReferenceBaseDroppedWhileDFlagSet: boolean;
+  spatialLayerSwitchesIn2SecWindow: number;
+}
+
+export interface WebrtcRfc7741Rfc9626SvcDependencyDescriptorLayerSwitchAndBitrateThrashGuardResult {
+  allowed: boolean;
+  dependencyDescriptorHeaderSafe: boolean;
+  spatialLayerChainDecodable: boolean;
+  bitrateAdaptationStable: boolean;
+  reason: string;
+  actionCode: string;
+  policyCode: "P152-WEBRTC-RTP-RFC7741-RFC9626-SVC-VP9-AV1-SPATIAL-TEMPORAL-LAYER-DEPENDENCY-DESCRIPTOR-OVERFLOW-MISSING-KEYFRAME-DISCARD-AND-BITRATE-THRASH-GUARD";
+}
+
+/**
+ * P152: WebRTC / RTP RFC 7741 (VP8) / RFC 9628 (VP9) / RFC 9626 (Video Frame Marking) &
+ * AOMedia AV1 Dependency Descriptor Scalable Video Coding (SVC) Template/Decode-Target
+ * Overflow, Spatial Layer Upswitch Keyframe / Inter-Layer Reference (D=1) Integrity &
+ * Sub-Second BWE Oscillation Hysteresis Guard.
+ */
+export function evaluateWebrtcRfc7741Rfc9626SvcDependencyDescriptorLayerSwitchAndBitrateThrashGuard(
+  input: WebrtcRfc7741Rfc9626SvcDependencyDescriptorLayerSwitchAndBitrateThrashGuardInput
+): WebrtcRfc7741Rfc9626SvcDependencyDescriptorLayerSwitchAndBitrateThrashGuardResult {
+  if (
+    input.dependencyTemplateCount > 64 ||
+    input.decodeTargetLayerIndexOutOfBounds ||
+    input.extensionPayloadBytesExceedRemainingHeader
+  ) {
+    return {
+      allowed: false,
+      dependencyDescriptorHeaderSafe: false,
+      spatialLayerChainDecodable:
+        !input.upswitchOnNonKeyframeWithoutIntraRefresh &&
+        !input.interLayerReferenceBaseDroppedWhileDFlagSet,
+      bitrateAdaptationStable: input.spatialLayerSwitchesIn2SecWindow <= 3,
+      reason:
+        "RFC9626_AV1_SVC_DEPENDENCY_DESCRIPTOR_TEMPLATE_OR_DECODE_TARGET_OVERFLOW_BLOCKED",
+      actionCode:
+        "DROP_MALFORMED_RTP_SVC_DEPENDENCY_DESCRIPTOR_PACKET_AND_PRESERVE_SFU_PARSER",
+      policyCode:
+        "P152-WEBRTC-RTP-RFC7741-RFC9626-SVC-VP9-AV1-SPATIAL-TEMPORAL-LAYER-DEPENDENCY-DESCRIPTOR-OVERFLOW-MISSING-KEYFRAME-DISCARD-AND-BITRATE-THRASH-GUARD",
+    };
+  }
+
+  if (
+    (input.targetSpatialLayerId > input.currentSpatialLayerId &&
+      input.upswitchOnNonKeyframeWithoutIntraRefresh) ||
+    input.interLayerReferenceBaseDroppedWhileDFlagSet
+  ) {
+    return {
+      allowed: false,
+      dependencyDescriptorHeaderSafe: true,
+      spatialLayerChainDecodable: false,
+      bitrateAdaptationStable: input.spatialLayerSwitchesIn2SecWindow <= 3,
+      reason:
+        "RFC7741_RFC9628_SVC_SPATIAL_UPSWITCH_WITHOUT_KEYFRAME_OR_BROKEN_BASE_LAYER_BLOCKED",
+      actionCode:
+        "HOLD_CURRENT_DEC0DABLE_SPATIAL_LAYER_DROP_BROKEN_UPPER_LAYER_AND_SEND_RTCP_PLI",
+      policyCode:
+        "P152-WEBRTC-RTP-RFC7741-RFC9626-SVC-VP9-AV1-SPATIAL-TEMPORAL-LAYER-DEPENDENCY-DESCRIPTOR-OVERFLOW-MISSING-KEYFRAME-DISCARD-AND-BITRATE-THRASH-GUARD",
+    };
+  }
+
+  if (input.spatialLayerSwitchesIn2SecWindow > 3) {
+    return {
+      allowed: false,
+      dependencyDescriptorHeaderSafe: true,
+      spatialLayerChainDecodable: true,
+      bitrateAdaptationStable: false,
+      reason:
+        "SVC_SPATIAL_LAYER_HYSTERESIS_CLAMP_ON_RAPID_BWE_OSCILLATION_APPLIED",
+      actionCode:
+        "CLAMP_TO_LOWER_STABLE_SPATIAL_LAYER_AND_ENFORCE_2S_UPSWITCH_HYSTERESIS",
+      policyCode:
+        "P152-WEBRTC-RTP-RFC7741-RFC9626-SVC-VP9-AV1-SPATIAL-TEMPORAL-LAYER-DEPENDENCY-DESCRIPTOR-OVERFLOW-MISSING-KEYFRAME-DISCARD-AND-BITRATE-THRASH-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    dependencyDescriptorHeaderSafe: true,
+    spatialLayerChainDecodable: true,
+    bitrateAdaptationStable: true,
+    reason:
+      "WEBRTC_RFC7741_RFC9628_RFC9626_SVC_DEPENDENCY_DESCRIPTOR_AND_LAYER_SWITCH_HEALTHY",
+    actionCode: "FORWARD_SVC_SPATIAL_TEMPORAL_LAYER_PACKET",
+    policyCode:
+      "P152-WEBRTC-RTP-RFC7741-RFC9626-SVC-VP9-AV1-SPATIAL-TEMPORAL-LAYER-DEPENDENCY-DESCRIPTOR-OVERFLOW-MISSING-KEYFRAME-DISCARD-AND-BITRATE-THRASH-GUARD",
+  };
+}
+
+
 
 
 
