@@ -12045,6 +12045,206 @@ export function evaluateSipRfc3261DigestAuthNonceReplayAndQopDowngradeGuard(
   };
 }
 
+// ============================================================================
+// Stage 72 · P137 Precision Agriculture, Grain Elevator & Fertilizer Terminal
+// OSHA 29 CFR § 1910.272 Combustible Grain Dust & Bearing-Overheat Ignition
+// Interlock, Silo/Bin Entry Engulfment Auger LOTO (§ 1910.272(g)) & EPA RMP
+// 40 CFR Part 68 / OSHA § 1910.111 Anhydrous Ammonia Release Preemption Guard
+// ============================================================================
+export interface AgricultureGrainSiloOsha1910272DustEngulfmentAndAmmoniaGuardInput {
+  sessionId: string;
+  facilityOrSiloId: string;
+  anhydrousAmmoniaLeakPpmOrDustExplosionDetected: boolean;
+  epaRmp15MinEmergencyNoticeAndUpwindEvacuationActive: boolean;
+  workerInsideGrainBinOrSiloDetected: boolean;
+  requestedAugerConveyorStartOrBottomDischargeOpen: boolean;
+  osha1910272gLotoAndLifelineObserverVerified: boolean;
+  airborneGrainDustExceedsLelOrBearingTempHigh: boolean;
+  requestedHotWorkPermitOrBucketElevatorRestart: boolean;
+}
+
+export interface AgricultureGrainSiloOsha1910272DustEngulfmentAndAmmoniaGuardResult {
+  allowed: boolean;
+  ammoniaReleaseAndDustExplosionEmergencyEnforced: boolean;
+  siloBinEntryEngulfmentLotoVerified: boolean;
+  combustibleDustHotWorkAndBearingInterlockSafe: boolean;
+  reason:
+    | "EPA_40CFR68_OSHA_1910_111_ANHYDROUS_AMMONIA_RELEASE_OR_DUST_DEFLAGRATION_EMERGENCY_PREEMPTION"
+    | "OSHA_29CFR1910_272G_WORKER_IN_GRAIN_BIN_AUGER_OR_CONVEYOR_ENERGIZATION_ENGULFMENT_BLOCKED"
+    | "OSHA_29CFR1910_272_COMBUSTIBLE_GRAIN_DUST_ACCUMULATION_OR_BEARING_OVERHEAT_HOT_WORK_BLOCKED"
+    | "AGRICULTURE_GRAIN_SILO_OSHA_1910_272_AND_EPA_RMP_AMMONIA_SAFE";
+  actionCode: string;
+  policyCode: "P137-AGRICULTURE-GRAIN-FERTILIZER-OSHA-1910-272-COMBUSTIBLE-DUST-IGNITION-SILO-BIN-ENTRY-ENGULFMENT-LOTO-AND-EPA-RMP-ANHYDROUS-AMMONIA-RELEASE-GUARD";
+}
+
+export function evaluateAgricultureGrainSiloOsha1910272DustEngulfmentAndAmmoniaGuard(
+  input: AgricultureGrainSiloOsha1910272DustEngulfmentAndAmmoniaGuardInput,
+): AgricultureGrainSiloOsha1910272DustEngulfmentAndAmmoniaGuardResult {
+  if (
+    input.anhydrousAmmoniaLeakPpmOrDustExplosionDetected &&
+    !input.epaRmp15MinEmergencyNoticeAndUpwindEvacuationActive
+  ) {
+    return {
+      allowed: false,
+      ammoniaReleaseAndDustExplosionEmergencyEnforced: false,
+      siloBinEntryEngulfmentLotoVerified: true,
+      combustibleDustHotWorkAndBearingInterlockSafe: true,
+      reason:
+        "EPA_40CFR68_OSHA_1910_111_ANHYDROUS_AMMONIA_RELEASE_OR_DUST_DEFLAGRATION_EMERGENCY_PREEMPTION",
+      actionCode:
+        "PREEMPT_ROUTINE_CALL_TRIGGER_ANHYDROUS_AMMONIA_SIREN_AND_NOTIFY_NRC_LEPC_15MIN",
+      policyCode:
+        "P137-AGRICULTURE-GRAIN-FERTILIZER-OSHA-1910-272-COMBUSTIBLE-DUST-IGNITION-SILO-BIN-ENTRY-ENGULFMENT-LOTO-AND-EPA-RMP-ANHYDROUS-AMMONIA-RELEASE-GUARD",
+    };
+  }
+
+  if (
+    input.workerInsideGrainBinOrSiloDetected &&
+    (input.requestedAugerConveyorStartOrBottomDischargeOpen ||
+      !input.osha1910272gLotoAndLifelineObserverVerified)
+  ) {
+    return {
+      allowed: false,
+      ammoniaReleaseAndDustExplosionEmergencyEnforced: true,
+      siloBinEntryEngulfmentLotoVerified: false,
+      combustibleDustHotWorkAndBearingInterlockSafe: true,
+      reason:
+        "OSHA_29CFR1910_272G_WORKER_IN_GRAIN_BIN_AUGER_OR_CONVEYOR_ENERGIZATION_ENGULFMENT_BLOCKED",
+      actionCode:
+        "HARD_LOCK_SILO_AUGER_DISCHARGE_ENFORCE_OSHA_1910_272G_ENGULFMENT_LOTO",
+      policyCode:
+        "P137-AGRICULTURE-GRAIN-FERTILIZER-OSHA-1910-272-COMBUSTIBLE-DUST-IGNITION-SILO-BIN-ENTRY-ENGULFMENT-LOTO-AND-EPA-RMP-ANHYDROUS-AMMONIA-RELEASE-GUARD",
+    };
+  }
+
+  if (
+    input.airborneGrainDustExceedsLelOrBearingTempHigh &&
+    input.requestedHotWorkPermitOrBucketElevatorRestart
+  ) {
+    return {
+      allowed: false,
+      ammoniaReleaseAndDustExplosionEmergencyEnforced: true,
+      siloBinEntryEngulfmentLotoVerified: true,
+      combustibleDustHotWorkAndBearingInterlockSafe: false,
+      reason:
+        "OSHA_29CFR1910_272_COMBUSTIBLE_GRAIN_DUST_ACCUMULATION_OR_BEARING_OVERHEAT_HOT_WORK_BLOCKED",
+      actionCode:
+        "BLOCK_ELEVATOR_RESTART_OR_HOT_WORK_UNDER_COMBUSTIBLE_DUST_OR_BEARING_OVERHEAT",
+      policyCode:
+        "P137-AGRICULTURE-GRAIN-FERTILIZER-OSHA-1910-272-COMBUSTIBLE-DUST-IGNITION-SILO-BIN-ENTRY-ENGULFMENT-LOTO-AND-EPA-RMP-ANHYDROUS-AMMONIA-RELEASE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    ammoniaReleaseAndDustExplosionEmergencyEnforced: true,
+    siloBinEntryEngulfmentLotoVerified: true,
+    combustibleDustHotWorkAndBearingInterlockSafe: true,
+    reason: "AGRICULTURE_GRAIN_SILO_OSHA_1910_272_AND_EPA_RMP_AMMONIA_SAFE",
+    actionCode: "ALLOW_VERIFIED_GRAIN_SILO_AND_AGRI_FACILITY_OPERATION",
+    policyCode:
+      "P137-AGRICULTURE-GRAIN-FERTILIZER-OSHA-1910-272-COMBUSTIBLE-DUST-IGNITION-SILO-BIN-ENTRY-ENGULFMENT-LOTO-AND-EPA-RMP-ANHYDROUS-AMMONIA-RELEASE-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 72 · P138 WebRTC / RTP RFC 3550 / RFC 3611 RTCP Receiver Report (RR) &
+// Extended Report (XR) Report-Block Count (RC) Buffer Overflow, LSR/DLSR
+// Wallclock Underflow / Negative RTT Wrap & Spoofed Fraction-Lost BWE Guard
+// ============================================================================
+export interface WebrtcRtpRfc3550Rfc3611RtcpXrReportBlockAndRttWrapGuardInput {
+  sessionId: string;
+  declaredReportBlockCountRc: number;
+  availablePacketBytesForReportBlocks: number;
+  dlsrPlusLsrExceedsArrivalNtpMiddle32OrFutureLsrDetected: boolean;
+  computedRttMs: number;
+  spoofed100PctFractionLostWithValidSrtpMediaFlowDetected: boolean;
+}
+
+export interface WebrtcRtpRfc3550Rfc3611RtcpXrReportBlockAndRttWrapGuardResult {
+  allowed: boolean;
+  rtcpReportBlockCountAndLengthValid: boolean;
+  lsrDlsrRttCalculationMonotonic: boolean;
+  fractionLostAndVoipMetricsAuthentic: boolean;
+  reason:
+    | "RFC3550_RFC3611_RTCP_RR_XR_REPORT_COUNT_OR_BLOCK_LENGTH_EXCEEDS_PACKET_BOUNDS_BLOCKED"
+    | "RFC3550_RTCP_LSR_DLSR_WALLCLOCK_UNDERFLOW_OR_NEGATIVE_RTT_WRAP_INJECTION_BLOCKED"
+    | "RFC3550_RFC3611_SPOOFED_FRACTION_LOST_OR_VOIP_METRICS_BWE_THROTTLE_SABOTAGE_BLOCKED"
+    | "WEBRTC_RTP_RFC3550_RFC3611_RTCP_RR_XR_TELEMETRY_HEALTHY";
+  actionCode: string;
+  policyCode: "P138-WEBRTC-RTP-RFC3550-RFC3611-RTCP-XR-RR-REPORT-BLOCK-OVERFLOW-DLSR-RTT-WRAP-UNDERFLOW-AND-SPOOFED-FRACTION-LOST-BWE-SABOTAGE-GUARD";
+}
+
+export function evaluateWebrtcRtpRfc3550Rfc3611RtcpXrReportBlockAndRttWrapGuard(
+  input: WebrtcRtpRfc3550Rfc3611RtcpXrReportBlockAndRttWrapGuardInput,
+): WebrtcRtpRfc3550Rfc3611RtcpXrReportBlockAndRttWrapGuardResult {
+  if (
+    input.declaredReportBlockCountRc < 0 ||
+    input.declaredReportBlockCountRc > 31 ||
+    input.declaredReportBlockCountRc * 24 >
+      input.availablePacketBytesForReportBlocks
+  ) {
+    return {
+      allowed: false,
+      rtcpReportBlockCountAndLengthValid: false,
+      lsrDlsrRttCalculationMonotonic: true,
+      fractionLostAndVoipMetricsAuthentic: true,
+      reason:
+        "RFC3550_RFC3611_RTCP_RR_XR_REPORT_COUNT_OR_BLOCK_LENGTH_EXCEEDS_PACKET_BOUNDS_BLOCKED",
+      actionCode:
+        "DROP_TRUNCATED_RTCP_RR_XR_REPORT_BLOCK_AND_ENFORCE_24BYTE_RC_BOUNDS",
+      policyCode:
+        "P138-WEBRTC-RTP-RFC3550-RFC3611-RTCP-XR-RR-REPORT-BLOCK-OVERFLOW-DLSR-RTT-WRAP-UNDERFLOW-AND-SPOOFED-FRACTION-LOST-BWE-SABOTAGE-GUARD",
+    };
+  }
+
+  if (
+    input.dlsrPlusLsrExceedsArrivalNtpMiddle32OrFutureLsrDetected ||
+    input.computedRttMs <= 0 ||
+    input.computedRttMs > 10000
+  ) {
+    return {
+      allowed: false,
+      rtcpReportBlockCountAndLengthValid: true,
+      lsrDlsrRttCalculationMonotonic: false,
+      fractionLostAndVoipMetricsAuthentic: true,
+      reason:
+        "RFC3550_RTCP_LSR_DLSR_WALLCLOCK_UNDERFLOW_OR_NEGATIVE_RTT_WRAP_INJECTION_BLOCKED",
+      actionCode:
+        "DISCARD_WRAPPED_DLSR_LSR_RTT_SAMPLE_AND_CLAMP_SMOOTHED_RTT_ESTIMATE",
+      policyCode:
+        "P138-WEBRTC-RTP-RFC3550-RFC3611-RTCP-XR-RR-REPORT-BLOCK-OVERFLOW-DLSR-RTT-WRAP-UNDERFLOW-AND-SPOOFED-FRACTION-LOST-BWE-SABOTAGE-GUARD",
+    };
+  }
+
+  if (input.spoofed100PctFractionLostWithValidSrtpMediaFlowDetected) {
+    return {
+      allowed: false,
+      rtcpReportBlockCountAndLengthValid: true,
+      lsrDlsrRttCalculationMonotonic: true,
+      fractionLostAndVoipMetricsAuthentic: false,
+      reason:
+        "RFC3550_RFC3611_SPOOFED_FRACTION_LOST_OR_VOIP_METRICS_BWE_THROTTLE_SABOTAGE_BLOCKED",
+      actionCode:
+        "IGNORE_SPOOFED_RTCP_RR_FRACTION_LOST_AND_CROSSCHECK_TWCC_SRTP_COUNTERS",
+      policyCode:
+        "P138-WEBRTC-RTP-RFC3550-RFC3611-RTCP-XR-RR-REPORT-BLOCK-OVERFLOW-DLSR-RTT-WRAP-UNDERFLOW-AND-SPOOFED-FRACTION-LOST-BWE-SABOTAGE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rtcpReportBlockCountAndLengthValid: true,
+    lsrDlsrRttCalculationMonotonic: true,
+    fractionLostAndVoipMetricsAuthentic: true,
+    reason: "WEBRTC_RTP_RFC3550_RFC3611_RTCP_RR_XR_TELEMETRY_HEALTHY",
+    actionCode: "ALLOW_VERIFIED_RFC3550_RFC3611_RTCP_RR_XR_TELEMETRY",
+    policyCode:
+      "P138-WEBRTC-RTP-RFC3550-RFC3611-RTCP-XR-RR-REPORT-BLOCK-OVERFLOW-DLSR-RTT-WRAP-UNDERFLOW-AND-SPOOFED-FRACTION-LOST-BWE-SABOTAGE-GUARD",
+  };
+}
+
+
 
 
 
