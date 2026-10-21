@@ -12836,6 +12836,210 @@ export function evaluateWebrtcRtpRfc4585Rfc5104AvpfNackPliStormAndRtxOsnGuard(
   };
 }
 
+// ============================================================================
+// Stage 76 · P145 Smart Maritime Port, Container Terminal & LNG Bunkering
+// USCG 33 CFR Part 105 / 127 / 160 ISPS MARSEC Breach, SIGTTO / ISO 20519 LNG
+// Bunkering ESD / PERC Cryogenic Breakaway, OSHA 29 CFR 1917.45 STS Gantry
+// Crane High-Wind Anemometer & IMO IMDG Code / SOLAS VGM Segregation Guard
+// ============================================================================
+export interface MaritimePortUscg33Cfr105160LngBunkeringAndHazmatCraneGuardInput {
+  terminalBerthId: string;
+  lngBunkeringCryoLeakOrSigttoEsdLinkTrip: boolean;
+  marsecSecurityBreachOr33Cfr160DeviationEmergency: boolean;
+  requestsStsCraneHoistOrTrolleyMove: boolean;
+  anemometerWindSpeedMps: number;
+  maxOperatingWindSpeedMps: number;
+  spreaderTwistlocksAllFourSeatedAndLocked: boolean;
+  requestsImdgContainerStowOrLoad: boolean;
+  imdgSegregationTableAndReeferPowerVerified: boolean;
+  solasVgmWeightCertificateVerified: boolean;
+}
+
+export interface MaritimePortUscg33Cfr105160LngBunkeringAndHazmatCraneGuardResult {
+  allowed: boolean;
+  lngBunkeringEsdAndMarsecSafe: boolean;
+  stsCraneWindAndTwistlockInterlockSafe: boolean;
+  imdgSegregationAndSolasVgmVerified: boolean;
+  reason:
+    | "USCG_33CFR127_SIGTTO_LNG_BUNKERING_CRYO_LEAK_ESD_PERC_OR_ISPS_MARSEC_EMERGENCY_PREEMPTED"
+    | "OSHA_29CFR1917_45_STS_GANTRY_CRANE_HIGH_WIND_CUTOFF_OR_UNSEATED_SPREADER_TWISTLOCK_HOIST_BLOCKED"
+    | "IMO_IMDG_CODE_HAZMAT_SEGREGATION_CONFLICT_OR_MISSING_SOLAS_VI2_VGM_CERTIFICATE_STOW_BLOCKED"
+    | "MARITIME_PORT_USCG_33CFR105_127_LNG_BUNKERING_AND_STS_CRANE_OPERATION_SAFE";
+  actionCode: string;
+  policyCode: "P145-MARITIME-PORT-TERMINAL-USCG-33CFR105-160-ISPS-MARSEC-BREACH-SIGTTO-LNG-BUNKERING-ERS-PERC-CRYOGENIC-ESD-AND-IMDG-HAZMAT-CONTAINER-CRANE-HIGH-WIND-GUARD";
+}
+
+export function evaluateMaritimePortUscg33Cfr105160LngBunkeringAndHazmatCraneGuard(
+  input: MaritimePortUscg33Cfr105160LngBunkeringAndHazmatCraneGuardInput,
+): MaritimePortUscg33Cfr105160LngBunkeringAndHazmatCraneGuardResult {
+  if (
+    input.lngBunkeringCryoLeakOrSigttoEsdLinkTrip ||
+    input.marsecSecurityBreachOr33Cfr160DeviationEmergency
+  ) {
+    return {
+      allowed: false,
+      lngBunkeringEsdAndMarsecSafe: false,
+      stsCraneWindAndTwistlockInterlockSafe: true,
+      imdgSegregationAndSolasVgmVerified: true,
+      reason:
+        "USCG_33CFR127_SIGTTO_LNG_BUNKERING_CRYO_LEAK_ESD_PERC_OR_ISPS_MARSEC_EMERGENCY_PREEMPTED",
+      actionCode:
+        "PREEMPT_VOICE_TRIGGER_LNG_ESD1_ESD2_PERC_DRY_BREAK_AND_ALERT_USCG_COTP_PFSO",
+      policyCode:
+        "P145-MARITIME-PORT-TERMINAL-USCG-33CFR105-160-ISPS-MARSEC-BREACH-SIGTTO-LNG-BUNKERING-ERS-PERC-CRYOGENIC-ESD-AND-IMDG-HAZMAT-CONTAINER-CRANE-HIGH-WIND-GUARD",
+    };
+  }
+
+  if (
+    input.requestsStsCraneHoistOrTrolleyMove &&
+    (input.anemometerWindSpeedMps > input.maxOperatingWindSpeedMps ||
+      !input.spreaderTwistlocksAllFourSeatedAndLocked)
+  ) {
+    return {
+      allowed: false,
+      lngBunkeringEsdAndMarsecSafe: true,
+      stsCraneWindAndTwistlockInterlockSafe: false,
+      imdgSegregationAndSolasVgmVerified: true,
+      reason:
+        "OSHA_29CFR1917_45_STS_GANTRY_CRANE_HIGH_WIND_CUTOFF_OR_UNSEATED_SPREADER_TWISTLOCK_HOIST_BLOCKED",
+      actionCode:
+        "HARD_LOCK_STS_GANTRY_HOIST_ENGAGE_STORM_RAIL_BRAKES_AND_VERIFY_4_TWISTLOCKS",
+      policyCode:
+        "P145-MARITIME-PORT-TERMINAL-USCG-33CFR105-160-ISPS-MARSEC-BREACH-SIGTTO-LNG-BUNKERING-ERS-PERC-CRYOGENIC-ESD-AND-IMDG-HAZMAT-CONTAINER-CRANE-HIGH-WIND-GUARD",
+    };
+  }
+
+  if (
+    input.requestsImdgContainerStowOrLoad &&
+    (!input.imdgSegregationTableAndReeferPowerVerified ||
+      !input.solasVgmWeightCertificateVerified)
+  ) {
+    return {
+      allowed: false,
+      lngBunkeringEsdAndMarsecSafe: true,
+      stsCraneWindAndTwistlockInterlockSafe: true,
+      imdgSegregationAndSolasVgmVerified: false,
+      reason:
+        "IMO_IMDG_CODE_HAZMAT_SEGREGATION_CONFLICT_OR_MISSING_SOLAS_VI2_VGM_CERTIFICATE_STOW_BLOCKED",
+      actionCode:
+        "BLOCK_TOS_STOWAGE_SLOT_QUARANTINE_HAZMAT_BOX_AND_REQUIRE_SOLAS_VGM_AND_IMDG_CHECK",
+      policyCode:
+        "P145-MARITIME-PORT-TERMINAL-USCG-33CFR105-160-ISPS-MARSEC-BREACH-SIGTTO-LNG-BUNKERING-ERS-PERC-CRYOGENIC-ESD-AND-IMDG-HAZMAT-CONTAINER-CRANE-HIGH-WIND-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    lngBunkeringEsdAndMarsecSafe: true,
+    stsCraneWindAndTwistlockInterlockSafe: true,
+    imdgSegregationAndSolasVgmVerified: true,
+    reason:
+      "MARITIME_PORT_USCG_33CFR105_127_LNG_BUNKERING_AND_STS_CRANE_OPERATION_SAFE",
+    actionCode:
+      "ALLOW_VERIFIED_MARITIME_TERMINAL_CRANE_AND_BUNKERING_OPERATION",
+    policyCode:
+      "P145-MARITIME-PORT-TERMINAL-USCG-33CFR105-160-ISPS-MARSEC-BREACH-SIGTTO-LNG-BUNKERING-ERS-PERC-CRYOGENIC-ESD-AND-IMDG-HAZMAT-CONTAINER-CRANE-HIGH-WIND-GUARD",
+  };
+}
+
+// ============================================================================
+// Stage 76 · P146 SIP RFC 3261 / RFC 6026 INVITE 2xx Retransmission Timer G/H
+// Amplification Storm, Via branch=z9hG4bK Magic Cookie & Transaction Collision,
+// and Spoofed Out-of-Dialog ACK / BYE Call Teardown Guard
+// ============================================================================
+export interface SipRfc3261Rfc6026Invite2xxRetransmissionAckLoopAndBranchIdGuardInput {
+  callId: string;
+  viaBranchStartsWithZ9hG4bKMagicCookie: boolean;
+  viaBranchCollisionAcrossActiveTransactions: boolean;
+  unacknowledged2xxDialogCount: number;
+  maxAllowedUnacknowledged2xxDialogs: number;
+  timerG2xxRetransmissionCount: number;
+  dialogTagsAndRouteSetTransportBound: boolean;
+}
+
+export interface SipRfc3261Rfc6026Invite2xxRetransmissionAckLoopAndBranchIdGuardResult {
+  allowed: boolean;
+  viaBranchMagicCookieAndEntropyValid: boolean;
+  timerG2xxRetransmissionBounded: boolean;
+  dialogTagAndRouteSetBindingVerified: boolean;
+  reason:
+    | "RFC3261_VIA_BRANCH_MISSING_Z9HG4BK_MAGIC_COOKIE_FALLBACK_DOS_OR_TRANSACTION_ID_COLLISION_BLOCKED"
+    | "RFC3261_RFC6026_UNACKNOWLEDGED_2XX_TIMER_G_H_RETRANSMISSION_STORM_AND_PORT_PINNING_BLOCKED"
+    | "RFC3261_SPOOFED_DIALOG_TAG_OR_UNBOUND_ROUTE_SET_ROGUE_ACK_BYE_TEARDOWN_BLOCKED"
+    | "SIP_RFC3261_RFC6026_VIA_BRANCH_INVITE_2XX_ACK_AND_DIALOG_BINDING_HEALTHY";
+  actionCode: string;
+  policyCode: "P146-SIP-RFC3261-RFC6026-INVITE-TIMER-G-H-2XX-RETRANSMISSION-AMPLIFICATION-MISSING-RFC3261-MAGIC-COOKIE-Z9HG4BK-BRANCH-COLLISION-AND-ROGUE-ACK-BYE-TEARDOWN-GUARD";
+}
+
+export function evaluateSipRfc3261Rfc6026Invite2xxRetransmissionAckLoopAndBranchIdGuard(
+  input: SipRfc3261Rfc6026Invite2xxRetransmissionAckLoopAndBranchIdGuardInput,
+): SipRfc3261Rfc6026Invite2xxRetransmissionAckLoopAndBranchIdGuardResult {
+  if (
+    !input.viaBranchStartsWithZ9hG4bKMagicCookie ||
+    input.viaBranchCollisionAcrossActiveTransactions
+  ) {
+    return {
+      allowed: false,
+      viaBranchMagicCookieAndEntropyValid: false,
+      timerG2xxRetransmissionBounded: true,
+      dialogTagAndRouteSetBindingVerified: true,
+      reason:
+        "RFC3261_VIA_BRANCH_MISSING_Z9HG4BK_MAGIC_COOKIE_FALLBACK_DOS_OR_TRANSACTION_ID_COLLISION_BLOCKED",
+      actionCode:
+        "REJECT_SIP_400_BAD_REQUEST_ENFORCE_RFC3261_Z9HG4BK_COOKIE_AND_CSPRNG_BRANCH_ID",
+      policyCode:
+        "P146-SIP-RFC3261-RFC6026-INVITE-TIMER-G-H-2XX-RETRANSMISSION-AMPLIFICATION-MISSING-RFC3261-MAGIC-COOKIE-Z9HG4BK-BRANCH-COLLISION-AND-ROGUE-ACK-BYE-TEARDOWN-GUARD",
+    };
+  }
+
+  if (
+    input.unacknowledged2xxDialogCount >
+      input.maxAllowedUnacknowledged2xxDialogs ||
+    input.timerG2xxRetransmissionCount > 7
+  ) {
+    return {
+      allowed: false,
+      viaBranchMagicCookieAndEntropyValid: true,
+      timerG2xxRetransmissionBounded: false,
+      dialogTagAndRouteSetBindingVerified: true,
+      reason:
+        "RFC3261_RFC6026_UNACKNOWLEDGED_2XX_TIMER_G_H_RETRANSMISSION_STORM_AND_PORT_PINNING_BLOCKED",
+      actionCode:
+        "TERMINATE_HALF_OPEN_ACCEPTED_INVITE_SEND_BYE_AND_RELEASE_PINNED_SRTP_PORTS",
+      policyCode:
+        "P146-SIP-RFC3261-RFC6026-INVITE-TIMER-G-H-2XX-RETRANSMISSION-AMPLIFICATION-MISSING-RFC3261-MAGIC-COOKIE-Z9HG4BK-BRANCH-COLLISION-AND-ROGUE-ACK-BYE-TEARDOWN-GUARD",
+    };
+  }
+
+  if (!input.dialogTagsAndRouteSetTransportBound) {
+    return {
+      allowed: false,
+      viaBranchMagicCookieAndEntropyValid: true,
+      timerG2xxRetransmissionBounded: true,
+      dialogTagAndRouteSetBindingVerified: false,
+      reason:
+        "RFC3261_SPOOFED_DIALOG_TAG_OR_UNBOUND_ROUTE_SET_ROGUE_ACK_BYE_TEARDOWN_BLOCKED",
+      actionCode:
+        "REJECT_SIP_481_CALL_TRANSACTION_DOES_NOT_EXIST_AND_PRESERVE_ACTIVE_CALL",
+      policyCode:
+        "P146-SIP-RFC3261-RFC6026-INVITE-TIMER-G-H-2XX-RETRANSMISSION-AMPLIFICATION-MISSING-RFC3261-MAGIC-COOKIE-Z9HG4BK-BRANCH-COLLISION-AND-ROGUE-ACK-BYE-TEARDOWN-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    viaBranchMagicCookieAndEntropyValid: true,
+    timerG2xxRetransmissionBounded: true,
+    dialogTagAndRouteSetBindingVerified: true,
+    reason:
+      "SIP_RFC3261_RFC6026_VIA_BRANCH_INVITE_2XX_ACK_AND_DIALOG_BINDING_HEALTHY",
+    actionCode:
+      "ALLOW_VERIFIED_SIP_RFC3261_RFC6026_INVITE_TRANSACTION_AND_DIALOG",
+    policyCode:
+      "P146-SIP-RFC3261-RFC6026-INVITE-TIMER-G-H-2XX-RETRANSMISSION-AMPLIFICATION-MISSING-RFC3261-MAGIC-COOKIE-Z9HG4BK-BRANCH-COLLISION-AND-ROGUE-ACK-BYE-TEARDOWN-GUARD",
+  };
+}
+
 
 
 
