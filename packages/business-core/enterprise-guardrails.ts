@@ -11057,6 +11057,202 @@ export function evaluateWebrtcRtpRfc2198RedTimestampOffsetAndNestingBombGuard(
   };
 }
 
+/**
+ * Stage 67 (Section 4.75):
+ * 1) P127 — Municipal Water & Wastewater Treatment SCADA AWIA Section 2013 / EPA SDWA § 1433 & 40 CFR § 141.202 Tier 1 24-Hour Boil Water Advisory, NSF/ANSI 60 Chemical Dosing Overfeed Interlock (Oldsmar NaOH Defense) & RPZ Backflow Guard
+ * 2) P128 — Carrier & Enterprise SIP RFC 3263 DNS NAPTR/SRV SIPS Transport Downgrade Poisoning, Dead-SBC Timer B Blackhole Fast Failover & Private-Subnet SSRF Guard
+ */
+export interface WaterUtilityAwiaEpaSdwaScadaChemicalDosingAndBoilWaterGuardInput {
+  sessionId: string;
+  facilityId: string;
+  acuteContaminationOrBelow20PsiOrCyberIntrusionDetected: boolean;
+  statePrimacyAndTier1BoilWaterNoticeDispatched: boolean;
+  involvesChemicalDosingSetpointChange: boolean;
+  requestedDoseMgPerL: number;
+  maxSafeNsf60DoseMgPerL: number;
+  inlinePhConductivityHardwareInterlockVerified: boolean;
+  dualLicensedOperatorConfirmed: boolean;
+  involvesCrossConnectionOrFlushingValveOpen: boolean;
+  rpzBackflowPreventerDifferentialSafe: boolean;
+}
+
+export interface WaterUtilityAwiaEpaSdwaScadaChemicalDosingAndBoilWaterGuardResult {
+  allowed: boolean;
+  epaTier1BoilWaterAndAwiaNoticeEnforced: boolean;
+  nsf60ChemicalDosingInterlockVerified: boolean;
+  rpzBackflowPreventionVerified: boolean;
+  reason:
+    | "EPA_40CFR141_202_ACUTE_WATER_CONTAMINATION_OR_LOW_PRESSURE_MISSING_TIER1_BOIL_WATER_AND_STATE_NOTICE"
+    | "SCADA_CHEMICAL_DOSING_OVERFEED_EXCEEDS_NSF60_CEILING_OR_MISSING_INLINE_ANALYZER_INTERLOCK_BLOCKED"
+    | "UNSAFE_CROSS_CONNECTION_BACKFLOW_DIFFERENTIAL_VALVE_OPEN_BLOCKED"
+    | "EPA_SDWA_AWIA_WATER_SCADA_CHEMICAL_DOSING_AND_BACKFLOW_COMPLIANT";
+  actionCode: string;
+  policyCode: "P127-WATER-WASTEWATER-AWIA-EPA-SDWA-SECTION1433-SCADA-CHEMICAL-DOSING-OVERFEED-BOIL-WATER-ADVISORY-AND-BACKFLOW-GUARD";
+}
+
+export function evaluateWaterUtilityAwiaEpaSdwaScadaChemicalDosingAndBoilWaterGuard(
+  input: WaterUtilityAwiaEpaSdwaScadaChemicalDosingAndBoilWaterGuardInput,
+): WaterUtilityAwiaEpaSdwaScadaChemicalDosingAndBoilWaterGuardResult {
+  if (
+    input.acuteContaminationOrBelow20PsiOrCyberIntrusionDetected &&
+    !input.statePrimacyAndTier1BoilWaterNoticeDispatched
+  ) {
+    return {
+      allowed: false,
+      epaTier1BoilWaterAndAwiaNoticeEnforced: false,
+      nsf60ChemicalDosingInterlockVerified: true,
+      rpzBackflowPreventionVerified: true,
+      reason:
+        "EPA_40CFR141_202_ACUTE_WATER_CONTAMINATION_OR_LOW_PRESSURE_MISSING_TIER1_BOIL_WATER_AND_STATE_NOTICE",
+      actionCode:
+        "PREEMPT_ROUTINE_UTILITY_CALL_AND_DISPATCH_TIER1_BOIL_WATER_ADVISORY_AND_EPA_STATE_BRIDGE",
+      policyCode:
+        "P127-WATER-WASTEWATER-AWIA-EPA-SDWA-SECTION1433-SCADA-CHEMICAL-DOSING-OVERFEED-BOIL-WATER-ADVISORY-AND-BACKFLOW-GUARD",
+    };
+  }
+
+  if (
+    input.involvesChemicalDosingSetpointChange &&
+    (input.requestedDoseMgPerL > input.maxSafeNsf60DoseMgPerL ||
+      !input.inlinePhConductivityHardwareInterlockVerified ||
+      !input.dualLicensedOperatorConfirmed)
+  ) {
+    return {
+      allowed: false,
+      epaTier1BoilWaterAndAwiaNoticeEnforced: true,
+      nsf60ChemicalDosingInterlockVerified: false,
+      rpzBackflowPreventionVerified: true,
+      reason:
+        "SCADA_CHEMICAL_DOSING_OVERFEED_EXCEEDS_NSF60_CEILING_OR_MISSING_INLINE_ANALYZER_INTERLOCK_BLOCKED",
+      actionCode:
+        "LOCK_CHEMICAL_METERING_PUMP_AT_BASELINE_AND_TRIGGER_SCADA_OVERFEED_ALARM",
+      policyCode:
+        "P127-WATER-WASTEWATER-AWIA-EPA-SDWA-SECTION1433-SCADA-CHEMICAL-DOSING-OVERFEED-BOIL-WATER-ADVISORY-AND-BACKFLOW-GUARD",
+    };
+  }
+
+  if (
+    input.involvesCrossConnectionOrFlushingValveOpen &&
+    !input.rpzBackflowPreventerDifferentialSafe
+  ) {
+    return {
+      allowed: false,
+      epaTier1BoilWaterAndAwiaNoticeEnforced: true,
+      nsf60ChemicalDosingInterlockVerified: true,
+      rpzBackflowPreventionVerified: false,
+      reason: "UNSAFE_CROSS_CONNECTION_BACKFLOW_DIFFERENTIAL_VALVE_OPEN_BLOCKED",
+      actionCode:
+        "HOLD_DISTRIBUTION_VALVE_CLOSED_AND_ISOLATE_POTABLE_WATER_MAIN",
+      policyCode:
+        "P127-WATER-WASTEWATER-AWIA-EPA-SDWA-SECTION1433-SCADA-CHEMICAL-DOSING-OVERFEED-BOIL-WATER-ADVISORY-AND-BACKFLOW-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    epaTier1BoilWaterAndAwiaNoticeEnforced: true,
+    nsf60ChemicalDosingInterlockVerified: true,
+    rpzBackflowPreventionVerified: true,
+    reason: "EPA_SDWA_AWIA_WATER_SCADA_CHEMICAL_DOSING_AND_BACKFLOW_COMPLIANT",
+    actionCode: "ALLOW_VERIFIED_WATER_TREATMENT_SCADA_COMMAND",
+    policyCode:
+      "P127-WATER-WASTEWATER-AWIA-EPA-SDWA-SECTION1433-SCADA-CHEMICAL-DOSING-OVERFEED-BOIL-WATER-ADVISORY-AND-BACKFLOW-GUARD",
+  };
+}
+
+export interface SipRfc3263DnsNaptrSrvTransportDowngradeAndFailoverGuardInput {
+  sessionId: string;
+  sipsUriOrTlsTransportMandatory: boolean;
+  resolvedNaptrServiceDowngradedToCleartext: boolean;
+  dnssecAuthenticatedDataVerified: boolean;
+  primarySrvTargetUnreachableOr503: boolean;
+  failedOverToNextSrvTargetWithin150ms: boolean;
+  unhealthySrvTargetQuarantinedForRetryAfter: boolean;
+  resolvedSrvTargetInPrivateOrLoopbackRange: boolean;
+}
+
+export interface SipRfc3263DnsNaptrSrvTransportDowngradeAndFailoverGuardResult {
+  allowed: boolean;
+  rfc3263SipsTlsTransportPreserved: boolean;
+  rfc3263SrvFastFailoverHealthy: boolean;
+  rfc3263SrvTargetEgressSafe: boolean;
+  reason:
+    | "RFC3263_SIPS_NAPTR_SERVICE_DOWNGRADE_TO_CLEARTEXT_UDP_OR_UNSIGNED_DNSSEC_BLOCKED"
+    | "RFC3263_PRIMARY_SBC_BLACKHOLE_MISSING_FAST_SRV_FAILOVER_OR_503_QUARANTINE"
+    | "RFC3263_SRV_TARGET_RESOLVES_TO_PRIVATE_OR_LOOPBACK_SSRF_ADDRESS_BLOCKED"
+    | "SIP_RFC3263_DNS_NAPTR_SRV_ROUTING_AND_FAILOVER_HEALTHY";
+  actionCode: string;
+  policyCode: "P128-SIP-RFC3263-DNS-NAPTR-SRV-TRANSPORT-DOWNGRADE-POISONING-AND-DEAD-SBC-BLACKHOLE-FAILOVER-GUARD";
+}
+
+export function evaluateSipRfc3263DnsNaptrSrvTransportDowngradeAndFailoverGuard(
+  input: SipRfc3263DnsNaptrSrvTransportDowngradeAndFailoverGuardInput,
+): SipRfc3263DnsNaptrSrvTransportDowngradeAndFailoverGuardResult {
+  if (
+    input.sipsUriOrTlsTransportMandatory &&
+    (input.resolvedNaptrServiceDowngradedToCleartext ||
+      !input.dnssecAuthenticatedDataVerified)
+  ) {
+    return {
+      allowed: false,
+      rfc3263SipsTlsTransportPreserved: false,
+      rfc3263SrvFastFailoverHealthy: true,
+      rfc3263SrvTargetEgressSafe: true,
+      reason:
+        "RFC3263_SIPS_NAPTR_SERVICE_DOWNGRADE_TO_CLEARTEXT_UDP_OR_UNSIGNED_DNSSEC_BLOCKED",
+      actionCode:
+        "REJECT_DOWNGRADED_NAPTR_RECORD_AND_ENFORCE_SIPS_D2T_TLS_TRANSPORT",
+      policyCode:
+        "P128-SIP-RFC3263-DNS-NAPTR-SRV-TRANSPORT-DOWNGRADE-POISONING-AND-DEAD-SBC-BLACKHOLE-FAILOVER-GUARD",
+    };
+  }
+
+  if (
+    input.primarySrvTargetUnreachableOr503 &&
+    (!input.failedOverToNextSrvTargetWithin150ms ||
+      !input.unhealthySrvTargetQuarantinedForRetryAfter)
+  ) {
+    return {
+      allowed: false,
+      rfc3263SipsTlsTransportPreserved: true,
+      rfc3263SrvFastFailoverHealthy: false,
+      rfc3263SrvTargetEgressSafe: true,
+      reason:
+        "RFC3263_PRIMARY_SBC_BLACKHOLE_MISSING_FAST_SRV_FAILOVER_OR_503_QUARANTINE",
+      actionCode:
+        "QUARANTINE_DEAD_SBC_SRV_TUPLE_AND_FAILOVER_TO_NEXT_PRIORITY_WEIGHT_SBC",
+      policyCode:
+        "P128-SIP-RFC3263-DNS-NAPTR-SRV-TRANSPORT-DOWNGRADE-POISONING-AND-DEAD-SBC-BLACKHOLE-FAILOVER-GUARD",
+    };
+  }
+
+  if (input.resolvedSrvTargetInPrivateOrLoopbackRange) {
+    return {
+      allowed: false,
+      rfc3263SipsTlsTransportPreserved: true,
+      rfc3263SrvFastFailoverHealthy: true,
+      rfc3263SrvTargetEgressSafe: false,
+      reason:
+        "RFC3263_SRV_TARGET_RESOLVES_TO_PRIVATE_OR_LOOPBACK_SSRF_ADDRESS_BLOCKED",
+      actionCode: "BLOCK_SIP_SIGNALING_EGRESS_TO_INTERNAL_MANAGEMENT_SUBNET",
+      policyCode:
+        "P128-SIP-RFC3263-DNS-NAPTR-SRV-TRANSPORT-DOWNGRADE-POISONING-AND-DEAD-SBC-BLACKHOLE-FAILOVER-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc3263SipsTlsTransportPreserved: true,
+    rfc3263SrvFastFailoverHealthy: true,
+    rfc3263SrvTargetEgressSafe: true,
+    reason: "SIP_RFC3263_DNS_NAPTR_SRV_ROUTING_AND_FAILOVER_HEALTHY",
+    actionCode: "ALLOW_VERIFIED_RFC3263_SIPS_SRV_SIGNALING_ROUTE",
+    policyCode:
+      "P128-SIP-RFC3263-DNS-NAPTR-SRV-TRANSPORT-DOWNGRADE-POISONING-AND-DEAD-SBC-BLACKHOLE-FAILOVER-GUARD",
+  };
+}
+
+
 
 
 

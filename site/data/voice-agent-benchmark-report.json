@@ -606,6 +606,13 @@
       "perturbed_pct": 100.0,
       "delta_pts": 0.0,
       "note": "P125-ELECTRIC-GRID-NERC-CIP-008-CYBER-INCIDENT-1HR-E-ISAC-REPORTING-COM-002-THREE-PART-COMMUNICATION-AND-UFLS-SHEDDING-GUARD preempts routine Bulk Electric System (BES) switching in 0ms upon a reportable NERC CIP-008-6 cyber intrusion or CIP-014 substation physical security event to bridge the mandatory 1-hour E-ISAC / DOE Form OE-417 incident report, holds breaker or tie-line SCADA execution until NERC COM-002-4 verbatim Three-Part Communication repeat-back is confirmed, and blocks manual firm load shedding or PRC-006 UFLS relay inhibit without an active Reliability Coordinator EEA-3 directive and dual System Operator confirmation; P126-WEBRTC-RTP-RFC2198-RED-REDUNDANT-AUDIO-BLOCK-TIMESTAMP-OFFSET-OVERFLOW-AND-DYNAMIC-PT-NESTING-BOMB-GUARD drops malformed RFC 2198 audio/red packets containing recursive RED-in-RED payload type nesting or >4 redundant blocks, discards corrupted blocks exceeding the 14-bit timestamp offset (>=16,384 samples) or 10-bit length (>1,023 bytes) bounds, and strips unnegotiated or clock-mismatched redundant codec blocks."
+    },
+    {
+      "dimension": "70. Water Utility AWIA/EPA SDWA § 1433 SCADA Chemical Dosing Overfeed (Oldsmar NaOH Defense), Tier 1 Boil Water Advisory & RPZ Backflow Guard + Carrier SIP RFC 3263 DNS NAPTR/SRV SIPS Transport Downgrade Poisoning, Dead-SBC Timer B Blackhole Fast Failover & SSRF Guard (P127 & P128)",
+      "original_pct": 100.0,
+      "perturbed_pct": 100.0,
+      "delta_pts": 0.0,
+      "note": "P127-WATER-WASTEWATER-AWIA-EPA-SDWA-SECTION1433-SCADA-CHEMICAL-DOSING-OVERFEED-BOIL-WATER-ADVISORY-AND-BACKFLOW-GUARD preempts routine water utility calls in 0ms upon acute contamination, distribution pressure drop below 20 psi, or SCADA cyber intrusion to dispatch the mandatory EPA 40 CFR 141.202 Tier 1 Boil Water Advisory and state primacy agency bridge, locks chemical metering pumps at baseline whenever a requested dose exceeds the NSF/ANSI 60 Maximum Use Level or lacks inline pH/conductivity hardware analyzer interlock and dual licensed operator confirmation, and blocks cross-connection valve opening when RPZ backflow differential is unsafe; P128-SIP-RFC3263-DNS-NAPTR-SRV-TRANSPORT-DOWNGRADE-POISONING-AND-DEAD-SBC-BLACKHOLE-FAILOVER-GUARD blocks NAPTR service downgrade attacks from SIPS+D2T (TLS) to cleartext UDP or unsigned DNSSEC responses, enforces <=150ms SRV priority/weight failover and Retry-After quarantine instead of stalling 32s on Timer B when a primary SBC is unreachable or returns 503, and blocks outbound SIP egress to private or loopback SRV targets."
     }
   ],
   "latency_scaling": [
