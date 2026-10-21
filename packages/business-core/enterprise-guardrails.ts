@@ -10870,6 +10870,193 @@ export function evaluateSipRfc3262Prack100relAndRfc3312QosPreconditionGuard(
   };
 }
 
+export interface ElectricGridNercCip008Com002ThreePartAndUflsGuardInput {
+  sessionId: string;
+  substationOrLineId: string;
+  besCyberOrPhysicalIncidentDetected: boolean;
+  oneHourEIsacAndDoeOe417NoticeDispatched: boolean;
+  involvesBesOperatingInstruction: boolean;
+  nercCom002ThreePartRepeatBackVerified: boolean;
+  involvesFirmLoadSheddingOrUflsInhibit: boolean;
+  rcEea3DirectiveActive: boolean;
+  dualSystemOperatorConfirmed: boolean;
+}
+
+export interface ElectricGridNercCip008Com002ThreePartAndUflsGuardResult {
+  allowed: boolean;
+  cip008OneHourIncidentNoticeEnforced: boolean;
+  com002ThreePartCommunicationVerified: boolean;
+  eea3LoadShedAndUflsSafeguardVerified: boolean;
+  reason:
+    | "NERC_CIP_008_6_BES_CYBER_OR_SUBSTATION_INCIDENT_MISSING_1HR_EISAC_DOE_OE417_NOTIFICATION"
+    | "NERC_COM_002_4_OPERATING_INSTRUCTION_MISSING_VERBATIM_THREE_PART_REPEAT_BACK"
+    | "NERC_EOP_011_PRC_006_FIRM_LOAD_SHED_OR_UFLS_INHIBIT_WITHOUT_RC_EEA3_AND_DUAL_OPERATOR_BLOCKED"
+    | "NERC_CIP_008_COM_002_THREE_PART_AND_EOP_011_BES_DISPATCH_COMPLIANT";
+  actionCode: string;
+  policyCode: "P125-ELECTRIC-GRID-NERC-CIP-008-CYBER-INCIDENT-1HR-E-ISAC-REPORTING-COM-002-THREE-PART-COMMUNICATION-AND-UFLS-SHEDDING-GUARD";
+}
+
+export function evaluateElectricGridNercCip008Com002ThreePartAndUflsGuard(
+  input: ElectricGridNercCip008Com002ThreePartAndUflsGuardInput,
+): ElectricGridNercCip008Com002ThreePartAndUflsGuardResult {
+  if (
+    input.besCyberOrPhysicalIncidentDetected &&
+    !input.oneHourEIsacAndDoeOe417NoticeDispatched
+  ) {
+    return {
+      allowed: false,
+      cip008OneHourIncidentNoticeEnforced: false,
+      com002ThreePartCommunicationVerified: false,
+      eea3LoadShedAndUflsSafeguardVerified: true,
+      reason:
+        "NERC_CIP_008_6_BES_CYBER_OR_SUBSTATION_INCIDENT_MISSING_1HR_EISAC_DOE_OE417_NOTIFICATION",
+      actionCode:
+        "PREEMPT_ROUTINE_GRID_DISPATCH_AND_INITIATE_1HR_EISAC_DOE_OE417_INCIDENT_BRIDGE",
+      policyCode:
+        "P125-ELECTRIC-GRID-NERC-CIP-008-CYBER-INCIDENT-1HR-E-ISAC-REPORTING-COM-002-THREE-PART-COMMUNICATION-AND-UFLS-SHEDDING-GUARD",
+    };
+  }
+
+  if (
+    input.involvesBesOperatingInstruction &&
+    !input.nercCom002ThreePartRepeatBackVerified
+  ) {
+    return {
+      allowed: false,
+      cip008OneHourIncidentNoticeEnforced: true,
+      com002ThreePartCommunicationVerified: false,
+      eea3LoadShedAndUflsSafeguardVerified: true,
+      reason:
+        "NERC_COM_002_4_OPERATING_INSTRUCTION_MISSING_VERBATIM_THREE_PART_REPEAT_BACK",
+      actionCode:
+        "HOLD_BREAKER_SCADA_EXECUTION_UNTIL_NERC_COM_002_THREE_PART_REPEAT_BACK_CONFIRMED",
+      policyCode:
+        "P125-ELECTRIC-GRID-NERC-CIP-008-CYBER-INCIDENT-1HR-E-ISAC-REPORTING-COM-002-THREE-PART-COMMUNICATION-AND-UFLS-SHEDDING-GUARD",
+    };
+  }
+
+  if (
+    input.involvesFirmLoadSheddingOrUflsInhibit &&
+    (!input.rcEea3DirectiveActive || !input.dualSystemOperatorConfirmed)
+  ) {
+    return {
+      allowed: false,
+      cip008OneHourIncidentNoticeEnforced: true,
+      com002ThreePartCommunicationVerified: true,
+      eea3LoadShedAndUflsSafeguardVerified: false,
+      reason:
+        "NERC_EOP_011_PRC_006_FIRM_LOAD_SHED_OR_UFLS_INHIBIT_WITHOUT_RC_EEA3_AND_DUAL_OPERATOR_BLOCKED",
+      actionCode:
+        "BLOCK_UNAUTHORIZED_LOAD_SHED_OR_UFLS_INHIBIT_AND_ESCALATE_TO_RELIABILITY_COORDINATOR",
+      policyCode:
+        "P125-ELECTRIC-GRID-NERC-CIP-008-CYBER-INCIDENT-1HR-E-ISAC-REPORTING-COM-002-THREE-PART-COMMUNICATION-AND-UFLS-SHEDDING-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    cip008OneHourIncidentNoticeEnforced: true,
+    com002ThreePartCommunicationVerified: true,
+    eea3LoadShedAndUflsSafeguardVerified: true,
+    reason:
+      "NERC_CIP_008_COM_002_THREE_PART_AND_EOP_011_BES_DISPATCH_COMPLIANT",
+    actionCode: "ALLOW_VERIFIED_BES_TRANSMISSION_SWITCHING_COMMAND",
+    policyCode:
+      "P125-ELECTRIC-GRID-NERC-CIP-008-CYBER-INCIDENT-1HR-E-ISAC-REPORTING-COM-002-THREE-PART-COMMUNICATION-AND-UFLS-SHEDDING-GUARD",
+  };
+}
+
+export interface WebrtcRtpRfc2198RedTimestampOffsetAndNestingBombGuardInput {
+  sessionId: string;
+  nestedRedPayloadTypeDetected: boolean;
+  redundantBlockCount: number;
+  maxTimestampOffsetSamples: number;
+  maxRedundantBlockLengthBytes: number;
+  redundantBlockCodecPtNegotiatedInSdp: boolean;
+  redundantBlockSampleRateMatchesPrimaryClock: boolean;
+}
+
+export interface WebrtcRtpRfc2198RedTimestampOffsetAndNestingBombGuardResult {
+  allowed: boolean;
+  rfc2198NoRecursiveNestingVerified: boolean;
+  rfc2198TimestampAndLengthBoundsValid: boolean;
+  rfc2198CodecClockSynchronized: boolean;
+  reason:
+    | "RFC2198_RECURSIVE_RED_IN_RED_PAYLOAD_TYPE_NESTING_BOMB_OR_EXCESSIVE_BLOCK_COUNT_BLOCKED"
+    | "RFC2198_14BIT_TIMESTAMP_OFFSET_OR_10BIT_BLOCK_LENGTH_OVERFLOW_DETECTED"
+    | "RFC2198_REDUNDANT_BLOCK_UNNEGOTIATED_SDP_PT_OR_CLOCK_RATE_MISMATCH"
+    | "WEBRTC_RTP_RFC2198_RED_REDUNDANT_AUDIO_PAYLOAD_HEALTHY";
+  actionCode: string;
+  policyCode: "P126-WEBRTC-RTP-RFC2198-RED-REDUNDANT-AUDIO-BLOCK-TIMESTAMP-OFFSET-OVERFLOW-AND-DYNAMIC-PT-NESTING-BOMB-GUARD";
+}
+
+export function evaluateWebrtcRtpRfc2198RedTimestampOffsetAndNestingBombGuard(
+  input: WebrtcRtpRfc2198RedTimestampOffsetAndNestingBombGuardInput,
+): WebrtcRtpRfc2198RedTimestampOffsetAndNestingBombGuardResult {
+  if (input.nestedRedPayloadTypeDetected || input.redundantBlockCount > 4) {
+    return {
+      allowed: false,
+      rfc2198NoRecursiveNestingVerified: false,
+      rfc2198TimestampAndLengthBoundsValid: true,
+      rfc2198CodecClockSynchronized: true,
+      reason:
+        "RFC2198_RECURSIVE_RED_IN_RED_PAYLOAD_TYPE_NESTING_BOMB_OR_EXCESSIVE_BLOCK_COUNT_BLOCKED",
+      actionCode:
+        "DROP_MALFORMED_RFC2198_RED_PACKET_AND_LOCK_SINGLE_DEPTH_PRIMARY_CODEC_EXTRACTION",
+      policyCode:
+        "P126-WEBRTC-RTP-RFC2198-RED-REDUNDANT-AUDIO-BLOCK-TIMESTAMP-OFFSET-OVERFLOW-AND-DYNAMIC-PT-NESTING-BOMB-GUARD",
+    };
+  }
+
+  if (
+    input.maxTimestampOffsetSamples >= 16384 ||
+    input.maxTimestampOffsetSamples < 0 ||
+    input.maxRedundantBlockLengthBytes > 1023
+  ) {
+    return {
+      allowed: false,
+      rfc2198NoRecursiveNestingVerified: true,
+      rfc2198TimestampAndLengthBoundsValid: false,
+      rfc2198CodecClockSynchronized: true,
+      reason:
+        "RFC2198_14BIT_TIMESTAMP_OFFSET_OR_10BIT_BLOCK_LENGTH_OVERFLOW_DETECTED",
+      actionCode:
+        "DISCARD_CORRUPTED_REDUNDANT_SPEECH_BLOCK_AND_DECODE_PRIMARY_FRAME_ONLY",
+      policyCode:
+        "P126-WEBRTC-RTP-RFC2198-RED-REDUNDANT-AUDIO-BLOCK-TIMESTAMP-OFFSET-OVERFLOW-AND-DYNAMIC-PT-NESTING-BOMB-GUARD",
+    };
+  }
+
+  if (
+    !input.redundantBlockCodecPtNegotiatedInSdp ||
+    !input.redundantBlockSampleRateMatchesPrimaryClock
+  ) {
+    return {
+      allowed: false,
+      rfc2198NoRecursiveNestingVerified: true,
+      rfc2198TimestampAndLengthBoundsValid: true,
+      rfc2198CodecClockSynchronized: false,
+      reason:
+        "RFC2198_REDUNDANT_BLOCK_UNNEGOTIATED_SDP_PT_OR_CLOCK_RATE_MISMATCH",
+      actionCode:
+        "STRIP_UNNEGOTIATED_RED_BLOCK_AND_RESYNC_JITTER_BUFFER_PLAYOUT_CLOCK",
+      policyCode:
+        "P126-WEBRTC-RTP-RFC2198-RED-REDUNDANT-AUDIO-BLOCK-TIMESTAMP-OFFSET-OVERFLOW-AND-DYNAMIC-PT-NESTING-BOMB-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc2198NoRecursiveNestingVerified: true,
+    rfc2198TimestampAndLengthBoundsValid: true,
+    rfc2198CodecClockSynchronized: true,
+    reason: "WEBRTC_RTP_RFC2198_RED_REDUNDANT_AUDIO_PAYLOAD_HEALTHY",
+    actionCode: "COMMIT_RFC2198_RED_LOSS_RECOVERY_AND_PRIMARY_AUDIO_PLAYOUT",
+    policyCode:
+      "P126-WEBRTC-RTP-RFC2198-RED-REDUNDANT-AUDIO-BLOCK-TIMESTAMP-OFFSET-OVERFLOW-AND-DYNAMIC-PT-NESTING-BOMB-GUARD",
+  };
+}
+
 
 
 
