@@ -13646,6 +13646,241 @@ export function evaluateWebrtcRfc7741Rfc9626SvcDependencyDescriptorLayerSwitchAn
   };
 }
 
+/**
+ * P153: Commercial Aviation Maintenance, Repair & Overhaul (MRO) & Airworthiness Release
+ * (FAA 14 CFR Part 43 / Part 145 / EASA Part-145) Required Inspection Item (RII)
+ * Dual-Inspector Sign-Off, Suspected Unapproved Parts (SUP) & Life-Limited Part (LLP)
+ * Back-to-Birth Traceability (FAA Form 8130-3 / EASA Form 1), and Open Airworthiness
+ * Directive (AD) / Minimum Equipment List (MEL Category A/No-Go) Return-to-Service (RTS) Guard.
+ */
+export interface AviationMroFaa14Cfr145RiiAndAirworthinessGuardInput {
+  aircraftTailNumber: string;
+  workOrderId: string;
+  openAirworthinessDirectiveOverdueOrMelNoGoActive: boolean;
+  attemptVoiceReleaseReturnToServiceCertificate: boolean;
+  requiredInspectionItemRiiTaskActive: boolean;
+  performerMechanicBadgeId: string;
+  riiInspectorBadgeId: string;
+  independentRiiInspectorDualSignoffVerified: boolean;
+  lifeLimitedPartOrCriticalComponentInstalled: boolean;
+  faaForm8130_3OrEasaForm1TraceabilityVerified: boolean;
+  suspectedUnapprovedPartOrCycleLimitExceeded: boolean;
+}
+
+export interface AviationMroFaa14Cfr145RiiAndAirworthinessGuardResult {
+  allowed: boolean;
+  returnToServiceCertificateBlocked: boolean;
+  aircraftGroundedAogLockApplied: boolean;
+  riiBuyBackIndependentInspectorRequired: boolean;
+  partQuarantinedToBondedStores: boolean;
+  reason: string;
+  actionCode:
+    | "ALLOW_VERIFIED_MRO_WORKCARD_AND_AIRWORTHINESS_RELEASE"
+    | "GROUND_AIRCRAFT_AOG_BLOCK_RTS_RELEASE_AND_ESCALATE_DOM_QA"
+    | "BLOCK_RII_SELF_INSPECTION_AND_REQUIRE_INDEPENDENT_IA_INSPECTOR_SIGNOFF"
+    | "QUARANTINE_SUSPECTED_UNAPPROVED_OR_UNTRACEABLE_LLP_PART_IN_BONDED_CAGE";
+  policyCode: "P153-AVIATION-MRO-FAA-14CFR145-EASA-PART145-RII-DUAL-INSPECTION-8130-3-LLP-TRACEABILITY-AND-AD-MEL-AIRWORTHINESS-RELEASE-GUARD";
+}
+
+export function evaluateAviationMroFaa14Cfr145RiiDualSignoff8130LlpsAndAirworthinessReleaseGuard(
+  input: AviationMroFaa14Cfr145RiiAndAirworthinessGuardInput
+): AviationMroFaa14Cfr145RiiAndAirworthinessGuardResult {
+  // 1. FAA 14 CFR § 43.9 / § 145.219 & EASA Part-145.A.50: Overdue Airworthiness Directive (AD) or MEL No-Go Item -> 0ms AOG Ground Lock
+  if (
+    input.openAirworthinessDirectiveOverdueOrMelNoGoActive &&
+    input.attemptVoiceReleaseReturnToServiceCertificate
+  ) {
+    return {
+      allowed: false,
+      returnToServiceCertificateBlocked: true,
+      aircraftGroundedAogLockApplied: true,
+      riiBuyBackIndependentInspectorRequired: false,
+      partQuarantinedToBondedStores: false,
+      reason:
+        "FAA_14CFR43_145_EASA_PART145_OVERDUE_AD_OR_MEL_NOGO_RETURN_TO_SERVICE_RELEASE_BLOCKED",
+      actionCode: "GROUND_AIRCRAFT_AOG_BLOCK_RTS_RELEASE_AND_ESCALATE_DOM_QA",
+      policyCode:
+        "P153-AVIATION-MRO-FAA-14CFR145-EASA-PART145-RII-DUAL-INSPECTION-8130-3-LLP-TRACEABILITY-AND-AD-MEL-AIRWORTHINESS-RELEASE-GUARD",
+    };
+  }
+
+  // 2. FAA 14 CFR § 121.371 / § 145.211: Required Inspection Item (RII) Independent "Buy-Back" Separation of Duties
+  const samePersonSelfSignAttempt =
+    input.performerMechanicBadgeId.trim() !== "" &&
+    input.performerMechanicBadgeId.trim().toUpperCase() ===
+      input.riiInspectorBadgeId.trim().toUpperCase();
+
+  if (
+    input.requiredInspectionItemRiiTaskActive &&
+    (!input.independentRiiInspectorDualSignoffVerified || samePersonSelfSignAttempt)
+  ) {
+    return {
+      allowed: false,
+      returnToServiceCertificateBlocked: true,
+      aircraftGroundedAogLockApplied: true,
+      riiBuyBackIndependentInspectorRequired: true,
+      partQuarantinedToBondedStores: false,
+      reason:
+        "FAA_14CFR121_371_RII_SEPARATION_OF_DUTIES_SELF_SIGNOFF_OR_MISSING_INDEPENDENT_INSPECTOR_BLOCKED",
+      actionCode:
+        "BLOCK_RII_SELF_INSPECTION_AND_REQUIRE_INDEPENDENT_IA_INSPECTOR_SIGNOFF",
+      policyCode:
+        "P153-AVIATION-MRO-FAA-14CFR145-EASA-PART145-RII-DUAL-INSPECTION-8130-3-LLP-TRACEABILITY-AND-AD-MEL-AIRWORTHINESS-RELEASE-GUARD",
+    };
+  }
+
+  // 3. FAA 14 CFR § 43.10 / AC 21-29 (SUP) & Form 8130-3 / EASA Form 1 Life-Limited Part (LLP) Back-to-Birth Traceability
+  if (
+    input.lifeLimitedPartOrCriticalComponentInstalled &&
+    (!input.faaForm8130_3OrEasaForm1TraceabilityVerified ||
+      input.suspectedUnapprovedPartOrCycleLimitExceeded)
+  ) {
+    return {
+      allowed: false,
+      returnToServiceCertificateBlocked: true,
+      aircraftGroundedAogLockApplied: true,
+      riiBuyBackIndependentInspectorRequired: false,
+      partQuarantinedToBondedStores: true,
+      reason:
+        "FAA_14CFR43_10_MISSING_8130_3_EASA_FORM1_LLP_TRACEABILITY_OR_SUSPECTED_UNAPPROVED_PART_BLOCKED",
+      actionCode:
+        "QUARANTINE_SUSPECTED_UNAPPROVED_OR_UNTRACEABLE_LLP_PART_IN_BONDED_CAGE",
+      policyCode:
+        "P153-AVIATION-MRO-FAA-14CFR145-EASA-PART145-RII-DUAL-INSPECTION-8130-3-LLP-TRACEABILITY-AND-AD-MEL-AIRWORTHINESS-RELEASE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    returnToServiceCertificateBlocked: false,
+    aircraftGroundedAogLockApplied: false,
+    riiBuyBackIndependentInspectorRequired: false,
+    partQuarantinedToBondedStores: false,
+    reason:
+      "AVIATION_MRO_FAA_14CFR145_RII_8130_LLP_AND_AIRWORTHINESS_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_MRO_WORKCARD_AND_AIRWORTHINESS_RELEASE",
+    policyCode:
+      "P153-AVIATION-MRO-FAA-14CFR145-EASA-PART145-RII-DUAL-INSPECTION-8130-3-LLP-TRACEABILITY-AND-AD-MEL-AIRWORTHINESS-RELEASE-GUARD",
+  };
+}
+
+/**
+ * P154: Enterprise SIP RFC 3840 / RFC 3841 Caller Preferences & Callee Capabilities
+ * (Accept-Contact / Reject-Contact / automata) Bot-to-Bot Infinite IVR Loop Prevention,
+ * RFC 3323 / RFC 3325 P-Asserted-Identity (PAI) & Privacy: id Untrusted Trunk Stripping,
+ * and RFC 4244 / RFC 7044 History-Info Call-Forwarding Retargeting Loop & Privilege Escalation Guard.
+ */
+export interface SipRfc3840AutomataRfc3325PaiAndRfc7044HistoryInfoGuardInput {
+  callId: string;
+  inboundContactDeclaresAutomataOrActorMsgTaker: boolean;
+  localEndpointIsAutomatedVoiceAgent: boolean;
+  botToBotDialogueTurnCount: number;
+  maxAllowedBotToBotHandshakeTurns: number;
+  inboundTrunkInSpecTTrustDomain: boolean;
+  inboundHasPAssertedIdentityOrPPreferredIdentityHeader: boolean;
+  outboundTrunkInSpecTTrustDomain: boolean;
+  privacyHeaderRequestsIdOrHeaderAnonymity: boolean;
+  historyInfoEntryCount: number;
+  maxAllowedHistoryInfoEntries: number;
+  historyInfoContainsCircularRetargetingOrPrivilegeEscalationUri: boolean;
+}
+
+export interface SipRfc3840AutomataRfc3325PaiAndRfc7044HistoryInfoGuardResult {
+  allowed: boolean;
+  sipResponseCode: 200 | 480 | 482;
+  untrustedPaiStrippedAtIngress: boolean;
+  outboundPaiRedactedForPrivacyId: boolean;
+  historyInfoRetargetingBlocked: boolean;
+  reason: string;
+  actionCode:
+    | "ALLOW_VERIFIED_SIP_CALL_ROUTING"
+    | "TERMINATE_RFC3840_AUTOMATA_BOT_TO_BOT_LOOP_WITH_SIP_480"
+    | "STRIP_UNTRUSTED_OR_PRIVACY_RESTRICTED_RFC3325_PAI_HEADER"
+    | "REJECT_RFC7044_HISTORY_INFO_LOOP_OR_PRIVILEGE_ESCALATION_WITH_SIP_482";
+  policyCode: "P154-SIP-RFC3840-RFC3841-AUTOMATA-BOT-LOOP-RFC3325-PAI-PRIVACY-TRUNK-TRUST-AND-RFC7044-HISTORY-INFO-RETARGET-GUARD";
+}
+
+export function evaluateSipRfc3840AutomataLoopRfc3325PaiTrustAndRfc7044HistoryInfoGuard(
+  input: SipRfc3840AutomataRfc3325PaiAndRfc7044HistoryInfoGuardInput
+): SipRfc3840AutomataRfc3325PaiAndRfc7044HistoryInfoGuardResult {
+  // 1. RFC 3840 / RFC 3841: automata / msg-taker feature tag bot-to-bot infinite IVR/Voice-Agent loop prevention
+  if (
+    input.inboundContactDeclaresAutomataOrActorMsgTaker &&
+    input.localEndpointIsAutomatedVoiceAgent &&
+    input.botToBotDialogueTurnCount > input.maxAllowedBotToBotHandshakeTurns
+  ) {
+    return {
+      allowed: false,
+      sipResponseCode: 480,
+      untrustedPaiStrippedAtIngress: false,
+      outboundPaiRedactedForPrivacyId: false,
+      historyInfoRetargetingBlocked: false,
+      reason:
+        "RFC3840_RFC3841_SIP_AUTOMATA_FEATURE_TAG_BOT_TO_BOT_INFINITE_LOOP_BLOCKED",
+      actionCode: "TERMINATE_RFC3840_AUTOMATA_BOT_TO_BOT_LOOP_WITH_SIP_480",
+      policyCode:
+        "P154-SIP-RFC3840-RFC3841-AUTOMATA-BOT-LOOP-RFC3325-PAI-PRIVACY-TRUNK-TRUST-AND-RFC7044-HISTORY-INFO-RETARGET-GUARD",
+    };
+  }
+
+  // 2. RFC 4244 / RFC 7044: History-Info retargeting depth overflow (>maxAllowed), circular forwarding loop, or internal URI privilege escalation
+  if (
+    input.historyInfoEntryCount > input.maxAllowedHistoryInfoEntries ||
+    input.historyInfoContainsCircularRetargetingOrPrivilegeEscalationUri
+  ) {
+    return {
+      allowed: false,
+      sipResponseCode: 482,
+      untrustedPaiStrippedAtIngress: false,
+      outboundPaiRedactedForPrivacyId: false,
+      historyInfoRetargetingBlocked: true,
+      reason:
+        "RFC7044_SIP_HISTORY_INFO_RETARGETING_DEPTH_OVERFLOW_OR_PRIVILEGE_ESCALATION_BLOCKED",
+      actionCode:
+        "REJECT_RFC7044_HISTORY_INFO_LOOP_OR_PRIVILEGE_ESCALATION_WITH_SIP_482",
+      policyCode:
+        "P154-SIP-RFC3840-RFC3841-AUTOMATA-BOT-LOOP-RFC3325-PAI-PRIVACY-TRUNK-TRUST-AND-RFC7044-HISTORY-INFO-RETARGET-GUARD",
+    };
+  }
+
+  // 3. RFC 3323 / RFC 3325: P-Asserted-Identity (PAI) Spec(T) Trust Domain ingress stripping & egress Privacy: id anonymization
+  const stripIngressUntrustedPai =
+    !input.inboundTrunkInSpecTTrustDomain &&
+    input.inboundHasPAssertedIdentityOrPPreferredIdentityHeader;
+  const redactEgressPai =
+    input.privacyHeaderRequestsIdOrHeaderAnonymity &&
+    !input.outboundTrunkInSpecTTrustDomain;
+
+  if (stripIngressUntrustedPai || redactEgressPai) {
+    return {
+      allowed: false,
+      sipResponseCode: 200,
+      untrustedPaiStrippedAtIngress: stripIngressUntrustedPai,
+      outboundPaiRedactedForPrivacyId: redactEgressPai,
+      historyInfoRetargetingBlocked: false,
+      reason:
+        "RFC3323_RFC3325_UNTRUSTED_INGRESS_PAI_SPOOF_OR_EGRESS_PRIVACY_ID_LEAK_SANITIZED",
+      actionCode: "STRIP_UNTRUSTED_OR_PRIVACY_RESTRICTED_RFC3325_PAI_HEADER",
+      policyCode:
+        "P154-SIP-RFC3840-RFC3841-AUTOMATA-BOT-LOOP-RFC3325-PAI-PRIVACY-TRUNK-TRUST-AND-RFC7044-HISTORY-INFO-RETARGET-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    sipResponseCode: 200,
+    untrustedPaiStrippedAtIngress: false,
+    outboundPaiRedactedForPrivacyId: false,
+    historyInfoRetargetingBlocked: false,
+    reason:
+      "SIP_RFC3840_AUTOMATA_RFC3325_PAI_AND_RFC7044_HISTORY_INFO_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SIP_CALL_ROUTING",
+    policyCode:
+      "P154-SIP-RFC3840-RFC3841-AUTOMATA-BOT-LOOP-RFC3325-PAI-PRIVACY-TRUNK-TRUST-AND-RFC7044-HISTORY-INFO-RETARGET-GUARD",
+  };
+}
+
+
 
 
 
