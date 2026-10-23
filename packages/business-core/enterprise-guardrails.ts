@@ -15407,6 +15407,229 @@ export function evaluateWebrtcRtcpRfc3550CompoundPacketSrRrFirstSdesCnameBoundsP
   };
 }
 
+// ============================================================================
+// Stage 88 — P169 (Cement & Clinker Rotary Kiln, Preheater Cyclone & Coal Mill
+// NFPA 85 / NFPA 68 / OSHA 1910.146 Coal-Mill Baghouse CO Smoldering Inerting,
+// 850C Preheater Cyclone Hot-Meal Flush Interlock & Grate-Cooler Crusher LOTO Guard)
+// & P170 (Enterprise SIP RFC 3261 / RFC 3581 / RFC 5626 Via Header Chain Amplification,
+// rport/received= Reflection Spoof, z9hG4bK Branch Collision & Flow-Token Hijack Guard)
+// ============================================================================
+
+export interface CementRotaryKilnPreheaterCycloneHotMealFlushCoalMillCoBaghouseInertingAndCoolerLotoGuardInput {
+  readonly coalMillBaghouseOutletCoPpm: number;
+  readonly maxSafeCoalMillCoPpm: number;
+  readonly coalMillHopperTempCelsius: number;
+  readonly maxSafeCoalHopperTempCelsius: number;
+  readonly coalMillFlueGasO2Percent: number;
+  readonly maxSafeInertFlueGasO2Percent: number;
+  readonly voiceCommandRequestsCoalMillIdFanStartOrBaghouseDamperOpen: boolean;
+  readonly preheaterCycloneDraftLossBlockageDetected: boolean;
+  readonly cycloneMaterialTempCelsius: number;
+  readonly personnelOnLowerPreheaterPlatformOrPokeHoleOpen: boolean;
+  readonly voiceCommandRequestsAirCannonBlastOrCardoxClearance: boolean;
+  readonly personnelInsideRotaryKilnOrGrateCooler: boolean;
+  readonly kilnBarrageMechanicalPinAndCoolerCrusherLotoVerified: boolean;
+  readonly overheadCoatingBrickFallProtectionShieldInstalled: boolean;
+  readonly voiceCommandRequestsKilnAuxiliaryInchDriveOrCoolerGrateStart: boolean;
+}
+
+export interface CementRotaryKilnPreheaterCycloneHotMealFlushCoalMillCoBaghouseInertingAndCoolerLotoGuardAssessment {
+  readonly allowed: boolean;
+  readonly preempted: boolean;
+  readonly coalMillBaghouseCoInertingTriggered: boolean;
+  readonly preheaterCycloneHotMealFlushInterlocked: boolean;
+  readonly kilnInchDriveOrCoolerCrusherLotoLocked: boolean;
+  readonly reason: string;
+  readonly actionCode: string;
+  readonly policyCode: "P169-CEMENT-ROTARY-KILN-NFPA-85-NFPA-68-COAL-MILL-BAGHOUSE-CO-INERTING-PREHEATER-CYCLONE-850C-HOT-MEAL-FLUSH-AND-CLINKER-COOLER-LOTO-GUARD";
+}
+
+export function evaluateCementRotaryKilnPreheaterCycloneHotMealFlushCoalMillCoBaghouseInertingAndCoolerLotoGuard(
+  input: CementRotaryKilnPreheaterCycloneHotMealFlushCoalMillCoBaghouseInertingAndCoolerLotoGuardInput,
+): CementRotaryKilnPreheaterCycloneHotMealFlushCoalMillCoBaghouseInertingAndCoolerLotoGuardAssessment {
+  // 1. NFPA 85 / NFPA 68: Pulverized coal mill / fine-coal bin smoldering CO excursion (>= 400 ppm), hopper temp (> 75C), or high O2 (>= 10%) -> 0ms CO2/N2 inerting & ID fan interlock
+  if (
+    input.coalMillBaghouseOutletCoPpm >= input.maxSafeCoalMillCoPpm ||
+    input.coalMillHopperTempCelsius >= input.maxSafeCoalHopperTempCelsius ||
+    (input.voiceCommandRequestsCoalMillIdFanStartOrBaghouseDamperOpen &&
+      input.coalMillFlueGasO2Percent >= input.maxSafeInertFlueGasO2Percent)
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      coalMillBaghouseCoInertingTriggered: true,
+      preheaterCycloneHotMealFlushInterlocked: false,
+      kilnInchDriveOrCoolerCrusherLotoLocked: false,
+      reason:
+        "NFPA85_NFPA68_PULVERIZED_COAL_MILL_BAGHOUSE_CO_SMOLDERING_OR_O2_EXCURSION_0MS_CO2_N2_INERTING_TRIP",
+      actionCode:
+        "TRIP_RAW_COAL_FEEDER_CLOSE_BAGHOUSE_ISOLATION_DAMPERS_AND_INJECT_CO2_N2_INERTING_GAS",
+      policyCode:
+        "P169-CEMENT-ROTARY-KILN-NFPA-85-NFPA-68-COAL-MILL-BAGHOUSE-CO-INERTING-PREHEATER-CYCLONE-850C-HOT-MEAL-FLUSH-AND-CLINKER-COOLER-LOTO-GUARD",
+    };
+  }
+
+  // 2. Preheater Cyclone Tower Blockage (850C hot raw meal avalanche hazard): Never fire air-cannons or open poke-holes while personnel are on lower platforms
+  if (
+    input.preheaterCycloneDraftLossBlockageDetected &&
+    input.cycloneMaterialTempCelsius >= 300 &&
+    (input.personnelOnLowerPreheaterPlatformOrPokeHoleOpen ||
+      input.voiceCommandRequestsAirCannonBlastOrCardoxClearance)
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      coalMillBaghouseCoInertingTriggered: false,
+      preheaterCycloneHotMealFlushInterlocked: true,
+      kilnInchDriveOrCoolerCrusherLotoLocked: false,
+      reason:
+        "PREHEATER_CYCLONE_850C_HOT_MEAL_BLOCKAGE_AIR_CANNON_FLUSH_WITH_PERSONNEL_BELOW_INTERLOCK",
+      actionCode:
+        "LOCK_CYCLONE_AIR_CANNON_MANIFOLD_STOP_KILN_FEED_AND_EVACUATE_PREHEATER_TOWER_PLATFORMS",
+      policyCode:
+        "P169-CEMENT-ROTARY-KILN-NFPA-85-NFPA-68-COAL-MILL-BAGHOUSE-CO-INERTING-PREHEATER-CYCLONE-850C-HOT-MEAL-FLUSH-AND-CLINKER-COOLER-LOTO-GUARD",
+    };
+  }
+
+  // 3. OSHA 1910.146 / 1910.147 Rotary Kiln Relining & Grate Cooler Clinker Crusher Mechanical LOTO Interlock
+  if (
+    (input.personnelInsideRotaryKilnOrGrateCooler ||
+      input.voiceCommandRequestsKilnAuxiliaryInchDriveOrCoolerGrateStart) &&
+    (!input.kilnBarrageMechanicalPinAndCoolerCrusherLotoVerified ||
+      !input.overheadCoatingBrickFallProtectionShieldInstalled)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      coalMillBaghouseCoInertingTriggered: false,
+      preheaterCycloneHotMealFlushInterlocked: false,
+      kilnInchDriveOrCoolerCrusherLotoLocked: true,
+      reason:
+        "OSHA_1910_147_ROTARY_KILN_AUXILIARY_INCH_DRIVE_OR_CLINKER_COOLER_CRUSHER_UNVERIFIED_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_KILN_AUXILIARY_BARRING_DRIVE_AND_CLINKER_CRUSHER_BREAKER_UNTIL_LOTO_AND_BRICK_SHIELD_VERIFIED",
+      policyCode:
+        "P169-CEMENT-ROTARY-KILN-NFPA-85-NFPA-68-COAL-MILL-BAGHOUSE-CO-INERTING-PREHEATER-CYCLONE-850C-HOT-MEAL-FLUSH-AND-CLINKER-COOLER-LOTO-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    coalMillBaghouseCoInertingTriggered: false,
+    preheaterCycloneHotMealFlushInterlocked: false,
+    kilnInchDriveOrCoolerCrusherLotoLocked: false,
+    reason:
+      "CEMENT_ROTARY_KILN_NFPA85_COAL_MILL_PREHEATER_CYCLONE_AND_COOLER_LOTO_SAFETY_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_CEMENT_KILN_PYROPROCESSING_AND_COAL_MILL_OPERATION",
+    policyCode:
+      "P169-CEMENT-ROTARY-KILN-NFPA-85-NFPA-68-COAL-MILL-BAGHOUSE-CO-INERTING-PREHEATER-CYCLONE-850C-HOT-MEAL-FLUSH-AND-CLINKER-COOLER-LOTO-GUARD",
+  };
+}
+
+export interface SipRfc3261Rfc3581Rfc5626ViaHeaderChainAmplificationBranchCollisionAndFlowTokenHijackGuardInput {
+  readonly topmostViaSentByHostMatchesSourceIp: boolean;
+  readonly untrustedEndpointPrePopulatedReceivedOrRport: boolean;
+  readonly viaHeaderHopCount: number;
+  readonly maxAllowedViaHeaderHops: number;
+  readonly totalViaHeaderBlockBytes: number;
+  readonly maxAllowedViaHeaderBlockBytes: number;
+  readonly topmostViaBranchStartsWithZ9hG4bK: boolean;
+  readonly duplicateViaBranchWithMismatchedCseqMethodOrSentBy: boolean;
+  readonly rfc5626OutboundFlowTokenPresent: boolean;
+  readonly outboundFlowTokenHmacVerified: boolean;
+  readonly flowTokenBoundTlsTupleMatchesActiveConnection: boolean;
+  readonly recordRouteAttemptsTlsToUdpCleartextDowngrade: boolean;
+}
+
+export interface SipRfc3261Rfc3581Rfc5626ViaHeaderChainAmplificationBranchCollisionAndFlowTokenHijackGuardAssessment {
+  readonly allowed: boolean;
+  readonly viaRportOrReceivedReflectionBlocked: boolean;
+  readonly viaChainAmplificationOrBranchCollisionDropped: boolean;
+  readonly outboundFlowTokenOrTransportDowngradeBlocked: boolean;
+  readonly reason: string;
+  readonly actionCode: string;
+  readonly policyCode: "P170-SIP-RFC3261-RFC3581-RFC5626-VIA-HEADER-CHAIN-AMPLIFICATION-RPORT-SPOOF-BRANCH-COLLISION-AND-OUTBOUND-FLOW-TOKEN-HIJACK-GUARD";
+}
+
+export function evaluateSipRfc3261Rfc3581Rfc5626ViaHeaderChainAmplificationBranchCollisionAndFlowTokenHijackGuard(
+  input: SipRfc3261Rfc3581Rfc5626ViaHeaderChainAmplificationBranchCollisionAndFlowTokenHijackGuardInput,
+): SipRfc3261Rfc3581Rfc5626ViaHeaderChainAmplificationBranchCollisionAndFlowTokenHijackGuardAssessment {
+  // 1. RFC 3261 Section 18.2.2 & RFC 3581: Topmost Via sent-by / pre-populated received= or rport= NAT reflection amplification spoof
+  if (
+    !input.topmostViaSentByHostMatchesSourceIp &&
+    input.untrustedEndpointPrePopulatedReceivedOrRport
+  ) {
+    return {
+      allowed: false,
+      viaRportOrReceivedReflectionBlocked: true,
+      viaChainAmplificationOrBranchCollisionDropped: false,
+      outboundFlowTokenOrTransportDowngradeBlocked: false,
+      reason:
+        "RFC3581_RFC3261_TOPMOST_VIA_SENT_BY_OR_PREPOPULATED_RECEIVED_RPORT_REFLECTION_SPOOF_BLOCKED",
+      actionCode:
+        "STRIP_UNTRUSTED_VIA_RECEIVED_RPORT_PIN_SYMMETRIC_SOURCE_TUPLE_AND_DROP_REFLECTION_PROBE",
+      policyCode:
+        "P170-SIP-RFC3261-RFC3581-RFC5626-VIA-HEADER-CHAIN-AMPLIFICATION-RPORT-SPOOF-BRANCH-COLLISION-AND-OUTBOUND-FLOW-TOKEN-HIJACK-GUARD",
+    };
+  }
+
+  // 2. RFC 3261 Section 8.1.1.7 & RFC 5393: Unbounded Via header chain amplification DoS or z9hG4bK branch magic-cookie transaction collision
+  if (
+    input.viaHeaderHopCount > input.maxAllowedViaHeaderHops ||
+    input.totalViaHeaderBlockBytes > input.maxAllowedViaHeaderBlockBytes ||
+    !input.topmostViaBranchStartsWithZ9hG4bK ||
+    input.duplicateViaBranchWithMismatchedCseqMethodOrSentBy
+  ) {
+    return {
+      allowed: false,
+      viaRportOrReceivedReflectionBlocked: false,
+      viaChainAmplificationOrBranchCollisionDropped: true,
+      outboundFlowTokenOrTransportDowngradeBlocked: false,
+      reason:
+        "RFC3261_RFC5393_VIA_HEADER_CHAIN_AMPLIFICATION_OR_Z9HG4BK_BRANCH_TRANSACTION_COLLISION_BLOCKED",
+      actionCode:
+        "REJECT_SIP_400_OR_482_ON_EXCESSIVE_VIA_CHAIN_OR_Z9HG4BK_BRANCH_COLLISION",
+      policyCode:
+        "P170-SIP-RFC3261-RFC3581-RFC5626-VIA-HEADER-CHAIN-AMPLIFICATION-RPORT-SPOOF-BRANCH-COLLISION-AND-OUTBOUND-FLOW-TOKEN-HIJACK-GUARD",
+    };
+  }
+
+  // 3. RFC 5626 SIP Outbound Edge Proxy Flow-Token (ob) Hijack & Record-Route TLS->UDP Transport Downgrade Defense
+  if (
+    input.recordRouteAttemptsTlsToUdpCleartextDowngrade ||
+    (input.rfc5626OutboundFlowTokenPresent &&
+      (!input.outboundFlowTokenHmacVerified ||
+        !input.flowTokenBoundTlsTupleMatchesActiveConnection))
+  ) {
+    return {
+      allowed: false,
+      viaRportOrReceivedReflectionBlocked: false,
+      viaChainAmplificationOrBranchCollisionDropped: false,
+      outboundFlowTokenOrTransportDowngradeBlocked: true,
+      reason:
+        "RFC5626_OUTBOUND_FLOW_TOKEN_HMAC_TUPLE_MISMATCH_OR_RECORD_ROUTE_TLS_TO_UDP_DOWNGRADE_BLOCKED",
+      actionCode:
+        "REJECT_SIP_430_FLOW_FAILED_OR_403_ON_OUTBOUND_FLOW_TOKEN_TUPLE_HIJACK_OR_TLS_DOWNGRADE",
+      policyCode:
+        "P170-SIP-RFC3261-RFC3581-RFC5626-VIA-HEADER-CHAIN-AMPLIFICATION-RPORT-SPOOF-BRANCH-COLLISION-AND-OUTBOUND-FLOW-TOKEN-HIJACK-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    viaRportOrReceivedReflectionBlocked: false,
+    viaChainAmplificationOrBranchCollisionDropped: false,
+    outboundFlowTokenOrTransportDowngradeBlocked: false,
+    reason:
+      "SIP_RFC3261_RFC3581_RFC5626_VIA_CHAIN_RPORT_Z9HG4BK_AND_OUTBOUND_FLOW_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SIP_VIA_AND_OUTBOUND_FLOW_ROUTING",
+    policyCode:
+      "P170-SIP-RFC3261-RFC3581-RFC5626-VIA-HEADER-CHAIN-AMPLIFICATION-RPORT-SPOOF-BRANCH-COLLISION-AND-OUTBOUND-FLOW-TOKEN-HIJACK-GUARD",
+  };
+}
+
+
 
 
 
