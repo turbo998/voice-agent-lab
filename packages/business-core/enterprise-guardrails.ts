@@ -16096,6 +16096,254 @@ export function evaluateSipRfc3261Rfc4028Rfc6141ReInviteGlare491BackoffSessionEx
   };
 }
 
+// ============================================================================
+// Stage 91 — P175 & P176 Enterprise Guardrails
+// ============================================================================
+
+export interface ChlorAlkaliElectrolysisEuroChlorOsha1910119H2InCl2ExplosionNcl3DetonationTitaniumPassivationCausticScrubberAndCellJumperLotoGuardInput {
+  /** Measured hydrogen concentration in chlorine gas header (% v/v, e.g. >= 1.5%–3.5% trip) */
+  h2InCl2GasPercent: number;
+  /** Maximum safe H2-in-Cl2 trip threshold (% v/v, typically 1.5% warning / 3.0% trip) */
+  maxSafeH2InCl2Percent: number;
+  /** Measured Nitrogen Trichloride (NCl3) concentration in liquid chlorine / reboiler (ppm) */
+  liquidChlorineNcl3Ppm: number;
+  /** Maximum safe NCl3 concentration before spontaneous detonation hazard (ppm, e.g. 50 ppm) */
+  maxSafeNcl3Ppm: number;
+  /** Whether voice command requests chlorine compressor ramp-up or liquefier reboiler steam increase */
+  voiceCommandRequestsCl2CompressorRampOrLiquefierReboilerHeat: boolean;
+  /** Whether dry chlorine (<1,500 ppm H2O) is routed into unpassivated titanium piping/valves */
+  dryChlorineRoutedToTitaniumManifold: boolean;
+  /** Whether emergency NaOH caustic absorption scrubber pump is active and NaOH strength >= 5 wt% */
+  causticScrubberCirculationActiveAndNaohAbove5Pct: boolean;
+  /** Whether personnel are on the electrolyzer cell deck or opening a membrane cell frame */
+  personnelOnElectrolyzerCellDeck: boolean;
+  /** Whether portable cell-jumper shorting switch, vacuum Cl2 purge, and blind LOTO are verified */
+  cellJumperSwitchClosedAndCl2HeaderBlindedLotoVerified: boolean;
+  /** Whether voice command requests opening the cell-jumper switch or starting brine/acid feed */
+  voiceCommandRequestsCellJumperSwitchOpenOrBrineFeed: boolean;
+}
+
+export interface ChlorAlkaliElectrolysisEuroChlorOsha1910119H2InCl2ExplosionNcl3DetonationTitaniumPassivationCausticScrubberAndCellJumperLotoGuardAssessment {
+  allowed: boolean;
+  preempted: boolean;
+  h2InCl2OrNcl3DetonationRectifierPreempted: boolean;
+  dryCl2TitaniumFireOrCausticScrubberInterlocked: boolean;
+  cellJumperArcFlashOrCl2HeaderLotoLocked: boolean;
+  reason:
+    | "EURO_CHLOR_H2_IN_CL2_EXPLOSIVE_MIXTURE_OR_NCL3_LIQUEFIER_DETONATION_0MS_RECTIFIER_TRIP"
+    | "CHLORINE_INSTITUTE_DRY_CL2_TITANIUM_AUTOIGNITION_OR_EMERGENCY_CAUSTIC_SCRUBBER_LOSS_INTERLOCK"
+    | "OSHA_1910_119_1910_147_ELECTROLYZER_CELL_JUMPER_ARC_FLASH_OR_UNBLINDED_CL2_HEADER_LOTO_BLOCKED"
+    | "CHLOR_ALKALI_ELECTROLYSIS_H2_CL2_NCL3_TITANIUM_SCRUBBER_AND_CELL_JUMPER_LOTO_VERIFIED";
+  actionCode:
+    | "TRIP_ELECTROLYZER_RECTIFIER_DILUTE_CL2_HEADER_WITH_N2_AND_ABORT_LIQUEFIER_COMPRESSION"
+    | "INTERLOCK_CL2_MANIFOLD_VALVES_AND_CELLROOM_HEADER_UNTIL_TITANIUM_MOISTURE_AND_NAOH_SCRUBBER_VERIFIED"
+    | "LOCK_CELL_JUMPER_SWITCH_AND_BRINE_ACID_VALVES_UNTIL_CL2_PURGE_AND_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_CHLOR_ALKALI_ELECTROLYZER_AND_LIQUEFIER_OPERATION";
+  policyCode: "P175-CHLOR-ALKALI-ELECTROLYSIS-EURO-CHLOR-OSHA-1910-119-WET-CHLORINE-TITANIUM-PASSIVATION-NCL3-DETONATION-H2-IN-CL2-LEL-TRIP-CAUSTIC-SCRUBBER-INTERLOCK-AND-CELL-JUMPER-SWITCH-LOTO-GUARD";
+}
+
+export function evaluateChlorAlkaliElectrolysisEuroChlorOsha1910119H2InCl2ExplosionNcl3DetonationTitaniumPassivationCausticScrubberAndCellJumperLotoGuard(
+  input: ChlorAlkaliElectrolysisEuroChlorOsha1910119H2InCl2ExplosionNcl3DetonationTitaniumPassivationCausticScrubberAndCellJumperLotoGuardInput
+): ChlorAlkaliElectrolysisEuroChlorOsha1910119H2InCl2ExplosionNcl3DetonationTitaniumPassivationCausticScrubberAndCellJumperLotoGuardAssessment {
+  // 1. Euro Chlor / Chlorine Institute H2-in-Cl2 Explosive Mixture (>=1.5%–3.5%) or Liquid NCl3 Detonation Hazard
+  if (
+    input.voiceCommandRequestsCl2CompressorRampOrLiquefierReboilerHeat &&
+    (input.h2InCl2GasPercent >= input.maxSafeH2InCl2Percent ||
+      input.liquidChlorineNcl3Ppm > input.maxSafeNcl3Ppm)
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      h2InCl2OrNcl3DetonationRectifierPreempted: true,
+      dryCl2TitaniumFireOrCausticScrubberInterlocked: false,
+      cellJumperArcFlashOrCl2HeaderLotoLocked: false,
+      reason:
+        "EURO_CHLOR_H2_IN_CL2_EXPLOSIVE_MIXTURE_OR_NCL3_LIQUEFIER_DETONATION_0MS_RECTIFIER_TRIP",
+      actionCode:
+        "TRIP_ELECTROLYZER_RECTIFIER_DILUTE_CL2_HEADER_WITH_N2_AND_ABORT_LIQUEFIER_COMPRESSION",
+      policyCode:
+        "P175-CHLOR-ALKALI-ELECTROLYSIS-EURO-CHLOR-OSHA-1910-119-WET-CHLORINE-TITANIUM-PASSIVATION-NCL3-DETONATION-H2-IN-CL2-LEL-TRIP-CAUSTIC-SCRUBBER-INTERLOCK-AND-CELL-JUMPER-SWITCH-LOTO-GUARD",
+    };
+  }
+
+  // 2. Dry Chlorine on Titanium Auto-Ignition (<1,500–3,000 ppm H2O) & Emergency NaOH Caustic Absorption Scrubber Interlock
+  if (
+    input.dryChlorineRoutedToTitaniumManifold ||
+    !input.causticScrubberCirculationActiveAndNaohAbove5Pct
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      h2InCl2OrNcl3DetonationRectifierPreempted: false,
+      dryCl2TitaniumFireOrCausticScrubberInterlocked: true,
+      cellJumperArcFlashOrCl2HeaderLotoLocked: false,
+      reason:
+        "CHLORINE_INSTITUTE_DRY_CL2_TITANIUM_AUTOIGNITION_OR_EMERGENCY_CAUSTIC_SCRUBBER_LOSS_INTERLOCK",
+      actionCode:
+        "INTERLOCK_CL2_MANIFOLD_VALVES_AND_CELLROOM_HEADER_UNTIL_TITANIUM_MOISTURE_AND_NAOH_SCRUBBER_VERIFIED",
+      policyCode:
+        "P175-CHLOR-ALKALI-ELECTROLYSIS-EURO-CHLOR-OSHA-1910-119-WET-CHLORINE-TITANIUM-PASSIVATION-NCL3-DETONATION-H2-IN-CL2-LEL-TRIP-CAUSTIC-SCRUBBER-INTERLOCK-AND-CELL-JUMPER-SWITCH-LOTO-GUARD",
+    };
+  }
+
+  // 3. OSHA 1910.119 / 1910.147 Electrolyzer Cell-Jumper Shorting Switch Arc-Flash & Chlorine Header Blind LOTO
+  if (
+    input.voiceCommandRequestsCellJumperSwitchOpenOrBrineFeed &&
+    (input.personnelOnElectrolyzerCellDeck ||
+      !input.cellJumperSwitchClosedAndCl2HeaderBlindedLotoVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      h2InCl2OrNcl3DetonationRectifierPreempted: false,
+      dryCl2TitaniumFireOrCausticScrubberInterlocked: false,
+      cellJumperArcFlashOrCl2HeaderLotoLocked: true,
+      reason:
+        "OSHA_1910_119_1910_147_ELECTROLYZER_CELL_JUMPER_ARC_FLASH_OR_UNBLINDED_CL2_HEADER_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_CELL_JUMPER_SWITCH_AND_BRINE_ACID_VALVES_UNTIL_CL2_PURGE_AND_LOTO_VERIFIED",
+      policyCode:
+        "P175-CHLOR-ALKALI-ELECTROLYSIS-EURO-CHLOR-OSHA-1910-119-WET-CHLORINE-TITANIUM-PASSIVATION-NCL3-DETONATION-H2-IN-CL2-LEL-TRIP-CAUSTIC-SCRUBBER-INTERLOCK-AND-CELL-JUMPER-SWITCH-LOTO-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    h2InCl2OrNcl3DetonationRectifierPreempted: false,
+    dryCl2TitaniumFireOrCausticScrubberInterlocked: false,
+    cellJumperArcFlashOrCl2HeaderLotoLocked: false,
+    reason:
+      "CHLOR_ALKALI_ELECTROLYSIS_H2_CL2_NCL3_TITANIUM_SCRUBBER_AND_CELL_JUMPER_LOTO_VERIFIED",
+    actionCode:
+      "ALLOW_VERIFIED_CHLOR_ALKALI_ELECTROLYZER_AND_LIQUEFIER_OPERATION",
+    policyCode:
+      "P175-CHLOR-ALKALI-ELECTROLYSIS-EURO-CHLOR-OSHA-1910-119-WET-CHLORINE-TITANIUM-PASSIVATION-NCL3-DETONATION-H2-IN-CL2-LEL-TRIP-CAUSTIC-SCRUBBER-INTERLOCK-AND-CELL-JUMPER-SWITCH-LOTO-GUARD",
+  };
+}
+
+export interface WebrtcRtpRfc4733Rfc2833DtmfTelephoneEventDurationOverflowEndBitDedupVolumeBoundsAndDualInjectionGuardInput {
+  /** Whether in-band Goertzel DTMF audio tones (697–1633 Hz) are present simultaneously with RFC 4733 out-of-band packets */
+  simultaneousInBandAudioAndRfc4733OutOfBandDtmf: boolean;
+  /** Whether an RFC 4733 packet with E=1 (End bit) is a retransmission sharing the same initial RTP timestamp */
+  duplicateEndBitRetransmissionOnSameRtpTimestamp: boolean;
+  /** Whether the receiver failed to deduplicate E=1 retransmissions by initial RTP timestamp */
+  endBitDeduplicationByRtpTimestampEnabled: boolean;
+  /** RFC 4733 8-bit event code (standard negotiated keypad events: 0–15 for 0–9, *, #, A–D) */
+  dtmfEventCode: number;
+  /** Maximum negotiated event code in SDP a=fmtp (typically 15) */
+  maxNegotiatedDtmfEventCode: number;
+  /** RFC 4733 6-bit attenuation volume field (0 to 63, representing 0 dBm0 down to -63 dBm0; >55 must be discarded per RFC 4733 §2.3.5) */
+  dtmfVolumeAttenuationDb: number;
+  /** RFC 4733 16-bit event duration in RTP timestamp units (must be > 0 and < 65535 unless properly segmented) */
+  dtmfDurationTimestampUnits: number;
+  /** Measured inter-digit silence gap between consecutive DTMF digits (ms, ITU-T Q.24 minimum >= 40 ms) */
+  interDigitGapMs: number;
+  /** Minimum required ITU-T Q.24 inter-digit gap (ms, e.g. 40 ms) */
+  minRequiredInterDigitGapMs: number;
+  /** Observed DTMF digit events per second on the call leg */
+  dtmfEventsPerSecond: number;
+  /** Maximum allowed DTMF digit events per second (e.g. 12 digits/sec) */
+  maxAllowedDtmfEventsPerSecond: number;
+}
+
+export interface WebrtcRtpRfc4733Rfc2833DtmfTelephoneEventDurationOverflowEndBitDedupVolumeBoundsAndDualInjectionGuardAssessment {
+  allowed: boolean;
+  dualInBandOutOfBandOrEndBitReplayDeduplicated: boolean;
+  malformedEventCodeVolumeOrDurationDropped: boolean;
+  dtmfFloodOrSub40msInterDigitGapThrottled: boolean;
+  reason:
+    | "RFC4733_SECTION_2_5_DUAL_INBAND_OUTOFBAND_DTMF_SPLITTING_OR_E_BIT_REPLAY_DOUBLE_DIGIT_BLOCKED"
+    | "RFC4733_SECTION_2_3_INVALID_DTMF_EVENT_CODE_VOLUME_BELOW_MINUS_55DBM0_OR_ZERO_MAX_DURATION_LOCK_BLOCKED"
+    | "ITU_T_Q24_RFC4733_SUB_40MS_INTER_DIGIT_GAP_PIN_BRUTE_FORCE_OR_CALLBACK_FLOOD_BLOCKED"
+    | "WEBRTC_RTP_RFC4733_DTMF_EVENT_DEDUP_VOLUME_DURATION_AND_ITU_Q24_CADENCE_VERIFIED";
+  actionCode:
+    | "NOTCH_FILTER_INBAND_AUDIO_DTMF_AND_DEDUPLICATE_RFC4733_END_BIT_BY_RTP_TIMESTAMP"
+    | "DROP_MALFORMED_RFC4733_PACKET_ON_EVENT_CODE_VOLUME_OR_DURATION_BOUNDS_VIOLATION"
+    | "THROTTLE_DTMF_EVENT_FLOOD_AND_ENFORCE_ITU_Q24_40MS_MINIMUM_INTER_DIGIT_GAP"
+    | "ALLOW_VERIFIED_RFC4733_TELEPHONE_EVENT_DTMF_DIGIT";
+  policyCode: "P176-WEBRTC-RTP-RFC4733-RFC2833-DTMF-TELEPHONE-EVENT-DURATION-OVERFLOW-END-BIT-RETRANSMISSION-DEDUP-VOLUME-BOUNDS-AND-INBAND-OUTOFBAND-DUAL-INJECTION-GUARD";
+}
+
+export function evaluateWebrtcRtpRfc4733Rfc2833DtmfTelephoneEventDurationOverflowEndBitDedupVolumeBoundsAndDualInjectionGuard(
+  input: WebrtcRtpRfc4733Rfc2833DtmfTelephoneEventDurationOverflowEndBitDedupVolumeBoundsAndDualInjectionGuardInput
+): WebrtcRtpRfc4733Rfc2833DtmfTelephoneEventDurationOverflowEndBitDedupVolumeBoundsAndDualInjectionGuardAssessment {
+  // 1. Simultaneous In-Band + Out-of-Band DTMF Digit-Splitting or Un-deduplicated E=1 End-Bit Retransmissions (RFC 4733 §2.5.1.4 / §2.5.2.2)
+  if (
+    input.simultaneousInBandAudioAndRfc4733OutOfBandDtmf ||
+    (input.duplicateEndBitRetransmissionOnSameRtpTimestamp &&
+      !input.endBitDeduplicationByRtpTimestampEnabled)
+  ) {
+    return {
+      allowed: false,
+      dualInBandOutOfBandOrEndBitReplayDeduplicated: true,
+      malformedEventCodeVolumeOrDurationDropped: false,
+      dtmfFloodOrSub40msInterDigitGapThrottled: false,
+      reason:
+        "RFC4733_SECTION_2_5_DUAL_INBAND_OUTOFBAND_DTMF_SPLITTING_OR_E_BIT_REPLAY_DOUBLE_DIGIT_BLOCKED",
+      actionCode:
+        "NOTCH_FILTER_INBAND_AUDIO_DTMF_AND_DEDUPLICATE_RFC4733_END_BIT_BY_RTP_TIMESTAMP",
+      policyCode:
+        "P176-WEBRTC-RTP-RFC4733-RFC2833-DTMF-TELEPHONE-EVENT-DURATION-OVERFLOW-END-BIT-RETRANSMISSION-DEDUP-VOLUME-BOUNDS-AND-INBAND-OUTOFBAND-DUAL-INJECTION-GUARD",
+    };
+  }
+
+  // 2. RFC 4733 §2.3 Event Code (>15 unnegotiated), 6-bit Volume Attenuation (>55 dB / <-55 dBm0 noise floor), or 16-bit Duration (0 or 65535 lock) Bounds
+  if (
+    input.dtmfEventCode < 0 ||
+    input.dtmfEventCode > input.maxNegotiatedDtmfEventCode ||
+    input.dtmfVolumeAttenuationDb < 0 ||
+    input.dtmfVolumeAttenuationDb > 55 ||
+    input.dtmfDurationTimestampUnits <= 0 ||
+    input.dtmfDurationTimestampUnits >= 65535
+  ) {
+    return {
+      allowed: false,
+      dualInBandOutOfBandOrEndBitReplayDeduplicated: false,
+      malformedEventCodeVolumeOrDurationDropped: true,
+      dtmfFloodOrSub40msInterDigitGapThrottled: false,
+      reason:
+        "RFC4733_SECTION_2_3_INVALID_DTMF_EVENT_CODE_VOLUME_BELOW_MINUS_55DBM0_OR_ZERO_MAX_DURATION_LOCK_BLOCKED",
+      actionCode:
+        "DROP_MALFORMED_RFC4733_PACKET_ON_EVENT_CODE_VOLUME_OR_DURATION_BOUNDS_VIOLATION",
+      policyCode:
+        "P176-WEBRTC-RTP-RFC4733-RFC2833-DTMF-TELEPHONE-EVENT-DURATION-OVERFLOW-END-BIT-RETRANSMISSION-DEDUP-VOLUME-BOUNDS-AND-INBAND-OUTOFBAND-DUAL-INJECTION-GUARD",
+    };
+  }
+
+  // 3. ITU-T Q.24 Sub-40ms Inter-Digit Gap or High-Frequency DTMF Brute-Force / Callback Queue Flood
+  if (
+    input.interDigitGapMs < input.minRequiredInterDigitGapMs ||
+    input.dtmfEventsPerSecond > input.maxAllowedDtmfEventsPerSecond
+  ) {
+    return {
+      allowed: false,
+      dualInBandOutOfBandOrEndBitReplayDeduplicated: false,
+      malformedEventCodeVolumeOrDurationDropped: false,
+      dtmfFloodOrSub40msInterDigitGapThrottled: true,
+      reason:
+        "ITU_T_Q24_RFC4733_SUB_40MS_INTER_DIGIT_GAP_PIN_BRUTE_FORCE_OR_CALLBACK_FLOOD_BLOCKED",
+      actionCode:
+        "THROTTLE_DTMF_EVENT_FLOOD_AND_ENFORCE_ITU_Q24_40MS_MINIMUM_INTER_DIGIT_GAP",
+      policyCode:
+        "P176-WEBRTC-RTP-RFC4733-RFC2833-DTMF-TELEPHONE-EVENT-DURATION-OVERFLOW-END-BIT-RETRANSMISSION-DEDUP-VOLUME-BOUNDS-AND-INBAND-OUTOFBAND-DUAL-INJECTION-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    dualInBandOutOfBandOrEndBitReplayDeduplicated: false,
+    malformedEventCodeVolumeOrDurationDropped: false,
+    dtmfFloodOrSub40msInterDigitGapThrottled: false,
+    reason:
+      "WEBRTC_RTP_RFC4733_DTMF_EVENT_DEDUP_VOLUME_DURATION_AND_ITU_Q24_CADENCE_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_RFC4733_TELEPHONE_EVENT_DTMF_DIGIT",
+    policyCode:
+      "P176-WEBRTC-RTP-RFC4733-RFC2833-DTMF-TELEPHONE-EVENT-DURATION-OVERFLOW-END-BIT-RETRANSMISSION-DEDUP-VOLUME-BOUNDS-AND-INBAND-OUTOFBAND-DUAL-INJECTION-GUARD",
+  };
+}
+
+
 
 
 
