@@ -14301,6 +14301,223 @@ export function evaluateSipRfc6665EventSubscriptionRfc4235DialogBlfPickupHijackA
   };
 }
 
+/**
+ * P159: Wind Turbine Farm & Hydroelectric Dam Generation Control (FERC 18 CFR Part 12
+ * Dam Safety Emergency Action Plan & Spillway Pre-Release Acoustic Siren Interlock /
+ * IEC 61400-1 Wind Turbine Overspeed Pitch-Feather Runaway Emergency Brake /
+ * OSHA 29 CFR 1910.269 Hub Rotor-Lock Pin LOTO / SF6 GIS Arc-Flash & Toxic Byproduct Guard).
+ */
+export interface WindHydroRenewableFercEapDamSpillwaySirenIec61400OverspeedPitchLotoAndSf6GisGuardInput {
+  facilityAssetId: string;
+  fercPart12DamConditionAbEmergencyDetected: boolean;
+  attemptSpillwayRadialGateOpen: boolean;
+  downstreamWarningSirenAndStrobeClearanceCompleted: boolean;
+  turbineRotorOverspeedOrPitchFeatherFailureDetected: boolean;
+  technicianEnteringRotorHubOrNacelle: boolean;
+  mechanicalRotorLockPinEngagedAndOsha269LotoVerified: boolean;
+  sf6SwitchgearGasDensityAboveMinLockoutAndBayPurged: boolean;
+}
+
+export interface WindHydroRenewableFercEapDamSpillwaySirenIec61400OverspeedPitchLotoAndSf6GisGuardResult {
+  allowed: boolean;
+  damEapPreemptedOrSpillwayGateLockedWithoutSiren: boolean;
+  turbineOverspeedBrakeTrippedOrHubRotorPinLocked: boolean;
+  sf6GisBreakerAndBayEntryLocked: boolean;
+  reason: string;
+  actionCode:
+    | "PREEMPT_DAM_EAP_OR_BLOCK_SPILLWAY_GATE_UNTIL_DOWNSTREAM_SIREN_VERIFIED"
+    | "TRIP_TURBINE_EMERGENCY_FEATHER_AND_LOCK_ROTOR_PIN_BEFORE_HUB_ENTRY"
+    | "LOCK_SF6_GIS_BREAKER_AND_MANDATE_ENCLOSED_BAY_VENTILATION_PURGE"
+    | "ALLOW_VERIFIED_WIND_HYDRO_RENEWABLE_GENERATION_OPERATION";
+  policyCode: "P159-WIND-HYDRO-RENEWABLE-FERC-EAP-DAM-SPILLWAY-SIREN-PREEMPTION-IEC61400-OVERSPEED-PITCH-RUNAWAY-HUB-ROTOR-LOCK-LOTO-AND-SF6-GIS-ARC-FLASH-GUARD";
+}
+
+export function evaluateWindHydroRenewableFercEapDamSpillwaySirenIec61400OverspeedPitchLotoAndSf6GisGuard(
+  input: WindHydroRenewableFercEapDamSpillwaySirenIec61400OverspeedPitchLotoAndSf6GisGuardInput
+): WindHydroRenewableFercEapDamSpillwaySirenIec61400OverspeedPitchLotoAndSf6GisGuardResult {
+  // 1. FERC 18 CFR Part 12 Dam Safety EAP Condition A/B emergency or spillway gate opening without mandatory downstream warning siren cycle
+  if (
+    input.fercPart12DamConditionAbEmergencyDetected ||
+    (input.attemptSpillwayRadialGateOpen &&
+      !input.downstreamWarningSirenAndStrobeClearanceCompleted)
+  ) {
+    return {
+      allowed: false,
+      damEapPreemptedOrSpillwayGateLockedWithoutSiren: true,
+      turbineOverspeedBrakeTrippedOrHubRotorPinLocked: false,
+      sf6GisBreakerAndBayEntryLocked: false,
+      reason:
+        "FERC_PART12_DAM_EAP_EMERGENCY_OR_SPILLWAY_RELEASE_WITHOUT_DOWNSTREAM_SIREN_CLEARANCE_BLOCKED",
+      actionCode:
+        "PREEMPT_DAM_EAP_OR_BLOCK_SPILLWAY_GATE_UNTIL_DOWNSTREAM_SIREN_VERIFIED",
+      policyCode:
+        "P159-WIND-HYDRO-RENEWABLE-FERC-EAP-DAM-SPILLWAY-SIREN-PREEMPTION-IEC61400-OVERSPEED-PITCH-RUNAWAY-HUB-ROTOR-LOCK-LOTO-AND-SF6-GIS-ARC-FLASH-GUARD",
+    };
+  }
+
+  // 2. IEC 61400-1 wind turbine overspeed / pitch-feather failure or OSHA 29 CFR 1910.269 hub/nacelle entry without mechanical rotor-lock pin LOTO
+  if (
+    input.turbineRotorOverspeedOrPitchFeatherFailureDetected ||
+    (input.technicianEnteringRotorHubOrNacelle &&
+      !input.mechanicalRotorLockPinEngagedAndOsha269LotoVerified)
+  ) {
+    return {
+      allowed: false,
+      damEapPreemptedOrSpillwayGateLockedWithoutSiren: false,
+      turbineOverspeedBrakeTrippedOrHubRotorPinLocked: true,
+      sf6GisBreakerAndBayEntryLocked: false,
+      reason:
+        "IEC61400_TURBINE_OVERSPEED_PITCH_RUNAWAY_OR_MISSING_HUB_ROTOR_PIN_LOTO_BLOCKED",
+      actionCode:
+        "TRIP_TURBINE_EMERGENCY_FEATHER_AND_LOCK_ROTOR_PIN_BEFORE_HUB_ENTRY",
+      policyCode:
+        "P159-WIND-HYDRO-RENEWABLE-FERC-EAP-DAM-SPILLWAY-SIREN-PREEMPTION-IEC61400-OVERSPEED-PITCH-RUNAWAY-HUB-ROTOR-LOCK-LOTO-AND-SF6-GIS-ARC-FLASH-GUARD",
+    };
+  }
+
+  // 3. SF6 Gas-Insulated Switchgear (GIS) low arc-quenching gas density or unpurged toxic SO2F2/HF decomposition bay
+  if (!input.sf6SwitchgearGasDensityAboveMinLockoutAndBayPurged) {
+    return {
+      allowed: false,
+      damEapPreemptedOrSpillwayGateLockedWithoutSiren: false,
+      turbineOverspeedBrakeTrippedOrHubRotorPinLocked: false,
+      sf6GisBreakerAndBayEntryLocked: true,
+      reason:
+        "SF6_GIS_LOW_DENSITY_ARC_QUENCH_LOCKOUT_OR_TOXIC_BYPRODUCT_BAY_ENTRY_BLOCKED",
+      actionCode:
+        "LOCK_SF6_GIS_BREAKER_AND_MANDATE_ENCLOSED_BAY_VENTILATION_PURGE",
+      policyCode:
+        "P159-WIND-HYDRO-RENEWABLE-FERC-EAP-DAM-SPILLWAY-SIREN-PREEMPTION-IEC61400-OVERSPEED-PITCH-RUNAWAY-HUB-ROTOR-LOCK-LOTO-AND-SF6-GIS-ARC-FLASH-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    damEapPreemptedOrSpillwayGateLockedWithoutSiren: false,
+    turbineOverspeedBrakeTrippedOrHubRotorPinLocked: false,
+    sf6GisBreakerAndBayEntryLocked: false,
+    reason:
+      "WIND_HYDRO_FERC_PART12_IEC61400_OSHA269_AND_SF6_GIS_SAFETY_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_WIND_HYDRO_RENEWABLE_GENERATION_OPERATION",
+    policyCode:
+      "P159-WIND-HYDRO-RENEWABLE-FERC-EAP-DAM-SPILLWAY-SIREN-PREEMPTION-IEC61400-OVERSPEED-PITCH-RUNAWAY-HUB-ROTOR-LOCK-LOTO-AND-SF6-GIS-ARC-FLASH-GUARD",
+  };
+}
+
+/**
+ * P160: WebRTC DataChannel Establishment Protocol (RFC 8832 DCEP / RFC 8831 SCTP over DTLS)
+ * DATA_CHANNEL_OPEN In-Band Control Spoofing, SCTP PPID (50/51/53/56/57) UTF-8/Binary
+ * Type-Confusion Deserialization Injection & DTLS Client/Server Even/Odd Stream ID Glare Guard.
+ */
+export interface WebrtcSctpRfc8831Rfc8832DcepChannelOpenSpoofPpidConfusionAndStreamIdGlareGuardInput {
+  sctpAssociationId: string;
+  remoteDtlsRole: "client" | "server";
+  inboundSctpStreamId: number;
+  isDcepControlChunkPpid50: boolean;
+  streamAlreadyOpenForSystemControlBus: boolean;
+  sctpPayloadProtocolIdentifierPpid: number;
+  payloadValidUtf8WhenPpid51StringDeclared: boolean;
+  dcepDeclaredLabelPlusProtocolBytesExceedPacketLength: boolean;
+  concurrentUnackedDcepOpenStreams: number;
+  maxAllowedUnackedDcepOpenStreams: number;
+}
+
+export interface WebrtcSctpRfc8831Rfc8832DcepChannelOpenSpoofPpidConfusionAndStreamIdGlareGuardResult {
+  allowed: boolean;
+  dtlsRoleStreamParityGlareOrOpenHijackReset: boolean;
+  sctpPpidConfusionOrInvalidUtf8Dropped: boolean;
+  dcepHeaderOobOrUnackedChannelFloodAborted: boolean;
+  reason: string;
+  actionCode:
+    | "RESET_SCTP_STREAM_ON_RFC8832_PARITY_GLARE_OR_DCEP_OPEN_HIJACK"
+    | "DROP_SCTP_CHUNK_AND_CLOSE_CHANNEL_ON_RFC8831_PPID_CONFUSION"
+    | "ABORT_DCEP_OVERFLOW_OR_THROTTLE_UNACKED_CHANNEL_OPEN_FLOOD"
+    | "ALLOW_VERIFIED_RFC8831_RFC8832_WEBRTC_DATACHANNEL_FRAME";
+  policyCode: "P160-WEBRTC-SCTP-RFC8831-RFC8832-DCEP-CHANNEL-OPEN-SPOOF-PPID-CONFUSION-AND-DTLS-ROLE-STREAM-ID-GLARE-GUARD";
+}
+
+export function evaluateWebrtcSctpRfc8831Rfc8832DcepChannelOpenSpoofPpidConfusionAndStreamIdGlareGuard(
+  input: WebrtcSctpRfc8831Rfc8832DcepChannelOpenSpoofPpidConfusionAndStreamIdGlareGuardInput
+): WebrtcSctpRfc8831Rfc8832DcepChannelOpenSpoofPpidConfusionAndStreamIdGlareGuardResult {
+  // 1. RFC 8832 Section 4.1: DTLS client MUST use even Stream IDs (0, 2, 4...), DTLS server MUST use odd Stream IDs (1, 3, 5...); block duplicate DCEP OPEN on established system control bus
+  const isEvenStreamId = input.inboundSctpStreamId % 2 === 0;
+  const violatesDtlsRoleParity =
+    input.isDcepControlChunkPpid50 &&
+    ((input.remoteDtlsRole === "client" && !isEvenStreamId) ||
+      (input.remoteDtlsRole === "server" && isEvenStreamId));
+  const attemptsDuplicateOpenHijack =
+    input.isDcepControlChunkPpid50 && input.streamAlreadyOpenForSystemControlBus;
+
+  if (violatesDtlsRoleParity || attemptsDuplicateOpenHijack) {
+    return {
+      allowed: false,
+      dtlsRoleStreamParityGlareOrOpenHijackReset: true,
+      sctpPpidConfusionOrInvalidUtf8Dropped: false,
+      dcepHeaderOobOrUnackedChannelFloodAborted: false,
+      reason:
+        "RFC8832_DTLS_ROLE_STREAM_ID_PARITY_GLARE_OR_DUPLICATE_DCEP_OPEN_HIJACK_BLOCKED",
+      actionCode:
+        "RESET_SCTP_STREAM_ON_RFC8832_PARITY_GLARE_OR_DCEP_OPEN_HIJACK",
+      policyCode:
+        "P160-WEBRTC-SCTP-RFC8831-RFC8832-DCEP-CHANNEL-OPEN-SPOOF-PPID-CONFUSION-AND-DTLS-ROLE-STREAM-ID-GLARE-GUARD",
+    };
+  }
+
+  // 2. RFC 8831 Section 6.6: Registered WebRTC SCTP PPIDs are {50, 51, 53, 56, 57}; PPID 51 (WebRTC String) must contain valid UTF-8 without binary/overlong injection
+  const validWebrtcPpids = new Set([50, 51, 53, 56, 57]);
+  if (
+    !validWebrtcPpids.has(input.sctpPayloadProtocolIdentifierPpid) ||
+    (input.sctpPayloadProtocolIdentifierPpid === 51 &&
+      !input.payloadValidUtf8WhenPpid51StringDeclared)
+  ) {
+    return {
+      allowed: false,
+      dtlsRoleStreamParityGlareOrOpenHijackReset: false,
+      sctpPpidConfusionOrInvalidUtf8Dropped: true,
+      dcepHeaderOobOrUnackedChannelFloodAborted: false,
+      reason:
+        "RFC8831_SCTP_PPID_TYPE_CONFUSION_OR_MALFORMED_UTF8_CONTROL_INJECTION_BLOCKED",
+      actionCode:
+        "DROP_SCTP_CHUNK_AND_CLOSE_CHANNEL_ON_RFC8831_PPID_CONFUSION",
+      policyCode:
+        "P160-WEBRTC-SCTP-RFC8831-RFC8832-DCEP-CHANNEL-OPEN-SPOOF-PPID-CONFUSION-AND-DTLS-ROLE-STREAM-ID-GLARE-GUARD",
+    };
+  }
+
+  // 3. RFC 8832 Section 5.1: DCEP Label/Protocol length out-of-bounds read defense & unacknowledged DATA_CHANNEL_OPEN flood limit
+  if (
+    input.dcepDeclaredLabelPlusProtocolBytesExceedPacketLength ||
+    input.concurrentUnackedDcepOpenStreams >
+      input.maxAllowedUnackedDcepOpenStreams
+  ) {
+    return {
+      allowed: false,
+      dtlsRoleStreamParityGlareOrOpenHijackReset: false,
+      sctpPpidConfusionOrInvalidUtf8Dropped: false,
+      dcepHeaderOobOrUnackedChannelFloodAborted: true,
+      reason:
+        "RFC8832_DCEP_HEADER_LENGTH_OOB_OR_UNACKED_CHANNEL_FLOOD_BLOCKED",
+      actionCode:
+        "ABORT_DCEP_OVERFLOW_OR_THROTTLE_UNACKED_CHANNEL_OPEN_FLOOD",
+      policyCode:
+        "P160-WEBRTC-SCTP-RFC8831-RFC8832-DCEP-CHANNEL-OPEN-SPOOF-PPID-CONFUSION-AND-DTLS-ROLE-STREAM-ID-GLARE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    dtlsRoleStreamParityGlareOrOpenHijackReset: false,
+    sctpPpidConfusionOrInvalidUtf8Dropped: false,
+    dcepHeaderOobOrUnackedChannelFloodAborted: false,
+    reason:
+      "WEBRTC_SCTP_RFC8831_PPID_AND_RFC8832_DCEP_STREAM_PARITY_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_RFC8831_RFC8832_WEBRTC_DATACHANNEL_FRAME",
+    policyCode:
+      "P160-WEBRTC-SCTP-RFC8831-RFC8832-DCEP-CHANNEL-OPEN-SPOOF-PPID-CONFUSION-AND-DTLS-ROLE-STREAM-ID-GLARE-GUARD",
+  };
+}
+
+
 
 
 
