@@ -17440,3 +17440,209 @@ export function evaluateWebrtcRtpMixerRfc3550Rfc6465CsrcListOverflowIdentitySpoo
   };
 }
 
+export interface PtaOxidationReactorParaxyleneNfpa69Osha1910119GuardInput {
+  reactorDryOffGasOxygenVolPct: number;
+  maxSafeOffGasOxygenVolPct: number;
+  oxidationReactorTemperatureC: number;
+  maxSafeReactorTemperatureC: number;
+  crystallizerVacuumSealPotLevelPct: number;
+  minSafeSealPotLevelPct: number;
+  ambientMethylBromidePpm: number;
+  maxAllowedMethylBromidePpm: number;
+  personnelInOxidationReactorPlatformOrRpfZone: boolean;
+  pxAirFeedDbbBlindsAndAgitator4160vBreakerPadlockedVerified: boolean;
+  voiceCommandRequestsAgitatorJogOrCrystallizerDrainValveOpen: boolean;
+}
+
+export interface PtaOxidationReactorParaxyleneNfpa69Osha1910119GuardEvaluation {
+  allowed: boolean;
+  preempted: boolean;
+  offGasOxygenBreakthroughOrTitaniumFirePreempted: boolean;
+  crystallizerSealPotLossOrMethylBromideLeakInterlocked: boolean;
+  oxidationReactorAgitatorOrPxFeedDbbLotoLocked: boolean;
+  reason:
+    | "NFPA_69_OSHA_1910_119_PTA_OFF_GAS_OXYGEN_BREAKTHROUGH_OR_TITANIUM_SOLVENT_FLASH_FIRE_0MS_TRIP"
+    | "OSHA_1910_119_CRYSTALLIZER_VACUUM_SEAL_POT_LOSS_OR_METHYL_BROMIDE_TOXIC_RELEASE_INTERLOCK"
+    | "OSHA_1910_147_PTA_OXIDATION_REACTOR_AGITATOR_4160V_OR_PX_AIR_DBB_BLIND_LOTO_BLOCKED"
+    | "PTA_OXIDATION_REACTOR_NFPA69_OSHA1910_119_OFF_GAS_O2_CH3BR_SCRUBBER_AND_AGITATOR_LOTO_VERIFIED";
+  actionCode:
+    | "TRIP_PROCESS_AIR_COMPRESSOR_INJECT_HIGH_PRESSURE_N2_BLANKET_AND_ISOLATE_PX_ACETIC_FEED_0MS"
+    | "CLOSE_CRYSTALLIZER_LETDOWN_ROUTE_VENT_TO_RTO_CAUSTIC_SCRUBBER_AND_EVACUATE_BAY"
+    | "LOCK_OXIDATION_AGITATOR_BREAKER_AND_BOTTOM_DRAIN_VALVE_UNTIL_DBB_BLIND_AND_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_PTA_AMOCO_OXIDATION_AND_CRYSTALLIZATION_OPERATION";
+  policyCode: "P187-PTA-OXIDATION-REACTOR-PARAXYLENE-NFPA69-OSHA1910-119-OFF-GAS-OXYGEN-BREAKTHROUGH-TRIP-METHYL-BROMIDE-SCRUBBER-AND-AGITATOR-LOTO-GUARD";
+}
+
+export function evaluatePtaOxidationReactorParaxyleneNfpa69Osha1910119OffGasOxygenBreakthroughTripMethylBromideScrubberAndAgitatorLotoGuard(
+  input: PtaOxidationReactorParaxyleneNfpa69Osha1910119GuardInput
+): PtaOxidationReactorParaxyleneNfpa69Osha1910119GuardEvaluation {
+  const policyCode =
+    "P187-PTA-OXIDATION-REACTOR-PARAXYLENE-NFPA69-OSHA1910-119-OFF-GAS-OXYGEN-BREAKTHROUGH-TRIP-METHYL-BROMIDE-SCRUBBER-AND-AGITATOR-LOTO-GUARD" as const;
+
+  const offGasO2Ceiling = Math.min(input.maxSafeOffGasOxygenVolPct, 5.0);
+  const reactorTempCeiling = Math.min(input.maxSafeReactorTemperatureC, 215);
+
+  if (
+    input.reactorDryOffGasOxygenVolPct >= offGasO2Ceiling ||
+    input.oxidationReactorTemperatureC >= reactorTempCeiling
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      offGasOxygenBreakthroughOrTitaniumFirePreempted: true,
+      crystallizerSealPotLossOrMethylBromideLeakInterlocked: false,
+      oxidationReactorAgitatorOrPxFeedDbbLotoLocked: false,
+      reason:
+        "NFPA_69_OSHA_1910_119_PTA_OFF_GAS_OXYGEN_BREAKTHROUGH_OR_TITANIUM_SOLVENT_FLASH_FIRE_0MS_TRIP",
+      actionCode:
+        "TRIP_PROCESS_AIR_COMPRESSOR_INJECT_HIGH_PRESSURE_N2_BLANKET_AND_ISOLATE_PX_ACETIC_FEED_0MS",
+      policyCode,
+    };
+  }
+
+  const sealPotFloor = Math.max(input.minSafeSealPotLevelPct, 30);
+  const ch3BrCeiling = Math.min(input.maxAllowedMethylBromidePpm, 5.0);
+
+  if (
+    input.crystallizerVacuumSealPotLevelPct < sealPotFloor ||
+    input.ambientMethylBromidePpm >= ch3BrCeiling
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      offGasOxygenBreakthroughOrTitaniumFirePreempted: false,
+      crystallizerSealPotLossOrMethylBromideLeakInterlocked: true,
+      oxidationReactorAgitatorOrPxFeedDbbLotoLocked: false,
+      reason:
+        "OSHA_1910_119_CRYSTALLIZER_VACUUM_SEAL_POT_LOSS_OR_METHYL_BROMIDE_TOXIC_RELEASE_INTERLOCK",
+      actionCode:
+        "CLOSE_CRYSTALLIZER_LETDOWN_ROUTE_VENT_TO_RTO_CAUSTIC_SCRUBBER_AND_EVACUATE_BAY",
+      policyCode,
+    };
+  }
+
+  if (
+    input.personnelInOxidationReactorPlatformOrRpfZone ||
+    (input.voiceCommandRequestsAgitatorJogOrCrystallizerDrainValveOpen &&
+      !input.pxAirFeedDbbBlindsAndAgitator4160vBreakerPadlockedVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      offGasOxygenBreakthroughOrTitaniumFirePreempted: false,
+      crystallizerSealPotLossOrMethylBromideLeakInterlocked: false,
+      oxidationReactorAgitatorOrPxFeedDbbLotoLocked: true,
+      reason:
+        "OSHA_1910_147_PTA_OXIDATION_REACTOR_AGITATOR_4160V_OR_PX_AIR_DBB_BLIND_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_OXIDATION_AGITATOR_BREAKER_AND_BOTTOM_DRAIN_VALVE_UNTIL_DBB_BLIND_AND_LOTO_VERIFIED",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    offGasOxygenBreakthroughOrTitaniumFirePreempted: false,
+    crystallizerSealPotLossOrMethylBromideLeakInterlocked: false,
+    oxidationReactorAgitatorOrPxFeedDbbLotoLocked: false,
+    reason:
+      "PTA_OXIDATION_REACTOR_NFPA69_OSHA1910_119_OFF_GAS_O2_CH3BR_SCRUBBER_AND_AGITATOR_LOTO_VERIFIED",
+    actionCode:
+      "ALLOW_VERIFIED_PTA_AMOCO_OXIDATION_AND_CRYSTALLIZATION_OPERATION",
+    policyCode,
+  };
+}
+
+export interface SipRfc3261Rfc5393Rfc6665ParallelForkingGuardInput {
+  concurrentParallelForkBranches: number;
+  maxAllowedForkBreadth: number;
+  hairpinLoopbackForkDetected: boolean;
+  unsolicitedOutOfDialogReferOrNotifyWithoutSubscription: boolean;
+  secondary200OkReceivedAfterPrimaryDialogEstablished: boolean;
+}
+
+export interface SipRfc3261Rfc5393Rfc6665ParallelForkingGuardEvaluation {
+  allowed: boolean;
+  parallelForkMaxBreadthOrHairpinAmplificationBlocked: boolean;
+  outOfDialogUnsolicitedReferOrNotifyRejected481: boolean;
+  secondary200OkZombieLegAckedAndTerminatedWithBye: boolean;
+  reason:
+    | "RFC5393_RFC3261_PARALLEL_FORKING_MAX_BREADTH_AMPLIFICATION_OR_HAIRPIN_LOOP_BLOCKED"
+    | "RFC6665_RFC3515_UNSOLICITED_OUT_OF_DIALOG_NOTIFY_OR_REFER_INJECTION_REJECTED_481"
+    | "RFC3261_SECTION_13_2_2_4_SECONDARY_200OK_FORK_COLLISION_REAPED_WITH_ACK_AND_BYE"
+    | "SIP_RFC3261_RFC5393_RFC6665_FORK_BREADTH_DIALOG_SUBSCRIPTION_AND_200OK_LEG_VERIFIED";
+  actionCode:
+    | "REJECT_EXCESS_PARALLEL_FORK_BRANCHES_WITH_SIP_480_MAX_BREADTH_EXCEEDED_AND_DROP_HAIRPIN"
+    | "REJECT_UNSOLICITED_OUT_OF_DIALOG_REFER_OR_NOTIFY_WITH_SIP_481_OR_403_FORBIDDEN"
+    | "SEND_IMMEDIATE_ACK_AND_BYE_WITH_REASON_200_COMPLETED_ELSEWHERE_TO_SECONDARY_200OK_LEG"
+    | "ALLOW_VERIFIED_SIP_FORKED_DIALOG_SIGNALING";
+  policyCode: "P188-SIP-RFC3261-RFC5393-RFC6665-PARALLEL-FORKING-MAX-BREADTH-AMPLIFICATION-OUT-OF-DIALOG-REFER-NOTIFY-AND-MULTIPLE-200OK-ZOMBIE-LEG-GUARD";
+}
+
+export function evaluateSipRfc3261Rfc5393Rfc6665ParallelForkingMaxBreadthAmplificationOutOfDialogReferNotifyAndMultiple200OkZombieLegGuard(
+  input: SipRfc3261Rfc5393Rfc6665ParallelForkingGuardInput
+): SipRfc3261Rfc5393Rfc6665ParallelForkingGuardEvaluation {
+  const policyCode =
+    "P188-SIP-RFC3261-RFC5393-RFC6665-PARALLEL-FORKING-MAX-BREADTH-AMPLIFICATION-OUT-OF-DIALOG-REFER-NOTIFY-AND-MULTIPLE-200OK-ZOMBIE-LEG-GUARD" as const;
+
+  const maxBreadthCap = Math.min(input.maxAllowedForkBreadth, 4);
+
+  if (
+    input.concurrentParallelForkBranches > maxBreadthCap ||
+    input.hairpinLoopbackForkDetected
+  ) {
+    return {
+      allowed: false,
+      parallelForkMaxBreadthOrHairpinAmplificationBlocked: true,
+      outOfDialogUnsolicitedReferOrNotifyRejected481: false,
+      secondary200OkZombieLegAckedAndTerminatedWithBye: false,
+      reason:
+        "RFC5393_RFC3261_PARALLEL_FORKING_MAX_BREADTH_AMPLIFICATION_OR_HAIRPIN_LOOP_BLOCKED",
+      actionCode:
+        "REJECT_EXCESS_PARALLEL_FORK_BRANCHES_WITH_SIP_480_MAX_BREADTH_EXCEEDED_AND_DROP_HAIRPIN",
+      policyCode,
+    };
+  }
+
+  if (input.unsolicitedOutOfDialogReferOrNotifyWithoutSubscription) {
+    return {
+      allowed: false,
+      parallelForkMaxBreadthOrHairpinAmplificationBlocked: false,
+      outOfDialogUnsolicitedReferOrNotifyRejected481: true,
+      secondary200OkZombieLegAckedAndTerminatedWithBye: false,
+      reason:
+        "RFC6665_RFC3515_UNSOLICITED_OUT_OF_DIALOG_NOTIFY_OR_REFER_INJECTION_REJECTED_481",
+      actionCode:
+        "REJECT_UNSOLICITED_OUT_OF_DIALOG_REFER_OR_NOTIFY_WITH_SIP_481_OR_403_FORBIDDEN",
+      policyCode,
+    };
+  }
+
+  if (input.secondary200OkReceivedAfterPrimaryDialogEstablished) {
+    return {
+      allowed: false,
+      parallelForkMaxBreadthOrHairpinAmplificationBlocked: false,
+      outOfDialogUnsolicitedReferOrNotifyRejected481: false,
+      secondary200OkZombieLegAckedAndTerminatedWithBye: true,
+      reason:
+        "RFC3261_SECTION_13_2_2_4_SECONDARY_200OK_FORK_COLLISION_REAPED_WITH_ACK_AND_BYE",
+      actionCode:
+        "SEND_IMMEDIATE_ACK_AND_BYE_WITH_REASON_200_COMPLETED_ELSEWHERE_TO_SECONDARY_200OK_LEG",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    parallelForkMaxBreadthOrHairpinAmplificationBlocked: false,
+    outOfDialogUnsolicitedReferOrNotifyRejected481: false,
+    secondary200OkZombieLegAckedAndTerminatedWithBye: false,
+    reason:
+      "SIP_RFC3261_RFC5393_RFC6665_FORK_BREADTH_DIALOG_SUBSCRIPTION_AND_200OK_LEG_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SIP_FORKED_DIALOG_SIGNALING",
+    policyCode,
+  };
+}
+
+
