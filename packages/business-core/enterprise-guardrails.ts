@@ -15172,6 +15172,242 @@ export function evaluateSipSdpRfc8866Rfc4568SdesInlineKeyLeakConnectionSinkholeA
   };
 }
 
+export interface LithiumBatteryGigafactoryNfpa86NmpSolventLelDryRoomDewPointAndFormationCellThermalRunawayGuardInput {
+  readonly formationCellTempCelsius: number;
+  readonly formationCellMaxSafeTempCelsius: number;
+  readonly formationCellVoltageDropRateMvPerMin: number;
+  readonly maxSafeSelfDischargeDropMvPerMin: number;
+  readonly formationOffGasCoH2VocPpm: number;
+  readonly formationSmokeOrThermalRunawayDetected: boolean;
+  readonly voiceCommandRequestsFormationChargeResumeOrChamberDoorOpen: boolean;
+  readonly cathodeCoaterOvenNmpLelPercent: number;
+  readonly maxSafeNfpa86OvenLelPercent: number;
+  readonly nmpRecoveryCondenserOrExhaustFanTripped: boolean;
+  readonly voiceCommandRequestsCoatingWebSpeedOrOvenTempIncreaseOrLelBypass: boolean;
+  readonly dryRoomDewPointCelsius: number;
+  readonly maxAllowedDryRoomDewPointCelsius: number;
+  readonly dryRoomElectrolyteHfGasPpm: number;
+  readonly maxSafeHfPpm: number;
+  readonly voiceCommandRequestsLipf6ElectrolyteDosingOrAirlockOverride: boolean;
+  readonly dualProcessSafetyAndBatteryEngineerReadbackVerified: boolean;
+}
+
+export interface LithiumBatteryGigafactoryNfpa86NmpSolventLelDryRoomDewPointAndFormationCellThermalRunawayGuardAssessment {
+  readonly allowed: boolean;
+  readonly preempted: boolean;
+  readonly formationChargerTrippedAndFireSuppressionEngaged: boolean;
+  readonly nfpa86CoaterNmpOvenInterlocked: boolean;
+  readonly dryRoomLipf6ElectrolyteAndHfLocked: boolean;
+  readonly reason: string;
+  readonly actionCode: string;
+  readonly policyCode: "P167-LITHIUM-GIGAFACTORY-NFPA-86-NMP-SOLVENT-COATING-LEL-DRY-ROOM-DEW-POINT-ELECTROLYTE-HF-AND-FORMATION-AGING-THERMAL-RUNAWAY-GUARD";
+}
+
+export function evaluateLithiumBatteryGigafactoryNfpa86NmpSolventLelDryRoomDewPointAndFormationCellThermalRunawayGuard(
+  input: LithiumBatteryGigafactoryNfpa86NmpSolventLelDryRoomDewPointAndFormationCellThermalRunawayGuardInput,
+): LithiumBatteryGigafactoryNfpa86NmpSolventLelDryRoomDewPointAndFormationCellThermalRunawayGuardAssessment {
+  // 1. UL 9540A / NFPA 855: Formation / High-Temp Aging rack cell thermal runaway (>=80C, rapid dV/dt internal short drop, or CO/H2/DMC off-gas venting)
+  if (
+    input.formationSmokeOrThermalRunawayDetected ||
+    input.formationCellTempCelsius >= input.formationCellMaxSafeTempCelsius ||
+    input.formationCellVoltageDropRateMvPerMin >=
+      input.maxSafeSelfDischargeDropMvPerMin ||
+    input.formationOffGasCoH2VocPpm >= 50
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      formationChargerTrippedAndFireSuppressionEngaged: true,
+      nfpa86CoaterNmpOvenInterlocked: false,
+      dryRoomLipf6ElectrolyteAndHfLocked: false,
+      reason:
+        "UL9540A_NFPA855_FORMATION_AGING_CELL_THERMAL_RUNAWAY_DV_DT_SHORT_OR_OFFGAS_VENTING_0MS_TRIP",
+      actionCode:
+        "TRIP_FORMATION_RACK_CHARGER_LOCK_AGING_CHAMBER_DOOR_AND_ACTIVATE_WATER_MIST_QUENCH_AND_EXHAUST_SCRUBBER",
+      policyCode:
+        "P167-LITHIUM-GIGAFACTORY-NFPA-86-NMP-SOLVENT-COATING-LEL-DRY-ROOM-DEW-POINT-ELECTROLYTE-HF-AND-FORMATION-AGING-THERMAL-RUNAWAY-GUARD",
+    };
+  }
+
+  // 2. NFPA 86 Class A Oven: Cathode slurry coating oven NMP (N-Methyl-2-pyrrolidone) vapor >=25% LEL excursion or recovery condenser / exhaust fan loss
+  if (
+    input.cathodeCoaterOvenNmpLelPercent >= input.maxSafeNfpa86OvenLelPercent ||
+    input.nmpRecoveryCondenserOrExhaustFanTripped
+  ) {
+    return {
+      allowed: false,
+      preempted: input.cathodeCoaterOvenNmpLelPercent >= 50,
+      formationChargerTrippedAndFireSuppressionEngaged: false,
+      nfpa86CoaterNmpOvenInterlocked: true,
+      dryRoomLipf6ElectrolyteAndHfLocked: false,
+      reason:
+        "NFPA86_CATHODE_COATING_OVEN_NMP_SOLVENT_VAPOR_LEL_EXCURSION_OR_EXHAUST_FAN_LOSS_INTERLOCK",
+      actionCode:
+        "STOP_SLURRY_COATING_HEAD_DEENERGIZE_OVEN_HEATERS_AND_FORCE_100_PERCENT_FRESH_AIR_DILUTION_PURGE",
+      policyCode:
+        "P167-LITHIUM-GIGAFACTORY-NFPA-86-NMP-SOLVENT-COATING-LEL-DRY-ROOM-DEW-POINT-ELECTROLYTE-HF-AND-FORMATION-AGING-THERMAL-RUNAWAY-GUARD",
+    };
+  }
+
+  // 3. Dry-Room Dew Point (> -35C vs. target <= -40C) or Hydrofluoric Acid (HF >= 1.0 ppm) hydrolysis hazard during LiPF6 electrolyte filling
+  if (
+    input.dryRoomDewPointCelsius > input.maxAllowedDryRoomDewPointCelsius ||
+    input.dryRoomElectrolyteHfGasPpm >= input.maxSafeHfPpm ||
+    (input.voiceCommandRequestsLipf6ElectrolyteDosingOrAirlockOverride &&
+      !input.dualProcessSafetyAndBatteryEngineerReadbackVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: input.dryRoomElectrolyteHfGasPpm >= input.maxSafeHfPpm,
+      formationChargerTrippedAndFireSuppressionEngaged: false,
+      nfpa86CoaterNmpOvenInterlocked: false,
+      dryRoomLipf6ElectrolyteAndHfLocked: true,
+      reason:
+        "DRY_ROOM_DEW_POINT_EXCURSION_OR_LIPF6_HYDROLYSIS_HF_TOXIC_GAS_INTERLOCK_ENGAGED",
+      actionCode:
+        "ISOLATE_LIPF6_ELECTROLYTE_DOSING_MANIFOLD_LOCK_DRY_ROOM_AIRLOCK_AND_ENGAGE_HF_ALKALINE_SCRUBBER",
+      policyCode:
+        "P167-LITHIUM-GIGAFACTORY-NFPA-86-NMP-SOLVENT-COATING-LEL-DRY-ROOM-DEW-POINT-ELECTROLYTE-HF-AND-FORMATION-AGING-THERMAL-RUNAWAY-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    formationChargerTrippedAndFireSuppressionEngaged: false,
+    nfpa86CoaterNmpOvenInterlocked: false,
+    dryRoomLipf6ElectrolyteAndHfLocked: false,
+    reason:
+      "LITHIUM_GIGAFACTORY_NFPA86_NMP_LEL_DRY_ROOM_DEW_POINT_AND_FORMATION_THERMAL_SAFETY_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_GIGAFACTORY_COATING_FILLING_AND_FORMATION_COMMAND",
+    policyCode:
+      "P167-LITHIUM-GIGAFACTORY-NFPA-86-NMP-SOLVENT-COATING-LEL-DRY-ROOM-DEW-POINT-ELECTROLYTE-HF-AND-FORMATION-AGING-THERMAL-RUNAWAY-GUARD",
+  };
+}
+
+export interface WebrtcRtcpRfc3550CompoundPacketSrRrFirstSdesCnameBoundsPaddingUnderflowAndByeFloodGuardInput {
+  readonly firstRtcpSubpacketPayloadType: number;
+  readonly rfc5506ReducedSizeRtcpNegotiatedInSdp: boolean;
+  readonly sumOfSubpacketHeaderDeclaredBytes: number;
+  readonly actualUdpDatagramTotalBytes: number;
+  readonly lastSubpacketPaddingBitSet: boolean;
+  readonly lastSubpacketFinalPaddingOctetValue: number;
+  readonly lastSubpacketPayloadBodyBytes: number;
+  readonly compoundIncludesSdesChunkWithCname: boolean;
+  readonly sdesCnameItemLengthBytes: number;
+  readonly rtcpByePacketsReceivedPerSecond: number;
+  readonly maxAllowedByePacketsPerSecond: number;
+  readonly rtcpByeSsrcCountInPacket: number;
+  readonly maxAllowedByeSsrcsPerPacket: number;
+}
+
+export interface WebrtcRtcpRfc3550CompoundPacketSrRrFirstSdesCnameBoundsPaddingUnderflowAndByeFloodGuardAssessment {
+  readonly allowed: boolean;
+  readonly nonCompoundOrInvalidFirstPtDropped: boolean;
+  readonly wordLengthMismatchOrPaddingUnderflowDropped: boolean;
+  readonly missingOrOversizedSdesCnameOrByeFloodBlocked: boolean;
+  readonly reason: string;
+  readonly actionCode: string;
+  readonly policyCode: "P168-WEBRTC-RTCP-RFC3550-COMPOUND-PACKET-SR-RR-FIRST-RULE-SDES-CNAME-OVERFLOW-PADDING-UNDERFLOW-AND-BYE-FLOOD-GUARD";
+}
+
+export function evaluateWebrtcRtcpRfc3550CompoundPacketSrRrFirstSdesCnameBoundsPaddingUnderflowAndByeFloodGuard(
+  input: WebrtcRtcpRfc3550CompoundPacketSrRrFirstSdesCnameBoundsPaddingUnderflowAndByeFloodGuardInput,
+): WebrtcRtcpRfc3550CompoundPacketSrRrFirstSdesCnameBoundsPaddingUnderflowAndByeFloodGuardAssessment {
+  // 1. RFC 3550 Section 6.1 & RFC 5506: Compound RTCP MUST start with SR (PT=200) or RR (PT=201), unless a=rtcp-rsize is negotiated AND packet is RTPFB (205) / PSFB (206)
+  const isSrOrRrFirst =
+    input.firstRtcpSubpacketPayloadType === 200 ||
+    input.firstRtcpSubpacketPayloadType === 201;
+  const isAllowedReducedSizeFeedback =
+    input.rfc5506ReducedSizeRtcpNegotiatedInSdp &&
+    (input.firstRtcpSubpacketPayloadType === 205 ||
+      input.firstRtcpSubpacketPayloadType === 206);
+
+  if (!isSrOrRrFirst && !isAllowedReducedSizeFeedback) {
+    return {
+      allowed: false,
+      nonCompoundOrInvalidFirstPtDropped: true,
+      wordLengthMismatchOrPaddingUnderflowDropped: false,
+      missingOrOversizedSdesCnameOrByeFloodBlocked: false,
+      reason:
+        "RFC3550_COMPOUND_RTCP_FIRST_SUBPACKET_NOT_SR_200_OR_RR_201_WITHOUT_NEGOTIATED_RFC5506_RSIZE",
+      actionCode:
+        "DROP_NON_COMPLIANT_RTCP_PACKET_AND_PRESERVE_JITTER_BUFFER_SYNCHRONIZATION_STATE",
+      policyCode:
+        "P168-WEBRTC-RTCP-RFC3550-COMPOUND-PACKET-SR-RR-FIRST-RULE-SDES-CNAME-OVERFLOW-PADDING-UNDERFLOW-AND-BYE-FLOOD-GUARD",
+    };
+  }
+
+  // 2. RFC 3550 Section 6.4: 32-bit word-length sum ((length + 1) * 4) mismatch or P=1 padding octet underflow/over-read
+  const paddingInvalid =
+    input.lastSubpacketPaddingBitSet &&
+    (input.lastSubpacketFinalPaddingOctetValue < 1 ||
+      input.lastSubpacketFinalPaddingOctetValue >
+        input.lastSubpacketPayloadBodyBytes ||
+      input.lastSubpacketFinalPaddingOctetValue % 4 !== 0);
+
+  if (
+    input.sumOfSubpacketHeaderDeclaredBytes !==
+      input.actualUdpDatagramTotalBytes ||
+    input.actualUdpDatagramTotalBytes < 8 ||
+    input.actualUdpDatagramTotalBytes % 4 !== 0 ||
+    paddingInvalid
+  ) {
+    return {
+      allowed: false,
+      nonCompoundOrInvalidFirstPtDropped: false,
+      wordLengthMismatchOrPaddingUnderflowDropped: true,
+      missingOrOversizedSdesCnameOrByeFloodBlocked: false,
+      reason:
+        "RFC3550_RTCP_32BIT_WORD_LENGTH_SUM_MISMATCH_OR_PADDING_OCTET_INTEGER_UNDERFLOW_BLOCKED",
+      actionCode:
+        "DROP_TRUNCATED_OR_PADDED_BLEED_RTCP_DATAGRAM_BEFORE_SUBPACKET_ITERATOR",
+      policyCode:
+        "P168-WEBRTC-RTCP-RFC3550-COMPOUND-PACKET-SR-RR-FIRST-RULE-SDES-CNAME-OVERFLOW-PADDING-UNDERFLOW-AND-BYE-FLOOD-GUARD",
+    };
+  }
+
+  // 3. RFC 3550 Section 6.5 / 6.6: Mandatory SDES CNAME (1..255 bytes) in full compound RTCP & RTCP BYE (PT=203) SSRC churn flood defense
+  const missingOrInvalidCname =
+    isSrOrRrFirst &&
+    (!input.compoundIncludesSdesChunkWithCname ||
+      input.sdesCnameItemLengthBytes < 1 ||
+      input.sdesCnameItemLengthBytes > 255);
+  const byeFloodDetected =
+    input.rtcpByePacketsReceivedPerSecond >
+      input.maxAllowedByePacketsPerSecond ||
+    input.rtcpByeSsrcCountInPacket > input.maxAllowedByeSsrcsPerPacket;
+
+  if (missingOrInvalidCname || byeFloodDetected) {
+    return {
+      allowed: false,
+      nonCompoundOrInvalidFirstPtDropped: false,
+      wordLengthMismatchOrPaddingUnderflowDropped: false,
+      missingOrOversizedSdesCnameOrByeFloodBlocked: true,
+      reason: byeFloodDetected
+        ? "RFC3550_RTCP_BYE_SSRC_CHURN_AMPLIFICATION_FLOOD_THROTTLED"
+        : "RFC3550_COMPOUND_RTCP_MISSING_MANDATORY_SDES_CNAME_OR_ITEM_LENGTH_OVERFLOW",
+      actionCode:
+        "REJECT_MALFORMED_SDES_CNAME_AND_RATE_LIMIT_UNAUTHENTICATED_RTCP_BYE_CHURN",
+      policyCode:
+        "P168-WEBRTC-RTCP-RFC3550-COMPOUND-PACKET-SR-RR-FIRST-RULE-SDES-CNAME-OVERFLOW-PADDING-UNDERFLOW-AND-BYE-FLOOD-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    nonCompoundOrInvalidFirstPtDropped: false,
+    wordLengthMismatchOrPaddingUnderflowDropped: false,
+    missingOrOversizedSdesCnameOrByeFloodBlocked: false,
+    reason:
+      "WEBRTC_RTCP_RFC3550_COMPOUND_SR_RR_WORD_LENGTH_SDES_CNAME_AND_BYE_RATE_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_RFC3550_COMPOUND_RTCP_PACKET",
+    policyCode:
+      "P168-WEBRTC-RTCP-RFC3550-COMPOUND-PACKET-SR-RR-FIRST-RULE-SDES-CNAME-OVERFLOW-PADDING-UNDERFLOW-AND-BYE-FLOOD-GUARD",
+  };
+}
+
+
 
 
 
