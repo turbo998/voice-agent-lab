@@ -16343,6 +16343,257 @@ export function evaluateWebrtcRtpRfc4733Rfc2833DtmfTelephoneEventDurationOverflo
   };
 }
 
+// ============================================================================
+// Stage 92 — P177 (Haber-Bosch Ammonia Synthesis, High-Pressure Urea Reactor
+// & Ammonium Nitrate Plant Safety) & P178 (SIP RFC 3261 / RFC 3311 / RFC 6141
+// UPDATE Early-Media Hijack, CSeq Out-of-Order Replay & Contact URI Header
+// Smuggling Guard)
+// ============================================================================
+
+export interface AmmoniaUreaFertilizerSynthesisAicheOsha1910119MethanatorRunawayHthaAnMeltDetonationAndPyrophoricCatalystLotoInput {
+  /** Methanator catalyst bed temperature in °C (CO/CO2 breakthrough causes violent ΔH = -206 kJ/mol exothermic runaway >450°C). */
+  methanatorBedTempCelsius: number;
+  /** Maximum safe methanator catalyst bed temperature ceiling in °C (typically 450°C). */
+  maxSafeMethanatorTempCelsius: number;
+  /** True if 200-300 bar ammonia synthesis loop exceeds API RP 941 Nelson curve HTHA boundary or high-pressure NH3/H2 flange leak is active. */
+  synthesisLoopExceedsNelsonHthaCurveOrHpGasLeakDetected: boolean;
+  /** True if the voice command requests syngas compressor (103-J) ramp-up or synthesis loop pressure increase. */
+  voiceCommandRequestsSyngasCompressorRampOrLoopPressureIncrease: boolean;
+  /** Molten Ammonium Nitrate (AN) neutralizer/evaporator pH (acidic drift <4.5 triggers autocatalytic HNO3 thermal decomposition). */
+  anNeutralizerMeltPh: number;
+  /** Minimum safe molten Ammonium Nitrate pH floor (typically 4.5). */
+  minSafeAnMeltPh: number;
+  /** Molten Ammonium Nitrate temperature in °C (above 210°C risks deflagration-to-detonation transition under NFPA 400 / OSHA 1910.109(i)). */
+  anMeltTempCelsius: number;
+  /** Maximum safe molten Ammonium Nitrate temperature ceiling in °C (typically 210°C). */
+  maxSafeAnMeltTempCelsius: number;
+  /** High-pressure urea reactor / carbamate condenser passivation oxygen concentration in vol% (below 0.4% causes catastrophic carbamate corrosion perforation). */
+  ureaReactorPassivationOxygenVolPct: number;
+  /** Minimum required passivation oxygen concentration in vol% for stainless steel oxide integrity (typically 0.4%). */
+  minRequiredPassivationOxygenVolPct: number;
+  /** True if maintenance personnel are inside the primary reformer or ammonia/shift converter vessel. */
+  personnelInReactorOrReformerVessel: boolean;
+  /** True if pyrophoric reduced iron/copper catalyst (Fe3O4 -> alpha-Fe) is under continuous N2 blanket (<0.5% O2) or fully passivated. */
+  pyrophoricCatalystNitrogenBlanketOrPassivationVerified: boolean;
+  /** True if 300-bar synthesis loop and reformer block valves are double-block-and-bled with spectacle blinds and LOTO padlocks verified. */
+  highPressureSynthesisBlockValveBlindedLotoVerified: boolean;
+  /** True if the voice command requests reactor manhole opening, air purge, or synthesis gas admission. */
+  voiceCommandRequestsManholeOpenAirPurgeOrSyngasFeed: boolean;
+}
+
+export interface AmmoniaUreaFertilizerSynthesisAicheOsha1910119MethanatorRunawayHthaAnMeltDetonationAndPyrophoricCatalystLotoAssessment {
+  allowed: boolean;
+  preempted: boolean;
+  methanatorRunawayOrSynthesisLoopHthaPreempted: boolean;
+  anMeltAcidicRunawayOrUreaPassivationInterlocked: boolean;
+  reformerCatalystPyrophoricOrLotoLocked: boolean;
+  reason:
+    | "AICHE_API_RP941_METHANATOR_EXOTHERMIC_RUNAWAY_OR_300BAR_SYNTHESIS_LOOP_HTHA_RUPTURE_0MS_TRIP"
+    | "NFPA_400_OSHA_1910_109I_AMMONIUM_NITRATE_ACIDIC_MELT_DECOMPOSITION_OR_UREA_PASSIVATION_LOSS_INTERLOCK"
+    | "OSHA_1910_146_1910_147_PYROPHORIC_SYNTHESIS_CATALYST_AIR_INGRESS_OR_300BAR_UNBLINDED_LOTO_BLOCKED"
+    | "HABER_BOSCH_AMMONIA_UREA_AN_SYNTHESIS_METHANATOR_PASSIVATION_AND_CATALYST_LOTO_VERIFIED";
+  actionCode:
+    | "TRIP_SYNGAS_COMPRESSOR_103J_ISOLATE_METHANATOR_FEED_AND_DEPRESSURIZE_SYNTHESIS_LOOP_TO_FLARE"
+    | "INJECT_EMERGENCY_AMMONIA_BUFFER_QUENCH_DILUTE_AN_EVAPORATOR_AND_LOCK_UREA_CARBAMATE_FEED"
+    | "LOCK_REACTOR_MANHOLE_AND_SYNGAS_BLOCK_VALVES_UNTIL_N2_BLANKET_AND_BLIND_FLANGE_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_AMMONIA_UREA_FERTILIZER_SYNTHESIS_OPERATION";
+  policyCode: "P177-AMMONIA-UREA-FERTILIZER-SYNTHESIS-AICHE-OSHA-1910-119-HIGH-PRESSURE-LOOP-HTHA-METHANATOR-EXOTHERMIC-RUNAWAY-AN-DETONATION-AND-REFORMER-TUBE-LOTO-GUARD";
+}
+
+export function evaluateAmmoniaUreaFertilizerSynthesisAicheOsha1910119MethanatorRunawayHthaAnMeltDetonationAndPyrophoricCatalystLotoGuard(
+  input: AmmoniaUreaFertilizerSynthesisAicheOsha1910119MethanatorRunawayHthaAnMeltDetonationAndPyrophoricCatalystLotoInput
+): AmmoniaUreaFertilizerSynthesisAicheOsha1910119MethanatorRunawayHthaAnMeltDetonationAndPyrophoricCatalystLotoAssessment {
+  // 1. 0ms Preemption: Methanator CO/CO2 breakthrough exothermic runaway (>450°C) or 300-bar synthesis loop API RP 941 HTHA / high-pressure NH3-H2 leak
+  if (
+    input.methanatorBedTempCelsius >= input.maxSafeMethanatorTempCelsius ||
+    (input.synthesisLoopExceedsNelsonHthaCurveOrHpGasLeakDetected &&
+      input.voiceCommandRequestsSyngasCompressorRampOrLoopPressureIncrease)
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      methanatorRunawayOrSynthesisLoopHthaPreempted: true,
+      anMeltAcidicRunawayOrUreaPassivationInterlocked: false,
+      reformerCatalystPyrophoricOrLotoLocked: false,
+      reason:
+        "AICHE_API_RP941_METHANATOR_EXOTHERMIC_RUNAWAY_OR_300BAR_SYNTHESIS_LOOP_HTHA_RUPTURE_0MS_TRIP",
+      actionCode:
+        "TRIP_SYNGAS_COMPRESSOR_103J_ISOLATE_METHANATOR_FEED_AND_DEPRESSURIZE_SYNTHESIS_LOOP_TO_FLARE",
+      policyCode:
+        "P177-AMMONIA-UREA-FERTILIZER-SYNTHESIS-AICHE-OSHA-1910-119-HIGH-PRESSURE-LOOP-HTHA-METHANATOR-EXOTHERMIC-RUNAWAY-AN-DETONATION-AND-REFORMER-TUBE-LOTO-GUARD",
+    };
+  }
+
+  // 2. Interlock: NFPA 400 / OSHA 1910.109(i) Molten Ammonium Nitrate acidic drift (pH < 4.5) or overheat (>=210°C) detonation risk, or Urea reactor O2 passivation loss (<0.4 vol%)
+  if (
+    input.anNeutralizerMeltPh < input.minSafeAnMeltPh ||
+    input.anMeltTempCelsius >= input.maxSafeAnMeltTempCelsius ||
+    input.ureaReactorPassivationOxygenVolPct <
+      input.minRequiredPassivationOxygenVolPct
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      methanatorRunawayOrSynthesisLoopHthaPreempted: false,
+      anMeltAcidicRunawayOrUreaPassivationInterlocked: true,
+      reformerCatalystPyrophoricOrLotoLocked: false,
+      reason:
+        "NFPA_400_OSHA_1910_109I_AMMONIUM_NITRATE_ACIDIC_MELT_DECOMPOSITION_OR_UREA_PASSIVATION_LOSS_INTERLOCK",
+      actionCode:
+        "INJECT_EMERGENCY_AMMONIA_BUFFER_QUENCH_DILUTE_AN_EVAPORATOR_AND_LOCK_UREA_CARBAMATE_FEED",
+      policyCode:
+        "P177-AMMONIA-UREA-FERTILIZER-SYNTHESIS-AICHE-OSHA-1910-119-HIGH-PRESSURE-LOOP-HTHA-METHANATOR-EXOTHERMIC-RUNAWAY-AN-DETONATION-AND-REFORMER-TUBE-LOTO-GUARD",
+    };
+  }
+
+  // 3. LOTO: Pyrophoric reduced synthesis catalyst (alpha-Fe) air exposure or unblinded 300-bar synthesis loop with personnel in reactor/reformer
+  if (
+    ((input.personnelInReactorOrReformerVessel ||
+      !input.pyrophoricCatalystNitrogenBlanketOrPassivationVerified ||
+      !input.highPressureSynthesisBlockValveBlindedLotoVerified) &&
+      input.voiceCommandRequestsManholeOpenAirPurgeOrSyngasFeed) ||
+    (input.personnelInReactorOrReformerVessel &&
+      !input.highPressureSynthesisBlockValveBlindedLotoVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      methanatorRunawayOrSynthesisLoopHthaPreempted: false,
+      anMeltAcidicRunawayOrUreaPassivationInterlocked: false,
+      reformerCatalystPyrophoricOrLotoLocked: true,
+      reason:
+        "OSHA_1910_146_1910_147_PYROPHORIC_SYNTHESIS_CATALYST_AIR_INGRESS_OR_300BAR_UNBLINDED_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_REACTOR_MANHOLE_AND_SYNGAS_BLOCK_VALVES_UNTIL_N2_BLANKET_AND_BLIND_FLANGE_LOTO_VERIFIED",
+      policyCode:
+        "P177-AMMONIA-UREA-FERTILIZER-SYNTHESIS-AICHE-OSHA-1910-119-HIGH-PRESSURE-LOOP-HTHA-METHANATOR-EXOTHERMIC-RUNAWAY-AN-DETONATION-AND-REFORMER-TUBE-LOTO-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    methanatorRunawayOrSynthesisLoopHthaPreempted: false,
+    anMeltAcidicRunawayOrUreaPassivationInterlocked: false,
+    reformerCatalystPyrophoricOrLotoLocked: false,
+    reason:
+      "HABER_BOSCH_AMMONIA_UREA_AN_SYNTHESIS_METHANATOR_PASSIVATION_AND_CATALYST_LOTO_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_AMMONIA_UREA_FERTILIZER_SYNTHESIS_OPERATION",
+    policyCode:
+      "P177-AMMONIA-UREA-FERTILIZER-SYNTHESIS-AICHE-OSHA-1910-119-HIGH-PRESSURE-LOOP-HTHA-METHANATOR-EXOTHERMIC-RUNAWAY-AN-DETONATION-AND-REFORMER-TUBE-LOTO-GUARD",
+  };
+}
+
+export interface SipRfc3261Rfc3311Rfc6141UpdateEarlyMediaHijackCSeqOutOfOrderReplayDialogTagMutationAndContactHeaderSmugglingInput {
+  /** Incoming SIP request CSeq sequence number. */
+  incomingCSeqNumber: number;
+  /** Last accepted remote CSeq sequence number for this SIP dialog. */
+  lastRemoteCSeqNumber: number;
+  /** True if the method token in the CSeq header exactly matches the SIP Request-Line method (RFC 3261 §8.1.1.5). */
+  cseqMethodMatchesRequestLine: boolean;
+  /** True if an unauthenticated RFC 3311 UPDATE attempts to modify remote media IP/port during an early dialog (180/183 before 200 OK). */
+  unauthenticatedEarlyDialogUpdateModifiesMediaAddress: boolean;
+  /** True if an UPDATE or Re-INVITE carries a new SDP offer while a prior offer/answer exchange is still pending (RFC 3311 §5.1 / RFC 6141). */
+  pendingOfferAnswerTransactionInProgress: boolean;
+  /** True if the incoming in-dialog request mutated the established From-tag, To-tag, or Call-ID tuple (RFC 3261 §12). */
+  inDialogFromOrToTagMutatedFromEstablishedTuple: boolean;
+  /** True if the Contact URI contains smuggled `?Header=Value` embedded headers (`?Route=`, `?Replaces=`, `?P-Asserted-Identity=`) or CRLF chars (RFC 3261 §19.1.5). */
+  contactUriContainsSmuggledEmbeddedHeadersOrCrlf: boolean;
+}
+
+export interface SipRfc3261Rfc3311Rfc6141UpdateEarlyMediaHijackCSeqOutOfOrderReplayDialogTagMutationAndContactHeaderSmugglingAssessment {
+  allowed: boolean;
+  cseqOutOfOrderOrMethodMismatchRejected500: boolean;
+  earlyDialogUpdateHijackOrOfferGlareRejected491: boolean;
+  dialogTagMutationOrContactHeaderSmugglingBlocked: boolean;
+  reason:
+    | "RFC3261_SECTION_12_2_2_CSEQ_REPLAY_REGRESSION_OR_REQUEST_LINE_METHOD_MISMATCH_BLOCKED"
+    | "RFC3311_RFC6141_EARLY_DIALOG_UPDATE_SDP_HIJACK_OR_PENDING_OFFER_GLARE_BLOCKED"
+    | "RFC3261_SECTION_19_1_5_DIALOG_TAG_MUTATION_OR_CONTACT_URI_HEADER_SMUGGLING_INJECTION_BLOCKED"
+    | "SIP_RFC3261_RFC3311_UPDATE_CSEQ_DIALOG_TAG_AND_CONTACT_URI_VERIFIED";
+  actionCode:
+    | "REJECT_SIP_500_OR_400_ON_CSEQ_OUT_OF_ORDER_REPLAY_UINT32_OVERFLOW_OR_METHOD_MISMATCH"
+    | "REJECT_SIP_491_OR_403_ON_UNAUTHENTICATED_EARLY_DIALOG_UPDATE_MEDIA_REDIRECT_OR_OFFER_GLARE"
+    | "REJECT_SIP_481_ON_DIALOG_TAG_MUTATION_AND_STRIP_CONTACT_EMBEDDED_URI_HEADERS"
+    | "ALLOW_VERIFIED_SIP_IN_DIALOG_UPDATE_AND_CSEQ_PROGRESSION";
+  policyCode: "P178-SIP-RFC3261-RFC3311-RFC6141-UPDATE-EARLY-MEDIA-HIJACK-CSEQ-OUT-OF-ORDER-ROLLOVER-REPLAY-DIALOG-TAG-MUTATION-AND-CONTACT-HEADER-SMUGGLING-GUARD";
+}
+
+export function evaluateSipRfc3261Rfc3311Rfc6141UpdateEarlyMediaHijackCSeqOutOfOrderReplayDialogTagMutationAndContactHeaderSmugglingGuard(
+  input: SipRfc3261Rfc3311Rfc6141UpdateEarlyMediaHijackCSeqOutOfOrderReplayDialogTagMutationAndContactHeaderSmugglingInput
+): SipRfc3261Rfc3311Rfc6141UpdateEarlyMediaHijackCSeqOutOfOrderReplayDialogTagMutationAndContactHeaderSmugglingAssessment {
+  // 1. RFC 3261 §12.2.2 / §8.1.1.5: Out-of-order / replayed CSeq, uint32 overflow (>4294967295), or CSeq method mismatch with Request-Line
+  if (
+    input.incomingCSeqNumber <= input.lastRemoteCSeqNumber ||
+    input.incomingCSeqNumber > 4294967295 ||
+    !input.cseqMethodMatchesRequestLine
+  ) {
+    return {
+      allowed: false,
+      cseqOutOfOrderOrMethodMismatchRejected500: true,
+      earlyDialogUpdateHijackOrOfferGlareRejected491: false,
+      dialogTagMutationOrContactHeaderSmugglingBlocked: false,
+      reason:
+        "RFC3261_SECTION_12_2_2_CSEQ_REPLAY_REGRESSION_OR_REQUEST_LINE_METHOD_MISMATCH_BLOCKED",
+      actionCode:
+        "REJECT_SIP_500_OR_400_ON_CSEQ_OUT_OF_ORDER_REPLAY_UINT32_OVERFLOW_OR_METHOD_MISMATCH",
+      policyCode:
+        "P178-SIP-RFC3261-RFC3311-RFC6141-UPDATE-EARLY-MEDIA-HIJACK-CSEQ-OUT-OF-ORDER-ROLLOVER-REPLAY-DIALOG-TAG-MUTATION-AND-CONTACT-HEADER-SMUGGLING-GUARD",
+    };
+  }
+
+  // 2. RFC 3311 §5.1 / RFC 6141: Unauthenticated early-dialog UPDATE redirecting 180/183 early media or concurrent Offer/Answer glare
+  if (
+    input.unauthenticatedEarlyDialogUpdateModifiesMediaAddress ||
+    input.pendingOfferAnswerTransactionInProgress
+  ) {
+    return {
+      allowed: false,
+      cseqOutOfOrderOrMethodMismatchRejected500: false,
+      earlyDialogUpdateHijackOrOfferGlareRejected491: true,
+      dialogTagMutationOrContactHeaderSmugglingBlocked: false,
+      reason:
+        "RFC3311_RFC6141_EARLY_DIALOG_UPDATE_SDP_HIJACK_OR_PENDING_OFFER_GLARE_BLOCKED",
+      actionCode:
+        "REJECT_SIP_491_OR_403_ON_UNAUTHENTICATED_EARLY_DIALOG_UPDATE_MEDIA_REDIRECT_OR_OFFER_GLARE",
+      policyCode:
+        "P178-SIP-RFC3261-RFC3311-RFC6141-UPDATE-EARLY-MEDIA-HIJACK-CSEQ-OUT-OF-ORDER-ROLLOVER-REPLAY-DIALOG-TAG-MUTATION-AND-CONTACT-HEADER-SMUGGLING-GUARD",
+    };
+  }
+
+  // 3. RFC 3261 §12 / §19.1.5: Mid-dialog From/To tag mutation or Contact URI embedded header smuggling (?Route=, ?Replaces=, CRLF)
+  if (
+    input.inDialogFromOrToTagMutatedFromEstablishedTuple ||
+    input.contactUriContainsSmuggledEmbeddedHeadersOrCrlf
+  ) {
+    return {
+      allowed: false,
+      cseqOutOfOrderOrMethodMismatchRejected500: false,
+      earlyDialogUpdateHijackOrOfferGlareRejected491: false,
+      dialogTagMutationOrContactHeaderSmugglingBlocked: true,
+      reason:
+        "RFC3261_SECTION_19_1_5_DIALOG_TAG_MUTATION_OR_CONTACT_URI_HEADER_SMUGGLING_INJECTION_BLOCKED",
+      actionCode:
+        "REJECT_SIP_481_ON_DIALOG_TAG_MUTATION_AND_STRIP_CONTACT_EMBEDDED_URI_HEADERS",
+      policyCode:
+        "P178-SIP-RFC3261-RFC3311-RFC6141-UPDATE-EARLY-MEDIA-HIJACK-CSEQ-OUT-OF-ORDER-ROLLOVER-REPLAY-DIALOG-TAG-MUTATION-AND-CONTACT-HEADER-SMUGGLING-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    cseqOutOfOrderOrMethodMismatchRejected500: false,
+    earlyDialogUpdateHijackOrOfferGlareRejected491: false,
+    dialogTagMutationOrContactHeaderSmugglingBlocked: false,
+    reason:
+      "SIP_RFC3261_RFC3311_UPDATE_CSEQ_DIALOG_TAG_AND_CONTACT_URI_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SIP_IN_DIALOG_UPDATE_AND_CSEQ_PROGRESSION",
+    policyCode:
+      "P178-SIP-RFC3261-RFC3311-RFC6141-UPDATE-EARLY-MEDIA-HIJACK-CSEQ-OUT-OF-ORDER-ROLLOVER-REPLAY-DIALOG-TAG-MUTATION-AND-CONTACT-HEADER-SMUGGLING-GUARD",
+  };
+}
+
+
 
 
 
