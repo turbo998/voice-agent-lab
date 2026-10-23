@@ -14731,6 +14731,224 @@ export function evaluateSipRfc3326ReasonHeaderQ850CauseSpoofingRfc3329SecAgreeDo
   };
 }
 
+/**
+ * P163: Integrated Steelworks, Blast Furnace (BF), Basic Oxygen Furnace (BOF) & Electric Arc Furnace (EAF)
+ * Meltshop Control (NFPA 86 / AIST TR-6 & TR-9 / OSHA 29 CFR § 1910.146 / § 1910.147 / § 1910.252)
+ * Molten Metal Water-Entrapment Steam Explosion & Water-Cooled Tuyere / Oxygen Lance Leak Preemption,
+ * Blast Furnace Top-Gas (BFG / LDG) CO Excursion & Goggle-Valve N2 Purge Interlock, and Hot-Metal
+ * Teeming Ladle Turret / Slide-Gate Hydraulic LOTO Guard.
+ */
+export interface SteelMeltshopBlastFurnaceEafNfpa86AistMoltenMetalWaterExplosionBfgCoGoggleValveAndLadleLotoGuardInput {
+  meltshopUnitId: string;
+  waterCooledTuyereOrOxygenLanceLeakDetected: boolean;
+  attemptScrapChargeOrTapping: boolean;
+  scrapAndPitDrynessVerifiedZeroMoisture: boolean;
+  blastFurnaceTopGasCoExcursionOrTrtSealFailureDetected: boolean;
+  attemptGasMainEntryOrGoggleValveSwing: boolean;
+  n2PurgeO2AndCoZeroVerifiedWithGogglePlateClamped: boolean;
+  operatorUnderTeemingLadleOrInConverterPit: boolean;
+  ladleTurretBrakeAndSlideGateHydraulicLotoVerified: boolean;
+}
+
+export interface SteelMeltshopBlastFurnaceEafNfpa86AistMoltenMetalWaterExplosionBfgCoGoggleValveAndLadleLotoGuardResult {
+  allowed: boolean;
+  moltenMetalWaterExplosionOrLanceLeakAborted: boolean;
+  bfgTopGasCoOrGoggleValvePurgeLocked: boolean;
+  ladleTurretAndSlideGateHydraulicLocked: boolean;
+  reason: string;
+  actionCode:
+    | "ABORT_CHARGE_TAP_ISOLATE_COOLING_WATER_LANCE_AND_EVACUATE_MELTSHOP_FLOOR"
+    | "CLAMP_GOGGLE_BLIND_VALVE_ENFORCE_N2_PURGE_AND_TRIGGER_CO_MELTSHOP_EVACUATION"
+    | "LOCK_LADLE_TURRET_SLEW_BRAKE_AND_DEENERGIZE_SLIDE_GATE_HYDRAULICS"
+    | "ALLOW_VERIFIED_STEEL_BLAST_FURNACE_EAF_MELTSHOP_OPERATION";
+  policyCode: "P163-STEEL-BLAST-FURNACE-EAF-FOUNDRY-NFPA-86-OSHA-1910-108-MOLTEN-METAL-WATER-EXPLOSION-TUYERE-LANCE-LEAK-TRT-TOP-GAS-CO-PURGE-AND-LADLE-SLIDE-GATE-LOTO-GUARD";
+}
+
+export function evaluateSteelMeltshopBlastFurnaceEafNfpa86AistMoltenMetalWaterExplosionBfgCoGoggleValveAndLadleLotoGuard(
+  input: SteelMeltshopBlastFurnaceEafNfpa86AistMoltenMetalWaterExplosionBfgCoGoggleValveAndLadleLotoGuardInput
+): SteelMeltshopBlastFurnaceEafNfpa86AistMoltenMetalWaterExplosionBfgCoGoggleValveAndLadleLotoGuardResult {
+  // 1. AIST / NFPA 86: Water-cooled tuyere/oxygen lance/EAF panel leak or charging/tapping wet scrap/ladle -> 0ms molten-metal steam explosion preemption
+  if (
+    input.waterCooledTuyereOrOxygenLanceLeakDetected ||
+    (input.attemptScrapChargeOrTapping && !input.scrapAndPitDrynessVerifiedZeroMoisture)
+  ) {
+    return {
+      allowed: false,
+      moltenMetalWaterExplosionOrLanceLeakAborted: true,
+      bfgTopGasCoOrGoggleValvePurgeLocked: false,
+      ladleTurretAndSlideGateHydraulicLocked: false,
+      reason:
+        "AIST_NFPA86_MOLTEN_METAL_WATER_EXPLOSION_TUYERE_LANCE_LEAK_OR_WET_CHARGE_PREEMPTION",
+      actionCode:
+        "ABORT_CHARGE_TAP_ISOLATE_COOLING_WATER_LANCE_AND_EVACUATE_MELTSHOP_FLOOR",
+      policyCode:
+        "P163-STEEL-BLAST-FURNACE-EAF-FOUNDRY-NFPA-86-OSHA-1910-108-MOLTEN-METAL-WATER-EXPLOSION-TUYERE-LANCE-LEAK-TRT-TOP-GAS-CO-PURGE-AND-LADLE-SLIDE-GATE-LOTO-GUARD",
+    };
+  }
+
+  // 2. OSHA 29 CFR § 1910.146 / NFPA 86: Blast Furnace Gas (BFG) / Converter Gas (LDG) CO excursion or missing Goggle blind valve & N2 purge
+  if (
+    input.blastFurnaceTopGasCoExcursionOrTrtSealFailureDetected ||
+    (input.attemptGasMainEntryOrGoggleValveSwing &&
+      !input.n2PurgeO2AndCoZeroVerifiedWithGogglePlateClamped)
+  ) {
+    return {
+      allowed: false,
+      moltenMetalWaterExplosionOrLanceLeakAborted: false,
+      bfgTopGasCoOrGoggleValvePurgeLocked: true,
+      ladleTurretAndSlideGateHydraulicLocked: false,
+      reason:
+        "OSHA_1910_146_NFPA86_BFG_CO_GAS_EXCURSION_OR_MISSING_GOGGLE_VALVE_N2_PURGE_BLOCKED",
+      actionCode:
+        "CLAMP_GOGGLE_BLIND_VALVE_ENFORCE_N2_PURGE_AND_TRIGGER_CO_MELTSHOP_EVACUATION",
+      policyCode:
+        "P163-STEEL-BLAST-FURNACE-EAF-FOUNDRY-NFPA-86-OSHA-1910-108-MOLTEN-METAL-WATER-EXPLOSION-TUYERE-LANCE-LEAK-TRT-TOP-GAS-CO-PURGE-AND-LADLE-SLIDE-GATE-LOTO-GUARD",
+    };
+  }
+
+  // 3. AIST TR-6 / OSHA 29 CFR § 1910.147: Operator in converter/ladle pit or caster turret zone without turret slew brake & slide-gate hydraulic LOTO
+  if (
+    input.operatorUnderTeemingLadleOrInConverterPit &&
+    !input.ladleTurretBrakeAndSlideGateHydraulicLotoVerified
+  ) {
+    return {
+      allowed: false,
+      moltenMetalWaterExplosionOrLanceLeakAborted: false,
+      bfgTopGasCoOrGoggleValvePurgeLocked: false,
+      ladleTurretAndSlideGateHydraulicLocked: true,
+      reason:
+        "AIST_TR6_OSHA_1910_147_HOT_METAL_LADLE_TURRET_OR_SLIDE_GATE_HYDRAULIC_LOTO_MISSING",
+      actionCode:
+        "LOCK_LADLE_TURRET_SLEW_BRAKE_AND_DEENERGIZE_SLIDE_GATE_HYDRAULICS",
+      policyCode:
+        "P163-STEEL-BLAST-FURNACE-EAF-FOUNDRY-NFPA-86-OSHA-1910-108-MOLTEN-METAL-WATER-EXPLOSION-TUYERE-LANCE-LEAK-TRT-TOP-GAS-CO-PURGE-AND-LADLE-SLIDE-GATE-LOTO-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    moltenMetalWaterExplosionOrLanceLeakAborted: false,
+    bfgTopGasCoOrGoggleValvePurgeLocked: false,
+    ladleTurretAndSlideGateHydraulicLocked: false,
+    reason:
+      "STEEL_MELTSHOP_AIST_NFPA86_OSHA_MOLTEN_METAL_BFG_CO_AND_LADLE_LOTO_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_STEEL_BLAST_FURNACE_EAF_MELTSHOP_OPERATION",
+    policyCode:
+      "P163-STEEL-BLAST-FURNACE-EAF-FOUNDRY-NFPA-86-OSHA-1910-108-MOLTEN-METAL-WATER-EXPLOSION-TUYERE-LANCE-LEAK-TRT-TOP-GAS-CO-PURGE-AND-LADLE-SLIDE-GATE-LOTO-GUARD",
+  };
+}
+
+/**
+ * P164: WebRTC / RTP RFC 5285 / RFC 8285 RTP Header Extensions (0xBEDE One-Byte vs. 0x1000 Two-Byte
+ * Profile Confusion, Unnegotiated a=extmap-allow-mixed, Mid-Call Extension ID [1..14 / 1..255] URI
+ * Remapping Desync & Extension Word-Length / Non-Zero Padding Smuggling Guard).
+ */
+export interface WebrtcRtpRfc8285ExtmapAllowMixedOneTwoByteHeaderConfusionUriRemapAndPaddingOverflowGuardInput {
+  rtpStreamSsrcId: string;
+  extensionProfileDefinedBy0x1000TwoByte: boolean;
+  sdpExtmapAllowMixedNegotiated: boolean;
+  extensionId: number;
+  extensionProfileDefinedBy0xBEDEOneByte: boolean;
+  oneByteExtensionElementLengthZeroOrReservedId15UsedForData: boolean;
+  ssrcStreamActive: boolean;
+  extmapIdReboundToDifferentUriMidCallWithoutSsrcReset: boolean;
+  extensionHeaderDeclaredWordLengthTimes4: number;
+  remainingPacketBytesBeforePayload: number;
+  nonZeroExtensionPaddingBytesDetected: boolean;
+}
+
+export interface WebrtcRtpRfc8285ExtmapAllowMixedOneTwoByteHeaderConfusionUriRemapAndPaddingOverflowGuardResult {
+  allowed: boolean;
+  rfc8285OneTwoByteProfileOrReservedId15ViolationDropped: boolean;
+  midCallExtmapIdUriRemappingRejected: boolean;
+  extensionWordLengthOverflowOrNonZeroPaddingDropped: boolean;
+  reason: string;
+  actionCode:
+    | "STRIP_MALFORMED_RFC8285_HEADER_EXTENSION_ON_PROFILE_OR_ID15_VIOLATION"
+    | "REJECT_SDP_EXTMAP_ID_URI_REMAPPING_AND_PRESERVE_IMMUTABLE_ID_BINDING"
+    | "DROP_RTP_PACKET_ON_RFC8285_EXTENSION_LENGTH_OVERFLOW_OR_DIRTY_PADDING"
+    | "ALLOW_VERIFIED_RFC8285_RTP_HEADER_EXTENSION_PACKET";
+  policyCode: "P164-WEBRTC-RTP-RFC5285-EXTMAP-ALLOW-MIXED-ONE-TWO-BYTE-HEADER-EXTENSION-CONFUSION-URI-ID-REMAPPING-DESYNC-AND-PADDING-OVERFLOW-GUARD";
+}
+
+export function evaluateWebrtcRtpRfc8285ExtmapAllowMixedOneTwoByteHeaderConfusionUriRemapAndPaddingOverflowGuard(
+  input: WebrtcRtpRfc8285ExtmapAllowMixedOneTwoByteHeaderConfusionUriRemapAndPaddingOverflowGuardInput
+): WebrtcRtpRfc8285ExtmapAllowMixedOneTwoByteHeaderConfusionUriRemapAndPaddingOverflowGuardResult {
+  // 1. RFC 8285 Section 4.2 / 4.3: 0x1000 Two-Byte header or ID > 14 without a=extmap-allow-mixed, or 0xBEDE reserved ID=15 smuggling
+  if (
+    (input.extensionProfileDefinedBy0x1000TwoByte &&
+      !input.sdpExtmapAllowMixedNegotiated &&
+      input.extensionId > 14) ||
+    (input.extensionProfileDefinedBy0xBEDEOneByte &&
+      (input.extensionId > 14 ||
+        input.oneByteExtensionElementLengthZeroOrReservedId15UsedForData))
+  ) {
+    return {
+      allowed: false,
+      rfc8285OneTwoByteProfileOrReservedId15ViolationDropped: true,
+      midCallExtmapIdUriRemappingRejected: false,
+      extensionWordLengthOverflowOrNonZeroPaddingDropped: false,
+      reason:
+        "RFC8285_ONE_TWO_BYTE_PROFILE_MISMATCH_UNNEGOTIATED_ALLOW_MIXED_OR_RESERVED_ID15_ABUSE_BLOCKED",
+      actionCode:
+        "STRIP_MALFORMED_RFC8285_HEADER_EXTENSION_ON_PROFILE_OR_ID15_VIOLATION",
+      policyCode:
+        "P164-WEBRTC-RTP-RFC5285-EXTMAP-ALLOW-MIXED-ONE-TWO-BYTE-HEADER-EXTENSION-CONFUSION-URI-ID-REMAPPING-DESYNC-AND-PADDING-OVERFLOW-GUARD",
+    };
+  }
+
+  // 2. RFC 8285 Section 6 / RFC 8829: Mid-call SDP re-offer remapping an active numeric extmap ID to a different URI without SSRC reset
+  if (
+    input.ssrcStreamActive &&
+    input.extmapIdReboundToDifferentUriMidCallWithoutSsrcReset
+  ) {
+    return {
+      allowed: false,
+      rfc8285OneTwoByteProfileOrReservedId15ViolationDropped: false,
+      midCallExtmapIdUriRemappingRejected: true,
+      extensionWordLengthOverflowOrNonZeroPaddingDropped: false,
+      reason:
+        "RFC8285_RFC8829_MID_CALL_EXTMAP_ID_URI_COLLISION_REMAPPING_WITHOUT_RESET_BLOCKED",
+      actionCode:
+        "REJECT_SDP_EXTMAP_ID_URI_REMAPPING_AND_PRESERVE_IMMUTABLE_ID_BINDING",
+      policyCode:
+        "P164-WEBRTC-RTP-RFC5285-EXTMAP-ALLOW-MIXED-ONE-TWO-BYTE-HEADER-EXTENSION-CONFUSION-URI-ID-REMAPPING-DESYNC-AND-PADDING-OVERFLOW-GUARD",
+    };
+  }
+
+  // 3. RFC 8285 Section 4.1: Extension 16-bit word length * 4 exceeds remaining packet bytes or non-zero padding covert channel
+  if (
+    input.extensionHeaderDeclaredWordLengthTimes4 >
+      input.remainingPacketBytesBeforePayload ||
+    input.nonZeroExtensionPaddingBytesDetected
+  ) {
+    return {
+      allowed: false,
+      rfc8285OneTwoByteProfileOrReservedId15ViolationDropped: false,
+      midCallExtmapIdUriRemappingRejected: false,
+      extensionWordLengthOverflowOrNonZeroPaddingDropped: true,
+      reason:
+        "RFC8285_EXTENSION_WORD_LENGTH_PACKET_OOB_OR_NONZERO_PADDING_COVERT_CHANNEL_BLOCKED",
+      actionCode:
+        "DROP_RTP_PACKET_ON_RFC8285_EXTENSION_LENGTH_OVERFLOW_OR_DIRTY_PADDING",
+      policyCode:
+        "P164-WEBRTC-RTP-RFC5285-EXTMAP-ALLOW-MIXED-ONE-TWO-BYTE-HEADER-EXTENSION-CONFUSION-URI-ID-REMAPPING-DESYNC-AND-PADDING-OVERFLOW-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc8285OneTwoByteProfileOrReservedId15ViolationDropped: false,
+    midCallExtmapIdUriRemappingRejected: false,
+    extensionWordLengthOverflowOrNonZeroPaddingDropped: false,
+    reason:
+      "WEBRTC_RTP_RFC8285_HEADER_EXTENSION_PROFILE_URI_MAP_AND_BOUNDS_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_RFC8285_RTP_HEADER_EXTENSION_PACKET",
+    policyCode:
+      "P164-WEBRTC-RTP-RFC5285-EXTMAP-ALLOW-MIXED-ONE-TWO-BYTE-HEADER-EXTENSION-CONFUSION-URI-ID-REMAPPING-DESYNC-AND-PADDING-OVERFLOW-GUARD",
+  };
+}
+
 
 
 
