@@ -16593,6 +16593,246 @@ export function evaluateSipRfc3261Rfc3311Rfc6141UpdateEarlyMediaHijackCSeqOutOfO
   };
 }
 
+// ============================================================================
+// Stage 93 — P179 (Refinery Fluid Catalytic Cracking FCCU & HF Alkylation
+// API RP 751 / API 521 / OSHA 1910.119 Safety) & P180 (WebRTC / SRTP RFC 3711
+// / RFC 7714 / RFC 5764 ROC Rollover Desync, Replay Window Exhaustion,
+// AES-GCM Nonce Reuse & Unauthenticated SRTCP Bypass Guard)
+// ============================================================================
+
+export interface RefineryFccuAlkylationApiRp751Osha1910119ReactorRegeneratorDpCatalystReversalHfAcidReleaseWaterCurtainAndSlideValveLotoInput {
+  /** FCCU Reactor-to-Regenerator differential pressure in kPa (below +15 kPa risks hydrocarbon backflow / catalyst reversal into the 720°C regenerator). */
+  reactorToRegeneratorDifferentialPressureKpa: number;
+  /** Minimum safe positive differential pressure margin in kPa across spent/regenerated catalyst slide valves (typically 15 kPa). */
+  minSafeDifferentialPressureKpa: number;
+  /** FCCU Regenerator dilute-phase / cyclone temperature in °C (above 760°C indicates runaway CO afterburn melting cyclone diplegs). */
+  regeneratorDilutePhaseTempCelsius: number;
+  /** Maximum safe regenerator dilute-phase temperature ceiling in °C (typically 760°C). */
+  maxSafeRegeneratorTempCelsius: number;
+  /** Open-path laser Hydrofluoric Acid (HF) vapor detector reading in ppm (API RP 751 alarm threshold >= 2.0 ppm; IDLH = 30 ppm). */
+  openPathHfGasConcentrationPpm: number;
+  /** Maximum allowed ambient HF vapor concentration in ppm before mandatory mitigation interlock (typically 2.0 ppm). */
+  maxAllowedHfGasPpm: number;
+  /** Hydrofluoric acid settler water content in wt% (above 2.0 wt% triggers runaway acid-water corrosion and flange failure). */
+  hfAcidWaterContentWtPct: number;
+  /** Maximum safe HF acid water content in wt% (typically 2.0 wt%). */
+  maxSafeHfAcidWaterWtPct: number;
+  /** True if API RP 751 Rapid Acid Deinventory (RAD) dump valves and 20:1 elevated water mitigation curtains are armed and pressurized. */
+  hfRapidAcidDeinventoryAndWaterCurtainArmed: boolean;
+  /** True if maintenance personnel are inside the FCCU reactor riser/regenerator cyclone or HF alkylation acid settler zone. */
+  personnelInFccuVesselOrHfAlkylationZone: boolean;
+  /** True if hydraulic catalyst slide valves (RCV/SCV) are mechanically pinned and blinded with verified LOTO padlocks. */
+  catalystSlideValveMechanicalPinAndBlindFlangeVerified: boolean;
+  /** True if API RP 751 Class C/D encapsulated HF acid suit and soda-ash flange neutralization are verified. */
+  apiRp751ClassCEncapsulatedSuitAndNeutralizationVerified: boolean;
+  /** True if the voice command requests slide valve stroke test, main air blower start, or HF acid flange unbolting. */
+  voiceCommandRequestsSlideValveStrokeOrAcidFlangeOpen: boolean;
+}
+
+export interface RefineryFccuAlkylationApiRp751Osha1910119ReactorRegeneratorDpCatalystReversalHfAcidReleaseWaterCurtainAndSlideValveLotoAssessment {
+  allowed: boolean;
+  preempted: boolean;
+  fccuCatalystReversalOrAfterburnPreempted: boolean;
+  hfAcidReleaseOrAcidSettlerInventoryInterlocked: boolean;
+  slideValveOrAcidVesselClassCPpeLotoLocked: boolean;
+  reason:
+    | "API_521_OSHA_1910_119_FCCU_REACTOR_REGENERATOR_DP_REVERSAL_OR_CYCLONE_AFTERBURN_0MS_TRIP"
+    | "API_RP751_HF_ALKYLATION_VAPOR_RELEASE_OR_CORROSIVE_WATER_CARRYOVER_DEINVENTORY_INTERLOCK"
+    | "OSHA_1910_147_API_RP751_FCCU_SLIDE_VALVE_UNPINNED_OR_HF_CLASS_C_PPE_LOTO_BLOCKED"
+    | "REFINERY_FCCU_REACTOR_REGENERATOR_DP_HF_ALKYLATION_API_RP751_AND_SLIDE_VALVE_LOTO_VERIFIED";
+  actionCode:
+    | "TRIP_FCCU_SLIDE_VALVES_DIVERT_OIL_FEED_AND_INJECT_EMERGENCY_STEAM_SEAL_0MS"
+    | "ACTIVATE_API_RP751_HF_RAPID_ACID_DEINVENTORY_AND_WATER_MITIGATION_CURTAIN_INTERLOCK"
+    | "LOCK_FCCU_SLIDE_VALVE_HYDRAULICS_AND_BLOCK_HF_VESSEL_ENTRY_UNTIL_BLIND_AND_CLASS_C_PPE_VERIFIED"
+    | "ALLOW_VERIFIED_REFINERY_FCCU_AND_HF_ALKYLATION_OPERATION";
+  policyCode: "P179-REFINERY-FCCU-ALKYLATION-API-RP751-OSHA-1910-119-REACTOR-REGENERATOR-DIFFERENTIAL-PRESSURE-CATALYST-REVERSAL-HF-ACID-RELEASE-WATER-MITIGATION-AND-SLIDE-VALVE-LOTO-GUARD";
+}
+
+export function evaluateRefineryFccuAlkylationApiRp751Osha1910119ReactorRegeneratorDpCatalystReversalHfAcidReleaseWaterCurtainAndSlideValveLotoGuard(
+  input: RefineryFccuAlkylationApiRp751Osha1910119ReactorRegeneratorDpCatalystReversalHfAcidReleaseWaterCurtainAndSlideValveLotoInput
+): RefineryFccuAlkylationApiRp751Osha1910119ReactorRegeneratorDpCatalystReversalHfAcidReleaseWaterCurtainAndSlideValveLotoAssessment {
+  // 1. 0ms Preemption: FCCU Reactor-Regenerator differential pressure reversal (<15 kPa) or Regenerator dilute-phase CO afterburn (>=760°C)
+  if (
+    input.reactorToRegeneratorDifferentialPressureKpa <
+      input.minSafeDifferentialPressureKpa ||
+    input.regeneratorDilutePhaseTempCelsius >= input.maxSafeRegeneratorTempCelsius
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      fccuCatalystReversalOrAfterburnPreempted: true,
+      hfAcidReleaseOrAcidSettlerInventoryInterlocked: false,
+      slideValveOrAcidVesselClassCPpeLotoLocked: false,
+      reason:
+        "API_521_OSHA_1910_119_FCCU_REACTOR_REGENERATOR_DP_REVERSAL_OR_CYCLONE_AFTERBURN_0MS_TRIP",
+      actionCode:
+        "TRIP_FCCU_SLIDE_VALVES_DIVERT_OIL_FEED_AND_INJECT_EMERGENCY_STEAM_SEAL_0MS",
+      policyCode:
+        "P179-REFINERY-FCCU-ALKYLATION-API-RP751-OSHA-1910-119-REACTOR-REGENERATOR-DIFFERENTIAL-PRESSURE-CATALYST-REVERSAL-HF-ACID-RELEASE-WATER-MITIGATION-AND-SLIDE-VALVE-LOTO-GUARD",
+    };
+  }
+
+  // 2. Interlock: API RP 751 HF vapor release (>=2.0 ppm), acid water carryover (>=2.0 wt%), or unarmed Rapid Acid Deinventory (RAD) / water curtain
+  if (
+    input.openPathHfGasConcentrationPpm >= input.maxAllowedHfGasPpm ||
+    input.hfAcidWaterContentWtPct >= input.maxSafeHfAcidWaterWtPct ||
+    !input.hfRapidAcidDeinventoryAndWaterCurtainArmed
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      fccuCatalystReversalOrAfterburnPreempted: false,
+      hfAcidReleaseOrAcidSettlerInventoryInterlocked: true,
+      slideValveOrAcidVesselClassCPpeLotoLocked: false,
+      reason:
+        "API_RP751_HF_ALKYLATION_VAPOR_RELEASE_OR_CORROSIVE_WATER_CARRYOVER_DEINVENTORY_INTERLOCK",
+      actionCode:
+        "ACTIVATE_API_RP751_HF_RAPID_ACID_DEINVENTORY_AND_WATER_MITIGATION_CURTAIN_INTERLOCK",
+      policyCode:
+        "P179-REFINERY-FCCU-ALKYLATION-API-RP751-OSHA-1910-119-REACTOR-REGENERATOR-DIFFERENTIAL-PRESSURE-CATALYST-REVERSAL-HF-ACID-RELEASE-WATER-MITIGATION-AND-SLIDE-VALVE-LOTO-GUARD",
+    };
+  }
+
+  // 3. LOTO: Unpinned hydraulic catalyst slide valve or missing API RP 751 Class C PPE / neutralization during maintenance or valve stroke command
+  if (
+    ((input.personnelInFccuVesselOrHfAlkylationZone ||
+      !input.catalystSlideValveMechanicalPinAndBlindFlangeVerified ||
+      !input.apiRp751ClassCEncapsulatedSuitAndNeutralizationVerified) &&
+      input.voiceCommandRequestsSlideValveStrokeOrAcidFlangeOpen) ||
+    (input.personnelInFccuVesselOrHfAlkylationZone &&
+      (!input.catalystSlideValveMechanicalPinAndBlindFlangeVerified ||
+        !input.apiRp751ClassCEncapsulatedSuitAndNeutralizationVerified))
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      fccuCatalystReversalOrAfterburnPreempted: false,
+      hfAcidReleaseOrAcidSettlerInventoryInterlocked: false,
+      slideValveOrAcidVesselClassCPpeLotoLocked: true,
+      reason:
+        "OSHA_1910_147_API_RP751_FCCU_SLIDE_VALVE_UNPINNED_OR_HF_CLASS_C_PPE_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_FCCU_SLIDE_VALVE_HYDRAULICS_AND_BLOCK_HF_VESSEL_ENTRY_UNTIL_BLIND_AND_CLASS_C_PPE_VERIFIED",
+      policyCode:
+        "P179-REFINERY-FCCU-ALKYLATION-API-RP751-OSHA-1910-119-REACTOR-REGENERATOR-DIFFERENTIAL-PRESSURE-CATALYST-REVERSAL-HF-ACID-RELEASE-WATER-MITIGATION-AND-SLIDE-VALVE-LOTO-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    fccuCatalystReversalOrAfterburnPreempted: false,
+    hfAcidReleaseOrAcidSettlerInventoryInterlocked: false,
+    slideValveOrAcidVesselClassCPpeLotoLocked: false,
+    reason:
+      "REFINERY_FCCU_REACTOR_REGENERATOR_DP_HF_ALKYLATION_API_RP751_AND_SLIDE_VALVE_LOTO_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_REFINERY_FCCU_AND_HF_ALKYLATION_OPERATION",
+    policyCode:
+      "P179-REFINERY-FCCU-ALKYLATION-API-RP751-OSHA-1910-119-REACTOR-REGENERATOR-DIFFERENTIAL-PRESSURE-CATALYST-REVERSAL-HF-ACID-RELEASE-WATER-MITIGATION-AND-SLIDE-VALVE-LOTO-GUARD",
+  };
+}
+
+export interface WebrtcSrtpRfc3711Rfc7714Rfc5764RocRolloverDesyncReplayWindowExhaustionAesGcmNonceReuseAndUnencryptedSrtcpBypassInput {
+  /** True if two SRTP packets share an identical (SSRC, ROC, SEQ) tuple under the same master key (two-time pad / GHASH key recovery). */
+  duplicateSsrcRocSeqWithSameMasterKeyDetected: boolean;
+  /** True if the SRTP packet index exceeds 2^48 or SRTCP index exceeds 2^31 without DTLS-SRTP rekeying (RFC 3711 §9.2). */
+  srtpPacketIndexExceeds2Pow48OrSrtcpExceeds2Pow31: boolean;
+  /** True if an unauthenticated RTP sequence jump mutates the local Rollover Counter (ROC) or replay bitmask before MAC/AEAD verification. */
+  unauthenticatedPacketMutatesRocOrReplayWindowBeforeMacVerify: boolean;
+  /** True if the incoming SRTP packet index falls behind the RFC 3711 §3.3.2 replay window (delta < -windowSize) or matches an already-seen bit. */
+  packetFallsBehindSrtpReplayWindowOrDuplicateBitSet: boolean;
+  /** True if UNAUTHENTICATED_SRTCP is negotiated or an incoming SRTCP control packet lacks the mandatory 31-bit index + E-bit + auth tag (RFC 3711 §3.4). */
+  srtcpAuthenticationDisabledOrMissingEbitTag: boolean;
+}
+
+export interface WebrtcSrtpRfc3711Rfc7714Rfc5764RocRolloverDesyncReplayWindowExhaustionAesGcmNonceReuseAndUnencryptedSrtcpBypassAssessment {
+  allowed: boolean;
+  aesGcmNonceReuseOrKeyLifetimeOverflowBlocked: boolean;
+  rocDesyncOrReplayWindowJumpDropped: boolean;
+  unauthenticatedSrtcpControlDowngradeBlocked: boolean;
+  reason:
+    | "RFC3711_RFC7714_SRTP_AES_GCM_IV_NONCE_REUSE_TWO_TIME_PAD_OR_2POW48_KEY_LIFETIME_OVERFLOW_BLOCKED"
+    | "RFC3711_SECTION_3_3_UNAUTHENTICATED_ROC_DESYNC_POISONING_OR_SRTP_REPLAY_WINDOW_HIT_BLOCKED"
+    | "RFC3711_SECTION_3_4_MANDATORY_SRTCP_AUTHENTICATION_BYPASS_OR_MISSING_SRTCP_TAG_BLOCKED"
+    | "WEBRTC_SRTP_RFC3711_RFC7714_ROC_REPLAY_WINDOW_AES_GCM_IV_AND_SRTCP_AUTH_VERIFIED";
+  actionCode:
+    | "INVALIDATE_SRTP_CONTEXT_AND_FORCE_DTLS_SRTP_REKEY_ON_NONCE_COLLISION_OR_KEY_LIFETIME_EXHAUSTION"
+    | "DROP_SRTP_PACKET_BEFORE_ROC_OR_REPLAY_BITMAP_MUTATION_AND_ENFORCE_AUTHENTICATE_FIRST"
+    | "REJECT_UNAUTHENTICATED_SRTCP_PROFILE_AND_MANDATE_RFC3711_SRTCP_HMAC_AEAD_TAG"
+    | "ALLOW_VERIFIED_SRTP_AND_SRTCP_ENCRYPTED_MEDIA_PACKET";
+  policyCode: "P180-WEBRTC-SRTP-RFC3711-RFC7714-RFC5764-ROC-ROLLOVER-DESYNC-REPLAY-WINDOW-EXHAUSTION-AES-GCM-NONCE-REUSE-AND-UNENCRYPTED-SRTCP-BYPASS-GUARD";
+}
+
+export function evaluateWebrtcSrtpRfc3711Rfc7714Rfc5764RocRolloverDesyncReplayWindowExhaustionAesGcmNonceReuseAndUnencryptedSrtcpBypassGuard(
+  input: WebrtcSrtpRfc3711Rfc7714Rfc5764RocRolloverDesyncReplayWindowExhaustionAesGcmNonceReuseAndUnencryptedSrtcpBypassInput
+): WebrtcSrtpRfc3711Rfc7714Rfc5764RocRolloverDesyncReplayWindowExhaustionAesGcmNonceReuseAndUnencryptedSrtcpBypassAssessment {
+  // 1. RFC 3711 §9.2 / RFC 7714: (SSRC, ROC, SEQ) IV nonce reuse under same master key or 2^48 SRTP / 2^31 SRTCP key lifetime exhaustion
+  if (
+    input.duplicateSsrcRocSeqWithSameMasterKeyDetected ||
+    input.srtpPacketIndexExceeds2Pow48OrSrtcpExceeds2Pow31
+  ) {
+    return {
+      allowed: false,
+      aesGcmNonceReuseOrKeyLifetimeOverflowBlocked: true,
+      rocDesyncOrReplayWindowJumpDropped: false,
+      unauthenticatedSrtcpControlDowngradeBlocked: false,
+      reason:
+        "RFC3711_RFC7714_SRTP_AES_GCM_IV_NONCE_REUSE_TWO_TIME_PAD_OR_2POW48_KEY_LIFETIME_OVERFLOW_BLOCKED",
+      actionCode:
+        "INVALIDATE_SRTP_CONTEXT_AND_FORCE_DTLS_SRTP_REKEY_ON_NONCE_COLLISION_OR_KEY_LIFETIME_EXHAUSTION",
+      policyCode:
+        "P180-WEBRTC-SRTP-RFC3711-RFC7714-RFC5764-ROC-ROLLOVER-DESYNC-REPLAY-WINDOW-EXHAUSTION-AES-GCM-NONCE-REUSE-AND-UNENCRYPTED-SRTCP-BYPASS-GUARD",
+    };
+  }
+
+  // 2. RFC 3711 §3.3.1 / §3.3.2: Unauthenticated SEQ jump mutating ROC / replay window before MAC/AEAD verification, or replay hit
+  if (
+    input.unauthenticatedPacketMutatesRocOrReplayWindowBeforeMacVerify ||
+    input.packetFallsBehindSrtpReplayWindowOrDuplicateBitSet
+  ) {
+    return {
+      allowed: false,
+      aesGcmNonceReuseOrKeyLifetimeOverflowBlocked: false,
+      rocDesyncOrReplayWindowJumpDropped: true,
+      unauthenticatedSrtcpControlDowngradeBlocked: false,
+      reason:
+        "RFC3711_SECTION_3_3_UNAUTHENTICATED_ROC_DESYNC_POISONING_OR_SRTP_REPLAY_WINDOW_HIT_BLOCKED",
+      actionCode:
+        "DROP_SRTP_PACKET_BEFORE_ROC_OR_REPLAY_BITMAP_MUTATION_AND_ENFORCE_AUTHENTICATE_FIRST",
+      policyCode:
+        "P180-WEBRTC-SRTP-RFC3711-RFC7714-RFC5764-ROC-ROLLOVER-DESYNC-REPLAY-WINDOW-EXHAUSTION-AES-GCM-NONCE-REUSE-AND-UNENCRYPTED-SRTCP-BYPASS-GUARD",
+    };
+  }
+
+  // 3. RFC 3711 §3.4: Mandatory SRTCP authentication bypass (UNAUTHENTICATED_SRTCP or missing SRTCP E-bit + auth tag)
+  if (input.srtcpAuthenticationDisabledOrMissingEbitTag) {
+    return {
+      allowed: false,
+      aesGcmNonceReuseOrKeyLifetimeOverflowBlocked: false,
+      rocDesyncOrReplayWindowJumpDropped: false,
+      unauthenticatedSrtcpControlDowngradeBlocked: true,
+      reason:
+        "RFC3711_SECTION_3_4_MANDATORY_SRTCP_AUTHENTICATION_BYPASS_OR_MISSING_SRTCP_TAG_BLOCKED",
+      actionCode:
+        "REJECT_UNAUTHENTICATED_SRTCP_PROFILE_AND_MANDATE_RFC3711_SRTCP_HMAC_AEAD_TAG",
+      policyCode:
+        "P180-WEBRTC-SRTP-RFC3711-RFC7714-RFC5764-ROC-ROLLOVER-DESYNC-REPLAY-WINDOW-EXHAUSTION-AES-GCM-NONCE-REUSE-AND-UNENCRYPTED-SRTCP-BYPASS-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    aesGcmNonceReuseOrKeyLifetimeOverflowBlocked: false,
+    rocDesyncOrReplayWindowJumpDropped: false,
+    unauthenticatedSrtcpControlDowngradeBlocked: false,
+    reason:
+      "WEBRTC_SRTP_RFC3711_RFC7714_ROC_REPLAY_WINDOW_AES_GCM_IV_AND_SRTCP_AUTH_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SRTP_AND_SRTCP_ENCRYPTED_MEDIA_PACKET",
+    policyCode:
+      "P180-WEBRTC-SRTP-RFC3711-RFC7714-RFC5764-ROC-ROLLOVER-DESYNC-REPLAY-WINDOW-EXHAUSTION-AES-GCM-NONCE-REUSE-AND-UNENCRYPTED-SRTCP-BYPASS-GUARD",
+  };
+}
+
 
 
 
