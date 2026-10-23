@@ -14098,6 +14098,210 @@ export function evaluateWebrtcRtpRfc8851Rfc8852SimulcastRidAndRfc5104TmmbrGuard(
   };
 }
 
+/**
+ * P157: Petrochemical Refinery & Chemical Complex Process Safety Management
+ * (OSHA 29 CFR 1910.119 PSM / API RP 521 Flare & Depressuring / API RP 752 & 753
+ * Blast-Zone Shelter-in-Place / IEC 61511 SIS SIL-3 Interlock Bypass & PSSR Guard).
+ */
+export interface PetrochemicalRefineryOsha1910119PsmFlareBlowdownVaporCloudAndSisSil3BypassGuardInput {
+  processUnitId: string;
+  hydrocarbonVaporCloudLelPercent: number;
+  toxicH2sOrHfPlumeReleaseDetected: boolean;
+  attemptSisSil3SafetyInterlockBypassOrMos: boolean;
+  osha1910119MocPermitAndDualEngineerSignoffVerified: boolean;
+  flareKnockoutDrumLiquidLevelBelowHighHighLimit: boolean;
+  attemptPostTurnaroundHydrocarbonFeedStartup: boolean;
+  pssrChecklistAndBlindFlangeRegisterFullyReconciled: boolean;
+}
+
+export interface PetrochemicalRefineryOsha1910119PsmFlareBlowdownVaporCloudAndSisSil3BypassGuardResult {
+  allowed: boolean;
+  api752HvacShelterInPlaceAndHotWorkLocked: boolean;
+  sisSil3BypassOrFlareLiquidCarryoverBlocked: boolean;
+  pssrStartupAndBlindFlangeBlocked: boolean;
+  reason: string;
+  actionCode:
+    | "ALLOW_VERIFIED_REFINERY_PSM_PROCESS_OPERATION"
+    | "PREEMPT_VOICE_TRIP_API752_HVAC_DAMPER_SHELTER_IN_PLACE_AND_REVOKE_HOT_WORK"
+    | "BLOCK_IEC61511_SIL3_BYPASS_OR_API521_FLARE_LIQUID_RAINOUT_HAZARD"
+    | "HOLD_HYDROCARBON_STARTUP_UNTIL_OSHA_1910_119_PSSR_AND_BLIND_LIST_RECONCILED";
+  policyCode: "P157-PETROCHEMICAL-REFINERY-API-RP-752-753-OSHA-1910-119-PSM-FLARE-BLOWDOWN-H2S-SO2-VAPOR-CLOUD-BLAST-ZONE-SHELTER-IN-PLACE-AND-SIS-SIL3-BYPASS-GUARD";
+}
+
+export function evaluatePetrochemicalRefineryOsha1910119PsmFlareBlowdownVaporCloudAndSisSil3BypassGuard(
+  input: PetrochemicalRefineryOsha1910119PsmFlareBlowdownVaporCloudAndSisSil3BypassGuardInput
+): PetrochemicalRefineryOsha1910119PsmFlareBlowdownVaporCloudAndSisSil3BypassGuardResult {
+  // 1. API RP 752 / 753 & OSHA 1910.119: >=20% LEL vapor cloud or toxic H2S/HF plume -> 0ms HVAC damper isolation, shelter-in-place & hot-work revocation
+  if (
+    input.hydrocarbonVaporCloudLelPercent >= 20 ||
+    input.toxicH2sOrHfPlumeReleaseDetected
+  ) {
+    return {
+      allowed: false,
+      api752HvacShelterInPlaceAndHotWorkLocked: true,
+      sisSil3BypassOrFlareLiquidCarryoverBlocked: false,
+      pssrStartupAndBlindFlangeBlocked: false,
+      reason:
+        "API_RP_752_753_VAPOR_CLOUD_LEL_OR_TOXIC_H2S_HF_PLUME_SHELTER_IN_PLACE_PREEMPTED",
+      actionCode:
+        "PREEMPT_VOICE_TRIP_API752_HVAC_DAMPER_SHELTER_IN_PLACE_AND_REVOKE_HOT_WORK",
+      policyCode:
+        "P157-PETROCHEMICAL-REFINERY-API-RP-752-753-OSHA-1910-119-PSM-FLARE-BLOWDOWN-H2S-SO2-VAPOR-CLOUD-BLAST-ZONE-SHELTER-IN-PLACE-AND-SIS-SIL3-BYPASS-GUARD",
+    };
+  }
+
+  // 2. IEC 61511 SIS SIL-3 bypass (MOS) without OSHA 1910.119(l) MOC + dual engineer sign-off, or API RP 521 flare knockout drum high-high liquid level
+  if (
+    input.attemptSisSil3SafetyInterlockBypassOrMos &&
+    (!input.osha1910119MocPermitAndDualEngineerSignoffVerified ||
+      !input.flareKnockoutDrumLiquidLevelBelowHighHighLimit)
+  ) {
+    return {
+      allowed: false,
+      api752HvacShelterInPlaceAndHotWorkLocked: false,
+      sisSil3BypassOrFlareLiquidCarryoverBlocked: true,
+      pssrStartupAndBlindFlangeBlocked: false,
+      reason:
+        "IEC61511_SIS_SIL3_UNAPPROVED_BYPASS_OR_API521_FLARE_KNOCKOUT_DRUM_HIGH_LIQUID_BLOCKED",
+      actionCode:
+        "BLOCK_IEC61511_SIL3_BYPASS_OR_API521_FLARE_LIQUID_RAINOUT_HAZARD",
+      policyCode:
+        "P157-PETROCHEMICAL-REFINERY-API-RP-752-753-OSHA-1910-119-PSM-FLARE-BLOWDOWN-H2S-SO2-VAPOR-CLOUD-BLAST-ZONE-SHELTER-IN-PLACE-AND-SIS-SIL3-BYPASS-GUARD",
+    };
+  }
+
+  // 3. OSHA 29 CFR 1910.119(i) Pre-Startup Safety Review (PSSR) & slip-blind / spade register reconciliation before hydrocarbon feed-in
+  if (
+    input.attemptPostTurnaroundHydrocarbonFeedStartup &&
+    !input.pssrChecklistAndBlindFlangeRegisterFullyReconciled
+  ) {
+    return {
+      allowed: false,
+      api752HvacShelterInPlaceAndHotWorkLocked: false,
+      sisSil3BypassOrFlareLiquidCarryoverBlocked: false,
+      pssrStartupAndBlindFlangeBlocked: true,
+      reason:
+        "OSHA_1910_119_PSSR_INCOMPLETE_OR_UNRECONCILED_ISOLATION_BLIND_STARTUP_BLOCKED",
+      actionCode:
+        "HOLD_HYDROCARBON_STARTUP_UNTIL_OSHA_1910_119_PSSR_AND_BLIND_LIST_RECONCILED",
+      policyCode:
+        "P157-PETROCHEMICAL-REFINERY-API-RP-752-753-OSHA-1910-119-PSM-FLARE-BLOWDOWN-H2S-SO2-VAPOR-CLOUD-BLAST-ZONE-SHELTER-IN-PLACE-AND-SIS-SIL3-BYPASS-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    api752HvacShelterInPlaceAndHotWorkLocked: false,
+    sisSil3BypassOrFlareLiquidCarryoverBlocked: false,
+    pssrStartupAndBlindFlangeBlocked: false,
+    reason:
+      "PETROCHEMICAL_REFINERY_OSHA_1910_119_PSM_API521_AND_IEC61511_SIL3_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_REFINERY_PSM_PROCESS_OPERATION",
+    policyCode:
+      "P157-PETROCHEMICAL-REFINERY-API-RP-752-753-OSHA-1910-119-PSM-FLARE-BLOWDOWN-H2S-SO2-VAPOR-CLOUD-BLAST-ZONE-SHELTER-IN-PLACE-AND-SIS-SIL3-BYPASS-GUARD",
+  };
+}
+
+/**
+ * P158: Enterprise SIP Telephony Presence, Busy Lamp Field (BLF) & Directed Call Pickup
+ * Security (RFC 6665 SIP Event Notification / RFC 4235 Event: dialog XML Call-Identity
+ * Redaction against Replaces Call-Pickup Hijack / RFC 5263 max-rate Flood Throttle Guard).
+ */
+export interface SipRfc6665EventSubscriptionRfc4235DialogBlfPickupHijackAndRateThrottleGuardInput {
+  subscriptionDialogId: string;
+  eventPackageType: "dialog" | "presence" | "message-summary";
+  notifyMatchesActiveLocalSubscribeDialogAndTags: boolean;
+  dialogInfoXmlContainsCallIdLocalTagRemoteTag: boolean;
+  subscriberAuthorizedInSameCallPickupGroupAndMtlsVerified: boolean;
+  subscribeRefreshOrNotifyRatePerMinute: number;
+  maxAllowedEventNotificationsPerMinute: number;
+}
+
+export interface SipRfc6665EventSubscriptionRfc4235DialogBlfPickupHijackAndRateThrottleGuardResult {
+  allowed: boolean;
+  unsolicitedOrDesyncedNotifyRejected481: boolean;
+  dialogXmlCallIdAndTagsRedactedAgainstPickupHijack: boolean;
+  subscriptionRateThrottledWithRetryAfter: boolean;
+  reason: string;
+  actionCode:
+    | "ALLOW_VERIFIED_RFC6665_RFC4235_DIALOG_EVENT_NOTIFICATION"
+    | "REJECT_SIP_481_UNSOLICITED_OR_TAG_MISMATCHED_RFC6665_NOTIFY"
+    | "REDACT_RFC4235_DIALOG_CALL_ID_AND_TAGS_TO_BLF_STATE_ONLY_AGAINST_REPLACES_HIJACK"
+    | "THROTTLE_RFC6665_RFC5263_EVENT_STORM_AND_ENFORCE_PROBATION_RETRY_AFTER";
+  policyCode: "P158-SIP-RFC3265-RFC6665-SUBSCRIPTION-DIALOG-EVENT-RFC4235-BLF-CALL-PICKUP-HIJACK-AND-EVENT-RATE-THROTTLE-GUARD";
+}
+
+export function evaluateSipRfc6665EventSubscriptionRfc4235DialogBlfPickupHijackAndRateThrottleGuard(
+  input: SipRfc6665EventSubscriptionRfc4235DialogBlfPickupHijackAndRateThrottleGuardInput
+): SipRfc6665EventSubscriptionRfc4235DialogBlfPickupHijackAndRateThrottleGuardResult {
+  // 1. RFC 6665 Section 4.1.3: Unsolicited NOTIFY or Call-ID / From-tag / To-tag mismatch -> SIP 481 Subscription Does Not Exist
+  if (!input.notifyMatchesActiveLocalSubscribeDialogAndTags) {
+    return {
+      allowed: false,
+      unsolicitedOrDesyncedNotifyRejected481: true,
+      dialogXmlCallIdAndTagsRedactedAgainstPickupHijack: false,
+      subscriptionRateThrottledWithRetryAfter: false,
+      reason:
+        "RFC6665_UNSOLICITED_NOTIFY_OR_SUBSCRIPTION_DIALOG_TAG_MISMATCH_REJECTED_481",
+      actionCode: "REJECT_SIP_481_UNSOLICITED_OR_TAG_MISMATCHED_RFC6665_NOTIFY",
+      policyCode:
+        "P158-SIP-RFC3265-RFC6665-SUBSCRIPTION-DIALOG-EVENT-RFC4235-BLF-CALL-PICKUP-HIJACK-AND-EVENT-RATE-THROTTLE-GUARD",
+    };
+  }
+
+  // 2. RFC 4235 Section 5: Event: dialog XML exposing call-id, local-tag, remote-tag to unauthorized BLF watcher -> Directed Call Pickup (INVITE Replaces) hijack defense
+  if (
+    input.eventPackageType === "dialog" &&
+    input.dialogInfoXmlContainsCallIdLocalTagRemoteTag &&
+    !input.subscriberAuthorizedInSameCallPickupGroupAndMtlsVerified
+  ) {
+    return {
+      allowed: false,
+      unsolicitedOrDesyncedNotifyRejected481: false,
+      dialogXmlCallIdAndTagsRedactedAgainstPickupHijack: true,
+      subscriptionRateThrottledWithRetryAfter: false,
+      reason:
+        "RFC4235_DIALOG_INFO_XML_CALL_ID_TAG_EXPOSURE_DIRECTED_PICKUP_HIJACK_REDACTED",
+      actionCode:
+        "REDACT_RFC4235_DIALOG_CALL_ID_AND_TAGS_TO_BLF_STATE_ONLY_AGAINST_REPLACES_HIJACK",
+      policyCode:
+        "P158-SIP-RFC3265-RFC6665-SUBSCRIPTION-DIALOG-EVENT-RFC4235-BLF-CALL-PICKUP-HIJACK-AND-EVENT-RATE-THROTTLE-GUARD",
+    };
+  }
+
+  // 3. RFC 6665 / RFC 5263: High-frequency SUBSCRIBE Expires=0 polling flood or NOTIFY state-oscillation storm exceeding max-rate
+  if (
+    input.subscribeRefreshOrNotifyRatePerMinute >
+    input.maxAllowedEventNotificationsPerMinute
+  ) {
+    return {
+      allowed: false,
+      unsolicitedOrDesyncedNotifyRejected481: false,
+      dialogXmlCallIdAndTagsRedactedAgainstPickupHijack: false,
+      subscriptionRateThrottledWithRetryAfter: true,
+      reason:
+        "RFC6665_RFC5263_SUBSCRIBE_NOTIFY_RATE_FLOOD_EXCEEDED_MAX_RATE_THROTTLED",
+      actionCode:
+        "THROTTLE_RFC6665_RFC5263_EVENT_STORM_AND_ENFORCE_PROBATION_RETRY_AFTER",
+      policyCode:
+        "P158-SIP-RFC3265-RFC6665-SUBSCRIPTION-DIALOG-EVENT-RFC4235-BLF-CALL-PICKUP-HIJACK-AND-EVENT-RATE-THROTTLE-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    unsolicitedOrDesyncedNotifyRejected481: false,
+    dialogXmlCallIdAndTagsRedactedAgainstPickupHijack: false,
+    subscriptionRateThrottledWithRetryAfter: false,
+    reason:
+      "SIP_RFC6665_SUBSCRIPTION_AND_RFC4235_DIALOG_BLF_SECURITY_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_RFC6665_RFC4235_DIALOG_EVENT_NOTIFICATION",
+    policyCode:
+      "P158-SIP-RFC3265-RFC6665-SUBSCRIPTION-DIALOG-EVENT-RFC4235-BLF-CALL-PICKUP-HIJACK-AND-EVENT-RATE-THROTTLE-GUARD",
+  };
+}
+
+
 
 
 
