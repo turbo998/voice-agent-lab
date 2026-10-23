@@ -17248,3 +17248,195 @@ export function evaluateWebrtcSctpDataChannelRfc8831Rfc8832Rfc4960VerificationTa
     policyCode,
   };
 }
+
+export interface CoalGasificationSyngasRectisolNfpa85Osha1910119GuardInput {
+  oxygenToCoalStoichiometricRatio: number;
+  maxSafeOxygenToCoalRatio: number;
+  burnerCoolingWaterDifferentialLeakLpm: number;
+  maxAllowedBurnerCoolingWaterLeakLpm: number;
+  quenchRingWaterFlowDesignPct: number;
+  minSafeQuenchRingWaterFlowPct: number;
+  rectisolAmbientH2sPpm: number;
+  maxAllowedAmbientH2sPpm: number;
+  personnelInGasifierOrSlagLockHopperZone: boolean;
+  oxygenBlindFlangePurgeAndCs137NuclearShutterPadlockedVerified: boolean;
+  voiceCommandRequestsLockHopperDumpOrNuclearGaugeShutterOpen: boolean;
+}
+
+export interface CoalGasificationSyngasRectisolNfpa85Osha1910119GuardEvaluation {
+  allowed: boolean;
+  preempted: boolean;
+  oxygenCoalRatioExcursionOrBurnerWaterLeakPreempted: boolean;
+  slagQuenchWaterLossOrRectisolH2sLeakInterlocked: boolean;
+  gasifierLockHopperOrNuclearGaugeShutterLotoLocked: boolean;
+  reason:
+    | "NFPA_85_OSHA_1910_119_OXYGEN_TO_COAL_RATIO_EXCURSION_OR_BURNER_COOLING_WATER_LEAK_0MS_TRIP"
+    | "OSHA_1910_119_SLAG_QUENCH_RING_WATER_STARVATION_OR_RECTISOL_H2S_SYNGAS_LEAK_INTERLOCK"
+    | "OSHA_1910_147_10_CFR_34_GASIFIER_O2_BLIND_OR_CS137_NUCLEAR_LEVEL_GAUGE_SHUTTER_LOTO_BLOCKED"
+    | "COAL_GASIFICATION_SYNGAS_RECTISOL_NFPA85_OSHA1910_119_O2_RATIO_QUENCH_AND_NUCLEAR_LOTO_VERIFIED";
+  actionCode:
+    | "TRIP_HIGH_PRESSURE_OXYGEN_DBV_SLAM_NITROGEN_PURGE_AND_ISOLATE_GASIFIER_BURNER_0MS"
+    | "ACTIVATE_EMERGENCY_QUENCH_WATER_FLOOD_ROUTE_SYNGAS_TO_FLARE_AND_ISOLATE_RECTISOL_BAY"
+    | "LOCK_SLAG_LOCK_HOPPER_VALVES_AND_CS137_NUCLEAR_GAUGE_SHUTTER_UNTIL_BLIND_AND_RADIATION_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_COAL_GASIFICATION_AND_RECTISOL_SYNGAS_OPERATION";
+  policyCode: "P185-COAL-GASIFICATION-SYNGAS-RECTISOL-NFPA85-OSHA1910-119-OXYGEN-COAL-RATIO-BURNER-TRIP-SLAG-QUENCH-H2S-LEAK-AND-NUCLEAR-GAUGE-LOTO-GUARD";
+}
+
+export function evaluateCoalGasificationSyngasRectisolNfpa85Osha1910119OxygenCoalRatioBurnerTripSlagQuenchH2sLeakAndNuclearGaugeLotoGuard(
+  input: CoalGasificationSyngasRectisolNfpa85Osha1910119GuardInput
+): CoalGasificationSyngasRectisolNfpa85Osha1910119GuardEvaluation {
+  const policyCode =
+    "P185-COAL-GASIFICATION-SYNGAS-RECTISOL-NFPA85-OSHA1910-119-OXYGEN-COAL-RATIO-BURNER-TRIP-SLAG-QUENCH-H2S-LEAK-AND-NUCLEAR-GAUGE-LOTO-GUARD" as const;
+
+  const o2CoalRatioCeiling = Math.min(input.maxSafeOxygenToCoalRatio, 1.08);
+  const burnerWaterLeakCeiling = Math.min(input.maxAllowedBurnerCoolingWaterLeakLpm, 2.5);
+
+  if (
+    input.oxygenToCoalStoichiometricRatio >= o2CoalRatioCeiling ||
+    input.burnerCoolingWaterDifferentialLeakLpm >= burnerWaterLeakCeiling
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      oxygenCoalRatioExcursionOrBurnerWaterLeakPreempted: true,
+      slagQuenchWaterLossOrRectisolH2sLeakInterlocked: false,
+      gasifierLockHopperOrNuclearGaugeShutterLotoLocked: false,
+      reason: "NFPA_85_OSHA_1910_119_OXYGEN_TO_COAL_RATIO_EXCURSION_OR_BURNER_COOLING_WATER_LEAK_0MS_TRIP",
+      actionCode: "TRIP_HIGH_PRESSURE_OXYGEN_DBV_SLAM_NITROGEN_PURGE_AND_ISOLATE_GASIFIER_BURNER_0MS",
+      policyCode,
+    };
+  }
+
+  const quenchFlowFloor = Math.max(input.minSafeQuenchRingWaterFlowPct, 85);
+  const h2sCeiling = Math.min(input.maxAllowedAmbientH2sPpm, 10.0);
+
+  if (
+    input.quenchRingWaterFlowDesignPct < quenchFlowFloor ||
+    input.rectisolAmbientH2sPpm >= h2sCeiling
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      oxygenCoalRatioExcursionOrBurnerWaterLeakPreempted: false,
+      slagQuenchWaterLossOrRectisolH2sLeakInterlocked: true,
+      gasifierLockHopperOrNuclearGaugeShutterLotoLocked: false,
+      reason: "OSHA_1910_119_SLAG_QUENCH_RING_WATER_STARVATION_OR_RECTISOL_H2S_SYNGAS_LEAK_INTERLOCK",
+      actionCode: "ACTIVATE_EMERGENCY_QUENCH_WATER_FLOOD_ROUTE_SYNGAS_TO_FLARE_AND_ISOLATE_RECTISOL_BAY",
+      policyCode,
+    };
+  }
+
+  if (
+    input.personnelInGasifierOrSlagLockHopperZone ||
+    (input.voiceCommandRequestsLockHopperDumpOrNuclearGaugeShutterOpen &&
+      !input.oxygenBlindFlangePurgeAndCs137NuclearShutterPadlockedVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      oxygenCoalRatioExcursionOrBurnerWaterLeakPreempted: false,
+      slagQuenchWaterLossOrRectisolH2sLeakInterlocked: false,
+      gasifierLockHopperOrNuclearGaugeShutterLotoLocked: true,
+      reason: "OSHA_1910_147_10_CFR_34_GASIFIER_O2_BLIND_OR_CS137_NUCLEAR_LEVEL_GAUGE_SHUTTER_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_SLAG_LOCK_HOPPER_VALVES_AND_CS137_NUCLEAR_GAUGE_SHUTTER_UNTIL_BLIND_AND_RADIATION_LOTO_VERIFIED",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    oxygenCoalRatioExcursionOrBurnerWaterLeakPreempted: false,
+    slagQuenchWaterLossOrRectisolH2sLeakInterlocked: false,
+    gasifierLockHopperOrNuclearGaugeShutterLotoLocked: false,
+    reason: "COAL_GASIFICATION_SYNGAS_RECTISOL_NFPA85_OSHA1910_119_O2_RATIO_QUENCH_AND_NUCLEAR_LOTO_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_COAL_GASIFICATION_AND_RECTISOL_SYNGAS_OPERATION",
+    policyCode,
+  };
+}
+
+export interface WebrtcRtpMixerRfc3550Rfc6465CsrcGuardInput {
+  csrcCountHeaderOvershootOrSelfSsrcLoopDetected: boolean;
+  csrcAudioLevelExtensionMismatchOrFakeFullScaleDominantSpeakerHijack: boolean;
+  crossBridgeLoopbackEnergyCorrelation: number;
+  maxAllowedLoopbackCorrelation: number;
+  consecutiveLoopbackFramesDetected: number;
+}
+
+export interface WebrtcRtpMixerRfc3550Rfc6465CsrcGuardEvaluation {
+  allowed: boolean;
+  csrcHeaderOverflowOrIdentityLoopDropped: boolean;
+  csrcAudioLevelDominantSpeakerHijackSanitized: boolean;
+  crossBridgeLoopbackEchoBombMuted: boolean;
+  reason:
+    | "RFC3550_SECTION_5_1_CSRC_COUNT_BUFFER_OVERFLOW_OR_SELF_SSRC_MIXER_LOOP_DETECTED"
+    | "RFC6465_CSRC_AUDIO_LEVEL_EXTENSION_COUNT_MISMATCH_OR_SILENT_0DBOV_FLOOR_HIJACK_BLOCKED"
+    | "RFC3550_SECTION_8_2_CROSS_BRIDGE_RTP_MIXER_LOOPBACK_ECHO_BOMB_DETECTED"
+    | "WEBRTC_RTP_MIXER_RFC3550_RFC6465_CSRC_ROSTER_AUDIO_LEVEL_AND_BRIDGE_LOOP_VERIFIED";
+  actionCode:
+    | "DROP_MALFORMED_CSRC_RTP_PACKET_AND_PRUNE_LOOPED_OR_SPOOFED_CSRC_IDENTIFIERS"
+    | "STRIP_SPOOFED_RFC6465_CSRC_AUDIO_LEVEL_EXTENSION_AND_RECOMPUTE_PCM_RMS_FLOOR_CONTROL"
+    | "MUTE_CROSS_BRIDGE_LOOPBACK_MIXER_PORT_AND_INSERT_CSRC_LOOP_SUPPRESSION_FILTER"
+    | "ALLOW_VERIFIED_MULTI_PARTY_RTP_MIXER_CSRC_MEDIA_FRAME";
+  policyCode: "P186-WEBRTC-RTP-MIXER-RFC3550-RFC6465-CSRC-LIST-OVERFLOW-IDENTITY-SPOOF-AUDIO-LEVEL-DOMINANT-SPEAKER-HIJACK-AND-BRIDGE-LOOPBACK-GUARD";
+}
+
+export function evaluateWebrtcRtpMixerRfc3550Rfc6465CsrcListOverflowIdentitySpoofAudioLevelDominantSpeakerHijackAndBridgeLoopbackGuard(
+  input: WebrtcRtpMixerRfc3550Rfc6465CsrcGuardInput
+): WebrtcRtpMixerRfc3550Rfc6465CsrcGuardEvaluation {
+  const policyCode =
+    "P186-WEBRTC-RTP-MIXER-RFC3550-RFC6465-CSRC-LIST-OVERFLOW-IDENTITY-SPOOF-AUDIO-LEVEL-DOMINANT-SPEAKER-HIJACK-AND-BRIDGE-LOOPBACK-GUARD" as const;
+
+  if (input.csrcCountHeaderOvershootOrSelfSsrcLoopDetected) {
+    return {
+      allowed: false,
+      csrcHeaderOverflowOrIdentityLoopDropped: true,
+      csrcAudioLevelDominantSpeakerHijackSanitized: false,
+      crossBridgeLoopbackEchoBombMuted: false,
+      reason: "RFC3550_SECTION_5_1_CSRC_COUNT_BUFFER_OVERFLOW_OR_SELF_SSRC_MIXER_LOOP_DETECTED",
+      actionCode: "DROP_MALFORMED_CSRC_RTP_PACKET_AND_PRUNE_LOOPED_OR_SPOOFED_CSRC_IDENTIFIERS",
+      policyCode,
+    };
+  }
+
+  if (input.csrcAudioLevelExtensionMismatchOrFakeFullScaleDominantSpeakerHijack) {
+    return {
+      allowed: false,
+      csrcHeaderOverflowOrIdentityLoopDropped: false,
+      csrcAudioLevelDominantSpeakerHijackSanitized: true,
+      crossBridgeLoopbackEchoBombMuted: false,
+      reason: "RFC6465_CSRC_AUDIO_LEVEL_EXTENSION_COUNT_MISMATCH_OR_SILENT_0DBOV_FLOOR_HIJACK_BLOCKED",
+      actionCode: "STRIP_SPOOFED_RFC6465_CSRC_AUDIO_LEVEL_EXTENSION_AND_RECOMPUTE_PCM_RMS_FLOOR_CONTROL",
+      policyCode,
+    };
+  }
+
+  const loopbackThreshold = Math.min(input.maxAllowedLoopbackCorrelation, 0.92);
+
+  if (
+    input.crossBridgeLoopbackEnergyCorrelation >= loopbackThreshold &&
+    input.consecutiveLoopbackFramesDetected >= 3
+  ) {
+    return {
+      allowed: false,
+      csrcHeaderOverflowOrIdentityLoopDropped: false,
+      csrcAudioLevelDominantSpeakerHijackSanitized: false,
+      crossBridgeLoopbackEchoBombMuted: true,
+      reason: "RFC3550_SECTION_8_2_CROSS_BRIDGE_RTP_MIXER_LOOPBACK_ECHO_BOMB_DETECTED",
+      actionCode: "MUTE_CROSS_BRIDGE_LOOPBACK_MIXER_PORT_AND_INSERT_CSRC_LOOP_SUPPRESSION_FILTER",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    csrcHeaderOverflowOrIdentityLoopDropped: false,
+    csrcAudioLevelDominantSpeakerHijackSanitized: false,
+    crossBridgeLoopbackEchoBombMuted: false,
+    reason: "WEBRTC_RTP_MIXER_RFC3550_RFC6465_CSRC_ROSTER_AUDIO_LEVEL_AND_BRIDGE_LOOP_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_MULTI_PARTY_RTP_MIXER_CSRC_MEDIA_FRAME",
+    policyCode,
+  };
+}
+
