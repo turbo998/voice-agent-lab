@@ -15629,6 +15629,243 @@ export function evaluateSipRfc3261Rfc3581Rfc5626ViaHeaderChainAmplificationBranc
   };
 }
 
+// ============================================================================
+// Stage 89 — Float Glass Furnace & Molten Tin Bath (P171) & WebRTC SDP/ICE RFC 8839 / RFC 8445 / RFC 3264 (P172)
+// ============================================================================
+
+export interface FloatGlassFurnaceRegeneratorNfpa86TinBathH2N2AtmosphereO2ExplosionWaterCooledChargerLeakAndCulletCrusherLotoGuardInput {
+  tinBathPositivePressurePa: number;
+  minSafeTinBathPositivePressurePa: number;
+  tinBathAtmosphereO2Ppm: number;
+  maxSafeTinBathO2Ppm: number;
+  tinBathH2Percent: number;
+  voiceCommandRequestsTinBathDrossDoorOpenOrH2Boost: boolean;
+  waterCooledChargerOrElectrodeLeakDeltaLpm: number;
+  maxSafeCoolingWaterDeltaLpm: number;
+  regeneratorReversalRequested: boolean;
+  regeneratorFuelShutoffAndAirSweepPurgeCompleted: boolean;
+  personnelInBasementHotCulletPitOrAnnealingLehr: boolean;
+  hotCulletDropChuteDiverterGateAndCrusherLotoVerified: boolean;
+  voiceCommandRequestsCulletCrusherStartOrLehrRollJog: boolean;
+}
+
+export interface FloatGlassFurnaceRegeneratorNfpa86TinBathH2N2AtmosphereO2ExplosionWaterCooledChargerLeakAndCulletCrusherLotoGuardAssessment {
+  allowed: boolean;
+  preempted: boolean;
+  tinBathH2N2AtmosphereO2PurgeTriggered: boolean;
+  waterCooledChargerLeakOrRegeneratorReversalInterlocked: boolean;
+  culletCrusherOrAnnealingLehrLotoLocked: boolean;
+  reason:
+    | "NFPA86_FLOAT_BATH_H2_N2_REDUCING_ATMOSPHERE_PRESSURE_LOSS_OR_O2_INGRESS_EXPLOSION_0MS_N2_PURGE_TRIP"
+    | "NFPA86_MELTING_TANK_WATER_COOLED_JACKET_LEAK_OR_UNPURGED_REGENERATOR_REVERSAL_DETONATION_INTERLOCK"
+    | "OSHA_1910_147_HOT_CULLET_BASEMENT_CRUSHER_OR_LEHR_ROLLER_UNVERIFIED_LOTO_BLOCKED"
+    | "FLOAT_GLASS_FURNACE_NFPA86_TIN_BATH_H2_N2_REGENERATOR_AND_CULLET_LOTO_SAFETY_VERIFIED";
+  actionCode:
+    | "TRIP_TIN_BATH_H2_SUPPLY_VALVE_FLOOD_100_PERCENT_N2_INERT_PURGE_AND_LOCK_DROSS_ACCESS_DOORS"
+    | "ISOLATE_LEAKING_WATER_COOLED_JACKET_RETRACT_CHARGER_AND_LOCK_REGENERATOR_FUEL_REVERSAL_VALVE"
+    | "LOCK_CULLET_CRUSHER_AND_ANNEALING_LEHR_DRIVE_UNTIL_DROP_CHUTE_DIVERTER_AND_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_FLOAT_GLASS_MELTING_TIN_BATH_AND_LEHR_COMMAND";
+  policyCode: "P171-GLASS-FLOAT-FURNACE-REGENERATOR-NFPA-86-MOLTEN-TIN-BATH-H2-N2-ATMOSPHERE-O2-INGRESS-EXPLOSION-WATER-COOLED-BATCH-CHARGER-LEAK-AND-LEHR-CRUSHER-LOTO-GUARD";
+}
+
+export function evaluateFloatGlassFurnaceRegeneratorNfpa86TinBathH2N2AtmosphereO2ExplosionWaterCooledChargerLeakAndCulletCrusherLotoGuard(
+  input: FloatGlassFurnaceRegeneratorNfpa86TinBathH2N2AtmosphereO2ExplosionWaterCooledChargerLeakAndCulletCrusherLotoGuardInput
+): FloatGlassFurnaceRegeneratorNfpa86TinBathH2N2AtmosphereO2ExplosionWaterCooledChargerLeakAndCulletCrusherLotoGuardAssessment {
+  // 1. NFPA 86 Class B / Special Atmosphere (H2/N2 Forming Gas over 1,050°C Molten Tin Bath):
+  // Loss of positive pressure (< +15 Pa) or oxygen ingress (>= 1,000 ppm) with H2 >= 4.0% LEL risks catastrophic roof deflagration
+  if (
+    (input.tinBathPositivePressurePa < input.minSafeTinBathPositivePressurePa ||
+      input.tinBathAtmosphereO2Ppm >= input.maxSafeTinBathO2Ppm) &&
+    (input.tinBathH2Percent >= 4.0 ||
+      input.voiceCommandRequestsTinBathDrossDoorOpenOrH2Boost)
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      tinBathH2N2AtmosphereO2PurgeTriggered: true,
+      waterCooledChargerLeakOrRegeneratorReversalInterlocked: false,
+      culletCrusherOrAnnealingLehrLotoLocked: false,
+      reason:
+        "NFPA86_FLOAT_BATH_H2_N2_REDUCING_ATMOSPHERE_PRESSURE_LOSS_OR_O2_INGRESS_EXPLOSION_0MS_N2_PURGE_TRIP",
+      actionCode:
+        "TRIP_TIN_BATH_H2_SUPPLY_VALVE_FLOOD_100_PERCENT_N2_INERT_PURGE_AND_LOCK_DROSS_ACCESS_DOORS",
+      policyCode:
+        "P171-GLASS-FLOAT-FURNACE-REGENERATOR-NFPA-86-MOLTEN-TIN-BATH-H2-N2-ATMOSPHERE-O2-INGRESS-EXPLOSION-WATER-COOLED-BATCH-CHARGER-LEAK-AND-LEHR-CRUSHER-LOTO-GUARD",
+    };
+  }
+
+  // 2. 1,600°C Glass Melting Tank Water-Cooled Batch Charger / Electrode Holder Jacket Leak or Unpurged Regenerator Firing Reversal
+  if (
+    input.waterCooledChargerOrElectrodeLeakDeltaLpm >=
+      input.maxSafeCoolingWaterDeltaLpm ||
+    (input.regeneratorReversalRequested &&
+      !input.regeneratorFuelShutoffAndAirSweepPurgeCompleted)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      tinBathH2N2AtmosphereO2PurgeTriggered: false,
+      waterCooledChargerLeakOrRegeneratorReversalInterlocked: true,
+      culletCrusherOrAnnealingLehrLotoLocked: false,
+      reason:
+        "NFPA86_MELTING_TANK_WATER_COOLED_JACKET_LEAK_OR_UNPURGED_REGENERATOR_REVERSAL_DETONATION_INTERLOCK",
+      actionCode:
+        "ISOLATE_LEAKING_WATER_COOLED_JACKET_RETRACT_CHARGER_AND_LOCK_REGENERATOR_FUEL_REVERSAL_VALVE",
+      policyCode:
+        "P171-GLASS-FLOAT-FURNACE-REGENERATOR-NFPA-86-MOLTEN-TIN-BATH-H2-N2-ATMOSPHERE-O2-INGRESS-EXPLOSION-WATER-COOLED-BATCH-CHARGER-LEAK-AND-LEHR-CRUSHER-LOTO-GUARD",
+    };
+  }
+
+  // 3. OSHA 29 CFR 1910.147 Sub-Furnace Hot-Cullet Basement Jaw Crusher & Annealing Lehr Roller Mechanical LOTO
+  if (
+    input.personnelInBasementHotCulletPitOrAnnealingLehr &&
+    input.voiceCommandRequestsCulletCrusherStartOrLehrRollJog &&
+    !input.hotCulletDropChuteDiverterGateAndCrusherLotoVerified
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      tinBathH2N2AtmosphereO2PurgeTriggered: false,
+      waterCooledChargerLeakOrRegeneratorReversalInterlocked: false,
+      culletCrusherOrAnnealingLehrLotoLocked: true,
+      reason:
+        "OSHA_1910_147_HOT_CULLET_BASEMENT_CRUSHER_OR_LEHR_ROLLER_UNVERIFIED_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_CULLET_CRUSHER_AND_ANNEALING_LEHR_DRIVE_UNTIL_DROP_CHUTE_DIVERTER_AND_LOTO_VERIFIED",
+      policyCode:
+        "P171-GLASS-FLOAT-FURNACE-REGENERATOR-NFPA-86-MOLTEN-TIN-BATH-H2-N2-ATMOSPHERE-O2-INGRESS-EXPLOSION-WATER-COOLED-BATCH-CHARGER-LEAK-AND-LEHR-CRUSHER-LOTO-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    tinBathH2N2AtmosphereO2PurgeTriggered: false,
+    waterCooledChargerLeakOrRegeneratorReversalInterlocked: false,
+    culletCrusherOrAnnealingLehrLotoLocked: false,
+    reason:
+      "FLOAT_GLASS_FURNACE_NFPA86_TIN_BATH_H2_N2_REGENERATOR_AND_CULLET_LOTO_SAFETY_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_FLOAT_GLASS_MELTING_TIN_BATH_AND_LEHR_COMMAND",
+    policyCode:
+      "P171-GLASS-FLOAT-FURNACE-REGENERATOR-NFPA-86-MOLTEN-TIN-BATH-H2-N2-ATMOSPHERE-O2-INGRESS-EXPLOSION-WATER-COOLED-BATCH-CHARGER-LEAK-AND-LEHR-CRUSHER-LOTO-GUARD",
+  };
+}
+
+export interface WebrtcSdpRfc8839Rfc8445Rfc3264IceCredentialEntropyMutualIceLiteDeadlockCandidatePortScanSsrfAndMlineMutationGuardInput {
+  iceUfragLengthChars: number;
+  icePwdLengthChars: number;
+  offererIsIceLite: boolean;
+  answererIsIceLite: boolean;
+  candidateTargetsLoopbackLinkLocalOrMetadataIp: boolean;
+  candidatePortNumber: number;
+  totalIceCandidatesInMline: number;
+  maxAllowedCandidatesPerMline: number;
+  subsequentOfferAnswerDeletedPreviousMline: boolean;
+  subsequentOfferAnswerMutatedMlineMediaTypeOrder: boolean;
+  subsequentOfferAnswerDowngradedSavpfToCleartextAvp: boolean;
+}
+
+export interface WebrtcSdpRfc8839Rfc8445Rfc3264IceCredentialEntropyMutualIceLiteDeadlockCandidatePortScanSsrfAndMlineMutationGuardAssessment {
+  allowed: boolean;
+  weakIceEntropyOrMutualIceLiteDeadlockBlocked: boolean;
+  candidateSsrfPortScanOrFloodStripped: boolean;
+  subsequentMlineDeletionReorderOrDowngradeRejected: boolean;
+  reason:
+    | "RFC8839_RFC8445_WEAK_ICE_UFRAG_PWD_ENTROPY_OR_MUTUAL_ICE_LITE_CONNECTIVITY_DEADLOCK_BLOCKED"
+    | "RFC8839_WEBRTC_ICE_CANDIDATE_INTERNAL_SUBNET_OR_PRIVILEGED_PORT_SCAN_SSRF_BLOCKED"
+    | "RFC3264_RFC8866_SUBSEQUENT_SDP_MLINE_DELETION_REORDER_OR_SAVPF_TO_AVP_DOWNGRADE_BLOCKED"
+    | "WEBRTC_SDP_RFC8839_RFC8445_RFC3264_ICE_ENTROPY_CANDIDATES_AND_MLINE_ORDER_VERIFIED";
+  actionCode:
+    | "REJECT_SDP_WEAK_ICE_CREDENTIALS_OR_MUTUAL_ICE_LITE_DEADLOCK_AND_FORCE_FULL_ICE_RESTART"
+    | "STRIP_PRIVATE_OR_PRIVILEGED_PORT_ICE_CANDIDATES_AND_CAP_CANDIDATE_POOL"
+    | "REJECT_SDP_488_ON_MLINE_COUNT_SHRINK_MEDIA_ORDER_MUTATION_OR_SAVPF_DOWNGRADE"
+    | "ALLOW_VERIFIED_SDP_ICE_AND_MLINE_NEGOTIATION";
+  policyCode: "P172-WEBRTC-SDP-RFC8866-RFC5245-RFC8839-ICE-UFRAG-PWD-ENTROPY-LITE-FULL-DEADLOCK-CANDIDATE-PORT-SCAN-SSRF-AND-M-LINE-REORDER-GUARD";
+}
+
+export function evaluateWebrtcSdpRfc8839Rfc8445Rfc3264IceCredentialEntropyMutualIceLiteDeadlockCandidatePortScanSsrfAndMlineMutationGuard(
+  input: WebrtcSdpRfc8839Rfc8445Rfc3264IceCredentialEntropyMutualIceLiteDeadlockCandidatePortScanSsrfAndMlineMutationGuardInput
+): WebrtcSdpRfc8839Rfc8445Rfc3264IceCredentialEntropyMutualIceLiteDeadlockCandidatePortScanSsrfAndMlineMutationGuardAssessment {
+  // 1. RFC 8839 Section 5.4: a=ice-ufrag MUST have >= 24 bits (4 chars) and a=ice-pwd MUST have >= 120 bits (22 chars),
+  // and RFC 8445 Section 6.1.1: both peers declaring a=ice-lite causes a 100% STUN connectivity check deadlock
+  if (
+    input.iceUfragLengthChars < 4 ||
+    input.iceUfragLengthChars > 256 ||
+    input.icePwdLengthChars < 22 ||
+    input.icePwdLengthChars > 256 ||
+    (input.offererIsIceLite && input.answererIsIceLite)
+  ) {
+    return {
+      allowed: false,
+      weakIceEntropyOrMutualIceLiteDeadlockBlocked: true,
+      candidateSsrfPortScanOrFloodStripped: false,
+      subsequentMlineDeletionReorderOrDowngradeRejected: false,
+      reason:
+        "RFC8839_RFC8445_WEAK_ICE_UFRAG_PWD_ENTROPY_OR_MUTUAL_ICE_LITE_CONNECTIVITY_DEADLOCK_BLOCKED",
+      actionCode:
+        "REJECT_SDP_WEAK_ICE_CREDENTIALS_OR_MUTUAL_ICE_LITE_DEADLOCK_AND_FORCE_FULL_ICE_RESTART",
+      policyCode:
+        "P172-WEBRTC-SDP-RFC8866-RFC5245-RFC8839-ICE-UFRAG-PWD-ENTROPY-LITE-FULL-DEADLOCK-CANDIDATE-PORT-SCAN-SSRF-AND-M-LINE-REORDER-GUARD",
+    };
+  }
+
+  // 2. RFC 8839 / W3C WebRTC ICE Candidate Port-Scan SSRF (loopback/metadata IP, privileged port <1024, DB ports) or candidate flood
+  const forbiddenScanPorts = new Set([3306, 5432, 6379, 9200, 11211, 27017]);
+  if (
+    input.candidateTargetsLoopbackLinkLocalOrMetadataIp ||
+    input.candidatePortNumber < 1024 ||
+    input.candidatePortNumber > 65535 ||
+    forbiddenScanPorts.has(input.candidatePortNumber) ||
+    input.totalIceCandidatesInMline > input.maxAllowedCandidatesPerMline
+  ) {
+    return {
+      allowed: false,
+      weakIceEntropyOrMutualIceLiteDeadlockBlocked: false,
+      candidateSsrfPortScanOrFloodStripped: true,
+      subsequentMlineDeletionReorderOrDowngradeRejected: false,
+      reason:
+        "RFC8839_WEBRTC_ICE_CANDIDATE_INTERNAL_SUBNET_OR_PRIVILEGED_PORT_SCAN_SSRF_BLOCKED",
+      actionCode:
+        "STRIP_PRIVATE_OR_PRIVILEGED_PORT_ICE_CANDIDATES_AND_CAP_CANDIDATE_POOL",
+      policyCode:
+        "P172-WEBRTC-SDP-RFC8866-RFC5245-RFC8839-ICE-UFRAG-PWD-ENTROPY-LITE-FULL-DEADLOCK-CANDIDATE-PORT-SCAN-SSRF-AND-M-LINE-REORDER-GUARD",
+    };
+  }
+
+  // 3. RFC 3264 Section 8 / RFC 8866: Subsequent SDP Offer/Answer MUST NOT delete m= lines, reorder media types, or downgrade SAVPF to AVP
+  if (
+    input.subsequentOfferAnswerDeletedPreviousMline ||
+    input.subsequentOfferAnswerMutatedMlineMediaTypeOrder ||
+    input.subsequentOfferAnswerDowngradedSavpfToCleartextAvp
+  ) {
+    return {
+      allowed: false,
+      weakIceEntropyOrMutualIceLiteDeadlockBlocked: false,
+      candidateSsrfPortScanOrFloodStripped: false,
+      subsequentMlineDeletionReorderOrDowngradeRejected: true,
+      reason:
+        "RFC3264_RFC8866_SUBSEQUENT_SDP_MLINE_DELETION_REORDER_OR_SAVPF_TO_AVP_DOWNGRADE_BLOCKED",
+      actionCode:
+        "REJECT_SDP_488_ON_MLINE_COUNT_SHRINK_MEDIA_ORDER_MUTATION_OR_SAVPF_DOWNGRADE",
+      policyCode:
+        "P172-WEBRTC-SDP-RFC8866-RFC5245-RFC8839-ICE-UFRAG-PWD-ENTROPY-LITE-FULL-DEADLOCK-CANDIDATE-PORT-SCAN-SSRF-AND-M-LINE-REORDER-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    weakIceEntropyOrMutualIceLiteDeadlockBlocked: false,
+    candidateSsrfPortScanOrFloodStripped: false,
+    subsequentMlineDeletionReorderOrDowngradeRejected: false,
+    reason:
+      "WEBRTC_SDP_RFC8839_RFC8445_RFC3264_ICE_ENTROPY_CANDIDATES_AND_MLINE_ORDER_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SDP_ICE_AND_MLINE_NEGOTIATION",
+    policyCode:
+      "P172-WEBRTC-SDP-RFC8866-RFC5245-RFC8839-ICE-UFRAG-PWD-ENTROPY-LITE-FULL-DEADLOCK-CANDIDATE-PORT-SCAN-SSRF-AND-M-LINE-REORDER-GUARD",
+  };
+}
+
+
 
 
 
