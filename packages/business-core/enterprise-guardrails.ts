@@ -16833,30 +16833,228 @@ export function evaluateWebrtcSrtpRfc3711Rfc7714Rfc5764RocRolloverDesyncReplayWi
   };
 }
 
+export interface PolysiliconSiemensCvdSilaneSemiS2Nfpa318PyrophoricSih4AutoIgnitionTcsWaterLeakHclHydrolysisAndBellJarElectrodeLotoInput {
+  /** Hydride optical/electrochemical sensor reading for monosilane (SiH4) in ppm. */
+  ambientSilaneSih4ConcentrationPpm: number;
+  /** Maximum permissible SiH4 leak threshold in ppm (SEMI S2 / ACGIH TLV-TWA = 5.0 ppm). */
+  maxAllowedSilaneSih4Ppm: number;
+  /** Current Siemens CVD bell-jar reactor operating pressure in bar. */
+  cvdBellJarReactorPressureBar: number;
+  /** Maximum safe CVD bell-jar pressure in bar (typically 8.5 bar). */
+  maxSafeCvdReactorPressureBar: number;
+  /** Differential cooling-water jacket leak rate (or H2-in-water equivalent) in L/min. */
+  coolingWaterJacketDifferentialLeakLpm: number;
+  /** Maximum allowable cooling-water jacket differential leak in L/min before TCS hydrolysis risk (2.0 L/min). */
+  maxAllowedWaterJacketLeakLpm: number;
+  /** Ambient hydrogen chloride (HCl) vapor concentration from SiHCl3 hydrolysis in ppm. */
+  ambientHclVaporPpm: number;
+  /** Maximum permissible HCl ceiling concentration in ppm (OSHA Ceiling = 5.0 ppm). */
+  maxAllowedHclVaporPpm: number;
+  /** True if the off-gas dry recovery (CDI) and NaOH alkaline wet scrubber loop are online and pressurized. */
+  offgasDryRecoveryAndAlkalineWetScrubberOnline: boolean;
+  /** True if harvesting operators are inside the CVD bell-jar hoist zone. */
+  personnelInCvdBellJarHarvestZone: boolean;
+  /** True if the 10 kV / 6,000 A graphite chuck SCR grounding switch, N2 purge (<1 ppm H2/TCS), and rod cooldown (<=60°C) are verified. */
+  graphiteElectrodeGroundSwitchN2PurgeAndCooldownVerified: boolean;
+  /** True if the voice command requests SCR electrode energization or bell-jar hydraulic clamp release. */
+  voiceCommandRequestsElectrodeEnergizeOrBellJarClampRelease: boolean;
+}
 
+export interface PolysiliconSiemensCvdSilaneSemiS2Nfpa318PyrophoricSih4AutoIgnitionTcsWaterLeakHclHydrolysisAndBellJarElectrodeLotoAssessment {
+  allowed: boolean;
+  preempted: boolean;
+  pyrophoricSilaneLeakOrReactorOverpressurePreempted: boolean;
+  tcsWaterJacketHydrolysisOrHclScrubberInterlocked: boolean;
+  bellJarElectrodeOrHarvestHoistLotoLocked: boolean;
+  reason:
+    | "SEMI_S2_NFPA_318_PYROPHORIC_SILANE_LEAK_OR_CVD_BELL_JAR_REACTOR_OVERPRESSURE_0MS_TRIP"
+    | "OSHA_1910_119_TCS_SIHCL3_COOLING_WATER_HYDROLYSIS_SPIKE_OR_HCL_SCRUBBER_INTERLOCK"
+    | "OSHA_1910_147_SEMI_S2_CVD_GRAPHITE_ELECTRODE_GROUNDING_OR_BELL_JAR_PURGE_COOLDOWN_LOTO_BLOCKED"
+    | "POLYSILICON_SIEMENS_CVD_SILANE_SEMI_S2_NFPA_318_TCS_HYDROLYSIS_AND_ELECTRODE_LOTO_VERIFIED";
+  actionCode:
+    | "TRIP_SIH4_TCS_PNEUMATIC_EFV_VALVE_ACTIVATE_COAXIAL_N2_PURGE_AND_VENT_TO_BURN_BOX_0MS"
+    | "ISOLATE_CVD_COOLING_WATER_LOOP_ENGAGE_N2_JACKET_PURGE_AND_ACTIVATE_ALKALINE_HCL_SCRUBBER"
+    | "LOCK_CVD_SCR_ELECTRODE_POWER_AND_BELL_JAR_HOIST_UNTIL_GROUND_SWITCH_PURGE_AND_COOLDOWN_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_POLYSILICON_SIEMENS_CVD_AND_SILANE_EPITAXY_OPERATION";
+  policyCode: "P181-POLYSILICON-SIEMENS-CVD-SILANE-SEMI-S2-NFPA-318-PYROPHORIC-SIH4-AUTO-IGNITION-TCS-WATER-LEAK-HCL-HYDROLYSIS-AND-BELL-JAR-ELECTRODE-LOTO-GUARD";
+}
 
+export function evaluatePolysiliconSiemensCvdSilaneSemiS2Nfpa318PyrophoricSih4AutoIgnitionTcsWaterLeakHclHydrolysisAndBellJarElectrodeLotoGuard(
+  input: PolysiliconSiemensCvdSilaneSemiS2Nfpa318PyrophoricSih4AutoIgnitionTcsWaterLeakHclHydrolysisAndBellJarElectrodeLotoInput
+): PolysiliconSiemensCvdSilaneSemiS2Nfpa318PyrophoricSih4AutoIgnitionTcsWaterLeakHclHydrolysisAndBellJarElectrodeLotoAssessment {
+  // 1. 0ms Preemption: Pyrophoric monosilane (SiH4 >= 5 ppm) leak or Siemens CVD bell-jar reactor overpressure (>= 8.5 bar)
+  if (
+    input.ambientSilaneSih4ConcentrationPpm >= input.maxAllowedSilaneSih4Ppm ||
+    input.cvdBellJarReactorPressureBar >= input.maxSafeCvdReactorPressureBar
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      pyrophoricSilaneLeakOrReactorOverpressurePreempted: true,
+      tcsWaterJacketHydrolysisOrHclScrubberInterlocked: false,
+      bellJarElectrodeOrHarvestHoistLotoLocked: false,
+      reason:
+        "SEMI_S2_NFPA_318_PYROPHORIC_SILANE_LEAK_OR_CVD_BELL_JAR_REACTOR_OVERPRESSURE_0MS_TRIP",
+      actionCode:
+        "TRIP_SIH4_TCS_PNEUMATIC_EFV_VALVE_ACTIVATE_COAXIAL_N2_PURGE_AND_VENT_TO_BURN_BOX_0MS",
+      policyCode:
+        "P181-POLYSILICON-SIEMENS-CVD-SILANE-SEMI-S2-NFPA-318-PYROPHORIC-SIH4-AUTO-IGNITION-TCS-WATER-LEAK-HCL-HYDROLYSIS-AND-BELL-JAR-ELECTRODE-LOTO-GUARD",
+    };
+  }
 
+  // 2. Interlock: Trichlorosilane (SiHCl3) cooling-water jacket leak (>= 2.0 L/min), HCl hydrolysis vapor (>= 5.0 ppm), or offline alkaline scrubber
+  if (
+    input.coolingWaterJacketDifferentialLeakLpm >=
+      input.maxAllowedWaterJacketLeakLpm ||
+    input.ambientHclVaporPpm >= input.maxAllowedHclVaporPpm ||
+    !input.offgasDryRecoveryAndAlkalineWetScrubberOnline
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      pyrophoricSilaneLeakOrReactorOverpressurePreempted: false,
+      tcsWaterJacketHydrolysisOrHclScrubberInterlocked: true,
+      bellJarElectrodeOrHarvestHoistLotoLocked: false,
+      reason:
+        "OSHA_1910_119_TCS_SIHCL3_COOLING_WATER_HYDROLYSIS_SPIKE_OR_HCL_SCRUBBER_INTERLOCK",
+      actionCode:
+        "ISOLATE_CVD_COOLING_WATER_LOOP_ENGAGE_N2_JACKET_PURGE_AND_ACTIVATE_ALKALINE_HCL_SCRUBBER",
+      policyCode:
+        "P181-POLYSILICON-SIEMENS-CVD-SILANE-SEMI-S2-NFPA-318-PYROPHORIC-SIH4-AUTO-IGNITION-TCS-WATER-LEAK-HCL-HYDROLYSIS-AND-BELL-JAR-ELECTRODE-LOTO-GUARD",
+    };
+  }
 
+  // 3. LOTO: 10 kV / 6,000 A graphite chuck grounding switch, N2 purge, or rod cooldown unverified during harvest or clamp/electrode command
+  if (
+    ((input.personnelInCvdBellJarHarvestZone ||
+      !input.graphiteElectrodeGroundSwitchN2PurgeAndCooldownVerified) &&
+      input.voiceCommandRequestsElectrodeEnergizeOrBellJarClampRelease) ||
+    (input.personnelInCvdBellJarHarvestZone &&
+      !input.graphiteElectrodeGroundSwitchN2PurgeAndCooldownVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      pyrophoricSilaneLeakOrReactorOverpressurePreempted: false,
+      tcsWaterJacketHydrolysisOrHclScrubberInterlocked: false,
+      bellJarElectrodeOrHarvestHoistLotoLocked: true,
+      reason:
+        "OSHA_1910_147_SEMI_S2_CVD_GRAPHITE_ELECTRODE_GROUNDING_OR_BELL_JAR_PURGE_COOLDOWN_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_CVD_SCR_ELECTRODE_POWER_AND_BELL_JAR_HOIST_UNTIL_GROUND_SWITCH_PURGE_AND_COOLDOWN_LOTO_VERIFIED",
+      policyCode:
+        "P181-POLYSILICON-SIEMENS-CVD-SILANE-SEMI-S2-NFPA-318-PYROPHORIC-SIH4-AUTO-IGNITION-TCS-WATER-LEAK-HCL-HYDROLYSIS-AND-BELL-JAR-ELECTRODE-LOTO-GUARD",
+    };
+  }
 
+  return {
+    allowed: true,
+    preempted: false,
+    pyrophoricSilaneLeakOrReactorOverpressurePreempted: false,
+    tcsWaterJacketHydrolysisOrHclScrubberInterlocked: false,
+    bellJarElectrodeOrHarvestHoistLotoLocked: false,
+    reason:
+      "POLYSILICON_SIEMENS_CVD_SILANE_SEMI_S2_NFPA_318_TCS_HYDROLYSIS_AND_ELECTRODE_LOTO_VERIFIED",
+    actionCode:
+      "ALLOW_VERIFIED_POLYSILICON_SIEMENS_CVD_AND_SILANE_EPITAXY_OPERATION",
+    policyCode:
+      "P181-POLYSILICON-SIEMENS-CVD-SILANE-SEMI-S2-NFPA-318-PYROPHORIC-SIH4-AUTO-IGNITION-TCS-WATER-LEAK-HCL-HYDROLYSIS-AND-BELL-JAR-ELECTRODE-LOTO-GUARD",
+  };
+}
 
+export interface SipRfc3261Rfc5626Rfc5923RecordRouteLooseRoutingLoopOpenRelayMaxForwardsExhaustionAndTlsTransportDowngradeInput {
+  /** True if an incoming request carries a preloaded external Route header (open-relay reflection) or omits ;lr causing strict-routing Request-URI overwrite loops. */
+  preloadedExternalRouteOrMissingLooseRoutingLrParamDetected: boolean;
+  /** Incoming SIP Max-Forwards header value (RFC 3261 §8.1.1.6 recommends 70). */
+  incomingMaxForwardsValue: number;
+  /** True if the request is a non-OPTIONS forwarded request or exceeds the 70-hop spiral ceiling. */
+  isForwardedRequestOrSpiralSuspected: boolean;
+  /** True if a SIPS or transport=tls dialog receives a Record-Route / Route / Contact header downgrading transport to cleartext udp/tcp or failing RFC 5923 mTLS SAN pinning. */
+  sipsOrTlsDialogRouteDowngradesToCleartextOrFailsMtlsSan: boolean;
+}
 
+export interface SipRfc3261Rfc5626Rfc5923RecordRouteLooseRoutingLoopOpenRelayMaxForwardsExhaustionAndTlsTransportDowngradeAssessment {
+  allowed: boolean;
+  recordRouteOpenRelayOrStrictRoutingLoopRejected: boolean;
+  maxForwardsExhaustedOrSpiralAmplificationBlocked483: boolean;
+  sipsOrTlsRouteTransportDowngradeBlocked: boolean;
+  reason:
+    | "RFC3261_SECTION_16_4_PRELOADED_ROUTE_OPEN_RELAY_REFLECTION_OR_STRICT_ROUTING_LOOP_BLOCKED"
+    | "RFC3261_SECTION_16_3_MAX_FORWARDS_ZERO_EXHAUSTION_OR_SPIRAL_AMPLIFICATION_BLOCKED"
+    | "RFC5923_RFC3261_SECTION_26_SIPS_OR_TLS_RECORD_ROUTE_CLEARTEXT_DOWNGRADE_BLOCKED"
+    | "SIP_RFC3261_RFC5626_RFC5923_LOOSE_ROUTING_MAX_FORWARDS_AND_TLS_ROUTE_SET_VERIFIED";
+  actionCode:
+    | "REJECT_SIP_403_OR_482_ON_PRELOADED_EXTERNAL_ROUTE_OPEN_RELAY_OR_STRICT_ROUTING_LOOP"
+    | "REJECT_SIP_483_TOO_MANY_HOPS_OR_CLAMP_ABNORMAL_MAX_FORWARDS_SPIRAL"
+    | "REJECT_SIP_416_OR_403_ON_SIPS_TLS_TO_CLEARTEXT_UDP_TCP_ROUTE_DOWNGRADE"
+    | "ALLOW_VERIFIED_SIP_LOOSE_ROUTED_TLS_DIALOG_REQUEST";
+  policyCode: "P182-SIP-RFC3261-RFC5626-RFC5923-RECORD-ROUTE-LOOSE-ROUTING-LOOP-OPEN-RELAY-MAX-FORWARDS-EXHAUSTION-AND-TLS-TRANSPORT-DOWNGRADE-GUARD";
+}
 
+export function evaluateSipRfc3261Rfc5626Rfc5923RecordRouteLooseRoutingLoopOpenRelayMaxForwardsExhaustionAndTlsTransportDowngradeGuard(
+  input: SipRfc3261Rfc5626Rfc5923RecordRouteLooseRoutingLoopOpenRelayMaxForwardsExhaustionAndTlsTransportDowngradeInput
+): SipRfc3261Rfc5626Rfc5923RecordRouteLooseRoutingLoopOpenRelayMaxForwardsExhaustionAndTlsTransportDowngradeAssessment {
+  // 1. RFC 3261 §16.4 / §16.6: Preloaded external Route open-relay reflection or missing ;lr strict-routing overwrite loop
+  if (input.preloadedExternalRouteOrMissingLooseRoutingLrParamDetected) {
+    return {
+      allowed: false,
+      recordRouteOpenRelayOrStrictRoutingLoopRejected: true,
+      maxForwardsExhaustedOrSpiralAmplificationBlocked483: false,
+      sipsOrTlsRouteTransportDowngradeBlocked: false,
+      reason:
+        "RFC3261_SECTION_16_4_PRELOADED_ROUTE_OPEN_RELAY_REFLECTION_OR_STRICT_ROUTING_LOOP_BLOCKED",
+      actionCode:
+        "REJECT_SIP_403_OR_482_ON_PRELOADED_EXTERNAL_ROUTE_OPEN_RELAY_OR_STRICT_ROUTING_LOOP",
+      policyCode:
+        "P182-SIP-RFC3261-RFC5626-RFC5923-RECORD-ROUTE-LOOSE-ROUTING-LOOP-OPEN-RELAY-MAX-FORWARDS-EXHAUSTION-AND-TLS-TRANSPORT-DOWNGRADE-GUARD",
+    };
+  }
 
+  // 2. RFC 3261 §8.1.1.6 / §16.3: Max-Forwards <= 0 exhaustion or > 70 proxy-spiral amplification
+  if (
+    input.incomingMaxForwardsValue <= 0 ||
+    (input.isForwardedRequestOrSpiralSuspected &&
+      input.incomingMaxForwardsValue > 70)
+  ) {
+    return {
+      allowed: false,
+      recordRouteOpenRelayOrStrictRoutingLoopRejected: false,
+      maxForwardsExhaustedOrSpiralAmplificationBlocked483: true,
+      sipsOrTlsRouteTransportDowngradeBlocked: false,
+      reason:
+        "RFC3261_SECTION_16_3_MAX_FORWARDS_ZERO_EXHAUSTION_OR_SPIRAL_AMPLIFICATION_BLOCKED",
+      actionCode:
+        "REJECT_SIP_483_TOO_MANY_HOPS_OR_CLAMP_ABNORMAL_MAX_FORWARDS_SPIRAL",
+      policyCode:
+        "P182-SIP-RFC3261-RFC5626-RFC5923-RECORD-ROUTE-LOOSE-ROUTING-LOOP-OPEN-RELAY-MAX-FORWARDS-EXHAUSTION-AND-TLS-TRANSPORT-DOWNGRADE-GUARD",
+    };
+  }
 
+  // 3. RFC 5923 / RFC 3261 §26.2.2: SIPS / TLS Record-Route or Contact transport downgrade to cleartext UDP/TCP or mTLS SAN mismatch
+  if (input.sipsOrTlsDialogRouteDowngradesToCleartextOrFailsMtlsSan) {
+    return {
+      allowed: false,
+      recordRouteOpenRelayOrStrictRoutingLoopRejected: false,
+      maxForwardsExhaustedOrSpiralAmplificationBlocked483: false,
+      sipsOrTlsRouteTransportDowngradeBlocked: true,
+      reason:
+        "RFC5923_RFC3261_SECTION_26_SIPS_OR_TLS_RECORD_ROUTE_CLEARTEXT_DOWNGRADE_BLOCKED",
+      actionCode:
+        "REJECT_SIP_416_OR_403_ON_SIPS_TLS_TO_CLEARTEXT_UDP_TCP_ROUTE_DOWNGRADE",
+      policyCode:
+        "P182-SIP-RFC3261-RFC5626-RFC5923-RECORD-ROUTE-LOOSE-ROUTING-LOOP-OPEN-RELAY-MAX-FORWARDS-EXHAUSTION-AND-TLS-TRANSPORT-DOWNGRADE-GUARD",
+    };
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return {
+    allowed: true,
+    recordRouteOpenRelayOrStrictRoutingLoopRejected: false,
+    maxForwardsExhaustedOrSpiralAmplificationBlocked483: false,
+    sipsOrTlsRouteTransportDowngradeBlocked: false,
+    reason:
+      "SIP_RFC3261_RFC5626_RFC5923_LOOSE_ROUTING_MAX_FORWARDS_AND_TLS_ROUTE_SET_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SIP_LOOSE_ROUTED_TLS_DIALOG_REQUEST",
+    policyCode:
+      "P182-SIP-RFC3261-RFC5626-RFC5923-RECORD-ROUTE-LOOSE-ROUTING-LOOP-OPEN-RELAY-MAX-FORWARDS-EXHAUSTION-AND-TLS-TRANSPORT-DOWNGRADE-GUARD",
+  };
+}
