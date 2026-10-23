@@ -17878,5 +17878,248 @@ export function evaluateWebrtcRtpOpusRfc6716Rfc7587TocFrameCountOverflowDtxFecPl
   };
 }
 
+// ============================================================================
+// Stage 99 (P191 & P192): Acrylonitrile (ACN) Sohio Ammoxidation & Hydrogen
+// Cyanide (HCN) Recovery NFPA 69 / API RP 521 / OSHA 1910.119 / 1910.1045 Guard
+// & WebRTC / ICE RFC 8445 / RFC 6544 / RFC 4571 (ICE-TCP Length Framing Desync,
+// Controlled-Peer USE-CANDIDATE Nomination Thrash & STUN XOR-MAPPED Loopback) Guard
+// ============================================================================
+
+export interface AcrylonitrileAmmoxidationHcnRecoveryNfpa69Osha1910119GuardInput {
+  reactorOffGasOxygenVolPct: number;
+  maxSafeOffGasOxygenVolPct: number;
+  fluidizedBedCycloneTempC: number;
+  maxSafeFluidizedBedTempC: number;
+  hcnStorageTankTempC: number;
+  maxSafeHcnTankTempC: number;
+  hcnLiquidPh: number;
+  maxSafeHcnAcidicPh: number;
+  aceticAcidAndSo2StabilizerCirculationActive: boolean;
+  ambientHcnPpm: number;
+  maxAllowedAmbientHcnPpm: number;
+  ambientAcrylonitrilePpm: number;
+  maxAllowedAmbientAcrylonitrilePpm: number;
+  personnelInHcnRecoveryBayWithoutScba: boolean;
+  doubleBlockBleedCannedPumpLotoAndCyanideAntidoteKitVerified: boolean;
+  voiceCommandRequestsHcnPumpStartOrSampleValveOpen: boolean;
+}
+
+export interface AcrylonitrileAmmoxidationHcnRecoveryNfpa69Osha1910119GuardEvaluation {
+  allowed: boolean;
+  preempted: boolean;
+  ammoxidationOxygenBreakthroughOrAfterburningPreempted: boolean;
+  hcnPolymerizationPhDriftOrStabilizerLossInterlocked: boolean;
+  hcnAcnToxicExposureOrCannedPumpLotoLocked: boolean;
+  reason:
+    | "NFPA_69_OSHA_1910_119_ACN_AMMOXIDATION_OFF_GAS_OXYGEN_BREAKTHROUGH_OR_AFTERBURNING_RUNAWAY_0MS_TRIP"
+    | "API_RP_521_OSHA_1910_119_HCN_TANK_EXOTHERMIC_POLYMERIZATION_PH_DRIFT_OR_STABILIZER_LOSS_INTERLOCK"
+    | "OSHA_1910_1045_HCN_ACN_TOXIC_EXPOSURE_OR_CANNED_PUMP_CYANIDE_ANTIDOTE_LOTO_BLOCKED"
+    | "ACN_AMMOXIDATION_HCN_RECOVERY_NFPA69_OSHA1910_119_OFF_GAS_STABILIZER_AND_LOTO_VERIFIED";
+  actionCode:
+    | "TRIP_PROPYLENE_AMMONIA_AIR_FEED_DBB_INJECT_STEAM_PURGE_AND_QUENCH_REACTOR_0MS"
+    | "INJECT_EMERGENCY_ACID_STABILIZER_MAXIMIZE_BRINE_COOLING_AND_ROUTE_HCN_TO_FLARE_INCINERATOR"
+    | "LOCK_HCN_ACN_PUMP_AND_SAMPLE_VALVE_UNTIL_SCBA_CYANIDE_ANTIDOTE_AND_DBB_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_ACRYLONITRILE_AMMOXIDATION_AND_HCN_RECOVERY_OPERATION";
+  policyCode: "P191-ACRYLONITRILE-AMMOXIDATION-HCN-RECOVERY-NFPA69-OSHA1910-119-REACTOR-OXYGEN-BREAKTHROUGH-HCN-POLYMERIZATION-ACETIC-ACID-STABILIZER-AND-CYANIDE-ANTIDOTE-LOTO-GUARD";
+}
+
+export function evaluateAcrylonitrileAmmoxidationHcnRecoveryNfpa69Osha1910119ReactorOxygenBreakthroughHcnPolymerizationAceticAcidStabilizerAndCyanideAntidoteLotoGuard(
+  input: AcrylonitrileAmmoxidationHcnRecoveryNfpa69Osha1910119GuardInput
+): AcrylonitrileAmmoxidationHcnRecoveryNfpa69Osha1910119GuardEvaluation {
+  const policyCode =
+    "P191-ACRYLONITRILE-AMMOXIDATION-HCN-RECOVERY-NFPA69-OSHA1910-119-REACTOR-OXYGEN-BREAKTHROUGH-HCN-POLYMERIZATION-ACETIC-ACID-STABILIZER-AND-CYANIDE-ANTIDOTE-LOTO-GUARD" as const;
+
+  const offGasO2Ceiling = Math.min(input.maxSafeOffGasOxygenVolPct, 3.0);
+  const bedTempCeiling = Math.min(input.maxSafeFluidizedBedTempC, 505);
+
+  if (
+    input.reactorOffGasOxygenVolPct >= offGasO2Ceiling ||
+    input.fluidizedBedCycloneTempC >= bedTempCeiling
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      ammoxidationOxygenBreakthroughOrAfterburningPreempted: true,
+      hcnPolymerizationPhDriftOrStabilizerLossInterlocked: false,
+      hcnAcnToxicExposureOrCannedPumpLotoLocked: false,
+      reason:
+        "NFPA_69_OSHA_1910_119_ACN_AMMOXIDATION_OFF_GAS_OXYGEN_BREAKTHROUGH_OR_AFTERBURNING_RUNAWAY_0MS_TRIP",
+      actionCode:
+        "TRIP_PROPYLENE_AMMONIA_AIR_FEED_DBB_INJECT_STEAM_PURGE_AND_QUENCH_REACTOR_0MS",
+      policyCode,
+    };
+  }
+
+  const hcnTempCeiling = Math.min(input.maxSafeHcnTankTempC, 25);
+  const hcnPhCeiling = Math.min(input.maxSafeHcnAcidicPh, 3.2);
+
+  if (
+    input.hcnStorageTankTempC >= hcnTempCeiling ||
+    input.hcnLiquidPh >= hcnPhCeiling ||
+    !input.aceticAcidAndSo2StabilizerCirculationActive
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      ammoxidationOxygenBreakthroughOrAfterburningPreempted: false,
+      hcnPolymerizationPhDriftOrStabilizerLossInterlocked: true,
+      hcnAcnToxicExposureOrCannedPumpLotoLocked: false,
+      reason:
+        "API_RP_521_OSHA_1910_119_HCN_TANK_EXOTHERMIC_POLYMERIZATION_PH_DRIFT_OR_STABILIZER_LOSS_INTERLOCK",
+      actionCode:
+        "INJECT_EMERGENCY_ACID_STABILIZER_MAXIMIZE_BRINE_COOLING_AND_ROUTE_HCN_TO_FLARE_INCINERATOR",
+      policyCode,
+    };
+  }
+
+  const hcnCeilingPpm = Math.min(input.maxAllowedAmbientHcnPpm, 4.7);
+  const acnPelPpm = Math.min(input.maxAllowedAmbientAcrylonitrilePpm, 2.0);
+
+  if (
+    input.ambientHcnPpm >= hcnCeilingPpm ||
+    input.ambientAcrylonitrilePpm >= acnPelPpm ||
+    input.personnelInHcnRecoveryBayWithoutScba ||
+    (input.voiceCommandRequestsHcnPumpStartOrSampleValveOpen &&
+      !input.doubleBlockBleedCannedPumpLotoAndCyanideAntidoteKitVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      ammoxidationOxygenBreakthroughOrAfterburningPreempted: false,
+      hcnPolymerizationPhDriftOrStabilizerLossInterlocked: false,
+      hcnAcnToxicExposureOrCannedPumpLotoLocked: true,
+      reason:
+        "OSHA_1910_1045_HCN_ACN_TOXIC_EXPOSURE_OR_CANNED_PUMP_CYANIDE_ANTIDOTE_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_HCN_ACN_PUMP_AND_SAMPLE_VALVE_UNTIL_SCBA_CYANIDE_ANTIDOTE_AND_DBB_LOTO_VERIFIED",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    ammoxidationOxygenBreakthroughOrAfterburningPreempted: false,
+    hcnPolymerizationPhDriftOrStabilizerLossInterlocked: false,
+    hcnAcnToxicExposureOrCannedPumpLotoLocked: false,
+    reason:
+      "ACN_AMMOXIDATION_HCN_RECOVERY_NFPA69_OSHA1910_119_OFF_GAS_STABILIZER_AND_LOTO_VERIFIED",
+    actionCode:
+      "ALLOW_VERIFIED_ACRYLONITRILE_AMMOXIDATION_AND_HCN_RECOVERY_OPERATION",
+    policyCode,
+  };
+}
+
+export interface WebrtcIceRfc8445Rfc6544Rfc4571GuardInput {
+  rfc4571DeclaredFrameLengthBytes: number;
+  maxAllowedRfc4571FrameBytes: number;
+  rfc4571LengthPrefixDesyncDetected: boolean;
+  tcpSendBufferQueueMs: number;
+  maxAllowedTcpSendQueueMs: number;
+  remoteControlledPeerSentUseCandidate: boolean;
+  candidateNominationSwitchesPerSec: number;
+  maxAllowedNominationSwitchesPerSec: number;
+  stun96BitTransactionIdMatchedPendingRequest: boolean;
+  xorMappedAddressSelfLoopbackOrLinkLocalDetected: boolean;
+}
+
+export interface WebrtcIceRfc8445Rfc6544Rfc4571GuardEvaluation {
+  allowed: boolean;
+  rfc4571IceTcpFramingDesyncOrHolStallBlocked: boolean;
+  controlledPeerUseCandidateOrNominationThrashBlocked: boolean;
+  stunTransactionMismatchOrXorMappedLoopbackBlocked: boolean;
+  reason:
+    | "RFC6544_RFC4571_ICE_TCP_16BIT_LENGTH_FRAMING_DESYNC_OR_HOL_QUEUE_STALL_BLOCKED"
+    | "RFC8445_SECTION_7_3_1_5_CONTROLLED_PEER_USE_CANDIDATE_VIOLATION_OR_NOMINATION_THRASH_BLOCKED"
+    | "RFC5389_STUN_96BIT_TRANSACTION_ID_MISMATCH_OR_XOR_MAPPED_SELF_LOOPBACK_HIJACK_BLOCKED"
+    | "WEBRTC_ICE_RFC8445_RFC6544_RFC4571_FRAMING_NOMINATION_AND_XOR_MAPPED_ADDRESS_VERIFIED";
+  actionCode:
+    | "ABORT_DESYNCED_RFC4571_ICE_TCP_SOCKET_AND_FAILOVER_TO_VERIFIED_CANDIDATE_PAIR"
+    | "IGNORE_CONTROLLED_PEER_USE_CANDIDATE_AND_PIN_SELECTED_ICE_CANDIDATE_PAIR"
+    | "DROP_UNMATCHED_STUN_RESPONSE_AND_REJECT_LOOPBACK_XOR_MAPPED_ADDRESS"
+    | "ALLOW_VERIFIED_ICE_TCP_AND_STUN_NOMINATION_TRANSPORT";
+  policyCode: "P192-WEBRTC-ICE-RFC8445-RFC6544-RFC4571-TCP-FRAMING-LENGTH-DESYNC-USE-CANDIDATE-NOMINATION-THRASH-AND-XOR-MAPPED-LOOPBACK-GUARD";
+}
+
+export function evaluateWebrtcIceRfc8445Rfc6544Rfc4571TcpFramingLengthDesyncUseCandidateNominationThrashAndXorMappedLoopbackGuard(
+  input: WebrtcIceRfc8445Rfc6544Rfc4571GuardInput
+): WebrtcIceRfc8445Rfc6544Rfc4571GuardEvaluation {
+  const policyCode =
+    "P192-WEBRTC-ICE-RFC8445-RFC6544-RFC4571-TCP-FRAMING-LENGTH-DESYNC-USE-CANDIDATE-NOMINATION-THRASH-AND-XOR-MAPPED-LOOPBACK-GUARD" as const;
+
+  const maxFrameBytes = Math.min(input.maxAllowedRfc4571FrameBytes, 16384);
+  const maxQueueMs = Math.min(input.maxAllowedTcpSendQueueMs, 250);
+
+  if (
+    input.rfc4571LengthPrefixDesyncDetected ||
+    input.rfc4571DeclaredFrameLengthBytes <= 0 ||
+    input.rfc4571DeclaredFrameLengthBytes > maxFrameBytes ||
+    input.tcpSendBufferQueueMs > maxQueueMs
+  ) {
+    return {
+      allowed: false,
+      rfc4571IceTcpFramingDesyncOrHolStallBlocked: true,
+      controlledPeerUseCandidateOrNominationThrashBlocked: false,
+      stunTransactionMismatchOrXorMappedLoopbackBlocked: false,
+      reason:
+        "RFC6544_RFC4571_ICE_TCP_16BIT_LENGTH_FRAMING_DESYNC_OR_HOL_QUEUE_STALL_BLOCKED",
+      actionCode:
+        "ABORT_DESYNCED_RFC4571_ICE_TCP_SOCKET_AND_FAILOVER_TO_VERIFIED_CANDIDATE_PAIR",
+      policyCode,
+    };
+  }
+
+  const maxNominationSwitches = Math.min(
+    input.maxAllowedNominationSwitchesPerSec,
+    3
+  );
+
+  if (
+    input.remoteControlledPeerSentUseCandidate ||
+    input.candidateNominationSwitchesPerSec > maxNominationSwitches
+  ) {
+    return {
+      allowed: false,
+      rfc4571IceTcpFramingDesyncOrHolStallBlocked: false,
+      controlledPeerUseCandidateOrNominationThrashBlocked: true,
+      stunTransactionMismatchOrXorMappedLoopbackBlocked: false,
+      reason:
+        "RFC8445_SECTION_7_3_1_5_CONTROLLED_PEER_USE_CANDIDATE_VIOLATION_OR_NOMINATION_THRASH_BLOCKED",
+      actionCode:
+        "IGNORE_CONTROLLED_PEER_USE_CANDIDATE_AND_PIN_SELECTED_ICE_CANDIDATE_PAIR",
+      policyCode,
+    };
+  }
+
+  if (
+    !input.stun96BitTransactionIdMatchedPendingRequest ||
+    input.xorMappedAddressSelfLoopbackOrLinkLocalDetected
+  ) {
+    return {
+      allowed: false,
+      rfc4571IceTcpFramingDesyncOrHolStallBlocked: false,
+      controlledPeerUseCandidateOrNominationThrashBlocked: false,
+      stunTransactionMismatchOrXorMappedLoopbackBlocked: true,
+      reason:
+        "RFC5389_STUN_96BIT_TRANSACTION_ID_MISMATCH_OR_XOR_MAPPED_SELF_LOOPBACK_HIJACK_BLOCKED",
+      actionCode:
+        "DROP_UNMATCHED_STUN_RESPONSE_AND_REJECT_LOOPBACK_XOR_MAPPED_ADDRESS",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc4571IceTcpFramingDesyncOrHolStallBlocked: false,
+    controlledPeerUseCandidateOrNominationThrashBlocked: false,
+    stunTransactionMismatchOrXorMappedLoopbackBlocked: false,
+    reason:
+      "WEBRTC_ICE_RFC8445_RFC6544_RFC4571_FRAMING_NOMINATION_AND_XOR_MAPPED_ADDRESS_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_ICE_TCP_AND_STUN_NOMINATION_TRANSPORT",
+    policyCode,
+  };
+}
+
+
 
 

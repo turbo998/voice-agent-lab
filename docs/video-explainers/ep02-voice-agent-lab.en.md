@@ -28,8 +28,8 @@ This episode distills overnight autonomous research breakthroughs into a Bilibil
 
 #### Architecture Flow & Verified Metrics
 - **< 300 ms**: 全双工语音打断与热备切换端到端响应延迟 (`原生级联双修`)
-- **199 道**: 确定性生产级安全与协议护栏 (T07–P190) (`零信任门禁`)
-- **208 项**: 现场 POC 照妖镜探针 (A01–P190) 实测覆盖 (`20大高ROI场景`)
+- **201 道**: 确定性生产级安全与协议护栏 (T07–P192) (`零信任门禁`)
+- **210 项**: 现场 POC 照妖镜探针 (A01–P192) 实测覆盖 (`20大高ROI场景`)
 
 ```python
 Paradigm A: Azure Voice Live (gpt-live-1 S2S) -> P50 280ms native audio
