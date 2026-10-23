@@ -17645,4 +17645,238 @@ export function evaluateSipRfc3261Rfc5393Rfc6665ParallelForkingMaxBreadthAmplifi
   };
 }
 
+export interface EthylenePropyleneOxideEpoxidationNfpa69Osha1910119GuardInput {
+  cycleGasOxygenVolPct: number;
+  maxSafeCycleGasOxygenVolPct: number;
+  catalystBedHotSpotTempC: number;
+  maxSafeCatalystBedTempC: number;
+  storageSphereTempC: number;
+  maxSafeStorageSphereTempC: number;
+  sphereNitrogenBlanketBarG: number;
+  minSafeSphereNitrogenBlanketBarG: number;
+  causticOrAmineBackflowDetected: boolean;
+  ambientEthyleneOxidePpm: number;
+  maxAllowedEthyleneOxidePpm: number;
+  personnelInUnloadingBayOrPumpPit: boolean;
+  nitrogenPurgeGroundingClampAndCannedPumpLotoVerified: boolean;
+  voiceCommandRequestsUnloadingValveOpenOrPumpStart: boolean;
+}
+
+export interface EthylenePropyleneOxideEpoxidationNfpa69Osha1910119GuardEvaluation {
+  allowed: boolean;
+  preempted: boolean;
+  epoxidationOxygenBreakthroughOrAutodecompositionHotSpotPreempted: boolean;
+  storageSpherePolymerizationRunawayOrContaminationInterlocked: boolean;
+  unloadingBayAmbientEoOrGroundingLotoLocked: boolean;
+  reason:
+    | "NFPA_69_OSHA_1910_119_EO_PO_EPOXIDATION_OXYGEN_BREAKTHROUGH_OR_AUTODECOMPOSITION_HOT_SPOT_0MS_TRIP"
+    | "API_RP_521_OSHA_1910_119_EO_PO_STORAGE_SPHERE_POLYMERIZATION_RUNAWAY_OR_CONTAMINATION_INTERLOCK"
+    | "OSHA_1910_1047_1910_147_EO_PO_AMBIENT_EXPOSURE_OR_UNLOADING_GROUNDING_LOTO_BLOCKED"
+    | "EO_PO_EPOXIDATION_NFPA69_OSHA1910_119_CYCLE_GAS_SPHERE_AND_UNLOADING_LOTO_VERIFIED";
+  actionCode:
+    | "TRIP_OXYGEN_FEED_DBB_INJECT_BALLAST_N2_AND_ACTIVATE_DELUGE_QUENCH_0MS"
+    | "ISOLATE_EO_PO_SPHERE_TRANSFER_MAXIMIZE_CHILLED_COOLING_AND_ROUTE_VENT_TO_ACID_SCRUBBER"
+    | "LOCK_EO_PO_UNLOADING_VALVE_AND_CANNED_PUMP_UNTIL_N2_PURGE_GROUNDING_AND_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_EO_PO_EPOXIDATION_AND_STORAGE_OPERATION";
+  policyCode: "P189-ETHYLENE-PROPYLENE-OXIDE-EPOXIDATION-NFPA69-OSHA1910-119-AUTODECOMPOSITION-HOT-SPOT-TRIP-STORAGE-POLYMERIZATION-AND-UNLOADING-LOTO-GUARD";
+}
+
+export function evaluateEthylenePropyleneOxideEpoxidationNfpa69Osha1910119AutodecompositionHotSpotTripStoragePolymerizationAndUnloadingLotoGuard(
+  input: EthylenePropyleneOxideEpoxidationNfpa69Osha1910119GuardInput
+): EthylenePropyleneOxideEpoxidationNfpa69Osha1910119GuardEvaluation {
+  const policyCode =
+    "P189-ETHYLENE-PROPYLENE-OXIDE-EPOXIDATION-NFPA69-OSHA1910-119-AUTODECOMPOSITION-HOT-SPOT-TRIP-STORAGE-POLYMERIZATION-AND-UNLOADING-LOTO-GUARD" as const;
+
+  const cycleO2Ceiling = Math.min(input.maxSafeCycleGasOxygenVolPct, 4.8);
+  const catalystHotSpotCeiling = Math.min(input.maxSafeCatalystBedTempC, 275);
+
+  if (
+    input.cycleGasOxygenVolPct >= cycleO2Ceiling ||
+    input.catalystBedHotSpotTempC >= catalystHotSpotCeiling
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      epoxidationOxygenBreakthroughOrAutodecompositionHotSpotPreempted: true,
+      storageSpherePolymerizationRunawayOrContaminationInterlocked: false,
+      unloadingBayAmbientEoOrGroundingLotoLocked: false,
+      reason:
+        "NFPA_69_OSHA_1910_119_EO_PO_EPOXIDATION_OXYGEN_BREAKTHROUGH_OR_AUTODECOMPOSITION_HOT_SPOT_0MS_TRIP",
+      actionCode:
+        "TRIP_OXYGEN_FEED_DBB_INJECT_BALLAST_N2_AND_ACTIVATE_DELUGE_QUENCH_0MS",
+      policyCode,
+    };
+  }
+
+  const sphereTempCeiling = Math.min(input.maxSafeStorageSphereTempC, 30);
+  const sphereN2Floor = Math.max(input.minSafeSphereNitrogenBlanketBarG, 3.5);
+
+  if (
+    input.storageSphereTempC >= sphereTempCeiling ||
+    input.sphereNitrogenBlanketBarG < sphereN2Floor ||
+    input.causticOrAmineBackflowDetected
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      epoxidationOxygenBreakthroughOrAutodecompositionHotSpotPreempted: false,
+      storageSpherePolymerizationRunawayOrContaminationInterlocked: true,
+      unloadingBayAmbientEoOrGroundingLotoLocked: false,
+      reason:
+        "API_RP_521_OSHA_1910_119_EO_PO_STORAGE_SPHERE_POLYMERIZATION_RUNAWAY_OR_CONTAMINATION_INTERLOCK",
+      actionCode:
+        "ISOLATE_EO_PO_SPHERE_TRANSFER_MAXIMIZE_CHILLED_COOLING_AND_ROUTE_VENT_TO_ACID_SCRUBBER",
+      policyCode,
+    };
+  }
+
+  const eoPelCeiling = Math.min(input.maxAllowedEthyleneOxidePpm, 1.0);
+
+  if (
+    input.ambientEthyleneOxidePpm >= eoPelCeiling ||
+    input.personnelInUnloadingBayOrPumpPit ||
+    (input.voiceCommandRequestsUnloadingValveOpenOrPumpStart &&
+      !input.nitrogenPurgeGroundingClampAndCannedPumpLotoVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      epoxidationOxygenBreakthroughOrAutodecompositionHotSpotPreempted: false,
+      storageSpherePolymerizationRunawayOrContaminationInterlocked: false,
+      unloadingBayAmbientEoOrGroundingLotoLocked: true,
+      reason:
+        "OSHA_1910_1047_1910_147_EO_PO_AMBIENT_EXPOSURE_OR_UNLOADING_GROUNDING_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_EO_PO_UNLOADING_VALVE_AND_CANNED_PUMP_UNTIL_N2_PURGE_GROUNDING_AND_LOTO_VERIFIED",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    epoxidationOxygenBreakthroughOrAutodecompositionHotSpotPreempted: false,
+    storageSpherePolymerizationRunawayOrContaminationInterlocked: false,
+    unloadingBayAmbientEoOrGroundingLotoLocked: false,
+    reason:
+      "EO_PO_EPOXIDATION_NFPA69_OSHA1910_119_CYCLE_GAS_SPHERE_AND_UNLOADING_LOTO_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_EO_PO_EPOXIDATION_AND_STORAGE_OPERATION",
+    policyCode,
+  };
+}
+
+export interface WebrtcRtpOpusRfc6716Rfc7587GuardInput {
+  packetAudioDurationMs: number;
+  code3FrameCountM: number;
+  declaredPaddingBytes: number;
+  framePayloadBytes: number;
+  rtpPayloadByteLength: number;
+  tocStereoBitSet: boolean;
+  negotiatedMaxChannels: 1 | 2;
+  stereoDownmixBufferAllocated: boolean;
+  instantaneousBitrateBps: number;
+  maxAllowedOpusBitrateBps: number;
+  consecutivePlcOrUnverifiedDtxMs: number;
+  maxConsecutivePlcOrUnverifiedDtxMs: number;
+  lbrrInBandFecSequenceDesyncDetected: boolean;
+}
+
+export interface WebrtcRtpOpusRfc6716Rfc7587GuardEvaluation {
+  allowed: boolean;
+  tocCode3FrameCountOrPaddingOverflowBlocked: boolean;
+  unnegotiatedStereoOrBitrateOverflowClamped: boolean;
+  lbrrFecDesyncOrPlcPredictorRunawayMuted: boolean;
+  reason:
+    | "RFC6716_SECTION_3_2_5_OPUS_TOC_CODE3_FRAME_COUNT_OVER_120MS_OR_PADDING_UNDERFLOW_BLOCKED"
+    | "RFC7587_OPUS_UNNEGOTIATED_STEREO_CHANNEL_OR_MAXAVERAGEBITRATE_OVERFLOW_BLOCKED"
+    | "RFC6716_OPUS_LBRR_FEC_STATE_DESYNC_OR_PLC_PREDICTOR_RUNAWAY_MUTED"
+    | "WEBRTC_RTP_OPUS_RFC6716_RFC7587_TOC_FRAMING_DTX_FEC_AND_BITRATE_VERIFIED";
+  actionCode:
+    | "DROP_MALFORMED_OPUS_TOC_PACKET_AND_PROTECT_DECODER_FRAME_BUFFER"
+    | "CLAMP_OPUS_BITRATE_ENFORCE_MONO_DOWNMIX_AND_GUARD_PCM_RING_BUFFER"
+    | "RESET_OPUS_SILK_CELT_DECODER_STATE_AND_MUTE_RUNAWAY_PLC_TAIL"
+    | "DECODE_VERIFIED_OPUS_RTP_AUDIO_FRAME";
+  policyCode: "P190-WEBRTC-RTP-OPUS-RFC6716-RFC7587-TOC-FRAME-COUNT-OVERFLOW-DTX-FEC-PLC-DESYNC-AND-STEREO-CHANNEL-BUFFER-GUARD";
+}
+
+export function evaluateWebrtcRtpOpusRfc6716Rfc7587TocFrameCountOverflowDtxFecPlcDesyncAndStereoChannelBufferGuard(
+  input: WebrtcRtpOpusRfc6716Rfc7587GuardInput
+): WebrtcRtpOpusRfc6716Rfc7587GuardEvaluation {
+  const policyCode =
+    "P190-WEBRTC-RTP-OPUS-RFC6716-RFC7587-TOC-FRAME-COUNT-OVERFLOW-DTX-FEC-PLC-DESYNC-AND-STEREO-CHANNEL-BUFFER-GUARD" as const;
+
+  if (
+    input.packetAudioDurationMs > 120 ||
+    input.code3FrameCountM <= 0 ||
+    input.code3FrameCountM > 48 ||
+    input.declaredPaddingBytes < 0 ||
+    input.declaredPaddingBytes + input.framePayloadBytes >
+      input.rtpPayloadByteLength
+  ) {
+    return {
+      allowed: false,
+      tocCode3FrameCountOrPaddingOverflowBlocked: true,
+      unnegotiatedStereoOrBitrateOverflowClamped: false,
+      lbrrFecDesyncOrPlcPredictorRunawayMuted: false,
+      reason:
+        "RFC6716_SECTION_3_2_5_OPUS_TOC_CODE3_FRAME_COUNT_OVER_120MS_OR_PADDING_UNDERFLOW_BLOCKED",
+      actionCode:
+        "DROP_MALFORMED_OPUS_TOC_PACKET_AND_PROTECT_DECODER_FRAME_BUFFER",
+      policyCode,
+    };
+  }
+
+  const bitrateCap = Math.min(input.maxAllowedOpusBitrateBps, 510000);
+
+  if (
+    (input.tocStereoBitSet &&
+      input.negotiatedMaxChannels === 1 &&
+      !input.stereoDownmixBufferAllocated) ||
+    input.instantaneousBitrateBps > bitrateCap
+  ) {
+    return {
+      allowed: false,
+      tocCode3FrameCountOrPaddingOverflowBlocked: false,
+      unnegotiatedStereoOrBitrateOverflowClamped: true,
+      lbrrFecDesyncOrPlcPredictorRunawayMuted: false,
+      reason:
+        "RFC7587_OPUS_UNNEGOTIATED_STEREO_CHANNEL_OR_MAXAVERAGEBITRATE_OVERFLOW_BLOCKED",
+      actionCode:
+        "CLAMP_OPUS_BITRATE_ENFORCE_MONO_DOWNMIX_AND_GUARD_PCM_RING_BUFFER",
+      policyCode,
+    };
+  }
+
+  const plcDtxCeiling = Math.min(input.maxConsecutivePlcOrUnverifiedDtxMs, 400);
+
+  if (
+    input.consecutivePlcOrUnverifiedDtxMs > plcDtxCeiling ||
+    input.lbrrInBandFecSequenceDesyncDetected
+  ) {
+    return {
+      allowed: false,
+      tocCode3FrameCountOrPaddingOverflowBlocked: false,
+      unnegotiatedStereoOrBitrateOverflowClamped: false,
+      lbrrFecDesyncOrPlcPredictorRunawayMuted: true,
+      reason:
+        "RFC6716_OPUS_LBRR_FEC_STATE_DESYNC_OR_PLC_PREDICTOR_RUNAWAY_MUTED",
+      actionCode:
+        "RESET_OPUS_SILK_CELT_DECODER_STATE_AND_MUTE_RUNAWAY_PLC_TAIL",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    tocCode3FrameCountOrPaddingOverflowBlocked: false,
+    unnegotiatedStereoOrBitrateOverflowClamped: false,
+    lbrrFecDesyncOrPlcPredictorRunawayMuted: false,
+    reason:
+      "WEBRTC_RTP_OPUS_RFC6716_RFC7587_TOC_FRAMING_DTX_FEC_AND_BITRATE_VERIFIED",
+    actionCode: "DECODE_VERIFIED_OPUS_RTP_AUDIO_FRAME",
+    policyCode,
+  };
+}
+
+
 
