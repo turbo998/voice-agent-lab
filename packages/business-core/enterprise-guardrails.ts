@@ -18120,6 +18120,244 @@ export function evaluateWebrtcIceRfc8445Rfc6544Rfc4571TcpFramingLengthDesyncUseC
   };
 }
 
+// ============================================================================
+// Stage 100 (P193 & P194): Vinyl Chloride Monomer (VCM) Oxychlorination & PVC
+// Suspension Autoclave NFPA 69 / API RP 521 / OSHA 1910.119 / 1910.1017 Guard
+// & Enterprise SIP RFC 3261 / RFC 3581 (Singleton Header Smuggling, Untrusted
+// 3xx Redirect Toll-Fraud / SSRF & Via received/rport Amplification) Guard
+// ============================================================================
+
+export interface VcmOxychlorinationPvcAutoclaveNfpa69Osha1910119GuardInput {
+  oxychlorinationOffGasOxygenVolPct: number;
+  maxSafeOxychlorinationOxygenVolPct: number;
+  pvcAutoclaveTempC: number;
+  maxSafeAutoclaveTempC: number;
+  pvcAutoclavePressureBarG: number;
+  maxSafeAutoclavePressureBarG: number;
+  autoclaveAgitatorOrJacketCoolingLost: boolean;
+  vcmStorageSphereTempC: number;
+  maxSafeVcmSphereTempC: number;
+  vcmVaporOxygenPpm: number;
+  maxSafeVcmVaporOxygenPpm: number;
+  ambientVcmPpm: number;
+  maxAllowedAmbientVcmPelPpm: number;
+  slurryResidualVcmPpmBeforeOpening: number;
+  maxAllowedSlurryResidualVcmPpm: number;
+  suppliedAirRespiratorAndHydroblastDbbLotoVerified: boolean;
+  voiceCommandRequestsAutoclaveManwayOpenOrBottomValveDump: boolean;
+}
+
+export interface VcmOxychlorinationPvcAutoclaveNfpa69Osha1910119GuardEvaluation {
+  allowed: boolean;
+  preempted: boolean;
+  autoclaveRunawayOrOxychlorinationO2ShortstopTripped: boolean;
+  vcmSpherePolyperoxideOrCoolingInterlocked: boolean;
+  vcmCarcinogenPelOrUnstrippedAutoclaveLotoLocked: boolean;
+  reason:
+    | "NFPA_69_OSHA_1910_119_PVC_AUTOCLAVE_EXOTHERMIC_RUNAWAY_OR_OXYCHLORINATION_O2_BREAKTHROUGH_0MS_SHORTSTOP_TRIP"
+    | "API_RP_521_OSHA_1910_119_VCM_SPHERE_POLYPEROXIDE_FORMATION_OR_REFRIGERATION_LOSS_INTERLOCK"
+    | "OSHA_1910_1017_VCM_CARCINOGEN_EXPOSURE_OR_UNSTRIPPED_AUTOCLAVE_HYDROBLAST_LOTO_BLOCKED"
+    | "VCM_OXYCHLORINATION_PVC_AUTOCLAVE_NFPA69_OSHA1910_119_OSHA1910_1017_VERIFIED";
+  actionCode:
+    | "GRAVITY_INJECT_FREE_RADICAL_SHORTSTOP_CLOSE_FEED_DBB_AND_ROUTE_VENT_TO_VCM_GAS_HOLDER_0MS"
+    | "ENGAGE_VCM_SPHERE_BRINE_CHILLING_INJECT_INHIBITOR_AND_ROUTE_VAPOR_TO_CATALYTIC_OXIDIZER"
+    | "LOCK_AUTOCLAVE_MANWAY_AND_BOTTOM_VALVE_UNTIL_VACUUM_VCM_STRIPPING_SAR_AND_DBB_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_VCM_OXYCHLORINATION_AND_PVC_AUTOCLAVE_OPERATION";
+  policyCode: "P193-VCM-OXYCHLORINATION-PVC-AUTOCLAVE-NFPA69-OSHA1910-119-OSHA1910-1017-RUNAWAY-SHORTSTOP-INJECTION-POLYPEROXIDE-INTERLOCK-AND-STRIPPING-LOTO-GUARD";
+}
+
+export function evaluateVcmOxychlorinationPvcAutoclaveNfpa69Osha1910119RunawayShortstopInjectionPolyperoxideInterlockAndStrippingLotoGuard(
+  input: VcmOxychlorinationPvcAutoclaveNfpa69Osha1910119GuardInput
+): VcmOxychlorinationPvcAutoclaveNfpa69Osha1910119GuardEvaluation {
+  const policyCode =
+    "P193-VCM-OXYCHLORINATION-PVC-AUTOCLAVE-NFPA69-OSHA1910-119-OSHA1910-1017-RUNAWAY-SHORTSTOP-INJECTION-POLYPEROXIDE-INTERLOCK-AND-STRIPPING-LOTO-GUARD" as const;
+
+  const o2Ceiling = Math.min(input.maxSafeOxychlorinationOxygenVolPct, 1.8);
+  const autoclaveTempCeiling = Math.min(input.maxSafeAutoclaveTempC, 72);
+  const autoclavePressureCeiling = Math.min(
+    input.maxSafeAutoclavePressureBarG,
+    13.5
+  );
+
+  if (
+    input.oxychlorinationOffGasOxygenVolPct >= o2Ceiling ||
+    input.pvcAutoclaveTempC >= autoclaveTempCeiling ||
+    input.pvcAutoclavePressureBarG >= autoclavePressureCeiling ||
+    input.autoclaveAgitatorOrJacketCoolingLost
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      autoclaveRunawayOrOxychlorinationO2ShortstopTripped: true,
+      vcmSpherePolyperoxideOrCoolingInterlocked: false,
+      vcmCarcinogenPelOrUnstrippedAutoclaveLotoLocked: false,
+      reason:
+        "NFPA_69_OSHA_1910_119_PVC_AUTOCLAVE_EXOTHERMIC_RUNAWAY_OR_OXYCHLORINATION_O2_BREAKTHROUGH_0MS_SHORTSTOP_TRIP",
+      actionCode:
+        "GRAVITY_INJECT_FREE_RADICAL_SHORTSTOP_CLOSE_FEED_DBB_AND_ROUTE_VENT_TO_VCM_GAS_HOLDER_0MS",
+      policyCode,
+    };
+  }
+
+  const sphereTempCeiling = Math.min(input.maxSafeVcmSphereTempC, 15);
+  const sphereO2PpmCeiling = Math.min(input.maxSafeVcmVaporOxygenPpm, 50);
+
+  if (
+    input.vcmStorageSphereTempC >= sphereTempCeiling ||
+    input.vcmVaporOxygenPpm >= sphereO2PpmCeiling
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      autoclaveRunawayOrOxychlorinationO2ShortstopTripped: false,
+      vcmSpherePolyperoxideOrCoolingInterlocked: true,
+      vcmCarcinogenPelOrUnstrippedAutoclaveLotoLocked: false,
+      reason:
+        "API_RP_521_OSHA_1910_119_VCM_SPHERE_POLYPEROXIDE_FORMATION_OR_REFRIGERATION_LOSS_INTERLOCK",
+      actionCode:
+        "ENGAGE_VCM_SPHERE_BRINE_CHILLING_INJECT_INHIBITOR_AND_ROUTE_VAPOR_TO_CATALYTIC_OXIDIZER",
+      policyCode,
+    };
+  }
+
+  const vcmPelCeiling = Math.min(input.maxAllowedAmbientVcmPelPpm, 1.0);
+  const slurryVcmCeiling = Math.min(input.maxAllowedSlurryResidualVcmPpm, 50);
+
+  if (
+    input.ambientVcmPpm >= vcmPelCeiling ||
+    input.slurryResidualVcmPpmBeforeOpening >= slurryVcmCeiling ||
+    (input.voiceCommandRequestsAutoclaveManwayOpenOrBottomValveDump &&
+      !input.suppliedAirRespiratorAndHydroblastDbbLotoVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      autoclaveRunawayOrOxychlorinationO2ShortstopTripped: false,
+      vcmSpherePolyperoxideOrCoolingInterlocked: false,
+      vcmCarcinogenPelOrUnstrippedAutoclaveLotoLocked: true,
+      reason:
+        "OSHA_1910_1017_VCM_CARCINOGEN_EXPOSURE_OR_UNSTRIPPED_AUTOCLAVE_HYDROBLAST_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_AUTOCLAVE_MANWAY_AND_BOTTOM_VALVE_UNTIL_VACUUM_VCM_STRIPPING_SAR_AND_DBB_LOTO_VERIFIED",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    autoclaveRunawayOrOxychlorinationO2ShortstopTripped: false,
+    vcmSpherePolyperoxideOrCoolingInterlocked: false,
+    vcmCarcinogenPelOrUnstrippedAutoclaveLotoLocked: false,
+    reason:
+      "VCM_OXYCHLORINATION_PVC_AUTOCLAVE_NFPA69_OSHA1910_119_OSHA1910_1017_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_VCM_OXYCHLORINATION_AND_PVC_AUTOCLAVE_OPERATION",
+    policyCode,
+  };
+}
+
+export interface SipRfc3261Rfc3581SingletonHeaderSmuggling3xxRedirectGuardInput {
+  singletonHeaderCountFromToCallIdCseq: number;
+  declaredContentLengthBytes: number;
+  actualSipBodyByteLength: number;
+  sip3xxRedirectHopCount: number;
+  maxAllowed3xxRedirectHops: number;
+  redirectContactTargetInUntrustedTollOrPrivateSubnet: boolean;
+  topmostViaSentByMatchesSourceIpPort: boolean;
+  rfc3581ReceivedAndRportPinnedToTransportTuple: boolean;
+}
+
+export interface SipRfc3261Rfc3581SingletonHeaderSmuggling3xxRedirectGuardEvaluation {
+  allowed: boolean;
+  singletonHeaderSmugglingOrContentLengthMismatchRejected: boolean;
+  untrusted3xxRedirectTollFraudOrSsrfBlocked: boolean;
+  viaSentBySpoofingOrUnpinnedRportBlocked: boolean;
+  reason:
+    | "RFC3261_SECTION_8_1_1_SINGLETON_HEADER_SMUGGLING_OR_CONTENT_LENGTH_FRAMING_MISMATCH_BLOCKED"
+    | "RFC3261_SECTION_8_1_3_4_UNTRUSTED_3XX_CONTACT_REDIRECT_TOLL_FRAUD_OR_PRIVATE_SSRF_BLOCKED"
+    | "RFC3581_RFC3261_TOPMOST_VIA_SENT_BY_AMPLIFICATION_OR_UNPINNED_RPORT_BLOCKED"
+    | "SIP_RFC3261_RFC3581_SINGLETON_HEADERS_3XX_REDIRECT_AND_VIA_RPORT_VERIFIED";
+  actionCode:
+    | "REJECT_SMUGGLED_SIP_MESSAGE_WITH_400_BAD_REQUEST_AND_DROP_BODY_DESYNC"
+    | "BLOCK_UNTRUSTED_3XX_CONTACT_REDIRECT_AND_ENFORCE_TRUNK_ALLOWLIST"
+    | "PIN_SIP_RESPONSE_TO_VERIFIED_RECEIVED_RPORT_TUPLE_AND_SUPPRESS_VIA_REFLECTION"
+    | "ALLOW_VERIFIED_SIP_RFC3261_RFC3581_MESSAGE";
+  policyCode: "P194-SIP-RFC3261-RFC3581-SINGLETON-HEADER-SMUGGLING-UNTRUSTED-3XX-REDIRECT-TOLL-FRAUD-SSRF-AND-VIA-RPORT-AMPLIFICATION-GUARD";
+}
+
+export function evaluateSipRfc3261Rfc3581SingletonHeaderSmugglingUntrusted3xxRedirectTollFraudSsrfAndViaRportAmplificationGuard(
+  input: SipRfc3261Rfc3581SingletonHeaderSmuggling3xxRedirectGuardInput
+): SipRfc3261Rfc3581SingletonHeaderSmuggling3xxRedirectGuardEvaluation {
+  const policyCode =
+    "P194-SIP-RFC3261-RFC3581-SINGLETON-HEADER-SMUGGLING-UNTRUSTED-3XX-REDIRECT-TOLL-FRAUD-SSRF-AND-VIA-RPORT-AMPLIFICATION-GUARD" as const;
+
+  if (
+    input.singletonHeaderCountFromToCallIdCseq !== 4 ||
+    input.declaredContentLengthBytes < 0 ||
+    input.declaredContentLengthBytes !== input.actualSipBodyByteLength
+  ) {
+    return {
+      allowed: false,
+      singletonHeaderSmugglingOrContentLengthMismatchRejected: true,
+      untrusted3xxRedirectTollFraudOrSsrfBlocked: false,
+      viaSentBySpoofingOrUnpinnedRportBlocked: false,
+      reason:
+        "RFC3261_SECTION_8_1_1_SINGLETON_HEADER_SMUGGLING_OR_CONTENT_LENGTH_FRAMING_MISMATCH_BLOCKED",
+      actionCode:
+        "REJECT_SMUGGLED_SIP_MESSAGE_WITH_400_BAD_REQUEST_AND_DROP_BODY_DESYNC",
+      policyCode,
+    };
+  }
+
+  const maxRedirects = Math.min(input.maxAllowed3xxRedirectHops, 2);
+
+  if (
+    input.redirectContactTargetInUntrustedTollOrPrivateSubnet ||
+    input.sip3xxRedirectHopCount > maxRedirects
+  ) {
+    return {
+      allowed: false,
+      singletonHeaderSmugglingOrContentLengthMismatchRejected: false,
+      untrusted3xxRedirectTollFraudOrSsrfBlocked: true,
+      viaSentBySpoofingOrUnpinnedRportBlocked: false,
+      reason:
+        "RFC3261_SECTION_8_1_3_4_UNTRUSTED_3XX_CONTACT_REDIRECT_TOLL_FRAUD_OR_PRIVATE_SSRF_BLOCKED",
+      actionCode:
+        "BLOCK_UNTRUSTED_3XX_CONTACT_REDIRECT_AND_ENFORCE_TRUNK_ALLOWLIST",
+      policyCode,
+    };
+  }
+
+  if (
+    !input.topmostViaSentByMatchesSourceIpPort &&
+    !input.rfc3581ReceivedAndRportPinnedToTransportTuple
+  ) {
+    return {
+      allowed: false,
+      singletonHeaderSmugglingOrContentLengthMismatchRejected: false,
+      untrusted3xxRedirectTollFraudOrSsrfBlocked: false,
+      viaSentBySpoofingOrUnpinnedRportBlocked: true,
+      reason:
+        "RFC3581_RFC3261_TOPMOST_VIA_SENT_BY_AMPLIFICATION_OR_UNPINNED_RPORT_BLOCKED",
+      actionCode:
+        "PIN_SIP_RESPONSE_TO_VERIFIED_RECEIVED_RPORT_TUPLE_AND_SUPPRESS_VIA_REFLECTION",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    singletonHeaderSmugglingOrContentLengthMismatchRejected: false,
+    untrusted3xxRedirectTollFraudOrSsrfBlocked: false,
+    viaSentBySpoofingOrUnpinnedRportBlocked: false,
+    reason:
+      "SIP_RFC3261_RFC3581_SINGLETON_HEADERS_3XX_REDIRECT_AND_VIA_RPORT_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SIP_RFC3261_RFC3581_MESSAGE",
+    policyCode,
+  };
+}
+
+
 
 
 
