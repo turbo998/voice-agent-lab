@@ -17058,3 +17058,193 @@ export function evaluateSipRfc3261Rfc5626Rfc5923RecordRouteLooseRoutingLoopOpenR
       "P182-SIP-RFC3261-RFC5626-RFC5923-RECORD-ROUTE-LOOSE-ROUTING-LOOP-OPEN-RELAY-MAX-FORWARDS-EXHAUSTION-AND-TLS-TRANSPORT-DOWNGRADE-GUARD",
   };
 }
+
+export interface EthyleneSteamCrackerColdBoxApi556Api521GuardInput {
+  radiantPyrolysisCoilTubeMetalTempC: number;
+  maxSafeRadiantCoilTubeMetalTempC: number;
+  dilutionSteamToHydrocarbonRatioKgKg: number;
+  minAllowedDilutionSteamRatioKgKg: number;
+  acetyleneConverterBedDeltaTempC: number;
+  maxAllowedAcetyleneConverterDeltaTempC: number;
+  coldBoxCarbonSteelFlareHeaderTempC: number;
+  minSafeCarbonSteelHeaderTempC: number;
+  personnelAtTleManwayOrDecokingDrumZone: boolean;
+  hydrocarbonFeedDbbIsolatedAndDecokingLinePurgedVerified: boolean;
+  voiceCommandRequestsDecokingAirOpenOrFurnaceFeedResume: boolean;
+}
+
+export interface EthyleneSteamCrackerColdBoxApi556Api521GuardEvaluation {
+  allowed: boolean;
+  preempted: boolean;
+  radiantCoilTmtRunawayOrDilutionSteamLossPreempted: boolean;
+  acetyleneConverterRunawayOrCryogenicBrittleFractureInterlocked: boolean;
+  tleDecokingDbbOrFurnaceBurnerLotoLocked: boolean;
+  reason:
+    | "API_RP_556_RADIANT_PYROLYSIS_COIL_TMT_OVERHEAT_OR_DILUTION_STEAM_RATIO_LOSS_0MS_TRIP"
+    | "API_521_ACETYLENE_CONVERTER_EXOTHERMIC_RUNAWAY_OR_COLD_BOX_CRYOGENIC_BRITTLE_FRACTURE_INTERLOCK"
+    | "OSHA_1910_147_TLE_DECOKING_AIR_HYDROCARBON_DBB_ISOLATION_OR_MANWAY_LOTO_BLOCKED"
+    | "ETHYLENE_STEAM_CRACKER_API556_API521_RADIANT_COIL_ACETYLENE_CONVERTER_AND_TLE_DECOKING_VERIFIED";
+  actionCode:
+    | "TRIP_HYDROCARBON_CRACKER_FEED_ENGAGE_HOT_STEAM_STANDBY_AND_ISOLATE_RADIANT_COIL_0MS"
+    | "CUT_ACETYLENE_CONVERTER_H2_FEED_DEPRESSURE_TO_STAINLESS_COLD_FLARE_AND_BLOCK_LIQUID_BLOWDOWN"
+    | "LOCK_TLE_DECOKING_AIR_VALVE_AND_CGC_TRANSFER_VALVE_UNTIL_HYDROCARBON_DBB_AND_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_ETHYLENE_STEAM_CRACKER_AND_COLD_BOX_OPERATION";
+  policyCode: "P183-ETHYLENE-STEAM-CRACKER-COLD-BOX-API556-API521-RADIANT-COIL-TMT-DILUTION-STEAM-TRIP-ACETYLENE-CONVERTER-RUNAWAY-AND-TLE-DECOKING-LOTO-GUARD";
+}
+
+export function evaluateEthyleneSteamCrackerColdBoxApi556Api521RadiantCoilTmtDilutionSteamTripAcetyleneConverterRunawayAndTleDecokingLotoGuard(
+  input: EthyleneSteamCrackerColdBoxApi556Api521GuardInput
+): EthyleneSteamCrackerColdBoxApi556Api521GuardEvaluation {
+  const policyCode =
+    "P183-ETHYLENE-STEAM-CRACKER-COLD-BOX-API556-API521-RADIANT-COIL-TMT-DILUTION-STEAM-TRIP-ACETYLENE-CONVERTER-RUNAWAY-AND-TLE-DECOKING-LOTO-GUARD" as const;
+
+  const coilTmtThreshold = Math.min(input.maxSafeRadiantCoilTubeMetalTempC, 1100);
+  const dilutionSteamFloor = Math.max(input.minAllowedDilutionSteamRatioKgKg, 0.25);
+
+  if (
+    input.radiantPyrolysisCoilTubeMetalTempC >= coilTmtThreshold ||
+    input.dilutionSteamToHydrocarbonRatioKgKg < dilutionSteamFloor
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      radiantCoilTmtRunawayOrDilutionSteamLossPreempted: true,
+      acetyleneConverterRunawayOrCryogenicBrittleFractureInterlocked: false,
+      tleDecokingDbbOrFurnaceBurnerLotoLocked: false,
+      reason: "API_RP_556_RADIANT_PYROLYSIS_COIL_TMT_OVERHEAT_OR_DILUTION_STEAM_RATIO_LOSS_0MS_TRIP",
+      actionCode: "TRIP_HYDROCARBON_CRACKER_FEED_ENGAGE_HOT_STEAM_STANDBY_AND_ISOLATE_RADIANT_COIL_0MS",
+      policyCode,
+    };
+  }
+
+  const converterDeltaTThreshold = Math.min(input.maxAllowedAcetyleneConverterDeltaTempC, 35);
+  const carbonSteelTempFloor = Math.max(input.minSafeCarbonSteelHeaderTempC, -29);
+
+  if (
+    input.acetyleneConverterBedDeltaTempC >= converterDeltaTThreshold ||
+    input.coldBoxCarbonSteelFlareHeaderTempC < carbonSteelTempFloor
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      radiantCoilTmtRunawayOrDilutionSteamLossPreempted: false,
+      acetyleneConverterRunawayOrCryogenicBrittleFractureInterlocked: true,
+      tleDecokingDbbOrFurnaceBurnerLotoLocked: false,
+      reason: "API_521_ACETYLENE_CONVERTER_EXOTHERMIC_RUNAWAY_OR_COLD_BOX_CRYOGENIC_BRITTLE_FRACTURE_INTERLOCK",
+      actionCode: "CUT_ACETYLENE_CONVERTER_H2_FEED_DEPRESSURE_TO_STAINLESS_COLD_FLARE_AND_BLOCK_LIQUID_BLOWDOWN",
+      policyCode,
+    };
+  }
+
+  if (
+    input.personnelAtTleManwayOrDecokingDrumZone ||
+    (input.voiceCommandRequestsDecokingAirOpenOrFurnaceFeedResume &&
+      !input.hydrocarbonFeedDbbIsolatedAndDecokingLinePurgedVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      radiantCoilTmtRunawayOrDilutionSteamLossPreempted: false,
+      acetyleneConverterRunawayOrCryogenicBrittleFractureInterlocked: false,
+      tleDecokingDbbOrFurnaceBurnerLotoLocked: true,
+      reason: "OSHA_1910_147_TLE_DECOKING_AIR_HYDROCARBON_DBB_ISOLATION_OR_MANWAY_LOTO_BLOCKED",
+      actionCode: "LOCK_TLE_DECOKING_AIR_VALVE_AND_CGC_TRANSFER_VALVE_UNTIL_HYDROCARBON_DBB_AND_LOTO_VERIFIED",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    radiantCoilTmtRunawayOrDilutionSteamLossPreempted: false,
+    acetyleneConverterRunawayOrCryogenicBrittleFractureInterlocked: false,
+    tleDecokingDbbOrFurnaceBurnerLotoLocked: false,
+    reason: "ETHYLENE_STEAM_CRACKER_API556_API521_RADIANT_COIL_ACETYLENE_CONVERTER_AND_TLE_DECOKING_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_ETHYLENE_STEAM_CRACKER_AND_COLD_BOX_OPERATION",
+    policyCode,
+  };
+}
+
+export interface WebrtcSctpDataChannelRfc8831Rfc8832Rfc4960GuardInput {
+  sctpVerificationTagMatchesAssociationAndBoundToDtls: boolean;
+  dcepStreamIdParityViolationOrActiveStreamCollisionDetected: boolean;
+  cumulativeSctpMessagePayloadBytes: number;
+  negotiatedSdpMaxMessageSizeBytes: number;
+  unboundedFragmentReassemblyQueueDetected: boolean;
+}
+
+export interface WebrtcSctpDataChannelRfc8831Rfc8832Rfc4960GuardEvaluation {
+  allowed: boolean;
+  sctpVerificationTagMismatchOrDtlsUnboundChunkDropped: boolean;
+  dcepStreamIdParityCollisionOrOpenFloodRejected: boolean;
+  sctpMaxMessageSizeOrFragmentReassemblyBombBlocked: boolean;
+  reason:
+    | "RFC4960_SECTION_8_5_SCTP_VERIFICATION_TAG_MISMATCH_OR_UNBOUND_DTLS_CONTROL_CHUNK_DROPPED"
+    | "RFC8832_SECTION_6_DCEP_STREAM_ID_ODD_EVEN_PARITY_COLLISION_OR_OPEN_FLOOD_BLOCKED"
+    | "RFC8841_RFC8831_SCTP_MAX_MESSAGE_SIZE_EXCEEDED_OR_FRAGMENT_REASSEMBLY_BOMB_BLOCKED"
+    | "WEBRTC_SCTP_DATACHANNEL_RFC8831_RFC8832_RFC4960_VTAG_DCEP_PARITY_AND_MESSAGE_SIZE_VERIFIED";
+  actionCode:
+    | "DROP_SCTP_CHUNK_WITH_MISMATCHED_VERIFICATION_TAG_OR_UNBOUND_DTLS_ASSOCIATION_0MS"
+    | "REJECT_DCEP_DATA_CHANNEL_OPEN_ON_DTLS_ROLE_PARITY_VIOLATION_OR_ACTIVE_STREAM_COLLISION"
+    | "ABORT_SCTP_STREAM_REASSEMBLY_AND_ENFORCE_SDP_MAX_MESSAGE_SIZE_CAP"
+    | "ALLOW_VERIFIED_WEBRTC_SCTP_DATACHANNEL_FRAME";
+  policyCode: "P184-WEBRTC-SCTP-DATACHANNEL-RFC8831-RFC8832-RFC4960-VERIFICATION-TAG-MISMATCH-DCEP-STREAM-ID-PARITY-COLLISION-AND-MAX-MESSAGE-SIZE-BOMB-GUARD";
+}
+
+export function evaluateWebrtcSctpDataChannelRfc8831Rfc8832Rfc4960VerificationTagMismatchDcepStreamIdParityCollisionAndMaxMessageSizeBombGuard(
+  input: WebrtcSctpDataChannelRfc8831Rfc8832Rfc4960GuardInput
+): WebrtcSctpDataChannelRfc8831Rfc8832Rfc4960GuardEvaluation {
+  const policyCode =
+    "P184-WEBRTC-SCTP-DATACHANNEL-RFC8831-RFC8832-RFC4960-VERIFICATION-TAG-MISMATCH-DCEP-STREAM-ID-PARITY-COLLISION-AND-MAX-MESSAGE-SIZE-BOMB-GUARD" as const;
+
+  if (!input.sctpVerificationTagMatchesAssociationAndBoundToDtls) {
+    return {
+      allowed: false,
+      sctpVerificationTagMismatchOrDtlsUnboundChunkDropped: true,
+      dcepStreamIdParityCollisionOrOpenFloodRejected: false,
+      sctpMaxMessageSizeOrFragmentReassemblyBombBlocked: false,
+      reason: "RFC4960_SECTION_8_5_SCTP_VERIFICATION_TAG_MISMATCH_OR_UNBOUND_DTLS_CONTROL_CHUNK_DROPPED",
+      actionCode: "DROP_SCTP_CHUNK_WITH_MISMATCHED_VERIFICATION_TAG_OR_UNBOUND_DTLS_ASSOCIATION_0MS",
+      policyCode,
+    };
+  }
+
+  if (input.dcepStreamIdParityViolationOrActiveStreamCollisionDetected) {
+    return {
+      allowed: false,
+      sctpVerificationTagMismatchOrDtlsUnboundChunkDropped: false,
+      dcepStreamIdParityCollisionOrOpenFloodRejected: true,
+      sctpMaxMessageSizeOrFragmentReassemblyBombBlocked: false,
+      reason: "RFC8832_SECTION_6_DCEP_STREAM_ID_ODD_EVEN_PARITY_COLLISION_OR_OPEN_FLOOD_BLOCKED",
+      actionCode: "REJECT_DCEP_DATA_CHANNEL_OPEN_ON_DTLS_ROLE_PARITY_VIOLATION_OR_ACTIVE_STREAM_COLLISION",
+      policyCode,
+    };
+  }
+
+  const maxMessageSizeCap = Math.min(input.negotiatedSdpMaxMessageSizeBytes, 65536);
+
+  if (
+    input.cumulativeSctpMessagePayloadBytes > maxMessageSizeCap ||
+    input.unboundedFragmentReassemblyQueueDetected
+  ) {
+    return {
+      allowed: false,
+      sctpVerificationTagMismatchOrDtlsUnboundChunkDropped: false,
+      dcepStreamIdParityCollisionOrOpenFloodRejected: false,
+      sctpMaxMessageSizeOrFragmentReassemblyBombBlocked: true,
+      reason: "RFC8841_RFC8831_SCTP_MAX_MESSAGE_SIZE_EXCEEDED_OR_FRAGMENT_REASSEMBLY_BOMB_BLOCKED",
+      actionCode: "ABORT_SCTP_STREAM_REASSEMBLY_AND_ENFORCE_SDP_MAX_MESSAGE_SIZE_CAP",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    sctpVerificationTagMismatchOrDtlsUnboundChunkDropped: false,
+    dcepStreamIdParityCollisionOrOpenFloodRejected: false,
+    sctpMaxMessageSizeOrFragmentReassemblyBombBlocked: false,
+    reason: "WEBRTC_SCTP_DATACHANNEL_RFC8831_RFC8832_RFC4960_VTAG_DCEP_PARITY_AND_MESSAGE_SIZE_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_WEBRTC_SCTP_DATACHANNEL_FRAME",
+    policyCode,
+  };
+}
