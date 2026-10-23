@@ -14517,6 +14517,221 @@ export function evaluateWebrtcSctpRfc8831Rfc8832DcepChannelOpenSpoofPpidConfusio
   };
 }
 
+/**
+ * P161: Pulp, Paper & Chemical Recovery Mill Control (TAPPI TIP 0402-22 / BLRBAC / NFPA 85
+ * Black Liquor Recovery Boiler Smelt-Water Explosion Emergency Shutdown Procedure ESP Rapid Drain &
+ * >=58% Minimum Firing Solids Lock / OSHA 29 CFR 1910.261 Kraft Batch Digester Zero-Pressure
+ * Blow-Valve & Bleach-Plant ClO2/H2S Scrubber Interlock / High-Speed Paper Machine Yankee Dryer
+ * Steam & Calender/Reel In-Running Nip Mechanical LOTO Guard).
+ */
+export interface PulpPaperChemicalRecoveryTappiBlrbacWaterSmeltEspOsha1910261Clo2H2sAndYankeeDryerNipLotoGuardInput {
+  millAssetId: string;
+  recoveryBoilerTubeLeakOrWaterSmeltRiskDetected: boolean;
+  attemptBlackLiquorGunFiring: boolean;
+  blackLiquorSolidsAboveMinimumSafeFiringThreshold: boolean;
+  clo2OrH2sBleachDigesterGasExcursionOrScrubberOffline: boolean;
+  attemptDigesterBlowOrCappingValveOpen: boolean;
+  digesterZeroPressureAndBlowTankClearanceVerified: boolean;
+  operatorEnteringPaperMachineCalenderOrDryerNipZone: boolean;
+  calenderNipGuardLockedAndYankeeDryerLotoVerified: boolean;
+}
+
+export interface PulpPaperChemicalRecoveryTappiBlrbacWaterSmeltEspOsha1910261Clo2H2sAndYankeeDryerNipLotoGuardResult {
+  allowed: boolean;
+  blrbacEspRapidDrainTrippedOrLowSolidsLiquorBlocked: boolean;
+  digesterBlowValveOrClo2H2sBleachHeaderLocked: boolean;
+  paperMachineCalenderNipAndYankeeDryerLocked: boolean;
+  reason: string;
+  actionCode:
+    | "TRIGGER_BLRBAC_ESP_RAPID_DRAIN_AND_BLOCK_LOW_SOLIDS_BLACK_LIQUOR_FIRING"
+    | "LOCK_DIGESTER_BLOW_CAPPING_VALVE_AND_ISOLATE_CLO2_NCG_BLEACH_HEADER"
+    | "ENGAGE_CALENDER_REEL_NIP_MECHANICAL_LOCKS_AND_VERIFY_YANKEE_DRYER_LOTO"
+    | "ALLOW_VERIFIED_PULP_PAPER_CHEMICAL_RECOVERY_OPERATION";
+  policyCode: "P161-PULP-PAPER-CHEMICAL-RECOVERY-TAPPI-TIP-0402-NFPA-85-BLACK-LIQUOR-RECOVERY-BOILER-WATER-SMELT-ESP-RAPID-DRAIN-OSHA-1910-261-CLO2-H2S-BLEACH-PLANT-INTERLOCK-AND-YANKEE-DRYER-NIP-LOTO-GUARD";
+}
+
+export function evaluatePulpPaperChemicalRecoveryTappiBlrbacWaterSmeltEspOsha1910261Clo2H2sAndYankeeDryerNipLotoGuard(
+  input: PulpPaperChemicalRecoveryTappiBlrbacWaterSmeltEspOsha1910261Clo2H2sAndYankeeDryerNipLotoGuardInput
+): PulpPaperChemicalRecoveryTappiBlrbacWaterSmeltEspOsha1910261Clo2H2sAndYankeeDryerNipLotoGuardResult {
+  // 1. BLRBAC / TAPPI TIP 0402-22 / NFPA 85: Black Liquor Recovery Boiler (BLRB) water-smelt explosion ESP Rapid Drain or low dry-solids (<58%) liquor firing block
+  if (
+    input.recoveryBoilerTubeLeakOrWaterSmeltRiskDetected ||
+    (input.attemptBlackLiquorGunFiring &&
+      !input.blackLiquorSolidsAboveMinimumSafeFiringThreshold)
+  ) {
+    return {
+      allowed: false,
+      blrbacEspRapidDrainTrippedOrLowSolidsLiquorBlocked: true,
+      digesterBlowValveOrClo2H2sBleachHeaderLocked: false,
+      paperMachineCalenderNipAndYankeeDryerLocked: false,
+      reason:
+        "BLRBAC_NFPA85_RECOVERY_BOILER_WATER_SMELT_EXPLOSION_ESP_PREEMPTION_OR_LOW_SOLIDS_FIRING_BLOCKED",
+      actionCode:
+        "TRIGGER_BLRBAC_ESP_RAPID_DRAIN_AND_BLOCK_LOW_SOLIDS_BLACK_LIQUOR_FIRING",
+      policyCode:
+        "P161-PULP-PAPER-CHEMICAL-RECOVERY-TAPPI-TIP-0402-NFPA-85-BLACK-LIQUOR-RECOVERY-BOILER-WATER-SMELT-ESP-RAPID-DRAIN-OSHA-1910-261-CLO2-H2S-BLEACH-PLANT-INTERLOCK-AND-YANKEE-DRYER-NIP-LOTO-GUARD",
+    };
+  }
+
+  // 2. OSHA 29 CFR 1910.261(g)/(h): Bleach plant ClO2 / Digester H2S NCG gas excursion or pressurized Kraft digester blow/capping valve opening
+  if (
+    input.clo2OrH2sBleachDigesterGasExcursionOrScrubberOffline ||
+    (input.attemptDigesterBlowOrCappingValveOpen &&
+      !input.digesterZeroPressureAndBlowTankClearanceVerified)
+  ) {
+    return {
+      allowed: false,
+      blrbacEspRapidDrainTrippedOrLowSolidsLiquorBlocked: false,
+      digesterBlowValveOrClo2H2sBleachHeaderLocked: true,
+      paperMachineCalenderNipAndYankeeDryerLocked: false,
+      reason:
+        "OSHA_1910_261_CLO2_H2S_GAS_EXCURSION_OR_PRESSURIZED_DIGESTER_BLOW_VALVE_BLOCKED",
+      actionCode:
+        "LOCK_DIGESTER_BLOW_CAPPING_VALVE_AND_ISOLATE_CLO2_NCG_BLEACH_HEADER",
+      policyCode:
+        "P161-PULP-PAPER-CHEMICAL-RECOVERY-TAPPI-TIP-0402-NFPA-85-BLACK-LIQUOR-RECOVERY-BOILER-WATER-SMELT-ESP-RAPID-DRAIN-OSHA-1910-261-CLO2-H2S-BLEACH-PLANT-INTERLOCK-AND-YANKEE-DRYER-NIP-LOTO-GUARD",
+    };
+  }
+
+  // 3. OSHA 29 CFR 1910.261(k): High-speed paper machine Yankee dryer steam-pressure & calender/reel in-running nip mechanical LOTO
+  if (
+    input.operatorEnteringPaperMachineCalenderOrDryerNipZone &&
+    !input.calenderNipGuardLockedAndYankeeDryerLotoVerified
+  ) {
+    return {
+      allowed: false,
+      blrbacEspRapidDrainTrippedOrLowSolidsLiquorBlocked: false,
+      digesterBlowValveOrClo2H2sBleachHeaderLocked: false,
+      paperMachineCalenderNipAndYankeeDryerLocked: true,
+      reason:
+        "OSHA_1910_261_PAPER_MACHINE_CALENDER_IN_RUNNING_NIP_OR_YANKEE_DRYER_STEAM_LOTO_MISSING",
+      actionCode:
+        "ENGAGE_CALENDER_REEL_NIP_MECHANICAL_LOCKS_AND_VERIFY_YANKEE_DRYER_LOTO",
+      policyCode:
+        "P161-PULP-PAPER-CHEMICAL-RECOVERY-TAPPI-TIP-0402-NFPA-85-BLACK-LIQUOR-RECOVERY-BOILER-WATER-SMELT-ESP-RAPID-DRAIN-OSHA-1910-261-CLO2-H2S-BLEACH-PLANT-INTERLOCK-AND-YANKEE-DRYER-NIP-LOTO-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    blrbacEspRapidDrainTrippedOrLowSolidsLiquorBlocked: false,
+    digesterBlowValveOrClo2H2sBleachHeaderLocked: false,
+    paperMachineCalenderNipAndYankeeDryerLocked: false,
+    reason:
+      "PULP_PAPER_BLRBAC_NFPA85_OSHA_1910_261_RECOVERY_AND_MACHINE_SAFETY_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_PULP_PAPER_CHEMICAL_RECOVERY_OPERATION",
+    policyCode:
+      "P161-PULP-PAPER-CHEMICAL-RECOVERY-TAPPI-TIP-0402-NFPA-85-BLACK-LIQUOR-RECOVERY-BOILER-WATER-SMELT-ESP-RAPID-DRAIN-OSHA-1910-261-CLO2-H2S-BLEACH-PLANT-INTERLOCK-AND-YANKEE-DRYER-NIP-LOTO-GUARD",
+  };
+}
+
+/**
+ * P162: SIP RFC 3326 / RFC 6432 Reason Header Q.850 Cause-Code Spoofing & CDR/Dialer
+ * Poisoning Sanitization, RFC 3329 Security Mechanism Agreement (Sec-Agree: Security-Client /
+ * Security-Server / Security-Verify) Downgrade Defense (SIP 494), and RFC 3261 § 20.32
+ * Unrecognized Require/Proxy-Require Option-Tag SIP 420 Bad Extension Loop Guard.
+ */
+export interface SipRfc3326ReasonHeaderQ850CauseSpoofingRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopGuardInput {
+  sipDialogOrTrunkId: string;
+  rfc3329SecurityVerifyMatchesNegotiatedServerPolicy: boolean;
+  secAgreeProposedMechanismDowngradedToNullOrPlaintext: boolean;
+  reasonHeaderPresentOnInboundOrResponseMessage: boolean;
+  trunkTrustedForRfc3326Q850CausePassThrough: boolean;
+  q850CauseContradictsSipResponseCodeClass: boolean;
+  unrecognizedRequireOrProxyRequireOptionTagPresent: boolean;
+  badExtension420RetryCount: number;
+  maxAllowedBadExtension420Retries: number;
+}
+
+export interface SipRfc3326ReasonHeaderQ850CauseSpoofingRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopGuardResult {
+  allowed: boolean;
+  rfc3329SecAgreeDowngradeOrMismatchRejected494: boolean;
+  untrustedRfc3326Q850ReasonHeaderStripped: boolean;
+  unsupportedRequireOptionTagRejected420OrHalted: boolean;
+  reason: string;
+  actionCode:
+    | "REJECT_SIP_494_SECURITY_AGREEMENT_REQUIRED_ON_RFC3329_TAMPER_OR_DOWNGRADE"
+    | "STRIP_UNTRUSTED_RFC3326_REASON_HEADER_AND_MAP_AUTHORITATIVE_LOCAL_Q850_CAUSE"
+    | "REJECT_SIP_420_BAD_EXTENSION_AND_HALT_UNSUPPORTED_OPTION_TAG_RETRY_LOOP"
+    | "ALLOW_VERIFIED_RFC3326_RFC3329_SIP_SIGNALING_TRANSACTION";
+  policyCode: "P162-SIP-RFC3326-REASON-HEADER-Q850-CAUSE-SPOOFING-RFC3329-SEC-AGREE-DOWNGRADE-AND-SIP-420-BAD-EXTENSION-LOOP-GUARD";
+}
+
+export function evaluateSipRfc3326ReasonHeaderQ850CauseSpoofingRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopGuard(
+  input: SipRfc3326ReasonHeaderQ850CauseSpoofingRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopGuardInput
+): SipRfc3326ReasonHeaderQ850CauseSpoofingRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopGuardResult {
+  // 1. RFC 3329: SIP Security Mechanism Agreement (Sec-Agree) Security-Verify mismatch or downgrade to null/plaintext
+  if (
+    !input.rfc3329SecurityVerifyMatchesNegotiatedServerPolicy ||
+    input.secAgreeProposedMechanismDowngradedToNullOrPlaintext
+  ) {
+    return {
+      allowed: false,
+      rfc3329SecAgreeDowngradeOrMismatchRejected494: true,
+      untrustedRfc3326Q850ReasonHeaderStripped: false,
+      unsupportedRequireOptionTagRejected420OrHalted: false,
+      reason:
+        "RFC3329_SEC_AGREE_SECURITY_VERIFY_MISMATCH_OR_PLAINTEXT_DOWNGRADE_REJECTED_494",
+      actionCode:
+        "REJECT_SIP_494_SECURITY_AGREEMENT_REQUIRED_ON_RFC3329_TAMPER_OR_DOWNGRADE",
+      policyCode:
+        "P162-SIP-RFC3326-REASON-HEADER-Q850-CAUSE-SPOOFING-RFC3329-SEC-AGREE-DOWNGRADE-AND-SIP-420-BAD-EXTENSION-LOOP-GUARD",
+    };
+  }
+
+  // 2. RFC 3326 / RFC 6432: Untrusted or contradictory Reason: Q.850;cause=... header spoofing
+  if (
+    input.reasonHeaderPresentOnInboundOrResponseMessage &&
+    (!input.trunkTrustedForRfc3326Q850CausePassThrough ||
+      input.q850CauseContradictsSipResponseCodeClass)
+  ) {
+    return {
+      allowed: false,
+      rfc3329SecAgreeDowngradeOrMismatchRejected494: false,
+      untrustedRfc3326Q850ReasonHeaderStripped: true,
+      unsupportedRequireOptionTagRejected420OrHalted: false,
+      reason:
+        "RFC3326_RFC6432_UNTRUSTED_OR_CONTRADICTORY_Q850_REASON_HEADER_SPOOFING_STRIPPED",
+      actionCode:
+        "STRIP_UNTRUSTED_RFC3326_REASON_HEADER_AND_MAP_AUTHORITATIVE_LOCAL_Q850_CAUSE",
+      policyCode:
+        "P162-SIP-RFC3326-REASON-HEADER-Q850-CAUSE-SPOOFING-RFC3329-SEC-AGREE-DOWNGRADE-AND-SIP-420-BAD-EXTENSION-LOOP-GUARD",
+    };
+  }
+
+  // 3. RFC 3261 Section 20.32: Unrecognized Require / Proxy-Require option-tag or SIP 420 Bad Extension retransmission storm
+  if (
+    input.unrecognizedRequireOrProxyRequireOptionTagPresent ||
+    input.badExtension420RetryCount > input.maxAllowedBadExtension420Retries
+  ) {
+    return {
+      allowed: false,
+      rfc3329SecAgreeDowngradeOrMismatchRejected494: false,
+      untrustedRfc3326Q850ReasonHeaderStripped: false,
+      unsupportedRequireOptionTagRejected420OrHalted: true,
+      reason:
+        "RFC3261_UNSUPPORTED_REQUIRE_OPTION_TAG_OR_420_BAD_EXTENSION_RETRY_LOOP_BLOCKED",
+      actionCode:
+        "REJECT_SIP_420_BAD_EXTENSION_AND_HALT_UNSUPPORTED_OPTION_TAG_RETRY_LOOP",
+      policyCode:
+        "P162-SIP-RFC3326-REASON-HEADER-Q850-CAUSE-SPOOFING-RFC3329-SEC-AGREE-DOWNGRADE-AND-SIP-420-BAD-EXTENSION-LOOP-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc3329SecAgreeDowngradeOrMismatchRejected494: false,
+    untrustedRfc3326Q850ReasonHeaderStripped: false,
+    unsupportedRequireOptionTagRejected420OrHalted: false,
+    reason:
+      "SIP_RFC3326_Q850_REASON_RFC3329_SEC_AGREE_AND_OPTION_TAGS_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_RFC3326_RFC3329_SIP_SIGNALING_TRANSACTION",
+    policyCode:
+      "P162-SIP-RFC3326-REASON-HEADER-Q850-CAUSE-SPOOFING-RFC3329-SEC-AGREE-DOWNGRADE-AND-SIP-420-BAD-EXTENSION-LOOP-GUARD",
+  };
+}
+
+
 
 
 
