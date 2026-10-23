@@ -15865,6 +15865,238 @@ export function evaluateWebrtcSdpRfc8839Rfc8445Rfc3264IceCredentialEntropyMutual
   };
 }
 
+// ============================================================================
+// Stage 90 — Primary Aluminum Hall-Héroult Potline & Copper Flash Smelter (P173) & SIP RFC 3261 / RFC 4028 / RFC 6141 Mid-Dialog Re-INVITE Glare & Session-Expires Guard (P174)
+// ============================================================================
+
+export interface CopperAluminumSmelterNfpa86HallHeroultPotlineAnodeEffectArcFlashMoltenMatteWaterExplosionAndBusbarLotoGuardInput {
+  matteFurnaceCoolingWaterLeakDeltaLpm: number;
+  maxSafeCoolingWaterLeakDeltaLpm: number;
+  crucibleOrLaunderMoistureDetected: boolean;
+  voiceCommandRequestsCrucibleTappingOrMatteTransfer: boolean;
+  potCellVoltageVolts: number;
+  anodeEffectThresholdVolts: number;
+  potlineDcCurrentKa: number;
+  potShortingSwitchClosedAndVerified: boolean;
+  voiceCommandRequestsAnodeChangeOrBusbarDisconnection: boolean;
+  personnelInPotroomBasementOrConverterOffGasFlue: boolean;
+  hfAndSo2GasBelowTwaVerified: boolean;
+  craneAndCrustBreakerLotoVerified: boolean;
+  voiceCommandRequestsCrustBreakerOrConverterRollIn: boolean;
+}
+
+export interface CopperAluminumSmelterNfpa86HallHeroultPotlineAnodeEffectArcFlashMoltenMatteWaterExplosionAndBusbarLotoGuardAssessment {
+  allowed: boolean;
+  preempted: boolean;
+  moltenMatteOrCryoliteWaterExplosionPreempted: boolean;
+  potlineAnodeEffectOrSeriesDcArcFlashInterlocked: boolean;
+  potroomBasementHfSo2OrCrustBreakerLotoLocked: boolean;
+  reason:
+    | "NFPA86_ALUMINUM_ASSOCIATION_CRUCIBLE_MOISTURE_OR_MATTE_COOLING_WATER_LEAK_STEAM_EXPLOSION_0MS_ABORT"
+    | "OSHA_1910_269_HALL_HEROULT_POTLINE_HIGH_VOLTAGE_ANODE_EFFECT_OR_UNSHORTED_600KA_DC_BUSBAR_ARC_FLASH_INTERLOCK"
+    | "OSHA_1910_146_1910_147_POTROOM_BASEMENT_HF_SO2_OFFGAS_OR_CRUST_BREAKER_CONVERTER_UNVERIFIED_LOTO_BLOCKED"
+    | "ALUMINUM_COPPER_SMELTER_NFPA86_POTLINE_ANODE_EFFECT_MATTE_TAPPING_AND_LOTO_SAFETY_VERIFIED";
+  actionCode:
+    | "ABORT_CRUCIBLE_TAPPING_ISOLATE_COOLING_WATER_LEAK_AND_LOCK_MOLTEN_METAL_TRANSFER"
+    | "INTERLOCK_ANODE_BRIDGE_AND_BUSBAR_DISCONNECT_UNTIL_ANODE_EFFECT_QUENCHED_AND_SHORTING_SWITCH_CLOSED"
+    | "LOCK_CRUST_BREAKER_AND_CONVERTER_DRIVE_UNTIL_DC_BUS_ISOLATION_GAS_CLEARANCE_AND_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_SMELTER_POTLINE_AND_CONVERTER_OPERATION";
+  policyCode: "P173-COPPER-ALUMINUM-SMELTER-NFPA-86-HALL-HEROULT-POTLINE-ANODE-EFFECT-ARC-FLASH-CRUCIBLE-TAPPING-MOLTEN-MATTE-WATER-EXPLOSION-AND-POT-SHELL-BUSBAR-ISOLATION-LOTO-GUARD";
+}
+
+export function evaluateCopperAluminumSmelterNfpa86HallHeroultPotlineAnodeEffectArcFlashMoltenMatteWaterExplosionAndBusbarLotoGuard(
+  input: CopperAluminumSmelterNfpa86HallHeroultPotlineAnodeEffectArcFlashMoltenMatteWaterExplosionAndBusbarLotoGuardInput
+): CopperAluminumSmelterNfpa86HallHeroultPotlineAnodeEffectArcFlashMoltenMatteWaterExplosionAndBusbarLotoGuardAssessment {
+  // 1. NFPA 86 / Aluminum Association Molten Metal Guidelines:
+  // 960°C molten aluminum/cryolite or 1,250°C copper matte water-leak / damp crucible contact causes 1,600x steam expansion explosion
+  if (
+    (input.matteFurnaceCoolingWaterLeakDeltaLpm >=
+      input.maxSafeCoolingWaterLeakDeltaLpm ||
+      input.crucibleOrLaunderMoistureDetected) &&
+    input.voiceCommandRequestsCrucibleTappingOrMatteTransfer
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      moltenMatteOrCryoliteWaterExplosionPreempted: true,
+      potlineAnodeEffectOrSeriesDcArcFlashInterlocked: false,
+      potroomBasementHfSo2OrCrustBreakerLotoLocked: false,
+      reason:
+        "NFPA86_ALUMINUM_ASSOCIATION_CRUCIBLE_MOISTURE_OR_MATTE_COOLING_WATER_LEAK_STEAM_EXPLOSION_0MS_ABORT",
+      actionCode:
+        "ABORT_CRUCIBLE_TAPPING_ISOLATE_COOLING_WATER_LEAK_AND_LOCK_MOLTEN_METAL_TRANSFER",
+      policyCode:
+        "P173-COPPER-ALUMINUM-SMELTER-NFPA-86-HALL-HEROULT-POTLINE-ANODE-EFFECT-ARC-FLASH-CRUCIBLE-TAPPING-MOLTEN-MATTE-WATER-EXPLOSION-AND-POT-SHELL-BUSBAR-ISOLATION-LOTO-GUARD",
+    };
+  }
+
+  // 2. OSHA 1910.269 Hall-Héroult Reduction Cell Anode Effect (>8V-50V PFC CF4/C2F6 surge) or 150kA-600kA Series DC Busbar Open-Circuit Arc Flash
+  if (
+    input.voiceCommandRequestsAnodeChangeOrBusbarDisconnection &&
+    (input.potCellVoltageVolts >= input.anodeEffectThresholdVolts ||
+      (input.potlineDcCurrentKa >= 50 && !input.potShortingSwitchClosedAndVerified))
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      moltenMatteOrCryoliteWaterExplosionPreempted: false,
+      potlineAnodeEffectOrSeriesDcArcFlashInterlocked: true,
+      potroomBasementHfSo2OrCrustBreakerLotoLocked: false,
+      reason:
+        "OSHA_1910_269_HALL_HEROULT_POTLINE_HIGH_VOLTAGE_ANODE_EFFECT_OR_UNSHORTED_600KA_DC_BUSBAR_ARC_FLASH_INTERLOCK",
+      actionCode:
+        "INTERLOCK_ANODE_BRIDGE_AND_BUSBAR_DISCONNECT_UNTIL_ANODE_EFFECT_QUENCHED_AND_SHORTING_SWITCH_CLOSED",
+      policyCode:
+        "P173-COPPER-ALUMINUM-SMELTER-NFPA-86-HALL-HEROULT-POTLINE-ANODE-EFFECT-ARC-FLASH-CRUCIBLE-TAPPING-MOLTEN-MATTE-WATER-EXPLOSION-AND-POT-SHELL-BUSBAR-ISOLATION-LOTO-GUARD",
+    };
+  }
+
+  // 3. OSHA 1910.146 / 1910.147 Potroom Basement High-Magnetic-Field / HF & Peirce-Smith Converter SO2 Off-Gas Flue LOTO
+  if (
+    input.personnelInPotroomBasementOrConverterOffGasFlue &&
+    input.voiceCommandRequestsCrustBreakerOrConverterRollIn &&
+    (!input.hfAndSo2GasBelowTwaVerified || !input.craneAndCrustBreakerLotoVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      moltenMatteOrCryoliteWaterExplosionPreempted: false,
+      potlineAnodeEffectOrSeriesDcArcFlashInterlocked: false,
+      potroomBasementHfSo2OrCrustBreakerLotoLocked: true,
+      reason:
+        "OSHA_1910_146_1910_147_POTROOM_BASEMENT_HF_SO2_OFFGAS_OR_CRUST_BREAKER_CONVERTER_UNVERIFIED_LOTO_BLOCKED",
+      actionCode:
+        "LOCK_CRUST_BREAKER_AND_CONVERTER_DRIVE_UNTIL_DC_BUS_ISOLATION_GAS_CLEARANCE_AND_LOTO_VERIFIED",
+      policyCode:
+        "P173-COPPER-ALUMINUM-SMELTER-NFPA-86-HALL-HEROULT-POTLINE-ANODE-EFFECT-ARC-FLASH-CRUCIBLE-TAPPING-MOLTEN-MATTE-WATER-EXPLOSION-AND-POT-SHELL-BUSBAR-ISOLATION-LOTO-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    moltenMatteOrCryoliteWaterExplosionPreempted: false,
+    potlineAnodeEffectOrSeriesDcArcFlashInterlocked: false,
+    potroomBasementHfSo2OrCrustBreakerLotoLocked: false,
+    reason:
+      "ALUMINUM_COPPER_SMELTER_NFPA86_POTLINE_ANODE_EFFECT_MATTE_TAPPING_AND_LOTO_SAFETY_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SMELTER_POTLINE_AND_CONVERTER_OPERATION",
+    policyCode:
+      "P173-COPPER-ALUMINUM-SMELTER-NFPA-86-HALL-HEROULT-POTLINE-ANODE-EFFECT-ARC-FLASH-CRUCIBLE-TAPPING-MOLTEN-MATTE-WATER-EXPLOSION-AND-POT-SHELL-BUSBAR-ISOLATION-LOTO-GUARD",
+  };
+}
+
+export interface SipRfc3261Rfc4028Rfc6141ReInviteGlare491BackoffSessionExpiresMinSeDowngradeAndTargetRefreshHijackGuardInput {
+  concurrentOutgoingAndIncomingReInviteGlare: boolean;
+  reInviteGlareRetryBackoffMs: number;
+  minRequiredGlareBackoffMs: number;
+  reInviteGlareRetriesInWindow: number;
+  maxAllowedGlareRetriesInWindow: number;
+  sessionExpiresSeconds: number;
+  localMinSeFloorSeconds: number;
+  sessionTimerMutatedWithoutValidRefresher: boolean;
+  reInviteOrUpdateFailedWithNon2xx: boolean;
+  preReInviteSdpAndTargetStateRolledBack: boolean;
+  midDialogContactTargetChangedToUntrustedDomain: boolean;
+}
+
+export interface SipRfc3261Rfc4028Rfc6141ReInviteGlare491BackoffSessionExpiresMinSeDowngradeAndTargetRefreshHijackGuardAssessment {
+  allowed: boolean;
+  reInviteGlare491RetryStormThrottled: boolean;
+  rfc4028SessionExpiresBelowMinSeRejected422: boolean;
+  rfc6141RollbackOrUntrustedTargetRefreshBlocked: boolean;
+  reason:
+    | "RFC3261_SECTION_14_1_REINVITE_GLARE_491_ZERO_BACKOFF_RETRY_STORM_BLOCKED"
+    | "RFC4028_SESSION_EXPIRES_BELOW_90S_OR_MIN_SE_FLOOR_TIMER_STARVATION_422_REJECTED"
+    | "RFC6141_FAILED_REINVITE_UNCOMMITTED_SDP_LEAK_OR_UNTRUSTED_CONTACT_TARGET_REFRESH_HIJACK_BLOCKED"
+    | "SIP_RFC3261_RFC4028_RFC6141_REINVITE_GLARE_SESSION_TIMER_AND_TARGET_REFRESH_VERIFIED";
+  actionCode:
+    | "REJECT_SIP_491_REQUEST_PENDING_ENFORCE_RFC3261_GLARE_TIMER_AND_THROTTLE_RETRY_STORM"
+    | "REJECT_SIP_422_SESSION_INTERVAL_TOO_SMALL_AND_ENFORCE_RFC4028_MIN_SE_FLOOR"
+    | "ENFORCE_RFC6141_ATOMIC_SDP_ROLLBACK_AND_BLOCK_UNTRUSTED_CONTACT_TARGET_REFRESH"
+    | "ALLOW_VERIFIED_SIP_MID_DIALOG_REINVITE_AND_SESSION_TIMER_REFRESH";
+  policyCode: "P174-SIP-RFC3261-RFC4028-RFC6141-REINVITE-GLARE-491-BACKOFF-SESSION-EXPIRES-MIN-SE-DOWNGRADE-AND-UNCOMMITTED-SDP-TARGET-REFRESH-HIJACK-GUARD";
+}
+
+export function evaluateSipRfc3261Rfc4028Rfc6141ReInviteGlare491BackoffSessionExpiresMinSeDowngradeAndTargetRefreshHijackGuard(
+  input: SipRfc3261Rfc4028Rfc6141ReInviteGlare491BackoffSessionExpiresMinSeDowngradeAndTargetRefreshHijackGuardInput
+): SipRfc3261Rfc4028Rfc6141ReInviteGlare491BackoffSessionExpiresMinSeDowngradeAndTargetRefreshHijackGuardAssessment {
+  // 1. RFC 3261 Section 14.1 Re-INVITE Glare (SIP 491 Request Pending) zero-backoff retry storm
+  if (
+    input.concurrentOutgoingAndIncomingReInviteGlare &&
+    (input.reInviteGlareRetryBackoffMs < input.minRequiredGlareBackoffMs ||
+      input.reInviteGlareRetriesInWindow > input.maxAllowedGlareRetriesInWindow)
+  ) {
+    return {
+      allowed: false,
+      reInviteGlare491RetryStormThrottled: true,
+      rfc4028SessionExpiresBelowMinSeRejected422: false,
+      rfc6141RollbackOrUntrustedTargetRefreshBlocked: false,
+      reason:
+        "RFC3261_SECTION_14_1_REINVITE_GLARE_491_ZERO_BACKOFF_RETRY_STORM_BLOCKED",
+      actionCode:
+        "REJECT_SIP_491_REQUEST_PENDING_ENFORCE_RFC3261_GLARE_TIMER_AND_THROTTLE_RETRY_STORM",
+      policyCode:
+        "P174-SIP-RFC3261-RFC4028-RFC6141-REINVITE-GLARE-491-BACKOFF-SESSION-EXPIRES-MIN-SE-DOWNGRADE-AND-UNCOMMITTED-SDP-TARGET-REFRESH-HIJACK-GUARD",
+    };
+  }
+
+  // 2. RFC 4028 Section 6: Session-Expires below 90s absolute minimum or below local Min-SE floor (SIP 422 Session Interval Too Small)
+  if (
+    input.sessionTimerMutatedWithoutValidRefresher ||
+    (input.sessionExpiresSeconds > 0 &&
+      (input.sessionExpiresSeconds < 90 ||
+        input.sessionExpiresSeconds < input.localMinSeFloorSeconds))
+  ) {
+    return {
+      allowed: false,
+      reInviteGlare491RetryStormThrottled: false,
+      rfc4028SessionExpiresBelowMinSeRejected422: true,
+      rfc6141RollbackOrUntrustedTargetRefreshBlocked: false,
+      reason:
+        "RFC4028_SESSION_EXPIRES_BELOW_90S_OR_MIN_SE_FLOOR_TIMER_STARVATION_422_REJECTED",
+      actionCode:
+        "REJECT_SIP_422_SESSION_INTERVAL_TOO_SMALL_AND_ENFORCE_RFC4028_MIN_SE_FLOOR",
+      policyCode:
+        "P174-SIP-RFC3261-RFC4028-RFC6141-REINVITE-GLARE-491-BACKOFF-SESSION-EXPIRES-MIN-SE-DOWNGRADE-AND-UNCOMMITTED-SDP-TARGET-REFRESH-HIJACK-GUARD",
+    };
+  }
+
+  // 3. RFC 6141 Atomic State Rollback on Non-2xx Re-INVITE/UPDATE & Mid-Dialog Contact Target-Refresh Hijack Defense
+  if (
+    (input.reInviteOrUpdateFailedWithNon2xx &&
+      !input.preReInviteSdpAndTargetStateRolledBack) ||
+    input.midDialogContactTargetChangedToUntrustedDomain
+  ) {
+    return {
+      allowed: false,
+      reInviteGlare491RetryStormThrottled: false,
+      rfc4028SessionExpiresBelowMinSeRejected422: false,
+      rfc6141RollbackOrUntrustedTargetRefreshBlocked: true,
+      reason:
+        "RFC6141_FAILED_REINVITE_UNCOMMITTED_SDP_LEAK_OR_UNTRUSTED_CONTACT_TARGET_REFRESH_HIJACK_BLOCKED",
+      actionCode:
+        "ENFORCE_RFC6141_ATOMIC_SDP_ROLLBACK_AND_BLOCK_UNTRUSTED_CONTACT_TARGET_REFRESH",
+      policyCode:
+        "P174-SIP-RFC3261-RFC4028-RFC6141-REINVITE-GLARE-491-BACKOFF-SESSION-EXPIRES-MIN-SE-DOWNGRADE-AND-UNCOMMITTED-SDP-TARGET-REFRESH-HIJACK-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    reInviteGlare491RetryStormThrottled: false,
+    rfc4028SessionExpiresBelowMinSeRejected422: false,
+    rfc6141RollbackOrUntrustedTargetRefreshBlocked: false,
+    reason:
+      "SIP_RFC3261_RFC4028_RFC6141_REINVITE_GLARE_SESSION_TIMER_AND_TARGET_REFRESH_VERIFIED",
+    actionCode:
+      "ALLOW_VERIFIED_SIP_MID_DIALOG_REINVITE_AND_SESSION_TIMER_REFRESH",
+    policyCode:
+      "P174-SIP-RFC3261-RFC4028-RFC6141-REINVITE-GLARE-491-BACKOFF-SESSION-EXPIRES-MIN-SE-DOWNGRADE-AND-UNCOMMITTED-SDP-TARGET-REFRESH-HIJACK-GUARD",
+  };
+}
+
+
 
 
 
