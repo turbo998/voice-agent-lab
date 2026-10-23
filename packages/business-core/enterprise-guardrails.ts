@@ -13880,6 +13880,225 @@ export function evaluateSipRfc3840AutomataLoopRfc3325PaiTrustAndRfc7044HistoryIn
   };
 }
 
+/**
+ * P155: Hospital Operating Room (OR) & Hybrid Surgical Suite (WHO Surgical Safety Checklist /
+ * The Joint Commission Universal Protocol UP.01.01.01–UP.01.03.01 / AORN Guidelines / ASTM F2503
+ * MRI Safety) Pre-Incision "Time-Out" Wrong-Site/Wrong-Patient/Wrong-Procedure 0ms Hard Lock,
+ * Unreconciled Surgical Sponge/Sharps/Instrument Count (RFID/Barcode Gossypiboma / RSI Prevention)
+ * Wound-Closure Interlock & Intraoperative MRI (iMRI) Zone IV Ferromagnetic Projectile / Quench Guard.
+ */
+export interface SurgicalOrUniversalProtocolTimeoutSpongeCountAndMriZone4GuardInput {
+  orSuiteId: string;
+  surgicalCaseId: string;
+  whoJointCommissionTimeOutCompletedByFullTeam: boolean;
+  surgicalSiteLateralityAndImplantUdiVerified: boolean;
+  attemptSkinIncisionOrElectrosurgicalActivation: boolean;
+  spongeSharpsInstrumentClosingCountReconciled: boolean;
+  rfidWandScanOrIntraoperativeXrayCleared: boolean;
+  attemptFinalWoundClosureSignOutOrEhrClose: boolean;
+  intraoperativeMriZone4MagnetEnergized: boolean;
+  unscreenedFerromagneticObjectOrMrUnsafeImplantDetected: boolean;
+  voiceRequestsMriQuenchOrZone4DoorInterlockBypass: boolean;
+}
+
+export interface SurgicalOrUniversalProtocolTimeoutSpongeCountAndMriZone4GuardResult {
+  allowed: boolean;
+  incisionAndEnergyDevicesLocked: boolean;
+  woundClosureSignOutBlockedForCountDiscrepancy: boolean;
+  mriZone4AccessLockedOrQuenchBypassBlocked: boolean;
+  reason: string;
+  actionCode:
+    | "ALLOW_VERIFIED_SURGICAL_OR_WORKFLOW_STEP"
+    | "LOCK_INCISION_AND_ELECTROSURGICAL_ENERGY_UNTIL_JOINT_COMMISSION_TIMEOUT_VERIFIED"
+    | "HOLD_WOUND_CLOSURE_AND_MANDATE_RFID_XRAY_RECONCILIATION_FOR_RETAINED_SURGICAL_ITEM"
+    | "LOCK_IMRI_ZONE4_MAGNET_DOOR_AND_BLOCK_VOICE_QUENCH_OR_FERROMAGNETIC_ENTRY";
+  policyCode: "P155-SURGICAL-OR-JOINT-COMMISSION-UNIVERSAL-PROTOCOL-WHO-TIMEOUT-WRONG-SITE-LOCK-AORN-SPONGE-INSTRUMENT-COUNT-DISCREPANCY-AND-ASTM-F2503-MRI-ZONE4-FERROMAGNETIC-QUENCH-GUARD";
+}
+
+export function evaluateSurgicalOrUniversalProtocolTimeoutSpongeCountAndMriZone4Guard(
+  input: SurgicalOrUniversalProtocolTimeoutSpongeCountAndMriZone4GuardInput
+): SurgicalOrUniversalProtocolTimeoutSpongeCountAndMriZone4GuardResult {
+  // 1. ASTM F2503 / ACR MRI Safety Manual: Intraoperative MRI (iMRI) Zone IV ferromagnetic projectile or voice quench/interlock bypass -> 0ms hard lock
+  if (
+    input.intraoperativeMriZone4MagnetEnergized &&
+    (input.unscreenedFerromagneticObjectOrMrUnsafeImplantDetected ||
+      input.voiceRequestsMriQuenchOrZone4DoorInterlockBypass)
+  ) {
+    return {
+      allowed: false,
+      incisionAndEnergyDevicesLocked: true,
+      woundClosureSignOutBlockedForCountDiscrepancy: false,
+      mriZone4AccessLockedOrQuenchBypassBlocked: true,
+      reason:
+        "ASTM_F2503_ACR_IMRI_ZONE4_FERROMAGNETIC_PROJECTILE_OR_UNAUTHORIZED_VOICE_QUENCH_BLOCKED",
+      actionCode:
+        "LOCK_IMRI_ZONE4_MAGNET_DOOR_AND_BLOCK_VOICE_QUENCH_OR_FERROMAGNETIC_ENTRY",
+      policyCode:
+        "P155-SURGICAL-OR-JOINT-COMMISSION-UNIVERSAL-PROTOCOL-WHO-TIMEOUT-WRONG-SITE-LOCK-AORN-SPONGE-INSTRUMENT-COUNT-DISCREPANCY-AND-ASTM-F2503-MRI-ZONE4-FERROMAGNETIC-QUENCH-GUARD",
+    };
+  }
+
+  // 2. WHO Surgical Safety Checklist & The Joint Commission Universal Protocol (UP.01.01.01 - UP.01.03.01): Pre-incision Time-Out & laterality/UDI verification
+  if (
+    input.attemptSkinIncisionOrElectrosurgicalActivation &&
+    (!input.whoJointCommissionTimeOutCompletedByFullTeam ||
+      !input.surgicalSiteLateralityAndImplantUdiVerified)
+  ) {
+    return {
+      allowed: false,
+      incisionAndEnergyDevicesLocked: true,
+      woundClosureSignOutBlockedForCountDiscrepancy: false,
+      mriZone4AccessLockedOrQuenchBypassBlocked: false,
+      reason:
+        "JOINT_COMMISSION_UP010301_WHO_SURGICAL_TIMEOUT_OR_SITE_LATERALITY_UNVERIFIED_INCISION_BLOCKED",
+      actionCode:
+        "LOCK_INCISION_AND_ELECTROSURGICAL_ENERGY_UNTIL_JOINT_COMMISSION_TIMEOUT_VERIFIED",
+      policyCode:
+        "P155-SURGICAL-OR-JOINT-COMMISSION-UNIVERSAL-PROTOCOL-WHO-TIMEOUT-WRONG-SITE-LOCK-AORN-SPONGE-INSTRUMENT-COUNT-DISCREPANCY-AND-ASTM-F2503-MRI-ZONE4-FERROMAGNETIC-QUENCH-GUARD",
+    };
+  }
+
+  // 3. AORN Retained Surgical Items (RSI / Gossypiboma) Prevention: Closing sponge/sharps/instrument count discrepancy interlock
+  if (
+    input.attemptFinalWoundClosureSignOutOrEhrClose &&
+    !input.spongeSharpsInstrumentClosingCountReconciled &&
+    !input.rfidWandScanOrIntraoperativeXrayCleared
+  ) {
+    return {
+      allowed: false,
+      incisionAndEnergyDevicesLocked: false,
+      woundClosureSignOutBlockedForCountDiscrepancy: true,
+      mriZone4AccessLockedOrQuenchBypassBlocked: false,
+      reason:
+        "AORN_WHO_SIGN_OUT_UNRECONCILED_SPONGE_SHARPS_INSTRUMENT_COUNT_RETAINED_SURGICAL_ITEM_BLOCKED",
+      actionCode:
+        "HOLD_WOUND_CLOSURE_AND_MANDATE_RFID_XRAY_RECONCILIATION_FOR_RETAINED_SURGICAL_ITEM",
+      policyCode:
+        "P155-SURGICAL-OR-JOINT-COMMISSION-UNIVERSAL-PROTOCOL-WHO-TIMEOUT-WRONG-SITE-LOCK-AORN-SPONGE-INSTRUMENT-COUNT-DISCREPANCY-AND-ASTM-F2503-MRI-ZONE4-FERROMAGNETIC-QUENCH-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    incisionAndEnergyDevicesLocked: false,
+    woundClosureSignOutBlockedForCountDiscrepancy: false,
+    mriZone4AccessLockedOrQuenchBypassBlocked: false,
+    reason:
+      "SURGICAL_OR_UNIVERSAL_PROTOCOL_TIMEOUT_AORN_COUNT_AND_ASTM_F2503_MRI_ZONE4_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SURGICAL_OR_WORKFLOW_STEP",
+    policyCode:
+      "P155-SURGICAL-OR-JOINT-COMMISSION-UNIVERSAL-PROTOCOL-WHO-TIMEOUT-WRONG-SITE-LOCK-AORN-SPONGE-INSTRUMENT-COUNT-DISCREPANCY-AND-ASTM-F2503-MRI-ZONE4-FERROMAGNETIC-QUENCH-GUARD",
+  };
+}
+
+/**
+ * P156: WebRTC / RTP RFC 8851 (RTP Payload Format Restrictions) / RFC 8852 (RTP Stream
+ * Identifier Source Description / a=rid) / RFC 8853 (Simulcast in SDP / a=simulcast)
+ * Stream-ID Spoofing & Repaired-RTP-Stream-ID Cross-Layer Binding Hijack Guard,
+ * and RFC 5104 RTCP TMMBR / TMMBN Simulcast Layer Pause/Resume Amplification Flood Throttler.
+ */
+export interface WebrtcRtpRfc8851Rfc8852SimulcastRidAndRfc5104TmmbrGuardInput {
+  sessionId: string;
+  rtpPacketDeclaresRtpStreamIdExtension: boolean;
+  rtpStreamIdMatchesNegotiatedSdpRidSet: boolean;
+  rtpStreamIdValueLengthBytes: number;
+  isRtxOrFecRepairPacketWithRepairedRid: boolean;
+  repairedRtpStreamIdMatchesActiveSourceRidAndPtConstraint: boolean;
+  tmmbrPauseResumeRequestsIn1SecWindow: number;
+  maxAllowedTmmbrPauseResumePerSecond: number;
+  tmmbrRequestsSimultaneousZeroBitrateAcrossAllSimulcastLayers: boolean;
+}
+
+export interface WebrtcRtpRfc8851Rfc8852SimulcastRidAndRfc5104TmmbrGuardResult {
+  allowed: boolean;
+  ridExtensionPacketDropped: boolean;
+  repairedRidCrossLayerBindingRejected: boolean;
+  tmmbrPauseResumeThrottled: boolean;
+  reason: string;
+  actionCode:
+    | "FORWARD_VERIFIED_SIMULCAST_RID_AND_TMMBR_CONTROL"
+    | "DROP_UNNEGOTIATED_OR_MALFORMED_RFC8852_RTP_STREAM_ID_PACKET"
+    | "REJECT_RFC8852_REPAIRED_RID_CROSS_LAYER_OR_RFC8851_PT_MISMATCH"
+    | "THROTTLE_RFC5104_TMMBR_PAUSE_RESUME_STORM_AND_PRESERVE_BASE_SIMULCAST_LAYER";
+  policyCode: "P156-WEBRTC-RTP-RFC8851-RFC8852-SIMULCAST-RID-STREAM-ID-SPOOF-REPAIRED-RID-MISMATCH-AND-RFC5104-TMMBR-PAUSE-RESUME-FLOOD-GUARD";
+}
+
+export function evaluateWebrtcRtpRfc8851Rfc8852SimulcastRidAndRfc5104TmmbrGuard(
+  input: WebrtcRtpRfc8851Rfc8852SimulcastRidAndRfc5104TmmbrGuardInput
+): WebrtcRtpRfc8851Rfc8852SimulcastRidAndRfc5104TmmbrGuardResult {
+  // 1. RFC 8852 / RFC 8853: Unnegotiated or oversized (>255 bytes or empty) rtp-stream-id (a=rid) header extension
+  if (
+    input.rtpPacketDeclaresRtpStreamIdExtension &&
+    (!input.rtpStreamIdMatchesNegotiatedSdpRidSet ||
+      input.rtpStreamIdValueLengthBytes <= 0 ||
+      input.rtpStreamIdValueLengthBytes > 255)
+  ) {
+    return {
+      allowed: false,
+      ridExtensionPacketDropped: true,
+      repairedRidCrossLayerBindingRejected: false,
+      tmmbrPauseResumeThrottled: false,
+      reason:
+        "RFC8852_RFC8853_SIMULCAST_UNNEGOTIATED_OR_MALFORMED_RTP_STREAM_ID_RID_BLOCKED",
+      actionCode: "DROP_UNNEGOTIATED_OR_MALFORMED_RFC8852_RTP_STREAM_ID_PACKET",
+      policyCode:
+        "P156-WEBRTC-RTP-RFC8851-RFC8852-SIMULCAST-RID-STREAM-ID-SPOOF-REPAIRED-RID-MISMATCH-AND-RFC5104-TMMBR-PAUSE-RESUME-FLOOD-GUARD",
+    };
+  }
+
+  // 2. RFC 8851 / RFC 8852: RepairedRtpStreamId (repaired-rtp-stream-id) cross-layer binding hijack or a=rid pt= restriction mismatch
+  if (
+    input.isRtxOrFecRepairPacketWithRepairedRid &&
+    !input.repairedRtpStreamIdMatchesActiveSourceRidAndPtConstraint
+  ) {
+    return {
+      allowed: false,
+      ridExtensionPacketDropped: true,
+      repairedRidCrossLayerBindingRejected: true,
+      tmmbrPauseResumeThrottled: false,
+      reason:
+        "RFC8851_RFC8852_REPAIRED_RTP_STREAM_ID_CROSS_LAYER_HIJACK_OR_PT_RESTRICTION_MISMATCH_BLOCKED",
+      actionCode:
+        "REJECT_RFC8852_REPAIRED_RID_CROSS_LAYER_OR_RFC8851_PT_MISMATCH",
+      policyCode:
+        "P156-WEBRTC-RTP-RFC8851-RFC8852-SIMULCAST-RID-STREAM-ID-SPOOF-REPAIRED-RID-MISMATCH-AND-RFC5104-TMMBR-PAUSE-RESUME-FLOOD-GUARD",
+    };
+  }
+
+  // 3. RFC 5104 / RFC 7728: RTCP TMMBR / TMMBN simulcast pause/resume oscillation flood or total zero-bitrate blackout across all layers
+  if (
+    input.tmmbrPauseResumeRequestsIn1SecWindow >
+      input.maxAllowedTmmbrPauseResumePerSecond ||
+    input.tmmbrRequestsSimultaneousZeroBitrateAcrossAllSimulcastLayers
+  ) {
+    return {
+      allowed: false,
+      ridExtensionPacketDropped: false,
+      repairedRidCrossLayerBindingRejected: false,
+      tmmbrPauseResumeThrottled: true,
+      reason:
+        "RFC5104_RFC7728_RTCP_TMMBR_SIMULCAST_PAUSE_RESUME_FLOOD_OR_ALL_LAYER_ZERO_BITRATE_BLACKOUT_THROTTLED",
+      actionCode:
+        "THROTTLE_RFC5104_TMMBR_PAUSE_RESUME_STORM_AND_PRESERVE_BASE_SIMULCAST_LAYER",
+      policyCode:
+        "P156-WEBRTC-RTP-RFC8851-RFC8852-SIMULCAST-RID-STREAM-ID-SPOOF-REPAIRED-RID-MISMATCH-AND-RFC5104-TMMBR-PAUSE-RESUME-FLOOD-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    ridExtensionPacketDropped: false,
+    repairedRidCrossLayerBindingRejected: false,
+    tmmbrPauseResumeThrottled: false,
+    reason:
+      "WEBRTC_RFC8851_RFC8852_SIMULCAST_RID_AND_RFC5104_TMMBR_CONTROL_VERIFIED",
+    actionCode: "FORWARD_VERIFIED_SIMULCAST_RID_AND_TMMBR_CONTROL",
+    policyCode:
+      "P156-WEBRTC-RTP-RFC8851-RFC8852-SIMULCAST-RID-STREAM-ID-SPOOF-REPAIRED-RID-MISMATCH-AND-RFC5104-TMMBR-PAUSE-RESUME-FLOOD-GUARD",
+  };
+}
+
+
 
 
 
