@@ -14949,6 +14949,230 @@ export function evaluateWebrtcRtpRfc8285ExtmapAllowMixedOneTwoByteHeaderConfusio
   };
 }
 
+// ============================================================================
+// Stage 86 — P165 & P166 Deterministic Guardrails
+// ============================================================================
+
+export interface HydrogenElectrolyzerNfpa2SaeJ2601GuardInput {
+  hydrogenFacilityUnitId: string;
+  h2InO2OrO2InH2GasCrossoverAbove2PctLelDetected: boolean;
+  attemptElectrolyzerStackEnergization: boolean;
+  n2PurgeAndMembraneDifferentialPressureVerified: boolean;
+  attempt70MpaH70FastFillDispensing: boolean;
+  saeJ2601IrdaTankTelemetryLinkActive: boolean;
+  onboardTankTemperatureCelsius: number;
+  dispenserNozzlePressureMpa: number;
+  breakawayHoseAndGroundingVerified: boolean;
+  lh2CryogenicStorageVacuumLossOrBoilOffReliefActive: boolean;
+  attemptColdBoxMaintenanceOrVaporizerBypass: boolean;
+  o2EnrichmentLiquidAirHazardClearedAndCryoLotoVerified: boolean;
+}
+
+export interface HydrogenElectrolyzerNfpa2SaeJ2601GuardResult {
+  allowed: boolean;
+  electrolyzerCrossoverTripOrStackEnergizationAborted: boolean;
+  saeJ2601H70DispenserFastFillLocked: boolean;
+  lh2CryoColdBoxAndOxygenEnrichmentLocked: boolean;
+  reason:
+    | "NFPA2_ISO22734_ELECTROLYZER_H2_IN_O2_CROSSOVER_EXPLOSIVE_MIXTURE_OR_MISSING_N2_PURGE_PREEMPTION"
+    | "SAE_J2601_ISO19880_H70_DISPENSER_IR_TELEMETRY_LOSS_OVER_85C_OR_87_5MPA_OVERPRESSURE_BLOCKED"
+    | "NFPA2_CGA_G5_5_LH2_253C_VACUUM_LOSS_SOLID_AIR_OXYGEN_ENRICHMENT_OR_CRYO_LOTO_MISSING"
+    | "HYDROGEN_NFPA2_SAE_J2601_ISO19880_CROSSOVER_H70_DISPENSER_AND_LH2_SAFETY_VERIFIED";
+  actionCode:
+    | "TRIP_RECTIFIER_BREAKER_DEPRESSURIZE_STACK_TO_VENT_AND_INJECT_N2_PURGE"
+    | "CLOSE_H70_PRIORITY_BANK_VALVES_ABORT_DISPENSING_AND_LATCH_NOZZLE_INTERLOCK"
+    | "ISOLATE_LH2_TRANSFER_LINE_OPEN_VENT_STACK_HEATER_AND_ENFORCE_CRYO_LOTO"
+    | "ALLOW_VERIFIED_HYDROGEN_ELECTROLYZER_AND_H70_REFUELING_OPERATION";
+  policyCode: "P165-HYDROGEN-ELECTROLYZER-REFUELING-NFPA-2-SAE-J2601-ISO-19880-H2-IN-O2-CROSSOVER-LEL-TRIP-70MPA-DISPENSER-IR-TEMP-LOCK-AND-LH2-CRYO-BOILOFF-GUARD";
+}
+
+export function evaluateHydrogenElectrolyzerNfpa2SaeJ2601H2InO2CrossoverStackTrip70MpaIrDispenserAndLh2CryoGuard(
+  input: HydrogenElectrolyzerNfpa2SaeJ2601GuardInput
+): HydrogenElectrolyzerNfpa2SaeJ2601GuardResult {
+  // 1. NFPA 2 / ISO 22734: H2-in-O2 or O2-in-H2 gas crossover >= 2.0% (50% of 4% LEL) or stack energization without N2 purge & membrane delta-P check -> 0ms rectifier trip & N2 inerting
+  if (
+    input.h2InO2OrO2InH2GasCrossoverAbove2PctLelDetected ||
+    (input.attemptElectrolyzerStackEnergization &&
+      !input.n2PurgeAndMembraneDifferentialPressureVerified)
+  ) {
+    return {
+      allowed: false,
+      electrolyzerCrossoverTripOrStackEnergizationAborted: true,
+      saeJ2601H70DispenserFastFillLocked: false,
+      lh2CryoColdBoxAndOxygenEnrichmentLocked: false,
+      reason:
+        "NFPA2_ISO22734_ELECTROLYZER_H2_IN_O2_CROSSOVER_EXPLOSIVE_MIXTURE_OR_MISSING_N2_PURGE_PREEMPTION",
+      actionCode:
+        "TRIP_RECTIFIER_BREAKER_DEPRESSURIZE_STACK_TO_VENT_AND_INJECT_N2_PURGE",
+      policyCode:
+        "P165-HYDROGEN-ELECTROLYZER-REFUELING-NFPA-2-SAE-J2601-ISO-19880-H2-IN-O2-CROSSOVER-LEL-TRIP-70MPA-DISPENSER-IR-TEMP-LOCK-AND-LH2-CRYO-BOILOFF-GUARD",
+    };
+  }
+
+  // 2. SAE J2601 / ISO 19880-1: 70 MPa (H70) -40C fast-fill dispensing with lost IrDA telemetry, tank temp > 85C, nozzle pressure > 87.5 MPa (1.25x NWP), or unverified breakaway/grounding -> close priority bank valves
+  if (
+    input.attempt70MpaH70FastFillDispensing &&
+    (!input.saeJ2601IrdaTankTelemetryLinkActive ||
+      input.onboardTankTemperatureCelsius > 85 ||
+      input.dispenserNozzlePressureMpa > 87.5 ||
+      !input.breakawayHoseAndGroundingVerified)
+  ) {
+    return {
+      allowed: false,
+      electrolyzerCrossoverTripOrStackEnergizationAborted: false,
+      saeJ2601H70DispenserFastFillLocked: true,
+      lh2CryoColdBoxAndOxygenEnrichmentLocked: false,
+      reason:
+        "SAE_J2601_ISO19880_H70_DISPENSER_IR_TELEMETRY_LOSS_OVER_85C_OR_87_5MPA_OVERPRESSURE_BLOCKED",
+      actionCode:
+        "CLOSE_H70_PRIORITY_BANK_VALVES_ABORT_DISPENSING_AND_LATCH_NOZZLE_INTERLOCK",
+      policyCode:
+        "P165-HYDROGEN-ELECTROLYZER-REFUELING-NFPA-2-SAE-J2601-ISO-19880-H2-IN-O2-CROSSOVER-LEL-TRIP-70MPA-DISPENSER-IR-TEMP-LOCK-AND-LH2-CRYO-BOILOFF-GUARD",
+    };
+  }
+
+  // 3. NFPA 2 / CGA G-5.5: Cryogenic LH2 (-253C / 20K) vacuum loss / boil-off relief with solid-air oxygen enrichment risk during cold-box entry or vaporizer bypass without LOTO
+  if (
+    input.lh2CryogenicStorageVacuumLossOrBoilOffReliefActive &&
+    input.attemptColdBoxMaintenanceOrVaporizerBypass &&
+    !input.o2EnrichmentLiquidAirHazardClearedAndCryoLotoVerified
+  ) {
+    return {
+      allowed: false,
+      electrolyzerCrossoverTripOrStackEnergizationAborted: false,
+      saeJ2601H70DispenserFastFillLocked: false,
+      lh2CryoColdBoxAndOxygenEnrichmentLocked: true,
+      reason:
+        "NFPA2_CGA_G5_5_LH2_253C_VACUUM_LOSS_SOLID_AIR_OXYGEN_ENRICHMENT_OR_CRYO_LOTO_MISSING",
+      actionCode:
+        "ISOLATE_LH2_TRANSFER_LINE_OPEN_VENT_STACK_HEATER_AND_ENFORCE_CRYO_LOTO",
+      policyCode:
+        "P165-HYDROGEN-ELECTROLYZER-REFUELING-NFPA-2-SAE-J2601-ISO-19880-H2-IN-O2-CROSSOVER-LEL-TRIP-70MPA-DISPENSER-IR-TEMP-LOCK-AND-LH2-CRYO-BOILOFF-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    electrolyzerCrossoverTripOrStackEnergizationAborted: false,
+    saeJ2601H70DispenserFastFillLocked: false,
+    lh2CryoColdBoxAndOxygenEnrichmentLocked: false,
+    reason:
+      "HYDROGEN_NFPA2_SAE_J2601_ISO19880_CROSSOVER_H70_DISPENSER_AND_LH2_SAFETY_VERIFIED",
+    actionCode:
+      "ALLOW_VERIFIED_HYDROGEN_ELECTROLYZER_AND_H70_REFUELING_OPERATION",
+    policyCode:
+      "P165-HYDROGEN-ELECTROLYZER-REFUELING-NFPA-2-SAE-J2601-ISO-19880-H2-IN-O2-CROSSOVER-LEL-TRIP-70MPA-DISPENSER-IR-TEMP-LOCK-AND-LH2-CRYO-BOILOFF-GUARD",
+  };
+}
+
+export interface SipSdpRfc8866Rfc4568SdesConnectionAndFmtpGuardInput {
+  sdpSessionId: string;
+  sdpContainsRfc4568SdesCryptoInlineKey: boolean;
+  sipSignalingOverVerifiedTlsOrSips: boolean;
+  dtlsSrtpAlreadyNegotiatedOnMediaSection: boolean;
+  sdpConnectionAddressIsBroadcastMulticastLoopbackOrRfc1918OnPublicTrunk: boolean;
+  explicitRfc3264HoldZeroAddressValid: boolean;
+  sdpLineByteLength: number;
+  maxAllowedSdpLineBytes: number;
+  fmtpAttributeParameterCount: number;
+  maxAllowedFmtpParameters: number;
+  duplicatePayloadTypeMappingInSingleMLine: boolean;
+}
+
+export interface SipSdpRfc8866Rfc4568SdesConnectionAndFmtpGuardResult {
+  allowed: boolean;
+  rfc4568SdesInlineKeyLeakOrDtlsDualCryptoRejected: boolean;
+  sdpConnectionAddressAmplificationOrSinkholeBlocked: boolean;
+  sdpFmtpLineOverflowOrDuplicatePtDropped: boolean;
+  reason:
+    | "RFC4568_RFC8829_SDES_INLINE_MASTER_KEY_OVER_CLEARTEXT_SIP_OR_DUAL_DTLS_SDES_CONFLICT_BLOCKED"
+    | "RFC8866_SDP_CONNECTION_ADDRESS_BROADCAST_LOOPBACK_OR_SSRF_MEDIA_AMPLIFICATION_TARGET_BLOCKED"
+    | "RFC8866_SDP_LINE_LENGTH_OVERFLOW_FMTP_PARAMETER_BOMB_OR_DUPLICATE_RTPMAP_PT_BLOCKED"
+    | "SIP_SDP_RFC8866_RFC4568_CRYPTO_CONNECTION_ADDRESS_AND_FMTP_BOUNDS_VERIFIED";
+  actionCode:
+    | "SCRUB_SDES_INLINE_KEY_REJECT_SIP_488_AND_ENFORCE_DTLS_SRTP_ONLY"
+    | "REJECT_SDP_CONNECTION_SINKHOLE_AND_PIN_RTP_TO_VERIFIED_SBC_PEER"
+    | "DROP_MALFORMED_SDP_OFFER_ANSWER_ON_RFC8866_FMTP_OR_PT_OVERFLOW"
+    | "ALLOW_VERIFIED_RFC8866_SDP_SESSION_DESCRIPTION";
+  policyCode: "P166-SIP-SDP-RFC8866-RFC4568-SDES-CRYPTO-INLINE-KEY-LEAK-CONNECTION-ADDRESS-AMPLIFICATION-SINKHOLE-AND-FMTP-LINE-OVERFLOW-GUARD";
+}
+
+export function evaluateSipSdpRfc8866Rfc4568SdesInlineKeyLeakConnectionSinkholeAndFmtpOverflowGuard(
+  input: SipSdpRfc8866Rfc4568SdesConnectionAndFmtpGuardInput
+): SipSdpRfc8866Rfc4568SdesConnectionAndFmtpGuardResult {
+  // 1. RFC 4568 Section 8 / RFC 8829 Section 3.5: a=crypto SDES inline SRTP master key sent over cleartext UDP/TCP SIP or simultaneously mixed with DTLS-SRTP
+  if (
+    input.sdpContainsRfc4568SdesCryptoInlineKey &&
+    (!input.sipSignalingOverVerifiedTlsOrSips ||
+      input.dtlsSrtpAlreadyNegotiatedOnMediaSection)
+  ) {
+    return {
+      allowed: false,
+      rfc4568SdesInlineKeyLeakOrDtlsDualCryptoRejected: true,
+      sdpConnectionAddressAmplificationOrSinkholeBlocked: false,
+      sdpFmtpLineOverflowOrDuplicatePtDropped: false,
+      reason:
+        "RFC4568_RFC8829_SDES_INLINE_MASTER_KEY_OVER_CLEARTEXT_SIP_OR_DUAL_DTLS_SDES_CONFLICT_BLOCKED",
+      actionCode:
+        "SCRUB_SDES_INLINE_KEY_REJECT_SIP_488_AND_ENFORCE_DTLS_SRTP_ONLY",
+      policyCode:
+        "P166-SIP-SDP-RFC8866-RFC4568-SDES-CRYPTO-INLINE-KEY-LEAK-CONNECTION-ADDRESS-AMPLIFICATION-SINKHOLE-AND-FMTP-LINE-OVERFLOW-GUARD",
+    };
+  }
+
+  // 2. RFC 8866 Section 5.7: c=IN IP4/IP6 connection address pointing to broadcast, multicast, loopback (127.0.0.0/8), or private RFC 1918 on a public SIP trunk (excluding valid RFC 3264 0.0.0.0 hold)
+  if (
+    input.sdpConnectionAddressIsBroadcastMulticastLoopbackOrRfc1918OnPublicTrunk &&
+    !input.explicitRfc3264HoldZeroAddressValid
+  ) {
+    return {
+      allowed: false,
+      rfc4568SdesInlineKeyLeakOrDtlsDualCryptoRejected: false,
+      sdpConnectionAddressAmplificationOrSinkholeBlocked: true,
+      sdpFmtpLineOverflowOrDuplicatePtDropped: false,
+      reason:
+        "RFC8866_SDP_CONNECTION_ADDRESS_BROADCAST_LOOPBACK_OR_SSRF_MEDIA_AMPLIFICATION_TARGET_BLOCKED",
+      actionCode:
+        "REJECT_SDP_CONNECTION_SINKHOLE_AND_PIN_RTP_TO_VERIFIED_SBC_PEER",
+      policyCode:
+        "P166-SIP-SDP-RFC8866-RFC4568-SDES-CRYPTO-INLINE-KEY-LEAK-CONNECTION-ADDRESS-AMPLIFICATION-SINKHOLE-AND-FMTP-LINE-OVERFLOW-GUARD",
+    };
+  }
+
+  // 3. RFC 8866 Section 5 / 6.15: SDP line length overflow, a=fmtp parameter bomb, or duplicate PT mapping in a single m= line
+  if (
+    input.sdpLineByteLength > input.maxAllowedSdpLineBytes ||
+    input.fmtpAttributeParameterCount > input.maxAllowedFmtpParameters ||
+    input.duplicatePayloadTypeMappingInSingleMLine
+  ) {
+    return {
+      allowed: false,
+      rfc4568SdesInlineKeyLeakOrDtlsDualCryptoRejected: false,
+      sdpConnectionAddressAmplificationOrSinkholeBlocked: false,
+      sdpFmtpLineOverflowOrDuplicatePtDropped: true,
+      reason:
+        "RFC8866_SDP_LINE_LENGTH_OVERFLOW_FMTP_PARAMETER_BOMB_OR_DUPLICATE_RTPMAP_PT_BLOCKED",
+      actionCode:
+        "DROP_MALFORMED_SDP_OFFER_ANSWER_ON_RFC8866_FMTP_OR_PT_OVERFLOW",
+      policyCode:
+        "P166-SIP-SDP-RFC8866-RFC4568-SDES-CRYPTO-INLINE-KEY-LEAK-CONNECTION-ADDRESS-AMPLIFICATION-SINKHOLE-AND-FMTP-LINE-OVERFLOW-GUARD",
+    };
+  }
+
+  return {
+    allowed: true,
+    rfc4568SdesInlineKeyLeakOrDtlsDualCryptoRejected: false,
+    sdpConnectionAddressAmplificationOrSinkholeBlocked: false,
+    sdpFmtpLineOverflowOrDuplicatePtDropped: false,
+    reason:
+      "SIP_SDP_RFC8866_RFC4568_CRYPTO_CONNECTION_ADDRESS_AND_FMTP_BOUNDS_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_RFC8866_SDP_SESSION_DESCRIPTION",
+    policyCode:
+      "P166-SIP-SDP-RFC8866-RFC4568-SDES-CRYPTO-INLINE-KEY-LEAK-CONNECTION-ADDRESS-AMPLIFICATION-SINKHOLE-AND-FMTP-LINE-OVERFLOW-GUARD",
+  };
+}
+
+
 
 
 
