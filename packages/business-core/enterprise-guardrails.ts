@@ -18357,6 +18357,235 @@ export function evaluateSipRfc3261Rfc3581SingletonHeaderSmugglingUntrusted3xxRed
   };
 }
 
+export interface CumeneHydroperoxideChpPhenolAcetoneCleavageNfpa30Osha1910119GuardInput {
+  chpConcentratorMassFractionPct: number;
+  cleavageReactorTempC: number;
+  cleavageReactorTempRiseRateCPerMin: number;
+  sulfuricAcidCatalystPpm: number;
+  sodiumPhenateNeutralizerAndAcetoneRefluxQuenchArmed: boolean;
+  oxidationReactorOverheadO2VolPct: number;
+  tailGasCarbonAdsorberBedTempC: number;
+  acetoneEvaporativeCondenserRecycleFlowHealthy: boolean;
+  ambientPhenolVaporPpm: number;
+  polyethyleneGlycol300DecontaminationShowerVerified: boolean;
+  phenolLineSteamTracingAndLotoVerified: boolean;
+}
+
+export interface CumeneHydroperoxideChpPhenolAcetoneCleavageNfpa30Osha1910119GuardAssessment {
+  allowed: boolean;
+  preempted: boolean;
+  chpCleavageRunawayOrSulfuricAcidOverfeedTripped: boolean;
+  oxidationTailGasO2OrAcetoneBackflowInterlocked: boolean;
+  phenolSkinExposureOrPeg300ShowerLotoLocked: boolean;
+  reason:
+    | "OSHA1910_119_NFPA30_CHP_CLEAVAGE_AUTOCATALYTIC_EXOTHERM_OR_ACID_OVERFEED_PREEMPTED"
+    | "NFPA30_API2218_CUMENE_OXIDIZER_OVERHEAD_O2_OR_CARBON_BED_HOTSPOT_INTERLOCKED"
+    | "OSHA1910_1000_PHENOL_CUTANEOUS_TOXICITY_OR_MISSING_PEG300_DECONTAMINATION_LOTO_LOCKED"
+    | "CUMENE_CHP_CLEAVAGE_OXIDATION_AND_PHENOL_PEG300_LOTO_VERIFIED";
+  actionCode:
+    | "PREEMPT_VOICE_AGENT_AND_INJECT_ALKALINE_QUENCH_PLUS_CHILLED_ACETONE_DILUTION"
+    | "TRIP_OXIDIZER_AIR_SPARGER_AND_FLOOD_CARBON_ADSORBER_WITH_NITROGEN"
+    | "LOCK_OUT_PHENOL_LINE_OPENING_AND_REQUIRE_PEG300_DECON_STATION_PLUS_LOTO"
+    | "ALLOW_VERIFIED_CUMENE_CHP_PHENOL_ACETONE_ADVISORY";
+  policyCode: "P195-CUMENE-HYDROPEROXIDE-CHP-PHENOL-ACETONE-CLEAVAGE-NFPA30-OSHA1910-119-ACID-CATALYZED-THERMAL-RUNAWAY-ACETONE-REFLUX-QUENCH-AND-PHENOL-LOTO-GUARD";
+}
+
+export function evaluateCumeneHydroperoxideChpPhenolAcetoneCleavageNfpa30Osha1910119RunawayAcetoneQuenchAndPhenolLotoGuard(
+  input: CumeneHydroperoxideChpPhenolAcetoneCleavageNfpa30Osha1910119GuardInput,
+): CumeneHydroperoxideChpPhenolAcetoneCleavageNfpa30Osha1910119GuardAssessment {
+  const policyCode =
+    "P195-CUMENE-HYDROPEROXIDE-CHP-PHENOL-ACETONE-CLEAVAGE-NFPA30-OSHA1910-119-ACID-CATALYZED-THERMAL-RUNAWAY-ACETONE-REFLUX-QUENCH-AND-PHENOL-LOTO-GUARD" as const;
+
+  if (
+    input.chpConcentratorMassFractionPct > 83.0 ||
+    input.cleavageReactorTempC > 92.0 ||
+    input.cleavageReactorTempRiseRateCPerMin > 1.5 ||
+    input.sulfuricAcidCatalystPpm > 350 ||
+    !input.sodiumPhenateNeutralizerAndAcetoneRefluxQuenchArmed
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      chpCleavageRunawayOrSulfuricAcidOverfeedTripped: true,
+      oxidationTailGasO2OrAcetoneBackflowInterlocked: false,
+      phenolSkinExposureOrPeg300ShowerLotoLocked: false,
+      reason:
+        "OSHA1910_119_NFPA30_CHP_CLEAVAGE_AUTOCATALYTIC_EXOTHERM_OR_ACID_OVERFEED_PREEMPTED",
+      actionCode:
+        "PREEMPT_VOICE_AGENT_AND_INJECT_ALKALINE_QUENCH_PLUS_CHILLED_ACETONE_DILUTION",
+      policyCode,
+    };
+  }
+
+  if (
+    input.oxidationReactorOverheadO2VolPct > 4.5 ||
+    input.tailGasCarbonAdsorberBedTempC > 110.0 ||
+    !input.acetoneEvaporativeCondenserRecycleFlowHealthy
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      chpCleavageRunawayOrSulfuricAcidOverfeedTripped: false,
+      oxidationTailGasO2OrAcetoneBackflowInterlocked: true,
+      phenolSkinExposureOrPeg300ShowerLotoLocked: false,
+      reason:
+        "NFPA30_API2218_CUMENE_OXIDIZER_OVERHEAD_O2_OR_CARBON_BED_HOTSPOT_INTERLOCKED",
+      actionCode:
+        "TRIP_OXIDIZER_AIR_SPARGER_AND_FLOOD_CARBON_ADSORBER_WITH_NITROGEN",
+      policyCode,
+    };
+  }
+
+  if (
+    input.ambientPhenolVaporPpm >= 5.0 ||
+    !input.polyethyleneGlycol300DecontaminationShowerVerified ||
+    !input.phenolLineSteamTracingAndLotoVerified
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      chpCleavageRunawayOrSulfuricAcidOverfeedTripped: false,
+      oxidationTailGasO2OrAcetoneBackflowInterlocked: false,
+      phenolSkinExposureOrPeg300ShowerLotoLocked: true,
+      reason:
+        "OSHA1910_1000_PHENOL_CUTANEOUS_TOXICITY_OR_MISSING_PEG300_DECONTAMINATION_LOTO_LOCKED",
+      actionCode:
+        "LOCK_OUT_PHENOL_LINE_OPENING_AND_REQUIRE_PEG300_DECON_STATION_PLUS_LOTO",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    chpCleavageRunawayOrSulfuricAcidOverfeedTripped: false,
+    oxidationTailGasO2OrAcetoneBackflowInterlocked: false,
+    phenolSkinExposureOrPeg300ShowerLotoLocked: false,
+    reason: "CUMENE_CHP_CLEAVAGE_OXIDATION_AND_PHENOL_PEG300_LOTO_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_CUMENE_CHP_PHENOL_ACETONE_ADVISORY",
+    policyCode,
+  };
+}
+
+export interface WebrtcRtpHeaderExtensionRfc8285Rfc6464Rfc6465GuardInput {
+  extensionProfileHex: "0xBEDE" | "0x1000" | "0xC0DE" | "0xC2DE";
+  declaredExtensionByteLength: number;
+  remainingRtpPayloadBytesBeforeSrtpTag: number;
+  maxObservedExtensionId: number;
+  sdpExtmapAllowMixedNegotiatedForTwoByte: boolean;
+  duplicateExtmapUriOrIdCollisionDetected: boolean;
+  ssrcOrCsrcAudioLevelExtensionNegotiated: boolean;
+  rfc9335CryptexOrRfc6904HeaderEncryptionActive: boolean;
+  stripAudioLevelExtensionAtUntrustedEdgeHop: boolean;
+  nonZeroExtensionPaddingOctetsDetected: number;
+  idZeroWithNonZeroDataLengthDetected: boolean;
+}
+
+export interface WebrtcRtpHeaderExtensionRfc8285Rfc6464Rfc6465GuardAssessment {
+  allowed: boolean;
+  extensionProfileMismatchOrLengthOverreadRejected: boolean;
+  unencryptedAudioLevelOrCsrcVadLeakBlocked: boolean;
+  nonZeroPaddingOrForbiddenIdZeroSmugglingBlocked: boolean;
+  reason:
+    | "RFC8285_SECTION_4_RTP_HEADER_EXTENSION_LENGTH_OVERREAD_OR_EXTMAP_ID_COLLISION_BLOCKED"
+    | "RFC6464_RFC6465_RFC9335_CLEARTEXT_AUDIO_LEVEL_VAD_OR_CSRC_SIDE_CHANNEL_BLOCKED"
+    | "RFC8285_SECTION_4_1_NON_ZERO_EXTENSION_PADDING_OR_ID_ZERO_COVERT_CHANNEL_BLOCKED"
+    | "WEBRTC_RTP_HEADER_EXTENSION_RFC8285_RFC6464_RFC9335_VERIFIED";
+  actionCode:
+    | "DROP_MALFORMED_RTP_EXTENSION_PACKET_AND_ENFORCE_RFC8285_BOUNDS"
+    | "ENFORCE_RFC9335_CRYPTEX_OR_STRIP_RFC6464_AUDIO_LEVEL_AT_SBC_EDGE"
+    | "ZERO_SCRUB_RTP_EXTENSION_PADDING_AND_REJECT_ID_ZERO_ELEMENT"
+    | "ALLOW_VERIFIED_WEBRTC_RTP_HEADER_EXTENSION_PACKET";
+  policyCode: "P196-WEBRTC-RTP-HEADER-EXTENSION-RFC8285-RFC6464-RFC6465-ONE-TWO-BYTE-ID-COLLISION-UNENCRYPTED-AUDIO-LEVEL-SIDE-CHANNEL-AND-LENGTH-OVERREAD-GUARD";
+}
+
+export function evaluateWebrtcRtpHeaderExtensionRfc8285Rfc6464Rfc6465IdCollisionAudioLevelLeakAndOverreadGuard(
+  input: WebrtcRtpHeaderExtensionRfc8285Rfc6464Rfc6465GuardInput,
+): WebrtcRtpHeaderExtensionRfc8285Rfc6464Rfc6465GuardAssessment {
+  const policyCode =
+    "P196-WEBRTC-RTP-HEADER-EXTENSION-RFC8285-RFC6464-RFC6465-ONE-TWO-BYTE-ID-COLLISION-UNENCRYPTED-AUDIO-LEVEL-SIDE-CHANNEL-AND-LENGTH-OVERREAD-GUARD" as const;
+
+  const isOneByteProfile =
+    input.extensionProfileHex === "0xBEDE" ||
+    input.extensionProfileHex === "0xC0DE";
+  const isTwoByteProfile =
+    input.extensionProfileHex === "0x1000" ||
+    input.extensionProfileHex === "0xC2DE";
+
+  if (
+    input.declaredExtensionByteLength <= 0 ||
+    input.declaredExtensionByteLength % 4 !== 0 ||
+    input.declaredExtensionByteLength >
+      input.remainingRtpPayloadBytesBeforeSrtpTag ||
+    (isOneByteProfile &&
+      (input.maxObservedExtensionId < 1 || input.maxObservedExtensionId > 14)) ||
+    (isTwoByteProfile &&
+      (!input.sdpExtmapAllowMixedNegotiatedForTwoByte ||
+        input.maxObservedExtensionId < 1 ||
+        input.maxObservedExtensionId > 255)) ||
+    input.duplicateExtmapUriOrIdCollisionDetected
+  ) {
+    return {
+      allowed: false,
+      extensionProfileMismatchOrLengthOverreadRejected: true,
+      unencryptedAudioLevelOrCsrcVadLeakBlocked: false,
+      nonZeroPaddingOrForbiddenIdZeroSmugglingBlocked: false,
+      reason:
+        "RFC8285_SECTION_4_RTP_HEADER_EXTENSION_LENGTH_OVERREAD_OR_EXTMAP_ID_COLLISION_BLOCKED",
+      actionCode:
+        "DROP_MALFORMED_RTP_EXTENSION_PACKET_AND_ENFORCE_RFC8285_BOUNDS",
+      policyCode,
+    };
+  }
+
+  if (
+    input.ssrcOrCsrcAudioLevelExtensionNegotiated &&
+    (!input.rfc9335CryptexOrRfc6904HeaderEncryptionActive ||
+      !input.stripAudioLevelExtensionAtUntrustedEdgeHop)
+  ) {
+    return {
+      allowed: false,
+      extensionProfileMismatchOrLengthOverreadRejected: false,
+      unencryptedAudioLevelOrCsrcVadLeakBlocked: true,
+      nonZeroPaddingOrForbiddenIdZeroSmugglingBlocked: false,
+      reason:
+        "RFC6464_RFC6465_RFC9335_CLEARTEXT_AUDIO_LEVEL_VAD_OR_CSRC_SIDE_CHANNEL_BLOCKED",
+      actionCode:
+        "ENFORCE_RFC9335_CRYPTEX_OR_STRIP_RFC6464_AUDIO_LEVEL_AT_SBC_EDGE",
+      policyCode,
+    };
+  }
+
+  if (
+    input.nonZeroExtensionPaddingOctetsDetected > 0 ||
+    input.idZeroWithNonZeroDataLengthDetected
+  ) {
+    return {
+      allowed: false,
+      extensionProfileMismatchOrLengthOverreadRejected: false,
+      unencryptedAudioLevelOrCsrcVadLeakBlocked: false,
+      nonZeroPaddingOrForbiddenIdZeroSmugglingBlocked: true,
+      reason:
+        "RFC8285_SECTION_4_1_NON_ZERO_EXTENSION_PADDING_OR_ID_ZERO_COVERT_CHANNEL_BLOCKED",
+      actionCode:
+        "ZERO_SCRUB_RTP_EXTENSION_PADDING_AND_REJECT_ID_ZERO_ELEMENT",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    extensionProfileMismatchOrLengthOverreadRejected: false,
+    unencryptedAudioLevelOrCsrcVadLeakBlocked: false,
+    nonZeroPaddingOrForbiddenIdZeroSmugglingBlocked: false,
+    reason:
+      "WEBRTC_RTP_HEADER_EXTENSION_RFC8285_RFC6464_RFC9335_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_WEBRTC_RTP_HEADER_EXTENSION_PACKET",
+    policyCode,
+  };
+}
+
+
 
 
 
