@@ -2064,3 +2064,18 @@ flowchart LR
    - **废弃 `RFC 5245 Aggressive Nomination` 抢跑提名、`Tie-Breaker` 篡改与高频提名抖动阻断**：当对端在连通性检查尚未达成 `Succeeded` 前违规携带 `USE-CANDIDATE`（`RFC 8445 § 8.1.1` 已废弃激进提名）、会话中途篡改 64 位 `ICE-CONTROLLING / ICE-CONTROLLED` 决胜属性（`Tie-Breaker`），或每秒提名翻转 `> 2 次` 引发媒体面频繁断流时，立即拒止（`reject_deprecated_aggressive_nomination_or_tie_breaker_mutation`）。
    - **全表 `Frozen` 死锁（`> 3,000ms`）主动解冻与存活媒体对误判 `Failed` 隔离**：当全部候选对卡死在 `Frozen` 状态 `> 3,000ms` 且活动 `Foundation` 为 `0`（常见于双 `BUNDLE` 共享 `Foundation` 依赖环路），或当前已提名候选对仍正常收发 `SRTP` 及 `RFC 7675` 保活却因次要网卡超时被误触发 `ICE Failed` 拆线时，立即解冻最高优先级 `Foundation` 并阻断误拆线（`unfreeze_highest_priority_foundation_and_quarantine_premature_ice_failure`）。
 
+### 4.123 苯酚-丙酮（异丙苯 Hock 法）过氧化与过氧化氢异丙苯（`CHP`）酸催化裂解安全护栏及 WebRTC/RTP 传输层熔断器与 Path MTU / DSCP QoS 策略护栏 (`P223` / `P224` — Stage 115 · 233 护栏与 242 大探针里程碑)
+
+针对异丙苯法（Hock Process）空气过氧化与过氧化氢异丙苯（`CHP`）硫酸催化裂解制苯酚-丙酮装置，以及企业级 WebRTC/RTP 媒体网关传输层熔断器（`RFC 8083`）与路径 MTU / DSCP QoS 策略（`RFC 8834 / RFC 8835 / RFC 8837`），`packages/business-core/enterprise-guardrails.ts` 实现了第 232 与第 233 道确定性护栏函数（对应探针 **#241 `P223`** 与 **#242 `P224`**）：
+
+1. **苯酚-丙酮（异丙苯 Hock 法）过氧化、`CHP` 真空浓缩分解、酸催化裂解飞温与苯酚 `PEG-300` 洗消 `SCBA LOTO` 护栏 (`evaluatePhenolAcetoneHockCumeneHydroperoxideChpCleavageNfpa69ApiRp521Osha1910119Osha19101000ChpConcentratorDecompositionCleavageAcidExothermOxidizerOffgasO2AndPhenolScbaLotoGuard` · `P223-PHENOL-ACETONE-HOCK-CUMENE-HYDROPEROXIDE-CHP-CLEAVAGE-NFPA69-API-RP521-OSHA1910119-OSHA19101000-CHP-CONCENTRATOR-DECOMPOSITION-CLEAVAGE-ACID-EXOTHERM-OXIDIZER-OFFGAS-O2-AND-PHENOL-SCBA-LOTO-GUARD`)**：
+   - **`CHP` 真空浓缩器热分解（`> 105.0°C / > 85.0 wt%`）、酸催化裂解强放热飞温（`ΔH = -252 kJ/mol`，`> 92.0°C`）与氧化尾气氧超限 0ms 急冷抢占**：当 `CHP` 真空浓缩器温度 `> 105.0°C`（自加速自由基分解产生甲基苯乙烯与高压甲烷气体）或 `CHP` 质量分数 `> 85.0 wt%`、硫酸催化裂解环流反应器温度 `> 92.0°C`（绝热温升超过 `600°C`）或温升速率 `> 2.0°C/s`、硫酸催化剂浓度 `> 800 ppm`，或异丙苯氧化塔尾气氧含量 `>= 4.5 vol%` 时，0ms 切断硫酸进料、全开冷冻丙酮/异丙苯急冷洪泛并跳停氧化空压机注入高压氮气（`trigger_chp_acetone_cumene_quench_flood_and_oxidizer_n2_trip_in_0ms`）。
+   - **浓缩器碳酸盐缓冲（`pH < 6.0`）、裂解丙酮蒸发回流与出料残酸（`> 30 ppm`）中和联锁**：当浓缩器碳酸钠缓冲 `pH < 6.0`（微量有机酸提前触发浓缩器内 `CHP` 恶性酸裂解）、裂解器丙酮:CHP 质量稀释比 `< 1.2`、丙酮蒸发回流冷凝失效，或裂解出料残余酸度 `> 30 ppm`（进入粗苯酚精馏塔再沸器将引发残留过氧化物二次爆炸）时，立即停运 `CHP` 裂解进料、强注碳酸钠/酚钠碱性缓冲液并恢复丙酮回流（`halt_chp_cleavage_feed_and_inject_caustic_buffer_acetone_reflux`）。
+   - **OSHA 1910.1000 剧毒皮肤吸收苯酚（`Phenol >= 5.0 ppm [skin]`）与聚乙二醇 `PEG-300` 洗消 `SCBA LOTO`**：当现场苯酚蒸气 `>= 5.0 ppm`（皮肤快速吸收致死性全身中毒）、异丙苯蒸气 `>= 50.0 ppm`，或未核验聚乙二醇 `PEG-300/400` 专用皮肤洗消淋浴与正压 `SCBA LOTO` 时，严禁开启取样器或过滤器人孔（`lock_phenol_chp_equipment_and_enforce_peg300_decon_scba_loto`）。
+
+2. **WebRTC 与 RTP 传输层熔断器（`RFC 8083`）及路径 MTU / DSCP QoS 策略（`RFC 8834 / RFC 8835 / RFC 8837`）护栏 (`evaluateWebrtcRtpCircuitBreakerTransportRfc8083Rfc8834Rfc8835Rfc8837RtcpTimeoutCongestionCollapseTripPmtuBlackholeFragmentationAndDscpQosRemarkingGuard` · `P224-WEBRTC-RTP-CIRCUIT-BREAKER-TRANSPORT-RFC8083-RFC8834-RFC8835-RFC8837-RTCP-TIMEOUT-CONGESTION-COLLAPSE-TRIP-PMTU-BLACKHOLE-FRAGMENTATION-AND-DSCP-QOS-REMARKING-GUARD`)**：
+   - **`RFC 8083 § 4.1 / § 4.2` RTCP 与媒体超时熔断器 0ms 跳闸**：当连续缺失 `RTCP SR/RR` 报告间隔 `>= 3` 个周期或 `RTCP` 反馈静默 `> 15,000ms` 时，0ms 触发超时熔断器切断盲发 `RTP` 流，防止失控媒体流演变为单向 UDP 反射洪泛源（`drop_rtp_flow_and_trip_rfc8083_rtcp_timeout_circuit_breaker_in_0ms`）。
+   - **`RFC 8083 § 4.3 / § 4.4` 拥塞（`> 10x X_tcp`）与可用性（`>= 50%` 丢包）熔断器**：当实际发送码率在连续 `>= 3` 个周期内超过 `RFC 5348` TCP 等效吞吐率（`X_tcp`）的 `10` 倍，或持续丢包率 `>= 50%` 且仍高于最低回退语音码率时，立即触发拥塞与可用性熔断器（`trip_rfc8083_congestion_or_media_usability_circuit_breaker`）。
+   - **`RFC 8835` 路径 MTU（`>= 1,200B`）防分片黑洞与 `RFC 8837` 越权 `DSCP EF/CS7` 漂白钳位**：当路径 MTU 被伪造 `ICMP PTB` 压低至 `< 1,200 Bytes`、`RTP` 包长超过 `PMTU` 引发 IP 分片放大（`> 0 pps`），或未授权流违规标记 `DSCP EF(46) / CS6 / CS7(56)` 抢占核心网交换机严苛优先级队列时，立即将 `DSCP` 漂白归零为 `DF(0)` 并钳位负载 MTU（`bleach_unauthorized_rfc8837_dscp_and_clamp_rfc8835_pmtu`）。
+
+

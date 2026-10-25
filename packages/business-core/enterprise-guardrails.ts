@@ -21162,4 +21162,183 @@ export function evaluateWebrtcSipIceRfc8445Rfc8838Rfc5245Rfc8863AggressiveNomina
   };
 }
 
+export interface PhenolAcetoneHockCumeneHydroperoxideChpCleavageNfpa69ApiRp521Osha1910119Osha19101000ChpConcentratorDecompositionCleavageAcidExothermOxidizerOffgasO2AndPhenolScbaLotoGuardInput {
+  reactorOrVesselId: string;
+  chpConcentratorTempCelsius: number;
+  chpConcentrationWeightPercent: number;
+  cleavageReactorTempCelsius: number;
+  cleavageTempRiseRateCPerSec: number;
+  cleavageSulfuricAcidCatalystPpm: number;
+  cumeneOxidizerOffGasOxygenVolPercent: number;
+  concentratorCarbonateBufferPh: number;
+  cleavageAcetoneToChpMassRatio: number;
+  cleavageEffluentResidualAcidPpm: number;
+  acetoneEvaporativeRefluxActive: boolean;
+  requestedAction:
+    | "adjust_cumene_oxidation_or_chp_cleavage_feed"
+    | "bypass_chp_acetone_quench_or_raise_acid_catalyst"
+    | "open_phenol_chp_sampler_or_strainer_manway";
+  ambientPhenolVaporPpm: number;
+  ambientCumeneVaporPpm: number;
+  peg300DecontaminationAndScbaLotoVerified: boolean;
+}
+
+export interface PhenolAcetoneHockCumeneHydroperoxideChpCleavageNfpa69ApiRp521Osha1910119Osha19101000ChpConcentratorDecompositionCleavageAcidExothermOxidizerOffgasO2AndPhenolScbaLotoGuardResult {
+  policyCode: "P223-PHENOL-ACETONE-HOCK-CUMENE-HYDROPEROXIDE-CHP-CLEAVAGE-NFPA69-API-RP521-OSHA1910119-OSHA19101000-CHP-CONCENTRATOR-DECOMPOSITION-CLEAVAGE-ACID-EXOTHERM-OXIDIZER-OFFGAS-O2-AND-PHENOL-SCBA-LOTO-GUARD";
+  reactorOrVesselId: string;
+  chpDecompositionOrCleavageExothermTriggered: boolean;
+  concentratorPhBufferOrAcetoneRefluxNeutralizationInterlocked: boolean;
+  phenolDermalToxicityOrCumeneScbaLotoLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "trigger_chp_acetone_cumene_quench_flood_and_oxidizer_n2_trip_in_0ms"
+    | "halt_chp_cleavage_feed_and_inject_caustic_buffer_acetone_reflux"
+    | "lock_phenol_chp_equipment_and_enforce_peg300_decon_scba_loto"
+    | "allow_verified_cumene_peroxidation_and_chp_acid_cleavage_control";
+  blockedReason: string | null;
+}
+
+export function evaluatePhenolAcetoneHockCumeneHydroperoxideChpCleavageNfpa69ApiRp521Osha1910119Osha19101000ChpConcentratorDecompositionCleavageAcidExothermOxidizerOffgasO2AndPhenolScbaLotoGuard(
+  input: PhenolAcetoneHockCumeneHydroperoxideChpCleavageNfpa69ApiRp521Osha1910119Osha19101000ChpConcentratorDecompositionCleavageAcidExothermOxidizerOffgasO2AndPhenolScbaLotoGuardInput
+): PhenolAcetoneHockCumeneHydroperoxideChpCleavageNfpa69ApiRp521Osha1910119Osha19101000ChpConcentratorDecompositionCleavageAcidExothermOxidizerOffgasO2AndPhenolScbaLotoGuardResult {
+  const chpDecompositionOrCleavageExothermTriggered =
+    input.chpConcentratorTempCelsius > 105.0 ||
+    input.chpConcentrationWeightPercent > 85.0 ||
+    input.cleavageReactorTempCelsius > 92.0 ||
+    input.cleavageTempRiseRateCPerSec > 2.0 ||
+    input.cleavageSulfuricAcidCatalystPpm > 800 ||
+    input.cumeneOxidizerOffGasOxygenVolPercent >= 4.5 ||
+    input.requestedAction === "bypass_chp_acetone_quench_or_raise_acid_catalyst";
+
+  const concentratorPhBufferOrAcetoneRefluxNeutralizationInterlocked =
+    input.concentratorCarbonateBufferPh < 6.0 ||
+    input.cleavageAcetoneToChpMassRatio < 1.2 ||
+    input.cleavageEffluentResidualAcidPpm > 30 ||
+    !input.acetoneEvaporativeRefluxActive;
+
+  const phenolDermalToxicityOrCumeneScbaLotoLocked =
+    (input.requestedAction === "open_phenol_chp_sampler_or_strainer_manway" ||
+      input.ambientPhenolVaporPpm >= 5.0 ||
+      input.ambientCumeneVaporPpm >= 50.0) &&
+    (input.ambientPhenolVaporPpm >= 5.0 ||
+      input.ambientCumeneVaporPpm >= 50.0 ||
+      !input.peg300DecontaminationAndScbaLotoVerified);
+
+  let action: PhenolAcetoneHockCumeneHydroperoxideChpCleavageNfpa69ApiRp521Osha1910119Osha19101000ChpConcentratorDecompositionCleavageAcidExothermOxidizerOffgasO2AndPhenolScbaLotoGuardResult["action"] =
+    "allow_verified_cumene_peroxidation_and_chp_acid_cleavage_control";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | null = null;
+
+  if (chpDecompositionOrCleavageExothermTriggered) {
+    action =
+      "trigger_chp_acetone_cumene_quench_flood_and_oxidizer_n2_trip_in_0ms";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 Cumene Hydroperoxide (CHP) Concentrator Thermal Decomposition, Acid Cleavage Runaway Exotherm (-252 kJ/mol) or Oxidizer Off-Gas O2 Trip on ${input.reactorOrVesselId}: chpConcTemp=${input.chpConcentratorTempCelsius.toFixed(1)}C (max 105.0C), chpWtPct=${input.chpConcentrationWeightPercent.toFixed(1)}% (max 85.0%), cleavageTemp=${input.cleavageReactorTempCelsius.toFixed(1)}C (max 92.0C), dTdt=${input.cleavageTempRiseRateCPerSec.toFixed(2)}C/s, H2SO4=${input.cleavageSulfuricAcidCatalystPpm} ppm (max 800 ppm), offGasO2=${input.cumeneOxidizerOffGasOxygenVolPercent.toFixed(2)} vol% (max 4.5%).`;
+  } else if (concentratorPhBufferOrAcetoneRefluxNeutralizationInterlocked) {
+    action =
+      "halt_chp_cleavage_feed_and_inject_caustic_buffer_acetone_reflux";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.119 / API RP 521 CHP Concentrator Carbonate Buffer Acidification, Acetone Evaporative Reflux Loss or Cleavage Effluent Residual Acid Breakthrough on ${input.reactorOrVesselId}: concentratorPh=${input.concentratorCarbonateBufferPh.toFixed(2)} (min 6.0), acetoneToChpRatio=${input.cleavageAcetoneToChpMassRatio.toFixed(2)} (min 1.2), effluentAcid=${input.cleavageEffluentResidualAcidPpm} ppm (max 30 ppm), acetoneRefluxActive=${input.acetoneEvaporativeRefluxActive}.`;
+  } else if (phenolDermalToxicityOrCumeneScbaLotoLocked) {
+    action = "lock_phenol_chp_equipment_and_enforce_peg300_decon_scba_loto";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1000 Phenol Dermal/Systemic Toxicity (>=5.0 ppm [skin]), Cumene Vapor (>=50.0 ppm) or Unverified PEG-300 Decontamination & SCBA LOTO on ${input.reactorOrVesselId}: ambientPhenol=${input.ambientPhenolVaporPpm} ppm, ambientCumene=${input.ambientCumeneVaporPpm} ppm, peg300AndScbaLotoVerified=${input.peg300DecontaminationAndScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P223-PHENOL-ACETONE-HOCK-CUMENE-HYDROPEROXIDE-CHP-CLEAVAGE-NFPA69-API-RP521-OSHA1910119-OSHA19101000-CHP-CONCENTRATOR-DECOMPOSITION-CLEAVAGE-ACID-EXOTHERM-OXIDIZER-OFFGAS-O2-AND-PHENOL-SCBA-LOTO-GUARD",
+    reactorOrVesselId: input.reactorOrVesselId,
+    chpDecompositionOrCleavageExothermTriggered,
+    concentratorPhBufferOrAcetoneRefluxNeutralizationInterlocked,
+    phenolDermalToxicityOrCumeneScbaLotoLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcRtpCircuitBreakerTransportRfc8083Rfc8834Rfc8835Rfc8837RtcpTimeoutCongestionCollapseTripPmtuBlackholeFragmentationAndDscpQosRemarkingGuardInput {
+  sessionId: string;
+  consecutiveMissingRtcpIntervals: number;
+  rtcpSilenceDurationMs: number;
+  actualSendBitrateKbps: number;
+  tcpEquivalentThroughputKbps: number;
+  consecutiveCongestionIntervals: number;
+  sustainedFractionLostPercent: number;
+  minFallbackVoiceBitrateKbps: number;
+  pathMtuBytes: number;
+  rtpPacketSizeBytes: number;
+  ipFragmentedRtpPacketsPerSecond: number;
+  unauthorizedDscpCodepointUsed: boolean;
+}
+
+export interface WebrtcRtpCircuitBreakerTransportRfc8083Rfc8834Rfc8835Rfc8837RtcpTimeoutCongestionCollapseTripPmtuBlackholeFragmentationAndDscpQosRemarkingGuardResult {
+  policyCode: "P224-WEBRTC-RTP-CIRCUIT-BREAKER-TRANSPORT-RFC8083-RFC8834-RFC8835-RFC8837-RTCP-TIMEOUT-CONGESTION-COLLAPSE-TRIP-PMTU-BLACKHOLE-FRAGMENTATION-AND-DSCP-QOS-REMARKING-GUARD";
+  sessionId: string;
+  rtcpTimeoutOrMediaTimeoutCircuitBreakerTripped: boolean;
+  congestion10xTcpOrLossUsabilityCircuitBreakerTripped: boolean;
+  pmtuBlackholeFragmentationOrDscpRemarkingPoliced: boolean;
+  rtpTransportFlowAccepted: boolean;
+  action:
+    | "drop_rtp_flow_and_trip_rfc8083_rtcp_timeout_circuit_breaker_in_0ms"
+    | "trip_rfc8083_congestion_or_media_usability_circuit_breaker"
+    | "bleach_unauthorized_rfc8837_dscp_and_clamp_rfc8835_pmtu"
+    | "accept_verified_rfc8083_circuit_breaker_and_rfc8835_transport_flow";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcRtpCircuitBreakerTransportRfc8083Rfc8834Rfc8835Rfc8837RtcpTimeoutCongestionCollapseTripPmtuBlackholeFragmentationAndDscpQosRemarkingGuard(
+  input: WebrtcRtpCircuitBreakerTransportRfc8083Rfc8834Rfc8835Rfc8837RtcpTimeoutCongestionCollapseTripPmtuBlackholeFragmentationAndDscpQosRemarkingGuardInput
+): WebrtcRtpCircuitBreakerTransportRfc8083Rfc8834Rfc8835Rfc8837RtcpTimeoutCongestionCollapseTripPmtuBlackholeFragmentationAndDscpQosRemarkingGuardResult {
+  const rtcpTimeoutOrMediaTimeoutCircuitBreakerTripped =
+    input.consecutiveMissingRtcpIntervals >= 3 ||
+    input.rtcpSilenceDurationMs > 15000;
+
+  const congestion10xTcpOrLossUsabilityCircuitBreakerTripped =
+    (input.actualSendBitrateKbps > 10 * input.tcpEquivalentThroughputKbps &&
+      input.consecutiveCongestionIntervals >= 3) ||
+    (input.sustainedFractionLostPercent >= 50 &&
+      input.actualSendBitrateKbps > input.minFallbackVoiceBitrateKbps);
+
+  const pmtuBlackholeFragmentationOrDscpRemarkingPoliced =
+    input.pathMtuBytes < 1200 ||
+    input.rtpPacketSizeBytes > input.pathMtuBytes ||
+    input.ipFragmentedRtpPacketsPerSecond > 0 ||
+    input.unauthorizedDscpCodepointUsed;
+
+  let action: WebrtcRtpCircuitBreakerTransportRfc8083Rfc8834Rfc8835Rfc8837RtcpTimeoutCongestionCollapseTripPmtuBlackholeFragmentationAndDscpQosRemarkingGuardResult["action"] =
+    "accept_verified_rfc8083_circuit_breaker_and_rfc8835_transport_flow";
+  let rtpTransportFlowAccepted = true;
+  let blockedReason: string | null = null;
+
+  if (rtcpTimeoutOrMediaTimeoutCircuitBreakerTripped) {
+    action =
+      "drop_rtp_flow_and_trip_rfc8083_rtcp_timeout_circuit_breaker_in_0ms";
+    rtpTransportFlowAccepted = false;
+    blockedReason = `RFC 8083 §4.1 / §4.2 RTP/RTCP Timeout Circuit Breaker Tripped on ${input.sessionId}: missingRtcpIntervals=${input.consecutiveMissingRtcpIntervals} (max 2), rtcpSilenceMs=${input.rtcpSilenceDurationMs}ms (max 15000ms).`;
+  } else if (congestion10xTcpOrLossUsabilityCircuitBreakerTripped) {
+    action = "trip_rfc8083_congestion_or_media_usability_circuit_breaker";
+    rtpTransportFlowAccepted = false;
+    blockedReason = `RFC 8083 §4.3 / §4.4 Congestion Circuit Breaker (>10x TCP-Friendly Rate) or Media Usability Loss Circuit Breaker (>=50% Loss) Tripped on ${input.sessionId}: sendKbps=${input.actualSendBitrateKbps}, tcpEqKbps=${input.tcpEquivalentThroughputKbps}, congestionIntervals=${input.consecutiveCongestionIntervals}, lossPct=${input.sustainedFractionLostPercent}%.`;
+  } else if (pmtuBlackholeFragmentationOrDscpRemarkingPoliced) {
+    action = "bleach_unauthorized_rfc8837_dscp_and_clamp_rfc8835_pmtu";
+    rtpTransportFlowAccepted = false;
+    blockedReason = `RFC 8835 §4.2 / RFC 8837 §5 Path MTU Blackhole (<1200B), IP Fragmented RTP Amplification or Unauthorized DSCP Codepoint Remarking on ${input.sessionId}: pmtuBytes=${input.pathMtuBytes} (min 1200), rtpPacketBytes=${input.rtpPacketSizeBytes}, fragPps=${input.ipFragmentedRtpPacketsPerSecond}, unauthorizedDscp=${input.unauthorizedDscpCodepointUsed}.`;
+  }
+
+  return {
+    policyCode:
+      "P224-WEBRTC-RTP-CIRCUIT-BREAKER-TRANSPORT-RFC8083-RFC8834-RFC8835-RFC8837-RTCP-TIMEOUT-CONGESTION-COLLAPSE-TRIP-PMTU-BLACKHOLE-FRAGMENTATION-AND-DSCP-QOS-REMARKING-GUARD",
+    sessionId: input.sessionId,
+    rtcpTimeoutOrMediaTimeoutCircuitBreakerTripped,
+    congestion10xTcpOrLossUsabilityCircuitBreakerTripped,
+    pmtuBlackholeFragmentationOrDscpRemarkingPoliced,
+    rtpTransportFlowAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
