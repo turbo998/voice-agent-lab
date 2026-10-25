@@ -20809,18 +20809,171 @@ export function evaluateWebrtcSipDtlsSrtpKeyDerivationRfc5764Rfc5763Rfc8842Rfc45
   };
 }
 
+export interface ButadieneBdExtractiveDistillationNmpDmfVinylacetyleneNfpa69ApiRp521Osha1910119Osha19101051VacDecompositionPolyperoxideDetonationPopcornPolymerAndBdScbaLotoGuardInput {
+  columnOrSphereId: string;
+  c4AcetyleneVinylacetyleneMolPercent: number;
+  extractiveStripperReboilerTempCelsius: number;
+  vaporPhaseOxygenVolPercent: number;
+  butadieneSphereTempCelsius: number;
+  storageTbcInhibitorPpm: number;
+  columnFreeRadicalScavengerDehaPpm: number;
+  popcornPolymerTrayDeltaPKpa: number;
+  requestedAction:
+    | "adjust_extractive_solvent_flow_or_reboiler_duty"
+    | "transfer_butadiene_to_storage_sphere"
+    | "open_butadiene_column_or_filter_for_popcorn_cleaning";
+  ambientButadieneVaporPpm: number;
+  naohPeroxideDestructionAndWetPopcornPassivationScbaLotoVerified: boolean;
+}
 
+export interface ButadieneBdExtractiveDistillationNmpDmfVinylacetyleneNfpa69ApiRp521Osha1910119Osha19101051VacDecompositionPolyperoxideDetonationPopcornPolymerAndBdScbaLotoGuardResult {
+  policyCode: "P219-BUTADIENE-BD-EXTRACTIVE-DISTILLATION-NMP-DMF-VINYLACETYLENE-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1051-VAC-DECOMPOSITION-POLYPEROXIDE-DETONATION-POPCORN-POLYMER-AND-BD-SCBA-LOTO-GUARD";
+  columnOrSphereId: string;
+  vinylacetyleneDecompositionOrPolyperoxideDetonationPreempted: boolean;
+  butadienePopcornPolymerOrTbcDehaInhibitorDepletionInterlocked: boolean;
+  butadieneEquipmentOpeningWithoutWetPassivationScbaLotoLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "inject_c4_raffinate_diluent_trip_reboiler_steam_and_n2_blanket_in_0ms"
+    | "activate_chilled_brine_circulation_inject_emergency_tbc_and_isolate_sphere"
+    | "lock_butadiene_equipment_opening_and_enforce_wet_passivation_scba_loto"
+    | "allow_verified_butadiene_extractive_distillation_and_sphere_control";
+  blockedReason: string | null;
+}
 
+export function evaluateButadieneBdExtractiveDistillationNmpDmfVinylacetyleneNfpa69ApiRp521Osha1910119Osha19101051VacDecompositionPolyperoxideDetonationPopcornPolymerAndBdScbaLotoGuard(
+  input: ButadieneBdExtractiveDistillationNmpDmfVinylacetyleneNfpa69ApiRp521Osha1910119Osha19101051VacDecompositionPolyperoxideDetonationPopcornPolymerAndBdScbaLotoGuardInput
+): ButadieneBdExtractiveDistillationNmpDmfVinylacetyleneNfpa69ApiRp521Osha1910119Osha19101051VacDecompositionPolyperoxideDetonationPopcornPolymerAndBdScbaLotoGuardResult {
+  const vinylacetyleneDecompositionOrPolyperoxideDetonationPreempted =
+    input.c4AcetyleneVinylacetyleneMolPercent > 30.0 ||
+    input.extractiveStripperReboilerTempCelsius > 115.0 ||
+    input.vaporPhaseOxygenVolPercent >= 0.2;
 
+  const butadienePopcornPolymerOrTbcDehaInhibitorDepletionInterlocked =
+    input.butadieneSphereTempCelsius > 20.0 ||
+    input.storageTbcInhibitorPpm < 50 ||
+    input.columnFreeRadicalScavengerDehaPpm < 20 ||
+    input.popcornPolymerTrayDeltaPKpa > 35.0;
 
+  const butadieneEquipmentOpeningWithoutWetPassivationScbaLotoLocked =
+    input.requestedAction ===
+      "open_butadiene_column_or_filter_for_popcorn_cleaning" &&
+    (input.ambientButadieneVaporPpm >= 1.0 ||
+      !input.naohPeroxideDestructionAndWetPopcornPassivationScbaLotoVerified);
 
+  let action: ButadieneBdExtractiveDistillationNmpDmfVinylacetyleneNfpa69ApiRp521Osha1910119Osha19101051VacDecompositionPolyperoxideDetonationPopcornPolymerAndBdScbaLotoGuardResult["action"] =
+    "allow_verified_butadiene_extractive_distillation_and_sphere_control";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | null = null;
 
+  if (vinylacetyleneDecompositionOrPolyperoxideDetonationPreempted) {
+    action =
+      "inject_c4_raffinate_diluent_trip_reboiler_steam_and_n2_blanket_in_0ms";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 1,3-Butadiene (BD) Extractive Distillation Vinylacetylene (VAC) Self-Decomposition or Polyperoxide Detonation Preempted on ${input.columnOrSphereId}: vacMolPct=${input.c4AcetyleneVinylacetyleneMolPercent} mol% (max 30.0 mol%), reboilerTemp=${input.extractiveStripperReboilerTempCelsius}°C (max 115.0°C), vaporO2=${input.vaporPhaseOxygenVolPercent} vol% (max <0.20 vol%).`;
+  } else if (butadienePopcornPolymerOrTbcDehaInhibitorDepletionInterlocked) {
+    action =
+      "activate_chilled_brine_circulation_inject_emergency_tbc_and_isolate_sphere";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.119 / API RP 521 1,3-Butadiene (BD) Popcorn Polymer Overpressure & TBC/DEHA Inhibitor Depletion Interlock on ${input.columnOrSphereId}: sphereTemp=${input.butadieneSphereTempCelsius}°C (max 20.0°C), TBC=${input.storageTbcInhibitorPpm} ppm (min 50 ppm), DEHA=${input.columnFreeRadicalScavengerDehaPpm} ppm (min 20 ppm), trayDeltaP=${input.popcornPolymerTrayDeltaPKpa} kPa (max 35.0 kPa).`;
+  } else if (butadieneEquipmentOpeningWithoutWetPassivationScbaLotoLocked) {
+    action =
+      "lock_butadiene_equipment_opening_and_enforce_wet_passivation_scba_loto";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1051 / 1910.147 1,3-Butadiene (BD) Carcinogen PEL & Pyrophoric Popcorn Polymer / Peroxide Cleaning Entry Locked on ${input.columnOrSphereId}: ambientBD=${input.ambientButadieneVaporPpm} ppm (PEL <1.0 ppm), naohPeroxideWetPopcornScbaLoto=${input.naohPeroxideDestructionAndWetPopcornPassivationScbaLotoVerified}.`;
+  }
 
+  return {
+    policyCode:
+      "P219-BUTADIENE-BD-EXTRACTIVE-DISTILLATION-NMP-DMF-VINYLACETYLENE-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1051-VAC-DECOMPOSITION-POLYPEROXIDE-DETONATION-POPCORN-POLYMER-AND-BD-SCBA-LOTO-GUARD",
+    columnOrSphereId: input.columnOrSphereId,
+    vinylacetyleneDecompositionOrPolyperoxideDetonationPreempted,
+    butadienePopcornPolymerOrTbcDehaInhibitorDepletionInterlocked,
+    butadieneEquipmentOpeningWithoutWetPassivationScbaLotoLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
 
+export interface WebrtcSipSframeE2eeDoubleSrtpCryptexRfc9605Rfc8723Rfc9335Rfc8871KidCtrNonceReuseOhbHeaderTamperingAndCryptexCsrcsDowngradeGuardInput {
+  sessionId: string;
+  sframeHeaderTruncatedOrMalformed: boolean;
+  sframeKeyIdProvisionedInMlsOrRatchetRing: boolean;
+  sframeCounterStrictlyMonotonicOrWithinReplayWindow: boolean;
+  sframeAeadTagVerified: boolean;
+  rfc8723OhbModifiedFieldsExceedAllowedPtSeqSsrc: boolean;
+  innerE2eAndOuterHbHKeysCryptographicallyIndependent: boolean;
+  sdpNegotiatedCryptexAttribute: boolean;
+  rtpExtensionProfileUsesPlaintextBedeOr1000InsteadOfC0de: boolean;
+  csrcCountNonZeroWithoutCryptexCsrcEncryption: boolean;
+}
 
+export interface WebrtcSipSframeE2eeDoubleSrtpCryptexRfc9605Rfc8723Rfc9335Rfc8871KidCtrNonceReuseOhbHeaderTamperingAndCryptexCsrcsDowngradeGuardResult {
+  policyCode: "P220-WEBRTC-SIP-SFRAME-E2EE-DOUBLE-SRTP-CRYPTEX-RFC9605-RFC8723-RFC9335-RFC8871-KID-CTR-NONCE-REUSE-OHB-HEADER-TAMPERING-AND-CRYPTEX-CSRCS-DOWNGRADE-GUARD";
+  sessionId: string;
+  sframeMalformedHeaderNonceReuseOrAeadFailureDropped: boolean;
+  doubleSrtpOhbTamperingOrSfuKeySeparationViolationBlocked: boolean;
+  cryptexPlaintextHeaderExtensionOrCsrcDowngradeQuarantined: boolean;
+  e2eeMediaFrameAccepted: boolean;
+  action:
+    | "drop_rfc9605_sframe_malformed_header_nonce_reuse_or_aead_auth_failure_in_0ms"
+    | "reject_rfc8723_ohb_unauthorized_header_mutation_or_sfu_e2e_key_leakage"
+    | "quarantine_rfc9335_cryptex_plaintext_header_extension_or_csrc_downgrade"
+    | "accept_verified_rfc9605_sframe_rfc8723_double_srtp_and_rfc9335_cryptex_frame";
+  blockedReason: string | null;
+}
 
+export function evaluateWebrtcSipSframeE2eeDoubleSrtpCryptexRfc9605Rfc8723Rfc9335Rfc8871KidCtrNonceReuseOhbHeaderTamperingAndCryptexCsrcsDowngradeGuard(
+  input: WebrtcSipSframeE2eeDoubleSrtpCryptexRfc9605Rfc8723Rfc9335Rfc8871KidCtrNonceReuseOhbHeaderTamperingAndCryptexCsrcsDowngradeGuardInput
+): WebrtcSipSframeE2eeDoubleSrtpCryptexRfc9605Rfc8723Rfc9335Rfc8871KidCtrNonceReuseOhbHeaderTamperingAndCryptexCsrcsDowngradeGuardResult {
+  const sframeMalformedHeaderNonceReuseOrAeadFailureDropped =
+    input.sframeHeaderTruncatedOrMalformed ||
+    !input.sframeKeyIdProvisionedInMlsOrRatchetRing ||
+    !input.sframeCounterStrictlyMonotonicOrWithinReplayWindow ||
+    !input.sframeAeadTagVerified;
 
+  const doubleSrtpOhbTamperingOrSfuKeySeparationViolationBlocked =
+    input.rfc8723OhbModifiedFieldsExceedAllowedPtSeqSsrc ||
+    !input.innerE2eAndOuterHbHKeysCryptographicallyIndependent;
 
+  const cryptexPlaintextHeaderExtensionOrCsrcDowngradeQuarantined =
+    input.sdpNegotiatedCryptexAttribute &&
+    (input.rtpExtensionProfileUsesPlaintextBedeOr1000InsteadOfC0de ||
+      input.csrcCountNonZeroWithoutCryptexCsrcEncryption);
 
+  let action: WebrtcSipSframeE2eeDoubleSrtpCryptexRfc9605Rfc8723Rfc9335Rfc8871KidCtrNonceReuseOhbHeaderTamperingAndCryptexCsrcsDowngradeGuardResult["action"] =
+    "accept_verified_rfc9605_sframe_rfc8723_double_srtp_and_rfc9335_cryptex_frame";
+  let e2eeMediaFrameAccepted = true;
+  let blockedReason: string | null = null;
 
+  if (sframeMalformedHeaderNonceReuseOrAeadFailureDropped) {
+    action =
+      "drop_rfc9605_sframe_malformed_header_nonce_reuse_or_aead_auth_failure_in_0ms";
+    e2eeMediaFrameAccepted = false;
+    blockedReason = `RFC 9605 SFrame Malformed Extended Header, Unknown KID, CTR Nonce Reuse or AEAD Tag Failure on ${input.sessionId}: headerMalformed=${input.sframeHeaderTruncatedOrMalformed}, kidProvisioned=${input.sframeKeyIdProvisionedInMlsOrRatchetRing}, ctrMonotonic=${input.sframeCounterStrictlyMonotonicOrWithinReplayWindow}, aeadTagValid=${input.sframeAeadTagVerified}.`;
+  } else if (doubleSrtpOhbTamperingOrSfuKeySeparationViolationBlocked) {
+    action =
+      "reject_rfc8723_ohb_unauthorized_header_mutation_or_sfu_e2e_key_leakage";
+    e2eeMediaFrameAccepted = false;
+    blockedReason = `RFC 8723 / RFC 8871 Double-SRTP Original Header Block (OHB) Tampering or Inner E2E / Outer HbH Key Separation Violation on ${input.sessionId}: ohbUnauthorizedMutation=${input.rfc8723OhbModifiedFieldsExceedAllowedPtSeqSsrc}, e2eHbhKeyIndependent=${input.innerE2eAndOuterHbHKeysCryptographicallyIndependent}.`;
+  } else if (cryptexPlaintextHeaderExtensionOrCsrcDowngradeQuarantined) {
+    action =
+      "quarantine_rfc9335_cryptex_plaintext_header_extension_or_csrc_downgrade";
+    e2eeMediaFrameAccepted = false;
+    blockedReason = `RFC 9335 Cryptex Plaintext RTP Header Extension (0xBEDE/0x1000) or Unencrypted CSRC List Downgrade on ${input.sessionId}: cryptexNegotiated=${input.sdpNegotiatedCryptexAttribute}, plaintextExtProfile=${input.rtpExtensionProfileUsesPlaintextBedeOr1000InsteadOfC0de}, unencryptedCsrc=${input.csrcCountNonZeroWithoutCryptexCsrcEncryption}.`;
+  }
+
+  return {
+    policyCode:
+      "P220-WEBRTC-SIP-SFRAME-E2EE-DOUBLE-SRTP-CRYPTEX-RFC9605-RFC8723-RFC9335-RFC8871-KID-CTR-NONCE-REUSE-OHB-HEADER-TAMPERING-AND-CRYPTEX-CSRCS-DOWNGRADE-GUARD",
+    sessionId: input.sessionId,
+    sframeMalformedHeaderNonceReuseOrAeadFailureDropped,
+    doubleSrtpOhbTamperingOrSfuKeySeparationViolationBlocked,
+    cryptexPlaintextHeaderExtensionOrCsrcDowngradeQuarantined,
+    e2eeMediaFrameAccepted,
+    action,
+    blockedReason,
+  };
+}
 
