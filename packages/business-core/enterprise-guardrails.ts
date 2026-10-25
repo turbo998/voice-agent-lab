@@ -19508,6 +19508,221 @@ export function evaluateSipWebrtcViaRportPathServiceRouteRfc3261Rfc3581Rfc5626Rf
   };
 }
 
+// ============================================================================
+// Stage 106 (P205–P206): Bisphenol-A (BPA) / Epichlorohydrin (ECH) Liquid Epoxy
+// Resin Condensation Reactor Safety & WebRTC / RTCP TWCC / TMMBR / NACK-PLI Guard
+// ============================================================================
+
+export interface BisphenolABpaEpichlorohydrinEchEpoxyResinCondensationNfpa69ApiRp521Osha1910119GuardInput {
+  unitId: string;
+  reactorId: string;
+  stripperId: string;
+  /** Aqueous NaOH dosing rate relative to design stoichiometric feed (normal <= 1.0, trip > 1.15) */
+  causticDosingStoichiometricRatio: number;
+  /** Epoxy condensation reactor temperature in Celsius (normal 55–75 C, trip > 92.0 C) */
+  condensationReactorTempC: number;
+  /** Reactor temperature rise rate in C/min (trip > 2.0 C/min) */
+  reactorTempRiseRateCPerMin: number;
+  /** Reactor agitator and chilled-water jacket circulation healthy */
+  agitatorAndChilledJacketHealthy: boolean;
+  /** Vacuum stripping reboiler temperature in Celsius (normal 120–150 C, interlock > 165.0 C) */
+  vacuumStripperReboilerTempC: number;
+  /** Oxygen concentration in ECH/MIBK vacuum overhead in vol% (NFPA 69 limit > 1.5 vol%) */
+  vacuumOverheadOxygenVolPct: number;
+  /** Operator requested vacuum break without verified 99.99% N2 blanketing interlock */
+  unpurgedAirVacuumBreakRequested: boolean;
+  /** Ambient Epichlorohydrin (ECH) vapor concentration in ppm (ACGIH TLV / Cal-OSHA PEL = 0.5 ppm) */
+  ambientEpichlorohydrinPpm: number;
+  /** Operator requested salt-filter / centrifuge opening or resin kettle entry */
+  filterOrKettleLineBreakRequested: boolean;
+  /** Closed-loop hot MIBK/water flush (<0.1 ppm ECH), butyl-rubber suit + SCBA, and agitator DBB LOTO verified */
+  closedLoopFlushScbaAndDbbLotoVerified: boolean;
+}
+
+export interface BisphenolABpaEpichlorohydrinEchEpoxyResinCondensationNfpa69ApiRp521Osha1910119Report {
+  policyCode: "P205-BISPHENOL-A-BPA-EPICHLOROHYDRIN-ECH-EPOXY-RESIN-CONDENSATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-CAUSTIC-EXOTHERM-QUENCH-ECH-MIBK-VACUUM-FLASH-AND-ECH-VAPOR-LOTO-GUARD";
+  unitId: string;
+  reactorId: string;
+  stripperId: string;
+  causticExothermOrAgitatorLossPreempted: boolean;
+  vacuumStripperOxygenOrReboilerOverheatInterlocked: boolean;
+  echCarcinogenVaporOrFilterLotoLocked: boolean;
+  operationAllowed: boolean;
+  action:
+    | "allow_normal_bpa_ech_epoxy_condensation_and_vacuum_stripping_operation"
+    | "trip_caustic_ech_dbb_inject_mibk_phosphate_quench_and_full_chilled_water_in_0ms"
+    | "isolate_stripper_thermal_oil_block_air_vacuum_break_and_purge_with_pure_n2"
+    | "lock_salt_filter_and_resin_kettle_until_mibk_flush_scba_and_dbb_loto";
+  blockedReason: string | null;
+}
+
+export function evaluateBisphenolABpaEpichlorohydrinEchEpoxyResinCondensationNfpa69ApiRp521Osha1910119CausticExothermQuenchVacuumBreakAndEchLotoGuard(
+  input: BisphenolABpaEpichlorohydrinEchEpoxyResinCondensationNfpa69ApiRp521Osha1910119GuardInput
+): BisphenolABpaEpichlorohydrinEchEpoxyResinCondensationNfpa69ApiRp521Osha1910119Report {
+  // 1. 0ms Emergency Preemption: NaOH over-dosing (>1.15x), reactor temp > 92.0 C, dT/dt > 2.0 C/min, or agitator/jacket loss
+  const causticExothermOrAgitatorLossPreempted =
+    input.causticDosingStoichiometricRatio > 1.15 ||
+    input.condensationReactorTempC > 92.0 ||
+    input.reactorTempRiseRateCPerMin > 2.0 ||
+    !input.agitatorAndChilledJacketHealthy;
+
+  // 2. Vacuum ECH/MIBK azeotropic stripper reboiler > 165.0 C, overhead O2 > 1.5 vol% (NFPA 69), or unpurged air vacuum-break
+  const vacuumStripperOxygenOrReboilerOverheatInterlocked =
+    input.vacuumStripperReboilerTempC > 165.0 ||
+    input.vacuumOverheadOxygenVolPct > 1.5 ||
+    input.unpurgedAirVacuumBreakRequested;
+
+  // 3. Ambient ECH >= 0.5 ppm (carcinogen TLV/PEL) or filter/kettle break without closed-loop MIBK flush, SCBA & DBB LOTO
+  const echCarcinogenVaporOrFilterLotoLocked =
+    input.ambientEpichlorohydrinPpm >= 0.5 ||
+    (input.filterOrKettleLineBreakRequested &&
+      !input.closedLoopFlushScbaAndDbbLotoVerified);
+
+  let action: BisphenolABpaEpichlorohydrinEchEpoxyResinCondensationNfpa69ApiRp521Osha1910119Report["action"] =
+    "allow_normal_bpa_ech_epoxy_condensation_and_vacuum_stripping_operation";
+  let blockedReason: string | null = null;
+  let operationAllowed = true;
+
+  if (causticExothermOrAgitatorLossPreempted) {
+    action =
+      "trip_caustic_ech_dbb_inject_mibk_phosphate_quench_and_full_chilled_water_in_0ms";
+    operationAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 BPA-ECH Epoxy Exothermic Runaway Preemption on ${input.reactorId}: causticRatio=${input.causticDosingStoichiometricRatio.toFixed(2)}x (max 1.15x), reactorTemp=${input.condensationReactorTempC.toFixed(1)}C (max 92.0C), riseRate=${input.reactorTempRiseRateCPerMin.toFixed(2)}C/min, agitatorAndChilledJacketHealthy=${input.agitatorAndChilledJacketHealthy}. Tripped NaOH/ECH DBB valves and injected cold MIBK + NaH2PO4 buffer quench in 0ms.`;
+  } else if (vacuumStripperOxygenOrReboilerOverheatInterlocked) {
+    action =
+      "isolate_stripper_thermal_oil_block_air_vacuum_break_and_purge_with_pure_n2";
+    operationAllowed = false;
+    blockedReason = `NFPA 69 / OSHA 1910.119 ECH/MIBK Vacuum Stripper Flash Interlock on ${input.stripperId}: reboilerTemp=${input.vacuumStripperReboilerTempC.toFixed(1)}C (max 165.0C), overheadO2=${input.vacuumOverheadOxygenVolPct.toFixed(2)}vol% (max 1.5vol%), unpurgedAirVacuumBreak=${input.unpurgedAirVacuumBreakRequested}.`;
+  } else if (echCarcinogenVaporOrFilterLotoLocked) {
+    action =
+      "lock_salt_filter_and_resin_kettle_until_mibk_flush_scba_and_dbb_loto";
+    operationAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.147 Epichlorohydrin Carcinogen Vapor & Filter LOTO Interlock on ${input.unitId}: ambientECH=${input.ambientEpichlorohydrinPpm.toFixed(2)}ppm (limit 0.5ppm), lineBreakRequested=${input.filterOrKettleLineBreakRequested}, flushScbaLotoVerified=${input.closedLoopFlushScbaAndDbbLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P205-BISPHENOL-A-BPA-EPICHLOROHYDRIN-ECH-EPOXY-RESIN-CONDENSATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-CAUSTIC-EXOTHERM-QUENCH-ECH-MIBK-VACUUM-FLASH-AND-ECH-VAPOR-LOTO-GUARD",
+    unitId: input.unitId,
+    reactorId: input.reactorId,
+    stripperId: input.stripperId,
+    causticExothermOrAgitatorLossPreempted,
+    vacuumStripperOxygenOrReboilerOverheatInterlocked,
+    echCarcinogenVaporOrFilterLotoLocked,
+    operationAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcRtcpTwccRfc8888Rfc5104Rfc4585TransportCcChunkSpanBombTmmbrZeroBitrateSabotageAndNackPliFeedbackStormGuardInput {
+  sessionId: string;
+  /** TWCC (RTPFB FMT=15) / RFC 8888 declared packet status count (max safe 2048) */
+  twccDeclaredPacketStatusCount: number;
+  /** Actual decoded status count from Run-Length / Status-Vector chunks */
+  twccDecodedChunkStatusCount: number;
+  /** Remaining RTCP payload bytes available for recv deltas vs required delta bytes */
+  twccDeltaBytesExceedRemainingPayload: boolean;
+  /** Highest TWCC sequence number acknowledged in feedback vs highest sent by local sender */
+  twccAckedSeqExceedsHighestSentSeq: boolean;
+  /** Extreme negative or positive recv delta detected (< -500 ms or > 5000 ms) */
+  twccRecvDeltaOutOfBounds: boolean;
+  /** RFC 5104 TMMBR / REMB requested maximum bitrate in bps */
+  tmmbrRequestedMaxBitrateBps: number;
+  /** Minimum protected voice/media floor bitrate in bps (e.g., 24000 bps for Opus) */
+  minProtectedMediaFloorBps: number;
+  /** TMMBR 6-bit exponent (valid <= 32) or TMMBN bounding-set SSRC ownership conflict */
+  tmmbrExponentOverflowOrOwnerConflict: boolean;
+  /** RFC 4585 NACKed packet count requested per second (max safe 250 pkt/s) */
+  nackRequestedPacketsPerSec: number;
+  /** RFC 4585 / RFC 5104 PLI + FIR keyframe requests per second (max safe 4 req/s) */
+  pliFirKeyframeRequestsPerSec: number;
+  /** Feedback interval violated negotiated a=rtcp-fb trr-int minimum interval or PID outside RTX window */
+  trrIntViolatedOrNackOutsideRtxWindow: boolean;
+}
+
+export interface WebrtcRtcpTwccRfc8888Rfc5104Rfc4585TransportCcChunkSpanBombTmmbrZeroBitrateSabotageAndNackPliFeedbackStormReport {
+  policyCode: "P206-WEBRTC-RTCP-TWCC-RFC8888-RFC5104-RFC4585-TRANSPORT-CC-PACKET-CHUNK-SPAN-BOMB-RECV-DELTA-WRAP-TMMBR-ZERO-BITRATE-THROTTLE-SABOTAGE-AND-NACK-PLI-FEEDBACK-STORM-GUARD";
+  sessionId: string;
+  twccSpanBombOrDeltaDesyncDropped: boolean;
+  tmmbrSubFloorBitrateStarvationClamped: boolean;
+  nackRtxOrPliFirFeedbackStormThrottled: boolean;
+  effectiveTargetBitrateBps: number;
+  rtcpFeedbackAccepted: boolean;
+  action:
+    | "accept_verified_rtcp_twcc_tmmbr_and_avpf_feedback"
+    | "drop_malformed_twcc_chunk_span_bomb_or_unsent_seq_delta_desync_in_0ms"
+    | "clamp_spoofed_tmmbr_remb_zero_bitrate_starvation_to_protected_media_floor"
+    | "throttle_rtcp_nack_bitmask_rtx_amplification_and_pli_fir_keyframe_storm";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcRtcpTwccRfc8888Rfc5104Rfc4585TransportCcChunkSpanBombTmmbrZeroBitrateSabotageAndNackPliFeedbackStormGuard(
+  input: WebrtcRtcpTwccRfc8888Rfc5104Rfc4585TransportCcChunkSpanBombTmmbrZeroBitrateSabotageAndNackPliFeedbackStormGuardInput
+): WebrtcRtcpTwccRfc8888Rfc5104Rfc4585TransportCcChunkSpanBombTmmbrZeroBitrateSabotageAndNackPliFeedbackStormReport {
+  // 1. TWCC (RTPFB FMT=15) / RFC 8888 Packet Status Count span bomb (>2048), chunk count mismatch, recv delta OOB read, or unsent seq ack
+  const twccSpanBombOrDeltaDesyncDropped =
+    input.twccDeclaredPacketStatusCount <= 0 ||
+    input.twccDeclaredPacketStatusCount > 2048 ||
+    input.twccDecodedChunkStatusCount !== input.twccDeclaredPacketStatusCount ||
+    input.twccDeltaBytesExceedRemainingPayload ||
+    input.twccAckedSeqExceedsHighestSentSeq ||
+    input.twccRecvDeltaOutOfBounds;
+
+  // 2. RFC 5104 TMMBR / TMMBN / REMB zero-bitrate starvation (< minProtectedMediaFloorBps), exponent > 32, or SSRC owner conflict
+  const safeFloorBps = Math.max(16_000, input.minProtectedMediaFloorBps);
+  const tmmbrSubFloorBitrateStarvationClamped =
+    input.tmmbrRequestedMaxBitrateBps < safeFloorBps ||
+    input.tmmbrExponentOverflowOrOwnerConflict;
+
+  // 3. RFC 4585 / RFC 5104 Generic NACK bitmask RTX amplification (>250 pkt/s), PLI/FIR keyframe storm (>4/s), or trr-int violation
+  const nackRtxOrPliFirFeedbackStormThrottled =
+    input.nackRequestedPacketsPerSec > 250 ||
+    input.pliFirKeyframeRequestsPerSec > 4 ||
+    input.trrIntViolatedOrNackOutsideRtxWindow;
+
+  const effectiveTargetBitrateBps = Math.max(
+    safeFloorBps,
+    Math.min(50_000_000, input.tmmbrRequestedMaxBitrateBps)
+  );
+
+  let action: WebrtcRtcpTwccRfc8888Rfc5104Rfc4585TransportCcChunkSpanBombTmmbrZeroBitrateSabotageAndNackPliFeedbackStormReport["action"] =
+    "accept_verified_rtcp_twcc_tmmbr_and_avpf_feedback";
+  let blockedReason: string | null = null;
+  let rtcpFeedbackAccepted = true;
+
+  if (twccSpanBombOrDeltaDesyncDropped) {
+    action =
+      "drop_malformed_twcc_chunk_span_bomb_or_unsent_seq_delta_desync_in_0ms";
+    rtcpFeedbackAccepted = false;
+    blockedReason = `TWCC / RFC 8888 Packet Chunk Span Bomb or Delta OOB on ${input.sessionId}: declaredCount=${input.twccDeclaredPacketStatusCount} (max 2048), decodedCount=${input.twccDecodedChunkStatusCount}, deltaBytesOOB=${input.twccDeltaBytesExceedRemainingPayload}, unsentSeqAck=${input.twccAckedSeqExceedsHighestSentSeq}, recvDeltaOOB=${input.twccRecvDeltaOutOfBounds}.`;
+  } else if (tmmbrSubFloorBitrateStarvationClamped) {
+    action =
+      "clamp_spoofed_tmmbr_remb_zero_bitrate_starvation_to_protected_media_floor";
+    rtcpFeedbackAccepted = false;
+    blockedReason = `RFC 5104 TMMBR/REMB Bitrate Starvation Sabotage on ${input.sessionId}: requestedBitrate=${input.tmmbrRequestedMaxBitrateBps}bps (floor ${safeFloorBps}bps), exponentOrOwnerConflict=${input.tmmbrExponentOverflowOrOwnerConflict}. Clamped to ${effectiveTargetBitrateBps}bps.`;
+  } else if (nackRtxOrPliFirFeedbackStormThrottled) {
+    action =
+      "throttle_rtcp_nack_bitmask_rtx_amplification_and_pli_fir_keyframe_storm";
+    rtcpFeedbackAccepted = false;
+    blockedReason = `RFC 4585 / RFC 5104 RTCP AVPF Feedback Storm on ${input.sessionId}: nackPktsPerSec=${input.nackRequestedPacketsPerSec} (max 250), pliFirPerSec=${input.pliFirKeyframeRequestsPerSec} (max 4), trrIntOrRtxWindowViolation=${input.trrIntViolatedOrNackOutsideRtxWindow}.`;
+  }
+
+  return {
+    policyCode:
+      "P206-WEBRTC-RTCP-TWCC-RFC8888-RFC5104-RFC4585-TRANSPORT-CC-PACKET-CHUNK-SPAN-BOMB-RECV-DELTA-WRAP-TMMBR-ZERO-BITRATE-THROTTLE-SABOTAGE-AND-NACK-PLI-FEEDBACK-STORM-GUARD",
+    sessionId: input.sessionId,
+    twccSpanBombOrDeltaDesyncDropped,
+    tmmbrSubFloorBitrateStarvationClamped,
+    nackRtxOrPliFirFeedbackStormThrottled,
+    effectiveTargetBitrateBps,
+    rtcpFeedbackAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
