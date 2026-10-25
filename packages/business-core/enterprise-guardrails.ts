@@ -20638,6 +20638,178 @@ export function evaluateWebrtcSipRtpRtxRetransmissionRfc4588Rfc4585Rfc8843Rfc355
   };
 }
 
+export interface StyreneMonomerSmEthylbenzeneSteamDehydrogenationVacuumDistillationNfpa69ApiRp521Osha1910119SteamToOilRatioTripDnbpTbcInhibitorDepletionPolymerizationRunawayAndStyreneLotoGuardInput {
+  reactorOrColumnId: string;
+  steamToOilMassRatio: number;
+  steamSuperheaterTubeSkinTempCelsius: number;
+  vacuumColumnAirIngressOxygenVolPercent: number;
+  vacuumColumnBottomTempCelsius: number;
+  storageTankTempCelsius: number;
+  columnDnbpNitroxideRetarderPpm: number;
+  storageTbcInhibitorPpm: number;
+  storageDissolvedOxygenPpm: number;
+  requestedAction:
+    | "adjust_eb_feed_or_reboiler_duty"
+    | "transfer_styrene_to_rundown_storage"
+    | "open_vacuum_column_packing_manway_for_maintenance";
+  ambientStyreneVaporPpm: number;
+  polymerPopcornPassivationScbaAndLotoVerified: boolean;
+}
+
+export interface StyreneMonomerSmEthylbenzeneSteamDehydrogenationVacuumDistillationNfpa69ApiRp521Osha1910119SteamToOilRatioTripDnbpTbcInhibitorDepletionPolymerizationRunawayAndStyreneLotoGuardResult {
+  policyCode: "P217-STYRENE-MONOMER-SM-ETHYLBENZENE-STEAM-DEHYDROGENATION-VACUUM-DISTILLATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-STEAM-TO-OIL-RATIO-TRIP-DNBP-TBC-INHIBITOR-DEPLETION-POLYMERIZATION-RUNAWAY-AND-STYRENE-LOTO-GUARD";
+  reactorOrColumnId: string;
+  steamToOilDropSuperheaterOverheatOrVacuumO2IngressPreempted: boolean;
+  styreneInhibitorOrDissolvedO2DepletionPolymerizationInterlocked: boolean;
+  styrenePackingLineBreakWithoutScbaLotoLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "trip_eb_feed_and_maintain_superheated_steam_inerting_purge_in_0ms"
+    | "inject_emergency_ptz_tbc_shortstop_cut_reboiler_steam_and_chilled_quench"
+    | "lock_column_manway_entry_and_enforce_scba_and_loto"
+    | "allow_verified_sm_dehydrogenation_and_vacuum_distillation_control";
+  blockedReason: string | null;
+}
+
+export function evaluateStyreneMonomerSmEthylbenzeneSteamDehydrogenationVacuumDistillationNfpa69ApiRp521Osha1910119SteamToOilRatioTripDnbpTbcInhibitorDepletionPolymerizationRunawayAndStyreneLotoGuard(
+  input: StyreneMonomerSmEthylbenzeneSteamDehydrogenationVacuumDistillationNfpa69ApiRp521Osha1910119SteamToOilRatioTripDnbpTbcInhibitorDepletionPolymerizationRunawayAndStyreneLotoGuardInput
+): StyreneMonomerSmEthylbenzeneSteamDehydrogenationVacuumDistillationNfpa69ApiRp521Osha1910119SteamToOilRatioTripDnbpTbcInhibitorDepletionPolymerizationRunawayAndStyreneLotoGuardResult {
+  const steamToOilDropSuperheaterOverheatOrVacuumO2IngressPreempted =
+    input.steamToOilMassRatio < 1.15 ||
+    input.steamSuperheaterTubeSkinTempCelsius > 720 ||
+    input.vacuumColumnAirIngressOxygenVolPercent >= 0.5;
+
+  const styreneInhibitorOrDissolvedO2DepletionPolymerizationInterlocked =
+    input.vacuumColumnBottomTempCelsius > 105 ||
+    input.storageTankTempCelsius > 32 ||
+    input.columnDnbpNitroxideRetarderPpm < 150 ||
+    input.storageTbcInhibitorPpm < 10 ||
+    input.storageDissolvedOxygenPpm < 3.0;
+
+  const styrenePackingLineBreakWithoutScbaLotoLocked =
+    input.requestedAction === "open_vacuum_column_packing_manway_for_maintenance" &&
+    (input.ambientStyreneVaporPpm >= 20.0 ||
+      !input.polymerPopcornPassivationScbaAndLotoVerified);
+
+  let action: StyreneMonomerSmEthylbenzeneSteamDehydrogenationVacuumDistillationNfpa69ApiRp521Osha1910119SteamToOilRatioTripDnbpTbcInhibitorDepletionPolymerizationRunawayAndStyreneLotoGuardResult["action"] =
+    "allow_verified_sm_dehydrogenation_and_vacuum_distillation_control";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | null = null;
+
+  if (steamToOilDropSuperheaterOverheatOrVacuumO2IngressPreempted) {
+    action = "trip_eb_feed_and_maintain_superheated_steam_inerting_purge_in_0ms";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 Styrene Monomer (SM) Ethylbenzene Dehydrogenation & Vacuum O2 Ingress Preempted on ${input.reactorOrColumnId}: steamToOil=${input.steamToOilMassRatio} (min 1.15), superheaterSkinTemp=${input.steamSuperheaterTubeSkinTempCelsius}°C (max 720°C), vacuumO2=${input.vacuumColumnAirIngressOxygenVolPercent} vol% (max <0.5 vol%).`;
+  } else if (styreneInhibitorOrDissolvedO2DepletionPolymerizationInterlocked) {
+    action =
+      "inject_emergency_ptz_tbc_shortstop_cut_reboiler_steam_and_chilled_quench";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.119 / API RP 521 Styrene Monomer (SM) Thermal Polymerization Runaway & Inhibitor/O2 Depletion Interlock on ${input.reactorOrColumnId}: sumpTemp=${input.vacuumColumnBottomTempCelsius}°C (max 105°C), storageTemp=${input.storageTankTempCelsius}°C (max 32°C), DNBP/Nitroxide=${input.columnDnbpNitroxideRetarderPpm} ppm (min 150 ppm), TBC=${input.storageTbcInhibitorPpm} ppm (min 10 ppm), dissolvedO2=${input.storageDissolvedOxygenPpm} ppm (min 3.0 ppm).`;
+  } else if (styrenePackingLineBreakWithoutScbaLotoLocked) {
+    action = "lock_column_manway_entry_and_enforce_scba_and_loto";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.147 Styrene Monomer (SM) Vacuum Column Packing Confined-Space Entry Locked on ${input.reactorOrColumnId}: ambientStyrene=${input.ambientStyreneVaporPpm} ppm (TLV <20.0 ppm), popcornPassivationScbaLoto=${input.polymerPopcornPassivationScbaAndLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P217-STYRENE-MONOMER-SM-ETHYLBENZENE-STEAM-DEHYDROGENATION-VACUUM-DISTILLATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-STEAM-TO-OIL-RATIO-TRIP-DNBP-TBC-INHIBITOR-DEPLETION-POLYMERIZATION-RUNAWAY-AND-STYRENE-LOTO-GUARD",
+    reactorOrColumnId: input.reactorOrColumnId,
+    steamToOilDropSuperheaterOverheatOrVacuumO2IngressPreempted,
+    styreneInhibitorOrDissolvedO2DepletionPolymerizationInterlocked,
+    styrenePackingLineBreakWithoutScbaLotoLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipDtlsSrtpKeyDerivationRfc5764Rfc5763Rfc8842Rfc4568SdesPlaintextDowngradeFingerprintCertMismatchMkiCollisionAndTlsExporterLabelConfusionGuardInput {
+  sessionId: string;
+  dtlsCertFingerprintMatchesSdp: boolean;
+  sdpFingerprintHashAlgorithm: "sha-256" | "sha-384" | "sha-512" | "sha-1" | "md5";
+  sdpContainsPlaintextSdesCryptoAttribute: boolean;
+  negotiatedSrtpProtectionProfile:
+    | "SRTP_AES128_CM_HMAC_SHA1_80"
+    | "SRTP_AEAD_AES_128_GCM"
+    | "SRTP_AEAD_AES_256_GCM"
+    | "SRTP_NULL_HMAC_SHA1_80";
+  tlsExporterLabelExactMatchExtractorDtlsSrtp: boolean;
+  exportedKeyAndSaltLengthMatchesProfile: boolean;
+  packetMkiLengthMatchesSessionMkiLength: boolean;
+  packetMkiIndexProvisionedInActiveKeyring: boolean;
+  previousMasterKeyRetainedDuringRekeyGraceMs: number;
+}
+
+export interface WebrtcSipDtlsSrtpKeyDerivationRfc5764Rfc5763Rfc8842Rfc4568SdesPlaintextDowngradeFingerprintCertMismatchMkiCollisionAndTlsExporterLabelConfusionGuardResult {
+  policyCode: "P218-WEBRTC-SIP-DTLS-SRTP-KEY-DERIVATION-RFC5764-RFC5763-RFC8842-RFC4568-SDES-PLAINTEXT-DOWNGRADE-FINGERPRINT-CERT-MISMATCH-MKI-COLLISION-AND-TLS-EXPORTER-LABEL-CONFUSION-GUARD";
+  sessionId: string;
+  dtlsFingerprintMismatchWeakHashOrSdesDowngradeRejected: boolean;
+  srtpNullProfileOrTlsExporterKeySaltDesyncBlocked: boolean;
+  srtpMkiMismatchUnindexedKeyOrGraceWindowShortfallMitigated: boolean;
+  dtlsSrtpMediaSessionAllowed: boolean;
+  action:
+    | "terminate_dtls_handshake_with_fatal_alert_and_strip_sdes_crypto_in_0ms"
+    | "abort_rfc5764_srtp_key_derivation_and_reject_null_cipher_or_exporter_desync"
+    | "drop_unindexed_mki_packet_and_retain_previous_key_grace_window"
+    | "allow_verified_rfc5764_rfc8842_dtls_srtp_key_derivation_and_mki_rotation";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcSipDtlsSrtpKeyDerivationRfc5764Rfc5763Rfc8842Rfc4568SdesPlaintextDowngradeFingerprintCertMismatchMkiCollisionAndTlsExporterLabelConfusionGuard(
+  input: WebrtcSipDtlsSrtpKeyDerivationRfc5764Rfc5763Rfc8842Rfc4568SdesPlaintextDowngradeFingerprintCertMismatchMkiCollisionAndTlsExporterLabelConfusionGuardInput
+): WebrtcSipDtlsSrtpKeyDerivationRfc5764Rfc5763Rfc8842Rfc4568SdesPlaintextDowngradeFingerprintCertMismatchMkiCollisionAndTlsExporterLabelConfusionGuardResult {
+  const dtlsFingerprintMismatchWeakHashOrSdesDowngradeRejected =
+    !input.dtlsCertFingerprintMatchesSdp ||
+    input.sdpFingerprintHashAlgorithm === "sha-1" ||
+    input.sdpFingerprintHashAlgorithm === "md5" ||
+    input.sdpContainsPlaintextSdesCryptoAttribute;
+
+  const srtpNullProfileOrTlsExporterKeySaltDesyncBlocked =
+    input.negotiatedSrtpProtectionProfile === "SRTP_NULL_HMAC_SHA1_80" ||
+    !input.tlsExporterLabelExactMatchExtractorDtlsSrtp ||
+    !input.exportedKeyAndSaltLengthMatchesProfile;
+
+  const srtpMkiMismatchUnindexedKeyOrGraceWindowShortfallMitigated =
+    !input.packetMkiLengthMatchesSessionMkiLength ||
+    !input.packetMkiIndexProvisionedInActiveKeyring ||
+    input.previousMasterKeyRetainedDuringRekeyGraceMs < 2000;
+
+  let action: WebrtcSipDtlsSrtpKeyDerivationRfc5764Rfc5763Rfc8842Rfc4568SdesPlaintextDowngradeFingerprintCertMismatchMkiCollisionAndTlsExporterLabelConfusionGuardResult["action"] =
+    "allow_verified_rfc5764_rfc8842_dtls_srtp_key_derivation_and_mki_rotation";
+  let dtlsSrtpMediaSessionAllowed = true;
+  let blockedReason: string | null = null;
+
+  if (dtlsFingerprintMismatchWeakHashOrSdesDowngradeRejected) {
+    action =
+      "terminate_dtls_handshake_with_fatal_alert_and_strip_sdes_crypto_in_0ms";
+    dtlsSrtpMediaSessionAllowed = false;
+    blockedReason = `RFC 5763 / RFC 8842 / RFC 4568 DTLS Certificate Fingerprint Mismatch, Weak Hash (${input.sdpFingerprintHashAlgorithm}) or Plaintext SDES a=crypto Downgrade on ${input.sessionId}: certMatchesSdp=${input.dtlsCertFingerprintMatchesSdp}, sdesPlaintextPresent=${input.sdpContainsPlaintextSdesCryptoAttribute}.`;
+  } else if (srtpNullProfileOrTlsExporterKeySaltDesyncBlocked) {
+    action =
+      "abort_rfc5764_srtp_key_derivation_and_reject_null_cipher_or_exporter_desync";
+    dtlsSrtpMediaSessionAllowed = false;
+    blockedReason = `RFC 5764 / RFC 5705 DTLS-SRTP Null Cipher Profile (${input.negotiatedSrtpProtectionProfile}) or TLS Exporter Label / Key-Salt Length Desync on ${input.sessionId}: exporterLabelValid=${input.tlsExporterLabelExactMatchExtractorDtlsSrtp}, keySaltLenValid=${input.exportedKeyAndSaltLengthMatchesProfile}.`;
+  } else if (srtpMkiMismatchUnindexedKeyOrGraceWindowShortfallMitigated) {
+    action = "drop_unindexed_mki_packet_and_retain_previous_key_grace_window";
+    dtlsSrtpMediaSessionAllowed = false;
+    blockedReason = `RFC 5764 / RFC 3711 SRTP MKI Length/Index Mismatch or Rekey Grace Window (<2000ms) Shortfall on ${input.sessionId}: mkiLenMatch=${input.packetMkiLengthMatchesSessionMkiLength}, mkiProvisioned=${input.packetMkiIndexProvisionedInActiveKeyring}, rekeyGraceMs=${input.previousMasterKeyRetainedDuringRekeyGraceMs}ms.`;
+  }
+
+  return {
+    policyCode:
+      "P218-WEBRTC-SIP-DTLS-SRTP-KEY-DERIVATION-RFC5764-RFC5763-RFC8842-RFC4568-SDES-PLAINTEXT-DOWNGRADE-FINGERPRINT-CERT-MISMATCH-MKI-COLLISION-AND-TLS-EXPORTER-LABEL-CONFUSION-GUARD",
+    sessionId: input.sessionId,
+    dtlsFingerprintMismatchWeakHashOrSdesDowngradeRejected,
+    srtpNullProfileOrTlsExporterKeySaltDesyncBlocked,
+    srtpMkiMismatchUnindexedKeyOrGraceWindowShortfallMitigated,
+    dtlsSrtpMediaSessionAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
