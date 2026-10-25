@@ -19922,6 +19922,208 @@ export function evaluateWebrtcRtpRedUlpfecFlexfecCnRfc2198Rfc5109Rfc8627Rfc3389R
   };
 }
 
+// ============================================================================
+// Stage 108: P209 (Methyl Methacrylate MMA Acetone Cyanohydrin ACH Synthesis &
+//            Methacrylamide Sulfate Hydrolysis-Esterification Guard) &
+//            P210 (WebRTC & SIP RTP/RTCP Symmetric Latching, Multi-Stream SSRC
+//            Collision/BYE Flood & SDES CNAME/MID/RID Header Extension Guard)
+// ============================================================================
+
+export interface MmaAcetoneCyanohydrinAchHcnSynthesisMethacrylamideSulfateHydrolysisEsterificationNfpa69ApiRp521Osha1910119GuardInput {
+  unitId: string;
+  achReactorId: string;
+  mmaColumnId: string;
+  /** Acetone Cyanohydrin (ACH) synthesis reactor temperature in °C (normal 28–38°C; runaway > 42.0°C) */
+  achReactorTempC: number;
+  /** ACH reactor temperature rise rate in °C/min (safe <= 1.8°C/min) */
+  achTempRiseRateCPerMin: number;
+  /** ACH synthesis reactor pH (alkaline catalyst; > 7.8 causes violent HCN polymerization & cyanohydrin exotherm) */
+  achReactorPh: number;
+  /** Crude ACH acid-stabilization pH before distillation (must be <= 3.2 via H2SO4/H3PO4 or ACH decomposes back to HCN + acetone) */
+  achCrudeStabilizerPh: number;
+  /** Methacrylamide Sulfate (MAM) hydrolysis/amidation reactor temperature in °C (normal 125–138°C; > 145.0°C causes H2SO4 charring + CO/SO2 foaming) */
+  mamAmidationReactorTempC: number;
+  /** MMA vacuum rectification column MEHQ / Hydroquinone inhibitor concentration in ppm (safe >= 15 ppm) */
+  mmaColumnMehqInhibitorPpm: number;
+  /** MMA column dissolved oxygen concentration in ppm required to keep MEHQ inhibitor active (safe >= 2.0 ppm) */
+  mmaColumnDissolvedO2Ppm: number;
+  /** Ambient Hydrogen Cyanide (HCN) gas concentration in ppm (OSHA Ceiling / NIOSH STEL = 4.7 ppm) */
+  ambientHcnGasPpm: number;
+  /** Operator requests opening ACH filter, HCN feed pump, or MAM cooler flange */
+  requestsAchOrHcnLineBreakMaintenance: boolean;
+  /** NaOCl alkaline cyanide destruction scrubber negative pressure, Level A gas-tight suit + positive-pressure SCBA, Hydroxocobalamin antidote kit & DBB LOTO verified */
+  naoclScrubberLevelAScbaCyanideAntidoteAndLotoVerified: boolean;
+}
+
+export interface MmaAcetoneCyanohydrinAchHcnSynthesisMethacrylamideSulfateHydrolysisEsterificationNfpa69ApiRp521Osha1910119Report {
+  policyCode: "P209-MMA-ACETONE-CYANOHYDRIN-ACH-HCN-SYNTHESIS-METHACRYLAMIDE-SULFATE-HYDROLYSIS-ESTERIFICATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-ACH-PH-CYANIDE-RUNAWAY-MAM-THERMAL-FOAMING-MEHQ-INHIBITOR-AND-HCN-SCBA-LOTO-GUARD";
+  unitId: string;
+  achReactorId: string;
+  mmaColumnId: string;
+  achCyanohydrinExothermOrUnacidifiedHcnDecompositionPreempted: boolean;
+  mamCarbonizationOrMmaMehqInhibitorRunawayInterlocked: boolean;
+  hcnCeilingExposureOrAchLineBreakLotoLocked: boolean;
+  operationAllowed: boolean;
+  action:
+    | "allow_normal_mma_ach_synthesis_and_esterification"
+    | "trip_hcn_catalyst_dbb_inject_acid_stabilizer_quench_and_route_to_naocl_scrubber_in_0ms"
+    | "trip_mam_reboiler_inject_ptz_shortstop_and_restore_o2_inhibitor_ballast"
+    | "lock_out_ach_hcn_maintenance_and_enforce_naocl_scrubber_level_a_scba_antidote_loto";
+  blockedReason: string | null;
+}
+
+export function evaluateMmaAcetoneCyanohydrinAchHcnSynthesisMethacrylamideSulfateHydrolysisEsterificationNfpa69ApiRp521Osha1910119AchPhRunawayMamThermalFoamingMehqInhibitorAndHcnLotoGuard(
+  input: MmaAcetoneCyanohydrinAchHcnSynthesisMethacrylamideSulfateHydrolysisEsterificationNfpa69ApiRp521Osha1910119GuardInput
+): MmaAcetoneCyanohydrinAchHcnSynthesisMethacrylamideSulfateHydrolysisEsterificationNfpa69ApiRp521Osha1910119Report {
+  // 1. ACH reactor exotherm (> 42.0°C or > 1.8°C/min), excess alkaline catalyst (pH > 7.8), or unacidified crude ACH (pH > 3.2) decomposing to HCN
+  const achCyanohydrinExothermOrUnacidifiedHcnDecompositionPreempted =
+    input.achReactorTempC > 42.0 ||
+    input.achTempRiseRateCPerMin > 1.8 ||
+    input.achReactorPh > 7.8 ||
+    input.achCrudeStabilizerPh > 3.2;
+
+  // 2. MAM sulfate amidation thermal charring/CO foaming (> 145.0°C) or MMA column MEHQ inhibitor (< 15 ppm) / dissolved O2 (< 2.0 ppm) starvation
+  const mamCarbonizationOrMmaMehqInhibitorRunawayInterlocked =
+    input.mamAmidationReactorTempC > 145.0 ||
+    input.mmaColumnMehqInhibitorPpm < 15.0 ||
+    input.mmaColumnDissolvedO2Ppm < 2.0;
+
+  // 3. Ambient HCN gas >= 4.7 ppm (OSHA Ceiling / NIOSH STEL) or ACH/HCN maintenance without NaOCl scrubber, Level A + SCBA, Hydroxocobalamin kit & DBB LOTO
+  const hcnCeilingExposureOrAchLineBreakLotoLocked =
+    input.ambientHcnGasPpm >= 4.7 ||
+    (input.requestsAchOrHcnLineBreakMaintenance &&
+      !input.naoclScrubberLevelAScbaCyanideAntidoteAndLotoVerified);
+
+  let action: MmaAcetoneCyanohydrinAchHcnSynthesisMethacrylamideSulfateHydrolysisEsterificationNfpa69ApiRp521Osha1910119Report["action"] =
+    "allow_normal_mma_ach_synthesis_and_esterification";
+  let blockedReason: string | null = null;
+  let operationAllowed = true;
+
+  if (achCyanohydrinExothermOrUnacidifiedHcnDecompositionPreempted) {
+    action =
+      "trip_hcn_catalyst_dbb_inject_acid_stabilizer_quench_and_route_to_naocl_scrubber_in_0ms";
+    operationAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 MMA Acetone Cyanohydrin (ACH) Synthesis Exotherm or Unacidified HCN Decomposition on ${input.unitId}/${input.achReactorId}: temp=${input.achReactorTempC.toFixed(1)}°C (max 42.0°C), dT/dt=${input.achTempRiseRateCPerMin.toFixed(2)}°C/min (max 1.8°C/min), reactorPh=${input.achReactorPh.toFixed(2)} (max 7.8), stabilizerPh=${input.achCrudeStabilizerPh.toFixed(2)} (max 3.2).`;
+  } else if (mamCarbonizationOrMmaMehqInhibitorRunawayInterlocked) {
+    action =
+      "trip_mam_reboiler_inject_ptz_shortstop_and_restore_o2_inhibitor_ballast";
+    operationAllowed = false;
+    blockedReason = `NFPA 69 / OSHA 1910.119 MAM Sulfate Carbonization or MMA Column Autopolymerization Risk on ${input.unitId}/${input.mmaColumnId}: mamTemp=${input.mamAmidationReactorTempC.toFixed(1)}°C (max 145.0°C), mehqPpm=${input.mmaColumnMehqInhibitorPpm.toFixed(1)} (min 15.0 ppm), dissolvedO2Ppm=${input.mmaColumnDissolvedO2Ppm.toFixed(2)} (min 2.0 ppm).`;
+  } else if (hcnCeilingExposureOrAchLineBreakLotoLocked) {
+    action =
+      "lock_out_ach_hcn_maintenance_and_enforce_naocl_scrubber_level_a_scba_antidote_loto";
+    operationAllowed = false;
+    blockedReason = `OSHA 29 CFR 1910.1000 / 1910.147 Hydrogen Cyanide (HCN) Ceiling Exposure or Unverified ACH Line-Break LOTO on ${input.unitId}: ambientHcnPpm=${input.ambientHcnGasPpm.toFixed(2)} (max 4.7 ppm), maintenanceRequested=${input.requestsAchOrHcnLineBreakMaintenance}, naoclScrubberLevelAScbaAntidoteLoto=${input.naoclScrubberLevelAScbaCyanideAntidoteAndLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P209-MMA-ACETONE-CYANOHYDRIN-ACH-HCN-SYNTHESIS-METHACRYLAMIDE-SULFATE-HYDROLYSIS-ESTERIFICATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-ACH-PH-CYANIDE-RUNAWAY-MAM-THERMAL-FOAMING-MEHQ-INHIBITOR-AND-HCN-SCBA-LOTO-GUARD",
+    unitId: input.unitId,
+    achReactorId: input.achReactorId,
+    mmaColumnId: input.mmaColumnId,
+    achCyanohydrinExothermOrUnacidifiedHcnDecompositionPreempted,
+    mamCarbonizationOrMmaMehqInhibitorRunawayInterlocked,
+    hcnCeilingExposureOrAchLineBreakLotoLocked,
+    operationAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipRtpRtcpSymmetricLatchingSsrcCollisionSdesRfc4961Rfc5576Rfc7941Rfc8108GuardInput {
+  sessionId: string;
+  /** Remote peer attempts to rebind symmetric RTP/RTCP source IP:port without ICE consent or verified SRTP authentication tag */
+  unauthenticatedSymmetricRtpSourceIpPortRebindDetected: boolean;
+  /** RTP CSRC count (CC field, 0..15) declared in fixed header */
+  rtpCsrcCount: number;
+  /** Total received RTP packet byte length (fixed 12B + 4*CC must not exceed packet length) */
+  rtpPacketTotalBytes: number;
+  /** Number of distinct SSRCs advertised or injected in the single RTP session (max safe = 32) */
+  activeSessionSsrcCount: number;
+  /** Incoming RTP/RTCP packet spoofs the gateway's own local SSRC to trigger a continuous RFC 3550/8108 collision loop */
+  remotePacketCollidesWithLocalGatewaySsrc: boolean;
+  /** Unauthenticated RTCP BYE (PT=203) attempts to tear down an active SDP-signaled voice SSRC mid-utterance */
+  unauthenticatedRtcpByeTargetsActiveVoiceSsrc: boolean;
+  /** RFC 7941 RTP/RTCP SDES item (CNAME / MID / RID) declared byte length exceeds remaining extension/chunk bytes or > 255B */
+  sdesItemDeclaredLengthOverreadsBuffer: boolean;
+  /** SDES MID or CNAME contains NUL/control characters or attempts cross-m-line MID rebinding for an already-bound SSRC */
+  sdesMidContainsControlCharsOrCrossMlineRebind: boolean;
+}
+
+export interface WebrtcSipRtpRtcpSymmetricLatchingSsrcCollisionSdesRfc4961Rfc5576Rfc7941Rfc8108Report {
+  policyCode: "P210-WEBRTC-SIP-RTP-RTCP-SYMMETRIC-LATCHING-SSRC-COLLISION-SDES-RFC4961-RFC5576-RFC7941-RFC8108-UNAUTHENTICATED-NAT-REBIND-HIJACK-SSRC-BYE-FLOOD-CSRC-OVERREAD-AND-SDES-MID-RID-SPOOFING-GUARD";
+  sessionId: string;
+  symmetricRtpRebindOrCsrcHeaderOverreadBlocked: boolean;
+  ssrcCollisionExhaustionOrSpoofedRtcpByeBlocked: boolean;
+  sdesLengthOverreadOrCrossMlineMidRebindBlocked: boolean;
+  rtpRtcpSsrcSdesAccepted: boolean;
+  action:
+    | "accept_verified_symmetric_rtp_ssrc_and_sdes_binding"
+    | "block_rfc4961_unauthenticated_symmetric_rtp_rebind_or_csrc_overread_in_0ms"
+    | "block_rfc8108_rfc5576_ssrc_collision_exhaustion_or_spoofed_rtcp_bye"
+    | "reject_rfc7941_sdes_cname_mid_rid_length_overread_or_cross_mline_rebind";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcSipRtpRtcpSymmetricLatchingSsrcCollisionSdesRfc4961Rfc5576Rfc7941Rfc8108NatRebindHijackSsrcByeFloodCsrcOverreadAndSdesMidSpoofGuard(
+  input: WebrtcSipRtpRtcpSymmetricLatchingSsrcCollisionSdesRfc4961Rfc5576Rfc7941Rfc8108GuardInput
+): WebrtcSipRtpRtcpSymmetricLatchingSsrcCollisionSdesRfc4961Rfc5576Rfc7941Rfc8108Report {
+  // 1. RFC 4961 unauthenticated symmetric RTP/RTCP source IP:port rebinding hijack or RFC 3550 CSRC list (12 + 4*CC) header over-read
+  const symmetricRtpRebindOrCsrcHeaderOverreadBlocked =
+    input.unauthenticatedSymmetricRtpSourceIpPortRebindDetected ||
+    input.rtpCsrcCount < 0 ||
+    input.rtpCsrcCount > 15 ||
+    12 + input.rtpCsrcCount * 4 > input.rtpPacketTotalBytes;
+
+  // 2. RFC 8108 / RFC 5576 SSRC table exhaustion (> 32 SSRCs), spoofed local-SSRC collision loop, or unauthenticated RTCP BYE stream assassination
+  const ssrcCollisionExhaustionOrSpoofedRtcpByeBlocked =
+    input.activeSessionSsrcCount <= 0 ||
+    input.activeSessionSsrcCount > 32 ||
+    input.remotePacketCollidesWithLocalGatewaySsrc ||
+    input.unauthenticatedRtcpByeTargetsActiveVoiceSsrc;
+
+  // 3. RFC 7941 SDES (CNAME / MID / RID) declared length buffer over-read, control-char injection, or cross-m-line MID rebinding
+  const sdesLengthOverreadOrCrossMlineMidRebindBlocked =
+    input.sdesItemDeclaredLengthOverreadsBuffer ||
+    input.sdesMidContainsControlCharsOrCrossMlineRebind;
+
+  let action: WebrtcSipRtpRtcpSymmetricLatchingSsrcCollisionSdesRfc4961Rfc5576Rfc7941Rfc8108Report["action"] =
+    "accept_verified_symmetric_rtp_ssrc_and_sdes_binding";
+  let blockedReason: string | null = null;
+  let rtpRtcpSsrcSdesAccepted = true;
+
+  if (symmetricRtpRebindOrCsrcHeaderOverreadBlocked) {
+    action =
+      "block_rfc4961_unauthenticated_symmetric_rtp_rebind_or_csrc_overread_in_0ms";
+    rtpRtcpSsrcSdesAccepted = false;
+    blockedReason = `RFC 4961 / RFC 3550 Unauthenticated Symmetric RTP Rebind or CSRC Header Overread on ${input.sessionId}: unauthRebind=${input.unauthenticatedSymmetricRtpSourceIpPortRebindDetected}, csrcCount=${input.rtpCsrcCount} (requires ${12 + input.rtpCsrcCount * 4}B, packetBytes=${input.rtpPacketTotalBytes}B).`;
+  } else if (ssrcCollisionExhaustionOrSpoofedRtcpByeBlocked) {
+    action =
+      "block_rfc8108_rfc5576_ssrc_collision_exhaustion_or_spoofed_rtcp_bye";
+    rtpRtcpSsrcSdesAccepted = false;
+    blockedReason = `RFC 8108 / RFC 5576 Multi-Stream SSRC Exhaustion, Collision Loop or Spoofed RTCP BYE on ${input.sessionId}: activeSsrcCount=${input.activeSessionSsrcCount} (max 32), localSsrcCollision=${input.remotePacketCollidesWithLocalGatewaySsrc}, unauthRtcpBye=${input.unauthenticatedRtcpByeTargetsActiveVoiceSsrc}.`;
+  } else if (sdesLengthOverreadOrCrossMlineMidRebindBlocked) {
+    action =
+      "reject_rfc7941_sdes_cname_mid_rid_length_overread_or_cross_mline_rebind";
+    rtpRtcpSsrcSdesAccepted = false;
+    blockedReason = `RFC 7941 / RFC 8843 SDES CNAME/MID/RID Overread or Cross-m-Line Rebind on ${input.sessionId}: lengthOverread=${input.sdesItemDeclaredLengthOverreadsBuffer}, controlCharsOrCrossMlineMid=${input.sdesMidContainsControlCharsOrCrossMlineRebind}.`;
+  }
+
+  return {
+    policyCode:
+      "P210-WEBRTC-SIP-RTP-RTCP-SYMMETRIC-LATCHING-SSRC-COLLISION-SDES-RFC4961-RFC5576-RFC7941-RFC8108-UNAUTHENTICATED-NAT-REBIND-HIJACK-SSRC-BYE-FLOOD-CSRC-OVERREAD-AND-SDES-MID-RID-SPOOFING-GUARD",
+    sessionId: input.sessionId,
+    symmetricRtpRebindOrCsrcHeaderOverreadBlocked,
+    ssrcCollisionExhaustionOrSpoofedRtcpByeBlocked,
+    sdesLengthOverreadOrCrossMlineMidRebindBlocked,
+    rtpRtcpSsrcSdesAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
