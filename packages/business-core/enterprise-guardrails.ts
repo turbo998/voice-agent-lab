@@ -20295,6 +20295,177 @@ export function evaluateWebrtcSipIceStunTurnRfc8445Rfc5389Rfc8656Rfc7675RoleConf
   };
 }
 
+// ============================================================================
+// Stage 110 — P213: Vinyl Acetate Monomer (VAM — Ethylene + Acetic Acid + O2
+//             Pd-Au Gas-Phase Acetoxylation & Hydroquinone Inhibitor-Depleted
+//             Polymerization NFPA 69 / API RP 521 / OSHA 1910.119 / 1910.1000)
+//             & P214: WebRTC & SIP Trickle ICE & SIP INFO SDP-Frag (RFC 8838 /
+//             RFC 8840 / RFC 6086 / RFC 8445) Candidate Flood, Premature
+//             End-of-Candidates, Generation ufrag Mismatch & 469 Bad Info Guard
+// ============================================================================
+
+export interface VinylAcetateMonomerVamEthyleneAceticAcidPdAuAcetoxylationNfpa69ApiRp521Osha1910119O2RunawayHydroquinonePolymerizationAndVamScbaLotoGuardInput {
+  reactorTrainId: string;
+  acetoxylationCycleGasO2MolPct: number;
+  pdAuCatalystBedPeakTempC: number;
+  catalystBedTempRiseRateCPerMin: number;
+  steamDrumBfwCoolingAndRecycleGasCompressorHealthy: boolean;
+  vamColumnHydroquinoneInhibitorPpm: number;
+  vamStorageTankHydroquinonePpm: number;
+  vamStorageTankBulkTempC: number;
+  vamColumnReboilerSkinTempC: number;
+  ambientVamOrAceticAcidVaporPpm: number;
+  closedLoopVaporScrubberAndLevelAScbaDbbLotoVerified: boolean;
+  operatorRequestsVamColumnOrCatalystTubeLineBreak: boolean;
+}
+
+export interface VinylAcetateMonomerVamEthyleneAceticAcidPdAuAcetoxylationNfpa69ApiRp521Osha1910119O2RunawayHydroquinonePolymerizationAndVamScbaLotoGuardResult {
+  policyCode: "P213-VINYL-ACETATE-MONOMER-VAM-ETHYLENE-ACETIC-ACID-PD-AU-ACETOXYLATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-O2-FLAMMABLE-ENVELOPE-COMBUSTION-RUNAWAY-HYDROQUINONE-POLYMERIZATION-AND-VAM-SCBA-LOTO-GUARD";
+  reactorTrainId: string;
+  acetoxylationO2BreakthroughOrCombustionRunawayPreempted: boolean;
+  vamHydroquinoneDepletionOrFreeRadicalPolymerizationInterlocked: boolean;
+  vamAceticAcidLineBreakWithoutScbaLotoLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "preempt_0ms_trip_o2_sparger_dbb_inject_n2_purge_ballast_and_vent_to_flare_scrubber"
+    | "interlock_vam_reboiler_steam_inject_ptz_hydroquinone_shortstop_and_activate_chilled_water"
+    | "lock_vam_column_catalyst_line_break_until_vapor_below_10ppm_scrubber_and_scba_loto_verified"
+    | "allow_vam_pd_au_acetoxylation_and_inhibited_distillation_operation";
+  blockedReason: string | null;
+}
+
+export function evaluateVinylAcetateMonomerVamEthyleneAceticAcidPdAuAcetoxylationNfpa69ApiRp521Osha1910119O2RunawayHydroquinonePolymerizationAndVamScbaLotoGuard(
+  input: VinylAcetateMonomerVamEthyleneAceticAcidPdAuAcetoxylationNfpa69ApiRp521Osha1910119O2RunawayHydroquinonePolymerizationAndVamScbaLotoGuardInput
+): VinylAcetateMonomerVamEthyleneAceticAcidPdAuAcetoxylationNfpa69ApiRp521Osha1910119O2RunawayHydroquinonePolymerizationAndVamScbaLotoGuardResult {
+  const acetoxylationO2BreakthroughOrCombustionRunawayPreempted =
+    input.acetoxylationCycleGasO2MolPct > 7.5 ||
+    input.pdAuCatalystBedPeakTempC > 195.0 ||
+    input.catalystBedTempRiseRateCPerMin > 2.0 ||
+    !input.steamDrumBfwCoolingAndRecycleGasCompressorHealthy;
+
+  const vamHydroquinoneDepletionOrFreeRadicalPolymerizationInterlocked =
+    input.vamColumnHydroquinoneInhibitorPpm < 3.0 ||
+    input.vamStorageTankHydroquinonePpm < 14.0 ||
+    input.vamStorageTankBulkTempC > 35.0 ||
+    input.vamColumnReboilerSkinTempC > 115.0;
+
+  const vamAceticAcidLineBreakWithoutScbaLotoLocked =
+    input.operatorRequestsVamColumnOrCatalystTubeLineBreak &&
+    (input.ambientVamOrAceticAcidVaporPpm >= 10.0 ||
+      !input.closedLoopVaporScrubberAndLevelAScbaDbbLotoVerified);
+
+  let action: VinylAcetateMonomerVamEthyleneAceticAcidPdAuAcetoxylationNfpa69ApiRp521Osha1910119O2RunawayHydroquinonePolymerizationAndVamScbaLotoGuardResult["action"] =
+    "allow_vam_pd_au_acetoxylation_and_inhibited_distillation_operation";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | null = null;
+
+  if (acetoxylationO2BreakthroughOrCombustionRunawayPreempted) {
+    action =
+      "preempt_0ms_trip_o2_sparger_dbb_inject_n2_purge_ballast_and_vent_to_flare_scrubber";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 VAM Pd-Au Acetoxylation O2 Flammable Envelope or CO2 Combustion Runaway Preempted on ${input.reactorTrainId}: cycleGasO2=${input.acetoxylationCycleGasO2MolPct} mol% (max 7.5 mol%), bedPeakTemp=${input.pdAuCatalystBedPeakTempC}°C (max 195.0°C), dT/dt=${input.catalystBedTempRiseRateCPerMin}°C/min (max 2.0°C/min), steamDrumAndCompressorHealthy=${input.steamDrumBfwCoolingAndRecycleGasCompressorHealthy}.`;
+  } else if (vamHydroquinoneDepletionOrFreeRadicalPolymerizationInterlocked) {
+    action =
+      "interlock_vam_reboiler_steam_inject_ptz_hydroquinone_shortstop_and_activate_chilled_water";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / OSHA 1910.119 VAM Hydroquinone Inhibitor Depletion or Peroxide Free-Radical Polymerization Interlocked on ${input.reactorTrainId}: columnHQ=${input.vamColumnHydroquinoneInhibitorPpm} ppm (min 3.0 ppm), storageHQ=${input.vamStorageTankHydroquinonePpm} ppm (min 14.0 ppm), tankTemp=${input.vamStorageTankBulkTempC}°C (max 35.0°C), reboilerSkinTemp=${input.vamColumnReboilerSkinTempC}°C (max 115.0°C).`;
+  } else if (vamAceticAcidLineBreakWithoutScbaLotoLocked) {
+    action =
+      "lock_vam_column_catalyst_line_break_until_vapor_below_10ppm_scrubber_and_scba_loto_verified";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.147 VAM / Acetic Acid Vapor Line-Break Locked on ${input.reactorTrainId}: ambientVapor=${input.ambientVamOrAceticAcidVaporPpm} ppm (ceiling <10.0 ppm), vaporScrubberAndScbaLotoVerified=${input.closedLoopVaporScrubberAndLevelAScbaDbbLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P213-VINYL-ACETATE-MONOMER-VAM-ETHYLENE-ACETIC-ACID-PD-AU-ACETOXYLATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-O2-FLAMMABLE-ENVELOPE-COMBUSTION-RUNAWAY-HYDROQUINONE-POLYMERIZATION-AND-VAM-SCBA-LOTO-GUARD",
+    reactorTrainId: input.reactorTrainId,
+    acetoxylationO2BreakthroughOrCombustionRunawayPreempted,
+    vamHydroquinoneDepletionOrFreeRadicalPolymerizationInterlocked,
+    vamAceticAcidLineBreakWithoutScbaLotoLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipTrickleIceSdpfragInfoPackageRfc8838Rfc8840Rfc6086Rfc8445CandidateFloodPrematureEndOfCandidatesGenerationMismatchAnd469BadInfoPackageGuardInput {
+  sessionId: string;
+  trickleCandidatesReceivedCount: number;
+  trickleCandidateRatePerSec: number;
+  containsBogusLoopbackMulticastOrUnresolvableMdnsCandidate: boolean;
+  sdpfragIceUfragPwdMatchesActiveGeneration: boolean;
+  endOfCandidatesSignaledWithZeroValidPairs: boolean;
+  sipInfoPackageHeaderMatchesNegotiatedRecvInfo: boolean;
+  legacyUnnegotiatedSipInfoBodySmugglingDetected: boolean;
+}
+
+export interface WebrtcSipTrickleIceSdpfragInfoPackageRfc8838Rfc8840Rfc6086Rfc8445CandidateFloodPrematureEndOfCandidatesGenerationMismatchAnd469BadInfoPackageGuardResult {
+  policyCode: "P214-WEBRTC-SIP-TRICKLE-ICE-SDPFRAG-INFO-PACKAGE-RFC8838-RFC8840-RFC6086-RFC8445-CANDIDATE-PAIR-FLOOD-PREMATURE-END-OF-CANDIDATES-GENERATION-UFRAG-MISMATCH-AND-469-BAD-INFO-PACKAGE-GUARD";
+  sessionId: string;
+  trickleCandidatePairChecklistFloodOrBogusAddressDropped: boolean;
+  staleIceGenerationUfragOrPrematureEndOfCandidatesBlocked: boolean;
+  unnegotiatedSipInfoPackage469Rejected: boolean;
+  trickleIceSdpfragAccepted: boolean;
+  action:
+    | "drop_rfc8838_rfc8445_trickle_candidate_checklist_flood_or_bogus_address_in_0ms"
+    | "reject_rfc8840_stale_ice_generation_ufrag_or_premature_end_of_candidates_sabotage"
+    | "reject_rfc6086_unnegotiated_or_smuggled_sip_info_package_with_469_bad_info_package"
+    | "accept_verified_trickle_ice_sdpfrag_and_rfc6086_info_package";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcSipTrickleIceSdpfragInfoPackageRfc8838Rfc8840Rfc6086Rfc8445CandidateFloodPrematureEndOfCandidatesGenerationMismatchAnd469BadInfoPackageGuard(
+  input: WebrtcSipTrickleIceSdpfragInfoPackageRfc8838Rfc8840Rfc6086Rfc8445CandidateFloodPrematureEndOfCandidatesGenerationMismatchAnd469BadInfoPackageGuardInput
+): WebrtcSipTrickleIceSdpfragInfoPackageRfc8838Rfc8840Rfc6086Rfc8445CandidateFloodPrematureEndOfCandidatesGenerationMismatchAnd469BadInfoPackageGuardResult {
+  const trickleCandidatePairChecklistFloodOrBogusAddressDropped =
+    input.trickleCandidatesReceivedCount > 64 ||
+    input.trickleCandidateRatePerSec > 20 ||
+    input.containsBogusLoopbackMulticastOrUnresolvableMdnsCandidate;
+
+  const staleIceGenerationUfragOrPrematureEndOfCandidatesBlocked =
+    !input.sdpfragIceUfragPwdMatchesActiveGeneration ||
+    input.endOfCandidatesSignaledWithZeroValidPairs;
+
+  const unnegotiatedSipInfoPackage469Rejected =
+    !input.sipInfoPackageHeaderMatchesNegotiatedRecvInfo ||
+    input.legacyUnnegotiatedSipInfoBodySmugglingDetected;
+
+  let action: WebrtcSipTrickleIceSdpfragInfoPackageRfc8838Rfc8840Rfc6086Rfc8445CandidateFloodPrematureEndOfCandidatesGenerationMismatchAnd469BadInfoPackageGuardResult["action"] =
+    "accept_verified_trickle_ice_sdpfrag_and_rfc6086_info_package";
+  let trickleIceSdpfragAccepted = true;
+  let blockedReason: string | null = null;
+
+  if (trickleCandidatePairChecklistFloodOrBogusAddressDropped) {
+    action =
+      "drop_rfc8838_rfc8445_trickle_candidate_checklist_flood_or_bogus_address_in_0ms";
+    trickleIceSdpfragAccepted = false;
+    blockedReason = `RFC 8838 / RFC 8445 Trickle ICE Candidate Checklist Flood or Bogus Address on ${input.sessionId}: count=${input.trickleCandidatesReceivedCount} (max 64), rate=${input.trickleCandidateRatePerSec}/s (max 20/s), bogusAddress=${input.containsBogusLoopbackMulticastOrUnresolvableMdnsCandidate}.`;
+  } else if (staleIceGenerationUfragOrPrematureEndOfCandidatesBlocked) {
+    action =
+      "reject_rfc8840_stale_ice_generation_ufrag_or_premature_end_of_candidates_sabotage";
+    trickleIceSdpfragAccepted = false;
+    blockedReason = `RFC 8838 / RFC 8840 Stale ICE Generation ufrag/pwd Mismatch or Premature a=end-of-candidates Sabotage on ${input.sessionId}: generationMatches=${input.sdpfragIceUfragPwdMatchesActiveGeneration}, prematureEocZeroValidPairs=${input.endOfCandidatesSignaledWithZeroValidPairs}.`;
+  } else if (unnegotiatedSipInfoPackage469Rejected) {
+    action =
+      "reject_rfc6086_unnegotiated_or_smuggled_sip_info_package_with_469_bad_info_package";
+    trickleIceSdpfragAccepted = false;
+    blockedReason = `RFC 6086 SIP INFO Package Negotiation Violation (469 Bad Info Package) on ${input.sessionId}: infoPackageMatchesRecvInfo=${input.sipInfoPackageHeaderMatchesNegotiatedRecvInfo}, legacyBodySmuggling=${input.legacyUnnegotiatedSipInfoBodySmugglingDetected}.`;
+  }
+
+  return {
+    policyCode:
+      "P214-WEBRTC-SIP-TRICKLE-ICE-SDPFRAG-INFO-PACKAGE-RFC8838-RFC8840-RFC6086-RFC8445-CANDIDATE-PAIR-FLOOD-PREMATURE-END-OF-CANDIDATES-GENERATION-UFRAG-MISMATCH-AND-469-BAD-INFO-PACKAGE-GUARD",
+    sessionId: input.sessionId,
+    trickleCandidatePairChecklistFloodOrBogusAddressDropped,
+    staleIceGenerationUfragOrPrematureEndOfCandidatesBlocked,
+    unnegotiatedSipInfoPackage469Rejected,
+    trickleIceSdpfragAccepted,
+    action,
+    blockedReason,
+  };
+}
+
 
 
 
