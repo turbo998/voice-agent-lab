@@ -20466,6 +20466,179 @@ export function evaluateWebrtcSipTrickleIceSdpfragInfoPackageRfc8838Rfc8840Rfc60
   };
 }
 
+// ============================================================================
+// Stage 111 — P215: Propylene Oxide (PO — EBHP / TBHP Hydroperoxide & HPPO TS-1
+//             Epoxidation Peroxide Decomposition, O2 Vapor Explosion &
+//             Acid/Base-Catalyzed Polymerization NFPA 69 / API RP 521 /
+//             OSHA 1910.119 / 1910.1000)
+//             & P216: WebRTC & SIP RTP Retransmission (RTX) & FID SSRC
+//             Multiplexing (RFC 4588 / RFC 4585 / RFC 8843 / RFC 3550) OSN
+//             Truncation, Self-Referencing apt Loop, Out-of-Window Replay &
+//             Unassociated FID SSRC Hijack Guard
+// ============================================================================
+
+export interface PropyleneOxidePoEbhpTbhpHppoTs1EpoxidationNfpa69ApiRp521Osha1910119PeroxideDecompositionO2ExplosionPolymerizationAndPoScbaLotoGuardInput {
+  reactorTrainId: string;
+  ebhpTbhpPeroxideConcentratorTempC: number;
+  hppoTs1EpoxidationReactorTempC: number;
+  peroxideTempRiseRateCPerMin: number;
+  epoxidationOverheadO2MolPct: number;
+  chilledMethanolSolventQuenchAndN2BallastHealthy: boolean;
+  poFinishingColumnReboilerSkinTempC: number;
+  poStorageDissolvedIronFePpm: number;
+  poStorageBulkPh: number;
+  ambientPoVaporPpm: number;
+  copperFreeNonSparkingToolsInertPurgeAndLevelAScbaLotoVerified: boolean;
+  operatorRequestsPoSphereOrEpoxidationLineBreak: boolean;
+}
+
+export interface PropyleneOxidePoEbhpTbhpHppoTs1EpoxidationNfpa69ApiRp521Osha1910119PeroxideDecompositionO2ExplosionPolymerizationAndPoScbaLotoGuardResult {
+  policyCode: "P215-PROPYLENE-OXIDE-PO-EBHP-TBHP-HPPO-TS1-EPOXIDATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-PEROXIDE-DECOMPOSITION-EXOTHERM-O2-VAPOR-EXPLOSION-PROPIONALDEHYDE-POLYMERIZATION-AND-PO-SCBA-LOTO-GUARD";
+  reactorTrainId: string;
+  peroxideDecompositionExothermOrO2VaporExplosionPreempted: boolean;
+  poReboilerOverheatOrCatalyticPolymerizationInterlocked: boolean;
+  poCarcinogenicVaporLineBreakWithoutScbaLotoLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "preempt_0ms_trip_ebhp_h2o2_peroxide_dbb_inject_cold_solvent_quench_and_n2_ballast"
+    | "interlock_po_reboiler_steam_isolate_fe_acid_base_contamination_and_circulate_chilled_water"
+    | "lock_po_sphere_epoxidation_line_break_until_po_below_2ppm_inert_purge_and_scba_loto_verified"
+    | "allow_po_ebhp_tbhp_hppo_epoxidation_and_distillation_operation";
+  blockedReason: string | null;
+}
+
+export function evaluatePropyleneOxidePoEbhpTbhpHppoTs1EpoxidationNfpa69ApiRp521Osha1910119PeroxideDecompositionO2ExplosionPolymerizationAndPoScbaLotoGuard(
+  input: PropyleneOxidePoEbhpTbhpHppoTs1EpoxidationNfpa69ApiRp521Osha1910119PeroxideDecompositionO2ExplosionPolymerizationAndPoScbaLotoGuardInput
+): PropyleneOxidePoEbhpTbhpHppoTs1EpoxidationNfpa69ApiRp521Osha1910119PeroxideDecompositionO2ExplosionPolymerizationAndPoScbaLotoGuardResult {
+  const peroxideDecompositionExothermOrO2VaporExplosionPreempted =
+    input.ebhpTbhpPeroxideConcentratorTempC > 135.0 ||
+    input.hppoTs1EpoxidationReactorTempC > 68.0 ||
+    input.peroxideTempRiseRateCPerMin > 3.0 ||
+    input.epoxidationOverheadO2MolPct > 8.0 ||
+    !input.chilledMethanolSolventQuenchAndN2BallastHealthy;
+
+  const poReboilerOverheatOrCatalyticPolymerizationInterlocked =
+    input.poFinishingColumnReboilerSkinTempC > 95.0 ||
+    input.poStorageDissolvedIronFePpm > 2.0 ||
+    input.poStorageBulkPh < 6.0 ||
+    input.poStorageBulkPh > 9.0;
+
+  const poCarcinogenicVaporLineBreakWithoutScbaLotoLocked =
+    input.operatorRequestsPoSphereOrEpoxidationLineBreak &&
+    (input.ambientPoVaporPpm >= 2.0 ||
+      !input.copperFreeNonSparkingToolsInertPurgeAndLevelAScbaLotoVerified);
+
+  let action: PropyleneOxidePoEbhpTbhpHppoTs1EpoxidationNfpa69ApiRp521Osha1910119PeroxideDecompositionO2ExplosionPolymerizationAndPoScbaLotoGuardResult["action"] =
+    "allow_po_ebhp_tbhp_hppo_epoxidation_and_distillation_operation";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | null = null;
+
+  if (peroxideDecompositionExothermOrO2VaporExplosionPreempted) {
+    action =
+      "preempt_0ms_trip_ebhp_h2o2_peroxide_dbb_inject_cold_solvent_quench_and_n2_ballast";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 Propylene Oxide (PO) EBHP/TBHP/HPPO Peroxide Decomposition or O2 Vapor Explosion Preempted on ${input.reactorTrainId}: ebhpTemp=${input.ebhpTbhpPeroxideConcentratorTempC}°C (max 135.0°C), hppoTemp=${input.hppoTs1EpoxidationReactorTempC}°C (max 68.0°C), dT/dt=${input.peroxideTempRiseRateCPerMin}°C/min (max 3.0°C/min), overheadO2=${input.epoxidationOverheadO2MolPct} mol% (max 8.0 mol%), solventQuenchN2Healthy=${input.chilledMethanolSolventQuenchAndN2BallastHealthy}.`;
+  } else if (poReboilerOverheatOrCatalyticPolymerizationInterlocked) {
+    action =
+      "interlock_po_reboiler_steam_isolate_fe_acid_base_contamination_and_circulate_chilled_water";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / OSHA 1910.119 PO Finishing Reboiler Overheat or Fe/Acid-Base Catalytic Polyether Polymerization Interlocked on ${input.reactorTrainId}: reboilerSkinTemp=${input.poFinishingColumnReboilerSkinTempC}°C (max 95.0°C), dissolvedFe=${input.poStorageDissolvedIronFePpm} ppm (max 2.0 ppm), storagePh=${input.poStorageBulkPh} (safe 6.0–9.0).`;
+  } else if (poCarcinogenicVaporLineBreakWithoutScbaLotoLocked) {
+    action =
+      "lock_po_sphere_epoxidation_line_break_until_po_below_2ppm_inert_purge_and_scba_loto_verified";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.147 Propylene Oxide (PO) Carcinogenic Vapor Line-Break Locked on ${input.reactorTrainId}: ambientPO=${input.ambientPoVaporPpm} ppm (TLV <2.0 ppm), nonSparkingInertPurgeScbaLoto=${input.copperFreeNonSparkingToolsInertPurgeAndLevelAScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P215-PROPYLENE-OXIDE-PO-EBHP-TBHP-HPPO-TS1-EPOXIDATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-PEROXIDE-DECOMPOSITION-EXOTHERM-O2-VAPOR-EXPLOSION-PROPIONALDEHYDE-POLYMERIZATION-AND-PO-SCBA-LOTO-GUARD",
+    reactorTrainId: input.reactorTrainId,
+    peroxideDecompositionExothermOrO2VaporExplosionPreempted,
+    poReboilerOverheatOrCatalyticPolymerizationInterlocked,
+    poCarcinogenicVaporLineBreakWithoutScbaLotoLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipRtpRtxRetransmissionRfc4588Rfc4585Rfc8843Rfc3550OsnPayloadTruncationAptPtConfusionRetransmissionAmplificationAndUnassociatedRtxSsrcHijackGuardInput {
+  sessionId: string;
+  rtxPayloadLengthBytes: number;
+  rtxAptPointsToSelfOrNonPrimaryCodecPt: boolean;
+  unsolicitedRtxRatioWithoutNack: number;
+  osnDistanceFromPrimarySeqPackets: number;
+  rtxAttemptsToOverwriteAuthenticatedPrimaryFrame: boolean;
+  rtxSsrcBoundViaSdpFidOrRepairedRidInSameMid: boolean;
+}
+
+export interface WebrtcSipRtpRtxRetransmissionRfc4588Rfc4585Rfc8843Rfc3550OsnPayloadTruncationAptPtConfusionRetransmissionAmplificationAndUnassociatedRtxSsrcHijackGuardResult {
+  policyCode: "P216-WEBRTC-SIP-RTP-RTX-RETRANSMISSION-RFC4588-RFC4585-RFC8843-RFC3550-OSN-PAYLOAD-TRUNCATION-APT-PT-CONFUSION-RETRANSMISSION-AMPLIFICATION-AND-UNASSOCIATED-RTX-SSRC-HIJACK-GUARD";
+  sessionId: string;
+  rtxOsnTruncationSelfAptOrUnsolicitedFloodDropped: boolean;
+  rtxOsnOutOfWindowReplayOrPrimaryOverwriteBlocked: boolean;
+  unassociatedFidRtxSsrcOrCrossMidHijackBlocked: boolean;
+  rtpRtxPacketAccepted: boolean;
+  action:
+    | "drop_rfc4588_truncated_osn_self_referencing_apt_or_unsolicited_rtx_flood_in_0ms"
+    | "reject_rfc4588_out_of_window_osn_replay_or_authenticated_primary_frame_overwrite"
+    | "quarantine_rfc4588_rfc8843_unassociated_fid_rtx_ssrc_or_cross_mid_bundle_injection"
+    | "accept_verified_rfc4588_rtx_retransmission_and_fid_ssrc_binding";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcSipRtpRtxRetransmissionRfc4588Rfc4585Rfc8843Rfc3550OsnPayloadTruncationAptPtConfusionRetransmissionAmplificationAndUnassociatedRtxSsrcHijackGuard(
+  input: WebrtcSipRtpRtxRetransmissionRfc4588Rfc4585Rfc8843Rfc3550OsnPayloadTruncationAptPtConfusionRetransmissionAmplificationAndUnassociatedRtxSsrcHijackGuardInput
+): WebrtcSipRtpRtxRetransmissionRfc4588Rfc4585Rfc8843Rfc3550OsnPayloadTruncationAptPtConfusionRetransmissionAmplificationAndUnassociatedRtxSsrcHijackGuardResult {
+  const rtxOsnTruncationSelfAptOrUnsolicitedFloodDropped =
+    input.rtxPayloadLengthBytes < 2 ||
+    input.rtxAptPointsToSelfOrNonPrimaryCodecPt ||
+    input.unsolicitedRtxRatioWithoutNack > 0.25;
+
+  const rtxOsnOutOfWindowReplayOrPrimaryOverwriteBlocked =
+    input.osnDistanceFromPrimarySeqPackets > 512 ||
+    input.rtxAttemptsToOverwriteAuthenticatedPrimaryFrame;
+
+  const unassociatedFidRtxSsrcOrCrossMidHijackBlocked =
+    !input.rtxSsrcBoundViaSdpFidOrRepairedRidInSameMid;
+
+  let action: WebrtcSipRtpRtxRetransmissionRfc4588Rfc4585Rfc8843Rfc3550OsnPayloadTruncationAptPtConfusionRetransmissionAmplificationAndUnassociatedRtxSsrcHijackGuardResult["action"] =
+    "accept_verified_rfc4588_rtx_retransmission_and_fid_ssrc_binding";
+  let rtpRtxPacketAccepted = true;
+  let blockedReason: string | null = null;
+
+  if (rtxOsnTruncationSelfAptOrUnsolicitedFloodDropped) {
+    action =
+      "drop_rfc4588_truncated_osn_self_referencing_apt_or_unsolicited_rtx_flood_in_0ms";
+    rtpRtxPacketAccepted = false;
+    blockedReason = `RFC 4588 RTP RTX OSN Header Truncation (<2B), Self-Referencing apt Loop or Unsolicited RTX Flood on ${input.sessionId}: payloadBytes=${input.rtxPayloadLengthBytes}B (min 2B), invalidApt=${input.rtxAptPointsToSelfOrNonPrimaryCodecPt}, unsolicitedRtxRatio=${input.unsolicitedRtxRatioWithoutNack} (max 0.25).`;
+  } else if (rtxOsnOutOfWindowReplayOrPrimaryOverwriteBlocked) {
+    action =
+      "reject_rfc4588_out_of_window_osn_replay_or_authenticated_primary_frame_overwrite";
+    rtpRtxPacketAccepted = false;
+    blockedReason = `RFC 4588 / RFC 4585 RTX OSN Out-of-Window Replay (>512 packets) or Authenticated Primary Frame Overwrite Attempt on ${input.sessionId}: osnDistance=${input.osnDistanceFromPrimarySeqPackets} (max 512), overwriteAuthenticatedPrimary=${input.rtxAttemptsToOverwriteAuthenticatedPrimaryFrame}.`;
+  } else if (unassociatedFidRtxSsrcOrCrossMidHijackBlocked) {
+    action =
+      "quarantine_rfc4588_rfc8843_unassociated_fid_rtx_ssrc_or_cross_mid_bundle_injection";
+    rtpRtxPacketAccepted = false;
+    blockedReason = `RFC 4588 / RFC 8843 Unassociated a=ssrc-group:FID / Repaired-RID RTX SSRC or Cross-MID BUNDLE Injection on ${input.sessionId}: fidOrRepairedRidBoundInSameMid=${input.rtxSsrcBoundViaSdpFidOrRepairedRidInSameMid}.`;
+  }
+
+  return {
+    policyCode:
+      "P216-WEBRTC-SIP-RTP-RTX-RETRANSMISSION-RFC4588-RFC4585-RFC8843-RFC3550-OSN-PAYLOAD-TRUNCATION-APT-PT-CONFUSION-RETRANSMISSION-AMPLIFICATION-AND-UNASSOCIATED-RTX-SSRC-HIJACK-GUARD",
+    sessionId: input.sessionId,
+    rtxOsnTruncationSelfAptOrUnsolicitedFloodDropped,
+    rtxOsnOutOfWindowReplayOrPrimaryOverwriteBlocked,
+    unassociatedFidRtxSsrcOrCrossMidHijackBlocked,
+    rtpRtxPacketAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
