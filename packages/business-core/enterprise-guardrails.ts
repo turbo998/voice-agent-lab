@@ -13889,7 +13889,8 @@ export function evaluateSipRfc3840AutomataLoopRfc3325PaiTrustAndRfc7044HistoryIn
  */
 export interface SurgicalOrUniversalProtocolTimeoutSpongeCountAndMriZone4GuardInput {
   orSuiteId: string;
-  surgicalCaseId: string;
+  surgicalCaseId?: string;
+  caseProcedureId?: string;
   whoJointCommissionTimeOutCompletedByFullTeam: boolean;
   surgicalSiteLateralityAndImplantUdiVerified: boolean;
   attemptSkinIncisionOrElectrosurgicalActivation: boolean;
@@ -14525,7 +14526,8 @@ export function evaluateWebrtcSctpRfc8831Rfc8832DcepChannelOpenSpoofPpidConfusio
  * Steam & Calender/Reel In-Running Nip Mechanical LOTO Guard).
  */
 export interface PulpPaperChemicalRecoveryTappiBlrbacWaterSmeltEspOsha1910261Clo2H2sAndYankeeDryerNipLotoGuardInput {
-  millAssetId: string;
+  millAssetId?: string;
+  millUnitId?: string;
   recoveryBoilerTubeLeakOrWaterSmeltRiskDetected: boolean;
   attemptBlackLiquorGunFiring: boolean;
   blackLiquorSolidsAboveMinimumSafeFiringThreshold: boolean;
@@ -14632,7 +14634,8 @@ export function evaluatePulpPaperChemicalRecoveryTappiBlrbacWaterSmeltEspOsha191
  * Unrecognized Require/Proxy-Require Option-Tag SIP 420 Bad Extension Loop Guard.
  */
 export interface SipRfc3326ReasonHeaderQ850CauseSpoofingRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopGuardInput {
-  sipDialogOrTrunkId: string;
+  sipDialogOrTrunkId?: string;
+  sipDialogId?: string;
   rfc3329SecurityVerifyMatchesNegotiatedServerPolicy: boolean;
   secAgreeProposedMechanismDowngradedToNullOrPlaintext: boolean;
   reasonHeaderPresentOnInboundOrResponseMessage: boolean;
@@ -14844,7 +14847,8 @@ export function evaluateSteelMeltshopBlastFurnaceEafNfpa86AistMoltenMetalWaterEx
  * Remapping Desync & Extension Word-Length / Non-Zero Padding Smuggling Guard).
  */
 export interface WebrtcRtpRfc8285ExtmapAllowMixedOneTwoByteHeaderConfusionUriRemapAndPaddingOverflowGuardInput {
-  rtpStreamSsrcId: string;
+  rtpStreamSsrcId?: string;
+  rtpStreamId?: string;
   extensionProfileDefinedBy0x1000TwoByte: boolean;
   sdpExtmapAllowMixedNegotiated: boolean;
   extensionId: number;
@@ -14954,7 +14958,8 @@ export function evaluateWebrtcRtpRfc8285ExtmapAllowMixedOneTwoByteHeaderConfusio
 // ============================================================================
 
 export interface HydrogenElectrolyzerNfpa2SaeJ2601GuardInput {
-  hydrogenFacilityUnitId: string;
+  hydrogenFacilityUnitId?: string;
+  hydrogenFacilityId?: string;
   h2InO2OrO2InH2GasCrossoverAbove2PctLelDetected: boolean;
   attemptElectrolyzerStackEnergization: boolean;
   n2PurgeAndMembraneDifferentialPressureVerified: boolean;
@@ -18584,6 +18589,224 @@ export function evaluateWebrtcRtpHeaderExtensionRfc8285Rfc6464Rfc6465IdCollision
     policyCode,
   };
 }
+
+// ============================================================================
+// Stage 102 — P197 & P198 Deterministic Guardrails
+// ============================================================================
+
+export interface PhosgeneSynthesisTdiMdiIsocyanatePhosgenationNfpa69Osha1910119GuardInput {
+  ambientPhosgeneCoCl2Ppm: number;
+  phosgeneCombinerBedTempC: number;
+  chlorineBreakthroughInPhosgeneVolPct: number;
+  isocyanateSolventMoistureH2oPpm: number;
+  isocyanateDistillationReboilerTempC: number;
+  vesselPressureRiseRateBarPerMin: number;
+  requestPhosgeneOrIsocyanateLineBreakOrSampling: boolean;
+  residualLinePhosgenePpm: number;
+  ambientIsocyanateTdiMdiPpb: number;
+  dryNitrogenPurgeColorimetricBadgeScbaAndDbbLotoVerified: boolean;
+}
+
+export interface PhosgeneSynthesisTdiMdiIsocyanatePhosgenationNfpa69Osha1910119GuardAssessment {
+  allowed: boolean;
+  preempted: boolean;
+  phosgeneLeakOrCombinerHotspotAmmoniaCurtainTripped: boolean;
+  isocyanateWaterIngressOrReboilerExothermInterlocked: boolean;
+  phosgeneBadgeScbaOrDryNitrogenPurgeLotoLocked: boolean;
+  reason:
+    | "OSHA1910_119_OSHA1910_1000_PHOSGENE_COCL2_LEAK_OR_COMBINER_CATALYST_HOTSPOT_AMMONIA_CAUSTIC_CURTAIN_PREEMPTED"
+    | "NFPA69_API521_ISOCYANATE_WATER_INGRESS_CO2_POLYUREA_OVERPRESSURE_OR_REBOILER_EXOTHERM_INTERLOCKED"
+    | "OSHA1910_1000_1910_147_PHOSGENE_ISOCYANATE_LINE_BREAK_WITHOUT_DRY_N2_PURGE_BADGE_OR_SCBA_LOTO_LOCKED"
+    | "PHOSGENE_SYNTHESIS_TDI_MDI_PHOSGENATION_AND_BADGE_SCBA_LOTO_VERIFIED";
+  actionCode:
+    | "PREEMPT_VOICE_TRIP_CO_CL2_DBB_ACTIVATE_AMMONIA_CURTAIN_AND_VENT_TO_CAUSTIC_SCRUBBER"
+    | "TRIP_REBOILER_STEAM_INJECT_DRY_ODCB_QUENCH_AND_ROUTE_VENT_TO_PHOSGENE_SCRUBBER"
+    | "LOCK_PHOSGENE_ISOCYANATE_FLANGE_UNTIL_DRY_N2_PURGE_COLORIMETRIC_BADGE_SCBA_AND_LOTO_VERIFIED"
+    | "ALLOW_VERIFIED_TDI_MDI_PHOSGENATION_ADVISORY";
+  policyCode: "P197-PHOSGENE-SYNTHESIS-TDI-MDI-ISOCYANATE-PHOSGENATION-NFPA69-OSHA1910-119-OSHA1910-1000-COCL2-LEAK-AMMONIA-CURTAIN-WATER-INGRESS-POLYUREA-RUNAWAY-AND-BADGE-LOTO-GUARD";
+}
+
+export function evaluatePhosgeneSynthesisTdiMdiIsocyanatePhosgenationNfpa69Osha1910119CoCl2LeakWaterIngressAndBadgeLotoGuard(
+  input: PhosgeneSynthesisTdiMdiIsocyanatePhosgenationNfpa69Osha1910119GuardInput,
+): PhosgeneSynthesisTdiMdiIsocyanatePhosgenationNfpa69Osha1910119GuardAssessment {
+  const policyCode =
+    "P197-PHOSGENE-SYNTHESIS-TDI-MDI-ISOCYANATE-PHOSGENATION-NFPA69-OSHA1910-119-OSHA1910-1000-COCL2-LEAK-AMMONIA-CURTAIN-WATER-INGRESS-POLYUREA-RUNAWAY-AND-BADGE-LOTO-GUARD" as const;
+
+  if (
+    input.ambientPhosgeneCoCl2Ppm >= 0.1 ||
+    input.phosgeneCombinerBedTempC > 380.0 ||
+    input.chlorineBreakthroughInPhosgeneVolPct > 0.5
+  ) {
+    return {
+      allowed: false,
+      preempted: true,
+      phosgeneLeakOrCombinerHotspotAmmoniaCurtainTripped: true,
+      isocyanateWaterIngressOrReboilerExothermInterlocked: false,
+      phosgeneBadgeScbaOrDryNitrogenPurgeLotoLocked: false,
+      reason:
+        "OSHA1910_119_OSHA1910_1000_PHOSGENE_COCL2_LEAK_OR_COMBINER_CATALYST_HOTSPOT_AMMONIA_CAUSTIC_CURTAIN_PREEMPTED",
+      actionCode:
+        "PREEMPT_VOICE_TRIP_CO_CL2_DBB_ACTIVATE_AMMONIA_CURTAIN_AND_VENT_TO_CAUSTIC_SCRUBBER",
+      policyCode,
+    };
+  }
+
+  if (
+    input.isocyanateSolventMoistureH2oPpm > 50 ||
+    input.isocyanateDistillationReboilerTempC > 185.0 ||
+    input.vesselPressureRiseRateBarPerMin > 0.35
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      phosgeneLeakOrCombinerHotspotAmmoniaCurtainTripped: false,
+      isocyanateWaterIngressOrReboilerExothermInterlocked: true,
+      phosgeneBadgeScbaOrDryNitrogenPurgeLotoLocked: false,
+      reason:
+        "NFPA69_API521_ISOCYANATE_WATER_INGRESS_CO2_POLYUREA_OVERPRESSURE_OR_REBOILER_EXOTHERM_INTERLOCKED",
+      actionCode:
+        "TRIP_REBOILER_STEAM_INJECT_DRY_ODCB_QUENCH_AND_ROUTE_VENT_TO_PHOSGENE_SCRUBBER",
+      policyCode,
+    };
+  }
+
+  if (
+    input.requestPhosgeneOrIsocyanateLineBreakOrSampling &&
+    (input.residualLinePhosgenePpm > 0.05 ||
+      input.ambientIsocyanateTdiMdiPpb >= 5.0 ||
+      !input.dryNitrogenPurgeColorimetricBadgeScbaAndDbbLotoVerified)
+  ) {
+    return {
+      allowed: false,
+      preempted: false,
+      phosgeneLeakOrCombinerHotspotAmmoniaCurtainTripped: false,
+      isocyanateWaterIngressOrReboilerExothermInterlocked: false,
+      phosgeneBadgeScbaOrDryNitrogenPurgeLotoLocked: true,
+      reason:
+        "OSHA1910_1000_1910_147_PHOSGENE_ISOCYANATE_LINE_BREAK_WITHOUT_DRY_N2_PURGE_BADGE_OR_SCBA_LOTO_LOCKED",
+      actionCode:
+        "LOCK_PHOSGENE_ISOCYANATE_FLANGE_UNTIL_DRY_N2_PURGE_COLORIMETRIC_BADGE_SCBA_AND_LOTO_VERIFIED",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    preempted: false,
+    phosgeneLeakOrCombinerHotspotAmmoniaCurtainTripped: false,
+    isocyanateWaterIngressOrReboilerExothermInterlocked: false,
+    phosgeneBadgeScbaOrDryNitrogenPurgeLotoLocked: false,
+    reason: "PHOSGENE_SYNTHESIS_TDI_MDI_PHOSGENATION_AND_BADGE_SCBA_LOTO_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_TDI_MDI_PHOSGENATION_ADVISORY",
+    policyCode,
+  };
+}
+
+export interface SipRfc3261Rfc5621Rfc3911Rfc3891MultipartMimeJoinAndCseqGuardInput {
+  multipartSdpPartCount: number;
+  multipartNestingDepth: number;
+  untrustedTrunkCarriesIsupOrQsigMimePart: boolean;
+  externalByReferenceContentDispositionUriPresent: boolean;
+  inboundSipJoinHeaderPresent: boolean;
+  joinTargetDialogCryptographicallyAuthorized: boolean;
+  rfc3911JoinAudibleNotificationToneEnforced: boolean;
+  replacesTargetsSelfInitiatedEarlyDialogOnUas: boolean;
+  cseqSequenceNumber: number;
+  cseqMethodMatchesRequestLineMethod: boolean;
+}
+
+export interface SipRfc3261Rfc5621Rfc3911Rfc3891MultipartMimeJoinAndCseqGuardAssessment {
+  allowed: boolean;
+  multipartMimeSdpSmugglingOrIsupInjectionRejected: boolean;
+  unauthorizedSipJoinWiretapOrEarlyReplacesBlocked: boolean;
+  cseqSigned32BitOverflowOrMethodMismatchRejected: boolean;
+  reason:
+    | "RFC5621_RFC8262_SIP_MULTIPART_MIME_BOUNDARY_SMUGGLING_OR_UNTRUSTED_ISUP_BY_REFERENCE_INJECTION_BLOCKED"
+    | "RFC3911_RFC3891_UNAUTHORIZED_SIP_JOIN_SILENT_WIRETAP_OR_EARLY_REPLACES_HIJACK_BLOCKED"
+    | "RFC3261_SECTION_8_1_1_5_CSEQ_SIGNED_32BIT_OVERFLOW_OR_METHOD_MISMATCH_DESYNC_BLOCKED"
+    | "SIP_RFC3261_RFC5621_RFC3911_RFC3891_MULTIPART_JOIN_AND_CSEQ_VERIFIED";
+  actionCode:
+    | "REJECT_SIP_415_OR_400_ON_MULTIPART_SDP_SMUGGLING_OR_UNTRUSTED_ISUP_MIME_INJECTION"
+    | "REJECT_SIP_403_OR_481_ON_UNAUTHORIZED_RFC3911_JOIN_BARGE_OR_EARLY_REPLACES_HIJACK"
+    | "REJECT_SIP_400_ON_CSEQ_32BIT_SIGNED_OVERFLOW_OR_REQUEST_METHOD_MISMATCH"
+    | "ALLOW_VERIFIED_SIP_MULTIPART_JOIN_AND_CSEQ_REQUEST";
+  policyCode: "P198-SIP-RFC3261-RFC5621-RFC3911-RFC3891-MULTIPART-MIME-SDP-SMUGGLING-ISUP-INJECTION-UNAUTHORIZED-JOIN-WIRETAP-EARLY-REPLACES-AND-CSEQ-OVERFLOW-GUARD";
+}
+
+export function evaluateSipRfc3261Rfc5621Rfc3911Rfc3891MultipartMimeSmugglingJoinWiretapAndCseqOverflowGuard(
+  input: SipRfc3261Rfc5621Rfc3911Rfc3891MultipartMimeJoinAndCseqGuardInput,
+): SipRfc3261Rfc5621Rfc3911Rfc3891MultipartMimeJoinAndCseqGuardAssessment {
+  const policyCode =
+    "P198-SIP-RFC3261-RFC5621-RFC3911-RFC3891-MULTIPART-MIME-SDP-SMUGGLING-ISUP-INJECTION-UNAUTHORIZED-JOIN-WIRETAP-EARLY-REPLACES-AND-CSEQ-OVERFLOW-GUARD" as const;
+
+  if (
+    input.multipartSdpPartCount > 1 ||
+    input.multipartNestingDepth > 2 ||
+    input.untrustedTrunkCarriesIsupOrQsigMimePart ||
+    input.externalByReferenceContentDispositionUriPresent
+  ) {
+    return {
+      allowed: false,
+      multipartMimeSdpSmugglingOrIsupInjectionRejected: true,
+      unauthorizedSipJoinWiretapOrEarlyReplacesBlocked: false,
+      cseqSigned32BitOverflowOrMethodMismatchRejected: false,
+      reason:
+        "RFC5621_RFC8262_SIP_MULTIPART_MIME_BOUNDARY_SMUGGLING_OR_UNTRUSTED_ISUP_BY_REFERENCE_INJECTION_BLOCKED",
+      actionCode:
+        "REJECT_SIP_415_OR_400_ON_MULTIPART_SDP_SMUGGLING_OR_UNTRUSTED_ISUP_MIME_INJECTION",
+      policyCode,
+    };
+  }
+
+  if (
+    (input.inboundSipJoinHeaderPresent &&
+      (!input.joinTargetDialogCryptographicallyAuthorized ||
+        !input.rfc3911JoinAudibleNotificationToneEnforced)) ||
+    input.replacesTargetsSelfInitiatedEarlyDialogOnUas
+  ) {
+    return {
+      allowed: false,
+      multipartMimeSdpSmugglingOrIsupInjectionRejected: false,
+      unauthorizedSipJoinWiretapOrEarlyReplacesBlocked: true,
+      cseqSigned32BitOverflowOrMethodMismatchRejected: false,
+      reason:
+        "RFC3911_RFC3891_UNAUTHORIZED_SIP_JOIN_SILENT_WIRETAP_OR_EARLY_REPLACES_HIJACK_BLOCKED",
+      actionCode:
+        "REJECT_SIP_403_OR_481_ON_UNAUTHORIZED_RFC3911_JOIN_BARGE_OR_EARLY_REPLACES_HIJACK",
+      policyCode,
+    };
+  }
+
+  if (
+    input.cseqSequenceNumber < 1 ||
+    input.cseqSequenceNumber >= 2147483648 ||
+    !input.cseqMethodMatchesRequestLineMethod
+  ) {
+    return {
+      allowed: false,
+      multipartMimeSdpSmugglingOrIsupInjectionRejected: false,
+      unauthorizedSipJoinWiretapOrEarlyReplacesBlocked: false,
+      cseqSigned32BitOverflowOrMethodMismatchRejected: true,
+      reason:
+        "RFC3261_SECTION_8_1_1_5_CSEQ_SIGNED_32BIT_OVERFLOW_OR_METHOD_MISMATCH_DESYNC_BLOCKED",
+      actionCode:
+        "REJECT_SIP_400_ON_CSEQ_32BIT_SIGNED_OVERFLOW_OR_REQUEST_METHOD_MISMATCH",
+      policyCode,
+    };
+  }
+
+  return {
+    allowed: true,
+    multipartMimeSdpSmugglingOrIsupInjectionRejected: false,
+    unauthorizedSipJoinWiretapOrEarlyReplacesBlocked: false,
+    cseqSigned32BitOverflowOrMethodMismatchRejected: false,
+    reason:
+      "SIP_RFC3261_RFC5621_RFC3911_RFC3891_MULTIPART_JOIN_AND_CSEQ_VERIFIED",
+    actionCode: "ALLOW_VERIFIED_SIP_MULTIPART_JOIN_AND_CSEQ_REQUEST",
+    policyCode,
+  };
+}
+
 
 
 
