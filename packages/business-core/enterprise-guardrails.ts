@@ -19294,6 +19294,221 @@ export function evaluateSipWebrtcSdpRfc8866Rfc8842Rfc5245OriginSessVersionRetrog
   };
 }
 
+/**
+ * P203 · Phthalic Anhydride (PA) o-Xylene / Naphthalene V2O5-TiO2 Fixed-Bed Catalytic Oxidation Reactor & Switch Condenser Guard
+ * Standards: NFPA 69 / API RP 521 / OSHA 1910.119 (PSM) / OSHA 1910.1000 (PA TWA 1 ppm / 6 mg/m3; o-Xylene LEL 0.9 vol% = ~44 g/Nm3 ceiling)
+ */
+export interface PhthalicAnhydridePaOXyleneNaphthaleneV2o5FixedBedOxidationInput {
+  unitId: string;
+  reactorId: string;
+  switchCondenserId: string;
+  /** Carburetor o-xylene / naphthalene feed loading in g/Nm3 air (safe <= 44.0 g/Nm3; LEL threshold / post-cooler pyrophoric tar ignition > 44.0 g/Nm3) */
+  carburetorHydrocarbonLoadingGNm3: number;
+  /** Catalyst bed hotspot or molten salt bath temperature in C (safe <= 460 C) */
+  v2o5CatalystHotspotTempC: number;
+  /** Whether molten salt (KNO3-NaNO2) circulation pump & primary air blower are healthy */
+  moltenSaltAndAirBlowerHealthy: boolean;
+  /** Switch condenser hot-oil (~185 C) / cold-oil (~55 C) fin-tube thermal oil leak into PA gas stream */
+  switchCondenserThermalOilLeakDetected: boolean;
+  /** Differential pressure across switch condenser hot-gas damper in kPa (safe <= 15.0 kPa) */
+  switchCondenserDamperDeltaPKpa: number;
+  /** Operator or prompt requests hot-gas damper switchover during active melting without N2 purge */
+  unpurgedHotGasDamperSwitchoverRequested: boolean;
+  /** Molten PA storage tank temperature in C (safe 140-155 C; >165 C accelerates phthalic/maleic decarboxylation & sublimation) */
+  moltenPaTankTempC: number;
+  /** Ambient phthalic anhydride vapor/dust concentration in ppm (OSHA PEL = 1.0 ppm) */
+  ambientPhthalicAnhydridePpm: number;
+  /** Operator requests flaker / bagging or switch-condenser hatch opening */
+  flakerOrCondenserHatchOpenRequested: boolean;
+  /** Whether local alkaline scrubber exhaust, N2 purge & supplied-air hood LOTO are verified */
+  alkalineScrubberAndHoodLotoVerified: boolean;
+}
+
+export interface PhthalicAnhydridePaOXyleneNaphthaleneV2o5FixedBedOxidationReport {
+  policyCode: "P203-PHTHALIC-ANHYDRIDE-PA-O-XYLENE-NAPHTHALENE-V2O5-FIXED-BED-OXIDATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-CARBURETOR-LEL-SALT-HOTSPOT-SWITCH-CONDENSER-THERMAL-OIL-FIRE-AND-PA-DUST-LOTO-GUARD";
+  unitId: string;
+  reactorId: string;
+  switchCondenserId: string;
+  carburetorLelOrSaltHotspotPreempted: boolean;
+  switchCondenserOilLeakOrDamperFireInterlocked: boolean;
+  moltenPaOrFlakerDustLotoLocked: boolean;
+  operationAllowed: boolean;
+  action:
+    | "allow_normal_pa_v2o5_reactor_and_switch_condenser_operation"
+    | "trip_oxylene_feed_dbb_purge_carburetor_and_route_to_rto_in_0ms"
+    | "lock_switch_condenser_damper_isolate_thermal_oil_and_actuate_n2_steam_snuffing"
+    | "lock_pa_flaker_and_condenser_hatch_until_cooling_scrubber_and_hood_loto";
+  blockedReason: string | null;
+}
+
+export function evaluatePhthalicAnhydridePaOXyleneNaphthaleneV2o5FixedBedOxidationNfpa69ApiRp521Osha1910119CarburetorLelSaltHotspotSwitchCondenserOilLeakAndDustLotoGuard(
+  input: PhthalicAnhydridePaOXyleneNaphthaleneV2o5FixedBedOxidationInput
+): PhthalicAnhydridePaOXyleneNaphthaleneV2o5FixedBedOxidationReport {
+  // 1. NFPA 69 / API RP 521 / OSHA 1910.119: o-Xylene/Naphthalene carburetor loading > 44.0 g/Nm3, V2O5 hotspot > 460 C, or salt/air loss
+  const carburetorLelOrSaltHotspotPreempted =
+    input.carburetorHydrocarbonLoadingGNm3 > 44.0 ||
+    input.v2o5CatalystHotspotTempC > 460 ||
+    !input.moltenSaltAndAirBlowerHealthy;
+
+  // 2. Switch condenser thermal oil leak into oxidizing PA gas, ΔP > 15.0 kPa, or unpurged hot-gas damper switchover during melting
+  const switchCondenserOilLeakOrDamperFireInterlocked =
+    input.switchCondenserThermalOilLeakDetected ||
+    input.switchCondenserDamperDeltaPKpa > 15.0 ||
+    input.unpurgedHotGasDamperSwitchoverRequested;
+
+  // 3. OSHA 1910.1000 PA vapor/dust >= 1.0 ppm PEL, molten PA tank > 165 C, or flaker/hatch break without scrubber & supplied-air hood LOTO
+  const moltenPaOrFlakerDustLotoLocked =
+    input.moltenPaTankTempC > 165 ||
+    input.ambientPhthalicAnhydridePpm >= 1.0 ||
+    (input.flakerOrCondenserHatchOpenRequested &&
+      !input.alkalineScrubberAndHoodLotoVerified);
+
+  let action: PhthalicAnhydridePaOXyleneNaphthaleneV2o5FixedBedOxidationReport["action"] =
+    "allow_normal_pa_v2o5_reactor_and_switch_condenser_operation";
+  let blockedReason: string | null = null;
+  let operationAllowed = true;
+
+  if (carburetorLelOrSaltHotspotPreempted) {
+    action = "trip_oxylene_feed_dbb_purge_carburetor_and_route_to_rto_in_0ms";
+    operationAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 PA V2O5 Reactor Hazard on ${input.unitId}/${input.reactorId}: carburetorLoading=${input.carburetorHydrocarbonLoadingGNm3} g/Nm3 (limit 44.0 g/Nm3), hotspot=${input.v2o5CatalystHotspotTempC} C (limit 460 C), saltAndAirHealthy=${input.moltenSaltAndAirBlowerHealthy}. Tripping o-xylene/naphthalene DBB feed in 0ms, steam/N2 purging carburetor, and routing effluent to RTO.`;
+  } else if (switchCondenserOilLeakOrDamperFireInterlocked) {
+    action =
+      "lock_switch_condenser_damper_isolate_thermal_oil_and_actuate_n2_steam_snuffing";
+    operationAllowed = false;
+    blockedReason = `API RP 521 / OSHA 1910.119 Switch Condenser Fire/Explosion Hazard on ${input.unitId}/${input.switchCondenserId}: thermalOilLeak=${input.switchCondenserThermalOilLeakDetected}, damperDeltaP=${input.switchCondenserDamperDeltaPKpa} kPa (limit 15.0 kPa), unpurgedSwitchover=${input.unpurgedHotGasDamperSwitchoverRequested}. Locking hot-gas damper, isolating thermal oil loop, and actuating N2/steam snuffing.`;
+  } else if (moltenPaOrFlakerDustLotoLocked) {
+    action =
+      "lock_pa_flaker_and_condenser_hatch_until_cooling_scrubber_and_hood_loto";
+    operationAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.147 Phthalic Anhydride Melt/Flaker LOTO Lock on ${input.unitId}: moltenPaTemp=${input.moltenPaTankTempC} C (limit 165 C), ambientPA=${input.ambientPhthalicAnhydridePpm} ppm (PEL 1.0 ppm), hatchRequested=${input.flakerOrCondenserHatchOpenRequested}, scrubberHoodLoto=${input.alkalineScrubberAndHoodLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P203-PHTHALIC-ANHYDRIDE-PA-O-XYLENE-NAPHTHALENE-V2O5-FIXED-BED-OXIDATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-CARBURETOR-LEL-SALT-HOTSPOT-SWITCH-CONDENSER-THERMAL-OIL-FIRE-AND-PA-DUST-LOTO-GUARD",
+    unitId: input.unitId,
+    reactorId: input.reactorId,
+    switchCondenserId: input.switchCondenserId,
+    carburetorLelOrSaltHotspotPreempted,
+    switchCondenserOilLeakOrDamperFireInterlocked,
+    moltenPaOrFlakerDustLotoLocked,
+    operationAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+/**
+ * P204 · Enterprise SIP & WebRTC Via / rport / Path / Service-Route Guard
+ * Standards: IETF RFC 3261 (§8.1.1.7 / §16.6 / §18.2.2), RFC 3581 (rport Symmetric Response Routing),
+ * RFC 5626 (Outbound Flow-Token), RFC 3327 (Path), RFC 3608 (Service-Route)
+ */
+export interface SipWebrtcViaRportPathServiceRouteRfc3261Rfc3581Rfc5626Rfc3327Input {
+  callId: string;
+  /** Number of Via headers stacked in the incoming SIP request (safe <= 16) */
+  viaHeaderHopCount: number;
+  /** Topmost Via branch parameter value (must start with RFC 3261 magic cookie "z9hG4bK" and have >= 16 chars entropy) */
+  topmostViaBranch: string;
+  /** Whether circular Via sent-by / branch loop is detected in the Via stack */
+  circularViaLoopDetected: boolean;
+  /** Incoming Max-Forwards header value (RFC 3261 recommended 70; >70 clamped, <=0 rejected with 483) */
+  incomingMaxForwards: number;
+  /** Whether the client pre-populated a spoofed received=<ip> or valued rport=<port> on the topmost ingress Via header */
+  clientPrePopulatedViaReceivedOrValuedRport: boolean;
+  /** Verified L3/L4 transport socket source IP and port */
+  verifiedSocketSourceIp: string;
+  verifiedSocketSourcePort: number;
+  /** Whether the request carries RFC 3327 Path or RFC 3608 Service-Route headers from an untrusted external trunk */
+  untrustedTrunkInjectedPathOrServiceRoute: boolean;
+  /** Whether RFC 5626 Outbound (;ob / reg-id / +sip.instance) registration carries a valid edge-proxy HMAC flow token */
+  outboundFlowTokenHmacVerified: boolean;
+}
+
+export interface SipWebrtcViaRportPathServiceRouteRfc3261Rfc3581Rfc5626Rfc3327Report {
+  policyCode: "P204-SIP-WEBRTC-VIA-RPORT-PATH-SERVICE-ROUTE-RFC3261-RFC3581-RFC5626-RFC3327-VIA-STACK-AMPLIFICATION-RPORT-NAT-PINHOLE-HIJACK-AND-PATH-REGISTRAR-POISONING-GUARD";
+  callId: string;
+  viaStackOrBranchRejected: boolean;
+  prePopulatedReceivedRportSanitized: boolean;
+  pathServiceRouteOrFlowTokenBlocked: boolean;
+  effectiveMaxForwards: number;
+  boundViaReceivedPort: string;
+  sipRequestAccepted: boolean;
+  action:
+    | "accept_verified_sip_via_rport_and_outbound_route"
+    | "reject_sip_via_stack_amplification_loop_or_invalid_branch_cookie_with_483_400"
+    | "strip_spoofed_via_received_rport_and_pin_to_verified_socket_peer"
+    | "reject_untrusted_path_service_route_or_forged_outbound_flow_token_with_403";
+  blockedReason: string | null;
+}
+
+export function evaluateSipWebrtcViaRportPathServiceRouteRfc3261Rfc3581Rfc5626Rfc3327ViaStackAmplificationRportNatHijackAndPathRegistrarPoisoningGuard(
+  input: SipWebrtcViaRportPathServiceRouteRfc3261Rfc3581Rfc5626Rfc3327Input
+): SipWebrtcViaRportPathServiceRouteRfc3261Rfc3581Rfc5626Rfc3327Report {
+  const validMagicCookieBranch =
+    input.topmostViaBranch.startsWith("z9hG4bK") &&
+    input.topmostViaBranch.length >= 16;
+
+  // 1. RFC 3261 §8.1.1.7 / §16.6: Via hop count > 16, missing/short z9hG4bK branch cookie, circular Via loop, or Max-Forwards <= 0
+  const viaStackOrBranchRejected =
+    input.viaHeaderHopCount <= 0 ||
+    input.viaHeaderHopCount > 16 ||
+    !validMagicCookieBranch ||
+    input.circularViaLoopDetected ||
+    input.incomingMaxForwards <= 0;
+
+  // 2. RFC 3581 §4: Client must never pre-populate received=<ip> or valued rport=<port> on topmost Via
+  const prePopulatedReceivedRportSanitized =
+    input.clientPrePopulatedViaReceivedOrValuedRport;
+
+  // 3. RFC 3327 Path / RFC 3608 Service-Route / RFC 5626 Outbound flow-token registrar poisoning
+  const pathServiceRouteOrFlowTokenBlocked =
+    input.untrustedTrunkInjectedPathOrServiceRoute ||
+    !input.outboundFlowTokenHmacVerified;
+
+  const effectiveMaxForwards = Math.min(
+    70,
+    Math.max(0, input.incomingMaxForwards)
+  );
+  const boundViaReceivedPort = `received=${input.verifiedSocketSourceIp};rport=${input.verifiedSocketSourcePort}`;
+
+  let action: SipWebrtcViaRportPathServiceRouteRfc3261Rfc3581Rfc5626Rfc3327Report["action"] =
+    "accept_verified_sip_via_rport_and_outbound_route";
+  let blockedReason: string | null = null;
+  let sipRequestAccepted = true;
+
+  if (viaStackOrBranchRejected) {
+    action =
+      "reject_sip_via_stack_amplification_loop_or_invalid_branch_cookie_with_483_400";
+    sipRequestAccepted = false;
+    blockedReason = `RFC 3261 Via/Branch/Max-Forwards Violation on ${input.callId}: viaHops=${input.viaHeaderHopCount} (max 16), validBranchCookie=${validMagicCookieBranch}, circularLoop=${input.circularViaLoopDetected}, maxForwards=${input.incomingMaxForwards}.`;
+  } else if (pathServiceRouteOrFlowTokenBlocked) {
+    action =
+      "reject_untrusted_path_service_route_or_forged_outbound_flow_token_with_403";
+    sipRequestAccepted = false;
+    blockedReason = `RFC 3327 / RFC 3608 / RFC 5626 Registrar Route Poisoning on ${input.callId}: untrustedPathOrServiceRoute=${input.untrustedTrunkInjectedPathOrServiceRoute}, outboundFlowTokenHmacValid=${input.outboundFlowTokenHmacVerified}.`;
+  } else if (prePopulatedReceivedRportSanitized) {
+    action = "strip_spoofed_via_received_rport_and_pin_to_verified_socket_peer";
+    sipRequestAccepted = false;
+    blockedReason = `RFC 3581 Section 4 Symmetric Response Routing Spoof on ${input.callId}: stripped pre-populated Via received/rport and pinned to ${boundViaReceivedPort}.`;
+  }
+
+  return {
+    policyCode:
+      "P204-SIP-WEBRTC-VIA-RPORT-PATH-SERVICE-ROUTE-RFC3261-RFC3581-RFC5626-RFC3327-VIA-STACK-AMPLIFICATION-RPORT-NAT-PINHOLE-HIJACK-AND-PATH-REGISTRAR-POISONING-GUARD",
+    callId: input.callId,
+    viaStackOrBranchRejected,
+    prePopulatedReceivedRportSanitized,
+    pathServiceRouteOrFlowTokenBlocked,
+    effectiveMaxForwards,
+    boundViaReceivedPort,
+    sipRequestAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
