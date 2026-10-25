@@ -19722,6 +19722,207 @@ export function evaluateWebrtcRtcpTwccRfc8888Rfc5104Rfc4585TransportCcChunkSpanB
   };
 }
 
+export interface CaprolactamCplCyclohexaneOxidationBeckmannRearrangementOleumNfpa69ApiRp521Osha1910119GuardInput {
+  unitId: string;
+  beckmannReactorId: string;
+  oxidizerId: string;
+  /** Beckmann rearrangement loop reactor temperature in Celsius (normal 95–120 C, trip > 132.0 C) */
+  beckmannLoopTempC: number;
+  /** Beckmann loop temperature rise rate in C/min (trip > 2.5 C/min) */
+  beckmannTempRiseRateCPerMin: number;
+  /** Moisture content in molten cyclohexanone oxime feed in ppm (normal < 500 ppm, trip > 1500 ppm) */
+  oximeFeedMoisturePpm: number;
+  /** Rearrangement loop circulation pump and external SO3/oleum cooler healthy */
+  rearrangementCirculationAndCoolerHealthy: boolean;
+  /** Cyclohexane liquid-phase air oxidation off-gas oxygen in vol% (Flixborough-class NFPA 69 trip >= 4.0 vol%) */
+  cyclohexaneOxidizerOffGasOxygenVolPct: number;
+  /** Molten cyclohexanone oxime / Hydroxylamine Sulfate (HAS) storage tank temperature in Celsius (trip > 85.0 C) */
+  oximeOrHasHoldTankTempC: number;
+  /** Ambient fuming sulfuric acid (Oleum / SO3 / H2SO4) mist concentration in mg/m3 (OSHA 1910.1000 PEL = 1.0 mg/m3) */
+  ambientSo3OleumMistMgPerM3: number;
+  /** Operator requested Beckmann cooler, ammonia neutralizer, or benzene/toluene extractor line break */
+  coolerOrExtractorLineBreakRequested: boolean;
+  /** Dilute ammonia/water neutralization flush, Class A acid suit + positive-pressure SCBA, and DBB LOTO verified */
+  neutralizationFlushScbaAndDbbLotoVerified: boolean;
+}
+
+export interface CaprolactamCplCyclohexaneOxidationBeckmannRearrangementOleumNfpa69ApiRp521Osha1910119Report {
+  policyCode: "P207-CAPROLACTAM-CPL-CYCLOHEXANE-OXIDATION-BECKMANN-REARRANGEMENT-OLEUM-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-BECKMANN-EXOTHERM-QUENCH-CYCLOHEXANE-OFFGAS-O2-TRIP-AND-SO3-OLEUM-LOTO-GUARD";
+  unitId: string;
+  beckmannReactorId: string;
+  oxidizerId: string;
+  beckmannExothermOrOximeMoisturePreempted: boolean;
+  cyclohexaneOffGasO2OrOximeTankRunawayInterlocked: boolean;
+  so3OleumMistOrExtractorLotoLocked: boolean;
+  operationAllowed: boolean;
+  action:
+    | "allow_normal_caprolactam_cyclohexane_oxidation_and_beckmann_rearrangement_operation"
+    | "trip_oxime_oleum_dbb_inject_cooled_sulfuric_quench_and_full_cooling_water_in_0ms"
+    | "trip_air_compressor_dbb_flood_cyclohexane_oxidizer_with_n2_and_deluge_oxime_tank"
+    | "lock_beckmann_cooler_and_extractor_until_ammonia_flush_scba_and_dbb_loto";
+  blockedReason: string | null;
+}
+
+export function evaluateCaprolactamCplCyclohexaneOxidationBeckmannRearrangementOleumNfpa69ApiRp521Osha1910119BeckmannExothermQuenchOffGasO2TripAndSo3LotoGuard(
+  input: CaprolactamCplCyclohexaneOxidationBeckmannRearrangementOleumNfpa69ApiRp521Osha1910119GuardInput
+): CaprolactamCplCyclohexaneOxidationBeckmannRearrangementOleumNfpa69ApiRp521Osha1910119Report {
+  // 1. 0ms Emergency Preemption: Beckmann loop > 132.0 C, dT/dt > 2.5 C/min, oxime moisture > 1500 ppm, or circulation/cooler loss
+  const beckmannExothermOrOximeMoisturePreempted =
+    input.beckmannLoopTempC > 132.0 ||
+    input.beckmannTempRiseRateCPerMin > 2.5 ||
+    input.oximeFeedMoisturePpm > 1500 ||
+    !input.rearrangementCirculationAndCoolerHealthy;
+
+  // 2. Cyclohexane air-oxidizer off-gas O2 >= 4.0 vol% (Flixborough explosion prevention) or molten oxime / HAS tank > 85.0 C
+  const cyclohexaneOffGasO2OrOximeTankRunawayInterlocked =
+    input.cyclohexaneOxidizerOffGasOxygenVolPct >= 4.0 ||
+    input.oximeOrHasHoldTankTempC > 85.0;
+
+  // 3. Ambient SO3 / Oleum mist >= 1.0 mg/m3 (OSHA 1910.1000 PEL) or line break without neutralization flush, Class A SCBA & DBB LOTO
+  const so3OleumMistOrExtractorLotoLocked =
+    input.ambientSo3OleumMistMgPerM3 >= 1.0 ||
+    (input.coolerOrExtractorLineBreakRequested &&
+      !input.neutralizationFlushScbaAndDbbLotoVerified);
+
+  let action: CaprolactamCplCyclohexaneOxidationBeckmannRearrangementOleumNfpa69ApiRp521Osha1910119Report["action"] =
+    "allow_normal_caprolactam_cyclohexane_oxidation_and_beckmann_rearrangement_operation";
+  let blockedReason: string | null = null;
+  let operationAllowed = true;
+
+  if (beckmannExothermOrOximeMoisturePreempted) {
+    action =
+      "trip_oxime_oleum_dbb_inject_cooled_sulfuric_quench_and_full_cooling_water_in_0ms";
+    operationAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 Caprolactam Beckmann Rearrangement Exothermic Runaway Preemption on ${input.beckmannReactorId}: loopTemp=${input.beckmannLoopTempC.toFixed(1)}C (max 132.0C), riseRate=${input.beckmannTempRiseRateCPerMin.toFixed(2)}C/min (max 2.5C/min), oximeMoisture=${input.oximeFeedMoisturePpm.toFixed(0)}ppm (max 1500ppm), circulationHealthy=${input.rearrangementCirculationAndCoolerHealthy}. Tripped oxime/oleum DBB valves and injected cooled sulfuric quench in 0ms.`;
+  } else if (cyclohexaneOffGasO2OrOximeTankRunawayInterlocked) {
+    action =
+      "trip_air_compressor_dbb_flood_cyclohexane_oxidizer_with_n2_and_deluge_oxime_tank";
+    operationAllowed = false;
+    blockedReason = `NFPA 69 / OSHA 1910.119 Cyclohexane Oxidizer Off-Gas O2 / Oxime Decomposition Interlock on ${input.oxidizerId}: offGasO2=${input.cyclohexaneOxidizerOffGasOxygenVolPct.toFixed(2)}vol% (limit 4.0vol%), oximeHasTankTemp=${input.oximeOrHasHoldTankTempC.toFixed(1)}C (max 85.0C).`;
+  } else if (so3OleumMistOrExtractorLotoLocked) {
+    action =
+      "lock_beckmann_cooler_and_extractor_until_ammonia_flush_scba_and_dbb_loto";
+    operationAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.147 Oleum SO3 Mist & Extractor LOTO Interlock on ${input.unitId}: ambientSo3Mist=${input.ambientSo3OleumMistMgPerM3.toFixed(2)}mg/m3 (PEL 1.0mg/m3), lineBreakRequested=${input.coolerOrExtractorLineBreakRequested}, flushScbaLotoVerified=${input.neutralizationFlushScbaAndDbbLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P207-CAPROLACTAM-CPL-CYCLOHEXANE-OXIDATION-BECKMANN-REARRANGEMENT-OLEUM-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-BECKMANN-EXOTHERM-QUENCH-CYCLOHEXANE-OFFGAS-O2-TRIP-AND-SO3-OLEUM-LOTO-GUARD",
+    unitId: input.unitId,
+    beckmannReactorId: input.beckmannReactorId,
+    oxidizerId: input.oxidizerId,
+    beckmannExothermOrOximeMoisturePreempted,
+    cyclohexaneOffGasO2OrOximeTankRunawayInterlocked,
+    so3OleumMistOrExtractorLotoLocked,
+    operationAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcRtpRedUlpfecFlexfecCnRfc2198Rfc5109Rfc8627Rfc3389RedRecursionBlockOverreadFecMaskOobAndCnAcousticShockGuardInput {
+  sessionId: string;
+  /** RFC 2198 RED payload contains a redundant block whose PT equals the RED PT itself (recursive RED-in-RED bomb) */
+  redContainsRecursiveRedPayloadType: boolean;
+  /** Total bytes required by RFC 2198 RED block headers + block lengths vs actual RTP payload byte length */
+  redDeclaredBytesExceedRtpPayload: boolean;
+  /** Maximum RFC 2198 14-bit timestamp offset across redundant blocks in samples (48kHz Opus max safe history = 4800 samples / 100ms) */
+  redMaxTimestampOffsetSamples: number;
+  /** RFC 5109 ULPFEC / RFC 8627 FlexFEC protection length in bytes (max safe MTU = 1200 bytes) */
+  fecProtectionLengthBytes: number;
+  /** FEC bitmask span in packets (RFC 5109 L=1 max 48 packets) or unassociated protected media SSRC */
+  fecMaskSpanPackets: number;
+  /** FEC repair packet references an unassociated SSRC or sequence numbers outside the active jitter-buffer window */
+  fecProtectedSsrcMismatchOrSeqOutOfWindow: boolean;
+  /** RFC 3389 Comfort Noise (CN) noise level in negative dBov (0 = 0 dBov full-scale blast, safe >= 30 i.e. <= -30 dBov) */
+  cnNoiseLevelNegativeDbov: number;
+  /** Maximum magnitude of RFC 3389 LPC reflection coefficients |k_i| (stable all-pole filter requires < 0.98) */
+  cnMaxReflectionCoeffMagnitude: number;
+}
+
+export interface WebrtcRtpRedUlpfecFlexfecCnRfc2198Rfc5109Rfc8627Rfc3389RedRecursionBlockOverreadFecMaskOobAndCnAcousticShockReport {
+  policyCode: "P208-WEBRTC-RTP-RED-ULPFEC-FLEXFEC-CN-RFC2198-RFC5109-RFC8627-RFC3389-RED-IN-RED-RECURSION-BLOCK-LENGTH-OVERREAD-FEC-MASK-OOB-AND-CN-ACOUSTIC-SHOCK-GUARD";
+  sessionId: string;
+  redRecursionOrBlockOverreadDropped: boolean;
+  fecProtectionLengthOrMaskOobRejected: boolean;
+  cnAcousticShockOrUnstableFilterClamped: boolean;
+  effectiveCnNoiseLevelNegativeDbov: number;
+  rtpRedFecCnAccepted: boolean;
+  action:
+    | "accept_verified_rtp_red_ulpfec_flexfec_and_comfort_noise_payload"
+    | "drop_rfc2198_red_in_red_recursion_or_block_length_overread_in_0ms"
+    | "reject_rfc5109_rfc8627_ulpfec_flexfec_protection_length_or_mask_oob"
+    | "clamp_rfc3389_comfort_noise_acoustic_shock_and_stabilize_lpc_filter";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcRtpRedUlpfecFlexfecCnRfc2198Rfc5109Rfc8627Rfc3389RedRecursionBlockOverreadFecMaskOobAndCnAcousticShockGuard(
+  input: WebrtcRtpRedUlpfecFlexfecCnRfc2198Rfc5109Rfc8627Rfc3389RedRecursionBlockOverreadFecMaskOobAndCnAcousticShockGuardInput
+): WebrtcRtpRedUlpfecFlexfecCnRfc2198Rfc5109Rfc8627Rfc3389RedRecursionBlockOverreadFecMaskOobAndCnAcousticShockReport {
+  // 1. RFC 2198 RED-in-RED recursive self-encapsulation, block-length sum > RTP payload over-read, or ts-offset > 4800 samples (100ms @ 48kHz)
+  const redRecursionOrBlockOverreadDropped =
+    input.redContainsRecursiveRedPayloadType ||
+    input.redDeclaredBytesExceedRtpPayload ||
+    input.redMaxTimestampOffsetSamples < 0 ||
+    input.redMaxTimestampOffsetSamples > 4800;
+
+  // 2. RFC 5109 ULPFEC / RFC 8627 FlexFEC protection length > 1200 bytes, mask span > 48 packets, or SSRC/window mismatch
+  const fecProtectionLengthOrMaskOobRejected =
+    input.fecProtectionLengthBytes <= 0 ||
+    input.fecProtectionLengthBytes > 1200 ||
+    input.fecMaskSpanPackets <= 0 ||
+    input.fecMaskSpanPackets > 48 ||
+    input.fecProtectedSsrcMismatchOrSeqOutOfWindow;
+
+  // 3. RFC 3389 CN noise level louder than -30 dBov (< 30) or > 127, or unstable LPC reflection coefficient |k_i| >= 0.98
+  const cnAcousticShockOrUnstableFilterClamped =
+    input.cnNoiseLevelNegativeDbov < 30 ||
+    input.cnNoiseLevelNegativeDbov > 127 ||
+    input.cnMaxReflectionCoeffMagnitude >= 0.98;
+
+  const effectiveCnNoiseLevelNegativeDbov = Math.max(
+    45,
+    Math.min(127, input.cnNoiseLevelNegativeDbov)
+  );
+
+  let action: WebrtcRtpRedUlpfecFlexfecCnRfc2198Rfc5109Rfc8627Rfc3389RedRecursionBlockOverreadFecMaskOobAndCnAcousticShockReport["action"] =
+    "accept_verified_rtp_red_ulpfec_flexfec_and_comfort_noise_payload";
+  let blockedReason: string | null = null;
+  let rtpRedFecCnAccepted = true;
+
+  if (redRecursionOrBlockOverreadDropped) {
+    action =
+      "drop_rfc2198_red_in_red_recursion_or_block_length_overread_in_0ms";
+    rtpRedFecCnAccepted = false;
+    blockedReason = `RFC 2198 RTP RED Recursion or Overread Bomb on ${input.sessionId}: recursiveRedPt=${input.redContainsRecursiveRedPayloadType}, bytesExceedPayload=${input.redDeclaredBytesExceedRtpPayload}, maxTsOffsetSamples=${input.redMaxTimestampOffsetSamples} (max 4800).`;
+  } else if (fecProtectionLengthOrMaskOobRejected) {
+    action =
+      "reject_rfc5109_rfc8627_ulpfec_flexfec_protection_length_or_mask_oob";
+    rtpRedFecCnAccepted = false;
+    blockedReason = `RFC 5109 / RFC 8627 ULPFEC/FlexFEC Out-of-Bounds on ${input.sessionId}: protectionLenBytes=${input.fecProtectionLengthBytes} (max 1200), maskSpanPkts=${input.fecMaskSpanPackets} (max 48), ssrcOrWindowMismatch=${input.fecProtectedSsrcMismatchOrSeqOutOfWindow}.`;
+  } else if (cnAcousticShockOrUnstableFilterClamped) {
+    action =
+      "clamp_rfc3389_comfort_noise_acoustic_shock_and_stabilize_lpc_filter";
+    rtpRedFecCnAccepted = false;
+    blockedReason = `RFC 3389 Comfort Noise Acoustic Shock or LPC Filter Instability on ${input.sessionId}: cnNoiseLevelNegDbov=${input.cnNoiseLevelNegativeDbov} (require 30..127, clamped to ${effectiveCnNoiseLevelNegativeDbov}), maxReflectionCoeff=${input.cnMaxReflectionCoeffMagnitude.toFixed(3)} (max 0.98).`;
+  }
+
+  return {
+    policyCode:
+      "P208-WEBRTC-RTP-RED-ULPFEC-FLEXFEC-CN-RFC2198-RFC5109-RFC8627-RFC3389-RED-IN-RED-RECURSION-BLOCK-LENGTH-OVERREAD-FEC-MASK-OOB-AND-CN-ACOUSTIC-SHOCK-GUARD",
+    sessionId: input.sessionId,
+    redRecursionOrBlockOverreadDropped,
+    fecProtectionLengthOrMaskOobRejected,
+    cnAcousticShockOrUnstableFilterClamped,
+    effectiveCnNoiseLevelNegativeDbov,
+    rtpRedFecCnAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
