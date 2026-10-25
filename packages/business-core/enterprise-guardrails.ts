@@ -18807,6 +18807,276 @@ export function evaluateSipRfc3261Rfc5621Rfc3911Rfc3891MultipartMimeSmugglingJoi
   };
 }
 
+// ============================================================================
+// Stage 103 (P199 - P200): Hydrofluoric Acid (AHF) & Fluoropolymer (TFE/PTFE)
+// Autoclave Safety + WebRTC SCTP RFC 8841 / RFC 8831 / RFC 4960 / RFC 6525
+// INIT/COOKIE-ECHO Reflection, RE-CONFIG Stream Reset & SACK Gap-Ack Guard
+// ============================================================================
+
+export interface HydrofluoricAcidAhfFluoropolymerTfeAutoclaveGuardInput {
+  unitId: string;
+  tfeAutoclavePressureBarG: number;
+  tfeAutoclaveTempC: number;
+  tfeTempRiseRateCPerMin: number;
+  tfeTerpeneStabilizerPpm: number;
+  ambientHfVaporPpm: number;
+  kilnDraftPa: number;
+  condenserWaterLeakPpm: number;
+  waterFogCurtainRatioToHf: number;
+  rapidAcidDeinventoryReady: boolean;
+  requestsAutoclaveEntryOrAhfLineBreak?: boolean;
+  residualHfPpm?: number;
+  residualTfePpm?: number;
+  polymerBakeoutTempC?: number;
+  calciumGluconateAntidoteStaged?: boolean;
+  apiRp751ClassCSuitVerified?: boolean;
+  dbbMechanicalLotoVerified?: boolean;
+  requestedAction:
+    | "normal_operation"
+    | "increase_tfe_initiator_or_kiln_feed"
+    | "bypass_hf_water_fog_or_quench_dump"
+    | "authorize_autoclave_entry_or_ahf_line_break";
+}
+
+export interface HydrofluoricAcidAhfFluoropolymerTfeAutoclaveGuardReport {
+  policyCode: "P199-HYDROFLUORIC-ACID-AHF-FLUOROPOLYMER-TFE-AUTOCLAVE-NFPA69-APIRP751-OSHA1910-119-OSHA1910-1000-TFE-DEFLAGRATION-QUENCH-HF-WATER-FOG-AND-CALCIUM-GLUCONATE-LOTO-GUARD";
+  unitId: string;
+  tfeAutoclavePressureBarG: number;
+  tfeAutoclaveTempC: number;
+  ambientHfVaporPpm: number;
+  tfeAutodecompositionEmergency: boolean;
+  ahfLeakOrKilnExcursionBlocked: boolean;
+  autoclaveOrAhfLineBreakLotoLocked: boolean;
+  allowedToProceed: boolean;
+  preemptionLatencyMs: number;
+  action:
+    | "trip_tfe_monomer_dbb_open_quench_dump_and_co2_n2_inert_flood_0ms"
+    | "activate_20to1_hf_water_fog_curtain_and_rapid_acid_deinventory"
+    | "lock_autoclave_and_ahf_line_break_require_calcium_gluconate_and_class_c_loto"
+    | "allow_ahf_kiln_and_tfe_autoclave_normal_supervision";
+  blockedReason: string | null;
+}
+
+export function evaluateHydrofluoricAcidAhfFluoropolymerTfeAutoclaveNfpa69ApiRp751Osha1910119TfeDeflagrationHfWaterFogAndCalciumGluconateLotoGuard(
+  input: HydrofluoricAcidAhfFluoropolymerTfeAutoclaveGuardInput
+): HydrofluoricAcidAhfFluoropolymerTfeAutoclaveGuardReport {
+  // 1. NFPA 69 / OSHA 1910.119: Uninhibited Tetrafluoroethylene (TFE, C2F4) autodecomposition / deflagration
+  // (C2F4 -> C + CF4, dH = -276 kJ/mol without O2) if P > 12.0 bar(g), T > 130.0 C, dT/dt > 2.0 C/min, or d-limonene < 50 ppm
+  const tfeAutodecompositionEmergency =
+    input.tfeAutoclavePressureBarG > 12.0 ||
+    input.tfeAutoclaveTempC > 130.0 ||
+    input.tfeTempRiseRateCPerMin > 2.0 ||
+    input.tfeTerpeneStabilizerPpm < 50.0 ||
+    input.requestedAction === "bypass_hf_water_fog_or_quench_dump";
+
+  // 2. API RP 751 / OSHA 1910.1000: Anhydrous HF (AHF) vapor leak >= 3.0 ppm (OSHA Ceiling; IDLH = 30 ppm),
+  // rotary kiln loss of negative draft (> -15.0 Pa), condenser water leak (> 20.0 ppm), or < 20:1 water fog curtain ratio
+  const ahfLeakOrKilnExcursionBlocked =
+    input.ambientHfVaporPpm >= 3.0 ||
+    input.kilnDraftPa > -15.0 ||
+    input.condenserWaterLeakPpm > 20.0 ||
+    input.waterFogCurtainRatioToHf < 20.0 ||
+    !input.rapidAcidDeinventoryReady;
+
+  // 3. OSHA 1910.119 / API RP 751: TFE autoclave entry or AHF line-break requires residual HF < 0.5 ppm,
+  // residual TFE < 10.0 ppm, polymer bakeout < 260 C (preventing lethal PFIB pyrolysis gas), 2.5% Calcium Gluconate gel/nebulizer,
+  // API RP 751 Class C acid suit, and mechanical DBB LOTO
+  const requestsLineBreakOrEntry =
+    Boolean(input.requestsAutoclaveEntryOrAhfLineBreak) ||
+    input.requestedAction === "authorize_autoclave_entry_or_ahf_line_break";
+
+  const residualHfPpm = input.residualHfPpm ?? input.ambientHfVaporPpm;
+  const residualTfePpm = input.residualTfePpm ?? 0;
+  const polymerBakeoutTempC = input.polymerBakeoutTempC ?? input.tfeAutoclaveTempC;
+
+  const autoclaveOrAhfLineBreakLotoLocked =
+    requestsLineBreakOrEntry &&
+    (residualHfPpm >= 0.5 ||
+      residualTfePpm >= 10.0 ||
+      polymerBakeoutTempC >= 260.0 ||
+      !input.calciumGluconateAntidoteStaged ||
+      !input.apiRp751ClassCSuitVerified ||
+      !input.dbbMechanicalLotoVerified);
+
+  let action: HydrofluoricAcidAhfFluoropolymerTfeAutoclaveGuardReport["action"] =
+    "allow_ahf_kiln_and_tfe_autoclave_normal_supervision";
+  let blockedReason: string | null = null;
+  let allowedToProceed = true;
+  let preemptionLatencyMs = 2;
+
+  if (tfeAutodecompositionEmergency) {
+    action =
+      "trip_tfe_monomer_dbb_open_quench_dump_and_co2_n2_inert_flood_0ms";
+    allowedToProceed = false;
+    preemptionLatencyMs = 0;
+    blockedReason = `NFPA 69 / OSHA 1910.119 TFE Autodecomposition Emergency on ${input.unitId}: pressure=${input.tfeAutoclavePressureBarG} bar(g) (max 12.0), temp=${input.tfeAutoclaveTempC} C (max 130.0), dT/dt=${input.tfeTempRiseRateCPerMin} C/min (max 2.0), d-limonene=${input.tfeTerpeneStabilizerPpm} ppm (min 50.0). Tripping TFE monomer DBB, opening rapid dump valve to explosion-suppression quench scrubber, and flooding with CO2/N2 in 0ms.`;
+  } else if (ahfLeakOrKilnExcursionBlocked) {
+    action =
+      "activate_20to1_hf_water_fog_curtain_and_rapid_acid_deinventory";
+    allowedToProceed = false;
+    preemptionLatencyMs = 0;
+    blockedReason = `API RP 751 / OSHA 1910.1000 AHF Vapor & Kiln Excursion Interlock on ${input.unitId}: ambientHF=${input.ambientHfVaporPpm} ppm (ceiling 3.0 ppm), kilnDraft=${input.kilnDraftPa} Pa (max -15.0 Pa), condenserLeak=${input.condenserWaterLeakPpm} ppm (max 20.0 ppm), waterFogRatio=${input.waterFogCurtainRatioToHf}:1 (min 20:1). Activating 20:1 high-pressure water fog curtain and Rapid Acid Deinventory (RAD).`;
+  } else if (autoclaveOrAhfLineBreakLotoLocked) {
+    action =
+      "lock_autoclave_and_ahf_line_break_require_calcium_gluconate_and_class_c_loto";
+    allowedToProceed = false;
+    preemptionLatencyMs = 1;
+    blockedReason = `OSHA 1910.119 / API RP 751 Autoclave & AHF Line-Break LOTO Lock on ${input.unitId}: residualHF=${residualHfPpm} ppm (must be <0.5), residualTFE=${residualTfePpm} ppm (must be <10.0), bakeoutTemp=${polymerBakeoutTempC} C (must be <260 C PFIB threshold), calciumGluconate=${Boolean(input.calciumGluconateAntidoteStaged)}, classCSuit=${Boolean(input.apiRp751ClassCSuitVerified)}, dbbLoto=${Boolean(input.dbbMechanicalLotoVerified)}.`;
+  }
+
+  return {
+    policyCode:
+      "P199-HYDROFLUORIC-ACID-AHF-FLUOROPOLYMER-TFE-AUTOCLAVE-NFPA69-APIRP751-OSHA1910-119-OSHA1910-1000-TFE-DEFLAGRATION-QUENCH-HF-WATER-FOG-AND-CALCIUM-GLUCONATE-LOTO-GUARD",
+    unitId: input.unitId,
+    tfeAutoclavePressureBarG: input.tfeAutoclavePressureBarG,
+    tfeAutoclaveTempC: input.tfeAutoclaveTempC,
+    ambientHfVaporPpm: input.ambientHfVaporPpm,
+    tfeAutodecompositionEmergency,
+    ahfLeakOrKilnExcursionBlocked,
+    autoclaveOrAhfLineBreakLotoLocked,
+    allowedToProceed,
+    preemptionLatencyMs,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSctpRfc8841Rfc8831Rfc4960Rfc6525GuardInput {
+  associationId: string;
+  negotiatedSctpPort: number;
+  packetDestinationPort: number;
+  chunkType: "INIT" | "COOKIE-ECHO" | "RE-CONFIG" | "SACK" | "DATA";
+  containsMultiHomingAddressParams?: boolean;
+  requestedOutboundStreams?: number;
+  cookieEchoHmacValid?: boolean;
+  cookieAgeMs?: number;
+  reconfigExtensionNegotiated?: boolean;
+  reconfigRequestSeq?: number;
+  expectedReconfigSeq?: number;
+  isProtectedAuditStream?: boolean;
+  unackedDataChunksOnStream?: number;
+  sackGapAckBlocks?: Array<{ startOffset: number; endOffset: number }>;
+  maxInFlightTsnOffset?: number;
+  advertisedReceiverWindowBytes?: number;
+  zeroWindowDurationMs?: number;
+}
+
+export interface WebrtcSctpRfc8841Rfc8831Rfc4960Rfc6525GuardReport {
+  policyCode: "P200-WEBRTC-SCTP-RFC8841-RFC8831-RFC4960-RFC6525-SCTP-PORT-INIT-COOKIE-ECHO-REFLECTION-UNAUTHENTICATED-STREAM-RESET-RECONFIG-AND-SACK-GAP-ACK-RWND-DEADLOCK-GUARD";
+  associationId: string;
+  chunkType: WebrtcSctpRfc8841Rfc8831Rfc4960Rfc6525GuardInput["chunkType"];
+  initOrCookieReflectionRejected: boolean;
+  streamResetReconfigAttackBlocked: boolean;
+  sackGapAckOrZeroWindowBlocked: boolean;
+  packetAccepted: boolean;
+  action:
+    | "abort_sctp_init_or_cookie_reflection_and_strip_multihoming_params"
+    | "reject_unauthenticated_reconfig_stream_reset_and_preserve_audit_channel"
+    | "drop_malformed_sack_gap_ack_or_abort_stalled_zero_rwnd_association"
+    | "accept_verified_webrtc_sctp_chunk";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcSctpRfc8841Rfc8831Rfc4960Rfc6525InitCookieReflectionStreamResetReconfigAndSackGapAckRwndDeadlockGuard(
+  input: WebrtcSctpRfc8841Rfc8831Rfc4960Rfc6525GuardInput
+): WebrtcSctpRfc8841Rfc8831Rfc4960Rfc6525GuardReport {
+  // 1. RFC 8841 / RFC 4960 Section 5: a=sctp-port mismatch, forbidden multi-homing IPv4/IPv6/HostName address params
+  // in INIT/INIT-ACK, outbound stream table exhaustion (>1024), or forged/expired COOKIE-ECHO state-cookie (>60,000 ms)
+  const portMismatch = input.packetDestinationPort !== input.negotiatedSctpPort;
+  const multiHomingViolation = Boolean(input.containsMultiHomingAddressParams);
+  const streamTableAmplification = (input.requestedOutboundStreams ?? 16) > 1024;
+  const invalidCookieEcho =
+    input.chunkType === "COOKIE-ECHO" &&
+    (input.cookieEchoHmacValid === false || (input.cookieAgeMs ?? 0) > 60_000);
+
+  const initOrCookieReflectionRejected =
+    portMismatch ||
+    multiHomingViolation ||
+    streamTableAmplification ||
+    invalidCookieEcho;
+
+  // 2. RFC 6525 Stream Reset (RE-CONFIG, chunk type 130): unnegotiated extension, out-of-window Re-configuration
+  // Request Sequence Number, or resetting a protected compliance/audit DataChannel with unacknowledged DATA in flight
+  const isReconfig = input.chunkType === "RE-CONFIG";
+  const unnegotiatedReconfig =
+    isReconfig && input.reconfigExtensionNegotiated === false;
+  const reconfigSeqMismatch =
+    isReconfig &&
+    input.reconfigRequestSeq !== undefined &&
+    input.expectedReconfigSeq !== undefined &&
+    input.reconfigRequestSeq !== input.expectedReconfigSeq;
+  const auditStreamTruncationAttempt =
+    isReconfig &&
+    Boolean(input.isProtectedAuditStream) &&
+    (input.unackedDataChunksOnStream ?? 0) > 0;
+
+  const streamResetReconfigAttackBlocked =
+    unnegotiatedReconfig || reconfigSeqMismatch || auditStreamTruncationAttempt;
+
+  // 3. RFC 4960 Section 3.3.4: Malformed SACK Gap-Ack-Blocks (startOffset < 1, startOffset > endOffset,
+  // non-monotonic/overlapping blocks, or endOffset > maxInFlightTsnOffset) & persistent a_rwnd=0 deadlock (>5,000 ms)
+  const gapBlocks = input.sackGapAckBlocks ?? [];
+  const maxOffset = input.maxInFlightTsnOffset ?? 4096;
+  let malformedGapAckBlock = false;
+  let prevEnd = 0;
+  for (const block of gapBlocks) {
+    if (
+      block.startOffset < 1 ||
+      block.startOffset > block.endOffset ||
+      block.startOffset <= prevEnd ||
+      block.endOffset > maxOffset
+    ) {
+      malformedGapAckBlock = true;
+      break;
+    }
+    prevEnd = block.endOffset;
+  }
+
+  const persistentZeroRwndDeadlock =
+    input.advertisedReceiverWindowBytes !== undefined &&
+    input.advertisedReceiverWindowBytes === 0 &&
+    (input.zeroWindowDurationMs ?? 0) > 5_000;
+
+  const sackGapAckOrZeroWindowBlocked =
+    malformedGapAckBlock || persistentZeroRwndDeadlock;
+
+  let action: WebrtcSctpRfc8841Rfc8831Rfc4960Rfc6525GuardReport["action"] =
+    "accept_verified_webrtc_sctp_chunk";
+  let blockedReason: string | null = null;
+  let packetAccepted = true;
+
+  if (initOrCookieReflectionRejected) {
+    action =
+      "abort_sctp_init_or_cookie_reflection_and_strip_multihoming_params";
+    packetAccepted = false;
+    blockedReason = `RFC 8841 / RFC 4960 SCTP Association Integrity Violation on ${input.associationId}: dstPort=${input.packetDestinationPort} (negotiated=${input.negotiatedSctpPort}), multiHomingParams=${multiHomingViolation}, outboundStreams=${input.requestedOutboundStreams ?? 16}, cookieHmacValid=${input.cookieEchoHmacValid ?? true}, cookieAgeMs=${input.cookieAgeMs ?? 0}.`;
+  } else if (streamResetReconfigAttackBlocked) {
+    action =
+      "reject_unauthenticated_reconfig_stream_reset_and_preserve_audit_channel";
+    packetAccepted = false;
+    blockedReason = `RFC 6525 / RFC 8831 SCTP RE-CONFIG Stream Reset Violation on ${input.associationId}: negotiated=${input.reconfigExtensionNegotiated ?? true}, reqSeq=${input.reconfigRequestSeq} (expected=${input.expectedReconfigSeq}), protectedAuditStream=${Boolean(input.isProtectedAuditStream)} (unackedChunks=${input.unackedDataChunksOnStream ?? 0}).`;
+  } else if (sackGapAckOrZeroWindowBlocked) {
+    action =
+      "drop_malformed_sack_gap_ack_or_abort_stalled_zero_rwnd_association";
+    packetAccepted = false;
+    blockedReason = `RFC 4960 SACK Gap-Ack-Block / Zero-Window Deadlock Violation on ${input.associationId}: malformedGapAck=${malformedGapAckBlock} (maxInFlightOffset=${maxOffset}), a_rwnd=${input.advertisedReceiverWindowBytes ?? 65536}, zeroWindowDurationMs=${input.zeroWindowDurationMs ?? 0}.`;
+  }
+
+  return {
+    policyCode:
+      "P200-WEBRTC-SCTP-RFC8841-RFC8831-RFC4960-RFC6525-SCTP-PORT-INIT-COOKIE-ECHO-REFLECTION-UNAUTHENTICATED-STREAM-RESET-RECONFIG-AND-SACK-GAP-ACK-RWND-DEADLOCK-GUARD",
+    associationId: input.associationId,
+    chunkType: input.chunkType,
+    initOrCookieReflectionRejected,
+    streamResetReconfigAttackBlocked,
+    sackGapAckOrZeroWindowBlocked,
+    packetAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
