@@ -19076,6 +19076,225 @@ export function evaluateWebrtcSctpRfc8841Rfc8831Rfc4960Rfc6525InitCookieReflecti
   };
 }
 
+// ============================================================================
+// Stage 104: P201 (Maleic Anhydride MAN n-Butane VPO Fixed-Bed Oxidation & Melt Tank Safety)
+//          & P202 (SIP/WebRTC SDP RFC 8866 / RFC 8842 / RFC 5245 Origin sess-version, Group/MSID & maxptime Guard)
+// ============================================================================
+
+export interface MaleicAnhydrideManButaneVpoFixedBedOxidationInput {
+  unitId: string;
+  reactorBedId: string;
+  inletButaneFeedMolPct: number;
+  vpoCatalystHotspotTempC: number;
+  moltenSaltCirculationActive: boolean;
+  saltBathToProcessTubeLeakDetected: boolean;
+  moltenManTankTempC: number;
+  alkaliOrAmineTraceSodiumPpm: number;
+  switchCondenserDeltaPKpa: number;
+  ambientMaleicAnhydridePpm: number;
+  flakerOrMeltLineBreakRequested: boolean;
+  hotWaterHydrationWashoutCompleted: boolean;
+  electrostaticGroundingAndSuppliedAirHoodVerified: boolean;
+}
+
+export interface MaleicAnhydrideManButaneVpoFixedBedOxidationReport {
+  policyCode: "P201-MALEIC-ANHYDRIDE-MAN-BUTANE-VPO-FIXED-BED-OXIDATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-BUTANE-LEL-MOLTEN-SALT-HOTSPOT-ALKALI-DECOMPOSITION-AND-SUBLIMATION-DUST-LOTO-GUARD";
+  unitId: string;
+  reactorBedId: string;
+  butaneLelOrSaltHotspotPreempted: boolean;
+  moltenManAlkaliDecompositionOrCondenserPlugInterlocked: boolean;
+  flakerDustOrSensitizerLotoLocked: boolean;
+  operationAllowed: boolean;
+  action:
+    | "allow_normal_man_vpo_reactor_and_absorber_operation"
+    | "trip_butane_feed_dbb_maintain_sweep_air_and_route_to_rto_in_0ms"
+    | "isolate_melt_heating_engage_chilled_cooling_and_relieve_to_quench_scrubber"
+    | "lock_man_flaker_and_melt_line_break_until_hydration_wash_and_hood_loto";
+  blockedReason: string | null;
+}
+
+export function evaluateMaleicAnhydrideManButaneVpoFixedBedOxidationNfpa69ApiRp521Osha1910119ButaneLelSaltHotspotAlkaliDecompositionAndDustLotoGuard(
+  input: MaleicAnhydrideManButaneVpoFixedBedOxidationInput
+): MaleicAnhydrideManButaneVpoFixedBedOxidationReport {
+  // 1. NFPA 69 / OSHA 1910.119: n-Butane feed exceeding 1.70 mol% (>90% of 1.86 vol% LEL),
+  // VPO catalyst bed hot-spot >465°C, loss of molten nitrite-nitrate salt circulation, or salt-to-tube leak -> 0ms trip
+  const butaneLelOrSaltHotspotPreempted =
+    input.inletButaneFeedMolPct > 1.7 ||
+    input.vpoCatalystHotspotTempC > 465.0 ||
+    !input.moltenSaltCirculationActive ||
+    input.saltBathToProcessTubeLeakDetected;
+
+  // 2. API RP 521 / OSHA 1910.119: Molten MAN storage >95°C, trace alkali/sodium/amine >5.0 ppm
+  // (triggers violent exothermic decarboxylation CO2 evolution & polymerization), or switch-condenser ΔP >45 kPa sublimation plug
+  const moltenManAlkaliDecompositionOrCondenserPlugInterlocked =
+    input.moltenManTankTempC > 95.0 ||
+    input.alkaliOrAmineTraceSodiumPpm > 5.0 ||
+    input.switchCondenserDeltaPKpa > 45.0;
+
+  // 3. OSHA 1910.1000 / NFPA 652: Ambient MAN >=0.25 ppm PEL (respiratory/dermal sensitizer & Kst>200 combustible anhydride dust)
+  // or flaker/pastillator/melt line break requested without hot-water hydration washout and electrostatic grounding + supplied-air hood LOTO
+  const flakerDustOrSensitizerLotoLocked =
+    input.ambientMaleicAnhydridePpm >= 0.25 ||
+    (input.flakerOrMeltLineBreakRequested &&
+      (!input.hotWaterHydrationWashoutCompleted ||
+        !input.electrostaticGroundingAndSuppliedAirHoodVerified));
+
+  let action: MaleicAnhydrideManButaneVpoFixedBedOxidationReport["action"] =
+    "allow_normal_man_vpo_reactor_and_absorber_operation";
+  let blockedReason: string | null = null;
+  let operationAllowed = true;
+
+  if (butaneLelOrSaltHotspotPreempted) {
+    action =
+      "trip_butane_feed_dbb_maintain_sweep_air_and_route_to_rto_in_0ms";
+    operationAllowed = false;
+    blockedReason = `NFPA 69 / OSHA 1910.119 Maleic Anhydride VPO Reactor Emergency on ${input.unitId} (${input.reactorBedId}): butaneFeed=${input.inletButaneFeedMolPct} mol% (max 1.70 mol%), hotspotTemp=${input.vpoCatalystHotspotTempC} C (max 465 C), saltCirculation=${input.moltenSaltCirculationActive}, saltTubeLeak=${input.saltBathToProcessTubeLeakDetected}.`;
+  } else if (moltenManAlkaliDecompositionOrCondenserPlugInterlocked) {
+    action =
+      "isolate_melt_heating_engage_chilled_cooling_and_relieve_to_quench_scrubber";
+    operationAllowed = false;
+    blockedReason = `API RP 521 / OSHA 1910.119 Molten MAN Decomposition / Sublimation Plug Interlock on ${input.unitId}: meltTankTemp=${input.moltenManTankTempC} C (max 95 C), traceAlkaliNaPpm=${input.alkaliOrAmineTraceSodiumPpm} ppm (max 5 ppm), switchCondenserDeltaP=${input.switchCondenserDeltaPKpa} kPa (max 45 kPa).`;
+  } else if (flakerDustOrSensitizerLotoLocked) {
+    action =
+      "lock_man_flaker_and_melt_line_break_until_hydration_wash_and_hood_loto";
+    operationAllowed = false;
+    blockedReason = `OSHA 1910.1000 / NFPA 652 Maleic Anhydride Sensitizer & Combustible Dust LOTO Lock on ${input.unitId}: ambientManPpm=${input.ambientMaleicAnhydridePpm} ppm (PEL 0.25 ppm), lineBreakRequested=${input.flakerOrMeltLineBreakRequested}, hydrationWash=${input.hotWaterHydrationWashoutCompleted}, groundingAndHoodLoto=${input.electrostaticGroundingAndSuppliedAirHoodVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P201-MALEIC-ANHYDRIDE-MAN-BUTANE-VPO-FIXED-BED-OXIDATION-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-BUTANE-LEL-MOLTEN-SALT-HOTSPOT-ALKALI-DECOMPOSITION-AND-SUBLIMATION-DUST-LOTO-GUARD",
+    unitId: input.unitId,
+    reactorBedId: input.reactorBedId,
+    butaneLelOrSaltHotspotPreempted,
+    moltenManAlkaliDecompositionOrCondenserPlugInterlocked,
+    flakerDustOrSensitizerLotoLocked,
+    operationAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface SipWebrtcSdpRfc8866Rfc8842Rfc5245OriginGroupMaxptimeInput {
+  sessionId: string;
+  initialOriginSessId: string;
+  incomingOriginSessId: string;
+  previousOriginSessVersion: bigint | number;
+  incomingOriginSessVersion: bigint | number;
+  sdpBodyModifiedSincePreviousVersion: boolean;
+  originAddressIsUnicastGlobalOrIceValidated: boolean;
+  declaredMediaSectionMids: string[];
+  bundleAndLsGroupMids: string[];
+  crossTenantOrDuplicateMsidTrackDetected: boolean;
+  negotiatedPtimeMs: number;
+  negotiatedMaxPtimeMs: number;
+}
+
+export interface SipWebrtcSdpRfc8866Rfc8842Rfc5245OriginGroupMaxptimeReport {
+  policyCode: "P202-SIP-WEBRTC-SDP-RFC8866-RFC8842-RFC5245-ORIGIN-SESS-VERSION-RETROGRADE-DESYNC-MALICIOUS-GROUP-MSID-CROSS-SESSION-TRACK-INJECTION-AND-MAXPTIME-DSP-BUFFER-OVERFLOW-GUARD";
+  sessionId: string;
+  originSessVersionOrSessIdRejected: boolean;
+  groupMidOrCrossSessionMsidBlocked: boolean;
+  ptimeOrMaxptimeClamped: boolean;
+  effectivePtimeMs: number;
+  effectiveMaxPtimeMs: number;
+  sdpAccepted: boolean;
+  action:
+    | "accept_verified_sdp_offer_answer"
+    | "reject_sdp_origin_sess_id_mutation_or_retrograde_sess_version_with_488"
+    | "reject_sdp_dangling_duplicate_group_mid_or_cross_session_msid_splice"
+    | "clamp_sdp_ptime_and_maxptime_to_safe_dsp_frame_bounds";
+  blockedReason: string | null;
+}
+
+export function evaluateSipWebrtcSdpRfc8866Rfc8842Rfc5245OriginSessVersionRetrogradeDesyncGroupMsidTrackInjectionAndMaxptimeBufferGuard(
+  input: SipWebrtcSdpRfc8866Rfc8842Rfc5245OriginGroupMaxptimeInput
+): SipWebrtcSdpRfc8866Rfc8842Rfc5245OriginGroupMaxptimeReport {
+  const prevVer = BigInt(input.previousOriginSessVersion);
+  const nextVer = BigInt(input.incomingOriginSessVersion);
+
+  // 1. RFC 8866 Section 5.2: o= <sess-id> must remain invariant across re-INVITE / ICE restarts,
+  // <sess-version> must never decrease, and if SDP content changed, <sess-version> must strictly increment
+  // (prevents "unchanged sess-version" SBC inspection bypass smuggling)
+  const sessIdMutated = input.incomingOriginSessId !== input.initialOriginSessId;
+  const sessVersionRetrograde = nextVer < prevVer;
+  const silentModificationWithoutVersionBump =
+    input.sdpBodyModifiedSincePreviousVersion && nextVer === prevVer;
+
+  const originSessVersionOrSessIdRejected =
+    sessIdMutated ||
+    sessVersionRetrograde ||
+    silentModificationWithoutVersionBump ||
+    !input.originAddressIsUnicastGlobalOrIceValidated;
+
+  // 2. RFC 8843 / RFC 8830 / RFC 5888: Every MID in a=group:BUNDLE / LS must exist in declared m= sections,
+  // must not appear more than once across group lines, and must not splice cross-tenant a=msid tracks
+  const declaredSet = new Set(input.declaredMediaSectionMids);
+  const seenGroupMids = new Set<string>();
+  let danglingOrDuplicateGroupMid = false;
+  for (const mid of input.bundleAndLsGroupMids) {
+    if (!declaredSet.has(mid) || seenGroupMids.has(mid)) {
+      danglingOrDuplicateGroupMid = true;
+      break;
+    }
+    seenGroupMids.add(mid);
+  }
+
+  const groupMidOrCrossSessionMsidBlocked =
+    danglingOrDuplicateGroupMid ||
+    input.crossTenantOrDuplicateMsidTrackDetected;
+
+  // 3. RFC 8866 Section 6.4 / 6.15: a=ptime (<10ms interrupt storm or >60ms) & a=maxptime (>120ms PCM buffer bomb or ptime > maxptime)
+  const ptimeOrMaxptimeClamped =
+    input.negotiatedPtimeMs < 10 ||
+    input.negotiatedPtimeMs > 60 ||
+    input.negotiatedMaxPtimeMs < 20 ||
+    input.negotiatedMaxPtimeMs > 120 ||
+    input.negotiatedPtimeMs > input.negotiatedMaxPtimeMs;
+
+  const effectivePtimeMs = Math.min(60, Math.max(10, input.negotiatedPtimeMs));
+  const effectiveMaxPtimeMs = Math.max(
+    effectivePtimeMs,
+    Math.min(120, Math.max(20, input.negotiatedMaxPtimeMs))
+  );
+
+  let action: SipWebrtcSdpRfc8866Rfc8842Rfc5245OriginGroupMaxptimeReport["action"] =
+    "accept_verified_sdp_offer_answer";
+  let blockedReason: string | null = null;
+  let sdpAccepted = true;
+
+  if (originSessVersionOrSessIdRejected) {
+    action =
+      "reject_sdp_origin_sess_id_mutation_or_retrograde_sess_version_with_488";
+    sdpAccepted = false;
+    blockedReason = `RFC 8866 Section 5.2 SDP Origin Integrity Violation on ${input.sessionId}: sessIdMutated=${sessIdMutated}, prevVersion=${prevVer.toString()}, nextVersion=${nextVer.toString()}, modifiedWithoutVersionBump=${silentModificationWithoutVersionBump}, unicastOriginValid=${input.originAddressIsUnicastGlobalOrIceValidated}.`;
+  } else if (groupMidOrCrossSessionMsidBlocked) {
+    action =
+      "reject_sdp_dangling_duplicate_group_mid_or_cross_session_msid_splice";
+    sdpAccepted = false;
+    blockedReason = `RFC 8843 / RFC 8830 SDP Group/MSID Binding Violation on ${input.sessionId}: danglingOrDuplicateGroupMid=${danglingOrDuplicateGroupMid}, crossTenantMsidTrack=${input.crossTenantOrDuplicateMsidTrackDetected}.`;
+  } else if (ptimeOrMaxptimeClamped) {
+    action = "clamp_sdp_ptime_and_maxptime_to_safe_dsp_frame_bounds";
+    sdpAccepted = false;
+    blockedReason = `RFC 8866 Section 6.4/6.15 SDP ptime/maxptime Frame-Buffer Violation on ${input.sessionId}: requestedPtime=${input.negotiatedPtimeMs}ms, requestedMaxPtime=${input.negotiatedMaxPtimeMs}ms -> clamped to ptime=${effectivePtimeMs}ms, maxptime=${effectiveMaxPtimeMs}ms.`;
+  }
+
+  return {
+    policyCode:
+      "P202-SIP-WEBRTC-SDP-RFC8866-RFC8842-RFC5245-ORIGIN-SESS-VERSION-RETROGRADE-DESYNC-MALICIOUS-GROUP-MSID-CROSS-SESSION-TRACK-INJECTION-AND-MAXPTIME-DSP-BUFFER-OVERFLOW-GUARD",
+    sessionId: input.sessionId,
+    originSessVersionOrSessIdRejected,
+    groupMidOrCrossSessionMsidBlocked,
+    ptimeOrMaxptimeClamped,
+    effectivePtimeMs,
+    effectiveMaxPtimeMs,
+    sdpAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
