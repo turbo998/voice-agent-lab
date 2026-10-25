@@ -21525,6 +21525,213 @@ export function evaluateWebrtcSipSdpOpusFmtpRfc7587Rfc6716Rfc8866Rfc4733Maxavera
   };
 }
 
+// ============================================================================
+// Stage 117 — P227: Oxo-Alcohol (n-Butyraldehyde / 2-Ethylhexanol 2-EH)
+// Propylene Low-Pressure Rhodium-Phosphine (Rh-TPP) Syngas (CO + H2)
+// Hydroformylation Runaway, Butyraldehyde Peroxide / Insulation Self-Heating
+// & Aldol Condensation, and Nickel/Iron Carbonyl (Ni(CO)4 / Fe(CO)5) /
+// Pyrophoric Raney-Ni 2-EH Hydrogenation Catalyst SCBA LOTO Guardrail
+// (NFPA 69 / NFPA 30 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000)
+// ============================================================================
+
+export interface OxoAlcoholPropyleneRhodiumHydroformylationButyraldehydePeroxideAndNickelCarbonylScbaLotoInput {
+  reactorId: string;
+  /** Low-pressure Rh-TPP hydroformylation reactor temperature in °C (normal: 85–115°C; trip > 122.0°C). */
+  hydroformylationReactorTempC: number;
+  /** Hydroformylation reactor temperature rise rate dT/dt in °C/min (trip > 2.0°C/min). */
+  reactorTempRateCPerMin: number;
+  /** Hydroformylation reactor pressure in bar(g) (normal: 15–22 bar(g); trip > 24.0 bar(g)). */
+  hydroformylationPressureBarg: number;
+  /** Syngas CO partial pressure in bar (minimum >= 0.15 bar to prevent Rh cluster deactivation and uncontrolled olefin hydrogenation). */
+  syngasCoPartialPressureBar: number;
+  /** Vent-gas oxygen concentration in the H2 + CO + propylene vapor space in vol% (trip >= 1.8 vol%). */
+  ventGasOxygenVolPct: number;
+  /** n-Butyraldehyde storage tank oxygen concentration in vol% (normal <= 0.30 vol% under N2 blanket). */
+  butyraldehydeTankOxygenVolPct: number;
+  /** Active peroxybutyric acid / peroxide concentration in n-butyraldehyde in ppm (trip > 25.0 ppm). */
+  butyraldehydePeroxidePpm: number;
+  /** NaOH-catalyzed butyraldehyde aldol condensation reactor (to 2-ethylhexenal) temperature in °C (trip > 138.0°C). */
+  aldolReactorTempC: number;
+  /** Mineral-wool pipe insulation aldehyde soak temperature in °C (self-heating auto-ignition hazard > 155.0°C). */
+  insulationAldehydeSoakTempC: number;
+  /** Ambient Nickel Tetracarbonyl Ni(CO)4 concentration in ppb (OSHA PEL = 1.0 ppb = 0.001 ppm). */
+  ambientNickelCarbonylPpb: number;
+  /** Ambient Carbon Monoxide (CO) concentration in ppm (OSHA/NIOSH threshold >= 35.0 ppm). */
+  ambientCarbonMonoxidePpm: number;
+  /** Whether an operator or agent requested opening the oxo-reactor, candle filter, or 2-EH hydrogenation catalyst bed. */
+  equipmentOpeningRequested: boolean;
+  /** Whether CO-free N2 thermal carbonyl purge, wet flooding of pyrophoric Raney-Ni / Cu-Cr 2-EH catalyst, and positive-pressure SCBA LOTO are verified. */
+  carbonylPurgeWetCatalystAndScbaLotoVerified: boolean;
+}
+
+export interface OxoAlcoholPropyleneRhodiumHydroformylationButyraldehydePeroxideAndNickelCarbonylScbaLotoDecision {
+  policyCode: "P227-OXO-ALCOHOL-PROPYLENE-RHODIUM-HYDROFORMYLATION-NFPA69-NFPA30-APIRP521-OSHA1910119-OSHA19101000-SYNGAS-RUNAWAY-BUTYRALDEHYDE-PEROXIDE-ALDOL-EXOTHERM-AND-NICKEL-CARBONYL-RANEY-NI-SCBA-LOTO-GUARD";
+  reactorId: string;
+  hydroformylationRunawayOrSyngasDeflagrationTripped: boolean;
+  butyraldehydePeroxideAldolOrInsulationFireMitigated: boolean;
+  nickelCarbonylOrPyrophoricCatalystOpeningLocked: boolean;
+  automationAllowed: boolean;
+  action:
+    | "allow_normal_oxo_alcohol_hydroformylation_operation"
+    | "trip_propylene_syngas_dbb_flood_cooling_coils_and_depressurize_to_flare_in_0ms"
+    | "cut_aldol_steam_isolate_naoh_catalyst_inject_peroxide_reducer_and_restore_n2_blanket"
+    | "lock_oxo_alcohol_equipment_and_enforce_carbonyl_purge_wet_catalyst_scba_loto";
+  blockedReason?: string;
+}
+
+export function evaluateOxoAlcoholPropyleneRhodiumHydroformylationNfpa69Nfpa30ApiRp521Osha1910119Osha19101000SyngasRunawayButyraldehydePeroxideAldolExothermAndNickelCarbonylRaneyNiScbaLotoGuard(
+  input: OxoAlcoholPropyleneRhodiumHydroformylationButyraldehydePeroxideAndNickelCarbonylScbaLotoInput,
+): OxoAlcoholPropyleneRhodiumHydroformylationButyraldehydePeroxideAndNickelCarbonylScbaLotoDecision {
+  const hydroformylationRunawayOrSyngasDeflagrationTripped =
+    input.hydroformylationReactorTempC > 122.0 ||
+    input.reactorTempRateCPerMin > 2.0 ||
+    input.hydroformylationPressureBarg > 24.0 ||
+    input.syngasCoPartialPressureBar < 0.15 ||
+    input.ventGasOxygenVolPct >= 1.8;
+
+  const butyraldehydePeroxideAldolOrInsulationFireMitigated =
+    input.butyraldehydeTankOxygenVolPct > 0.3 ||
+    input.butyraldehydePeroxidePpm > 25.0 ||
+    input.aldolReactorTempC > 138.0 ||
+    input.insulationAldehydeSoakTempC > 155.0;
+
+  const nickelCarbonylOrPyrophoricCatalystOpeningLocked =
+    input.ambientNickelCarbonylPpb >= 1.0 ||
+    input.ambientCarbonMonoxidePpm >= 35.0 ||
+    (input.equipmentOpeningRequested &&
+      !input.carbonylPurgeWetCatalystAndScbaLotoVerified);
+
+  let action: OxoAlcoholPropyleneRhodiumHydroformylationButyraldehydePeroxideAndNickelCarbonylScbaLotoDecision["action"] =
+    "allow_normal_oxo_alcohol_hydroformylation_operation";
+  let automationAllowed = true;
+  let blockedReason: string | undefined;
+
+  if (hydroformylationRunawayOrSyngasDeflagrationTripped) {
+    action =
+      "trip_propylene_syngas_dbb_flood_cooling_coils_and_depressurize_to_flare_in_0ms";
+    automationAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 Oxo-Alcohol Rh-TPP Propylene Hydroformylation Runaway, Low CO Partial-Pressure Rhodium Deactivation or Syngas O2 Ingress on ${input.reactorId}: temp=${input.hydroformylationReactorTempC}°C, dT/dt=${input.reactorTempRateCPerMin}°C/min, pressure=${input.hydroformylationPressureBarg} bar(g), pCO=${input.syngasCoPartialPressureBar} bar, ventO2=${input.ventGasOxygenVolPct} vol%.`;
+  } else if (butyraldehydePeroxideAldolOrInsulationFireMitigated) {
+    action =
+      "cut_aldol_steam_isolate_naoh_catalyst_inject_peroxide_reducer_and_restore_n2_blanket";
+    automationAllowed = false;
+    blockedReason = `NFPA 30 / API RP 521 n-Butyraldehyde Peroxide Auto-Oxidation, Uncontrolled NaOH Aldol Condensation Exotherm or Insulation Self-Heating on ${input.reactorId}: tankO2=${input.butyraldehydeTankOxygenVolPct} vol%, peroxide=${input.butyraldehydePeroxidePpm} ppm, aldolTemp=${input.aldolReactorTempC}°C, insulationTemp=${input.insulationAldehydeSoakTempC}°C.`;
+  } else if (nickelCarbonylOrPyrophoricCatalystOpeningLocked) {
+    action =
+      "lock_oxo_alcohol_equipment_and_enforce_carbonyl_purge_wet_catalyst_scba_loto";
+    automationAllowed = false;
+    blockedReason = `OSHA 29 CFR 1910.1000 / 1910.119 / 1910.147 Toxic Nickel Tetracarbonyl Ni(CO)4 (>= 1.0 ppb), CO (>= 35 ppm) or Unpassivated Pyrophoric Raney-Ni / Cu-Cr 2-EH Catalyst Opening on ${input.reactorId}: Ni(CO)4=${input.ambientNickelCarbonylPpb} ppb, CO=${input.ambientCarbonMonoxidePpm} ppm, openingRequested=${input.equipmentOpeningRequested}, lotoVerified=${input.carbonylPurgeWetCatalystAndScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P227-OXO-ALCOHOL-PROPYLENE-RHODIUM-HYDROFORMYLATION-NFPA69-NFPA30-APIRP521-OSHA1910119-OSHA19101000-SYNGAS-RUNAWAY-BUTYRALDEHYDE-PEROXIDE-ALDOL-EXOTHERM-AND-NICKEL-CARBONYL-RANEY-NI-SCBA-LOTO-GUARD",
+    reactorId: input.reactorId,
+    hydroformylationRunawayOrSyngasDeflagrationTripped,
+    butyraldehydePeroxideAldolOrInsulationFireMitigated,
+    nickelCarbonylOrPyrophoricCatalystOpeningLocked,
+    automationAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+// ============================================================================
+// Stage 117 — P228: WebRTC & SIP SDP BUNDLE Multiplexing Attribute Categories
+// (RFC 8859 IDENTICAL / TRANSPORT / SUM), Exclusive RTCP-Mux (RFC 8858
+// a=rtcp-mux-only), Ephemeral Cryptographic RTCP SDES CNAME Privacy (RFC 7022),
+// and IdP Identity Assertion DTLS Fingerprint Binding Guard (RFC 8827)
+// ============================================================================
+
+export interface WebrtcSipSdpBundleAttributeMuxRfc8859Rfc8858Rfc7022Rfc8827GuardInput {
+  sessionId: string;
+  /** Whether bundled m= lines contain conflicting RFC 8859 IDENTICAL or TRANSPORT category attributes (e.g., differing ice-ufrag, ice-pwd, fingerprint, or setup). */
+  identicalOrTransportCategoryMismatchAcrossBundledMlines: boolean;
+  /** Aggregate RFC 8859 SUM category b=AS / b=TIAS bandwidth across bundled m= lines in kbps. */
+  bundledSumBandwidthKbps: number;
+  /** Maximum negotiated transport 5-tuple bandwidth ceiling in kbps. */
+  maxAllowedTransportBandwidthKbps: number;
+  /** Whether RFC 8858 a=rtcp-mux-only was offered or mandated on the media section. */
+  rtcpMuxOnlyRequired: boolean;
+  /** Whether the remote peer's SDP answer omitted a=rtcp-mux while a=rtcp-mux-only was active. */
+  peerAnswerOmittedRtcpMux: boolean;
+  /** Whether the remote peer smuggled a separate a=rtcp:<port> IN IP4 <target> attribute under rtcp-mux-only to trigger dual-port fallback or reflection. */
+  explicitSeparateRtcpPortSmuggled: boolean;
+  /** Whether the outbound or inbound RTCP SDES CNAME embeds a persistent MAC address, host IPv4/IPv6, or static cross-session user identifier violating RFC 7022 §5. */
+  sdesCnameContainsPersistentIpMacOrUserId: boolean;
+  /** Cryptographic entropy of the generated per-session RTCP SDES CNAME in bits (RFC 7022 §5 requires >= 96 bits). */
+  ephemeralSdesCnameEntropyBits: number;
+  /** Whether an RFC 8827 §6.5 a=identity IdP assertion is present in the SDP without matching the active DTLS-SRTP a=fingerprint digest. */
+  idpIdentityAssertionUnboundToDtlsFingerprint: boolean;
+}
+
+export interface WebrtcSipSdpBundleAttributeMuxRfc8859Rfc8858Rfc7022Rfc8827GuardDecision {
+  policyCode: "P228-WEBRTC-SIP-SDP-BUNDLE-ATTRIBUTE-MUX-RFC8859-RFC8858-RFC7022-RFC8827-IDENTICAL-TRANSPORT-CATEGORY-MISMATCH-RTCP-MUX-ONLY-FALLBACK-PERSISTENT-CNAME-TRACKING-AND-IDP-IDENTITY-SPOOF-GUARD";
+  sessionId: string;
+  rfc8859BundleIdenticalTransportOrSumOverflowRejected: boolean;
+  rfc8858RtcpMuxOnlyDowngradeOrSeparatePortBlocked: boolean;
+  rfc7022PersistentSdesCnameOrRfc8827UnboundIdpSanitized: boolean;
+  bundleMuxAndIdentityNegotiationAccepted: boolean;
+  action:
+    | "accept_compliant_rfc8859_bundle_rtcp_mux_only_and_bound_identity"
+    | "reject_rfc8859_conflicting_identical_transport_bundle_sdp_in_0ms"
+    | "block_rfc8858_rtcp_mux_only_downgrade_and_strip_separate_rtcp_port"
+    | "rewrite_rfc7022_ephemeral_sdes_cname_and_quarantine_unbound_rfc8827_idp_assertion";
+  blockedReason?: string;
+}
+
+export function evaluateWebrtcSipSdpBundleAttributeMuxRfc8859Rfc8858Rfc7022Rfc8827IdenticalTransportCategoryMismatchRtcpMuxOnlyFallbackPersistentCnameTrackingAndIdpIdentitySpoofGuard(
+  input: WebrtcSipSdpBundleAttributeMuxRfc8859Rfc8858Rfc7022Rfc8827GuardInput,
+): WebrtcSipSdpBundleAttributeMuxRfc8859Rfc8858Rfc7022Rfc8827GuardDecision {
+  const rfc8859BundleIdenticalTransportOrSumOverflowRejected =
+    input.identicalOrTransportCategoryMismatchAcrossBundledMlines ||
+    input.bundledSumBandwidthKbps > input.maxAllowedTransportBandwidthKbps;
+
+  const rfc8858RtcpMuxOnlyDowngradeOrSeparatePortBlocked =
+    (input.rtcpMuxOnlyRequired && input.peerAnswerOmittedRtcpMux) ||
+    (input.rtcpMuxOnlyRequired && input.explicitSeparateRtcpPortSmuggled);
+
+  const rfc7022PersistentSdesCnameOrRfc8827UnboundIdpSanitized =
+    input.sdesCnameContainsPersistentIpMacOrUserId ||
+    input.ephemeralSdesCnameEntropyBits < 96 ||
+    input.idpIdentityAssertionUnboundToDtlsFingerprint;
+
+  let action: WebrtcSipSdpBundleAttributeMuxRfc8859Rfc8858Rfc7022Rfc8827GuardDecision["action"] =
+    "accept_compliant_rfc8859_bundle_rtcp_mux_only_and_bound_identity";
+  let bundleMuxAndIdentityNegotiationAccepted = true;
+  let blockedReason: string | undefined;
+
+  if (rfc8859BundleIdenticalTransportOrSumOverflowRejected) {
+    action =
+      "reject_rfc8859_conflicting_identical_transport_bundle_sdp_in_0ms";
+    bundleMuxAndIdentityNegotiationAccepted = false;
+    blockedReason = `RFC 8859 SDP BUNDLE Multiplexing IDENTICAL/TRANSPORT Category Conflict across m= Lines or SUM Bandwidth Overflow on ${input.sessionId}: categoryMismatch=${input.identicalOrTransportCategoryMismatchAcrossBundledMlines}, sumKbps=${input.bundledSumBandwidthKbps}/${input.maxAllowedTransportBandwidthKbps} kbps.`;
+  } else if (rfc8858RtcpMuxOnlyDowngradeOrSeparatePortBlocked) {
+    action =
+      "block_rfc8858_rtcp_mux_only_downgrade_and_strip_separate_rtcp_port";
+    bundleMuxAndIdentityNegotiationAccepted = false;
+    blockedReason = `RFC 8858 a=rtcp-mux-only Dual-Port Fallback Downgrade or Smuggled Separate a=rtcp:<port> Reflection Vector on ${input.sessionId}: muxOnlyRequired=${input.rtcpMuxOnlyRequired}, peerOmittedMux=${input.peerAnswerOmittedRtcpMux}, separatePortSmuggled=${input.explicitSeparateRtcpPortSmuggled}.`;
+  } else if (rfc7022PersistentSdesCnameOrRfc8827UnboundIdpSanitized) {
+    action =
+      "rewrite_rfc7022_ephemeral_sdes_cname_and_quarantine_unbound_rfc8827_idp_assertion";
+    bundleMuxAndIdentityNegotiationAccepted = false;
+    blockedReason = `RFC 7022 §5 Persistent Hardware/IP RTCP SDES CNAME Privacy Leak (<96-bit Entropy) or RFC 8827 §6.5 Unbound a=identity DTLS Fingerprint Assertion on ${input.sessionId}: persistentCname=${input.sdesCnameContainsPersistentIpMacOrUserId}, cnameBits=${input.ephemeralSdesCnameEntropyBits}, unboundIdp=${input.idpIdentityAssertionUnboundToDtlsFingerprint}.`;
+  }
+
+  return {
+    policyCode:
+      "P228-WEBRTC-SIP-SDP-BUNDLE-ATTRIBUTE-MUX-RFC8859-RFC8858-RFC7022-RFC8827-IDENTICAL-TRANSPORT-CATEGORY-MISMATCH-RTCP-MUX-ONLY-FALLBACK-PERSISTENT-CNAME-TRACKING-AND-IDP-IDENTITY-SPOOF-GUARD",
+    sessionId: input.sessionId,
+    rfc8859BundleIdenticalTransportOrSumOverflowRejected,
+    rfc8858RtcpMuxOnlyDowngradeOrSeparatePortBlocked,
+    rfc7022PersistentSdesCnameOrRfc8827UnboundIdpSanitized,
+    bundleMuxAndIdentityNegotiationAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
