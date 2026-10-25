@@ -20977,3 +20977,189 @@ export function evaluateWebrtcSipSframeE2eeDoubleSrtpCryptexRfc9605Rfc8723Rfc933
   };
 }
 
+/**
+ * Stage 114 · P221: Acrylic Acid (AA) & Glacial Acrylic Acid (GAA) Two-Stage Propylene Catalytic Oxidation,
+ * Acrolein Intermediate & MEHQ-Inhibited Crystallization/Storage Safety Guard
+ * Standards: NFPA 69 / API RP 521 / OSHA 29 CFR 1910.119 (PSM) / OSHA 1910.1000 (Acrolein PEL 0.1 ppm / Acrylic Acid TLV 2.0 ppm)
+ */
+export interface AcrylicAcidGlacialAaPropyleneTwoStageOxidationAcroleinNfpa69ApiRp521Osha1910119Osha19101000OxidationHotspotDimerExothermicRunawayFreezingThawingMehqDepletionAndAcroleinScbaLotoGuardInput {
+  reactorOrTankId: string;
+  stage1MoBiHotspotTempCelsius: number;
+  stage2MoVHotspotTempCelsius: number;
+  interstageGasTempCelsius: number;
+  reactorOffGasOxygenMolPercent: number;
+  moltenSaltCirculationPumpHealthy: boolean;
+  gaaStorageTempCelsius: number;
+  steamOrHighTempHeatingMediumUsedForThawing: boolean;
+  gaaMehqInhibitorPpm: number;
+  gaaDissolvedOxygenPpm: number;
+  azeotropicColumnBottomsTempCelsius: number;
+  requestedAction:
+    | "adjust_propylene_oxidation_feed_or_gaa_transfer"
+    | "open_acrolein_absorber_or_gaa_column_manway";
+  ambientAcroleinVaporPpm: number;
+  ambientAcrylicAcidVaporPpm: number;
+  bisulfiteNeutralizationAndScbaLotoVerified: boolean;
+}
+
+export interface AcrylicAcidGlacialAaPropyleneTwoStageOxidationAcroleinNfpa69ApiRp521Osha1910119Osha19101000OxidationHotspotDimerExothermicRunawayFreezingThawingMehqDepletionAndAcroleinScbaLotoGuardResult {
+  policyCode: "P221-ACRYLIC-ACID-GLACIAL-AA-PROPYLENE-TWO-STAGE-OXIDATION-ACROLEIN-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-OXIDATION-HOTSPOT-DIMER-EXOTHERMIC-RUNAWAY-FREEZING-THAWING-MEHQ-DEPLETION-AND-ACROLEIN-SCBA-LOTO-GUARD";
+  reactorOrTankId: string;
+  twoStageOxidationHotspotOrOffGasOxygenPreempted: boolean;
+  gaaFreezingThawingMehqDepletionOrDimerRunawayInterlocked: boolean;
+  acroleinOrGaaEquipmentOpeningLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "trip_propylene_feed_dbb_inject_steam_ballast_and_quench_flood_in_0ms"
+    | "inject_ptz_copper_shortstop_enforce_tempered_water_and_o2_n2_sparge"
+    | "lock_acrolein_gaa_equipment_and_enforce_bisulfite_wash_scba_loto"
+    | "allow_verified_propylene_two_stage_oxidation_and_gaa_storage_control";
+  blockedReason: string | null;
+}
+
+export function evaluateAcrylicAcidGlacialAaPropyleneTwoStageOxidationAcroleinNfpa69ApiRp521Osha1910119Osha19101000OxidationHotspotDimerExothermicRunawayFreezingThawingMehqDepletionAndAcroleinScbaLotoGuard(
+  input: AcrylicAcidGlacialAaPropyleneTwoStageOxidationAcroleinNfpa69ApiRp521Osha1910119Osha19101000OxidationHotspotDimerExothermicRunawayFreezingThawingMehqDepletionAndAcroleinScbaLotoGuardInput
+): AcrylicAcidGlacialAaPropyleneTwoStageOxidationAcroleinNfpa69ApiRp521Osha1910119Osha19101000OxidationHotspotDimerExothermicRunawayFreezingThawingMehqDepletionAndAcroleinScbaLotoGuardResult {
+  const twoStageOxidationHotspotOrOffGasOxygenPreempted =
+    input.stage1MoBiHotspotTempCelsius > 430.0 ||
+    input.stage2MoVHotspotTempCelsius > 360.0 ||
+    input.interstageGasTempCelsius > 265.0 ||
+    input.reactorOffGasOxygenMolPercent >= 6.5 ||
+    !input.moltenSaltCirculationPumpHealthy;
+
+  const gaaFreezingThawingMehqDepletionOrDimerRunawayInterlocked =
+    input.gaaStorageTempCelsius < 15.0 ||
+    input.gaaStorageTempCelsius > 32.0 ||
+    input.steamOrHighTempHeatingMediumUsedForThawing ||
+    input.gaaMehqInhibitorPpm < 180 ||
+    input.gaaDissolvedOxygenPpm < 4.0 ||
+    input.azeotropicColumnBottomsTempCelsius > 100.0;
+
+  const acroleinOrGaaEquipmentOpeningLocked =
+    input.requestedAction === "open_acrolein_absorber_or_gaa_column_manway" &&
+    (input.ambientAcroleinVaporPpm >= 0.1 ||
+      input.ambientAcrylicAcidVaporPpm >= 2.0 ||
+      !input.bisulfiteNeutralizationAndScbaLotoVerified);
+
+  let action: AcrylicAcidGlacialAaPropyleneTwoStageOxidationAcroleinNfpa69ApiRp521Osha1910119Osha19101000OxidationHotspotDimerExothermicRunawayFreezingThawingMehqDepletionAndAcroleinScbaLotoGuardResult["action"] =
+    "allow_verified_propylene_two_stage_oxidation_and_gaa_storage_control";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | null = null;
+
+  if (twoStageOxidationHotspotOrOffGasOxygenPreempted) {
+    action =
+      "trip_propylene_feed_dbb_inject_steam_ballast_and_quench_flood_in_0ms";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 Two-Stage Propylene Oxidation Runaway or Acrolein Autoignition Hazard on ${input.reactorOrTankId}: stage1Hotspot=${input.stage1MoBiHotspotTempCelsius}°C (max 430.0°C), stage2Hotspot=${input.stage2MoVHotspotTempCelsius}°C (max 360.0°C), interstageTemp=${input.interstageGasTempCelsius}°C (max 265.0°C), offGasO2=${input.reactorOffGasOxygenMolPercent} mol% (max <6.5 mol%), moltenSaltHealthy=${input.moltenSaltCirculationPumpHealthy}.`;
+  } else if (gaaFreezingThawingMehqDepletionOrDimerRunawayInterlocked) {
+    action =
+      "inject_ptz_copper_shortstop_enforce_tempered_water_and_o2_n2_sparge";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.119 Glacial Acrylic Acid (GAA) Freezing/Uninhibited Crystal Thawing, Dimerization or MEHQ/O2 Depletion Hazard on ${input.reactorOrTankId}: gaaTemp=${input.gaaStorageTempCelsius}°C (safe 15.0-32.0°C), steamThawing=${input.steamOrHighTempHeatingMediumUsedForThawing}, mehqPpm=${input.gaaMehqInhibitorPpm} ppm (min 180 ppm), dissolvedO2=${input.gaaDissolvedOxygenPpm} ppm (min 4.0 ppm), columnBottoms=${input.azeotropicColumnBottomsTempCelsius}°C (max 100.0°C).`;
+  } else if (acroleinOrGaaEquipmentOpeningLocked) {
+    action =
+      "lock_acrolein_gaa_equipment_and_enforce_bisulfite_wash_scba_loto";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1000 Extreme Lachrymator Acrolein / Acrylic Acid PEL Excursion or Unverified Bisulfite Neutralization SCBA LOTO on ${input.reactorOrTankId}: ambientAcrolein=${input.ambientAcroleinVaporPpm} ppm (PEL <0.1 ppm), ambientAA=${input.ambientAcrylicAcidVaporPpm} ppm (TLV <2.0 ppm), bisulfiteScbaLotoVerified=${input.bisulfiteNeutralizationAndScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P221-ACRYLIC-ACID-GLACIAL-AA-PROPYLENE-TWO-STAGE-OXIDATION-ACROLEIN-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-OXIDATION-HOTSPOT-DIMER-EXOTHERMIC-RUNAWAY-FREEZING-THAWING-MEHQ-DEPLETION-AND-ACROLEIN-SCBA-LOTO-GUARD",
+    reactorOrTankId: input.reactorOrTankId,
+    twoStageOxidationHotspotOrOffGasOxygenPreempted,
+    gaaFreezingThawingMehqDepletionOrDimerRunawayInterlocked,
+    acroleinOrGaaEquipmentOpeningLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+/**
+ * Stage 114 · P222: WebRTC & SIP ICE Candidate Pair Priority (64-Bit Formula), Connectivity Check Pacing (Ta Timer),
+ * Aggressive Nomination Deprecation & Frozen Checklist State-Machine Guard
+ * Standards: IETF RFC 8445 (§6.1.2.4 / §6.1.2.5 / §6.1.4.2 / §7.2.5 / §8.1.1) / RFC 8838 / RFC 5245 / RFC 8863
+ */
+export interface WebrtcSipIceRfc8445Rfc8838Rfc5245Rfc8863AggressiveNominationDeprecationPairPriorityOverflowConnectivityCheckTaPacingAndFrozenChecklistDeadlockGuardInput {
+  sessionId: string;
+  candidatePairChecklistCount: number;
+  pairPriorityFormulaUnsigned64Valid: boolean;
+  connectivityCheckIntervalTaMs: number;
+  aggressiveNominationBeforeSucceededUsed: boolean;
+  iceTieBreakerConsistentAcrossChecks: boolean;
+  nominatedPairFlapsPerSecond: number;
+  allChecklistPairsStuckInFrozenMs: number;
+  activeFoundationCount: number;
+  prematureFailedTransitionWhileSelectedPairAlive: boolean;
+}
+
+export interface WebrtcSipIceRfc8445Rfc8838Rfc5245Rfc8863AggressiveNominationDeprecationPairPriorityOverflowConnectivityCheckTaPacingAndFrozenChecklistDeadlockGuardResult {
+  policyCode: "P222-WEBRTC-SIP-ICE-RFC8445-RFC8838-RFC5245-RFC8863-AGGRESSIVE-NOMINATION-DEPRECATION-PAIR-PRIORITY-OVERFLOW-CONNECTIVITY-CHECK-TA-PACING-AND-FROZEN-CHECKLIST-DEADLOCK-GUARD";
+  sessionId: string;
+  checklistOverflowOrTaPacingViolationDropped: boolean;
+  deprecatedAggressiveNominationOrTieBreakerMutationRejected: boolean;
+  frozenChecklistDeadlockOrPrematureFailureQuarantined: boolean;
+  iceChecklistStateTransitionAccepted: boolean;
+  action:
+    | "drop_rfc8445_ice_checklist_overflow_or_ta_pacing_violation_in_0ms"
+    | "reject_deprecated_aggressive_nomination_or_tie_breaker_mutation"
+    | "unfreeze_highest_priority_foundation_and_quarantine_premature_ice_failure"
+    | "accept_verified_rfc8445_ice_checklist_nomination_and_ta_pacing";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcSipIceRfc8445Rfc8838Rfc5245Rfc8863AggressiveNominationDeprecationPairPriorityOverflowConnectivityCheckTaPacingAndFrozenChecklistDeadlockGuard(
+  input: WebrtcSipIceRfc8445Rfc8838Rfc5245Rfc8863AggressiveNominationDeprecationPairPriorityOverflowConnectivityCheckTaPacingAndFrozenChecklistDeadlockGuardInput
+): WebrtcSipIceRfc8445Rfc8838Rfc5245Rfc8863AggressiveNominationDeprecationPairPriorityOverflowConnectivityCheckTaPacingAndFrozenChecklistDeadlockGuardResult {
+  const checklistOverflowOrTaPacingViolationDropped =
+    input.candidatePairChecklistCount > 100 ||
+    !input.pairPriorityFormulaUnsigned64Valid ||
+    input.connectivityCheckIntervalTaMs < 5;
+
+  const deprecatedAggressiveNominationOrTieBreakerMutationRejected =
+    input.aggressiveNominationBeforeSucceededUsed ||
+    !input.iceTieBreakerConsistentAcrossChecks ||
+    input.nominatedPairFlapsPerSecond > 2;
+
+  const frozenChecklistDeadlockOrPrematureFailureQuarantined =
+    (input.allChecklistPairsStuckInFrozenMs > 3000 &&
+      input.activeFoundationCount === 0) ||
+    input.prematureFailedTransitionWhileSelectedPairAlive;
+
+  let action: WebrtcSipIceRfc8445Rfc8838Rfc5245Rfc8863AggressiveNominationDeprecationPairPriorityOverflowConnectivityCheckTaPacingAndFrozenChecklistDeadlockGuardResult["action"] =
+    "accept_verified_rfc8445_ice_checklist_nomination_and_ta_pacing";
+  let iceChecklistStateTransitionAccepted = true;
+  let blockedReason: string | null = null;
+
+  if (checklistOverflowOrTaPacingViolationDropped) {
+    action =
+      "drop_rfc8445_ice_checklist_overflow_or_ta_pacing_violation_in_0ms";
+    iceChecklistStateTransitionAccepted = false;
+    blockedReason = `RFC 8445 §6.1.2.4 / §6.1.2.5 / §6.1.4.2 ICE Candidate Pair Checklist Overflow (>100), 64-Bit Priority Formula Overflow or Ta Pacing Violation (<5ms) on ${input.sessionId}: pairCount=${input.candidatePairChecklistCount} (max 100), uint64PriorityValid=${input.pairPriorityFormulaUnsigned64Valid}, taIntervalMs=${input.connectivityCheckIntervalTaMs}ms (min 5ms).`;
+  } else if (deprecatedAggressiveNominationOrTieBreakerMutationRejected) {
+    action =
+      "reject_deprecated_aggressive_nomination_or_tie_breaker_mutation";
+    iceChecklistStateTransitionAccepted = false;
+    blockedReason = `RFC 8445 §8.1.1 / §7.2.5.1 Deprecated RFC 5245 Aggressive Nomination Pre-Succeeded Flip, Nominated Pair Flapping or 64-Bit Tie-Breaker Mutation on ${input.sessionId}: aggressiveNomination=${input.aggressiveNominationBeforeSucceededUsed}, tieBreakerConsistent=${input.iceTieBreakerConsistentAcrossChecks}, flapsPerSec=${input.nominatedPairFlapsPerSecond} (max 2/s).`;
+  } else if (frozenChecklistDeadlockOrPrematureFailureQuarantined) {
+    action =
+      "unfreeze_highest_priority_foundation_and_quarantine_premature_ice_failure";
+    iceChecklistStateTransitionAccepted = false;
+    blockedReason = `RFC 8445 §6.1.2.6 / §8.1.2 Permanent Frozen Checklist Foundation Deadlock or Premature Failed State Transition While Selected Pair Alive on ${input.sessionId}: stuckInFrozenMs=${input.allChecklistPairsStuckInFrozenMs}ms, activeFoundations=${input.activeFoundationCount}, prematureFailed=${input.prematureFailedTransitionWhileSelectedPairAlive}.`;
+  }
+
+  return {
+    policyCode:
+      "P222-WEBRTC-SIP-ICE-RFC8445-RFC8838-RFC5245-RFC8863-AGGRESSIVE-NOMINATION-DEPRECATION-PAIR-PRIORITY-OVERFLOW-CONNECTIVITY-CHECK-TA-PACING-AND-FROZEN-CHECKLIST-DEADLOCK-GUARD",
+    sessionId: input.sessionId,
+    checklistOverflowOrTaPacingViolationDropped,
+    deprecatedAggressiveNominationOrTieBreakerMutationRejected,
+    frozenChecklistDeadlockOrPrematureFailureQuarantined,
+    iceChecklistStateTransitionAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
