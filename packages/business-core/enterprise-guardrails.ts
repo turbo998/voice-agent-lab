@@ -21340,5 +21340,191 @@ export function evaluateWebrtcRtpCircuitBreakerTransportRfc8083Rfc8834Rfc8835Rfc
   };
 }
 
+export interface AceticAcidMethanolCarbonylationRhIrMethylIodideCoNfpa69ApiRp521Osha1910119Osha19101000ReactorWaterStarvationHiZirconiumCorrosionAndCh3iCoScbaLotoGuardInput {
+  reactorOrColumnId: string;
+  carbonylationReactorTempC: number;
+  carbonylationReactorPressureBarg: number;
+  reactorWaterConcentrationWtPct: number;
+  offgasOxygenVolPct: number;
+  coCompressorEnclosureLelPct: number;
+  dehydrationColumnHiConcentrationPpm: number;
+  dissolvedFerricIonPpm: number;
+  onlineErCorrosionRateMmPerYear: number;
+  methylIodideAbsorberTempC: number;
+  ambientMethylIodidePpm: number;
+  ambientCarbonMonoxidePpm: number;
+  ambientAceticAcidPpm: number;
+  chilledMethanolFlushAndPositivePressureScbaLotoVerified: boolean;
+  requestedAction:
+    | "increase_co_or_methanol_carbonylation_feed"
+    | "boost_dehydration_reboiler_steam_or_bypass_corrosion_interlock"
+    | "open_catalyst_filter_or_ch3i_pump_mechanical_seal"
+    | "adjust_verified_carbonylation_and_absorber_loop";
+}
+
+export interface AceticAcidMethanolCarbonylationRhIrMethylIodideCoNfpa69ApiRp521Osha1910119Osha19101000ReactorWaterStarvationHiZirconiumCorrosionAndCh3iCoScbaLotoGuardResult {
+  policyCode: "P225-ACETIC-ACID-METHANOL-CARBONYLATION-RH-IR-METHYL-IODIDE-CO-NFPA69-APIRP521-OSHA1910119-OSHA19101000-REACTOR-WATER-STARVATION-HI-ZIRCONIUM-CORROSION-AND-CH3I-CO-SCBA-LOTO-GUARD";
+  reactorOrColumnId: string;
+  carbonylationRunawayWaterStarvationOrCoLeakPreempted: boolean;
+  hiZirconiumHastelloyCorrosionOrCh3iAbsorberInterlocked: boolean;
+  methylIodideNeurotoxinOrCarbonMonoxideScbaLotoLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "trip_co_and_methanol_dbb_depressurize_to_flare_scrubber_and_inject_water_acetic_quench_in_0ms"
+    | "cut_reboiler_steam_inject_h3po2_reducing_stabilizer_and_maximize_chilled_methanol_scrubber"
+    | "lock_carbonylation_ch3i_co_equipment_and_enforce_methanol_degas_scba_loto"
+    | "allow_verified_methanol_carbonylation_and_ch3i_absorber_control";
+  blockedReason: string | null;
+}
+
+export function evaluateAceticAcidMethanolCarbonylationRhIrMethylIodideCoNfpa69ApiRp521Osha1910119Osha19101000ReactorWaterStarvationHiZirconiumCorrosionAndCh3iCoScbaLotoGuard(
+  input: AceticAcidMethanolCarbonylationRhIrMethylIodideCoNfpa69ApiRp521Osha1910119Osha19101000ReactorWaterStarvationHiZirconiumCorrosionAndCh3iCoScbaLotoGuardInput
+): AceticAcidMethanolCarbonylationRhIrMethylIodideCoNfpa69ApiRp521Osha1910119Osha19101000ReactorWaterStarvationHiZirconiumCorrosionAndCh3iCoScbaLotoGuardResult {
+  const carbonylationRunawayWaterStarvationOrCoLeakPreempted =
+    input.carbonylationReactorTempC > 205.0 ||
+    input.carbonylationReactorPressureBarg > 38.0 ||
+    input.reactorWaterConcentrationWtPct < 1.5 ||
+    input.offgasOxygenVolPct >= 2.0 ||
+    input.coCompressorEnclosureLelPct >= 25.0;
+
+  const hiZirconiumHastelloyCorrosionOrCh3iAbsorberInterlocked =
+    input.dehydrationColumnHiConcentrationPpm > 450 ||
+    input.dissolvedFerricIonPpm > 50 ||
+    input.onlineErCorrosionRateMmPerYear > 0.25 ||
+    input.methylIodideAbsorberTempC > 15.0;
+
+  const methylIodideNeurotoxinOrCarbonMonoxideScbaLotoLocked =
+    input.requestedAction === "open_catalyst_filter_or_ch3i_pump_mechanical_seal" &&
+    (input.ambientMethylIodidePpm >= 2.0 ||
+      input.ambientCarbonMonoxidePpm >= 35.0 ||
+      input.ambientAceticAcidPpm >= 10.0 ||
+      !input.chilledMethanolFlushAndPositivePressureScbaLotoVerified);
+
+  let action: AceticAcidMethanolCarbonylationRhIrMethylIodideCoNfpa69ApiRp521Osha1910119Osha19101000ReactorWaterStarvationHiZirconiumCorrosionAndCh3iCoScbaLotoGuardResult["action"] =
+    "allow_verified_methanol_carbonylation_and_ch3i_absorber_control";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | null = null;
+
+  if (carbonylationRunawayWaterStarvationOrCoLeakPreempted) {
+    action =
+      "trip_co_and_methanol_dbb_depressurize_to_flare_scrubber_and_inject_water_acetic_quench_in_0ms";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 Methanol Carbonylation Reactor Overpressure, Water Starvation Rh/Ir Precipitation or CO Compressor LEL Preempted on ${input.reactorOrColumnId}: reactorTempC=${input.carbonylationReactorTempC} (max 205.0), pressureBarg=${input.carbonylationReactorPressureBarg} (max 38.0), waterWtPct=${input.reactorWaterConcentrationWtPct}% (min 1.5%), offgasO2=${input.offgasOxygenVolPct}% (max 2.0%), coLelPct=${input.coCompressorEnclosureLelPct}% (max 25.0%).`;
+  } else if (hiZirconiumHastelloyCorrosionOrCh3iAbsorberInterlocked) {
+    action =
+      "cut_reboiler_steam_inject_h3po2_reducing_stabilizer_and_maximize_chilled_methanol_scrubber";
+    voiceCommandAllowed = false;
+    blockedReason = `API RP 571 / OSHA 1910.119 Dehydration Column HI / Ferric Ion Zirconium-Hastelloy Stress-Corrosion Cracking or CH3I Scrubber Breakthrough Interlocked on ${input.reactorOrColumnId}: hiPpm=${input.dehydrationColumnHiConcentrationPpm} (max 450), fe3Ppm=${input.dissolvedFerricIonPpm} (max 50), corrosionMmYr=${input.onlineErCorrosionRateMmPerYear} (max 0.25), absorberTempC=${input.methylIodideAbsorberTempC} (max 15.0).`;
+  } else if (methylIodideNeurotoxinOrCarbonMonoxideScbaLotoLocked) {
+    action =
+      "lock_carbonylation_ch3i_co_equipment_and_enforce_methanol_degas_scba_loto";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 29 CFR 1910.1000 / 1910.147 Methyl Iodide (CH3I [skin] >= 2.0 ppm TLV) / Carbon Monoxide (CO >= 35.0 ppm PEL) Equipment Opening Without Chilled Methanol Degassing & Positive-Pressure SCBA LOTO Locked on ${input.reactorOrColumnId}: ambientCh3i=${input.ambientMethylIodidePpm} ppm, ambientCo=${input.ambientCarbonMonoxidePpm} ppm, ambientAcetic=${input.ambientAceticAcidPpm} ppm, scbaLotoVerified=${input.chilledMethanolFlushAndPositivePressureScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P225-ACETIC-ACID-METHANOL-CARBONYLATION-RH-IR-METHYL-IODIDE-CO-NFPA69-APIRP521-OSHA1910119-OSHA19101000-REACTOR-WATER-STARVATION-HI-ZIRCONIUM-CORROSION-AND-CH3I-CO-SCBA-LOTO-GUARD",
+    reactorOrColumnId: input.reactorOrColumnId,
+    carbonylationRunawayWaterStarvationOrCoLeakPreempted,
+    hiZirconiumHastelloyCorrosionOrCh3iAbsorberInterlocked,
+    methylIodideNeurotoxinOrCarbonMonoxideScbaLotoLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipSdpOpusFmtpRfc7587Rfc6716Rfc8866Rfc4733MaxaveragebitrateCbrExfiltrationMultichannelMappingBufferOverflowAndTelephoneEventClockRateSkewGuardInput {
+  sessionId: string;
+  fmtpMaxAverageBitrateBps: number;
+  fmtpMaxPlaybackRateHz: number;
+  encryptedSensitiveVoiceCallActive: boolean;
+  fmtpCbrForcedOne: boolean;
+  vbrPacketLengthTimingSideChannelDetected: boolean;
+  rtpMapDeclaredChannels: number;
+  multistreamOpusExplicitlyNegotiated: boolean;
+  coupledPlusUncoupledStreamsExceedChannels: boolean;
+  channelMappingIndexOutOfBounds: boolean;
+  primaryAudioCodecClockRateHz: number;
+  telephoneEventOrRedClockRateHz: number;
+  packetLossRatePct: number;
+  fmtpUseInbandFecNegotiated: boolean;
+  encoderLbrrFecEnabled: boolean;
+}
+
+export interface WebrtcSipSdpOpusFmtpRfc7587Rfc6716Rfc8866Rfc4733MaxaveragebitrateCbrExfiltrationMultichannelMappingBufferOverflowAndTelephoneEventClockRateSkewGuardResult {
+  policyCode: "P226-WEBRTC-SIP-SDP-OPUS-FMTP-RFC7587-RFC6716-RFC8866-RFC4733-MAXAVERAGEBITRATE-CBR-EXFILTRATION-MULTICHANNEL-MAPPING-BUFFER-OVERFLOW-AND-TELEPHONE-EVENT-CLOCK-RATE-SKEW-GUARD";
+  sessionId: string;
+  opusFmtpBitrateSampleRateOrVbrSideChannelClamped: boolean;
+  multichannelOpusMappingOrBufferOverflowRejected: boolean;
+  telephoneEventClockRateSkewOrInbandFecCorrected: boolean;
+  opusSdpNegotiationAccepted: boolean;
+  action:
+    | "clamp_rfc7587_opus_fmtp_bitrate_enforce_cbr_side_channel_padding_and_normalize_sample_rate_in_0ms"
+    | "reject_malformed_opus_multichannel_mapping_and_pin_decoder_to_safe_stereo_bounds"
+    | "bind_matching_48khz_telephone_event_clock_rate_and_activate_opus_inband_lbrr_fec"
+    | "accept_verified_rfc7587_opus_fmtp_and_rfc4733_clock_synchronized_stream";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcSipSdpOpusFmtpRfc7587Rfc6716Rfc8866Rfc4733MaxaveragebitrateCbrExfiltrationMultichannelMappingBufferOverflowAndTelephoneEventClockRateSkewGuard(
+  input: WebrtcSipSdpOpusFmtpRfc7587Rfc6716Rfc8866Rfc4733MaxaveragebitrateCbrExfiltrationMultichannelMappingBufferOverflowAndTelephoneEventClockRateSkewGuardInput
+): WebrtcSipSdpOpusFmtpRfc7587Rfc6716Rfc8866Rfc4733MaxaveragebitrateCbrExfiltrationMultichannelMappingBufferOverflowAndTelephoneEventClockRateSkewGuardResult {
+  const validSampleRates = new Set([8000, 12000, 16000, 24000, 48000]);
+  const opusFmtpBitrateSampleRateOrVbrSideChannelClamped =
+    input.fmtpMaxAverageBitrateBps < 6000 ||
+    input.fmtpMaxAverageBitrateBps > 510000 ||
+    !validSampleRates.has(input.fmtpMaxPlaybackRateHz) ||
+    (input.encryptedSensitiveVoiceCallActive &&
+      (!input.fmtpCbrForcedOne || input.vbrPacketLengthTimingSideChannelDetected));
+
+  const multichannelOpusMappingOrBufferOverflowRejected =
+    (input.rtpMapDeclaredChannels > 2 && !input.multistreamOpusExplicitlyNegotiated) ||
+    input.coupledPlusUncoupledStreamsExceedChannels ||
+    input.channelMappingIndexOutOfBounds;
+
+  const telephoneEventClockRateSkewOrInbandFecCorrected =
+    input.telephoneEventOrRedClockRateHz !== input.primaryAudioCodecClockRateHz ||
+    (input.packetLossRatePct >= 5.0 &&
+      input.fmtpUseInbandFecNegotiated &&
+      !input.encoderLbrrFecEnabled);
+
+  let action: WebrtcSipSdpOpusFmtpRfc7587Rfc6716Rfc8866Rfc4733MaxaveragebitrateCbrExfiltrationMultichannelMappingBufferOverflowAndTelephoneEventClockRateSkewGuardResult["action"] =
+    "accept_verified_rfc7587_opus_fmtp_and_rfc4733_clock_synchronized_stream";
+  let opusSdpNegotiationAccepted = true;
+  let blockedReason: string | null = null;
+
+  if (opusFmtpBitrateSampleRateOrVbrSideChannelClamped) {
+    action =
+      "clamp_rfc7587_opus_fmtp_bitrate_enforce_cbr_side_channel_padding_and_normalize_sample_rate_in_0ms";
+    opusSdpNegotiationAccepted = false;
+    blockedReason = `RFC 7587 §6.1 / §7 Opus fmtp Bitrate Out-of-Bounds ([6000..510000] bps), Invalid maxplaybackrate or VBR Packet-Length Phoneme Leakage Side-Channel on ${input.sessionId}: maxaveragebitrate=${input.fmtpMaxAverageBitrateBps}, maxplaybackrate=${input.fmtpMaxPlaybackRateHz}, cbrForced=${input.fmtpCbrForcedOne}, vbrLeak=${input.vbrPacketLengthTimingSideChannelDetected}.`;
+  } else if (multichannelOpusMappingOrBufferOverflowRejected) {
+    action =
+      "reject_malformed_opus_multichannel_mapping_and_pin_decoder_to_safe_stereo_bounds";
+    opusSdpNegotiationAccepted = false;
+    blockedReason = `RFC 7587 / RFC 7845 Opus Multichannel rtpmap Overflow (>2 Channels Without multistream-opus) or Coupled Channel-Mapping Index Out-of-Bounds on ${input.sessionId}: declaredChannels=${input.rtpMapDeclaredChannels}, multistreamNegotiated=${input.multistreamOpusExplicitlyNegotiated}, streamsExceedChannels=${input.coupledPlusUncoupledStreamsExceedChannels}, mappingOob=${input.channelMappingIndexOutOfBounds}.`;
+  } else if (telephoneEventClockRateSkewOrInbandFecCorrected) {
+    action =
+      "bind_matching_48khz_telephone_event_clock_rate_and_activate_opus_inband_lbrr_fec";
+    opusSdpNegotiationAccepted = false;
+    blockedReason = `RFC 7587 / RFC 4733 telephone-event/RED RTP Clock-Rate Skew vs Primary Opus Codec or Unactivated In-Band LBRR FEC under Packet Loss on ${input.sessionId}: primaryClockHz=${input.primaryAudioCodecClockRateHz}, telEventClockHz=${input.telephoneEventOrRedClockRateHz}, lossPct=${input.packetLossRatePct}%, lbrrActive=${input.encoderLbrrFecEnabled}.`;
+  }
+
+  return {
+    policyCode:
+      "P226-WEBRTC-SIP-SDP-OPUS-FMTP-RFC7587-RFC6716-RFC8866-RFC4733-MAXAVERAGEBITRATE-CBR-EXFILTRATION-MULTICHANNEL-MAPPING-BUFFER-OVERFLOW-AND-TELEPHONE-EVENT-CLOCK-RATE-SKEW-GUARD",
+    sessionId: input.sessionId,
+    opusFmtpBitrateSampleRateOrVbrSideChannelClamped,
+    multichannelOpusMappingOrBufferOverflowRejected,
+    telephoneEventClockRateSkewOrInbandFecCorrected,
+    opusSdpNegotiationAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
