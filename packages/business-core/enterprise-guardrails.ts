@@ -20123,6 +20123,179 @@ export function evaluateWebrtcSipRtpRtcpSymmetricLatchingSsrcCollisionSdesRfc496
   };
 }
 
+// ============================================================================
+// Stage 109 — P211: Adipic Acid (KA Oil Nitric Acid Oxidation & N2O Abatement)
+//             NFPA 69 / API RP 521 / OSHA 1910.119 / 1910.1000 Guard
+//             P212: WebRTC & SIP ICE / STUN / TURN (RFC 8445 / RFC 5389 /
+//             RFC 8656 / RFC 7675) Role-Conflict, STUN TLV Overread, TURN
+//             ChannelBind SSRF & Consent Revocation Guard
+// ============================================================================
+
+export interface AdipicAcidKaOilNitricAcidOxidationN2oThermalAbatementNfpa69ApiRp521Osha1910119NitricRunawayN2oDecompositionAndNoxScbaLotoGuardInput {
+  reactorTrainId: string;
+  nitricOxidationReactorTempC: number;
+  oxidationTempRiseRateCPerMin: number;
+  kaOilFeedActiveAtLowTempStallAccumulatingNitrolicIntermediates: boolean;
+  reactorCoolingCoilsAndAgitatorHealthy: boolean;
+  n2oAbatementDecomposerTempC: number;
+  offGasCyclohexaneHydrocarbonInN2oVolPct: number;
+  n2oInletConcentrationVolPctWithoutDilution: number;
+  ambientNo2ConcentrationPpm: number;
+  ureaPeroxideNoxScrubberAndLevelAScbaDbbLotoVerified: boolean;
+  operatorRequestsCrystallizerOrHno3LineBreak: boolean;
+}
+
+export interface AdipicAcidKaOilNitricAcidOxidationN2oThermalAbatementNfpa69ApiRp521Osha1910119NitricRunawayN2oDecompositionAndNoxScbaLotoGuardResult {
+  policyCode: "P211-ADIPIC-ACID-KA-OIL-NITRIC-ACID-OXIDATION-N2O-THERMAL-ABATEMENT-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-NITRIC-OXIDATION-EXOTHERM-AUTOCATALYTIC-RUNAWAY-OFFGAS-CYCLOHEXANE-N2O-DECOMPOSITION-AND-NOX-HNO3-SCBA-LOTO-GUARD";
+  reactorTrainId: string;
+  nitricOxidationAutocatalyticRunawayOrNitrolicStallPreempted: boolean;
+  n2oDecomposerRunawayOrHydrocarbonInN2oDeflagrationInterlocked: boolean;
+  noxHno3CrystallizerLineBreakWithoutScbaLotoLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "preempt_0ms_trip_ka_oil_hno3_dbb_inject_cold_water_quench_and_vent_to_nox_absorber"
+    | "interlock_n2o_decomposer_preheater_inject_steam_n2_ballast_and_bypass_via_flame_arrestor"
+    | "lock_adipic_crystallizer_hno3_line_break_until_no2_below_1ppm_urea_scrubber_and_scba_loto_verified"
+    | "allow_adipic_acid_nitric_oxidation_and_n2o_abatement_operation";
+  blockedReason: string | null;
+}
+
+export function evaluateAdipicAcidKaOilNitricAcidOxidationN2oThermalAbatementNfpa69ApiRp521Osha1910119NitricRunawayN2oDecompositionAndNoxScbaLotoGuard(
+  input: AdipicAcidKaOilNitricAcidOxidationN2oThermalAbatementNfpa69ApiRp521Osha1910119NitricRunawayN2oDecompositionAndNoxScbaLotoGuardInput
+): AdipicAcidKaOilNitricAcidOxidationN2oThermalAbatementNfpa69ApiRp521Osha1910119NitricRunawayN2oDecompositionAndNoxScbaLotoGuardResult {
+  const nitricOxidationAutocatalyticRunawayOrNitrolicStallPreempted =
+    input.nitricOxidationReactorTempC > 92.0 ||
+    input.oxidationTempRiseRateCPerMin > 2.0 ||
+    (input.nitricOxidationReactorTempC < 65.0 &&
+      input.kaOilFeedActiveAtLowTempStallAccumulatingNitrolicIntermediates) ||
+    !input.reactorCoolingCoilsAndAgitatorHealthy;
+
+  const n2oDecomposerRunawayOrHydrocarbonInN2oDeflagrationInterlocked =
+    input.n2oAbatementDecomposerTempC > 850.0 ||
+    input.offGasCyclohexaneHydrocarbonInN2oVolPct > 0.35 ||
+    input.n2oInletConcentrationVolPctWithoutDilution > 18.0;
+
+  const noxHno3CrystallizerLineBreakWithoutScbaLotoLocked =
+    input.operatorRequestsCrystallizerOrHno3LineBreak &&
+    (input.ambientNo2ConcentrationPpm >= 1.0 ||
+      !input.ureaPeroxideNoxScrubberAndLevelAScbaDbbLotoVerified);
+
+  let action: AdipicAcidKaOilNitricAcidOxidationN2oThermalAbatementNfpa69ApiRp521Osha1910119NitricRunawayN2oDecompositionAndNoxScbaLotoGuardResult["action"] =
+    "allow_adipic_acid_nitric_oxidation_and_n2o_abatement_operation";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | null = null;
+
+  if (nitricOxidationAutocatalyticRunawayOrNitrolicStallPreempted) {
+    action =
+      "preempt_0ms_trip_ka_oil_hno3_dbb_inject_cold_water_quench_and_vent_to_nox_absorber";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 Adipic Acid KA-Oil Nitric Acid Oxidation Runaway or Low-Temp Nitrolic Accumulation Preempted on ${input.reactorTrainId}: temp=${input.nitricOxidationReactorTempC}°C (window 65.0–92.0°C), dT/dt=${input.oxidationTempRiseRateCPerMin}°C/min (max 2.0°C/min), lowTempNitrolicAccum=${input.kaOilFeedActiveAtLowTempStallAccumulatingNitrolicIntermediates}, coolingAgitatorHealthy=${input.reactorCoolingCoilsAndAgitatorHealthy}.`;
+  } else if (n2oDecomposerRunawayOrHydrocarbonInN2oDeflagrationInterlocked) {
+    action =
+      "interlock_n2o_decomposer_preheater_inject_steam_n2_ballast_and_bypass_via_flame_arrestor";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / OSHA 1910.119 N2O Abatement Decomposer Runaway or Hydrocarbon-in-N2O Deflagration Interlocked on ${input.reactorTrainId}: decomposerTemp=${input.n2oAbatementDecomposerTempC}°C (max 850.0°C), offGasHC=${input.offGasCyclohexaneHydrocarbonInN2oVolPct} vol% (max 0.35 vol%), undilutedN2O=${input.n2oInletConcentrationVolPctWithoutDilution} vol% (max 18.0 vol%).`;
+  } else if (noxHno3CrystallizerLineBreakWithoutScbaLotoLocked) {
+    action =
+      "lock_adipic_crystallizer_hno3_line_break_until_no2_below_1ppm_urea_scrubber_and_scba_loto_verified";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.147 Fuming NOx / Boiling HNO3 Crystallizer Line-Break Locked on ${input.reactorTrainId}: ambientNO2=${input.ambientNo2ConcentrationPpm} ppm (ceiling <1.0 ppm), ureaScrubberAndScbaLotoVerified=${input.ureaPeroxideNoxScrubberAndLevelAScbaDbbLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P211-ADIPIC-ACID-KA-OIL-NITRIC-ACID-OXIDATION-N2O-THERMAL-ABATEMENT-NFPA69-APIRP521-OSHA1910-119-OSHA1910-1000-NITRIC-OXIDATION-EXOTHERM-AUTOCATALYTIC-RUNAWAY-OFFGAS-CYCLOHEXANE-N2O-DECOMPOSITION-AND-NOX-HNO3-SCBA-LOTO-GUARD",
+    reactorTrainId: input.reactorTrainId,
+    nitricOxidationAutocatalyticRunawayOrNitrolicStallPreempted,
+    n2oDecomposerRunawayOrHydrocarbonInN2oDeflagrationInterlocked,
+    noxHno3CrystallizerLineBreakWithoutScbaLotoLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipIceStunTurnRfc8445Rfc5389Rfc8656Rfc7675RoleConflictNominationFlipStunAttrOverreadTurnChannelBindSsrfAndConsentRevocationGuardInput {
+  sessionId: string;
+  stunMagicCookieValid: boolean;
+  stunDeclaredAttrTotalBytes: number;
+  stunPacketPayloadRemainingBytes: number;
+  stunMessageIntegrityAndFingerprintVerified: boolean;
+  controlledPeerSentUseCandidateOrNominationFlipsPerSec: number;
+  unresolvedIce487RoleConflictCount: number;
+  bothPeersAdvertisedIceLiteDeadlock: boolean;
+  turnChannelBindTargetsPrivateLoopbackImdsOrInvalidChannel: boolean;
+  iceConsentFreshnessElapsedMs: number;
+}
+
+export interface WebrtcSipIceStunTurnRfc8445Rfc5389Rfc8656Rfc7675RoleConflictNominationFlipStunAttrOverreadTurnChannelBindSsrfAndConsentRevocationGuardResult {
+  policyCode: "P212-WEBRTC-SIP-ICE-STUN-TURN-RFC8445-RFC5389-RFC8656-RFC7675-ICE-ROLE-CONFLICT-NOMINATION-FLIP-STUN-ATTR-OVERREAD-TURN-CHANNELBIND-SSRF-AND-CONSENT-REVOCATION-GUARD";
+  sessionId: string;
+  stunTlvOverreadOrIntegritySpoofDropped: boolean;
+  iceNominationFlipRoleConflictLoopOrDualIceLiteBlocked: boolean;
+  turnChannelBindSsrfOrExpiredIceConsentSrtpHalted: boolean;
+  iceStunTurnSessionAccepted: boolean;
+  action:
+    | "drop_rfc5389_malformed_stun_tlv_overread_or_unverified_message_integrity_in_0ms"
+    | "block_rfc8445_aggressive_nomination_flip_role_conflict_loop_or_dual_ice_lite"
+    | "reject_rfc8656_turn_private_subnet_ssrf_and_halt_srtp_on_rfc7675_consent_expiry"
+    | "accept_verified_ice_stun_turn_connectivity_and_consent";
+  blockedReason: string | null;
+}
+
+export function evaluateWebrtcSipIceStunTurnRfc8445Rfc5389Rfc8656Rfc7675RoleConflictNominationFlipStunAttrOverreadTurnChannelBindSsrfAndConsentRevocationGuard(
+  input: WebrtcSipIceStunTurnRfc8445Rfc5389Rfc8656Rfc7675RoleConflictNominationFlipStunAttrOverreadTurnChannelBindSsrfAndConsentRevocationGuardInput
+): WebrtcSipIceStunTurnRfc8445Rfc5389Rfc8656Rfc7675RoleConflictNominationFlipStunAttrOverreadTurnChannelBindSsrfAndConsentRevocationGuardResult {
+  const stunTlvOverreadOrIntegritySpoofDropped =
+    !input.stunMagicCookieValid ||
+    input.stunDeclaredAttrTotalBytes > input.stunPacketPayloadRemainingBytes ||
+    !input.stunMessageIntegrityAndFingerprintVerified;
+
+  const iceNominationFlipRoleConflictLoopOrDualIceLiteBlocked =
+    input.controlledPeerSentUseCandidateOrNominationFlipsPerSec > 3 ||
+    input.unresolvedIce487RoleConflictCount > 2 ||
+    input.bothPeersAdvertisedIceLiteDeadlock;
+
+  const turnChannelBindSsrfOrExpiredIceConsentSrtpHalted =
+    input.turnChannelBindTargetsPrivateLoopbackImdsOrInvalidChannel ||
+    input.iceConsentFreshnessElapsedMs > 30000;
+
+  let action: WebrtcSipIceStunTurnRfc8445Rfc5389Rfc8656Rfc7675RoleConflictNominationFlipStunAttrOverreadTurnChannelBindSsrfAndConsentRevocationGuardResult["action"] =
+    "accept_verified_ice_stun_turn_connectivity_and_consent";
+  let iceStunTurnSessionAccepted = true;
+  let blockedReason: string | null = null;
+
+  if (stunTlvOverreadOrIntegritySpoofDropped) {
+    action =
+      "drop_rfc5389_malformed_stun_tlv_overread_or_unverified_message_integrity_in_0ms";
+    iceStunTurnSessionAccepted = false;
+    blockedReason = `RFC 5389 STUN TLV Attribute Overread or Invalid Integrity/Fingerprint on ${input.sessionId}: magicCookieValid=${input.stunMagicCookieValid}, declaredAttrBytes=${input.stunDeclaredAttrTotalBytes}B (remaining=${input.stunPacketPayloadRemainingBytes}B), integrityFingerprintVerified=${input.stunMessageIntegrityAndFingerprintVerified}.`;
+  } else if (iceNominationFlipRoleConflictLoopOrDualIceLiteBlocked) {
+    action =
+      "block_rfc8445_aggressive_nomination_flip_role_conflict_loop_or_dual_ice_lite";
+    iceStunTurnSessionAccepted = false;
+    blockedReason = `RFC 8445 ICE Aggressive Nomination Flip, Role-Conflict Loop or Dual ICE-Lite on ${input.sessionId}: nominationFlipsPerSec=${input.controlledPeerSentUseCandidateOrNominationFlipsPerSec} (max 3), roleConflicts=${input.unresolvedIce487RoleConflictCount} (max 2), dualIceLite=${input.bothPeersAdvertisedIceLiteDeadlock}.`;
+  } else if (turnChannelBindSsrfOrExpiredIceConsentSrtpHalted) {
+    action =
+      "reject_rfc8656_turn_private_subnet_ssrf_and_halt_srtp_on_rfc7675_consent_expiry";
+    iceStunTurnSessionAccepted = false;
+    blockedReason = `RFC 8656 TURN Private-Subnet SSRF Bounce or RFC 7675 Consent Revocation on ${input.sessionId}: turnPrivateSsrf=${input.turnChannelBindTargetsPrivateLoopbackImdsOrInvalidChannel}, consentElapsedMs=${input.iceConsentFreshnessElapsedMs}ms (max 30000ms).`;
+  }
+
+  return {
+    policyCode:
+      "P212-WEBRTC-SIP-ICE-STUN-TURN-RFC8445-RFC5389-RFC8656-RFC7675-ICE-ROLE-CONFLICT-NOMINATION-FLIP-STUN-ATTR-OVERREAD-TURN-CHANNELBIND-SSRF-AND-CONSENT-REVOCATION-GUARD",
+    sessionId: input.sessionId,
+    stunTlvOverreadOrIntegritySpoofDropped,
+    iceNominationFlipRoleConflictLoopOrDualIceLiteBlocked,
+    turnChannelBindSsrfOrExpiredIceConsentSrtpHalted,
+    iceStunTurnSessionAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
