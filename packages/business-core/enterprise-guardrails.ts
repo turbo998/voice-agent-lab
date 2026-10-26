@@ -24682,3 +24682,199 @@ export function evaluateWebrtcSipRtpUlpfecFlexfecRfc5109Rfc8627ProtectionLengthB
     blockedReason: "none",
   };
 }
+
+
+export interface VinylAcetateMonomerVamAcetoxylationDistillationGuardInput {
+  sessionId: string;
+  acetoxylationReactorTempC: number;
+  reactorFeedOxygenMolPercent: number;
+  co2ByproductRunawayRateMolPercentPerMin: number;
+  vamDistillationOrStorageTempC: number;
+  hydroquinoneInhibitorPpm: number;
+  peroxideInitiatorContaminationPpm: number;
+  ambientVamVaporPpm: number;
+  ambientAceticAcidVaporPpm: number;
+  scrubberPositivePressureScbaAndBondingVerified: boolean;
+  mechanicalDbbLotoVerified: boolean;
+  requestsLineBreakOrVesselEntry: boolean;
+}
+
+export interface VinylAcetateMonomerVamAcetoxylationDistillationGuardAssessment {
+  policyCode: "P259-VINYL-ACETATE-MONOMER-VAM-ETHYLENE-ACETIC-ACID-O2-ACETOXYLATION-DISTILLATION-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101000-O2-FLAMMABILITY-ENVELOPE-HYDROQUINONE-DEPLETION-POLYMERIZATION-AND-VAM-SCBA-LOTO-GUARD";
+  sessionId: string;
+  acetoxylationO2FlammabilityEnvelopeOrCo2RunawayPreempted: boolean;
+  vamHydroquinoneDepletionOrPeroxidePolymerizationInterlocked: boolean;
+  vamOrAceticAcidVaporExposureOrMissingScbaLotoLocked: boolean;
+  vamProcessOperationPermitted: boolean;
+  action:
+    | "trip_vam_oxygen_feed_dbb_and_purge_n2_recycle_gas_in_0ms"
+    | "cut_vam_reboiler_steam_and_inject_emergency_hydroquinone_ptz_shortstop"
+    | "lock_vam_acetoxylation_line_break_until_scba_scrubber_and_dbb_loto_verified"
+    | "allow_verified_vam_acetoxylation_and_distillation_operation";
+  blockedReason: string;
+}
+
+export function evaluateVinylAcetateMonomerVamEthyleneAceticAcidO2AcetoxylationDistillationNfpa30Nfpa69ApiRp521Osha1910119Osha19101000O2FlammabilityEnvelopeHydroquinoneDepletionPolymerizationAndVamScbaLotoGuard(
+  input: VinylAcetateMonomerVamAcetoxylationDistillationGuardInput
+): VinylAcetateMonomerVamAcetoxylationDistillationGuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const acetoxylationO2FlammabilityEnvelopeOrCo2RunawayPreempted =
+    input.acetoxylationReactorTempC > 195.0 ||
+    input.reactorFeedOxygenMolPercent > 7.8 ||
+    input.co2ByproductRunawayRateMolPercentPerMin > 1.5;
+
+  if (acetoxylationO2FlammabilityEnvelopeOrCo2RunawayPreempted) {
+    blockedReasons.push(
+      `vam_acetoxylation_o2_loc_or_co2_combustion_runaway_temp_${input.acetoxylationReactorTempC}C_o2_${input.reactorFeedOxygenMolPercent}molpct_dco2dt_${input.co2ByproductRunawayRateMolPercentPerMin}`
+    );
+  }
+
+  const vamHydroquinoneDepletionOrPeroxidePolymerizationInterlocked =
+    input.vamDistillationOrStorageTempC > 98.0 ||
+    input.hydroquinoneInhibitorPpm < 3.0 ||
+    input.peroxideInitiatorContaminationPpm > 15.0;
+
+  if (vamHydroquinoneDepletionOrPeroxidePolymerizationInterlocked) {
+    blockedReasons.push(
+      `vam_free_radical_homopolymerization_risk_temp_${input.vamDistillationOrStorageTempC}C_hq_${input.hydroquinoneInhibitorPpm}ppm_peroxide_${input.peroxideInitiatorContaminationPpm}ppm`
+    );
+  }
+
+  const vamOrAceticAcidVaporExposureOrMissingScbaLotoLocked =
+    input.requestsLineBreakOrVesselEntry &&
+    (input.ambientVamVaporPpm >= 10.0 ||
+      input.ambientAceticAcidVaporPpm >= 10.0 ||
+      !input.scrubberPositivePressureScbaAndBondingVerified ||
+      !input.mechanicalDbbLotoVerified);
+
+  if (vamOrAceticAcidVaporExposureOrMissingScbaLotoLocked) {
+    blockedReasons.push(
+      `vam_or_acetic_acid_exposure_or_missing_scba_loto_vam_${input.ambientVamVaporPpm}ppm_hoac_${input.ambientAceticAcidVaporPpm}ppm`
+    );
+  }
+
+  const vamProcessOperationPermitted = blockedReasons.length === 0;
+
+  let action: VinylAcetateMonomerVamAcetoxylationDistillationGuardAssessment["action"] =
+    "allow_verified_vam_acetoxylation_and_distillation_operation";
+
+  if (acetoxylationO2FlammabilityEnvelopeOrCo2RunawayPreempted) {
+    action = "trip_vam_oxygen_feed_dbb_and_purge_n2_recycle_gas_in_0ms";
+  } else if (vamHydroquinoneDepletionOrPeroxidePolymerizationInterlocked) {
+    action = "cut_vam_reboiler_steam_and_inject_emergency_hydroquinone_ptz_shortstop";
+  } else if (vamOrAceticAcidVaporExposureOrMissingScbaLotoLocked) {
+    action =
+      "lock_vam_acetoxylation_line_break_until_scba_scrubber_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P259-VINYL-ACETATE-MONOMER-VAM-ETHYLENE-ACETIC-ACID-O2-ACETOXYLATION-DISTILLATION-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101000-O2-FLAMMABILITY-ENVELOPE-HYDROQUINONE-DEPLETION-POLYMERIZATION-AND-VAM-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    acetoxylationO2FlammabilityEnvelopeOrCo2RunawayPreempted,
+    vamHydroquinoneDepletionOrPeroxidePolymerizationInterlocked,
+    vamOrAceticAcidVaporExposureOrMissingScbaLotoLocked,
+    vamProcessOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpRedOpusLbrrRfc2198Rfc6716GuardInput {
+  sessionId: string;
+  totalDeclaredRedBlockHeadersAndPayloadsBytes: number;
+  remainingRtpPayloadBytes: number;
+  primaryBlockFBitZeroPresent: boolean;
+  containsNestedRedPayloadType: boolean;
+  redundantBlockCount: number;
+  max14BitTimestampOffsetSamples: number;
+  opusLbrrDecodedFramesPerPacket: number;
+  decodedPcmExpansionRatio: number;
+}
+
+export interface WebrtcSipRtpRedOpusLbrrRfc2198Rfc6716GuardAssessment {
+  policyCode: "P260-WEBRTC-SIP-RTP-RED-REDUNDANT-AUDIO-DATA-OPUS-LBRR-RFC2198-RFC6716-RFC7587-BLOCK-HEADER-LENGTH-OVERREAD-14BIT-TIMESTAMP-OFFSET-WRAP-AND-RECURSIVE-RED-NESTING-AMPLIFICATION-BOMB-GUARD";
+  sessionId: string;
+  redBlockLengthOverreadOrMissingTerminatorDropped: boolean;
+  recursiveRedNestingOrTimestampOffsetBombBlocked: boolean;
+  opusLbrrRedMultiFramePcmAmplificationBombBlocked: boolean;
+  rtpRedAudioPacketAccepted: boolean;
+  action:
+    | "drop_rfc2198_red_block_length_overread_or_missing_f0_terminator_in_0ms"
+    | "reject_recursive_red_payload_nesting_or_timestamp_offset_bomb"
+    | "reject_opus_lbrr_red_multiframe_pcm_decompression_amplification_bomb"
+    | "forward_verified_rfc2198_red_and_opus_lbrr_audio_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRedRedundantAudioDataOpusLbrrRfc2198Rfc6716Rfc7587BlockHeaderLengthOverread14BitTimestampOffsetWrapAndRecursiveRedNestingAmplificationBombGuard(
+  input: WebrtcSipRtpRedOpusLbrrRfc2198Rfc6716GuardInput
+): WebrtcSipRtpRedOpusLbrrRfc2198Rfc6716GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const redBlockLengthOverreadOrMissingTerminatorDropped =
+    input.totalDeclaredRedBlockHeadersAndPayloadsBytes <= 0 ||
+    input.totalDeclaredRedBlockHeadersAndPayloadsBytes >
+      input.remainingRtpPayloadBytes ||
+    !input.primaryBlockFBitZeroPresent;
+
+  if (redBlockLengthOverreadOrMissingTerminatorDropped) {
+    blockedReasons.push(
+      `rfc2198_red_block_overread_or_missing_f0_declared_${input.totalDeclaredRedBlockHeadersAndPayloadsBytes}B_remaining_${input.remainingRtpPayloadBytes}B_f0_${input.primaryBlockFBitZeroPresent}`
+    );
+  }
+
+  const recursiveRedNestingOrTimestampOffsetBombBlocked =
+    input.containsNestedRedPayloadType ||
+    input.redundantBlockCount < 0 ||
+    input.redundantBlockCount > 4 ||
+    (input.redundantBlockCount > 0 &&
+      (input.max14BitTimestampOffsetSamples <= 0 ||
+        input.max14BitTimestampOffsetSamples > 16383));
+
+  if (recursiveRedNestingOrTimestampOffsetBombBlocked) {
+    blockedReasons.push(
+      `rfc2198_recursive_red_or_ts_offset_bomb_nested_${input.containsNestedRedPayloadType}_blocks_${input.redundantBlockCount}_ts_offset_${input.max14BitTimestampOffsetSamples}`
+    );
+  }
+
+  const opusLbrrRedMultiFramePcmAmplificationBombBlocked =
+    input.opusLbrrDecodedFramesPerPacket > 3 ||
+    input.decodedPcmExpansionRatio > 12.0;
+
+  if (opusLbrrRedMultiFramePcmAmplificationBombBlocked) {
+    blockedReasons.push(
+      `opus_lbrr_red_pcm_amplification_bomb_frames_${input.opusLbrrDecodedFramesPerPacket}_ratio_${input.decodedPcmExpansionRatio}`
+    );
+  }
+
+  const rtpRedAudioPacketAccepted = blockedReasons.length === 0;
+
+  let action: WebrtcSipRtpRedOpusLbrrRfc2198Rfc6716GuardAssessment["action"] =
+    "forward_verified_rfc2198_red_and_opus_lbrr_audio_packet";
+
+  if (redBlockLengthOverreadOrMissingTerminatorDropped) {
+    action =
+      "drop_rfc2198_red_block_length_overread_or_missing_f0_terminator_in_0ms";
+  } else if (recursiveRedNestingOrTimestampOffsetBombBlocked) {
+    action = "reject_recursive_red_payload_nesting_or_timestamp_offset_bomb";
+  } else if (opusLbrrRedMultiFramePcmAmplificationBombBlocked) {
+    action =
+      "reject_opus_lbrr_red_multiframe_pcm_decompression_amplification_bomb";
+  }
+
+  return {
+    policyCode:
+      "P260-WEBRTC-SIP-RTP-RED-REDUNDANT-AUDIO-DATA-OPUS-LBRR-RFC2198-RFC6716-RFC7587-BLOCK-HEADER-LENGTH-OVERREAD-14BIT-TIMESTAMP-OFFSET-WRAP-AND-RECURSIVE-RED-NESTING-AMPLIFICATION-BOMB-GUARD",
+    sessionId: input.sessionId,
+    redBlockLengthOverreadOrMissingTerminatorDropped,
+    recursiveRedNestingOrTimestampOffsetBombBlocked,
+    opusLbrrRedMultiFramePcmAmplificationBombBlocked,
+    rtpRedAudioPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}

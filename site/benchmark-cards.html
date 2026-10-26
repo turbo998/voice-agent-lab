@@ -1855,6 +1855,15 @@
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">HPPO-Quench-0ms/PO-Deluge-Cool/SCBA-LOTO &amp; FEC-Mask-Overread-0ms/2D-XOR-Cap/SSRC-Bind</span></td>
               <td><span class="band-tag band-auto">0.0 pts</span></td>
             </tr>
+            <tr>
+              <td>
+                <strong>136. 醋酸乙烯单体（`VAM, CH3COOCH=CH2`，乙烯-醋酸-氧气气相 `Pd-Au` 催化乙酰氧基化与精馏）集控 `NFPA 30 / NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000` 反应器 `>195°C` / 进氧 `>7.8 mol%` / `CO2` 副产飞温 `>1.5 mol%/min` 0ms 切氧气进料双阀并充氮气循环气吹扫、`VAM` 精馏/储罐 `>98°C` / 对苯二酚 `HQ <3.0 ppm` / 过氧化物污染 `>15 ppm` 自由基暴聚切蒸汽注 `HQ/PTZ` 急停剂及 `VAM >=10.0 ppm` 正压 `SCBA + 洗涤塔 + DBB LOTO` 护栏 &amp; WebRTC/SIP RTP 冗余音频数据（`RED RFC 2198`）及 Opus 带内前向纠错（`LBRR RFC 6716 / RFC 7587`）块头长度越界/缺失 `F=0` 终止块 0ms 丢包、递归 `RED` 嵌套/`>4` 冗余块/`14-Bit` 时间戳偏移炸弹拒止及 `>3` 帧 `Opus LBRR` / `>12x` PCM 解压膨胀拦截护栏 (`P259` / `P260`)</strong>
+                <div style="font-size:11.5px;color:#64748B;">VAM 气相乙酰氧基化反应器 208°C、进氧 9.4 mol% 突破 7.8 mol% LOC 且 CO2 副产飞温 2.6 mol%/min，VAM 精馏塔 109°C、对苯二酚跌至 0.8 ppm 且过氧化物污染 32 ppm 触发自由基暴聚，现场 VAM 24 ppm 未戴正压 SCBA 强行拆法兰 vs 攻击者注入声明 980B 块长（仅剩 120B）且缺失 F=0 终止符的 RFC 2198 RED 包、递归 RED-in-RED 嵌套/9 块冗余炸弹或 8 帧 28.5x Opus LBRR PCM 解压膨胀炸弹</div>
+              </td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 30 / NFPA 69 VAM-O2 &amp; RFC 2198 / RFC 6716 RTP-RED-LBRR Guard</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">VAM-O2-Trip-0ms/HQ-PTZ-Shortstop/SCBA-LOTO &amp; RED-Overread-0ms/No-Nested-RED/LBRR-Cap</span></td>
+              <td><span class="band-tag band-auto">0.0 pts</span></td>
+            </tr>
 
           </tbody>
         </table>
