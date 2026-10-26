@@ -23051,6 +23051,188 @@ export function evaluateWebrtcSipIceTcpFramingTurnTlsRfc6544Rfc4571Rfc8656Rfc886
   };
 }
 
+// ============================================================================
+// Stage 125 · P243 — Titanium Tetrachloride (TiCl4) Fluidized-Bed Chlorination
+// & Kroll Magnesium-Reduction / Vacuum-Distillation Titanium Sponge Safety Guard
+// (NFPA 484 / NFPA 69 / API RP 521 / OSHA 1910.119)
+// ============================================================================
+
+export interface TitaniumTetrachlorideFluidizedBedChlorinationKrollMagnesiumReductionGuardInput {
+  reactorTrainId: string;
+  chlorinatorCoolingWaterDeltaFlowLpm: number;
+  offgasMoistureOrHydrogenVolPct: number;
+  chlorineStackSlipPpm: number;
+  krollRetortWallTempC: number;
+  vacuumDistillationLeakRateKpaPerMin: number;
+  argonBlanketGaugePressureKpa: number;
+  retortBreakOpenOrMgcl2TapRequested: boolean;
+  retortCoreTempBelow50CVerified: boolean;
+  classDDrySaltExtinguisherAndWaterLockoutVerified: boolean;
+  positivePressureScbaAndDualBlockLotoVerified: boolean;
+}
+
+export interface TitaniumTetrachlorideFluidizedBedChlorinationKrollMagnesiumReductionGuardDecision {
+  policyCode: "P243-TITANIUM-TETRACHLORIDE-FLUIDIZED-BED-CHLORINATION-KROLL-MAGNESIUM-REDUCTION-NFPA484-NFPA69-APIRP521-OSHA1910119-TICL4-HYDROLYSIS-HCL-SURGE-FE-TI-EUTECTIC-RETORT-MELT-AND-PYROPHORIC-SPONGE-ARGON-SCBA-LOTO-GUARD";
+  reactorTrainId: string;
+  ticl4WaterHydrolysisOrChlorineSlipTrip: boolean;
+  krollFeTiEutecticMeltOrVacuumAirIngressLocked: boolean;
+  pyrophoricTitaniumSpongeArgonScbaLotoLocked: boolean;
+  autonomousChlorinationOrKrollReductionAllowed: boolean;
+  action:
+    | "allow_verified_ticl4_chlorination_and_kroll_magnesium_reduction_control"
+    | "trip_cl2_feed_isolate_cooling_water_and_route_hcl_ticl4_to_caustic_scrubber"
+    | "halt_ticl4_feed_abort_vacuum_distillation_and_flood_retort_with_pure_argon"
+    | "lock_kroll_retort_opening_until_below_50c_class_d_water_lockout_and_scba_loto_verified";
+  blockedReason?: string;
+}
+
+export function evaluateTitaniumTetrachlorideFluidizedBedChlorinationKrollMagnesiumReductionNfpa484Nfpa69ApiRp521Osha1910119Ticl4HydrolysisHclSurgeFeTiEutecticRetortMeltAndPyrophoricSpongeArgonScbaLotoGuard(
+  input: TitaniumTetrachlorideFluidizedBedChlorinationKrollMagnesiumReductionGuardInput,
+): TitaniumTetrachlorideFluidizedBedChlorinationKrollMagnesiumReductionGuardDecision {
+  const ticl4WaterHydrolysisOrChlorineSlipTrip =
+    input.chlorinatorCoolingWaterDeltaFlowLpm > 1.5 ||
+    input.offgasMoistureOrHydrogenVolPct > 0.4 ||
+    input.chlorineStackSlipPpm > 0.5;
+
+  const krollFeTiEutecticMeltOrVacuumAirIngressLocked =
+    input.krollRetortWallTempC > 940.0 ||
+    input.vacuumDistillationLeakRateKpaPerMin > 0.05 ||
+    input.argonBlanketGaugePressureKpa < 3.0;
+
+  const pyrophoricTitaniumSpongeArgonScbaLotoLocked =
+    input.retortBreakOpenOrMgcl2TapRequested &&
+    (!input.retortCoreTempBelow50CVerified ||
+      !input.classDDrySaltExtinguisherAndWaterLockoutVerified ||
+      !input.positivePressureScbaAndDualBlockLotoVerified);
+
+  let action: TitaniumTetrachlorideFluidizedBedChlorinationKrollMagnesiumReductionGuardDecision["action"] =
+    "allow_verified_ticl4_chlorination_and_kroll_magnesium_reduction_control";
+  let autonomousChlorinationOrKrollReductionAllowed = true;
+  let blockedReason: string | undefined;
+
+  if (ticl4WaterHydrolysisOrChlorineSlipTrip) {
+    action =
+      "trip_cl2_feed_isolate_cooling_water_and_route_hcl_ticl4_to_caustic_scrubber";
+    autonomousChlorinationOrKrollReductionAllowed = false;
+    blockedReason = `Titanium Tetrachloride (TiCl4) Fluidized-Bed Chlorinator Water Ingress / HCl Hydrolysis Surge or Cl2 Stack Slip on ${input.reactorTrainId}: coolingWaterDeltaFlowLpm=${input.chlorinatorCoolingWaterDeltaFlowLpm} L/min (max 1.5 L/min), offgasMoistureOrHydrogenVolPct=${input.offgasMoistureOrHydrogenVolPct} vol% (max 0.4 vol%), chlorineStackSlipPpm=${input.chlorineStackSlipPpm} ppm (max 0.5 ppm OSHA ceiling).`;
+  } else if (krollFeTiEutecticMeltOrVacuumAirIngressLocked) {
+    action =
+      "halt_ticl4_feed_abort_vacuum_distillation_and_flood_retort_with_pure_argon";
+    autonomousChlorinationOrKrollReductionAllowed = false;
+    blockedReason = `Kroll Magnesium-Reduction Retort Fe-Ti Eutectic Melt-Through (1085°C) or Vacuum Distillation Air-Ingress Pyrophoric Risk on ${input.reactorTrainId}: krollRetortWallTempC=${input.krollRetortWallTempC}°C (max 940.0°C), vacuumLeakRateKpaPerMin=${input.vacuumDistillationLeakRateKpaPerMin} kPa/min (max 0.05 kPa/min), argonBlanketGaugePressureKpa=${input.argonBlanketGaugePressureKpa} kPa(g) (min +3.0 kPa(g)).`;
+  } else if (pyrophoricTitaniumSpongeArgonScbaLotoLocked) {
+    action =
+      "lock_kroll_retort_opening_until_below_50c_class_d_water_lockout_and_scba_loto_verified";
+    autonomousChlorinationOrKrollReductionAllowed = false;
+    blockedReason = `NFPA 484 Pyrophoric Titanium Sponge / MgCl2 Retort Opening Interlock on ${input.reactorTrainId}: coreTempBelow50C=${input.retortCoreTempBelow50CVerified}, classDDrySaltAndWaterLockout=${input.classDDrySaltExtinguisherAndWaterLockoutVerified}, scbaAndLoto=${input.positivePressureScbaAndDualBlockLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P243-TITANIUM-TETRACHLORIDE-FLUIDIZED-BED-CHLORINATION-KROLL-MAGNESIUM-REDUCTION-NFPA484-NFPA69-APIRP521-OSHA1910119-TICL4-HYDROLYSIS-HCL-SURGE-FE-TI-EUTECTIC-RETORT-MELT-AND-PYROPHORIC-SPONGE-ARGON-SCBA-LOTO-GUARD",
+    reactorTrainId: input.reactorTrainId,
+    ticl4WaterHydrolysisOrChlorineSlipTrip,
+    krollFeTiEutecticMeltOrVacuumAirIngressLocked,
+    pyrophoricTitaniumSpongeArgonScbaLotoLocked,
+    autonomousChlorinationOrKrollReductionAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+// ============================================================================
+// Stage 125 · P244 — WebRTC / SIP RTP Payload Format for H.264 (RFC 6184),
+// HEVC/H.265 (RFC 7798), & VVC/H.266 (RFC 9328) NAL Unit Aggregation
+// (STAP-A / AP) & Fragmentation Unit (FU-A / FU) Security Guard
+// ============================================================================
+
+export interface WebrtcSipRtpH264HevcVvcNalPayloadGuardInput {
+  sessionId: string;
+  declaredAggregatedNaluTotalBytes: number;
+  actualRtpPayloadRemainingBytes: number;
+  nestedAggregationOrFragmentationInApDetected: boolean;
+  aggregatedNaluCountInPacket: number;
+  fuStartBitSet: boolean;
+  fuEndBitSet: boolean;
+  fuContinuationWithoutActiveStartOrTimestampJump: boolean;
+  fuReassemblyBytesAccumulated: number;
+  fuFragmentCountInFrame: number;
+  inBandParameterSetFloodRatePerSec: number;
+  parameterSetIdOutOfSpecBounds: boolean;
+  unnegotiatedProfileLevelOrChromaMutation: boolean;
+}
+
+export interface WebrtcSipRtpH264HevcVvcNalPayloadGuardDecision {
+  policyCode: "P244-WEBRTC-SIP-RTP-H264-HEVC-VVC-NAL-PAYLOAD-RFC6184-RFC7798-RFC9328-STAP-A-AP-NALU-LENGTH-OVERREAD-FU-START-END-BIT-STATE-DESYNC-AND-SPS-PPS-VPS-ID-BOMB-GUARD";
+  sessionId: string;
+  stapAApNaluLengthOverreadOrNestingBlocked: boolean;
+  fuStartEndBitDesyncOrReassemblyBombBlocked: boolean;
+  parameterSetFloodOrProfileMutationBlocked: boolean;
+  rtpVideoNalPayloadAccepted: boolean;
+  action:
+    | "allow_verified_rfc6184_rfc7798_rfc9328_nal_payload"
+    | "drop_malformed_stap_a_ap_packet_to_prevent_nalu_length_heap_overread"
+    | "discard_corrupted_fu_reassembly_buffer_and_request_rtcp_pli_keyframe"
+    | "reject_inband_sps_pps_vps_flood_or_unnegotiated_profile_escalation";
+  blockedReason?: string;
+}
+
+export function evaluateWebrtcSipRtpH264HevcVvcNalPayloadRfc6184Rfc7798Rfc9328StapAApNaluLengthOverreadFuStartEndBitStateDesyncAndSpsPpsVpsIdBombGuard(
+  input: WebrtcSipRtpH264HevcVvcNalPayloadGuardInput,
+): WebrtcSipRtpH264HevcVvcNalPayloadGuardDecision {
+  const stapAApNaluLengthOverreadOrNestingBlocked =
+    input.declaredAggregatedNaluTotalBytes >
+      input.actualRtpPayloadRemainingBytes ||
+    input.nestedAggregationOrFragmentationInApDetected ||
+    input.aggregatedNaluCountInPacket > 32;
+
+  const fuStartEndBitDesyncOrReassemblyBombBlocked =
+    (input.fuStartBitSet && input.fuEndBitSet) ||
+    input.fuContinuationWithoutActiveStartOrTimestampJump ||
+    input.fuReassemblyBytesAccumulated > 262144 ||
+    input.fuFragmentCountInFrame > 128;
+
+  const parameterSetFloodOrProfileMutationBlocked =
+    input.inBandParameterSetFloodRatePerSec > 10 ||
+    input.parameterSetIdOutOfSpecBounds ||
+    input.unnegotiatedProfileLevelOrChromaMutation;
+
+  let action: WebrtcSipRtpH264HevcVvcNalPayloadGuardDecision["action"] =
+    "allow_verified_rfc6184_rfc7798_rfc9328_nal_payload";
+  let rtpVideoNalPayloadAccepted = true;
+  let blockedReason: string | undefined;
+
+  if (stapAApNaluLengthOverreadOrNestingBlocked) {
+    action =
+      "drop_malformed_stap_a_ap_packet_to_prevent_nalu_length_heap_overread";
+    rtpVideoNalPayloadAccepted = false;
+    blockedReason = `RFC 6184 (H.264 STAP-A) / RFC 7798 (HEVC AP) / RFC 9328 (VVC AP) 16-Bit NALU Size Over-Read or Nested Aggregation/Fragmentation on ${input.sessionId}: declaredBytes=${input.declaredAggregatedNaluTotalBytes} vs actualRemainingBytes=${input.actualRtpPayloadRemainingBytes}, nestedApOrFu=${input.nestedAggregationOrFragmentationInApDetected}, naluCount=${input.aggregatedNaluCountInPacket} (max 32).`;
+  } else if (fuStartEndBitDesyncOrReassemblyBombBlocked) {
+    action =
+      "discard_corrupted_fu_reassembly_buffer_and_request_rtcp_pli_keyframe";
+    rtpVideoNalPayloadAccepted = false;
+    blockedReason = `RFC 6184 / RFC 7798 / RFC 9328 Fragmentation Unit (FU-A/FU) S=1&E=1 Dual-Bit Violation, Orphan Continuation, or Reassembly Buffer Bomb on ${input.sessionId}: fuStart=${input.fuStartBitSet}, fuEnd=${input.fuEndBitSet}, orphanOrTsJump=${input.fuContinuationWithoutActiveStartOrTimestampJump}, reassemblyBytes=${input.fuReassemblyBytesAccumulated} (max 262144), fragments=${input.fuFragmentCountInFrame} (max 128).`;
+  } else if (parameterSetFloodOrProfileMutationBlocked) {
+    action =
+      "reject_inband_sps_pps_vps_flood_or_unnegotiated_profile_escalation";
+    rtpVideoNalPayloadAccepted = false;
+    blockedReason = `RFC 6184 / RFC 7798 / RFC 9328 In-Band Parameter Set (SPS/PPS/VPS) Flood or Unnegotiated Profile/Chroma Mutation on ${input.sessionId}: parameterSetFloodRate=${input.inBandParameterSetFloodRatePerSec}/s (max 10/s), idOutOfBounds=${input.parameterSetIdOutOfSpecBounds}, unnegotiatedProfileOrChromaMutation=${input.unnegotiatedProfileLevelOrChromaMutation}.`;
+  }
+
+  return {
+    policyCode:
+      "P244-WEBRTC-SIP-RTP-H264-HEVC-VVC-NAL-PAYLOAD-RFC6184-RFC7798-RFC9328-STAP-A-AP-NALU-LENGTH-OVERREAD-FU-START-END-BIT-STATE-DESYNC-AND-SPS-PPS-VPS-ID-BOMB-GUARD",
+    sessionId: input.sessionId,
+    stapAApNaluLengthOverreadOrNestingBlocked,
+    fuStartEndBitDesyncOrReassemblyBombBlocked,
+    parameterSetFloodOrProfileMutationBlocked,
+    rtpVideoNalPayloadAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
