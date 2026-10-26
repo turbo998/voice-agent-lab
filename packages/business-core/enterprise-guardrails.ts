@@ -25466,5 +25466,239 @@ export function evaluateWebrtcSip3gppIvasImmersiveVoiceAudioServicesAmbisonics3g
   };
 }
 
+// ============================================================================
+// Stage 137 (P267–P268):
+// - P267: Purified Terephthalic Acid (PTA, C6H4(COOH)2) Amoco p-Xylene (PX)
+//         Co-Mn-Br Liquid-Phase Acetic Acid Catalytic Air Oxidation &
+//         Titanium-Clad Reactor Safety Guard (NFPA 69 / NFPA 652 / API RP 521 /
+//         OSHA 1910.119 / OSHA 1910.1000)
+// - P268: WebRTC & SIP WebTransport / HTTP/3 QUIC Unreliable Datagram &
+//         Media-over-QUIC (MOQ) Real-Time Voice Transport (RFC 9297 / RFC 9221)
+//         Safety Guard
+// ============================================================================
+
+export interface PurifiedTerephthalicAcidPtaAmocoPXyleneCoMnBrCatalyticOxidationTitaniumReactorGuardInput {
+  sessionId: string;
+  /** Oxidation reactor dry off-gas oxygen concentration in vol% (trip >= 5.0 vol% LOC) */
+  offGasDryOxygenVolPct: number;
+  /** Oxidation reactor temperature in Celsius (trip >= 218.0 °C titanium pyrophoric fire risk) */
+  oxidationReactorTempC: number;
+  /** Acetic acid solvent water content in wt% (trip < 3.5 wt% anhydrous bromide-titanium ignition risk) */
+  aceticAcidSolventWaterWtPct: number;
+  /** Crystallizer slurry flash letdown differential pressure in bar (interlock >= 6.5 bar) */
+  crystallizerSlurryFlashDeltaPBar: number;
+  /** PTA rotary dryer suspended dust concentration in g/m3 (interlock >= 25.0 g/m3 NFPA 652 MEC) */
+  ptaRotaryDryerDustGPerM3: number;
+  /** PTA rotary dryer carrier gas oxygen concentration in vol% (interlock >= 6.0 vol%) */
+  dryerInertGasOxygenVolPct: number;
+  /** Ambient methyl bromide (CH3Br) concentration in ppm (OSHA/ACGIH TLV >= 1.0 ppm) */
+  ambientMethylBromidePpm: number;
+  /** Ambient hydrogen bromide (HBr) concentration in ppm (OSHA PEL >= 2.0 ppm) */
+  ambientHydrogenBromidePpm: number;
+  /** Ambient acetic acid vapor concentration in ppm (OSHA PEL >= 10.0 ppm) */
+  ambientAceticAcidPpm: number;
+  /** Whether catalytic thermal oxidizer (RTO/CTO) and alkaline HBr/CH3Br scrubber are verified online */
+  regenerativeThermalOxidizerAndCausticScrubberVerified: boolean;
+  /** Whether a PTA reactor, condenser, or crystallizer line-break / entry is requested */
+  ptaReactorOrCrystallizerLineBreakRequested: boolean;
+  /** Whether positive-pressure SCBA, chemical acid suit, and mechanical DBB LOTO are verified */
+  positivePressureScbaAcidSuitAndDbbLotoVerified: boolean;
+}
+
+export interface PurifiedTerephthalicAcidPtaAmocoPXyleneCoMnBrCatalyticOxidationTitaniumReactorGuardAssessment {
+  policyCode: "P267-PURIFIED-TEREPHTHALIC-ACID-PTA-AMOCO-PXYLENE-CO-MN-BR-CATALYTIC-OXIDATION-TITANIUM-REACTOR-NFPA69-NFPA652-APIRP521-OSHA1910119-OSHA19101000-OFFGAS-O2-TITANIUM-FIRE-DRYER-DUST-AND-CH3BR-HBR-SCBA-LOTO-GUARD";
+  sessionId: string;
+  offGasO2BreakthroughOrTitaniumPyrophoricFirePreempted: boolean;
+  crystallizerFlashOrRotaryDryerDustDeflagrationInterlocked: boolean;
+  osha19101000Ch3BrHbrAceticAcidOrScbaLotoLocked: boolean;
+  ptaCatalyticOxidationOperationPermitted: boolean;
+  action:
+    | "trip_pta_oxidation_air_feed_dbb_and_flood_reactor_headspace_with_n2_in_0ms"
+    | "isolate_pta_crystallizer_letdown_inert_rotary_dryer_and_engage_hbr_alkaline_scrubber"
+    | "lock_pta_reactor_crystallizer_until_ch3br_scrubber_scba_and_dbb_loto_verified"
+    | "allow_verified_pta_amoco_catalytic_oxidation_operation";
+  blockedReason: string;
+}
+
+export function evaluatePurifiedTerephthalicAcidPtaAmocoPXyleneCoMnBrCatalyticOxidationTitaniumReactorNfpa69Nfpa652ApiRp521Osha1910119Osha19101000OffgasO2TitaniumFireDryerDustAndCh3brHbrScbaLotoGuard(
+  input: PurifiedTerephthalicAcidPtaAmocoPXyleneCoMnBrCatalyticOxidationTitaniumReactorGuardInput
+): PurifiedTerephthalicAcidPtaAmocoPXyleneCoMnBrCatalyticOxidationTitaniumReactorGuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const offGasO2BreakthroughOrTitaniumPyrophoricFirePreempted =
+    input.offGasDryOxygenVolPct >= 5.0 ||
+    input.oxidationReactorTempC >= 218.0 ||
+    input.aceticAcidSolventWaterWtPct < 3.5;
+
+  if (offGasO2BreakthroughOrTitaniumPyrophoricFirePreempted) {
+    blockedReasons.push(
+      `pta_offgas_o2_or_titanium_pyrophoric_fire_hazard(offGasO2VolPct=${input.offGasDryOxygenVolPct},reactorTempC=${input.oxidationReactorTempC},solventWaterWtPct=${input.aceticAcidSolventWaterWtPct})`
+    );
+  }
+
+  const crystallizerFlashOrRotaryDryerDustDeflagrationInterlocked =
+    input.crystallizerSlurryFlashDeltaPBar >= 6.5 ||
+    input.ptaRotaryDryerDustGPerM3 >= 25.0 ||
+    input.dryerInertGasOxygenVolPct >= 6.0;
+
+  if (crystallizerFlashOrRotaryDryerDustDeflagrationInterlocked) {
+    blockedReasons.push(
+      `pta_crystallizer_flash_or_rotary_dryer_dust_explosion_risk(flashDeltaPBar=${input.crystallizerSlurryFlashDeltaPBar},dryerDustGPerM3=${input.ptaRotaryDryerDustGPerM3},dryerO2VolPct=${input.dryerInertGasOxygenVolPct})`
+    );
+  }
+
+  const osha19101000Ch3BrHbrAceticAcidOrScbaLotoLocked =
+    input.ambientMethylBromidePpm >= 1.0 ||
+    input.ambientHydrogenBromidePpm >= 2.0 ||
+    input.ambientAceticAcidPpm >= 10.0 ||
+    !input.regenerativeThermalOxidizerAndCausticScrubberVerified ||
+    (input.ptaReactorOrCrystallizerLineBreakRequested &&
+      !input.positivePressureScbaAcidSuitAndDbbLotoVerified);
+
+  if (osha19101000Ch3BrHbrAceticAcidOrScbaLotoLocked) {
+    blockedReasons.push(
+      `osha_1910_1000_ch3br_hbr_acetic_acid_or_unverified_scba_loto(ch3brPpm=${input.ambientMethylBromidePpm},hbrPpm=${input.ambientHydrogenBromidePpm},aceticAcidPpm=${input.ambientAceticAcidPpm},rtoScrubberOk=${input.regenerativeThermalOxidizerAndCausticScrubberVerified},lineBreak=${input.ptaReactorOrCrystallizerLineBreakRequested},scbaLotoOk=${input.positivePressureScbaAcidSuitAndDbbLotoVerified})`
+    );
+  }
+
+  const ptaCatalyticOxidationOperationPermitted =
+    !offGasO2BreakthroughOrTitaniumPyrophoricFirePreempted &&
+    !crystallizerFlashOrRotaryDryerDustDeflagrationInterlocked &&
+    !osha19101000Ch3BrHbrAceticAcidOrScbaLotoLocked;
+
+  let action: PurifiedTerephthalicAcidPtaAmocoPXyleneCoMnBrCatalyticOxidationTitaniumReactorGuardAssessment["action"] =
+    "allow_verified_pta_amoco_catalytic_oxidation_operation";
+
+  if (offGasO2BreakthroughOrTitaniumPyrophoricFirePreempted) {
+    action =
+      "trip_pta_oxidation_air_feed_dbb_and_flood_reactor_headspace_with_n2_in_0ms";
+  } else if (crystallizerFlashOrRotaryDryerDustDeflagrationInterlocked) {
+    action =
+      "isolate_pta_crystallizer_letdown_inert_rotary_dryer_and_engage_hbr_alkaline_scrubber";
+  } else if (osha19101000Ch3BrHbrAceticAcidOrScbaLotoLocked) {
+    action =
+      "lock_pta_reactor_crystallizer_until_ch3br_scrubber_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P267-PURIFIED-TEREPHTHALIC-ACID-PTA-AMOCO-PXYLENE-CO-MN-BR-CATALYTIC-OXIDATION-TITANIUM-REACTOR-NFPA69-NFPA652-APIRP521-OSHA1910119-OSHA19101000-OFFGAS-O2-TITANIUM-FIRE-DRYER-DUST-AND-CH3BR-HBR-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    offGasO2BreakthroughOrTitaniumPyrophoricFirePreempted,
+    crystallizerFlashOrRotaryDryerDustDeflagrationInterlocked,
+    osha19101000Ch3BrHbrAceticAcidOrScbaLotoLocked,
+    ptaCatalyticOxidationOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipWebtransportHttp3QuicDatagramMoqVoiceRfc9297Rfc9221GuardInput {
+  sessionId: string;
+  /** RFC 9297 Quarter-Stream-ID decoded from HTTP/3 datagram varint header */
+  quarterStreamId: number;
+  /** Maximum negotiated Quarter-Stream-ID for active WebTransport session */
+  maxNegotiatedQuarterStreamId: number;
+  /** Declared varint header + HTTP/3 capsule payload length in bytes */
+  declaredVarintAndCapsulePayloadBytes: number;
+  /** Remaining actual bytes in the UDP/QUIC datagram payload */
+  remainingDatagramBytes: number;
+  /** Whether Extended CONNECT (:protocol=webtransport) Origin and session bearer token are verified */
+  extendedConnectWebtransportOriginAndTokenVerified: boolean;
+  /** Whether cross-session datagram context ID smuggling or stream confusion is detected */
+  crossSessionDatagramContextSmugglingDetected: boolean;
+  /** Ratio of incoming QUIC datagram burst rate to negotiated paced audio bitrate (clamp > 2.5x) */
+  datagramBurstRateToPacedVoiceRatio: number;
+  /** Single QUIC datagram payload size in bytes (clamp > 1200 bytes RFC 9000 / RFC 9221 MTU) */
+  quicDatagramPayloadBytes: number;
+}
+
+export interface WebrtcSipWebtransportHttp3QuicDatagramMoqVoiceRfc9297Rfc9221GuardAssessment {
+  policyCode: "P268-WEBRTC-SIP-WEBTRANSPORT-HTTP3-QUIC-DATAGRAM-MOQ-VOICE-RFC9297-RFC9221-QUARTER-STREAM-ID-CAPSULE-OVERREAD-UNVERIFIED-CONNECT-CONTEXT-SMUGGLING-AND-UNPACED-MTU-AMPLIFICATION-GUARD";
+  sessionId: string;
+  quarterStreamIdOrCapsuleOverreadDropped: boolean;
+  unverifiedConnectOrCrossSessionSmugglingBlocked: boolean;
+  unpacedDatagramBurstOrMtuOverflowClamped: boolean;
+  webtransportQuicVoiceDatagramAccepted: boolean;
+  action:
+    | "drop_webtransport_h3_datagram_quarter_stream_id_or_capsule_overread_in_0ms"
+    | "reject_unverified_webtransport_connect_or_cross_session_datagram_smuggling"
+    | "clamp_quic_datagram_burst_pacing_and_enforce_1200b_mtu_ceiling"
+    | "forward_verified_webtransport_h3_quic_voice_datagram";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipWebtransportHttp3QuicDatagramMoqVoiceRfc9297Rfc9221QuarterStreamIdCapsuleOverreadUnverifiedConnectContextSmugglingAndUnpacedMtuAmplificationGuard(
+  input: WebrtcSipWebtransportHttp3QuicDatagramMoqVoiceRfc9297Rfc9221GuardInput
+): WebrtcSipWebtransportHttp3QuicDatagramMoqVoiceRfc9297Rfc9221GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const quarterStreamIdOrCapsuleOverreadDropped =
+    input.quarterStreamId < 0 ||
+    input.quarterStreamId > input.maxNegotiatedQuarterStreamId ||
+    input.declaredVarintAndCapsulePayloadBytes <= 0 ||
+    input.declaredVarintAndCapsulePayloadBytes > input.remainingDatagramBytes;
+
+  if (quarterStreamIdOrCapsuleOverreadDropped) {
+    blockedReasons.push(
+      `rfc9297_quarter_stream_id_or_capsule_overread(qStreamId=${input.quarterStreamId},maxQStreamId=${input.maxNegotiatedQuarterStreamId},declaredBytes=${input.declaredVarintAndCapsulePayloadBytes},remainingBytes=${input.remainingDatagramBytes})`
+    );
+  }
+
+  const unverifiedConnectOrCrossSessionSmugglingBlocked =
+    !input.extendedConnectWebtransportOriginAndTokenVerified ||
+    input.crossSessionDatagramContextSmugglingDetected;
+
+  if (unverifiedConnectOrCrossSessionSmugglingBlocked) {
+    blockedReasons.push(
+      `webtransport_unverified_connect_or_context_smuggling(originTokenOk=${input.extendedConnectWebtransportOriginAndTokenVerified},contextSmuggling=${input.crossSessionDatagramContextSmugglingDetected})`
+    );
+  }
+
+  const unpacedDatagramBurstOrMtuOverflowClamped =
+    input.datagramBurstRateToPacedVoiceRatio > 2.5 ||
+    input.quicDatagramPayloadBytes > 1200;
+
+  if (unpacedDatagramBurstOrMtuOverflowClamped) {
+    blockedReasons.push(
+      `rfc9221_quic_datagram_burst_or_mtu_overflow(burstRatio=${input.datagramBurstRateToPacedVoiceRatio},datagramBytes=${input.quicDatagramPayloadBytes})`
+    );
+  }
+
+  const webtransportQuicVoiceDatagramAccepted =
+    !quarterStreamIdOrCapsuleOverreadDropped &&
+    !unverifiedConnectOrCrossSessionSmugglingBlocked &&
+    !unpacedDatagramBurstOrMtuOverflowClamped;
+
+  let action: WebrtcSipWebtransportHttp3QuicDatagramMoqVoiceRfc9297Rfc9221GuardAssessment["action"] =
+    "forward_verified_webtransport_h3_quic_voice_datagram";
+
+  if (quarterStreamIdOrCapsuleOverreadDropped) {
+    action =
+      "drop_webtransport_h3_datagram_quarter_stream_id_or_capsule_overread_in_0ms";
+  } else if (unverifiedConnectOrCrossSessionSmugglingBlocked) {
+    action =
+      "reject_unverified_webtransport_connect_or_cross_session_datagram_smuggling";
+  } else if (unpacedDatagramBurstOrMtuOverflowClamped) {
+    action =
+      "clamp_quic_datagram_burst_pacing_and_enforce_1200b_mtu_ceiling";
+  }
+
+  return {
+    policyCode:
+      "P268-WEBRTC-SIP-WEBTRANSPORT-HTTP3-QUIC-DATAGRAM-MOQ-VOICE-RFC9297-RFC9221-QUARTER-STREAM-ID-CAPSULE-OVERREAD-UNVERIFIED-CONNECT-CONTEXT-SMUGGLING-AND-UNPACED-MTU-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    quarterStreamIdOrCapsuleOverreadDropped,
+    unverifiedConnectOrCrossSessionSmugglingBlocked,
+    unpacedDatagramBurstOrMtuOverflowClamped,
+    webtransportQuicVoiceDatagramAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
 
 
