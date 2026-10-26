@@ -21925,6 +21925,199 @@ export function evaluateWebrtcSipSdpDataChannelNegotiationDcmapDcsaRfc8864Rfc886
   };
 }
 
+// ============================================================================
+// Stage 119 — P231: Adipic Acid KA-Oil (Cyclohexanol/Cyclohexanone) Nitric Acid
+// Copper-Vanadium Oxidation, Nitrolic Acid Accumulation & N2O/NOx Abatement Guard
+// (NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000)
+// ============================================================================
+
+export interface AdipicAcidKaOilNitricAcidCopperVanadiumOxidationAndN2oNoxScbaLotoInput {
+  unitId: string;
+  /** Nitric acid oxidation reactor temperature in °C (normal 70–82°C; runaway > 88.0°C or nitrolic-acid accumulation < 62.0°C during active KA-oil feed). */
+  oxidationReactorTempC: number;
+  /** Oxidation reactor temperature rate of rise in °C/s (trip > 1.8°C/s). */
+  oxidationTempRateCPerSec: number;
+  /** HNO3 to KA-oil molar feed ratio (minimum safe stoichiometrically excess ratio >= 2.8). */
+  nitricAcidToKaOilMolarRatio: number;
+  /** Hydrocarbon vapor concentration inside N2O-rich off-gas in vol% (deflagration trip >= 1.2 vol%). */
+  hydrocarbonInN2oOffGasVolPct: number;
+  /** Residual dissolved NOx / HNO2 in vacuum crystallizer feed in wt% (eruption limit > 1.8 wt%). */
+  crystallizerDissolvedNoxWtPct: number;
+  /** Copper catalyst concentration in nitric acid mother liquor in wt% (minimum >= 0.15 wt% to prevent nitrolic acid buildup). */
+  copperCatalystMotherLiquorWtPct: number;
+  /** Catalytic N2O abatement reactor bed temperature in °C (sintering / thermal runaway > 850.0°C). */
+  n2oAbatementReactorTempC: number;
+  /** Ambient nitrogen dioxide (NO2) concentration in ppm (industrial interlock >= 1.0 ppm; OSHA Ceiling 5 ppm). */
+  ambientNitrogenDioxidePpm: number;
+  /** Ambient nitric acid (HNO3) vapor concentration in ppm (OSHA 1910.1000 PEL >= 2.0 ppm). */
+  ambientNitricAcidPpm: number;
+  /** Whether an operator or voice agent requested KA-oil / HNO3 feed increase. */
+  feedIncreaseRequested: boolean;
+  /** Whether reactor or crystallizer manway opening was requested. */
+  equipmentOpeningRequested: boolean;
+  /** Whether residual nitric acid neutralization, NOx/N2O purge, and positive-pressure SCBA LOTO are verified. */
+  nitricNeutralizationNoxPurgeAndScbaLotoVerified: boolean;
+}
+
+export interface AdipicAcidKaOilNitricAcidCopperVanadiumOxidationAndN2oNoxScbaLotoDecision {
+  policyCode: "P231-ADIPIC-ACID-KA-OIL-NITRIC-ACID-COPPER-VANADIUM-OXIDATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-NITRIC-ACID-DEFLAGRATION-NITROLIC-ACID-THERMAL-DECOMPOSITION-AND-N2O-NO2-HNO3-SCBA-LOTO-GUARD";
+  unitId: string;
+  nitricOxidationRunawayNitrolicAccumulationOrN2oDeflagrationTripped: boolean;
+  crystallizerNoxEruptionOrN2oAbatementOvertempMitigated: boolean;
+  no2Hno3ToxicGasOrUnneutralizedOpeningLocked: boolean;
+  automationAllowed: boolean;
+  action:
+    | "allow_normal_adipic_acid_nitric_oxidation"
+    | "trip_ka_oil_hno3_dbb_flood_quench_cooling_and_vent_to_nox_absorber_in_0ms"
+    | "cut_crystallizer_steam_strip_dissolved_no2_and_bypass_n2o_decomposer_to_alkaline_scrubber"
+    | "lock_adipic_acid_unit_and_enforce_nitric_neutralization_nox_purge_scba_loto";
+  blockedReason?: string;
+}
+
+export function evaluateAdipicAcidKaOilNitricAcidCopperVanadiumOxidationNfpa69ApiRp521Osha1910119Osha19101000NitricAcidDeflagrationNitrolicAcidThermalDecompositionAndN2oNo2Hno3ScbaLotoGuard(
+  input: AdipicAcidKaOilNitricAcidCopperVanadiumOxidationAndN2oNoxScbaLotoInput,
+): AdipicAcidKaOilNitricAcidCopperVanadiumOxidationAndN2oNoxScbaLotoDecision {
+  const nitricOxidationRunawayNitrolicAccumulationOrN2oDeflagrationTripped =
+    (input.oxidationReactorTempC > 88.0 ||
+      input.oxidationReactorTempC < 62.0 ||
+      input.oxidationTempRateCPerSec > 1.8 ||
+      input.nitricAcidToKaOilMolarRatio < 2.8 ||
+      input.hydrocarbonInN2oOffGasVolPct >= 1.2) &&
+    input.feedIncreaseRequested;
+
+  const crystallizerNoxEruptionOrN2oAbatementOvertempMitigated =
+    input.crystallizerDissolvedNoxWtPct > 1.8 ||
+    input.copperCatalystMotherLiquorWtPct < 0.15 ||
+    input.n2oAbatementReactorTempC > 850.0;
+
+  const no2Hno3ToxicGasOrUnneutralizedOpeningLocked =
+    input.ambientNitrogenDioxidePpm >= 1.0 ||
+    input.ambientNitricAcidPpm >= 2.0 ||
+    (input.equipmentOpeningRequested &&
+      !input.nitricNeutralizationNoxPurgeAndScbaLotoVerified);
+
+  let action: AdipicAcidKaOilNitricAcidCopperVanadiumOxidationAndN2oNoxScbaLotoDecision["action"] =
+    "allow_normal_adipic_acid_nitric_oxidation";
+  let automationAllowed = true;
+  let blockedReason: string | undefined;
+
+  if (nitricOxidationRunawayNitrolicAccumulationOrN2oDeflagrationTripped) {
+    action =
+      "trip_ka_oil_hno3_dbb_flood_quench_cooling_and_vent_to_nox_absorber_in_0ms";
+    automationAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 Adipic Acid KA-Oil Nitric Acid Oxidation Runaway, Low-Temp Nitrolic Acid Accumulation or N2O-Hydrocarbon Deflagration Envelope on ${input.unitId}: T=${input.oxidationReactorTempC}°C, dT/dt=${input.oxidationTempRateCPerSec}°C/s, HNO3/KA=${input.nitricAcidToKaOilMolarRatio}, HCinN2O=${input.hydrocarbonInN2oOffGasVolPct} vol%.`;
+  } else if (crystallizerNoxEruptionOrN2oAbatementOvertempMitigated) {
+    action =
+      "cut_crystallizer_steam_strip_dissolved_no2_and_bypass_n2o_decomposer_to_alkaline_scrubber";
+    automationAllowed = false;
+    blockedReason = `API RP 521 / OSHA 1910.119 Adipic Acid Crystallizer Dissolved NO2 Eruption, Low Cu Catalyst (< 0.15 wt%) Nitrolic Intermediate Buildup or N2O Abatement Bed Over-Temperature on ${input.unitId}: dissolvedNOx=${input.crystallizerDissolvedNoxWtPct} wt%, Cu=${input.copperCatalystMotherLiquorWtPct} wt%, n2oBedTemp=${input.n2oAbatementReactorTempC}°C.`;
+  } else if (no2Hno3ToxicGasOrUnneutralizedOpeningLocked) {
+    action =
+      "lock_adipic_acid_unit_and_enforce_nitric_neutralization_nox_purge_scba_loto";
+    automationAllowed = false;
+    blockedReason = `OSHA 29 CFR 1910.1000 / 1910.119 / 1910.147 Nitrogen Dioxide (NO2 >= 1.0 ppm), Nitric Acid Vapor (HNO3 >= 2.0 ppm PEL) or Unneutralized Equipment Opening on ${input.unitId}: NO2=${input.ambientNitrogenDioxidePpm} ppm, HNO3=${input.ambientNitricAcidPpm} ppm, openingRequested=${input.equipmentOpeningRequested}, scbaVerified=${input.nitricNeutralizationNoxPurgeAndScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P231-ADIPIC-ACID-KA-OIL-NITRIC-ACID-COPPER-VANADIUM-OXIDATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-NITRIC-ACID-DEFLAGRATION-NITROLIC-ACID-THERMAL-DECOMPOSITION-AND-N2O-NO2-HNO3-SCBA-LOTO-GUARD",
+    unitId: input.unitId,
+    nitricOxidationRunawayNitrolicAccumulationOrN2oDeflagrationTripped,
+    crystallizerNoxEruptionOrN2oAbatementOvertempMitigated,
+    no2Hno3ToxicGasOrUnneutralizedOpeningLocked,
+    automationAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+// ============================================================================
+// Stage 119 — P232: WebRTC & SIP SDP Simulcast (RFC 8853 a=simulcast),
+// RTP Stream Identifier (RFC 8852 / RFC 8851 a=rid / RtpStreamId), and
+// Video Frame Marking Layer-Switch Spoofing Guard (RFC 9626)
+// ============================================================================
+
+export interface WebrtcSipSdpSimulcastRidFrameMarkingRfc8853Rfc8852Rfc8851Rfc9626GuardInput {
+  sessionId: string;
+  /** Whether an RFC 8853 a=simulcast line references undefined a=rid IDs, duplicates a rid-id across directions/streams, or marks all streams and alternatives as initially paused (~scid) to cause a mute-DoS. */
+  simulcastUndefinedOrDuplicateRidOrAllStreamsPausedDos: boolean;
+  /** Whether an RFC 8852 SDES RtpStreamId / RepairedRtpStreamId RTP header extension exceeds 16 bytes or contains non-alphanumeric control characters. */
+  sdesRtpStreamIdMalformedOrOversized: boolean;
+  /** Whether an RFC 8851 a=rid pt= restriction references payload types absent from the m= line or binds an RTX/FEC repair payload type as a primary simulcast stream. */
+  ridPayloadTypeMismatchesMediaLineOrBindsRtxAsPrimary: boolean;
+  /** Whether an RTP retransmission packet carries RepairedRtpStreamId equal to its own RtpStreamId (circular repair loop). */
+  repairedRtpStreamIdSelfReferencesPrimaryRid: boolean;
+  /** Whether an RFC 9626 Frame Marking RTP header extension carries Temporal ID (TID) or Layer ID (LID) exceeding the negotiated simulcast/SVC layer bounds. */
+  rfc9626FrameMarkingLayerIdExceedsNegotiatedBounds: boolean;
+  /** Whether a peer floods RFC 9626 non-discardable independent base-layer keyframe markers (I=1, D=0, B=1) on every packet to defeat SFU congestion shedding and trigger PLI storms. */
+  rfc9626FakeNonDiscardableBaseKeyframeFloodDetected: boolean;
+}
+
+export interface WebrtcSipSdpSimulcastRidFrameMarkingRfc8853Rfc8852Rfc8851Rfc9626GuardDecision {
+  policyCode: "P232-WEBRTC-SIP-SDP-SIMULCAST-RID-FRAME-MARKING-RFC8853-RFC8852-RFC8851-RFC9626-RID-FORMAT-INJECTION-PAUSE-ALL-LAYERS-MUTE-DOS-SCID-CONFLICT-AND-CODEC-AGNOSTIC-LAYER-SPOOF-GUARD";
+  sessionId: string;
+  rfc8853SimulcastOrRfc8852SdesRidRejected: boolean;
+  rfc8851PayloadTypeOrCircularRepairClamped: boolean;
+  rfc9626FrameMarkingLayerSpoofSanitized: boolean;
+  simulcastAndFrameMarkingAccepted: boolean;
+  action:
+    | "accept_compliant_rfc8853_simulcast_rid_and_rfc9626_frame_marking"
+    | "reject_malformed_rfc8853_simulcast_rid_sdp_and_strip_invalid_sdes_rid_in_0ms"
+    | "clamp_rfc8851_rid_payload_type_binding_and_drop_circular_repaired_rid_packets"
+    | "sanitize_rfc9626_frame_marking_layer_bounds_and_throttle_fake_keyframe_switches";
+  blockedReason?: string;
+}
+
+export function evaluateWebrtcSipSdpSimulcastRidFrameMarkingRfc8853Rfc8852Rfc8851Rfc9626RidFormatInjectionPauseAllLayersMuteDosScidConflictAndCodecAgnosticLayerSpoofGuard(
+  input: WebrtcSipSdpSimulcastRidFrameMarkingRfc8853Rfc8852Rfc8851Rfc9626GuardInput,
+): WebrtcSipSdpSimulcastRidFrameMarkingRfc8853Rfc8852Rfc8851Rfc9626GuardDecision {
+  const rfc8853SimulcastOrRfc8852SdesRidRejected =
+    input.simulcastUndefinedOrDuplicateRidOrAllStreamsPausedDos ||
+    input.sdesRtpStreamIdMalformedOrOversized;
+
+  const rfc8851PayloadTypeOrCircularRepairClamped =
+    input.ridPayloadTypeMismatchesMediaLineOrBindsRtxAsPrimary ||
+    input.repairedRtpStreamIdSelfReferencesPrimaryRid;
+
+  const rfc9626FrameMarkingLayerSpoofSanitized =
+    input.rfc9626FrameMarkingLayerIdExceedsNegotiatedBounds ||
+    input.rfc9626FakeNonDiscardableBaseKeyframeFloodDetected;
+
+  let action: WebrtcSipSdpSimulcastRidFrameMarkingRfc8853Rfc8852Rfc8851Rfc9626GuardDecision["action"] =
+    "accept_compliant_rfc8853_simulcast_rid_and_rfc9626_frame_marking";
+  let simulcastAndFrameMarkingAccepted = true;
+  let blockedReason: string | undefined;
+
+  if (rfc8853SimulcastOrRfc8852SdesRidRejected) {
+    action =
+      "reject_malformed_rfc8853_simulcast_rid_sdp_and_strip_invalid_sdes_rid_in_0ms";
+    simulcastAndFrameMarkingAccepted = false;
+    blockedReason = `RFC 8853 / RFC 8852 SDP a=simulcast Undefined/Duplicate RID, All-Streams-Paused (~scid) Mute-DoS or Malformed/Oversized (> 16B) SDES RtpStreamId on ${input.sessionId}: simulcastDos=${input.simulcastUndefinedOrDuplicateRidOrAllStreamsPausedDos}, badSdesRid=${input.sdesRtpStreamIdMalformedOrOversized}.`;
+  } else if (rfc8851PayloadTypeOrCircularRepairClamped) {
+    action =
+      "clamp_rfc8851_rid_payload_type_binding_and_drop_circular_repaired_rid_packets";
+    simulcastAndFrameMarkingAccepted = false;
+    blockedReason = `RFC 8851 / RFC 8852 a=rid pt= Media-Line Mismatch, RTX Bound as Primary Stream or Circular RepairedRtpStreamId Self-Reference on ${input.sessionId}: ptMismatch=${input.ridPayloadTypeMismatchesMediaLineOrBindsRtxAsPrimary}, circularRepairRid=${input.repairedRtpStreamIdSelfReferencesPrimaryRid}.`;
+  } else if (rfc9626FrameMarkingLayerSpoofSanitized) {
+    action =
+      "sanitize_rfc9626_frame_marking_layer_bounds_and_throttle_fake_keyframe_switches";
+    simulcastAndFrameMarkingAccepted = false;
+    blockedReason = `RFC 9626 Frame Marking Out-of-Bounds Temporal/Spatial Layer ID (TID/LID) or Non-Discardable Base-Layer Keyframe (I=1,D=0,B=1) Flood on ${input.sessionId}: layerOutOfBounds=${input.rfc9626FrameMarkingLayerIdExceedsNegotiatedBounds}, fakeKeyframeFlood=${input.rfc9626FakeNonDiscardableBaseKeyframeFloodDetected}.`;
+  }
+
+  return {
+    policyCode:
+      "P232-WEBRTC-SIP-SDP-SIMULCAST-RID-FRAME-MARKING-RFC8853-RFC8852-RFC8851-RFC9626-RID-FORMAT-INJECTION-PAUSE-ALL-LAYERS-MUTE-DOS-SCID-CONFLICT-AND-CODEC-AGNOSTIC-LAYER-SPOOF-GUARD",
+    sessionId: input.sessionId,
+    rfc8853SimulcastOrRfc8852SdesRidRejected,
+    rfc8851PayloadTypeOrCircularRepairClamped,
+    rfc9626FrameMarkingLayerSpoofSanitized,
+    simulcastAndFrameMarkingAccepted,
+    action,
+    blockedReason,
+  };
+}
+
 
 
 
