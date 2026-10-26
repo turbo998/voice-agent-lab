@@ -24462,3 +24462,223 @@ export function evaluateWebrtcSipRtpLinearPcmL16L24Aes67Rfc3551Rfc3190SampleFram
     blockedReason: "none",
   };
 }
+
+
+export interface PropyleneOxideHppoEpoxidationDistillationNfpa30Nfpa69ApiRp521Osha1910119Osha19101000PeroxideO2BreakthroughRingOpeningPolymerizationRunawayAndPoScbaLotoGuardInput {
+  sessionId: string;
+  hppoEpoxidationReactorTempC: number;
+  vaporSpaceOxygenVolPercent: number;
+  reactorPressureRiseKpaPerMin: number;
+  poDistillationOrStorageTempC: number;
+  poVesselAbsolutePressureKpa: number;
+  acidAlkaliOrIronCatalystContaminationPpm: number;
+  ambientPropyleneOxideVaporPpm: number;
+  scrubberPositivePressureScbaAndBondingVerified: boolean;
+  mechanicalDbbLotoVerified: boolean;
+  requestsLineBreakOrVesselEntry: boolean;
+}
+
+export interface PropyleneOxideHppoEpoxidationDistillationNfpa30Nfpa69ApiRp521Osha1910119Osha19101000PeroxideO2BreakthroughRingOpeningPolymerizationRunawayAndPoScbaLotoGuardAssessment {
+  policyCode: "P257-PROPYLENE-OXIDE-HPPO-EPOXIDATION-DISTILLATION-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PEROXIDE-O2-BREAKTHROUGH-RING-OPENING-POLYMERIZATION-RUNAWAY-AND-PO-SCBA-LOTO-GUARD";
+  sessionId: string;
+  hppoEpoxidationPeroxideO2BreakthroughOrRunawayPreempted: boolean;
+  poRingOpeningHomopolymerizationOrOverpressureInterlocked: boolean;
+  poCarcinogenVaporExposureOrMissingScbaLotoLocked: boolean;
+  propyleneOxideProcessOperationPermitted: boolean;
+  action:
+    | "trip_hppo_peroxide_propylene_feed_dbb_and_flood_n2_methanol_quench_in_0ms"
+    | "cut_po_column_reboiler_engage_chilled_cooling_and_route_to_deluge_scrubber"
+    | "lock_propylene_oxide_line_break_until_scba_scrubber_and_dbb_loto_verified"
+    | "allow_verified_hppo_epoxidation_and_propylene_oxide_distillation";
+  blockedReason:
+    | "hppo_epoxidation_overtemp_or_peroxide_decomposition_oxygen_loc_breakthrough"
+    | "propylene_oxide_ring_opening_polymerization_or_contaminated_vessel_overpressure"
+    | "propylene_oxide_vapor_exposure_or_missing_scba_scrubber_dbb_loto"
+    | "none";
+}
+
+export function evaluatePropyleneOxideHppoEpoxidationDistillationNfpa30Nfpa69ApiRp521Osha1910119Osha19101000PeroxideO2BreakthroughRingOpeningPolymerizationRunawayAndPoScbaLotoGuard(
+  input: PropyleneOxideHppoEpoxidationDistillationNfpa30Nfpa69ApiRp521Osha1910119Osha19101000PeroxideO2BreakthroughRingOpeningPolymerizationRunawayAndPoScbaLotoGuardInput
+): PropyleneOxideHppoEpoxidationDistillationNfpa30Nfpa69ApiRp521Osha1910119Osha19101000PeroxideO2BreakthroughRingOpeningPolymerizationRunawayAndPoScbaLotoGuardAssessment {
+  const hppoEpoxidationPeroxideO2BreakthroughOrRunawayPreempted =
+    input.hppoEpoxidationReactorTempC > 85.0 ||
+    input.vaporSpaceOxygenVolPercent > 4.0 ||
+    input.reactorPressureRiseKpaPerMin > 28.0;
+
+  const poRingOpeningHomopolymerizationOrOverpressureInterlocked =
+    input.poDistillationOrStorageTempC > 42.0 ||
+    input.poVesselAbsolutePressureKpa > 195.0 ||
+    input.acidAlkaliOrIronCatalystContaminationPpm > 10.0;
+
+  const poCarcinogenVaporExposureOrMissingScbaLotoLocked =
+    input.ambientPropyleneOxideVaporPpm >= 20.0 ||
+    (input.requestsLineBreakOrVesselEntry &&
+      (!input.scrubberPositivePressureScbaAndBondingVerified ||
+        !input.mechanicalDbbLotoVerified));
+
+  if (hppoEpoxidationPeroxideO2BreakthroughOrRunawayPreempted) {
+    return {
+      policyCode:
+        "P257-PROPYLENE-OXIDE-HPPO-EPOXIDATION-DISTILLATION-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PEROXIDE-O2-BREAKTHROUGH-RING-OPENING-POLYMERIZATION-RUNAWAY-AND-PO-SCBA-LOTO-GUARD",
+      sessionId: input.sessionId,
+      hppoEpoxidationPeroxideO2BreakthroughOrRunawayPreempted,
+      poRingOpeningHomopolymerizationOrOverpressureInterlocked,
+      poCarcinogenVaporExposureOrMissingScbaLotoLocked,
+      propyleneOxideProcessOperationPermitted: false,
+      action:
+        "trip_hppo_peroxide_propylene_feed_dbb_and_flood_n2_methanol_quench_in_0ms",
+      blockedReason:
+        "hppo_epoxidation_overtemp_or_peroxide_decomposition_oxygen_loc_breakthrough",
+    };
+  }
+
+  if (poRingOpeningHomopolymerizationOrOverpressureInterlocked) {
+    return {
+      policyCode:
+        "P257-PROPYLENE-OXIDE-HPPO-EPOXIDATION-DISTILLATION-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PEROXIDE-O2-BREAKTHROUGH-RING-OPENING-POLYMERIZATION-RUNAWAY-AND-PO-SCBA-LOTO-GUARD",
+      sessionId: input.sessionId,
+      hppoEpoxidationPeroxideO2BreakthroughOrRunawayPreempted,
+      poRingOpeningHomopolymerizationOrOverpressureInterlocked,
+      poCarcinogenVaporExposureOrMissingScbaLotoLocked,
+      propyleneOxideProcessOperationPermitted: false,
+      action:
+        "cut_po_column_reboiler_engage_chilled_cooling_and_route_to_deluge_scrubber",
+      blockedReason:
+        "propylene_oxide_ring_opening_polymerization_or_contaminated_vessel_overpressure",
+    };
+  }
+
+  if (poCarcinogenVaporExposureOrMissingScbaLotoLocked) {
+    return {
+      policyCode:
+        "P257-PROPYLENE-OXIDE-HPPO-EPOXIDATION-DISTILLATION-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PEROXIDE-O2-BREAKTHROUGH-RING-OPENING-POLYMERIZATION-RUNAWAY-AND-PO-SCBA-LOTO-GUARD",
+      sessionId: input.sessionId,
+      hppoEpoxidationPeroxideO2BreakthroughOrRunawayPreempted,
+      poRingOpeningHomopolymerizationOrOverpressureInterlocked,
+      poCarcinogenVaporExposureOrMissingScbaLotoLocked,
+      propyleneOxideProcessOperationPermitted: false,
+      action:
+        "lock_propylene_oxide_line_break_until_scba_scrubber_and_dbb_loto_verified",
+      blockedReason:
+        "propylene_oxide_vapor_exposure_or_missing_scba_scrubber_dbb_loto",
+    };
+  }
+
+  return {
+    policyCode:
+      "P257-PROPYLENE-OXIDE-HPPO-EPOXIDATION-DISTILLATION-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PEROXIDE-O2-BREAKTHROUGH-RING-OPENING-POLYMERIZATION-RUNAWAY-AND-PO-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    hppoEpoxidationPeroxideO2BreakthroughOrRunawayPreempted: false,
+    poRingOpeningHomopolymerizationOrOverpressureInterlocked: false,
+    poCarcinogenVaporExposureOrMissingScbaLotoLocked: false,
+    propyleneOxideProcessOperationPermitted: true,
+    action: "allow_verified_hppo_epoxidation_and_propylene_oxide_distillation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpUlpfecFlexfecRfc5109Rfc8627ProtectionLengthBitmaskOverread2dXorMatrixAmplificationBombAndProtectedMediaSsrcHijackGuardInput {
+  sessionId: string;
+  declaredFecLevelProtectionLengthBytes: number;
+  remainingFecPayloadBytes: number;
+  fecMaskCoveredPacketCount: number;
+  fecRepairPacketsPerWindow: number;
+  xorRecoveryMatrixOperationsPerSecond: number;
+  protectedMediaSsrcBoundToSession: boolean;
+  fecHeaderSsrcCount: number;
+}
+
+export interface WebrtcSipRtpUlpfecFlexfecRfc5109Rfc8627ProtectionLengthBitmaskOverread2dXorMatrixAmplificationBombAndProtectedMediaSsrcHijackGuardAssessment {
+  policyCode: "P258-WEBRTC-SIP-RTP-ULPFEC-FLEXFEC-RFC5109-RFC8627-PROTECTION-LENGTH-BITMASK-OVERREAD-2D-XOR-MATRIX-AMPLIFICATION-BOMB-AND-PROTECTED-MEDIA-SSRC-HIJACK-GUARD";
+  sessionId: string;
+  fecProtectionLengthOrBitmaskWindowOverreadDropped: boolean;
+  flexfec2dXorRecoveryMatrixAmplificationBombBlocked: boolean;
+  fecUnboundProtectedMediaSsrcOrMultiSsrcHijackBlocked: boolean;
+  rtpFecPacketAccepted: boolean;
+  action:
+    | "drop_rfc5109_rfc8627_fec_protection_length_or_mask_overread_in_0ms"
+    | "reject_flexfec_2d_xor_recovery_matrix_cpu_amplification_bomb"
+    | "reject_fec_unbound_protected_media_ssrc_or_multissrc_injection"
+    | "forward_verified_rfc5109_rfc8627_rtp_fec_packet";
+  blockedReason:
+    | "rfc5109_rfc8627_fec_level_protection_length_exceeds_payload_or_mask_window_invalid"
+    | "flexfec_2d_xor_repair_window_or_matrix_ops_exceed_cpu_budget"
+    | "fec_protected_media_ssrc_not_bound_to_session_or_multissrc_spoof"
+    | "none";
+}
+
+export function evaluateWebrtcSipRtpUlpfecFlexfecRfc5109Rfc8627ProtectionLengthBitmaskOverread2dXorMatrixAmplificationBombAndProtectedMediaSsrcHijackGuard(
+  input: WebrtcSipRtpUlpfecFlexfecRfc5109Rfc8627ProtectionLengthBitmaskOverread2dXorMatrixAmplificationBombAndProtectedMediaSsrcHijackGuardInput
+): WebrtcSipRtpUlpfecFlexfecRfc5109Rfc8627ProtectionLengthBitmaskOverread2dXorMatrixAmplificationBombAndProtectedMediaSsrcHijackGuardAssessment {
+  const fecProtectionLengthOrBitmaskWindowOverreadDropped =
+    input.declaredFecLevelProtectionLengthBytes <= 0 ||
+    input.declaredFecLevelProtectionLengthBytes >
+      input.remainingFecPayloadBytes ||
+    input.fecMaskCoveredPacketCount <= 0 ||
+    input.fecMaskCoveredPacketCount > 48;
+
+  const flexfec2dXorRecoveryMatrixAmplificationBombBlocked =
+    input.fecRepairPacketsPerWindow > 32 ||
+    input.xorRecoveryMatrixOperationsPerSecond > 5000;
+
+  const fecUnboundProtectedMediaSsrcOrMultiSsrcHijackBlocked =
+    !input.protectedMediaSsrcBoundToSession || input.fecHeaderSsrcCount !== 1;
+
+  if (fecProtectionLengthOrBitmaskWindowOverreadDropped) {
+    return {
+      policyCode:
+        "P258-WEBRTC-SIP-RTP-ULPFEC-FLEXFEC-RFC5109-RFC8627-PROTECTION-LENGTH-BITMASK-OVERREAD-2D-XOR-MATRIX-AMPLIFICATION-BOMB-AND-PROTECTED-MEDIA-SSRC-HIJACK-GUARD",
+      sessionId: input.sessionId,
+      fecProtectionLengthOrBitmaskWindowOverreadDropped,
+      flexfec2dXorRecoveryMatrixAmplificationBombBlocked,
+      fecUnboundProtectedMediaSsrcOrMultiSsrcHijackBlocked,
+      rtpFecPacketAccepted: false,
+      action:
+        "drop_rfc5109_rfc8627_fec_protection_length_or_mask_overread_in_0ms",
+      blockedReason:
+        "rfc5109_rfc8627_fec_level_protection_length_exceeds_payload_or_mask_window_invalid",
+    };
+  }
+
+  if (flexfec2dXorRecoveryMatrixAmplificationBombBlocked) {
+    return {
+      policyCode:
+        "P258-WEBRTC-SIP-RTP-ULPFEC-FLEXFEC-RFC5109-RFC8627-PROTECTION-LENGTH-BITMASK-OVERREAD-2D-XOR-MATRIX-AMPLIFICATION-BOMB-AND-PROTECTED-MEDIA-SSRC-HIJACK-GUARD",
+      sessionId: input.sessionId,
+      fecProtectionLengthOrBitmaskWindowOverreadDropped,
+      flexfec2dXorRecoveryMatrixAmplificationBombBlocked,
+      fecUnboundProtectedMediaSsrcOrMultiSsrcHijackBlocked,
+      rtpFecPacketAccepted: false,
+      action: "reject_flexfec_2d_xor_recovery_matrix_cpu_amplification_bomb",
+      blockedReason:
+        "flexfec_2d_xor_repair_window_or_matrix_ops_exceed_cpu_budget",
+    };
+  }
+
+  if (fecUnboundProtectedMediaSsrcOrMultiSsrcHijackBlocked) {
+    return {
+      policyCode:
+        "P258-WEBRTC-SIP-RTP-ULPFEC-FLEXFEC-RFC5109-RFC8627-PROTECTION-LENGTH-BITMASK-OVERREAD-2D-XOR-MATRIX-AMPLIFICATION-BOMB-AND-PROTECTED-MEDIA-SSRC-HIJACK-GUARD",
+      sessionId: input.sessionId,
+      fecProtectionLengthOrBitmaskWindowOverreadDropped,
+      flexfec2dXorRecoveryMatrixAmplificationBombBlocked,
+      fecUnboundProtectedMediaSsrcOrMultiSsrcHijackBlocked,
+      rtpFecPacketAccepted: false,
+      action: "reject_fec_unbound_protected_media_ssrc_or_multissrc_injection",
+      blockedReason:
+        "fec_protected_media_ssrc_not_bound_to_session_or_multissrc_spoof",
+    };
+  }
+
+  return {
+    policyCode:
+      "P258-WEBRTC-SIP-RTP-ULPFEC-FLEXFEC-RFC5109-RFC8627-PROTECTION-LENGTH-BITMASK-OVERREAD-2D-XOR-MATRIX-AMPLIFICATION-BOMB-AND-PROTECTED-MEDIA-SSRC-HIJACK-GUARD",
+    sessionId: input.sessionId,
+    fecProtectionLengthOrBitmaskWindowOverreadDropped: false,
+    flexfec2dXorRecoveryMatrixAmplificationBombBlocked: false,
+    fecUnboundProtectedMediaSsrcOrMultiSsrcHijackBlocked: false,
+    rtpFecPacketAccepted: true,
+    action: "forward_verified_rfc5109_rfc8627_rtp_fec_packet",
+    blockedReason: "none",
+  };
+}
