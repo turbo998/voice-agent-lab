@@ -23423,6 +23423,205 @@ export function evaluateWebrtcSipRtpVp8Vp9PayloadRfc7741Rfc9628PictureId15BitMBi
   };
 }
 
+// ============================================================================
+// Stage 127 — P247: Toluene Diisocyanate (TDI) & Methylene Diphenyl
+//             Diisocyanate (MDI) DNT/TDA Phosgenation, ODCB Solvent Recovery
+//             & Isocyanate Dimer/Carbodiimide Runaway Safety Guard
+//             (NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000)
+//             & P248: WebRTC & SIP RTP Header Extensions, Mixed One-Byte /
+//             Two-Byte Framing & Cryptex (RFC 8285 / RFC 9335 / RFC 3550)
+//             Extension Overread, ID=15 Smuggling & Plaintext Downgrade Guard
+// ============================================================================
+
+export interface TdiMdiPhosgenationOdcbDistillationNfpa69ApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  phosgenationReactorTempC: number;
+  phosgeneToAmineMolarRatio: number;
+  hclPhosgeneOverheadPressureRiseKpaPerMin: number;
+  tdiMdiVacuumColumnBottomTempC: number;
+  waterIngressInIsocyanatePpm: number;
+  alkaliMetalCatalystContaminationPpm: number;
+  ambientTdiMdiVaporPpb: number;
+  ambientPhosgeneVaporPpm: number;
+  causticScrubberAndPositivePressureScbaVerified: boolean;
+  mechanicalDbbLotoVerified: boolean;
+  requestsLineBreakOrPhosgenatorEntry: boolean;
+}
+
+export interface TdiMdiPhosgenationOdcbDistillationNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P247-TDI-MDI-ISOCYANATE-TDA-MDA-PHOSGENATION-ODCB-VACUUM-DISTILLATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PHOSGENE-AMINE-RATIO-OVERPRESSURE-WATER-UREA-TRIMERIZATION-EXOTHERM-AND-TDI-COCL2-SCBA-LOTO-GUARD";
+  sessionId: string;
+  phosgenatorOverpressureOrPhosgeneDeficitPreempted: boolean;
+  vacuumColumnTrimerizationOrWaterPolyureaExothermInterlocked: boolean;
+  tdiMdiPhosgeneSensitizationOrMissingScbaLotoLocked: boolean;
+  tdiMdiPhosgenationOperationPermitted: boolean;
+  action:
+    | "trip_cocl2_tda_feed_dbb_and_inject_cold_odcb_emergency_quench"
+    | "cut_tdi_mdi_vacuum_column_reboiler_steam_and_pad_with_dry_nitrogen"
+    | "lock_isocyanate_phosgene_line_break_until_scba_caustic_scrubber_and_loto_verified"
+    | "allow_verified_tdi_mdi_phosgenation_and_odcb_distillation";
+  blockedReason: string;
+}
+
+export function evaluateTdiMdiIsocyanateTdaMdaPhosgenationOdcbVacuumDistillationNfpa69ApiRp521Osha1910119Osha19101000PhosgeneAmineRatioOverpressureWaterUreaTrimerizationExothermAndTdiCocl2ScbaLotoGuard(
+  input: TdiMdiPhosgenationOdcbDistillationNfpa69ApiRp521Osha1910119Osha19101000GuardInput,
+): TdiMdiPhosgenationOdcbDistillationNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  const phosgenatorOverpressureOrPhosgeneDeficitPreempted =
+    input.phosgenationReactorTempC > 185.0 ||
+    input.phosgeneToAmineMolarRatio < 2.2 ||
+    input.hclPhosgeneOverheadPressureRiseKpaPerMin > 45.0;
+
+  const vacuumColumnTrimerizationOrWaterPolyureaExothermInterlocked =
+    !phosgenatorOverpressureOrPhosgeneDeficitPreempted &&
+    (input.tdiMdiVacuumColumnBottomTempC > 210.0 ||
+      input.waterIngressInIsocyanatePpm > 50.0 ||
+      input.alkaliMetalCatalystContaminationPpm > 10.0);
+
+  const tdiMdiPhosgeneSensitizationOrMissingScbaLotoLocked =
+    !phosgenatorOverpressureOrPhosgeneDeficitPreempted &&
+    !vacuumColumnTrimerizationOrWaterPolyureaExothermInterlocked &&
+    (input.ambientTdiMdiVaporPpb >= 5.0 ||
+      input.ambientPhosgeneVaporPpm >= 0.05 ||
+      (input.requestsLineBreakOrPhosgenatorEntry &&
+        (!input.causticScrubberAndPositivePressureScbaVerified ||
+          !input.mechanicalDbbLotoVerified)));
+
+  const tdiMdiPhosgenationOperationPermitted =
+    !phosgenatorOverpressureOrPhosgeneDeficitPreempted &&
+    !vacuumColumnTrimerizationOrWaterPolyureaExothermInterlocked &&
+    !tdiMdiPhosgeneSensitizationOrMissingScbaLotoLocked;
+
+  let action: TdiMdiPhosgenationOdcbDistillationNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_tdi_mdi_phosgenation_and_odcb_distillation";
+  let blockedReason = "none";
+
+  if (phosgenatorOverpressureOrPhosgeneDeficitPreempted) {
+    action = "trip_cocl2_tda_feed_dbb_and_inject_cold_odcb_emergency_quench";
+    blockedReason =
+      "NFPA69_APIRP521_OSHA1910_119_TDI_MDI_PHOSGENATOR_OVERPRESSURE_OR_PHOSGENE_DEFICIT_POLYUREA_PLUGGING_PREEMPTED";
+  } else if (vacuumColumnTrimerizationOrWaterPolyureaExothermInterlocked) {
+    action =
+      "cut_tdi_mdi_vacuum_column_reboiler_steam_and_pad_with_dry_nitrogen";
+    blockedReason =
+      "APIRP521_OSHA1910_119_TDI_MDI_VACUUM_COLUMN_TRIMERIZATION_CARBODIIMIDE_CO2_ERUPTION_OR_WATER_INGRESS_INTERLOCKED";
+  } else if (tdiMdiPhosgeneSensitizationOrMissingScbaLotoLocked) {
+    action =
+      "lock_isocyanate_phosgene_line_break_until_scba_caustic_scrubber_and_loto_verified";
+    blockedReason =
+      "OSHA1910_1000_1910_147_TDI_MDI_5PPB_ISOCYANATE_ASTHMA_COCL2_EXPOSURE_OR_MISSING_CAUSTIC_SCRUBBER_SCBA_LOTO_LOCKED";
+  }
+
+  return {
+    policyCode:
+      "P247-TDI-MDI-ISOCYANATE-TDA-MDA-PHOSGENATION-ODCB-VACUUM-DISTILLATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PHOSGENE-AMINE-RATIO-OVERPRESSURE-WATER-UREA-TRIMERIZATION-EXOTHERM-AND-TDI-COCL2-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    phosgenatorOverpressureOrPhosgeneDeficitPreempted,
+    vacuumColumnTrimerizationOrWaterPolyureaExothermInterlocked,
+    tdiMdiPhosgeneSensitizationOrMissingScbaLotoLocked,
+    tdiMdiPhosgenationOperationPermitted,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipRtpHeaderExtensionRfc8285Rfc9335GuardInput {
+  sessionId: string;
+  extensionProfileHex: "0xBEDE" | "0x1000" | "0xC0DE" | "0xC2DE";
+  declaredExtensionHeaderWords32Bit: number;
+  remainingPacketPayloadBytes: number;
+  elementDeclaredLengthExceedsExtensionBoundary: boolean;
+  oneByteHeaderContainsReservedId15MidStreamOrIdAbove14: boolean;
+  sdpExtmapAllowMixedNegotiated: boolean;
+  twoByteElementPresentWithoutMixedNegotiation: boolean;
+  sdpCryptexNegotiated: boolean;
+  csrcCountCc: number;
+}
+
+export interface WebrtcSipRtpHeaderExtensionRfc8285Rfc9335GuardAssessment {
+  policyCode: "P248-WEBRTC-SIP-RTP-HEADER-EXTENSION-CRYPTEX-RFC8285-RFC9335-RFC3550-ONE-BYTE-TWO-BYTE-LENGTH-OVERREAD-EXTMAP-ALLOW-MIXED-ID15-SMUGGLING-AND-CRYPTEX-0XC0DE-DOWNGRADE-GUARD";
+  sessionId: string;
+  extensionHeaderWordOrElementOverreadBlocked: boolean;
+  extmapMixedId15OrUnnegotiatedTwoByteSmugglingBlocked: boolean;
+  cryptexPlaintextExtensionOrCsrcDowngradeBlocked: boolean;
+  rtpHeaderExtensionAccepted: boolean;
+  action:
+    | "drop_rfc8285_extension_word_or_element_length_overread_packet_in_0ms"
+    | "reject_unnegotiated_extmap_mixed_or_reserved_id15_extension_smuggling"
+    | "reject_rfc9335_cryptex_plaintext_0xbede_0x1000_or_csrc_downgrade_packet"
+    | "forward_verified_rfc8285_rfc9335_rtp_header_extension_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpHeaderExtensionCryptexRfc8285Rfc9335Rfc3550OneByteTwoByteLengthOverreadExtmapAllowMixedId15SmugglingAndCryptex0xC0deDowngradeGuard(
+  input: WebrtcSipRtpHeaderExtensionRfc8285Rfc9335GuardInput,
+): WebrtcSipRtpHeaderExtensionRfc8285Rfc9335GuardAssessment {
+  const declaredExtensionBytes = input.declaredExtensionHeaderWords32Bit * 4;
+  const extensionHeaderWordOrElementOverreadBlocked =
+    declaredExtensionBytes > input.remainingPacketPayloadBytes ||
+    input.elementDeclaredLengthExceedsExtensionBoundary;
+
+  const extmapMixedId15OrUnnegotiatedTwoByteSmugglingBlocked =
+    !extensionHeaderWordOrElementOverreadBlocked &&
+    (input.oneByteHeaderContainsReservedId15MidStreamOrIdAbove14 ||
+      (input.twoByteElementPresentWithoutMixedNegotiation &&
+        !input.sdpExtmapAllowMixedNegotiated));
+
+  const isPlaintextProfile =
+    input.extensionProfileHex === "0xBEDE" ||
+    input.extensionProfileHex === "0x1000";
+  const isOneByteCryptexOrPlaintext =
+    input.extensionProfileHex === "0xBEDE" ||
+    input.extensionProfileHex === "0xC0DE";
+  const cryptexPlaintextExtensionOrCsrcDowngradeBlocked =
+    !extensionHeaderWordOrElementOverreadBlocked &&
+    !extmapMixedId15OrUnnegotiatedTwoByteSmugglingBlocked &&
+    input.sdpCryptexNegotiated &&
+    (isPlaintextProfile ||
+      (input.csrcCountCc > 0 &&
+        input.extensionProfileHex !== "0xC0DE" &&
+        input.extensionProfileHex !== "0xC2DE") ||
+      (!isOneByteCryptexOrPlaintext &&
+        input.extensionProfileHex !== "0xC2DE"));
+
+  const rtpHeaderExtensionAccepted =
+    !extensionHeaderWordOrElementOverreadBlocked &&
+    !extmapMixedId15OrUnnegotiatedTwoByteSmugglingBlocked &&
+    !cryptexPlaintextExtensionOrCsrcDowngradeBlocked;
+
+  let action: WebrtcSipRtpHeaderExtensionRfc8285Rfc9335GuardAssessment["action"] =
+    "forward_verified_rfc8285_rfc9335_rtp_header_extension_packet";
+  let blockedReason = "none";
+
+  if (extensionHeaderWordOrElementOverreadBlocked) {
+    action =
+      "drop_rfc8285_extension_word_or_element_length_overread_packet_in_0ms";
+    blockedReason =
+      "RFC8285_SECTION_4_2_4_3_RTP_HEADER_EXTENSION_32BIT_WORD_OR_ELEMENT_LENGTH_OVERREAD_BLOCKED";
+  } else if (extmapMixedId15OrUnnegotiatedTwoByteSmugglingBlocked) {
+    action =
+      "reject_unnegotiated_extmap_mixed_or_reserved_id15_extension_smuggling";
+    blockedReason =
+      "RFC8285_SECTION_4_2_RESERVED_ID15_MIDSTREAM_SMUGGLING_OR_UNNEGOTIATED_EXTMAP_ALLOW_MIXED_BLOCKED";
+  } else if (cryptexPlaintextExtensionOrCsrcDowngradeBlocked) {
+    action =
+      "reject_rfc9335_cryptex_plaintext_0xbede_0x1000_or_csrc_downgrade_packet";
+    blockedReason =
+      "RFC9335_SECTION_5_CRYPTEX_PLAINTEXT_0XBEDE_0X1000_HEADER_EXTENSION_OR_CSRC_DOWNGRADE_BLOCKED";
+  }
+
+  return {
+    policyCode:
+      "P248-WEBRTC-SIP-RTP-HEADER-EXTENSION-CRYPTEX-RFC8285-RFC9335-RFC3550-ONE-BYTE-TWO-BYTE-LENGTH-OVERREAD-EXTMAP-ALLOW-MIXED-ID15-SMUGGLING-AND-CRYPTEX-0XC0DE-DOWNGRADE-GUARD",
+    sessionId: input.sessionId,
+    extensionHeaderWordOrElementOverreadBlocked,
+    extmapMixedId15OrUnnegotiatedTwoByteSmugglingBlocked,
+    cryptexPlaintextExtensionOrCsrcDowngradeBlocked,
+    rtpHeaderExtensionAccepted,
+    action,
+    blockedReason,
+  };
+}
+
 
 
 
