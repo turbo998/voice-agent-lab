@@ -24878,3 +24878,199 @@ export function evaluateWebrtcSipRtpRedRedundantAudioDataOpusLbrrRfc2198Rfc6716R
       blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
   };
 }
+
+// ============================================================================
+// Stage 134 (P261–P262): Maleic Anhydride (MAN) n-Butane VPO Oxidation &
+// Molten Salt Safety Guard + WebRTC/SIP RTP EVS (3GPP TS 26.445) & AMR-WB
+// (RFC 4867) ToC/CMR Desync & Compact/Header-Full Collision Guard
+// ============================================================================
+
+export interface MaleicAnhydrideManNButaneVpoOxidationMoltenSaltGuardInput {
+  sessionId: string;
+  reactorNButaneFeedMolPct: number;
+  vpoCatalystBedHotspotTempC: number;
+  moltenSaltCirculationPumpTripped: boolean;
+  absorberMaleicAcidConcentrationWtPct: number;
+  sublimerDustCollectorDeltaPKpa: number;
+  fumaricAcidExothermicIsomerizationDetected: boolean;
+  ambientMaleicAnhydrideVaporPpm: number;
+  lineBreakOrFlakerBaggingMaintenanceRequested: boolean;
+  heatedWaterWashFullFaceScbaAndDbbLotoVerified: boolean;
+}
+
+export interface MaleicAnhydrideManNButaneVpoOxidationMoltenSaltGuardAssessment {
+  policyCode: "P261-MALEIC-ANHYDRIDE-MAN-N-BUTANE-VAPOR-PHASE-VPO-SELECTIVE-OXIDATION-MOLTEN-SALT-NFPA69-NFPA652-APIRP521-OSHA1910119-OSHA19101000-BUTANE-LEL-FLAMMABILITY-MOLTEN-SALT-HOTSPOT-RUNAWAY-AND-MAN-SCBA-LOTO-GUARD";
+  sessionId: string;
+  butaneLelOrMoltenSaltHotspotRunawayPreempted: boolean;
+  maleicAcidIsomerizationOrSublimerDustExplosionInterlocked: boolean;
+  maleicAnhydrideSensitizerExposureOrMissingScbaLotoLocked: boolean;
+  manVpoOxidationOperationPermitted: boolean;
+  action:
+    | "trip_man_butane_feed_dbb_and_purge_n2_steam_in_0ms"
+    | "cut_man_column_heat_and_inert_sublimer_dust_collector"
+    | "lock_man_reactor_or_flaker_line_break_until_scba_and_dbb_loto_verified"
+    | "allow_verified_man_vpo_oxidation_and_recovery_operation";
+  blockedReason: string;
+}
+
+export function evaluateMaleicAnhydrideManNButaneVaporPhaseVpoSelectiveOxidationMoltenSaltNfpa69Nfpa652ApiRp521Osha1910119Osha19101000ButaneLelFlammabilityMoltenSaltHotspotRunawayAndManScbaLotoGuard(
+  input: MaleicAnhydrideManNButaneVpoOxidationMoltenSaltGuardInput
+): MaleicAnhydrideManNButaneVpoOxidationMoltenSaltGuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const butaneLelOrMoltenSaltHotspotRunawayPreempted =
+    input.reactorNButaneFeedMolPct >= 1.85 ||
+    input.vpoCatalystBedHotspotTempC >= 465.0 ||
+    input.moltenSaltCirculationPumpTripped;
+
+  if (butaneLelOrMoltenSaltHotspotRunawayPreempted) {
+    blockedReasons.push(
+      `man_vpo_butane_lel_or_molten_salt_hotspot_butane_${input.reactorNButaneFeedMolPct}molpct_hotspot_${input.vpoCatalystBedHotspotTempC}C_salt_trip_${input.moltenSaltCirculationPumpTripped}`
+    );
+  }
+
+  const maleicAcidIsomerizationOrSublimerDustExplosionInterlocked =
+    input.absorberMaleicAcidConcentrationWtPct >= 8.0 ||
+    input.sublimerDustCollectorDeltaPKpa >= 4.5 ||
+    input.fumaricAcidExothermicIsomerizationDetected;
+
+  if (maleicAcidIsomerizationOrSublimerDustExplosionInterlocked) {
+    blockedReasons.push(
+      `man_fumaric_isomerization_or_sublimer_dust_hazard_maleic_acid_${input.absorberMaleicAcidConcentrationWtPct}wtpct_dust_dp_${input.sublimerDustCollectorDeltaPKpa}kPa_fumaric_${input.fumaricAcidExothermicIsomerizationDetected}`
+    );
+  }
+
+  const maleicAnhydrideSensitizerExposureOrMissingScbaLotoLocked =
+    input.ambientMaleicAnhydrideVaporPpm >= 0.25 ||
+    (input.lineBreakOrFlakerBaggingMaintenanceRequested &&
+      !input.heatedWaterWashFullFaceScbaAndDbbLotoVerified);
+
+  if (maleicAnhydrideSensitizerExposureOrMissingScbaLotoLocked) {
+    blockedReasons.push(
+      `man_osha_pel_or_missing_scba_loto_vapor_${input.ambientMaleicAnhydrideVaporPpm}ppm_maint_${input.lineBreakOrFlakerBaggingMaintenanceRequested}_loto_${input.heatedWaterWashFullFaceScbaAndDbbLotoVerified}`
+    );
+  }
+
+  const manVpoOxidationOperationPermitted = blockedReasons.length === 0;
+
+  let action: MaleicAnhydrideManNButaneVpoOxidationMoltenSaltGuardAssessment["action"] =
+    "allow_verified_man_vpo_oxidation_and_recovery_operation";
+
+  if (butaneLelOrMoltenSaltHotspotRunawayPreempted) {
+    action = "trip_man_butane_feed_dbb_and_purge_n2_steam_in_0ms";
+  } else if (maleicAcidIsomerizationOrSublimerDustExplosionInterlocked) {
+    action = "cut_man_column_heat_and_inert_sublimer_dust_collector";
+  } else if (maleicAnhydrideSensitizerExposureOrMissingScbaLotoLocked) {
+    action =
+      "lock_man_reactor_or_flaker_line_break_until_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P261-MALEIC-ANHYDRIDE-MAN-N-BUTANE-VAPOR-PHASE-VPO-SELECTIVE-OXIDATION-MOLTEN-SALT-NFPA69-NFPA652-APIRP521-OSHA1910119-OSHA19101000-BUTANE-LEL-FLAMMABILITY-MOLTEN-SALT-HOTSPOT-RUNAWAY-AND-MAN-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    butaneLelOrMoltenSaltHotspotRunawayPreempted,
+    maleicAcidIsomerizationOrSublimerDustExplosionInterlocked,
+    maleicAnhydrideSensitizerExposureOrMissingScbaLotoLocked,
+    manVpoOxidationOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpEvsAmrWb3gppTs26445Rfc4867GuardInput {
+  sessionId: string;
+  tocDeclaredFrameCount: number;
+  tocCumulativeFrameBytes: number;
+  remainingRtpPayloadBytes: number;
+  containsIllegalOrReservedFrameTypeIndex: boolean;
+  evsCompactVsHeaderFullBitSizeCollisionAmbiguous: boolean;
+  amrWbOctetAlignModeMismatchDetected: boolean;
+  cmrModeSwitchesPerSecond: number;
+  requestedEvsBitrateKbpsUnderHighPacketLoss: number;
+  observedPacketLossPct: number;
+}
+
+export interface WebrtcSipRtpEvsAmrWb3gppTs26445Rfc4867GuardAssessment {
+  policyCode: "P262-WEBRTC-SIP-RTP-EVS-AMR-WB-3GPP-TS26445-RFC4867-TOC-CMR-HEADER-DESYNC-COMPACT-HEADER-FULL-SIZE-COLLISION-AND-BITRATE-SWITCH-AMPLIFICATION-GUARD";
+  sessionId: string;
+  malformedTocOrFrameLengthOverreadDropped: boolean;
+  evsCompactHeaderFullCollisionOrOctetAlignDesyncBlocked: boolean;
+  cmrOscillationFloodOrCongestionBitrateAmplificationClamped: boolean;
+  rtpEvsAmrWbAudioPacketAccepted: boolean;
+  action:
+    | "drop_evs_amrwb_malformed_toc_or_frame_length_overread_in_0ms"
+    | "reject_evs_compact_headerfull_collision_or_octet_align_desync"
+    | "clamp_spoofed_cmr_oscillation_and_enforce_congestion_safe_evs_mode"
+    | "forward_verified_evs_amrwb_rtp_audio_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpEvsAmrWb3gppTs26445Rfc4867TocCmrHeaderDesyncCompactHeaderFullSizeCollisionAndBitrateSwitchAmplificationGuard(
+  input: WebrtcSipRtpEvsAmrWb3gppTs26445Rfc4867GuardInput
+): WebrtcSipRtpEvsAmrWb3gppTs26445Rfc4867GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const malformedTocOrFrameLengthOverreadDropped =
+    input.tocDeclaredFrameCount <= 0 ||
+    input.tocDeclaredFrameCount > 12 ||
+    input.tocCumulativeFrameBytes <= 0 ||
+    input.tocCumulativeFrameBytes > input.remainingRtpPayloadBytes ||
+    input.containsIllegalOrReservedFrameTypeIndex;
+
+  if (malformedTocOrFrameLengthOverreadDropped) {
+    blockedReasons.push(
+      `evs_amrwb_toc_overread_or_reserved_ft_frames_${input.tocDeclaredFrameCount}_bytes_${input.tocCumulativeFrameBytes}_remaining_${input.remainingRtpPayloadBytes}_illegal_ft_${input.containsIllegalOrReservedFrameTypeIndex}`
+    );
+  }
+
+  const evsCompactHeaderFullCollisionOrOctetAlignDesyncBlocked =
+    input.evsCompactVsHeaderFullBitSizeCollisionAmbiguous ||
+    input.amrWbOctetAlignModeMismatchDetected;
+
+  if (evsCompactHeaderFullCollisionOrOctetAlignDesyncBlocked) {
+    blockedReasons.push(
+      `evs_compact_headerfull_or_octet_align_desync_collision_${input.evsCompactVsHeaderFullBitSizeCollisionAmbiguous}_octet_mismatch_${input.amrWbOctetAlignModeMismatchDetected}`
+    );
+  }
+
+  const cmrOscillationFloodOrCongestionBitrateAmplificationClamped =
+    input.cmrModeSwitchesPerSecond > 10 ||
+    (input.observedPacketLossPct >= 8.0 &&
+      input.requestedEvsBitrateKbpsUnderHighPacketLoss > 24.4);
+
+  if (cmrOscillationFloodOrCongestionBitrateAmplificationClamped) {
+    blockedReasons.push(
+      `evs_amrwb_cmr_oscillation_or_congestion_amplification_switches_${input.cmrModeSwitchesPerSecond}hz_loss_${input.observedPacketLossPct}pct_bitrate_${input.requestedEvsBitrateKbpsUnderHighPacketLoss}kbps`
+    );
+  }
+
+  const rtpEvsAmrWbAudioPacketAccepted = blockedReasons.length === 0;
+
+  let action: WebrtcSipRtpEvsAmrWb3gppTs26445Rfc4867GuardAssessment["action"] =
+    "forward_verified_evs_amrwb_rtp_audio_packet";
+
+  if (malformedTocOrFrameLengthOverreadDropped) {
+    action = "drop_evs_amrwb_malformed_toc_or_frame_length_overread_in_0ms";
+  } else if (evsCompactHeaderFullCollisionOrOctetAlignDesyncBlocked) {
+    action = "reject_evs_compact_headerfull_collision_or_octet_align_desync";
+  } else if (cmrOscillationFloodOrCongestionBitrateAmplificationClamped) {
+    action =
+      "clamp_spoofed_cmr_oscillation_and_enforce_congestion_safe_evs_mode";
+  }
+
+  return {
+    policyCode:
+      "P262-WEBRTC-SIP-RTP-EVS-AMR-WB-3GPP-TS26445-RFC4867-TOC-CMR-HEADER-DESYNC-COMPACT-HEADER-FULL-SIZE-COLLISION-AND-BITRATE-SWITCH-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    malformedTocOrFrameLengthOverreadDropped,
+    evsCompactHeaderFullCollisionOrOctetAlignDesyncBlocked,
+    cmrOscillationFloodOrCongestionBitrateAmplificationClamped,
+    rtpEvsAmrWbAudioPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
