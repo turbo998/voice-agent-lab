@@ -22683,6 +22683,203 @@ export function evaluateWebrtcSipRtcpXrExtendedReportsVoipMetricsRfc3611Rfc7002R
   };
 }
 
+// ============================================================================
+// Stage 123 · P239 — Adiponitrile (ADN) Butadiene Direct Hydrocyanation
+// (Ni(0) Phosphite Catalyst + Anhydrous HCN) & Hexamethylene Diamine (HMDA)
+// High-Pressure Hydrogenation (Raney Ni / Co + Liquid NH3) Safety Guard
+// (API RP 521 / NFPA 69 / OSHA 1910.119 / AIChE CCPS)
+// ============================================================================
+
+export interface AdiponitrileHmdaHydrocyanationHydrogenationGuardInput {
+  reactorUnitId: string;
+  hydrocyanationReactorTempCelsius: number;
+  hcnToButadieneOr3PnMolarRatio: number;
+  acidStabilizerSO2OrH3PO4Ppm: number;
+  causticNaOHCyanideScrubberActive: boolean;
+  isomerizationReactorMoisturePpm: number;
+  adnVacuumDistillationBottomTempCelsius: number;
+  hmdaHydrogenationPressureMpa: number;
+  ammoniaToAdnSolventWeightRatio: number;
+  ambientHcnPpm: number;
+  ambientNh3Ppm: number;
+  residualHydrogenMpa: number;
+  maintenanceValveOrSamplingRequested: boolean;
+  positivePressureScbaAndCyanideAntidoteKitVerified: boolean;
+}
+
+export interface AdiponitrileHmdaHydrocyanationHydrogenationGuardDecision {
+  policyCode: "P239-ADIPONITRILE-HMDA-HYDROCYANATION-HYDROGENATION-APIRP521-NFPA69-OSHA1910119-HCN-FEED-RATIO-EXOTHERM-3PENTENENITRILE-ISOMERIZATION-AND-HIGH-PRESSURE-AMMONIA-HMDA-SCBA-LOTO-GUARD";
+  reactorUnitId: string;
+  hcnFeedExothermOrPolymerizationRunawayTripped: boolean;
+  isomerizationHydrolysisOrAdnReboilerOvertempInterlocked: boolean;
+  hmdaHighPressureAutoclaveOrHcnNh3ScbaLotoLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "allow_adn_hmda_hydrocyanation_and_hydrogenation_train_operation"
+    | "trip_hcn_feed_inject_acid_stabilizer_and_route_to_alkaline_chlorination_scrubber"
+    | "trip_adn_reboiler_isolate_wet_isomerization_feed_and_purge_with_dry_n2"
+    | "lock_hmda_autoclave_loto_depressurize_h2_nh3_and_enforce_scba_cyanokit";
+  blockedReason?: string;
+}
+
+export function evaluateAdiponitrileHmdaHydrocyanationHydrogenationApiRp521Nfpa69Osha1910119HcnFeedRatioExotherm3PentenenitrileIsomerizationAndHighPressureAmmoniaHmdaScbaLotoGuard(
+  input: AdiponitrileHmdaHydrocyanationHydrogenationGuardInput,
+): AdiponitrileHmdaHydrocyanationHydrogenationGuardDecision {
+  const hcnFeedExothermOrPolymerizationRunawayTripped =
+    input.hydrocyanationReactorTempCelsius > 135.0 ||
+    input.hcnToButadieneOr3PnMolarRatio > 1.02 ||
+    input.acidStabilizerSO2OrH3PO4Ppm < 50 ||
+    !input.causticNaOHCyanideScrubberActive;
+
+  const isomerizationHydrolysisOrAdnReboilerOvertempInterlocked =
+    input.isomerizationReactorMoisturePpm > 80 ||
+    input.adnVacuumDistillationBottomTempCelsius > 195.0;
+
+  const hmdaHighPressureAutoclaveOrHcnNh3ScbaLotoLocked =
+    input.hmdaHydrogenationPressureMpa > 36.5 ||
+    input.ammoniaToAdnSolventWeightRatio < 2.0 ||
+    input.ambientHcnPpm >= 4.7 ||
+    input.ambientNh3Ppm >= 25.0 ||
+    (input.maintenanceValveOrSamplingRequested &&
+      (input.residualHydrogenMpa > 0.05 ||
+        !input.positivePressureScbaAndCyanideAntidoteKitVerified));
+
+  let action: AdiponitrileHmdaHydrocyanationHydrogenationGuardDecision["action"] =
+    "allow_adn_hmda_hydrocyanation_and_hydrogenation_train_operation";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | undefined;
+
+  if (hcnFeedExothermOrPolymerizationRunawayTripped) {
+    action =
+      "trip_hcn_feed_inject_acid_stabilizer_and_route_to_alkaline_chlorination_scrubber";
+    voiceCommandAllowed = false;
+    blockedReason = `API RP 521 / NFPA 69 / OSHA 1910.119 Adiponitrile (ADN) Butadiene Hydrocyanation Exotherm or Free-HCN Polymerization Runaway Preempted on ${input.reactorUnitId}: temp=${input.hydrocyanationReactorTempCelsius}°C (max 135.0°C), hcnMolarRatio=${input.hcnToButadieneOr3PnMolarRatio} (max 1.02), acidStabilizer=${input.acidStabilizerSO2OrH3PO4Ppm} ppm (min 50 ppm), naohScrubberActive=${input.causticNaOHCyanideScrubberActive}.`;
+  } else if (isomerizationHydrolysisOrAdnReboilerOvertempInterlocked) {
+    action =
+      "trip_adn_reboiler_isolate_wet_isomerization_feed_and_purge_with_dry_n2";
+    voiceCommandAllowed = false;
+    blockedReason = `AIChE CCPS / OSHA 1910.119 3-Pentenenitrile (3PN) / MGN Ni(0)-Phosphite-ZnCl2 Isomerization Catalyst Hydrolysis or ADN Vacuum Reboiler Decomposition Interlock on ${input.reactorUnitId}: moisture=${input.isomerizationReactorMoisturePpm} ppm (max 80 ppm), reboilerTemp=${input.adnVacuumDistillationBottomTempCelsius}°C (max 195.0°C).`;
+  } else if (hmdaHighPressureAutoclaveOrHcnNh3ScbaLotoLocked) {
+    action =
+      "lock_hmda_autoclave_loto_depressurize_h2_nh3_and_enforce_scba_cyanokit";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.147 High-Pressure ADN-to-HMDA Hydrogenation Autoclave or HCN/NH3 Toxic LOTO Locked on ${input.reactorUnitId}: h2Pressure=${input.hmdaHydrogenationPressureMpa} MPa (max 36.5 MPa), nh3ToAdnRatio=${input.ammoniaToAdnSolventWeightRatio} (min 2.0), HCN=${input.ambientHcnPpm} ppm (STEL <4.7 ppm), NH3=${input.ambientNh3Ppm} ppm (<25.0 ppm), residualH2=${input.residualHydrogenMpa} MPa, scbaCyanokit=${input.positivePressureScbaAndCyanideAntidoteKitVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P239-ADIPONITRILE-HMDA-HYDROCYANATION-HYDROGENATION-APIRP521-NFPA69-OSHA1910119-HCN-FEED-RATIO-EXOTHERM-3PENTENENITRILE-ISOMERIZATION-AND-HIGH-PRESSURE-AMMONIA-HMDA-SCBA-LOTO-GUARD",
+    reactorUnitId: input.reactorUnitId,
+    hcnFeedExothermOrPolymerizationRunawayTripped,
+    isomerizationHydrolysisOrAdnReboilerOvertempInterlocked,
+    hmdaHighPressureAutoclaveOrHcnNh3ScbaLotoLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+// ============================================================================
+// Stage 123 · P240 — WebRTC-HTTP Ingestion/Egress (RFC 9725 WHIP/WHEP),
+// Rapid RTP Synchronisation (RFC 6051), and SDP Generic Image Attributes
+// (RFC 6236 a=imageattr) Security Guard
+// ============================================================================
+
+export interface WebrtcWhipWhepRapidSyncImageattrGuardInput {
+  sessionId: string;
+  whipBearerTokenAuthenticated: boolean;
+  whipLocationOrLinkIceServerTargetsPrivateLoopbackOrMetadataIp: boolean;
+  tricklePatchContentType: string;
+  tricklePatchIceRestart: boolean;
+  tricklePatchIfMatchMatchesSessionEtag: boolean;
+  tricklePatchIfMatchWildcardStar: boolean;
+  rfc6051HeaderNtpMinusRtcpSrNtpMs: number;
+  rfc6051RapidSyncHeaderRatePerSecond: number;
+  rfc6051NtpEraRetrogradeOrZero: boolean;
+  imageattrMaxWidthPx: number;
+  imageattrMaxHeightPx: number;
+  imageattrStepPx: number;
+  imageattrSarOrParRatioOutOfBoundsOrZero: boolean;
+  imageattrWildcardPtConflictsWithExplicitPt: boolean;
+}
+
+export interface WebrtcWhipWhepRapidSyncImageattrGuardDecision {
+  policyCode: "P240-WEBRTC-WHIP-WHEP-RAPID-SYNC-IMAGEATTR-RFC9725-RFC6051-RFC6236-LINK-ICE-SERVER-SSRF-TRICKLE-PATCH-ETAG-MISMATCH-NTP-RAPID-SYNC-DRIFT-AND-IMAGEATTR-RESOLUTION-BOMB-GUARD";
+  sessionId: string;
+  whipSsrfLinkOrTricklePatchEtagRejected: boolean;
+  rfc6051RapidSyncClockJumpOrFloodStripped: boolean;
+  rfc6236ImageattrResolutionBombOrZeroStepClamped: boolean;
+  whipMediaSessionAccepted: boolean;
+  action:
+    | "allow_verified_rfc9725_whip_rfc6051_rapid_sync_and_rfc6236_imageattr_session"
+    | "reject_rfc9725_whip_whep_ssrf_link_or_etag_mismatched_trickle_patch_in_0ms"
+    | "strip_spoofed_rfc6051_rapid_sync_hdrext_and_anchor_to_verified_rtcp_sr"
+    | "clamp_rfc6236_imageattr_resolution_bounds_and_reject_zero_step_or_sar_div_zero";
+  blockedReason?: string;
+}
+
+export function evaluateWebrtcWhipWhepRapidSyncImageattrRfc9725Rfc6051Rfc6236LinkIceServerSsrfTricklePatchEtagMismatchNtpRapidSyncDriftAndImageattrResolutionBombGuard(
+  input: WebrtcWhipWhepRapidSyncImageattrGuardInput,
+): WebrtcWhipWhepRapidSyncImageattrGuardDecision {
+  const validTrickleEtag = input.tricklePatchIceRestart
+    ? input.tricklePatchIfMatchWildcardStar ||
+      input.tricklePatchIfMatchMatchesSessionEtag
+    : input.tricklePatchIfMatchMatchesSessionEtag &&
+      !input.tricklePatchIfMatchWildcardStar;
+
+  const whipSsrfLinkOrTricklePatchEtagRejected =
+    !input.whipBearerTokenAuthenticated ||
+    input.whipLocationOrLinkIceServerTargetsPrivateLoopbackOrMetadataIp ||
+    input.tricklePatchContentType !== "application/trickle-ice-sdpfrag" ||
+    !validTrickleEtag;
+
+  const rfc6051RapidSyncClockJumpOrFloodStripped =
+    Math.abs(input.rfc6051HeaderNtpMinusRtcpSrNtpMs) > 250 ||
+    input.rfc6051RapidSyncHeaderRatePerSecond > 20 ||
+    input.rfc6051NtpEraRetrogradeOrZero;
+
+  const rfc6236ImageattrResolutionBombOrZeroStepClamped =
+    input.imageattrMaxWidthPx * input.imageattrMaxHeightPx > 8294400 ||
+    input.imageattrStepPx <= 0 ||
+    input.imageattrSarOrParRatioOutOfBoundsOrZero ||
+    input.imageattrWildcardPtConflictsWithExplicitPt;
+
+  let action: WebrtcWhipWhepRapidSyncImageattrGuardDecision["action"] =
+    "allow_verified_rfc9725_whip_rfc6051_rapid_sync_and_rfc6236_imageattr_session";
+  let whipMediaSessionAccepted = true;
+  let blockedReason: string | undefined;
+
+  if (whipSsrfLinkOrTricklePatchEtagRejected) {
+    action =
+      "reject_rfc9725_whip_whep_ssrf_link_or_etag_mismatched_trickle_patch_in_0ms";
+    whipMediaSessionAccepted = false;
+    blockedReason = `RFC 9725 WHIP/WHEP Unauthenticated Request, Location/Link rel="ice-server" Private-IP SSRF or Trickle-ICE PATCH ETag/Content-Type Violation on ${input.sessionId}: bearerAuth=${input.whipBearerTokenAuthenticated}, privateIpSsrf=${input.whipLocationOrLinkIceServerTargetsPrivateLoopbackOrMetadataIp}, contentType=${input.tricklePatchContentType}, iceRestart=${input.tricklePatchIceRestart}, etagMatches=${input.tricklePatchIfMatchMatchesSessionEtag}, wildcardStar=${input.tricklePatchIfMatchWildcardStar}.`;
+  } else if (rfc6051RapidSyncClockJumpOrFloodStripped) {
+    action =
+      "strip_spoofed_rfc6051_rapid_sync_hdrext_and_anchor_to_verified_rtcp_sr";
+    whipMediaSessionAccepted = false;
+    blockedReason = `RFC 6051 Rapid Synchronisation of RTP Flows (urn:ietf:params:rtp-hdrext:ntp-64) Clock Skew (${input.rfc6051HeaderNtpMinusRtcpSrNtpMs}ms > ±250ms), Header Flood (${input.rfc6051RapidSyncHeaderRatePerSecond}/s > 20/s) or Zero/Retrograde NTP Era on ${input.sessionId}.`;
+  } else if (rfc6236ImageattrResolutionBombOrZeroStepClamped) {
+    action =
+      "clamp_rfc6236_imageattr_resolution_bounds_and_reject_zero_step_or_sar_div_zero";
+    whipMediaSessionAccepted = false;
+    blockedReason = `RFC 6236 SDP Generic Image Attributes (a=imageattr) Framebuffer Resolution Bomb (${input.imageattrMaxWidthPx}x${input.imageattrMaxHeightPx} > 4K UHD), Non-Positive Step (${input.imageattrStepPx}px), SAR/PAR Divide-by-Zero (${input.imageattrSarOrParRatioOutOfBoundsOrZero}) or Wildcard PT Conflict (${input.imageattrWildcardPtConflictsWithExplicitPt}) on ${input.sessionId}.`;
+  }
+
+  return {
+    policyCode:
+      "P240-WEBRTC-WHIP-WHEP-RAPID-SYNC-IMAGEATTR-RFC9725-RFC6051-RFC6236-LINK-ICE-SERVER-SSRF-TRICKLE-PATCH-ETAG-MISMATCH-NTP-RAPID-SYNC-DRIFT-AND-IMAGEATTR-RESOLUTION-BOMB-GUARD",
+    sessionId: input.sessionId,
+    whipSsrfLinkOrTricklePatchEtagRejected,
+    rfc6051RapidSyncClockJumpOrFloodStripped,
+    rfc6236ImageattrResolutionBombOrZeroStepClamped,
+    whipMediaSessionAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
