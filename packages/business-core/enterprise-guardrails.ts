@@ -26323,6 +26323,211 @@ export function evaluateWebrtcSipRtpVp9VideoPayloadRfc9628SsStructureNgoOverread
   };
 }
 
+export interface YellowPhosphorusSubmergedArcFurnacePhosphorusTrichlorideOxychlorideChlorinationNfpa400Nfpa69ApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  p4StorageWaterBlanketLevelCm: number;
+  p4FurnaceOffGasO2VolPct: number;
+  furnaceDomePressureKpaG: number;
+  pcl3ChlorinatorTempC: number;
+  coolingJacketMoistureLeakPpm: number;
+  pcl3FreeP4ResidueWtPct: number;
+  ambientPh3Ppm: number;
+  ambientPcl3OrPocl3Ppm: number;
+  ambientYellowPhosphorusMgPerM3: number;
+  alkalineVentScrubberAndCuso4WashStationVerified: boolean;
+  p4OrPcl3LineBreakRequested: boolean;
+  positivePressureScbaChemicalSuitAndDbbLotoVerified: boolean;
+}
+
+export interface YellowPhosphorusSubmergedArcFurnacePhosphorusTrichlorideOxychlorideChlorinationNfpa400Nfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P275-YELLOW-PHOSPHORUS-P4-SUBMERGED-ARC-FURNACE-PHOSPHORUS-TRICHLORIDE-PCL3-OXYCHLORIDE-POCL3-CHLORINATION-NFPA400-NFPA69-APIRP521-OSHA1910119-OSHA19101000-WATER-BLANKET-LOSS-P4-AUTOIGNITION-PCL3-WATER-VIOLENT-HYDROLYSIS-AND-PH3-POCL3-SCBA-LOTO-GUARD";
+  sessionId: string;
+  p4WaterBlanketLossOrFurnaceOffGasO2Preempted: boolean;
+  pcl3WaterHydrolysisOrOverchlorinationRunawayInterlocked: boolean;
+  osha19101000Ph3Pcl3P4OrScbaLotoLocked: boolean;
+  yellowPhosphorusAndPcl3OperationPermitted: boolean;
+  action:
+    | "flood_p4_storage_water_seal_inject_n2_purge_and_trip_furnace_electrodes_in_0ms"
+    | "isolate_pcl3_cooling_water_trip_cl2_feed_dbb_and_quench_with_dry_pcl3_reflux"
+    | "lock_p4_pcl3_train_until_alkaline_scrubber_cuso4_station_scba_and_dbb_loto_verified"
+    | "allow_verified_yellow_phosphorus_and_pcl3_pocl3_operation";
+  blockedReason: string;
+}
+
+export function evaluateYellowPhosphorusSubmergedArcFurnacePhosphorusTrichlorideOxychlorideChlorinationNfpa400Nfpa69ApiRp521Osha1910119Osha19101000WaterBlanketLossP4AutoignitionPcl3WaterViolentHydrolysisAndPh3Pocl3ScbaLotoGuard(
+  input: YellowPhosphorusSubmergedArcFurnacePhosphorusTrichlorideOxychlorideChlorinationNfpa400Nfpa69ApiRp521Osha1910119Osha19101000GuardInput
+): YellowPhosphorusSubmergedArcFurnacePhosphorusTrichlorideOxychlorideChlorinationNfpa400Nfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const p4WaterBlanketLossOrFurnaceOffGasO2Preempted =
+    input.p4StorageWaterBlanketLevelCm < 30.0 ||
+    input.p4FurnaceOffGasO2VolPct >= 1.0 ||
+    input.furnaceDomePressureKpaG < 0.5;
+
+  if (p4WaterBlanketLossOrFurnaceOffGasO2Preempted) {
+    blockedReasons.push(
+      `Yellow phosphorus (P4) water-blanket seal depletion (<30 cm, air autoignition at ~30 C), submerged-arc furnace CO/PH3 off-gas O2 >=1.0 vol%, or negative dome pressure air ingress (water_blanket=${input.p4StorageWaterBlanketLevelCm} cm, offgas_o2=${input.p4FurnaceOffGasO2VolPct} vol%, dome_p=${input.furnaceDomePressureKpaG} kPa(g))`
+    );
+  }
+
+  const pcl3WaterHydrolysisOrOverchlorinationRunawayInterlocked =
+    input.pcl3ChlorinatorTempC >= 82.0 ||
+    input.coolingJacketMoistureLeakPpm >= 50.0 ||
+    input.pcl3FreeP4ResidueWtPct < 0.2;
+
+  if (pcl3WaterHydrolysisOrOverchlorinationRunawayInterlocked) {
+    blockedReasons.push(
+      `PCl3/POCl3 chlorinator thermal runaway (>=82 C), jacket water-ingress violent HCl/PH3 hydrolysis (>=50 ppm H2O), or free P4 depletion (<0.2 wt%) causing solid PCl5 vent plugging (temp=${input.pcl3ChlorinatorTempC} C, moisture=${input.coolingJacketMoistureLeakPpm} ppm, free_p4=${input.pcl3FreeP4ResidueWtPct} wt%)`
+    );
+  }
+
+  const osha19101000Ph3Pcl3P4OrScbaLotoLocked =
+    input.ambientPh3Ppm >= 0.3 ||
+    input.ambientPcl3OrPocl3Ppm >= 0.1 ||
+    input.ambientYellowPhosphorusMgPerM3 >= 0.1 ||
+    !input.alkalineVentScrubberAndCuso4WashStationVerified ||
+    (input.p4OrPcl3LineBreakRequested &&
+      !input.positivePressureScbaChemicalSuitAndDbbLotoVerified);
+
+  if (osha19101000Ph3Pcl3P4OrScbaLotoLocked) {
+    blockedReasons.push(
+      `OSHA 1910.1000 PH3/PCl3/POCl3/P4 threshold breach or unverified alkaline scrubber, CuSO4 burn-neutralization station, or SCBA/DBB LOTO (ph3=${input.ambientPh3Ppm} ppm, pcl3_pocl3=${input.ambientPcl3OrPocl3Ppm} ppm, p4=${input.ambientYellowPhosphorusMgPerM3} mg/m3, scrubber_cuso4=${input.alkalineVentScrubberAndCuso4WashStationVerified}, line_break=${input.p4OrPcl3LineBreakRequested}, scba_loto=${input.positivePressureScbaChemicalSuitAndDbbLotoVerified})`
+    );
+  }
+
+  const yellowPhosphorusAndPcl3OperationPermitted =
+    !p4WaterBlanketLossOrFurnaceOffGasO2Preempted &&
+    !pcl3WaterHydrolysisOrOverchlorinationRunawayInterlocked &&
+    !osha19101000Ph3Pcl3P4OrScbaLotoLocked;
+
+  let action: YellowPhosphorusSubmergedArcFurnacePhosphorusTrichlorideOxychlorideChlorinationNfpa400Nfpa69ApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_yellow_phosphorus_and_pcl3_pocl3_operation";
+
+  if (p4WaterBlanketLossOrFurnaceOffGasO2Preempted) {
+    action =
+      "flood_p4_storage_water_seal_inject_n2_purge_and_trip_furnace_electrodes_in_0ms";
+  } else if (pcl3WaterHydrolysisOrOverchlorinationRunawayInterlocked) {
+    action =
+      "isolate_pcl3_cooling_water_trip_cl2_feed_dbb_and_quench_with_dry_pcl3_reflux";
+  } else if (osha19101000Ph3Pcl3P4OrScbaLotoLocked) {
+    action =
+      "lock_p4_pcl3_train_until_alkaline_scrubber_cuso4_station_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P275-YELLOW-PHOSPHORUS-P4-SUBMERGED-ARC-FURNACE-PHOSPHORUS-TRICHLORIDE-PCL3-OXYCHLORIDE-POCL3-CHLORINATION-NFPA400-NFPA69-APIRP521-OSHA1910119-OSHA19101000-WATER-BLANKET-LOSS-P4-AUTOIGNITION-PCL3-WATER-VIOLENT-HYDROLYSIS-AND-PH3-POCL3-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    p4WaterBlanketLossOrFurnaceOffGasO2Preempted,
+    pcl3WaterHydrolysisOrOverchlorinationRunawayInterlocked,
+    osha19101000Ph3Pcl3P4OrScbaLotoLocked,
+    yellowPhosphorusAndPcl3OperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpJpegXsUncompressedVideoRfc9134Rfc4175Smpte211020GuardInput {
+  sessionId: string;
+  declaredScanlineOrSliceBytes: number;
+  rtpPayloadBytes: number;
+  scanlineLengthNotMultipleOfPgroup: boolean;
+  finalScanlineContinuationBitDangling: boolean;
+  jpegXsKBitPacketizationModeViolation: boolean;
+  sliceOrPacketCounterGapWithoutCodestreamHeader: boolean;
+  scanlineCoordinateOutOfActiveFrameBounds: boolean;
+  uncompressedOrJpegXsBitrateMbps: number;
+  vrxBufferPackets: number;
+  activeFrameLumaSamples: number;
+}
+
+export interface WebrtcSipRtpJpegXsUncompressedVideoRfc9134Rfc4175Smpte211020GuardAssessment {
+  policyCode: "P276-WEBRTC-SIP-RTP-JPEG-XS-UNCOMPRESSED-VIDEO-RFC9134-RFC4175-SMPTE2110-20-SUBFRAME-PACEMAKER-LINE-OFFSET-OVERREAD-K-BIT-FRAGMENT-DESYNC-AND-PGROUP-STRIDE-AMPLIFICATION-GUARD";
+  sessionId: string;
+  jpegXsOrRfc4175HeaderOverreadDropped: boolean;
+  jpegXsSliceOrScanlineCoordinateDesyncBlocked: boolean;
+  smpte211021VrxOr4kBandwidthAmplificationClamped: boolean;
+  jpegXsOrSt2110VideoPacketAccepted: boolean;
+  action:
+    | "drop_jpeg_xs_or_rfc4175_scanline_overread_and_pgroup_misalignment_in_0ms"
+    | "discard_desynced_jpeg_xs_slice_or_out_of_bounds_scanline_and_emit_rtcp_pli"
+    | "clamp_smpte2110_vrx_pacemaker_and_4k_subframe_dma_bandwidth_budget"
+    | "forward_verified_jpeg_xs_or_smpte2110_rtp_video_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpJpegXsUncompressedVideoRfc9134Rfc4175Smpte211020SubframePacemakerLineOffsetOverreadKBitFragmentDesyncAndPgroupStrideAmplificationGuard(
+  input: WebrtcSipRtpJpegXsUncompressedVideoRfc9134Rfc4175Smpte211020GuardInput
+): WebrtcSipRtpJpegXsUncompressedVideoRfc9134Rfc4175Smpte211020GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const jpegXsOrRfc4175HeaderOverreadDropped =
+    input.declaredScanlineOrSliceBytes > input.rtpPayloadBytes ||
+    input.scanlineLengthNotMultipleOfPgroup ||
+    input.finalScanlineContinuationBitDangling;
+
+  if (jpegXsOrRfc4175HeaderOverreadDropped) {
+    blockedReasons.push(
+      `RFC 9134 JPEG XS or RFC 4175 / SMPTE ST 2110-20 scan-line/slice length overread, pgroup byte misalignment, or dangling C=1 continuation bit (declared=${input.declaredScanlineOrSliceBytes}B, rtp_payload=${input.rtpPayloadBytes}B, pgroup_misaligned=${input.scanlineLengthNotMultipleOfPgroup}, dangling_c=${input.finalScanlineContinuationBitDangling})`
+    );
+  }
+
+  const jpegXsSliceOrScanlineCoordinateDesyncBlocked =
+    input.jpegXsKBitPacketizationModeViolation ||
+    input.sliceOrPacketCounterGapWithoutCodestreamHeader ||
+    input.scanlineCoordinateOutOfActiveFrameBounds;
+
+  if (jpegXsSliceOrScanlineCoordinateDesyncBlocked) {
+    blockedReasons.push(
+      `RFC 9134 JPEG XS K-bit packetization mode violation, slice/packet counter gap without codestream header, or RFC 4175 Line_No/Offset coordinate out of active frame bounds (k_violation=${input.jpegXsKBitPacketizationModeViolation}, counter_gap=${input.sliceOrPacketCounterGapWithoutCodestreamHeader}, coord_oob=${input.scanlineCoordinateOutOfActiveFrameBounds})`
+    );
+  }
+
+  const smpte211021VrxOr4kBandwidthAmplificationClamped =
+    input.uncompressedOrJpegXsBitrateMbps > 3000 ||
+    input.vrxBufferPackets > 128 ||
+    input.activeFrameLumaSamples > 8294400;
+
+  if (smpte211021VrxOr4kBandwidthAmplificationClamped) {
+    blockedReasons.push(
+      `SMPTE ST 2110-21 VRX buffer / sub-frame DMA bandwidth ceiling (>3000 Mbps, >128 VRX packets, or >4K UHD luma samples) exceeded (bitrate_mbps=${input.uncompressedOrJpegXsBitrateMbps}, vrx_pkts=${input.vrxBufferPackets}, luma_samples=${input.activeFrameLumaSamples})`
+    );
+  }
+
+  const jpegXsOrSt2110VideoPacketAccepted =
+    !jpegXsOrRfc4175HeaderOverreadDropped &&
+    !jpegXsSliceOrScanlineCoordinateDesyncBlocked &&
+    !smpte211021VrxOr4kBandwidthAmplificationClamped;
+
+  let action: WebrtcSipRtpJpegXsUncompressedVideoRfc9134Rfc4175Smpte211020GuardAssessment["action"] =
+    "forward_verified_jpeg_xs_or_smpte2110_rtp_video_packet";
+
+  if (jpegXsOrRfc4175HeaderOverreadDropped) {
+    action =
+      "drop_jpeg_xs_or_rfc4175_scanline_overread_and_pgroup_misalignment_in_0ms";
+  } else if (jpegXsSliceOrScanlineCoordinateDesyncBlocked) {
+    action =
+      "discard_desynced_jpeg_xs_slice_or_out_of_bounds_scanline_and_emit_rtcp_pli";
+  } else if (smpte211021VrxOr4kBandwidthAmplificationClamped) {
+    action =
+      "clamp_smpte2110_vrx_pacemaker_and_4k_subframe_dma_bandwidth_budget";
+  }
+
+  return {
+    policyCode:
+      "P276-WEBRTC-SIP-RTP-JPEG-XS-UNCOMPRESSED-VIDEO-RFC9134-RFC4175-SMPTE2110-20-SUBFRAME-PACEMAKER-LINE-OFFSET-OVERREAD-K-BIT-FRAGMENT-DESYNC-AND-PGROUP-STRIDE-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    jpegXsOrRfc4175HeaderOverreadDropped,
+    jpegXsSliceOrScanlineCoordinateDesyncBlocked,
+    smpte211021VrxOr4kBandwidthAmplificationClamped,
+    jpegXsOrSt2110VideoPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
 
 
 
