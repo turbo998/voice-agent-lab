@@ -24236,3 +24236,229 @@ export function evaluateWebrtcSipRtpMidiSynthesizedAudioRfc6295Rfc4696DeltaTimeV
     blockedReason: "none",
   };
 }
+
+
+export interface PhenolAcetoneCumenePeroxidationChpAcidCleavageNfpa30ApiRp521Osha1910119Osha19101000ChpConcentratorSadtRunawaySulfuricAcidCleavageBoilupLossAndPhenolPeg300ScbaLotoGuardInput {
+  sessionId: string;
+  chpConcentratorTempC: number;
+  cumeneHydroperoxideWeightPercent: number;
+  concentratorPressureRiseKpaPerMin: number;
+  cleavageReactorTempC: number;
+  freeSulfuricAcidCatalystPpm: number;
+  acetoneToChpBackmixedMolarRatio: number;
+  ambientPhenolVaporPpm: number;
+  scrubberPositivePressureScbaAndPeg300ShowerVerified: boolean;
+  mechanicalDbbLotoVerified: boolean;
+  requestsLineBreakOrVesselEntry: boolean;
+}
+
+export interface PhenolAcetoneCumenePeroxidationChpAcidCleavageNfpa30ApiRp521Osha1910119Osha19101000ChpConcentratorSadtRunawaySulfuricAcidCleavageBoilupLossAndPhenolPeg300ScbaLotoGuardAssessment {
+  policyCode: "P255-PHENOL-ACETONE-CUMENE-PEROXIDATION-CHP-ACID-CLEAVAGE-NFPA30-APIRP521-OSHA1910119-OSHA19101000-CHP-CONCENTRATOR-SADT-RUNAWAY-SULFURIC-ACID-CLEAVAGE-BOILUP-LOSS-AND-PHENOL-PEG300-SCBA-LOTO-GUARD";
+  sessionId: string;
+  chpConcentratorThermalDecompositionRunawayPreempted: boolean;
+  chpAcidCleavageReactorBoilupLossOrAcidOverchargeInterlocked: boolean;
+  phenolDermalVaporExposureOrMissingPeg300ScbaLotoLocked: boolean;
+  phenolCumeneProcessOperationPermitted: boolean;
+  action:
+    | "trip_cumene_air_sparger_dbb_cut_steam_and_flood_cold_cumene_diluent_in_0ms"
+    | "trip_chp_cleavage_feed_dbb_and_inject_alkaline_phenate_neutralizer_quench"
+    | "lock_phenol_chp_cleavage_line_break_until_scba_peg_shower_and_loto_verified"
+    | "allow_verified_cumene_peroxidation_and_chp_acid_cleavage";
+  blockedReason:
+    | "chp_concentrator_sadt_exceeded_or_peroxide_weight_percent_thermal_runaway"
+    | "chp_acid_cleavage_reactor_overtemp_or_sulfuric_acid_overcharge_acetone_sink_loss"
+    | "phenol_vapor_dermal_hazard_or_missing_peg300_shower_scba_dbb_loto"
+    | "none";
+}
+
+export function evaluatePhenolAcetoneCumenePeroxidationChpAcidCleavageNfpa30ApiRp521Osha1910119Osha19101000ChpConcentratorSadtRunawaySulfuricAcidCleavageBoilupLossAndPhenolPeg300ScbaLotoGuard(
+  input: PhenolAcetoneCumenePeroxidationChpAcidCleavageNfpa30ApiRp521Osha1910119Osha19101000ChpConcentratorSadtRunawaySulfuricAcidCleavageBoilupLossAndPhenolPeg300ScbaLotoGuardInput
+): PhenolAcetoneCumenePeroxidationChpAcidCleavageNfpa30ApiRp521Osha1910119Osha19101000ChpConcentratorSadtRunawaySulfuricAcidCleavageBoilupLossAndPhenolPeg300ScbaLotoGuardAssessment {
+  const chpConcentratorThermalDecompositionRunawayPreempted =
+    input.chpConcentratorTempC > 115.0 ||
+    input.cumeneHydroperoxideWeightPercent > 83.0 ||
+    input.concentratorPressureRiseKpaPerMin > 32.0;
+
+  const chpAcidCleavageReactorBoilupLossOrAcidOverchargeInterlocked =
+    input.cleavageReactorTempC > 92.0 ||
+    input.freeSulfuricAcidCatalystPpm > 450.0 ||
+    input.acetoneToChpBackmixedMolarRatio < 1.2;
+
+  const phenolDermalVaporExposureOrMissingPeg300ScbaLotoLocked =
+    input.ambientPhenolVaporPpm >= 5.0 ||
+    (input.requestsLineBreakOrVesselEntry &&
+      (!input.scrubberPositivePressureScbaAndPeg300ShowerVerified ||
+        !input.mechanicalDbbLotoVerified));
+
+  if (chpConcentratorThermalDecompositionRunawayPreempted) {
+    return {
+      policyCode:
+        "P255-PHENOL-ACETONE-CUMENE-PEROXIDATION-CHP-ACID-CLEAVAGE-NFPA30-APIRP521-OSHA1910119-OSHA19101000-CHP-CONCENTRATOR-SADT-RUNAWAY-SULFURIC-ACID-CLEAVAGE-BOILUP-LOSS-AND-PHENOL-PEG300-SCBA-LOTO-GUARD",
+      sessionId: input.sessionId,
+      chpConcentratorThermalDecompositionRunawayPreempted,
+      chpAcidCleavageReactorBoilupLossOrAcidOverchargeInterlocked,
+      phenolDermalVaporExposureOrMissingPeg300ScbaLotoLocked,
+      phenolCumeneProcessOperationPermitted: false,
+      action:
+        "trip_cumene_air_sparger_dbb_cut_steam_and_flood_cold_cumene_diluent_in_0ms",
+      blockedReason:
+        "chp_concentrator_sadt_exceeded_or_peroxide_weight_percent_thermal_runaway",
+    };
+  }
+
+  if (chpAcidCleavageReactorBoilupLossOrAcidOverchargeInterlocked) {
+    return {
+      policyCode:
+        "P255-PHENOL-ACETONE-CUMENE-PEROXIDATION-CHP-ACID-CLEAVAGE-NFPA30-APIRP521-OSHA1910119-OSHA19101000-CHP-CONCENTRATOR-SADT-RUNAWAY-SULFURIC-ACID-CLEAVAGE-BOILUP-LOSS-AND-PHENOL-PEG300-SCBA-LOTO-GUARD",
+      sessionId: input.sessionId,
+      chpConcentratorThermalDecompositionRunawayPreempted,
+      chpAcidCleavageReactorBoilupLossOrAcidOverchargeInterlocked,
+      phenolDermalVaporExposureOrMissingPeg300ScbaLotoLocked,
+      phenolCumeneProcessOperationPermitted: false,
+      action:
+        "trip_chp_cleavage_feed_dbb_and_inject_alkaline_phenate_neutralizer_quench",
+      blockedReason:
+        "chp_acid_cleavage_reactor_overtemp_or_sulfuric_acid_overcharge_acetone_sink_loss",
+    };
+  }
+
+  if (phenolDermalVaporExposureOrMissingPeg300ScbaLotoLocked) {
+    return {
+      policyCode:
+        "P255-PHENOL-ACETONE-CUMENE-PEROXIDATION-CHP-ACID-CLEAVAGE-NFPA30-APIRP521-OSHA1910119-OSHA19101000-CHP-CONCENTRATOR-SADT-RUNAWAY-SULFURIC-ACID-CLEAVAGE-BOILUP-LOSS-AND-PHENOL-PEG300-SCBA-LOTO-GUARD",
+      sessionId: input.sessionId,
+      chpConcentratorThermalDecompositionRunawayPreempted,
+      chpAcidCleavageReactorBoilupLossOrAcidOverchargeInterlocked,
+      phenolDermalVaporExposureOrMissingPeg300ScbaLotoLocked,
+      phenolCumeneProcessOperationPermitted: false,
+      action:
+        "lock_phenol_chp_cleavage_line_break_until_scba_peg_shower_and_loto_verified",
+      blockedReason:
+        "phenol_vapor_dermal_hazard_or_missing_peg300_shower_scba_dbb_loto",
+    };
+  }
+
+  return {
+    policyCode:
+      "P255-PHENOL-ACETONE-CUMENE-PEROXIDATION-CHP-ACID-CLEAVAGE-NFPA30-APIRP521-OSHA1910119-OSHA19101000-CHP-CONCENTRATOR-SADT-RUNAWAY-SULFURIC-ACID-CLEAVAGE-BOILUP-LOSS-AND-PHENOL-PEG300-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    chpConcentratorThermalDecompositionRunawayPreempted: false,
+    chpAcidCleavageReactorBoilupLossOrAcidOverchargeInterlocked: false,
+    phenolDermalVaporExposureOrMissingPeg300ScbaLotoLocked: false,
+    phenolCumeneProcessOperationPermitted: true,
+    action: "allow_verified_cumene_peroxidation_and_chp_acid_cleavage",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpLinearPcmL16L24Aes67Rfc3551Rfc3190SampleFrameAlignmentTruncationMultiChannelSamplerateAmplificationBombAndPtpIeee1588ClockJumpGuardInput {
+  sessionId: string;
+  rtpPayloadBytes: number;
+  remainingPacketBytes: number;
+  bitsPerSample: 16 | 24;
+  declaredAudioChannels: number;
+  declaredSampleRateHz: number;
+  ptpClockOffsetMicros: number;
+  sdpTsRefclkGrandmasterVerified: boolean;
+}
+
+export interface WebrtcSipRtpLinearPcmL16L24Aes67Rfc3551Rfc3190SampleFrameAlignmentTruncationMultiChannelSamplerateAmplificationBombAndPtpIeee1588ClockJumpGuardAssessment {
+  policyCode: "P256-WEBRTC-SIP-RTP-LINEAR-PCM-L16-L24-AES67-RFC3551-RFC3190-SAMPLE-FRAME-ALIGNMENT-TRUNCATION-MULTI-CHANNEL-SAMPLERATE-AMPLIFICATION-BOMB-AND-PTP-IEEE1588-CLOCK-JUMP-GUARD";
+  sessionId: string;
+  pcmSampleFrameAlignmentTruncationOrOverreadDropped: boolean;
+  pcmChannelOrSampleRateAmplificationBombBlocked: boolean;
+  aes67PtpClockJumpOrSpoofedGrandmasterBlocked: boolean;
+  rtpLinearPcmPacketAccepted: boolean;
+  action:
+    | "drop_unaligned_or_overread_rfc3551_rfc3190_l16_l24_pcm_frame_in_0ms"
+    | "reject_uncompressed_pcm_channel_or_samplerate_amplification_bomb"
+    | "reject_aes67_ptp_clock_jump_or_spoofed_ts_refclk_grandmaster"
+    | "forward_verified_l16_l24_aes67_linear_pcm_packet";
+  blockedReason:
+    | "l16_l24_pcm_sample_frame_stride_misaligned_or_payload_overread"
+    | "uncompressed_pcm_channel_count_or_samplerate_exceeds_gateway_ceiling"
+    | "aes67_ptp_ieee1588_clock_offset_jump_or_unverified_ts_refclk_grandmaster"
+    | "none";
+}
+
+export function evaluateWebrtcSipRtpLinearPcmL16L24Aes67Rfc3551Rfc3190SampleFrameAlignmentTruncationMultiChannelSamplerateAmplificationBombAndPtpIeee1588ClockJumpGuard(
+  input: WebrtcSipRtpLinearPcmL16L24Aes67Rfc3551Rfc3190SampleFrameAlignmentTruncationMultiChannelSamplerateAmplificationBombAndPtpIeee1588ClockJumpGuardInput
+): WebrtcSipRtpLinearPcmL16L24Aes67Rfc3551Rfc3190SampleFrameAlignmentTruncationMultiChannelSamplerateAmplificationBombAndPtpIeee1588ClockJumpGuardAssessment {
+  const bytesPerSample = input.bitsPerSample / 8;
+  const frameStrideBytes =
+    bytesPerSample * Math.max(1, input.declaredAudioChannels);
+
+  const pcmSampleFrameAlignmentTruncationOrOverreadDropped =
+    input.rtpPayloadBytes <= 0 ||
+    input.rtpPayloadBytes > input.remainingPacketBytes ||
+    input.rtpPayloadBytes % frameStrideBytes !== 0;
+
+  const pcmChannelOrSampleRateAmplificationBombBlocked =
+    input.declaredAudioChannels < 1 ||
+    input.declaredAudioChannels > 8 ||
+    input.declaredSampleRateHz > 48000;
+
+  const aes67PtpClockJumpOrSpoofedGrandmasterBlocked =
+    Math.abs(input.ptpClockOffsetMicros) > 1000 ||
+    !input.sdpTsRefclkGrandmasterVerified;
+
+  if (pcmSampleFrameAlignmentTruncationOrOverreadDropped) {
+    return {
+      policyCode:
+        "P256-WEBRTC-SIP-RTP-LINEAR-PCM-L16-L24-AES67-RFC3551-RFC3190-SAMPLE-FRAME-ALIGNMENT-TRUNCATION-MULTI-CHANNEL-SAMPLERATE-AMPLIFICATION-BOMB-AND-PTP-IEEE1588-CLOCK-JUMP-GUARD",
+      sessionId: input.sessionId,
+      pcmSampleFrameAlignmentTruncationOrOverreadDropped,
+      pcmChannelOrSampleRateAmplificationBombBlocked,
+      aes67PtpClockJumpOrSpoofedGrandmasterBlocked,
+      rtpLinearPcmPacketAccepted: false,
+      action:
+        "drop_unaligned_or_overread_rfc3551_rfc3190_l16_l24_pcm_frame_in_0ms",
+      blockedReason:
+        "l16_l24_pcm_sample_frame_stride_misaligned_or_payload_overread",
+    };
+  }
+
+  if (pcmChannelOrSampleRateAmplificationBombBlocked) {
+    return {
+      policyCode:
+        "P256-WEBRTC-SIP-RTP-LINEAR-PCM-L16-L24-AES67-RFC3551-RFC3190-SAMPLE-FRAME-ALIGNMENT-TRUNCATION-MULTI-CHANNEL-SAMPLERATE-AMPLIFICATION-BOMB-AND-PTP-IEEE1588-CLOCK-JUMP-GUARD",
+      sessionId: input.sessionId,
+      pcmSampleFrameAlignmentTruncationOrOverreadDropped,
+      pcmChannelOrSampleRateAmplificationBombBlocked,
+      aes67PtpClockJumpOrSpoofedGrandmasterBlocked,
+      rtpLinearPcmPacketAccepted: false,
+      action:
+        "reject_uncompressed_pcm_channel_or_samplerate_amplification_bomb",
+      blockedReason:
+        "uncompressed_pcm_channel_count_or_samplerate_exceeds_gateway_ceiling",
+    };
+  }
+
+  if (aes67PtpClockJumpOrSpoofedGrandmasterBlocked) {
+    return {
+      policyCode:
+        "P256-WEBRTC-SIP-RTP-LINEAR-PCM-L16-L24-AES67-RFC3551-RFC3190-SAMPLE-FRAME-ALIGNMENT-TRUNCATION-MULTI-CHANNEL-SAMPLERATE-AMPLIFICATION-BOMB-AND-PTP-IEEE1588-CLOCK-JUMP-GUARD",
+      sessionId: input.sessionId,
+      pcmSampleFrameAlignmentTruncationOrOverreadDropped,
+      pcmChannelOrSampleRateAmplificationBombBlocked,
+      aes67PtpClockJumpOrSpoofedGrandmasterBlocked,
+      rtpLinearPcmPacketAccepted: false,
+      action:
+        "reject_aes67_ptp_clock_jump_or_spoofed_ts_refclk_grandmaster",
+      blockedReason:
+        "aes67_ptp_ieee1588_clock_offset_jump_or_unverified_ts_refclk_grandmaster",
+    };
+  }
+
+  return {
+    policyCode:
+      "P256-WEBRTC-SIP-RTP-LINEAR-PCM-L16-L24-AES67-RFC3551-RFC3190-SAMPLE-FRAME-ALIGNMENT-TRUNCATION-MULTI-CHANNEL-SAMPLERATE-AMPLIFICATION-BOMB-AND-PTP-IEEE1588-CLOCK-JUMP-GUARD",
+    sessionId: input.sessionId,
+    pcmSampleFrameAlignmentTruncationOrOverreadDropped: false,
+    pcmChannelOrSampleRateAmplificationBombBlocked: false,
+    aes67PtpClockJumpOrSpoofedGrandmasterBlocked: false,
+    rtpLinearPcmPacketAccepted: true,
+    action: "forward_verified_l16_l24_aes67_linear_pcm_packet",
+    blockedReason: "none",
+  };
+}
