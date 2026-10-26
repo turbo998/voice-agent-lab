@@ -22310,6 +22310,189 @@ export function evaluateWebrtcSipAv1RtpPayloadDependencyDescriptorAomAv1RtpSpecL
   };
 }
 
+// ============================================================================
+// Stage 121 · P235 — Polycarbonate (PC) Interfacial Phosgenation (BPA + COCl2)
+// & Methylene Chloride (DCM) Oligomer Condensation Safety Guard
+// (NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000 / OSHA 1910.1052)
+// ============================================================================
+
+export interface PolycarbonateInterfacialPhosgenationBpaDcmGuardInput {
+  reactorUnitId: string;
+  interfacialReactorTempC: number;
+  interfacialReactorPressureBarg: number;
+  causticScrubberNaohWtPct: number;
+  causticScrubberLiquidToGasRatioLPerM3: number;
+  ventStackPhosgenePpm: number;
+  phosgeneFeedIncreaseRequested: boolean;
+  aqueousPhaseNaohPh: number;
+  triethylamineCatalystExothermRateCPerMin: number;
+  dcmCentrifugeAqueousCarryoverWtPct: number;
+  ambientPhosgenePpm: number;
+  ambientMethyleneChloridePpm: number;
+  equipmentOpeningRequested: boolean;
+  causticHydrolysisNitrogenPurgeColorimetricTapeAndScbaLotoVerified: boolean;
+}
+
+export interface PolycarbonateInterfacialPhosgenationBpaDcmGuardDecision {
+  policyCode: "P235-POLYCARBONATE-INTERFACIAL-PHOSGENATION-BPA-DCM-NFPA69-APIRP521-OSHA1910119-OSHA19101052-PHOSGENE-BREAKTHROUGH-DCM-FLASHOVER-CAUSTIC-SCRUBBER-DEPLETION-AND-COCL2-DCM-SCBA-LOTO-GUARD";
+  reactorUnitId: string;
+  phosgeneBreakthroughDcmFlashoverOrScrubberDepletionPreempted: boolean;
+  interfacialPhImbalanceTeaExothermOrDcmEmulsionInterlocked: boolean;
+  phosgeneOrDcmExposureOrUnpurgedVesselOpeningLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "allow_normal_polycarbonate_interfacial_phosgenation"
+    | "trip_phosgene_dbb_route_vent_to_backup_caustic_ammonia_scrubber_and_activate_nh3_steam_curtain_in_0ms"
+    | "halt_tea_catalyst_dosing_stabilize_interfacial_naoh_ph_and_divert_dcm_emulsion"
+    | "lock_pc_phosgenation_unit_and_enforce_caustic_hydrolysis_purge_and_scba_loto";
+  blockedReason?: string;
+}
+
+export function evaluatePolycarbonateInterfacialPhosgenationBpaDcmNfpa69ApiRp521Osha1910119Osha19101052PhosgeneBreakthroughDcmFlashoverCausticScrubberDepletionAndCocl2DcmScbaLotoGuard(
+  input: PolycarbonateInterfacialPhosgenationBpaDcmGuardInput,
+): PolycarbonateInterfacialPhosgenationBpaDcmGuardDecision {
+  const phosgeneBreakthroughDcmFlashoverOrScrubberDepletionPreempted =
+    (input.interfacialReactorTempC > 44.0 ||
+      input.interfacialReactorPressureBarg > 3.8 ||
+      input.causticScrubberNaohWtPct < 8.0 ||
+      input.causticScrubberLiquidToGasRatioLPerM3 < 12.0 ||
+      input.ventStackPhosgenePpm >= 0.1) &&
+    input.phosgeneFeedIncreaseRequested;
+
+  const interfacialPhImbalanceTeaExothermOrDcmEmulsionInterlocked =
+    input.aqueousPhaseNaohPh < 11.2 ||
+    input.aqueousPhaseNaohPh > 13.8 ||
+    input.triethylamineCatalystExothermRateCPerMin > 1.8 ||
+    input.dcmCentrifugeAqueousCarryoverWtPct > 1.5;
+
+  const phosgeneOrDcmExposureOrUnpurgedVesselOpeningLocked =
+    input.ambientPhosgenePpm >= 0.1 ||
+    input.ambientMethyleneChloridePpm >= 25.0 ||
+    (input.equipmentOpeningRequested &&
+      !input.causticHydrolysisNitrogenPurgeColorimetricTapeAndScbaLotoVerified);
+
+  let action: PolycarbonateInterfacialPhosgenationBpaDcmGuardDecision["action"] =
+    "allow_normal_polycarbonate_interfacial_phosgenation";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | undefined;
+
+  if (phosgeneBreakthroughDcmFlashoverOrScrubberDepletionPreempted) {
+    action =
+      "trip_phosgene_dbb_route_vent_to_backup_caustic_ammonia_scrubber_and_activate_nh3_steam_curtain_in_0ms";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / OSHA 1910.119 Polycarbonate Interfacial Phosgenation DCM Flashover or Emergency Caustic Scrubber Depletion Preempted on ${input.reactorUnitId}: temp=${input.interfacialReactorTempC}°C (max 44.0°C, DCM bp 39.6°C), pressure=${input.interfacialReactorPressureBarg} barg (max 3.8 barg), scrubberNaOH=${input.causticScrubberNaohWtPct} wt% (min 8.0 wt%), L/G=${input.causticScrubberLiquidToGasRatioLPerM3} L/m³ (min 12.0), ventCOCl2=${input.ventStackPhosgenePpm} ppm (max <0.10 ppm).`;
+  } else if (interfacialPhImbalanceTeaExothermOrDcmEmulsionInterlocked) {
+    action =
+      "halt_tea_catalyst_dosing_stabilize_interfacial_naoh_ph_and_divert_dcm_emulsion";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.119 / API RP 521 Polycarbonate Interfacial Aqueous pH Imbalance, Triethylamine (TEA) Condensation Exotherm or DCM Centrifuge Emulsion Carryover Interlock on ${input.reactorUnitId}: pH=${input.aqueousPhaseNaohPh} (window [11.2, 13.8]), teaExotherm=${input.triethylamineCatalystExothermRateCPerMin} °C/min (max 1.8 °C/min), dcmWaterCarryover=${input.dcmCentrifugeAqueousCarryoverWtPct} wt% (max 1.5 wt%).`;
+  } else if (phosgeneOrDcmExposureOrUnpurgedVesselOpeningLocked) {
+    action =
+      "lock_pc_phosgenation_unit_and_enforce_caustic_hydrolysis_purge_and_scba_loto";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.1052 / 1910.147 Polycarbonate Phosgene (COCl2) / Methylene Chloride (DCM) Exposure or Unpurged Vessel Opening Locked on ${input.reactorUnitId}: COCl2=${input.ambientPhosgenePpm} ppm (PEL <0.10 ppm, IDLH 2 ppm), DCM=${input.ambientMethyleneChloridePpm} ppm (PEL <25.0 ppm), causticHydrolysisAndScbaLoto=${input.causticHydrolysisNitrogenPurgeColorimetricTapeAndScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P235-POLYCARBONATE-INTERFACIAL-PHOSGENATION-BPA-DCM-NFPA69-APIRP521-OSHA1910119-OSHA19101052-PHOSGENE-BREAKTHROUGH-DCM-FLASHOVER-CAUSTIC-SCRUBBER-DEPLETION-AND-COCL2-DCM-SCBA-LOTO-GUARD",
+    reactorUnitId: input.reactorUnitId,
+    phosgeneBreakthroughDcmFlashoverOrScrubberDepletionPreempted,
+    interfacialPhImbalanceTeaExothermOrDcmEmulsionInterlocked,
+    phosgeneOrDcmExposureOrUnpurgedVesselOpeningLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+// ============================================================================
+// Stage 121 · P236 — WebRTC & SIP RTP Header Extensions: Absolute Capture Time
+// (abs-capture-time), Playout Delay (playout-delay) & 3GPP TS 26.114 CVO Guard
+// (RFC 5285 / 3GPP TS 26.114 § 6.2.3 / WebRTC abs-capture-time & playout-delay)
+// ============================================================================
+
+export interface WebrtcSipRtpAbsCaptureTimePlayoutDelayCvoGuardInput {
+  sessionId: string;
+  absCaptureTimeExtensionLengthBytes: number;
+  playoutDelayMinMs: number;
+  playoutDelayMaxMs: number;
+  playoutDelayOscillationsPerSecond: number;
+  absCaptureTimestampNtpSkewMs: number;
+  absCaptureClockOffsetSignFlipOrInvalidQ3232: boolean;
+  cvoHighNibbleReservedBitsNonZero: boolean;
+  cvoRotationFlipsPerSecond: number;
+}
+
+export interface WebrtcSipRtpAbsCaptureTimePlayoutDelayCvoGuardDecision {
+  policyCode: "P236-WEBRTC-SIP-RTP-ABS-CAPTURE-TIME-PLAYOUT-DELAY-CVO-RFC5285-TS26114-UQ3232-CLOCK-OFFSET-OVERFLOW-JITTER-BUFFER-FREEZE-DOS-AND-VIDEO-ORIENTATION-THRASH-GUARD";
+  sessionId: string;
+  absCaptureTimeLengthInvalidOrPlayoutDelayBufferFreezeDropped: boolean;
+  absCaptureTimestampNtpSkewOrClockOffsetClamped: boolean;
+  cvoReservedBitSmugglingOrRotationThrashSanitized: boolean;
+  rtpCapturePlayoutCvoExtensionsAccepted: boolean;
+  action:
+    | "allow_normal_abs_capture_time_playout_delay_and_cvo_extensions"
+    | "strip_malformed_abs_capture_time_or_playout_delay_jitter_buffer_dos_in_0ms"
+    | "rebase_abs_capture_time_to_local_monotonic_ntp_and_zero_untrusted_clock_offset"
+    | "mask_cvo_reserved_bits_and_lock_video_orientation_hysteresis";
+  blockedReason?: string;
+}
+
+export function evaluateWebrtcSipRtpAbsCaptureTimePlayoutDelayCvoRfc5285Ts26114Uq3232ClockOffsetOverflowJitterBufferFreezeDosAndVideoOrientationThrashGuard(
+  input: WebrtcSipRtpAbsCaptureTimePlayoutDelayCvoGuardInput,
+): WebrtcSipRtpAbsCaptureTimePlayoutDelayCvoGuardDecision {
+  const absCaptureTimeLengthInvalidOrPlayoutDelayBufferFreezeDropped =
+    (input.absCaptureTimeExtensionLengthBytes !== 0 &&
+      input.absCaptureTimeExtensionLengthBytes !== 8 &&
+      input.absCaptureTimeExtensionLengthBytes !== 16) ||
+    input.playoutDelayMinMs > input.playoutDelayMaxMs ||
+    input.playoutDelayMinMs > 2000 ||
+    input.playoutDelayOscillationsPerSecond > 5;
+
+  const absCaptureTimestampNtpSkewOrClockOffsetClamped =
+    Math.abs(input.absCaptureTimestampNtpSkewMs) > 5000 ||
+    input.absCaptureClockOffsetSignFlipOrInvalidQ3232;
+
+  const cvoReservedBitSmugglingOrRotationThrashSanitized =
+    input.cvoHighNibbleReservedBitsNonZero ||
+    input.cvoRotationFlipsPerSecond > 4;
+
+  let action: WebrtcSipRtpAbsCaptureTimePlayoutDelayCvoGuardDecision["action"] =
+    "allow_normal_abs_capture_time_playout_delay_and_cvo_extensions";
+  let rtpCapturePlayoutCvoExtensionsAccepted = true;
+  let blockedReason: string | undefined;
+
+  if (absCaptureTimeLengthInvalidOrPlayoutDelayBufferFreezeDropped) {
+    action =
+      "strip_malformed_abs_capture_time_or_playout_delay_jitter_buffer_dos_in_0ms";
+    rtpCapturePlayoutCvoExtensionsAccepted = false;
+    blockedReason = `RFC 5285 / WebRTC abs-capture-time & playout-delay Malformed Extension Length (${input.absCaptureTimeExtensionLengthBytes}B != 8/16B) or Jitter-Buffer Starvation/Freeze DoS (min=${input.playoutDelayMinMs}ms, max=${input.playoutDelayMaxMs}ms, osc=${input.playoutDelayOscillationsPerSecond}/s) on ${input.sessionId}.`;
+  } else if (absCaptureTimestampNtpSkewOrClockOffsetClamped) {
+    action =
+      "rebase_abs_capture_time_to_local_monotonic_ntp_and_zero_untrusted_clock_offset";
+    rtpCapturePlayoutCvoExtensionsAccepted = false;
+    blockedReason = `WebRTC abs-capture-time UQ32.32 NTP Timestamp Skew (${input.absCaptureTimestampNtpSkewMs}ms > ±5000ms) or Q32.32 estimated_capture_clock_offset Sign-Flip Desync on ${input.sessionId}.`;
+  } else if (cvoReservedBitSmugglingOrRotationThrashSanitized) {
+    action = "mask_cvo_reserved_bits_and_lock_video_orientation_hysteresis";
+    rtpCapturePlayoutCvoExtensionsAccepted = false;
+    blockedReason = `3GPP TS 26.114 § 6.2.3 Coordination of Video Orientation (CVO) Reserved High-Nibble Covert Channel (${input.cvoHighNibbleReservedBitsNonZero}) or Rotation Thrashing (${input.cvoRotationFlipsPerSecond} flips/s > 4/s) on ${input.sessionId}.`;
+  }
+
+  return {
+    policyCode:
+      "P236-WEBRTC-SIP-RTP-ABS-CAPTURE-TIME-PLAYOUT-DELAY-CVO-RFC5285-TS26114-UQ3232-CLOCK-OFFSET-OVERFLOW-JITTER-BUFFER-FREEZE-DOS-AND-VIDEO-ORIENTATION-THRASH-GUARD",
+    sessionId: input.sessionId,
+    absCaptureTimeLengthInvalidOrPlayoutDelayBufferFreezeDropped,
+    absCaptureTimestampNtpSkewOrClockOffsetClamped,
+    cvoReservedBitSmugglingOrRotationThrashSanitized,
+    rtpCapturePlayoutCvoExtensionsAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
