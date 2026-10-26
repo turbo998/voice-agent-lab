@@ -25263,4 +25263,208 @@ export function evaluateWebrtcSipRohcHeaderCompressionRtpDtlsStunDemuxRfc3095Rfc
   };
 }
 
+// ============================================================================
+// Stage 136 (P265–P266):
+// - P265: Chlor-Alkali Membrane Cell Electrolysis & Chlorine (Cl2) / Hydrogen (H2)
+//         Synthesis Safety Guard (NFPA 69 / Euro Chlor GEST / API RP 521 /
+//         OSHA 1910.119 / OSHA 1910.1000)
+// - P266: WebRTC & SIP 3GPP Immersive Voice and Audio Services (IVAS 3GPP TS 26.253)
+//         & Ambisonics Spatial Audio (RFC 8486 / RFC 8285) Safety Guard
+// ============================================================================
+
+export interface ChlorAlkaliMembraneCellElectrolysisChlorineHydrogenNfpa69EuroChlorApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  hydrogenInChlorineGasVolPct: number;
+  membraneDifferentialPressureLostOrPinholed: boolean;
+  anolyteBrinePh: number;
+  liquidChlorineNcl3Ppm: number;
+  feedBrineAmmoniumMgPerL: number;
+  driedChlorineMoisturePpm: number;
+  ambientChlorinePpm: number;
+  causticHypochloriteScrubberCirculationVerified: boolean;
+  cellRoomOrCl2HeaderLineBreakRequested: boolean;
+  positivePressureScbaVitonSuitAndDbbLotoVerified: boolean;
+}
+
+export interface ChlorAlkaliMembraneCellElectrolysisChlorineHydrogenNfpa69EuroChlorApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P265-CHLOR-ALKALI-MEMBRANE-CELL-ELECTROLYSIS-CHLORINE-HYDROGEN-SYNTHESIS-NFPA69-EUROCHLOR-APIRP521-OSHA1910119-OSHA19101000-H2-IN-CL2-EXPLOSIVE-ENVELOPE-NCL3-LIQUID-DETONATION-AND-CAUSTIC-HYPO-SCRUBBER-SCBA-LOTO-GUARD";
+  sessionId: string;
+  h2InCl2ExplosiveEnvelopeOrMembraneBreachPreempted: boolean;
+  ncl3LiquidChlorineDetonationOrWetCl2CorrosionInterlocked: boolean;
+  osha19101000Cl2ExposureOrScrubberScbaLotoLocked: boolean;
+  chlorAlkaliElectrolysisOperationPermitted: boolean;
+  action:
+    | "trip_electrolyzer_dc_rectifier_and_flood_chlorine_header_with_n2_in_0ms"
+    | "isolate_liquid_cl2_vaporizer_activate_ncl3_destruction_and_switch_h2so4_dryer"
+    | "lock_cl2_cell_header_until_caustic_scrubber_scba_and_dbb_loto_verified"
+    | "allow_verified_chlor_alkali_membrane_electrolysis_operation";
+  blockedReason: string;
+}
+
+export function evaluateChlorAlkaliMembraneCellElectrolysisChlorineHydrogenSynthesisNfpa69EuroChlorApiRp521Osha1910119Osha19101000H2InCl2ExplosiveEnvelopeNcl3LiquidDetonationAndCausticHypoScrubberScbaLotoGuard(
+  input: ChlorAlkaliMembraneCellElectrolysisChlorineHydrogenNfpa69EuroChlorApiRp521Osha1910119Osha19101000GuardInput
+): ChlorAlkaliMembraneCellElectrolysisChlorineHydrogenNfpa69EuroChlorApiRp521Osha1910119Osha19101000GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const h2InCl2ExplosiveEnvelopeOrMembraneBreachPreempted =
+    input.hydrogenInChlorineGasVolPct >= 3.5 ||
+    input.membraneDifferentialPressureLostOrPinholed ||
+    input.anolyteBrinePh < 1.8;
+
+  if (h2InCl2ExplosiveEnvelopeOrMembraneBreachPreempted) {
+    blockedReasons.push(
+      `h2_in_cl2_explosive_or_membrane_breach_h2_${input.hydrogenInChlorineGasVolPct}volpct_membrane_dp_loss_${input.membraneDifferentialPressureLostOrPinholed}_anolyte_ph_${input.anolyteBrinePh}`
+    );
+  }
+
+  const ncl3LiquidChlorineDetonationOrWetCl2CorrosionInterlocked =
+    input.liquidChlorineNcl3Ppm >= 20.0 ||
+    input.feedBrineAmmoniumMgPerL >= 2.0 ||
+    input.driedChlorineMoisturePpm >= 40.0;
+
+  if (ncl3LiquidChlorineDetonationOrWetCl2CorrosionInterlocked) {
+    blockedReasons.push(
+      `ncl3_detonation_or_moisture_carryover_ncl3_${input.liquidChlorineNcl3Ppm}ppm_nh4_${input.feedBrineAmmoniumMgPerL}mgL_h2o_${input.driedChlorineMoisturePpm}ppm`
+    );
+  }
+
+  const osha19101000Cl2ExposureOrScrubberScbaLotoLocked =
+    input.ambientChlorinePpm >= 0.5 ||
+    !input.causticHypochloriteScrubberCirculationVerified ||
+    (input.cellRoomOrCl2HeaderLineBreakRequested &&
+      !input.positivePressureScbaVitonSuitAndDbbLotoVerified);
+
+  if (osha19101000Cl2ExposureOrScrubberScbaLotoLocked) {
+    blockedReasons.push(
+      `osha_1910_1000_cl2_or_scrubber_loto_lock_cl2_${input.ambientChlorinePpm}ppm_scrubber_${input.causticHypochloriteScrubberCirculationVerified}_linebreak_${input.cellRoomOrCl2HeaderLineBreakRequested}_scba_loto_${input.positivePressureScbaVitonSuitAndDbbLotoVerified}`
+    );
+  }
+
+  const chlorAlkaliElectrolysisOperationPermitted = blockedReasons.length === 0;
+
+  let action: ChlorAlkaliMembraneCellElectrolysisChlorineHydrogenNfpa69EuroChlorApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_chlor_alkali_membrane_electrolysis_operation";
+
+  if (h2InCl2ExplosiveEnvelopeOrMembraneBreachPreempted) {
+    action =
+      "trip_electrolyzer_dc_rectifier_and_flood_chlorine_header_with_n2_in_0ms";
+  } else if (ncl3LiquidChlorineDetonationOrWetCl2CorrosionInterlocked) {
+    action =
+      "isolate_liquid_cl2_vaporizer_activate_ncl3_destruction_and_switch_h2so4_dryer";
+  } else if (osha19101000Cl2ExposureOrScrubberScbaLotoLocked) {
+    action =
+      "lock_cl2_cell_header_until_caustic_scrubber_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P265-CHLOR-ALKALI-MEMBRANE-CELL-ELECTROLYSIS-CHLORINE-HYDROGEN-SYNTHESIS-NFPA69-EUROCHLOR-APIRP521-OSHA1910119-OSHA19101000-H2-IN-CL2-EXPLOSIVE-ENVELOPE-NCL3-LIQUID-DETONATION-AND-CAUSTIC-HYPO-SCRUBBER-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    h2InCl2ExplosiveEnvelopeOrMembraneBreachPreempted,
+    ncl3LiquidChlorineDetonationOrWetCl2CorrosionInterlocked,
+    osha19101000Cl2ExposureOrScrubberScbaLotoLocked,
+    chlorAlkaliElectrolysisOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSip3gppIvasImmersiveVoiceAudioServicesAmbisonics3gppTs26253Rfc8486Rfc8285GuardInput {
+  sessionId: string;
+  ivasIsmObjectCount: number;
+  sbaAmbisonicsOrder: number;
+  declaredDemixingMatrixAndMetadataBytes: number;
+  remainingPayloadBytes: number;
+  headTrackingQuaternionNorm: number;
+  nanOrInfSpatialAzimuthElevationDetected: boolean;
+  unconsentedRoomGeometryOr6DofPoseTelemetryPresent: boolean;
+  masaSpatialCodingBitrateSharePct: number;
+}
+
+export interface WebrtcSip3gppIvasImmersiveVoiceAudioServicesAmbisonics3gppTs26253Rfc8486Rfc8285GuardAssessment {
+  policyCode: "P266-WEBRTC-SIP-3GPP-IVAS-IMMERSIVE-VOICE-AUDIO-SERVICES-AMBISONICS-3GPPTS26253-RFC8486-RFC8285-ISM-OBJECT-COUNT-HOA-ORDER-OVERREAD-NON-UNIT-QUATERNION-NAN-INF-BINAURAL-DSP-CRASH-AND-ROOM-ACOUSTICS-GEOLOCATION-EXFILTRATION-GUARD";
+  sessionId: string;
+  ivasIsmOrHoaDemixingMatrixOverreadDropped: boolean;
+  nonUnitQuaternionOrNanInfBinauralDspBlocked: boolean;
+  unconsentedRoomGeometryOrMasaOverheadClamped: boolean;
+  ivasImmersiveAudioPacketAccepted: boolean;
+  action:
+    | "drop_ivas_ambisonics_channel_order_or_demixing_matrix_overread_in_0ms"
+    | "reject_non_unit_quaternion_or_nan_inf_binaural_hrir_frame"
+    | "strip_unconsented_room_geometry_6dof_telemetry_and_clamp_masa_metadata"
+    | "forward_verified_ivas_and_ambisonics_spatial_voice_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSip3gppIvasImmersiveVoiceAudioServicesAmbisonics3gppTs26253Rfc8486Rfc8285IsmObjectCountHoaOrderOverreadNonUnitQuaternionNanInfBinauralDspCrashAndRoomAcousticsGeolocationExfiltrationGuard(
+  input: WebrtcSip3gppIvasImmersiveVoiceAudioServicesAmbisonics3gppTs26253Rfc8486Rfc8285GuardInput
+): WebrtcSip3gppIvasImmersiveVoiceAudioServicesAmbisonics3gppTs26253Rfc8486Rfc8285GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const ivasIsmOrHoaDemixingMatrixOverreadDropped =
+    input.ivasIsmObjectCount < 0 ||
+    input.ivasIsmObjectCount > 4 ||
+    input.sbaAmbisonicsOrder < 0 ||
+    input.sbaAmbisonicsOrder > 3 ||
+    input.declaredDemixingMatrixAndMetadataBytes <= 0 ||
+    input.declaredDemixingMatrixAndMetadataBytes > input.remainingPayloadBytes;
+
+  if (ivasIsmOrHoaDemixingMatrixOverreadDropped) {
+    blockedReasons.push(
+      `ivas_ism_hoa_or_demixing_overread_ism_${input.ivasIsmObjectCount}_hoa_order_${input.sbaAmbisonicsOrder}_matrix_${input.declaredDemixingMatrixAndMetadataBytes}B_rem_${input.remainingPayloadBytes}B`
+    );
+  }
+
+  const nonUnitQuaternionOrNanInfBinauralDspBlocked =
+    !Number.isFinite(input.headTrackingQuaternionNorm) ||
+    Math.abs(input.headTrackingQuaternionNorm - 1.0) > 0.02 ||
+    input.nanOrInfSpatialAzimuthElevationDetected;
+
+  if (nonUnitQuaternionOrNanInfBinauralDspBlocked) {
+    blockedReasons.push(
+      `non_unit_quaternion_or_nan_inf_spatial_norm_${input.headTrackingQuaternionNorm}_nan_inf_${input.nanOrInfSpatialAzimuthElevationDetected}`
+    );
+  }
+
+  const unconsentedRoomGeometryOrMasaOverheadClamped =
+    input.unconsentedRoomGeometryOr6DofPoseTelemetryPresent ||
+    input.masaSpatialCodingBitrateSharePct > 35.0;
+
+  if (unconsentedRoomGeometryOrMasaOverheadClamped) {
+    blockedReasons.push(
+      `unconsented_room_geometry_or_masa_overhead_telemetry_${input.unconsentedRoomGeometryOr6DofPoseTelemetryPresent}_masa_share_${input.masaSpatialCodingBitrateSharePct}pct`
+    );
+  }
+
+  const ivasImmersiveAudioPacketAccepted = blockedReasons.length === 0;
+
+  let action: WebrtcSip3gppIvasImmersiveVoiceAudioServicesAmbisonics3gppTs26253Rfc8486Rfc8285GuardAssessment["action"] =
+    "forward_verified_ivas_and_ambisonics_spatial_voice_packet";
+
+  if (ivasIsmOrHoaDemixingMatrixOverreadDropped) {
+    action =
+      "drop_ivas_ambisonics_channel_order_or_demixing_matrix_overread_in_0ms";
+  } else if (nonUnitQuaternionOrNanInfBinauralDspBlocked) {
+    action = "reject_non_unit_quaternion_or_nan_inf_binaural_hrir_frame";
+  } else if (unconsentedRoomGeometryOrMasaOverheadClamped) {
+    action =
+      "strip_unconsented_room_geometry_6dof_telemetry_and_clamp_masa_metadata";
+  }
+
+  return {
+    policyCode:
+      "P266-WEBRTC-SIP-3GPP-IVAS-IMMERSIVE-VOICE-AUDIO-SERVICES-AMBISONICS-3GPPTS26253-RFC8486-RFC8285-ISM-OBJECT-COUNT-HOA-ORDER-OVERREAD-NON-UNIT-QUATERNION-NAN-INF-BINAURAL-DSP-CRASH-AND-ROOM-ACOUSTICS-GEOLOCATION-EXFILTRATION-GUARD",
+    sessionId: input.sessionId,
+    ivasIsmOrHoaDemixingMatrixOverreadDropped,
+    nonUnitQuaternionOrNanInfBinauralDspBlocked,
+    unconsentedRoomGeometryOrMasaOverheadClamped,
+    ivasImmersiveAudioPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
 
