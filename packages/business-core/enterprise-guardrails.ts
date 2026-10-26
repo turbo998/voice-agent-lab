@@ -26528,6 +26528,211 @@ export function evaluateWebrtcSipRtpJpegXsUncompressedVideoRfc9134Rfc4175Smpte21
   };
 }
 
+export interface CaprolactamCyclohexaneAirOxidationBeckmannOleumRearrangementNfpa30Nfpa69ApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  cyclohexaneOxidationOffGasO2VolPct: number;
+  cyclohexaneOxidationReactorTempC: number;
+  cyclohexaneBellowsOrFlangeLeakDetected: boolean;
+  beckmannCirculationTempC: number;
+  oximeFeedMoistureWtPct: number;
+  rearrangementCirculationCoolerPumpTripped: boolean;
+  hydroxylamineSulfateSolutionTempC: number;
+  ambientSo2Ppm: number;
+  ambientOleumOrH2so4MistMgPerM3: number;
+  ammoniaCausticTailGasScrubberVerified: boolean;
+  caprolactamOrBeckmannLineBreakRequested: boolean;
+  acidSuitPositivePressureScbaAndDbbLotoVerified: boolean;
+}
+
+export interface CaprolactamCyclohexaneAirOxidationBeckmannOleumRearrangementNfpa30Nfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P277-CAPROLACTAM-CPL-CYCLOHEXANE-LIQUID-PHASE-AIR-OXIDATION-CYCLOHEXANONE-OXIME-BECKMANN-OLEUM-REARRANGEMENT-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101000-CYCLOHEXANE-VCE-BECKMANN-RUNAWAY-AND-SO2-OLEUM-NH2OH-SCBA-LOTO-GUARD";
+  sessionId: string;
+  cyclohexaneOxidationUnconvertedO2OrFlashLeakPreempted: boolean;
+  beckmannRearrangementOleumOrFreeWaterRunawayInterlocked: boolean;
+  osha19101000So2OleumHydroxylamineOrScbaLotoLocked: boolean;
+  caprolactamAndBeckmannOperationPermitted: boolean;
+  action:
+    | "trip_cyclohexane_air_feed_dbb_isolate_reactor_inventory_and_inject_n2_blanket_in_0ms"
+    | "trip_oxime_feed_dbb_quench_beckmann_loop_with_cooled_sulfate_liquor_and_vent_scrubber"
+    | "lock_caprolactam_train_until_nh2oh_sub65c_so2_scrubber_acid_suit_scba_and_dbb_loto_verified"
+    | "allow_verified_caprolactam_cyclohexane_oxidation_and_beckmann_operation";
+  blockedReason: string;
+}
+
+export function evaluateCaprolactamCyclohexaneAirOxidationBeckmannOleumRearrangementNfpa30Nfpa69ApiRp521Osha1910119Osha19101000CyclohexaneVceBeckmannRunawayAndSo2OleumNh2ohScbaLotoGuard(
+  input: CaprolactamCyclohexaneAirOxidationBeckmannOleumRearrangementNfpa30Nfpa69ApiRp521Osha1910119Osha19101000GuardInput
+): CaprolactamCyclohexaneAirOxidationBeckmannOleumRearrangementNfpa30Nfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const cyclohexaneOxidationUnconvertedO2OrFlashLeakPreempted =
+    input.cyclohexaneOxidationOffGasO2VolPct >= 1.5 ||
+    input.cyclohexaneOxidationReactorTempC >= 172.0 ||
+    input.cyclohexaneBellowsOrFlangeLeakDetected;
+
+  if (cyclohexaneOxidationUnconvertedO2OrFlashLeakPreempted) {
+    blockedReasons.push(
+      `Cyclohexane liquid-phase air oxidation off-gas O2 breakthrough (>=1.5 vol%), reactor over-temperature (>=172.0 C above 80.7 C boiling point), or bellows/flange flash leak risk (Flixborough VCE mechanism) (offgas_o2=${input.cyclohexaneOxidationOffGasO2VolPct} vol%, temp=${input.cyclohexaneOxidationReactorTempC} C, leak=${input.cyclohexaneBellowsOrFlangeLeakDetected})`
+    );
+  }
+
+  const beckmannRearrangementOleumOrFreeWaterRunawayInterlocked =
+    input.beckmannCirculationTempC >= 132.0 ||
+    input.oximeFeedMoistureWtPct >= 0.15 ||
+    input.rearrangementCirculationCoolerPumpTripped;
+
+  if (beckmannRearrangementOleumOrFreeWaterRunawayInterlocked) {
+    blockedReasons.push(
+      `Cyclohexanone oxime Beckmann rearrangement in fuming sulfuric acid (oleum) thermal runaway (>=132.0 C), oxime moisture hydrolysis with SO3 (>=0.15 wt% H2O), or circulation cooler trip (beckmann_temp=${input.beckmannCirculationTempC} C, oxime_moisture=${input.oximeFeedMoistureWtPct} wt%, cooler_tripped=${input.rearrangementCirculationCoolerPumpTripped})`
+    );
+  }
+
+  const osha19101000So2OleumHydroxylamineOrScbaLotoLocked =
+    input.hydroxylamineSulfateSolutionTempC >= 65.0 ||
+    input.ambientSo2Ppm >= 2.0 ||
+    input.ambientOleumOrH2so4MistMgPerM3 >= 1.0 ||
+    !input.ammoniaCausticTailGasScrubberVerified ||
+    (input.caprolactamOrBeckmannLineBreakRequested &&
+      !input.acidSuitPositivePressureScbaAndDbbLotoVerified);
+
+  if (osha19101000So2OleumHydroxylamineOrScbaLotoLocked) {
+    blockedReasons.push(
+      `NFPA 400 hydroxylamine thermal instability (>=65.0 C), OSHA 1910.1000 SO2/oleum mist threshold breach, or unverified tail-gas scrubber / acid suit SCBA / DBB LOTO (nh2oh_temp=${input.hydroxylamineSulfateSolutionTempC} C, so2=${input.ambientSo2Ppm} ppm, oleum_mist=${input.ambientOleumOrH2so4MistMgPerM3} mg/m3, scrubber=${input.ammoniaCausticTailGasScrubberVerified}, line_break=${input.caprolactamOrBeckmannLineBreakRequested}, scba_loto=${input.acidSuitPositivePressureScbaAndDbbLotoVerified})`
+    );
+  }
+
+  const caprolactamAndBeckmannOperationPermitted =
+    !cyclohexaneOxidationUnconvertedO2OrFlashLeakPreempted &&
+    !beckmannRearrangementOleumOrFreeWaterRunawayInterlocked &&
+    !osha19101000So2OleumHydroxylamineOrScbaLotoLocked;
+
+  let action: CaprolactamCyclohexaneAirOxidationBeckmannOleumRearrangementNfpa30Nfpa69ApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_caprolactam_cyclohexane_oxidation_and_beckmann_operation";
+
+  if (cyclohexaneOxidationUnconvertedO2OrFlashLeakPreempted) {
+    action =
+      "trip_cyclohexane_air_feed_dbb_isolate_reactor_inventory_and_inject_n2_blanket_in_0ms";
+  } else if (beckmannRearrangementOleumOrFreeWaterRunawayInterlocked) {
+    action =
+      "trip_oxime_feed_dbb_quench_beckmann_loop_with_cooled_sulfate_liquor_and_vent_scrubber";
+  } else if (osha19101000So2OleumHydroxylamineOrScbaLotoLocked) {
+    action =
+      "lock_caprolactam_train_until_nh2oh_sub65c_so2_scrubber_acid_suit_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P277-CAPROLACTAM-CPL-CYCLOHEXANE-LIQUID-PHASE-AIR-OXIDATION-CYCLOHEXANONE-OXIME-BECKMANN-OLEUM-REARRANGEMENT-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101000-CYCLOHEXANE-VCE-BECKMANN-RUNAWAY-AND-SO2-OLEUM-NH2OH-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    cyclohexaneOxidationUnconvertedO2OrFlashLeakPreempted,
+    beckmannRearrangementOleumOrFreeWaterRunawayInterlocked,
+    osha19101000So2OleumHydroxylamineOrScbaLotoLocked,
+    caprolactamAndBeckmannOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpVvcH266VideoPayloadRfc9328GuardInput {
+  sessionId: string;
+  declaredApNaluBytes: number;
+  rtpPayloadBytes: number;
+  nuhTemporalIdPlus1Zero: boolean;
+  fuHeaderStartAndEndBothSetOrInvalidPBit: boolean;
+  orphanFuContinuationWithoutStart: boolean;
+  vclSliceMissingDciVpsSpsPpsOrPhNut: boolean;
+  donlCrossPacketOrderDesync: boolean;
+  vvcSubpicturesCount: number;
+  vvcTilesCount: number;
+  vvcDecodedLumaSamples: number;
+}
+
+export interface WebrtcSipRtpVvcH266VideoPayloadRfc9328GuardAssessment {
+  policyCode: "P278-WEBRTC-SIP-RTP-VVC-H266-VIDEO-PAYLOAD-RFC9328-AP-NALU-LENGTH-OVERREAD-TID-ZERO-FU-S-E-P-BIT-DESYNC-MISSING-PH-NUT-DCI-VPS-SPS-PPS-AND-SUBPICTURE-4K-TILE-AMPLIFICATION-GUARD";
+  sessionId: string;
+  vvcApOverreadOrIllegalFuHeaderDropped: boolean;
+  vvcFuFragmentOrPhNutParameterSetDesyncBlocked: boolean;
+  vvcSubpictureTileOr4kLumaAmplificationClamped: boolean;
+  vvcRtpVideoPacketAccepted: boolean;
+  action:
+    | "drop_vvc_rtp_ap_nalu_overread_tid_zero_or_invalid_fu_s_e_p_header_in_0ms"
+    | "discard_desynced_vvc_fu_or_missing_sps_pps_ph_nut_and_emit_rtcp_pli"
+    | "clamp_vvc_sps_4k_luma_budget_and_subpicture_tile_ceiling"
+    | "forward_verified_vvc_h266_rtp_video_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpVvcH266VideoPayloadRfc9328ApNaluLengthOverreadTidZeroFuSEPBitDesyncMissingPhNutDciVpsSpsPpsAndSubpicture4kTileAmplificationGuard(
+  input: WebrtcSipRtpVvcH266VideoPayloadRfc9328GuardInput
+): WebrtcSipRtpVvcH266VideoPayloadRfc9328GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const vvcApOverreadOrIllegalFuHeaderDropped =
+    input.declaredApNaluBytes > input.rtpPayloadBytes ||
+    input.nuhTemporalIdPlus1Zero ||
+    input.fuHeaderStartAndEndBothSetOrInvalidPBit;
+
+  if (vvcApOverreadOrIllegalFuHeaderDropped) {
+    blockedReasons.push(
+      `RFC 9328 VVC/H.266 AP (Type 28) 16-bit NALU size overread, forbidden nuh_temporal_id_plus1=0, or FU (Type 29) illegal S/E/P header bit combination (declared_ap_bytes=${input.declaredApNaluBytes}, payload_bytes=${input.rtpPayloadBytes}, tid_zero=${input.nuhTemporalIdPlus1Zero}, invalid_fu_sep=${input.fuHeaderStartAndEndBothSetOrInvalidPBit})`
+    );
+  }
+
+  const vvcFuFragmentOrPhNutParameterSetDesyncBlocked =
+    input.orphanFuContinuationWithoutStart ||
+    input.vclSliceMissingDciVpsSpsPpsOrPhNut ||
+    input.donlCrossPacketOrderDesync;
+
+  if (vvcFuFragmentOrPhNutParameterSetDesyncBlocked) {
+    blockedReasons.push(
+      `RFC 9328 VVC/H.266 orphan FU continuation (S=0), VCL slice missing active DCI/VPS/SPS/PPS or PH_NUT (Type 19) Picture Header, or DONL cross-packet order desync (orphan_fu=${input.orphanFuContinuationWithoutStart}, missing_ps_ph=${input.vclSliceMissingDciVpsSpsPpsOrPhNut}, donl_desync=${input.donlCrossPacketOrderDesync})`
+    );
+  }
+
+  const vvcSubpictureTileOr4kLumaAmplificationClamped =
+    input.vvcSubpicturesCount > 32 ||
+    input.vvcTilesCount > 64 ||
+    input.vvcDecodedLumaSamples > 8912896;
+
+  if (vvcSubpictureTileOr4kLumaAmplificationClamped) {
+    blockedReasons.push(
+      `ITU-T H.266 / RFC 9328 VVC subpicture, tile, or 4K luma sample budget exceeded (subpictures=${input.vvcSubpicturesCount}, tiles=${input.vvcTilesCount}, luma_samples=${input.vvcDecodedLumaSamples})`
+    );
+  }
+
+  const vvcRtpVideoPacketAccepted =
+    !vvcApOverreadOrIllegalFuHeaderDropped &&
+    !vvcFuFragmentOrPhNutParameterSetDesyncBlocked &&
+    !vvcSubpictureTileOr4kLumaAmplificationClamped;
+
+  let action: WebrtcSipRtpVvcH266VideoPayloadRfc9328GuardAssessment["action"] =
+    "forward_verified_vvc_h266_rtp_video_packet";
+
+  if (vvcApOverreadOrIllegalFuHeaderDropped) {
+    action =
+      "drop_vvc_rtp_ap_nalu_overread_tid_zero_or_invalid_fu_s_e_p_header_in_0ms";
+  } else if (vvcFuFragmentOrPhNutParameterSetDesyncBlocked) {
+    action =
+      "discard_desynced_vvc_fu_or_missing_sps_pps_ph_nut_and_emit_rtcp_pli";
+  } else if (vvcSubpictureTileOr4kLumaAmplificationClamped) {
+    action = "clamp_vvc_sps_4k_luma_budget_and_subpicture_tile_ceiling";
+  }
+
+  return {
+    policyCode:
+      "P278-WEBRTC-SIP-RTP-VVC-H266-VIDEO-PAYLOAD-RFC9328-AP-NALU-LENGTH-OVERREAD-TID-ZERO-FU-S-E-P-BIT-DESYNC-MISSING-PH-NUT-DCI-VPS-SPS-PPS-AND-SUBPICTURE-4K-TILE-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    vvcApOverreadOrIllegalFuHeaderDropped,
+    vvcFuFragmentOrPhNutParameterSetDesyncBlocked,
+    vvcSubpictureTileOr4kLumaAmplificationClamped,
+    vvcRtpVideoPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
 
 
 
