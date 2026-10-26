@@ -26119,6 +26119,211 @@ export function evaluateWebrtcSipRtpHevcH265VideoPayloadRfc7798ApNaluLengthOverr
   };
 }
 
+export interface NitricAcidAmmoniumNitrateOstwaldAmmoniaOxidationNeutralizerPrillingNfpa400Osha1910109ApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  nh3InAirFeedVolPct: number;
+  ptRhGauzeTempC: number;
+  nh4no2InAbsorptionTowerMgPerL: number;
+  anMeltTempC: number;
+  anNeutralizerMeltPh: number;
+  chlorideInAnMeltPpm: number;
+  organicCarbonInAnMeltPpm: number;
+  ambientNo2Ppm: number;
+  ambientNh3Ppm: number;
+  ambientHno3MistMgPerM3: number;
+  scrNoxTailGasAbatementAndAnDrenchVerified: boolean;
+  ostwaldOrAnPrillingVesselLineBreakRequested: boolean;
+  acidResistantSuitScbaAndDbbLotoVerified: boolean;
+}
+
+export interface NitricAcidAmmoniumNitrateOstwaldAmmoniaOxidationNeutralizerPrillingNfpa400Osha1910109ApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P273-NITRIC-ACID-HNO3-AMMONIUM-NITRATE-AN-OSTWALD-PT-RH-GAUZE-AMMONIA-OXIDATION-NEUTRALIZER-PRILLING-NFPA400-OSHA1910109-APIRP521-OSHA1910119-OSHA19101000-NH3-AIR-EXPLOSION-AN-MELT-ACIDIC-CHLORIDE-DETONATION-AND-NH3-NO2-SCBA-LOTO-GUARD";
+  sessionId: string;
+  ostwaldGauzeOrNh3AirExplosionPreempted: boolean;
+  anMeltAcidicChlorideOrCarbonRunawayInterlocked: boolean;
+  osha19101000Nh3No2OrAcidSuitScbaLotoLocked: boolean;
+  nitricAcidAndAmmoniumNitrateOperationPermitted: boolean;
+  action:
+    | "trip_nh3_feed_dbb_quench_ostwald_gauze_with_steam_and_purge_nh4no2_in_0ms"
+    | "drown_an_neutralizer_evaporator_with_alkaline_water_cut_steam_and_inject_nh3_ph_buffer"
+    | "lock_hno3_an_train_until_scr_nox_abatement_an_drench_scba_and_dbb_loto_verified"
+    | "allow_verified_ostwald_nitric_acid_and_ammonium_nitrate_operation";
+  blockedReason: string;
+}
+
+export function evaluateNitricAcidAmmoniumNitrateOstwaldAmmoniaOxidationNeutralizerPrillingNfpa400Osha1910109ApiRp521Osha1910119Osha19101000Nh3AirExplosionAnMeltAcidicChlorideDetonationAndNh3No2ScbaLotoGuard(
+  input: NitricAcidAmmoniumNitrateOstwaldAmmoniaOxidationNeutralizerPrillingNfpa400Osha1910109ApiRp521Osha1910119Osha19101000GuardInput
+): NitricAcidAmmoniumNitrateOstwaldAmmoniaOxidationNeutralizerPrillingNfpa400Osha1910109ApiRp521Osha1910119Osha19101000GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const ostwaldGauzeOrNh3AirExplosionPreempted =
+    input.nh3InAirFeedVolPct >= 12.5 ||
+    input.ptRhGauzeTempC >= 940.0 ||
+    input.nh4no2InAbsorptionTowerMgPerL >= 50.0;
+
+  if (ostwaldGauzeOrNh3AirExplosionPreempted) {
+    blockedReasons.push(
+      `Ostwald NH3-in-air lower explosive envelope breach, Pt/Rh gauze thermal volatilization runaway, or unstable NH4NO2 accumulation in absorption tower (nh3_air=${input.nh3InAirFeedVolPct} vol%, gauze_temp=${input.ptRhGauzeTempC} C, nh4no2=${input.nh4no2InAbsorptionTowerMgPerL} mg/L)`
+    );
+  }
+
+  const anMeltAcidicChlorideOrCarbonRunawayInterlocked =
+    input.anMeltTempC >= 195.0 ||
+    input.anNeutralizerMeltPh < 4.5 ||
+    input.chlorideInAnMeltPpm >= 15.0 ||
+    input.organicCarbonInAnMeltPpm >= 200.0;
+
+  if (anMeltAcidicChlorideOrCarbonRunawayInterlocked) {
+    blockedReasons.push(
+      `Ammonium nitrate neutralizer/evaporator melt thermal runaway, acidic pH < 4.5, or Cl-/organic detonation sensitization (an_melt_temp=${input.anMeltTempC} C, ph=${input.anNeutralizerMeltPh}, chloride=${input.chlorideInAnMeltPpm} ppm, organic_c=${input.organicCarbonInAnMeltPpm} ppm)`
+    );
+  }
+
+  const osha19101000Nh3No2OrAcidSuitScbaLotoLocked =
+    input.ambientNo2Ppm >= 1.0 ||
+    input.ambientNh3Ppm >= 25.0 ||
+    input.ambientHno3MistMgPerM3 >= 2.0 ||
+    !input.scrNoxTailGasAbatementAndAnDrenchVerified ||
+    (input.ostwaldOrAnPrillingVesselLineBreakRequested &&
+      !input.acidResistantSuitScbaAndDbbLotoVerified);
+
+  if (osha19101000Nh3No2OrAcidSuitScbaLotoLocked) {
+    blockedReasons.push(
+      `OSHA 1910.1000 NO2/NH3/HNO3 mist threshold breach or unverified SCR NOx tail-gas abatement, AN emergency drench, or acid-suit/SCBA/DBB LOTO (no2=${input.ambientNo2Ppm} ppm, nh3=${input.ambientNh3Ppm} ppm, hno3_mist=${input.ambientHno3MistMgPerM3} mg/m3, scr_drench=${input.scrNoxTailGasAbatementAndAnDrenchVerified}, line_break=${input.ostwaldOrAnPrillingVesselLineBreakRequested}, scba_loto=${input.acidResistantSuitScbaAndDbbLotoVerified})`
+    );
+  }
+
+  const nitricAcidAndAmmoniumNitrateOperationPermitted =
+    !ostwaldGauzeOrNh3AirExplosionPreempted &&
+    !anMeltAcidicChlorideOrCarbonRunawayInterlocked &&
+    !osha19101000Nh3No2OrAcidSuitScbaLotoLocked;
+
+  let action: NitricAcidAmmoniumNitrateOstwaldAmmoniaOxidationNeutralizerPrillingNfpa400Osha1910109ApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_ostwald_nitric_acid_and_ammonium_nitrate_operation";
+
+  if (ostwaldGauzeOrNh3AirExplosionPreempted) {
+    action =
+      "trip_nh3_feed_dbb_quench_ostwald_gauze_with_steam_and_purge_nh4no2_in_0ms";
+  } else if (anMeltAcidicChlorideOrCarbonRunawayInterlocked) {
+    action =
+      "drown_an_neutralizer_evaporator_with_alkaline_water_cut_steam_and_inject_nh3_ph_buffer";
+  } else if (osha19101000Nh3No2OrAcidSuitScbaLotoLocked) {
+    action =
+      "lock_hno3_an_train_until_scr_nox_abatement_an_drench_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P273-NITRIC-ACID-HNO3-AMMONIUM-NITRATE-AN-OSTWALD-PT-RH-GAUZE-AMMONIA-OXIDATION-NEUTRALIZER-PRILLING-NFPA400-OSHA1910109-APIRP521-OSHA1910119-OSHA19101000-NH3-AIR-EXPLOSION-AN-MELT-ACIDIC-CHLORIDE-DETONATION-AND-NH3-NO2-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    ostwaldGauzeOrNh3AirExplosionPreempted,
+    anMeltAcidicChlorideOrCarbonRunawayInterlocked,
+    osha19101000Nh3No2OrAcidSuitScbaLotoLocked,
+    nitricAcidAndAmmoniumNitrateOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpVp9VideoPayloadRfc9628SsStructureLayerGuardInput {
+  sessionId: string;
+  vp9DescriptorPlusSsBytes: number;
+  rtpPayloadBytes: number;
+  ssDeclaredWidthOrHeightZero: boolean;
+  pgROverreadBeyondPacket: boolean;
+  continuationPacketWithBeginBitResetWithoutOpenFrame: boolean;
+  pDiffCountExceedsThreeOrCyclicReference: boolean;
+  interLayerPredictedWithMissingLowerSpatialLayer: boolean;
+  spatialLayersCount: number;
+  temporalLayersCount: number;
+  totalSvcDecodedLumaSamples: number;
+}
+
+export interface WebrtcSipRtpVp9VideoPayloadRfc9628SsStructureLayerGuardAssessment {
+  policyCode: "P274-WEBRTC-SIP-RTP-VP9-VIDEO-PAYLOAD-RFC9628-SS-STRUCTURE-NG-O-OVERREAD-B-E-D-P-DIFF-LAYER-DESYNC-AND-SVC-RESOLUTION-POOL-AMPLIFICATION-GUARD";
+  sessionId: string;
+  vp9DescriptorOrSsHeaderOverreadDropped: boolean;
+  vp9LayerFrameOrReferenceDesyncBlocked: boolean;
+  vp9SvcLayerOrLumaAmplificationClamped: boolean;
+  vp9RtpVideoPacketAccepted: boolean;
+  action:
+    | "drop_vp9_rtp_descriptor_or_ss_structure_overread_in_0ms"
+    | "discard_desynced_vp9_svc_layer_frame_and_emit_rtcp_pli_or_lrr"
+    | "clamp_vp9_svc_3s4t_layer_matrix_and_4k_luma_reference_pool_budget"
+    | "forward_verified_vp9_svc_rtp_video_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpVp9VideoPayloadRfc9628SsStructureNgoOverreadBedpDiffLayerDesyncAndSvcResolutionPoolAmplificationGuard(
+  input: WebrtcSipRtpVp9VideoPayloadRfc9628SsStructureLayerGuardInput
+): WebrtcSipRtpVp9VideoPayloadRfc9628SsStructureLayerGuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const vp9DescriptorOrSsHeaderOverreadDropped =
+    input.vp9DescriptorPlusSsBytes > input.rtpPayloadBytes ||
+    input.ssDeclaredWidthOrHeightZero ||
+    input.pgROverreadBeyondPacket;
+
+  if (vp9DescriptorOrSsHeaderOverreadDropped) {
+    blockedReasons.push(
+      `RFC 9628 VP9 RTP payload descriptor + Scalability Structure (SS) overread, zero width/height in Y=1 resolution array, or N_G/R PG reference overread (hdr_ss_bytes=${input.vp9DescriptorPlusSsBytes}B, rtp_payload=${input.rtpPayloadBytes}B, zero_dim=${input.ssDeclaredWidthOrHeightZero}, pg_overread=${input.pgROverreadBeyondPacket})`
+    );
+  }
+
+  const vp9LayerFrameOrReferenceDesyncBlocked =
+    input.continuationPacketWithBeginBitResetWithoutOpenFrame ||
+    input.pDiffCountExceedsThreeOrCyclicReference ||
+    input.interLayerPredictedWithMissingLowerSpatialLayer;
+
+  if (vp9LayerFrameOrReferenceDesyncBlocked) {
+    blockedReasons.push(
+      `RFC 9628 VP9 B=0 continuation without open layer frame, >3 P_DIFF or cyclic reference indices, or D=1 inter-layer prediction missing lower spatial layer (orphan_b0=${input.continuationPacketWithBeginBitResetWithoutOpenFrame}, bad_p_diff=${input.pDiffCountExceedsThreeOrCyclicReference}, missing_base_s_layer=${input.interLayerPredictedWithMissingLowerSpatialLayer})`
+    );
+  }
+
+  const vp9SvcLayerOrLumaAmplificationClamped =
+    input.spatialLayersCount > 3 ||
+    input.temporalLayersCount > 4 ||
+    input.totalSvcDecodedLumaSamples > 8294400;
+
+  if (vp9SvcLayerOrLumaAmplificationClamped) {
+    blockedReasons.push(
+      `VP9 SVC spatial/temporal layer ceiling (>3S or >4T) or aggregate 4K luma sample budget exceeded (spatial=${input.spatialLayersCount}, temporal=${input.temporalLayersCount}, total_luma=${input.totalSvcDecodedLumaSamples})`
+    );
+  }
+
+  const vp9RtpVideoPacketAccepted =
+    !vp9DescriptorOrSsHeaderOverreadDropped &&
+    !vp9LayerFrameOrReferenceDesyncBlocked &&
+    !vp9SvcLayerOrLumaAmplificationClamped;
+
+  let action: WebrtcSipRtpVp9VideoPayloadRfc9628SsStructureLayerGuardAssessment["action"] =
+    "forward_verified_vp9_svc_rtp_video_packet";
+
+  if (vp9DescriptorOrSsHeaderOverreadDropped) {
+    action = "drop_vp9_rtp_descriptor_or_ss_structure_overread_in_0ms";
+  } else if (vp9LayerFrameOrReferenceDesyncBlocked) {
+    action = "discard_desynced_vp9_svc_layer_frame_and_emit_rtcp_pli_or_lrr";
+  } else if (vp9SvcLayerOrLumaAmplificationClamped) {
+    action = "clamp_vp9_svc_3s4t_layer_matrix_and_4k_luma_reference_pool_budget";
+  }
+
+  return {
+    policyCode:
+      "P274-WEBRTC-SIP-RTP-VP9-VIDEO-PAYLOAD-RFC9628-SS-STRUCTURE-NG-O-OVERREAD-B-E-D-P-DIFF-LAYER-DESYNC-AND-SVC-RESOLUTION-POOL-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    vp9DescriptorOrSsHeaderOverreadDropped,
+    vp9LayerFrameOrReferenceDesyncBlocked,
+    vp9SvcLayerOrLumaAmplificationClamped,
+    vp9RtpVideoPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
 
 
 
