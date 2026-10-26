@@ -23622,6 +23622,192 @@ export function evaluateWebrtcSipRtpHeaderExtensionCryptexRfc8285Rfc9335Rfc3550O
   };
 }
 
+// Stage 128 — P249: Epichlorohydrin (ECH) Allyl Chloride Direct Chlorination,
+//             Dichlorohydrin Hypochlorination & Caustic Saponification Distillation
+//             Safety Guard (NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000)
+//             & P250: WebRTC & SIP Real-Time Text (RTT T.140 / RFC 4103 / RFC 9071 /
+//             RFC 2198) Redundant Generation Timestamp Offset Overflow, Zero-Width
+//             BOM/Backspace Control Flood & Multi-Party CSRC Attribution Spoof Guard
+
+export interface EpichlorohydrinAllylChlorideSaponificationNfpa69ApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  allylChlorideReactorTempC: number;
+  propyleneToChlorineMolarRatio: number;
+  chlorinatorPressureRiseKpaPerMin: number;
+  echFinishingColumnBottomTempC: number;
+  dissolvedFerricAcidBaseContaminationPpm: number;
+  saponificationStripperPressureKpa: number;
+  ambientAllylChlorideVaporPpm: number;
+  ambientEpichlorohydrinVaporPpm: number;
+  hclCl2CausticScrubberAndPositivePressureScbaVerified: boolean;
+  mechanicalDbbLotoVerified: boolean;
+  requestsLineBreakOrReactorEntry: boolean;
+}
+
+export interface EpichlorohydrinAllylChlorideSaponificationNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P249-EPICHLOROHYDRIN-ALLYL-CHLORIDE-CHLORINATION-DICHLOROHYDRIN-SAPONIFICATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-ALLYL-CHLORIDE-CL2-AUTOIGNITION-RUNAWAY-ECH-ACID-BASE-POLYMERIZATION-AND-ALLYL-CHLORIDE-ECH-SCBA-LOTO-GUARD";
+  sessionId: string;
+  allylChlorideCl2AutoignitionOrSootRunawayPreempted: boolean;
+  echColumnAcidBasePolymerizationExothermInterlocked: boolean;
+  allylChlorideEchExposureOrMissingScbaLotoLocked: boolean;
+  epichlorohydrinProcessOperationPermitted: boolean;
+  action:
+    | "trip_cl2_feed_dbb_and_inject_cold_propylene_n2_quench"
+    | "cut_ech_column_reboiler_steam_and_inject_water_n2_pad"
+    | "lock_ech_allyl_chloride_line_break_until_scba_scrubber_and_loto_verified"
+    | "allow_verified_epichlorohydrin_allyl_chloride_and_saponification_operation";
+  blockedReason: string;
+}
+
+export function evaluateEpichlorohydrinAllylChlorideChlorinationDichlorohydrinSaponificationNfpa69ApiRp521Osha1910119Osha19101000AllylChlorideCl2AutoignitionRunawayEchAcidBasePolymerizationAndAllylChlorideEchScbaLotoGuard(
+  input: EpichlorohydrinAllylChlorideSaponificationNfpa69ApiRp521Osha1910119Osha19101000GuardInput,
+): EpichlorohydrinAllylChlorideSaponificationNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  const allylChlorideCl2AutoignitionOrSootRunawayPreempted =
+    input.allylChlorideReactorTempC > 525.0 ||
+    input.propyleneToChlorineMolarRatio < 3.8 ||
+    input.chlorinatorPressureRiseKpaPerMin > 35.0;
+
+  const echColumnAcidBasePolymerizationExothermInterlocked =
+    !allylChlorideCl2AutoignitionOrSootRunawayPreempted &&
+    (input.echFinishingColumnBottomTempC > 125.0 ||
+      input.dissolvedFerricAcidBaseContaminationPpm > 15.0 ||
+      input.saponificationStripperPressureKpa > 145.0);
+
+  const allylChlorideEchExposureOrMissingScbaLotoLocked =
+    !allylChlorideCl2AutoignitionOrSootRunawayPreempted &&
+    !echColumnAcidBasePolymerizationExothermInterlocked &&
+    (input.ambientAllylChlorideVaporPpm >= 1.0 ||
+      input.ambientEpichlorohydrinVaporPpm >= 0.5 ||
+      (input.requestsLineBreakOrReactorEntry &&
+        (!input.hclCl2CausticScrubberAndPositivePressureScbaVerified ||
+          !input.mechanicalDbbLotoVerified)));
+
+  const epichlorohydrinProcessOperationPermitted =
+    !allylChlorideCl2AutoignitionOrSootRunawayPreempted &&
+    !echColumnAcidBasePolymerizationExothermInterlocked &&
+    !allylChlorideEchExposureOrMissingScbaLotoLocked;
+
+  let action: EpichlorohydrinAllylChlorideSaponificationNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_epichlorohydrin_allyl_chloride_and_saponification_operation";
+  let blockedReason = "none";
+
+  if (allylChlorideCl2AutoignitionOrSootRunawayPreempted) {
+    action = "trip_cl2_feed_dbb_and_inject_cold_propylene_n2_quench";
+    blockedReason =
+      "NFPA69_APIRP521_OSHA1910_119_ALLYL_CHLORIDE_CL2_AUTOIGNITION_OR_SOOT_CARBONIZATION_RUNAWAY_PREEMPTED";
+  } else if (echColumnAcidBasePolymerizationExothermInterlocked) {
+    action = "cut_ech_column_reboiler_steam_and_inject_water_n2_pad";
+    blockedReason =
+      "APIRP521_OSHA1910_119_ECH_VACUUM_COLUMN_FERRIC_ACID_BASE_RING_OPENING_POLYMERIZATION_EXOTHERM_INTERLOCKED";
+  } else if (allylChlorideEchExposureOrMissingScbaLotoLocked) {
+    action =
+      "lock_ech_allyl_chloride_line_break_until_scba_scrubber_and_loto_verified";
+    blockedReason =
+      "OSHA1910_1000_1910_147_ALLYL_CHLORIDE_1PPM_ECH_CARCINOGEN_EXPOSURE_OR_MISSING_SCRUBBER_SCBA_LOTO_LOCKED";
+  }
+
+  return {
+    policyCode:
+      "P249-EPICHLOROHYDRIN-ALLYL-CHLORIDE-CHLORINATION-DICHLOROHYDRIN-SAPONIFICATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-ALLYL-CHLORIDE-CL2-AUTOIGNITION-RUNAWAY-ECH-ACID-BASE-POLYMERIZATION-AND-ALLYL-CHLORIDE-ECH-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    allylChlorideCl2AutoignitionOrSootRunawayPreempted,
+    echColumnAcidBasePolymerizationExothermInterlocked,
+    allylChlorideEchExposureOrMissingScbaLotoLocked,
+    epichlorohydrinProcessOperationPermitted,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipRtpRealTimeTextT140RedundancyRfc4103Rfc9071GuardInput {
+  sessionId: string;
+  redundantGenerationCount: number;
+  maxRedundantTimestampOffsetTicks: number;
+  redundantTimestampOffsetsMonotonic: boolean;
+  totalT140RedBlockDeclaredBytes: number;
+  remainingPacketPayloadBytes: number;
+  transmittedCharactersPerSecondCps: number;
+  bomOrBackspaceControlSequenceRatioPct: number;
+  rfc9071MultiPartyRttNegotiated: boolean;
+  csrcCountCc: number;
+  primaryCsrcInAuthenticatedRoster: boolean;
+}
+
+export interface WebrtcSipRtpRealTimeTextT140RedundancyRfc4103Rfc9071GuardAssessment {
+  policyCode: "P250-WEBRTC-SIP-RTP-REAL-TIME-TEXT-T140-REDUNDANCY-RFC4103-RFC9071-RFC2198-RFC3550-T140-RED-GENERATION-TIMESTAMP-OFFSET-OVERFLOW-ZERO-WIDTH-BOM-FLOOD-AND-MULTIPARTY-CSRC-TEXT-SPOOF-GUARD";
+  sessionId: string;
+  t140RedBlockOverreadOrTimestampOffsetOverflowBlocked: boolean;
+  t140CpsRateOrBomControlFloodBlocked: boolean;
+  multiPartyRttCsrcAttributionSpoofBlocked: boolean;
+  rtpRealTimeTextPacketAccepted: boolean;
+  action:
+    | "drop_rfc4103_t140_red_block_overread_or_timestamp_offset_overflow_in_0ms"
+    | "reject_t140_cps_rate_flood_or_bom_backspace_control_exhaustion"
+    | "reject_rfc9071_multiparty_rtt_unauthenticated_csrc_source_spoof"
+    | "forward_verified_rfc4103_rfc9071_real_time_text_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRealTimeTextT140RedundancyRfc4103Rfc9071Rfc2198Rfc3550T140RedGenerationTimestampOffsetOverflowZeroWidthBomFloodAndMultiPartyCsrcTextSpoofGuard(
+  input: WebrtcSipRtpRealTimeTextT140RedundancyRfc4103Rfc9071GuardInput,
+): WebrtcSipRtpRealTimeTextT140RedundancyRfc4103Rfc9071GuardAssessment {
+  const t140RedBlockOverreadOrTimestampOffsetOverflowBlocked =
+    input.redundantGenerationCount > 5 ||
+    input.maxRedundantTimestampOffsetTicks < 0 ||
+    input.maxRedundantTimestampOffsetTicks > 16383 ||
+    !input.redundantTimestampOffsetsMonotonic ||
+    input.totalT140RedBlockDeclaredBytes > input.remainingPacketPayloadBytes;
+
+  const t140CpsRateOrBomControlFloodBlocked =
+    !t140RedBlockOverreadOrTimestampOffsetOverflowBlocked &&
+    (input.transmittedCharactersPerSecondCps > 30 ||
+      input.bomOrBackspaceControlSequenceRatioPct > 50.0);
+
+  const multiPartyRttCsrcAttributionSpoofBlocked =
+    !t140RedBlockOverreadOrTimestampOffsetOverflowBlocked &&
+    !t140CpsRateOrBomControlFloodBlocked &&
+    input.rfc9071MultiPartyRttNegotiated &&
+    (input.csrcCountCc <= 0 ||
+      input.csrcCountCc > 15 ||
+      !input.primaryCsrcInAuthenticatedRoster);
+
+  const rtpRealTimeTextPacketAccepted =
+    !t140RedBlockOverreadOrTimestampOffsetOverflowBlocked &&
+    !t140CpsRateOrBomControlFloodBlocked &&
+    !multiPartyRttCsrcAttributionSpoofBlocked;
+
+  let action: WebrtcSipRtpRealTimeTextT140RedundancyRfc4103Rfc9071GuardAssessment["action"] =
+    "forward_verified_rfc4103_rfc9071_real_time_text_packet";
+  let blockedReason = "none";
+
+  if (t140RedBlockOverreadOrTimestampOffsetOverflowBlocked) {
+    action =
+      "drop_rfc4103_t140_red_block_overread_or_timestamp_offset_overflow_in_0ms";
+    blockedReason =
+      "RFC4103_RFC2198_T140_RED_GENERATION_14BIT_TIMESTAMP_OFFSET_OVERFLOW_OR_BLOCK_LENGTH_OVERREAD_BLOCKED";
+  } else if (t140CpsRateOrBomControlFloodBlocked) {
+    action = "reject_t140_cps_rate_flood_or_bom_backspace_control_exhaustion";
+    blockedReason =
+      "ITU_T_T140_RFC4103_CPS_30_RATE_LIMIT_OR_U_FEFF_BOM_BACKSPACE_CONTROL_FLOOD_BLOCKED";
+  } else if (multiPartyRttCsrcAttributionSpoofBlocked) {
+    action = "reject_rfc9071_multiparty_rtt_unauthenticated_csrc_source_spoof";
+    blockedReason =
+      "RFC9071_MULTIPARTY_RTT_MIXER_MISSING_OR_UNAUTHENTICATED_CSRC_SOURCE_ATTRIBUTION_SPOOF_BLOCKED";
+  }
+
+  return {
+    policyCode:
+      "P250-WEBRTC-SIP-RTP-REAL-TIME-TEXT-T140-REDUNDANCY-RFC4103-RFC9071-RFC2198-RFC3550-T140-RED-GENERATION-TIMESTAMP-OFFSET-OVERFLOW-ZERO-WIDTH-BOM-FLOOD-AND-MULTIPARTY-CSRC-TEXT-SPOOF-GUARD",
+    sessionId: input.sessionId,
+    t140RedBlockOverreadOrTimestampOffsetOverflowBlocked,
+    t140CpsRateOrBomControlFloodBlocked,
+    multiPartyRttCsrcAttributionSpoofBlocked,
+    rtpRealTimeTextPacketAccepted,
+    action,
+    blockedReason,
+  };
+}
+
 
 
 
