@@ -26732,6 +26732,233 @@ export function evaluateWebrtcSipRtpVvcH266VideoPayloadRfc9328ApNaluLengthOverre
   };
 }
 
+// ============================================================================
+// Stage 143: P279 (Melamine High-Pressure Non-Catalytic Urea Pyrolysis &
+//            Off-Gas Carbamate Quench Crystallization Guard) &
+//            P280 (WebRTC & SIP RTP Essential Video Coding EVC / MPEG-5 Part 1
+//            RFC 9584 / ISO/IEC 23094-1 Guard)
+// ============================================================================
+
+export interface MelamineHighPressureUreaPyrolysisOffGasQuenchNfpa69ApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  /** High-pressure non-catalytic melamine reactor pressure in MPaG (normal 8.0–14.5 MPaG; >= 15.5 MPaG risks vessel rupture or relief header plugging) */
+  melamineReactorPressureMpaG: number;
+  /** Melamine reactor / molten-salt heating coil temperature in °C (normal 380–415°C; >= 428.0°C triggers rapid de-ammoniation into insoluble melam/melem/melon) */
+  melamineReactorTempC: number;
+  /** Loss of high-pressure gaseous ammonia (NH3) fluidization/stripping partial pressure in the melamine reactor */
+  ammoniaFluidizationGasFlowLost: boolean;
+  /** Water or steam-condensate tube leak detected in the off-gas carbamate condenser or quench cooler into 390°C molten melamine/HNCO */
+  quenchCoolerTubeLeakMoistureDetected: boolean;
+  /** Off-gas ammonium carbamate condenser temperature in °C (must stay > 152.0°C to prevent solid carbamate crystallization plugging off-gas lines) */
+  carbamateCondenserTempC: number;
+  /** Nitrite/nitrate molten-salt heating coil tube leak or thermal decomposition detected */
+  moltenSaltTubeLeakDetected: boolean;
+  /** Ambient ammonia (NH3) concentration in ppm (NIOSH REL = 25.0 ppm, OSHA PEL = 50 ppm, IDLH = 300 ppm) */
+  ambientNh3Ppm: number;
+  /** Ambient isocyanic acid (HNCO) vapor concentration in ppm (toxic pyrolysis intermediate; threshold >= 0.5 ppm) */
+  ambientHncoPpm: number;
+  /** Off-gas ammonia / ammonium carbamate tail-gas scrubber verified online */
+  ammoniaCarbamateTailGasScrubberVerified: boolean;
+  /** Operator requests melamine reactor, quench cooler, or crystallizer line break / flange opening */
+  melamineReactorOrQuenchLineBreakRequested: boolean;
+  /** Full chemical suit, positive-pressure SCBA, and double-block-and-bleed (DBB) LOTO verified */
+  chemicalSuitPositivePressureScbaAndDbbLotoVerified: boolean;
+}
+
+export interface MelamineHighPressureUreaPyrolysisOffGasQuenchNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P279-MELAMINE-HIGH-PRESSURE-NON-CATALYTIC-UREA-PYROLYSIS-OFF-GAS-QUENCH-NFPA69-APIRP521-OSHA1910119-OSHA19101000-MOLTEN-SALT-OVERPRESSURE-MELEM-SOLIDIFICATION-CARBAMATE-CONDENSER-TUBE-LEAK-AND-NH3-HNCO-SCBA-LOTO-GUARD";
+  sessionId: string;
+  melamineReactorOverpressureOrMelemSolidificationPreempted: boolean;
+  carbamateCondenserTubeLeakOrPluggingInterlocked: boolean;
+  osha19101000Nh3HncoOrScbaLotoLocked: boolean;
+  melaminePyrolysisOperationPermitted: boolean;
+  action:
+    | "trip_urea_feed_dbb_isolate_molten_salt_heater_and_inject_hp_nh3_quench_in_0ms"
+    | "isolate_quench_cooler_water_switch_carbamate_condenser_and_vent_ammonia_absorber"
+    | "lock_melamine_train_until_nh3_hnco_scrubber_scba_and_dbb_loto_verified"
+    | "allow_verified_melamine_high_pressure_urea_pyrolysis_operation";
+  blockedReason: string;
+}
+
+export function evaluateMelamineHighPressureUreaPyrolysisOffGasQuenchNfpa69ApiRp521Osha1910119Osha19101000MoltenSaltOverpressureMelemSolidificationCarbamateTubeLeakAndNh3HncoScbaLotoGuard(
+  input: MelamineHighPressureUreaPyrolysisOffGasQuenchNfpa69ApiRp521Osha1910119Osha19101000GuardInput
+): MelamineHighPressureUreaPyrolysisOffGasQuenchNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const melamineReactorOverpressureOrMelemSolidificationPreempted =
+    input.melamineReactorPressureMpaG >= 15.5 ||
+    input.melamineReactorTempC >= 428.0 ||
+    input.ammoniaFluidizationGasFlowLost;
+
+  if (melamineReactorOverpressureOrMelemSolidificationPreempted) {
+    blockedReasons.push(
+      `melamine reactor overpressure or melam/melem solidification hazard (pressure=${input.melamineReactorPressureMpaG} MPaG >= 15.5 MPaG, temp=${input.melamineReactorTempC} C >= 428.0 C, or ammoniaFluidizationGasFlowLost=${input.ammoniaFluidizationGasFlowLost})`
+    );
+  }
+
+  const carbamateCondenserTubeLeakOrPluggingInterlocked =
+    input.quenchCoolerTubeLeakMoistureDetected ||
+    input.carbamateCondenserTempC <= 152.0 ||
+    input.moltenSaltTubeLeakDetected;
+
+  if (carbamateCondenserTubeLeakOrPluggingInterlocked) {
+    blockedReasons.push(
+      `off-gas carbamate condenser tube leak, crystallization plugging, or molten-salt coil leak (quenchCoolerTubeLeak=${input.quenchCoolerTubeLeakMoistureDetected}, carbamateTemp=${input.carbamateCondenserTempC} C <= 152.0 C, or moltenSaltTubeLeak=${input.moltenSaltTubeLeakDetected})`
+    );
+  }
+
+  const osha19101000Nh3HncoOrScbaLotoLocked =
+    input.ambientNh3Ppm >= 25.0 ||
+    input.ambientHncoPpm >= 0.5 ||
+    !input.ammoniaCarbamateTailGasScrubberVerified ||
+    (input.melamineReactorOrQuenchLineBreakRequested &&
+      !input.chemicalSuitPositivePressureScbaAndDbbLotoVerified);
+
+  if (osha19101000Nh3HncoOrScbaLotoLocked) {
+    blockedReasons.push(
+      `OSHA 1910.1000 NH3/HNCO exposure or unverified SCBA/DBB LOTO lock (NH3=${input.ambientNh3Ppm} ppm >= 25.0 ppm, HNCO=${input.ambientHncoPpm} ppm >= 0.5 ppm, ammoniaCarbamateScrubber=${input.ammoniaCarbamateTailGasScrubberVerified}, lineBreakRequested=${input.melamineReactorOrQuenchLineBreakRequested}, chemicalSuitScbaLoto=${input.chemicalSuitPositivePressureScbaAndDbbLotoVerified})`
+    );
+  }
+
+  const melaminePyrolysisOperationPermitted =
+    !melamineReactorOverpressureOrMelemSolidificationPreempted &&
+    !carbamateCondenserTubeLeakOrPluggingInterlocked &&
+    !osha19101000Nh3HncoOrScbaLotoLocked;
+
+  let action: MelamineHighPressureUreaPyrolysisOffGasQuenchNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_melamine_high_pressure_urea_pyrolysis_operation";
+
+  if (melamineReactorOverpressureOrMelemSolidificationPreempted) {
+    action =
+      "trip_urea_feed_dbb_isolate_molten_salt_heater_and_inject_hp_nh3_quench_in_0ms";
+  } else if (carbamateCondenserTubeLeakOrPluggingInterlocked) {
+    action =
+      "isolate_quench_cooler_water_switch_carbamate_condenser_and_vent_ammonia_absorber";
+  } else if (osha19101000Nh3HncoOrScbaLotoLocked) {
+    action =
+      "lock_melamine_train_until_nh3_hnco_scrubber_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P279-MELAMINE-HIGH-PRESSURE-NON-CATALYTIC-UREA-PYROLYSIS-OFF-GAS-QUENCH-NFPA69-APIRP521-OSHA1910119-OSHA19101000-MOLTEN-SALT-OVERPRESSURE-MELEM-SOLIDIFICATION-CARBAMATE-CONDENSER-TUBE-LEAK-AND-NH3-HNCO-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    melamineReactorOverpressureOrMelemSolidificationPreempted,
+    carbamateCondenserTubeLeakOrPluggingInterlocked,
+    osha19101000Nh3HncoOrScbaLotoLocked,
+    melaminePyrolysisOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpEvcMpeg5VideoPayloadRfc9584GuardInput {
+  sessionId: string;
+  /** Declared 16-bit NALU size in an RFC 9584 EVC Aggregation Packet (AP, NALU type 56) in bytes */
+  declaredEvcApNaluBytes: number;
+  /** Actual remaining RTP payload bytes available in the packet */
+  rtpPayloadBytes: number;
+  /** RFC 9584 / ISO/IEC 23094-1 2-byte EVC NALU header has nal_unit_type_plus1 == 0 or nuh_temporal_id_plus1 == 0 (invalid zero value) */
+  evcNaluTypeOrTidPlus1Zero: boolean;
+  /** RFC 9584 EVC Fragmentation Unit (FU, NALU type 57) header sets both S=1 and E=1 simultaneously */
+  evcFuHeaderStartAndEndBothSet: boolean;
+  /** Orphan EVC FU continuation/end fragment (S=0) received without a preceding S=1 start fragment */
+  orphanEvcFuContinuationWithoutStart: boolean;
+  /** Coded EVC slice (IDR_NUT / NONIDR_NUT) references an unactivated SPS (NALU 24), PPS (NALU 25), or APS (Adaptation Parameter Set, NALU 26) */
+  evcSliceMissingSpsPpsOrAps: boolean;
+  /** EVC Main Profile tool flags (ADMVP / ALF / B picture / Dra) injected into a negotiated EVC Baseline Profile RTP session */
+  baselineProfileToolViolationDetected: boolean;
+  /** Total EVC tile count (tile_columns * tile_rows) declared in PPS (safe ceiling <= 32) */
+  evcTileColumnsTimesRows: number;
+  /** Decoded EVC frame luma sample count (pic_width_in_luma_samples * pic_height_in_luma_samples; 4K DCI ceiling = 8,912,896) */
+  evcDecodedLumaSamples: number;
+}
+
+export interface WebrtcSipRtpEvcMpeg5VideoPayloadRfc9584GuardAssessment {
+  policyCode: "P280-WEBRTC-SIP-RTP-EVC-MPEG5-VIDEO-PAYLOAD-RFC9584-AP-NALU-LENGTH-OVERREAD-TID-ZERO-FU-S-E-BIT-DESYNC-MISSING-SPS-PPS-APS-AND-4K-TILE-AMPLIFICATION-GUARD";
+  sessionId: string;
+  evcApOverreadOrIllegalFuHeaderDropped: boolean;
+  evcFuFragmentOrParameterSetProfileDesyncBlocked: boolean;
+  evcTileOr4kLumaAmplificationClamped: boolean;
+  evcRtpVideoPacketAccepted: boolean;
+  action:
+    | "drop_evc_rtp_ap_nalu_overread_tid_zero_or_invalid_fu_s_e_header_in_0ms"
+    | "discard_desynced_evc_fu_or_missing_sps_pps_aps_and_emit_rtcp_pli"
+    | "clamp_evc_sps_4k_luma_budget_and_tile_ceiling"
+    | "forward_verified_evc_mpeg5_rtp_video_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpEvcMpeg5VideoPayloadRfc9584ApNaluLengthOverreadTidZeroFuSEBitDesyncMissingSpsPpsApsAnd4kTileAmplificationGuard(
+  input: WebrtcSipRtpEvcMpeg5VideoPayloadRfc9584GuardInput
+): WebrtcSipRtpEvcMpeg5VideoPayloadRfc9584GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const evcApOverreadOrIllegalFuHeaderDropped =
+    input.declaredEvcApNaluBytes > input.rtpPayloadBytes ||
+    input.evcNaluTypeOrTidPlus1Zero ||
+    input.evcFuHeaderStartAndEndBothSet;
+
+  if (evcApOverreadOrIllegalFuHeaderDropped) {
+    blockedReasons.push(
+      `RFC 9584 EVC RTP AP NALU length overread, nal_unit_type_plus1/Tid==0, or illegal FU S=1&E=1 header (declaredApBytes=${input.declaredEvcApNaluBytes}, payloadBytes=${input.rtpPayloadBytes}, typeOrTidZero=${input.evcNaluTypeOrTidPlus1Zero}, fuSEBoth=${input.evcFuHeaderStartAndEndBothSet})`
+    );
+  }
+
+  const evcFuFragmentOrParameterSetProfileDesyncBlocked =
+    input.orphanEvcFuContinuationWithoutStart ||
+    input.evcSliceMissingSpsPpsOrAps ||
+    input.baselineProfileToolViolationDetected;
+
+  if (evcFuFragmentOrParameterSetProfileDesyncBlocked) {
+    blockedReasons.push(
+      `RFC 9584 EVC RTP FU fragment loss, missing SPS/PPS/APS parameter set, or Baseline Profile tool violation (orphanFu=${input.orphanEvcFuContinuationWithoutStart}, missingSpsPpsAps=${input.evcSliceMissingSpsPpsOrAps}, baselineViolation=${input.baselineProfileToolViolationDetected})`
+    );
+  }
+
+  const evcTileOr4kLumaAmplificationClamped =
+    input.evcTileColumnsTimesRows > 32 ||
+    input.evcDecodedLumaSamples > 8912896;
+
+  if (evcTileOr4kLumaAmplificationClamped) {
+    blockedReasons.push(
+      `RFC 9584 EVC tile or 4K DCI luma sample amplification exceeded ceiling (tiles=${input.evcTileColumnsTimesRows} > 32 or lumaSamples=${input.evcDecodedLumaSamples} > 8912896)`
+    );
+  }
+
+  const evcRtpVideoPacketAccepted =
+    !evcApOverreadOrIllegalFuHeaderDropped &&
+    !evcFuFragmentOrParameterSetProfileDesyncBlocked &&
+    !evcTileOr4kLumaAmplificationClamped;
+
+  let action: WebrtcSipRtpEvcMpeg5VideoPayloadRfc9584GuardAssessment["action"] =
+    "forward_verified_evc_mpeg5_rtp_video_packet";
+
+  if (evcApOverreadOrIllegalFuHeaderDropped) {
+    action =
+      "drop_evc_rtp_ap_nalu_overread_tid_zero_or_invalid_fu_s_e_header_in_0ms";
+  } else if (evcFuFragmentOrParameterSetProfileDesyncBlocked) {
+    action = "discard_desynced_evc_fu_or_missing_sps_pps_aps_and_emit_rtcp_pli";
+  } else if (evcTileOr4kLumaAmplificationClamped) {
+    action = "clamp_evc_sps_4k_luma_budget_and_tile_ceiling";
+  }
+
+  return {
+    policyCode:
+      "P280-WEBRTC-SIP-RTP-EVC-MPEG5-VIDEO-PAYLOAD-RFC9584-AP-NALU-LENGTH-OVERREAD-TID-ZERO-FU-S-E-BIT-DESYNC-MISSING-SPS-PPS-APS-AND-4K-TILE-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    evcApOverreadOrIllegalFuHeaderDropped,
+    evcFuFragmentOrParameterSetProfileDesyncBlocked,
+    evcTileOr4kLumaAmplificationClamped,
+    evcRtpVideoPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
 
 
 
