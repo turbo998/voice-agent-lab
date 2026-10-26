@@ -23809,13 +23809,214 @@ export function evaluateWebrtcSipRtpRealTimeTextT140RedundancyRfc4103Rfc9071Rfc2
 }
 
 
+// ============================================================================
+// Stage 129: P251 (Acrylonitrile Sohio Ammoxidation & HCN Recovery Guard) &
+//            P252 (WebRTC/SIP RTP Comfort Noise RFC 3389 & DTX/SID Guard)
+// ============================================================================
 
+export interface AcrylonitrileSohioAmmoxidationHcnRecoveryGuardInput {
+  sessionId: string;
+  ammoxidationReactorTempC: number;
+  quenchTowerSulfuricAcidPh: number;
+  reactorOverheadPressureRiseKpaPerMin: number;
+  hcnRecoveryColumnBottomTempC: number;
+  liquidPhaseAceticAcidSo2StabilizerPpm: number;
+  hcnColumnOverheadPressureKpa: number;
+  ambientAcrylonitrileVaporPpm: number;
+  ambientHydrogenCyanideVaporPpm: number;
+  hcnScrubberPositivePressureScbaAndCyanokitVerified: boolean;
+  mechanicalDbbLotoVerified: boolean;
+  requestsLineBreakOrReactorEntry: boolean;
+}
 
+export interface AcrylonitrileSohioAmmoxidationHcnRecoveryGuardAssessment {
+  policyCode: "P251-ACRYLONITRILE-SOHIO-PROPYLENE-AMMOXIDATION-HYDROGEN-CYANIDE-HCN-RECOVERY-NFPA69-APIRP521-OSHA1910119-OSHA19101000-UNCONVERTED-NH3-SULFURIC-ACID-QUENCH-FAILURE-HCN-ALKALINE-EXOTHERMIC-POLYMERIZATION-AND-AN-HCN-SCBA-CYANIDE-ANTIDOTE-LOTO-GUARD";
+  sessionId: string;
+  ammoxidationQuenchAcidFailureOrUnconvertedNh3CarryoverPreempted: boolean;
+  hcnAcrylonitrileAlkalinePolymerizationRunawayInterlocked: boolean;
+  acrylonitrileHcnExposureOrMissingCyanideAntidoteScbaLotoLocked: boolean;
+  acrylonitrileHcnProcessOperationPermitted: boolean;
+  action:
+    | "trip_propylene_nh3_air_feed_dbb_and_inject_emergency_h2so4_quench"
+    | "cut_hcn_an_reboiler_steam_and_inject_acetic_acid_so2_inhibitor"
+    | "lock_acrylonitrile_hcn_line_break_until_scba_cyanokit_and_loto_verified"
+    | "allow_verified_acrylonitrile_sohio_ammoxidation_and_hcn_recovery_operation";
+  blockedReason: string;
+}
 
+export function evaluateAcrylonitrileSohioPropyleneAmmoxidationHydrogenCyanideHcnRecoveryNfpa69ApiRp521Osha1910119Osha19101000UnconvertedNh3SulfuricAcidQuenchFailureHcnAlkalineExothermicPolymerizationAndAnHcnScbaCyanideAntidoteLotoGuard(
+  input: AcrylonitrileSohioAmmoxidationHcnRecoveryGuardInput
+): AcrylonitrileSohioAmmoxidationHcnRecoveryGuardAssessment {
+  const policyCode =
+    "P251-ACRYLONITRILE-SOHIO-PROPYLENE-AMMOXIDATION-HYDROGEN-CYANIDE-HCN-RECOVERY-NFPA69-APIRP521-OSHA1910119-OSHA19101000-UNCONVERTED-NH3-SULFURIC-ACID-QUENCH-FAILURE-HCN-ALKALINE-EXOTHERMIC-POLYMERIZATION-AND-AN-HCN-SCBA-CYANIDE-ANTIDOTE-LOTO-GUARD" as const;
 
+  const ammoxidationQuenchAcidFailureOrUnconvertedNh3CarryoverPreempted =
+    input.ammoxidationReactorTempC > 485.0 ||
+    input.quenchTowerSulfuricAcidPh > 5.5 ||
+    input.reactorOverheadPressureRiseKpaPerMin > 32.0;
 
+  const hcnAcrylonitrileAlkalinePolymerizationRunawayInterlocked =
+    input.hcnRecoveryColumnBottomTempC > 95.0 ||
+    input.liquidPhaseAceticAcidSo2StabilizerPpm < 100.0 ||
+    input.hcnColumnOverheadPressureKpa > 135.0;
 
+  const acrylonitrileHcnExposureOrMissingCyanideAntidoteScbaLotoLocked =
+    input.ambientAcrylonitrileVaporPpm >= 2.0 ||
+    input.ambientHydrogenCyanideVaporPpm >= 4.7 ||
+    (input.requestsLineBreakOrReactorEntry &&
+      (!input.hcnScrubberPositivePressureScbaAndCyanokitVerified ||
+        !input.mechanicalDbbLotoVerified));
 
+  if (ammoxidationQuenchAcidFailureOrUnconvertedNh3CarryoverPreempted) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ammoxidationQuenchAcidFailureOrUnconvertedNh3CarryoverPreempted,
+      hcnAcrylonitrileAlkalinePolymerizationRunawayInterlocked,
+      acrylonitrileHcnExposureOrMissingCyanideAntidoteScbaLotoLocked,
+      acrylonitrileHcnProcessOperationPermitted: false,
+      action: "trip_propylene_nh3_air_feed_dbb_and_inject_emergency_h2so4_quench",
+      blockedReason:
+        "Sohio fluidized-bed ammoxidation reactor temperature (>485.0 C), quench tower H2SO4 neutralization pH (>5.5 allowing unconverted NH3 breakthrough into HCN/AN columns), or pressure rise (>32.0 kPa/min) breached NFPA 69 / API RP 521 limits; tripped propylene/NH3/air DBB valves in 0ms and injected emergency sulfuric-acid quench.",
+    };
+  }
 
+  if (hcnAcrylonitrileAlkalinePolymerizationRunawayInterlocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ammoxidationQuenchAcidFailureOrUnconvertedNh3CarryoverPreempted,
+      hcnAcrylonitrileAlkalinePolymerizationRunawayInterlocked,
+      acrylonitrileHcnExposureOrMissingCyanideAntidoteScbaLotoLocked,
+      acrylonitrileHcnProcessOperationPermitted: false,
+      action: "cut_hcn_an_reboiler_steam_and_inject_acetic_acid_so2_inhibitor",
+      blockedReason:
+        "HCN recovery / acrylonitrile column bottom temperature (>95.0 C), acetic-acid/SO2 polymerization inhibitor depletion (<100.0 ppm), or column pressure (>135.0 kPa) risks autocatalytic azulmic HCN/AN polymerization explosion; cut reboiler steam and injected acetic-acid/SO2 inhibitor pad.",
+    };
+  }
 
+  if (acrylonitrileHcnExposureOrMissingCyanideAntidoteScbaLotoLocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ammoxidationQuenchAcidFailureOrUnconvertedNh3CarryoverPreempted,
+      hcnAcrylonitrileAlkalinePolymerizationRunawayInterlocked,
+      acrylonitrileHcnExposureOrMissingCyanideAntidoteScbaLotoLocked,
+      acrylonitrileHcnProcessOperationPermitted: false,
+      action: "lock_acrylonitrile_hcn_line_break_until_scba_cyanokit_and_loto_verified",
+      blockedReason:
+        "Ambient acrylonitrile (>=2.0 ppm OSHA 1910.1045 TWA) or HCN (>=4.7 ppm ceiling) detected or line-break/entry requested without verified HCN caustic-hypochlorite scrubber, positive-pressure SCBA, Cyanokit hydroxocobalamin antidote, and mechanical DBB LOTO.",
+    };
+  }
 
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    ammoxidationQuenchAcidFailureOrUnconvertedNh3CarryoverPreempted: false,
+    hcnAcrylonitrileAlkalinePolymerizationRunawayInterlocked: false,
+    acrylonitrileHcnExposureOrMissingCyanideAntidoteScbaLotoLocked: false,
+    acrylonitrileHcnProcessOperationPermitted: true,
+    action: "allow_verified_acrylonitrile_sohio_ammoxidation_and_hcn_recovery_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpComfortNoiseDtxSidGuardInput {
+  sessionId: string;
+  cnPayloadBytes: number;
+  cnNoiseLevelNegativeDbov: number;
+  cnReservedMsbBitZero: boolean;
+  dtxSidUpdateFramesPerSecond: number;
+  hangoverFramesBeforeDtx: number;
+  srtpConfidentialityRequired: boolean;
+  constantSizeSrtpPaddingApplied: boolean;
+}
+
+export interface WebrtcSipRtpComfortNoiseDtxSidGuardAssessment {
+  policyCode: "P252-WEBRTC-SIP-RTP-COMFORT-NOISE-DTX-SID-RFC3389-RFC6716-RFC4867-CN-NOISE-LEVEL-SPECTRAL-REFLECTION-COEFFICIENT-OVERREAD-DTX-SID-UPDATE-RATE-AMPLIFICATION-FLOOD-AND-SRTP-VAD-SILENCE-LENGTH-SIDE-CHANNEL-GUARD";
+  sessionId: string;
+  rfc3389CnPayloadOverreadOrNoiseLevelInvalidDropped: boolean;
+  dtxSidUpdateFloodOrMissingHangoverStateDesyncBlocked: boolean;
+  srtpVadSilenceLengthTrafficAnalysisLeakBlocked: boolean;
+  rtpComfortNoiseOrDtxSidPacketAccepted: boolean;
+  action:
+    | "drop_rfc3389_cn_spectral_overread_or_acoustic_blast_noise_level_in_0ms"
+    | "reject_dtx_sid_update_flood_or_missing_hangover_plc_desync"
+    | "reject_unpadded_srtp_dtx_sid_vad_length_side_channel_leak"
+    | "forward_verified_rfc3389_cn_and_dtx_sid_comfort_noise_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpComfortNoiseDtxSidRfc3389Rfc6716Rfc4867CnNoiseLevelSpectralReflectionCoefficientOverreadDtxSidUpdateRateAmplificationFloodAndSrtpVadSilenceLengthSideChannelGuard(
+  input: WebrtcSipRtpComfortNoiseDtxSidGuardInput
+): WebrtcSipRtpComfortNoiseDtxSidGuardAssessment {
+  const policyCode =
+    "P252-WEBRTC-SIP-RTP-COMFORT-NOISE-DTX-SID-RFC3389-RFC6716-RFC4867-CN-NOISE-LEVEL-SPECTRAL-REFLECTION-COEFFICIENT-OVERREAD-DTX-SID-UPDATE-RATE-AMPLIFICATION-FLOOD-AND-SRTP-VAD-SILENCE-LENGTH-SIDE-CHANNEL-GUARD" as const;
+
+  const rfc3389CnPayloadOverreadOrNoiseLevelInvalidDropped =
+    input.cnPayloadBytes < 1 ||
+    input.cnPayloadBytes > 13 ||
+    input.cnNoiseLevelNegativeDbov < 10 ||
+    input.cnNoiseLevelNegativeDbov > 127 ||
+    !input.cnReservedMsbBitZero;
+
+  const dtxSidUpdateFloodOrMissingHangoverStateDesyncBlocked =
+    input.dtxSidUpdateFramesPerSecond > 25 ||
+    input.hangoverFramesBeforeDtx < 3;
+
+  const srtpVadSilenceLengthTrafficAnalysisLeakBlocked =
+    input.srtpConfidentialityRequired && !input.constantSizeSrtpPaddingApplied;
+
+  if (rfc3389CnPayloadOverreadOrNoiseLevelInvalidDropped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc3389CnPayloadOverreadOrNoiseLevelInvalidDropped,
+      dtxSidUpdateFloodOrMissingHangoverStateDesyncBlocked,
+      srtpVadSilenceLengthTrafficAnalysisLeakBlocked,
+      rtpComfortNoiseOrDtxSidPacketAccepted: false,
+      action: "drop_rfc3389_cn_spectral_overread_or_acoustic_blast_noise_level_in_0ms",
+      blockedReason:
+        "RFC 3389 Comfort Noise payload length (<1 or >13 bytes LPC reflection model order), non-zero reserved MSB bit, or acoustic-blast noise level (>-10 dBov or <-127 dBov) detected; dropped packet in 0ms.",
+    };
+  }
+
+  if (dtxSidUpdateFloodOrMissingHangoverStateDesyncBlocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc3389CnPayloadOverreadOrNoiseLevelInvalidDropped,
+      dtxSidUpdateFloodOrMissingHangoverStateDesyncBlocked,
+      srtpVadSilenceLengthTrafficAnalysisLeakBlocked,
+      rtpComfortNoiseOrDtxSidPacketAccepted: false,
+      action: "reject_dtx_sid_update_flood_or_missing_hangover_plc_desync",
+      blockedReason:
+        "DTX SID_UPDATE frame rate (>25 fps micro-packet flood) or missing speech-to-silence hangover frames (<3 frames) detected; rejected to prevent PLC/CN filter state oscillation and CPU exhaustion.",
+    };
+  }
+
+  if (srtpVadSilenceLengthTrafficAnalysisLeakBlocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc3389CnPayloadOverreadOrNoiseLevelInvalidDropped,
+      dtxSidUpdateFloodOrMissingHangoverStateDesyncBlocked,
+      srtpVadSilenceLengthTrafficAnalysisLeakBlocked,
+      rtpComfortNoiseOrDtxSidPacketAccepted: false,
+      action: "reject_unpadded_srtp_dtx_sid_vad_length_side_channel_leak",
+      blockedReason:
+        "Unpadded variable-length SRTP DTX/SID silence frames leak voice-activity (VAD) phoneme and word timing boundaries; rejected until constant-size SRTP padding is applied.",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc3389CnPayloadOverreadOrNoiseLevelInvalidDropped: false,
+    dtxSidUpdateFloodOrMissingHangoverStateDesyncBlocked: false,
+    srtpVadSilenceLengthTrafficAnalysisLeakBlocked: false,
+    rtpComfortNoiseOrDtxSidPacketAccepted: true,
+    action: "forward_verified_rfc3389_cn_and_dtx_sid_comfort_noise_packet",
+    blockedReason: "none",
+  };
+}
