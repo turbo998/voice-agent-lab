@@ -25915,6 +25915,211 @@ export function evaluateWebrtcSipRtpAv1VideoPayloadDependencyDescriptorRfc9626Ob
   };
 }
 
+export interface BisphenolAPolycarbonatePhenolAcetoneCondensationInterfacialPhosgenationNfpa30Nfpa652ApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  phosgenationOffGasFreeCocl2Ppm: number;
+  causticScrubberNaohWtPct: number;
+  interfacialPhosgenationTempC: number;
+  bpaIonExchangeResinBedTempC: number;
+  bpaPrillingTowerDustGPerM3: number;
+  phenolVacuumColumnOxygenVolPct: number;
+  ambientPhosgenePpm: number;
+  ambientDichloromethanePpm: number;
+  ambientPhenolPpm: number;
+  colorimetricPhosgeneBadgeAndCausticVentVerified: boolean;
+  pcPhosgenationOrBpaVesselLineBreakRequested: boolean;
+  positivePressureScbaAndDbbLotoVerified: boolean;
+}
+
+export interface BisphenolAPolycarbonatePhenolAcetoneCondensationInterfacialPhosgenationNfpa30Nfpa652ApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P271-BISPHENOL-A-BPA-POLYCARBONATE-PC-PHENOL-ACETONE-ION-EXCHANGE-CONDENSATION-INTERFACIAL-PHOSGENATION-NFPA30-NFPA652-APIRP521-OSHA1910119-OSHA19101000-PHOSGENE-BREAKTHROUGH-BPA-DUST-AND-COCL2-CH2CL2-SCBA-LOTO-GUARD";
+  sessionId: string;
+  phosgeneBreakthroughOrScrubberDepletionPreempted: boolean;
+  bpaResinThermalOrPrillingDustDeflagrationInterlocked: boolean;
+  osha19101000Cocl2Ch2cl2PhenolOrScbaLotoLocked: boolean;
+  bpaPolycarbonateOperationPermitted: boolean;
+  action:
+    | "trip_pc_phosgene_feed_dbb_and_flood_emergency_caustic_ammonia_scrubber_in_0ms"
+    | "isolate_bpa_resin_reactor_cut_reboiler_steam_and_inert_bpa_prilling_tower_with_n2"
+    | "lock_bpa_pc_phosgenation_train_until_cocl2_badge_scrubber_scba_and_dbb_loto_verified"
+    | "allow_verified_bpa_and_polycarbonate_interfacial_operation";
+  blockedReason: string;
+}
+
+export function evaluateBisphenolAPolycarbonatePhenolAcetoneCondensationInterfacialPhosgenationNfpa30Nfpa652ApiRp521Osha1910119Osha19101000PhosgeneBreakthroughBpaDustAndCocl2Ch2cl2ScbaLotoGuard(
+  input: BisphenolAPolycarbonatePhenolAcetoneCondensationInterfacialPhosgenationNfpa30Nfpa652ApiRp521Osha1910119Osha19101000GuardInput
+): BisphenolAPolycarbonatePhenolAcetoneCondensationInterfacialPhosgenationNfpa30Nfpa652ApiRp521Osha1910119Osha19101000GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const phosgeneBreakthroughOrScrubberDepletionPreempted =
+    input.phosgenationOffGasFreeCocl2Ppm >= 0.5 ||
+    input.causticScrubberNaohWtPct < 4.0 ||
+    input.interfacialPhosgenationTempC >= 48.0;
+
+  if (phosgeneBreakthroughOrScrubberDepletionPreempted) {
+    blockedReasons.push(
+      `Polycarbonate interfacial phosgenation off-gas COCl2 breakthrough, caustic scrubber NaOH depletion, or CH2Cl2 reflux thermal excursion (offgas_cocl2=${input.phosgenationOffGasFreeCocl2Ppm} ppm, scrubber_naoh=${input.causticScrubberNaohWtPct} wt%, temp=${input.interfacialPhosgenationTempC} C)`
+    );
+  }
+
+  const bpaResinThermalOrPrillingDustDeflagrationInterlocked =
+    input.bpaIonExchangeResinBedTempC >= 105.0 ||
+    input.bpaPrillingTowerDustGPerM3 >= 20.0 ||
+    input.phenolVacuumColumnOxygenVolPct >= 0.5;
+
+  if (bpaResinThermalOrPrillingDustDeflagrationInterlocked) {
+    blockedReasons.push(
+      `BPA sulfonated resin desulfonation thermal runaway, prilling tower dust deflagration risk, or phenol vacuum column O2 ingress (resin_temp=${input.bpaIonExchangeResinBedTempC} C, bpa_dust=${input.bpaPrillingTowerDustGPerM3} g/m3, column_o2=${input.phenolVacuumColumnOxygenVolPct} vol%)`
+    );
+  }
+
+  const osha19101000Cocl2Ch2cl2PhenolOrScbaLotoLocked =
+    input.ambientPhosgenePpm >= 0.1 ||
+    input.ambientDichloromethanePpm >= 25.0 ||
+    input.ambientPhenolPpm >= 5.0 ||
+    !input.colorimetricPhosgeneBadgeAndCausticVentVerified ||
+    (input.pcPhosgenationOrBpaVesselLineBreakRequested &&
+      !input.positivePressureScbaAndDbbLotoVerified);
+
+  if (osha19101000Cocl2Ch2cl2PhenolOrScbaLotoLocked) {
+    blockedReasons.push(
+      `OSHA 1910.1000 / 1910.1052 COCl2, CH2Cl2, or phenol PEL excursion or unverified phosgene badge/SCBA/DBB LOTO (cocl2=${input.ambientPhosgenePpm} ppm, ch2cl2=${input.ambientDichloromethanePpm} ppm, phenol=${input.ambientPhenolPpm} ppm, badge_vent=${input.colorimetricPhosgeneBadgeAndCausticVentVerified}, line_break=${input.pcPhosgenationOrBpaVesselLineBreakRequested}, scba_loto=${input.positivePressureScbaAndDbbLotoVerified})`
+    );
+  }
+
+  const bpaPolycarbonateOperationPermitted =
+    !phosgeneBreakthroughOrScrubberDepletionPreempted &&
+    !bpaResinThermalOrPrillingDustDeflagrationInterlocked &&
+    !osha19101000Cocl2Ch2cl2PhenolOrScbaLotoLocked;
+
+  let action: BisphenolAPolycarbonatePhenolAcetoneCondensationInterfacialPhosgenationNfpa30Nfpa652ApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_bpa_and_polycarbonate_interfacial_operation";
+
+  if (phosgeneBreakthroughOrScrubberDepletionPreempted) {
+    action =
+      "trip_pc_phosgene_feed_dbb_and_flood_emergency_caustic_ammonia_scrubber_in_0ms";
+  } else if (bpaResinThermalOrPrillingDustDeflagrationInterlocked) {
+    action =
+      "isolate_bpa_resin_reactor_cut_reboiler_steam_and_inert_bpa_prilling_tower_with_n2";
+  } else if (osha19101000Cocl2Ch2cl2PhenolOrScbaLotoLocked) {
+    action =
+      "lock_bpa_pc_phosgenation_train_until_cocl2_badge_scrubber_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P271-BISPHENOL-A-BPA-POLYCARBONATE-PC-PHENOL-ACETONE-ION-EXCHANGE-CONDENSATION-INTERFACIAL-PHOSGENATION-NFPA30-NFPA652-APIRP521-OSHA1910119-OSHA19101000-PHOSGENE-BREAKTHROUGH-BPA-DUST-AND-COCL2-CH2CL2-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    phosgeneBreakthroughOrScrubberDepletionPreempted,
+    bpaResinThermalOrPrillingDustDeflagrationInterlocked,
+    osha19101000Cocl2Ch2cl2PhenolOrScbaLotoLocked,
+    bpaPolycarbonateOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpHevcH265VideoPayloadRfc7798ApFuPaciGuardInput {
+  sessionId: string;
+  declaredNaluBytes: number;
+  remainingRtpPayloadBytes: number;
+  fuHeaderStartAndEndBothSet: boolean;
+  paciHeaderExtensionLengthOverread: boolean;
+  fuContinuationWithoutOpenFragment: boolean;
+  idrOrCraSliceWithoutVpsSpsPps: boolean;
+  donlCrossPacketOrderDesync: boolean;
+  decodedLumaSamples: number;
+  spsMaxSubLayersMinus1: number;
+  tileAndSliceCount: number;
+}
+
+export interface WebrtcSipRtpHevcH265VideoPayloadRfc7798ApFuPaciGuardAssessment {
+  policyCode: "P272-WEBRTC-SIP-RTP-HEVC-H265-VIDEO-PAYLOAD-RFC7798-AP-NALU-LENGTH-OVERREAD-FU-S-E-DUAL-BIT-DESYNC-DONL-WRAP-AND-SPS-4K-TILE-AMPLIFICATION-GUARD";
+  sessionId: string;
+  hevcApNaluOverreadOrInvalidFuPaciDropped: boolean;
+  hevcFragmentOrParameterSetDesyncBlocked: boolean;
+  hevcSpsLumaOrTileAmplificationClamped: boolean;
+  hevcRtpVideoPacketAccepted: boolean;
+  action:
+    | "drop_hevc_rtp_ap_nalu_overread_or_invalid_fu_paci_header_in_0ms"
+    | "discard_desynced_hevc_fu_or_missing_vps_sps_pps_and_emit_rtcp_pli"
+    | "clamp_hevc_sps_4k_luma_budget_and_tile_sublayer_ceiling"
+    | "forward_verified_hevc_h265_rtp_video_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpHevcH265VideoPayloadRfc7798ApNaluLengthOverreadFuSEDualBitDesyncDonlWrapAndSps4kTileAmplificationGuard(
+  input: WebrtcSipRtpHevcH265VideoPayloadRfc7798ApFuPaciGuardInput
+): WebrtcSipRtpHevcH265VideoPayloadRfc7798ApFuPaciGuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const hevcApNaluOverreadOrInvalidFuPaciDropped =
+    input.declaredNaluBytes <= 0 ||
+    input.declaredNaluBytes > input.remainingRtpPayloadBytes ||
+    input.fuHeaderStartAndEndBothSet ||
+    input.paciHeaderExtensionLengthOverread;
+
+  if (hevcApNaluOverreadOrInvalidFuPaciDropped) {
+    blockedReasons.push(
+      `RFC 7798 HEVC AP NALU length overread, illegal FU S=1&E=1 dual-bit header, or PACI extension overread (declared_nalu=${input.declaredNaluBytes}B, remaining=${input.remainingRtpPayloadBytes}B, fu_s_and_e=${input.fuHeaderStartAndEndBothSet}, paci_overread=${input.paciHeaderExtensionLengthOverread})`
+    );
+  }
+
+  const hevcFragmentOrParameterSetDesyncBlocked =
+    input.fuContinuationWithoutOpenFragment ||
+    input.idrOrCraSliceWithoutVpsSpsPps ||
+    input.donlCrossPacketOrderDesync;
+
+  if (hevcFragmentOrParameterSetDesyncBlocked) {
+    blockedReasons.push(
+      `RFC 7798 HEVC FU continuation without open fragment, IDR/CRA slice without VPS/SPS/PPS, or DONL order desync (orphan_fu=${input.fuContinuationWithoutOpenFragment}, missing_vps_sps_pps=${input.idrOrCraSliceWithoutVpsSpsPps}, donl_desync=${input.donlCrossPacketOrderDesync})`
+    );
+  }
+
+  const hevcSpsLumaOrTileAmplificationClamped =
+    input.decodedLumaSamples > 8294400 ||
+    input.spsMaxSubLayersMinus1 > 6 ||
+    input.tileAndSliceCount > 64;
+
+  if (hevcSpsLumaOrTileAmplificationClamped) {
+    blockedReasons.push(
+      `HEVC SPS >4K UHD luma sample budget or tile/sub-layer ceiling exceeded (luma_samples=${input.decodedLumaSamples}, max_sub_layers_minus1=${input.spsMaxSubLayersMinus1}, tiles_slices=${input.tileAndSliceCount})`
+    );
+  }
+
+  const hevcRtpVideoPacketAccepted =
+    !hevcApNaluOverreadOrInvalidFuPaciDropped &&
+    !hevcFragmentOrParameterSetDesyncBlocked &&
+    !hevcSpsLumaOrTileAmplificationClamped;
+
+  let action: WebrtcSipRtpHevcH265VideoPayloadRfc7798ApFuPaciGuardAssessment["action"] =
+    "forward_verified_hevc_h265_rtp_video_packet";
+
+  if (hevcApNaluOverreadOrInvalidFuPaciDropped) {
+    action = "drop_hevc_rtp_ap_nalu_overread_or_invalid_fu_paci_header_in_0ms";
+  } else if (hevcFragmentOrParameterSetDesyncBlocked) {
+    action =
+      "discard_desynced_hevc_fu_or_missing_vps_sps_pps_and_emit_rtcp_pli";
+  } else if (hevcSpsLumaOrTileAmplificationClamped) {
+    action = "clamp_hevc_sps_4k_luma_budget_and_tile_sublayer_ceiling";
+  }
+
+  return {
+    policyCode:
+      "P272-WEBRTC-SIP-RTP-HEVC-H265-VIDEO-PAYLOAD-RFC7798-AP-NALU-LENGTH-OVERREAD-FU-S-E-DUAL-BIT-DESYNC-DONL-WRAP-AND-SPS-4K-TILE-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    hevcApNaluOverreadOrInvalidFuPaciDropped,
+    hevcFragmentOrParameterSetDesyncBlocked,
+    hevcSpsLumaOrTileAmplificationClamped,
+    hevcRtpVideoPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
 
 
 
