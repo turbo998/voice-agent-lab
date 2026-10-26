@@ -24020,3 +24020,219 @@ export function evaluateWebrtcSipRtpComfortNoiseDtxSidRfc3389Rfc6716Rfc4867CnNoi
     blockedReason: "none",
   };
 }
+
+
+// ============================================================================
+// Stage 130 (130-Stage Milestone): P253 (Styrene Monomer EB Dehydrogenation &
+// Vacuum Distillation Guard) & P254 (WebRTC/SIP RTP-MIDI RFC 6295 / RFC 4696 Guard)
+// ============================================================================
+
+export interface StyreneMonomerEbDehydrogenationVacuumDistillationGuardInput {
+  sessionId: string;
+  ebDehydrogenatorReactorTempC: number;
+  steamToEthylbenzeneMassRatio: number;
+  reactorPressureRiseKpaPerMin: number;
+  styreneVacuumColumnBottomTempC: number;
+  tbcRetarderConcentrationPpm: number;
+  dissolvedOxygenPpm: number;
+  styreneColumnAbsolutePressureKpa: number;
+  ambientStyreneVaporPpm: number;
+  ambientBenzeneVaporPpm: number;
+  scrubberPositivePressureScbaAndPopcornWettingVerified: boolean;
+  mechanicalDbbLotoVerified: boolean;
+  requestsLineBreakOrColumnEntry: boolean;
+}
+
+export interface StyreneMonomerEbDehydrogenationVacuumDistillationGuardAssessment {
+  policyCode: "P253-STYRENE-MONOMER-ETHYLBENZENE-STEAM-DEHYDROGENATION-VACUUM-DISTILLATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-STEAM-TO-EB-RATIO-COKING-RUNAWAY-TBC-DNBP-INHIBITOR-O2-DEPLETION-THERMAL-POLYMERIZATION-AND-STYRENE-BENZENE-SCBA-LOTO-GUARD";
+  sessionId: string;
+  ebDehydrogenatorSteamRatioDropOrThermalCrackingRunawayPreempted: boolean;
+  styreneVacuumColumnPolymerizationRunawayInterlocked: boolean;
+  styreneBenzeneExposureOrMissingPolymerPopcornLotoLocked: boolean;
+  styreneMonomerProcessOperationPermitted: boolean;
+  action:
+    | "trip_ethylbenzene_feed_dbb_and_maintain_superheated_steam_n2_purge"
+    | "cut_styrene_column_reboiler_and_inject_emergency_tbc_ptz_shortstop"
+    | "lock_styrene_vacuum_column_line_break_until_scba_popcorn_wetting_and_loto_verified"
+    | "allow_verified_ethylbenzene_dehydrogenation_and_styrene_vacuum_distillation";
+  blockedReason: string;
+}
+
+export function evaluateStyreneMonomerEthylbenzeneSteamDehydrogenationVacuumDistillationNfpa69ApiRp521Osha1910119Osha19101000SteamToEbRatioCokingRunawayTbcDnbpInhibitorO2DepletionThermalPolymerizationAndStyreneBenzeneScbaLotoGuard(
+  input: StyreneMonomerEbDehydrogenationVacuumDistillationGuardInput
+): StyreneMonomerEbDehydrogenationVacuumDistillationGuardAssessment {
+  const policyCode =
+    "P253-STYRENE-MONOMER-ETHYLBENZENE-STEAM-DEHYDROGENATION-VACUUM-DISTILLATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-STEAM-TO-EB-RATIO-COKING-RUNAWAY-TBC-DNBP-INHIBITOR-O2-DEPLETION-THERMAL-POLYMERIZATION-AND-STYRENE-BENZENE-SCBA-LOTO-GUARD" as const;
+
+  const ebDehydrogenatorSteamRatioDropOrThermalCrackingRunawayPreempted =
+    input.ebDehydrogenatorReactorTempC > 655.0 ||
+    input.steamToEthylbenzeneMassRatio < 1.1 ||
+    input.reactorPressureRiseKpaPerMin > 28.0;
+
+  const styreneVacuumColumnPolymerizationRunawayInterlocked =
+    input.styreneVacuumColumnBottomTempC > 108.0 ||
+    input.tbcRetarderConcentrationPpm < 15.0 ||
+    input.dissolvedOxygenPpm < 3.0 ||
+    input.dissolvedOxygenPpm > 800.0 ||
+    input.styreneColumnAbsolutePressureKpa > 9.5;
+
+  const styreneBenzeneExposureOrMissingPolymerPopcornLotoLocked =
+    input.ambientStyreneVaporPpm >= 50.0 ||
+    input.ambientBenzeneVaporPpm >= 1.0 ||
+    (input.requestsLineBreakOrColumnEntry &&
+      (!input.scrubberPositivePressureScbaAndPopcornWettingVerified ||
+        !input.mechanicalDbbLotoVerified));
+
+  if (ebDehydrogenatorSteamRatioDropOrThermalCrackingRunawayPreempted) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ebDehydrogenatorSteamRatioDropOrThermalCrackingRunawayPreempted,
+      styreneVacuumColumnPolymerizationRunawayInterlocked,
+      styreneBenzeneExposureOrMissingPolymerPopcornLotoLocked,
+      styreneMonomerProcessOperationPermitted: false,
+      action: "trip_ethylbenzene_feed_dbb_and_maintain_superheated_steam_n2_purge",
+      blockedReason:
+        "Ethylbenzene steam dehydrogenator temperature (>655.0 C), Steam:EB mass ratio (<1.1 causing Fe2O3/K2CO3 catalyst coking and hydrogenolysis thermal runaway), or pressure rise (>28.0 kPa/min) breached NFPA 69 / API RP 521 limits; tripped EB hydrocarbon feed DBB valves in 0ms while maintaining superheated steam and N2 purge.",
+    };
+  }
+
+  if (styreneVacuumColumnPolymerizationRunawayInterlocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ebDehydrogenatorSteamRatioDropOrThermalCrackingRunawayPreempted,
+      styreneVacuumColumnPolymerizationRunawayInterlocked,
+      styreneBenzeneExposureOrMissingPolymerPopcornLotoLocked,
+      styreneMonomerProcessOperationPermitted: false,
+      action: "cut_styrene_column_reboiler_and_inject_emergency_tbc_ptz_shortstop",
+      blockedReason:
+        "Styrene vacuum column bottom temperature (>108.0 C), TBC retarder depletion (<15.0 ppm), dissolved O2 outside 3.0..800.0 ppm window, or vacuum loss (>9.5 kPa abs) risks catastrophic exothermic polystyrene runaway; cut reboiler heating and injected emergency TBC + phenothiazine (PTZ) short-stop.",
+    };
+  }
+
+  if (styreneBenzeneExposureOrMissingPolymerPopcornLotoLocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ebDehydrogenatorSteamRatioDropOrThermalCrackingRunawayPreempted,
+      styreneVacuumColumnPolymerizationRunawayInterlocked,
+      styreneBenzeneExposureOrMissingPolymerPopcornLotoLocked,
+      styreneMonomerProcessOperationPermitted: false,
+      action: "lock_styrene_vacuum_column_line_break_until_scba_popcorn_wetting_and_loto_verified",
+      blockedReason:
+        "Ambient styrene (>=50.0 ppm) or byproduct benzene (>=1.0 ppm OSHA 1910.1028 PEL) detected or vacuum column entry requested without verified vapor scrubber, positive-pressure SCBA, pyrophoric popcorn polymer water-wetting, and mechanical DBB LOTO.",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    ebDehydrogenatorSteamRatioDropOrThermalCrackingRunawayPreempted: false,
+    styreneVacuumColumnPolymerizationRunawayInterlocked: false,
+    styreneBenzeneExposureOrMissingPolymerPopcornLotoLocked: false,
+    styreneMonomerProcessOperationPermitted: true,
+    action: "allow_verified_ethylbenzene_dehydrogenation_and_styrene_vacuum_distillation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpMidiSynthesizedAudioGuardInput {
+  sessionId: string;
+  declaredMidiCommandSectionBytes: number;
+  declaredRecoveryJournalBytes: number;
+  remainingPacketPayloadBytes: number;
+  maxDeltaTimeVlqBytes: number;
+  simultaneousActivePolyphonyVoices: number;
+  midiCommandsInPacket: number;
+  midiContainsSysEx0xF0Command: boolean;
+}
+
+export interface WebrtcSipRtpMidiSynthesizedAudioGuardAssessment {
+  policyCode: "P254-WEBRTC-SIP-RTP-MIDI-SYNTHESIZED-AUDIO-RFC6295-RFC4696-DELTA-TIME-VLQ-CONTINUATION-BIT-OVERFLOW-RECOVERY-JOURNAL-CHAPTER-POLYPHONY-VOICE-BOMB-AND-SYSEX-0XF0-FIRMWARE-COMMAND-SMUGGLING-GUARD";
+  sessionId: string;
+  rfc6295MidiCommandSectionOverreadOrVlqOverflowDropped: boolean;
+  midiNoteOnPolyphonyExhaustionOrSustainPedalBombBlocked: boolean;
+  midiSysEx0xF0FirmwareOrUniversalFileDumpSmugglingBlocked: boolean;
+  rtpMidiPacketAccepted: boolean;
+  action:
+    | "drop_rfc6295_rtp_midi_vlq_overflow_or_command_journal_overread_in_0ms"
+    | "reject_rtp_midi_polyphony_voice_exhaustion_or_sustain_journal_bomb"
+    | "reject_rtp_midi_sysex_0xf0_firmware_or_command_smuggling"
+    | "forward_verified_rfc6295_rtp_midi_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpMidiSynthesizedAudioRfc6295Rfc4696DeltaTimeVlqContinuationBitOverflowRecoveryJournalChapterPolyphonyVoiceBombAndSysex0xF0FirmwareCommandSmugglingGuard(
+  input: WebrtcSipRtpMidiSynthesizedAudioGuardInput
+): WebrtcSipRtpMidiSynthesizedAudioGuardAssessment {
+  const policyCode =
+    "P254-WEBRTC-SIP-RTP-MIDI-SYNTHESIZED-AUDIO-RFC6295-RFC4696-DELTA-TIME-VLQ-CONTINUATION-BIT-OVERFLOW-RECOVERY-JOURNAL-CHAPTER-POLYPHONY-VOICE-BOMB-AND-SYSEX-0XF0-FIRMWARE-COMMAND-SMUGGLING-GUARD" as const;
+
+  const rfc6295MidiCommandSectionOverreadOrVlqOverflowDropped =
+    input.declaredMidiCommandSectionBytes < 0 ||
+    input.declaredRecoveryJournalBytes < 0 ||
+    input.declaredMidiCommandSectionBytes + input.declaredRecoveryJournalBytes >
+      input.remainingPacketPayloadBytes ||
+    input.maxDeltaTimeVlqBytes > 4;
+
+  const midiNoteOnPolyphonyExhaustionOrSustainPedalBombBlocked =
+    input.simultaneousActivePolyphonyVoices > 64 ||
+    input.midiCommandsInPacket > 200;
+
+  const midiSysEx0xF0FirmwareOrUniversalFileDumpSmugglingBlocked =
+    input.midiContainsSysEx0xF0Command;
+
+  if (rfc6295MidiCommandSectionOverreadOrVlqOverflowDropped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc6295MidiCommandSectionOverreadOrVlqOverflowDropped,
+      midiNoteOnPolyphonyExhaustionOrSustainPedalBombBlocked,
+      midiSysEx0xF0FirmwareOrUniversalFileDumpSmugglingBlocked,
+      rtpMidiPacketAccepted: false,
+      action: "drop_rfc6295_rtp_midi_vlq_overflow_or_command_journal_overread_in_0ms",
+      blockedReason:
+        "RFC 6295 RTP-MIDI command section + recovery journal declared bytes exceed remaining payload or delta-time VLQ exceeds 4 bytes (28-bit continuation overflow); dropped packet in 0ms.",
+    };
+  }
+
+  if (midiNoteOnPolyphonyExhaustionOrSustainPedalBombBlocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc6295MidiCommandSectionOverreadOrVlqOverflowDropped,
+      midiNoteOnPolyphonyExhaustionOrSustainPedalBombBlocked,
+      midiSysEx0xF0FirmwareOrUniversalFileDumpSmugglingBlocked,
+      rtpMidiPacketAccepted: false,
+      action: "reject_rtp_midi_polyphony_voice_exhaustion_or_sustain_journal_bomb",
+      blockedReason:
+        "RTP-MIDI simultaneous polyphony voices (>64) or per-packet command count (>200) exceeds synthesizer DSP safety ceiling; rejected polyphony exhaustion bomb.",
+    };
+  }
+
+  if (midiSysEx0xF0FirmwareOrUniversalFileDumpSmugglingBlocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc6295MidiCommandSectionOverreadOrVlqOverflowDropped,
+      midiNoteOnPolyphonyExhaustionOrSustainPedalBombBlocked,
+      midiSysEx0xF0FirmwareOrUniversalFileDumpSmugglingBlocked,
+      rtpMidiPacketAccepted: false,
+      action: "reject_rtp_midi_sysex_0xf0_firmware_or_command_smuggling",
+      blockedReason:
+        "RTP-MIDI System Exclusive (SysEx 0xF0..0xF7) command or Chapter X journal detected; blocked to prevent synthesizer firmware flash and Universal File Dump smuggling.",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc6295MidiCommandSectionOverreadOrVlqOverflowDropped: false,
+    midiNoteOnPolyphonyExhaustionOrSustainPedalBombBlocked: false,
+    midiSysEx0xF0FirmwareOrUniversalFileDumpSmugglingBlocked: false,
+    rtpMidiPacketAccepted: true,
+    action: "forward_verified_rfc6295_rtp_midi_packet",
+    blockedReason: "none",
+  };
+}
