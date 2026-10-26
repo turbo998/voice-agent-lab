@@ -22492,6 +22492,198 @@ export function evaluateWebrtcSipRtpAbsCaptureTimePlayoutDelayCvoRfc5285Ts26114U
   };
 }
 
+// ============================================================================
+// Stage 122 · P237 — Polysilicon (SiHCl3 / SiH2Cl2) Siemens CVD Deposition
+// Reactor & SiCl4 Fluidized-Bed Hydrochlorination Safety Guard
+// (NFPA 69 / SEMI S2 & S18 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000)
+// ============================================================================
+
+export interface PolysiliconSiemensCvdHydrochlorinationGuardInput {
+  reactorUnitId: string;
+  cvdBellJarCoolingWaterLeakH2Ppm: number;
+  hydrochlorinatorReactorTempC: number;
+  hydrochlorinatorPressureBarg: number;
+  ventHeaderOxygenVolPct: number;
+  bellJarRodSurfaceTempC: number;
+  trichlorosilaneFeedIncreaseRequested: boolean;
+  ventScrubberPh: number;
+  scrubberSilicaSlurrySolidsWtPct: number;
+  offGasCryoCondenserTempC: number;
+  dichlorosilaneInRecycleMolPct: number;
+  ambientHydrogenChloridePpm: number;
+  ambientChlorosilanePpm: number;
+  bellJarOpenForHarvestRequested: boolean;
+  dryNitrogenPurgeWetAlkalinePassivationAndScbaLotoVerified: boolean;
+}
+
+export interface PolysiliconSiemensCvdHydrochlorinationGuardDecision {
+  policyCode: "P237-POLYSILICON-SIEMENS-CVD-HYDROCHLORINATION-NFPA69-SEMIS2-APIRP521-OSHA1910119-TRICHLOROSILANE-DICHLOROSILANE-AUTOIGNITION-BELL-JAR-COOLING-WATER-LEAK-CHLOROSILANE-LIME-SCRUBBER-AND-HCL-SIHCL3-SCBA-LOTO-GUARD";
+  reactorUnitId: string;
+  bellJarWaterLeakDcsAutoignitionOrRodMeltdownTripped: boolean;
+  siloxaneGelScrubberFoulingOrCryoCondenserCarryoverInterlocked: boolean;
+  hclChlorosilaneVaporOrUnpassivatedBellJarHarvestLocked: boolean;
+  voiceCommandAllowed: boolean;
+  action:
+    | "allow_normal_polysilicon_siemens_cvd_and_hydrochlorination"
+    | "trip_cvd_thyristor_power_and_sihcl3_h2_dbb_purge_bell_jar_jacket_with_n2_and_route_to_lime_scrubber_in_0ms"
+    | "halt_sihcl3_vaporizer_ramp_boost_alkaline_scrubber_circulation_and_divert_sih2cl2_to_redistillation"
+    | "lock_bell_jar_hoist_and_enforce_dry_n2_purge_alkaline_siloxane_passivation_and_scba_loto";
+  blockedReason?: string;
+}
+
+export function evaluatePolysiliconSiemensCvdHydrochlorinationNfpa69SemiS2ApiRp521Osha1910119TrichlorosilaneDichlorosilaneAutoignitionBellJarCoolingWaterLeakChlorosilaneLimeScrubberAndHclSihcl3ScbaLotoGuard(
+  input: PolysiliconSiemensCvdHydrochlorinationGuardInput,
+): PolysiliconSiemensCvdHydrochlorinationGuardDecision {
+  const bellJarWaterLeakDcsAutoignitionOrRodMeltdownTripped =
+    input.cvdBellJarCoolingWaterLeakH2Ppm > 50 ||
+    input.hydrochlorinatorReactorTempC > 565 ||
+    input.hydrochlorinatorPressureBarg > 32.0 ||
+    input.ventHeaderOxygenVolPct >= 0.4 ||
+    input.bellJarRodSurfaceTempC > 1160;
+
+  const siloxaneGelScrubberFoulingOrCryoCondenserCarryoverInterlocked =
+    input.ventScrubberPh < 8.5 ||
+    input.scrubberSilicaSlurrySolidsWtPct > 12.0 ||
+    input.offGasCryoCondenserTempC > -32.0 ||
+    input.dichlorosilaneInRecycleMolPct > 14.0;
+
+  const hclChlorosilaneVaporOrUnpassivatedBellJarHarvestLocked =
+    input.ambientHydrogenChloridePpm >= 5.0 ||
+    input.ambientChlorosilanePpm >= 2.0 ||
+    (input.bellJarOpenForHarvestRequested &&
+      !input.dryNitrogenPurgeWetAlkalinePassivationAndScbaLotoVerified);
+
+  let action: PolysiliconSiemensCvdHydrochlorinationGuardDecision["action"] =
+    "allow_normal_polysilicon_siemens_cvd_and_hydrochlorination";
+  let voiceCommandAllowed = true;
+  let blockedReason: string | undefined;
+
+  if (bellJarWaterLeakDcsAutoignitionOrRodMeltdownTripped) {
+    action =
+      "trip_cvd_thyristor_power_and_sihcl3_h2_dbb_purge_bell_jar_jacket_with_n2_and_route_to_lime_scrubber_in_0ms";
+    voiceCommandAllowed = false;
+    blockedReason = `NFPA 69 / SEMI S2 / API RP 521 / OSHA 1910.119 Polysilicon Siemens CVD Bell-Jar Water Ingress, SiH2Cl2/SiHCl3 Autoignition or Rod Meltdown Preempted on ${input.reactorUnitId}: jacketH2Leak=${input.cvdBellJarCoolingWaterLeakH2Ppm} ppm (max 50 ppm), hydrochlorinator=${input.hydrochlorinatorReactorTempC}°C/${input.hydrochlorinatorPressureBarg} barg (max 565°C/32.0 barg), ventO2=${input.ventHeaderOxygenVolPct} vol% (max <0.4 vol%), rodTemp=${input.bellJarRodSurfaceTempC}°C (max 1160°C).`;
+  } else if (siloxaneGelScrubberFoulingOrCryoCondenserCarryoverInterlocked) {
+    action =
+      "halt_sihcl3_vaporizer_ramp_boost_alkaline_scrubber_circulation_and_divert_sih2cl2_to_redistillation";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.119 / SEMI S18 Polysilicon Shock-Sensitive Polymeric Siloxane Scrubber Gelation or Off-Gas Cryo-Condenser Carryover Interlock on ${input.reactorUnitId}: scrubberPh=${input.ventScrubberPh} (min 8.5), slurrySolids=${input.scrubberSilicaSlurrySolidsWtPct} wt% (max 12.0 wt%), cryoCondenser=${input.offGasCryoCondenserTempC}°C (max -32.0°C), recycleDCS=${input.dichlorosilaneInRecycleMolPct} mol% (max 14.0 mol%).`;
+  } else if (hclChlorosilaneVaporOrUnpassivatedBellJarHarvestLocked) {
+    action =
+      "lock_bell_jar_hoist_and_enforce_dry_n2_purge_alkaline_siloxane_passivation_and_scba_loto";
+    voiceCommandAllowed = false;
+    blockedReason = `OSHA 1910.1000 / 1910.147 Polysilicon HCl / Chlorosilane Fume Release or Unpassivated Bell-Jar Harvest Opening Locked on ${input.reactorUnitId}: HCl=${input.ambientHydrogenChloridePpm} ppm (Ceiling <5.0 ppm, IDLH 50 ppm), SiHCl3=${input.ambientChlorosilanePpm} ppm (max <2.0 ppm), n2PurgePassivationAndScbaLoto=${input.dryNitrogenPurgeWetAlkalinePassivationAndScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P237-POLYSILICON-SIEMENS-CVD-HYDROCHLORINATION-NFPA69-SEMIS2-APIRP521-OSHA1910119-TRICHLOROSILANE-DICHLOROSILANE-AUTOIGNITION-BELL-JAR-COOLING-WATER-LEAK-CHLOROSILANE-LIME-SCRUBBER-AND-HCL-SIHCL3-SCBA-LOTO-GUARD",
+    reactorUnitId: input.reactorUnitId,
+    bellJarWaterLeakDcsAutoignitionOrRodMeltdownTripped,
+    siloxaneGelScrubberFoulingOrCryoCondenserCarryoverInterlocked,
+    hclChlorosilaneVaporOrUnpassivatedBellJarHarvestLocked,
+    voiceCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+// ============================================================================
+// Stage 122 · P238 — WebRTC & SIP RTCP XR Extended Reports (PT=207):
+// Loss/Duplicate RLE (BT=1/2/3), DLRR (BT=4/5) & VoIP Metrics (BT=7) Guard
+// (RFC 3611 / RFC 7002 / RFC 7266)
+// ============================================================================
+
+export interface WebrtcSipRtcpXrExtendedReportsVoipMetricsGuardInput {
+  sessionId: string;
+  rleDeclaredBlockLengthBytes: number;
+  packetRemainingBytes: number;
+  rleExpandedSequenceSpanCount: number;
+  rleZeroLengthOrUnterminatedChunkCount: number;
+  dlrrSubBlockCount: number;
+  dlrrComputedRttMs: number;
+  dlrrLrrTimestampUnmatchedOrZeroed: boolean;
+  voipMetricsRFactor: number;
+  voipMetricsMosLqTenths: number;
+  voipMetricsJbNominalMs: number;
+  voipMetricsJbMaxMs: number;
+  voipMetricsJbAbsMaxMs: number;
+  voipMetricsLossRateByte: number;
+  voipMetricsDiscardRateByte: number;
+}
+
+export interface WebrtcSipRtcpXrExtendedReportsVoipMetricsGuardDecision {
+  policyCode: "P238-WEBRTC-SIP-RTCP-XR-EXTENDED-REPORTS-VOIP-METRICS-RFC3611-RFC7002-RFC7266-RLE-CHUNK-BOMB-DLRR-RTT-SPOOF-AND-VOIP-METRICS-JB-MOS-INFLATION-GUARD";
+  sessionId: string;
+  rleExpansionBombOrBlockLengthOverreadDropped: boolean;
+  dlrrSubBlockFloodOrForgedLrrRttClamped: boolean;
+  voipMetricsMosJbInversionOrLossRateSpoofSanitized: boolean;
+  rtcpXrReportAccepted: boolean;
+  action:
+    | "allow_normal_rtcp_xr_extended_reports_and_voip_metrics"
+    | "drop_malformed_rtcp_xr_rle_expansion_bomb_or_block_overread_in_0ms"
+    | "clamp_dlrr_subblocks_and_freeze_ewma_non_sender_rtt_estimator"
+    | "sanitize_voip_metrics_bt7_and_pin_opus_fec_plc_to_verified_rtcp_rr";
+  blockedReason?: string;
+}
+
+export function evaluateWebrtcSipRtcpXrExtendedReportsVoipMetricsRfc3611Rfc7002Rfc7266RleChunkBombDlrrRttSpoofAndVoipMetricsJbMosInflationGuard(
+  input: WebrtcSipRtcpXrExtendedReportsVoipMetricsGuardInput,
+): WebrtcSipRtcpXrExtendedReportsVoipMetricsGuardDecision {
+  const rleExpansionBombOrBlockLengthOverreadDropped =
+    input.rleDeclaredBlockLengthBytes > input.packetRemainingBytes ||
+    input.rleExpandedSequenceSpanCount > 4096 ||
+    input.rleZeroLengthOrUnterminatedChunkCount > 8;
+
+  const dlrrSubBlockFloodOrForgedLrrRttClamped =
+    input.dlrrSubBlockCount > 16 ||
+    input.dlrrComputedRttMs < 0 ||
+    input.dlrrComputedRttMs > 15000 ||
+    input.dlrrLrrTimestampUnmatchedOrZeroed;
+
+  const voipMetricsMosJbInversionOrLossRateSpoofSanitized =
+    (input.voipMetricsRFactor > 100 && input.voipMetricsRFactor !== 127) ||
+    (input.voipMetricsMosLqTenths > 50 && input.voipMetricsMosLqTenths !== 127) ||
+    input.voipMetricsJbNominalMs > input.voipMetricsJbMaxMs ||
+    input.voipMetricsJbAbsMaxMs > 5000 ||
+    input.voipMetricsLossRateByte + input.voipMetricsDiscardRateByte > 256;
+
+  let action: WebrtcSipRtcpXrExtendedReportsVoipMetricsGuardDecision["action"] =
+    "allow_normal_rtcp_xr_extended_reports_and_voip_metrics";
+  let rtcpXrReportAccepted = true;
+  let blockedReason: string | undefined;
+
+  if (rleExpansionBombOrBlockLengthOverreadDropped) {
+    action =
+      "drop_malformed_rtcp_xr_rle_expansion_bomb_or_block_overread_in_0ms";
+    rtcpXrReportAccepted = false;
+    blockedReason = `RFC 3611 § 4.1-4.3 RTCP XR Loss/Duplicate RLE Block-Length Overread (${input.rleDeclaredBlockLengthBytes}B > ${input.packetRemainingBytes}B remaining) or Run-Length Expansion Bomb (span=${input.rleExpandedSequenceSpanCount} > 4096, zeroChunks=${input.rleZeroLengthOrUnterminatedChunkCount}) on ${input.sessionId}.`;
+  } else if (dlrrSubBlockFloodOrForgedLrrRttClamped) {
+    action =
+      "clamp_dlrr_subblocks_and_freeze_ewma_non_sender_rtt_estimator";
+    rtcpXrReportAccepted = false;
+    blockedReason = `RFC 3611 § 4.5 RTCP XR DLRR (BT=5) Sub-Block Flood (${input.dlrrSubBlockCount} > 16) or Forged LRR/DLRR Non-Sender RTT Poisoning (rtt=${input.dlrrComputedRttMs}ms, unmatchedLrr=${input.dlrrLrrTimestampUnmatchedOrZeroed}) on ${input.sessionId}.`;
+  } else if (voipMetricsMosJbInversionOrLossRateSpoofSanitized) {
+    action =
+      "sanitize_voip_metrics_bt7_and_pin_opus_fec_plc_to_verified_rtcp_rr";
+    rtcpXrReportAccepted = false;
+    blockedReason = `RFC 3611 § 4.7 / RFC 7002 RTCP XR VoIP Metrics (BT=7) Telemetry Spoofing (R=${input.voipMetricsRFactor}, MOS-LQ=${input.voipMetricsMosLqTenths}/10, JB nominal=${input.voipMetricsJbNominalMs}ms > max=${input.voipMetricsJbMaxMs}ms, absMax=${input.voipMetricsJbAbsMaxMs}ms, loss+discard=${input.voipMetricsLossRateByte + input.voipMetricsDiscardRateByte}/256) on ${input.sessionId}.`;
+  }
+
+  return {
+    policyCode:
+      "P238-WEBRTC-SIP-RTCP-XR-EXTENDED-REPORTS-VOIP-METRICS-RFC3611-RFC7002-RFC7266-RLE-CHUNK-BOMB-DLRR-RTT-SPOOF-AND-VOIP-METRICS-JB-MOS-INFLATION-GUARD",
+    sessionId: input.sessionId,
+    rleExpansionBombOrBlockLengthOverreadDropped,
+    dlrrSubBlockFloodOrForgedLrrRttClamped,
+    voipMetricsMosJbInversionOrLossRateSpoofSanitized,
+    rtcpXrReportAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
