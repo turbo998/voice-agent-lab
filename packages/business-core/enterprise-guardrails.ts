@@ -26958,6 +26958,237 @@ export function evaluateWebrtcSipRtpEvcMpeg5VideoPayloadRfc9584ApNaluLengthOverr
   };
 }
 
+// ============================================================================
+// Stage 144 (P281–P282 — 300-Probe Milestone!):
+// - P281: Hydrazine (N2H4, PUK/Bayer Peroxide-Ketazine Synthesis & Vacuum
+//   Distillation) NFPA 400 / NFPA 30 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000
+//   Vapor Autodecomposition & Rust/Copper/Mo Catalytic Detonation Preemption,
+//   Ketazine H2O2/MEK Peroxide Runaway Interlock & N2H4/NH2Cl SCBA LOTO Guard
+// - P282: WebRTC & SIP RTP Low Complexity Enhancement Video Coding (LCEVC /
+//   MPEG-5 Part 2, ISO/IEC 23094-2) leb128 Block Length Overread / Reserved NALU
+//   0ms Drop, Base-to-Enhancement Timestamp Desync / Missing SC-GC RTCP PLI &
+//   2x2 Hierarchical Upscaler 4K / 16x Area Amplification Clamp Guard
+// ============================================================================
+
+export interface HydrazineKetazinePeroxideSynthesisVacuumDistillationNfpa400Nfpa30ApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  /** Hydrazine distillation column reboiler temperature in Celsius (autodecomposition hazard threshold >= 109.0 °C) */
+  distillationReboilerTempC: number;
+  /** Hydrazine liquid/vapor concentration in wt% N2H4 (monohydrate 64.0 wt% ceiling; > 64.0 wt% enables oxygen-free vapor detonation) */
+  hydrazineConcentrationWtPct: number;
+  /** Trace iron-rust (Fe2O3), copper (Cu2+), or molybdenum (Mo) metal-oxide catalyst contamination in ppm (>= 2.0 ppm) or nitrogen blanket O2 >= 0.5 vol% */
+  rustCopperMoCatalystOrO2BlanketBreachDetected: boolean;
+  /** Ketazine synthesis reactor temperature in Celsius (exothermic runaway threshold >= 68.0 °C) */
+  ketazineReactorTempC: number;
+  /** Hydrogen peroxide (H2O2) or hypochlorite oxidant-to-ammonia molar feed ratio (safe ceiling < 0.55) */
+  oxidantToAmmoniaMolarRatio: number;
+  /** Methyl ethyl ketone peroxide (MEKP) active oxygen accumulation in recycled MEK organic loop in ppm (explosive threshold >= 50.0 ppm) */
+  mekPeroxideActiveOxygenPpm: number;
+  /** Ambient hydrazine (N2H4) vapor concentration in ppm (OSHA skin/carcinogen action interlock >= 0.1 ppm) */
+  ambientN2h4Ppm: number;
+  /** Ambient chloramine (NH2Cl) or ammonia vapor breach: NH2Cl in ppm (action threshold >= 0.5 ppm) */
+  ambientNh2clPpm: number;
+  /** Acidic hydrazine tail-gas scrubber and sodium hypochlorite/peroxide neutralization loop verified active */
+  acidicHydrazineScrubberVerified: boolean;
+  /** Whether a ketazine hydrolyzer or hydrazine distillation line break / flange opening is requested */
+  hydrazineOrKetazineLineBreakRequested: boolean;
+  /** Full butyl/Teflon chemical suit, positive-pressure SCBA, and Double-Block-and-Bleed (DBB) LOTO verified */
+  chemicalSuitPositivePressureScbaAndDbbLotoVerified: boolean;
+}
+
+export interface HydrazineKetazinePeroxideSynthesisVacuumDistillationNfpa400Nfpa30ApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P281-HYDRAZINE-N2H4-KETAZINE-PEROXIDE-SYNTHESIS-VACUUM-DISTILLATION-NFPA400-NFPA30-APIRP521-OSHA1910119-OSHA19101000-VAPOR-AUTODECOMPOSITION-RUST-CATALYTIC-DETONATION-MEK-PEROXIDE-RUNAWAY-AND-N2H4-NH2CL-SCBA-LOTO-GUARD";
+  sessionId: string;
+  hydrazineAutodecompositionOrCatalyticDetonationPreempted: boolean;
+  ketazineOxidantOrMekPeroxideRunawayInterlocked: boolean;
+  osha19101000N2h4Nh2clOrScbaLotoLocked: boolean;
+  hydrazineKetazineOperationPermitted: boolean;
+  action:
+    | "trip_reboiler_steam_dbb_inject_deoxygenated_water_dilution_and_n2_blanket_in_0ms"
+    | "isolate_oxidant_feed_dbb_quench_ketazine_reactor_and_route_mek_to_sulfite_wash"
+    | "lock_hydrazine_train_until_n2h4_nh2cl_scrubber_chemical_suit_scba_and_dbb_loto_verified"
+    | "allow_verified_hydrazine_ketazine_synthesis_and_distillation_operation";
+  blockedReason: string;
+}
+
+export function evaluateHydrazineKetazinePeroxideSynthesisVacuumDistillationNfpa400Nfpa30ApiRp521Osha1910119Osha19101000VaporAutodecompositionRustCatalyticDetonationMekPeroxideRunawayAndN2h4Nh2clScbaLotoGuard(
+  input: HydrazineKetazinePeroxideSynthesisVacuumDistillationNfpa400Nfpa30ApiRp521Osha1910119Osha19101000GuardInput
+): HydrazineKetazinePeroxideSynthesisVacuumDistillationNfpa400Nfpa30ApiRp521Osha1910119Osha19101000GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const hydrazineAutodecompositionOrCatalyticDetonationPreempted =
+    input.distillationReboilerTempC >= 109.0 ||
+    input.hydrazineConcentrationWtPct > 64.0 ||
+    input.rustCopperMoCatalystOrO2BlanketBreachDetected;
+
+  if (hydrazineAutodecompositionOrCatalyticDetonationPreempted) {
+    blockedReasons.push(
+      `NFPA 400 / API RP 521 hydrazine distillation vapor autodecomposition or Fe2O3/Cu/Mo catalytic detonation hazard (reboilerTempC=${input.distillationReboilerTempC} >= 109.0, concWtPct=${input.hydrazineConcentrationWtPct} > 64.0, rustCuMoOrO2Breach=${input.rustCopperMoCatalystOrO2BlanketBreachDetected})`
+    );
+  }
+
+  const ketazineOxidantOrMekPeroxideRunawayInterlocked =
+    input.ketazineReactorTempC >= 68.0 ||
+    input.oxidantToAmmoniaMolarRatio >= 0.55 ||
+    input.mekPeroxideActiveOxygenPpm >= 50.0;
+
+  if (ketazineOxidantOrMekPeroxideRunawayInterlocked) {
+    blockedReasons.push(
+      `NFPA 30 / OSHA 1910.119 ketazine reactor H2O2/hypochlorite runaway or MEK peroxide accumulation (ketazineTempC=${input.ketazineReactorTempC} >= 68.0, oxidantRatio=${input.oxidantToAmmoniaMolarRatio} >= 0.55, mekPeroxidePpm=${input.mekPeroxideActiveOxygenPpm} >= 50.0)`
+    );
+  }
+
+  const osha19101000N2h4Nh2clOrScbaLotoLocked =
+    input.ambientN2h4Ppm >= 0.1 ||
+    input.ambientNh2clPpm >= 0.5 ||
+    !input.acidicHydrazineScrubberVerified ||
+    (input.hydrazineOrKetazineLineBreakRequested &&
+      !input.chemicalSuitPositivePressureScbaAndDbbLotoVerified);
+
+  if (osha19101000N2h4Nh2clOrScbaLotoLocked) {
+    blockedReasons.push(
+      `OSHA 1910.1000 hydrazine (N2H4) / chloramine (NH2Cl) toxicity or unverified chemical suit + SCBA + DBB LOTO (n2h4Ppm=${input.ambientN2h4Ppm} >= 0.1, nh2clPpm=${input.ambientNh2clPpm} >= 0.5, scrubber=${input.acidicHydrazineScrubberVerified}, lineBreak=${input.hydrazineOrKetazineLineBreakRequested}, scbaLoto=${input.chemicalSuitPositivePressureScbaAndDbbLotoVerified})`
+    );
+  }
+
+  const hydrazineKetazineOperationPermitted =
+    !hydrazineAutodecompositionOrCatalyticDetonationPreempted &&
+    !ketazineOxidantOrMekPeroxideRunawayInterlocked &&
+    !osha19101000N2h4Nh2clOrScbaLotoLocked;
+
+  let action: HydrazineKetazinePeroxideSynthesisVacuumDistillationNfpa400Nfpa30ApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_hydrazine_ketazine_synthesis_and_distillation_operation";
+
+  if (hydrazineAutodecompositionOrCatalyticDetonationPreempted) {
+    action =
+      "trip_reboiler_steam_dbb_inject_deoxygenated_water_dilution_and_n2_blanket_in_0ms";
+  } else if (ketazineOxidantOrMekPeroxideRunawayInterlocked) {
+    action =
+      "isolate_oxidant_feed_dbb_quench_ketazine_reactor_and_route_mek_to_sulfite_wash";
+  } else if (osha19101000N2h4Nh2clOrScbaLotoLocked) {
+    action =
+      "lock_hydrazine_train_until_n2h4_nh2cl_scrubber_chemical_suit_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P281-HYDRAZINE-N2H4-KETAZINE-PEROXIDE-SYNTHESIS-VACUUM-DISTILLATION-NFPA400-NFPA30-APIRP521-OSHA1910119-OSHA19101000-VAPOR-AUTODECOMPOSITION-RUST-CATALYTIC-DETONATION-MEK-PEROXIDE-RUNAWAY-AND-N2H4-NH2CL-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    hydrazineAutodecompositionOrCatalyticDetonationPreempted,
+    ketazineOxidantOrMekPeroxideRunawayInterlocked,
+    osha19101000N2h4Nh2clOrScbaLotoLocked,
+    hydrazineKetazineOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpLcevcMpeg5Part2EnhancementVideoIso230942GuardInput {
+  sessionId: string;
+  /** Declared LCEVC enhancement data block byte length decoded from variable-length leb128 header */
+  declaredLcevcLeb128BlockBytes: number;
+  /** Actual remaining RTP payload bytes available for the LCEVC enhancement packet */
+  rtpPayloadBytes: number;
+  /** Whether the LCEVC NALU header uses a forbidden/reserved NALU type (0 or 30..31) or malformed >5-byte leb128 integer overflow */
+  reservedLcevcNaluTypeOrLeb128Overflow: boolean;
+  /** Whether LCEVC fragmentation header simultaneously sets Start (S=1) and End (E=1) bits */
+  lcevcFragmentStartAndEndBothSet: boolean;
+  /** Absolute RTP timestamp or POC skew in 90 kHz ticks between Base Layer codec frame and LCEVC Enhancement sub-stream (> 3600 ticks = 40ms desync) */
+  baseToEnhancementRtpTimestampSkewTicks: number;
+  /** Whether an LCEVC IDR/Non-IDR enhancement plane is missing Sequence/Global Configuration (SC/GC) blocks or has temporal residual buffer desync */
+  missingLcevcScGcConfigOrTemporalBufferDesync: boolean;
+  /** LCEVC 2x2 hierarchical upscaler (LoQ-1 -> LoQ-0) output-to-base area amplification ratio (safe ceiling <= 16) */
+  lcevcEnhancementToBaseAreaRatio: number;
+  /** Final upscaled LCEVC LoQ-0 luma sample count (width * height; 4K DCI ceiling = 8,912,896) */
+  lcevcUpscaledLumaSamples: number;
+}
+
+export interface WebrtcSipRtpLcevcMpeg5Part2EnhancementVideoIso230942GuardAssessment {
+  policyCode: "P282-WEBRTC-SIP-RTP-LCEVC-MPEG5-PART2-ENHANCEMENT-VIDEO-ISO23094-2-LEB128-BLOCK-OVERREAD-RESERVED-NALU-BASE-ENHANCEMENT-TIMESTAMP-DESYNC-MISSING-SC-GC-AND-UPSCALER-4K-AMPLIFICATION-GUARD";
+  sessionId: string;
+  lcevcLeb128BlockOverreadOrIllegalHeaderDropped: boolean;
+  lcevcBaseEnhancementDesyncOrMissingScGcBlocked: boolean;
+  lcevcUpscaler4kOrAreaAmplificationClamped: boolean;
+  lcevcRtpEnhancementPacketAccepted: boolean;
+  action:
+    | "drop_lcevc_rtp_leb128_block_overread_reserved_nalu_or_invalid_fragment_in_0ms"
+    | "discard_desynced_lcevc_enhancement_plane_or_missing_sc_gc_and_emit_rtcp_pli"
+    | "clamp_lcevc_upscaler_4k_luma_budget_and_16x_area_amplification_ceiling"
+    | "forward_verified_lcevc_mpeg5_part2_rtp_enhancement_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpLcevcMpeg5Part2EnhancementVideoIso230942Leb128BlockOverreadReservedNaluBaseEnhancementTimestampDesyncMissingScGcAndUpscaler4kAmplificationGuard(
+  input: WebrtcSipRtpLcevcMpeg5Part2EnhancementVideoIso230942GuardInput
+): WebrtcSipRtpLcevcMpeg5Part2EnhancementVideoIso230942GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const lcevcLeb128BlockOverreadOrIllegalHeaderDropped =
+    input.declaredLcevcLeb128BlockBytes > input.rtpPayloadBytes ||
+    input.reservedLcevcNaluTypeOrLeb128Overflow ||
+    input.lcevcFragmentStartAndEndBothSet;
+
+  if (lcevcLeb128BlockOverreadOrIllegalHeaderDropped) {
+    blockedReasons.push(
+      `ISO/IEC 23094-2 LCEVC RTP leb128 data-block length overread, reserved NALU type, or illegal S=1&E=1 fragment header (declaredLeb128Bytes=${input.declaredLcevcLeb128BlockBytes}, payloadBytes=${input.rtpPayloadBytes}, reservedOrOverflow=${input.reservedLcevcNaluTypeOrLeb128Overflow}, fragmentSEBoth=${input.lcevcFragmentStartAndEndBothSet})`
+    );
+  }
+
+  const lcevcBaseEnhancementDesyncOrMissingScGcBlocked =
+    input.baseToEnhancementRtpTimestampSkewTicks > 3600 ||
+    input.missingLcevcScGcConfigOrTemporalBufferDesync;
+
+  if (lcevcBaseEnhancementDesyncOrMissingScGcBlocked) {
+    blockedReasons.push(
+      `ISO/IEC 23094-2 LCEVC Base-to-Enhancement RTP timestamp skew > 3600 ticks or missing SC/GC configuration / temporal residual buffer desync (skewTicks=${input.baseToEnhancementRtpTimestampSkewTicks}, missingScGcOrTemporalDesync=${input.missingLcevcScGcConfigOrTemporalBufferDesync})`
+    );
+  }
+
+  const lcevcUpscaler4kOrAreaAmplificationClamped =
+    input.lcevcEnhancementToBaseAreaRatio > 16 ||
+    input.lcevcUpscaledLumaSamples > 8912896;
+
+  if (lcevcUpscaler4kOrAreaAmplificationClamped) {
+    blockedReasons.push(
+      `ISO/IEC 23094-2 LCEVC 2x2 hierarchical upscaler exceeded 16x area ratio or 4K DCI luma ceiling (areaRatio=${input.lcevcEnhancementToBaseAreaRatio} > 16 or upscaledLumaSamples=${input.lcevcUpscaledLumaSamples} > 8912896)`
+    );
+  }
+
+  const lcevcRtpEnhancementPacketAccepted =
+    !lcevcLeb128BlockOverreadOrIllegalHeaderDropped &&
+    !lcevcBaseEnhancementDesyncOrMissingScGcBlocked &&
+    !lcevcUpscaler4kOrAreaAmplificationClamped;
+
+  let action: WebrtcSipRtpLcevcMpeg5Part2EnhancementVideoIso230942GuardAssessment["action"] =
+    "forward_verified_lcevc_mpeg5_part2_rtp_enhancement_packet";
+
+  if (lcevcLeb128BlockOverreadOrIllegalHeaderDropped) {
+    action =
+      "drop_lcevc_rtp_leb128_block_overread_reserved_nalu_or_invalid_fragment_in_0ms";
+  } else if (lcevcBaseEnhancementDesyncOrMissingScGcBlocked) {
+    action =
+      "discard_desynced_lcevc_enhancement_plane_or_missing_sc_gc_and_emit_rtcp_pli";
+  } else if (lcevcUpscaler4kOrAreaAmplificationClamped) {
+    action =
+      "clamp_lcevc_upscaler_4k_luma_budget_and_16x_area_amplification_ceiling";
+  }
+
+  return {
+    policyCode:
+      "P282-WEBRTC-SIP-RTP-LCEVC-MPEG5-PART2-ENHANCEMENT-VIDEO-ISO23094-2-LEB128-BLOCK-OVERREAD-RESERVED-NALU-BASE-ENHANCEMENT-TIMESTAMP-DESYNC-MISSING-SC-GC-AND-UPSCALER-4K-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    lcevcLeb128BlockOverreadOrIllegalHeaderDropped,
+    lcevcBaseEnhancementDesyncOrMissingScGcBlocked,
+    lcevcUpscaler4kOrAreaAmplificationClamped,
+    lcevcRtpEnhancementPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
 
 
 
