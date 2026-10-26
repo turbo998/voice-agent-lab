@@ -22879,6 +22879,179 @@ export function evaluateWebrtcWhipWhepRapidSyncImageattrRfc9725Rfc6051Rfc6236Lin
   };
 }
 
+export interface PolycarbonatePhosgeneInterfacialPolycondensationMeltTransesterificationGuardInput {
+  reactorTrainId: string;
+  scrubberNaohPh: number;
+  phosgeneStackSlipPpm: number;
+  cocl2ToBpaMolarRatio: number;
+  interfacialReactorTempC: number;
+  phenolCondenserWallTempC: number;
+  vacuumPolyReactorPressureKpa: number;
+  condenserDeltaPKpa: number;
+  maintenanceLineBreakRequested: boolean;
+  positivePressureScbaVerified: boolean;
+  phosgeneBadgeAndElectrochemicalZeroPpmVerified: boolean;
+  dualBlockAndBleedLotoVerified: boolean;
+}
+
+export interface PolycarbonatePhosgeneInterfacialPolycondensationMeltTransesterificationGuardDecision {
+  policyCode: "P241-POLYCARBONATE-PHOSGENE-INTERFACIAL-POLYCONDENSATION-MELT-TRANSESTERIFICATION-APIRP521-NFPA69-OSHA1910119-COCl2-SCRUBBER-ALKALI-PH-DEPLETION-PHENOL-VACUUM-CONDENSER-PLUGGING-AND-PHOSGENE-DICHLOROMETHANE-SCBA-LOTO-GUARD";
+  reactorTrainId: string;
+  phosgeneScrubberDepletionOrCh2cl2BoiloverTrip: boolean;
+  phenolVacuumCondenserSolidificationPluggingLocked: boolean;
+  phosgeneDichloromethaneScbaLotoLocked: boolean;
+  autonomousPhosgeneOrVacuumCommandAllowed: boolean;
+  action:
+    | "allow_verified_polycarbonate_interfacial_and_melt_polycondensation_control"
+    | "trip_cocl2_feed_isolator_and_route_vent_to_emergency_naoh_nh3_scrubber_tower"
+    | "lock_melt_vacuum_ramp_and_switch_to_warm_glycol_standby_phenol_condenser"
+    | "lock_phosgene_ch2cl2_phenol_line_break_until_scba_0ppm_cocl2_and_loto_verified";
+  blockedReason?: string;
+}
+
+export function evaluatePolycarbonatePhosgeneInterfacialPolycondensationMeltTransesterificationApiRp521Nfpa69Osha1910119Cocl2ScrubberAlkaliPhDepletionPhenolVacuumCondenserPluggingAndPhosgeneDichloromethaneScbaLotoGuard(
+  input: PolycarbonatePhosgeneInterfacialPolycondensationMeltTransesterificationGuardInput,
+): PolycarbonatePhosgeneInterfacialPolycondensationMeltTransesterificationGuardDecision {
+  const phosgeneScrubberDepletionOrCh2cl2BoiloverTrip =
+    input.scrubberNaohPh < 11.5 ||
+    input.phosgeneStackSlipPpm > 0.1 ||
+    input.cocl2ToBpaMolarRatio > 1.2 ||
+    input.interfacialReactorTempC > 38.0;
+
+  const phenolVacuumCondenserSolidificationPluggingLocked =
+    input.phenolCondenserWallTempC < 43.0 ||
+    (input.vacuumPolyReactorPressureKpa > 1.5 && input.condenserDeltaPKpa > 12.0);
+
+  const phosgeneDichloromethaneScbaLotoLocked =
+    input.maintenanceLineBreakRequested &&
+    (!input.positivePressureScbaVerified ||
+      !input.phosgeneBadgeAndElectrochemicalZeroPpmVerified ||
+      !input.dualBlockAndBleedLotoVerified);
+
+  let action: PolycarbonatePhosgeneInterfacialPolycondensationMeltTransesterificationGuardDecision["action"] =
+    "allow_verified_polycarbonate_interfacial_and_melt_polycondensation_control";
+  let autonomousPhosgeneOrVacuumCommandAllowed = true;
+  let blockedReason: string | undefined;
+
+  if (phosgeneScrubberDepletionOrCh2cl2BoiloverTrip) {
+    action =
+      "trip_cocl2_feed_isolator_and_route_vent_to_emergency_naoh_nh3_scrubber_tower";
+    autonomousPhosgeneOrVacuumCommandAllowed = false;
+    blockedReason = `Polycarbonate (PC) Interfacial Phosgenation Scrubber Alkali Depletion or CH2Cl2 Flash-Boiling Risk on ${input.reactorTrainId}: scrubberNaohPh=${input.scrubberNaohPh} (min 11.5), phosgeneStackSlipPpm=${input.phosgeneStackSlipPpm} ppm (max 0.1 ppm OSHA PEL), cocl2ToBpaMolarRatio=${input.cocl2ToBpaMolarRatio} (max 1.20), interfacialReactorTempC=${input.interfacialReactorTempC}°C (max 38.0°C vs CH2Cl2 39.6°C BP).`;
+  } else if (phenolVacuumCondenserSolidificationPluggingLocked) {
+    action =
+      "lock_melt_vacuum_ramp_and_switch_to_warm_glycol_standby_phenol_condenser";
+    autonomousPhosgeneOrVacuumCommandAllowed = false;
+    blockedReason = `Polycarbonate (PC) Melt Transesterification Phenol Vacuum Condenser Freezing/Plugging Risk on ${input.reactorTrainId}: phenolCondenserWallTempC=${input.phenolCondenserWallTempC}°C (min 43.0°C vs 40.9°C phenol freezing point), vacuumPolyReactorPressureKpa=${input.vacuumPolyReactorPressureKpa} kPa, condenserDeltaPKpa=${input.condenserDeltaPKpa} kPa.`;
+  } else if (phosgeneDichloromethaneScbaLotoLocked) {
+    action =
+      "lock_phosgene_ch2cl2_phenol_line_break_until_scba_0ppm_cocl2_and_loto_verified";
+    autonomousPhosgeneOrVacuumCommandAllowed = false;
+    blockedReason = `Polycarbonate (PC) Phosgene / CH2Cl2 / Molten Phenol Line-Break Safety Interlock on ${input.reactorTrainId}: positivePressureScbaVerified=${input.positivePressureScbaVerified}, phosgeneZeroPpmVerified=${input.phosgeneBadgeAndElectrochemicalZeroPpmVerified}, dualBlockAndBleedLotoVerified=${input.dualBlockAndBleedLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P241-POLYCARBONATE-PHOSGENE-INTERFACIAL-POLYCONDENSATION-MELT-TRANSESTERIFICATION-APIRP521-NFPA69-OSHA1910119-COCl2-SCRUBBER-ALKALI-PH-DEPLETION-PHENOL-VACUUM-CONDENSER-PLUGGING-AND-PHOSGENE-DICHLOROMETHANE-SCBA-LOTO-GUARD",
+    reactorTrainId: input.reactorTrainId,
+    phosgeneScrubberDepletionOrCh2cl2BoiloverTrip,
+    phenolVacuumCondenserSolidificationPluggingLocked,
+    phosgeneDichloromethaneScbaLotoLocked,
+    autonomousPhosgeneOrVacuumCommandAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipIceTcpFramingTurnTlsGuardInput {
+  sessionId: string;
+  declaredFrameLengthBytes: number;
+  actualReceivedBytesInWindow: number;
+  tcpRecvBufferStallMs: number;
+  frameBoundaryMagicCookieValid: boolean;
+  localTcpType: "active" | "passive" | "so";
+  outboundConnectAttempted: boolean;
+  iceTcpCandidatePort: number;
+  unauthenticatedTcpSynRatePerSec: number;
+  turnsRequested: boolean;
+  tlsVerified: boolean;
+  alpnStunTurnMatched: boolean;
+  sniHostnameMatched: boolean;
+  tlsVersionBelow12: boolean;
+}
+
+export interface WebrtcSipIceTcpFramingTurnTlsGuardDecision {
+  policyCode: "P242-WEBRTC-SIP-ICE-TCP-FRAMING-TURN-TLS-RFC6544-RFC4571-RFC8656-RFC8863-RFC4571-16BIT-FRAME-LENGTH-DESYNC-ICE-TCP-SIMULTANEOUS-OPEN-SYN-FLOOD-AND-TURN-TLS-ALPN-SNI-DOWNGRADE-GUARD";
+  sessionId: string;
+  rfc4571FrameLengthDesyncOrHolStallBlocked: boolean;
+  rfc6544IceTcpRoleOrSynFloodBlocked: boolean;
+  turnTlsAlpnSniOrCleartextDowngradeBlocked: boolean;
+  iceTcpTurnMediaAccepted: boolean;
+  action:
+    | "allow_verified_rfc6544_ice_tcp_rfc4571_framing_and_turns_tls_session"
+    | "reset_rfc4571_desynced_or_stalled_tcp_stream_and_failover_to_Healthy_candidate"
+    | "reject_rfc6544_privileged_port_passive_connect_or_so_syn_flood_candidate"
+    | "abort_turns_tls_downgrade_or_alpn_sni_mismatch_in_0ms";
+  blockedReason?: string;
+}
+
+export function evaluateWebrtcSipIceTcpFramingTurnTlsRfc6544Rfc4571Rfc8656Rfc8863Rfc457116BitFrameLengthDesyncIceTcpSimultaneousOpenSynFloodAndTurnTlsAlpnSniDowngradeGuard(
+  input: WebrtcSipIceTcpFramingTurnTlsGuardInput,
+): WebrtcSipIceTcpFramingTurnTlsGuardDecision {
+  const rfc4571FrameLengthDesyncOrHolStallBlocked =
+    input.declaredFrameLengthBytes < 12 ||
+    input.declaredFrameLengthBytes > 1500 ||
+    !input.frameBoundaryMagicCookieValid ||
+    (input.actualReceivedBytesInWindow < input.declaredFrameLengthBytes &&
+      input.tcpRecvBufferStallMs > 250);
+
+  const rfc6544IceTcpRoleOrSynFloodBlocked =
+    input.iceTcpCandidatePort < 1024 ||
+    (input.localTcpType === "passive" && input.outboundConnectAttempted) ||
+    input.unauthenticatedTcpSynRatePerSec > 30;
+
+  const turnTlsAlpnSniOrCleartextDowngradeBlocked =
+    input.turnsRequested &&
+    (!input.tlsVerified ||
+      !input.alpnStunTurnMatched ||
+      !input.sniHostnameMatched ||
+      input.tlsVersionBelow12);
+
+  let action: WebrtcSipIceTcpFramingTurnTlsGuardDecision["action"] =
+    "allow_verified_rfc6544_ice_tcp_rfc4571_framing_and_turns_tls_session";
+  let iceTcpTurnMediaAccepted = true;
+  let blockedReason: string | undefined;
+
+  if (rfc4571FrameLengthDesyncOrHolStallBlocked) {
+    action =
+      "reset_rfc4571_desynced_or_stalled_tcp_stream_and_failover_to_Healthy_candidate";
+    iceTcpTurnMediaAccepted = false;
+    blockedReason = `RFC 4571 16-Bit Frame Length Desynchronization or Head-of-Line (HOL) TCP Read Stall on ${input.sessionId}: declaredFrameLengthBytes=${input.declaredFrameLengthBytes} (bounds 12..1500), actualReceivedBytes=${input.actualReceivedBytesInWindow}, tcpRecvBufferStallMs=${input.tcpRecvBufferStallMs}ms (max 250ms), magicCookieValid=${input.frameBoundaryMagicCookieValid}.`;
+  } else if (rfc6544IceTcpRoleOrSynFloodBlocked) {
+    action =
+      "reject_rfc6544_privileged_port_passive_connect_or_so_syn_flood_candidate";
+    iceTcpTurnMediaAccepted = false;
+    blockedReason = `RFC 6544 ICE-TCP Role/Port Violation or Simultaneous-Open SYN Flood on ${input.sessionId}: iceTcpCandidatePort=${input.iceTcpCandidatePort} (min 1024), localTcpType=${input.localTcpType}, outboundConnectAttempted=${input.outboundConnectAttempted}, unauthenticatedTcpSynRatePerSec=${input.unauthenticatedTcpSynRatePerSec}/s (max 30/s).`;
+  } else if (turnTlsAlpnSniOrCleartextDowngradeBlocked) {
+    action = "abort_turns_tls_downgrade_or_alpn_sni_mismatch_in_0ms";
+    iceTcpTurnMediaAccepted = false;
+    blockedReason = `RFC 8656 / RFC 7350 TURN-over-TLS (turns:) Downgrade or ALPN/SNI Verification Failure on ${input.sessionId}: tlsVerified=${input.tlsVerified}, alpnStunTurnMatched=${input.alpnStunTurnMatched}, sniHostnameMatched=${input.sniHostnameMatched}, tlsVersionBelow12=${input.tlsVersionBelow12}.`;
+  }
+
+  return {
+    policyCode:
+      "P242-WEBRTC-SIP-ICE-TCP-FRAMING-TURN-TLS-RFC6544-RFC4571-RFC8656-RFC8863-RFC4571-16BIT-FRAME-LENGTH-DESYNC-ICE-TCP-SIMULTANEOUS-OPEN-SYN-FLOOD-AND-TURN-TLS-ALPN-SNI-DOWNGRADE-GUARD",
+    sessionId: input.sessionId,
+    rfc4571FrameLengthDesyncOrHolStallBlocked,
+    rfc6544IceTcpRoleOrSynFloodBlocked,
+    turnTlsAlpnSniOrCleartextDowngradeBlocked,
+    iceTcpTurnMediaAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
