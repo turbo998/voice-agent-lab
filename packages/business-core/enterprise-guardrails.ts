@@ -22118,6 +22118,199 @@ export function evaluateWebrtcSipSdpSimulcastRidFrameMarkingRfc8853Rfc8852Rfc885
   };
 }
 
+// ============================================================================
+// Stage 120 — P233: Melamine (C3H6N6) High-Pressure Urea Melt Pyrolysis &
+// Off-Gas Ammonium Carbamate Scrubber Safety Guard (NFPA 69 / API RP 521 /
+// ASME BPVC VIII Div. 2 / OSHA 29 CFR 1910.119 / OSHA 1910.1000)
+// ============================================================================
+
+export interface MelamineHighPressureUreaPyrolysisAndCarbamateScbaLotoInput {
+  unitId: string;
+  /** High-pressure melamine synthesis reactor temperature in °C (normal 380–420°C; deamination polycondensation runaway > 432°C). */
+  melamineReactorTempC: number;
+  /** High-pressure melamine synthesis reactor pressure in bar(g) (normal 80–145 bar(g); trip > 152 bar(g)). */
+  melamineReactorPressureBarg: number;
+  /** Off-gas oxygen concentration in vol% inside the 70% NH3 / 30% CO2 scrubber header (NFPA 69 LOC trip >= 3.2 vol%). */
+  offGasOxygenVolPct: number;
+  /** High-pressure carbamate condenser temperature in °C (ammonium carbamate solidifies & plugs PSVs below 158°C). */
+  carbamateCondenserTempC: number;
+  /** Deamination polycondensates (melam / melem / melon) concentration in melt in wt% (solidification fouling > 2.2 wt%). */
+  polycondensateMelamMelemWtPct: number;
+  /** Titanium / 25Cr-22Ni-2Mo / Zirconium liner carbamate corrosion rate in mm/yr (interlock > 0.30 mm/yr). */
+  reactorLinerCorrosionRateMmPerYr: number;
+  /** Sublimation desublimer / baghouse differential pressure in kPa (melamine desublimation plug > 28.0 kPa). */
+  desublimerFilterDeltaPKpa: number;
+  /** Ambient anhydrous ammonia (NH3) concentration in ppm (ACGIH TLV >= 25.0 ppm; OSHA PEL 50 ppm). */
+  ambientAmmoniaPpm: number;
+  /** Ambient isocyanic acid (HNCO) vapor concentration in ppm from urea thermal decomposition (interlock >= 0.05 ppm). */
+  ambientIsocyanicAcidPpm: number;
+  /** Whether urea melt feed increase or heating salt boost was requested. */
+  ureaFeedIncreaseRequested: boolean;
+  /** Whether high-pressure autoclave or carbamate condenser opening was requested. */
+  equipmentOpeningRequested: boolean;
+  /** Whether hot-water carbamate dissolution flush, ammonia purge, and positive-pressure SCBA LOTO are verified. */
+  hotWaterCarbamateDissolutionAmmoniaPurgeAndScbaLotoVerified: boolean;
+}
+
+export interface MelamineHighPressureUreaPyrolysisAndCarbamateScbaLotoDecision {
+  policyCode: "P233-MELAMINE-HIGH-PRESSURE-UREA-PYROLYSIS-NFPA69-APIRP521-ASMEBPV-OSHA1910119-OSHA19101000-POLYCONDENSATE-MELAM-MELEM-SOLIDIFICATION-AMMONIUM-CARBAMATE-PSV-PLUG-AND-AMMONIA-ISOCYANIC-SCBA-LOTO-GUARD";
+  unitId: string;
+  ureaPyrolysisOvertempCarbamatePsvPlugOrNh3O2DeflagrationTripped: boolean;
+  polycondensateMelamFoulingLinerCorrosionOrDesublimerPlugMitigated: boolean;
+  ammoniaIsocyanicVaporOrUnflushedAutoclaveOpeningLocked: boolean;
+  automationAllowed: boolean;
+  action:
+    | "allow_normal_melamine_high_pressure_urea_pyrolysis"
+    | "trip_urea_melt_feed_dbb_inject_high_pressure_hot_ammonia_purge_and_steam_trace_psv_in_0ms"
+    | "boost_ammonia_partial_pressure_restore_o2_passivation_and_flush_desublimer"
+    | "lock_melamine_unit_and_enforce_hot_water_carbamate_flush_nh3_purge_scba_loto";
+  blockedReason?: string;
+}
+
+export function evaluateMelamineHighPressureUreaPyrolysisNfpa69ApiRp521AsmeBpvOsha1910119Osha19101000PolycondensateMelamMelemSolidificationAmmoniumCarbamatePsvPlugAndAmmoniaIsocyanicScbaLotoGuard(
+  input: MelamineHighPressureUreaPyrolysisAndCarbamateScbaLotoInput,
+): MelamineHighPressureUreaPyrolysisAndCarbamateScbaLotoDecision {
+  const ureaPyrolysisOvertempCarbamatePsvPlugOrNh3O2DeflagrationTripped =
+    (input.melamineReactorTempC > 432.0 ||
+      input.melamineReactorPressureBarg > 152.0 ||
+      input.offGasOxygenVolPct >= 3.2 ||
+      input.carbamateCondenserTempC < 158.0) &&
+    input.ureaFeedIncreaseRequested;
+
+  const polycondensateMelamFoulingLinerCorrosionOrDesublimerPlugMitigated =
+    input.polycondensateMelamMelemWtPct > 2.2 ||
+    input.reactorLinerCorrosionRateMmPerYr > 0.3 ||
+    input.desublimerFilterDeltaPKpa > 28.0;
+
+  const ammoniaIsocyanicVaporOrUnflushedAutoclaveOpeningLocked =
+    input.ambientAmmoniaPpm >= 25.0 ||
+    input.ambientIsocyanicAcidPpm >= 0.05 ||
+    (input.equipmentOpeningRequested &&
+      !input.hotWaterCarbamateDissolutionAmmoniaPurgeAndScbaLotoVerified);
+
+  let action: MelamineHighPressureUreaPyrolysisAndCarbamateScbaLotoDecision["action"] =
+    "allow_normal_melamine_high_pressure_urea_pyrolysis";
+  let automationAllowed = true;
+  let blockedReason: string | undefined;
+
+  if (ureaPyrolysisOvertempCarbamatePsvPlugOrNh3O2DeflagrationTripped) {
+    action =
+      "trip_urea_melt_feed_dbb_inject_high_pressure_hot_ammonia_purge_and_steam_trace_psv_in_0ms";
+    automationAllowed = false;
+    blockedReason = `NFPA 69 / API RP 521 / ASME BPVC VIII Div. 2 / OSHA 1910.119 Melamine Pyrolysis Over-Temperature/Pressure, Ammonium Carbamate PSV Solidification (< 158°C) or NH3-O2 Flammable Envelope on ${input.unitId}: T=${input.melamineReactorTempC}°C, P=${input.melamineReactorPressureBarg} bar(g), O2=${input.offGasOxygenVolPct} vol%, carbamateTemp=${input.carbamateCondenserTempC}°C.`;
+  } else if (polycondensateMelamFoulingLinerCorrosionOrDesublimerPlugMitigated) {
+    action =
+      "boost_ammonia_partial_pressure_restore_o2_passivation_and_flush_desublimer";
+    automationAllowed = false;
+    blockedReason = `ASME BPVC / OSHA 1910.119 Melamine Polycondensate (Melam/Melem > 2.2 wt%) Solidification, Carbamate Liner Corrosion (> 0.30 mm/yr) or Desublimer Filter Plugging on ${input.unitId}: melamMelem=${input.polycondensateMelamMelemWtPct} wt%, corrosion=${input.reactorLinerCorrosionRateMmPerYr} mm/yr, desublimerDeltaP=${input.desublimerFilterDeltaPKpa} kPa.`;
+  } else if (ammoniaIsocyanicVaporOrUnflushedAutoclaveOpeningLocked) {
+    action =
+      "lock_melamine_unit_and_enforce_hot_water_carbamate_flush_nh3_purge_scba_loto";
+    automationAllowed = false;
+    blockedReason = `OSHA 29 CFR 1910.1000 / 1910.119 / 1910.147 Anhydrous Ammonia (NH3 >= 25 ppm), Isocyanic Acid Vapor (HNCO >= 0.05 ppm) or Unflushed High-Pressure Autoclave Opening on ${input.unitId}: NH3=${input.ambientAmmoniaPpm} ppm, HNCO=${input.ambientIsocyanicAcidPpm} ppm, openingRequested=${input.equipmentOpeningRequested}, scbaVerified=${input.hotWaterCarbamateDissolutionAmmoniaPurgeAndScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P233-MELAMINE-HIGH-PRESSURE-UREA-PYROLYSIS-NFPA69-APIRP521-ASMEBPV-OSHA1910119-OSHA19101000-POLYCONDENSATE-MELAM-MELEM-SOLIDIFICATION-AMMONIUM-CARBAMATE-PSV-PLUG-AND-AMMONIA-ISOCYANIC-SCBA-LOTO-GUARD",
+    unitId: input.unitId,
+    ureaPyrolysisOvertempCarbamatePsvPlugOrNh3O2DeflagrationTripped,
+    polycondensateMelamFoulingLinerCorrosionOrDesublimerPlugMitigated,
+    ammoniaIsocyanicVaporOrUnflushedAutoclaveOpeningLocked,
+    automationAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+// ============================================================================
+// Stage 120 — P234: WebRTC & SIP AV1 RTP Payload Format & Dependency Descriptor
+// (AOM AV1 RTP Spec) LEB128 OBU Size Overflow, Z/Y/N Fragmentation Bomb &
+// Decode-Target Template Desync Guard
+// ============================================================================
+
+export interface WebrtcSipAv1RtpPayloadDependencyDescriptorAomAv1RtpSpecGuardInput {
+  sessionId: string;
+  /** Whether an AV1 Open Bitstream Unit (OBU) element length uses a malformed >8-byte LEB128 varint or declares an OBU size exceeding the remaining RTP packet payload. */
+  av1Leb128ObuSizeExceeds8BytesOrPacketBounds: boolean;
+  /** Whether the AV1 RTP Aggregation Header carries an invalid Z=1/Y=1 fragmentation chain (>64 fragments or orphan Z=1) or illegally combines N=1 (new coded video sequence) with Z=1 (continuation fragment). */
+  av1AggregationHeaderZynFragmentationInvalidOrNWithZConflict: boolean;
+  /** Whether the Dependency Descriptor (DD) RTP header extension references a 6-bit frame_dependency_template_id absent from the active template_dependency_structure. */
+  ddFrameDependencyTemplateIdNotInActiveStructure: boolean;
+  /** Whether the Dependency Descriptor active_decode_targets_bitmask exceeds negotiated dt_cnt (>32 targets) or zeros out all decode targets while streaming high-bitrate media. */
+  ddActiveDecodeTargetsBitmaskInvalidOrZeroed: boolean;
+  /** Whether a non-keyframe delta packet (N=0) mutates OBU_SEQUENCE_HEADER resolution or bit-depth without a keyframe boundary. */
+  av1SequenceHeaderResolutionOrBitDepthMutatedWithoutNBitKeyframe: boolean;
+  /** Number of empty OBU_TEMPORAL_DELIMITER or OBU_PADDING units stuffed into a single RTP packet (CPU parsing amplification > 8 units). */
+  av1EmptyPaddingOrTemporalDelimiterObuCountInPacket: number;
+}
+
+export interface WebrtcSipAv1RtpPayloadDependencyDescriptorAomAv1RtpSpecGuardDecision {
+  policyCode: "P234-WEBRTC-SIP-AV1-RTP-PAYLOAD-DEPENDENCY-DESCRIPTOR-AOM-AV1-RTP-SPEC-LEB128-OBU-OVERFLOW-ZYN-FRAGMENTATION-BOMB-DECODE-TARGET-TEMPLATE-DESYNC-AND-SEQUENCE-HEADER-MUTATION-GUARD";
+  sessionId: string;
+  av1Leb128OverflowOrZynFragmentationBombRejected: boolean;
+  ddTemplateIdOrDecodeTargetBitmaskClamped: boolean;
+  av1MidStreamSequenceHeaderMutationOrObuStuffingSanitized: boolean;
+  av1RtpAndDependencyDescriptorAccepted: boolean;
+  action:
+    | "accept_compliant_aom_av1_rtp_payload_and_dependency_descriptor"
+    | "drop_malformed_av1_leb128_obu_or_invalid_zyn_fragmentation_bomb_in_0ms"
+    | "clamp_dependency_descriptor_template_id_and_request_keyframe_structure_refresh"
+    | "strip_stuffed_delimiter_obus_and_reject_non_keyframe_sequence_header_mutation";
+  blockedReason?: string;
+}
+
+export function evaluateWebrtcSipAv1RtpPayloadDependencyDescriptorAomAv1RtpSpecLeb128ObuOverflowZyNFragmentationBombDecodeTargetTemplateDesyncAndSequenceHeaderMutationGuard(
+  input: WebrtcSipAv1RtpPayloadDependencyDescriptorAomAv1RtpSpecGuardInput,
+): WebrtcSipAv1RtpPayloadDependencyDescriptorAomAv1RtpSpecGuardDecision {
+  const av1Leb128OverflowOrZynFragmentationBombRejected =
+    input.av1Leb128ObuSizeExceeds8BytesOrPacketBounds ||
+    input.av1AggregationHeaderZynFragmentationInvalidOrNWithZConflict;
+
+  const ddTemplateIdOrDecodeTargetBitmaskClamped =
+    input.ddFrameDependencyTemplateIdNotInActiveStructure ||
+    input.ddActiveDecodeTargetsBitmaskInvalidOrZeroed;
+
+  const av1MidStreamSequenceHeaderMutationOrObuStuffingSanitized =
+    input.av1SequenceHeaderResolutionOrBitDepthMutatedWithoutNBitKeyframe ||
+    input.av1EmptyPaddingOrTemporalDelimiterObuCountInPacket > 8;
+
+  let action: WebrtcSipAv1RtpPayloadDependencyDescriptorAomAv1RtpSpecGuardDecision["action"] =
+    "accept_compliant_aom_av1_rtp_payload_and_dependency_descriptor";
+  let av1RtpAndDependencyDescriptorAccepted = true;
+  let blockedReason: string | undefined;
+
+  if (av1Leb128OverflowOrZynFragmentationBombRejected) {
+    action =
+      "drop_malformed_av1_leb128_obu_or_invalid_zyn_fragmentation_bomb_in_0ms";
+    av1RtpAndDependencyDescriptorAccepted = false;
+    blockedReason = `AOM AV1 RTP Spec § 4.4 Malformed >8-Byte LEB128 OBU Length Overflow, Unbounded Z/Y Fragmentation Bomb or Illegal N=1 + Z=1 Combination on ${input.sessionId}: leb128Overflow=${input.av1Leb128ObuSizeExceeds8BytesOrPacketBounds}, zynInvalid=${input.av1AggregationHeaderZynFragmentationInvalidOrNWithZConflict}.`;
+  } else if (ddTemplateIdOrDecodeTargetBitmaskClamped) {
+    action =
+      "clamp_dependency_descriptor_template_id_and_request_keyframe_structure_refresh";
+    av1RtpAndDependencyDescriptorAccepted = false;
+    blockedReason = `AOM AV1 RTP Appendix A Dependency Descriptor Unbound 6-Bit Template ID or Invalid active_decode_targets_bitmask on ${input.sessionId}: unboundTemplateId=${input.ddFrameDependencyTemplateIdNotInActiveStructure}, invalidDtBitmask=${input.ddActiveDecodeTargetsBitmaskInvalidOrZeroed}.`;
+  } else if (av1MidStreamSequenceHeaderMutationOrObuStuffingSanitized) {
+    action =
+      "strip_stuffed_delimiter_obus_and_reject_non_keyframe_sequence_header_mutation";
+    av1RtpAndDependencyDescriptorAccepted = false;
+    blockedReason = `AOM AV1 RTP Non-Keyframe (N=0) OBU_SEQUENCE_HEADER Resolution/Bit-Depth Mutation or Empty OBU_TEMPORAL_DELIMITER/OBU_PADDING Stuffing (> 8 units) on ${input.sessionId}: seqHdrMutated=${input.av1SequenceHeaderResolutionOrBitDepthMutatedWithoutNBitKeyframe}, emptyObuCount=${input.av1EmptyPaddingOrTemporalDelimiterObuCountInPacket}.`;
+  }
+
+  return {
+    policyCode:
+      "P234-WEBRTC-SIP-AV1-RTP-PAYLOAD-DEPENDENCY-DESCRIPTOR-AOM-AV1-RTP-SPEC-LEB128-OBU-OVERFLOW-ZYN-FRAGMENTATION-BOMB-DECODE-TARGET-TEMPLATE-DESYNC-AND-SEQUENCE-HEADER-MUTATION-GUARD",
+    sessionId: input.sessionId,
+    av1Leb128OverflowOrZynFragmentationBombRejected,
+    ddTemplateIdOrDecodeTargetBitmaskClamped,
+    av1MidStreamSequenceHeaderMutationOrObuStuffingSanitized,
+    av1RtpAndDependencyDescriptorAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
