@@ -27457,13 +27457,238 @@ export function evaluateWebrtcSipRtpSmpteSt211020UncompressedVideoRfc4175ScanLin
   };
 }
 
+export interface SiliconCarbideAchesonGraphitizationFurnacePvtCrystalGrowthGuardInput {
+  furnaceRunId: string;
+  achesonCoreOrPvtCrucibleTemperatureC: number;
+  waterCoolantLeakIntoHotZoneDetected: boolean;
+  hoodOffGasCoConcentrationPct: number;
+  hoodOffGasO2IngressPct: number;
+  pvtAxialThermalGradientCPerCm: number;
+  pvtCrucibleArgonPressureTorr: number;
+  pyrophoricTrimethylaluminumOrSilaneLeakDetected: boolean;
+  ambientCarbonMonoxidePpm: number;
+  ambientHydrogenCyanidePpm: number;
+  respirableCrystallineSilicaOrSicWhiskerMgPerM3: number;
+  coThermalOxidizerFlareAndHvCapacitorGroundStickAndScbaLotoVerified: boolean;
+}
 
+export interface SiliconCarbideAchesonGraphitizationFurnacePvtCrystalGrowthGuardAssessment {
+  policyCode: "P285-SILICON-CARBIDE-SIC-ACHESON-GRAPHITIZATION-FURNACE-PVT-CRYSTAL-GROWTH-NFPA86-NFPA69-APIRP521-OSHA1910119-OSHA19101000-CORE-BLOWOUT-WATER-GAS-EXPLOSION-PYROPHORIC-TMA-AND-CO-HCN-SILICA-SCBA-LOTO-GUARD";
+  furnaceRunId: string;
+  corePeritecticBlowoutOrWaterGasExplosionPreempted0ms: boolean;
+  pvtThermalGradientRunawayOrPyrophoricDopantIsolated: boolean;
+  coHcnSilicaScrubberAndHvGroundScbaLotoLocked: boolean;
+  sicFurnacePvtGrowthApproved: boolean;
+  action:
+    | "approve_sic_acheson_furnace_and_pvt_crystal_growth_with_argon_purge_and_co_flare_interlock"
+    | "trip_furnace_rectifier_breaker_flood_high_purity_argon_and_route_offgas_to_co_flare_in_0ms"
+    | "isolate_pyrophoric_tma_silane_manifold_engage_argon_ballast_and_controlled_crucible_cooldown"
+    | "lock_sic_furnace_until_co_hcn_silica_scrubber_hv_ground_stick_and_scba_loto_verified";
+  blockedReason: string;
+}
 
+export function evaluateSiliconCarbideAchesonGraphitizationFurnacePvtCrystalGrowthNfpa86Nfpa69ApiRp521Osha1910119Osha19101000CoreBlowoutWaterGasExplosionCoFlareAndCoHcnSilicaScbaLotoGuard(
+  input: SiliconCarbideAchesonGraphitizationFurnacePvtCrystalGrowthGuardInput,
+): SiliconCarbideAchesonGraphitizationFurnacePvtCrystalGrowthGuardAssessment {
+  const blockedReasons: string[] = [];
 
+  const corePeritecticBlowoutOrWaterGasExplosionPreempted0ms =
+    !Number.isFinite(input.achesonCoreOrPvtCrucibleTemperatureC) ||
+    input.achesonCoreOrPvtCrucibleTemperatureC >= 2650.0 ||
+    input.achesonCoreOrPvtCrucibleTemperatureC < 1500.0 ||
+    input.waterCoolantLeakIntoHotZoneDetected ||
+    !Number.isFinite(input.hoodOffGasCoConcentrationPct) ||
+    !Number.isFinite(input.hoodOffGasO2IngressPct) ||
+    input.hoodOffGasO2IngressPct >= 4.0 ||
+    (input.hoodOffGasCoConcentrationPct >= 12.5 &&
+      input.hoodOffGasO2IngressPct >= 2.0);
 
+  if (corePeritecticBlowoutOrWaterGasExplosionPreempted0ms) {
+    blockedReasons.push(
+      "SIC_ACHESON_CORE_PERITECTIC_DECOMPOSITION_2650C_WATER_GAS_EXPLOSION_OR_CO_O2_HOOD_DEFLAGRATION_PREEMPTED_0MS",
+    );
+  }
 
+  const pvtThermalGradientRunawayOrPyrophoricDopantIsolated =
+    !Number.isFinite(input.pvtAxialThermalGradientCPerCm) ||
+    input.pvtAxialThermalGradientCPerCm <= 0 ||
+    input.pvtAxialThermalGradientCPerCm >= 45.0 ||
+    !Number.isFinite(input.pvtCrucibleArgonPressureTorr) ||
+    input.pvtCrucibleArgonPressureTorr < 0.5 ||
+    input.pvtCrucibleArgonPressureTorr >= 50.0 ||
+    input.pyrophoricTrimethylaluminumOrSilaneLeakDetected;
 
+  if (pvtThermalGradientRunawayOrPyrophoricDopantIsolated) {
+    blockedReasons.push(
+      "SIC_PVT_AXIAL_THERMAL_GRADIENT_SILICON_DROPLET_RUNAWAY_VACUUM_STALL_OR_PYROPHORIC_TMA_SILANE_LEAK_ISOLATED",
+    );
+  }
 
+  const coHcnSilicaScrubberAndHvGroundScbaLotoLocked =
+    !Number.isFinite(input.ambientCarbonMonoxidePpm) ||
+    input.ambientCarbonMonoxidePpm >= 35.0 ||
+    !Number.isFinite(input.ambientHydrogenCyanidePpm) ||
+    input.ambientHydrogenCyanidePpm >= 4.7 ||
+    !Number.isFinite(input.respirableCrystallineSilicaOrSicWhiskerMgPerM3) ||
+    input.respirableCrystallineSilicaOrSicWhiskerMgPerM3 >= 0.05 ||
+    !input.coThermalOxidizerFlareAndHvCapacitorGroundStickAndScbaLotoVerified;
 
+  if (coHcnSilicaScrubberAndHvGroundScbaLotoLocked) {
+    blockedReasons.push(
+      "OSHA_1910_1000_CO_35PPM_HCN_4_7PPM_CRYSTALLINE_SILICA_0_05MG_M3_OR_HV_GROUND_STICK_SCBA_LOTO_LOCKED",
+    );
+  }
 
+  const sicFurnacePvtGrowthApproved =
+    !corePeritecticBlowoutOrWaterGasExplosionPreempted0ms &&
+    !pvtThermalGradientRunawayOrPyrophoricDopantIsolated &&
+    !coHcnSilicaScrubberAndHvGroundScbaLotoLocked;
 
+  let action: SiliconCarbideAchesonGraphitizationFurnacePvtCrystalGrowthGuardAssessment["action"] =
+    "approve_sic_acheson_furnace_and_pvt_crystal_growth_with_argon_purge_and_co_flare_interlock";
+
+  if (corePeritecticBlowoutOrWaterGasExplosionPreempted0ms) {
+    action =
+      "trip_furnace_rectifier_breaker_flood_high_purity_argon_and_route_offgas_to_co_flare_in_0ms";
+  } else if (pvtThermalGradientRunawayOrPyrophoricDopantIsolated) {
+    action =
+      "isolate_pyrophoric_tma_silane_manifold_engage_argon_ballast_and_controlled_crucible_cooldown";
+  } else if (coHcnSilicaScrubberAndHvGroundScbaLotoLocked) {
+    action =
+      "lock_sic_furnace_until_co_hcn_silica_scrubber_hv_ground_stick_and_scba_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P285-SILICON-CARBIDE-SIC-ACHESON-GRAPHITIZATION-FURNACE-PVT-CRYSTAL-GROWTH-NFPA86-NFPA69-APIRP521-OSHA1910119-OSHA19101000-CORE-BLOWOUT-WATER-GAS-EXPLOSION-PYROPHORIC-TMA-AND-CO-HCN-SILICA-SCBA-LOTO-GUARD",
+    furnaceRunId: input.furnaceRunId,
+    corePeritecticBlowoutOrWaterGasExplosionPreempted0ms,
+    pvtThermalGradientRunawayOrPyrophoricDopantIsolated,
+    coHcnSilicaScrubberAndHvGroundScbaLotoLocked,
+    sicFurnacePvtGrowthApproved,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331GuardInput {
+  sessionId: string;
+  rtpPayloadBytes: number;
+  ancHeaderLengthBytes: number;
+  declaredAncCount: number;
+  totalAncPackets32BitAlignedOctets: number;
+  ancDataCount10BitWords: number;
+  didSdid9BitParityAnd10BitChecksumValid: boolean;
+  unauthenticatedScte104SpliceOrCea708CaptionInjectionDetected: boolean;
+  vancHancLineNumber: number;
+  negotiatedMaxVancFrameLines: number;
+  inboundAncillaryBitrateKbps: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331GuardAssessment {
+  policyCode: "P286-WEBRTC-SIP-RTP-SMPTE-ST2110-40-ANCILLARY-DATA-RFC8331-SMPTE-ST291-1-ANC-COUNT-DATA-COUNT-OVERREAD-DID-SDID-PARITY-CHECKSUM-SCTE104-SPLICE-SPOOFING-AND-VANC-HANC-COORDINATE-RATE-GUARD";
+  sessionId: string;
+  ancCountOrDataCountWordAlignmentOverreadDropped: boolean;
+  didSdidParityChecksumOrScte104CaptionInjectionBlocked: boolean;
+  vancLineCoordinateOrAncBitrateFloodClamped: boolean;
+  st211040AncillaryRtpPacketAccepted: boolean;
+  action:
+    | "accept_st2110_40_rfc8331_ancillary_data_rtp_packet"
+    | "drop_rfc8331_anc_count_or_10bit_data_count_32bit_word_overread_in_0ms"
+    | "reject_st291_1_did_sdid_parity_checksum_mismatch_or_unauthenticated_scte104_cea708_injection"
+    | "clamp_st2110_40_vanc_line_coordinate_or_ancillary_bitrate_amplification_flood";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211040AncillaryDataRfc8331SmpteSt2911AncCountDataCountOverreadDidSdidParityChecksumScte104SpliceSpoofingAndVancHancCoordinateRateGuard(
+  input: WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331GuardInput,
+): WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const minimumBytesPer10BitAncPacket =
+    Math.ceil(((6 + Math.max(0, input.ancDataCount10BitWords) + 1) * 10 + 32) / 32) * 4;
+
+  const ancCountOrDataCountWordAlignmentOverreadDropped =
+    !Number.isInteger(input.rtpPayloadBytes) ||
+    !Number.isInteger(input.ancHeaderLengthBytes) ||
+    !Number.isInteger(input.declaredAncCount) ||
+    !Number.isInteger(input.totalAncPackets32BitAlignedOctets) ||
+    !Number.isInteger(input.ancDataCount10BitWords) ||
+    input.ancHeaderLengthBytes !== 4 ||
+    input.declaredAncCount < 0 ||
+    input.declaredAncCount > 32 ||
+    input.ancDataCount10BitWords < 0 ||
+    input.ancDataCount10BitWords > 255 ||
+    input.totalAncPackets32BitAlignedOctets < 0 ||
+    input.totalAncPackets32BitAlignedOctets % 4 !== 0 ||
+    (input.declaredAncCount > 0 &&
+      input.totalAncPackets32BitAlignedOctets <
+        input.declaredAncCount * minimumBytesPer10BitAncPacket) ||
+    input.ancHeaderLengthBytes + input.totalAncPackets32BitAlignedOctets >
+      input.rtpPayloadBytes;
+
+  if (ancCountOrDataCountWordAlignmentOverreadDropped) {
+    blockedReasons.push(
+      "RFC8331_ST2110_40_ANC_COUNT_OR_ST291_1_10BIT_DATA_COUNT_32BIT_WORD_ALIGNMENT_OVERREAD_DROPPED_0MS",
+    );
+  }
+
+  const didSdidParityChecksumOrScte104CaptionInjectionBlocked =
+    !input.didSdid9BitParityAnd10BitChecksumValid ||
+    input.unauthenticatedScte104SpliceOrCea708CaptionInjectionDetected;
+
+  if (didSdidParityChecksumOrScte104CaptionInjectionBlocked) {
+    blockedReasons.push(
+      "SMPTE_ST291_1_DID_SDID_PARITY_10BIT_CHECKSUM_MISMATCH_OR_UNAUTHENTICATED_SCTE104_CEA708_INJECTION_BLOCKED",
+    );
+  }
+
+  const vancLineCoordinateOrAncBitrateFloodClamped =
+    !Number.isInteger(input.vancHancLineNumber) ||
+    !Number.isInteger(input.negotiatedMaxVancFrameLines) ||
+    input.negotiatedMaxVancFrameLines <= 0 ||
+    input.vancHancLineNumber < 1 ||
+    input.vancHancLineNumber > input.negotiatedMaxVancFrameLines ||
+    !Number.isFinite(input.inboundAncillaryBitrateKbps) ||
+    input.inboundAncillaryBitrateKbps <= 0 ||
+    input.inboundAncillaryBitrateKbps > 2000.0;
+
+  if (vancLineCoordinateOrAncBitrateFloodClamped) {
+    blockedReasons.push(
+      "SMPTE_ST2110_40_VANC_HANC_LINE_COORDINATE_OUT_OF_RANGE_OR_2000KBPS_ANC_AMPLIFICATION_FLOOD_CLAMPED",
+    );
+  }
+
+  const st211040AncillaryRtpPacketAccepted =
+    !ancCountOrDataCountWordAlignmentOverreadDropped &&
+    !didSdidParityChecksumOrScte104CaptionInjectionBlocked &&
+    !vancLineCoordinateOrAncBitrateFloodClamped;
+
+  let action: WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331GuardAssessment["action"] =
+    "accept_st2110_40_rfc8331_ancillary_data_rtp_packet";
+
+  if (ancCountOrDataCountWordAlignmentOverreadDropped) {
+    action =
+      "drop_rfc8331_anc_count_or_10bit_data_count_32bit_word_overread_in_0ms";
+  } else if (didSdidParityChecksumOrScte104CaptionInjectionBlocked) {
+    action =
+      "reject_st291_1_did_sdid_parity_checksum_mismatch_or_unauthenticated_scte104_cea708_injection";
+  } else if (vancLineCoordinateOrAncBitrateFloodClamped) {
+    action =
+      "clamp_st2110_40_vanc_line_coordinate_or_ancillary_bitrate_amplification_flood";
+  }
+
+  return {
+    policyCode:
+      "P286-WEBRTC-SIP-RTP-SMPTE-ST2110-40-ANCILLARY-DATA-RFC8331-SMPTE-ST291-1-ANC-COUNT-DATA-COUNT-OVERREAD-DID-SDID-PARITY-CHECKSUM-SCTE104-SPLICE-SPOOFING-AND-VANC-HANC-COORDINATE-RATE-GUARD",
+    sessionId: input.sessionId,
+    ancCountOrDataCountWordAlignmentOverreadDropped,
+    didSdidParityChecksumOrScte104CaptionInjectionBlocked,
+    vancLineCoordinateOrAncBitrateFloodClamped,
+    st211040AncillaryRtpPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}

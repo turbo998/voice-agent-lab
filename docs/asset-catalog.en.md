@@ -10,7 +10,7 @@
 
 | Asset Name | Format | Live URL / Path | Description |
 | :--- | :--- | :--- | :--- |
-| **Enterprise Voice Agent Presales & Sandbox Portal** | 🌐 Trilingual H5 (`zh-CN` / `zh-TW` / `en`) | `https://turbo998.github.io/voice-agent-lab/` (`site/index.html`) | **20 Vertical Scenarios (`S1–S20`)**, 4 Reference Architectures, 7 Competitor Battlecards, **302 Live POC Trap Probes (`A01–P284`)**, Latency Waterfall Analyzer, and FinOps TCO + PTU/PAYGO Burst Calculator. |
+| **Enterprise Voice Agent Presales & Sandbox Portal** | 🌐 Trilingual H5 (`zh-CN` / `zh-TW` / `en`) | `https://turbo998.github.io/voice-agent-lab/` (`site/index.html`) | **20 Vertical Scenarios (`S1–S20`)**, 4 Reference Architectures, 7 Competitor Battlecards, **304 Live POC Trap Probes (`A01–P286`)**, Latency Waterfall Analyzer, and FinOps TCO + PTU/PAYGO Burst Calculator. |
 | **12-Slide Azure Executive Briefing Deck** | 📽️ 16:9 HTML Deck | `https://turbo998.github.io/voice-agent-lab/deck.html` (`site/deck.html`) | 12-slide executive presentation with bilingual headings, keyboard navigation, and print-to-PDF support. |
 | **7-Card 4:5 Visual Benchmark Report** | 📊 7-Card Visual Deck | `https://turbo998.github.io/voice-agent-lab/benchmark-cards.html` (`site/benchmark-cards.html`) | 7-card 4:5 portrait evaluation report backed by sealed JSON telemetry (`site/data/voice-agent-benchmark-report.json`). |
 | **GPT-Live (`gpt-live-1`) Partner Engineering Training Portal** | 🎓 Trilingual H5 | `https://turbo998.github.io/gpt-live-1-demo/training.html` | 6 engineering modules, 3 high-res architecture diagrams, FinOps calculator, and partner certification quiz. |
