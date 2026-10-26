@@ -25074,3 +25074,193 @@ export function evaluateWebrtcSipRtpEvsAmrWb3gppTs26445Rfc4867TocCmrHeaderDesync
   };
 }
 
+export interface EthyleneOxideEoDirectOxygenSilverCatalyticEpoxidationPurificationNfpa30Nfpa69ApiRp521Osha1910119Osha19101047GuardInput {
+  sessionId: string;
+  cycleGasOxygenMolPct: number;
+  silverCatalystHotspotTempC: number;
+  edcModeratorLostOrCo2CombustionRunawayDetected: boolean;
+  eoColumnOrStorageTempC: number;
+  vaporPhaseN2InertingMarginBelowSafeBar: boolean;
+  rustAcidAlkaliContaminationPpm: number;
+  ambientEthyleneOxidePpm: number;
+  lineBreakOrCatalystUnloadingRequested: boolean;
+  waterFlushPositivePressureScbaAndDbbLotoVerified: boolean;
+}
+
+export interface EthyleneOxideEoDirectOxygenSilverCatalyticEpoxidationPurificationNfpa30Nfpa69ApiRp521Osha1910119Osha19101047GuardAssessment {
+  policyCode: "P263-ETHYLENE-OXIDE-EO-DIRECT-OXYGEN-SILVER-CATALYTIC-EPOXIDATION-PURIFICATION-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101047-CYCLE-GAS-O2-FLAMMABILITY-HOTSPOT-AUTO-DECOMPOSITION-RUNAWAY-AND-EO-SCBA-LOTO-GUARD";
+  sessionId: string;
+  cycleGasO2LocOrSilverHotspotCombustionRunawayPreempted: boolean;
+  eoVaporAutoDecompositionOrContaminationPolymerizationInterlocked: boolean;
+  osha19101047EoCarcinogenExposureOrMissingScbaLotoLocked: boolean;
+  eoDirectEpoxidationOperationPermitted: boolean;
+  action:
+    | "trip_eo_oxygen_mixing_dbb_and_flood_methane_n2_ballast_in_0ms"
+    | "cut_eo_reboiler_heat_pressurize_n2_blanket_and_activate_water_deluge"
+    | "lock_eo_line_break_until_osha19101047_scba_water_flush_and_dbb_loto_verified"
+    | "allow_verified_eo_silver_epoxidation_and_purification_operation";
+  blockedReason: string;
+}
+
+export function evaluateEthyleneOxideEoDirectOxygenSilverCatalyticEpoxidationPurificationNfpa30Nfpa69ApiRp521Osha1910119Osha19101047CycleGasO2FlammabilityHotspotAutoDecompositionRunawayAndEoScbaLotoGuard(
+  input: EthyleneOxideEoDirectOxygenSilverCatalyticEpoxidationPurificationNfpa30Nfpa69ApiRp521Osha1910119Osha19101047GuardInput
+): EthyleneOxideEoDirectOxygenSilverCatalyticEpoxidationPurificationNfpa30Nfpa69ApiRp521Osha1910119Osha19101047GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const cycleGasO2LocOrSilverHotspotCombustionRunawayPreempted =
+    input.cycleGasOxygenMolPct >= 8.5 ||
+    input.silverCatalystHotspotTempC >= 275.0 ||
+    input.edcModeratorLostOrCo2CombustionRunawayDetected;
+
+  if (cycleGasO2LocOrSilverHotspotCombustionRunawayPreempted) {
+    blockedReasons.push(
+      `eo_epoxidation_o2_or_hotspot_runaway_o2_${input.cycleGasOxygenMolPct}molpct_hotspot_${input.silverCatalystHotspotTempC}C_edc_loss_${input.edcModeratorLostOrCo2CombustionRunawayDetected}`
+    );
+  }
+
+  const eoVaporAutoDecompositionOrContaminationPolymerizationInterlocked =
+    input.eoColumnOrStorageTempC >= 45.0 ||
+    input.vaporPhaseN2InertingMarginBelowSafeBar ||
+    input.rustAcidAlkaliContaminationPpm >= 10.0;
+
+  if (eoVaporAutoDecompositionOrContaminationPolymerizationInterlocked) {
+    blockedReasons.push(
+      `eo_auto_decomposition_or_contamination_temp_${input.eoColumnOrStorageTempC}C_n2_margin_low_${input.vaporPhaseN2InertingMarginBelowSafeBar}_contamination_${input.rustAcidAlkaliContaminationPpm}ppm`
+    );
+  }
+
+  const osha19101047EoCarcinogenExposureOrMissingScbaLotoLocked =
+    input.ambientEthyleneOxidePpm >= 1.0 ||
+    (input.lineBreakOrCatalystUnloadingRequested &&
+      !input.waterFlushPositivePressureScbaAndDbbLotoVerified);
+
+  if (osha19101047EoCarcinogenExposureOrMissingScbaLotoLocked) {
+    blockedReasons.push(
+      `eo_carcinogen_exposure_or_unverified_scba_loto_eo_${input.ambientEthyleneOxidePpm}ppm_linebreak_${input.lineBreakOrCatalystUnloadingRequested}_verified_${input.waterFlushPositivePressureScbaAndDbbLotoVerified}`
+    );
+  }
+
+  const eoDirectEpoxidationOperationPermitted = blockedReasons.length === 0;
+
+  let action: EthyleneOxideEoDirectOxygenSilverCatalyticEpoxidationPurificationNfpa30Nfpa69ApiRp521Osha1910119Osha19101047GuardAssessment["action"] =
+    "allow_verified_eo_silver_epoxidation_and_purification_operation";
+
+  if (cycleGasO2LocOrSilverHotspotCombustionRunawayPreempted) {
+    action = "trip_eo_oxygen_mixing_dbb_and_flood_methane_n2_ballast_in_0ms";
+  } else if (eoVaporAutoDecompositionOrContaminationPolymerizationInterlocked) {
+    action =
+      "cut_eo_reboiler_heat_pressurize_n2_blanket_and_activate_water_deluge";
+  } else if (osha19101047EoCarcinogenExposureOrMissingScbaLotoLocked) {
+    action =
+      "lock_eo_line_break_until_osha19101047_scba_water_flush_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P263-ETHYLENE-OXIDE-EO-DIRECT-OXYGEN-SILVER-CATALYTIC-EPOXIDATION-PURIFICATION-NFPA30-NFPA69-APIRP521-OSHA1910119-OSHA19101047-CYCLE-GAS-O2-FLAMMABILITY-HOTSPOT-AUTO-DECOMPOSITION-RUNAWAY-AND-EO-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    cycleGasO2LocOrSilverHotspotCombustionRunawayPreempted,
+    eoVaporAutoDecompositionOrContaminationPolymerizationInterlocked,
+    osha19101047EoCarcinogenExposureOrMissingScbaLotoLocked,
+    eoDirectEpoxidationOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRohcHeaderCompressionRtpDtlsStunDemuxRfc3095Rfc5795Rfc7983GuardInput {
+  sessionId: string;
+  rohcCidValue: number;
+  negotiatedMaxCid: number;
+  declaredRohcHeaderAndFeedbackBytes: number;
+  remainingPacketBytes: number;
+  unverifiedIrStaticChainSsrcOverrideAttempted: boolean;
+  rfc7983FirstByteInReservedHole: boolean;
+  rtpVersionTwoOrRtcpDemuxViolationDetected: boolean;
+  consecutiveRohcCrcFailures: number;
+  reconstructedHeaderExpansionRatio: number;
+}
+
+export interface WebrtcSipRohcHeaderCompressionRtpDtlsStunDemuxRfc3095Rfc5795Rfc7983GuardAssessment {
+  policyCode: "P264-WEBRTC-SIP-ROHC-HEADER-COMPRESSION-RTP-DTLS-STUN-DEMUX-RFC3095-RFC5795-RFC7983-CID-CONTEXT-POISONING-CRC-DESYNC-DECOMPRESSION-AMPLIFICATION-AND-FIRST-BYTE-DEMUX-SMUGGLING-GUARD";
+  sessionId: string;
+  rohcCidOverreadOrStaticChainPoisoningDropped: boolean;
+  rfc7983ReservedByteOrRtpRtcpDemuxSmugglingBlocked: boolean;
+  rohcWlsbCrcDesyncOrExpansionBombClamped: boolean;
+  rohcMultiplexedVoicePacketAccepted: boolean;
+  action:
+    | "drop_rohc_cid_overread_or_unverified_ir_context_poisoning_in_0ms"
+    | "reject_rfc7983_reserved_byte_or_rtp_rtcp_demux_smuggling"
+    | "clamp_rohc_wlsb_desync_and_enforce_static_nack_resync"
+    | "forward_verified_rohc_and_rfc7983_multiplexed_voice_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRohcHeaderCompressionRtpDtlsStunDemuxRfc3095Rfc5795Rfc7983CidContextPoisoningCrcDesyncDecompressionAmplificationAndFirstByteDemuxSmugglingGuard(
+  input: WebrtcSipRohcHeaderCompressionRtpDtlsStunDemuxRfc3095Rfc5795Rfc7983GuardInput
+): WebrtcSipRohcHeaderCompressionRtpDtlsStunDemuxRfc3095Rfc5795Rfc7983GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const rohcCidOverreadOrStaticChainPoisoningDropped =
+    input.rohcCidValue < 0 ||
+    input.rohcCidValue > input.negotiatedMaxCid ||
+    input.declaredRohcHeaderAndFeedbackBytes <= 0 ||
+    input.declaredRohcHeaderAndFeedbackBytes > input.remainingPacketBytes ||
+    input.unverifiedIrStaticChainSsrcOverrideAttempted;
+
+  if (rohcCidOverreadOrStaticChainPoisoningDropped) {
+    blockedReasons.push(
+      `rohc_cid_or_ir_context_violation_cid_${input.rohcCidValue}_max_${input.negotiatedMaxCid}_hdr_${input.declaredRohcHeaderAndFeedbackBytes}B_rem_${input.remainingPacketBytes}B_ir_override_${input.unverifiedIrStaticChainSsrcOverrideAttempted}`
+    );
+  }
+
+  const rfc7983ReservedByteOrRtpRtcpDemuxSmugglingBlocked =
+    input.rfc7983FirstByteInReservedHole ||
+    input.rtpVersionTwoOrRtcpDemuxViolationDetected;
+
+  if (rfc7983ReservedByteOrRtpRtcpDemuxSmugglingBlocked) {
+    blockedReasons.push(
+      `rfc7983_demux_smuggling_reserved_hole_${input.rfc7983FirstByteInReservedHole}_rtp_rtcp_violation_${input.rtpVersionTwoOrRtcpDemuxViolationDetected}`
+    );
+  }
+
+  const rohcWlsbCrcDesyncOrExpansionBombClamped =
+    input.consecutiveRohcCrcFailures > 3 ||
+    input.reconstructedHeaderExpansionRatio > 40.0;
+
+  if (rohcWlsbCrcDesyncOrExpansionBombClamped) {
+    blockedReasons.push(
+      `rohc_wlsb_crc_desync_or_expansion_bomb_crc_failures_${input.consecutiveRohcCrcFailures}_expansion_${input.reconstructedHeaderExpansionRatio}x`
+    );
+  }
+
+  const rohcMultiplexedVoicePacketAccepted = blockedReasons.length === 0;
+
+  let action: WebrtcSipRohcHeaderCompressionRtpDtlsStunDemuxRfc3095Rfc5795Rfc7983GuardAssessment["action"] =
+    "forward_verified_rohc_and_rfc7983_multiplexed_voice_packet";
+
+  if (rohcCidOverreadOrStaticChainPoisoningDropped) {
+    action =
+      "drop_rohc_cid_overread_or_unverified_ir_context_poisoning_in_0ms";
+  } else if (rfc7983ReservedByteOrRtpRtcpDemuxSmugglingBlocked) {
+    action = "reject_rfc7983_reserved_byte_or_rtp_rtcp_demux_smuggling";
+  } else if (rohcWlsbCrcDesyncOrExpansionBombClamped) {
+    action = "clamp_rohc_wlsb_desync_and_enforce_static_nack_resync";
+  }
+
+  return {
+    policyCode:
+      "P264-WEBRTC-SIP-ROHC-HEADER-COMPRESSION-RTP-DTLS-STUN-DEMUX-RFC3095-RFC5795-RFC7983-CID-CONTEXT-POISONING-CRC-DESYNC-DECOMPRESSION-AMPLIFICATION-AND-FIRST-BYTE-DEMUX-SMUGGLING-GUARD",
+    sessionId: input.sessionId,
+    rohcCidOverreadOrStaticChainPoisoningDropped,
+    rfc7983ReservedByteOrRtpRtcpDemuxSmugglingBlocked,
+    rohcWlsbCrcDesyncOrExpansionBombClamped,
+    rohcMultiplexedVoicePacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+

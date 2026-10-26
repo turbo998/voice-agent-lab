@@ -1873,6 +1873,15 @@
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">MAN-Butane-Trip-0ms/Sublimer-Inert/SCBA-LOTO &amp; EVS-ToC-Drop-0ms/No-Compact-Collision/CMR-Clamp</span></td>
               <td><span class="band-tag band-auto">0.0 pts</span></td>
             </tr>
+            <tr>
+              <td>
+                <strong>138. 环氧乙烷（`EO, C2H4O`，乙烯纯氧银催化环氧化与精制）集控 `NFPA 30 / NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1047` 循环气氧 `&gt;=8.5 mol%` / 银催化剂热点 `&gt;=275°C` / `EDC` 氯抑制剂断流 0ms 切氧气混合双阀并充甲烷氮气致稳、`EO` 精制塔/储罐 `&gt;=45°C` 100% UEL 气相自燃分解或铁锈/酸碱污染 `&gt;=10 ppm` 切热源补氮封并投水幕喷淋及 `EO &gt;=1.0 ppm` 水洗置换 + 正压 `SCBA + DBB LOTO` 护栏 &amp; WebRTC/SIP 鲁棒头压缩（`ROHC RFC 3095 / RFC 5795`）与 `RFC 7983` 多路复用传输 `ROHC CID &gt; MAX_CID` / 头与反馈长越界 / 未验签 `IR` 静态链 `SSRC` 覆写投毒 0ms 丢包、`RFC 7983` 首字节保留空洞（`[2..19]` / `[64..127]`）或 `RTP v2 / RTCP` 解复用边界走私拒止及连续 `&gt;3` 次 `W-LSB CRC` 失败或 `&gt;40x` 解压放大炸弹钳制护栏 (`P263` / `P264`)</strong>
+                <div style="font-size:11.5px;color:#64748B;">环氧乙烷反应器循环气氧 9.3 mol% 突破 8.5 mol% LOC、银催化剂热点 289°C 且 EDC 抑制剂断流引发乙烯完全燃烧飞温，EO 精制塔 53°C 氮封失效（纯 EO 蒸气 100% UEL 自燃分解）且铁锈污染 26 ppm，现场 EO 蒸气 3.6 ppm 未戴正压 SCBA 强行拆法兰 vs 攻击者注入 CID=48（&gt; MAX_CID=15）且声明 512B（仅剩 64B）并伪造 IR 静态链 SSRC 的 ROHC 包、发送首字节落入 RFC 7983 保留空洞 [2..19] 的走私包或连续 7 次 CRC 失败触发 85x 头部解压放大炸弹</div>
+              </td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 69 / OSHA 1910.1047 EO-Ag &amp; RFC 3095 / RFC 5795 / RFC 7983 ROHC-Demux Guard</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">EO-O2-Trip-0ms/N2-Blanket-Deluge/SCBA-LOTO &amp; ROHC-CID-Drop-0ms/No-RFC7983-Hole/STATIC-NACK</span></td>
+              <td><span class="band-tag band-auto">0.0 pts</span></td>
+            </tr>
 
           </tbody>
         </table>
