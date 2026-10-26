@@ -25699,6 +25699,223 @@ export function evaluateWebrtcSipWebtransportHttp3QuicDatagramMoqVoiceRfc9297Rfc
   };
 }
 
+// ============================================================================
+// Stage 138 (P269-P270): Acetic Acid & Acetic Anhydride Monsanto/Cativa
+// Rhodium-Iridium Methanol Carbonylation & Ketene Furnace Pyrolysis Safety
+// Guard + WebRTC & SIP RTP Payload Format for AV1 Video (AOMedia AV1 RTP Spec
+// v1.0 / RFC 9626 Dependency Descriptor) Safety Guard
+// ============================================================================
+
+export interface AceticAcidAceticAnhydrideMonsantoCativaMethanolCarbonylationKetenePyrolysisNfpa69ApiRp521Osha1910119Osha19101000GuardInput {
+  sessionId: string;
+  carbonylationReactorTempC: number;
+  coPartialPressureBar: number;
+  recycleGasHydrogenVolPct: number;
+  keteneFurnaceCoilTempC: number;
+  diketeneAbsorberTempC: number;
+  lightEndsColumnPressureBar: number;
+  ambientKetenePpm: number;
+  ambientMethylIodidePpm: number;
+  ambientCarbonMonoxidePpm: number;
+  ambientAceticAnhydridePpm: number;
+  methanolScrubberAndFlareSealVerified: boolean;
+  zirconiumReactorOrKeteneLineBreakRequested: boolean;
+  positivePressureScbaAndDbbLotoVerified: boolean;
+}
+
+export interface AceticAcidAceticAnhydrideMonsantoCativaMethanolCarbonylationKetenePyrolysisNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  policyCode: "P269-ACETIC-ACID-ACETIC-ANHYDRIDE-MONSANTO-CATIVA-METHANOL-CARBONYLATION-KETENE-PYROLYSIS-NFPA69-APIRP521-OSHA1910119-OSHA19101000-CATALYST-PRECIPITATION-WGS-H2-KETENE-DIKETENE-AND-CH3I-CO-SCBA-LOTO-GUARD";
+  sessionId: string;
+  carbonylationRunawayOrCatalystCollapsePreempted: boolean;
+  keteneDiketeneOrLightEndsOverpressureInterlocked: boolean;
+  osha19101000KeteneCh3iCoOrScbaLotoLocked: boolean;
+  methanolCarbonylationOperationPermitted: boolean;
+  action:
+    | "trip_carbonylation_co_and_methanol_feed_dbb_and_inject_cold_acetic_acid_quench_in_0ms"
+    | "isolate_ketene_pyrolysis_furnace_quench_diketene_absorber_and_cut_light_ends_reboiler_steam"
+    | "lock_carbonylation_and_ketene_train_until_ch3i_scrubber_scba_and_dbb_loto_verified"
+    | "allow_verified_monsanto_cativa_methanol_carbonylation_operation";
+  blockedReason: string;
+}
+
+export function evaluateAceticAcidAceticAnhydrideMonsantoCativaMethanolCarbonylationKetenePyrolysisNfpa69ApiRp521Osha1910119Osha19101000CatalystPrecipitationWgsH2KeteneDiketeneAndCh3iCoScbaLotoGuard(
+  input: AceticAcidAceticAnhydrideMonsantoCativaMethanolCarbonylationKetenePyrolysisNfpa69ApiRp521Osha1910119Osha19101000GuardInput
+): AceticAcidAceticAnhydrideMonsantoCativaMethanolCarbonylationKetenePyrolysisNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const carbonylationRunawayOrCatalystCollapsePreempted =
+    input.carbonylationReactorTempC >= 205.0 ||
+    input.coPartialPressureBar < 6.5 ||
+    input.recycleGasHydrogenVolPct >= 4.5;
+
+  if (carbonylationRunawayOrCatalystCollapsePreempted) {
+    blockedReasons.push(
+      `Carbonylation reactor thermal runaway, Rh/Ir catalyst collapse, or WGS hydrogen surge risk (temp=${input.carbonylationReactorTempC} C, CO_partial_P=${input.coPartialPressureBar} bar, recycle_H2=${input.recycleGasHydrogenVolPct} vol%)`
+    );
+  }
+
+  const keteneDiketeneOrLightEndsOverpressureInterlocked =
+    input.keteneFurnaceCoilTempC >= 785.0 ||
+    input.diketeneAbsorberTempC >= 35.0 ||
+    input.lightEndsColumnPressureBar >= 3.2;
+
+  if (keteneDiketeneOrLightEndsOverpressureInterlocked) {
+    blockedReasons.push(
+      `Ketene pyrolysis coil overheat, diketene auto-condensation runaway, or light-ends column overpressure (coil_temp=${input.keteneFurnaceCoilTempC} C, diketene_temp=${input.diketeneAbsorberTempC} C, light_ends_P=${input.lightEndsColumnPressureBar} bar)`
+    );
+  }
+
+  const osha19101000KeteneCh3iCoOrScbaLotoLocked =
+    input.ambientKetenePpm >= 0.5 ||
+    input.ambientMethylIodidePpm >= 2.0 ||
+    input.ambientCarbonMonoxidePpm >= 35.0 ||
+    input.ambientAceticAnhydridePpm >= 5.0 ||
+    !input.methanolScrubberAndFlareSealVerified ||
+    (input.zirconiumReactorOrKeteneLineBreakRequested &&
+      !input.positivePressureScbaAndDbbLotoVerified);
+
+  if (osha19101000KeteneCh3iCoOrScbaLotoLocked) {
+    blockedReasons.push(
+      `OSHA 1910.1000 ketene/CH3I/CO/acetic anhydride exposure or unverified Zirconium-702 SCBA/DBB LOTO (ketene=${input.ambientKetenePpm} ppm, CH3I=${input.ambientMethylIodidePpm} ppm, CO=${input.ambientCarbonMonoxidePpm} ppm, Ac2O=${input.ambientAceticAnhydridePpm} ppm, scrubber=${input.methanolScrubberAndFlareSealVerified}, line_break=${input.zirconiumReactorOrKeteneLineBreakRequested}, scba_loto=${input.positivePressureScbaAndDbbLotoVerified})`
+    );
+  }
+
+  const methanolCarbonylationOperationPermitted =
+    !carbonylationRunawayOrCatalystCollapsePreempted &&
+    !keteneDiketeneOrLightEndsOverpressureInterlocked &&
+    !osha19101000KeteneCh3iCoOrScbaLotoLocked;
+
+  let action: AceticAcidAceticAnhydrideMonsantoCativaMethanolCarbonylationKetenePyrolysisNfpa69ApiRp521Osha1910119Osha19101000GuardAssessment["action"] =
+    "allow_verified_monsanto_cativa_methanol_carbonylation_operation";
+
+  if (carbonylationRunawayOrCatalystCollapsePreempted) {
+    action =
+      "trip_carbonylation_co_and_methanol_feed_dbb_and_inject_cold_acetic_acid_quench_in_0ms";
+  } else if (keteneDiketeneOrLightEndsOverpressureInterlocked) {
+    action =
+      "isolate_ketene_pyrolysis_furnace_quench_diketene_absorber_and_cut_light_ends_reboiler_steam";
+  } else if (osha19101000KeteneCh3iCoOrScbaLotoLocked) {
+    action =
+      "lock_carbonylation_and_ketene_train_until_ch3i_scrubber_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P269-ACETIC-ACID-ACETIC-ANHYDRIDE-MONSANTO-CATIVA-METHANOL-CARBONYLATION-KETENE-PYROLYSIS-NFPA69-APIRP521-OSHA1910119-OSHA19101000-CATALYST-PRECIPITATION-WGS-H2-KETENE-DIKETENE-AND-CH3I-CO-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    carbonylationRunawayOrCatalystCollapsePreempted,
+    keteneDiketeneOrLightEndsOverpressureInterlocked,
+    osha19101000KeteneCh3iCoOrScbaLotoLocked,
+    methanolCarbonylationOperationPermitted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpAv1VideoPayloadDependencyDescriptorRfc9626GuardInput {
+  sessionId: string;
+  leb128ByteCount: number;
+  declaredObuPayloadBytes: number;
+  remainingRtpPayloadBytes: number;
+  aggregationHeaderWFieldCount: number;
+  actualObuElementCount: number;
+  zBitContinuationWithoutOpenFragment: boolean;
+  nBitSetWithoutSequenceHeaderObu: boolean;
+  dependencyDescriptorTemplateIdOutOfBounds: boolean;
+  decodedFramePixels: number;
+  spatialLayerCount: number;
+  temporalLayerCount: number;
+}
+
+export interface WebrtcSipRtpAv1VideoPayloadDependencyDescriptorRfc9626GuardAssessment {
+  policyCode: "P270-WEBRTC-SIP-RTP-AV1-VIDEO-PAYLOAD-DEPENDENCY-DESCRIPTOR-RFC9626-OBU-LEB128-OVERREAD-Z-Y-W-N-FRAGMENT-DESYNC-AND-4K-FRAMEBUFFER-AMPLIFICATION-GUARD";
+  sessionId: string;
+  av1Leb128OrWFieldOverreadDropped: boolean;
+  av1FragmentationOrDependencyDescriptorBlocked: boolean;
+  av1FramebufferOrLayerAmplificationClamped: boolean;
+  av1RtpVideoPacketAccepted: boolean;
+  action:
+    | "drop_av1_rtp_leb128_overread_or_w_field_obu_count_mismatch_in_0ms"
+    | "discard_desynced_av1_obu_fragment_or_dependency_descriptor_and_emit_rtcp_pli"
+    | "clamp_av1_sequence_header_4k_framebuffer_and_svc_layer_budget"
+    | "forward_verified_av1_rtp_video_packet";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpAv1VideoPayloadDependencyDescriptorRfc9626ObuLeb128OverreadZYWNFragmentDesyncAnd4kFramebufferAmplificationGuard(
+  input: WebrtcSipRtpAv1VideoPayloadDependencyDescriptorRfc9626GuardInput
+): WebrtcSipRtpAv1VideoPayloadDependencyDescriptorRfc9626GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const av1Leb128OrWFieldOverreadDropped =
+    input.leb128ByteCount > 8 ||
+    input.declaredObuPayloadBytes <= 0 ||
+    input.declaredObuPayloadBytes > input.remainingRtpPayloadBytes ||
+    (input.aggregationHeaderWFieldCount > 0 &&
+      input.actualObuElementCount !== input.aggregationHeaderWFieldCount);
+
+  if (av1Leb128OrWFieldOverreadDropped) {
+    blockedReasons.push(
+      `AV1 RTP leb128 length overread or W-field OBU count mismatch (leb128_bytes=${input.leb128ByteCount}, declared_obu=${input.declaredObuPayloadBytes}B, remaining=${input.remainingRtpPayloadBytes}B, W=${input.aggregationHeaderWFieldCount}, actual_obus=${input.actualObuElementCount})`
+    );
+  }
+
+  const av1FragmentationOrDependencyDescriptorBlocked =
+    input.zBitContinuationWithoutOpenFragment ||
+    input.nBitSetWithoutSequenceHeaderObu ||
+    input.dependencyDescriptorTemplateIdOutOfBounds;
+
+  if (av1FragmentationOrDependencyDescriptorBlocked) {
+    blockedReasons.push(
+      `AV1 RTP Z/Y/N fragmentation or RFC 9626 Dependency Descriptor desync (z_without_open=${input.zBitContinuationWithoutOpenFragment}, n_without_seq_hdr=${input.nBitSetWithoutSequenceHeaderObu}, dd_template_oob=${input.dependencyDescriptorTemplateIdOutOfBounds})`
+    );
+  }
+
+  const av1FramebufferOrLayerAmplificationClamped =
+    input.decodedFramePixels > 8294400 ||
+    input.spatialLayerCount > 4 ||
+    input.temporalLayerCount > 8;
+
+  if (av1FramebufferOrLayerAmplificationClamped) {
+    blockedReasons.push(
+      `AV1 Sequence Header >4K UHD framebuffer or SVC layer budget exceeded (pixels=${input.decodedFramePixels}, spatial_layers=${input.spatialLayerCount}, temporal_layers=${input.temporalLayerCount})`
+    );
+  }
+
+  const av1RtpVideoPacketAccepted =
+    !av1Leb128OrWFieldOverreadDropped &&
+    !av1FragmentationOrDependencyDescriptorBlocked &&
+    !av1FramebufferOrLayerAmplificationClamped;
+
+  let action: WebrtcSipRtpAv1VideoPayloadDependencyDescriptorRfc9626GuardAssessment["action"] =
+    "forward_verified_av1_rtp_video_packet";
+
+  if (av1Leb128OrWFieldOverreadDropped) {
+    action =
+      "drop_av1_rtp_leb128_overread_or_w_field_obu_count_mismatch_in_0ms";
+  } else if (av1FragmentationOrDependencyDescriptorBlocked) {
+    action =
+      "discard_desynced_av1_obu_fragment_or_dependency_descriptor_and_emit_rtcp_pli";
+  } else if (av1FramebufferOrLayerAmplificationClamped) {
+    action = "clamp_av1_sequence_header_4k_framebuffer_and_svc_layer_budget";
+  }
+
+  return {
+    policyCode:
+      "P270-WEBRTC-SIP-RTP-AV1-VIDEO-PAYLOAD-DEPENDENCY-DESCRIPTOR-RFC9626-OBU-LEB128-OVERREAD-Z-Y-W-N-FRAGMENT-DESYNC-AND-4K-FRAMEBUFFER-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    av1Leb128OrWFieldOverreadDropped,
+    av1FragmentationOrDependencyDescriptorBlocked,
+    av1FramebufferOrLayerAmplificationClamped,
+    av1RtpVideoPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
 
 
 
