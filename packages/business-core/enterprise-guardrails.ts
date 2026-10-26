@@ -21731,6 +21731,201 @@ export function evaluateWebrtcSipSdpBundleAttributeMuxRfc8859Rfc8858Rfc7022Rfc88
   };
 }
 
+// ============================================================================
+// Stage 118 — P229: Hydrogen Peroxide (H2O2) Anthraquinone Auto-Oxidation
+// Palladium Hydrogenator Carryover, Vacuum Concentrator Organic-Peroxide
+// Detonation, Alkaline Backflow & Pyrophoric Pd SCBA LOTO Guard
+// (NFPA 400 / NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000)
+// ============================================================================
+
+export interface HydrogenPeroxideAnthraquinonePalladiumHydrogenationOxidationAndConcentratorScbaLotoInput {
+  unitId: string;
+  /** Palladium catalyst fines carryover past hydrogenator candle filter into oxidizer/extractor in ppm (runaway decomposition > 0.50 ppm). */
+  palladiumCarryoverPpm: number;
+  /** Carryover H2 gas in working solution entering air oxidation tower in vol% (explosive H2-in-O2 crossover >= 1.0 vol%). */
+  hydrogenInOxidizerFeedVolPct: number;
+  /** Vacuum H2O2 evaporator / concentrator temperature in °C (normal: 55–68°C; runaway > 78.0°C). */
+  peroxideConcentratorTempC: number;
+  /** Concentrator temperature rise rate dT/dt in °C/min (trip > 1.5°C/min). */
+  concentratorTempRateCPerMin: number;
+  /** Aqueous H2O2 extraction / concentrator pH (safe acid-stabilized window: 2.0–4.5; alkaline decomposition > 4.5). */
+  aqueousPeroxidePh: number;
+  /** Sodium pyrophosphate / stannate / organophosphonate stabilizer concentration in ppm (minimum >= 80.0 ppm). */
+  pyrophosphateStabilizerPpm: number;
+  /** Entrained aromatic/TOP organic working-solution Total Organic Carbon (TOC) in concentrated H2O2 in ppm (detonable mixture > 180.0 ppm). */
+  organicTocCarryoverPpm: number;
+  /** Ambient Hydrogen Peroxide (H2O2) vapor concentration in ppm (OSHA 29 CFR 1910.1000 PEL = 1.0 ppm, IDLH = 75 ppm). */
+  ambientHydrogenPeroxidePpm: number;
+  /** Ambient C9/C10 aromatic working-solution vapor concentration in ppm (threshold >= 25.0 ppm). */
+  ambientAromaticSolventPpm: number;
+  /** Whether an operator or agent requested opening the Pd hydrogenator candle filter, extraction tower, or H2O2 passivated storage tank. */
+  equipmentOpeningRequested: boolean;
+  /** Whether wet N2 passivation of pyrophoric Pd catalyst, demin-water peroxide flush, non-cellulosic suit, and positive-pressure SCBA LOTO are verified. */
+  wetPdPassivationPeroxideFreeAndScbaLotoVerified: boolean;
+}
+
+export interface HydrogenPeroxideAnthraquinonePalladiumHydrogenationOxidationAndConcentratorScbaLotoDecision {
+  policyCode: "P229-HYDROGEN-PEROXIDE-ANTHRAQUINONE-PALLADIUM-HYDROGENATION-NFPA400-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PD-CARRYOVER-ORGANIC-PEROXIDE-DETONATION-ALKALINE-BACKFLOW-AND-H2O2-SCBA-LOTO-GUARD";
+  unitId: string;
+  pdCarryoverOrPeroxideConcentratorRunawayTripped: boolean;
+  alkalineBackflowStabilizerLossOrOrganicCarryoverMitigated: boolean;
+  h2o2VaporOrPyrophoricPdCatalystOpeningLocked: boolean;
+  automationAllowed: boolean;
+  action:
+    | "allow_normal_anthraquinone_hydrogen_peroxide_operation"
+    | "trip_h2_air_feeds_flood_emergency_demin_water_dilution_and_open_blowout_vent_in_0ms"
+    | "cut_concentrator_steam_isolate_alkaline_regenerator_and_dose_pyrophosphate_nitric_acid"
+    | "lock_peroxide_unit_and_enforce_wet_pd_catalyst_passivation_water_deluge_scba_loto";
+  blockedReason?: string;
+}
+
+export function evaluateHydrogenPeroxideAnthraquinonePalladiumHydrogenationNfpa400Nfpa69ApiRp521Osha1910119Osha19101000PdCarryoverOrganicPeroxideDetonationAlkalineBackflowAndH2o2ScbaLotoGuard(
+  input: HydrogenPeroxideAnthraquinonePalladiumHydrogenationOxidationAndConcentratorScbaLotoInput,
+): HydrogenPeroxideAnthraquinonePalladiumHydrogenationOxidationAndConcentratorScbaLotoDecision {
+  const pdCarryoverOrPeroxideConcentratorRunawayTripped =
+    input.palladiumCarryoverPpm > 0.5 ||
+    input.hydrogenInOxidizerFeedVolPct >= 1.0 ||
+    input.peroxideConcentratorTempC > 78.0 ||
+    input.concentratorTempRateCPerMin > 1.5;
+
+  const alkalineBackflowStabilizerLossOrOrganicCarryoverMitigated =
+    input.aqueousPeroxidePh > 4.5 ||
+    input.aqueousPeroxidePh < 1.8 ||
+    input.pyrophosphateStabilizerPpm < 80.0 ||
+    input.organicTocCarryoverPpm > 180.0;
+
+  const h2o2VaporOrPyrophoricPdCatalystOpeningLocked =
+    input.ambientHydrogenPeroxidePpm >= 1.0 ||
+    input.ambientAromaticSolventPpm >= 25.0 ||
+    (input.equipmentOpeningRequested &&
+      !input.wetPdPassivationPeroxideFreeAndScbaLotoVerified);
+
+  let action: HydrogenPeroxideAnthraquinonePalladiumHydrogenationOxidationAndConcentratorScbaLotoDecision["action"] =
+    "allow_normal_anthraquinone_hydrogen_peroxide_operation";
+  let automationAllowed = true;
+  let blockedReason: string | undefined;
+
+  if (pdCarryoverOrPeroxideConcentratorRunawayTripped) {
+    action =
+      "trip_h2_air_feeds_flood_emergency_demin_water_dilution_and_open_blowout_vent_in_0ms";
+    automationAllowed = false;
+    blockedReason = `NFPA 400 / NFPA 69 / API RP 521 / OSHA 1910.119 Anthraquinone H2O2 Palladium Catalyst Carryover, H2-in-Oxidizer Crossover or Vacuum Concentrator Decomposition Runaway on ${input.unitId}: Pd=${input.palladiumCarryoverPpm} ppm, H2inOx=${input.hydrogenInOxidizerFeedVolPct} vol%, concTemp=${input.peroxideConcentratorTempC}°C, dT/dt=${input.concentratorTempRateCPerMin}°C/min.`;
+  } else if (alkalineBackflowStabilizerLossOrOrganicCarryoverMitigated) {
+    action =
+      "cut_concentrator_steam_isolate_alkaline_regenerator_and_dose_pyrophosphate_nitric_acid";
+    automationAllowed = false;
+    blockedReason = `NFPA 400 / API RP 521 Aqueous H2O2 Alkaline Regenerator Backflow (pH Excursion), Pyrophosphate Stabilizer Depletion or Detonable Organic Working-Solution TOC Carryover on ${input.unitId}: pH=${input.aqueousPeroxidePh}, stabilizer=${input.pyrophosphateStabilizerPpm} ppm, organicTOC=${input.organicTocCarryoverPpm} ppm.`;
+  } else if (h2o2VaporOrPyrophoricPdCatalystOpeningLocked) {
+    action =
+      "lock_peroxide_unit_and_enforce_wet_pd_catalyst_passivation_water_deluge_scba_loto";
+    automationAllowed = false;
+    blockedReason = `OSHA 29 CFR 1910.1000 / 1910.119 / 1910.147 H2O2 Vapor (>= 1.0 ppm PEL), Aromatic Solvent (>= 25 ppm) or Unpassivated Pyrophoric Palladium Candle-Filter Opening on ${input.unitId}: H2O2=${input.ambientHydrogenPeroxidePpm} ppm, solvent=${input.ambientAromaticSolventPpm} ppm, openingRequested=${input.equipmentOpeningRequested}, wetPdScbaVerified=${input.wetPdPassivationPeroxideFreeAndScbaLotoVerified}.`;
+  }
+
+  return {
+    policyCode:
+      "P229-HYDROGEN-PEROXIDE-ANTHRAQUINONE-PALLADIUM-HYDROGENATION-NFPA400-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PD-CARRYOVER-ORGANIC-PEROXIDE-DETONATION-ALKALINE-BACKFLOW-AND-H2O2-SCBA-LOTO-GUARD",
+    unitId: input.unitId,
+    pdCarryoverOrPeroxideConcentratorRunawayTripped,
+    alkalineBackflowStabilizerLossOrOrganicCarryoverMitigated,
+    h2o2VaporOrPyrophoricPdCatalystOpeningLocked,
+    automationAllowed,
+    action,
+    blockedReason,
+  };
+}
+
+// ============================================================================
+// Stage 118 — P230: WebRTC & SIP SDP External DataChannel Negotiation
+// (RFC 8864 a=dcmap / a=dcsa), Multiple-Stream RTCP Reporting Group
+// (RFC 8861 RGRP / RGRS), and RTP Stream Pause/Resume Mute-DoS Guard (RFC 7728)
+// ============================================================================
+
+export interface WebrtcSipSdpDataChannelDcmapDcsaRfc8864Rfc8861Rfc7728Rfc8832GuardInput {
+  sessionId: string;
+  /** Whether an in-band RFC 8832 DCEP DATA_CHANNEL_OPEN message arrived on an SCTP stream ID already negotiated externally via RFC 8864 a=dcmap. */
+  inBandDcepOpenCollidesWithExternalDcmapStream: boolean;
+  /** Whether an RFC 8864 a=dcsa:<stream-id> attribute attempts to smuggle forbidden transport/security attributes (e.g., fingerprint, ice-pwd, setup, crypto). */
+  dcsaSmugglesForbiddenTransportOrCryptoAttribute: boolean;
+  /** Whether the RFC 8864 a=dcmap subprotocol token is outside the allowlisted control-plane protocols or contains CRLF/control characters. */
+  dcmapSubprotocolUnapprovedOrMalformed: boolean;
+  /** Whether a delegated SSRC in an RFC 8861 RTCP Reporting Group (RGRP) violates suppression by transmitting redundant full RR/XR report blocks (N^2 RTCP amplification). */
+  rfc8861DelegatedSsrcSendsRedundantFullReportBlocks: boolean;
+  /** Whether circular reporting-group delegation or an oversized RGRS SSRC list (> 32 SSRCs) was detected. */
+  rfc8861CircularDelegationOrOversizedRgrsDetected: boolean;
+  /** Whether an RFC 7728 AVPF CCM PAUSE request targeted the active AI voice response SSRC without prior SDP ccm pause negotiation or with a replayed/rolled-back PauseID. */
+  unnegotiatedOrReplayedRfc7728PauseTargetsActiveVoiceSsrc: boolean;
+  /** Whether an RFC 7728 RESUME command attempted to unmute media while the SIP/SDP session is under administrative hold (a=inactive / a=sendonly). */
+  rfc7728ResumeViolatesAdministrativeSdpHold: boolean;
+}
+
+export interface WebrtcSipSdpDataChannelDcmapDcsaRfc8864Rfc8861Rfc7728Rfc8832GuardDecision {
+  policyCode: "P230-WEBRTC-SIP-SDP-DATACHANNEL-DCMAP-DCSA-RFC8864-RFC8861-RFC7728-RFC8832-OUT-OF-BAND-IN-BAND-GLARE-SUBPROTOCOL-INJECTION-RTCP-REPORTING-GROUP-AMPLIFICATION-AND-UNAUTHORIZED-RTP-PAUSE-DOS-GUARD";
+  sessionId: string;
+  rfc8864DcmapInBandCollisionOrDcsaSmugglingRejected: boolean;
+  rfc8861RtcpReportingGroupAmplificationClamped: boolean;
+  rfc7728UnauthorizedVoicePauseOrHoldBypassRefused: boolean;
+  dataChannelAndRtpControlAccepted: boolean;
+  action:
+    | "accept_compliant_rfc8864_dcmap_rfc8861_rgrp_and_rfc7728_state"
+    | "reset_colliding_sctp_stream_and_reject_malformed_rfc8864_dcmap_dcsa_in_0ms"
+    | "suppress_redundant_rfc8861_delegated_rtcp_rr_blocks_and_prune_rgrs_loop"
+    | "send_rfc7728_refused_feedback_and_preserve_active_voice_or_sdp_hold";
+  blockedReason?: string;
+}
+
+export function evaluateWebrtcSipSdpDataChannelNegotiationDcmapDcsaRfc8864Rfc8861Rfc7728Rfc8832OutOfBandInBandGlareSubprotocolInjectionRtcpReportingGroupAmplificationAndUnauthorizedRtpPauseDosGuard(
+  input: WebrtcSipSdpDataChannelDcmapDcsaRfc8864Rfc8861Rfc7728Rfc8832GuardInput,
+): WebrtcSipSdpDataChannelDcmapDcsaRfc8864Rfc8861Rfc7728Rfc8832GuardDecision {
+  const rfc8864DcmapInBandCollisionOrDcsaSmugglingRejected =
+    input.inBandDcepOpenCollidesWithExternalDcmapStream ||
+    input.dcsaSmugglesForbiddenTransportOrCryptoAttribute ||
+    input.dcmapSubprotocolUnapprovedOrMalformed;
+
+  const rfc8861RtcpReportingGroupAmplificationClamped =
+    input.rfc8861DelegatedSsrcSendsRedundantFullReportBlocks ||
+    input.rfc8861CircularDelegationOrOversizedRgrsDetected;
+
+  const rfc7728UnauthorizedVoicePauseOrHoldBypassRefused =
+    input.unnegotiatedOrReplayedRfc7728PauseTargetsActiveVoiceSsrc ||
+    input.rfc7728ResumeViolatesAdministrativeSdpHold;
+
+  let action: WebrtcSipSdpDataChannelDcmapDcsaRfc8864Rfc8861Rfc7728Rfc8832GuardDecision["action"] =
+    "accept_compliant_rfc8864_dcmap_rfc8861_rgrp_and_rfc7728_state";
+  let dataChannelAndRtpControlAccepted = true;
+  let blockedReason: string | undefined;
+
+  if (rfc8864DcmapInBandCollisionOrDcsaSmugglingRejected) {
+    action =
+      "reset_colliding_sctp_stream_and_reject_malformed_rfc8864_dcmap_dcsa_in_0ms";
+    dataChannelAndRtpControlAccepted = false;
+    blockedReason = `RFC 8864 / RFC 8832 External a=dcmap vs. In-Band DCEP Stream Collision, Forbidden a=dcsa Transport/Crypto Smuggling or Unapproved Subprotocol on ${input.sessionId}: dcepCollision=${input.inBandDcepOpenCollidesWithExternalDcmapStream}, dcsaSmuggling=${input.dcsaSmugglesForbiddenTransportOrCryptoAttribute}, badSubprotocol=${input.dcmapSubprotocolUnapprovedOrMalformed}.`;
+  } else if (rfc8861RtcpReportingGroupAmplificationClamped) {
+    action =
+      "suppress_redundant_rfc8861_delegated_rtcp_rr_blocks_and_prune_rgrs_loop";
+    dataChannelAndRtpControlAccepted = false;
+    blockedReason = `RFC 8861 Multi-Stream RTCP Reporting Group (RGRP/RGRS) Delegated SSRC Redundant RR Amplification or Circular Delegation on ${input.sessionId}: redundantRr=${input.rfc8861DelegatedSsrcSendsRedundantFullReportBlocks}, circularOrOversizedRgrs=${input.rfc8861CircularDelegationOrOversizedRgrsDetected}.`;
+  } else if (rfc7728UnauthorizedVoicePauseOrHoldBypassRefused) {
+    action =
+      "send_rfc7728_refused_feedback_and_preserve_active_voice_or_sdp_hold";
+    dataChannelAndRtpControlAccepted = false;
+    blockedReason = `RFC 7728 AVPF CCM PAUSE/RESUME Unauthorized AI Voice Mute-DoS or Administrative SDP Hold Bypass on ${input.sessionId}: unauthorizedPause=${input.unnegotiatedOrReplayedRfc7728PauseTargetsActiveVoiceSsrc}, holdBypassResume=${input.rfc7728ResumeViolatesAdministrativeSdpHold}.`;
+  }
+
+  return {
+    policyCode:
+      "P230-WEBRTC-SIP-SDP-DATACHANNEL-DCMAP-DCSA-RFC8864-RFC8861-RFC7728-RFC8832-OUT-OF-BAND-IN-BAND-GLARE-SUBPROTOCOL-INJECTION-RTCP-REPORTING-GROUP-AMPLIFICATION-AND-UNAUTHORIZED-RTP-PAUSE-DOS-GUARD",
+    sessionId: input.sessionId,
+    rfc8864DcmapInBandCollisionOrDcsaSmugglingRejected,
+    rfc8861RtcpReportingGroupAmplificationClamped,
+    rfc7728UnauthorizedVoicePauseOrHoldBypassRefused,
+    dataChannelAndRtpControlAccepted,
+    action,
+    blockedReason,
+  };
+}
+
+
 
 
 
