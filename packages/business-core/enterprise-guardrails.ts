@@ -27188,6 +27188,276 @@ export function evaluateWebrtcSipRtpLcevcMpeg5Part2EnhancementVideoIso230942Leb1
   };
 }
 
+export interface TitaniumDioxideChlorideProcessFluidizedBedChlorinationTicl4OxidationGuardInput {
+  trainId: string;
+  chlorinatorBedTempCelsius: number;
+  unreactedChlorineSlipVolPct: number;
+  coInChlorinatorOffGasVolPct: number;
+  o2IngressInChlorinatorOffGasVolPct: number;
+  ticl4CondenserMoisturePpm: number;
+  coolingWaterLeakIntoTicl4Detected: boolean;
+  ticl4OxidationPreheaterTempCelsius: number;
+  ambientChlorineGasPpm: number;
+  ambientHydrogenChloridePpm: number;
+  causticHypoScrubberOnline: boolean;
+  classAVaporTightScbaAndDbbLotoVerified: boolean;
+  requestedAction:
+    | "maintain_normal_tio2_chloride_chlorination_and_oxidation"
+    | "increase_chlorine_feed_or_oxidation_preheater_firing"
+    | "open_ticl4_condenser_or_chlorinator_brick_manway";
+}
+
+export interface TitaniumDioxideChlorideProcessFluidizedBedChlorinationTicl4OxidationGuardAssessment {
+  policyCode: "P283-TITANIUM-DIOXIDE-TIO2-CHLORIDE-PROCESS-FLUIDIZED-BED-CHLORINATION-TICL4-OXIDATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-CHLORINATOR-CL2-BLOWTHROUGH-TICL4-WATER-HYDROLYSIS-HCL-EXPLOSION-AND-CL2-TICL4-SCBA-LOTO-GUARD";
+  trainId: string;
+  chlorinatorCl2BlowthroughOrBedOvertempTripped: boolean;
+  ticl4WaterHydrolysisOrOxidationPreheaterRunawayQuenched: boolean;
+  chlorineHclExposureOrScbaLotoLocked: boolean;
+  processCommandApproved: boolean;
+  action:
+    | "allow_tio2_chloride_chlorination_and_oxidation"
+    | "trip_chlorine_feed_dbb_inject_nitrogen_fluidization_purge_and_route_to_caustic_scrubber_in_0ms"
+    | "isolate_ticl4_water_cooler_quench_with_anhydrous_ticl4_and_vent_hcl_to_alkali_absorber"
+    | "lock_tio2_chloride_train_until_cl2_hcl_caustic_scrubber_class_a_scba_and_dbb_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateTitaniumDioxideChlorideProcessFluidizedBedChlorinationTicl4OxidationNfpa69ApiRp521Osha1910119Osha19101000ChlorinatorCokeCl2BlowthroughTicl4WaterHydrolysisHclReleaseAndCl2Ticl4ScbaLotoGuard(
+  input: TitaniumDioxideChlorideProcessFluidizedBedChlorinationTicl4OxidationGuardInput,
+): TitaniumDioxideChlorideProcessFluidizedBedChlorinationTicl4OxidationGuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const chlorinatorBedTempUnsafe =
+    !Number.isFinite(input.chlorinatorBedTempCelsius) ||
+    input.chlorinatorBedTempCelsius >= 1085.0 ||
+    input.chlorinatorBedTempCelsius < 820.0;
+  const chlorineBlowthroughUnsafe =
+    !Number.isFinite(input.unreactedChlorineSlipVolPct) ||
+    input.unreactedChlorineSlipVolPct >= 2.0 ||
+    input.unreactedChlorineSlipVolPct < 0;
+  const coO2DeflagrationRisk =
+    !Number.isFinite(input.coInChlorinatorOffGasVolPct) ||
+    !Number.isFinite(input.o2IngressInChlorinatorOffGasVolPct) ||
+    input.coInChlorinatorOffGasVolPct < 0 ||
+    input.o2IngressInChlorinatorOffGasVolPct < 0 ||
+    (input.coInChlorinatorOffGasVolPct >= 12.5 &&
+      input.o2IngressInChlorinatorOffGasVolPct >= 4.5);
+
+  const chlorinatorCl2BlowthroughOrBedOvertempTripped =
+    chlorinatorBedTempUnsafe ||
+    chlorineBlowthroughUnsafe ||
+    coO2DeflagrationRisk;
+
+  if (chlorinatorCl2BlowthroughOrBedOvertempTripped) {
+    blockedReasons.push(
+      "TIO2_CHLORIDE_FLUIDIZED_BED_CHLORINATOR_CL2_BLOWTHROUGH_CO_O2_DEFLAGRATION_OR_REFRACTORY_OVERTEMP_TRIP_0MS",
+    );
+  }
+
+  const ticl4MoistureHydrolysisRisk =
+    input.coolingWaterLeakIntoTicl4Detected ||
+    !Number.isFinite(input.ticl4CondenserMoisturePpm) ||
+    input.ticl4CondenserMoisturePpm >= 15.0 ||
+    input.ticl4CondenserMoisturePpm < 0;
+  const oxidationPreheaterOvertempRisk =
+    !Number.isFinite(input.ticl4OxidationPreheaterTempCelsius) ||
+    input.ticl4OxidationPreheaterTempCelsius >= 1750.0;
+
+  const ticl4WaterHydrolysisOrOxidationPreheaterRunawayQuenched =
+    ticl4MoistureHydrolysisRisk || oxidationPreheaterOvertempRisk;
+
+  if (ticl4WaterHydrolysisOrOxidationPreheaterRunawayQuenched) {
+    blockedReasons.push(
+      "TICL4_CONDENSER_WATER_INGRESS_EXOTHERMIC_HCL_HYDROLYSIS_RUPTURE_OR_OXIDATION_PREHEATER_RUNAWAY_QUENCH",
+    );
+  }
+
+  const chlorineOrHclExposureUnsafe =
+    !Number.isFinite(input.ambientChlorineGasPpm) ||
+    input.ambientChlorineGasPpm >= 0.5 ||
+    input.ambientChlorineGasPpm < 0 ||
+    !Number.isFinite(input.ambientHydrogenChloridePpm) ||
+    input.ambientHydrogenChloridePpm >= 5.0 ||
+    input.ambientHydrogenChloridePpm < 0;
+  const scrubberOrLineBreakUnsafe =
+    !input.causticHypoScrubberOnline ||
+    (input.requestedAction ===
+      "open_ticl4_condenser_or_chlorinator_brick_manway" &&
+      !input.classAVaporTightScbaAndDbbLotoVerified);
+
+  const chlorineHclExposureOrScbaLotoLocked =
+    chlorineOrHclExposureUnsafe || scrubberOrLineBreakUnsafe;
+
+  if (chlorineHclExposureOrScbaLotoLocked) {
+    blockedReasons.push(
+      "OSHA_1910_1000_CL2_0_5PPM_HCL_5PPM_EXPOSURE_CAUSTIC_SCRUBBER_INTERLOCK_OR_CLASS_A_SCBA_DBB_LOTO_LOCKED",
+    );
+  }
+
+  const processCommandApproved =
+    !chlorinatorCl2BlowthroughOrBedOvertempTripped &&
+    !ticl4WaterHydrolysisOrOxidationPreheaterRunawayQuenched &&
+    !chlorineHclExposureOrScbaLotoLocked;
+
+  let action: TitaniumDioxideChlorideProcessFluidizedBedChlorinationTicl4OxidationGuardAssessment["action"] =
+    "allow_tio2_chloride_chlorination_and_oxidation";
+
+  if (chlorinatorCl2BlowthroughOrBedOvertempTripped) {
+    action =
+      "trip_chlorine_feed_dbb_inject_nitrogen_fluidization_purge_and_route_to_caustic_scrubber_in_0ms";
+  } else if (ticl4WaterHydrolysisOrOxidationPreheaterRunawayQuenched) {
+    action =
+      "isolate_ticl4_water_cooler_quench_with_anhydrous_ticl4_and_vent_hcl_to_alkali_absorber";
+  } else if (chlorineHclExposureOrScbaLotoLocked) {
+    action =
+      "lock_tio2_chloride_train_until_cl2_hcl_caustic_scrubber_class_a_scba_and_dbb_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P283-TITANIUM-DIOXIDE-TIO2-CHLORIDE-PROCESS-FLUIDIZED-BED-CHLORINATION-TICL4-OXIDATION-NFPA69-APIRP521-OSHA1910119-OSHA19101000-CHLORINATOR-CL2-BLOWTHROUGH-TICL4-WATER-HYDROLYSIS-HCL-EXPLOSION-AND-CL2-TICL4-SCBA-LOTO-GUARD",
+    trainId: input.trainId,
+    chlorinatorCl2BlowthroughOrBedOvertempTripped,
+    ticl4WaterHydrolysisOrOxidationPreheaterRunawayQuenched,
+    chlorineHclExposureOrScbaLotoLocked,
+    processCommandApproved,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211020UncompressedVideoRfc4175GuardInput {
+  sessionId: string;
+  rtpPayloadBytes: number;
+  srdHeaderCount: number;
+  declaredTotalScanLineBytes: number;
+  pgroupSizeOctets: number;
+  scanLineNum: number;
+  scanLinePixelOffset: number;
+  scanLinePixelSpan: number;
+  negotiatedFrameWidthPixels: number;
+  negotiatedFrameHeightLines: number;
+  extendedSequenceNumberContiguous: boolean;
+  inboundUncompressedBitrateMbps: number;
+  ptpSt2059Locked: boolean;
+}
+
+export interface WebrtcSipRtpSmpteSt211020UncompressedVideoRfc4175GuardAssessment {
+  policyCode: "P284-WEBRTC-SIP-RTP-SMPTE-ST2110-20-UNCOMPRESSED-VIDEO-RFC4175-SRD-SCANLINE-LENGTH-OVERREAD-PGROUP-MISALIGNMENT-FRAME-COORDINATE-OVERFLOW-AND-UNCOMPRESSED-BANDWIDTH-AMPLIFICATION-GUARD";
+  sessionId: string;
+  srdScanLineOverreadOrPgroupMisalignmentDropped: boolean;
+  frameCoordinateOverflowOrExtSeqDesyncBlocked: boolean;
+  uncompressedBitrateOrPtpUnlockClamped: boolean;
+  st211020RtpPacketAccepted: boolean;
+  action:
+    | "accept_st2110_20_rfc4175_uncompressed_video_rtp_packet"
+    | "drop_rfc4175_srd_scanline_overread_or_pgroup_misaligned_payload_in_0ms"
+    | "discard_out_of_bounds_scanline_coordinate_or_extseq_desynced_frame_and_hold_last_clean_frame"
+    | "clamp_st2110_20_uncompressed_bitrate_and_require_st2059_ptp_sync_lock";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211020UncompressedVideoRfc4175ScanLineLengthOverreadPgroupMisalignmentFieldCoordinateOverflowAndUncompressedBandwidthAmplificationGuard(
+  input: WebrtcSipRtpSmpteSt211020UncompressedVideoRfc4175GuardInput,
+): WebrtcSipRtpSmpteSt211020UncompressedVideoRfc4175GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const validPgroupSizes = [2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16];
+  const srdHeaderTableBytes = 2 + input.srdHeaderCount * 6;
+  const srdOverreadOrInvalidHeader =
+    !Number.isInteger(input.rtpPayloadBytes) ||
+    !Number.isInteger(input.srdHeaderCount) ||
+    !Number.isInteger(input.declaredTotalScanLineBytes) ||
+    input.srdHeaderCount <= 0 ||
+    input.srdHeaderCount > 64 ||
+    input.declaredTotalScanLineBytes <= 0 ||
+    srdHeaderTableBytes + input.declaredTotalScanLineBytes >
+      input.rtpPayloadBytes;
+  const pgroupMisaligned =
+    !Number.isInteger(input.pgroupSizeOctets) ||
+    !validPgroupSizes.includes(input.pgroupSizeOctets) ||
+    input.declaredTotalScanLineBytes % input.pgroupSizeOctets !== 0;
+
+  const srdScanLineOverreadOrPgroupMisalignmentDropped =
+    srdOverreadOrInvalidHeader || pgroupMisaligned;
+
+  if (srdScanLineOverreadOrPgroupMisalignmentDropped) {
+    blockedReasons.push(
+      "RFC4175_ST2110_20_SRD_SCANLINE_LENGTH_OVERREAD_OR_PGROUP_OCTET_ALIGNMENT_VIOLATION_DROPPED_0MS",
+    );
+  }
+
+  const coordinateOutOfBounds =
+    !Number.isInteger(input.scanLineNum) ||
+    !Number.isInteger(input.scanLinePixelOffset) ||
+    !Number.isInteger(input.scanLinePixelSpan) ||
+    !Number.isInteger(input.negotiatedFrameWidthPixels) ||
+    !Number.isInteger(input.negotiatedFrameHeightLines) ||
+    input.negotiatedFrameWidthPixels <= 0 ||
+    input.negotiatedFrameHeightLines <= 0 ||
+    input.scanLineNum < 0 ||
+    input.scanLineNum >= input.negotiatedFrameHeightLines ||
+    input.scanLinePixelOffset < 0 ||
+    input.scanLinePixelSpan <= 0 ||
+    input.scanLinePixelOffset + input.scanLinePixelSpan >
+      input.negotiatedFrameWidthPixels;
+
+  const frameCoordinateOverflowOrExtSeqDesyncBlocked =
+    coordinateOutOfBounds || !input.extendedSequenceNumberContiguous;
+
+  if (frameCoordinateOverflowOrExtSeqDesyncBlocked) {
+    blockedReasons.push(
+      "RFC4175_ST2110_20_SCANLINE_COORDINATE_FRAME_BUFFER_OOB_WRITE_OR_32BIT_EXTENDED_SEQNUM_GAP_BLOCKED",
+    );
+  }
+
+  const uncompressedBitrateOrPtpUnlockClamped =
+    !Number.isFinite(input.inboundUncompressedBitrateMbps) ||
+    input.inboundUncompressedBitrateMbps <= 0 ||
+    input.inboundUncompressedBitrateMbps > 3200.0 ||
+    !input.ptpSt2059Locked;
+
+  if (uncompressedBitrateOrPtpUnlockClamped) {
+    blockedReasons.push(
+      "SMPTE_ST2110_20_ST2110_21_UNCOMPRESSED_VIDEO_3_2GBPS_BANDWIDTH_CEILING_OR_ST2059_PTP_UNLOCK_CLAMPED",
+    );
+  }
+
+  const st211020RtpPacketAccepted =
+    !srdScanLineOverreadOrPgroupMisalignmentDropped &&
+    !frameCoordinateOverflowOrExtSeqDesyncBlocked &&
+    !uncompressedBitrateOrPtpUnlockClamped;
+
+  let action: WebrtcSipRtpSmpteSt211020UncompressedVideoRfc4175GuardAssessment["action"] =
+    "accept_st2110_20_rfc4175_uncompressed_video_rtp_packet";
+
+  if (srdScanLineOverreadOrPgroupMisalignmentDropped) {
+    action =
+      "drop_rfc4175_srd_scanline_overread_or_pgroup_misaligned_payload_in_0ms";
+  } else if (frameCoordinateOverflowOrExtSeqDesyncBlocked) {
+    action =
+      "discard_out_of_bounds_scanline_coordinate_or_extseq_desynced_frame_and_hold_last_clean_frame";
+  } else if (uncompressedBitrateOrPtpUnlockClamped) {
+    action =
+      "clamp_st2110_20_uncompressed_bitrate_and_require_st2059_ptp_sync_lock";
+  }
+
+  return {
+    policyCode:
+      "P284-WEBRTC-SIP-RTP-SMPTE-ST2110-20-UNCOMPRESSED-VIDEO-RFC4175-SRD-SCANLINE-LENGTH-OVERREAD-PGROUP-MISALIGNMENT-FRAME-COORDINATE-OVERFLOW-AND-UNCOMPRESSED-BANDWIDTH-AMPLIFICATION-GUARD",
+    sessionId: input.sessionId,
+    srdScanLineOverreadOrPgroupMisalignmentDropped,
+    frameCoordinateOverflowOrExtSeqDesyncBlocked,
+    uncompressedBitrateOrPtpUnlockClamped,
+    st211020RtpPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
 
 
 
