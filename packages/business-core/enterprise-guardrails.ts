@@ -23232,6 +23232,197 @@ export function evaluateWebrtcSipRtpH264HevcVvcNalPayloadRfc6184Rfc7798Rfc9328St
   };
 }
 
+export interface AnilineNitrobenzeneVaporPhaseHydrogenationDiphenylamineGuardInput {
+  sessionId: string;
+  hydrogenationReactorBedTempC: number;
+  h2ToNitrobenzeneMolarRatio: number;
+  catalystRegenerationAirValveOpen: boolean;
+  residualH2OrO2BeforePurgeVolPct: number;
+  dpaVacuumColumnBottomTempC: number;
+  unconvertedNitrobenzeneInCrudeAnilinePpm: number;
+  ambientAnilineVaporPpm: number;
+  ambientNitrobenzeneVaporPpm: number;
+  positivePressureScbaAndButylSuitVerified: boolean;
+  intravenousMethyleneBlueAntidoteKitStaged: boolean;
+  mechanicalDbbLotoVerified: boolean;
+  requestsLineBreakOrCatalystUnloading: boolean;
+}
+
+export interface AnilineNitrobenzeneVaporPhaseHydrogenationDiphenylamineGuardAssessment {
+  policyCode: "P245-ANILINE-NITROBENZENE-VAPOR-PHASE-HYDROGENATION-DIPHENYLAMINE-NFPA69-APIRP521-OSHA1910119-OSHA19101000-NITROBENZENE-UNCONVERTED-RUNAWAY-EXOTHERM-CATALYST-REGENERATION-AIR-H2-MIX-AND-ANILINE-METHEMOGLOBINEMIA-SCBA-LOTO-GUARD";
+  sessionId: string;
+  hydrogenationRunawayOrRegenAirH2MixPreempted: boolean;
+  dpaVacuumColumnNitroaromaticDecompositionInterlocked: boolean;
+  anilineMethemoglobinemiaOrMissingMethyleneBlueScbaLotoLocked: boolean;
+  anilineHydrogenationOperationPermitted: boolean;
+  action:
+    | "trip_nitrobenzene_h2_feed_dbb_and_inject_emergency_nitrogen_reactor_quench"
+    | "cut_dpa_vacuum_column_reboiler_steam_and_recycle_unconverted_nitrobenzene"
+    | "lock_aniline_nitrobenzene_line_break_until_scba_methylene_blue_and_loto_verified"
+    | "allow_verified_aniline_nitrobenzene_hydrogenation_operation";
+  blockedReason: string;
+}
+
+export function evaluateAnilineNitrobenzeneVaporPhaseHydrogenationDiphenylamineNfpa69ApiRp521Osha1910119Osha19101000NitrobenzeneUnconvertedRunawayExothermCatalystRegenerationAirH2MixAndAnilineMethemoglobinemiaScbaLotoGuard(
+  input: AnilineNitrobenzeneVaporPhaseHydrogenationDiphenylamineGuardInput,
+): AnilineNitrobenzeneVaporPhaseHydrogenationDiphenylamineGuardAssessment {
+  const hydrogenationRunawayOrRegenAirH2MixPreempted =
+    input.hydrogenationReactorBedTempC > 365.0 ||
+    input.h2ToNitrobenzeneMolarRatio < 8.0 ||
+    (input.catalystRegenerationAirValveOpen &&
+      input.residualH2OrO2BeforePurgeVolPct >= 0.1);
+
+  const dpaVacuumColumnNitroaromaticDecompositionInterlocked =
+    !hydrogenationRunawayOrRegenAirH2MixPreempted &&
+    (input.dpaVacuumColumnBottomTempC > 235.0 ||
+      input.unconvertedNitrobenzeneInCrudeAnilinePpm > 500.0);
+
+  const anilineMethemoglobinemiaOrMissingMethyleneBlueScbaLotoLocked =
+    !hydrogenationRunawayOrRegenAirH2MixPreempted &&
+    !dpaVacuumColumnNitroaromaticDecompositionInterlocked &&
+    (input.ambientAnilineVaporPpm >= 2.0 ||
+      input.ambientNitrobenzeneVaporPpm >= 1.0 ||
+      (input.requestsLineBreakOrCatalystUnloading &&
+        (!input.positivePressureScbaAndButylSuitVerified ||
+          !input.intravenousMethyleneBlueAntidoteKitStaged ||
+          !input.mechanicalDbbLotoVerified)));
+
+  const anilineHydrogenationOperationPermitted =
+    !hydrogenationRunawayOrRegenAirH2MixPreempted &&
+    !dpaVacuumColumnNitroaromaticDecompositionInterlocked &&
+    !anilineMethemoglobinemiaOrMissingMethyleneBlueScbaLotoLocked;
+
+  let action: AnilineNitrobenzeneVaporPhaseHydrogenationDiphenylamineGuardAssessment["action"] =
+    "allow_verified_aniline_nitrobenzene_hydrogenation_operation";
+  let blockedReason = "none";
+
+  if (hydrogenationRunawayOrRegenAirH2MixPreempted) {
+    action =
+      "trip_nitrobenzene_h2_feed_dbb_and_inject_emergency_nitrogen_reactor_quench";
+    blockedReason =
+      "NFPA69_APIRP521_OSHA1910_119_ANILINE_HYDROGENATION_EXOTHERMIC_RUNAWAY_H2_DEFICIT_OR_REGEN_AIR_H2_EXPLOSIVE_MIX_PREEMPTED";
+  } else if (dpaVacuumColumnNitroaromaticDecompositionInterlocked) {
+    action =
+      "cut_dpa_vacuum_column_reboiler_steam_and_recycle_unconverted_nitrobenzene";
+    blockedReason =
+      "APIRP521_OSHA1910_119_DPA_VACUUM_COLUMN_NITROAROMATIC_THERMAL_DECOMPOSITION_OR_NITROBENZENE_BREAKTHROUGH_INTERLOCKED";
+  } else if (anilineMethemoglobinemiaOrMissingMethyleneBlueScbaLotoLocked) {
+    action =
+      "lock_aniline_nitrobenzene_line_break_until_scba_methylene_blue_and_loto_verified";
+    blockedReason =
+      "OSHA1910_1000_1910_147_ANILINE_NITROBENZENE_METHEMOGLOBINEMIA_CUTANEOUS_TOXICITY_OR_MISSING_METHYLENE_BLUE_SCBA_LOTO_LOCKED";
+  }
+
+  return {
+    policyCode:
+      "P245-ANILINE-NITROBENZENE-VAPOR-PHASE-HYDROGENATION-DIPHENYLAMINE-NFPA69-APIRP521-OSHA1910119-OSHA19101000-NITROBENZENE-UNCONVERTED-RUNAWAY-EXOTHERM-CATALYST-REGENERATION-AIR-H2-MIX-AND-ANILINE-METHEMOGLOBINEMIA-SCBA-LOTO-GUARD",
+    sessionId: input.sessionId,
+    hydrogenationRunawayOrRegenAirH2MixPreempted,
+    dpaVacuumColumnNitroaromaticDecompositionInterlocked,
+    anilineMethemoglobinemiaOrMissingMethyleneBlueScbaLotoLocked,
+    anilineHydrogenationOperationPermitted,
+    action,
+    blockedReason,
+  };
+}
+
+export interface WebrtcSipRtpVp8Vp9PayloadRfc7741Rfc9628GuardInput {
+  sessionId: string;
+  vp8OrVp9ExtendedHeaderXBit: number;
+  pictureIdPresentIBit: number;
+  pictureId15BitMBit: number;
+  declaredDescriptorByteLength: number;
+  remainingRtpPayloadBytes: number;
+  keyframeStartPacketHasNonZeroPartId: boolean;
+  tl0PicIdxDiscontinuityWithoutKeyframeDetected: boolean;
+  temporalLayerIdTid: number;
+  temporalUpSwitchUBit: number;
+  referencedLowerTemporalLayerMissingOrCorrupted: boolean;
+  vp9ScalabilityStructureVBitPresent: boolean;
+  declaredSpatialLayerCountNs: number;
+  declaredPictureGroupCountNg: number;
+  unnegotiatedResolutionExceeds4kUhdDetected: boolean;
+}
+
+export interface WebrtcSipRtpVp8Vp9PayloadRfc7741Rfc9628GuardAssessment {
+  policyCode: "P246-WEBRTC-SIP-RTP-VP8-VP9-PAYLOAD-RFC7741-RFC9628-PICTUREID-15BIT-M-BIT-OVERFLOW-TL0PICIDX-TEMPORAL-DESYNC-AND-SCALABILITY-STRUCTURE-SS-NALU-BOMB-GUARD";
+  sessionId: string;
+  pictureIdMBitOverreadOrInvalidPartIdBlocked: boolean;
+  tl0PicIdxOrTemporalUpSwitchDesyncBlocked: boolean;
+  vp9ScalabilityStructureSpatialOrResolutionBombBlocked: boolean;
+  rtpVp8Vp9PayloadAccepted: boolean;
+  action:
+    | "drop_malformed_vp8_vp9_picture_id_m_bit_overread_or_invalid_part_id_packet_in_0ms"
+    | "discard_desynced_tl0picidx_temporal_upswitch_frame_and_send_rtcp_pli"
+    | "reject_vp9_ss_spatial_layer_or_ng_resolution_bomb_and_preserve_active_decoder_config"
+    | "forward_verified_vp8_vp9_rtp_packet_to_sfu_or_decoder";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpVp8Vp9PayloadRfc7741Rfc9628PictureId15BitMBitOverflowTl0PicIdxTemporalDesyncAndScalabilityStructureSsNaluBombGuard(
+  input: WebrtcSipRtpVp8Vp9PayloadRfc7741Rfc9628GuardInput,
+): WebrtcSipRtpVp8Vp9PayloadRfc7741Rfc9628GuardAssessment {
+  const pictureIdMBitOverreadOrInvalidPartIdBlocked =
+    input.declaredDescriptorByteLength > input.remainingRtpPayloadBytes ||
+    (input.vp8OrVp9ExtendedHeaderXBit === 0 &&
+      (input.pictureIdPresentIBit === 1 || input.pictureId15BitMBit === 1)) ||
+    (input.pictureIdPresentIBit === 0 && input.pictureId15BitMBit === 1) ||
+    input.keyframeStartPacketHasNonZeroPartId;
+
+  const tl0PicIdxOrTemporalUpSwitchDesyncBlocked =
+    !pictureIdMBitOverreadOrInvalidPartIdBlocked &&
+    (input.tl0PicIdxDiscontinuityWithoutKeyframeDetected ||
+      (input.temporalLayerIdTid > 0 &&
+        input.temporalUpSwitchUBit === 1 &&
+        input.referencedLowerTemporalLayerMissingOrCorrupted));
+
+  const vp9ScalabilityStructureSpatialOrResolutionBombBlocked =
+    !pictureIdMBitOverreadOrInvalidPartIdBlocked &&
+    !tl0PicIdxOrTemporalUpSwitchDesyncBlocked &&
+    input.vp9ScalabilityStructureVBitPresent &&
+    (input.declaredSpatialLayerCountNs > 4 ||
+      input.declaredPictureGroupCountNg > 16 ||
+      input.unnegotiatedResolutionExceeds4kUhdDetected);
+
+  const rtpVp8Vp9PayloadAccepted =
+    !pictureIdMBitOverreadOrInvalidPartIdBlocked &&
+    !tl0PicIdxOrTemporalUpSwitchDesyncBlocked &&
+    !vp9ScalabilityStructureSpatialOrResolutionBombBlocked;
+
+  let action: WebrtcSipRtpVp8Vp9PayloadRfc7741Rfc9628GuardAssessment["action"] =
+    "forward_verified_vp8_vp9_rtp_packet_to_sfu_or_decoder";
+  let blockedReason = "none";
+
+  if (pictureIdMBitOverreadOrInvalidPartIdBlocked) {
+    action =
+      "drop_malformed_vp8_vp9_picture_id_m_bit_overread_or_invalid_part_id_packet_in_0ms";
+    blockedReason =
+      "RFC7741_RFC9628_SECTION_4_2_VP8_VP9_PICTUREID_15BIT_M_BIT_HEADER_OVERREAD_OR_INVALID_KEYFRAME_PARTID_BLOCKED";
+  } else if (tl0PicIdxOrTemporalUpSwitchDesyncBlocked) {
+    action =
+      "discard_desynced_tl0picidx_temporal_upswitch_frame_and_send_rtcp_pli";
+    blockedReason =
+      "RFC7741_RFC9628_TL0PICIDX_BASE_LAYER_GAP_OR_TEMPORAL_UPSWITCH_MISSING_LOWER_REFERENCE_DESYNC_BLOCKED";
+  } else if (vp9ScalabilityStructureSpatialOrResolutionBombBlocked) {
+    action =
+      "reject_vp9_ss_spatial_layer_or_ng_resolution_bomb_and_preserve_active_decoder_config";
+    blockedReason =
+      "RFC9628_SECTION_4_2_1_VP9_SCALABILITY_STRUCTURE_SS_NS_NG_OVERFLOW_OR_UNNEGOTIATED_4K_RESOLUTION_BOMB_BLOCKED";
+  }
+
+  return {
+    policyCode:
+      "P246-WEBRTC-SIP-RTP-VP8-VP9-PAYLOAD-RFC7741-RFC9628-PICTUREID-15BIT-M-BIT-OVERFLOW-TL0PICIDX-TEMPORAL-DESYNC-AND-SCALABILITY-STRUCTURE-SS-NALU-BOMB-GUARD",
+    sessionId: input.sessionId,
+    pictureIdMBitOverreadOrInvalidPartIdBlocked,
+    tl0PicIdxOrTemporalUpSwitchDesyncBlocked,
+    vp9ScalabilityStructureSpatialOrResolutionBombBlocked,
+    rtpVp8Vp9PayloadAccepted,
+    action,
+    blockedReason,
+  };
+}
+
 
 
 
