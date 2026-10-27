@@ -29071,3 +29071,240 @@ export function evaluateWebrtcSipRtpSmpteSt20226HighBitRateMediaTransportHbrmtSd
   };
 }
 
+// ============================================================================
+// Stage 153 · P299 — Semiconductor Ion Implantation (AsH3 / PH3 / BF3 / GeF4)
+// High-Current Sub-Atmospheric Safe Delivery System (SDS / VAC) Source Box,
+// 200 kV Terminal High-Voltage Arc / SF6 Insulating Tank & X-Ray Bremsstrahlung
+// Shielding (NFPA 318 / SEMI S2 / SEMI S6 / NFPA 69 / OSHA 1910.119 /
+// OSHA 1910.1000 / OSHA 1910.1096) Sub-ppm Dopant Hydride RFO Trip, 200 kV HV
+// Grounding Crowbar & X-Ray Lead Curtain / AsH3 Hemolysis SCBA LOTO Guard
+// ============================================================================
+
+export interface SemiconductorIonImplantationAsh3Ph3Bf3SdsSource200kvTerminalXrayGuardInput {
+  implanterBayId: string;
+  sourceBoxArsineAsh3Ppb: number;
+  sourceBoxPhosphinePh3Ppb: number;
+  sourceBoxBoronTrifluorideBf3Ppm: number;
+  sdsSubAtmosphericRegulatorVacuumIntegrityOk: boolean;
+  terminalHighVoltageKv: number;
+  sf6InsulatingGasPressureBarG: number;
+  terminalGroundingRodCrowbarEngagedForMaintenance: boolean;
+  ambientXrayBremsstrahlungDoseRateMicroSvPerHour: number;
+  leadShieldingInterlockAndAsH3HemolysisScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorIonImplantationAsh3Ph3Bf3SdsSource200kvTerminalXrayGuardAssessment {
+  policyCode: "P299-SEMICONDUCTOR-ION-IMPLANTATION-ASH3-PH3-BF3-SDS-VAC-SOURCE-BOX-200KV-HV-TERMINAL-XRAY-BREMSSTRAHLUNG-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-OSHA19101096-SUBPPM-DOPANT-RFO-TRIP-HV-CROWBAR-GROUNDING-AND-XRAY-LEAD-SCBA-LOTO-GUARD";
+  implanterBayId: string;
+  dopantHydrideFluorideOrSdsVacuumLossPreempted0ms: boolean;
+  terminal200kvArcOrSf6InsulatingDropIsolated: boolean;
+  xrayBremsstrahlungOrAsh3ScbaLotoLocked: boolean;
+  ionImplantationOperationApproved: boolean;
+  action:
+    | "approve_semiconductor_ion_implantation_beamline_operation"
+    | "trip_sds_vac_ash3_ph3_bf3_rfo_valves_cut_arc_power_and_n2_purge_source_box_in_0ms"
+    | "discharge_200kv_hv_terminal_engage_grounding_crowbar_and_isolate_sf6_enclosure"
+    | "lock_implanter_source_enclosure_and_require_xray_lead_shield_and_ash3_scba_loto";
+  blockedReason:
+    | "none"
+    | "NFPA_318_SEMI_S2_ION_IMPLANT_ASH3_50PPB_PH3_300PPB_BF3_1PPM_OR_SDS_VACUUM_LOSS_PREEMPTED_0MS"
+    | "SEMI_S2_ION_IMPLANT_200KV_HV_OVERLIMIT_SF6_INSULATION_DROP_OR_UNGROUNDED_CROWBAR_ISOLATED"
+    | "OSHA_1910_1096_XRAY_BREMSSTRAHLUNG_2_5USV_HR_OR_ASH3_HEMOLYSIS_SCBA_LOTO_LOCKED";
+}
+
+export function evaluateSemiconductorIonImplantationAsh3Ph3Bf3SdsSource200kvTerminalXrayNfpa318SemiS2SemiS6Nfpa69Osha1910119Osha19101000Osha19101096SubppmDopantRfoTripHvCrowbarGroundingAndXrayLeadScbaLotoGuard(
+  input: SemiconductorIonImplantationAsh3Ph3Bf3SdsSource200kvTerminalXrayGuardInput,
+): SemiconductorIonImplantationAsh3Ph3Bf3SdsSource200kvTerminalXrayGuardAssessment {
+  const dopantHydrideFluorideOrSdsVacuumLossPreempted0ms =
+    input.sourceBoxArsineAsh3Ppb >= 50.0 ||
+    input.sourceBoxPhosphinePh3Ppb >= 300.0 ||
+    input.sourceBoxBoronTrifluorideBf3Ppm >= 1.0 ||
+    !input.sdsSubAtmosphericRegulatorVacuumIntegrityOk;
+
+  const terminal200kvArcOrSf6InsulatingDropIsolated =
+    input.terminalHighVoltageKv > 200.0 ||
+    input.sf6InsulatingGasPressureBarG < 3.5 ||
+    !input.terminalGroundingRodCrowbarEngagedForMaintenance;
+
+  const xrayBremsstrahlungOrAsh3ScbaLotoLocked =
+    input.ambientXrayBremsstrahlungDoseRateMicroSvPerHour >= 2.5 ||
+    !input.leadShieldingInterlockAndAsH3HemolysisScbaLotoVerified;
+
+  if (dopantHydrideFluorideOrSdsVacuumLossPreempted0ms) {
+    return {
+      policyCode:
+        "P299-SEMICONDUCTOR-ION-IMPLANTATION-ASH3-PH3-BF3-SDS-VAC-SOURCE-BOX-200KV-HV-TERMINAL-XRAY-BREMSSTRAHLUNG-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-OSHA19101096-SUBPPM-DOPANT-RFO-TRIP-HV-CROWBAR-GROUNDING-AND-XRAY-LEAD-SCBA-LOTO-GUARD",
+      implanterBayId: input.implanterBayId,
+      dopantHydrideFluorideOrSdsVacuumLossPreempted0ms: true,
+      terminal200kvArcOrSf6InsulatingDropIsolated,
+      xrayBremsstrahlungOrAsh3ScbaLotoLocked,
+      ionImplantationOperationApproved: false,
+      action:
+        "trip_sds_vac_ash3_ph3_bf3_rfo_valves_cut_arc_power_and_n2_purge_source_box_in_0ms",
+      blockedReason:
+        "NFPA_318_SEMI_S2_ION_IMPLANT_ASH3_50PPB_PH3_300PPB_BF3_1PPM_OR_SDS_VACUUM_LOSS_PREEMPTED_0MS",
+    };
+  }
+
+  if (terminal200kvArcOrSf6InsulatingDropIsolated) {
+    return {
+      policyCode:
+        "P299-SEMICONDUCTOR-ION-IMPLANTATION-ASH3-PH3-BF3-SDS-VAC-SOURCE-BOX-200KV-HV-TERMINAL-XRAY-BREMSSTRAHLUNG-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-OSHA19101096-SUBPPM-DOPANT-RFO-TRIP-HV-CROWBAR-GROUNDING-AND-XRAY-LEAD-SCBA-LOTO-GUARD",
+      implanterBayId: input.implanterBayId,
+      dopantHydrideFluorideOrSdsVacuumLossPreempted0ms: false,
+      terminal200kvArcOrSf6InsulatingDropIsolated: true,
+      xrayBremsstrahlungOrAsh3ScbaLotoLocked,
+      ionImplantationOperationApproved: false,
+      action:
+        "discharge_200kv_hv_terminal_engage_grounding_crowbar_and_isolate_sf6_enclosure",
+      blockedReason:
+        "SEMI_S2_ION_IMPLANT_200KV_HV_OVERLIMIT_SF6_INSULATION_DROP_OR_UNGROUNDED_CROWBAR_ISOLATED",
+    };
+  }
+
+  if (xrayBremsstrahlungOrAsh3ScbaLotoLocked) {
+    return {
+      policyCode:
+        "P299-SEMICONDUCTOR-ION-IMPLANTATION-ASH3-PH3-BF3-SDS-VAC-SOURCE-BOX-200KV-HV-TERMINAL-XRAY-BREMSSTRAHLUNG-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-OSHA19101096-SUBPPM-DOPANT-RFO-TRIP-HV-CROWBAR-GROUNDING-AND-XRAY-LEAD-SCBA-LOTO-GUARD",
+      implanterBayId: input.implanterBayId,
+      dopantHydrideFluorideOrSdsVacuumLossPreempted0ms: false,
+      terminal200kvArcOrSf6InsulatingDropIsolated: false,
+      xrayBremsstrahlungOrAsh3ScbaLotoLocked: true,
+      ionImplantationOperationApproved: false,
+      action:
+        "lock_implanter_source_enclosure_and_require_xray_lead_shield_and_ash3_scba_loto",
+      blockedReason:
+        "OSHA_1910_1096_XRAY_BREMSSTRAHLUNG_2_5USV_HR_OR_ASH3_HEMOLYSIS_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode:
+      "P299-SEMICONDUCTOR-ION-IMPLANTATION-ASH3-PH3-BF3-SDS-VAC-SOURCE-BOX-200KV-HV-TERMINAL-XRAY-BREMSSTRAHLUNG-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-OSHA19101096-SUBPPM-DOPANT-RFO-TRIP-HV-CROWBAR-GROUNDING-AND-XRAY-LEAD-SCBA-LOTO-GUARD",
+    implanterBayId: input.implanterBayId,
+    dopantHydrideFluorideOrSdsVacuumLossPreempted0ms: false,
+    terminal200kvArcOrSf6InsulatingDropIsolated: false,
+    xrayBremsstrahlungOrAsh3ScbaLotoLocked: false,
+    ionImplantationOperationApproved: true,
+    action: "approve_semiconductor_ion_implantation_beamline_operation",
+    blockedReason: "none",
+  };
+}
+
+// ============================================================================
+// Stage 153 · P300 (300-P Milestone!) — WebRTC & SIP RTP AMWA NMOS IS-04 /
+// IS-05 / IS-07 & BCP-003-01 Broadcast IP Connection Management Transport-File /
+// SDP Overread, Unauthenticated /staged Bulk Route Hijack, IS-04 Grain Spoofing
+// & Activation / WebSocket Event Storm Guard
+// ============================================================================
+
+export interface WebrtcSipRtpAmwaNmosIs04Is05Is07Bcp00301SdpConnectionManagementGuardInput {
+  sessionId: string;
+  nmosTransportFileJsonBytes: number;
+  sdpOfferAnswerBytes: number;
+  targetMulticastOrUnicastAddressValid: boolean;
+  bcp00301Tls12PlusAndMutualCertOrJwtOauthVerified: boolean;
+  unauthenticatedIs05BulkStagePatchDetected: boolean;
+  is04NodeRegistryGrainIdReplayOrSpoofDetected: boolean;
+  is05ActivationReconfigRatePerSecond: number;
+  is07EventWebsocketMessagesPerSecond: number;
+}
+
+export interface WebrtcSipRtpAmwaNmosIs04Is05Is07Bcp00301SdpConnectionManagementGuardAssessment {
+  policyCode: "P300-WEBRTC-SIP-RTP-AMWA-NMOS-IS04-IS05-IS07-BCP00301-SDP-CONNECTION-MANAGEMENT-UNAUTHENTICATED-STAGE-PATCH-HIJACK-MULTICAST-TARGET-INJECTION-AND-ACTIVATION-STORM-GUARD";
+  sessionId: string;
+  transportFileOverreadOrInvalidTargetDropped0ms: boolean;
+  unauthenticatedBcp00301OrIs04SpoofRejected: boolean;
+  is05ActivationStormOrIs07EventFloodClamped: boolean;
+  nmosIs04Is05Is07TransactionAccepted: boolean;
+  action:
+    | "accept_amwa_nmos_is04_is05_is07_bcp00301_connection_transaction"
+    | "drop_nmos_is05_transport_file_overread_or_invalid_rtp_target_address_in_0ms"
+    | "reject_unauthenticated_bcp00301_is05_stage_patch_or_is04_grain_spoof"
+    | "clamp_nmos_is05_activation_reconfig_storm_or_is07_event_websocket_flood";
+  blockedReason:
+    | "none"
+    | "AMWA_NMOS_IS05_TRANSPORT_FILE_64KB_SDP_32KB_OVERREAD_OR_INVALID_RTP_TARGET_DROPPED_0MS"
+    | "AMWA_BCP00301_MTLS_OAUTH_MISSING_UNAUTHENTICATED_IS05_BULK_STAGE_PATCH_OR_IS04_GRAIN_SPOOF_REJECTED"
+    | "AMWA_NMOS_IS05_20HZ_ACTIVATION_RECONFIG_STORM_OR_IS07_250HZ_WEBSOCKET_FLOOD_CLAMPED";
+}
+
+export function evaluateWebrtcSipRtpAmwaNmosIs04Is05Is07Bcp00301SdpConnectionManagementUnauthenticatedStagePatchHijackMulticastTargetInjectionAndActivationStormGuard(
+  input: WebrtcSipRtpAmwaNmosIs04Is05Is07Bcp00301SdpConnectionManagementGuardInput,
+): WebrtcSipRtpAmwaNmosIs04Is05Is07Bcp00301SdpConnectionManagementGuardAssessment {
+  const transportFileOverreadOrInvalidTargetDropped0ms =
+    input.nmosTransportFileJsonBytes <= 0 ||
+    input.nmosTransportFileJsonBytes > 65536 ||
+    input.sdpOfferAnswerBytes <= 0 ||
+    input.sdpOfferAnswerBytes > 32768 ||
+    !input.targetMulticastOrUnicastAddressValid;
+
+  const unauthenticatedBcp00301OrIs04SpoofRejected =
+    !input.bcp00301Tls12PlusAndMutualCertOrJwtOauthVerified ||
+    input.unauthenticatedIs05BulkStagePatchDetected ||
+    input.is04NodeRegistryGrainIdReplayOrSpoofDetected;
+
+  const is05ActivationStormOrIs07EventFloodClamped =
+    input.is05ActivationReconfigRatePerSecond > 20 ||
+    input.is07EventWebsocketMessagesPerSecond > 250;
+
+  if (transportFileOverreadOrInvalidTargetDropped0ms) {
+    return {
+      policyCode:
+        "P300-WEBRTC-SIP-RTP-AMWA-NMOS-IS04-IS05-IS07-BCP00301-SDP-CONNECTION-MANAGEMENT-UNAUTHENTICATED-STAGE-PATCH-HIJACK-MULTICAST-TARGET-INJECTION-AND-ACTIVATION-STORM-GUARD",
+      sessionId: input.sessionId,
+      transportFileOverreadOrInvalidTargetDropped0ms: true,
+      unauthenticatedBcp00301OrIs04SpoofRejected,
+      is05ActivationStormOrIs07EventFloodClamped,
+      nmosIs04Is05Is07TransactionAccepted: false,
+      action:
+        "drop_nmos_is05_transport_file_overread_or_invalid_rtp_target_address_in_0ms",
+      blockedReason:
+        "AMWA_NMOS_IS05_TRANSPORT_FILE_64KB_SDP_32KB_OVERREAD_OR_INVALID_RTP_TARGET_DROPPED_0MS",
+    };
+  }
+
+  if (unauthenticatedBcp00301OrIs04SpoofRejected) {
+    return {
+      policyCode:
+        "P300-WEBRTC-SIP-RTP-AMWA-NMOS-IS04-IS05-IS07-BCP00301-SDP-CONNECTION-MANAGEMENT-UNAUTHENTICATED-STAGE-PATCH-HIJACK-MULTICAST-TARGET-INJECTION-AND-ACTIVATION-STORM-GUARD",
+      sessionId: input.sessionId,
+      transportFileOverreadOrInvalidTargetDropped0ms: false,
+      unauthenticatedBcp00301OrIs04SpoofRejected: true,
+      is05ActivationStormOrIs07EventFloodClamped,
+      nmosIs04Is05Is07TransactionAccepted: false,
+      action:
+        "reject_unauthenticated_bcp00301_is05_stage_patch_or_is04_grain_spoof",
+      blockedReason:
+        "AMWA_BCP00301_MTLS_OAUTH_MISSING_UNAUTHENTICATED_IS05_BULK_STAGE_PATCH_OR_IS04_GRAIN_SPOOF_REJECTED",
+    };
+  }
+
+  if (is05ActivationStormOrIs07EventFloodClamped) {
+    return {
+      policyCode:
+        "P300-WEBRTC-SIP-RTP-AMWA-NMOS-IS04-IS05-IS07-BCP00301-SDP-CONNECTION-MANAGEMENT-UNAUTHENTICATED-STAGE-PATCH-HIJACK-MULTICAST-TARGET-INJECTION-AND-ACTIVATION-STORM-GUARD",
+      sessionId: input.sessionId,
+      transportFileOverreadOrInvalidTargetDropped0ms: false,
+      unauthenticatedBcp00301OrIs04SpoofRejected: false,
+      is05ActivationStormOrIs07EventFloodClamped: true,
+      nmosIs04Is05Is07TransactionAccepted: false,
+      action:
+        "clamp_nmos_is05_activation_reconfig_storm_or_is07_event_websocket_flood",
+      blockedReason:
+        "AMWA_NMOS_IS05_20HZ_ACTIVATION_RECONFIG_STORM_OR_IS07_250HZ_WEBSOCKET_FLOOD_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode:
+      "P300-WEBRTC-SIP-RTP-AMWA-NMOS-IS04-IS05-IS07-BCP00301-SDP-CONNECTION-MANAGEMENT-UNAUTHENTICATED-STAGE-PATCH-HIJACK-MULTICAST-TARGET-INJECTION-AND-ACTIVATION-STORM-GUARD",
+    sessionId: input.sessionId,
+    transportFileOverreadOrInvalidTargetDropped0ms: false,
+    unauthenticatedBcp00301OrIs04SpoofRejected: false,
+    is05ActivationStormOrIs07EventFloodClamped: false,
+    nmosIs04Is05Is07TransactionAccepted: true,
+    action: "accept_amwa_nmos_is04_is05_is07_bcp00301_connection_transaction",
+    blockedReason: "none",
+  };
+}
