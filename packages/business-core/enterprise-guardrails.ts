@@ -36364,6 +36364,224 @@ export function evaluateWebrtcSipRtpRfc7741Vp8Rfc9628Vp9AndRfc7742ScalabilityStr
   };
 }
 
+export interface SemiconductorWaferRapidThermalProcessingRtpRtaFlashLampAndLaserSpikeAnnealingGuardInput {
+  readonly rtpChamberOrLaserModuleId: string;
+  readonly dualPyrometerTemperatureDiscrepancyC: number;
+  readonly quartzWindowCoolingWaterFlowLpm: number;
+  readonly issgH2O2OrNh3ChamberHeadspacePercentLel: number;
+  readonly flashLampCapacitorBankBusFaultOrClass4LaserShutterOpenFault: boolean;
+  readonly chamberPressureTorr: number;
+  readonly exhaustLineNh3OrN2oSlipPpm: number;
+  readonly quartzWindowOrLampArrayMaintenanceRequested: boolean;
+  readonly chamberAndWaferTemperatureC: number;
+  readonly capacitorBankBleedDownBelow5vAndN2PurgeLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferRapidThermalProcessingRtpRtaFlashLampAndLaserSpikeAnnealingGuardDecision {
+  readonly policyCode: "P369-SEMICONDUCTOR-WAFER-RAPID-THERMAL-PROCESSING-RTP-RTA-RTO-RTN-FLASH-LAMP-AND-LASER-SPIKE-ANNEALING-SEMIS2-SEMIS6-NFPA318-NFPA86-ANSIZ1361-OSHA1910147-PYROMETER-DISCREPANCY-ISSG-H2-O2-LEL-OR-CAPACITOR-LASER-FAULT-TRIP-N2-PURGE-AND-COOLDOWN-CAPACITOR-BLEED-LOTO-GUARD";
+  readonly rtpChamberOrLaserModuleId: string;
+  readonly waferRtpAnnealingApproved: boolean;
+  readonly lampArrayLaserAndIssgGasTripped0ms: boolean;
+  readonly thermalRampAbortedAndChamberN2QuenchPurged: boolean;
+  readonly chamberLidAndLampBankMaintenanceLockedUntilCooldownAndBleedLoto: boolean;
+  readonly action:
+    | "approve_semiconductor_wafer_rtp_rta_flash_lamp_and_laser_spike_annealing_operation"
+    | "trip_lamp_array_class4_laser_and_issg_h2_o2_nh3_esv_on_pyrometer_cooling_lel_or_hv_shutter_fault_in_0ms"
+    | "abort_thermal_ramp_and_initiate_n2_quench_purge_on_chamber_overpressure_or_nh3_n2o_exhaust_slip"
+    | "lock_out_chamber_lid_and_flash_capacitor_bank_until_below_60c_and_below_5v_bleed_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferRapidThermalProcessingRtpRtaRtoRtnFlashLampAndLaserSpikeAnnealingSemiS2SemiS6Nfpa318Nfpa86AnsiZ1361Osha1910147PyrometerDiscrepancyIssgH2O2LelOrCapacitorLaserFaultTripN2PurgeAndCooldownCapacitorBleedLotoGuard(
+  input: SemiconductorWaferRapidThermalProcessingRtpRtaFlashLampAndLaserSpikeAnnealingGuardInput,
+): SemiconductorWaferRapidThermalProcessingRtpRtaFlashLampAndLaserSpikeAnnealingGuardDecision {
+  const policyCode =
+    "P369-SEMICONDUCTOR-WAFER-RAPID-THERMAL-PROCESSING-RTP-RTA-RTO-RTN-FLASH-LAMP-AND-LASER-SPIKE-ANNEALING-SEMIS2-SEMIS6-NFPA318-NFPA86-ANSIZ1361-OSHA1910147-PYROMETER-DISCREPANCY-ISSG-H2-O2-LEL-OR-CAPACITOR-LASER-FAULT-TRIP-N2-PURGE-AND-COOLDOWN-CAPACITOR-BLEED-LOTO-GUARD" as const;
+
+  const lampArrayLaserAndIssgGasTripped0ms =
+    input.dualPyrometerTemperatureDiscrepancyC > 5.0 ||
+    input.quartzWindowCoolingWaterFlowLpm < 6.0 ||
+    input.issgH2O2OrNh3ChamberHeadspacePercentLel >= 25 ||
+    input.flashLampCapacitorBankBusFaultOrClass4LaserShutterOpenFault;
+
+  const thermalRampAbortedAndChamberN2QuenchPurged =
+    input.chamberPressureTorr > 760 || input.exhaustLineNh3OrN2oSlipPpm > 25;
+
+  const chamberLidAndLampBankMaintenanceLockedUntilCooldownAndBleedLoto =
+    input.quartzWindowOrLampArrayMaintenanceRequested &&
+    (input.chamberAndWaferTemperatureC > 60 ||
+      !input.capacitorBankBleedDownBelow5vAndN2PurgeLotoVerified);
+
+  if (lampArrayLaserAndIssgGasTripped0ms) {
+    return {
+      policyCode,
+      rtpChamberOrLaserModuleId: input.rtpChamberOrLaserModuleId,
+      waferRtpAnnealingApproved: false,
+      lampArrayLaserAndIssgGasTripped0ms: true,
+      thermalRampAbortedAndChamberN2QuenchPurged,
+      chamberLidAndLampBankMaintenanceLockedUntilCooldownAndBleedLoto,
+      action:
+        "trip_lamp_array_class4_laser_and_issg_h2_o2_nh3_esv_on_pyrometer_cooling_lel_or_hv_shutter_fault_in_0ms",
+      blockedReason:
+        "pyrometer_discrepancy_above_5c_or_quartz_cooling_below_6lpm_or_issg_h2_o2_nh3_lel_at_or_above_25pct_or_hv_laser_shutter_fault_0ms_trip",
+    };
+  }
+
+  if (thermalRampAbortedAndChamberN2QuenchPurged) {
+    return {
+      policyCode,
+      rtpChamberOrLaserModuleId: input.rtpChamberOrLaserModuleId,
+      waferRtpAnnealingApproved: false,
+      lampArrayLaserAndIssgGasTripped0ms: false,
+      thermalRampAbortedAndChamberN2QuenchPurged: true,
+      chamberLidAndLampBankMaintenanceLockedUntilCooldownAndBleedLoto,
+      action:
+        "abort_thermal_ramp_and_initiate_n2_quench_purge_on_chamber_overpressure_or_nh3_n2o_exhaust_slip",
+      blockedReason:
+        "rtp_chamber_pressure_above_760torr_or_exhaust_nh3_n2o_slip_above_25ppm",
+    };
+  }
+
+  if (chamberLidAndLampBankMaintenanceLockedUntilCooldownAndBleedLoto) {
+    return {
+      policyCode,
+      rtpChamberOrLaserModuleId: input.rtpChamberOrLaserModuleId,
+      waferRtpAnnealingApproved: false,
+      lampArrayLaserAndIssgGasTripped0ms: false,
+      thermalRampAbortedAndChamberN2QuenchPurged: false,
+      chamberLidAndLampBankMaintenanceLockedUntilCooldownAndBleedLoto: true,
+      action:
+        "lock_out_chamber_lid_and_flash_capacitor_bank_until_below_60c_and_below_5v_bleed_loto",
+      blockedReason:
+        "chamber_wafer_temp_above_60c_or_flash_capacitor_bank_bleed_down_below_5v_and_n2_purge_loto_unverified",
+    };
+  }
+
+  return {
+    policyCode,
+    rtpChamberOrLaserModuleId: input.rtpChamberOrLaserModuleId,
+    waferRtpAnnealingApproved: true,
+    lampArrayLaserAndIssgGasTripped0ms: false,
+    thermalRampAbortedAndChamberN2QuenchPurged: false,
+    chamberLidAndLampBankMaintenanceLockedUntilCooldownAndBleedLoto: false,
+    action:
+      "approve_semiconductor_wafer_rtp_rta_flash_lamp_and_laser_spike_annealing_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc7587OpusPayloadAndRfc6716TocFramePackingGuardInput {
+  readonly sessionId: string;
+  readonly opusTocFrameCountCode: 0 | 1 | 2 | 3;
+  readonly code3PackedFrameCountM: number;
+  readonly totalPacketAudioDurationMs: number;
+  readonly declaredCompressedFramesBytes: number;
+  readonly actualRtpPayloadBytesRemaining: number;
+  readonly fmtpMaxAverageBitrateBps: number;
+  readonly fmtpMaxPtimeMs: number;
+  readonly stereoSignalingAndTocStereoBitConsistent: boolean;
+  readonly syntheticFecPlcAlternatingGapCpuAmplificationDetected: boolean;
+  readonly fullband16To20KhzSubbandHiddenAsrModulationDetected: boolean;
+}
+
+export interface WebrtcSipRtpRfc7587OpusPayloadAndRfc6716TocFramePackingGuardDecision {
+  readonly policyCode: "P370-WEBRTC-SIP-RTP-RFC7587-OPUS-PAYLOAD-AND-RFC6716-TOC-FRAME-PACKING-OVER-120MS-FRAME-OVERFLOW-FMTP-BITRATE-POISONING-FEC-PLC-CPU-AMPLIFICATION-AND-FULLBAND-SUBBAND-ASR-INJECTION-GUARD";
+  readonly sessionId: string;
+  readonly rfc7587AndRfc6716OpusPayloadHealthy: boolean;
+  readonly tocFramePackingOver120MsOrLengthOverflowDropped0ms: boolean;
+  readonly fmtpBitratePtimePoisoningOrStereoDesyncRejected: boolean;
+  readonly fecPlcCpuAmplificationOrFullbandSubbandAsrInjectionClamped: boolean;
+  readonly action:
+    | "accept_rfc7587_and_rfc6716_opus_rtp_payload_and_fmtp_profile"
+    | "drop_opus_toc_frame_packing_over_120ms_m_out_of_range_or_frame_length_overread_in_0ms"
+    | "reject_rfc7587_fmtp_maxaveragebitrate_maxptime_poisoning_or_stereo_bit_desync"
+    | "clamp_opus_lbrr_fec_plc_cpu_amplification_or_fullband_16_20khz_subband_asr_injection";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc7587OpusPayloadAndRfc6716TocFramePackingOver120MsFrameOverflowFmtpBitratePoisoningFecPlcCpuAmplificationAndFullbandSubbandAsrInjectionGuard(
+  input: WebrtcSipRtpRfc7587OpusPayloadAndRfc6716TocFramePackingGuardInput,
+): WebrtcSipRtpRfc7587OpusPayloadAndRfc6716TocFramePackingGuardDecision {
+  const policyCode =
+    "P370-WEBRTC-SIP-RTP-RFC7587-OPUS-PAYLOAD-AND-RFC6716-TOC-FRAME-PACKING-OVER-120MS-FRAME-OVERFLOW-FMTP-BITRATE-POISONING-FEC-PLC-CPU-AMPLIFICATION-AND-FULLBAND-SUBBAND-ASR-INJECTION-GUARD" as const;
+
+  const tocFramePackingOver120MsOrLengthOverflowDropped0ms =
+    input.actualRtpPayloadBytesRemaining < 1 ||
+    input.declaredCompressedFramesBytes > input.actualRtpPayloadBytesRemaining ||
+    input.totalPacketAudioDurationMs <= 0 ||
+    input.totalPacketAudioDurationMs > 120 ||
+    (input.opusTocFrameCountCode === 3 &&
+      (input.code3PackedFrameCountM < 1 || input.code3PackedFrameCountM > 48));
+
+  const fmtpBitratePtimePoisoningOrStereoDesyncRejected =
+    input.fmtpMaxAverageBitrateBps < 6000 ||
+    input.fmtpMaxAverageBitrateBps > 510000 ||
+    input.fmtpMaxPtimeMs < 3 ||
+    input.fmtpMaxPtimeMs > 120 ||
+    !input.stereoSignalingAndTocStereoBitConsistent;
+
+  const fecPlcCpuAmplificationOrFullbandSubbandAsrInjectionClamped =
+    input.syntheticFecPlcAlternatingGapCpuAmplificationDetected ||
+    input.fullband16To20KhzSubbandHiddenAsrModulationDetected;
+
+  if (tocFramePackingOver120MsOrLengthOverflowDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc7587AndRfc6716OpusPayloadHealthy: false,
+      tocFramePackingOver120MsOrLengthOverflowDropped0ms: true,
+      fmtpBitratePtimePoisoningOrStereoDesyncRejected,
+      fecPlcCpuAmplificationOrFullbandSubbandAsrInjectionClamped,
+      action:
+        "drop_opus_toc_frame_packing_over_120ms_m_out_of_range_or_frame_length_overread_in_0ms",
+      blockedReason:
+        "rfc6716_opus_toc_duration_over_120ms_or_code3_m_outside_1_48_or_frame_bytes_exceed_payload_0ms_drop",
+    };
+  }
+
+  if (fmtpBitratePtimePoisoningOrStereoDesyncRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc7587AndRfc6716OpusPayloadHealthy: false,
+      tocFramePackingOver120MsOrLengthOverflowDropped0ms: false,
+      fmtpBitratePtimePoisoningOrStereoDesyncRejected: true,
+      fecPlcCpuAmplificationOrFullbandSubbandAsrInjectionClamped,
+      action:
+        "reject_rfc7587_fmtp_maxaveragebitrate_maxptime_poisoning_or_stereo_bit_desync",
+      blockedReason:
+        "rfc7587_fmtp_maxaveragebitrate_outside_6k_510kbps_or_maxptime_outside_3_120ms_or_stereo_bit_desync_rejected",
+    };
+  }
+
+  if (fecPlcCpuAmplificationOrFullbandSubbandAsrInjectionClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc7587AndRfc6716OpusPayloadHealthy: false,
+      tocFramePackingOver120MsOrLengthOverflowDropped0ms: false,
+      fmtpBitratePtimePoisoningOrStereoDesyncRejected: false,
+      fecPlcCpuAmplificationOrFullbandSubbandAsrInjectionClamped: true,
+      action:
+        "clamp_opus_lbrr_fec_plc_cpu_amplification_or_fullband_16_20khz_subband_asr_injection",
+      blockedReason:
+        "opus_lbrr_fec_plc_alternating_gap_cpu_amplification_or_fullband_16_20khz_subband_asr_injection_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc7587AndRfc6716OpusPayloadHealthy: true,
+    tocFramePackingOver120MsOrLengthOverflowDropped0ms: false,
+    fmtpBitratePtimePoisoningOrStereoDesyncRejected: false,
+    fecPlcCpuAmplificationOrFullbandSubbandAsrInjectionClamped: false,
+    action: "accept_rfc7587_and_rfc6716_opus_rtp_payload_and_fmtp_profile",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
