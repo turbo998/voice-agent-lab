@@ -32649,3 +32649,204 @@ export function evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGeneratio
     blockedReason: "none",
   };
 }
+export interface SemiconductorWetBenchPiranhaRcaAndBoeHfCleanGuardInput {
+  wetBenchId: string;
+  piranhaBathTempC: number;
+  piranhaH2o2ConcentrationPercent: number;
+  organicSolventPiranhaIntermixDetected: boolean;
+  wetBenchLipExhaustVelocityMps: number;
+  hfAmbientVaporConcentrationPpm: number;
+  wetBenchBathDumpOrPlumbingMaintenanceRequested: boolean;
+  hfNeutralizationCalciumGluconateAndAcidSuitScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWetBenchPiranhaRcaAndBoeHfCleanGuardDecision {
+  policyCode: "P333-SEMICONDUCTOR-WET-BENCH-PIRANHA-H2SO4-H2O2-SC1-SC2-RCA-CLEAN-AND-BUFFERED-OXIDE-ETCH-BOE-HF-NH4F-SEMIS2-SEMIS6-NFPA318-NFPA400-OSHA1910119-OSHA19101000-PIRANHA-THERMAL-RUNAWAY-SOLVENT-INTERMIX-TRIP-HF-VAPOR-EXHAUST-LOSS-QUENCH-AND-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD";
+  wetBenchId: string;
+  piranhaThermalRunawayOrSolventIntermixTripped0ms: boolean;
+  hfVaporLeakOrExhaustLossQuenched: boolean;
+  calciumGluconateAndAcidSuitScbaLotoLocked: boolean;
+  wetBenchProcessApproved: boolean;
+  action:
+    | "approve_semiconductor_wet_bench_clean_etch_operation"
+    | "trip_piranha_h2o2_dosing_and_lock_blast_shield_on_thermal_runaway_or_solvent_intermix_in_0ms"
+    | "quench_wet_bench_chemical_dispense_and_close_auto_cover_on_hf_vapor_or_exhaust_loss"
+    | "enforce_hf_calcium_gluconate_antidote_and_acid_suit_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWetBenchPiranhaH2so4H2o2Sc1Sc2RcaCleanAndBufferedOxideEtchBoeHfNh4fSemiS2SemiS6Nfpa318Nfpa400Osha1910119Osha19101000PiranhaThermalRunawaySolventIntermixTripHfVaporExhaustLossQuenchAndCalciumGluconateScbaLotoGuard(
+  input: SemiconductorWetBenchPiranhaRcaAndBoeHfCleanGuardInput
+): SemiconductorWetBenchPiranhaRcaAndBoeHfCleanGuardDecision {
+  const policyCode =
+    "P333-SEMICONDUCTOR-WET-BENCH-PIRANHA-H2SO4-H2O2-SC1-SC2-RCA-CLEAN-AND-BUFFERED-OXIDE-ETCH-BOE-HF-NH4F-SEMIS2-SEMIS6-NFPA318-NFPA400-OSHA1910119-OSHA19101000-PIRANHA-THERMAL-RUNAWAY-SOLVENT-INTERMIX-TRIP-HF-VAPOR-EXHAUST-LOSS-QUENCH-AND-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD" as const;
+
+  const piranhaThermalRunawayOrSolventIntermixTripped0ms =
+    input.piranhaBathTempC > 140 ||
+    input.piranhaH2o2ConcentrationPercent > 35 ||
+    input.organicSolventPiranhaIntermixDetected;
+
+  const hfVaporLeakOrExhaustLossQuenched =
+    input.wetBenchLipExhaustVelocityMps < 0.5 ||
+    input.hfAmbientVaporConcentrationPpm >= 0.5;
+
+  const calciumGluconateAndAcidSuitScbaLotoLocked =
+    input.wetBenchBathDumpOrPlumbingMaintenanceRequested &&
+    !input.hfNeutralizationCalciumGluconateAndAcidSuitScbaLotoVerified;
+
+  if (piranhaThermalRunawayOrSolventIntermixTripped0ms) {
+    return {
+      policyCode,
+      wetBenchId: input.wetBenchId,
+      piranhaThermalRunawayOrSolventIntermixTripped0ms: true,
+      hfVaporLeakOrExhaustLossQuenched,
+      calciumGluconateAndAcidSuitScbaLotoLocked,
+      wetBenchProcessApproved: false,
+      action:
+        "trip_piranha_h2o2_dosing_and_lock_blast_shield_on_thermal_runaway_or_solvent_intermix_in_0ms",
+      blockedReason:
+        "piranha_h2so4_h2o2_thermal_runaway_or_explosive_organic_solvent_intermix_detected",
+    };
+  }
+
+  if (hfVaporLeakOrExhaustLossQuenched) {
+    return {
+      policyCode,
+      wetBenchId: input.wetBenchId,
+      piranhaThermalRunawayOrSolventIntermixTripped0ms: false,
+      hfVaporLeakOrExhaustLossQuenched: true,
+      calciumGluconateAndAcidSuitScbaLotoLocked,
+      wetBenchProcessApproved: false,
+      action:
+        "quench_wet_bench_chemical_dispense_and_close_auto_cover_on_hf_vapor_or_exhaust_loss",
+      blockedReason:
+        "wet_bench_lip_exhaust_velocity_below_0_50_mps_or_hf_vapor_above_0_50_ppm",
+    };
+  }
+
+  if (calciumGluconateAndAcidSuitScbaLotoLocked) {
+    return {
+      policyCode,
+      wetBenchId: input.wetBenchId,
+      piranhaThermalRunawayOrSolventIntermixTripped0ms: false,
+      hfVaporLeakOrExhaustLossQuenched: false,
+      calciumGluconateAndAcidSuitScbaLotoLocked: true,
+      wetBenchProcessApproved: false,
+      action: "enforce_hf_calcium_gluconate_antidote_and_acid_suit_scba_loto",
+      blockedReason:
+        "boe_hf_neutralization_calcium_gluconate_gel_and_acid_suit_scba_loto_not_verified",
+    };
+  }
+
+  return {
+    policyCode,
+    wetBenchId: input.wetBenchId,
+    piranhaThermalRunawayOrSolventIntermixTripped0ms: false,
+    hfVaporLeakOrExhaustLossQuenched: false,
+    calciumGluconateAndAcidSuitScbaLotoLocked: false,
+    wetBenchProcessApproved: true,
+    action: "approve_semiconductor_wet_bench_clean_etch_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211022JpegXsRfc9134GuardInput {
+  sessionId: string;
+  declaredJpegXsHeaderAndPacketBytes: number;
+  actualRtpPayloadBytesRemaining: number;
+  missingSocOrEocMarkerFramingError: boolean;
+  sliceGroupPacketCounterGap: number;
+  negotiatedTargetBitsPerPixel: number;
+  jpegXsSlicesPerMillisecond: number;
+  compressedStreamBitrateGbps: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211022JpegXsRfc9134GuardDecision {
+  policyCode: "P334-WEBRTC-SIP-RTP-SMPTE-ST2110-22-JPEG-XS-LOW-LATENCY-COMPRESSED-VIDEO-AND-RFC9134-PACT-HEADER-OVERREAD-SLICE-PACKETIZATION-DESYNC-BPP-TARGET-OVERFLOW-AND-SUBFRAME-DECODER-BOMB-GUARD";
+  sessionId: string;
+  jpegXsHeaderOverreadOrFramingErrorDropped0ms: boolean;
+  sliceDesyncOrBppExcursionRejected: boolean;
+  subframeSliceFloodOrBitrateBombClamped: boolean;
+  st211022JpegXsStreamAccepted: boolean;
+  action:
+    | "accept_smpte_st2110_22_jpeg_xs_stream"
+    | "drop_rfc9134_jpeg_xs_header_overread_or_marker_framing_error_in_0ms"
+    | "reject_jpeg_xs_slice_packetization_desync_or_bpp_excursion"
+    | "clamp_st2110_22_subframe_slice_flood_or_compressed_bitrate_bomb";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211022JpegXsLowLatencyCompressedVideoAndRfc9134PacTHeaderOverreadSlicePacketizationDesyncBppTargetOverflowAndSubframeDecoderBombGuard(
+  input: WebrtcSipRtpSmpteSt211022JpegXsRfc9134GuardInput
+): WebrtcSipRtpSmpteSt211022JpegXsRfc9134GuardDecision {
+  const policyCode =
+    "P334-WEBRTC-SIP-RTP-SMPTE-ST2110-22-JPEG-XS-LOW-LATENCY-COMPRESSED-VIDEO-AND-RFC9134-PACT-HEADER-OVERREAD-SLICE-PACKETIZATION-DESYNC-BPP-TARGET-OVERFLOW-AND-SUBFRAME-DECODER-BOMB-GUARD" as const;
+
+  const jpegXsHeaderOverreadOrFramingErrorDropped0ms =
+    input.declaredJpegXsHeaderAndPacketBytes > input.actualRtpPayloadBytesRemaining ||
+    input.missingSocOrEocMarkerFramingError;
+
+  const sliceDesyncOrBppExcursionRejected =
+    input.sliceGroupPacketCounterGap > 0 ||
+    input.negotiatedTargetBitsPerPixel < 1.5 ||
+    input.negotiatedTargetBitsPerPixel > 6.0;
+
+  const subframeSliceFloodOrBitrateBombClamped =
+    input.jpegXsSlicesPerMillisecond > 32 ||
+    input.compressedStreamBitrateGbps > 16.0;
+
+  if (jpegXsHeaderOverreadOrFramingErrorDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      jpegXsHeaderOverreadOrFramingErrorDropped0ms: true,
+      sliceDesyncOrBppExcursionRejected,
+      subframeSliceFloodOrBitrateBombClamped,
+      st211022JpegXsStreamAccepted: false,
+      action:
+        "drop_rfc9134_jpeg_xs_header_overread_or_marker_framing_error_in_0ms",
+      blockedReason:
+        "rfc9134_jpeg_xs_header_length_overread_or_missing_soc_eoc_codestream_marker",
+    };
+  }
+
+  if (sliceDesyncOrBppExcursionRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      jpegXsHeaderOverreadOrFramingErrorDropped0ms: false,
+      sliceDesyncOrBppExcursionRejected: true,
+      subframeSliceFloodOrBitrateBombClamped,
+      st211022JpegXsStreamAccepted: false,
+      action: "reject_jpeg_xs_slice_packetization_desync_or_bpp_excursion",
+      blockedReason:
+        "jpeg_xs_slice_group_counter_desync_or_target_bpp_outside_1_5_to_6_0_range",
+    };
+  }
+
+  if (subframeSliceFloodOrBitrateBombClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      jpegXsHeaderOverreadOrFramingErrorDropped0ms: false,
+      sliceDesyncOrBppExcursionRejected: false,
+      subframeSliceFloodOrBitrateBombClamped: true,
+      st211022JpegXsStreamAccepted: false,
+      action:
+        "clamp_st2110_22_subframe_slice_flood_or_compressed_bitrate_bomb",
+      blockedReason:
+        "st2110_22_jpeg_xs_subframe_slice_rate_or_compressed_bitrate_exceeds_decoder_ceiling",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    jpegXsHeaderOverreadOrFramingErrorDropped0ms: false,
+    sliceDesyncOrBppExcursionRejected: false,
+    subframeSliceFloodOrBitrateBombClamped: false,
+    st211022JpegXsStreamAccepted: true,
+    action: "accept_smpte_st2110_22_jpeg_xs_stream",
+    blockedReason: "none",
+  };
+}
