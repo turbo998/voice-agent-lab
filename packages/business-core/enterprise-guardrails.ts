@@ -27926,3 +27926,220 @@ export function evaluateWebrtcSipRtpSmpteSt211030St211031Aes67Aes3LinearPcmTrans
   };
 }
 
+export interface LithiumIonBatteryNmpCathodeCoatingDryerElectrolyteFillingDryRoomGuardInput {
+  gigafactoryLineId: string;
+  nmpDryerOvenVaporConcentrationLelPct: number;
+  dryerExhaustAirVelocityMPerSec: number;
+  nmpCondenserChilledWaterOutletTemperatureC: number;
+  dryRoomDewPointTemperatureC: number;
+  electrolyteFillingLipf6DecEmcLelPct: number;
+  formationCellMaxSurfaceTemperatureC: number;
+  formationCellThermalRateOfRiseCPerMin: number;
+  ambientHydrogenFluoridePpm: number;
+  ambientNmpVaporPpm: number;
+  ambientCarbonMonoxideH2LelPct: number;
+  ul9540aDeflagrationVentAndCalciumGluconateScbaLotoVerified: boolean;
+}
+
+export interface LithiumIonBatteryNmpCathodeCoatingDryerElectrolyteFillingDryRoomGuardAssessment {
+  policyCode: "P289-LITHIUM-ION-BATTERY-NMP-CATHODE-COATING-DRYER-ELECTROLYTE-FILLING-DRY-ROOM-FORMATION-NFPA86-NFPA69-NFPA855-APIRP521-OSHA1910119-OSHA19101000-NMP-25PCT-LEL-DRY-ROOM-DEWPOINT-LIPF6-HF-HYDROLYSIS-FORMATION-THERMAL-RUNAWAY-AND-HF-NMP-SCBA-LOTO-GUARD";
+  gigafactoryLineId: string;
+  nmpDryerLelOrExhaustCondenserFailurePreempted0ms: boolean;
+  dryRoomDewPointBreachOrElectrolyteLelIsolated: boolean;
+  formationThermalRunawayHfNmpOrScbaLotoLocked: boolean;
+  lithiumIonCoatingFillingFormationApproved: boolean;
+  action:
+    | "approve_nmp_cathode_coating_dry_room_electrolyte_filling_and_cell_formation"
+    | "trip_nmp_coating_die_and_oven_heaters_inject_n2_purge_and_switch_backup_condenser_in_0ms"
+    | "isolate_lipf6_electrolyte_filling_headers_and_boost_desiccant_rotor_n2_curtain"
+    | "eject_formation_rack_activate_ul9540a_water_mist_exhaust_and_lock_hf_calcium_gluconate_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateLithiumIonBatteryNmpCathodeCoatingDryerElectrolyteFillingDryRoomNfpa86Nfpa69Nfpa855ApiRp521Osha1910119Osha19101000NmpLelDewPointLipf6HfHydrolysisFormationRunawayAndHfScbaLotoGuard(
+  input: LithiumIonBatteryNmpCathodeCoatingDryerElectrolyteFillingDryRoomGuardInput
+): LithiumIonBatteryNmpCathodeCoatingDryerElectrolyteFillingDryRoomGuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const nmpDryerLelOrExhaustCondenserFailurePreempted0ms =
+    input.nmpDryerOvenVaporConcentrationLelPct >= 25.0 ||
+    input.dryerExhaustAirVelocityMPerSec < 1.5 ||
+    input.nmpCondenserChilledWaterOutletTemperatureC >= 18.0;
+
+  if (nmpDryerLelOrExhaustCondenserFailurePreempted0ms) {
+    blockedReasons.push(
+      "NFPA_86_NMP_CATHODE_DRYER_OVEN_25PCT_LEL_EXHAUST_AIRFLOW_STALL_OR_CONDENSER_CHILLED_WATER_LOSS_PREEMPTED_0MS"
+    );
+  }
+
+  const dryRoomDewPointBreachOrElectrolyteLelIsolated =
+    input.dryRoomDewPointTemperatureC > -40.0 ||
+    input.electrolyteFillingLipf6DecEmcLelPct >= 20.0;
+
+  if (dryRoomDewPointBreachOrElectrolyteLelIsolated) {
+    blockedReasons.push(
+      "DRY_ROOM_DEW_POINT_ABOVE_MINUS_40C_LIPF6_MOISTURE_HF_HYDROLYSIS_OR_DEC_EMC_DMC_20PCT_LEL_ISOLATED"
+    );
+  }
+
+  const formationThermalRunawayHfNmpOrScbaLotoLocked =
+    input.formationCellMaxSurfaceTemperatureC >= 60.0 ||
+    input.formationCellThermalRateOfRiseCPerMin >= 2.0 ||
+    input.ambientHydrogenFluoridePpm >= 3.0 ||
+    input.ambientNmpVaporPpm >= 10.0 ||
+    input.ambientCarbonMonoxideH2LelPct >= 10.0 ||
+    !input.ul9540aDeflagrationVentAndCalciumGluconateScbaLotoVerified;
+
+  if (formationThermalRunawayHfNmpOrScbaLotoLocked) {
+    blockedReasons.push(
+      "NFPA_855_UL9540A_FORMATION_THERMAL_RUNAWAY_OSHA_HF_3PPM_NMP_10PPM_H2_CO_10PCT_LEL_OR_CALCIUM_GLUCONATE_SCBA_LOTO_LOCKED"
+    );
+  }
+
+  const lithiumIonCoatingFillingFormationApproved =
+    !nmpDryerLelOrExhaustCondenserFailurePreempted0ms &&
+    !dryRoomDewPointBreachOrElectrolyteLelIsolated &&
+    !formationThermalRunawayHfNmpOrScbaLotoLocked;
+
+  let action: LithiumIonBatteryNmpCathodeCoatingDryerElectrolyteFillingDryRoomGuardAssessment["action"] =
+    "approve_nmp_cathode_coating_dry_room_electrolyte_filling_and_cell_formation";
+
+  if (nmpDryerLelOrExhaustCondenserFailurePreempted0ms) {
+    action =
+      "trip_nmp_coating_die_and_oven_heaters_inject_n2_purge_and_switch_backup_condenser_in_0ms";
+  } else if (dryRoomDewPointBreachOrElectrolyteLelIsolated) {
+    action =
+      "isolate_lipf6_electrolyte_filling_headers_and_boost_desiccant_rotor_n2_curtain";
+  } else if (formationThermalRunawayHfNmpOrScbaLotoLocked) {
+    action =
+      "eject_formation_rack_activate_ul9540a_water_mist_exhaust_and_lock_hf_calcium_gluconate_scba_loto";
+  }
+
+  return {
+    policyCode:
+      "P289-LITHIUM-ION-BATTERY-NMP-CATHODE-COATING-DRYER-ELECTROLYTE-FILLING-DRY-ROOM-FORMATION-NFPA86-NFPA69-NFPA855-APIRP521-OSHA1910119-OSHA19101000-NMP-25PCT-LEL-DRY-ROOM-DEWPOINT-LIPF6-HF-HYDROLYSIS-FORMATION-THERMAL-RUNAWAY-AND-HF-NMP-SCBA-LOTO-GUARD",
+    gigafactoryLineId: input.gigafactoryLineId,
+    nmpDryerLelOrExhaustCondenserFailurePreempted0ms,
+    dryRoomDewPointBreachOrElectrolyteLelIsolated,
+    formationThermalRunawayHfNmpOrScbaLotoLocked,
+    lithiumIonCoatingFillingFormationApproved,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211022JpegXsConstantBitRateVideoRfc9134GuardInput {
+  sessionId: string;
+  rtpPayloadBytes: number;
+  payloadHeaderLengthBytes: number;
+  declaredPacDataUnitSizeOctets: number;
+  transmissionModeBitT: 0 | 1;
+  packetizationModeBitK: 0 | 1;
+  lastPacketIndicatorBitL: 0 | 1;
+  rtpHeaderMarkerBitM: 0 | 1;
+  frameCounter32Mod: number;
+  expectedFrameCounter32Mod: number;
+  sliceOrPacketCounterMod: number;
+  maxSlicesPerFrame: number;
+  socPihOrEocMarkerCorrupted: boolean;
+  inboundCompressedVideoMbps: number;
+  negotiatedMaxCbrVideoMbps: number;
+  st211021VrxBufferPackets: number;
+  negotiatedCmaxVrxPackets: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211022JpegXsConstantBitRateVideoRfc9134GuardAssessment {
+  policyCode: "P290-WEBRTC-SIP-RTP-SMPTE-ST2110-22-JPEG-XS-ISO21122-RFC9134-CONSTANT-BITRATE-COMPRESSED-VIDEO-SLICE-PACKETIZATION-HEADER-OVERREAD-K-BIT-MODE-DESYNC-PIH-MARKER-CORRUPTION-AND-CBR-VRX-BUFFER-GUARD";
+  sessionId: string;
+  jpegXsSliceHeaderOverreadOrKBitModeDesyncDropped: boolean;
+  fCounterSliceTearOrPihMarkerCorruptionPliTriggered: boolean;
+  st211022CbrBitrateOrVrxBufferOverflowClamped: boolean;
+  st211022JpegXsRtpPacketAccepted: boolean;
+  action:
+    | "accept_st2110_22_rfc9134_jpeg_xs_cbr_video_rtp_packet"
+    | "drop_rfc9134_jpeg_xs_slice_header_overread_or_k_l_m_bit_desync_in_0ms"
+    | "reject_corrupted_jpeg_xs_codestream_and_emit_rtcp_pli_for_clean_frame"
+    | "clamp_st2110_22_cbr_bitrate_or_st2110_21_vrx_buffer_exceedance";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211022JpegXsConstantBitRateVideoRfc9134SlicePacketizationOverreadKBitModeDesyncPihMarkerCorruptionAndCbrVrxBufferGuard(
+  input: WebrtcSipRtpSmpteSt211022JpegXsConstantBitRateVideoRfc9134GuardInput
+): WebrtcSipRtpSmpteSt211022JpegXsConstantBitRateVideoRfc9134GuardAssessment {
+  const blockedReasons: string[] = [];
+
+  const jpegXsSliceHeaderOverreadOrKBitModeDesyncDropped =
+    input.payloadHeaderLengthBytes !== 4 ||
+    input.rtpPayloadBytes < input.payloadHeaderLengthBytes ||
+    input.declaredPacDataUnitSizeOctets <= 0 ||
+    input.payloadHeaderLengthBytes + input.declaredPacDataUnitSizeOctets >
+      input.rtpPayloadBytes ||
+    (input.packetizationModeBitK === 0 && input.transmissionModeBitT === 0) ||
+    (input.rtpHeaderMarkerBitM === 1 && input.lastPacketIndicatorBitL === 0);
+
+  if (jpegXsSliceHeaderOverreadOrKBitModeDesyncDropped) {
+    blockedReasons.push(
+      "SMPTE_ST2110_22_RFC9134_JPEG_XS_PAYLOAD_HEADER_PAC_OVERREAD_OR_K_T_L_M_BIT_DESYNC_DROPPED_0MS"
+    );
+  }
+
+  const fCounterSliceTearOrPihMarkerCorruptionPliTriggered =
+    input.frameCounter32Mod < 0 ||
+    input.frameCounter32Mod > 31 ||
+    input.frameCounter32Mod !== input.expectedFrameCounter32Mod ||
+    input.sliceOrPacketCounterMod < 0 ||
+    input.sliceOrPacketCounterMod >= input.maxSlicesPerFrame ||
+    input.socPihOrEocMarkerCorrupted;
+
+  if (fCounterSliceTearOrPihMarkerCorruptionPliTriggered) {
+    blockedReasons.push(
+      "JPEG_XS_ISO_21122_F_COUNTER_SLICE_MODULO_TEAR_OR_SOC_PIH_EOC_MARKER_CORRUPTION_RTCP_PLI_TRIGGERED"
+    );
+  }
+
+  const st211022CbrBitrateOrVrxBufferOverflowClamped =
+    input.inboundCompressedVideoMbps > input.negotiatedMaxCbrVideoMbps ||
+    input.inboundCompressedVideoMbps > 800.0 ||
+    input.st211021VrxBufferPackets < 0 ||
+    input.st211021VrxBufferPackets > input.negotiatedCmaxVrxPackets;
+
+  if (st211022CbrBitrateOrVrxBufferOverflowClamped) {
+    blockedReasons.push(
+      "SMPTE_ST2110_22_CBR_COMPRESSED_BITRATE_OR_ST2110_21_VRX_BUFFER_OVERFLOW_CLAMPED"
+    );
+  }
+
+  const st211022JpegXsRtpPacketAccepted =
+    !jpegXsSliceHeaderOverreadOrKBitModeDesyncDropped &&
+    !fCounterSliceTearOrPihMarkerCorruptionPliTriggered &&
+    !st211022CbrBitrateOrVrxBufferOverflowClamped;
+
+  let action: WebrtcSipRtpSmpteSt211022JpegXsConstantBitRateVideoRfc9134GuardAssessment["action"] =
+    "accept_st2110_22_rfc9134_jpeg_xs_cbr_video_rtp_packet";
+
+  if (jpegXsSliceHeaderOverreadOrKBitModeDesyncDropped) {
+    action =
+      "drop_rfc9134_jpeg_xs_slice_header_overread_or_k_l_m_bit_desync_in_0ms";
+  } else if (fCounterSliceTearOrPihMarkerCorruptionPliTriggered) {
+    action =
+      "reject_corrupted_jpeg_xs_codestream_and_emit_rtcp_pli_for_clean_frame";
+  } else if (st211022CbrBitrateOrVrxBufferOverflowClamped) {
+    action = "clamp_st2110_22_cbr_bitrate_or_st2110_21_vrx_buffer_exceedance";
+  }
+
+  return {
+    policyCode:
+      "P290-WEBRTC-SIP-RTP-SMPTE-ST2110-22-JPEG-XS-ISO21122-RFC9134-CONSTANT-BITRATE-COMPRESSED-VIDEO-SLICE-PACKETIZATION-HEADER-OVERREAD-K-BIT-MODE-DESYNC-PIH-MARKER-CORRUPTION-AND-CBR-VRX-BUFFER-GUARD",
+    sessionId: input.sessionId,
+    jpegXsSliceHeaderOverreadOrKBitModeDesyncDropped,
+    fCounterSliceTearOrPihMarkerCorruptionPliTriggered,
+    st211022CbrBitrateOrVrxBufferOverflowClamped,
+    st211022JpegXsRtpPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+
