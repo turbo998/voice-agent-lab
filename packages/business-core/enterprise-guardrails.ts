@@ -31664,6 +31664,213 @@ export function evaluateWebrtcSipRtpSmpteSt211041FastMetadataFmxAndSt211043TtmlL
   };
 }
 
+/**
+ * Stage 165 (P323) — Semiconductor PECVD / SACVD / HDPCVD Dielectric Film Deposition (TEOS / SiH4 / PH3 / B2H6) & Remote NF3 / F2 RPS Plasma Chamber Clean Safety Guard
+ * Standards: NFPA 318, SEMI S2, SEMI S6, NFPA 69, OSHA 29 CFR 1910.119, OSHA 29 CFR 1910.1000
+ */
+export interface SemiconductorPecvdSacvdHdpcvdTeosSih4Ph3B2h6AndRemoteNf3F2RpsCleanGuardInput {
+  chamberId: string;
+  silaneOrHydrideCabinetLeakPpm: number;
+  dryPumpN2BallastDilutionFlowSlm: number;
+  liquidTeosAmpouleHeaterTempC: number;
+  rpsRemotePlasmaBlockTempC: number;
+  pecvdShowerheadOrForelineMaintenanceRequested: boolean;
+  nf3FluorinePurgeAndSilicaPowderHfScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorPecvdSacvdHdpcvdTeosSih4Ph3B2h6AndRemoteNf3F2RpsCleanGuardDecision {
+  policyCode: "P323-SEMICONDUCTOR-PECVD-SACVD-HDPCVD-TEOS-SIH4-PH3-B2H6-DIELECTRIC-AND-REMOTE-NF3-F2-RPS-CHAMBER-CLEAN-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-PYROPHORIC-SIH4-FORELINE-N2-DILUTION-LOSS-TRIP-LIQUID-TEOS-AMPOULE-OVERTEMP-ISOLATION-AND-RPS-FLUORINE-HF-SCBA-LOTO-GUARD";
+  chamberId: string;
+  pyrophoricSih4LeakOrForelineN2LossTripped0ms: boolean;
+  teosAmpouleOvertempOrRpsBlockThermalIsolated: boolean;
+  rpsFluorineAndPyrophoricSilicaPowderScbaLotoLocked: boolean;
+  pecvdSacvdDielectricProcessApproved: boolean;
+  action:
+    | "trip_pecvd_sih4_ph3_b2h6_rfo_valves_and_restore_dry_pump_n2_ballast_in_0ms"
+    | "isolate_liquid_teos_ampoule_heater_and_quench_remote_plasma_source_rps"
+    | "lock_pecvd_chamber_and_require_nf3_f2_fluorine_purge_and_silica_hf_scba_loto"
+    | "approve_semiconductor_pecvd_sacvd_hdpcvd_dielectric_operation";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorPecvdSacvdHdpcvdTeosSih4Ph3B2h6DielectricAndRemoteNf3F2RpsChamberCleanNfpa318SemiS2SemiS6Nfpa69Osha1910119Osha19101000PyrophoricSih4ForelineN2DilutionLossTripLiquidTeosAmpouleOvertempIsolationAndRpsFluorineHfScbaLotoGuard(
+  input: SemiconductorPecvdSacvdHdpcvdTeosSih4Ph3B2h6AndRemoteNf3F2RpsCleanGuardInput
+): SemiconductorPecvdSacvdHdpcvdTeosSih4Ph3B2h6AndRemoteNf3F2RpsCleanGuardDecision {
+  const policyCode =
+    "P323-SEMICONDUCTOR-PECVD-SACVD-HDPCVD-TEOS-SIH4-PH3-B2H6-DIELECTRIC-AND-REMOTE-NF3-F2-RPS-CHAMBER-CLEAN-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-PYROPHORIC-SIH4-FORELINE-N2-DILUTION-LOSS-TRIP-LIQUID-TEOS-AMPOULE-OVERTEMP-ISOLATION-AND-RPS-FLUORINE-HF-SCBA-LOTO-GUARD" as const;
+
+  const pyrophoricSih4LeakOrForelineN2LossTripped0ms =
+    input.silaneOrHydrideCabinetLeakPpm >= 1.0 ||
+    input.dryPumpN2BallastDilutionFlowSlm < 35.0;
+
+  if (pyrophoricSih4LeakOrForelineN2LossTripped0ms) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      pyrophoricSih4LeakOrForelineN2LossTripped0ms: true,
+      teosAmpouleOvertempOrRpsBlockThermalIsolated: false,
+      rpsFluorineAndPyrophoricSilicaPowderScbaLotoLocked: false,
+      pecvdSacvdDielectricProcessApproved: false,
+      action:
+        "trip_pecvd_sih4_ph3_b2h6_rfo_valves_and_restore_dry_pump_n2_ballast_in_0ms",
+      blockedReason:
+        "NFPA_318_SEMI_S2_PECVD_SIH4_HYDRIDE_LEAK_OR_DRY_PUMP_N2_BALLAST_DILUTION_LOSS_TRIPPED_0MS",
+    };
+  }
+
+  const teosAmpouleOvertempOrRpsBlockThermalIsolated =
+    input.liquidTeosAmpouleHeaterTempC > 85.0 ||
+    input.rpsRemotePlasmaBlockTempC > 110.0;
+
+  if (teosAmpouleOvertempOrRpsBlockThermalIsolated) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      pyrophoricSih4LeakOrForelineN2LossTripped0ms: false,
+      teosAmpouleOvertempOrRpsBlockThermalIsolated: true,
+      rpsFluorineAndPyrophoricSilicaPowderScbaLotoLocked: false,
+      pecvdSacvdDielectricProcessApproved: false,
+      action:
+        "isolate_liquid_teos_ampoule_heater_and_quench_remote_plasma_source_rps",
+      blockedReason:
+        "SEMI_S2_PECVD_LIQUID_TEOS_AMPOULE_85C_OVERTEMP_OR_RPS_110C_BLOCK_ISOLATED",
+    };
+  }
+
+  const rpsFluorineAndPyrophoricSilicaPowderScbaLotoLocked =
+    input.pecvdShowerheadOrForelineMaintenanceRequested &&
+    !input.nf3FluorinePurgeAndSilicaPowderHfScbaLotoVerified;
+
+  if (rpsFluorineAndPyrophoricSilicaPowderScbaLotoLocked) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      pyrophoricSih4LeakOrForelineN2LossTripped0ms: false,
+      teosAmpouleOvertempOrRpsBlockThermalIsolated: false,
+      rpsFluorineAndPyrophoricSilicaPowderScbaLotoLocked: true,
+      pecvdSacvdDielectricProcessApproved: false,
+      action:
+        "lock_pecvd_chamber_and_require_nf3_f2_fluorine_purge_and_silica_hf_scba_loto",
+      blockedReason:
+        "OSHA_1910_1000_PECVD_RPS_FLUORINE_AND_PYROPHORIC_SILICA_POWDER_HF_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    chamberId: input.chamberId,
+    pyrophoricSih4LeakOrForelineN2LossTripped0ms: false,
+    teosAmpouleOvertempOrRpsBlockThermalIsolated: false,
+    rpsFluorineAndPyrophoricSilicaPowderScbaLotoLocked: false,
+    pecvdSacvdDielectricProcessApproved: true,
+    action: "approve_semiconductor_pecvd_sacvd_hdpcvd_dielectric_operation",
+    blockedReason: "none",
+  };
+}
+
+/**
+ * Stage 165 (P324) — WebRTC & SIP RTP SMPTE ST 2022-8 / ST 2110-20 Hybrid SDI-over-IP & Uncompressed Active Video Timing Alignment Guard
+ * Standards: SMPTE ST 2022-8, SMPTE ST 2110-20, SMPTE ST 2022-6, RFC 4175
+ */
+export interface WebrtcSipRtpSmpteSt20228HybridSdiToSt211020InterworkingTimingGuardInput {
+  sessionId: string;
+  srdDeclaredPayloadBytes: number;
+  actualRtpPayloadBytesRemaining: number;
+  hbrmtToSt211020AlignmentOffsetMicroseconds: number;
+  sdpPackingModePgroupAligned: boolean;
+  instantaneousGatewayEgressGbps: number;
+  cmaxPacketBurstCount: number;
+}
+
+export interface WebrtcSipRtpSmpteSt20228HybridSdiToSt211020InterworkingTimingGuardDecision {
+  policyCode: "P324-WEBRTC-SIP-RTP-SMPTE-ST2022-8-HYBRID-SDI-TO-ST2110-20-INTERWORKING-TIMING-SRD-LENGTH-OVERREAD-HBRMT-TO-ACTIVE-VIDEO-TROFFSET-DESYNC-AND-UNCOMPRESSED-BURST-FLOOD-GUARD";
+  sessionId: string;
+  srdHeaderLengthOverreadDropped0ms: boolean;
+  hbrmtToSt211020TroffsetOrPgroupAlignmentRejected: boolean;
+  gatewayEgressGbpsOrCmaxBurstClamped: boolean;
+  st20228HybridSdiToSt211020StreamAccepted: boolean;
+  action:
+    | "drop_st2022_8_srd_header_length_overread_packet_in_0ms"
+    | "reject_st2022_8_hbrmt_to_st2110_20_troffset_desync_or_pgroup_misalignment"
+    | "clamp_st2022_8_25gbps_gateway_egress_or_cmax_16pkt_microburst"
+    | "accept_smpte_st2022_8_hybrid_sdi_to_st2110_20_interworking_stream";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt20228HybridSdiToSt211020InterworkingTimingSrdLengthOverreadHbrmtToActiveVideoTroffsetDesyncAndUncompressedBurstFloodGuard(
+  input: WebrtcSipRtpSmpteSt20228HybridSdiToSt211020InterworkingTimingGuardInput
+): WebrtcSipRtpSmpteSt20228HybridSdiToSt211020InterworkingTimingGuardDecision {
+  const policyCode =
+    "P324-WEBRTC-SIP-RTP-SMPTE-ST2022-8-HYBRID-SDI-TO-ST2110-20-INTERWORKING-TIMING-SRD-LENGTH-OVERREAD-HBRMT-TO-ACTIVE-VIDEO-TROFFSET-DESYNC-AND-UNCOMPRESSED-BURST-FLOOD-GUARD" as const;
+
+  const srdHeaderLengthOverreadDropped0ms =
+    input.srdDeclaredPayloadBytes <= 0 ||
+    input.srdDeclaredPayloadBytes > input.actualRtpPayloadBytesRemaining;
+
+  if (srdHeaderLengthOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      srdHeaderLengthOverreadDropped0ms: true,
+      hbrmtToSt211020TroffsetOrPgroupAlignmentRejected: false,
+      gatewayEgressGbpsOrCmaxBurstClamped: false,
+      st20228HybridSdiToSt211020StreamAccepted: false,
+      action: "drop_st2022_8_srd_header_length_overread_packet_in_0ms",
+      blockedReason:
+        "SMPTE_ST2022_8_SRD_HEADER_LENGTH_OVERREAD_PACKET_DROPPED_0MS",
+    };
+  }
+
+  const hbrmtToSt211020TroffsetOrPgroupAlignmentRejected =
+    Math.abs(input.hbrmtToSt211020AlignmentOffsetMicroseconds) > 20.0 ||
+    !input.sdpPackingModePgroupAligned;
+
+  if (hbrmtToSt211020TroffsetOrPgroupAlignmentRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      srdHeaderLengthOverreadDropped0ms: false,
+      hbrmtToSt211020TroffsetOrPgroupAlignmentRejected: true,
+      gatewayEgressGbpsOrCmaxBurstClamped: false,
+      st20228HybridSdiToSt211020StreamAccepted: false,
+      action:
+        "reject_st2022_8_hbrmt_to_st2110_20_troffset_desync_or_pgroup_misalignment",
+      blockedReason:
+        "SMPTE_ST2022_8_HBRMT_ST2110_20_20US_ALIGNMENT_DESYNC_OR_PGROUP_REJECTED",
+    };
+  }
+
+  const gatewayEgressGbpsOrCmaxBurstClamped =
+    input.instantaneousGatewayEgressGbps > 25.0 ||
+    input.cmaxPacketBurstCount > 16;
+
+  if (gatewayEgressGbpsOrCmaxBurstClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      srdHeaderLengthOverreadDropped0ms: false,
+      hbrmtToSt211020TroffsetOrPgroupAlignmentRejected: false,
+      gatewayEgressGbpsOrCmaxBurstClamped: true,
+      st20228HybridSdiToSt211020StreamAccepted: false,
+      action: "clamp_st2022_8_25gbps_gateway_egress_or_cmax_16pkt_microburst",
+      blockedReason:
+        "SMPTE_ST2022_8_25GBPS_GATEWAY_EGRESS_OR_16PKT_CMAX_BURST_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    srdHeaderLengthOverreadDropped0ms: false,
+    hbrmtToSt211020TroffsetOrPgroupAlignmentRejected: false,
+    gatewayEgressGbpsOrCmaxBurstClamped: false,
+    st20228HybridSdiToSt211020StreamAccepted: true,
+    action:
+      "accept_smpte_st2022_8_hybrid_sdi_to_st2110_20_interworking_stream",
+    blockedReason: "none",
+  };
+}
+
 
 
 

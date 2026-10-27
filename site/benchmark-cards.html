@@ -1245,10 +1245,10 @@
             </tr>
             <tr>
               <td>
-                <strong>68. 油气长输管网 `PHMSA 49 CFR Part 192/195` 爆管 1h NRC 强制上报与 ESD 截断/`CPM` 泄漏告警锁死干线阀门/MAOP 设定与 14h 防疲劳护栏 &amp; 运营商 VoLTE/IMS `SIP RFC 3262 PRACK (100rel)` 重传熔断/`RFC 3312` QoS 专载防吞字与 `RFC 6141` 状态原子回滚护栏 (`P123` / `P124`)</strong>
+                <strong>68. 油气长输管网 `PHMSA 49 CFR Part 192/195` 爆管 1h NRC 强制上报与 ESD 截断/`CPM` 泄漏告警锁死干线阀门/MAOP 设定与 14h 防疲劳护栏 &amp; 运营商 VoLTE/IMS `SIP RFC 3262 PRACK (100rel)` 重传熔断/`RFC 3332` QoS 专载防吞字与 `RFC 6141` 状态原子回滚护栏 (`P123` / `P124`)</strong>
                 <div style="font-size:11.5px;color:#64748B;">管线爆管漏报 1h NRC、CPM 负压波泄漏告警未解除强行开阀升压或 >14h 疲劳调度员独立操作 vs. 183 100rel 缺 PRACK 重传断话、QCI-1 专载未就绪抢播吞字或 Re-INVITE 被拒未回滚 SDP 单通</div>
               </td>
-              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">PHMSA 192/195 · API 1168 &amp; RFC 3262/3312/6141</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">PHMSA 192/195 · API 1168 &amp; RFC 3262/3332/6141</span></td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">Unverified MAOP Valve &amp; PRACK/QoS Desync Blocked</span></td>
               <td><span class="band-tag band-auto">0.0 pts</span></td>
             </tr>
@@ -1443,7 +1443,7 @@
             </tr>
             <tr>
               <td>
-                <strong>90. 锂电池超级工厂（Gigafactory）`NFPA 86` 极片涂布烘箱 `NMP` 溶剂（`&gt;=25% LEL`）防爆联锁、干燥房（`&lt;-40°C` 露点）`LiPF6` 注液防 `HF` 水解毒气闭锁与化成老化柜电芯热失控（`UL 9540A / NFPA 855`）0ms 水雾淹没抢占护栏 &amp; WebRTC/RTP `RFC 3550 / RFC 5506` 复合 RTCP 首包 `SR/RR` 强校验、字长/Padding 防越界与 `SDES CNAME / BYE` 防洪泛护栏 (`P167` / `P168`)</strong>
+                <strong>90. 锂电池超级工厂（Gigafactory）`NFPA 86` 极片涂布烘箱 `NMP` 溶剂（`&gt;=25% LEL`）防爆联锁、干燥房（`&lt;-40°C` 露点）`LiPF6` 注液防 `HF` 水解毒气闭锁与化成老化柜电芯热失控（`UL 9540A / NFPA 855`）0ms 水雾淹没抢占护栏 &amp; WebRTC/RTP `RFC 3550 / RFC 5506` 复合 RTCP 首包 `SR/RR` 强校验、字长/Padding 防越界与 `SDES CNAME / BYE` 防洪泛护栏 (`P168` / `P168`)</strong>
                 <div style="font-size:11.5px;color:#64748B;">化成柜电芯 &gt;=80°C 或 dV/dt 突降冒烟仍强行复充/开门、涂布烘箱 NMP &gt;=25% LEL 提速升温、干燥房露点 &gt;-35°C 或 HF &gt;=1ppm 强开注液阀 vs. 非 rtcp-rsize 裸发 SDES/BYE 首包、P=1 末字节越界读取或伪造 RTCP BYE SSRC 拆线洪泛</div>
               </td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">UL 9540A / NFPA 86 / HF Lock &amp; RFC 3550/5506</span></td>
@@ -1488,10 +1488,10 @@
             </tr>
             <tr>
               <td>
-                <strong>95. 合成氨（`Haber-Bosch`）与尿素/硝酸铵化肥装置集控 `AIChE Ammonia Safety / API RP 941 / OSHA 1910.119 / NFPA 400` 甲烷化炉 `CO/CO2` 穿透飞温（`&gt;=450°C`）与 `300 bar` 合成回路高温氢攻击（`HTHA`）0ms 压缩机跳闸抢占、熔融硝酸铵（`AN`）酸化（`pH &lt; 4.5`）/超温（`&gt;=210°C`）爆轰与尿素合成塔钝化氧（`O2 &lt; 0.4 vol%`）丧失联锁及自燃还原态铁触媒（`alpha-Fe`）氮封 `LOTO` 护栏 &amp; 企业 SIP `RFC 3261 / RFC 3311 / RFC 6141` `CSeq` 乱序重放/回绕与方法失配拦截、`180/183` 早期对话 `UPDATE` 媒体劫持与 `Offer Glare (SIP 491)` 防御及 `From/To Tag` 篡改与 `Contact` URI 嵌入头走私护栏 (`P177` / `P178`)</strong>
+                <strong>95. 合成氨（`Haber-Bosch`）与尿素/硝酸铵化肥装置集控 `AIChE Ammonia Safety / API RP 941 / OSHA 1910.119 / NFPA 400` 甲烷化炉 `CO/CO2` 穿透飞温（`&gt;=450°C`）与 `300 bar` 合成回路高温氢攻击（`HTHA`）0ms 压缩机跳闸抢占、熔融硝酸铵（`AN`）酸化（`pH &lt; 4.5`）/超温（`&gt;=210°C`）爆轰与尿素合成塔钝化氧（`O2 &lt; 0.4 vol%`）丧失联锁及自燃还原态铁触媒（`alpha-Fe`）氮封 `LOTO` 护栏 &amp; 企业 SIP `RFC 3261 / RFC 3331 / RFC 6141` `CSeq` 乱序重放/回绕与方法失配拦截、`180/183` 早期对话 `UPDATE` 媒体劫持与 `Offer Glare (SIP 491)` 防御及 `From/To Tag` 篡改与 `Contact` URI 嵌入头走私护栏 (`P177` / `P178`)</strong>
                 <div style="font-size:11.5px;color:#64748B;">甲烷化炉床层 &gt;=450°C 飞温或 300bar 氢脆泄漏强升合成气压缩机、硝酸铵熔体 pH&lt;4.5/&gt;=210°C 或尿素塔钝化氧 &lt;0.4% 强行进料、未氮封还原铁触媒强开人孔 vs. SIP CSeq 回退重放或方法失配、183 早期对话 UPDATE 窃听劫持/Offer 撞车、篡改 To-tag 或 Contact 走私 ?Route=/?Replaces=</div>
               </td>
-              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">AIChE/API 941 Methanator/AN/Urea &amp; RFC 3261/3311</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">AIChE/API 941 Methanator/AN/Urea &amp; RFC 3261/3331</span></td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">Methanator/AN-Detonation/LOTO &amp; SIP UPDATE/CSeq/Tag Hijack Blocked</span></td>
               <td><span class="band-tag band-auto">0.0 pts</span></td>
             </tr>
@@ -1903,7 +1903,7 @@
             <tr>
               <td>
                 <strong>141. 醋酸（`CH3COOH`）与醋酸酐（`(CH3CO)2O`，Monsanto / Cativa 铑/铱催化甲醇羰基化与乙烯酮裂解炉）集控 `NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000` 羰基化反应器 `&gt;=205.0°C` / `CO &lt;6.5 bar` 铑铱催化剂沉降 / 循环氢 `&gt;=4.5 vol%` 0ms 切 `CO` 与甲醇进料双阀并注冷醋酸急冷、乙烯酮裂解炉管 `&gt;=785.0°C` / 双乙烯酮吸收塔 `&gt;=35.0°C` 放热暴聚 / 轻组分塔 `&gt;=3.2 bar` 隔离裂解炉急冷双乙烯酮吸收塔并切轻组分塔蒸汽及乙烯酮 `&gt;=0.5 ppm` / 碘甲烷 `CH3I &gt;=2.0 ppm` / `CO &gt;=35.0 ppm` / 醋酸酐 `&gt;=5.0 ppm` 甲醇洗涤塔火炬水封 + 正压 `SCBA + DBB LOTO` 护栏 &amp; WebRTC/SIP AV1 视频 RTP 载荷格式与依赖描述符（`AOMedia AV1 RTP v1.0 / RFC 9626`）`leb128 &gt;8B` / `OBU` 越界 / `W` 计数失配 0ms 丢包、`Z=1` 无打开分片或 `N=1` 缺序列头或依赖描述符模板越界丢包发 `RTCP PLI` 及 `&gt;4K UHD` 帧缓冲或 `SVC` 层数预算钳制护栏 (`P269` / `P270`)</strong>
-                <div style="font-size:11.5px;color:#64748B;">甲醇羰基化反应器温度 212°C、CO 分压跌至 4.8 bar（触发铑/铱催化剂不可逆沉降）且循环气 H2 升至 5.8 vol%，乙烯酮裂解炉管 802°C、双乙烯酮吸收塔 42°C 放热自聚且轻组分塔压 3.6 bar，现场剧毒乙烯酮 1.2 ppm、碘甲烷 4.5 ppm、CO 55 ppm 未戴正压 SCBA 强拆锆材反应器法兰 vs 攻击者注入 10 字节 leb128（超 8B 上限）、声明 920B OBU（仅剩 84B）且 W=2 却塞入 4 个 OBU 的 AV1 RTP 包，伪造 Z=1 孤立续传分片、N=1 缺 Sequence Header OBU 与越界 Dependency Descriptor 模板 ID，或谎报 8K 分辨率（33177600 像素 > 4K）及 S=8/T=12 SVC 层数</div>
+                <div style="font-size:11.5px;color:#64748B;">甲醇羰基化反应器温度 212°C、CO 分压跌至 4.8 bar（触发铑/铱催化剂不可逆沉降）且循环气 H2 升至 5.8 vol%，乙烯酮裂解炉管 802°C、双乙烯酮吸收塔 42°C 放热自聚且轻组分塔压 3.6 bar，现场剧毒乙烯酮 1.2 ppm、碘甲烷 4.5 ppm、CO 55 ppm 未戴正压 SCBA 强拆锆材反应器法兰 vs 攻击者注入 10 字节 leb128（超 8B 上限）、声明 920B OBU（仅剩 84B）且 W=2 却塞入 4 个 OBU 的 AV1 RTP 包，伪造 Z=1 孤立续传分片、N=1 缺 Sequence Header OBU 与越界 Dependency Descriptor 模板 ID，或谎报 8K 分辨率（33377600 像素 > 4K）及 S=8/T=12 SVC 层数</div>
               </td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 69 / API RP 521 Monsanto-Cativa-Ketene &amp; AV1 RTP / RFC 9626 Guard</span></td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">CO-MeOH-Trip-0ms/Ketene-Quench/CH3I-SCBA-LOTO &amp; AV1-LEB128-Drop-0ms/RTCP-PLI/4K-SVC-Clamp</span></td>
@@ -1912,7 +1912,7 @@
             <tr>
               <td>
                 <strong>142. 双酚 A（`BPA`）与聚碳酸酯（`PC`，苯酚-丙酮离子交换树脂缩合与光气 `COCl2` 界面缩聚）集控 `NFPA 30 / NFPA 652 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000` 界面缩聚尾气游离光气 `&gt;=0.5 ppm` / 碱洗塔 `NaOH &lt;4.0 wt%` / 界面缩聚温度 `&gt;=48.0°C` 0ms 切光气进料双阀并投用应急碱氨洗涤喷淋、双酚 A 磺酸树脂床 `&gt;=105.0°C` / 造粒塔粉尘 `&gt;=20.0 g/m³` / 苯酚精馏塔氧 `&gt;=0.5 vol%` 隔离树脂反应器切再沸器蒸汽并氮封造粒塔及光气 `&gt;=0.1 ppm` / 二氯甲烷 `&gt;=25.0 ppm` / 苯酚 `&gt;=5.0 ppm` 变色光气徽章 + 正压 `SCBA + DBB LOTO` 护栏 &amp; WebRTC/SIP RTP H.265 / HEVC 视频载荷（`RFC 7798`）`AP NALU` 长度越界 / `FU S=1&amp;E=1` 双置位 / `PACI` 越界 0ms 丢包、孤立 `FU` 分片或缺失 `VPS/SPS/PPS` 或 `DONL` 失步丢包发 `RTCP PLI` 及 `SPS &gt;4K UHD` 亮度采样或 `&gt;64` Tile 放大钳制护栏 (`P271` / `P272`)</strong>
-                <div style="font-size:11.5px;color:#64748B;">聚碳酸酯光气界面缩聚尾气游离光气达 1.4 ppm、碱洗塔 NaOH 跌至 2.6 wt% 且界面反应温度升至 53.0°C（二氯甲烷沸腾夹带光气冲塔），双酚 A 磺酸树脂床 112.0°C 脱磺酸热失控、造粒塔粉尘云 28.0 g/m³ 且现场光气 0.25 ppm / 二氯甲烷 42 ppm / 苯酚 8.5 ppm 未佩光气变色徽章与正压 SCBA 强拆光气管线盲板 vs 攻击者注入声明 1420B NALU（剩余仅 96B）的 HEVC AP (Type 48) 包、同时置位 S=1&amp;E=1 的 FU (Type 49) 包、越界 PACI (Type 50) 包，伪造无起始帧的孤立 FU 分片、缺失 VPS/SPS/PPS 的 IDR 切片与乱序 DONL，或在 SPS 谎报 8K 分辨率（33177600 亮度采样 &gt; 4K）、7 层时间子层与 128 个 Tile 分片</div>
+                <div style="font-size:11.5px;color:#64748B;">聚碳酸酯光气界面缩聚尾气游离光气达 1.4 ppm、碱洗塔 NaOH 跌至 2.6 wt% 且界面反应温度升至 53.0°C（二氯甲烷沸腾夹带光气冲塔），双酚 A 磺酸树脂床 112.0°C 脱磺酸热失控、造粒塔粉尘云 28.0 g/m³ 且现场光气 0.25 ppm / 二氯甲烷 42 ppm / 苯酚 8.5 ppm 未佩光气变色徽章与正压 SCBA 强拆光气管线盲板 vs 攻击者注入声明 1420B NALU（剩余仅 96B）的 HEVC AP (Type 48) 包、同时置位 S=1&amp;E=1 的 FU (Type 49) 包、越界 PACI (Type 50) 包，伪造无起始帧的孤立 FU 分片、缺失 VPS/SPS/PPS 的 IDR 切片与乱序 DONL，或在 SPS 谎报 8K 分辨率（33377600 亮度采样 &gt; 4K）、7 层时间子层与 128 个 Tile 分片</div>
               </td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 30/652 / API RP 521 BPA-PC Phosgenation &amp; RFC 7798 HEVC RTP Guard</span></td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">COCl2-DBB-Trip-0ms/BPA-Prill-Inert/SCBA-LOTO &amp; HEVC-AP-Drop-0ms/RTCP-PLI/4K-Tile-Clamp</span></td>
@@ -1921,7 +1921,7 @@
             <tr>
               <td>
                 <strong>143. 硝酸（`HNO3`）奥斯特瓦尔德铂铑网氨氧化与硝酸铵（`AN`）中和/造粒集控 `NFPA 400 / OSHA 1910.109 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000` 氨空比 `&gt;=11.5 vol% NH3` / 铂铑网 `&gt;=930.0°C` / 冷段亚硝酸铵（`NH4NO2`）0ms 切氨进料双阀并投蒸汽淬灭吹扫、硝铵中和/蒸发器 `&gt;=190.0°C` / `pH &lt;4.5` / 氯离子 `&gt;=100.0 ppm` / 有机碳 `&gt;=0.1 wt%` 碱性水淹没并补氨缓冲及 `NH3 &gt;=50.0 ppm` / `NO2 &gt;=1.0 ppm` 正压 `SCBA + 耐酸服 + DBB LOTO` 护栏 &amp; WebRTC/SIP RTP VP9 视频载荷（`RFC 9628`）描述符或 `V=1 SS` 结构（`N_S/Y/G/N_G`）越界 0ms 丢包、孤立帧或 `B/E/D/P_DIFF` 参考槽失步丢包发 `RTCP PLI/LRR` 及 `&gt;3S×4T SVC` 层级或 `&gt;4K` 亮度采样钳制护栏 (`P273` / `P274`)</strong>
-                <div style="font-size:11.5px;color:#64748B;">奥斯特瓦尔德氨氧化炉氨空比升至 12.2 vol% NH3、铂铑催化网 955.0°C 且冷吸收塔结晶亚硝酸铵（NH4NO2），同时硝铵中和/蒸发器 92 wt% 熔融液升至 198.0°C、pH 跌至 3.6 且含 420 ppm 氯离子与 0.25 wt% 有机碳（模拟 1947 Texas City / 2001 Toulouse AZF / 2013 West 敏化爆轰），现场 NH3 85 ppm / NO2 2.8 ppm 未佩正压 SCBA 拆法兰 vs 攻击者注入声明 V=1 SS N_G=8（64B 描述符但剩余仅 20B）的 VP9 RTP 包、非首分片（B=0）夹带 SS 结构、伪造 P_DIFF 指向未初始化槽位 5 或 D=1 缺失低空间层，以及谎报 S=5×T=6 SVC 层级与 8K 分辨率（33177600 亮度采样 &gt; 4K）</div>
+                <div style="font-size:11.5px;color:#64748B;">奥斯特瓦尔德氨氧化炉氨空比升至 12.2 vol% NH3、铂铑催化网 955.0°C 且冷吸收塔结晶亚硝酸铵（NH4NO2），同时硝铵中和/蒸发器 92 wt% 熔融液升至 198.0°C、pH 跌至 3.6 且含 420 ppm 氯离子与 0.25 wt% 有机碳（模拟 1947 Texas City / 2001 Toulouse AZF / 2013 West 敏化爆轰），现场 NH3 85 ppm / NO2 2.8 ppm 未佩正压 SCBA 拆法兰 vs 攻击者注入声明 V=1 SS N_G=8（64B 描述符但剩余仅 20B）的 VP9 RTP 包、非首分片（B=0）夹带 SS 结构、伪造 P_DIFF 指向未初始化槽位 5 或 D=1 缺失低空间层，以及谎报 S=5×T=6 SVC 层级与 8K 分辨率（33377600 亮度采样 &gt; 4K）</div>
               </td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 400 / OSHA 1910.109 HNO3-AN Ostwald &amp; RFC 9628 VP9 RTP Guard</span></td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">NH3-DBB-Trip-0ms/AN-Alkaline-Flood/SCBA-LOTO &amp; VP9-SS-Drop-0ms/RTCP-PLI-LRR/SVC-4K-Clamp</span></td>
@@ -1974,11 +1974,11 @@
             </tr>
             <tr>
               <td>
-                <strong>149. 碳化硅（`SiC`）艾奇逊石墨化电阻炉与物理气相传输（`PVT`）单晶长晶集控 `NFPA 86 / NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000` 炉芯/坩埚 `&gt;=2650.0°C` 包晶分解喷炉、水冷盘管漏入 `&gt;2200°C` 热场触发水煤气（`CO+H2`）爆炸或集气罩 `O2 &gt;=4.0 vol%` 爆燃 0ms 跳闸整流器充高纯氩气（严禁高温充氮防剧毒氰气 `HCN`）并引 `CO` 火炬、`PVT` 轴向温梯 `&gt;=45.0°C/cm` 或 `&lt;=0°C/cm`、氩压越界或自燃性 `TMA/SiH4` 掺杂气泄漏双阀隔离受控降温及 `CO &gt;=35.0 ppm` / `HCN &gt;=4.7 ppm` / 结晶二氧化硅与碳化硅晶须 `&gt;=0.05 mg/m³` 高压电容接地棒 + 正压 `SCBA + LOTO` 护栏 &amp; WebRTC/SIP RTP SMPTE ST 2110-40 辅助数据载荷（`RFC 8331 / SMPTE ST 291-1`）`ANC_Count &gt;32` 或 `10-Bit Data_Count &gt;255` 32-Bit 字对齐越界 0ms 丢包、`DID/SDID` 9-Bit 奇偶与 10-Bit 校验和失配或未授权 `SCTE-104 / CEA-708` 插播注入拒止及 `VANC/HANC` 行号越界或 `&gt;2000 kbps` 辅助数据洪泛钳制护栏 (`P285` / `P286`)</strong>
-                <div style="font-size:11.5px;color:#64748B;">艾奇逊炉芯/PVT 坩埚升至 2710.0°C、电极水冷向高温石墨区漏水触发 C+H2O 水煤气爆炸且集气罩 CO 28.0 vol% 伴 O2 4.6 vol% 爆燃，同时 PVT 温梯达 52.0°C/cm、氩压 68.0 Torr 且自燃性三甲基铝 TMA/硅烷检出泄漏，现场 CO 58.0 ppm / 氰化氢 HCN 6.2 ppm / 结晶硅尘与碳化硅晶须 0.12 mg/m³ 未挂高压电容放电接地棒与 SCBA 开炉 vs 攻击者注入声明 ANC_Count=6、Data_Count=240 且 32-bit 对齐字节 1420B 超出 92B RTP 载荷（或非 4B 整数倍）的 RFC 8331 / SMPTE ST 2110-40 包、伪造 DID/SDID 奇偶/校验和失配并夹带未授权 SCTE-104 广告插播与 CEA-708 字幕注入，以及伪造 VANC Line_Number=2047（&gt;1125）与 6400 kbps 辅助流洪泛</div>
+                <strong>149. 碳化硅（`SiC`）艾奇逊石墨化电阻炉与物理气相传输（`PVT`）单晶长晶集控 `NFPA 86 / NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000` 炉芯/坩埚 `&gt;=2650.0°C` 包晶分解喷炉、水冷盘管漏入 `&gt;2200°C` 热场触发水煤气（`CO+H2`）爆炸或集气罩 `O2 &gt;=4.0 vol%` 爆燃 0ms 跳闸整流器充高纯氩气（严禁高温充氮防剧毒氰气 `HCN`）并引 `CO` 火炬、`PVT` 轴向温梯 `&gt;=45.0°C/cm` 或 `&lt;=0°C/cm`、氩压越界或自燃性 `TMA/SiH4` 掺杂气泄漏双阀隔离受控降温及 `CO &gt;=35.0 ppm` / `HCN &gt;=4.7 ppm` / 结晶二氧化硅与碳化硅晶须 `&gt;=0.05 mg/m³` 高压电容接地棒 + 正压 `SCBA + LOTO` 护栏 &amp; WebRTC/SIP RTP SMPTE ST 2110-40 辅助数据载荷（`RFC 8333 / SMPTE ST 291-1`）`ANC_Count &gt;32` 或 `10-Bit Data_Count &gt;255` 32-Bit 字对齐越界 0ms 丢包、`DID/SDID` 9-Bit 奇偶与 10-Bit 校验和失配或未授权 `SCTE-104 / CEA-708` 插播注入拒止及 `VANC/HANC` 行号越界或 `&gt;2000 kbps` 辅助数据洪泛钳制护栏 (`P285` / `P286`)</strong>
+                <div style="font-size:11.5px;color:#64748B;">艾奇逊炉芯/PVT 坩埚升至 2710.0°C、电极水冷向高温石墨区漏水触发 C+H2O 水煤气爆炸且集气罩 CO 28.0 vol% 伴 O2 4.6 vol% 爆燃，同时 PVT 温梯达 52.0°C/cm、氩压 68.0 Torr 且自燃性三甲基铝 TMA/硅烷检出泄漏，现场 CO 58.0 ppm / 氰化氢 HCN 6.2 ppm / 结晶硅尘与碳化硅晶须 0.12 mg/m³ 未挂高压电容放电接地棒与 SCBA 开炉 vs 攻击者注入声明 ANC_Count=6、Data_Count=240 且 32-bit 对齐字节 1420B 超出 92B RTP 载荷（或非 4B 整数倍）的 RFC 8333 / SMPTE ST 2110-40 包、伪造 DID/SDID 奇偶/校验和失配并夹带未授权 SCTE-104 广告插播与 CEA-708 字幕注入，以及伪造 VANC Line_Number=2047（&gt;1125）与 6400 kbps 辅助流洪泛</div>
               </td>
-              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 86 / NFPA 69 SiC-Acheson-PVT &amp; RFC 8331 / SMPTE ST 2110-40 ANC Guard</span></td>
-              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">Rectifier-Trip-Ar-Purge-0ms/TMA-Isolate/HV-Ground-SCBA-LOTO &amp; RFC8331-ANC-Drop-0ms/SCTE104-Block/VANC-2Mbps-Clamp</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 86 / NFPA 69 SiC-Acheson-PVT &amp; RFC 8333 / SMPTE ST 2110-40 ANC Guard</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">Rectifier-Trip-Ar-Purge-0ms/TMA-Isolate/HV-Ground-SCBA-LOTO &amp; RFC8333-ANC-Drop-0ms/SCTE104-Block/VANC-2Mbps-Clamp</span></td>
               <td><span class="band-tag band-auto">0.0 pts</span></td>
             </tr>
             <tr>
@@ -2082,11 +2082,11 @@
             </tr>
             <tr>
               <td>
-                <strong>161. 半导体化学机械抛光（`CMP`）铜/氧化铈/氧化硅研磨液（`H2O2 / NH4OH / BTA`）与 `Post-CMP dHF / TMAH` 刷洗机 `NFPA 318 / SEMI S2 / SEMI S6 / OSHA 1910.119 / OSHA 1910.1000` `0ms` 双氧水分解超压与酸氰互混 `HCN &gt;= 4.7 ppm` 排风切断、保持环滑片碎裂或下压力 `&gt; 8.5 psi` 抛光盘急停隔离及 `dHF / TMAH` 葡萄糖酸钙与正压 `SCBA LOTO` 护栏 &amp; WebRTC/SIP RTP `SMPTE ST 2110-40 / RFC 8331` 广电辅助数据流（`SDI ANC / SCTE-104 / CEA-708`）`0ms` `ANC_Count / Data_Count (DC)` 越界丢弃、禁用 `DID/SDID` / `UDW` 校验失配 / 未授权 `SCTE-104` 广告插播拒绝及单帧 `&gt; 32` 包或 `&gt; 2048 kbps` 洪泛钳制护栏 (`P309` / `P310` · 319 护栏 &amp; 328 探针里程碑)</strong>
-                <div style="font-size:11.5px;color:#64748B;">CMP 抛光台检出含铜/氧化铈研磨液日用槽 H2O2 催化分解超压、酸性研磨废液误排入含氰化物废液管且排风 HCN 达 8.2 ppm (&gt;=4.7 ppm STEL)，保持环滑片碎裂且抛光头下压力飙升至 11.4 psi (&gt;8.5 psi)，叠加 RFC 8331 ANC_Count=60 包 (实际仅 2 包) 与 10-bit DC=240 字 (300B &gt; 40B 剩余缓冲) 越界、未授权 SCTE-104 Splice_Insert 广告插播注入，以及单帧 48 个 ANC 包 (&gt;32) 与 4096 kbps 字幕洪泛</div>
+                <strong>161. 半导体化学机械抛光（`CMP`）铜/氧化铈/氧化硅研磨液（`H2O2 / NH4OH / BTA`）与 `Post-CMP dHF / TMAH` 刷洗机 `NFPA 318 / SEMI S2 / SEMI S6 / OSHA 1910.119 / OSHA 1910.1000` `0ms` 双氧水分解超压与酸氰互混 `HCN &gt;= 4.7 ppm` 排风切断、保持环滑片碎裂或下压力 `&gt; 8.5 psi` 抛光盘急停隔离及 `dHF / TMAH` 葡萄糖酸钙与正压 `SCBA LOTO` 护栏 &amp; WebRTC/SIP RTP `SMPTE ST 2110-40 / RFC 8333` 广电辅助数据流（`SDI ANC / SCTE-104 / CEA-708`）`0ms` `ANC_Count / Data_Count (DC)` 越界丢弃、禁用 `DID/SDID` / `UDW` 校验失配 / 未授权 `SCTE-104` 广告插播拒绝及单帧 `&gt; 32` 包或 `&gt; 2048 kbps` 洪泛钳制护栏 (`P309` / `P310` · 319 护栏 &amp; 328 探针里程碑)</strong>
+                <div style="font-size:11.5px;color:#64748B;">CMP 抛光台检出含铜/氧化铈研磨液日用槽 H2O2 催化分解超压、酸性研磨废液误排入含氰化物废液管且排风 HCN 达 8.2 ppm (&gt;=4.7 ppm STEL)，保持环滑片碎裂且抛光头下压力飙升至 11.4 psi (&gt;8.5 psi)，叠加 RFC 8333 ANC_Count=60 包 (实际仅 2 包) 与 10-bit DC=240 字 (300B &gt; 40B 剩余缓冲) 越界、未授权 SCTE-104 Splice_Insert 广告插播注入，以及单帧 48 个 ANC 包 (&gt;32) 与 4096 kbps 字幕洪泛</div>
               </td>
-              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 318 / SEMI S2 CMP Slurry-HCN &amp; SMPTE ST 2110-40 / RFC 8331 ANC Data Guard</span></td>
-              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">CMP-H2O2-HCN-Trip-0ms/WaferSlip-Platen-Lock/dHF-TMAH-LOTO &amp; RFC8331-ANC-DC-Drop-0ms/SCTE104-DID-Reject/ANC-Flood-Clamp</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 318 / SEMI S2 CMP Slurry-HCN &amp; SMPTE ST 2110-40 / RFC 8333 ANC Data Guard</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">CMP-H2O2-HCN-Trip-0ms/WaferSlip-Platen-Lock/dHF-TMAH-LOTO &amp; RFC8333-ANC-DC-Drop-0ms/SCTE104-DID-Reject/ANC-Flood-Clamp</span></td>
               <td><span class="band-tag band-auto">0.0 pts</span></td>
             </tr>
             <tr>
@@ -2137,11 +2137,20 @@
 
             <tr>
               <td>
-                <strong>167. 半导体气相外延（`Si / SiGe / SiC VPE / Epitaxy`）`SiH2Cl2 / SiHCl3 / SiH4 / GeH4` 前驱体、`B2H6 / PH3 / AsH3` 掺杂氢化物与高温 `HCl` 原位清腔 `NFPA 318 / SEMI S2 / SEMI S6 / NFPA 86 / OSHA 1910.119 / OSHA 1910.1000` `0ms` 氯硅烷/氢化物泄漏 `&gt;= 0.5 ppm` 或氢气尾气 `&gt;= 25% LEL` `RFO` 切断与充氮、冷却水渗入真空/氢气氛或石英钟罩 `&gt; 1250 °C` 高频感应/灯阵淬灭与冷却水隔离及高温 `HCl` 烘烤与氯硅烷水解聚合物吹扫 `SCBA LOTO` 护栏 &amp; WebRTC/SIP RTP `SMPTE ST 2110-41` 快速元数据（`FMX`）与 `ST 2110-43` `TTML` 实时字幕流 `0ms` `FMX DIT` 32-bit 字长越界丢弃、`TTML XML XXE / Billion Laughs` 实体膨胀炸弹或未加白 `DIT` 拒绝及字幕相对视频 `PTP` 偏斜 `&gt; 200 ms` 或 `&gt; 4.0 Mbps` 洪泛钳制护栏 (`P321` / `P322` · Stage 164、331 护栏 &amp; 340 探针里程碑)</strong>
-                <div style="font-size:11.5px;color:#64748B;">300mm 硅/锗硅/碳化硅气相外延反应腔（VPE/Epi）检出氯硅烷/氢化物掺杂气泄漏 1.2 ppm (&gt;=0.5 ppm) 且 H2 载气尾气达 31.0% LEL (&gt;=25% LEL)，1150 °C 石英腔/碳化硅基座冷却水渗入氢气氛且石英钟罩达 1295 °C (&gt;1250 °C)，叠加 SMPTE ST 2110-41 FMX 声明 64 个 32-bit 字（256B）但 RTP 剩余载荷仅 48B 越界、ST 2110-43 TTML 注入 XML XXE / Billion Laughs 递归实体炸弹与未注册 DIT，以及字幕 PTP 偏斜达 340 ms (&gt;200 ms) 与 9.5 Mbps (&gt;4 Mbps) 元数据洪泛</div>
+                <strong>167. 半导体气相外延（`Si / SiGe / SiC VPE / Epitaxy`）`SiH2Cl2 / SiHCl3 / SiH4 / GeH4` 前驱体、`B2H6 / PH3 / AsH3` 掺杂氢化物与高温 `HCl` 原位清腔 `NFPA 318 / SEMI S2 / SEMI S6 / NFPA 86 / OSHA 1910.119 / OSHA 1910.1000` `0ms` 氯硅烷/氢化物泄漏 `&gt;= 0.5 ppm` 或氢气尾气 `&gt;= 25% LEL` `RFO` 切断与充氮、冷却水渗入真空/氢气氛或石英钟罩 `&gt; 1250 °C` 高频感应/灯阵淬灭与冷却水隔离及高温 `HCl` 烘烤与氯硅烷水解聚合物吹扫 `SCBA LOTO` 护栏 &amp; WebRTC/SIP RTP `SMPTE ST 2110-41` 快速元数据（`FMX`）与 `ST 2110-43` `TTML` 实时字幕流 `0ms` `FMX DIT` 32-bit 字长越界丢弃、`TTML XML XXE / Billion Laughs` 实体膨胀炸弹或未加白 `DIT` 拒绝及字幕相对视频 `PTP` 偏斜 `&gt; 200 ms` 或 `&gt; 4.0 Mbps` 洪泛钳制护栏 (`P321` / `P322`)</strong>
+                <div style="font-size:11.5px;color:#64748B;">300mm 硅/锗硅/碳化硅气相外延反应腔（VPE/Epi）检出氯硅烷/氢化物掺杂气泄漏 1.2 ppm (&gt;=0.5 ppm) 且 H2 载气尾气达 31.0% LEL (&gt;=25% LEL)，1150 °C 石英腔/碳化硅基座冷却水渗入氢气氛且石英钟罩达 1295 °C (&gt;1250 °C)，叠加 SMPTE ST 2110-41 FMX 声明 64 个 32-bit 字（256B）但 RTP 剩余载荷仅 48B 越界、ST 2110-43 TTML 注入 XML XXE / Billion Laughs 递归实体炸弹与未注册 DIT，以及字幕 PTP 偏斜达 342 ms (&gt;200 ms) 与 9.5 Mbps (&gt;4 Mbps) 元数据洪泛</div>
               </td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 318 / SEMI S2 VPE Epitaxy Chlorosilane-H2 &amp; SMPTE ST 2110-41 FMX / ST 2110-43 TTML Live Captions Guard</span></td>
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">Epi-Chlorosilane-H2-RFO-0ms/WaterLeak-Quartz1250C-Quench/HCl-SCBA-LOTO &amp; ST2110-41-DIT-Overread-0ms/ST2110-43-XXE-Reject/PTP-200ms-4Mbps-Clamp</span></td>
+              <td><span class="band-tag band-auto">0.0 pts</span></td>
+            </tr>
+            <tr>
+              <td>
+                <strong>168. 半导体 `PECVD / SACVD / HDPCVD` 介质薄膜沉积（`TEOS / SiH4 / PH3 / B2H6`）与远程 `NF3 / F2` 等离子清腔 `NFPA 318 / SEMI S2 / SEMI S6 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000` `0ms` 自燃硅烷/氢化物泄漏 `&gt;= 1.0 ppm` 或干泵氮气稀释 `&lt; 35.0 SLM` `RFO` 切断、液态 `TEOS` 安瓿 `&gt; 85 °C` 或远程等离子源 `RPS &gt; 110 °C` 热隔离淬灭及 `NF3 / F2` 残氟与自燃硅粉 `HF SCBA LOTO` 护栏 &amp; WebRTC/SIP RTP `SMPTE ST 2022-8 / ST 2110-20` 混合 `SDI-over-IP` 与无压缩活动视频互通时序对齐 `0ms` `SRD` 行载荷长度越界丢弃、`ST 2022-6 HBRMT` 至 `ST 2110-20` 对齐偏移 `&gt; 20 us` 或 `pgroup` 失配拒绝及网关出向 `&gt; 25 Gbps` 或 `CMAX &gt; 16` 包微突发钳制护栏 (`P323` / `P324` · Stage 165 里程碑)</strong>
+                <div style="font-size:11.5px;color:#64748B;">300mm PECVD/SACVD 介质沉积腔检出硅烷/磷烷泄漏 2.4 ppm (&gt;=1.0 ppm) 且干泵 N2 镇流稀释跌至 14.0 SLM (&lt;35.0 SLM)，液态 TEOS 安瓿加热器达 96.0 °C (&gt;85 °C) 且远程等离子源 RPS 升至 128.0 °C (&gt;110 °C)，叠加 SMPTE ST 2022-8 SRD 行头声明 1440B 但 RTP 剩余仅 180B 越界、HBRMT 至 ST 2110-20 对齐偏移达 65.0 us (&gt;20.0 us) 且 SDP pgroup 未对齐，以及 38.0 Gbps (&gt;25.0 Gbps) 与 CMAX=42 包微突发洪泛</div>
+              </td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 318 / SEMI S2 PECVD/SACVD Dielectric &amp; SMPTE ST 2022-8 Hybrid SDI-to-ST 2110-20 Timing Guard</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">PECVD-SiH4-N2-RFO-0ms/TEOS85C-RPS110C-Quench/HF-SCBA-LOTO &amp; ST2022-8-SRD-Overread-0ms/HBRMT-20us-pgroup-Reject/25Gbps-CMAX16-Clamp</span></td>
               <td><span class="band-tag band-auto">0.0 pts</span></td>
             </tr>
 
