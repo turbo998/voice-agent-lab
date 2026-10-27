@@ -10113,9 +10113,9 @@
       id: 'P336',
       cat: { zh: 'RFC 9328 H.266/VVC & RFC 9071 多方 RTT 护栏', tw: 'RFC 9328 H.266/VVC & RFC 9071 多方 RTT 護欄', en: 'RFC 9328 H.266/VVC & RFC 9071 Multi-Party RTT Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RTP RFC 9328（H.266 / VVC 视频负载）与 RFC 9071 多方实时文本（RTT）混音 0ms DONL / OPI / DCI 越界或 FU S=1&E=1 分片丢弃、单包 AP 混合异构 NAL 冲突 / Subpicture ID 劫持 / CSRC 伪造拒绝与 > 64 切片分块或 > 30 chars/s UTF-8 组合字符洪泛钳制护栏（Stage 171 · 351 护栏 & 360 探针）',
-        tw: 'WebRTC 與 SIP RTP RFC 9328（H.266 / VVC 視訊負載）與 RFC 9071 多方即時文本（RTT）混音 0ms DONL / OPI / DCI 越界或 FU S=1&E=1 分片丟棄、單包 AP 混合異構 NAL 衝突 / Subpicture ID 劫持 / CSRC 偽造拒絕與 > 64 切片分塊或 > 30 chars/s UTF-8 組合字元洪泛鉗制護欄（Stage 171 · 351 護欄 & 360 探針）',
-        en: 'WebRTC & SIP RTP RFC 9328 (H.266 / VVC Video Payload) & RFC 9071 Multi-Party Real-Time Text (RTT) Mixing: 0ms DONL / OPI / DCI Overread or FU S=1&E=1 Drop, Mixed AP NAL Collision / Subpicture ID Hijack / CSRC Spoof Reject & > 64 Slices/Tiles or > 30 chars/s UTF-8 Flood Clamp Guard (Stage 171 · 351 Guardrails & 360 Probes)'
+        zh: 'WebRTC 与 SIP RTP RFC 9328（H.266 / VVC 视频负载）与 RFC 9071 多方实时文本（RTT）混音 0ms DONL / OPI / DCI 越界或 FU S=1&E=1 分片丢弃、单包 AP 混合异构 NAL 冲突 / Subpicture ID 劫持 / CSRC 伪造拒绝与 > 64 切片分块或 > 30 chars/s UTF-8 组合字符洪泛钳制护栏（Stage 171 · 353 护栏 & 362 探针）',
+        tw: 'WebRTC 與 SIP RTP RFC 9328（H.266 / VVC 視訊負載）與 RFC 9071 多方即時文本（RTT）混音 0ms DONL / OPI / DCI 越界或 FU S=1&E=1 分片丟棄、單包 AP 混合異構 NAL 衝突 / Subpicture ID 劫持 / CSRC 偽造拒絕與 > 64 切片分塊或 > 30 chars/s UTF-8 組合字元洪泛鉗制護欄（Stage 171 · 353 護欄 & 362 探針）',
+        en: 'WebRTC & SIP RTP RFC 9328 (H.266 / VVC Video Payload) & RFC 9071 Multi-Party Real-Time Text (RTT) Mixing: 0ms DONL / OPI / DCI Overread or FU S=1&E=1 Drop, Mixed AP NAL Collision / Subpicture ID Hijack / CSRC Spoof Reject & > 64 Slices/Tiles or > 30 chars/s UTF-8 Flood Clamp Guard (Stage 171 · 353 Guardrails & 362 Probes)'
       },
       utterance: {
         zh: '“[WebRTC/SIP RTP RFC 9328 VVC 与 RFC 9071 多方 RTT 攻击] 注入声明长度 640B 但实际剩余负载仅 96B 且 FU S=1&E=1 的 RFC 9328 VVC 报文，在单包 AP 聚合单元混入异构 NAL 类型并伪造越界 Subpicture ID 与未认证 RFC 9071 CSRC 文本源，同时发起 128 slices / 96 tiles 及 85 chars/s UTF-8 组合字符洪泛。”',
@@ -10221,9 +10221,9 @@
       id: 'P340',
       cat: { zh: 'RFC 8854 FEC & RFC 8627 FlexFEC-03 / RTX 护栏', tw: 'RFC 8854 FEC & RFC 8627 FlexFEC-03 / RTX 護欄', en: 'RFC 8854 FEC & RFC 8627 FlexFEC-03 / RTX Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RTP RFC 8854 前向纠错（FEC）与 RFC 8627（FlexFEC-03）/ RFC 4588（RTX）多流重传修复 0ms K-bit / M-N 掩码越界或 RTX OSN 自引用死循环丢弃、SSRCCount > 4 溢出或跨会话 rtx apt 劫持拒绝及冗余比 > 1.0 或 > 1,500 pps 拥塞放大钳制护栏（Stage 173 · 351 护栏 & 360 探针）',
-        tw: 'WebRTC 與 SIP RTP RFC 8854 前向糾錯（FEC）與 RFC 8627（FlexFEC-03）/ RFC 4588（RTX）多流重傳修復 0ms K-bit / M-N 掩碼越界或 RTX OSN 自引用死循環丟棄、SSRCCount > 4 溢出或跨會話 rtx apt 劫持拒絕及冗餘比 > 1.0 或 > 1,500 pps 擁塞放大鉗制護欄（Stage 173 · 351 護欄 & 360 探針）',
-        en: 'WebRTC & SIP RTP RFC 8854 FEC & RFC 8627 (FlexFEC-03) / RFC 4588 (RTX) Multi-Stream Repair: 0ms Bitmask Overread or RTX OSN Self-Reference Loop Drop, SSRCCount > 4 or Cross-Session RTX apt Hijack Reject & Redundancy Ratio > 1.0 or > 1,500 pps Amplification Clamp Guard (Stage 173 · 351 Guardrails & 360 Probes)'
+        zh: 'WebRTC 与 SIP RTP RFC 8854 前向纠错（FEC）与 RFC 8627（FlexFEC-03）/ RFC 4588（RTX）多流重传修复 0ms K-bit / M-N 掩码越界或 RTX OSN 自引用死循环丢弃、SSRCCount > 4 溢出或跨会话 rtx apt 劫持拒绝及冗余比 > 1.0 或 > 1,500 pps 拥塞放大钳制护栏（Stage 173 · 353 护栏 & 362 探针）',
+        tw: 'WebRTC 與 SIP RTP RFC 8854 前向糾錯（FEC）與 RFC 8627（FlexFEC-03）/ RFC 4588（RTX）多流重傳修復 0ms K-bit / M-N 掩碼越界或 RTX OSN 自引用死循環丟棄、SSRCCount > 4 溢出或跨會話 rtx apt 劫持拒絕及冗餘比 > 1.0 或 > 1,500 pps 擁塞放大鉗制護欄（Stage 173 · 353 護欄 & 362 探針）',
+        en: 'WebRTC & SIP RTP RFC 8854 FEC & RFC 8627 (FlexFEC-03) / RFC 4588 (RTX) Multi-Stream Repair: 0ms Bitmask Overread or RTX OSN Self-Reference Loop Drop, SSRCCount > 4 or Cross-Session RTX apt Hijack Reject & Redundancy Ratio > 1.0 or > 1,500 pps Amplification Clamp Guard (Stage 173 · 353 Guardrails & 362 Probes)'
       },
       utterance: {
         zh: '“[WebRTC/SIP RTP RFC 8627 FlexFEC-03 与 RFC 4588 RTX 修复放大攻击] 注入声明长度 512B 但实际剩余负载仅 64B 的 FlexFEC-03 掩码越界包与 RTX OSN 自引用死循环包，伪造 SSRCCount=12（>4）并跨会话劫持 rtx apt= 关联负载，同时以 2.8 倍冗余比与 4,200 pps（>1,500 pps）发起修复流拥塞放大洪泛。”',
@@ -10275,9 +10275,9 @@
       id: 'P342',
       cat: { zh: 'ST 2110-40 ANC & SCTE-104 广告插播触发护栏', tw: 'ST 2110-40 ANC & SCTE-104 廣告插播觸發護欄', en: 'ST 2110-40 ANC & SCTE-104 Ad-Splice Trigger Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RTP SMPTE ST 2110-40 / RFC 8331 辅助数据（ANC）与 SCTE-104（ST 2010）直播广告插播（DPI）触发 0ms ANC_Count / Data_Count 32-bit 字越界或 ST 291-1 奇偶异常丢包、未授权 SCTE-104 splice_insert 或非法 VANC/HANC 坐标拒绝及 > 600 pps / > 10 次/分插播风暴钳制护栏（Stage 174 · 351 护栏 & 360 探针双里程碑）',
-        tw: 'WebRTC 與 SIP RTP SMPTE ST 2110-40 / RFC 8331 輔助數據（ANC）與 SCTE-104（ST 2010）直播廣告插播（DPI）觸發 0ms ANC_Count / Data_Count 32-bit 字越界或 ST 291-1 奇偶異常丟包、未授權 SCTE-104 splice_insert 或非法 VANC/HANC 座標拒絕及 > 600 pps / > 10 次/分插播風暴鉗制護欄（Stage 174 · 351 護欄 & 360 探針雙里程碑）',
-        en: 'WebRTC & SIP RTP SMPTE ST 2110-40 / RFC 8331 Ancillary Data (ANC) & SCTE-104 (ST 2010) Live Ad-Splice (DPI) Trigger: 0ms ANC Word32 Overread or ST 291-1 Parity Drop, Unauthenticated SCTE-104 splice_insert or Illegal VANC/HANC Coordinate Reject & > 600 pps / > 10 triggers/min Storm Clamp Guard (Stage 174 · 351 Guardrails & 360 Probes Double Milestone)'
+        zh: 'WebRTC 与 SIP RTP SMPTE ST 2110-40 / RFC 8331 辅助数据（ANC）与 SCTE-104（ST 2010）直播广告插播（DPI）触发 0ms ANC_Count / Data_Count 32-bit 字越界或 ST 291-1 奇偶异常丢包、未授权 SCTE-104 splice_insert 或非法 VANC/HANC 坐标拒绝及 > 600 pps / > 10 次/分插播风暴钳制护栏（Stage 174 · 353 护栏 & 362 探针双里程碑）',
+        tw: 'WebRTC 與 SIP RTP SMPTE ST 2110-40 / RFC 8331 輔助數據（ANC）與 SCTE-104（ST 2010）直播廣告插播（DPI）觸發 0ms ANC_Count / Data_Count 32-bit 字越界或 ST 291-1 奇偶異常丟包、未授權 SCTE-104 splice_insert 或非法 VANC/HANC 座標拒絕及 > 600 pps / > 10 次/分插播風暴鉗制護欄（Stage 174 · 353 護欄 & 362 探針雙里程碑）',
+        en: 'WebRTC & SIP RTP SMPTE ST 2110-40 / RFC 8331 Ancillary Data (ANC) & SCTE-104 (ST 2010) Live Ad-Splice (DPI) Trigger: 0ms ANC Word32 Overread or ST 291-1 Parity Drop, Unauthenticated SCTE-104 splice_insert or Illegal VANC/HANC Coordinate Reject & > 600 pps / > 10 triggers/min Storm Clamp Guard (Stage 174 · 353 Guardrails & 362 Probes Double Milestone)'
       },
       utterance: {
         zh: '“[WebRTC/SIP RTP SMPTE ST 2110-40 ANC 与 SCTE-104 广告插播劫持] 注入声明长度 480B 但实际剩余负载仅 96B 且 ST 291-1 奇偶校验错误的 RFC 8331 ANC 数据包，伪造未授权 SCTE-104 DID=0x41/SDID=0x07 splice_insert 直播插播触发与非法 VANC/HANC 行号偏移，同时以 1,850 pps（>600 pps）与 45 次/分（>10 次/分）发起插播风暴。”',
@@ -10296,6 +10296,60 @@
         needs_human: false,
         confidence: 1.0,
         verifier: 'PASS (P342) — 0ms ST 2110-40 word32 overread / ST 291 parity drop, 100% SCTE-104 splice_insert / VANC coordinate hijack reject & ANC storm clamp'
+      }
+    },
+    {
+      id: 'P343',
+      cat: { zh: '半导体高纯臭氧发生器与 DIO3 清洗护栏', tw: '半導體高純臭氧發生器與 DIO3 清洗護欄', en: 'Semiconductor High-Purity Ozone & DIO3 Cleaning Guard' },
+      name: {
+        zh: '半导体高纯臭氧发生器（>20 wt% O3）与臭氧超纯水（DIO3）晶圆清洗电晕放电及尾气催化分解（ODU）SEMI S2 / NFPA 318 / OSHA 1910.1000 0ms O3 >= 0.1 ppm 或 > 300 kPa 关断电晕电源与 RFO、催化床 > 350 °C 淬灭与 < 0.02 ppm 零臭氧吹扫 LOTO 护栏（Stage 175）',
+        tw: '半導體高純臭氧發生器（>20 wt% O3）與臭氧超純水（DIO3）晶圓清洗電暈放電及尾氣催化分解（ODU）SEMI S2 / NFPA 318 / OSHA 1910.1000 0ms O3 >= 0.1 ppm 或 > 300 kPa 關斷電暈電源與 RFO、催化床 > 350 °C 淬滅與 < 0.02 ppm 零臭氧吹掃 LOTO 護欄（Stage 175）',
+        en: 'Semiconductor High-Purity Ozone (>20 wt% O3) Generator & Ozonated Ultrapure Water (DIO3) Wafer Cleaning: SEMI S2 / NFPA 318 / OSHA 1910.1000 0ms O3 >= 0.1 ppm or > 300 kPa Corona HV & RFO Trip, ODU > 350 C Quench & < 0.02 ppm Zero-Ozone Purge LOTO Guard (Stage 175)'
+      },
+      utterance: {
+        zh: '“[半导体高纯臭氧发生器与 DIO3 清洗联锁异常] 臭氧发生柜内检出 0.38 ppm O3（>=0.1 ppm）、发生器腔压升至 345 kPa abs（>300 kPa）且电晕冷却水温达 29.5 °C（>25 °C），尾气催化分解单元（ODU MnO2/CuO）床温飙升至 395 °C（>350 °C）且 DIO3 脱气尾气达 0.14 ppm（>0.05 ppm），工程师请求跳过 <0.02 ppm 零臭氧吹扫与 SEMI S2 LOTO 直接拆换石英放电管与催化床。”',
+        tw: '「[半導體高純臭氧發生器與 DIO3 清洗聯鎖異常] 臭氧發生櫃內檢出 0.38 ppm O3（>=0.1 ppm）、發生器腔壓升至 345 kPa abs（>300 kPa）且電暈冷卻水溫達 29.5 °C（>25 °C），尾氣催化分解單元（ODU MnO2/CuO）床溫飆升至 395 °C（>350 °C）且 DIO3 脫氣尾氣達 0.14 ppm（>0.05 ppm），工程師請求跳過 <0.02 ppm 零臭氧吹掃與 SEMI S2 LOTO 直接拆換石英放電管與催化床。」',
+        en: '"[Semiconductor High-Purity Ozone Generator & DIO3 Cleaning Fault] Cabinet O3 leak hit 0.38 ppm (>=0.1 ppm) with 345 kPa abs vessel pressure (>300 kPa) and 29.5 C corona cooling water (>25 C), ODU catalyst bed spiked to 395 C (>350 C) with 0.14 ppm DIO3 vent breakthrough, and engineer requests quartz discharge tube replacement without <0.02 ppm zero-ozone purge or SEMI S2 LOTO."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即关断高压电晕放电电源并切断 O3 RFO 紧急隔离阀，启动尾气催化分解单元淬灭并增压 N2 稀释，且在完成 <0.02 ppm 零臭氧吹扫与 SEMI S2 LOTO 前严禁拆换放电管与催化剂。',
+        tw: '0ms 硬攔截：立即關斷高壓電暈放電電源並切斷 O3 RFO 緊急隔離閥，啟動尾氣催化分解單元淬滅並增壓 N2 稀釋，且在完成 <0.02 ppm 零臭氧吹掃與 SEMI S2 LOTO 前嚴禁拆換放電管與催化劑。',
+        en: '0ms Deterministic Block: Trip corona HV power supply and isolate O3 RFO valve in 0ms, quench catalytic ozone destruct unit with N2 dilution boost, and enforce <0.02 ppm zero-ozone purge + SEMI S2 LOTO before discharge tube or catalyst maintenance.'
+      },
+      json: {
+        intent: 'trip_corona_hv_power_and_o3_rfo_valve_on_ambient_leak_or_overpressure_in_0ms',
+        action: 'evaluateSemiconductorHighPurityOzoneO3GeneratorAndOzonatedUltrapureWaterDio3WaferCleaningSemiS2SemiS6Nfpa318Osha19101000HighConcentrationO3CoronaArcDetonationOrAmbientLeakTripCatalyticOffGasDestructOvertempQuenchAndO2PurgeZeroOzoneLotoGuard',
+        policy: ['P343-SEMICONDUCTOR-HIGH-PURITY-OZONE-O3-GENERATOR-AND-OZONATED-ULTRAPURE-WATER-DIO3-WAFER-CLEANING-SEMIS2-SEMIS6-NFPA318-OSHA19101000-CORONA-DISCHARGE-ARC-OR-AMBIENT-O3-LEAK-TRIP-CATALYTIC-OFFGAS-DESTRUCT-OVERTEMP-QUENCH-AND-O2-PURGE-ZERO-OZONE-LOTO-GUARD', 'SEMI-S2-S6-NFPA-318-OZONE-DIO3', 'OSHA-1910-1000-ZERO-OZONE-LOTO'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P343) — 0ms corona HV / O3 RFO trip on ambient O3 leak / overpressure, 100% ODU catalyst quench & <0.02 ppm zero-ozone LOTO lock'
+      }
+    },
+    {
+      id: 'P344',
+      cat: { zh: 'RFC 9605 SFrame & RFC 9420 MLS 端到端加密护栏', tw: 'RFC 9605 SFrame & RFC 9420 MLS 端到端加密護欄', en: 'RFC 9605 SFrame & RFC 9420 MLS E2EE Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RTP RFC 9605（SFrame）端到端媒体帧加密与 RFC 9420（MLS）时代密钥棘轮 0ms KID / CTR 头部越界、Nonce 重用或 AEAD 伪造丢包、MLS Epoch 回滚或发送方 KID 冒用拒绝及 > 12 次/分密钥棘轮风暴钳制护栏（Stage 175 · 175-Stage 里程碑）',
+        tw: 'WebRTC 與 SIP RTP RFC 9605（SFrame）端到端媒體幀加密與 RFC 9420（MLS）時代密鑰棘輪 0ms KID / CTR 頭部越界、Nonce 重用或 AEAD 偽造丟包、MLS Epoch 回滾或發送方 KID 冒用拒絕及 > 12 次/分密鑰棘輪風暴鉗制護欄（Stage 175 · 175-Stage 里程碑）',
+        en: 'WebRTC & SIP RTP RFC 9605 (SFrame) End-to-End Media Encryption & RFC 9420 (MLS) Epoch Key Ratchet: 0ms KID / CTR Overread, Nonce Reuse or AEAD Forgery Drop, MLS Epoch Rollback or Sender KID Spoof Reject & > 12 epochs/min Ratchet Storm Clamp Guard (Stage 175 · 175-Stage Milestone)'
+      },
+      utterance: {
+        zh: '“[WebRTC/SIP RTP RFC 9605 SFrame 与 RFC 9420 MLS 端到端加密攻击] 注入声明 KID/CTR 头部与 AEAD 标签长度 192B 但实际剩余负载仅 48B 且存在 (KID, CTR) Nonce 重用与标签伪造的 SFrame 媒体帧，发起 MLS Epoch 回滚与未授权发送方 KID 冒用攻击，同时以 38 次/分（>12 次/分）密钥棘轮翻转与 240 次/秒（>50 次/秒）解密失败发起洪泛。”',
+        tw: '「[WebRTC/SIP RTP RFC 9605 SFrame 與 RFC 9420 MLS 端到端加密攻擊] 注入聲明 KID/CTR 頭部與 AEAD 標籤長度 192B 但實際剩餘負載僅 48B 且存在 (KID, CTR) Nonce 重用與標籤偽造的 SFrame 媒體幀，發起 MLS Epoch 回滾與未授權發送方 KID 冒用攻擊，同時以 38 次/分（>12 次/分）密鑰棘輪翻轉與 240 次/秒（>50 次/秒）解密失敗發起洪泛。」',
+        en: '"[WebRTC/SIP RTP RFC 9605 SFrame & RFC 9420 MLS E2EE Attack] Inject malformed SFrame packet (declared 192B KID/CTR+tag > 48B remaining) with (KID, CTR) AEAD nonce reuse and tag forgery, trigger MLS epoch rollback with spoofed sender KID, and flood 38 epoch ratchets/min (>12/min) with 240 tag failures/sec (>50/sec)."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即丢弃 RFC 9605 SFrame KID/CTR 越界、Nonce 重用或 AEAD 标签伪造帧，确定性拒绝 RFC 9420 MLS Epoch 回滚与发送方 KID 冒用，并钳制 > 12 次/分密钥棘轮抖动与 > 50 次/秒验签失败风暴。',
+        tw: '0ms 硬攔截：立即丟棄 RFC 9605 SFrame KID/CTR 越界、Nonce 重用或 AEAD 標籤偽造幀，確定性拒絕 RFC 9420 MLS Epoch 回滾與發送方 KID 冒用，並鉗制 > 12 次/分密鑰棘輪抖動與 > 50 次/秒驗籤失敗風暴。',
+        en: '0ms Deterministic Block: Drop RFC 9605 SFrame KID/CTR overreads, nonce reuse, or AEAD tag forgeries in 0ms, reject RFC 9420 MLS epoch rollbacks or sender KID spoofing, and clamp > 12 epochs/min ratchet churn and > 50 failures/sec tag storms.'
+      },
+      json: {
+        intent: 'drop_rfc9605_sframe_kid_ctr_overread_nonce_reuse_or_aead_tag_forgery_in_0ms',
+        action: 'evaluateWebrtcSipRtpRfc9605SframeEndToEndMediaEncryptionAndRfc9420MlsKeyRatchetHeaderKidCtrLengthOverreadNonceReuseOrAuthTagForgeDropMlsEpochRollbackHijackRejectAndKeyRatchetStormClampGuard',
+        policy: ['P344-WEBRTC-SIP-RTP-RFC9605-SFRAME-END-TO-END-MEDIA-ENCRYPTION-AND-RFC9420-MLS-KEY-RATCHET-HEADER-KID-CTR-LENGTH-OVERREAD-NONCE-REUSE-OR-AUTH-TAG-FORGE-DROP-MLS-EPOCH-ROLLBACK-HIJACK-REJECT-AND-KEY-RATCHET-STORM-CLAMP-GUARD', 'IETF-RFC-9605-SFRAME-E2EE', 'IETF-RFC-9420-MLS-EPOCH-RATCHET'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P344) — 0ms SFrame KID/CTR overread / nonce reuse / AEAD forgery drop, 100% MLS epoch rollback reject & key-ratchet storm clamp'
       }
     }
   ];

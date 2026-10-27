@@ -33662,3 +33662,205 @@ export function evaluateWebrtcSipRtpSmpteSt211040AncillaryDataRfc8331AndScte104S
     blockedReason: "none",
   };
 }
+
+
+export interface SemiconductorHighPurityOzoneO3GeneratorAndOzonatedUltrapureWaterDio3GuardInput {
+  readonly moduleId: string;
+  readonly ambientOrCabinetOzoneLeakPpm: number;
+  readonly ozoneGeneratorVesselPressureKpaAbs: number;
+  readonly coronaCellCoolingWaterTempC: number;
+  readonly catalyticDestructUnitBedTempC: number;
+  readonly dio3DegasserExhaustOzonePpm: number;
+  readonly dischargeTubeOrCatalystMaintenanceRequested: boolean;
+  readonly zeroOzonePurgeBelow002PpmAndSemiS2LotoVerified: boolean;
+}
+
+export interface SemiconductorHighPurityOzoneO3GeneratorAndOzonatedUltrapureWaterDio3GuardResult {
+  readonly policyCode: "P343-SEMICONDUCTOR-HIGH-PURITY-OZONE-O3-GENERATOR-AND-OZONATED-ULTRAPURE-WATER-DIO3-WAFER-CLEANING-SEMIS2-SEMIS6-NFPA318-OSHA19101000-CORONA-DISCHARGE-ARC-OR-AMBIENT-O3-LEAK-TRIP-CATALYTIC-OFFGAS-DESTRUCT-OVERTEMP-QUENCH-AND-O2-PURGE-ZERO-OZONE-LOTO-GUARD";
+  readonly moduleId: string;
+  readonly o3GeneratorAndDio3Approved: boolean;
+  readonly coronaHvSupplyAndO3DeliveryTripped0ms: boolean;
+  readonly catalyticOffGasDestructAndDio3DegasserQuenched: boolean;
+  readonly o2N2PurgeZeroOzoneAndLotoLocked: boolean;
+  readonly action:
+    | "approve_semiconductor_high_purity_ozone_generator_and_dio3_cleaning"
+    | "trip_corona_hv_power_and_o3_rfo_valve_on_ambient_leak_or_overpressure_in_0ms"
+    | "quench_catalytic_ozone_destruct_unit_and_boost_n2_dilution_on_overtemp_or_vent_breakthrough"
+    | "lock_out_discharge_tube_or_catalyst_maintenance_until_zero_ozone_purge_and_semi_s2_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorHighPurityOzoneO3GeneratorAndOzonatedUltrapureWaterDio3WaferCleaningSemiS2SemiS6Nfpa318Osha19101000HighConcentrationO3CoronaArcDetonationOrAmbientLeakTripCatalyticOffGasDestructOvertempQuenchAndO2PurgeZeroOzoneLotoGuard(
+  input: SemiconductorHighPurityOzoneO3GeneratorAndOzonatedUltrapureWaterDio3GuardInput
+): SemiconductorHighPurityOzoneO3GeneratorAndOzonatedUltrapureWaterDio3GuardResult {
+  const policyCode =
+    "P343-SEMICONDUCTOR-HIGH-PURITY-OZONE-O3-GENERATOR-AND-OZONATED-ULTRAPURE-WATER-DIO3-WAFER-CLEANING-SEMIS2-SEMIS6-NFPA318-OSHA19101000-CORONA-DISCHARGE-ARC-OR-AMBIENT-O3-LEAK-TRIP-CATALYTIC-OFFGAS-DESTRUCT-OVERTEMP-QUENCH-AND-O2-PURGE-ZERO-OZONE-LOTO-GUARD" as const;
+
+  const coronaHvSupplyAndO3DeliveryTripped0ms =
+    input.ambientOrCabinetOzoneLeakPpm >= 0.1 ||
+    input.ozoneGeneratorVesselPressureKpaAbs > 300.0 ||
+    input.coronaCellCoolingWaterTempC > 25.0;
+
+  const catalyticOffGasDestructAndDio3DegasserQuenched =
+    input.catalyticDestructUnitBedTempC > 350.0 ||
+    input.dio3DegasserExhaustOzonePpm > 0.05;
+
+  const o2N2PurgeZeroOzoneAndLotoLocked =
+    input.dischargeTubeOrCatalystMaintenanceRequested &&
+    !input.zeroOzonePurgeBelow002PpmAndSemiS2LotoVerified;
+
+  if (coronaHvSupplyAndO3DeliveryTripped0ms) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      o3GeneratorAndDio3Approved: false,
+      coronaHvSupplyAndO3DeliveryTripped0ms: true,
+      catalyticOffGasDestructAndDio3DegasserQuenched,
+      o2N2PurgeZeroOzoneAndLotoLocked,
+      action:
+        "trip_corona_hv_power_and_o3_rfo_valve_on_ambient_leak_or_overpressure_in_0ms",
+      blockedReason:
+        "ambient_ozone_leak_above_01ppm_vessel_overpressure_or_corona_cooling_overtemp_0ms_trip",
+    };
+  }
+
+  if (catalyticOffGasDestructAndDio3DegasserQuenched) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      o3GeneratorAndDio3Approved: false,
+      coronaHvSupplyAndO3DeliveryTripped0ms: false,
+      catalyticOffGasDestructAndDio3DegasserQuenched: true,
+      o2N2PurgeZeroOzoneAndLotoLocked,
+      action:
+        "quench_catalytic_ozone_destruct_unit_and_boost_n2_dilution_on_overtemp_or_vent_breakthrough",
+      blockedReason:
+        "catalytic_ozone_destruct_bed_overtemp_above_350c_or_dio3_degasser_vent_breakthrough_quench",
+    };
+  }
+
+  if (o2N2PurgeZeroOzoneAndLotoLocked) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      o3GeneratorAndDio3Approved: false,
+      coronaHvSupplyAndO3DeliveryTripped0ms: false,
+      catalyticOffGasDestructAndDio3DegasserQuenched: false,
+      o2N2PurgeZeroOzoneAndLotoLocked: true,
+      action:
+        "lock_out_discharge_tube_or_catalyst_maintenance_until_zero_ozone_purge_and_semi_s2_loto",
+      blockedReason:
+        "discharge_tube_or_catalyst_maintenance_blocked_without_sub_002ppm_o3_purge_and_semi_s2_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    moduleId: input.moduleId,
+    o3GeneratorAndDio3Approved: true,
+    coronaHvSupplyAndO3DeliveryTripped0ms: false,
+    catalyticOffGasDestructAndDio3DegasserQuenched: false,
+    o2N2PurgeZeroOzoneAndLotoLocked: false,
+    action: "approve_semiconductor_high_purity_ozone_generator_and_dio3_cleaning",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc9605SframeEndToEndMediaEncryptionAndRfc9420MlsKeyRatchetGuardInput {
+  readonly sessionId: string;
+  readonly declaredSframeKidCtrHeaderAndTagBytes: number;
+  readonly actualRtpPayloadBytesRemaining: number;
+  readonly aeadNonceReuseOrAuthTagFailureDetected: boolean;
+  readonly mlsEpochRollbackOrUnauthenticatedSenderKidDetected: boolean;
+  readonly mlsEpochTransitionsPerMinute: number;
+  readonly sframeTagFailuresPerSecond: number;
+}
+
+export interface WebrtcSipRtpRfc9605SframeEndToEndMediaEncryptionAndRfc9420MlsKeyRatchetGuardResult {
+  readonly policyCode: "P344-WEBRTC-SIP-RTP-RFC9605-SFRAME-END-TO-END-MEDIA-ENCRYPTION-AND-RFC9420-MLS-KEY-RATCHET-HEADER-KID-CTR-LENGTH-OVERREAD-NONCE-REUSE-OR-AUTH-TAG-FORGE-DROP-MLS-EPOCH-ROLLBACK-HIJACK-REJECT-AND-KEY-RATCHET-STORM-CLAMP-GUARD";
+  readonly sessionId: string;
+  readonly rfc9605SframeMlsStreamAccepted: boolean;
+  readonly sframeHeaderOverreadNonceReuseOrTagFailureDropped0ms: boolean;
+  readonly mlsEpochRollbackOrSenderKidSpoofRejected: boolean;
+  readonly mlsKeyRatchetOrTagFailureStormClamped: boolean;
+  readonly action:
+    | "accept_rfc9605_sframe_and_rfc9420_mls_encrypted_stream"
+    | "drop_rfc9605_sframe_kid_ctr_overread_nonce_reuse_or_aead_tag_forgery_in_0ms"
+    | "reject_rfc9420_mls_epoch_rollback_or_unauthenticated_sender_kid_spoof"
+    | "clamp_rfc9420_mls_key_ratchet_churn_and_sframe_tag_failure_storm";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc9605SframeEndToEndMediaEncryptionAndRfc9420MlsKeyRatchetHeaderKidCtrLengthOverreadNonceReuseOrAuthTagForgeDropMlsEpochRollbackHijackRejectAndKeyRatchetStormClampGuard(
+  input: WebrtcSipRtpRfc9605SframeEndToEndMediaEncryptionAndRfc9420MlsKeyRatchetGuardInput
+): WebrtcSipRtpRfc9605SframeEndToEndMediaEncryptionAndRfc9420MlsKeyRatchetGuardResult {
+  const policyCode =
+    "P344-WEBRTC-SIP-RTP-RFC9605-SFRAME-END-TO-END-MEDIA-ENCRYPTION-AND-RFC9420-MLS-KEY-RATCHET-HEADER-KID-CTR-LENGTH-OVERREAD-NONCE-REUSE-OR-AUTH-TAG-FORGE-DROP-MLS-EPOCH-ROLLBACK-HIJACK-REJECT-AND-KEY-RATCHET-STORM-CLAMP-GUARD" as const;
+
+  const sframeHeaderOverreadNonceReuseOrTagFailureDropped0ms =
+    input.declaredSframeKidCtrHeaderAndTagBytes > input.actualRtpPayloadBytesRemaining ||
+    input.aeadNonceReuseOrAuthTagFailureDetected;
+
+  const mlsEpochRollbackOrSenderKidSpoofRejected =
+    input.mlsEpochRollbackOrUnauthenticatedSenderKidDetected;
+
+  const mlsKeyRatchetOrTagFailureStormClamped =
+    input.mlsEpochTransitionsPerMinute > 12 ||
+    input.sframeTagFailuresPerSecond > 50;
+
+  if (sframeHeaderOverreadNonceReuseOrTagFailureDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc9605SframeMlsStreamAccepted: false,
+      sframeHeaderOverreadNonceReuseOrTagFailureDropped0ms: true,
+      mlsEpochRollbackOrSenderKidSpoofRejected,
+      mlsKeyRatchetOrTagFailureStormClamped,
+      action:
+        "drop_rfc9605_sframe_kid_ctr_overread_nonce_reuse_or_aead_tag_forgery_in_0ms",
+      blockedReason:
+        "rfc9605_sframe_kid_ctr_header_overread_aead_nonce_reuse_or_auth_tag_forgery_0ms_drop",
+    };
+  }
+
+  if (mlsEpochRollbackOrSenderKidSpoofRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc9605SframeMlsStreamAccepted: false,
+      sframeHeaderOverreadNonceReuseOrTagFailureDropped0ms: false,
+      mlsEpochRollbackOrSenderKidSpoofRejected: true,
+      mlsKeyRatchetOrTagFailureStormClamped,
+      action:
+        "reject_rfc9420_mls_epoch_rollback_or_unauthenticated_sender_kid_spoof",
+      blockedReason:
+        "rfc9420_mls_epoch_rollback_or_unauthenticated_sender_kid_spoof_rejected",
+    };
+  }
+
+  if (mlsKeyRatchetOrTagFailureStormClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc9605SframeMlsStreamAccepted: false,
+      sframeHeaderOverreadNonceReuseOrTagFailureDropped0ms: false,
+      mlsEpochRollbackOrSenderKidSpoofRejected: false,
+      mlsKeyRatchetOrTagFailureStormClamped: true,
+      action:
+        "clamp_rfc9420_mls_key_ratchet_churn_and_sframe_tag_failure_storm",
+      blockedReason:
+        "rfc9420_mls_epoch_ratchet_exceeded_12_per_min_or_sframe_tag_failure_storm_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc9605SframeMlsStreamAccepted: true,
+    sframeHeaderOverreadNonceReuseOrTagFailureDropped0ms: false,
+    mlsEpochRollbackOrSenderKidSpoofRejected: false,
+    mlsKeyRatchetOrTagFailureStormClamped: false,
+    action: "accept_rfc9605_sframe_and_rfc9420_mls_encrypted_stream",
+    blockedReason: "none",
+  };
+}
