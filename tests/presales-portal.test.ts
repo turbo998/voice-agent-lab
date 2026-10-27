@@ -470,6 +470,8 @@ import {
   evaluateWebrtcSipRtpRfc8843Rfc9143BundleMultiplexingAndRfc7983PacketDemuxMidRtpHeaderExtensionLengthOverreadFirstByteDemuxCollisionOrCrossMlineSsrcHijackRejectAndMidSwitchStormClampGuard,
   evaluateSemiconductorEuvPellicleAndReticleInspectionHydrogenRadicalCarbonCleaningAndDualPodStorageSemiS2SemiS6SemiE152Nfpa318Iec60825H2RadicalFilamentLeakOrPellicleDifferentialPressureTripActinic135nmBeamQuenchAndZeroPressureN2PurgeLotoGuard,
   evaluateWebrtcSipRtpRfc8888CongestionControlFeedbackCcfbAndRfc8836RmcatReportBlockNumReportsLengthOverreadForgedArrivalTimeOffsetOrEcnCeInflationRejectAndCcfbReportFloodClampGuard,
+  evaluateSemiconductorSubFabBurnWetScrubberAbatementSih4H2Nf3F2AndCentralAcidExhaustSemiS2SemiS6Nfpa318Fm77Osha19101000CombustorFlameoutOrInletBypassTripQuenchWaterOrPhOutOfRangeIsolationAndSilicaPowderFilterLotoGuard,
+  evaluateWebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853SimulcastSdpHeaderExtensionLengthOverreadUndeclaredRidLayerOrCircularRridRepairHijackRejectAndSimulcastLayerSwitchStormClampGuard,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -30386,3 +30388,88 @@ test("Stage 177 P348 WebRTC & SIP RTP RFC 8888 CCFB congestion control feedback 
   );
 });
 
+test("Stage 178 P349 semiconductor sub-fab burn-wet scrubber abatement and central acid exhaust safety guard enforces 0ms upstream RFO trip on combustor flameout or silica backpressure, backup quench and caustic dosing on FRP duct overtemp or low pH, and pyrophoric SiOx wet-passivation LOTO", () => {
+  const safeRes = evaluateSemiconductorSubFabBurnWetScrubberAbatementSih4H2Nf3F2AndCentralAcidExhaustSemiS2SemiS6Nfpa318Fm77Osha19101000CombustorFlameoutOrInletBypassTripQuenchWaterOrPhOutOfRangeIsolationAndSilicaPowderFilterLotoGuard({
+    moduleId: "POU-SCRUB-12",
+    combustorTemperatureC: 860.0,
+    scrubberInletBackpressurePa: 90.0,
+    subFabHfF2ExhaustLeakPpm: 0.05,
+    quenchSprayWaterFlowLpm: 22.0,
+    postQuenchExhaustGasTempC: 48.0,
+    scrubberSumpPh: 7.2,
+    venturiOrReactionChamberMaintenanceRequested: false,
+    pyrophoricSilicaWetPassivationCalciumGluconateAndLotoVerified: true,
+  });
+  assert.equal(safeRes.subFabBurnWetScrubberApproved, true);
+  assert.equal(safeRes.upstreamToolGasBoxAndAbatementTripped0ms, false);
+  assert.equal(safeRes.wetQuenchBackupAndCausticDosingActivated, false);
+  assert.equal(safeRes.pyrophoricSilicaPassivationAndScbaLotoLocked, false);
+  assert.equal(safeRes.action, "approve_semiconductor_sub_fab_burn_wet_scrubber_abatement");
+  assert.equal(safeRes.blockedReason, "none");
+
+  const tripped = evaluateSemiconductorSubFabBurnWetScrubberAbatementSih4H2Nf3F2AndCentralAcidExhaustSemiS2SemiS6Nfpa318Fm77Osha19101000CombustorFlameoutOrInletBypassTripQuenchWaterOrPhOutOfRangeIsolationAndSilicaPowderFilterLotoGuard({
+    moduleId: "POU-SCRUB-12",
+    combustorTemperatureC: 680.0,
+    scrubberInletBackpressurePa: 310.0,
+    subFabHfF2ExhaustLeakPpm: 0.8,
+    quenchSprayWaterFlowLpm: 11.0,
+    postQuenchExhaustGasTempC: 72.0,
+    scrubberSumpPh: 5.4,
+    venturiOrReactionChamberMaintenanceRequested: true,
+    pyrophoricSilicaWetPassivationCalciumGluconateAndLotoVerified: false,
+  });
+  assert.equal(
+    tripped.policyCode,
+    "P349-SEMICONDUCTOR-SUB-FAB-BURN-WET-SCRUBBER-ABATEMENT-SIH4-H2-NF3-F2-AND-CENTRAL-ACID-EXHAUST-SEMIS2-SEMIS6-NFPA318-FM77-OSHA19101000-COMBUSTOR-FLAMEOUT-OR-INLET-BACKPRESSURE-TRIP-QUENCH-SPRAY-LOSS-ISOLATION-AND-SILICA-HF-SLUDGE-LOTO-GUARD"
+  );
+  assert.equal(tripped.subFabBurnWetScrubberApproved, false);
+  assert.equal(tripped.upstreamToolGasBoxAndAbatementTripped0ms, true);
+  assert.equal(tripped.wetQuenchBackupAndCausticDosingActivated, true);
+  assert.equal(tripped.pyrophoricSilicaPassivationAndScbaLotoLocked, true);
+  assert.equal(
+    tripped.action,
+    "trip_upstream_tool_rfo_and_inject_n2_on_combustor_flameout_or_inlet_backpressure_in_0ms"
+  );
+});
+
+test("Stage 178 P350 WebRTC & SIP RTP RFC 8852 (RID/RRID) and RFC 8853 (Simulcast) layer integrity security guard enforces 0ms header extension overread drop, undeclared or circular RRID repair hijack reject, and simulcast layer switch storm clamp", () => {
+  const clean = evaluateWebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853SimulcastSdpHeaderExtensionLengthOverreadUndeclaredRidLayerOrCircularRridRepairHijackRejectAndSimulcastLayerSwitchStormClampGuard({
+    sessionId: "SIMULCAST-701",
+    declaredRidOrRridExtensionBytes: 4,
+    actualRtpHeaderExtensionBytesRemaining: 8,
+    invalidNonAlphanumericRidTokenDetected: false,
+    undeclaredOrPausedSimulcastRidDetected: false,
+    circularSelfReferentialRridEqualsRidDetected: false,
+    activeSimulcastRidLayerCount: 3,
+    simulcastLayerSwitchesPerSecond: 2,
+  });
+  assert.equal(clean.rfc8852SimulcastRidStreamAccepted, true);
+  assert.equal(clean.rfc8852RidRridExtensionOverreadOrInvalidTokenDropped0ms, false);
+  assert.equal(clean.undeclaredSimulcastRidOrCircularRridHijackRejected, false);
+  assert.equal(clean.simulcastLayerOverflowOrSwitchStormClamped, false);
+  assert.equal(clean.action, "accept_rfc8852_rid_rrid_and_rfc8853_simulcast_stream");
+  assert.equal(clean.blockedReason, "none");
+
+  const blocked = evaluateWebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853SimulcastSdpHeaderExtensionLengthOverreadUndeclaredRidLayerOrCircularRridRepairHijackRejectAndSimulcastLayerSwitchStormClampGuard({
+    sessionId: "SIMULCAST-ATTACK-702",
+    declaredRidOrRridExtensionBytes: 16,
+    actualRtpHeaderExtensionBytesRemaining: 4,
+    invalidNonAlphanumericRidTokenDetected: true,
+    undeclaredOrPausedSimulcastRidDetected: true,
+    circularSelfReferentialRridEqualsRidDetected: true,
+    activeSimulcastRidLayerCount: 8,
+    simulcastLayerSwitchesPerSecond: 45,
+  });
+  assert.equal(
+    blocked.policyCode,
+    "P350-WEBRTC-SIP-RTP-RFC8852-RTP-STREAM-ID-RID-RRID-AND-RFC8853-SIMULCAST-SDP-HEADER-EXTENSION-LENGTH-OVERREAD-UNDECLARED-RID-LAYER-OR-CIRCULAR-RRID-REPAIR-HIJACK-REJECT-AND-SIMULCAST-LAYER-SWITCH-STORM-CLAMP-GUARD"
+  );
+  assert.equal(blocked.rfc8852SimulcastRidStreamAccepted, false);
+  assert.equal(blocked.rfc8852RidRridExtensionOverreadOrInvalidTokenDropped0ms, true);
+  assert.equal(blocked.undeclaredSimulcastRidOrCircularRridHijackRejected, true);
+  assert.equal(blocked.simulcastLayerOverflowOrSwitchStormClamped, true);
+  assert.equal(
+    blocked.action,
+    "drop_rfc8852_rid_rrid_extension_overread_or_invalid_token_in_0ms"
+  );
+});

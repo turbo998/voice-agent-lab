@@ -34266,3 +34266,207 @@ export function evaluateWebrtcSipRtpRfc8888CongestionControlFeedbackCcfbAndRfc88
     blockedReason: "none",
   };
 }
+
+
+export interface SemiconductorSubFabBurnWetScrubberAbatementAndAcidExhaustGuardInput {
+  readonly moduleId: string;
+  readonly combustorTemperatureC: number;
+  readonly scrubberInletBackpressurePa: number;
+  readonly subFabHfF2ExhaustLeakPpm: number;
+  readonly quenchSprayWaterFlowLpm: number;
+  readonly postQuenchExhaustGasTempC: number;
+  readonly scrubberSumpPh: number;
+  readonly venturiOrReactionChamberMaintenanceRequested: boolean;
+  readonly pyrophoricSilicaWetPassivationCalciumGluconateAndLotoVerified: boolean;
+}
+
+export interface SemiconductorSubFabBurnWetScrubberAbatementAndAcidExhaustGuardResult {
+  readonly policyCode: "P349-SEMICONDUCTOR-SUB-FAB-BURN-WET-SCRUBBER-ABATEMENT-SIH4-H2-NF3-F2-AND-CENTRAL-ACID-EXHAUST-SEMIS2-SEMIS6-NFPA318-FM77-OSHA19101000-COMBUSTOR-FLAMEOUT-OR-INLET-BACKPRESSURE-TRIP-QUENCH-SPRAY-LOSS-ISOLATION-AND-SILICA-HF-SLUDGE-LOTO-GUARD";
+  readonly moduleId: string;
+  readonly subFabBurnWetScrubberApproved: boolean;
+  readonly upstreamToolGasBoxAndAbatementTripped0ms: boolean;
+  readonly wetQuenchBackupAndCausticDosingActivated: boolean;
+  readonly pyrophoricSilicaPassivationAndScbaLotoLocked: boolean;
+  readonly action:
+    | "approve_semiconductor_sub_fab_burn_wet_scrubber_abatement"
+    | "trip_upstream_tool_rfo_and_inject_n2_on_combustor_flameout_or_inlet_backpressure_in_0ms"
+    | "activate_backup_quench_spray_and_caustic_dosing_on_frp_duct_overtemp_or_low_ph"
+    | "lock_out_venturi_or_chamber_maintenance_until_silica_wet_passivation_and_scba_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorSubFabBurnWetScrubberAbatementSih4H2Nf3F2AndCentralAcidExhaustSemiS2SemiS6Nfpa318Fm77Osha19101000CombustorFlameoutOrInletBypassTripQuenchWaterOrPhOutOfRangeIsolationAndSilicaPowderFilterLotoGuard(
+  input: SemiconductorSubFabBurnWetScrubberAbatementAndAcidExhaustGuardInput
+): SemiconductorSubFabBurnWetScrubberAbatementAndAcidExhaustGuardResult {
+  const policyCode =
+    "P349-SEMICONDUCTOR-SUB-FAB-BURN-WET-SCRUBBER-ABATEMENT-SIH4-H2-NF3-F2-AND-CENTRAL-ACID-EXHAUST-SEMIS2-SEMIS6-NFPA318-FM77-OSHA19101000-COMBUSTOR-FLAMEOUT-OR-INLET-BACKPRESSURE-TRIP-QUENCH-SPRAY-LOSS-ISOLATION-AND-SILICA-HF-SLUDGE-LOTO-GUARD" as const;
+
+  const upstreamToolGasBoxAndAbatementTripped0ms =
+    input.combustorTemperatureC < 750.0 ||
+    input.scrubberInletBackpressurePa > 250.0 ||
+    input.subFabHfF2ExhaustLeakPpm >= 0.5;
+
+  const wetQuenchBackupAndCausticDosingActivated =
+    input.quenchSprayWaterFlowLpm < 15.0 ||
+    input.postQuenchExhaustGasTempC > 65.0 ||
+    input.scrubberSumpPh < 6.0;
+
+  const pyrophoricSilicaPassivationAndScbaLotoLocked =
+    input.venturiOrReactionChamberMaintenanceRequested &&
+    !input.pyrophoricSilicaWetPassivationCalciumGluconateAndLotoVerified;
+
+  if (upstreamToolGasBoxAndAbatementTripped0ms) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      subFabBurnWetScrubberApproved: false,
+      upstreamToolGasBoxAndAbatementTripped0ms: true,
+      wetQuenchBackupAndCausticDosingActivated,
+      pyrophoricSilicaPassivationAndScbaLotoLocked,
+      action:
+        "trip_upstream_tool_rfo_and_inject_n2_on_combustor_flameout_or_inlet_backpressure_in_0ms",
+      blockedReason:
+        "burn_wet_combustor_flameout_below_750c_silica_inlet_backpressure_or_hf_f2_leak_0ms_trip",
+    };
+  }
+
+  if (wetQuenchBackupAndCausticDosingActivated) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      subFabBurnWetScrubberApproved: false,
+      upstreamToolGasBoxAndAbatementTripped0ms: false,
+      wetQuenchBackupAndCausticDosingActivated: true,
+      pyrophoricSilicaPassivationAndScbaLotoLocked,
+      action:
+        "activate_backup_quench_spray_and_caustic_dosing_on_frp_duct_overtemp_or_low_ph",
+      blockedReason:
+        "quench_spray_underflow_frp_duct_overtemp_above_65c_or_sump_ph_below_6_acid_breakthrough",
+    };
+  }
+
+  if (pyrophoricSilicaPassivationAndScbaLotoLocked) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      subFabBurnWetScrubberApproved: false,
+      upstreamToolGasBoxAndAbatementTripped0ms: false,
+      wetQuenchBackupAndCausticDosingActivated: false,
+      pyrophoricSilicaPassivationAndScbaLotoLocked: true,
+      action:
+        "lock_out_venturi_or_chamber_maintenance_until_silica_wet_passivation_and_scba_loto",
+      blockedReason:
+        "scrubber_maintenance_blocked_without_pyrophoric_siox_wet_passivation_calcium_gluconate_and_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    moduleId: input.moduleId,
+    subFabBurnWetScrubberApproved: true,
+    upstreamToolGasBoxAndAbatementTripped0ms: false,
+    wetQuenchBackupAndCausticDosingActivated: false,
+    pyrophoricSilicaPassivationAndScbaLotoLocked: false,
+    action: "approve_semiconductor_sub_fab_burn_wet_scrubber_abatement",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853SimulcastSdpGuardInput {
+  readonly sessionId: string;
+  readonly declaredRidOrRridExtensionBytes: number;
+  readonly actualRtpHeaderExtensionBytesRemaining: number;
+  readonly invalidNonAlphanumericRidTokenDetected: boolean;
+  readonly undeclaredOrPausedSimulcastRidDetected: boolean;
+  readonly circularSelfReferentialRridEqualsRidDetected: boolean;
+  readonly activeSimulcastRidLayerCount: number;
+  readonly simulcastLayerSwitchesPerSecond: number;
+}
+
+export interface WebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853SimulcastSdpGuardResult {
+  readonly policyCode: "P350-WEBRTC-SIP-RTP-RFC8852-RTP-STREAM-ID-RID-RRID-AND-RFC8853-SIMULCAST-SDP-HEADER-EXTENSION-LENGTH-OVERREAD-UNDECLARED-RID-LAYER-OR-CIRCULAR-RRID-REPAIR-HIJACK-REJECT-AND-SIMULCAST-LAYER-SWITCH-STORM-CLAMP-GUARD";
+  readonly sessionId: string;
+  readonly rfc8852SimulcastRidStreamAccepted: boolean;
+  readonly rfc8852RidRridExtensionOverreadOrInvalidTokenDropped0ms: boolean;
+  readonly undeclaredSimulcastRidOrCircularRridHijackRejected: boolean;
+  readonly simulcastLayerOverflowOrSwitchStormClamped: boolean;
+  readonly action:
+    | "accept_rfc8852_rid_rrid_and_rfc8853_simulcast_stream"
+    | "drop_rfc8852_rid_rrid_extension_overread_or_invalid_token_in_0ms"
+    | "reject_undeclared_paused_simulcast_rid_or_circular_rrid_repair_hijack"
+    | "clamp_simulcast_layer_count_overflow_and_layer_switch_storm";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853SimulcastSdpHeaderExtensionLengthOverreadUndeclaredRidLayerOrCircularRridRepairHijackRejectAndSimulcastLayerSwitchStormClampGuard(
+  input: WebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853SimulcastSdpGuardInput
+): WebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853SimulcastSdpGuardResult {
+  const policyCode =
+    "P350-WEBRTC-SIP-RTP-RFC8852-RTP-STREAM-ID-RID-RRID-AND-RFC8853-SIMULCAST-SDP-HEADER-EXTENSION-LENGTH-OVERREAD-UNDECLARED-RID-LAYER-OR-CIRCULAR-RRID-REPAIR-HIJACK-REJECT-AND-SIMULCAST-LAYER-SWITCH-STORM-CLAMP-GUARD" as const;
+
+  const rfc8852RidRridExtensionOverreadOrInvalidTokenDropped0ms =
+    input.declaredRidOrRridExtensionBytes > input.actualRtpHeaderExtensionBytesRemaining ||
+    input.invalidNonAlphanumericRidTokenDetected;
+
+  const undeclaredSimulcastRidOrCircularRridHijackRejected =
+    input.undeclaredOrPausedSimulcastRidDetected ||
+    input.circularSelfReferentialRridEqualsRidDetected;
+
+  const simulcastLayerOverflowOrSwitchStormClamped =
+    input.activeSimulcastRidLayerCount > 4 ||
+    input.simulcastLayerSwitchesPerSecond > 15;
+
+  if (rfc8852RidRridExtensionOverreadOrInvalidTokenDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8852SimulcastRidStreamAccepted: false,
+      rfc8852RidRridExtensionOverreadOrInvalidTokenDropped0ms: true,
+      undeclaredSimulcastRidOrCircularRridHijackRejected,
+      simulcastLayerOverflowOrSwitchStormClamped,
+      action: "drop_rfc8852_rid_rrid_extension_overread_or_invalid_token_in_0ms",
+      blockedReason:
+        "rfc8852_rid_rrid_header_extension_overread_or_non_alphanumeric_token_0ms_drop",
+    };
+  }
+
+  if (undeclaredSimulcastRidOrCircularRridHijackRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8852SimulcastRidStreamAccepted: false,
+      rfc8852RidRridExtensionOverreadOrInvalidTokenDropped0ms: false,
+      undeclaredSimulcastRidOrCircularRridHijackRejected: true,
+      simulcastLayerOverflowOrSwitchStormClamped,
+      action:
+        "reject_undeclared_paused_simulcast_rid_or_circular_rrid_repair_hijack",
+      blockedReason:
+        "rfc8853_undeclared_or_paused_simulcast_rid_or_circular_rrid_self_repair_hijack_rejected",
+    };
+  }
+
+  if (simulcastLayerOverflowOrSwitchStormClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8852SimulcastRidStreamAccepted: false,
+      rfc8852RidRridExtensionOverreadOrInvalidTokenDropped0ms: false,
+      undeclaredSimulcastRidOrCircularRridHijackRejected: false,
+      simulcastLayerOverflowOrSwitchStormClamped: true,
+      action: "clamp_simulcast_layer_count_overflow_and_layer_switch_storm",
+      blockedReason:
+        "rfc8853_active_simulcast_layers_exceeded_4_or_layer_switch_rate_exceeded_15_per_sec_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8852SimulcastRidStreamAccepted: true,
+    rfc8852RidRridExtensionOverreadOrInvalidTokenDropped0ms: false,
+    undeclaredSimulcastRidOrCircularRridHijackRejected: false,
+    simulcastLayerOverflowOrSwitchStormClamped: false,
+    action: "accept_rfc8852_rid_rrid_and_rfc8853_simulcast_stream",
+    blockedReason: "none",
+  };
+}
