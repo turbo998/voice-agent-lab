@@ -35518,6 +35518,218 @@ export function evaluateWebrtcSipRtpRfc8843BundleRfc8859SdpMuxCategoryAndRfc7941
   };
 }
 
+export interface SemiconductorWaferBackgrindingDicingSawAndLaserStealthDicingGuardInput {
+  readonly toolOrSpindleId: string;
+  readonly co2DiWaterCoolantFlowLpm: number;
+  readonly co2DiWaterResistivityMohmCm: number;
+  readonly spindleVibrationRmsMmPerSec: number;
+  readonly waferChuckVacuumKpaG: number;
+  readonly kerfSlurryTankHeadspaceH2PercentLel: number;
+  readonly laserDicingFumeExtractorDeltaPPa: number;
+  readonly chamberAccessOrBladeReplacementRequested: boolean;
+  readonly spindleSpeedRpm: number;
+  readonly class4LaserShutterLockedAndAnsiZ136LotoVerified: boolean;
+}
+
+export interface SemiconductorWaferBackgrindingDicingSawAndLaserStealthDicingGuardDecision {
+  readonly policyCode: "P361-SEMICONDUCTOR-WAFER-BACKGRINDING-DICING-SAW-AND-LASER-STEALTH-DICING-SEMIS2-SEMIS6-NFPA318-NFPA652-ANSIZ1361-CO2-DI-COOLANT-LOSS-KERF-SLURRY-HYDROGEN-EVOLUTION-AND-SPINDLE-LASER-SHUTTER-LOTO-GUARD";
+  readonly toolOrSpindleId: string;
+  readonly backgrindingAndDicingProcessApproved: boolean;
+  readonly spindleAndLaserBeamEstopTripped0ms: boolean;
+  readonly kerfSlurryTankPurgedAndExtractorIsolated: boolean;
+  readonly chamberAccessAndBladeChangeLockedUntilZeroRpmAndLaserLoto: boolean;
+  readonly action:
+    | "approve_semiconductor_wafer_backgrinding_dicing_saw_and_laser_stealth_dicing"
+    | "trip_high_speed_spindle_and_laser_q_switch_on_coolant_loss_esd_vibration_or_vacuum_breach_in_0ms"
+    | "halt_dicing_feed_and_boost_n2_headspace_sweep_on_silicon_kerf_h2_evolution_or_filter_plug"
+    | "lock_out_dicing_chamber_door_and_blade_change_until_0rpm_and_ansi_z136_laser_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferBackgrindingDicingSawAndLaserStealthDicingSemiS2SemiS6Nfpa318Nfpa652AnsiZ1361Co2DiCoolantLossKerfSlurryHydrogenEvolutionAndSpindleLaserShutterLotoGuard(
+  input: SemiconductorWaferBackgrindingDicingSawAndLaserStealthDicingGuardInput,
+): SemiconductorWaferBackgrindingDicingSawAndLaserStealthDicingGuardDecision {
+  const policyCode =
+    "P361-SEMICONDUCTOR-WAFER-BACKGRINDING-DICING-SAW-AND-LASER-STEALTH-DICING-SEMIS2-SEMIS6-NFPA318-NFPA652-ANSIZ1361-CO2-DI-COOLANT-LOSS-KERF-SLURRY-HYDROGEN-EVOLUTION-AND-SPINDLE-LASER-SHUTTER-LOTO-GUARD" as const;
+
+  const spindleAndLaserBeamEstopTripped0ms =
+    input.co2DiWaterCoolantFlowLpm < 1.5 ||
+    input.co2DiWaterResistivityMohmCm > 10 ||
+    input.spindleVibrationRmsMmPerSec > 4.5 ||
+    input.waferChuckVacuumKpaG > -65;
+
+  const kerfSlurryTankPurgedAndExtractorIsolated =
+    input.kerfSlurryTankHeadspaceH2PercentLel >= 25 ||
+    input.laserDicingFumeExtractorDeltaPPa > 1200;
+
+  const chamberAccessAndBladeChangeLockedUntilZeroRpmAndLaserLoto =
+    input.chamberAccessOrBladeReplacementRequested &&
+    (input.spindleSpeedRpm > 0 ||
+      !input.class4LaserShutterLockedAndAnsiZ136LotoVerified);
+
+  if (spindleAndLaserBeamEstopTripped0ms) {
+    return {
+      policyCode,
+      toolOrSpindleId: input.toolOrSpindleId,
+      backgrindingAndDicingProcessApproved: false,
+      spindleAndLaserBeamEstopTripped0ms: true,
+      kerfSlurryTankPurgedAndExtractorIsolated,
+      chamberAccessAndBladeChangeLockedUntilZeroRpmAndLaserLoto,
+      action:
+        "trip_high_speed_spindle_and_laser_q_switch_on_coolant_loss_esd_vibration_or_vacuum_breach_in_0ms",
+      blockedReason:
+        "co2_di_coolant_below_1_5lpm_or_resistivity_above_10mohm_or_vibration_above_4_5mms_or_chuck_vacuum_loss_0ms_estop",
+    };
+  }
+
+  if (kerfSlurryTankPurgedAndExtractorIsolated) {
+    return {
+      policyCode,
+      toolOrSpindleId: input.toolOrSpindleId,
+      backgrindingAndDicingProcessApproved: false,
+      spindleAndLaserBeamEstopTripped0ms: false,
+      kerfSlurryTankPurgedAndExtractorIsolated: true,
+      chamberAccessAndBladeChangeLockedUntilZeroRpmAndLaserLoto,
+      action:
+        "halt_dicing_feed_and_boost_n2_headspace_sweep_on_silicon_kerf_h2_evolution_or_filter_plug",
+      blockedReason:
+        "silicon_kerf_slurry_headspace_h2_at_or_above_25_percent_lel_or_laser_fume_extractor_delta_p_above_1200pa",
+    };
+  }
+
+  if (chamberAccessAndBladeChangeLockedUntilZeroRpmAndLaserLoto) {
+    return {
+      policyCode,
+      toolOrSpindleId: input.toolOrSpindleId,
+      backgrindingAndDicingProcessApproved: false,
+      spindleAndLaserBeamEstopTripped0ms: false,
+      kerfSlurryTankPurgedAndExtractorIsolated: false,
+      chamberAccessAndBladeChangeLockedUntilZeroRpmAndLaserLoto: true,
+      action:
+        "lock_out_dicing_chamber_door_and_blade_change_until_0rpm_and_ansi_z136_laser_loto",
+      blockedReason:
+        "spindle_not_at_zero_rpm_or_class4_laser_mechanical_shutter_and_ansi_z136_1_loto_unverified",
+    };
+  }
+
+  return {
+    policyCode,
+    toolOrSpindleId: input.toolOrSpindleId,
+    backgrindingAndDicingProcessApproved: true,
+    spindleAndLaserBeamEstopTripped0ms: false,
+    kerfSlurryTankPurgedAndExtractorIsolated: false,
+    chamberAccessAndBladeChangeLockedUntilZeroRpmAndLaserLoto: false,
+    action:
+      "approve_semiconductor_wafer_backgrinding_dicing_saw_and_laser_stealth_dicing",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc6464SsrcAudioLevelRfc6465CsrcAudioLevelAndRfc6904EncryptedHeaderExtensionGuardInput {
+  readonly sessionId: string;
+  readonly rtpHeaderCsrcCountCc: number;
+  readonly csrcAudioLevelExtensionDeclaredEntries: number;
+  readonly audioLevelExtensionBytesRemaining: number;
+  readonly regulatedCallRequiresRfc6904Encryption: boolean;
+  readonly audioLevelExtensionEncryptedWithRfc6904: boolean;
+  readonly spoofedZeroDbovWithVadActiveOnSilentPayloadDetected: boolean;
+  readonly dominantSpeakerSwitchRequestsPerSecond: number;
+}
+
+export interface WebrtcSipRtpRfc6464SsrcAudioLevelRfc6465CsrcAudioLevelAndRfc6904EncryptedHeaderExtensionGuardDecision {
+  readonly policyCode: "P362-WEBRTC-SIP-RTP-RFC6464-SSRC-AUDIO-LEVEL-RFC6465-CSRC-AUDIO-LEVEL-AND-RFC6904-ENCRYPTED-HEADER-EXTENSION-UNENCRYPTED-VAD-SIDE-CHANNEL-CSRC-COUNT-MISMATCH-AND-ZERO-DBOV-DOMINANT-SPEAKER-HIJACK-GUARD";
+  readonly sessionId: string;
+  readonly rfc6464Rfc6465AndRfc6904AudioLevelHealthy: boolean;
+  readonly csrcAudioLevelLengthMismatchOrOverreadDropped0ms: boolean;
+  readonly unencryptedVadSideChannelLeakingRejected: boolean;
+  readonly spoofedZeroDbovDominantSpeakerHijackClamped: boolean;
+  readonly action:
+    | "accept_rfc6464_rfc6465_and_rfc6904_encrypted_audio_level_extension"
+    | "drop_rfc6465_csrc_audio_level_count_mismatch_or_extension_overread_in_0ms"
+    | "reject_unencrypted_rfc6464_rfc6465_vad_audio_level_side_channel_on_regulated_call"
+    | "clamp_spoofed_0dbov_dominant_speaker_hijack_and_strip_untrusted_ssrc_audio_level";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc6464SsrcAudioLevelRfc6465CsrcAudioLevelAndRfc6904EncryptedHeaderExtensionUnencryptedVadSideChannelCsrcCountMismatchAndZeroDbovDominantSpeakerHijackGuard(
+  input: WebrtcSipRtpRfc6464SsrcAudioLevelRfc6465CsrcAudioLevelAndRfc6904EncryptedHeaderExtensionGuardInput,
+): WebrtcSipRtpRfc6464SsrcAudioLevelRfc6465CsrcAudioLevelAndRfc6904EncryptedHeaderExtensionGuardDecision {
+  const policyCode =
+    "P362-WEBRTC-SIP-RTP-RFC6464-SSRC-AUDIO-LEVEL-RFC6465-CSRC-AUDIO-LEVEL-AND-RFC6904-ENCRYPTED-HEADER-EXTENSION-UNENCRYPTED-VAD-SIDE-CHANNEL-CSRC-COUNT-MISMATCH-AND-ZERO-DBOV-DOMINANT-SPEAKER-HIJACK-GUARD" as const;
+
+  const csrcAudioLevelLengthMismatchOrOverreadDropped0ms =
+    input.csrcAudioLevelExtensionDeclaredEntries !== input.rtpHeaderCsrcCountCc ||
+    input.csrcAudioLevelExtensionDeclaredEntries >
+      input.audioLevelExtensionBytesRemaining ||
+    input.rtpHeaderCsrcCountCc > 15 ||
+    input.audioLevelExtensionBytesRemaining < 1;
+
+  const unencryptedVadSideChannelLeakingRejected =
+    input.regulatedCallRequiresRfc6904Encryption &&
+    !input.audioLevelExtensionEncryptedWithRfc6904;
+
+  const spoofedZeroDbovDominantSpeakerHijackClamped =
+    input.spoofedZeroDbovWithVadActiveOnSilentPayloadDetected ||
+    input.dominantSpeakerSwitchRequestsPerSecond > 8;
+
+  if (csrcAudioLevelLengthMismatchOrOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc6464Rfc6465AndRfc6904AudioLevelHealthy: false,
+      csrcAudioLevelLengthMismatchOrOverreadDropped0ms: true,
+      unencryptedVadSideChannelLeakingRejected,
+      spoofedZeroDbovDominantSpeakerHijackClamped,
+      action:
+        "drop_rfc6465_csrc_audio_level_count_mismatch_or_extension_overread_in_0ms",
+      blockedReason:
+        "rfc6465_csrc_audio_level_entries_mismatch_rtp_cc_count_or_extension_buffer_overread_0ms_drop",
+    };
+  }
+
+  if (unencryptedVadSideChannelLeakingRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc6464Rfc6465AndRfc6904AudioLevelHealthy: false,
+      csrcAudioLevelLengthMismatchOrOverreadDropped0ms: false,
+      unencryptedVadSideChannelLeakingRejected: true,
+      spoofedZeroDbovDominantSpeakerHijackClamped,
+      action:
+        "reject_unencrypted_rfc6464_rfc6465_vad_audio_level_side_channel_on_regulated_call",
+      blockedReason:
+        "rfc6464_rfc6465_plaintext_vad_dbov_envelope_side_channel_without_rfc6904_encryption_rejected",
+    };
+  }
+
+  if (spoofedZeroDbovDominantSpeakerHijackClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc6464Rfc6465AndRfc6904AudioLevelHealthy: false,
+      csrcAudioLevelLengthMismatchOrOverreadDropped0ms: false,
+      unencryptedVadSideChannelLeakingRejected: false,
+      spoofedZeroDbovDominantSpeakerHijackClamped: true,
+      action:
+        "clamp_spoofed_0dbov_dominant_speaker_hijack_and_strip_untrusted_ssrc_audio_level",
+      blockedReason:
+        "rfc6464_spoofed_0dbov_vad_on_silent_payload_or_dominant_speaker_churn_above_8_per_sec_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc6464Rfc6465AndRfc6904AudioLevelHealthy: true,
+    csrcAudioLevelLengthMismatchOrOverreadDropped0ms: false,
+    unencryptedVadSideChannelLeakingRejected: false,
+    spoofedZeroDbovDominantSpeakerHijackClamped: false,
+    action: "accept_rfc6464_rfc6465_and_rfc6904_encrypted_audio_level_extension",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
