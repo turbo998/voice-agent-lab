@@ -34470,3 +34470,209 @@ export function evaluateWebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853Simulcast
     blockedReason: "none",
   };
 }
+
+
+export interface SemiconductorUpwUltrapureWaterPolishing185nmUvTocOxidationAndPouDistributionGuardInput {
+  readonly loopId: string;
+  readonly pouResistivityMohmCm: number;
+  readonly pouTocPpb: number;
+  readonly pouDissolvedSilicaPpb: number;
+  readonly uv185nmFlowRateLpm: number;
+  readonly uvQuartzSleeveTempC: number;
+  readonly residualSanitizingOzoneAtPouPpb: number;
+  readonly resinRegenerationOrUvSleeveMaintenanceRequested: boolean;
+  readonly zeroPressureDepressurizationNeutralizationAndLotoVerified: boolean;
+}
+
+export interface SemiconductorUpwUltrapureWaterPolishing185nmUvTocOxidationAndPouDistributionGuardResult {
+  readonly policyCode: "P351-SEMICONDUCTOR-UPW-ULTRAPURE-WATER-POLISHING-185NM-UV-TOC-OXIDATION-AND-POU-DISTRIBUTION-SEMIF63-SEMIS2-SEMIS6-ASTMD5127-OSHA1910147-RESISTIVITY-OR-TOC-EXCURSION-POU-DIVERT-TRIP-UV-LAMP-DRY-RUN-QUENCH-AND-RESIN-COLUMN-ZERO-PRESSURE-LOTO-GUARD";
+  readonly loopId: string;
+  readonly upwPolishingAndPouSupplyApproved: boolean;
+  readonly pouDivertToReclaimAndToolHoldTripped0ms: boolean;
+  readonly uv185nmBallastAndOzoneSanitizeLoopQuenched: boolean;
+  readonly resinColumnAndUvVesselZeroPressureLotoLocked: boolean;
+  readonly action:
+    | "approve_semiconductor_upw_polishing_and_pou_distribution"
+    | "trip_pou_divert_to_reclaim_and_hold_wafer_tools_on_resistivity_toc_or_silica_excursion_in_0ms"
+    | "quench_185nm_uv_ballast_and_isolate_o3_sanitize_loop_on_dry_run_overtemp_or_o3_leak"
+    | "lock_out_mbdi_resin_or_uv_sleeve_maintenance_until_zero_pressure_neutralization_and_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorUpwUltrapureWaterPolishing185nmUvTocOxidationAndPouDistributionSemiF63SemiS2SemiS6AstmD5127Osha1910147ResistivityOrTocExcursionPouDivertTripUvLampDryRunQuenchAndResinColumnZeroPressureLotoGuard(
+  input: SemiconductorUpwUltrapureWaterPolishing185nmUvTocOxidationAndPouDistributionGuardInput
+): SemiconductorUpwUltrapureWaterPolishing185nmUvTocOxidationAndPouDistributionGuardResult {
+  const policyCode =
+    "P351-SEMICONDUCTOR-UPW-ULTRAPURE-WATER-POLISHING-185NM-UV-TOC-OXIDATION-AND-POU-DISTRIBUTION-SEMIF63-SEMIS2-SEMIS6-ASTMD5127-OSHA1910147-RESISTIVITY-OR-TOC-EXCURSION-POU-DIVERT-TRIP-UV-LAMP-DRY-RUN-QUENCH-AND-RESIN-COLUMN-ZERO-PRESSURE-LOTO-GUARD" as const;
+
+  const pouDivertToReclaimAndToolHoldTripped0ms =
+    input.pouResistivityMohmCm < 18.0 ||
+    input.pouTocPpb > 2.0 ||
+    input.pouDissolvedSilicaPpb > 1.0;
+
+  const uv185nmBallastAndOzoneSanitizeLoopQuenched =
+    input.uv185nmFlowRateLpm < 50.0 ||
+    input.uvQuartzSleeveTempC > 65.0 ||
+    input.residualSanitizingOzoneAtPouPpb > 2.0;
+
+  const resinColumnAndUvVesselZeroPressureLotoLocked =
+    input.resinRegenerationOrUvSleeveMaintenanceRequested &&
+    !input.zeroPressureDepressurizationNeutralizationAndLotoVerified;
+
+  if (pouDivertToReclaimAndToolHoldTripped0ms) {
+    return {
+      policyCode,
+      loopId: input.loopId,
+      upwPolishingAndPouSupplyApproved: false,
+      pouDivertToReclaimAndToolHoldTripped0ms: true,
+      uv185nmBallastAndOzoneSanitizeLoopQuenched,
+      resinColumnAndUvVesselZeroPressureLotoLocked,
+      action:
+        "trip_pou_divert_to_reclaim_and_hold_wafer_tools_on_resistivity_toc_or_silica_excursion_in_0ms",
+      blockedReason:
+        "semi_f63_upw_resistivity_below_18mohm_toc_above_2ppb_or_silica_breakthrough_0ms_pou_divert_trip",
+    };
+  }
+
+  if (uv185nmBallastAndOzoneSanitizeLoopQuenched) {
+    return {
+      policyCode,
+      loopId: input.loopId,
+      upwPolishingAndPouSupplyApproved: false,
+      pouDivertToReclaimAndToolHoldTripped0ms: false,
+      uv185nmBallastAndOzoneSanitizeLoopQuenched: true,
+      resinColumnAndUvVesselZeroPressureLotoLocked,
+      action:
+        "quench_185nm_uv_ballast_and_isolate_o3_sanitize_loop_on_dry_run_overtemp_or_o3_leak",
+      blockedReason:
+        "uv_185nm_low_flow_dry_run_quartz_sleeve_overtemp_above_65c_or_residual_o3_pou_leak_quench",
+    };
+  }
+
+  if (resinColumnAndUvVesselZeroPressureLotoLocked) {
+    return {
+      policyCode,
+      loopId: input.loopId,
+      upwPolishingAndPouSupplyApproved: false,
+      pouDivertToReclaimAndToolHoldTripped0ms: false,
+      uv185nmBallastAndOzoneSanitizeLoopQuenched: false,
+      resinColumnAndUvVesselZeroPressureLotoLocked: true,
+      action:
+        "lock_out_mbdi_resin_or_uv_sleeve_maintenance_until_zero_pressure_neutralization_and_loto",
+      blockedReason:
+        "upw_mbdi_or_uv_maintenance_blocked_without_zero_pressure_acid_caustic_neutralization_and_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    loopId: input.loopId,
+    upwPolishingAndPouSupplyApproved: true,
+    pouDivertToReclaimAndToolHoldTripped0ms: false,
+    uv185nmBallastAndOzoneSanitizeLoopQuenched: false,
+    resinColumnAndUvVesselZeroPressureLotoLocked: false,
+    action: "approve_semiconductor_upw_polishing_and_pou_distribution",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8285OneByteTwoByteHeaderExtensionAndRfc6904EncryptedHeaderExtensionGuardInput {
+  readonly sessionId: string;
+  readonly declaredExtensionBlockWord32Bytes: number;
+  readonly actualRtpPacketBytesRemaining: number;
+  readonly elementLengthExceedsExtensionBoundaryDetected: boolean;
+  readonly reservedOneByteId15SmugglingOrUnnegotiatedTwoByte0x1000Detected: boolean;
+  readonly rfc6904PlaintextDowngradeOfMandatoryEncryptedExtensionDetected: boolean;
+  readonly nonContiguousPaddingZeroBytesCount: number;
+  readonly dynamicExtmapIdRemapsPerMinute: number;
+}
+
+export interface WebrtcSipRtpRfc8285OneByteTwoByteHeaderExtensionAndRfc6904EncryptedHeaderExtensionGuardResult {
+  readonly policyCode: "P352-WEBRTC-SIP-RTP-RFC8285-ONE-BYTE-TWO-BYTE-HEADER-EXTENSION-AND-RFC6904-ENCRYPTED-HEADER-EXTENSION-BLOCK-WORD32-OR-ELEMENT-LENGTH-OVERREAD-RESERVED-ID-OR-PLAINTEXT-DOWNGRADE-REJECT-AND-PADDING-FRAGMENTATION-CLAMP-GUARD";
+  readonly sessionId: string;
+  readonly rfc8285Rfc6904HeaderExtensionAccepted: boolean;
+  readonly rfc8285ExtensionBlockOrElementLengthOverreadDropped0ms: boolean;
+  readonly reservedIdSmugglingOrRfc6904PlaintextDowngradeRejected: boolean;
+  readonly paddingFragmentationOrExtmapRemapChurnClamped: boolean;
+  readonly action:
+    | "accept_rfc8285_and_rfc6904_rtp_header_extension"
+    | "drop_rfc8285_header_extension_word32_or_element_length_overread_in_0ms"
+    | "reject_reserved_id15_smuggling_unnegotiated_0x1000_or_rfc6904_plaintext_downgrade"
+    | "clamp_rfc8285_padding_fragmentation_bomb_and_extmap_remap_churn";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8285OneByteTwoByteHeaderExtensionAndRfc6904EncryptedHeaderExtensionBlockWord32OrElementLengthOverreadReservedIdOrPlaintextDowngradeRejectAndPaddingFragmentationClampGuard(
+  input: WebrtcSipRtpRfc8285OneByteTwoByteHeaderExtensionAndRfc6904EncryptedHeaderExtensionGuardInput
+): WebrtcSipRtpRfc8285OneByteTwoByteHeaderExtensionAndRfc6904EncryptedHeaderExtensionGuardResult {
+  const policyCode =
+    "P352-WEBRTC-SIP-RTP-RFC8285-ONE-BYTE-TWO-BYTE-HEADER-EXTENSION-AND-RFC6904-ENCRYPTED-HEADER-EXTENSION-BLOCK-WORD32-OR-ELEMENT-LENGTH-OVERREAD-RESERVED-ID-OR-PLAINTEXT-DOWNGRADE-REJECT-AND-PADDING-FRAGMENTATION-CLAMP-GUARD" as const;
+
+  const rfc8285ExtensionBlockOrElementLengthOverreadDropped0ms =
+    input.declaredExtensionBlockWord32Bytes > input.actualRtpPacketBytesRemaining ||
+    input.elementLengthExceedsExtensionBoundaryDetected;
+
+  const reservedIdSmugglingOrRfc6904PlaintextDowngradeRejected =
+    input.reservedOneByteId15SmugglingOrUnnegotiatedTwoByte0x1000Detected ||
+    input.rfc6904PlaintextDowngradeOfMandatoryEncryptedExtensionDetected;
+
+  const paddingFragmentationOrExtmapRemapChurnClamped =
+    input.nonContiguousPaddingZeroBytesCount > 32 ||
+    input.dynamicExtmapIdRemapsPerMinute > 5;
+
+  if (rfc8285ExtensionBlockOrElementLengthOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8285Rfc6904HeaderExtensionAccepted: false,
+      rfc8285ExtensionBlockOrElementLengthOverreadDropped0ms: true,
+      reservedIdSmugglingOrRfc6904PlaintextDowngradeRejected,
+      paddingFragmentationOrExtmapRemapChurnClamped,
+      action:
+        "drop_rfc8285_header_extension_word32_or_element_length_overread_in_0ms",
+      blockedReason:
+        "rfc8285_extension_block_word32_or_element_length_overread_0ms_drop",
+    };
+  }
+
+  if (reservedIdSmugglingOrRfc6904PlaintextDowngradeRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8285Rfc6904HeaderExtensionAccepted: false,
+      rfc8285ExtensionBlockOrElementLengthOverreadDropped0ms: false,
+      reservedIdSmugglingOrRfc6904PlaintextDowngradeRejected: true,
+      paddingFragmentationOrExtmapRemapChurnClamped,
+      action:
+        "reject_reserved_id15_smuggling_unnegotiated_0x1000_or_rfc6904_plaintext_downgrade",
+      blockedReason:
+        "rfc8285_reserved_id15_smuggling_unnegotiated_two_byte_0x1000_or_rfc6904_plaintext_downgrade_rejected",
+    };
+  }
+
+  if (paddingFragmentationOrExtmapRemapChurnClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8285Rfc6904HeaderExtensionAccepted: false,
+      rfc8285ExtensionBlockOrElementLengthOverreadDropped0ms: false,
+      reservedIdSmugglingOrRfc6904PlaintextDowngradeRejected: false,
+      paddingFragmentationOrExtmapRemapChurnClamped: true,
+      action: "clamp_rfc8285_padding_fragmentation_bomb_and_extmap_remap_churn",
+      blockedReason:
+        "rfc8285_padding_zero_bytes_exceeded_32_or_dynamic_extmap_remaps_exceeded_5_per_min_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8285Rfc6904HeaderExtensionAccepted: true,
+    rfc8285ExtensionBlockOrElementLengthOverreadDropped0ms: false,
+    reservedIdSmugglingOrRfc6904PlaintextDowngradeRejected: false,
+    paddingFragmentationOrExtmapRemapChurnClamped: false,
+    action: "accept_rfc8285_and_rfc6904_rtp_header_extension",
+    blockedReason: "none",
+  };
+}
+

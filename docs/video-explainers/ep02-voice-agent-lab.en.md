@@ -103,4 +103,4 @@ Benchmark: https://turbo998.github.io/voice-agent-lab/benchmark-cards.html
 Repo:      https://github.com/turbo998/voice-agent-lab (branch: main)
 ```
 
-<!-- Stage 174: P341 / P342 / P343 / P344 / P345 / P346 / P347 / P348 / P349 / P350 (359 deterministic enterprise guardrails, 368 Live POC Trap Probes, 181 dimensions) -->
+<!-- Stage 174: P341 / P342 / P343 / P344 / P345 / P346 / P347 / P348 / P349 / P350 (361 deterministic enterprise guardrails, 370 Live POC Trap Probes, 182 dimensions) -->
