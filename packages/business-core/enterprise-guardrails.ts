@@ -37039,6 +37039,234 @@ export function evaluateWebrtcSipRtpRfc3389ComfortNoiseRfc7655G7110LosslessAndRf
   };
 }
 
+// ============================================================================
+// Stage 191 (P375–P376):
+// - P375: Semiconductor Wafer EUV (13.5 nm) & DUV 193 nm ArF Immersion
+//         Excimer Laser Gas-Cabinet (F2/Ar/Ne) & Reticle/Pellicle H2 Stage
+//         Safety Guard (SEMI S2 / SEMI S6 / NFPA 318 / NFPA 55 / ANSI Z136.1 /
+//         OSHA 1910.119 / OSHA 1910.1000)
+// - P376: WebRTC & SIP RTCP Extended Reports (XR — RFC 3611 / RFC 7002 /
+//         RFC 7003) VoIP Metrics, Burst/Gap & RLE Report Block Security Guard
+//         (0ms XR Block-Length Overread & RLE >16,384-Bit Expansion Bomb Drop,
+//         DLRR RTT Underflow & Fake R-Factor/MOS-LQ Metric Poisoning Reject,
+//         and >5% Session Bandwidth RTCP XR Flood Clamp)
+// ============================================================================
+
+export interface SemiconductorWaferEuvDuv193nmArfExcimerLaserAndReticlePellicleStageGuardInput {
+  readonly scannerId: string;
+  readonly excimerLaserCabinetF2Ppm: number;
+  readonly reticleStageH2PurgePercentLel: number;
+  readonly euvCntPellicleTemperatureCelsius: number;
+  readonly pellicleDifferentialPressurePa: number;
+  readonly fabBayAmbientF2OrHfPpm: number;
+  readonly requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferEuvDuv193nmArfExcimerLaserAndReticlePellicleStageGuardDecision {
+  readonly policyCode: "P375-SEMICONDUCTOR-WAFER-EUV-DUV-193NM-ARF-EXCIMER-LASER-AND-RETICLE-PELLICLE-STAGE-SEMIS2-SEMIS6-NFPA318-NFPA55-ANSIZ1361-OSHA1910119-OSHA19101000-EXCIMER-F2-LEAK-OR-RETICLE-H2-PURGE-LEL-TRIP-PELLICLE-THERMAL-RUPTURE-SHUTTER-INTERLOCK-AND-HALOGEN-SCRUBBER-SCBA-LOTO-GUARD";
+  readonly scannerId: string;
+  readonly euvDuvScannerAndReticlePellicleSafe: boolean;
+  readonly excimerF2LeakOrReticleH2PurgeLelTripped0ms: boolean;
+  readonly pellicleThermalOrDifferentialPressureShutterInterlocked: boolean;
+  readonly ambientFluorineHalogenScrubberScbaLotoRequired: boolean;
+  readonly action:
+    | "allow_euv_duv_193nm_arf_lithography_and_reticle_pellicle_stage_operation"
+    | "trip_arf_excimer_f2_cylinder_esv_hv_pulser_and_euv_reticle_h2_supply_in_0ms"
+    | "close_scanner_dose_shutter_and_throttle_reticle_stage_vent_to_protect_cnt_pellicle_membrane"
+    | "lock_excimer_gas_cabinet_and_reticle_loadport_until_f2_below_0_1ppm_halogen_scrubber_scba_and_loto_verified";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferEuvDuv193nmArfExcimerLaserAndReticlePellicleStageSemiS2SemiS6Nfpa318Nfpa55AnsiZ1361Osha1910119Osha19101000ExcimerF2LeakOrReticleH2PurgeLelTripPellicleThermalRuptureShutterInterlockAndHalogenScrubberScbaLotoGuard(
+  input: SemiconductorWaferEuvDuv193nmArfExcimerLaserAndReticlePellicleStageGuardInput,
+): SemiconductorWaferEuvDuv193nmArfExcimerLaserAndReticlePellicleStageGuardDecision {
+  const policyCode =
+    "P375-SEMICONDUCTOR-WAFER-EUV-DUV-193NM-ARF-EXCIMER-LASER-AND-RETICLE-PELLICLE-STAGE-SEMIS2-SEMIS6-NFPA318-NFPA55-ANSIZ1361-OSHA1910119-OSHA19101000-EXCIMER-F2-LEAK-OR-RETICLE-H2-PURGE-LEL-TRIP-PELLICLE-THERMAL-RUPTURE-SHUTTER-INTERLOCK-AND-HALOGEN-SCRUBBER-SCBA-LOTO-GUARD" as const;
+
+  const excimerF2LeakOrReticleH2PurgeLelTripped0ms =
+    input.excimerLaserCabinetF2Ppm >= 0.1 ||
+    input.reticleStageH2PurgePercentLel >= 20;
+
+  const pellicleThermalOrDifferentialPressureShutterInterlocked =
+    input.euvCntPellicleTemperatureCelsius > 650 ||
+    input.pellicleDifferentialPressurePa > 15;
+
+  const ambientFluorineHalogenScrubberScbaLotoRequired =
+    input.fabBayAmbientF2OrHfPpm >= 0.1 ||
+    /bypass_f2_gas_cabinet_esv|override_cnt_pellicle_shutter|open_arf_laser_chamber_without_he_purge|disable_reticle_h2_lel_trip/i.test(
+      input.requestedVoiceAction,
+    );
+
+  if (excimerF2LeakOrReticleH2PurgeLelTripped0ms) {
+    return {
+      policyCode,
+      scannerId: input.scannerId,
+      euvDuvScannerAndReticlePellicleSafe: false,
+      excimerF2LeakOrReticleH2PurgeLelTripped0ms: true,
+      pellicleThermalOrDifferentialPressureShutterInterlocked,
+      ambientFluorineHalogenScrubberScbaLotoRequired,
+      action:
+        "trip_arf_excimer_f2_cylinder_esv_hv_pulser_and_euv_reticle_h2_supply_in_0ms",
+      blockedReason:
+        "arf_excimer_cabinet_f2_at_or_above_0_1ppm_or_reticle_stage_h2_purge_at_or_above_20pct_lel_0ms_esv_trip",
+    };
+  }
+
+  if (pellicleThermalOrDifferentialPressureShutterInterlocked) {
+    return {
+      policyCode,
+      scannerId: input.scannerId,
+      euvDuvScannerAndReticlePellicleSafe: false,
+      excimerF2LeakOrReticleH2PurgeLelTripped0ms: false,
+      pellicleThermalOrDifferentialPressureShutterInterlocked: true,
+      ambientFluorineHalogenScrubberScbaLotoRequired,
+      action:
+        "close_scanner_dose_shutter_and_throttle_reticle_stage_vent_to_protect_cnt_pellicle_membrane",
+      blockedReason:
+        "euv_cnt_pellicle_temperature_over_650c_or_differential_pressure_over_15pa_shutter_interlocked",
+    };
+  }
+
+  if (ambientFluorineHalogenScrubberScbaLotoRequired) {
+    return {
+      policyCode,
+      scannerId: input.scannerId,
+      euvDuvScannerAndReticlePellicleSafe: false,
+      excimerF2LeakOrReticleH2PurgeLelTripped0ms: false,
+      pellicleThermalOrDifferentialPressureShutterInterlocked: false,
+      ambientFluorineHalogenScrubberScbaLotoRequired: true,
+      action:
+        "lock_excimer_gas_cabinet_and_reticle_loadport_until_f2_below_0_1ppm_halogen_scrubber_scba_and_loto_verified",
+      blockedReason:
+        "fab_bay_ambient_f2_or_hf_at_or_above_0_1ppm_or_unsafe_scanner_voice_override_scba_loto_required",
+    };
+  }
+
+  return {
+    policyCode,
+    scannerId: input.scannerId,
+    euvDuvScannerAndReticlePellicleSafe: true,
+    excimerF2LeakOrReticleH2PurgeLelTripped0ms: false,
+    pellicleThermalOrDifferentialPressureShutterInterlocked: false,
+    ambientFluorineHalogenScrubberScbaLotoRequired: false,
+    action:
+      "allow_euv_duv_193nm_arf_lithography_and_reticle_pellicle_stage_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtcpXrRfc3611Rfc7002Rfc7003VoipMetricsAndRleBlockGuardInput {
+  readonly sessionId: string;
+  readonly xrDeclaredBlockBytes: number;
+  readonly rtcpPacketRemainingBytes: number;
+  readonly rleExpandedBitVectorCount: number;
+  readonly dlrrComputedRttMs: number;
+  readonly voipMetricsRFactor: number;
+  readonly voipMetricsMosLqTenths: number;
+  readonly rtcpXrBandwidthFractionPct: number;
+}
+
+export interface WebrtcSipRtcpXrRfc3611Rfc7002Rfc7003VoipMetricsAndRleBlockGuardDecision {
+  readonly policyCode: "P376-WEBRTC-SIP-RTCP-XR-RFC3611-RFC7002-RFC7003-VOIP-METRICS-AND-RLE-BLOCK-LENGTH-OVERREAD-RLE-EXPANSION-BOMB-DLRR-UNDERFLOW-MOS-RFACTOR-POISONING-AND-XR-BANDWIDTH-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly rtcpXrReportBlockHealthy: boolean;
+  readonly xrBlockOverreadOrRleExpansionBombDropped0ms: boolean;
+  readonly dlrrUnderflowOrMosRFactorMetricPoisoningRejected: boolean;
+  readonly rtcpXrSessionBandwidthFloodClamped: boolean;
+  readonly action:
+    | "accept_rfc3611_rfc7002_rfc7003_rtcp_xr_report_blocks"
+    | "drop_rtcp_xr_block_length_overread_or_rle_over_16384_bit_expansion_bomb_in_0ms"
+    | "reject_rtcp_xr_dlrr_rtt_underflow_or_spoofed_voip_metrics_rfactor_mos_poisoning"
+    | "clamp_rtcp_xr_compound_report_flood_exceeding_5pct_session_bandwidth";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtcpXrRfc3611Rfc7002Rfc7003VoipMetricsAndRleBlockLengthOverreadRleExpansionBombDlrrUnderflowMosRfactorPoisoningAndXrBandwidthFloodGuard(
+  input: WebrtcSipRtcpXrRfc3611Rfc7002Rfc7003VoipMetricsAndRleBlockGuardInput,
+): WebrtcSipRtcpXrRfc3611Rfc7002Rfc7003VoipMetricsAndRleBlockGuardDecision {
+  const policyCode =
+    "P376-WEBRTC-SIP-RTCP-XR-RFC3611-RFC7002-RFC7003-VOIP-METRICS-AND-RLE-BLOCK-LENGTH-OVERREAD-RLE-EXPANSION-BOMB-DLRR-UNDERFLOW-MOS-RFACTOR-POISONING-AND-XR-BANDWIDTH-FLOOD-GUARD" as const;
+
+  const xrBlockOverreadOrRleExpansionBombDropped0ms =
+    input.rtcpPacketRemainingBytes < 4 ||
+    input.xrDeclaredBlockBytes > input.rtcpPacketRemainingBytes ||
+    input.rleExpandedBitVectorCount > 16384;
+
+  const invalidRFactor =
+    input.voipMetricsRFactor < 0 ||
+    (input.voipMetricsRFactor > 100 && input.voipMetricsRFactor !== 127);
+
+  const invalidMosLq =
+    input.voipMetricsMosLqTenths < 10 ||
+    (input.voipMetricsMosLqTenths > 50 && input.voipMetricsMosLqTenths !== 127);
+
+  const dlrrUnderflowOrMosRFactorMetricPoisoningRejected =
+    input.dlrrComputedRttMs < 0 ||
+    input.dlrrComputedRttMs > 60000 ||
+    invalidRFactor ||
+    invalidMosLq;
+
+  const rtcpXrSessionBandwidthFloodClamped =
+    input.rtcpXrBandwidthFractionPct > 5.0;
+
+  if (xrBlockOverreadOrRleExpansionBombDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rtcpXrReportBlockHealthy: false,
+      xrBlockOverreadOrRleExpansionBombDropped0ms: true,
+      dlrrUnderflowOrMosRFactorMetricPoisoningRejected,
+      rtcpXrSessionBandwidthFloodClamped,
+      action:
+        "drop_rtcp_xr_block_length_overread_or_rle_over_16384_bit_expansion_bomb_in_0ms",
+      blockedReason:
+        "rfc3611_rtcp_xr_block_bytes_exceed_packet_or_rle_bit_vector_over_16384_0ms_drop",
+    };
+  }
+
+  if (dlrrUnderflowOrMosRFactorMetricPoisoningRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rtcpXrReportBlockHealthy: false,
+      xrBlockOverreadOrRleExpansionBombDropped0ms: false,
+      dlrrUnderflowOrMosRFactorMetricPoisoningRejected: true,
+      rtcpXrSessionBandwidthFloodClamped,
+      action:
+        "reject_rtcp_xr_dlrr_rtt_underflow_or_spoofed_voip_metrics_rfactor_mos_poisoning",
+      blockedReason:
+        "rfc3611_dlrr_rtt_outside_0_60000ms_or_voip_metrics_rfactor_mos_out_of_range_rejected",
+    };
+  }
+
+  if (rtcpXrSessionBandwidthFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rtcpXrReportBlockHealthy: false,
+      xrBlockOverreadOrRleExpansionBombDropped0ms: false,
+      dlrrUnderflowOrMosRFactorMetricPoisoningRejected: false,
+      rtcpXrSessionBandwidthFloodClamped: true,
+      action:
+        "clamp_rtcp_xr_compound_report_flood_exceeding_5pct_session_bandwidth",
+      blockedReason:
+        "rfc3611_rtcp_xr_bandwidth_fraction_over_5pct_session_limit_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rtcpXrReportBlockHealthy: true,
+    xrBlockOverreadOrRleExpansionBombDropped0ms: false,
+    dlrrUnderflowOrMosRFactorMetricPoisoningRejected: false,
+    rtcpXrSessionBandwidthFloodClamped: false,
+    action: "accept_rfc3611_rfc7002_rfc7003_rtcp_xr_report_blocks",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
