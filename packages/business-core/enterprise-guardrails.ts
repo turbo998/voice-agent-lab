@@ -35944,6 +35944,220 @@ export function evaluateWebrtcSipRtpRfc4733Rfc2833TelephoneEventNamedDtmfAndRfc4
   };
 }
 
+export interface SemiconductorVerticalDiffusionFurnaceLpcvdPyrophoricTorchAndQuartzTubeGuardInput {
+  readonly furnaceTubeOrBoatId: string;
+  readonly externalPyrophoricTorchFlameTemperatureC: number;
+  readonly quartzTubePressureTorr: number;
+  readonly heatingZoneTemperatureC: number;
+  readonly scavengerBoxExhaustStaticPressurePa: number;
+  readonly lpcvdAmmoniumChlorideExhaustLineDeltaPKpa: number;
+  readonly tubeO2ConcentrationDuringH2OrSih4FlowPpm: number;
+  readonly quartzTubeOrBoatElevatorMaintenanceRequested: boolean;
+  readonly quartzBoatCooldownTemperatureC: number;
+  readonly fiveCycleN2PurgeAndSi3n4DustHepaScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorVerticalDiffusionFurnaceLpcvdPyrophoricTorchAndQuartzTubeGuardDecision {
+  readonly policyCode: "P365-SEMICONDUCTOR-VERTICAL-DIFFUSION-FURNACE-LPCVD-PYROPHORIC-SIH4-DCS-NH3-TORCH-AND-QUARTZ-TUBE-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-TORCH-FLAMEOUT-OVERPRESSURE-OR-OVERTEMP-ESV-TRIP-NH4CL-SUBLIMATION-BYPASS-AND-QUARTZ-COOLDOWN-SCBA-LOTO-GUARD";
+  readonly furnaceTubeOrBoatId: string;
+  readonly verticalFurnaceLpcvdApproved: boolean;
+  readonly pyrophoricGasEsvAndScrHeaterTripped0ms: boolean;
+  readonly boatLoadingHaltedAndHeatedN2BypassPurged: boolean;
+  readonly scavengerDoorAndBoatMaintenanceLockedUntilCooldownAndScbaLoto: boolean;
+  readonly action:
+    | "approve_semiconductor_vertical_diffusion_furnace_and_lpcvd_operation"
+    | "trip_pyrophoric_gas_esv_and_scr_heater_on_torch_flameout_tube_overpressure_or_overtemp_in_0ms"
+    | "halt_boat_loading_and_divert_to_heated_n2_bypass_on_nh4cl_plug_or_o2_intrusion"
+    | "lock_out_scavenger_door_and_quartz_boat_until_below_65c_and_5cycle_n2_scba_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorVerticalDiffusionFurnaceLpcvdPyrophoricSih4DcsNh3TorchAndQuartzTubeSemiS2SemiS6Nfpa318Nfpa86Osha1910119TorchFlameoutOverpressureOrOvertempEsvTripNh4ClSublimationBypassAndQuartzCooldownScbaLotoGuard(
+  input: SemiconductorVerticalDiffusionFurnaceLpcvdPyrophoricTorchAndQuartzTubeGuardInput,
+): SemiconductorVerticalDiffusionFurnaceLpcvdPyrophoricTorchAndQuartzTubeGuardDecision {
+  const policyCode =
+    "P365-SEMICONDUCTOR-VERTICAL-DIFFUSION-FURNACE-LPCVD-PYROPHORIC-SIH4-DCS-NH3-TORCH-AND-QUARTZ-TUBE-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-TORCH-FLAMEOUT-OVERPRESSURE-OR-OVERTEMP-ESV-TRIP-NH4CL-SUBLIMATION-BYPASS-AND-QUARTZ-COOLDOWN-SCBA-LOTO-GUARD" as const;
+
+  const pyrophoricGasEsvAndScrHeaterTripped0ms =
+    input.externalPyrophoricTorchFlameTemperatureC < 750 ||
+    input.quartzTubePressureTorr > 780 ||
+    input.heatingZoneTemperatureC > 1250 ||
+    input.scavengerBoxExhaustStaticPressurePa > -100;
+
+  const boatLoadingHaltedAndHeatedN2BypassPurged =
+    input.lpcvdAmmoniumChlorideExhaustLineDeltaPKpa > 10 ||
+    input.tubeO2ConcentrationDuringH2OrSih4FlowPpm > 5;
+
+  const scavengerDoorAndBoatMaintenanceLockedUntilCooldownAndScbaLoto =
+    input.quartzTubeOrBoatElevatorMaintenanceRequested &&
+    (input.quartzBoatCooldownTemperatureC > 65 ||
+      !input.fiveCycleN2PurgeAndSi3n4DustHepaScbaLotoVerified);
+
+  if (pyrophoricGasEsvAndScrHeaterTripped0ms) {
+    return {
+      policyCode,
+      furnaceTubeOrBoatId: input.furnaceTubeOrBoatId,
+      verticalFurnaceLpcvdApproved: false,
+      pyrophoricGasEsvAndScrHeaterTripped0ms: true,
+      boatLoadingHaltedAndHeatedN2BypassPurged,
+      scavengerDoorAndBoatMaintenanceLockedUntilCooldownAndScbaLoto,
+      action:
+        "trip_pyrophoric_gas_esv_and_scr_heater_on_torch_flameout_tube_overpressure_or_overtemp_in_0ms",
+      blockedReason:
+        "pyrophoric_torch_below_750c_or_quartz_tube_above_780torr_or_heater_above_1250c_or_scavenger_exhaust_loss_0ms_esv_trip",
+    };
+  }
+
+  if (boatLoadingHaltedAndHeatedN2BypassPurged) {
+    return {
+      policyCode,
+      furnaceTubeOrBoatId: input.furnaceTubeOrBoatId,
+      verticalFurnaceLpcvdApproved: false,
+      pyrophoricGasEsvAndScrHeaterTripped0ms: false,
+      boatLoadingHaltedAndHeatedN2BypassPurged: true,
+      scavengerDoorAndBoatMaintenanceLockedUntilCooldownAndScbaLoto,
+      action:
+        "halt_boat_loading_and_divert_to_heated_n2_bypass_on_nh4cl_plug_or_o2_intrusion",
+      blockedReason:
+        "lpcvd_nh4cl_exhaust_delta_p_above_10kpa_or_tube_o2_above_5ppm_during_h2_sih4_flow",
+    };
+  }
+
+  if (scavengerDoorAndBoatMaintenanceLockedUntilCooldownAndScbaLoto) {
+    return {
+      policyCode,
+      furnaceTubeOrBoatId: input.furnaceTubeOrBoatId,
+      verticalFurnaceLpcvdApproved: false,
+      pyrophoricGasEsvAndScrHeaterTripped0ms: false,
+      boatLoadingHaltedAndHeatedN2BypassPurged: false,
+      scavengerDoorAndBoatMaintenanceLockedUntilCooldownAndScbaLoto: true,
+      action:
+        "lock_out_scavenger_door_and_quartz_boat_until_below_65c_and_5cycle_n2_scba_loto",
+      blockedReason:
+        "quartz_boat_above_65c_or_5cycle_n2_purge_and_si3n4_dust_hepa_scba_loto_unverified",
+    };
+  }
+
+  return {
+    policyCode,
+    furnaceTubeOrBoatId: input.furnaceTubeOrBoatId,
+    verticalFurnaceLpcvdApproved: true,
+    pyrophoricGasEsvAndScrHeaterTripped0ms: false,
+    boatLoadingHaltedAndHeatedN2BypassPurged: false,
+    scavengerDoorAndBoatMaintenanceLockedUntilCooldownAndScbaLoto: false,
+    action: "approve_semiconductor_vertical_diffusion_furnace_and_lpcvd_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8088Rfc4855DynamicPayloadTypeRtpmapFmtpGuardInput {
+  readonly sessionId: string;
+  readonly rtpDynamicPayloadTypeNumber: number;
+  readonly payloadTypeMappedInActiveSdpRtpmap: boolean;
+  readonly fmtpParameterStringBytes: number;
+  readonly negotiatedClockRateHz: number;
+  readonly actualPacketTimestampClockRateHz: number;
+  readonly negotiatedAudioChannels: number;
+  readonly actualDecoderFrameChannels: number;
+  readonly midCallSamePtCodecRebindingWithoutSdpCycleDetected: boolean;
+  readonly unmappedPtProbePacketsPerSecond: number;
+}
+
+export interface WebrtcSipRtpRfc8088Rfc4855DynamicPayloadTypeRtpmapFmtpGuardDecision {
+  readonly policyCode: "P366-WEBRTC-SIP-RTP-RFC8088-RFC4855-AND-RFC3555-DYNAMIC-PAYLOAD-TYPE-RTPMAP-FMTP-UNMAPPED-PT-FMTP-OVERFLOW-CLOCK-RATE-CHANNEL-MISMATCH-AND-MIDCALL-PT-CODEC-REBIND-GUARD";
+  readonly sessionId: string;
+  readonly rfc8088Rfc4855DynamicPtHealthy: boolean;
+  readonly unmappedDynamicPtOrFmtpOverflowDropped0ms: boolean;
+  readonly clockRateOrChannelCountMismatchRejected: boolean;
+  readonly midCallPtCodecRebindOrProbeFloodClamped: boolean;
+  readonly action:
+    | "accept_rfc8088_rfc4855_dynamic_payload_type_rtpmap_and_fmtp_binding"
+    | "drop_unmapped_dynamic_pt_out_of_range_or_fmtp_buffer_overflow_in_0ms"
+    | "reject_rtpmap_clock_rate_or_channel_count_decoder_mismatch"
+    | "clamp_midcall_same_pt_codec_rebinding_or_unmapped_pt_probe_flood";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8088Rfc4855AndRfc3555DynamicPayloadTypeRtpmapFmtpUnmappedPtFmtpOverflowClockRateChannelMismatchAndMidcallPtCodecRebindGuard(
+  input: WebrtcSipRtpRfc8088Rfc4855DynamicPayloadTypeRtpmapFmtpGuardInput,
+): WebrtcSipRtpRfc8088Rfc4855DynamicPayloadTypeRtpmapFmtpGuardDecision {
+  const policyCode =
+    "P366-WEBRTC-SIP-RTP-RFC8088-RFC4855-AND-RFC3555-DYNAMIC-PAYLOAD-TYPE-RTPMAP-FMTP-UNMAPPED-PT-FMTP-OVERFLOW-CLOCK-RATE-CHANNEL-MISMATCH-AND-MIDCALL-PT-CODEC-REBIND-GUARD" as const;
+
+  const unmappedDynamicPtOrFmtpOverflowDropped0ms =
+    input.rtpDynamicPayloadTypeNumber < 96 ||
+    input.rtpDynamicPayloadTypeNumber > 127 ||
+    !input.payloadTypeMappedInActiveSdpRtpmap ||
+    input.fmtpParameterStringBytes > 512;
+
+  const clockRateOrChannelCountMismatchRejected =
+    input.negotiatedClockRateHz <= 0 ||
+    input.negotiatedClockRateHz !== input.actualPacketTimestampClockRateHz ||
+    input.negotiatedAudioChannels < 1 ||
+    input.negotiatedAudioChannels > 24 ||
+    input.negotiatedAudioChannels !== input.actualDecoderFrameChannels;
+
+  const midCallPtCodecRebindOrProbeFloodClamped =
+    input.midCallSamePtCodecRebindingWithoutSdpCycleDetected ||
+    input.unmappedPtProbePacketsPerSecond > 40;
+
+  if (unmappedDynamicPtOrFmtpOverflowDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8088Rfc4855DynamicPtHealthy: false,
+      unmappedDynamicPtOrFmtpOverflowDropped0ms: true,
+      clockRateOrChannelCountMismatchRejected,
+      midCallPtCodecRebindOrProbeFloodClamped,
+      action:
+        "drop_unmapped_dynamic_pt_out_of_range_or_fmtp_buffer_overflow_in_0ms",
+      blockedReason:
+        "dynamic_pt_outside_96_127_or_missing_sdp_rtpmap_or_fmtp_parameter_string_above_512_bytes_0ms_drop",
+    };
+  }
+
+  if (clockRateOrChannelCountMismatchRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8088Rfc4855DynamicPtHealthy: false,
+      unmappedDynamicPtOrFmtpOverflowDropped0ms: false,
+      clockRateOrChannelCountMismatchRejected: true,
+      midCallPtCodecRebindOrProbeFloodClamped,
+      action: "reject_rtpmap_clock_rate_or_channel_count_decoder_mismatch",
+      blockedReason:
+        "rfc8088_rfc4855_negotiated_clock_rate_or_audio_channel_count_mismatch_with_decoder_frame_rejected",
+    };
+  }
+
+  if (midCallPtCodecRebindOrProbeFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8088Rfc4855DynamicPtHealthy: false,
+      unmappedDynamicPtOrFmtpOverflowDropped0ms: false,
+      clockRateOrChannelCountMismatchRejected: false,
+      midCallPtCodecRebindOrProbeFloodClamped: true,
+      action:
+        "clamp_midcall_same_pt_codec_rebinding_or_unmapped_pt_probe_flood",
+      blockedReason:
+        "midcall_same_dynamic_pt_codec_rebinding_without_sdp_offer_answer_or_pt_probe_above_40pps_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8088Rfc4855DynamicPtHealthy: true,
+    unmappedDynamicPtOrFmtpOverflowDropped0ms: false,
+    clockRateOrChannelCountMismatchRejected: false,
+    midCallPtCodecRebindOrProbeFloodClamped: false,
+    action: "accept_rfc8088_rfc4855_dynamic_payload_type_rtpmap_and_fmtp_binding",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
