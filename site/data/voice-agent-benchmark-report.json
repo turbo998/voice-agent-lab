@@ -1321,6 +1321,12 @@
       "original": "100.0% (0ms target backing-plate water <12 L/min or >50 mTorr cathode trip + >25 arcs/s or >95C DC/RF/HiPIMS quench + pyrophoric Ti/Ta/Al shield Ar/O2 passivation Class D LOTO)",
       "reversed": "100.0% (0ms ST 2110-24 SD SRD overread or invalid 525i/625i line drop + interlaced F=0/F=1 field parity or BT.601 colorimetry reject + >50us TBC-to-PTP drift or >400Mbps clamp)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "170. Semiconductor Sub-Atmospheric Ozone-TEOS (SACVD) & Low-k Porogen UV Thermal Cure (O3 / TEOS / OMCTS / DMDMOS & 172 nm Excimer UV) (NFPA 318 / SEMI S2 / S6 / NFPA 86 / OSHA 1910.1000) & WebRTC / SIP RTP SMPTE ST 2110-30 / AES67 & NMOS IS-08 Audio Channel Mapping & EBU R37 AV Lip-Sync (P327 / P328 — 170-Dimension Milestone)",
+      "original": "100.0% (0ms ambient O3 >=0.10ppm or vaporizer >180kPa HV/RFO trip + UV cure O2 >50ppm or >450C quartz window lamp quench & N2 purge + ODU catalyst & porogen trap SCBA LOTO)",
+      "reversed": "100.0% (0ms ST 2110-30 audio payload overread or NMOS IS-08 channel index drop + EBU R37 [-15ms,+45ms] AV lip-sync or IS-08 matrix tamper reject + >8500pps p125 flood or >10ms RTCP SR jump clamp)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

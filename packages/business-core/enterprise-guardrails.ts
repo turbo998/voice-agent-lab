@@ -32071,3 +32071,198 @@ export function evaluateWebrtcSipRtpSmpteSt211024StandardDefinitionVideoOverSt21
     blockedReason: "none",
   };
 }
+
+
+export interface SemiconductorSubAtmosphericOzoneTeosSacvdAndLowKPorogenUvThermalCureOmctsDmdmosNfpa318SemiS2SemiS6Nfpa86Osha19101000OzoneLeakVaporizerOverpressureTripUvCureO2IntrusionLampQuenchAndOduCatalystScbaLotoGuardInput {
+  readonly chamberId: string;
+  readonly ambientOzoneLeakPpm: number;
+  readonly organosiliconVaporizerPressureKpa: number;
+  readonly uvCureChamberOxygenConcentrationPpm: number;
+  readonly uvExcimerQuartzWindowTempC: number;
+  readonly porogenTrapOrOduCatalystMaintenanceRequested: boolean;
+  readonly oduCatalystEfficiencyAndOzoneScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorSubAtmosphericOzoneTeosSacvdAndLowKPorogenUvThermalCureOmctsDmdmosNfpa318SemiS2SemiS6Nfpa86Osha19101000OzoneLeakVaporizerOverpressureTripUvCureO2IntrusionLampQuenchAndOduCatalystScbaLotoGuardDecision {
+  readonly policyCode: "P327-SEMICONDUCTOR-SUB-ATMOSPHERIC-OZONE-TEOS-SACVD-AND-LOW-K-POROGEN-UV-THERMAL-CURE-OMCTS-DMDMOS-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA19101000-OZONE-LEAK-VAPORIZER-OVERPRESSURE-TRIP-UV-CURE-O2-INTRUSION-LAMP-QUENCH-AND-ODU-CATALYST-SCBA-LOTO-GUARD";
+  readonly chamberId: string;
+  readonly ozoneLeakOrVaporizerOverpressureTripped0ms: boolean;
+  readonly uvCureOxygenIntrusionOrQuartzOvertempQuenched: boolean;
+  readonly oduCatalystAndPorogenTrapScbaLotoLocked: boolean;
+  readonly sacvdLowKThermalUvCureProcessApproved: boolean;
+  readonly action:
+    | "approve_semiconductor_sacvd_lowk_uv_thermal_cure_operation"
+    | "trip_sacvd_ozone_generator_hv_and_organosilicon_vaporizer_rfo_in_0ms"
+    | "quench_lowk_uv_cure_lamps_and_initiate_high_flow_n2_purge"
+    | "lock_sacvd_lowk_chamber_door_and_require_odu_catalyst_and_scba_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorSubAtmosphericOzoneTeosSacvdAndLowKPorogenUvThermalCureOmctsDmdmosNfpa318SemiS2SemiS6Nfpa86Osha19101000OzoneLeakVaporizerOverpressureTripUvCureO2IntrusionLampQuenchAndOduCatalystScbaLotoGuard(
+  input: SemiconductorSubAtmosphericOzoneTeosSacvdAndLowKPorogenUvThermalCureOmctsDmdmosNfpa318SemiS2SemiS6Nfpa86Osha19101000OzoneLeakVaporizerOverpressureTripUvCureO2IntrusionLampQuenchAndOduCatalystScbaLotoGuardInput
+): SemiconductorSubAtmosphericOzoneTeosSacvdAndLowKPorogenUvThermalCureOmctsDmdmosNfpa318SemiS2SemiS6Nfpa86Osha19101000OzoneLeakVaporizerOverpressureTripUvCureO2IntrusionLampQuenchAndOduCatalystScbaLotoGuardDecision {
+  const policyCode =
+    "P327-SEMICONDUCTOR-SUB-ATMOSPHERIC-OZONE-TEOS-SACVD-AND-LOW-K-POROGEN-UV-THERMAL-CURE-OMCTS-DMDMOS-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA19101000-OZONE-LEAK-VAPORIZER-OVERPRESSURE-TRIP-UV-CURE-O2-INTRUSION-LAMP-QUENCH-AND-ODU-CATALYST-SCBA-LOTO-GUARD" as const;
+
+  const ozoneLeakOrVaporizerOverpressureTripped0ms =
+    input.ambientOzoneLeakPpm >= 0.1 || input.organosiliconVaporizerPressureKpa > 180.0;
+
+  const uvCureOxygenIntrusionOrQuartzOvertempQuenched =
+    input.uvCureChamberOxygenConcentrationPpm > 50.0 || input.uvExcimerQuartzWindowTempC > 450.0;
+
+  const oduCatalystAndPorogenTrapScbaLotoLocked =
+    input.porogenTrapOrOduCatalystMaintenanceRequested &&
+    !input.oduCatalystEfficiencyAndOzoneScbaLotoVerified;
+
+  if (ozoneLeakOrVaporizerOverpressureTripped0ms) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      ozoneLeakOrVaporizerOverpressureTripped0ms: true,
+      uvCureOxygenIntrusionOrQuartzOvertempQuenched,
+      oduCatalystAndPorogenTrapScbaLotoLocked,
+      sacvdLowKThermalUvCureProcessApproved: false,
+      action: "trip_sacvd_ozone_generator_hv_and_organosilicon_vaporizer_rfo_in_0ms",
+      blockedReason:
+        "sacvd_ambient_ozone_leak_at_or_above_0_1ppm_osha_pel_or_organosilicon_vaporizer_overpressure_above_180kpa",
+    };
+  }
+
+  if (uvCureOxygenIntrusionOrQuartzOvertempQuenched) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      ozoneLeakOrVaporizerOverpressureTripped0ms: false,
+      uvCureOxygenIntrusionOrQuartzOvertempQuenched: true,
+      oduCatalystAndPorogenTrapScbaLotoLocked,
+      sacvdLowKThermalUvCureProcessApproved: false,
+      action: "quench_lowk_uv_cure_lamps_and_initiate_high_flow_n2_purge",
+      blockedReason:
+        "lowk_uv_cure_chamber_oxygen_intrusion_above_50ppm_or_uv_excimer_quartz_window_overtemp_above_450c",
+    };
+  }
+
+  if (oduCatalystAndPorogenTrapScbaLotoLocked) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      ozoneLeakOrVaporizerOverpressureTripped0ms: false,
+      uvCureOxygenIntrusionOrQuartzOvertempQuenched: false,
+      oduCatalystAndPorogenTrapScbaLotoLocked: true,
+      sacvdLowKThermalUvCureProcessApproved: false,
+      action: "lock_sacvd_lowk_chamber_door_and_require_odu_catalyst_and_scba_loto",
+      blockedReason:
+        "sacvd_porogen_condenser_or_odu_catalyst_maintenance_requested_without_ozone_destruction_and_scba_loto_verification",
+    };
+  }
+
+  return {
+    policyCode,
+    chamberId: input.chamberId,
+    ozoneLeakOrVaporizerOverpressureTripped0ms: false,
+    uvCureOxygenIntrusionOrQuartzOvertempQuenched: false,
+    oduCatalystAndPorogenTrapScbaLotoLocked: false,
+    sacvdLowKThermalUvCureProcessApproved: true,
+    action: "approve_semiconductor_sacvd_lowk_uv_thermal_cure_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211030Aes67AndNmosIs08AudioChannelMappingAvLipSyncEbuR37ChannelMatrixOverreadAvSyncLeadLagExcursionAndP125PacketFloodGuardInput {
+  readonly sessionId: string;
+  readonly declaredAudioPayloadBytes: number;
+  readonly actualRtpPayloadBytesRemaining: number;
+  readonly is08ChannelMapIndexOutOfBounds: boolean;
+  readonly avLipSyncOffsetMilliseconds: number;
+  readonly is08MatrixPhaseInversionOrSilentTamperDetected: boolean;
+  readonly st211030PacketRatePps: number;
+  readonly rtcpSrTimestampStepJumpMilliseconds: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211030Aes67AndNmosIs08AudioChannelMappingAvLipSyncEbuR37ChannelMatrixOverreadAvSyncLeadLagExcursionAndP125PacketFloodGuardDecision {
+  readonly policyCode: "P328-WEBRTC-SIP-RTP-SMPTE-ST2110-30-AES67-AND-NMOS-IS08-AUDIO-CHANNEL-MAPPING-AV-LIP-SYNC-EBUR37-CHANNEL-MATRIX-OVERREAD-AV-SYNC-LEAD-LAG-EXCURSION-AND-P125-PACKET-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly channelMatrixOverreadOrTruncatedAudioDropped0ms: boolean;
+  readonly avLipSyncExcursionOrIs08TamperRejected: boolean;
+  readonly p125PacketFloodOrRtcpSrJumpClamped: boolean;
+  readonly st211030Is08AudioStreamAccepted: boolean;
+  readonly action:
+    | "accept_smpte_st2110_30_is08_multichannel_audio_stream"
+    | "drop_st2110_30_is08_channel_matrix_overread_or_truncated_audio_packet_in_0ms"
+    | "reject_st2110_30_av_lipsync_excursion_or_is08_matrix_routing_tamper"
+    | "clamp_st2110_30_p125_packet_flood_or_rtcp_sr_timestamp_jump";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211030Aes67AndNmosIs08AudioChannelMappingAvLipSyncEbuR37ChannelMatrixOverreadAvSyncLeadLagExcursionAndP125PacketFloodGuard(
+  input: WebrtcSipRtpSmpteSt211030Aes67AndNmosIs08AudioChannelMappingAvLipSyncEbuR37ChannelMatrixOverreadAvSyncLeadLagExcursionAndP125PacketFloodGuardInput
+): WebrtcSipRtpSmpteSt211030Aes67AndNmosIs08AudioChannelMappingAvLipSyncEbuR37ChannelMatrixOverreadAvSyncLeadLagExcursionAndP125PacketFloodGuardDecision {
+  const policyCode =
+    "P328-WEBRTC-SIP-RTP-SMPTE-ST2110-30-AES67-AND-NMOS-IS08-AUDIO-CHANNEL-MAPPING-AV-LIP-SYNC-EBUR37-CHANNEL-MATRIX-OVERREAD-AV-SYNC-LEAD-LAG-EXCURSION-AND-P125-PACKET-FLOOD-GUARD" as const;
+
+  const channelMatrixOverreadOrTruncatedAudioDropped0ms =
+    input.declaredAudioPayloadBytes <= 0 ||
+    input.declaredAudioPayloadBytes > input.actualRtpPayloadBytesRemaining ||
+    input.is08ChannelMapIndexOutOfBounds;
+
+  const avLipSyncExcursionOrIs08TamperRejected =
+    input.avLipSyncOffsetMilliseconds < -15.0 ||
+    input.avLipSyncOffsetMilliseconds > 45.0 ||
+    input.is08MatrixPhaseInversionOrSilentTamperDetected;
+
+  const p125PacketFloodOrRtcpSrJumpClamped =
+    input.st211030PacketRatePps > 8500 || Math.abs(input.rtcpSrTimestampStepJumpMilliseconds) > 10.0;
+
+  if (channelMatrixOverreadOrTruncatedAudioDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      channelMatrixOverreadOrTruncatedAudioDropped0ms: true,
+      avLipSyncExcursionOrIs08TamperRejected,
+      p125PacketFloodOrRtcpSrJumpClamped,
+      st211030Is08AudioStreamAccepted: false,
+      action: "drop_st2110_30_is08_channel_matrix_overread_or_truncated_audio_packet_in_0ms",
+      blockedReason:
+        "st2110_30_declared_audio_payload_exceeds_rtp_bytes_or_nmos_is08_channel_map_index_out_of_bounds",
+    };
+  }
+
+  if (avLipSyncExcursionOrIs08TamperRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      channelMatrixOverreadOrTruncatedAudioDropped0ms: false,
+      avLipSyncExcursionOrIs08TamperRejected: true,
+      p125PacketFloodOrRtcpSrJumpClamped,
+      st211030Is08AudioStreamAccepted: false,
+      action: "reject_st2110_30_av_lipsync_excursion_or_is08_matrix_routing_tamper",
+      blockedReason:
+        "st2110_30_to_st2110_20_av_lipsync_exceeds_ebu_r37_minus15ms_to_plus45ms_window_or_is08_matrix_tamper",
+    };
+  }
+
+  if (p125PacketFloodOrRtcpSrJumpClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      channelMatrixOverreadOrTruncatedAudioDropped0ms: false,
+      avLipSyncExcursionOrIs08TamperRejected: false,
+      p125PacketFloodOrRtcpSrJumpClamped: true,
+      st211030Is08AudioStreamAccepted: false,
+      action: "clamp_st2110_30_p125_packet_flood_or_rtcp_sr_timestamp_jump",
+      blockedReason:
+        "st2110_30_p125_packet_rate_exceeds_8500pps_or_rtcp_sr_timestamp_step_jump_above_10ms",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    channelMatrixOverreadOrTruncatedAudioDropped0ms: false,
+    avLipSyncExcursionOrIs08TamperRejected: false,
+    p125PacketFloodOrRtcpSrJumpClamped: false,
+    st211030Is08AudioStreamAccepted: true,
+    action: "accept_smpte_st2110_30_is08_multichannel_audio_stream",
+    blockedReason: "none",
+  };
+}
