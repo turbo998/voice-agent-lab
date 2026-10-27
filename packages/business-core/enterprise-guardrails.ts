@@ -29520,3 +29520,216 @@ export function evaluateWebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlLive
     blockedReason: "none",
   };
 }
+
+
+// ============================================================================
+// Stage 155 · P303 — Semiconductor Thermal Oxidation, LPCVD / Diffusion Tube
+// Furnace & Pyrophoric Dichlorosilane / Silane / Ammonia / H2 Torch (SiH2Cl2 /
+// SiH4 / NH3 / POCl3 / BBr3) Guard
+// ============================================================================
+
+export interface SemiconductorThermalDiffusionLpcvdFurnaceDcsSih4Nh3Pocl3H2TorchGuardInput {
+  furnaceTubeBayId: string;
+  cabinetDichlorosilaneOrSilanePpm: number;
+  tubeQuartzPressureTorr: number;
+  pyrogenicSteamH2O2TorchFlameConfirmed: boolean;
+  h2FlowActiveBelowAutoignition750C: boolean;
+  lpcvdForelineNh4ClSaltPlugDifferentialMbar: number;
+  quartzBoatCantileverOverloadOrScavengerExhaustLoss: boolean;
+  pocl3OrBbr3CorrosiveHclHbrExhaustPpm: number;
+  semiS2PositivePressureScbaAndTubeDoorLotoVerified: boolean;
+}
+
+export interface SemiconductorThermalDiffusionLpcvdFurnaceDcsSih4Nh3Pocl3H2TorchGuardAssessment {
+  policyCode: "P303-SEMICONDUCTOR-THERMAL-OXIDATION-LPCVD-DIFFUSION-FURNACE-SIH2CL2-SIH4-NH3-POCL3-H2-TORCH-NFPA318-NFPA86-SEMIS2-SEMIS6-OSHA1910119-OSHA19101000-DCS-PYROPHORIC-H2-TORCH-FLAMEOUT-TRIP-NH4CL-FORELINE-ISOLATION-AND-POCL3-SCBA-LOTO-GUARD";
+  furnaceTubeBayId: string;
+  pyrophoricDcsSih4OrUnburnedH2TorchPreempted0ms: boolean;
+  forelineNh4ClPlugOrQuartzBoatOverloadIsolated: boolean;
+  pocl3Bbr3CorrosiveVaporOrScbaLotoLocked: boolean;
+  diffusionLpcvdFurnaceApproved: boolean;
+  action:
+    | "approve_semiconductor_thermal_oxidation_lpcvd_diffusion_furnace_operation"
+    | "trip_dcs_sih4_h2_rfo_valves_cut_torch_flow_and_n2_inert_quartz_tube_in_0ms"
+    | "abort_lpcvd_deposition_open_bypass_n2_ballast_and_lock_quartz_boat_elevator"
+    | "lock_furnace_scavenger_door_and_require_pocl3_hcl_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorThermalDiffusionLpcvdFurnaceDcsSih4Nh3Pocl3H2TorchNfpa318Nfpa86SemiS2SemiS6Osha1910119Osha19101000PyrophoricDcsH2TorchFlameoutTripNh4ClForelineIsolationAndPocl3ScbaLotoGuard(
+  input: SemiconductorThermalDiffusionLpcvdFurnaceDcsSih4Nh3Pocl3H2TorchGuardInput
+): SemiconductorThermalDiffusionLpcvdFurnaceDcsSih4Nh3Pocl3H2TorchGuardAssessment {
+  const policyCode =
+    "P303-SEMICONDUCTOR-THERMAL-OXIDATION-LPCVD-DIFFUSION-FURNACE-SIH2CL2-SIH4-NH3-POCL3-H2-TORCH-NFPA318-NFPA86-SEMIS2-SEMIS6-OSHA1910119-OSHA19101000-DCS-PYROPHORIC-H2-TORCH-FLAMEOUT-TRIP-NH4CL-FORELINE-ISOLATION-AND-POCL3-SCBA-LOTO-GUARD" as const;
+
+  const pyrophoricDcsSih4OrUnburnedH2TorchPreempted0ms =
+    input.cabinetDichlorosilaneOrSilanePpm >= 5.0 ||
+    input.tubeQuartzPressureTorr >= 780.0 ||
+    !input.pyrogenicSteamH2O2TorchFlameConfirmed ||
+    input.h2FlowActiveBelowAutoignition750C;
+
+  if (pyrophoricDcsSih4OrUnburnedH2TorchPreempted0ms) {
+    return {
+      policyCode,
+      furnaceTubeBayId: input.furnaceTubeBayId,
+      pyrophoricDcsSih4OrUnburnedH2TorchPreempted0ms: true,
+      forelineNh4ClPlugOrQuartzBoatOverloadIsolated: false,
+      pocl3Bbr3CorrosiveVaporOrScbaLotoLocked: false,
+      diffusionLpcvdFurnaceApproved: false,
+      action: "trip_dcs_sih4_h2_rfo_valves_cut_torch_flow_and_n2_inert_quartz_tube_in_0ms",
+      blockedReason:
+        "NFPA_318_NFPA_86_LPCVD_DCS_SIH4_5PPM_QUARTZ_OVERPRESSURE_780TORR_OR_UNBURNED_H2_TORCH_PREEMPTED_0MS",
+    };
+  }
+
+  const forelineNh4ClPlugOrQuartzBoatOverloadIsolated =
+    input.lpcvdForelineNh4ClSaltPlugDifferentialMbar >= 15.0 ||
+    input.quartzBoatCantileverOverloadOrScavengerExhaustLoss;
+
+  if (forelineNh4ClPlugOrQuartzBoatOverloadIsolated) {
+    return {
+      policyCode,
+      furnaceTubeBayId: input.furnaceTubeBayId,
+      pyrophoricDcsSih4OrUnburnedH2TorchPreempted0ms: false,
+      forelineNh4ClPlugOrQuartzBoatOverloadIsolated: true,
+      pocl3Bbr3CorrosiveVaporOrScbaLotoLocked: false,
+      diffusionLpcvdFurnaceApproved: false,
+      action: "abort_lpcvd_deposition_open_bypass_n2_ballast_and_lock_quartz_boat_elevator",
+      blockedReason:
+        "SEMI_S2_LPCVD_NH4CL_FORELINE_PLUG_15MBAR_OR_QUARTZ_BOAT_SCAVENGER_EXHAUST_LOSS_ISOLATED",
+    };
+  }
+
+  const pocl3Bbr3CorrosiveVaporOrScbaLotoLocked =
+    input.pocl3OrBbr3CorrosiveHclHbrExhaustPpm >= 5.0 ||
+    !input.semiS2PositivePressureScbaAndTubeDoorLotoVerified;
+
+  if (pocl3Bbr3CorrosiveVaporOrScbaLotoLocked) {
+    return {
+      policyCode,
+      furnaceTubeBayId: input.furnaceTubeBayId,
+      pyrophoricDcsSih4OrUnburnedH2TorchPreempted0ms: false,
+      forelineNh4ClPlugOrQuartzBoatOverloadIsolated: false,
+      pocl3Bbr3CorrosiveVaporOrScbaLotoLocked: true,
+      diffusionLpcvdFurnaceApproved: false,
+      action: "lock_furnace_scavenger_door_and_require_pocl3_hcl_scba_loto",
+      blockedReason:
+        "OSHA_1910_1000_POCL3_BBR3_HCL_5PPM_OR_FURNACE_SCAVENGER_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    furnaceTubeBayId: input.furnaceTubeBayId,
+    pyrophoricDcsSih4OrUnburnedH2TorchPreempted0ms: false,
+    forelineNh4ClPlugOrQuartzBoatOverloadIsolated: false,
+    pocl3Bbr3CorrosiveVaporOrScbaLotoLocked: false,
+    diffusionLpcvdFurnaceApproved: true,
+    action: "approve_semiconductor_thermal_oxidation_lpcvd_diffusion_furnace_operation",
+    blockedReason: "none",
+  };
+}
+
+// ============================================================================
+// Stage 155 · P304 — WebRTC & SIP RTP SMPTE ST 2110-10 / ST 2059-2 IEEE 1588
+// PTPv2 Broadcast Timing & Grandmaster Synchronization Guard
+// ============================================================================
+
+export interface WebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2GrandmasterTimingGuardInput {
+  sessionId: string;
+  ptpMessageLengthBytes: number;
+  udpPayloadRemainingBytes: number;
+  smpteSt20592OrganizationExtensionTlvValid: boolean;
+  rogueBmcaPriority1ZeroGrandmasterTakeoverDetected: boolean;
+  ieee15884PrPtpIntegratedSecurityTlvHmacVerified: boolean;
+  ptpDelayReqPerSecond: number;
+  grandmasterTimeJumpMicroseconds: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2GrandmasterTimingGuardAssessment {
+  policyCode: "P304-WEBRTC-SIP-RTP-SMPTE-ST2110-10-ST2059-2-IEEE1588-PTPV2-GRANDMASTER-TIMING-ROGUE-BMCA-PRIORITY1-SPOOF-PRPTP-HMAC-AUTH-DELAY-REQ-FLOOD-AND-EPOCH-JUMP-GUARD";
+  sessionId: string;
+  ptpMessageOverreadOrMalformedSt20592TlvDropped0ms: boolean;
+  rogueBmcaPriority1OrUnauthenticatedPrPtpRejected: boolean;
+  delayReqFloodOrGrandmasterEpochJumpClamped: boolean;
+  st20592PtpSyncAccepted: boolean;
+  action:
+    | "accept_smpte_st2110_10_st2059_2_ieee1588_ptpv2_sync_transaction"
+    | "drop_ptpv2_message_length_overread_or_malformed_st2059_2_tlv_in_0ms"
+    | "reject_rogue_bmca_priority1_grandmaster_spoof_or_unauthenticated_prptp_tlv"
+    | "clamp_ptpv2_delay_req_flood_or_engage_local_ocxo_holdover_on_time_jump";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2GrandmasterTimingRogueBmcaPriority1SpoofPrPtpHmacAuthDelayReqFloodAndEpochJumpGuard(
+  input: WebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2GrandmasterTimingGuardInput
+): WebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2GrandmasterTimingGuardAssessment {
+  const policyCode =
+    "P304-WEBRTC-SIP-RTP-SMPTE-ST2110-10-ST2059-2-IEEE1588-PTPV2-GRANDMASTER-TIMING-ROGUE-BMCA-PRIORITY1-SPOOF-PRPTP-HMAC-AUTH-DELAY-REQ-FLOOD-AND-EPOCH-JUMP-GUARD" as const;
+
+  const ptpMessageOverreadOrMalformedSt20592TlvDropped0ms =
+    input.ptpMessageLengthBytes < 34 ||
+    input.ptpMessageLengthBytes > input.udpPayloadRemainingBytes ||
+    input.ptpMessageLengthBytes > 1500 ||
+    !input.smpteSt20592OrganizationExtensionTlvValid;
+
+  if (ptpMessageOverreadOrMalformedSt20592TlvDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ptpMessageOverreadOrMalformedSt20592TlvDropped0ms: true,
+      rogueBmcaPriority1OrUnauthenticatedPrPtpRejected: false,
+      delayReqFloodOrGrandmasterEpochJumpClamped: false,
+      st20592PtpSyncAccepted: false,
+      action: "drop_ptpv2_message_length_overread_or_malformed_st2059_2_tlv_in_0ms",
+      blockedReason:
+        "SMPTE_ST2059_2_IEEE1588_PTPV2_MESSAGE_LENGTH_OVERREAD_OR_MALFORMED_SM_TLV_DROPPED_0MS",
+    };
+  }
+
+  const rogueBmcaPriority1OrUnauthenticatedPrPtpRejected =
+    input.rogueBmcaPriority1ZeroGrandmasterTakeoverDetected ||
+    !input.ieee15884PrPtpIntegratedSecurityTlvHmacVerified;
+
+  if (rogueBmcaPriority1OrUnauthenticatedPrPtpRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ptpMessageOverreadOrMalformedSt20592TlvDropped0ms: false,
+      rogueBmcaPriority1OrUnauthenticatedPrPtpRejected: true,
+      delayReqFloodOrGrandmasterEpochJumpClamped: false,
+      st20592PtpSyncAccepted: false,
+      action: "reject_rogue_bmca_priority1_grandmaster_spoof_or_unauthenticated_prptp_tlv",
+      blockedReason:
+        "IEEE_1588_BMCA_PRIORITY1_ROGUE_GRANDMASTER_TAKEOVER_OR_MISSING_PRPTP_SECURITY_TLV_REJECTED",
+    };
+  }
+
+  const delayReqFloodOrGrandmasterEpochJumpClamped =
+    input.ptpDelayReqPerSecond > 128 ||
+    Math.abs(input.grandmasterTimeJumpMicroseconds) >= 1.0;
+
+  if (delayReqFloodOrGrandmasterEpochJumpClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ptpMessageOverreadOrMalformedSt20592TlvDropped0ms: false,
+      rogueBmcaPriority1OrUnauthenticatedPrPtpRejected: false,
+      delayReqFloodOrGrandmasterEpochJumpClamped: true,
+      st20592PtpSyncAccepted: false,
+      action: "clamp_ptpv2_delay_req_flood_or_engage_local_ocxo_holdover_on_time_jump",
+      blockedReason:
+        "SMPTE_ST2059_2_PTP_DELAY_REQ_128HZ_FLOOD_OR_1US_EPOCH_JUMP_HOLDOVER_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    ptpMessageOverreadOrMalformedSt20592TlvDropped0ms: false,
+    rogueBmcaPriority1OrUnauthenticatedPrPtpRejected: false,
+    delayReqFloodOrGrandmasterEpochJumpClamped: false,
+    st20592PtpSyncAccepted: true,
+    action: "accept_smpte_st2110_10_st2059_2_ieee1588_ptpv2_sync_transaction",
+    blockedReason: "none",
+  };
+}
