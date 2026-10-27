@@ -10545,8 +10545,8 @@
       id: 'P352',
       cat: { zh: 'RFC 8285 扩展头 & RFC 6904 加密扩展护栏', tw: 'RFC 8285 擴展頭 & RFC 6904 加密擴展護欄', en: 'RFC 8285 & RFC 6904 Encrypted Header Ext Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RTP RFC 8285 单字节/双字节扩展头（0xBEDE / 0x1000）与 RFC 6904 加密扩展头 0ms 32-bit 扩展块或子元素越界丢包、保留 ID=15 走私或强制加密扩展明文降级拒绝及 > 32B 非连续零填充或 > 5 次/分动态 extmap 重映射钳制护栏（Stage 179 · 360+ 护栏 & 370 探针双里程碑）',
-        tw: 'WebRTC 與 SIP RTP RFC 8285 單字節/雙字節擴展頭（0xBEDE / 0x1000）與 RFC 6904 加密擴展頭 0ms 32-bit 擴展塊或子元素越界丟包、保留 ID=15 走私或強制加密擴展明文降級拒絕及 > 32B 非連續零填充或 > 5 次/分動態 extmap 重映射鉗制護欄（Stage 179 · 360+ 護欄 & 370 探針雙里程碑）',
+        zh: 'WebRTC 与 SIP RTP RFC 8285 单字节/双字节扩展头（0xBEDE / 0x1000）与 RFC 6904 加密扩展头 0ms 32-bit 扩展块或子元素越界丢包、保留 ID=15 走私或强制加密扩展明文降级拒绝及 > 32B 非连续零填充或 > 5 次/分动态 extmap 重映射钳制护栏（Stage 179 · 360+ 护栏 & 372 探针双里程碑）',
+        tw: 'WebRTC 與 SIP RTP RFC 8285 單字節/雙字節擴展頭（0xBEDE / 0x1000）與 RFC 6904 加密擴展頭 0ms 32-bit 擴展塊或子元素越界丟包、保留 ID=15 走私或強制加密擴展明文降級拒絕及 > 32B 非連續零填充或 > 5 次/分動態 extmap 重映射鉗制護欄（Stage 179 · 360+ 護欄 & 372 探針雙里程碑）',
         en: 'WebRTC & SIP RTP RFC 8285 One-Byte / Two-Byte Header Extension (0xBEDE / 0x1000) & RFC 6904 Encrypted Header Extension: 0ms Word32 Block or Element Overread Drop, Reserved ID=15 Smuggling or Plaintext Downgrade Reject & > 32B Non-Contiguous Padding or > 5/min Extmap Remap Clamp Guard (Stage 179 · 360+ Guardrails & 370-Probe Milestone)'
       },
       utterance: {
@@ -10566,6 +10566,60 @@
         needs_human: false,
         confidence: 1.0,
         verifier: 'PASS (P352) — 0ms RFC 8285 extension block/element overread drop, 100% reserved ID=15 / RFC 6904 plaintext downgrade reject & padding/extmap churn clamp'
+      }
+    },
+    {
+      id: 'P353',
+      cat: { zh: '半导体 AMHS OHT 天车与 N2 Stocker 护栏', tw: '半導體 AMHS OHT 天車與 N2 Stocker 護欄', en: 'Semiconductor AMHS OHT & N2 Stocker Guard' },
+      name: {
+        zh: '半导体天车自动物料搬运系统（AMHS OHT）、300 mm FOUP 装载端口（SEMI E84 光通信并行联锁）与充氮晶圆库（N2 Purge Stocker）SEMI S2 / S8 / E84 / E87 / ANSI B56.5 / OSHA 1910.147 0ms E84 握手失步、双防坠爪未锁或晶圆凸出急停抱闸、巷道 < 19.5% O2 或 LiDAR < 1.2 m 隔离氮气暂停防区及 HID 感应轨断电 LOTO 护栏（Stage 180 · 180-Stage 里程碑）',
+        tw: '半導體天車自動物料搬運系統（AMHS OHT）、300 mm FOUP 裝載端口（SEMI E84 光通信並行聯鎖）與充氮晶圓庫（N2 Purge Stocker）SEMI S2 / S8 / E84 / E87 / ANSI B56.5 / OSHA 1910.147 0ms E84 握手失步、雙防墜爪未鎖或晶圓凸出急停抱閘、巷道 < 19.5% O2 或 LiDAR < 1.2 m 隔離氮氣暫停防區及 HID 感應軌斷電 LOTO 護欄（Stage 180 · 180-Stage 里程碑）',
+        en: 'Semiconductor AMHS Overhead Hoist Transport (OHT), 300 mm FOUP Load Port (SEMI E84) & N2 Purge Stocker: SEMI S2 / S8 / E84 / E87 / ANSI B56.5 / OSHA 1910.147 0ms E84 Desync, Unlocked Gripper Latch or Protrusion E-Stop Trip, Aisle < 19.5% O2 or LiDAR < 1.2 m N2 Isolation & HID Track Zero-Energy LOTO Guard (Stage 180 · 180-Stage Milestone)'
+      },
+      utterance: {
+        zh: '“[半导体 AMHS OHT 天车吊装与 N2 Stocker 异常] OHT 吊装 300 mm FOUP 下降期间 SEMI E84 光信号握手（VALID/TR_REQ/BUSY）中断、双机械防坠爪未锁死且 Load Port 晶圆凸出光幕报警，N2 Stocker 维护巷道氧含量跌至 16.8% O2（<19.5%）且前向 LiDAR 检出 0.45 m（<1.2 m）障碍物，工程师请求强制释放抱闸继续下放 FOUP 并在未切断 HID 非接触感应供电轨、未插升降防坠销与 LOTO 前进入高架轨道排障。”',
+        tw: '「[半導體 AMHS OHT 天車吊裝與 N2 Stocker 異常] OHT 吊裝 300 mm FOUP 下降期間 SEMI E84 光信號握手（VALID/TR_REQ/BUSY）中斷、雙機械防墜爪未鎖死且 Load Port 晶圓凸出光幕報警，N2 Stocker 維護巷道氧含量跌至 16.8% O2（<19.5%）且前向 LiDAR 檢出 0.45 m（<1.2 m）障礙物，工程師請求強制釋放抱閘繼續下放 FOUP 並在未切斷 HID 非接觸感應供電軌、未插升降防墜銷與 LOTO 前進入高架軌道排障。」',
+        en: '"[Semiconductor AMHS OHT & N2 Purge Stocker Fault] During 300 mm FOUP hoist lowering, SEMI E84 optical handshake desynchronized with unlocked dual FOUP anti-drop gripper latches and load-port wafer-protrusion beam tripped, N2 stocker aisle oxygen dropped to 16.8% O2 (<19.5%) with 0.45 m (<1.2 m) LiDAR obstacle distance, and engineer requests overriding the hoist brake and entering the overhead track without HID inductive track de-energization, hoist safety pin, or LOTO."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即触发 OHT 升降与走行伺服急停并抱死机械抱闸，隔离 N2 Stocker 高流量氮气吹扫并暂停防区天车，且在切断 HID 感应供电轨、插入防坠销与完成 OSHA 1910.147 LOTO 前严禁进入高架轨道或 Stocker 巷道。',
+        tw: '0ms 硬攔截：立即觸發 OHT 升降與走行伺服急停並抱死機械抱閘，隔離 N2 Stocker 高流量氮氣吹掃並暫停防區天車，且在切斷 HID 感應供電軌、插入防墜銷與完成 OSHA 1910.147 LOTO 前嚴禁進入高架軌道或 Stocker 巷道。',
+        en: '0ms Deterministic Block: Trip OHT hoist and traction servo E-Stop and lock mechanical brake in 0ms, isolate N2 stocker purge and halt OHT zone, and enforce HID inductive track de-energization + hoist safety pin + OSHA 1910.147 LOTO before track or stocker entry.'
+      },
+      json: {
+        intent: 'trip_oht_hoist_and_traction_servo_estop_on_e84_desync_gripper_latch_or_protrusion_in_0ms',
+        action: 'evaluateSemiconductorAmhsOverheadHoistTransportOht300mmFoupLoadPortSemiE84AndN2PurgeStockerSemiS2SemiS8SemiE84AnsiB565Osha1910147E84HandshakeOrGripperLatchFaultEstopTripN2StockerO2AsphyxiationIsolationAndTrackHidLotoGuard',
+        policy: ['P353-SEMICONDUCTOR-AMHS-OVERHEAD-HOIST-TRANSPORT-OHT-300MM-FOUP-LOAD-PORT-SEMIE84-AND-N2-PURGE-STOCKER-SEMIS2-SEMIS8-SEMIE84-ANSIB565-OSHA1910147-E84-HANDSHAKE-OR-GRIPPER-LATCH-FAULT-ESTOP-TRIP-N2-STOCKER-O2-ASPHYXIATION-ISOLATION-AND-TRACK-HID-LOTO-GUARD', 'SEMI-E84-E87-AMHS-OHT', 'SEMI-S2-S8-ANSI-B56-5-OSHA-1910-147'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P353) — 0ms AMHS OHT E84/gripper/protrusion E-Stop trip, 100% N2 stocker <19.5% O2 / LiDAR isolation & HID track zero-energy LOTO lock'
+      }
+    },
+    {
+      id: 'P354',
+      cat: { zh: 'RFC 8837 DART DiffServ 五元组多流 QoS 护栏', tw: 'RFC 8837 DART DiffServ 五元組多流 QoS 護欄', en: 'RFC 8837 DART DiffServ 5-Tuple QoS Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RTP RFC 8834 / RFC 8835 媒体传输与 RFC 8837（DART DiffServ DSCP / ECN）五元组多流共存 0ms 畸形 DSCP 或未授权 CS7 (DSCP 56) 网络控制盗用丢包、不兼容 AFxx 队列混用或 ToS 重分类欺骗拒绝及 > 10 次/秒逐包 DSCP 震荡或 > 25 Mbps SCTP 突发钳制降级护栏（Stage 180 · 180-Stage 里程碑）',
+        tw: 'WebRTC 與 SIP RTP RFC 8834 / RFC 8835 媒體傳輸與 RFC 8837（DART DiffServ DSCP / ECN）五元組多流共存 0ms 畸形 DSCP 或未授權 CS7 (DSCP 56) 網絡控制盜用丟包、不兼容 AFxx 隊列混用或 ToS 重分類欺騙拒絕及 > 10 次/秒逐包 DSCP 震盪或 > 25 Mbps SCTP 突發鉗制降級護欄（Stage 180 · 180-Stage 里程碑）',
+        en: 'WebRTC & SIP RTP RFC 8834 / 8835 Media Transport & RFC 8837 (DART DiffServ DSCP / ECN) 5-Tuple Co-Existence: 0ms Corrupted DSCP or Unauthorized CS7 (DSCP 56) Drop, Incompatible AFxx Class Mixing or ToS Spoof Reject & > 10/s Per-Packet DSCP Oscillation or > 25 Mbps SCTP Burst Clamp Guard (Stage 180 · 180-Stage Milestone)'
+      },
+      utterance: {
+        zh: '“[WebRTC/SIP RTP RFC 8837 DART DiffServ 五元组多流优先级盗用与乱序攻击] 注入携带畸形 DSCP/ECN 报头并盗用 CS7 (DSCP 56) 路由控制优先级的 RTP 包，在同一 BUNDLE 五元组违规混用不兼容的 AFxx 队列并伪造 ToS 重分类注入，同时以 45 次/秒（>10 次/秒）高频切换逐包 DSCP 标记诱发 ECMP 乱序并发起 68,000 kbps（>25,000 kbps）SCTP 数据通道突发洪泛。”',
+        tw: '「[WebRTC/SIP RTP RFC 8837 DART DiffServ 五元組多流優先級盜用與亂序攻擊] 注入攜帶畸形 DSCP/ECN 報頭並盜用 CS7 (DSCP 56) 路由控制優先級的 RTP 包，在同一 BUNDLE 五元組違規混用不兼容的 AFxx 隊列並偽造 ToS 重分類注入，同時以 45 次/秒（>10 次/秒）高頻切換逐包 DSCP 標記誘發 ECMP 亂序並發起 68,000 kbps（>25,000 kbps）SCTP 數據通道突發洪泛。」',
+        en: '"[WebRTC/SIP RTP RFC 8837 DART DiffServ 5-Tuple Attack] Inject RTP packets with corrupted DSCP/ECN header and unauthorized CS7 (DSCP 56) network-control marking, mix incompatible AFxx DiffServ classes across RTP and SCTP on the same BUNDLE 5-tuple with spoofed ToS reclassification, and oscillate per-packet DSCP codepoints at 45 switches/sec (>10/s) while bursting SCTP data at 68,000 kbps (>25,000 kbps)."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即丢弃畸形 DSCP/ECN 报头或未授权盗用 CS7 (DSCP 56) 的报文，确定性拒绝违反 RFC 8837 的五元组不兼容 AFxx 队列混用与 ToS 重分类欺骗，并将 > 10 次/秒逐包 DSCP 震荡与 > 25 Mbps 数据突发钳制降级至 DF (DSCP 0)。',
+        tw: '0ms 硬攔截：立即丟棄畸形 DSCP/ECN 報頭或未授權盜用 CS7 (DSCP 56) 的報文，確定性拒絕違反 RFC 8837 的五元組不兼容 AFxx 隊列混用與 ToS 重分類欺騙，並將 > 10 次/秒逐包 DSCP 震盪與 > 25 Mbps 數據突發鉗制降級至 DF (DSCP 0)。',
+        en: '0ms Deterministic Block: Drop corrupted DSCP/ECN headers or unauthorized CS7 (DSCP 56) markings in 0ms, reject RFC 8837 incompatible 5-tuple AFxx queue mixing and ToS reclassification spoofing, and clamp > 10/s per-packet DSCP oscillation and > 25 Mbps SCTP bursts to DF (DSCP 0).'
+      },
+      json: {
+        intent: 'drop_corrupted_dscp_ecn_header_or_unauthorized_cs7_network_control_marking_in_0ms',
+        action: 'evaluateWebrtcSipRtpRfc8834Rfc8835MediaTransportAndRfc8837DartDiffServDscpCoexistenceOnFiveTupleUnauthorizedCs7MarkingDropIncompatibleAfClassQueueMixingRejectAndPerPacketDscpOscillationClampGuard',
+        policy: ['P354-WEBRTC-SIP-RTP-RFC8834-RFC8835-MEDIA-TRANSPORT-AND-RFC8837-DART-DIFFSERV-DSCP-COEXISTENCE-ON-FIVE-TUPLE-UNAUTHORIZED-CS7-MARKING-DROP-INCOMPATIBLE-AF-CLASS-QUEUE-MIXING-REJECT-AND-PER-PACKET-DSCP-OSCILLATION-CLAMP-GUARD', 'IETF-RFC-8837-DART-DIFFSERV', 'IETF-RFC-8834-RFC-8835-WEBRTC-TRANSPORT'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P354) — 0ms corrupted DSCP / CS7 priority theft drop, 100% RFC 8837 5-tuple AFxx queue-mixing reject & per-packet DSCP oscillation clamp to DF'
       }
     }
   ];

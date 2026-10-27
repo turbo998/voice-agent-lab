@@ -34676,3 +34676,204 @@ export function evaluateWebrtcSipRtpRfc8285OneByteTwoByteHeaderExtensionAndRfc69
   };
 }
 
+export interface SemiconductorAmhsOverheadHoistTransportOht300mmFoupLoadPortSemiE84AndN2PurgeStockerGuardInput {
+  readonly vehicleOrStockerId: string;
+  readonly e84OpticalHandshakeDesyncDuringHoistTransfer: boolean;
+  readonly foupGripperDualAntiDropLatchLocked: boolean;
+  readonly loadPortWaferProtrusionOrObstacleBeamTripped: boolean;
+  readonly stockerAisleAmbientO2Percent: number;
+  readonly ohtLookAheadLidarObstacleDistanceM: number;
+  readonly trackOrHoistMaintenanceEntryRequested: boolean;
+  readonly hidTrackDeenergizedHoistPinAndLotoVerified: boolean;
+}
+
+export interface SemiconductorAmhsOverheadHoistTransportOht300mmFoupLoadPortSemiE84AndN2PurgeStockerGuardResult {
+  readonly policyCode: "P353-SEMICONDUCTOR-AMHS-OVERHEAD-HOIST-TRANSPORT-OHT-300MM-FOUP-LOAD-PORT-SEMIE84-AND-N2-PURGE-STOCKER-SEMIS2-SEMIS8-SEMIE84-ANSIB565-OSHA1910147-E84-HANDSHAKE-OR-GRIPPER-LATCH-FAULT-ESTOP-TRIP-N2-STOCKER-O2-ASPHYXIATION-ISOLATION-AND-TRACK-HID-LOTO-GUARD";
+  readonly vehicleOrStockerId: string;
+  readonly amhsOhtAndN2StockerTransferApproved: boolean;
+  readonly ohtHoistAndTractionEstopTripped0ms: boolean;
+  readonly n2StockerPurgeIsolatedAndZoneHalted: boolean;
+  readonly ohtTrackHidZeroEnergyAndLotoLocked: boolean;
+  readonly action:
+    | "approve_semiconductor_amhs_oht_and_n2_stocker_foup_transfer"
+    | "trip_oht_hoist_and_traction_servo_estop_on_e84_desync_gripper_latch_or_protrusion_in_0ms"
+    | "isolate_n2_stocker_purge_and_halt_oht_zone_on_o2_asphyxiation_or_lidar_distance_breach"
+    | "lock_out_amhs_track_or_stocker_entry_until_hid_deenergized_hoist_pin_and_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorAmhsOverheadHoistTransportOht300mmFoupLoadPortSemiE84AndN2PurgeStockerSemiS2SemiS8SemiE84AnsiB565Osha1910147E84HandshakeOrGripperLatchFaultEstopTripN2StockerO2AsphyxiationIsolationAndTrackHidLotoGuard(
+  input: SemiconductorAmhsOverheadHoistTransportOht300mmFoupLoadPortSemiE84AndN2PurgeStockerGuardInput
+): SemiconductorAmhsOverheadHoistTransportOht300mmFoupLoadPortSemiE84AndN2PurgeStockerGuardResult {
+  const policyCode =
+    "P353-SEMICONDUCTOR-AMHS-OVERHEAD-HOIST-TRANSPORT-OHT-300MM-FOUP-LOAD-PORT-SEMIE84-AND-N2-PURGE-STOCKER-SEMIS2-SEMIS8-SEMIE84-ANSIB565-OSHA1910147-E84-HANDSHAKE-OR-GRIPPER-LATCH-FAULT-ESTOP-TRIP-N2-STOCKER-O2-ASPHYXIATION-ISOLATION-AND-TRACK-HID-LOTO-GUARD" as const;
+
+  const ohtHoistAndTractionEstopTripped0ms =
+    input.e84OpticalHandshakeDesyncDuringHoistTransfer ||
+    !input.foupGripperDualAntiDropLatchLocked ||
+    input.loadPortWaferProtrusionOrObstacleBeamTripped;
+
+  const n2StockerPurgeIsolatedAndZoneHalted =
+    input.stockerAisleAmbientO2Percent < 19.5 ||
+    input.ohtLookAheadLidarObstacleDistanceM < 1.2;
+
+  const ohtTrackHidZeroEnergyAndLotoLocked =
+    input.trackOrHoistMaintenanceEntryRequested &&
+    !input.hidTrackDeenergizedHoistPinAndLotoVerified;
+
+  if (ohtHoistAndTractionEstopTripped0ms) {
+    return {
+      policyCode,
+      vehicleOrStockerId: input.vehicleOrStockerId,
+      amhsOhtAndN2StockerTransferApproved: false,
+      ohtHoistAndTractionEstopTripped0ms: true,
+      n2StockerPurgeIsolatedAndZoneHalted,
+      ohtTrackHidZeroEnergyAndLotoLocked,
+      action:
+        "trip_oht_hoist_and_traction_servo_estop_on_e84_desync_gripper_latch_or_protrusion_in_0ms",
+      blockedReason:
+        "semi_e84_handshake_desync_foup_gripper_latch_unlocked_or_load_port_wafer_protrusion_0ms_estop",
+    };
+  }
+
+  if (n2StockerPurgeIsolatedAndZoneHalted) {
+    return {
+      policyCode,
+      vehicleOrStockerId: input.vehicleOrStockerId,
+      amhsOhtAndN2StockerTransferApproved: false,
+      ohtHoistAndTractionEstopTripped0ms: false,
+      n2StockerPurgeIsolatedAndZoneHalted: true,
+      ohtTrackHidZeroEnergyAndLotoLocked,
+      action:
+        "isolate_n2_stocker_purge_and_halt_oht_zone_on_o2_asphyxiation_or_lidar_distance_breach",
+      blockedReason:
+        "n2_purge_stocker_ambient_o2_below_19_5_percent_or_oht_lidar_obstacle_below_1_2m_isolated",
+    };
+  }
+
+  if (ohtTrackHidZeroEnergyAndLotoLocked) {
+    return {
+      policyCode,
+      vehicleOrStockerId: input.vehicleOrStockerId,
+      amhsOhtAndN2StockerTransferApproved: false,
+      ohtHoistAndTractionEstopTripped0ms: false,
+      n2StockerPurgeIsolatedAndZoneHalted: false,
+      ohtTrackHidZeroEnergyAndLotoLocked: true,
+      action:
+        "lock_out_amhs_track_or_stocker_entry_until_hid_deenergized_hoist_pin_and_loto",
+      blockedReason:
+        "amhs_oht_track_hid_power_hoist_mechanical_pin_and_osha_1910_147_loto_not_verified",
+    };
+  }
+
+  return {
+    policyCode,
+    vehicleOrStockerId: input.vehicleOrStockerId,
+    amhsOhtAndN2StockerTransferApproved: true,
+    ohtHoistAndTractionEstopTripped0ms: false,
+    n2StockerPurgeIsolatedAndZoneHalted: false,
+    ohtTrackHidZeroEnergyAndLotoLocked: false,
+    action: "approve_semiconductor_amhs_oht_and_n2_stocker_foup_transfer",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8834Rfc8835MediaTransportAndRfc8837DartDiffServDscpCoexistenceGuardInput {
+  readonly sessionId: string;
+  readonly corruptedDscpEcnHeaderOrUnauthorizedCs7NetworkControlMarkingDetected: boolean;
+  readonly incompatibleDscpDropPrecedenceWithinSameDiffServClassOnFiveTupleDetected: boolean;
+  readonly unverifiedBleachedToSReclassificationInjectionDetected: boolean;
+  readonly dscpCodepointSwitchesPerSecond: number;
+  readonly maxDataChannelBurstKbps: number;
+}
+
+export interface WebrtcSipRtpRfc8834Rfc8835MediaTransportAndRfc8837DartDiffServDscpCoexistenceGuardResult {
+  readonly policyCode: "P354-WEBRTC-SIP-RTP-RFC8834-RFC8835-MEDIA-TRANSPORT-AND-RFC8837-DART-DIFFSERV-DSCP-COEXISTENCE-ON-FIVE-TUPLE-UNAUTHORIZED-CS7-MARKING-DROP-INCOMPATIBLE-AF-CLASS-QUEUE-MIXING-REJECT-AND-PER-PACKET-DSCP-OSCILLATION-CLAMP-GUARD";
+  readonly sessionId: string;
+  readonly rfc8837DartDiffServCoexistenceAccepted: boolean;
+  readonly corruptedDscpHeaderOrCs7NetworkControlForgedDropped0ms: boolean;
+  readonly rfc8837DiffServClassMixingOrToSSpoofRejected: boolean;
+  readonly perPacketDscpOscillationOrBurstClampedToDf: boolean;
+  readonly action:
+    | "accept_rfc8834_rfc8835_and_rfc8837_dart_diffserv_coexistence"
+    | "drop_corrupted_dscp_ecn_header_or_unauthorized_cs7_network_control_marking_in_0ms"
+    | "reject_rfc8837_incompatible_af_class_queue_mixing_or_tos_reclassification_spoof"
+    | "clamp_per_packet_dscp_oscillation_to_df_and_rate_limit_sctp_data_burst";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8834Rfc8835MediaTransportAndRfc8837DartDiffServDscpCoexistenceOnFiveTupleUnauthorizedCs7MarkingDropIncompatibleAfClassQueueMixingRejectAndPerPacketDscpOscillationClampGuard(
+  input: WebrtcSipRtpRfc8834Rfc8835MediaTransportAndRfc8837DartDiffServDscpCoexistenceGuardInput
+): WebrtcSipRtpRfc8834Rfc8835MediaTransportAndRfc8837DartDiffServDscpCoexistenceGuardResult {
+  const policyCode =
+    "P354-WEBRTC-SIP-RTP-RFC8834-RFC8835-MEDIA-TRANSPORT-AND-RFC8837-DART-DIFFSERV-DSCP-COEXISTENCE-ON-FIVE-TUPLE-UNAUTHORIZED-CS7-MARKING-DROP-INCOMPATIBLE-AF-CLASS-QUEUE-MIXING-REJECT-AND-PER-PACKET-DSCP-OSCILLATION-CLAMP-GUARD" as const;
+
+  const corruptedDscpHeaderOrCs7NetworkControlForgedDropped0ms =
+    input.corruptedDscpEcnHeaderOrUnauthorizedCs7NetworkControlMarkingDetected;
+
+  const rfc8837DiffServClassMixingOrToSSpoofRejected =
+    input.incompatibleDscpDropPrecedenceWithinSameDiffServClassOnFiveTupleDetected ||
+    input.unverifiedBleachedToSReclassificationInjectionDetected;
+
+  const perPacketDscpOscillationOrBurstClampedToDf =
+    input.dscpCodepointSwitchesPerSecond > 10 ||
+    input.maxDataChannelBurstKbps > 25000;
+
+  if (corruptedDscpHeaderOrCs7NetworkControlForgedDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8837DartDiffServCoexistenceAccepted: false,
+      corruptedDscpHeaderOrCs7NetworkControlForgedDropped0ms: true,
+      rfc8837DiffServClassMixingOrToSSpoofRejected,
+      perPacketDscpOscillationOrBurstClampedToDf,
+      action:
+        "drop_corrupted_dscp_ecn_header_or_unauthorized_cs7_network_control_marking_in_0ms",
+      blockedReason:
+        "rfc8837_corrupted_dscp_ecn_header_or_unauthorized_cs7_network_control_marking_0ms_drop",
+    };
+  }
+
+  if (rfc8837DiffServClassMixingOrToSSpoofRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8837DartDiffServCoexistenceAccepted: false,
+      corruptedDscpHeaderOrCs7NetworkControlForgedDropped0ms: false,
+      rfc8837DiffServClassMixingOrToSSpoofRejected: true,
+      perPacketDscpOscillationOrBurstClampedToDf,
+      action:
+        "reject_rfc8837_incompatible_af_class_queue_mixing_or_tos_reclassification_spoof",
+      blockedReason:
+        "rfc8837_incompatible_diffserv_class_mixing_on_five_tuple_or_tos_reclassification_spoof_rejected",
+    };
+  }
+
+  if (perPacketDscpOscillationOrBurstClampedToDf) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8837DartDiffServCoexistenceAccepted: false,
+      corruptedDscpHeaderOrCs7NetworkControlForgedDropped0ms: false,
+      rfc8837DiffServClassMixingOrToSSpoofRejected: false,
+      perPacketDscpOscillationOrBurstClampedToDf: true,
+      action:
+        "clamp_per_packet_dscp_oscillation_to_df_and_rate_limit_sctp_data_burst",
+      blockedReason:
+        "rfc8837_dscp_switches_exceeded_10_per_sec_or_sctp_burst_exceeded_25000_kbps_clamped_to_df",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8837DartDiffServCoexistenceAccepted: true,
+    corruptedDscpHeaderOrCs7NetworkControlForgedDropped0ms: false,
+    rfc8837DiffServClassMixingOrToSSpoofRejected: false,
+    perPacketDscpOscillationOrBurstClampedToDf: false,
+    action: "accept_rfc8834_rfc8835_and_rfc8837_dart_diffserv_coexistence",
+    blockedReason: "none",
+  };
+}
+
+
