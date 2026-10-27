@@ -33253,3 +33253,209 @@ export function evaluateWebrtcSipRtpSmpteSt211021TrafficShapingAndDeliveryTiming
   };
 }
 
+export interface Semiconductor3dIcTsvBoschDrieAndCopperEcpGuardInput {
+  moduleId: string;
+  escHeliumBacksidePressureTorr: number;
+  escHeliumLeakRateSccm: number;
+  hfOrF2OrSo2f2ExhaustLeakPpm: number;
+  ecpElectrolyteBathTempC: number;
+  ecpAnodeCellVoltageV: number;
+  ecpLipExhaustVelocityMps: number;
+  anodeBasketOrChamberCleanMaintenanceRequested: boolean;
+  diFlushCopperIonExchangeAndSemiS2LotoVerified: boolean;
+}
+
+export interface Semiconductor3dIcTsvBoschDrieAndCopperEcpGuardDecision {
+  policyCode: "P339-SEMICONDUCTOR-3D-IC-THROUGH-SILICON-VIA-TSV-BOSCH-DEEP-REACTIVE-ION-ETCH-DRIE-SF6-C4F8-AND-DAMASCENE-COPPER-ELECTROPLATING-ECP-CUSO4-H2SO4-SEMIS2-SEMIS6-NFPA318-OSHA19101000-ICP-RF-ESC-HELIUM-LOSS-OR-HF-F2-LEAK-TRIP-ECP-RECTIFIER-ACID-MIST-QUENCH-AND-CU-WASTE-LOTO-GUARD";
+  moduleId: string;
+  drieIcpRfAndSf6C4f8MfcTripped0ms: boolean;
+  ecpRectifierAndAcidMistScrubberQuenched: boolean;
+  diFlushCopperWasteAndLotoLocked: boolean;
+  tsvDrieAndCopperEcpApproved: boolean;
+  action:
+    | "approve_semiconductor_3dic_tsv_drie_and_copper_ecp_operation"
+    | "trip_drie_icp_rf_and_sf6_c4f8_mfc_on_helium_backside_cooling_loss_or_hf_f2_leak_in_0ms"
+    | "quench_ecp_plating_rectifier_and_boost_acid_mist_scrubber_on_electrolyte_overtemp_or_exhaust_loss"
+    | "enforce_ecp_cell_di_flush_copper_waste_neutralization_and_loto_before_anode_maintenance";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductor3dIcThroughSiliconViaTsvBoschDeepReactiveIonEtchDrieSf6C4f8AndDamasceneCopperElectroplatingecpCuSo4H2so4AdditiveSemiS2SemiS6Nfpa318Osha19101000PlasmaFluorineRadicalOrC4f8PolymerRunawayTripAnodeSludgeCyanideOrAcidMistQuenchAndEcpCellLotoGuard(
+  input: Semiconductor3dIcTsvBoschDrieAndCopperEcpGuardInput
+): Semiconductor3dIcTsvBoschDrieAndCopperEcpGuardDecision {
+  const policyCode =
+    "P339-SEMICONDUCTOR-3D-IC-THROUGH-SILICON-VIA-TSV-BOSCH-DEEP-REACTIVE-ION-ETCH-DRIE-SF6-C4F8-AND-DAMASCENE-COPPER-ELECTROPLATING-ECP-CUSO4-H2SO4-SEMIS2-SEMIS6-NFPA318-OSHA19101000-ICP-RF-ESC-HELIUM-LOSS-OR-HF-F2-LEAK-TRIP-ECP-RECTIFIER-ACID-MIST-QUENCH-AND-CU-WASTE-LOTO-GUARD" as const;
+
+  const drieIcpRfAndSf6C4f8MfcTripped0ms =
+    input.escHeliumBacksidePressureTorr < 8 ||
+    input.escHeliumLeakRateSccm > 2.5 ||
+    input.hfOrF2OrSo2f2ExhaustLeakPpm >= 0.5;
+
+  const ecpRectifierAndAcidMistScrubberQuenched =
+    input.ecpElectrolyteBathTempC > 45 ||
+    input.ecpAnodeCellVoltageV > 12 ||
+    input.ecpLipExhaustVelocityMps < 0.5;
+
+  const diFlushCopperWasteAndLotoLocked =
+    input.anodeBasketOrChamberCleanMaintenanceRequested &&
+    !input.diFlushCopperIonExchangeAndSemiS2LotoVerified;
+
+  if (drieIcpRfAndSf6C4f8MfcTripped0ms) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      drieIcpRfAndSf6C4f8MfcTripped0ms: true,
+      ecpRectifierAndAcidMistScrubberQuenched,
+      diFlushCopperWasteAndLotoLocked,
+      tsvDrieAndCopperEcpApproved: false,
+      action:
+        "trip_drie_icp_rf_and_sf6_c4f8_mfc_on_helium_backside_cooling_loss_or_hf_f2_leak_in_0ms",
+      blockedReason:
+        "esc_helium_backside_pressure_below_8_torr_or_leak_above_2_5_sccm_or_hf_f2_leak_above_0_5_ppm",
+    };
+  }
+
+  if (ecpRectifierAndAcidMistScrubberQuenched) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      drieIcpRfAndSf6C4f8MfcTripped0ms: false,
+      ecpRectifierAndAcidMistScrubberQuenched: true,
+      diFlushCopperWasteAndLotoLocked,
+      tsvDrieAndCopperEcpApproved: false,
+      action:
+        "quench_ecp_plating_rectifier_and_boost_acid_mist_scrubber_on_electrolyte_overtemp_or_exhaust_loss",
+      blockedReason:
+        "ecp_electrolyte_temp_above_45_c_or_cell_voltage_above_12_v_or_lip_exhaust_below_0_5_mps",
+    };
+  }
+
+  if (diFlushCopperWasteAndLotoLocked) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      drieIcpRfAndSf6C4f8MfcTripped0ms: false,
+      ecpRectifierAndAcidMistScrubberQuenched: false,
+      diFlushCopperWasteAndLotoLocked: true,
+      tsvDrieAndCopperEcpApproved: false,
+      action:
+        "enforce_ecp_cell_di_flush_copper_waste_neutralization_and_loto_before_anode_maintenance",
+      blockedReason:
+        "ecp_di_flush_copper_ion_exchange_neutralization_and_semi_s2_loto_not_verified",
+    };
+  }
+
+  return {
+    policyCode,
+    moduleId: input.moduleId,
+    drieIcpRfAndSf6C4f8MfcTripped0ms: false,
+    ecpRectifierAndAcidMistScrubberQuenched: false,
+    diFlushCopperWasteAndLotoLocked: false,
+    tsvDrieAndCopperEcpApproved: true,
+    action: "approve_semiconductor_3dic_tsv_drie_and_copper_ecp_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8854FecAndRfc8627FlexfecRtxGuardInput {
+  sessionId: string;
+  declaredFlexfecHeaderAndBitmaskBytes: number;
+  actualRtpPayloadBytesRemaining: number;
+  rtxOsnTruncatedOrCircularSelfReferenceLoop: boolean;
+  flexfecProtectedSsrcCount: number;
+  crossSessionOrUnauthorizedRtxAptHijackDetected: boolean;
+  fecPlusRtxRedundancyRatio: number;
+  repairPacketRatePerSecond: number;
+}
+
+export interface WebrtcSipRtpRfc8854FecAndRfc8627FlexfecRtxGuardDecision {
+  policyCode: "P340-WEBRTC-SIP-RTP-RFC8854-WEBRTC-FEC-AND-RFC8627-MULTISTREAM-FLEXFEC03-RETRANSMISSION-RTX-BITMASK-LENGTH-OVERREAD-OR-RTX-OSN-LOOP-DROP-MEDIA-SSRC-BINDING-HIJACK-REJECT-AND-REDUNDANT-FEC-AMPLIFICATION-CLAMP-GUARD";
+  sessionId: string;
+  flexfecOverreadOrRtxOsnLoopDropped0ms: boolean;
+  ssrcCountOverflowOrRtxAptHijackRejected: boolean;
+  redundantFecRtxAmplificationClamped: boolean;
+  rfc8854FecRtxStreamAccepted: boolean;
+  action:
+    | "accept_rfc8854_flexfec_and_rtx_repair_stream"
+    | "drop_rfc8627_flexfec_bitmask_overread_or_rfc4588_rtx_osn_self_reference_loop_in_0ms"
+    | "reject_flexfec_protected_ssrc_count_overflow_or_cross_session_rtx_apt_hijack"
+    | "clamp_rfc8854_fec_rtx_redundancy_ratio_and_enforce_congestion_budget";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8854WebrtcFecAndRfc8627MultiStreamFlexfec03RetransmissionRtxBitmaskLengthOverreadOrRtxOsnLoopDropMediaSsrcBindingHijackRejectAndRedundantFecAmplificationClampGuard(
+  input: WebrtcSipRtpRfc8854FecAndRfc8627FlexfecRtxGuardInput
+): WebrtcSipRtpRfc8854FecAndRfc8627FlexfecRtxGuardDecision {
+  const policyCode =
+    "P340-WEBRTC-SIP-RTP-RFC8854-WEBRTC-FEC-AND-RFC8627-MULTISTREAM-FLEXFEC03-RETRANSMISSION-RTX-BITMASK-LENGTH-OVERREAD-OR-RTX-OSN-LOOP-DROP-MEDIA-SSRC-BINDING-HIJACK-REJECT-AND-REDUNDANT-FEC-AMPLIFICATION-CLAMP-GUARD" as const;
+
+  const flexfecOverreadOrRtxOsnLoopDropped0ms =
+    input.declaredFlexfecHeaderAndBitmaskBytes >
+      input.actualRtpPayloadBytesRemaining ||
+    input.rtxOsnTruncatedOrCircularSelfReferenceLoop;
+
+  const ssrcCountOverflowOrRtxAptHijackRejected =
+    input.flexfecProtectedSsrcCount > 4 ||
+    input.crossSessionOrUnauthorizedRtxAptHijackDetected;
+
+  const redundantFecRtxAmplificationClamped =
+    input.fecPlusRtxRedundancyRatio > 1.0 ||
+    input.repairPacketRatePerSecond > 1500;
+
+  if (flexfecOverreadOrRtxOsnLoopDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      flexfecOverreadOrRtxOsnLoopDropped0ms: true,
+      ssrcCountOverflowOrRtxAptHijackRejected,
+      redundantFecRtxAmplificationClamped,
+      rfc8854FecRtxStreamAccepted: false,
+      action:
+        "drop_rfc8627_flexfec_bitmask_overread_or_rfc4588_rtx_osn_self_reference_loop_in_0ms",
+      blockedReason:
+        "rfc8627_flexfec_bitmask_header_overread_or_rfc4588_rtx_osn_circular_self_reference",
+    };
+  }
+
+  if (ssrcCountOverflowOrRtxAptHijackRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      flexfecOverreadOrRtxOsnLoopDropped0ms: false,
+      ssrcCountOverflowOrRtxAptHijackRejected: true,
+      redundantFecRtxAmplificationClamped,
+      rfc8854FecRtxStreamAccepted: false,
+      action:
+        "reject_flexfec_protected_ssrc_count_overflow_or_cross_session_rtx_apt_hijack",
+      blockedReason:
+        "flexfec_protected_ssrc_count_above_4_or_cross_session_rtx_apt_payload_hijack",
+    };
+  }
+
+  if (redundantFecRtxAmplificationClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      flexfecOverreadOrRtxOsnLoopDropped0ms: false,
+      ssrcCountOverflowOrRtxAptHijackRejected: false,
+      redundantFecRtxAmplificationClamped: true,
+      rfc8854FecRtxStreamAccepted: false,
+      action:
+        "clamp_rfc8854_fec_rtx_redundancy_ratio_and_enforce_congestion_budget",
+      blockedReason:
+        "fec_plus_rtx_redundancy_ratio_above_1_0_or_repair_packet_rate_above_1500_pps",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    flexfecOverreadOrRtxOsnLoopDropped0ms: false,
+    ssrcCountOverflowOrRtxAptHijackRejected: false,
+    redundantFecRtxAmplificationClamped: false,
+    rfc8854FecRtxStreamAccepted: true,
+    action: "accept_rfc8854_flexfec_and_rtx_repair_stream",
+    blockedReason: "none",
+  };
+}
+
