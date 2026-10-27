@@ -29733,3 +29733,219 @@ export function evaluateWebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2Grandmaster
     blockedReason: "none",
   };
 }
+
+// ============================================================================
+// Stage 156 · P305 — Semiconductor Atomic Layer Deposition (ALD) & High-k Metal
+// Gate (HKMG) TMA (Al(CH3)3) / TDMAH / TiCl4 / WF6 / O3 Sequential Pulse Reactor
+// NFPA 318 / SEMI S2 / SEMI S6 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 Guard
+// ============================================================================
+
+export interface SemiconductorAldHighKMetalGateTmaTdmahTicl4Wf6O3SequentialPulseReactorGuardInput {
+  reactorId: string;
+  tmaAndOzoneOrWaterSimultaneousPulseOverlapDetected: boolean;
+  tmaAmpouleOrLineLeakDetected: boolean;
+  aldValveCycleTemperatureCelsius: number;
+  forelinePowderTrapDifferentialPressureMbar: number;
+  wf6Ticl4HydrolysisMoistureIngressPpmv: number;
+  ozoneExhaustConcentrationPpm: number;
+  wf6HfExhaustConcentrationPpm: number;
+  aldAmpouleAndChamberMaintenanceRequested: boolean;
+  positivePressureScbaAndTmaDryPowderExtinguisherLotoVerified: boolean;
+}
+
+export interface SemiconductorAldHighKMetalGateTmaTdmahTicl4Wf6O3SequentialPulseReactorGuardAssessment {
+  policyCode: "P305-SEMICONDUCTOR-ALD-HKMG-TMA-TDMAH-TICL4-WF6-O3-SEQUENTIAL-PULSE-REACTOR-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-PYROPHORIC-TMA-O3-PULSE-INTERMIX-TRIP-FORELINE-POWDER-TRAP-ISOLATION-AND-O3-WF6-HF-SCBA-LOTO-GUARD";
+  reactorId: string;
+  pyrophoricTmaO3PulseIntermixOrAmpouleLeakPreempted0ms: boolean;
+  forelinePowderTrapOrWf6HydrolysisIsolated: boolean;
+  o3Wf6HfScbaAndClassDExtinguisherLotoLocked: boolean;
+  aldPulseOperationApproved: boolean;
+  action:
+    | "approve_semiconductor_ald_hkmg_sequential_pulse_reactor_operation"
+    | "trip_tma_o3_high_speed_ald_valves_close_ampoule_rfo_and_n2_quench_in_0ms"
+    | "abort_ald_supercycle_engage_foreline_powder_trap_bypass_and_n2_ballast"
+    | "lock_ald_ampoule_cabinet_and_require_o3_wf6_hf_class_d_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorAldHighKMetalGateTmaTdmahTicl4Wf6O3SequentialPulseReactorNfpa318SemiS2SemiS6Nfpa69Osha1910119Osha19101000PyrophoricTmaO3PulseIntermixTripForelinePowderTrapIsolationAndO3Wf6HfScbaLotoGuard(
+  input: SemiconductorAldHighKMetalGateTmaTdmahTicl4Wf6O3SequentialPulseReactorGuardInput
+): SemiconductorAldHighKMetalGateTmaTdmahTicl4Wf6O3SequentialPulseReactorGuardAssessment {
+  const policyCode =
+    "P305-SEMICONDUCTOR-ALD-HKMG-TMA-TDMAH-TICL4-WF6-O3-SEQUENTIAL-PULSE-REACTOR-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-PYROPHORIC-TMA-O3-PULSE-INTERMIX-TRIP-FORELINE-POWDER-TRAP-ISOLATION-AND-O3-WF6-HF-SCBA-LOTO-GUARD" as const;
+
+  const pyrophoricTmaO3PulseIntermixOrAmpouleLeakPreempted0ms =
+    input.tmaAndOzoneOrWaterSimultaneousPulseOverlapDetected ||
+    input.tmaAmpouleOrLineLeakDetected ||
+    input.aldValveCycleTemperatureCelsius > 250;
+
+  if (pyrophoricTmaO3PulseIntermixOrAmpouleLeakPreempted0ms) {
+    return {
+      policyCode,
+      reactorId: input.reactorId,
+      pyrophoricTmaO3PulseIntermixOrAmpouleLeakPreempted0ms: true,
+      forelinePowderTrapOrWf6HydrolysisIsolated: false,
+      o3Wf6HfScbaAndClassDExtinguisherLotoLocked: false,
+      aldPulseOperationApproved: false,
+      action: "trip_tma_o3_high_speed_ald_valves_close_ampoule_rfo_and_n2_quench_in_0ms",
+      blockedReason:
+        "NFPA_318_SEMI_S2_ALD_PYROPHORIC_TMA_O3_SIMULTANEOUS_PULSE_INTERMIX_OR_AMPOULE_LEAK_PREEMPTED_0MS",
+    };
+  }
+
+  const forelinePowderTrapOrWf6HydrolysisIsolated =
+    input.forelinePowderTrapDifferentialPressureMbar > 18 ||
+    input.wf6Ticl4HydrolysisMoistureIngressPpmv > 5;
+
+  if (forelinePowderTrapOrWf6HydrolysisIsolated) {
+    return {
+      policyCode,
+      reactorId: input.reactorId,
+      pyrophoricTmaO3PulseIntermixOrAmpouleLeakPreempted0ms: false,
+      forelinePowderTrapOrWf6HydrolysisIsolated: true,
+      o3Wf6HfScbaAndClassDExtinguisherLotoLocked: false,
+      aldPulseOperationApproved: false,
+      action: "abort_ald_supercycle_engage_foreline_powder_trap_bypass_and_n2_ballast",
+      blockedReason:
+        "SEMI_S2_ALD_FORELINE_AL2O3_TIO2_POWDER_TRAP_18MBAR_OR_WF6_TICL4_MOISTURE_HYDROLYSIS_ISOLATED",
+    };
+  }
+
+  const o3Wf6HfScbaAndClassDExtinguisherLotoLocked =
+    input.ozoneExhaustConcentrationPpm >= 0.1 ||
+    input.wf6HfExhaustConcentrationPpm >= 3.0 ||
+    (input.aldAmpouleAndChamberMaintenanceRequested &&
+      !input.positivePressureScbaAndTmaDryPowderExtinguisherLotoVerified);
+
+  if (o3Wf6HfScbaAndClassDExtinguisherLotoLocked) {
+    return {
+      policyCode,
+      reactorId: input.reactorId,
+      pyrophoricTmaO3PulseIntermixOrAmpouleLeakPreempted0ms: false,
+      forelinePowderTrapOrWf6HydrolysisIsolated: false,
+      o3Wf6HfScbaAndClassDExtinguisherLotoLocked: true,
+      aldPulseOperationApproved: false,
+      action: "lock_ald_ampoule_cabinet_and_require_o3_wf6_hf_class_d_scba_loto",
+      blockedReason:
+        "OSHA_1910_1000_OZONE_0_1PPM_WF6_HF_3PPM_OR_TMA_CLASS_D_EXTINGUISHER_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    reactorId: input.reactorId,
+    pyrophoricTmaO3PulseIntermixOrAmpouleLeakPreempted0ms: false,
+    forelinePowderTrapOrWf6HydrolysisIsolated: false,
+    o3Wf6HfScbaAndClassDExtinguisherLotoLocked: false,
+    aldPulseOperationApproved: true,
+    action: "approve_semiconductor_ald_hkmg_sequential_pulse_reactor_operation",
+    blockedReason: "none",
+  };
+}
+
+// ============================================================================
+// Stage 156 · P306 — WebRTC & SIP RTP AES67 / SMPTE ST 2110-30 / RFC 7273 RTP
+// Clock Source & Media Clock Signalling (ts-refclk / mediaclk) Guard
+// ============================================================================
+
+export interface WebrtcSipRtpAes67SmpteSt211030Rfc7273TsRefclkMediaclkSignallingGuardInput {
+  sessionId: string;
+  sdpClockAttributeLengthBytes: number;
+  sdpLineBufferRemainingBytes: number;
+  ptpGrandmasterEui64FormatValid: boolean;
+  spoofedTsRefclkDomainOrTraceableNtpHijackDetected: boolean;
+  mediaclkDirectRateDenominatorHz: number;
+  crossDomainAudioSampleClockDriftPpm: number;
+  packetTimePtimeMilliseconds: number;
+}
+
+export interface WebrtcSipRtpAes67SmpteSt211030Rfc7273TsRefclkMediaclkSignallingGuardAssessment {
+  policyCode: "P306-WEBRTC-SIP-RTP-AES67-SMPTE-ST2110-30-RFC7273-TS-REFCLK-MEDIACLK-SIGNALLING-ATTRIBUTE-OVERREAD-EUI64-FORMAT-SPOOFED-REFCLK-ZERO-RATE-DIVIDE-AND-SAMPLE-CLOCK-DRIFT-GUARD";
+  sessionId: string;
+  sdpClockAttributeOverreadOrMalformedEui64Dropped0ms: boolean;
+  spoofedTsRefclkOrZeroMediaclkRateRejected: boolean;
+  sampleClockDriftOrInvalidAes67PtimeClamped: boolean;
+  rfc7273ClockSignallingAccepted: boolean;
+  action:
+    | "accept_aes67_smpte_st2110_30_rfc7273_ts_refclk_mediaclk_signalling"
+    | "drop_rfc7273_clock_attribute_overread_or_malformed_ptp_eui64_in_0ms"
+    | "reject_spoofed_ts_refclk_domain_or_zero_rate_mediaclk_divide_by_zero"
+    | "clamp_cross_domain_sample_clock_drift_or_non_aes67_ptime_buffer";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpAes67SmpteSt211030Rfc7273TsRefclkMediaclkSignallingAttributeOverreadEui64FormatSpoofedRefclkZeroRateDivideAndSampleClockDriftGuard(
+  input: WebrtcSipRtpAes67SmpteSt211030Rfc7273TsRefclkMediaclkSignallingGuardInput
+): WebrtcSipRtpAes67SmpteSt211030Rfc7273TsRefclkMediaclkSignallingGuardAssessment {
+  const policyCode =
+    "P306-WEBRTC-SIP-RTP-AES67-SMPTE-ST2110-30-RFC7273-TS-REFCLK-MEDIACLK-SIGNALLING-ATTRIBUTE-OVERREAD-EUI64-FORMAT-SPOOFED-REFCLK-ZERO-RATE-DIVIDE-AND-SAMPLE-CLOCK-DRIFT-GUARD" as const;
+
+  const sdpClockAttributeOverreadOrMalformedEui64Dropped0ms =
+    input.sdpClockAttributeLengthBytes <= 0 ||
+    input.sdpClockAttributeLengthBytes > input.sdpLineBufferRemainingBytes ||
+    input.sdpClockAttributeLengthBytes > 256 ||
+    !input.ptpGrandmasterEui64FormatValid;
+
+  if (sdpClockAttributeOverreadOrMalformedEui64Dropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      sdpClockAttributeOverreadOrMalformedEui64Dropped0ms: true,
+      spoofedTsRefclkOrZeroMediaclkRateRejected: false,
+      sampleClockDriftOrInvalidAes67PtimeClamped: false,
+      rfc7273ClockSignallingAccepted: false,
+      action: "drop_rfc7273_clock_attribute_overread_or_malformed_ptp_eui64_in_0ms",
+      blockedReason:
+        "RFC_7273_AES67_SDP_TS_REFCLK_MEDIACLK_OVERREAD_OR_MALFORMED_IEEE1588_EUI64_DROPPED_0MS",
+    };
+  }
+
+  const spoofedTsRefclkOrZeroMediaclkRateRejected =
+    input.spoofedTsRefclkDomainOrTraceableNtpHijackDetected ||
+    input.mediaclkDirectRateDenominatorHz <= 0 ||
+    !Number.isFinite(input.mediaclkDirectRateDenominatorHz);
+
+  if (spoofedTsRefclkOrZeroMediaclkRateRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      sdpClockAttributeOverreadOrMalformedEui64Dropped0ms: false,
+      spoofedTsRefclkOrZeroMediaclkRateRejected: true,
+      sampleClockDriftOrInvalidAes67PtimeClamped: false,
+      rfc7273ClockSignallingAccepted: false,
+      action: "reject_spoofed_ts_refclk_domain_or_zero_rate_mediaclk_divide_by_zero",
+      blockedReason:
+        "RFC_7273_SPOOFED_TS_REFCLK_PTP_DOMAIN_HIJACK_OR_ZERO_MEDIACLK_RATE_DIVIDE_BY_ZERO_REJECTED",
+    };
+  }
+
+  const sampleClockDriftOrInvalidAes67PtimeClamped =
+    Math.abs(input.crossDomainAudioSampleClockDriftPpm) > 100 ||
+    input.packetTimePtimeMilliseconds < 0.125 ||
+    input.packetTimePtimeMilliseconds > 4.0;
+
+  if (sampleClockDriftOrInvalidAes67PtimeClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      sdpClockAttributeOverreadOrMalformedEui64Dropped0ms: false,
+      spoofedTsRefclkOrZeroMediaclkRateRejected: false,
+      sampleClockDriftOrInvalidAes67PtimeClamped: true,
+      rfc7273ClockSignallingAccepted: false,
+      action: "clamp_cross_domain_sample_clock_drift_or_non_aes67_ptime_buffer",
+      blockedReason:
+        "AES67_ST2110_30_SAMPLE_CLOCK_DRIFT_100PPM_OR_NON_CONFORMANT_PTIME_ASRC_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    sdpClockAttributeOverreadOrMalformedEui64Dropped0ms: false,
+    spoofedTsRefclkOrZeroMediaclkRateRejected: false,
+    sampleClockDriftOrInvalidAes67PtimeClamped: false,
+    rfc7273ClockSignallingAccepted: true,
+    action: "accept_aes67_smpte_st2110_30_rfc7273_ts_refclk_mediaclk_signalling",
+    blockedReason: "none",
+  };
+}
