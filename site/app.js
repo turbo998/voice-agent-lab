@@ -10113,9 +10113,9 @@
       id: 'P336',
       cat: { zh: 'RFC 9328 H.266/VVC & RFC 9071 多方 RTT 护栏', tw: 'RFC 9328 H.266/VVC & RFC 9071 多方 RTT 護欄', en: 'RFC 9328 H.266/VVC & RFC 9071 Multi-Party RTT Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RTP RFC 9328（H.266 / VVC 视频负载）与 RFC 9071 多方实时文本（RTT）混音 0ms DONL / OPI / DCI 越界或 FU S=1&E=1 分片丢弃、单包 AP 混合异构 NAL 冲突 / Subpicture ID 劫持 / CSRC 伪造拒绝与 > 64 切片分块或 > 30 chars/s UTF-8 组合字符洪泛钳制护栏（Stage 171 · 345 护栏 & 354 探针）',
-        tw: 'WebRTC 與 SIP RTP RFC 9328（H.266 / VVC 視訊負載）與 RFC 9071 多方即時文本（RTT）混音 0ms DONL / OPI / DCI 越界或 FU S=1&E=1 分片丟棄、單包 AP 混合異構 NAL 衝突 / Subpicture ID 劫持 / CSRC 偽造拒絕與 > 64 切片分塊或 > 30 chars/s UTF-8 組合字元洪泛鉗制護欄（Stage 171 · 345 護欄 & 354 探針）',
-        en: 'WebRTC & SIP RTP RFC 9328 (H.266 / VVC Video Payload) & RFC 9071 Multi-Party Real-Time Text (RTT) Mixing: 0ms DONL / OPI / DCI Overread or FU S=1&E=1 Drop, Mixed AP NAL Collision / Subpicture ID Hijack / CSRC Spoof Reject & > 64 Slices/Tiles or > 30 chars/s UTF-8 Flood Clamp Guard (Stage 171 · 345 Guardrails & 354 Probes)'
+        zh: 'WebRTC 与 SIP RTP RFC 9328（H.266 / VVC 视频负载）与 RFC 9071 多方实时文本（RTT）混音 0ms DONL / OPI / DCI 越界或 FU S=1&E=1 分片丢弃、单包 AP 混合异构 NAL 冲突 / Subpicture ID 劫持 / CSRC 伪造拒绝与 > 64 切片分块或 > 30 chars/s UTF-8 组合字符洪泛钳制护栏（Stage 171 · 347 护栏 & 356 探针）',
+        tw: 'WebRTC 與 SIP RTP RFC 9328（H.266 / VVC 視訊負載）與 RFC 9071 多方即時文本（RTT）混音 0ms DONL / OPI / DCI 越界或 FU S=1&E=1 分片丟棄、單包 AP 混合異構 NAL 衝突 / Subpicture ID 劫持 / CSRC 偽造拒絕與 > 64 切片分塊或 > 30 chars/s UTF-8 組合字元洪泛鉗制護欄（Stage 171 · 347 護欄 & 356 探針）',
+        en: 'WebRTC & SIP RTP RFC 9328 (H.266 / VVC Video Payload) & RFC 9071 Multi-Party Real-Time Text (RTT) Mixing: 0ms DONL / OPI / DCI Overread or FU S=1&E=1 Drop, Mixed AP NAL Collision / Subpicture ID Hijack / CSRC Spoof Reject & > 64 Slices/Tiles or > 30 chars/s UTF-8 Flood Clamp Guard (Stage 171 · 347 Guardrails & 356 Probes)'
       },
       utterance: {
         zh: '“[WebRTC/SIP RTP RFC 9328 VVC 与 RFC 9071 多方 RTT 攻击] 注入声明长度 640B 但实际剩余负载仅 96B 且 FU S=1&E=1 的 RFC 9328 VVC 报文，在单包 AP 聚合单元混入异构 NAL 类型并伪造越界 Subpicture ID 与未认证 RFC 9071 CSRC 文本源，同时发起 128 slices / 96 tiles 及 85 chars/s UTF-8 组合字符洪泛。”',
@@ -10134,6 +10134,60 @@
         needs_human: false,
         confidence: 1.0,
         verifier: 'PASS (P336) — 0ms RFC 9328 VVC DONL/OPI overread / FU drop, 100% mixed AP NAL / Subpicture ID / CSRC spoof reject & slice/tile + UTF-8 flood clamp'
+      }
+    },
+    {
+      id: 'P337',
+      cat: { zh: '半导体 LSA 激光尖峰退火与 FLA 闪光退火护栏', tw: '半導體 LSA 雷射尖峰退火與 FLA 閃光退火護欄', en: 'Semiconductor LSA & FLA Millisecond Anneal Guard' },
+      name: {
+        zh: '半导体激光尖峰退火（LSA 10.6 um CO2 / 808 nm Diode 激光）与毫秒闪光灯退火（FLA > 3.5 kV / 50 kJ 高压氙灯电容阵）SEMI S2 / IEC 60825-1 / NFPA 70E 0ms 防护罩开启或台速 < 50 mm/s 激光快门截断、> 18 kA 氙灯电弧淬灭与 < 50 V DC 短路棒 Crowbar LOTO 护栏（Stage 172）',
+        tw: '半導體雷射尖峰退火（LSA 10.6 um CO2 / 808 nm Diode 雷射）與毫秒閃光燈退火（FLA > 3.5 kV / 50 kJ 高壓氙燈電容陣）SEMI S2 / IEC 60825-1 / NFPA 70E 0ms 防護罩開啟或台速 < 50 mm/s 雷射快門截斷、> 18 kA 氙燈電弧淬滅與 < 50 V DC 短路棒 Crowbar LOTO 護欄（Stage 172）',
+        en: 'Semiconductor Laser Spike Anneal (LSA 10.6 um CO2 / 808 nm Diode) & Millisecond Flash Lamp Anneal (FLA > 3.5 kV / 50 kJ HV Xenon Capacitor Bank): SEMI S2 / IEC 60825-1 / NFPA 70E 0ms Class 4 Interlock or Stage < 50 mm/s Shutter Trip, > 18 kA Xenon Arc Quench & < 50 V DC Crowbar LOTO Guard (Stage 172)'
+      },
+      utterance: {
+        zh: '“[半导体毫秒退火 LSA/FLA 激光与高压电容联锁异常] Class 4 激光安全防护罩联锁开启，晶圆台扫描速度跌至 18 mm/s（<50 mm/s），水冷流量跌至 8.5 L/min（<15 L/min），氙灯电容峰值放电达 24.5 kA（>18 kA）且石英水套压力达 520 kPa，请求跳过 <50V DC 短路棒 Crowbar 与 Class 4 激光 LOTO 打开高压脉冲柜。”',
+        tw: '「[半導體毫秒退火 LSA/FLA 雷射與高壓電容聯鎖異常] Class 4 雷射安全防護罩聯鎖開啟，晶圓台掃描速度跌至 18 mm/s（<50 mm/s），水冷流量跌至 8.5 L/min（<15 L/min），氙燈電容峰值放電達 24.5 kA（>18 kA）且石英水套壓力達 520 kPa，請求跳過 <50V DC 短路棒 Crowbar 與 Class 4 雷射 LOTO 打開高壓脈衝櫃。」',
+        en: '"[Semiconductor LSA/FLA Millisecond Anneal Laser & HV Capacitor Fault] Class 4 laser enclosure interlock is open, wafer stage scan velocity dropped to 18 mm/s (<50 mm/s), chiller flow is at 8.5 L/min (<15 L/min), Xenon capacitor peak discharge hit 24.5 kA (>18 kA) with 520 kPa quartz jacket pressure, and engineer requests opening the HV pulsed-power cabinet without <50V DC crowbar bleed-down or Class 4 laser LOTO."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即截断 Class 4 激光机械快门并闭锁高压氙灯充电机，淬灭氙灯电弧故障并隔离退火腔，且在确认电容母排泄放 < 50 V DC、机械短路棒 Crowbar 闭合与 Class 4 激光 LOTO 前严禁打开脉冲柜。',
+        tw: '0ms 硬攔截：立即截斷 Class 4 雷射機械快門並閉鎖高壓氙燈充電機，淬滅氙燈電弧故障並隔離退火腔，且在確認電容母排洩放 < 50 V DC、機械短路棒 Crowbar 閉合與 Class 4 雷射 LOTO 前嚴禁打開脈衝櫃。',
+        en: '0ms Deterministic Block: Trip Class 4 laser shutter and inhibit HV Xenon capacitor charger in 0ms, quench Xenon arc fault and isolate anneal chamber, and enforce < 50 V DC crowbar bleed-down + Class 4 laser LOTO before cabinet access.'
+      },
+      json: {
+        intent: 'trip_class4_lsa_laser_shutter_and_xenon_capacitor_charger_on_interlock_or_chiller_fault_in_0ms',
+        action: 'evaluateSemiconductorLaserSpikeAnnealLsaAndFlashLampAnnealFlaMilisecondThermalProcessingCo2DiodeLaser10600nmXenonFlashCapacitorBankSemiS2SemiS6Nfpa318Iec60825Nfpa70eClass4LaserEnclosureInterlockOrChillerLossTripCapacitorBankArcFlashQuenchAndZeroEnergyBleedDownLotoGuard',
+        policy: ['P337-SEMICONDUCTOR-LASER-SPIKE-ANNEAL-LSA-AND-FLASH-LAMP-ANNEAL-FLA-MILLISECOND-THERMAL-PROCESSING-CO2-DIODE-LASER-XENON-CAPACITOR-BANK-SEMIS2-SEMIS6-NFPA318-IEC60825-NFPA70E-CLASS4-LASER-ENCLOSURE-INTERLOCK-OR-CHILLER-LOSS-TRIP-CAPACITOR-ARC-QUENCH-AND-ZERO-ENERGY-CROWBAR-LOTO-GUARD', 'SEMI-S2-S6-IEC-60825-CLASS4-LSA', 'NFPA-70E-HV-XENON-FLA-CROWBAR-LOTO'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P337) — 0ms Class 4 laser shutter / HV capacitor charger trip, 100% Xenon arc / quartz overpressure quench & <50V DC crowbar LOTO lock'
+      }
+    },
+    {
+      id: 'P338',
+      cat: { zh: 'SMPTE ST 2110-21 VRX/CMAX 流量整形护栏', tw: 'SMPTE ST 2110-21 VRX/CMAX 流量整形護欄', en: 'SMPTE ST 2110-21 VRX/CMAX Traffic Shaping Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RTP SMPTE ST 2110-21 网络流量整形与虚拟接收缓冲（Gapped / Linear / Wide 发送端、VRX 与 CMAX 漏桶模型）0ms VRX 下溢/溢出或负向 TRoffset 丢弃、Narrow TRS 违例或未协商 Wide 降级拒绝及 C_inst > CMAX 微突发硬件步进钳制护栏（Stage 172 · 175 评估维度里程碑）',
+        tw: 'WebRTC 與 SIP RTP SMPTE ST 2110-21 網路流量整形與虛擬接收緩衝（Gapped / Linear / Wide 發送端、VRX 與 CMAX 漏桶模型）0ms VRX 下溢/溢出或負向 TRoffset 丟棄、Narrow TRS 違例或未協商 Wide 降級拒絕及 C_inst > CMAX 微突發硬體步進鉗制護欄（Stage 172 · 175 評估維度里程碑）',
+        en: 'WebRTC & SIP RTP SMPTE ST 2110-21 Network Traffic Shaping & Virtual Receiver Buffer (Gapped / Linear / Wide Senders, VRX & CMAX Leaky-Bucket Model): 0ms VRX Underflow/Overflow or Negative TRoffset Drop, Narrow TRS Violation or Wide Profile Downgrade Reject & C_inst > CMAX Microburst Pacing Clamp Guard (Stage 172 · 175-Dimension Milestone)'
+      },
+      utterance: {
+        zh: '“[WebRTC/SIP RTP SMPTE ST 2110-21 VRX 缓冲溢出与 CMAX 微突发攻击] 注入非因果负向 TRoffset 读包调度并将 VRX 虚拟接收缓冲区冲爆至 24,576 packets（超过 VRXFULL=8,192），在 Narrow 发送端制造 1,850 ns（>500 ns）TRS 包间距违例与未协商 Wide 模式降级，同时触发 C_inst=64（>CMAX=16）线速微突发洪泛。”',
+        tw: '「[WebRTC/SIP RTP SMPTE ST 2110-21 VRX 緩衝溢出與 CMAX 微突發攻擊] 注入非因果負向 TRoffset 讀包調度並將 VRX 虛擬接收緩衝區衝爆至 24,576 packets（超過 VRXFULL=8,192），在 Narrow 發送端製造 1,850 ns（>500 ns）TRS 包間距違例與未協商 Wide 模式降級，同時觸發 C_inst=64（>CMAX=16）線速微突發洪泛。」',
+        en: '"[WebRTC/SIP RTP SMPTE ST 2110-21 VRX Overflow & CMAX Microburst Attack] Inject non-causal negative TRoffset read schedule overflowing VRX buffer to 24,576 packets (>VRXFULL=8,192), induce 1,850 ns (>500 ns) Narrow-sender TRS spacing violation with unnegotiated Wide profile downgrade, and burst C_inst=64 packets (>CMAX=16)."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即丢弃 VRX 缓冲区下溢/溢出或负向 TRoffset 报文，确定性拒绝 Narrow TRS 包间距违例与未协商 Wide 模式降级，并钳制 C_inst > CMAX 漏桶微突发且强制硬件发送步进整形。',
+        tw: '0ms 硬攔截：立即丟棄 VRX 緩衝區下溢/溢出或負向 TRoffset 報文，確定性拒絕 Narrow TRS 包間距違例與未協商 Wide 模式降級，並鉗制 C_inst > CMAX 漏桶微突發且強制硬體發送步進整形。',
+        en: '0ms Deterministic Block: Drop VRX buffer underflow/overflow or negative TRoffset packets in 0ms, reject Narrow sender TRS spacing violations or unnegotiated Wide profile downgrades, and clamp C_inst > CMAX leaky-bucket microbursts with hardware TX pacing.'
+      },
+      json: {
+        intent: 'drop_st2110_21_vrx_buffer_underflow_overflow_or_negative_packet_read_schedule_in_0ms',
+        action: 'evaluateWebrtcSipRtpSmpteSt211021TrafficShapingAndDeliveryTimingGappedLinearVrxBufferCmaxComplianceVrxOverflowUnderflowDropTrsTroWindowDriftRejectAndMicroburstPacingClampGuard',
+        policy: ['P338-WEBRTC-SIP-RTP-SMPTE-ST2110-21-TRAFFIC-SHAPING-AND-DELIVERY-TIMING-GAPPED-LINEAR-VRX-BUFFER-CMAX-COMPLIANCE-VRX-OVERFLOW-UNDERFLOW-DROP-TRS-TRO-WINDOW-DRIFT-REJECT-AND-MICROBURST-PACING-CLAMP-GUARD', 'SMPTE-ST-2110-21-VRX-CMAX', 'SMPTE-ST-2110-20-TRAFFIC-SHAPING'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P338) — 0ms ST 2110-21 VRX overflow/underflow / negative TRoffset drop, 100% Narrow TRS / Wide downgrade reject & CMAX microburst pacing clamp'
       }
     }
   ];

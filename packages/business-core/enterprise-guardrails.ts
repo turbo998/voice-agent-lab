@@ -33047,3 +33047,209 @@ export function evaluateWebrtcSipRtpRfc9328VvcH266PayloadAndRfc9071RttMultiParty
     blockedReason: "none",
   };
 }
+
+export interface SemiconductorLaserSpikeAnnealAndFlashLampAnnealGuardInput {
+  annealChamberId: string;
+  class4LaserEnclosureInterlockClosed: boolean;
+  waferStageScanVelocityMmPerSec: number;
+  laserChillerFlowLpm: number;
+  xenonCapacitorPeakDischargeKa: number;
+  quartzFlashlampJacketPressureKpa: number;
+  uvOzoneLeakConcentrationPpm: number;
+  hvCabinetOrBeamEnclosureAccessRequested: boolean;
+  capacitorBleedDownBelow50vCrowbarAndClass4LaserLotoVerified: boolean;
+}
+
+export interface SemiconductorLaserSpikeAnnealAndFlashLampAnnealGuardDecision {
+  policyCode: "P337-SEMICONDUCTOR-LASER-SPIKE-ANNEAL-LSA-AND-FLASH-LAMP-ANNEAL-FLA-MILLISECOND-THERMAL-PROCESSING-CO2-DIODE-LASER-XENON-CAPACITOR-BANK-SEMIS2-SEMIS6-NFPA318-IEC60825-NFPA70E-CLASS4-LASER-ENCLOSURE-INTERLOCK-OR-CHILLER-LOSS-TRIP-CAPACITOR-ARC-QUENCH-AND-ZERO-ENERGY-CROWBAR-LOTO-GUARD";
+  annealChamberId: string;
+  class4LaserShutterOrCapacitorChargerTripped0ms: boolean;
+  xenonArcFaultOrQuartzRuptureQuenched: boolean;
+  hvCrowbarBleedDownAndLaserLotoLocked: boolean;
+  lsaFlaMillisecondAnnealApproved: boolean;
+  action:
+    | "approve_semiconductor_lsa_fla_millisecond_anneal_operation"
+    | "trip_class4_lsa_laser_shutter_and_xenon_capacitor_charger_on_interlock_or_chiller_fault_in_0ms"
+    | "quench_fla_xenon_arc_fault_and_isolate_chamber_on_quartz_envelope_rupture_or_ozone_leak"
+    | "enforce_hv_capacitor_crowbar_bleed_down_below_50v_and_class4_laser_loto_before_access";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorLaserSpikeAnnealLsaAndFlashLampAnnealFlaMilisecondThermalProcessingCo2DiodeLaser10600nmXenonFlashCapacitorBankSemiS2SemiS6Nfpa318Iec60825Nfpa70eClass4LaserEnclosureInterlockOrChillerLossTripCapacitorBankArcFlashQuenchAndZeroEnergyBleedDownLotoGuard(
+  input: SemiconductorLaserSpikeAnnealAndFlashLampAnnealGuardInput
+): SemiconductorLaserSpikeAnnealAndFlashLampAnnealGuardDecision {
+  const policyCode =
+    "P337-SEMICONDUCTOR-LASER-SPIKE-ANNEAL-LSA-AND-FLASH-LAMP-ANNEAL-FLA-MILLISECOND-THERMAL-PROCESSING-CO2-DIODE-LASER-XENON-CAPACITOR-BANK-SEMIS2-SEMIS6-NFPA318-IEC60825-NFPA70E-CLASS4-LASER-ENCLOSURE-INTERLOCK-OR-CHILLER-LOSS-TRIP-CAPACITOR-ARC-QUENCH-AND-ZERO-ENERGY-CROWBAR-LOTO-GUARD" as const;
+
+  const class4LaserShutterOrCapacitorChargerTripped0ms =
+    !input.class4LaserEnclosureInterlockClosed ||
+    input.waferStageScanVelocityMmPerSec < 50 ||
+    input.laserChillerFlowLpm < 15;
+
+  const xenonArcFaultOrQuartzRuptureQuenched =
+    input.xenonCapacitorPeakDischargeKa > 18 ||
+    input.quartzFlashlampJacketPressureKpa > 450 ||
+    input.uvOzoneLeakConcentrationPpm >= 0.1;
+
+  const hvCrowbarBleedDownAndLaserLotoLocked =
+    input.hvCabinetOrBeamEnclosureAccessRequested &&
+    !input.capacitorBleedDownBelow50vCrowbarAndClass4LaserLotoVerified;
+
+  if (class4LaserShutterOrCapacitorChargerTripped0ms) {
+    return {
+      policyCode,
+      annealChamberId: input.annealChamberId,
+      class4LaserShutterOrCapacitorChargerTripped0ms: true,
+      xenonArcFaultOrQuartzRuptureQuenched,
+      hvCrowbarBleedDownAndLaserLotoLocked,
+      lsaFlaMillisecondAnnealApproved: false,
+      action:
+        "trip_class4_lsa_laser_shutter_and_xenon_capacitor_charger_on_interlock_or_chiller_fault_in_0ms",
+      blockedReason:
+        "class4_laser_enclosure_open_or_stage_scan_velocity_below_50_mm_s_or_chiller_flow_below_15_lpm",
+    };
+  }
+
+  if (xenonArcFaultOrQuartzRuptureQuenched) {
+    return {
+      policyCode,
+      annealChamberId: input.annealChamberId,
+      class4LaserShutterOrCapacitorChargerTripped0ms: false,
+      xenonArcFaultOrQuartzRuptureQuenched: true,
+      hvCrowbarBleedDownAndLaserLotoLocked,
+      lsaFlaMillisecondAnnealApproved: false,
+      action:
+        "quench_fla_xenon_arc_fault_and_isolate_chamber_on_quartz_envelope_rupture_or_ozone_leak",
+      blockedReason:
+        "xenon_capacitor_discharge_above_18_ka_or_quartz_jacket_above_450_kpa_or_ozone_leak_above_0_1_ppm",
+    };
+  }
+
+  if (hvCrowbarBleedDownAndLaserLotoLocked) {
+    return {
+      policyCode,
+      annealChamberId: input.annealChamberId,
+      class4LaserShutterOrCapacitorChargerTripped0ms: false,
+      xenonArcFaultOrQuartzRuptureQuenched: false,
+      hvCrowbarBleedDownAndLaserLotoLocked: true,
+      lsaFlaMillisecondAnnealApproved: false,
+      action:
+        "enforce_hv_capacitor_crowbar_bleed_down_below_50v_and_class4_laser_loto_before_access",
+      blockedReason:
+        "hv_capacitor_bank_bleed_down_below_50v_crowbar_and_class4_laser_loto_not_verified",
+    };
+  }
+
+  return {
+    policyCode,
+    annealChamberId: input.annealChamberId,
+    class4LaserShutterOrCapacitorChargerTripped0ms: false,
+    xenonArcFaultOrQuartzRuptureQuenched: false,
+    hvCrowbarBleedDownAndLaserLotoLocked: false,
+    lsaFlaMillisecondAnnealApproved: true,
+    action: "approve_semiconductor_lsa_fla_millisecond_anneal_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211021TrafficShapingAndVrxBufferGuardInput {
+  sessionId: string;
+  vrxBufferFullnessPackets: number;
+  negotiatedVrxFullCapacityPackets: number;
+  nonCausalNegativeTrOffsetDetected: boolean;
+  narrowSenderTrsSpacingViolationNs: number;
+  unnegotiatedWideSenderProfileDowngrade: boolean;
+  instantaneousCinstBacklogPackets: number;
+  negotiatedCmaxLimitPackets: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211021TrafficShapingAndVrxBufferGuardDecision {
+  policyCode: "P338-WEBRTC-SIP-RTP-SMPTE-ST2110-21-TRAFFIC-SHAPING-AND-DELIVERY-TIMING-GAPPED-LINEAR-VRX-BUFFER-CMAX-COMPLIANCE-VRX-OVERFLOW-UNDERFLOW-DROP-TRS-TRO-WINDOW-DRIFT-REJECT-AND-MICROBURST-PACING-CLAMP-GUARD";
+  sessionId: string;
+  vrxUnderflowOverflowOrNegativeTroDropped0ms: boolean;
+  narrowTrsViolationOrWideProfileDowngradeRejected: boolean;
+  cmaxLeakyBucketMicroburstClamped: boolean;
+  st211021ShapedStreamAccepted: boolean;
+  action:
+    | "accept_smpte_st2110_21_traffic_shaped_rtp_stream"
+    | "drop_st2110_21_vrx_buffer_underflow_overflow_or_negative_packet_read_schedule_in_0ms"
+    | "reject_st2110_21_narrow_sender_trs_violation_or_unnegotiated_wide_profile_downgrade"
+    | "clamp_st2110_21_cmax_leaky_bucket_microburst_and_enforce_hardware_tx_pacing";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211021TrafficShapingAndDeliveryTimingGappedLinearVrxBufferCmaxComplianceVrxOverflowUnderflowDropTrsTroWindowDriftRejectAndMicroburstPacingClampGuard(
+  input: WebrtcSipRtpSmpteSt211021TrafficShapingAndVrxBufferGuardInput
+): WebrtcSipRtpSmpteSt211021TrafficShapingAndVrxBufferGuardDecision {
+  const policyCode =
+    "P338-WEBRTC-SIP-RTP-SMPTE-ST2110-21-TRAFFIC-SHAPING-AND-DELIVERY-TIMING-GAPPED-LINEAR-VRX-BUFFER-CMAX-COMPLIANCE-VRX-OVERFLOW-UNDERFLOW-DROP-TRS-TRO-WINDOW-DRIFT-REJECT-AND-MICROBURST-PACING-CLAMP-GUARD" as const;
+
+  const vrxUnderflowOverflowOrNegativeTroDropped0ms =
+    input.vrxBufferFullnessPackets < 0 ||
+    input.vrxBufferFullnessPackets > input.negotiatedVrxFullCapacityPackets ||
+    input.nonCausalNegativeTrOffsetDetected;
+
+  const narrowTrsViolationOrWideProfileDowngradeRejected =
+    input.narrowSenderTrsSpacingViolationNs > 500 ||
+    input.unnegotiatedWideSenderProfileDowngrade;
+
+  const cmaxLeakyBucketMicroburstClamped =
+    input.instantaneousCinstBacklogPackets > input.negotiatedCmaxLimitPackets;
+
+  if (vrxUnderflowOverflowOrNegativeTroDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      vrxUnderflowOverflowOrNegativeTroDropped0ms: true,
+      narrowTrsViolationOrWideProfileDowngradeRejected,
+      cmaxLeakyBucketMicroburstClamped,
+      st211021ShapedStreamAccepted: false,
+      action:
+        "drop_st2110_21_vrx_buffer_underflow_overflow_or_negative_packet_read_schedule_in_0ms",
+      blockedReason:
+        "st2110_21_vrx_buffer_underflow_or_overflow_beyond_vrxfull_or_non_causal_negative_troffset",
+    };
+  }
+
+  if (narrowTrsViolationOrWideProfileDowngradeRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      vrxUnderflowOverflowOrNegativeTroDropped0ms: false,
+      narrowTrsViolationOrWideProfileDowngradeRejected: true,
+      cmaxLeakyBucketMicroburstClamped,
+      st211021ShapedStreamAccepted: false,
+      action:
+        "reject_st2110_21_narrow_sender_trs_violation_or_unnegotiated_wide_profile_downgrade",
+      blockedReason:
+        "st2110_21_narrow_sender_trs_deviation_above_500_ns_or_unnegotiated_wide_sender_profile_downgrade",
+    };
+  }
+
+  if (cmaxLeakyBucketMicroburstClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      vrxUnderflowOverflowOrNegativeTroDropped0ms: false,
+      narrowTrsViolationOrWideProfileDowngradeRejected: false,
+      cmaxLeakyBucketMicroburstClamped: true,
+      st211021ShapedStreamAccepted: false,
+      action:
+        "clamp_st2110_21_cmax_leaky_bucket_microburst_and_enforce_hardware_tx_pacing",
+      blockedReason:
+        "st2110_21_instantaneous_cinst_backlog_exceeds_negotiated_cmax_leaky_bucket_ceiling",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    vrxUnderflowOverflowOrNegativeTroDropped0ms: false,
+    narrowTrsViolationOrWideProfileDowngradeRejected: false,
+    cmaxLeakyBucketMicroburstClamped: false,
+    st211021ShapedStreamAccepted: true,
+    action: "accept_smpte_st2110_21_traffic_shaped_rtp_stream",
+    blockedReason: "none",
+  };
+}
+
