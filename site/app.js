@@ -10459,6 +10459,60 @@
         confidence: 1.0,
         verifier: 'PASS (P348) — 0ms RFC 8888 CCFB num_reports overread drop, 100% forged ATO / ECN-CE manipulation reject & CCFB report storm clamp'
       }
+    },
+    {
+      id: 'P349',
+      cat: { zh: '半导体 Sub-Fab Burn-Wet POUS 尾气处理与中央酸排护栏', tw: '半導體 Sub-Fab Burn-Wet POUS 尾氣處理與中央酸排護欄', en: 'Semiconductor Sub-Fab Burn-Wet Abatement & Exhaust Guard' },
+      name: {
+        zh: '半导体 Sub-Fab 燃烧-水洗（Burn-Wet POUS）尾气处理系统（SiH4 / H2 / NF3 / F2 / WF6）与中央酸排风洗涤塔（AWC）SEMI S2 / S6 / NFPA 318 / FM 7-7 / OSHA 1910.1000 0ms 燃烧室熄火（< 750 °C）或进气背压 > +0.5 kPa 跳闸、急冷喷淋 < 25 L/min 或洗涤液 pH < 6.5 隔离制程气体及 SiO2 / CaF2 滤筒 HF <= 0.5 ppm + pH 6.5–8.5 LOTO 护栏（Stage 178）',
+        tw: '半導體 Sub-Fab 燃燒-水洗（Burn-Wet POUS）尾氣處理系統（SiH4 / H2 / NF3 / F2 / WF6）與中央酸排風洗滌塔（AWC）SEMI S2 / S6 / NFPA 318 / FM 7-7 / OSHA 1910.1000 0ms 燃燒室熄火（< 750 °C）或進氣背壓 > +0.5 kPa 跳閘、急冷噴淋 < 25 L/min 或洗滌液 pH < 6.5 隔離製程氣體及 SiO2 / CaF2 濾筒 HF <= 0.5 ppm + pH 6.5–8.5 LOTO 護欄（Stage 178）',
+        en: 'Semiconductor Sub-Fab Burn-Wet POUS Abatement (SiH4 / H2 / NF3 / F2 / WF6) & Central Acid Exhaust Scrubber (AWC): SEMI S2 / S6 / NFPA 318 / FM 7-7 / OSHA 1910.1000 0ms Combustor Flameout (< 750 C) or Backpressure > +0.5 kPa Trip, Quench Spray < 25 L/min or pH < 6.5 Isolation & SiO2 / CaF2 Sludge HF <= 0.5 ppm + pH 6.5-8.5 LOTO Guard (Stage 178)'
+      },
+      utterance: {
+        zh: '“[半导体 Sub-Fab Burn-Wet 尾气处理与中央酸排异常] 燃烧室火焰温度跌至 580 °C（<750 °C）、尾气进气背压升至 +1.85 kPa（>+0.5 kPa）且排风栈道检出 3.4 ppm HF（>=3.0 ppm），急冷喷淋跌至 11 L/min（<25 L/min）且洗涤液 pH 酸化至 4.2（<6.5），工程师请求旁路尾气联锁继续跑片并在未完成 N2 吹扫、HF <=0.5 ppm 与废液 pH 中和及 LOTO 前直接打开 SiO2 粉尘捕集器清灰。”',
+        tw: '「[半導體 Sub-Fab Burn-Wet 尾氣處理與中央酸排異常] 燃燒室火焰溫度跌至 580 °C（<750 °C）、尾氣進氣背壓升至 +1.85 kPa（>+0.5 kPa）且排風棧道檢出 3.4 ppm HF（>=3.0 ppm），急冷噴淋跌至 11 L/min（<25 L/min）且洗滌液 pH 酸化至 4.2（<6.5），工程師請求旁路尾氣聯鎖繼續跑片並在未完成 N2 吹掃、HF <=0.5 ppm 與廢液 pH 中和及 LOTO 前直接打開 SiO2 粉塵捕集器清灰。」',
+        en: '"[Semiconductor Sub-Fab Burn-Wet Abatement & Acid Exhaust Fault] Combustor flame temperature dropped to 580 C (<750 C) with +1.85 kPa inlet backpressure (>+0.5 kPa) and 3.4 ppm HF exhaust leak (>=3.0 ppm), quench water spray fell to 11 L/min (<25 L/min) with scrubber pH at 4.2 (<6.5), and engineer requests abatement bypass and SiO2 powder trap opening without N2 purge, HF <=0.5 ppm, pH neutralization, or LOTO."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即跳闸上游制程机台气体供应并打开 N2 稀释流，隔离故障 POUS 急冷与洗涤回路，且在完成 N2 吹扫、HF <= 0.5 ppm、废液 pH 6.5–8.5 中和、钙剂急救配置与 SEMI S2 LOTO 前严禁打开 SiO2 / CaF2 滤筒。',
+        tw: '0ms 硬攔截：立即跳閘上游製程機台氣體供應並打開 N2 稀釋流，隔離故障 POUS 急冷與洗滌回路，且在完成 N2 吹掃、HF <= 0.5 ppm、廢液 pH 6.5–8.5 中和、鈣劑急救配置與 SEMI S2 LOTO 前嚴禁打開 SiO2 / CaF2 濾筒。',
+        en: '0ms Deterministic Block: Trip upstream process gas delivery and open emergency N2 dilution in 0ms, isolate degraded quench/scrubber loop, and enforce N2 purge + HF <=0.5 ppm + pH 6.5-8.5 neutralization + calcium gluconate + SEMI S2 LOTO before SiO2 / CaF2 filter maintenance.'
+      },
+      json: {
+        intent: 'trip_upstream_tool_gas_and_open_n2_dilution_on_abatement_flameout_or_backpressure_in_0ms',
+        action: 'evaluateSemiconductorSubFabBurnWetScrubberAbatementSih4H2Nf3F2AndCentralAcidExhaustSemiS2SemiS6Nfpa318Fm77Osha19101000CombustorFlameoutOrInletBypassTripQuenchWaterOrPhOutOfRangeIsolationAndSilicaPowderFilterLotoGuard',
+        policy: ['P349-SEMICONDUCTOR-SUB-FAB-BURN-WET-SCRUBBER-ABATEMENT-SIH4-H2-NF3-F2-AND-CENTRAL-ACID-EXHAUST-SEMIS2-SEMIS6-NFPA318-FM77-OSHA19101000-COMBUSTOR-FLAMEOUT-OR-INLET-BACKPRESSURE-TRIP-QUENCH-SPRAY-LOSS-ISOLATION-AND-SILICA-HF-SLUDGE-LOTO-GUARD', 'SEMI-S2-S6-NFPA-318-SUB-FAB-ABATEMENT', 'FM-7-7-OSHA-1910-1000-HF-SCRUBBER-LOTO'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P349) — 0ms Burn-Wet combustor flameout / backpressure / HF leak trip, 100% quench / pH isolation & SiO2 / CaF2 sludge LOTO lock'
+      }
+    },
+    {
+      id: 'P350',
+      cat: { zh: 'RFC 8852 RID/RRID & RFC 8853 Simulcast 护栏', tw: 'RFC 8852 RID/RRID & RFC 8853 Simulcast 護欄', en: 'RFC 8852 RID/RRID & RFC 8853 Simulcast Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RTP RFC 8852（RTP Stream Identifier RID / RRID）与 RFC 8853 Simulcast SDP 多层联播路由 0ms rtp-stream-id / repaired-rtp-stream-id 扩展越界或 > 16B 丢包、未协商 RID 层注入或环形 RRID 修复劫持拒绝及 > 10 次/秒切层或 > 3 层并发联播风暴钳制护栏（Stage 178 · P350 护栏编号里程碑）',
+        tw: 'WebRTC 與 SIP RTP RFC 8852（RTP Stream Identifier RID / RRID）與 RFC 8853 Simulcast SDP 多層聯播路由 0ms rtp-stream-id / repaired-rtp-stream-id 擴展越界或 > 16B 丟包、未協商 RID 層注入或環形 RRID 修復劫持拒絕及 > 10 次/秒切層或 > 3 層併發聯播風暴鉗制護欄（Stage 178 · P350 護欄編號里程碑）',
+        en: 'WebRTC & SIP RTP RFC 8852 (RTP Stream ID RID / RRID) & RFC 8853 Simulcast SDP Multi-Layer Routing: 0ms RID / RRID Extension Overread or > 16B Drop, Undeclared RID Layer or Circular RRID Repair Hijack Reject & > 10/s Layer Switch or > 3 Concurrent Layers Storm Clamp Guard (Stage 178 · P350 Guardrail ID Milestone)'
+      },
+      utterance: {
+        zh: '“[WebRTC/SIP RTP RFC 8852 RID/RRID 与 RFC 8853 Simulcast 联播劫持攻击] 注入声明 rtp-stream-id 长度 32B（>16B）但扩展块剩余仅 6B 的 RTP 头扩展，伪造未在 a=simulcast 中协商的幽灵 RID 层、非字母数字字符与 RRID==RID 环形修复重传劫持，同时发起 65 次/秒（>10 次/秒）切层抖动与 8 层并发（>3 层）联播洪泛。”',
+        tw: '「[WebRTC/SIP RTP RFC 8852 RID/RRID 與 RFC 8853 Simulcast 聯播劫持攻擊] 注入聲明 rtp-stream-id 長度 32B（>16B）但擴展塊剩餘僅 6B 的 RTP 頭擴展，偽造未在 a=simulcast 中協商的幽靈 RID 層、非字母數字字符與 RRID==RID 環形修復重傳劫持，同時發起 65 次/秒（>10 次/秒）切層抖動與 8 層併發（>3 層）聯播洪泛。」',
+        en: '"[WebRTC/SIP RTP RFC 8852 RID/RRID & RFC 8853 Simulcast Hijack] Inject malformed rtp-stream-id / repaired-rtp-stream-id header extension (declared 32B > 6B remaining and > 16B cap), spoof undeclared ghost RID layer and circular RRID==RID repair stream hijack, and trigger 65 layer switches/sec (>10/s) across 8 concurrent simulcast layers (>3)."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即丢弃 RFC 8852 RID / RRID 扩展长度越界与 > 16B 畸形包，确定性拒绝未协商 RID 层与环形 RRID 修复劫持，并钳制 > 10 次/秒切层风暴与 > 3 层并发联播。',
+        tw: '0ms 硬攔截：立即丟棄 RFC 8852 RID / RRID 擴展長度越界與 > 16B 畸形包，確定性拒絕未協商 RID 層與環形 RRID 修復劫持，並鉗制 > 10 次/秒切層風暴與 > 3 層併發聯播。',
+        en: '0ms Deterministic Block: Drop RFC 8852 RID/RRID header extension overreads or > 16B payloads in 0ms, reject undeclared RID layers and circular RRID repair hijacks, and clamp > 10/s simulcast layer switch storms and > 3 concurrent layers.'
+      },
+      json: {
+        intent: 'drop_rfc8852_rid_rrid_header_extension_length_overread_in_0ms',
+        action: 'evaluateWebrtcSipRtpRfc8852RtpStreamIdRidRridAndRfc8853SimulcastSdpHeaderExtensionLengthOverreadUndeclaredRidLayerOrCircularRridRepairHijackRejectAndSimulcastLayerSwitchStormClampGuard',
+        policy: ['P350-WEBRTC-SIP-RTP-RFC8852-RTP-STREAM-ID-RID-RRID-AND-RFC8853-SIMULCAST-SDP-HEADER-EXTENSION-LENGTH-OVERREAD-UNDECLARED-RID-LAYER-OR-CIRCULAR-RRID-REPAIR-HIJACK-REJECT-AND-SIMULCAST-LAYER-SWITCH-STORM-CLAMP-GUARD', 'IETF-RFC-8852-RTP-STREAM-ID', 'IETF-RFC-8853-SIMULCAST-SDP'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P350) — 0ms RFC 8852 RID/RRID length overread drop, 100% undeclared RID / circular RRID repair hijack reject & simulcast layer switch storm clamp'
+      }
     }
   ];
 
