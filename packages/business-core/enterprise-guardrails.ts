@@ -35729,6 +35729,222 @@ export function evaluateWebrtcSipRtpRfc6464SsrcAudioLevelRfc6465CsrcAudioLevelAn
   };
 }
 
+export interface SemiconductorIonImplanterHighVoltageSdsVacDopantAndXrayShieldingGuardInput {
+  readonly implanterOrEndstationId: string;
+  readonly cabinetSkinXrayDoseRateMicroSvPerHr: number;
+  readonly sourceOrTerminalDoorInterlockOpen: boolean;
+  readonly sdsVacRegulatorOutletPressureKpaAbs: number;
+  readonly sourceEnclosureAsH3Ph3Bf3Ppb: number;
+  readonly beamlineCryopumpRegenH2AsH3DesorptionPressurePa: number;
+  readonly sourceArcChamberOrTerminalMaintenanceRequested: boolean;
+  readonly terminalCapacitorResidualVoltageVolts: number;
+  readonly arsenicPhosphorusSolidResidueHeatedPurgeAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorIonImplanterHighVoltageSdsVacDopantAndXrayShieldingGuardDecision {
+  readonly policyCode: "P363-SEMICONDUCTOR-ION-IMPLANTER-HIGH-VOLTAGE-SDS-VAC-ASH3-PH3-BF3-DOPANT-AND-XRAY-SHIELDING-SEMIS2-SEMIS6-NFPA318-OSHA19101096-ANSIN434-OSHA1910147-XRAY-OR-SDS-SUPERATMOSPHERIC-HV-TRIP-HYDRIDE-CRYOPUMP-ISOLATION-AND-HV-GROUNDING-SCBA-LOTO-GUARD";
+  readonly implanterOrEndstationId: string;
+  readonly ionImplanterProcessApproved: boolean;
+  readonly hvExtractionAndSdsDopantValveTripped0ms: boolean;
+  readonly dopantManifoldAndCryopumpRegenIsolatedToDryScrubber: boolean;
+  readonly terminalAndArcChamberMaintenanceLockedUntilHvStickAndScbaLoto: boolean;
+  readonly action:
+    | "approve_semiconductor_ion_implanter_high_voltage_and_sds_vac_dopant_operation"
+    | "trip_hv_extraction_psu_and_sds_vac_dopant_valve_on_xray_leak_interlock_or_superatmospheric_breach_in_0ms"
+    | "isolate_dopant_manifold_and_cryopump_regen_to_dry_chem_scrubber_on_ash3_ph3_bf3_leak"
+    | "lock_out_terminal_and_arc_chamber_until_hv_grounding_stick_below_5v_and_scba_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorIonImplanterHighVoltageSdsVacDopantAndXrayShieldingSemiS2SemiS6Nfpa318Osha19101096AnsiN434Osha1910147XrayOrSdsSuperatmosphericHvTripHydrideCryopumpIsolationAndHvGroundingScbaLotoGuard(
+  input: SemiconductorIonImplanterHighVoltageSdsVacDopantAndXrayShieldingGuardInput,
+): SemiconductorIonImplanterHighVoltageSdsVacDopantAndXrayShieldingGuardDecision {
+  const policyCode =
+    "P363-SEMICONDUCTOR-ION-IMPLANTER-HIGH-VOLTAGE-SDS-VAC-ASH3-PH3-BF3-DOPANT-AND-XRAY-SHIELDING-SEMIS2-SEMIS6-NFPA318-OSHA19101096-ANSIN434-OSHA1910147-XRAY-OR-SDS-SUPERATMOSPHERIC-HV-TRIP-HYDRIDE-CRYOPUMP-ISOLATION-AND-HV-GROUNDING-SCBA-LOTO-GUARD" as const;
+
+  const hvExtractionAndSdsDopantValveTripped0ms =
+    input.cabinetSkinXrayDoseRateMicroSvPerHr > 0.5 ||
+    input.sourceOrTerminalDoorInterlockOpen ||
+    input.sdsVacRegulatorOutletPressureKpaAbs > 98;
+
+  const dopantManifoldAndCryopumpRegenIsolatedToDryScrubber =
+    input.sourceEnclosureAsH3Ph3Bf3Ppb > 50 ||
+    input.beamlineCryopumpRegenH2AsH3DesorptionPressurePa > 120;
+
+  const terminalAndArcChamberMaintenanceLockedUntilHvStickAndScbaLoto =
+    input.sourceArcChamberOrTerminalMaintenanceRequested &&
+    (input.terminalCapacitorResidualVoltageVolts > 5 ||
+      !input.arsenicPhosphorusSolidResidueHeatedPurgeAndScbaLotoVerified);
+
+  if (hvExtractionAndSdsDopantValveTripped0ms) {
+    return {
+      policyCode,
+      implanterOrEndstationId: input.implanterOrEndstationId,
+      ionImplanterProcessApproved: false,
+      hvExtractionAndSdsDopantValveTripped0ms: true,
+      dopantManifoldAndCryopumpRegenIsolatedToDryScrubber,
+      terminalAndArcChamberMaintenanceLockedUntilHvStickAndScbaLoto,
+      action:
+        "trip_hv_extraction_psu_and_sds_vac_dopant_valve_on_xray_leak_interlock_or_superatmospheric_breach_in_0ms",
+      blockedReason:
+        "bremsstrahlung_xray_above_0_5usv_hr_or_door_interlock_open_or_sds_vac_pressure_above_98kpa_abs_0ms_hv_trip",
+    };
+  }
+
+  if (dopantManifoldAndCryopumpRegenIsolatedToDryScrubber) {
+    return {
+      policyCode,
+      implanterOrEndstationId: input.implanterOrEndstationId,
+      ionImplanterProcessApproved: false,
+      hvExtractionAndSdsDopantValveTripped0ms: false,
+      dopantManifoldAndCryopumpRegenIsolatedToDryScrubber: true,
+      terminalAndArcChamberMaintenanceLockedUntilHvStickAndScbaLoto,
+      action:
+        "isolate_dopant_manifold_and_cryopump_regen_to_dry_chem_scrubber_on_ash3_ph3_bf3_leak",
+      blockedReason:
+        "source_enclosure_ash3_ph3_bf3_above_50ppb_or_cryopump_regen_desorption_pressure_above_120pa",
+    };
+  }
+
+  if (terminalAndArcChamberMaintenanceLockedUntilHvStickAndScbaLoto) {
+    return {
+      policyCode,
+      implanterOrEndstationId: input.implanterOrEndstationId,
+      ionImplanterProcessApproved: false,
+      hvExtractionAndSdsDopantValveTripped0ms: false,
+      dopantManifoldAndCryopumpRegenIsolatedToDryScrubber: false,
+      terminalAndArcChamberMaintenanceLockedUntilHvStickAndScbaLoto: true,
+      action:
+        "lock_out_terminal_and_arc_chamber_until_hv_grounding_stick_below_5v_and_scba_loto",
+      blockedReason:
+        "terminal_capacitor_voltage_above_5v_or_arsenic_phosphorus_arc_chamber_residue_scba_loto_unverified",
+    };
+  }
+
+  return {
+    policyCode,
+    implanterOrEndstationId: input.implanterOrEndstationId,
+    ionImplanterProcessApproved: true,
+    hvExtractionAndSdsDopantValveTripped0ms: false,
+    dopantManifoldAndCryopumpRegenIsolatedToDryScrubber: false,
+    terminalAndArcChamberMaintenanceLockedUntilHvStickAndScbaLoto: false,
+    action:
+      "approve_semiconductor_ion_implanter_high_voltage_and_sds_vac_dopant_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc4733Rfc2833TelephoneEventDtmfAndRfc4734ToneInjectionGuardInput {
+  readonly sessionId: string;
+  readonly rfc4733PacketPayloadBytes: number;
+  readonly eventCodeValue: number;
+  readonly toneDurationTimestampUnits: number;
+  readonly declaredVolumeNegativeDbm0: number;
+  readonly simultaneousInbandAudioToneAndRfc4733DigitMismatchDetected: boolean;
+  readonly syntheticTtsBargeInDtmfDigitInjectionDetected: boolean;
+  readonly endBitFinalPacketRetransmissionCount: number;
+  readonly missingEndBitToneDurationMs: number;
+}
+
+export interface WebrtcSipRtpRfc4733Rfc2833TelephoneEventDtmfAndRfc4734ToneInjectionGuardDecision {
+  readonly policyCode: "P364-WEBRTC-SIP-RTP-RFC4733-RFC2833-TELEPHONE-EVENT-NAMED-DTMF-AND-RFC4734-TONE-PAYLOAD-TRUNCATED-EVENT-RESERVED-CODE-INBAND-OUTOFBAND-DIGIT-DESYNC-TTS-LOOPBACK-INJECTION-AND-TONE-WEDGE-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly rfc4733TelephoneEventDtmfHealthy: boolean;
+  readonly truncatedPayloadOrReservedEventCodeDropped0ms: boolean;
+  readonly inbandOutOfBandDigitDesyncOrTtsInjectionRejected: boolean;
+  readonly endBitRetransmissionStormOrToneWedgeClamped: boolean;
+  readonly action:
+    | "accept_rfc4733_telephone_event_and_rfc4734_named_tone_payload"
+    | "drop_rfc4733_truncated_payload_reserved_event_or_zero_duration_in_0ms"
+    | "reject_inband_vs_rfc4733_dtmf_digit_desync_or_synthetic_tts_loopback_injection"
+    | "clamp_rfc4733_end_bit_retransmission_storm_or_missing_e_bit_tone_wedge";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc4733Rfc2833TelephoneEventNamedDtmfAndRfc4734TonePayloadTruncatedEventReservedCodeInbandOutofbandDigitDesyncTtsLoopbackInjectionAndToneWedgeFloodGuard(
+  input: WebrtcSipRtpRfc4733Rfc2833TelephoneEventDtmfAndRfc4734ToneInjectionGuardInput,
+): WebrtcSipRtpRfc4733Rfc2833TelephoneEventDtmfAndRfc4734ToneInjectionGuardDecision {
+  const policyCode =
+    "P364-WEBRTC-SIP-RTP-RFC4733-RFC2833-TELEPHONE-EVENT-NAMED-DTMF-AND-RFC4734-TONE-PAYLOAD-TRUNCATED-EVENT-RESERVED-CODE-INBAND-OUTOFBAND-DIGIT-DESYNC-TTS-LOOPBACK-INJECTION-AND-TONE-WEDGE-FLOOD-GUARD" as const;
+
+  const isReservedUnassignedEventCode =
+    (input.eventCodeValue >= 16 && input.eventCodeValue <= 31) ||
+    input.eventCodeValue < 0 ||
+    input.eventCodeValue > 255;
+
+  const truncatedPayloadOrReservedEventCodeDropped0ms =
+    input.rfc4733PacketPayloadBytes < 4 ||
+    isReservedUnassignedEventCode ||
+    input.toneDurationTimestampUnits <= 0 ||
+    input.toneDurationTimestampUnits > 65535 ||
+    input.declaredVolumeNegativeDbm0 > 63;
+
+  const inbandOutOfBandDigitDesyncOrTtsInjectionRejected =
+    input.simultaneousInbandAudioToneAndRfc4733DigitMismatchDetected ||
+    input.syntheticTtsBargeInDtmfDigitInjectionDetected;
+
+  const endBitRetransmissionStormOrToneWedgeClamped =
+    input.endBitFinalPacketRetransmissionCount > 6 ||
+    input.missingEndBitToneDurationMs > 5000;
+
+  if (truncatedPayloadOrReservedEventCodeDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc4733TelephoneEventDtmfHealthy: false,
+      truncatedPayloadOrReservedEventCodeDropped0ms: true,
+      inbandOutOfBandDigitDesyncOrTtsInjectionRejected,
+      endBitRetransmissionStormOrToneWedgeClamped,
+      action:
+        "drop_rfc4733_truncated_payload_reserved_event_or_zero_duration_in_0ms",
+      blockedReason:
+        "rfc4733_payload_under_4_bytes_or_reserved_event_code_or_zero_duration_or_volume_above_63dbm0_0ms_drop",
+    };
+  }
+
+  if (inbandOutOfBandDigitDesyncOrTtsInjectionRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc4733TelephoneEventDtmfHealthy: false,
+      truncatedPayloadOrReservedEventCodeDropped0ms: false,
+      inbandOutOfBandDigitDesyncOrTtsInjectionRejected: true,
+      endBitRetransmissionStormOrToneWedgeClamped,
+      action:
+        "reject_inband_vs_rfc4733_dtmf_digit_desync_or_synthetic_tts_loopback_injection",
+      blockedReason:
+        "simultaneous_inband_goertzel_vs_rfc4733_digit_desync_smuggling_or_synthetic_tts_dtmf_injection_rejected",
+    };
+  }
+
+  if (endBitRetransmissionStormOrToneWedgeClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc4733TelephoneEventDtmfHealthy: false,
+      truncatedPayloadOrReservedEventCodeDropped0ms: false,
+      inbandOutOfBandDigitDesyncOrTtsInjectionRejected: false,
+      endBitRetransmissionStormOrToneWedgeClamped: true,
+      action:
+        "clamp_rfc4733_end_bit_retransmission_storm_or_missing_e_bit_tone_wedge",
+      blockedReason:
+        "rfc4733_end_bit_retransmissions_above_6_or_missing_e_bit_tone_wedge_above_5000ms_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc4733TelephoneEventDtmfHealthy: true,
+    truncatedPayloadOrReservedEventCodeDropped0ms: false,
+    inbandOutOfBandDigitDesyncOrTtsInjectionRejected: false,
+    endBitRetransmissionStormOrToneWedgeClamped: false,
+    action: "accept_rfc4733_telephone_event_and_rfc4734_named_tone_payload",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
