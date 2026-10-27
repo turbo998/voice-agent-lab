@@ -31248,6 +31248,215 @@ export function evaluateWebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingDualP
   };
 }
 
+export interface SemiconductorRapidThermalProcessingRtpRtaRtoRtnFlashLampAnnealSafetyInput {
+  chamberId: string;
+  formingGasH2OrAmmoniaNh3ExhaustLelPercent: number;
+  residualChamberOxygenBeforeH2Sih4IntroducePpm: number;
+  multiZonePyrometerTemperatureSpreadDeltaC: number;
+  quartzWindowCoolingWaterFlowLpm: number;
+  lampBankOrFlashCapacitorMaintenanceRequested: boolean;
+  capacitorBankBleedDownUnder50VAndWaferCoolDownBelow60CLotoVerified: boolean;
+}
+
+export interface SemiconductorRapidThermalProcessingRtpRtaRtoRtnFlashLampAnnealSafetyDecision {
+  policyCode: "P319-SEMICONDUCTOR-RAPID-THERMAL-PROCESSING-RTP-RTA-RTO-RTN-FLASH-LAMP-ANNEAL-PYROMETER-AND-NH3-SIH4-H2-FORMING-GAS-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA1910119-H2-NH3-LEL-SIH4-AUTOIGNITION-TRIP-PYROMETER-QUARTZ-SLIP-QUENCH-AND-THYRISTOR-CAPACITOR-DISCHARGE-LOTO-GUARD";
+  chamberId: string;
+  h2Nh3LelOrResidualO2AutoignitionTripped0ms: boolean;
+  pyrometerRunawayOrQuartzCoolingLossQuenched: boolean;
+  capacitorHighVoltageAndThermalCooldownLotoLocked: boolean;
+  rtpRapidThermalProcessApproved: boolean;
+  action:
+    | "trip_rtp_h2_nh3_sih4_gas_valves_cut_lamp_scr_power_and_flood_n2_purge_in_0ms"
+    | "quench_tungsten_halogen_or_flash_lamp_array_and_abort_thermal_ramp"
+    | "lock_rtp_chamber_door_and_require_capacitor_50v_bleed_and_60c_cooldown_loto"
+    | "approve_semiconductor_rtp_rta_rto_rtn_flash_anneal_operation";
+  blockedReason:
+    | "NFPA_86_NFPA_318_RTP_H2_NH3_25LEL_OR_RESIDUAL_O2_OVER_50PPM_EXPLOSION_TRIPPED_0MS"
+    | "SEMI_S2_RTP_PYROMETER_15C_RUNAWAY_SLIP_OR_QUARTZ_COOLING_WATER_LOSS_QUENCHED"
+    | "SEMI_S2_RTP_FLASH_CAPACITOR_HIGH_VOLTAGE_AND_60C_THERMAL_COOLDOWN_LOTO_LOCKED"
+    | "none";
+}
+
+export function evaluateSemiconductorRapidThermalProcessingRtpRtaRtoRtnFlashLampAnnealPyrometerAndNh3Sih4H2FormingGasNfpa318SemiS2SemiS6Nfpa86Osha1910119H2Nh3LelSih4AutoignitionTripPyrometerQuartzSlipQuenchAndThyristorCapacitorDischargeLotoGuard(
+  input: SemiconductorRapidThermalProcessingRtpRtaRtoRtnFlashLampAnnealSafetyInput,
+): SemiconductorRapidThermalProcessingRtpRtaRtoRtnFlashLampAnnealSafetyDecision {
+  const policyCode =
+    "P319-SEMICONDUCTOR-RAPID-THERMAL-PROCESSING-RTP-RTA-RTO-RTN-FLASH-LAMP-ANNEAL-PYROMETER-AND-NH3-SIH4-H2-FORMING-GAS-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA1910119-H2-NH3-LEL-SIH4-AUTOIGNITION-TRIP-PYROMETER-QUARTZ-SLIP-QUENCH-AND-THYRISTOR-CAPACITOR-DISCHARGE-LOTO-GUARD" as const;
+
+  const h2Nh3LelOrResidualO2AutoignitionTripped0ms =
+    input.formingGasH2OrAmmoniaNh3ExhaustLelPercent >= 25.0 ||
+    input.residualChamberOxygenBeforeH2Sih4IntroducePpm > 50.0;
+
+  if (h2Nh3LelOrResidualO2AutoignitionTripped0ms) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      h2Nh3LelOrResidualO2AutoignitionTripped0ms: true,
+      pyrometerRunawayOrQuartzCoolingLossQuenched: false,
+      capacitorHighVoltageAndThermalCooldownLotoLocked: false,
+      rtpRapidThermalProcessApproved: false,
+      action:
+        "trip_rtp_h2_nh3_sih4_gas_valves_cut_lamp_scr_power_and_flood_n2_purge_in_0ms",
+      blockedReason:
+        "NFPA_86_NFPA_318_RTP_H2_NH3_25LEL_OR_RESIDUAL_O2_OVER_50PPM_EXPLOSION_TRIPPED_0MS",
+    };
+  }
+
+  const pyrometerRunawayOrQuartzCoolingLossQuenched =
+    input.multiZonePyrometerTemperatureSpreadDeltaC > 15.0 ||
+    input.quartzWindowCoolingWaterFlowLpm < 12.0;
+
+  if (pyrometerRunawayOrQuartzCoolingLossQuenched) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      h2Nh3LelOrResidualO2AutoignitionTripped0ms: false,
+      pyrometerRunawayOrQuartzCoolingLossQuenched: true,
+      capacitorHighVoltageAndThermalCooldownLotoLocked: false,
+      rtpRapidThermalProcessApproved: false,
+      action:
+        "quench_tungsten_halogen_or_flash_lamp_array_and_abort_thermal_ramp",
+      blockedReason:
+        "SEMI_S2_RTP_PYROMETER_15C_RUNAWAY_SLIP_OR_QUARTZ_COOLING_WATER_LOSS_QUENCHED",
+    };
+  }
+
+  const capacitorHighVoltageAndThermalCooldownLotoLocked =
+    input.lampBankOrFlashCapacitorMaintenanceRequested &&
+    !input.capacitorBankBleedDownUnder50VAndWaferCoolDownBelow60CLotoVerified;
+
+  if (capacitorHighVoltageAndThermalCooldownLotoLocked) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      h2Nh3LelOrResidualO2AutoignitionTripped0ms: false,
+      pyrometerRunawayOrQuartzCoolingLossQuenched: false,
+      capacitorHighVoltageAndThermalCooldownLotoLocked: true,
+      rtpRapidThermalProcessApproved: false,
+      action:
+        "lock_rtp_chamber_door_and_require_capacitor_50v_bleed_and_60c_cooldown_loto",
+      blockedReason:
+        "SEMI_S2_RTP_FLASH_CAPACITOR_HIGH_VOLTAGE_AND_60C_THERMAL_COOLDOWN_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    chamberId: input.chamberId,
+    h2Nh3LelOrResidualO2AutoignitionTripped0ms: false,
+    pyrometerRunawayOrQuartzCoolingLossQuenched: false,
+    capacitorHighVoltageAndThermalCooldownLotoLocked: false,
+    rtpRapidThermalProcessApproved: true,
+    action: "approve_semiconductor_rtp_rta_rto_rtn_flash_anneal_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2MediaClockSyncGuardInput {
+  sessionId: string;
+  ptpMessageDeclaredLengthBytes: number;
+  actualPacketBytesRemaining: number;
+  grandmasterClockIdAllowlistedAndPrtcLocked: boolean;
+  ptpToRtpMediaClockOffsetStepMicroseconds: number;
+  grandmasterClockClass: number;
+  ptpSyncAnnounceMessagesPerSecond: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2MediaClockSyncGuardDecision {
+  policyCode: "P320-WEBRTC-SIP-RTP-SMPTE-ST2110-10-ST2059-2-IEEE1588-PTPV2-MEDIA-CLOCK-SYNC-ROGUE-GRANDMASTER-SPOOFING-PHASE-STEP-JUMP-CLOCK-CLASS-DEGRADATION-AND-SYNC-MESSAGE-FLOOD-GUARD";
+  sessionId: string;
+  ptpOverreadOrRogueGrandmasterDropped0ms: boolean;
+  phaseStepJumpOrClockDegradationHoldoverEngaged: boolean;
+  ptpSyncAnnounceFloodThrottled: boolean;
+  st211010St20592Ptpv2MediaClockAccepted: boolean;
+  action:
+    | "drop_st2059_2_ptpv2_truncated_overread_or_rogue_grandmaster_announce_in_0ms"
+    | "engage_local_ocxo_media_clock_holdover_and_slew_limit_rtp_timestamp_pll"
+    | "rate_limit_ptpv2_sync_announce_flood_and_pin_unicast_negotiation_contract"
+    | "accept_smpte_st2110_10_st2059_2_ptpv2_synchronized_media_clock";
+  blockedReason:
+    | "SMPTE_ST2059_2_IEEE1588_PTPV2_OVERREAD_OR_ROGUE_GRANDMASTER_BMCA_HIJACK_DROPPED_0MS"
+    | "SMPTE_ST2110_10_PTPV2_50US_PHASE_STEP_JUMP_OR_CLOCK_CLASS_DEGRADATION_HOLDOVER_ENGAGED"
+    | "SMPTE_ST2059_2_PTPV2_256HZ_SYNC_ANNOUNCE_CONTROL_PLANE_FLOOD_THROTTLED"
+    | "none";
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2MediaClockSyncRogueGrandmasterSpoofingPhaseStepJumpClockClassDegradationAndSyncMessageFloodGuard(
+  input: WebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2MediaClockSyncGuardInput,
+): WebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2MediaClockSyncGuardDecision {
+  const policyCode =
+    "P320-WEBRTC-SIP-RTP-SMPTE-ST2110-10-ST2059-2-IEEE1588-PTPV2-MEDIA-CLOCK-SYNC-ROGUE-GRANDMASTER-SPOOFING-PHASE-STEP-JUMP-CLOCK-CLASS-DEGRADATION-AND-SYNC-MESSAGE-FLOOD-GUARD" as const;
+
+  const ptpOverreadOrRogueGrandmasterDropped0ms =
+    input.ptpMessageDeclaredLengthBytes < 34 ||
+    input.ptpMessageDeclaredLengthBytes > input.actualPacketBytesRemaining ||
+    !input.grandmasterClockIdAllowlistedAndPrtcLocked;
+
+  if (ptpOverreadOrRogueGrandmasterDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ptpOverreadOrRogueGrandmasterDropped0ms: true,
+      phaseStepJumpOrClockDegradationHoldoverEngaged: false,
+      ptpSyncAnnounceFloodThrottled: false,
+      st211010St20592Ptpv2MediaClockAccepted: false,
+      action:
+        "drop_st2059_2_ptpv2_truncated_overread_or_rogue_grandmaster_announce_in_0ms",
+      blockedReason:
+        "SMPTE_ST2059_2_IEEE1588_PTPV2_OVERREAD_OR_ROGUE_GRANDMASTER_BMCA_HIJACK_DROPPED_0MS",
+    };
+  }
+
+  const phaseStepJumpOrClockDegradationHoldoverEngaged =
+    Math.abs(input.ptpToRtpMediaClockOffsetStepMicroseconds) > 50.0 ||
+    input.grandmasterClockClass > 187;
+
+  if (phaseStepJumpOrClockDegradationHoldoverEngaged) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ptpOverreadOrRogueGrandmasterDropped0ms: false,
+      phaseStepJumpOrClockDegradationHoldoverEngaged: true,
+      ptpSyncAnnounceFloodThrottled: false,
+      st211010St20592Ptpv2MediaClockAccepted: false,
+      action:
+        "engage_local_ocxo_media_clock_holdover_and_slew_limit_rtp_timestamp_pll",
+      blockedReason:
+        "SMPTE_ST2110_10_PTPV2_50US_PHASE_STEP_JUMP_OR_CLOCK_CLASS_DEGRADATION_HOLDOVER_ENGAGED",
+    };
+  }
+
+  const ptpSyncAnnounceFloodThrottled =
+    input.ptpSyncAnnounceMessagesPerSecond > 256;
+
+  if (ptpSyncAnnounceFloodThrottled) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ptpOverreadOrRogueGrandmasterDropped0ms: false,
+      phaseStepJumpOrClockDegradationHoldoverEngaged: false,
+      ptpSyncAnnounceFloodThrottled: true,
+      st211010St20592Ptpv2MediaClockAccepted: false,
+      action:
+        "rate_limit_ptpv2_sync_announce_flood_and_pin_unicast_negotiation_contract",
+      blockedReason:
+        "SMPTE_ST2059_2_PTPV2_256HZ_SYNC_ANNOUNCE_CONTROL_PLANE_FLOOD_THROTTLED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    ptpOverreadOrRogueGrandmasterDropped0ms: false,
+    phaseStepJumpOrClockDegradationHoldoverEngaged: false,
+    ptpSyncAnnounceFloodThrottled: false,
+    st211010St20592Ptpv2MediaClockAccepted: true,
+    action: "accept_smpte_st2110_10_st2059_2_ptpv2_synchronized_media_clock",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
