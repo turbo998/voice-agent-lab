@@ -28822,3 +28822,252 @@ export function evaluateWebrtcSipRtpSmpteSt20221St202252dProMpegCop3FecRfc2733Rf
     blockedReason: "none",
   };
 }
+
+// ============================================================================
+// Stage 152 · P297 — Semiconductor EUV (13.5 nm) / ArF (193 nm) Excimer Laser
+// Photolithography Scanner & Photoresist Coater/TMAH Developer Track Safety
+// Guard (SEMI S2 / SEMI S6 / NFPA 318 / IEC 60825-1 / OSHA 1910.119 / 1910.1000)
+// ============================================================================
+
+export interface SemiconductorEuvArfExcimerLaserPhotolithographyScannerAndPhotoresistTrackSafetyGuardInput {
+  lithoCellId: string;
+  excimerGasBoxFluorineOrHclLeakPpm: number;
+  euvSourceVesselH2ChamberO2IngressVolPct: number;
+  coaterBowlPgmeaSolventLelPct: number;
+  gasBoxExhaustVelocityMetersPerSec: number;
+  euvMoltenTinDropletGeneratorTempC: number;
+  euvTinDropletNozzlePressureMpa: number;
+  iec60825Class4DriveLaserShutterInterlockBreached: boolean;
+  tmahDeveloperMistOrSpillDetected: boolean;
+  ambientFluorinePpm: number;
+  ambientHydrogenFluoridePpm: number;
+  diphoterineDeconAndSemiS2PositivePressureScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorEuvArfExcimerLaserPhotolithographyScannerAndPhotoresistTrackSafetyGuardAssessment {
+  policyCode: "P297-SEMICONDUCTOR-EUV-ARF-EXCIMER-LASER-PHOTOLITHOGRAPHY-SCANNER-AND-TRACK-SEMI-S2-S6-NFPA318-IEC60825-OSHA1910119-OSHA19101000-F2-HALOGEN-EXCIMER-LEAK-EUV-SN-DROPLET-H2-VESSEL-O2-INGRESS-PGMEA-COATER-LEL-AND-TMAH-DERMAL-SCBA-LOTO-GUARD";
+  lithoCellId: string;
+  f2ExcimerOrEuvH2VesselOrCoaterLelPreempted0ms: boolean;
+  moltenTinDropletOrClass4LaserInterlockIsolated: boolean;
+  tmahFluorineHfAndDiphoterineScbaLotoLocked: boolean;
+  lithoScannerAndTrackOperationApproved: boolean;
+  action:
+    | "approve_euv_arf_photolithography_scanner_and_coater_developer_track_operation"
+    | "trip_excimer_f2_and_euv_h2_rfo_valves_shut_laser_hv_and_inert_coater_bowl_in_0ms"
+    | "isolate_euv_tin_droplet_generator_engage_iec60825_class4_beam_shutter_and_hold_vacuum"
+    | "lock_litho_scanner_and_track_until_f2_hf_tmah_diphoterine_and_semi_s2_scba_loto_verified";
+  blockedReason:
+    | "none"
+    | "SEMI_S2_NFPA_318_EXCIMER_F2_HALOGEN_LEAK_EUV_H2_VESSEL_O2_INGRESS_OR_PGMEA_COATER_25PCT_LEL_PREEMPTED_0MS"
+    | "IEC_60825_1_CLASS4_CO2_DRIVE_LASER_SHUTTER_BREACH_OR_EUV_MOLTEN_TIN_DROPLET_OVERPRESSURE_ISOLATED"
+    | "OSHA_1910_1000_F2_0_1PPM_HF_0_5PPM_FATAL_DERMAL_TMAH_DEVELOPER_OR_DIPHOTERINE_SCBA_LOTO_LOCKED";
+}
+
+export function evaluateSemiconductorEuvArfExcimerLaserPhotolithographyScannerAndPhotoresistTrackSemiS2SemiS6Nfpa318Iec60825Osha1910119Osha19101000ExcimerF2GasLeakEuvTinDropletH2VesselAndPgmeaTmahScbaLotoGuard(
+  input: SemiconductorEuvArfExcimerLaserPhotolithographyScannerAndPhotoresistTrackSafetyGuardInput,
+): SemiconductorEuvArfExcimerLaserPhotolithographyScannerAndPhotoresistTrackSafetyGuardAssessment {
+  const f2ExcimerOrEuvH2VesselOrCoaterLelPreempted0ms =
+    input.excimerGasBoxFluorineOrHclLeakPpm >= 0.1 ||
+    input.euvSourceVesselH2ChamberO2IngressVolPct >= 0.5 ||
+    input.coaterBowlPgmeaSolventLelPct >= 25.0 ||
+    input.gasBoxExhaustVelocityMetersPerSec < 1.5;
+
+  const moltenTinDropletOrClass4LaserInterlockIsolated =
+    input.euvMoltenTinDropletGeneratorTempC >= 320.0 ||
+    input.euvTinDropletNozzlePressureMpa >= 45.0 ||
+    input.iec60825Class4DriveLaserShutterInterlockBreached;
+
+  const tmahFluorineHfAndDiphoterineScbaLotoLocked =
+    input.tmahDeveloperMistOrSpillDetected ||
+    input.ambientFluorinePpm >= 0.1 ||
+    input.ambientHydrogenFluoridePpm >= 0.5 ||
+    !input.diphoterineDeconAndSemiS2PositivePressureScbaLotoVerified;
+
+  if (f2ExcimerOrEuvH2VesselOrCoaterLelPreempted0ms) {
+    return {
+      policyCode:
+        "P297-SEMICONDUCTOR-EUV-ARF-EXCIMER-LASER-PHOTOLITHOGRAPHY-SCANNER-AND-TRACK-SEMI-S2-S6-NFPA318-IEC60825-OSHA1910119-OSHA19101000-F2-HALOGEN-EXCIMER-LEAK-EUV-SN-DROPLET-H2-VESSEL-O2-INGRESS-PGMEA-COATER-LEL-AND-TMAH-DERMAL-SCBA-LOTO-GUARD",
+      lithoCellId: input.lithoCellId,
+      f2ExcimerOrEuvH2VesselOrCoaterLelPreempted0ms: true,
+      moltenTinDropletOrClass4LaserInterlockIsolated,
+      tmahFluorineHfAndDiphoterineScbaLotoLocked,
+      lithoScannerAndTrackOperationApproved: false,
+      action:
+        "trip_excimer_f2_and_euv_h2_rfo_valves_shut_laser_hv_and_inert_coater_bowl_in_0ms",
+      blockedReason:
+        "SEMI_S2_NFPA_318_EXCIMER_F2_HALOGEN_LEAK_EUV_H2_VESSEL_O2_INGRESS_OR_PGMEA_COATER_25PCT_LEL_PREEMPTED_0MS",
+    };
+  }
+
+  if (moltenTinDropletOrClass4LaserInterlockIsolated) {
+    return {
+      policyCode:
+        "P297-SEMICONDUCTOR-EUV-ARF-EXCIMER-LASER-PHOTOLITHOGRAPHY-SCANNER-AND-TRACK-SEMI-S2-S6-NFPA318-IEC60825-OSHA1910119-OSHA19101000-F2-HALOGEN-EXCIMER-LEAK-EUV-SN-DROPLET-H2-VESSEL-O2-INGRESS-PGMEA-COATER-LEL-AND-TMAH-DERMAL-SCBA-LOTO-GUARD",
+      lithoCellId: input.lithoCellId,
+      f2ExcimerOrEuvH2VesselOrCoaterLelPreempted0ms: false,
+      moltenTinDropletOrClass4LaserInterlockIsolated: true,
+      tmahFluorineHfAndDiphoterineScbaLotoLocked,
+      lithoScannerAndTrackOperationApproved: false,
+      action:
+        "isolate_euv_tin_droplet_generator_engage_iec60825_class4_beam_shutter_and_hold_vacuum",
+      blockedReason:
+        "IEC_60825_1_CLASS4_CO2_DRIVE_LASER_SHUTTER_BREACH_OR_EUV_MOLTEN_TIN_DROPLET_OVERPRESSURE_ISOLATED",
+    };
+  }
+
+  if (tmahFluorineHfAndDiphoterineScbaLotoLocked) {
+    return {
+      policyCode:
+        "P297-SEMICONDUCTOR-EUV-ARF-EXCIMER-LASER-PHOTOLITHOGRAPHY-SCANNER-AND-TRACK-SEMI-S2-S6-NFPA318-IEC60825-OSHA1910119-OSHA19101000-F2-HALOGEN-EXCIMER-LEAK-EUV-SN-DROPLET-H2-VESSEL-O2-INGRESS-PGMEA-COATER-LEL-AND-TMAH-DERMAL-SCBA-LOTO-GUARD",
+      lithoCellId: input.lithoCellId,
+      f2ExcimerOrEuvH2VesselOrCoaterLelPreempted0ms: false,
+      moltenTinDropletOrClass4LaserInterlockIsolated: false,
+      tmahFluorineHfAndDiphoterineScbaLotoLocked: true,
+      lithoScannerAndTrackOperationApproved: false,
+      action:
+        "lock_litho_scanner_and_track_until_f2_hf_tmah_diphoterine_and_semi_s2_scba_loto_verified",
+      blockedReason:
+        "OSHA_1910_1000_F2_0_1PPM_HF_0_5PPM_FATAL_DERMAL_TMAH_DEVELOPER_OR_DIPHOTERINE_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode:
+      "P297-SEMICONDUCTOR-EUV-ARF-EXCIMER-LASER-PHOTOLITHOGRAPHY-SCANNER-AND-TRACK-SEMI-S2-S6-NFPA318-IEC60825-OSHA1910119-OSHA19101000-F2-HALOGEN-EXCIMER-LEAK-EUV-SN-DROPLET-H2-VESSEL-O2-INGRESS-PGMEA-COATER-LEL-AND-TMAH-DERMAL-SCBA-LOTO-GUARD",
+    lithoCellId: input.lithoCellId,
+    f2ExcimerOrEuvH2VesselOrCoaterLelPreempted0ms: false,
+    moltenTinDropletOrClass4LaserInterlockIsolated: false,
+    tmahFluorineHfAndDiphoterineScbaLotoLocked: false,
+    lithoScannerAndTrackOperationApproved: true,
+    action:
+      "approve_euv_arf_photolithography_scanner_and_coater_developer_track_operation",
+    blockedReason: "none",
+  };
+}
+
+// ============================================================================
+// Stage 152 · P298 — WebRTC & SIP RTP SMPTE ST 2022-6 High Bit-Rate Media
+// Transport (HBRMT, SMPTE ST 2022-6 / ST 2022-5 / ST 2022-8) SDI-over-IP
+// Encapsulation Header Length Overread, F_Count/R_Count/S_Count Counter Desync,
+// ST 2022-5 2D Parity FEC Matrix Bomb & 12G-SDI Bitrate Flood Guard
+// ============================================================================
+
+export interface WebrtcSipRtpSmpteSt20226HbrmtSdiOverIpGuardInput {
+  sessionId: string;
+  rtpPayloadBytes: number;
+  hbrmtHeaderBytes: number;
+  clockFrequencyCode: number;
+  extHdrLengthBytes: number;
+  sdiPayloadChunkBytes: number;
+  videoSourceFormatCodeValid: boolean;
+  frameSampleCounterAndMarkerConsistent: boolean;
+  st20225FecColumnsL: number;
+  st20225FecRowsD: number;
+  inboundHbrmtBitrateGbps: number;
+  negotiatedMaxHbrmtGbps: number;
+  st20228PtpToSdiMediaClockOffsetUs: number;
+}
+
+export interface WebrtcSipRtpSmpteSt20226HbrmtSdiOverIpGuardAssessment {
+  policyCode: "P298-WEBRTC-SIP-RTP-SMPTE-ST2022-6-HBRMT-SDI-OVER-IP-HEADER-LENGTH-OVERREAD-MAP-FRAME-SAMPLE-COUNTER-DESYNC-ST2022-5-2D-FEC-MATRIX-OVERFLOW-AND-12G-SDI-BITRATE-FLOOD-GUARD";
+  sessionId: string;
+  hbrmtHeaderOverreadOrInvalidFormatCodeDropped: boolean;
+  frameSampleCounterDesyncOr2dFecBombRejected: boolean;
+  hbrmtBitrateFloodOrMediaClockSkewClamped: boolean;
+  st20226HbrmtRtpPacketAccepted: boolean;
+  action:
+    | "accept_st2022_6_hbrmt_sdi_over_ip_rtp_packet"
+    | "drop_st2022_6_hbrmt_header_overread_or_invalid_sdi_payload_size_in_0ms"
+    | "reject_st2022_6_frame_sample_counter_desync_or_st2022_5_2d_fec_matrix_bomb"
+    | "clamp_st2022_6_hbrmt_sdi_bitrate_flood_or_st2022_8_ptp_media_clock_skew";
+  blockedReason:
+    | "none"
+    | "SMPTE_ST2022_6_HBRMT_HEADER_LENGTH_OVERREAD_NON_1376B_SDI_PAYLOAD_OR_INVALID_FORMAT_CODE_DROPPED_0MS"
+    | "SMPTE_ST2022_6_F_COUNT_S_COUNT_TIMING_DESYNC_OR_ST2022_5_2D_FEC_L_BY_D_MATRIX_BOMB_REJECTED"
+    | "SMPTE_ST2022_6_12G_SDI_BITRATE_FLOOD_OR_ST2022_8_PTP_MEDIA_CLOCK_SKEW_CLAMPED";
+}
+
+export function evaluateWebrtcSipRtpSmpteSt20226HighBitRateMediaTransportHbrmtSdiOverIpHeaderLengthOverreadMapFrameSampleCounterDesyncSt20225FecMatrixBombAnd12gSdiBitrateFloodGuard(
+  input: WebrtcSipRtpSmpteSt20226HbrmtSdiOverIpGuardInput,
+): WebrtcSipRtpSmpteSt20226HbrmtSdiOverIpGuardAssessment {
+  const expectedBaseHeaderBytes = input.clockFrequencyCode === 0 ? 8 : 16;
+  const hbrmtHeaderOverreadOrInvalidFormatCodeDropped =
+    input.hbrmtHeaderBytes !== expectedBaseHeaderBytes + input.extHdrLengthBytes ||
+    input.extHdrLengthBytes < 0 ||
+    input.extHdrLengthBytes % 4 !== 0 ||
+    input.sdiPayloadChunkBytes !== 1376 ||
+    input.rtpPayloadBytes !== input.hbrmtHeaderBytes + 1376 ||
+    !input.videoSourceFormatCodeValid;
+
+  const frameSampleCounterDesyncOr2dFecBombRejected =
+    !input.frameSampleCounterAndMarkerConsistent ||
+    input.st20225FecColumnsL <= 0 ||
+    input.st20225FecRowsD <= 0 ||
+    input.st20225FecColumnsL * input.st20225FecRowsD > 256;
+
+  const hbrmtBitrateFloodOrMediaClockSkewClamped =
+    input.inboundHbrmtBitrateGbps > input.negotiatedMaxHbrmtGbps ||
+    input.inboundHbrmtBitrateGbps > 12.0 ||
+    Math.abs(input.st20228PtpToSdiMediaClockOffsetUs) >= 500;
+
+  if (hbrmtHeaderOverreadOrInvalidFormatCodeDropped) {
+    return {
+      policyCode:
+        "P298-WEBRTC-SIP-RTP-SMPTE-ST2022-6-HBRMT-SDI-OVER-IP-HEADER-LENGTH-OVERREAD-MAP-FRAME-SAMPLE-COUNTER-DESYNC-ST2022-5-2D-FEC-MATRIX-OVERFLOW-AND-12G-SDI-BITRATE-FLOOD-GUARD",
+      sessionId: input.sessionId,
+      hbrmtHeaderOverreadOrInvalidFormatCodeDropped: true,
+      frameSampleCounterDesyncOr2dFecBombRejected,
+      hbrmtBitrateFloodOrMediaClockSkewClamped,
+      st20226HbrmtRtpPacketAccepted: false,
+      action:
+        "drop_st2022_6_hbrmt_header_overread_or_invalid_sdi_payload_size_in_0ms",
+      blockedReason:
+        "SMPTE_ST2022_6_HBRMT_HEADER_LENGTH_OVERREAD_NON_1376B_SDI_PAYLOAD_OR_INVALID_FORMAT_CODE_DROPPED_0MS",
+    };
+  }
+
+  if (frameSampleCounterDesyncOr2dFecBombRejected) {
+    return {
+      policyCode:
+        "P298-WEBRTC-SIP-RTP-SMPTE-ST2022-6-HBRMT-SDI-OVER-IP-HEADER-LENGTH-OVERREAD-MAP-FRAME-SAMPLE-COUNTER-DESYNC-ST2022-5-2D-FEC-MATRIX-OVERFLOW-AND-12G-SDI-BITRATE-FLOOD-GUARD",
+      sessionId: input.sessionId,
+      hbrmtHeaderOverreadOrInvalidFormatCodeDropped: false,
+      frameSampleCounterDesyncOr2dFecBombRejected: true,
+      hbrmtBitrateFloodOrMediaClockSkewClamped,
+      st20226HbrmtRtpPacketAccepted: false,
+      action:
+        "reject_st2022_6_frame_sample_counter_desync_or_st2022_5_2d_fec_matrix_bomb",
+      blockedReason:
+        "SMPTE_ST2022_6_F_COUNT_S_COUNT_TIMING_DESYNC_OR_ST2022_5_2D_FEC_L_BY_D_MATRIX_BOMB_REJECTED",
+    };
+  }
+
+  if (hbrmtBitrateFloodOrMediaClockSkewClamped) {
+    return {
+      policyCode:
+        "P298-WEBRTC-SIP-RTP-SMPTE-ST2022-6-HBRMT-SDI-OVER-IP-HEADER-LENGTH-OVERREAD-MAP-FRAME-SAMPLE-COUNTER-DESYNC-ST2022-5-2D-FEC-MATRIX-OVERFLOW-AND-12G-SDI-BITRATE-FLOOD-GUARD",
+      sessionId: input.sessionId,
+      hbrmtHeaderOverreadOrInvalidFormatCodeDropped: false,
+      frameSampleCounterDesyncOr2dFecBombRejected: false,
+      hbrmtBitrateFloodOrMediaClockSkewClamped: true,
+      st20226HbrmtRtpPacketAccepted: false,
+      action:
+        "clamp_st2022_6_hbrmt_sdi_bitrate_flood_or_st2022_8_ptp_media_clock_skew",
+      blockedReason:
+        "SMPTE_ST2022_6_12G_SDI_BITRATE_FLOOD_OR_ST2022_8_PTP_MEDIA_CLOCK_SKEW_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode:
+      "P298-WEBRTC-SIP-RTP-SMPTE-ST2022-6-HBRMT-SDI-OVER-IP-HEADER-LENGTH-OVERREAD-MAP-FRAME-SAMPLE-COUNTER-DESYNC-ST2022-5-2D-FEC-MATRIX-OVERFLOW-AND-12G-SDI-BITRATE-FLOOD-GUARD",
+    sessionId: input.sessionId,
+    hbrmtHeaderOverreadOrInvalidFormatCodeDropped: false,
+    frameSampleCounterDesyncOr2dFecBombRejected: false,
+    hbrmtBitrateFloodOrMediaClockSkewClamped: false,
+    st20226HbrmtRtpPacketAccepted: true,
+    action: "accept_st2022_6_hbrmt_sdi_over_ip_rtp_packet",
+    blockedReason: "none",
+  };
+}
+
