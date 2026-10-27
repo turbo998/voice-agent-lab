@@ -28602,3 +28602,223 @@ export function evaluateWebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingRfc35
     blockedReason: "none",
   };
 }
+
+export interface SemiconductorDryEtchCvdchamberCleanFluorinatedGasGuardInput {
+  etchChamberBayId: string;
+  exhaustOrCabinetFluorineF2Ppm: number;
+  exhaustOrCabinetChlorineTrifluorideClf3Ppm: number;
+  exhaustHydrofluoricAcidHfPpm: number;
+  wetScrubberQuenchSprayAndPfaTowerIntegrityOk: boolean;
+  turboAndDryBackingPumpN2BallastSlm: number;
+  organicOilLubricantPresentInFluorineLine: boolean;
+  ambientFluorineF2Ppm: number;
+  ambientChlorineTrifluorideClf3Ppm: number;
+  ambientHydrofluoricAcidHfPpm: number;
+  calciumGluconateGelAndSemiS2PositivePressureScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorDryEtchCvdchamberCleanFluorinatedGasGuardAssessment {
+  policyCode: "P295-SEMICONDUCTOR-DRY-ETCH-CHAMBER-CLEAN-NF3-CLF3-F2-SF6-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-HYPERGOLIC-CLF3-F2-RFO-TRIP-BACKING-PUMP-N2-BALLAST-ISOLATION-AND-HF-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD";
+  etchChamberBayId: string;
+  hypergolicClf3F2OrHfExhaustLeakPreempted0ms: boolean;
+  wetScrubberQuenchLossOrDryPumpN2BallastDeficitIsolated: boolean;
+  clf3F2HfAmbientOrCalciumGluconateScbaLotoLocked: boolean;
+  dryEtchAndChamberCleanApproved: boolean;
+  action:
+    | "approve_semiconductor_dry_etch_and_nf3_clf3_chamber_clean"
+    | "trip_clf3_f2_nf3_rfo_valves_cut_rf_plasma_and_purge_manifold_with_dry_n2_in_0ms"
+    | "isolate_etch_foreline_engage_backup_wet_scrubber_and_boost_dry_pump_n2_ballast"
+    | "lock_etch_chamber_lid_hoist_and_require_calcium_gluconate_and_semi_s2_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorDryEtchChamberCleanFluorinatedGasNfpa318SemiS2SemiS6Nfpa69Osha1910119Osha19101000HypergolicClf3F2RfoTripDryPumpN2BallastIsolationAndHfCalciumGluconateScbaLotoGuard(
+  input: SemiconductorDryEtchCvdchamberCleanFluorinatedGasGuardInput
+): SemiconductorDryEtchCvdchamberCleanFluorinatedGasGuardAssessment {
+  const policyCode =
+    "P295-SEMICONDUCTOR-DRY-ETCH-CHAMBER-CLEAN-NF3-CLF3-F2-SF6-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-HYPERGOLIC-CLF3-F2-RFO-TRIP-BACKING-PUMP-N2-BALLAST-ISOLATION-AND-HF-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD" as const;
+
+  const hypergolicClf3F2OrHfLeakRisk =
+    input.exhaustOrCabinetChlorineTrifluorideClf3Ppm >= 0.1 ||
+    input.exhaustOrCabinetFluorineF2Ppm >= 0.1 ||
+    input.exhaustHydrofluoricAcidHfPpm >= 3.0;
+
+  if (hypergolicClf3F2OrHfLeakRisk) {
+    return {
+      policyCode,
+      etchChamberBayId: input.etchChamberBayId,
+      hypergolicClf3F2OrHfExhaustLeakPreempted0ms: true,
+      wetScrubberQuenchLossOrDryPumpN2BallastDeficitIsolated: false,
+      clf3F2HfAmbientOrCalciumGluconateScbaLotoLocked: false,
+      dryEtchAndChamberCleanApproved: false,
+      action:
+        "trip_clf3_f2_nf3_rfo_valves_cut_rf_plasma_and_purge_manifold_with_dry_n2_in_0ms",
+      blockedReason:
+        "NFPA_318_SEMI_S2_HYPERGOLIC_CLF3_0_1PPM_F2_0_1PPM_OR_HF_3PPM_LEAK_PREEMPTED_0MS",
+    };
+  }
+
+  const scrubberOrDryPumpBallastRisk =
+    !input.wetScrubberQuenchSprayAndPfaTowerIntegrityOk ||
+    input.turboAndDryBackingPumpN2BallastSlm < 35.0 ||
+    input.organicOilLubricantPresentInFluorineLine;
+
+  if (scrubberOrDryPumpBallastRisk) {
+    return {
+      policyCode,
+      etchChamberBayId: input.etchChamberBayId,
+      hypergolicClf3F2OrHfExhaustLeakPreempted0ms: false,
+      wetScrubberQuenchLossOrDryPumpN2BallastDeficitIsolated: true,
+      clf3F2HfAmbientOrCalciumGluconateScbaLotoLocked: false,
+      dryEtchAndChamberCleanApproved: false,
+      action:
+        "isolate_etch_foreline_engage_backup_wet_scrubber_and_boost_dry_pump_n2_ballast",
+      blockedReason:
+        "DRY_ETCH_WET_SCRUBBER_QUENCH_LOSS_DRY_PUMP_N2_BALLAST_DEFICIT_OR_HYDROCARBON_OIL_HYPERGOLIC_RISK_ISOLATED",
+    };
+  }
+
+  const ambientOrCalciumGluconateScbaLotoRisk =
+    input.ambientChlorineTrifluorideClf3Ppm >= 0.1 ||
+    input.ambientFluorineF2Ppm >= 0.1 ||
+    input.ambientHydrofluoricAcidHfPpm >= 3.0 ||
+    !input.calciumGluconateGelAndSemiS2PositivePressureScbaLotoVerified;
+
+  if (ambientOrCalciumGluconateScbaLotoRisk) {
+    return {
+      policyCode,
+      etchChamberBayId: input.etchChamberBayId,
+      hypergolicClf3F2OrHfExhaustLeakPreempted0ms: false,
+      wetScrubberQuenchLossOrDryPumpN2BallastDeficitIsolated: false,
+      clf3F2HfAmbientOrCalciumGluconateScbaLotoLocked: true,
+      dryEtchAndChamberCleanApproved: false,
+      action:
+        "lock_etch_chamber_lid_hoist_and_require_calcium_gluconate_and_semi_s2_scba_loto",
+      blockedReason:
+        "OSHA_CLF3_0_1PPM_F2_0_1PPM_HF_3PPM_OR_CALCIUM_GLUCONATE_SEMI_S2_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    etchChamberBayId: input.etchChamberBayId,
+    hypergolicClf3F2OrHfExhaustLeakPreempted0ms: false,
+    wetScrubberQuenchLossOrDryPumpN2BallastDeficitIsolated: false,
+    clf3F2HfAmbientOrCalciumGluconateScbaLotoLocked: false,
+    dryEtchAndChamberCleanApproved: true,
+    action: "approve_semiconductor_dry_etch_and_nf3_clf3_chamber_clean",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt20221St202252dForwardErrorCorrectionGuardInput {
+  sessionId: string;
+  fecHeaderBytes: number;
+  declaredFecRecoveryPayloadBytes: number;
+  actualRtpFecPayloadBytes: number;
+  fecColumnsL: number;
+  fecRowsD: number;
+  fecOffsetD: number;
+  fecNumberNa: number;
+  cyclicXorParityGraphDetected: boolean;
+  protectedMediaSsrcMatchesAssociation: boolean;
+  fecOverheadPercentOfMediaBitrate: number;
+  reorderingMatrixBufferedPackets: number;
+}
+
+export interface WebrtcSipRtpSmpteSt20221St202252dForwardErrorCorrectionGuardAssessment {
+  policyCode: "P296-WEBRTC-SIP-RTP-SMPTE-ST2022-1-ST2022-5-2D-PRO-MPEG-COP3-FEC-RFC2733-RFC5109-L-TIMES-D-MATRIX-GEOMETRY-OVERFLOW-CYCLIC-XOR-CPU-BOMB-AND-FEC-OVERHEAD-REORDER-BUFFER-GUARD";
+  sessionId: string;
+  fecHeaderOrLTimesDMatrixOverflowDropped0ms: boolean;
+  cyclicXorGraphOrCrossStreamSsrcSpoofRejected: boolean;
+  fecOverheadOrMatrixReorderBufferClamped: boolean;
+  st2022FecRtpPacketAccepted: boolean;
+  action:
+    | "accept_st2022_1_st2022_5_2d_fec_rtp_packet"
+    | "drop_st2022_fec_header_overread_or_l_times_d_matrix_bounds_violation_in_0ms"
+    | "reject_st2022_fec_cyclic_xor_parity_graph_or_cross_stream_ssrc_spoof"
+    | "clamp_st2022_fec_overhead_ratio_or_2d_matrix_reordering_buffer";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt20221St202252dProMpegCop3FecRfc2733Rfc5109LTimesDMatrixGeometryOverflowCyclicXorCpuBombAndFecOverheadReorderBufferGuard(
+  input: WebrtcSipRtpSmpteSt20221St202252dForwardErrorCorrectionGuardInput
+): WebrtcSipRtpSmpteSt20221St202252dForwardErrorCorrectionGuardAssessment {
+  const policyCode =
+    "P296-WEBRTC-SIP-RTP-SMPTE-ST2022-1-ST2022-5-2D-PRO-MPEG-COP3-FEC-RFC2733-RFC5109-L-TIMES-D-MATRIX-GEOMETRY-OVERFLOW-CYCLIC-XOR-CPU-BOMB-AND-FEC-OVERHEAD-REORDER-BUFFER-GUARD" as const;
+
+  const headerOrMatrixGeometryRisk =
+    input.fecHeaderBytes < 12 ||
+    input.declaredFecRecoveryPayloadBytes <= 0 ||
+    input.fecHeaderBytes + input.declaredFecRecoveryPayloadBytes >
+      input.actualRtpFecPayloadBytes ||
+    input.fecColumnsL < 1 ||
+    input.fecRowsD < 4 ||
+    input.fecColumnsL * input.fecRowsD > 256 ||
+    input.fecOffsetD !== input.fecColumnsL ||
+    input.fecNumberNa !== input.fecRowsD;
+
+  if (headerOrMatrixGeometryRisk) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      fecHeaderOrLTimesDMatrixOverflowDropped0ms: true,
+      cyclicXorGraphOrCrossStreamSsrcSpoofRejected: false,
+      fecOverheadOrMatrixReorderBufferClamped: false,
+      st2022FecRtpPacketAccepted: false,
+      action:
+        "drop_st2022_fec_header_overread_or_l_times_d_matrix_bounds_violation_in_0ms",
+      blockedReason:
+        "SMPTE_ST2022_1_5_FEC_HEADER_OVERREAD_OR_L_TIMES_D_256_MATRIX_GEOMETRY_VIOLATION_DROPPED_0MS",
+    };
+  }
+
+  const cyclicXorOrSsrcSpoofRisk =
+    input.cyclicXorParityGraphDetected ||
+    !input.protectedMediaSsrcMatchesAssociation;
+
+  if (cyclicXorOrSsrcSpoofRisk) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      fecHeaderOrLTimesDMatrixOverflowDropped0ms: false,
+      cyclicXorGraphOrCrossStreamSsrcSpoofRejected: true,
+      fecOverheadOrMatrixReorderBufferClamped: false,
+      st2022FecRtpPacketAccepted: false,
+      action:
+        "reject_st2022_fec_cyclic_xor_parity_graph_or_cross_stream_ssrc_spoof",
+      blockedReason:
+        "SMPTE_ST2022_1_5_CYCLIC_XOR_PARITY_CPU_BOMB_OR_CROSS_STREAM_SSRC_SPOOF_REJECTED",
+    };
+  }
+
+  const fecOverheadOrBufferRisk =
+    input.fecOverheadPercentOfMediaBitrate > 50.0 ||
+    input.reorderingMatrixBufferedPackets > 512;
+
+  if (fecOverheadOrBufferRisk) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      fecHeaderOrLTimesDMatrixOverflowDropped0ms: false,
+      cyclicXorGraphOrCrossStreamSsrcSpoofRejected: false,
+      fecOverheadOrMatrixReorderBufferClamped: true,
+      st2022FecRtpPacketAccepted: false,
+      action:
+        "clamp_st2022_fec_overhead_ratio_or_2d_matrix_reordering_buffer",
+      blockedReason:
+        "SMPTE_ST2022_1_5_FEC_OVERHEAD_50PCT_FLOOD_OR_512_PACKET_REORDER_MATRIX_EXHAUSTION_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    fecHeaderOrLTimesDMatrixOverflowDropped0ms: false,
+    cyclicXorGraphOrCrossStreamSsrcSpoofRejected: false,
+    fecOverheadOrMatrixReorderBufferClamped: false,
+    st2022FecRtpPacketAccepted: true,
+    action: "accept_st2022_1_st2022_5_2d_fec_rtp_packet",
+    blockedReason: "none",
+  };
+}
