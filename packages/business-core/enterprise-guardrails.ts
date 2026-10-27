@@ -30817,5 +30817,220 @@ export function evaluateWebrtcSipRtpSmpteSt211031Aes3TransparentAudioTransportRf
   };
 }
 
+export interface SemiconductorEcdElectroplatingCopperDamasceneTsvSnAgBumpBathAndSrdNfpa318SemiS2SemiS6Nfpa70EOsha1910119Osha19101000GuardInput {
+  ecdPlatingCellId: string;
+  electrolyteBathTemperatureC: number;
+  cathodeHoodHydrogenConcentrationPercent: number;
+  acidicCuso4MsaCrossMixedWithCyanideGoldStrikeOrHcnExhaustPpm: number;
+  anolyteCatholyteDiaphragmDeltaPKpa: number;
+  srdSpinRinseDryerVibrationMmPerSec: number;
+  ecdAnodeBagOrMsaCuso4MaintenanceRequested: boolean;
+  zeroEnergyRectifierBusbarGroundingAcidScrubberAndCyanideAntidoteScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorEcdElectroplatingCopperDamasceneTsvSnAgBumpBathAndSrdNfpa318SemiS2SemiS6Nfpa70EOsha1910119Osha19101000GuardAssessment {
+  policyCode: "P315-SEMICONDUCTOR-ECD-ELECTROPLATING-COPPER-DAMASCENE-TSV-SNAG-BUMP-BATH-AND-SRD-NFPA318-SEMIS2-SEMIS6-NFPA70E-OSHA1910119-OSHA19101000-RECTIFIER-H2-CYANIDE-HCN-TRIP-DIAPHRAGM-SRD-ISOLATION-AND-BUSBAR-SCBA-LOTO-GUARD";
+  ecdPlatingCellId: string;
+  rectifierArcHydrogenEvolutionOrAcidCyanideHcnTripped0ms: boolean;
+  anolyteDiaphragmRuptureOrSrdRotorUnbalanceIsolated: boolean;
+  ecdBusbarGroundingOrMsaCuso4MaintenanceLocked: boolean;
+  ecdPlatingOperationApproved: boolean;
+  action:
+    | "trip_ecd_rectifier_segregate_acid_cyanide_drain_and_flood_cathode_hood_with_n2_in_0ms"
+    | "abort_ecd_waveform_brake_srd_spindle_and_isolate_anolyte_diaphragm_loop"
+    | "lock_ecd_cell_hood_and_require_busbar_grounding_acid_scrubber_and_scba_loto"
+    | "approve_semiconductor_ecd_copper_tsv_plating_and_srd_operation";
+  blockedReason:
+    | "SEMI_S2_NFPA318_ECD_RECTIFIER_ARC_H2_1PCT_OR_ACID_CYANIDE_HCN_4_7PPM_TRIPPED_0MS"
+    | "SEMI_S2_ECD_ANOLYTE_DIAPHRAGM_35KPA_RUPTURE_OR_SRD_4_5MM_S_ROTOR_SHATTER_ISOLATED"
+    | "NFPA_70E_OSHA_1910_1000_ECD_BUSBAR_GROUND_OR_MSA_CUSO4_SCBA_LOTO_LOCKED"
+    | "none";
+}
+
+export function evaluateSemiconductorEcdElectroplatingCopperDamasceneTsvSnAgBumpBathAndSrdNfpa318SemiS2SemiS6Nfpa70EOsha1910119Osha19101000RectifierH2CyanideHcnTripDiaphragmSrdIsolationAndBusbarScbaLotoGuard(
+  input: SemiconductorEcdElectroplatingCopperDamasceneTsvSnAgBumpBathAndSrdNfpa318SemiS2SemiS6Nfpa70EOsha1910119Osha19101000GuardInput
+): SemiconductorEcdElectroplatingCopperDamasceneTsvSnAgBumpBathAndSrdNfpa318SemiS2SemiS6Nfpa70EOsha1910119Osha19101000GuardAssessment {
+  const policyCode =
+    "P315-SEMICONDUCTOR-ECD-ELECTROPLATING-COPPER-DAMASCENE-TSV-SNAG-BUMP-BATH-AND-SRD-NFPA318-SEMIS2-SEMIS6-NFPA70E-OSHA1910119-OSHA19101000-RECTIFIER-H2-CYANIDE-HCN-TRIP-DIAPHRAGM-SRD-ISOLATION-AND-BUSBAR-SCBA-LOTO-GUARD" as const;
+
+  const rectifierArcHydrogenEvolutionOrAcidCyanideHcnTripped0ms =
+    input.electrolyteBathTemperatureC > 65.0 ||
+    input.cathodeHoodHydrogenConcentrationPercent >= 1.0 ||
+    input.acidicCuso4MsaCrossMixedWithCyanideGoldStrikeOrHcnExhaustPpm >= 4.7;
+
+  if (rectifierArcHydrogenEvolutionOrAcidCyanideHcnTripped0ms) {
+    return {
+      policyCode,
+      ecdPlatingCellId: input.ecdPlatingCellId,
+      rectifierArcHydrogenEvolutionOrAcidCyanideHcnTripped0ms: true,
+      anolyteDiaphragmRuptureOrSrdRotorUnbalanceIsolated: false,
+      ecdBusbarGroundingOrMsaCuso4MaintenanceLocked: false,
+      ecdPlatingOperationApproved: false,
+      action:
+        "trip_ecd_rectifier_segregate_acid_cyanide_drain_and_flood_cathode_hood_with_n2_in_0ms",
+      blockedReason:
+        "SEMI_S2_NFPA318_ECD_RECTIFIER_ARC_H2_1PCT_OR_ACID_CYANIDE_HCN_4_7PPM_TRIPPED_0MS",
+    };
+  }
+
+  const anolyteDiaphragmRuptureOrSrdRotorUnbalanceIsolated =
+    input.anolyteCatholyteDiaphragmDeltaPKpa > 35.0 ||
+    input.srdSpinRinseDryerVibrationMmPerSec > 4.5;
+
+  if (anolyteDiaphragmRuptureOrSrdRotorUnbalanceIsolated) {
+    return {
+      policyCode,
+      ecdPlatingCellId: input.ecdPlatingCellId,
+      rectifierArcHydrogenEvolutionOrAcidCyanideHcnTripped0ms: false,
+      anolyteDiaphragmRuptureOrSrdRotorUnbalanceIsolated: true,
+      ecdBusbarGroundingOrMsaCuso4MaintenanceLocked: false,
+      ecdPlatingOperationApproved: false,
+      action:
+        "abort_ecd_waveform_brake_srd_spindle_and_isolate_anolyte_diaphragm_loop",
+      blockedReason:
+        "SEMI_S2_ECD_ANOLYTE_DIAPHRAGM_35KPA_RUPTURE_OR_SRD_4_5MM_S_ROTOR_SHATTER_ISOLATED",
+    };
+  }
+
+  const ecdBusbarGroundingOrMsaCuso4MaintenanceLocked =
+    input.ecdAnodeBagOrMsaCuso4MaintenanceRequested &&
+    !input.zeroEnergyRectifierBusbarGroundingAcidScrubberAndCyanideAntidoteScbaLotoVerified;
+
+  if (ecdBusbarGroundingOrMsaCuso4MaintenanceLocked) {
+    return {
+      policyCode,
+      ecdPlatingCellId: input.ecdPlatingCellId,
+      rectifierArcHydrogenEvolutionOrAcidCyanideHcnTripped0ms: false,
+      anolyteDiaphragmRuptureOrSrdRotorUnbalanceIsolated: false,
+      ecdBusbarGroundingOrMsaCuso4MaintenanceLocked: true,
+      ecdPlatingOperationApproved: false,
+      action:
+        "lock_ecd_cell_hood_and_require_busbar_grounding_acid_scrubber_and_scba_loto",
+      blockedReason:
+        "NFPA_70E_OSHA_1910_1000_ECD_BUSBAR_GROUND_OR_MSA_CUSO4_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    ecdPlatingCellId: input.ecdPlatingCellId,
+    rectifierArcHydrogenEvolutionOrAcidCyanideHcnTripped0ms: false,
+    anolyteDiaphragmRuptureOrSrdRotorUnbalanceIsolated: false,
+    ecdBusbarGroundingOrMsaCuso4MaintenanceLocked: false,
+    ecdPlatingOperationApproved: true,
+    action: "approve_semiconductor_ecd_copper_tsv_plating_and_srd_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211020St20228Rfc4175UncompressedVideoSrdOverreadPgroupAlignmentCBitFBitDesyncAndTrOffsetFloodGuardInput {
+  sessionId: string;
+  srdScanlinePayloadDeclaredBytes: number;
+  pgroupOctetSize: number;
+  actualRtpPayloadBytesRemaining: number;
+  continuationCBitAndInterlacedFieldFBitConsistent: boolean;
+  srdRowNumberOrPixelOffsetWithinActiveFrame: boolean;
+  st20228ToSt211021TrOffsetDeviationUs: number;
+  uncompressedVideoStreamBitrateGbps: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211020St20228Rfc4175UncompressedVideoSrdOverreadPgroupAlignmentCBitFBitDesyncAndTrOffsetFloodGuardAssessment {
+  policyCode: "P316-WEBRTC-SIP-RTP-SMPTE-ST2110-20-ST2022-8-RFC4175-UNCOMPRESSED-VIDEO-SRD-OVERREAD-PGROUP-ALIGNMENT-C-F-BIT-DESYNC-AND-TR-OFFSET-FLOOD-GUARD";
+  sessionId: string;
+  srdScanlineOverreadOrPgroupMisalignmentDropped0ms: boolean;
+  corruptedCFBitOrOobSrdRowOffsetRejected: boolean;
+  st20228TrOffsetSkewOr48GbpsBandwidthFloodClamped: boolean;
+  st211020Rfc4175VideoStreamAccepted: boolean;
+  action:
+    | "drop_st2110_20_rfc4175_srd_overread_or_pgroup_misaligned_packet_in_0ms"
+    | "reject_st2110_20_corrupted_c_f_bit_or_oob_srd_row_offset_and_hold_last_good_frame"
+    | "clamp_st2110_20_uncompressed_bitrate_flood_or_resync_st2022_8_tr_offset_buffer"
+    | "accept_smpte_st2110_20_st2022_8_rfc4175_uncompressed_video_rtp_stream";
+  blockedReason:
+    | "RFC_4175_ST2110_20_SRD_SCANLINE_OVERREAD_OR_PGROUP_OCTET_MISALIGNMENT_DROPPED_0MS"
+    | "SMPTE_ST2110_20_RFC4175_INVALID_C_F_BIT_OR_OOB_SRD_COORDINATE_REJECTED"
+    | "SMPTE_ST2022_8_ST2110_21_TR_OFFSET_250US_SKEW_OR_48GBPS_UNCOMPRESSED_FLOOD_CLAMPED"
+    | "none";
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211020St20228Rfc4175UncompressedVideoSrdOverreadPgroupAlignmentCBitFBitDesyncAndTrOffsetFloodGuard(
+  input: WebrtcSipRtpSmpteSt211020St20228Rfc4175UncompressedVideoSrdOverreadPgroupAlignmentCBitFBitDesyncAndTrOffsetFloodGuardInput
+): WebrtcSipRtpSmpteSt211020St20228Rfc4175UncompressedVideoSrdOverreadPgroupAlignmentCBitFBitDesyncAndTrOffsetFloodGuardAssessment {
+  const policyCode =
+    "P316-WEBRTC-SIP-RTP-SMPTE-ST2110-20-ST2022-8-RFC4175-UNCOMPRESSED-VIDEO-SRD-OVERREAD-PGROUP-ALIGNMENT-C-F-BIT-DESYNC-AND-TR-OFFSET-FLOOD-GUARD" as const;
+
+  const srdScanlineOverreadOrPgroupMisalignmentDropped0ms =
+    input.pgroupOctetSize <= 0 ||
+    input.srdScanlinePayloadDeclaredBytes < input.pgroupOctetSize ||
+    input.srdScanlinePayloadDeclaredBytes % input.pgroupOctetSize !== 0 ||
+    input.srdScanlinePayloadDeclaredBytes > input.actualRtpPayloadBytesRemaining;
+
+  if (srdScanlineOverreadOrPgroupMisalignmentDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      srdScanlineOverreadOrPgroupMisalignmentDropped0ms: true,
+      corruptedCFBitOrOobSrdRowOffsetRejected: false,
+      st20228TrOffsetSkewOr48GbpsBandwidthFloodClamped: false,
+      st211020Rfc4175VideoStreamAccepted: false,
+      action:
+        "drop_st2110_20_rfc4175_srd_overread_or_pgroup_misaligned_packet_in_0ms",
+      blockedReason:
+        "RFC_4175_ST2110_20_SRD_SCANLINE_OVERREAD_OR_PGROUP_OCTET_MISALIGNMENT_DROPPED_0MS",
+    };
+  }
+
+  const corruptedCFBitOrOobSrdRowOffsetRejected =
+    !input.continuationCBitAndInterlacedFieldFBitConsistent ||
+    !input.srdRowNumberOrPixelOffsetWithinActiveFrame;
+
+  if (corruptedCFBitOrOobSrdRowOffsetRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      srdScanlineOverreadOrPgroupMisalignmentDropped0ms: false,
+      corruptedCFBitOrOobSrdRowOffsetRejected: true,
+      st20228TrOffsetSkewOr48GbpsBandwidthFloodClamped: false,
+      st211020Rfc4175VideoStreamAccepted: false,
+      action:
+        "reject_st2110_20_corrupted_c_f_bit_or_oob_srd_row_offset_and_hold_last_good_frame",
+      blockedReason:
+        "SMPTE_ST2110_20_RFC4175_INVALID_C_F_BIT_OR_OOB_SRD_COORDINATE_REJECTED",
+    };
+  }
+
+  const st20228TrOffsetSkewOr48GbpsBandwidthFloodClamped =
+    input.st20228ToSt211021TrOffsetDeviationUs > 250.0 ||
+    input.uncompressedVideoStreamBitrateGbps > 48.0;
+
+  if (st20228TrOffsetSkewOr48GbpsBandwidthFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      srdScanlineOverreadOrPgroupMisalignmentDropped0ms: false,
+      corruptedCFBitOrOobSrdRowOffsetRejected: false,
+      st20228TrOffsetSkewOr48GbpsBandwidthFloodClamped: true,
+      st211020Rfc4175VideoStreamAccepted: false,
+      action:
+        "clamp_st2110_20_uncompressed_bitrate_flood_or_resync_st2022_8_tr_offset_buffer",
+      blockedReason:
+        "SMPTE_ST2022_8_ST2110_21_TR_OFFSET_250US_SKEW_OR_48GBPS_UNCOMPRESSED_FLOOD_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    srdScanlineOverreadOrPgroupMisalignmentDropped0ms: false,
+    corruptedCFBitOrOobSrdRowOffsetRejected: false,
+    st20228TrOffsetSkewOr48GbpsBandwidthFloodClamped: false,
+    st211020Rfc4175VideoStreamAccepted: true,
+    action:
+      "accept_smpte_st2110_20_st2022_8_rfc4175_uncompressed_video_rtp_stream",
+    blockedReason: "none",
+  };
+}
+
+
 
 
