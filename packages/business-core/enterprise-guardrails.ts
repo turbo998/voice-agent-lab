@@ -29949,3 +29949,224 @@ export function evaluateWebrtcSipRtpAes67SmpteSt211030Rfc7273TsRefclkMediaclkSig
     blockedReason: "none",
   };
 }
+
+// ============================================================================
+// Stage 157 · P307 — Semiconductor PVD Magnetron Sputtering, Metal Evaporator
+// & Pyrophoric Ti/Al/Ta/Cu Target Shield / Cryopump H2 Regeneration
+// NFPA 318 / SEMI S2 / SEMI S6 / NFPA 484 / OSHA 1910.119 / OSHA 1910.1000 Guard
+// ============================================================================
+
+export interface SemiconductorPvdMagnetronSputteringPyrophoricTargetShieldAndCryopumpRegenGuardInput {
+  chamberId: string;
+  dcHiPimsMagnetronArcRatePerSecond: number;
+  targetBackingPlateWaterLeakIntoVacuumDetected: boolean;
+  targetCoolingWaterFlowLpm: number;
+  cryopumpWarmupRegenHydrogenConcentrationPercent: number;
+  cryopumpArrayPressureDuringRegenTorr: number;
+  n2PurgeDilutionVerifiedDuringCryopumpRegen: boolean;
+  pyrophoricTiAlTaShieldBeadBlastOrChangeoutRequested: boolean;
+  argonPassivationAndClassDMetLxtExtinguisherLotoVerified: boolean;
+}
+
+export interface SemiconductorPvdMagnetronSputteringPyrophoricTargetShieldAndCryopumpRegenGuardAssessment {
+  policyCode: "P307-SEMICONDUCTOR-PVD-MAGNETRON-SPUTTERING-TI-AL-TA-CU-TARGET-SHIELD-AND-CRYOPUMP-H2-REGEN-NFPA318-SEMIS2-SEMIS6-NFPA484-OSHA1910119-OSHA19101000-MAGNETRON-WATER-LEAK-ARC-TRIP-CRYOPUMP-H2-REGEN-INERTING-AND-PYROPHORIC-SHIELD-CLASS-D-LOTO-GUARD";
+  chamberId: string;
+  magnetronWaterLeakOrRunawayArcTripped0ms: boolean;
+  cryopumpHydrogenRegenDeflagrationIsolated: boolean;
+  pyrophoricShieldChangeoutClassDLotoLocked: boolean;
+  pvdSputteringOperationApproved: boolean;
+  action:
+    | "approve_semiconductor_pvd_magnetron_sputtering_and_cryopump_operation"
+    | "trip_pvd_dc_rf_magnetron_power_close_high_vac_gate_valve_and_isolate_target_water_in_0ms"
+    | "abort_cryopump_regeneration_force_n2_purge_dilution_below_1pct_h2_and_vent_to_exhaust"
+    | "lock_pvd_chamber_hoist_and_require_in_situ_o2_ar_passivation_plus_nfpa484_class_d_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorPvdMagnetronSputteringTiAlTaCuTargetShieldAndCryopumpH2RegenNfpa318SemiS2SemiS6Nfpa484Osha1910119Osha19101000MagnetronWaterLeakArcTripCryopumpH2RegenInertingAndPyrophoricShieldClassDLotoGuard(
+  input: SemiconductorPvdMagnetronSputteringPyrophoricTargetShieldAndCryopumpRegenGuardInput
+): SemiconductorPvdMagnetronSputteringPyrophoricTargetShieldAndCryopumpRegenGuardAssessment {
+  const policyCode =
+    "P307-SEMICONDUCTOR-PVD-MAGNETRON-SPUTTERING-TI-AL-TA-CU-TARGET-SHIELD-AND-CRYOPUMP-H2-REGEN-NFPA318-SEMIS2-SEMIS6-NFPA484-OSHA1910119-OSHA19101000-MAGNETRON-WATER-LEAK-ARC-TRIP-CRYOPUMP-H2-REGEN-INERTING-AND-PYROPHORIC-SHIELD-CLASS-D-LOTO-GUARD" as const;
+
+  const magnetronWaterLeakOrRunawayArcTripped0ms =
+    input.targetBackingPlateWaterLeakIntoVacuumDetected ||
+    input.dcHiPimsMagnetronArcRatePerSecond > 50 ||
+    input.targetCoolingWaterFlowLpm < 12.0;
+
+  if (magnetronWaterLeakOrRunawayArcTripped0ms) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      magnetronWaterLeakOrRunawayArcTripped0ms: true,
+      cryopumpHydrogenRegenDeflagrationIsolated: false,
+      pyrophoricShieldChangeoutClassDLotoLocked: false,
+      pvdSputteringOperationApproved: false,
+      action:
+        "trip_pvd_dc_rf_magnetron_power_close_high_vac_gate_valve_and_isolate_target_water_in_0ms",
+      blockedReason:
+        "SEMI_S2_PVD_TARGET_BACKING_PLATE_WATER_LEAK_MOLTEN_METAL_STEAM_EXPLOSION_OR_MAGNETRON_ARC_PREEMPTED_0MS",
+    };
+  }
+
+  const cryopumpHydrogenRegenDeflagrationIsolated =
+    input.cryopumpWarmupRegenHydrogenConcentrationPercent >= 1.0 ||
+    input.cryopumpArrayPressureDuringRegenTorr > 780 ||
+    !input.n2PurgeDilutionVerifiedDuringCryopumpRegen;
+
+  if (cryopumpHydrogenRegenDeflagrationIsolated) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      magnetronWaterLeakOrRunawayArcTripped0ms: false,
+      cryopumpHydrogenRegenDeflagrationIsolated: true,
+      pyrophoricShieldChangeoutClassDLotoLocked: false,
+      pvdSputteringOperationApproved: false,
+      action:
+        "abort_cryopump_regeneration_force_n2_purge_dilution_below_1pct_h2_and_vent_to_exhaust",
+      blockedReason:
+        "NFPA_318_SEMI_S2_CRYOPUMP_CHARCOAL_DESORBED_H2_1PCT_25LEL_OR_N2_DILUTION_FAILURE_ISOLATED",
+    };
+  }
+
+  const pyrophoricShieldChangeoutClassDLotoLocked =
+    input.pyrophoricTiAlTaShieldBeadBlastOrChangeoutRequested &&
+    !input.argonPassivationAndClassDMetLxtExtinguisherLotoVerified;
+
+  if (pyrophoricShieldChangeoutClassDLotoLocked) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      magnetronWaterLeakOrRunawayArcTripped0ms: false,
+      cryopumpHydrogenRegenDeflagrationIsolated: false,
+      pyrophoricShieldChangeoutClassDLotoLocked: true,
+      pvdSputteringOperationApproved: false,
+      action:
+        "lock_pvd_chamber_hoist_and_require_in_situ_o2_ar_passivation_plus_nfpa484_class_d_loto",
+      blockedReason:
+        "NFPA_484_PYROPHORIC_TI_AL_TA_SPUTTER_SHIELD_FLAKE_IGNITION_HAZARD_CLASS_D_PASSIVATION_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    chamberId: input.chamberId,
+    magnetronWaterLeakOrRunawayArcTripped0ms: false,
+    cryopumpHydrogenRegenDeflagrationIsolated: false,
+    pyrophoricShieldChangeoutClassDLotoLocked: false,
+    pvdSputteringOperationApproved: true,
+    action: "approve_semiconductor_pvd_magnetron_sputtering_and_cryopump_operation",
+    blockedReason: "none",
+  };
+}
+
+// ============================================================================
+// Stage 157 · P308 — WebRTC & SIP RTP SMPTE ST 2110-21 Traffic Shaping /
+// Virtual Receiver Buffer Model (VRX / C_MAX) & Narrow / Wide Sender Guard
+// ============================================================================
+
+export interface WebrtcSipRtpSmpteSt211021TrafficShapingVrxCmaxAndSenderProfileGuardInput {
+  sessionId: string;
+  sdpTpAttributeLengthBytes: number;
+  sdpLineBufferRemainingBytes: number;
+  tpSenderProfileToken: "2110TPN" | "2110TPNL" | "2110TPW" | "INVALID_TP_PROFILE";
+  networkCompatibilityDrainBucketPacketsCinst: number;
+  networkCompatibilityBucketCeilingCmax: number;
+  virtualReceiverBufferPacketsVrxCurr: number;
+  virtualReceiverBufferMaxPacketsVrxFull: number;
+  trsInterPacketArrivalGapNanoseconds: number;
+  nominalTrsNanoseconds: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211021TrafficShapingVrxCmaxAndSenderProfileGuardAssessment {
+  policyCode: "P308-WEBRTC-SIP-RTP-SMPTE-ST2110-21-TRAFFIC-SHAPING-VRX-CMAX-BUFFER-MODEL-SDP-TP-OVERREAD-CINST-BUCKET-OVERFLOW-VRX-UNDERRUN-OVERRUN-AND-MICROBURST-GUARD";
+  sessionId: string;
+  sdpTpAttributeOverreadOrInvalidProfileDropped0ms: boolean;
+  cinstDrainBucketOverflowOrZeroTrsRejected: boolean;
+  vrxBufferUnderrunOverrunOrMicroburstClamped: boolean;
+  st211021TrafficShapingAccepted: boolean;
+  action:
+    | "accept_smpte_st2110_21_narrow_gapped_linear_traffic_shaped_stream"
+    | "drop_st2110_21_sdp_tp_attribute_overread_or_invalid_profile_in_0ms"
+    | "reject_st2110_21_cinst_exceeding_cmax_leaky_bucket_or_zero_trs_divide"
+    | "clamp_st2110_21_vrx_buffer_underrun_overrun_or_microburst_pacing";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211021TrafficShapingVrxCmaxBufferModelSdpTpOverreadCinstBucketOverflowVrxUnderrunOverrunAndMicroburstGuard(
+  input: WebrtcSipRtpSmpteSt211021TrafficShapingVrxCmaxAndSenderProfileGuardInput
+): WebrtcSipRtpSmpteSt211021TrafficShapingVrxCmaxAndSenderProfileGuardAssessment {
+  const policyCode =
+    "P308-WEBRTC-SIP-RTP-SMPTE-ST2110-21-TRAFFIC-SHAPING-VRX-CMAX-BUFFER-MODEL-SDP-TP-OVERREAD-CINST-BUCKET-OVERFLOW-VRX-UNDERRUN-OVERRUN-AND-MICROBURST-GUARD" as const;
+
+  const sdpTpAttributeOverreadOrInvalidProfileDropped0ms =
+    input.sdpTpAttributeLengthBytes <= 0 ||
+    input.sdpTpAttributeLengthBytes > input.sdpLineBufferRemainingBytes ||
+    input.sdpTpAttributeLengthBytes > 128 ||
+    input.tpSenderProfileToken === "INVALID_TP_PROFILE";
+
+  if (sdpTpAttributeOverreadOrInvalidProfileDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      sdpTpAttributeOverreadOrInvalidProfileDropped0ms: true,
+      cinstDrainBucketOverflowOrZeroTrsRejected: false,
+      vrxBufferUnderrunOverrunOrMicroburstClamped: false,
+      st211021TrafficShapingAccepted: false,
+      action: "drop_st2110_21_sdp_tp_attribute_overread_or_invalid_profile_in_0ms",
+      blockedReason:
+        "SMPTE_ST2110_21_SDP_TP_ATTRIBUTE_OVERREAD_OR_INVALID_2110TP_PROFILE_DROPPED_0MS",
+    };
+  }
+
+  const cinstDrainBucketOverflowOrZeroTrsRejected =
+    input.nominalTrsNanoseconds <= 0 ||
+    input.networkCompatibilityBucketCeilingCmax <= 0 ||
+    input.networkCompatibilityDrainBucketPacketsCinst >
+      input.networkCompatibilityBucketCeilingCmax;
+
+  if (cinstDrainBucketOverflowOrZeroTrsRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      sdpTpAttributeOverreadOrInvalidProfileDropped0ms: false,
+      cinstDrainBucketOverflowOrZeroTrsRejected: true,
+      vrxBufferUnderrunOverrunOrMicroburstClamped: false,
+      st211021TrafficShapingAccepted: false,
+      action: "reject_st2110_21_cinst_exceeding_cmax_leaky_bucket_or_zero_trs_divide",
+      blockedReason:
+        "SMPTE_ST2110_21_CINST_EXCEEDS_CMAX_NETWORK_COMPATIBILITY_BUCKET_OR_ZERO_TRS_REJECTED",
+    };
+  }
+
+  const vrxBufferUnderrunOverrunOrMicroburstClamped =
+    input.virtualReceiverBufferPacketsVrxCurr < 0 ||
+    input.virtualReceiverBufferPacketsVrxCurr >
+      input.virtualReceiverBufferMaxPacketsVrxFull ||
+    input.trsInterPacketArrivalGapNanoseconds < input.nominalTrsNanoseconds * 0.25;
+
+  if (vrxBufferUnderrunOverrunOrMicroburstClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      sdpTpAttributeOverreadOrInvalidProfileDropped0ms: false,
+      cinstDrainBucketOverflowOrZeroTrsRejected: false,
+      vrxBufferUnderrunOverrunOrMicroburstClamped: true,
+      st211021TrafficShapingAccepted: false,
+      action: "clamp_st2110_21_vrx_buffer_underrun_overrun_or_microburst_pacing",
+      blockedReason:
+        "SMPTE_ST2110_21_VRX_BUFFER_UNDERRUN_OVERRUN_OR_SUB_TRS_MICROBURST_PACING_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    sdpTpAttributeOverreadOrInvalidProfileDropped0ms: false,
+    cinstDrainBucketOverflowOrZeroTrsRejected: false,
+    vrxBufferUnderrunOverrunOrMicroburstClamped: false,
+    st211021TrafficShapingAccepted: true,
+    action: "accept_smpte_st2110_21_narrow_gapped_linear_traffic_shaped_stream",
+    blockedReason: "none",
+  };
+}

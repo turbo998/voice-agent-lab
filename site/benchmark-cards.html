@@ -2071,6 +2071,15 @@
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">TMA-O3-Pulse-RFO-Trip-0ms/PowderTrap-WF6-Bypass/O3-WF6-ClassD-SCBA-LOTO &amp; RFC7273-EUI64-Drop-0ms/Mediaclk-ZeroDivide-Reject/ASRC-Drift-Clamp</span></td>
               <td><span class="band-tag band-auto">0.0 pts</span></td>
             </tr>
+            <tr>
+              <td>
+                <strong>160. 半导体物理气相沉积（`PVD`）磁控溅射（`Ti / Al / Ta / Cu`）靶材水冷与低温泵（`Cryopump`）再生 `NFPA 318 / SEMI S2 / SEMI S6 / NFPA 484 / OSHA 1910.119 / OSHA 1910.1000` `0ms` 靶材背板冷却水穿孔入腔蒸汽爆炸与磁控微弧跳闸、低温泵再生 `&gt;= 1.0% H2`（`25% LEL`）脱附燃爆充氮稀释隔离及自燃 `Ti / Al / Ta` 遮蔽罩 `Ar/O2` 原位钝化与 `NFPA 484 Class D LOTO` 护栏 &amp; WebRTC/SIP RTP `SMPTE ST 2110-21` 流量整形（`VRX / C_MAX` 虚拟接收机缓冲模型）`0ms` `a=TP` 属性越界/非法档位丢弃、`C_INST &gt; C_MAX` 漏桶溢出/`T_RS &lt;= 0` 除零拦截及 `VRX` 缓冲下溢/上溢与 `&lt; 0.25 × T_RS` 微突发钳制护栏 (`P307` / `P308` · 317 护栏 &amp; 326 探针里程碑)</strong>
+                <div style="font-size:11.5px;color:#64748B;">PVD 溅射腔室检出 Ti/Al 靶材背板无氧铜水冷套穿孔入腔、DC/HiPIMS 磁控电源微弧频次达 120 次/秒 (&gt;50 次/s) 且冷却水流量跌至 6.5 L/min (&lt;12.0 L/min)，15 K 活性炭低温泵回温再生期间 H2 体积分数飙升至 2.4% (&gt;=1.0% H2 / 25% LEL)、泵腔压力达 840 Torr (&gt;780 Torr) 且缺 N2 稀释，叠加 SDP a=TP 1024B 越界与 INVALID_TP_PROFILE、C_INST=28 包 (&gt;C_MAX=16) 且 T_RS=0 ns 除零，以及 VRX 缓冲溢出 42 包 (&gt;VRX_FULL=8) 与 15 ns 微突发间距</div>
+              </td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 318 / SEMI S2 PVD Magnetron-Cryopump &amp; SMPTE ST 2110-21 VRX-CMAX Shaping Guard</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">PVD-WaterLeak-Arc-Trip-0ms/Cryopump-H2-Regen-Abort/TiAlTa-ClassD-LOTO &amp; ST2110-21-TP-Drop-0ms/Cinst-ZeroTrs-Reject/VRX-Microburst-Clamp</span></td>
+              <td><span class="band-tag band-auto">0.0 pts</span></td>
+            </tr>
 
           </tbody>
         </table>
