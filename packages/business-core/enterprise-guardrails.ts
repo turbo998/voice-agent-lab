@@ -36157,6 +36157,214 @@ export function evaluateWebrtcSipRtpRfc8088Rfc4855AndRfc3555DynamicPayloadTypeRt
   };
 }
 
+export interface SemiconductorWaferElectrochemicalDepositionEcdPlatingCellGuardInput {
+  readonly ecdCellOrPlatingModuleId: string;
+  readonly rectifierBusVoltageVolts: number;
+  readonly electrolyteFlowRateLpm: number;
+  readonly cellLipExhaustStaticPressurePa: number;
+  readonly cyanideStrikeAndAcidCuDrainSegregationVerified: boolean;
+  readonly platingCellHeadspaceH2PercentLel: number;
+  readonly organicAdditiveVmsTocExcursionPpm: number;
+  readonly anodeBasketOrMembraneMaintenanceRequested: boolean;
+  readonly rectifierOutputZeroCurrentVerified: boolean;
+  readonly acidElectrolyteDiFlushAndChemicalApronScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferElectrochemicalDepositionEcdPlatingCellGuardDecision {
+  readonly policyCode: "P367-SEMICONDUCTOR-WAFER-ELECTROCHEMICAL-DEPOSITION-ECD-CU-CO-SNAG-PLATING-SEMIS2-SEMIS6-NFPA318-NFPA70E-OSHA19101000-RECTIFIER-OVERVOLTAGE-FLOW-LOSS-OR-CYANIDE-ACID-DRAIN-MIX-TRIP-CATHODE-H2-PURGE-AND-ZERO-CURRENT-LOTO-GUARD";
+  readonly ecdCellOrPlatingModuleId: string;
+  readonly waferEcdPlatingApproved: boolean;
+  readonly dcRectifierAndDrainDivertTripped0ms: boolean;
+  readonly platingCurrentHaltedAndCellHeadspacePurged: boolean;
+  readonly anodeBasketAndMembraneMaintenanceLockedUntilZeroCurrentAndLoto: boolean;
+  readonly action:
+    | "approve_semiconductor_wafer_ecd_electroplating_operation"
+    | "trip_dc_rectifier_and_isolate_drain_on_overvoltage_flow_loss_exhaust_or_cyanide_acid_mix_in_0ms"
+    | "halt_plating_current_and_boost_n2_exhaust_sweep_on_cathode_h2_evolution_or_vms_toc_excursion"
+    | "lock_out_ecd_cell_hood_and_anode_basket_until_zero_current_and_di_flush_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferElectrochemicalDepositionEcdCuCoSnagPlatingSemiS2SemiS6Nfpa318Nfpa70eOsha19101000RectifierOvervoltageFlowLossOrCyanideAcidDrainMixTripCathodeH2PurgeAndZeroCurrentLotoGuard(
+  input: SemiconductorWaferElectrochemicalDepositionEcdPlatingCellGuardInput,
+): SemiconductorWaferElectrochemicalDepositionEcdPlatingCellGuardDecision {
+  const policyCode =
+    "P367-SEMICONDUCTOR-WAFER-ELECTROCHEMICAL-DEPOSITION-ECD-CU-CO-SNAG-PLATING-SEMIS2-SEMIS6-NFPA318-NFPA70E-OSHA19101000-RECTIFIER-OVERVOLTAGE-FLOW-LOSS-OR-CYANIDE-ACID-DRAIN-MIX-TRIP-CATHODE-H2-PURGE-AND-ZERO-CURRENT-LOTO-GUARD" as const;
+
+  const dcRectifierAndDrainDivertTripped0ms =
+    input.rectifierBusVoltageVolts > 28 ||
+    input.electrolyteFlowRateLpm < 4.0 ||
+    input.cellLipExhaustStaticPressurePa > -110 ||
+    !input.cyanideStrikeAndAcidCuDrainSegregationVerified;
+
+  const platingCurrentHaltedAndCellHeadspacePurged =
+    input.platingCellHeadspaceH2PercentLel >= 20 ||
+    input.organicAdditiveVmsTocExcursionPpm > 5000;
+
+  const anodeBasketAndMembraneMaintenanceLockedUntilZeroCurrentAndLoto =
+    input.anodeBasketOrMembraneMaintenanceRequested &&
+    (!input.rectifierOutputZeroCurrentVerified ||
+      !input.acidElectrolyteDiFlushAndChemicalApronScbaLotoVerified);
+
+  if (dcRectifierAndDrainDivertTripped0ms) {
+    return {
+      policyCode,
+      ecdCellOrPlatingModuleId: input.ecdCellOrPlatingModuleId,
+      waferEcdPlatingApproved: false,
+      dcRectifierAndDrainDivertTripped0ms: true,
+      platingCurrentHaltedAndCellHeadspacePurged,
+      anodeBasketAndMembraneMaintenanceLockedUntilZeroCurrentAndLoto,
+      action:
+        "trip_dc_rectifier_and_isolate_drain_on_overvoltage_flow_loss_exhaust_or_cyanide_acid_mix_in_0ms",
+      blockedReason:
+        "rectifier_above_28v_or_electrolyte_below_4lpm_or_lip_exhaust_loss_or_cyanide_acid_drain_mix_hcn_risk_0ms_trip",
+    };
+  }
+
+  if (platingCurrentHaltedAndCellHeadspacePurged) {
+    return {
+      policyCode,
+      ecdCellOrPlatingModuleId: input.ecdCellOrPlatingModuleId,
+      waferEcdPlatingApproved: false,
+      dcRectifierAndDrainDivertTripped0ms: false,
+      platingCurrentHaltedAndCellHeadspacePurged: true,
+      anodeBasketAndMembraneMaintenanceLockedUntilZeroCurrentAndLoto,
+      action:
+        "halt_plating_current_and_boost_n2_exhaust_sweep_on_cathode_h2_evolution_or_vms_toc_excursion",
+      blockedReason:
+        "plating_cell_headspace_h2_at_or_above_20_percent_lel_or_vms_additive_toc_above_5000ppm",
+    };
+  }
+
+  if (anodeBasketAndMembraneMaintenanceLockedUntilZeroCurrentAndLoto) {
+    return {
+      policyCode,
+      ecdCellOrPlatingModuleId: input.ecdCellOrPlatingModuleId,
+      waferEcdPlatingApproved: false,
+      dcRectifierAndDrainDivertTripped0ms: false,
+      platingCurrentHaltedAndCellHeadspacePurged: false,
+      anodeBasketAndMembraneMaintenanceLockedUntilZeroCurrentAndLoto: true,
+      action:
+        "lock_out_ecd_cell_hood_and_anode_basket_until_zero_current_and_di_flush_loto",
+      blockedReason:
+        "rectifier_zero_current_unverified_or_acid_electrolyte_di_flush_and_chemical_loto_incomplete",
+    };
+  }
+
+  return {
+    policyCode,
+    ecdCellOrPlatingModuleId: input.ecdCellOrPlatingModuleId,
+    waferEcdPlatingApproved: true,
+    dcRectifierAndDrainDivertTripped0ms: false,
+    platingCurrentHaltedAndCellHeadspacePurged: false,
+    anodeBasketAndMembraneMaintenanceLockedUntilZeroCurrentAndLoto: false,
+    action: "approve_semiconductor_wafer_ecd_electroplating_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc7741Vp8Rfc9628Vp9AndRfc7742ScalabilityStructureGuardInput {
+  readonly sessionId: string;
+  readonly declaredPayloadDescriptorAndSsBytes: number;
+  readonly actualRtpPayloadBytesRemaining: number;
+  readonly ssSpatialLayersCountN_S: number;
+  readonly ssGroupOfPicturesCountN_G: number;
+  readonly nonReferenceFrameMarkedAsKeyframeOrLayerDependencyCycleDetected: boolean;
+  readonly discontinuousTl0PicIdxOrPictureIdJumpDetected: boolean;
+  readonly unsolicitedPliFirKeyframeRequestsPerSecond: number;
+}
+
+export interface WebrtcSipRtpRfc7741Vp8Rfc9628Vp9AndRfc7742ScalabilityStructureGuardDecision {
+  readonly policyCode: "P368-WEBRTC-SIP-RTP-RFC7741-VP8-RFC9628-VP9-AND-RFC7742-SCALABILITY-STRUCTURE-SS-DESCRIPTOR-OVERREAD-LAYER-DEPENDENCY-CYCLE-TL0PICIDX-JUMP-AND-KEYFRAME-PLI-FIR-AMPLIFICATION-GUARD";
+  readonly sessionId: string;
+  readonly rfc7741Vp8AndRfc9628Vp9PayloadHealthy: boolean;
+  readonly payloadDescriptorOrSsOverreadDropped0ms: boolean;
+  readonly layerDependencyCycleOrTl0PicIdxJumpRejected: boolean;
+  readonly unsolicitedKeyframeAmplificationFloodClamped: boolean;
+  readonly action:
+    | "accept_rfc7741_vp8_rfc9628_vp9_and_rfc7742_svc_payload"
+    | "drop_vp8_vp9_payload_descriptor_or_ss_length_overread_in_0ms"
+    | "reject_vp8_vp9_layer_dependency_cycle_or_tl0picidx_pictureid_jump"
+    | "clamp_unsolicited_pli_fir_keyframe_amplification_storm";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc7741Vp8Rfc9628Vp9AndRfc7742ScalabilityStructureSsDescriptorOverreadLayerDependencyCycleTl0picidxJumpAndKeyframePliFirAmplificationGuard(
+  input: WebrtcSipRtpRfc7741Vp8Rfc9628Vp9AndRfc7742ScalabilityStructureGuardInput,
+): WebrtcSipRtpRfc7741Vp8Rfc9628Vp9AndRfc7742ScalabilityStructureGuardDecision {
+  const policyCode =
+    "P368-WEBRTC-SIP-RTP-RFC7741-VP8-RFC9628-VP9-AND-RFC7742-SCALABILITY-STRUCTURE-SS-DESCRIPTOR-OVERREAD-LAYER-DEPENDENCY-CYCLE-TL0PICIDX-JUMP-AND-KEYFRAME-PLI-FIR-AMPLIFICATION-GUARD" as const;
+
+  const payloadDescriptorOrSsOverreadDropped0ms =
+    input.actualRtpPayloadBytesRemaining < 2 ||
+    input.declaredPayloadDescriptorAndSsBytes >
+      input.actualRtpPayloadBytesRemaining ||
+    input.ssSpatialLayersCountN_S > 8 ||
+    input.ssGroupOfPicturesCountN_G > 32;
+
+  const layerDependencyCycleOrTl0PicIdxJumpRejected =
+    input.nonReferenceFrameMarkedAsKeyframeOrLayerDependencyCycleDetected ||
+    input.discontinuousTl0PicIdxOrPictureIdJumpDetected;
+
+  const unsolicitedKeyframeAmplificationFloodClamped =
+    input.unsolicitedPliFirKeyframeRequestsPerSecond > 6;
+
+  if (payloadDescriptorOrSsOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc7741Vp8AndRfc9628Vp9PayloadHealthy: false,
+      payloadDescriptorOrSsOverreadDropped0ms: true,
+      layerDependencyCycleOrTl0PicIdxJumpRejected,
+      unsolicitedKeyframeAmplificationFloodClamped,
+      action: "drop_vp8_vp9_payload_descriptor_or_ss_length_overread_in_0ms",
+      blockedReason:
+        "rfc7741_rfc9628_payload_descriptor_or_ss_exceeds_remaining_bytes_or_ns_above_8_or_ng_above_32_0ms_drop",
+    };
+  }
+
+  if (layerDependencyCycleOrTl0PicIdxJumpRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc7741Vp8AndRfc9628Vp9PayloadHealthy: false,
+      payloadDescriptorOrSsOverreadDropped0ms: false,
+      layerDependencyCycleOrTl0PicIdxJumpRejected: true,
+      unsolicitedKeyframeAmplificationFloodClamped,
+      action:
+        "reject_vp8_vp9_layer_dependency_cycle_or_tl0picidx_pictureid_jump",
+      blockedReason:
+        "vp8_vp9_spatial_temporal_layer_dependency_cycle_or_discontinuous_tl0picidx_pictureid_jump_rejected",
+    };
+  }
+
+  if (unsolicitedKeyframeAmplificationFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc7741Vp8AndRfc9628Vp9PayloadHealthy: false,
+      payloadDescriptorOrSsOverreadDropped0ms: false,
+      layerDependencyCycleOrTl0PicIdxJumpRejected: false,
+      unsolicitedKeyframeAmplificationFloodClamped: true,
+      action: "clamp_unsolicited_pli_fir_keyframe_amplification_storm",
+      blockedReason:
+        "unsolicited_pli_fir_keyframe_requests_above_6_per_second_amplification_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc7741Vp8AndRfc9628Vp9PayloadHealthy: true,
+    payloadDescriptorOrSsOverreadDropped0ms: false,
+    layerDependencyCycleOrTl0PicIdxJumpRejected: false,
+    unsolicitedKeyframeAmplificationFloodClamped: false,
+    action: "accept_rfc7741_vp8_rfc9628_vp9_and_rfc7742_svc_payload",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
