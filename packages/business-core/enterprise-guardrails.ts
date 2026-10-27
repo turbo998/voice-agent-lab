@@ -32266,3 +32266,191 @@ export function evaluateWebrtcSipRtpSmpteSt211030Aes67AndNmosIs08AudioChannelMap
     blockedReason: "none",
   };
 }
+
+
+export interface SemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuardInput {
+  readonly trackModuleId: string;
+  readonly spinBowlPgmeaSolventLelPercent: number;
+  readonly coaterCupExhaustDifferentialPa: number;
+  readonly pebOrHmdsHotplateTempC: number;
+  readonly tmahDeveloperAcidDrainIntermixDetected: boolean;
+  readonly resistPumpCabinetMaintenanceRequested: boolean;
+  readonly pgmeaPurgeAndTmahDiphoterineLotoVerified: boolean;
+}
+
+export interface SemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuardDecision {
+  readonly policyCode: "P329-SEMICONDUCTOR-PHOTOLITHOGRAPHY-COATER-DEVELOPER-TRACK-PGMEA-EBR-HMDS-PEB-AND-TMAH-DEVELOPER-SEMIS2-SEMIS6-NFPA318-NFPA30-OSHA19101000-SPIN-BOWL-SOLVENT-LEL-EXHAUST-LOSS-TRIP-PEB-HOTPLATE-OVERTEMP-TMAH-DRAIN-ISOLATION-AND-DIPHOTERINE-LOTO-GUARD";
+  readonly trackModuleId: string;
+  readonly spinBowlSolventLelOrExhaustLossTripped0ms: boolean;
+  readonly pebHotplateOvertempOrTmahDrainIsolated: boolean;
+  readonly resistPumpCabinetDiphoterineLotoLocked: boolean;
+  readonly coaterDeveloperTrackProcessApproved: boolean;
+  readonly action:
+    | "approve_semiconductor_coater_developer_track_operation"
+    | "trip_track_solvent_dispense_and_hotplate_power_on_bowl_lel_or_exhaust_loss_in_0ms"
+    | "quench_track_peb_hmds_hotplate_and_isolate_tmah_developer_drain"
+    | "lock_coater_developer_track_cabinet_and_require_tmah_pgmea_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard(
+  input: SemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuardInput
+): SemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuardDecision {
+  const policyCode =
+    "P329-SEMICONDUCTOR-PHOTOLITHOGRAPHY-COATER-DEVELOPER-TRACK-PGMEA-EBR-HMDS-PEB-AND-TMAH-DEVELOPER-SEMIS2-SEMIS6-NFPA318-NFPA30-OSHA19101000-SPIN-BOWL-SOLVENT-LEL-EXHAUST-LOSS-TRIP-PEB-HOTPLATE-OVERTEMP-TMAH-DRAIN-ISOLATION-AND-DIPHOTERINE-LOTO-GUARD" as const;
+
+  const spinBowlSolventLelOrExhaustLossTripped0ms =
+    input.spinBowlPgmeaSolventLelPercent >= 20.0 || input.coaterCupExhaustDifferentialPa < 120.0;
+
+  const pebHotplateOvertempOrTmahDrainIsolated =
+    input.pebOrHmdsHotplateTempC > 250.0 || input.tmahDeveloperAcidDrainIntermixDetected;
+
+  const resistPumpCabinetDiphoterineLotoLocked =
+    input.resistPumpCabinetMaintenanceRequested && !input.pgmeaPurgeAndTmahDiphoterineLotoVerified;
+
+  if (spinBowlSolventLelOrExhaustLossTripped0ms) {
+    return {
+      policyCode,
+      trackModuleId: input.trackModuleId,
+      spinBowlSolventLelOrExhaustLossTripped0ms: true,
+      pebHotplateOvertempOrTmahDrainIsolated,
+      resistPumpCabinetDiphoterineLotoLocked,
+      coaterDeveloperTrackProcessApproved: false,
+      action: "trip_track_solvent_dispense_and_hotplate_power_on_bowl_lel_or_exhaust_loss_in_0ms",
+      blockedReason:
+        "spin_coater_bowl_pgmea_solvent_lel_at_or_above_20pct_or_cup_exhaust_differential_below_120pa",
+    };
+  }
+
+  if (pebHotplateOvertempOrTmahDrainIsolated) {
+    return {
+      policyCode,
+      trackModuleId: input.trackModuleId,
+      spinBowlSolventLelOrExhaustLossTripped0ms: false,
+      pebHotplateOvertempOrTmahDrainIsolated: true,
+      resistPumpCabinetDiphoterineLotoLocked,
+      coaterDeveloperTrackProcessApproved: false,
+      action: "quench_track_peb_hmds_hotplate_and_isolate_tmah_developer_drain",
+      blockedReason:
+        "peb_or_hmds_hotplate_temperature_above_250c_or_tmah_developer_acid_drain_intermix_detected",
+    };
+  }
+
+  if (resistPumpCabinetDiphoterineLotoLocked) {
+    return {
+      policyCode,
+      trackModuleId: input.trackModuleId,
+      spinBowlSolventLelOrExhaustLossTripped0ms: false,
+      pebHotplateOvertempOrTmahDrainIsolated: false,
+      resistPumpCabinetDiphoterineLotoLocked: true,
+      coaterDeveloperTrackProcessApproved: false,
+      action: "lock_coater_developer_track_cabinet_and_require_tmah_pgmea_loto",
+      blockedReason:
+        "resist_pump_cabinet_maintenance_requested_without_pgmea_purge_and_tmah_diphoterine_loto_verification",
+    };
+  }
+
+  return {
+    policyCode,
+    trackModuleId: input.trackModuleId,
+    spinBowlSolventLelOrExhaustLossTripped0ms: false,
+    pebHotplateOvertempOrTmahDrainIsolated: false,
+    resistPumpCabinetDiphoterineLotoLocked: false,
+    coaterDeveloperTrackProcessApproved: true,
+    action: "approve_semiconductor_coater_developer_track_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpAmwaNmosIs04Is05Is09Bcp00301RegistryAndConnectionManagementUnauthenticatedStageDropSdpMulticastHijackIs09PtpDomainSpoofRejectAndBulkActivationStormGuardInput {
+  readonly sessionId: string;
+  readonly bcp00301MtlsAndOauth2BearerVerified: boolean;
+  readonly sdpTransportFileMulticastWithinAuthorizedPrefix: boolean;
+  readonly is09SystemPtpDomainMatchesGrandmasterPolicy: boolean;
+  readonly immediateActivationsPerSecond: number;
+  readonly is04RegistryQueriesPerSecond: number;
+}
+
+export interface WebrtcSipRtpAmwaNmosIs04Is05Is09Bcp00301RegistryAndConnectionManagementUnauthenticatedStageDropSdpMulticastHijackIs09PtpDomainSpoofRejectAndBulkActivationStormGuardDecision {
+  readonly policyCode: "P330-WEBRTC-SIP-RTP-AMWA-NMOS-IS04-IS05-IS09-BCP00301-REGISTRY-AND-CONNECTION-MANAGEMENT-UNAUTHENTICATED-STAGE-DROP-SDP-MULTICAST-HIJACK-IS09-PTP-DOMAIN-SPOOF-REJECT-AND-BULK-ACTIVATION-STORM-GUARD";
+  readonly sessionId: string;
+  readonly unauthenticatedBcp003RequestDropped0ms: boolean;
+  readonly sdpMulticastHijackOrIs09PtpDomainSpoofRejected: boolean;
+  readonly bulkActivationOrRegistryQueryStormClamped: boolean;
+  readonly nmosIs04Is05Is09ControlTransactionAccepted: boolean;
+  readonly action:
+    | "accept_amwa_nmos_is04_is05_is09_control_transaction"
+    | "drop_unauthenticated_nmos_is04_is05_bcp003_registration_or_stage_request_in_0ms"
+    | "reject_nmos_is05_sdp_multicast_hijack_or_is09_ptp_domain_spoof"
+    | "clamp_nmos_is04_is05_bulk_activation_or_registry_query_storm";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpAmwaNmosIs04Is05Is09Bcp00301RegistryAndConnectionManagementUnauthenticatedStageDropSdpMulticastHijackIs09PtpDomainSpoofRejectAndBulkActivationStormGuard(
+  input: WebrtcSipRtpAmwaNmosIs04Is05Is09Bcp00301RegistryAndConnectionManagementUnauthenticatedStageDropSdpMulticastHijackIs09PtpDomainSpoofRejectAndBulkActivationStormGuardInput
+): WebrtcSipRtpAmwaNmosIs04Is05Is09Bcp00301RegistryAndConnectionManagementUnauthenticatedStageDropSdpMulticastHijackIs09PtpDomainSpoofRejectAndBulkActivationStormGuardDecision {
+  const policyCode =
+    "P330-WEBRTC-SIP-RTP-AMWA-NMOS-IS04-IS05-IS09-BCP00301-REGISTRY-AND-CONNECTION-MANAGEMENT-UNAUTHENTICATED-STAGE-DROP-SDP-MULTICAST-HIJACK-IS09-PTP-DOMAIN-SPOOF-REJECT-AND-BULK-ACTIVATION-STORM-GUARD" as const;
+
+  const unauthenticatedBcp003RequestDropped0ms = !input.bcp00301MtlsAndOauth2BearerVerified;
+
+  const sdpMulticastHijackOrIs09PtpDomainSpoofRejected =
+    !input.sdpTransportFileMulticastWithinAuthorizedPrefix ||
+    !input.is09SystemPtpDomainMatchesGrandmasterPolicy;
+
+  const bulkActivationOrRegistryQueryStormClamped =
+    input.immediateActivationsPerSecond > 120 || input.is04RegistryQueriesPerSecond > 600;
+
+  if (unauthenticatedBcp003RequestDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      unauthenticatedBcp003RequestDropped0ms: true,
+      sdpMulticastHijackOrIs09PtpDomainSpoofRejected,
+      bulkActivationOrRegistryQueryStormClamped,
+      nmosIs04Is05Is09ControlTransactionAccepted: false,
+      action: "drop_unauthenticated_nmos_is04_is05_bcp003_registration_or_stage_request_in_0ms",
+      blockedReason:
+        "nmos_is04_is05_request_missing_valid_bcp00301_mtls_client_certificate_or_oauth2_jwt_bearer_token",
+    };
+  }
+
+  if (sdpMulticastHijackOrIs09PtpDomainSpoofRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      unauthenticatedBcp003RequestDropped0ms: false,
+      sdpMulticastHijackOrIs09PtpDomainSpoofRejected: true,
+      bulkActivationOrRegistryQueryStormClamped,
+      nmosIs04Is05Is09ControlTransactionAccepted: false,
+      action: "reject_nmos_is05_sdp_multicast_hijack_or_is09_ptp_domain_spoof",
+      blockedReason:
+        "nmos_is05_transport_file_sdp_multicast_outside_authorized_prefix_or_is09_ptp_domain_spoofed",
+    };
+  }
+
+  if (bulkActivationOrRegistryQueryStormClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      unauthenticatedBcp003RequestDropped0ms: false,
+      sdpMulticastHijackOrIs09PtpDomainSpoofRejected: false,
+      bulkActivationOrRegistryQueryStormClamped: true,
+      nmosIs04Is05Is09ControlTransactionAccepted: false,
+      action: "clamp_nmos_is04_is05_bulk_activation_or_registry_query_storm",
+      blockedReason:
+        "nmos_is05_immediate_activations_exceed_120_per_sec_or_is04_registry_queries_exceed_600_per_sec",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    unauthenticatedBcp003RequestDropped0ms: false,
+    sdpMulticastHijackOrIs09PtpDomainSpoofRejected: false,
+    bulkActivationOrRegistryQueryStormClamped: false,
+    nmosIs04Is05Is09ControlTransactionAccepted: true,
+    action: "accept_amwa_nmos_is04_is05_is09_control_transaction",
+    blockedReason: "none",
+  };
+}
