@@ -31031,6 +31031,224 @@ export function evaluateWebrtcSipRtpSmpteSt211020St20228Rfc4175UncompressedVideo
   };
 }
 
+// ============================================================================
+// Stage 162: P317 (Semiconductor Plasma Etch RIE / ICP / ALE CF4 / C4F8 / NF3 / Cl2 / HBr / BCl3 & ESC Helium Cooling Guard)
+//            & P318 (WebRTC & SIP RTP SMPTE ST 2022-7 Seamless Protection Switching Dual-Path Redundant RTP Guard)
+// ============================================================================
+
+export interface SemiconductorPlasmaEtchRieIcpAleInput {
+  etchChamberId: string;
+  gasBoxChlorineCl2LeakPpm: number;
+  hbrBcl3Sicl4MoistureHydrolysisHclExhaustPpm: number;
+  pouBurnWetAbatementScrubberOnline: boolean;
+  escHeliumBacksideCoolingLeakRateSccm: number;
+  waferChuckSurfaceTemperatureC: number;
+  etchChamberWetCleanOrQuartzFocusRingMaintenanceRequested: boolean;
+  fluorocarbonChlorinePolymerPurgeAndHfCl2ScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorPlasmaEtchRieIcpAleAssessment {
+  etchChamberId: string;
+  toxicCl2HbrBcl3LeakOrAbatementFailureRfoTripped0ms: boolean;
+  escHeliumBacksideLeakOrWaferOvertempRfQuenched: boolean;
+  etchChamberPolymerOutgassingOrFocusRingMaintenanceLocked: boolean;
+  plasmaEtchOperationApproved: boolean;
+  action:
+    | "trip_etch_gas_box_rfo_quench_rf_plasma_and_interlock_pou_burn_wet_scrubber_in_0ms"
+    | "quench_rf_source_bias_power_cut_esc_he_supply_and_hold_wafer_dechuck_sequence"
+    | "lock_etch_chamber_lid_and_require_polymer_o2_purge_and_hf_cl2_scba_loto"
+    | "approve_semiconductor_rie_icp_ale_plasma_etch_and_esc_operation";
+  blockedReason:
+    | "OSHA_1910_1000_SEMIS2_ETCH_CL2_0_5PPM_OR_HBR_BCL3_HCL_2PPM_OR_POU_SCRUBBER_OFFLINE_TRIPPED_0MS"
+    | "SEMI_S2_ETCH_ESC_HELIUM_15SCCM_LEAK_OR_WAFER_120C_THERMAL_DAMAGE_RF_QUENCHED"
+    | "NFPA_318_SEMIS2_ETCH_CHAMBER_FLUOROCARBON_CL2_POLYMER_PURGE_AND_SCBA_LOTO_LOCKED"
+    | "none";
+  policyCode: "P317-SEMICONDUCTOR-PLASMA-ETCH-RIE-ICP-ALE-CF4-C4F8-NF3-CL2-HBR-BCL3-AND-ESC-HELIUM-COOLING-NFPA318-SEMIS2-SEMIS6-OSHA1910119-OSHA19101000-TOXIC-CL2-HBR-BCL3-RFO-TRIP-ESC-HE-LEAK-RF-QUENCH-AND-POLYMER-HF-CL2-SCBA-LOTO-GUARD";
+}
+
+export function evaluateSemiconductorPlasmaEtchRieIcpAleCf4C4f8Nf3Cl2HbrBcl3AndEscHeliumCoolingNfpa318SemiS2SemiS6Osha1910119Osha19101000ToxicCl2HbrBcl3RfoTripEscHeLeakRfQuenchAndPolymerHfCl2ScbaLotoGuard(
+  input: SemiconductorPlasmaEtchRieIcpAleInput
+): SemiconductorPlasmaEtchRieIcpAleAssessment {
+  const policyCode =
+    "P317-SEMICONDUCTOR-PLASMA-ETCH-RIE-ICP-ALE-CF4-C4F8-NF3-CL2-HBR-BCL3-AND-ESC-HELIUM-COOLING-NFPA318-SEMIS2-SEMIS6-OSHA1910119-OSHA19101000-TOXIC-CL2-HBR-BCL3-RFO-TRIP-ESC-HE-LEAK-RF-QUENCH-AND-POLYMER-HF-CL2-SCBA-LOTO-GUARD" as const;
+
+  const toxicCl2HbrBcl3LeakOrAbatementFailureRfoTripped0ms =
+    input.gasBoxChlorineCl2LeakPpm >= 0.5 ||
+    input.hbrBcl3Sicl4MoistureHydrolysisHclExhaustPpm >= 2.0 ||
+    !input.pouBurnWetAbatementScrubberOnline;
+
+  if (toxicCl2HbrBcl3LeakOrAbatementFailureRfoTripped0ms) {
+    return {
+      policyCode,
+      etchChamberId: input.etchChamberId,
+      toxicCl2HbrBcl3LeakOrAbatementFailureRfoTripped0ms: true,
+      escHeliumBacksideLeakOrWaferOvertempRfQuenched: false,
+      etchChamberPolymerOutgassingOrFocusRingMaintenanceLocked: false,
+      plasmaEtchOperationApproved: false,
+      action:
+        "trip_etch_gas_box_rfo_quench_rf_plasma_and_interlock_pou_burn_wet_scrubber_in_0ms",
+      blockedReason:
+        "OSHA_1910_1000_SEMIS2_ETCH_CL2_0_5PPM_OR_HBR_BCL3_HCL_2PPM_OR_POU_SCRUBBER_OFFLINE_TRIPPED_0MS",
+    };
+  }
+
+  const escHeliumBacksideLeakOrWaferOvertempRfQuenched =
+    input.escHeliumBacksideCoolingLeakRateSccm > 15.0 ||
+    input.waferChuckSurfaceTemperatureC > 120.0;
+
+  if (escHeliumBacksideLeakOrWaferOvertempRfQuenched) {
+    return {
+      policyCode,
+      etchChamberId: input.etchChamberId,
+      toxicCl2HbrBcl3LeakOrAbatementFailureRfoTripped0ms: false,
+      escHeliumBacksideLeakOrWaferOvertempRfQuenched: true,
+      etchChamberPolymerOutgassingOrFocusRingMaintenanceLocked: false,
+      plasmaEtchOperationApproved: false,
+      action:
+        "quench_rf_source_bias_power_cut_esc_he_supply_and_hold_wafer_dechuck_sequence",
+      blockedReason:
+        "SEMI_S2_ETCH_ESC_HELIUM_15SCCM_LEAK_OR_WAFER_120C_THERMAL_DAMAGE_RF_QUENCHED",
+    };
+  }
+
+  const etchChamberPolymerOutgassingOrFocusRingMaintenanceLocked =
+    input.etchChamberWetCleanOrQuartzFocusRingMaintenanceRequested &&
+    !input.fluorocarbonChlorinePolymerPurgeAndHfCl2ScbaLotoVerified;
+
+  if (etchChamberPolymerOutgassingOrFocusRingMaintenanceLocked) {
+    return {
+      policyCode,
+      etchChamberId: input.etchChamberId,
+      toxicCl2HbrBcl3LeakOrAbatementFailureRfoTripped0ms: false,
+      escHeliumBacksideLeakOrWaferOvertempRfQuenched: false,
+      etchChamberPolymerOutgassingOrFocusRingMaintenanceLocked: true,
+      plasmaEtchOperationApproved: false,
+      action:
+        "lock_etch_chamber_lid_and_require_polymer_o2_purge_and_hf_cl2_scba_loto",
+      blockedReason:
+        "NFPA_318_SEMIS2_ETCH_CHAMBER_FLUOROCARBON_CL2_POLYMER_PURGE_AND_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    etchChamberId: input.etchChamberId,
+    toxicCl2HbrBcl3LeakOrAbatementFailureRfoTripped0ms: false,
+    escHeliumBacksideLeakOrWaferOvertempRfQuenched: false,
+    etchChamberPolymerOutgassingOrFocusRingMaintenanceLocked: false,
+    plasmaEtchOperationApproved: true,
+    action: "approve_semiconductor_rie_icp_ale_plasma_etch_and_esc_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingInput {
+  sessionId: string;
+  rtpPacketDeclaredLengthBytes: number;
+  actualUdpDatagramBytesRemaining: number;
+  pathAAndPathBPayloadTypeMatched: boolean;
+  sameSeqNumPathAPathBPayloadDigestMatched: boolean;
+  unauthenticatedCrossSsrcStreamInjectionDetected: boolean;
+  pathDifferentialDelaySkewMs: number;
+  protectionSwitchTransitionsPerSecond: number;
+}
+
+export interface WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingAssessment {
+  sessionId: string;
+  st20227TruncatedRtpOrPayloadTypeMismatchDropped0ms: boolean;
+  pathPayloadDigestDivergenceOrCrossSsrcSpliceRejected: boolean;
+  pathDifferentialSkewOrSwitchFlapStormClamped: boolean;
+  st20227SeamlessRedundantStreamAccepted: boolean;
+  action:
+    | "drop_st2022_7_truncated_rtp_overread_or_pt_mismatched_packet_in_0ms"
+    | "reject_st2022_7_divergent_seq_payload_or_cross_ssrc_splice_and_pin_verified_path"
+    | "clamp_st2022_7_path_differential_skew_or_dampen_hitless_switch_flap_storm"
+    | "accept_smpte_st2022_7_seamless_protection_switched_rtp_stream";
+  blockedReason:
+    | "SMPTE_ST2022_7_TRUNCATED_RTP_OVERREAD_OR_PATH_PAYLOAD_TYPE_MISMATCH_DROPPED_0MS"
+    | "SMPTE_ST2022_7_SAME_SEQ_PAYLOAD_HASH_DIVERGENCE_OR_CROSS_SSRC_SPLICE_REJECTED"
+    | "SMPTE_ST2022_7_PATH_SKEW_40MS_EXCEEDED_OR_20HZ_SWITCH_FLAP_STORM_CLAMPED"
+    | "none";
+  policyCode: "P318-WEBRTC-SIP-RTP-SMPTE-ST2022-7-SEAMLESS-PROTECTION-SWITCHING-DUAL-PATH-HEADER-OVERREAD-PAYLOAD-HASH-DIVERGENCE-PATH-SKEW-BUFFER-OVERFLOW-AND-SWITCH-FLAP-STORM-GUARD";
+}
+
+export function evaluateWebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingDualPathHeaderOverreadPayloadHashDivergencePathSkewBufferOverflowAndSwitchFlapStormGuard(
+  input: WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingInput
+): WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingAssessment {
+  const policyCode =
+    "P318-WEBRTC-SIP-RTP-SMPTE-ST2022-7-SEAMLESS-PROTECTION-SWITCHING-DUAL-PATH-HEADER-OVERREAD-PAYLOAD-HASH-DIVERGENCE-PATH-SKEW-BUFFER-OVERFLOW-AND-SWITCH-FLAP-STORM-GUARD" as const;
+
+  const st20227TruncatedRtpOrPayloadTypeMismatchDropped0ms =
+    input.rtpPacketDeclaredLengthBytes < 12 ||
+    input.rtpPacketDeclaredLengthBytes > input.actualUdpDatagramBytesRemaining ||
+    !input.pathAAndPathBPayloadTypeMatched;
+
+  if (st20227TruncatedRtpOrPayloadTypeMismatchDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st20227TruncatedRtpOrPayloadTypeMismatchDropped0ms: true,
+      pathPayloadDigestDivergenceOrCrossSsrcSpliceRejected: false,
+      pathDifferentialSkewOrSwitchFlapStormClamped: false,
+      st20227SeamlessRedundantStreamAccepted: false,
+      action:
+        "drop_st2022_7_truncated_rtp_overread_or_pt_mismatched_packet_in_0ms",
+      blockedReason:
+        "SMPTE_ST2022_7_TRUNCATED_RTP_OVERREAD_OR_PATH_PAYLOAD_TYPE_MISMATCH_DROPPED_0MS",
+    };
+  }
+
+  const pathPayloadDigestDivergenceOrCrossSsrcSpliceRejected =
+    !input.sameSeqNumPathAPathBPayloadDigestMatched ||
+    input.unauthenticatedCrossSsrcStreamInjectionDetected;
+
+  if (pathPayloadDigestDivergenceOrCrossSsrcSpliceRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st20227TruncatedRtpOrPayloadTypeMismatchDropped0ms: false,
+      pathPayloadDigestDivergenceOrCrossSsrcSpliceRejected: true,
+      pathDifferentialSkewOrSwitchFlapStormClamped: false,
+      st20227SeamlessRedundantStreamAccepted: false,
+      action:
+        "reject_st2022_7_divergent_seq_payload_or_cross_ssrc_splice_and_pin_verified_path",
+      blockedReason:
+        "SMPTE_ST2022_7_SAME_SEQ_PAYLOAD_HASH_DIVERGENCE_OR_CROSS_SSRC_SPLICE_REJECTED",
+    };
+  }
+
+  const pathDifferentialSkewOrSwitchFlapStormClamped =
+    input.pathDifferentialDelaySkewMs > 40.0 ||
+    input.protectionSwitchTransitionsPerSecond > 20;
+
+  if (pathDifferentialSkewOrSwitchFlapStormClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st20227TruncatedRtpOrPayloadTypeMismatchDropped0ms: false,
+      pathPayloadDigestDivergenceOrCrossSsrcSpliceRejected: false,
+      pathDifferentialSkewOrSwitchFlapStormClamped: true,
+      st20227SeamlessRedundantStreamAccepted: false,
+      action:
+        "clamp_st2022_7_path_differential_skew_or_dampen_hitless_switch_flap_storm",
+      blockedReason:
+        "SMPTE_ST2022_7_PATH_SKEW_40MS_EXCEEDED_OR_20HZ_SWITCH_FLAP_STORM_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    st20227TruncatedRtpOrPayloadTypeMismatchDropped0ms: false,
+    pathPayloadDigestDivergenceOrCrossSsrcSpliceRejected: false,
+    pathDifferentialSkewOrSwitchFlapStormClamped: false,
+    st20227SeamlessRedundantStreamAccepted: true,
+    action: "accept_smpte_st2022_7_seamless_protection_switched_rtp_stream",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
