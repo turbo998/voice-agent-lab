@@ -33459,3 +33459,206 @@ export function evaluateWebrtcSipRtpRfc8854WebrtcFecAndRfc8627MultiStreamFlexfec
   };
 }
 
+
+export interface SemiconductorWaferBackgrindingAndStealthLaserDicingDbgSdbgGuardInput {
+  readonly moduleId: string;
+  readonly chuckVacuumSuctionKpa: number;
+  readonly diGrindingCoolantFlowLpm: number;
+  readonly class4LaserEnclosureInterlockClosed: boolean;
+  readonly siliconSwarfSlurrySumpH2Ppm: number;
+  readonly grindingCoolantTempC: number;
+  readonly bladeWheelReplacementOrOpticsMaintenanceRequested: boolean;
+  readonly spindleZeroRpmSwarfFlushAndLaserShutterLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferBackgrindingAndStealthLaserDicingDbgSdbgGuardResult {
+  readonly policyCode: "P341-SEMICONDUCTOR-WAFER-BACKGRINDING-AND-STEALTH-LASER-DICING-DBG-SDBG-SUBMICRON-SILICON-SWARF-SLURRY-H2-EVOLUTION-CLASS4-IR-LASER-1064NM-1342NM-SEMIS2-SEMIS6-NFPA652-NFPA318-IEC60825-CHUCK-VACUUM-LOSS-OR-SPINDLE-COOLANT-TRIP-SILICON-H2-SWARF-PURGE-AND-LASER-SHUTTER-LOTO-GUARD";
+  readonly moduleId: string;
+  readonly dbgSdbgOperationApproved: boolean;
+  readonly chuckVacuumAndSpindleOrLaserTripped0ms: boolean;
+  readonly siliconSwarfH2PurgeAndWetCollectorQuenched: boolean;
+  readonly spindleZeroRpmSwarfFlushAndLaserLotoLocked: boolean;
+  readonly action:
+    | "approve_semiconductor_wafer_backgrinding_and_stealth_laser_dicing"
+    | "trip_spindle_and_class4_stealth_laser_shutter_on_chuck_vacuum_or_coolant_loss_in_0ms"
+    | "quench_silicon_swarf_slurry_sump_and_boost_n2_exhaust_on_h2_evolution"
+    | "lock_out_wheel_replacement_or_optics_maintenance_until_zero_rpm_swarf_flush_and_laser_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferBackgrindingAndStealthLaserDicingDbgSdbgSubmicronSiliconSwarfSlurryHydrogenEvolutionClass4IrLaser1064nm1342nmSemiS2SemiS6Nfpa652Nfpa318Iec60825ChuckVacuumLossOrSpindleCoolantTripSiliconH2SwarfPurgeAndLaserShutterLotoGuard(
+  input: SemiconductorWaferBackgrindingAndStealthLaserDicingDbgSdbgGuardInput
+): SemiconductorWaferBackgrindingAndStealthLaserDicingDbgSdbgGuardResult {
+  const policyCode =
+    "P341-SEMICONDUCTOR-WAFER-BACKGRINDING-AND-STEALTH-LASER-DICING-DBG-SDBG-SUBMICRON-SILICON-SWARF-SLURRY-H2-EVOLUTION-CLASS4-IR-LASER-1064NM-1342NM-SEMIS2-SEMIS6-NFPA652-NFPA318-IEC60825-CHUCK-VACUUM-LOSS-OR-SPINDLE-COOLANT-TRIP-SILICON-H2-SWARF-PURGE-AND-LASER-SHUTTER-LOTO-GUARD" as const;
+
+  const chuckVacuumAndSpindleOrLaserTripped0ms =
+    input.chuckVacuumSuctionKpa < 60.0 ||
+    input.diGrindingCoolantFlowLpm < 1.5 ||
+    !input.class4LaserEnclosureInterlockClosed;
+
+  const siliconSwarfH2PurgeAndWetCollectorQuenched =
+    input.siliconSwarfSlurrySumpH2Ppm >= 4000 ||
+    input.grindingCoolantTempC > 35.0;
+
+  const spindleZeroRpmSwarfFlushAndLaserLotoLocked =
+    input.bladeWheelReplacementOrOpticsMaintenanceRequested &&
+    !input.spindleZeroRpmSwarfFlushAndLaserShutterLotoVerified;
+
+  if (chuckVacuumAndSpindleOrLaserTripped0ms) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      dbgSdbgOperationApproved: false,
+      chuckVacuumAndSpindleOrLaserTripped0ms: true,
+      siliconSwarfH2PurgeAndWetCollectorQuenched,
+      spindleZeroRpmSwarfFlushAndLaserLotoLocked,
+      action:
+        "trip_spindle_and_class4_stealth_laser_shutter_on_chuck_vacuum_or_coolant_loss_in_0ms",
+      blockedReason:
+        "porous_chuck_vacuum_loss_di_coolant_underflow_or_class4_stealth_laser_interlock_open_0ms_trip",
+    };
+  }
+
+  if (siliconSwarfH2PurgeAndWetCollectorQuenched) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      dbgSdbgOperationApproved: false,
+      chuckVacuumAndSpindleOrLaserTripped0ms: false,
+      siliconSwarfH2PurgeAndWetCollectorQuenched: true,
+      spindleZeroRpmSwarfFlushAndLaserLotoLocked,
+      action:
+        "quench_silicon_swarf_slurry_sump_and_boost_n2_exhaust_on_h2_evolution",
+      blockedReason:
+        "submicron_silicon_swarf_hydrolysis_h2_evolution_above_10pct_lel_or_coolant_overtemp_quench",
+    };
+  }
+
+  if (spindleZeroRpmSwarfFlushAndLaserLotoLocked) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      dbgSdbgOperationApproved: false,
+      chuckVacuumAndSpindleOrLaserTripped0ms: false,
+      siliconSwarfH2PurgeAndWetCollectorQuenched: false,
+      spindleZeroRpmSwarfFlushAndLaserLotoLocked: true,
+      action:
+        "lock_out_wheel_replacement_or_optics_maintenance_until_zero_rpm_swarf_flush_and_laser_loto",
+      blockedReason:
+        "wheel_or_optics_maintenance_blocked_without_zero_rpm_brake_swarf_sump_flush_and_laser_shutter_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    moduleId: input.moduleId,
+    dbgSdbgOperationApproved: true,
+    chuckVacuumAndSpindleOrLaserTripped0ms: false,
+    siliconSwarfH2PurgeAndWetCollectorQuenched: false,
+    spindleZeroRpmSwarfFlushAndLaserLotoLocked: false,
+    action: "approve_semiconductor_wafer_backgrinding_and_stealth_laser_dicing",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331AndScte104St2010LiveAdSpliceGuardInput {
+  readonly sessionId: string;
+  readonly declaredAncCountAndWord32Bytes: number;
+  readonly actualRtpPayloadBytesRemaining: number;
+  readonly smpteSt291ParityOrChecksumInvalid: boolean;
+  readonly unauthenticatedScte104SpliceInsertDetected: boolean;
+  readonly illegalVancHancLineOrHorizontalOffsetDetected: boolean;
+  readonly ancPacketRatePerSecond: number;
+  readonly scte104SpliceTriggersPerMinute: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331AndScte104St2010LiveAdSpliceGuardResult {
+  readonly policyCode: "P342-WEBRTC-SIP-RTP-SMPTE-ST211040-ANCILLARY-DATA-RFC8331-AND-SCTE104-ST2010-LIVE-AD-SPLICE-TRIGGER-ANC-DATA-COUNT-OVERREAD-UNAUTHENTICATED-DPI-SPLICE-INSERT-HIJACK-REJECT-AND-ANC-PACKET-RATE-FLOOD-CLAMP-GUARD";
+  readonly sessionId: string;
+  readonly st211040AncScte104StreamAccepted: boolean;
+  readonly st211040AncOverreadOrParityFailureDropped0ms: boolean;
+  readonly unauthenticatedScte104SpliceOrCoordinateHijackRejected: boolean;
+  readonly ancPacketFloodOrSpliceStormClamped: boolean;
+  readonly action:
+    | "accept_st211040_anc_and_scte104_broadcast_stream"
+    | "drop_rfc8331_st211040_anc_word32_overread_or_st291_parity_failure_in_0ms"
+    | "reject_unauthenticated_scte104_splice_insert_or_illegal_vanc_hanc_coordinate_hijack"
+    | "clamp_st211040_anc_packet_flood_and_scte104_splice_trigger_storm";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211040AncillaryDataRfc8331AndScte104St2010LiveAdSpliceTriggerAncDataCountOverreadUnauthenticatedDpiSpliceInsertHijackRejectAndAncPacketRateFloodClampGuard(
+  input: WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331AndScte104St2010LiveAdSpliceGuardInput
+): WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331AndScte104St2010LiveAdSpliceGuardResult {
+  const policyCode =
+    "P342-WEBRTC-SIP-RTP-SMPTE-ST211040-ANCILLARY-DATA-RFC8331-AND-SCTE104-ST2010-LIVE-AD-SPLICE-TRIGGER-ANC-DATA-COUNT-OVERREAD-UNAUTHENTICATED-DPI-SPLICE-INSERT-HIJACK-REJECT-AND-ANC-PACKET-RATE-FLOOD-CLAMP-GUARD" as const;
+
+  const st211040AncOverreadOrParityFailureDropped0ms =
+    input.declaredAncCountAndWord32Bytes > input.actualRtpPayloadBytesRemaining ||
+    input.smpteSt291ParityOrChecksumInvalid;
+
+  const unauthenticatedScte104SpliceOrCoordinateHijackRejected =
+    input.unauthenticatedScte104SpliceInsertDetected ||
+    input.illegalVancHancLineOrHorizontalOffsetDetected;
+
+  const ancPacketFloodOrSpliceStormClamped =
+    input.ancPacketRatePerSecond > 600 ||
+    input.scte104SpliceTriggersPerMinute > 10;
+
+  if (st211040AncOverreadOrParityFailureDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st211040AncScte104StreamAccepted: false,
+      st211040AncOverreadOrParityFailureDropped0ms: true,
+      unauthenticatedScte104SpliceOrCoordinateHijackRejected,
+      ancPacketFloodOrSpliceStormClamped,
+      action:
+        "drop_rfc8331_st211040_anc_word32_overread_or_st291_parity_failure_in_0ms",
+      blockedReason:
+        "rfc8331_st211040_anc_count_word32_length_overread_or_st291_parity_checksum_violation_0ms_drop",
+    };
+  }
+
+  if (unauthenticatedScte104SpliceOrCoordinateHijackRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st211040AncScte104StreamAccepted: false,
+      st211040AncOverreadOrParityFailureDropped0ms: false,
+      unauthenticatedScte104SpliceOrCoordinateHijackRejected: true,
+      ancPacketFloodOrSpliceStormClamped,
+      action:
+        "reject_unauthenticated_scte104_splice_insert_or_illegal_vanc_hanc_coordinate_hijack",
+      blockedReason:
+        "unauthenticated_scte104_dpi_splice_insert_hijack_or_illegal_vanc_hanc_coordinate_injection_rejected",
+    };
+  }
+
+  if (ancPacketFloodOrSpliceStormClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st211040AncScte104StreamAccepted: false,
+      st211040AncOverreadOrParityFailureDropped0ms: false,
+      unauthenticatedScte104SpliceOrCoordinateHijackRejected: false,
+      ancPacketFloodOrSpliceStormClamped: true,
+      action:
+        "clamp_st211040_anc_packet_flood_and_scte104_splice_trigger_storm",
+      blockedReason:
+        "st211040_anc_packet_rate_exceeded_600pps_or_scte104_splice_trigger_storm_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    st211040AncScte104StreamAccepted: true,
+    st211040AncOverreadOrParityFailureDropped0ms: false,
+    unauthenticatedScte104SpliceOrCoordinateHijackRejected: false,
+    ancPacketFloodOrSpliceStormClamped: false,
+    action: "accept_st211040_anc_and_scte104_broadcast_stream",
+    blockedReason: "none",
+  };
+}
