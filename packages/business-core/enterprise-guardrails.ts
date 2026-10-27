@@ -31456,6 +31456,215 @@ export function evaluateWebrtcSipRtpSmpteSt211010St20592Ieee1588Ptpv2MediaClockS
   };
 }
 
+/**
+ * Stage 164 (P321) — Semiconductor Vapor-Phase Epitaxy (Si / SiGe / SiC Epi: SiH2Cl2 / SiHCl3 / SiH4 / GeH4 & Dopants B2H6 / PH3 / AsH3, HCl High-Temperature Chamber Etch & Quartz Bell-Jar H2 Susceptor) Safety Guard
+ * Standards: NFPA 318, SEMI S2, SEMI S6, NFPA 86, OSHA 29 CFR 1910.119, OSHA 29 CFR 1910.1000
+ */
+export interface SemiconductorVaporPhaseEpitaxySiSigeSicEpiAndHclChamberEtchSafetyInput {
+  reactorId: string;
+  chlorosilaneOrHydrideDopantLeakPpm: number;
+  hydrogenCarrierExhaustLelPercent: number;
+  susceptorCoolingWaterLeakOrQuartzDomeTempC: number;
+  coolingWaterLeakDetectedInVacuumOrH2Ambient: boolean;
+  epiChamberMaintenanceRequested: boolean;
+  hclBakePurgeAndChlorosilaneHydrolysisScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorVaporPhaseEpitaxySiSigeSicEpiAndHclChamberEtchSafetyDecision {
+  policyCode: "P321-SEMICONDUCTOR-VAPOR-PHASE-EPITAXY-SI-SIGE-SIC-EPI-SIH2CL2-SIHCL3-SIH4-GEH4-B2H6-PH3-ASH3-AND-HCL-CHAMBER-ETCH-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA1910119-OSHA19101000-CHLOROSILANE-H2-LEL-RFO-TRIP-WATER-LEAK-INDUCTION-QUENCH-AND-HCL-SCBA-LOTO-GUARD";
+  reactorId: string;
+  chlorosilaneHydrideLeakOrH2LelTripped0ms: boolean;
+  coolingWaterLeakOrQuartzOvertempInductionQuenched: boolean;
+  hclChlorosilaneHydrolysisScbaLotoLocked: boolean;
+  vaporPhaseEpitaxyProcessApproved: boolean;
+  action:
+    | "trip_epi_chlorosilane_hydride_h2_rfo_valves_and_flood_n2_purge_in_0ms"
+    | "quench_rf_induction_lamp_heaters_and_isolate_susceptor_cooling_water"
+    | "lock_epi_chamber_and_require_hcl_chlorosilane_hydrolysis_purge_and_scba_loto"
+    | "approve_semiconductor_si_sige_sic_vapor_phase_epitaxy_operation";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorVaporPhaseEpitaxySiSigeSicEpiSih2cl2Sihcl3Sih4Geh4B2h6Ph3Ash3AndHclChamberEtchNfpa318SemiS2SemiS6Nfpa86Osha1910119Osha19101000ChlorosilaneH2LelRfoTripWaterLeakInductionQuenchAndHclScbaLotoGuard(
+  input: SemiconductorVaporPhaseEpitaxySiSigeSicEpiAndHclChamberEtchSafetyInput
+): SemiconductorVaporPhaseEpitaxySiSigeSicEpiAndHclChamberEtchSafetyDecision {
+  const policyCode =
+    "P321-SEMICONDUCTOR-VAPOR-PHASE-EPITAXY-SI-SIGE-SIC-EPI-SIH2CL2-SIHCL3-SIH4-GEH4-B2H6-PH3-ASH3-AND-HCL-CHAMBER-ETCH-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA1910119-OSHA19101000-CHLOROSILANE-H2-LEL-RFO-TRIP-WATER-LEAK-INDUCTION-QUENCH-AND-HCL-SCBA-LOTO-GUARD" as const;
+
+  const chlorosilaneHydrideLeakOrH2LelTripped0ms =
+    input.chlorosilaneOrHydrideDopantLeakPpm >= 0.5 ||
+    input.hydrogenCarrierExhaustLelPercent >= 25.0;
+
+  if (chlorosilaneHydrideLeakOrH2LelTripped0ms) {
+    return {
+      policyCode,
+      reactorId: input.reactorId,
+      chlorosilaneHydrideLeakOrH2LelTripped0ms: true,
+      coolingWaterLeakOrQuartzOvertempInductionQuenched: false,
+      hclChlorosilaneHydrolysisScbaLotoLocked: false,
+      vaporPhaseEpitaxyProcessApproved: false,
+      action:
+        "trip_epi_chlorosilane_hydride_h2_rfo_valves_and_flood_n2_purge_in_0ms",
+      blockedReason:
+        "NFPA_318_SEMI_S2_EPI_CHLOROSILANE_HYDRIDE_LEAK_OR_H2_25LEL_RFO_TRIPPED_0MS",
+    };
+  }
+
+  const coolingWaterLeakOrQuartzOvertempInductionQuenched =
+    input.coolingWaterLeakDetectedInVacuumOrH2Ambient ||
+    input.susceptorCoolingWaterLeakOrQuartzDomeTempC > 1250.0;
+
+  if (coolingWaterLeakOrQuartzOvertempInductionQuenched) {
+    return {
+      policyCode,
+      reactorId: input.reactorId,
+      chlorosilaneHydrideLeakOrH2LelTripped0ms: false,
+      coolingWaterLeakOrQuartzOvertempInductionQuenched: true,
+      hclChlorosilaneHydrolysisScbaLotoLocked: false,
+      vaporPhaseEpitaxyProcessApproved: false,
+      action:
+        "quench_rf_induction_lamp_heaters_and_isolate_susceptor_cooling_water",
+      blockedReason:
+        "SEMI_S2_NFPA_86_EPI_WATER_LEAK_STEAM_H2_EXPLOSION_OR_QUARTZ_DOME_1250C_QUENCHED",
+    };
+  }
+
+  const hclChlorosilaneHydrolysisScbaLotoLocked =
+    input.epiChamberMaintenanceRequested &&
+    !input.hclBakePurgeAndChlorosilaneHydrolysisScbaLotoVerified;
+
+  if (hclChlorosilaneHydrolysisScbaLotoLocked) {
+    return {
+      policyCode,
+      reactorId: input.reactorId,
+      chlorosilaneHydrideLeakOrH2LelTripped0ms: false,
+      coolingWaterLeakOrQuartzOvertempInductionQuenched: false,
+      hclChlorosilaneHydrolysisScbaLotoLocked: true,
+      vaporPhaseEpitaxyProcessApproved: false,
+      action:
+        "lock_epi_chamber_and_require_hcl_chlorosilane_hydrolysis_purge_and_scba_loto",
+      blockedReason:
+        "OSHA_1910_1000_EPI_HCL_CHLOROSILANE_HYDROLYSIS_PURGE_AND_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    reactorId: input.reactorId,
+    chlorosilaneHydrideLeakOrH2LelTripped0ms: false,
+    coolingWaterLeakOrQuartzOvertempInductionQuenched: false,
+    hclChlorosilaneHydrolysisScbaLotoLocked: false,
+    vaporPhaseEpitaxyProcessApproved: true,
+    action: "approve_semiconductor_si_sige_sic_vapor_phase_epitaxy_operation",
+    blockedReason: "none",
+  };
+}
+
+/**
+ * Stage 164 (P322) — WebRTC & SIP RTP SMPTE ST 2110-41 Fast Metadata (FMX) & ST 2110-43 Timed Text Markup Language (TTML Live Subtitles/Captions) Security Guard
+ * Standards: SMPTE ST 2110-41, SMPTE ST 2110-43, W3C TTML2, RFC 3550
+ */
+export interface WebrtcSipRtpSmpteSt211041FastMetadataFmxAndSt211043TtmlLiveCaptionsGuardInput {
+  sessionId: string;
+  fmxDataItemLengthWords32: number;
+  actualRtpPayloadBytesRemaining: number;
+  xmlExternalEntityOrBillionLaughsDetected: boolean;
+  dataItemTypeDitAllowlisted: boolean;
+  subtitleToVideoPtpSkewMs: number;
+  fmxTtmlBitrateMbps: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211041FastMetadataFmxAndSt211043TtmlLiveCaptionsGuardDecision {
+  policyCode: "P322-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-AND-ST2110-43-TTML-LIVE-CAPTIONS-DIT-LENGTH-OVERREAD-XML-XXE-ENTITY-EXPANSION-BOMB-AND-SUBTITLE-PTP-SKEW-FLOOD-GUARD";
+  sessionId: string;
+  fmxDitHeaderLengthOverreadDropped0ms: boolean;
+  xmlXxeEntityBombOrUnregisteredDitRejected: boolean;
+  subtitlePtpSkewOrMetadataFloodClamped: boolean;
+  st211041FmxSt211043TtmlStreamAccepted: boolean;
+  action:
+    | "drop_st2110_41_fmx_data_item_length_overread_packet_in_0ms"
+    | "reject_st2110_43_ttml_xml_xxe_entity_bomb_or_unregistered_fmx_dit"
+    | "clamp_st2110_41_43_metadata_bitrate_flood_or_resync_ptp_subtitle_window"
+    | "accept_smpte_st2110_41_fmx_and_st2110_43_ttml_live_caption_stream";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211041FastMetadataFmxAndSt211043TtmlLiveCaptionsDitLengthOverreadXmlXxeEntityExpansionBombAndSubtitlePtpSkewFloodGuard(
+  input: WebrtcSipRtpSmpteSt211041FastMetadataFmxAndSt211043TtmlLiveCaptionsGuardInput
+): WebrtcSipRtpSmpteSt211041FastMetadataFmxAndSt211043TtmlLiveCaptionsGuardDecision {
+  const policyCode =
+    "P322-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-AND-ST2110-43-TTML-LIVE-CAPTIONS-DIT-LENGTH-OVERREAD-XML-XXE-ENTITY-EXPANSION-BOMB-AND-SUBTITLE-PTP-SKEW-FLOOD-GUARD" as const;
+
+  const fmxDitHeaderLengthOverreadDropped0ms =
+    input.fmxDataItemLengthWords32 <= 0 ||
+    input.fmxDataItemLengthWords32 * 4 > input.actualRtpPayloadBytesRemaining;
+
+  if (fmxDitHeaderLengthOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      fmxDitHeaderLengthOverreadDropped0ms: true,
+      xmlXxeEntityBombOrUnregisteredDitRejected: false,
+      subtitlePtpSkewOrMetadataFloodClamped: false,
+      st211041FmxSt211043TtmlStreamAccepted: false,
+      action: "drop_st2110_41_fmx_data_item_length_overread_packet_in_0ms",
+      blockedReason:
+        "SMPTE_ST2110_41_FMX_DATA_ITEM_WORD32_LENGTH_OVERREAD_DROPPED_0MS",
+    };
+  }
+
+  const xmlXxeEntityBombOrUnregisteredDitRejected =
+    input.xmlExternalEntityOrBillionLaughsDetected ||
+    !input.dataItemTypeDitAllowlisted;
+
+  if (xmlXxeEntityBombOrUnregisteredDitRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      fmxDitHeaderLengthOverreadDropped0ms: false,
+      xmlXxeEntityBombOrUnregisteredDitRejected: true,
+      subtitlePtpSkewOrMetadataFloodClamped: false,
+      st211041FmxSt211043TtmlStreamAccepted: false,
+      action:
+        "reject_st2110_43_ttml_xml_xxe_entity_bomb_or_unregistered_fmx_dit",
+      blockedReason:
+        "SMPTE_ST2110_43_TTML_XML_XXE_BILLION_LAUGHS_OR_UNREGISTERED_DIT_REJECTED",
+    };
+  }
+
+  const subtitlePtpSkewOrMetadataFloodClamped =
+    Math.abs(input.subtitleToVideoPtpSkewMs) > 200.0 ||
+    input.fmxTtmlBitrateMbps > 4.0;
+
+  if (subtitlePtpSkewOrMetadataFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      fmxDitHeaderLengthOverreadDropped0ms: false,
+      xmlXxeEntityBombOrUnregisteredDitRejected: false,
+      subtitlePtpSkewOrMetadataFloodClamped: true,
+      st211041FmxSt211043TtmlStreamAccepted: false,
+      action:
+        "clamp_st2110_41_43_metadata_bitrate_flood_or_resync_ptp_subtitle_window",
+      blockedReason:
+        "SMPTE_ST2110_41_43_SUBTITLE_200MS_PTP_SKEW_OR_4MBPS_FLOOD_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    fmxDitHeaderLengthOverreadDropped0ms: false,
+    xmlXxeEntityBombOrUnregisteredDitRejected: false,
+    subtitlePtpSkewOrMetadataFloodClamped: false,
+    st211041FmxSt211043TtmlStreamAccepted: true,
+    action:
+      "accept_smpte_st2110_41_fmx_and_st2110_43_ttml_live_caption_stream",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 

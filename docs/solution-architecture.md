@@ -2680,8 +2680,12 @@ flowchart LR
   2. **`> 50.0 us` 相位阶跃跳变或 `clockClass > 187` 切入本地 `OCXO` 保持与 `PLL` 斜率限幅**：当 `Math.abs(ptpToRtpMediaClockOffsetStepMicroseconds) > 50.0` 或 `grandmasterClockClass > 187` 时，触发 `engage_local_ocxo_media_clock_holdover_and_slew_limit_rtp_timestamp_pll`（阻断原因：`SMPTE_ST2110_10_PTPV2_50US_PHASE_STEP_JUMP_OR_CLOCK_CLASS_DEGRADATION_HOLDOVER_ENGAGED`）。
   3. **`> 256 msg/s` `PTPv2 Sync/Announce` 控制面洪泛限流**：当 `ptpSyncAnnounceMessagesPerSecond > 256` 时，触发 `rate_limit_ptpv2_sync_announce_flood_and_pin_unicast_negotiation_contract`（阻断原因：`SMPTE_ST2059_2_PTPV2_256HZ_SYNC_ANNOUNCE_CONTROL_PLANE_FLOOD_THROTTLED`）。
 
-
-
-
-
-
+### 4.182 半导体气相外延 (`Si / SiGe / SiC VPE` 氯硅烷/氢化物与高温 `HCl` 清腔) 安全守卫 (`P321`) 与 WebRTC/SIP RTP `SMPTE ST 2110-41` 快速元数据 (`FMX`) 及 `ST 2110-43` `TTML` 实时字幕流安全守卫 (`P322` — Stage 164 · 331 护栏与 340 探针里程碑)
+- **P321 半导体气相外延 (`P321-SEMICONDUCTOR-VAPOR-PHASE-EPITAXY-SI-SIGE-SIC-EPI-SIH2CL2-SIHCL3-SIH4-GEH4-B2H6-PH3-ASH3-AND-HCL-CHAMBER-ETCH-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA1910119-OSHA19101000-CHLOROSILANE-H2-LEL-RFO-TRIP-WATER-LEAK-INDUCTION-QUENCH-AND-HCL-SCBA-LOTO-GUARD` · `evaluateSemiconductorVaporPhaseEpitaxySiSigeSicEpiSih2cl2Sihcl3Sih4Geh4B2h6Ph3Ash3AndHclChamberEtchNfpa318SemiS2SemiS6Nfpa86Osha1910119Osha19101000ChlorosilaneH2LelRfoTripWaterLeakInductionQuenchAndHclScbaLotoGuard`)**：
+  1. **0ms 氯硅烷/氢化物泄漏 `>= 0.5 ppm` 或氢气尾气 `>= 25.0% LEL` 切断**：当 `chlorosilaneOrHydrideDopantLeakPpm >= 0.5` 或 `hydrogenCarrierExhaustLelPercent >= 25.0` 时，0ms 触发 `trip_epi_chlorosilane_hydride_h2_rfo_valves_and_flood_n2_purge_in_0ms`（阻断原因：`NFPA_318_SEMI_S2_EPI_CHLOROSILANE_HYDRIDE_LEAK_OR_H2_25LEL_RFO_TRIPPED_0MS`）。
+  2. **基座冷却水渗入真空/氢气氛或石英钟罩 `> 1250.0 °C` 淬灭高频感应与灯阵加热**：当 `coolingWaterLeakDetectedInVacuumOrH2Ambient` 或 `susceptorCoolingWaterLeakOrQuartzDomeTempC > 1250.0` 时，触发 `quench_rf_induction_lamp_heaters_and_isolate_susceptor_cooling_water`（阻断原因：`SEMI_S2_NFPA_86_EPI_WATER_LEAK_STEAM_H2_EXPLOSION_OR_QUARTZ_DOME_1250C_QUENCHED`）。
+  3. **高温 `HCl` 清腔与油状氯硅烷水解物 `SCBA LOTO` 锁闭**：当 `epiChamberMaintenanceRequested` 且 `!hclBakePurgeAndChlorosilaneHydrolysisScbaLotoVerified` 时，触发 `lock_epi_chamber_and_require_hcl_chlorosilane_hydrolysis_purge_and_scba_loto`（阻断原因：`OSHA_1910_1000_EPI_HCL_CHLOROSILANE_HYDROLYSIS_PURGE_AND_SCBA_LOTO_LOCKED`）。
+- **P322 WebRTC & SIP RTP `SMPTE ST 2110-41 FMX / ST 2110-43 TTML` 安全守卫 (`P322-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-AND-ST2110-43-TTML-LIVE-CAPTIONS-DIT-LENGTH-OVERREAD-XML-XXE-ENTITY-EXPANSION-BOMB-AND-SUBTITLE-PTP-SKEW-FLOOD-GUARD` · `evaluateWebrtcSipRtpSmpteSt211041FastMetadataFmxAndSt211043TtmlLiveCaptionsDitLengthOverreadXmlXxeEntityExpansionBombAndSubtitlePtpSkewFloodGuard`)**：
+  1. **0ms `ST 2110-41 FMX` 数据项 32-bit 字长越界丢弃**：当 `fmxDataItemLengthWords32 <= 0` 或 `fmxDataItemLengthWords32 * 4 > actualRtpPayloadBytesRemaining` 时，0ms 触发 `drop_st2110_41_fmx_data_item_length_overread_packet_in_0ms`（阻断原因：`SMPTE_ST2110_41_FMX_DATA_ITEM_WORD32_LENGTH_OVERREAD_DROPPED_0MS`）。
+  2. **`ST 2110-43 TTML` `XML XXE / Billion Laughs` 实体膨胀炸弹或未授权 `DIT` 拒绝**：当 `xmlExternalEntityOrBillionLaughsDetected` 或 `!dataItemTypeDitAllowlisted` 时，触发 `reject_st2110_43_ttml_xml_xxe_entity_bomb_or_unregistered_fmx_dit`（阻断原因：`SMPTE_ST2110_43_TTML_XML_XXE_BILLION_LAUGHS_OR_UNREGISTERED_DIT_REJECTED`）。
+  3. **`> 200.0 ms PTP` 字幕时钟偏斜或 `> 4.0 Mbps` 元数据洪泛钳制**：当 `Math.abs(subtitleToVideoPtpSkewMs) > 200.0` 或 `fmxTtmlBitrateMbps > 4.0` 时，触发 `clamp_st2110_41_43_metadata_bitrate_flood_or_resync_ptp_subtitle_window`（阻断原因：`SMPTE_ST2110_41_43_SUBTITLE_200MS_PTP_SKEW_OR_4MBPS_FLOOD_CLAMPED`）。
