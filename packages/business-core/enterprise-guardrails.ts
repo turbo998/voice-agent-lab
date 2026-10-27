@@ -35306,5 +35306,218 @@ export function evaluateWebrtcSipRtpRfc8842DtlsSrtpSdpSetupConnectionAndRfc9146D
   };
 }
 
+export interface SemiconductorSubfabDryVacuumPumpN2PurgeAndPouBurnWetAbatementScrubberGuardInput {
+  readonly subfabPumpOrPouId: string;
+  readonly dryPumpHotN2PurgeFlowSlm: number;
+  readonly dryPumpExhaustBackpressureKpaG: number;
+  readonly pouBurnerFlameConfirmed: boolean;
+  readonly pouQuenchWaterFlowLpm: number;
+  readonly forelinePowderTrapDeltaPKpa: number;
+  readonly pouExhaustDuctTemperatureC: number;
+  readonly subfabPumpOrPouMaintenanceRequested: boolean;
+  readonly postProcessHotN2PurgeMinutes: number;
+  readonly exhaustOutletHfCl2SiH4Ppm: number;
+  readonly crustPassivatedAndHfDiphoterineScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorSubfabDryVacuumPumpN2PurgeAndPouBurnWetAbatementScrubberGuardDecision {
+  readonly policyCode: "P359-SEMICONDUCTOR-SUBFAB-DRY-VACUUM-PUMP-N2-PURGE-AND-POU-BURN-WET-ABATEMENT-SCRUBBER-SEMIS2-SEMIS6-NFPA318-NFPA69-NFPA86-OSHA1910119-N2-PURGE-LOSS-OR-POU-FLAMEOUT-TOOL-RFO-TRIP-FORELINE-POWDER-ISOLATION-AND-CRUST-SCBA-LOTO-GUARD";
+  readonly subfabPumpOrPouId: string;
+  readonly subfabDryPumpAndPouAbatementApproved: boolean;
+  readonly dryPumpAndPouFaultToolRfoTripped0ms: boolean;
+  readonly forelineIsolatedAndN2BallastBoosted: boolean;
+  readonly subfabPumpAndPouMaintenanceLockedUntilPurgeAndScbaLoto: boolean;
+  readonly action:
+    | "approve_semiconductor_subfab_dry_vacuum_pump_and_pou_burn_wet_abatement"
+    | "trip_process_tool_rfo_and_pou_fuel_gas_on_dry_pump_n2_loss_or_pou_flameout_in_0ms"
+    | "isolate_chamber_foreline_and_boost_hot_n2_ballast_on_powder_plug_or_duct_overtemp"
+    | "lock_out_subfab_dry_pump_and_pou_scrubber_maintenance_until_60min_n2_purge_and_scba_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorSubfabDryVacuumPumpN2PurgeAndPouBurnWetAbatementScrubberSemiS2SemiS6Nfpa318Nfpa69Nfpa86Osha1910119N2PurgeLossOrPouFlameoutToolRfoTripForelinePowderIsolationAndCrustScbaLotoGuard(
+  input: SemiconductorSubfabDryVacuumPumpN2PurgeAndPouBurnWetAbatementScrubberGuardInput,
+): SemiconductorSubfabDryVacuumPumpN2PurgeAndPouBurnWetAbatementScrubberGuardDecision {
+  const policyCode =
+    "P359-SEMICONDUCTOR-SUBFAB-DRY-VACUUM-PUMP-N2-PURGE-AND-POU-BURN-WET-ABATEMENT-SCRUBBER-SEMIS2-SEMIS6-NFPA318-NFPA69-NFPA86-OSHA1910119-N2-PURGE-LOSS-OR-POU-FLAMEOUT-TOOL-RFO-TRIP-FORELINE-POWDER-ISOLATION-AND-CRUST-SCBA-LOTO-GUARD" as const;
+
+  const dryPumpAndPouFaultToolRfoTripped0ms =
+    input.dryPumpHotN2PurgeFlowSlm < 40 ||
+    input.dryPumpExhaustBackpressureKpaG > 15 ||
+    !input.pouBurnerFlameConfirmed ||
+    input.pouQuenchWaterFlowLpm < 18;
+
+  const forelineIsolatedAndN2BallastBoosted =
+    input.forelinePowderTrapDeltaPKpa > 12 ||
+    input.pouExhaustDuctTemperatureC > 85;
+
+  const subfabPumpAndPouMaintenanceLockedUntilPurgeAndScbaLoto =
+    input.subfabPumpOrPouMaintenanceRequested &&
+    (input.postProcessHotN2PurgeMinutes < 60 ||
+      input.exhaustOutletHfCl2SiH4Ppm > 0.5 ||
+      !input.crustPassivatedAndHfDiphoterineScbaLotoVerified);
+
+  if (dryPumpAndPouFaultToolRfoTripped0ms) {
+    return {
+      policyCode,
+      subfabPumpOrPouId: input.subfabPumpOrPouId,
+      subfabDryPumpAndPouAbatementApproved: false,
+      dryPumpAndPouFaultToolRfoTripped0ms: true,
+      forelineIsolatedAndN2BallastBoosted,
+      subfabPumpAndPouMaintenanceLockedUntilPurgeAndScbaLoto,
+      action:
+        "trip_process_tool_rfo_and_pou_fuel_gas_on_dry_pump_n2_loss_or_pou_flameout_in_0ms",
+      blockedReason:
+        "dry_pump_hot_n2_purge_below_40slm_or_backpressure_above_15kpag_or_pou_flameout_or_quench_water_below_18lpm_0ms_tool_rfo_trip",
+    };
+  }
+
+  if (forelineIsolatedAndN2BallastBoosted) {
+    return {
+      policyCode,
+      subfabPumpOrPouId: input.subfabPumpOrPouId,
+      subfabDryPumpAndPouAbatementApproved: false,
+      dryPumpAndPouFaultToolRfoTripped0ms: false,
+      forelineIsolatedAndN2BallastBoosted: true,
+      subfabPumpAndPouMaintenanceLockedUntilPurgeAndScbaLoto,
+      action:
+        "isolate_chamber_foreline_and_boost_hot_n2_ballast_on_powder_plug_or_duct_overtemp",
+      blockedReason:
+        "foreline_powder_trap_delta_p_above_12kpa_or_pou_exhaust_duct_above_85c_foreline_isolation",
+    };
+  }
+
+  if (subfabPumpAndPouMaintenanceLockedUntilPurgeAndScbaLoto) {
+    return {
+      policyCode,
+      subfabPumpOrPouId: input.subfabPumpOrPouId,
+      subfabDryPumpAndPouAbatementApproved: false,
+      dryPumpAndPouFaultToolRfoTripped0ms: false,
+      forelineIsolatedAndN2BallastBoosted: false,
+      subfabPumpAndPouMaintenanceLockedUntilPurgeAndScbaLoto: true,
+      action:
+        "lock_out_subfab_dry_pump_and_pou_scrubber_maintenance_until_60min_n2_purge_and_scba_loto",
+      blockedReason:
+        "hot_n2_purge_below_60min_or_outlet_toxic_gas_above_0_5ppm_or_crust_passivation_scba_loto_unverified",
+    };
+  }
+
+  return {
+    policyCode,
+    subfabPumpOrPouId: input.subfabPumpOrPouId,
+    subfabDryPumpAndPouAbatementApproved: true,
+    dryPumpAndPouFaultToolRfoTripped0ms: false,
+    forelineIsolatedAndN2BallastBoosted: false,
+    subfabPumpAndPouMaintenanceLockedUntilPurgeAndScbaLoto: false,
+    action:
+      "approve_semiconductor_subfab_dry_vacuum_pump_and_pou_burn_wet_abatement",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8843BundleRfc8859SdpMuxCategoryAndRfc7941RtpSdesMidRidDemuxGuardInput {
+  readonly sessionId: string;
+  readonly declaredSdesMidRidExtensionBytes: number;
+  readonly actualExtensionPayloadBytesRemaining: number;
+  readonly nonAsciiOrNullByteInSdesMidRidDetected: boolean;
+  readonly bundleIdenticalOrTransportAttributeConflictDetected: boolean;
+  readonly ssrcMidRemapAcrossMediaTypesDetected: boolean;
+  readonly unmappedMidOrPtDemuxMissPacketsPerSecond: number;
+  readonly bundleOnlyPortNonZeroOnTaggedSectionDetected: boolean;
+}
+
+export interface WebrtcSipRtpRfc8843BundleRfc8859SdpMuxCategoryAndRfc7941RtpSdesMidRidDemuxGuardDecision {
+  readonly policyCode: "P360-WEBRTC-SIP-RTP-RFC8843-BUNDLE-RFC8859-SDP-MUX-CATEGORY-AND-RFC7941-RTP-SDES-MID-RID-DEMUX-MID-LENGTH-OVERREAD-IDENTICAL-TRANSPORT-CONFLICT-SSRC-MID-HIJACK-AND-DEMUX-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly rfc8843BundleAndRfc7941MidDemuxHealthy: boolean;
+  readonly sdesMidRidOverreadOrInvalidSyntaxDropped0ms: boolean;
+  readonly bundleCategoryConflictOrSsrcMidHijackRejected: boolean;
+  readonly unmappedMidDemuxFloodOrBundleOnlyPortClamped: boolean;
+  readonly action:
+    | "accept_rfc8843_bundle_rfc8859_mux_and_rfc7941_sdes_mid_rid_demux"
+    | "drop_rfc7941_sdes_mid_rid_length_overread_or_invalid_syntax_in_0ms"
+    | "reject_rfc8843_rfc8859_bundle_attribute_conflict_or_ssrc_mid_cross_track_hijack"
+    | "clamp_unmapped_mid_demux_flood_and_enforce_rfc8843_bundle_only_zero_port";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8843BundleRfc8859SdpMuxCategoryAndRfc7941RtpSdesMidRidDemuxMidLengthOverreadIdenticalTransportConflictSsrcMidHijackAndDemuxFloodGuard(
+  input: WebrtcSipRtpRfc8843BundleRfc8859SdpMuxCategoryAndRfc7941RtpSdesMidRidDemuxGuardInput,
+): WebrtcSipRtpRfc8843BundleRfc8859SdpMuxCategoryAndRfc7941RtpSdesMidRidDemuxGuardDecision {
+  const policyCode =
+    "P360-WEBRTC-SIP-RTP-RFC8843-BUNDLE-RFC8859-SDP-MUX-CATEGORY-AND-RFC7941-RTP-SDES-MID-RID-DEMUX-MID-LENGTH-OVERREAD-IDENTICAL-TRANSPORT-CONFLICT-SSRC-MID-HIJACK-AND-DEMUX-FLOOD-GUARD" as const;
+
+  const sdesMidRidOverreadOrInvalidSyntaxDropped0ms =
+    input.declaredSdesMidRidExtensionBytes >
+      input.actualExtensionPayloadBytesRemaining ||
+    input.actualExtensionPayloadBytesRemaining <= 0 ||
+    input.nonAsciiOrNullByteInSdesMidRidDetected;
+
+  const bundleCategoryConflictOrSsrcMidHijackRejected =
+    input.bundleIdenticalOrTransportAttributeConflictDetected ||
+    input.ssrcMidRemapAcrossMediaTypesDetected;
+
+  const unmappedMidDemuxFloodOrBundleOnlyPortClamped =
+    input.unmappedMidOrPtDemuxMissPacketsPerSecond > 50 ||
+    input.bundleOnlyPortNonZeroOnTaggedSectionDetected;
+
+  if (sdesMidRidOverreadOrInvalidSyntaxDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8843BundleAndRfc7941MidDemuxHealthy: false,
+      sdesMidRidOverreadOrInvalidSyntaxDropped0ms: true,
+      bundleCategoryConflictOrSsrcMidHijackRejected,
+      unmappedMidDemuxFloodOrBundleOnlyPortClamped,
+      action:
+        "drop_rfc7941_sdes_mid_rid_length_overread_or_invalid_syntax_in_0ms",
+      blockedReason:
+        "rfc7941_sdes_mid_rid_extension_length_overread_or_non_ascii_null_byte_0ms_drop",
+    };
+  }
+
+  if (bundleCategoryConflictOrSsrcMidHijackRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8843BundleAndRfc7941MidDemuxHealthy: false,
+      sdesMidRidOverreadOrInvalidSyntaxDropped0ms: false,
+      bundleCategoryConflictOrSsrcMidHijackRejected: true,
+      unmappedMidDemuxFloodOrBundleOnlyPortClamped,
+      action:
+        "reject_rfc8843_rfc8859_bundle_attribute_conflict_or_ssrc_mid_cross_track_hijack",
+      blockedReason:
+        "rfc8859_identical_or_transport_mux_category_conflict_or_ssrc_mid_cross_media_remap_rejected",
+    };
+  }
+
+  if (unmappedMidDemuxFloodOrBundleOnlyPortClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8843BundleAndRfc7941MidDemuxHealthy: false,
+      sdesMidRidOverreadOrInvalidSyntaxDropped0ms: false,
+      bundleCategoryConflictOrSsrcMidHijackRejected: false,
+      unmappedMidDemuxFloodOrBundleOnlyPortClamped: true,
+      action:
+        "clamp_unmapped_mid_demux_flood_and_enforce_rfc8843_bundle_only_zero_port",
+      blockedReason:
+        "rfc7941_unmapped_mid_demux_miss_exceeded_50pps_or_rfc8843_bundle_only_nonzero_port_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8843BundleAndRfc7941MidDemuxHealthy: true,
+    sdesMidRidOverreadOrInvalidSyntaxDropped0ms: false,
+    bundleCategoryConflictOrSsrcMidHijackRejected: false,
+    unmappedMidDemuxFloodOrBundleOnlyPortClamped: false,
+    action: "accept_rfc8843_bundle_rfc8859_mux_and_rfc7941_sdes_mid_rid_demux",
+    blockedReason: "none",
+  };
+}
+
+
 
 
