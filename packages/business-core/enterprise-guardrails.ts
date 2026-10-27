@@ -30603,4 +30603,219 @@ export function evaluateWebrtcSipRtpSmpteSt211022Rfc9134JpegXsLowLatencyCompress
   };
 }
 
+export interface SemiconductorWetBenchPiranhaH2so4H2o2BoeHfSilaneLpcvdTubeCleanAndIpaVaporDryerNfpa318SemiS2SemiS6Nfpa86Osha1910119Osha19101000PiranhaOrganicRunawayTripBoeHfCalciumGluconateIsolationAndIpaLelN2LotoGuardInput {
+  readonly wetBenchId: string;
+  readonly piranhaBathTemperatureC: number;
+  readonly organicSolventIpaAcetoneMixedWithHotPiranhaOrH2o2Detected: boolean;
+  readonly piranhaPeroxideDecompositionGasPressureKpaG: number;
+  readonly boeBufferedOxideEtchHfExhaustConcentrationPpm: number;
+  readonly megasonicQuartzTankCrackOrLiquidLevelDropDetected: boolean;
+  readonly ipaVaporDryerHeadspaceConcentrationPercentLel: number;
+  readonly wetBenchHfPiranhaDeckMaintenanceRequested: boolean;
+  readonly calciumGluconateHexafluorineAndN2InertBlanketScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWetBenchPiranhaH2so4H2o2BoeHfSilaneLpcvdTubeCleanAndIpaVaporDryerNfpa318SemiS2SemiS6Nfpa86Osha1910119Osha19101000PiranhaOrganicRunawayTripBoeHfCalciumGluconateIsolationAndIpaLelN2LotoGuardAssessment {
+  readonly policyCode: "P313-SEMICONDUCTOR-WET-BENCH-PIRANHA-H2SO4-H2O2-BOE-HF-QUARTZ-TUBE-CLEAN-AND-IPA-VAPOR-DRYER-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA1910119-OSHA19101000-PIRANHA-ORGANIC-RUNAWAY-TRIP-BOE-HF-ISOLATION-AND-IPA-LEL-N2-LOTO-GUARD";
+  readonly wetBenchId: string;
+  readonly piranhaThermalRunawayOrOrganicPeroxideExplosionTripped0ms: boolean;
+  readonly boeHfVaporLeakOrMegasonicQuartzTankRuptureIsolated: boolean;
+  readonly ipaVaporDryerLelOrHfDeckMaintenanceLocked: boolean;
+  readonly wetBenchOperationApproved: boolean;
+  readonly action:
+    | "trip_h2o2_dosing_pump_segregate_solvent_drain_and_engage_diw_quench_deluge_in_0ms"
+    | "abort_megasonic_transducer_close_boe_lid_and_route_hf_to_alkaline_scrubber"
+    | "lock_wet_bench_hood_flood_ipa_dryer_with_n2_and_require_hf_calcium_gluconate_scba_loto"
+    | "approve_semiconductor_wet_bench_piranha_boe_clean_and_ipa_dryer_operation";
+  readonly blockedReason:
+    | "SEMI_S2_NFPA318_PIRANHA_145C_OR_ORGANIC_ACETONE_IPA_PEROXIDE_DETONATION_PREEMPTED_0MS"
+    | "OSHA_1910_1000_SEMIS2_BOE_HF_0_5PPM_OR_MEGASONIC_QUARTZ_TANK_CRACK_ISOLATED"
+    | "NFPA_86_SEMIS2_IPA_DRYER_25PCT_LEL_OR_HF_CALCIUM_GLUCONATE_SCBA_LOTO_LOCKED"
+    | "none";
+}
+
+export function evaluateSemiconductorWetBenchPiranhaH2so4H2o2BoeHfSilaneLpcvdTubeCleanAndIpaVaporDryerNfpa318SemiS2SemiS6Nfpa86Osha1910119Osha19101000PiranhaOrganicRunawayTripBoeHfCalciumGluconateIsolationAndIpaLelN2LotoGuard(
+  input: SemiconductorWetBenchPiranhaH2so4H2o2BoeHfSilaneLpcvdTubeCleanAndIpaVaporDryerNfpa318SemiS2SemiS6Nfpa86Osha1910119Osha19101000PiranhaOrganicRunawayTripBoeHfCalciumGluconateIsolationAndIpaLelN2LotoGuardInput
+): SemiconductorWetBenchPiranhaH2so4H2o2BoeHfSilaneLpcvdTubeCleanAndIpaVaporDryerNfpa318SemiS2SemiS6Nfpa86Osha1910119Osha19101000PiranhaOrganicRunawayTripBoeHfCalciumGluconateIsolationAndIpaLelN2LotoGuardAssessment {
+  const policyCode =
+    "P313-SEMICONDUCTOR-WET-BENCH-PIRANHA-H2SO4-H2O2-BOE-HF-QUARTZ-TUBE-CLEAN-AND-IPA-VAPOR-DRYER-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA1910119-OSHA19101000-PIRANHA-ORGANIC-RUNAWAY-TRIP-BOE-HF-ISOLATION-AND-IPA-LEL-N2-LOTO-GUARD" as const;
+
+  const piranhaThermalRunawayOrOrganicPeroxideExplosionTripped0ms =
+    input.piranhaBathTemperatureC > 145.0 ||
+    input.organicSolventIpaAcetoneMixedWithHotPiranhaOrH2o2Detected ||
+    input.piranhaPeroxideDecompositionGasPressureKpaG > 15.0;
+
+  if (piranhaThermalRunawayOrOrganicPeroxideExplosionTripped0ms) {
+    return {
+      policyCode,
+      wetBenchId: input.wetBenchId,
+      piranhaThermalRunawayOrOrganicPeroxideExplosionTripped0ms: true,
+      boeHfVaporLeakOrMegasonicQuartzTankRuptureIsolated: false,
+      ipaVaporDryerLelOrHfDeckMaintenanceLocked: false,
+      wetBenchOperationApproved: false,
+      action:
+        "trip_h2o2_dosing_pump_segregate_solvent_drain_and_engage_diw_quench_deluge_in_0ms",
+      blockedReason:
+        "SEMI_S2_NFPA318_PIRANHA_145C_OR_ORGANIC_ACETONE_IPA_PEROXIDE_DETONATION_PREEMPTED_0MS",
+    };
+  }
+
+  const boeHfVaporLeakOrMegasonicQuartzTankRuptureIsolated =
+    input.boeBufferedOxideEtchHfExhaustConcentrationPpm >= 0.5 ||
+    input.megasonicQuartzTankCrackOrLiquidLevelDropDetected;
+
+  if (boeHfVaporLeakOrMegasonicQuartzTankRuptureIsolated) {
+    return {
+      policyCode,
+      wetBenchId: input.wetBenchId,
+      piranhaThermalRunawayOrOrganicPeroxideExplosionTripped0ms: false,
+      boeHfVaporLeakOrMegasonicQuartzTankRuptureIsolated: true,
+      ipaVaporDryerLelOrHfDeckMaintenanceLocked: false,
+      wetBenchOperationApproved: false,
+      action:
+        "abort_megasonic_transducer_close_boe_lid_and_route_hf_to_alkaline_scrubber",
+      blockedReason:
+        "OSHA_1910_1000_SEMIS2_BOE_HF_0_5PPM_OR_MEGASONIC_QUARTZ_TANK_CRACK_ISOLATED",
+    };
+  }
+
+  const ipaVaporDryerLelOrHfDeckMaintenanceLocked =
+    input.ipaVaporDryerHeadspaceConcentrationPercentLel >= 25.0 ||
+    (input.wetBenchHfPiranhaDeckMaintenanceRequested &&
+      !input.calciumGluconateHexafluorineAndN2InertBlanketScbaLotoVerified);
+
+  if (ipaVaporDryerLelOrHfDeckMaintenanceLocked) {
+    return {
+      policyCode,
+      wetBenchId: input.wetBenchId,
+      piranhaThermalRunawayOrOrganicPeroxideExplosionTripped0ms: false,
+      boeHfVaporLeakOrMegasonicQuartzTankRuptureIsolated: false,
+      ipaVaporDryerLelOrHfDeckMaintenanceLocked: true,
+      wetBenchOperationApproved: false,
+      action:
+        "lock_wet_bench_hood_flood_ipa_dryer_with_n2_and_require_hf_calcium_gluconate_scba_loto",
+      blockedReason:
+        "NFPA_86_SEMIS2_IPA_DRYER_25PCT_LEL_OR_HF_CALCIUM_GLUCONATE_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    wetBenchId: input.wetBenchId,
+    piranhaThermalRunawayOrOrganicPeroxideExplosionTripped0ms: false,
+    boeHfVaporLeakOrMegasonicQuartzTankRuptureIsolated: false,
+    ipaVaporDryerLelOrHfDeckMaintenanceLocked: false,
+    wetBenchOperationApproved: true,
+    action:
+      "approve_semiconductor_wet_bench_piranha_boe_clean_and_ipa_dryer_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211031Aes3TransparentAudioTransportRfc3190Am824SubframeOverreadBpvViolationNonAudioDolbyEUnflaggedBlastAndChannelFloodGuardInput {
+  readonly sessionId: string;
+  readonly am824SubframeWordsDeclaredBytes: number;
+  readonly actualRtpPayloadBytesRemaining: number;
+  readonly aes3BlockSyncZFlagAndParityValid: boolean;
+  readonly nonPcmDolbyEOrSmpte337DataPresentWithClearedValidityBitV0: boolean;
+  readonly aes3AudioChannelsCount: number;
+  readonly aes3SampleRateKhz: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211031Aes3TransparentAudioTransportRfc3190Am824SubframeOverreadBpvViolationNonAudioDolbyEUnflaggedBlastAndChannelFloodGuardAssessment {
+  readonly policyCode: "P314-WEBRTC-SIP-RTP-SMPTE-ST2110-31-AES3-TRANSPARENT-AUDIO-RFC3190-AM824-SUBFRAME-OVERREAD-BLOCK-SYNC-PARITY-DESYNC-UNFLAGGED-DOLBY-E-ST337-BLAST-AND-CHANNEL-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly am824SubframeOrRfc3190HeaderOverreadDropped0ms: boolean;
+  readonly aes3BlockSyncParityOrUnflaggedSt337NonAudioBlastRejected: boolean;
+  readonly excessiveAes3ChannelCountOrSampleRateFloodClamped: boolean;
+  readonly st211031Aes3AudioStreamAccepted: boolean;
+  readonly action:
+    | "drop_st2110_31_rfc3190_am824_subframe_overread_or_misaligned_word_in_0ms"
+    | "reject_aes3_block_sync_parity_error_or_mute_unflagged_v0_smpte337_dolby_e_blast"
+    | "clamp_st2110_31_aes3_excessive_channel_count_or_sample_rate_flood"
+    | "accept_smpte_st2110_31_rfc3190_aes3_transparent_audio_rtp_stream";
+  readonly blockedReason:
+    | "RFC_3190_ST2110_31_AM824_SUBFRAME_OVERREAD_OR_4BYTE_ALIGNMENT_DROPPED_0MS"
+    | "SMPTE_ST2110_31_AES3_Z_SYNC_PARITY_ERROR_OR_UNFLAGGED_V0_ST337_NON_PCM_BLAST_REJECTED"
+    | "SMPTE_ST2110_31_AES3_64CH_OR_192KHZ_BANDWIDTH_FLOOD_CLAMPED"
+    | "none";
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211031Aes3TransparentAudioTransportRfc3190Am824SubframeOverreadBpvViolationNonAudioDolbyEUnflaggedBlastAndChannelFloodGuard(
+  input: WebrtcSipRtpSmpteSt211031Aes3TransparentAudioTransportRfc3190Am824SubframeOverreadBpvViolationNonAudioDolbyEUnflaggedBlastAndChannelFloodGuardInput
+): WebrtcSipRtpSmpteSt211031Aes3TransparentAudioTransportRfc3190Am824SubframeOverreadBpvViolationNonAudioDolbyEUnflaggedBlastAndChannelFloodGuardAssessment {
+  const policyCode =
+    "P314-WEBRTC-SIP-RTP-SMPTE-ST2110-31-AES3-TRANSPARENT-AUDIO-RFC3190-AM824-SUBFRAME-OVERREAD-BLOCK-SYNC-PARITY-DESYNC-UNFLAGGED-DOLBY-E-ST337-BLAST-AND-CHANNEL-FLOOD-GUARD" as const;
+
+  const am824SubframeOrRfc3190HeaderOverreadDropped0ms =
+    input.am824SubframeWordsDeclaredBytes < 4 ||
+    input.am824SubframeWordsDeclaredBytes % 4 !== 0 ||
+    input.am824SubframeWordsDeclaredBytes > input.actualRtpPayloadBytesRemaining;
+
+  if (am824SubframeOrRfc3190HeaderOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      am824SubframeOrRfc3190HeaderOverreadDropped0ms: true,
+      aes3BlockSyncParityOrUnflaggedSt337NonAudioBlastRejected: false,
+      excessiveAes3ChannelCountOrSampleRateFloodClamped: false,
+      st211031Aes3AudioStreamAccepted: false,
+      action:
+        "drop_st2110_31_rfc3190_am824_subframe_overread_or_misaligned_word_in_0ms",
+      blockedReason:
+        "RFC_3190_ST2110_31_AM824_SUBFRAME_OVERREAD_OR_4BYTE_ALIGNMENT_DROPPED_0MS",
+    };
+  }
+
+  const aes3BlockSyncParityOrUnflaggedSt337NonAudioBlastRejected =
+    !input.aes3BlockSyncZFlagAndParityValid ||
+    input.nonPcmDolbyEOrSmpte337DataPresentWithClearedValidityBitV0;
+
+  if (aes3BlockSyncParityOrUnflaggedSt337NonAudioBlastRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      am824SubframeOrRfc3190HeaderOverreadDropped0ms: false,
+      aes3BlockSyncParityOrUnflaggedSt337NonAudioBlastRejected: true,
+      excessiveAes3ChannelCountOrSampleRateFloodClamped: false,
+      st211031Aes3AudioStreamAccepted: false,
+      action:
+        "reject_aes3_block_sync_parity_error_or_mute_unflagged_v0_smpte337_dolby_e_blast",
+      blockedReason:
+        "SMPTE_ST2110_31_AES3_Z_SYNC_PARITY_ERROR_OR_UNFLAGGED_V0_ST337_NON_PCM_BLAST_REJECTED",
+    };
+  }
+
+  const excessiveAes3ChannelCountOrSampleRateFloodClamped =
+    input.aes3AudioChannelsCount > 64 || input.aes3SampleRateKhz > 192;
+
+  if (excessiveAes3ChannelCountOrSampleRateFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      am824SubframeOrRfc3190HeaderOverreadDropped0ms: false,
+      aes3BlockSyncParityOrUnflaggedSt337NonAudioBlastRejected: false,
+      excessiveAes3ChannelCountOrSampleRateFloodClamped: true,
+      st211031Aes3AudioStreamAccepted: false,
+      action:
+        "clamp_st2110_31_aes3_excessive_channel_count_or_sample_rate_flood",
+      blockedReason:
+        "SMPTE_ST2110_31_AES3_64CH_OR_192KHZ_BANDWIDTH_FLOOD_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    am824SubframeOrRfc3190HeaderOverreadDropped0ms: false,
+    aes3BlockSyncParityOrUnflaggedSt337NonAudioBlastRejected: false,
+    excessiveAes3ChannelCountOrSampleRateFloodClamped: false,
+    st211031Aes3AudioStreamAccepted: true,
+    action:
+      "accept_smpte_st2110_31_rfc3190_aes3_transparent_audio_rtp_stream",
+    blockedReason: "none",
+  };
+}
+
+
 

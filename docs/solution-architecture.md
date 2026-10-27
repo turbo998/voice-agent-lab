@@ -2624,6 +2624,21 @@ flowchart LR
   2. **非法 `T/K` 模式或切片计数器乱序失步拒绝**：当 `!transmissionModeTBitValid`、`!packetizationModeKBitValid` 或 `!sliceOrCodestreamPacketCounterMonotonic` 时，触发 `reject_invalid_jpeg_xs_t_k_mode_or_out_of_order_slice_counter_and_send_rtcp_pli`（阻断原因：`RFC_9134_JPEG_XS_INVALID_T_K_MODE_OR_SLICE_PACKET_COUNTER_DESYNC_REJECTED`）。
   3. **`ST 2110-22 CBR` 码率与子帧切片洪泛钳制**：当 `declaredBppCompressionRatioMbPerSec > 450` 或 `slicesPerSubframeCount > 1080` 时，触发 `clamp_st2110_22_jpeg_xs_cbr_bitrate_or_subframe_slice_flood`（阻断原因：`SMPTE_ST2110_22_JPEG_XS_CBR_BITRATE_OR_SUBFRAME_SLICE_FLOOD_CLAMPED`）。
 
+### 4.174 半导体湿法清洗台 (`Wet Bench`) 食人鱼溶液 (`Piranha H2SO4/H2O2`)、缓冲氧化物刻蚀 (`BOE / HF`) 石英槽与异丙醇 (`IPA`) 马兰戈尼蒸汽干燥机安全守卫 (`P313-SEMICONDUCTOR-WET-BENCH-PIRANHA-H2SO4-H2O2-BOE-HF-QUARTZ-TUBE-CLEAN-AND-IPA-VAPOR-DRYER-NFPA318-SEMIS2-SEMIS6-NFPA86-OSHA1910119-OSHA19101000-PIRANHA-ORGANIC-RUNAWAY-TRIP-BOE-HF-ISOLATION-AND-IPA-LEL-N2-LOTO-GUARD`)
+- **工业物理与化学风险**：300 mm 晶圆厂湿法清洗台使用浓硫酸与双氧水混合的食人鱼溶液（`SPM Piranha`），若槽温突破 `145.0 °C` 或有机溶剂（异丙醇 `IPA` / 丙酮）误排入热食人鱼槽，将瞬时生成对冲击极度敏感的有机过氧化物（如 `TATP`）并引发剧烈化学爆炸；同时缓冲氢氟酸（`BOE / HF`）蒸汽泄漏（`>= 0.5 ppm`）或兆声波石英槽破裂可引发致命低钙血症心室颤动，且马兰戈尼异丙醇蒸汽干燥机顶空 `IPA >= 25.0% LEL` 存在燃爆风险。
+- **确定性护栏动作 (`evaluateSemiconductorWetBenchPiranhaH2so4H2o2BoeHfSilaneLpcvdTubeCleanAndIpaVaporDryerNfpa318SemiS2SemiS6Nfpa86Osha1910119Osha19101000PiranhaOrganicRunawayTripBoeHfCalciumGluconateIsolationAndIpaLelN2LotoGuard`)**：
+  1. **0ms 食人鱼槽超温或有机过氧化物爆炸隔离急冷**：当 `piranhaBathTemperatureC > 145.0`、`organicSolventIpaAcetoneMixedWithHotPiranhaOrH2o2Detected` 或 `piranhaPeroxideDecompositionGasPressureKpaG > 15.0` 时，0ms 触发 `trip_h2o2_dosing_pump_segregate_solvent_drain_and_engage_diw_quench_deluge_in_0ms`（阻断原因：`SEMI_S2_NFPA318_PIRANHA_145C_OR_ORGANIC_ACETONE_IPA_PEROXIDE_DETONATION_PREEMPTED_0MS`）。
+  2. **`BOE / HF >= 0.5 ppm` 或兆声波石英槽裂纹停振封盖**：当 `boeBufferedOxideEtchHfExhaustConcentrationPpm >= 0.5` 或 `megasonicQuartzTankCrackOrLiquidLevelDropDetected` 时，触发 `abort_megasonic_transducer_close_boe_lid_and_route_hf_to_alkaline_scrubber`（阻断原因：`OSHA_1910_1000_SEMIS2_BOE_HF_0_5PPM_OR_MEGASONIC_QUARTZ_TANK_CRACK_ISOLATED`）。
+  3. **`IPA >= 25.0% LEL` 氮气吹扫与 `HF` 葡萄糖酸钙 `SCBA LOTO` 锁闭**：当 `ipaVaporDryerHeadspaceConcentrationPercentLel >= 25.0` 或（`wetBenchHfPiranhaDeckMaintenanceRequested` 且 `!calciumGluconateHexafluorineAndN2InertBlanketScbaLotoVerified`）时，触发 `lock_wet_bench_hood_flood_ipa_dryer_with_n2_and_require_hf_calcium_gluconate_scba_loto`（阻断原因：`NFPA_86_SEMIS2_IPA_DRYER_25PCT_LEL_OR_HF_CALCIUM_GLUCONATE_SCBA_LOTO_LOCKED`）。
+
+### 4.175 WebRTC & SIP RTP `SMPTE ST 2110-31 / RFC 3190` `AES3` 透明非压缩/非 PCM (`Dolby E / SMPTE 337`) 音频传输流安全守卫 (`P314-WEBRTC-SIP-RTP-SMPTE-ST2110-31-AES3-TRANSPARENT-AUDIO-RFC3190-AM824-SUBFRAME-OVERREAD-BLOCK-SYNC-PARITY-DESYNC-UNFLAGGED-DOLBY-E-ST337-BLAST-AND-CHANNEL-FLOOD-GUARD`)
+- **实时媒体协议越界与声学爆音风险**：`SMPTE ST 2110-31 / RFC 3190` 将 `AES3` 32-bit `AM824` 子帧（包含 `B/M/W` 前导码、24-bit 音频或 `SMPTE ST 337 / Dolby E` 压缩比特流，以及 `V/U/C/P` 状态位）透明封装于 RTP 流。若 `AM824` 子帧长度非 4 字节对齐或越界读取、192 帧 `Z-Bit` 块同步/偶校验失步，或将携带 `Dolby E / ST 337` 非 PCM 压缩数据的子帧的有效位错误清零（`V=0`，导致下游监听音箱将其作为满量程 `0 dBFS` 线性 PCM 播放），将瞬间损坏演播室监听设备并造成导播人员声学创伤。
+- **确定性护栏动作 (`evaluateWebrtcSipRtpSmpteSt211031Aes3TransparentAudioTransportRfc3190Am824SubframeOverreadBpvViolationNonAudioDolbyEUnflaggedBlastAndChannelFloodGuard`)**：
+  1. **0ms `AM824` 子帧越界与非 4 字节对齐丢弃**：当 `am824SubframeWordsDeclaredBytes < 4`、`am824SubframeWordsDeclaredBytes % 4 !== 0` 或 `am824SubframeWordsDeclaredBytes > actualRtpPayloadBytesRemaining` 时，0ms 触发 `drop_st2110_31_rfc3190_am824_subframe_overread_or_misaligned_word_in_0ms`（阻断原因：`RFC_3190_ST2110_31_AM824_SUBFRAME_OVERREAD_OR_4BYTE_ALIGNMENT_DROPPED_0MS`）。
+  2. **`AES3` 块同步/奇偶失步或未置 `V=1` 的 `Dolby E / ST 337` 数字爆音拦截**：当 `!aes3BlockSyncZFlagAndParityValid` 或 `nonPcmDolbyEOrSmpte337DataPresentWithClearedValidityBitV0` 时，触发 `reject_aes3_block_sync_parity_error_or_mute_unflagged_v0_smpte337_dolby_e_blast`（阻断原因：`SMPTE_ST2110_31_AES3_Z_SYNC_PARITY_ERROR_OR_UNFLAGGED_V0_ST337_NON_PCM_BLAST_REJECTED`）。
+  3. **`ST 2110-31 AES3` 声道数与采样率洪泛钳制**：当 `aes3AudioChannelsCount > 64` 或 `aes3SampleRateKhz > 192` 时，触发 `clamp_st2110_31_aes3_excessive_channel_count_or_sample_rate_flood`（阻断原因：`SMPTE_ST2110_31_AES3_64CH_OR_192KHZ_BANDWIDTH_FLOOD_CLAMPED`）。
+
+
 
 
 
