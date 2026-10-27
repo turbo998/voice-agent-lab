@@ -33864,3 +33864,207 @@ export function evaluateWebrtcSipRtpRfc9605SframeEndToEndMediaEncryptionAndRfc94
     blockedReason: "none",
   };
 }
+
+
+export interface SemiconductorWaferToWaferAndDieToWaferCuCuHybridBondingGuardInput {
+  readonly moduleId: string;
+  readonly h2PlasmaOrAnnealLeakPpm: number;
+  readonly w2wBondHeadForceKn: number;
+  readonly opticalAlignmentLightCurtainIntact: boolean;
+  readonly megasonicDiRinseFlowLpm: number;
+  readonly postBondAnnealChamberO2Ppm: number;
+  readonly bondHeadOpticsOrChuckMaintenanceRequested: boolean;
+  readonly zAxisGravityPinLockCoolDownBelow45cAndLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferToWaferAndDieToWaferCuCuHybridBondingGuardResult {
+  readonly policyCode: "P345-SEMICONDUCTOR-WAFER-TO-WAFER-AND-DIE-TO-WAFER-CU-CU-HYBRID-BONDING-PLASMA-ACTIVATION-O2-N2-H2-AR-AND-THERMAL-ANNEAL-SEMIS2-SEMIS6-SEMIS8-NFPA318-OSHA1910147-H2-PLASMA-LEAK-OR-BOND-HEAD-FORCE-RUNAWAY-TRIP-MEGASONIC-DI-CAVITATION-QUENCH-AND-BOND-CHUCK-ZERO-FORCE-LOTO-GUARD";
+  readonly moduleId: string;
+  readonly hybridBondingApproved: boolean;
+  readonly plasmaRfAndBondHeadDriveTripped0ms: boolean;
+  readonly megasonicTransducerAndAnnealFurnaceQuenched: boolean;
+  readonly zAxisGravityPinCoolDownAndLotoLocked: boolean;
+  readonly action:
+    | "approve_semiconductor_w2w_d2w_cu_cu_hybrid_bonding"
+    | "trip_plasma_rf_and_bond_head_z_servo_on_h2_leak_or_force_overrun_in_0ms"
+    | "quench_megasonic_transducer_and_post_bond_anneal_furnace_on_di_loss_or_o2_intrusion"
+    | "lock_out_bond_head_or_chuck_maintenance_until_gravity_pin_cooldown_and_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferToWaferAndDieToWaferCuCuHybridBondingPlasmaActivationO2N2H2ArAndThermalAnnealSemiS2SemiS6SemiS8Nfpa318Osha1910147H2PlasmaLeakOrBondHeadForceRunawayTripMegasonicDiCavitationQuenchAndBondChuckZeroForceLotoGuard(
+  input: SemiconductorWaferToWaferAndDieToWaferCuCuHybridBondingGuardInput
+): SemiconductorWaferToWaferAndDieToWaferCuCuHybridBondingGuardResult {
+  const policyCode =
+    "P345-SEMICONDUCTOR-WAFER-TO-WAFER-AND-DIE-TO-WAFER-CU-CU-HYBRID-BONDING-PLASMA-ACTIVATION-O2-N2-H2-AR-AND-THERMAL-ANNEAL-SEMIS2-SEMIS6-SEMIS8-NFPA318-OSHA1910147-H2-PLASMA-LEAK-OR-BOND-HEAD-FORCE-RUNAWAY-TRIP-MEGASONIC-DI-CAVITATION-QUENCH-AND-BOND-CHUCK-ZERO-FORCE-LOTO-GUARD" as const;
+
+  const plasmaRfAndBondHeadDriveTripped0ms =
+    input.h2PlasmaOrAnnealLeakPpm >= 10000 ||
+    input.w2wBondHeadForceKn > 80.0 ||
+    !input.opticalAlignmentLightCurtainIntact;
+
+  const megasonicTransducerAndAnnealFurnaceQuenched =
+    input.megasonicDiRinseFlowLpm < 1.0 ||
+    input.postBondAnnealChamberO2Ppm > 50.0;
+
+  const zAxisGravityPinCoolDownAndLotoLocked =
+    input.bondHeadOpticsOrChuckMaintenanceRequested &&
+    !input.zAxisGravityPinLockCoolDownBelow45cAndLotoVerified;
+
+  if (plasmaRfAndBondHeadDriveTripped0ms) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      hybridBondingApproved: false,
+      plasmaRfAndBondHeadDriveTripped0ms: true,
+      megasonicTransducerAndAnnealFurnaceQuenched,
+      zAxisGravityPinCoolDownAndLotoLocked,
+      action:
+        "trip_plasma_rf_and_bond_head_z_servo_on_h2_leak_or_force_overrun_in_0ms",
+      blockedReason:
+        "h2_plasma_leak_above_25pct_lel_bond_head_force_overrun_or_light_curtain_breach_0ms_trip",
+    };
+  }
+
+  if (megasonicTransducerAndAnnealFurnaceQuenched) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      hybridBondingApproved: false,
+      plasmaRfAndBondHeadDriveTripped0ms: false,
+      megasonicTransducerAndAnnealFurnaceQuenched: true,
+      zAxisGravityPinCoolDownAndLotoLocked,
+      action:
+        "quench_megasonic_transducer_and_post_bond_anneal_furnace_on_di_loss_or_o2_intrusion",
+      blockedReason:
+        "megasonic_di_rinse_underflow_dry_cavitation_or_post_bond_anneal_o2_intrusion_quench",
+    };
+  }
+
+  if (zAxisGravityPinCoolDownAndLotoLocked) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      hybridBondingApproved: false,
+      plasmaRfAndBondHeadDriveTripped0ms: false,
+      megasonicTransducerAndAnnealFurnaceQuenched: false,
+      zAxisGravityPinCoolDownAndLotoLocked: true,
+      action:
+        "lock_out_bond_head_or_chuck_maintenance_until_gravity_pin_cooldown_and_loto",
+      blockedReason:
+        "bond_head_or_chuck_maintenance_blocked_without_z_axis_gravity_pin_cooldown_below_45c_and_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    moduleId: input.moduleId,
+    hybridBondingApproved: true,
+    plasmaRfAndBondHeadDriveTripped0ms: false,
+    megasonicTransducerAndAnnealFurnaceQuenched: false,
+    zAxisGravityPinCoolDownAndLotoLocked: false,
+    action: "approve_semiconductor_w2w_d2w_cu_cu_hybrid_bonding",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8843Rfc9143BundleMultiplexingAndRfc7983PacketDemuxGuardInput {
+  readonly sessionId: string;
+  readonly declaredMidOrRidExtensionBytes: number;
+  readonly actualRtpHeaderExtensionBytesRemaining: number;
+  readonly rfc7983FirstByteDemuxCollisionDetected: boolean;
+  readonly crossMlineSsrcOrPayloadTypeHijackDetected: boolean;
+  readonly invalidNonAsciiMidTagDetected: boolean;
+  readonly midRebindingSwitchesPerSecond: number;
+  readonly unbundledOrphanSsrcPacketRatePps: number;
+}
+
+export interface WebrtcSipRtpRfc8843Rfc9143BundleMultiplexingAndRfc7983PacketDemuxGuardResult {
+  readonly policyCode: "P346-WEBRTC-SIP-RTP-RFC8843-RFC9143-BUNDLE-MULTIPLEXING-AND-RFC7983-PACKET-DEMUX-MID-RTP-HEADER-EXTENSION-LENGTH-OVERREAD-FIRST-BYTE-DEMUX-COLLISION-OR-CROSS-MLINE-SSRC-HIJACK-REJECT-AND-MID-SWITCH-STORM-CLAMP-GUARD";
+  readonly sessionId: string;
+  readonly rfc8843BundleDemuxStreamAccepted: boolean;
+  readonly midHeaderOverreadOrRfc7983FirstByteCollisionDropped0ms: boolean;
+  readonly crossMlineSsrcHijackOrInvalidMidTagRejected: boolean;
+  readonly midRebindingOrOrphanSsrcStormClamped: boolean;
+  readonly action:
+    | "accept_rfc8843_bundle_and_rfc7983_demux_stream"
+    | "drop_rfc8843_mid_extension_overread_or_rfc7983_first_byte_collision_in_0ms"
+    | "reject_cross_mline_ssrc_payload_type_hijack_or_invalid_mid_tag"
+    | "clamp_dynamic_mid_rebinding_churn_and_orphan_ssrc_packet_storm";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8843Rfc9143BundleMultiplexingAndRfc7983PacketDemuxMidRtpHeaderExtensionLengthOverreadFirstByteDemuxCollisionOrCrossMlineSsrcHijackRejectAndMidSwitchStormClampGuard(
+  input: WebrtcSipRtpRfc8843Rfc9143BundleMultiplexingAndRfc7983PacketDemuxGuardInput
+): WebrtcSipRtpRfc8843Rfc9143BundleMultiplexingAndRfc7983PacketDemuxGuardResult {
+  const policyCode =
+    "P346-WEBRTC-SIP-RTP-RFC8843-RFC9143-BUNDLE-MULTIPLEXING-AND-RFC7983-PACKET-DEMUX-MID-RTP-HEADER-EXTENSION-LENGTH-OVERREAD-FIRST-BYTE-DEMUX-COLLISION-OR-CROSS-MLINE-SSRC-HIJACK-REJECT-AND-MID-SWITCH-STORM-CLAMP-GUARD" as const;
+
+  const midHeaderOverreadOrRfc7983FirstByteCollisionDropped0ms =
+    input.declaredMidOrRidExtensionBytes > input.actualRtpHeaderExtensionBytesRemaining ||
+    input.rfc7983FirstByteDemuxCollisionDetected;
+
+  const crossMlineSsrcHijackOrInvalidMidTagRejected =
+    input.crossMlineSsrcOrPayloadTypeHijackDetected ||
+    input.invalidNonAsciiMidTagDetected;
+
+  const midRebindingOrOrphanSsrcStormClamped =
+    input.midRebindingSwitchesPerSecond > 20 ||
+    input.unbundledOrphanSsrcPacketRatePps > 100;
+
+  if (midHeaderOverreadOrRfc7983FirstByteCollisionDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8843BundleDemuxStreamAccepted: false,
+      midHeaderOverreadOrRfc7983FirstByteCollisionDropped0ms: true,
+      crossMlineSsrcHijackOrInvalidMidTagRejected,
+      midRebindingOrOrphanSsrcStormClamped,
+      action:
+        "drop_rfc8843_mid_extension_overread_or_rfc7983_first_byte_collision_in_0ms",
+      blockedReason:
+        "rfc8843_mid_rid_header_extension_overread_or_rfc7983_first_byte_demux_collision_0ms_drop",
+    };
+  }
+
+  if (crossMlineSsrcHijackOrInvalidMidTagRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8843BundleDemuxStreamAccepted: false,
+      midHeaderOverreadOrRfc7983FirstByteCollisionDropped0ms: false,
+      crossMlineSsrcHijackOrInvalidMidTagRejected: true,
+      midRebindingOrOrphanSsrcStormClamped,
+      action:
+        "reject_cross_mline_ssrc_payload_type_hijack_or_invalid_mid_tag",
+      blockedReason:
+        "rfc8843_cross_mline_ssrc_payload_type_hijack_or_non_ascii_mid_tag_injection_rejected",
+    };
+  }
+
+  if (midRebindingOrOrphanSsrcStormClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8843BundleDemuxStreamAccepted: false,
+      midHeaderOverreadOrRfc7983FirstByteCollisionDropped0ms: false,
+      crossMlineSsrcHijackOrInvalidMidTagRejected: false,
+      midRebindingOrOrphanSsrcStormClamped: true,
+      action:
+        "clamp_dynamic_mid_rebinding_churn_and_orphan_ssrc_packet_storm",
+      blockedReason:
+        "rfc8843_mid_rebinding_exceeded_20_per_sec_or_orphan_ssrc_flood_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8843BundleDemuxStreamAccepted: true,
+    midHeaderOverreadOrRfc7983FirstByteCollisionDropped0ms: false,
+    crossMlineSsrcHijackOrInvalidMidTagRejected: false,
+    midRebindingOrOrphanSsrcStormClamped: false,
+    action: "accept_rfc8843_bundle_and_rfc7983_demux_stream",
+    blockedReason: "none",
+  };
+}
