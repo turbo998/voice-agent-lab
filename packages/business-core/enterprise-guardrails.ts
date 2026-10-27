@@ -34876,4 +34876,223 @@ export function evaluateWebrtcSipRtpRfc8834Rfc8835MediaTransportAndRfc8837DartDi
   };
 }
 
+export interface SemiconductorCleanroomFfuMatrixDifferentialPressureCascadeAndMauChemicalFilterSmokeDamperSemiS2SemiS8Iso14644Nfpa318GuardInput {
+  readonly bayId: string;
+  readonly vesdaSmokeDensityObscurationPctPerMeter: number;
+  readonly plenumFireOrSmokeAlarmActive: boolean;
+  readonly mauIntakeToxicGasIngressDetected: boolean;
+  readonly cleanroomToSubfabDifferentialPressurePa: number;
+  readonly airflowVelocityMetersPerSecond: number;
+  readonly amcTotalPpb: number;
+  readonly isoClass1ParticleExcursionDetected: boolean;
+  readonly ceilingGridOrMauMaintenanceRequested: boolean;
+  readonly mauBlower480VacVfdAndFfuBusDeenergized: boolean;
+  readonly elevatedCeilingCatwalkFallArrestVerified: boolean;
+  readonly ulpaFilterGelSealIntegrityVerified: boolean;
+}
+
+export interface SemiconductorCleanroomFfuMatrixDifferentialPressureCascadeAndMauChemicalFilterSmokeDamperSemiS2SemiS8Iso14644Nfpa318GuardDecision {
+  readonly policyCode: "P355-SEMICONDUCTOR-CLEANROOM-FFU-MATRIX-DIFFERENTIAL-PRESSURE-CASCADE-AND-MAU-CHEMICAL-FILTER-SMOKE-DAMPER-SEMIS2-SEMIS8-ISO14644-NFPA318-VESDA-SMOKE-OR-INTAKE-GAS-MAU-TRIP-DP-COLLAPSE-FOUP-LOCK-AND-CEILING-GRID-VFD-LOTO-GUARD";
+  readonly bayId: string;
+  readonly cleanroomFfuAndMauCascadeApproved: boolean;
+  readonly mauTrippedAndSmokeIsolationDamperClosed0ms: boolean;
+  readonly foupLoadPortsLockedOnDpCollapseOrAmcExcursion: boolean;
+  readonly ceilingGridOrMauEntryLockedUntilVfdAndFallArrestLoto: boolean;
+  readonly action:
+    | "approve_semiconductor_cleanroom_ffu_matrix_and_mau_pressure_cascade"
+    | "trip_mau_and_close_smoke_isolation_dampers_on_vesda_smoke_or_intake_toxic_gas_in_0ms"
+    | "lock_foup_load_ports_and_halt_wafer_exposure_on_dp_collapse_or_amc_particle_excursion"
+    | "lock_out_cleanroom_ceiling_grid_or_mau_entry_until_vfd_deenergized_and_fall_arrest_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorCleanroomFfuMatrixDifferentialPressureCascadeAndMauChemicalFilterSmokeDamperSemiS2SemiS8Iso14644Nfpa318VesdaSmokeOrIntakeGasMauTripDpCollapseFoupLockAndCeilingGridVfdLotoGuard(
+  input: SemiconductorCleanroomFfuMatrixDifferentialPressureCascadeAndMauChemicalFilterSmokeDamperSemiS2SemiS8Iso14644Nfpa318GuardInput,
+): SemiconductorCleanroomFfuMatrixDifferentialPressureCascadeAndMauChemicalFilterSmokeDamperSemiS2SemiS8Iso14644Nfpa318GuardDecision {
+  const policyCode =
+    "P355-SEMICONDUCTOR-CLEANROOM-FFU-MATRIX-DIFFERENTIAL-PRESSURE-CASCADE-AND-MAU-CHEMICAL-FILTER-SMOKE-DAMPER-SEMIS2-SEMIS8-ISO14644-NFPA318-VESDA-SMOKE-OR-INTAKE-GAS-MAU-TRIP-DP-COLLAPSE-FOUP-LOCK-AND-CEILING-GRID-VFD-LOTO-GUARD" as const;
+
+  const mauTrippedAndSmokeIsolationDamperClosed0ms =
+    input.vesdaSmokeDensityObscurationPctPerMeter > 0.05 ||
+    input.plenumFireOrSmokeAlarmActive ||
+    input.mauIntakeToxicGasIngressDetected;
+
+  const foupLoadPortsLockedOnDpCollapseOrAmcExcursion =
+    input.cleanroomToSubfabDifferentialPressurePa < 10.0 ||
+    input.airflowVelocityMetersPerSecond < 0.25 ||
+    input.airflowVelocityMetersPerSecond > 0.65 ||
+    input.amcTotalPpb > 5.0 ||
+    input.isoClass1ParticleExcursionDetected;
+
+  const ceilingGridOrMauEntryLockedUntilVfdAndFallArrestLoto =
+    input.ceilingGridOrMauMaintenanceRequested &&
+    (!input.mauBlower480VacVfdAndFfuBusDeenergized ||
+      !input.elevatedCeilingCatwalkFallArrestVerified ||
+      !input.ulpaFilterGelSealIntegrityVerified);
+
+  if (mauTrippedAndSmokeIsolationDamperClosed0ms) {
+    return {
+      policyCode,
+      bayId: input.bayId,
+      cleanroomFfuAndMauCascadeApproved: false,
+      mauTrippedAndSmokeIsolationDamperClosed0ms: true,
+      foupLoadPortsLockedOnDpCollapseOrAmcExcursion,
+      ceilingGridOrMauEntryLockedUntilVfdAndFallArrestLoto,
+      action:
+        "trip_mau_and_close_smoke_isolation_dampers_on_vesda_smoke_or_intake_toxic_gas_in_0ms",
+      blockedReason:
+        "cleanroom_vesda_smoke_exceeded_0_05_pct_per_m_or_plenum_fire_or_mau_intake_toxic_gas_0ms_damper_isolation",
+    };
+  }
+
+  if (foupLoadPortsLockedOnDpCollapseOrAmcExcursion) {
+    return {
+      policyCode,
+      bayId: input.bayId,
+      cleanroomFfuAndMauCascadeApproved: false,
+      mauTrippedAndSmokeIsolationDamperClosed0ms: false,
+      foupLoadPortsLockedOnDpCollapseOrAmcExcursion: true,
+      ceilingGridOrMauEntryLockedUntilVfdAndFallArrestLoto,
+      action:
+        "lock_foup_load_ports_and_halt_wafer_exposure_on_dp_collapse_or_amc_particle_excursion",
+      blockedReason:
+        "cleanroom_dp_below_10_pa_or_velocity_outside_0_25_to_0_65_mps_or_amc_exceeded_5_ppb_foup_locked",
+    };
+  }
+
+  if (ceilingGridOrMauEntryLockedUntilVfdAndFallArrestLoto) {
+    return {
+      policyCode,
+      bayId: input.bayId,
+      cleanroomFfuAndMauCascadeApproved: false,
+      mauTrippedAndSmokeIsolationDamperClosed0ms: false,
+      foupLoadPortsLockedOnDpCollapseOrAmcExcursion: false,
+      ceilingGridOrMauEntryLockedUntilVfdAndFallArrestLoto: true,
+      action:
+        "lock_out_cleanroom_ceiling_grid_or_mau_entry_until_vfd_deenergized_and_fall_arrest_loto",
+      blockedReason:
+        "cleanroom_ceiling_grid_or_mau_entry_requires_480vac_vfd_loto_fall_arrest_and_ulpa_gel_seal_verification",
+    };
+  }
+
+  return {
+    policyCode,
+    bayId: input.bayId,
+    cleanroomFfuAndMauCascadeApproved: true,
+    mauTrippedAndSmokeIsolationDamperClosed0ms: false,
+    foupLoadPortsLockedOnDpCollapseOrAmcExcursion: false,
+    ceilingGridOrMauEntryLockedUntilVfdAndFallArrestLoto: false,
+    action: "approve_semiconductor_cleanroom_ffu_matrix_and_mau_pressure_cascade",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8083UnicastCircuitBreakersRtcpMediaTimeoutTfrcCongestionAndIceConsentGuardInput {
+  readonly sessionId: string;
+  readonly consecutiveRtcpReportingIntervalsMissed: number;
+  readonly mediaPacketsReceivedInLastTwoRtcpIntervals: number;
+  readonly spoofedRtcpRrCircuitBreakerBypassAttempt: boolean;
+  readonly actualSendRateBps: number;
+  readonly tfrcAllowedRateBps: number;
+  readonly consecutiveCongestionIntervalsExceeded: number;
+  readonly sustainedPacketLossFraction: number;
+  readonly iceConsentFreshnessExpired: boolean;
+  readonly zombieTurnAllocationRetainedSeconds: number;
+}
+
+export interface WebrtcSipRtpRfc8083UnicastCircuitBreakersRtcpMediaTimeoutTfrcCongestionAndIceConsentGuardDecision {
+  readonly policyCode: "P356-WEBRTC-SIP-RTP-RFC8083-UNICAST-CIRCUIT-BREAKERS-RTCP-MEDIA-TIMEOUT-TFRC-CONGESTION-AND-ICE-CONSENT-RTCP-OR-MEDIA-TIMEOUT-0MS-TRIP-TENFOLD-TFRC-CONGESTION-REJECT-AND-ZOMBIE-TURN-TEARDOWN-GUARD";
+  readonly sessionId: string;
+  readonly rfc8083RtpCircuitBreakerHealthy: boolean;
+  readonly rtpCircuitBreakerTrippedOnRtcpOrMediaTimeout0ms: boolean;
+  readonly runawayRtpFlowRejectedOnTenfoldTfrcOrLossEnvelope: boolean;
+  readonly rtpSessionTerminatedAndTurnAllocationReleased: boolean;
+  readonly action:
+    | "accept_rfc8083_compliant_unicast_rtp_session_within_circuit_breaker_envelope"
+    | "trip_rtp_circuit_breaker_and_cease_transmission_on_rtcp_or_media_timeout_in_0ms"
+    | "reject_runaway_rtp_flow_exceeding_rfc8083_tfrc_tenfold_congestion_envelope_or_media_usability_floor"
+    | "terminate_rtp_session_and_release_turn_allocation_until_fresh_sdp_renegotiation";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8083UnicastCircuitBreakersRtcpMediaTimeoutTfrcCongestionAndIceConsentRtcpOrMediaTimeout0msTripTenfoldTfrcCongestionRejectAndZombieTurnTeardownGuard(
+  input: WebrtcSipRtpRfc8083UnicastCircuitBreakersRtcpMediaTimeoutTfrcCongestionAndIceConsentGuardInput,
+): WebrtcSipRtpRfc8083UnicastCircuitBreakersRtcpMediaTimeoutTfrcCongestionAndIceConsentGuardDecision {
+  const policyCode =
+    "P356-WEBRTC-SIP-RTP-RFC8083-UNICAST-CIRCUIT-BREAKERS-RTCP-MEDIA-TIMEOUT-TFRC-CONGESTION-AND-ICE-CONSENT-RTCP-OR-MEDIA-TIMEOUT-0MS-TRIP-TENFOLD-TFRC-CONGESTION-REJECT-AND-ZOMBIE-TURN-TEARDOWN-GUARD" as const;
+
+  const rtpCircuitBreakerTrippedOnRtcpOrMediaTimeout0ms =
+    input.consecutiveRtcpReportingIntervalsMissed >= 3 ||
+    input.mediaPacketsReceivedInLastTwoRtcpIntervals <= 0 ||
+    input.spoofedRtcpRrCircuitBreakerBypassAttempt;
+
+  const runawayRtpFlowRejectedOnTenfoldTfrcOrLossEnvelope =
+    input.tfrcAllowedRateBps <= 0 ||
+    (input.actualSendRateBps > 10 * input.tfrcAllowedRateBps &&
+      input.consecutiveCongestionIntervalsExceeded >= 2) ||
+    input.sustainedPacketLossFraction > 0.5;
+
+  const rtpSessionTerminatedAndTurnAllocationReleased =
+    input.iceConsentFreshnessExpired ||
+    input.zombieTurnAllocationRetainedSeconds > 30;
+
+  if (rtpCircuitBreakerTrippedOnRtcpOrMediaTimeout0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8083RtpCircuitBreakerHealthy: false,
+      rtpCircuitBreakerTrippedOnRtcpOrMediaTimeout0ms: true,
+      runawayRtpFlowRejectedOnTenfoldTfrcOrLossEnvelope,
+      rtpSessionTerminatedAndTurnAllocationReleased,
+      action:
+        "trip_rtp_circuit_breaker_and_cease_transmission_on_rtcp_or_media_timeout_in_0ms",
+      blockedReason:
+        "rfc8083_rtcp_timeout_missed_3_intervals_or_media_timeout_or_spoofed_rtcp_rr_0ms_circuit_breaker_trip",
+    };
+  }
+
+  if (runawayRtpFlowRejectedOnTenfoldTfrcOrLossEnvelope) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8083RtpCircuitBreakerHealthy: false,
+      rtpCircuitBreakerTrippedOnRtcpOrMediaTimeout0ms: false,
+      runawayRtpFlowRejectedOnTenfoldTfrcOrLossEnvelope: true,
+      rtpSessionTerminatedAndTurnAllocationReleased,
+      action:
+        "reject_runaway_rtp_flow_exceeding_rfc8083_tfrc_tenfold_congestion_envelope_or_media_usability_floor",
+      blockedReason:
+        "rfc8083_send_rate_exceeded_10x_tfrc_envelope_or_sustained_loss_exceeded_50_pct_rejected",
+    };
+  }
+
+  if (rtpSessionTerminatedAndTurnAllocationReleased) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8083RtpCircuitBreakerHealthy: false,
+      rtpCircuitBreakerTrippedOnRtcpOrMediaTimeout0ms: false,
+      runawayRtpFlowRejectedOnTenfoldTfrcOrLossEnvelope: false,
+      rtpSessionTerminatedAndTurnAllocationReleased: true,
+      action:
+        "terminate_rtp_session_and_release_turn_allocation_until_fresh_sdp_renegotiation",
+      blockedReason:
+        "rfc7675_ice_consent_freshness_expired_or_zombie_turn_allocation_exceeded_30s_terminated",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8083RtpCircuitBreakerHealthy: true,
+    rtpCircuitBreakerTrippedOnRtcpOrMediaTimeout0ms: false,
+    runawayRtpFlowRejectedOnTenfoldTfrcOrLossEnvelope: false,
+    rtpSessionTerminatedAndTurnAllocationReleased: false,
+    action:
+      "accept_rfc8083_compliant_unicast_rtp_session_within_circuit_breaker_envelope",
+    blockedReason: "none",
+  };
+}
+
+
 

@@ -10545,8 +10545,8 @@
       id: 'P352',
       cat: { zh: 'RFC 8285 扩展头 & RFC 6904 加密扩展护栏', tw: 'RFC 8285 擴展頭 & RFC 6904 加密擴展護欄', en: 'RFC 8285 & RFC 6904 Encrypted Header Ext Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RTP RFC 8285 单字节/双字节扩展头（0xBEDE / 0x1000）与 RFC 6904 加密扩展头 0ms 32-bit 扩展块或子元素越界丢包、保留 ID=15 走私或强制加密扩展明文降级拒绝及 > 32B 非连续零填充或 > 5 次/分动态 extmap 重映射钳制护栏（Stage 179 · 360+ 护栏 & 372 探针双里程碑）',
-        tw: 'WebRTC 與 SIP RTP RFC 8285 單字節/雙字節擴展頭（0xBEDE / 0x1000）與 RFC 6904 加密擴展頭 0ms 32-bit 擴展塊或子元素越界丟包、保留 ID=15 走私或強制加密擴展明文降級拒絕及 > 32B 非連續零填充或 > 5 次/分動態 extmap 重映射鉗制護欄（Stage 179 · 360+ 護欄 & 372 探針雙里程碑）',
+        zh: 'WebRTC 与 SIP RTP RFC 8285 单字节/双字节扩展头（0xBEDE / 0x1000）与 RFC 6904 加密扩展头 0ms 32-bit 扩展块或子元素越界丢包、保留 ID=15 走私或强制加密扩展明文降级拒绝及 > 32B 非连续零填充或 > 5 次/分动态 extmap 重映射钳制护栏（Stage 179 · 360+ 护栏 & 374 探针双里程碑）',
+        tw: 'WebRTC 與 SIP RTP RFC 8285 單字節/雙字節擴展頭（0xBEDE / 0x1000）與 RFC 6904 加密擴展頭 0ms 32-bit 擴展塊或子元素越界丟包、保留 ID=15 走私或強制加密擴展明文降級拒絕及 > 32B 非連續零填充或 > 5 次/分動態 extmap 重映射鉗制護欄（Stage 179 · 360+ 護欄 & 374 探針雙里程碑）',
         en: 'WebRTC & SIP RTP RFC 8285 One-Byte / Two-Byte Header Extension (0xBEDE / 0x1000) & RFC 6904 Encrypted Header Extension: 0ms Word32 Block or Element Overread Drop, Reserved ID=15 Smuggling or Plaintext Downgrade Reject & > 32B Non-Contiguous Padding or > 5/min Extmap Remap Clamp Guard (Stage 179 · 360+ Guardrails & 370-Probe Milestone)'
       },
       utterance: {
@@ -10620,6 +10620,60 @@
         needs_human: false,
         confidence: 1.0,
         verifier: 'PASS (P354) — 0ms corrupted DSCP / CS7 priority theft drop, 100% RFC 8837 5-tuple AFxx queue-mixing reject & per-packet DSCP oscillation clamp to DF'
+      }
+    },
+    {
+      id: 'P355',
+      cat: { zh: '半导体洁净室 FFU 矩阵、正压差级联与 MAU 新风防烟护栏', tw: '半導體潔淨室 FFU 矩陣、正壓差級聯與 MAU 新風防煙護欄', en: 'Semiconductor Cleanroom FFU Matrix, Pressure Cascade & MAU Smoke Damper Guard' },
+      name: {
+        zh: '半导体洁净室风机过滤单元（FFU ULPA U15/U16）矩阵、正压差级联（ΔP >= 12.5 Pa）与新风空调机组（MAU 化学过滤器与防烟隔离阀）SEMI S2 / SEMI S8 / ISO 14644-1 / ISO 14644-4 / NFPA 318 0ms VESDA 烟雾 > 0.05 %/m 或有毒新风关停 MAU 并锁闭防烟阀、正压差崩溃 < 10.0 Pa 或 AMC > 5.0 ppb 锁死 FOUP 门及 480V VFD 与高空防坠 LOTO 护栏（Stage 181）',
+        tw: '半導體潔淨室風機過濾單元（FFU ULPA U15/U16）矩陣、正壓差級聯（ΔP >= 12.5 Pa）與新風空調機組（MAU 化學過濾器與防煙隔離閥）SEMI S2 / SEMI S8 / ISO 14644-1 / ISO 14644-4 / NFPA 318 0ms VESDA 煙霧 > 0.05 %/m 或有毒新風關停 MAU 並鎖閉防煙閥、正壓差崩潰 < 10.0 Pa 或 AMC > 5.0 ppb 鎖死 FOUP 門及 480V VFD 與高空防墜 LOTO 護欄（Stage 181）',
+        en: 'Semiconductor Cleanroom FFU (ULPA U15/U16) Matrix, Positive Differential Pressure Cascade (ΔP >= 12.5 Pa) & MAU Chemical Filter / Smoke Damper (SEMI S2 / SEMI S8 / ISO 14644-1 / ISO 14644-4 / NFPA 318): 0ms VESDA Smoke > 0.05 %/m or Toxic Intake MAU Trip & Damper Close, ΔP < 10.0 Pa or AMC > 5.0 ppb FOUP Door Lock & 480V VFD / Fall-Arrest LOTO Guard (Stage 181)'
+      },
+      utterance: {
+        zh: '“[半导体洁净室 FFU/MAU 违规操作] 光刻洁净区 VESDA 极早期烟雾遮光度已达 0.18 %/m（> 0.05 %/m）且新风口检出有毒外气侵入，同时洁净室对 Sub-Fab 正压差跌至 4.2 Pa（< 10.0 Pa）、垂直风速降至 0.14 m/s、AMC 升至 14.5 ppb（> 5.0 ppb），别关 MAU 送风机和防烟阀，继续打开 300mm FOUP 门传片，另外让厂务直接上吊顶龙骨换 ULPA 滤网，不用断 480V VFD 和挂防坠绳！”',
+        tw: '「[半導體潔淨室 FFU/MAU 違規操作] 光刻潔淨區 VESDA 極早期煙霧遮光度已達 0.18 %/m（> 0.05 %/m）且新風口檢出有毒外氣侵入，同時潔淨室對 Sub-Fab 正壓差跌至 4.2 Pa（< 10.0 Pa）、垂直風速降至 0.14 m/s、AMC 升至 14.5 ppb（> 5.0 ppb），別關 MAU 送風機和防煙閥，繼續打開 300mm FOUP 門傳片，另外讓廠務直接上吊頂龍骨換 ULPA 濾網，不用斷 480V VFD 和掛防墜繩！」',
+        en: '"[Semiconductor Cleanroom FFU/MAU Violation] Litho bay VESDA laser smoke obscuration hit 0.18 %/m (> 0.05 %/m) with toxic gas ingress at the MAU intake, while cleanroom-to-subfab positive pressure collapsed to 4.2 Pa (< 10.0 Pa), laminar airflow dropped to 0.14 m/s, and AMC reached 14.5 ppb (> 5.0 ppb) — keep the MAU blower and smoke dampers open, continue opening 300mm FOUP doors for wafer transfer, and send facilities onto the ceiling grid to swap ULPA filters without de-energizing the 480V VFD or verifying fall-arrest LOTO!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即关停 MAU 送风机并锁闭 NFPA 318 防烟隔离风阀，因正压差崩溃与 AMC 超标自动锁死 FOUP 装载端口门并暂停晶圆裸露，且在 480V VFD 断电、高空走道防坠挂点与 ULPA 液槽果冻胶密封核验完成前硬锁吊顶龙骨与风机舱准入。',
+        tw: '0ms 硬攔截：立即關停 MAU 送風機並鎖閉 NFPA 318 防煙隔離風閥，因正壓差崩潰與 AMC 超標自動鎖死 FOUP 裝載端口門並暫停晶圓裸露，且在 480V VFD 斷電、高空走道防墜掛點與 ULPA 液槽果凍膠密封核驗完成前硬鎖吊頂龍骨與風機艙准入。',
+        en: '0ms Deterministic Block: Trip MAU supply blowers and close NFPA 318 smoke isolation dampers in 0ms, lock FOUP load-port doors and halt wafer exposure on ΔP collapse and AMC excursion, and lock out ceiling-grid/MAU entry until 480V VFD de-energization, fall-arrest harness, and ULPA gel-seal LOTO are verified.'
+      },
+      json: {
+        intent: 'trip_mau_and_close_smoke_isolation_dampers_on_vesda_smoke_or_intake_toxic_gas_in_0ms',
+        action: 'evaluateSemiconductorCleanroomFfuMatrixDifferentialPressureCascadeAndMauChemicalFilterSmokeDamperSemiS2SemiS8Iso14644Nfpa318VesdaSmokeOrIntakeGasMauTripDpCollapseFoupLockAndCeilingGridVfdLotoGuard',
+        policy: ['P355-SEMICONDUCTOR-CLEANROOM-FFU-MATRIX-DIFFERENTIAL-PRESSURE-CASCADE-AND-MAU-CHEMICAL-FILTER-SMOKE-DAMPER-SEMIS2-SEMIS8-ISO14644-NFPA318-VESDA-SMOKE-OR-INTAKE-GAS-MAU-TRIP-DP-COLLAPSE-FOUP-LOCK-AND-CEILING-GRID-VFD-LOTO-GUARD', 'ISO-14644-1-14644-4-CLEANROOM', 'SEMI-S2-S8-NFPA-318-VESDA-SMOKE-DAMPER'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P355) — 0ms VESDA smoke / toxic intake MAU trip & smoke damper closure, 100% FOUP load-port lock on ΔP collapse / AMC & 480V VFD fall-arrest LOTO lock'
+      }
+    },
+    {
+      id: 'P356',
+      cat: { zh: 'RFC 8083 单播 RTP 熔断器与 RFC 7675 ICE 保活护栏', tw: 'RFC 8083 單播 RTP 熔斷器與 RFC 7675 ICE 保活護欄', en: 'RFC 8083 Unicast RTP Circuit Breakers & RFC 7675 ICE Consent Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RTP RFC 8083 单播 RTP 会话熔断器（RTP-CB RTCP 超时 / 媒体超时 / TFRC 10 倍拥塞 / 媒体可用性）与 RFC 7675 ICE 同意保活 0ms 缺失 >= 3 个 RTCP 周期或媒体超时熔断停发、> 10 倍 TFRC 允许码率或 > 50% 丢包失控流拒绝及 > 30 秒僵尸 TURN 中继强制拆线护栏（Stage 181）',
+        tw: 'WebRTC 與 SIP RTP RFC 8083 單播 RTP 會話熔斷器（RTP-CB RTCP 超時 / 媒體超時 / TFRC 10 倍擁塞 / 媒體可用性）與 RFC 7675 ICE 同意保活 0ms 缺失 >= 3 個 RTCP 週期或媒體超時熔斷停發、> 10 倍 TFRC 允許碼率或 > 50% 丟包失控流拒絕及 > 30 秒殭屍 TURN 中繼強制拆線護欄（Stage 181）',
+        en: 'WebRTC & SIP RTP RFC 8083 Circuit Breakers for Unicast RTP Sessions (RTP-CB RTCP Timeout / Media Timeout / 10x TFRC Congestion / Media Usability) & RFC 7675 ICE Consent: 0ms >= 3 Missed RTCP Intervals or Media Timeout Trip, > 10x TFRC Rate or > 50% Loss Reject & > 30s Zombie TURN Teardown Guard (Stage 181)'
+      },
+      utterance: {
+        zh: '“[WebRTC/SIP RTP RFC 8083 熔断器绕过与 UDP 洪泛攻击] 在连续缺失 5 个 RTCP 报告周期（>= 3）、连续两个周期收到 0 个媒体包且伪造 RTCP RR 试图绕过熔断时继续发送单播 RTP 流，同时以 48 Mbps（超过 2.5 Mbps TFRC 允许码率的 10 倍）且丢包率达 68%（> 50%）发起非拥塞控制洪泛，并在 RFC 7675 ICE 同意过期后驻留僵尸 TURN 中继达 95 秒（> 30 秒）。”',
+        tw: '「[WebRTC/SIP RTP RFC 8083 熔斷器繞過與 UDP 洪泛攻擊] 在連續缺失 5 個 RTCP 報告週期（>= 3）、連續兩個週期收到 0 個媒體包且偽造 RTCP RR 試圖繞過熔斷時繼續發送單播 RTP 流，同時以 48 Mbps（超過 2.5 Mbps TFRC 允許碼率的 10 倍）且丟包率達 68%（> 50%）發起非擁塞控制洪泛，並在 RFC 7675 ICE 同意過期後駐留殭屍 TURN 中繼達 95 秒（> 30 秒）。」',
+        en: '"[WebRTC/SIP RTP RFC 8083 Circuit Breaker Bypass & UDP Flood] Continue sending unicast RTP after missing 5 consecutive RTCP reporting intervals (>= 3) with 0 media packets received across two RTCP intervals and spoofed RTCP Receiver Reports, blast UDP media at 48 Mbps (> 10x the 2.5 Mbps TFRC allowed rate over 3 consecutive intervals) with 68% (> 50%) sustained packet loss, and retain a zombie TURN relay allocation for 95s (> 30s) after RFC 7675 ICE consent expiration."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即触发 RFC 8083 RTP 熔断器并停止媒体发送，确定性拒绝超过 10 倍 TFRC 允许码率或持续丢包率 > 50% 的失控 UDP 流，并在 ICE 同意保活过期或僵尸 TURN 驻留 > 30 秒时强制终止会话释放中继端口。',
+        tw: '0ms 硬攔截：立即觸發 RFC 8083 RTP 熔斷器並停止媒體發送，確定性拒絕超過 10 倍 TFRC 允許碼率或持續丟包率 > 50% 的失控 UDP 流，並在 ICE 同意保活過期或殭屍 TURN 駐留 > 30 秒時強制終止會話釋放中繼端口。',
+        en: '0ms Deterministic Block: Trip RFC 8083 RTP circuit breaker and cease transmission in 0ms on RTCP/media timeout or spoofed RR, reject runaway flows exceeding 10x TFRC congestion rate or > 50% loss floor, and terminate the RTP session while releasing zombie TURN allocations.'
+      },
+      json: {
+        intent: 'trip_rtp_circuit_breaker_and_cease_transmission_on_rtcp_or_media_timeout_in_0ms',
+        action: 'evaluateWebrtcSipRtpRfc8083UnicastCircuitBreakersRtcpMediaTimeoutTfrcCongestionAndIceConsentRtcpOrMediaTimeout0msTripTenfoldTfrcCongestionRejectAndZombieTurnTeardownGuard',
+        policy: ['P356-WEBRTC-SIP-RTP-RFC8083-UNICAST-CIRCUIT-BREAKERS-RTCP-MEDIA-TIMEOUT-TFRC-CONGESTION-AND-ICE-CONSENT-RTCP-OR-MEDIA-TIMEOUT-0MS-TRIP-TENFOLD-TFRC-CONGESTION-REJECT-AND-ZOMBIE-TURN-TEARDOWN-GUARD', 'IETF-RFC-8083-RTP-CIRCUIT-BREAKERS', 'IETF-RFC-7675-ICE-CONSENT-FRESHNESS'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P356) — 0ms RFC 8083 RTCP/media timeout circuit-breaker trip, 100% >10x TFRC / >50% loss runaway flow reject & zombie TURN teardown'
       }
     }
   ];
