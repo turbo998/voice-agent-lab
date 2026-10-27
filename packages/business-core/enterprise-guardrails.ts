@@ -34068,3 +34068,201 @@ export function evaluateWebrtcSipRtpRfc8843Rfc9143BundleMultiplexingAndRfc7983Pa
     blockedReason: "none",
   };
 }
+
+
+export interface SemiconductorEuvPellicleAndReticleInspectionHydrogenRadicalCleaningGuardInput {
+  readonly moduleId: string;
+  readonly h2RadicalChamberLeakPpm: number;
+  readonly euvPellicleDifferentialPressurePa: number;
+  readonly loadLockPressureDuringFilamentOnPa: number;
+  readonly euvReticleSubstrateTempC: number;
+  readonly dualPodUltrapureN2PurgeFlowLpm: number;
+  readonly filamentOrPellicleFrameMaintenanceRequested: boolean;
+  readonly filamentCoolBelow50cControlledVentBelow05PasAndLotoVerified: boolean;
+}
+
+export interface SemiconductorEuvPellicleAndReticleInspectionHydrogenRadicalCleaningGuardResult {
+  readonly policyCode: "P347-SEMICONDUCTOR-EUV-PELLICLE-AND-RETICLE-INSPECTION-HYDROGEN-RADICAL-CARBON-CLEANING-AND-DUAL-POD-STORAGE-SEMIS2-SEMIS6-SEMIE152-NFPA318-IEC60825-H2-RADICAL-FILAMENT-LEAK-OR-PELLICLE-DP-TRIP-ACTINIC-135NM-BEAM-QUENCH-AND-ZERO-DP-N2-PURGE-LOTO-GUARD";
+  readonly moduleId: string;
+  readonly euvPellicleReticleCleanApproved: boolean;
+  readonly h2FilamentAndMfcTrippedOnLeakOrPellicleDp0ms: boolean;
+  readonly actinicInspectionBeamAndReticleStageQuenched: boolean;
+  readonly filamentCoolDownControlledVentAndLotoLocked: boolean;
+  readonly action:
+    | "approve_semiconductor_euv_pellicle_reticle_inspection_and_h2_radical_clean"
+    | "trip_h2_radical_filament_and_mfc_on_h2_leak_or_pellicle_dp_overlimit_in_0ms"
+    | "quench_actinic_135nm_inspection_beam_on_reticle_overtemp_or_dual_pod_purge_loss"
+    | "lock_out_filament_or_pellicle_maintenance_until_cooldown_controlled_vent_and_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorEuvPellicleAndReticleInspectionHydrogenRadicalCarbonCleaningAndDualPodStorageSemiS2SemiS6SemiE152Nfpa318Iec60825H2RadicalFilamentLeakOrPellicleDifferentialPressureTripActinic135nmBeamQuenchAndZeroPressureN2PurgeLotoGuard(
+  input: SemiconductorEuvPellicleAndReticleInspectionHydrogenRadicalCleaningGuardInput
+): SemiconductorEuvPellicleAndReticleInspectionHydrogenRadicalCleaningGuardResult {
+  const policyCode =
+    "P347-SEMICONDUCTOR-EUV-PELLICLE-AND-RETICLE-INSPECTION-HYDROGEN-RADICAL-CARBON-CLEANING-AND-DUAL-POD-STORAGE-SEMIS2-SEMIS6-SEMIE152-NFPA318-IEC60825-H2-RADICAL-FILAMENT-LEAK-OR-PELLICLE-DP-TRIP-ACTINIC-135NM-BEAM-QUENCH-AND-ZERO-DP-N2-PURGE-LOTO-GUARD" as const;
+
+  const h2FilamentAndMfcTrippedOnLeakOrPellicleDp0ms =
+    input.h2RadicalChamberLeakPpm >= 10000 ||
+    input.euvPellicleDifferentialPressurePa > 2.0 ||
+    input.loadLockPressureDuringFilamentOnPa > 10.0;
+
+  const actinicInspectionBeamAndReticleStageQuenched =
+    input.euvReticleSubstrateTempC > 32.0 ||
+    input.dualPodUltrapureN2PurgeFlowLpm < 0.5;
+
+  const filamentCoolDownControlledVentAndLotoLocked =
+    input.filamentOrPellicleFrameMaintenanceRequested &&
+    !input.filamentCoolBelow50cControlledVentBelow05PasAndLotoVerified;
+
+  if (h2FilamentAndMfcTrippedOnLeakOrPellicleDp0ms) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      euvPellicleReticleCleanApproved: false,
+      h2FilamentAndMfcTrippedOnLeakOrPellicleDp0ms: true,
+      actinicInspectionBeamAndReticleStageQuenched,
+      filamentCoolDownControlledVentAndLotoLocked,
+      action:
+        "trip_h2_radical_filament_and_mfc_on_h2_leak_or_pellicle_dp_overlimit_in_0ms",
+      blockedReason:
+        "h2_radical_chamber_leak_above_25pct_lel_euv_pellicle_dp_above_2pa_or_vacuum_loss_0ms_trip",
+    };
+  }
+
+  if (actinicInspectionBeamAndReticleStageQuenched) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      euvPellicleReticleCleanApproved: false,
+      h2FilamentAndMfcTrippedOnLeakOrPellicleDp0ms: false,
+      actinicInspectionBeamAndReticleStageQuenched: true,
+      filamentCoolDownControlledVentAndLotoLocked,
+      action:
+        "quench_actinic_135nm_inspection_beam_on_reticle_overtemp_or_dual_pod_purge_loss",
+      blockedReason:
+        "euv_reticle_substrate_overtemp_above_32c_or_dual_pod_n2_purge_underflow_beam_quench",
+    };
+  }
+
+  if (filamentCoolDownControlledVentAndLotoLocked) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      euvPellicleReticleCleanApproved: false,
+      h2FilamentAndMfcTrippedOnLeakOrPellicleDp0ms: false,
+      actinicInspectionBeamAndReticleStageQuenched: false,
+      filamentCoolDownControlledVentAndLotoLocked: true,
+      action:
+        "lock_out_filament_or_pellicle_maintenance_until_cooldown_controlled_vent_and_loto",
+      blockedReason:
+        "filament_or_pellicle_maintenance_blocked_without_sub_50c_cooldown_05pas_controlled_vent_and_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    moduleId: input.moduleId,
+    euvPellicleReticleCleanApproved: true,
+    h2FilamentAndMfcTrippedOnLeakOrPellicleDp0ms: false,
+    actinicInspectionBeamAndReticleStageQuenched: false,
+    filamentCoolDownControlledVentAndLotoLocked: false,
+    action: "approve_semiconductor_euv_pellicle_reticle_inspection_and_h2_radical_clean",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8888CongestionControlFeedbackCcfbAndRfc8836RmcatGuardInput {
+  readonly sessionId: string;
+  readonly declaredCcfbNumReportsAndRtsBytes: number;
+  readonly actualRtcpPayloadBytesRemaining: number;
+  readonly forgedArrivalTimeOffsetOrEcnCeManipulationDetected: boolean;
+  readonly ccfbReportRatePerSecond: number;
+  readonly numReportsPerCcfbBlock: number;
+}
+
+export interface WebrtcSipRtpRfc8888CongestionControlFeedbackCcfbAndRfc8836RmcatGuardResult {
+  readonly policyCode: "P348-WEBRTC-SIP-RTP-RFC8888-CONGESTION-CONTROL-FEEDBACK-CCFB-AND-RFC8836-RMCAT-REPORT-BLOCK-NUM-REPORTS-LENGTH-OVERREAD-FORGED-ARRIVAL-TIME-OFFSET-OR-ECN-CE-INFLATION-REJECT-AND-CCFB-REPORT-FLOOD-CLAMP-GUARD";
+  readonly sessionId: string;
+  readonly rfc8888CcfbFeedbackAccepted: boolean;
+  readonly rfc8888CcfbNumReportsLengthOverreadDropped0ms: boolean;
+  readonly forgedAtoSkewOrEcnCeManipulationRejected: boolean;
+  readonly ccfbReportFloodOrBlockOversizeClamped: boolean;
+  readonly action:
+    | "accept_rfc8888_ccfb_congestion_control_feedback"
+    | "drop_rfc8888_ccfb_num_reports_word32_length_overread_in_0ms"
+    | "reject_forged_arrival_time_offset_or_ecn_ce_congestion_manipulation"
+    | "clamp_rfc8888_ccfb_report_flood_and_oversized_metric_block";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8888CongestionControlFeedbackCcfbAndRfc8836RmcatReportBlockNumReportsLengthOverreadForgedArrivalTimeOffsetOrEcnCeInflationRejectAndCcfbReportFloodClampGuard(
+  input: WebrtcSipRtpRfc8888CongestionControlFeedbackCcfbAndRfc8836RmcatGuardInput
+): WebrtcSipRtpRfc8888CongestionControlFeedbackCcfbAndRfc8836RmcatGuardResult {
+  const policyCode =
+    "P348-WEBRTC-SIP-RTP-RFC8888-CONGESTION-CONTROL-FEEDBACK-CCFB-AND-RFC8836-RMCAT-REPORT-BLOCK-NUM-REPORTS-LENGTH-OVERREAD-FORGED-ARRIVAL-TIME-OFFSET-OR-ECN-CE-INFLATION-REJECT-AND-CCFB-REPORT-FLOOD-CLAMP-GUARD" as const;
+
+  const rfc8888CcfbNumReportsLengthOverreadDropped0ms =
+    input.declaredCcfbNumReportsAndRtsBytes > input.actualRtcpPayloadBytesRemaining;
+
+  const forgedAtoSkewOrEcnCeManipulationRejected =
+    input.forgedArrivalTimeOffsetOrEcnCeManipulationDetected;
+
+  const ccfbReportFloodOrBlockOversizeClamped =
+    input.ccfbReportRatePerSecond > 100 ||
+    input.numReportsPerCcfbBlock > 1024;
+
+  if (rfc8888CcfbNumReportsLengthOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8888CcfbFeedbackAccepted: false,
+      rfc8888CcfbNumReportsLengthOverreadDropped0ms: true,
+      forgedAtoSkewOrEcnCeManipulationRejected,
+      ccfbReportFloodOrBlockOversizeClamped,
+      action: "drop_rfc8888_ccfb_num_reports_word32_length_overread_in_0ms",
+      blockedReason:
+        "rfc8888_ccfb_num_reports_16bit_metric_block_word32_overread_0ms_drop",
+    };
+  }
+
+  if (forgedAtoSkewOrEcnCeManipulationRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8888CcfbFeedbackAccepted: false,
+      rfc8888CcfbNumReportsLengthOverreadDropped0ms: false,
+      forgedAtoSkewOrEcnCeManipulationRejected: true,
+      ccfbReportFloodOrBlockOversizeClamped,
+      action:
+        "reject_forged_arrival_time_offset_or_ecn_ce_congestion_manipulation",
+      blockedReason:
+        "rfc8888_forged_arrival_time_offset_or_ecn_ce_rmcat_rate_manipulation_rejected",
+    };
+  }
+
+  if (ccfbReportFloodOrBlockOversizeClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8888CcfbFeedbackAccepted: false,
+      rfc8888CcfbNumReportsLengthOverreadDropped0ms: false,
+      forgedAtoSkewOrEcnCeManipulationRejected: false,
+      ccfbReportFloodOrBlockOversizeClamped: true,
+      action: "clamp_rfc8888_ccfb_report_flood_and_oversized_metric_block",
+      blockedReason:
+        "rfc8888_ccfb_report_rate_exceeded_100_per_sec_or_num_reports_exceeded_1024_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8888CcfbFeedbackAccepted: true,
+    rfc8888CcfbNumReportsLengthOverreadDropped0ms: false,
+    forgedAtoSkewOrEcnCeManipulationRejected: false,
+    ccfbReportFloodOrBlockOversizeClamped: false,
+    action: "accept_rfc8888_ccfb_congestion_control_feedback",
+    blockedReason: "none",
+  };
+}
