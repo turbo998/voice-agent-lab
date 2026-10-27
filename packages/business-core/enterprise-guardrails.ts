@@ -32850,3 +32850,200 @@ export function evaluateWebrtcSipRtpSmpteSt211022JpegXsLowLatencyCompressedVideo
     blockedReason: "none",
   };
 }
+export interface SemiconductorSupercriticalCo2DryerAndVaporHfEtchGuardInput {
+  chamberId: string;
+  scCo2VesselPressureMpa: number;
+  scCo2VesselTempC: number;
+  ambientCo2ConcentrationPpm: number;
+  anhydrousHfLeakConcentrationPpm: number;
+  scCo2ChamberOpenOrSealMaintenanceRequested: boolean;
+  zeroPressureDepressurizationHfPurgeAndCalciumGluconateScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorSupercriticalCo2DryerAndVaporHfEtchGuardDecision {
+  policyCode: "P335-SEMICONDUCTOR-SUPERCRITICAL-CO2-DRYER-SCCO2-AND-VAPOR-HF-ANHYDROUS-ETCH-SCCO2-HF-CH3OH-SEMIS2-SEMIS6-NFPA318-ASME-BPVC-VIII-OSHA19101000-CHAMBER-OVERPRESSURE-BLEVE-RELIEF-TRIP-CO2-ASPHYXIATION-OR-ANHYDROUS-HF-LEAK-QUENCH-AND-DEPRESSURIZATION-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD";
+  chamberId: string;
+  chamberOverpressureOrThermalRunawayTripped0ms: boolean;
+  co2AsphyxiationOrAnhydrousHfLeakQuenched: boolean;
+  zeroPressureAndCalciumGluconateScbaLotoLocked: boolean;
+  scCo2VaporHfProcessApproved: boolean;
+  action:
+    | "approve_semiconductor_scco2_dryer_and_vapor_hf_etch_operation"
+    | "trip_scco2_high_pressure_pump_and_open_scrubber_relief_on_overpressure_in_0ms"
+    | "quench_anhydrous_hf_mfc_and_boost_exhaust_on_co2_asphyxiation_or_hf_leak"
+    | "enforce_zero_pressure_depressurization_and_calcium_gluconate_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorSupercriticalCo2DryerScCo2AndVaporHFAnhydrousEtchScco2HfCh3ohSemiS2SemiS6Nfpa318AsmeBpvcViiiOsha19101000ChamberOverpressureBleveReliefTripCo2AsphyxiationOrAnhydrousHfLeakQuenchAndDepressurizationCalciumGluconateScbaLotoGuard(
+  input: SemiconductorSupercriticalCo2DryerAndVaporHfEtchGuardInput
+): SemiconductorSupercriticalCo2DryerAndVaporHfEtchGuardDecision {
+  const policyCode =
+    "P335-SEMICONDUCTOR-SUPERCRITICAL-CO2-DRYER-SCCO2-AND-VAPOR-HF-ANHYDROUS-ETCH-SCCO2-HF-CH3OH-SEMIS2-SEMIS6-NFPA318-ASME-BPVC-VIII-OSHA19101000-CHAMBER-OVERPRESSURE-BLEVE-RELIEF-TRIP-CO2-ASPHYXIATION-OR-ANHYDROUS-HF-LEAK-QUENCH-AND-DEPRESSURIZATION-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD" as const;
+
+  const chamberOverpressureOrThermalRunawayTripped0ms =
+    input.scCo2VesselPressureMpa > 18.5 || input.scCo2VesselTempC > 85;
+
+  const co2AsphyxiationOrAnhydrousHfLeakQuenched =
+    input.ambientCo2ConcentrationPpm > 5000 ||
+    input.anhydrousHfLeakConcentrationPpm >= 0.5;
+
+  const zeroPressureAndCalciumGluconateScbaLotoLocked =
+    input.scCo2ChamberOpenOrSealMaintenanceRequested &&
+    !input.zeroPressureDepressurizationHfPurgeAndCalciumGluconateScbaLotoVerified;
+
+  if (chamberOverpressureOrThermalRunawayTripped0ms) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      chamberOverpressureOrThermalRunawayTripped0ms: true,
+      co2AsphyxiationOrAnhydrousHfLeakQuenched,
+      zeroPressureAndCalciumGluconateScbaLotoLocked,
+      scCo2VaporHfProcessApproved: false,
+      action:
+        "trip_scco2_high_pressure_pump_and_open_scrubber_relief_on_overpressure_in_0ms",
+      blockedReason:
+        "scco2_vessel_pressure_above_18_5_mpa_or_temperature_above_85_c_asme_bpvc_limit",
+    };
+  }
+
+  if (co2AsphyxiationOrAnhydrousHfLeakQuenched) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      chamberOverpressureOrThermalRunawayTripped0ms: false,
+      co2AsphyxiationOrAnhydrousHfLeakQuenched: true,
+      zeroPressureAndCalciumGluconateScbaLotoLocked,
+      scCo2VaporHfProcessApproved: false,
+      action:
+        "quench_anhydrous_hf_mfc_and_boost_exhaust_on_co2_asphyxiation_or_hf_leak",
+      blockedReason:
+        "ambient_co2_above_5000_ppm_osha_pel_or_anhydrous_hf_leak_above_0_50_ppm",
+    };
+  }
+
+  if (zeroPressureAndCalciumGluconateScbaLotoLocked) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      chamberOverpressureOrThermalRunawayTripped0ms: false,
+      co2AsphyxiationOrAnhydrousHfLeakQuenched: false,
+      zeroPressureAndCalciumGluconateScbaLotoLocked: true,
+      scCo2VaporHfProcessApproved: false,
+      action:
+        "enforce_zero_pressure_depressurization_and_calcium_gluconate_scba_loto",
+      blockedReason:
+        "scco2_zero_pressure_depressurization_hf_purge_and_calcium_gluconate_scba_loto_not_verified",
+    };
+  }
+
+  return {
+    policyCode,
+    chamberId: input.chamberId,
+    chamberOverpressureOrThermalRunawayTripped0ms: false,
+    co2AsphyxiationOrAnhydrousHfLeakQuenched: false,
+    zeroPressureAndCalciumGluconateScbaLotoLocked: false,
+    scCo2VaporHfProcessApproved: true,
+    action: "approve_semiconductor_scco2_dryer_and_vapor_hf_etch_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc9328VvcH266PayloadGuardInput {
+  sessionId: string;
+  declaredVvcApOrFuPayloadBytes: number;
+  actualRtpPayloadBytesRemaining: number;
+  illegalStartAndEndBitBothSetInFuHeader: boolean;
+  subpictureIdLayoutMismatchDetected: boolean;
+  temporalIdExceedsNegotiatedSpropMaxTid: boolean;
+  vvcTilesPlusSlicesPerFrame: number;
+  inBandApsParameterUpdatesPerFrame: number;
+}
+
+export interface WebrtcSipRtpRfc9328VvcH266PayloadGuardDecision {
+  policyCode: "P336-WEBRTC-SIP-RTP-RFC9328-VVC-H266-PAYLOAD-AND-RFC9071-RTT-MULTIPARTY-MIXING-DONL-OPI-OVERREAD-MIXED-NAL-TYPE-COLLISION-SUBPICTURE-ID-HIJACK-AND-SLICE-TILE-BOMB-GUARD";
+  sessionId: string;
+  vvcApFuOverreadOrIllegalFuBitsDropped0ms: boolean;
+  subpictureLayoutHijackOrTidViolationRejected: boolean;
+  tileSlicePartitionOrApsFloodClamped: boolean;
+  rfc9328VvcRtpStreamAccepted: boolean;
+  action:
+    | "accept_rfc9328_vvc_h266_rtp_stream"
+    | "drop_rfc9328_vvc_ap_fu_overread_or_illegal_start_end_fu_bits_in_0ms"
+    | "reject_vvc_subpicture_layout_hijack_or_sprop_max_tid_violation"
+    | "clamp_vvc_tile_slice_partition_or_inband_aps_flood";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc9328VvcH266PayloadAndRfc9071RttMultiPartyMixingDonlOpiOverreadMixedNalTypeCollisionSubpictureIdHijackAndSliceTileBombGuard(
+  input: WebrtcSipRtpRfc9328VvcH266PayloadGuardInput
+): WebrtcSipRtpRfc9328VvcH266PayloadGuardDecision {
+  const policyCode =
+    "P336-WEBRTC-SIP-RTP-RFC9328-VVC-H266-PAYLOAD-AND-RFC9071-RTT-MULTIPARTY-MIXING-DONL-OPI-OVERREAD-MIXED-NAL-TYPE-COLLISION-SUBPICTURE-ID-HIJACK-AND-SLICE-TILE-BOMB-GUARD" as const;
+
+  const vvcApFuOverreadOrIllegalFuBitsDropped0ms =
+    input.declaredVvcApOrFuPayloadBytes > input.actualRtpPayloadBytesRemaining ||
+    input.illegalStartAndEndBitBothSetInFuHeader;
+
+  const subpictureLayoutHijackOrTidViolationRejected =
+    input.subpictureIdLayoutMismatchDetected ||
+    input.temporalIdExceedsNegotiatedSpropMaxTid;
+
+  const tileSlicePartitionOrApsFloodClamped =
+    input.vvcTilesPlusSlicesPerFrame > 128 ||
+    input.inBandApsParameterUpdatesPerFrame > 24;
+
+  if (vvcApFuOverreadOrIllegalFuBitsDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      vvcApFuOverreadOrIllegalFuBitsDropped0ms: true,
+      subpictureLayoutHijackOrTidViolationRejected,
+      tileSlicePartitionOrApsFloodClamped,
+      rfc9328VvcRtpStreamAccepted: false,
+      action:
+        "drop_rfc9328_vvc_ap_fu_overread_or_illegal_start_end_fu_bits_in_0ms",
+      blockedReason:
+        "rfc9328_vvc_ap_fu_length_overread_or_illegal_simultaneous_start_and_end_fu_bits",
+    };
+  }
+
+  if (subpictureLayoutHijackOrTidViolationRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      vvcApFuOverreadOrIllegalFuBitsDropped0ms: false,
+      subpictureLayoutHijackOrTidViolationRejected: true,
+      tileSlicePartitionOrApsFloodClamped,
+      rfc9328VvcRtpStreamAccepted: false,
+      action: "reject_vvc_subpicture_layout_hijack_or_sprop_max_tid_violation",
+      blockedReason:
+        "vvc_subpicture_id_layout_mismatch_or_temporal_id_exceeds_sprop_max_tid",
+    };
+  }
+
+  if (tileSlicePartitionOrApsFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      vvcApFuOverreadOrIllegalFuBitsDropped0ms: false,
+      subpictureLayoutHijackOrTidViolationRejected: false,
+      tileSlicePartitionOrApsFloodClamped: true,
+      rfc9328VvcRtpStreamAccepted: false,
+      action: "clamp_vvc_tile_slice_partition_or_inband_aps_flood",
+      blockedReason:
+        "vvc_tiles_plus_slices_above_128_or_inband_aps_updates_above_24_per_frame",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    vvcApFuOverreadOrIllegalFuBitsDropped0ms: false,
+    subpictureLayoutHijackOrTidViolationRejected: false,
+    tileSlicePartitionOrApsFloodClamped: false,
+    rfc9328VvcRtpStreamAccepted: true,
+    action: "accept_rfc9328_vvc_h266_rtp_stream",
+    blockedReason: "none",
+  };
+}
