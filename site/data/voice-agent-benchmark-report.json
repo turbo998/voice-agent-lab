@@ -1315,6 +1315,12 @@
       "perturbed_pct": 100,
       "delta_pts": 0,
       "note": "P323-SEMICONDUCTOR-PECVD-SACVD-HDPCVD-TEOS-SIH4-PH3-B2H6-DIELECTRIC-AND-REMOTE-NF3-F2-RPS-CHAMBER-CLEAN-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-PYROPHORIC-SIH4-FORELINE-N2-DILUTION-LOSS-TRIP-LIQUID-TEOS-AMPOULE-OVERTEMP-ISOLATION-AND-RPS-FLUORINE-HF-SCBA-LOTO-GUARD trips the SiH4/PH3/B2H6 RFO valves and restores dry-pump N2 ballast dilution in 0ms on cabinet leak >=1.0 ppm or N2 ballast <35.0 SLM, isolates the liquid TEOS ampoule heater and quenches the remote plasma source (RPS) on ampoule >85.0 °C or RPS block >110.0 °C, and locks the PECVD chamber until NF3/F2 fluorine purge and pyrophoric silica powder HF SCBA LOTO are verified; P324-WEBRTC-SIP-RTP-SMPTE-ST2022-8-HYBRID-SDI-TO-ST2110-20-INTERWORKING-TIMING-SRD-LENGTH-OVERREAD-HBRMT-TO-ACTIVE-VIDEO-TROFFSET-DESYNC-AND-UNCOMPRESSED-BURST-FLOOD-GUARD drops SMPTE ST 2022-8 SRD header length overread packets in 0ms, rejects ST 2022-6 HBRMT to ST 2110-20 alignment offsets >20.0 us or unaligned SDP pgroup streams, and clamps >25.0 Gbps gateway egress or >16 pkt CMAX microbursts."
+    },
+    {
+      "question": "169. Semiconductor PVD Magnetron Sputtering (Ti / TiN / Ta / TaN / Cu / Al / W Target Cooling-Water Interlock & Pyrophoric Shield Passivation) (NFPA 318 / SEMI S2 / S6 / NFPA 484 / OSHA 1910.119) & WebRTC / SIP RTP SMPTE ST 2110-24 Standard Definition Video (525i / 625i) over ST 2110-20 Interworking (P325 / P326)",
+      "original": "100.0% (0ms target backing-plate water <12 L/min or >50 mTorr cathode trip + >25 arcs/s or >95C DC/RF/HiPIMS quench + pyrophoric Ti/Ta/Al shield Ar/O2 passivation Class D LOTO)",
+      "reversed": "100.0% (0ms ST 2110-24 SD SRD overread or invalid 525i/625i line drop + interlaced F=0/F=1 field parity or BT.601 colorimetry reject + >50us TBC-to-PTP drift or >400Mbps clamp)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

@@ -31871,9 +31871,203 @@ export function evaluateWebrtcSipRtpSmpteSt20228HybridSdiToSt211020InterworkingT
   };
 }
 
+export interface SemiconductorPhysicalVaporDepositionMagnetronSputteringTiTinTaTanCuAlWAndTargetCoolingWaterInterlockNfpa318SemiS2SemiS6Nfpa484Osha1910119TargetBackingPlateWaterLeakVacuumSteamExplosionTripDcHiPimsArcRunawayQuenchAndPyrophoricTiTaShieldFlakeArPassivationLotoGuardInput {
+  chamberId: string;
+  targetBackingPlateWaterFlowLpm: number;
+  sputterChamberPressureMtorr: number;
+  cathodeMicroArcRatePerSecond: number;
+  targetBackingPlateTempC: number;
+  pvdShieldOrCollimatorChangeRequested: boolean;
+  pyrophoricTiTaAlShieldFlakePassivationAndClassDLotoVerified: boolean;
+}
 
+export interface SemiconductorPhysicalVaporDepositionMagnetronSputteringTiTinTaTanCuAlWAndTargetCoolingWaterInterlockNfpa318SemiS2SemiS6Nfpa484Osha1910119TargetBackingPlateWaterLeakVacuumSteamExplosionTripDcHiPimsArcRunawayQuenchAndPyrophoricTiTaShieldFlakeArPassivationLotoGuardDecision {
+  policyCode: "P325-SEMICONDUCTOR-PVD-MAGNETRON-SPUTTERING-TI-TIN-TA-TAN-CU-AL-W-AND-TARGET-COOLING-WATER-INTERLOCK-NFPA318-SEMIS2-SEMIS6-NFPA484-OSHA1910119-TARGET-BACKING-PLATE-WATER-LEAK-VACUUM-STEAM-EXPLOSION-TRIP-DC-HIPIMS-ARC-RUNAWAY-QUENCH-AND-PYROPHORIC-TI-TA-SHIELD-FLAKE-AR-PASSIVATION-LOTO-GUARD";
+  chamberId: string;
+  backingPlateWaterLossOrVacuumLeakTripped0ms: boolean;
+  cathodeArcRunawayOrBackingPlateOvertempQuenched: boolean;
+  pyrophoricTiTaShieldFlakePassivationClassDLotoLocked: boolean;
+  pvdMagnetronSputteringProcessApproved: boolean;
+  action:
+    | "approve_semiconductor_pvd_magnetron_sputtering_operation"
+    | "trip_pvd_magnetron_cathode_power_and_isolate_backing_plate_water_in_0ms"
+    | "quench_pvd_dc_rf_hipims_power_supply_and_isolate_sputter_chamber"
+    | "lock_pvd_chamber_hoist_and_require_ti_ta_shield_passivation_and_class_d_loto";
+  blockedReason: string;
+}
 
+export function evaluateSemiconductorPhysicalVaporDepositionMagnetronSputteringTiTinTaTanCuAlWAndTargetCoolingWaterInterlockNfpa318SemiS2SemiS6Nfpa484Osha1910119TargetBackingPlateWaterLeakVacuumSteamExplosionTripDcHiPimsArcRunawayQuenchAndPyrophoricTiTaShieldFlakeArPassivationLotoGuard(
+  input: SemiconductorPhysicalVaporDepositionMagnetronSputteringTiTinTaTanCuAlWAndTargetCoolingWaterInterlockNfpa318SemiS2SemiS6Nfpa484Osha1910119TargetBackingPlateWaterLeakVacuumSteamExplosionTripDcHiPimsArcRunawayQuenchAndPyrophoricTiTaShieldFlakeArPassivationLotoGuardInput
+): SemiconductorPhysicalVaporDepositionMagnetronSputteringTiTinTaTanCuAlWAndTargetCoolingWaterInterlockNfpa318SemiS2SemiS6Nfpa484Osha1910119TargetBackingPlateWaterLeakVacuumSteamExplosionTripDcHiPimsArcRunawayQuenchAndPyrophoricTiTaShieldFlakeArPassivationLotoGuardDecision {
+  const policyCode =
+    "P325-SEMICONDUCTOR-PVD-MAGNETRON-SPUTTERING-TI-TIN-TA-TAN-CU-AL-W-AND-TARGET-COOLING-WATER-INTERLOCK-NFPA318-SEMIS2-SEMIS6-NFPA484-OSHA1910119-TARGET-BACKING-PLATE-WATER-LEAK-VACUUM-STEAM-EXPLOSION-TRIP-DC-HIPIMS-ARC-RUNAWAY-QUENCH-AND-PYROPHORIC-TI-TA-SHIELD-FLAKE-AR-PASSIVATION-LOTO-GUARD" as const;
 
+  const backingPlateWaterLossOrVacuumLeakTripped0ms =
+    input.targetBackingPlateWaterFlowLpm < 12.0 ||
+    input.sputterChamberPressureMtorr > 50.0;
 
+  const cathodeArcRunawayOrBackingPlateOvertempQuenched =
+    input.cathodeMicroArcRatePerSecond > 25 ||
+    input.targetBackingPlateTempC > 95.0;
 
+  const pyrophoricTiTaShieldFlakePassivationClassDLotoLocked =
+    input.pvdShieldOrCollimatorChangeRequested &&
+    !input.pyrophoricTiTaAlShieldFlakePassivationAndClassDLotoVerified;
 
+  if (backingPlateWaterLossOrVacuumLeakTripped0ms) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      backingPlateWaterLossOrVacuumLeakTripped0ms: true,
+      cathodeArcRunawayOrBackingPlateOvertempQuenched,
+      pyrophoricTiTaShieldFlakePassivationClassDLotoLocked,
+      pvdMagnetronSputteringProcessApproved: false,
+      action:
+        "trip_pvd_magnetron_cathode_power_and_isolate_backing_plate_water_in_0ms",
+      blockedReason:
+        "NFPA_318_SEMI_S2_PVD_TARGET_BACKING_PLATE_COOLING_WATER_LOSS_OR_VACUUM_WATER_LEAK_STEAM_EXPLOSION_RISK_TRIPPED_0MS",
+    };
+  }
+
+  if (cathodeArcRunawayOrBackingPlateOvertempQuenched) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      backingPlateWaterLossOrVacuumLeakTripped0ms: false,
+      cathodeArcRunawayOrBackingPlateOvertempQuenched: true,
+      pyrophoricTiTaShieldFlakePassivationClassDLotoLocked,
+      pvdMagnetronSputteringProcessApproved: false,
+      action: "quench_pvd_dc_rf_hipims_power_supply_and_isolate_sputter_chamber",
+      blockedReason:
+        "SEMI_S2_PVD_DC_HIPIMS_CATHODE_MICRO_ARC_RUNAWAY_OR_BACKING_PLATE_95C_OVERTEMP_QUENCHED",
+    };
+  }
+
+  if (pyrophoricTiTaShieldFlakePassivationClassDLotoLocked) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      backingPlateWaterLossOrVacuumLeakTripped0ms: false,
+      cathodeArcRunawayOrBackingPlateOvertempQuenched: false,
+      pyrophoricTiTaShieldFlakePassivationClassDLotoLocked: true,
+      pvdMagnetronSputteringProcessApproved: false,
+      action:
+        "lock_pvd_chamber_hoist_and_require_ti_ta_shield_passivation_and_class_d_loto",
+      blockedReason:
+        "NFPA_484_SEMI_S6_PYROPHORIC_TI_TA_AL_SHIELD_FLAKE_AR_O2_PASSIVATION_AND_CLASS_D_LOTO_REQUIRED",
+    };
+  }
+
+  return {
+    policyCode,
+    chamberId: input.chamberId,
+    backingPlateWaterLossOrVacuumLeakTripped0ms: false,
+    cathodeArcRunawayOrBackingPlateOvertempQuenched: false,
+    pyrophoricTiTaShieldFlakePassivationClassDLotoLocked: false,
+    pvdMagnetronSputteringProcessApproved: true,
+    action: "approve_semiconductor_pvd_magnetron_sputtering_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211024StandardDefinitionVideoOverSt211020Interworking525i625iFieldParityDesyncRec601ToRec709ColorimetryMismatchAndLegacySdiGatewayJitterFloodGuardInput {
+  sessionId: string;
+  srdDeclaredPayloadBytes: number;
+  actualRtpPayloadBytesRemaining: number;
+  srdLineNumberOutOf525i625iActiveBounds: boolean;
+  interlacedFieldParityAlternationValid: boolean;
+  bt601ColorimetrySignaledAndCscMatrixApplied: boolean;
+  sdiTbcToPtpTimingOffsetMicroseconds: number;
+  sdGatewayEgressBitrateMbps: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211024StandardDefinitionVideoOverSt211020Interworking525i625iFieldParityDesyncRec601ToRec709ColorimetryMismatchAndLegacySdiGatewayJitterFloodGuardDecision {
+  policyCode: "P326-WEBRTC-SIP-RTP-SMPTE-ST2110-24-STANDARD-DEFINITION-VIDEO-OVER-ST2110-20-INTERWORKING-525I-625I-FIELD-PARITY-DESYNC-REC601-TO-REC709-COLORIMETRY-MISMATCH-AND-LEGACY-SDI-GATEWAY-JITTER-FLOOD-GUARD";
+  sessionId: string;
+  sdSrdOverreadOrInvalidLineNumberDropped0ms: boolean;
+  interlacedFieldParityOrBt601ColorimetryRejected: boolean;
+  sdiTbcPtpDriftOrGatewayFloodClamped: boolean;
+  st211024StandardDefinitionVideoStreamAccepted: boolean;
+  action:
+    | "accept_smpte_st2110_24_standard_definition_video_stream"
+    | "drop_st2110_24_sd_srd_overread_or_invalid_line_number_packet_in_0ms"
+    | "reject_st2110_24_interlaced_field_parity_desync_or_bt601_colorimetry_mismatch"
+    | "clamp_st2110_24_sd_gateway_egress_flood_or_resync_tbc_ptp_clock";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211024StandardDefinitionVideoOverSt211020Interworking525i625iFieldParityDesyncRec601ToRec709ColorimetryMismatchAndLegacySdiGatewayJitterFloodGuard(
+  input: WebrtcSipRtpSmpteSt211024StandardDefinitionVideoOverSt211020Interworking525i625iFieldParityDesyncRec601ToRec709ColorimetryMismatchAndLegacySdiGatewayJitterFloodGuardInput
+): WebrtcSipRtpSmpteSt211024StandardDefinitionVideoOverSt211020Interworking525i625iFieldParityDesyncRec601ToRec709ColorimetryMismatchAndLegacySdiGatewayJitterFloodGuardDecision {
+  const policyCode =
+    "P326-WEBRTC-SIP-RTP-SMPTE-ST2110-24-STANDARD-DEFINITION-VIDEO-OVER-ST2110-20-INTERWORKING-525I-625I-FIELD-PARITY-DESYNC-REC601-TO-REC709-COLORIMETRY-MISMATCH-AND-LEGACY-SDI-GATEWAY-JITTER-FLOOD-GUARD" as const;
+
+  const sdSrdOverreadOrInvalidLineNumberDropped0ms =
+    input.srdDeclaredPayloadBytes <= 0 ||
+    input.srdDeclaredPayloadBytes > input.actualRtpPayloadBytesRemaining ||
+    input.srdLineNumberOutOf525i625iActiveBounds;
+
+  const interlacedFieldParityOrBt601ColorimetryRejected =
+    !input.interlacedFieldParityAlternationValid ||
+    !input.bt601ColorimetrySignaledAndCscMatrixApplied;
+
+  const sdiTbcPtpDriftOrGatewayFloodClamped =
+    Math.abs(input.sdiTbcToPtpTimingOffsetMicroseconds) > 50.0 ||
+    input.sdGatewayEgressBitrateMbps > 400.0;
+
+  if (sdSrdOverreadOrInvalidLineNumberDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      sdSrdOverreadOrInvalidLineNumberDropped0ms: true,
+      interlacedFieldParityOrBt601ColorimetryRejected,
+      sdiTbcPtpDriftOrGatewayFloodClamped,
+      st211024StandardDefinitionVideoStreamAccepted: false,
+      action:
+        "drop_st2110_24_sd_srd_overread_or_invalid_line_number_packet_in_0ms",
+      blockedReason:
+        "SMPTE_ST2110_24_SD_SRD_HEADER_LENGTH_OVERREAD_OR_OUT_OF_BOUNDS_525I_625I_LINE_NUMBER_DROPPED_0MS",
+    };
+  }
+
+  if (interlacedFieldParityOrBt601ColorimetryRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      sdSrdOverreadOrInvalidLineNumberDropped0ms: false,
+      interlacedFieldParityOrBt601ColorimetryRejected: true,
+      sdiTbcPtpDriftOrGatewayFloodClamped,
+      st211024StandardDefinitionVideoStreamAccepted: false,
+      action:
+        "reject_st2110_24_interlaced_field_parity_desync_or_bt601_colorimetry_mismatch",
+      blockedReason:
+        "SMPTE_ST2110_24_INTERLACED_FIELD_PARITY_ALTERNATION_DESYNC_OR_UNSIGNALED_BT601_COLORIMETRY_REJECTED",
+    };
+  }
+
+  if (sdiTbcPtpDriftOrGatewayFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      sdSrdOverreadOrInvalidLineNumberDropped0ms: false,
+      interlacedFieldParityOrBt601ColorimetryRejected: false,
+      sdiTbcPtpDriftOrGatewayFloodClamped: true,
+      st211024StandardDefinitionVideoStreamAccepted: false,
+      action:
+        "clamp_st2110_24_sd_gateway_egress_flood_or_resync_tbc_ptp_clock",
+      blockedReason:
+        "SMPTE_ST2110_24_SDI_TBC_TO_PTP_50US_CLOCK_DRIFT_OR_400MBPS_SD_GATEWAY_FLOOD_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    sdSrdOverreadOrInvalidLineNumberDropped0ms: false,
+    interlacedFieldParityOrBt601ColorimetryRejected: false,
+    sdiTbcPtpDriftOrGatewayFloodClamped: false,
+    st211024StandardDefinitionVideoStreamAccepted: true,
+    action: "accept_smpte_st2110_24_standard_definition_video_stream",
+    blockedReason: "none",
+  };
+}
