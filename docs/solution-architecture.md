@@ -2610,5 +2610,20 @@ flowchart LR
   2. **禁用 `DID/SDID`、`UDW` 校验失配与未授权 `SCTE-104` 插播拒绝**：当 `didSdidCodePair === "FORBIDDEN_DEL_CONTROL_DID"`、`!udwParityOrChecksumValid` 或 `unauthorizedScte104SpliceInsertAdTriggerInjected` 时，触发 `reject_forbidden_did_sdid_bad_udw_checksum_or_unauthorized_scte104_splice`（阻断原因：`SMPTE_ST291_FORBIDDEN_DID_SDID_UDW_CHECKSUM_MISMATCH_OR_UNAUTHORIZED_SCTE104_SPLICE_REJECTED`）。
   3. **单帧辅助数据包突发与码率洪泛钳制**：当 `ancPacketsPerFrameCount > 32` 或 `ancPayloadBitrateKbps > 2048` 时，触发 `clamp_st2110_40_anc_packet_burst_or_caption_bitrate_flood`（阻断原因：`SMPTE_ST2110_40_ANC_PACKETS_PER_FRAME_OR_BITRATE_FLOOD_CLAMPED`）。
 
+### 4.172 半导体离子注入机 (`Ion Implantation`) 剧毒氢化物掺杂气箱 (`AsH3 / PH3 / BF3` `SDS` 亚大气压气瓶)、高压加速管韧致辐射 X 射线屏蔽与离子源腔室砷/磷原位 `SF6` 等离子清洗安全守卫 (`P311-SEMICONDUCTOR-ION-IMPLANTATION-ASH3-PH3-BF3-SDS-GAS-BOX-HIGH-VOLTAGE-BREMSSTRAHLUNG-XRAY-AND-SOURCE-CHAMBER-LOTO-NFPA318-SEMIS2-SEMIS6-OSHA19101018-OSHA19101096-HYDRIDE-LEAK-VIPER-ISOLATION-XRAY-BEAM-DUMP-AND-ARSENIC-PHOSPHORUS-SCBA-LOTO-GUARD`)
+- **工业物理与化学风险**：300 mm 晶圆厂离子注入机气箱使用极具溶血毒性的砷化氢 (`AsH3`，PEL `0.05 ppm`)、自燃剧毒磷化氢 (`PH3`，PEL `0.3 ppm`) 与腐蚀性三氟化硼 (`BF3`) 亚大气压气瓶 (`SDS`)；同时高压引出电极产生次级电子韧致辐射 X 射线 (`Bremsstrahlung X-Ray`)，且离子源弧室内壁沉积剧毒固态砷与自燃白磷残留。
+- **确定性护栏动作 (`evaluateSemiconductorIonImplantationAsh3Ph3Bf3SdsGasBoxHighVoltageBremsstrahlungXrayAndSourceChamberLotoNfpa318SemiS2SemiS6Osha19101018Osha19101096HydrideLeakViperIsolationXrayBeamDumpAndArsenicPhosphorusScbaLotoGuard`)**：
+  1. **0ms `AsH3 / PH3` 泄漏或 `SDS` 负压失效 `VIPER` 阀切断**：当 `arsineConcentrationPpm >= 0.05`、`phosphineConcentrationPpm >= 0.3` 或 `sdsSubAtmosphericGasCylinderPressureKpaGauge > -10.0` 时，0ms 触发 `trip_sds_viper_isolation_valve_abort_implant_beam_and_route_hydride_to_dry_scrubber_in_0ms`（阻断原因：`SEMI_S2_ION_IMPLANT_ASH3_0_05PPM_PH3_0_3PPM_OR_SDS_SUBATMOSPHERIC_LOSS_VIPER_TRIPPED_0MS`）。
+  2. **高压引出笼门联锁断开或韧致辐射 X 射线 `> 0.5 uSv/h` 撬棒接地闭束**：当 `extractionHighVoltageEnclosureDoorInterlockOpen` 或 `cabinetExteriorBremsstrahlungXrayDoseRateMicroSvPerHour > 0.5` 时，触发 `crowbar_extraction_high_voltage_close_faraday_beam_dump_and_interlock_lead_enclosure`（阻断原因：`OSHA_1910_1096_SEMIS2_BREMSSTRAHLUNG_XRAY_0_5USVH_OR_HV_CAGE_INTERLOCK_CROWBARRED`）。
+  3. **离子源弧室砷/磷残留原位 `SF6` 清洗与正压 `SCBA LOTO` 锁闭**：当 `ionSourceArcChamberArsenicPhosphorusMaintenanceRequested` 且 `!inSituSf6PlasmaCleanBeadBlastExhaustAndSuppliedAirScbaLotoVerified` 时，触发 `lock_ion_source_housing_and_require_sf6_plasma_clean_hepa_exhaust_and_scba_loto`（阻断原因：`OSHA_1910_1018_ION_SOURCE_ARSENIC_PHOSPHORUS_OXIDE_RESIDUE_SCBA_LOTO_LOCKED`）。
+
+### 4.173 WebRTC & SIP RTP `SMPTE ST 2110-22 / RFC 9134` `JPEG XS` 浅压缩低延迟视频流安全守卫 (`P312-WEBRTC-SIP-RTP-SMPTE-ST2110-22-RFC9134-JPEG-XS-LOW-LATENCY-COMPRESSED-VIDEO-PAYLOAD-HEADER-OVERREAD-K-BIT-SLICE-ORDER-DESYNC-AND-SUBFRAME-BUDGET-FLOOD-GUARD`)
+- **实时媒体协议越界与解码流水线风险**：`SMPTE ST 2110-22 / RFC 9134` 传输亚毫秒级 `ISO/IEC 21122 JPEG XS` 浅压缩视频流。若载荷/包头字节越界、篡改 `T/K` 传输与分包模式标志位、发送非单调切片计数器或发起 `> 450 MB/s` CBR 与单子帧 `> 1080` 切片洪泛，将导致小波行缓冲失步或 FPGA/GPU 解码器拥塞。
+- **确定性护栏动作 (`evaluateWebrtcSipRtpSmpteSt211022Rfc9134JpegXsLowLatencyCompressedVideoPayloadHeaderOverreadKBitSliceOrderDesyncAndSubframeBudgetFloodGuard`)**：
+  1. **0ms `JPEG XS` 载荷与包头越界丢弃**：当 `jpegXsPayloadAndHeaderWordBytes < 4` 或 `jpegXsPayloadAndHeaderWordBytes > actualPayloadBytesRemaining` 时，0ms 触发 `drop_st2110_22_rfc9134_jpeg_xs_header_or_slice_payload_overread_in_0ms`（阻断原因：`RFC_9134_ST2110_22_JPEG_XS_HEADER_OR_SLICE_PAYLOAD_OVERREAD_DROPPED_0MS`）。
+  2. **非法 `T/K` 模式或切片计数器乱序失步拒绝**：当 `!transmissionModeTBitValid`、`!packetizationModeKBitValid` 或 `!sliceOrCodestreamPacketCounterMonotonic` 时，触发 `reject_invalid_jpeg_xs_t_k_mode_or_out_of_order_slice_counter_and_send_rtcp_pli`（阻断原因：`RFC_9134_JPEG_XS_INVALID_T_K_MODE_OR_SLICE_PACKET_COUNTER_DESYNC_REJECTED`）。
+  3. **`ST 2110-22 CBR` 码率与子帧切片洪泛钳制**：当 `declaredBppCompressionRatioMbPerSec > 450` 或 `slicesPerSubframeCount > 1080` 时，触发 `clamp_st2110_22_jpeg_xs_cbr_bitrate_or_subframe_slice_flood`（阻断原因：`SMPTE_ST2110_22_JPEG_XS_CBR_BITRATE_OR_SUBFRAME_SLICE_FLOOD_CLAMPED`）。
+
+
 
 

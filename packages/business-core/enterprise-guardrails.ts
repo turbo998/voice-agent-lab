@@ -30387,3 +30387,220 @@ export function evaluateWebrtcSipRtpSmpteSt211040Rfc8331AncillaryDataAncCountDcU
   };
 }
 
+// ============================================================================
+// Stage 159: P311 Semiconductor Ion Implantation (AsH3 / PH3 / BF3 SDS Sub-Atmospheric Gas, High-Voltage Bremsstrahlung X-Ray & Source Chamber LOTO) & P312 WebRTC/SIP RTP SMPTE ST 2110-22 / RFC 9134 JPEG XS Low-Latency Compressed Video Transport Guards
+// ============================================================================
+
+export interface SemiconductorIonImplantationAsh3Ph3Bf3SdsGasBoxHighVoltageBremsstrahlungXrayAndSourceChamberLotoNfpa318SemiS2SemiS6Osha19101018Osha19101096HydrideLeakViperIsolationXrayBeamDumpAndArsenicPhosphorusScbaLotoGuardInput {
+  readonly implanterId: string;
+  readonly arsineConcentrationPpm: number;
+  readonly phosphineConcentrationPpm: number;
+  readonly sdsSubAtmosphericGasCylinderPressureKpaGauge: number;
+  readonly extractionHighVoltageEnclosureDoorInterlockOpen: boolean;
+  readonly cabinetExteriorBremsstrahlungXrayDoseRateMicroSvPerHour: number;
+  readonly ionSourceArcChamberArsenicPhosphorusMaintenanceRequested: boolean;
+  readonly inSituSf6PlasmaCleanBeadBlastExhaustAndSuppliedAirScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorIonImplantationAsh3Ph3Bf3SdsGasBoxHighVoltageBremsstrahlungXrayAndSourceChamberLotoNfpa318SemiS2SemiS6Osha19101018Osha19101096HydrideLeakViperIsolationXrayBeamDumpAndArsenicPhosphorusScbaLotoGuardAssessment {
+  readonly policyCode: "P311-SEMICONDUCTOR-ION-IMPLANTATION-ASH3-PH3-BF3-SDS-GAS-BOX-HIGH-VOLTAGE-BREMSSTRAHLUNG-XRAY-AND-SOURCE-CHAMBER-LOTO-NFPA318-SEMIS2-SEMIS6-OSHA19101018-OSHA19101096-HYDRIDE-LEAK-VIPER-ISOLATION-XRAY-BEAM-DUMP-AND-ARSENIC-PHOSPHORUS-SCBA-LOTO-GUARD";
+  readonly implanterId: string;
+  readonly hydrideGasLeakOrSubAtmosphericLossViperTripped0ms: boolean;
+  readonly bremsstrahlungXrayRadiationOrHighVoltageBeamDumped: boolean;
+  readonly ionSourceChamberArsenicPhosphorusMaintenanceLocked: boolean;
+  readonly ionImplantationOperationApproved: boolean;
+  readonly action:
+    | "trip_sds_viper_isolation_valve_abort_implant_beam_and_route_hydride_to_dry_scrubber_in_0ms"
+    | "crowbar_extraction_high_voltage_close_faraday_beam_dump_and_interlock_lead_enclosure"
+    | "lock_ion_source_housing_and_require_sf6_plasma_clean_hepa_exhaust_and_scba_loto"
+    | "approve_semiconductor_ion_implantation_and_sds_dopant_operation";
+  readonly blockedReason:
+    | "SEMI_S2_ION_IMPLANT_ASH3_0_05PPM_PH3_0_3PPM_OR_SDS_SUBATMOSPHERIC_LOSS_VIPER_TRIPPED_0MS"
+    | "OSHA_1910_1096_SEMIS2_BREMSSTRAHLUNG_XRAY_0_5USVH_OR_HV_CAGE_INTERLOCK_CROWBARRED"
+    | "OSHA_1910_1018_ION_SOURCE_ARSENIC_PHOSPHORUS_OXIDE_RESIDUE_SCBA_LOTO_LOCKED"
+    | "none";
+}
+
+export function evaluateSemiconductorIonImplantationAsh3Ph3Bf3SdsGasBoxHighVoltageBremsstrahlungXrayAndSourceChamberLotoNfpa318SemiS2SemiS6Osha19101018Osha19101096HydrideLeakViperIsolationXrayBeamDumpAndArsenicPhosphorusScbaLotoGuard(
+  input: SemiconductorIonImplantationAsh3Ph3Bf3SdsGasBoxHighVoltageBremsstrahlungXrayAndSourceChamberLotoNfpa318SemiS2SemiS6Osha19101018Osha19101096HydrideLeakViperIsolationXrayBeamDumpAndArsenicPhosphorusScbaLotoGuardInput
+): SemiconductorIonImplantationAsh3Ph3Bf3SdsGasBoxHighVoltageBremsstrahlungXrayAndSourceChamberLotoNfpa318SemiS2SemiS6Osha19101018Osha19101096HydrideLeakViperIsolationXrayBeamDumpAndArsenicPhosphorusScbaLotoGuardAssessment {
+  const policyCode =
+    "P311-SEMICONDUCTOR-ION-IMPLANTATION-ASH3-PH3-BF3-SDS-GAS-BOX-HIGH-VOLTAGE-BREMSSTRAHLUNG-XRAY-AND-SOURCE-CHAMBER-LOTO-NFPA318-SEMIS2-SEMIS6-OSHA19101018-OSHA19101096-HYDRIDE-LEAK-VIPER-ISOLATION-XRAY-BEAM-DUMP-AND-ARSENIC-PHOSPHORUS-SCBA-LOTO-GUARD" as const;
+
+  const hydrideGasLeakOrSubAtmosphericLossViperTripped0ms =
+    input.arsineConcentrationPpm >= 0.05 ||
+    input.phosphineConcentrationPpm >= 0.3 ||
+    input.sdsSubAtmosphericGasCylinderPressureKpaGauge > -10.0;
+
+  if (hydrideGasLeakOrSubAtmosphericLossViperTripped0ms) {
+    return {
+      policyCode,
+      implanterId: input.implanterId,
+      hydrideGasLeakOrSubAtmosphericLossViperTripped0ms: true,
+      bremsstrahlungXrayRadiationOrHighVoltageBeamDumped: false,
+      ionSourceChamberArsenicPhosphorusMaintenanceLocked: false,
+      ionImplantationOperationApproved: false,
+      action:
+        "trip_sds_viper_isolation_valve_abort_implant_beam_and_route_hydride_to_dry_scrubber_in_0ms",
+      blockedReason:
+        "SEMI_S2_ION_IMPLANT_ASH3_0_05PPM_PH3_0_3PPM_OR_SDS_SUBATMOSPHERIC_LOSS_VIPER_TRIPPED_0MS",
+    };
+  }
+
+  const bremsstrahlungXrayRadiationOrHighVoltageBeamDumped =
+    input.extractionHighVoltageEnclosureDoorInterlockOpen ||
+    input.cabinetExteriorBremsstrahlungXrayDoseRateMicroSvPerHour > 0.5;
+
+  if (bremsstrahlungXrayRadiationOrHighVoltageBeamDumped) {
+    return {
+      policyCode,
+      implanterId: input.implanterId,
+      hydrideGasLeakOrSubAtmosphericLossViperTripped0ms: false,
+      bremsstrahlungXrayRadiationOrHighVoltageBeamDumped: true,
+      ionSourceChamberArsenicPhosphorusMaintenanceLocked: false,
+      ionImplantationOperationApproved: false,
+      action:
+        "crowbar_extraction_high_voltage_close_faraday_beam_dump_and_interlock_lead_enclosure",
+      blockedReason:
+        "OSHA_1910_1096_SEMIS2_BREMSSTRAHLUNG_XRAY_0_5USVH_OR_HV_CAGE_INTERLOCK_CROWBARRED",
+    };
+  }
+
+  const ionSourceChamberArsenicPhosphorusMaintenanceLocked =
+    input.ionSourceArcChamberArsenicPhosphorusMaintenanceRequested &&
+    !input.inSituSf6PlasmaCleanBeadBlastExhaustAndSuppliedAirScbaLotoVerified;
+
+  if (ionSourceChamberArsenicPhosphorusMaintenanceLocked) {
+    return {
+      policyCode,
+      implanterId: input.implanterId,
+      hydrideGasLeakOrSubAtmosphericLossViperTripped0ms: false,
+      bremsstrahlungXrayRadiationOrHighVoltageBeamDumped: false,
+      ionSourceChamberArsenicPhosphorusMaintenanceLocked: true,
+      ionImplantationOperationApproved: false,
+      action:
+        "lock_ion_source_housing_and_require_sf6_plasma_clean_hepa_exhaust_and_scba_loto",
+      blockedReason:
+        "OSHA_1910_1018_ION_SOURCE_ARSENIC_PHOSPHORUS_OXIDE_RESIDUE_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    implanterId: input.implanterId,
+    hydrideGasLeakOrSubAtmosphericLossViperTripped0ms: false,
+    bremsstrahlungXrayRadiationOrHighVoltageBeamDumped: false,
+    ionSourceChamberArsenicPhosphorusMaintenanceLocked: false,
+    ionImplantationOperationApproved: true,
+    action: "approve_semiconductor_ion_implantation_and_sds_dopant_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211022Rfc9134JpegXsLowLatencyCompressedVideoPayloadHeaderOverreadKBitSliceOrderDesyncAndSubframeBudgetFloodGuardInput {
+  readonly sessionId: string;
+  readonly jpegXsPayloadAndHeaderWordBytes: number;
+  readonly actualPayloadBytesRemaining: number;
+  readonly transmissionModeTBitValid: boolean;
+  readonly packetizationModeKBitValid: boolean;
+  readonly sliceOrCodestreamPacketCounterMonotonic: boolean;
+  readonly declaredBppCompressionRatioMbPerSec: number;
+  readonly slicesPerSubframeCount: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211022Rfc9134JpegXsLowLatencyCompressedVideoPayloadHeaderOverreadKBitSliceOrderDesyncAndSubframeBudgetFloodGuardAssessment {
+  readonly policyCode: "P312-WEBRTC-SIP-RTP-SMPTE-ST2110-22-RFC9134-JPEG-XS-LOW-LATENCY-COMPRESSED-VIDEO-PAYLOAD-HEADER-OVERREAD-K-BIT-SLICE-ORDER-DESYNC-AND-SUBFRAME-BUDGET-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly jpegXsPayloadHeaderOrSliceOverreadDropped0ms: boolean;
+  readonly invalidTBitKBitOrNonMonotonicSliceCounterRejected: boolean;
+  readonly excessiveBppBitrateOrSubframeSliceFloodClamped: boolean;
+  readonly st211022JpegXsStreamAccepted: boolean;
+  readonly action:
+    | "drop_st2110_22_rfc9134_jpeg_xs_header_or_slice_payload_overread_in_0ms"
+    | "reject_invalid_jpeg_xs_t_k_mode_or_out_of_order_slice_counter_and_send_rtcp_pli"
+    | "clamp_st2110_22_jpeg_xs_cbr_bitrate_or_subframe_slice_flood"
+    | "accept_smpte_st2110_22_rfc9134_jpeg_xs_low_latency_video_rtp_stream";
+  readonly blockedReason:
+    | "RFC_9134_ST2110_22_JPEG_XS_HEADER_OR_SLICE_PAYLOAD_OVERREAD_DROPPED_0MS"
+    | "RFC_9134_JPEG_XS_INVALID_T_K_MODE_OR_SLICE_PACKET_COUNTER_DESYNC_REJECTED"
+    | "SMPTE_ST2110_22_JPEG_XS_CBR_BITRATE_OR_SUBFRAME_SLICE_FLOOD_CLAMPED"
+    | "none";
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211022Rfc9134JpegXsLowLatencyCompressedVideoPayloadHeaderOverreadKBitSliceOrderDesyncAndSubframeBudgetFloodGuard(
+  input: WebrtcSipRtpSmpteSt211022Rfc9134JpegXsLowLatencyCompressedVideoPayloadHeaderOverreadKBitSliceOrderDesyncAndSubframeBudgetFloodGuardInput
+): WebrtcSipRtpSmpteSt211022Rfc9134JpegXsLowLatencyCompressedVideoPayloadHeaderOverreadKBitSliceOrderDesyncAndSubframeBudgetFloodGuardAssessment {
+  const policyCode =
+    "P312-WEBRTC-SIP-RTP-SMPTE-ST2110-22-RFC9134-JPEG-XS-LOW-LATENCY-COMPRESSED-VIDEO-PAYLOAD-HEADER-OVERREAD-K-BIT-SLICE-ORDER-DESYNC-AND-SUBFRAME-BUDGET-FLOOD-GUARD" as const;
+
+  const jpegXsPayloadHeaderOrSliceOverreadDropped0ms =
+    input.jpegXsPayloadAndHeaderWordBytes < 4 ||
+    input.jpegXsPayloadAndHeaderWordBytes > input.actualPayloadBytesRemaining;
+
+  if (jpegXsPayloadHeaderOrSliceOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      jpegXsPayloadHeaderOrSliceOverreadDropped0ms: true,
+      invalidTBitKBitOrNonMonotonicSliceCounterRejected: false,
+      excessiveBppBitrateOrSubframeSliceFloodClamped: false,
+      st211022JpegXsStreamAccepted: false,
+      action:
+        "drop_st2110_22_rfc9134_jpeg_xs_header_or_slice_payload_overread_in_0ms",
+      blockedReason:
+        "RFC_9134_ST2110_22_JPEG_XS_HEADER_OR_SLICE_PAYLOAD_OVERREAD_DROPPED_0MS",
+    };
+  }
+
+  const invalidTBitKBitOrNonMonotonicSliceCounterRejected =
+    !input.transmissionModeTBitValid ||
+    !input.packetizationModeKBitValid ||
+    !input.sliceOrCodestreamPacketCounterMonotonic;
+
+  if (invalidTBitKBitOrNonMonotonicSliceCounterRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      jpegXsPayloadHeaderOrSliceOverreadDropped0ms: false,
+      invalidTBitKBitOrNonMonotonicSliceCounterRejected: true,
+      excessiveBppBitrateOrSubframeSliceFloodClamped: false,
+      st211022JpegXsStreamAccepted: false,
+      action:
+        "reject_invalid_jpeg_xs_t_k_mode_or_out_of_order_slice_counter_and_send_rtcp_pli",
+      blockedReason:
+        "RFC_9134_JPEG_XS_INVALID_T_K_MODE_OR_SLICE_PACKET_COUNTER_DESYNC_REJECTED",
+    };
+  }
+
+  const excessiveBppBitrateOrSubframeSliceFloodClamped =
+    input.declaredBppCompressionRatioMbPerSec > 450 ||
+    input.slicesPerSubframeCount > 1080;
+
+  if (excessiveBppBitrateOrSubframeSliceFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      jpegXsPayloadHeaderOrSliceOverreadDropped0ms: false,
+      invalidTBitKBitOrNonMonotonicSliceCounterRejected: false,
+      excessiveBppBitrateOrSubframeSliceFloodClamped: true,
+      st211022JpegXsStreamAccepted: false,
+      action: "clamp_st2110_22_jpeg_xs_cbr_bitrate_or_subframe_slice_flood",
+      blockedReason:
+        "SMPTE_ST2110_22_JPEG_XS_CBR_BITRATE_OR_SUBFRAME_SLICE_FLOOD_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    jpegXsPayloadHeaderOrSliceOverreadDropped0ms: false,
+    invalidTBitKBitOrNonMonotonicSliceCounterRejected: false,
+    excessiveBppBitrateOrSubframeSliceFloodClamped: false,
+    st211022JpegXsStreamAccepted: true,
+    action:
+      "accept_smpte_st2110_22_rfc9134_jpeg_xs_low_latency_video_rtp_stream",
+    blockedReason: "none",
+  };
+}
+
+
