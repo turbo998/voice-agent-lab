@@ -28386,3 +28386,219 @@ export function evaluateWebrtcSipRtpSmpteSt211041FastMetadataFmxRfc3550DmiLength
     blockedReason: "none",
   };
 }
+
+export interface CompoundSemiconductorMocvdArsinePhosphineMetalorganicsGuardInput {
+  reactorChamberId: string;
+  arsineSubPpmSensorPpb: number;
+  phosphineSubPpmSensorPpb: number;
+  h2CarrierGasCabinetLelPercent: number;
+  metalorganicBubblerCoolingBathIntegrityOk: boolean;
+  exhaustFilterPyrophoricArsenicPhosphorusDifferentialPressureMbar: number;
+  ambientArsinePpb: number;
+  ambientPhosphinePpb: number;
+  dryResinOrCdoScrubberBreakthroughPpb: number;
+  semiS2RfoPurgeAndPositivePressureScbaHemolysisProtocolVerified: boolean;
+}
+
+export interface CompoundSemiconductorMocvdArsinePhosphineMetalorganicsGuardAssessment {
+  policyCode: "P293-COMPOUND-SEMICONDUCTOR-MOCVD-MOVPE-ARSINE-ASH3-PHOSPHINE-PH3-PYROPHORIC-TMGA-TMAL-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-SUBPPM-HYDRIDE-RFO-TRIP-BUBBLER-FILTER-ISOLATION-AND-ASH3-HEMOLYSIS-SCBA-LOTO-GUARD";
+  reactorChamberId: string;
+  hydrideLeakOrH2CarrierLelPreempted0ms: boolean;
+  pyrophoricMetalorganicBubblerOrExhaustFilterIsolated: boolean;
+  ash3Ph3BreakthroughOrHemolysisScbaLotoLocked: boolean;
+  mocvdEpitaxyOperationApproved: boolean;
+  action:
+    | "approve_compound_semiconductor_mocvd_movpe_epitaxial_growth"
+    | "trip_ash3_ph3_sub_atmospheric_rfo_valves_and_purge_h2_manifold_with_n2_in_0ms"
+    | "isolate_tmga_tmal_bubbler_manifold_and_engage_cold_trap_n2_passivation"
+    | "lock_mocvd_glovebox_transfer_and_require_scrubber_bed_and_ash3_hemolysis_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateCompoundSemiconductorMocvdMovpeArsinePhosphineMetalorganicsNfpa318SemiS2SemiS6Nfpa69Osha1910119Osha19101000HydrideRfoTripBubblerFilterIsolationAndAsh3HemolysisScbaLotoGuard(
+  input: CompoundSemiconductorMocvdArsinePhosphineMetalorganicsGuardInput
+): CompoundSemiconductorMocvdArsinePhosphineMetalorganicsGuardAssessment {
+  const policyCode =
+    "P293-COMPOUND-SEMICONDUCTOR-MOCVD-MOVPE-ARSINE-ASH3-PHOSPHINE-PH3-PYROPHORIC-TMGA-TMAL-NFPA318-SEMIS2-SEMIS6-NFPA69-OSHA1910119-OSHA19101000-SUBPPM-HYDRIDE-RFO-TRIP-BUBBLER-FILTER-ISOLATION-AND-ASH3-HEMOLYSIS-SCBA-LOTO-GUARD" as const;
+
+  const hydrideLeakOrH2CarrierLelRisk =
+    input.arsineSubPpmSensorPpb >= 50.0 ||
+    input.phosphineSubPpmSensorPpb >= 300.0 ||
+    input.h2CarrierGasCabinetLelPercent >= 10.0;
+
+  if (hydrideLeakOrH2CarrierLelRisk) {
+    return {
+      policyCode,
+      reactorChamberId: input.reactorChamberId,
+      hydrideLeakOrH2CarrierLelPreempted0ms: true,
+      pyrophoricMetalorganicBubblerOrExhaustFilterIsolated: false,
+      ash3Ph3BreakthroughOrHemolysisScbaLotoLocked: false,
+      mocvdEpitaxyOperationApproved: false,
+      action:
+        "trip_ash3_ph3_sub_atmospheric_rfo_valves_and_purge_h2_manifold_with_n2_in_0ms",
+      blockedReason:
+        "NFPA_318_SEMI_S2_ASH3_50PPB_PH3_300PPB_HYDRIDE_LEAK_OR_H2_CARRIER_LEL_PREEMPTED_0MS",
+    };
+  }
+
+  const pyrophoricBubblerOrFilterRisk =
+    !input.metalorganicBubblerCoolingBathIntegrityOk ||
+    input.exhaustFilterPyrophoricArsenicPhosphorusDifferentialPressureMbar >= 15.0;
+
+  if (pyrophoricBubblerOrFilterRisk) {
+    return {
+      policyCode,
+      reactorChamberId: input.reactorChamberId,
+      hydrideLeakOrH2CarrierLelPreempted0ms: false,
+      pyrophoricMetalorganicBubblerOrExhaustFilterIsolated: true,
+      ash3Ph3BreakthroughOrHemolysisScbaLotoLocked: false,
+      mocvdEpitaxyOperationApproved: false,
+      action:
+        "isolate_tmga_tmal_bubbler_manifold_and_engage_cold_trap_n2_passivation",
+      blockedReason:
+        "MOCVD_PYROPHORIC_TMGA_TMAL_BUBBLER_BATH_LOSS_OR_WHITE_PHOSPHORUS_ARSENIC_FILTER_FOULING_ISOLATED",
+    };
+  }
+
+  const ash3Ph3OrScbaLotoRisk =
+    input.ambientArsinePpb >= 50.0 ||
+    input.ambientPhosphinePpb >= 300.0 ||
+    input.dryResinOrCdoScrubberBreakthroughPpb >= 25.0 ||
+    !input.semiS2RfoPurgeAndPositivePressureScbaHemolysisProtocolVerified;
+
+  if (ash3Ph3OrScbaLotoRisk) {
+    return {
+      policyCode,
+      reactorChamberId: input.reactorChamberId,
+      hydrideLeakOrH2CarrierLelPreempted0ms: false,
+      pyrophoricMetalorganicBubblerOrExhaustFilterIsolated: false,
+      ash3Ph3BreakthroughOrHemolysisScbaLotoLocked: true,
+      mocvdEpitaxyOperationApproved: false,
+      action:
+        "lock_mocvd_glovebox_transfer_and_require_scrubber_bed_and_ash3_hemolysis_scba_loto",
+      blockedReason:
+        "OSHA_ASH3_50PPB_HEMOLYSIS_PH3_300PPB_SCRUBBER_BREAKTHROUGH_OR_SEMI_S2_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    reactorChamberId: input.reactorChamberId,
+    hydrideLeakOrH2CarrierLelPreempted0ms: false,
+    pyrophoricMetalorganicBubblerOrExhaustFilterIsolated: false,
+    ash3Ph3BreakthroughOrHemolysisScbaLotoLocked: false,
+    mocvdEpitaxyOperationApproved: true,
+    action: "approve_compound_semiconductor_mocvd_movpe_epitaxial_growth",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingGuardInput {
+  sessionId: string;
+  pathARtpPayloadBytes: number;
+  pathBRtpPayloadBytes: number;
+  rtpHeaderAndExtensionValidOnBothPaths: boolean;
+  sameSequencePayloadDigestMismatchDetected: boolean;
+  ssrcOrPayloadTypeMismatchBetweenPaths: boolean;
+  sequenceNumberReplayOutsideWindowDetected: boolean;
+  pathDifferentialDelayMs: number;
+  configuredProtectionBufferClassMaxMs: number;
+  combinedDualPathIngressMultiplier: number;
+}
+
+export interface WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingGuardAssessment {
+  policyCode: "P294-WEBRTC-SIP-RTP-SMPTE-ST2022-7-SEAMLESS-PROTECTION-SWITCHING-RFC3550-DUAL-PATH-PAYLOAD-LENGTH-OVERREAD-SEQUENCE-COLLISION-DIGEST-SPOOFING-AND-PATH-DIFFERENTIAL-SKEW-BUFFER-GUARD";
+  sessionId: string;
+  dualPathHeaderOrPayloadOverreadDropped: boolean;
+  sequenceCollisionPayloadMismatchOrSsrcSpoofRejected: boolean;
+  pathDifferentialSkewOrDualIngressFloodClamped: boolean;
+  st20227DualPathRtpPacketAccepted: boolean;
+  action:
+    | "accept_st2022_7_seamless_protection_switched_rtp_packet"
+    | "drop_st2022_7_malformed_dual_path_rtp_header_or_payload_overread_in_0ms"
+    | "reject_st2022_7_sequence_collision_payload_digest_mismatch_or_ssrc_spoof"
+    | "clamp_st2022_7_path_differential_skew_buffer_or_dual_path_ingress_amplification";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingRfc3550DualPathPayloadLengthOverreadSequenceCollisionDigestSpoofingAndPathDifferentialSkewBufferGuard(
+  input: WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingGuardInput
+): WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingGuardAssessment {
+  const policyCode =
+    "P294-WEBRTC-SIP-RTP-SMPTE-ST2022-7-SEAMLESS-PROTECTION-SWITCHING-RFC3550-DUAL-PATH-PAYLOAD-LENGTH-OVERREAD-SEQUENCE-COLLISION-DIGEST-SPOOFING-AND-PATH-DIFFERENTIAL-SKEW-BUFFER-GUARD" as const;
+
+  const headerOrPayloadLengthRisk =
+    !input.rtpHeaderAndExtensionValidOnBothPaths ||
+    input.pathARtpPayloadBytes <= 0 ||
+    input.pathBRtpPayloadBytes <= 0 ||
+    input.pathARtpPayloadBytes !== input.pathBRtpPayloadBytes ||
+    input.pathARtpPayloadBytes > 8960;
+
+  if (headerOrPayloadLengthRisk) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      dualPathHeaderOrPayloadOverreadDropped: true,
+      sequenceCollisionPayloadMismatchOrSsrcSpoofRejected: false,
+      pathDifferentialSkewOrDualIngressFloodClamped: false,
+      st20227DualPathRtpPacketAccepted: false,
+      action:
+        "drop_st2022_7_malformed_dual_path_rtp_header_or_payload_overread_in_0ms",
+      blockedReason:
+        "SMPTE_ST2022_7_DUAL_PATH_RTP_HEADER_MALFORMED_OR_PATH_A_B_PAYLOAD_LENGTH_MISMATCH_DROPPED_0MS",
+    };
+  }
+
+  const sequenceDigestOrSsrcSpoofRisk =
+    input.sameSequencePayloadDigestMismatchDetected ||
+    input.ssrcOrPayloadTypeMismatchBetweenPaths ||
+    input.sequenceNumberReplayOutsideWindowDetected;
+
+  if (sequenceDigestOrSsrcSpoofRisk) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      dualPathHeaderOrPayloadOverreadDropped: false,
+      sequenceCollisionPayloadMismatchOrSsrcSpoofRejected: true,
+      pathDifferentialSkewOrDualIngressFloodClamped: false,
+      st20227DualPathRtpPacketAccepted: false,
+      action:
+        "reject_st2022_7_sequence_collision_payload_digest_mismatch_or_ssrc_spoof",
+      blockedReason:
+        "SMPTE_ST2022_7_SAME_SEQ_PAYLOAD_DIGEST_COLLISION_SSRC_PT_MISMATCH_OR_REPLAY_REJECTED",
+    };
+  }
+
+  const pathSkewOrFloodRisk =
+    input.configuredProtectionBufferClassMaxMs <= 0 ||
+    Math.abs(input.pathDifferentialDelayMs) >
+      input.configuredProtectionBufferClassMaxMs ||
+    Math.abs(input.pathDifferentialDelayMs) > 150.0 ||
+    input.combinedDualPathIngressMultiplier > 2.05;
+
+  if (pathSkewOrFloodRisk) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      dualPathHeaderOrPayloadOverreadDropped: false,
+      sequenceCollisionPayloadMismatchOrSsrcSpoofRejected: false,
+      pathDifferentialSkewOrDualIngressFloodClamped: true,
+      st20227DualPathRtpPacketAccepted: false,
+      action:
+        "clamp_st2022_7_path_differential_skew_buffer_or_dual_path_ingress_amplification",
+      blockedReason:
+        "SMPTE_ST2022_7_PATH_DIFFERENTIAL_DELAY_CLASS_OVERFLOW_OR_DUAL_PATH_INGRESS_AMPLIFICATION_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    dualPathHeaderOrPayloadOverreadDropped: false,
+    sequenceCollisionPayloadMismatchOrSsrcSpoofRejected: false,
+    pathDifferentialSkewOrDualIngressFloodClamped: false,
+    st20227DualPathRtpPacketAccepted: true,
+    action: "accept_st2022_7_seamless_protection_switched_rtp_packet",
+    blockedReason: "none",
+  };
+}
