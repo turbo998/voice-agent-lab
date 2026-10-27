@@ -28142,4 +28142,247 @@ export function evaluateWebrtcSipRtpSmpteSt211022JpegXsConstantBitRateVideoRfc91
   };
 }
 
+// ============================================================================
+// Stage 149 · P291 — Semiconductor & Photovoltaic Monosilane (SiH4) /
+// Trichlorosilane (SiHCl3 / TCS) Siemens CVD Polysilicon & Epitaxial Reactor
+// (NFPA 318 / SEMI S2 / SEMI S6 / NFPA 69 / API RP 521 / OSHA 1910.119 /
+// OSHA 1910.1000) Pyrophoric Auto-Ignition, Bell-Jar Water-Ingress Chlorosilane
+// Hydrolysis & SiH4/HCl/Silica CDO Burn-Box SCBA LOTO Guard
+// ============================================================================
 
+export interface SemiconductorPhotovoltaicSilaneTrichlorosilaneCvdReactorGuardInput {
+  reactorBayId: string;
+  gasCabinetOrDuctSilanePpm: number;
+  reactorPressureKpa: number;
+  gasCabinetExhaustDuctVelocityMPerSec: number;
+  coolingWaterBellJarLeakOrHclConductivityDetected: boolean;
+  condenserPolymerSiloxaneDifferentialPressureMbar: number;
+  ambientSilanePpm: number;
+  ambientHydrogenChloridePpm: number;
+  ambientAmorphousSilicaFumeMgPerM3: number;
+  cdoBurnBoxTemperatureC: number;
+  semiS2RfoPurgeAndPositivePressureScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorPhotovoltaicSilaneTrichlorosilaneCvdReactorGuardAssessment {
+  policyCode: "P291-SEMICONDUCTOR-PV-MONOSILANE-SIH4-TRICHLOROSILANE-TCS-SIEMENS-CVD-POLYSILICON-REACTOR-NFPA318-SEMIS2-SEMIS6-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PYROPHORIC-SIH4-AUTOIGNITION-BELLJAR-WATER-HYDROLYSIS-SILOXANE-CRUST-AND-HCL-CDO-SCBA-LOTO-GUARD";
+  reactorBayId: string;
+  pyrophoricSih4LeakOrExhaustDilutionLossPreempted0ms: boolean;
+  tcsWaterJacketLeakOrPolymerSiloxaneCrustIsolated: boolean;
+  sih4HclSilicaOrCdoBurnBoxScbaLotoLocked: boolean;
+  silaneTcsCvdOperationApproved: boolean;
+  action:
+    | "approve_sih4_tcs_siemens_cvd_polysilicon_and_epitaxial_deposition"
+    | "trip_sih4_gas_cabinet_rfo_valve_initiate_n2_purge_and_route_to_cdo_burn_box_in_0ms"
+    | "isolate_tcs_vaporizer_and_water_jacket_headers_and_maintain_dry_n2_blanket"
+    | "lock_cvd_bell_jar_hoist_and_require_cdo_burn_box_and_semi_s2_scba_loto";
+  blockedReason:
+    | "none"
+    | "NFPA_318_SEMI_S2_S6_PYROPHORIC_SIH4_LEAK_REACTOR_OVERPRESSURE_OR_EXHAUST_DILUTION_LOSS_PREEMPTED_0MS"
+    | "SIEMENS_CVD_BELL_JAR_COOLING_WATER_TCS_HYDROLYSIS_OR_SHOCK_SENSITIVE_CHLOROSILANE_SILOXANE_CRUST_ISOLATED"
+    | "OSHA_SIH4_5PPM_HCL_5PPM_AMORPHOUS_SILICA_CDO_BURN_BOX_FLAMEOUT_OR_SEMI_S2_SCBA_LOTO_LOCKED";
+}
+
+export function evaluateSemiconductorPhotovoltaicSilaneTrichlorosilaneCvdReactorNfpa318SemiS2SemiS6Nfpa69ApiRp521Osha1910119Osha19101000PyrophoricSih4BellJarHydrolysisAndHclCdoScbaLotoGuard(
+  input: SemiconductorPhotovoltaicSilaneTrichlorosilaneCvdReactorGuardInput,
+): SemiconductorPhotovoltaicSilaneTrichlorosilaneCvdReactorGuardAssessment {
+  const pyrophoricSih4LeakOrExhaustDilutionLossPreempted0ms =
+    input.gasCabinetOrDuctSilanePpm >= 5.0 ||
+    input.reactorPressureKpa >= 650.0 ||
+    input.gasCabinetExhaustDuctVelocityMPerSec < 1.8;
+
+  const tcsWaterJacketLeakOrPolymerSiloxaneCrustIsolated =
+    input.coolingWaterBellJarLeakOrHclConductivityDetected ||
+    input.condenserPolymerSiloxaneDifferentialPressureMbar >= 12.0;
+
+  const sih4HclSilicaOrCdoBurnBoxScbaLotoLocked =
+    input.ambientSilanePpm >= 5.0 ||
+    input.ambientHydrogenChloridePpm >= 5.0 ||
+    input.ambientAmorphousSilicaFumeMgPerM3 >= 0.8 ||
+    input.cdoBurnBoxTemperatureC < 780.0 ||
+    !input.semiS2RfoPurgeAndPositivePressureScbaLotoVerified;
+
+  if (pyrophoricSih4LeakOrExhaustDilutionLossPreempted0ms) {
+    return {
+      policyCode:
+        "P291-SEMICONDUCTOR-PV-MONOSILANE-SIH4-TRICHLOROSILANE-TCS-SIEMENS-CVD-POLYSILICON-REACTOR-NFPA318-SEMIS2-SEMIS6-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PYROPHORIC-SIH4-AUTOIGNITION-BELLJAR-WATER-HYDROLYSIS-SILOXANE-CRUST-AND-HCL-CDO-SCBA-LOTO-GUARD",
+      reactorBayId: input.reactorBayId,
+      pyrophoricSih4LeakOrExhaustDilutionLossPreempted0ms: true,
+      tcsWaterJacketLeakOrPolymerSiloxaneCrustIsolated,
+      sih4HclSilicaOrCdoBurnBoxScbaLotoLocked,
+      silaneTcsCvdOperationApproved: false,
+      action:
+        "trip_sih4_gas_cabinet_rfo_valve_initiate_n2_purge_and_route_to_cdo_burn_box_in_0ms",
+      blockedReason:
+        "NFPA_318_SEMI_S2_S6_PYROPHORIC_SIH4_LEAK_REACTOR_OVERPRESSURE_OR_EXHAUST_DILUTION_LOSS_PREEMPTED_0MS",
+    };
+  }
+
+  if (tcsWaterJacketLeakOrPolymerSiloxaneCrustIsolated) {
+    return {
+      policyCode:
+        "P291-SEMICONDUCTOR-PV-MONOSILANE-SIH4-TRICHLOROSILANE-TCS-SIEMENS-CVD-POLYSILICON-REACTOR-NFPA318-SEMIS2-SEMIS6-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PYROPHORIC-SIH4-AUTOIGNITION-BELLJAR-WATER-HYDROLYSIS-SILOXANE-CRUST-AND-HCL-CDO-SCBA-LOTO-GUARD",
+      reactorBayId: input.reactorBayId,
+      pyrophoricSih4LeakOrExhaustDilutionLossPreempted0ms: false,
+      tcsWaterJacketLeakOrPolymerSiloxaneCrustIsolated: true,
+      sih4HclSilicaOrCdoBurnBoxScbaLotoLocked,
+      silaneTcsCvdOperationApproved: false,
+      action:
+        "isolate_tcs_vaporizer_and_water_jacket_headers_and_maintain_dry_n2_blanket",
+      blockedReason:
+        "SIEMENS_CVD_BELL_JAR_COOLING_WATER_TCS_HYDROLYSIS_OR_SHOCK_SENSITIVE_CHLOROSILANE_SILOXANE_CRUST_ISOLATED",
+    };
+  }
+
+  if (sih4HclSilicaOrCdoBurnBoxScbaLotoLocked) {
+    return {
+      policyCode:
+        "P291-SEMICONDUCTOR-PV-MONOSILANE-SIH4-TRICHLOROSILANE-TCS-SIEMENS-CVD-POLYSILICON-REACTOR-NFPA318-SEMIS2-SEMIS6-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PYROPHORIC-SIH4-AUTOIGNITION-BELLJAR-WATER-HYDROLYSIS-SILOXANE-CRUST-AND-HCL-CDO-SCBA-LOTO-GUARD",
+      reactorBayId: input.reactorBayId,
+      pyrophoricSih4LeakOrExhaustDilutionLossPreempted0ms: false,
+      tcsWaterJacketLeakOrPolymerSiloxaneCrustIsolated: false,
+      sih4HclSilicaOrCdoBurnBoxScbaLotoLocked: true,
+      silaneTcsCvdOperationApproved: false,
+      action:
+        "lock_cvd_bell_jar_hoist_and_require_cdo_burn_box_and_semi_s2_scba_loto",
+      blockedReason:
+        "OSHA_SIH4_5PPM_HCL_5PPM_AMORPHOUS_SILICA_CDO_BURN_BOX_FLAMEOUT_OR_SEMI_S2_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode:
+      "P291-SEMICONDUCTOR-PV-MONOSILANE-SIH4-TRICHLOROSILANE-TCS-SIEMENS-CVD-POLYSILICON-REACTOR-NFPA318-SEMIS2-SEMIS6-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PYROPHORIC-SIH4-AUTOIGNITION-BELLJAR-WATER-HYDROLYSIS-SILOXANE-CRUST-AND-HCL-CDO-SCBA-LOTO-GUARD",
+    reactorBayId: input.reactorBayId,
+    pyrophoricSih4LeakOrExhaustDilutionLossPreempted0ms: false,
+    tcsWaterJacketLeakOrPolymerSiloxaneCrustIsolated: false,
+    sih4HclSilicaOrCdoBurnBoxScbaLotoLocked: false,
+    silaneTcsCvdOperationApproved: true,
+    action: "approve_sih4_tcs_siemens_cvd_polysilicon_and_epitaxial_deposition",
+    blockedReason: "none",
+  };
+}
+
+// ============================================================================
+// Stage 149 · P292 — WebRTC & SIP RTP SMPTE ST 2110-41 Fast Metadata (FMX,
+// SMPTE ST 2110-41 / RFC 3550) Dynamic Metadata Item (DMI) Length Overread,
+// 24-Bit DMIT Identifier Spoofing / S-E Fragment Tear & PTP Essence Skew Guard
+// ============================================================================
+
+export interface WebrtcSipRtpSmpteSt211041FastMetadataFmxDmiGuardInput {
+  sessionId: string;
+  rtpPayloadBytes: number;
+  fmxHeaderBytes: number;
+  dmiCount: number;
+  totalDeclaredDmiLengthWords32: number;
+  word32AlignmentValid: boolean;
+  dmit24BitIdentifierRegistered: boolean;
+  unauthenticatedAtmosGainOrHdrCurveOverrideDetected: boolean;
+  multiPacketSegmentSAndEConsistent: boolean;
+  inboundFmxMetadataKbps: number;
+  negotiatedMaxFmxKbps: number;
+  fmxToEssencePtpTimestampSkewUs: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211041FastMetadataFmxDmiGuardAssessment {
+  policyCode: "P292-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-RFC3550-DMI-ITEM-LENGTH-WORD32-OVERREAD-24BIT-DMIT-IDENTIFIER-SPOOFING-MULTI-PACKET-S-E-FRAGMENT-TEAR-AND-PTP-ESSENCE-TIMESTAMP-SKEW-GUARD";
+  sessionId: string;
+  fmxDmiLengthOverreadOrWord32AlignmentDropped: boolean;
+  unregisteredDmitOrBrokenMultiPacketFragmentRejected: boolean;
+  fmxBitrateOrEssencePtpTimestampSkewClamped: boolean;
+  st211041FmxRtpPacketAccepted: boolean;
+  action:
+    | "accept_st2110_41_fmx_fast_metadata_rtp_packet"
+    | "drop_st2110_41_fmx_dmi_length_overread_or_word_alignment_violation_in_0ms"
+    | "reject_spoofed_st2110_41_dmit_payload_or_broken_dmi_fragment_chain"
+    | "clamp_st2110_41_fmx_metadata_bitrate_or_ptp_essence_timestamp_skew";
+  blockedReason:
+    | "none"
+    | "SMPTE_ST2110_41_FMX_HEADER_DMI_WORD32_LENGTH_OVERREAD_OR_ALIGNMENT_VIOLATION_DROPPED_0MS"
+    | "SMPTE_ST2110_41_UNREGISTERED_24BIT_DMIT_SPOOFED_ATMOS_HDR_OVERRIDE_OR_S_E_FRAGMENT_TEAR_REJECTED"
+    | "SMPTE_ST2110_41_FMX_BITRATE_FLOOD_OR_ST2059_ESSENCE_PTP_TIMESTAMP_SKEW_CLAMPED";
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211041FastMetadataFmxRfc3550DmiLengthWord32OverreadDmitIdentifierSpoofingMultiPacketFragmentTearAndPtpEssenceSkewGuard(
+  input: WebrtcSipRtpSmpteSt211041FastMetadataFmxDmiGuardInput,
+): WebrtcSipRtpSmpteSt211041FastMetadataFmxDmiGuardAssessment {
+  const fmxDmiLengthOverreadOrWord32AlignmentDropped =
+    input.fmxHeaderBytes !== 8 ||
+    input.dmiCount <= 0 ||
+    input.dmiCount > 64 ||
+    input.totalDeclaredDmiLengthWords32 <= 0 ||
+    input.fmxHeaderBytes + input.totalDeclaredDmiLengthWords32 * 4 >
+      input.rtpPayloadBytes ||
+    input.rtpPayloadBytes % 4 !== 0 ||
+    !input.word32AlignmentValid;
+
+  const unregisteredDmitOrBrokenMultiPacketFragmentRejected =
+    !input.dmit24BitIdentifierRegistered ||
+    input.unauthenticatedAtmosGainOrHdrCurveOverrideDetected ||
+    !input.multiPacketSegmentSAndEConsistent;
+
+  const fmxBitrateOrEssencePtpTimestampSkewClamped =
+    input.inboundFmxMetadataKbps > input.negotiatedMaxFmxKbps ||
+    input.inboundFmxMetadataKbps > 4000.0 ||
+    Math.abs(input.fmxToEssencePtpTimestampSkewUs) >= 500;
+
+  if (fmxDmiLengthOverreadOrWord32AlignmentDropped) {
+    return {
+      policyCode:
+        "P292-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-RFC3550-DMI-ITEM-LENGTH-WORD32-OVERREAD-24BIT-DMIT-IDENTIFIER-SPOOFING-MULTI-PACKET-S-E-FRAGMENT-TEAR-AND-PTP-ESSENCE-TIMESTAMP-SKEW-GUARD",
+      sessionId: input.sessionId,
+      fmxDmiLengthOverreadOrWord32AlignmentDropped: true,
+      unregisteredDmitOrBrokenMultiPacketFragmentRejected,
+      fmxBitrateOrEssencePtpTimestampSkewClamped,
+      st211041FmxRtpPacketAccepted: false,
+      action:
+        "drop_st2110_41_fmx_dmi_length_overread_or_word_alignment_violation_in_0ms",
+      blockedReason:
+        "SMPTE_ST2110_41_FMX_HEADER_DMI_WORD32_LENGTH_OVERREAD_OR_ALIGNMENT_VIOLATION_DROPPED_0MS",
+    };
+  }
+
+  if (unregisteredDmitOrBrokenMultiPacketFragmentRejected) {
+    return {
+      policyCode:
+        "P292-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-RFC3550-DMI-ITEM-LENGTH-WORD32-OVERREAD-24BIT-DMIT-IDENTIFIER-SPOOFING-MULTI-PACKET-S-E-FRAGMENT-TEAR-AND-PTP-ESSENCE-TIMESTAMP-SKEW-GUARD",
+      sessionId: input.sessionId,
+      fmxDmiLengthOverreadOrWord32AlignmentDropped: false,
+      unregisteredDmitOrBrokenMultiPacketFragmentRejected: true,
+      fmxBitrateOrEssencePtpTimestampSkewClamped,
+      st211041FmxRtpPacketAccepted: false,
+      action:
+        "reject_spoofed_st2110_41_dmit_payload_or_broken_dmi_fragment_chain",
+      blockedReason:
+        "SMPTE_ST2110_41_UNREGISTERED_24BIT_DMIT_SPOOFED_ATMOS_HDR_OVERRIDE_OR_S_E_FRAGMENT_TEAR_REJECTED",
+    };
+  }
+
+  if (fmxBitrateOrEssencePtpTimestampSkewClamped) {
+    return {
+      policyCode:
+        "P292-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-RFC3550-DMI-ITEM-LENGTH-WORD32-OVERREAD-24BIT-DMIT-IDENTIFIER-SPOOFING-MULTI-PACKET-S-E-FRAGMENT-TEAR-AND-PTP-ESSENCE-TIMESTAMP-SKEW-GUARD",
+      sessionId: input.sessionId,
+      fmxDmiLengthOverreadOrWord32AlignmentDropped: false,
+      unregisteredDmitOrBrokenMultiPacketFragmentRejected: false,
+      fmxBitrateOrEssencePtpTimestampSkewClamped: true,
+      st211041FmxRtpPacketAccepted: false,
+      action:
+        "clamp_st2110_41_fmx_metadata_bitrate_or_ptp_essence_timestamp_skew",
+      blockedReason:
+        "SMPTE_ST2110_41_FMX_BITRATE_FLOOD_OR_ST2059_ESSENCE_PTP_TIMESTAMP_SKEW_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode:
+      "P292-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-RFC3550-DMI-ITEM-LENGTH-WORD32-OVERREAD-24BIT-DMIT-IDENTIFIER-SPOOFING-MULTI-PACKET-S-E-FRAGMENT-TEAR-AND-PTP-ESSENCE-TIMESTAMP-SKEW-GUARD",
+    sessionId: input.sessionId,
+    fmxDmiLengthOverreadOrWord32AlignmentDropped: false,
+    unregisteredDmitOrBrokenMultiPacketFragmentRejected: false,
+    fmxBitrateOrEssencePtpTimestampSkewClamped: false,
+    st211041FmxRtpPacketAccepted: true,
+    action: "accept_st2110_41_fmx_fast_metadata_rtp_packet",
+    blockedReason: "none",
+  };
+}
