@@ -30170,3 +30170,220 @@ export function evaluateWebrtcSipRtpSmpteSt211021TrafficShapingVrxCmaxBufferMode
     blockedReason: "none",
   };
 }
+
+export interface SemiconductorCmpSlurryAndPostCmpBrushCleanerGuardInput {
+  platenId: string;
+  copperCeriaSlurryHydrogenPeroxideDecompositionOverpressureDetected: boolean;
+  acidicSlurryMixedWithCyanideOrHypochloriteWasteStreamDetected: boolean;
+  cmpSlurryCabinetOrPlatenHcnConcentrationPpm: number;
+  retainingRingWaferBreakageOrPadDelaminationDetected: boolean;
+  platenDownforcePsi: number;
+  postCmpDiluteHfNh4ohTetramethylammoniumHydroxideMaintenanceRequested: boolean;
+  calciumGluconateGelAndChemicalSplashSuitScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorCmpSlurryAndPostCmpBrushCleanerGuardAssessment {
+  policyCode: "P309-SEMICONDUCTOR-CMP-CHEMICAL-MECHANICAL-PLANARIZATION-CU-CEO2-SIO2-SLURRY-H2O2-NH4OH-BTA-AND-POST-CMP-HF-TMAH-CLEANER-NFPA318-SEMIS2-SEMIS6-OSHA1910119-OSHA19101000-H2O2-DECOMPOSITION-CYANIDE-HCN-INTERMIX-TRIP-WAFER-SLIP-PLATEN-STOP-AND-HF-TMAH-LOTO-GUARD";
+  platenId: string;
+  slurryH2o2OverpressureOrToxicHcnGasEvolutionTripped0ms: boolean;
+  waferSlipBreakageOrExcessiveDownforcePlatenIsolated: boolean;
+  postCmpHfTmahBrushCleanerLotoLocked: boolean;
+  cmpPlanarizationOperationApproved: boolean;
+  action:
+    | "trip_cmp_slurry_daytank_vent_relief_isolate_acid_drain_and_abort_platen_in_0ms"
+    | "halt_cmp_carrier_head_spindle_depressurize_retaining_ring_and_lock_platen"
+    | "lock_post_cmp_brush_scrubber_and_require_hf_calcium_gluconate_tmah_scba_loto"
+    | "approve_semiconductor_cmp_planarization_and_post_cmp_brush_clean_operation";
+  blockedReason:
+    | "SEMI_S2_CMP_SLURRY_H2O2_RUNAWAY_DECOMPOSITION_OR_CYANIDE_ACID_HCN_4_7PPM_EVOLUTION_PREEMPTED_0MS"
+    | "SEMI_S2_CMP_RETAINING_RING_WAFER_SLIP_SHATTER_OR_OVERPRESSURE_DOWNFORCE_ISOLATED"
+    | "OSHA_1910_1000_POST_CMP_DHF_TMAH_NH4OH_DERMAL_TOXICITY_CALCIUM_GLUCONATE_LOTO_LOCKED"
+    | "none";
+}
+
+export function evaluateSemiconductorCmpChemicalMechanicalPlanarizationCuCeo2Sio2SlurryH2o2Nh4ohBtaAndPostCmpHfTmahCleanerNfpa318SemiS2SemiS6Osha1910119Osha19101000H2o2DecompositionCyanideHcnIntermixTripWaferSlipPlatenStopAndHfTmahLotoGuard(
+  input: SemiconductorCmpSlurryAndPostCmpBrushCleanerGuardInput
+): SemiconductorCmpSlurryAndPostCmpBrushCleanerGuardAssessment {
+  const policyCode =
+    "P309-SEMICONDUCTOR-CMP-CHEMICAL-MECHANICAL-PLANARIZATION-CU-CEO2-SIO2-SLURRY-H2O2-NH4OH-BTA-AND-POST-CMP-HF-TMAH-CLEANER-NFPA318-SEMIS2-SEMIS6-OSHA1910119-OSHA19101000-H2O2-DECOMPOSITION-CYANIDE-HCN-INTERMIX-TRIP-WAFER-SLIP-PLATEN-STOP-AND-HF-TMAH-LOTO-GUARD" as const;
+
+  const slurryH2o2OverpressureOrToxicHcnGasEvolutionTripped0ms =
+    input.copperCeriaSlurryHydrogenPeroxideDecompositionOverpressureDetected ||
+    input.acidicSlurryMixedWithCyanideOrHypochloriteWasteStreamDetected ||
+    input.cmpSlurryCabinetOrPlatenHcnConcentrationPpm >= 4.7;
+
+  if (slurryH2o2OverpressureOrToxicHcnGasEvolutionTripped0ms) {
+    return {
+      policyCode,
+      platenId: input.platenId,
+      slurryH2o2OverpressureOrToxicHcnGasEvolutionTripped0ms: true,
+      waferSlipBreakageOrExcessiveDownforcePlatenIsolated: false,
+      postCmpHfTmahBrushCleanerLotoLocked: false,
+      cmpPlanarizationOperationApproved: false,
+      action:
+        "trip_cmp_slurry_daytank_vent_relief_isolate_acid_drain_and_abort_platen_in_0ms",
+      blockedReason:
+        "SEMI_S2_CMP_SLURRY_H2O2_RUNAWAY_DECOMPOSITION_OR_CYANIDE_ACID_HCN_4_7PPM_EVOLUTION_PREEMPTED_0MS",
+    };
+  }
+
+  const waferSlipBreakageOrExcessiveDownforcePlatenIsolated =
+    input.retainingRingWaferBreakageOrPadDelaminationDetected ||
+    input.platenDownforcePsi > 8.5;
+
+  if (waferSlipBreakageOrExcessiveDownforcePlatenIsolated) {
+    return {
+      policyCode,
+      platenId: input.platenId,
+      slurryH2o2OverpressureOrToxicHcnGasEvolutionTripped0ms: false,
+      waferSlipBreakageOrExcessiveDownforcePlatenIsolated: true,
+      postCmpHfTmahBrushCleanerLotoLocked: false,
+      cmpPlanarizationOperationApproved: false,
+      action:
+        "halt_cmp_carrier_head_spindle_depressurize_retaining_ring_and_lock_platen",
+      blockedReason:
+        "SEMI_S2_CMP_RETAINING_RING_WAFER_SLIP_SHATTER_OR_OVERPRESSURE_DOWNFORCE_ISOLATED",
+    };
+  }
+
+  const postCmpHfTmahBrushCleanerLotoLocked =
+    input.postCmpDiluteHfNh4ohTetramethylammoniumHydroxideMaintenanceRequested &&
+    !input.calciumGluconateGelAndChemicalSplashSuitScbaLotoVerified;
+
+  if (postCmpHfTmahBrushCleanerLotoLocked) {
+    return {
+      policyCode,
+      platenId: input.platenId,
+      slurryH2o2OverpressureOrToxicHcnGasEvolutionTripped0ms: false,
+      waferSlipBreakageOrExcessiveDownforcePlatenIsolated: false,
+      postCmpHfTmahBrushCleanerLotoLocked: true,
+      cmpPlanarizationOperationApproved: false,
+      action:
+        "lock_post_cmp_brush_scrubber_and_require_hf_calcium_gluconate_tmah_scba_loto",
+      blockedReason:
+        "OSHA_1910_1000_POST_CMP_DHF_TMAH_NH4OH_DERMAL_TOXICITY_CALCIUM_GLUCONATE_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    platenId: input.platenId,
+    slurryH2o2OverpressureOrToxicHcnGasEvolutionTripped0ms: false,
+    waferSlipBreakageOrExcessiveDownforcePlatenIsolated: false,
+    postCmpHfTmahBrushCleanerLotoLocked: false,
+    cmpPlanarizationOperationApproved: true,
+    action: "approve_semiconductor_cmp_planarization_and_post_cmp_brush_clean_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331PayloadGuardInput {
+  sessionId: string;
+  ancCountDeclaredPackets: number;
+  actualAncPacketsRemainingInPayload: number;
+  ancDataCountDcWords: number;
+  actualUdwBufferRemainingBytes: number;
+  didSdidCodePair: "CEA_708_CDP" | "SMPTE_2010_SCTE104" | "FORBIDDEN_DEL_CONTROL_DID";
+  udwParityOrChecksumValid: boolean;
+  unauthorizedScte104SpliceInsertAdTriggerInjected: boolean;
+  ancPacketsPerFrameCount: number;
+  ancPayloadBitrateKbps: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331PayloadGuardAssessment {
+  policyCode: "P310-WEBRTC-SIP-RTP-SMPTE-ST2110-40-RFC8331-ANCILLARY-DATA-ANC-COUNT-DC-UDW-OVERREAD-FORBIDDEN-DID-SDID-SCTE104-SPLICE-INJECTION-AND-CEA708-CAPTION-FLOOD-GUARD";
+  sessionId: string;
+  ancCountOrDataCountDcUdwOverreadDropped0ms: boolean;
+  forbiddenDidSdidChecksumOrUnauthorizedScte104SpliceRejected: boolean;
+  ancillaryPacketBurstOrBitrateFloodClamped: boolean;
+  st211040AncillaryStreamAccepted: boolean;
+  action:
+    | "drop_st2110_40_rfc8331_anc_count_or_dc_udw_buffer_overread_in_0ms"
+    | "reject_forbidden_did_sdid_bad_udw_checksum_or_unauthorized_scte104_splice"
+    | "clamp_st2110_40_anc_packet_burst_or_caption_bitrate_flood"
+    | "accept_smpte_st2110_40_rfc8331_ancillary_data_rtp_stream";
+  blockedReason:
+    | "RFC_8331_ST2110_40_ANC_COUNT_OR_DATA_COUNT_DC_UDW_BUFFER_OVERREAD_DROPPED_0MS"
+    | "SMPTE_ST291_FORBIDDEN_DID_SDID_UDW_CHECKSUM_MISMATCH_OR_UNAUTHORIZED_SCTE104_SPLICE_REJECTED"
+    | "SMPTE_ST2110_40_ANC_PACKETS_PER_FRAME_OR_BITRATE_FLOOD_CLAMPED"
+    | "none";
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211040Rfc8331AncillaryDataAncCountDcUdwOverreadForbiddenDidSdidScte104SpliceInjectionAndCea708CaptionFloodGuard(
+  input: WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331PayloadGuardInput
+): WebrtcSipRtpSmpteSt211040AncillaryDataRfc8331PayloadGuardAssessment {
+  const policyCode =
+    "P310-WEBRTC-SIP-RTP-SMPTE-ST2110-40-RFC8331-ANCILLARY-DATA-ANC-COUNT-DC-UDW-OVERREAD-FORBIDDEN-DID-SDID-SCTE104-SPLICE-INJECTION-AND-CEA708-CAPTION-FLOOD-GUARD" as const;
+
+  const requiredUdwBytes = Math.ceil((input.ancDataCountDcWords * 10) / 8);
+  const ancCountOrDataCountDcUdwOverreadDropped0ms =
+    input.ancCountDeclaredPackets < 0 ||
+    input.ancCountDeclaredPackets > 64 ||
+    input.ancCountDeclaredPackets > input.actualAncPacketsRemainingInPayload ||
+    input.ancDataCountDcWords < 0 ||
+    input.ancDataCountDcWords > 255 ||
+    requiredUdwBytes > input.actualUdwBufferRemainingBytes;
+
+  if (ancCountOrDataCountDcUdwOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ancCountOrDataCountDcUdwOverreadDropped0ms: true,
+      forbiddenDidSdidChecksumOrUnauthorizedScte104SpliceRejected: false,
+      ancillaryPacketBurstOrBitrateFloodClamped: false,
+      st211040AncillaryStreamAccepted: false,
+      action: "drop_st2110_40_rfc8331_anc_count_or_dc_udw_buffer_overread_in_0ms",
+      blockedReason:
+        "RFC_8331_ST2110_40_ANC_COUNT_OR_DATA_COUNT_DC_UDW_BUFFER_OVERREAD_DROPPED_0MS",
+    };
+  }
+
+  const forbiddenDidSdidChecksumOrUnauthorizedScte104SpliceRejected =
+    input.didSdidCodePair === "FORBIDDEN_DEL_CONTROL_DID" ||
+    !input.udwParityOrChecksumValid ||
+    input.unauthorizedScte104SpliceInsertAdTriggerInjected;
+
+  if (forbiddenDidSdidChecksumOrUnauthorizedScte104SpliceRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ancCountOrDataCountDcUdwOverreadDropped0ms: false,
+      forbiddenDidSdidChecksumOrUnauthorizedScte104SpliceRejected: true,
+      ancillaryPacketBurstOrBitrateFloodClamped: false,
+      st211040AncillaryStreamAccepted: false,
+      action:
+        "reject_forbidden_did_sdid_bad_udw_checksum_or_unauthorized_scte104_splice",
+      blockedReason:
+        "SMPTE_ST291_FORBIDDEN_DID_SDID_UDW_CHECKSUM_MISMATCH_OR_UNAUTHORIZED_SCTE104_SPLICE_REJECTED",
+    };
+  }
+
+  const ancillaryPacketBurstOrBitrateFloodClamped =
+    input.ancPacketsPerFrameCount > 32 || input.ancPayloadBitrateKbps > 2048;
+
+  if (ancillaryPacketBurstOrBitrateFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ancCountOrDataCountDcUdwOverreadDropped0ms: false,
+      forbiddenDidSdidChecksumOrUnauthorizedScte104SpliceRejected: false,
+      ancillaryPacketBurstOrBitrateFloodClamped: true,
+      st211040AncillaryStreamAccepted: false,
+      action: "clamp_st2110_40_anc_packet_burst_or_caption_bitrate_flood",
+      blockedReason:
+        "SMPTE_ST2110_40_ANC_PACKETS_PER_FRAME_OR_BITRATE_FLOOD_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    ancCountOrDataCountDcUdwOverreadDropped0ms: false,
+    forbiddenDidSdidChecksumOrUnauthorizedScte104SpliceRejected: false,
+    ancillaryPacketBurstOrBitrateFloodClamped: false,
+    st211040AncillaryStreamAccepted: true,
+    action: "accept_smpte_st2110_40_rfc8331_ancillary_data_rtp_stream",
+    blockedReason: "none",
+  };
+}
+
