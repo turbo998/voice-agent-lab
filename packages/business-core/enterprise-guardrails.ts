@@ -36812,6 +36812,234 @@ export function evaluateWebrtcSipRtpRfc6184H264AvcAndRfc6190SvcPayloadStapMtapNa
   };
 }
 
+// ============================================================================
+// Stage 190 (P373–P374 — 190-Stage Milestone):
+// - P373: Semiconductor Wafer Vapor-Phase Hydrogen Fluoride (VHF / Anhydrous
+//         HF + CH3OH/IPA/NH3 Chemical Oxide Removal COR) MEMS Sacrificial
+//         Oxide Release & Sublimation Bake Safety Guard (SEMI S2 / SEMI S6 /
+//         NFPA 318 / NFPA 704 / OSHA 1910.119 / OSHA 1910.1000)
+// - P374: WebRTC & SIP RTP Comfort Noise (RFC 3389), G.711.0 Lossless
+//         Compression (RFC 7655) & AMR-WB (RFC 4867) Security Guard (0ms
+//         RFC 3389 Order M>12 / RFC 7655 Prefix Frame Overread Drop, RFC 4867
+//         Illegal FT [10..13] / Octet-Aligned Mode Desync & >-6 dBov CN
+//         Acoustic Shock Reject, and CMR Oscillation / SID DTX Flood Clamp)
+// ============================================================================
+
+export interface SemiconductorWaferVaporPhaseHydrogenFluorideVhfAndCorMemsReleaseGuardInput {
+  readonly chamberId: string;
+  readonly anhydrousHfSourceVaporizerTemperatureCelsius: number;
+  readonly vhfProcessChamberPressureTorr: number;
+  readonly gasBoxExhaustHfSensorPpm: number;
+  readonly alcoholVaporizerHeadspacePercentLel: number;
+  readonly nh4fSiF6SublimationTrapDeltaPKpa: number;
+  readonly fabBayAmbientHfPpm: number;
+  readonly requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferVaporPhaseHydrogenFluorideVhfAndCorMemsReleaseGuardDecision {
+  readonly policyCode: "P373-SEMICONDUCTOR-WAFER-VAPOR-PHASE-HYDROGEN-FLUORIDE-VHF-ANHYDROUS-HF-AND-CHEMICAL-OXIDE-REMOVAL-COR-MEMS-RELEASE-SEMIS2-SEMIS6-NFPA318-NFPA704-OSHA1910119-OSHA19101000-ANHYDROUS-HF-CYLINDER-OVERPRESSURE-OR-CHAMBER-LEAK-TRIP-ALCOHOL-CATALYST-LEL-ISOLATION-AND-HF-BELOW-05PPM-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD";
+  readonly chamberId: string;
+  readonly vhfAndCorMemsReleaseProcessSafe: boolean;
+  readonly anhydrousHfOvertempOverpressureOrGasBoxLeakTripped0ms: boolean;
+  readonly alcoholCatalystLelOrSublimationTrapClogIsolated: boolean;
+  readonly ambientHfCalciumGluconateScbaLotoRequired: boolean;
+  readonly action:
+    | "allow_vhf_and_cor_mems_sacrificial_oxide_release_process"
+    | "trip_anhydrous_hf_cylinder_pneumatic_esv_and_rfo_valve_with_dry_n2_scrubber_purge_in_0ms"
+    | "isolate_methanol_ipa_catalyst_vaporizer_and_switch_redundant_heated_nh4fsif6_sublimation_trap"
+    | "lock_vhf_cor_chamber_transfer_gate_until_hf_below_0_5ppm_calcium_gluconate_station_scba_and_loto_verified";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferVaporPhaseHydrogenFluorideVhfAnhydrousHfAndChemicalOxideRemovalCorMemsReleaseSemiS2SemiS6Nfpa318Nfpa704Osha1910119Osha19101000AnhydrousHfCylinderOverpressureOrChamberLeakTripAlcoholCatalystLelIsolationAndHfBelow05PpmCalciumGluconateScbaLotoGuard(
+  input: SemiconductorWaferVaporPhaseHydrogenFluorideVhfAndCorMemsReleaseGuardInput,
+): SemiconductorWaferVaporPhaseHydrogenFluorideVhfAndCorMemsReleaseGuardDecision {
+  const policyCode =
+    "P373-SEMICONDUCTOR-WAFER-VAPOR-PHASE-HYDROGEN-FLUORIDE-VHF-ANHYDROUS-HF-AND-CHEMICAL-OXIDE-REMOVAL-COR-MEMS-RELEASE-SEMIS2-SEMIS6-NFPA318-NFPA704-OSHA1910119-OSHA19101000-ANHYDROUS-HF-CYLINDER-OVERPRESSURE-OR-CHAMBER-LEAK-TRIP-ALCOHOL-CATALYST-LEL-ISOLATION-AND-HF-BELOW-05PPM-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD" as const;
+
+  const anhydrousHfOvertempOverpressureOrGasBoxLeakTripped0ms =
+    input.anhydrousHfSourceVaporizerTemperatureCelsius > 42 ||
+    input.vhfProcessChamberPressureTorr > 350 ||
+    input.gasBoxExhaustHfSensorPpm >= 1.5;
+
+  const alcoholCatalystLelOrSublimationTrapClogIsolated =
+    input.alcoholVaporizerHeadspacePercentLel >= 20 ||
+    input.nh4fSiF6SublimationTrapDeltaPKpa > 18;
+
+  const ambientHfCalciumGluconateScbaLotoRequired =
+    input.fabBayAmbientHfPpm >= 0.5 ||
+    /bypass_anhydrous_hf_esv|open_vhf_chamber_without_n2_purge|override_alcohol_lel_interlock|disable_hf_scrubber/i.test(
+      input.requestedVoiceAction,
+    );
+
+  if (anhydrousHfOvertempOverpressureOrGasBoxLeakTripped0ms) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      vhfAndCorMemsReleaseProcessSafe: false,
+      anhydrousHfOvertempOverpressureOrGasBoxLeakTripped0ms: true,
+      alcoholCatalystLelOrSublimationTrapClogIsolated,
+      ambientHfCalciumGluconateScbaLotoRequired,
+      action:
+        "trip_anhydrous_hf_cylinder_pneumatic_esv_and_rfo_valve_with_dry_n2_scrubber_purge_in_0ms",
+      blockedReason:
+        "anhydrous_hf_vaporizer_over_42c_or_chamber_over_350torr_or_gas_box_hf_at_or_above_1_5ppm_0ms_esv_trip",
+    };
+  }
+
+  if (alcoholCatalystLelOrSublimationTrapClogIsolated) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      vhfAndCorMemsReleaseProcessSafe: false,
+      anhydrousHfOvertempOverpressureOrGasBoxLeakTripped0ms: false,
+      alcoholCatalystLelOrSublimationTrapClogIsolated: true,
+      ambientHfCalciumGluconateScbaLotoRequired,
+      action:
+        "isolate_methanol_ipa_catalyst_vaporizer_and_switch_redundant_heated_nh4fsif6_sublimation_trap",
+      blockedReason:
+        "methanol_ipa_catalyst_vaporizer_at_or_above_20pct_lel_or_nh4fsif6_sublimation_trap_deltap_over_18kpa_isolated",
+    };
+  }
+
+  if (ambientHfCalciumGluconateScbaLotoRequired) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      vhfAndCorMemsReleaseProcessSafe: false,
+      anhydrousHfOvertempOverpressureOrGasBoxLeakTripped0ms: false,
+      alcoholCatalystLelOrSublimationTrapClogIsolated: false,
+      ambientHfCalciumGluconateScbaLotoRequired: true,
+      action:
+        "lock_vhf_cor_chamber_transfer_gate_until_hf_below_0_5ppm_calcium_gluconate_station_scba_and_loto_verified",
+      blockedReason:
+        "fab_bay_ambient_hf_at_or_above_0_5ppm_or_unsafe_vhf_voice_override_calcium_gluconate_scba_loto_required",
+    };
+  }
+
+  return {
+    policyCode,
+    chamberId: input.chamberId,
+    vhfAndCorMemsReleaseProcessSafe: true,
+    anhydrousHfOvertempOverpressureOrGasBoxLeakTripped0ms: false,
+    alcoholCatalystLelOrSublimationTrapClogIsolated: false,
+    ambientHfCalciumGluconateScbaLotoRequired: false,
+    action: "allow_vhf_and_cor_mems_sacrificial_oxide_release_process",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc3389ComfortNoiseRfc7655G7110LosslessAndRfc4867AmrWbPayloadGuardInput {
+  readonly sessionId: string;
+  readonly rfc3389ModelOrderM: number;
+  readonly declaredSubframeBytes: number;
+  readonly rtpPayloadRemainingBytes: number;
+  readonly rfc7655DecodedSamplesPerFrame: number;
+  readonly amrWbFrameTypeIndex: number;
+  readonly amrWbOctetAlignedSignalingMatchesPayload: boolean;
+  readonly cnNoiseLevelNegativeDbov: number;
+  readonly cmrOrSidUpdatesPerSecond: number;
+}
+
+export interface WebrtcSipRtpRfc3389ComfortNoiseRfc7655G7110LosslessAndRfc4867AmrWbPayloadGuardDecision {
+  readonly policyCode: "P374-WEBRTC-SIP-RTP-RFC3389-COMFORT-NOISE-RFC7655-G7110-LOSSLESS-AND-RFC4867-AMR-WB-PAYLOAD-CN-ORDER-OVERREAD-G7110-PREFIX-OVERFLOW-AMRWB-ILLEGAL-FT-MODE-DESYNC-AND-CMR-SID-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly rfc3389Rfc7655AndRfc4867PayloadHealthy: boolean;
+  readonly cnOrderOverreadOrG7110PrefixExpansionDropped0ms: boolean;
+  readonly amrWbIllegalFtModeDesyncOrCnAcousticShockRejected: boolean;
+  readonly cmrOscillationOrSidDtxFloodClamped: boolean;
+  readonly action:
+    | "accept_rfc3389_cn_rfc7655_g7110_and_rfc4867_amrwb_rtp_payload"
+    | "drop_rfc3389_cn_order_over_12_subframe_overread_or_rfc7655_g7110_over_320_sample_expansion_in_0ms"
+    | "reject_rfc4867_amrwb_reserved_ft_10_13_octet_align_desync_or_rfc3389_cn_above_minus6dbov_acoustic_shock"
+    | "clamp_rfc4867_cmr_codec_mode_oscillation_or_rfc3389_sid_dtx_update_flood";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc3389ComfortNoiseRfc7655G7110LosslessAndRfc4867AmrWbPayloadCnOrderOverreadG7110PrefixOverflowAmrWbIllegalFtModeDesyncAndCmrSidFloodGuard(
+  input: WebrtcSipRtpRfc3389ComfortNoiseRfc7655G7110LosslessAndRfc4867AmrWbPayloadGuardInput,
+): WebrtcSipRtpRfc3389ComfortNoiseRfc7655G7110LosslessAndRfc4867AmrWbPayloadGuardDecision {
+  const policyCode =
+    "P374-WEBRTC-SIP-RTP-RFC3389-COMFORT-NOISE-RFC7655-G7110-LOSSLESS-AND-RFC4867-AMR-WB-PAYLOAD-CN-ORDER-OVERREAD-G7110-PREFIX-OVERFLOW-AMRWB-ILLEGAL-FT-MODE-DESYNC-AND-CMR-SID-FLOOD-GUARD" as const;
+
+  const cnOrderOverreadOrG7110PrefixExpansionDropped0ms =
+    input.rfc3389ModelOrderM < 0 ||
+    input.rfc3389ModelOrderM > 12 ||
+    input.rtpPayloadRemainingBytes < 1 ||
+    input.declaredSubframeBytes > input.rtpPayloadRemainingBytes ||
+    input.rfc7655DecodedSamplesPerFrame > 320;
+
+  const amrWbReservedFt =
+    input.amrWbFrameTypeIndex < 0 ||
+    input.amrWbFrameTypeIndex > 15 ||
+    (input.amrWbFrameTypeIndex >= 10 && input.amrWbFrameTypeIndex <= 13);
+
+  const amrWbIllegalFtModeDesyncOrCnAcousticShockRejected =
+    amrWbReservedFt ||
+    !input.amrWbOctetAlignedSignalingMatchesPayload ||
+    input.cnNoiseLevelNegativeDbov < 6;
+
+  const cmrOscillationOrSidDtxFloodClamped =
+    input.cmrOrSidUpdatesPerSecond > 25;
+
+  if (cnOrderOverreadOrG7110PrefixExpansionDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc3389Rfc7655AndRfc4867PayloadHealthy: false,
+      cnOrderOverreadOrG7110PrefixExpansionDropped0ms: true,
+      amrWbIllegalFtModeDesyncOrCnAcousticShockRejected,
+      cmrOscillationOrSidDtxFloodClamped,
+      action:
+        "drop_rfc3389_cn_order_over_12_subframe_overread_or_rfc7655_g7110_over_320_sample_expansion_in_0ms",
+      blockedReason:
+        "rfc3389_cn_order_outside_0_12_or_subframe_bytes_exceed_payload_or_rfc7655_g7110_samples_over_320_0ms_drop",
+    };
+  }
+
+  if (amrWbIllegalFtModeDesyncOrCnAcousticShockRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc3389Rfc7655AndRfc4867PayloadHealthy: false,
+      cnOrderOverreadOrG7110PrefixExpansionDropped0ms: false,
+      amrWbIllegalFtModeDesyncOrCnAcousticShockRejected: true,
+      cmrOscillationOrSidDtxFloodClamped,
+      action:
+        "reject_rfc4867_amrwb_reserved_ft_10_13_octet_align_desync_or_rfc3389_cn_above_minus6dbov_acoustic_shock",
+      blockedReason:
+        "rfc4867_amrwb_reserved_ft_10_13_or_octet_align_desync_or_rfc3389_cn_noise_level_above_minus6dbov_rejected",
+    };
+  }
+
+  if (cmrOscillationOrSidDtxFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc3389Rfc7655AndRfc4867PayloadHealthy: false,
+      cnOrderOverreadOrG7110PrefixExpansionDropped0ms: false,
+      amrWbIllegalFtModeDesyncOrCnAcousticShockRejected: false,
+      cmrOscillationOrSidDtxFloodClamped: true,
+      action:
+        "clamp_rfc4867_cmr_codec_mode_oscillation_or_rfc3389_sid_dtx_update_flood",
+      blockedReason:
+        "rfc4867_cmr_or_rfc3389_sid_dtx_updates_over_25_per_sec_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc3389Rfc7655AndRfc4867PayloadHealthy: true,
+    cnOrderOverreadOrG7110PrefixExpansionDropped0ms: false,
+    amrWbIllegalFtModeDesyncOrCnAcousticShockRejected: false,
+    cmrOscillationOrSidDtxFloodClamped: false,
+    action: "accept_rfc3389_cn_rfc7655_g7110_and_rfc4867_amrwb_rtp_payload",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
