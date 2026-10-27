@@ -32454,3 +32454,198 @@ export function evaluateWebrtcSipRtpAmwaNmosIs04Is05Is09Bcp00301RegistryAndConne
     blockedReason: "none",
   };
 }
+
+
+export interface SemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuardInput {
+  readonly sourceVesselId: string;
+  readonly euvForelineOxygenConcentrationPercent: number;
+  readonly h2AbatementBurnerFlameVerified: boolean;
+  readonly consecutiveMissedTinDroplets: number;
+  readonly tinDropletNozzlePressureMpa: number;
+  readonly euvVesselOrTinCatcherMaintenanceRequested: boolean;
+  readonly stannaneSnh4PurgeAndMoltenTinFreezeScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuardDecision {
+  readonly policyCode: "P331-SEMICONDUCTOR-EUV-LPP-SOURCE-MOLTEN-TIN-DROPLET-30KW-CO2-LASER-AND-H2-COLLECTOR-PURGE-SEMIS2-SEMIS6-NFPA318-NFPA69-IEC60825-OSHA19101000-H2-VESSEL-O2-INTRUSION-ABATEMENT-TRIP-CO2-LASER-BACK-REFLECTION-QUENCH-AND-STANNANE-SNH4-SCBA-LOTO-GUARD";
+  readonly sourceVesselId: string;
+  readonly h2VesselO2IntrusionOrAbatementLossTripped0ms: boolean;
+  readonly co2LaserBackReflectionOrSnPressureQuenched: boolean;
+  readonly stannaneSnh4AndMoltenTinFreezeScbaLotoLocked: boolean;
+  readonly euvLppSourceOperationApproved: boolean;
+  readonly action:
+    | "approve_semiconductor_euv_lpp_source_operation"
+    | "trip_euv_lpp_h2_supply_and_flood_exhaust_foreline_with_n2_in_0ms"
+    | "quench_euv_co2_drive_laser_seed_and_close_high_power_beam_shutter"
+    | "lock_euv_source_vessel_and_require_stannane_purge_and_sn_freeze_scba_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard(
+  input: SemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuardInput
+): SemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuardDecision {
+  const policyCode =
+    "P331-SEMICONDUCTOR-EUV-LPP-SOURCE-MOLTEN-TIN-DROPLET-30KW-CO2-LASER-AND-H2-COLLECTOR-PURGE-SEMIS2-SEMIS6-NFPA318-NFPA69-IEC60825-OSHA19101000-H2-VESSEL-O2-INTRUSION-ABATEMENT-TRIP-CO2-LASER-BACK-REFLECTION-QUENCH-AND-STANNANE-SNH4-SCBA-LOTO-GUARD" as const;
+
+  const h2VesselO2IntrusionOrAbatementLossTripped0ms =
+    input.euvForelineOxygenConcentrationPercent > 0.5 || !input.h2AbatementBurnerFlameVerified;
+
+  const co2LaserBackReflectionOrSnPressureQuenched =
+    input.consecutiveMissedTinDroplets > 3 ||
+    input.tinDropletNozzlePressureMpa > 45.0 ||
+    input.tinDropletNozzlePressureMpa < 5.0;
+
+  const stannaneSnh4AndMoltenTinFreezeScbaLotoLocked =
+    input.euvVesselOrTinCatcherMaintenanceRequested &&
+    !input.stannaneSnh4PurgeAndMoltenTinFreezeScbaLotoVerified;
+
+  if (h2VesselO2IntrusionOrAbatementLossTripped0ms) {
+    return {
+      policyCode,
+      sourceVesselId: input.sourceVesselId,
+      h2VesselO2IntrusionOrAbatementLossTripped0ms: true,
+      co2LaserBackReflectionOrSnPressureQuenched,
+      stannaneSnh4AndMoltenTinFreezeScbaLotoLocked,
+      euvLppSourceOperationApproved: false,
+      action: "trip_euv_lpp_h2_supply_and_flood_exhaust_foreline_with_n2_in_0ms",
+      blockedReason:
+        "euv_lpp_foreline_oxygen_above_0_5pct_in_hydrogen_exhaust_or_h2_abatement_burner_flameout",
+    };
+  }
+
+  if (co2LaserBackReflectionOrSnPressureQuenched) {
+    return {
+      policyCode,
+      sourceVesselId: input.sourceVesselId,
+      h2VesselO2IntrusionOrAbatementLossTripped0ms: false,
+      co2LaserBackReflectionOrSnPressureQuenched: true,
+      stannaneSnh4AndMoltenTinFreezeScbaLotoLocked,
+      euvLppSourceOperationApproved: false,
+      action: "quench_euv_co2_drive_laser_seed_and_close_high_power_beam_shutter",
+      blockedReason:
+        "euv_30kw_co2_drive_laser_missed_over_3_consecutive_tin_droplets_or_sn_nozzle_pressure_out_of_5_to_45mpa_bounds",
+    };
+  }
+
+  if (stannaneSnh4AndMoltenTinFreezeScbaLotoLocked) {
+    return {
+      policyCode,
+      sourceVesselId: input.sourceVesselId,
+      h2VesselO2IntrusionOrAbatementLossTripped0ms: false,
+      co2LaserBackReflectionOrSnPressureQuenched: false,
+      stannaneSnh4AndMoltenTinFreezeScbaLotoLocked: true,
+      euvLppSourceOperationApproved: false,
+      action: "lock_euv_source_vessel_and_require_stannane_purge_and_sn_freeze_scba_loto",
+      blockedReason:
+        "euv_source_vessel_or_tin_catcher_open_requested_without_stannane_snh4_purge_and_molten_tin_freeze_scba_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    sourceVesselId: input.sourceVesselId,
+    h2VesselO2IntrusionOrAbatementLossTripped0ms: false,
+    co2LaserBackReflectionOrSnPressureQuenched: false,
+    stannaneSnh4AndMoltenTinFreezeScbaLotoLocked: false,
+    euvLppSourceOperationApproved: true,
+    action: "approve_semiconductor_euv_lpp_source_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuardInput {
+  readonly sessionId: string;
+  readonly declaredSt2059TlvLengthBytes: number;
+  readonly actualPtpAnnounceBytesRemaining: number;
+  readonly taiUtcOffsetStepJumpSeconds: number;
+  readonly dropFrameToPtpEpochDriftFrames: number;
+  readonly hfrSubframeBinaryGroupFlagInverted: boolean;
+  readonly st2059PtpMessagesPerSecond: number;
+  readonly timecodeJamSyncRejamsPerMinute: number;
+}
+
+export interface WebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuardDecision {
+  readonly policyCode: "P332-WEBRTC-SIP-RTP-SMPTE-ST2059-1-ST2059-2-AND-ST12-2-TIMECODE-GENERATION-TLV-OVERREAD-TAI-UTC-LEAP-SECOND-SPOOF-DROP-FRAME-DRIFT-HFR-SUBFRAME-INVERSION-AND-PTP-ANNOUNCE-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly st2059TlvOverreadOrLeapSecondSpoofDropped0ms: boolean;
+  readonly dropFrameDriftOrHfrSubframeInversionRejected: boolean;
+  readonly ptpMessageFloodOrJamSyncOscillationClamped: boolean;
+  readonly st2059St122TimecodeStreamAccepted: boolean;
+  readonly action:
+    | "accept_smpte_st2059_st12_2_timecode_stream"
+    | "drop_st2059_2_tlv_overread_or_forged_tai_utc_leap_second_packet_in_0ms"
+    | "reject_st2059_1_st12_2_drop_frame_drift_or_hfr_subframe_flag_inversion"
+    | "clamp_st2059_ptp_message_flood_or_timecode_jam_sync_oscillation";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard(
+  input: WebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuardInput
+): WebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuardDecision {
+  const policyCode =
+    "P332-WEBRTC-SIP-RTP-SMPTE-ST2059-1-ST2059-2-AND-ST12-2-TIMECODE-GENERATION-TLV-OVERREAD-TAI-UTC-LEAP-SECOND-SPOOF-DROP-FRAME-DRIFT-HFR-SUBFRAME-INVERSION-AND-PTP-ANNOUNCE-FLOOD-GUARD" as const;
+
+  const st2059TlvOverreadOrLeapSecondSpoofDropped0ms =
+    input.declaredSt2059TlvLengthBytes <= 0 ||
+    input.declaredSt2059TlvLengthBytes > input.actualPtpAnnounceBytesRemaining ||
+    Math.abs(input.taiUtcOffsetStepJumpSeconds) > 1;
+
+  const dropFrameDriftOrHfrSubframeInversionRejected =
+    Math.abs(input.dropFrameToPtpEpochDriftFrames) > 2 || input.hfrSubframeBinaryGroupFlagInverted;
+
+  const ptpMessageFloodOrJamSyncOscillationClamped =
+    input.st2059PtpMessagesPerSecond > 256 || input.timecodeJamSyncRejamsPerMinute > 3;
+
+  if (st2059TlvOverreadOrLeapSecondSpoofDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st2059TlvOverreadOrLeapSecondSpoofDropped0ms: true,
+      dropFrameDriftOrHfrSubframeInversionRejected,
+      ptpMessageFloodOrJamSyncOscillationClamped,
+      st2059St122TimecodeStreamAccepted: false,
+      action: "drop_st2059_2_tlv_overread_or_forged_tai_utc_leap_second_packet_in_0ms",
+      blockedReason:
+        "st2059_2_management_tlv_length_exceeds_ptp_announce_bytes_or_forged_tai_utc_leap_second_jump",
+    };
+  }
+
+  if (dropFrameDriftOrHfrSubframeInversionRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st2059TlvOverreadOrLeapSecondSpoofDropped0ms: false,
+      dropFrameDriftOrHfrSubframeInversionRejected: true,
+      ptpMessageFloodOrJamSyncOscillationClamped,
+      st2059St122TimecodeStreamAccepted: false,
+      action: "reject_st2059_1_st12_2_drop_frame_drift_or_hfr_subframe_flag_inversion",
+      blockedReason:
+        "st2059_1_st12_2_drop_frame_drift_exceeds_2_frames_against_ptp_epoch_or_hfr_subframe_flag_inverted",
+    };
+  }
+
+  if (ptpMessageFloodOrJamSyncOscillationClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st2059TlvOverreadOrLeapSecondSpoofDropped0ms: false,
+      dropFrameDriftOrHfrSubframeInversionRejected: false,
+      ptpMessageFloodOrJamSyncOscillationClamped: true,
+      st2059St122TimecodeStreamAccepted: false,
+      action: "clamp_st2059_ptp_message_flood_or_timecode_jam_sync_oscillation",
+      blockedReason:
+        "st2059_ptp_message_rate_exceeds_256_per_sec_or_timecode_jam_sync_oscillation_above_3_per_min",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    st2059TlvOverreadOrLeapSecondSpoofDropped0ms: false,
+    dropFrameDriftOrHfrSubframeInversionRejected: false,
+    ptpMessageFloodOrJamSyncOscillationClamped: false,
+    st2059St122TimecodeStreamAccepted: true,
+    action: "accept_smpte_st2059_st12_2_timecode_stream",
+    blockedReason: "none",
+  };
+}
