@@ -27692,3 +27692,237 @@ export function evaluateWebrtcSipRtpSmpteSt211040AncillaryDataRfc8331SmpteSt2911
       blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
   };
 }
+
+// ============================================================================
+// Stage 147 (P287-P288): Carbon Fiber PAN Precursor Oxidation Oven & LT/HT
+// Carbonization Furnace Guard + WebRTC & SIP RTP SMPTE ST 2110-30 / ST 2110-31
+// (AES67 Linear PCM & AES3 AM824 Transparent Audio / RFC 3190) Guard
+// ============================================================================
+
+export interface CarbonFiberPanPrecursorOxidationOvenLtHtCarbonizationFurnaceGuardInput {
+  lineRunId: string;
+  oxidationOvenZoneTemperatureC: number;
+  oxidationExothermRateOfRiseCPerMin: number;
+  oxidationRecirculationAirVelocityMPerSec: number;
+  ovenExhaustTarSiloxaneHcnLelPct: number;
+  ltHtCarbonizationSlotO2IngressPct: number;
+  tarExhaustCondenserDifferentialPressureMbar: number;
+  towTensionPercentOfSetpoint: number;
+  ambientHydrogenCyanidePpm: number;
+  ambientAmmoniaPpm: number;
+  conductiveCarbonFiberFilamentDustMgPerM3: number;
+  rtoCombustionChamberTemperatureC: number;
+  nema12PositivePressureMccAndScbaLotoVerified: boolean;
+}
+
+export interface CarbonFiberPanPrecursorOxidationOvenLtHtCarbonizationFurnaceGuardAssessment {
+  policyCode: "P287-CARBON-FIBER-PAN-PRECURSOR-THERMAL-STABILIZATION-OXIDATION-OVEN-LT-HT-CARBONIZATION-FURNACE-NFPA86-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PAN-CYCLIZATION-EXOTHERMIC-RUNAWAY-TAR-SILOXANE-LEL-HCN-NH3-WATER-SEAL-BREACH-AND-CONDUCTIVE-CHOPPED-FIBER-ARC-SCBA-LOTO-GUARD";
+  lineRunId: string;
+  panCyclizationExothermRunawayOrTarLelDeflagrationPreempted0ms: boolean;
+  ltHtSlotO2IngressTarCondenserPlugOrTowBreakIsolated: boolean;
+  hcnNh3ConductiveFiberArcFlashRtoAndScbaLotoLocked: boolean;
+  carbonFiberOxidationCarbonizationApproved: boolean;
+  action:
+    | "approve_pan_oxidation_and_lt_ht_carbonization_with_n2_labyrinth_seal_and_rto_interlock"
+    | "trip_oxidation_oven_heaters_trigger_water_mist_n2_deluge_and_vent_to_rto_in_0ms"
+    | "isolate_creel_drive_boost_n2_slot_curtain_purge_and_switch_standby_tar_condenser"
+    | "lock_carbon_fiber_line_until_hcn_nh3_rto_850c_nema12_mcc_purge_and_scba_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateCarbonFiberPanPrecursorOxidationOvenLtHtCarbonizationFurnaceNfpa86Nfpa69ApiRp521Osha1910119Osha19101000CyclizationExothermRunawayTarLelSlotO2IngressAndHcnConductiveFiberScbaLotoGuard(
+  input: CarbonFiberPanPrecursorOxidationOvenLtHtCarbonizationFurnaceGuardInput
+): CarbonFiberPanPrecursorOxidationOvenLtHtCarbonizationFurnaceGuardAssessment {
+  const blockedReasons: string[] = [];
+
+  // 1. PAN oxidation oven exothermic cyclization runaway (>= 295.0 C or < 180.0 C, dT/dt >= 8.0 C/min, airflow < 1.2 m/s) or tar/siloxane/HCN exhaust >= 25.0% LEL
+  const panCyclizationExothermRunawayOrTarLelDeflagrationPreempted0ms =
+    input.oxidationOvenZoneTemperatureC >= 295.0 ||
+    input.oxidationOvenZoneTemperatureC < 180.0 ||
+    input.oxidationExothermRateOfRiseCPerMin >= 8.0 ||
+    input.oxidationRecirculationAirVelocityMPerSec < 1.2 ||
+    input.ovenExhaustTarSiloxaneHcnLelPct >= 25.0;
+
+  if (panCyclizationExothermRunawayOrTarLelDeflagrationPreempted0ms) {
+    blockedReasons.push(
+      "PAN_OXIDATION_OVEN_NITRILE_CYCLIZATION_EXOTHERMIC_RUNAWAY_AIRFLOW_STALL_OR_TAR_SILOXANE_25PCT_LEL_PREEMPTED_0MS"
+    );
+  }
+
+  // 2. LT/HT carbonization furnace N2 labyrinth seal O2 ingress (>= 0.5% into H2/CO/HCN/CH4 pyrolysis zone), tar condenser plugging (>= 15.0 mbar), or tow break/wrap-up (< 10% or >= 185% tension)
+  const ltHtSlotO2IngressTarCondenserPlugOrTowBreakIsolated =
+    input.ltHtCarbonizationSlotO2IngressPct >= 0.5 ||
+    input.tarExhaustCondenserDifferentialPressureMbar >= 15.0 ||
+    input.towTensionPercentOfSetpoint < 10.0 ||
+    input.towTensionPercentOfSetpoint >= 185.0;
+
+  if (ltHtSlotO2IngressTarCondenserPlugOrTowBreakIsolated) {
+    blockedReasons.push(
+      "LT_HT_CARBONIZATION_N2_LABYRINTH_SEAL_O2_INGRESS_TAR_CONDENSER_OVERPRESSURE_OR_TOW_WRAP_BREAK_ISOLATED"
+    );
+  }
+
+  // 3. Ambient HCN (>= 4.7 ppm OSHA Ceiling), NH3 (>= 25.0 ppm), conductive carbon-fiber dust (>= 1.5 mg/m3), RTO < 850 C, or unverified NEMA 12 positive-pressure MCC & SCBA LOTO
+  const hcnNh3ConductiveFiberArcFlashRtoAndScbaLotoLocked =
+    input.ambientHydrogenCyanidePpm >= 4.7 ||
+    input.ambientAmmoniaPpm >= 25.0 ||
+    input.conductiveCarbonFiberFilamentDustMgPerM3 >= 1.5 ||
+    input.rtoCombustionChamberTemperatureC < 850.0 ||
+    !input.nema12PositivePressureMccAndScbaLotoVerified;
+
+  if (hcnNh3ConductiveFiberArcFlashRtoAndScbaLotoLocked) {
+    blockedReasons.push(
+      "OSHA_1910_1000_HCN_4_7PPM_NH3_25PPM_CONDUCTIVE_CARBON_FIBER_MCC_ARC_RTO_850C_OR_SCBA_LOTO_LOCKED"
+    );
+  }
+
+  const carbonFiberOxidationCarbonizationApproved =
+    !panCyclizationExothermRunawayOrTarLelDeflagrationPreempted0ms &&
+    !ltHtSlotO2IngressTarCondenserPlugOrTowBreakIsolated &&
+    !hcnNh3ConductiveFiberArcFlashRtoAndScbaLotoLocked;
+
+  let action: CarbonFiberPanPrecursorOxidationOvenLtHtCarbonizationFurnaceGuardAssessment["action"] =
+    "approve_pan_oxidation_and_lt_ht_carbonization_with_n2_labyrinth_seal_and_rto_interlock";
+
+  if (panCyclizationExothermRunawayOrTarLelDeflagrationPreempted0ms) {
+    action =
+      "trip_oxidation_oven_heaters_trigger_water_mist_n2_deluge_and_vent_to_rto_in_0ms";
+  } else if (ltHtSlotO2IngressTarCondenserPlugOrTowBreakIsolated) {
+    action =
+      "isolate_creel_drive_boost_n2_slot_curtain_purge_and_switch_standby_tar_condenser";
+  } else if (hcnNh3ConductiveFiberArcFlashRtoAndScbaLotoLocked) {
+    action =
+      "lock_carbon_fiber_line_until_hcn_nh3_rto_850c_nema12_mcc_purge_and_scba_loto_verified";
+  }
+
+  return {
+    policyCode:
+      "P287-CARBON-FIBER-PAN-PRECURSOR-THERMAL-STABILIZATION-OXIDATION-OVEN-LT-HT-CARBONIZATION-FURNACE-NFPA86-NFPA69-APIRP521-OSHA1910119-OSHA19101000-PAN-CYCLIZATION-EXOTHERMIC-RUNAWAY-TAR-SILOXANE-LEL-HCN-NH3-WATER-SEAL-BREACH-AND-CONDUCTIVE-CHOPPED-FIBER-ARC-SCBA-LOTO-GUARD",
+    lineRunId: input.lineRunId,
+    panCyclizationExothermRunawayOrTarLelDeflagrationPreempted0ms,
+    ltHtSlotO2IngressTarCondenserPlugOrTowBreakIsolated,
+    hcnNh3ConductiveFiberArcFlashRtoAndScbaLotoLocked,
+    carbonFiberOxidationCarbonizationApproved,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211030St211031Aes67Aes3AudioGuardInput {
+  sessionId: string;
+  rtpPayloadBytes: number;
+  channelCount: number;
+  samplesPerChannelPerPacket: number;
+  bytesPerSampleOctets: number;
+  aes3SubframePreambleAndEvenParityValid: boolean;
+  nonPcmSmpte337DolbyEPayloadWithLinearPcmValidityBitZeroDetected: boolean;
+  ptpSt2059MediaClockOffsetNs: number;
+  negotiatedPtimeUs: number;
+  dscpEf46Prioritized: boolean;
+}
+
+export interface WebrtcSipRtpSmpteSt211030St211031Aes67Aes3AudioGuardAssessment {
+  policyCode: "P288-WEBRTC-SIP-RTP-SMPTE-ST2110-30-ST2110-31-AES67-AES3-LINEAR-PCM-TRANSPARENT-AUDIO-RFC3190-RFC3550-PACKET-TIME-CHANNEL-FRAME-SIZE-ALIGNMENT-OVERREAD-AES3-SUBFRAME-PREAMBLE-PARITY-VALIDITY-BIT-SHOCK-AND-PTP-ST2059-DSCP-EF-JITTER-GUARD";
+  sessionId: string;
+  channelFrameSampleSizeAlignmentOverreadDropped: boolean;
+  aes3PreambleParityOrUnflaggedNonPcmDolbyEShockBlocked: boolean;
+  ptpClockOffsetPtimeOrDscpEfDowngradeClamped: boolean;
+  st211030Or31AudioRtpPacketAccepted: boolean;
+  action:
+    | "accept_st2110_30_31_aes67_aes3_linear_pcm_or_am824_rtp_packet"
+    | "drop_st2110_30_31_channel_sample_frame_alignment_overread_in_0ms"
+    | "mute_and_reject_aes3_preamble_parity_error_or_unflagged_st337_dolby_e_acoustic_shock"
+    | "clamp_st2059_ptp_clock_drift_ptime_exceedance_and_remark_dscp_ef_46";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211030St211031Aes67Aes3LinearPcmTransparentAudioRfc3190ChannelFrameAlignmentOverreadAes3PreambleParityValidityBitAcousticShockAndPtpSt2059DscpEfGuard(
+  input: WebrtcSipRtpSmpteSt211030St211031Aes67Aes3AudioGuardInput
+): WebrtcSipRtpSmpteSt211030St211031Aes67Aes3AudioGuardAssessment {
+  const blockedReasons: string[] = [];
+
+  // 1. L16 (2B), L24 (3B), or AM824 (4B) channel-sample frame size alignment overread
+  const validBytesPerSample =
+    input.bytesPerSampleOctets === 2 ||
+    input.bytesPerSampleOctets === 3 ||
+    input.bytesPerSampleOctets === 4;
+  const expectedPayloadBytes =
+    input.channelCount *
+    input.samplesPerChannelPerPacket *
+    input.bytesPerSampleOctets;
+  const frameSampleBlockBytes = input.channelCount * input.bytesPerSampleOctets;
+
+  const channelFrameSampleSizeAlignmentOverreadDropped =
+    !validBytesPerSample ||
+    input.channelCount < 1 ||
+    input.channelCount > 64 ||
+    input.samplesPerChannelPerPacket < 1 ||
+    input.samplesPerChannelPerPacket > 192 ||
+    input.rtpPayloadBytes <= 0 ||
+    input.rtpPayloadBytes !== expectedPayloadBytes ||
+    frameSampleBlockBytes <= 0 ||
+    input.rtpPayloadBytes % frameSampleBlockBytes !== 0;
+
+  if (channelFrameSampleSizeAlignmentOverreadDropped) {
+    blockedReasons.push(
+      "SMPTE_ST2110_30_31_AES67_L16_L24_AM824_CHANNEL_SAMPLE_FRAME_ALIGNMENT_OVERREAD_DROPPED_0MS"
+    );
+  }
+
+  // 2. AES3 AM824 B/M/W subframe preamble / even parity error or unflagged Validity bit (V=0) non-PCM SMPTE ST 337 / Dolby E full-scale white-noise acoustic shock
+  const aes3PreambleParityOrUnflaggedNonPcmDolbyEShockBlocked =
+    !input.aes3SubframePreambleAndEvenParityValid ||
+    input.nonPcmSmpte337DolbyEPayloadWithLinearPcmValidityBitZeroDetected;
+
+  if (aes3PreambleParityOrUnflaggedNonPcmDolbyEShockBlocked) {
+    blockedReasons.push(
+      "SMPTE_ST2110_31_AES3_AM824_PREAMBLE_EVEN_PARITY_ERROR_OR_UNFLAGGED_V0_ST337_DOLBY_E_ACOUSTIC_SHOCK_BLOCKED"
+    );
+  }
+
+  // 3. SMPTE ST 2059-2 PTP media clock offset >= 1000 ns (1 us), packet time ptime > 4000 us (4 ms) or < 125 us, or missing DSCP EF (46) QoS prioritization
+  const ptpClockOffsetPtimeOrDscpEfDowngradeClamped =
+    Math.abs(input.ptpSt2059MediaClockOffsetNs) >= 1000 ||
+    input.negotiatedPtimeUs < 125 ||
+    input.negotiatedPtimeUs > 4000 ||
+    !input.dscpEf46Prioritized;
+
+  if (ptpClockOffsetPtimeOrDscpEfDowngradeClamped) {
+    blockedReasons.push(
+      "SMPTE_ST2110_30_ST2059_2_PTP_1US_CLOCK_OFFSET_PTIME_BOUNDS_OR_DSCP_EF_46_DOWNGRADE_CLAMPED"
+    );
+  }
+
+  const st211030Or31AudioRtpPacketAccepted =
+    !channelFrameSampleSizeAlignmentOverreadDropped &&
+    !aes3PreambleParityOrUnflaggedNonPcmDolbyEShockBlocked &&
+    !ptpClockOffsetPtimeOrDscpEfDowngradeClamped;
+
+  let action: WebrtcSipRtpSmpteSt211030St211031Aes67Aes3AudioGuardAssessment["action"] =
+    "accept_st2110_30_31_aes67_aes3_linear_pcm_or_am824_rtp_packet";
+
+  if (channelFrameSampleSizeAlignmentOverreadDropped) {
+    action = "drop_st2110_30_31_channel_sample_frame_alignment_overread_in_0ms";
+  } else if (aes3PreambleParityOrUnflaggedNonPcmDolbyEShockBlocked) {
+    action =
+      "mute_and_reject_aes3_preamble_parity_error_or_unflagged_st337_dolby_e_acoustic_shock";
+  } else if (ptpClockOffsetPtimeOrDscpEfDowngradeClamped) {
+    action =
+      "clamp_st2059_ptp_clock_drift_ptime_exceedance_and_remark_dscp_ef_46";
+  }
+
+  return {
+    policyCode:
+      "P288-WEBRTC-SIP-RTP-SMPTE-ST2110-30-ST2110-31-AES67-AES3-LINEAR-PCM-TRANSPARENT-AUDIO-RFC3190-RFC3550-PACKET-TIME-CHANNEL-FRAME-SIZE-ALIGNMENT-OVERREAD-AES3-SUBFRAME-PREAMBLE-PARITY-VALIDITY-BIT-SHOCK-AND-PTP-ST2059-DSCP-EF-JITTER-GUARD",
+    sessionId: input.sessionId,
+    channelFrameSampleSizeAlignmentOverreadDropped,
+    aes3PreambleParityOrUnflaggedNonPcmDolbyEShockBlocked,
+    ptpClockOffsetPtimeOrDscpEfDowngradeClamped,
+    st211030Or31AudioRtpPacketAccepted,
+    action,
+    blockedReason:
+      blockedReasons.length > 0 ? blockedReasons.join("; ") : "none",
+  };
+}
+

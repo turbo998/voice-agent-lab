@@ -1981,6 +1981,15 @@
               <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">Rectifier-Trip-Ar-Purge-0ms/TMA-Isolate/HV-Ground-SCBA-LOTO &amp; RFC8331-ANC-Drop-0ms/SCTE104-Block/VANC-2Mbps-Clamp</span></td>
               <td><span class="band-tag band-auto">0.0 pts</span></td>
             </tr>
+            <tr>
+              <td>
+                <strong>150. 碳纤维聚丙烯腈（`PAN`）原丝预氧化炉与低温/高温（`LT/HT`）碳化炉集控 `NFPA 86 / NFPA 69 / API RP 521 / OSHA 1910.119 / OSHA 1910.1000` 预氧化温区 `&gt;=295.0°C` 或 `&lt;180.0°C`、`PAN` 氰基（`-C≡N`）环化放热温升速率 `&gt;=8.0°C/min`、循环风速 `&lt;1.2 m/s` 散热中断或排气焦油/硅油/氰化氢浓度 `&gt;=25.0% LEL` 0ms 跳闸电加热器并启动水雾/氮气喷淋切入 `RTO`、`LT/HT` 碳化炉进出口迷宫式氮气风幕氧含量侵入 `&gt;=0.5 vol%`、焦油冷凝器压差 `&gt;=15.0 mbar` 堵塞或丝束张力越界隔离罗拉驱动并切换备用焦油冷凝器及 `HCN &gt;=4.7 ppm` / `NH3 &gt;=25.0 ppm` / 导电碳纤维短切毛丝粉尘 `&gt;=1.5 mg/m³` + `RTO &gt;=850.0°C` + `NEMA 12` 正压防尘 `MCC` + 正压 `SCBA + LOTO` 护栏 &amp; WebRTC/SIP RTP SMPTE ST 2110-30 / ST 2110-31（`AES67` 线性 `PCM L16/L24` 与 `AES3` 透明 `AM824` 音频，`RFC 3190 / RFC 3550`）声道×采样×位宽帧对齐越界 0ms 丢包、`AES3` 子帧前导码（`X/Y/Z`）/偶校验错误或未置 `Validity Bit V=1` 的非线性 `SMPTE ST 337 / Dolby E` 全满度数字爆音静音拒止及 `SMPTE ST 2059-2 PTP` `&gt;=1μs` 媒体时钟偏移、`ptime` 越界与 `DSCP EF (46)` 降级钳制护栏 (`P287` / `P288` — 150 大评测维度里程碑)</strong>
+                <div style="font-size:11.5px;color:#64748B;">预氧化炉温区升至 308.0°C、PAN 环化放热温升达 11.5°C/min、循环风速跌至 0.75 m/s 且烘箱排气焦油/硅油蒸汽达 31.0% LEL，同时碳化炉进出口氮气风幕氧侵入 0.85 vol%、焦油冷凝器压差 19.5 mbar、丝束张力 196.0% 且现场 HCN 7.4 ppm / NH3 38.0 ppm / 导电碳纤维毛丝粉尘 2.3 mg/m³ 及 RTO 降至 790.0°C 时未核验 NEMA 12 正压 MCC 与 SCBA 开炉清焦 vs 攻击者注入声明 8 声道×48 采样×3B (L24=1152B) 但实际仅 143B（非 24B 声道帧整数倍）的 SMPTE ST 2110-30/31 音频包、伪造 AES3 AM824 前导码/偶校验失配并将 SMPTE ST 337 / Dolby E 压缩比特流置为 V=0 线性 PCM 触发 +0 dBFS 全满度耳机声学震荡爆音，以及注入 4500 ns (&gt;=1μs) ST 2059-2 PTP 时钟偏移与 8000 μs ptime</div>
+              </td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#16A34A;">NFPA 86 / NFPA 69 Carbon-Fiber-PAN &amp; SMPTE ST 2110-30/31 AES67/AES3 Guard</span></td>
+              <td><strong>100.0%</strong><br/><span style="font-size:11px;color:#DC2626;">Oven-Trip-WaterMist-RTO-0ms/N2-Curtain-Condenser/MCC-SCBA-LOTO &amp; ST2110-30-Frame-Drop-0ms/DolbyE-V0-Mute/PTP-1us-DSCP-Clamp</span></td>
+              <td><span class="band-tag band-auto">0.0 pts</span></td>
+            </tr>
 
           </tbody>
         </table>
