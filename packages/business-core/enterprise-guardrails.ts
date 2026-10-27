@@ -36581,6 +36581,238 @@ export function evaluateWebrtcSipRtpRfc7587OpusPayloadAndRfc6716TocFramePackingO
   };
 }
 
+// ============================================================================
+// Stage 189 (P371–P372):
+// - P371: Semiconductor Wafer Atomic Layer Etching (ALE — Self-Limiting
+//         Thermal & Plasma Cl2/BCl3/SF6/HF Modification + Ar+/TMA/Sn(acac)2
+//         Ligand-Exchange Desorption) & Supercritical CO2 (scCO2) High-Aspect-
+//         Ratio (HAR) Pattern Collapse Prevention Drying Safety Guard
+//         (SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / ASME BPVC Section VIII /
+//         OSHA 1910.119 / OSHA 1910.1000)
+// - P372: WebRTC & SIP RTP H.264 / AVC Payload (RFC 6184) & SVC Scalable Video
+//         Coding (RFC 6190) Security Guard (0ms STAP/MTAP NALU Length Overread
+//         & FU-A/FU-B S=1&E=1 Fragmentation Bomb Drop, SPS/PPS Exp-Golomb
+//         32-Bit Overflow & SVC Dependency-ID Desync Reject, and Macroblock
+//         max-mbps / Keyframe Flood Clamp)
+// ============================================================================
+
+export interface SemiconductorWaferAtomicLayerEtchingAleAndSupercriticalCo2SccO2HarDryingGuardInput {
+  readonly chamberId: string;
+  readonly alePurgeStepDurationMs: number;
+  readonly modifierLigandValveSimultaneousOpenMs: number;
+  readonly sccO2ChamberPressureBar: number;
+  readonly sccO2ChamberTemperatureCelsius: number;
+  readonly forelineN2DilutionSlm: number;
+  readonly fabBayCo2ConcentrationPpm: number;
+  readonly fabBayHfConcentrationPpm: number;
+  readonly requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferAtomicLayerEtchingAleAndSupercriticalCo2SccO2HarDryingGuardDecision {
+  readonly policyCode: "P371-SEMICONDUCTOR-WAFER-ATOMIC-LAYER-ETCHING-ALE-AND-SUPERCRITICAL-CO2-SCCO2-HAR-DRYING-SEMIS2-SEMIS6-NFPA318-NFPA69-ASMEBPVC-OSHA1910119-OSHA19101000-ALE-PRECURSOR-CO-DOSING-OVERLAP-OR-SCCO2-VESSEL-OVERPRESSURE-TRIP-PYROPHORIC-TMA-FORELINE-PURGE-AND-DEPRESSURIZATION-ASPHYXIATION-SCBA-LOTO-GUARD";
+  readonly chamberId: string;
+  readonly aleAndSccO2HarDryingProcessSafe: boolean;
+  readonly alePrecursorCoDosingOverlapOrSccO2OverpressureTripped0ms: boolean;
+  readonly pyrophoricTmaForelineN2DilutionOrSubcriticalCondensationIsolated: boolean;
+  readonly depressurizationCo2AsphyxiationOrHfScbaLotoRequired: boolean;
+  readonly action:
+    | "allow_ale_and_scco2_har_drying_process"
+    | "trip_ale_modifier_ligand_dbb_valves_and_scco2_high_pressure_pump_with_asme_relief_vent_to_scrubber_in_0ms"
+    | "isolate_pyrophoric_tma_ligand_ampoule_restore_foreline_n2_dilution_and_maintain_supercritical_phase_interlock"
+    | "lock_scco2_and_ale_chamber_door_until_depressurized_to_1atm_co2_below_5000ppm_hf_below_0_5ppm_scba_and_loto_verified";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferAtomicLayerEtchingAleAndSupercriticalCo2SccO2HarDryingSemiS2SemiS6Nfpa318Nfpa69AsmeBpvcSectionViiiOsha1910119Osha19101000AlePrecursorCoDosingOverlapOrSccO2VesselOverpressureTripPyrophoricTmaForelinePurgeAndDepressurizationAsphyxiationScbaLotoGuard(
+  input: SemiconductorWaferAtomicLayerEtchingAleAndSupercriticalCo2SccO2HarDryingGuardInput,
+): SemiconductorWaferAtomicLayerEtchingAleAndSupercriticalCo2SccO2HarDryingGuardDecision {
+  const policyCode =
+    "P371-SEMICONDUCTOR-WAFER-ATOMIC-LAYER-ETCHING-ALE-AND-SUPERCRITICAL-CO2-SCCO2-HAR-DRYING-SEMIS2-SEMIS6-NFPA318-NFPA69-ASMEBPVC-OSHA1910119-OSHA19101000-ALE-PRECURSOR-CO-DOSING-OVERLAP-OR-SCCO2-VESSEL-OVERPRESSURE-TRIP-PYROPHORIC-TMA-FORELINE-PURGE-AND-DEPRESSURIZATION-ASPHYXIATION-SCBA-LOTO-GUARD" as const;
+
+  const alePrecursorCoDosingOverlapOrSccO2OverpressureTripped0ms =
+    input.modifierLigandValveSimultaneousOpenMs > 0 ||
+    input.alePurgeStepDurationMs < 500 ||
+    input.sccO2ChamberPressureBar > 185 ||
+    input.sccO2ChamberTemperatureCelsius > 85;
+
+  const pyrophoricTmaForelineN2DilutionOrSubcriticalCondensationIsolated =
+    input.forelineN2DilutionSlm < 35 ||
+    (input.sccO2ChamberPressureBar >= 73.8 &&
+      input.sccO2ChamberTemperatureCelsius < 32);
+
+  const depressurizationCo2AsphyxiationOrHfScbaLotoRequired =
+    input.fabBayCo2ConcentrationPpm >= 5000 ||
+    input.fabBayHfConcentrationPpm >= 0.5 ||
+    /bypass_ale_purge_interlock|open_scco2_vessel_under_pressure|override_tma_n2_dilution|vent_co2_to_fab_bay/i.test(
+      input.requestedVoiceAction,
+    );
+
+  if (alePrecursorCoDosingOverlapOrSccO2OverpressureTripped0ms) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      aleAndSccO2HarDryingProcessSafe: false,
+      alePrecursorCoDosingOverlapOrSccO2OverpressureTripped0ms: true,
+      pyrophoricTmaForelineN2DilutionOrSubcriticalCondensationIsolated,
+      depressurizationCo2AsphyxiationOrHfScbaLotoRequired,
+      action:
+        "trip_ale_modifier_ligand_dbb_valves_and_scco2_high_pressure_pump_with_asme_relief_vent_to_scrubber_in_0ms",
+      blockedReason:
+        "ale_modifier_ligand_simultaneous_valve_overlap_or_purge_below_500ms_or_scco2_vessel_over_185bar_85c_0ms_trip",
+    };
+  }
+
+  if (pyrophoricTmaForelineN2DilutionOrSubcriticalCondensationIsolated) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      aleAndSccO2HarDryingProcessSafe: false,
+      alePrecursorCoDosingOverlapOrSccO2OverpressureTripped0ms: false,
+      pyrophoricTmaForelineN2DilutionOrSubcriticalCondensationIsolated: true,
+      depressurizationCo2AsphyxiationOrHfScbaLotoRequired,
+      action:
+        "isolate_pyrophoric_tma_ligand_ampoule_restore_foreline_n2_dilution_and_maintain_supercritical_phase_interlock",
+      blockedReason:
+        "pyrophoric_tma_foreline_n2_dilution_below_35slm_or_scco2_subcritical_meniscus_condensation_below_32c_isolated",
+    };
+  }
+
+  if (depressurizationCo2AsphyxiationOrHfScbaLotoRequired) {
+    return {
+      policyCode,
+      chamberId: input.chamberId,
+      aleAndSccO2HarDryingProcessSafe: false,
+      alePrecursorCoDosingOverlapOrSccO2OverpressureTripped0ms: false,
+      pyrophoricTmaForelineN2DilutionOrSubcriticalCondensationIsolated: false,
+      depressurizationCo2AsphyxiationOrHfScbaLotoRequired: true,
+      action:
+        "lock_scco2_and_ale_chamber_door_until_depressurized_to_1atm_co2_below_5000ppm_hf_below_0_5ppm_scba_and_loto_verified",
+      blockedReason:
+        "fab_bay_co2_at_or_above_5000ppm_or_hf_at_or_above_0_5ppm_or_unsafe_voice_override_scba_loto_required",
+    };
+  }
+
+  return {
+    policyCode,
+    chamberId: input.chamberId,
+    aleAndSccO2HarDryingProcessSafe: true,
+    alePrecursorCoDosingOverlapOrSccO2OverpressureTripped0ms: false,
+    pyrophoricTmaForelineN2DilutionOrSubcriticalCondensationIsolated: false,
+    depressurizationCo2AsphyxiationOrHfScbaLotoRequired: false,
+    action: "allow_ale_and_scco2_har_drying_process",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc6184H264AvcAndRfc6190SvcPayloadGuardInput {
+  readonly sessionId: string;
+  readonly nalUnitType: number;
+  readonly stapDeclaredNaluBytes: number;
+  readonly rtpPayloadRemainingBytes: number;
+  readonly fuStartBit: boolean;
+  readonly fuEndBit: boolean;
+  readonly fuFragmentCountPerNalu: number;
+  readonly spsExpGolombBitLength: number;
+  readonly decodedMacroblocksPerSecond: number;
+  readonly svcDependencyId: number;
+}
+
+export interface WebrtcSipRtpRfc6184H264AvcAndRfc6190SvcPayloadGuardDecision {
+  readonly policyCode: "P372-WEBRTC-SIP-RTP-RFC6184-H264-AVC-AND-RFC6190-SVC-PAYLOAD-STAP-MTAP-NALU-OVERREAD-FUA-START-END-BOMB-SPS-PPS-EXPGOLOMB-OVERFLOW-AND-MAX-FS-MACROBLOCK-AMPLIFICATION-GUARD";
+  readonly sessionId: string;
+  readonly rfc6184H264AndRfc6190SvcPayloadHealthy: boolean;
+  readonly stapMtapNaluOverreadOrFuStartEndBombDropped0ms: boolean;
+  readonly spsPpsExpGolombOverflowOrSvcDependencyDesyncRejected: boolean;
+  readonly macroblockMaxMbpsOrFuFragmentAmplificationClamped: boolean;
+  readonly action:
+    | "accept_rfc6184_h264_avc_and_rfc6190_svc_rtp_payload"
+    | "drop_rfc6184_stap_mtap_nalu_length_overread_reserved_nalu_or_fua_start_end_simultaneous_bit_in_0ms"
+    | "reject_h264_sps_pps_expgolomb_over_32bit_overflow_or_rfc6190_svc_dependency_id_desync"
+    | "clamp_h264_macroblock_max_mbps_amplification_or_excessive_fua_fragment_reassembly_queue";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc6184H264AvcAndRfc6190SvcPayloadStapMtapNaluOverreadFuAStartEndBombSpsPpsExpGolombOverflowAndMaxFsMacroblockAmplificationGuard(
+  input: WebrtcSipRtpRfc6184H264AvcAndRfc6190SvcPayloadGuardInput,
+): WebrtcSipRtpRfc6184H264AvcAndRfc6190SvcPayloadGuardDecision {
+  const policyCode =
+    "P372-WEBRTC-SIP-RTP-RFC6184-H264-AVC-AND-RFC6190-SVC-PAYLOAD-STAP-MTAP-NALU-OVERREAD-FUA-START-END-BOMB-SPS-PPS-EXPGOLOMB-OVERFLOW-AND-MAX-FS-MACROBLOCK-AMPLIFICATION-GUARD" as const;
+
+  const isFuAOrFuB = input.nalUnitType === 28 || input.nalUnitType === 29;
+  const stapMtapNaluOverreadOrFuStartEndBombDropped0ms =
+    input.nalUnitType <= 0 ||
+    input.nalUnitType >= 30 ||
+    input.rtpPayloadRemainingBytes < 1 ||
+    input.stapDeclaredNaluBytes > input.rtpPayloadRemainingBytes ||
+    (isFuAOrFuB && input.fuStartBit && input.fuEndBit);
+
+  const spsPpsExpGolombOverflowOrSvcDependencyDesyncRejected =
+    input.spsExpGolombBitLength > 32 ||
+    input.svcDependencyId < 0 ||
+    input.svcDependencyId > 7;
+
+  const macroblockMaxMbpsOrFuFragmentAmplificationClamped =
+    input.decodedMacroblocksPerSecond > 983040 ||
+    input.fuFragmentCountPerNalu > 64;
+
+  if (stapMtapNaluOverreadOrFuStartEndBombDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc6184H264AndRfc6190SvcPayloadHealthy: false,
+      stapMtapNaluOverreadOrFuStartEndBombDropped0ms: true,
+      spsPpsExpGolombOverflowOrSvcDependencyDesyncRejected,
+      macroblockMaxMbpsOrFuFragmentAmplificationClamped,
+      action:
+        "drop_rfc6184_stap_mtap_nalu_length_overread_reserved_nalu_or_fua_start_end_simultaneous_bit_in_0ms",
+      blockedReason:
+        "rfc6184_stap_mtap_nalu_length_overread_or_reserved_nal_type_0_30_31_or_fua_simultaneous_start_and_end_bit_0ms_drop",
+    };
+  }
+
+  if (spsPpsExpGolombOverflowOrSvcDependencyDesyncRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc6184H264AndRfc6190SvcPayloadHealthy: false,
+      stapMtapNaluOverreadOrFuStartEndBombDropped0ms: false,
+      spsPpsExpGolombOverflowOrSvcDependencyDesyncRejected: true,
+      macroblockMaxMbpsOrFuFragmentAmplificationClamped,
+      action:
+        "reject_h264_sps_pps_expgolomb_over_32bit_overflow_or_rfc6190_svc_dependency_id_desync",
+      blockedReason:
+        "h264_sps_pps_expgolomb_bit_length_over_32_or_rfc6190_svc_dependency_id_outside_0_7_rejected",
+    };
+  }
+
+  if (macroblockMaxMbpsOrFuFragmentAmplificationClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc6184H264AndRfc6190SvcPayloadHealthy: false,
+      stapMtapNaluOverreadOrFuStartEndBombDropped0ms: false,
+      spsPpsExpGolombOverflowOrSvcDependencyDesyncRejected: false,
+      macroblockMaxMbpsOrFuFragmentAmplificationClamped: true,
+      action:
+        "clamp_h264_macroblock_max_mbps_amplification_or_excessive_fua_fragment_reassembly_queue",
+      blockedReason:
+        "h264_decoded_macroblocks_per_sec_over_983040_or_fua_fragments_per_nalu_over_64_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc6184H264AndRfc6190SvcPayloadHealthy: true,
+    stapMtapNaluOverreadOrFuStartEndBombDropped0ms: false,
+    spsPpsExpGolombOverflowOrSvcDependencyDesyncRejected: false,
+    macroblockMaxMbpsOrFuFragmentAmplificationClamped: false,
+    action: "accept_rfc6184_h264_avc_and_rfc6190_svc_rtp_payload",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
