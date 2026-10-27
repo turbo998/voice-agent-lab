@@ -35094,5 +35094,217 @@ export function evaluateWebrtcSipRtpRfc8083UnicastCircuitBreakersRtcpMediaTimeou
   };
 }
 
+export interface SemiconductorSpecialtyGasCabinetVmbCoaxialPipingExcessFlowSwitchAndAutoPurgeSemiS2SemiS6Nfpa318Ifc60CgaG13Osha1910147GuardInput {
+  readonly cabinetOrVmbId: string;
+  readonly coaxialAnnularSpacePressureKpaG: number;
+  readonly excessFlowSwitchTripped: boolean;
+  readonly cabinetExhaustNegativePressurePa: number;
+  readonly uvIrFlameDetectorTriggered: boolean;
+  readonly completedVacuumN2PurgeCycles: number;
+  readonly residualProcessGasPpbBeforeDisconnect: number;
+  readonly purgeN2SupplyPressureKpaG: number;
+  readonly pigtailOrVmbMaintenanceRequested: boolean;
+  readonly heliumOutboardLeakRateAtmCcPerSec: number;
+  readonly cgaGasketReplacedAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorSpecialtyGasCabinetVmbCoaxialPipingExcessFlowSwitchAndAutoPurgeSemiS2SemiS6Nfpa318Ifc60CgaG13Osha1910147GuardDecision {
+  readonly policyCode: "P357-SEMICONDUCTOR-SPECIALTY-GAS-CABINET-VMB-COAXIAL-PIPING-EXCESS-FLOW-SWITCH-AND-AUTO-PURGE-SEMIS2-SEMIS6-NFPA318-IFC60-CGAG13-OSHA1910147-COAXIAL-ANNULAR-LEAK-EFS-OR-FLAME-ESV-TRIP-30-CYCLE-VACUUM-N2-PURGE-AND-HE-LEAK-SCBA-LOTO-GUARD";
+  readonly cabinetOrVmbId: string;
+  readonly specialtyGasCabinetAndVmbApproved: boolean;
+  readonly pigtailEsvAndVmbRfoTripped0ms: boolean;
+  readonly cylinderChangeoverHaltedUntil30CycleN2VacuumPurge: boolean;
+  readonly gasCabinetPigtailAndVmbMaintenanceLockedUntilHeLeakCheckAndScbaLoto: boolean;
+  readonly action:
+    | "approve_semiconductor_specialty_gas_cabinet_and_vmb_coaxial_distribution"
+    | "trip_gas_cabinet_pigtail_esv_and_vmb_rfo_on_coaxial_leak_efs_or_flame_in_0ms"
+    | "halt_cylinder_changeover_and_enforce_30_cycle_vacuum_n2_purge"
+    | "lock_out_gas_cabinet_or_vmb_maintenance_until_he_leak_check_and_scba_loto";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorSpecialtyGasCabinetVmbCoaxialPipingExcessFlowSwitchAndAutoPurgeSemiS2SemiS6Nfpa318Ifc60CgaG13Osha1910147CoaxialAnnularLeakEfsOrFlameEsvTrip30CycleVacuumN2PurgeAndHeLeakScbaLotoGuard(
+  input: SemiconductorSpecialtyGasCabinetVmbCoaxialPipingExcessFlowSwitchAndAutoPurgeSemiS2SemiS6Nfpa318Ifc60CgaG13Osha1910147GuardInput,
+): SemiconductorSpecialtyGasCabinetVmbCoaxialPipingExcessFlowSwitchAndAutoPurgeSemiS2SemiS6Nfpa318Ifc60CgaG13Osha1910147GuardDecision {
+  const policyCode =
+    "P357-SEMICONDUCTOR-SPECIALTY-GAS-CABINET-VMB-COAXIAL-PIPING-EXCESS-FLOW-SWITCH-AND-AUTO-PURGE-SEMIS2-SEMIS6-NFPA318-IFC60-CGAG13-OSHA1910147-COAXIAL-ANNULAR-LEAK-EFS-OR-FLAME-ESV-TRIP-30-CYCLE-VACUUM-N2-PURGE-AND-HE-LEAK-SCBA-LOTO-GUARD" as const;
+
+  const pigtailEsvAndVmbRfoTripped0ms =
+    input.coaxialAnnularSpacePressureKpaG < 150 ||
+    input.coaxialAnnularSpacePressureKpaG > 350 ||
+    input.excessFlowSwitchTripped ||
+    input.cabinetExhaustNegativePressurePa < 125 ||
+    input.uvIrFlameDetectorTriggered;
+
+  const cylinderChangeoverHaltedUntil30CycleN2VacuumPurge =
+    input.completedVacuumN2PurgeCycles < 30 ||
+    input.residualProcessGasPpbBeforeDisconnect > 500 ||
+    input.purgeN2SupplyPressureKpaG < 550;
+
+  const gasCabinetPigtailAndVmbMaintenanceLockedUntilHeLeakCheckAndScbaLoto =
+    input.pigtailOrVmbMaintenanceRequested &&
+    (input.heliumOutboardLeakRateAtmCcPerSec > 1e-9 ||
+      !input.cgaGasketReplacedAndScbaLotoVerified);
+
+  if (pigtailEsvAndVmbRfoTripped0ms) {
+    return {
+      policyCode,
+      cabinetOrVmbId: input.cabinetOrVmbId,
+      specialtyGasCabinetAndVmbApproved: false,
+      pigtailEsvAndVmbRfoTripped0ms: true,
+      cylinderChangeoverHaltedUntil30CycleN2VacuumPurge,
+      gasCabinetPigtailAndVmbMaintenanceLockedUntilHeLeakCheckAndScbaLoto,
+      action:
+        "trip_gas_cabinet_pigtail_esv_and_vmb_rfo_on_coaxial_leak_efs_or_flame_in_0ms",
+      blockedReason:
+        "coaxial_annular_pressure_excursion_or_efs_trip_or_exhaust_loss_or_uv_ir_flame_0ms_esv_rfo_trip",
+    };
+  }
+
+  if (cylinderChangeoverHaltedUntil30CycleN2VacuumPurge) {
+    return {
+      policyCode,
+      cabinetOrVmbId: input.cabinetOrVmbId,
+      specialtyGasCabinetAndVmbApproved: false,
+      pigtailEsvAndVmbRfoTripped0ms: false,
+      cylinderChangeoverHaltedUntil30CycleN2VacuumPurge: true,
+      gasCabinetPigtailAndVmbMaintenanceLockedUntilHeLeakCheckAndScbaLoto,
+      action: "halt_cylinder_changeover_and_enforce_30_cycle_vacuum_n2_purge",
+      blockedReason:
+        "insufficient_30_cycle_vacuum_n2_purge_or_residual_gas_above_500_ppb_or_low_n2_pressure_halted",
+    };
+  }
+
+  if (gasCabinetPigtailAndVmbMaintenanceLockedUntilHeLeakCheckAndScbaLoto) {
+    return {
+      policyCode,
+      cabinetOrVmbId: input.cabinetOrVmbId,
+      specialtyGasCabinetAndVmbApproved: false,
+      pigtailEsvAndVmbRfoTripped0ms: false,
+      cylinderChangeoverHaltedUntil30CycleN2VacuumPurge: false,
+      gasCabinetPigtailAndVmbMaintenanceLockedUntilHeLeakCheckAndScbaLoto: true,
+      action:
+        "lock_out_gas_cabinet_or_vmb_maintenance_until_he_leak_check_and_scba_loto",
+      blockedReason:
+        "helium_outboard_leak_above_1e_9_or_missing_cga_gasket_and_scba_loto_locked",
+    };
+  }
+
+  return {
+    policyCode,
+    cabinetOrVmbId: input.cabinetOrVmbId,
+    specialtyGasCabinetAndVmbApproved: true,
+    pigtailEsvAndVmbRfoTripped0ms: false,
+    cylinderChangeoverHaltedUntil30CycleN2VacuumPurge: false,
+    gasCabinetPigtailAndVmbMaintenanceLockedUntilHeLeakCheckAndScbaLoto: false,
+    action:
+      "approve_semiconductor_specialty_gas_cabinet_and_vmb_coaxial_distribution",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8842DtlsSrtpSdpSetupConnectionAndRfc9146DtlsConnectionIdCidMobilityGuardInput {
+  readonly sessionId: string;
+  readonly declaredDtlsCidAndRecordBytes: number;
+  readonly actualUdpDatagramBytesRemaining: number;
+  readonly illegalRfc8842ActpassToActpassAnswerOrFingerprintMutationOnExistingDetected: boolean;
+  readonly unauthenticatedCidAddressMigrationBeforeAeadVerifyDetected: boolean;
+  readonly crossSessionDtlsCidReplayDetected: boolean;
+  readonly cidPeerAddressMigrationsPerMinute: number;
+  readonly newConnectionIdRotationMessagesPerMinute: number;
+}
+
+export interface WebrtcSipRtpRfc8842DtlsSrtpSdpSetupConnectionAndRfc9146DtlsConnectionIdCidMobilityGuardDecision {
+  readonly policyCode: "P358-WEBRTC-SIP-RTP-RFC8842-DTLS-SRTP-SDP-SETUP-CONNECTION-AND-RFC9146-DTLS-CONNECTION-ID-CID-MOBILITY-CID-LENGTH-OVERREAD-ILLEGAL-ACTPASS-FINGERPRINT-MUTATION-UNAUTHENTICATED-CID-NAT-REBIND-AND-MIGRATION-STORM-GUARD";
+  readonly sessionId: string;
+  readonly rfc8842AndRfc9146DtlsCidSessionHealthy: boolean;
+  readonly dtlsCidOverreadOrInvalidRfc8842SetupFingerprintDropped0ms: boolean;
+  readonly unverifiedDtlsCidAddressMigrationOrReplayRejected: boolean;
+  readonly cidMigrationChurnOrNewCidFloodClamped: boolean;
+  readonly action:
+    | "accept_rfc8842_dtls_srtp_and_rfc9146_cid_mobility_binding"
+    | "drop_dtls_cid_length_overread_or_invalid_rfc8842_setup_fingerprint_in_0ms"
+    | "reject_unverified_rfc9146_dtls_cid_address_migration_or_cross_session_replay"
+    | "clamp_rfc9146_cid_migration_storm_and_require_fresh_dtls_connection_new_handshake";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8842DtlsSrtpSdpSetupConnectionAndRfc9146DtlsConnectionIdCidMobilityCidLengthOverreadIllegalActpassFingerprintMutationUnauthenticatedCidNatRebindAndMigrationStormGuard(
+  input: WebrtcSipRtpRfc8842DtlsSrtpSdpSetupConnectionAndRfc9146DtlsConnectionIdCidMobilityGuardInput,
+): WebrtcSipRtpRfc8842DtlsSrtpSdpSetupConnectionAndRfc9146DtlsConnectionIdCidMobilityGuardDecision {
+  const policyCode =
+    "P358-WEBRTC-SIP-RTP-RFC8842-DTLS-SRTP-SDP-SETUP-CONNECTION-AND-RFC9146-DTLS-CONNECTION-ID-CID-MOBILITY-CID-LENGTH-OVERREAD-ILLEGAL-ACTPASS-FINGERPRINT-MUTATION-UNAUTHENTICATED-CID-NAT-REBIND-AND-MIGRATION-STORM-GUARD" as const;
+
+  const dtlsCidOverreadOrInvalidRfc8842SetupFingerprintDropped0ms =
+    input.declaredDtlsCidAndRecordBytes >
+      input.actualUdpDatagramBytesRemaining ||
+    input.actualUdpDatagramBytesRemaining <= 0 ||
+    input.illegalRfc8842ActpassToActpassAnswerOrFingerprintMutationOnExistingDetected;
+
+  const unverifiedDtlsCidAddressMigrationOrReplayRejected =
+    input.unauthenticatedCidAddressMigrationBeforeAeadVerifyDetected ||
+    input.crossSessionDtlsCidReplayDetected;
+
+  const cidMigrationChurnOrNewCidFloodClamped =
+    input.cidPeerAddressMigrationsPerMinute > 6 ||
+    input.newConnectionIdRotationMessagesPerMinute > 20;
+
+  if (dtlsCidOverreadOrInvalidRfc8842SetupFingerprintDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8842AndRfc9146DtlsCidSessionHealthy: false,
+      dtlsCidOverreadOrInvalidRfc8842SetupFingerprintDropped0ms: true,
+      unverifiedDtlsCidAddressMigrationOrReplayRejected,
+      cidMigrationChurnOrNewCidFloodClamped,
+      action:
+        "drop_dtls_cid_length_overread_or_invalid_rfc8842_setup_fingerprint_in_0ms",
+      blockedReason:
+        "rfc9146_dtls_cid_record_overread_or_rfc8842_illegal_actpass_answer_or_fingerprint_mutation_0ms_drop",
+    };
+  }
+
+  if (unverifiedDtlsCidAddressMigrationOrReplayRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8842AndRfc9146DtlsCidSessionHealthy: false,
+      dtlsCidOverreadOrInvalidRfc8842SetupFingerprintDropped0ms: false,
+      unverifiedDtlsCidAddressMigrationOrReplayRejected: true,
+      cidMigrationChurnOrNewCidFloodClamped,
+      action:
+        "reject_unverified_rfc9146_dtls_cid_address_migration_or_cross_session_replay",
+      blockedReason:
+        "rfc9146_unauthenticated_cid_nat_rebind_migration_before_aead_verify_or_cross_session_replay_rejected",
+    };
+  }
+
+  if (cidMigrationChurnOrNewCidFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8842AndRfc9146DtlsCidSessionHealthy: false,
+      dtlsCidOverreadOrInvalidRfc8842SetupFingerprintDropped0ms: false,
+      unverifiedDtlsCidAddressMigrationOrReplayRejected: false,
+      cidMigrationChurnOrNewCidFloodClamped: true,
+      action:
+        "clamp_rfc9146_cid_migration_storm_and_require_fresh_dtls_connection_new_handshake",
+      blockedReason:
+        "rfc9146_cid_migrations_exceeded_6_per_min_or_new_cid_exceeded_20_per_min_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8842AndRfc9146DtlsCidSessionHealthy: true,
+    dtlsCidOverreadOrInvalidRfc8842SetupFingerprintDropped0ms: false,
+    unverifiedDtlsCidAddressMigrationOrReplayRejected: false,
+    cidMigrationChurnOrNewCidFloodClamped: false,
+    action: "accept_rfc8842_dtls_srtp_and_rfc9146_cid_mobility_binding",
+    blockedReason: "none",
+  };
+}
+
 
 

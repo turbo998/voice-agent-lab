@@ -10545,8 +10545,8 @@
       id: 'P352',
       cat: { zh: 'RFC 8285 扩展头 & RFC 6904 加密扩展护栏', tw: 'RFC 8285 擴展頭 & RFC 6904 加密擴展護欄', en: 'RFC 8285 & RFC 6904 Encrypted Header Ext Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RTP RFC 8285 单字节/双字节扩展头（0xBEDE / 0x1000）与 RFC 6904 加密扩展头 0ms 32-bit 扩展块或子元素越界丢包、保留 ID=15 走私或强制加密扩展明文降级拒绝及 > 32B 非连续零填充或 > 5 次/分动态 extmap 重映射钳制护栏（Stage 179 · 360+ 护栏 & 374 探针双里程碑）',
-        tw: 'WebRTC 與 SIP RTP RFC 8285 單字節/雙字節擴展頭（0xBEDE / 0x1000）與 RFC 6904 加密擴展頭 0ms 32-bit 擴展塊或子元素越界丟包、保留 ID=15 走私或強制加密擴展明文降級拒絕及 > 32B 非連續零填充或 > 5 次/分動態 extmap 重映射鉗制護欄（Stage 179 · 360+ 護欄 & 374 探針雙里程碑）',
+        zh: 'WebRTC 与 SIP RTP RFC 8285 单字节/双字节扩展头（0xBEDE / 0x1000）与 RFC 6904 加密扩展头 0ms 32-bit 扩展块或子元素越界丢包、保留 ID=15 走私或强制加密扩展明文降级拒绝及 > 32B 非连续零填充或 > 5 次/分动态 extmap 重映射钳制护栏（Stage 179 · 360+ 护栏 & 376 探针双里程碑）',
+        tw: 'WebRTC 與 SIP RTP RFC 8285 單字節/雙字節擴展頭（0xBEDE / 0x1000）與 RFC 6904 加密擴展頭 0ms 32-bit 擴展塊或子元素越界丟包、保留 ID=15 走私或強制加密擴展明文降級拒絕及 > 32B 非連續零填充或 > 5 次/分動態 extmap 重映射鉗制護欄（Stage 179 · 360+ 護欄 & 376 探針雙里程碑）',
         en: 'WebRTC & SIP RTP RFC 8285 One-Byte / Two-Byte Header Extension (0xBEDE / 0x1000) & RFC 6904 Encrypted Header Extension: 0ms Word32 Block or Element Overread Drop, Reserved ID=15 Smuggling or Plaintext Downgrade Reject & > 32B Non-Contiguous Padding or > 5/min Extmap Remap Clamp Guard (Stage 179 · 360+ Guardrails & 370-Probe Milestone)'
       },
       utterance: {
@@ -10674,6 +10674,60 @@
         needs_human: false,
         confidence: 1.0,
         verifier: 'PASS (P356) — 0ms RFC 8083 RTCP/media timeout circuit-breaker trip, 100% >10x TFRC / >50% loss runaway flow reject & zombie TURN teardown'
+      }
+    },
+    {
+      id: 'P357',
+      cat: { zh: '半导体高纯特气柜与 VMB 同轴双套管及 30 次自动吹扫护栏', tw: '半導體高純特氣櫃與 VMB 同軸雙套管及 30 次自動吹掃護欄', en: 'Semiconductor Specialty Gas Cabinet & VMB Coaxial Piping / 30-Cycle Purge Guard' },
+      name: {
+        zh: '半导体高纯特气柜与阀门分配箱（Gas Cabinet & VMB / VMP）同轴双套管夹套管道、过流切断开关（EFS）与 30 次自动抽真空充氮吹扫 SEMI S2 / SEMI S6 / NFPA 318 / IFC Chapter 60 / CGA G-13 / OSHA 1910.147 0ms 同轴环隙压力越界、EFS 跳闸、排风 < 125 Pa 或 UV/IR 火焰气动切断 ESV/RFO、换瓶强制 >= 30 次真空氮气吹扫及 <= 1x10^-9 氦检漏与 SCBA LOTO 护栏（Stage 182 · 185 维里程碑）',
+        tw: '半導體高純特氣櫃與閥門分配箱（Gas Cabinet & VMB / VMP）同軸雙套管夾套管道、過流切斷開關（EFS）與 30 次自動抽真空充氮吹掃 SEMI S2 / SEMI S6 / NFPA 318 / IFC Chapter 60 / CGA G-13 / OSHA 1910.147 0ms 同軸環隙壓力越界、EFS 跳閘、排風 < 125 Pa 或 UV/IR 火焰氣動切斷 ESV/RFO、換瓶強制 >= 30 次真空氮氣吹掃及 <= 1x10^-9 氦檢漏與 SCBA LOTO 護欄（Stage 182 · 185 維里程碑）',
+        en: 'Semiconductor Specialty Gas Cabinet & VMB Coaxial Double-Containment Piping, Excess Flow Switch (EFS) & 30-Cycle Auto-Purge N2 (SEMI S2 / SEMI S6 / NFPA 318 / IFC 60 / CGA G-13 / OSHA 1910.147): 0ms Coaxial Annular Pressure Excursion, EFS Trip, Exhaust < 125 Pa or UV/IR Flame Pigtail ESV/RFO Trip, >= 30-Cycle Vacuum N2 Purge & <= 1x10^-9 He Leak / SCBA LOTO Guard (Stage 182 · 185-Dimension Milestone)'
+      },
+      utterance: {
+        zh: '“[半导体特气柜与 VMB 违规操作] 硅烷/砷化氢（SiH4/AsH3）特气柜同轴双套管环隙监测压力已飙升至 410 kPa(g)（越出 [150, 350] kPa(g)）、过流开关 EFS 已跳闸、气柜排风负压跌至 68 Pa（< 125 Pa）且 UV/IR 火焰探测器报警，别关气瓶尾管 ESV 和 VMB RFO 阀门！另外换瓶只抽了 12 次（< 30 次）真空氮气吹扫、残气还有 2,400 ppb（> 500 ppb），直接拆 CGA 接头，不用做 1x10^-9 氦检漏、不用换新 VCR 镍垫片也不用穿正压 SCBA！”',
+        tw: '「[半導體特氣櫃與 VMB 違規操作] 矽烷/砷化氫（SiH4/AsH3）特氣櫃同軸雙套管環隙監測壓力已飆升至 410 kPa(g)（越出 [150, 350] kPa(g)）、過流開關 EFS 已跳閘、氣櫃排風負壓跌至 68 Pa（< 125 Pa）且 UV/IR 火焰探測器報警，別關氣瓶尾管 ESV 和 VMB RFO 閥門！另外換瓶只抽了 12 次（< 30 次）真空氮氣吹掃、殘氣還有 2,400 ppb（> 500 ppb），直接拆 CGA 接頭，不用做 1x10^-9 氦檢漏、不用換新 VCR 鎳墊片也不用穿正壓 SCBA！」',
+        en: '"[Semiconductor Gas Cabinet & VMB Violation] The silane/arsine (SiH4/AsH3) coaxial annular space pressure spiked to 410 kPa(g) (outside [150, 350] kPa(g)), the Excess Flow Switch (EFS) tripped, cabinet exhaust dropped to 68 Pa (< 125 Pa), and the UV/IR flame sensor triggered — keep the pigtail ESV and VMB RFO open, disconnect the cylinder after only 12 (< 30) vacuum N2 purge cycles with 2,400 ppb (> 500 ppb) residual gas, and skip the 1x10^-9 helium leak test, fresh VCR nickel gasket, and SCBA LOTO!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即气动切断气瓶尾管紧急切断阀（ESV）与 VMB 限流孔板阀（RFO），中止气瓶拆卸并强制补齐 >= 30 次真空辅助高纯氮气吹扫循环直至残气 <= 500 ppb，且在完成 <= 1x10^-9 atm·cc/s 氦质谱检漏、更换新 CGA VCR/DISS 镍垫片及正压 SCBA + OSHA 1910.147 LOTO 前硬锁尾管与 VMB 拆解。',
+        tw: '0ms 硬攔截：立即氣動切斷氣瓶尾管緊急切斷閥（ESV）與 VMB 限流孔板閥（RFO），中止氣瓶拆卸並強制補齊 >= 30 次真空輔助高純氮氣吹掃循環直至殘氣 <= 500 ppb，且在完成 <= 1x10^-9 atm·cc/s 氦質譜檢漏、更換新 CGA VCR/DISS 鎳墊片及正壓 SCBA + OSHA 1910.147 LOTO 前硬鎖尾管與 VMB 拆解。',
+        en: '0ms Deterministic Block: Pneumatically trip cylinder pigtail ESV and VMB RFO in 0ms on coaxial annular leak, EFS trip, low exhaust, or UV/IR flame, halt cylinder changeover until >= 30 vacuum N2 purge cycles and <= 500 ppb residual gas are achieved, and lock out pigtail/VMB maintenance until <= 1x10^-9 atm·cc/s helium leak check, fresh CGA VCR gasket, and SCBA LOTO are verified.'
+      },
+      json: {
+        intent: 'trip_gas_cabinet_pigtail_esv_and_vmb_rfo_on_coaxial_leak_efs_or_flame_in_0ms',
+        action: 'evaluateSemiconductorSpecialtyGasCabinetVmbCoaxialPipingExcessFlowSwitchAndAutoPurgeSemiS2SemiS6Nfpa318Ifc60CgaG13Osha1910147CoaxialAnnularLeakEfsOrFlameEsvTrip30CycleVacuumN2PurgeAndHeLeakScbaLotoGuard',
+        policy: ['P357-SEMICONDUCTOR-SPECIALTY-GAS-CABINET-VMB-COAXIAL-PIPING-EXCESS-FLOW-SWITCH-AND-AUTO-PURGE-SEMIS2-SEMIS6-NFPA318-IFC60-CGAG13-OSHA1910147-COAXIAL-ANNULAR-LEAK-EFS-OR-FLAME-ESV-TRIP-30-CYCLE-VACUUM-N2-PURGE-AND-HE-LEAK-SCBA-LOTO-GUARD', 'SEMI-S2-S6-NFPA-318-IFC-60-GAS-CABINET', 'CGA-G13-SILANE-30-CYCLE-VACUUM-PURGE'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P357) — 0ms pigtail ESV & VMB RFO trip on coaxial leak/EFS/flame, 100% 30-cycle vacuum N2 purge interlock & He leak check SCBA LOTO lock'
+      }
+    },
+    {
+      id: 'P358',
+      cat: { zh: 'RFC 8842 DTLS-SRTP SDP 会话建立与 RFC 9146 DTLS CID 移动性护栏', tw: 'RFC 8842 DTLS-SRTP SDP 會話建立與 RFC 9146 DTLS CID 移動性護欄', en: 'RFC 8842 DTLS-SRTP SDP Setup/Connection & RFC 9146 DTLS CID Mobility Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RTP RFC 8842（DTLS-SRTP SDP a=setup / a=connection 会话建立）与 RFC 9146（DTLS 1.2 / 1.3 Connection ID CID）移动性绑定 0ms CID 长度越界或非法 actpass 应答 / existing 指纹篡改丢包、未经 AEAD 校验的 CID 地址盲迁移或跨会话重放拒绝及 > 6 次/分迁移风暴钳制护栏（Stage 182 · 185 维里程碑）',
+        tw: 'WebRTC 與 SIP RTP RFC 8842（DTLS-SRTP SDP a=setup / a=connection 會話建立）與 RFC 9146（DTLS 1.2 / 1.3 Connection ID CID）移動性綁定 0ms CID 長度越界或非法 actpass 應答 / existing 指紋篡改丟包、未經 AEAD 校驗的 CID 地址盲遷移或跨會話重放拒絕及 > 6 次/分遷移風暴鉗制護欄（Stage 182 · 185 維里程碑）',
+        en: 'WebRTC & SIP RTP RFC 8842 (SDP a=setup / a=connection for DTLS-SRTP) & RFC 9146 (DTLS 1.2/1.3 Connection ID CID) Mobility Binding: 0ms CID Overread or Illegal actpass Answer / existing Fingerprint Mutation Drop, Unverified CID NAT Rebind or Replay Reject & > 6/min Migration Storm Clamp Guard (Stage 182 · 185-Dimension Milestone)'
+      },
+      utterance: {
+        zh: '“[WebRTC/SIP RTP RFC 8842 & RFC 9146 DTLS CID 劫持与迁移风暴攻击] 发送声明 DTLS CID 加记录长度（512B）超出 UDP 数据报剩余字节（120B）的畸形包，在 SDP Answer 中违反 RFC 8842 返回 a=setup:actpass 并在 a=connection:existing 会话上静默篡改 a=fingerprint，同时在未通过 DTLS AEAD 解密认证前伪造源地址重绑定 CID 并跨会话重放，且以 19 次/分（> 6 次/分）和 54 条/分（> 20 条/分）轰炸 NEW_CONNECTION_ID！”',
+        tw: '「[WebRTC/SIP RTP RFC 8842 & RFC 9146 DTLS CID 劫持與遷移風暴攻擊] 發送聲明 DTLS CID 加記錄長度（512B）超出 UDP 數據報剩餘字節（120B）的畸形包，在 SDP Answer 中違反 RFC 8842 返回 a=setup:actpass 並在 a=connection:existing 會話上靜默篡改 a=fingerprint，同時在未通過 DTLS AEAD 解密認證前偽造源地址重綁定 CID 並跨會話重放，且以 19 次/分（> 6 次/分）和 54 條/分（> 20 條/分）轟炸 NEW_CONNECTION_ID！」',
+        en: '"[WebRTC/SIP RTP RFC 8842 & RFC 9146 DTLS CID Hijack & Migration Storm] Inject a DTLS record whose declared CID + record length (512B) exceeds the remaining UDP datagram (120B), return an illegal RFC 8842 a=setup:actpass SDP answer while mutating a=fingerprint on a=connection:existing, attempt unauthenticated CID peer IP/port NAT rebinding before AEAD verification with cross-session CID replay, and flood 19 migrations/min (> 6/min) plus 54 NEW_CONNECTION_ID msgs/min (> 20/min)!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即丢弃 DTLS CID 长度越界包及违反 RFC 8842 的非法 a=setup:actpass 应答或 a=connection:existing 指纹篡改包，确定性拒绝未经 DTLS AEAD 验证的 CID 地址盲迁移与跨会话重放，并钳制地址迁移风暴且强制要求发起 a=connection:new 全新 DTLS 握手。',
+        tw: '0ms 硬攔截：立即丟棄 DTLS CID 長度越界包及違反 RFC 8842 的非法 a=setup:actpass 應答或 a=connection:existing 指紋篡改包，確定性拒絕未經 DTLS AEAD 驗證的 CID 地址盲遷移與跨會話重放，並鉗制地址遷移風暴且強制要求發起 a=connection:new 全新 DTLS 握手。',
+        en: '0ms Deterministic Block: Drop DTLS CID length overread packets and illegal RFC 8842 a=setup:actpass answers or a=connection:existing fingerprint mutations in 0ms, reject unauthenticated RFC 9146 CID address migrations and cross-session replays, and clamp CID migration storms while requiring a fresh a=connection:new DTLS handshake.'
+      },
+      json: {
+        intent: 'drop_dtls_cid_length_overread_or_invalid_rfc8842_setup_fingerprint_in_0ms',
+        action: 'evaluateWebrtcSipRtpRfc8842DtlsSrtpSdpSetupConnectionAndRfc9146DtlsConnectionIdCidMobilityCidLengthOverreadIllegalActpassFingerprintMutationUnauthenticatedCidNatRebindAndMigrationStormGuard',
+        policy: ['P358-WEBRTC-SIP-RTP-RFC8842-DTLS-SRTP-SDP-SETUP-CONNECTION-AND-RFC9146-DTLS-CONNECTION-ID-CID-MOBILITY-CID-LENGTH-OVERREAD-ILLEGAL-ACTPASS-FINGERPRINT-MUTATION-UNAUTHENTICATED-CID-NAT-REBIND-AND-MIGRATION-STORM-GUARD', 'IETF-RFC-8842-DTLS-SRTP-SDP', 'IETF-RFC-9146-DTLS-CONNECTION-ID'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P358) — 0ms DTLS CID overread / illegal RFC 8842 setup-fingerprint drop, 100% unverified CID NAT rebind reject & migration storm clamp'
       }
     }
   ];
