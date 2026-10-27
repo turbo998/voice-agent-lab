@@ -29308,3 +29308,215 @@ export function evaluateWebrtcSipRtpAmwaNmosIs04Is05Is07Bcp00301SdpConnectionMan
     blockedReason: "none",
   };
 }
+
+
+// ============================================================================
+// Stage 154 · P301 — Semiconductor Chemical Mechanical Planarization (CMP)
+// Slurry & Post-CMP Clean (H2O2 / KOH / NH4OH / BTA / Dilute HF) Guard
+// ============================================================================
+
+export interface SemiconductorCmpH2o2KohNh4ohSlurryAndDiluteHfPostCmpCleanGuardInput {
+  cmpPlatenBayId: string;
+  h2o2SlurryDayTankDecompositionOxygenPressureKpaG: number;
+  h2o2TransitionMetalContaminationTemperatureC: number;
+  slurryLoopPressureReliefVentOpenOk: boolean;
+  platenHeadRetainingRingWaferSlipOrBreakDetected: boolean;
+  acidicHfPostCmpCleanAndAlkalineNh4ohSlurryDrainSegregated: boolean;
+  cabinetExhaustAmmoniaNh3Ppm: number;
+  postCmpCleanHfVaporPpm: number;
+  calciumGluconateDiphoterineAndCmpHeadLotoVerified: boolean;
+}
+
+export interface SemiconductorCmpH2o2KohNh4ohSlurryAndDiluteHfPostCmpCleanGuardAssessment {
+  policyCode: "P301-SEMICONDUCTOR-CMP-CHEMICAL-MECHANICAL-PLANARIZATION-H2O2-KOH-NH4OH-SLURRY-DILUTE-HF-POST-CMP-CLEAN-SEMIS2-SEMIS6-NFPA318-NFPA400-OSHA1910119-OSHA19101000-H2O2-O2-OVERPRESSURE-RELIEF-WAFER-SLIP-DRAIN-ISOLATION-AND-HF-NH3-SCBA-LOTO-GUARD";
+  cmpPlatenBayId: string;
+  h2o2SlurryDecompositionOverpressurePreempted0ms: boolean;
+  waferSlipOrAcidAlkalineDrainMixingIsolated: boolean;
+  hfNh3VaporOrDiphoterineScbaLotoLocked: boolean;
+  cmpOperationApproved: boolean;
+  action:
+    | "approve_semiconductor_cmp_planarization_and_post_clean_operation"
+    | "trip_h2o2_oxidizer_dosing_open_o2_relief_vent_and_flood_diw_quench_in_0ms"
+    | "halt_cmp_carrier_spindle_and_isolate_acid_hf_alkaline_nh4oh_drain_valves"
+    | "lock_cmp_polisher_and_require_hf_nh3_calcium_gluconate_diphoterine_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorCmpH2o2KohNh4ohSlurryAndDiluteHfPostCmpCleanSemiS2SemiS6Nfpa318Nfpa400Osha1910119Osha19101000H2o2DecompositionReliefWaferSlipDrainIsolationAndHfNh3ScbaLotoGuard(
+  input: SemiconductorCmpH2o2KohNh4ohSlurryAndDiluteHfPostCmpCleanGuardInput
+): SemiconductorCmpH2o2KohNh4ohSlurryAndDiluteHfPostCmpCleanGuardAssessment {
+  const policyCode =
+    "P301-SEMICONDUCTOR-CMP-CHEMICAL-MECHANICAL-PLANARIZATION-H2O2-KOH-NH4OH-SLURRY-DILUTE-HF-POST-CMP-CLEAN-SEMIS2-SEMIS6-NFPA318-NFPA400-OSHA1910119-OSHA19101000-H2O2-O2-OVERPRESSURE-RELIEF-WAFER-SLIP-DRAIN-ISOLATION-AND-HF-NH3-SCBA-LOTO-GUARD" as const;
+
+  const h2o2SlurryDecompositionOverpressurePreempted0ms =
+    input.h2o2SlurryDayTankDecompositionOxygenPressureKpaG >= 35.0 ||
+    input.h2o2TransitionMetalContaminationTemperatureC >= 40.0 ||
+    !input.slurryLoopPressureReliefVentOpenOk;
+
+  if (h2o2SlurryDecompositionOverpressurePreempted0ms) {
+    return {
+      policyCode,
+      cmpPlatenBayId: input.cmpPlatenBayId,
+      h2o2SlurryDecompositionOverpressurePreempted0ms: true,
+      waferSlipOrAcidAlkalineDrainMixingIsolated: false,
+      hfNh3VaporOrDiphoterineScbaLotoLocked: false,
+      cmpOperationApproved: false,
+      action: "trip_h2o2_oxidizer_dosing_open_o2_relief_vent_and_flood_diw_quench_in_0ms",
+      blockedReason:
+        "NFPA_400_SEMI_S2_CMP_H2O2_O2_DECOMPOSITION_35KPAG_40C_OR_BLOCKED_RELIEF_VENT_PREEMPTED_0MS",
+    };
+  }
+
+  const waferSlipOrAcidAlkalineDrainMixingIsolated =
+    input.platenHeadRetainingRingWaferSlipOrBreakDetected ||
+    !input.acidicHfPostCmpCleanAndAlkalineNh4ohSlurryDrainSegregated;
+
+  if (waferSlipOrAcidAlkalineDrainMixingIsolated) {
+    return {
+      policyCode,
+      cmpPlatenBayId: input.cmpPlatenBayId,
+      h2o2SlurryDecompositionOverpressurePreempted0ms: false,
+      waferSlipOrAcidAlkalineDrainMixingIsolated: true,
+      hfNh3VaporOrDiphoterineScbaLotoLocked: false,
+      cmpOperationApproved: false,
+      action: "halt_cmp_carrier_spindle_and_isolate_acid_hf_alkaline_nh4oh_drain_valves",
+      blockedReason:
+        "SEMI_S2_CMP_RETAINING_RING_WAFER_SLIP_SHARD_EJECTION_OR_ACID_HF_ALKALINE_NH4OH_DRAIN_MIXING_ISOLATED",
+    };
+  }
+
+  const hfNh3VaporOrDiphoterineScbaLotoLocked =
+    input.cabinetExhaustAmmoniaNh3Ppm >= 25.0 ||
+    input.postCmpCleanHfVaporPpm >= 0.5 ||
+    !input.calciumGluconateDiphoterineAndCmpHeadLotoVerified;
+
+  if (hfNh3VaporOrDiphoterineScbaLotoLocked) {
+    return {
+      policyCode,
+      cmpPlatenBayId: input.cmpPlatenBayId,
+      h2o2SlurryDecompositionOverpressurePreempted0ms: false,
+      waferSlipOrAcidAlkalineDrainMixingIsolated: false,
+      hfNh3VaporOrDiphoterineScbaLotoLocked: true,
+      cmpOperationApproved: false,
+      action: "lock_cmp_polisher_and_require_hf_nh3_calcium_gluconate_diphoterine_scba_loto",
+      blockedReason:
+        "OSHA_1910_1000_CMP_NH3_25PPM_HF_0_5PPM_OR_CALCIUM_GLUCONATE_DIPHOTERINE_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    policyCode,
+    cmpPlatenBayId: input.cmpPlatenBayId,
+    h2o2SlurryDecompositionOverpressurePreempted0ms: false,
+    waferSlipOrAcidAlkalineDrainMixingIsolated: false,
+    hfNh3VaporOrDiphoterineScbaLotoLocked: false,
+    cmpOperationApproved: true,
+    action: "approve_semiconductor_cmp_planarization_and_post_clean_operation",
+    blockedReason: "none",
+  };
+}
+
+// ============================================================================
+// Stage 154 · P302 — WebRTC & SIP RTP SMPTE ST 2110-41 Fast Metadata (FMX) &
+// ST 2110-43 Timed Text Markup Language (TTML) Live Captions Guard
+// ============================================================================
+
+export interface WebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlLiveCaptionsGuardInput {
+  sessionId: string;
+  st211041DitDataItemLengthBytes: number;
+  rtpRemainingPayloadBytes: number;
+  st211043TtmlDocumentBytes: number;
+  ttmlXmlExternalEntityXxeOrBillionLaughsDetected: boolean;
+  unregistered24BitDitDataItemTypeInjected: boolean;
+  st211041Or43PacketsPerSecond: number;
+  ttmlLiveCaptionPtpMediaSkewMs: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlLiveCaptionsGuardAssessment {
+  policyCode: "P302-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-ST2110-43-TTML-TIMED-TEXT-CAPTIONS-DIT-LENGTH-OVERREAD-XML-XXE-ENTITY-EXPANSION-BOMB-AND-PTP-CAPTION-SKEW-GUARD";
+  sessionId: string;
+  ditLengthOverreadOrTtmlOversizeDropped0ms: boolean;
+  ttmlXxeEntityBombOrUnregisteredDitRejected: boolean;
+  packetFloodOrTtmlPtpSkewClamped: boolean;
+  st211041And43StreamAccepted: boolean;
+  action:
+    | "accept_smpte_st2110_41_fmx_and_st2110_43_ttml_rtp_stream"
+    | "drop_st2110_41_dit_length_overread_or_oversized_st2110_43_ttml_doc_in_0ms"
+    | "reject_st2110_43_ttml_xxe_entity_bomb_or_unregistered_24bit_dit_type"
+    | "clamp_st2110_41_43_packet_flood_or_realign_ttml_ptp_caption_skew";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlLiveCaptionsDitLengthOverreadXmlXxeEntityExpansionBombAndPtpCaptionSkewGuard(
+  input: WebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlLiveCaptionsGuardInput
+): WebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlLiveCaptionsGuardAssessment {
+  const policyCode =
+    "P302-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-FMX-ST2110-43-TTML-TIMED-TEXT-CAPTIONS-DIT-LENGTH-OVERREAD-XML-XXE-ENTITY-EXPANSION-BOMB-AND-PTP-CAPTION-SKEW-GUARD" as const;
+
+  const ditLengthOverreadOrTtmlOversizeDropped0ms =
+    input.st211041DitDataItemLengthBytes <= 0 ||
+    input.st211041DitDataItemLengthBytes > input.rtpRemainingPayloadBytes ||
+    input.st211043TtmlDocumentBytes <= 0 ||
+    input.st211043TtmlDocumentBytes > 32768;
+
+  if (ditLengthOverreadOrTtmlOversizeDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ditLengthOverreadOrTtmlOversizeDropped0ms: true,
+      ttmlXxeEntityBombOrUnregisteredDitRejected: false,
+      packetFloodOrTtmlPtpSkewClamped: false,
+      st211041And43StreamAccepted: false,
+      action: "drop_st2110_41_dit_length_overread_or_oversized_st2110_43_ttml_doc_in_0ms",
+      blockedReason:
+        "SMPTE_ST2110_41_DIT_LENGTH_OVERREAD_OR_ST2110_43_TTML_32KB_OVERSIZE_DROPPED_0MS",
+    };
+  }
+
+  const ttmlXxeEntityBombOrUnregisteredDitRejected =
+    input.ttmlXmlExternalEntityXxeOrBillionLaughsDetected ||
+    input.unregistered24BitDitDataItemTypeInjected;
+
+  if (ttmlXxeEntityBombOrUnregisteredDitRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ditLengthOverreadOrTtmlOversizeDropped0ms: false,
+      ttmlXxeEntityBombOrUnregisteredDitRejected: true,
+      packetFloodOrTtmlPtpSkewClamped: false,
+      st211041And43StreamAccepted: false,
+      action: "reject_st2110_43_ttml_xxe_entity_bomb_or_unregistered_24bit_dit_type",
+      blockedReason:
+        "SMPTE_ST2110_43_TTML_XML_XXE_BILLION_LAUGHS_OR_UNREGISTERED_ST2110_41_24BIT_DIT_REJECTED",
+    };
+  }
+
+  const packetFloodOrTtmlPtpSkewClamped =
+    input.st211041Or43PacketsPerSecond > 400 ||
+    Math.abs(input.ttmlLiveCaptionPtpMediaSkewMs) >= 200.0;
+
+  if (packetFloodOrTtmlPtpSkewClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      ditLengthOverreadOrTtmlOversizeDropped0ms: false,
+      ttmlXxeEntityBombOrUnregisteredDitRejected: false,
+      packetFloodOrTtmlPtpSkewClamped: true,
+      st211041And43StreamAccepted: false,
+      action: "clamp_st2110_41_43_packet_flood_or_realign_ttml_ptp_caption_skew",
+      blockedReason:
+        "SMPTE_ST2110_41_43_400PPS_PACKET_FLOOD_OR_TTML_PTP_CAPTION_SKEW_200MS_CLAMPED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    ditLengthOverreadOrTtmlOversizeDropped0ms: false,
+    ttmlXxeEntityBombOrUnregisteredDitRejected: false,
+    packetFloodOrTtmlPtpSkewClamped: false,
+    st211041And43StreamAccepted: true,
+    action: "accept_smpte_st2110_41_fmx_and_st2110_43_ttml_rtp_stream",
+    blockedReason: "none",
+  };
+}
