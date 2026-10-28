@@ -4,6 +4,28 @@
 >
 > **文档定位**：从解决方案架构师（Cloud Solution Architect）与前线部署工程师（Forward Deployed Engineer）视角，系统化定义企业级 Voice Agent 的三大技术架构范式、多模型协同路由（Constellation Routing）、关键事务安全边界与混合云/容器部署规范。
 
+
+---
+
+## ⚡ 核心架构概览（Executive Summary）
+
+> **一句话结论**：**Azure Voice Live API** 将企业实时语音智能统一抽象为 **“3 层端到端控制面 × 4 条运行时语音通道（Lanes ①–④）× 4 大类确定性生产护栏（`P01–P350+`）”**。通过单调递增的 `turnEpoch` 状态机、`<170ms` 全双工打断缓冲冲洗（Barge-in Flush）、合规原文字面锁定（Verbatim Lock）以及动态通道降级路由，在保证 **100% 消除僵尸工具副作用与合规复述漂移** 的同时，相较按分钟计费的第三方 SaaS 语音封装平台实现 **65%–78% 的单位通话分钟 TCO 节省（`$0.048–$0.076/min` vs `$0.18–$0.25/min`）**。
+
+| 架构层级 / 护栏分域 | 核心能力与技术原语 | 关键工程指标（P50 / P95 / 安全不变量） | 对应章节与探针范围 |
+| :--- | :--- | :--- | :--- |
+| **Layer 1 · 6 大行业域与 20 个高 ROI 场景** | 全渠道客服中心、车载 eCall 紧急救援、餐饮免下车点餐（QSR Drive-Thru）、金融双录合规、航旅 PCI 支付、政务多语种热线 | 覆盖 **6 大行业 / 20 个生产场景** · 自助闭环率 **85%+** | [20 大业务场景白皮书](business-scenarios.md) |
+| **Layer 2 · 4 条统一实时语音通道（4 Lanes）** | ① 全双工 `GPT-Live-1`（边听边说） · ② 原生 S2S `gpt-realtime-1.5` · ③ 混合语义 VAD `Phi4-mm-realtime` · ④ 级联管道 `Azure STT + LLM + HD Dragon TTS` | Barge-in **`<170ms`** · 端到端首字音频 **`P50 = 310ms–680ms`** | 下文 `§1 – §3` |
+| **Layer 3 · 确定性治理与多 Agent 委托** | `turnEpoch` 世代屏障 · Strict JSON Schema + SHA-256 幂等锁 · `K01–K12` 安全熔断器 · Azure AI Foundry 异步推理委托 | **0 僵尸工具写入** · **100% Schema 合规率** | 下文 `§4` |
+| **四大生产护栏分类（`P01–P350+`）** | 声学与全双工打断（`P01–P90`）· 电信 SIP/WebRTC 韧性（`P91–P180`）· 金融双录与 PCI 脱敏（`P181–P270`）· 多 Agent 工具与 FinOps 治理（`P271–P350+`） | **386 个实时 POC 陷阱探针 100% 闭环验证** · **65%–78% TCO 降本** | 下文 `§4.1 – §4.220+` |
+
+### 架构图 1：Azure Voice Live API 三层四通道（3-Layer & 4-Lane）全景架构
+
+![Azure Voice Live API 3-Layer & 4-Lane Enterprise Architecture](../assets/svg/01-azure-voice-live-4-lane-architecture.svg)
+
+### 架构图 2：四大生产护栏分类（`P01–P350+`）与企业级 FinOps TCO 对标
+
+![Voice Agent Production Guardrail Taxonomy & FinOps TCO Comparison](../assets/svg/02-voice-guardrail-taxonomy-and-tco.svg)
+
 ---
 
 ## 1. 架构选型总览：三大主流技术范式对比

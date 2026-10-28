@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-labelledby="vl-arch-title vl-arch-desc">
+  <title id="vl-arch-title">Azure Voice Live API 3-Layer &amp; 4-Lane Enterprise Architecture</title>
+  <desc id="vl-arch-desc">3-Layer Architecture: Layer 1 (6 Enterprise Domains &amp; 20 High-ROI Scenarios), Layer 2 (4 Unified Voice Lanes: GPT-Live-1 Full-Duplex, Native S2S gpt-realtime-1.5, Hybrid Semantic VAD Phi4-mm-realtime, Cascaded Azure STT+LLM+HD Dragon TTS), Layer 3 (Deterministic Governance &amp; Tool Delegation: turnEpoch, Strict JSON Schema, K01-K12 Circuit Breakers, Foundry Agent Delegation).</desc>
+  <defs>
+    <style>
+      .bg { fill: #0B1120; }
+      .header-title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 18px; font-weight: 700; fill: #F8FAFC; }
+      .header-sub { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11.5px; fill: #94A3B8; }
+      .layer-card { fill: #111827; stroke-width: 1.5; rx: 10; }
+      .layer-badge { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.7px; }
+      .layer-title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; font-weight: 700; fill: #F1F5F9; }
+      .box { fill: #1E293B; stroke-width: 1.2; rx: 7; }
+      .box-title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11.5px; font-weight: 700; fill: #F8FAFC; }
+      .box-body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; fill: #CBD5E1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 9.5px; font-weight: 600; }
+      .pill { rx: 4; }
+    </style>
+    <linearGradient id="vlHeaderGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <marker id="vlArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="540" class="bg" rx="12"/>
+  <rect x="20" y="14" width="920" height="3" fill="url(#vlHeaderGrad)" rx="1.5"/>
+
+  <text x="24" y="38" class="header-title">Azure Voice Live API — 3-Layer &amp; 4-Lane Enterprise Architecture</text>
+  <text x="24" y="55" class="header-sub">Unified WebRTC / WebSocket / ACS Telephony Transport · Single SDK Contract Across Full-Duplex, S2S, Hybrid VAD &amp; Cascaded Pipelines</text>
+
+  <!-- LAYER 1: 6 Enterprise Domains & 20 High-ROI Scenarios -->
+  <rect x="20" y="68" width="920" height="114" class="layer-card" stroke="#0EA5E9"/>
+  <rect x="32" y="77" width="102" height="19" class="pill" fill="#0C4A6E"/>
+  <text x="83" y="90" text-anchor="middle" class="layer-badge" fill="#38BDF8">LAYER 1 · INGRESS</text>
+  <text x="144" y="91" class="layer-title">6 Enterprise Domains &amp; 20 High-ROI Production Scenarios (WebRTC · SIP Trunk · ACS PSTN · Mobile SDK)</text>
+
+  <!-- 6 Domain Boxes -->
+  <rect x="32" y="100" width="144" height="72" class="box" stroke="#0284C7"/>
+  <text x="40" y="117" class="box-title">1. Contact Center</text>
+  <text x="40" y="132" class="box-body">Omnichannel IVR deflection,</text>
+  <text x="40" y="145" class="box-body">warm transfer &amp; whisper</text>
+  <text x="40" y="162" class="mono" fill="#38BDF8">4 Scenarios · 85% Containment</text>
+
+  <rect x="184" y="100" width="144" height="72" class="box" stroke="#0284C7"/>
+  <text x="192" y="117" class="box-title">2. In-Vehicle eCall</text>
+  <text x="192" y="132" class="box-body">Cockpit telemetry fusion,</text>
+  <text x="192" y="145" class="box-body">road/wind noise suppression</text>
+  <text x="192" y="162" class="mono" fill="#38BDF8">3 Scenarios · &lt;170ms Barge-in</text>
+
+  <rect x="336" y="100" width="144" height="72" class="box" stroke="#0284C7"/>
+  <text x="344" y="117" class="box-title">3. QSR Drive-Thru</text>
+  <text x="344" y="132" class="box-body">Multi-speaker car cabin,</text>
+  <text x="344" y="145" class="box-body">menu modifier POS sync</text>
+  <text x="344" y="162" class="mono" fill="#38BDF8">3 Scenarios · Deep Noise NS</text>
+
+  <rect x="488" y="100" width="144" height="72" class="box" stroke="#0284C7"/>
+  <text x="496" y="117" class="box-title">4. Financial Dual-Rec</text>
+  <text x="496" y="132" class="box-body">Verbatim legal disclosure,</text>
+  <text x="496" y="145" class="box-body">zero-paraphrase TTS audit</text>
+  <text x="496" y="162" class="mono" fill="#34D399">4 Scenarios · 100% Verbatim</text>
+
+  <rect x="640" y="100" width="144" height="72" class="box" stroke="#0284C7"/>
+  <text x="648" y="117" class="box-title">5. Travel &amp; PCI Pay</text>
+  <text x="648" y="132" class="box-body">Flight disruption rebooking,</text>
+  <text x="648" y="145" class="box-body">DTMF/Voice PCI masking</text>
+  <text x="648" y="162" class="mono" fill="#FBBF24">3 Scenarios · PCI-DSS 4.0</text>
+
+  <rect x="792" y="100" width="136" height="72" class="box" stroke="#0284C7"/>
+  <text x="800" y="117" class="box-title">6. Public Services</text>
+  <text x="800" y="132" class="box-body">140+ locale hotline,</text>
+  <text x="800" y="145" class="box-body">accessible civic triage</text>
+  <text x="800" y="162" class="mono" fill="#A78BFA">3 Scenarios · Multilingual</text>
+
+  <!-- Connector Layer 1 -> Layer 2 -->
+  <line x1="480" y1="182" x2="480" y2="196" stroke="#64748B" stroke-width="1.5" marker-end="url(#vlArrow)"/>
+
+  <!-- LAYER 2: 4 Unified Voice Lanes -->
+  <rect x="20" y="198" width="920" height="176" class="layer-card" stroke="#8B5CF6"/>
+  <rect x="32" y="207" width="102" height="19" class="pill" fill="#4C1D95"/>
+  <text x="83" y="220" text-anchor="middle" class="layer-badge" fill="#C4B5FD">LAYER 2 · 4 LANES</text>
+  <text x="144" y="221" class="layer-title">Azure Voice Live API Unified 4-Lane Runtime Router (Per-Session or Mid-Call Dynamic Switching)</text>
+
+  <!-- Lane 1: Full-Duplex GPT-Live-1 -->
+  <rect x="32" y="232" width="218" height="130" class="box" stroke="#EC4899"/>
+  <rect x="42" y="240" width="84" height="16" class="pill" fill="#831843"/>
+  <text x="84" y="251" text-anchor="middle" class="mono" fill="#F472B6">LANE ① DUPLEX</text>
+  <text x="42" y="270" class="box-title">Full-Duplex GPT-Live-1</text>
+  <text x="42" y="286" class="box-body">• Listen-while-speaking audio stream</text>
+  <text x="42" y="300" class="box-body">• Backchannel vs true barge-in split</text>
+  <text x="42" y="314" class="box-body">• Native acoustic emotion &amp; paralinguistics</text>
+  <rect x="42" y="326" width="198" height="26" class="pill" fill="#0F172A"/>
+  <text x="50" y="343" class="mono" fill="#F472B6">&lt;170ms Barge-in · P50 = 310ms</text>
+
+  <!-- Lane 2: Native S2S -->
+  <rect x="258" y="232" width="218" height="130" class="box" stroke="#8B5CF6"/>
+  <rect x="268" y="240" width="90" height="16" class="pill" fill="#4C1D95"/>
+  <text x="313" y="251" text-anchor="middle" class="mono" fill="#C4B5FD">LANE ② NATIVE S2S</text>
+  <text x="268" y="270" class="box-title">Native S2S (gpt-realtime-1.5)</text>
+  <text x="268" y="286" class="box-body">• End-to-end speech-to-speech tokens</text>
+  <text x="268" y="300" class="box-body">• Ultra-natural prosody &amp; persona</text>
+  <text x="268" y="314" class="box-body">• Ideal for empathetic concierge &amp; sales</text>
+  <rect x="268" y="326" width="198" height="26" class="pill" fill="#0F172A"/>
+  <text x="276" y="343" class="mono" fill="#C4B5FD">P50 = 420ms · Audio Token Tier</text>
+
+  <!-- Lane 3: Hybrid Semantic VAD -->
+  <rect x="484" y="232" width="218" height="130" class="box" stroke="#10B981"/>
+  <rect x="494" y="240" width="96" height="16" class="pill" fill="#064E3B"/>
+  <text x="542" y="251" text-anchor="middle" class="mono" fill="#34D399">LANE ③ HYBRID VAD</text>
+  <text x="494" y="270" class="box-title">Hybrid VAD (Phi4-mm-realtime)</text>
+  <text x="494" y="286" class="box-body">• Semantic turn-end detection (EOU)</text>
+  <text x="494" y="300" class="box-body">• 65–78% lower cost vs full S2S audio</text>
+  <text x="494" y="314" class="box-body">• High-volume QSR &amp; triage sweet spot</text>
+  <rect x="494" y="326" width="198" height="26" class="pill" fill="#0F172A"/>
+  <text x="502" y="343" class="mono" fill="#34D399">P50 = 540ms · FinOps Optimal</text>
+
+  <!-- Lane 4: Cascaded Deterministic -->
+  <rect x="710" y="232" width="218" height="130" class="box" stroke="#F59E0B"/>
+  <rect x="720" y="240" width="98" height="16" class="pill" fill="#78350F"/>
+  <text x="769" y="251" text-anchor="middle" class="mono" fill="#FBBF24">LANE ④ CASCADED</text>
+  <text x="720" y="270" class="box-title">Cascaded (STT + LLM + HD TTS)</text>
+  <text x="720" y="286" class="box-body">• Azure Fast STT + Custom Phrase Lists</text>
+  <text x="720" y="300" class="box-body">• Deterministic text audit &amp; PII redaction</text>
+  <text x="720" y="314" class="box-body">• Azure HD Dragon TTS / Custom Neural</text>
+  <rect x="720" y="326" width="198" height="26" class="pill" fill="#0F172A"/>
+  <text x="728" y="343" class="mono" fill="#FBBF24">P50 = 680ms · 100% Verbatim</text>
+
+  <!-- Connector Layer 2 -> Layer 3 -->
+  <line x1="480" y1="374" x2="480" y2="388" stroke="#64748B" stroke-width="1.5" marker-end="url(#vlArrow)"/>
+
+  <!-- LAYER 3: Deterministic Governance & Tool Delegation -->
+  <rect x="20" y="390" width="920" height="134" class="layer-card" stroke="#10B981"/>
+  <rect x="32" y="399" width="118" height="19" class="pill" fill="#064E3B"/>
+  <text x="91" y="412" text-anchor="middle" class="layer-badge" fill="#34D399">LAYER 3 · GOVERNANCE</text>
+  <text x="160" y="413" class="layer-title">Deterministic State Machine, Safety Circuit Breakers &amp; Foundry Multi-Agent Delegation</text>
+
+  <rect x="32" y="424" width="218" height="88" class="box" stroke="#059669"/>
+  <text x="42" y="442" class="box-title">turnEpoch State Machine</text>
+  <text x="42" y="457" class="box-body">Monotonic epoch fencing cancels stale</text>
+  <text x="42" y="470" class="box-body">audio frames &amp; in-flight tool side effects</text>
+  <text x="42" y="483" class="box-body">immediately on user barge-in.</text>
+  <text x="42" y="501" class="mono" fill="#34D399">0 Zombie Tool Commits (P01–P90)</text>
+
+  <rect x="258" y="424" width="218" height="88" class="box" stroke="#059669"/>
+  <text x="268" y="442" class="box-title">Strict JSON Schema &amp; Idempotency</text>
+  <text x="268" y="457" class="box-body">Constrained tool-call decoding with</text>
+  <text x="268" y="470" class="box-body">SHA-256 idempotency keys &amp; read-back</text>
+  <text x="268" y="483" class="box-body">confirmation for destructive writes.</text>
+  <text x="268" y="501" class="mono" fill="#38BDF8">100% Schema Conformance</text>
+
+  <rect x="484" y="424" width="218" height="88" class="box" stroke="#059669"/>
+  <text x="494" y="442" class="box-title">K01–K12 Safety Circuit Breakers</text>
+  <text x="494" y="457" class="box-body">Real-time acoustic/lexical jailbreak,</text>
+  <text x="494" y="470" class="box-body">PCI PAN/CVV stream scrubbing, and</text>
+  <text x="494" y="483" class="box-body">mandatory legal verbatim lock.</text>
+  <text x="494" y="501" class="mono" fill="#FBBF24">K01–K12 Deterministic Halt</text>
+
+  <rect x="710" y="424" width="218" height="88" class="box" stroke="#059669"/>
+  <text x="720" y="442" class="box-title">Foundry Agent Delegation</text>
+  <text x="720" y="457" class="box-body">Async bridge to Azure AI Foundry</text>
+  <text x="720" y="470" class="box-body">reasoning agents with latency-masking</text>
+  <text x="720" y="483" class="box-body">earcons &amp; SIP warm-transfer context.</text>
+  <text x="720" y="501" class="mono" fill="#A78BFA">MCP + Foundry Tool Fabric</text>
+</svg>

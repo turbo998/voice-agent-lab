@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img" aria-labelledby="vg-title vg-desc">
+  <title id="vg-title">Voice Agent Production Guardrail Taxonomy (P01-P350+) &amp; FinOps TCO Comparison</title>
+  <desc id="vg-desc">Left panel shows the 4-Category Production Guardrail Taxonomy (Acoustic &amp; Barge-in P01-P90, Telephony/SIP/WebRTC Resilience P91-P180, Compliance/PCI/Dual-Recording P181-P270, Multi-Agent Tool &amp; FinOps Governance P271-P350+). Right panel shows the FinOps TCO comparison achieving 65%-78% savings vs per-minute SaaS voice wrappers.</desc>
+  <defs>
+    <style>
+      .bg { fill: #0B1120; }
+      .title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 17px; font-weight: 700; fill: #F8FAFC; }
+      .subtitle { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; fill: #94A3B8; }
+      .panel { fill: #111827; stroke: #1E293B; stroke-width: 1.5; rx: 10; }
+      .panel-title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; font-weight: 700; fill: #F1F5F9; }
+      .cat-box { fill: #1E293B; stroke-width: 1.2; rx: 7; }
+      .cat-id { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10px; font-weight: 700; }
+      .cat-name { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 700; fill: #F8FAFC; }
+      .cat-desc { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; fill: #CBD5E1; }
+      .bar-label { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 600; fill: #E2E8F0; }
+      .bar-sub { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9.5px; fill: #94A3B8; }
+      .bar-val { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 11px; font-weight: 700; }
+    </style>
+    <linearGradient id="vgGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="420" class="bg" rx="12"/>
+  <rect x="20" y="14" width="920" height="3" fill="url(#vgGrad)" rx="1.5"/>
+
+  <text x="24" y="38" class="title">Production Guardrail Taxonomy (P01–P350+) &amp; Enterprise FinOps TCO Benchmark</text>
+  <text x="24" y="54" class="subtitle">386 Live POC Trap Probes Distilled into 4 Deterministic Engineering Categories · 65%–78% TCO Reduction vs Per-Minute SaaS Wrappers</text>
+
+  <!-- LEFT PANEL: 4-Category Guardrail Taxonomy -->
+  <rect x="20" y="66" width="530" height="336" class="panel"/>
+  <text x="34" y="88" class="panel-title">4-Category Production Guardrail Taxonomy (docs/solution-architecture.md)</text>
+
+  <!-- Cat 1: P01-P90 -->
+  <rect x="34" y="100" width="502" height="68" class="cat-box" stroke="#0EA5E9"/>
+  <rect x="44" y="109" width="76" height="18" rx="4" fill="#0C4A6E"/>
+  <text x="82" y="122" text-anchor="middle" class="cat-id" fill="#38BDF8">P01 – P90</text>
+  <text x="130" y="122" class="cat-name">1. Acoustic, VAD &amp; Full-Duplex Barge-in Control</text>
+  <text x="44" y="140" class="cat-desc">• Hardware AEC tail suppression, car-cabin multi-speaker beamforming &amp; cough/backchannel filter</text>
+  <text x="44" y="155" class="cat-desc">• &lt;170ms deterministic audio buffer flush + monotonic turnEpoch bump on user interruption</text>
+
+  <!-- Cat 2: P91-P180 -->
+  <rect x="34" y="176" width="502" height="68" class="cat-box" stroke="#8B5CF6"/>
+  <rect x="44" y="185" width="82" height="18" rx="4" fill="#4C1D95"/>
+  <text x="85" y="198" text-anchor="middle" class="cat-id" fill="#C4B5FD">P91 – P180</text>
+  <text x="136" y="198" class="cat-name">2. Telephony, SIP Trunking &amp; WebRTC Resilience</text>
+  <text x="44" y="216" class="cat-desc">• ACS PSTN / SBC jitter buffer adaptation, RFC 2833 DTMF hybrid fallback, packet-loss concealment</text>
+  <text x="44" y="231" class="cat-desc">• Zero-drop mid-call session migration &amp; warm SIP REFER handoff with structured summary</text>
+
+  <!-- Cat 3: P181-P270 -->
+  <rect x="34" y="252" width="502" height="68" class="cat-box" stroke="#10B981"/>
+  <rect x="44" y="261" width="88" height="18" rx="4" fill="#064E3B"/>
+  <text x="88" y="274" text-anchor="middle" class="cat-id" fill="#34D399">P181 – P270</text>
+  <text x="142" y="274" class="cat-name">3. Compliance, PCI-DSS Scrubbing &amp; Dual-Recording</text>
+  <text x="44" y="292" class="cat-desc">• Synchronous PAN/CVV audio &amp; transcript zeroing before storage; MiFID II / FINRA dual-track rec</text>
+  <text x="44" y="307" class="cat-desc">• Mandatory verbatim clause locking (switches to Lane ④ HD Dragon TTS for regulated disclosures)</text>
+
+  <!-- Cat 4: P271-P350+ -->
+  <rect x="34" y="328" width="502" height="64" class="cat-box" stroke="#F59E0B"/>
+  <rect x="44" y="337" width="96" height="18" rx="4" fill="#78350F"/>
+  <text x="92" y="350" text-anchor="middle" class="cat-id" fill="#FBBF24">P271 – P350+</text>
+  <text x="150" y="350" class="cat-name">4. Multi-Agent Tool Safety &amp; FinOps Governance</text>
+  <text x="44" y="368" class="cat-desc">• Idempotent tool-call commit fence, async Foundry agent earcon masking, token budget circuit</text>
+  <text x="44" y="383" class="cat-desc">• Extended P351–P432 enterprise presales trap probes &amp; automated chaos regression gates</text>
+
+  <!-- RIGHT PANEL: FinOps TCO Comparison -->
+  <rect x="564" y="66" width="376" height="336" class="panel"/>
+  <text x="578" y="88" class="panel-title">FinOps TCO Comparison (Per Conversation Min)</text>
+  <text x="578" y="105" class="bar-sub">10M Minutes/Month Enterprise Contact Center Cohort</text>
+
+  <!-- Bar 1: Per-Minute SaaS Wrapper -->
+  <text x="578" y="132" class="bar-label">Per-Minute SaaS Voice Wrappers</text>
+  <text x="578" y="145" class="bar-sub">Bundled telephony + opaque LLM markup ($0.18–$0.25/min)</text>
+  <rect x="578" y="152" width="270" height="22" rx="4" fill="#EF4444" opacity="0.85"/>
+  <text x="856" y="167" class="bar-val" fill="#FCA5A5">$0.220/m</text>
+
+  <!-- Bar 2: Unoptimized Raw S2S -->
+  <text x="578" y="196" class="bar-label">Unoptimized Raw S2S Audio Streaming</text>
+  <text x="578" y="209" class="bar-sub">Continuous silence audio tokens + uncached context</text>
+  <rect x="578" y="216" width="184" height="22" rx="4" fill="#F59E0B" opacity="0.85"/>
+  <text x="770" y="231" class="bar-val" fill="#FDE68A">$0.150/m</text>
+
+  <!-- Bar 3: Azure Voice Live Lane 1/2 with Prompt Caching -->
+  <text x="578" y="260" class="bar-label">Azure Voice Live (Lane ①/② + VAD Gate + Cache)</text>
+  <text x="578" y="273" class="bar-sub">GPT-Live-1 / gpt-realtime-1.5 + 80% cached system prompt</text>
+  <rect x="578" y="280" width="94" height="22" rx="4" fill="#38BDF8"/>
+  <text x="680" y="295" class="bar-val" fill="#38BDF8">$0.076/m</text>
+
+  <!-- Bar 4: Azure Voice Live Hybrid Lane 3/4 Routing -->
+  <text x="578" y="324" class="bar-label">Azure Voice Live Dynamic 4-Lane Router</text>
+  <text x="578" y="337" class="bar-sub">Phi4-mm-realtime + Cascaded HD Dragon TTS routing</text>
+  <rect x="578" y="344" width="60" height="22" rx="4" fill="#10B981"/>
+  <text x="646" y="359" class="bar-val" fill="#34D399">$0.048/m</text>
+
+  <!-- Callout Box at bottom right -->
+  <rect x="578" y="372" width="348" height="22" rx="4" fill="#064E3B"/>
+  <text x="752" y="387" text-anchor="middle" class="cat-id" fill="#A7F3D0">65% – 78% TCO Savings ($1.72M+ Annualized at 10M Min/Mo)</text>
+</svg>
