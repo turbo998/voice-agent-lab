@@ -41768,3 +41768,221 @@ export function evaluateWebrtcSipRfc8854WebrtcFecOpusLbrrRfc2198RedRfc8627Flexfe
   };
 }
 
+// ============================================================================
+// Stage 213 (P419–P420) — Historic P420 Policy ID Milestone:
+// P419: Semiconductor Wafer High-NA EUV (0.55 NA Anamorphic Stitching) &
+//       Metal-Oxide Photoresist (MOR Organotin R-Sn-O / SnH4) + H2 LPP Guard
+// P420: WebRTC & SIP RFC 8859 SDP Attribute Multiplexing Categories
+//       (IDENTICAL / TRANSPORT / SUM / SPECIAL) & RFC 8866 Strict ABNF Guard
+// ============================================================================
+
+export interface SemiconductorWaferHighNaEuvAnamorphicStitchingAndOrganotinMorPhotoresistGuardInput {
+  scannerAndTrackId: string;
+  stannaneSnh4OrOrganotinVaporPpm: number;
+  hbrOrCl2DryDevelopGasLeakPpm: number;
+  scannerExhaustHydrogenPpm: number;
+  anamorphicHalfFieldStitchingOverlayNm: number;
+  morStochasticNanoBridgingDefectsPerCm2: number;
+  collectorMirrorSnReflectivityLossPct: number;
+  vesselOrTrackMaintenanceOpenRequested: boolean;
+  postPurgeResidualSnh4OrganotinPpm: number;
+  postPurgeResidualHydrogenPpm: number;
+  snHepaPassivationAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferHighNaEuvAnamorphicStitchingAndOrganotinMorPhotoresistGuardAssessment {
+  scannerAndTrackId: string;
+  policyCode: "P419-SEMICONDUCTOR-WAFER-HIGH-NA-EUV-055NA-ANAMORPHIC-STITCHING-AND-ORGANOTIN-METAL-OXIDE-PHOTORESIST-MOR-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-SNH4-HBR-H2-TRIP-STITCHING-ABORT-AND-SCBA-LOTO-GUARD";
+  highNaEuvAndOrganotinMorSafe: boolean;
+  snh4OrganotinHbrOrH2LppTripped0ms: boolean;
+  anamorphicStitchingMorDefectOrCollectorLossAborted: boolean;
+  vesselOrTrackLockedUntilSnh4H2PurgedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_high_na_euv_055na_anamorphic_exposure_and_organotin_mor_track"
+    | "trip_mor_vmb_h2_purge_and_co2_drive_laser_in_0ms_on_snh4_hbr_or_h2_leak"
+    | "abort_high_na_euv_on_anamorphic_stitching_overlay_mor_stochastic_bridge_or_collector_loss"
+    | "lock_euv_vessel_and_mor_track_until_snh4_0002ppm_h2_1000ppm_and_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferHighNaEuv055NaAnamorphicStitchingAndOrganotinMetalOxidePhotoresistMorSemiS2SemiS6Nfpa318Osha1910119Osha19101000Snh4HbrH2TripStitchingAbortAndScbaLotoGuard(
+  input: SemiconductorWaferHighNaEuvAnamorphicStitchingAndOrganotinMorPhotoresistGuardInput,
+): SemiconductorWaferHighNaEuvAnamorphicStitchingAndOrganotinMorPhotoresistGuardAssessment {
+  const policyCode =
+    "P419-SEMICONDUCTOR-WAFER-HIGH-NA-EUV-055NA-ANAMORPHIC-STITCHING-AND-ORGANOTIN-METAL-OXIDE-PHOTORESIST-MOR-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-SNH4-HBR-H2-TRIP-STITCHING-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const snh4OrganotinHbrOrH2LppTripped0ms =
+    input.stannaneSnh4OrOrganotinVaporPpm >= 0.01 ||
+    input.hbrOrCl2DryDevelopGasLeakPpm >= 0.5 ||
+    input.scannerExhaustHydrogenPpm >= 10000;
+
+  const anamorphicStitchingMorDefectOrCollectorLossAborted =
+    input.anamorphicHalfFieldStitchingOverlayNm >= 1.2 ||
+    input.morStochasticNanoBridgingDefectsPerCm2 >= 0.05 ||
+    input.collectorMirrorSnReflectivityLossPct >= 8.0;
+
+  const vesselOrTrackLockedUntilSnh4H2PurgedAndScbaLoto =
+    input.vesselOrTrackMaintenanceOpenRequested &&
+    (input.postPurgeResidualSnh4OrganotinPpm >= 0.002 ||
+      input.postPurgeResidualHydrogenPpm >= 1000 ||
+      !input.snHepaPassivationAndScbaLotoVerified);
+
+  if (snh4OrganotinHbrOrH2LppTripped0ms) {
+    return {
+      scannerAndTrackId: input.scannerAndTrackId,
+      policyCode,
+      highNaEuvAndOrganotinMorSafe: false,
+      snh4OrganotinHbrOrH2LppTripped0ms: true,
+      anamorphicStitchingMorDefectOrCollectorLossAborted,
+      vesselOrTrackLockedUntilSnh4H2PurgedAndScbaLoto,
+      action:
+        "trip_mor_vmb_h2_purge_and_co2_drive_laser_in_0ms_on_snh4_hbr_or_h2_leak",
+      blockedReason:
+        "SEMI_S2_S6_NFPA318_HIGH_NA_EUV_SNH4_ORGANOTIN_001PPM_HBR_05PPM_OR_H2_10000PPM_TRIPPED_0MS",
+    };
+  }
+
+  if (anamorphicStitchingMorDefectOrCollectorLossAborted) {
+    return {
+      scannerAndTrackId: input.scannerAndTrackId,
+      policyCode,
+      highNaEuvAndOrganotinMorSafe: false,
+      snh4OrganotinHbrOrH2LppTripped0ms: false,
+      anamorphicStitchingMorDefectOrCollectorLossAborted: true,
+      vesselOrTrackLockedUntilSnh4H2PurgedAndScbaLoto,
+      action:
+        "abort_high_na_euv_on_anamorphic_stitching_overlay_mor_stochastic_bridge_or_collector_loss",
+      blockedReason:
+        "HIGH_NA_EUV_STITCHING_OVERLAY_12NM_MOR_STOCHASTIC_DEFECT_005CM2_OR_COLLECTOR_LOSS_8PCT_ABORTED",
+    };
+  }
+
+  if (vesselOrTrackLockedUntilSnh4H2PurgedAndScbaLoto) {
+    return {
+      scannerAndTrackId: input.scannerAndTrackId,
+      policyCode,
+      highNaEuvAndOrganotinMorSafe: false,
+      snh4OrganotinHbrOrH2LppTripped0ms: false,
+      anamorphicStitchingMorDefectOrCollectorLossAborted: false,
+      vesselOrTrackLockedUntilSnh4H2PurgedAndScbaLoto: true,
+      action:
+        "lock_euv_vessel_and_mor_track_until_snh4_0002ppm_h2_1000ppm_and_scba_loto",
+      blockedReason:
+        "OSHA_1910_1000_RESIDUAL_SNH4_ORGANOTIN_0002PPM_H2_1000PPM_OR_UNVERIFIED_SN_HEPA_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    scannerAndTrackId: input.scannerAndTrackId,
+    policyCode,
+    highNaEuvAndOrganotinMorSafe: true,
+    snh4OrganotinHbrOrH2LppTripped0ms: false,
+    anamorphicStitchingMorDefectOrCollectorLossAborted: false,
+    vesselOrTrackLockedUntilSnh4H2PurgedAndScbaLoto: false,
+    action:
+      "allow_verified_high_na_euv_055na_anamorphic_exposure_and_organotin_mor_track",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8859SdpAttributeMultiplexingCategoriesAndRfc8866StrictAbnfGrammarGuardInput {
+  sessionId: string;
+  rfc8866StrictVToMHeaderOrderAndCrlfValid: boolean;
+  rfc8859IdenticalAndTransportAttrsMatchAcrossBundle: boolean;
+  rfc8859SumBandwidthModifierConsistentWithTracks: boolean;
+  rfc8859SpecialRtpmapOrExtmapIdCollisionDetected: boolean;
+  maxAttributesPerMediaSection: number;
+  totalSdpBodyBytes: number;
+}
+
+export interface WebrtcSipRfc8859SdpAttributeMultiplexingCategoriesAndRfc8866StrictAbnfGrammarGuardAssessment {
+  sessionId: string;
+  policyCode: "P420-WEBRTC-SIP-RFC8859-SDP-ATTRIBUTE-MULTIPLEXING-CATEGORIES-IDENTICAL-TRANSPORT-SUM-SPECIAL-AND-RFC8866-STRICT-ABNF-GRAMMAR-GUARD";
+  rfc8859AndRfc8866SdpMultiplexingHealthy: boolean;
+  invalidRfc8866AbnfOrIdenticalTransportAttrDesyncDropped0ms: boolean;
+  inconsistentRfc8859SumBandwidthOrSpecialPtExtmapCollisionRejected: boolean;
+  oversizedSdpBodyOrExcessiveMediaAttributesClamped: boolean;
+  action:
+    | "allow_verified_rfc8859_multiplexed_sdp_categories_and_rfc8866_grammar"
+    | "drop_rfc8866_abnf_order_violation_or_rfc8859_identical_transport_desync_0ms"
+    | "reject_rfc8859_sum_bandwidth_mismatch_or_special_pt_extmap_collision"
+    | "clamp_rfc8866_8859_excessive_attributes_per_m_section_or_64kb_sdp_body";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8859SdpAttributeMultiplexingCategoriesIdenticalTransportSumSpecialAndRfc8866StrictAbnfGrammarGuard(
+  input: WebrtcSipRfc8859SdpAttributeMultiplexingCategoriesAndRfc8866StrictAbnfGrammarGuardInput,
+): WebrtcSipRfc8859SdpAttributeMultiplexingCategoriesAndRfc8866StrictAbnfGrammarGuardAssessment {
+  const policyCode =
+    "P420-WEBRTC-SIP-RFC8859-SDP-ATTRIBUTE-MULTIPLEXING-CATEGORIES-IDENTICAL-TRANSPORT-SUM-SPECIAL-AND-RFC8866-STRICT-ABNF-GRAMMAR-GUARD" as const;
+
+  const invalidRfc8866AbnfOrIdenticalTransportAttrDesyncDropped0ms =
+    !input.rfc8866StrictVToMHeaderOrderAndCrlfValid ||
+    !input.rfc8859IdenticalAndTransportAttrsMatchAcrossBundle;
+
+  const inconsistentRfc8859SumBandwidthOrSpecialPtExtmapCollisionRejected =
+    !input.rfc8859SumBandwidthModifierConsistentWithTracks ||
+    input.rfc8859SpecialRtpmapOrExtmapIdCollisionDetected;
+
+  const oversizedSdpBodyOrExcessiveMediaAttributesClamped =
+    input.maxAttributesPerMediaSection > 64 || input.totalSdpBodyBytes > 65536;
+
+  if (invalidRfc8866AbnfOrIdenticalTransportAttrDesyncDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8859AndRfc8866SdpMultiplexingHealthy: false,
+      invalidRfc8866AbnfOrIdenticalTransportAttrDesyncDropped0ms: true,
+      inconsistentRfc8859SumBandwidthOrSpecialPtExtmapCollisionRejected,
+      oversizedSdpBodyOrExcessiveMediaAttributesClamped,
+      action:
+        "drop_rfc8866_abnf_order_violation_or_rfc8859_identical_transport_desync_0ms",
+      blockedReason:
+        "RFC8866_ABNF_LINE_ORDER_CRLF_VIOLATION_OR_RFC8859_IDENTICAL_TRANSPORT_ATTR_MISMATCH_DROPPED_0MS",
+    };
+  }
+
+  if (inconsistentRfc8859SumBandwidthOrSpecialPtExtmapCollisionRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8859AndRfc8866SdpMultiplexingHealthy: false,
+      invalidRfc8866AbnfOrIdenticalTransportAttrDesyncDropped0ms: false,
+      inconsistentRfc8859SumBandwidthOrSpecialPtExtmapCollisionRejected: true,
+      oversizedSdpBodyOrExcessiveMediaAttributesClamped,
+      action:
+        "reject_rfc8859_sum_bandwidth_mismatch_or_special_pt_extmap_collision",
+      blockedReason:
+        "RFC8859_SUM_BANDWIDTH_MODIFIER_MISMATCH_OR_SPECIAL_RTPMAP_EXTMAP_ID_COLLISION_REJECTED",
+    };
+  }
+
+  if (oversizedSdpBodyOrExcessiveMediaAttributesClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8859AndRfc8866SdpMultiplexingHealthy: false,
+      invalidRfc8866AbnfOrIdenticalTransportAttrDesyncDropped0ms: false,
+      inconsistentRfc8859SumBandwidthOrSpecialPtExtmapCollisionRejected: false,
+      oversizedSdpBodyOrExcessiveMediaAttributesClamped: true,
+      action:
+        "clamp_rfc8866_8859_excessive_attributes_per_m_section_or_64kb_sdp_body",
+      blockedReason:
+        "RFC8866_8859_OVER_64_ATTRIBUTES_PER_MEDIA_SECTION_OR_OVER_64KB_SDP_BODY_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8859AndRfc8866SdpMultiplexingHealthy: true,
+    invalidRfc8866AbnfOrIdenticalTransportAttrDesyncDropped0ms: false,
+    inconsistentRfc8859SumBandwidthOrSpecialPtExtmapCollisionRejected: false,
+    oversizedSdpBodyOrExcessiveMediaAttributesClamped: false,
+    action:
+      "allow_verified_rfc8859_multiplexed_sdp_categories_and_rfc8866_grammar",
+    blockedReason: "none",
+  };
+}
+
+
