@@ -37486,6 +37486,230 @@ export function evaluateWebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlSubt
   };
 }
 
+// ============================================================================
+// Stage 193 (P379–P380 — 380th Policy ID Milestone):
+// - P379: Semiconductor Wafer Sub-Atmospheric Gas Delivery System (SDS / VAC
+//         Zeolite/Carbon Adsorbent Cylinders) & Bulk Specialty Gas System
+//         (BSGS AsH3 / PH3 / B2H6 / GeH4 / SiH4) Gas Cabinet, VMB & Excess
+//         Flow Switch (EFS) Safety Guard (SEMI S2 / SEMI S6 / NFPA 318 /
+//         NFPA 55 / CGA G-13 / OSHA 1910.119 / OSHA 1910.1000)
+// - P380: WebRTC & SIP RTP SMPTE ST 2022-7 Seamless Protection Switching &
+//         SMPTE ST 2022-1 / ST 2022-5 2D Pro-MPEG Forward Error Correction
+//         (L x D Row/Column XOR Matrix) Security Guard (0ms Pro-MPEG FEC
+//         Overread & L*D > 256 Matrix Bomb Drop, ST 2022-7 Path 1 / Path 2
+//         Digest Mismatch Spoof & >150 ms Differential Delay Overflow Reject,
+//         and >50% FEC Repair Flood Clamp)
+// ============================================================================
+
+export interface SemiconductorWaferSubAtmosphericSdsVacAndBsgsSpecialtyGasCabinetVmbGuardInput {
+  readonly cabinetOrVmbId: string;
+  readonly bsgsPigtailPressureDropBarPerSec: number;
+  readonly cabinetExhaustDuctNegativePressurePa: number;
+  readonly sdsCylinderBlanketTemperatureCelsius: number;
+  readonly sdsDeliveryLinePressureTorr: number;
+  readonly autoCrossPurgeCyclesCompleted: number;
+  readonly hydrideMdaAnalyzerPpb: number;
+  readonly requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferSubAtmosphericSdsVacAndBsgsSpecialtyGasCabinetVmbGuardDecision {
+  readonly policyCode: "P379-SEMICONDUCTOR-WAFER-SUB-ATMOSPHERIC-SDS-VAC-AND-BSGS-SPECIALTY-GAS-CABINET-VMB-SEMIS2-SEMIS6-NFPA318-NFPA55-CGAG13-OSHA1910119-OSHA19101000-BSGS-PIGTAIL-RUPTURE-OR-EFS-TRIP-SDS-HEATER-OVERTEMP-DESORPTION-ISOLATION-AND-HYDRIDE-MDA-CROSS-PURGE-SCBA-LOTO-GUARD";
+  readonly cabinetOrVmbId: string;
+  readonly sdsVacAndBsgsGasCabinetVmbSafe: boolean;
+  readonly bsgsPigtailRuptureEfsOrExhaustLossTripped0ms: boolean;
+  readonly sdsHeaterOvertempOrSuperatmosphericDesorptionIsolated: boolean;
+  readonly hydrideMdaCrossPurgeScbaLotoRequired: boolean;
+  readonly action:
+    | "allow_sds_vac_and_bsgs_specialty_gas_cabinet_and_vmb_delivery"
+    | "trip_bsgs_pneumatic_cylinder_valve_efs_and_vmb_coaxial_isolation_with_n2_shroud_purge_in_0ms"
+    | "cut_sds_cylinder_heater_power_and_close_subatmospheric_regulator_valve_to_prevent_positive_pressure_desorption"
+    | "lock_gas_cabinet_pigtail_break_until_30_cycle_vacuum_n2_cross_purge_mda_below_5ppb_scba_and_loto_verified";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferSubAtmosphericSdsVacAndBsgsSpecialtyGasCabinetVmbSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119Osha19101000BsgsPigtailRuptureOrEfsTripSdsHeaterOvertempDesorptionIsolationAndHydrideMdaCrossPurgeScbaLotoGuard(
+  input: SemiconductorWaferSubAtmosphericSdsVacAndBsgsSpecialtyGasCabinetVmbGuardInput,
+): SemiconductorWaferSubAtmosphericSdsVacAndBsgsSpecialtyGasCabinetVmbGuardDecision {
+  const policyCode =
+    "P379-SEMICONDUCTOR-WAFER-SUB-ATMOSPHERIC-SDS-VAC-AND-BSGS-SPECIALTY-GAS-CABINET-VMB-SEMIS2-SEMIS6-NFPA318-NFPA55-CGAG13-OSHA1910119-OSHA19101000-BSGS-PIGTAIL-RUPTURE-OR-EFS-TRIP-SDS-HEATER-OVERTEMP-DESORPTION-ISOLATION-AND-HYDRIDE-MDA-CROSS-PURGE-SCBA-LOTO-GUARD" as const;
+
+  const bsgsPigtailRuptureEfsOrExhaustLossTripped0ms =
+    input.bsgsPigtailPressureDropBarPerSec > 2.5 ||
+    input.cabinetExhaustDuctNegativePressurePa > -125;
+
+  const sdsHeaterOvertempOrSuperatmosphericDesorptionIsolated =
+    input.sdsCylinderBlanketTemperatureCelsius > 45 ||
+    input.sdsDeliveryLinePressureTorr > 650;
+
+  const hydrideMdaCrossPurgeScbaLotoRequired =
+    input.autoCrossPurgeCyclesCompleted < 30 ||
+    input.hydrideMdaAnalyzerPpb >= 5 ||
+    /bypass_efs_interlock|skip_30_cycle_cross_purge|heat_sds_cylinder_above_45c|open_pigtail_with_ash3_present/i.test(
+      input.requestedVoiceAction,
+    );
+
+  if (bsgsPigtailRuptureEfsOrExhaustLossTripped0ms) {
+    return {
+      policyCode,
+      cabinetOrVmbId: input.cabinetOrVmbId,
+      sdsVacAndBsgsGasCabinetVmbSafe: false,
+      bsgsPigtailRuptureEfsOrExhaustLossTripped0ms: true,
+      sdsHeaterOvertempOrSuperatmosphericDesorptionIsolated,
+      hydrideMdaCrossPurgeScbaLotoRequired,
+      action:
+        "trip_bsgs_pneumatic_cylinder_valve_efs_and_vmb_coaxial_isolation_with_n2_shroud_purge_in_0ms",
+      blockedReason:
+        "bsgs_pigtail_pressure_drop_over_2_5bar_per_sec_efs_trip_or_cabinet_exhaust_above_minus125pa_0ms_trip",
+    };
+  }
+
+  if (sdsHeaterOvertempOrSuperatmosphericDesorptionIsolated) {
+    return {
+      policyCode,
+      cabinetOrVmbId: input.cabinetOrVmbId,
+      sdsVacAndBsgsGasCabinetVmbSafe: false,
+      bsgsPigtailRuptureEfsOrExhaustLossTripped0ms: false,
+      sdsHeaterOvertempOrSuperatmosphericDesorptionIsolated: true,
+      hydrideMdaCrossPurgeScbaLotoRequired,
+      action:
+        "cut_sds_cylinder_heater_power_and_close_subatmospheric_regulator_valve_to_prevent_positive_pressure_desorption",
+      blockedReason:
+        "sds_cylinder_blanket_temp_over_45c_or_delivery_line_pressure_over_650torr_desorption_isolated",
+    };
+  }
+
+  if (hydrideMdaCrossPurgeScbaLotoRequired) {
+    return {
+      policyCode,
+      cabinetOrVmbId: input.cabinetOrVmbId,
+      sdsVacAndBsgsGasCabinetVmbSafe: false,
+      bsgsPigtailRuptureEfsOrExhaustLossTripped0ms: false,
+      sdsHeaterOvertempOrSuperatmosphericDesorptionIsolated: false,
+      hydrideMdaCrossPurgeScbaLotoRequired: true,
+      action:
+        "lock_gas_cabinet_pigtail_break_until_30_cycle_vacuum_n2_cross_purge_mda_below_5ppb_scba_and_loto_verified",
+      blockedReason:
+        "cross_purge_cycles_below_30_or_hydride_mda_at_or_above_5ppb_or_unsafe_voice_override_scba_loto_required",
+    };
+  }
+
+  return {
+    policyCode,
+    cabinetOrVmbId: input.cabinetOrVmbId,
+    sdsVacAndBsgsGasCabinetVmbSafe: true,
+    bsgsPigtailRuptureEfsOrExhaustLossTripped0ms: false,
+    sdsHeaterOvertempOrSuperatmosphericDesorptionIsolated: false,
+    hydrideMdaCrossPurgeScbaLotoRequired: false,
+    action: "allow_sds_vac_and_bsgs_specialty_gas_cabinet_and_vmb_delivery",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingAndSt20221St20225ProMpeg2dFecGuardInput {
+  readonly sessionId: string;
+  readonly fecDeclaredRecoveryBytes: number;
+  readonly rtpPayloadRemainingBytes: number;
+  readonly fecColumnsL: number;
+  readonly fecRowsD: number;
+  readonly st20227DualPathMatchingSeqAndTimestampHaveIdenticalPayload: boolean;
+  readonly st20227PathDifferentialDelayMs: number;
+  readonly fecRepairPacketToMediaRatioPct: number;
+}
+
+export interface WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingAndSt20221St20225ProMpeg2dFecGuardDecision {
+  readonly policyCode: "P380-WEBRTC-SIP-RTP-SMPTE-ST2022-7-SEAMLESS-PROTECTION-SWITCHING-AND-ST2022-1-ST2022-5-PRO-MPEG-2D-FEC-HEADER-OVERREAD-LD-MATRIX-BOMB-DUAL-PATH-DIGEST-SPOOF-DIFFERENTIAL-DELAY-OVERFLOW-AND-REPAIR-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly st20227AndSt2022ProMpegFecHealthy: boolean;
+  readonly fecHeaderOverreadOrLdMatrixBombDropped0ms: boolean;
+  readonly dualPathDigestSpoofOrDifferentialDelayOverflowRejected: boolean;
+  readonly fecRepairPacketFloodClamped: boolean;
+  readonly action:
+    | "accept_smpte_st2022_7_hitless_merge_and_st2022_1_5_2d_fec_stream"
+    | "drop_st2022_1_5_fec_recovery_length_overread_or_l_times_d_over_256_matrix_bomb_in_0ms"
+    | "reject_st2022_7_dual_path_payload_digest_mismatch_spoof_or_differential_delay_over_150ms"
+    | "clamp_st2022_1_5_unaligned_fec_repair_packet_flood_exceeding_50pct_overhead";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingAndSt20221St20225ProMpeg2dFecHeaderOverreadLdMatrixBombDualPathDigestSpoofDifferentialDelayOverflowAndRepairFloodGuard(
+  input: WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingAndSt20221St20225ProMpeg2dFecGuardInput,
+): WebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingAndSt20221St20225ProMpeg2dFecGuardDecision {
+  const policyCode =
+    "P380-WEBRTC-SIP-RTP-SMPTE-ST2022-7-SEAMLESS-PROTECTION-SWITCHING-AND-ST2022-1-ST2022-5-PRO-MPEG-2D-FEC-HEADER-OVERREAD-LD-MATRIX-BOMB-DUAL-PATH-DIGEST-SPOOF-DIFFERENTIAL-DELAY-OVERFLOW-AND-REPAIR-FLOOD-GUARD" as const;
+
+  const fecHeaderOverreadOrLdMatrixBombDropped0ms =
+    input.rtpPayloadRemainingBytes < 16 ||
+    input.fecDeclaredRecoveryBytes > input.rtpPayloadRemainingBytes ||
+    input.fecColumnsL < 1 ||
+    input.fecRowsD < 1 ||
+    input.fecColumnsL * input.fecRowsD > 256;
+
+  const dualPathDigestSpoofOrDifferentialDelayOverflowRejected =
+    !input.st20227DualPathMatchingSeqAndTimestampHaveIdenticalPayload ||
+    input.st20227PathDifferentialDelayMs < 0 ||
+    input.st20227PathDifferentialDelayMs > 150;
+
+  const fecRepairPacketFloodClamped =
+    input.fecRepairPacketToMediaRatioPct > 50;
+
+  if (fecHeaderOverreadOrLdMatrixBombDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st20227AndSt2022ProMpegFecHealthy: false,
+      fecHeaderOverreadOrLdMatrixBombDropped0ms: true,
+      dualPathDigestSpoofOrDifferentialDelayOverflowRejected,
+      fecRepairPacketFloodClamped,
+      action:
+        "drop_st2022_1_5_fec_recovery_length_overread_or_l_times_d_over_256_matrix_bomb_in_0ms",
+      blockedReason:
+        "smpte_st2022_1_5_fec_recovery_bytes_exceed_payload_or_l_times_d_matrix_outside_1_256_0ms_drop",
+    };
+  }
+
+  if (dualPathDigestSpoofOrDifferentialDelayOverflowRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st20227AndSt2022ProMpegFecHealthy: false,
+      fecHeaderOverreadOrLdMatrixBombDropped0ms: false,
+      dualPathDigestSpoofOrDifferentialDelayOverflowRejected: true,
+      fecRepairPacketFloodClamped,
+      action:
+        "reject_st2022_7_dual_path_payload_digest_mismatch_spoof_or_differential_delay_over_150ms",
+      blockedReason:
+        "smpte_st2022_7_dual_path_payload_digest_mismatch_or_differential_delay_outside_0_150ms_rejected",
+    };
+  }
+
+  if (fecRepairPacketFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st20227AndSt2022ProMpegFecHealthy: false,
+      fecHeaderOverreadOrLdMatrixBombDropped0ms: false,
+      dualPathDigestSpoofOrDifferentialDelayOverflowRejected: false,
+      fecRepairPacketFloodClamped: true,
+      action:
+        "clamp_st2022_1_5_unaligned_fec_repair_packet_flood_exceeding_50pct_overhead",
+      blockedReason:
+        "smpte_st2022_1_5_fec_repair_to_media_ratio_over_50pct_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    st20227AndSt2022ProMpegFecHealthy: true,
+    fecHeaderOverreadOrLdMatrixBombDropped0ms: false,
+    dualPathDigestSpoofOrDifferentialDelayOverflowRejected: false,
+    fecRepairPacketFloodClamped: false,
+    action: "accept_smpte_st2022_7_hitless_merge_and_st2022_1_5_2d_fec_stream",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
