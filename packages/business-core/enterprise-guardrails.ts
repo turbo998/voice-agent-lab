@@ -50278,6 +50278,185 @@ export function evaluateWebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlocksLossRleD
   };
 }
 
+export interface SemiconductorWaferFabCmpChemicalMechanicalPlanarizationSlurryH2o2OxidizerDiamondConditionerDiskAndToxicCuCoSlurryDrainSafetyContext {
+  readonly h2o2OxidizerLineDecompositionOverpressureOver250KpaGaugeOrTempOver45CDetected: boolean;
+  readonly diamondConditionerDiskDelaminationOrWaferBreakageOnPlatenDetected: boolean;
+  readonly cmpPlatenMotorOvercurrentOrRetainingRingPneumaticLossDetected: boolean;
+  readonly silicaCeriaSlurryAgglomerationLargeParticleCountExceededDetected: boolean;
+  readonly toxicCopperCobaltCyanideCmpWasteDrainDivertedToGeneralDrainDetected: boolean;
+  readonly postCmpBrushScrubberNh4OhHfDiluteCleanExhaustBelow125PaDetected: boolean;
+  readonly cmpPlatenPadChangeOrSlurryLoopMaintenanceRequested: boolean;
+  readonly platenSpindleZeroSpeedH2o2LineDepressurizedAndDiwFlushVerified: boolean;
+  readonly heavyMetalSlurryPpeAndPneumaticHeadLiftLockPinLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabCmpChemicalMechanicalPlanarizationSlurryH2o2OxidizerDiamondConditionerDiskAndToxicCuCoSlurryDrainSafetyDecision {
+  readonly violated: boolean;
+  readonly policyId: "P505-SEMICONDUCTOR-WAFER-FAB-CMP-CHEMICAL-MECHANICAL-PLANARIZATION-SLURRY-H2O2-OXIDIZER-DIAMOND-CONDITIONER-DISK-AND-TOXIC-CU-CO-SLURRY-DRAIN-SEMIS2-SEMIS6-NFPA318-NFPA400-EPA40CFR433-OSHA1910147-H2O2-WAFA-BREAK-TRIP-SLURRY-DRAIN-ABORT-AND-PLATEN-LOTO-GUARD";
+  readonly action:
+    | "allow"
+    | "lock_cmp_platen_until_zero_speed_h2o2_vent_and_head_lock_pin_loto"
+    | "abort_cmp_polish_lift_carrier_head_and_lock_cu_co_toxic_waste_diverter"
+    | "trip_cmp_platen_spindle_close_h2o2_oxidizer_valve_and_flood_diw_in_0ms";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabCmpChemicalMechanicalPlanarizationSlurryH2o2OxidizerDiamondConditionerDiskAndToxicCuCoSlurryDrainSemiS2SemiS6Nfpa318Nfpa400Epa40Cfr433Osha1910147H2o2WafaBreakTripSlurryDrainAbortAndPlatenLotoGuard(
+  context: SemiconductorWaferFabCmpChemicalMechanicalPlanarizationSlurryH2o2OxidizerDiamondConditionerDiskAndToxicCuCoSlurryDrainSafetyContext,
+): SemiconductorWaferFabCmpChemicalMechanicalPlanarizationSlurryH2o2OxidizerDiamondConditionerDiskAndToxicCuCoSlurryDrainSafetyDecision {
+  const policyId =
+    "P505-SEMICONDUCTOR-WAFER-FAB-CMP-CHEMICAL-MECHANICAL-PLANARIZATION-SLURRY-H2O2-OXIDIZER-DIAMOND-CONDITIONER-DISK-AND-TOXIC-CU-CO-SLURRY-DRAIN-SEMIS2-SEMIS6-NFPA318-NFPA400-EPA40CFR433-OSHA1910147-H2O2-WAFA-BREAK-TRIP-SLURRY-DRAIN-ABORT-AND-PLATEN-LOTO-GUARD" as const;
+
+  if (
+    context.h2o2OxidizerLineDecompositionOverpressureOver250KpaGaugeOrTempOver45CDetected ||
+    context.diamondConditionerDiskDelaminationOrWaferBreakageOnPlatenDetected ||
+    context.cmpPlatenMotorOvercurrentOrRetainingRingPneumaticLossDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "trip_cmp_platen_spindle_close_h2o2_oxidizer_valve_and_flood_diw_in_0ms",
+      reason:
+        "Critical semiconductor wafer Fab CMP chemical mechanical planarization hazard (SEMI S2 / SEMI S6 / NFPA 318 / NFPA 400): H2O2 oxidizer decomposition overpressure >=250 kPa(g) / >=45 C, diamond conditioner disk delamination / wafer breakage on platen, or platen motor overcurrent / retaining-ring pneumatic loss detected; tripping platen spindle, closing H2O2 oxidizer valve, and flooding DIW in 0ms.",
+    };
+  }
+
+  if (
+    context.silicaCeriaSlurryAgglomerationLargeParticleCountExceededDetected ||
+    context.toxicCopperCobaltCyanideCmpWasteDrainDivertedToGeneralDrainDetected ||
+    context.postCmpBrushScrubberNh4OhHfDiluteCleanExhaustBelow125PaDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "abort_cmp_polish_lift_carrier_head_and_lock_cu_co_toxic_waste_diverter",
+      reason:
+        "Semiconductor wafer Fab CMP slurry & heavy-metal effluent violation (SEMI S2 / EPA 40 CFR 433): silica/ceria slurry large-particle agglomeration, toxic Cu/Co/BTA CMP waste diverted to general drain, or post-CMP scrubber NH4OH/dHF exhaust <125 Pa detected; aborting polish, lifting carrier head, and locking Cu/Co toxic waste diverter.",
+    };
+  }
+
+  if (
+    context.cmpPlatenPadChangeOrSlurryLoopMaintenanceRequested &&
+    (!context.platenSpindleZeroSpeedH2o2LineDepressurizedAndDiwFlushVerified ||
+      !context.heavyMetalSlurryPpeAndPneumaticHeadLiftLockPinLotoVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "lock_cmp_platen_until_zero_speed_h2o2_vent_and_head_lock_pin_loto",
+      reason:
+        "Semiconductor wafer Fab CMP platen pad & slurry maintenance safety violation (SEMI S2 / OSHA 1910.147): pad change or slurry loop maintenance requested without platen zero-speed, H2O2 line depressurization, DIW flush, or carrier-head mechanical lock-pin LOTO verification; locking CMP platen.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Semiconductor wafer Fab CMP H2O2 oxidizer stability, diamond conditioner & retaining ring integrity, Cu/Co waste drain segregation, post-CMP exhaust, and mechanical lock-pin LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8879TlsDtlsCertificateCompressionZlibBrotliZstdDecompressionBombAndAlgorithmNegotiationGuardContext {
+  readonly compressedCertificateUncompressedLengthMismatchOrDecompressionBombDetected: boolean;
+  readonly unsolicitedCompressedCertificateWithoutClientHelloExtension27Detected: boolean;
+  readonly unofferedCompressionAlgorithmIdOrMalformedCertificateChainSyntaxDetected: boolean;
+  readonly expiredOrSelfSignedCompressedDtlsCertificateFingerprintMismatchDetected: boolean;
+  readonly uncompressedCertificateChainPayloadBytes: number;
+  readonly certificateCompressionRatioFactor: number;
+}
+
+export interface WebrtcSipRfc8879TlsDtlsCertificateCompressionZlibBrotliZstdDecompressionBombAndAlgorithmNegotiationGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P506-WEBRTC-SIP-RFC8879-TLS-DTLS-CERTIFICATE-COMPRESSION-ZLIB-BROTLI-ZSTD-DECOMPRESSION-BOMB-AND-ALGORITHM-NEGOTIATION-GUARD";
+  readonly action:
+    | "allow"
+    | "clamp_uncompressed_certificate_bytes_and_compression_ratio"
+    | "reject_unoffered_compression_algorithm_or_fingerprint_mismatch"
+    | "drop_compressed_certificate_decompression_bomb_or_unsolicited_msg_0ms";
+  readonly reason: string;
+  readonly clampedUncompressedCertificateChainBytes: number;
+  readonly clampedCertificateCompressionRatioFactor: number;
+}
+
+export function evaluateWebrtcSipRfc8879TlsDtlsCertificateCompressionZlibBrotliZstdDecompressionBombAndAlgorithmNegotiationGuard(
+  context: WebrtcSipRfc8879TlsDtlsCertificateCompressionZlibBrotliZstdDecompressionBombAndAlgorithmNegotiationGuardContext,
+): WebrtcSipRfc8879TlsDtlsCertificateCompressionZlibBrotliZstdDecompressionBombAndAlgorithmNegotiationGuardDecision {
+  const policyId =
+    "P506-WEBRTC-SIP-RFC8879-TLS-DTLS-CERTIFICATE-COMPRESSION-ZLIB-BROTLI-ZSTD-DECOMPRESSION-BOMB-AND-ALGORITHM-NEGOTIATION-GUARD" as const;
+
+  const clampedUncompressedCertificateChainBytes = Math.min(
+    Math.max(Math.trunc(context.uncompressedCertificateChainPayloadBytes), 256),
+    16384,
+  );
+  const clampedCertificateCompressionRatioFactor = Math.min(
+    Math.max(context.certificateCompressionRatioFactor, 1.0),
+    8.0,
+  );
+
+  if (
+    context.compressedCertificateUncompressedLengthMismatchOrDecompressionBombDetected ||
+    context.unsolicitedCompressedCertificateWithoutClientHelloExtension27Detected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "drop_compressed_certificate_decompression_bomb_or_unsolicited_msg_0ms",
+      reason:
+        "Critical WebRTC & SIP RFC 8879 TLS/DTLS 1.3 Certificate Compression violation: CompressedCertificate (msg 25) 24-bit uncompressed_length mismatch / zlib-Brotli-Zstd decompression bomb or unsolicited CompressedCertificate without compress_certificate extension (27) detected; dropping DTLS handshake with fatal bad_certificate / unexpected_message alert in 0ms.",
+      clampedUncompressedCertificateChainBytes,
+      clampedCertificateCompressionRatioFactor,
+    };
+  }
+
+  if (
+    context.unofferedCompressionAlgorithmIdOrMalformedCertificateChainSyntaxDetected ||
+    context.expiredOrSelfSignedCompressedDtlsCertificateFingerprintMismatchDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "reject_unoffered_compression_algorithm_or_fingerprint_mismatch",
+      reason:
+        "WebRTC & SIP RFC 8879 / RFC 8827 compressed DTLS certificate integrity violation: unoffered CertificateCompressionAlgorithm ID (zlib=1 / brotli=2 / zstd=3) or SDP a=fingerprint mismatch after decompression detected; rejecting handshake with fatal illegal_parameter / bad_certificate alert.",
+      clampedUncompressedCertificateChainBytes,
+      clampedCertificateCompressionRatioFactor,
+    };
+  }
+
+  if (
+    context.uncompressedCertificateChainPayloadBytes > 16384 ||
+    context.certificateCompressionRatioFactor > 8.0
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "clamp_uncompressed_certificate_bytes_and_compression_ratio",
+      reason:
+        "WebRTC & SIP RFC 8879 §5 certificate decompression resource exhaustion risk: uncompressed certificate chain exceeds 16384 bytes or compression ratio exceeds 8.0x; clamping decompression output buffer to <=16384 bytes and <=8.0x ratio.",
+      clampedUncompressedCertificateChainBytes,
+      clampedCertificateCompressionRatioFactor,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "WebRTC & SIP RFC 8879 TLS/DTLS 1.3 Certificate Compression extension negotiation, exact uncompressed_length integrity, SDP a=fingerprint binding, and <=16 KB / <=8x decompression bounds verified.",
+    clampedUncompressedCertificateChainBytes,
+    clampedCertificateCompressionRatioFactor,
+  };
+}
+
 
 
 
