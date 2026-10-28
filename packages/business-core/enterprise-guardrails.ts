@@ -42830,6 +42830,216 @@ export function evaluateWebrtcSipRfc8842SdpDtlsOfferAnswerConnectionReuseAndRfc9
   };
 }
 
+export interface SemiconductorWaferSelectiveMolybdenumMoAndRutheniumRuBarrierlessDirectMetallizationMocl5Moo2cl2Ru3co12CvdAldAndAleViaCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ruo4Mocl5HclH2TripSelectivityLossContactAbortAndScbaLotoGuardInput {
+  metallizationModuleId: string;
+  volatileToxicRuo4OrCoCarbonylExhaustPpm: number;
+  corrosiveMocl5Moo2cl2OrHclLeakPpm: number;
+  hydrogenCarrierLeakPpm: number;
+  dielectricSurfaceNucleationSelectivityLossDefectsPerCm2: number;
+  barrierlessViaBottomSpecificContactResistivityOhmCm2: number;
+  copperOrMetalDiffusionIntoLowKDielectricNm: number;
+  cvdOrAleChamberLidOpenRequested: boolean;
+  postCoolPedestalTemperatureC: number;
+  postPurgeResidualRuo4HclCoPpm: number;
+  scbaAndSolidSublimatorAmpouleLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferSelectiveMolybdenumMoAndRutheniumRuBarrierlessDirectMetallizationMocl5Moo2cl2Ru3co12CvdAldAndAleViaCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ruo4Mocl5HclH2TripSelectivityLossContactAbortAndScbaLotoGuardAssessment {
+  metallizationModuleId: string;
+  policyCode: "P429-SEMICONDUCTOR-WAFER-SELECTIVE-MOLYBDENUM-MO-AND-RUTHENIUM-RU-BARRIERLESS-DIRECT-METALLIZATION-MOCL5-MOO2CL2-RU3CO12-CVD-ALD-AND-ALE-VIA-CLEAN-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-RUO4-MOCL5-HCL-H2-TRIP-SELECTIVITY-LOSS-CONTACT-ABORT-AND-SCBA-LOTO-GUARD";
+  selectiveMoRuBarrierlessMetallizationSafe: boolean;
+  ruo4Mocl5HclOrHydrogenLeakTripped0ms: boolean;
+  selectivityLossContactResistivityOrLowKDiffusionAborted: boolean;
+  chamberLockedUntilCooledPurgedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_selective_mo_ru_barrierless_direct_metallization_and_ale_via_clean"
+    | "trip_mo_ru_sublimator_h2_o3_vmb_in_0ms_and_route_ruo4_hcl_to_abatement"
+    | "abort_mo_ru_metallization_on_selectivity_loss_via_resistance_or_low_k_diffusion"
+    | "lock_mo_ru_cvd_ale_chamber_until_50c_002ppm_and_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferSelectiveMolybdenumMoAndRutheniumRuBarrierlessDirectMetallizationMocl5Moo2cl2Ru3co12CvdAldAndAleViaCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ruo4Mocl5HclH2TripSelectivityLossContactAbortAndScbaLotoGuard(
+  input: SemiconductorWaferSelectiveMolybdenumMoAndRutheniumRuBarrierlessDirectMetallizationMocl5Moo2cl2Ru3co12CvdAldAndAleViaCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ruo4Mocl5HclH2TripSelectivityLossContactAbortAndScbaLotoGuardInput,
+): SemiconductorWaferSelectiveMolybdenumMoAndRutheniumRuBarrierlessDirectMetallizationMocl5Moo2cl2Ru3co12CvdAldAndAleViaCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ruo4Mocl5HclH2TripSelectivityLossContactAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P429-SEMICONDUCTOR-WAFER-SELECTIVE-MOLYBDENUM-MO-AND-RUTHENIUM-RU-BARRIERLESS-DIRECT-METALLIZATION-MOCL5-MOO2CL2-RU3CO12-CVD-ALD-AND-ALE-VIA-CLEAN-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-RUO4-MOCL5-HCL-H2-TRIP-SELECTIVITY-LOSS-CONTACT-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const ruo4Mocl5HclOrHydrogenLeakTripped0ms =
+    input.volatileToxicRuo4OrCoCarbonylExhaustPpm >= 0.05 ||
+    input.corrosiveMocl5Moo2cl2OrHclLeakPpm >= 1.0 ||
+    input.hydrogenCarrierLeakPpm >= 5000;
+
+  const selectivityLossContactResistivityOrLowKDiffusionAborted =
+    input.dielectricSurfaceNucleationSelectivityLossDefectsPerCm2 >= 0.1 ||
+    input.barrierlessViaBottomSpecificContactResistivityOhmCm2 >= 1.0e-8 ||
+    input.copperOrMetalDiffusionIntoLowKDielectricNm >= 0.5;
+
+  const chamberLockedUntilCooledPurgedAndScbaLoto =
+    input.cvdOrAleChamberLidOpenRequested &&
+    (input.postCoolPedestalTemperatureC >= 50.0 ||
+      input.postPurgeResidualRuo4HclCoPpm >= 0.02 ||
+      !input.scbaAndSolidSublimatorAmpouleLotoVerified);
+
+  if (ruo4Mocl5HclOrHydrogenLeakTripped0ms) {
+    return {
+      metallizationModuleId: input.metallizationModuleId,
+      policyCode,
+      selectiveMoRuBarrierlessMetallizationSafe: false,
+      ruo4Mocl5HclOrHydrogenLeakTripped0ms: true,
+      selectivityLossContactResistivityOrLowKDiffusionAborted,
+      chamberLockedUntilCooledPurgedAndScbaLoto,
+      action:
+        "trip_mo_ru_sublimator_h2_o3_vmb_in_0ms_and_route_ruo4_hcl_to_abatement",
+      blockedReason:
+        "SEMIS2_NFPA318_RUO4_CO_005PPM_MOCL5_HCL_1PPM_OR_H2_5000PPM_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (selectivityLossContactResistivityOrLowKDiffusionAborted) {
+    return {
+      metallizationModuleId: input.metallizationModuleId,
+      policyCode,
+      selectiveMoRuBarrierlessMetallizationSafe: false,
+      ruo4Mocl5HclOrHydrogenLeakTripped0ms: false,
+      selectivityLossContactResistivityOrLowKDiffusionAborted: true,
+      chamberLockedUntilCooledPurgedAndScbaLoto,
+      action:
+        "abort_mo_ru_metallization_on_selectivity_loss_via_resistance_or_low_k_diffusion",
+      blockedReason:
+        "MO_RU_SELECTIVITY_LOSS_01_CM2_VIA_CONTACT_1E8_OHM_CM2_OR_LOW_K_DIFFUSION_05NM_ABORTED",
+    };
+  }
+
+  if (chamberLockedUntilCooledPurgedAndScbaLoto) {
+    return {
+      metallizationModuleId: input.metallizationModuleId,
+      policyCode,
+      selectiveMoRuBarrierlessMetallizationSafe: false,
+      ruo4Mocl5HclOrHydrogenLeakTripped0ms: false,
+      selectivityLossContactResistivityOrLowKDiffusionAborted: false,
+      chamberLockedUntilCooledPurgedAndScbaLoto: true,
+      action: "lock_mo_ru_cvd_ale_chamber_until_50c_002ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_MO_RU_CVD_ALE_CHAMBER_LOCKED_UNTIL_50C_002PPM_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    metallizationModuleId: input.metallizationModuleId,
+    policyCode,
+    selectiveMoRuBarrierlessMetallizationSafe: true,
+    ruo4Mocl5HclOrHydrogenLeakTripped0ms: false,
+    selectivityLossContactResistivityOrLowKDiffusionAborted: false,
+    chamberLockedUntilCooledPurgedAndScbaLoto: false,
+    action:
+      "allow_verified_selective_mo_ru_barrierless_direct_metallization_and_ale_via_clean",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8844UnknownKeyShareAttackPreventionDtlsSrtpTlsIdBindingAndRfc9266TlsExporterChannelBindingGuardInput {
+  sessionId: string;
+  sdpTlsIdSyntaxAndMin22CharEntropyValid: boolean;
+  tlsIdRegeneratedOnDtlsConnectionNewOrIceRestartWithNewCert: boolean;
+  crossSessionDuplicateTlsIdAndFingerprintForkDetected: boolean;
+  rfc9266TlsExporterChannelBindingMatchesSignalingIdentity: boolean;
+  dtlsSessionResumptionTicketLifetimeSeconds: number;
+  concurrentPendingTlsIdOfferNegotiationsPerDialog: number;
+}
+
+export interface WebrtcSipRfc8844UnknownKeyShareAttackPreventionDtlsSrtpTlsIdBindingAndRfc9266TlsExporterChannelBindingGuardAssessment {
+  sessionId: string;
+  policyCode: "P430-WEBRTC-SIP-RFC8844-UNKNOWN-KEY-SHARE-ATTACK-PREVENTION-DTLS-SRTP-TLS-ID-BINDING-AND-RFC9266-TLS-EXPORTER-CHANNEL-BINDING-GUARD";
+  rfc8844TlsIdAndRfc9266TlsExporterBindingHealthy: boolean;
+  invalidTlsIdStaleReuseOrUksaForkDropped0ms: boolean;
+  rfc9266TlsExporterSignalingIdentityMismatchRejected: boolean;
+  excessiveResumptionTicketLifetimeOrPendingOffersClamped: boolean;
+  action:
+    | "allow_verified_rfc8844_tls_id_and_rfc9266_tls_exporter_dtls_srtp_binding"
+    | "drop_rfc8844_invalid_tls_id_stale_connection_reuse_or_uksa_fork_0ms"
+    | "reject_rfc9266_tls_exporter_channel_binding_signaling_identity_mismatch"
+    | "clamp_rfc8844_dtls_ticket_lifetime_3600s_or_4_pending_tls_id_offers";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8844UnknownKeyShareAttackPreventionDtlsSrtpTlsIdBindingAndRfc9266TlsExporterChannelBindingGuard(
+  input: WebrtcSipRfc8844UnknownKeyShareAttackPreventionDtlsSrtpTlsIdBindingAndRfc9266TlsExporterChannelBindingGuardInput,
+): WebrtcSipRfc8844UnknownKeyShareAttackPreventionDtlsSrtpTlsIdBindingAndRfc9266TlsExporterChannelBindingGuardAssessment {
+  const policyCode =
+    "P430-WEBRTC-SIP-RFC8844-UNKNOWN-KEY-SHARE-ATTACK-PREVENTION-DTLS-SRTP-TLS-ID-BINDING-AND-RFC9266-TLS-EXPORTER-CHANNEL-BINDING-GUARD" as const;
+
+  const invalidTlsIdStaleReuseOrUksaForkDropped0ms =
+    !input.sdpTlsIdSyntaxAndMin22CharEntropyValid ||
+    !input.tlsIdRegeneratedOnDtlsConnectionNewOrIceRestartWithNewCert ||
+    input.crossSessionDuplicateTlsIdAndFingerprintForkDetected;
+
+  const rfc9266TlsExporterSignalingIdentityMismatchRejected =
+    !input.rfc9266TlsExporterChannelBindingMatchesSignalingIdentity;
+
+  const excessiveResumptionTicketLifetimeOrPendingOffersClamped =
+    input.dtlsSessionResumptionTicketLifetimeSeconds > 3600 ||
+    input.concurrentPendingTlsIdOfferNegotiationsPerDialog > 4;
+
+  if (invalidTlsIdStaleReuseOrUksaForkDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8844TlsIdAndRfc9266TlsExporterBindingHealthy: false,
+      invalidTlsIdStaleReuseOrUksaForkDropped0ms: true,
+      rfc9266TlsExporterSignalingIdentityMismatchRejected,
+      excessiveResumptionTicketLifetimeOrPendingOffersClamped,
+      action:
+        "drop_rfc8844_invalid_tls_id_stale_connection_reuse_or_uksa_fork_0ms",
+      blockedReason:
+        "RFC8844_INVALID_TLS_ID_STALE_CONNECTION_NEW_REUSE_OR_UKSA_FORK_DROPPED_0MS",
+    };
+  }
+
+  if (rfc9266TlsExporterSignalingIdentityMismatchRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8844TlsIdAndRfc9266TlsExporterBindingHealthy: false,
+      invalidTlsIdStaleReuseOrUksaForkDropped0ms: false,
+      rfc9266TlsExporterSignalingIdentityMismatchRejected: true,
+      excessiveResumptionTicketLifetimeOrPendingOffersClamped,
+      action:
+        "reject_rfc9266_tls_exporter_channel_binding_signaling_identity_mismatch",
+      blockedReason:
+        "RFC9266_TLS_EXPORTER_CHANNEL_BINDING_SIGNALING_IDENTITY_MISMATCH_REJECTED",
+    };
+  }
+
+  if (excessiveResumptionTicketLifetimeOrPendingOffersClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8844TlsIdAndRfc9266TlsExporterBindingHealthy: false,
+      invalidTlsIdStaleReuseOrUksaForkDropped0ms: false,
+      rfc9266TlsExporterSignalingIdentityMismatchRejected: false,
+      excessiveResumptionTicketLifetimeOrPendingOffersClamped: true,
+      action:
+        "clamp_rfc8844_dtls_ticket_lifetime_3600s_or_4_pending_tls_id_offers",
+      blockedReason:
+        "RFC8844_DTLS_TICKET_LIFETIME_OVER_3600S_OR_OVER_4_PENDING_OFFERS_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8844TlsIdAndRfc9266TlsExporterBindingHealthy: true,
+    invalidTlsIdStaleReuseOrUksaForkDropped0ms: false,
+    rfc9266TlsExporterSignalingIdentityMismatchRejected: false,
+    excessiveResumptionTicketLifetimeOrPendingOffersClamped: false,
+    action:
+      "allow_verified_rfc8844_tls_id_and_rfc9266_tls_exporter_dtls_srtp_binding",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
