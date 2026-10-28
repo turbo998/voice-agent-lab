@@ -44295,6 +44295,218 @@ export function evaluateWebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlockTypesRleL
   };
 }
 
+export interface SemiconductorWaferFanOutWaferPanelLevelPackagingFowlpFoplpReconstitutionEpoxyMoldCompoundEmcCompressionMoldingLaserReleaseAndMultiLayerCuRdlSemiS2SemiS6AnsiZ1361Nfpa318Osha1910119Osha19101000EmcVocH2so4LaserTripDieShiftWarpageAbortAndScbaLotoGuardInput {
+  fowlpFoplpLineId: string;
+  excimer308nmOr355nmDebondLaserInterlockBreachOrEmcCureVocSilicaDustLeakMgM3: number;
+  rdlCuPlatingH2so4MistOrPolyimideDevelopNmpTmahExhaustPpm: number;
+  postMoldReconstitutionFlyingDiePlacementShiftUm: number;
+  waferOr600mmPanelCureWarpageBowMm: number;
+  multiLayerCuRdlViaDelaminationOrShortDefectRatePct: number;
+  moldingPressOrLaserDebondEnclosureDoorOpenRequested: boolean;
+  postMoldPlatenOrCarrierTemperatureC: number;
+  postPurgeResidualVocOrSolventVaporPpm: number;
+  ansiZ1361LaserShutterPressHydraulicLockAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFanOutWaferPanelLevelPackagingFowlpFoplpReconstitutionEpoxyMoldCompoundEmcCompressionMoldingLaserReleaseAndMultiLayerCuRdlSemiS2SemiS6AnsiZ1361Nfpa318Osha1910119Osha19101000EmcVocH2so4LaserTripDieShiftWarpageAbortAndScbaLotoGuardAssessment {
+  fowlpFoplpLineId: string;
+  policyCode: "P443-SEMICONDUCTOR-WAFER-FAN-OUT-WAFER-PANEL-LEVEL-PACKAGING-FOWLP-FOPLP-RECONSTITUTION-EPOXY-MOLD-COMPOUND-EMC-COMPRESSION-MOLDING-LASER-RELEASE-AND-MULTI-LAYER-CU-RDL-SEMIS2-SEMIS6-ANSIZ1361-NFPA318-OSHA1910119-OSHA19101000-EMC-VOC-H2SO4-LASER-TRIP-DIE-SHIFT-WARPAGE-ABORT-AND-SCBA-LOTO-GUARD";
+  fowlpFoplpReconstitutionAndRdlSafe: boolean;
+  laserDebondInterlockOrEmcVocAcidMistTripped0ms: boolean;
+  flyingDieShiftPanelWarpageOrRdlViaShortAborted: boolean;
+  enclosureLockedUntilCoolVocPurgeAndLaserPressScbaLoto: boolean;
+  action:
+    | "allow_verified_fowlp_foplp_emc_molding_laser_debond_and_cu_rdl"
+    | "trip_uv_debond_laser_shutter_emc_press_and_rdl_rectifier_in_0ms_and_engage_scrubber"
+    | "abort_fowlp_foplp_rdl_on_flying_die_shift_panel_warpage_or_via_delamination"
+    | "lock_molding_and_debond_enclosure_until_cool_below_50c_voc_below_05ppm_and_laser_press_loto";
+  blockedReason:
+    | "none"
+    | "SEMIS2_ANSIZ1361_OSHA19101000_UV_LASER_OR_EMC_VOC_1MGM3_NMP_5PPM_LEAK_TRIPPED_0MS"
+    | "FOWLP_FOPLP_FLYING_DIE_SHIFT_3UM_PANEL_WARPAGE_1MM_OR_RDL_SHORT_01PCT_ABORTED"
+    | "SEMIS2_OSHA1910119_MOLD_DEBOND_LOCKED_UNTIL_50C_05PPM_VOC_AND_LASER_PRESS_LOTO";
+}
+
+export function evaluateSemiconductorWaferFanOutWaferPanelLevelPackagingFowlpFoplpReconstitutionEpoxyMoldCompoundEmcCompressionMoldingLaserReleaseAndMultiLayerCuRdlSemiS2SemiS6AnsiZ1361Nfpa318Osha1910119Osha19101000EmcVocH2so4LaserTripDieShiftWarpageAbortAndScbaLotoGuard(
+  input: SemiconductorWaferFanOutWaferPanelLevelPackagingFowlpFoplpReconstitutionEpoxyMoldCompoundEmcCompressionMoldingLaserReleaseAndMultiLayerCuRdlSemiS2SemiS6AnsiZ1361Nfpa318Osha1910119Osha19101000EmcVocH2so4LaserTripDieShiftWarpageAbortAndScbaLotoGuardInput,
+): SemiconductorWaferFanOutWaferPanelLevelPackagingFowlpFoplpReconstitutionEpoxyMoldCompoundEmcCompressionMoldingLaserReleaseAndMultiLayerCuRdlSemiS2SemiS6AnsiZ1361Nfpa318Osha1910119Osha19101000EmcVocH2so4LaserTripDieShiftWarpageAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P443-SEMICONDUCTOR-WAFER-FAN-OUT-WAFER-PANEL-LEVEL-PACKAGING-FOWLP-FOPLP-RECONSTITUTION-EPOXY-MOLD-COMPOUND-EMC-COMPRESSION-MOLDING-LASER-RELEASE-AND-MULTI-LAYER-CU-RDL-SEMIS2-SEMIS6-ANSIZ1361-NFPA318-OSHA1910119-OSHA19101000-EMC-VOC-H2SO4-LASER-TRIP-DIE-SHIFT-WARPAGE-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const laserDebondInterlockOrEmcVocAcidMistTripped0ms =
+    input.excimer308nmOr355nmDebondLaserInterlockBreachOrEmcCureVocSilicaDustLeakMgM3 >=
+      1.0 || input.rdlCuPlatingH2so4MistOrPolyimideDevelopNmpTmahExhaustPpm >= 5.0;
+
+  const flyingDieShiftPanelWarpageOrRdlViaShortAborted =
+    input.postMoldReconstitutionFlyingDiePlacementShiftUm >= 3.0 ||
+    input.waferOr600mmPanelCureWarpageBowMm >= 1.0 ||
+    input.multiLayerCuRdlViaDelaminationOrShortDefectRatePct >= 0.1;
+
+  const enclosureLockedUntilCoolVocPurgeAndLaserPressScbaLoto =
+    input.moldingPressOrLaserDebondEnclosureDoorOpenRequested &&
+    (input.postMoldPlatenOrCarrierTemperatureC >= 50.0 ||
+      input.postPurgeResidualVocOrSolventVaporPpm >= 0.5 ||
+      !input.ansiZ1361LaserShutterPressHydraulicLockAndScbaLotoVerified);
+
+  if (laserDebondInterlockOrEmcVocAcidMistTripped0ms) {
+    return {
+      fowlpFoplpLineId: input.fowlpFoplpLineId,
+      policyCode,
+      fowlpFoplpReconstitutionAndRdlSafe: false,
+      laserDebondInterlockOrEmcVocAcidMistTripped0ms: true,
+      flyingDieShiftPanelWarpageOrRdlViaShortAborted,
+      enclosureLockedUntilCoolVocPurgeAndLaserPressScbaLoto,
+      action:
+        "trip_uv_debond_laser_shutter_emc_press_and_rdl_rectifier_in_0ms_and_engage_scrubber",
+      blockedReason:
+        "SEMIS2_ANSIZ1361_OSHA19101000_UV_LASER_OR_EMC_VOC_1MGM3_NMP_5PPM_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (flyingDieShiftPanelWarpageOrRdlViaShortAborted) {
+    return {
+      fowlpFoplpLineId: input.fowlpFoplpLineId,
+      policyCode,
+      fowlpFoplpReconstitutionAndRdlSafe: false,
+      laserDebondInterlockOrEmcVocAcidMistTripped0ms: false,
+      flyingDieShiftPanelWarpageOrRdlViaShortAborted: true,
+      enclosureLockedUntilCoolVocPurgeAndLaserPressScbaLoto,
+      action:
+        "abort_fowlp_foplp_rdl_on_flying_die_shift_panel_warpage_or_via_delamination",
+      blockedReason:
+        "FOWLP_FOPLP_FLYING_DIE_SHIFT_3UM_PANEL_WARPAGE_1MM_OR_RDL_SHORT_01PCT_ABORTED",
+    };
+  }
+
+  if (enclosureLockedUntilCoolVocPurgeAndLaserPressScbaLoto) {
+    return {
+      fowlpFoplpLineId: input.fowlpFoplpLineId,
+      policyCode,
+      fowlpFoplpReconstitutionAndRdlSafe: false,
+      laserDebondInterlockOrEmcVocAcidMistTripped0ms: false,
+      flyingDieShiftPanelWarpageOrRdlViaShortAborted: false,
+      enclosureLockedUntilCoolVocPurgeAndLaserPressScbaLoto: true,
+      action:
+        "lock_molding_and_debond_enclosure_until_cool_below_50c_voc_below_05ppm_and_laser_press_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_MOLD_DEBOND_LOCKED_UNTIL_50C_05PPM_VOC_AND_LASER_PRESS_LOTO",
+    };
+  }
+
+  return {
+    fowlpFoplpLineId: input.fowlpFoplpLineId,
+    policyCode,
+    fowlpFoplpReconstitutionAndRdlSafe: true,
+    laserDebondInterlockOrEmcVocAcidMistTripped0ms: false,
+    flyingDieShiftPanelWarpageOrRdlViaShortAborted: false,
+    enclosureLockedUntilCoolVocPurgeAndLaserPressScbaLoto: false,
+    action: "allow_verified_fowlp_foplp_emc_molding_laser_debond_and_cu_rdl",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8828WebrtcIpAddressHandlingModeMdnsLocalCandidatePrivacyAndStunTurnInterfaceEnumerationLeakGuardInput {
+  sessionId: string;
+  nonDefaultPublicOrPrivateIpExposedUnderDefaultLocalAndPublicInterfacesOnlyMode: boolean;
+  hostOrStunCandidateDisclosedUnderDisableNonProxiedUdpRelayOnlyMode: boolean;
+  rawRfc1918OrIpv6UlaHostIpLeakedWithoutRfc8828MdnsLocalObfuscation: boolean;
+  mdnsHostnameContainsHardwareMacUsernameOrPiiEntropyLeak: boolean;
+  simultaneousGatheringNetworkInterfacesCount: number;
+  mdnsCandidateResolutionQueriesPerSecond: number;
+}
+
+export interface WebrtcSipRfc8828WebrtcIpAddressHandlingModeMdnsLocalCandidatePrivacyAndStunTurnInterfaceEnumerationLeakGuardAssessment {
+  sessionId: string;
+  policyCode: "P444-WEBRTC-SIP-RFC8828-WEBRTC-IP-ADDRESS-HANDLING-MODE-MDNS-LOCAL-CANDIDATE-PRIVACY-AND-STUN-TURN-INTERFACE-ENUMERATION-LEAK-GUARD";
+  rfc8828IpHandlingAndMdnsPrivacyHealthy: boolean;
+  unauthorizedInterfaceOrNonProxiedUdpCandidateDropped0ms: boolean;
+  rawPrivateIpLeakOrPiiMdnsHostnameRejected: boolean;
+  interfaceEnumerationOrMdnsQueryStormClamped: boolean;
+  action:
+    | "allow_verified_rfc8828_ip_handling_mode_and_mdns_candidate_privacy"
+    | "drop_unauthorized_interface_or_non_proxied_udp_candidate_0ms"
+    | "reject_raw_private_ip_leak_or_pii_bearing_mdns_hostname"
+    | "clamp_excessive_interface_enumeration_or_mdns_query_storm";
+  blockedReason:
+    | "none"
+    | "RFC8828_MODE_2_3_4_UNAUTHORIZED_INTERFACE_OR_NON_PROXIED_UDP_LEAK_DROPPED_0MS"
+    | "RFC8828_UNMASKED_PRIVATE_HOST_IP_OR_PII_MDNS_LOCAL_HOSTNAME_REJECTED"
+    | "RFC8828_INTERFACE_GATHER_OVER_3_OR_MDNS_QUERIES_OVER_15_PER_SEC_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8828WebrtcIpAddressHandlingModeMdnsLocalCandidatePrivacyAndStunTurnInterfaceEnumerationLeakGuard(
+  input: WebrtcSipRfc8828WebrtcIpAddressHandlingModeMdnsLocalCandidatePrivacyAndStunTurnInterfaceEnumerationLeakGuardInput,
+): WebrtcSipRfc8828WebrtcIpAddressHandlingModeMdnsLocalCandidatePrivacyAndStunTurnInterfaceEnumerationLeakGuardAssessment {
+  const policyCode =
+    "P444-WEBRTC-SIP-RFC8828-WEBRTC-IP-ADDRESS-HANDLING-MODE-MDNS-LOCAL-CANDIDATE-PRIVACY-AND-STUN-TURN-INTERFACE-ENUMERATION-LEAK-GUARD" as const;
+
+  const unauthorizedInterfaceOrNonProxiedUdpCandidateDropped0ms =
+    input.nonDefaultPublicOrPrivateIpExposedUnderDefaultLocalAndPublicInterfacesOnlyMode ||
+    input.hostOrStunCandidateDisclosedUnderDisableNonProxiedUdpRelayOnlyMode;
+
+  const rawPrivateIpLeakOrPiiMdnsHostnameRejected =
+    input.rawRfc1918OrIpv6UlaHostIpLeakedWithoutRfc8828MdnsLocalObfuscation ||
+    input.mdnsHostnameContainsHardwareMacUsernameOrPiiEntropyLeak;
+
+  const interfaceEnumerationOrMdnsQueryStormClamped =
+    input.simultaneousGatheringNetworkInterfacesCount > 3 ||
+    input.mdnsCandidateResolutionQueriesPerSecond > 15;
+
+  if (unauthorizedInterfaceOrNonProxiedUdpCandidateDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8828IpHandlingAndMdnsPrivacyHealthy: false,
+      unauthorizedInterfaceOrNonProxiedUdpCandidateDropped0ms: true,
+      rawPrivateIpLeakOrPiiMdnsHostnameRejected,
+      interfaceEnumerationOrMdnsQueryStormClamped,
+      action: "drop_unauthorized_interface_or_non_proxied_udp_candidate_0ms",
+      blockedReason:
+        "RFC8828_MODE_2_3_4_UNAUTHORIZED_INTERFACE_OR_NON_PROXIED_UDP_LEAK_DROPPED_0MS",
+    };
+  }
+
+  if (rawPrivateIpLeakOrPiiMdnsHostnameRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8828IpHandlingAndMdnsPrivacyHealthy: false,
+      unauthorizedInterfaceOrNonProxiedUdpCandidateDropped0ms: false,
+      rawPrivateIpLeakOrPiiMdnsHostnameRejected: true,
+      interfaceEnumerationOrMdnsQueryStormClamped,
+      action: "reject_raw_private_ip_leak_or_pii_bearing_mdns_hostname",
+      blockedReason:
+        "RFC8828_UNMASKED_PRIVATE_HOST_IP_OR_PII_MDNS_LOCAL_HOSTNAME_REJECTED",
+    };
+  }
+
+  if (interfaceEnumerationOrMdnsQueryStormClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8828IpHandlingAndMdnsPrivacyHealthy: false,
+      unauthorizedInterfaceOrNonProxiedUdpCandidateDropped0ms: false,
+      rawPrivateIpLeakOrPiiMdnsHostnameRejected: false,
+      interfaceEnumerationOrMdnsQueryStormClamped: true,
+      action: "clamp_excessive_interface_enumeration_or_mdns_query_storm",
+      blockedReason:
+        "RFC8828_INTERFACE_GATHER_OVER_3_OR_MDNS_QUERIES_OVER_15_PER_SEC_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8828IpHandlingAndMdnsPrivacyHealthy: true,
+    unauthorizedInterfaceOrNonProxiedUdpCandidateDropped0ms: false,
+    rawPrivateIpLeakOrPiiMdnsHostnameRejected: false,
+    interfaceEnumerationOrMdnsQueryStormClamped: false,
+    action: "allow_verified_rfc8828_ip_handling_mode_and_mdns_candidate_privacy",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
