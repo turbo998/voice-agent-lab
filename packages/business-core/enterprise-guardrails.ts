@@ -42626,6 +42626,211 @@ export function evaluateWebrtcSipRfc8840IceTcpRfc4571FramingSetupRoleAndHeadOfLi
   };
 }
 
+export interface SemiconductorWaferCfetComplementaryFetMonolithicAndSequentialStackedNfetOnPfetNanosheetMiddleDielectricIsolationMdiAndLocalInterconnectSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ge2h6B2h6Ph3TripMdiBreakdownOverlayAbortAndScbaLotoGuardInput {
+  cfetModuleId: string;
+  pyrophoricGe2h6Si2h6OrB2h6LeakPpm: number;
+  toxicPh3AsH3OrHclEtchantExhaustPpm: number;
+  topToBottomNfetPfetOverlayMisalignmentNm: number;
+  middleDielectricIsolationMdiLeakageCurrentAmpPerUm: number;
+  topTierSequentialBondingThermalBudgetC: number;
+  cfetEpiOrEtchChamberLidOpenRequested: boolean;
+  postCoolSusceptorTemperatureC: number;
+  postPurgeResidualHydrideHclPpm: number;
+  scbaAndGasCabinetLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferCfetComplementaryFetMonolithicAndSequentialStackedNfetOnPfetNanosheetMiddleDielectricIsolationMdiAndLocalInterconnectSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ge2h6B2h6Ph3TripMdiBreakdownOverlayAbortAndScbaLotoGuardAssessment {
+  cfetModuleId: string;
+  policyCode: "P427-SEMICONDUCTOR-WAFER-CFET-COMPLEMENTARY-FET-MONOLITHIC-AND-SEQUENTIAL-STACKED-NFET-ON-PFET-NANOSHEET-MIDDLE-DIELECTRIC-ISOLATION-MDI-AND-LOCAL-INTERCONNECT-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-GE2H6-B2H6-PH3-TRIP-MDI-BREAKDOWN-OVERLAY-ABORT-AND-SCBA-LOTO-GUARD";
+  cfetStackedNfetPfetMdiAndLocalInterconnectSafe: boolean;
+  hydrideDopantOrHclLeakTripped0ms: boolean;
+  nfetPfetOverlayMdiLeakageOrThermalBudgetAborted: boolean;
+  chamberLockedUntilCooledPurgedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_cfet_stacked_nfet_on_pfet_mdi_isolation_and_local_interconnect"
+    | "trip_cfet_ge2h6_b2h6_ph3_hcl_vmb_in_0ms_and_engage_scrubber"
+    | "abort_cfet_on_nfet_pfet_overlay_mdi_leakage_or_500c_thermal_budget"
+    | "lock_cfet_epi_etch_chamber_until_50c_005ppm_and_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferCfetComplementaryFetMonolithicAndSequentialStackedNfetOnPfetNanosheetMiddleDielectricIsolationMdiAndLocalInterconnectSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ge2h6B2h6Ph3TripMdiBreakdownOverlayAbortAndScbaLotoGuard(
+  input: SemiconductorWaferCfetComplementaryFetMonolithicAndSequentialStackedNfetOnPfetNanosheetMiddleDielectricIsolationMdiAndLocalInterconnectSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ge2h6B2h6Ph3TripMdiBreakdownOverlayAbortAndScbaLotoGuardInput,
+): SemiconductorWaferCfetComplementaryFetMonolithicAndSequentialStackedNfetOnPfetNanosheetMiddleDielectricIsolationMdiAndLocalInterconnectSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ge2h6B2h6Ph3TripMdiBreakdownOverlayAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P427-SEMICONDUCTOR-WAFER-CFET-COMPLEMENTARY-FET-MONOLITHIC-AND-SEQUENTIAL-STACKED-NFET-ON-PFET-NANOSHEET-MIDDLE-DIELECTRIC-ISOLATION-MDI-AND-LOCAL-INTERCONNECT-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-GE2H6-B2H6-PH3-TRIP-MDI-BREAKDOWN-OVERLAY-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const hydrideDopantOrHclLeakTripped0ms =
+    input.pyrophoricGe2h6Si2h6OrB2h6LeakPpm >= 0.1 ||
+    input.toxicPh3AsH3OrHclEtchantExhaustPpm >= 0.3;
+
+  const nfetPfetOverlayMdiLeakageOrThermalBudgetAborted =
+    input.topToBottomNfetPfetOverlayMisalignmentNm >= 1.5 ||
+    input.middleDielectricIsolationMdiLeakageCurrentAmpPerUm >= 1.0e-9 ||
+    input.topTierSequentialBondingThermalBudgetC >= 500.0;
+
+  const chamberLockedUntilCooledPurgedAndScbaLoto =
+    input.cfetEpiOrEtchChamberLidOpenRequested &&
+    (input.postCoolSusceptorTemperatureC >= 50.0 ||
+      input.postPurgeResidualHydrideHclPpm >= 0.05 ||
+      !input.scbaAndGasCabinetLotoVerified);
+
+  if (hydrideDopantOrHclLeakTripped0ms) {
+    return {
+      cfetModuleId: input.cfetModuleId,
+      policyCode,
+      cfetStackedNfetPfetMdiAndLocalInterconnectSafe: false,
+      hydrideDopantOrHclLeakTripped0ms: true,
+      nfetPfetOverlayMdiLeakageOrThermalBudgetAborted,
+      chamberLockedUntilCooledPurgedAndScbaLoto,
+      action: "trip_cfet_ge2h6_b2h6_ph3_hcl_vmb_in_0ms_and_engage_scrubber",
+      blockedReason:
+        "SEMIS2_NFPA318_GE2H6_SI2H6_B2H6_01PPM_OR_PH3_ASH3_HCL_03PPM_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (nfetPfetOverlayMdiLeakageOrThermalBudgetAborted) {
+    return {
+      cfetModuleId: input.cfetModuleId,
+      policyCode,
+      cfetStackedNfetPfetMdiAndLocalInterconnectSafe: false,
+      hydrideDopantOrHclLeakTripped0ms: false,
+      nfetPfetOverlayMdiLeakageOrThermalBudgetAborted: true,
+      chamberLockedUntilCooledPurgedAndScbaLoto,
+      action:
+        "abort_cfet_on_nfet_pfet_overlay_mdi_leakage_or_500c_thermal_budget",
+      blockedReason:
+        "CFET_NFET_PFET_OVERLAY_15NM_MDI_LEAKAGE_1E9_OR_500C_THERMAL_BUDGET_ABORTED",
+    };
+  }
+
+  if (chamberLockedUntilCooledPurgedAndScbaLoto) {
+    return {
+      cfetModuleId: input.cfetModuleId,
+      policyCode,
+      cfetStackedNfetPfetMdiAndLocalInterconnectSafe: false,
+      hydrideDopantOrHclLeakTripped0ms: false,
+      nfetPfetOverlayMdiLeakageOrThermalBudgetAborted: false,
+      chamberLockedUntilCooledPurgedAndScbaLoto: true,
+      action: "lock_cfet_epi_etch_chamber_until_50c_005ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_CFET_CHAMBER_LOCKED_UNTIL_50C_005PPM_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    cfetModuleId: input.cfetModuleId,
+    policyCode,
+    cfetStackedNfetPfetMdiAndLocalInterconnectSafe: true,
+    hydrideDopantOrHclLeakTripped0ms: false,
+    nfetPfetOverlayMdiLeakageOrThermalBudgetAborted: false,
+    chamberLockedUntilCooledPurgedAndScbaLoto: false,
+    action:
+      "allow_verified_cfet_stacked_nfet_on_pfet_mdi_isolation_and_local_interconnect",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8842SdpDtlsOfferAnswerConnectionReuseAndRfc9147Dtls13ZeroRttReplayKeyUpdateAndHandshakeFragmentGuardInput {
+  sessionId: string;
+  sdpOfferContainsSetupActpassAndVerifiedSha256Fingerprint: boolean;
+  fingerprintChangeForcesConnectionNewAndFreshDtlsHandshake: boolean;
+  dtls13ZeroRttEarlyDataDisabledForStateChangingSipMediaControl: boolean;
+  unauthenticatedDtls13HandshakeFragmentBufferBytes: number;
+  dtls13EpochKeyUpdateRatePerMinute: number;
+  dtls13RetransmissionAckFlightRttMs: number;
+}
+
+export interface WebrtcSipRfc8842SdpDtlsOfferAnswerConnectionReuseAndRfc9147Dtls13ZeroRttReplayKeyUpdateAndHandshakeFragmentGuardAssessment {
+  sessionId: string;
+  policyCode: "P428-WEBRTC-SIP-RFC8842-SDP-DTLS-OFFER-ANSWER-CONNECTION-REUSE-AND-RFC9147-DTLS13-ZERO-RTT-REPLAY-KEYUPDATE-AND-HANDSHAKE-FRAGMENT-GUARD";
+  rfc8842SdpDtlsAndRfc9147Dtls13Healthy: boolean;
+  setupRoleViolationFingerprintReuseOrZeroRttReplayDropped0ms: boolean;
+  dtls13HandshakeFragmentBufferOverflowRejected: boolean;
+  keyUpdateStormOrAckFlightLatencyClamped: boolean;
+  action:
+    | "allow_verified_rfc8842_sdp_dtls_and_rfc9147_dtls13_session"
+    | "drop_rfc8842_setup_violation_fingerprint_connection_reuse_or_dtls13_0rtt_replay_0ms"
+    | "reject_rfc9147_dtls13_handshake_fragment_buffer_above_64kb"
+    | "clamp_rfc9147_dtls13_key_update_rate_12_per_min_or_ack_rtt_250ms";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8842SdpDtlsOfferAnswerConnectionReuseAndRfc9147Dtls13ZeroRttReplayKeyUpdateAndHandshakeFragmentGuard(
+  input: WebrtcSipRfc8842SdpDtlsOfferAnswerConnectionReuseAndRfc9147Dtls13ZeroRttReplayKeyUpdateAndHandshakeFragmentGuardInput,
+): WebrtcSipRfc8842SdpDtlsOfferAnswerConnectionReuseAndRfc9147Dtls13ZeroRttReplayKeyUpdateAndHandshakeFragmentGuardAssessment {
+  const policyCode =
+    "P428-WEBRTC-SIP-RFC8842-SDP-DTLS-OFFER-ANSWER-CONNECTION-REUSE-AND-RFC9147-DTLS13-ZERO-RTT-REPLAY-KEYUPDATE-AND-HANDSHAKE-FRAGMENT-GUARD" as const;
+
+  const setupRoleViolationFingerprintReuseOrZeroRttReplayDropped0ms =
+    !input.sdpOfferContainsSetupActpassAndVerifiedSha256Fingerprint ||
+    !input.fingerprintChangeForcesConnectionNewAndFreshDtlsHandshake ||
+    !input.dtls13ZeroRttEarlyDataDisabledForStateChangingSipMediaControl;
+
+  const dtls13HandshakeFragmentBufferOverflowRejected =
+    input.unauthenticatedDtls13HandshakeFragmentBufferBytes > 65536;
+
+  const keyUpdateStormOrAckFlightLatencyClamped =
+    input.dtls13EpochKeyUpdateRatePerMinute > 12 ||
+    input.dtls13RetransmissionAckFlightRttMs > 250.0;
+
+  if (setupRoleViolationFingerprintReuseOrZeroRttReplayDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8842SdpDtlsAndRfc9147Dtls13Healthy: false,
+      setupRoleViolationFingerprintReuseOrZeroRttReplayDropped0ms: true,
+      dtls13HandshakeFragmentBufferOverflowRejected,
+      keyUpdateStormOrAckFlightLatencyClamped,
+      action:
+        "drop_rfc8842_setup_violation_fingerprint_connection_reuse_or_dtls13_0rtt_replay_0ms",
+      blockedReason:
+        "RFC8842_RFC9147_SETUP_ROLE_VIOLATION_FINGERPRINT_CONNECTION_REUSE_OR_DTLS13_0RTT_REPLAY_DROPPED_0MS",
+    };
+  }
+
+  if (dtls13HandshakeFragmentBufferOverflowRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8842SdpDtlsAndRfc9147Dtls13Healthy: false,
+      setupRoleViolationFingerprintReuseOrZeroRttReplayDropped0ms: false,
+      dtls13HandshakeFragmentBufferOverflowRejected: true,
+      keyUpdateStormOrAckFlightLatencyClamped,
+      action: "reject_rfc9147_dtls13_handshake_fragment_buffer_above_64kb",
+      blockedReason:
+        "RFC9147_DTLS13_UNAUTHENTICATED_HANDSHAKE_FRAGMENT_BUFFER_OVER_64KB_REJECTED",
+    };
+  }
+
+  if (keyUpdateStormOrAckFlightLatencyClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8842SdpDtlsAndRfc9147Dtls13Healthy: false,
+      setupRoleViolationFingerprintReuseOrZeroRttReplayDropped0ms: false,
+      dtls13HandshakeFragmentBufferOverflowRejected: false,
+      keyUpdateStormOrAckFlightLatencyClamped: true,
+      action:
+        "clamp_rfc9147_dtls13_key_update_rate_12_per_min_or_ack_rtt_250ms",
+      blockedReason:
+        "RFC9147_DTLS13_KEYUPDATE_OVER_12_PER_MIN_OR_ACK_RTT_OVER_250MS_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8842SdpDtlsAndRfc9147Dtls13Healthy: true,
+    setupRoleViolationFingerprintReuseOrZeroRttReplayDropped0ms: false,
+    dtls13HandshakeFragmentBufferOverflowRejected: false,
+    keyUpdateStormOrAckFlightLatencyClamped: false,
+    action: "allow_verified_rfc8842_sdp_dtls_and_rfc9147_dtls13_session",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
