@@ -38124,6 +38124,209 @@ export function evaluateWebrtcSipRtpRfc7741Vp8AndRfc9628Vp9PayloadDescriptorSsLe
   };
 }
 
+export interface SemiconductorWaferAmhsOhtOverheadHoistFoupStockerAndSemiE84LoadportGuardInput {
+  amhsOhtOrLoadportId: string;
+  ohtFoupGripperDualLatchLocked: boolean;
+  hoistBeltExtendedMm: number;
+  ohtLookDownObstacleDetected: boolean;
+  semiE84LightCurtainInterruptedDuringHandoff: boolean;
+  stockerMaintenanceZoneOxygenPct: number;
+  foupInternalHfOrHydrideOutgasPpm: number;
+  efemMiniEnvironmentDifferentialPressurePa: number;
+  hidTrackPowerEnergizedDuringAccess: boolean;
+  requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferAmhsOhtOverheadHoistFoupStockerAndSemiE84LoadportGuardResult {
+  policyCode: "P385-SEMICONDUCTOR-WAFER-AMHS-OHT-OVERHEAD-HOIST-FOUP-STOCKER-AND-SEMI-E84-LOADPORT-SEMIS2-SEMIS17-SEMIE84-NFPA318-OSHA1910147-GRIPPER-UNLATCHED-OR-E84-CURTAIN-TRIP-FOUP-OUTGAS-OR-STOCKER-O2-DEPLETION-ISOLATION-AND-HID-TRACK-LOTO-GUARD";
+  amhsOhtOrLoadportId: string;
+  amhsOhtStockerAndE84LoadportSafe: boolean;
+  gripperUnlatchedOrE84LightCurtainTripped0ms: boolean;
+  foupToxicOutgasOrStockerO2DepletionIsolated: boolean;
+  hidTrackPowerCutoffAndLotoRequired: boolean;
+  action:
+    | "allow_amhs_oht_foup_hoist_stocker_and_semi_e84_loadport_transfer"
+    | "lock_oht_electromagnetic_hoist_brake_abort_e84_handoff_and_freeze_vehicle_in_0ms"
+    | "lock_efem_fims_door_boost_n2_purge_exhaust_and_isolate_o2_depleted_stocker"
+    | "deenergize_hid_contactless_track_power_and_require_fall_arrest_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferAmhsOhtOverheadHoistFoupStockerAndSemiE84LoadportSemiS2SemiS17SemiE84Nfpa318Osha1910147GripperUnlatchedOrE84CurtainTripFoupOutgasOrStockerO2DepletionIsolationAndHidTrackLotoGuard(
+  input: SemiconductorWaferAmhsOhtOverheadHoistFoupStockerAndSemiE84LoadportGuardInput,
+): SemiconductorWaferAmhsOhtOverheadHoistFoupStockerAndSemiE84LoadportGuardResult {
+  const policyCode =
+    "P385-SEMICONDUCTOR-WAFER-AMHS-OHT-OVERHEAD-HOIST-FOUP-STOCKER-AND-SEMI-E84-LOADPORT-SEMIS2-SEMIS17-SEMIE84-NFPA318-OSHA1910147-GRIPPER-UNLATCHED-OR-E84-CURTAIN-TRIP-FOUP-OUTGAS-OR-STOCKER-O2-DEPLETION-ISOLATION-AND-HID-TRACK-LOTO-GUARD" as const;
+
+  const gripperOrLightCurtainHazard =
+    (!input.ohtFoupGripperDualLatchLocked && input.hoistBeltExtendedMm > 10) ||
+    input.ohtLookDownObstacleDetected ||
+    input.semiE84LightCurtainInterruptedDuringHandoff;
+
+  const outgasOrO2Hazard =
+    input.stockerMaintenanceZoneOxygenPct < 19.5 ||
+    (input.foupInternalHfOrHydrideOutgasPpm >= 1.0 &&
+      input.efemMiniEnvironmentDifferentialPressurePa > -5);
+
+  const hidTrackLotoHazard = input.hidTrackPowerEnergizedDuringAccess;
+
+  if (gripperOrLightCurtainHazard) {
+    return {
+      policyCode,
+      amhsOhtOrLoadportId: input.amhsOhtOrLoadportId,
+      amhsOhtStockerAndE84LoadportSafe: false,
+      gripperUnlatchedOrE84LightCurtainTripped0ms: true,
+      foupToxicOutgasOrStockerO2DepletionIsolated: outgasOrO2Hazard,
+      hidTrackPowerCutoffAndLotoRequired: hidTrackLotoHazard,
+      action:
+        "lock_oht_electromagnetic_hoist_brake_abort_e84_handoff_and_freeze_vehicle_in_0ms",
+      blockedReason:
+        "oht_foup_gripper_unlatched_lookdown_obstacle_or_semi_e84_light_curtain_interrupted_0ms",
+    };
+  }
+
+  if (outgasOrO2Hazard) {
+    return {
+      policyCode,
+      amhsOhtOrLoadportId: input.amhsOhtOrLoadportId,
+      amhsOhtStockerAndE84LoadportSafe: false,
+      gripperUnlatchedOrE84LightCurtainTripped0ms: false,
+      foupToxicOutgasOrStockerO2DepletionIsolated: true,
+      hidTrackPowerCutoffAndLotoRequired: hidTrackLotoHazard,
+      action:
+        "lock_efem_fims_door_boost_n2_purge_exhaust_and_isolate_o2_depleted_stocker",
+      blockedReason:
+        "stocker_o2_below_19_5pct_or_foup_hf_hydride_outgas_without_efem_negative_pressure_isolated",
+    };
+  }
+
+  if (hidTrackLotoHazard) {
+    return {
+      policyCode,
+      amhsOhtOrLoadportId: input.amhsOhtOrLoadportId,
+      amhsOhtStockerAndE84LoadportSafe: false,
+      gripperUnlatchedOrE84LightCurtainTripped0ms: false,
+      foupToxicOutgasOrStockerO2DepletionIsolated: false,
+      hidTrackPowerCutoffAndLotoRequired: true,
+      action:
+        "deenergize_hid_contactless_track_power_and_require_fall_arrest_scba_loto",
+      blockedReason:
+        "hid_contactless_track_power_energized_during_oht_rail_access_requires_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    amhsOhtOrLoadportId: input.amhsOhtOrLoadportId,
+    amhsOhtStockerAndE84LoadportSafe: true,
+    gripperUnlatchedOrE84LightCurtainTripped0ms: false,
+    foupToxicOutgasOrStockerO2DepletionIsolated: false,
+    hidTrackPowerCutoffAndLotoRequired: false,
+    action: "allow_amhs_oht_foup_hoist_stocker_and_semi_e84_loadport_transfer",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8843BundleMultiplexingAndRfc8852MidRidSdesGuardInput {
+  sessionId: string;
+  sdesMidRidDeclaredBytes: number;
+  rtpHeaderExtensionRemainingBytes: number;
+  sdesMidRidContainsNonAlphanumericOrControlChars: boolean;
+  ssrcReboundAcrossAudioAndVideoMlines: boolean;
+  unnegotiatedMidValueInBundleGroup: boolean;
+  newSsrcMidBindingRatePerSec: number;
+}
+
+export interface WebrtcSipRtpRfc8843BundleMultiplexingAndRfc8852MidRidSdesGuardResult {
+  policyCode: "P386-WEBRTC-SIP-RTP-RFC8843-BUNDLE-MULTIPLEXING-AND-RFC8852-MID-RID-SDES-HEADER-EXTENSION-LENGTH-OVERREAD-CROSS-MEDIA-SSRC-HIJACK-UNNEGOTIATED-MID-AND-SSRC-CHURN-FLOOD-GUARD";
+  sessionId: string;
+  bundleAndMidRidSdesHealthy: boolean;
+  sdesMidRidOverreadOrIllegalTokenDropped0ms: boolean;
+  crossMediaSsrcHijackOrUnnegotiatedMidRejected: boolean;
+  ssrcMidBindingChurnFloodClamped: boolean;
+  action:
+    | "accept_rfc8843_bundle_demux_and_rfc8852_mid_rid_sdes_stream"
+    | "drop_sdes_mid_rid_length_overread_oversized_or_control_char_token_in_0ms"
+    | "reject_cross_media_ssrc_rebind_or_unnegotiated_bundle_mid_hijack"
+    | "clamp_dynamic_ssrc_mid_binding_churn_flood_exceeding_25_per_sec";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8843BundleMultiplexingAndRfc8852MidRidSdesHeaderExtensionLengthOverreadCrossMediaSsrcHijackUnnegotiatedMidAndSsrcChurnFloodGuard(
+  input: WebrtcSipRtpRfc8843BundleMultiplexingAndRfc8852MidRidSdesGuardInput,
+): WebrtcSipRtpRfc8843BundleMultiplexingAndRfc8852MidRidSdesGuardResult {
+  const policyCode =
+    "P386-WEBRTC-SIP-RTP-RFC8843-BUNDLE-MULTIPLEXING-AND-RFC8852-MID-RID-SDES-HEADER-EXTENSION-LENGTH-OVERREAD-CROSS-MEDIA-SSRC-HIJACK-UNNEGOTIATED-MID-AND-SSRC-CHURN-FLOOD-GUARD" as const;
+
+  const overreadOrIllegalTokenHazard =
+    input.sdesMidRidDeclaredBytes < 1 ||
+    input.sdesMidRidDeclaredBytes > 64 ||
+    input.sdesMidRidDeclaredBytes > input.rtpHeaderExtensionRemainingBytes ||
+    input.sdesMidRidContainsNonAlphanumericOrControlChars;
+
+  const crossMediaOrUnnegotiatedMidHazard =
+    input.ssrcReboundAcrossAudioAndVideoMlines ||
+    input.unnegotiatedMidValueInBundleGroup;
+
+  const ssrcChurnFloodHazard = input.newSsrcMidBindingRatePerSec > 25;
+
+  if (overreadOrIllegalTokenHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      bundleAndMidRidSdesHealthy: false,
+      sdesMidRidOverreadOrIllegalTokenDropped0ms: true,
+      crossMediaSsrcHijackOrUnnegotiatedMidRejected:
+        crossMediaOrUnnegotiatedMidHazard,
+      ssrcMidBindingChurnFloodClamped: ssrcChurnFloodHazard,
+      action:
+        "drop_sdes_mid_rid_length_overread_oversized_or_control_char_token_in_0ms",
+      blockedReason:
+        "sdes_mid_rid_extension_overread_over_64b_or_illegal_control_chars_dropped_0ms",
+    };
+  }
+
+  if (crossMediaOrUnnegotiatedMidHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      bundleAndMidRidSdesHealthy: false,
+      sdesMidRidOverreadOrIllegalTokenDropped0ms: false,
+      crossMediaSsrcHijackOrUnnegotiatedMidRejected: true,
+      ssrcMidBindingChurnFloodClamped: ssrcChurnFloodHazard,
+      action: "reject_cross_media_ssrc_rebind_or_unnegotiated_bundle_mid_hijack",
+      blockedReason:
+        "rfc8843_bundle_cross_media_ssrc_hijack_or_unnegotiated_mid_rejected",
+    };
+  }
+
+  if (ssrcChurnFloodHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      bundleAndMidRidSdesHealthy: false,
+      sdesMidRidOverreadOrIllegalTokenDropped0ms: false,
+      crossMediaSsrcHijackOrUnnegotiatedMidRejected: false,
+      ssrcMidBindingChurnFloodClamped: true,
+      action: "clamp_dynamic_ssrc_mid_binding_churn_flood_exceeding_25_per_sec",
+      blockedReason:
+        "rfc8843_bundle_ssrc_mid_binding_rate_over_25_per_sec_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    bundleAndMidRidSdesHealthy: true,
+    sdesMidRidOverreadOrIllegalTokenDropped0ms: false,
+    crossMediaSsrcHijackOrUnnegotiatedMidRejected: false,
+    ssrcMidBindingChurnFloodClamped: false,
+    action: "accept_rfc8843_bundle_demux_and_rfc8852_mid_rid_sdes_stream",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
