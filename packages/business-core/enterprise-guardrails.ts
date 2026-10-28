@@ -46187,6 +46187,213 @@ export function evaluateWebrtcSipRfc8825WebrtcOverviewRealTimeProtocolsBrowserSt
   };
 }
 
+/**
+ * P461: Semiconductor Wafer Fab Sub-Fab Local Exhaust Scrubbing (Burn-Wet / Dry-Bed / Plasma Point-of-Use POU Abatement) & Pyrophoric/Toxic Effluent Neutralization Safety Guard
+ * Standards: SEMI S2 / SEMI S6 / SEMI F15 / NFPA 318 / NFPA 86 / OSHA 1910.119 / OSHA 1910.1000
+ */
+export interface SemiconductorWaferSubFabPointOfUsePouBurnWetDryBedPlasmaAbatementScrubberAndPyrophoricEffluentNeutralizationSemiS2SemiS6SemiF15Nfpa318Nfpa86Osha1910119Osha19101000BurnerFlameoutInletPressureSurgeTripDreExhaustBreakthroughAbortAndSio2SludgeScbaLotoGuardInput {
+  sessionId: string;
+  pouAbatementBurnerFlameoutOrPlasmaTorchQuenchDetected: boolean;
+  scrubberInletDuctStaticPressurePaOrH2DilutionN2FlowFault: number;
+  outletExhaustStackToxicHydrideOrAcidGasBreakthroughPpm: number;
+  wetScrubberRecirculationWaterPhOrQuenchSprayTemperatureC: number;
+  sio2PowderTrapDeltaPKpaOrClogWarningDetected: boolean;
+  abatementReactionChamberOrWetSumpOpenRequestedBeforeCoolPurgeAndHfSludgeScbaLoto: boolean;
+}
+
+export interface SemiconductorWaferSubFabPointOfUsePouBurnWetDryBedPlasmaAbatementScrubberAndPyrophoricEffluentNeutralizationSemiS2SemiS6SemiF15Nfpa318Nfpa86Osha1910119Osha19101000BurnerFlameoutInletPressureSurgeTripDreExhaustBreakthroughAbortAndSio2SludgeScbaLotoGuardAssessment {
+  sessionId: string;
+  policyCode: "P461-SEMICONDUCTOR-WAFER-SUB-FAB-POINT-OF-USE-POU-BURN-WET-DRY-BED-PLASMA-ABATEMENT-SCRUBBER-AND-PYROPHORIC-EFFLUENT-NEUTRALIZATION-SEMIS2-SEMIS6-SEMIF15-NFPA318-NFPA86-OSHA1910119-OSHA19101000-BURNER-FLAMEOUT-INLET-PRESSURE-SURGE-TRIP-DRE-EXHAUST-BREAKTHROUGH-ABORT-AND-SIO2-SLUDGE-SCBA-LOTO-GUARD";
+  subFabPouAbatementScrubberSafe: boolean;
+  upstreamToolGasSticksAndAbatementFuelTrippedIn0ms: boolean;
+  processChamberRecipeAbortedAndSwitchedToBackupScrubber: boolean;
+  abatementChamberAndSumpMaintenanceLockedPendingCoolPurgeAndScbaLoto: boolean;
+  action:
+    | "allow_verified_sub_fab_pou_abatement_scrubber_and_effluent_neutralization"
+    | "trip_upstream_tool_esv_and_abatement_fuel_in_0ms_on_flameout_or_duct_overpressure"
+    | "abort_process_recipe_and_divert_to_backup_abatement_on_dre_breakthrough_or_sio2_clog"
+    | "lock_abatement_reaction_chamber_and_wet_sump_until_cool_purge_and_hf_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferSubFabPointOfUsePouBurnWetDryBedPlasmaAbatementScrubberAndPyrophoricEffluentNeutralizationSemiS2SemiS6SemiF15Nfpa318Nfpa86Osha1910119Osha19101000BurnerFlameoutInletPressureSurgeTripDreExhaustBreakthroughAbortAndSio2SludgeScbaLotoGuard(
+  input: SemiconductorWaferSubFabPointOfUsePouBurnWetDryBedPlasmaAbatementScrubberAndPyrophoricEffluentNeutralizationSemiS2SemiS6SemiF15Nfpa318Nfpa86Osha1910119Osha19101000BurnerFlameoutInletPressureSurgeTripDreExhaustBreakthroughAbortAndSio2SludgeScbaLotoGuardInput,
+): SemiconductorWaferSubFabPointOfUsePouBurnWetDryBedPlasmaAbatementScrubberAndPyrophoricEffluentNeutralizationSemiS2SemiS6SemiF15Nfpa318Nfpa86Osha1910119Osha19101000BurnerFlameoutInletPressureSurgeTripDreExhaustBreakthroughAbortAndSio2SludgeScbaLotoGuardAssessment {
+  const policyCode =
+    "P461-SEMICONDUCTOR-WAFER-SUB-FAB-POINT-OF-USE-POU-BURN-WET-DRY-BED-PLASMA-ABATEMENT-SCRUBBER-AND-PYROPHORIC-EFFLUENT-NEUTRALIZATION-SEMIS2-SEMIS6-SEMIF15-NFPA318-NFPA86-OSHA1910119-OSHA19101000-BURNER-FLAMEOUT-INLET-PRESSURE-SURGE-TRIP-DRE-EXHAUST-BREAKTHROUGH-ABORT-AND-SIO2-SLUDGE-SCBA-LOTO-GUARD" as const;
+
+  const upstreamToolGasSticksAndAbatementFuelTrippedIn0ms =
+    input.pouAbatementBurnerFlameoutOrPlasmaTorchQuenchDetected ||
+    input.scrubberInletDuctStaticPressurePaOrH2DilutionN2FlowFault >= -50.0;
+
+  if (upstreamToolGasSticksAndAbatementFuelTrippedIn0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      subFabPouAbatementScrubberSafe: false,
+      upstreamToolGasSticksAndAbatementFuelTrippedIn0ms: true,
+      processChamberRecipeAbortedAndSwitchedToBackupScrubber: true,
+      abatementChamberAndSumpMaintenanceLockedPendingCoolPurgeAndScbaLoto: true,
+      action:
+        "trip_upstream_tool_esv_and_abatement_fuel_in_0ms_on_flameout_or_duct_overpressure",
+      blockedReason:
+        "SEMI_S2_S6_F15_NFPA86_POU_BURNER_FLAMEOUT_OR_INLET_PRESSURE_ABOVE_MINUS_50PA_0MS_TRIP",
+    };
+  }
+
+  const processChamberRecipeAbortedAndSwitchedToBackupScrubber =
+    input.outletExhaustStackToxicHydrideOrAcidGasBreakthroughPpm >= 0.5 ||
+    input.wetScrubberRecirculationWaterPhOrQuenchSprayTemperatureC >= 65.0 ||
+    input.sio2PowderTrapDeltaPKpaOrClogWarningDetected;
+
+  if (processChamberRecipeAbortedAndSwitchedToBackupScrubber) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      subFabPouAbatementScrubberSafe: false,
+      upstreamToolGasSticksAndAbatementFuelTrippedIn0ms: false,
+      processChamberRecipeAbortedAndSwitchedToBackupScrubber: true,
+      abatementChamberAndSumpMaintenanceLockedPendingCoolPurgeAndScbaLoto: true,
+      action:
+        "abort_process_recipe_and_divert_to_backup_abatement_on_dre_breakthrough_or_sio2_clog",
+      blockedReason:
+        "SEMI_F15_S6_OUTLET_BREAKTHROUGH_05PPM_QUENCH_65C_OR_SIO2_POWDER_TRAP_CLOG_ABORT",
+    };
+  }
+
+  if (
+    input.abatementReactionChamberOrWetSumpOpenRequestedBeforeCoolPurgeAndHfSludgeScbaLoto
+  ) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      subFabPouAbatementScrubberSafe: false,
+      upstreamToolGasSticksAndAbatementFuelTrippedIn0ms: false,
+      processChamberRecipeAbortedAndSwitchedToBackupScrubber: false,
+      abatementChamberAndSumpMaintenanceLockedPendingCoolPurgeAndScbaLoto: true,
+      action:
+        "lock_abatement_reaction_chamber_and_wet_sump_until_cool_purge_and_hf_scba_loto",
+      blockedReason:
+        "OSHA_1910_119_1000_ABATEMENT_CHAMBER_HOT_OR_SIO2_HF_SLUDGE_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    subFabPouAbatementScrubberSafe: true,
+    upstreamToolGasSticksAndAbatementFuelTrippedIn0ms: false,
+    processChamberRecipeAbortedAndSwitchedToBackupScrubber: false,
+    abatementChamberAndSumpMaintenanceLockedPendingCoolPurgeAndScbaLoto: false,
+    action:
+      "allow_verified_sub_fab_pou_abatement_scrubber_and_effluent_neutralization",
+    blockedReason: "none",
+  };
+}
+
+/**
+ * P462: WebRTC & SIP RFC 8828 (WebRTC IP Address Handling Requirements — Mode 1–4 Local IP / mDNS Privacy Enforcement & Split-Tunnel Interface Leak Prevention) Security Guard
+ * Standards: IETF RFC 8828 / IETF RFC 8826 / W3C WebRTC IP Handling
+ */
+export interface WebrtcSipRfc8828WebrtcIpAddressHandlingRequirementsMode1To4LocalIpPrivacyEnforcementAndSplitTunnelInterfaceLeakPreventionGuardInput {
+  sessionId: string;
+  privateRfc1918OrIpv6UlaHostCandidateExposedWithoutGetUserMediaConsentOrMdns: boolean;
+  mode3OrMode4RestrictedPolicyViolatedByDirectHostOrStunReflexiveBinding: boolean;
+  vpnSplitTunnelNonDefaultRoutePhysicalAdapterIpLeakDetected: boolean;
+  stunTurnServerQueryIssuedInMode4DisableNonProxiedUdpWithoutTurnRelay: boolean;
+  gatheredIceHostAndReflexiveCandidatesPerGenerationCount: number;
+  enumeratedLocalNetworkInterfacesCount: number;
+}
+
+export interface WebrtcSipRfc8828WebrtcIpAddressHandlingRequirementsMode1To4LocalIpPrivacyEnforcementAndSplitTunnelInterfaceLeakPreventionGuardAssessment {
+  sessionId: string;
+  policyCode: "P462-WEBRTC-SIP-RFC8828-WEBRTC-IP-ADDRESS-HANDLING-REQUIREMENTS-MODE-1-TO-4-LOCAL-IP-PRIVACY-ENFORCEMENT-AND-SPLIT-TUNNEL-INTERFACE-LEAK-PREVENTION-GUARD";
+  rfc8828IpAddressPrivacyCompliant: boolean;
+  unconsentedPrivateHostIpOrMode3Mode4DirectUdpDropped0ms: boolean;
+  vpnSplitTunnelPhysicalNicLeakOrUnproxiedStunRejected: boolean;
+  candidateGatherFanoutOrInterfaceEnumerationClamped: boolean;
+  action:
+    | "allow_verified_rfc8828_webrtc_ip_address_privacy_mode"
+    | "drop_unconsented_rfc1918_ula_host_ip_or_mode3_mode4_direct_udp_0ms"
+    | "reject_vpn_split_tunnel_physical_adapter_leak_or_unproxied_stun_query"
+    | "clamp_candidate_gathering_fanout_or_interface_enumeration";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8828WebrtcIpAddressHandlingRequirementsMode1To4LocalIpPrivacyEnforcementAndSplitTunnelInterfaceLeakPreventionGuard(
+  input: WebrtcSipRfc8828WebrtcIpAddressHandlingRequirementsMode1To4LocalIpPrivacyEnforcementAndSplitTunnelInterfaceLeakPreventionGuardInput,
+): WebrtcSipRfc8828WebrtcIpAddressHandlingRequirementsMode1To4LocalIpPrivacyEnforcementAndSplitTunnelInterfaceLeakPreventionGuardAssessment {
+  const policyCode =
+    "P462-WEBRTC-SIP-RFC8828-WEBRTC-IP-ADDRESS-HANDLING-REQUIREMENTS-MODE-1-TO-4-LOCAL-IP-PRIVACY-ENFORCEMENT-AND-SPLIT-TUNNEL-INTERFACE-LEAK-PREVENTION-GUARD" as const;
+
+  const unconsentedPrivateHostIpOrMode3Mode4DirectUdpDropped0ms =
+    input.privateRfc1918OrIpv6UlaHostCandidateExposedWithoutGetUserMediaConsentOrMdns ||
+    input.mode3OrMode4RestrictedPolicyViolatedByDirectHostOrStunReflexiveBinding;
+
+  if (unconsentedPrivateHostIpOrMode3Mode4DirectUdpDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8828IpAddressPrivacyCompliant: false,
+      unconsentedPrivateHostIpOrMode3Mode4DirectUdpDropped0ms: true,
+      vpnSplitTunnelPhysicalNicLeakOrUnproxiedStunRejected: false,
+      candidateGatherFanoutOrInterfaceEnumerationClamped: false,
+      action:
+        "drop_unconsented_rfc1918_ula_host_ip_or_mode3_mode4_direct_udp_0ms",
+      blockedReason:
+        "RFC8828_UNCONSENTED_PRIVATE_HOST_IP_OR_MODE3_MODE4_DIRECT_UDP_0MS_DROP",
+    };
+  }
+
+  const vpnSplitTunnelPhysicalNicLeakOrUnproxiedStunRejected =
+    input.vpnSplitTunnelNonDefaultRoutePhysicalAdapterIpLeakDetected ||
+    input.stunTurnServerQueryIssuedInMode4DisableNonProxiedUdpWithoutTurnRelay;
+
+  if (vpnSplitTunnelPhysicalNicLeakOrUnproxiedStunRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8828IpAddressPrivacyCompliant: false,
+      unconsentedPrivateHostIpOrMode3Mode4DirectUdpDropped0ms: false,
+      vpnSplitTunnelPhysicalNicLeakOrUnproxiedStunRejected: true,
+      candidateGatherFanoutOrInterfaceEnumerationClamped: false,
+      action:
+        "reject_vpn_split_tunnel_physical_adapter_leak_or_unproxied_stun_query",
+      blockedReason:
+        "RFC8828_VPN_SPLIT_TUNNEL_PHYSICAL_NIC_LEAK_OR_MODE4_UNPROXIED_STUN_REJECTED",
+    };
+  }
+
+  const candidateGatherFanoutOrInterfaceEnumerationClamped =
+    input.gatheredIceHostAndReflexiveCandidatesPerGenerationCount > 16 ||
+    input.enumeratedLocalNetworkInterfacesCount > 2;
+
+  if (candidateGatherFanoutOrInterfaceEnumerationClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8828IpAddressPrivacyCompliant: false,
+      unconsentedPrivateHostIpOrMode3Mode4DirectUdpDropped0ms: false,
+      vpnSplitTunnelPhysicalNicLeakOrUnproxiedStunRejected: false,
+      candidateGatherFanoutOrInterfaceEnumerationClamped: true,
+      action: "clamp_candidate_gathering_fanout_or_interface_enumeration",
+      blockedReason:
+        "RFC8828_CANDIDATES_OVER_16_OR_INTERFACES_OVER_2_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8828IpAddressPrivacyCompliant: true,
+    unconsentedPrivateHostIpOrMode3Mode4DirectUdpDropped0ms: false,
+    vpnSplitTunnelPhysicalNicLeakOrUnproxiedStunRejected: false,
+    candidateGatherFanoutOrInterfaceEnumerationClamped: false,
+    action: "allow_verified_rfc8828_webrtc_ip_address_privacy_mode",
+    blockedReason: "none",
+  };
+}
+
 
 
 
