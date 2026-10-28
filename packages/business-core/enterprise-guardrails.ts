@@ -38528,6 +38528,218 @@ export function evaluateWebrtcSipSdpRfc8842DtlsSrtpSetupRoleAndRfc4572Fingerprin
   };
 }
 
+export interface SemiconductorWaferBspdnBacksidePowerDeliverySubMicronGrindAndTmahKohWetSiliconRevealGuardInput {
+  bspdnGrindOrWetRevealToolId: string;
+  coarseOrFineGrindWheelSpindleTorqueOverloadPct: number;
+  totalThicknessVariationTtvUm: number;
+  grindDrainTankHydrogenLelPct: number;
+  wetRevealExhaustNegativePressurePa: number;
+  tmahMistDetectorMgPerM3: number;
+  tmahBathTemperatureCelsius: number;
+  sludgeTankHydrogenPpm: number;
+  tmahResidualConcentrationPct: number;
+  requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferBspdnBacksidePowerDeliverySubMicronGrindAndTmahKohWetSiliconRevealGuardResult {
+  policyCode: "P389-SEMICONDUCTOR-WAFER-BSPDN-BACKSIDE-POWER-DELIVERY-SUB-MICRON-GRIND-AND-TMAH-KOH-WET-SILICON-REVEAL-SEMIS2-SEMIS6-NFPA318-NFPA704-OSHA1910119-OSHA19101000-SPINDLE-OVERLOAD-OR-SI-SLURRY-H2-LEL-TRIP-TMAH-NEUROTOXIN-MIST-ISOLATION-AND-DIPHOTERINE-SCBA-LOTO-GUARD";
+  bspdnGrindOrWetRevealToolId: string;
+  bspdnGrindAndTmahWetRevealSafe: boolean;
+  spindleOverloadOrSiSlurryH2LelTripped0ms: boolean;
+  tmahNeurotoxinMistOrBathOvertempIsolated: boolean;
+  sludgeH2AndTmahRinseDiphoterineScbaLotoRequired: boolean;
+  action:
+    | "allow_bspdn_backside_sub_micron_grind_and_tmah_koh_wet_silicon_reveal"
+    | "retract_grind_spindle_lock_carrier_vacuum_chuck_and_sweep_slurry_drain_with_n2_in_0ms"
+    | "shutoff_tmah_koh_dispense_cut_bath_heater_and_interlock_diphoterine_decon_shower"
+    | "lock_sludge_filter_press_and_wet_bench_until_h2_below_500ppm_tmah_below_0_1pct_scba_and_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferBspdnBacksidePowerDeliverySubMicronGrindAndTmahKohWetSiliconRevealSemiS2SemiS6Nfpa318Nfpa704Osha1910119Osha19101000SpindleOverloadOrSiSlurryH2LelTripTmahNeurotoxinMistIsolationAndDiphoterineScbaLotoGuard(
+  input: SemiconductorWaferBspdnBacksidePowerDeliverySubMicronGrindAndTmahKohWetSiliconRevealGuardInput,
+): SemiconductorWaferBspdnBacksidePowerDeliverySubMicronGrindAndTmahKohWetSiliconRevealGuardResult {
+  const policyCode =
+    "P389-SEMICONDUCTOR-WAFER-BSPDN-BACKSIDE-POWER-DELIVERY-SUB-MICRON-GRIND-AND-TMAH-KOH-WET-SILICON-REVEAL-SEMIS2-SEMIS6-NFPA318-NFPA704-OSHA1910119-OSHA19101000-SPINDLE-OVERLOAD-OR-SI-SLURRY-H2-LEL-TRIP-TMAH-NEUROTOXIN-MIST-ISOLATION-AND-DIPHOTERINE-SCBA-LOTO-GUARD" as const;
+
+  const grindOrSlurryH2Hazard =
+    input.coarseOrFineGrindWheelSpindleTorqueOverloadPct > 115 ||
+    input.totalThicknessVariationTtvUm > 1.5 ||
+    input.grindDrainTankHydrogenLelPct >= 10;
+
+  const tmahMistOrOvertempHazard =
+    input.wetRevealExhaustNegativePressurePa > -100 ||
+    input.tmahMistDetectorMgPerM3 >= 0.5 ||
+    input.tmahBathTemperatureCelsius > 85;
+
+  const sludgeOrResidualTmahHazard =
+    input.sludgeTankHydrogenPpm >= 500 ||
+    input.tmahResidualConcentrationPct >= 0.1;
+
+  if (grindOrSlurryH2Hazard) {
+    return {
+      policyCode,
+      bspdnGrindOrWetRevealToolId: input.bspdnGrindOrWetRevealToolId,
+      bspdnGrindAndTmahWetRevealSafe: false,
+      spindleOverloadOrSiSlurryH2LelTripped0ms: true,
+      tmahNeurotoxinMistOrBathOvertempIsolated: tmahMistOrOvertempHazard,
+      sludgeH2AndTmahRinseDiphoterineScbaLotoRequired:
+        sludgeOrResidualTmahHazard,
+      action:
+        "retract_grind_spindle_lock_carrier_vacuum_chuck_and_sweep_slurry_drain_with_n2_in_0ms",
+      blockedReason:
+        "bspdn_grind_spindle_overload_ttv_over_1_5um_or_si_slurry_h2_at_or_above_10pct_lel_tripped_0ms",
+    };
+  }
+
+  if (tmahMistOrOvertempHazard) {
+    return {
+      policyCode,
+      bspdnGrindOrWetRevealToolId: input.bspdnGrindOrWetRevealToolId,
+      bspdnGrindAndTmahWetRevealSafe: false,
+      spindleOverloadOrSiSlurryH2LelTripped0ms: false,
+      tmahNeurotoxinMistOrBathOvertempIsolated: true,
+      sludgeH2AndTmahRinseDiphoterineScbaLotoRequired:
+        sludgeOrResidualTmahHazard,
+      action:
+        "shutoff_tmah_koh_dispense_cut_bath_heater_and_interlock_diphoterine_decon_shower",
+      blockedReason:
+        "tmah_neurotoxin_mist_at_or_above_0_5mgm3_exhaust_loss_or_bath_over_85c_isolated",
+    };
+  }
+
+  if (sludgeOrResidualTmahHazard) {
+    return {
+      policyCode,
+      bspdnGrindOrWetRevealToolId: input.bspdnGrindOrWetRevealToolId,
+      bspdnGrindAndTmahWetRevealSafe: false,
+      spindleOverloadOrSiSlurryH2LelTripped0ms: false,
+      tmahNeurotoxinMistOrBathOvertempIsolated: false,
+      sludgeH2AndTmahRinseDiphoterineScbaLotoRequired: true,
+      action:
+        "lock_sludge_filter_press_and_wet_bench_until_h2_below_500ppm_tmah_below_0_1pct_scba_and_loto",
+      blockedReason:
+        "sludge_tank_h2_at_or_above_500ppm_or_residual_tmah_at_or_above_0_1pct_requires_scba_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    bspdnGrindOrWetRevealToolId: input.bspdnGrindOrWetRevealToolId,
+    bspdnGrindAndTmahWetRevealSafe: true,
+    spindleOverloadOrSiSlurryH2LelTripped0ms: false,
+    tmahNeurotoxinMistOrBathOvertempIsolated: false,
+    sludgeH2AndTmahRinseDiphoterineScbaLotoRequired: false,
+    action:
+      "allow_bspdn_backside_sub_micron_grind_and_tmah_koh_wet_silicon_reveal",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8840Rfc8838TrickleIceAndRfc8445CandidateGuardInput {
+  sessionId: string;
+  candidateAttributeBytes: number;
+  candidateAddressIsLoopbackLinkLocalMetadataOrMulticast: boolean;
+  totalTrickledCandidatesForSession: number;
+  candidateUfragMatchesCurrentIceGeneration: boolean;
+  stunConnectivityCheckPacingTaMs: number;
+  trickleCandidateArrivalRatePerSec: number;
+}
+
+export interface WebrtcSipRfc8840Rfc8838TrickleIceAndRfc8445CandidateGuardResult {
+  policyCode: "P390-WEBRTC-SIP-RFC8840-RFC8838-TRICKLE-ICE-AND-RFC8445-CANDIDATE-SSRF-LOOPBACK-DROP-CHECKLIST-PAIR-EXPLOSION-OR-UFRAG-GENERATION-MISMATCH-REJECT-AND-TA-PACING-FLOOD-GUARD";
+  sessionId: string;
+  trickleIceAndRfc8445Healthy: boolean;
+  ssrfLoopbackOrOversizedCandidateDropped0ms: boolean;
+  checklistExplosionOrGenerationMismatchRejected: boolean;
+  sub5msTaPacingOrCandidateFloodClamped: boolean;
+  action:
+    | "accept_rfc8840_rfc8838_trickle_ice_candidate_and_rfc8445_connectivity_check"
+    | "drop_trickle_ice_ssrf_loopback_metadata_multicast_or_over_256b_candidate_in_0ms"
+    | "reject_trickle_ice_checklist_over_64_candidates_or_stale_ufrag_generation_mismatch"
+    | "clamp_stun_check_pacing_ta_to_20ms_and_rate_limit_trickle_candidate_flood";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8840Rfc8838TrickleIceAndRfc8445CandidateSsrfLoopbackDropChecklistPairExplosionOrUfragGenerationMismatchRejectAndTaPacingFloodGuard(
+  input: WebrtcSipRfc8840Rfc8838TrickleIceAndRfc8445CandidateGuardInput,
+): WebrtcSipRfc8840Rfc8838TrickleIceAndRfc8445CandidateGuardResult {
+  const policyCode =
+    "P390-WEBRTC-SIP-RFC8840-RFC8838-TRICKLE-ICE-AND-RFC8445-CANDIDATE-SSRF-LOOPBACK-DROP-CHECKLIST-PAIR-EXPLOSION-OR-UFRAG-GENERATION-MISMATCH-REJECT-AND-TA-PACING-FLOOD-GUARD" as const;
+
+  const ssrfOrOversizedHazard =
+    input.candidateAttributeBytes < 1 ||
+    input.candidateAttributeBytes > 256 ||
+    input.candidateAddressIsLoopbackLinkLocalMetadataOrMulticast;
+
+  const checklistOrGenerationHazard =
+    input.totalTrickledCandidatesForSession > 64 ||
+    !input.candidateUfragMatchesCurrentIceGeneration;
+
+  const pacingOrFloodHazard =
+    input.stunConnectivityCheckPacingTaMs < 5 ||
+    input.trickleCandidateArrivalRatePerSec > 20;
+
+  if (ssrfOrOversizedHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      trickleIceAndRfc8445Healthy: false,
+      ssrfLoopbackOrOversizedCandidateDropped0ms: true,
+      checklistExplosionOrGenerationMismatchRejected:
+        checklistOrGenerationHazard,
+      sub5msTaPacingOrCandidateFloodClamped: pacingOrFloodHazard,
+      action:
+        "drop_trickle_ice_ssrf_loopback_metadata_multicast_or_over_256b_candidate_in_0ms",
+      blockedReason:
+        "trickle_ice_candidate_loopback_metadata_multicast_ssrf_or_over_256b_dropped_0ms",
+    };
+  }
+
+  if (checklistOrGenerationHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      trickleIceAndRfc8445Healthy: false,
+      ssrfLoopbackOrOversizedCandidateDropped0ms: false,
+      checklistExplosionOrGenerationMismatchRejected: true,
+      sub5msTaPacingOrCandidateFloodClamped: pacingOrFloodHazard,
+      action:
+        "reject_trickle_ice_checklist_over_64_candidates_or_stale_ufrag_generation_mismatch",
+      blockedReason:
+        "trickle_ice_candidates_over_64_or_ufrag_generation_mismatch_rejected",
+    };
+  }
+
+  if (pacingOrFloodHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      trickleIceAndRfc8445Healthy: false,
+      ssrfLoopbackOrOversizedCandidateDropped0ms: false,
+      checklistExplosionOrGenerationMismatchRejected: false,
+      sub5msTaPacingOrCandidateFloodClamped: true,
+      action:
+        "clamp_stun_check_pacing_ta_to_20ms_and_rate_limit_trickle_candidate_flood",
+      blockedReason:
+        "rfc8445_stun_pacing_ta_below_5ms_or_trickle_rate_over_20_per_sec_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    trickleIceAndRfc8445Healthy: true,
+    ssrfLoopbackOrOversizedCandidateDropped0ms: false,
+    checklistExplosionOrGenerationMismatchRejected: false,
+    sub5msTaPacingOrCandidateFloodClamped: false,
+    action:
+      "accept_rfc8840_rfc8838_trickle_ice_candidate_and_rfc8445_connectivity_check",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
