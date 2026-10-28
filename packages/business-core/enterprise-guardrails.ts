@@ -47623,6 +47623,212 @@ export function evaluateWebrtcSipRfc8834MediaTransportAndUseOfRtpInWebrtcMandato
   };
 }
 
+export interface SemiconductorWaferSubFabCentralAcidAlkaliSolventExhaustScrubberFumeHoodFlammableDamperAndPlumeAbatementGuardInput {
+  sessionId: string;
+  acidExhaustScrubberDuctStaticPressurePa: number;
+  solventExhaustLelPercent: number;
+  ductOpticalSmokeOrFireDetectorTriggered: boolean;
+  wetScrubberRecirculationLiquorPh: number;
+  scrubberPackingLiquidToGasRatioLPerM3: number;
+  stackOutletHfHclCl2Nh3BreakthroughPpm: number;
+  scrubberSumpOrMistEliminatorAccessBeforeNeutralizationAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferSubFabCentralAcidAlkaliSolventExhaustScrubberFumeHoodFlammableDamperAndPlumeAbatementGuardResult {
+  sessionId: string;
+  policyCode: "P475-SEMICONDUCTOR-WAFER-SUB-FAB-CENTRAL-ACID-ALKALI-SOLVENT-EXHAUST-SCRUBBER-FUME-HOOD-FLAMMABLE-DAMPER-AND-PLUME-ABATEMENT-SEMIS2-SEMIS6-SEMIF14-NFPA318-NFPA91-OSHA1910119-OSHA19101000-DUCT-STATIC-LOSS-SOLVENT-LEL-FIRE-DAMPER-TRIP-PH-LIQUID-RATIO-BREAKTHROUGH-ABORT-AND-SUMP-SCBA-LOTO-GUARD";
+  centralExhaustScrubberCompliant: boolean;
+  ductStaticLossSolventLelOrFireDamperTripped0ms: boolean;
+  scrubberPhLiquidRatioOrStackBreakthroughAborted: boolean;
+  sumpOrMistEliminatorAccessLockedWithoutScbaLoto: boolean;
+  action:
+    | "allow_verified_central_acid_alkali_and_solvent_exhaust_scrubber_operation"
+    | "trip_fire_damper_co2_suppression_and_upstream_wet_bench_dispense_in_0ms"
+    | "abort_wafer_wet_clean_and_switch_standby_exhaust_fan_and_scrubber_train"
+    | "lock_scrubber_sump_and_mist_eliminator_until_neutralization_and_scba_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferSubFabCentralAcidAlkaliSolventExhaustScrubberFumeHoodFlammableDamperAndPlumeAbatementSemiS2SemiS6SemiF14Nfpa318Nfpa91Osha1910119Osha19101000DuctStaticLossSolventLelFireDamperTripPhLiquidRatioBreakthroughAbortAndSumpScbaLotoGuard(
+  input: SemiconductorWaferSubFabCentralAcidAlkaliSolventExhaustScrubberFumeHoodFlammableDamperAndPlumeAbatementGuardInput,
+): SemiconductorWaferSubFabCentralAcidAlkaliSolventExhaustScrubberFumeHoodFlammableDamperAndPlumeAbatementGuardResult {
+  const policyCode =
+    "P475-SEMICONDUCTOR-WAFER-SUB-FAB-CENTRAL-ACID-ALKALI-SOLVENT-EXHAUST-SCRUBBER-FUME-HOOD-FLAMMABLE-DAMPER-AND-PLUME-ABATEMENT-SEMIS2-SEMIS6-SEMIF14-NFPA318-NFPA91-OSHA1910119-OSHA19101000-DUCT-STATIC-LOSS-SOLVENT-LEL-FIRE-DAMPER-TRIP-PH-LIQUID-RATIO-BREAKTHROUGH-ABORT-AND-SUMP-SCBA-LOTO-GUARD" as const;
+
+  const ductStaticLossSolventLelOrFireDamperTripped0ms =
+    input.acidExhaustScrubberDuctStaticPressurePa > -120.0 ||
+    input.solventExhaustLelPercent >= 25.0 ||
+    Boolean(input.ductOpticalSmokeOrFireDetectorTriggered);
+
+  if (ductStaticLossSolventLelOrFireDamperTripped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      centralExhaustScrubberCompliant: false,
+      ductStaticLossSolventLelOrFireDamperTripped0ms: true,
+      scrubberPhLiquidRatioOrStackBreakthroughAborted: false,
+      sumpOrMistEliminatorAccessLockedWithoutScbaLoto: false,
+      action:
+        "trip_fire_damper_co2_suppression_and_upstream_wet_bench_dispense_in_0ms",
+      blockedReason:
+        "SEMI_S2_S6_NFPA318_NFPA91_EXHAUST_STATIC_LOSS_SOLVENT_LEL_OVER_25PCT_OR_DUCT_FIRE_0MS_TRIP",
+    };
+  }
+
+  const scrubberPhLiquidRatioOrStackBreakthroughAborted =
+    input.wetScrubberRecirculationLiquorPh < 6.5 ||
+    input.wetScrubberRecirculationLiquorPh > 9.5 ||
+    input.scrubberPackingLiquidToGasRatioLPerM3 < 1.5 ||
+    input.stackOutletHfHclCl2Nh3BreakthroughPpm >= 0.5;
+
+  if (scrubberPhLiquidRatioOrStackBreakthroughAborted) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      centralExhaustScrubberCompliant: false,
+      ductStaticLossSolventLelOrFireDamperTripped0ms: false,
+      scrubberPhLiquidRatioOrStackBreakthroughAborted: true,
+      sumpOrMistEliminatorAccessLockedWithoutScbaLoto: false,
+      action:
+        "abort_wafer_wet_clean_and_switch_standby_exhaust_fan_and_scrubber_train",
+      blockedReason:
+        "SEMI_S6_F14_SCRUBBER_PH_OUT_OF_RANGE_LIQUID_GAS_RATIO_LOW_OR_STACK_BREAKTHROUGH_ABORT",
+    };
+  }
+
+  const sumpOrMistEliminatorAccessLockedWithoutScbaLoto = Boolean(
+    input.scrubberSumpOrMistEliminatorAccessBeforeNeutralizationAndScbaLotoVerified,
+  );
+
+  if (sumpOrMistEliminatorAccessLockedWithoutScbaLoto) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      centralExhaustScrubberCompliant: false,
+      ductStaticLossSolventLelOrFireDamperTripped0ms: false,
+      scrubberPhLiquidRatioOrStackBreakthroughAborted: false,
+      sumpOrMistEliminatorAccessLockedWithoutScbaLoto: true,
+      action:
+        "lock_scrubber_sump_and_mist_eliminator_until_neutralization_and_scba_loto_verified",
+      blockedReason:
+        "OSHA_1910_119_1910_1000_SCRUBBER_SUMP_AND_MIST_ELIMINATOR_LOCKED_UNTIL_NEUTRALIZATION_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    centralExhaustScrubberCompliant: true,
+    ductStaticLossSolventLelOrFireDamperTripped0ms: false,
+    scrubberPhLiquidRatioOrStackBreakthroughAborted: false,
+    sumpOrMistEliminatorAccessLockedWithoutScbaLoto: false,
+    action:
+      "allow_verified_central_acid_alkali_and_solvent_exhaust_scrubber_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8835TransportsForWebrtcMandatoryIceUdpTcpFallbackTurnRelayAndIpv6DualStackHappyEyeballsGuardInput {
+  sessionId: string;
+  mandatoryIceConsentAndUdpOrIceTcpTransportVerified: boolean;
+  rawUdpOrRawTcpMediaBypassWithoutIceFramingDetected: boolean;
+  rfc4571TwoByteLengthFramingDesyncOnIceTcpOrTurnTcpDetected: boolean;
+  ipv6ToIpv4HappyEyeballsDualStackFallbackStallDetected: boolean;
+  happyEyeballsConnectionAttemptDelayMs: number;
+  concurrentTurnTcpTlsRelayStreamsPerSessionCount: number;
+}
+
+export interface WebrtcSipRfc8835TransportsForWebrtcMandatoryIceUdpTcpFallbackTurnRelayAndIpv6DualStackHappyEyeballsGuardResult {
+  sessionId: string;
+  policyCode: "P476-WEBRTC-SIP-RFC8835-TRANSPORTS-FOR-WEBRTC-MANDATORY-ICE-UDP-TCP-FALLBACK-TURN-RELAY-AND-IPV6-DUAL-STACK-HAPPY-EYEBALLS-GUARD";
+  rfc8835TransportCompliant: boolean;
+  unconsentedIceOrRawUdpTcpBypassDropped0ms: boolean;
+  rfc4571TcpFramingDesyncOrDualStackStallRejected: boolean;
+  happyEyeballsTimerOrTurnTcpStreamFanoutClamped: boolean;
+  action:
+    | "allow_verified_rfc8835_webrtc_ice_udp_tcp_and_dual_stack_transport"
+    | "drop_unconsented_ice_or_raw_udp_tcp_media_bypass_0ms"
+    | "reject_rfc4571_tcp_framing_desync_or_ipv6_ipv4_happy_eyeballs_stall"
+    | "clamp_happy_eyeballs_timer_or_turn_tcp_tls_stream_fanout";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8835TransportsForWebrtcMandatoryIceUdpTcpFallbackTurnRelayAndIpv6DualStackHappyEyeballsGuard(
+  input: WebrtcSipRfc8835TransportsForWebrtcMandatoryIceUdpTcpFallbackTurnRelayAndIpv6DualStackHappyEyeballsGuardInput,
+): WebrtcSipRfc8835TransportsForWebrtcMandatoryIceUdpTcpFallbackTurnRelayAndIpv6DualStackHappyEyeballsGuardResult {
+  const policyCode =
+    "P476-WEBRTC-SIP-RFC8835-TRANSPORTS-FOR-WEBRTC-MANDATORY-ICE-UDP-TCP-FALLBACK-TURN-RELAY-AND-IPV6-DUAL-STACK-HAPPY-EYEBALLS-GUARD" as const;
+
+  const unconsentedIceOrRawUdpTcpBypassDropped0ms =
+    !input.mandatoryIceConsentAndUdpOrIceTcpTransportVerified ||
+    Boolean(input.rawUdpOrRawTcpMediaBypassWithoutIceFramingDetected);
+
+  if (unconsentedIceOrRawUdpTcpBypassDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8835TransportCompliant: false,
+      unconsentedIceOrRawUdpTcpBypassDropped0ms: true,
+      rfc4571TcpFramingDesyncOrDualStackStallRejected: false,
+      happyEyeballsTimerOrTurnTcpStreamFanoutClamped: false,
+      action: "drop_unconsented_ice_or_raw_udp_tcp_media_bypass_0ms",
+      blockedReason:
+        "RFC8835_UNCONSENTED_ICE_OR_RAW_UDP_TCP_MEDIA_BYPASS_WITHOUT_ICE_FRAMING_0MS_DROP",
+    };
+  }
+
+  const rfc4571TcpFramingDesyncOrDualStackStallRejected =
+    Boolean(input.rfc4571TwoByteLengthFramingDesyncOnIceTcpOrTurnTcpDetected) ||
+    Boolean(input.ipv6ToIpv4HappyEyeballsDualStackFallbackStallDetected);
+
+  if (rfc4571TcpFramingDesyncOrDualStackStallRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8835TransportCompliant: false,
+      unconsentedIceOrRawUdpTcpBypassDropped0ms: false,
+      rfc4571TcpFramingDesyncOrDualStackStallRejected: true,
+      happyEyeballsTimerOrTurnTcpStreamFanoutClamped: false,
+      action:
+        "reject_rfc4571_tcp_framing_desync_or_ipv6_ipv4_happy_eyeballs_stall",
+      blockedReason:
+        "RFC8835_RFC4571_TCP_LENGTH_FRAMING_DESYNC_OR_IPV6_IPV4_DUAL_STACK_HAPPY_EYEBALLS_STALL_REJECTED",
+    };
+  }
+
+  const happyEyeballsTimerOrTurnTcpStreamFanoutClamped =
+    input.happyEyeballsConnectionAttemptDelayMs < 15 ||
+    input.happyEyeballsConnectionAttemptDelayMs > 250 ||
+    input.concurrentTurnTcpTlsRelayStreamsPerSessionCount > 4;
+
+  if (happyEyeballsTimerOrTurnTcpStreamFanoutClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8835TransportCompliant: false,
+      unconsentedIceOrRawUdpTcpBypassDropped0ms: false,
+      rfc4571TcpFramingDesyncOrDualStackStallRejected: false,
+      happyEyeballsTimerOrTurnTcpStreamFanoutClamped: true,
+      action: "clamp_happy_eyeballs_timer_or_turn_tcp_tls_stream_fanout",
+      blockedReason:
+        "RFC8835_HAPPY_EYEBALLS_DELAY_OUTSIDE_15_TO_250MS_OR_TURN_TCP_STREAMS_OVER_4_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8835TransportCompliant: true,
+    unconsentedIceOrRawUdpTcpBypassDropped0ms: false,
+    rfc4571TcpFramingDesyncOrDualStackStallRejected: false,
+    happyEyeballsTimerOrTurnTcpStreamFanoutClamped: false,
+    action:
+      "allow_verified_rfc8835_webrtc_ice_udp_tcp_and_dual_stack_transport",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
