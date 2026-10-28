@@ -48893,6 +48893,180 @@ export function evaluateWebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBund
   };
 }
 
+export interface SemiconductorWaferFabSubFabForelineDryVacuumPumpRootsBoosterAndHeatedExhaustPipeSemiS2SemiS8Nfpa318Nfpa69Osha1910119GuardInput {
+  readonly pumpRotorSeizureMotorOvercurrentOrCasingCoolantLossDetected: boolean;
+  readonly pumpExhaustSilaneH2PyrophoricConcentrationPercentLel: number;
+  readonly pumpExhaustBackpressureKpa: number;
+  readonly forelineHeaterJacketTemperatureCelsius: number;
+  readonly n2PurgeBallastFlowSlm: number;
+  readonly dryPumpOrForelineTrapMaintenanceRequested: boolean;
+  readonly postN2PurgeResidualHfPh3AsH3SiH4ConcentrationPpm: number;
+  readonly pyrophoricSiO2Nh4fPowderPassivationAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabSubFabForelineDryVacuumPumpRootsBoosterAndHeatedExhaustPipeSemiS2SemiS8Nfpa318Nfpa69Osha1910119GuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "lock_dry_pump_and_foreline_manifold_until_powder_passivation_and_scba_loto"
+    | "abort_wafer_step_close_high_vac_isolation_valve_and_boost_n2_purge"
+    | "trip_upstream_tool_gas_box_rfo_and_flood_dry_pump_n2_in_0ms";
+  readonly policyId: "P489-SEMICONDUCTOR-WAFER-FAB-SUB-FAB-FORELINE-DRY-VACUUM-PUMP-ROOTS-BOOSTER-AND-HEATED-EXHAUST-PIPE-SEMIS2-SEMIS8-NFPA318-NFPA69-OSHA1910119-N2-BALLAST-LOSS-TRIP-NH4CL-TI-SIF6-POWDER-BACKPRESSURE-ABORT-AND-PYROPHORIC-TRAP-SCBA-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabSubFabForelineDryVacuumPumpRootsBoosterAndHeatedExhaustPipeSemiS2SemiS8Nfpa318Nfpa69Osha1910119N2BallastLossTripNh4clTiSif6PowderBackpressureAbortAndPyrophoricTrapScbaLotoGuard(
+  input: SemiconductorWaferFabSubFabForelineDryVacuumPumpRootsBoosterAndHeatedExhaustPipeSemiS2SemiS8Nfpa318Nfpa69Osha1910119GuardInput,
+): SemiconductorWaferFabSubFabForelineDryVacuumPumpRootsBoosterAndHeatedExhaustPipeSemiS2SemiS8Nfpa318Nfpa69Osha1910119GuardResult {
+  const policyId =
+    "P489-SEMICONDUCTOR-WAFER-FAB-SUB-FAB-FORELINE-DRY-VACUUM-PUMP-ROOTS-BOOSTER-AND-HEATED-EXHAUST-PIPE-SEMIS2-SEMIS8-NFPA318-NFPA69-OSHA1910119-N2-BALLAST-LOSS-TRIP-NH4CL-TI-SIF6-POWDER-BACKPRESSURE-ABORT-AND-PYROPHORIC-TRAP-SCBA-LOTO-GUARD" as const;
+
+  if (
+    input.pumpRotorSeizureMotorOvercurrentOrCasingCoolantLossDetected ||
+    input.pumpExhaustSilaneH2PyrophoricConcentrationPercentLel >= 25.0 ||
+    input.n2PurgeBallastFlowSlm < 15.0
+  ) {
+    return {
+      violated: true,
+      action: "trip_upstream_tool_gas_box_rfo_and_flood_dry_pump_n2_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / NFPA 318 / NFPA 69 critical sub-fab dry vacuum pump rotor seizure/coolant loss, exhaust pyrophoric SiH4/H2 >= 25.0% LEL, or N2 ballast dilution flow < 15.0 slm; tripping upstream process gas box RFO valves and flooding dry pump with N2 in 0ms.",
+    };
+  }
+
+  if (
+    input.pumpExhaustBackpressureKpa >= 35.0 ||
+    input.forelineHeaterJacketTemperatureCelsius < 120.0 ||
+    input.forelineHeaterJacketTemperatureCelsius >= 220.0
+  ) {
+    return {
+      violated: true,
+      action:
+        "abort_wafer_step_close_high_vac_isolation_valve_and_boost_n2_purge",
+      policyId,
+      reason:
+        "SEMI S2 / OSHA 1910.119 sub-fab foreline byproduct condensation / clogging hazard (exhaust backpressure >= 35.0 kPa or heater jacket outside 120–220 C causing NH4Cl / (NH4)2SiF6 / TiOx powder bridging or thermal runaway); aborting wafer step and closing high-vacuum isolation valve.",
+    };
+  }
+
+  if (
+    input.dryPumpOrForelineTrapMaintenanceRequested &&
+    (input.postN2PurgeResidualHfPh3AsH3SiH4ConcentrationPpm >= 0.05 ||
+      !input.pyrophoricSiO2Nh4fPowderPassivationAndScbaLotoVerified)
+  ) {
+    return {
+      violated: true,
+      action:
+        "lock_dry_pump_and_foreline_manifold_until_powder_passivation_and_scba_loto",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S8 / OSHA 1910.119 sub-fab dry pump and cold trap maintenance lock: residual toxic/pyrophoric gas must be < 0.05 ppm and controlled slow oxidation passivation + positive-pressure SCBA LOTO must be verified before opening KF/ISO flanges.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer fab sub-fab foreline dry vacuum pump, Roots booster, N2 ballast dilution, heated exhaust line, and SCBA LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8844UnknownKeyShareAttackPreventionOnDtlsSrtpTlsIdAndFingerprintBindingGuardInput {
+  readonly sdpMissingTlsIdOrTlsIdMismatchWithDtlsHandshakeDetected: boolean;
+  readonly crossSessionDtlsFingerprintAndTlsIdReplayMitmDetected: boolean;
+  readonly dtlsSessionResumptionAttemptedAcrossDifferentTlsIdDetected: boolean;
+  readonly fingerprintChangedWhileTlsIdRemainedUnchangedDetected: boolean;
+  readonly signalingIdentityAssertionMismatchWithDtlsCertDetected: boolean;
+  readonly concurrentPendingDtlsHandshakesPerEndpointCount: number;
+  readonly tlsIdEntropyBits: number;
+}
+
+export interface WebrtcSipRfc8844UnknownKeyShareAttackPreventionOnDtlsSrtpTlsIdAndFingerprintBindingGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_concurrent_dtls_handshakes_and_enforce_min_tls_id_entropy"
+    | "reject_cross_tls_id_resumption_unrotated_tls_id_or_identity_mismatch"
+    | "drop_missing_mismatched_tls_id_or_cross_session_uksa_replay_0ms";
+  readonly policyId: "P490-WEBRTC-SIP-RFC8844-UNKNOWN-KEY-SHARE-ATTACK-PREVENTION-ON-DTLS-SRTP-TLS-ID-AND-FINGERPRINT-BINDING-GUARD";
+  readonly reason: string;
+  readonly clampedConcurrentDtlsHandshakesCount: number;
+  readonly enforcedMinTlsIdEntropyBits: number;
+}
+
+export function evaluateWebrtcSipRfc8844UnknownKeyShareAttackPreventionOnDtlsSrtpTlsIdAndFingerprintBindingGuard(
+  input: WebrtcSipRfc8844UnknownKeyShareAttackPreventionOnDtlsSrtpTlsIdAndFingerprintBindingGuardInput,
+): WebrtcSipRfc8844UnknownKeyShareAttackPreventionOnDtlsSrtpTlsIdAndFingerprintBindingGuardResult {
+  const policyId =
+    "P490-WEBRTC-SIP-RFC8844-UNKNOWN-KEY-SHARE-ATTACK-PREVENTION-ON-DTLS-SRTP-TLS-ID-AND-FINGERPRINT-BINDING-GUARD" as const;
+  const clampedConcurrentDtlsHandshakesCount = Math.min(
+    Math.max(1, input.concurrentPendingDtlsHandshakesPerEndpointCount),
+    8,
+  );
+  const enforcedMinTlsIdEntropyBits = Math.max(120, input.tlsIdEntropyBits);
+
+  if (
+    input.sdpMissingTlsIdOrTlsIdMismatchWithDtlsHandshakeDetected ||
+    input.crossSessionDtlsFingerprintAndTlsIdReplayMitmDetected
+  ) {
+    return {
+      violated: true,
+      action: "drop_missing_mismatched_tls_id_or_cross_session_uksa_replay_0ms",
+      policyId,
+      reason:
+        "RFC 8844 Section 3 / 4 violation: SDP missing/mismatched a=tls-id or cross-session DTLS-SRTP Unknown Key-Share Attack (UKSA) fingerprint+tls-id reflection detected; dropping in 0ms.",
+      clampedConcurrentDtlsHandshakesCount,
+      enforcedMinTlsIdEntropyBits,
+    };
+  }
+
+  if (
+    input.dtlsSessionResumptionAttemptedAcrossDifferentTlsIdDetected ||
+    input.fingerprintChangedWhileTlsIdRemainedUnchangedDetected ||
+    input.signalingIdentityAssertionMismatchWithDtlsCertDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "reject_cross_tls_id_resumption_unrotated_tls_id_or_identity_mismatch",
+      policyId,
+      reason:
+        "RFC 8844 Section 4 / 5 violation: DTLS session resumption across different a=tls-id, certificate fingerprint rotation without new a=tls-id, or SIP/WebRTC identity assertion mismatch; rejecting handshake.",
+      clampedConcurrentDtlsHandshakesCount,
+      enforcedMinTlsIdEntropyBits,
+    };
+  }
+
+  if (
+    input.concurrentPendingDtlsHandshakesPerEndpointCount > 8 ||
+    input.tlsIdEntropyBits < 120
+  ) {
+    return {
+      violated: true,
+      action:
+        "clamp_concurrent_dtls_handshakes_and_enforce_min_tls_id_entropy",
+      policyId,
+      reason:
+        "RFC 8844 DTLS-SRTP UKSA bounds protection: clamping concurrent pending DTLS handshakes to <= 8 and enforcing >= 120-bit a=tls-id cryptographic entropy.",
+      clampedConcurrentDtlsHandshakesCount,
+      enforcedMinTlsIdEntropyBits,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8844 DTLS-SRTP Unknown Key-Share Attack (UKSA) prevention via unique a=tls-id and a=fingerprint session binding verified.",
+    clampedConcurrentDtlsHandshakesCount,
+    enforcedMinTlsIdEntropyBits,
+  };
+}
+
 
 
 
