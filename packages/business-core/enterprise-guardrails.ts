@@ -44935,6 +44935,219 @@ export function evaluateWebrtcSipRfc8839IceSdpOfferAnswerCandidateAttributeUfrag
   };
 }
 
+export interface SemiconductorWafer25d3dSiliconInterposerAndCoWoSPackageAssemblyIndiumTimThermalInterfaceSolderReflowAndLidSealSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000IndiumOxideFluxFumeTripTimVoidLidBowAbortAndScbaLotoGuardInput {
+  cowosInterposerLidSealLineId: string;
+  indiumOxideFumeOrSiliconeAdhesiveSolventVaporLeakMgM3: number;
+  formicFluxOrLidCureOvenAtmosphereLelPct: number;
+  postReflowIndiumTim1ThermalInterfaceVoidAreaPct: number;
+  interposerSubstrateCoplanarityWarpageOrLidSealTiltUm: number;
+  packageJunctionToCaseThermalResistanceRjcExcursionPct: number;
+  reflowOrLidSealOvenDoorOpenRequested: boolean;
+  postCooldownChamberTemperatureC: number;
+  postPurgeResidualFluxOrAdhesiveVocPpm: number;
+  heaterPressN2PurgeAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWafer25d3dSiliconInterposerAndCoWoSPackageAssemblyIndiumTimThermalInterfaceSolderReflowAndLidSealSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000IndiumOxideFluxFumeTripTimVoidLidBowAbortAndScbaLotoGuardAssessment {
+  cowosInterposerLidSealLineId: string;
+  policyCode: "P449-SEMICONDUCTOR-WAFER-25D-3D-SILICON-INTERPOSER-AND-COWOS-PACKAGE-ASSEMBLY-INDIUM-TIM-THERMAL-INTERFACE-SOLDER-REFLOW-AND-LID-SEAL-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-INDIUM-OXIDE-FLUX-FUME-TRIP-TIM-VOID-LID-BOW-ABORT-AND-SCBA-LOTO-GUARD";
+  cowosIndiumTimAndLidSealSafe: boolean;
+  indiumOxideFumeOrFluxCureLelTripped0ms: boolean;
+  indiumTimVoidSubstrateWarpageOrRjcExcursionAborted: boolean;
+  ovenLockedUntilCoolVocPurgeAndScbaLoto: boolean;
+  action:
+    | "allow_verified_cowos_interposer_indium_tim_reflow_and_lid_seal"
+    | "trip_indium_tim_reflow_and_lid_seal_press_in_0ms_and_engage_scrubber"
+    | "abort_cowos_lid_seal_on_indium_tim_void_interposer_warpage_or_rjc_excursion"
+    | "lock_lid_seal_oven_until_cool_below_50c_voc_below_05ppm_and_scba_loto";
+  blockedReason:
+    | "none"
+    | "SEMIS2_NFPA86_OSHA19101000_INDIUM_OXIDE_01MGM3_OR_FLUX_LEL_10PCT_TRIPPED_0MS"
+    | "COWOS_INDIUM_TIM_VOID_3PCT_WARPAGE_150UM_OR_RJC_EXCURSION_10PCT_ABORTED"
+    | "SEMIS2_NFPA86_LID_SEAL_OVEN_LOCKED_UNTIL_50C_05PPM_VOC_AND_SCBA_LOTO";
+}
+
+export function evaluateSemiconductorWafer25d3dSiliconInterposerAndCoWoSPackageAssemblyIndiumTimThermalInterfaceSolderReflowAndLidSealSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000IndiumOxideFluxFumeTripTimVoidLidBowAbortAndScbaLotoGuard(
+  input: SemiconductorWafer25d3dSiliconInterposerAndCoWoSPackageAssemblyIndiumTimThermalInterfaceSolderReflowAndLidSealSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000IndiumOxideFluxFumeTripTimVoidLidBowAbortAndScbaLotoGuardInput,
+): SemiconductorWafer25d3dSiliconInterposerAndCoWoSPackageAssemblyIndiumTimThermalInterfaceSolderReflowAndLidSealSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000IndiumOxideFluxFumeTripTimVoidLidBowAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P449-SEMICONDUCTOR-WAFER-25D-3D-SILICON-INTERPOSER-AND-COWOS-PACKAGE-ASSEMBLY-INDIUM-TIM-THERMAL-INTERFACE-SOLDER-REFLOW-AND-LID-SEAL-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-INDIUM-OXIDE-FLUX-FUME-TRIP-TIM-VOID-LID-BOW-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const indiumOxideFumeOrFluxCureLelTripped0ms =
+    input.indiumOxideFumeOrSiliconeAdhesiveSolventVaporLeakMgM3 >= 0.1 ||
+    input.formicFluxOrLidCureOvenAtmosphereLelPct >= 10.0;
+
+  const indiumTimVoidSubstrateWarpageOrRjcExcursionAborted =
+    input.postReflowIndiumTim1ThermalInterfaceVoidAreaPct >= 3.0 ||
+    input.interposerSubstrateCoplanarityWarpageOrLidSealTiltUm >= 150.0 ||
+    input.packageJunctionToCaseThermalResistanceRjcExcursionPct >= 10.0;
+
+  const ovenLockedUntilCoolVocPurgeAndScbaLoto =
+    input.reflowOrLidSealOvenDoorOpenRequested &&
+    (input.postCooldownChamberTemperatureC >= 50.0 ||
+      input.postPurgeResidualFluxOrAdhesiveVocPpm >= 0.5 ||
+      !input.heaterPressN2PurgeAndScbaLotoVerified);
+
+  if (indiumOxideFumeOrFluxCureLelTripped0ms) {
+    return {
+      cowosInterposerLidSealLineId: input.cowosInterposerLidSealLineId,
+      policyCode,
+      cowosIndiumTimAndLidSealSafe: false,
+      indiumOxideFumeOrFluxCureLelTripped0ms: true,
+      indiumTimVoidSubstrateWarpageOrRjcExcursionAborted,
+      ovenLockedUntilCoolVocPurgeAndScbaLoto,
+      action:
+        "trip_indium_tim_reflow_and_lid_seal_press_in_0ms_and_engage_scrubber",
+      blockedReason:
+        "SEMIS2_NFPA86_OSHA19101000_INDIUM_OXIDE_01MGM3_OR_FLUX_LEL_10PCT_TRIPPED_0MS",
+    };
+  }
+
+  if (indiumTimVoidSubstrateWarpageOrRjcExcursionAborted) {
+    return {
+      cowosInterposerLidSealLineId: input.cowosInterposerLidSealLineId,
+      policyCode,
+      cowosIndiumTimAndLidSealSafe: false,
+      indiumOxideFumeOrFluxCureLelTripped0ms: false,
+      indiumTimVoidSubstrateWarpageOrRjcExcursionAborted: true,
+      ovenLockedUntilCoolVocPurgeAndScbaLoto,
+      action:
+        "abort_cowos_lid_seal_on_indium_tim_void_interposer_warpage_or_rjc_excursion",
+      blockedReason:
+        "COWOS_INDIUM_TIM_VOID_3PCT_WARPAGE_150UM_OR_RJC_EXCURSION_10PCT_ABORTED",
+    };
+  }
+
+  if (ovenLockedUntilCoolVocPurgeAndScbaLoto) {
+    return {
+      cowosInterposerLidSealLineId: input.cowosInterposerLidSealLineId,
+      policyCode,
+      cowosIndiumTimAndLidSealSafe: false,
+      indiumOxideFumeOrFluxCureLelTripped0ms: false,
+      indiumTimVoidSubstrateWarpageOrRjcExcursionAborted: false,
+      ovenLockedUntilCoolVocPurgeAndScbaLoto: true,
+      action:
+        "lock_lid_seal_oven_until_cool_below_50c_voc_below_05ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_NFPA86_LID_SEAL_OVEN_LOCKED_UNTIL_50C_05PPM_VOC_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    cowosInterposerLidSealLineId: input.cowosInterposerLidSealLineId,
+    policyCode,
+    cowosIndiumTimAndLidSealSafe: true,
+    indiumOxideFumeOrFluxCureLelTripped0ms: false,
+    indiumTimVoidSubstrateWarpageOrRjcExcursionAborted: false,
+    ovenLockedUntilCoolVocPurgeAndScbaLoto: false,
+    action: "allow_verified_cowos_interposer_indium_tim_reflow_and_lid_seal",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8830WebrtcMediaStreamIdentificationMsidTrackBindingCrossOriginStreamHijackAndAppdataOverflowGuardInput {
+  sessionId: string;
+  sdpMsidIdOrAppdataTokenSyntaxMalformedOrControlCharInjected: boolean;
+  ssrcMsidConflictBetweenMediaSectionAndSsrcLevelAttribute: boolean;
+  crossOriginUnboundMediaStreamTrackHijackOrZombieTrackLeakDetected: boolean;
+  duplicateTrackAppdataAcrossSameMediaStreamDetected: boolean;
+  msidAttributesPerMediaSectionCount: number;
+  msidIdentifierOrAppdataTokenLengthChars: number;
+}
+
+export interface WebrtcSipRfc8830WebrtcMediaStreamIdentificationMsidTrackBindingCrossOriginStreamHijackAndAppdataOverflowGuardAssessment {
+  sessionId: string;
+  policyCode: "P450-WEBRTC-SIP-RFC8830-WEBRTC-MEDIASTREAM-IDENTIFICATION-MSID-TRACK-BINDING-CROSS-ORIGIN-STREAM-HIJACK-AND-APPDATA-OVERFLOW-GUARD";
+  rfc8830WebrtcMsidBindingHealthy: boolean;
+  malformedMsidOrSsrcLevelConflictDropped0ms: boolean;
+  crossOriginTrackHijackOrDuplicateAppdataRejected: boolean;
+  msidCountOrTokenLengthClamped: boolean;
+  action:
+    | "allow_verified_rfc8830_webrtc_msid_stream_and_track_binding"
+    | "drop_malformed_sdp_msid_or_ssrc_level_msid_conflict_0ms"
+    | "reject_cross_origin_msid_track_hijack_or_duplicate_track_appdata"
+    | "clamp_msid_attributes_per_mline_or_token_length";
+  blockedReason:
+    | "none"
+    | "RFC8830_MALFORMED_MSID_TOKEN_OR_SSRC_LEVEL_MSID_CONFLICT_DROPPED_0MS"
+    | "RFC8830_CROSS_ORIGIN_TRACK_HIJACK_OR_DUPLICATE_TRACK_APPDATA_REJECTED"
+    | "RFC8830_MSID_OVER_8_PER_MLINE_OR_TOKEN_OVER_64_CHARS_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8830WebrtcMediaStreamIdentificationMsidTrackBindingCrossOriginStreamHijackAndAppdataOverflowGuard(
+  input: WebrtcSipRfc8830WebrtcMediaStreamIdentificationMsidTrackBindingCrossOriginStreamHijackAndAppdataOverflowGuardInput,
+): WebrtcSipRfc8830WebrtcMediaStreamIdentificationMsidTrackBindingCrossOriginStreamHijackAndAppdataOverflowGuardAssessment {
+  const policyCode =
+    "P450-WEBRTC-SIP-RFC8830-WEBRTC-MEDIASTREAM-IDENTIFICATION-MSID-TRACK-BINDING-CROSS-ORIGIN-STREAM-HIJACK-AND-APPDATA-OVERFLOW-GUARD" as const;
+
+  const malformedMsidOrSsrcLevelConflictDropped0ms =
+    input.sdpMsidIdOrAppdataTokenSyntaxMalformedOrControlCharInjected ||
+    input.ssrcMsidConflictBetweenMediaSectionAndSsrcLevelAttribute;
+
+  const crossOriginTrackHijackOrDuplicateAppdataRejected =
+    input.crossOriginUnboundMediaStreamTrackHijackOrZombieTrackLeakDetected ||
+    input.duplicateTrackAppdataAcrossSameMediaStreamDetected;
+
+  const msidCountOrTokenLengthClamped =
+    input.msidAttributesPerMediaSectionCount > 8 ||
+    input.msidIdentifierOrAppdataTokenLengthChars > 64;
+
+  if (malformedMsidOrSsrcLevelConflictDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8830WebrtcMsidBindingHealthy: false,
+      malformedMsidOrSsrcLevelConflictDropped0ms: true,
+      crossOriginTrackHijackOrDuplicateAppdataRejected,
+      msidCountOrTokenLengthClamped,
+      action: "drop_malformed_sdp_msid_or_ssrc_level_msid_conflict_0ms",
+      blockedReason:
+        "RFC8830_MALFORMED_MSID_TOKEN_OR_SSRC_LEVEL_MSID_CONFLICT_DROPPED_0MS",
+    };
+  }
+
+  if (crossOriginTrackHijackOrDuplicateAppdataRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8830WebrtcMsidBindingHealthy: false,
+      malformedMsidOrSsrcLevelConflictDropped0ms: false,
+      crossOriginTrackHijackOrDuplicateAppdataRejected: true,
+      msidCountOrTokenLengthClamped,
+      action:
+        "reject_cross_origin_msid_track_hijack_or_duplicate_track_appdata",
+      blockedReason:
+        "RFC8830_CROSS_ORIGIN_TRACK_HIJACK_OR_DUPLICATE_TRACK_APPDATA_REJECTED",
+    };
+  }
+
+  if (msidCountOrTokenLengthClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8830WebrtcMsidBindingHealthy: false,
+      malformedMsidOrSsrcLevelConflictDropped0ms: false,
+      crossOriginTrackHijackOrDuplicateAppdataRejected: false,
+      msidCountOrTokenLengthClamped: true,
+      action: "clamp_msid_attributes_per_mline_or_token_length",
+      blockedReason:
+        "RFC8830_MSID_OVER_8_PER_MLINE_OR_TOKEN_OVER_64_CHARS_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8830WebrtcMsidBindingHealthy: true,
+    malformedMsidOrSsrcLevelConflictDropped0ms: false,
+    crossOriginTrackHijackOrDuplicateAppdataRejected: false,
+    msidCountOrTokenLengthClamped: false,
+    action: "allow_verified_rfc8830_webrtc_msid_stream_and_track_binding",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
