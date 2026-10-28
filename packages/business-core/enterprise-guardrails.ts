@@ -47018,4 +47018,204 @@ export function evaluateWebrtcSipRfc8830WebrtcMediaStreamIdentificationInSdpMsid
   };
 }
 
+export interface SemiconductorWaferCleanroomMakeUpAirUnitMauFanFilterUnitFfuRecirculationAndVolatileOrganicCompoundVocAcidGasChemicalFilterSemiS2SemiS8SemiF21Iso146441Nfpa318Osha19101000CleanroomPositivePressureCollapseOrSmokeIntakeTripAmcNh3So2VocFilterBreakthroughAbortAndAhuDamperVfdLotoGuardInput {
+  sessionId: string;
+  cleanroomToSubFabDifferentialPositivePressurePa: number;
+  mauIntakeOrReturnDuctVesdaLaserSmokeConcentrationObsPerM: number;
+  airborneMolecularContaminationNh3AcidOrVocConcentrationPpb: number;
+  isoClass1Cleanroom01umParticleCountPerCubicMeter: number;
+  activeFfuCeilingGridFailureRatePercent: number;
+  mauSupplyFanVfdOrChemicalFilterHousingEntryRequested: boolean;
+  vfdZeroSpeedCapacitorBleedAndDamperIsolationLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferCleanroomMakeUpAirUnitMauFanFilterUnitFfuRecirculationAndVolatileOrganicCompoundVocAcidGasChemicalFilterSemiS2SemiS8SemiF21Iso146441Nfpa318Osha19101000CleanroomPositivePressureCollapseOrSmokeIntakeTripAmcNh3So2VocFilterBreakthroughAbortAndAhuDamperVfdLotoGuardAssessment {
+  sessionId: string;
+  policyCode: "P469-SEMICONDUCTOR-WAFER-CLEANROOM-MAKE-UP-AIR-UNIT-MAU-FAN-FILTER-UNIT-FFU-RECIRCULATION-AND-VOLATILE-ORGANIC-COMPOUND-VOC-ACID-GAS-CHEMICAL-FILTER-SEMIS2-SEMIS8-SEMIF21-ISO146441-NFPA318-OSHA19101000-CLEANROOM-POSITIVE-PRESSURE-COLLAPSE-OR-SMOKE-INTAKE-TRIP-AMC-NH3-SO2-VOC-FILTER-BREAKTHROUGH-ABORT-AND-AHU-DAMPER-VFD-LOTO-GUARD";
+  cleanroomMauFfuAndAmcEnvironmentSafe: boolean;
+  positivePressureCollapseOrVesdaSmokeDamperIsolated0ms: boolean;
+  amcBreakthroughParticleExcursionOrFfuGridFaultAborted: boolean;
+  mauVfdOrChemicalFilterHousingLockedUntilZeroEnergyLoto: boolean;
+  action:
+    | "allow_verified_cleanroom_mau_ffu_iso14644_class1_operation"
+    | "trip_mau_smoke_damper_and_seal_foup_loadports_in_0ms_on_dp_collapse_or_vesda_smoke"
+    | "abort_litho_exposure_and_switch_standby_amc_filter_bank_on_nh3_voc_particle_or_ffu_fault"
+    | "lock_mau_vfd_and_chemical_filter_housing_until_zero_speed_capacitor_bleed_and_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferCleanroomMakeUpAirUnitMauFanFilterUnitFfuRecirculationAndVolatileOrganicCompoundVocAcidGasChemicalFilterSemiS2SemiS8SemiF21Iso146441Nfpa318Osha19101000CleanroomPositivePressureCollapseOrSmokeIntakeTripAmcNh3So2VocFilterBreakthroughAbortAndAhuDamperVfdLotoGuard(
+  input: SemiconductorWaferCleanroomMakeUpAirUnitMauFanFilterUnitFfuRecirculationAndVolatileOrganicCompoundVocAcidGasChemicalFilterSemiS2SemiS8SemiF21Iso146441Nfpa318Osha19101000CleanroomPositivePressureCollapseOrSmokeIntakeTripAmcNh3So2VocFilterBreakthroughAbortAndAhuDamperVfdLotoGuardInput,
+): SemiconductorWaferCleanroomMakeUpAirUnitMauFanFilterUnitFfuRecirculationAndVolatileOrganicCompoundVocAcidGasChemicalFilterSemiS2SemiS8SemiF21Iso146441Nfpa318Osha19101000CleanroomPositivePressureCollapseOrSmokeIntakeTripAmcNh3So2VocFilterBreakthroughAbortAndAhuDamperVfdLotoGuardAssessment {
+  const policyCode =
+    "P469-SEMICONDUCTOR-WAFER-CLEANROOM-MAKE-UP-AIR-UNIT-MAU-FAN-FILTER-UNIT-FFU-RECIRCULATION-AND-VOLATILE-ORGANIC-COMPOUND-VOC-ACID-GAS-CHEMICAL-FILTER-SEMIS2-SEMIS8-SEMIF21-ISO146441-NFPA318-OSHA19101000-CLEANROOM-POSITIVE-PRESSURE-COLLAPSE-OR-SMOKE-INTAKE-TRIP-AMC-NH3-SO2-VOC-FILTER-BREAKTHROUGH-ABORT-AND-AHU-DAMPER-VFD-LOTO-GUARD" as const;
+
+  const positivePressureCollapseOrVesdaSmokeDamperIsolated0ms =
+    input.cleanroomToSubFabDifferentialPositivePressurePa < 15.0 ||
+    input.mauIntakeOrReturnDuctVesdaLaserSmokeConcentrationObsPerM >= 0.05;
+
+  if (positivePressureCollapseOrVesdaSmokeDamperIsolated0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      cleanroomMauFfuAndAmcEnvironmentSafe: false,
+      positivePressureCollapseOrVesdaSmokeDamperIsolated0ms: true,
+      amcBreakthroughParticleExcursionOrFfuGridFaultAborted: false,
+      mauVfdOrChemicalFilterHousingLockedUntilZeroEnergyLoto: false,
+      action:
+        "trip_mau_smoke_damper_and_seal_foup_loadports_in_0ms_on_dp_collapse_or_vesda_smoke",
+      blockedReason:
+        "CLEANROOM_DP_BELOW_15PA_OR_VESDA_SMOKE_OVER_0_05OBS_M_0MS_DAMPER_FOUP_SEAL",
+    };
+  }
+
+  const amcBreakthroughParticleExcursionOrFfuGridFaultAborted =
+    input.airborneMolecularContaminationNh3AcidOrVocConcentrationPpb >= 1.0 ||
+    input.isoClass1Cleanroom01umParticleCountPerCubicMeter >= 10 ||
+    input.activeFfuCeilingGridFailureRatePercent >= 2.0;
+
+  if (amcBreakthroughParticleExcursionOrFfuGridFaultAborted) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      cleanroomMauFfuAndAmcEnvironmentSafe: false,
+      positivePressureCollapseOrVesdaSmokeDamperIsolated0ms: false,
+      amcBreakthroughParticleExcursionOrFfuGridFaultAborted: true,
+      mauVfdOrChemicalFilterHousingLockedUntilZeroEnergyLoto: false,
+      action:
+        "abort_litho_exposure_and_switch_standby_amc_filter_bank_on_nh3_voc_particle_or_ffu_fault",
+      blockedReason:
+        "CLEANROOM_AMC_OVER_1PPB_OR_01UM_PARTICLES_OVER_10_M3_OR_FFU_FAULT_OVER_2PCT_ABORT",
+    };
+  }
+
+  const mauVfdOrChemicalFilterHousingLockedUntilZeroEnergyLoto =
+    input.mauSupplyFanVfdOrChemicalFilterHousingEntryRequested &&
+    !input.vfdZeroSpeedCapacitorBleedAndDamperIsolationLotoVerified;
+
+  if (mauVfdOrChemicalFilterHousingLockedUntilZeroEnergyLoto) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      cleanroomMauFfuAndAmcEnvironmentSafe: false,
+      positivePressureCollapseOrVesdaSmokeDamperIsolated0ms: false,
+      amcBreakthroughParticleExcursionOrFfuGridFaultAborted: false,
+      mauVfdOrChemicalFilterHousingLockedUntilZeroEnergyLoto: true,
+      action:
+        "lock_mau_vfd_and_chemical_filter_housing_until_zero_speed_capacitor_bleed_and_loto",
+      blockedReason:
+        "CLEANROOM_MAU_VFD_OR_AMC_HOUSING_ENTRY_WITHOUT_ZERO_SPEED_CAPACITOR_BLEED_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    cleanroomMauFfuAndAmcEnvironmentSafe: true,
+    positivePressureCollapseOrVesdaSmokeDamperIsolated0ms: false,
+    amcBreakthroughParticleExcursionOrFfuGridFaultAborted: false,
+    mauVfdOrChemicalFilterHousingLockedUntilZeroEnergyLoto: false,
+    action: "allow_verified_cleanroom_mau_ffu_iso14644_class1_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8831WebrtcDataChannelsDcepOpenHandshakeSctpPpidValidationUnorderedPartialReliabilityAndMessageSizeGuardInput {
+  sessionId: string;
+  unrecognizedOrSpoofedSctpPayloadProtocolIdentifierPpidDetected: boolean;
+  malformedDcepDataChannelOpenOrAckControlFrameOverreadDetected: boolean;
+  dataChannelCarriedOverUnencryptedSctpWithoutDtlsBinding: boolean;
+  crossOriginUnauthorizedChannelLabelOrSubprotocolInjectionDetected: boolean;
+  singleSctpMessagePayloadBytes: number;
+  concurrentOpenDataChannelsPerAssociationCount: number;
+}
+
+export interface WebrtcSipRfc8831WebrtcDataChannelsDcepOpenHandshakeSctpPpidValidationUnorderedPartialReliabilityAndMessageSizeGuardAssessment {
+  sessionId: string;
+  policyCode: "P470-WEBRTC-SIP-RFC8831-WEBRTC-DATA-CHANNELS-DCEP-OPEN-HANDSHAKE-SCTP-PPID-VALIDATION-UNORDERED-PARTIAL-RELIABILITY-AND-MESSAGE-SIZE-GUARD";
+  rfc8831DataChannelCompliant: boolean;
+  spoofedSctpPpidOrMalformedDcepFrameDropped0ms: boolean;
+  unencryptedSctpOrUnauthorizedLabelSubprotocolRejected: boolean;
+  oversizedMessageOrChannelStreamFanoutClamped: boolean;
+  action:
+    | "allow_verified_rfc8831_webrtc_datachannel_and_dcep_transport"
+    | "drop_spoofed_sctp_ppid_or_malformed_dcep_open_frame_0ms"
+    | "reject_unencrypted_sctp_or_unauthorized_dcep_label_subprotocol"
+    | "clamp_sctp_message_size_or_concurrent_datachannel_streams";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8831WebrtcDataChannelsDcepOpenHandshakeSctpPpidValidationUnorderedPartialReliabilityAndMessageSizeGuard(
+  input: WebrtcSipRfc8831WebrtcDataChannelsDcepOpenHandshakeSctpPpidValidationUnorderedPartialReliabilityAndMessageSizeGuardInput,
+): WebrtcSipRfc8831WebrtcDataChannelsDcepOpenHandshakeSctpPpidValidationUnorderedPartialReliabilityAndMessageSizeGuardAssessment {
+  const policyCode =
+    "P470-WEBRTC-SIP-RFC8831-WEBRTC-DATA-CHANNELS-DCEP-OPEN-HANDSHAKE-SCTP-PPID-VALIDATION-UNORDERED-PARTIAL-RELIABILITY-AND-MESSAGE-SIZE-GUARD" as const;
+
+  const spoofedSctpPpidOrMalformedDcepFrameDropped0ms =
+    input.unrecognizedOrSpoofedSctpPayloadProtocolIdentifierPpidDetected ||
+    input.malformedDcepDataChannelOpenOrAckControlFrameOverreadDetected;
+
+  if (spoofedSctpPpidOrMalformedDcepFrameDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8831DataChannelCompliant: false,
+      spoofedSctpPpidOrMalformedDcepFrameDropped0ms: true,
+      unencryptedSctpOrUnauthorizedLabelSubprotocolRejected: false,
+      oversizedMessageOrChannelStreamFanoutClamped: false,
+      action: "drop_spoofed_sctp_ppid_or_malformed_dcep_open_frame_0ms",
+      blockedReason:
+        "RFC8831_SPOOFED_SCTP_PPID_OUTSIDE_50_57_OR_MALFORMED_DCEP_OPEN_OVERREAD_0MS_DROP",
+    };
+  }
+
+  const unencryptedSctpOrUnauthorizedLabelSubprotocolRejected =
+    input.dataChannelCarriedOverUnencryptedSctpWithoutDtlsBinding ||
+    input.crossOriginUnauthorizedChannelLabelOrSubprotocolInjectionDetected;
+
+  if (unencryptedSctpOrUnauthorizedLabelSubprotocolRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8831DataChannelCompliant: false,
+      spoofedSctpPpidOrMalformedDcepFrameDropped0ms: false,
+      unencryptedSctpOrUnauthorizedLabelSubprotocolRejected: true,
+      oversizedMessageOrChannelStreamFanoutClamped: false,
+      action: "reject_unencrypted_sctp_or_unauthorized_dcep_label_subprotocol",
+      blockedReason:
+        "RFC8831_UNENCRYPTED_SCTP_WITHOUT_DTLS_OR_UNAUTHORIZED_DCEP_LABEL_SUBPROTOCOL_REJECTED",
+    };
+  }
+
+  const oversizedMessageOrChannelStreamFanoutClamped =
+    input.singleSctpMessagePayloadBytes > 262144 ||
+    input.concurrentOpenDataChannelsPerAssociationCount > 256;
+
+  if (oversizedMessageOrChannelStreamFanoutClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8831DataChannelCompliant: false,
+      spoofedSctpPpidOrMalformedDcepFrameDropped0ms: false,
+      unencryptedSctpOrUnauthorizedLabelSubprotocolRejected: false,
+      oversizedMessageOrChannelStreamFanoutClamped: true,
+      action: "clamp_sctp_message_size_or_concurrent_datachannel_streams",
+      blockedReason:
+        "RFC8831_MESSAGE_OVER_256KB_OR_OPEN_DATACHANNELS_OVER_256_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8831DataChannelCompliant: true,
+    spoofedSctpPpidOrMalformedDcepFrameDropped0ms: false,
+    unencryptedSctpOrUnauthorizedLabelSubprotocolRejected: false,
+    oversizedMessageOrChannelStreamFanoutClamped: false,
+    action: "allow_verified_rfc8831_webrtc_datachannel_and_dcep_transport",
+    blockedReason: "none",
+  };
+}
+
+
 
