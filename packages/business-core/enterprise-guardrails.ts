@@ -41985,4 +41985,221 @@ export function evaluateWebrtcSipRfc8859SdpAttributeMultiplexingCategoriesIdenti
   };
 }
 
+export interface SemiconductorWaferMonolithic3dCfetComplementaryFetMiddleDielectricIsolationMdiSmartCutLayerTransferAndDeepViaToBottomSourceDrainVsdEtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000XraySih4H2TripOverlayMdiAbortAndScbaLotoGuardInput {
+  cfetModuleId: string;
+  implanterCabinetXrayDoseRateMremPerHr: number;
+  silaneOrFluorocarbonGasLeakPpm: number;
+  smartCutSplitFurnaceHydrogenPpm: number;
+  topNfetToBottomPfetOverlayDriftNm: number;
+  middleDielectricIsolationMdiLeakageAmpPerCm2: number;
+  smartCutDonorWaferBlisterVoidAreaPct: number;
+  endStationOrEtchChamberOpenRequested: boolean;
+  postDischargeTerminalVoltageVolts: number;
+  postCoolChamberTemperatureC: number;
+  postPurgeResidualSih4Nf3H2Ppm: number;
+  hvGroundingStickAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferMonolithic3dCfetComplementaryFetMiddleDielectricIsolationMdiSmartCutLayerTransferAndDeepViaToBottomSourceDrainVsdEtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000XraySih4H2TripOverlayMdiAbortAndScbaLotoGuardAssessment {
+  cfetModuleId: string;
+  policyCode: "P421-SEMICONDUCTOR-WAFER-MONOLITHIC-3D-CFET-COMPLEMENTARY-FET-MIDDLE-DIELECTRIC-ISOLATION-MDI-SMART-CUT-LAYER-TRANSFER-AND-DEEP-VIA-TO-BOTTOM-SOURCE-DRAIN-VSD-ETCH-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-XRAY-SIH4-H2-TRIP-OVERLAY-MDI-ABORT-AND-SCBA-LOTO-GUARD";
+  cfetMonolithic3dStackAndSmartCutSafe: boolean;
+  implanterXraySih4OrSmartCutH2Tripped0ms: boolean;
+  cfetTierOverlayMdiBreakdownOrBlisterVoidAborted: boolean;
+  chamberOrEndStationLockedUntilGroundedCooledPurgedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_monolithic_3d_cfet_mdi_smart_cut_transfer_and_deep_vsd_etch"
+    | "trip_implanter_hv_vmb_and_smart_cut_furnace_in_0ms_on_xray_sih4_or_h2_leak"
+    | "abort_cfet_stack_on_tier_overlay_drift_mdi_leakage_or_smart_cut_blister_void"
+    | "lock_cfet_implanter_and_chamber_until_10v_50c_02ppm_and_hv_ground_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferMonolithic3dCfetComplementaryFetMiddleDielectricIsolationMdiSmartCutLayerTransferAndDeepViaToBottomSourceDrainVsdEtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000XraySih4H2TripOverlayMdiAbortAndScbaLotoGuard(
+  input: SemiconductorWaferMonolithic3dCfetComplementaryFetMiddleDielectricIsolationMdiSmartCutLayerTransferAndDeepViaToBottomSourceDrainVsdEtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000XraySih4H2TripOverlayMdiAbortAndScbaLotoGuardInput,
+): SemiconductorWaferMonolithic3dCfetComplementaryFetMiddleDielectricIsolationMdiSmartCutLayerTransferAndDeepViaToBottomSourceDrainVsdEtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000XraySih4H2TripOverlayMdiAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P421-SEMICONDUCTOR-WAFER-MONOLITHIC-3D-CFET-COMPLEMENTARY-FET-MIDDLE-DIELECTRIC-ISOLATION-MDI-SMART-CUT-LAYER-TRANSFER-AND-DEEP-VIA-TO-BOTTOM-SOURCE-DRAIN-VSD-ETCH-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-XRAY-SIH4-H2-TRIP-OVERLAY-MDI-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const implanterXraySih4OrSmartCutH2Tripped0ms =
+    input.implanterCabinetXrayDoseRateMremPerHr >= 0.5 ||
+    input.silaneOrFluorocarbonGasLeakPpm >= 1.0 ||
+    input.smartCutSplitFurnaceHydrogenPpm >= 5000;
+
+  const cfetTierOverlayMdiBreakdownOrBlisterVoidAborted =
+    input.topNfetToBottomPfetOverlayDriftNm >= 1.5 ||
+    input.middleDielectricIsolationMdiLeakageAmpPerCm2 >= 1.0e-7 ||
+    input.smartCutDonorWaferBlisterVoidAreaPct >= 0.2;
+
+  const chamberOrEndStationLockedUntilGroundedCooledPurgedAndScbaLoto =
+    input.endStationOrEtchChamberOpenRequested &&
+    (input.postDischargeTerminalVoltageVolts >= 10.0 ||
+      input.postCoolChamberTemperatureC >= 50.0 ||
+      input.postPurgeResidualSih4Nf3H2Ppm >= 0.2 ||
+      !input.hvGroundingStickAndScbaLotoVerified);
+
+  if (implanterXraySih4OrSmartCutH2Tripped0ms) {
+    return {
+      cfetModuleId: input.cfetModuleId,
+      policyCode,
+      cfetMonolithic3dStackAndSmartCutSafe: false,
+      implanterXraySih4OrSmartCutH2Tripped0ms: true,
+      cfetTierOverlayMdiBreakdownOrBlisterVoidAborted,
+      chamberOrEndStationLockedUntilGroundedCooledPurgedAndScbaLoto,
+      action:
+        "trip_implanter_hv_vmb_and_smart_cut_furnace_in_0ms_on_xray_sih4_or_h2_leak",
+      blockedReason:
+        "CFET_IMPLANTER_XRAY_05MREM_SIH4_NF3_1PPM_OR_SMART_CUT_H2_5000PPM_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (cfetTierOverlayMdiBreakdownOrBlisterVoidAborted) {
+    return {
+      cfetModuleId: input.cfetModuleId,
+      policyCode,
+      cfetMonolithic3dStackAndSmartCutSafe: false,
+      implanterXraySih4OrSmartCutH2Tripped0ms: false,
+      cfetTierOverlayMdiBreakdownOrBlisterVoidAborted: true,
+      chamberOrEndStationLockedUntilGroundedCooledPurgedAndScbaLoto,
+      action:
+        "abort_cfet_stack_on_tier_overlay_drift_mdi_leakage_or_smart_cut_blister_void",
+      blockedReason:
+        "CFET_TOP_BOTTOM_TIER_OVERLAY_15NM_MDI_LEAKAGE_1E7A_OR_SMART_CUT_VOID_02PCT_ABORTED",
+    };
+  }
+
+  if (chamberOrEndStationLockedUntilGroundedCooledPurgedAndScbaLoto) {
+    return {
+      cfetModuleId: input.cfetModuleId,
+      policyCode,
+      cfetMonolithic3dStackAndSmartCutSafe: false,
+      implanterXraySih4OrSmartCutH2Tripped0ms: false,
+      cfetTierOverlayMdiBreakdownOrBlisterVoidAborted: false,
+      chamberOrEndStationLockedUntilGroundedCooledPurgedAndScbaLoto: true,
+      action:
+        "lock_cfet_implanter_and_chamber_until_10v_50c_02ppm_and_hv_ground_scba_loto",
+      blockedReason:
+        "CFET_END_STATION_OR_CHAMBER_LOCKED_UNTIL_10V_50C_02PPM_AND_HV_GROUND_SCBA_LOTO_VERIFIED",
+    };
+  }
+
+  return {
+    cfetModuleId: input.cfetModuleId,
+    policyCode,
+    cfetMonolithic3dStackAndSmartCutSafe: true,
+    implanterXraySih4OrSmartCutH2Tripped0ms: false,
+    cfetTierOverlayMdiBreakdownOrBlisterVoidAborted: false,
+    chamberOrEndStationLockedUntilGroundedCooledPurgedAndScbaLoto: false,
+    action:
+      "allow_verified_monolithic_3d_cfet_mdi_smart_cut_transfer_and_deep_vsd_etch",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8838TrickleIceCandidateNominationPriorityPacingEndOfCandidatesAndRfc8863TimerTaMinimumPacingGuardInput {
+  sessionId: string;
+  candidatePriorityMatchesTypePreferenceFormula: boolean;
+  candidateAddressOrRfc8828MdnsLocalSyntaxValid: boolean;
+  prematureEndOfCandidatesBeforeValidPairInjected: boolean;
+  stunConnectivityCheckTimerTaMs: number;
+  unmaskedRfc1918HostCandidateLeakedUnderRelayOnlyPolicy: boolean;
+  trickleCandidatesInGenerationCount: number;
+  activeChecklistCandidatePairsCount: number;
+  inboundTrickleCandidatesPerSecond: number;
+}
+
+export interface WebrtcSipRfc8838TrickleIceCandidateNominationPriorityPacingEndOfCandidatesAndRfc8863TimerTaMinimumPacingGuardAssessment {
+  sessionId: string;
+  policyCode: "P422-WEBRTC-SIP-RFC8838-TRICKLE-ICE-CANDIDATE-NOMINATION-PRIORITY-PACING-END-OF-CANDIDATES-AND-RFC8863-TIMER-TA-MINIMUM-PACING-GUARD";
+  rfc8838TrickleIceAndRfc8863TimerTaHealthy: boolean;
+  forgedCandidatePriorityMdnsOrPrematureEocDropped0ms: boolean;
+  sub5msTimerTaStunFloodOrRelayOnlyHostIpLeakRejected: boolean;
+  excessiveCandidatePoolChecklistOrTrickleRateClamped: boolean;
+  action:
+    | "allow_verified_rfc8838_trickle_ice_nomination_and_rfc8863_timer_ta_pacing"
+    | "drop_forged_rfc8838_candidate_priority_invalid_mdns_or_premature_end_of_candidates_0ms"
+    | "reject_sub_5ms_rfc8863_timer_ta_stun_flood_or_relay_only_rfc1918_host_ip_leak"
+    | "clamp_rfc8838_candidate_pool_64_checklist_100_pairs_or_20_per_sec_trickle_rate";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8838TrickleIceCandidateNominationPriorityPacingEndOfCandidatesAndRfc8863TimerTaMinimumPacingGuard(
+  input: WebrtcSipRfc8838TrickleIceCandidateNominationPriorityPacingEndOfCandidatesAndRfc8863TimerTaMinimumPacingGuardInput,
+): WebrtcSipRfc8838TrickleIceCandidateNominationPriorityPacingEndOfCandidatesAndRfc8863TimerTaMinimumPacingGuardAssessment {
+  const policyCode =
+    "P422-WEBRTC-SIP-RFC8838-TRICKLE-ICE-CANDIDATE-NOMINATION-PRIORITY-PACING-END-OF-CANDIDATES-AND-RFC8863-TIMER-TA-MINIMUM-PACING-GUARD" as const;
+
+  const forgedCandidatePriorityMdnsOrPrematureEocDropped0ms =
+    !input.candidatePriorityMatchesTypePreferenceFormula ||
+    !input.candidateAddressOrRfc8828MdnsLocalSyntaxValid ||
+    input.prematureEndOfCandidatesBeforeValidPairInjected;
+
+  const sub5msTimerTaStunFloodOrRelayOnlyHostIpLeakRejected =
+    input.stunConnectivityCheckTimerTaMs < 5.0 ||
+    input.unmaskedRfc1918HostCandidateLeakedUnderRelayOnlyPolicy;
+
+  const excessiveCandidatePoolChecklistOrTrickleRateClamped =
+    input.trickleCandidatesInGenerationCount > 64 ||
+    input.activeChecklistCandidatePairsCount > 100 ||
+    input.inboundTrickleCandidatesPerSecond > 20;
+
+  if (forgedCandidatePriorityMdnsOrPrematureEocDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8838TrickleIceAndRfc8863TimerTaHealthy: false,
+      forgedCandidatePriorityMdnsOrPrematureEocDropped0ms: true,
+      sub5msTimerTaStunFloodOrRelayOnlyHostIpLeakRejected,
+      excessiveCandidatePoolChecklistOrTrickleRateClamped,
+      action:
+        "drop_forged_rfc8838_candidate_priority_invalid_mdns_or_premature_end_of_candidates_0ms",
+      blockedReason:
+        "RFC8838_FORGED_CANDIDATE_PRIORITY_INVALID_RFC8828_MDNS_OR_PREMATURE_END_OF_CANDIDATES_DROPPED_0MS",
+    };
+  }
+
+  if (sub5msTimerTaStunFloodOrRelayOnlyHostIpLeakRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8838TrickleIceAndRfc8863TimerTaHealthy: false,
+      forgedCandidatePriorityMdnsOrPrematureEocDropped0ms: false,
+      sub5msTimerTaStunFloodOrRelayOnlyHostIpLeakRejected: true,
+      excessiveCandidatePoolChecklistOrTrickleRateClamped,
+      action:
+        "reject_sub_5ms_rfc8863_timer_ta_stun_flood_or_relay_only_rfc1918_host_ip_leak",
+      blockedReason:
+        "RFC8863_SUB_5MS_TIMER_TA_STUN_AMPLIFICATION_OR_RELAY_ONLY_RFC1918_HOST_IP_LEAK_REJECTED",
+    };
+  }
+
+  if (excessiveCandidatePoolChecklistOrTrickleRateClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8838TrickleIceAndRfc8863TimerTaHealthy: false,
+      forgedCandidatePriorityMdnsOrPrematureEocDropped0ms: false,
+      sub5msTimerTaStunFloodOrRelayOnlyHostIpLeakRejected: false,
+      excessiveCandidatePoolChecklistOrTrickleRateClamped: true,
+      action:
+        "clamp_rfc8838_candidate_pool_64_checklist_100_pairs_or_20_per_sec_trickle_rate",
+      blockedReason:
+        "RFC8838_OVER_64_CANDIDATES_100_CHECKLIST_PAIRS_OR_OVER_20_PER_SEC_TRICKLE_RATE_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8838TrickleIceAndRfc8863TimerTaHealthy: true,
+    forgedCandidatePriorityMdnsOrPrematureEocDropped0ms: false,
+    sub5msTimerTaStunFloodOrRelayOnlyHostIpLeakRejected: false,
+    excessiveCandidatePoolChecklistOrTrickleRateClamped: false,
+    action:
+      "allow_verified_rfc8838_trickle_ice_nomination_and_rfc8863_timer_ta_pacing",
+    blockedReason: "none",
+  };
+}
+
+
 
