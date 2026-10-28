@@ -40655,6 +40655,212 @@ export function evaluateWebrtcSipRfc8859SdpBundleAttributeCategoryMultiplexingAn
   };
 }
 
+export interface SemiconductorWaferStiShallowTrenchIsolationFcvdTsaNh3O3GapfillPyrogenicSteamDensificationAndCeriaCmpSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000TsaH2O2TorchTripOligomerNitrideStopAbortAndScbaLotoGuardInput {
+  sessionId: string;
+  pyrophoricTsaLeakOrPyrogenicTorchUnreactedH2LelAbove25OrO3Above01Ppm: boolean;
+  fcvdForelineSilazaneOligomerDeltaPTorr: number;
+  stiCeriaCmpRemainingSi3n4StopThicknessNm: number;
+  chamberMaintenanceRequested: boolean;
+  steamAnnealFurnaceTempCAtOpen: number;
+  residualO3PpmAtOpen: number;
+  residualNh3PpmAtOpen: number;
+  positivePressureScbaAndThermalLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferStiShallowTrenchIsolationFcvdTsaNh3O3GapfillPyrogenicSteamDensificationAndCeriaCmpSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000TsaH2O2TorchTripOligomerNitrideStopAbortAndScbaLotoGuardAssessment {
+  sessionId: string;
+  policyCode: "P409-SEMICONDUCTOR-WAFER-STI-SHALLOW-TRENCH-ISOLATION-FCVD-TSA-NH3-O3-GAPFILL-PYROGENIC-STEAM-DENSIFICATION-AND-CERIA-CMP-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-TSA-H2-O2-TORCH-TRIP-OLIGOMER-NITRIDE-STOP-ABORT-AND-SCBA-LOTO-GUARD";
+  stiFcvdSteamAnnealAndCeriaCmpSafe: boolean;
+  tsaOrPyrogenicTorchO3Tripped0ms: boolean;
+  forelineOligomerOrCeriaCmpNitrideStopAborted: boolean;
+  stiFurnaceChamberO3Nh3ScbaLotoLocked: boolean;
+  action:
+    | "allow_verified_semiconductor_wafer_sti_fcvd_steam_anneal_and_ceria_cmp"
+    | "trip_sti_fcvd_tsa_ampoule_and_pyrogenic_h2_o2_torch_0ms_on_leak_or_lel"
+    | "abort_sti_fcvd_or_ceria_cmp_on_silazane_foreline_plug_or_si3n4_stop_erosion"
+    | "lock_sti_fcvd_and_steam_furnace_until_sub_50c_o3_nh3_cleared_and_scba_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferStiShallowTrenchIsolationFcvdTsaNh3O3GapfillPyrogenicSteamDensificationAndCeriaCmpSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000TsaH2O2TorchTripOligomerNitrideStopAbortAndScbaLotoGuard(
+  input: SemiconductorWaferStiShallowTrenchIsolationFcvdTsaNh3O3GapfillPyrogenicSteamDensificationAndCeriaCmpSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000TsaH2O2TorchTripOligomerNitrideStopAbortAndScbaLotoGuardInput,
+): SemiconductorWaferStiShallowTrenchIsolationFcvdTsaNh3O3GapfillPyrogenicSteamDensificationAndCeriaCmpSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000TsaH2O2TorchTripOligomerNitrideStopAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P409-SEMICONDUCTOR-WAFER-STI-SHALLOW-TRENCH-ISOLATION-FCVD-TSA-NH3-O3-GAPFILL-PYROGENIC-STEAM-DENSIFICATION-AND-CERIA-CMP-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-TSA-H2-O2-TORCH-TRIP-OLIGOMER-NITRIDE-STOP-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const tsaOrPyrogenicTorchEmergency =
+    input.pyrophoricTsaLeakOrPyrogenicTorchUnreactedH2LelAbove25OrO3Above01Ppm;
+
+  const oligomerPlugOrNitrideStopErosion =
+    input.fcvdForelineSilazaneOligomerDeltaPTorr >= 15 ||
+    input.stiCeriaCmpRemainingSi3n4StopThicknessNm < 45;
+
+  const unsafeChamberMaintenance =
+    input.chamberMaintenanceRequested &&
+    (input.steamAnnealFurnaceTempCAtOpen >= 50 ||
+      input.residualO3PpmAtOpen >= 0.05 ||
+      input.residualNh3PpmAtOpen >= 5 ||
+      !input.positivePressureScbaAndThermalLotoVerified);
+
+  if (tsaOrPyrogenicTorchEmergency) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      stiFcvdSteamAnnealAndCeriaCmpSafe: false,
+      tsaOrPyrogenicTorchO3Tripped0ms: true,
+      forelineOligomerOrCeriaCmpNitrideStopAborted: oligomerPlugOrNitrideStopErosion,
+      stiFurnaceChamberO3Nh3ScbaLotoLocked: true,
+      action:
+        "trip_sti_fcvd_tsa_ampoule_and_pyrogenic_h2_o2_torch_0ms_on_leak_or_lel",
+      blockedReason:
+        "sti_fcvd_pyrophoric_tsa_or_pyrogenic_h2_o2_torch_o3_hazard_isolated_0ms",
+    };
+  }
+
+  if (oligomerPlugOrNitrideStopErosion) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      stiFcvdSteamAnnealAndCeriaCmpSafe: false,
+      tsaOrPyrogenicTorchO3Tripped0ms: false,
+      forelineOligomerOrCeriaCmpNitrideStopAborted: true,
+      stiFurnaceChamberO3Nh3ScbaLotoLocked: unsafeChamberMaintenance,
+      action:
+        "abort_sti_fcvd_or_ceria_cmp_on_silazane_foreline_plug_or_si3n4_stop_erosion",
+      blockedReason:
+        "sti_fcvd_foreline_silazane_oligomer_delta_p_or_ceria_cmp_si3n4_stop_below_45nm",
+    };
+  }
+
+  if (unsafeChamberMaintenance) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      stiFcvdSteamAnnealAndCeriaCmpSafe: false,
+      tsaOrPyrogenicTorchO3Tripped0ms: false,
+      forelineOligomerOrCeriaCmpNitrideStopAborted: false,
+      stiFurnaceChamberO3Nh3ScbaLotoLocked: true,
+      action:
+        "lock_sti_fcvd_and_steam_furnace_until_sub_50c_o3_nh3_cleared_and_scba_loto_verified",
+      blockedReason:
+        "sti_fcvd_steam_furnace_above_50c_or_residual_o3_nh3_scba_loto_unverified",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    stiFcvdSteamAnnealAndCeriaCmpSafe: true,
+    tsaOrPyrogenicTorchO3Tripped0ms: false,
+    forelineOligomerOrCeriaCmpNitrideStopAborted: false,
+    stiFurnaceChamberO3Nh3ScbaLotoLocked: false,
+    action:
+      "allow_verified_semiconductor_wafer_sti_fcvd_steam_anneal_and_ceria_cmp",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8839SdpIceOfferAnswerUfragPwdEntropyIceMismatchAndRfc8445DualIceLiteDeadlockRoleConflictLoopGuardInput {
+  sessionId: string;
+  iceUfragCharLength: number;
+  icePwdCharLength: number;
+  sdpIceMismatchOrDefaultDestinationSpoofDetected: boolean;
+  bothPeersDeclaredIceLiteOrIceLiteSentUseCandidate: boolean;
+  roleConflict487FlipFlopsPerSec: number;
+  iceRestartsPerMinute: number;
+}
+
+export interface WebrtcSipRfc8839SdpIceOfferAnswerUfragPwdEntropyIceMismatchAndRfc8445DualIceLiteDeadlockRoleConflictLoopGuardAssessment {
+  sessionId: string;
+  policyCode: "P410-WEBRTC-SIP-RFC8839-SDP-ICE-OFFER-ANSWER-UFRAG-PWD-ENTROPY-ICE-MISMATCH-AND-RFC8445-DUAL-ICE-LITE-DEADLOCK-ROLE-CONFLICT-LOOP-GUARD";
+  rfc8839AndRfc8445IceOfferAnswerHealthy: boolean;
+  weakUfragPwdEntropyOrIceMismatchDropped0ms: boolean;
+  dualIceLiteDeadlockOrIllegalUseCandidateRejected: boolean;
+  roleConflictLoopOrIceRestartFloodClamped: boolean;
+  action:
+    | "allow_verified_rfc8839_sdp_ice_offer_answer_and_rfc8445_role_negotiation"
+    | "drop_rfc8839_weak_ufrag_pwd_entropy_or_ice_mismatch_spoof_0ms"
+    | "reject_rfc8445_dual_ice_lite_deadlock_or_illegal_ice_lite_use_candidate"
+    | "clamp_rfc8445_487_role_conflict_flip_flop_and_ice_restart_churn";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8839SdpIceOfferAnswerUfragPwdEntropyIceMismatchAndRfc8445DualIceLiteDeadlockRoleConflictLoopGuard(
+  input: WebrtcSipRfc8839SdpIceOfferAnswerUfragPwdEntropyIceMismatchAndRfc8445DualIceLiteDeadlockRoleConflictLoopGuardInput,
+): WebrtcSipRfc8839SdpIceOfferAnswerUfragPwdEntropyIceMismatchAndRfc8445DualIceLiteDeadlockRoleConflictLoopGuardAssessment {
+  const policyCode =
+    "P410-WEBRTC-SIP-RFC8839-SDP-ICE-OFFER-ANSWER-UFRAG-PWD-ENTROPY-ICE-MISMATCH-AND-RFC8445-DUAL-ICE-LITE-DEADLOCK-ROLE-CONFLICT-LOOP-GUARD" as const;
+
+  const entropyOrMismatchViolation =
+    input.iceUfragCharLength < 4 ||
+    input.icePwdCharLength < 22 ||
+    input.sdpIceMismatchOrDefaultDestinationSpoofDetected;
+
+  const dualLiteOrIllegalUseCandidate =
+    input.bothPeersDeclaredIceLiteOrIceLiteSentUseCandidate;
+
+  const roleConflictOrRestartChurn =
+    input.roleConflict487FlipFlopsPerSec > 5 ||
+    input.iceRestartsPerMinute > 4;
+
+  if (entropyOrMismatchViolation) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8839AndRfc8445IceOfferAnswerHealthy: false,
+      weakUfragPwdEntropyOrIceMismatchDropped0ms: true,
+      dualIceLiteDeadlockOrIllegalUseCandidateRejected:
+        dualLiteOrIllegalUseCandidate,
+      roleConflictLoopOrIceRestartFloodClamped: roleConflictOrRestartChurn,
+      action: "drop_rfc8839_weak_ufrag_pwd_entropy_or_ice_mismatch_spoof_0ms",
+      blockedReason:
+        "rfc8839_ice_ufrag_below_4_chars_or_ice_pwd_below_22_chars_or_ice_mismatch_dropped_0ms",
+    };
+  }
+
+  if (dualLiteOrIllegalUseCandidate) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8839AndRfc8445IceOfferAnswerHealthy: false,
+      weakUfragPwdEntropyOrIceMismatchDropped0ms: false,
+      dualIceLiteDeadlockOrIllegalUseCandidateRejected: true,
+      roleConflictLoopOrIceRestartFloodClamped: roleConflictOrRestartChurn,
+      action:
+        "reject_rfc8445_dual_ice_lite_deadlock_or_illegal_ice_lite_use_candidate",
+      blockedReason:
+        "rfc8445_dual_ice_lite_deadlock_or_ice_lite_controlling_use_candidate_rejected",
+    };
+  }
+
+  if (roleConflictOrRestartChurn) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8839AndRfc8445IceOfferAnswerHealthy: false,
+      weakUfragPwdEntropyOrIceMismatchDropped0ms: false,
+      dualIceLiteDeadlockOrIllegalUseCandidateRejected: false,
+      roleConflictLoopOrIceRestartFloodClamped: true,
+      action:
+        "clamp_rfc8445_487_role_conflict_flip_flop_and_ice_restart_churn",
+      blockedReason:
+        "rfc8445_487_role_conflict_loop_or_ice_restart_churn_exceeded_clamped",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8839AndRfc8445IceOfferAnswerHealthy: true,
+    weakUfragPwdEntropyOrIceMismatchDropped0ms: false,
+    dualIceLiteDeadlockOrIllegalUseCandidateRejected: false,
+    roleConflictLoopOrIceRestartFloodClamped: false,
+    action:
+      "allow_verified_rfc8839_sdp_ice_offer_answer_and_rfc8445_role_negotiation",
+    blockedReason: "none",
+  };
+}
+
 
 
 
