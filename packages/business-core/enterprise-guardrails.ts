@@ -39152,6 +39152,218 @@ export function evaluateWebrtcSipRfc8831Rfc8832DataChannelSctpOverDtlsAndRfc6525
   };
 }
 
+// ============================================================================
+// Stage 201 (P395-P396): 405-Guardrail Milestone
+// P395: Semiconductor Wafer Cryogenic Spin-Qubit / Superconducting Transmon (Al/Nb/Ta Josephson Junction Shadow Evaporation & HF Strip) & 10 mK 3He/4He Dilution Refrigerator Cold-Trap Safety Guard
+// P396: WebRTC & SIP RFC 8841 (SDP SCTP-over-DTLS a=sctp-port & a=max-message-size) & RFC 9260 (SCTP Verification Tag VTag, State-Cookie HMAC & ASCONF Address Hijack) Security Guard
+// ============================================================================
+
+export interface SemiconductorWaferCryogenicQuantumQubitJosephsonJunctionShadowEvaporationAnd10mk3He4HeDilutionRefrigeratorGuardInput {
+  qubitEvaporatorOrCryostatId: string;
+  he3He4CirculationPressureMbar: number;
+  outerVacuumChamberPressureMbar: number;
+  ebeamCrucibleCoolingWaterLossOrOverpower: boolean;
+  anhydrousHfNativeOxideStripLeakPpm: number;
+  mixingChamberStageTemperatureKelvin: number;
+  cryostatRoomOxygenPercent: number;
+  requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferCryogenicQuantumQubitJosephsonJunctionShadowEvaporationAnd10mk3He4HeDilutionRefrigeratorGuardResult {
+  policyCode: "P395-SEMICONDUCTOR-WAFER-CRYOGENIC-QUANTUM-QUBIT-JOSEPHSON-JUNCTION-SHADOW-EVAPORATION-AND-10MK-3HE-4HE-DILUTION-REFRIGERATOR-SEMIS2-SEMIS6-NFPA318-NFPA55-CGAP1-OSHA1910119-OSHA19101000-COLD-TRAP-OVERPRESSURE-OR-OVC-LOSS-DUMP-RELIEF-EBEAM-CRUCIBLE-OR-HF-STRIP-LEAK-ISOLATION-AND-WARMUP-O2-SCBA-LOTO-GUARD";
+  qubitEvaporatorOrCryostatId: string;
+  cryogenicQubitEvaporationAndDilutionFridgeSafe: boolean;
+  he3He4OverpressureOrOvcLossDumpReliefTripped0ms: boolean;
+  ebeamHvCrucibleOrHfVaporStripIsolated: boolean;
+  cryostatWarmupAndO2DeficiencyScbaLotoRequired: boolean;
+  action:
+    | "allow_cryogenic_qubit_josephson_shadow_evaporation_and_10mk_dilution_fridge_cooldown"
+    | "open_he3_recovery_dump_tank_relief_trip_roots_pump_and_quench_still_heaters_in_0ms"
+    | "trip_10kv_ebeam_gun_isolate_hf_o2_mfc_and_route_to_alkaline_scrubber"
+    | "lock_cryostat_vacuum_cans_until_stage_above_275k_room_o2_above_19_5pct_scba_and_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferCryogenicQuantumQubitJosephsonJunctionShadowEvaporationAnd10mk3He4HeDilutionRefrigeratorSemiS2SemiS6Nfpa318Nfpa55CgaP1Osha1910119Osha19101000ColdTrapOverpressureOrOvcLossDumpReliefEbeamCrucibleOrHfStripLeakIsolationAndWarmupO2ScbaLotoGuard(
+  input: SemiconductorWaferCryogenicQuantumQubitJosephsonJunctionShadowEvaporationAnd10mk3He4HeDilutionRefrigeratorGuardInput,
+): SemiconductorWaferCryogenicQuantumQubitJosephsonJunctionShadowEvaporationAnd10mk3He4HeDilutionRefrigeratorGuardResult {
+  const policyCode =
+    "P395-SEMICONDUCTOR-WAFER-CRYOGENIC-QUANTUM-QUBIT-JOSEPHSON-JUNCTION-SHADOW-EVAPORATION-AND-10MK-3HE-4HE-DILUTION-REFRIGERATOR-SEMIS2-SEMIS6-NFPA318-NFPA55-CGAP1-OSHA1910119-OSHA19101000-COLD-TRAP-OVERPRESSURE-OR-OVC-LOSS-DUMP-RELIEF-EBEAM-CRUCIBLE-OR-HF-STRIP-LEAK-ISOLATION-AND-WARMUP-O2-SCBA-LOTO-GUARD" as const;
+
+  const coldTrapOrOvcHazard =
+    input.he3He4CirculationPressureMbar > 1800 ||
+    input.outerVacuumChamberPressureMbar >= 0.01;
+
+  const ebeamOrHfStripHazard =
+    input.ebeamCrucibleCoolingWaterLossOrOverpower ||
+    input.anhydrousHfNativeOxideStripLeakPpm >= 0.5;
+
+  const warmupOrO2DeficiencyHazard =
+    input.mixingChamberStageTemperatureKelvin < 275 ||
+    input.cryostatRoomOxygenPercent < 19.5;
+
+  if (coldTrapOrOvcHazard) {
+    return {
+      policyCode,
+      qubitEvaporatorOrCryostatId: input.qubitEvaporatorOrCryostatId,
+      cryogenicQubitEvaporationAndDilutionFridgeSafe: false,
+      he3He4OverpressureOrOvcLossDumpReliefTripped0ms: true,
+      ebeamHvCrucibleOrHfVaporStripIsolated: ebeamOrHfStripHazard,
+      cryostatWarmupAndO2DeficiencyScbaLotoRequired: warmupOrO2DeficiencyHazard,
+      action:
+        "open_he3_recovery_dump_tank_relief_trip_roots_pump_and_quench_still_heaters_in_0ms",
+      blockedReason:
+        "he3_he4_cold_trap_blocked_over_1800mbar_or_ovc_vacuum_loss_over_0_01mbar_dump_relief_0ms",
+    };
+  }
+
+  if (ebeamOrHfStripHazard) {
+    return {
+      policyCode,
+      qubitEvaporatorOrCryostatId: input.qubitEvaporatorOrCryostatId,
+      cryogenicQubitEvaporationAndDilutionFridgeSafe: false,
+      he3He4OverpressureOrOvcLossDumpReliefTripped0ms: false,
+      ebeamHvCrucibleOrHfVaporStripIsolated: true,
+      cryostatWarmupAndO2DeficiencyScbaLotoRequired: warmupOrO2DeficiencyHazard,
+      action:
+        "trip_10kv_ebeam_gun_isolate_hf_o2_mfc_and_route_to_alkaline_scrubber",
+      blockedReason:
+        "shadow_evaporation_10kv_ebeam_cooling_loss_or_anhydrous_hf_strip_leak_over_0_5ppm_isolated",
+    };
+  }
+
+  if (warmupOrO2DeficiencyHazard) {
+    return {
+      policyCode,
+      qubitEvaporatorOrCryostatId: input.qubitEvaporatorOrCryostatId,
+      cryogenicQubitEvaporationAndDilutionFridgeSafe: false,
+      he3He4OverpressureOrOvcLossDumpReliefTripped0ms: false,
+      ebeamHvCrucibleOrHfVaporStripIsolated: false,
+      cryostatWarmupAndO2DeficiencyScbaLotoRequired: true,
+      action:
+        "lock_cryostat_vacuum_cans_until_stage_above_275k_room_o2_above_19_5pct_scba_and_loto",
+      blockedReason:
+        "dilution_fridge_stage_below_275k_or_room_o2_below_19_5pct_asphyxiation_hazard_scba_loto_locked",
+    };
+  }
+
+  return {
+    policyCode,
+    qubitEvaporatorOrCryostatId: input.qubitEvaporatorOrCryostatId,
+    cryogenicQubitEvaporationAndDilutionFridgeSafe: true,
+    he3He4OverpressureOrOvcLossDumpReliefTripped0ms: false,
+    ebeamHvCrucibleOrHfVaporStripIsolated: false,
+    cryostatWarmupAndO2DeficiencyScbaLotoRequired: false,
+    action:
+      "allow_cryogenic_qubit_josephson_shadow_evaporation_and_10mk_dilution_fridge_cooldown",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8841SdpSctpPortMaxMessageSizeAndRfc9260SctpVtagStateCookieGuardInput {
+  sessionId: string;
+  sctpVerificationTagZeroOrMismatched: boolean;
+  initAckStateCookieHmacInvalidOrExpired: boolean;
+  sdpSctpPortValue: number;
+  sdpMaxMessageSizeBytes: number;
+  unauthenticatedAsconfAddressReconfigDetected: boolean;
+  sctpHeartbeatRatePerSec: number;
+}
+
+export interface WebrtcSipRfc8841SdpSctpPortMaxMessageSizeAndRfc9260SctpVtagStateCookieGuardResult {
+  policyCode: "P396-WEBRTC-SIP-RFC8841-SDP-SCTP-PORT-MAX-MESSAGE-SIZE-AND-RFC9260-SCTP-VTAG-STATE-COOKIE-HMAC-VERIFICATION-ASCONF-ADDRESS-HIJACK-AND-HEARTBEAT-FLOOD-GUARD";
+  sessionId: string;
+  rfc8841AndRfc9260SctpHealthy: boolean;
+  vtagMismatchOrStateCookieTamperingDropped0ms: boolean;
+  invalidSctpPortOrMaxMessageSizeRejected: boolean;
+  asconfAddressHijackOrHeartbeatFloodClamped: boolean;
+  action:
+    | "accept_rfc8841_sdp_sctp_port_and_rfc9260_vtag_authenticated_association"
+    | "drop_zero_or_mismatched_sctp_vtag_or_invalid_state_cookie_hmac_in_0ms"
+    | "reject_invalid_rfc8841_sctp_port_or_unbounded_max_message_size_sdp"
+    | "block_unauthenticated_rfc5061_asconf_ip_hijack_and_clamp_heartbeat_flood";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8841SdpSctpPortMaxMessageSizeAndRfc9260SctpVtagStateCookieHmacVerificationAsconfAddressHijackAndHeartbeatFloodGuard(
+  input: WebrtcSipRfc8841SdpSctpPortMaxMessageSizeAndRfc9260SctpVtagStateCookieGuardInput,
+): WebrtcSipRfc8841SdpSctpPortMaxMessageSizeAndRfc9260SctpVtagStateCookieGuardResult {
+  const policyCode =
+    "P396-WEBRTC-SIP-RFC8841-SDP-SCTP-PORT-MAX-MESSAGE-SIZE-AND-RFC9260-SCTP-VTAG-STATE-COOKIE-HMAC-VERIFICATION-ASCONF-ADDRESS-HIJACK-AND-HEARTBEAT-FLOOD-GUARD" as const;
+
+  const vtagOrCookieHazard =
+    input.sctpVerificationTagZeroOrMismatched ||
+    input.initAckStateCookieHmacInvalidOrExpired;
+
+  const sdpPortOrMaxMsgHazard =
+    input.sdpSctpPortValue < 1 ||
+    input.sdpSctpPortValue > 65535 ||
+    input.sdpMaxMessageSizeBytes <= 0 ||
+    input.sdpMaxMessageSizeBytes > 262144;
+
+  const asconfOrHeartbeatHazard =
+    input.unauthenticatedAsconfAddressReconfigDetected ||
+    input.sctpHeartbeatRatePerSec > 20;
+
+  if (vtagOrCookieHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8841AndRfc9260SctpHealthy: false,
+      vtagMismatchOrStateCookieTamperingDropped0ms: true,
+      invalidSctpPortOrMaxMessageSizeRejected: sdpPortOrMaxMsgHazard,
+      asconfAddressHijackOrHeartbeatFloodClamped: asconfOrHeartbeatHazard,
+      action:
+        "drop_zero_or_mismatched_sctp_vtag_or_invalid_state_cookie_hmac_in_0ms",
+      blockedReason:
+        "rfc9260_sctp_vtag_zero_or_mismatch_blind_injection_or_state_cookie_hmac_invalid_dropped_0ms",
+    };
+  }
+
+  if (sdpPortOrMaxMsgHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8841AndRfc9260SctpHealthy: false,
+      vtagMismatchOrStateCookieTamperingDropped0ms: false,
+      invalidSctpPortOrMaxMessageSizeRejected: true,
+      asconfAddressHijackOrHeartbeatFloodClamped: asconfOrHeartbeatHazard,
+      action:
+        "reject_invalid_rfc8841_sctp_port_or_unbounded_max_message_size_sdp",
+      blockedReason:
+        "rfc8841_sctp_port_out_of_range_or_max_message_size_zero_or_over_256kb_rejected",
+    };
+  }
+
+  if (asconfOrHeartbeatHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8841AndRfc9260SctpHealthy: false,
+      vtagMismatchOrStateCookieTamperingDropped0ms: false,
+      invalidSctpPortOrMaxMessageSizeRejected: false,
+      asconfAddressHijackOrHeartbeatFloodClamped: true,
+      action:
+        "block_unauthenticated_rfc5061_asconf_ip_hijack_and_clamp_heartbeat_flood",
+      blockedReason:
+        "rfc5061_unauthenticated_asconf_address_reconfig_or_heartbeat_over_20_per_sec_blocked",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8841AndRfc9260SctpHealthy: true,
+    vtagMismatchOrStateCookieTamperingDropped0ms: false,
+    invalidSctpPortOrMaxMessageSizeRejected: false,
+    asconfAddressHijackOrHeartbeatFloodClamped: false,
+    action:
+      "accept_rfc8841_sdp_sctp_port_and_rfc9260_vtag_authenticated_association",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
