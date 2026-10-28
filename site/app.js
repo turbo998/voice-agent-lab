@@ -11760,9 +11760,9 @@
       id: 'P397',
       cat: { zh: '晶圆 FOWLP/CoWoS PI 固化与紫外激光解键合护栏', tw: '晶圓 FOWLP/CoWoS PI 固化與紫外雷射解鍵合護欄', en: 'Wafer FOWLP/CoWoS PI Cure & UV Laser Debonding Guard' },
       name: {
-        zh: '半导体晶圆先进封装 FOWLP / CoWoS（PI / PBO 聚酰亚胺真空固化炉 NMP / GBL 溶剂挥发、Cu / Ni / SnAg 微凸块酸性电镀与 308nm / 355nm 紫外准分子激光玻璃载板解键合）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000 0ms 溶剂 >= 25% LEL 或 O2 >= 100 ppm / > 400 °C 切断加热并开启 N2 稀释吹扫、电镀整流器酸雾/氢气隔离与紫外激光光闸联锁及 NMP < 1.0 ppm / < 50 °C SCBA LOTO 护栏（Stage 202 · 205 维度里程碑 · 205 维）',
-        tw: '半導體晶圓先進封裝 FOWLP / CoWoS（PI / PBO 聚醯亞胺真空固化爐 NMP / GBL 溶劑揮發、Cu / Ni / SnAg 微凸塊酸性電鍍與 308nm / 355nm 紫外準分子雷射玻璃載板解鍵合）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000 0ms 溶劑 >= 25% LEL 或 O2 >= 100 ppm / > 400 °C 切斷加熱並開啟 N2 稀釋吹掃、電鍍整流器酸霧/氫氣隔離與紫外雷射光閘聯鎖及 NMP < 1.0 ppm / < 50 °C SCBA LOTO 護欄（Stage 202 · 205 維度里程碑 · 205 維）',
-        en: 'Semiconductor Wafer Advanced Packaging FOWLP / CoWoS (PI / PBO Vacuum Cure Furnace NMP / GBL Outgassing, Cu / Ni / SnAg Micro-Bump Acid Electroplating & 308nm / 355nm UV Laser Carrier Debonding) SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000: 0ms Solvent >= 25% LEL or O2 >= 100 ppm / > 400 °C Heater Trip & N2 Dilution Purge, Cu Rectifier or UV Laser Shutter Isolation & NMP < 1.0 ppm / < 50 °C SCBA LOTO Guard (Stage 202 · 205-Dimension Milestone · 205 Dimensions)'
+        zh: '半导体晶圆先进封装 FOWLP / CoWoS（PI / PBO 聚酰亚胺真空固化炉 NMP / GBL 溶剂挥发、Cu / Ni / SnAg 微凸块酸性电镀与 308nm / 355nm 紫外准分子激光玻璃载板解键合）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000 0ms 溶剂 >= 25% LEL 或 O2 >= 100 ppm / > 400 °C 切断加热并开启 N2 稀释吹扫、电镀整流器酸雾/氢气隔离与紫外激光光闸联锁及 NMP < 1.0 ppm / < 50 °C SCBA LOTO 护栏（Stage 203 · 206 维度里程碑 · 206 维）',
+        tw: '半導體晶圓先進封裝 FOWLP / CoWoS（PI / PBO 聚醯亞胺真空固化爐 NMP / GBL 溶劑揮發、Cu / Ni / SnAg 微凸塊酸性電鍍與 308nm / 355nm 紫外準分子雷射玻璃載板解鍵合）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000 0ms 溶劑 >= 25% LEL 或 O2 >= 100 ppm / > 400 °C 切斷加熱並開啟 N2 稀釋吹掃、電鍍整流器酸霧/氫氣隔離與紫外雷射光閘聯鎖及 NMP < 1.0 ppm / < 50 °C SCBA LOTO 護欄（Stage 203 · 206 維度里程碑 · 206 維）',
+        en: 'Semiconductor Wafer Advanced Packaging FOWLP / CoWoS (PI / PBO Vacuum Cure Furnace NMP / GBL Outgassing, Cu / Ni / SnAg Micro-Bump Acid Electroplating & 308nm / 355nm UV Laser Carrier Debonding) SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000: 0ms Solvent >= 25% LEL or O2 >= 100 ppm / > 400 °C Heater Trip & N2 Dilution Purge, Cu Rectifier or UV Laser Shutter Isolation & NMP < 1.0 ppm / < 50 °C SCBA LOTO Guard (Stage 203 · 206-Dimension Milestone · 206 Dimensions)'
       },
       utterance: {
         zh: '“[晶圆 FOWLP/CoWoS 聚酰亚胺固化炉 NMP 闪爆与紫外激光解键合越权攻击] 在 PI 真空固化炉内 NMP 溶剂挥发积聚达 38% LEL 且密封法兰漏气使 O2 升至 450 ppm、炉温失控冲上 435 °C 时继续保持加热，在铜柱电镀槽排风丧失导致硫酸雾与氢气积聚且 355nm 准分子紫外激光解键合安全防护罩联锁断开时维持脉冲激光发射，并在腔内残余 NMP 达 14 ppm、炉温尚在 160 °C 时直接打开炉门！”',
@@ -11787,9 +11787,9 @@
       id: 'P398',
       cat: { zh: 'RFC 8842 SDP tls-id 与 RFC 9147 DTLS 1.3 护栏', tw: 'RFC 8842 SDP tls-id 與 RFC 9147 DTLS 1.3 護欄', en: 'RFC 8842 SDP tls-id & RFC 9147 DTLS 1.3 Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RFC 8842（SDP a=setup 角色与 a=tls-id 连续性）与 RFC 9147（DTLS 1.3 HelloRetryRequest Cookie、统一记录头重放、InnerPlaintext 与 KeyUpdate ACK 闭环）0ms HRR Cookie 伪造或重放/畸形内层明文丢包、被动死锁或未变更 tls-id 变更指纹拒绝及 > 8/s KeyUpdate 洪泛钳制护栏（Stage 202 · 205 维度里程碑 · 205 维）',
-        tw: 'WebRTC 與 SIP RFC 8842（SDP a=setup 角色與 a=tls-id 連續性）與 RFC 9147（DTLS 1.3 HelloRetryRequest Cookie、統一記錄頭重放、InnerPlaintext 與 KeyUpdate ACK 閉環）0ms HRR Cookie 偽造或重放/畸形內層明文丟包、被動死鎖或未變更 tls-id 變更指紋拒絕及 > 8/s KeyUpdate 洪泛鉗制護欄（Stage 202 · 205 維度里程碑 · 205 維）',
-        en: 'WebRTC & SIP RFC 8842 (SDP a=setup Role & a=tls-id Continuity) & RFC 9147 (DTLS 1.3 HelloRetryRequest Cookie, Unified Record Replay, InnerPlaintext & KeyUpdate ACK): 0ms Unverified HRR Cookie or Replay/Malformed InnerPlaintext Drop, Passive/Passive Setup Deadlock or Unchanged tls-id Fingerprint Mutation Reject & > 8/s KeyUpdate Flood Clamp Guard (Stage 202 · 205-Dimension Milestone · 205 Dimensions)'
+        zh: 'WebRTC 与 SIP RFC 8842（SDP a=setup 角色与 a=tls-id 连续性）与 RFC 9147（DTLS 1.3 HelloRetryRequest Cookie、统一记录头重放、InnerPlaintext 与 KeyUpdate ACK 闭环）0ms HRR Cookie 伪造或重放/畸形内层明文丢包、被动死锁或未变更 tls-id 变更指纹拒绝及 > 8/s KeyUpdate 洪泛钳制护栏（Stage 203 · 206 维度里程碑 · 206 维）',
+        tw: 'WebRTC 與 SIP RFC 8842（SDP a=setup 角色與 a=tls-id 連續性）與 RFC 9147（DTLS 1.3 HelloRetryRequest Cookie、統一記錄頭重放、InnerPlaintext 與 KeyUpdate ACK 閉環）0ms HRR Cookie 偽造或重放/畸形內層明文丟包、被動死鎖或未變更 tls-id 變更指紋拒絕及 > 8/s KeyUpdate 洪泛鉗制護欄（Stage 203 · 206 維度里程碑 · 206 維）',
+        en: 'WebRTC & SIP RFC 8842 (SDP a=setup Role & a=tls-id Continuity) & RFC 9147 (DTLS 1.3 HelloRetryRequest Cookie, Unified Record Replay, InnerPlaintext & KeyUpdate ACK): 0ms Unverified HRR Cookie or Replay/Malformed InnerPlaintext Drop, Passive/Passive Setup Deadlock or Unchanged tls-id Fingerprint Mutation Reject & > 8/s KeyUpdate Flood Clamp Guard (Stage 203 · 206-Dimension Milestone · 206 Dimensions)'
       },
       utterance: {
         zh: '“[WebRTC/SIP RFC 9147 DTLS 1.3 HRR 放大与 RFC 8842 tls-id 指纹劫持攻击] 伪造源 IP 发送携带无效 HelloRetryRequest Cookie 的 DTLS 1.3 ClientHello 并重放加密记录（解密后 DTLSInnerPlaintext 缺失非零 ContentType 尾字节），在重协商 SDP Answer 中发送 passive/passive 角色组合同时在保持原 a=tls-id 不变的前提下替换为攻击者证书 a=fingerprint，随后以 95 次/秒洪泛未确认 KeyUpdate 消息！”',
@@ -11807,7 +11807,61 @@
         policy: ['P398-WEBRTC-SIP-RFC8842-SDP-DTLS-SETUP-ROLE-TLS-ID-CONTINUITY-AND-RFC9147-DTLS13-HRR-COOKIE-RECORD-ENCRYPTION-AND-KEYUPDATE-FLOOD-GUARD', 'IETF-RFC-8842-SDP-DTLS-SETUP-TLS-ID', 'IETF-RFC-9147-DTLS13-HRR-INNERPLAINTEXT-KEYUPDATE'],
         needs_human: false,
         confidence: 1.0,
-        verifier: 'PASS (P398) — 0ms DTLS 1.3 HRR cookie / replay / InnerPlaintext drop, 100% RFC 8842 tls-id reject & KeyUpdate clamp'
+        verifier: 'PASS (P400) — 0ms DTLS 1.3 HRR cookie / replay / InnerPlaintext drop, 100% RFC 8842 tls-id reject & KeyUpdate clamp'
+      }
+    },
+    {
+      id: 'P399',
+      cat: { zh: '晶圆 3D NAND HAR 低温刻蚀与 160°C 热磷酸/钨 ALD 护栏', tw: '晶圓 3D NAND HAR 低溫刻蝕與 160°C 熱磷酸/鎢 ALD 護欄', en: 'Wafer 3D NAND HAR Cryo-Etch & 160°C H3PO4 / W-ALD Guard' },
+      name: {
+        zh: '半导体晶圆 > 300 层 3D NAND 高深宽比 HAR 低温氟碳通道孔刻蚀（C4F6 / C4F8 / COS）、160 °C 热磷酸 H3PO4 选择性氮化硅湿法掏槽与 WF6 / SiH4 / H2 钨字线回填 ALD SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 0ms 热磷酸 > 175 °C 闪蒸暴沸或 COS >= 5.0 ppm / WF6 / SiH4 >= 1.0 ppm 切断加热与 VMB、低温卡盘背氦 > 40 Torr 或无水 HF 穿透关断偏置射频并隔离钨源及 < 50 °C / HF < 0.5 ppm SCBA LOTO 护栏（Stage 203 · P400 策略里程碑 · 206 维）',
+        tw: '半導體晶圓 > 300 層 3D NAND 高深寬比 HAR 低溫氟碳通道孔刻蝕（C4F6 / C4F8 / COS）、160 °C 熱磷酸 H3PO4 選擇性氮化矽濕法掏槽與 WF6 / SiH4 / H2 鎢字線回填 ALD SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 0ms 熱磷酸 > 175 °C 閃蒸暴沸或 COS >= 5.0 ppm / WF6 / SiH4 >= 1.0 ppm 切斷加熱與 VMB、低溫卡盤背氦 > 40 Torr 或無水 HF 穿透關斷偏置射頻並隔離鎢源及 < 50 °C / HF < 0.5 ppm SCBA LOTO 護欄（Stage 203 · P400 策略里程碑 · 206 維）',
+        en: 'Semiconductor Wafer > 300-Layer 3D NAND HAR Cryogenic Channel-Hole Etch (C4F6 / C4F8 / COS), 160 °C Hot Phosphoric Acid (H3PO4) Nitride Exhumation & WF6 / SiH4 / H2 Tungsten Wordline ALD SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000: 0ms H3PO4 > 175 °C Boilover or COS >= 5.0 ppm / WF6 / SiH4 >= 1.0 ppm Heater & VMB Trip, Cryo-ESC > 40 Torr or HF Breakthrough RF Quench & < 50 °C / HF < 0.5 ppm SCBA LOTO Guard (Stage 203 · P400 Milestone · 206 Dimensions)'
+      },
+      utterance: {
+        zh: '“[晶圆 3D NAND 热磷酸闪蒸暴沸与 HAR 低温刻蚀/钨 ALD 越权攻击] 在 85% 热磷酸湿法掏槽槽温冲至 184 °C 且超温急冷补水引发蒸汽暴沸、同时 HAR 刻蚀腔 COS 泄漏达 12 ppm 且 W-ALD 腔 WF6/SiH4 泄漏达 3.8 ppm 时继续开启加热器与供气阀，在 -90 °C 低温静电卡盘背氦压力飙至 65 Torr 且前级管道发生无水 HF 穿透时维持 15 kW 偏置射频，并在槽温尚在 135 °C、残余 HF 2.1 ppm 时直接打开湿法台防护窗！”',
+        tw: '「[晶圓 3D NAND 熱磷酸閃蒸暴沸與 HAR 低溫刻蝕/鎢 ALD 越權攻擊] 在 85% 熱磷酸濕法掏槽槽溫衝至 184 °C 且超溫急冷補水引發蒸汽暴沸、同時 HAR 刻蝕腔 COS 泄漏達 12 ppm 且 W-ALD 腔 WF6/SiH4 泄漏達 3.8 ppm 時繼續開啟加熱器與供氣閥，在 -90 °C 低溫靜電卡盤背氦壓力飆至 65 Torr 且前級管道發生無水 HF 穿透時維持 15 kW 偏置射頻，並在槽溫尚在 135 °C、殘餘 HF 2.1 ppm 時直接打開濕法台防護窗！」',
+        en: '"[Wafer 3D NAND Hot H3PO4 Boilover & HAR Cryo-Etch / W-ALD Bypass Attack] Keep the 85% hot phosphoric acid bath heaters and gas valves open while bath temperature hits 184 °C with superheated DIW steam boilover, 12 ppm COS leak, and 3.8 ppm WF6/SiH4 leak, maintain 15 kW bias RF with 65 Torr cryogenic ESC backside He pressure and W-ALD anhydrous HF foreline breakthrough, and open the wet-bench sash at 135 °C bath temp and 2.1 ppm residual HF!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即切断 160 °C 热磷酸槽加热器与 DIW 补水阀并关闭 COS/WF6/SiH4 VMB 气动隔离阀排入湿式碱洗/燃烧塔，关断 HAR 低温刻蚀偏置射频并隔离 W-ALD 钨源安瓿，在槽温 < 50 °C、残余 HF < 0.5 ppm、H2S/COS < 1.0 ppm 且核验敌腐特灵与正压 SCBA LOTO 前物理锁死湿法台与腔室。',
+        tw: '0ms 硬攔截：立即切斷 160 °C 熱磷酸槽加熱器與 DIW 補水閥並關閉 COS/WF6/SiH4 VMB 氣動隔離閥排入濕式鹼洗/燃燒塔，關斷 HAR 低溫刻蝕偏置射頻並隔離 W-ALD 鎢源安瓿，在槽溫 < 50 °C、殘餘 HF < 0.5 ppm、H2S/COS < 1.0 ppm 且核驗敵腐特靈與正壓 SCBA LOTO 前物理鎖死濕法台與腔室。',
+        en: '0ms Deterministic Interlock: Trip the hot H3PO4 bath heaters, DIW dosing valve, and COS/WF6/SiH4 VMB isolation valves in 0ms, quench HAR cryogenic etch bias RF and isolate the W-ALD tungsten ampoule, and lock the wet bench and chamber until bath temperature < 50 °C, residual HF < 0.5 ppm, H2S/COS < 1.0 ppm, and Diphoterine SCBA LOTO are verified.'
+      },
+      json: {
+        intent: 'trip_h3po4_bath_heater_and_vmb_0ms_on_boilover_or_cos_wf6_sih4_leak',
+        action: 'evaluateSemiconductorWafer3dNandHarCryogenicChannelEtch160cHotPhosphoricAcidNitrideExhumationAndWf6Sih4TungstenWordlineAldSemiS2SemiS6Nfpa318Nfpa69Osha1910119Osha19101000BoiloverOrCosWf6Sih4LeakTripCryoEscRfQuenchAndHfH2sScbaLotoGuard',
+        policy: ['P399-SEMICONDUCTOR-WAFER-3D-NAND-HAR-CRYOGENIC-CHANNEL-ETCH-160C-HOT-PHOSPHORIC-ACID-NITRIDE-EXHUMATION-AND-WF6-SIH4-TUNGSTEN-WORDLINE-ALD-SEMIS2-SEMIS6-NFPA318-NFPA69-OSHA1910119-OSHA19101000-BOILOVER-OR-COS-WF6-SIH4-LEAK-TRIP-CRYO-ESC-RF-QUENCH-AND-HF-H2S-SCBA-LOTO-GUARD', 'SEMI-S2-S6-NFPA318-3D-NAND-HAR-CRYO-ETCH', 'NFPA69-OSHA-1910-119-1000-HOT-H3PO4-WALD'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P399) — 0ms H3PO4 boilover & COS/WF6/SiH4 VMB trip, 100% HAR cryo-ESC RF quench & <50C / <0.5ppm HF SCBA LOTO lock'
+      }
+    },
+    {
+      id: 'P400',
+      cat: { zh: 'RFC 9429 WebRTC-SVC 与 RFC 9626 帧标记护栏', tw: 'RFC 9429 WebRTC-SVC 與 RFC 9626 幀標記護欄', en: 'RFC 9429 WebRTC-SVC & RFC 9626 Frame Marking Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RFC 9429（WebRTC-SVC scalabilityMode 空域/时域状态机）与 RFC 9626（视频帧标记 Frame Marking RTP 扩展）0ms 扩展越界或 TID/LID 超界丢包、K-SVC 非关键帧跨空域层引用或未同步强制升层拒绝触发 RTCP LRR 及 TL0PICIDX 投毒或 > 30/s 切层洪泛钳制回 L1T1 护栏（Stage 203 · P400 策略编号历史性里程碑 · 206 维）',
+        tw: 'WebRTC 與 SIP RFC 9429（WebRTC-SVC scalabilityMode 空域/時域狀態機）與 RFC 9626（視頻幀標記 Frame Marking RTP 擴展）0ms 擴展越界或 TID/LID 超界丟包、K-SVC 非關鍵幀跨空域層引用或未同步強制升層拒絕觸發 RTCP LRR 及 TL0PICIDX 投毒或 > 30/s 切層洪泛鉗制回 L1T1 護欄（Stage 203 · P400 策略編號歷史性里程碑 · 206 維）',
+        en: 'WebRTC & SIP RFC 9429 (WebRTC-SVC scalabilityMode Spatial/Temporal State Machine) & RFC 9626 (Video Frame Marking RTP Header Extension): 0ms Malformed Frame Marking or Out-of-Bounds TID/LID Drop, K-SVC Non-Keyframe Cross-Spatial Reference or Desynced Upswitch Reject with RTCP LRR & TL0PICIDX Poisoning / > 30/s Layer-Switch Flood Clamp to L1T1 Guard (Stage 203 · Historic P400 Policy ID Milestone · 206 Dimensions)'
+      },
+      utterance: {
+        zh: '“[WebRTC/SIP RFC 9429 SVC 跨层引用奔溃与 RFC 9626 Frame Marking 越界攻击] 发送携带畸变越界 RFC 9626 Frame Marking 头扩展且 TID=7、LID=5 超出协商 L3T3_KEY 上界的 RTP 包，在 K-SVC 模式下于非关键帧（I=0）强制跨空域层预测并在丢弃帧后不等待 S=1 帧首与基底层同步直接升层，同时乱序跳变 TL0PICIDX 并以 240 次/秒洪泛切层请求！”',
+        tw: '「[WebRTC/SIP RFC 9429 SVC 跨層引用奔潰與 RFC 9626 Frame Marking 越界攻擊] 發送攜帶畸變越界 RFC 9626 Frame Marking 頭擴展且 TID=7、LID=5 超出協商 L3T3_KEY 上界的 RTP 包，在 K-SVC 模式下於非關鍵幀（I=0）強制跨空域層預測並在丟棄幀後不等待 S=1 幀首與基底層同步直接升層，同時亂序跳變 TL0PICIDX 並以 240 次/秒洪泛切層請求！」',
+        en: '"[WebRTC/SIP RFC 9429 SVC Cross-Layer Reference Crash & RFC 9626 Frame Marking OOB Attack] Inject RTP packets with malformed over-length RFC 9626 Frame Marking extensions and TID=7 / LID=5 exceeding negotiated L3T3_KEY bounds, force cross-spatial prediction on non-keyframes (I=0) with unsynchronized upswitching without S=1 start-bit alignment, and poison TL0PICIDX with 240/s layer-switch floods!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即丢弃畸变越界 RFC 9626 Frame Marking 扩展包或超出 RFC 9429 协商 scalabilityMode 上界的 TID/LID 数据包，确定性拒绝 K-SVC 非关键帧跨空域引用与未同步升层并发送 RTCP LRR 刷新请求，检测 TL0PICIDX 非单调投毒或 > 30 次/秒切层洪泛时强制钳制回 L1T1 基底层。',
+        tw: '0ms 硬攔截：立即丟棄畸變越界 RFC 9626 Frame Marking 擴展包或超出 RFC 9429 協商 scalabilityMode 上界的 TID/LID 數據包，確定性拒絕 K-SVC 非關鍵幀跨空域引用與未同步升層並發送 RTCP LRR 刷新請求，檢測 TL0PICIDX 非單調投毒或 > 30 次/秒切層洪泛時強制鉗制回 L1T1 基底層。',
+        en: '0ms Deterministic Block: Drop RTP packets with malformed RFC 9626 Frame Marking extensions or TID/LID exceeding negotiated RFC 9429 scalabilityMode bounds in 0ms, reject K-SVC non-keyframe cross-spatial references or unsynchronized upswitches with RTCP LRR, and clamp streams to base layer L1T1 on TL0PICIDX poisoning or > 30/s switch floods.'
+      },
+      json: {
+        intent: 'drop_malformed_rfc9626_framemarking_or_oob_rfc9429_svc_layer_packet_0ms',
+        action: 'evaluateWebrtcSipRfc9429SvcScalabilityModeStateMachineAndRfc9626VideoFrameMarkingExtensionOverreadKsvcCrossLayerReferenceAndTl0picidxSwitchFloodGuard',
+        policy: ['P400-WEBRTC-SIP-RFC9429-SVC-SCALABILITY-MODE-STATE-MACHINE-AND-RFC9626-VIDEO-FRAME-MARKING-EXTENSION-OVERREAD-KSVC-CROSS-LAYER-REFERENCE-AND-TL0PICIDX-SWITCH-FLOOD-GUARD', 'W3C-IETF-RFC-9429-WEBRTC-SVC-SCALABILITY-MODE', 'IETF-RFC-9626-VIDEO-FRAME-MARKING-LRR'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P400) — 0ms RFC 9626 Frame Marking / OOB TID-LID drop, 100% RFC 9429 K-SVC cross-layer reject & L1T1 clamp'
       }
     }
   ];
