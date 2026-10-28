@@ -43870,6 +43870,221 @@ export function evaluateWebrtcSipRfc8859SdpAttributeCategoryMuxingNormalTranspor
   };
 }
 
+export interface SemiconductorWaferSttMramSotMramMagneticTunnelJunctionMtjCofebMgoSputteringIonBeamEtchIbeAndCh3ohNh3CoReactiveCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000CoCh3ohTripMtjShortTmrAbortAndScbaLotoGuardInput {
+  mramMtjModuleId: string;
+  reactiveCleanCarbonMonoxideCoOrNh3LeakPpm: number;
+  methanolCh3ohVaporConcentrationPctLel: number;
+  ibeRedepositionSidewallShuntOrMgoBarrierPinHoleLeakageRatePct: number;
+  tunnelMagnetoresistanceTmrRatioPct: number;
+  magneticAnnealFieldUniformityDriftPct: number;
+  ibeOrMramSputterChamberDoorOpenRequested: boolean;
+  postAnnealMagnetStageTemperatureC: number;
+  postPurgeResidualCarbonMonoxideCoPpm: number;
+  ibeIonSourceHighVoltageAndCoVmbScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferSttMramSotMramMagneticTunnelJunctionMtjCofebMgoSputteringIonBeamEtchIbeAndCh3ohNh3CoReactiveCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000CoCh3ohTripMtjShortTmrAbortAndScbaLotoGuardAssessment {
+  mramMtjModuleId: string;
+  policyCode: "P439-SEMICONDUCTOR-WAFER-STT-MRAM-SOT-MRAM-MAGNETIC-TUNNEL-JUNCTION-MTJ-COFEB-MGO-SPUTTERING-ION-BEAM-ETCH-IBE-AND-CH3OH-NH3-CO-REACTIVE-CLEAN-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-CO-CH3OH-TRIP-MTJ-SHORT-TMR-ABORT-AND-SCBA-LOTO-GUARD";
+  mramMtjIbeAndReactiveCleanSafe: boolean;
+  coNh3ToxicLeakOrMethanolLelTripped0ms: boolean;
+  ibeSidewallShuntTmrDegradationOrMagneticDriftAborted: boolean;
+  chamberLockedUntilCoolCoPurgeAndHvScbaLoto: boolean;
+  action:
+    | "allow_verified_stt_sot_mram_mtj_ibe_reactive_clean_and_magnetic_anneal"
+    | "trip_mram_co_nh3_ch3oh_vmb_and_ibe_beam_supply_in_0ms_and_n2_quench"
+    | "abort_mram_mtj_patterning_on_sidewall_shunt_tmr_below_150pct_or_magnetic_drift"
+    | "lock_mram_ibe_chamber_until_cool_below_50c_co_below_5ppm_and_hv_scba_loto";
+  blockedReason:
+    | "none"
+    | "SEMIS2_NFPA318_OSHA19101000_CO_NH3_25PPM_OR_CH3OH_10PCT_LEL_TRIPPED_0MS"
+    | "MRAM_MTJ_IBE_SIDEWALL_SHUNT_01PCT_TMR_BELOW_150PCT_OR_MAGNETIC_DRIFT_2PCT_ABORTED"
+    | "SEMIS2_OSHA1910119_MRAM_IBE_CHAMBER_LOCKED_UNTIL_50C_5PPM_CO_AND_HV_SCBA_LOTO";
+}
+
+export function evaluateSemiconductorWaferSttMramSotMramMagneticTunnelJunctionMtjCofebMgoSputteringIonBeamEtchIbeAndCh3ohNh3CoReactiveCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000CoCh3ohTripMtjShortTmrAbortAndScbaLotoGuard(
+  input: SemiconductorWaferSttMramSotMramMagneticTunnelJunctionMtjCofebMgoSputteringIonBeamEtchIbeAndCh3ohNh3CoReactiveCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000CoCh3ohTripMtjShortTmrAbortAndScbaLotoGuardInput,
+): SemiconductorWaferSttMramSotMramMagneticTunnelJunctionMtjCofebMgoSputteringIonBeamEtchIbeAndCh3ohNh3CoReactiveCleanSemiS2SemiS6Nfpa318Osha1910119Osha19101000CoCh3ohTripMtjShortTmrAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P439-SEMICONDUCTOR-WAFER-STT-MRAM-SOT-MRAM-MAGNETIC-TUNNEL-JUNCTION-MTJ-COFEB-MGO-SPUTTERING-ION-BEAM-ETCH-IBE-AND-CH3OH-NH3-CO-REACTIVE-CLEAN-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-CO-CH3OH-TRIP-MTJ-SHORT-TMR-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const coNh3ToxicLeakOrMethanolLelTripped0ms =
+    input.reactiveCleanCarbonMonoxideCoOrNh3LeakPpm >= 25.0 ||
+    input.methanolCh3ohVaporConcentrationPctLel >= 10.0;
+
+  const ibeSidewallShuntTmrDegradationOrMagneticDriftAborted =
+    input.ibeRedepositionSidewallShuntOrMgoBarrierPinHoleLeakageRatePct >= 0.1 ||
+    input.tunnelMagnetoresistanceTmrRatioPct < 150.0 ||
+    input.magneticAnnealFieldUniformityDriftPct >= 2.0;
+
+  const chamberLockedUntilCoolCoPurgeAndHvScbaLoto =
+    input.ibeOrMramSputterChamberDoorOpenRequested &&
+    (input.postAnnealMagnetStageTemperatureC >= 50.0 ||
+      input.postPurgeResidualCarbonMonoxideCoPpm >= 5.0 ||
+      !input.ibeIonSourceHighVoltageAndCoVmbScbaLotoVerified);
+
+  if (coNh3ToxicLeakOrMethanolLelTripped0ms) {
+    return {
+      mramMtjModuleId: input.mramMtjModuleId,
+      policyCode,
+      mramMtjIbeAndReactiveCleanSafe: false,
+      coNh3ToxicLeakOrMethanolLelTripped0ms: true,
+      ibeSidewallShuntTmrDegradationOrMagneticDriftAborted,
+      chamberLockedUntilCoolCoPurgeAndHvScbaLoto,
+      action:
+        "trip_mram_co_nh3_ch3oh_vmb_and_ibe_beam_supply_in_0ms_and_n2_quench",
+      blockedReason:
+        "SEMIS2_NFPA318_OSHA19101000_CO_NH3_25PPM_OR_CH3OH_10PCT_LEL_TRIPPED_0MS",
+    };
+  }
+
+  if (ibeSidewallShuntTmrDegradationOrMagneticDriftAborted) {
+    return {
+      mramMtjModuleId: input.mramMtjModuleId,
+      policyCode,
+      mramMtjIbeAndReactiveCleanSafe: false,
+      coNh3ToxicLeakOrMethanolLelTripped0ms: false,
+      ibeSidewallShuntTmrDegradationOrMagneticDriftAborted: true,
+      chamberLockedUntilCoolCoPurgeAndHvScbaLoto,
+      action:
+        "abort_mram_mtj_patterning_on_sidewall_shunt_tmr_below_150pct_or_magnetic_drift",
+      blockedReason:
+        "MRAM_MTJ_IBE_SIDEWALL_SHUNT_01PCT_TMR_BELOW_150PCT_OR_MAGNETIC_DRIFT_2PCT_ABORTED",
+    };
+  }
+
+  if (chamberLockedUntilCoolCoPurgeAndHvScbaLoto) {
+    return {
+      mramMtjModuleId: input.mramMtjModuleId,
+      policyCode,
+      mramMtjIbeAndReactiveCleanSafe: false,
+      coNh3ToxicLeakOrMethanolLelTripped0ms: false,
+      ibeSidewallShuntTmrDegradationOrMagneticDriftAborted: false,
+      chamberLockedUntilCoolCoPurgeAndHvScbaLoto: true,
+      action:
+        "lock_mram_ibe_chamber_until_cool_below_50c_co_below_5ppm_and_hv_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_MRAM_IBE_CHAMBER_LOCKED_UNTIL_50C_5PPM_CO_AND_HV_SCBA_LOTO",
+    };
+  }
+
+  return {
+    mramMtjModuleId: input.mramMtjModuleId,
+    policyCode,
+    mramMtjIbeAndReactiveCleanSafe: true,
+    coNh3ToxicLeakOrMethanolLelTripped0ms: false,
+    ibeSidewallShuntTmrDegradationOrMagneticDriftAborted: false,
+    chamberLockedUntilCoolCoPurgeAndHvScbaLoto: false,
+    action:
+      "allow_verified_stt_sot_mram_mtj_ibe_reactive_clean_and_magnetic_anneal",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8872SdpMediaStreamIdentificationMsidTrackBindingCrossMsidHijackAndOrphanTrackInjectionGuardInput {
+  sessionId: string;
+  msidIdOrAppdataTokenContainsIllegalSyntaxOrOver64Chars: boolean;
+  crossMsidTrackIdCollisionWithConflictingDirectionDetected: boolean;
+  unannouncedOrphanRtpStreamWithoutMatchingMsidOrMidBinding: boolean;
+  msidAppdataTrackIdReboundWithoutFreshOfferAnswerExchange: boolean;
+  activeMediaStreamTracksPerBundleSessionCount: number;
+  msidTrackRebindingOffersPerMinute: number;
+}
+
+export interface WebrtcSipRfc8872SdpMediaStreamIdentificationMsidTrackBindingCrossMsidHijackAndOrphanTrackInjectionGuardAssessment {
+  sessionId: string;
+  policyCode: "P440-WEBRTC-SIP-RFC8872-SDP-MEDIA-STREAM-IDENTIFICATION-MSID-TRACK-BINDING-CROSS-MSID-HIJACK-AND-ORPHAN-TRACK-INJECTION-GUARD";
+  rfc8872MsidTrackBindingHealthy: boolean;
+  malformedMsidTokenOrCrossMsidDirectionCollisionDropped0ms: boolean;
+  orphanTrackInjectionOrUnnegotiatedMsidRebindingRejected: boolean;
+  msidTrackCountOrRebindingOfferStormClamped: boolean;
+  action:
+    | "allow_verified_rfc8872_sdp_msid_media_stream_track_binding"
+    | "drop_malformed_msid_token_or_cross_msid_direction_collision_0ms"
+    | "reject_orphan_rtp_track_injection_or_unnegotiated_msid_appdata_rebinding"
+    | "clamp_excessive_msid_track_count_or_rebinding_offer_storm";
+  blockedReason:
+    | "none"
+    | "RFC8872_MALFORMED_MSID_TOKEN_OR_CROSS_MSID_TRACK_DIRECTION_COLLISION_DROPPED_0MS"
+    | "RFC8872_ORPHAN_RTP_TRACK_INJECTION_OR_UNNEGOTIATED_MSID_REBINDING_REJECTED"
+    | "RFC8872_MSID_TRACKS_OVER_16_OR_REBINDING_OFFERS_OVER_6_PER_MIN_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8872SdpMediaStreamIdentificationMsidTrackBindingCrossMsidHijackAndOrphanTrackInjectionGuard(
+  input: WebrtcSipRfc8872SdpMediaStreamIdentificationMsidTrackBindingCrossMsidHijackAndOrphanTrackInjectionGuardInput,
+): WebrtcSipRfc8872SdpMediaStreamIdentificationMsidTrackBindingCrossMsidHijackAndOrphanTrackInjectionGuardAssessment {
+  const policyCode =
+    "P440-WEBRTC-SIP-RFC8872-SDP-MEDIA-STREAM-IDENTIFICATION-MSID-TRACK-BINDING-CROSS-MSID-HIJACK-AND-ORPHAN-TRACK-INJECTION-GUARD" as const;
+
+  const malformedMsidTokenOrCrossMsidDirectionCollisionDropped0ms =
+    input.msidIdOrAppdataTokenContainsIllegalSyntaxOrOver64Chars ||
+    input.crossMsidTrackIdCollisionWithConflictingDirectionDetected;
+
+  const orphanTrackInjectionOrUnnegotiatedMsidRebindingRejected =
+    input.unannouncedOrphanRtpStreamWithoutMatchingMsidOrMidBinding ||
+    input.msidAppdataTrackIdReboundWithoutFreshOfferAnswerExchange;
+
+  const msidTrackCountOrRebindingOfferStormClamped =
+    input.activeMediaStreamTracksPerBundleSessionCount > 16 ||
+    input.msidTrackRebindingOffersPerMinute > 6;
+
+  if (malformedMsidTokenOrCrossMsidDirectionCollisionDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8872MsidTrackBindingHealthy: false,
+      malformedMsidTokenOrCrossMsidDirectionCollisionDropped0ms: true,
+      orphanTrackInjectionOrUnnegotiatedMsidRebindingRejected,
+      msidTrackCountOrRebindingOfferStormClamped,
+      action:
+        "drop_malformed_msid_token_or_cross_msid_direction_collision_0ms",
+      blockedReason:
+        "RFC8872_MALFORMED_MSID_TOKEN_OR_CROSS_MSID_TRACK_DIRECTION_COLLISION_DROPPED_0MS",
+    };
+  }
+
+  if (orphanTrackInjectionOrUnnegotiatedMsidRebindingRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8872MsidTrackBindingHealthy: false,
+      malformedMsidTokenOrCrossMsidDirectionCollisionDropped0ms: false,
+      orphanTrackInjectionOrUnnegotiatedMsidRebindingRejected: true,
+      msidTrackCountOrRebindingOfferStormClamped,
+      action:
+        "reject_orphan_rtp_track_injection_or_unnegotiated_msid_appdata_rebinding",
+      blockedReason:
+        "RFC8872_ORPHAN_RTP_TRACK_INJECTION_OR_UNNEGOTIATED_MSID_REBINDING_REJECTED",
+    };
+  }
+
+  if (msidTrackCountOrRebindingOfferStormClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8872MsidTrackBindingHealthy: false,
+      malformedMsidTokenOrCrossMsidDirectionCollisionDropped0ms: false,
+      orphanTrackInjectionOrUnnegotiatedMsidRebindingRejected: false,
+      msidTrackCountOrRebindingOfferStormClamped: true,
+      action: "clamp_excessive_msid_track_count_or_rebinding_offer_storm",
+      blockedReason:
+        "RFC8872_MSID_TRACKS_OVER_16_OR_REBINDING_OFFERS_OVER_6_PER_MIN_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8872MsidTrackBindingHealthy: true,
+    malformedMsidTokenOrCrossMsidDirectionCollisionDropped0ms: false,
+    orphanTrackInjectionOrUnnegotiatedMsidRebindingRejected: false,
+    msidTrackCountOrRebindingOfferStormClamped: false,
+    action: "allow_verified_rfc8872_sdp_msid_media_stream_track_binding",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
