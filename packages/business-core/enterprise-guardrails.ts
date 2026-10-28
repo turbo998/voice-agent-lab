@@ -49931,6 +49931,354 @@ export function evaluateWebrtcSipRfc8865T140RealTimeTextOverWebrtcDataChannelsCp
   };
 }
 
+export interface SemiconductorWaferFabSubFabDryVacuumPumpCryopumpRegenerationAndPyrophoricSiO2Nh4ClForelineTrapSemiS2SemiS6Nfpa318Nfpa69CgaP12Osha1910119GuardInput {
+  readonly dryPumpHotN2PurgeLossOrForelineBackpressureOver110KpaAbsDetected: boolean;
+  readonly cryopumpRegenerationHydrogenLelPercent: number;
+  readonly cryopumpVesselPressureReliefOver135KpaAbsDetected: boolean;
+  readonly forelineColdTrapNh4ClTiF4DifferentialPressureKpa: number;
+  readonly rootsBoosterMotorStallOrCasingTemperatureOver180CDetected: boolean;
+  readonly forelineColdTrapOrCryopumpOpeningMaintenanceRequested: boolean;
+  readonly controlledSlowOxidationPassivationOfPyrophoricSiH4P4ResidueVerified: boolean;
+  readonly cryopumpWarmupToAmbientAndPositivePressureScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabSubFabDryVacuumPumpCryopumpRegenerationAndPyrophoricSiO2Nh4ClForelineTrapSemiS2SemiS6Nfpa318Nfpa69CgaP12Osha1910119GuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "lock_foreline_trap_and_cryopump_until_passivation_warmup_and_scba_loto"
+    | "abort_wafer_lot_close_high_vacuum_gate_valve_and_divert_to_standby_pump"
+    | "trip_chamber_gas_isolation_valve_and_flood_n2_purge_in_0ms";
+  readonly policyId: "P501-SEMICONDUCTOR-WAFER-FAB-SUB-FAB-DRY-VACUUM-PUMP-CRYOPUMP-REGENERATION-AND-PYROPHORIC-SIO2-NH4CL-FORELINE-TRAP-SEMIS2-SEMIS6-NFPA318-NFPA69-CGAP12-OSHA1910119-N2-PURGE-LOSS-CRYO-H2-LEL-TRIP-TRAP-CLOG-ABORT-AND-PASSIVATION-SCBA-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabSubFabDryVacuumPumpCryopumpRegenerationAndPyrophoricSiO2Nh4ClForelineTrapSemiS2SemiS6Nfpa318Nfpa69CgaP12Osha1910119N2PurgeLossCryoH2LelTripTrapClogAbortAndPassivationScbaLotoGuard(
+  input: SemiconductorWaferFabSubFabDryVacuumPumpCryopumpRegenerationAndPyrophoricSiO2Nh4ClForelineTrapSemiS2SemiS6Nfpa318Nfpa69CgaP12Osha1910119GuardInput,
+): SemiconductorWaferFabSubFabDryVacuumPumpCryopumpRegenerationAndPyrophoricSiO2Nh4ClForelineTrapSemiS2SemiS6Nfpa318Nfpa69CgaP12Osha1910119GuardResult {
+  const policyId =
+    "P501-SEMICONDUCTOR-WAFER-FAB-SUB-FAB-DRY-VACUUM-PUMP-CRYOPUMP-REGENERATION-AND-PYROPHORIC-SIO2-NH4CL-FORELINE-TRAP-SEMIS2-SEMIS6-NFPA318-NFPA69-CGAP12-OSHA1910119-N2-PURGE-LOSS-CRYO-H2-LEL-TRIP-TRAP-CLOG-ABORT-AND-PASSIVATION-SCBA-LOTO-GUARD" as const;
+
+  if (
+    input.dryPumpHotN2PurgeLossOrForelineBackpressureOver110KpaAbsDetected ||
+    input.cryopumpRegenerationHydrogenLelPercent >= 20.0 ||
+    input.cryopumpVesselPressureReliefOver135KpaAbsDetected
+  ) {
+    return {
+      violated: true,
+      action: "trip_chamber_gas_isolation_valve_and_flood_n2_purge_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / CGA P-12 Sub-Fab vacuum & cryopump emergency: dry pump hot-N2 ballast loss / foreline pressure >= 110 kPa(abs), cryopump regeneration desorbed H2 >= 20.0% LEL, or cryopump vessel overpressure >= 135 kPa(abs) detected; tripping chamber gas valves and flooding N2 dilution in 0ms.",
+    };
+  }
+
+  if (
+    input.forelineColdTrapNh4ClTiF4DifferentialPressureKpa >= 15.0 ||
+    input.rootsBoosterMotorStallOrCasingTemperatureOver180CDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "abort_wafer_lot_close_high_vacuum_gate_valve_and_divert_to_standby_pump",
+      policyId,
+      reason:
+        "SEMI S2 / NFPA 318 Sub-Fab foreline interlock: NH4Cl / TiF4 / SiOx byproduct cold-trap differential pressure >= 15.0 kPa or Roots booster stall / casing temperature >= 180 C; closing high-vacuum gate valve and diverting to standby pump.",
+    };
+  }
+
+  if (
+    input.forelineColdTrapOrCryopumpOpeningMaintenanceRequested &&
+    (!input.controlledSlowOxidationPassivationOfPyrophoricSiH4P4ResidueVerified ||
+      !input.cryopumpWarmupToAmbientAndPositivePressureScbaLotoVerified)
+  ) {
+    return {
+      violated: true,
+      action:
+        "lock_foreline_trap_and_cryopump_until_passivation_warmup_and_scba_loto",
+      policyId,
+      reason:
+        "OSHA 1910.119 / SEMI S2 Sub-Fab foreline & cryopump maintenance lock: opening cold trap or cryopump prohibited until controlled 1% O2/N2 slow-oxidation passivation of pyrophoric SiH4/PH3/red-phosphorus powder, warm-up to >= 290 K, and SCBA LOTO are verified.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer Fab Sub-Fab dry screw/Roots vacuum pump hot-N2 dilution, 15K cryopump N2-diluted regeneration, and pyrophoric foreline cold-trap operating within SEMI S2 / NFPA 318 / NFPA 69 limits.",
+  };
+}
+
+export interface WebrtcSipRfc8866SdpSessionDescriptionProtocolStrictAbnfSyntaxLineOrderingOriginVersionAndAttributeBoundsGuardInput {
+  readonly sdpMissingMandatoryVOSCTMHeaderOrStrictLineOrderViolationDetected: boolean;
+  readonly sdpEmbeddedNullByteBareLfOrControlCharacterInjectionDetected: boolean;
+  readonly sdpOriginSessionVersionRegressionOrInvalidUnicastAddressDetected: boolean;
+  readonly sdpMediaPortOutOfBoundsOrUnmappedDynamicPayloadTypeInMlineDetected: boolean;
+  readonly sdpTotalPayloadBytes: number;
+  readonly sdpMediaDescriptionsMlineCount: number;
+}
+
+export interface WebrtcSipRfc8866SdpSessionDescriptionProtocolStrictAbnfSyntaxLineOrderingOriginVersionAndAttributeBoundsGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_sdp_payload_bytes_and_mline_count"
+    | "reject_origin_sess_version_regression_or_unmapped_dynamic_pt"
+    | "drop_malformed_abnf_line_order_or_control_char_sdp_0ms";
+  readonly policyId: "P502-WEBRTC-SIP-RFC8866-SDP-SESSION-DESCRIPTION-PROTOCOL-STRICT-ABNF-SYNTAX-LINE-ORDERING-ORIGIN-VERSION-AND-ATTRIBUTE-BOUNDS-GUARD";
+  readonly reason: string;
+  readonly clampedSdpTotalPayloadBytes: number;
+  readonly clampedSdpMediaDescriptionsMlineCount: number;
+}
+
+export function evaluateWebrtcSipRfc8866SdpSessionDescriptionProtocolStrictAbnfSyntaxLineOrderingOriginVersionAndAttributeBoundsGuard(
+  input: WebrtcSipRfc8866SdpSessionDescriptionProtocolStrictAbnfSyntaxLineOrderingOriginVersionAndAttributeBoundsGuardInput,
+): WebrtcSipRfc8866SdpSessionDescriptionProtocolStrictAbnfSyntaxLineOrderingOriginVersionAndAttributeBoundsGuardResult {
+  const policyId =
+    "P502-WEBRTC-SIP-RFC8866-SDP-SESSION-DESCRIPTION-PROTOCOL-STRICT-ABNF-SYNTAX-LINE-ORDERING-ORIGIN-VERSION-AND-ATTRIBUTE-BOUNDS-GUARD" as const;
+  const clampedSdpTotalPayloadBytes = Math.min(
+    Math.max(1, input.sdpTotalPayloadBytes),
+    65536,
+  );
+  const clampedSdpMediaDescriptionsMlineCount = Math.min(
+    Math.max(1, input.sdpMediaDescriptionsMlineCount),
+    16,
+  );
+
+  if (
+    input.sdpMissingMandatoryVOSCTMHeaderOrStrictLineOrderViolationDetected ||
+    input.sdpEmbeddedNullByteBareLfOrControlCharacterInjectionDetected
+  ) {
+    return {
+      violated: true,
+      action: "drop_malformed_abnf_line_order_or_control_char_sdp_0ms",
+      policyId,
+      reason:
+        "RFC 8866 Section 5 / Section 9 strict ABNF violation: missing mandatory v=0 / o= / s= / t= lines, out-of-order SDP type sequence, or embedded null byte / bare LF / control character injection; dropping SDP in 0ms.",
+      clampedSdpTotalPayloadBytes,
+      clampedSdpMediaDescriptionsMlineCount,
+    };
+  }
+
+  if (
+    input.sdpOriginSessionVersionRegressionOrInvalidUnicastAddressDetected ||
+    input.sdpMediaPortOutOfBoundsOrUnmappedDynamicPayloadTypeInMlineDetected
+  ) {
+    return {
+      violated: true,
+      action: "reject_origin_sess_version_regression_or_unmapped_dynamic_pt",
+      policyId,
+      reason:
+        "RFC 8866 Section 5.2 / Section 5.14 violation: o= sess-version regression, invalid unicast origin address, m= port outside [0, 65535], or dynamic payload type 96-127 missing a=rtpmap binding; rejecting SDP with 488 Not Acceptable Here.",
+      clampedSdpTotalPayloadBytes,
+      clampedSdpMediaDescriptionsMlineCount,
+    };
+  }
+
+  if (
+    input.sdpTotalPayloadBytes > 65536 ||
+    input.sdpMediaDescriptionsMlineCount > 16
+  ) {
+    return {
+      violated: true,
+      action: "clamp_sdp_payload_bytes_and_mline_count",
+      policyId,
+      reason:
+        "RFC 8866 SDP parser memory & CPU exhaustion protection: clamping SDP payload size to <= 65536 bytes and m= media block count to <= 16.",
+      clampedSdpTotalPayloadBytes,
+      clampedSdpMediaDescriptionsMlineCount,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8866 Session Description Protocol (strict v/o/s/c/t/m ABNF line ordering, monotonic o= sess-version, valid m= port/rtpmap bindings, and <= 64 KB bounds) verified.",
+    clampedSdpTotalPayloadBytes,
+    clampedSdpMediaDescriptionsMlineCount,
+  };
+}
+
+export interface SemiconductorWaferFabWetBenchPiranhaSpmSc1Sc2RcaCleanAnhydrousVaporHfAndMarangoniIpaDryerSemiS2SemiS6Nfpa318Nfpa30Nfpa704Osha1910119GuardInput {
+  readonly spmPiranhaBathThermalRunawayOver150COrOrganicSolventIpaInAcidMixDetected: boolean;
+  readonly ipaMarangoniDryerEnclosureVaporLelPercent: number;
+  readonly ambientHfOrHClToxicAcidVaporConcentrationPpm: number;
+  readonly wetBenchPlenumExhaustStaticNegativePressurePa: number;
+  readonly acidAndSolventOrCyanideIncompatibleDrainDiverterFaultDetected: boolean;
+  readonly diwMegasonicRinseResistivityMohmCm: number;
+  readonly wetBenchBathDrainOrQuartzTankReplacementMaintenanceRequested: boolean;
+  readonly bathCooledBelow35CAndDiwNeutralFlushPh6To8Verified: boolean;
+  readonly calciumGluconateGelDiphoterineAndAcidSuitScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabWetBenchPiranhaSpmSc1Sc2RcaCleanAnhydrousVaporHfAndMarangoniIpaDryerSemiS2SemiS6Nfpa318Nfpa30Nfpa704Osha1910119GuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "lock_wet_bench_bath_until_cool_neutral_flush_and_calcium_gluconate_scba_loto"
+    | "abort_wafer_immersion_close_bath_lid_and_lock_incompatible_drain_valve"
+    | "trip_chemical_dosing_heaters_and_activate_n2_co2_suppression_in_0ms";
+  readonly policyId: "P503-SEMICONDUCTOR-WAFER-FAB-WET-BENCH-PIRANHA-SPM-SC1-SC2-RCA-CLEAN-ANHYDROUS-VAPOR-HF-AND-MARANGONI-IPA-DRYER-SEMIS2-SEMIS6-NFPA318-NFPA30-NFPA704-OSHA1910119-SPM-RUNAWAY-IPA-LEL-HF-TRIP-EXHAUST-DRAIN-INTERMIX-ABORT-AND-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabWetBenchPiranhaSpmSc1Sc2RcaCleanAnhydrousVaporHfAndMarangoniIpaDryerSemiS2SemiS6Nfpa318Nfpa30Nfpa704Osha1910119SpmRunawayIpaLelHfTripExhaustDrainIntermixAbortAndCalciumGluconateScbaLotoGuard(
+  input: SemiconductorWaferFabWetBenchPiranhaSpmSc1Sc2RcaCleanAnhydrousVaporHfAndMarangoniIpaDryerSemiS2SemiS6Nfpa318Nfpa30Nfpa704Osha1910119GuardInput,
+): SemiconductorWaferFabWetBenchPiranhaSpmSc1Sc2RcaCleanAnhydrousVaporHfAndMarangoniIpaDryerSemiS2SemiS6Nfpa318Nfpa30Nfpa704Osha1910119GuardResult {
+  const policyId =
+    "P503-SEMICONDUCTOR-WAFER-FAB-WET-BENCH-PIRANHA-SPM-SC1-SC2-RCA-CLEAN-ANHYDROUS-VAPOR-HF-AND-MARANGONI-IPA-DRYER-SEMIS2-SEMIS6-NFPA318-NFPA30-NFPA704-OSHA1910119-SPM-RUNAWAY-IPA-LEL-HF-TRIP-EXHAUST-DRAIN-INTERMIX-ABORT-AND-CALCIUM-GLUCONATE-SCBA-LOTO-GUARD" as const;
+
+  if (
+    input.spmPiranhaBathThermalRunawayOver150COrOrganicSolventIpaInAcidMixDetected ||
+    input.ipaMarangoniDryerEnclosureVaporLelPercent >= 20.0 ||
+    input.ambientHfOrHClToxicAcidVaporConcentrationPpm >= 1.5
+  ) {
+    return {
+      violated: true,
+      action:
+        "trip_chemical_dosing_heaters_and_activate_n2_co2_suppression_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S6 / NFPA 318 / NFPA 30 / NFPA 704 / OSHA 1910.119 Wet Bench emergency: SPM Piranha (H2SO4/H2O2) thermal runaway >= 150 C or organic IPA solvent intermix explosion hazard, Marangoni IPA dryer vapor >= 20.0% LEL, or toxic HF/HCl leak >= 1.5 ppm detected; tripping heaters and chemical dosing with N2/CO2 suppression in 0ms.",
+    };
+  }
+
+  if (
+    input.wetBenchPlenumExhaustStaticNegativePressurePa < 125.0 ||
+    input.acidAndSolventOrCyanideIncompatibleDrainDiverterFaultDetected ||
+    input.diwMegasonicRinseResistivityMohmCm < 18.0
+  ) {
+    return {
+      violated: true,
+      action:
+        "abort_wafer_immersion_close_bath_lid_and_lock_incompatible_drain_valve",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S6 Wet Bench process & drain interlock: plenum exhaust negative pressure < 125.0 Pa, incompatible acid/oxidizer vs organic solvent drain diverter fault, or DIW rinse resistivity < 18.0 MOhm-cm; aborting wafer immersion and locking drain valves.",
+    };
+  }
+
+  if (
+    input.wetBenchBathDrainOrQuartzTankReplacementMaintenanceRequested &&
+    (!input.bathCooledBelow35CAndDiwNeutralFlushPh6To8Verified ||
+      !input.calciumGluconateGelDiphoterineAndAcidSuitScbaLotoVerified)
+  ) {
+    return {
+      violated: true,
+      action:
+        "lock_wet_bench_bath_until_cool_neutral_flush_and_calcium_gluconate_scba_loto",
+      policyId,
+      reason:
+        "OSHA 1910.119 / SEMI S2 Wet Bench maintenance lock: quartz bath drain or heater servicing prohibited until bath cool-down < 35 C, DIW neutral flush (pH 6-8), Diphoterine / Calcium Gluconate HF antidote staging, and full acid-suit SCBA LOTO are verified.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer Fab automated Wet Bench (SPM Piranha, SC-1/SC-2 RCA, DHF/BOE/VHF, and Marangoni IPA dryer), segregated waste drains, and plenum exhaust operating within SEMI S2 / NFPA 318 / NFPA 30 limits.",
+  };
+}
+
+export interface WebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlocksLossRleDlrrAndVoipMetricsValidationGuardInput {
+  readonly rtcpXrPacketLengthMismatchOrTruncatedBlockHeaderDetected: boolean;
+  readonly rtcpXrRleChunkDecompressionBombOrUnboundedRunLengthDetected: boolean;
+  readonly rtcpXrDlrrTimestampSpoofingOrNegativeRttCalculationDetected: boolean;
+  readonly unnegotiatedRtcpXrBlockTypeOrForgedVoipMetricsSsrcDetected: boolean;
+  readonly rtcpXrBandwidthShareOfSessionPercent: number;
+  readonly rtcpXrBlocksPerCompoundPacketCount: number;
+}
+
+export interface WebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlocksLossRleDlrrAndVoipMetricsValidationGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_rtcp_xr_bandwidth_share_and_blocks_per_packet"
+    | "reject_spoofed_dlrr_rtt_or_unnegotiated_xr_block_ssrc"
+    | "drop_truncated_rtcp_xr_header_or_rle_decompression_bomb_0ms";
+  readonly policyId: "P504-WEBRTC-SIP-RFC8870-WEBRTC-RTCP-EXTENDED-REPORT-XR-BLOCKS-LOSS-RLE-DLRR-AND-VOIP-METRICS-VALIDATION-GUARD";
+  readonly reason: string;
+  readonly clampedRtcpXrBandwidthSharePercent: number;
+  readonly clampedRtcpXrBlocksPerCompoundPacketCount: number;
+}
+
+export function evaluateWebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlocksLossRleDlrrAndVoipMetricsValidationGuard(
+  input: WebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlocksLossRleDlrrAndVoipMetricsValidationGuardInput,
+): WebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlocksLossRleDlrrAndVoipMetricsValidationGuardResult {
+  const policyId =
+    "P504-WEBRTC-SIP-RFC8870-WEBRTC-RTCP-EXTENDED-REPORT-XR-BLOCKS-LOSS-RLE-DLRR-AND-VOIP-METRICS-VALIDATION-GUARD" as const;
+  const clampedRtcpXrBandwidthSharePercent = Math.min(
+    Math.max(0.1, input.rtcpXrBandwidthShareOfSessionPercent),
+    5.0,
+  );
+  const clampedRtcpXrBlocksPerCompoundPacketCount = Math.min(
+    Math.max(1, input.rtcpXrBlocksPerCompoundPacketCount),
+    8,
+  );
+
+  if (
+    input.rtcpXrPacketLengthMismatchOrTruncatedBlockHeaderDetected ||
+    input.rtcpXrRleChunkDecompressionBombOrUnboundedRunLengthDetected
+  ) {
+    return {
+      violated: true,
+      action: "drop_truncated_rtcp_xr_header_or_rle_decompression_bomb_0ms",
+      policyId,
+      reason:
+        "RFC 8870 / RFC 3611 critical RTCP XR violation: RTCP PT=207 block length field mismatch / truncated 4-byte block header or malicious Loss/Duplicate RLE (BT=1/2) run-length decompression bomb; dropping in 0ms.",
+      clampedRtcpXrBandwidthSharePercent,
+      clampedRtcpXrBlocksPerCompoundPacketCount,
+    };
+  }
+
+  if (
+    input.rtcpXrDlrrTimestampSpoofingOrNegativeRttCalculationDetected ||
+    input.unnegotiatedRtcpXrBlockTypeOrForgedVoipMetricsSsrcDetected
+  ) {
+    return {
+      violated: true,
+      action: "reject_spoofed_dlrr_rtt_or_unnegotiated_xr_block_ssrc",
+      policyId,
+      reason:
+        "RFC 8870 Section 4 / RFC 3611 Section 4.5 & 4.7 violation: spoofed LRR/DLRR timestamps poisoning non-sender RTT estimation or unnegotiated XR block type / unknown SSRC in VoIP Metrics (BT=7); rejecting RTCP XR report.",
+      clampedRtcpXrBandwidthSharePercent,
+      clampedRtcpXrBlocksPerCompoundPacketCount,
+    };
+  }
+
+  if (
+    input.rtcpXrBandwidthShareOfSessionPercent > 5.0 ||
+    input.rtcpXrBlocksPerCompoundPacketCount > 8
+  ) {
+    return {
+      violated: true,
+      action: "clamp_rtcp_xr_bandwidth_share_and_blocks_per_packet",
+      policyId,
+      reason:
+        "RFC 8870 / RFC 3550 Section 6.2 RTCP XR bandwidth & parser protection: clamping RTCP XR traffic share to <= 5.0% of session bandwidth and XR blocks per compound packet to <= 8.",
+      clampedRtcpXrBandwidthSharePercent,
+      clampedRtcpXrBlocksPerCompoundPacketCount,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8870 / RFC 3611 WebRTC RTCP Extended Report (XR BT=1/3/4/5/7 block headers, RLE bounds, LRR/DLRR RTT timing, and <= 5% RTCP bandwidth budget) verified.",
+    clampedRtcpXrBandwidthSharePercent,
+    clampedRtcpXrBlocksPerCompoundPacketCount,
+  };
+}
+
+
 
 
 
