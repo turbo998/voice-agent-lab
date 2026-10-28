@@ -45985,6 +45985,209 @@ export function evaluateWebrtcSipRfc8827WebrtcSecurityArchitectureSignalingIdent
   };
 }
 
+/**
+ * P459: Semiconductor Wafer Cleanroom Overhead Hoist Transport (OHT) AMHS, Stocker & EFEM Loadport FOUP N2 Purge Pod Safety Guard
+ * Standards: SEMI S2 / SEMI S8 / SEMI S17 / SEMI E84 / SEMI E87 / NFPA 318 / ANSI B56.5 / OSHA 1910.147
+ */
+export interface SemiconductorWaferCleanroomAmhsOverheadHoistTransportOhtStockerAndEfemLoadportFoupN2PurgeSemiS2SemiS8SemiS17SemiE84SemiE87Nfpa318AnsiB565Osha1910147AntiCollisionHoistSwayE84CurtainTripFoupHumidityLatchAbortAndBusbarLotoGuardInput {
+  sessionId: string;
+  ohtAntiCollisionLidarOrSemiE84LoadportLightCurtainBreached: boolean;
+  hoistBeltSwayAngleDegOrVibrationGPeak: number;
+  foupDoorMappingCrossSlottedWaferProtrusionCount: number;
+  foupInternalPurgeRelativeHumidityPctOrO2Ppm: number;
+  ohtTrackOrStockerAccessRequestedBefore48v300vHidpBusbarDischargeAndOsha1910147Loto: boolean;
+}
+
+export interface SemiconductorWaferCleanroomAmhsOverheadHoistTransportOhtStockerAndEfemLoadportFoupN2PurgeSemiS2SemiS8SemiS17SemiE84SemiE87Nfpa318AnsiB565Osha1910147AntiCollisionHoistSwayE84CurtainTripFoupHumidityLatchAbortAndBusbarLotoGuardAssessment {
+  sessionId: string;
+  policyCode: "P459-SEMICONDUCTOR-WAFER-CLEANROOM-AMHS-OVERHEAD-HOIST-TRANSPORT-OHT-STOCKER-AND-EFEM-LOADPORT-FOUP-N2-PURGE-SEMIS2-SEMIS8-SEMIS17-SEMIE84-SEMIE87-NFPA318-ANSIB565-OSHA1910147-ANTI-COLLISION-HOIST-SWAY-E84-CURTAIN-TRIP-FOUP-HUMIDITY-LATCH-ABORT-AND-BUSBAR-LOTO-GUARD";
+  amhsOhtAndEfemFoupTransferSafe: boolean;
+  ohtTractionAndHoistBrakesTrippedIn0ms: boolean;
+  foupLoadportDockingOrWaferExtractionAborted: boolean;
+  amhsMaintenanceZoneLockedPendingHidpDischargeAndLoto: boolean;
+  action:
+    | "allow_verified_amhs_oht_and_efem_foup_n2_purge_transfer"
+    | "trip_oht_traction_and_hoist_brake_in_0ms_on_lidar_e84_or_sway"
+    | "abort_efem_foup_docking_on_cross_slot_protrusion_or_n2_purge_loss"
+    | "lock_amhs_track_and_stocker_gate_until_busbar_discharge_and_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferCleanroomAmhsOverheadHoistTransportOhtStockerAndEfemLoadportFoupN2PurgeSemiS2SemiS8SemiS17SemiE84SemiE87Nfpa318AnsiB565Osha1910147AntiCollisionHoistSwayE84CurtainTripFoupHumidityLatchAbortAndBusbarLotoGuard(
+  input: SemiconductorWaferCleanroomAmhsOverheadHoistTransportOhtStockerAndEfemLoadportFoupN2PurgeSemiS2SemiS8SemiS17SemiE84SemiE87Nfpa318AnsiB565Osha1910147AntiCollisionHoistSwayE84CurtainTripFoupHumidityLatchAbortAndBusbarLotoGuardInput,
+): SemiconductorWaferCleanroomAmhsOverheadHoistTransportOhtStockerAndEfemLoadportFoupN2PurgeSemiS2SemiS8SemiS17SemiE84SemiE87Nfpa318AnsiB565Osha1910147AntiCollisionHoistSwayE84CurtainTripFoupHumidityLatchAbortAndBusbarLotoGuardAssessment {
+  const policyCode =
+    "P459-SEMICONDUCTOR-WAFER-CLEANROOM-AMHS-OVERHEAD-HOIST-TRANSPORT-OHT-STOCKER-AND-EFEM-LOADPORT-FOUP-N2-PURGE-SEMIS2-SEMIS8-SEMIS17-SEMIE84-SEMIE87-NFPA318-ANSIB565-OSHA1910147-ANTI-COLLISION-HOIST-SWAY-E84-CURTAIN-TRIP-FOUP-HUMIDITY-LATCH-ABORT-AND-BUSBAR-LOTO-GUARD" as const;
+
+  const ohtTractionAndHoistBrakesTrippedIn0ms =
+    input.ohtAntiCollisionLidarOrSemiE84LoadportLightCurtainBreached ||
+    input.hoistBeltSwayAngleDegOrVibrationGPeak >= 0.5;
+
+  if (ohtTractionAndHoistBrakesTrippedIn0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      amhsOhtAndEfemFoupTransferSafe: false,
+      ohtTractionAndHoistBrakesTrippedIn0ms: true,
+      foupLoadportDockingOrWaferExtractionAborted: true,
+      amhsMaintenanceZoneLockedPendingHidpDischargeAndLoto: true,
+      action: "trip_oht_traction_and_hoist_brake_in_0ms_on_lidar_e84_or_sway",
+      blockedReason:
+        "SEMI_S17_E84_ANSIB565_OHT_LIDAR_LIGHT_CURTAIN_OR_SWAY_0MS_BRAKE_TRIP",
+    };
+  }
+
+  const foupLoadportDockingOrWaferExtractionAborted =
+    input.foupDoorMappingCrossSlottedWaferProtrusionCount >= 1 ||
+    input.foupInternalPurgeRelativeHumidityPctOrO2Ppm >= 5.0;
+
+  if (foupLoadportDockingOrWaferExtractionAborted) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      amhsOhtAndEfemFoupTransferSafe: false,
+      ohtTractionAndHoistBrakesTrippedIn0ms: false,
+      foupLoadportDockingOrWaferExtractionAborted: true,
+      amhsMaintenanceZoneLockedPendingHidpDischargeAndLoto: true,
+      action:
+        "abort_efem_foup_docking_on_cross_slot_protrusion_or_n2_purge_loss",
+      blockedReason:
+        "SEMI_E87_S2_FOUP_CROSS_SLOT_WAFER_PROTRUSION_OR_RH_OVER_5PCT_ABORT",
+    };
+  }
+
+  if (
+    input.ohtTrackOrStockerAccessRequestedBefore48v300vHidpBusbarDischargeAndOsha1910147Loto
+  ) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      amhsOhtAndEfemFoupTransferSafe: false,
+      ohtTractionAndHoistBrakesTrippedIn0ms: false,
+      foupLoadportDockingOrWaferExtractionAborted: false,
+      amhsMaintenanceZoneLockedPendingHidpDischargeAndLoto: true,
+      action:
+        "lock_amhs_track_and_stocker_gate_until_busbar_discharge_and_loto",
+      blockedReason:
+        "OSHA_1910_147_HIDP_BUSBAR_ENERGIZED_OR_CARRIAGE_PIN_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    amhsOhtAndEfemFoupTransferSafe: true,
+    ohtTractionAndHoistBrakesTrippedIn0ms: false,
+    foupLoadportDockingOrWaferExtractionAborted: false,
+    amhsMaintenanceZoneLockedPendingHidpDischargeAndLoto: false,
+    action: "allow_verified_amhs_oht_and_efem_foup_n2_purge_transfer",
+    blockedReason: "none",
+  };
+}
+
+/**
+ * P460: WebRTC & SIP RFC 8825 (Overview: Real-Time Protocols for Browser-Based Applications — Mandatory ICE/DTLS-SRTP/SCTP Stack Profile & Legacy Transport Rejection) Security Guard
+ * Standards: IETF RFC 8825 / IETF RFC 8826 / IETF RFC 8827
+ */
+export interface WebrtcSipRfc8825WebrtcOverviewRealTimeProtocolsBrowserStackProfileMandatoryIceDtlsSrtpSctpEnforcementAndLegacyTransportRejectionGuardInput {
+  sessionId: string;
+  nonIceOrNonDtlsSrtpMediaTransportNegotiated: boolean;
+  sctpOverRawUdpOrTcpWithoutDtlsEncapsulationAttempted: boolean;
+  missingMandatoryOpusOrPcmuAudioBaselineCodecSupportDetected: boolean;
+  unauthenticatedRtcpFeedbackOrMissingCongestionControlLoopDetected: boolean;
+  concurrentPeerConnectionsPerBrowserContextCount: number;
+  unbundledMediaTransportChannelsCount: number;
+}
+
+export interface WebrtcSipRfc8825WebrtcOverviewRealTimeProtocolsBrowserStackProfileMandatoryIceDtlsSrtpSctpEnforcementAndLegacyTransportRejectionGuardAssessment {
+  sessionId: string;
+  policyCode: "P460-WEBRTC-SIP-RFC8825-WEBRTC-OVERVIEW-REAL-TIME-PROTOCOLS-BROWSER-STACK-PROFILE-MANDATORY-ICE-DTLS-SRTP-SCTP-ENFORCEMENT-AND-LEGACY-TRANSPORT-REJECTION-GUARD";
+  rfc8825ProtocolSuiteCompliant: boolean;
+  nonIceDtlsSrtpOrRawSctpTransportDropped0ms: boolean;
+  missingBaselineCodecOrUnauthenticatedRtcpFeedbackRejected: boolean;
+  peerConnectionOrUnbundledChannelFanoutClamped: boolean;
+  action:
+    | "allow_verified_rfc8825_webrtc_browser_protocol_stack"
+    | "drop_non_ice_dtls_srtp_or_unencapsulated_sctp_transport_0ms"
+    | "reject_missing_baseline_codec_or_unauthenticated_rtcp_congestion_bypass"
+    | "clamp_peer_connection_count_or_unbundled_transport_channels";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8825WebrtcOverviewRealTimeProtocolsBrowserStackProfileMandatoryIceDtlsSrtpSctpEnforcementAndLegacyTransportRejectionGuard(
+  input: WebrtcSipRfc8825WebrtcOverviewRealTimeProtocolsBrowserStackProfileMandatoryIceDtlsSrtpSctpEnforcementAndLegacyTransportRejectionGuardInput,
+): WebrtcSipRfc8825WebrtcOverviewRealTimeProtocolsBrowserStackProfileMandatoryIceDtlsSrtpSctpEnforcementAndLegacyTransportRejectionGuardAssessment {
+  const policyCode =
+    "P460-WEBRTC-SIP-RFC8825-WEBRTC-OVERVIEW-REAL-TIME-PROTOCOLS-BROWSER-STACK-PROFILE-MANDATORY-ICE-DTLS-SRTP-SCTP-ENFORCEMENT-AND-LEGACY-TRANSPORT-REJECTION-GUARD" as const;
+
+  const nonIceDtlsSrtpOrRawSctpTransportDropped0ms =
+    input.nonIceOrNonDtlsSrtpMediaTransportNegotiated ||
+    input.sctpOverRawUdpOrTcpWithoutDtlsEncapsulationAttempted;
+
+  if (nonIceDtlsSrtpOrRawSctpTransportDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8825ProtocolSuiteCompliant: false,
+      nonIceDtlsSrtpOrRawSctpTransportDropped0ms: true,
+      missingBaselineCodecOrUnauthenticatedRtcpFeedbackRejected: false,
+      peerConnectionOrUnbundledChannelFanoutClamped: false,
+      action: "drop_non_ice_dtls_srtp_or_unencapsulated_sctp_transport_0ms",
+      blockedReason:
+        "RFC8825_NON_ICE_DTLS_SRTP_OR_RAW_SCTP_TRANSPORT_0MS_DROP",
+    };
+  }
+
+  const missingBaselineCodecOrUnauthenticatedRtcpFeedbackRejected =
+    input.missingMandatoryOpusOrPcmuAudioBaselineCodecSupportDetected ||
+    input.unauthenticatedRtcpFeedbackOrMissingCongestionControlLoopDetected;
+
+  if (missingBaselineCodecOrUnauthenticatedRtcpFeedbackRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8825ProtocolSuiteCompliant: false,
+      nonIceDtlsSrtpOrRawSctpTransportDropped0ms: false,
+      missingBaselineCodecOrUnauthenticatedRtcpFeedbackRejected: true,
+      peerConnectionOrUnbundledChannelFanoutClamped: false,
+      action:
+        "reject_missing_baseline_codec_or_unauthenticated_rtcp_congestion_bypass",
+      blockedReason:
+        "RFC8825_MISSING_OPUS_PCMU_BASELINE_OR_UNAUTHENTICATED_RTCP_REJECTED",
+    };
+  }
+
+  const peerConnectionOrUnbundledChannelFanoutClamped =
+    input.concurrentPeerConnectionsPerBrowserContextCount > 32 ||
+    input.unbundledMediaTransportChannelsCount > 4;
+
+  if (peerConnectionOrUnbundledChannelFanoutClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8825ProtocolSuiteCompliant: false,
+      nonIceDtlsSrtpOrRawSctpTransportDropped0ms: false,
+      missingBaselineCodecOrUnauthenticatedRtcpFeedbackRejected: false,
+      peerConnectionOrUnbundledChannelFanoutClamped: true,
+      action: "clamp_peer_connection_count_or_unbundled_transport_channels",
+      blockedReason:
+        "RFC8825_PEERCONNECTIONS_OVER_32_OR_UNBUNDLED_CHANNELS_OVER_4_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8825ProtocolSuiteCompliant: true,
+    nonIceDtlsSrtpOrRawSctpTransportDropped0ms: false,
+    missingBaselineCodecOrUnauthenticatedRtcpFeedbackRejected: false,
+    peerConnectionOrUnbundledChannelFanoutClamped: false,
+    action: "allow_verified_rfc8825_webrtc_browser_protocol_stack",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
