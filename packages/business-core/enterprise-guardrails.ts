@@ -43657,6 +43657,220 @@ export function evaluateWebrtcSipRfc8862IpPortInSdpMediaTransportPortHijackAndRf
   };
 }
 
+export interface SemiconductorWaferMicrobumpC4CuPillarFlipChipFluxReflowFormicAcidHcoohThermalCompressionBondingTcbAndCapillaryUnderfillSemiS2SemiS6Nfpa318Osha1910119Osha19101000HcoohH2TripBumpBridgeNonwetAbortAndScbaLotoGuardInput {
+  flipChipTcbModuleId: string;
+  formicAcidHcoohVaporLeakPpm: number;
+  reflowChamberFormingGasH2LeakPpmOrO2IntrusionPct: number;
+  microbumpPitchBridgeOrHeadInPillowNonWetDefectRatePct: number;
+  solderJointKirkendallVoidOrImcEmbrittlementAreaPct: number;
+  tcbBondHeadThermalTiltOrDieWarpageUm: number;
+  tcbOrFormicReflowChamberDoorOpenRequested: boolean;
+  postCoolBondStageTemperatureC: number;
+  postPurgeResidualFormicAcidHcoohPpm: number;
+  formicVaporizerAndBondHeadScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferMicrobumpC4CuPillarFlipChipFluxReflowFormicAcidHcoohThermalCompressionBondingTcbAndCapillaryUnderfillSemiS2SemiS6Nfpa318Osha1910119Osha19101000HcoohH2TripBumpBridgeNonwetAbortAndScbaLotoGuardAssessment {
+  flipChipTcbModuleId: string;
+  policyCode: "P437-SEMICONDUCTOR-WAFER-MICROBUMP-C4-CU-PILLAR-FLIP-CHIP-FLUX-REFLOW-FORMIC-ACID-HCOOH-THERMAL-COMPRESSION-BONDING-TCB-AND-CAPILLARY-UNDERFILL-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-HCOOH-H2-TRIP-BUMP-BRIDGE-NONWET-ABORT-AND-SCBA-LOTO-GUARD";
+  microbumpCuPillarTcbAndFormicReflowSafe: boolean;
+  formicAcidHcoohOrH2ReflowLeakTripped0ms: boolean;
+  microbumpBridgeNonWetImcVoidOrTcbWarpageAborted: boolean;
+  chamberLockedUntilCoolHcoohPurgeAndScbaLoto: boolean;
+  action:
+    | "allow_verified_microbump_cu_pillar_formic_acid_tcb_and_underfill"
+    | "trip_tcb_formic_acid_hcooh_vaporizer_and_h2_vmb_in_0ms_and_n2_quench"
+    | "abort_flip_chip_tcb_on_microbump_bridge_non_wet_imc_void_or_warpage"
+    | "lock_tcb_reflow_chamber_until_cool_below_50c_hcooh_below_05ppm_and_scba_loto";
+  blockedReason:
+    | "none"
+    | "SEMIS2_NFPA318_OSHA19101000_HCOOH_5PPM_OR_H2_4000PPM_REFLOW_LEAK_TRIPPED_0MS"
+    | "MICROBUMP_CU_PILLAR_BRIDGE_NONWET_01PCT_IMC_VOID_5PCT_OR_TCB_WARPAGE_15UM_ABORTED"
+    | "SEMIS2_OSHA1910119_TCB_REFLOW_CHAMBER_LOCKED_UNTIL_50C_05PPM_HCOOH_AND_SCBA_LOTO";
+}
+
+export function evaluateSemiconductorWaferMicrobumpC4CuPillarFlipChipFluxReflowFormicAcidHcoohThermalCompressionBondingTcbAndCapillaryUnderfillSemiS2SemiS6Nfpa318Osha1910119Osha19101000HcoohH2TripBumpBridgeNonwetAbortAndScbaLotoGuard(
+  input: SemiconductorWaferMicrobumpC4CuPillarFlipChipFluxReflowFormicAcidHcoohThermalCompressionBondingTcbAndCapillaryUnderfillSemiS2SemiS6Nfpa318Osha1910119Osha19101000HcoohH2TripBumpBridgeNonwetAbortAndScbaLotoGuardInput,
+): SemiconductorWaferMicrobumpC4CuPillarFlipChipFluxReflowFormicAcidHcoohThermalCompressionBondingTcbAndCapillaryUnderfillSemiS2SemiS6Nfpa318Osha1910119Osha19101000HcoohH2TripBumpBridgeNonwetAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P437-SEMICONDUCTOR-WAFER-MICROBUMP-C4-CU-PILLAR-FLIP-CHIP-FLUX-REFLOW-FORMIC-ACID-HCOOH-THERMAL-COMPRESSION-BONDING-TCB-AND-CAPILLARY-UNDERFILL-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-HCOOH-H2-TRIP-BUMP-BRIDGE-NONWET-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const formicAcidHcoohOrH2ReflowLeakTripped0ms =
+    input.formicAcidHcoohVaporLeakPpm >= 5.0 ||
+    input.reflowChamberFormingGasH2LeakPpmOrO2IntrusionPct >= 4000.0;
+
+  const microbumpBridgeNonWetImcVoidOrTcbWarpageAborted =
+    input.microbumpPitchBridgeOrHeadInPillowNonWetDefectRatePct >= 0.1 ||
+    input.solderJointKirkendallVoidOrImcEmbrittlementAreaPct >= 5.0 ||
+    input.tcbBondHeadThermalTiltOrDieWarpageUm >= 15.0;
+
+  const chamberLockedUntilCoolHcoohPurgeAndScbaLoto =
+    input.tcbOrFormicReflowChamberDoorOpenRequested &&
+    (input.postCoolBondStageTemperatureC >= 50.0 ||
+      input.postPurgeResidualFormicAcidHcoohPpm >= 0.5 ||
+      !input.formicVaporizerAndBondHeadScbaLotoVerified);
+
+  if (formicAcidHcoohOrH2ReflowLeakTripped0ms) {
+    return {
+      flipChipTcbModuleId: input.flipChipTcbModuleId,
+      policyCode,
+      microbumpCuPillarTcbAndFormicReflowSafe: false,
+      formicAcidHcoohOrH2ReflowLeakTripped0ms: true,
+      microbumpBridgeNonWetImcVoidOrTcbWarpageAborted,
+      chamberLockedUntilCoolHcoohPurgeAndScbaLoto,
+      action:
+        "trip_tcb_formic_acid_hcooh_vaporizer_and_h2_vmb_in_0ms_and_n2_quench",
+      blockedReason:
+        "SEMIS2_NFPA318_OSHA19101000_HCOOH_5PPM_OR_H2_4000PPM_REFLOW_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (microbumpBridgeNonWetImcVoidOrTcbWarpageAborted) {
+    return {
+      flipChipTcbModuleId: input.flipChipTcbModuleId,
+      policyCode,
+      microbumpCuPillarTcbAndFormicReflowSafe: false,
+      formicAcidHcoohOrH2ReflowLeakTripped0ms: false,
+      microbumpBridgeNonWetImcVoidOrTcbWarpageAborted: true,
+      chamberLockedUntilCoolHcoohPurgeAndScbaLoto,
+      action:
+        "abort_flip_chip_tcb_on_microbump_bridge_non_wet_imc_void_or_warpage",
+      blockedReason:
+        "MICROBUMP_CU_PILLAR_BRIDGE_NONWET_01PCT_IMC_VOID_5PCT_OR_TCB_WARPAGE_15UM_ABORTED",
+    };
+  }
+
+  if (chamberLockedUntilCoolHcoohPurgeAndScbaLoto) {
+    return {
+      flipChipTcbModuleId: input.flipChipTcbModuleId,
+      policyCode,
+      microbumpCuPillarTcbAndFormicReflowSafe: false,
+      formicAcidHcoohOrH2ReflowLeakTripped0ms: false,
+      microbumpBridgeNonWetImcVoidOrTcbWarpageAborted: false,
+      chamberLockedUntilCoolHcoohPurgeAndScbaLoto: true,
+      action:
+        "lock_tcb_reflow_chamber_until_cool_below_50c_hcooh_below_05ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_TCB_REFLOW_CHAMBER_LOCKED_UNTIL_50C_05PPM_HCOOH_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    flipChipTcbModuleId: input.flipChipTcbModuleId,
+    policyCode,
+    microbumpCuPillarTcbAndFormicReflowSafe: true,
+    formicAcidHcoohOrH2ReflowLeakTripped0ms: false,
+    microbumpBridgeNonWetImcVoidOrTcbWarpageAborted: false,
+    chamberLockedUntilCoolHcoohPurgeAndScbaLoto: false,
+    action: "allow_verified_microbump_cu_pillar_formic_acid_tcb_and_underfill",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8859SdpAttributeCategoryMuxingNormalTransportIdenticalSumAndConflictResolutionGuardInput {
+  sessionId: string;
+  bundleSharedCategoryAttributeDiffersAcrossBundledMediaDescriptions: boolean;
+  specialCategoryAttributeViolatesRfc8859PerSpecificationMuxRule: boolean;
+  identicalOrTransportCategoryAttributeDuplicatedWithConflictingValuesInBundle: boolean;
+  sumCategoryBandwidthAttributeExceedsAggregateBundleTransportEnvelope: boolean;
+  totalSdpAttributesPerMediaDescriptionCount: number;
+  crossCategoryMuxAttributeConflictRatePerOffer: number;
+}
+
+export interface WebrtcSipRfc8859SdpAttributeCategoryMuxingNormalTransportIdenticalSumAndConflictResolutionGuardAssessment {
+  sessionId: string;
+  policyCode: "P438-WEBRTC-SIP-RFC8859-SDP-ATTRIBUTE-CATEGORY-MUXING-NORMAL-TRANSPORT-IDENTICAL-SUM-AND-CONFLICT-RESOLUTION-GUARD";
+  rfc8859SdpAttributeMuxingHealthy: boolean;
+  mismatchedTransportIdenticalOrSpecialCategoryAttributeDropped0ms: boolean;
+  conflictingDuplicateOrSumBandwidthEnvelopeOverflowRejected: boolean;
+  sdpAttributeCountOrCategoryConflictStormClamped: boolean;
+  action:
+    | "allow_verified_rfc8859_sdp_attribute_category_muxing"
+    | "drop_mismatched_transport_identical_or_special_category_sdp_attribute_0ms"
+    | "reject_conflicting_duplicate_or_sum_category_bandwidth_envelope_overflow"
+    | "clamp_excessive_sdp_attribute_count_or_category_conflict_storm";
+  blockedReason:
+    | "none"
+    | "RFC8859_TRANSPORT_IDENTICAL_OR_SPECIAL_CATEGORY_BUNDLE_MISMATCH_DROPPED_0MS"
+    | "RFC8859_CONFLICTING_DUPLICATE_ATTRIBUTE_OR_SUM_BANDWIDTH_OVERFLOW_REJECTED"
+    | "RFC8859_SDP_ATTRIBUTES_OVER_64_OR_CATEGORY_CONFLICTS_OVER_4_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8859SdpAttributeCategoryMuxingNormalTransportIdenticalSumAndConflictResolutionGuard(
+  input: WebrtcSipRfc8859SdpAttributeCategoryMuxingNormalTransportIdenticalSumAndConflictResolutionGuardInput,
+): WebrtcSipRfc8859SdpAttributeCategoryMuxingNormalTransportIdenticalSumAndConflictResolutionGuardAssessment {
+  const policyCode =
+    "P438-WEBRTC-SIP-RFC8859-SDP-ATTRIBUTE-CATEGORY-MUXING-NORMAL-TRANSPORT-IDENTICAL-SUM-AND-CONFLICT-RESOLUTION-GUARD" as const;
+
+  const mismatchedTransportIdenticalOrSpecialCategoryAttributeDropped0ms =
+    input.bundleSharedCategoryAttributeDiffersAcrossBundledMediaDescriptions ||
+    input.specialCategoryAttributeViolatesRfc8859PerSpecificationMuxRule;
+
+  const conflictingDuplicateOrSumBandwidthEnvelopeOverflowRejected =
+    input.identicalOrTransportCategoryAttributeDuplicatedWithConflictingValuesInBundle ||
+    input.sumCategoryBandwidthAttributeExceedsAggregateBundleTransportEnvelope;
+
+  const sdpAttributeCountOrCategoryConflictStormClamped =
+    input.totalSdpAttributesPerMediaDescriptionCount > 64 ||
+    input.crossCategoryMuxAttributeConflictRatePerOffer > 4;
+
+  if (mismatchedTransportIdenticalOrSpecialCategoryAttributeDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8859SdpAttributeMuxingHealthy: false,
+      mismatchedTransportIdenticalOrSpecialCategoryAttributeDropped0ms: true,
+      conflictingDuplicateOrSumBandwidthEnvelopeOverflowRejected,
+      sdpAttributeCountOrCategoryConflictStormClamped,
+      action:
+        "drop_mismatched_transport_identical_or_special_category_sdp_attribute_0ms",
+      blockedReason:
+        "RFC8859_TRANSPORT_IDENTICAL_OR_SPECIAL_CATEGORY_BUNDLE_MISMATCH_DROPPED_0MS",
+    };
+  }
+
+  if (conflictingDuplicateOrSumBandwidthEnvelopeOverflowRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8859SdpAttributeMuxingHealthy: false,
+      mismatchedTransportIdenticalOrSpecialCategoryAttributeDropped0ms: false,
+      conflictingDuplicateOrSumBandwidthEnvelopeOverflowRejected: true,
+      sdpAttributeCountOrCategoryConflictStormClamped,
+      action:
+        "reject_conflicting_duplicate_or_sum_category_bandwidth_envelope_overflow",
+      blockedReason:
+        "RFC8859_CONFLICTING_DUPLICATE_ATTRIBUTE_OR_SUM_BANDWIDTH_OVERFLOW_REJECTED",
+    };
+  }
+
+  if (sdpAttributeCountOrCategoryConflictStormClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8859SdpAttributeMuxingHealthy: false,
+      mismatchedTransportIdenticalOrSpecialCategoryAttributeDropped0ms: false,
+      conflictingDuplicateOrSumBandwidthEnvelopeOverflowRejected: false,
+      sdpAttributeCountOrCategoryConflictStormClamped: true,
+      action: "clamp_excessive_sdp_attribute_count_or_category_conflict_storm",
+      blockedReason:
+        "RFC8859_SDP_ATTRIBUTES_OVER_64_OR_CATEGORY_CONFLICTS_OVER_4_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8859SdpAttributeMuxingHealthy: true,
+    mismatchedTransportIdenticalOrSpecialCategoryAttributeDropped0ms: false,
+    conflictingDuplicateOrSumBandwidthEnvelopeOverflowRejected: false,
+    sdpAttributeCountOrCategoryConflictStormClamped: false,
+    action: "allow_verified_rfc8859_sdp_attribute_category_muxing",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
