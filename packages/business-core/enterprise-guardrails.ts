@@ -41316,22 +41316,227 @@ export function evaluateWebrtcSipRfc8840SipTrickleIceInfoPackageSdpfragAndRfc608
   };
 }
 
+// ============================================================================
+// Stage 211 (P415–P416) — 425-Guardrail Historic Milestone:
+// P415: Semiconductor Wafer Advanced Packaging 2.5D/3D TSV Bosch Etch, Cu
+//       Electroplating & W2W/D2W Cu-Cu Direct Hybrid Bonding Guard
+// P416: WebRTC & SIP RFC 8842 DTLS/TLS SDP Offer/Answer (a=setup / a=connection)
+//       & RFC 8843 BUNDLE Media Multiplexing (a=group:BUNDLE / bundle-only) Guard
+// ============================================================================
 
+export interface SemiconductorWaferAdvancedPackagingTsvBoschEtchCuElectroplatingAndW2wD2wHybridBondingGuardInput {
+  moduleId: string;
+  hfSif4OrCof2EtchByproductLeakPpm: number;
+  pyrophoricSih4OrTeosLinerLeakPpm: number;
+  cuPlatingH2so4MistMgPerM3: number;
+  anodicHydrogenHeadspacePpm: number;
+  tsvBottomVoidOrPinchOffDefectPct: number;
+  postCmpCuPadDishingRecessNm: number;
+  hybridBondInterfacialParticlesOver100Nm: number;
+  w2wOrD2wOverlayAlignmentErrorNm: number;
+  chamberOrPlatingHoodOpenRequested: boolean;
+  postPurgeResidualHfSif4Ppm: number;
+  postFlushResidualH2so4MistMgPerM3: number;
+  scbaAndDiphoterineLotoVerified: boolean;
+}
 
+export interface SemiconductorWaferAdvancedPackagingTsvBoschEtchCuElectroplatingAndW2wD2wHybridBondingGuardAssessment {
+  moduleId: string;
+  policyCode: "P415-SEMICONDUCTOR-WAFER-ADVANCED-PACKAGING-TSV-BOSCH-ETCH-CU-ELECTROPLATING-AND-W2W-D2W-HYBRID-BONDING-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-HF-SIF4-H2SO4-H2-TRIP-CU-DISHING-VOID-ABORT-AND-SCBA-LOTO-GUARD";
+  tsvEtchCuPlatingAndHybridBondingSafe: boolean;
+  hfSif4Sih4OrPlatingH2so4H2Tripped0ms: boolean;
+  tsvVoidCuDishingOrHybridBondParticleOverlayAborted: boolean;
+  chamberOrHoodLockedUntilHfH2so4PurgedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_tsv_bosch_etch_cu_electroplating_and_w2w_d2w_hybrid_bonding"
+    | "trip_tsv_gas_vmb_and_cu_plating_rectifier_in_0ms_on_hf_sif4_sih4_h2so4_or_h2_leak"
+    | "abort_packaging_on_tsv_void_cu_dishing_out_of_1_5nm_or_hybrid_bond_particle_overlay"
+    | "lock_tsv_and_hybrid_bonder_until_hf_02ppm_h2so4_01mgm3_and_scba_loto";
+  blockedReason: string;
+}
 
+export function evaluateSemiconductorWaferAdvancedPackagingTsvBoschEtchCuElectroplatingAndW2wD2wHybridBondingSemiS2SemiS6Nfpa318Osha1910119Osha19101000HfSif4H2so4H2TripCuDishingVoidAbortAndScbaLotoGuard(
+  input: SemiconductorWaferAdvancedPackagingTsvBoschEtchCuElectroplatingAndW2wD2wHybridBondingGuardInput,
+): SemiconductorWaferAdvancedPackagingTsvBoschEtchCuElectroplatingAndW2wD2wHybridBondingGuardAssessment {
+  const policyCode =
+    "P415-SEMICONDUCTOR-WAFER-ADVANCED-PACKAGING-TSV-BOSCH-ETCH-CU-ELECTROPLATING-AND-W2W-D2W-HYBRID-BONDING-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-HF-SIF4-H2SO4-H2-TRIP-CU-DISHING-VOID-ABORT-AND-SCBA-LOTO-GUARD" as const;
 
+  const hfSif4Sih4OrPlatingH2so4H2Tripped0ms =
+    input.hfSif4OrCof2EtchByproductLeakPpm >= 1.0 ||
+    input.pyrophoricSih4OrTeosLinerLeakPpm >= 2.0 ||
+    input.cuPlatingH2so4MistMgPerM3 >= 1.0 ||
+    input.anodicHydrogenHeadspacePpm >= 1000;
 
+  const tsvVoidCuDishingOrHybridBondParticleOverlayAborted =
+    input.tsvBottomVoidOrPinchOffDefectPct >= 0.5 ||
+    input.postCmpCuPadDishingRecessNm < 1.0 ||
+    input.postCmpCuPadDishingRecessNm > 5.0 ||
+    input.hybridBondInterfacialParticlesOver100Nm >= 1 ||
+    input.w2wOrD2wOverlayAlignmentErrorNm >= 100;
 
+  const chamberOrHoodLockedUntilHfH2so4PurgedAndScbaLoto =
+    input.chamberOrPlatingHoodOpenRequested &&
+    (input.postPurgeResidualHfSif4Ppm >= 0.2 ||
+      input.postFlushResidualH2so4MistMgPerM3 >= 0.1 ||
+      !input.scbaAndDiphoterineLotoVerified);
 
+  if (hfSif4Sih4OrPlatingH2so4H2Tripped0ms) {
+    return {
+      moduleId: input.moduleId,
+      policyCode,
+      tsvEtchCuPlatingAndHybridBondingSafe: false,
+      hfSif4Sih4OrPlatingH2so4H2Tripped0ms: true,
+      tsvVoidCuDishingOrHybridBondParticleOverlayAborted,
+      chamberOrHoodLockedUntilHfH2so4PurgedAndScbaLoto,
+      action:
+        "trip_tsv_gas_vmb_and_cu_plating_rectifier_in_0ms_on_hf_sif4_sih4_h2so4_or_h2_leak",
+      blockedReason:
+        "SEMI_S2_S6_NFPA318_TSV_HF_SIF4_1PPM_SIH4_2PPM_H2SO4_1MGM3_OR_H2_1000PPM_VMB_TRIPPED_0MS",
+    };
+  }
 
+  if (tsvVoidCuDishingOrHybridBondParticleOverlayAborted) {
+    return {
+      moduleId: input.moduleId,
+      policyCode,
+      tsvEtchCuPlatingAndHybridBondingSafe: false,
+      hfSif4Sih4OrPlatingH2so4H2Tripped0ms: false,
+      tsvVoidCuDishingOrHybridBondParticleOverlayAborted: true,
+      chamberOrHoodLockedUntilHfH2so4PurgedAndScbaLoto,
+      action:
+        "abort_packaging_on_tsv_void_cu_dishing_out_of_1_5nm_or_hybrid_bond_particle_overlay",
+      blockedReason:
+        "TSV_VOID_05PCT_CU_PAD_DISHING_OUTSIDE_1_TO_5NM_OR_HYBRID_BOND_PARTICLE_100NM_OVERLAY_ABORTED",
+    };
+  }
 
+  if (chamberOrHoodLockedUntilHfH2so4PurgedAndScbaLoto) {
+    return {
+      moduleId: input.moduleId,
+      policyCode,
+      tsvEtchCuPlatingAndHybridBondingSafe: false,
+      hfSif4Sih4OrPlatingH2so4H2Tripped0ms: false,
+      tsvVoidCuDishingOrHybridBondParticleOverlayAborted: false,
+      chamberOrHoodLockedUntilHfH2so4PurgedAndScbaLoto: true,
+      action:
+        "lock_tsv_and_hybrid_bonder_until_hf_02ppm_h2so4_01mgm3_and_scba_loto",
+      blockedReason:
+        "OSHA_1910_1000_RESIDUAL_HF_SIF4_02PPM_H2SO4_01MGM3_OR_UNVERIFIED_SCBA_DIPHOTERINE_LOTO_LOCKED",
+    };
+  }
 
+  return {
+    moduleId: input.moduleId,
+    policyCode,
+    tsvEtchCuPlatingAndHybridBondingSafe: true,
+    hfSif4Sih4OrPlatingH2so4H2Tripped0ms: false,
+    tsvVoidCuDishingOrHybridBondParticleOverlayAborted: false,
+    chamberOrHoodLockedUntilHfH2so4PurgedAndScbaLoto: false,
+    action:
+      "allow_verified_tsv_bosch_etch_cu_electroplating_and_w2w_d2w_hybrid_bonding",
+    blockedReason: "none",
+  };
+}
 
+export interface WebrtcSipRfc8842DtlsTlsSdpOfferAnswerAndRfc8843BundleMediaMultiplexingGuardInput {
+  sessionId: string;
+  newDtlsAssociationOfferUsesActpass: boolean;
+  answererSetupRoleIsActpassOrHoldconn: boolean;
+  fingerprintChangedWithExistingConnectionAttr: boolean;
+  bundledSecondaryMediaTransportMatchesBundleTag: boolean;
+  duplicateMidOrUngroupedBundleOnlyPresent: boolean;
+  bundledMediaSectionsCount: number;
+  forcedConnectionNewRestartsPerMin: number;
+}
 
+export interface WebrtcSipRfc8842DtlsTlsSdpOfferAnswerAndRfc8843BundleMediaMultiplexingGuardAssessment {
+  sessionId: string;
+  policyCode: "P416-WEBRTC-SIP-RFC8842-DTLS-TLS-SDP-OFFER-ANSWER-SETUP-CONNECTION-AND-RFC8843-BUNDLE-MEDIA-MULTIPLEXING-TRANSPORT-TAG-DESYNC-AND-REOFFER-FLOOD-GUARD";
+  rfc8842AndRfc8843BundleDtlsHealthy: boolean;
+  invalidRfc8842SetupRoleOrFingerprintMutationDropped0ms: boolean;
+  conflictingRfc8843BundleTransportOrDuplicateMidRejected: boolean;
+  excessiveBundleSectionsOrConnectionRestartStormClamped: boolean;
+  action:
+    | "allow_verified_rfc8842_dtls_setup_and_rfc8843_sdp_bundle_multiplexing"
+    | "drop_rfc8842_invalid_setup_role_or_fingerprint_change_with_existing_connection_0ms"
+    | "reject_rfc8843_conflicting_secondary_bundle_transport_or_duplicate_mid"
+    | "clamp_rfc8842_8843_excessive_bundled_m_sections_or_dtls_restart_storm";
+  blockedReason: string;
+}
 
+export function evaluateWebrtcSipRfc8842DtlsTlsSdpOfferAnswerSetupConnectionAndRfc8843BundleMediaMultiplexingTransportTagDesyncAndReofferFloodGuard(
+  input: WebrtcSipRfc8842DtlsTlsSdpOfferAnswerAndRfc8843BundleMediaMultiplexingGuardInput,
+): WebrtcSipRfc8842DtlsTlsSdpOfferAnswerAndRfc8843BundleMediaMultiplexingGuardAssessment {
+  const policyCode =
+    "P416-WEBRTC-SIP-RFC8842-DTLS-TLS-SDP-OFFER-ANSWER-SETUP-CONNECTION-AND-RFC8843-BUNDLE-MEDIA-MULTIPLEXING-TRANSPORT-TAG-DESYNC-AND-REOFFER-FLOOD-GUARD" as const;
 
+  const invalidRfc8842SetupRoleOrFingerprintMutationDropped0ms =
+    !input.newDtlsAssociationOfferUsesActpass ||
+    input.answererSetupRoleIsActpassOrHoldconn ||
+    input.fingerprintChangedWithExistingConnectionAttr;
 
+  const conflictingRfc8843BundleTransportOrDuplicateMidRejected =
+    !input.bundledSecondaryMediaTransportMatchesBundleTag ||
+    input.duplicateMidOrUngroupedBundleOnlyPresent;
 
+  const excessiveBundleSectionsOrConnectionRestartStormClamped =
+    input.bundledMediaSectionsCount > 16 ||
+    input.forcedConnectionNewRestartsPerMin > 2;
 
+  if (invalidRfc8842SetupRoleOrFingerprintMutationDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8842AndRfc8843BundleDtlsHealthy: false,
+      invalidRfc8842SetupRoleOrFingerprintMutationDropped0ms: true,
+      conflictingRfc8843BundleTransportOrDuplicateMidRejected,
+      excessiveBundleSectionsOrConnectionRestartStormClamped,
+      action:
+        "drop_rfc8842_invalid_setup_role_or_fingerprint_change_with_existing_connection_0ms",
+      blockedReason:
+        "RFC8842_NON_ACTPASS_NEW_OFFER_ANSWER_ACTPASS_OR_FINGERPRINT_CHANGE_WITH_CONNECTION_EXISTING_DROPPED_0MS",
+    };
+  }
 
+  if (conflictingRfc8843BundleTransportOrDuplicateMidRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8842AndRfc8843BundleDtlsHealthy: false,
+      invalidRfc8842SetupRoleOrFingerprintMutationDropped0ms: false,
+      conflictingRfc8843BundleTransportOrDuplicateMidRejected: true,
+      excessiveBundleSectionsOrConnectionRestartStormClamped,
+      action:
+        "reject_rfc8843_conflicting_secondary_bundle_transport_or_duplicate_mid",
+      blockedReason:
+        "RFC8843_SECONDARY_BUNDLE_TRANSPORT_MISMATCH_DUPLICATE_MID_OR_UNGROUPED_BUNDLE_ONLY_REJECTED",
+    };
+  }
 
+  if (excessiveBundleSectionsOrConnectionRestartStormClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8842AndRfc8843BundleDtlsHealthy: false,
+      invalidRfc8842SetupRoleOrFingerprintMutationDropped0ms: false,
+      conflictingRfc8843BundleTransportOrDuplicateMidRejected: false,
+      excessiveBundleSectionsOrConnectionRestartStormClamped: true,
+      action:
+        "clamp_rfc8842_8843_excessive_bundled_m_sections_or_dtls_restart_storm",
+      blockedReason:
+        "RFC8842_8843_OVER_16_BUNDLED_MEDIA_SECTIONS_OR_OVER_2_DTLS_CONNECTION_NEW_RESTARTS_PER_MIN_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8842AndRfc8843BundleDtlsHealthy: true,
+    invalidRfc8842SetupRoleOrFingerprintMutationDropped0ms: false,
+    conflictingRfc8843BundleTransportOrDuplicateMidRejected: false,
+    excessiveBundleSectionsOrConnectionRestartStormClamped: false,
+    action:
+      "allow_verified_rfc8842_dtls_setup_and_rfc8843_sdp_bundle_multiplexing",
+    blockedReason: "none",
+  };
+}
