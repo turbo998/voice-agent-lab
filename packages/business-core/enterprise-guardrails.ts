@@ -48183,6 +48183,186 @@ export function evaluateWebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBund
   };
 }
 
+export interface SemiconductorWaferFabSpecialtyProcessGasBulkSilaneSih4PhosphinePh3ArsineAsh3DiboraneB2h6TubeTrailerIsoModuleAndBsgsBunkerSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119GuardInput {
+  readonly uvIrFlameOrOpticalFireDetectedInBunker: boolean;
+  readonly ambientPyrophoricHydrideGasPpm: number;
+  readonly coaxialDeliveryPipeAnnularSpacePressureKpa: number;
+  readonly excessFlowSwitchTripped: boolean;
+  readonly pigtailsPurgeCyclesCompleted: number;
+  readonly residualHydrideConcentrationAfterPurgePpb: number;
+  readonly isoTubeManifoldMaintenanceRequested: boolean;
+  readonly highPressureDelugeWaterSprayArmedVerified: boolean;
+  readonly suppliedAirScbaAndOsha1910119LotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabSpecialtyProcessGasBulkSilaneSih4PhosphinePh3ArsineAsh3DiboraneB2h6TubeTrailerIsoModuleAndBsgsBunkerSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119GuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "lock_iso_tube_manifold_until_deluge_armed_and_scba_loto"
+    | "abort_manifold_switchover_and_enforce_deep_vacuum_n2_purge_cycles"
+    | "trip_pneumatic_cylinder_valve_and_activate_bunker_water_deluge_in_0ms";
+  readonly policyId: "P481-SEMICONDUCTOR-WAFER-FAB-SPECIALTY-PROCESS-GAS-BULK-SILANE-SIH4-PHOSPHINE-PH3-ARSINE-ASH3-DIBORANE-B2H6-TUBE-TRAILER-ISO-MODULE-AND-BSGS-BUNKER-SEMIS2-SEMIS6-NFPA318-NFPA55-CGAG13-OSHA1910119-UV-IR-FLAME-OR-COAXIAL-LEAK-CYLINDER-VALVE-TRIP-AND-DELUGE-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabSpecialtyProcessGasBulkSilaneSih4PhosphinePh3ArsineAsh3DiboraneB2h6TubeTrailerIsoModuleAndBsgsBunkerSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119UvIrFlameOrCoaxialLeakCylinderValveTripAndDelugeLotoGuard(
+  input: SemiconductorWaferFabSpecialtyProcessGasBulkSilaneSih4PhosphinePh3ArsineAsh3DiboraneB2h6TubeTrailerIsoModuleAndBsgsBunkerSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119GuardInput,
+): SemiconductorWaferFabSpecialtyProcessGasBulkSilaneSih4PhosphinePh3ArsineAsh3DiboraneB2h6TubeTrailerIsoModuleAndBsgsBunkerSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119GuardResult {
+  const policyId =
+    "P481-SEMICONDUCTOR-WAFER-FAB-SPECIALTY-PROCESS-GAS-BULK-SILANE-SIH4-PHOSPHINE-PH3-ARSINE-ASH3-DIBORANE-B2H6-TUBE-TRAILER-ISO-MODULE-AND-BSGS-BUNKER-SEMIS2-SEMIS6-NFPA318-NFPA55-CGAG13-OSHA1910119-UV-IR-FLAME-OR-COAXIAL-LEAK-CYLINDER-VALVE-TRIP-AND-DELUGE-LOTO-GUARD" as const;
+
+  if (
+    input.uvIrFlameOrOpticalFireDetectedInBunker ||
+    input.ambientPyrophoricHydrideGasPpm >= 0.5 ||
+    input.coaxialDeliveryPipeAnnularSpacePressureKpa < 150 ||
+    input.coaxialDeliveryPipeAnnularSpacePressureKpa > 350 ||
+    input.excessFlowSwitchTripped
+  ) {
+    return {
+      violated: true,
+      action:
+        "trip_pneumatic_cylinder_valve_and_activate_bunker_water_deluge_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / NFPA 318 / CGA G-13 critical hazard: UV/IR flame, pyrophoric/toxic hydride leak >= 0.5 ppm, coaxial annular pressure excursion outside [150, 350] kPa, or excess-flow switch trip in BSGS bunker; tripping pneumatic cylinder valve and activating deluge cooling in 0ms.",
+    };
+  }
+
+  if (
+    input.pigtailsPurgeCyclesCompleted < 40 ||
+    input.residualHydrideConcentrationAfterPurgePpb >= 50
+  ) {
+    return {
+      violated: true,
+      action:
+        "abort_manifold_switchover_and_enforce_deep_vacuum_n2_purge_cycles",
+      policyId,
+      reason:
+        "CGA G-13 / NFPA 55 manifold switchover violation: fewer than 40 deep-vacuum N2 purge cycles completed or residual pyrophoric/toxic hydride >= 50 ppb; aborting ISO tube trailer switchover.",
+    };
+  }
+
+  if (
+    input.isoTubeManifoldMaintenanceRequested &&
+    (!input.highPressureDelugeWaterSprayArmedVerified ||
+      !input.suppliedAirScbaAndOsha1910119LotoVerified)
+  ) {
+    return {
+      violated: true,
+      action: "lock_iso_tube_manifold_until_deluge_armed_and_scba_loto",
+      policyId,
+      reason:
+        "OSHA 1910.119 PSM / CGA G-13 safety lock: BSGS ISO tube trailer manifold maintenance requested without armed high-pressure water deluge and verified SCBA + LOTO.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "BSGS bulk specialty gas silane/hydride ISO tube trailer bunker UV/IR flame, coaxial annular monitoring, 40-cycle purge, and OSHA 1910.119 SCBA LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8859SdpAttributeCategoryFrameworkMuxCategoryIdenticalNormalSpecialSumTransportImpactGuardInput {
+  readonly conflictingIdenticalMuxCategoryAttributeValuesAcrossBundledSectionsDetected: boolean;
+  readonly duplicatedTransportOrIdenticalAttributeInNonTaggedBundleOnlySectionDetected: boolean;
+  readonly transportCategoryAttributeMismatchAcrossBundledMediaSectionsDetected: boolean;
+  readonly specialOrSumCategoryAttributeIncorrectlyMergedOrDroppedDetected: boolean;
+  readonly unrecognizedAttributeForwardedWithoutExplicitMuxCategoryPolicy: boolean;
+  readonly sdpAttributesPerMediaSectionCount: number;
+  readonly unknownMuxCategoryAttributesPerOfferAnswerCount: number;
+}
+
+export interface WebrtcSipRfc8859SdpAttributeCategoryFrameworkMuxCategoryIdenticalNormalSpecialSumTransportImpactGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_sdp_attributes_per_section_and_unknown_mux_category_count"
+    | "reject_conflicting_transport_special_sum_or_unclassified_mux_attribute"
+    | "drop_conflicting_identical_or_transport_mux_attribute_in_bundle_0ms";
+  readonly policyId: "P482-WEBRTC-SIP-RFC8859-FRAMEWORK-FOR-SDP-ATTRIBUTES-WHEN-MULTIPLEXING-IDENTICAL-NORMAL-SPECIAL-SUM-TRANSPORT-MUX-CATEGORY-CONFLICT-GUARD";
+  readonly reason: string;
+  readonly clampedSdpAttributesPerMediaSectionCount: number;
+  readonly clampedUnknownMuxCategoryAttributesCount: number;
+}
+
+export function evaluateWebrtcSipRfc8859FrameworkForSdpAttributesWhenMultiplexingIdenticalNormalSpecialSumTransportMuxCategoryConflictGuard(
+  input: WebrtcSipRfc8859SdpAttributeCategoryFrameworkMuxCategoryIdenticalNormalSpecialSumTransportImpactGuardInput,
+): WebrtcSipRfc8859SdpAttributeCategoryFrameworkMuxCategoryIdenticalNormalSpecialSumTransportImpactGuardResult {
+  const policyId =
+    "P482-WEBRTC-SIP-RFC8859-FRAMEWORK-FOR-SDP-ATTRIBUTES-WHEN-MULTIPLEXING-IDENTICAL-NORMAL-SPECIAL-SUM-TRANSPORT-MUX-CATEGORY-CONFLICT-GUARD" as const;
+  const clampedSdpAttributesPerMediaSectionCount = Math.min(
+    Math.max(1, input.sdpAttributesPerMediaSectionCount),
+    64,
+  );
+  const clampedUnknownMuxCategoryAttributesCount = Math.min(
+    Math.max(0, input.unknownMuxCategoryAttributesPerOfferAnswerCount),
+    8,
+  );
+
+  if (
+    input.conflictingIdenticalMuxCategoryAttributeValuesAcrossBundledSectionsDetected ||
+    input.duplicatedTransportOrIdenticalAttributeInNonTaggedBundleOnlySectionDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "drop_conflicting_identical_or_transport_mux_attribute_in_bundle_0ms",
+      policyId,
+      reason:
+        "RFC 8859 Section 4.1 / 4.5 violation: conflicting IDENTICAL mux-category attribute values across bundled m= sections or forbidden TRANSPORT/IDENTICAL attributes injected into non-tagged bundle-only m= sections; dropping malformed multiplexed SDP in 0ms.",
+      clampedSdpAttributesPerMediaSectionCount,
+      clampedUnknownMuxCategoryAttributesCount,
+    };
+  }
+
+  if (
+    input.transportCategoryAttributeMismatchAcrossBundledMediaSectionsDetected ||
+    input.specialOrSumCategoryAttributeIncorrectlyMergedOrDroppedDetected ||
+    input.unrecognizedAttributeForwardedWithoutExplicitMuxCategoryPolicy
+  ) {
+    return {
+      violated: true,
+      action:
+        "reject_conflicting_transport_special_sum_or_unclassified_mux_attribute",
+      policyId,
+      reason:
+        "RFC 8859 Section 4.3 / 4.4 / 4.5 violation: TRANSPORT attribute mismatch across bundled sections, improper SPECIAL/SUM attribute aggregation (e.g., a=rtpmap/a=fmtp/b=AS/b=TIAS), or forwarding unclassified TBD mux-category attributes; rejecting SDP negotiation.",
+      clampedSdpAttributesPerMediaSectionCount,
+      clampedUnknownMuxCategoryAttributesCount,
+    };
+  }
+
+  if (
+    input.sdpAttributesPerMediaSectionCount > 64 ||
+    input.unknownMuxCategoryAttributesPerOfferAnswerCount > 8
+  ) {
+    return {
+      violated: true,
+      action: "clamp_sdp_attributes_per_section_and_unknown_mux_category_count",
+      policyId,
+      reason:
+        "RFC 8859 SDP attribute multiplexing parser protection: clamping per-m= section attribute count to <= 64 and unclassified mux-category attribute count to <= 8.",
+      clampedSdpAttributesPerMediaSectionCount,
+      clampedUnknownMuxCategoryAttributesCount,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8859 SDP attribute multiplexing categories (IDENTICAL, NORMAL, SPECIAL, SUM, TRANSPORT) verified across all bundled m= sections.",
+    clampedSdpAttributesPerMediaSectionCount,
+    clampedUnknownMuxCategoryAttributesCount,
+  };
+}
+
+
 
 
 

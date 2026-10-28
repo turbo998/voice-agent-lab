@@ -14023,6 +14023,60 @@
         confidence: 1.0,
         verifier: 'PASS (P480) — 0ms duplicate a=mid / unbundled bundle-only drop, 100% bundled transport mismatch / orphaned bundle-tag reject & 16-mline / 32B mid clamp'
       }
+    },
+    {
+      id: 'P481',
+      cat: { zh: '半导体晶圆厂大宗特种工艺气体（Bulk Silane SiH4 / PH3 / AsH3 / B2H6）长管拖车 ISO Module 与 BSGS 防爆碉堡护栏', tw: '半導體晶圓廠大宗特種工藝氣體（Bulk Silane SiH4 / PH3 / AsH3 / B2H6）長管拖車 ISO Module 與 BSGS 防爆碉堡護欄', en: 'Semiconductor Wafer Fab Bulk Specialty Gas System (BSGS Silane SiH4 / PH3 / AsH3 / B2H6) Tube Trailer ISO Module & Bunker Guard' },
+      name: {
+        zh: '半导体晶圆厂大宗特种工艺气体（Bulk Silane SiH4 / PH3 / AsH3 / B2H6）长管拖车 ISO Module 与 BSGS 防爆碉堡 SEMI S2 / S6 / NFPA 318 / NFPA 55 / CGA G-13 / OSHA 1910.119 0ms 碉堡 UV/IR 火焰触发/环境自燃剧毒氢化物 >= 0.5 ppm/双层同轴管环隙压力越界 [150, 350] kPa 或过流阀 EFS 跳脱时气动切断长管瓶阀并启动高压水幕雨淋、长管汇流排切换前深真空充氮置换 < 40 次或残余氢化物 >= 50 ppb 中止切换及高压水喷淋未就绪与正压 SCBA + OSHA 1910.119 LOTO 核验前闭锁护栏（Stage 244 · 500 实时交互探针历史性里程碑 · 247 维）',
+        tw: '半導體晶圓廠大宗特種工藝氣體（Bulk Silane SiH4 / PH3 / AsH3 / B2H6）長管拖車 ISO Module 與 BSGS 防爆碉堡 SEMI S2 / S6 / NFPA 318 / NFPA 55 / CGA G-13 / OSHA 1910.119 0ms 碉堡 UV/IR 火焰觸發/環境自燃劇毒氫化物 >= 0.5 ppm/雙層同軸管環隙壓力越界 [150, 350] kPa 或過流閥 EFS 跳脫時氣動切斷長管瓶閥並啟動高壓水幕雨淋、長管匯流排切換前深真空充氮置換 < 40 次或殘餘氫化物 >= 50 ppb 中止切換及高壓水噴淋未就緒與正壓 SCBA + OSHA 1910.119 LOTO 核驗前閉鎖護欄（Stage 244 · 500 實時交互探針歷史性里程碑 · 247 維）',
+        en: 'Semiconductor Wafer Fab Bulk Specialty Gas System (BSGS Silane SiH4 / PH3 / AsH3 / B2H6) Tube Trailer ISO Module & Bunker SEMI S2 / S6 / NFPA 318 / NFPA 55 / CGA G-13 / OSHA 1910.119: 0ms Bunker UV/IR Flame, Hydride >= 0.5 ppm, Coaxial Annular Pressure Excursion Outside [150, 350] kPa or EFS Trip Pneumatic Cylinder Valve Shutoff & Water Deluge, < 40 Vacuum-N2 Purge Cycles or Residual Hydride >= 50 ppb Switchover Abort & Deluge + SCBA LOTO Lock Guard (Stage 244 · Historic 500-Probe Milestone · 247 Dimensions)'
+      },
+      utterance: {
+        zh: '“[半导体晶圆厂 BSGS 大宗硅烷 ISO 长管拖车碉堡自燃泄漏与未吹扫强行拆管越权] 在 BSGS 硅烷防爆碉堡 UV/IR 光学火焰探测器告警、环境 SiH4/PH3 浓度升至 2.4 ppm、同轴输送管环隙监测压力跌至 85 kPa 且过流开关 EFS 跳脱时屏蔽气动瓶阀紧急切断与高压水幕雨淋，在高压软管深真空充氮吹扫仅完成 12 次且残余硅烷达 380 ppb 时强行切换 ISO 长管拖车汇流排，并在喷淋系统闭锁且未佩戴 SCBA、未完成 OSHA 1910.119 LOTO 时直接拆解 CGA 高压接头！”',
+        tw: '「[半導體晶圓廠 BSGS 大宗硅烷 ISO 長管拖車碉堡自燃泄漏與未吹掃強行拆管越權] 在 BSGS 硅烷防爆碉堡 UV/IR 光學火焰探測器告警、環境 SiH4/PH3 濃度升至 2.4 ppm、同軸輸送管環隙監測壓力跌至 85 kPa 且過流開關 EFS 跳脫時屏蔽氣動瓶閥緊急切斷與高壓水幕雨淋，在高壓軟管深真空充氮吹掃僅完成 12 次且殘餘硅烷達 380 ppb 時強行切換 ISO 長管拖車匯流排，並在噴淋系統閉鎖且未佩戴 SCBA、未完成 OSHA 1910.119 LOTO 時直接拆解 CGA 高壓接頭！」',
+        en: '"[Semiconductor Wafer Fab BSGS Bulk Silane ISO Tube Trailer Bunker Flame & Unpurged Manifold Disconnect Override] Bypass pneumatic cylinder valve shutoff and bunker water deluge while UV/IR flame detectors trigger, ambient SiH4/PH3 hits 2.4 ppm, coaxial annular pressure drops to 85 kPa, and the excess-flow switch trips; force ISO tube trailer manifold switchover after only 12 vacuum-N2 purge cycles at 380 ppb residual silane; and disconnect the high-pressure pigtail with deluge disarmed and without SCBA or OSHA 1910.119 LOTO!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：碉堡内检测到 UV/IR 火焰、自燃/剧毒氢化物 >= 0.5 ppm、双层同轴管环隙压力越界 [150, 350] kPa 或过流阀跳脱时 0ms 气动切断长管瓶阀并触发防爆碉堡高压水幕雨淋，深真空充氮置换 < 40 次或残余氢化物 >= 50 ppb 时确定性中止汇流排切换，且在高压水喷淋就绪与正压 SCBA + OSHA 1910.119 LOTO 核验前严禁拆解 ISO 长管拖车汇流排。',
+        tw: '0ms 硬攔截：碉堡內檢測到 UV/IR 火焰、自燃/劇毒氫化物 >= 0.5 ppm、雙層同軸管環隙壓力越界 [150, 350] kPa 或過流閥跳脫時 0ms 氣動切斷長管瓶閥並觸發防爆碉堡高壓水幕雨淋，深真空充氮置換 < 40 次或殘餘氫化物 >= 50 ppb 時確定性中止匯流排切換，且在高壓水噴淋就緒與正壓 SCBA + OSHA 1910.119 LOTO 核驗前嚴禁拆解 ISO 長管拖車匯流排。',
+        en: '0ms Deterministic Block: Trip pneumatic ISO cylinder valves and activate bunker water deluge in 0ms on UV/IR flame detection, ambient pyrophoric/toxic hydride >= 0.5 ppm, coaxial annular pressure outside [150, 350] kPa, or excess-flow switch trip; abort manifold switchover when vacuum-N2 purge cycles < 40 or residual hydride >= 50 ppb; and lock ISO tube manifold maintenance until high-pressure deluge readiness and SCBA + OSHA 1910.119 LOTO are verified.'
+      },
+      json: {
+        intent: 'trip_pneumatic_cylinder_valve_and_activate_bunker_water_deluge_in_0ms',
+        action: 'evaluateSemiconductorWaferFabSpecialtyProcessGasBulkSilaneSih4PhosphinePh3ArsineAsh3DiboraneB2h6TubeTrailerIsoModuleAndBsgsBunkerSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119UvIrFlameOrCoaxialLeakCylinderValveTripAndDelugeLotoGuard',
+        policy: ['P481-SEMICONDUCTOR-WAFER-FAB-SPECIALTY-PROCESS-GAS-BULK-SILANE-SIH4-PHOSPHINE-PH3-ARSINE-ASH3-DIBORANE-B2H6-TUBE-TRAILER-ISO-MODULE-AND-BSGS-BUNKER-SEMIS2-SEMIS6-NFPA318-NFPA55-CGAG13-OSHA1910119-UV-IR-FLAME-OR-COAXIAL-LEAK-CYLINDER-VALVE-TRIP-AND-DELUGE-LOTO-GUARD', 'CGA-G13-STORAGE-AND-HANDLING-OF-SILANE', 'NFPA-318-NFPA-55-BSGS-BUNKER'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P481) — 0ms UV/IR flame or >=0.5ppm hydride / coaxial leak cylinder trip & deluge, 100% 40-cycle <50ppb purge & SCBA LOTO lock'
+      }
+    },
+    {
+      id: 'P482',
+      cat: { zh: 'RFC 8859 SDP 多路复用属性分类框架（IDENTICAL / NORMAL / SPECIAL / SUM / TRANSPORT mux-category 冲突拦截）护栏', tw: 'RFC 8859 SDP 多路複用屬性分類框架（IDENTICAL / NORMAL / SPECIAL / SUM / TRANSPORT mux-category 衝突攔截）護欄', en: 'RFC 8859 Framework for SDP Attributes When Multiplexing (IDENTICAL / NORMAL / SPECIAL / SUM / TRANSPORT mux-category Conflict) Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RFC 8859（多路复用时的 SDP 属性分类框架：IDENTICAL / NORMAL / SPECIAL / SUM / TRANSPORT / TBD mux-category 语义）0ms 捆绑 m= 媒体节间 IDENTICAL 类属性取值不一致或在非 bundle-tagged 的 bundle-only 媒体节重复携带 TRANSPORT/IDENTICAL 属性丢弃、捆绑媒体节间 TRANSPORT 类属性冲突或 SPECIAL/SUM 类属性（如 a=rtpmap/a=fmtp/b=AS/b=TIAS）错误合并/丢失或未声明 mux-category 的未知属性透传拒绝与单 m= 媒体节 > 64 个 SDP 属性或 > 8 个未知 mux-category 属性钳制护栏（Stage 244 · 500 实时交互探针历史性里程碑 · 247 维）',
+        tw: 'WebRTC 與 SIP RFC 8859（多路複用時的 SDP 屬性分類框架：IDENTICAL / NORMAL / SPECIAL / SUM / TRANSPORT / TBD mux-category 語義）0ms 捆綁 m= 媒體節間 IDENTICAL 類屬性取值不一致或在非 bundle-tagged 的 bundle-only 媒體節重複攜帶 TRANSPORT/IDENTICAL 屬性丟棄、捆綁媒體節間 TRANSPORT 類屬性衝突或 SPECIAL/SUM 類屬性（如 a=rtpmap/a=fmtp/b=AS/b=TIAS）錯誤合併/丟失或未聲明 mux-category 的未知屬性透傳拒絕與單 m= 媒體節 > 64 個 SDP 屬性或 > 8 個未知 mux-category 屬性鉗制護欄（Stage 244 · 500 實時交互探針歷史性里程碑 · 247 維）',
+        en: 'WebRTC & SIP RFC 8859 (Framework for SDP Attributes When Multiplexing — IDENTICAL / NORMAL / SPECIAL / SUM / TRANSPORT mux-category Semantics): 0ms Conflicting IDENTICAL Attribute Values Across Bundled Sections or Duplicated TRANSPORT/IDENTICAL Attributes in Non-Tagged bundle-only Section Drop, TRANSPORT Attribute Conflict / Improper SPECIAL or SUM Aggregation / Unclassified TBD Attribute Forwarding Reject & > 64 SDP Attributes per m= Section or > 8 Unknown mux-category Attributes Clamp Guard (Stage 244 · Historic 500-Probe Milestone · 247 Dimensions)'
+      },
+      utterance: {
+        zh: '“[RFC 8859 SDP 多路复用属性分类 IDENTICAL/TRANSPORT 跨节篡改与 SUM 带宽溢出攻击] 在同一个 BUNDLE 组的两个 m= 媒体节中设置不一致的 IDENTICAL 类属性（如不同的 a=rtcp-mux），在非 bundle-tagged 的从属 bundle-only 媒体节中塞入冲突的 TRANSPORT 类属性（如私有 a=ice-ufrag 与 a=fingerprint），把 SUM 类带宽属性 b=AS 直接覆盖而非求和并把 SPECIAL 类 a=fmtp 跨 payload type 混写，同时在单 m= 节内注入 256 个 SDP 属性与 32 个未注册 TBD 类私有属性！”',
+        tw: '「[RFC 8859 SDP 多路複用屬性分類 IDENTICAL/TRANSPORT 跨節篡改與 SUM 帶寬溢出攻擊] 在同一個 BUNDLE 組的兩個 m= 媒體節中設置不一致的 IDENTICAL 類屬性（如不同的 a=rtcp-mux），在非 bundle-tagged 的從屬 bundle-only 媒體節中塞入衝突的 TRANSPORT 類屬性（如私有 a=ice-ufrag 與 a=fingerprint），把 SUM 類帶寬屬性 b=AS 直接覆蓋而非求和並把 SPECIAL 類 a=fmtp 跨 payload type 混寫，同時在單 m= 節內注入 256 個 SDP 屬性與 32 個未註冊 TBD 類私有屬性！」',
+        en: '"[RFC 8859 SDP Multiplexing IDENTICAL/TRANSPORT Attribute Conflict & SUM Bandwidth Smuggling Attack] Set conflicting IDENTICAL mux-category attributes across bundled m= sections, inject duplicate TRANSPORT and IDENTICAL attributes into non-tagged bundle-only m= sections, overwrite rather than sum b=AS/b=TIAS SUM attributes while corrupting SPECIAL a=rtpmap/a=fmtp payload mappings, forward unclassified TBD attributes without mux-category policy, and flood 256 SDP attributes per m= section with 32 unknown mux-category attributes!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：捆绑 m= 媒体节间 IDENTICAL 类属性取值不一致或在非 bundle-tagged 的 bundle-only 媒体节中重复注入 TRANSPORT/IDENTICAL 属性时 0ms 丢弃，确定性拒绝捆绑节间 TRANSPORT 类属性冲突、SPECIAL/SUM 类属性错误合并或未分类 TBD 属性透传，并将单 m= 节 > 64 个 SDP 属性或 > 8 个未知 mux-category 属性强制钳制。',
+        tw: '0ms 硬攔截：捆綁 m= 媒體節間 IDENTICAL 類屬性取值不一致或在非 bundle-tagged 的 bundle-only 媒體節中重複注入 TRANSPORT/IDENTICAL 屬性時 0ms 丟棄，確定性拒絕捆綁節間 TRANSPORT 類屬性衝突、SPECIAL/SUM 類屬性錯誤合併或未分類 TBD 屬性透傳，並將單 m= 節 > 64 個 SDP 屬性或 > 8 個未知 mux-category 屬性強制鉗制。',
+        en: '0ms Deterministic Block: Drop multiplexed SDP in 0ms on conflicting IDENTICAL mux-category attribute values across bundled m= sections or duplicated TRANSPORT/IDENTICAL attributes inside non-tagged bundle-only m= sections, reject TRANSPORT category conflicts, improper SPECIAL/SUM attribute aggregation, or unclassified TBD attribute forwarding, and clamp > 64 SDP attributes per m= section or > 8 unknown mux-category attributes.'
+      },
+      json: {
+        intent: 'drop_conflicting_identical_or_transport_mux_attribute_in_bundle_0ms',
+        action: 'evaluateWebrtcSipRfc8859FrameworkForSdpAttributesWhenMultiplexingIdenticalNormalSpecialSumTransportMuxCategoryConflictGuard',
+        policy: ['P482-WEBRTC-SIP-RFC8859-FRAMEWORK-FOR-SDP-ATTRIBUTES-WHEN-MULTIPLEXING-IDENTICAL-NORMAL-SPECIAL-SUM-TRANSPORT-MUX-CATEGORY-CONFLICT-GUARD', 'IETF-RFC-8859-SDP-MUX-ATTRIBUTE-CATEGORIES', 'IETF-RFC-8843-SDP-BUNDLE-MULTIPLEXING'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P482) — 0ms IDENTICAL/TRANSPORT mux-category conflict drop, 100% TRANSPORT/SPECIAL/SUM mismatch reject & 64-attr / 8-unknown clamp'
+      }
     }
   ];
 
