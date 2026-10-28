@@ -44722,6 +44722,220 @@ export function evaluateWebrtcSipRfc8863IceNominatedCandidateContinualGatheringT
   };
 }
 
+export interface SemiconductorWaferCapillaryAndMoldedUnderfillCufMufFlipChipDispenseVacuumCureAndPlasmaDescumSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000AnhydrideEpoxyVocO3TripUnderfillVoidDelaminationAbortAndScbaLotoGuardInput {
+  cufMufUnderfillLineId: string;
+  epoxyAnhydrideAmineCuringAgentVaporOrSilicaFillerDustLeakMgM3: number;
+  plasmaDescumArO2Cf4ExhaustOrCureOvenSolventLelPct: number;
+  postCureSAMAcousticUnderfillFlipChipVoidAreaPct: number;
+  underfillFilletDelaminationOrCornerStressCrackRatePct: number;
+  vacuumCureOvenThermalRampOvershootDeltaC: number;
+  dispenseEnclosureOrVacuumCureOvenDoorOpenRequested: boolean;
+  postCooldownCureOvenChamberTemperatureC: number;
+  postPurgeResidualAnhydrideEpoxyVocOrOzonePpm: number;
+  dispenseHeaterRfPlasmaAndPneumaticScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferCapillaryAndMoldedUnderfillCufMufFlipChipDispenseVacuumCureAndPlasmaDescumSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000AnhydrideEpoxyVocO3TripUnderfillVoidDelaminationAbortAndScbaLotoGuardAssessment {
+  cufMufUnderfillLineId: string;
+  policyCode: "P447-SEMICONDUCTOR-WAFER-CAPILLARY-AND-MOLDED-UNDERFILL-CUF-MUF-FLIP-CHIP-DISPENSE-VACUUM-CURE-AND-PLASMA-DESCUM-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-ANHYDRIDE-EPOXY-VOC-O3-TRIP-UNDERFILL-VOID-DELAMINATION-ABORT-AND-SCBA-LOTO-GUARD";
+  cufMufDispenseAndVacuumCureSafe: boolean;
+  anhydrideEpoxyVocOrPlasmaCureLelTripped0ms: boolean;
+  samAcousticVoidFilletDelaminationOrThermalOvershootAborted: boolean;
+  enclosureOrOvenLockedUntilCoolVocPurgeAndScbaLoto: boolean;
+  action:
+    | "allow_verified_cuf_muf_underfill_dispense_and_vacuum_cure"
+    | "trip_dispense_heater_rf_plasma_and_cure_oven_in_0ms_and_engage_scrubber"
+    | "abort_cuf_muf_underfill_on_sam_void_fillet_delamination_or_cure_overshoot"
+    | "lock_dispense_and_cure_oven_until_cool_below_50c_voc_below_05ppm_and_scba_loto";
+  blockedReason:
+    | "none"
+    | "SEMIS2_NFPA86_OSHA19101000_ANHYDRIDE_EPOXY_1MGM3_OR_CURE_PLASMA_LEL_10PCT_TRIPPED_0MS"
+    | "CUF_MUF_SAM_VOID_2PCT_DELAMINATION_01PCT_OR_CURE_OVERSHOOT_5C_ABORTED"
+    | "SEMIS2_NFPA86_UNDERFILL_OVEN_LOCKED_UNTIL_50C_05PPM_VOC_AND_SCBA_LOTO";
+}
+
+export function evaluateSemiconductorWaferCapillaryAndMoldedUnderfillCufMufFlipChipDispenseVacuumCureAndPlasmaDescumSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000AnhydrideEpoxyVocO3TripUnderfillVoidDelaminationAbortAndScbaLotoGuard(
+  input: SemiconductorWaferCapillaryAndMoldedUnderfillCufMufFlipChipDispenseVacuumCureAndPlasmaDescumSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000AnhydrideEpoxyVocO3TripUnderfillVoidDelaminationAbortAndScbaLotoGuardInput,
+): SemiconductorWaferCapillaryAndMoldedUnderfillCufMufFlipChipDispenseVacuumCureAndPlasmaDescumSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000AnhydrideEpoxyVocO3TripUnderfillVoidDelaminationAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P447-SEMICONDUCTOR-WAFER-CAPILLARY-AND-MOLDED-UNDERFILL-CUF-MUF-FLIP-CHIP-DISPENSE-VACUUM-CURE-AND-PLASMA-DESCUM-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-ANHYDRIDE-EPOXY-VOC-O3-TRIP-UNDERFILL-VOID-DELAMINATION-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const anhydrideEpoxyVocOrPlasmaCureLelTripped0ms =
+    input.epoxyAnhydrideAmineCuringAgentVaporOrSilicaFillerDustLeakMgM3 >= 1.0 ||
+    input.plasmaDescumArO2Cf4ExhaustOrCureOvenSolventLelPct >= 10.0;
+
+  const samAcousticVoidFilletDelaminationOrThermalOvershootAborted =
+    input.postCureSAMAcousticUnderfillFlipChipVoidAreaPct >= 2.0 ||
+    input.underfillFilletDelaminationOrCornerStressCrackRatePct >= 0.1 ||
+    input.vacuumCureOvenThermalRampOvershootDeltaC >= 5.0;
+
+  const enclosureOrOvenLockedUntilCoolVocPurgeAndScbaLoto =
+    input.dispenseEnclosureOrVacuumCureOvenDoorOpenRequested &&
+    (input.postCooldownCureOvenChamberTemperatureC >= 50.0 ||
+      input.postPurgeResidualAnhydrideEpoxyVocOrOzonePpm >= 0.5 ||
+      !input.dispenseHeaterRfPlasmaAndPneumaticScbaLotoVerified);
+
+  if (anhydrideEpoxyVocOrPlasmaCureLelTripped0ms) {
+    return {
+      cufMufUnderfillLineId: input.cufMufUnderfillLineId,
+      policyCode,
+      cufMufDispenseAndVacuumCureSafe: false,
+      anhydrideEpoxyVocOrPlasmaCureLelTripped0ms: true,
+      samAcousticVoidFilletDelaminationOrThermalOvershootAborted,
+      enclosureOrOvenLockedUntilCoolVocPurgeAndScbaLoto,
+      action:
+        "trip_dispense_heater_rf_plasma_and_cure_oven_in_0ms_and_engage_scrubber",
+      blockedReason:
+        "SEMIS2_NFPA86_OSHA19101000_ANHYDRIDE_EPOXY_1MGM3_OR_CURE_PLASMA_LEL_10PCT_TRIPPED_0MS",
+    };
+  }
+
+  if (samAcousticVoidFilletDelaminationOrThermalOvershootAborted) {
+    return {
+      cufMufUnderfillLineId: input.cufMufUnderfillLineId,
+      policyCode,
+      cufMufDispenseAndVacuumCureSafe: false,
+      anhydrideEpoxyVocOrPlasmaCureLelTripped0ms: false,
+      samAcousticVoidFilletDelaminationOrThermalOvershootAborted: true,
+      enclosureOrOvenLockedUntilCoolVocPurgeAndScbaLoto,
+      action:
+        "abort_cuf_muf_underfill_on_sam_void_fillet_delamination_or_cure_overshoot",
+      blockedReason:
+        "CUF_MUF_SAM_VOID_2PCT_DELAMINATION_01PCT_OR_CURE_OVERSHOOT_5C_ABORTED",
+    };
+  }
+
+  if (enclosureOrOvenLockedUntilCoolVocPurgeAndScbaLoto) {
+    return {
+      cufMufUnderfillLineId: input.cufMufUnderfillLineId,
+      policyCode,
+      cufMufDispenseAndVacuumCureSafe: false,
+      anhydrideEpoxyVocOrPlasmaCureLelTripped0ms: false,
+      samAcousticVoidFilletDelaminationOrThermalOvershootAborted: false,
+      enclosureOrOvenLockedUntilCoolVocPurgeAndScbaLoto: true,
+      action:
+        "lock_dispense_and_cure_oven_until_cool_below_50c_voc_below_05ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_NFPA86_UNDERFILL_OVEN_LOCKED_UNTIL_50C_05PPM_VOC_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    cufMufUnderfillLineId: input.cufMufUnderfillLineId,
+    policyCode,
+    cufMufDispenseAndVacuumCureSafe: true,
+    anhydrideEpoxyVocOrPlasmaCureLelTripped0ms: false,
+    samAcousticVoidFilletDelaminationOrThermalOvershootAborted: false,
+    enclosureOrOvenLockedUntilCoolVocPurgeAndScbaLoto: false,
+    action: "allow_verified_cuf_muf_underfill_dispense_and_vacuum_cure",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8839IceSdpOfferAnswerCandidateAttributeUfragPwdRotationAndTrickleRestartGlareGuardInput {
+  sessionId: string;
+  sdpCandidateFoundationComponentTransportPrioritySyntaxCorrupted: boolean;
+  partialIceUfragOrPwdModifiedWithoutFullPairRotation: boolean;
+  simultaneousIceRestartOfferGlareOrRemoteCandidatesMismatchDetected: boolean;
+  icepwdEntropyBitsBelow128OrIceUfragBelow24Bits: boolean;
+  sdpCandidateLinesPerMlineCount: number;
+  iceRestartOffersPerMinute: number;
+}
+
+export interface WebrtcSipRfc8839IceSdpOfferAnswerCandidateAttributeUfragPwdRotationAndTrickleRestartGlareGuardAssessment {
+  sessionId: string;
+  policyCode: "P448-WEBRTC-SIP-RFC8839-ICE-SDP-OFFER-ANSWER-CANDIDATE-ATTRIBUTE-UFRAG-PWD-ROTATION-AND-TRICKLE-RESTART-GLARE-GUARD";
+  rfc8839IceSdpOfferAnswerHealthy: boolean;
+  corruptedCandidateOrPartialUfragPwdRotationDropped0ms: boolean;
+  iceRestartGlareRemoteCandidatesMismatchOrWeakEntropyRejected: boolean;
+  candidateLineCountOrIceRestartRateClamped: boolean;
+  action:
+    | "allow_verified_rfc8839_ice_sdp_offer_answer_negotiation"
+    | "drop_corrupted_sdp_candidate_or_partial_ice_ufrag_pwd_rotation_0ms"
+    | "reject_ice_restart_glare_remote_candidates_mismatch_or_weak_entropy"
+    | "clamp_sdp_candidate_lines_per_mline_or_ice_restart_churn";
+  blockedReason:
+    | "none"
+    | "RFC8839_CORRUPTED_SDP_CANDIDATE_OR_PARTIAL_UFRAG_PWD_ROTATION_DROPPED_0MS"
+    | "RFC8839_ICE_RESTART_GLARE_REMOTE_CANDIDATES_MISMATCH_OR_WEAK_ENTROPY_REJECTED"
+    | "RFC8839_CANDIDATES_OVER_32_PER_MLINE_OR_RESTARTS_OVER_4_PER_MIN_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8839IceSdpOfferAnswerCandidateAttributeUfragPwdRotationAndTrickleRestartGlareGuard(
+  input: WebrtcSipRfc8839IceSdpOfferAnswerCandidateAttributeUfragPwdRotationAndTrickleRestartGlareGuardInput,
+): WebrtcSipRfc8839IceSdpOfferAnswerCandidateAttributeUfragPwdRotationAndTrickleRestartGlareGuardAssessment {
+  const policyCode =
+    "P448-WEBRTC-SIP-RFC8839-ICE-SDP-OFFER-ANSWER-CANDIDATE-ATTRIBUTE-UFRAG-PWD-ROTATION-AND-TRICKLE-RESTART-GLARE-GUARD" as const;
+
+  const corruptedCandidateOrPartialUfragPwdRotationDropped0ms =
+    input.sdpCandidateFoundationComponentTransportPrioritySyntaxCorrupted ||
+    input.partialIceUfragOrPwdModifiedWithoutFullPairRotation;
+
+  const iceRestartGlareRemoteCandidatesMismatchOrWeakEntropyRejected =
+    input.simultaneousIceRestartOfferGlareOrRemoteCandidatesMismatchDetected ||
+    input.icepwdEntropyBitsBelow128OrIceUfragBelow24Bits;
+
+  const candidateLineCountOrIceRestartRateClamped =
+    input.sdpCandidateLinesPerMlineCount > 32 ||
+    input.iceRestartOffersPerMinute > 4;
+
+  if (corruptedCandidateOrPartialUfragPwdRotationDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8839IceSdpOfferAnswerHealthy: false,
+      corruptedCandidateOrPartialUfragPwdRotationDropped0ms: true,
+      iceRestartGlareRemoteCandidatesMismatchOrWeakEntropyRejected,
+      candidateLineCountOrIceRestartRateClamped,
+      action:
+        "drop_corrupted_sdp_candidate_or_partial_ice_ufrag_pwd_rotation_0ms",
+      blockedReason:
+        "RFC8839_CORRUPTED_SDP_CANDIDATE_OR_PARTIAL_UFRAG_PWD_ROTATION_DROPPED_0MS",
+    };
+  }
+
+  if (iceRestartGlareRemoteCandidatesMismatchOrWeakEntropyRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8839IceSdpOfferAnswerHealthy: false,
+      corruptedCandidateOrPartialUfragPwdRotationDropped0ms: false,
+      iceRestartGlareRemoteCandidatesMismatchOrWeakEntropyRejected: true,
+      candidateLineCountOrIceRestartRateClamped,
+      action:
+        "reject_ice_restart_glare_remote_candidates_mismatch_or_weak_entropy",
+      blockedReason:
+        "RFC8839_ICE_RESTART_GLARE_REMOTE_CANDIDATES_MISMATCH_OR_WEAK_ENTROPY_REJECTED",
+    };
+  }
+
+  if (candidateLineCountOrIceRestartRateClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8839IceSdpOfferAnswerHealthy: false,
+      corruptedCandidateOrPartialUfragPwdRotationDropped0ms: false,
+      iceRestartGlareRemoteCandidatesMismatchOrWeakEntropyRejected: false,
+      candidateLineCountOrIceRestartRateClamped: true,
+      action: "clamp_sdp_candidate_lines_per_mline_or_ice_restart_churn",
+      blockedReason:
+        "RFC8839_CANDIDATES_OVER_32_PER_MLINE_OR_RESTARTS_OVER_4_PER_MIN_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8839IceSdpOfferAnswerHealthy: true,
+    corruptedCandidateOrPartialUfragPwdRotationDropped0ms: false,
+    iceRestartGlareRemoteCandidatesMismatchOrWeakEntropyRejected: false,
+    candidateLineCountOrIceRestartRateClamped: false,
+    action: "allow_verified_rfc8839_ice_sdp_offer_answer_negotiation",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
