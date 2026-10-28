@@ -44506,6 +44506,223 @@ export function evaluateWebrtcSipRfc8828WebrtcIpAddressHandlingModeMdnsLocalCand
   };
 }
 
+export interface SemiconductorWaferSubMicronFlipChip25d3dMicroBumpCuSnAgElectroplatingFluxJetCleanAndMassReflowSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000MsaSnAcidMistVocTripKirkendallVoidBridgeAbortAndScbaLotoGuardInput {
+  readonly microBumpReflowLineId: string;
+  readonly cuSnAgPlatingMsaAcidMistOrThioureaAdditiveLeakMgM3: number;
+  readonly massReflowFormicAcidOrFluxSolventVaporLelPct: number;
+  readonly postReflowCu6sn5Cu3snImcKirkendallVoidAreaPct: number;
+  readonly sub10umMicroBumpSolderBridgeOrNonWetOpenRatePct: number;
+  readonly reflowPeakTemperatureExcursionAbove260cDeltaC: number;
+  readonly platerHoodOrReflowFurnaceDoorOpenRequested: boolean;
+  readonly postCooldownReflowZoneTemperatureC: number;
+  readonly postN2PurgeResidualFormicAcidOrFluxVocPpm: number;
+  readonly rectifierIsolationN2PurgeAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferSubMicronFlipChip25d3dMicroBumpCuSnAgElectroplatingFluxJetCleanAndMassReflowSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000MsaSnAcidMistVocTripKirkendallVoidBridgeAbortAndScbaLotoGuardAssessment {
+  readonly microBumpReflowLineId: string;
+  readonly policyCode: "P445-SEMICONDUCTOR-WAFER-SUB-MICRON-FLIP-CHIP-25D-3D-MICRO-BUMP-CUSNAG-ELECTROPLATING-FLUX-JET-CLEAN-AND-MASS-REFLOW-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-MSA-SN-ACID-MIST-VOC-TRIP-KIRKENDALL-VOID-BRIDGE-ABORT-AND-SCBA-LOTO-GUARD";
+  readonly microBumpPlatingAndMassReflowSafe: boolean;
+  readonly msaAcidMistOrFormicFluxLelTripped0ms: boolean;
+  readonly kirkendallVoidSolderBridgeOrReflowThermalExcursionAborted: boolean;
+  readonly furnaceOrPlaterLockedUntilCoolFormicPurgeAndScbaLoto: boolean;
+  readonly action:
+    | "allow_verified_25d_3d_cusnag_micro_bump_electroplating_and_mass_reflow"
+    | "trip_plating_rectifier_and_reflow_formic_flux_valve_in_0ms_and_flood_n2_scrubber"
+    | "abort_micro_bump_reflow_on_imc_kirkendall_void_solder_bridge_or_260c_excursion"
+    | "lock_plater_and_reflow_furnace_until_cool_below_50c_formic_below_05ppm_and_scba_loto";
+  readonly blockedReason:
+    | "none"
+    | "SEMIS2_NFPA86_OSHA19101000_MSA_ACID_MIST_05MGM3_OR_FORMIC_FLUX_LEL_10PCT_TRIPPED_0MS"
+    | "MICRO_BUMP_IMC_KIRKENDALL_VOID_5PCT_BRIDGE_005PCT_OR_REFLOW_OVER_5C_ABORTED"
+    | "SEMIS2_NFPA86_PLATER_REFLOW_LOCKED_UNTIL_50C_05PPM_FORMIC_AND_SCBA_LOTO";
+}
+
+export function evaluateSemiconductorWaferSubMicronFlipChip25d3dMicroBumpCuSnAgElectroplatingFluxJetCleanAndMassReflowSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000MsaSnAcidMistVocTripKirkendallVoidBridgeAbortAndScbaLotoGuard(
+  input: SemiconductorWaferSubMicronFlipChip25d3dMicroBumpCuSnAgElectroplatingFluxJetCleanAndMassReflowSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000MsaSnAcidMistVocTripKirkendallVoidBridgeAbortAndScbaLotoGuardInput,
+): SemiconductorWaferSubMicronFlipChip25d3dMicroBumpCuSnAgElectroplatingFluxJetCleanAndMassReflowSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000MsaSnAcidMistVocTripKirkendallVoidBridgeAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P445-SEMICONDUCTOR-WAFER-SUB-MICRON-FLIP-CHIP-25D-3D-MICRO-BUMP-CUSNAG-ELECTROPLATING-FLUX-JET-CLEAN-AND-MASS-REFLOW-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-MSA-SN-ACID-MIST-VOC-TRIP-KIRKENDALL-VOID-BRIDGE-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const msaAcidMistOrFormicFluxLelTripped0ms =
+    input.cuSnAgPlatingMsaAcidMistOrThioureaAdditiveLeakMgM3 >= 0.5 ||
+    input.massReflowFormicAcidOrFluxSolventVaporLelPct >= 10.0;
+
+  const kirkendallVoidSolderBridgeOrReflowThermalExcursionAborted =
+    input.postReflowCu6sn5Cu3snImcKirkendallVoidAreaPct >= 5.0 ||
+    input.sub10umMicroBumpSolderBridgeOrNonWetOpenRatePct >= 0.05 ||
+    input.reflowPeakTemperatureExcursionAbove260cDeltaC >= 5.0;
+
+  const furnaceOrPlaterLockedUntilCoolFormicPurgeAndScbaLoto =
+    input.platerHoodOrReflowFurnaceDoorOpenRequested &&
+    (input.postCooldownReflowZoneTemperatureC >= 50.0 ||
+      input.postN2PurgeResidualFormicAcidOrFluxVocPpm >= 0.5 ||
+      !input.rectifierIsolationN2PurgeAndScbaLotoVerified);
+
+  if (msaAcidMistOrFormicFluxLelTripped0ms) {
+    return {
+      microBumpReflowLineId: input.microBumpReflowLineId,
+      policyCode,
+      microBumpPlatingAndMassReflowSafe: false,
+      msaAcidMistOrFormicFluxLelTripped0ms: true,
+      kirkendallVoidSolderBridgeOrReflowThermalExcursionAborted,
+      furnaceOrPlaterLockedUntilCoolFormicPurgeAndScbaLoto,
+      action:
+        "trip_plating_rectifier_and_reflow_formic_flux_valve_in_0ms_and_flood_n2_scrubber",
+      blockedReason:
+        "SEMIS2_NFPA86_OSHA19101000_MSA_ACID_MIST_05MGM3_OR_FORMIC_FLUX_LEL_10PCT_TRIPPED_0MS",
+    };
+  }
+
+  if (kirkendallVoidSolderBridgeOrReflowThermalExcursionAborted) {
+    return {
+      microBumpReflowLineId: input.microBumpReflowLineId,
+      policyCode,
+      microBumpPlatingAndMassReflowSafe: false,
+      msaAcidMistOrFormicFluxLelTripped0ms: false,
+      kirkendallVoidSolderBridgeOrReflowThermalExcursionAborted: true,
+      furnaceOrPlaterLockedUntilCoolFormicPurgeAndScbaLoto,
+      action:
+        "abort_micro_bump_reflow_on_imc_kirkendall_void_solder_bridge_or_260c_excursion",
+      blockedReason:
+        "MICRO_BUMP_IMC_KIRKENDALL_VOID_5PCT_BRIDGE_005PCT_OR_REFLOW_OVER_5C_ABORTED",
+    };
+  }
+
+  if (furnaceOrPlaterLockedUntilCoolFormicPurgeAndScbaLoto) {
+    return {
+      microBumpReflowLineId: input.microBumpReflowLineId,
+      policyCode,
+      microBumpPlatingAndMassReflowSafe: false,
+      msaAcidMistOrFormicFluxLelTripped0ms: false,
+      kirkendallVoidSolderBridgeOrReflowThermalExcursionAborted: false,
+      furnaceOrPlaterLockedUntilCoolFormicPurgeAndScbaLoto: true,
+      action:
+        "lock_plater_and_reflow_furnace_until_cool_below_50c_formic_below_05ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_NFPA86_PLATER_REFLOW_LOCKED_UNTIL_50C_05PPM_FORMIC_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    microBumpReflowLineId: input.microBumpReflowLineId,
+    policyCode,
+    microBumpPlatingAndMassReflowSafe: true,
+    msaAcidMistOrFormicFluxLelTripped0ms: false,
+    kirkendallVoidSolderBridgeOrReflowThermalExcursionAborted: false,
+    furnaceOrPlaterLockedUntilCoolFormicPurgeAndScbaLoto: false,
+    action:
+      "allow_verified_25d_3d_cusnag_micro_bump_electroplating_and_mass_reflow",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8863IceNominatedCandidateContinualGatheringTurnMobilityAndAggressiveNominationRaceGuardInput {
+  readonly sessionId: string;
+  readonly unauthenticatedIceContinualGatheringCandidateOrTurnMobilityTokenInjected: boolean;
+  readonly deprecatedRfc5245AggressiveNominationUseCandidateRaceTriggered: boolean;
+  readonly nonSelectedCandidatePairKeptWarmAboveBackupQuotaOrCrossVpcRouteLeak: boolean;
+  readonly turnMobilityMiceTicketReplayOrAddressHijackDetected: boolean;
+  readonly continualGatheringCandidateChurnPerMinute: number;
+  readonly simultaneousBackupCandidatePairsRetainedCount: number;
+}
+
+export interface WebrtcSipRfc8863IceNominatedCandidateContinualGatheringTurnMobilityAndAggressiveNominationRaceGuardAssessment {
+  readonly sessionId: string;
+  readonly policyCode: "P446-WEBRTC-SIP-RFC8863-ICE-NOMINATED-CANDIDATE-CONTINUAL-GATHERING-TURN-MOBILITY-AND-AGGRESSIVE-NOMINATION-RACE-GUARD";
+  readonly rfc8863IceContinualGatheringAndMobilityHealthy: boolean;
+  readonly unauthenticatedContinualCandidateOrAggressiveNominationDropped0ms: boolean;
+  readonly turnMobilityTicketReplayOrCrossVpcBackupRouteRejected: boolean;
+  readonly continualGatheringChurnOrBackupPairPoolClamped: boolean;
+  readonly action:
+    | "allow_verified_rfc8863_continual_gathering_and_regular_nomination"
+    | "drop_unauthenticated_continual_candidate_or_aggressive_nomination_0ms"
+    | "reject_turn_mobility_ticket_replay_or_cross_vpc_backup_pair_leak"
+    | "clamp_continual_gathering_candidate_churn_or_backup_pair_pool";
+  readonly blockedReason:
+    | "none"
+    | "RFC8863_RFC8445_UNAUTHENTICATED_CONTINUAL_CANDIDATE_OR_AGGRESSIVE_NOMINATION_DROPPED_0MS"
+    | "RFC8863_RFC8016_TURN_MOBILITY_TICKET_REPLAY_OR_CROSS_VPC_BACKUP_LEAK_REJECTED"
+    | "RFC8863_CONTINUAL_GATHER_CHURN_OVER_12_PER_MIN_OR_BACKUP_PAIRS_OVER_2_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8863IceNominatedCandidateContinualGatheringTurnMobilityAndAggressiveNominationRaceGuard(
+  input: WebrtcSipRfc8863IceNominatedCandidateContinualGatheringTurnMobilityAndAggressiveNominationRaceGuardInput,
+): WebrtcSipRfc8863IceNominatedCandidateContinualGatheringTurnMobilityAndAggressiveNominationRaceGuardAssessment {
+  const policyCode =
+    "P446-WEBRTC-SIP-RFC8863-ICE-NOMINATED-CANDIDATE-CONTINUAL-GATHERING-TURN-MOBILITY-AND-AGGRESSIVE-NOMINATION-RACE-GUARD" as const;
+
+  const unauthenticatedContinualCandidateOrAggressiveNominationDropped0ms =
+    input.unauthenticatedIceContinualGatheringCandidateOrTurnMobilityTokenInjected ||
+    input.deprecatedRfc5245AggressiveNominationUseCandidateRaceTriggered;
+
+  const turnMobilityTicketReplayOrCrossVpcBackupRouteRejected =
+    input.nonSelectedCandidatePairKeptWarmAboveBackupQuotaOrCrossVpcRouteLeak ||
+    input.turnMobilityMiceTicketReplayOrAddressHijackDetected;
+
+  const continualGatheringChurnOrBackupPairPoolClamped =
+    input.continualGatheringCandidateChurnPerMinute > 12 ||
+    input.simultaneousBackupCandidatePairsRetainedCount > 2;
+
+  if (unauthenticatedContinualCandidateOrAggressiveNominationDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8863IceContinualGatheringAndMobilityHealthy: false,
+      unauthenticatedContinualCandidateOrAggressiveNominationDropped0ms: true,
+      turnMobilityTicketReplayOrCrossVpcBackupRouteRejected,
+      continualGatheringChurnOrBackupPairPoolClamped,
+      action:
+        "drop_unauthenticated_continual_candidate_or_aggressive_nomination_0ms",
+      blockedReason:
+        "RFC8863_RFC8445_UNAUTHENTICATED_CONTINUAL_CANDIDATE_OR_AGGRESSIVE_NOMINATION_DROPPED_0MS",
+    };
+  }
+
+  if (turnMobilityTicketReplayOrCrossVpcBackupRouteRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8863IceContinualGatheringAndMobilityHealthy: false,
+      unauthenticatedContinualCandidateOrAggressiveNominationDropped0ms: false,
+      turnMobilityTicketReplayOrCrossVpcBackupRouteRejected: true,
+      continualGatheringChurnOrBackupPairPoolClamped,
+      action:
+        "reject_turn_mobility_ticket_replay_or_cross_vpc_backup_pair_leak",
+      blockedReason:
+        "RFC8863_RFC8016_TURN_MOBILITY_TICKET_REPLAY_OR_CROSS_VPC_BACKUP_LEAK_REJECTED",
+    };
+  }
+
+  if (continualGatheringChurnOrBackupPairPoolClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8863IceContinualGatheringAndMobilityHealthy: false,
+      unauthenticatedContinualCandidateOrAggressiveNominationDropped0ms: false,
+      turnMobilityTicketReplayOrCrossVpcBackupRouteRejected: false,
+      continualGatheringChurnOrBackupPairPoolClamped: true,
+      action:
+        "clamp_continual_gathering_candidate_churn_or_backup_pair_pool",
+      blockedReason:
+        "RFC8863_CONTINUAL_GATHER_CHURN_OVER_12_PER_MIN_OR_BACKUP_PAIRS_OVER_2_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8863IceContinualGatheringAndMobilityHealthy: true,
+    unauthenticatedContinualCandidateOrAggressiveNominationDropped0ms: false,
+    turnMobilityTicketReplayOrCrossVpcBackupRouteRejected: false,
+    continualGatheringChurnOrBackupPairPoolClamped: false,
+    action:
+      "allow_verified_rfc8863_continual_gathering_and_regular_nomination",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
