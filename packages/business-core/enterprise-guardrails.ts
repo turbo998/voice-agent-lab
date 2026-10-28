@@ -37918,6 +37918,213 @@ export function evaluateWebrtcSipRtpRfc8083CircuitBreakersRfc8888CcfbCongestionF
   };
 }
 
+export interface SemiconductorWaferUpwDissolvedOzoneDio3Sanitization185nmTocUvAndMixedBedIonExchangeRegenerationGuardInput {
+  upwLoopOrIxTrainId: string;
+  ambientOzonePpb: number;
+  postDestructOzonePpb: number;
+  ixAcidAndCausticRegenValvesSimultaneouslyOpen: boolean;
+  dissolvedOzoneEnteringOrganicIxResinPpb: number;
+  ixVesselTemperatureCelsius: number;
+  uvReactorFlowRateM3PerHr: number;
+  uvLampEnergized: boolean;
+  headspaceOzonePpb: number;
+  requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferUpwDissolvedOzoneDio3Sanitization185nmTocUvAndMixedBedIonExchangeRegenerationGuardResult {
+  policyCode: "P383-SEMICONDUCTOR-WAFER-UPW-DISSOLVED-OZONE-DIO3-SANITIZATION-185NM-TOC-UV-AND-MIXED-BED-ION-EXCHANGE-REGENERATION-SEMIS2-SEMIS6-SEMIF63-NFPA318-OSHA1910119-OSHA19101000-OZONE-LEAK-OR-DESTRUCT-FAILURE-TRIP-IX-RESIN-OXIDATION-OR-ACID-CAUSTIC-BOILOVER-ISOLATION-AND-VUV-DRY-FIRE-SCBA-LOTO-GUARD";
+  upwLoopOrIxTrainId: string;
+  upwDio3UvAndIxRegenSafe: boolean;
+  ozoneLeakOrDestructFailureTripped0ms: boolean;
+  ixResinOzoneOxidationOrAcidCausticBoiloverIsolated: boolean;
+  vuvDryFireOrHeadspaceOzoneScbaLotoRequired: boolean;
+  action:
+    | "allow_upw_dio3_sanitization_185nm_toc_uv_and_mixed_bed_ix_regeneration"
+    | "trip_ozone_generator_hv_close_o3_contactor_feed_and_divert_to_catalytic_uv_destruct_in_0ms"
+    | "trip_ix_acid_caustic_regen_pumps_isolate_resin_bed_and_open_upw_quench_to_awn"
+    | "trip_185nm_vuv_lamp_ballast_on_low_flow_and_lock_contactor_until_o3_below_50ppb_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferUpwDissolvedOzoneDio3Sanitization185nmTocUvAndMixedBedIonExchangeRegenerationSemiS2SemiS6SemiF63Nfpa318Osha1910119Osha19101000OzoneLeakOrDestructFailureTripIxResinOxidationOrAcidCausticBoiloverIsolationAndVuvDryFireScbaLotoGuard(
+  input: SemiconductorWaferUpwDissolvedOzoneDio3Sanitization185nmTocUvAndMixedBedIonExchangeRegenerationGuardInput,
+): SemiconductorWaferUpwDissolvedOzoneDio3Sanitization185nmTocUvAndMixedBedIonExchangeRegenerationGuardResult {
+  const policyCode =
+    "P383-SEMICONDUCTOR-WAFER-UPW-DISSOLVED-OZONE-DIO3-SANITIZATION-185NM-TOC-UV-AND-MIXED-BED-ION-EXCHANGE-REGENERATION-SEMIS2-SEMIS6-SEMIF63-NFPA318-OSHA1910119-OSHA19101000-OZONE-LEAK-OR-DESTRUCT-FAILURE-TRIP-IX-RESIN-OXIDATION-OR-ACID-CAUSTIC-BOILOVER-ISOLATION-AND-VUV-DRY-FIRE-SCBA-LOTO-GUARD" as const;
+
+  const ozoneLeakOrDestructHazard =
+    input.ambientOzonePpb >= 100 || input.postDestructOzonePpb > 20;
+
+  const ixResinOrRegenHazard =
+    input.ixAcidAndCausticRegenValvesSimultaneouslyOpen ||
+    input.dissolvedOzoneEnteringOrganicIxResinPpb > 10 ||
+    input.ixVesselTemperatureCelsius > 55;
+
+  const vuvDryFireOrHeadspaceHazard =
+    (input.uvLampEnergized && input.uvReactorFlowRateM3PerHr < 5) ||
+    input.headspaceOzonePpb >= 50;
+
+  if (ozoneLeakOrDestructHazard) {
+    return {
+      policyCode,
+      upwLoopOrIxTrainId: input.upwLoopOrIxTrainId,
+      upwDio3UvAndIxRegenSafe: false,
+      ozoneLeakOrDestructFailureTripped0ms: true,
+      ixResinOzoneOxidationOrAcidCausticBoiloverIsolated: ixResinOrRegenHazard,
+      vuvDryFireOrHeadspaceOzoneScbaLotoRequired: vuvDryFireOrHeadspaceHazard,
+      action:
+        "trip_ozone_generator_hv_close_o3_contactor_feed_and_divert_to_catalytic_uv_destruct_in_0ms",
+      blockedReason:
+        "ambient_ozone_at_or_above_100ppb_or_post_destruct_ozone_over_20ppb_tripped_0ms",
+    };
+  }
+
+  if (ixResinOrRegenHazard) {
+    return {
+      policyCode,
+      upwLoopOrIxTrainId: input.upwLoopOrIxTrainId,
+      upwDio3UvAndIxRegenSafe: false,
+      ozoneLeakOrDestructFailureTripped0ms: false,
+      ixResinOzoneOxidationOrAcidCausticBoiloverIsolated: true,
+      vuvDryFireOrHeadspaceOzoneScbaLotoRequired: vuvDryFireOrHeadspaceHazard,
+      action:
+        "trip_ix_acid_caustic_regen_pumps_isolate_resin_bed_and_open_upw_quench_to_awn",
+      blockedReason:
+        "ix_simultaneous_hcl_naoh_boilover_ozone_over_10ppb_in_organic_resin_or_vessel_over_55c_isolated",
+    };
+  }
+
+  if (vuvDryFireOrHeadspaceHazard) {
+    return {
+      policyCode,
+      upwLoopOrIxTrainId: input.upwLoopOrIxTrainId,
+      upwDio3UvAndIxRegenSafe: false,
+      ozoneLeakOrDestructFailureTripped0ms: false,
+      ixResinOzoneOxidationOrAcidCausticBoiloverIsolated: false,
+      vuvDryFireOrHeadspaceOzoneScbaLotoRequired: true,
+      action:
+        "trip_185nm_vuv_lamp_ballast_on_low_flow_and_lock_contactor_until_o3_below_50ppb_scba_loto",
+      blockedReason:
+        "vuv_185nm_dry_fire_below_5m3h_or_headspace_ozone_at_or_above_50ppb_requires_scba_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    upwLoopOrIxTrainId: input.upwLoopOrIxTrainId,
+    upwDio3UvAndIxRegenSafe: true,
+    ozoneLeakOrDestructFailureTripped0ms: false,
+    ixResinOzoneOxidationOrAcidCausticBoiloverIsolated: false,
+    vuvDryFireOrHeadspaceOzoneScbaLotoRequired: false,
+    action:
+      "allow_upw_dio3_sanitization_185nm_toc_uv_and_mixed_bed_ix_regeneration",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc7741Vp8AndRfc9628Vp9PayloadDescriptorGuardInput {
+  sessionId: string;
+  vp8Vp9DescriptorAndSsDeclaredBytes: number;
+  rtpPayloadRemainingBytes: number;
+  vp9SsSpatialLayersNs: number;
+  vp9SsPicturesInGroupNg: number;
+  vp9InterPictureHasZeroOrCyclicPDiff: boolean;
+  vp8Vp9MidPartitionOrEndWithoutStartBit: boolean;
+  pictureIdOrTl0PicIdxDiscontinuityRatePerSec: number;
+}
+
+export interface WebrtcSipRtpRfc7741Vp8AndRfc9628Vp9PayloadDescriptorGuardResult {
+  policyCode: "P384-WEBRTC-SIP-RTP-RFC7741-VP8-AND-RFC9628-VP9-PAYLOAD-DESCRIPTOR-SS-LENGTH-OVERREAD-NS-NG-COMBINATORIAL-BOMB-CYCLIC-PDIFF-REFERENCE-AND-PICTUREID-TL0PICIDX-FLOOD-GUARD";
+  sessionId: string;
+  vp8AndVp9PayloadHealthy: boolean;
+  descriptorSsOverreadOrNsNgBombDropped0ms: boolean;
+  cyclicPDiffOrOrphanPartitionRejected: boolean;
+  pictureIdOrTl0PicIdxDiscontinuityFloodClamped: boolean;
+  action:
+    | "accept_rfc7741_vp8_and_rfc9628_vp9_rtp_video_payload"
+    | "drop_vp8_vp9_descriptor_ss_overread_or_ns_over_8_ng_over_32_combinatorial_bomb_in_0ms"
+    | "reject_vp9_cyclic_pdiff_or_orphan_partition_and_trigger_rtcp_pli_keyframe_recovery"
+    | "clamp_vp8_vp9_pictureid_or_tl0picidx_discontinuity_flood_over_30_per_sec";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc7741Vp8AndRfc9628Vp9PayloadDescriptorSsLengthOverreadNsNgCombinatorialBombCyclicPDiffReferenceAndPictureIdTl0PicIdxFloodGuard(
+  input: WebrtcSipRtpRfc7741Vp8AndRfc9628Vp9PayloadDescriptorGuardInput,
+): WebrtcSipRtpRfc7741Vp8AndRfc9628Vp9PayloadDescriptorGuardResult {
+  const policyCode =
+    "P384-WEBRTC-SIP-RTP-RFC7741-VP8-AND-RFC9628-VP9-PAYLOAD-DESCRIPTOR-SS-LENGTH-OVERREAD-NS-NG-COMBINATORIAL-BOMB-CYCLIC-PDIFF-REFERENCE-AND-PICTUREID-TL0PICIDX-FLOOD-GUARD" as const;
+
+  const overreadOrSsBombHazard =
+    input.vp8Vp9DescriptorAndSsDeclaredBytes < 1 ||
+    input.vp8Vp9DescriptorAndSsDeclaredBytes > input.rtpPayloadRemainingBytes ||
+    input.vp9SsSpatialLayersNs > 8 ||
+    input.vp9SsPicturesInGroupNg > 32;
+
+  const cyclicPDiffOrPartitionHazard =
+    input.vp9InterPictureHasZeroOrCyclicPDiff ||
+    input.vp8Vp9MidPartitionOrEndWithoutStartBit;
+
+  const discontinuityFloodHazard =
+    input.pictureIdOrTl0PicIdxDiscontinuityRatePerSec > 30;
+
+  if (overreadOrSsBombHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      vp8AndVp9PayloadHealthy: false,
+      descriptorSsOverreadOrNsNgBombDropped0ms: true,
+      cyclicPDiffOrOrphanPartitionRejected: cyclicPDiffOrPartitionHazard,
+      pictureIdOrTl0PicIdxDiscontinuityFloodClamped: discontinuityFloodHazard,
+      action:
+        "drop_vp8_vp9_descriptor_ss_overread_or_ns_over_8_ng_over_32_combinatorial_bomb_in_0ms",
+      blockedReason:
+        "vp8_vp9_descriptor_ss_length_overread_or_ns_over_8_ng_over_32_dropped_0ms",
+    };
+  }
+
+  if (cyclicPDiffOrPartitionHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      vp8AndVp9PayloadHealthy: false,
+      descriptorSsOverreadOrNsNgBombDropped0ms: false,
+      cyclicPDiffOrOrphanPartitionRejected: true,
+      pictureIdOrTl0PicIdxDiscontinuityFloodClamped: discontinuityFloodHazard,
+      action:
+        "reject_vp9_cyclic_pdiff_or_orphan_partition_and_trigger_rtcp_pli_keyframe_recovery",
+      blockedReason:
+        "vp9_zero_or_cyclic_pdiff_reference_or_orphan_partition_rejected",
+    };
+  }
+
+  if (discontinuityFloodHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      vp8AndVp9PayloadHealthy: false,
+      descriptorSsOverreadOrNsNgBombDropped0ms: false,
+      cyclicPDiffOrOrphanPartitionRejected: false,
+      pictureIdOrTl0PicIdxDiscontinuityFloodClamped: true,
+      action:
+        "clamp_vp8_vp9_pictureid_or_tl0picidx_discontinuity_flood_over_30_per_sec",
+      blockedReason:
+        "vp8_vp9_pictureid_or_tl0picidx_discontinuity_rate_over_30_per_sec_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    vp8AndVp9PayloadHealthy: true,
+    descriptorSsOverreadOrNsNgBombDropped0ms: false,
+    cyclicPDiffOrOrphanPartitionRejected: false,
+    pictureIdOrTl0PicIdxDiscontinuityFloodClamped: false,
+    action: "accept_rfc7741_vp8_and_rfc9628_vp9_rtp_video_payload",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
