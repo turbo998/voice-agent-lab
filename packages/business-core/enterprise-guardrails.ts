@@ -43039,6 +43039,211 @@ export function evaluateWebrtcSipRfc8844UnknownKeyShareAttackPreventionDtlsSrtpT
   };
 }
 
+export interface SemiconductorWaferFerroelectricHzoHf05Zr05o2FefetFeramOrthorhombicAldTdmahTdmazO3AndTinCappingRtaSemiS2SemiS6Nfpa318Osha1910119Osha19101000TdmahO3Nh3TripRemanentPolarizationWakeupEnduranceAbortAndScbaLotoGuardInput {
+  ferroelectricModuleId: string;
+  pyrophoricTdmahTdmazOrTicl4PrecursorLeakPpm: number;
+  toxicOzoneO3OrNh3ExhaustLeakPpm: number;
+  remanentPolarizationTwoPrMicroCoulombPerCm2: number;
+  interfacialDeadLayerEquivalentOxideThicknessNm: number;
+  postCappingRtaPeakTemperatureC: number;
+  aldOrRtaChamberLidOpenRequested: boolean;
+  postCoolChuckTemperatureC: number;
+  postPurgeResidualO3Nh3AminePpm: number;
+  scbaAndOzoneGeneratorLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFerroelectricHzoHf05Zr05o2FefetFeramOrthorhombicAldTdmahTdmazO3AndTinCappingRtaSemiS2SemiS6Nfpa318Osha1910119Osha19101000TdmahO3Nh3TripRemanentPolarizationWakeupEnduranceAbortAndScbaLotoGuardAssessment {
+  ferroelectricModuleId: string;
+  policyCode: "P431-SEMICONDUCTOR-WAFER-FERROELECTRIC-HZO-HF05ZR05O2-FEFET-FERAM-ORTHORHOMBIC-ALD-TDMAH-TDMAZ-O3-AND-TIN-CAPPING-RTA-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-TDMAH-O3-NH3-TRIP-REMANENT-POLARIZATION-WAKEUP-ENDURANCE-ABORT-AND-SCBA-LOTO-GUARD";
+  ferroelectricHzoFefetFeramAldAndRtaSafe: boolean;
+  tdmahTdmazO3OrNh3LeakTripped0ms: boolean;
+  lowTwoPrDeadLayerOrRtaThermalBudgetAborted: boolean;
+  chamberLockedUntilCooledPurgedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_ferroelectric_hzo_fefet_feram_orthorhombic_ald_and_tin_capping_rta"
+    | "trip_hzo_tdmah_tdmaz_o3_nh3_vmb_in_0ms_and_engage_ozone_destruct"
+    | "abort_hzo_fefet_on_2pr_below_30uc_dead_layer_or_500c_rta_budget"
+    | "lock_hzo_ald_rta_chamber_until_50c_002ppm_and_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferFerroelectricHzoHf05Zr05o2FefetFeramOrthorhombicAldTdmahTdmazO3AndTinCappingRtaSemiS2SemiS6Nfpa318Osha1910119Osha19101000TdmahO3Nh3TripRemanentPolarizationWakeupEnduranceAbortAndScbaLotoGuard(
+  input: SemiconductorWaferFerroelectricHzoHf05Zr05o2FefetFeramOrthorhombicAldTdmahTdmazO3AndTinCappingRtaSemiS2SemiS6Nfpa318Osha1910119Osha19101000TdmahO3Nh3TripRemanentPolarizationWakeupEnduranceAbortAndScbaLotoGuardInput,
+): SemiconductorWaferFerroelectricHzoHf05Zr05o2FefetFeramOrthorhombicAldTdmahTdmazO3AndTinCappingRtaSemiS2SemiS6Nfpa318Osha1910119Osha19101000TdmahO3Nh3TripRemanentPolarizationWakeupEnduranceAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P431-SEMICONDUCTOR-WAFER-FERROELECTRIC-HZO-HF05ZR05O2-FEFET-FERAM-ORTHORHOMBIC-ALD-TDMAH-TDMAZ-O3-AND-TIN-CAPPING-RTA-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-TDMAH-O3-NH3-TRIP-REMANENT-POLARIZATION-WAKEUP-ENDURANCE-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const tdmahTdmazO3OrNh3LeakTripped0ms =
+    input.pyrophoricTdmahTdmazOrTicl4PrecursorLeakPpm >= 0.2 ||
+    input.toxicOzoneO3OrNh3ExhaustLeakPpm >= 0.1;
+
+  const lowTwoPrDeadLayerOrRtaThermalBudgetAborted =
+    input.remanentPolarizationTwoPrMicroCoulombPerCm2 < 30.0 ||
+    input.interfacialDeadLayerEquivalentOxideThicknessNm >= 0.8 ||
+    input.postCappingRtaPeakTemperatureC >= 500.0;
+
+  const chamberLockedUntilCooledPurgedAndScbaLoto =
+    input.aldOrRtaChamberLidOpenRequested &&
+    (input.postCoolChuckTemperatureC >= 50.0 ||
+      input.postPurgeResidualO3Nh3AminePpm >= 0.02 ||
+      !input.scbaAndOzoneGeneratorLotoVerified);
+
+  if (tdmahTdmazO3OrNh3LeakTripped0ms) {
+    return {
+      ferroelectricModuleId: input.ferroelectricModuleId,
+      policyCode,
+      ferroelectricHzoFefetFeramAldAndRtaSafe: false,
+      tdmahTdmazO3OrNh3LeakTripped0ms: true,
+      lowTwoPrDeadLayerOrRtaThermalBudgetAborted,
+      chamberLockedUntilCooledPurgedAndScbaLoto,
+      action: "trip_hzo_tdmah_tdmaz_o3_nh3_vmb_in_0ms_and_engage_ozone_destruct",
+      blockedReason:
+        "SEMIS2_NFPA318_TDMAH_TDMAZ_TICL4_02PPM_OR_O3_NH3_01PPM_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (lowTwoPrDeadLayerOrRtaThermalBudgetAborted) {
+    return {
+      ferroelectricModuleId: input.ferroelectricModuleId,
+      policyCode,
+      ferroelectricHzoFefetFeramAldAndRtaSafe: false,
+      tdmahTdmazO3OrNh3LeakTripped0ms: false,
+      lowTwoPrDeadLayerOrRtaThermalBudgetAborted: true,
+      chamberLockedUntilCooledPurgedAndScbaLoto,
+      action:
+        "abort_hzo_fefet_on_2pr_below_30uc_dead_layer_or_500c_rta_budget",
+      blockedReason:
+        "HZO_FEFET_2PR_BELOW_30UC_CM2_DEAD_LAYER_08NM_OR_500C_RTA_BUDGET_ABORTED",
+    };
+  }
+
+  if (chamberLockedUntilCooledPurgedAndScbaLoto) {
+    return {
+      ferroelectricModuleId: input.ferroelectricModuleId,
+      policyCode,
+      ferroelectricHzoFefetFeramAldAndRtaSafe: false,
+      tdmahTdmazO3OrNh3LeakTripped0ms: false,
+      lowTwoPrDeadLayerOrRtaThermalBudgetAborted: false,
+      chamberLockedUntilCooledPurgedAndScbaLoto: true,
+      action: "lock_hzo_ald_rta_chamber_until_50c_002ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_HZO_ALD_RTA_CHAMBER_LOCKED_UNTIL_50C_002PPM_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    ferroelectricModuleId: input.ferroelectricModuleId,
+    policyCode,
+    ferroelectricHzoFefetFeramAldAndRtaSafe: true,
+    tdmahTdmazO3OrNh3LeakTripped0ms: false,
+    lowTwoPrDeadLayerOrRtaThermalBudgetAborted: false,
+    chamberLockedUntilCooledPurgedAndScbaLoto: false,
+    action:
+      "allow_verified_ferroelectric_hzo_fefet_feram_orthorhombic_ald_and_tin_capping_rta",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8863IcePacPatientlyAwaitingConnectivityTimerEnforcementAndRfc8445AggressiveNominationDeprecationGuardInput {
+  sessionId: string;
+  sdpOfferAnswerContainsIce2OptionAndRegularNomination: boolean;
+  controllingPeerSendsMultipleUseCandidateFlagsOrAggressiveNomination: boolean;
+  elapsedIceWaitBeforeFailureDeclarationMs: number;
+  icePacMinimumWaitTimerExpiredOrValidPairSucceeded: boolean;
+  untriggeredStunBindingChecksPerPairCount: number;
+  iceNominationReSwitchRatePerMinute: number;
+}
+
+export interface WebrtcSipRfc8863IcePacPatientlyAwaitingConnectivityTimerEnforcementAndRfc8445AggressiveNominationDeprecationGuardAssessment {
+  sessionId: string;
+  policyCode: "P432-WEBRTC-SIP-RFC8863-ICE-PAC-PATIENTLY-AWAITING-CONNECTIVITY-TIMER-ENFORCEMENT-AND-RFC8445-AGGRESSIVE-NOMINATION-DEPRECATION-GUARD";
+  rfc8863IcePacAndRfc8445NominationHealthy: boolean;
+  missingIce2OrDeprecatedAggressiveNominationDropped0ms: boolean;
+  prematureIceFailureBeforeRfc8863PacTimerRejected: boolean;
+  excessivePerPairChecksOrNominationFlapClamped: boolean;
+  action:
+    | "allow_verified_rfc8863_ice_pac_and_rfc8445_regular_nomination"
+    | "drop_missing_ice2_or_deprecated_rfc5245_aggressive_nomination_0ms"
+    | "reject_premature_ice_failure_before_rfc8863_pac_minimum_wait_timer"
+    | "clamp_rfc8445_7_stun_checks_per_pair_or_6_per_min_nomination_flap";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8863IcePacPatientlyAwaitingConnectivityTimerEnforcementAndRfc8445AggressiveNominationDeprecationGuard(
+  input: WebrtcSipRfc8863IcePacPatientlyAwaitingConnectivityTimerEnforcementAndRfc8445AggressiveNominationDeprecationGuardInput,
+): WebrtcSipRfc8863IcePacPatientlyAwaitingConnectivityTimerEnforcementAndRfc8445AggressiveNominationDeprecationGuardAssessment {
+  const policyCode =
+    "P432-WEBRTC-SIP-RFC8863-ICE-PAC-PATIENTLY-AWAITING-CONNECTIVITY-TIMER-ENFORCEMENT-AND-RFC8445-AGGRESSIVE-NOMINATION-DEPRECATION-GUARD" as const;
+
+  const missingIce2OrDeprecatedAggressiveNominationDropped0ms =
+    !input.sdpOfferAnswerContainsIce2OptionAndRegularNomination ||
+    input.controllingPeerSendsMultipleUseCandidateFlagsOrAggressiveNomination;
+
+  const prematureIceFailureBeforeRfc8863PacTimerRejected =
+    !input.icePacMinimumWaitTimerExpiredOrValidPairSucceeded &&
+    input.elapsedIceWaitBeforeFailureDeclarationMs < 10000;
+
+  const excessivePerPairChecksOrNominationFlapClamped =
+    input.untriggeredStunBindingChecksPerPairCount > 7 ||
+    input.iceNominationReSwitchRatePerMinute > 6;
+
+  if (missingIce2OrDeprecatedAggressiveNominationDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8863IcePacAndRfc8445NominationHealthy: false,
+      missingIce2OrDeprecatedAggressiveNominationDropped0ms: true,
+      prematureIceFailureBeforeRfc8863PacTimerRejected,
+      excessivePerPairChecksOrNominationFlapClamped,
+      action: "drop_missing_ice2_or_deprecated_rfc5245_aggressive_nomination_0ms",
+      blockedReason:
+        "RFC8445_MISSING_ICE2_OPTION_OR_DEPRECATED_RFC5245_AGGRESSIVE_NOMINATION_DROPPED_0MS",
+    };
+  }
+
+  if (prematureIceFailureBeforeRfc8863PacTimerRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8863IcePacAndRfc8445NominationHealthy: false,
+      missingIce2OrDeprecatedAggressiveNominationDropped0ms: false,
+      prematureIceFailureBeforeRfc8863PacTimerRejected: true,
+      excessivePerPairChecksOrNominationFlapClamped,
+      action:
+        "reject_premature_ice_failure_before_rfc8863_pac_minimum_wait_timer",
+      blockedReason:
+        "RFC8863_ICE_PAC_PREMATURE_FAILURE_DECLARATION_UNDER_10000MS_REJECTED",
+    };
+  }
+
+  if (excessivePerPairChecksOrNominationFlapClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8863IcePacAndRfc8445NominationHealthy: false,
+      missingIce2OrDeprecatedAggressiveNominationDropped0ms: false,
+      prematureIceFailureBeforeRfc8863PacTimerRejected: false,
+      excessivePerPairChecksOrNominationFlapClamped: true,
+      action:
+        "clamp_rfc8445_7_stun_checks_per_pair_or_6_per_min_nomination_flap",
+      blockedReason:
+        "RFC8445_OVER_7_STUN_CHECKS_PER_PAIR_OR_OVER_6_PER_MIN_NOMINATION_FLAP_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8863IcePacAndRfc8445NominationHealthy: true,
+    missingIce2OrDeprecatedAggressiveNominationDropped0ms: false,
+    prematureIceFailureBeforeRfc8863PacTimerRejected: false,
+    excessivePerPairChecksOrNominationFlapClamped: false,
+    action: "allow_verified_rfc8863_ice_pac_and_rfc8445_regular_nomination",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
