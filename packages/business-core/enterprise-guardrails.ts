@@ -38950,6 +38950,209 @@ export function evaluateWebrtcSipSrtpRfc3711AndRfc7714AesGcmIvNonceReuseMkiLengt
   };
 }
 
+export interface SemiconductorWaferSiliconPhotonicsCpoInPGaAsHeterogeneousLaserIntegrationAnd1310nm1550nmActiveOpticalProberGuardInput {
+  siphCpoToolOrProberId: string;
+  ph3OrAsh3CabinetExhaustPpb: number;
+  piranhaBathTemperatureCelsius: number;
+  organicSolventIpaAcetoneMixedWithPiranha: boolean;
+  opticalProberSafetyEnclosureInterlockClosed: boolean;
+  cwFiberLaserOutputMw: number;
+  fiberTipTemperatureCelsius: number;
+  arsenicOrIndiumPhosphideAirborneUgPerM3: number;
+  requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferSiliconPhotonicsCpoInPGaAsHeterogeneousLaserIntegrationAnd1310nm1550nmActiveOpticalProberGuardResult {
+  policyCode: "P393-SEMICONDUCTOR-WAFER-SILICON-PHOTONICS-CPO-INP-GAAS-HETEROGENEOUS-LASER-INTEGRATION-AND-1310NM-1550NM-ACTIVE-OPTICAL-PROBER-SEMIS2-SEMIS6-NFPA318-ANSIZ1361-OSHA1910119-OSHA19101000-PH3-ASH3-LEAK-OR-PIRANHA-SOLVENT-EXPLOSION-TRIP-CLASS4-LASER-SHUTTER-INTERLOCK-AND-GAAS-DUST-SCBA-LOTO-GUARD";
+  siphCpoToolOrProberId: string;
+  siphCpoLaserIntegrationAndProberSafe: boolean;
+  ph3Ash3LeakOrPiranhaSolventExplosionTripped0ms: boolean;
+  class4IrLaserShutterAndDriverCrowbarTripped: boolean;
+  gaasInPDustExtractionAndScbaLotoRequired: boolean;
+  action:
+    | "allow_siph_cpo_inp_gaas_heterogeneous_bonding_and_active_optical_probing"
+    | "shutoff_ph3_ash3_vmb_cut_piranha_h2o2_dosing_and_dump_to_quench_tank_in_0ms"
+    | "crowbar_1310nm_1550nm_laser_diode_driver_and_close_mechanical_beam_shutter"
+    | "lock_siph_dicing_bonding_chamber_until_as_inp_dust_below_2ugm3_hydride_below_5ppb_scba_and_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferSiliconPhotonicsCpoInPGaAsHeterogeneousLaserIntegrationAnd1310nm1550nmActiveOpticalProberSemiS2SemiS6Nfpa318AnsiZ1361Osha1910119Osha19101000Ph3Ash3LeakOrPiranhaSolventExplosionTripClass4LaserShutterInterlockAndGaAsDustScbaLotoGuard(
+  input: SemiconductorWaferSiliconPhotonicsCpoInPGaAsHeterogeneousLaserIntegrationAnd1310nm1550nmActiveOpticalProberGuardInput,
+): SemiconductorWaferSiliconPhotonicsCpoInPGaAsHeterogeneousLaserIntegrationAnd1310nm1550nmActiveOpticalProberGuardResult {
+  const policyCode =
+    "P393-SEMICONDUCTOR-WAFER-SILICON-PHOTONICS-CPO-INP-GAAS-HETEROGENEOUS-LASER-INTEGRATION-AND-1310NM-1550NM-ACTIVE-OPTICAL-PROBER-SEMIS2-SEMIS6-NFPA318-ANSIZ1361-OSHA1910119-OSHA19101000-PH3-ASH3-LEAK-OR-PIRANHA-SOLVENT-EXPLOSION-TRIP-CLASS4-LASER-SHUTTER-INTERLOCK-AND-GAAS-DUST-SCBA-LOTO-GUARD" as const;
+
+  const hydrideOrPiranhaHazard =
+    input.ph3OrAsh3CabinetExhaustPpb >= 10 ||
+    input.piranhaBathTemperatureCelsius > 135 ||
+    input.organicSolventIpaAcetoneMixedWithPiranha;
+
+  const class4LaserOrFiberFuseHazard =
+    (!input.opticalProberSafetyEnclosureInterlockClosed &&
+      input.cwFiberLaserOutputMw > 10) ||
+    input.fiberTipTemperatureCelsius > 250;
+
+  const gaasInPDustHazard = input.arsenicOrIndiumPhosphideAirborneUgPerM3 >= 2.0;
+
+  if (hydrideOrPiranhaHazard) {
+    return {
+      policyCode,
+      siphCpoToolOrProberId: input.siphCpoToolOrProberId,
+      siphCpoLaserIntegrationAndProberSafe: false,
+      ph3Ash3LeakOrPiranhaSolventExplosionTripped0ms: true,
+      class4IrLaserShutterAndDriverCrowbarTripped: class4LaserOrFiberFuseHazard,
+      gaasInPDustExtractionAndScbaLotoRequired: gaasInPDustHazard,
+      action:
+        "shutoff_ph3_ash3_vmb_cut_piranha_h2o2_dosing_and_dump_to_quench_tank_in_0ms",
+      blockedReason:
+        "ph3_ash3_at_or_above_10ppb_piranha_over_135c_or_organic_solvent_tatp_explosion_hazard_tripped_0ms",
+    };
+  }
+
+  if (class4LaserOrFiberFuseHazard) {
+    return {
+      policyCode,
+      siphCpoToolOrProberId: input.siphCpoToolOrProberId,
+      siphCpoLaserIntegrationAndProberSafe: false,
+      ph3Ash3LeakOrPiranhaSolventExplosionTripped0ms: false,
+      class4IrLaserShutterAndDriverCrowbarTripped: true,
+      gaasInPDustExtractionAndScbaLotoRequired: gaasInPDustHazard,
+      action:
+        "crowbar_1310nm_1550nm_laser_diode_driver_and_close_mechanical_beam_shutter",
+      blockedReason:
+        "open_prober_enclosure_with_cw_laser_over_10mw_or_fiber_tip_over_250c_shutter_tripped",
+    };
+  }
+
+  if (gaasInPDustHazard) {
+    return {
+      policyCode,
+      siphCpoToolOrProberId: input.siphCpoToolOrProberId,
+      siphCpoLaserIntegrationAndProberSafe: false,
+      ph3Ash3LeakOrPiranhaSolventExplosionTripped0ms: false,
+      class4IrLaserShutterAndDriverCrowbarTripped: false,
+      gaasInPDustExtractionAndScbaLotoRequired: true,
+      action:
+        "lock_siph_dicing_bonding_chamber_until_as_inp_dust_below_2ugm3_hydride_below_5ppb_scba_and_loto",
+      blockedReason:
+        "airborne_arsenic_or_inp_dust_at_or_above_2ugm3_requires_hepa_wet_scrubber_scba_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    siphCpoToolOrProberId: input.siphCpoToolOrProberId,
+    siphCpoLaserIntegrationAndProberSafe: true,
+    ph3Ash3LeakOrPiranhaSolventExplosionTripped0ms: false,
+    class4IrLaserShutterAndDriverCrowbarTripped: false,
+    gaasInPDustExtractionAndScbaLotoRequired: false,
+    action:
+      "allow_siph_cpo_inp_gaas_heterogeneous_bonding_and_active_optical_probing",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8831Rfc8832DataChannelSctpOverDtlsAndRfc6525StreamResetGuardInput {
+  sessionId: string;
+  sctpChunkDeclaredLengthBytes: number;
+  dtlsPayloadRemainingBytes: number;
+  unreassembledFragmentBufferBytes: number;
+  dcepChannelOpenLabelOrProtocolOverread: boolean;
+  unregisteredOrZeroSctpPpidInjected: boolean;
+  sctpStreamResetOrOpenRatePerSec: number;
+}
+
+export interface WebrtcSipRfc8831Rfc8832DataChannelSctpOverDtlsAndRfc6525StreamResetGuardResult {
+  policyCode: "P394-WEBRTC-SIP-RFC8831-RFC8832-DATACHANNEL-SCTP-OVER-DTLS-AND-RFC6525-STREAM-RESET-CHUNK-OVERREAD-FRAGMENT-REASSEMBLY-BOMB-DCEP-PPID-CONFUSION-AND-STREAM-RESET-FLOOD-GUARD";
+  sessionId: string;
+  dataChannelSctpOverDtlsHealthy: boolean;
+  chunkOverreadOrFragmentReassemblyBombDropped0ms: boolean;
+  dcepOverreadOrPpidConfusionRejected: boolean;
+  streamResetOrOpenFloodClamped: boolean;
+  action:
+    | "accept_rfc8831_rfc8832_webrtc_datachannel_sctp_over_dtls_message"
+    | "drop_sctp_chunk_overread_or_purge_over_256kb_unended_fragment_reassembly_bomb_in_0ms"
+    | "reject_dcep_channel_open_overread_or_unregistered_zero_ppid_confusion"
+    | "clamp_rfc6525_sctp_stream_reset_and_channel_churn_exceeding_50_per_sec";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8831Rfc8832DataChannelSctpOverDtlsAndRfc6525StreamResetChunkOverreadFragmentReassemblyBombDcepPpidConfusionAndStreamResetFloodGuard(
+  input: WebrtcSipRfc8831Rfc8832DataChannelSctpOverDtlsAndRfc6525StreamResetGuardInput,
+): WebrtcSipRfc8831Rfc8832DataChannelSctpOverDtlsAndRfc6525StreamResetGuardResult {
+  const policyCode =
+    "P394-WEBRTC-SIP-RFC8831-RFC8832-DATACHANNEL-SCTP-OVER-DTLS-AND-RFC6525-STREAM-RESET-CHUNK-OVERREAD-FRAGMENT-REASSEMBLY-BOMB-DCEP-PPID-CONFUSION-AND-STREAM-RESET-FLOOD-GUARD" as const;
+
+  const overreadOrFragmentBombHazard =
+    input.sctpChunkDeclaredLengthBytes < 4 ||
+    input.sctpChunkDeclaredLengthBytes > input.dtlsPayloadRemainingBytes ||
+    input.unreassembledFragmentBufferBytes > 262144;
+
+  const dcepOrPpidHazard =
+    input.dcepChannelOpenLabelOrProtocolOverread ||
+    input.unregisteredOrZeroSctpPpidInjected;
+
+  const streamResetFloodHazard = input.sctpStreamResetOrOpenRatePerSec > 50;
+
+  if (overreadOrFragmentBombHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      dataChannelSctpOverDtlsHealthy: false,
+      chunkOverreadOrFragmentReassemblyBombDropped0ms: true,
+      dcepOverreadOrPpidConfusionRejected: dcepOrPpidHazard,
+      streamResetOrOpenFloodClamped: streamResetFloodHazard,
+      action:
+        "drop_sctp_chunk_overread_or_purge_over_256kb_unended_fragment_reassembly_bomb_in_0ms",
+      blockedReason:
+        "sctp_chunk_length_overread_or_unreassembled_fragment_buffer_over_256kb_dropped_0ms",
+    };
+  }
+
+  if (dcepOrPpidHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      dataChannelSctpOverDtlsHealthy: false,
+      chunkOverreadOrFragmentReassemblyBombDropped0ms: false,
+      dcepOverreadOrPpidConfusionRejected: true,
+      streamResetOrOpenFloodClamped: streamResetFloodHazard,
+      action:
+        "reject_dcep_channel_open_overread_or_unregistered_zero_ppid_confusion",
+      blockedReason:
+        "rfc8832_dcep_label_protocol_overread_or_zero_unregistered_ppid_rejected",
+    };
+  }
+
+  if (streamResetFloodHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      dataChannelSctpOverDtlsHealthy: false,
+      chunkOverreadOrFragmentReassemblyBombDropped0ms: false,
+      dcepOverreadOrPpidConfusionRejected: false,
+      streamResetOrOpenFloodClamped: true,
+      action:
+        "clamp_rfc6525_sctp_stream_reset_and_channel_churn_exceeding_50_per_sec",
+      blockedReason:
+        "rfc6525_sctp_stream_reset_or_open_rate_over_50_per_sec_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    dataChannelSctpOverDtlsHealthy: true,
+    chunkOverreadOrFragmentReassemblyBombDropped0ms: false,
+    dcepOverreadOrPpidConfusionRejected: false,
+    streamResetOrOpenFloodClamped: false,
+    action: "accept_rfc8831_rfc8832_webrtc_datachannel_sctp_over_dtls_message",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
