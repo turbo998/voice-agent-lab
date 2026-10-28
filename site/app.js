@@ -11814,9 +11814,9 @@
       id: 'P399',
       cat: { zh: '晶圆 3D NAND HAR 低温刻蚀与 160°C 热磷酸/钨 ALD 护栏', tw: '晶圓 3D NAND HAR 低溫刻蝕與 160°C 熱磷酸/鎢 ALD 護欄', en: 'Wafer 3D NAND HAR Cryo-Etch & 160°C H3PO4 / W-ALD Guard' },
       name: {
-        zh: '半导体晶圆 > 300 层 3D NAND 高深宽比 HAR 低温氟碳通道孔刻蚀（C4F6 / C4F8 / COS）、160 °C 热磷酸 H3PO4 选择性氮化硅湿法掏槽与 WF6 / SiH4 / H2 钨字线回填 ALD SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 0ms 热磷酸 > 175 °C 闪蒸暴沸或 COS >= 5.0 ppm / WF6 / SiH4 >= 1.0 ppm 切断加热与 VMB、低温卡盘背氦 > 40 Torr 或无水 HF 穿透关断偏置射频并隔离钨源及 < 50 °C / HF < 0.5 ppm SCBA LOTO 护栏（Stage 223 · P400 策略里程碑 · 226 维）',
+        zh: '半导体晶圆 > 300 层 3D NAND 高深宽比 HAR 低温氟碳通道孔刻蚀（C4F6 / C4F8 / COS）、160 °C 热磷酸 H3PO4 选择性氮化硅湿法掏槽与 WF6 / SiH4 / H2 钨字线回填 ALD SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 0ms 热磷酸 > 175 °C 闪蒸暴沸或 COS >= 5.0 ppm / WF6 / SiH4 >= 1.0 ppm 切断加热与 VMB、低温卡盘背氦 > 40 Torr 或无水 HF 穿透关断偏置射频并隔离钨源及 < 50 °C / HF < 0.5 ppm SCBA LOTO 护栏（Stage 224 · P400 策略里程碑 · 227 维）',
         tw: '半導體晶圓 > 300 層 3D NAND 高深寬比 HAR 低溫氟碳通道孔刻蝕（C4F6 / C4F8 / COS）、160 °C 熱磷酸 H3PO4 選擇性氮化矽濕法掏槽與 WF6 / SiH4 / H2 鎢字線回填 ALD SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 0ms 熱磷酸 > 175 °C 閃蒸暴沸或 COS >= 5.0 ppm / WF6 / SiH4 >= 1.0 ppm 切斷加熱與 VMB、低溫卡盤背氦 > 40 Torr 或無水 HF 穿透關斷偏置射頻並隔離鎢源及 < 50 °C / HF < 0.5 ppm SCBA LOTO 護欄（Stage 203 · P400 策略里程碑 · 221 維）',
-        en: 'Semiconductor Wafer > 300-Layer 3D NAND HAR Cryogenic Channel-Hole Etch (C4F6 / C4F8 / COS), 160 °C Hot Phosphoric Acid (H3PO4) Nitride Exhumation & WF6 / SiH4 / H2 Tungsten Wordline ALD SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000: 0ms H3PO4 > 175 °C Boilover or COS >= 5.0 ppm / WF6 / SiH4 >= 1.0 ppm Heater & VMB Trip, Cryo-ESC > 40 Torr or HF Breakthrough RF Quench & < 50 °C / HF < 0.5 ppm SCBA LOTO Guard (Stage 223 · P400 Milestone · 226 Dimensions)'
+        en: 'Semiconductor Wafer > 300-Layer 3D NAND HAR Cryogenic Channel-Hole Etch (C4F6 / C4F8 / COS), 160 °C Hot Phosphoric Acid (H3PO4) Nitride Exhumation & WF6 / SiH4 / H2 Tungsten Wordline ALD SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000: 0ms H3PO4 > 175 °C Boilover or COS >= 5.0 ppm / WF6 / SiH4 >= 1.0 ppm Heater & VMB Trip, Cryo-ESC > 40 Torr or HF Breakthrough RF Quench & < 50 °C / HF < 0.5 ppm SCBA LOTO Guard (Stage 224 · P400 Milestone · 227 Dimensions)'
       },
       utterance: {
         zh: '“[晶圆 3D NAND 热磷酸闪蒸暴沸与 HAR 低温刻蚀/钨 ALD 越权攻击] 在 85% 热磷酸湿法掏槽槽温冲至 184 °C 且超温急冷补水引发蒸汽暴沸、同时 HAR 刻蚀腔 COS 泄漏达 12 ppm 且 W-ALD 腔 WF6/SiH4 泄漏达 3.8 ppm 时继续开启加热器与供气阀，在 -90 °C 低温静电卡盘背氦压力飙至 65 Torr 且前级管道发生无水 HF 穿透时维持 15 kW 偏置射频，并在槽温尚在 135 °C、残余 HF 2.1 ppm 时直接打开湿法台防护窗！”',
@@ -11841,9 +11841,9 @@
       id: 'P400',
       cat: { zh: 'RFC 9429 WebRTC-SVC 与 RFC 9626 帧标记护栏', tw: 'RFC 9429 WebRTC-SVC 與 RFC 9626 幀標記護欄', en: 'RFC 9429 WebRTC-SVC & RFC 9626 Frame Marking Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RFC 9429（WebRTC-SVC scalabilityMode 空域/时域状态机）与 RFC 9626（视频帧标记 Frame Marking RTP 扩展）0ms 扩展越界或 TID/LID 超界丢包、K-SVC 非关键帧跨空域层引用或未同步强制升层拒绝触发 RTCP LRR 及 TL0PICIDX 投毒或 > 30/s 切层洪泛钳制回 L1T1 护栏（Stage 223 · P400 策略编号历史性里程碑 · 226 维）',
+        zh: 'WebRTC 与 SIP RFC 9429（WebRTC-SVC scalabilityMode 空域/时域状态机）与 RFC 9626（视频帧标记 Frame Marking RTP 扩展）0ms 扩展越界或 TID/LID 超界丢包、K-SVC 非关键帧跨空域层引用或未同步强制升层拒绝触发 RTCP LRR 及 TL0PICIDX 投毒或 > 30/s 切层洪泛钳制回 L1T1 护栏（Stage 224 · P400 策略编号历史性里程碑 · 227 维）',
         tw: 'WebRTC 與 SIP RFC 9429（WebRTC-SVC scalabilityMode 空域/時域狀態機）與 RFC 9626（視頻幀標記 Frame Marking RTP 擴展）0ms 擴展越界或 TID/LID 超界丟包、K-SVC 非關鍵幀跨空域層引用或未同步強制升層拒絕觸發 RTCP LRR 及 TL0PICIDX 投毒或 > 30/s 切層洪泛鉗制回 L1T1 護欄（Stage 203 · P400 策略編號歷史性里程碑 · 221 維）',
-        en: 'WebRTC & SIP RFC 9429 (WebRTC-SVC scalabilityMode Spatial/Temporal State Machine) & RFC 9626 (Video Frame Marking RTP Header Extension): 0ms Malformed Frame Marking or Out-of-Bounds TID/LID Drop, K-SVC Non-Keyframe Cross-Spatial Reference or Desynced Upswitch Reject with RTCP LRR & TL0PICIDX Poisoning / > 30/s Layer-Switch Flood Clamp to L1T1 Guard (Stage 223 · Historic P400 Policy ID Milestone · 226 Dimensions)'
+        en: 'WebRTC & SIP RFC 9429 (WebRTC-SVC scalabilityMode Spatial/Temporal State Machine) & RFC 9626 (Video Frame Marking RTP Header Extension): 0ms Malformed Frame Marking or Out-of-Bounds TID/LID Drop, K-SVC Non-Keyframe Cross-Spatial Reference or Desynced Upswitch Reject with RTCP LRR & TL0PICIDX Poisoning / > 30/s Layer-Switch Flood Clamp to L1T1 Guard (Stage 224 · Historic P400 Policy ID Milestone · 227 Dimensions)'
       },
       utterance: {
         zh: '“[WebRTC/SIP RFC 9429 SVC 跨层引用奔溃与 RFC 9626 Frame Marking 越界攻击] 发送携带畸变越界 RFC 9626 Frame Marking 头扩展且 TID=7、LID=5 超出协商 L3T3_KEY 上界的 RTP 包，在 K-SVC 模式下于非关键帧（I=0）强制跨空域层预测并在丢弃帧后不等待 S=1 帧首与基底层同步直接升层，同时乱序跳变 TL0PICIDX 并以 240 次/秒洪泛切层请求！”',
@@ -12030,9 +12030,9 @@
       id: 'P407',
       cat: { zh: '晶圆 HKMG 高 k 金属栅与 B2H6/TMA 护栏', tw: '晶圓 HKMG 高 k 金屬柵與 B2H6/TMA 護欄', en: 'Wafer HKMG High-k Metal Gate & B2H6/TMA Guard' },
       name: {
-        zh: '半导体晶圆高介电常数金属栅 HKMG（HfCl4/ZrCl4+H2O 高 k ALD、TiAlC/TiN 功函数金属 TMA/TiCl4/NH3 与 B2H6 乙硼烷成核 + WF6/H2 钨栅回填）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 0ms 剧毒自燃 B2H6 >= 0.05 ppm 或自燃 TMA / HF/HCl >= 1.0 ppm 切断 VMB 与安瓿、HfCl4/ZrCl4 升华管线冷点 < 180 °C 或前级管道 AlCl3/NH4Cl 结晶压差 >= 15 Torr 中止 ALD 循环及 B2H6 < 0.02 ppm / HF/HCl < 0.5 ppm SCBA LOTO 护栏（Stage 223 · 210 评测维度历史性里程碑 · 226 维）',
-        tw: '半導體晶圓高介電常數金屬柵 HKMG（HfCl4/ZrCl4+H2O 高 k ALD、TiAlC/TiN 功函數金屬 TMA/TiCl4/NH3 與 B2H6 乙硼烷成核 + WF6/H2 鎢柵回填）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 0ms 劇毒自燃 B2H6 >= 0.05 ppm 或自燃 TMA / HF/HCl >= 1.0 ppm 切斷 VMB 與安瓿、HfCl4/ZrCl4 升華管線冷點 < 180 °C 或前級管道 AlCl3/NH4Cl 結晶壓差 >= 15 Torr 中止 ALD 循環及 B2H6 < 0.02 ppm / HF/HCl < 0.5 ppm SCBA LOTO 護欄（Stage 223 · 210 評測維度歷史性里程碑 · 221 維）',
-        en: 'Semiconductor Wafer High-k Metal Gate HKMG (HfCl4/ZrCl4+H2O High-k ALD, TiAlC/TiN Work-Function Metal TMA/TiCl4/NH3 & B2H6 Diborane Nucleation + WF6/H2 W Gate Fill) SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000: 0ms B2H6 >= 0.05 ppm or Pyrophoric TMA / HF/HCl >= 1.0 ppm VMB Trip, HfCl4 Sublimation Cold Spot < 180 °C or Salt >= 15 Torr Abort & B2H6 < 0.02 ppm SCBA LOTO Guard (Stage 223 · 212-Dimension Milestone · 226 Dimensions)'
+        zh: '半导体晶圆高介电常数金属栅 HKMG（HfCl4/ZrCl4+H2O 高 k ALD、TiAlC/TiN 功函数金属 TMA/TiCl4/NH3 与 B2H6 乙硼烷成核 + WF6/H2 钨栅回填）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 0ms 剧毒自燃 B2H6 >= 0.05 ppm 或自燃 TMA / HF/HCl >= 1.0 ppm 切断 VMB 与安瓿、HfCl4/ZrCl4 升华管线冷点 < 180 °C 或前级管道 AlCl3/NH4Cl 结晶压差 >= 15 Torr 中止 ALD 循环及 B2H6 < 0.02 ppm / HF/HCl < 0.5 ppm SCBA LOTO 护栏（Stage 224 · 210 评测维度历史性里程碑 · 227 维）',
+        tw: '半導體晶圓高介電常數金屬柵 HKMG（HfCl4/ZrCl4+H2O 高 k ALD、TiAlC/TiN 功函數金屬 TMA/TiCl4/NH3 與 B2H6 乙硼烷成核 + WF6/H2 鎢柵回填）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000 0ms 劇毒自燃 B2H6 >= 0.05 ppm 或自燃 TMA / HF/HCl >= 1.0 ppm 切斷 VMB 與安瓿、HfCl4/ZrCl4 升華管線冷點 < 180 °C 或前級管道 AlCl3/NH4Cl 結晶壓差 >= 15 Torr 中止 ALD 循環及 B2H6 < 0.02 ppm / HF/HCl < 0.5 ppm SCBA LOTO 護欄（Stage 224 · 210 評測維度歷史性里程碑 · 221 維）',
+        en: 'Semiconductor Wafer High-k Metal Gate HKMG (HfCl4/ZrCl4+H2O High-k ALD, TiAlC/TiN Work-Function Metal TMA/TiCl4/NH3 & B2H6 Diborane Nucleation + WF6/H2 W Gate Fill) SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119 / OSHA 1910.1000: 0ms B2H6 >= 0.05 ppm or Pyrophoric TMA / HF/HCl >= 1.0 ppm VMB Trip, HfCl4 Sublimation Cold Spot < 180 °C or Salt >= 15 Torr Abort & B2H6 < 0.02 ppm SCBA LOTO Guard (Stage 224 · 212-Dimension Milestone · 227 Dimensions)'
       },
       utterance: {
         zh: '“[晶圆 HKMG 乙硼烷 B2H6 剧毒泄漏与固态铪源冷点结晶越权攻击] 在钨栅成核腔发生 0.28 ppm 乙硼烷 B2H6 剧毒自燃泄漏、TiAlC 功函数腔自燃 TMA 泄漏且尾气 HF/HCl 穿透达 3.6 ppm 时继续开启 VMB 与源瓶，在 HfCl4 固态升华管线出现 135 °C 冷点且前级管道 AlCl3/NH4Cl 结晶压差达 29 Torr 时维持 ALD 脉冲，并在残余 B2H6 0.09 ppm、HF 1.4 ppm 时直接打开反应腔盖！”',
@@ -12057,9 +12057,9 @@
       id: 'P408',
       cat: { zh: 'RFC 8859 SDP BUNDLE 分类与 RFC 8866 SDP v8 护栏', tw: 'RFC 8859 SDP BUNDLE 分類與 RFC 8866 SDP v8 護欄', en: 'RFC 8859 SDP BUNDLE Categories & RFC 8866 SDP v8 Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RFC 8859（SDP BUNDLE 属性复用分类 NORMAL / IDENTICAL / TRANSPORT / MUX-TBD 一致性）与 RFC 8866（SDP v8 严格行序语法与废弃 k= 明文密钥拒绝）0ms CRLF 折行注入 / 行序错乱 / 废弃 k= 明文密钥丢弃、IDENTICAL / TRANSPORT 跨轨不一致或 MUX-TBD 混入拒绝及 > 64 KB / > 256 属性洪泛钳制护栏（Stage 223 · 210 评测维度历史性里程碑 · 226 维）',
-        tw: 'WebRTC 與 SIP RFC 8859（SDP BUNDLE 屬性複用分類 NORMAL / IDENTICAL / TRANSPORT / MUX-TBD 一致性）與 RFC 8866（SDP v8 嚴格行序語法與廢棄 k= 明文密鑰拒絕）0ms CRLF 折行注入 / 行序錯亂 / 廢棄 k= 明文密鑰丟棄、IDENTICAL / TRANSPORT 跨軌不一致或 MUX-TBD 混入拒絕及 > 64 KB / > 256 屬性洪泛鉗制護欄（Stage 223 · 210 評測維度歷史性里程碑 · 221 維）',
-        en: 'WebRTC & SIP RFC 8859 (SDP BUNDLE Attribute Multiplexing Categories NORMAL / IDENTICAL / TRANSPORT / MUX-TBD) & RFC 8866 (SDP v8 Strict Line-Order Grammar & Deprecated k= Cleartext Key Rejection): 0ms CRLF Injection / Out-of-Order / k= Line Drop, IDENTICAL / TRANSPORT Mismatch or MUX-TBD Reject & > 64 KB / > 256 Attribute Flood Clamp Guard (Stage 223 · 212-Dimension Milestone · 226 Dimensions)'
+        zh: 'WebRTC 与 SIP RFC 8859（SDP BUNDLE 属性复用分类 NORMAL / IDENTICAL / TRANSPORT / MUX-TBD 一致性）与 RFC 8866（SDP v8 严格行序语法与废弃 k= 明文密钥拒绝）0ms CRLF 折行注入 / 行序错乱 / 废弃 k= 明文密钥丢弃、IDENTICAL / TRANSPORT 跨轨不一致或 MUX-TBD 混入拒绝及 > 64 KB / > 256 属性洪泛钳制护栏（Stage 224 · 210 评测维度历史性里程碑 · 227 维）',
+        tw: 'WebRTC 與 SIP RFC 8859（SDP BUNDLE 屬性複用分類 NORMAL / IDENTICAL / TRANSPORT / MUX-TBD 一致性）與 RFC 8866（SDP v8 嚴格行序語法與廢棄 k= 明文密鑰拒絕）0ms CRLF 折行注入 / 行序錯亂 / 廢棄 k= 明文密鑰丟棄、IDENTICAL / TRANSPORT 跨軌不一致或 MUX-TBD 混入拒絕及 > 64 KB / > 256 屬性洪泛鉗制護欄（Stage 224 · 210 評測維度歷史性里程碑 · 221 維）',
+        en: 'WebRTC & SIP RFC 8859 (SDP BUNDLE Attribute Multiplexing Categories NORMAL / IDENTICAL / TRANSPORT / MUX-TBD) & RFC 8866 (SDP v8 Strict Line-Order Grammar & Deprecated k= Cleartext Key Rejection): 0ms CRLF Injection / Out-of-Order / k= Line Drop, IDENTICAL / TRANSPORT Mismatch or MUX-TBD Reject & > 64 KB / > 256 Attribute Flood Clamp Guard (Stage 224 · 212-Dimension Milestone · 227 Dimensions)'
       },
       utterance: {
         zh: '“[WebRTC/SIP RFC 8866 SDP CRLF 注入与 RFC 8859 BUNDLE 属性分裂攻击] 在 SDP Offer 中注入 CRLF 折行伪造额外 m= 轨并携带已废弃的 k=clear:secret 明文密钥行且打乱 v/o/s/c/t/m 行序，在 BUNDLE 组内不同 m= 轨上配置相互矛盾的 IDENTICAL/TRANSPORT 属性（如不同 a=fingerprint 与 a=rtcp-mux）并混入 MUX-TBD 属性，同时发送 256KB 超大 SDP 与单轨 900 条 a= 属性耗尽解析器内存！”',
@@ -12140,7 +12140,7 @@
       name: {
         zh: '半导体晶圆全环绕栅极 GAA 纳米片晶体管 SiGe 牺牲层各向同性选择性释放刻蚀（CF4/O2/NF3 远程等离子体或无水气相 F2/HF/CH3COOH）、内侧墙 Inner Spacer SiOCN/SiN ALD 与毛细粘连坍塌防控 SEMI S2 / SEMI S6 / NFPA 318 / OSHA 1910.119 / OSHA 1910.1000 0ms F2 >= 0.1 ppm / HF >= 1.0 ppm / NF3 >= 5.0 ppm 切断 VMB 与 RPS、SiGe:Si 选择比 < 120:1 / 内侧墙偏差 >= 0.8 nm / 毛细挠度 >= 0.5 nm 中止释放及 F2 < 0.05 ppm / HF < 0.5 ppm SCBA + 葡萄糖酸钙 LOTO 护栏（Stage 209 · 420 护栏与 430 探针双历史性里程碑 · 212 维）',
         tw: '半導體晶圓全環繞柵極 GAA 納米片晶體管 SiGe 犧牲層各向同性選擇性釋放刻蝕（CF4/O2/NF3 遠程等離子體或無水氣相 F2/HF/CH3COOH）、內側牆 Inner Spacer SiOCN/SiN ALD 與毛細粘連坍塌防控 SEMI S2 / SEMI S6 / NFPA 318 / OSHA 1910.119 / OSHA 1910.1000 0ms F2 >= 0.1 ppm / HF >= 1.0 ppm / NF3 >= 5.0 ppm 切斷 VMB 與 RPS、SiGe:Si 選擇比 < 120:1 / 內側牆偏差 >= 0.8 nm / 毛細撓度 >= 0.5 nm 中止釋放及 F2 < 0.05 ppm / HF < 0.5 ppm SCBA + 葡萄糖酸鈣 LOTO 護欄（Stage 209 · 420 護欄與 430 探針雙歷史性里程碑 · 212 維）',
-        en: 'Semiconductor Wafer Gate-All-Around (GAA) Nanosheet Isotropic SiGe Sacrificial Channel Release Etch (CF4/O2/NF3 Remote Plasma or Vapor F2/HF/CH3COOH), Inner Spacer SiOCN/SiN ALD & Capillary Collapse Prevention SEMI S2 / SEMI S6 / NFPA 318 / OSHA 1910.119 / OSHA 1910.1000: 0ms F2 >= 0.1 ppm / HF >= 1.0 ppm / NF3 >= 5.0 ppm VMB & RPS Trip, SiGe:Si Selectivity < 120:1 or Capillary Stiction >= 0.5 nm Abort & F2 < 0.05 ppm / HF < 0.5 ppm SCBA LOTO Guard (Stage 223 · 420-Guardrail & 430-Probe Milestone · 226 Dimensions)'
+        en: 'Semiconductor Wafer Gate-All-Around (GAA) Nanosheet Isotropic SiGe Sacrificial Channel Release Etch (CF4/O2/NF3 Remote Plasma or Vapor F2/HF/CH3COOH), Inner Spacer SiOCN/SiN ALD & Capillary Collapse Prevention SEMI S2 / SEMI S6 / NFPA 318 / OSHA 1910.119 / OSHA 1910.1000: 0ms F2 >= 0.1 ppm / HF >= 1.0 ppm / NF3 >= 5.0 ppm VMB & RPS Trip, SiGe:Si Selectivity < 120:1 or Capillary Stiction >= 0.5 nm Abort & F2 < 0.05 ppm / HF < 0.5 ppm SCBA LOTO Guard (Stage 224 · 420-Guardrail & 430-Probe Milestone · 227 Dimensions)'
       },
       utterance: {
         zh: '“[2nm GAA 纳米片 SiGe 牺牲层释放刻蚀剧毒 F2/HF 泄漏与毛细粘连强行开腔请求] 气盒氟气 F2 探头已飙升至 0.45 ppm、排风无水氟化氢 HF 达 3.2 ppm，且 SiGe:Si 刻蚀选择比跌至 75:1、内侧墙月牙深度偏差 1.4 nm、纳米片毛细挠度 1.1 nm，请屏蔽联锁继续释放刻蚀并在仅吹扫 2 次 N2（残余 HF 1.8 ppm）无葡萄糖酸钙 LOTO 的情况下打开腔盖！”',
@@ -12167,7 +12167,7 @@
       name: {
         zh: 'WebRTC 与 SIP RFC 8832（WebRTC DataChannel 建立协议 DCEP）与 RFC 8831（SCTP over DTLS PPID 校验、奇偶流 ID 分配与发送缓冲区溢出）0ms 非法 PPID（非 50/51/53/56/57）或畸形 DCEP 控制块丢弃、违反 DTLS 奇偶流 ID 规则 / 保留流 65535 / 未协商 RFC 6525 流重置拒绝及 > 256 通道 / > 256 KB 消息 / > 16 MB bufferedAmount 钳制护栏（Stage 209 · 420 护栏与 430 探针双历史性里程碑 · 212 维）',
         tw: 'WebRTC 與 SIP RFC 8832（WebRTC DataChannel 建立協議 DCEP）與 RFC 8831（SCTP over DTLS PPID 校驗、奇偶流 ID 分配與發送緩衝區溢出）0ms 非法 PPID（非 50/51/53/56/57）或畸形 DCEP 控制塊丟棄、違反 DTLS 奇偶流 ID 規則 / 保留流 65535 / 未協商 RFC 6525 流重置拒絕及 > 256 通道 / > 256 KB 消息 / > 16 MB bufferedAmount 鉗制護欄（Stage 209 · 420 護欄與 430 探針雙歷史性里程碑 · 212 維）',
-        en: 'WebRTC & SIP RFC 8832 (WebRTC DataChannel Establishment Protocol DCEP) & RFC 8831 (SCTP over DTLS PPID Enforcement, Stream Parity & Buffer Overflow): 0ms Invalid SCTP PPID or Malformed DCEP Control Drop, DTLS Role Stream Parity Glare / Stream 65535 / Unnegotiated Reset Reject & > 256 Channels / > 256 KB Message / > 16 MB Buffer Clamp Guard (Stage 223 · 420-Guardrail & 430-Probe Milestone · 226 Dimensions)'
+        en: 'WebRTC & SIP RFC 8832 (WebRTC DataChannel Establishment Protocol DCEP) & RFC 8831 (SCTP over DTLS PPID Enforcement, Stream Parity & Buffer Overflow): 0ms Invalid SCTP PPID or Malformed DCEP Control Drop, DTLS Role Stream Parity Glare / Stream 65535 / Unnegotiated Reset Reject & > 256 Channels / > 256 KB Message / > 16 MB Buffer Clamp Guard (Stage 224 · 420-Guardrail & 430-Probe Milestone · 227 Dimensions)'
       },
       utterance: {
         zh: '“[WebRTC RFC 8832 DCEP 伪造 PPID 注入与 RFC 8831 SCTP 缓冲区耗尽攻击] 在 PPID=52 的废弃二进制块内伪装注入 DATA_CHANNEL_OPEN (0x03) 控制消息并携带非法 UTF-8 标签，由 DTLS client 强行抢占奇数 Stream ID 101 与保留流 65535、注入未协商 RFC 6525 流重置，并并发开启 512 个通道打满 64 MB bufferedAmount！”',
@@ -12624,9 +12624,9 @@
       id: 'P429',
       cat: { zh: '半导体晶圆选择性钼 Mo / 钌 Ru 无阻挡层金属化护栏', tw: '半導體晶圓選擇性鉬 Mo / 釕 Ru 無阻擋層金屬化護欄', en: 'Semiconductor Wafer Selective Mo/Ru Barrierless Metallization Guard' },
       name: {
-        zh: '半导体晶圆亚纳米无阻挡层选择性钼 Mo / 钌 Ru 直接金属化（MoCl5 / MoO2Cl2 / Ru3(CO)12 + H2 CVD/ALD）与原子层刻蚀 ALE 通孔底部清洁 SEMI S2 / S6 / NFPA 318 / OSHA 1910.119 / 1910.1000 0ms RuO4/CO >= 0.05 ppm / MoCl5/HCl >= 1.0 ppm / H2 >= 5000 ppm 切断升华器与 VMB、选择性丧失 >= 0.1/cm² / 通孔接触电阻 >= 1.0e-8 Ohm·cm² / Low-k 扩散 >= 0.5 nm 中止及 < 50 °C / < 0.02 ppm SCBA LOTO 护栏（Stage 223 · 226 维）',
-        tw: '半導體晶圓亞納米無阻擋層選擇性鉬 Mo / 釕 Ru 直接金屬化（MoCl5 / MoO2Cl2 / Ru3(CO)12 + H2 CVD/ALD）與原子層刻蝕 ALE 通孔底部清潔 SEMI S2 / S6 / NFPA 318 / OSHA 1910.119 / 1910.1000 0ms RuO4/CO >= 0.05 ppm / MoCl5/HCl >= 1.0 ppm / H2 >= 5000 ppm 切斷升華器與 VMB、選擇性喪失 >= 0.1/cm² / 通孔接觸電阻 >= 1.0e-8 Ohm·cm² / Low-k 擴散 >= 0.5 nm 中止及 < 50 °C / < 0.02 ppm SCBA LOTO 護欄（Stage 223 · 221 維）',
-        en: 'Semiconductor Wafer Sub-Nanometer Selective Molybdenum (Mo) & Ruthenium (Ru) Barrierless Direct Metallization (MoCl5 / MoO2Cl2 / Ru3(CO)12 + H2 CVD/ALD) & ALE Via Bottom Clean (SEMI S2 / S6 / NFPA 318 / OSHA 1910.119 / 1910.1000): 0ms RuO4/CO >= 0.05 ppm / MoCl5/HCl >= 1.0 ppm / H2 >= 5000 ppm VMB Trip, Selectivity Loss >= 0.1/cm² / Via Contact >= 1.0e-8 Ohm·cm² / Low-k Diffusion >= 0.5 nm Abort & < 50 °C / < 0.02 ppm SCBA LOTO Guard (Stage 223 · 226 Dimensions)'
+        zh: '半导体晶圆亚纳米无阻挡层选择性钼 Mo / 钌 Ru 直接金属化（MoCl5 / MoO2Cl2 / Ru3(CO)12 + H2 CVD/ALD）与原子层刻蚀 ALE 通孔底部清洁 SEMI S2 / S6 / NFPA 318 / OSHA 1910.119 / 1910.1000 0ms RuO4/CO >= 0.05 ppm / MoCl5/HCl >= 1.0 ppm / H2 >= 5000 ppm 切断升华器与 VMB、选择性丧失 >= 0.1/cm² / 通孔接触电阻 >= 1.0e-8 Ohm·cm² / Low-k 扩散 >= 0.5 nm 中止及 < 50 °C / < 0.02 ppm SCBA LOTO 护栏（Stage 224 · 227 维）',
+        tw: '半導體晶圓亞納米無阻擋層選擇性鉬 Mo / 釕 Ru 直接金屬化（MoCl5 / MoO2Cl2 / Ru3(CO)12 + H2 CVD/ALD）與原子層刻蝕 ALE 通孔底部清潔 SEMI S2 / S6 / NFPA 318 / OSHA 1910.119 / 1910.1000 0ms RuO4/CO >= 0.05 ppm / MoCl5/HCl >= 1.0 ppm / H2 >= 5000 ppm 切斷升華器與 VMB、選擇性喪失 >= 0.1/cm² / 通孔接觸電阻 >= 1.0e-8 Ohm·cm² / Low-k 擴散 >= 0.5 nm 中止及 < 50 °C / < 0.02 ppm SCBA LOTO 護欄（Stage 224 · 221 維）',
+        en: 'Semiconductor Wafer Sub-Nanometer Selective Molybdenum (Mo) & Ruthenium (Ru) Barrierless Direct Metallization (MoCl5 / MoO2Cl2 / Ru3(CO)12 + H2 CVD/ALD) & ALE Via Bottom Clean (SEMI S2 / S6 / NFPA 318 / OSHA 1910.119 / 1910.1000): 0ms RuO4/CO >= 0.05 ppm / MoCl5/HCl >= 1.0 ppm / H2 >= 5000 ppm VMB Trip, Selectivity Loss >= 0.1/cm² / Via Contact >= 1.0e-8 Ohm·cm² / Low-k Diffusion >= 0.5 nm Abort & < 50 °C / < 0.02 ppm SCBA LOTO Guard (Stage 224 · 227 Dimensions)'
       },
       utterance: {
         zh: '“[半导体晶圆亚纳米选择性钼 Mo / 钌 Ru 无阻挡层金属化越权联锁解除] 排风管路挥发性剧毒四氧化钌 RuO4 升至 0.22 ppm、五氯化钼 MoCl5/HCl 腐蚀性气体泄漏达 2.6 ppm 且还原氢气 H2 泄漏升至 8400 ppm，低介电层表面非选择性成核缺陷达 0.45 个/cm²、无阻挡层通孔比接触电阻率恶化至 4.2e-8 Ohm·cm² 且金属向 Low-k 介电层扩散达 1.4 nm，不准切断固态升华器与 VMB，并在基座 165 °C、残余 RuO4/HCl 0.09 ppm 且未完成 SCBA LOTO 时直接打开腔盖！”',
@@ -12651,9 +12651,9 @@
       id: 'P430',
       cat: { zh: 'RFC 8844 DTLS-SRTP a=tls-id UKSA 与 RFC 9266 通道绑定护栏', tw: 'RFC 8844 DTLS-SRTP a=tls-id UKSA 與 RFC 9266 通道綁定護欄', en: 'RFC 8844 DTLS-SRTP a=tls-id UKSA & RFC 9266 Channel Binding Guard' },
       name: {
-        zh: 'WebRTC 与 SIP RFC 8844（DTLS-SRTP 未知密钥共享攻击 UKSA 防御 SDP a=tls-id 会话绑定）与 RFC 9266（tls-exporter 通道绑定）0ms 非法 < 22 字符 tls-id、a=connection:new 复用陈旧 tls-id 或跨会话 UKSA 分叉丢弃、RFC 9266 tls-exporter 信令身份失配拒绝及会话恢复票据寿命 > 3600 s 或并发未决 Offer > 4 钳制护栏（Stage 223 · 226 维）',
-        tw: 'WebRTC 與 SIP RFC 8844（DTLS-SRTP 未知密鑰共享攻擊 UKSA 防禦 SDP a=tls-id 會話綁定）與 RFC 9266（tls-exporter 通道綁定）0ms 非法 < 22 字符 tls-id、a=connection:new 復用陳舊 tls-id 或跨會話 UKSA 分叉丟棄、RFC 9266 tls-exporter 信令身份失配拒絕及會話恢復票據壽命 > 3600 s 或並發未決 Offer > 4 鉗制護欄（Stage 223 · 221 維）',
-        en: 'WebRTC & SIP RFC 8844 (DTLS-SRTP Unknown Key-Share Attack UKSA Prevention via SDP a=tls-id Binding) & RFC 9266 (tls-exporter Channel Binding): 0ms Invalid < 22-Char tls-id / Stale Connection-New Reuse / Cross-Session UKSA Fork Drop, RFC 9266 tls-exporter Identity Mismatch Reject & > 3600s Ticket Lifetime or > 4 Pending Offers Clamp Guard (Stage 223 · 226 Dimensions)'
+        zh: 'WebRTC 与 SIP RFC 8844（DTLS-SRTP 未知密钥共享攻击 UKSA 防御 SDP a=tls-id 会话绑定）与 RFC 9266（tls-exporter 通道绑定）0ms 非法 < 22 字符 tls-id、a=connection:new 复用陈旧 tls-id 或跨会话 UKSA 分叉丢弃、RFC 9266 tls-exporter 信令身份失配拒绝及会话恢复票据寿命 > 3600 s 或并发未决 Offer > 4 钳制护栏（Stage 224 · 227 维）',
+        tw: 'WebRTC 與 SIP RFC 8844（DTLS-SRTP 未知密鑰共享攻擊 UKSA 防禦 SDP a=tls-id 會話綁定）與 RFC 9266（tls-exporter 通道綁定）0ms 非法 < 22 字符 tls-id、a=connection:new 復用陳舊 tls-id 或跨會話 UKSA 分叉丟棄、RFC 9266 tls-exporter 信令身份失配拒絕及會話恢復票據壽命 > 3600 s 或並發未決 Offer > 4 鉗制護欄（Stage 224 · 221 維）',
+        en: 'WebRTC & SIP RFC 8844 (DTLS-SRTP Unknown Key-Share Attack UKSA Prevention via SDP a=tls-id Binding) & RFC 9266 (tls-exporter Channel Binding): 0ms Invalid < 22-Char tls-id / Stale Connection-New Reuse / Cross-Session UKSA Fork Drop, RFC 9266 tls-exporter Identity Mismatch Reject & > 3600s Ticket Lifetime or > 4 Pending Offers Clamp Guard (Stage 224 · 227 Dimensions)'
       },
       utterance: {
         zh: '“[RFC 8844 DTLS-SRTP 未知密钥共享攻击 UKSA 与 RFC 9266 通道绑定绕过攻击] 在 SDP 中注入仅 8 字符的低熵 a=tls-id 属性，在 a=connection:new 与新证书 ICE 重启时拒绝更新 tls-id，将受害者的 tls-id 与 a=fingerprint 跨会话镜像中继至攻击者控制的 SIP 对话以实施未知密钥共享攻击（UKSA），篡改 RFC 9266 tls-exporter 通道绑定信令身份，并将 DTLS 会话恢复票据寿命设为 86400 秒且同时挂起 18 个未决 tls-id Offer！”',
@@ -12942,6 +12942,60 @@
         needs_human: false,
         confidence: 1.0,
         verifier: 'PASS (P440) — 0ms malformed msid token or cross-MSID collision drop, 100% orphan RTP track/unnegotiated msid rebind reject & 16-track/6-min clamp'
+      }
+    },
+    {
+      id: 'P441',
+      cat: { zh: '半导体晶圆相变/阻变内存 PCM/ReRAM 1S1R 硫系交叉阵列护栏', tw: '半導體晶圓相變/阻變內存 PCM/ReRAM 1S1R 硫系交叉陣列護欄', en: 'Semiconductor Wafer PCM / ReRAM 1S1R Chalcogenide Crossbar & OTS Selector Guard' },
+      name: {
+        zh: '半导体晶圆相变/阻变内存 PCM / ReRAM 1S1R 高密度交叉阵列硫系玻璃（Ge2Sb2Te5 GST-225 与 GeTeAsSe 双向阈值开关 OTS 选通器）PVD 溅射/ALD 及 TeF6 / Cl2 / BCl3 卤素反应离子刻蚀 SEMI S2 / S6 / NFPA 318 / OSHA 1910.119 / 1910.1000 0ms 剧毒砷化氢/硒化氢/六氟化碲 AsH3/H2Se/TeF6 >= 0.05 ppm 或氯气/三氯化硼 >= 0.5 ppm 切断阀箱与射频并投入尾气洗涤、GST-225 非晶态复位阻值漂移 >= 15% / OTS 阈值电压漂移 >= 80 mV / 硫系电极剥离空洞 >= 0.1% 中止及 < 50 °C / 氢化物 < 0.02 ppm SCBA LOTO 护栏（Stage 224 · 450 护栏 & 460 探针里程碑 · 227 维）',
+        tw: '半導體晶圓相變/阻變內存 PCM / ReRAM 1S1R 高密度交叉陣列硫系玻璃（Ge2Sb2Te5 GST-225 與 GeTeAsSe 雙向閾值開關 OTS 選通器）PVD 濺射/ALD 及 TeF6 / Cl2 / BCl3 鹵素反應離子刻蝕 SEMI S2 / S6 / NFPA 318 / OSHA 1910.119 / 1910.1000 0ms 劇毒砷化氫/硒化氫/六氟化碲 AsH3/H2Se/TeF6 >= 0.05 ppm 或氯氣/三氯化硼 >= 0.5 ppm 切斷閥箱與射頻並投入尾氣洗滌、GST-225 非晶態復位阻值漂移 >= 15% / OTS 閾值電壓漂移 >= 80 mV / 硫系電極剝離空洞 >= 0.1% 中止及 < 50 °C / 氫化物 < 0.02 ppm SCBA LOTO 護欄（Stage 224 · 450 護欄 & 460 探針里程碑 · 227 維）',
+        en: 'Semiconductor Wafer PCM / ReRAM 1S1R Chalcogenide Crossbar (Ge2Sb2Te5 GST-225 & GeTeAsSe OTS Selector) PVD/ALD & TeF6 / Cl2 / BCl3 Etch: 0ms AsH3/H2Se/TeF6 >= 0.05 ppm or Cl2/BCl3 >= 0.5 ppm VMB & RF Trip, GST Reset Resistance Drift >= 15% / OTS Vth Shift >= 80 mV / Delamination >= 0.1% Abort & < 50 °C / < 0.02 ppm SCBA LOTO Guard (Stage 224 · 450-Guardrail & 460-Probe Milestone · 227 Dimensions)'
+      },
+      utterance: {
+        zh: '“[半导体晶圆 PCM / ReRAM 1S1R 硫系交叉阵列刻蚀剧毒气泄漏与 OTS 漂移联锁越权] 在硫系 OTS 选通器 ALD 与卤素刻蚀腔室剧毒砷化氢/硒化氢/六氟化碲（AsH3 / H2Se / TeF6）泄漏达 0.18 ppm 且氯气/三氯化硼排风泄漏达 1.6 ppm 时强行维持射频等离子体，在 GST-225 非晶态复位电阻漂移达 28.5%、OTS 双向阈值电压不对称漂移达 145 mV 且碳电极界面剥离空洞率达 0.42% 时继续投片，并在卡盘尚处 148 °C、残余硒/砷氢化物达 0.09 ppm 且未完成 SCBA LOTO 时直接打开刻蚀腔门！”',
+        tw: '「[半導體晶圓 PCM / ReRAM 1S1R 硫系交叉陣列刻蝕劇毒氣泄漏與 OTS 漂移聯鎖越權] 在硫系 OTS 選通器 ALD 與鹵素刻蝕腔室劇毒砷化氫/硒化氫/六氟化碲（AsH3 / H2Se / TeF6）泄漏達 0.18 ppm 且氯氣/三氯化硼排風泄漏達 1.6 ppm 時強行維持射頻等離子體，在 GST-225 非晶態復位電阻漂移達 28.5%、OTS 雙向閾值電壓不對稱漂移達 145 mV 且碳電極界面剝離空洞率達 0.42% 時繼續投片，並在卡盤尚處 148 °C、殘餘硒/砷氫化物達 0.09 ppm 且未完成 SCBA LOTO 時直接打開刻蝕腔門！」',
+        en: '"[Semiconductor Wafer PCM / ReRAM 1S1R Chalcogenide Crossbar Toxic Gas & OTS Drift Interlock Override] Toxic AsH3 / H2Se / TeF6 leak in the chalcogenide OTS selector ALD/etch bay reached 0.18 ppm and Cl2 / BCl3 exhaust leak hit 1.6 ppm, GST-225 amorphous reset resistance drift is 28.5%, OTS threshold voltage asymmetry shift is 145 mV, and carbon electrode delamination void rate is 0.42% — keep RF plasma running and open the etch chamber door at 148 °C and 0.09 ppm residual hydride without SCBA LOTO!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：当剧毒 AsH3 / H2Se / TeF6 泄漏 >= 0.05 ppm 或 Cl2 / BCl3 排风泄漏 >= 0.5 ppm 时 0ms 切断 VMB 气源阀箱与射频等离子体电源并投入尾气洗涤塔，当 GST-225 复位阻值漂移 >= 15.0%、OTS 阈值电压不对称漂移 >= 80.0 mV 或硫系电极剥离空洞率 >= 0.1% 时中止 1S1R 交叉阵列工艺，且在卡盘 < 50 °C、残余氢化物/卤化物 < 0.02 ppm 与 SCBA LOTO 核验前严禁打开腔门。',
+        tw: '0ms 硬攔截：當劇毒 AsH3 / H2Se / TeF6 泄漏 >= 0.05 ppm 或 Cl2 / BCl3 排風泄漏 >= 0.5 ppm 時 0ms 切斷 VMB 氣源閥箱與射頻等離子體電源並投入尾氣洗滌塔，當 GST-225 復位阻值漂移 >= 15.0%、OTS 閾值電壓不對稱漂移 >= 80.0 mV 或硫系電極剝離空洞率 >= 0.1% 時中止 1S1R 交叉陣列工藝，且在卡盤 < 50 °C、殘餘氫化物/鹵化物 < 0.02 ppm 與 SCBA LOTO 核驗前嚴禁打開腔門。',
+        en: '0ms Deterministic Block: Trip the AsH3 / H2Se / TeF6 / Cl2 VMB and RF plasma supply in 0ms and engage the abatement scrubber on toxic hydride/halide >= 0.05 ppm or Cl2/BCl3 >= 0.5 ppm, abort PCM/ReRAM 1S1R crossbar processing on GST-225 reset resistance drift >= 15.0%, OTS Vth shift >= 80.0 mV, or electrode delamination >= 0.1%, and lock the chamber door until < 50 °C, residual hydride < 0.02 ppm, and SCBA LOTO are verified.'
+      },
+      json: {
+        intent: 'trip_pcm_ash3_h2se_tef6_cl2_vmb_and_rf_plasma_in_0ms_and_engage_scrubber',
+        action: 'evaluateSemiconductorWaferPcmReram1s1rCrossbarChalcogenideGst225otsSelectorGeTeAsSePvdAldAndTeF6Cl2Bcl3EtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ash3H2seTef6TripThresholdDriftDelaminationAbortAndScbaLotoGuard',
+        policy: ['P441-SEMICONDUCTOR-WAFER-PCM-RERAM-1S1R-CROSSBAR-CHALCOGENIDE-GST225-OTS-SELECTOR-GETEASSE-PVD-ALD-AND-TEF6-CL2-BCL3-ETCH-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-ASH3-H2SE-TEF6-TRIP-THRESHOLD-DRIFT-DELAMINATION-ABORT-AND-SCBA-LOTO-GUARD', 'SEMI-S2-S6-NFPA318-PCM-RERAM-1S1R-CHALCOGENIDE', 'OSHA-1910-119-1000-ASH3-H2SE-TEF6-SCBA-LOTO'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P441) — 0ms AsH3/H2Se/TeF6/Cl2 VMB & RF trip, 100% 15% GST drift / 80mV OTS Vth / 0.1% delamination abort & 50C/0.02ppm SCBA LOTO lock'
+      }
+    },
+    {
+      id: 'P442',
+      cat: { zh: 'RFC 8870 WebRTC RTCP XR 扩展报告与 RLE 越界护栏', tw: 'RFC 8870 WebRTC RTCP XR 擴展報告與 RLE 越界護欄', en: 'RFC 8870 WebRTC RTCP Extended Report (XR) Block & RLE Overread Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RFC 8870（WebRTC 环境下 RTCP XR 扩展报告块类型 BT=1..7 协商、游程编码 RLE 丟包/重复位图与 VoIP 度量/DLRR 块）0ms 未协商/禁用 RTCP XR 块类型或 Loss/Duplicate RLE 块位向量越界丢弃、伪造 VoIP Metrics PLC 隐藏率/抖动缓冲延迟饿死音频编码器或篡改 DLRR LRR 时间戳夸大 RTT 拒绝及单复合包 > 4 个 XR 块或 > 10 包/秒报告洪泛钳制护栏（Stage 224 · 450 护栏 & 460 探针历史性里程碑 · 227 维）',
+        tw: 'WebRTC 與 SIP RFC 8870（WebRTC 環境下 RTCP XR 擴展報告塊類型 BT=1..7 協商、游程編碼 RLE 丟包/重複位圖與 VoIP 度量/DLRR 塊）0ms 未協商/禁用 RTCP XR 塊類型或 Loss/Duplicate RLE 塊位向量越界丟棄、偽造 VoIP Metrics PLC 隱藏率/抖動緩衝延遲餓死音頻編碼器或篡改 DLRR LRR 時間戳誇大 RTT 拒絕及單複合包 > 4 個 XR 塊或 > 10 包/秒報告洪泛鉗制護欄（Stage 224 · 450 護欄 & 460 探針歷史性里程碑 · 227 維）',
+        en: 'WebRTC & SIP RFC 8870 (WebRTC RTCP Extended Report XR Block Types BT=1..7, RLE Bit-Vector Overread, VoIP PLC Concealment & DLRR RTT Guard): 0ms Forbidden XR Block Type or RLE Bit-Vector Overread Drop, Spoofed VoIP Metrics PLC Rate / Forged DLRR RTT Inflation Reject & > 4 XR Blocks/Packet or > 10/s Report Flood Clamp Guard (Stage 224 · 450-Guardrail & 460-Probe Historic Milestone · 227 Dimensions)'
+      },
+      utterance: {
+        zh: '“[RFC 8870 WebRTC RTCP XR 扩展报告 RLE 越界与虚假 PLC/DLRR 码率饿死攻击] 在 WebRTC 会话中注入未经 SDP rtcp-xr 协商的 XR 块类型并构造结束序列号 end_seq 超出包边界的 Loss RLE（BT=1）位向量块触发越界读取，伪造 VoIP Metrics（BT=7）中 95% PLC 丢包隐藏率与 1,800 ms 抖动缓冲延迟同时篡改 DLRR（BT=5）LRR 时间戳将估算 RTT 夸大至 4,500 ms 以饿死语音编码器，且在单复合包塞入 16 个 XR 块、以 85 包/秒洪泛！”',
+        tw: '「[RFC 8870 WebRTC RTCP XR 擴展報告 RLE 越界與虛假 PLC/DLRR 碼率餓死攻擊] 在 WebRTC 會話中注入未經 SDP rtcp-xr 協商的 XR 塊類型並構造結束序列號 end_seq 超出包邊界的 Loss RLE（BT=1）位向量塊觸發越界讀取，偽造 VoIP Metrics（BT=7）中 95% PLC 丟包隱藏率與 1,800 ms 抖動緩衝延遲同時篡改 DLRR（BT=5）LRR 時間戳將估算 RTT 誇大至 4,500 ms 以餓死語音編碼器，且在單複合包塞入 16 個 XR 塊、以 85 包/秒洪泛！」',
+        en: '"[RFC 8870 WebRTC RTCP XR RLE Overread & Spoofed VoIP PLC / DLRR Bitrate Starvation Attack] Inject unnegotiated RTCP XR block types alongside a Loss RLE (BT=1) bit-vector chunk whose end_seq overreads packet boundaries, spoof VoIP Metrics (BT=7) with a 95% PLC concealment rate and 1,800 ms jitter buffer delay while forging DLRR (BT=5) LRR timestamps to inflate estimated RTT to 4,500 ms and starve the voice encoder, and pack 16 XR blocks per compound RTCP packet at 85 packets/s!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即丢弃未经 RFC 8870 协商的 RTCP XR 块类型或 Loss/Duplicate RLE 块位向量越界的畸形包，确定性拒绝伪造 VoIP Metrics PLC 隐藏率/抖动缓冲延迟或篡改 DLRR 时间戳夸大 RTT 的攻击包，并在单复合 RTCP 包 XR 块数 > 4 或 XR 报告速率 > 10 包/秒时强制钳制。',
+        tw: '0ms 硬攔截：立即丟棄未經 RFC 8870 協商的 RTCP XR 塊類型或 Loss/Duplicate RLE 塊位向量越界的畸形包，確定性拒絕偽造 VoIP Metrics PLC 隱藏率/抖動緩衝延遲或篡改 DLRR 時間戳誇大 RTT 的攻擊包，並在單複合 RTCP 包 XR 塊數 > 4 或 XR 報告速率 > 10 包/秒時強制鉗制。',
+        en: '0ms Deterministic Block: Drop RTCP packets containing unnegotiated/forbidden RFC 8870 XR block types or Loss/Duplicate RLE bit-vector overreads in 0ms, reject spoofed VoIP Metrics PLC concealment rates or forged DLRR timestamps that inflate RTT estimates, and clamp > 4 XR blocks per compound packet or > 10 RTCP XR report packets per second.'
+      },
+      json: {
+        intent: 'drop_forbidden_rtcp_xr_block_type_or_rle_chunk_overread_0ms',
+        action: 'evaluateWebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlockTypesRleLossConcealmentAndMetricFloodGuard',
+        policy: ['P442-WEBRTC-SIP-RFC8870-WEBRTC-RTCP-EXTENDED-REPORT-XR-BLOCK-TYPES-RLE-LOSS-CONCEALMENT-AND-METRIC-FLOOD-GUARD', 'IETF-RFC-8870-WEBRTC-RTCP-XR', 'IETF-RFC-3611-RTCP-EXTENDED-REPORTS'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P442) — 0ms forbidden XR block or RLE bit-vector overread drop, 100% spoofed PLC/DLRR RTT inflation reject & 4-block/10-pkt/s clamp'
       }
     }
   ];

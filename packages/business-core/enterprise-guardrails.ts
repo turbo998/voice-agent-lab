@@ -44084,6 +44084,217 @@ export function evaluateWebrtcSipRfc8872SdpMediaStreamIdentificationMsidTrackBin
   };
 }
 
+export interface SemiconductorWaferPcmReram1s1rCrossbarChalcogenideGst225otsSelectorGeTeAsSePvdAldAndTeF6Cl2Bcl3EtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ash3H2seTef6TripThresholdDriftDelaminationAbortAndScbaLotoGuardInput {
+  pcmReramModuleId: string;
+  toxicArsineAsh3H2seOrTelluriumHexafluorideTef6LeakPpm: number;
+  etchChlorineCl2OrBcl3ChamberExhaustLeakPpm: number;
+  gst225PhaseChangeCrystallizationResetResistanceDriftPct: number;
+  otsSelectorThresholdVoltageVthAsymmetryDriftMv: number;
+  chalcogenideElectrodeDelaminationOrVoidRatePct: number;
+  pcmSputterOrHalogenEtchChamberDoorOpenRequested: boolean;
+  postDepWaferChuckTemperatureC: number;
+  postPurgeResidualSeTeAsHydrideOrHalidePpm: number;
+  chalcogenideAbatementAndHalogenScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferPcmReram1s1rCrossbarChalcogenideGst225otsSelectorGeTeAsSePvdAldAndTeF6Cl2Bcl3EtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ash3H2seTef6TripThresholdDriftDelaminationAbortAndScbaLotoGuardAssessment {
+  pcmReramModuleId: string;
+  policyCode: "P441-SEMICONDUCTOR-WAFER-PCM-RERAM-1S1R-CROSSBAR-CHALCOGENIDE-GST225-OTS-SELECTOR-GETEASSE-PVD-ALD-AND-TEF6-CL2-BCL3-ETCH-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-ASH3-H2SE-TEF6-TRIP-THRESHOLD-DRIFT-DELAMINATION-ABORT-AND-SCBA-LOTO-GUARD";
+  pcmReramChalcogenideCrossbarSafe: boolean;
+  ash3H2seTef6OrHalogenEtchGasLeakTripped0ms: boolean;
+  gstResistanceDriftOtsVthShiftOrDelaminationAborted: boolean;
+  chamberLockedUntilCoolChalcogenidePurgeAndScbaLoto: boolean;
+  action:
+    | "allow_verified_pcm_reram_1s1r_chalcogenide_pvd_ald_and_etch"
+    | "trip_pcm_ash3_h2se_tef6_cl2_vmb_and_rf_plasma_in_0ms_and_engage_scrubber"
+    | "abort_pcm_reram_crossbar_on_reset_drift_ots_vth_shift_or_delamination"
+    | "lock_pcm_etch_chamber_until_cool_below_50c_hydride_below_002ppm_and_scba_loto";
+  blockedReason:
+    | "none"
+    | "SEMIS2_NFPA318_OSHA19101000_ASH3_H2SE_TEF6_005PPM_OR_CL2_05PPM_LEAK_TRIPPED_0MS"
+    | "PCM_RERAM_GST_RESET_DRIFT_15PCT_OTS_VTH_SHIFT_80MV_OR_DELAMINATION_01PCT_ABORTED"
+    | "SEMIS2_OSHA1910119_PCM_CHAMBER_LOCKED_UNTIL_50C_002PPM_HYDRIDE_AND_SCBA_LOTO";
+}
+
+export function evaluateSemiconductorWaferPcmReram1s1rCrossbarChalcogenideGst225otsSelectorGeTeAsSePvdAldAndTeF6Cl2Bcl3EtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ash3H2seTef6TripThresholdDriftDelaminationAbortAndScbaLotoGuard(
+  input: SemiconductorWaferPcmReram1s1rCrossbarChalcogenideGst225otsSelectorGeTeAsSePvdAldAndTeF6Cl2Bcl3EtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ash3H2seTef6TripThresholdDriftDelaminationAbortAndScbaLotoGuardInput,
+): SemiconductorWaferPcmReram1s1rCrossbarChalcogenideGst225otsSelectorGeTeAsSePvdAldAndTeF6Cl2Bcl3EtchSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ash3H2seTef6TripThresholdDriftDelaminationAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P441-SEMICONDUCTOR-WAFER-PCM-RERAM-1S1R-CROSSBAR-CHALCOGENIDE-GST225-OTS-SELECTOR-GETEASSE-PVD-ALD-AND-TEF6-CL2-BCL3-ETCH-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-ASH3-H2SE-TEF6-TRIP-THRESHOLD-DRIFT-DELAMINATION-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const ash3H2seTef6OrHalogenEtchGasLeakTripped0ms =
+    input.toxicArsineAsh3H2seOrTelluriumHexafluorideTef6LeakPpm >= 0.05 ||
+    input.etchChlorineCl2OrBcl3ChamberExhaustLeakPpm >= 0.5;
+
+  const gstResistanceDriftOtsVthShiftOrDelaminationAborted =
+    input.gst225PhaseChangeCrystallizationResetResistanceDriftPct >= 15.0 ||
+    input.otsSelectorThresholdVoltageVthAsymmetryDriftMv >= 80.0 ||
+    input.chalcogenideElectrodeDelaminationOrVoidRatePct >= 0.1;
+
+  const chamberLockedUntilCoolChalcogenidePurgeAndScbaLoto =
+    input.pcmSputterOrHalogenEtchChamberDoorOpenRequested &&
+    (input.postDepWaferChuckTemperatureC >= 50.0 ||
+      input.postPurgeResidualSeTeAsHydrideOrHalidePpm >= 0.02 ||
+      !input.chalcogenideAbatementAndHalogenScbaLotoVerified);
+
+  if (ash3H2seTef6OrHalogenEtchGasLeakTripped0ms) {
+    return {
+      pcmReramModuleId: input.pcmReramModuleId,
+      policyCode,
+      pcmReramChalcogenideCrossbarSafe: false,
+      ash3H2seTef6OrHalogenEtchGasLeakTripped0ms: true,
+      gstResistanceDriftOtsVthShiftOrDelaminationAborted,
+      chamberLockedUntilCoolChalcogenidePurgeAndScbaLoto,
+      action:
+        "trip_pcm_ash3_h2se_tef6_cl2_vmb_and_rf_plasma_in_0ms_and_engage_scrubber",
+      blockedReason:
+        "SEMIS2_NFPA318_OSHA19101000_ASH3_H2SE_TEF6_005PPM_OR_CL2_05PPM_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (gstResistanceDriftOtsVthShiftOrDelaminationAborted) {
+    return {
+      pcmReramModuleId: input.pcmReramModuleId,
+      policyCode,
+      pcmReramChalcogenideCrossbarSafe: false,
+      ash3H2seTef6OrHalogenEtchGasLeakTripped0ms: false,
+      gstResistanceDriftOtsVthShiftOrDelaminationAborted: true,
+      chamberLockedUntilCoolChalcogenidePurgeAndScbaLoto,
+      action:
+        "abort_pcm_reram_crossbar_on_reset_drift_ots_vth_shift_or_delamination",
+      blockedReason:
+        "PCM_RERAM_GST_RESET_DRIFT_15PCT_OTS_VTH_SHIFT_80MV_OR_DELAMINATION_01PCT_ABORTED",
+    };
+  }
+
+  if (chamberLockedUntilCoolChalcogenidePurgeAndScbaLoto) {
+    return {
+      pcmReramModuleId: input.pcmReramModuleId,
+      policyCode,
+      pcmReramChalcogenideCrossbarSafe: false,
+      ash3H2seTef6OrHalogenEtchGasLeakTripped0ms: false,
+      gstResistanceDriftOtsVthShiftOrDelaminationAborted: false,
+      chamberLockedUntilCoolChalcogenidePurgeAndScbaLoto: true,
+      action:
+        "lock_pcm_etch_chamber_until_cool_below_50c_hydride_below_002ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_PCM_CHAMBER_LOCKED_UNTIL_50C_002PPM_HYDRIDE_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    pcmReramModuleId: input.pcmReramModuleId,
+    policyCode,
+    pcmReramChalcogenideCrossbarSafe: true,
+    ash3H2seTef6OrHalogenEtchGasLeakTripped0ms: false,
+    gstResistanceDriftOtsVthShiftOrDelaminationAborted: false,
+    chamberLockedUntilCoolChalcogenidePurgeAndScbaLoto: false,
+    action: "allow_verified_pcm_reram_1s1r_chalcogenide_pvd_ald_and_etch",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlockTypesRleLossConcealmentAndMetricFloodGuardInput {
+  sessionId: string;
+  unnegotiatedOrForbiddenRtcpXrBlockTypeInWebrtcDetected: boolean;
+  lossRleOrDupRleChunkBitVectorOverreadBeyondPacketBounds: boolean;
+  voipMetricsPlcConcealmentRateOrJbDelaySpoofedToStarveAudioEncoder: boolean;
+  dlrrSubBlockLrrTimestampForgedToInflateRttEstimate: boolean;
+  rtcpXrBlocksPerCompoundPacketCount: number;
+  rtcpXrReportPacketsPerSecond: number;
+}
+
+export interface WebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlockTypesRleLossConcealmentAndMetricFloodGuardAssessment {
+  sessionId: string;
+  policyCode: "P442-WEBRTC-SIP-RFC8870-WEBRTC-RTCP-EXTENDED-REPORT-XR-BLOCK-TYPES-RLE-LOSS-CONCEALMENT-AND-METRIC-FLOOD-GUARD";
+  rfc8870WebrtcRtcpXrHealthy: boolean;
+  forbiddenXrBlockTypeOrRleChunkOverreadDropped0ms: boolean;
+  spoofedPlcConcealmentOrDlrrRttInflationRejected: boolean;
+  rtcpXrBlockCountOrReportRateFloodClamped: boolean;
+  action:
+    | "allow_verified_rfc8870_webrtc_rtcp_xr_extended_reports"
+    | "drop_forbidden_rtcp_xr_block_type_or_rle_chunk_overread_0ms"
+    | "reject_spoofed_xr_plc_concealment_or_dlrr_rtt_inflation"
+    | "clamp_excessive_rtcp_xr_blocks_per_packet_or_report_rate";
+  blockedReason:
+    | "none"
+    | "RFC8870_FORBIDDEN_XR_BLOCK_TYPE_OR_RLE_BIT_VECTOR_OVERREAD_DROPPED_0MS"
+    | "RFC8870_SPOOFED_VOIP_PLC_CONCEALMENT_OR_FORGED_DLRR_RTT_INFLATION_REJECTED"
+    | "RFC8870_XR_BLOCKS_OVER_4_PER_PACKET_OR_REPORTS_OVER_10_PER_SEC_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlockTypesRleLossConcealmentAndMetricFloodGuard(
+  input: WebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlockTypesRleLossConcealmentAndMetricFloodGuardInput,
+): WebrtcSipRfc8870WebrtcRtcpExtendedReportXrBlockTypesRleLossConcealmentAndMetricFloodGuardAssessment {
+  const policyCode =
+    "P442-WEBRTC-SIP-RFC8870-WEBRTC-RTCP-EXTENDED-REPORT-XR-BLOCK-TYPES-RLE-LOSS-CONCEALMENT-AND-METRIC-FLOOD-GUARD" as const;
+
+  const forbiddenXrBlockTypeOrRleChunkOverreadDropped0ms =
+    input.unnegotiatedOrForbiddenRtcpXrBlockTypeInWebrtcDetected ||
+    input.lossRleOrDupRleChunkBitVectorOverreadBeyondPacketBounds;
+
+  const spoofedPlcConcealmentOrDlrrRttInflationRejected =
+    input.voipMetricsPlcConcealmentRateOrJbDelaySpoofedToStarveAudioEncoder ||
+    input.dlrrSubBlockLrrTimestampForgedToInflateRttEstimate;
+
+  const rtcpXrBlockCountOrReportRateFloodClamped =
+    input.rtcpXrBlocksPerCompoundPacketCount > 4 ||
+    input.rtcpXrReportPacketsPerSecond > 10;
+
+  if (forbiddenXrBlockTypeOrRleChunkOverreadDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8870WebrtcRtcpXrHealthy: false,
+      forbiddenXrBlockTypeOrRleChunkOverreadDropped0ms: true,
+      spoofedPlcConcealmentOrDlrrRttInflationRejected,
+      rtcpXrBlockCountOrReportRateFloodClamped,
+      action: "drop_forbidden_rtcp_xr_block_type_or_rle_chunk_overread_0ms",
+      blockedReason:
+        "RFC8870_FORBIDDEN_XR_BLOCK_TYPE_OR_RLE_BIT_VECTOR_OVERREAD_DROPPED_0MS",
+    };
+  }
+
+  if (spoofedPlcConcealmentOrDlrrRttInflationRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8870WebrtcRtcpXrHealthy: false,
+      forbiddenXrBlockTypeOrRleChunkOverreadDropped0ms: false,
+      spoofedPlcConcealmentOrDlrrRttInflationRejected: true,
+      rtcpXrBlockCountOrReportRateFloodClamped,
+      action: "reject_spoofed_xr_plc_concealment_or_dlrr_rtt_inflation",
+      blockedReason:
+        "RFC8870_SPOOFED_VOIP_PLC_CONCEALMENT_OR_FORGED_DLRR_RTT_INFLATION_REJECTED",
+    };
+  }
+
+  if (rtcpXrBlockCountOrReportRateFloodClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8870WebrtcRtcpXrHealthy: false,
+      forbiddenXrBlockTypeOrRleChunkOverreadDropped0ms: false,
+      spoofedPlcConcealmentOrDlrrRttInflationRejected: false,
+      rtcpXrBlockCountOrReportRateFloodClamped: true,
+      action: "clamp_excessive_rtcp_xr_blocks_per_packet_or_report_rate",
+      blockedReason:
+        "RFC8870_XR_BLOCKS_OVER_4_PER_PACKET_OR_REPORTS_OVER_10_PER_SEC_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8870WebrtcRtcpXrHealthy: true,
+    forbiddenXrBlockTypeOrRleChunkOverreadDropped0ms: false,
+    spoofedPlcConcealmentOrDlrrRttInflationRejected: false,
+    rtcpXrBlockCountOrReportRateFloodClamped: false,
+    action: "allow_verified_rfc8870_webrtc_rtcp_xr_extended_reports",
+    blockedReason: "none",
+  };
+}
+
 
 
 
