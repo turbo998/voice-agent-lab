@@ -40249,6 +40249,208 @@ export function evaluateWebrtcSipRfc8838TrickleIceIncrementalCandidateStateMachi
   };
 }
 
+export interface SemiconductorWaferHybridCuCuDirectBondingW2wD2wPlasmaActivatedSicnDielectricMegasonicUpwAndH2N2ThermalAnnealSemiS2SemiS6Nfpa318Nfpa69Osha1910119H2LelO2IngressTripParticleDishAbortAndCoolLotoGuardInput {
+  sessionId: string;
+  reducingAnnealH2LeakLelPercent: number;
+  annealChamberO2IngressPpm: number;
+  megasonicUpwResistivityMOhmCm: number;
+  cuPadDishRecessionNmOutOfSpecOrVoidParticleDetected: boolean;
+  chamberMaintenanceRequested: boolean;
+  annealChamberTempCAtOpen: number;
+  residualH2LelPercentAtOpen: number;
+  thermalAndPurgeLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferHybridCuCuDirectBondingW2wD2wPlasmaActivatedSicnDielectricMegasonicUpwAndH2N2ThermalAnnealSemiS2SemiS6Nfpa318Nfpa69Osha1910119H2LelO2IngressTripParticleDishAbortAndCoolLotoGuardAssessment {
+  sessionId: string;
+  policyCode: "P405-SEMICONDUCTOR-WAFER-HYBRID-CU-CU-DIRECT-BONDING-W2W-D2W-PLASMA-ACTIVATED-SICN-DIELECTRIC-MEGASONIC-UPW-AND-H2-N2-THERMAL-ANNEAL-SEMIS2-SEMIS6-NFPA318-NFPA69-OSHA1910119-H2-LEL-O2-INGRESS-TRIP-PARTICLE-DISH-ABORT-AND-COOL-LOTO-GUARD";
+  hybridCuCuDirectBondingAndAnnealSafe: boolean;
+  h2LelOrO2IngressAnnealTripped0ms: boolean;
+  upwResistivityOrParticleCuDishBondAborted: boolean;
+  hybridBondAnnealChamberCoolPurgeLotoLocked: boolean;
+  action:
+    | "allow_verified_semiconductor_wafer_hybrid_cu_cu_direct_bonding_and_anneal"
+    | "trip_hybrid_bond_anneal_h2_supply_0ms_and_n2_quench_on_lel_or_o2_ingress"
+    | "abort_w2w_d2w_hybrid_cu_cu_bond_head_on_upw_resistivity_or_particle_cu_dish_defect"
+    | "lock_hybrid_bond_anneal_chamber_until_sub_50c_h2_cleared_and_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferHybridCuCuDirectBondingW2wD2wPlasmaActivatedSicnDielectricMegasonicUpwAndH2N2ThermalAnnealSemiS2SemiS6Nfpa318Nfpa69Osha1910119H2LelO2IngressTripParticleDishAbortAndCoolLotoGuard(
+  input: SemiconductorWaferHybridCuCuDirectBondingW2wD2wPlasmaActivatedSicnDielectricMegasonicUpwAndH2N2ThermalAnnealSemiS2SemiS6Nfpa318Nfpa69Osha1910119H2LelO2IngressTripParticleDishAbortAndCoolLotoGuardInput,
+): SemiconductorWaferHybridCuCuDirectBondingW2wD2wPlasmaActivatedSicnDielectricMegasonicUpwAndH2N2ThermalAnnealSemiS2SemiS6Nfpa318Nfpa69Osha1910119H2LelO2IngressTripParticleDishAbortAndCoolLotoGuardAssessment {
+  const policyCode =
+    "P405-SEMICONDUCTOR-WAFER-HYBRID-CU-CU-DIRECT-BONDING-W2W-D2W-PLASMA-ACTIVATED-SICN-DIELECTRIC-MEGASONIC-UPW-AND-H2-N2-THERMAL-ANNEAL-SEMIS2-SEMIS6-NFPA318-NFPA69-OSHA1910119-H2-LEL-O2-INGRESS-TRIP-PARTICLE-DISH-ABORT-AND-COOL-LOTO-GUARD" as const;
+
+  const h2LelOrO2IngressEmergency =
+    input.reducingAnnealH2LeakLelPercent >= 25 ||
+    input.annealChamberO2IngressPpm >= 50;
+
+  const upwOrParticleCuDishFault =
+    input.megasonicUpwResistivityMOhmCm < 18.0 ||
+    input.cuPadDishRecessionNmOutOfSpecOrVoidParticleDetected;
+
+  const unsafeChamberMaintenance =
+    input.chamberMaintenanceRequested &&
+    (input.annealChamberTempCAtOpen >= 50 ||
+      input.residualH2LelPercentAtOpen >= 1 ||
+      !input.thermalAndPurgeLotoVerified);
+
+  if (h2LelOrO2IngressEmergency) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      hybridCuCuDirectBondingAndAnnealSafe: false,
+      h2LelOrO2IngressAnnealTripped0ms: true,
+      upwResistivityOrParticleCuDishBondAborted: upwOrParticleCuDishFault,
+      hybridBondAnnealChamberCoolPurgeLotoLocked: true,
+      action:
+        "trip_hybrid_bond_anneal_h2_supply_0ms_and_n2_quench_on_lel_or_o2_ingress",
+      blockedReason:
+        "reducing_anneal_h2_lel_or_o2_ingress_exceeded_forming_gas_isolated_0ms",
+    };
+  }
+
+  if (upwOrParticleCuDishFault) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      hybridCuCuDirectBondingAndAnnealSafe: false,
+      h2LelOrO2IngressAnnealTripped0ms: false,
+      upwResistivityOrParticleCuDishBondAborted: true,
+      hybridBondAnnealChamberCoolPurgeLotoLocked: unsafeChamberMaintenance,
+      action:
+        "abort_w2w_d2w_hybrid_cu_cu_bond_head_on_upw_resistivity_or_particle_cu_dish_defect",
+      blockedReason:
+        "megasonic_upw_resistivity_or_cu_dish_particle_defect_bond_head_aborted",
+    };
+  }
+
+  if (unsafeChamberMaintenance) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      hybridCuCuDirectBondingAndAnnealSafe: false,
+      h2LelOrO2IngressAnnealTripped0ms: false,
+      upwResistivityOrParticleCuDishBondAborted: false,
+      hybridBondAnnealChamberCoolPurgeLotoLocked: true,
+      action:
+        "lock_hybrid_bond_anneal_chamber_until_sub_50c_h2_cleared_and_loto_verified",
+      blockedReason:
+        "hybrid_bond_anneal_chamber_above_50c_or_residual_h2_loto_unverified",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    hybridCuCuDirectBondingAndAnnealSafe: true,
+    h2LelOrO2IngressAnnealTripped0ms: false,
+    upwResistivityOrParticleCuDishBondAborted: false,
+    hybridBondAnnealChamberCoolPurgeLotoLocked: false,
+    action: "allow_verified_semiconductor_wafer_hybrid_cu_cu_direct_bonding_and_anneal",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8843BundleMultiplexedMediaTransportAndRfc8829JsepMaxBundleDuplicatePayloadTypeCollisionPortInjectionAndMidRebindingGuardInput {
+  sessionId: string;
+  duplicatePayloadTypeCollisionAcrossBundleOrOrphanedMidPacket: boolean;
+  nonBundleOwnerMLineDistinctPortInjectionOrMaxBundleDowngrade: boolean;
+  bundleSharedFiveTupleTransportEstablished: boolean;
+  midRebindingEventsPerMinute: number;
+  bundledMLineSectionsCount: number;
+}
+
+export interface WebrtcSipRfc8843BundleMultiplexedMediaTransportAndRfc8829JsepMaxBundleDuplicatePayloadTypeCollisionPortInjectionAndMidRebindingGuardAssessment {
+  sessionId: string;
+  policyCode: "P406-WEBRTC-SIP-RFC8843-BUNDLE-MULTIPLEXED-MEDIA-TRANSPORT-AND-RFC8829-JSEP-MAX-BUNDLE-DUPLICATE-PAYLOAD-TYPE-COLLISION-PORT-INJECTION-AND-MID-REBINDING-GUARD";
+  rfc8843BundleAndRfc8829MaxBundleHealthy: boolean;
+  duplicatePtCollisionOrOrphanedMidDropped0ms: boolean;
+  nonOwnerPortInjectionOrMaxBundleDowngradeRejected: boolean;
+  midRebindingOrBundleSectionFloodClamped: boolean;
+  action:
+    | "allow_verified_rfc8843_bundle_and_rfc8829_max_bundle_multiplexed_transport"
+    | "drop_rfc8843_bundle_duplicate_pt_collision_or_orphaned_mid_packet_0ms"
+    | "reject_rfc8843_non_owner_m_line_port_injection_or_rfc8829_max_bundle_downgrade"
+    | "clamp_rfc8843_mid_rebinding_thrash_and_cap_bundled_m_sections";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8843BundleMultiplexedMediaTransportAndRfc8829JsepMaxBundleDuplicatePayloadTypeCollisionPortInjectionAndMidRebindingGuard(
+  input: WebrtcSipRfc8843BundleMultiplexedMediaTransportAndRfc8829JsepMaxBundleDuplicatePayloadTypeCollisionPortInjectionAndMidRebindingGuardInput,
+): WebrtcSipRfc8843BundleMultiplexedMediaTransportAndRfc8829JsepMaxBundleDuplicatePayloadTypeCollisionPortInjectionAndMidRebindingGuardAssessment {
+  const policyCode =
+    "P406-WEBRTC-SIP-RFC8843-BUNDLE-MULTIPLEXED-MEDIA-TRANSPORT-AND-RFC8829-JSEP-MAX-BUNDLE-DUPLICATE-PAYLOAD-TYPE-COLLISION-PORT-INJECTION-AND-MID-REBINDING-GUARD" as const;
+
+  const duplicatePtOrOrphanedMid =
+    input.duplicatePayloadTypeCollisionAcrossBundleOrOrphanedMidPacket;
+
+  const portInjectionOrDowngrade =
+    input.nonBundleOwnerMLineDistinctPortInjectionOrMaxBundleDowngrade ||
+    !input.bundleSharedFiveTupleTransportEstablished;
+
+  const midThrashOrSectionFlood =
+    input.midRebindingEventsPerMinute > 6 ||
+    input.bundledMLineSectionsCount > 16;
+
+  if (duplicatePtOrOrphanedMid) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8843BundleAndRfc8829MaxBundleHealthy: false,
+      duplicatePtCollisionOrOrphanedMidDropped0ms: true,
+      nonOwnerPortInjectionOrMaxBundleDowngradeRejected: portInjectionOrDowngrade,
+      midRebindingOrBundleSectionFloodClamped: midThrashOrSectionFlood,
+      action:
+        "drop_rfc8843_bundle_duplicate_pt_collision_or_orphaned_mid_packet_0ms",
+      blockedReason:
+        "rfc8843_bundle_duplicate_payload_type_collision_or_orphaned_mid_dropped_0ms",
+    };
+  }
+
+  if (portInjectionOrDowngrade) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8843BundleAndRfc8829MaxBundleHealthy: false,
+      duplicatePtCollisionOrOrphanedMidDropped0ms: false,
+      nonOwnerPortInjectionOrMaxBundleDowngradeRejected: true,
+      midRebindingOrBundleSectionFloodClamped: midThrashOrSectionFlood,
+      action:
+        "reject_rfc8843_non_owner_m_line_port_injection_or_rfc8829_max_bundle_downgrade",
+      blockedReason:
+        "rfc8843_non_owner_m_line_port_injection_or_rfc8829_max_bundle_downgrade_rejected",
+    };
+  }
+
+  if (midThrashOrSectionFlood) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8843BundleAndRfc8829MaxBundleHealthy: false,
+      duplicatePtCollisionOrOrphanedMidDropped0ms: false,
+      nonOwnerPortInjectionOrMaxBundleDowngradeRejected: false,
+      midRebindingOrBundleSectionFloodClamped: true,
+      action:
+        "clamp_rfc8843_mid_rebinding_thrash_and_cap_bundled_m_sections",
+      blockedReason:
+        "rfc8843_mid_rebinding_rate_or_bundled_m_sections_exceeded_clamped",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8843BundleAndRfc8829MaxBundleHealthy: true,
+    duplicatePtCollisionOrOrphanedMidDropped0ms: false,
+    nonOwnerPortInjectionOrMaxBundleDowngradeRejected: false,
+    midRebindingOrBundleSectionFloodClamped: false,
+    action: "allow_verified_rfc8843_bundle_and_rfc8829_max_bundle_multiplexed_transport",
+    blockedReason: "none",
+  };
+}
+
 
 
 
