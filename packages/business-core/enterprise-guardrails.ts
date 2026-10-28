@@ -46394,22 +46394,217 @@ export function evaluateWebrtcSipRfc8828WebrtcIpAddressHandlingRequirementsMode1
   };
 }
 
+export interface SemiconductorWaferBulkUltrapureWaterUpw182MohmCmPolishingLoop254nm185nmUvTocOxidationDissolvedOxygenDegassingAndPointOfUse001umUltrafiltrationSemiF63SemiF61SemiF57SemiS2Astmd5127ResistivityDropTocSilicaBoronBreakthroughAbortAndHotUpw85cSanitizationOzoneQuenchLotoGuardInput {
+  sessionId: string;
+  upwResistivityAt25cMohmCm: number;
+  totalOrganicCarbonTocPpb: number;
+  dissolvedOxygenDoPpb: number;
+  dissolvedSilicaSio2Ppb: number;
+  ionicBoronSodiumTracePpt: number;
+  particlesGreaterOrEqual20nmPerMl: number;
+  uv185nmTocReductionLampIntensityWPerM2: number;
+  pouUltrafiltrationDifferentialPressureBar: number;
+  hotUpwSanitizationLoopTemperatureCelsius: number;
+  dissolvedOzoneSanitizationResidualPpb: number;
+  ozonatedOrHotUpwValveMaintenanceRequested: boolean;
+  ozoneDestructQuenchedToZeroAndLoopCooledBelow40cWithLotoVerified: boolean;
+}
 
+export interface SemiconductorWaferBulkUltrapureWaterUpw182MohmCmPolishingLoop254nm185nmUvTocOxidationDissolvedOxygenDegassingAndPointOfUse001umUltrafiltrationSemiF63SemiF61SemiF57SemiS2Astmd5127ResistivityDropTocSilicaBoronBreakthroughAbortAndHotUpw85cSanitizationOzoneQuenchLotoGuardAssessment {
+  sessionId: string;
+  policyCode: "P463-SEMICONDUCTOR-WAFER-BULK-ULTRAPURE-WATER-UPW-18-2-MOHM-CM-POLISHING-LOOP-254NM-185NM-UV-TOC-OXIDATION-DISSOLVED-OXYGEN-DEGASSING-AND-POINT-OF-USE-0-01UM-ULTRAFILTRATION-SEMIF63-SEMIF61-SEMIF57-SEMIS2-ASTMD5127-RESISTIVITY-DROP-TOC-SILICA-BORON-BREAKTHROUGH-ABORT-AND-HOT-UPW-85C-SANITIZATION-OZONE-QUENCH-LOTO-GUARD";
+  upwPolishingLoopF63SpecCompliant: boolean;
+  resistivityDropOrTocDoIonicBreakthroughDivertedToReclaim0ms: boolean;
+  uv185nmDegradationOrPouUltrafilterFoulingAborted: boolean;
+  hotUpwOrOzonatedSanitizationLoopLockedUntilCooledAndQuenched: boolean;
+  action:
+    | "allow_verified_semi_f63_upw_polishing_loop_supply_to_wet_benches"
+    | "divert_upw_pou_to_reclaim_in_0ms_on_resistivity_toc_do_or_silica_breakthrough"
+    | "abort_wet_clean_and_switch_polishing_train_on_185nm_uv_drop_or_uf_membrane_fouling"
+    | "lock_upw_pvdf_sanitization_loop_until_cooled_below_40c_and_ozone_quenched_loto";
+  blockedReason: string;
+}
 
+export function evaluateSemiconductorWaferBulkUltrapureWaterUpw182MohmCmPolishingLoop254nm185nmUvTocOxidationDissolvedOxygenDegassingAndPointOfUse001umUltrafiltrationSemiF63SemiF61SemiF57SemiS2Astmd5127ResistivityDropTocSilicaBoronBreakthroughAbortAndHotUpw85cSanitizationOzoneQuenchLotoGuard(
+  input: SemiconductorWaferBulkUltrapureWaterUpw182MohmCmPolishingLoop254nm185nmUvTocOxidationDissolvedOxygenDegassingAndPointOfUse001umUltrafiltrationSemiF63SemiF61SemiF57SemiS2Astmd5127ResistivityDropTocSilicaBoronBreakthroughAbortAndHotUpw85cSanitizationOzoneQuenchLotoGuardInput,
+): SemiconductorWaferBulkUltrapureWaterUpw182MohmCmPolishingLoop254nm185nmUvTocOxidationDissolvedOxygenDegassingAndPointOfUse001umUltrafiltrationSemiF63SemiF61SemiF57SemiS2Astmd5127ResistivityDropTocSilicaBoronBreakthroughAbortAndHotUpw85cSanitizationOzoneQuenchLotoGuardAssessment {
+  const policyCode =
+    "P463-SEMICONDUCTOR-WAFER-BULK-ULTRAPURE-WATER-UPW-18-2-MOHM-CM-POLISHING-LOOP-254NM-185NM-UV-TOC-OXIDATION-DISSOLVED-OXYGEN-DEGASSING-AND-POINT-OF-USE-0-01UM-ULTRAFILTRATION-SEMIF63-SEMIF61-SEMIF57-SEMIS2-ASTMD5127-RESISTIVITY-DROP-TOC-SILICA-BORON-BREAKTHROUGH-ABORT-AND-HOT-UPW-85C-SANITIZATION-OZONE-QUENCH-LOTO-GUARD" as const;
 
+  const resistivityDropOrTocDoIonicBreakthroughDivertedToReclaim0ms =
+    input.upwResistivityAt25cMohmCm < 18.15 ||
+    input.totalOrganicCarbonTocPpb >= 1.0 ||
+    input.dissolvedOxygenDoPpb >= 5.0 ||
+    input.dissolvedSilicaSio2Ppb >= 0.5 ||
+    input.ionicBoronSodiumTracePpt >= 20;
 
+  if (resistivityDropOrTocDoIonicBreakthroughDivertedToReclaim0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      upwPolishingLoopF63SpecCompliant: false,
+      resistivityDropOrTocDoIonicBreakthroughDivertedToReclaim0ms: true,
+      uv185nmDegradationOrPouUltrafilterFoulingAborted: false,
+      hotUpwOrOzonatedSanitizationLoopLockedUntilCooledAndQuenched: false,
+      action:
+        "divert_upw_pou_to_reclaim_in_0ms_on_resistivity_toc_do_or_silica_breakthrough",
+      blockedReason:
+        "UPW_RESISTIVITY_BELOW_18_15_MOHM_CM_OR_TOC_DO_SILICA_BORON_BREAKTHROUGH_0MS_DIVERT",
+    };
+  }
 
+  const uv185nmDegradationOrPouUltrafilterFoulingAborted =
+    input.particlesGreaterOrEqual20nmPerMl >= 1.0 ||
+    input.uv185nmTocReductionLampIntensityWPerM2 < 40 ||
+    input.pouUltrafiltrationDifferentialPressureBar >= 1.8;
 
+  if (uv185nmDegradationOrPouUltrafilterFoulingAborted) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      upwPolishingLoopF63SpecCompliant: false,
+      resistivityDropOrTocDoIonicBreakthroughDivertedToReclaim0ms: false,
+      uv185nmDegradationOrPouUltrafilterFoulingAborted: true,
+      hotUpwOrOzonatedSanitizationLoopLockedUntilCooledAndQuenched: false,
+      action:
+        "abort_wet_clean_and_switch_polishing_train_on_185nm_uv_drop_or_uf_membrane_fouling",
+      blockedReason:
+        "UPW_20NM_PARTICLES_OVER_1_PER_ML_OR_185NM_UV_LOW_OR_POU_UF_DP_OVER_1_8_BAR_ABORT",
+    };
+  }
 
+  const hotUpwOrOzonatedSanitizationLoopLockedUntilCooledAndQuenched =
+    input.ozonatedOrHotUpwValveMaintenanceRequested &&
+    (!input.ozoneDestructQuenchedToZeroAndLoopCooledBelow40cWithLotoVerified ||
+      input.hotUpwSanitizationLoopTemperatureCelsius >= 40 ||
+      input.dissolvedOzoneSanitizationResidualPpb >= 10);
 
+  if (hotUpwOrOzonatedSanitizationLoopLockedUntilCooledAndQuenched) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      upwPolishingLoopF63SpecCompliant: false,
+      resistivityDropOrTocDoIonicBreakthroughDivertedToReclaim0ms: false,
+      uv185nmDegradationOrPouUltrafilterFoulingAborted: false,
+      hotUpwOrOzonatedSanitizationLoopLockedUntilCooledAndQuenched: true,
+      action:
+        "lock_upw_pvdf_sanitization_loop_until_cooled_below_40c_and_ozone_quenched_loto",
+      blockedReason:
+        "UPW_HOT_85C_OR_OZONATED_PVDF_LOOP_NOT_COOLED_AND_QUENCHED_LOTO_LOCKED",
+    };
+  }
 
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    upwPolishingLoopF63SpecCompliant: true,
+    resistivityDropOrTocDoIonicBreakthroughDivertedToReclaim0ms: false,
+    uv185nmDegradationOrPouUltrafilterFoulingAborted: false,
+    hotUpwOrOzonatedSanitizationLoopLockedUntilCooledAndQuenched: false,
+    action: "allow_verified_semi_f63_upw_polishing_loop_supply_to_wet_benches",
+    blockedReason: "none",
+  };
+}
 
+export interface WebrtcSipRfc8827WebrtcSecurityArchitectureOriginBoundIdentityIsolatedMediaIdpAssertionAndDtlsSrtpFingerprintsGuardInput {
+  sessionId: string;
+  dtlsFingerprintMatchesSignaledSdpCertificate: boolean;
+  crossOriginMediaStreamTrackAccessWithoutIsolatedPermission: boolean;
+  cleartextMediaFallbackAttemptedWhenDtlsHandshakeFails: boolean;
+  idpIdentityAssertionRequestedOrPeerIdentityConfigured: boolean;
+  idpAssertionVerifiedAndBoundToDtlsFingerprint: boolean;
+  isolatedMediaConstraintActiveAndScriptCaptureAttempted: boolean;
+  concurrentPeerConnectionsPerOriginCount: number;
+  pendingIdpVerificationPromisesCount: number;
+}
 
+export interface WebrtcSipRfc8827WebrtcSecurityArchitectureOriginBoundIdentityIsolatedMediaIdpAssertionAndDtlsSrtpFingerprintsGuardAssessment {
+  sessionId: string;
+  policyCode: "P464-WEBRTC-SIP-RFC8827-WEBRTC-SECURITY-ARCHITECTURE-ORIGIN-BOUND-IDENTITY-ISOLATED-MEDIA-IDP-ASSERTION-AND-DTLS-SRTP-FINGERPRINTS-GUARD";
+  rfc8827SecurityArchitectureCompliant: boolean;
+  dtlsFingerprintMismatchOrCleartextFallbackOrCrossOriginTrackDropped0ms: boolean;
+  unverifiedIdpIdentityAssertionOrIsolatedMediaCaptureRejected: boolean;
+  peerConnectionOrIdpVerificationFanoutClamped: boolean;
+  action:
+    | "allow_verified_rfc8827_webrtc_security_architecture_session"
+    | "drop_dtls_fingerprint_mismatch_cleartext_fallback_or_cross_origin_track_0ms"
+    | "reject_unverified_idp_identity_assertion_or_isolated_media_script_capture"
+    | "clamp_origin_peer_connection_or_idp_verification_fanout";
+  blockedReason: string;
+}
 
+export function evaluateWebrtcSipRfc8827WebrtcSecurityArchitectureOriginBoundIdentityIsolatedMediaIdpAssertionAndDtlsSrtpFingerprintsGuard(
+  input: WebrtcSipRfc8827WebrtcSecurityArchitectureOriginBoundIdentityIsolatedMediaIdpAssertionAndDtlsSrtpFingerprintsGuardInput,
+): WebrtcSipRfc8827WebrtcSecurityArchitectureOriginBoundIdentityIsolatedMediaIdpAssertionAndDtlsSrtpFingerprintsGuardAssessment {
+  const policyCode =
+    "P464-WEBRTC-SIP-RFC8827-WEBRTC-SECURITY-ARCHITECTURE-ORIGIN-BOUND-IDENTITY-ISOLATED-MEDIA-IDP-ASSERTION-AND-DTLS-SRTP-FINGERPRINTS-GUARD" as const;
 
+  const dtlsFingerprintMismatchOrCleartextFallbackOrCrossOriginTrackDropped0ms =
+    !input.dtlsFingerprintMatchesSignaledSdpCertificate ||
+    input.cleartextMediaFallbackAttemptedWhenDtlsHandshakeFails ||
+    input.crossOriginMediaStreamTrackAccessWithoutIsolatedPermission;
 
+  if (dtlsFingerprintMismatchOrCleartextFallbackOrCrossOriginTrackDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8827SecurityArchitectureCompliant: false,
+      dtlsFingerprintMismatchOrCleartextFallbackOrCrossOriginTrackDropped0ms: true,
+      unverifiedIdpIdentityAssertionOrIsolatedMediaCaptureRejected: false,
+      peerConnectionOrIdpVerificationFanoutClamped: false,
+      action:
+        "drop_dtls_fingerprint_mismatch_cleartext_fallback_or_cross_origin_track_0ms",
+      blockedReason:
+        "RFC8827_DTLS_FINGERPRINT_MISMATCH_CLEARTEXT_FALLBACK_OR_CROSS_ORIGIN_TRACK_0MS_DROP",
+    };
+  }
 
+  const unverifiedIdpIdentityAssertionOrIsolatedMediaCaptureRejected =
+    (input.idpIdentityAssertionRequestedOrPeerIdentityConfigured &&
+      !input.idpAssertionVerifiedAndBoundToDtlsFingerprint) ||
+    input.isolatedMediaConstraintActiveAndScriptCaptureAttempted;
 
+  if (unverifiedIdpIdentityAssertionOrIsolatedMediaCaptureRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8827SecurityArchitectureCompliant: false,
+      dtlsFingerprintMismatchOrCleartextFallbackOrCrossOriginTrackDropped0ms: false,
+      unverifiedIdpIdentityAssertionOrIsolatedMediaCaptureRejected: true,
+      peerConnectionOrIdpVerificationFanoutClamped: false,
+      action:
+        "reject_unverified_idp_identity_assertion_or_isolated_media_script_capture",
+      blockedReason:
+        "RFC8827_UNVERIFIED_IDP_ASSERTION_OR_ISOLATED_MEDIA_SCRIPT_CAPTURE_REJECTED",
+    };
+  }
 
+  const peerConnectionOrIdpVerificationFanoutClamped =
+    input.concurrentPeerConnectionsPerOriginCount > 64 ||
+    input.pendingIdpVerificationPromisesCount > 8;
 
+  if (peerConnectionOrIdpVerificationFanoutClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8827SecurityArchitectureCompliant: false,
+      dtlsFingerprintMismatchOrCleartextFallbackOrCrossOriginTrackDropped0ms: false,
+      unverifiedIdpIdentityAssertionOrIsolatedMediaCaptureRejected: false,
+      peerConnectionOrIdpVerificationFanoutClamped: true,
+      action: "clamp_origin_peer_connection_or_idp_verification_fanout",
+      blockedReason:
+        "RFC8827_ORIGIN_PEER_CONNECTIONS_OVER_64_OR_IDP_PROMISES_OVER_8_CLAMPED",
+    };
+  }
 
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8827SecurityArchitectureCompliant: true,
+    dtlsFingerprintMismatchOrCleartextFallbackOrCrossOriginTrackDropped0ms: false,
+    unverifiedIdpIdentityAssertionOrIsolatedMediaCaptureRejected: false,
+    peerConnectionOrIdpVerificationFanoutClamped: false,
+    action: "allow_verified_rfc8827_webrtc_security_architecture_session",
+    blockedReason: "none",
+  };
+}
