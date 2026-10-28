@@ -39821,12 +39821,221 @@ export function evaluateWebrtcSipRfc9429SvcScalabilityModeStateMachineAndRfc9626
   };
 }
 
+export interface SemiconductorWafer193nmArfiImmersionLithographyF2ExcimerLaserUpwMeniscusAndTrackPgmeaTmahGuardInput {
+  sessionId: string;
+  f2ExcimerGasLeakPpm: number;
+  trackPgmeaSolventVaporLelPercent: number;
+  beamlineN2PurgeO2ContaminationPpm: number;
+  immersionHoodMeniscusLossOrStageVacuumDropDetected: boolean;
+  scannerOrTrackMaintenanceRequested: boolean;
+  residualF2OrO3PpmAtOpen: number;
+  tmahDeveloperDrainResidualConductivityUsCm: number;
+  diphoterineUvInterlockAndScbaLotoVerified: boolean;
+}
 
+export interface SemiconductorWafer193nmArfiImmersionLithographyF2ExcimerLaserUpwMeniscusAndTrackPgmeaTmahGuardAssessment {
+  policyCode: "P401-SEMICONDUCTOR-WAFER-193NM-ARFI-IMMERSION-LITHOGRAPHY-F2-EXCIMER-LASER-UPW-MENISCUS-AND-TRACK-PGMEA-TMAH-COATER-DEVELOPER-SEMIS2-SEMIS6-NFPA318-ANSIZ1361-OSHA1910119-OSHA19101000-F2-LEAK-OR-PGMEA-LEL-TRIP-BEAMLINE-O2-SHUTTER-QUENCH-AND-TMAH-SCBA-LOTO-GUARD";
+  sessionId: string;
+  arfiScannerAndTrackCoaterDeveloperSafe: boolean;
+  f2LeakOrPgmeaSolventLelTripped0ms: boolean;
+  beamlineO2OrMeniscusLossShutterQuenched: boolean;
+  scannerAndTrackTmahF2ScbaLotoLocked: boolean;
+  action:
+    | "allow_verified_semiconductor_wafer_193nm_arfi_immersion_lithography_and_track_operation"
+    | "trip_arfi_f2_excimer_valve_and_track_hotplates_0ms_on_f2_leak_or_pgmea_lel"
+    | "close_193nm_duv_excimer_shutter_and_halt_wafer_stage_on_beamline_o2_or_meniscus_loss"
+    | "lock_arfi_scanner_and_track_enclosure_until_f2_o3_tmah_cleared_and_scba_loto_verified";
+  blockedReason: string;
+}
 
+export function evaluateSemiconductorWafer193nmArfiImmersionLithographyF2ExcimerLaserUpwMeniscusAndTrackPgmeaTmahCoaterDeveloperSemiS2SemiS6Nfpa318AnsiZ1361Osha1910119Osha19101000F2LeakOrPgmeaLelTripBeamlineO2ShutterQuenchAndTmahScbaLotoGuard(
+  input: SemiconductorWafer193nmArfiImmersionLithographyF2ExcimerLaserUpwMeniscusAndTrackPgmeaTmahGuardInput,
+): SemiconductorWafer193nmArfiImmersionLithographyF2ExcimerLaserUpwMeniscusAndTrackPgmeaTmahGuardAssessment {
+  const policyCode =
+    "P401-SEMICONDUCTOR-WAFER-193NM-ARFI-IMMERSION-LITHOGRAPHY-F2-EXCIMER-LASER-UPW-MENISCUS-AND-TRACK-PGMEA-TMAH-COATER-DEVELOPER-SEMIS2-SEMIS6-NFPA318-ANSIZ1361-OSHA1910119-OSHA19101000-F2-LEAK-OR-PGMEA-LEL-TRIP-BEAMLINE-O2-SHUTTER-QUENCH-AND-TMAH-SCBA-LOTO-GUARD" as const;
 
+  const f2LeakOrPgmeaSolventLelTripped0ms =
+    !Number.isFinite(input.f2ExcimerGasLeakPpm) ||
+    input.f2ExcimerGasLeakPpm >= 0.1 ||
+    !Number.isFinite(input.trackPgmeaSolventVaporLelPercent) ||
+    input.trackPgmeaSolventVaporLelPercent >= 25;
 
+  if (f2LeakOrPgmeaSolventLelTripped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      arfiScannerAndTrackCoaterDeveloperSafe: false,
+      f2LeakOrPgmeaSolventLelTripped0ms: true,
+      beamlineO2OrMeniscusLossShutterQuenched: false,
+      scannerAndTrackTmahF2ScbaLotoLocked: false,
+      action:
+        "trip_arfi_f2_excimer_valve_and_track_hotplates_0ms_on_f2_leak_or_pgmea_lel",
+      blockedReason:
+        "TRIP_ARFI_F2_EXCIMER_VALVE_AND_TRACK_HOTPLATES_0MS_ON_F2_LEAK_OR_PGMEA_LEL",
+    };
+  }
 
+  const beamlineO2OrMeniscusLossShutterQuenched =
+    !Number.isFinite(input.beamlineN2PurgeO2ContaminationPpm) ||
+    input.beamlineN2PurgeO2ContaminationPpm >= 50 ||
+    input.immersionHoodMeniscusLossOrStageVacuumDropDetected;
 
+  if (beamlineO2OrMeniscusLossShutterQuenched) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      arfiScannerAndTrackCoaterDeveloperSafe: false,
+      f2LeakOrPgmeaSolventLelTripped0ms: false,
+      beamlineO2OrMeniscusLossShutterQuenched: true,
+      scannerAndTrackTmahF2ScbaLotoLocked: false,
+      action:
+        "close_193nm_duv_excimer_shutter_and_halt_wafer_stage_on_beamline_o2_or_meniscus_loss",
+      blockedReason:
+        "CLOSE_193NM_DUV_EXCIMER_SHUTTER_AND_HALT_WAFER_STAGE_ON_BEAMLINE_O2_OR_MENISCUS_LOSS",
+    };
+  }
+
+  const scannerAndTrackTmahF2ScbaLotoLocked =
+    input.scannerOrTrackMaintenanceRequested &&
+    (!Number.isFinite(input.residualF2OrO3PpmAtOpen) ||
+      input.residualF2OrO3PpmAtOpen >= 0.05 ||
+      !Number.isFinite(input.tmahDeveloperDrainResidualConductivityUsCm) ||
+      input.tmahDeveloperDrainResidualConductivityUsCm >= 50 ||
+      !input.diphoterineUvInterlockAndScbaLotoVerified);
+
+  if (scannerAndTrackTmahF2ScbaLotoLocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      arfiScannerAndTrackCoaterDeveloperSafe: false,
+      f2LeakOrPgmeaSolventLelTripped0ms: false,
+      beamlineO2OrMeniscusLossShutterQuenched: false,
+      scannerAndTrackTmahF2ScbaLotoLocked: true,
+      action:
+        "lock_arfi_scanner_and_track_enclosure_until_f2_o3_tmah_cleared_and_scba_loto_verified",
+      blockedReason:
+        "LOCK_ARFI_SCANNER_AND_TRACK_ENCLOSURE_UNTIL_F2_O3_TMAH_CLEARED_AND_SCBA_LOTO_VERIFIED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    arfiScannerAndTrackCoaterDeveloperSafe: true,
+    f2LeakOrPgmeaSolventLelTripped0ms: false,
+    beamlineO2OrMeniscusLossShutterQuenched: false,
+    scannerAndTrackTmahF2ScbaLotoLocked: false,
+    action:
+      "allow_verified_semiconductor_wafer_193nm_arfi_immersion_lithography_and_track_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8854WebrtcFecAndRfc8627Flexfec03GuardInput {
+  sessionId: string;
+  flexfecHeaderMaskOverreadOrRBitConflictDetected: boolean;
+  csrcCountExceedsFlexfecPacketBounds: boolean;
+  unnegotiatedProtectedSsrcCrossStreamBindingDetected: boolean;
+  simultaneousUlpfecAndFlexfecDuplicateLayerDetected: boolean;
+  fecRedundancyBitrateSharePercent: number;
+  flexfecRepairWindowSpanPackets: number;
+  flexfecRepairPacketsPerSec: number;
+}
+
+export interface WebrtcSipRfc8854WebrtcFecAndRfc8627Flexfec03GuardAssessment {
+  policyCode: "P402-WEBRTC-SIP-RFC8854-WEBRTC-FEC-ADAPTIVE-REDUNDANCY-AND-RFC8627-FLEXFEC03-2D-PARITY-BITMASK-OVERREAD-CROSS-SSRC-BINDING-AND-CONGESTION-OVERHEAD-AMPLIFICATION-GUARD";
+  sessionId: string;
+  rfc8854WebrtcFecAndRfc8627FlexfecHealthy: boolean;
+  malformedFlexfecMaskOrCsrcOverreadDropped0ms: boolean;
+  crossSsrcBindingOrDuplicateFecLayerRejected: boolean;
+  fecCongestionOverheadOrWindowSpanClamped: boolean;
+  action:
+    | "allow_verified_rfc8854_webrtc_fec_and_rfc8627_flexfec03_recovery_stream"
+    | "drop_malformed_rfc8627_flexfec_mask_or_r_f_bit_conflict_packet_0ms"
+    | "reject_rfc8627_unnegotiated_protected_ssrc_binding_or_rfc8854_duplicate_fec_layer"
+    | "clamp_rfc8854_rfc8627_fec_redundancy_within_congestion_target_bitrate";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8854WebrtcFecAdaptiveRedundancyAndRfc8627Flexfec032dParityBitmaskOverreadCrossSsrcBindingAndCongestionOverheadAmplificationGuard(
+  input: WebrtcSipRfc8854WebrtcFecAndRfc8627Flexfec03GuardInput,
+): WebrtcSipRfc8854WebrtcFecAndRfc8627Flexfec03GuardAssessment {
+  const policyCode =
+    "P402-WEBRTC-SIP-RFC8854-WEBRTC-FEC-ADAPTIVE-REDUNDANCY-AND-RFC8627-FLEXFEC03-2D-PARITY-BITMASK-OVERREAD-CROSS-SSRC-BINDING-AND-CONGESTION-OVERHEAD-AMPLIFICATION-GUARD" as const;
+
+  const malformedFlexfecMaskOrCsrcOverreadDropped0ms =
+    input.flexfecHeaderMaskOverreadOrRBitConflictDetected ||
+    input.csrcCountExceedsFlexfecPacketBounds;
+
+  if (malformedFlexfecMaskOrCsrcOverreadDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8854WebrtcFecAndRfc8627FlexfecHealthy: false,
+      malformedFlexfecMaskOrCsrcOverreadDropped0ms: true,
+      crossSsrcBindingOrDuplicateFecLayerRejected: false,
+      fecCongestionOverheadOrWindowSpanClamped: false,
+      action:
+        "drop_malformed_rfc8627_flexfec_mask_or_r_f_bit_conflict_packet_0ms",
+      blockedReason:
+        "DROP_MALFORMED_RFC8627_FLEXFEC_MASK_OR_R_F_BIT_CONFLICT_PACKET_0MS",
+    };
+  }
+
+  const crossSsrcBindingOrDuplicateFecLayerRejected =
+    input.unnegotiatedProtectedSsrcCrossStreamBindingDetected ||
+    input.simultaneousUlpfecAndFlexfecDuplicateLayerDetected;
+
+  if (crossSsrcBindingOrDuplicateFecLayerRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8854WebrtcFecAndRfc8627FlexfecHealthy: false,
+      malformedFlexfecMaskOrCsrcOverreadDropped0ms: false,
+      crossSsrcBindingOrDuplicateFecLayerRejected: true,
+      fecCongestionOverheadOrWindowSpanClamped: false,
+      action:
+        "reject_rfc8627_unnegotiated_protected_ssrc_binding_or_rfc8854_duplicate_fec_layer",
+      blockedReason:
+        "REJECT_RFC8627_UNNEGOTIATED_PROTECTED_SSRC_BINDING_OR_RFC8854_DUPLICATE_FEC_LAYER",
+    };
+  }
+
+  const fecCongestionOverheadOrWindowSpanClamped =
+    !Number.isFinite(input.fecRedundancyBitrateSharePercent) ||
+    input.fecRedundancyBitrateSharePercent > 50 ||
+    !Number.isFinite(input.flexfecRepairWindowSpanPackets) ||
+    input.flexfecRepairWindowSpanPackets > 240 ||
+    !Number.isFinite(input.flexfecRepairPacketsPerSec) ||
+    input.flexfecRepairPacketsPerSec > 400;
+
+  if (fecCongestionOverheadOrWindowSpanClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8854WebrtcFecAndRfc8627FlexfecHealthy: false,
+      malformedFlexfecMaskOrCsrcOverreadDropped0ms: false,
+      crossSsrcBindingOrDuplicateFecLayerRejected: false,
+      fecCongestionOverheadOrWindowSpanClamped: true,
+      action:
+        "clamp_rfc8854_rfc8627_fec_redundancy_within_congestion_target_bitrate",
+      blockedReason:
+        "CLAMP_RFC8854_RFC8627_FEC_REDUNDANCY_WITHIN_CONGESTION_TARGET_BITRATE",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8854WebrtcFecAndRfc8627FlexfecHealthy: true,
+    malformedFlexfecMaskOrCsrcOverreadDropped0ms: false,
+    crossSsrcBindingOrDuplicateFecLayerRejected: false,
+    fecCongestionOverheadOrWindowSpanClamped: false,
+    action:
+      "allow_verified_rfc8854_webrtc_fec_and_rfc8627_flexfec03_recovery_stream",
+    blockedReason: "none",
+  };
+}
 
 
 
