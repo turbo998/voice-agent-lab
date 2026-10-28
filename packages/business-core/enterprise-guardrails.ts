@@ -49414,6 +49414,176 @@ export function evaluateWebrtcSipRfc8837DifferentiatedServicesQosDscpCodepointMa
   };
 }
 
+export interface SemiconductorWaferFabEuvAndDuvExcimerLithographyTrackCoaterDeveloperAndWaferEdgeBeadRemovalEbrSolventCabinetSemiS2SemiS6Nfpa318Nfpa30Nfpa86Osha1910106BakePlateOvertempSolventLelTripExhaustLossChuckVacuumAbortAndSolventPurgeLotoGuardInput {
+  readonly trackEnclosureSolventVaporPercentLel: number;
+  readonly pabPebHotplateOvertempRunawayOrUvFlameDetected: boolean;
+  readonly trackCupExhaustStaticPressureNegativePa: number;
+  readonly spinChuckVacuumSuctionLossDuringHighSpeedSpinDetected: boolean;
+  readonly trackToScannerInterfaceAmcAmmoniaOrVocConcentrationPpb: number;
+  readonly coaterDeveloperCupOrEbrSolventLineMaintenanceRequested: boolean;
+  readonly solventLineN2PurgeHotplateCoolDownBelow40CAndGroundingLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabEuvAndDuvExcimerLithographyTrackCoaterDeveloperAndWaferEdgeBeadRemovalEbrSolventCabinetSemiS2SemiS6Nfpa318Nfpa30Nfpa86Osha1910106BakePlateOvertempSolventLelTripExhaustLossChuckVacuumAbortAndSolventPurgeLotoGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "trip_track_solvent_valves_and_co2_suppression_in_0ms"
+    | "abort_photoresist_spin_dispense_and_seal_scanner_interface_shutter"
+    | "lock_litho_track_cup_and_ebr_solvent_manifold_until_n2_purge_and_cool_loto";
+  readonly policyId: "P495-SEMICONDUCTOR-WAFER-FAB-EUV-AND-DUV-EXCIMER-LITHOGRAPHY-TRACK-COATER-DEVELOPER-AND-WAFER-EDGE-BEAD-REMOVAL-EBR-SOLVENT-CABINET-SEMIS2-SEMIS6-NFPA318-NFPA30-NFPA86-OSHA1910106-BAKE-PLATE-OVERTEMP-SOLVENT-LEL-TRIP-EXHAUST-LOSS-CHUCK-VACUUM-ABORT-AND-SOLVENT-PURGE-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabEuvAndDuvExcimerLithographyTrackCoaterDeveloperAndWaferEdgeBeadRemovalEbrSolventCabinetSemiS2SemiS6Nfpa318Nfpa30Nfpa86Osha1910106BakePlateOvertempSolventLelTripExhaustLossChuckVacuumAbortAndSolventPurgeLotoGuard(
+  input: SemiconductorWaferFabEuvAndDuvExcimerLithographyTrackCoaterDeveloperAndWaferEdgeBeadRemovalEbrSolventCabinetSemiS2SemiS6Nfpa318Nfpa30Nfpa86Osha1910106BakePlateOvertempSolventLelTripExhaustLossChuckVacuumAbortAndSolventPurgeLotoGuardInput,
+): SemiconductorWaferFabEuvAndDuvExcimerLithographyTrackCoaterDeveloperAndWaferEdgeBeadRemovalEbrSolventCabinetSemiS2SemiS6Nfpa318Nfpa30Nfpa86Osha1910106BakePlateOvertempSolventLelTripExhaustLossChuckVacuumAbortAndSolventPurgeLotoGuardResult {
+  const policyId =
+    "P495-SEMICONDUCTOR-WAFER-FAB-EUV-AND-DUV-EXCIMER-LITHOGRAPHY-TRACK-COATER-DEVELOPER-AND-WAFER-EDGE-BEAD-REMOVAL-EBR-SOLVENT-CABINET-SEMIS2-SEMIS6-NFPA318-NFPA30-NFPA86-OSHA1910106-BAKE-PLATE-OVERTEMP-SOLVENT-LEL-TRIP-EXHAUST-LOSS-CHUCK-VACUUM-ABORT-AND-SOLVENT-PURGE-LOTO-GUARD" as const;
+
+  if (
+    input.trackEnclosureSolventVaporPercentLel >= 25.0 ||
+    input.pabPebHotplateOvertempRunawayOrUvFlameDetected
+  ) {
+    return {
+      violated: true,
+      action: "trip_track_solvent_valves_and_co2_suppression_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S6 / NFPA 318 / NFPA 30 / NFPA 86 critical lithography Coater/Developer Track fire hazard: PGMEA/EL/CHN solvent vapor >= 25.0% LEL or PAB/PEB hotplate thermal runaway / UV flame detected; tripping solvent valves, hotplate heaters, and CO2 fire suppression in 0ms.",
+    };
+  }
+
+  if (
+    input.trackCupExhaustStaticPressureNegativePa < 150.0 ||
+    input.spinChuckVacuumSuctionLossDuringHighSpeedSpinDetected ||
+    input.trackToScannerInterfaceAmcAmmoniaOrVocConcentrationPpb >= 1.5
+  ) {
+    return {
+      violated: true,
+      action:
+        "abort_photoresist_spin_dispense_and_seal_scanner_interface_shutter",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S6 lithography Track exhaust, spin-chuck vacuum, and AMC contamination interlock: cup exhaust negative pressure < 150.0 Pa, high-speed spin chuck vacuum loss, or Track-to-Scanner interface NH3/VOC >= 1.5 ppb; aborting spin dispense and sealing scanner interface shutter.",
+    };
+  }
+
+  if (
+    input.coaterDeveloperCupOrEbrSolventLineMaintenanceRequested &&
+    !input.solventLineN2PurgeHotplateCoolDownBelow40CAndGroundingLotoVerified
+  ) {
+    return {
+      violated: true,
+      action:
+        "lock_litho_track_cup_and_ebr_solvent_manifold_until_n2_purge_and_cool_loto",
+      policyId,
+      reason:
+        "SEMI S2 / NFPA 30 / OSHA 1910.106 lithography Track maintenance lock: EBR solvent line N2 purge, PAB/PEB hotplate cool-down below 40 °C, and static grounding LOTO must be verified before opening Coater/Developer cup or solvent cabinet.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer fab EUV/DUV lithography Coater/Developer Track solvent LEL, PAB/PEB hotplate temperature, cup exhaust negative pressure, AMC chemical filter, and N2 purge LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8862WebrtcMediaStreamAndDataChannelTransportSecurityKeyingMaterialExporterAndDtlsSrtpSetupGuardInput {
+  readonly rtpOrSctpTransmittedBeforeDtlsSrtpHandshakeCompletionOrNullCipherSuiteDetected: boolean;
+  readonly sdesCleartextKeyExchangeOrNonPfsRsaKeyTransportNegotiatedInWebrtcDetected: boolean;
+  readonly rfc5705TlsExporterLabelMismatchOrDtlsVersionBelow12Detected: boolean;
+  readonly sctpOverDtlsAssociationBoundWithoutMutualFingerprintVerificationDetected: boolean;
+  readonly srtpMasterKeyLifetimePacketsCount: number;
+  readonly srtpAuthTagBitLength: number;
+}
+
+export interface WebrtcSipRfc8862WebrtcMediaStreamAndDataChannelTransportSecurityKeyingMaterialExporterAndDtlsSrtpSetupGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_srtp_master_key_packet_lifetime_and_enforce_min_auth_tag_bits"
+    | "reject_non_rfc5705_exporter_dtls_below_12_or_unbound_sctp_over_dtls"
+    | "drop_pre_dtls_media_null_cipher_or_sdes_cleartext_keying_0ms";
+  readonly policyId: "P496-WEBRTC-SIP-RFC8862-WEBRTC-MEDIA-STREAM-AND-DATA-CHANNEL-TRANSPORT-SECURITY-KEYING-MATERIAL-EXPORTER-AND-DTLS-SRTP-SETUP-GUARD";
+  readonly reason: string;
+  readonly clampedSrtpMasterKeyLifetimePackets: number;
+  readonly enforcedMinSrtpAuthTagBits: number;
+}
+
+export function evaluateWebrtcSipRfc8862WebrtcMediaStreamAndDataChannelTransportSecurityKeyingMaterialExporterAndDtlsSrtpSetupGuard(
+  input: WebrtcSipRfc8862WebrtcMediaStreamAndDataChannelTransportSecurityKeyingMaterialExporterAndDtlsSrtpSetupGuardInput,
+): WebrtcSipRfc8862WebrtcMediaStreamAndDataChannelTransportSecurityKeyingMaterialExporterAndDtlsSrtpSetupGuardResult {
+  const policyId =
+    "P496-WEBRTC-SIP-RFC8862-WEBRTC-MEDIA-STREAM-AND-DATA-CHANNEL-TRANSPORT-SECURITY-KEYING-MATERIAL-EXPORTER-AND-DTLS-SRTP-SETUP-GUARD" as const;
+  const clampedSrtpMasterKeyLifetimePackets = Math.min(
+    Math.max(1, input.srtpMasterKeyLifetimePacketsCount),
+    281474976710656,
+  );
+  const enforcedMinSrtpAuthTagBits = Math.max(80, input.srtpAuthTagBitLength);
+
+  if (
+    input.rtpOrSctpTransmittedBeforeDtlsSrtpHandshakeCompletionOrNullCipherSuiteDetected ||
+    input.sdesCleartextKeyExchangeOrNonPfsRsaKeyTransportNegotiatedInWebrtcDetected
+  ) {
+    return {
+      violated: true,
+      action: "drop_pre_dtls_media_null_cipher_or_sdes_cleartext_keying_0ms",
+      policyId,
+      reason:
+        "RFC 8827 / RFC 8826 / RFC 5764 critical WebRTC transport security violation: RTP/SCTP transmitted before DTLS-SRTP completion, NULL cipher suite, or SDES cleartext key exchange (a=crypto) / non-PFS RSA key transport detected; dropping in 0ms.",
+      clampedSrtpMasterKeyLifetimePackets,
+      enforcedMinSrtpAuthTagBits,
+    };
+  }
+
+  if (
+    input.rfc5705TlsExporterLabelMismatchOrDtlsVersionBelow12Detected ||
+    input.sctpOverDtlsAssociationBoundWithoutMutualFingerprintVerificationDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "reject_non_rfc5705_exporter_dtls_below_12_or_unbound_sctp_over_dtls",
+      policyId,
+      reason:
+        "RFC 5764 / RFC 5705 / RFC 8827 violation: invalid EXTRACTOR-dtls_srtp TLS exporter label, DTLS downgrade below 1.2, or SCTP-over-DTLS bound without mutual SDP fingerprint verification; rejecting session.",
+      clampedSrtpMasterKeyLifetimePackets,
+      enforcedMinSrtpAuthTagBits,
+    };
+  }
+
+  if (
+    input.srtpMasterKeyLifetimePacketsCount > 281474976710656 ||
+    input.srtpAuthTagBitLength < 80
+  ) {
+    return {
+      violated: true,
+      action:
+        "clamp_srtp_master_key_packet_lifetime_and_enforce_min_auth_tag_bits",
+      policyId,
+      reason:
+        "RFC 3711 / RFC 5764 / RFC 8827 cryptographic bounds protection: clamping SRTP master key lifetime to <= 2^48 packets (281,474,976,710,656) and enforcing >= 80-bit authentication tag.",
+      clampedSrtpMasterKeyLifetimePackets,
+      enforcedMinSrtpAuthTagBits,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8827 / RFC 5764 / RFC 5705 WebRTC mandatory DTLS-SRTP ECDHE PFS keying, EXTRACTOR-dtls_srtp exporter, and SCTP-over-DTLS security verified.",
+    clampedSrtpMasterKeyLifetimePackets,
+    enforcedMinSrtpAuthTagBits,
+  };
+}
+
+
 
 
 
