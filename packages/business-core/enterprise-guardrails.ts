@@ -45147,6 +45147,218 @@ export function evaluateWebrtcSipRfc8830WebrtcMediaStreamIdentificationMsidTrack
   };
 }
 
+export interface SemiconductorWafer3dIcSiliconBridgeEmibFoverosDieToDieMicrobumpThermoCompressionBondingAndFluxlessFormicAcidCleanSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000FormicAcidSnCuFumeTripBridgeTiltOpenShortAbortAndScbaLotoGuardInput {
+  emibFoverosTcbBondLineId: string;
+  formicAcidVaporOrSnAgCuSolderFumeLeakPpm: number;
+  tcbLocalReflowShroudFormicH2AtmosphereLelPct: number;
+  siliconBridgeToPackageDieOverlayAlignmentDriftUm: number;
+  bridgeCoplanarityTiltOrBondLineThicknessSkewUm: number;
+  postBondDieToDieMicrobumpOpenOrSolderBridgeShortCount: number;
+  tcbBondHeadEnclosureDoorOpenRequested: boolean;
+  postCooldownBondHeadTemperatureC: number;
+  postPurgeResidualFormicAcidVaporPpm: number;
+  bondHeadHeaterFormicBubblerN2PurgeAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWafer3dIcSiliconBridgeEmibFoverosDieToDieMicrobumpThermoCompressionBondingAndFluxlessFormicAcidCleanSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000FormicAcidSnCuFumeTripBridgeTiltOpenShortAbortAndScbaLotoGuardAssessment {
+  emibFoverosTcbBondLineId: string;
+  policyCode: "P451-SEMICONDUCTOR-WAFER-3D-IC-SILICON-BRIDGE-EMIB-FOVEROS-DIE-TO-DIE-MICROBUMP-THERMO-COMPRESSION-BONDING-AND-FLUXLESS-FORMIC-ACID-CLEAN-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-FORMIC-ACID-SNCU-FUME-TRIP-BRIDGE-TILT-OPEN-SHORT-ABORT-AND-SCBA-LOTO-GUARD";
+  emibFoverosTcbBondingSafe: boolean;
+  formicAcidVaporOrLelTripped0ms: boolean;
+  bridgeOverlayTiltOrMicrobumpOpenShortAborted: boolean;
+  enclosureLockedUntilCoolFormicPurgeAndScbaLoto: boolean;
+  action:
+    | "allow_verified_emib_foveros_silicon_bridge_tcb_and_fluxless_clean"
+    | "trip_tcb_bond_head_and_formic_bubbler_in_0ms_and_engage_scrubber"
+    | "abort_emib_foveros_tcb_on_bridge_overlay_tilt_or_microbump_open_short"
+    | "lock_tcb_enclosure_until_cool_below_50c_formic_below_05ppm_and_scba_loto";
+  blockedReason:
+    | "none"
+    | "SEMIS2_NFPA86_OSHA19101000_FORMIC_ACID_5PPM_OR_TCB_SHROUD_LEL_10PCT_TRIPPED_0MS"
+    | "EMIB_FOVEROS_BRIDGE_OVERLAY_1UM_TILT_2UM_OR_MICROBUMP_OPEN_SHORT_ABORTED"
+    | "SEMIS2_NFPA86_TCB_ENCLOSURE_LOCKED_UNTIL_50C_05PPM_FORMIC_AND_SCBA_LOTO";
+}
+
+export function evaluateSemiconductorWafer3dIcSiliconBridgeEmibFoverosDieToDieMicrobumpThermoCompressionBondingAndFluxlessFormicAcidCleanSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000FormicAcidSnCuFumeTripBridgeTiltOpenShortAbortAndScbaLotoGuard(
+  input: SemiconductorWafer3dIcSiliconBridgeEmibFoverosDieToDieMicrobumpThermoCompressionBondingAndFluxlessFormicAcidCleanSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000FormicAcidSnCuFumeTripBridgeTiltOpenShortAbortAndScbaLotoGuardInput,
+): SemiconductorWafer3dIcSiliconBridgeEmibFoverosDieToDieMicrobumpThermoCompressionBondingAndFluxlessFormicAcidCleanSemiS2SemiS6Nfpa318Nfpa86Osha1910119Osha19101000FormicAcidSnCuFumeTripBridgeTiltOpenShortAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P451-SEMICONDUCTOR-WAFER-3D-IC-SILICON-BRIDGE-EMIB-FOVEROS-DIE-TO-DIE-MICROBUMP-THERMO-COMPRESSION-BONDING-AND-FLUXLESS-FORMIC-ACID-CLEAN-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-OSHA19101000-FORMIC-ACID-SNCU-FUME-TRIP-BRIDGE-TILT-OPEN-SHORT-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const formicAcidVaporOrLelTripped0ms =
+    input.formicAcidVaporOrSnAgCuSolderFumeLeakPpm >= 5.0 ||
+    input.tcbLocalReflowShroudFormicH2AtmosphereLelPct >= 10.0;
+
+  const bridgeOverlayTiltOrMicrobumpOpenShortAborted =
+    input.siliconBridgeToPackageDieOverlayAlignmentDriftUm >= 1.0 ||
+    input.bridgeCoplanarityTiltOrBondLineThicknessSkewUm >= 2.0 ||
+    input.postBondDieToDieMicrobumpOpenOrSolderBridgeShortCount >= 1;
+
+  const enclosureLockedUntilCoolFormicPurgeAndScbaLoto =
+    input.tcbBondHeadEnclosureDoorOpenRequested &&
+    (input.postCooldownBondHeadTemperatureC >= 50.0 ||
+      input.postPurgeResidualFormicAcidVaporPpm >= 0.5 ||
+      !input.bondHeadHeaterFormicBubblerN2PurgeAndScbaLotoVerified);
+
+  if (formicAcidVaporOrLelTripped0ms) {
+    return {
+      emibFoverosTcbBondLineId: input.emibFoverosTcbBondLineId,
+      policyCode,
+      emibFoverosTcbBondingSafe: false,
+      formicAcidVaporOrLelTripped0ms: true,
+      bridgeOverlayTiltOrMicrobumpOpenShortAborted,
+      enclosureLockedUntilCoolFormicPurgeAndScbaLoto,
+      action:
+        "trip_tcb_bond_head_and_formic_bubbler_in_0ms_and_engage_scrubber",
+      blockedReason:
+        "SEMIS2_NFPA86_OSHA19101000_FORMIC_ACID_5PPM_OR_TCB_SHROUD_LEL_10PCT_TRIPPED_0MS",
+    };
+  }
+
+  if (bridgeOverlayTiltOrMicrobumpOpenShortAborted) {
+    return {
+      emibFoverosTcbBondLineId: input.emibFoverosTcbBondLineId,
+      policyCode,
+      emibFoverosTcbBondingSafe: false,
+      formicAcidVaporOrLelTripped0ms: false,
+      bridgeOverlayTiltOrMicrobumpOpenShortAborted: true,
+      enclosureLockedUntilCoolFormicPurgeAndScbaLoto,
+      action:
+        "abort_emib_foveros_tcb_on_bridge_overlay_tilt_or_microbump_open_short",
+      blockedReason:
+        "EMIB_FOVEROS_BRIDGE_OVERLAY_1UM_TILT_2UM_OR_MICROBUMP_OPEN_SHORT_ABORTED",
+    };
+  }
+
+  if (enclosureLockedUntilCoolFormicPurgeAndScbaLoto) {
+    return {
+      emibFoverosTcbBondLineId: input.emibFoverosTcbBondLineId,
+      policyCode,
+      emibFoverosTcbBondingSafe: false,
+      formicAcidVaporOrLelTripped0ms: false,
+      bridgeOverlayTiltOrMicrobumpOpenShortAborted: false,
+      enclosureLockedUntilCoolFormicPurgeAndScbaLoto: true,
+      action:
+        "lock_tcb_enclosure_until_cool_below_50c_formic_below_05ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_NFPA86_TCB_ENCLOSURE_LOCKED_UNTIL_50C_05PPM_FORMIC_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    emibFoverosTcbBondLineId: input.emibFoverosTcbBondLineId,
+    policyCode,
+    emibFoverosTcbBondingSafe: true,
+    formicAcidVaporOrLelTripped0ms: false,
+    bridgeOverlayTiltOrMicrobumpOpenShortAborted: false,
+    enclosureLockedUntilCoolFormicPurgeAndScbaLoto: false,
+    action: "allow_verified_emib_foveros_silicon_bridge_tcb_and_fluxless_clean",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8840WebrtcIcePacemakerTaTimerConnectivityCheckRateLimitingAndStunTransactionFloodGuardInput {
+  sessionId: string;
+  iceTimerTaIntervalBelow5msFloorOrNegativeMalformed: boolean;
+  unauthenticatedStunBindingRequestFloodWithoutIceUfragPwdDetected: boolean;
+  simultaneousCandidatePairCheckListExplosionOrDuplicateFrozenPairLoopDetected: boolean;
+  stunRetransmissionRtoExponentialBackoffBypassed: boolean;
+  activeCandidatePairsPerCheckListCount: number;
+  globalIceConnectivityCheckRatePerSecond: number;
+}
+
+export interface WebrtcSipRfc8840WebrtcIcePacemakerTaTimerConnectivityCheckRateLimitingAndStunTransactionFloodGuardAssessment {
+  sessionId: string;
+  policyCode: "P452-WEBRTC-SIP-RFC8840-WEBRTC-ICE-PACEMAKER-TA-TIMER-CONNECTIVITY-CHECK-RATE-LIMITING-AND-STUN-TRANSACTION-FLOOD-GUARD";
+  rfc8840IcePacemakerHealthy: boolean;
+  sub5msTaTimerOrUnauthStunFloodDropped0ms: boolean;
+  checkListExplosionOrRtoBackoffBypassRejected: boolean;
+  candidatePairCountOrGlobalCheckRateClamped: boolean;
+  action:
+    | "allow_verified_rfc8840_webrtc_ice_pacemaker_and_stun_pacing"
+    | "drop_sub5ms_ice_ta_timer_or_unauth_stun_binding_flood_0ms"
+    | "reject_ice_check_list_explosion_or_rto_backoff_bypass"
+    | "clamp_candidate_pair_check_list_or_global_ice_pacing_rate";
+  blockedReason:
+    | "none"
+    | "RFC8840_SUB_5MS_TA_TIMER_OR_UNAUTH_STUN_BINDING_FLOOD_DROPPED_0MS"
+    | "RFC8840_CHECK_LIST_EXPLOSION_OR_STUN_RTO_BACKOFF_BYPASS_REJECTED"
+    | "RFC8840_CANDIDATE_PAIRS_OVER_100_OR_CHECKS_OVER_200_PER_SEC_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8840WebrtcIcePacemakerTaTimerConnectivityCheckRateLimitingAndStunTransactionFloodGuard(
+  input: WebrtcSipRfc8840WebrtcIcePacemakerTaTimerConnectivityCheckRateLimitingAndStunTransactionFloodGuardInput,
+): WebrtcSipRfc8840WebrtcIcePacemakerTaTimerConnectivityCheckRateLimitingAndStunTransactionFloodGuardAssessment {
+  const policyCode =
+    "P452-WEBRTC-SIP-RFC8840-WEBRTC-ICE-PACEMAKER-TA-TIMER-CONNECTIVITY-CHECK-RATE-LIMITING-AND-STUN-TRANSACTION-FLOOD-GUARD" as const;
+
+  const sub5msTaTimerOrUnauthStunFloodDropped0ms =
+    input.iceTimerTaIntervalBelow5msFloorOrNegativeMalformed ||
+    input.unauthenticatedStunBindingRequestFloodWithoutIceUfragPwdDetected;
+
+  const checkListExplosionOrRtoBackoffBypassRejected =
+    input.simultaneousCandidatePairCheckListExplosionOrDuplicateFrozenPairLoopDetected ||
+    input.stunRetransmissionRtoExponentialBackoffBypassed;
+
+  const candidatePairCountOrGlobalCheckRateClamped =
+    input.activeCandidatePairsPerCheckListCount > 100 ||
+    input.globalIceConnectivityCheckRatePerSecond > 200;
+
+  if (sub5msTaTimerOrUnauthStunFloodDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8840IcePacemakerHealthy: false,
+      sub5msTaTimerOrUnauthStunFloodDropped0ms: true,
+      checkListExplosionOrRtoBackoffBypassRejected,
+      candidatePairCountOrGlobalCheckRateClamped,
+      action: "drop_sub5ms_ice_ta_timer_or_unauth_stun_binding_flood_0ms",
+      blockedReason:
+        "RFC8840_SUB_5MS_TA_TIMER_OR_UNAUTH_STUN_BINDING_FLOOD_DROPPED_0MS",
+    };
+  }
+
+  if (checkListExplosionOrRtoBackoffBypassRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8840IcePacemakerHealthy: false,
+      sub5msTaTimerOrUnauthStunFloodDropped0ms: false,
+      checkListExplosionOrRtoBackoffBypassRejected: true,
+      candidatePairCountOrGlobalCheckRateClamped,
+      action: "reject_ice_check_list_explosion_or_rto_backoff_bypass",
+      blockedReason:
+        "RFC8840_CHECK_LIST_EXPLOSION_OR_STUN_RTO_BACKOFF_BYPASS_REJECTED",
+    };
+  }
+
+  if (candidatePairCountOrGlobalCheckRateClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8840IcePacemakerHealthy: false,
+      sub5msTaTimerOrUnauthStunFloodDropped0ms: false,
+      checkListExplosionOrRtoBackoffBypassRejected: false,
+      candidatePairCountOrGlobalCheckRateClamped: true,
+      action: "clamp_candidate_pair_check_list_or_global_ice_pacing_rate",
+      blockedReason:
+        "RFC8840_CANDIDATE_PAIRS_OVER_100_OR_CHECKS_OVER_200_PER_SEC_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8840IcePacemakerHealthy: true,
+    sub5msTaTimerOrUnauthStunFloodDropped0ms: false,
+    checkListExplosionOrRtoBackoffBypassRejected: false,
+    candidatePairCountOrGlobalCheckRateClamped: false,
+    action: "allow_verified_rfc8840_webrtc_ice_pacemaker_and_stun_pacing",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
