@@ -47418,6 +47418,212 @@ export function evaluateWebrtcSipRfc8832WebrtcDataChannelEstablishmentProtocolDc
   };
 }
 
+export interface SemiconductorWaferSubFabHighVacuumDryScrewBoosterAndTurbomolecularPumpInput {
+  sessionId: string;
+  forelineN2PurgeMassFlowControllerSlm: number;
+  dryPumpExhaustBackpressureKpaG: number;
+  turbomolecularPumpMagneticBearingRotorVibrationMmPerSecRms: number;
+  dryPumpStatorCasingTemperatureDegC: number;
+  turboGateValveInterlockClosedBeforeVentingVerified?: boolean;
+  pumpForelineOrTrapOpenBeforeToxicSilaneHfN2PurgeCycleAndLotoVerified?: boolean;
+}
+
+export interface SemiconductorWaferSubFabHighVacuumDryScrewBoosterAndTurbomolecularPumpDecision {
+  sessionId: string;
+  policyCode: "P473-SEMICONDUCTOR-WAFER-SUB-FAB-HIGH-VACUUM-DRY-SCREW-ROOTS-BOOSTER-AND-MAGNETIC-BEARING-TURBOMOLECULAR-PUMP-N2-PURGE-DILUTION-SEMIS2-SEMIS6-SEMIF1-NFPA318-NFPA69-OSHA1910119-OSHA19101000-N2-PURGE-LOSS-ROTOR-CRASH-EXHAUST-OVERPRESSURE-TRIP-BYPRODUCT-CONDENSATION-ABORT-AND-TOXIC-RESIDUE-SCBA-LOTO-GUARD";
+  vacuumPumpSubFabSafetyCompliant: boolean;
+  n2PurgeLossExhaustOverpressureOrTurboRotorCrashTripped0ms: boolean;
+  casingTempDriftOrUnisolatedGateValveVentAborted: boolean;
+  unpurgedForelineTrapToxicSilaneHfResidueLotoLocked: boolean;
+  action:
+    | "allow_verified_sub_fab_dry_screw_and_turbomolecular_vacuum_pump_operation"
+    | "trip_chamber_isolation_valve_and_gas_esv_in_0ms_on_n2_purge_loss_exhaust_backpressure_or_turbo_rotor_vibration"
+    | "abort_process_recipe_and_engage_standby_pump_on_casing_temp_drift_or_unisolated_turbo_vent"
+    | "lock_foreline_and_cold_trap_until_n2_purge_toxic_gas_zero_and_scba_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferSubFabHighVacuumDryScrewRootsBoosterAndMagneticBearingTurbomolecularPumpN2PurgeDilutionSemiS2SemiS6SemiF1Nfpa318Nfpa69Osha1910119Osha19101000N2PurgeLossRotorCrashExhaustOverpressureTripByproductCondensationAbortAndToxicResidueScbaLotoGuard(
+  input: SemiconductorWaferSubFabHighVacuumDryScrewBoosterAndTurbomolecularPumpInput,
+): SemiconductorWaferSubFabHighVacuumDryScrewBoosterAndTurbomolecularPumpDecision {
+  const policyCode =
+    "P473-SEMICONDUCTOR-WAFER-SUB-FAB-HIGH-VACUUM-DRY-SCREW-ROOTS-BOOSTER-AND-MAGNETIC-BEARING-TURBOMOLECULAR-PUMP-N2-PURGE-DILUTION-SEMIS2-SEMIS6-SEMIF1-NFPA318-NFPA69-OSHA1910119-OSHA19101000-N2-PURGE-LOSS-ROTOR-CRASH-EXHAUST-OVERPRESSURE-TRIP-BYPRODUCT-CONDENSATION-ABORT-AND-TOXIC-RESIDUE-SCBA-LOTO-GUARD" as const;
+
+  const n2PurgeLossExhaustOverpressureOrTurboRotorCrashTripped0ms =
+    input.forelineN2PurgeMassFlowControllerSlm < 35.0 ||
+    input.dryPumpExhaustBackpressureKpaG >= 15.0 ||
+    input.turbomolecularPumpMagneticBearingRotorVibrationMmPerSecRms >= 4.5;
+
+  if (n2PurgeLossExhaustOverpressureOrTurboRotorCrashTripped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      vacuumPumpSubFabSafetyCompliant: false,
+      n2PurgeLossExhaustOverpressureOrTurboRotorCrashTripped0ms: true,
+      casingTempDriftOrUnisolatedGateValveVentAborted: false,
+      unpurgedForelineTrapToxicSilaneHfResidueLotoLocked: false,
+      action:
+        "trip_chamber_isolation_valve_and_gas_esv_in_0ms_on_n2_purge_loss_exhaust_backpressure_or_turbo_rotor_vibration",
+      blockedReason:
+        "SEMI_S2_NFPA69_DRY_PUMP_N2_PURGE_UNDER_35SLM_EXHAUST_OVER_15KPAG_OR_TURBO_ROTOR_VIBRATION_OVER_4_5MMS_0MS_TRIP",
+    };
+  }
+
+  const casingTempDriftOrUnisolatedGateValveVentAborted =
+    input.dryPumpStatorCasingTemperatureDegC < 110.0 ||
+    input.dryPumpStatorCasingTemperatureDegC >= 185.0 ||
+    !input.turboGateValveInterlockClosedBeforeVentingVerified;
+
+  if (casingTempDriftOrUnisolatedGateValveVentAborted) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      vacuumPumpSubFabSafetyCompliant: false,
+      n2PurgeLossExhaustOverpressureOrTurboRotorCrashTripped0ms: false,
+      casingTempDriftOrUnisolatedGateValveVentAborted: true,
+      unpurgedForelineTrapToxicSilaneHfResidueLotoLocked: false,
+      action:
+        "abort_process_recipe_and_engage_standby_pump_on_casing_temp_drift_or_unisolated_turbo_vent",
+      blockedReason:
+        "SEMI_S2_DRY_PUMP_CASING_TEMP_OUTSIDE_110_TO_185C_BYPRODUCT_CLOG_OR_UNISOLATED_TURBO_GATE_VALVE_VENT_ABORT",
+    };
+  }
+
+  const unpurgedForelineTrapToxicSilaneHfResidueLotoLocked = Boolean(
+    input.pumpForelineOrTrapOpenBeforeToxicSilaneHfN2PurgeCycleAndLotoVerified,
+  );
+
+  if (unpurgedForelineTrapToxicSilaneHfResidueLotoLocked) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      vacuumPumpSubFabSafetyCompliant: false,
+      n2PurgeLossExhaustOverpressureOrTurboRotorCrashTripped0ms: false,
+      casingTempDriftOrUnisolatedGateValveVentAborted: false,
+      unpurgedForelineTrapToxicSilaneHfResidueLotoLocked: true,
+      action:
+        "lock_foreline_and_cold_trap_until_n2_purge_toxic_gas_zero_and_scba_loto_verified",
+      blockedReason:
+        "OSHA_1910_119_SEMI_S2_FORELINE_TRAP_LOCKED_UNTIL_N2_PURGE_TOXIC_SILANE_HF_ZERO_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    vacuumPumpSubFabSafetyCompliant: true,
+    n2PurgeLossExhaustOverpressureOrTurboRotorCrashTripped0ms: false,
+    casingTempDriftOrUnisolatedGateValveVentAborted: false,
+    unpurgedForelineTrapToxicSilaneHfResidueLotoLocked: false,
+    action:
+      "allow_verified_sub_fab_dry_screw_and_turbomolecular_vacuum_pump_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8834RtpUsageInput {
+  sessionId: string;
+  srtpEncryptionAndRtcpMuxMandatoryVerified?: boolean;
+  rtpHeaderExtensionIdOutside1To14OrTwoByte1To255Detected?: boolean;
+  rtcpCompoundPacketMissingSenderOrReceiverReportFirstOrMissingSdesCname?: boolean;
+  midOrRidRtpHeaderExtensionMismatchWithNegotiatedSdpMlineDetected?: boolean;
+  rtcpReportIntervalMs: number;
+  concurrentRtpSsrcsPerMediaSectionCount: number;
+}
+
+export interface WebrtcSipRfc8834RtpUsageDecision {
+  sessionId: string;
+  policyCode: "P474-WEBRTC-SIP-RFC8834-MEDIA-TRANSPORT-AND-USE-OF-RTP-IN-WEBRTC-MANDATORY-RTCP-MUX-COMPOUND-SR-RR-SDES-CNAME-RTP-HEADER-EXTENSION-ENCRYPTION-AND-MID-RID-GUARD";
+  rfc8834RtpUsageCompliant: boolean;
+  unencryptedRtpNonMuxRtcpOrInvalidHeaderExtIdDropped0ms: boolean;
+  malformedCompoundRtcpOrMidRidSdpDesyncRejected: boolean;
+  rtcpReportCadenceOrPerMlineSsrcFanoutClamped: boolean;
+  action:
+    | "allow_verified_rfc8834_webrtc_rtp_rtcp_mux_media_transport"
+    | "drop_unencrypted_rtp_non_mux_rtcp_or_invalid_ext_id_0ms"
+    | "reject_malformed_compound_rtcp_missing_cname_or_mid_rid_desync"
+    | "clamp_rtcp_report_interval_or_per_mline_ssrc_fanout";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8834MediaTransportAndUseOfRtpInWebrtcMandatoryRtcpMuxCompoundSrRrSdesCnameRtpHeaderExtensionEncryptionAndMidRidGuard(
+  input: WebrtcSipRfc8834RtpUsageInput,
+): WebrtcSipRfc8834RtpUsageDecision {
+  const policyCode =
+    "P474-WEBRTC-SIP-RFC8834-MEDIA-TRANSPORT-AND-USE-OF-RTP-IN-WEBRTC-MANDATORY-RTCP-MUX-COMPOUND-SR-RR-SDES-CNAME-RTP-HEADER-EXTENSION-ENCRYPTION-AND-MID-RID-GUARD" as const;
+
+  const unencryptedRtpNonMuxRtcpOrInvalidHeaderExtIdDropped0ms =
+    !input.srtpEncryptionAndRtcpMuxMandatoryVerified ||
+    Boolean(input.rtpHeaderExtensionIdOutside1To14OrTwoByte1To255Detected);
+
+  if (unencryptedRtpNonMuxRtcpOrInvalidHeaderExtIdDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8834RtpUsageCompliant: false,
+      unencryptedRtpNonMuxRtcpOrInvalidHeaderExtIdDropped0ms: true,
+      malformedCompoundRtcpOrMidRidSdpDesyncRejected: false,
+      rtcpReportCadenceOrPerMlineSsrcFanoutClamped: false,
+      action: "drop_unencrypted_rtp_non_mux_rtcp_or_invalid_ext_id_0ms",
+      blockedReason:
+        "RFC8834_UNENCRYPTED_RTP_NON_MUX_RTCP_OR_INVALID_RFC8285_HEADER_EXTENSION_ID_0MS_DROP",
+    };
+  }
+
+  const malformedCompoundRtcpOrMidRidSdpDesyncRejected =
+    Boolean(
+      input.rtcpCompoundPacketMissingSenderOrReceiverReportFirstOrMissingSdesCname,
+    ) ||
+    Boolean(
+      input.midOrRidRtpHeaderExtensionMismatchWithNegotiatedSdpMlineDetected,
+    );
+
+  if (malformedCompoundRtcpOrMidRidSdpDesyncRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8834RtpUsageCompliant: false,
+      unencryptedRtpNonMuxRtcpOrInvalidHeaderExtIdDropped0ms: false,
+      malformedCompoundRtcpOrMidRidSdpDesyncRejected: true,
+      rtcpReportCadenceOrPerMlineSsrcFanoutClamped: false,
+      action: "reject_malformed_compound_rtcp_missing_cname_or_mid_rid_desync",
+      blockedReason:
+        "RFC8834_COMPOUND_RTCP_MISSING_LEADING_SR_RR_SDES_CNAME_OR_MID_RID_EXTENSION_DESYNC_REJECTED",
+    };
+  }
+
+  const rtcpReportCadenceOrPerMlineSsrcFanoutClamped =
+    input.rtcpReportIntervalMs < 50 ||
+    input.rtcpReportIntervalMs > 5000 ||
+    input.concurrentRtpSsrcsPerMediaSectionCount > 8;
+
+  if (rtcpReportCadenceOrPerMlineSsrcFanoutClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8834RtpUsageCompliant: false,
+      unencryptedRtpNonMuxRtcpOrInvalidHeaderExtIdDropped0ms: false,
+      malformedCompoundRtcpOrMidRidSdpDesyncRejected: false,
+      rtcpReportCadenceOrPerMlineSsrcFanoutClamped: true,
+      action: "clamp_rtcp_report_interval_or_per_mline_ssrc_fanout",
+      blockedReason:
+        "RFC8834_RTCP_REPORT_INTERVAL_OUTSIDE_50_TO_5000MS_OR_SSRCS_OVER_8_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8834RtpUsageCompliant: true,
+    unencryptedRtpNonMuxRtcpOrInvalidHeaderExtIdDropped0ms: false,
+    malformedCompoundRtcpOrMidRidSdpDesyncRejected: false,
+    rtcpReportCadenceOrPerMlineSsrcFanoutClamped: false,
+    action: "allow_verified_rfc8834_webrtc_rtp_rtcp_mux_media_transport",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
