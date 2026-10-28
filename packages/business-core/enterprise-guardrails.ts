@@ -38739,6 +38739,218 @@ export function evaluateWebrtcSipRfc8840Rfc8838TrickleIceAndRfc8445CandidateSsrf
   };
 }
 
+export interface SemiconductorWaferSicGanWideBandgap1650cCvdEpitaxyAnd1800cActivationFurnaceGuardInput {
+  sicCvdOrGanMocvdReactorId: string;
+  waterCoolingJacketLeakOrFlowDropDetected: boolean;
+  sicCvdChamberHydrogenLelPct: number;
+  rfInductionSusceptorTemperatureCelsius: number;
+  tmgaBubblerPressureTorr: number;
+  exhaustAmmoniaPpm: number;
+  chlorosilaneHclEtchGasLeakPpm: number;
+  furnaceTemperatureAtDoorOpenCelsius: number;
+  chamberResidualH2OrNh3Ppm: number;
+  requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferSicGanWideBandgap1650cCvdEpitaxyAnd1800cActivationFurnaceGuardResult {
+  policyCode: "P391-SEMICONDUCTOR-WAFER-SIC-GAN-WIDE-BANDGAP-1650C-CVD-EPITAXY-AND-1800C-ACTIVATION-FURNACE-SEMIS2-SEMIS6-NFPA318-NFPA86-NFPA69-OSHA1910119-OSHA19101000-WATER-JACKET-CRACK-OR-H2-LEL-RF-TRIP-TMGA-PYROPHORIC-OR-NH3-HCL-LEAK-ISOLATION-AND-GRAPHITE-COOLDOWN-SCBA-LOTO-GUARD";
+  sicCvdOrGanMocvdReactorId: string;
+  sicGanEpitaxyAndActivationFurnaceSafe: boolean;
+  waterJacketCrackOrH2LelRfTripped0ms: boolean;
+  tmgaPyrophoricOrNh3HclLeakIsolated: boolean;
+  graphiteCooldownAndArPurgeScbaLotoRequired: boolean;
+  action:
+    | "allow_sic_gan_wide_bandgap_1650c_cvd_epitaxy_and_1800c_activation_anneal"
+    | "trip_rf_induction_generator_shutoff_h2_sih4_c3h8_tmga_vmb_and_quench_with_argon_in_0ms"
+    | "isolate_tmga_pyrophoric_bubbler_shutoff_nh3_hcl_and_boost_acid_wet_scrubber"
+    | "lock_sic_furnace_loadlock_until_below_80c_h2_nh3_below_100ppm_scba_and_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferSicGanWideBandgap1650cCvdEpitaxyAnd1800cActivationFurnaceSemiS2SemiS6Nfpa318Nfpa86Nfpa69Osha1910119Osha19101000WaterJacketCrackOrH2LelRfTripTmgaPyrophoricOrNh3HclLeakIsolationAndGraphiteCooldownScbaLotoGuard(
+  input: SemiconductorWaferSicGanWideBandgap1650cCvdEpitaxyAnd1800cActivationFurnaceGuardInput,
+): SemiconductorWaferSicGanWideBandgap1650cCvdEpitaxyAnd1800cActivationFurnaceGuardResult {
+  const policyCode =
+    "P391-SEMICONDUCTOR-WAFER-SIC-GAN-WIDE-BANDGAP-1650C-CVD-EPITAXY-AND-1800C-ACTIVATION-FURNACE-SEMIS2-SEMIS6-NFPA318-NFPA86-NFPA69-OSHA1910119-OSHA19101000-WATER-JACKET-CRACK-OR-H2-LEL-RF-TRIP-TMGA-PYROPHORIC-OR-NH3-HCL-LEAK-ISOLATION-AND-GRAPHITE-COOLDOWN-SCBA-LOTO-GUARD" as const;
+
+  const waterJacketOrRfH2Hazard =
+    input.waterCoolingJacketLeakOrFlowDropDetected ||
+    input.sicCvdChamberHydrogenLelPct >= 10 ||
+    input.rfInductionSusceptorTemperatureCelsius > 1750;
+
+  const tmgaOrNh3HclHazard =
+    input.tmgaBubblerPressureTorr > 1100 ||
+    input.exhaustAmmoniaPpm >= 25 ||
+    input.chlorosilaneHclEtchGasLeakPpm >= 2.0;
+
+  const graphiteCooldownOrPurgeHazard =
+    input.furnaceTemperatureAtDoorOpenCelsius > 80 ||
+    input.chamberResidualH2OrNh3Ppm >= 100;
+
+  if (waterJacketOrRfH2Hazard) {
+    return {
+      policyCode,
+      sicCvdOrGanMocvdReactorId: input.sicCvdOrGanMocvdReactorId,
+      sicGanEpitaxyAndActivationFurnaceSafe: false,
+      waterJacketCrackOrH2LelRfTripped0ms: true,
+      tmgaPyrophoricOrNh3HclLeakIsolated: tmgaOrNh3HclHazard,
+      graphiteCooldownAndArPurgeScbaLotoRequired: graphiteCooldownOrPurgeHazard,
+      action:
+        "trip_rf_induction_generator_shutoff_h2_sih4_c3h8_tmga_vmb_and_quench_with_argon_in_0ms",
+      blockedReason:
+        "sic_cvd_water_jacket_leak_h2_at_or_above_10pct_lel_or_susceptor_over_1750c_tripped_0ms",
+    };
+  }
+
+  if (tmgaOrNh3HclHazard) {
+    return {
+      policyCode,
+      sicCvdOrGanMocvdReactorId: input.sicCvdOrGanMocvdReactorId,
+      sicGanEpitaxyAndActivationFurnaceSafe: false,
+      waterJacketCrackOrH2LelRfTripped0ms: false,
+      tmgaPyrophoricOrNh3HclLeakIsolated: true,
+      graphiteCooldownAndArPurgeScbaLotoRequired: graphiteCooldownOrPurgeHazard,
+      action:
+        "isolate_tmga_pyrophoric_bubbler_shutoff_nh3_hcl_and_boost_acid_wet_scrubber",
+      blockedReason:
+        "gan_mocvd_tmga_bubbler_over_1100torr_nh3_at_or_above_25ppm_or_hcl_at_or_above_2ppm_isolated",
+    };
+  }
+
+  if (graphiteCooldownOrPurgeHazard) {
+    return {
+      policyCode,
+      sicCvdOrGanMocvdReactorId: input.sicCvdOrGanMocvdReactorId,
+      sicGanEpitaxyAndActivationFurnaceSafe: false,
+      waterJacketCrackOrH2LelRfTripped0ms: false,
+      tmgaPyrophoricOrNh3HclLeakIsolated: false,
+      graphiteCooldownAndArPurgeScbaLotoRequired: true,
+      action:
+        "lock_sic_furnace_loadlock_until_below_80c_h2_nh3_below_100ppm_scba_and_loto",
+      blockedReason:
+        "sic_graphite_furnace_over_80c_or_residual_h2_nh3_at_or_above_100ppm_requires_scba_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    sicCvdOrGanMocvdReactorId: input.sicCvdOrGanMocvdReactorId,
+    sicGanEpitaxyAndActivationFurnaceSafe: true,
+    waterJacketCrackOrH2LelRfTripped0ms: false,
+    tmgaPyrophoricOrNh3HclLeakIsolated: false,
+    graphiteCooldownAndArPurgeScbaLotoRequired: false,
+    action:
+      "allow_sic_gan_wide_bandgap_1650c_cvd_epitaxy_and_1800c_activation_anneal",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipSrtpRfc3711AndRfc7714AesGcmGuardInput {
+  sessionId: string;
+  aesGcmOrCmIvNonceReusedWithDifferentPayload: boolean;
+  mkiDeclaredBytes: number;
+  authTagBytes: number;
+  srtpPacketRemainingBytes: number;
+  estimatedRocDeltaFromLocalRoc: number;
+  unknownOrRevokedMkiKeyIndex: boolean;
+  replayWindowDuplicateOrOutOfWindowPacket: boolean;
+  srtpKeyLifetimeExceeded: boolean;
+}
+
+export interface WebrtcSipSrtpRfc3711AndRfc7714AesGcmGuardResult {
+  policyCode: "P392-WEBRTC-SIP-SRTP-RFC3711-AND-RFC7714-AES-GCM-IV-NONCE-REUSE-MKI-LENGTH-OVERREAD-ROC-DESYNC-POISONING-AND-REPLAY-WINDOW-KEY-LIFETIME-EXHAUSTION-GUARD";
+  sessionId: string;
+  srtpRfc3711AndRfc7714Healthy: boolean;
+  ivNonceReuseOrMkiOverreadDropped0ms: boolean;
+  rocDesyncOrRevokedMkiRejected: boolean;
+  replayDuplicateOrKeyLifetimeRekeyEnforced: boolean;
+  action:
+    | "accept_rfc3711_and_rfc7714_srtp_aes_gcm_authenticated_packet"
+    | "drop_srtp_packet_and_rotate_master_key_on_aes_gcm_iv_nonce_reuse_or_mki_overread_in_0ms"
+    | "reject_srtp_roc_multi_epoch_desync_jump_or_revoked_mki_key_index"
+    | "reject_srtp_replay_duplicate_and_force_dtls_srtp_rekey_on_lifetime_exhaustion";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipSrtpRfc3711AndRfc7714AesGcmIvNonceReuseMkiLengthOverreadRocDesyncPoisoningAndReplayWindowKeyLifetimeExhaustionGuard(
+  input: WebrtcSipSrtpRfc3711AndRfc7714AesGcmGuardInput,
+): WebrtcSipSrtpRfc3711AndRfc7714AesGcmGuardResult {
+  const policyCode =
+    "P392-WEBRTC-SIP-SRTP-RFC3711-AND-RFC7714-AES-GCM-IV-NONCE-REUSE-MKI-LENGTH-OVERREAD-ROC-DESYNC-POISONING-AND-REPLAY-WINDOW-KEY-LIFETIME-EXHAUSTION-GUARD" as const;
+
+  const ivNonceOrMkiOverreadHazard =
+    input.aesGcmOrCmIvNonceReusedWithDifferentPayload ||
+    input.mkiDeclaredBytes < 0 ||
+    input.mkiDeclaredBytes > 128 ||
+    input.mkiDeclaredBytes + input.authTagBytes >
+      input.srtpPacketRemainingBytes;
+
+  const rocDesyncOrMkiHazard =
+    Math.abs(input.estimatedRocDeltaFromLocalRoc) > 1 ||
+    input.unknownOrRevokedMkiKeyIndex;
+
+  const replayOrKeyLifetimeHazard =
+    input.replayWindowDuplicateOrOutOfWindowPacket ||
+    input.srtpKeyLifetimeExceeded;
+
+  if (ivNonceOrMkiOverreadHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      srtpRfc3711AndRfc7714Healthy: false,
+      ivNonceReuseOrMkiOverreadDropped0ms: true,
+      rocDesyncOrRevokedMkiRejected: rocDesyncOrMkiHazard,
+      replayDuplicateOrKeyLifetimeRekeyEnforced: replayOrKeyLifetimeHazard,
+      action:
+        "drop_srtp_packet_and_rotate_master_key_on_aes_gcm_iv_nonce_reuse_or_mki_overread_in_0ms",
+      blockedReason:
+        "rfc7714_aes_gcm_iv_nonce_reuse_or_rfc3711_mki_auth_tag_overread_dropped_0ms",
+    };
+  }
+
+  if (rocDesyncOrMkiHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      srtpRfc3711AndRfc7714Healthy: false,
+      ivNonceReuseOrMkiOverreadDropped0ms: false,
+      rocDesyncOrRevokedMkiRejected: true,
+      replayDuplicateOrKeyLifetimeRekeyEnforced: replayOrKeyLifetimeHazard,
+      action:
+        "reject_srtp_roc_multi_epoch_desync_jump_or_revoked_mki_key_index",
+      blockedReason:
+        "rfc3711_srtp_roc_jump_over_1_epoch_or_revoked_mki_index_rejected",
+    };
+  }
+
+  if (replayOrKeyLifetimeHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      srtpRfc3711AndRfc7714Healthy: false,
+      ivNonceReuseOrMkiOverreadDropped0ms: false,
+      rocDesyncOrRevokedMkiRejected: false,
+      replayDuplicateOrKeyLifetimeRekeyEnforced: true,
+      action:
+        "reject_srtp_replay_duplicate_and_force_dtls_srtp_rekey_on_lifetime_exhaustion",
+      blockedReason:
+        "rfc3711_srtp_replay_window_duplicate_or_key_lifetime_exhausted_rekey_required",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    srtpRfc3711AndRfc7714Healthy: true,
+    ivNonceReuseOrMkiOverreadDropped0ms: false,
+    rocDesyncOrRevokedMkiRejected: false,
+    replayDuplicateOrKeyLifetimeRekeyEnforced: false,
+    action: "accept_rfc3711_and_rfc7714_srtp_aes_gcm_authenticated_packet",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
