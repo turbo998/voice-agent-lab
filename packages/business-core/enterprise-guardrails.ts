@@ -41088,6 +41088,235 @@ export function evaluateWebrtcSipRfc8832DataChannelEstablishmentProtocolDcepAndR
   };
 }
 
+export interface SemiconductorWaferBacksidePowerDeliveryNetworkBspdnExtremeThinningNtsvBoschEtchAndBuriedPowerRailRuMoMetallizationGuardInput {
+  moduleId: string;
+  rutheniumTetroxideRuo4ExhaustPpm: number;
+  carbonMonoxideCoCarrierLeakPpm: number;
+  hfOrHclByproductLeakPpm: number;
+  backsideSiliconTtvVariationNm: number;
+  frontToBacksideOverlayErrorNm: number;
+  carrierWaferBondEdgeDelaminationVoidMm: number;
+  chamberMaintenanceOpenRequested: boolean;
+  postPurgeResidualRuo4Ppm: number;
+  postPurgeResidualCoPpm: number;
+  reductiveH2N2Ruo4PassivationCompleted: boolean;
+  scbaAndDiphoterineLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferBacksidePowerDeliveryNetworkBspdnExtremeThinningNtsvBoschEtchAndBuriedPowerRailRuMoMetallizationGuardAssessment {
+  moduleId: string;
+  policyCode: "P413-SEMICONDUCTOR-WAFER-BACKSIDE-POWER-DELIVERY-NETWORK-BSPDN-EXTREME-THINNING-NTSV-BOSCH-ETCH-AND-BURIED-POWER-RAIL-RU-MO-METALLIZATION-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-RUO4-CO-TMAH-TRIP-TTV-ALIGNMENT-ABORT-AND-SCBA-LOTO-GUARD";
+  bspdnThinningNtsvAndBprSafe: boolean;
+  ruo4CoOrHfHclVmbTripped0ms: boolean;
+  backsideTtvOverlayOrCarrierDelaminationAborted: boolean;
+  chamberMaintenanceLockedUntilRuo4ReducedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_bspdn_extreme_thinning_ntsv_and_ru_mo_bpr_metallization"
+    | "trip_ru_co_vmb_and_tmah_dispense_in_0ms_on_ruo4_co_or_hf_hcl_leak"
+    | "abort_bspdn_on_backside_ttv_f2b_overlay_error_or_carrier_bond_delamination"
+    | "lock_chamber_until_ruo4_0002ppm_co_5ppm_reductive_purge_and_scba_loto";
+  blockedReason:
+    | "none"
+    | "BSPDN_RUO4_001PPM_CO_35PPM_OR_HF_HCL_LEAK_0MS_VMB_TRIP"
+    | "BSPDN_BACKSIDE_TTV_15NM_F2B_OVERLAY_35NM_OR_CARRIER_DELAMINATION_ABORT"
+    | "CHAMBER_OPEN_BLOCKED_UNTIL_RUO4_REDUCTIVE_PURGE_CO_5PPM_AND_SCBA_LOTO";
+}
+
+export function evaluateSemiconductorWaferBacksidePowerDeliveryNetworkBspdnExtremeThinningNtsvBoschEtchAndBuriedPowerRailRuMoMetallizationSemiS2SemiS6Nfpa318Osha1910119Osha19101000Ruo4CoTmahTripTtvAlignmentAbortAndScbaLotoGuard(
+  input: SemiconductorWaferBacksidePowerDeliveryNetworkBspdnExtremeThinningNtsvBoschEtchAndBuriedPowerRailRuMoMetallizationGuardInput,
+): SemiconductorWaferBacksidePowerDeliveryNetworkBspdnExtremeThinningNtsvBoschEtchAndBuriedPowerRailRuMoMetallizationGuardAssessment {
+  const policyCode =
+    "P413-SEMICONDUCTOR-WAFER-BACKSIDE-POWER-DELIVERY-NETWORK-BSPDN-EXTREME-THINNING-NTSV-BOSCH-ETCH-AND-BURIED-POWER-RAIL-RU-MO-METALLIZATION-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-RUO4-CO-TMAH-TRIP-TTV-ALIGNMENT-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const ruo4CoOrHfHclVmbTripped0ms =
+    input.rutheniumTetroxideRuo4ExhaustPpm >= 0.01 ||
+    input.carbonMonoxideCoCarrierLeakPpm >= 35 ||
+    input.hfOrHclByproductLeakPpm >= 1.0;
+
+  const backsideTtvOverlayOrCarrierDelaminationAborted =
+    input.backsideSiliconTtvVariationNm >= 15 ||
+    input.frontToBacksideOverlayErrorNm >= 3.5 ||
+    input.carrierWaferBondEdgeDelaminationVoidMm >= 0.5;
+
+  const chamberMaintenanceLockedUntilRuo4ReducedAndScbaLoto =
+    input.chamberMaintenanceOpenRequested &&
+    (input.postPurgeResidualRuo4Ppm >= 0.002 ||
+      input.postPurgeResidualCoPpm >= 5 ||
+      !input.reductiveH2N2Ruo4PassivationCompleted ||
+      !input.scbaAndDiphoterineLotoVerified);
+
+  if (ruo4CoOrHfHclVmbTripped0ms) {
+    return {
+      moduleId: input.moduleId,
+      policyCode,
+      bspdnThinningNtsvAndBprSafe: false,
+      ruo4CoOrHfHclVmbTripped0ms: true,
+      backsideTtvOverlayOrCarrierDelaminationAborted,
+      chamberMaintenanceLockedUntilRuo4ReducedAndScbaLoto,
+      action:
+        "trip_ru_co_vmb_and_tmah_dispense_in_0ms_on_ruo4_co_or_hf_hcl_leak",
+      blockedReason: "BSPDN_RUO4_001PPM_CO_35PPM_OR_HF_HCL_LEAK_0MS_VMB_TRIP",
+    };
+  }
+
+  if (backsideTtvOverlayOrCarrierDelaminationAborted) {
+    return {
+      moduleId: input.moduleId,
+      policyCode,
+      bspdnThinningNtsvAndBprSafe: false,
+      ruo4CoOrHfHclVmbTripped0ms: false,
+      backsideTtvOverlayOrCarrierDelaminationAborted: true,
+      chamberMaintenanceLockedUntilRuo4ReducedAndScbaLoto,
+      action:
+        "abort_bspdn_on_backside_ttv_f2b_overlay_error_or_carrier_bond_delamination",
+      blockedReason:
+        "BSPDN_BACKSIDE_TTV_15NM_F2B_OVERLAY_35NM_OR_CARRIER_DELAMINATION_ABORT",
+    };
+  }
+
+  if (chamberMaintenanceLockedUntilRuo4ReducedAndScbaLoto) {
+    return {
+      moduleId: input.moduleId,
+      policyCode,
+      bspdnThinningNtsvAndBprSafe: false,
+      ruo4CoOrHfHclVmbTripped0ms: false,
+      backsideTtvOverlayOrCarrierDelaminationAborted: false,
+      chamberMaintenanceLockedUntilRuo4ReducedAndScbaLoto: true,
+      action:
+        "lock_chamber_until_ruo4_0002ppm_co_5ppm_reductive_purge_and_scba_loto",
+      blockedReason:
+        "CHAMBER_OPEN_BLOCKED_UNTIL_RUO4_REDUCTIVE_PURGE_CO_5PPM_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    moduleId: input.moduleId,
+    policyCode,
+    bspdnThinningNtsvAndBprSafe: true,
+    ruo4CoOrHfHclVmbTripped0ms: false,
+    backsideTtvOverlayOrCarrierDelaminationAborted: false,
+    chamberMaintenanceLockedUntilRuo4ReducedAndScbaLoto: false,
+    action:
+      "allow_verified_bspdn_extreme_thinning_ntsv_and_ru_mo_bpr_metallization",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8840SipTrickleIceInfoPackageSdpfragAndRfc6086DialogForkingGuardInput {
+  sessionId: string;
+  infoPackageHeaderIsTrickleIce: boolean;
+  contentTypeIsTrickleIceSdpfrag: boolean;
+  sdpfragContainsForbiddenMediaOrCryptoLine: boolean;
+  sdpfragPayloadBytes: number;
+  earlyOrConfirmedDialogToTagPresent: boolean;
+  forkedBranchIceUfragPwdMatched: boolean;
+  incomingInfoCSeq: number;
+  lastAcceptedInfoCSeq: number;
+  overlappingPendingInfoTransactions: number;
+  trickleInfoRequestsPerSec: number;
+  forkedEarlyDialogsCount: number;
+}
+
+export interface WebrtcSipRfc8840SipTrickleIceInfoPackageSdpfragAndRfc6086DialogForkingGuardAssessment {
+  sessionId: string;
+  policyCode: "P414-WEBRTC-SIP-RFC8840-SIP-TRICKLE-ICE-INFO-PACKAGE-SDPFRAG-AND-RFC6086-DIALOG-FORKING-EARLY-TAG-BINDING-CSEQ-DESYNC-AND-INFO-FLOOD-GUARD";
+  rfc8840AndRfc6086SipTrickleIceHealthy: boolean;
+  invalidSdpfragMimeOrForbiddenLineDropped0ms: boolean;
+  missingToTagForkUfragMismatchOrCseqReplayRejected: boolean;
+  overlappingInfoGlareOrForkingFloodClamped: boolean;
+  action:
+    | "allow_verified_rfc8840_sip_info_trickle_ice_sdpfrag_transaction"
+    | "drop_rfc8840_invalid_sdpfrag_mime_forbidden_c_m_crypto_line_or_oversized_body_0ms"
+    | "reject_rfc8840_missing_to_tag_fork_ufrag_mismatch_or_replayed_cseq"
+    | "clamp_rfc6086_overlapping_info_glare_rate_flood_or_forked_early_dialog_storm";
+  blockedReason:
+    | "none"
+    | "RFC8840_INVALID_SDPFRAG_MIME_FORBIDDEN_C_M_FINGERPRINT_LINE_OR_8KB_OVERFLOW_DROPPED_0MS"
+    | "RFC8840_MISSING_DIALOG_TO_TAG_FORK_UFRAG_MISMATCH_OR_NON_MONOTONIC_CSEQ_REJECTED"
+    | "RFC6086_OVERLAPPING_INFO_GLARE_15RPS_FLOOD_OR_8_FORKED_DIALOGS_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8840SipTrickleIceInfoPackageSdpfragAndRfc6086DialogForkingEarlyTagBindingCseqDesyncAndInfoFloodGuard(
+  input: WebrtcSipRfc8840SipTrickleIceInfoPackageSdpfragAndRfc6086DialogForkingGuardInput,
+): WebrtcSipRfc8840SipTrickleIceInfoPackageSdpfragAndRfc6086DialogForkingGuardAssessment {
+  const policyCode =
+    "P414-WEBRTC-SIP-RFC8840-SIP-TRICKLE-ICE-INFO-PACKAGE-SDPFRAG-AND-RFC6086-DIALOG-FORKING-EARLY-TAG-BINDING-CSEQ-DESYNC-AND-INFO-FLOOD-GUARD" as const;
+
+  const invalidSdpfragMimeOrForbiddenLineDropped0ms =
+    !input.infoPackageHeaderIsTrickleIce ||
+    !input.contentTypeIsTrickleIceSdpfrag ||
+    input.sdpfragContainsForbiddenMediaOrCryptoLine ||
+    input.sdpfragPayloadBytes <= 0 ||
+    input.sdpfragPayloadBytes > 8192;
+
+  const missingToTagForkUfragMismatchOrCseqReplayRejected =
+    !input.earlyOrConfirmedDialogToTagPresent ||
+    !input.forkedBranchIceUfragPwdMatched ||
+    input.incomingInfoCSeq <= input.lastAcceptedInfoCSeq;
+
+  const overlappingInfoGlareOrForkingFloodClamped =
+    input.overlappingPendingInfoTransactions > 1 ||
+    input.trickleInfoRequestsPerSec > 15 ||
+    input.forkedEarlyDialogsCount > 8;
+
+  if (invalidSdpfragMimeOrForbiddenLineDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8840AndRfc6086SipTrickleIceHealthy: false,
+      invalidSdpfragMimeOrForbiddenLineDropped0ms: true,
+      missingToTagForkUfragMismatchOrCseqReplayRejected,
+      overlappingInfoGlareOrForkingFloodClamped,
+      action:
+        "drop_rfc8840_invalid_sdpfrag_mime_forbidden_c_m_crypto_line_or_oversized_body_0ms",
+      blockedReason:
+        "RFC8840_INVALID_SDPFRAG_MIME_FORBIDDEN_C_M_FINGERPRINT_LINE_OR_8KB_OVERFLOW_DROPPED_0MS",
+    };
+  }
+
+  if (missingToTagForkUfragMismatchOrCseqReplayRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8840AndRfc6086SipTrickleIceHealthy: false,
+      invalidSdpfragMimeOrForbiddenLineDropped0ms: false,
+      missingToTagForkUfragMismatchOrCseqReplayRejected: true,
+      overlappingInfoGlareOrForkingFloodClamped,
+      action:
+        "reject_rfc8840_missing_to_tag_fork_ufrag_mismatch_or_replayed_cseq",
+      blockedReason:
+        "RFC8840_MISSING_DIALOG_TO_TAG_FORK_UFRAG_MISMATCH_OR_NON_MONOTONIC_CSEQ_REJECTED",
+    };
+  }
+
+  if (overlappingInfoGlareOrForkingFloodClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8840AndRfc6086SipTrickleIceHealthy: false,
+      invalidSdpfragMimeOrForbiddenLineDropped0ms: false,
+      missingToTagForkUfragMismatchOrCseqReplayRejected: false,
+      overlappingInfoGlareOrForkingFloodClamped: true,
+      action:
+        "clamp_rfc6086_overlapping_info_glare_rate_flood_or_forked_early_dialog_storm",
+      blockedReason:
+        "RFC6086_OVERLAPPING_INFO_GLARE_15RPS_FLOOD_OR_8_FORKED_DIALOGS_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8840AndRfc6086SipTrickleIceHealthy: true,
+    invalidSdpfragMimeOrForbiddenLineDropped0ms: false,
+    missingToTagForkUfragMismatchOrCseqReplayRejected: false,
+    overlappingInfoGlareOrForkingFloodClamped: false,
+    action: "allow_verified_rfc8840_sip_info_trickle_ice_sdpfrag_transaction",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
