@@ -37709,6 +37709,216 @@ export function evaluateWebrtcSipRtpSmpteSt20227SeamlessProtectionSwitchingAndSt
   };
 }
 
+export interface SemiconductorWaferSubFabPouBurnWetAbatementScrubberAndDryVacuumPumpGuardInput {
+  subFabPouSystemId: string;
+  combustorFlameUvDetectorHealthy: boolean;
+  quenchTowerWaterFlowLpm: number;
+  dryPumpN2BallastFlowSlm: number;
+  forelineHeatedJacketTemperatureCelsius: number;
+  forelinePressureTorr: number;
+  postScrubberExhaustHfF2Ppm: number;
+  postScrubberExhaustFlammableLelPct: number;
+  sumpSludgeNeutralizedPhBetween6And9: boolean;
+  requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferSubFabPouBurnWetAbatementScrubberAndDryVacuumPumpGuardResult {
+  policyCode: "P381-SEMICONDUCTOR-WAFER-SUB-FAB-POU-BURN-WET-ABATEMENT-SCRUBBER-AND-DRY-VACUUM-PUMP-SEMIS2-SEMIS6-NFPA318-NFPA86-NFPA69-OSHA1910119-OSHA19101000-COMBUSTOR-FLAMEOUT-OR-QUENCH-LOSS-TRIP-DRY-PUMP-N2-BALLAST-OR-FORELINE-SALT-PLUG-ISOLATION-AND-EXHAUST-HF-LEL-SCBA-LOTO-GUARD";
+  subFabPouSystemId: string;
+  subFabPouAbatementAndDryPumpSafe: boolean;
+  combustorFlameoutOrQuenchLossTripped0ms: boolean;
+  dryPumpN2BallastOrForelineSaltPlugIsolated: boolean;
+  exhaustHfLelOrSumpNeutralizationScbaLotoRequired: boolean;
+  action:
+    | "allow_sub_fab_pou_burn_wet_abatement_scrubber_and_dry_vacuum_pump_operation"
+    | "trip_process_tool_gas_box_switch_3way_to_standby_abatement_and_isolate_fuel_gas_in_0ms"
+    | "close_chamber_isolation_valve_and_flood_high_flow_n2_ballast_on_foreline_salt_plug_or_ballast_loss"
+    | "lock_pou_abatement_sump_and_foreline_trap_until_caoh2_neutralization_hf_below_1ppm_scba_and_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferSubFabPouBurnWetAbatementScrubberAndDryVacuumPumpSemiS2SemiS6Nfpa318Nfpa86Nfpa69Osha1910119Osha19101000CombustorFlameoutOrQuenchLossTripDryPumpN2BallastOrForelineSaltPlugIsolationAndExhaustHfLelScbaLotoGuard(
+  input: SemiconductorWaferSubFabPouBurnWetAbatementScrubberAndDryVacuumPumpGuardInput,
+): SemiconductorWaferSubFabPouBurnWetAbatementScrubberAndDryVacuumPumpGuardResult {
+  const policyCode =
+    "P381-SEMICONDUCTOR-WAFER-SUB-FAB-POU-BURN-WET-ABATEMENT-SCRUBBER-AND-DRY-VACUUM-PUMP-SEMIS2-SEMIS6-NFPA318-NFPA86-NFPA69-OSHA1910119-OSHA19101000-COMBUSTOR-FLAMEOUT-OR-QUENCH-LOSS-TRIP-DRY-PUMP-N2-BALLAST-OR-FORELINE-SALT-PLUG-ISOLATION-AND-EXHAUST-HF-LEL-SCBA-LOTO-GUARD" as const;
+
+  const combustorOrQuenchHazard =
+    !input.combustorFlameUvDetectorHealthy || input.quenchTowerWaterFlowLpm < 35;
+
+  const dryPumpOrForelineHazard =
+    input.dryPumpN2BallastFlowSlm < 45 ||
+    input.forelineHeatedJacketTemperatureCelsius < 120 ||
+    input.forelinePressureTorr > 900;
+
+  const exhaustOrSumpHazard =
+    input.postScrubberExhaustHfF2Ppm >= 1.0 ||
+    input.postScrubberExhaustFlammableLelPct >= 10 ||
+    !input.sumpSludgeNeutralizedPhBetween6And9;
+
+  if (combustorOrQuenchHazard) {
+    return {
+      policyCode,
+      subFabPouSystemId: input.subFabPouSystemId,
+      subFabPouAbatementAndDryPumpSafe: false,
+      combustorFlameoutOrQuenchLossTripped0ms: true,
+      dryPumpN2BallastOrForelineSaltPlugIsolated: dryPumpOrForelineHazard,
+      exhaustHfLelOrSumpNeutralizationScbaLotoRequired: exhaustOrSumpHazard,
+      action:
+        "trip_process_tool_gas_box_switch_3way_to_standby_abatement_and_isolate_fuel_gas_in_0ms",
+      blockedReason:
+        "pou_burn_wet_scrubber_combustor_flameout_or_quench_water_below_35lpm_tripped_0ms",
+    };
+  }
+
+  if (dryPumpOrForelineHazard) {
+    return {
+      policyCode,
+      subFabPouSystemId: input.subFabPouSystemId,
+      subFabPouAbatementAndDryPumpSafe: false,
+      combustorFlameoutOrQuenchLossTripped0ms: false,
+      dryPumpN2BallastOrForelineSaltPlugIsolated: true,
+      exhaustHfLelOrSumpNeutralizationScbaLotoRequired: exhaustOrSumpHazard,
+      action:
+        "close_chamber_isolation_valve_and_flood_high_flow_n2_ballast_on_foreline_salt_plug_or_ballast_loss",
+      blockedReason:
+        "dry_pump_n2_ballast_below_45slm_or_foreline_jacket_below_120c_salt_plug_over_900torr_isolated",
+    };
+  }
+
+  if (exhaustOrSumpHazard) {
+    return {
+      policyCode,
+      subFabPouSystemId: input.subFabPouSystemId,
+      subFabPouAbatementAndDryPumpSafe: false,
+      combustorFlameoutOrQuenchLossTripped0ms: false,
+      dryPumpN2BallastOrForelineSaltPlugIsolated: false,
+      exhaustHfLelOrSumpNeutralizationScbaLotoRequired: true,
+      action:
+        "lock_pou_abatement_sump_and_foreline_trap_until_caoh2_neutralization_hf_below_1ppm_scba_and_loto",
+      blockedReason:
+        "post_scrubber_hf_f2_at_or_above_1ppm_lel_at_or_above_10pct_or_unneutralized_sump_requires_scba_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    subFabPouSystemId: input.subFabPouSystemId,
+    subFabPouAbatementAndDryPumpSafe: true,
+    combustorFlameoutOrQuenchLossTripped0ms: false,
+    dryPumpN2BallastOrForelineSaltPlugIsolated: false,
+    exhaustHfLelOrSumpNeutralizationScbaLotoRequired: false,
+    action:
+      "allow_sub_fab_pou_burn_wet_abatement_scrubber_and_dry_vacuum_pump_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpRfc8083CircuitBreakersRfc8888CcfbCongestionFeedbackAndRfc5450ToffsetGuardInput {
+  sessionId: string;
+  ccfbDeclaredReportCount: number;
+  rtcpPacketRemainingBytes: number;
+  rfc5450TransmissionOffsetMs: number;
+  consecutiveMissingRtcpRrIntervals: number;
+  rtpLossFractionPct: number;
+  mediaSenderBitrateReductionApplied: boolean;
+  ccfbArrivalTimeOffset1024thSec: number;
+  ccfbFeedbackRatePerSec: number;
+}
+
+export interface WebrtcSipRtpRfc8083CircuitBreakersRfc8888CcfbCongestionFeedbackAndRfc5450ToffsetGuardResult {
+  policyCode: "P382-WEBRTC-SIP-RTP-RFC8083-CIRCUIT-BREAKERS-RFC8888-CCFB-CONGESTION-FEEDBACK-AND-RFC5450-TOFFSET-REPORT-OVERREAD-TOFFSET-JITTER-POISONING-CIRCUIT-BREAKER-BYPASS-AND-CCFB-FLOOD-GUARD";
+  sessionId: string;
+  rfc8083Rfc8888AndRfc5450Healthy: boolean;
+  ccfbReportOverreadOrToffsetJitterPoisonDropped0ms: boolean;
+  rfc8083CircuitBreakerEnforced: boolean;
+  ccfbArrivalOffsetSpoofOrFeedbackFloodClamped: boolean;
+  action:
+    | "accept_rfc8083_circuit_breaker_rfc8888_ccfb_and_rfc5450_toffset_telemetry"
+    | "drop_rfc8888_ccfb_report_overread_or_rfc5450_toffset_over_500ms_jitter_poison_in_0ms"
+    | "trip_rfc8083_rtp_circuit_breaker_on_missing_rtcp_rr_or_unthrottled_over_40pct_loss"
+    | "clamp_rfc8888_ccfb_invalid_ato_sentinel_spoof_or_feedback_flood_over_100pps";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpRfc8083CircuitBreakersRfc8888CcfbCongestionFeedbackAndRfc5450ToffsetReportOverreadToffsetJitterPoisoningCircuitBreakerBypassAndCcfbFloodGuard(
+  input: WebrtcSipRtpRfc8083CircuitBreakersRfc8888CcfbCongestionFeedbackAndRfc5450ToffsetGuardInput,
+): WebrtcSipRtpRfc8083CircuitBreakersRfc8888CcfbCongestionFeedbackAndRfc5450ToffsetGuardResult {
+  const policyCode =
+    "P382-WEBRTC-SIP-RTP-RFC8083-CIRCUIT-BREAKERS-RFC8888-CCFB-CONGESTION-FEEDBACK-AND-RFC5450-TOFFSET-REPORT-OVERREAD-TOFFSET-JITTER-POISONING-CIRCUIT-BREAKER-BYPASS-AND-CCFB-FLOOD-GUARD" as const;
+
+  const overreadOrToffsetHazard =
+    input.ccfbDeclaredReportCount < 0 ||
+    input.ccfbDeclaredReportCount * 2 + 8 > input.rtcpPacketRemainingBytes ||
+    Math.abs(input.rfc5450TransmissionOffsetMs) > 500;
+
+  const circuitBreakerBypassHazard =
+    input.consecutiveMissingRtcpRrIntervals >= 5 ||
+    (input.rtpLossFractionPct > 40 && !input.mediaSenderBitrateReductionApplied);
+
+  const atoSpoofOrFloodHazard =
+    input.ccfbArrivalTimeOffset1024thSec > 65533 ||
+    input.ccfbFeedbackRatePerSec > 100;
+
+  if (overreadOrToffsetHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8083Rfc8888AndRfc5450Healthy: false,
+      ccfbReportOverreadOrToffsetJitterPoisonDropped0ms: true,
+      rfc8083CircuitBreakerEnforced: circuitBreakerBypassHazard,
+      ccfbArrivalOffsetSpoofOrFeedbackFloodClamped: atoSpoofOrFloodHazard,
+      action:
+        "drop_rfc8888_ccfb_report_overread_or_rfc5450_toffset_over_500ms_jitter_poison_in_0ms",
+      blockedReason:
+        "rfc8888_ccfb_report_array_overread_or_rfc5450_toffset_over_500ms_dropped_0ms",
+    };
+  }
+
+  if (circuitBreakerBypassHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8083Rfc8888AndRfc5450Healthy: false,
+      ccfbReportOverreadOrToffsetJitterPoisonDropped0ms: false,
+      rfc8083CircuitBreakerEnforced: true,
+      ccfbArrivalOffsetSpoofOrFeedbackFloodClamped: atoSpoofOrFloodHazard,
+      action:
+        "trip_rfc8083_rtp_circuit_breaker_on_missing_rtcp_rr_or_unthrottled_over_40pct_loss",
+      blockedReason:
+        "rfc8083_rtp_circuit_breaker_triggered_by_rtcp_timeout_or_unthrottled_loss_over_40pct",
+    };
+  }
+
+  if (atoSpoofOrFloodHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8083Rfc8888AndRfc5450Healthy: false,
+      ccfbReportOverreadOrToffsetJitterPoisonDropped0ms: false,
+      rfc8083CircuitBreakerEnforced: false,
+      ccfbArrivalOffsetSpoofOrFeedbackFloodClamped: true,
+      action:
+        "clamp_rfc8888_ccfb_invalid_ato_sentinel_spoof_or_feedback_flood_over_100pps",
+      blockedReason:
+        "rfc8888_ccfb_ato_sentinel_spoof_or_feedback_rate_over_100pps_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8083Rfc8888AndRfc5450Healthy: true,
+    ccfbReportOverreadOrToffsetJitterPoisonDropped0ms: false,
+    rfc8083CircuitBreakerEnforced: false,
+    ccfbArrivalOffsetSpoofOrFeedbackFloodClamped: false,
+    action:
+      "accept_rfc8083_circuit_breaker_rfc8888_ccfb_and_rfc5450_toffset_telemetry",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
