@@ -47217,5 +47217,207 @@ export function evaluateWebrtcSipRfc8831WebrtcDataChannelsDcepOpenHandshakeSctpP
   };
 }
 
+export interface SemiconductorWaferProcessChillerAndHeatExchangerLoopInput {
+  sessionId: string;
+  fluorinatedHeatTransferFluidLeakDetectedOrReservoirLevelLowLow?: boolean;
+  secondaryCoolingWaterToFluorinatedFluidHexPressureDifferentialInverted?: boolean;
+  electrostaticChuckChillerSupplyTemperatureDeviationDegC: number;
+  chillerDischargeLinePressureBarG: number;
+  processCoolantElectricalResistivityMohmCm: number;
+  maintenancePanelOpenWhileFluidTempOutside15To35COrPumpPressurizedWithoutLoto?: boolean;
+}
+
+export interface SemiconductorWaferProcessChillerAndHeatExchangerLoopDecision {
+  sessionId: string;
+  policyCode: "P471-SEMICONDUCTOR-WAFER-PROCESS-CHILLER-FLUORINATED-HEAT-TRANSFER-FLUID-PERFLUOROPOLYETHER-HYDROFLUOROETHER-AND-ETCH-CVD-ESC-TEMPERATURE-CONTROL-LOOP-SEMIS2-SEMIS8-SEMIF47-NFPA318-ASHRAE15-OSHA1910147-HTF-LEAK-HEX-PRESSURE-INVERSION-TRIP-ESC-THERMAL-RUNAWAY-RF-ABORT-AND-CRYO-SCALD-LOTO-GUARD";
+  chillerLoopSafetyCompliant: boolean;
+  htfLeakOrHexDifferentialInversionIsolationValveTripped0ms: boolean;
+  escThermalExcursionOrLowResistivityRfPlasmaAborted: boolean;
+  pressurizedThermalLoopOrUnpurgedChillerLotoLocked: boolean;
+  action:
+    | "allow_verified_wafer_process_chiller_and_esc_thermal_loop"
+    | "trip_chiller_isolation_valves_in_0ms_on_htf_leak_or_hex_pressure_inversion"
+    | "abort_rf_plasma_and_switch_standby_chiller_on_esc_temp_or_resistivity_excursion"
+    | "lock_chiller_manifold_until_ambient_temp_15_to_35c_depressurized_and_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferProcessChillerFluorinatedHeatTransferFluidPerfluoropolyetherHydrofluoroetherAndEtchCvdEscTemperatureControlLoopSemiS2SemiS8SemiF47Nfpa318Ashrae15Osha1910147HtfLeakHexPressureInversionTripEscThermalRunawayRfAbortAndCryoScaldLotoGuard(
+  input: SemiconductorWaferProcessChillerAndHeatExchangerLoopInput,
+): SemiconductorWaferProcessChillerAndHeatExchangerLoopDecision {
+  const policyCode =
+    "P471-SEMICONDUCTOR-WAFER-PROCESS-CHILLER-FLUORINATED-HEAT-TRANSFER-FLUID-PERFLUOROPOLYETHER-HYDROFLUOROETHER-AND-ETCH-CVD-ESC-TEMPERATURE-CONTROL-LOOP-SEMIS2-SEMIS8-SEMIF47-NFPA318-ASHRAE15-OSHA1910147-HTF-LEAK-HEX-PRESSURE-INVERSION-TRIP-ESC-THERMAL-RUNAWAY-RF-ABORT-AND-CRYO-SCALD-LOTO-GUARD" as const;
+
+  const htfLeakOrHexDifferentialInversionIsolationValveTripped0ms =
+    Boolean(input.fluorinatedHeatTransferFluidLeakDetectedOrReservoirLevelLowLow) ||
+    Boolean(input.secondaryCoolingWaterToFluorinatedFluidHexPressureDifferentialInverted);
+
+  if (htfLeakOrHexDifferentialInversionIsolationValveTripped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      chillerLoopSafetyCompliant: false,
+      htfLeakOrHexDifferentialInversionIsolationValveTripped0ms: true,
+      escThermalExcursionOrLowResistivityRfPlasmaAborted: false,
+      pressurizedThermalLoopOrUnpurgedChillerLotoLocked: false,
+      action:
+        "trip_chiller_isolation_valves_in_0ms_on_htf_leak_or_hex_pressure_inversion",
+      blockedReason:
+        "SEMI_S2_F47_NFPA318_CHILLER_FLUORINATED_HTF_LEAK_OR_PCV_TO_HTF_HEX_PRESSURE_INVERSION_0MS_VALVE_TRIP",
+    };
+  }
+
+  const escThermalExcursionOrLowResistivityRfPlasmaAborted =
+    Math.abs(input.electrostaticChuckChillerSupplyTemperatureDeviationDegC) >= 1.5 ||
+    input.chillerDischargeLinePressureBarG >= 6.0 ||
+    input.processCoolantElectricalResistivityMohmCm < 0.2;
+
+  if (escThermalExcursionOrLowResistivityRfPlasmaAborted) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      chillerLoopSafetyCompliant: false,
+      htfLeakOrHexDifferentialInversionIsolationValveTripped0ms: false,
+      escThermalExcursionOrLowResistivityRfPlasmaAborted: true,
+      pressurizedThermalLoopOrUnpurgedChillerLotoLocked: false,
+      action:
+        "abort_rf_plasma_and_switch_standby_chiller_on_esc_temp_or_resistivity_excursion",
+      blockedReason:
+        "SEMI_S2_ESC_CHILLER_TEMP_DEVIATION_OVER_1_5C_PRESSURE_OVER_6BAR_OR_COOLANT_RESISTIVITY_UNDER_0_2MOHM_RF_ABORT",
+    };
+  }
+
+  const pressurizedThermalLoopOrUnpurgedChillerLotoLocked = Boolean(
+    input.maintenancePanelOpenWhileFluidTempOutside15To35COrPumpPressurizedWithoutLoto,
+  );
+
+  if (pressurizedThermalLoopOrUnpurgedChillerLotoLocked) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      chillerLoopSafetyCompliant: false,
+      htfLeakOrHexDifferentialInversionIsolationValveTripped0ms: false,
+      escThermalExcursionOrLowResistivityRfPlasmaAborted: false,
+      pressurizedThermalLoopOrUnpurgedChillerLotoLocked: true,
+      action:
+        "lock_chiller_manifold_until_ambient_temp_15_to_35c_depressurized_and_loto_verified",
+      blockedReason:
+        "OSHA_1910_147_SEMI_S2_CHILLER_MANIFOLD_LOCKED_UNTIL_15_TO_35C_AMBIENT_RETURN_DEPRESSURIZATION_AND_LOTO",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    chillerLoopSafetyCompliant: true,
+    htfLeakOrHexDifferentialInversionIsolationValveTripped0ms: false,
+    escThermalExcursionOrLowResistivityRfPlasmaAborted: false,
+    pressurizedThermalLoopOrUnpurgedChillerLotoLocked: false,
+    action: "allow_verified_wafer_process_chiller_and_esc_thermal_loop",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8832DcepProtocolInput {
+  sessionId: string;
+  dcepMessageOnOrderedReliableSctpWithPpid50Verified?: boolean;
+  unknownDcepMessageTypeOutside0x02AckOr0x03OpenOrChannelTypeBitmaskInvalid?: boolean;
+  dcepStreamIdParityCollisionWithDtlsClientServerRoleDetected?: boolean;
+  declaredLabelOrProtocolByteLengthMismatchWithActualSctpPayload?: boolean;
+  dcepChannelLabelUtf8Bytes: number;
+  dcepSubprotocolUtf8Bytes: number;
+}
+
+export interface WebrtcSipRfc8832DcepProtocolDecision {
+  sessionId: string;
+  policyCode: "P472-WEBRTC-SIP-RFC8832-WEBRTC-DATA-CHANNEL-ESTABLISHMENT-PROTOCOL-DCEP-STREAM-ID-EVEN-ODD-DTLS-ROLE-PARITY-CHANNEL-TYPE-BITMASK-AND-LABEL-PROTOCOL-LENGTH-GUARD";
+  rfc8832DcepCompliant: boolean;
+  invalidDcepMsgTypeOrNonPpid50UnorderedControlDropped0ms: boolean;
+  streamIdRoleParityCollisionOrLengthMismatchRejected: boolean;
+  oversizedDcepLabelOrSubprotocolClamped: boolean;
+  action:
+    | "allow_verified_rfc8832_dcep_channel_establishment"
+    | "drop_invalid_dcep_msg_type_or_non_ppid50_control_frame_0ms"
+    | "reject_dcep_stream_id_dtls_role_parity_collision_or_length_mismatch"
+    | "clamp_dcep_label_or_subprotocol_utf8_byte_length";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8832WebrtcDataChannelEstablishmentProtocolDcepStreamIdEvenOddDtlsRoleParityChannelTypeBitmaskAndLabelProtocolLengthGuard(
+  input: WebrtcSipRfc8832DcepProtocolInput,
+): WebrtcSipRfc8832DcepProtocolDecision {
+  const policyCode =
+    "P472-WEBRTC-SIP-RFC8832-WEBRTC-DATA-CHANNEL-ESTABLISHMENT-PROTOCOL-DCEP-STREAM-ID-EVEN-ODD-DTLS-ROLE-PARITY-CHANNEL-TYPE-BITMASK-AND-LABEL-PROTOCOL-LENGTH-GUARD" as const;
+
+  const invalidDcepMsgTypeOrNonPpid50UnorderedControlDropped0ms =
+    !input.dcepMessageOnOrderedReliableSctpWithPpid50Verified ||
+    Boolean(
+      input.unknownDcepMessageTypeOutside0x02AckOr0x03OpenOrChannelTypeBitmaskInvalid,
+    );
+
+  if (invalidDcepMsgTypeOrNonPpid50UnorderedControlDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8832DcepCompliant: false,
+      invalidDcepMsgTypeOrNonPpid50UnorderedControlDropped0ms: true,
+      streamIdRoleParityCollisionOrLengthMismatchRejected: false,
+      oversizedDcepLabelOrSubprotocolClamped: false,
+      action: "drop_invalid_dcep_msg_type_or_non_ppid50_control_frame_0ms",
+      blockedReason:
+        "RFC8832_DCEP_NON_PPID50_UNORDERED_CONTROL_OR_UNKNOWN_MSG_TYPE_CHANNEL_BITMASK_0MS_DROP",
+    };
+  }
+
+  const streamIdRoleParityCollisionOrLengthMismatchRejected =
+    Boolean(input.dcepStreamIdParityCollisionWithDtlsClientServerRoleDetected) ||
+    Boolean(input.declaredLabelOrProtocolByteLengthMismatchWithActualSctpPayload);
+
+  if (streamIdRoleParityCollisionOrLengthMismatchRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8832DcepCompliant: false,
+      invalidDcepMsgTypeOrNonPpid50UnorderedControlDropped0ms: false,
+      streamIdRoleParityCollisionOrLengthMismatchRejected: true,
+      oversizedDcepLabelOrSubprotocolClamped: false,
+      action:
+        "reject_dcep_stream_id_dtls_role_parity_collision_or_length_mismatch",
+      blockedReason:
+        "RFC8832_DCEP_EVEN_ODD_STREAM_ID_DTLS_ROLE_GLARE_COLLISION_OR_LABEL_PROTOCOL_LENGTH_MISMATCH_REJECTED",
+    };
+  }
+
+  const oversizedDcepLabelOrSubprotocolClamped =
+    input.dcepChannelLabelUtf8Bytes > 256 ||
+    input.dcepSubprotocolUtf8Bytes > 256;
+
+  if (oversizedDcepLabelOrSubprotocolClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8832DcepCompliant: false,
+      invalidDcepMsgTypeOrNonPpid50UnorderedControlDropped0ms: false,
+      streamIdRoleParityCollisionOrLengthMismatchRejected: false,
+      oversizedDcepLabelOrSubprotocolClamped: true,
+      action: "clamp_dcep_label_or_subprotocol_utf8_byte_length",
+      blockedReason:
+        "RFC8832_DCEP_LABEL_OR_SUBPROTOCOL_OVER_256_UTF8_BYTES_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8832DcepCompliant: true,
+    invalidDcepMsgTypeOrNonPpid50UnorderedControlDropped0ms: false,
+    streamIdRoleParityCollisionOrLengthMismatchRejected: false,
+    oversizedDcepLabelOrSubprotocolClamped: false,
+    action: "allow_verified_rfc8832_dcep_channel_establishment",
+    blockedReason: "none",
+  };
+}
+
+
 
 
