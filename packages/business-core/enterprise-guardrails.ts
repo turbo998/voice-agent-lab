@@ -38326,6 +38326,209 @@ export function evaluateWebrtcSipRtpRfc8843BundleMultiplexingAndRfc8852MidRidSde
   };
 }
 
+export interface SemiconductorWaferGaaNanosheetSigeSelectiveClf3EtchAndHkmgHfO2TiNAldGuardInput {
+  gaaEtchOrHkmgAldChamberId: string;
+  clf3SelectiveEtchChamberPressureTorr: number;
+  gasBoxOrExhaustClf3F2Ppm: number;
+  precursorAmpouleTemperatureCelsius: number;
+  aldOxidantAndPrecursorValvesSimultaneouslyOpen: boolean;
+  residualChamberClf3HfF2Ppm: number;
+  purgeCyclesCompleted: number;
+  requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferGaaNanosheetSigeSelectiveClf3EtchAndHkmgHfO2TiNAldGuardResult {
+  policyCode: "P387-SEMICONDUCTOR-WAFER-GAA-NANOSHEET-SIGE-SELECTIVE-CLF3-ETCH-AND-HKMG-HFO2-TIN-ALD-SEMIS2-SEMIS6-NFPA318-NFPA69-NFPA704-OSHA1910119-OSHA19101000-CLF3-LEAK-OR-OVERPRESSURE-TRIP-TEMAH-AMPOULE-OVERTEMP-OR-CODOSE-ISOLATION-AND-HALOGEN-PURGE-SCBA-LOTO-GUARD";
+  gaaEtchOrHkmgAldChamberId: string;
+  gaaClf3EtchAndHkmgAldSafe: boolean;
+  clf3LeakOrChamberOverpressureTripped0ms: boolean;
+  temahAmpouleOvertempOrAldCoDoseIsolated: boolean;
+  halogenPurgeScbaAndLotoRequired: boolean;
+  action:
+    | "allow_gaa_nanosheet_sige_selective_clf3_etch_and_hkmg_hfo2_tin_ald"
+    | "trip_clf3_f2_cylinder_and_vmb_shutoff_abort_sige_etch_and_route_to_dry_alkali_scrubber_in_0ms"
+    | "close_ald_diaphragm_valves_cut_temah_ampoule_heater_and_enforce_high_flow_n2_purge"
+    | "lock_gaa_hkmg_chamber_until_25_n2_purge_cycles_clf3_hf_below_0_05ppm_scba_and_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferGaaNanosheetSigeSelectiveClf3EtchAndHkmgHfO2TiNAldSemiS2SemiS6Nfpa318Nfpa69Nfpa704Osha1910119Osha19101000Clf3LeakOrOverpressureTripTemahAmpouleOvertempOrCoDoseIsolationAndHalogenPurgeScbaLotoGuard(
+  input: SemiconductorWaferGaaNanosheetSigeSelectiveClf3EtchAndHkmgHfO2TiNAldGuardInput,
+): SemiconductorWaferGaaNanosheetSigeSelectiveClf3EtchAndHkmgHfO2TiNAldGuardResult {
+  const policyCode =
+    "P387-SEMICONDUCTOR-WAFER-GAA-NANOSHEET-SIGE-SELECTIVE-CLF3-ETCH-AND-HKMG-HFO2-TIN-ALD-SEMIS2-SEMIS6-NFPA318-NFPA69-NFPA704-OSHA1910119-OSHA19101000-CLF3-LEAK-OR-OVERPRESSURE-TRIP-TEMAH-AMPOULE-OVERTEMP-OR-CODOSE-ISOLATION-AND-HALOGEN-PURGE-SCBA-LOTO-GUARD" as const;
+
+  const clf3LeakOrPressureHazard =
+    input.clf3SelectiveEtchChamberPressureTorr > 45 ||
+    input.gasBoxOrExhaustClf3F2Ppm >= 0.1;
+
+  const temahOrCoDoseHazard =
+    input.precursorAmpouleTemperatureCelsius > 115 ||
+    input.aldOxidantAndPrecursorValvesSimultaneouslyOpen;
+
+  const purgeOrLidHazard =
+    input.residualChamberClf3HfF2Ppm >= 0.05 || input.purgeCyclesCompleted < 25;
+
+  if (clf3LeakOrPressureHazard) {
+    return {
+      policyCode,
+      gaaEtchOrHkmgAldChamberId: input.gaaEtchOrHkmgAldChamberId,
+      gaaClf3EtchAndHkmgAldSafe: false,
+      clf3LeakOrChamberOverpressureTripped0ms: true,
+      temahAmpouleOvertempOrAldCoDoseIsolated: temahOrCoDoseHazard,
+      halogenPurgeScbaAndLotoRequired: purgeOrLidHazard,
+      action:
+        "trip_clf3_f2_cylinder_and_vmb_shutoff_abort_sige_etch_and_route_to_dry_alkali_scrubber_in_0ms",
+      blockedReason:
+        "gaa_clf3_selective_etch_over_45torr_or_clf3_f2_leak_at_or_above_0_1ppm_tripped_0ms",
+    };
+  }
+
+  if (temahOrCoDoseHazard) {
+    return {
+      policyCode,
+      gaaEtchOrHkmgAldChamberId: input.gaaEtchOrHkmgAldChamberId,
+      gaaClf3EtchAndHkmgAldSafe: false,
+      clf3LeakOrChamberOverpressureTripped0ms: false,
+      temahAmpouleOvertempOrAldCoDoseIsolated: true,
+      halogenPurgeScbaAndLotoRequired: purgeOrLidHazard,
+      action:
+        "close_ald_diaphragm_valves_cut_temah_ampoule_heater_and_enforce_high_flow_n2_purge",
+      blockedReason:
+        "hkmg_temah_ampoule_over_115c_or_simultaneous_precursor_oxidant_codose_isolated",
+    };
+  }
+
+  if (purgeOrLidHazard) {
+    return {
+      policyCode,
+      gaaEtchOrHkmgAldChamberId: input.gaaEtchOrHkmgAldChamberId,
+      gaaClf3EtchAndHkmgAldSafe: false,
+      clf3LeakOrChamberOverpressureTripped0ms: false,
+      temahAmpouleOvertempOrAldCoDoseIsolated: false,
+      halogenPurgeScbaAndLotoRequired: true,
+      action:
+        "lock_gaa_hkmg_chamber_until_25_n2_purge_cycles_clf3_hf_below_0_05ppm_scba_and_loto",
+      blockedReason:
+        "residual_clf3_hf_f2_at_or_above_0_05ppm_or_under_25_purge_cycles_requires_scba_loto",
+    };
+  }
+
+  return {
+    policyCode,
+    gaaEtchOrHkmgAldChamberId: input.gaaEtchOrHkmgAldChamberId,
+    gaaClf3EtchAndHkmgAldSafe: true,
+    clf3LeakOrChamberOverpressureTripped0ms: false,
+    temahAmpouleOvertempOrAldCoDoseIsolated: false,
+    halogenPurgeScbaAndLotoRequired: false,
+    action: "allow_gaa_nanosheet_sige_selective_clf3_etch_and_hkmg_hfo2_tin_ald",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipSdpRfc8842DtlsSrtpSetupRoleAndRfc4572FingerprintGuardInput {
+  sessionId: string;
+  sdpFingerprintHashAlgorithmIsSha256OrStronger: boolean;
+  sdpFingerprintHexBytesLength: number;
+  dtlsPeerCertMatchesSdpFingerprint: boolean;
+  answerSetupRoleIsActpass: boolean;
+  bothPeersSetupRoleIdentical: boolean;
+  dtlsTlsIdOrFingerprintChangedWithoutIceRestart: boolean;
+  dtlsClientHelloRatePerSec: number;
+}
+
+export interface WebrtcSipSdpRfc8842DtlsSrtpSetupRoleAndRfc4572FingerprintGuardResult {
+  policyCode: "P388-WEBRTC-SIP-SDP-RFC8842-DTLS-SRTP-SETUP-ROLE-AND-RFC4572-FINGERPRINT-WEAK-HASH-OR-CERT-MISMATCH-ABORT-SETUP-ROLE-DEADLOCK-OR-UNRESTARTED-TLSID-CHANGE-REJECT-AND-CLIENTHELLO-FLOOD-GUARD";
+  sessionId: string;
+  rfc8842AndRfc4572DtlsSrtpHealthy: boolean;
+  weakHashOrCertFingerprintMismatchAborted0ms: boolean;
+  setupRoleDeadlockOrUnrestartedTlsIdChangeRejected: boolean;
+  dtlsClientHelloFloodClamped: boolean;
+  action:
+    | "accept_rfc8842_dtls_srtp_setup_role_and_rfc4572_sha256_fingerprint"
+    | "abort_dtls_srtp_handshake_and_wipe_srtp_keys_on_weak_hash_or_cert_fingerprint_mismatch_in_0ms"
+    | "reject_rfc8842_setup_role_deadlock_or_mid_session_tls_id_fingerprint_swap_without_ice_restart"
+    | "enforce_dtls_helloverifyrequest_cookie_and_clamp_clienthello_flood_over_15_per_sec";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipSdpRfc8842DtlsSrtpSetupRoleAndRfc4572FingerprintWeakHashOrCertMismatchAbortSetupRoleDeadlockOrUnrestartedTlsIdChangeRejectAndClientHelloFloodGuard(
+  input: WebrtcSipSdpRfc8842DtlsSrtpSetupRoleAndRfc4572FingerprintGuardInput,
+): WebrtcSipSdpRfc8842DtlsSrtpSetupRoleAndRfc4572FingerprintGuardResult {
+  const policyCode =
+    "P388-WEBRTC-SIP-SDP-RFC8842-DTLS-SRTP-SETUP-ROLE-AND-RFC4572-FINGERPRINT-WEAK-HASH-OR-CERT-MISMATCH-ABORT-SETUP-ROLE-DEADLOCK-OR-UNRESTARTED-TLSID-CHANGE-REJECT-AND-CLIENTHELLO-FLOOD-GUARD" as const;
+
+  const fingerprintOrCertHazard =
+    !input.sdpFingerprintHashAlgorithmIsSha256OrStronger ||
+    input.sdpFingerprintHexBytesLength < 32 ||
+    input.sdpFingerprintHexBytesLength > 64 ||
+    !input.dtlsPeerCertMatchesSdpFingerprint;
+
+  const setupRoleOrTlsIdHazard =
+    input.answerSetupRoleIsActpass ||
+    input.bothPeersSetupRoleIdentical ||
+    input.dtlsTlsIdOrFingerprintChangedWithoutIceRestart;
+
+  const clientHelloFloodHazard = input.dtlsClientHelloRatePerSec > 15;
+
+  if (fingerprintOrCertHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8842AndRfc4572DtlsSrtpHealthy: false,
+      weakHashOrCertFingerprintMismatchAborted0ms: true,
+      setupRoleDeadlockOrUnrestartedTlsIdChangeRejected: setupRoleOrTlsIdHazard,
+      dtlsClientHelloFloodClamped: clientHelloFloodHazard,
+      action:
+        "abort_dtls_srtp_handshake_and_wipe_srtp_keys_on_weak_hash_or_cert_fingerprint_mismatch_in_0ms",
+      blockedReason:
+        "rfc4572_weak_fingerprint_hash_invalid_digest_length_or_dtls_cert_mismatch_aborted_0ms",
+    };
+  }
+
+  if (setupRoleOrTlsIdHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8842AndRfc4572DtlsSrtpHealthy: false,
+      weakHashOrCertFingerprintMismatchAborted0ms: false,
+      setupRoleDeadlockOrUnrestartedTlsIdChangeRejected: true,
+      dtlsClientHelloFloodClamped: clientHelloFloodHazard,
+      action:
+        "reject_rfc8842_setup_role_deadlock_or_mid_session_tls_id_fingerprint_swap_without_ice_restart",
+      blockedReason:
+        "rfc8842_invalid_a_setup_role_deadlock_or_tls_id_change_without_ice_restart_rejected",
+    };
+  }
+
+  if (clientHelloFloodHazard) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8842AndRfc4572DtlsSrtpHealthy: false,
+      weakHashOrCertFingerprintMismatchAborted0ms: false,
+      setupRoleDeadlockOrUnrestartedTlsIdChangeRejected: false,
+      dtlsClientHelloFloodClamped: true,
+      action:
+        "enforce_dtls_helloverifyrequest_cookie_and_clamp_clienthello_flood_over_15_per_sec",
+      blockedReason:
+        "dtls_srtp_clienthello_rate_over_15_per_sec_clamped_with_cookie_gate",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8842AndRfc4572DtlsSrtpHealthy: true,
+    weakHashOrCertFingerprintMismatchAborted0ms: false,
+    setupRoleDeadlockOrUnrestartedTlsIdChangeRejected: false,
+    dtlsClientHelloFloodClamped: false,
+    action: "accept_rfc8842_dtls_srtp_setup_role_and_rfc4572_sha256_fingerprint",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
