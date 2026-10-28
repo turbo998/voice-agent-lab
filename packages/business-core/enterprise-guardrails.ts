@@ -43243,6 +43243,212 @@ export function evaluateWebrtcSipRfc8863IcePacPatientlyAwaitingConnectivityTimer
   };
 }
 
+export interface SemiconductorWaferGlassCoreSubstrateTgvThroughGlassViaFemtosecondLaserModificationHfBifluorideWetEtchAndHarCuMetallizationGuardInput {
+  tgvGlassSubstrateModuleId: string;
+  class4FemtosecondLaserEnclosureInterlockBreachedOrBackReflectionMw: number;
+  hydrofluoricAcidHfOrAmmoniumBifluorideNh4hf2ExhaustLeakPpm: number;
+  tgvViaTaperSidewallMicrocrackOrBridgeDefectRatePct: number;
+  glassPanelWarpageOrCuCoefficientOfThermalExpansionDelaminationUm: number;
+  throughGlassViaInsulationLeakageCurrentAmpPerCm2: number;
+  laserOrWetEtchEnclosureDoorOpenRequested: boolean;
+  postCoolGlassChuckTemperatureC: number;
+  postPurgeResidualHfAcidVaporPpm: number;
+  ansiZ136LaserShutterScbaAndCalciumGluconateLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferGlassCoreSubstrateTgvThroughGlassViaFemtosecondLaserModificationHfBifluorideWetEtchAndHarCuMetallizationGuardAssessment {
+  tgvGlassSubstrateModuleId: string;
+  policyCode: "P433-SEMICONDUCTOR-WAFER-GLASS-CORE-SUBSTRATE-TGV-THROUGH-GLASS-VIA-FEMTOSECOND-LASER-MODIFICATION-HF-NH4HF2-SELECTIVE-WET-ETCH-AND-HAR-CU-METALLIZATION-SEMIS2-SEMIS6-ANSIZ1361-NFPA318-OSHA1910119-OSHA19101000-LASER-HF-TRIP-VIA-CRACK-WARPAGE-ABORT-AND-SCBA-LOTO-GUARD";
+  glassCoreSubstrateTgvLaserEtchAndCuSafe: boolean;
+  femtosecondLaserOrHfNh4hf2LeakTripped0ms: boolean;
+  tgvMicrocrackWarpageOrLeakageAborted: boolean;
+  enclosureLockedUntilCoolHfPurgeAndLaserScbaLoto: boolean;
+  action:
+    | "allow_verified_glass_core_substrate_tgv_laser_modification_wet_etch_and_har_cu_metallization"
+    | "trip_tgv_femtosecond_laser_shutter_and_hf_nh4hf2_dispense_in_0ms_and_engage_scrubber"
+    | "abort_tgv_glass_core_process_on_via_microcrack_panel_warpage_or_dielectric_leakage"
+    | "lock_tgv_enclosure_until_cool_below_45c_hf_below_005ppm_and_ansiz136_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferGlassCoreSubstrateTgvThroughGlassViaFemtosecondLaserModificationHfBifluorideWetEtchAndHarCuMetallizationSemiS2SemiS6AnsiZ1361Nfpa318Osha1910119Osha19101000LaserHfTripViaCrackWarpageAbortAndScbaLotoGuard(
+  input: SemiconductorWaferGlassCoreSubstrateTgvThroughGlassViaFemtosecondLaserModificationHfBifluorideWetEtchAndHarCuMetallizationGuardInput,
+): SemiconductorWaferGlassCoreSubstrateTgvThroughGlassViaFemtosecondLaserModificationHfBifluorideWetEtchAndHarCuMetallizationGuardAssessment {
+  const policyCode =
+    "P433-SEMICONDUCTOR-WAFER-GLASS-CORE-SUBSTRATE-TGV-THROUGH-GLASS-VIA-FEMTOSECOND-LASER-MODIFICATION-HF-NH4HF2-SELECTIVE-WET-ETCH-AND-HAR-CU-METALLIZATION-SEMIS2-SEMIS6-ANSIZ1361-NFPA318-OSHA1910119-OSHA19101000-LASER-HF-TRIP-VIA-CRACK-WARPAGE-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const femtosecondLaserOrHfNh4hf2LeakTripped0ms =
+    input.class4FemtosecondLaserEnclosureInterlockBreachedOrBackReflectionMw >= 5.0 ||
+    input.hydrofluoricAcidHfOrAmmoniumBifluorideNh4hf2ExhaustLeakPpm >= 0.5;
+
+  const tgvMicrocrackWarpageOrLeakageAborted =
+    input.tgvViaTaperSidewallMicrocrackOrBridgeDefectRatePct >= 0.2 ||
+    input.glassPanelWarpageOrCuCoefficientOfThermalExpansionDelaminationUm >= 50.0 ||
+    input.throughGlassViaInsulationLeakageCurrentAmpPerCm2 >= 1.0e-8;
+
+  const enclosureLockedUntilCoolHfPurgeAndLaserScbaLoto =
+    input.laserOrWetEtchEnclosureDoorOpenRequested &&
+    (input.postCoolGlassChuckTemperatureC >= 45.0 ||
+      input.postPurgeResidualHfAcidVaporPpm >= 0.05 ||
+      !input.ansiZ136LaserShutterScbaAndCalciumGluconateLotoVerified);
+
+  if (femtosecondLaserOrHfNh4hf2LeakTripped0ms) {
+    return {
+      tgvGlassSubstrateModuleId: input.tgvGlassSubstrateModuleId,
+      policyCode,
+      glassCoreSubstrateTgvLaserEtchAndCuSafe: false,
+      femtosecondLaserOrHfNh4hf2LeakTripped0ms: true,
+      tgvMicrocrackWarpageOrLeakageAborted,
+      enclosureLockedUntilCoolHfPurgeAndLaserScbaLoto,
+      action:
+        "trip_tgv_femtosecond_laser_shutter_and_hf_nh4hf2_dispense_in_0ms_and_engage_scrubber",
+      blockedReason:
+        "SEMIS2_ANSIZ1361_NFPA318_FEMTOSECOND_LASER_5MW_OR_HF_NH4HF2_05PPM_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (tgvMicrocrackWarpageOrLeakageAborted) {
+    return {
+      tgvGlassSubstrateModuleId: input.tgvGlassSubstrateModuleId,
+      policyCode,
+      glassCoreSubstrateTgvLaserEtchAndCuSafe: false,
+      femtosecondLaserOrHfNh4hf2LeakTripped0ms: false,
+      tgvMicrocrackWarpageOrLeakageAborted: true,
+      enclosureLockedUntilCoolHfPurgeAndLaserScbaLoto,
+      action:
+        "abort_tgv_glass_core_process_on_via_microcrack_panel_warpage_or_dielectric_leakage",
+      blockedReason:
+        "TGV_GLASS_CORE_VIA_MICROCRACK_02PCT_WARPAGE_50UM_OR_LEAKAGE_1E8_ABORTED",
+    };
+  }
+
+  if (enclosureLockedUntilCoolHfPurgeAndLaserScbaLoto) {
+    return {
+      tgvGlassSubstrateModuleId: input.tgvGlassSubstrateModuleId,
+      policyCode,
+      glassCoreSubstrateTgvLaserEtchAndCuSafe: false,
+      femtosecondLaserOrHfNh4hf2LeakTripped0ms: false,
+      tgvMicrocrackWarpageOrLeakageAborted: false,
+      enclosureLockedUntilCoolHfPurgeAndLaserScbaLoto: true,
+      action:
+        "lock_tgv_enclosure_until_cool_below_45c_hf_below_005ppm_and_ansiz136_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_TGV_ENCLOSURE_LOCKED_UNTIL_45C_005PPM_HF_AND_ANSIZ136_SCBA_LOTO",
+    };
+  }
+
+  return {
+    tgvGlassSubstrateModuleId: input.tgvGlassSubstrateModuleId,
+    policyCode,
+    glassCoreSubstrateTgvLaserEtchAndCuSafe: true,
+    femtosecondLaserOrHfNh4hf2LeakTripped0ms: false,
+    tgvMicrocrackWarpageOrLeakageAborted: false,
+    enclosureLockedUntilCoolHfPurgeAndLaserScbaLoto: false,
+    action:
+      "allow_verified_glass_core_substrate_tgv_laser_modification_wet_etch_and_har_cu_metallization",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8837DartDiffservDscpPerPacketBundleMarkingAndRfc8835AudioPriorityInversionGuardInput {
+  sessionId: string;
+  bundleFiveTupleCarriesIllegalOrForbiddenControlDscpCodepoint: boolean;
+  sctpDataChannelOrBulkTransferSpoofsEf46VoiceDscpCodepoint: boolean;
+  realtimeAudioStreamMarkedBelowInteractiveFloorOrStarvedByDataChannel: boolean;
+  networkBleedRemarkedDifferentPhbClassesIntoOutOfOrderQueue: boolean;
+  dscpCodepointOscillationRatePerSecond: number;
+  unpacedHighPriorityEfPacketBurstCount: number;
+}
+
+export interface WebrtcSipRfc8837DartDiffservDscpPerPacketBundleMarkingAndRfc8835AudioPriorityInversionGuardAssessment {
+  sessionId: string;
+  policyCode: "P434-WEBRTC-SIP-RFC8837-DART-DIFFSERV-DSCP-PER-PACKET-BUNDLE-MARKING-AND-RFC8835-AUDIO-PRIORITY-INVERSION-GUARD";
+  rfc8837DartDscpAndRfc8835AudioPriorityHealthy: boolean;
+  illegalDscpCodepointOrEfVoiceSpoofingDropped0ms: boolean;
+  audioPriorityInversionOrCrossQueueReorderingRejected: boolean;
+  dscpOscillationOrUnpacedEfBurstClamped: boolean;
+  action:
+    | "allow_verified_rfc8837_dart_dscp_bundle_marking_and_rfc8835_audio_priority"
+    | "drop_illegal_dscp_codepoint_or_sctp_ef46_voice_dscp_spoofing_0ms"
+    | "reject_audio_priority_inversion_or_cross_phb_queue_reordering_on_bundle"
+    | "clamp_dscp_codepoint_oscillation_or_unpaced_ef46_packet_burst";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8837DartDiffservDscpPerPacketBundleMarkingAndRfc8835AudioPriorityInversionGuard(
+  input: WebrtcSipRfc8837DartDiffservDscpPerPacketBundleMarkingAndRfc8835AudioPriorityInversionGuardInput,
+): WebrtcSipRfc8837DartDiffservDscpPerPacketBundleMarkingAndRfc8835AudioPriorityInversionGuardAssessment {
+  const policyCode =
+    "P434-WEBRTC-SIP-RFC8837-DART-DIFFSERV-DSCP-PER-PACKET-BUNDLE-MARKING-AND-RFC8835-AUDIO-PRIORITY-INVERSION-GUARD" as const;
+
+  const illegalDscpCodepointOrEfVoiceSpoofingDropped0ms =
+    input.bundleFiveTupleCarriesIllegalOrForbiddenControlDscpCodepoint ||
+    input.sctpDataChannelOrBulkTransferSpoofsEf46VoiceDscpCodepoint;
+
+  const audioPriorityInversionOrCrossQueueReorderingRejected =
+    input.realtimeAudioStreamMarkedBelowInteractiveFloorOrStarvedByDataChannel ||
+    input.networkBleedRemarkedDifferentPhbClassesIntoOutOfOrderQueue;
+
+  const dscpOscillationOrUnpacedEfBurstClamped =
+    input.dscpCodepointOscillationRatePerSecond > 10 ||
+    input.unpacedHighPriorityEfPacketBurstCount > 16;
+
+  if (illegalDscpCodepointOrEfVoiceSpoofingDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8837DartDscpAndRfc8835AudioPriorityHealthy: false,
+      illegalDscpCodepointOrEfVoiceSpoofingDropped0ms: true,
+      audioPriorityInversionOrCrossQueueReorderingRejected,
+      dscpOscillationOrUnpacedEfBurstClamped,
+      action: "drop_illegal_dscp_codepoint_or_sctp_ef46_voice_dscp_spoofing_0ms",
+      blockedReason:
+        "RFC8837_FORBIDDEN_CONTROL_DSCP_OR_SCTP_DATACHANNEL_EF46_VOICE_SPOOFING_DROPPED_0MS",
+    };
+  }
+
+  if (audioPriorityInversionOrCrossQueueReorderingRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8837DartDscpAndRfc8835AudioPriorityHealthy: false,
+      illegalDscpCodepointOrEfVoiceSpoofingDropped0ms: false,
+      audioPriorityInversionOrCrossQueueReorderingRejected: true,
+      dscpOscillationOrUnpacedEfBurstClamped,
+      action:
+        "reject_audio_priority_inversion_or_cross_phb_queue_reordering_on_bundle",
+      blockedReason:
+        "RFC8837_RFC8835_AUDIO_PRIORITY_INVERSION_OR_CROSS_PHB_QUEUE_REORDERING_REJECTED",
+    };
+  }
+
+  if (dscpOscillationOrUnpacedEfBurstClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8837DartDscpAndRfc8835AudioPriorityHealthy: false,
+      illegalDscpCodepointOrEfVoiceSpoofingDropped0ms: false,
+      audioPriorityInversionOrCrossQueueReorderingRejected: false,
+      dscpOscillationOrUnpacedEfBurstClamped: true,
+      action: "clamp_dscp_codepoint_oscillation_or_unpaced_ef46_packet_burst",
+      blockedReason:
+        "RFC8837_DSCP_OSCILLATION_OVER_10_PER_SEC_OR_UNPACED_EF46_BURST_OVER_16_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8837DartDscpAndRfc8835AudioPriorityHealthy: true,
+    illegalDscpCodepointOrEfVoiceSpoofingDropped0ms: false,
+    audioPriorityInversionOrCrossQueueReorderingRejected: false,
+    dscpOscillationOrUnpacedEfBurstClamped: false,
+    action:
+      "allow_verified_rfc8837_dart_dscp_bundle_marking_and_rfc8835_audio_priority",
+    blockedReason: "none",
+  };
+}
+
 
 
 
