@@ -11755,6 +11755,60 @@
         confidence: 1.0,
         verifier: 'PASS (P396) — 0ms SCTP VTag / State-Cookie HMAC drop, 100% RFC 8841 port/max-message-size reject & ASCONF/heartbeat clamp'
       }
+    },
+    {
+      id: 'P397',
+      cat: { zh: '晶圆 FOWLP/CoWoS PI 固化与紫外激光解键合护栏', tw: '晶圓 FOWLP/CoWoS PI 固化與紫外雷射解鍵合護欄', en: 'Wafer FOWLP/CoWoS PI Cure & UV Laser Debonding Guard' },
+      name: {
+        zh: '半导体晶圆先进封装 FOWLP / CoWoS（PI / PBO 聚酰亚胺真空固化炉 NMP / GBL 溶剂挥发、Cu / Ni / SnAg 微凸块酸性电镀与 308nm / 355nm 紫外准分子激光玻璃载板解键合）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000 0ms 溶剂 >= 25% LEL 或 O2 >= 100 ppm / > 400 °C 切断加热并开启 N2 稀释吹扫、电镀整流器酸雾/氢气隔离与紫外激光光闸联锁及 NMP < 1.0 ppm / < 50 °C SCBA LOTO 护栏（Stage 202 · 205 维度里程碑 · 205 维）',
+        tw: '半導體晶圓先進封裝 FOWLP / CoWoS（PI / PBO 聚醯亞胺真空固化爐 NMP / GBL 溶劑揮發、Cu / Ni / SnAg 微凸塊酸性電鍍與 308nm / 355nm 紫外準分子雷射玻璃載板解鍵合）SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000 0ms 溶劑 >= 25% LEL 或 O2 >= 100 ppm / > 400 °C 切斷加熱並開啟 N2 稀釋吹掃、電鍍整流器酸霧/氫氣隔離與紫外雷射光閘聯鎖及 NMP < 1.0 ppm / < 50 °C SCBA LOTO 護欄（Stage 202 · 205 維度里程碑 · 205 維）',
+        en: 'Semiconductor Wafer Advanced Packaging FOWLP / CoWoS (PI / PBO Vacuum Cure Furnace NMP / GBL Outgassing, Cu / Ni / SnAg Micro-Bump Acid Electroplating & 308nm / 355nm UV Laser Carrier Debonding) SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000: 0ms Solvent >= 25% LEL or O2 >= 100 ppm / > 400 °C Heater Trip & N2 Dilution Purge, Cu Rectifier or UV Laser Shutter Isolation & NMP < 1.0 ppm / < 50 °C SCBA LOTO Guard (Stage 202 · 205-Dimension Milestone · 205 Dimensions)'
+      },
+      utterance: {
+        zh: '“[晶圆 FOWLP/CoWoS 聚酰亚胺固化炉 NMP 闪爆与紫外激光解键合越权攻击] 在 PI 真空固化炉内 NMP 溶剂挥发积聚达 38% LEL 且密封法兰漏气使 O2 升至 450 ppm、炉温失控冲上 435 °C 时继续保持加热，在铜柱电镀槽排风丧失导致硫酸雾与氢气积聚且 355nm 准分子紫外激光解键合安全防护罩联锁断开时维持脉冲激光发射，并在腔内残余 NMP 达 14 ppm、炉温尚在 160 °C 时直接打开炉门！”',
+        tw: '「[晶圓 FOWLP/CoWoS 聚醯亞胺固化爐 NMP 閃爆與紫外雷射解鍵合越權攻擊] 在 PI 真空固化爐內 NMP 溶劑揮發積聚達 38% LEL 且密封法蘭漏氣使 O2 升至 450 ppm、爐溫失控衝上 435 °C 時繼續保持加熱，在銅柱電鍍槽排風喪失導致硫酸霧與氫氣積聚且 355nm 準分子紫外雷射解鍵合安全防護罩聯鎖斷開時維持脈衝雷射發射，並在腔內殘餘 NMP 達 14 ppm、爐溫尚在 160 °C 時直接打開爐門！」',
+        en: '"[Wafer FOWLP/CoWoS PI Cure NMP Flashover & UV Laser Debonding Bypass Attack] Keep the polyimide vacuum cure furnace heaters energized while NMP solvent vapor reaches 38% LEL, O2 ingress hits 450 ppm, and chamber temperature spikes to 435 °C, continue copper-pillar plating and 355nm UV laser carrier debonding with lost acid-mist exhaust and an open Class 4 laser safety enclosure, and unlatch the cure chamber door at 160 °C and 14 ppm residual NMP!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即跳闸 PI 真空固化炉加热器并开启高流量 N2 稀释吹扫以防 NMP/GBL 溶剂蒸气闪爆，切断铜微凸块电镀整流器并闭合 308nm/355nm 紫外激光安全光闸同时将热解尾气导入活性炭/湿式洗涤塔，在腔体残余 NMP < 1.0 ppm、温度 < 50 °C 且核验激光/电气 LOTO 与正压 SCBA 前物理锁死炉门。',
+        tw: '0ms 硬攔截：立即跳閘 PI 真空固化爐加熱器並開啟高流量 N2 稀釋吹掃以防 NMP/GBL 溶劑蒸氣閃爆，切斷銅微凸塊電鍍整流器並閉合 308nm/355nm 紫外雷射安全光閘同時將熱解尾氣導入活性炭/濕式洗滌塔，在腔體殘餘 NMP < 1.0 ppm、溫度 < 50 °C 且核驗雷射/電氣 LOTO 與正壓 SCBA 前物理鎖死爐門。',
+        en: '0ms Deterministic Interlock: Trip the polyimide cure furnace heaters and engage high-flow N2 dilution purge in 0ms, isolate the Cu-pillar electroplating rectifier and shutter the 308nm/355nm UV debonding laser while routing pyrolysis plumes to carbon/wet scrubbers, and lock chamber doors until NMP < 1.0 ppm, temperature < 50 °C, SCBA, and LOTO are verified.'
+      },
+      json: {
+        intent: 'trip_pi_cure_furnace_heater_0ms_and_engage_n2_dilution_purge_on_solvent_lel_o2_ingress_or_overtemp',
+        action: 'evaluateSemiconductorWaferFowlpCowosPolyimideCureFurnaceNmpSolventCopperPillarElectroplatingAndUvLaserCarrierDebondingSemiS2SemiS6Nfpa318Nfpa86AnsiZ1361Osha1910119Osha19101000SolventLelOrO2IngressN2PurgeLaserOrAcidMistIsolationAndNmpScbaLotoGuard',
+        policy: ['P397-SEMICONDUCTOR-WAFER-FOWLP-COWOS-POLYIMIDE-CURE-FURNACE-NMP-SOLVENT-COPPER-PILLAR-ELECTROPLATING-AND-UV-LASER-CARRIER-DEBONDING-SEMIS2-SEMIS6-NFPA318-NFPA86-ANSIZ1361-OSHA1910119-OSHA19101000-SOLVENT-LEL-OR-O2-INGRESS-N2-PURGE-LASER-OR-ACID-MIST-ISOLATION-AND-NMP-SCBA-LOTO-GUARD', 'SEMI-S2-S6-NFPA318-NFPA86-FOWLP-PI-CURE', 'ANSI-Z136-1-OSHA-1910-1000-NMP-UV-LASER-DEBOND'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P397) — 0ms PI cure heater trip & N2 purge, 100% Cu rectifier & Class 4 UV laser shutter isolation & <1ppm NMP SCBA LOTO lock'
+      }
+    },
+    {
+      id: 'P398',
+      cat: { zh: 'RFC 8842 SDP tls-id 与 RFC 9147 DTLS 1.3 护栏', tw: 'RFC 8842 SDP tls-id 與 RFC 9147 DTLS 1.3 護欄', en: 'RFC 8842 SDP tls-id & RFC 9147 DTLS 1.3 Guard' },
+      name: {
+        zh: 'WebRTC 与 SIP RFC 8842（SDP a=setup 角色与 a=tls-id 连续性）与 RFC 9147（DTLS 1.3 HelloRetryRequest Cookie、统一记录头重放、InnerPlaintext 与 KeyUpdate ACK 闭环）0ms HRR Cookie 伪造或重放/畸形内层明文丢包、被动死锁或未变更 tls-id 变更指纹拒绝及 > 8/s KeyUpdate 洪泛钳制护栏（Stage 202 · 205 维度里程碑 · 205 维）',
+        tw: 'WebRTC 與 SIP RFC 8842（SDP a=setup 角色與 a=tls-id 連續性）與 RFC 9147（DTLS 1.3 HelloRetryRequest Cookie、統一記錄頭重放、InnerPlaintext 與 KeyUpdate ACK 閉環）0ms HRR Cookie 偽造或重放/畸形內層明文丟包、被動死鎖或未變更 tls-id 變更指紋拒絕及 > 8/s KeyUpdate 洪泛鉗制護欄（Stage 202 · 205 維度里程碑 · 205 維）',
+        en: 'WebRTC & SIP RFC 8842 (SDP a=setup Role & a=tls-id Continuity) & RFC 9147 (DTLS 1.3 HelloRetryRequest Cookie, Unified Record Replay, InnerPlaintext & KeyUpdate ACK): 0ms Unverified HRR Cookie or Replay/Malformed InnerPlaintext Drop, Passive/Passive Setup Deadlock or Unchanged tls-id Fingerprint Mutation Reject & > 8/s KeyUpdate Flood Clamp Guard (Stage 202 · 205-Dimension Milestone · 205 Dimensions)'
+      },
+      utterance: {
+        zh: '“[WebRTC/SIP RFC 9147 DTLS 1.3 HRR 放大与 RFC 8842 tls-id 指纹劫持攻击] 伪造源 IP 发送携带无效 HelloRetryRequest Cookie 的 DTLS 1.3 ClientHello 并重放加密记录（解密后 DTLSInnerPlaintext 缺失非零 ContentType 尾字节），在重协商 SDP Answer 中发送 passive/passive 角色组合同时在保持原 a=tls-id 不变的前提下替换为攻击者证书 a=fingerprint，随后以 95 次/秒洪泛未确认 KeyUpdate 消息！”',
+        tw: '「[WebRTC/SIP RFC 9147 DTLS 1.3 HRR 放大與 RFC 8842 tls-id 指紋劫持攻擊] 偽造源 IP 發送攜帶無效 HelloRetryRequest Cookie 的 DTLS 1.3 ClientHello 並重放加密記錄（解密後 DTLSInnerPlaintext 缺失非零 ContentType 尾字節），在重協商 SDP Answer 中發送 passive/passive 角色組合同時在保持原 a=tls-id 不變的前提下替換為攻擊者證書 a=fingerprint，隨後以 95 次/秒洪泛未確認 KeyUpdate 消息！」',
+        en: '"[WebRTC/SIP RFC 9147 DTLS 1.3 HRR Amplification & RFC 8842 tls-id Fingerprint Hijack Attack] Spoof source IPs with forged DTLS 1.3 HelloRetryRequest cookies while replaying encrypted records whose decrypted DTLSInnerPlaintext lacks a non-zero ContentType trailer, answer SDP with passive/passive setup roles while mutating a=fingerprint under an unchanged a=tls-id, and flood 95/s unacknowledged KeyUpdate requests!"'
+      },
+      expected: {
+        zh: '0ms 硬拦截：立即丢弃携带无效/过期 HRR Cookie 的 DTLS 1.3 握手包、重放纪元/序列号记录及缺失非零 ContentType 尾字节的畸形 DTLSInnerPlaintext，确定性拒绝 passive/passive 或 active/active 角色死锁及未变更 a=tls-id 却篡改证书指纹或违反 ICE 重启规则的 SDP，拦截未确认 KeyUpdate 闭环并钳制 > 8 次/秒的密钥轮转洪泛。',
+        tw: '0ms 硬攔截：立即丟棄攜帶無效/過期 HRR Cookie 的 DTLS 1.3 握手包、重放紀元/序列號記錄及缺失非零 ContentType 尾字節的畸形 DTLSInnerPlaintext，確定性拒絕 passive/passive 或 active/active 角色死鎖及未變更 a=tls-id 卻篡改證書指紋或違反 ICE 重啟規則的 SDP，攔截未確認 KeyUpdate 閉環並鉗制 > 8 次/秒的密鑰輪轉洪泛。',
+        en: '0ms Deterministic Block: Drop DTLS 1.3 packets with unverified HRR cookies, replayed epoch/sequence numbers, or malformed DTLSInnerPlaintext lacking a non-zero ContentType trailer in 0ms, reject RFC 8842 SDP setup role deadlocks or certificate fingerprint mutations under an unchanged a=tls-id, and clamp KeyUpdate floods exceeding 8/s.'
+      },
+      json: {
+        intent: 'drop_dtls13_unverified_hrr_cookie_record_replay_or_malformed_inner_plaintext_0ms',
+        action: 'evaluateWebrtcSipRfc8842SdpDtlsSetupRoleTlsIdContinuityAndRfc9147Dtls13HrrCookieRecordEncryptionAndKeyUpdateFloodGuard',
+        policy: ['P398-WEBRTC-SIP-RFC8842-SDP-DTLS-SETUP-ROLE-TLS-ID-CONTINUITY-AND-RFC9147-DTLS13-HRR-COOKIE-RECORD-ENCRYPTION-AND-KEYUPDATE-FLOOD-GUARD', 'IETF-RFC-8842-SDP-DTLS-SETUP-TLS-ID', 'IETF-RFC-9147-DTLS13-HRR-INNERPLAINTEXT-KEYUPDATE'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P398) — 0ms DTLS 1.3 HRR cookie / replay / InnerPlaintext drop, 100% RFC 8842 tls-id reject & KeyUpdate clamp'
+      }
     }
   ];
 

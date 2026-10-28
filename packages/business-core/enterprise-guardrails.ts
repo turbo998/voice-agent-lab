@@ -39363,6 +39363,247 @@ export function evaluateWebrtcSipRfc8841SdpSctpPortMaxMessageSizeAndRfc9260SctpV
   };
 }
 
+export interface SemiconductorWaferFowlpCowosPolyimideCureFurnaceCopperPillarElectroplatingAndUvLaserCarrierDebondingGuardInput {
+  sessionId: string;
+  nmpOrGblSolventVaporLelPercent: number;
+  cureFurnaceOxygenConcentrationPpm: number;
+  cureFurnaceChamberTempC: number;
+  solventCondenserExhaustDifferentialPaValid: boolean;
+  copperPlatingBathTempC: number;
+  sulfuricAcidMistExposureMgPerM3: number;
+  laserDebondingEnclosureInterlockClosed: boolean;
+  laserDebondingBeamEnergyDensityMjPerCm2: number;
+  chamberMaintenanceAccessRequested: boolean;
+  carrierDebondChuckServiceRequested: boolean;
+  ambientNmpVaporPpm: number;
+  class4LaserOpticalShutterKeyLocked: boolean;
+  scbaAndChemicalPpeLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFowlpCowosPolyimideCureFurnaceCopperPillarElectroplatingAndUvLaserCarrierDebondingGuardAssessment {
+  policyCode: "P397-SEMICONDUCTOR-WAFER-FOWLP-COWOS-POLYIMIDE-CURE-FURNACE-NMP-SOLVENT-COPPER-PILLAR-ELECTROPLATING-AND-UV-LASER-CARRIER-DEBONDING-SEMIS2-SEMIS6-NFPA318-NFPA86-ANSIZ1361-OSHA1910119-OSHA19101000-SOLVENT-LEL-OR-O2-INGRESS-N2-PURGE-LASER-OR-ACID-MIST-ISOLATION-AND-NMP-SCBA-LOTO-GUARD";
+  sessionId: string;
+  fowlpPiCureCuPlatingAndLaserDebondSafe: boolean;
+  solventLelO2IngressOrOvertempHeaterTripped0ms: boolean;
+  cuPlatingAcidMistOrUvLaserEnclosureBreachIsolated: boolean;
+  nmpCooldownAndLaserScbaLotoLocked: boolean;
+  action:
+    | "allow_verified_semiconductor_wafer_fowlp_pi_cure_cu_pillar_plating_and_uv_laser_debonding_operation"
+    | "trip_pi_cure_furnace_heater_0ms_and_engage_n2_dilution_purge_on_solvent_lel_o2_ingress_or_overtemp"
+    | "isolate_cu_plating_rectifier_and_shutter_uv_debonding_laser_on_acid_mist_or_enclosure_breach"
+    | "lock_fowlp_chamber_access_until_nmp_under_1ppm_temp_under_50c_and_laser_scba_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferFowlpCowosPolyimideCureFurnaceNmpSolventCopperPillarElectroplatingAndUvLaserCarrierDebondingSemiS2SemiS6Nfpa318Nfpa86AnsiZ1361Osha1910119Osha19101000SolventLelOrO2IngressN2PurgeLaserOrAcidMistIsolationAndNmpScbaLotoGuard(
+  input: SemiconductorWaferFowlpCowosPolyimideCureFurnaceCopperPillarElectroplatingAndUvLaserCarrierDebondingGuardInput,
+): SemiconductorWaferFowlpCowosPolyimideCureFurnaceCopperPillarElectroplatingAndUvLaserCarrierDebondingGuardAssessment {
+  const policyCode =
+    "P397-SEMICONDUCTOR-WAFER-FOWLP-COWOS-POLYIMIDE-CURE-FURNACE-NMP-SOLVENT-COPPER-PILLAR-ELECTROPLATING-AND-UV-LASER-CARRIER-DEBONDING-SEMIS2-SEMIS6-NFPA318-NFPA86-ANSIZ1361-OSHA1910119-OSHA19101000-SOLVENT-LEL-OR-O2-INGRESS-N2-PURGE-LASER-OR-ACID-MIST-ISOLATION-AND-NMP-SCBA-LOTO-GUARD" as const;
+
+  const solventLelO2IngressOrOvertempHeaterTripped0ms =
+    !Number.isFinite(input.nmpOrGblSolventVaporLelPercent) ||
+    input.nmpOrGblSolventVaporLelPercent >= 10.0 ||
+    !Number.isFinite(input.cureFurnaceOxygenConcentrationPpm) ||
+    input.cureFurnaceOxygenConcentrationPpm >= 100 ||
+    !Number.isFinite(input.cureFurnaceChamberTempC) ||
+    input.cureFurnaceChamberTempC > 400 ||
+    !input.solventCondenserExhaustDifferentialPaValid;
+
+  if (solventLelO2IngressOrOvertempHeaterTripped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      fowlpPiCureCuPlatingAndLaserDebondSafe: false,
+      solventLelO2IngressOrOvertempHeaterTripped0ms: true,
+      cuPlatingAcidMistOrUvLaserEnclosureBreachIsolated: false,
+      nmpCooldownAndLaserScbaLotoLocked: false,
+      action:
+        "trip_pi_cure_furnace_heater_0ms_and_engage_n2_dilution_purge_on_solvent_lel_o2_ingress_or_overtemp",
+      blockedReason:
+        "TRIP_PI_CURE_FURNACE_HEATER_0MS_AND_ENGAGE_N2_DILUTION_PURGE_ON_SOLVENT_LEL_O2_INGRESS_OR_OVERTEMP",
+    };
+  }
+
+  const cuPlatingAcidMistOrUvLaserEnclosureBreachIsolated =
+    !Number.isFinite(input.copperPlatingBathTempC) ||
+    input.copperPlatingBathTempC > 55 ||
+    !Number.isFinite(input.sulfuricAcidMistExposureMgPerM3) ||
+    input.sulfuricAcidMistExposureMgPerM3 >= 1.0 ||
+    !input.laserDebondingEnclosureInterlockClosed ||
+    !Number.isFinite(input.laserDebondingBeamEnergyDensityMjPerCm2) ||
+    input.laserDebondingBeamEnergyDensityMjPerCm2 > 350;
+
+  if (cuPlatingAcidMistOrUvLaserEnclosureBreachIsolated) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      fowlpPiCureCuPlatingAndLaserDebondSafe: false,
+      solventLelO2IngressOrOvertempHeaterTripped0ms: false,
+      cuPlatingAcidMistOrUvLaserEnclosureBreachIsolated: true,
+      nmpCooldownAndLaserScbaLotoLocked: false,
+      action:
+        "isolate_cu_plating_rectifier_and_shutter_uv_debonding_laser_on_acid_mist_or_enclosure_breach",
+      blockedReason:
+        "ISOLATE_CU_PLATING_RECTIFIER_AND_SHUTTER_UV_DEBONDING_LASER_ON_ACID_MIST_OR_ENCLOSURE_BREACH",
+    };
+  }
+
+  const nmpCooldownAndLaserScbaLotoLocked =
+    (input.chamberMaintenanceAccessRequested ||
+      input.carrierDebondChuckServiceRequested) &&
+    (!Number.isFinite(input.ambientNmpVaporPpm) ||
+      input.ambientNmpVaporPpm >= 1.0 ||
+      input.cureFurnaceChamberTempC >= 50 ||
+      !input.class4LaserOpticalShutterKeyLocked ||
+      !input.scbaAndChemicalPpeLotoVerified);
+
+  if (nmpCooldownAndLaserScbaLotoLocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      fowlpPiCureCuPlatingAndLaserDebondSafe: false,
+      solventLelO2IngressOrOvertempHeaterTripped0ms: false,
+      cuPlatingAcidMistOrUvLaserEnclosureBreachIsolated: false,
+      nmpCooldownAndLaserScbaLotoLocked: true,
+      action:
+        "lock_fowlp_chamber_access_until_nmp_under_1ppm_temp_under_50c_and_laser_scba_loto_verified",
+      blockedReason:
+        "LOCK_FOWLP_CHAMBER_ACCESS_UNTIL_NMP_UNDER_1PPM_TEMP_UNDER_50C_AND_LASER_SCBA_LOTO_VERIFIED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    fowlpPiCureCuPlatingAndLaserDebondSafe: true,
+    solventLelO2IngressOrOvertempHeaterTripped0ms: false,
+    cuPlatingAcidMistOrUvLaserEnclosureBreachIsolated: false,
+    nmpCooldownAndLaserScbaLotoLocked: false,
+    action:
+      "allow_verified_semiconductor_wafer_fowlp_pi_cure_cu_pillar_plating_and_uv_laser_debonding_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8842SdpDtlsSetupRoleTlsIdContinuityAndRfc9147Dtls13GuardInput {
+  sessionId: string;
+  dtls13HelloRetryRequestCookieVerified: boolean;
+  dtls13RecordSequenceNumberReplayOrOverflowDetected: boolean;
+  dtls13InnerPlaintextPaddingOrContentTypeMalformed: boolean;
+  dtls13EpochZeroCleartextApplicationDataInjected: boolean;
+  initialOfferSetupAttributeIsActpass: boolean;
+  answerSetupRoleConflictDetected: boolean;
+  tlsIdUnchangedAcrossReinvite: boolean;
+  certificateFingerprintChanged: boolean;
+  fingerprintChangedAcrossReinvite: boolean;
+  newDtlsAssociationEstablished: boolean;
+  dtls13KeyUpdateMessagesPerSec: number;
+  dtls13ChainedKeyUpdateAckLoopDetected: boolean;
+  unackedKeyUpdatePendingCount: number;
+}
+
+export interface WebrtcSipRfc8842SdpDtlsSetupRoleTlsIdContinuityAndRfc9147Dtls13GuardAssessment {
+  policyCode: "P398-WEBRTC-SIP-RFC8842-SDP-DTLS-SETUP-ROLE-TLS-ID-CONTINUITY-AND-RFC9147-DTLS13-HRR-COOKIE-RECORD-ENCRYPTION-AND-KEYUPDATE-FLOOD-GUARD";
+  sessionId: string;
+  rfc8842AndRfc9147Dtls13Healthy: boolean;
+  unverifiedHrrCookieRecordReplayOrMalformedInnerPlaintextDropped0ms: boolean;
+  sdpSetupRoleDeadlockOrTlsIdContinuityViolationRejected: boolean;
+  dtls13KeyUpdateAckLoopOrFloodClamped: boolean;
+  action:
+    | "allow_verified_rfc8842_sdp_setup_tls_id_and_rfc9147_dtls13_transport"
+    | "drop_dtls13_unverified_hrr_cookie_record_replay_or_malformed_inner_plaintext_0ms"
+    | "reject_rfc8842_sdp_setup_role_deadlock_or_tls_id_fingerprint_continuity_violation"
+    | "clamp_rfc9147_dtls13_keyupdate_ack_loop_and_flood_with_fatal_alert";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8842SdpDtlsSetupRoleTlsIdContinuityAndRfc9147Dtls13HrrCookieRecordEncryptionAndKeyUpdateFloodGuard(
+  input: WebrtcSipRfc8842SdpDtlsSetupRoleTlsIdContinuityAndRfc9147Dtls13GuardInput,
+): WebrtcSipRfc8842SdpDtlsSetupRoleTlsIdContinuityAndRfc9147Dtls13GuardAssessment {
+  const policyCode =
+    "P398-WEBRTC-SIP-RFC8842-SDP-DTLS-SETUP-ROLE-TLS-ID-CONTINUITY-AND-RFC9147-DTLS13-HRR-COOKIE-RECORD-ENCRYPTION-AND-KEYUPDATE-FLOOD-GUARD" as const;
+
+  const unverifiedHrrCookieRecordReplayOrMalformedInnerPlaintextDropped0ms =
+    !input.dtls13HelloRetryRequestCookieVerified ||
+    input.dtls13RecordSequenceNumberReplayOrOverflowDetected ||
+    input.dtls13InnerPlaintextPaddingOrContentTypeMalformed ||
+    input.dtls13EpochZeroCleartextApplicationDataInjected;
+
+  if (unverifiedHrrCookieRecordReplayOrMalformedInnerPlaintextDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8842AndRfc9147Dtls13Healthy: false,
+      unverifiedHrrCookieRecordReplayOrMalformedInnerPlaintextDropped0ms: true,
+      sdpSetupRoleDeadlockOrTlsIdContinuityViolationRejected: false,
+      dtls13KeyUpdateAckLoopOrFloodClamped: false,
+      action:
+        "drop_dtls13_unverified_hrr_cookie_record_replay_or_malformed_inner_plaintext_0ms",
+      blockedReason:
+        "DROP_DTLS13_UNVERIFIED_HRR_COOKIE_RECORD_REPLAY_OR_MALFORMED_INNER_PLAINTEXT_0MS",
+    };
+  }
+
+  const sdpSetupRoleDeadlockOrTlsIdContinuityViolationRejected =
+    !input.initialOfferSetupAttributeIsActpass ||
+    input.answerSetupRoleConflictDetected ||
+    (input.tlsIdUnchangedAcrossReinvite &&
+      input.certificateFingerprintChanged) ||
+    (input.fingerprintChangedAcrossReinvite &&
+      !input.newDtlsAssociationEstablished);
+
+  if (sdpSetupRoleDeadlockOrTlsIdContinuityViolationRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8842AndRfc9147Dtls13Healthy: false,
+      unverifiedHrrCookieRecordReplayOrMalformedInnerPlaintextDropped0ms: false,
+      sdpSetupRoleDeadlockOrTlsIdContinuityViolationRejected: true,
+      dtls13KeyUpdateAckLoopOrFloodClamped: false,
+      action:
+        "reject_rfc8842_sdp_setup_role_deadlock_or_tls_id_fingerprint_continuity_violation",
+      blockedReason:
+        "REJECT_RFC8842_SDP_SETUP_ROLE_DEADLOCK_OR_TLS_ID_FINGERPRINT_CONTINUITY_VIOLATION",
+    };
+  }
+
+  const dtls13KeyUpdateAckLoopOrFloodClamped =
+    !Number.isFinite(input.dtls13KeyUpdateMessagesPerSec) ||
+    input.dtls13KeyUpdateMessagesPerSec > 10 ||
+    input.dtls13ChainedKeyUpdateAckLoopDetected ||
+    !Number.isFinite(input.unackedKeyUpdatePendingCount) ||
+    input.unackedKeyUpdatePendingCount > 2;
+
+  if (dtls13KeyUpdateAckLoopOrFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8842AndRfc9147Dtls13Healthy: false,
+      unverifiedHrrCookieRecordReplayOrMalformedInnerPlaintextDropped0ms: false,
+      sdpSetupRoleDeadlockOrTlsIdContinuityViolationRejected: false,
+      dtls13KeyUpdateAckLoopOrFloodClamped: true,
+      action:
+        "clamp_rfc9147_dtls13_keyupdate_ack_loop_and_flood_with_fatal_alert",
+      blockedReason:
+        "CLAMP_RFC9147_DTLS13_KEYUPDATE_ACK_LOOP_AND_FLOOD_WITH_FATAL_ALERT",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8842AndRfc9147Dtls13Healthy: true,
+    unverifiedHrrCookieRecordReplayOrMalformedInnerPlaintextDropped0ms: false,
+    sdpSetupRoleDeadlockOrTlsIdContinuityViolationRejected: false,
+    dtls13KeyUpdateAckLoopOrFloodClamped: false,
+    action:
+      "allow_verified_rfc8842_sdp_setup_tls_id_and_rfc9147_dtls13_transport",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
