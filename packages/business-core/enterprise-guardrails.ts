@@ -49242,6 +49242,179 @@ export function evaluateWebrtcSipRfc8854WebrtcForwardErrorCorrectionRequirements
   };
 }
 
+export interface SemiconductorWaferFabChemicalMechanicalPlanarizationCmpSlurryBlendingAndLoopDistributionSystemSemiS2SemiF57Nfpa318Osha1910147H2o2DecompositionOverpressureLeakTripLpcAgglomerateDeadLegAbortAndDiwFlushLotoGuardInput {
+  readonly dayTankH2o2DecompositionGasGaugePressureKpa: number;
+  readonly valveManifoldBoxVmbLeakOrMagLevPumpDryRunSeizureDetected: boolean;
+  readonly opticalLargeParticleCounterLpcGreaterThan05UmCountsPerMl: number;
+  readonly slurryPhDriftOutsideSpecWindowOrAutoDosingRatioFaultDetected: boolean;
+  readonly returnLoopFlowVelocityMetersPerSecond: number;
+  readonly cmpSlurryVmbOrBlendTankMaintenanceAccessRequested: boolean;
+  readonly diwFlushZeroLinePressureAndChemicalSplashPpeLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabChemicalMechanicalPlanarizationCmpSlurryBlendingAndLoopDistributionSystemSemiS2SemiF57Nfpa318Osha1910147H2o2DecompositionOverpressureLeakTripLpcAgglomerateDeadLegAbortAndDiwFlushLotoGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "trip_cmp_slurry_supply_pump_and_open_h2o2_emergency_vent_in_0ms"
+    | "abort_cmp_wafer_polish_dispense_and_divert_slurry_to_drain_filtration"
+    | "lock_cmp_slurry_vmb_and_blend_tank_until_diw_flush_and_zero_pressure_loto";
+  readonly policyId: "P493-SEMICONDUCTOR-WAFER-FAB-CHEMICAL-MECHANICAL-PLANARIZATION-CMP-SLURRY-BLENDING-AND-LOOP-DISTRIBUTION-SYSTEM-SEMIS2-SEMIF57-NFPA318-OSHA1910147-H2O2-DECOMPOSITION-OVERPRESSURE-LEAK-TRIP-LPC-AGGLOMERATE-DEAD-LEG-ABORT-AND-DIW-FLUSH-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabChemicalMechanicalPlanarizationCmpSlurryBlendingAndLoopDistributionSystemSemiS2SemiF57Nfpa318Osha1910147H2o2DecompositionOverpressureLeakTripLpcAgglomerateDeadLegAbortAndDiwFlushLotoGuard(
+  input: SemiconductorWaferFabChemicalMechanicalPlanarizationCmpSlurryBlendingAndLoopDistributionSystemSemiS2SemiF57Nfpa318Osha1910147H2o2DecompositionOverpressureLeakTripLpcAgglomerateDeadLegAbortAndDiwFlushLotoGuardInput,
+): SemiconductorWaferFabChemicalMechanicalPlanarizationCmpSlurryBlendingAndLoopDistributionSystemSemiS2SemiF57Nfpa318Osha1910147H2o2DecompositionOverpressureLeakTripLpcAgglomerateDeadLegAbortAndDiwFlushLotoGuardResult {
+  const policyId =
+    "P493-SEMICONDUCTOR-WAFER-FAB-CHEMICAL-MECHANICAL-PLANARIZATION-CMP-SLURRY-BLENDING-AND-LOOP-DISTRIBUTION-SYSTEM-SEMIS2-SEMIF57-NFPA318-OSHA1910147-H2O2-DECOMPOSITION-OVERPRESSURE-LEAK-TRIP-LPC-AGGLOMERATE-DEAD-LEG-ABORT-AND-DIW-FLUSH-LOTO-GUARD" as const;
+
+  if (
+    input.dayTankH2o2DecompositionGasGaugePressureKpa >= 180.0 ||
+    input.valveManifoldBoxVmbLeakOrMagLevPumpDryRunSeizureDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "trip_cmp_slurry_supply_pump_and_open_h2o2_emergency_vent_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI F57 / NFPA 318 critical CMP slurry distribution hazard: H2O2 oxidizer decomposition gas pressure >= 180.0 kPa or VMB leak / mag-lev pump seizure detected; tripping supply pump and opening emergency vent relief in 0ms.",
+    };
+  }
+
+  if (
+    input.opticalLargeParticleCounterLpcGreaterThan05UmCountsPerMl >= 500 ||
+    input.slurryPhDriftOutsideSpecWindowOrAutoDosingRatioFaultDetected ||
+    input.returnLoopFlowVelocityMetersPerSecond < 1.0
+  ) {
+    return {
+      violated: true,
+      action:
+        "abort_cmp_wafer_polish_dispense_and_divert_slurry_to_drain_filtration",
+      policyId,
+      reason:
+        "SEMI F57 CMP slurry agglomerate scratch and settling prevention interlock: optical LPC (> 0.5 um) >= 500 counts/mL, pH/dosing drift, or return loop velocity < 1.0 m/s detected; aborting wafer polish dispense and diverting slurry to filtration/drain.",
+    };
+  }
+
+  if (
+    input.cmpSlurryVmbOrBlendTankMaintenanceAccessRequested &&
+    !input.diwFlushZeroLinePressureAndChemicalSplashPpeLotoVerified
+  ) {
+    return {
+      violated: true,
+      action:
+        "lock_cmp_slurry_vmb_and_blend_tank_until_diw_flush_and_zero_pressure_loto",
+      policyId,
+      reason:
+        "SEMI S2 / OSHA 1910.147 CMP slurry VMB and day-tank maintenance lock: thorough DIW line flush to prevent abrasive silica/ceria solidification, zero gauge pressure release, and splash PPE LOTO must be verified before opening manifold.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer fab CMP slurry H2O2 blending, optical LPC agglomerate control, recirculation velocity (>= 1.0 m/s), and DIW flush LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8837DifferentiatedServicesQosDscpCodepointMarkingForWebrtcRtpAndSctpStreamsGuardInput {
+  readonly unauthorizedNetworkControlCs6Cs7OrVoiceAdmitCodepointInjectionDetected: boolean;
+  readonly nonMediaDataChannelSpoofingEfVoiceCodepointToStarveAudioQueueDetected: boolean;
+  readonly multipleDscpPrioritiesMixedWithinSingleSctpAssociationDetected: boolean;
+  readonly icmpHardErrorOrEcnBleachingTriggeredWithoutDfBitOrCs0FallbackDetected: boolean;
+  readonly distinctDscpCodepointsOnSharedFiveTupleBundleCount: number;
+  readonly highPriorityEfOrAf41BandwidthSharePercent: number;
+}
+
+export interface WebrtcSipRfc8837DifferentiatedServicesQosDscpCodepointMarkingForWebrtcRtpAndSctpStreamsGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_shared_tuple_dscp_codepoints_and_ef_af41_bandwidth_share"
+    | "remark_to_default_cs0_or_reject_mixed_sctp_association_dscp"
+    | "drop_unauthorized_cs6_cs7_network_control_or_spoofed_ef_dscp_0ms";
+  readonly policyId: "P494-WEBRTC-SIP-RFC8837-DIFFERENTIATED-SERVICES-QOS-DSCP-CODEPOINT-MARKING-FOR-WEBRTC-RTP-AND-SCTP-STREAMS-GUARD";
+  readonly reason: string;
+  readonly clampedSharedTupleDscpCount: number;
+  readonly clampedHighPriorityBandwidthSharePercent: number;
+}
+
+export function evaluateWebrtcSipRfc8837DifferentiatedServicesQosDscpCodepointMarkingForWebrtcRtpAndSctpStreamsGuard(
+  input: WebrtcSipRfc8837DifferentiatedServicesQosDscpCodepointMarkingForWebrtcRtpAndSctpStreamsGuardInput,
+): WebrtcSipRfc8837DifferentiatedServicesQosDscpCodepointMarkingForWebrtcRtpAndSctpStreamsGuardResult {
+  const policyId =
+    "P494-WEBRTC-SIP-RFC8837-DIFFERENTIATED-SERVICES-QOS-DSCP-CODEPOINT-MARKING-FOR-WEBRTC-RTP-AND-SCTP-STREAMS-GUARD" as const;
+  const clampedSharedTupleDscpCount = Math.min(
+    Math.max(1, input.distinctDscpCodepointsOnSharedFiveTupleBundleCount),
+    4,
+  );
+  const clampedHighPriorityBandwidthSharePercent = Math.min(
+    Math.max(0, input.highPriorityEfOrAf41BandwidthSharePercent),
+    70,
+  );
+
+  if (
+    input.unauthorizedNetworkControlCs6Cs7OrVoiceAdmitCodepointInjectionDetected ||
+    input.nonMediaDataChannelSpoofingEfVoiceCodepointToStarveAudioQueueDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "drop_unauthorized_cs6_cs7_network_control_or_spoofed_ef_dscp_0ms",
+      policyId,
+      reason:
+        "RFC 8837 Section 4 / 5 / 7 violation: unauthorized CS6/CS7/VA network-control DSCP injection or bulk DataChannel spoofing EF (46) audio priority detected; dropping packet in 0ms.",
+      clampedSharedTupleDscpCount,
+      clampedHighPriorityBandwidthSharePercent,
+    };
+  }
+
+  if (
+    input.multipleDscpPrioritiesMixedWithinSingleSctpAssociationDetected ||
+    input.icmpHardErrorOrEcnBleachingTriggeredWithoutDfBitOrCs0FallbackDetected
+  ) {
+    return {
+      violated: true,
+      action: "remark_to_default_cs0_or_reject_mixed_sctp_association_dscp",
+      policyId,
+      reason:
+        "RFC 8837 Section 5 / 6 violation: multiple DSCP codepoints mixed within a single SCTP association causing head-of-line reordering, or middlebox ICMP blackhole without CS0 (0) fallback; enforcing single-DSCP SCTP policy and CS0 fallback.",
+      clampedSharedTupleDscpCount,
+      clampedHighPriorityBandwidthSharePercent,
+    };
+  }
+
+  if (
+    input.distinctDscpCodepointsOnSharedFiveTupleBundleCount > 4 ||
+    input.highPriorityEfOrAf41BandwidthSharePercent > 70
+  ) {
+    return {
+      violated: true,
+      action: "clamp_shared_tuple_dscp_codepoints_and_ef_af41_bandwidth_share",
+      policyId,
+      reason:
+        "RFC 8837 DiffServ queue-starvation and ECMP flow-reordering protection: clamping distinct DSCP codepoints on a shared 5-tuple to <= 4 and EF/AF41 priority share to <= 70%.",
+      clampedSharedTupleDscpCount,
+      clampedHighPriorityBandwidthSharePercent,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8837 WebRTC Differentiated Services (DSCP EF/AF4x/AF11/CS1/CS0) QoS marking and SCTP single-codepoint discipline verified.",
+    clampedSharedTupleDscpCount,
+    clampedHighPriorityBandwidthSharePercent,
+  };
+}
+
+
 
 
 
