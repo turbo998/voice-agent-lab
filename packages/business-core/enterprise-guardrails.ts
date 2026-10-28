@@ -47828,6 +47828,213 @@ export function evaluateWebrtcSipRfc8835TransportsForWebrtcMandatoryIceUdpTcpFal
   };
 }
 
+export interface SemiconductorWaferFabUninterruptiblePowerSupplyUpsStaticTransferSwitchStsAndSemiF47VoltageSagRideThroughBatteryRoomH2ThermalRunawayGuardInput {
+  sessionId: string;
+  stsSourceToAlternatePhaseDeltaDegrees: number;
+  semiF47VoltageSagBelow50PctOver200msOrBelow70PctOver500msDetected: boolean;
+  batteryRoomHydrogenPercentVol: number;
+  liIonOrVrlaCellTemperatureC: number;
+  batteryOffGasCoOrElectrolyteVaporDetected: boolean;
+  upsStsCabinetAccessBeforeDcBusCapacitorDischargedBelow5vAndNfpa70eLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabUninterruptiblePowerSupplyUpsStaticTransferSwitchStsAndSemiF47VoltageSagRideThroughBatteryRoomH2ThermalRunawayGuardResult {
+  sessionId: string;
+  policyCode: "P477-SEMICONDUCTOR-WAFER-FAB-UNINTERRUPTIBLE-POWER-SUPPLY-UPS-STATIC-TRANSFER-SWITCH-STS-AND-SEMI-F47-VOLTAGE-SAG-RIDE-THROUGH-BATTERY-ROOM-H2-THERMAL-RUNAWAY-SEMIS2-SEMIS8-SEMIF47-NFPA70E-NFPA855-OSHA1910147-VOLTAGE-SAG-BELOW-50PCT-OR-STS-OUT-OF-PHASE-TRANSFER-TRIP-BATTERY-H2-LEL-THERMAL-RUNAWAY-DISCONNECT-AND-DC-BUS-CAPACITOR-ZERO-ENERGY-LOTO-GUARD";
+  upsStsSemiF47BatteryRoomCompliant: boolean;
+  stsOutOfPhaseOrSemiF47VoltageSagTripped0ms: boolean;
+  batteryRoomH2OrThermalRunawayDisconnected: boolean;
+  dcBusCapacitorAccessLockedWithoutZeroEnergyNfpa70eLoto: boolean;
+  action:
+    | "allow_verified_wafer_fab_ups_sts_semi_f47_and_battery_room_operation"
+    | "trip_sts_out_of_phase_transfer_or_initiate_semi_f47_tool_safe_hold_in_0ms"
+    | "disconnect_ups_battery_string_breaker_and_boost_h2_exhaust_on_thermal_runaway"
+    | "lock_ups_sts_cabinet_until_dc_bus_capacitor_discharged_below_5v_and_nfpa70e_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferFabUninterruptiblePowerSupplyUpsStaticTransferSwitchStsAndSemiF47VoltageSagRideThroughBatteryRoomH2ThermalRunawaySemiS2SemiS8SemiF47Nfpa70eNfpa855Osha1910147VoltageSagBelow50PctOrStsOutOfPhaseTransferTripBatteryH2LelThermalRunawayDisconnectAndDcBusCapacitorZeroEnergyLotoGuard(
+  input: SemiconductorWaferFabUninterruptiblePowerSupplyUpsStaticTransferSwitchStsAndSemiF47VoltageSagRideThroughBatteryRoomH2ThermalRunawayGuardInput,
+): SemiconductorWaferFabUninterruptiblePowerSupplyUpsStaticTransferSwitchStsAndSemiF47VoltageSagRideThroughBatteryRoomH2ThermalRunawayGuardResult {
+  const policyCode =
+    "P477-SEMICONDUCTOR-WAFER-FAB-UNINTERRUPTIBLE-POWER-SUPPLY-UPS-STATIC-TRANSFER-SWITCH-STS-AND-SEMI-F47-VOLTAGE-SAG-RIDE-THROUGH-BATTERY-ROOM-H2-THERMAL-RUNAWAY-SEMIS2-SEMIS8-SEMIF47-NFPA70E-NFPA855-OSHA1910147-VOLTAGE-SAG-BELOW-50PCT-OR-STS-OUT-OF-PHASE-TRANSFER-TRIP-BATTERY-H2-LEL-THERMAL-RUNAWAY-DISCONNECT-AND-DC-BUS-CAPACITOR-ZERO-ENERGY-LOTO-GUARD" as const;
+
+  const stsOutOfPhaseOrSemiF47VoltageSagTripped0ms =
+    Math.abs(input.stsSourceToAlternatePhaseDeltaDegrees) > 10.0 ||
+    Boolean(
+      input.semiF47VoltageSagBelow50PctOver200msOrBelow70PctOver500msDetected,
+    );
+
+  if (stsOutOfPhaseOrSemiF47VoltageSagTripped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      upsStsSemiF47BatteryRoomCompliant: false,
+      stsOutOfPhaseOrSemiF47VoltageSagTripped0ms: true,
+      batteryRoomH2OrThermalRunawayDisconnected: false,
+      dcBusCapacitorAccessLockedWithoutZeroEnergyNfpa70eLoto: false,
+      action:
+        "trip_sts_out_of_phase_transfer_or_initiate_semi_f47_tool_safe_hold_in_0ms",
+      blockedReason:
+        "SEMI_F47_S2_STS_PHASE_DELTA_OVER_10DEG_OR_VOLTAGE_SAG_ENVELOPE_BREACH_0MS_SAFE_HOLD",
+    };
+  }
+
+  const batteryRoomH2OrThermalRunawayDisconnected =
+    input.batteryRoomHydrogenPercentVol >= 1.0 ||
+    input.liIonOrVrlaCellTemperatureC >= 65.0 ||
+    Boolean(input.batteryOffGasCoOrElectrolyteVaporDetected);
+
+  if (batteryRoomH2OrThermalRunawayDisconnected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      upsStsSemiF47BatteryRoomCompliant: false,
+      stsOutOfPhaseOrSemiF47VoltageSagTripped0ms: false,
+      batteryRoomH2OrThermalRunawayDisconnected: true,
+      dcBusCapacitorAccessLockedWithoutZeroEnergyNfpa70eLoto: false,
+      action:
+        "disconnect_ups_battery_string_breaker_and_boost_h2_exhaust_on_thermal_runaway",
+      blockedReason:
+        "NFPA_855_BATTERY_ROOM_H2_OVER_1PCT_VOL_OR_CELL_THERMAL_RUNAWAY_OFFGAS_DISCONNECT",
+    };
+  }
+
+  const dcBusCapacitorAccessLockedWithoutZeroEnergyNfpa70eLoto = Boolean(
+    input.upsStsCabinetAccessBeforeDcBusCapacitorDischargedBelow5vAndNfpa70eLotoVerified,
+  );
+
+  if (dcBusCapacitorAccessLockedWithoutZeroEnergyNfpa70eLoto) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      upsStsSemiF47BatteryRoomCompliant: false,
+      stsOutOfPhaseOrSemiF47VoltageSagTripped0ms: false,
+      batteryRoomH2OrThermalRunawayDisconnected: false,
+      dcBusCapacitorAccessLockedWithoutZeroEnergyNfpa70eLoto: true,
+      action:
+        "lock_ups_sts_cabinet_until_dc_bus_capacitor_discharged_below_5v_and_nfpa70e_loto_verified",
+      blockedReason:
+        "NFPA_70E_OSHA_1910_147_UPS_STS_DC_BUS_CAPACITOR_LOCKED_UNTIL_BELOW_5VDC_AND_LOTO",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    upsStsSemiF47BatteryRoomCompliant: true,
+    stsOutOfPhaseOrSemiF47VoltageSagTripped0ms: false,
+    batteryRoomH2OrThermalRunawayDisconnected: false,
+    dcBusCapacitorAccessLockedWithoutZeroEnergyNfpa70eLoto: false,
+    action:
+      "allow_verified_wafer_fab_ups_sts_semi_f47_and_battery_room_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8829JsepJavascriptSessionEstablishmentProtocolSignalingStateMachineMlineOrderImmutabilityAndIceCredentialsGuardInput {
+  sessionId: string;
+  jsepSignalingStateTransitionValidVerified: boolean;
+  setLocalOrRemoteDescriptionMungingFromLastOfferAnswerDetected: boolean;
+  subsequentOfferAnswerMlineOrderMutationOrRemovalDetected: boolean;
+  invalidRollbackFromStableStateOrUnchangedIceRestartCredentialsDetected: boolean;
+  sdpOfferAnswerMediaSectionsCount: number;
+  pendingTrickleIceCandidatesBufferCount: number;
+}
+
+export interface WebrtcSipRfc8829JsepJavascriptSessionEstablishmentProtocolSignalingStateMachineMlineOrderImmutabilityAndIceCredentialsGuardResult {
+  sessionId: string;
+  policyCode: "P478-WEBRTC-SIP-RFC8829-JSEP-JAVASCRIPT-SESSION-ESTABLISHMENT-PROTOCOL-SIGNALING-STATE-MACHINE-MLINE-ORDER-IMMUTABILITY-AND-ICE-CREDENTIALS-GUARD";
+  rfc8829JsepCompliant: boolean;
+  illegalSignalingTransitionOrSdpMungingDropped0ms: boolean;
+  mlineOrderMutationInvalidRollbackOrStaleIceRestartRejected: boolean;
+  mediaSectionsOrPendingTrickleIceBufferClamped: boolean;
+  action:
+    | "allow_verified_rfc8829_jsep_offer_answer_state_machine"
+    | "drop_illegal_jsep_state_transition_or_sdp_munging_0ms"
+    | "reject_mline_order_mutation_invalid_stable_rollback_or_stale_ice_restart"
+    | "clamp_sdp_media_sections_or_pending_trickle_ice_candidate_buffer";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8829JsepJavascriptSessionEstablishmentProtocolSignalingStateMachineMlineOrderImmutabilityAndIceCredentialsGuard(
+  input: WebrtcSipRfc8829JsepJavascriptSessionEstablishmentProtocolSignalingStateMachineMlineOrderImmutabilityAndIceCredentialsGuardInput,
+): WebrtcSipRfc8829JsepJavascriptSessionEstablishmentProtocolSignalingStateMachineMlineOrderImmutabilityAndIceCredentialsGuardResult {
+  const policyCode =
+    "P478-WEBRTC-SIP-RFC8829-JSEP-JAVASCRIPT-SESSION-ESTABLISHMENT-PROTOCOL-SIGNALING-STATE-MACHINE-MLINE-ORDER-IMMUTABILITY-AND-ICE-CREDENTIALS-GUARD" as const;
+
+  const illegalSignalingTransitionOrSdpMungingDropped0ms =
+    !input.jsepSignalingStateTransitionValidVerified ||
+    Boolean(
+      input.setLocalOrRemoteDescriptionMungingFromLastOfferAnswerDetected,
+    );
+
+  if (illegalSignalingTransitionOrSdpMungingDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8829JsepCompliant: false,
+      illegalSignalingTransitionOrSdpMungingDropped0ms: true,
+      mlineOrderMutationInvalidRollbackOrStaleIceRestartRejected: false,
+      mediaSectionsOrPendingTrickleIceBufferClamped: false,
+      action: "drop_illegal_jsep_state_transition_or_sdp_munging_0ms",
+      blockedReason:
+        "RFC8829_ILLEGAL_JSEP_SIGNALING_STATE_TRANSITION_OR_SDP_MUNGING_FROM_CREATE_OFFER_ANSWER_0MS_DROP",
+    };
+  }
+
+  const mlineOrderMutationInvalidRollbackOrStaleIceRestartRejected =
+    Boolean(input.subsequentOfferAnswerMlineOrderMutationOrRemovalDetected) ||
+    Boolean(
+      input.invalidRollbackFromStableStateOrUnchangedIceRestartCredentialsDetected,
+    );
+
+  if (mlineOrderMutationInvalidRollbackOrStaleIceRestartRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8829JsepCompliant: false,
+      illegalSignalingTransitionOrSdpMungingDropped0ms: false,
+      mlineOrderMutationInvalidRollbackOrStaleIceRestartRejected: true,
+      mediaSectionsOrPendingTrickleIceBufferClamped: false,
+      action:
+        "reject_mline_order_mutation_invalid_stable_rollback_or_stale_ice_restart",
+      blockedReason:
+        "RFC8829_MLINE_ORDER_MUTATION_INVALID_STABLE_ROLLBACK_OR_UNCHANGED_ICE_RESTART_UFRAG_PWD_REJECTED",
+    };
+  }
+
+  const mediaSectionsOrPendingTrickleIceBufferClamped =
+    input.sdpOfferAnswerMediaSectionsCount > 16 ||
+    input.pendingTrickleIceCandidatesBufferCount > 64;
+
+  if (mediaSectionsOrPendingTrickleIceBufferClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8829JsepCompliant: false,
+      illegalSignalingTransitionOrSdpMungingDropped0ms: false,
+      mlineOrderMutationInvalidRollbackOrStaleIceRestartRejected: false,
+      mediaSectionsOrPendingTrickleIceBufferClamped: true,
+      action: "clamp_sdp_media_sections_or_pending_trickle_ice_candidate_buffer",
+      blockedReason:
+        "RFC8829_SDP_MEDIA_SECTIONS_OVER_16_OR_PENDING_TRICKLE_ICE_CANDIDATES_OVER_64_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8829JsepCompliant: true,
+    illegalSignalingTransitionOrSdpMungingDropped0ms: false,
+    mlineOrderMutationInvalidRollbackOrStaleIceRestartRejected: false,
+    mediaSectionsOrPendingTrickleIceBufferClamped: false,
+    action: "allow_verified_rfc8829_jsep_offer_answer_state_machine",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
