@@ -48714,6 +48714,185 @@ export function evaluateWebrtcSipRfc8842SdpOfferAnswerConsiderationsForDtlsAndTl
   };
 }
 
+export interface SemiconductorWaferFabBulkSpecialtyChemicalTankFarmDoubleWallContainmentAndBundSumpSemiS2SemiF39Nfpa318Nfpa30Epa40Cfr112Osha1910119GuardInput {
+  readonly doubleWallTankAnnularLeakOrBundSumpHighLevelDetected: boolean;
+  readonly acidOxidizerSolventCrossFillCouplingMismatchDetected: boolean;
+  readonly tankVaporHeadspacePressureKpa: number;
+  readonly unloadingHosePressureKpa: number;
+  readonly truckGroundClampResistanceOhms: number;
+  readonly n2BlanketFlowOrScrubberDraftLossDetected: boolean;
+  readonly tankConfinedSpaceOrUnloadingManifoldMaintenanceRequested: boolean;
+  readonly chemicalLineDrainNeutralFlushAndZeroEnergyLotoVerified: boolean;
+  readonly confinedSpaceAtmosphereAndClassAPpeScbaVerified: boolean;
+}
+
+export interface SemiconductorWaferFabBulkSpecialtyChemicalTankFarmDoubleWallContainmentAndBundSumpSemiS2SemiF39Nfpa318Nfpa30Epa40Cfr112Osha1910119GuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "lock_tank_farm_manifold_and_confined_space_until_drain_flush_and_scba_loto"
+    | "abort_chemical_truck_unloading_and_engage_scrubber_n2_blanket_interlock"
+    | "trip_tank_farm_emergency_isolation_valves_and_contain_bund_sump_in_0ms";
+  readonly policyId: "P487-SEMICONDUCTOR-WAFER-FAB-BULK-SPECIALTY-CHEMICAL-TANK-FARM-DOUBLE-WALL-CONTAINMENT-AND-BUND-SUMP-SEMIS2-SEMIF39-NFPA318-NFPA30-EPA40CFR112-OSHA1910119-BUND-LEAK-CROSS-FILL-TRIP-STATIC-GROUND-ABORT-AND-CONFINED-SPACE-SCBA-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabBulkSpecialtyChemicalTankFarmDoubleWallContainmentAndBundSumpSemiS2SemiF39Nfpa318Nfpa30Epa40Cfr112Osha1910119BundLeakCrossFillTripStaticGroundAbortAndConfinedSpaceScbaLotoGuard(
+  input: SemiconductorWaferFabBulkSpecialtyChemicalTankFarmDoubleWallContainmentAndBundSumpSemiS2SemiF39Nfpa318Nfpa30Epa40Cfr112Osha1910119GuardInput,
+): SemiconductorWaferFabBulkSpecialtyChemicalTankFarmDoubleWallContainmentAndBundSumpSemiS2SemiF39Nfpa318Nfpa30Epa40Cfr112Osha1910119GuardResult {
+  const policyId =
+    "P487-SEMICONDUCTOR-WAFER-FAB-BULK-SPECIALTY-CHEMICAL-TANK-FARM-DOUBLE-WALL-CONTAINMENT-AND-BUND-SUMP-SEMIS2-SEMIF39-NFPA318-NFPA30-EPA40CFR112-OSHA1910119-BUND-LEAK-CROSS-FILL-TRIP-STATIC-GROUND-ABORT-AND-CONFINED-SPACE-SCBA-LOTO-GUARD" as const;
+
+  if (
+    input.doubleWallTankAnnularLeakOrBundSumpHighLevelDetected ||
+    input.acidOxidizerSolventCrossFillCouplingMismatchDetected ||
+    input.tankVaporHeadspacePressureKpa >= 35.0
+  ) {
+    return {
+      violated: true,
+      action:
+        "trip_tank_farm_emergency_isolation_valves_and_contain_bund_sump_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI F39 / NFPA 318 / NFPA 30 / EPA 40 CFR 112 critical chemical tank farm containment breach, incompatible acid/oxidizer/solvent cross-fill coupling mismatch, or tank headspace pressure >= 35.0 kPa; tripping emergency isolation valves and containing bund sump in 0ms.",
+    };
+  }
+
+  if (
+    input.unloadingHosePressureKpa >= 450.0 ||
+    input.truckGroundClampResistanceOhms >= 10.0 ||
+    input.n2BlanketFlowOrScrubberDraftLossDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "abort_chemical_truck_unloading_and_engage_scrubber_n2_blanket_interlock",
+      policyId,
+      reason:
+        "SEMI S2 / NFPA 30 / OSHA 1910.119 tanker unloading anomaly (unloading hose pressure >= 450.0 kPa, static ground clamp resistance >= 10.0 Ohms, or N2 blanket / vent scrubber draft loss); aborting unloading transfer and engaging scrubber / N2 blanket interlock.",
+    };
+  }
+
+  if (
+    input.tankConfinedSpaceOrUnloadingManifoldMaintenanceRequested &&
+    (!input.chemicalLineDrainNeutralFlushAndZeroEnergyLotoVerified ||
+      !input.confinedSpaceAtmosphereAndClassAPpeScbaVerified)
+  ) {
+    return {
+      violated: true,
+      action:
+        "lock_tank_farm_manifold_and_confined_space_until_drain_flush_and_scba_loto",
+      policyId,
+      reason:
+        "OSHA 1910.119 / OSHA 1910.146 / SEMI S2 chemical tank farm maintenance lock: line drain, neutral DIW flush, zero-energy LOTO, confined-space atmospheric clearance, and Class A PPE / SCBA must be verified before opening manifold or tank.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer fab bulk specialty chemical tank farm double-wall containment, keyed unloading couplings, static grounding, N2 blanket, and SCBA LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportSharingAndBundleOnlyGuardInput {
+  readonly bundleGroupContainsDuplicateMidOrUnmappedMediaSectionDetected: boolean;
+  readonly sharedTransportFiveTupleMismatchInAnswerBundleGroupDetected: boolean;
+  readonly bundleOnlyMediaSectionOfferedWithNonZeroPortWithoutFallbackDetected: boolean;
+  readonly answererSelectedBtagMidExcludedFromAnswerBundleGroupDetected: boolean;
+  readonly distinctRtcpMuxNotEnabledOnBundledRtpMediaSectionsDetected: boolean;
+  readonly bundledMediaSectionsPerBundleGroupCount: number;
+  readonly bundleGroupsPerSdpSessionCount: number;
+}
+
+export interface WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportSharingAndBundleOnlyGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_bundled_media_sections_and_bundle_group_count"
+    | "reject_bundle_only_port_or_btag_selection_or_missing_rtcp_mux_violation"
+    | "drop_duplicate_unmapped_bundle_mid_or_split_transport_in_answer_0ms";
+  readonly policyId: "P488-WEBRTC-SIP-RFC8843-NEGOTIATING-MEDIA-MULTIPLEXING-USING-SDP-BUNDLE-TRANSPORT-SHARING-AND-BUNDLE-ONLY-GUARD";
+  readonly reason: string;
+  readonly clampedBundledMediaSectionsPerGroupCount: number;
+  readonly clampedBundleGroupsPerSdpSessionCount: number;
+}
+
+export function evaluateWebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportSharingAndBundleOnlyGuard(
+  input: WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportSharingAndBundleOnlyGuardInput,
+): WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportSharingAndBundleOnlyGuardResult {
+  const policyId =
+    "P488-WEBRTC-SIP-RFC8843-NEGOTIATING-MEDIA-MULTIPLEXING-USING-SDP-BUNDLE-TRANSPORT-SHARING-AND-BUNDLE-ONLY-GUARD" as const;
+  const clampedBundledMediaSectionsPerGroupCount = Math.min(
+    Math.max(1, input.bundledMediaSectionsPerBundleGroupCount),
+    16,
+  );
+  const clampedBundleGroupsPerSdpSessionCount = Math.min(
+    Math.max(1, input.bundleGroupsPerSdpSessionCount),
+    4,
+  );
+
+  if (
+    input.bundleGroupContainsDuplicateMidOrUnmappedMediaSectionDetected ||
+    input.sharedTransportFiveTupleMismatchInAnswerBundleGroupDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "drop_duplicate_unmapped_bundle_mid_or_split_transport_in_answer_0ms",
+      policyId,
+      reason:
+        "RFC 8843 Section 7 / 8 violation: a=group:BUNDLE contains duplicate or unmapped mid or SDP Answer assigns distinct transport 5-tuples within the same BUNDLE group; dropping in 0ms.",
+      clampedBundledMediaSectionsPerGroupCount,
+      clampedBundleGroupsPerSdpSessionCount,
+    };
+  }
+
+  if (
+    input.bundleOnlyMediaSectionOfferedWithNonZeroPortWithoutFallbackDetected ||
+    input.answererSelectedBtagMidExcludedFromAnswerBundleGroupDetected ||
+    input.distinctRtcpMuxNotEnabledOnBundledRtpMediaSectionsDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "reject_bundle_only_port_or_btag_selection_or_missing_rtcp_mux_violation",
+      policyId,
+      reason:
+        "RFC 8843 Section 6 / 7 / 9 violation: a=bundle-only offered with non-zero port without fallback, Answer BUNDLE-tag mid excluded from BUNDLE group, or bundled RTP section missing a=rtcp-mux; rejecting SDP.",
+      clampedBundledMediaSectionsPerGroupCount,
+      clampedBundleGroupsPerSdpSessionCount,
+    };
+  }
+
+  if (
+    input.bundledMediaSectionsPerBundleGroupCount > 16 ||
+    input.bundleGroupsPerSdpSessionCount > 4
+  ) {
+    return {
+      violated: true,
+      action: "clamp_bundled_media_sections_and_bundle_group_count",
+      policyId,
+      reason:
+        "RFC 8843 SDP BUNDLE multiplexing bounds protection: clamping bundled m= sections per group to <= 16 and BUNDLE groups per session to <= 4.",
+      clampedBundledMediaSectionsPerGroupCount,
+      clampedBundleGroupsPerSdpSessionCount,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8843 SDP BUNDLE media multiplexing (a=group:BUNDLE, a=bundle-only, BUNDLE-tag transport sharing, and a=rtcp-mux) verified.",
+    clampedBundledMediaSectionsPerGroupCount,
+    clampedBundleGroupsPerSdpSessionCount,
+  };
+}
+
 
 
 
