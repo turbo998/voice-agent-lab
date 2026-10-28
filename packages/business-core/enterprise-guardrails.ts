@@ -45782,6 +45782,210 @@ export function evaluateWebrtcSipRfc8863WebrtcUdpPortsDemultiplexingStunDtlsRtpR
   };
 }
 
+/**
+ * P457: Semiconductor Wafer Bulk Specialty Gas System (BSGS / Gas Cabinet / VMB Valve Manifold Box) & Sub-Atmospheric Dopant Source (SDS / VAC for AsH3 / PH3 / B2H6 / SiH4 / NF3 / ClF3) Safety Guard
+ * Standards: SEMI S2 / SEMI S6 / NFPA 318 / NFPA 55 / CGA G-13 / OSHA 1910.119 / OSHA 1910.1000
+ */
+export interface SemiconductorWaferBulkSpecialtyGasSystemBsgsGasCabinetVmbAndSubAtmosphericDopantSourceSdsVacSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119Osha19101000CoaxialLineRuptureEfsFlameTripPurgeCycleOvertempAbortAndHeLeakScbaLotoGuardInput {
+  sessionId: string;
+  coaxialLineAnnularPressureLossOrExcessFlowSwitchEfsTripped: boolean;
+  gasCabinetUvIrFlameDetectorOrToxicHydrideLeakPpm: number;
+  cylinderChangeoverVacuumNitrogenCrossPurgeCycleCount: number;
+  regulatorDeliveryCreepOverpressurePctOrSdsHeaterTempCelsius: number;
+  cabinetDoorOpenRequestedBeforeResidualToxicGasBelow001PpmAndHeLeakCheckAndScbaLoto: boolean;
+}
+
+export interface SemiconductorWaferBulkSpecialtyGasSystemBsgsGasCabinetVmbAndSubAtmosphericDopantSourceSdsVacSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119Osha19101000CoaxialLineRuptureEfsFlameTripPurgeCycleOvertempAbortAndHeLeakScbaLotoGuardAssessment {
+  sessionId: string;
+  policyCode: "P457-SEMICONDUCTOR-WAFER-BULK-SPECIALTY-GAS-SYSTEM-BSGS-GAS-CABINET-VMB-AND-SUB-ATMOSPHERIC-DOPANT-SOURCE-SDS-VAC-SEMIS2-SEMIS6-NFPA318-NFPA55-CGAG13-OSHA1910119-OSHA19101000-COAXIAL-LINE-RUPTURE-EFS-FLAME-TRIP-PURGE-CYCLE-OVERTEMP-ABORT-AND-HE-LEAK-SCBA-LOTO-GUARD";
+  bsgsVmbAndSdsGasDeliverySafe: boolean;
+  pneumaticEsvAndCylinderValveTrippedIn0msWithN2Purge: boolean;
+  cylinderChangeoverOrGasStickDeliveryAborted: boolean;
+  gasCabinetAndVmbDoorLockedPendingHeLeakAndScbaLoto: boolean;
+  action:
+    | "allow_verified_bsgs_gas_cabinet_vmb_and_sds_delivery"
+    | "trip_pneumatic_esv_and_cylinder_valve_in_0ms_and_flood_n2_purge"
+    | "abort_cylinder_changeover_and_isolate_vmb_branch_stick"
+    | "lock_gas_cabinet_and_vmb_door_until_001ppm_he_leak_and_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferBulkSpecialtyGasSystemBsgsGasCabinetVmbAndSubAtmosphericDopantSourceSdsVacSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119Osha19101000CoaxialLineRuptureEfsFlameTripPurgeCycleOvertempAbortAndHeLeakScbaLotoGuard(
+  input: SemiconductorWaferBulkSpecialtyGasSystemBsgsGasCabinetVmbAndSubAtmosphericDopantSourceSdsVacSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119Osha19101000CoaxialLineRuptureEfsFlameTripPurgeCycleOvertempAbortAndHeLeakScbaLotoGuardInput,
+): SemiconductorWaferBulkSpecialtyGasSystemBsgsGasCabinetVmbAndSubAtmosphericDopantSourceSdsVacSemiS2SemiS6Nfpa318Nfpa55CgaG13Osha1910119Osha19101000CoaxialLineRuptureEfsFlameTripPurgeCycleOvertempAbortAndHeLeakScbaLotoGuardAssessment {
+  const policyCode =
+    "P457-SEMICONDUCTOR-WAFER-BULK-SPECIALTY-GAS-SYSTEM-BSGS-GAS-CABINET-VMB-AND-SUB-ATMOSPHERIC-DOPANT-SOURCE-SDS-VAC-SEMIS2-SEMIS6-NFPA318-NFPA55-CGAG13-OSHA1910119-OSHA19101000-COAXIAL-LINE-RUPTURE-EFS-FLAME-TRIP-PURGE-CYCLE-OVERTEMP-ABORT-AND-HE-LEAK-SCBA-LOTO-GUARD" as const;
+
+  const pneumaticEsvAndCylinderValveTrippedIn0msWithN2Purge =
+    input.coaxialLineAnnularPressureLossOrExcessFlowSwitchEfsTripped ||
+    input.gasCabinetUvIrFlameDetectorOrToxicHydrideLeakPpm >= 0.05;
+
+  if (pneumaticEsvAndCylinderValveTrippedIn0msWithN2Purge) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      bsgsVmbAndSdsGasDeliverySafe: false,
+      pneumaticEsvAndCylinderValveTrippedIn0msWithN2Purge: true,
+      cylinderChangeoverOrGasStickDeliveryAborted: true,
+      gasCabinetAndVmbDoorLockedPendingHeLeakAndScbaLoto: true,
+      action:
+        "trip_pneumatic_esv_and_cylinder_valve_in_0ms_and_flood_n2_purge",
+      blockedReason:
+        "SEMI_S2_NFPA318_NFPA55_COAXIAL_RUPTURE_EFS_OR_HYDRIDE_LEAK_0MS_ESV_TRIP",
+    };
+  }
+
+  const cylinderChangeoverOrGasStickDeliveryAborted =
+    input.cylinderChangeoverVacuumNitrogenCrossPurgeCycleCount < 30 ||
+    input.regulatorDeliveryCreepOverpressurePctOrSdsHeaterTempCelsius >= 45.0;
+
+  if (cylinderChangeoverOrGasStickDeliveryAborted) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      bsgsVmbAndSdsGasDeliverySafe: false,
+      pneumaticEsvAndCylinderValveTrippedIn0msWithN2Purge: false,
+      cylinderChangeoverOrGasStickDeliveryAborted: true,
+      gasCabinetAndVmbDoorLockedPendingHeLeakAndScbaLoto: true,
+      action: "abort_cylinder_changeover_and_isolate_vmb_branch_stick",
+      blockedReason:
+        "SEMI_S2_CGAG13_PURGE_CYCLES_UNDER_30_OR_SDS_OVERTEMP_45C_ABORT",
+    };
+  }
+
+  if (
+    input.cabinetDoorOpenRequestedBeforeResidualToxicGasBelow001PpmAndHeLeakCheckAndScbaLoto
+  ) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      bsgsVmbAndSdsGasDeliverySafe: false,
+      pneumaticEsvAndCylinderValveTrippedIn0msWithN2Purge: false,
+      cylinderChangeoverOrGasStickDeliveryAborted: false,
+      gasCabinetAndVmbDoorLockedPendingHeLeakAndScbaLoto: true,
+      action:
+        "lock_gas_cabinet_and_vmb_door_until_001ppm_he_leak_and_scba_loto",
+      blockedReason:
+        "OSHA_1910_119_RESIDUAL_TOXIC_GAS_001PPM_HE_LEAK_OR_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    bsgsVmbAndSdsGasDeliverySafe: true,
+    pneumaticEsvAndCylinderValveTrippedIn0msWithN2Purge: false,
+    cylinderChangeoverOrGasStickDeliveryAborted: false,
+    gasCabinetAndVmbDoorLockedPendingHeLeakAndScbaLoto: false,
+    action: "allow_verified_bsgs_gas_cabinet_vmb_and_sds_delivery",
+    blockedReason: "none",
+  };
+}
+
+/**
+ * P458: WebRTC & SIP RFC 8827 (WebRTC Security Architecture: Signaling Identity Assertions, DTLS-SRTP Fingerprint Binding & Cross-Origin Media Permission Isolation) Security Guard
+ * Standards: IETF RFC 8827 / IETF RFC 8826 / W3C WebRTC Identity
+ */
+export interface WebrtcSipRfc8827WebrtcSecurityArchitectureSignalingIdentityAssertionDtlsSrtpFingerprintBindingAndCrossOriginMediaPermissionIsolationGuardInput {
+  sessionId: string;
+  unverifiedOrTamperedIdpIdentityAssertionDetected: boolean;
+  sdpFingerprintToDtlsCertificateHashBindingMismatchDetected: boolean;
+  mitmSignalingIdentityStrippingOrDowngradeAttempted: boolean;
+  crossOriginMediaPermissionEscalationOrUntrustedIdpProxyOriginDetected: boolean;
+  identityAssertionValidationRetriesPerCallCount: number;
+  idpAssertionVerificationLatencyMs: number;
+}
+
+export interface WebrtcSipRfc8827WebrtcSecurityArchitectureSignalingIdentityAssertionDtlsSrtpFingerprintBindingAndCrossOriginMediaPermissionIsolationGuardAssessment {
+  sessionId: string;
+  policyCode: "P458-WEBRTC-SIP-RFC8827-WEBRTC-SECURITY-ARCHITECTURE-SIGNALING-IDENTITY-ASSERTION-DTLS-SRTP-FINGERPRINT-BINDING-AND-CROSS-ORIGIN-MEDIA-PERMISSION-ISOLATION-GUARD";
+  rfc8827SecurityArchitectureCompliant: boolean;
+  unverifiedIdpAssertionOrFingerprintMismatchDropped0ms: boolean;
+  mitmIdentityDowngradeOrCrossOriginEscalationRejected: boolean;
+  idpRetryCountOrVerificationLatencyClamped: boolean;
+  action:
+    | "allow_verified_rfc8827_webrtc_security_architecture_session"
+    | "drop_unverified_idp_assertion_or_dtls_fingerprint_mismatch_0ms"
+    | "reject_mitm_identity_stripping_or_cross_origin_permission_escalation"
+    | "clamp_idp_validation_retries_or_verification_latency";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8827WebrtcSecurityArchitectureSignalingIdentityAssertionDtlsSrtpFingerprintBindingAndCrossOriginMediaPermissionIsolationGuard(
+  input: WebrtcSipRfc8827WebrtcSecurityArchitectureSignalingIdentityAssertionDtlsSrtpFingerprintBindingAndCrossOriginMediaPermissionIsolationGuardInput,
+): WebrtcSipRfc8827WebrtcSecurityArchitectureSignalingIdentityAssertionDtlsSrtpFingerprintBindingAndCrossOriginMediaPermissionIsolationGuardAssessment {
+  const policyCode =
+    "P458-WEBRTC-SIP-RFC8827-WEBRTC-SECURITY-ARCHITECTURE-SIGNALING-IDENTITY-ASSERTION-DTLS-SRTP-FINGERPRINT-BINDING-AND-CROSS-ORIGIN-MEDIA-PERMISSION-ISOLATION-GUARD" as const;
+
+  const unverifiedIdpAssertionOrFingerprintMismatchDropped0ms =
+    input.unverifiedOrTamperedIdpIdentityAssertionDetected ||
+    input.sdpFingerprintToDtlsCertificateHashBindingMismatchDetected;
+
+  if (unverifiedIdpAssertionOrFingerprintMismatchDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8827SecurityArchitectureCompliant: false,
+      unverifiedIdpAssertionOrFingerprintMismatchDropped0ms: true,
+      mitmIdentityDowngradeOrCrossOriginEscalationRejected: false,
+      idpRetryCountOrVerificationLatencyClamped: false,
+      action:
+        "drop_unverified_idp_assertion_or_dtls_fingerprint_mismatch_0ms",
+      blockedReason:
+        "RFC8827_UNVERIFIED_IDP_ASSERTION_OR_DTLS_FINGERPRINT_MISMATCH_0MS_DROP",
+    };
+  }
+
+  const mitmIdentityDowngradeOrCrossOriginEscalationRejected =
+    input.mitmSignalingIdentityStrippingOrDowngradeAttempted ||
+    input.crossOriginMediaPermissionEscalationOrUntrustedIdpProxyOriginDetected;
+
+  if (mitmIdentityDowngradeOrCrossOriginEscalationRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8827SecurityArchitectureCompliant: false,
+      unverifiedIdpAssertionOrFingerprintMismatchDropped0ms: false,
+      mitmIdentityDowngradeOrCrossOriginEscalationRejected: true,
+      idpRetryCountOrVerificationLatencyClamped: false,
+      action:
+        "reject_mitm_identity_stripping_or_cross_origin_permission_escalation",
+      blockedReason:
+        "RFC8827_MITM_IDENTITY_STRIPPING_OR_CROSS_ORIGIN_PERMISSION_ESCALATION_REJECTED",
+    };
+  }
+
+  const idpRetryCountOrVerificationLatencyClamped =
+    input.identityAssertionValidationRetriesPerCallCount > 3 ||
+    input.idpAssertionVerificationLatencyMs > 2000;
+
+  if (idpRetryCountOrVerificationLatencyClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8827SecurityArchitectureCompliant: false,
+      unverifiedIdpAssertionOrFingerprintMismatchDropped0ms: false,
+      mitmIdentityDowngradeOrCrossOriginEscalationRejected: false,
+      idpRetryCountOrVerificationLatencyClamped: true,
+      action: "clamp_idp_validation_retries_or_verification_latency",
+      blockedReason:
+        "RFC8827_IDP_RETRIES_OVER_3_OR_VERIFICATION_LATENCY_OVER_2000MS_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8827SecurityArchitectureCompliant: true,
+    unverifiedIdpAssertionOrFingerprintMismatchDropped0ms: false,
+    mitmIdentityDowngradeOrCrossOriginEscalationRejected: false,
+    idpRetryCountOrVerificationLatencyClamped: false,
+    action: "allow_verified_rfc8827_webrtc_security_architecture_session",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
