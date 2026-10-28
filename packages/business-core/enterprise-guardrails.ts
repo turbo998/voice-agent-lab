@@ -40037,6 +40037,219 @@ export function evaluateWebrtcSipRfc8854WebrtcFecAdaptiveRedundancyAndRfc8627Fle
   };
 }
 
+export interface SemiconductorWaferDramHighAspectRatioCapacitorHighkAldTinCvdAndVaporHfGuardInput {
+  sessionId: string;
+  pyrophoricTmaTdmazLeakOrO3ValveOverlapDetected: boolean;
+  anhydrousVaporHfLeakPpm: number;
+  ipaVaporDryerLelPercent: number;
+  tinCvdForelineNh4clDeltaPTorr: number;
+  ozoneDestructorBedTempC: number;
+  chamberMaintenanceRequested: boolean;
+  residualHfPpmAtOpen: number;
+  residualO3PpmAtOpen: number;
+  diphoterineAndPositivePressureScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferDramHighAspectRatioCapacitorHighkAldTinCvdAndVaporHfGuardAssessment {
+  policyCode: "P403-SEMICONDUCTOR-WAFER-DRAM-HIGH-ASPECT-RATIO-CAPACITOR-ZRO2-HFO2-AL2O3-HIGHK-ALD-TIN-ELECTRODE-TICL4-NH3-CVD-AND-ANHYDROUS-VAPOR-HF-MOLD-ETCH-SEMIS2-SEMIS6-NFPA318-NFPA69-OSHA1910119-OSHA19101000-TMA-O3-AHF-LEAK-TRIP-NH4CL-FORELINE-QUENCH-AND-HF-O3-SCBA-LOTO-GUARD";
+  sessionId: string;
+  dramHarCapacitorHighkAldTinCvdAndVaporHfSafe: boolean;
+  tmaO3OverlapOrAhfIpaLelTripped0ms: boolean;
+  nh4clForelinePlugOrO3DestructorFaultAborted: boolean;
+  dramCapacitorChamberHfO3ScbaLotoLocked: boolean;
+  action:
+    | "allow_verified_semiconductor_wafer_dram_har_capacitor_highk_ald_tin_cvd_and_ahf_operation"
+    | "trip_dram_tma_tdmaz_o3_and_ahf_vmb_0ms_on_pyrophoric_leak_or_hf_ipa_lel"
+    | "abort_dram_tin_cvd_and_highk_ald_on_nh4cl_foreline_plug_or_o3_destructor_fault"
+    | "lock_dram_capacitor_chamber_until_hf_o3_nh3_cleared_and_scba_loto_verified";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferDramHighAspectRatioCapacitorZro2Hfo2Al2o3HighkAldTinElectrodeTicl4Nh3CvdAndAnhydrousVaporHfMoldEtchSemiS2SemiS6Nfpa318Nfpa69Osha1910119Osha19101000TmaO3AhfLeakTripNh4clForelineQuenchAndHfO3ScbaLotoGuard(
+  input: SemiconductorWaferDramHighAspectRatioCapacitorHighkAldTinCvdAndVaporHfGuardInput,
+): SemiconductorWaferDramHighAspectRatioCapacitorHighkAldTinCvdAndVaporHfGuardAssessment {
+  const policyCode =
+    "P403-SEMICONDUCTOR-WAFER-DRAM-HIGH-ASPECT-RATIO-CAPACITOR-ZRO2-HFO2-AL2O3-HIGHK-ALD-TIN-ELECTRODE-TICL4-NH3-CVD-AND-ANHYDROUS-VAPOR-HF-MOLD-ETCH-SEMIS2-SEMIS6-NFPA318-NFPA69-OSHA1910119-OSHA19101000-TMA-O3-AHF-LEAK-TRIP-NH4CL-FORELINE-QUENCH-AND-HF-O3-SCBA-LOTO-GUARD" as const;
+
+  const tmaO3OverlapOrAhfIpaLelTripped0ms =
+    input.pyrophoricTmaTdmazLeakOrO3ValveOverlapDetected ||
+    !Number.isFinite(input.anhydrousVaporHfLeakPpm) ||
+    input.anhydrousVaporHfLeakPpm >= 0.5 ||
+    !Number.isFinite(input.ipaVaporDryerLelPercent) ||
+    input.ipaVaporDryerLelPercent >= 25;
+
+  if (tmaO3OverlapOrAhfIpaLelTripped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      dramHarCapacitorHighkAldTinCvdAndVaporHfSafe: false,
+      tmaO3OverlapOrAhfIpaLelTripped0ms: true,
+      nh4clForelinePlugOrO3DestructorFaultAborted: false,
+      dramCapacitorChamberHfO3ScbaLotoLocked: false,
+      action:
+        "trip_dram_tma_tdmaz_o3_and_ahf_vmb_0ms_on_pyrophoric_leak_or_hf_ipa_lel",
+      blockedReason:
+        "TRIP_DRAM_TMA_TDMAZ_O3_AND_AHF_VMB_0MS_ON_PYROPHORIC_LEAK_OR_HF_IPA_LEL",
+    };
+  }
+
+  const nh4clForelinePlugOrO3DestructorFaultAborted =
+    !Number.isFinite(input.tinCvdForelineNh4clDeltaPTorr) ||
+    input.tinCvdForelineNh4clDeltaPTorr >= 15 ||
+    !Number.isFinite(input.ozoneDestructorBedTempC) ||
+    input.ozoneDestructorBedTempC < 300;
+
+  if (nh4clForelinePlugOrO3DestructorFaultAborted) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      dramHarCapacitorHighkAldTinCvdAndVaporHfSafe: false,
+      tmaO3OverlapOrAhfIpaLelTripped0ms: false,
+      nh4clForelinePlugOrO3DestructorFaultAborted: true,
+      dramCapacitorChamberHfO3ScbaLotoLocked: false,
+      action:
+        "abort_dram_tin_cvd_and_highk_ald_on_nh4cl_foreline_plug_or_o3_destructor_fault",
+      blockedReason:
+        "ABORT_DRAM_TIN_CVD_AND_HIGHK_ALD_ON_NH4CL_FORELINE_PLUG_OR_O3_DESTRUCTOR_FAULT",
+    };
+  }
+
+  const dramCapacitorChamberHfO3ScbaLotoLocked =
+    input.chamberMaintenanceRequested &&
+    (!Number.isFinite(input.residualHfPpmAtOpen) ||
+      input.residualHfPpmAtOpen >= 0.5 ||
+      !Number.isFinite(input.residualO3PpmAtOpen) ||
+      input.residualO3PpmAtOpen >= 0.05 ||
+      !input.diphoterineAndPositivePressureScbaLotoVerified);
+
+  if (dramCapacitorChamberHfO3ScbaLotoLocked) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      dramHarCapacitorHighkAldTinCvdAndVaporHfSafe: false,
+      tmaO3OverlapOrAhfIpaLelTripped0ms: false,
+      nh4clForelinePlugOrO3DestructorFaultAborted: false,
+      dramCapacitorChamberHfO3ScbaLotoLocked: true,
+      action:
+        "lock_dram_capacitor_chamber_until_hf_o3_nh3_cleared_and_scba_loto_verified",
+      blockedReason:
+        "LOCK_DRAM_CAPACITOR_CHAMBER_UNTIL_HF_O3_NH3_CLEARED_AND_SCBA_LOTO_VERIFIED",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    dramHarCapacitorHighkAldTinCvdAndVaporHfSafe: true,
+    tmaO3OverlapOrAhfIpaLelTripped0ms: false,
+    nh4clForelinePlugOrO3DestructorFaultAborted: false,
+    dramCapacitorChamberHfO3ScbaLotoLocked: false,
+    action:
+      "allow_verified_semiconductor_wafer_dram_har_capacitor_highk_ald_tin_cvd_and_ahf_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8838TrickleIceAndRfc8863Ta5msPacingGuardInput {
+  sessionId: string;
+  malformedTrickleCandidateOrLoopbackMetadataSsrfDetected: boolean;
+  candidateUfragMismatchOrStaleIceRestartGeneration: boolean;
+  endOfCandidatesAlreadySignaledForGeneration: boolean;
+  iceConnectivityCheckPacingIntervalTaMs: number;
+  trickleCandidatesPerSessionCount: number;
+  trickleCandidateArrivalRatePerSec: number;
+}
+
+export interface WebrtcSipRfc8838TrickleIceAndRfc8863Ta5msPacingGuardAssessment {
+  policyCode: "P404-WEBRTC-SIP-RFC8838-TRICKLE-ICE-INCREMENTAL-CANDIDATE-STATE-MACHINE-AND-RFC8863-TA-5MS-CONNECTIVITY-CHECK-PACING-FLOOR-SSRF-STALE-GENERATION-AND-CANDIDATE-FLOOD-GUARD";
+  sessionId: string;
+  rfc8838TrickleIceAndRfc8863PacingHealthy: boolean;
+  malformedOrSsrfTrickleCandidateDropped0ms: boolean;
+  staleGenerationOrPostEndOfCandidatesRejected: boolean;
+  taSub5msOrTrickleCandidateFloodClamped: boolean;
+  action:
+    | "allow_verified_rfc8838_trickle_ice_and_rfc8863_paced_connectivity_checks"
+    | "drop_malformed_or_ssrf_rfc8838_trickle_ice_candidate_0ms"
+    | "reject_rfc8838_stale_ufrag_generation_or_post_end_of_candidates_injection"
+    | "clamp_rfc8863_ta_5ms_pacing_floor_and_prune_trickle_candidate_flood";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8838TrickleIceIncrementalCandidateStateMachineAndRfc8863Ta5msConnectivityCheckPacingFloorSsrfStaleGenerationAndCandidateFloodGuard(
+  input: WebrtcSipRfc8838TrickleIceAndRfc8863Ta5msPacingGuardInput,
+): WebrtcSipRfc8838TrickleIceAndRfc8863Ta5msPacingGuardAssessment {
+  const policyCode =
+    "P404-WEBRTC-SIP-RFC8838-TRICKLE-ICE-INCREMENTAL-CANDIDATE-STATE-MACHINE-AND-RFC8863-TA-5MS-CONNECTIVITY-CHECK-PACING-FLOOR-SSRF-STALE-GENERATION-AND-CANDIDATE-FLOOD-GUARD" as const;
+
+  if (input.malformedTrickleCandidateOrLoopbackMetadataSsrfDetected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8838TrickleIceAndRfc8863PacingHealthy: false,
+      malformedOrSsrfTrickleCandidateDropped0ms: true,
+      staleGenerationOrPostEndOfCandidatesRejected: false,
+      taSub5msOrTrickleCandidateFloodClamped: false,
+      action: "drop_malformed_or_ssrf_rfc8838_trickle_ice_candidate_0ms",
+      blockedReason: "DROP_MALFORMED_OR_SSRF_RFC8838_TRICKLE_ICE_CANDIDATE_0MS",
+    };
+  }
+
+  const staleGenerationOrPostEndOfCandidatesRejected =
+    input.candidateUfragMismatchOrStaleIceRestartGeneration ||
+    input.endOfCandidatesAlreadySignaledForGeneration;
+
+  if (staleGenerationOrPostEndOfCandidatesRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8838TrickleIceAndRfc8863PacingHealthy: false,
+      malformedOrSsrfTrickleCandidateDropped0ms: false,
+      staleGenerationOrPostEndOfCandidatesRejected: true,
+      taSub5msOrTrickleCandidateFloodClamped: false,
+      action:
+        "reject_rfc8838_stale_ufrag_generation_or_post_end_of_candidates_injection",
+      blockedReason:
+        "REJECT_RFC8838_STALE_UFRAG_GENERATION_OR_POST_END_OF_CANDIDATES_INJECTION",
+    };
+  }
+
+  const taSub5msOrTrickleCandidateFloodClamped =
+    !Number.isFinite(input.iceConnectivityCheckPacingIntervalTaMs) ||
+    input.iceConnectivityCheckPacingIntervalTaMs < 5 ||
+    !Number.isFinite(input.trickleCandidatesPerSessionCount) ||
+    input.trickleCandidatesPerSessionCount > 64 ||
+    !Number.isFinite(input.trickleCandidateArrivalRatePerSec) ||
+    input.trickleCandidateArrivalRatePerSec > 25;
+
+  if (taSub5msOrTrickleCandidateFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      rfc8838TrickleIceAndRfc8863PacingHealthy: false,
+      malformedOrSsrfTrickleCandidateDropped0ms: false,
+      staleGenerationOrPostEndOfCandidatesRejected: false,
+      taSub5msOrTrickleCandidateFloodClamped: true,
+      action:
+        "clamp_rfc8863_ta_5ms_pacing_floor_and_prune_trickle_candidate_flood",
+      blockedReason:
+        "CLAMP_RFC8863_TA_5MS_PACING_FLOOR_AND_PRUNE_TRICKLE_CANDIDATE_FLOOD",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    rfc8838TrickleIceAndRfc8863PacingHealthy: true,
+    malformedOrSsrfTrickleCandidateDropped0ms: false,
+    staleGenerationOrPostEndOfCandidatesRejected: false,
+    taSub5msOrTrickleCandidateFloodClamped: false,
+    action:
+      "allow_verified_rfc8838_trickle_ice_and_rfc8863_paced_connectivity_checks",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
