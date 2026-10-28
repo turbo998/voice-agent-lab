@@ -37266,6 +37266,227 @@ export function evaluateWebrtcSipRtcpXrRfc3611Rfc7002Rfc7003VoipMetricsAndRleBlo
   };
 }
 
+// ============================================================================
+// Stage 192 (P377–P378 — 195-Dimension Milestone):
+// - P377: Semiconductor Wafer Through-Silicon Via (TSV Bosch SF6/C4F8 DRIE),
+//         Hybrid Cu-Cu Thermocompression Bonding (N2/H2 Forming Gas) & UV
+//         Laser Carrier Debonding Safety Guard (SEMI S2 / SEMI S6 / NFPA 318 /
+//         NFPA 69 / ANSI Z136.1 / OSHA 1910.119 / OSHA 1910.1000)
+// - P378: WebRTC & SIP RTP SMPTE ST 2110-41 Fast Metadata (FMX) & SMPTE
+//         ST 2110-43 Timed Text (TTML / IMSC1 Subtitles) Security Guard (0ms
+//         ST 2110-41 Data-Item Length Overread & Invalid 24-Bit DIT Drop,
+//         ST 2110-43 DOCTYPE/XXE Entity Expansion Bomb & Subtitle Timing
+//         Window Inversion Reject, and >200 pkt/s DOM Render Flood Clamp)
+// ============================================================================
+
+export interface SemiconductorWaferThroughSiliconViaTsvBoschEtchHybridCuCuBondingAndLaserDebondingGuardInput {
+  readonly moduleId: string;
+  readonly bonderFormingGasH2PercentLel: number;
+  readonly tsvBoschChamberPressureTorr: number;
+  readonly bonderChuckForceKn: number;
+  readonly bonderChuckTemperatureCelsius: number;
+  readonly laserDebondExhaustFlowCfm: number;
+  readonly fabBayAmbientHfOrSo2f2Ppm: number;
+  readonly requestedVoiceAction: string;
+}
+
+export interface SemiconductorWaferThroughSiliconViaTsvBoschEtchHybridCuCuBondingAndLaserDebondingGuardDecision {
+  readonly policyCode: "P377-SEMICONDUCTOR-WAFER-THROUGH-SILICON-VIA-TSV-BOSCH-ETCH-HYBRID-CU-CU-THERMOCOMPRESSION-BONDING-AND-LASER-DEBONDING-SEMIS2-SEMIS6-NFPA318-NFPA69-ANSIZ1361-OSHA1910119-OSHA19101000-FORMING-GAS-H2-LEL-OR-BOSCH-SF6-C4F8-OVERPRESSURE-TRIP-LASER-DEBOND-PLUME-OR-BONDER-THERMAL-RUNAWAY-ISOLATION-AND-HF-F2-SCBA-LOTO-GUARD";
+  readonly moduleId: string;
+  readonly tsvHybridBondingAndLaserDebondSafe: boolean;
+  readonly formingGasH2LelOrBoschOverpressureTripped0ms: boolean;
+  readonly bonderChuckRunawayOrLaserDebondPlumeIsolated: boolean;
+  readonly ambientHfSo2f2ScbaLotoRequired: boolean;
+  readonly action:
+    | "allow_tsv_bosch_drie_hybrid_cu_cu_bonding_and_laser_debonding_operation"
+    | "trip_bonder_forming_gas_h2_esv_and_tsv_bosch_sf6_c4f8_icp_rf_source_with_n2_purge_in_0ms"
+    | "retract_hybrid_bonder_chuck_cut_heater_power_and_shutter_uv_debond_laser_on_exhaust_loss"
+    | "lock_3dic_tsv_and_bonder_enclosure_until_hf_so2f2_below_0_5ppm_scba_and_loto_verified";
+  readonly blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferThroughSiliconViaTsvBoschEtchHybridCuCuThermocompressionBondingAndLaserDebondingSemiS2SemiS6Nfpa318Nfpa69AnsiZ1361Osha1910119Osha19101000FormingGasH2LelOrBoschSf6C4f8OverpressureTripLaserDebondPlumeOrBonderThermalRunawayIsolationAndHfF2ScbaLotoGuard(
+  input: SemiconductorWaferThroughSiliconViaTsvBoschEtchHybridCuCuBondingAndLaserDebondingGuardInput,
+): SemiconductorWaferThroughSiliconViaTsvBoschEtchHybridCuCuBondingAndLaserDebondingGuardDecision {
+  const policyCode =
+    "P377-SEMICONDUCTOR-WAFER-THROUGH-SILICON-VIA-TSV-BOSCH-ETCH-HYBRID-CU-CU-THERMOCOMPRESSION-BONDING-AND-LASER-DEBONDING-SEMIS2-SEMIS6-NFPA318-NFPA69-ANSIZ1361-OSHA1910119-OSHA19101000-FORMING-GAS-H2-LEL-OR-BOSCH-SF6-C4F8-OVERPRESSURE-TRIP-LASER-DEBOND-PLUME-OR-BONDER-THERMAL-RUNAWAY-ISOLATION-AND-HF-F2-SCBA-LOTO-GUARD" as const;
+
+  const formingGasH2LelOrBoschOverpressureTripped0ms =
+    input.bonderFormingGasH2PercentLel >= 20 ||
+    input.tsvBoschChamberPressureTorr > 12;
+
+  const bonderChuckRunawayOrLaserDebondPlumeIsolated =
+    input.bonderChuckForceKn > 85 ||
+    input.bonderChuckTemperatureCelsius > 450 ||
+    input.laserDebondExhaustFlowCfm < 120;
+
+  const ambientHfSo2f2ScbaLotoRequired =
+    input.fabBayAmbientHfOrSo2f2Ppm >= 0.5 ||
+    /bypass_forming_gas_h2_esv|override_bonder_force_limit|fire_debond_laser_without_exhaust|open_tsv_chamber_with_hf_present/i.test(
+      input.requestedVoiceAction,
+    );
+
+  if (formingGasH2LelOrBoschOverpressureTripped0ms) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      tsvHybridBondingAndLaserDebondSafe: false,
+      formingGasH2LelOrBoschOverpressureTripped0ms: true,
+      bonderChuckRunawayOrLaserDebondPlumeIsolated,
+      ambientHfSo2f2ScbaLotoRequired,
+      action:
+        "trip_bonder_forming_gas_h2_esv_and_tsv_bosch_sf6_c4f8_icp_rf_source_with_n2_purge_in_0ms",
+      blockedReason:
+        "bonder_forming_gas_h2_at_or_above_20pct_lel_or_tsv_bosch_chamber_pressure_over_12torr_0ms_esv_rf_trip",
+    };
+  }
+
+  if (bonderChuckRunawayOrLaserDebondPlumeIsolated) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      tsvHybridBondingAndLaserDebondSafe: false,
+      formingGasH2LelOrBoschOverpressureTripped0ms: false,
+      bonderChuckRunawayOrLaserDebondPlumeIsolated: true,
+      ambientHfSo2f2ScbaLotoRequired,
+      action:
+        "retract_hybrid_bonder_chuck_cut_heater_power_and_shutter_uv_debond_laser_on_exhaust_loss",
+      blockedReason:
+        "hybrid_bonder_force_over_85kn_or_temp_over_450c_or_laser_debond_exhaust_below_120cfm_isolated",
+    };
+  }
+
+  if (ambientHfSo2f2ScbaLotoRequired) {
+    return {
+      policyCode,
+      moduleId: input.moduleId,
+      tsvHybridBondingAndLaserDebondSafe: false,
+      formingGasH2LelOrBoschOverpressureTripped0ms: false,
+      bonderChuckRunawayOrLaserDebondPlumeIsolated: false,
+      ambientHfSo2f2ScbaLotoRequired: true,
+      action:
+        "lock_3dic_tsv_and_bonder_enclosure_until_hf_so2f2_below_0_5ppm_scba_and_loto_verified",
+      blockedReason:
+        "fab_bay_ambient_hf_or_so2f2_at_or_above_0_5ppm_or_unsafe_3dic_voice_override_scba_loto_required",
+    };
+  }
+
+  return {
+    policyCode,
+    moduleId: input.moduleId,
+    tsvHybridBondingAndLaserDebondSafe: true,
+    formingGasH2LelOrBoschOverpressureTripped0ms: false,
+    bonderChuckRunawayOrLaserDebondPlumeIsolated: false,
+    ambientHfSo2f2ScbaLotoRequired: false,
+    action:
+      "allow_tsv_bosch_drie_hybrid_cu_cu_bonding_and_laser_debonding_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlSubtitlesGuardInput {
+  readonly sessionId: string;
+  readonly fmxDeclaredDataItemBytes: number;
+  readonly rtpPayloadRemainingBytes: number;
+  readonly fmxDataItemTypeBitWidth: number;
+  readonly ttmlContainsDoctypeOrEntityExpansion: boolean;
+  readonly ttmlBeginTimeMs: number;
+  readonly ttmlEndTimeMs: number;
+  readonly metadataAndSubtitlePacketsPerSecond: number;
+}
+
+export interface WebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlSubtitlesGuardDecision {
+  readonly policyCode: "P378-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-AND-ST2110-43-TTML-SUBTITLES-DATA-ITEM-LENGTH-OVERREAD-XXE-ENTITY-EXPANSION-BOMB-SUBTITLE-TIMING-INVERSION-AND-DOM-RENDER-FLOOD-GUARD";
+  readonly sessionId: string;
+  readonly st211041AndSt211043PayloadHealthy: boolean;
+  readonly fmxDataItemOverreadOrInvalidDitDropped0ms: boolean;
+  readonly ttmlXxeEntityBombOrSubtitleTimingInversionRejected: boolean;
+  readonly metadataAndSubtitleDomRenderFloodClamped: boolean;
+  readonly action:
+    | "accept_smpte_st2110_41_fast_metadata_and_st2110_43_ttml_payload"
+    | "drop_st2110_41_fmx_data_item_length_overread_or_non_24bit_dit_header_in_0ms"
+    | "reject_st2110_43_ttml_doctype_xxe_entity_expansion_bomb_or_inverted_subtitle_timing_window"
+    | "clamp_st2110_41_43_metadata_and_subtitle_dom_rendering_packet_flood";
+  readonly blockedReason: string;
+}
+
+export function evaluateWebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlSubtitlesDataItemLengthOverreadXxeEntityExpansionBombSubtitleTimingInversionAndDomRenderFloodGuard(
+  input: WebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlSubtitlesGuardInput,
+): WebrtcSipRtpSmpteSt211041FastMetadataAndSt211043TtmlSubtitlesGuardDecision {
+  const policyCode =
+    "P378-WEBRTC-SIP-RTP-SMPTE-ST2110-41-FAST-METADATA-AND-ST2110-43-TTML-SUBTITLES-DATA-ITEM-LENGTH-OVERREAD-XXE-ENTITY-EXPANSION-BOMB-SUBTITLE-TIMING-INVERSION-AND-DOM-RENDER-FLOOD-GUARD" as const;
+
+  const fmxDataItemOverreadOrInvalidDitDropped0ms =
+    input.rtpPayloadRemainingBytes < 4 ||
+    input.fmxDeclaredDataItemBytes > input.rtpPayloadRemainingBytes ||
+    input.fmxDataItemTypeBitWidth !== 24;
+
+  const ttmlXxeEntityBombOrSubtitleTimingInversionRejected =
+    input.ttmlContainsDoctypeOrEntityExpansion ||
+    input.ttmlBeginTimeMs < 0 ||
+    input.ttmlEndTimeMs <= input.ttmlBeginTimeMs;
+
+  const metadataAndSubtitleDomRenderFloodClamped =
+    input.metadataAndSubtitlePacketsPerSecond > 200;
+
+  if (fmxDataItemOverreadOrInvalidDitDropped0ms) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st211041AndSt211043PayloadHealthy: false,
+      fmxDataItemOverreadOrInvalidDitDropped0ms: true,
+      ttmlXxeEntityBombOrSubtitleTimingInversionRejected,
+      metadataAndSubtitleDomRenderFloodClamped,
+      action:
+        "drop_st2110_41_fmx_data_item_length_overread_or_non_24bit_dit_header_in_0ms",
+      blockedReason:
+        "smpte_st2110_41_fmx_data_item_bytes_exceed_payload_or_dit_bit_width_not_24_0ms_drop",
+    };
+  }
+
+  if (ttmlXxeEntityBombOrSubtitleTimingInversionRejected) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st211041AndSt211043PayloadHealthy: false,
+      fmxDataItemOverreadOrInvalidDitDropped0ms: false,
+      ttmlXxeEntityBombOrSubtitleTimingInversionRejected: true,
+      metadataAndSubtitleDomRenderFloodClamped,
+      action:
+        "reject_st2110_43_ttml_doctype_xxe_entity_expansion_bomb_or_inverted_subtitle_timing_window",
+      blockedReason:
+        "smpte_st2110_43_ttml_doctype_xxe_entity_expansion_or_inverted_subtitle_begin_end_timing_rejected",
+    };
+  }
+
+  if (metadataAndSubtitleDomRenderFloodClamped) {
+    return {
+      policyCode,
+      sessionId: input.sessionId,
+      st211041AndSt211043PayloadHealthy: false,
+      fmxDataItemOverreadOrInvalidDitDropped0ms: false,
+      ttmlXxeEntityBombOrSubtitleTimingInversionRejected: false,
+      metadataAndSubtitleDomRenderFloodClamped: true,
+      action:
+        "clamp_st2110_41_43_metadata_and_subtitle_dom_rendering_packet_flood",
+      blockedReason:
+        "smpte_st2110_41_43_metadata_and_subtitle_packets_over_200_per_sec_clamped",
+    };
+  }
+
+  return {
+    policyCode,
+    sessionId: input.sessionId,
+    st211041AndSt211043PayloadHealthy: true,
+    fmxDataItemOverreadOrInvalidDitDropped0ms: false,
+    ttmlXxeEntityBombOrSubtitleTimingInversionRejected: false,
+    metadataAndSubtitleDomRenderFloodClamped: false,
+    action: "accept_smpte_st2110_41_fast_metadata_and_st2110_43_ttml_payload",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
