@@ -48034,6 +48034,155 @@ export function evaluateWebrtcSipRfc8829JsepJavascriptSessionEstablishmentProtoc
   };
 }
 
+export interface SemiconductorWaferFabHighPurityBulkGasAsuCryoTankVaporizerPurifierGuardInput {
+  ambientOxygenPercent: number;
+  ambientHydrogenLelPercent: number;
+  vaporizerOutletGasTempC: number;
+  traceImpurityO2H2oCoCo2ThcPpb: number;
+  getterPurifierVesselMaintenanceRequested: boolean;
+  getterBedTempC: number;
+  breathableAtmosphereVerified: boolean;
+  osha1910147CryoPressureReliefLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabHighPurityBulkGasAsuCryoTankVaporizerPurifierGuardResult {
+  violated: boolean;
+  action: "allow" | "lock_getter_vessel_and_cryo_tank_until_cooldown_and_loto" | "abort_wafer_lot_and_switch_standby_purifier_vaporizer_train" | "trip_cryo_liquid_isolation_valve_and_bypass_vaporizer_in_0ms";
+  policyId: "P479-SEMICONDUCTOR-WAFER-FAB-HIGH-PURITY-BULK-NITROGEN-HYDROGEN-OXYGEN-ARGON-AIR-SEPARATION-UNIT-CRYOGENIC-TANK-VAPORIZER-AND-PURIFIER-GETTER-REGENERATION-SEMIS2-SEMIS6-SEMIF5-NFPA55-CGAP12-OSHA1910104-OSHA1910147-AMBIENT-O2-DEFICIENCY-ENRICHMENT-OR-H2-LEL-CRYO-VALVE-TRIP-PPB-IMPURITY-BREAKTHROUGH-OR-LOW-TEMP-VAPORIZER-SWITCHOVER-AND-GETTER-COOLDOWN-LOTO-GUARD";
+  reason: string;
+}
+
+export function evaluateSemiconductorWaferFabHighPurityBulkNitrogenHydrogenOxygenArgonAirSeparationUnitCryogenicTankVaporizerAndPurifierGetterRegenerationSemiS2SemiS6SemiF5Nfpa55CgaP12Osha1910104Osha1910147AmbientO2DeficiencyEnrichmentOrH2LelCryoValveTripPpbImpurityBreakthroughOrLowTempVaporizerSwitchoverAndGetterCooldownLotoGuard(
+  input: SemiconductorWaferFabHighPurityBulkGasAsuCryoTankVaporizerPurifierGuardInput
+): SemiconductorWaferFabHighPurityBulkGasAsuCryoTankVaporizerPurifierGuardResult {
+  const policyId = "P479-SEMICONDUCTOR-WAFER-FAB-HIGH-PURITY-BULK-NITROGEN-HYDROGEN-OXYGEN-ARGON-AIR-SEPARATION-UNIT-CRYOGENIC-TANK-VAPORIZER-AND-PURIFIER-GETTER-REGENERATION-SEMIS2-SEMIS6-SEMIF5-NFPA55-CGAP12-OSHA1910104-OSHA1910147-AMBIENT-O2-DEFICIENCY-ENRICHMENT-OR-H2-LEL-CRYO-VALVE-TRIP-PPB-IMPURITY-BREAKTHROUGH-OR-LOW-TEMP-VAPORIZER-SWITCHOVER-AND-GETTER-COOLDOWN-LOTO-GUARD" as const;
+
+  if (
+    input.ambientOxygenPercent < 19.5 ||
+    input.ambientOxygenPercent > 23.5 ||
+    input.ambientHydrogenLelPercent >= 10.0
+  ) {
+    return {
+      violated: true,
+      action: "trip_cryo_liquid_isolation_valve_and_bypass_vaporizer_in_0ms",
+      policyId,
+      reason: "SEMI S2 / SEMI S6 / NFPA 55 / CGA P-12 / OSHA 1910.104 life-safety trip: ambient oxygen deficiency (< 19.5% O2 LIN/LAR asphyxiation hazard), oxygen enrichment (> 23.5% O2 LOX rapid combustion hazard), or LH2 leak (>= 10.0% LEL) detected; tripping cryogenic liquid isolation valve and engaging emergency vaporizer bypass in 0ms."
+    };
+  }
+
+  if (
+    input.traceImpurityO2H2oCoCo2ThcPpb >= 1.0 ||
+    input.vaporizerOutletGasTempC < 5.0
+  ) {
+    return {
+      violated: true,
+      action: "abort_wafer_lot_and_switch_standby_purifier_vaporizer_train",
+      policyId,
+      reason: "SEMI F5 / NFPA 55 / CGA P-12 bulk ultra-high-purity gas excursion: trace O2/H2O/CO/CO2/THC impurity breakthrough (>= 1.0 ppb) or vaporizer outlet gas temperature (< 5.0 °C cryogenic embrittlement risk to 316L electropolished piping) detected; aborting wafer lot and switching to standby purifier/vaporizer train."
+    };
+  }
+
+  if (
+    input.getterPurifierVesselMaintenanceRequested &&
+    (input.getterBedTempC >= 40.0 ||
+      !input.breathableAtmosphereVerified ||
+      !input.osha1910147CryoPressureReliefLotoVerified)
+  ) {
+    return {
+      violated: true,
+      action: "lock_getter_vessel_and_cryo_tank_until_cooldown_and_loto",
+      policyId,
+      reason: "SEMI S2 / NFPA 55 / OSHA 1910.147 maintenance lock: heated nickel/copper getter purifier vessel and cryogenic tank maintenance prohibited until getter bed cooldown (< 40.0 °C), breathable atmosphere (19.5%–23.5% O2) verification, and cryogenic thermal/pressure-relief LOTO completion."
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason: "Bulk N2/H2/O2/Ar ASU cryogenic tank farm, ambient vaporizer temperature, sub-ppb getter purifier purity, and LOTO interlocks verified."
+  };
+}
+
+export interface WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleGuardInput {
+  duplicateMidAcrossMediaSectionsDetected: boolean;
+  unbundledBundleOnlySectionWithNonZeroPortDetected: boolean;
+  bundledTransportAddressOrPortMismatchAfterNegotiation: boolean;
+  conflictingDtlsSrtpOrIceParamsAcrossBundledSections: boolean;
+  bundleTaggedSectionDisabledWithoutReelection: boolean;
+  bundledMediaSectionCount: number;
+  maxMidTagByteLength: number;
+}
+
+export interface WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleGuardResult {
+  violated: boolean;
+  action: "allow" | "clamp_bundle_media_section_count_and_mid_tag_byte_length" | "reject_mismatched_bundled_transport_or_orphaned_bundle_tag" | "drop_duplicate_mid_or_nonzero_port_unbundled_bundle_only_0ms";
+  policyId: "P480-WEBRTC-SIP-RFC8843-NEGOTIATING-MEDIA-MULTIPLEXING-USING-SDP-BUNDLE-GROUP-SEMANTICS-BUNDLE-ONLY-PORT-ZERO-SHARED-TRANSPORT-ADDRESS-AND-MID-UNIQUENESS-GUARD";
+  reason: string;
+  clampedBundledMediaSectionCount: number;
+  clampedMaxMidTagByteLength: number;
+}
+
+export function evaluateWebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleGroupSemanticsBundleOnlyPortZeroSharedTransportAddressAndMidUniquenessGuard(
+  input: WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleGuardInput
+): WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleGuardResult {
+  const policyId = "P480-WEBRTC-SIP-RFC8843-NEGOTIATING-MEDIA-MULTIPLEXING-USING-SDP-BUNDLE-GROUP-SEMANTICS-BUNDLE-ONLY-PORT-ZERO-SHARED-TRANSPORT-ADDRESS-AND-MID-UNIQUENESS-GUARD" as const;
+  const clampedBundledMediaSectionCount = Math.min(Math.max(1, input.bundledMediaSectionCount), 16);
+  const clampedMaxMidTagByteLength = Math.min(Math.max(1, input.maxMidTagByteLength), 32);
+
+  if (
+    input.duplicateMidAcrossMediaSectionsDetected ||
+    input.unbundledBundleOnlySectionWithNonZeroPortDetected
+  ) {
+    return {
+      violated: true,
+      action: "drop_duplicate_mid_or_nonzero_port_unbundled_bundle_only_0ms",
+      policyId,
+      reason: "RFC 8843 Section 7 / Section 6 violation: duplicate a=mid identifiers across m= sections or unbundled a=bundle-only m= section offered with non-zero port outside an active a=group:BUNDLE detected; dropping malformed SDP in 0ms.",
+      clampedBundledMediaSectionCount,
+      clampedMaxMidTagByteLength
+    };
+  }
+
+  if (
+    input.bundledTransportAddressOrPortMismatchAfterNegotiation ||
+    input.conflictingDtlsSrtpOrIceParamsAcrossBundledSections ||
+    input.bundleTaggedSectionDisabledWithoutReelection
+  ) {
+    return {
+      violated: true,
+      action: "reject_mismatched_bundled_transport_or_orphaned_bundle_tag",
+      policyId,
+      reason: "RFC 8843 Section 7.3 / Section 8 violation: mismatched transport addresses/ports or conflicting DTLS-SRTP/ICE parameters across bundled m= sections after BUNDLE negotiation, or disabling the bundle-tagged m= section without re-electing a new tagged m= section; rejecting SDP negotiation.",
+      clampedBundledMediaSectionCount,
+      clampedMaxMidTagByteLength
+    };
+  }
+
+  if (
+    input.bundledMediaSectionCount > 16 ||
+    input.maxMidTagByteLength > 32
+  ) {
+    return {
+      violated: true,
+      action: "clamp_bundle_media_section_count_and_mid_tag_byte_length",
+      policyId,
+      reason: "RFC 8843 resource exhaustion guard: clamping a=group:BUNDLE m= section count to <= 16 and a=mid identification tag length to <= 32 UTF-8 bytes.",
+      clampedBundledMediaSectionCount,
+      clampedMaxMidTagByteLength
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason: "RFC 8843 SDP BUNDLE group semantics, a=bundle-only port-zero rules, shared transport 5-tuple consistency, and a=mid uniqueness verified.",
+    clampedBundledMediaSectionCount,
+    clampedMaxMidTagByteLength
+  };
+}
+
 
 
 
