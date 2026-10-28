@@ -49583,6 +49583,355 @@ export function evaluateWebrtcSipRfc8862WebrtcMediaStreamAndDataChannelTransport
   };
 }
 
+export interface SemiconductorWaferFabEpiLpCvdTrichlorosilaneTcsDichlorosilaneDcsSilaneHClAndH2VerticalAndSingleWaferReactorSemiS2SemiS6Nfpa318Nfpa86Nfpa55Osha1910119GuardInput {
+  readonly reactorEnclosureH2OrChlorosilaneConcentrationPercentLel: number;
+  readonly ambientHClOrChlorosilaneToxicLeakConcentrationPpm: number;
+  readonly quartzBellJarOrLampCoolingWaterFlowLossOrOvertempDetected: boolean;
+  readonly chamberPressureTorrDuringH2EpiProcess: number;
+  readonly reactorSusceptorTemperatureCelsiusDuringH2Flow: number;
+  readonly exhaustForelineSiO2Nh4ClByproductDifferentialPressureKpa: number;
+  readonly epiChamberOrChlorosilaneVaporizerMaintenanceRequested: boolean;
+  readonly hclInSituEtchInertArN2PurgeAndCooldownBelow50CVerified: boolean;
+  readonly hydrolyticHClVaporNeutralizationAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabEpiLpCvdTrichlorosilaneTcsDichlorosilaneDcsSilaneHClAndH2VerticalAndSingleWaferReactorSemiS2SemiS6Nfpa318Nfpa86Nfpa55Osha1910119GuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "lock_epi_chamber_and_tcs_dcs_vaporizer_until_inert_purge_cool_and_scba_loto"
+    | "abort_epi_deposition_cut_h2_precursor_and_switch_to_n2_purge"
+    | "trip_epi_h2_chlorosilane_rfo_valves_and_lamp_heaters_in_0ms";
+  readonly policyId: "P497-SEMICONDUCTOR-WAFER-FAB-EPI-LPCVD-TRICHLOROSILANE-TCS-DICHLOROSILANE-DCS-SILANE-HCL-AND-H2-VERTICAL-AND-SINGLE-WAFER-REACTOR-SEMIS2-SEMIS6-NFPA318-NFPA86-NFPA55-OSHA1910119-H2-CHLOROSILANE-LEL-QUARTZ-COOLANT-TRIP-CHAMBER-O2-EXHAUST-CLOG-ABORT-AND-HCL-PURGE-SCBA-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabEpiLpCvdTrichlorosilaneTcsDichlorosilaneDcsSilaneHClAndH2VerticalAndSingleWaferReactorSemiS2SemiS6Nfpa318Nfpa86Nfpa55Osha1910119H2ChlorosilaneLelQuartzCoolantTripChamberO2ExhaustClogAbortAndHClPurgeScbaLotoGuard(
+  input: SemiconductorWaferFabEpiLpCvdTrichlorosilaneTcsDichlorosilaneDcsSilaneHClAndH2VerticalAndSingleWaferReactorSemiS2SemiS6Nfpa318Nfpa86Nfpa55Osha1910119GuardInput,
+): SemiconductorWaferFabEpiLpCvdTrichlorosilaneTcsDichlorosilaneDcsSilaneHClAndH2VerticalAndSingleWaferReactorSemiS2SemiS6Nfpa318Nfpa86Nfpa55Osha1910119GuardResult {
+  const policyId =
+    "P497-SEMICONDUCTOR-WAFER-FAB-EPI-LPCVD-TRICHLOROSILANE-TCS-DICHLOROSILANE-DCS-SILANE-HCL-AND-H2-VERTICAL-AND-SINGLE-WAFER-REACTOR-SEMIS2-SEMIS6-NFPA318-NFPA86-NFPA55-OSHA1910119-H2-CHLOROSILANE-LEL-QUARTZ-COOLANT-TRIP-CHAMBER-O2-EXHAUST-CLOG-ABORT-AND-HCL-PURGE-SCBA-LOTO-GUARD" as const;
+
+  if (
+    input.reactorEnclosureH2OrChlorosilaneConcentrationPercentLel >= 20.0 ||
+    input.ambientHClOrChlorosilaneToxicLeakConcentrationPpm >= 5.0 ||
+    input.quartzBellJarOrLampCoolingWaterFlowLossOrOvertempDetected
+  ) {
+    return {
+      violated: true,
+      action: "trip_epi_h2_chlorosilane_rfo_valves_and_lamp_heaters_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / NFPA 55 / OSHA 1910.119 Epitaxial / LPCVD reactor emergency: H2 or chlorosilane (TCS/DCS/SiH4) concentration >= 20.0% LEL, toxic HCl/chlorosilane leak >= 5.0 ppm, or quartz bell-jar / halogen lamp cooling water loss detected; tripping RFO gas valves and lamp heaters with N2 flood in 0ms.",
+    };
+  }
+
+  if (
+    input.chamberPressureTorrDuringH2EpiProcess >= 780.0 ||
+    input.reactorSusceptorTemperatureCelsiusDuringH2Flow < 650.0 ||
+    input.exhaustForelineSiO2Nh4ClByproductDifferentialPressureKpa >= 12.0
+  ) {
+    return {
+      violated: true,
+      action: "abort_epi_deposition_cut_h2_precursor_and_switch_to_n2_purge",
+      policyId,
+      reason:
+        "SEMI S2 / NFPA 86 Epitaxial / LPCVD process safety interlock: chamber pressure >= 780.0 Torr during H2 flow, susceptor temperature < 650.0 C below safe H2 auto-ignition envelope, or foreline SiO2/chlorosilane polymer differential pressure >= 12.0 kPa; aborting deposition and switching to N2 purge.",
+    };
+  }
+
+  if (
+    input.epiChamberOrChlorosilaneVaporizerMaintenanceRequested &&
+    (!input.hclInSituEtchInertArN2PurgeAndCooldownBelow50CVerified ||
+      !input.hydrolyticHClVaporNeutralizationAndScbaLotoVerified)
+  ) {
+    return {
+      violated: true,
+      action:
+        "lock_epi_chamber_and_tcs_dcs_vaporizer_until_inert_purge_cool_and_scba_loto",
+      policyId,
+      reason:
+        "OSHA 1910.119 / SEMI S2 Epitaxial chamber & TCS/DCS liquid vaporizer maintenance lock: chamber opening prohibited until Ar/N2 purge of hydrolytic chlorosilanes/HCl, cool-down below 50 C, and SCBA LOTO are verified.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer Fab Epitaxial / LPCVD (TCS/DCS/SiH4/GeH4/HCl/H2) reactor, quartz lamp cooling, and foreline exhaust operating within SEMI S2 / NFPA 318 / NFPA 86 limits.",
+  };
+}
+
+export interface WebrtcSipRfc8864WebrtcDataChannelEstablishmentProtocolDcepStreamIdParityAndControlMessageValidationGuardInput {
+  readonly dcepControlMessageOnNonPpid50OrMalformedMessageTypeDetected: boolean;
+  readonly dcepChannelOpenStreamIdParityConflictWithDtlsClientServerRoleDetected: boolean;
+  readonly dcepAckSentBeforeValidOpenOrUnsolicitedAckFloodDetected: boolean;
+  readonly dcepLabelOrSubprotocolInvalidUtf8OrNullByteInjectionDetected: boolean;
+  readonly dcepLabelByteLength: number;
+  readonly dcepSubprotocolByteLength: number;
+}
+
+export interface WebrtcSipRfc8864WebrtcDataChannelEstablishmentProtocolDcepStreamIdParityAndControlMessageValidationGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_dcep_label_and_subprotocol_byte_lengths"
+    | "reject_unsolicited_dcep_ack_or_invalid_utf8_label_subprotocol"
+    | "drop_non_ppid50_dcep_control_or_stream_id_parity_violation_0ms";
+  readonly policyId: "P498-WEBRTC-SIP-RFC8864-WEBRTC-DATA-CHANNEL-ESTABLISHMENT-PROTOCOL-DCEP-STREAM-ID-PARITY-AND-CONTROL-MESSAGE-VALIDATION-GUARD";
+  readonly reason: string;
+  readonly clampedDcepLabelByteLength: number;
+  readonly clampedDcepSubprotocolByteLength: number;
+}
+
+export function evaluateWebrtcSipRfc8864WebrtcDataChannelEstablishmentProtocolDcepStreamIdParityAndControlMessageValidationGuard(
+  input: WebrtcSipRfc8864WebrtcDataChannelEstablishmentProtocolDcepStreamIdParityAndControlMessageValidationGuardInput,
+): WebrtcSipRfc8864WebrtcDataChannelEstablishmentProtocolDcepStreamIdParityAndControlMessageValidationGuardResult {
+  const policyId =
+    "P498-WEBRTC-SIP-RFC8864-WEBRTC-DATA-CHANNEL-ESTABLISHMENT-PROTOCOL-DCEP-STREAM-ID-PARITY-AND-CONTROL-MESSAGE-VALIDATION-GUARD" as const;
+  const clampedDcepLabelByteLength = Math.min(
+    Math.max(0, input.dcepLabelByteLength),
+    256,
+  );
+  const clampedDcepSubprotocolByteLength = Math.min(
+    Math.max(0, input.dcepSubprotocolByteLength),
+    128,
+  );
+
+  if (
+    input.dcepControlMessageOnNonPpid50OrMalformedMessageTypeDetected ||
+    input.dcepChannelOpenStreamIdParityConflictWithDtlsClientServerRoleDetected
+  ) {
+    return {
+      violated: true,
+      action: "drop_non_ppid50_dcep_control_or_stream_id_parity_violation_0ms",
+      policyId,
+      reason:
+        "RFC 8832 / RFC 8831 DCEP critical violation: DATA_CHANNEL_OPEN (0x03) / DATA_CHANNEL_ACK (0x02) received without SCTP PPID 50 or SCTP Stream ID even/odd parity conflicts with DTLS client/server role; dropping in 0ms.",
+      clampedDcepLabelByteLength,
+      clampedDcepSubprotocolByteLength,
+    };
+  }
+
+  if (
+    input.dcepAckSentBeforeValidOpenOrUnsolicitedAckFloodDetected ||
+    input.dcepLabelOrSubprotocolInvalidUtf8OrNullByteInjectionDetected
+  ) {
+    return {
+      violated: true,
+      action: "reject_unsolicited_dcep_ack_or_invalid_utf8_label_subprotocol",
+      policyId,
+      reason:
+        "RFC 8832 Section 5 / Section 6 violation: unsolicited DATA_CHANNEL_ACK before DATA_CHANNEL_OPEN or invalid UTF-8 / null-byte injection in Label or Protocol field; rejecting DCEP channel setup.",
+      clampedDcepLabelByteLength,
+      clampedDcepSubprotocolByteLength,
+    };
+  }
+
+  if (
+    input.dcepLabelByteLength > 256 ||
+    input.dcepSubprotocolByteLength > 128
+  ) {
+    return {
+      violated: true,
+      action: "clamp_dcep_label_and_subprotocol_byte_lengths",
+      policyId,
+      reason:
+        "RFC 8832 DCEP header bounds protection: clamping DATA_CHANNEL_OPEN Label length to <= 256 bytes and Protocol length to <= 128 bytes.",
+      clampedDcepLabelByteLength,
+      clampedDcepSubprotocolByteLength,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8832 / RFC 8831 WebRTC DataChannel Establishment Protocol (DCEP PPID 50, DTLS client/server Stream ID even/odd parity, and UTF-8 Label/Protocol) verified.",
+    clampedDcepLabelByteLength,
+    clampedDcepSubprotocolByteLength,
+  };
+}
+
+export interface SemiconductorWaferFabAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtStockerAndN2PurgeFoupPodSemiS2SemiS8SemiE84Nfpa318AnsiB11Osha1910147GuardInput {
+  readonly ohtVehicleAntiDropGripperUnlockOrHoistBeltSlackDetected: boolean;
+  readonly lidarObstacleCollisionImminentOrSeismicPWaveTriggerDetected: boolean;
+  readonly stockerTowerSmokeOrCleanroomFireDamperTripDetected: boolean;
+  readonly semiE84LoadPortLightCurtainIntrusionDuringHoistTransferDetected: boolean;
+  readonly semiE84Cs0ValidToTrReqHandshakeTimeoutMs: number;
+  readonly foupN2PurgeCabinetRelativeHumidityPercent: number;
+  readonly ohtTrackMaintenanceZoneEntryOrStockerCraneAccessRequested: boolean;
+  readonly ohtPowerRail48VOrHidInductiveSupplyDeenergizedAndBrakesLockedVerified: boolean;
+  readonly ansiB11SafetyGateInterlockAndOsha1910147LotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtStockerAndN2PurgeFoupPodSemiS2SemiS8SemiE84Nfpa318AnsiB11Osha1910147GuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "lock_amhs_oht_track_and_stocker_until_power_rail_isolation_and_loto"
+    | "abort_e84_foup_hoist_transfer_and_hold_vehicle_interlock"
+    | "trip_oht_emergency_mechanical_brake_and_lock_foup_gripper_in_0ms";
+  readonly policyId: "P499-SEMICONDUCTOR-WAFER-FAB-AUTOMATED-MATERIAL-HANDLING-SYSTEM-AMHS-OVERHEAD-HOIST-TRANSPORT-OHT-STOCKER-AND-N2-PURGE-FOUP-POD-SEMIS2-SEMIS8-SEMIE84-NFPA318-ANSIB11-OSHA1910147-GRIPPER-DROP-SEISMIC-FIRE-TRIP-E84-LIGHT-CURTAIN-ABORT-AND-TRACK-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtStockerAndN2PurgeFoupPodSemiS2SemiS8SemiE84Nfpa318AnsiB11Osha1910147GripperDropSeismicFireTripE84LightCurtainAbortAndTrackLotoGuard(
+  input: SemiconductorWaferFabAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtStockerAndN2PurgeFoupPodSemiS2SemiS8SemiE84Nfpa318AnsiB11Osha1910147GuardInput,
+): SemiconductorWaferFabAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtStockerAndN2PurgeFoupPodSemiS2SemiS8SemiE84Nfpa318AnsiB11Osha1910147GuardResult {
+  const policyId =
+    "P499-SEMICONDUCTOR-WAFER-FAB-AUTOMATED-MATERIAL-HANDLING-SYSTEM-AMHS-OVERHEAD-HOIST-TRANSPORT-OHT-STOCKER-AND-N2-PURGE-FOUP-POD-SEMIS2-SEMIS8-SEMIE84-NFPA318-ANSIB11-OSHA1910147-GRIPPER-DROP-SEISMIC-FIRE-TRIP-E84-LIGHT-CURTAIN-ABORT-AND-TRACK-LOTO-GUARD" as const;
+
+  if (
+    input.ohtVehicleAntiDropGripperUnlockOrHoistBeltSlackDetected ||
+    input.lidarObstacleCollisionImminentOrSeismicPWaveTriggerDetected ||
+    input.stockerTowerSmokeOrCleanroomFireDamperTripDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "trip_oht_emergency_mechanical_brake_and_lock_foup_gripper_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S8 / NFPA 318 / ANSI B11 AMHS OHT emergency: 300mm FOUP anti-drop gripper unlock / hoist belt slack, LiDAR obstacle collision or seismic P-wave trigger, or Stocker smoke / fire damper trip detected; engaging emergency mechanical brakes and locking FOUP gripper latch in 0ms.",
+    };
+  }
+
+  if (
+    input.semiE84LoadPortLightCurtainIntrusionDuringHoistTransferDetected ||
+    input.semiE84Cs0ValidToTrReqHandshakeTimeoutMs >= 2000 ||
+    input.foupN2PurgeCabinetRelativeHumidityPercent >= 5.0
+  ) {
+    return {
+      violated: true,
+      action: "abort_e84_foup_hoist_transfer_and_hold_vehicle_interlock",
+      policyId,
+      reason:
+        "SEMI E84 / SEMI S2 Load Port & N2 FOUP Stocker interlock: operator light-curtain intrusion during hoist lowering, E84 parallel I/O handshake timeout >= 2000 ms, or N2 purge FOUP relative humidity >= 5.0% RH; aborting hoist transfer and holding vehicle.",
+    };
+  }
+
+  if (
+    input.ohtTrackMaintenanceZoneEntryOrStockerCraneAccessRequested &&
+    (!input.ohtPowerRail48VOrHidInductiveSupplyDeenergizedAndBrakesLockedVerified ||
+      !input.ansiB11SafetyGateInterlockAndOsha1910147LotoVerified)
+  ) {
+    return {
+      violated: true,
+      action:
+        "lock_amhs_oht_track_and_stocker_until_power_rail_isolation_and_loto",
+      policyId,
+      reason:
+        "OSHA 1910.147 / ANSI B11 / SEMI S2 AMHS maintenance lock: OHT ceiling track or Stocker crane access prohibited until inductive HID power supply de-energization, mechanical hoist brake lock, and safety gate LOTO are verified.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer Fab AMHS OHT overhead hoist transport, SEMI E84 optical Load Port handshake, and N2-purged FOUP Stocker operating within SEMI S2 / SEMI E84 / NFPA 318 limits.",
+  };
+}
+
+export interface WebrtcSipRfc8865T140RealTimeTextOverWebrtcDataChannelsCpsRateT140blockValidationAndRedundancyGuardInput {
+  readonly t140DataChannelNegotiatedWithoutT140SubprotocolOrOrderedReliableModeDetected: boolean;
+  readonly malformedUtf8SequenceOrForbiddenControlCodeInT140blockDetected: boolean;
+  readonly unauthorizedDirectionChangeOrSpoofedBomZeroWidthFloodDetected: boolean;
+  readonly missingE2eRttBridgeToRfc4103SipEmergencyPsapDetected: boolean;
+  readonly t140CharactersPerSecondRate: number;
+  readonly t140BufferedUnsentBlockBytes: number;
+}
+
+export interface WebrtcSipRfc8865T140RealTimeTextOverWebrtcDataChannelsCpsRateT140blockValidationAndRedundancyGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_t140_cps_rate_and_buffered_block_bytes"
+    | "reject_spoofed_bom_flood_or_missing_rfc4103_psap_rtt_bridge"
+    | "drop_non_t140_unreliable_channel_or_malformed_utf8_t140block_0ms";
+  readonly policyId: "P500-WEBRTC-SIP-RFC8865-T140-REAL-TIME-TEXT-OVER-WEBRTC-DATA-CHANNELS-CPS-RATE-T140BLOCK-VALIDATION-AND-REDUNDANCY-GUARD";
+  readonly reason: string;
+  readonly clampedT140CharactersPerSecondRate: number;
+  readonly clampedT140BufferedUnsentBlockBytes: number;
+}
+
+export function evaluateWebrtcSipRfc8865T140RealTimeTextOverWebrtcDataChannelsCpsRateT140blockValidationAndRedundancyGuard(
+  input: WebrtcSipRfc8865T140RealTimeTextOverWebrtcDataChannelsCpsRateT140blockValidationAndRedundancyGuardInput,
+): WebrtcSipRfc8865T140RealTimeTextOverWebrtcDataChannelsCpsRateT140blockValidationAndRedundancyGuardResult {
+  const policyId =
+    "P500-WEBRTC-SIP-RFC8865-T140-REAL-TIME-TEXT-OVER-WEBRTC-DATA-CHANNELS-CPS-RATE-T140BLOCK-VALIDATION-AND-REDUNDANCY-GUARD" as const;
+  const clampedT140CharactersPerSecondRate = Math.min(
+    Math.max(1, input.t140CharactersPerSecondRate),
+    30,
+  );
+  const clampedT140BufferedUnsentBlockBytes = Math.min(
+    Math.max(0, input.t140BufferedUnsentBlockBytes),
+    2048,
+  );
+
+  if (
+    input.t140DataChannelNegotiatedWithoutT140SubprotocolOrOrderedReliableModeDetected ||
+    input.malformedUtf8SequenceOrForbiddenControlCodeInT140blockDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "drop_non_t140_unreliable_channel_or_malformed_utf8_t140block_0ms",
+      policyId,
+      reason:
+        "RFC 8865 Section 3 / ITU-T T.140 critical violation: T.140 real-time text DataChannel negotiated without subprotocol 't140' or ordered reliable SCTP delivery, or malformed UTF-8 / forbidden C0/C1 control codes in t140block; dropping in 0ms.",
+      clampedT140CharactersPerSecondRate,
+      clampedT140BufferedUnsentBlockBytes,
+    };
+  }
+
+  if (
+    input.unauthorizedDirectionChangeOrSpoofedBomZeroWidthFloodDetected ||
+    input.missingE2eRttBridgeToRfc4103SipEmergencyPsapDetected
+  ) {
+    return {
+      violated: true,
+      action: "reject_spoofed_bom_flood_or_missing_rfc4103_psap_rtt_bridge",
+      policyId,
+      reason:
+        "RFC 8865 Section 4 / Section 6 violation: spoofed BOM (U+FEFF) / bidi-override flood or missing RFC 4103 RTP-text interworking gateway for emergency PSAP accessibility calls; rejecting T.140 stream.",
+      clampedT140CharactersPerSecondRate,
+      clampedT140BufferedUnsentBlockBytes,
+    };
+  }
+
+  if (
+    input.t140CharactersPerSecondRate > 30 ||
+    input.t140BufferedUnsentBlockBytes > 2048
+  ) {
+    return {
+      violated: true,
+      action: "clamp_t140_cps_rate_and_buffered_block_bytes",
+      policyId,
+      reason:
+        "RFC 8865 Section 4.2 T.140 rate & buffer protection: clamping real-time text transmission rate to <= 30 CPS and buffered t140block size to <= 2048 bytes.",
+      clampedT140CharactersPerSecondRate,
+      clampedT140BufferedUnsentBlockBytes,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8865 ITU-T T.140 Real-Time Text over WebRTC DataChannel (ordered reliable 't140' subprotocol, valid UTF-8 t140blocks, <= 30 CPS rate, and RFC 4103 PSAP interworking) verified.",
+    clampedT140CharactersPerSecondRate,
+    clampedT140BufferedUnsentBlockBytes,
+  };
+}
+
+
 
 
 
