@@ -45569,6 +45569,220 @@ export function evaluateWebrtcSipRfc8862WebrtcMediaConfidentialityAndPrivacyDtls
   };
 }
 
+export interface SemiconductorWaferSubFabPointOfUsePouAbatementBurnWetScrubberAndExhaustHeaderSemiS2SemiS6Nfpa318Nfpa86Nfpa69Osha1910119Osha19101000PilotFlameOutQuenchWaterLossTripH2SilaneBypassLelInterlockAndHfAcidSlurryScbaLotoGuardInput {
+  pouAbatementScrubberUnitId: string;
+  inwardCombustorPilotFlameExtinguishedOrQuenchSprayFlowDropPercent: number;
+  exhaustHeaderStaticVacuumDraftLossOrBackpressurePa: number;
+  unabatedSilaneH2PhosphineBypassConcentrationPercentLel: number;
+  postScrubberStackOutletHfF2Cl2ToxicAcidGasEmissionPpm: number;
+  sio2PowderByproductCloggingDifferentialPressureKpa: number;
+  scrubberReactionTowerOrSlurrySumpAccessRequested: boolean;
+  postPurgeChamberResidualHfPh3AsH3ConcentrationPpm: number;
+  quenchSumpHydrofluoricAcidEffluentPhLevel: number;
+  toolForelineIsolationAndOsha1910119ScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferSubFabPointOfUsePouAbatementBurnWetScrubberAndExhaustHeaderSemiS2SemiS6Nfpa318Nfpa86Nfpa69Osha1910119Osha19101000PilotFlameOutQuenchWaterLossTripH2SilaneBypassLelInterlockAndHfAcidSlurryScbaLotoGuardAssessment {
+  pouAbatementScrubberUnitId: string;
+  policyCode: "P455-SEMICONDUCTOR-WAFER-SUB-FAB-POINT-OF-USE-POU-ABATEMENT-BURN-WET-SCRUBBER-AND-EXHAUST-HEADER-SEMIS2-SEMIS6-NFPA318-NFPA86-NFPA69-OSHA1910119-OSHA19101000-PILOT-FLAME-OUT-QUENCH-WATER-LOSS-TRIP-H2-SILANE-BYPASS-LEL-INTERLOCK-AND-HF-ACID-SLURRY-SCBA-LOTO-GUARD";
+  pouAbatementScrubberSafe: boolean;
+  flameOutQuenchDropOrExhaustBackpressureTripped0ms: boolean;
+  bypassLelStackAcidBreakthroughOrPowderClogAborted: boolean;
+  towerLockedUntilZeroToxicGasNeutralPhAndScbaLoto: boolean;
+  action:
+    | "allow_verified_sub_fab_pou_burn_wet_abatement_scrubber_operation"
+    | "trip_upstream_process_tool_gas_sticks_in_0ms_and_flood_n2_dilution"
+    | "abort_process_recipe_and_switch_to_redundant_standby_pou_scrubber"
+    | "lock_scrubber_tower_until_hf_ph3_below_0_05ppm_neutral_ph_and_scba_loto";
+  blockedReason:
+    | "none"
+    | "SEMIS2_NFPA318_NFPA86_FLAME_OUT_QUENCH_DROP_20PCT_OR_BACKPRESSURE_TRIPPED_0MS"
+    | "NFPA69_OSHA19101000_BYPASS_10LEL_HF_1PPM_OR_SIO2_CLOG_2KPA_ABORTED"
+    | "SEMIS2_OSHA1910119_SCRUBBER_TOWER_LOCKED_UNTIL_0_05PPM_PH_6_AND_SCBA_LOTO";
+}
+
+export function evaluateSemiconductorWaferSubFabPointOfUsePouAbatementBurnWetScrubberAndExhaustHeaderSemiS2SemiS6Nfpa318Nfpa86Nfpa69Osha1910119Osha19101000PilotFlameOutQuenchWaterLossTripH2SilaneBypassLelInterlockAndHfAcidSlurryScbaLotoGuard(
+  input: SemiconductorWaferSubFabPointOfUsePouAbatementBurnWetScrubberAndExhaustHeaderSemiS2SemiS6Nfpa318Nfpa86Nfpa69Osha1910119Osha19101000PilotFlameOutQuenchWaterLossTripH2SilaneBypassLelInterlockAndHfAcidSlurryScbaLotoGuardInput,
+): SemiconductorWaferSubFabPointOfUsePouAbatementBurnWetScrubberAndExhaustHeaderSemiS2SemiS6Nfpa318Nfpa86Nfpa69Osha1910119Osha19101000PilotFlameOutQuenchWaterLossTripH2SilaneBypassLelInterlockAndHfAcidSlurryScbaLotoGuardAssessment {
+  const policyCode =
+    "P455-SEMICONDUCTOR-WAFER-SUB-FAB-POINT-OF-USE-POU-ABATEMENT-BURN-WET-SCRUBBER-AND-EXHAUST-HEADER-SEMIS2-SEMIS6-NFPA318-NFPA86-NFPA69-OSHA1910119-OSHA19101000-PILOT-FLAME-OUT-QUENCH-WATER-LOSS-TRIP-H2-SILANE-BYPASS-LEL-INTERLOCK-AND-HF-ACID-SLURRY-SCBA-LOTO-GUARD" as const;
+
+  const flameOutQuenchDropOrExhaustBackpressureTripped0ms =
+    input.inwardCombustorPilotFlameExtinguishedOrQuenchSprayFlowDropPercent >= 20.0 ||
+    input.exhaustHeaderStaticVacuumDraftLossOrBackpressurePa >= 0.0;
+
+  if (flameOutQuenchDropOrExhaustBackpressureTripped0ms) {
+    return {
+      pouAbatementScrubberUnitId: input.pouAbatementScrubberUnitId,
+      policyCode,
+      pouAbatementScrubberSafe: false,
+      flameOutQuenchDropOrExhaustBackpressureTripped0ms: true,
+      bypassLelStackAcidBreakthroughOrPowderClogAborted: false,
+      towerLockedUntilZeroToxicGasNeutralPhAndScbaLoto: false,
+      action:
+        "trip_upstream_process_tool_gas_sticks_in_0ms_and_flood_n2_dilution",
+      blockedReason:
+        "SEMIS2_NFPA318_NFPA86_FLAME_OUT_QUENCH_DROP_20PCT_OR_BACKPRESSURE_TRIPPED_0MS",
+    };
+  }
+
+  const bypassLelStackAcidBreakthroughOrPowderClogAborted =
+    input.unabatedSilaneH2PhosphineBypassConcentrationPercentLel >= 10.0 ||
+    input.postScrubberStackOutletHfF2Cl2ToxicAcidGasEmissionPpm >= 1.0 ||
+    input.sio2PowderByproductCloggingDifferentialPressureKpa >= 2.0;
+
+  if (bypassLelStackAcidBreakthroughOrPowderClogAborted) {
+    return {
+      pouAbatementScrubberUnitId: input.pouAbatementScrubberUnitId,
+      policyCode,
+      pouAbatementScrubberSafe: false,
+      flameOutQuenchDropOrExhaustBackpressureTripped0ms: false,
+      bypassLelStackAcidBreakthroughOrPowderClogAborted: true,
+      towerLockedUntilZeroToxicGasNeutralPhAndScbaLoto: false,
+      action:
+        "abort_process_recipe_and_switch_to_redundant_standby_pou_scrubber",
+      blockedReason:
+        "NFPA69_OSHA19101000_BYPASS_10LEL_HF_1PPM_OR_SIO2_CLOG_2KPA_ABORTED",
+    };
+  }
+
+  const towerLockedUntilZeroToxicGasNeutralPhAndScbaLoto =
+    input.scrubberReactionTowerOrSlurrySumpAccessRequested &&
+    (input.postPurgeChamberResidualHfPh3AsH3ConcentrationPpm >= 0.05 ||
+      input.quenchSumpHydrofluoricAcidEffluentPhLevel < 6.0 ||
+      input.quenchSumpHydrofluoricAcidEffluentPhLevel > 9.0 ||
+      !input.toolForelineIsolationAndOsha1910119ScbaLotoVerified);
+
+  if (towerLockedUntilZeroToxicGasNeutralPhAndScbaLoto) {
+    return {
+      pouAbatementScrubberUnitId: input.pouAbatementScrubberUnitId,
+      policyCode,
+      pouAbatementScrubberSafe: false,
+      flameOutQuenchDropOrExhaustBackpressureTripped0ms: false,
+      bypassLelStackAcidBreakthroughOrPowderClogAborted: false,
+      towerLockedUntilZeroToxicGasNeutralPhAndScbaLoto: true,
+      action:
+        "lock_scrubber_tower_until_hf_ph3_below_0_05ppm_neutral_ph_and_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_SCRUBBER_TOWER_LOCKED_UNTIL_0_05PPM_PH_6_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    pouAbatementScrubberUnitId: input.pouAbatementScrubberUnitId,
+    policyCode,
+    pouAbatementScrubberSafe: true,
+    flameOutQuenchDropOrExhaustBackpressureTripped0ms: false,
+    bypassLelStackAcidBreakthroughOrPowderClogAborted: false,
+    towerLockedUntilZeroToxicGasNeutralPhAndScbaLoto: false,
+    action:
+      "allow_verified_sub_fab_pou_burn_wet_abatement_scrubber_operation",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8863WebrtcUdpPortsDemultiplexingStunDtlsRtpRtcpFirstBytePacketClassifierAndUnknownProtocolDropGuardInput {
+  sessionId: string;
+  firstByteOutsideRfc8863ValidStunDtlsRtpTurnChannelRangeDetected: boolean;
+  turnChannelDataFrameOnUnboundOrUnauthenticatedChannelNumberAttempted: boolean;
+  rtpVersionBitsMismatchOrRtcpPayloadTypeCollisionInDemuxDetected: boolean;
+  dtlsRecordEpochOrContentTypeSpoofingOnSharedUdpSocketDetected: boolean;
+  demuxClassificationMissOrMalformedPacketCountPerSec: number;
+  concurrentDemuxedProtocolFlowsPerSharedUdpPortCount: number;
+}
+
+export interface WebrtcSipRfc8863WebrtcUdpPortsDemultiplexingStunDtlsRtpRtcpFirstBytePacketClassifierAndUnknownProtocolDropGuardAssessment {
+  sessionId: string;
+  policyCode: "P456-WEBRTC-SIP-RFC8863-WEBRTC-UDP-PORTS-DEMULTIPLEXING-STUN-DTLS-RTP-RTCP-FIRST-BYTE-PACKET-CLASSIFIER-AND-UNKNOWN-PROTOCOL-DROP-GUARD";
+  rfc8863UdpDemuxHealthy: boolean;
+  invalidFirstByteOrUnboundTurnChannelDropped0ms: boolean;
+  rtpVersionCollisionOrDtlsSpoofingRejected: boolean;
+  demuxMissRateOrConcurrentFlowCountClamped: boolean;
+  action:
+    | "allow_verified_rfc8863_udp_port_demultiplexing"
+    | "drop_invalid_first_byte_or_unbound_turn_channel_packet_0ms"
+    | "reject_rtp_version_collision_or_dtls_record_spoofing"
+    | "clamp_demux_miss_rate_or_shared_udp_port_flow_fanout";
+  blockedReason:
+    | "none"
+    | "RFC8863_INVALID_FIRST_BYTE_OR_UNBOUND_TURN_CHANNEL_DROPPED_0MS"
+    | "RFC8863_RTP_VERSION_COLLISION_OR_DTLS_RECORD_SPOOFING_REJECTED"
+    | "RFC8863_DEMUX_MISS_OVER_20_S_OR_FLOWS_OVER_16_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8863WebrtcUdpPortsDemultiplexingStunDtlsRtpRtcpFirstBytePacketClassifierAndUnknownProtocolDropGuard(
+  input: WebrtcSipRfc8863WebrtcUdpPortsDemultiplexingStunDtlsRtpRtcpFirstBytePacketClassifierAndUnknownProtocolDropGuardInput,
+): WebrtcSipRfc8863WebrtcUdpPortsDemultiplexingStunDtlsRtpRtcpFirstBytePacketClassifierAndUnknownProtocolDropGuardAssessment {
+  const policyCode =
+    "P456-WEBRTC-SIP-RFC8863-WEBRTC-UDP-PORTS-DEMULTIPLEXING-STUN-DTLS-RTP-RTCP-FIRST-BYTE-PACKET-CLASSIFIER-AND-UNKNOWN-PROTOCOL-DROP-GUARD" as const;
+
+  const invalidFirstByteOrUnboundTurnChannelDropped0ms =
+    input.firstByteOutsideRfc8863ValidStunDtlsRtpTurnChannelRangeDetected ||
+    input.turnChannelDataFrameOnUnboundOrUnauthenticatedChannelNumberAttempted;
+
+  if (invalidFirstByteOrUnboundTurnChannelDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8863UdpDemuxHealthy: false,
+      invalidFirstByteOrUnboundTurnChannelDropped0ms: true,
+      rtpVersionCollisionOrDtlsSpoofingRejected: false,
+      demuxMissRateOrConcurrentFlowCountClamped: false,
+      action: "drop_invalid_first_byte_or_unbound_turn_channel_packet_0ms",
+      blockedReason:
+        "RFC8863_INVALID_FIRST_BYTE_OR_UNBOUND_TURN_CHANNEL_DROPPED_0MS",
+    };
+  }
+
+  const rtpVersionCollisionOrDtlsSpoofingRejected =
+    input.rtpVersionBitsMismatchOrRtcpPayloadTypeCollisionInDemuxDetected ||
+    input.dtlsRecordEpochOrContentTypeSpoofingOnSharedUdpSocketDetected;
+
+  if (rtpVersionCollisionOrDtlsSpoofingRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8863UdpDemuxHealthy: false,
+      invalidFirstByteOrUnboundTurnChannelDropped0ms: false,
+      rtpVersionCollisionOrDtlsSpoofingRejected: true,
+      demuxMissRateOrConcurrentFlowCountClamped: false,
+      action: "reject_rtp_version_collision_or_dtls_record_spoofing",
+      blockedReason:
+        "RFC8863_RTP_VERSION_COLLISION_OR_DTLS_RECORD_SPOOFING_REJECTED",
+    };
+  }
+
+  const demuxMissRateOrConcurrentFlowCountClamped =
+    input.demuxClassificationMissOrMalformedPacketCountPerSec > 20 ||
+    input.concurrentDemuxedProtocolFlowsPerSharedUdpPortCount > 16;
+
+  if (demuxMissRateOrConcurrentFlowCountClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8863UdpDemuxHealthy: false,
+      invalidFirstByteOrUnboundTurnChannelDropped0ms: false,
+      rtpVersionCollisionOrDtlsSpoofingRejected: false,
+      demuxMissRateOrConcurrentFlowCountClamped: true,
+      action: "clamp_demux_miss_rate_or_shared_udp_port_flow_fanout",
+      blockedReason:
+        "RFC8863_DEMUX_MISS_OVER_20_S_OR_FLOWS_OVER_16_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8863UdpDemuxHealthy: true,
+    invalidFirstByteOrUnboundTurnChannelDropped0ms: false,
+    rtpVersionCollisionOrDtlsSpoofingRejected: false,
+    demuxMissRateOrConcurrentFlowCountClamped: false,
+    action: "allow_verified_rfc8863_udp_port_demultiplexing",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
