@@ -48362,6 +48362,182 @@ export function evaluateWebrtcSipRfc8859FrameworkForSdpAttributesWhenMultiplexin
   };
 }
 
+export interface SemiconductorWaferFabToxicAndFlammableGasMonitoringSystemTgmsLifeSafetyMdaChemcassetteAndElectrochemicalDetectorSemiS2SemiS6Nfpa318Osha1910119Osha19101000GuardInput {
+  readonly toxicHydrideOrHalogenTlvRatio: number;
+  readonly flammableGasLelPercent: number;
+  readonly sampleLineVacuumLossOrFlowFaultDetected: boolean;
+  readonly chemcassetteTapeRemainingPercent: number;
+  readonly sensorCalibrationOverdueDays: number;
+  readonly pyrolizerOrOpticalBlockFaultDetected: boolean;
+  readonly tgmsBypassOrSensorReplacementRequested: boolean;
+  readonly redundantPortableGasMonitorAndEgoMatrixTestVerified: boolean;
+  readonly suppliedAirScbaAndOsha1910119LotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabToxicAndFlammableGasMonitoringSystemTgmsLifeSafetyMdaChemcassetteAndElectrochemicalDetectorSemiS2SemiS6Nfpa318Osha1910119Osha19101000GuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "lock_tgms_bypass_until_redundant_monitor_and_scba_loto"
+    | "hold_tool_gas_dispense_and_switch_standby_sampling_point"
+    | "trigger_high_high_ego_esv_trip_and_cleanroom_evacuation_in_0ms";
+  readonly policyId: "P483-SEMICONDUCTOR-WAFER-FAB-TOXIC-AND-FLAMMABLE-GAS-MONITORING-SYSTEM-TGMS-LIFE-SAFETY-MDA-CHEMCASSETTE-AND-ELECTROCHEMICAL-DETECTOR-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-HIGH-HIGH-TLV-EGO-TRIP-TAPE-FLOW-FAULT-HOLD-AND-BYPASS-SCBA-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabToxicAndFlammableGasMonitoringSystemTgmsLifeSafetyMdaChemcassetteAndElectrochemicalDetectorSemiS2SemiS6Nfpa318Osha1910119Osha19101000HighHighTlvEgoTripTapeFlowFaultHoldAndBypassScbaLotoGuard(
+  input: SemiconductorWaferFabToxicAndFlammableGasMonitoringSystemTgmsLifeSafetyMdaChemcassetteAndElectrochemicalDetectorSemiS2SemiS6Nfpa318Osha1910119Osha19101000GuardInput,
+): SemiconductorWaferFabToxicAndFlammableGasMonitoringSystemTgmsLifeSafetyMdaChemcassetteAndElectrochemicalDetectorSemiS2SemiS6Nfpa318Osha1910119Osha19101000GuardResult {
+  const policyId =
+    "P483-SEMICONDUCTOR-WAFER-FAB-TOXIC-AND-FLAMMABLE-GAS-MONITORING-SYSTEM-TGMS-LIFE-SAFETY-MDA-CHEMCASSETTE-AND-ELECTROCHEMICAL-DETECTOR-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-HIGH-HIGH-TLV-EGO-TRIP-TAPE-FLOW-FAULT-HOLD-AND-BYPASS-SCBA-LOTO-GUARD" as const;
+
+  if (
+    input.toxicHydrideOrHalogenTlvRatio >= 1.0 ||
+    input.flammableGasLelPercent >= 20.0
+  ) {
+    return {
+      violated: true,
+      action: "trigger_high_high_ego_esv_trip_and_cleanroom_evacuation_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / NFPA 318 / OSHA 1910.1000 High-High life-safety gas alarm: toxic hydride/halogen concentration >= 1.0 TLV or flammable gas >= 20% LEL; tripping Emergency Gas Off (EGO) ESVs and cleanroom evacuation strobes/horns in 0ms.",
+    };
+  }
+
+  if (
+    input.toxicHydrideOrHalogenTlvRatio >= 0.5 ||
+    input.sampleLineVacuumLossOrFlowFaultDetected ||
+    input.chemcassetteTapeRemainingPercent < 10.0 ||
+    input.sensorCalibrationOverdueDays > 0 ||
+    input.pyrolizerOrOpticalBlockFaultDetected
+  ) {
+    return {
+      violated: true,
+      action: "hold_tool_gas_dispense_and_switch_standby_sampling_point",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S6 TGMS fail-safe interlock: warning level >= 0.5 TLV, extractive sample-line flow loss, Chemcassette tape < 10%, overdue calibration, or pyrolizer/optics fault; holding tool gas dispense and switching to standby TGMS sampling channel.",
+    };
+  }
+
+  if (
+    input.tgmsBypassOrSensorReplacementRequested &&
+    (!input.redundantPortableGasMonitorAndEgoMatrixTestVerified ||
+      !input.suppliedAirScbaAndOsha1910119LotoVerified)
+  ) {
+    return {
+      violated: true,
+      action: "lock_tgms_bypass_until_redundant_monitor_and_scba_loto",
+      policyId,
+      reason:
+        "OSHA 1910.119 / NFPA 318 life-safety interlock: TGMS sensor bypass or Chemcassette replacement prohibited until redundant continuous gas monitoring, EGO cause-and-effect matrix verification, and SCBA LOTO are confirmed.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer Fab TGMS / Life Safety MDA Chemcassette and electrochemical gas detection network operating within SEMI S2 / NFPA 318 limits.",
+  };
+}
+
+export interface WebrtcSipRfc8840SipUsageForTrickleIceSdpfragContentTypeEndOfCandidatesPseudoSdpMidAndIceGenerationMismatchGuardInput {
+  readonly sipInfoTrickleIceMissingSdpfragContentTypeOrInvalidDisposition: boolean;
+  readonly trickleIceReceivedWithoutNegotiatedTrickleIceOptionTagOrSupport: boolean;
+  readonly sdpfragPseudoMlineOrMidMismatchWithActiveDialogSdp: boolean;
+  readonly trickleCandidateIceUfragOrPwdMismatchWithCurrentGeneration: boolean;
+  readonly postEndOfCandidatesSpuriousCandidateInjectionDetected: boolean;
+  readonly trickleCandidatesPerSipInfoSdpfragCount: number;
+  readonly sipInfoTrickleIceRequestsPerSecond: number;
+}
+
+export interface WebrtcSipRfc8840SipUsageForTrickleIceSdpfragContentTypeEndOfCandidatesPseudoSdpMidAndIceGenerationMismatchGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_sdpfrag_candidate_batch_size_and_sip_info_rate"
+    | "reject_sdpfrag_mid_or_ice_generation_ufrag_pwd_mismatch_with_488"
+    | "drop_invalid_sdpfrag_or_unnegotiated_sip_info_trickle_ice_0ms";
+  readonly policyId: "P484-WEBRTC-SIP-RFC8840-SIP-USAGE-FOR-TRICKLE-ICE-SDPFRAG-CONTENT-TYPE-END-OF-CANDIDATES-PSEUDO-SDP-MID-AND-ICE-GENERATION-MISMATCH-GUARD";
+  readonly reason: string;
+  readonly clampedCandidatesPerSdpfragCount: number;
+  readonly clampedSipInfoTrickleIceRequestsPerSecond: number;
+}
+
+export function evaluateWebrtcSipRfc8840SipUsageForTrickleIceSdpfragContentTypeEndOfCandidatesPseudoSdpMidAndIceGenerationMismatchGuard(
+  input: WebrtcSipRfc8840SipUsageForTrickleIceSdpfragContentTypeEndOfCandidatesPseudoSdpMidAndIceGenerationMismatchGuardInput,
+): WebrtcSipRfc8840SipUsageForTrickleIceSdpfragContentTypeEndOfCandidatesPseudoSdpMidAndIceGenerationMismatchGuardResult {
+  const policyId =
+    "P484-WEBRTC-SIP-RFC8840-SIP-USAGE-FOR-TRICKLE-ICE-SDPFRAG-CONTENT-TYPE-END-OF-CANDIDATES-PSEUDO-SDP-MID-AND-ICE-GENERATION-MISMATCH-GUARD" as const;
+  const clampedCandidatesPerSdpfragCount = Math.min(
+    Math.max(1, input.trickleCandidatesPerSipInfoSdpfragCount),
+    16,
+  );
+  const clampedSipInfoTrickleIceRequestsPerSecond = Math.min(
+    Math.max(1, input.sipInfoTrickleIceRequestsPerSecond),
+    20,
+  );
+
+  if (
+    input.sipInfoTrickleIceMissingSdpfragContentTypeOrInvalidDisposition ||
+    input.trickleIceReceivedWithoutNegotiatedTrickleIceOptionTagOrSupport
+  ) {
+    return {
+      violated: true,
+      action: "drop_invalid_sdpfrag_or_unnegotiated_sip_info_trickle_ice_0ms",
+      policyId,
+      reason:
+        "RFC 8840 Section 4 / Section 9 violation: SIP INFO Trickle ICE message missing application/trickle-ice+sdpfrag Content-Type / Info-Package or sent without negotiated trickle-ice support; dropping in 0ms.",
+      clampedCandidatesPerSdpfragCount,
+      clampedSipInfoTrickleIceRequestsPerSecond,
+    };
+  }
+
+  if (
+    input.sdpfragPseudoMlineOrMidMismatchWithActiveDialogSdp ||
+    input.trickleCandidateIceUfragOrPwdMismatchWithCurrentGeneration ||
+    input.postEndOfCandidatesSpuriousCandidateInjectionDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "reject_sdpfrag_mid_or_ice_generation_ufrag_pwd_mismatch_with_488",
+      policyId,
+      reason:
+        "RFC 8840 Section 5 / Section 6 violation: pseudo-SDP m=/a=mid mismatch with active dialog, stale ICE generation ufrag/pwd mismatch, or spurious candidate injection after a=end-of-candidates; rejecting SIP INFO with 488.",
+      clampedCandidatesPerSdpfragCount,
+      clampedSipInfoTrickleIceRequestsPerSecond,
+    };
+  }
+
+  if (
+    input.trickleCandidatesPerSipInfoSdpfragCount > 16 ||
+    input.sipInfoTrickleIceRequestsPerSecond > 20
+  ) {
+    return {
+      violated: true,
+      action: "clamp_sdpfrag_candidate_batch_size_and_sip_info_rate",
+      policyId,
+      reason:
+        "RFC 8840 SIP INFO Trickle ICE signaling flood protection: clamping candidates per application/trickle-ice+sdpfrag body to <= 16 and SIP INFO rate to <= 20 req/s.",
+      clampedCandidatesPerSdpfragCount,
+      clampedSipInfoTrickleIceRequestsPerSecond,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8840 SIP Usage for Trickle ICE (application/trickle-ice+sdpfrag, pseudo-SDP a=mid, ICE generation ufrag/pwd, and end-of-candidates state) verified.",
+    clampedCandidatesPerSdpfragCount,
+    clampedSipInfoTrickleIceRequestsPerSecond,
+  };
+}
+
 
 
 
