@@ -40861,6 +40861,234 @@ export function evaluateWebrtcSipRfc8839SdpIceOfferAnswerUfragPwdEntropyIceMisma
   };
 }
 
+export interface SemiconductorWaferGaaNanosheetSigeSacrificialChannelReleaseEtchInnerSpacerSicnAldAndCapillaryCollapseGuardInput {
+  chamberId: string;
+  fluorineF2GasBoxLeakPpm: number;
+  anhydrousHfExhaustLeakPpm: number;
+  nf3RemotePlasmaLeakPpm: number;
+  sigeToSiIsotropicEtchSelectivityRatio: number;
+  innerSpacerCrescentDepthVariationNm: number;
+  nanosheetCapillaryBeamDeflectionNm: number;
+  chamberLidMaintenanceOpenRequested: boolean;
+  postPurgeResidualF2Ppm: number;
+  postPurgeResidualHfPpm: number;
+  n2PurgeCyclesCompleted: number;
+  scbaAndCalciumGluconateLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferGaaNanosheetSigeSacrificialChannelReleaseEtchInnerSpacerSicnAldAndCapillaryCollapseGuardAssessment {
+  chamberId: string;
+  policyCode: "P411-SEMICONDUCTOR-WAFER-GAA-NANOSHEET-SIGE-SACRIFICIAL-CHANNEL-RELEASE-ETCH-INNER-SPACER-SICN-ALD-AND-CAPILLARY-COLLAPSE-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-F2-HF-NF3-LEAK-TRIP-SELECTIVITY-STICTION-ABORT-AND-SCBA-LOTO-GUARD";
+  gaaNanosheetReleaseAndInnerSpacerSafe: boolean;
+  f2HfNf3VmbAndRpsIsolated0ms: boolean;
+  sigeSelectivityLossOrCapillaryStictionAborted: boolean;
+  chamberMaintenanceLockedUntilF2HfPurgedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_gaa_nanosheet_sige_release_etch_and_inner_spacer_ald"
+    | "trip_f2_hf_nf3_vmb_and_remote_plasma_in_0ms_on_toxic_etchant_leak"
+    | "abort_gaa_release_on_sige_selectivity_loss_inner_spacer_variation_or_capillary_stiction"
+    | "lock_chamber_lid_until_f2_005ppm_hf_05ppm_purge_and_scba_loto";
+  blockedReason:
+    | "none"
+    | "GAA_NANOSHEET_RELEASE_F2_HF_OR_NF3_TOXIC_LEAK_0MS_VMB_RPS_TRIP"
+    | "GAA_SIGE_SELECTIVITY_UNDER_120_INNER_SPACER_CRESCENT_DRIFT_OR_CAPILLARY_STICTION_ABORT"
+    | "CHAMBER_LID_OPEN_BLOCKED_UNTIL_F2_HF_PURGE_AND_SCBA_CALCIUM_GLUCONATE_LOTO";
+}
+
+export function evaluateSemiconductorWaferGaaNanosheetSigeSacrificialChannelReleaseEtchInnerSpacerSicnAldAndCapillaryCollapseSemiS2SemiS6Nfpa318Osha1910119Osha19101000F2HfNf3LeakTripSelectivityStictionAbortAndScbaLotoGuard(
+  input: SemiconductorWaferGaaNanosheetSigeSacrificialChannelReleaseEtchInnerSpacerSicnAldAndCapillaryCollapseGuardInput,
+): SemiconductorWaferGaaNanosheetSigeSacrificialChannelReleaseEtchInnerSpacerSicnAldAndCapillaryCollapseGuardAssessment {
+  const policyCode =
+    "P411-SEMICONDUCTOR-WAFER-GAA-NANOSHEET-SIGE-SACRIFICIAL-CHANNEL-RELEASE-ETCH-INNER-SPACER-SICN-ALD-AND-CAPILLARY-COLLAPSE-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-F2-HF-NF3-LEAK-TRIP-SELECTIVITY-STICTION-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const f2HfNf3VmbAndRpsIsolated0ms =
+    input.fluorineF2GasBoxLeakPpm >= 0.1 ||
+    input.anhydrousHfExhaustLeakPpm >= 1.0 ||
+    input.nf3RemotePlasmaLeakPpm >= 5.0;
+
+  const sigeSelectivityLossOrCapillaryStictionAborted =
+    input.sigeToSiIsotropicEtchSelectivityRatio < 120 ||
+    input.innerSpacerCrescentDepthVariationNm >= 0.8 ||
+    input.nanosheetCapillaryBeamDeflectionNm >= 0.5;
+
+  const chamberMaintenanceLockedUntilF2HfPurgedAndScbaLoto =
+    input.chamberLidMaintenanceOpenRequested &&
+    (input.postPurgeResidualF2Ppm >= 0.05 ||
+      input.postPurgeResidualHfPpm >= 0.5 ||
+      input.n2PurgeCyclesCompleted < 8 ||
+      !input.scbaAndCalciumGluconateLotoVerified);
+
+  if (f2HfNf3VmbAndRpsIsolated0ms) {
+    return {
+      chamberId: input.chamberId,
+      policyCode,
+      gaaNanosheetReleaseAndInnerSpacerSafe: false,
+      f2HfNf3VmbAndRpsIsolated0ms: true,
+      sigeSelectivityLossOrCapillaryStictionAborted,
+      chamberMaintenanceLockedUntilF2HfPurgedAndScbaLoto,
+      action: "trip_f2_hf_nf3_vmb_and_remote_plasma_in_0ms_on_toxic_etchant_leak",
+      blockedReason:
+        "GAA_NANOSHEET_RELEASE_F2_HF_OR_NF3_TOXIC_LEAK_0MS_VMB_RPS_TRIP",
+    };
+  }
+
+  if (sigeSelectivityLossOrCapillaryStictionAborted) {
+    return {
+      chamberId: input.chamberId,
+      policyCode,
+      gaaNanosheetReleaseAndInnerSpacerSafe: false,
+      f2HfNf3VmbAndRpsIsolated0ms: false,
+      sigeSelectivityLossOrCapillaryStictionAborted: true,
+      chamberMaintenanceLockedUntilF2HfPurgedAndScbaLoto,
+      action:
+        "abort_gaa_release_on_sige_selectivity_loss_inner_spacer_variation_or_capillary_stiction",
+      blockedReason:
+        "GAA_SIGE_SELECTIVITY_UNDER_120_INNER_SPACER_CRESCENT_DRIFT_OR_CAPILLARY_STICTION_ABORT",
+    };
+  }
+
+  if (chamberMaintenanceLockedUntilF2HfPurgedAndScbaLoto) {
+    return {
+      chamberId: input.chamberId,
+      policyCode,
+      gaaNanosheetReleaseAndInnerSpacerSafe: false,
+      f2HfNf3VmbAndRpsIsolated0ms: false,
+      sigeSelectivityLossOrCapillaryStictionAborted: false,
+      chamberMaintenanceLockedUntilF2HfPurgedAndScbaLoto: true,
+      action:
+        "lock_chamber_lid_until_f2_005ppm_hf_05ppm_purge_and_scba_loto",
+      blockedReason:
+        "CHAMBER_LID_OPEN_BLOCKED_UNTIL_F2_HF_PURGE_AND_SCBA_CALCIUM_GLUCONATE_LOTO",
+    };
+  }
+
+  return {
+    chamberId: input.chamberId,
+    policyCode,
+    gaaNanosheetReleaseAndInnerSpacerSafe: true,
+    f2HfNf3VmbAndRpsIsolated0ms: false,
+    sigeSelectivityLossOrCapillaryStictionAborted: false,
+    chamberMaintenanceLockedUntilF2HfPurgedAndScbaLoto: false,
+    action: "allow_verified_gaa_nanosheet_sige_release_etch_and_inner_spacer_ald",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8832DataChannelEstablishmentProtocolDcepAndRfc8831SctpOverDtlsGuardInput {
+  sessionId: string;
+  sctpPayloadProtocolId: number;
+  isDcepControlMessage: boolean;
+  dcepHeaderAndUtf8LabelValid: boolean;
+  dtlsRole: "client" | "server";
+  requestedSctpStreamId: number;
+  unnegotiatedSctpStreamResetInjected: boolean;
+  activeDataChannelCount: number;
+  sctpMessageBytes: number;
+  channelBufferedAmountBytes: number;
+}
+
+export interface WebrtcSipRfc8832DataChannelEstablishmentProtocolDcepAndRfc8831SctpOverDtlsGuardAssessment {
+  sessionId: string;
+  policyCode: "P412-WEBRTC-SIP-RFC8832-DATACHANNEL-ESTABLISHMENT-PROTOCOL-DCEP-AND-RFC8831-SCTP-OVER-DTLS-PPID-MISMATCH-STREAM-EXHAUSTION-AND-BUFFER-OVERFLOW-GUARD";
+  rfc8832AndRfc8831DataChannelHealthy: boolean;
+  invalidPpidOrMalformedDcepDropped0ms: boolean;
+  streamParityGlareOrUnnegotiatedResetRejected: boolean;
+  channelExhaustionOrBufferOverflowClamped: boolean;
+  action:
+    | "allow_verified_rfc8832_dcep_and_rfc8831_sctp_over_dtls_datachannel"
+    | "drop_invalid_sctp_ppid_or_malformed_dcep_control_chunk_in_0ms"
+    | "reject_dtls_role_stream_id_parity_glare_reserved_65535_or_unnegotiated_reset"
+    | "clamp_datachannel_stream_exhaustion_max_message_size_or_buffered_amount_overflow";
+  blockedReason:
+    | "none"
+    | "RFC8831_INVALID_SCTP_PPID_OR_RFC8832_MALFORMED_DCEP_CONTROL_CHUNK_DROPPED_0MS"
+    | "RFC8832_DTLS_ROLE_STREAM_ID_PARITY_GLARE_RESERVED_65535_OR_UNNEGOTIATED_RECONFIG_REJECTED"
+    | "RFC8831_SCTP_STREAM_EXHAUSTION_256KB_MESSAGE_OR_16MB_BUFFERED_AMOUNT_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8832DataChannelEstablishmentProtocolDcepAndRfc8831SctpOverDtlsPpidMismatchStreamExhaustionAndBufferOverflowGuard(
+  input: WebrtcSipRfc8832DataChannelEstablishmentProtocolDcepAndRfc8831SctpOverDtlsGuardInput,
+): WebrtcSipRfc8832DataChannelEstablishmentProtocolDcepAndRfc8831SctpOverDtlsGuardAssessment {
+  const policyCode =
+    "P412-WEBRTC-SIP-RFC8832-DATACHANNEL-ESTABLISHMENT-PROTOCOL-DCEP-AND-RFC8831-SCTP-OVER-DTLS-PPID-MISMATCH-STREAM-EXHAUSTION-AND-BUFFER-OVERFLOW-GUARD" as const;
+
+  const validWebrtcPpids = new Set([50, 51, 53, 56, 57]);
+  const invalidPpidOrMalformedDcepDropped0ms =
+    !validWebrtcPpids.has(input.sctpPayloadProtocolId) ||
+    (input.isDcepControlMessage && input.sctpPayloadProtocolId !== 50) ||
+    (!input.isDcepControlMessage && input.sctpPayloadProtocolId === 50) ||
+    !input.dcepHeaderAndUtf8LabelValid;
+
+  const expectedRemainder = input.dtlsRole === "client" ? 0 : 1;
+  const streamParityGlareOrUnnegotiatedResetRejected =
+    input.requestedSctpStreamId < 0 ||
+    input.requestedSctpStreamId >= 65535 ||
+    input.requestedSctpStreamId % 2 !== expectedRemainder ||
+    input.unnegotiatedSctpStreamResetInjected;
+
+  const channelExhaustionOrBufferOverflowClamped =
+    input.activeDataChannelCount > 256 ||
+    input.sctpMessageBytes > 262144 ||
+    input.channelBufferedAmountBytes > 16777216;
+
+  if (invalidPpidOrMalformedDcepDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8832AndRfc8831DataChannelHealthy: false,
+      invalidPpidOrMalformedDcepDropped0ms: true,
+      streamParityGlareOrUnnegotiatedResetRejected,
+      channelExhaustionOrBufferOverflowClamped,
+      action: "drop_invalid_sctp_ppid_or_malformed_dcep_control_chunk_in_0ms",
+      blockedReason:
+        "RFC8831_INVALID_SCTP_PPID_OR_RFC8832_MALFORMED_DCEP_CONTROL_CHUNK_DROPPED_0MS",
+    };
+  }
+
+  if (streamParityGlareOrUnnegotiatedResetRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8832AndRfc8831DataChannelHealthy: false,
+      invalidPpidOrMalformedDcepDropped0ms: false,
+      streamParityGlareOrUnnegotiatedResetRejected: true,
+      channelExhaustionOrBufferOverflowClamped,
+      action:
+        "reject_dtls_role_stream_id_parity_glare_reserved_65535_or_unnegotiated_reset",
+      blockedReason:
+        "RFC8832_DTLS_ROLE_STREAM_ID_PARITY_GLARE_RESERVED_65535_OR_UNNEGOTIATED_RECONFIG_REJECTED",
+    };
+  }
+
+  if (channelExhaustionOrBufferOverflowClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8832AndRfc8831DataChannelHealthy: false,
+      invalidPpidOrMalformedDcepDropped0ms: false,
+      streamParityGlareOrUnnegotiatedResetRejected: false,
+      channelExhaustionOrBufferOverflowClamped: true,
+      action:
+        "clamp_datachannel_stream_exhaustion_max_message_size_or_buffered_amount_overflow",
+      blockedReason:
+        "RFC8831_SCTP_STREAM_EXHAUSTION_256KB_MESSAGE_OR_16MB_BUFFERED_AMOUNT_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8832AndRfc8831DataChannelHealthy: true,
+    invalidPpidOrMalformedDcepDropped0ms: false,
+    streamParityGlareOrUnnegotiatedResetRejected: false,
+    channelExhaustionOrBufferOverflowClamped: false,
+    action:
+      "allow_verified_rfc8832_dcep_and_rfc8831_sctp_over_dtls_datachannel",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
