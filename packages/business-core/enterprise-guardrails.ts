@@ -42201,5 +42201,222 @@ export function evaluateWebrtcSipRfc8838TrickleIceCandidateNominationPriorityPac
   };
 }
 
+export interface SemiconductorWafer2dTmdcMos2Ws2Wse2MocvdMonolithicChannelGrowthVanDerWaalsEpitaxyAndBiSbSemimetalContactMetallizationSemiS2SemiS6Nfpa318Osha1910119Osha19101000H2seH2sMoco6TripMonolayerContactAbortAndScbaLotoGuardInput {
+  tmdcMocvdModuleId: string;
+  hydrogenSelenideH2seLeakPpm: number;
+  hydrogenSulfideH2sLeakPpm: number;
+  molybdenumOrTungstenHexacarbonylLeakMgPerM3: number;
+  monolayerGrainVacancyOrBilayerOvergrowthPct: number;
+  biSbSemimetalContactResistanceOhmUm: number;
+  beolBackEndSubstrateTemperatureC: number;
+  mocvdReactorLidOpenRequested: boolean;
+  postCoolSusceptorTemperatureC: number;
+  postPurgeResidualH2sePpm: number;
+  postPurgeResidualH2sPpm: number;
+  scbaAndPrecursorLotoVerified: boolean;
+}
+
+export interface SemiconductorWafer2dTmdcMos2Ws2Wse2MocvdMonolithicChannelGrowthVanDerWaalsEpitaxyAndBiSbSemimetalContactMetallizationSemiS2SemiS6Nfpa318Osha1910119Osha19101000H2seH2sMoco6TripMonolayerContactAbortAndScbaLotoGuardAssessment {
+  tmdcMocvdModuleId: string;
+  policyCode: "P423-SEMICONDUCTOR-WAFER-2D-TMDC-MOS2-WS2-WSE2-MOCVD-MONOLITHIC-CHANNEL-GROWTH-VAN-DER-WAALS-EPITAXY-AND-BI-SB-SEMIMETAL-CONTACT-METALLIZATION-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-H2SE-H2S-MOCO6-TRIP-MONOLAYER-CONTACT-ABORT-AND-SCBA-LOTO-GUARD";
+  tmdc2dChannelMocvdAndBiSbContactSafe: boolean;
+  h2seH2sOrHexacarbonylLeakTripped0ms: boolean;
+  monolayerDefectBiSbContactOrBeolThermalBudgetAborted: boolean;
+  reactorLidLockedUntilCooledPurgedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_2d_tmdc_mocvd_monolayer_growth_and_bi_sb_semimetal_contact"
+    | "trip_tmdc_mocvd_vmb_in_0ms_and_route_h2se_h2s_moco6_to_chemsorb_abatement"
+    | "abort_tmdc_growth_on_monolayer_vacancy_bi_sb_contact_resistance_or_beol_overtemp"
+    | "lock_tmdc_mocvd_reactor_lid_until_50c_001ppm_h2se_02ppm_h2s_and_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWafer2dTmdcMos2Ws2Wse2MocvdMonolithicChannelGrowthVanDerWaalsEpitaxyAndBiSbSemimetalContactMetallizationSemiS2SemiS6Nfpa318Osha1910119Osha19101000H2seH2sMoco6TripMonolayerContactAbortAndScbaLotoGuard(
+  input: SemiconductorWafer2dTmdcMos2Ws2Wse2MocvdMonolithicChannelGrowthVanDerWaalsEpitaxyAndBiSbSemimetalContactMetallizationSemiS2SemiS6Nfpa318Osha1910119Osha19101000H2seH2sMoco6TripMonolayerContactAbortAndScbaLotoGuardInput,
+): SemiconductorWafer2dTmdcMos2Ws2Wse2MocvdMonolithicChannelGrowthVanDerWaalsEpitaxyAndBiSbSemimetalContactMetallizationSemiS2SemiS6Nfpa318Osha1910119Osha19101000H2seH2sMoco6TripMonolayerContactAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P423-SEMICONDUCTOR-WAFER-2D-TMDC-MOS2-WS2-WSE2-MOCVD-MONOLITHIC-CHANNEL-GROWTH-VAN-DER-WAALS-EPITAXY-AND-BI-SB-SEMIMETAL-CONTACT-METALLIZATION-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-H2SE-H2S-MOCO6-TRIP-MONOLAYER-CONTACT-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const h2seH2sOrHexacarbonylLeakTripped0ms =
+    input.hydrogenSelenideH2seLeakPpm >= 0.05 ||
+    input.hydrogenSulfideH2sLeakPpm >= 1.0 ||
+    input.molybdenumOrTungstenHexacarbonylLeakMgPerM3 >= 0.1;
+
+  const monolayerDefectBiSbContactOrBeolThermalBudgetAborted =
+    input.monolayerGrainVacancyOrBilayerOvergrowthPct >= 2.0 ||
+    input.biSbSemimetalContactResistanceOhmUm >= 200.0 ||
+    input.beolBackEndSubstrateTemperatureC >= 450.0;
+
+  const reactorLidLockedUntilCooledPurgedAndScbaLoto =
+    input.mocvdReactorLidOpenRequested &&
+    (input.postCoolSusceptorTemperatureC >= 50.0 ||
+      input.postPurgeResidualH2sePpm >= 0.01 ||
+      input.postPurgeResidualH2sPpm >= 0.2 ||
+      !input.scbaAndPrecursorLotoVerified);
+
+  if (h2seH2sOrHexacarbonylLeakTripped0ms) {
+    return {
+      tmdcMocvdModuleId: input.tmdcMocvdModuleId,
+      policyCode,
+      tmdc2dChannelMocvdAndBiSbContactSafe: false,
+      h2seH2sOrHexacarbonylLeakTripped0ms: true,
+      monolayerDefectBiSbContactOrBeolThermalBudgetAborted,
+      reactorLidLockedUntilCooledPurgedAndScbaLoto,
+      action:
+        "trip_tmdc_mocvd_vmb_in_0ms_and_route_h2se_h2s_moco6_to_chemsorb_abatement",
+      blockedReason:
+        "SEMIS2_OSHA19101000_H2SE_005PPM_H2S_1PPM_OR_HEXACARBONYL_01MG_M3_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (monolayerDefectBiSbContactOrBeolThermalBudgetAborted) {
+    return {
+      tmdcMocvdModuleId: input.tmdcMocvdModuleId,
+      policyCode,
+      tmdc2dChannelMocvdAndBiSbContactSafe: false,
+      h2seH2sOrHexacarbonylLeakTripped0ms: false,
+      monolayerDefectBiSbContactOrBeolThermalBudgetAborted: true,
+      reactorLidLockedUntilCooledPurgedAndScbaLoto,
+      action:
+        "abort_tmdc_growth_on_monolayer_vacancy_bi_sb_contact_resistance_or_beol_overtemp",
+      blockedReason:
+        "TMDC_MONOLAYER_VACANCY_2PCT_BI_SB_CONTACT_200OHM_UM_OR_BEOL_450C_OVERTEMP_ABORTED",
+    };
+  }
+
+  if (reactorLidLockedUntilCooledPurgedAndScbaLoto) {
+    return {
+      tmdcMocvdModuleId: input.tmdcMocvdModuleId,
+      policyCode,
+      tmdc2dChannelMocvdAndBiSbContactSafe: false,
+      h2seH2sOrHexacarbonylLeakTripped0ms: false,
+      monolayerDefectBiSbContactOrBeolThermalBudgetAborted: false,
+      reactorLidLockedUntilCooledPurgedAndScbaLoto: true,
+      action:
+        "lock_tmdc_mocvd_reactor_lid_until_50c_001ppm_h2se_02ppm_h2s_and_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_TMDC_MOCVD_LID_LOCKED_UNTIL_50C_001PPM_H2SE_02PPM_H2S_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    tmdcMocvdModuleId: input.tmdcMocvdModuleId,
+    policyCode,
+    tmdc2dChannelMocvdAndBiSbContactSafe: true,
+    h2seH2sOrHexacarbonylLeakTripped0ms: false,
+    monolayerDefectBiSbContactOrBeolThermalBudgetAborted: false,
+    reactorLidLockedUntilCooledPurgedAndScbaLoto: false,
+    action:
+      "allow_verified_2d_tmdc_mocvd_monolayer_growth_and_bi_sb_semimetal_contact",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8854WebrtcFecArchitectureOpusInBandFecAndRfc8627Flexfec03RedundancyAdaptationAndBurstLossRecoveryGuardInput {
+  sessionId: string;
+  flexfec03ProtectedSsrcMatchesActiveMediaStream: boolean;
+  flexfec03RBitAndKBitMaskLayoutValid: boolean;
+  simultaneousRed2198AndFlexfec03SameAudioFrameInjected: boolean;
+  packetLossRatePct: number;
+  opusUseinbandfecEnabledWhenLossAtLeast2Pct: boolean;
+  fecBitrateShareOfCongestionWindowPct: number;
+  flexfec03RepairWindowFrames: number;
+  flexfec03RecoveryBufferDelayMs: number;
+}
+
+export interface WebrtcSipRfc8854WebrtcFecArchitectureOpusInBandFecAndRfc8627Flexfec03RedundancyAdaptationAndBurstLossRecoveryGuardAssessment {
+  sessionId: string;
+  policyCode: "P424-WEBRTC-SIP-RFC8854-WEBRTC-FEC-ARCHITECTURE-OPUS-IN-BAND-FEC-AND-RFC8627-FLEXFEC-03-REDUNDANCY-ADAPTATION-AND-BURST-LOSS-RECOVERY-GUARD";
+  rfc8854WebrtcFecAndRfc8627Flexfec03Healthy: boolean;
+  unmappedProtectedSsrcInvalidBitmaskOrDualRedFlexfecDropped0ms: boolean;
+  disabledOpusInbandFecOrExcessiveFecCongestionShareRejected: boolean;
+  oversizedFlexfec03RepairWindowOrBufferDelayClamped: boolean;
+  action:
+    | "allow_verified_rfc8854_opus_inband_fec_and_rfc8627_flexfec_03_recovery"
+    | "drop_rfc8627_flexfec_03_unmapped_ssrc_invalid_mask_or_dual_red_flexfec_0ms"
+    | "reject_disabled_opus_inband_fec_under_loss_or_over_50pct_fec_congestion_share"
+    | "clamp_rfc8627_flexfec_03_repair_window_48_frames_or_120ms_recovery_delay";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8854WebrtcFecArchitectureOpusInBandFecAndRfc8627Flexfec03RedundancyAdaptationAndBurstLossRecoveryGuard(
+  input: WebrtcSipRfc8854WebrtcFecArchitectureOpusInBandFecAndRfc8627Flexfec03RedundancyAdaptationAndBurstLossRecoveryGuardInput,
+): WebrtcSipRfc8854WebrtcFecArchitectureOpusInBandFecAndRfc8627Flexfec03RedundancyAdaptationAndBurstLossRecoveryGuardAssessment {
+  const policyCode =
+    "P424-WEBRTC-SIP-RFC8854-WEBRTC-FEC-ARCHITECTURE-OPUS-IN-BAND-FEC-AND-RFC8627-FLEXFEC-03-REDUNDANCY-ADAPTATION-AND-BURST-LOSS-RECOVERY-GUARD" as const;
+
+  const unmappedProtectedSsrcInvalidBitmaskOrDualRedFlexfecDropped0ms =
+    !input.flexfec03ProtectedSsrcMatchesActiveMediaStream ||
+    !input.flexfec03RBitAndKBitMaskLayoutValid ||
+    input.simultaneousRed2198AndFlexfec03SameAudioFrameInjected;
+
+  const disabledOpusInbandFecOrExcessiveFecCongestionShareRejected =
+    (input.packetLossRatePct >= 2.0 &&
+      !input.opusUseinbandfecEnabledWhenLossAtLeast2Pct) ||
+    input.fecBitrateShareOfCongestionWindowPct > 50.0;
+
+  const oversizedFlexfec03RepairWindowOrBufferDelayClamped =
+    input.flexfec03RepairWindowFrames > 48 ||
+    input.flexfec03RecoveryBufferDelayMs > 120.0;
+
+  if (unmappedProtectedSsrcInvalidBitmaskOrDualRedFlexfecDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8854WebrtcFecAndRfc8627Flexfec03Healthy: false,
+      unmappedProtectedSsrcInvalidBitmaskOrDualRedFlexfecDropped0ms: true,
+      disabledOpusInbandFecOrExcessiveFecCongestionShareRejected,
+      oversizedFlexfec03RepairWindowOrBufferDelayClamped,
+      action:
+        "drop_rfc8627_flexfec_03_unmapped_ssrc_invalid_mask_or_dual_red_flexfec_0ms",
+      blockedReason:
+        "RFC8854_RFC8627_FLEXFEC_03_UNMAPPED_SSRC_INVALID_MASK_OR_DUAL_RED_FLEXFEC_DROPPED_0MS",
+    };
+  }
+
+  if (disabledOpusInbandFecOrExcessiveFecCongestionShareRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8854WebrtcFecAndRfc8627Flexfec03Healthy: false,
+      unmappedProtectedSsrcInvalidBitmaskOrDualRedFlexfecDropped0ms: false,
+      disabledOpusInbandFecOrExcessiveFecCongestionShareRejected: true,
+      oversizedFlexfec03RepairWindowOrBufferDelayClamped,
+      action:
+        "reject_disabled_opus_inband_fec_under_loss_or_over_50pct_fec_congestion_share",
+      blockedReason:
+        "RFC8854_OPUS_INBAND_FEC_DISABLED_AT_2PCT_LOSS_OR_OVER_50PCT_FEC_CONGESTION_SHARE_REJECTED",
+    };
+  }
+
+  if (oversizedFlexfec03RepairWindowOrBufferDelayClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8854WebrtcFecAndRfc8627Flexfec03Healthy: false,
+      unmappedProtectedSsrcInvalidBitmaskOrDualRedFlexfecDropped0ms: false,
+      disabledOpusInbandFecOrExcessiveFecCongestionShareRejected: false,
+      oversizedFlexfec03RepairWindowOrBufferDelayClamped: true,
+      action:
+        "clamp_rfc8627_flexfec_03_repair_window_48_frames_or_120ms_recovery_delay",
+      blockedReason:
+        "RFC8627_FLEXFEC_03_REPAIR_WINDOW_OVER_48_FRAMES_OR_OVER_120MS_RECOVERY_DELAY_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8854WebrtcFecAndRfc8627Flexfec03Healthy: true,
+    unmappedProtectedSsrcInvalidBitmaskOrDualRedFlexfecDropped0ms: false,
+    disabledOpusInbandFecOrExcessiveFecCongestionShareRejected: false,
+    oversizedFlexfec03RepairWindowOrBufferDelayClamped: false,
+    action:
+      "allow_verified_rfc8854_opus_inband_fec_and_rfc8627_flexfec_03_recovery",
+    blockedReason: "none",
+  };
+}
+
+
 
 
