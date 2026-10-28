@@ -45358,6 +45358,218 @@ export function evaluateWebrtcSipRfc8840WebrtcIcePacemakerTaTimerConnectivityChe
   };
 }
 
+export interface SemiconductorWaferFinalTestSystemLevelTestSltAndHighTemperatureOperatingLifeHtolBurnInChamberSemiS2SemiS8Nfpa318Nfpa86Nfpa70eOsha19101000ThermalRunawaySmokeDiCoolantLeakTripLatchupVddOverstressAbortAndArcFlashLotoGuardInput {
+  htolSltBurnInChamberId: string;
+  burnInOvenSmokeCoOrFluorinatedDielectricCoolantVaporLeakPpm: number;
+  socketBoardPowerRailThermalRunawayRateCPerSec: number;
+  vddCoreOvervoltageOrIddqLatchupCurrentDrawRatio: number;
+  dutJunctionTemperatureTjMaxC: number;
+  burnInSocketContactResistanceMilliohm: number;
+  burnInChamberOrLoadBoardDoorOpenRequested: boolean;
+  postCooldownChamberAndHeatsinkTemperatureC: number;
+  dcBusbarCapacitorResidualVoltageV: number;
+  highCurrentPsuDisconnectAndNfpa70eLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFinalTestSystemLevelTestSltAndHighTemperatureOperatingLifeHtolBurnInChamberSemiS2SemiS8Nfpa318Nfpa86Nfpa70eOsha19101000ThermalRunawaySmokeDiCoolantLeakTripLatchupVddOverstressAbortAndArcFlashLotoGuardAssessment {
+  htolSltBurnInChamberId: string;
+  policyCode: "P453-SEMICONDUCTOR-WAFER-FINAL-TEST-SYSTEM-LEVEL-TEST-SLT-AND-HIGH-TEMPERATURE-OPERATING-LIFE-HTOL-BURN-IN-CHAMBER-SEMIS2-SEMIS8-NFPA318-NFPA86-NFPA70E-OSHA19101000-THERMAL-RUNAWAY-SMOKE-DI-COOLANT-LEAK-TRIP-LATCHUP-VDD-OVERSTRESS-ABORT-AND-ARC-FLASH-LOTO-GUARD";
+  htolSltBurnInChamberSafe: boolean;
+  smokeCoolantVaporOrThermalRunawayTripped0ms: boolean;
+  vddLatchupTjOverstressOrSocketResistanceAborted: boolean;
+  chamberLockedUntilCoolZeroEnergyAndNfpa70eLoto: boolean;
+  action:
+    | "allow_verified_htol_burn_in_and_slt_system_level_test"
+    | "trip_burn_in_psu_busbars_and_heaters_in_0ms_and_engage_scrubber"
+    | "abort_htol_slt_on_vdd_latchup_tj_overstress_or_socket_degradation"
+    | "lock_burn_in_chamber_until_cool_below_50c_busbar_below_5v_and_nfpa70e_loto";
+  blockedReason:
+    | "none"
+    | "SEMIS2_NFPA86_NFPA70E_SMOKE_COOLANT_5PPM_OR_THERMAL_RUNAWAY_5C_S_TRIPPED_0MS"
+    | "HTOL_SLT_VDD_LATCHUP_115X_TJ_150C_OR_SOCKET_RESISTANCE_100MOHM_ABORTED"
+    | "SEMIS2_NFPA70E_BURN_IN_CHAMBER_LOCKED_UNTIL_50C_5V_AND_ARC_FLASH_LOTO";
+}
+
+export function evaluateSemiconductorWaferFinalTestSystemLevelTestSltAndHighTemperatureOperatingLifeHtolBurnInChamberSemiS2SemiS8Nfpa318Nfpa86Nfpa70eOsha19101000ThermalRunawaySmokeDiCoolantLeakTripLatchupVddOverstressAbortAndArcFlashLotoGuard(
+  input: SemiconductorWaferFinalTestSystemLevelTestSltAndHighTemperatureOperatingLifeHtolBurnInChamberSemiS2SemiS8Nfpa318Nfpa86Nfpa70eOsha19101000ThermalRunawaySmokeDiCoolantLeakTripLatchupVddOverstressAbortAndArcFlashLotoGuardInput,
+): SemiconductorWaferFinalTestSystemLevelTestSltAndHighTemperatureOperatingLifeHtolBurnInChamberSemiS2SemiS8Nfpa318Nfpa86Nfpa70eOsha19101000ThermalRunawaySmokeDiCoolantLeakTripLatchupVddOverstressAbortAndArcFlashLotoGuardAssessment {
+  const policyCode =
+    "P453-SEMICONDUCTOR-WAFER-FINAL-TEST-SYSTEM-LEVEL-TEST-SLT-AND-HIGH-TEMPERATURE-OPERATING-LIFE-HTOL-BURN-IN-CHAMBER-SEMIS2-SEMIS8-NFPA318-NFPA86-NFPA70E-OSHA19101000-THERMAL-RUNAWAY-SMOKE-DI-COOLANT-LEAK-TRIP-LATCHUP-VDD-OVERSTRESS-ABORT-AND-ARC-FLASH-LOTO-GUARD" as const;
+
+  const smokeCoolantVaporOrThermalRunawayTripped0ms =
+    input.burnInOvenSmokeCoOrFluorinatedDielectricCoolantVaporLeakPpm >= 5.0 ||
+    input.socketBoardPowerRailThermalRunawayRateCPerSec >= 5.0;
+
+  const vddLatchupTjOverstressOrSocketResistanceAborted =
+    input.vddCoreOvervoltageOrIddqLatchupCurrentDrawRatio >= 1.15 ||
+    input.dutJunctionTemperatureTjMaxC >= 150.0 ||
+    input.burnInSocketContactResistanceMilliohm >= 100.0;
+
+  const chamberLockedUntilCoolZeroEnergyAndNfpa70eLoto =
+    input.burnInChamberOrLoadBoardDoorOpenRequested &&
+    (input.postCooldownChamberAndHeatsinkTemperatureC >= 50.0 ||
+      input.dcBusbarCapacitorResidualVoltageV >= 5.0 ||
+      !input.highCurrentPsuDisconnectAndNfpa70eLotoVerified);
+
+  if (smokeCoolantVaporOrThermalRunawayTripped0ms) {
+    return {
+      htolSltBurnInChamberId: input.htolSltBurnInChamberId,
+      policyCode,
+      htolSltBurnInChamberSafe: false,
+      smokeCoolantVaporOrThermalRunawayTripped0ms: true,
+      vddLatchupTjOverstressOrSocketResistanceAborted,
+      chamberLockedUntilCoolZeroEnergyAndNfpa70eLoto,
+      action:
+        "trip_burn_in_psu_busbars_and_heaters_in_0ms_and_engage_scrubber",
+      blockedReason:
+        "SEMIS2_NFPA86_NFPA70E_SMOKE_COOLANT_5PPM_OR_THERMAL_RUNAWAY_5C_S_TRIPPED_0MS",
+    };
+  }
+
+  if (vddLatchupTjOverstressOrSocketResistanceAborted) {
+    return {
+      htolSltBurnInChamberId: input.htolSltBurnInChamberId,
+      policyCode,
+      htolSltBurnInChamberSafe: false,
+      smokeCoolantVaporOrThermalRunawayTripped0ms: false,
+      vddLatchupTjOverstressOrSocketResistanceAborted: true,
+      chamberLockedUntilCoolZeroEnergyAndNfpa70eLoto,
+      action:
+        "abort_htol_slt_on_vdd_latchup_tj_overstress_or_socket_degradation",
+      blockedReason:
+        "HTOL_SLT_VDD_LATCHUP_115X_TJ_150C_OR_SOCKET_RESISTANCE_100MOHM_ABORTED",
+    };
+  }
+
+  if (chamberLockedUntilCoolZeroEnergyAndNfpa70eLoto) {
+    return {
+      htolSltBurnInChamberId: input.htolSltBurnInChamberId,
+      policyCode,
+      htolSltBurnInChamberSafe: false,
+      smokeCoolantVaporOrThermalRunawayTripped0ms: false,
+      vddLatchupTjOverstressOrSocketResistanceAborted: false,
+      chamberLockedUntilCoolZeroEnergyAndNfpa70eLoto: true,
+      action:
+        "lock_burn_in_chamber_until_cool_below_50c_busbar_below_5v_and_nfpa70e_loto",
+      blockedReason:
+        "SEMIS2_NFPA70E_BURN_IN_CHAMBER_LOCKED_UNTIL_50C_5V_AND_ARC_FLASH_LOTO",
+    };
+  }
+
+  return {
+    htolSltBurnInChamberId: input.htolSltBurnInChamberId,
+    policyCode,
+    htolSltBurnInChamberSafe: true,
+    smokeCoolantVaporOrThermalRunawayTripped0ms: false,
+    vddLatchupTjOverstressOrSocketResistanceAborted: false,
+    chamberLockedUntilCoolZeroEnergyAndNfpa70eLoto: false,
+    action: "allow_verified_htol_burn_in_and_slt_system_level_test",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8862WebrtcMediaConfidentialityAndPrivacyDtlsSrtpMandatoryEnforcementCleartextRtpRejectionAndConsentRevocationGuardInput {
+  sessionId: string;
+  unencryptedRtpSavpOrCleartextSdesKeyExchangeAttempted: boolean;
+  mediaPayloadsTransmittedBeforeDtlsSrtpHandshakeAndIceConsentVerified: boolean;
+  userMicrophoneCameraConsentRevokedWithoutImmediateTrackMuteAndZeroFill: boolean;
+  crossOriginCnameOrDeviceIdTrackingLeakAcrossBrowsingContextsDetected: boolean;
+  concurrentActiveMediaCaptureTracksPerOriginCount: number;
+  dtlsSrtpMasterKeyLifetimeWithoutRekeySeconds: number;
+}
+
+export interface WebrtcSipRfc8862WebrtcMediaConfidentialityAndPrivacyDtlsSrtpMandatoryEnforcementCleartextRtpRejectionAndConsentRevocationGuardAssessment {
+  sessionId: string;
+  policyCode: "P454-WEBRTC-SIP-RFC8862-WEBRTC-MEDIA-CONFIDENTIALITY-AND-PRIVACY-DTLS-SRTP-MANDATORY-ENFORCEMENT-CLEARTEXT-RTP-REJECTION-AND-CONSENT-REVOCATION-GUARD";
+  rfc8862MediaConfidentialityHealthy: boolean;
+  cleartextRtpSdesOrPreConsentMediaDropped0ms: boolean;
+  unrevokedCaptureMuteOrCrossOriginCnameLeakRejected: boolean;
+  captureTrackCountOrMasterKeyLifetimeClamped: boolean;
+  action:
+    | "allow_verified_rfc8862_webrtc_media_confidentiality_and_privacy"
+    | "drop_cleartext_rtp_sdes_or_pre_consent_media_0ms"
+    | "reject_unmuted_revoked_capture_or_cross_origin_cname_leak"
+    | "clamp_concurrent_capture_tracks_or_force_dtls_srtp_rekey";
+  blockedReason:
+    | "none"
+    | "RFC8862_CLEARTEXT_RTP_SDES_OR_PRE_CONSENT_MEDIA_DROPPED_0MS"
+    | "RFC8862_UNMUTED_REVOKED_CAPTURE_OR_CROSS_ORIGIN_CNAME_LEAK_REJECTED"
+    | "RFC8862_CAPTURE_TRACKS_OVER_8_OR_SRTP_KEY_LIFETIME_OVER_3600S_CLAMPED";
+}
+
+export function evaluateWebrtcSipRfc8862WebrtcMediaConfidentialityAndPrivacyDtlsSrtpMandatoryEnforcementCleartextRtpRejectionAndConsentRevocationGuard(
+  input: WebrtcSipRfc8862WebrtcMediaConfidentialityAndPrivacyDtlsSrtpMandatoryEnforcementCleartextRtpRejectionAndConsentRevocationGuardInput,
+): WebrtcSipRfc8862WebrtcMediaConfidentialityAndPrivacyDtlsSrtpMandatoryEnforcementCleartextRtpRejectionAndConsentRevocationGuardAssessment {
+  const policyCode =
+    "P454-WEBRTC-SIP-RFC8862-WEBRTC-MEDIA-CONFIDENTIALITY-AND-PRIVACY-DTLS-SRTP-MANDATORY-ENFORCEMENT-CLEARTEXT-RTP-REJECTION-AND-CONSENT-REVOCATION-GUARD" as const;
+
+  const cleartextRtpSdesOrPreConsentMediaDropped0ms =
+    input.unencryptedRtpSavpOrCleartextSdesKeyExchangeAttempted ||
+    input.mediaPayloadsTransmittedBeforeDtlsSrtpHandshakeAndIceConsentVerified;
+
+  const unrevokedCaptureMuteOrCrossOriginCnameLeakRejected =
+    input.userMicrophoneCameraConsentRevokedWithoutImmediateTrackMuteAndZeroFill ||
+    input.crossOriginCnameOrDeviceIdTrackingLeakAcrossBrowsingContextsDetected;
+
+  const captureTrackCountOrMasterKeyLifetimeClamped =
+    input.concurrentActiveMediaCaptureTracksPerOriginCount > 8 ||
+    input.dtlsSrtpMasterKeyLifetimeWithoutRekeySeconds > 3600;
+
+  if (cleartextRtpSdesOrPreConsentMediaDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8862MediaConfidentialityHealthy: false,
+      cleartextRtpSdesOrPreConsentMediaDropped0ms: true,
+      unrevokedCaptureMuteOrCrossOriginCnameLeakRejected,
+      captureTrackCountOrMasterKeyLifetimeClamped,
+      action: "drop_cleartext_rtp_sdes_or_pre_consent_media_0ms",
+      blockedReason:
+        "RFC8862_CLEARTEXT_RTP_SDES_OR_PRE_CONSENT_MEDIA_DROPPED_0MS",
+    };
+  }
+
+  if (unrevokedCaptureMuteOrCrossOriginCnameLeakRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8862MediaConfidentialityHealthy: false,
+      cleartextRtpSdesOrPreConsentMediaDropped0ms: false,
+      unrevokedCaptureMuteOrCrossOriginCnameLeakRejected: true,
+      captureTrackCountOrMasterKeyLifetimeClamped,
+      action: "reject_unmuted_revoked_capture_or_cross_origin_cname_leak",
+      blockedReason:
+        "RFC8862_UNMUTED_REVOKED_CAPTURE_OR_CROSS_ORIGIN_CNAME_LEAK_REJECTED",
+    };
+  }
+
+  if (captureTrackCountOrMasterKeyLifetimeClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8862MediaConfidentialityHealthy: false,
+      cleartextRtpSdesOrPreConsentMediaDropped0ms: false,
+      unrevokedCaptureMuteOrCrossOriginCnameLeakRejected: false,
+      captureTrackCountOrMasterKeyLifetimeClamped: true,
+      action: "clamp_concurrent_capture_tracks_or_force_dtls_srtp_rekey",
+      blockedReason:
+        "RFC8862_CAPTURE_TRACKS_OVER_8_OR_SRTP_KEY_LIFETIME_OVER_3600S_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8862MediaConfidentialityHealthy: true,
+    cleartextRtpSdesOrPreConsentMediaDropped0ms: false,
+    unrevokedCaptureMuteOrCrossOriginCnameLeakRejected: false,
+    captureTrackCountOrMasterKeyLifetimeClamped: false,
+    action: "allow_verified_rfc8862_webrtc_media_confidentiality_and_privacy",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
