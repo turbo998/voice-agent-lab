@@ -42417,6 +42417,216 @@ export function evaluateWebrtcSipRfc8854WebrtcFecArchitectureOpusInBandFecAndRfc
   };
 }
 
+export interface SemiconductorWafer3dDeepTrenchSiliconCapacitorEdramIpdBoschDrieSf6C4f8ConformalZazZro2Al2o3HighKaldAndTinTicl4Nh3ElectrodeFillSemiS2SemiS6Nfpa318Osha1910119Osha19101000TmaTicl4HfTripTrenchVoidLeakageAbortAndScbaLotoGuardInput {
+  trenchCapacitorModuleId: string;
+  pyrophoricTmaOrZrPrecursorLeakPpm: number;
+  corrosiveTicl4HclOrHfExhaustPpm: number;
+  nh3ForelineAmmoniumChlorideDeltaPKpa: number;
+  deepTrenchAspectRatioPinchOffVoidPct: number;
+  zazDielectricEquivalentOxideThicknessLeakageAmpPerCm2: number;
+  trenchToTrenchBridgeBowDeviationNm: number;
+  aldOrDrieChamberLidOpenRequested: boolean;
+  postCoolChuckTemperatureC: number;
+  postPurgeResidualHclHfNh3Ppm: number;
+  scbaAndPrecursorAmpouleLotoVerified: boolean;
+}
+
+export interface SemiconductorWafer3dDeepTrenchSiliconCapacitorEdramIpdBoschDrieSf6C4f8ConformalZazZro2Al2o3HighKaldAndTinTicl4Nh3ElectrodeFillSemiS2SemiS6Nfpa318Osha1910119Osha19101000TmaTicl4HfTripTrenchVoidLeakageAbortAndScbaLotoGuardAssessment {
+  trenchCapacitorModuleId: string;
+  policyCode: "P425-SEMICONDUCTOR-WAFER-3D-DEEP-TRENCH-SILICON-CAPACITOR-EDRAM-IPD-BOSCH-DRIE-SF6-C4F8-CONFORMAL-ZAZ-ZRO2-AL2O3-HIGH-K-ALD-AND-TIN-TICL4-NH3-ELECTRODE-FILL-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-TMA-TICL4-HF-TRIP-TRENCH-VOID-LEAKAGE-ABORT-AND-SCBA-LOTO-GUARD";
+  deepTrench3dCapacitorZazAldAndTinFillSafe: boolean;
+  tmaTicl4HfLeakOrNh4clForelineClogTripped0ms: boolean;
+  trenchPinchOffVoidZazLeakageOrBowBridgeAborted: boolean;
+  chamberLockedUntilCooledPurgedAndScbaLoto: boolean;
+  action:
+    | "allow_verified_3d_deep_trench_capacitor_drie_zaz_ald_and_tin_fill"
+    | "trip_tma_zr_ticl4_vmb_in_0ms_and_isolate_nh4cl_foreline_clog"
+    | "abort_3d_trench_capacitor_on_pinch_off_void_zaz_leakage_or_trench_bow_bridge"
+    | "lock_drie_and_zaz_ald_chamber_until_50c_02ppm_and_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWafer3dDeepTrenchSiliconCapacitorEdramIpdBoschDrieSf6C4f8ConformalZazZro2Al2o3HighKaldAndTinTicl4Nh3ElectrodeFillSemiS2SemiS6Nfpa318Osha1910119Osha19101000TmaTicl4HfTripTrenchVoidLeakageAbortAndScbaLotoGuard(
+  input: SemiconductorWafer3dDeepTrenchSiliconCapacitorEdramIpdBoschDrieSf6C4f8ConformalZazZro2Al2o3HighKaldAndTinTicl4Nh3ElectrodeFillSemiS2SemiS6Nfpa318Osha1910119Osha19101000TmaTicl4HfTripTrenchVoidLeakageAbortAndScbaLotoGuardInput,
+): SemiconductorWafer3dDeepTrenchSiliconCapacitorEdramIpdBoschDrieSf6C4f8ConformalZazZro2Al2o3HighKaldAndTinTicl4Nh3ElectrodeFillSemiS2SemiS6Nfpa318Osha1910119Osha19101000TmaTicl4HfTripTrenchVoidLeakageAbortAndScbaLotoGuardAssessment {
+  const policyCode =
+    "P425-SEMICONDUCTOR-WAFER-3D-DEEP-TRENCH-SILICON-CAPACITOR-EDRAM-IPD-BOSCH-DRIE-SF6-C4F8-CONFORMAL-ZAZ-ZRO2-AL2O3-HIGH-K-ALD-AND-TIN-TICL4-NH3-ELECTRODE-FILL-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-TMA-TICL4-HF-TRIP-TRENCH-VOID-LEAKAGE-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const tmaTicl4HfLeakOrNh4clForelineClogTripped0ms =
+    input.pyrophoricTmaOrZrPrecursorLeakPpm >= 0.5 ||
+    input.corrosiveTicl4HclOrHfExhaustPpm >= 1.0 ||
+    input.nh3ForelineAmmoniumChlorideDeltaPKpa >= 15.0;
+
+  const trenchPinchOffVoidZazLeakageOrBowBridgeAborted =
+    input.deepTrenchAspectRatioPinchOffVoidPct >= 0.5 ||
+    input.zazDielectricEquivalentOxideThicknessLeakageAmpPerCm2 >= 1.0e-7 ||
+    input.trenchToTrenchBridgeBowDeviationNm >= 3.0;
+
+  const chamberLockedUntilCooledPurgedAndScbaLoto =
+    input.aldOrDrieChamberLidOpenRequested &&
+    (input.postCoolChuckTemperatureC >= 50.0 ||
+      input.postPurgeResidualHclHfNh3Ppm >= 0.2 ||
+      !input.scbaAndPrecursorAmpouleLotoVerified);
+
+  if (tmaTicl4HfLeakOrNh4clForelineClogTripped0ms) {
+    return {
+      trenchCapacitorModuleId: input.trenchCapacitorModuleId,
+      policyCode,
+      deepTrench3dCapacitorZazAldAndTinFillSafe: false,
+      tmaTicl4HfLeakOrNh4clForelineClogTripped0ms: true,
+      trenchPinchOffVoidZazLeakageOrBowBridgeAborted,
+      chamberLockedUntilCooledPurgedAndScbaLoto,
+      action: "trip_tma_zr_ticl4_vmb_in_0ms_and_isolate_nh4cl_foreline_clog",
+      blockedReason:
+        "SEMIS2_NFPA318_TMA_ZR_05PPM_TICL4_HCL_HF_1PPM_OR_NH4CL_FORELINE_15KPA_TRIPPED_0MS",
+    };
+  }
+
+  if (trenchPinchOffVoidZazLeakageOrBowBridgeAborted) {
+    return {
+      trenchCapacitorModuleId: input.trenchCapacitorModuleId,
+      policyCode,
+      deepTrench3dCapacitorZazAldAndTinFillSafe: false,
+      tmaTicl4HfLeakOrNh4clForelineClogTripped0ms: false,
+      trenchPinchOffVoidZazLeakageOrBowBridgeAborted: true,
+      chamberLockedUntilCooledPurgedAndScbaLoto,
+      action:
+        "abort_3d_trench_capacitor_on_pinch_off_void_zaz_leakage_or_trench_bow_bridge",
+      blockedReason:
+        "DEEP_TRENCH_3D_CAP_PINCH_OFF_VOID_05PCT_ZAZ_LEAKAGE_1E7_OR_BOW_3NM_ABORTED",
+    };
+  }
+
+  if (chamberLockedUntilCooledPurgedAndScbaLoto) {
+    return {
+      trenchCapacitorModuleId: input.trenchCapacitorModuleId,
+      policyCode,
+      deepTrench3dCapacitorZazAldAndTinFillSafe: false,
+      tmaTicl4HfLeakOrNh4clForelineClogTripped0ms: false,
+      trenchPinchOffVoidZazLeakageOrBowBridgeAborted: false,
+      chamberLockedUntilCooledPurgedAndScbaLoto: true,
+      action: "lock_drie_and_zaz_ald_chamber_until_50c_02ppm_and_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_DRIE_ZAZ_ALD_CHAMBER_LOCKED_UNTIL_50C_02PPM_AND_SCBA_LOTO",
+    };
+  }
+
+  return {
+    trenchCapacitorModuleId: input.trenchCapacitorModuleId,
+    policyCode,
+    deepTrench3dCapacitorZazAldAndTinFillSafe: true,
+    tmaTicl4HfLeakOrNh4clForelineClogTripped0ms: false,
+    trenchPinchOffVoidZazLeakageOrBowBridgeAborted: false,
+    chamberLockedUntilCooledPurgedAndScbaLoto: false,
+    action: "allow_verified_3d_deep_trench_capacitor_drie_zaz_ald_and_tin_fill",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8840IceTcpRfc4571FramingSetupRoleAndHeadOfLineAudioStarvationGuardInput {
+  sessionId: string;
+  rfc4571FrameLengthMatchesPayloadAndWithinMtu: boolean;
+  iceTcpPassiveRoleRejectsOutboundSynOrSimOpenDesync: boolean;
+  connectionExistingReusesVerifiedFiveTupleAndTlsCert: boolean;
+  tcpRetransmissionHeadOfLineJitterMs: number;
+  tcpSendBufferUnsentAudioQueueBytes: number;
+  iceTcpCandidatesPerComponentCount: number;
+  halfOpenTcpSynHandshakeRatePerSecond: number;
+}
+
+export interface WebrtcSipRfc8840IceTcpRfc4571FramingSetupRoleAndHeadOfLineAudioStarvationGuardAssessment {
+  sessionId: string;
+  policyCode: "P426-WEBRTC-SIP-RFC8840-ICE-TCP-RFC4571-FRAMING-SETUP-ROLE-AND-HEAD-OF-LINE-AUDIO-STARVATION-GUARD";
+  rfc8840IceTcpAndRfc4571FramingHealthy: boolean;
+  invalidRfc4571LengthRoleViolationOrTupleHijackDropped0ms: boolean;
+  tcpHeadOfLineJitterOrSendBufferBloatRejected: boolean;
+  excessiveIceTcpCandidatesOrSynFloodClamped: boolean;
+  action:
+    | "allow_verified_rfc8840_ice_tcp_rfc4571_framing_and_bounded_audio_queue"
+    | "drop_invalid_rfc4571_frame_length_rfc8840_role_violation_or_tuple_hijack_0ms"
+    | "reject_ice_tcp_head_of_line_jitter_150ms_or_32kb_send_buffer_bloat"
+    | "clamp_rfc8840_ice_tcp_candidates_8_or_10_per_sec_half_open_syn_rate";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8840IceTcpRfc4571FramingSetupRoleAndHeadOfLineAudioStarvationGuard(
+  input: WebrtcSipRfc8840IceTcpRfc4571FramingSetupRoleAndHeadOfLineAudioStarvationGuardInput,
+): WebrtcSipRfc8840IceTcpRfc4571FramingSetupRoleAndHeadOfLineAudioStarvationGuardAssessment {
+  const policyCode =
+    "P426-WEBRTC-SIP-RFC8840-ICE-TCP-RFC4571-FRAMING-SETUP-ROLE-AND-HEAD-OF-LINE-AUDIO-STARVATION-GUARD" as const;
+
+  const invalidRfc4571LengthRoleViolationOrTupleHijackDropped0ms =
+    !input.rfc4571FrameLengthMatchesPayloadAndWithinMtu ||
+    !input.iceTcpPassiveRoleRejectsOutboundSynOrSimOpenDesync ||
+    !input.connectionExistingReusesVerifiedFiveTupleAndTlsCert;
+
+  const tcpHeadOfLineJitterOrSendBufferBloatRejected =
+    input.tcpRetransmissionHeadOfLineJitterMs > 150.0 ||
+    input.tcpSendBufferUnsentAudioQueueBytes > 32768;
+
+  const excessiveIceTcpCandidatesOrSynFloodClamped =
+    input.iceTcpCandidatesPerComponentCount > 8 ||
+    input.halfOpenTcpSynHandshakeRatePerSecond > 10;
+
+  if (invalidRfc4571LengthRoleViolationOrTupleHijackDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8840IceTcpAndRfc4571FramingHealthy: false,
+      invalidRfc4571LengthRoleViolationOrTupleHijackDropped0ms: true,
+      tcpHeadOfLineJitterOrSendBufferBloatRejected,
+      excessiveIceTcpCandidatesOrSynFloodClamped,
+      action:
+        "drop_invalid_rfc4571_frame_length_rfc8840_role_violation_or_tuple_hijack_0ms",
+      blockedReason:
+        "RFC8840_RFC4571_FRAME_LENGTH_DESYNC_PASSIVE_ROLE_VIOLATION_OR_TUPLE_HIJACK_DROPPED_0MS",
+    };
+  }
+
+  if (tcpHeadOfLineJitterOrSendBufferBloatRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8840IceTcpAndRfc4571FramingHealthy: false,
+      invalidRfc4571LengthRoleViolationOrTupleHijackDropped0ms: false,
+      tcpHeadOfLineJitterOrSendBufferBloatRejected: true,
+      excessiveIceTcpCandidatesOrSynFloodClamped,
+      action:
+        "reject_ice_tcp_head_of_line_jitter_150ms_or_32kb_send_buffer_bloat",
+      blockedReason:
+        "RFC8840_ICE_TCP_HEAD_OF_LINE_JITTER_OVER_150MS_OR_OVER_32KB_SEND_BUFFER_BLOAT_REJECTED",
+    };
+  }
+
+  if (excessiveIceTcpCandidatesOrSynFloodClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8840IceTcpAndRfc4571FramingHealthy: false,
+      invalidRfc4571LengthRoleViolationOrTupleHijackDropped0ms: false,
+      tcpHeadOfLineJitterOrSendBufferBloatRejected: false,
+      excessiveIceTcpCandidatesOrSynFloodClamped: true,
+      action:
+        "clamp_rfc8840_ice_tcp_candidates_8_or_10_per_sec_half_open_syn_rate",
+      blockedReason:
+        "RFC8840_OVER_8_ICE_TCP_CANDIDATES_OR_OVER_10_PER_SEC_HALF_OPEN_SYN_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8840IceTcpAndRfc4571FramingHealthy: true,
+    invalidRfc4571LengthRoleViolationOrTupleHijackDropped0ms: false,
+    tcpHeadOfLineJitterOrSendBufferBloatRejected: false,
+    excessiveIceTcpCandidatesOrSynFloodClamped: false,
+    action:
+      "allow_verified_rfc8840_ice_tcp_rfc4571_framing_and_bounded_audio_queue",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
