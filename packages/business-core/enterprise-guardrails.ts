@@ -43449,6 +43449,215 @@ export function evaluateWebrtcSipRfc8837DartDiffservDscpPerPacketBundleMarkingAn
   };
 }
 
+export interface SemiconductorWaferBeolAirGapAndPorousUltraLowKSicohDielectricPecvdUvPorogenCureAndIbeGuardInput {
+  beolAirGapModuleId: string;
+  pyrophoricSilane4msOrOmctsoPrecursorLeakPpm: number;
+  broadbandUvCureChamberOzoneO3OrHfExhaustLeakPpm: number;
+  curedPorousUlkEffectiveDielectricConstantK: number;
+  curedUlkYoungsModulusGpa: number;
+  airGapPinchOffCapExtrusionIntoLineSpacePct: number;
+  pecvdOrUvCureChamberLidOpenRequested: boolean;
+  postCoolWaferChuckTemperatureC: number;
+  postPurgeResidualO3PorogenPpm: number;
+  uvLampShutterAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferBeolAirGapAndPorousUltraLowKSicohDielectricPecvdUvPorogenCureAndIbeGuardAssessment {
+  beolAirGapModuleId: string;
+  policyCode: "P435-SEMICONDUCTOR-WAFER-BEOL-AIR-GAP-AND-POROUS-ULTRA-LOW-K-SICOH-DIELECTRIC-PECVD-UV-POROGEN-CURE-AND-AIR-GAP-PINCH-OFF-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-4MS-OMCTSO-O3-TRIP-MODULUS-PINCHOFF-ABORT-AND-SCBA-LOTO-GUARD";
+  beolAirGapAndPorousUlkDielectricSafe: boolean;
+  silane4msOmctsoOrUvOzoneLeakTripped0ms: boolean;
+  ulkKValueModulusCollapseOrAirGapPinchOffAborted: boolean;
+  chamberLockedUntilCoolO3PurgeAndUvScbaLoto: boolean;
+  action:
+    | "allow_verified_beol_air_gap_and_porous_ulk_sicoh_pecvd_uv_porogen_cure"
+    | "trip_beol_ulk_4ms_omctso_vmb_and_uv_cure_lamp_in_0ms_and_engage_abatement"
+    | "abort_beol_air_gap_on_ulk_k_drift_modulus_collapse_or_pinch_off_extrusion"
+    | "lock_beol_ulk_chamber_until_cool_below_50c_o3_below_002ppm_and_uv_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferBeolAirGapAndPorousUltraLowKSicohDielectricPecvdUvPorogenCureAndAirGapPinchOffSemiS2SemiS6Nfpa318Osha1910119Osha191010004msOmctsoO3TripModulusPinchoffAbortAndScbaLotoGuard(
+  input: SemiconductorWaferBeolAirGapAndPorousUltraLowKSicohDielectricPecvdUvPorogenCureAndIbeGuardInput,
+): SemiconductorWaferBeolAirGapAndPorousUltraLowKSicohDielectricPecvdUvPorogenCureAndIbeGuardAssessment {
+  const policyCode =
+    "P435-SEMICONDUCTOR-WAFER-BEOL-AIR-GAP-AND-POROUS-ULTRA-LOW-K-SICOH-DIELECTRIC-PECVD-UV-POROGEN-CURE-AND-AIR-GAP-PINCH-OFF-SEMIS2-SEMIS6-NFPA318-OSHA1910119-OSHA19101000-4MS-OMCTSO-O3-TRIP-MODULUS-PINCHOFF-ABORT-AND-SCBA-LOTO-GUARD" as const;
+
+  const silane4msOmctsoOrUvOzoneLeakTripped0ms =
+    input.pyrophoricSilane4msOrOmctsoPrecursorLeakPpm >= 2.0 ||
+    input.broadbandUvCureChamberOzoneO3OrHfExhaustLeakPpm >= 0.1;
+
+  const ulkKValueModulusCollapseOrAirGapPinchOffAborted =
+    input.curedPorousUlkEffectiveDielectricConstantK >= 2.2 ||
+    input.curedUlkYoungsModulusGpa < 4.5 ||
+    input.airGapPinchOffCapExtrusionIntoLineSpacePct >= 15.0;
+
+  const chamberLockedUntilCoolO3PurgeAndUvScbaLoto =
+    input.pecvdOrUvCureChamberLidOpenRequested &&
+    (input.postCoolWaferChuckTemperatureC >= 50.0 ||
+      input.postPurgeResidualO3PorogenPpm >= 0.02 ||
+      !input.uvLampShutterAndScbaLotoVerified);
+
+  if (silane4msOmctsoOrUvOzoneLeakTripped0ms) {
+    return {
+      beolAirGapModuleId: input.beolAirGapModuleId,
+      policyCode,
+      beolAirGapAndPorousUlkDielectricSafe: false,
+      silane4msOmctsoOrUvOzoneLeakTripped0ms: true,
+      ulkKValueModulusCollapseOrAirGapPinchOffAborted,
+      chamberLockedUntilCoolO3PurgeAndUvScbaLoto,
+      action:
+        "trip_beol_ulk_4ms_omctso_vmb_and_uv_cure_lamp_in_0ms_and_engage_abatement",
+      blockedReason:
+        "SEMIS2_NFPA318_OSHA19101000_4MS_OMCTSO_2PPM_OR_UV_O3_HF_01PPM_LEAK_TRIPPED_0MS",
+    };
+  }
+
+  if (ulkKValueModulusCollapseOrAirGapPinchOffAborted) {
+    return {
+      beolAirGapModuleId: input.beolAirGapModuleId,
+      policyCode,
+      beolAirGapAndPorousUlkDielectricSafe: false,
+      silane4msOmctsoOrUvOzoneLeakTripped0ms: false,
+      ulkKValueModulusCollapseOrAirGapPinchOffAborted: true,
+      chamberLockedUntilCoolO3PurgeAndUvScbaLoto,
+      action:
+        "abort_beol_air_gap_on_ulk_k_drift_modulus_collapse_or_pinch_off_extrusion",
+      blockedReason:
+        "BEOL_ULK_K_OVER_22_YOUNGS_MODULUS_UNDER_45GPA_OR_AIRGAP_PINCHOFF_15PCT_ABORTED",
+    };
+  }
+
+  if (chamberLockedUntilCoolO3PurgeAndUvScbaLoto) {
+    return {
+      beolAirGapModuleId: input.beolAirGapModuleId,
+      policyCode,
+      beolAirGapAndPorousUlkDielectricSafe: false,
+      silane4msOmctsoOrUvOzoneLeakTripped0ms: false,
+      ulkKValueModulusCollapseOrAirGapPinchOffAborted: false,
+      chamberLockedUntilCoolO3PurgeAndUvScbaLoto: true,
+      action:
+        "lock_beol_ulk_chamber_until_cool_below_50c_o3_below_002ppm_and_uv_scba_loto",
+      blockedReason:
+        "SEMIS2_OSHA1910119_BEOL_ULK_CHAMBER_LOCKED_UNTIL_50C_002PPM_O3_AND_UV_SCBA_LOTO",
+    };
+  }
+
+  return {
+    beolAirGapModuleId: input.beolAirGapModuleId,
+    policyCode,
+    beolAirGapAndPorousUlkDielectricSafe: true,
+    silane4msOmctsoOrUvOzoneLeakTripped0ms: false,
+    ulkKValueModulusCollapseOrAirGapPinchOffAborted: false,
+    chamberLockedUntilCoolO3PurgeAndUvScbaLoto: false,
+    action:
+      "allow_verified_beol_air_gap_and_porous_ulk_sicoh_pecvd_uv_porogen_cure",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8862IpPortInSdpMediaTransportPortHijackAndRfc8843BundlePortSemanticsGuardInput {
+  sessionId: string;
+  sdpContainsPrivilegedUnder1024OrOddUnpairedRtpPortWithoutRtcpMux: boolean;
+  sdpBundleOfferAnswerViolatesZeroPortBundleOnlyOrSharedAddressSemantics: boolean;
+  midDialogReOfferMutatesActiveMediaPortWithoutIceRestartOrDtlsVerify: boolean;
+  rtcpAttributePointsToThirdPartyAmplificationTargetOrExternalIp: boolean;
+  distinctMediaPortsAllocatedPerSessionCount: number;
+  portRebindingOfferRatePerMinute: number;
+}
+
+export interface WebrtcSipRfc8862IpPortInSdpMediaTransportPortHijackAndRfc8843BundlePortSemanticsGuardAssessment {
+  sessionId: string;
+  policyCode: "P436-WEBRTC-SIP-RFC8862-IP-PORT-IN-SDP-MEDIA-TRANSPORT-PORT-HIJACK-AND-RFC8843-BUNDLE-PORT-SEMANTICS-GUARD";
+  rfc8862SdpPortAndRfc8843BundlePortHealthy: boolean;
+  privilegedPortOrBundleOnlyPortSemanticsViolationDropped0ms: boolean;
+  unverifiedPortMutationOrThirdPartyRtcpAmplificationRejected: boolean;
+  sessionPortAllocationOrRebindingRateClamped: boolean;
+  action:
+    | "allow_verified_rfc8862_sdp_port_and_rfc8843_bundle_port_semantics"
+    | "drop_privileged_port_or_rfc8843_bundle_only_port_semantics_violation_0ms"
+    | "reject_unverified_mid_dialog_port_mutation_or_third_party_rtcp_amplification"
+    | "clamp_excessive_session_port_allocation_or_port_rebinding_offer_storm";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8862IpPortInSdpMediaTransportPortHijackAndRfc8843BundlePortSemanticsGuard(
+  input: WebrtcSipRfc8862IpPortInSdpMediaTransportPortHijackAndRfc8843BundlePortSemanticsGuardInput,
+): WebrtcSipRfc8862IpPortInSdpMediaTransportPortHijackAndRfc8843BundlePortSemanticsGuardAssessment {
+  const policyCode =
+    "P436-WEBRTC-SIP-RFC8862-IP-PORT-IN-SDP-MEDIA-TRANSPORT-PORT-HIJACK-AND-RFC8843-BUNDLE-PORT-SEMANTICS-GUARD" as const;
+
+  const privilegedPortOrBundleOnlyPortSemanticsViolationDropped0ms =
+    input.sdpContainsPrivilegedUnder1024OrOddUnpairedRtpPortWithoutRtcpMux ||
+    input.sdpBundleOfferAnswerViolatesZeroPortBundleOnlyOrSharedAddressSemantics;
+
+  const unverifiedPortMutationOrThirdPartyRtcpAmplificationRejected =
+    input.midDialogReOfferMutatesActiveMediaPortWithoutIceRestartOrDtlsVerify ||
+    input.rtcpAttributePointsToThirdPartyAmplificationTargetOrExternalIp;
+
+  const sessionPortAllocationOrRebindingRateClamped =
+    input.distinctMediaPortsAllocatedPerSessionCount > 8 ||
+    input.portRebindingOfferRatePerMinute > 6;
+
+  if (privilegedPortOrBundleOnlyPortSemanticsViolationDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8862SdpPortAndRfc8843BundlePortHealthy: false,
+      privilegedPortOrBundleOnlyPortSemanticsViolationDropped0ms: true,
+      unverifiedPortMutationOrThirdPartyRtcpAmplificationRejected,
+      sessionPortAllocationOrRebindingRateClamped,
+      action:
+        "drop_privileged_port_or_rfc8843_bundle_only_port_semantics_violation_0ms",
+      blockedReason:
+        "RFC8862_PRIVILEGED_PORT_UNDER_1024_OR_RFC8843_BUNDLE_ONLY_PORT_SEMANTICS_VIOLATION_DROPPED_0MS",
+    };
+  }
+
+  if (unverifiedPortMutationOrThirdPartyRtcpAmplificationRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8862SdpPortAndRfc8843BundlePortHealthy: false,
+      privilegedPortOrBundleOnlyPortSemanticsViolationDropped0ms: false,
+      unverifiedPortMutationOrThirdPartyRtcpAmplificationRejected: true,
+      sessionPortAllocationOrRebindingRateClamped,
+      action:
+        "reject_unverified_mid_dialog_port_mutation_or_third_party_rtcp_amplification",
+      blockedReason:
+        "RFC8862_UNVERIFIED_PORT_MUTATION_WITHOUT_ICE_RESTART_OR_THIRD_PARTY_RTCP_AMPLIFICATION_REJECTED",
+    };
+  }
+
+  if (sessionPortAllocationOrRebindingRateClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8862SdpPortAndRfc8843BundlePortHealthy: false,
+      privilegedPortOrBundleOnlyPortSemanticsViolationDropped0ms: false,
+      unverifiedPortMutationOrThirdPartyRtcpAmplificationRejected: false,
+      sessionPortAllocationOrRebindingRateClamped: true,
+      action:
+        "clamp_excessive_session_port_allocation_or_port_rebinding_offer_storm",
+      blockedReason:
+        "RFC8862_SESSION_MEDIA_PORTS_OVER_8_OR_PORT_REBINDING_OVER_6_PER_MIN_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8862SdpPortAndRfc8843BundlePortHealthy: true,
+    privilegedPortOrBundleOnlyPortSemanticsViolationDropped0ms: false,
+    unverifiedPortMutationOrThirdPartyRtcpAmplificationRejected: false,
+    sessionPortAllocationOrRebindingRateClamped: false,
+    action:
+      "allow_verified_rfc8862_sdp_port_and_rfc8843_bundle_port_semantics",
+    blockedReason: "none",
+  };
+}
+
+
 
 
 
