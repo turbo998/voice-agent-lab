@@ -49067,6 +49067,182 @@ export function evaluateWebrtcSipRfc8844UnknownKeyShareAttackPreventionOnDtlsSrt
   };
 }
 
+export interface SemiconductorWaferFabCleanroomAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtFoupGripperAndSemiE84LoadportSemiS2SemiS17SemiE84Nfpa318Osha1910147GripperUnlatchedLightCurtainTripBeltVibrationE84TimeoutAbortAndHidTrackZeroEnergyLotoGuardInput {
+  readonly foupGripperLatchOpenDuringHoistOrLoadportLightCurtainIntrusionDetected: boolean;
+  readonly ohtHoistAntiDropPawlFaultOrFrontObstacleLidarStopDistanceBreached: boolean;
+  readonly hoistBeltVibrationAccelerationG: number;
+  readonly semiE84HandshakeTrReqBusyComptTimeoutOrSignalViolationDetected: boolean;
+  readonly stockerFoupN2PurgeRelativeHumidityPercentRh: number;
+  readonly ohtTrackOrStockerMaintenanceAccessRequested: boolean;
+  readonly hidInductivePowerTrackDeenergizedZeroVoltageAndMechanicalHoistPinLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabCleanroomAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtFoupGripperAndSemiE84LoadportSemiS2SemiS17SemiE84Nfpa318Osha1910147GripperUnlatchedLightCurtainTripBeltVibrationE84TimeoutAbortAndHidTrackZeroEnergyLotoGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "trip_oht_hoist_brake_and_loadport_emo_in_0ms"
+    | "abort_e84_foup_handoff_and_reroute_oht_to_maintenance_bay"
+    | "lock_amhs_oht_track_and_stocker_until_hid_deenergized_and_hoist_pin_loto";
+  readonly policyId: "P491-SEMICONDUCTOR-WAFER-FAB-CLEANROOM-AUTOMATED-MATERIAL-HANDLING-SYSTEM-AMHS-OVERHEAD-HOIST-TRANSPORT-OHT-FOUP-GRIPPER-AND-SEMI-E84-LOADPORT-SEMIS2-SEMIS17-SEMIE84-NFPA318-OSHA1910147-GRIPPER-UNLATCHED-LIGHT-CURTAIN-TRIP-BELT-VIBRATION-E84-TIMEOUT-ABORT-AND-HID-TRACK-ZERO-ENERGY-LOTO-GUARD";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabCleanroomAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtFoupGripperAndSemiE84LoadportSemiS2SemiS17SemiE84Nfpa318Osha1910147GripperUnlatchedLightCurtainTripBeltVibrationE84TimeoutAbortAndHidTrackZeroEnergyLotoGuard(
+  input: SemiconductorWaferFabCleanroomAutomatedMaterialHandlingSystemAmhsOverheadMaterialHandlingGuardInputAlias,
+): SemiconductorWaferFabCleanroomAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtFoupGripperAndSemiE84LoadportSemiS2SemiS17SemiE84Nfpa318Osha1910147GripperUnlatchedLightCurtainTripBeltVibrationE84TimeoutAbortAndHidTrackZeroEnergyLotoGuardResult {
+  const policyId =
+    "P491-SEMICONDUCTOR-WAFER-FAB-CLEANROOM-AUTOMATED-MATERIAL-HANDLING-SYSTEM-AMHS-OVERHEAD-HOIST-TRANSPORT-OHT-FOUP-GRIPPER-AND-SEMI-E84-LOADPORT-SEMIS2-SEMIS17-SEMIE84-NFPA318-OSHA1910147-GRIPPER-UNLATCHED-LIGHT-CURTAIN-TRIP-BELT-VIBRATION-E84-TIMEOUT-ABORT-AND-HID-TRACK-ZERO-ENERGY-LOTO-GUARD" as const;
+
+  if (
+    input.foupGripperLatchOpenDuringHoistOrLoadportLightCurtainIntrusionDetected ||
+    input.ohtHoistAntiDropPawlFaultOrFrontObstacleLidarStopDistanceBreached
+  ) {
+    return {
+      violated: true,
+      action: "trip_oht_hoist_brake_and_loadport_emo_in_0ms",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S17 / SEMI E84 / NFPA 318 critical AMHS OHT interlock: FOUP dual-gripper latch open during vertical hoist, EFEM Loadport light-curtain intrusion, anti-drop pawl fault, or obstacle LiDAR stop-distance breach detected; tripping mechanical hoist brake and Loadport EMO in 0ms.",
+    };
+  }
+
+  if (
+    input.hoistBeltVibrationAccelerationG >= 0.35 ||
+    input.semiE84HandshakeTrReqBusyComptTimeoutOrSignalViolationDetected ||
+    input.stockerFoupN2PurgeRelativeHumidityPercentRh >= 5.0
+  ) {
+    return {
+      violated: true,
+      action: "abort_e84_foup_handoff_and_reroute_oht_to_maintenance_bay",
+      policyId,
+      reason:
+        "SEMI S17 / SEMI E84 AMHS FOUP handoff quality and vibration interlock: hoist belt vibration >= 0.35 g, SEMI E84 optical handshake TP1-TP5 timeout/violation, or Stocker N2 purge humidity >= 5.0% RH; aborting FOUP handoff and rerouting OHT to maintenance bay.",
+    };
+  }
+
+  if (
+    input.ohtTrackOrStockerMaintenanceAccessRequested &&
+    !input.hidInductivePowerTrackDeenergizedZeroVoltageAndMechanicalHoistPinLotoVerified
+  ) {
+    return {
+      violated: true,
+      action:
+        "lock_amhs_oht_track_and_stocker_until_hid_deenergized_and_hoist_pin_loto",
+      policyId,
+      reason:
+        "SEMI S2 / SEMI S17 / OSHA 1910.147 AMHS maintenance lock: 80-140 kHz inductive power transfer (HID) track de-energization (0 V) and mechanical hoist safety pin LOTO must be verified before entering OHT track or Stocker.",
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "Semiconductor wafer fab cleanroom AMHS OHT FOUP gripper latch, SEMI E84 Loadport optical handshake, belt vibration, Stocker N2 purge, and HID track LOTO verified.",
+  };
+}
+
+type SemiconductorWaferFabCleanroomAutomatedMaterialHandlingSystemAmhsOverheadMaterialHandlingGuardInputAlias =
+  SemiconductorWaferFabCleanroomAutomatedMaterialHandlingSystemAmhsOverheadHoistTransportOhtFoupGripperAndSemiE84LoadportSemiS2SemiS17SemiE84Nfpa318Osha1910147GripperUnlatchedLightCurtainTripBeltVibrationE84TimeoutAbortAndHidTrackZeroEnergyLotoGuardInput;
+
+export interface WebrtcSipRfc8854WebrtcForwardErrorCorrectionRequirementsOpusInBandFecFlexfecUlpfecAndCongestionOverheadGuardInput {
+  readonly malformedFlexfecOrUlpfecHeaderOrSelfReferencingRecoveryLoopDetected: boolean;
+  readonly fecAppliedOutsideSrtpAuthenticationEnvelopeOrCrossSsrcLeakDetected: boolean;
+  readonly audioOpusInBandFecAndRedNegotiatedWithoutFmtpUseinbandfecDetected: boolean;
+  readonly fecRepairStreamSentDuringCongestionCircuitBreakerTrippedStateDetected: boolean;
+  readonly ulpfecAppliedToMultiSsrcWithoutFlexfecSupportDetected: boolean;
+  readonly fecRedundancyBitrateOverheadRatioPercent: number;
+  readonly flexfecRepairWindowSpanMs: number;
+}
+
+export interface WebrtcSipRfc8854WebrtcForwardErrorCorrectionRequirementsOpusInBandFecFlexfecUlpfecAndCongestionOverheadGuardResult {
+  readonly violated: boolean;
+  readonly action:
+    | "allow"
+    | "clamp_fec_redundancy_overhead_ratio_and_flexfec_repair_window"
+    | "reject_unnegotiated_opus_inband_fec_congestion_fec_or_multi_ssrc_ulpfec"
+    | "drop_malformed_fec_header_or_unauthenticated_cross_ssrc_fec_0ms";
+  readonly policyId: "P492-WEBRTC-SIP-RFC8854-WEBRTC-FORWARD-ERROR-CORRECTION-REQUIREMENTS-OPUS-IN-BAND-FEC-FLEXFEC-ULPFEC-AND-CONGESTION-OVERHEAD-GUARD";
+  readonly reason: string;
+  readonly clampedFecRedundancyOverheadPercent: number;
+  readonly clampedFlexfecRepairWindowMs: number;
+}
+
+export function evaluateWebrtcSipRfc8854WebrtcForwardErrorCorrectionRequirementsOpusInBandFecFlexfecUlpfecAndCongestionOverheadGuard(
+  input: WebrtcSipRfc8854WebrtcForwardErrorCorrectionRequirementsOpusInBandFecFlexfecUlpfecAndCongestionOverheadGuardInput,
+): WebrtcSipRfc8854WebrtcForwardErrorCorrectionRequirementsOpusInBandFecFlexfecUlpfecAndCongestionOverheadGuardResult {
+  const policyId =
+    "P492-WEBRTC-SIP-RFC8854-WEBRTC-FORWARD-ERROR-CORRECTION-REQUIREMENTS-OPUS-IN-BAND-FEC-FLEXFEC-ULPFEC-AND-CONGESTION-OVERHEAD-GUARD" as const;
+  const clampedFecRedundancyOverheadPercent = Math.min(
+    Math.max(0, input.fecRedundancyBitrateOverheadRatioPercent),
+    50,
+  );
+  const clampedFlexfecRepairWindowMs = Math.min(
+    Math.max(20, input.flexfecRepairWindowSpanMs),
+    500,
+  );
+
+  if (
+    input.malformedFlexfecOrUlpfecHeaderOrSelfReferencingRecoveryLoopDetected ||
+    input.fecAppliedOutsideSrtpAuthenticationEnvelopeOrCrossSsrcLeakDetected
+  ) {
+    return {
+      violated: true,
+      action: "drop_malformed_fec_header_or_unauthenticated_cross_ssrc_fec_0ms",
+      policyId,
+      reason:
+        "RFC 8854 Section 4 / 5 / 7 violation: malformed FlexFEC/ULPFEC bitmask header, self-referencing recovery loop, or unauthenticated/cross-SSRC FEC injection detected; dropping in 0ms.",
+      clampedFecRedundancyOverheadPercent,
+      clampedFlexfecRepairWindowMs,
+    };
+  }
+
+  if (
+    input.audioOpusInBandFecAndRedNegotiatedWithoutFmtpUseinbandfecDetected ||
+    input.fecRepairStreamSentDuringCongestionCircuitBreakerTrippedStateDetected ||
+    input.ulpfecAppliedToMultiSsrcWithoutFlexfecSupportDetected
+  ) {
+    return {
+      violated: true,
+      action:
+        "reject_unnegotiated_opus_inband_fec_congestion_fec_or_multi_ssrc_ulpfec",
+      policyId,
+      reason:
+        "RFC 8854 Section 4 / 6 violation: Opus in-band FEC/RED sent without a=fmtp useinbandfec=1 negotiation, FEC repair packets transmitted during congestion circuit-breaker trip, or legacy ULPFEC applied across multiple SSRCs instead of FlexFEC-03; rejecting FEC stream.",
+      clampedFecRedundancyOverheadPercent,
+      clampedFlexfecRepairWindowMs,
+    };
+  }
+
+  if (
+    input.fecRedundancyBitrateOverheadRatioPercent > 50 ||
+    input.flexfecRepairWindowSpanMs > 500
+  ) {
+    return {
+      violated: true,
+      action: "clamp_fec_redundancy_overhead_ratio_and_flexfec_repair_window",
+      policyId,
+      reason:
+        "RFC 8854 adaptive bandwidth-constrained FEC bounds protection: clamping FEC redundancy overhead ratio to <= 50% of media bitrate and FlexFEC repair window to <= 500 ms.",
+      clampedFecRedundancyOverheadPercent,
+      clampedFlexfecRepairWindowMs,
+    };
+  }
+
+  return {
+    violated: false,
+    action: "allow",
+    policyId,
+    reason:
+      "RFC 8854 WebRTC Forward Error Correction (Opus in-band FEC, FlexFEC-03, ULPFEC, and congestion-aware overhead budget) verified.",
+    clampedFecRedundancyOverheadPercent,
+    clampedFlexfecRepairWindowMs,
+  };
+}
+
+
 
 
 
