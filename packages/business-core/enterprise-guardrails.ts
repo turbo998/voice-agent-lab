@@ -46608,3 +46608,209 @@ export function evaluateWebrtcSipRfc8827WebrtcSecurityArchitectureOriginBoundIde
     blockedReason: "none",
   };
 }
+
+export interface SemiconductorWaferSubFabBulkChemicalDeliverySystemBcdsWetBenchAcidSolventBlendingAndWasteDrainSegregationSemiS2SemiS6SemiF47Nfpa318Nfpa30Nfpa704Osha1910119Osha19101000IncompatAcidSolventPeroxideMixingTripPfaDoubleContainmentLeakShutoffAndDiphoterineHfScbaLotoGuardInput {
+  sessionId: string;
+  incompatibleAcidPeroxideOrSolventValveCrossOpenDetected: boolean;
+  pfaCoaxialPipeSecondaryContainmentLiquidLeakSensorTriggered: boolean;
+  drumCabinetSolventVaporConcentrationPercentLel: number;
+  piranhaOrSpmMixingExothermTemperatureCelsius: number;
+  n2PressurizedDispenseVesselPressureBarG: number;
+  hfWasteFluorideDrainSegregationDiverterVerified: boolean;
+  bcdsValveManifoldBoxOrDrumChangeRequested: boolean;
+  diwFlushConductivityZeroAndDiphoterineHfScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferSubFabBulkChemicalDeliverySystemBcdsWetBenchAcidSolventBlendingAndWasteDrainSegregationSemiS2SemiS6SemiF47Nfpa318Nfpa30Nfpa704Osha1910119Osha19101000IncompatAcidSolventPeroxideMixingTripPfaDoubleContainmentLeakShutoffAndDiphoterineHfScbaLotoGuardAssessment {
+  sessionId: string;
+  policyCode: "P465-SEMICONDUCTOR-WAFER-SUB-FAB-BULK-CHEMICAL-DELIVERY-SYSTEM-BCDS-WET-BENCH-ACID-SOLVENT-BLENDING-AND-WASTE-DRAIN-SEGREGATION-SEMIS2-SEMIS6-SEMIF47-NFPA318-NFPA30-NFPA704-OSHA1910119-OSHA19101000-INCOMPAT-ACID-SOLVENT-PEROXIDE-MIXING-TRIP-PFA-DOUBLE-CONTAINMENT-LEAK-SHUTOFF-AND-DIPHOTERINE-HF-SCBA-LOTO-GUARD";
+  bcdsChemicalDeliveryAndDrainSegregationSafe: boolean;
+  incompatibleMixingOrCoaxialLeakOrSolventLelTripped0ms: boolean;
+  spmExothermOrOverpressureOrDrainSegregationAborted: boolean;
+  vmbOrDrumChangeLockedUntilDiwFlushAndDiphoterineScbaLoto: boolean;
+  action:
+    | "allow_verified_sub_fab_bcds_chemical_dispense_and_segregated_drain"
+    | "trip_bcds_supply_pumps_and_vmb_esv_in_0ms_on_incompat_mix_coaxial_leak_or_lel"
+    | "abort_chemical_blending_and_divert_drain_on_spm_exotherm_overpressure_or_misroute"
+    | "lock_bcds_vmb_and_drum_cabinet_until_diw_flush_and_diphoterine_hf_scba_loto";
+  blockedReason: string;
+}
+
+export function evaluateSemiconductorWaferSubFabBulkChemicalDeliverySystemBcdsWetBenchAcidSolventBlendingAndWasteDrainSegregationSemiS2SemiS6SemiF47Nfpa318Nfpa30Nfpa704Osha1910119Osha19101000IncompatAcidSolventPeroxideMixingTripPfaDoubleContainmentLeakShutoffAndDiphoterineHfScbaLotoGuard(
+  input: SemiconductorWaferSubFabBulkChemicalDeliverySystemBcdsWetBenchAcidSolventBlendingAndWasteDrainSegregationSemiS2SemiS6SemiF47Nfpa318Nfpa30Nfpa704Osha1910119Osha19101000IncompatAcidSolventPeroxideMixingTripPfaDoubleContainmentLeakShutoffAndDiphoterineHfScbaLotoGuardInput,
+): SemiconductorWaferSubFabBulkChemicalDeliverySystemBcdsWetBenchAcidSolventBlendingAndWasteDrainSegregationSemiS2SemiS6SemiF47Nfpa318Nfpa30Nfpa704Osha1910119Osha19101000IncompatAcidSolventPeroxideMixingTripPfaDoubleContainmentLeakShutoffAndDiphoterineHfScbaLotoGuardAssessment {
+  const policyCode =
+    "P465-SEMICONDUCTOR-WAFER-SUB-FAB-BULK-CHEMICAL-DELIVERY-SYSTEM-BCDS-WET-BENCH-ACID-SOLVENT-BLENDING-AND-WASTE-DRAIN-SEGREGATION-SEMIS2-SEMIS6-SEMIF47-NFPA318-NFPA30-NFPA704-OSHA1910119-OSHA19101000-INCOMPAT-ACID-SOLVENT-PEROXIDE-MIXING-TRIP-PFA-DOUBLE-CONTAINMENT-LEAK-SHUTOFF-AND-DIPHOTERINE-HF-SCBA-LOTO-GUARD" as const;
+
+  const incompatibleMixingOrCoaxialLeakOrSolventLelTripped0ms =
+    input.incompatibleAcidPeroxideOrSolventValveCrossOpenDetected ||
+    input.pfaCoaxialPipeSecondaryContainmentLiquidLeakSensorTriggered ||
+    input.drumCabinetSolventVaporConcentrationPercentLel >= 20;
+
+  if (incompatibleMixingOrCoaxialLeakOrSolventLelTripped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      bcdsChemicalDeliveryAndDrainSegregationSafe: false,
+      incompatibleMixingOrCoaxialLeakOrSolventLelTripped0ms: true,
+      spmExothermOrOverpressureOrDrainSegregationAborted: false,
+      vmbOrDrumChangeLockedUntilDiwFlushAndDiphoterineScbaLoto: false,
+      action:
+        "trip_bcds_supply_pumps_and_vmb_esv_in_0ms_on_incompat_mix_coaxial_leak_or_lel",
+      blockedReason:
+        "BCDS_INCOMPATIBLE_ACID_SOLVENT_PEROXIDE_MIX_OR_PFA_COAXIAL_LEAK_OR_SOLVENT_20LEL_0MS_TRIP",
+    };
+  }
+
+  const spmExothermOrOverpressureOrDrainSegregationAborted =
+    input.piranhaOrSpmMixingExothermTemperatureCelsius >= 150 ||
+    input.n2PressurizedDispenseVesselPressureBarG >= 4.5 ||
+    !input.hfWasteFluorideDrainSegregationDiverterVerified;
+
+  if (spmExothermOrOverpressureOrDrainSegregationAborted) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      bcdsChemicalDeliveryAndDrainSegregationSafe: false,
+      incompatibleMixingOrCoaxialLeakOrSolventLelTripped0ms: false,
+      spmExothermOrOverpressureOrDrainSegregationAborted: true,
+      vmbOrDrumChangeLockedUntilDiwFlushAndDiphoterineScbaLoto: false,
+      action:
+        "abort_chemical_blending_and_divert_drain_on_spm_exotherm_overpressure_or_misroute",
+      blockedReason:
+        "BCDS_SPM_EXOTHERM_OVER_150C_OR_VESSEL_OVER_4_5_BAR_OR_UNSEGREGATED_HF_DRAIN_ABORT",
+    };
+  }
+
+  const vmbOrDrumChangeLockedUntilDiwFlushAndDiphoterineScbaLoto =
+    input.bcdsValveManifoldBoxOrDrumChangeRequested &&
+    !input.diwFlushConductivityZeroAndDiphoterineHfScbaLotoVerified;
+
+  if (vmbOrDrumChangeLockedUntilDiwFlushAndDiphoterineScbaLoto) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      bcdsChemicalDeliveryAndDrainSegregationSafe: false,
+      incompatibleMixingOrCoaxialLeakOrSolventLelTripped0ms: false,
+      spmExothermOrOverpressureOrDrainSegregationAborted: false,
+      vmbOrDrumChangeLockedUntilDiwFlushAndDiphoterineScbaLoto: true,
+      action:
+        "lock_bcds_vmb_and_drum_cabinet_until_diw_flush_and_diphoterine_hf_scba_loto",
+      blockedReason:
+        "BCDS_VMB_OR_DRUM_CHANGE_WITHOUT_DIW_FLUSH_AND_DIPHOTERINE_HF_SCBA_LOTO_LOCKED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    bcdsChemicalDeliveryAndDrainSegregationSafe: true,
+    incompatibleMixingOrCoaxialLeakOrSolventLelTripped0ms: false,
+    spmExothermOrOverpressureOrDrainSegregationAborted: false,
+    vmbOrDrumChangeLockedUntilDiwFlushAndDiphoterineScbaLoto: false,
+    action: "allow_verified_sub_fab_bcds_chemical_dispense_and_segregated_drain",
+    blockedReason: "none",
+  };
+}
+
+export interface WebrtcSipRfc8826WebrtcSecurityConsiderationsSameOriginBypassTurnRelayAmplificationAndConsentFreshnessRevocationGuardInput {
+  sessionId: string;
+  iceConsentFreshnessStunBindingResponseExpiredOver30sOrIcmpRevoked: boolean;
+  turnAllocateRelayUsedToScanLoopbackRfc1918OrCloudMetadata169254: boolean;
+  unconsentedCrossSiteSignalingCsrfOrSilentMicActivationDetected: boolean;
+  dtlsSrtpRekeyOrCertificateRotationSkippedAfterKeyLifetimeExpiry: boolean;
+  stunConsentFreshnessKeepaliveIntervalMs: number;
+  turnChannelBindPermissionsPerAllocationCount: number;
+}
+
+export interface WebrtcSipRfc8826WebrtcSecurityConsiderationsSameOriginBypassTurnRelayAmplificationAndConsentFreshnessRevocationGuardAssessment {
+  sessionId: string;
+  policyCode: "P466-WEBRTC-SIP-RFC8826-WEBRTC-SECURITY-CONSIDERATIONS-SAME-ORIGIN-BYPASS-TURN-RELAY-AMPLIFICATION-AND-CONSENT-FRESHNESS-REVOCATION-GUARD";
+  rfc8826SecurityConsiderationsCompliant: boolean;
+  consentRevokedOrTurnInternalRelayScanDropped0ms: boolean;
+  csrfSignalingOrExpiredDtlsSrtpKeyLifetimeRejected: boolean;
+  consentKeepaliveRateOrTurnChannelPermissionsClamped: boolean;
+  action:
+    | "allow_verified_rfc8826_webrtc_security_considerations_session"
+    | "drop_media_on_consent_freshness_revocation_or_turn_internal_ssrf_relay_0ms"
+    | "reject_unconsented_csrf_signaling_or_expired_dtls_srtp_key_rotation"
+    | "clamp_stun_consent_keepalive_cadence_or_turn_channel_permission_fanout";
+  blockedReason: string;
+}
+
+export function evaluateWebrtcSipRfc8826WebrtcSecurityConsiderationsSameOriginBypassTurnRelayAmplificationAndConsentFreshnessRevocationGuard(
+  input: WebrtcSipRfc8826WebrtcSecurityConsiderationsSameOriginBypassTurnRelayAmplificationAndConsentFreshnessRevocationGuardInput,
+): WebrtcSipRfc8826WebrtcSecurityConsiderationsSameOriginBypassTurnRelayAmplificationAndConsentFreshnessRevocationGuardAssessment {
+  const policyCode =
+    "P466-WEBRTC-SIP-RFC8826-WEBRTC-SECURITY-CONSIDERATIONS-SAME-ORIGIN-BYPASS-TURN-RELAY-AMPLIFICATION-AND-CONSENT-FRESHNESS-REVOCATION-GUARD" as const;
+
+  const consentRevokedOrTurnInternalRelayScanDropped0ms =
+    input.iceConsentFreshnessStunBindingResponseExpiredOver30sOrIcmpRevoked ||
+    input.turnAllocateRelayUsedToScanLoopbackRfc1918OrCloudMetadata169254;
+
+  if (consentRevokedOrTurnInternalRelayScanDropped0ms) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8826SecurityConsiderationsCompliant: false,
+      consentRevokedOrTurnInternalRelayScanDropped0ms: true,
+      csrfSignalingOrExpiredDtlsSrtpKeyLifetimeRejected: false,
+      consentKeepaliveRateOrTurnChannelPermissionsClamped: false,
+      action:
+        "drop_media_on_consent_freshness_revocation_or_turn_internal_ssrf_relay_0ms",
+      blockedReason:
+        "RFC8826_ICE_CONSENT_EXPIRED_30S_OR_TURN_LOOPBACK_RFC1918_METADATA_SSRF_0MS_DROP",
+    };
+  }
+
+  const csrfSignalingOrExpiredDtlsSrtpKeyLifetimeRejected =
+    input.unconsentedCrossSiteSignalingCsrfOrSilentMicActivationDetected ||
+    input.dtlsSrtpRekeyOrCertificateRotationSkippedAfterKeyLifetimeExpiry;
+
+  if (csrfSignalingOrExpiredDtlsSrtpKeyLifetimeRejected) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8826SecurityConsiderationsCompliant: false,
+      consentRevokedOrTurnInternalRelayScanDropped0ms: false,
+      csrfSignalingOrExpiredDtlsSrtpKeyLifetimeRejected: true,
+      consentKeepaliveRateOrTurnChannelPermissionsClamped: false,
+      action:
+        "reject_unconsented_csrf_signaling_or_expired_dtls_srtp_key_rotation",
+      blockedReason:
+        "RFC8826_UNCONSENTED_CSRF_SIGNALING_OR_EXPIRED_DTLS_SRTP_KEY_ROTATION_REJECTED",
+    };
+  }
+
+  const consentKeepaliveRateOrTurnChannelPermissionsClamped =
+    input.stunConsentFreshnessKeepaliveIntervalMs < 4000 ||
+    input.stunConsentFreshnessKeepaliveIntervalMs > 30000 ||
+    input.turnChannelBindPermissionsPerAllocationCount > 32;
+
+  if (consentKeepaliveRateOrTurnChannelPermissionsClamped) {
+    return {
+      sessionId: input.sessionId,
+      policyCode,
+      rfc8826SecurityConsiderationsCompliant: false,
+      consentRevokedOrTurnInternalRelayScanDropped0ms: false,
+      csrfSignalingOrExpiredDtlsSrtpKeyLifetimeRejected: false,
+      consentKeepaliveRateOrTurnChannelPermissionsClamped: true,
+      action:
+        "clamp_stun_consent_keepalive_cadence_or_turn_channel_permission_fanout",
+      blockedReason:
+        "RFC8826_STUN_CONSENT_INTERVAL_OUTSIDE_4S_30S_OR_TURN_PERMISSIONS_OVER_32_CLAMPED",
+    };
+  }
+
+  return {
+    sessionId: input.sessionId,
+    policyCode,
+    rfc8826SecurityConsiderationsCompliant: true,
+    consentRevokedOrTurnInternalRelayScanDropped0ms: false,
+    csrfSignalingOrExpiredDtlsSrtpKeyLifetimeRejected: false,
+    consentKeepaliveRateOrTurnChannelPermissionsClamped: false,
+    action: "allow_verified_rfc8826_webrtc_security_considerations_session",
+    blockedReason: "none",
+  };
+}
+
