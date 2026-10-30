@@ -50457,6 +50457,185 @@ export function evaluateWebrtcSipRfc8879TlsDtlsCertificateCompressionZlibBrotliZ
   };
 }
 
+export interface SemiconductorWaferFabHighEnergyMediumCurrentIonImplanterSubAtmosphericDopantGasSourceSdsAsh3Ph3Bf3HvTerminalXRayAndFaradayCupGuardContext {
+  readonly terminalBremsstrahlungXRayDoseOver05MicroSvPerHrOrLeadDoorOpenDetected: boolean;
+  readonly sdsVacDopantCylinderSuperatmosphericOver95KpaAbsOrToxicHydrideLeakDetected: boolean;
+  readonly hvExtractionOrAccelerationPowerSupplyArcOvercurrentDetected: boolean;
+  readonly beamlineCryopumpRegenerationOver110PaOrAnalyzerMagnetWaterLossDetected: boolean;
+  readonly waferEscBeamThermalLoadOver18WattsPerCm2OrPhotoresistOutgassingDetected: boolean;
+  readonly faradayCupDosimetryLoopFaultOrBeamUniformityDriftDetected: boolean;
+  readonly hvTerminalOrIonSourceArcChamberMaintenanceRequested: boolean;
+  readonly hvGroundingStickBelow5VdcAndCapacitorBleedVerified: boolean;
+  readonly solidArsenicPhosphorusResiduePassivatedAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabHighEnergyMediumCurrentIonImplanterSubAtmosphericDopantGasSourceSdsAsh3Ph3Bf3HvTerminalXRayAndFaradayCupGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P507-SEMICONDUCTOR-WAFER-FAB-HIGH-ENERGY-MEDIUM-CURRENT-ION-IMPLANTER-SUB-ATMOSPHERIC-DOPANT-GAS-SOURCE-SDS-ASH3-PH3-BF3-HV-TERMINAL-X-RAY-AND-FARADAY-CUP-SEMIS2-SEMIS6-NFPA318-OSHA19101096-ANSIN434-HV-XRAY-SDS-TRIP-ABORT-AND-GROUNDING-STICK-SCBA-LOTO-GUARD";
+  readonly action:
+    | "allow"
+    | "lock_hv_terminal_and_ion_source_until_grounding_stick_5v_and_arsenic_scba_loto"
+    | "abort_wafer_implant_close_beam_gate_and_divert_to_dry_scrubber"
+    | "trip_hv_extraction_accelerator_and_close_sds_dopant_rfo_valve_in_0ms";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabHighEnergyMediumCurrentIonImplanterSubAtmosphericDopantGasSourceSdsAsh3Ph3Bf3HvTerminalXRayAndFaradayCupSemiS2SemiS6Nfpa318Osha19101096AnsiN434HvXraySdsTripAbortAndGroundingStickScbaLotoGuard(
+  context: SemiconductorWaferFabHighEnergyMediumCurrentIonImplanterSubAtmosphericDopantGasSourceSdsAsh3Ph3Bf3HvTerminalXRayAndFaradayCupGuardContext,
+): SemiconductorWaferFabHighEnergyMediumCurrentIonImplanterSubAtmosphericDopantGasSourceSdsAsh3Ph3Bf3HvTerminalXRayAndFaradayCupGuardDecision {
+  const policyId =
+    "P507-SEMICONDUCTOR-WAFER-FAB-HIGH-ENERGY-MEDIUM-CURRENT-ION-IMPLANTER-SUB-ATMOSPHERIC-DOPANT-GAS-SOURCE-SDS-ASH3-PH3-BF3-HV-TERMINAL-X-RAY-AND-FARADAY-CUP-SEMIS2-SEMIS6-NFPA318-OSHA19101096-ANSIN434-HV-XRAY-SDS-TRIP-ABORT-AND-GROUNDING-STICK-SCBA-LOTO-GUARD" as const;
+
+  if (
+    context.terminalBremsstrahlungXRayDoseOver05MicroSvPerHrOrLeadDoorOpenDetected ||
+    context.sdsVacDopantCylinderSuperatmosphericOver95KpaAbsOrToxicHydrideLeakDetected ||
+    context.hvExtractionOrAccelerationPowerSupplyArcOvercurrentDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "trip_hv_extraction_accelerator_and_close_sds_dopant_rfo_valve_in_0ms",
+      reason:
+        "Critical semiconductor wafer Fab ion implanter hazard (SEMI S2 / SEMI S6 / NFPA 318 / OSHA 1910.1096 / ANSI N43.4): Bremsstrahlung X-ray dose rate >0.5 uSv/h or lead cabinet door interlock open, SDS/VAC sub-atmospheric dopant bottle >=95 kPa(abs) or toxic AsH3/PH3/BF3 leak >=0.05 ppm, or HV extraction/acceleration arc overcurrent detected; tripping HV supply and closing SDS RFO valve in 0ms.",
+    };
+  }
+
+  if (
+    context.beamlineCryopumpRegenerationOver110PaOrAnalyzerMagnetWaterLossDetected ||
+    context.waferEscBeamThermalLoadOver18WattsPerCm2OrPhotoresistOutgassingDetected ||
+    context.faradayCupDosimetryLoopFaultOrBeamUniformityDriftDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "abort_wafer_implant_close_beam_gate_and_divert_to_dry_scrubber",
+      reason:
+        "Semiconductor wafer Fab ion implanter beamline & thermal violation (SEMI S2 / SEMI S6): beamline cryopump regeneration pressure >=110 Pa / analyzer magnet cooling loss, wafer ESC beam thermal load >=18 W/cm2 (photoresist outgassing/carbonization risk), or Faraday cup dosimetry loop fault detected; aborting implant, closing high-vacuum beam gate, and diverting exhaust to dry resin scrubber.",
+    };
+  }
+
+  if (
+    context.hvTerminalOrIonSourceArcChamberMaintenanceRequested &&
+    (!context.hvGroundingStickBelow5VdcAndCapacitorBleedVerified ||
+      !context.solidArsenicPhosphorusResiduePassivatedAndScbaLotoVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "lock_hv_terminal_and_ion_source_until_grounding_stick_5v_and_arsenic_scba_loto",
+      reason:
+        "Semiconductor wafer Fab ion implanter HV terminal & Freeman/Bernas source maintenance safety violation (SEMI S2 / ANSI N43.4 / OSHA 1910.147): terminal or arc-chamber maintenance requested without mechanical HV grounding stick discharge <5 VDC or solid arsenic/phosphorus residue passivation and SCBA LOTO verification; locking HV terminal and source enclosure.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Semiconductor wafer Fab ion implanter Bremsstrahlung X-ray shielding, SDS/VAC sub-atmospheric dopant containment, Faraday cup dosimetry, cryopump vacuum, and HV grounding stick SCBA LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8888RtcpCongestionControlFeedbackCcfbReportBlockMetricBoundsAndSequenceWindowGuardContext {
+  readonly ccfbPacketLengthOverreadOrInvalidRtpfb205Fmt11HeaderDetected: boolean;
+  readonly unnegotiatedRtcpFbCcfbInSdpSentDetected: boolean;
+  readonly sequenceRangeHalfSpaceWrapBombOrAto13BitOverflowDetected: boolean;
+  readonly invalidEcnBitsOrNonMonotonicReportTimestampRegressionDetected: boolean;
+  readonly ccfbReportsPerSecondRate: number;
+  readonly reportedSsrcCountInSinglePacket: number;
+}
+
+export interface WebrtcSipRfc8888RtcpCongestionControlFeedbackCcfbReportBlockMetricBoundsAndSequenceWindowGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P508-WEBRTC-SIP-RFC8888-RTCP-CONGESTION-CONTROL-FEEDBACK-CCFB-REPORT-BLOCK-METRIC-BOUNDS-AND-SEQUENCE-WINDOW-GUARD";
+  readonly action:
+    | "allow"
+    | "clamp_ccfb_report_rate_and_ssrc_block_count"
+    | "reject_spoofed_ccfb_sequence_window_ato_or_ecn_metrics"
+    | "drop_truncated_or_unnegotiated_rfc8888_rtcp_ccfb_packet_0ms";
+  readonly reason: string;
+  readonly clampedCcfbReportsPerSecondRate: number;
+  readonly clampedReportedSsrcCountInSinglePacket: number;
+}
+
+export function evaluateWebrtcSipRfc8888RtcpCongestionControlFeedbackCcfbReportBlockMetricBoundsAndSequenceWindowGuard(
+  context: WebrtcSipRfc8888RtcpCongestionControlFeedbackCcfbReportBlockMetricBoundsAndSequenceWindowGuardContext,
+): WebrtcSipRfc8888RtcpCongestionControlFeedbackCcfbReportBlockMetricBoundsAndSequenceWindowGuardDecision {
+  const policyId =
+    "P508-WEBRTC-SIP-RFC8888-RTCP-CONGESTION-CONTROL-FEEDBACK-CCFB-REPORT-BLOCK-METRIC-BOUNDS-AND-SEQUENCE-WINDOW-GUARD" as const;
+
+  const clampedCcfbReportsPerSecondRate = Math.min(
+    Math.max(Math.trunc(context.ccfbReportsPerSecondRate), 1),
+    100,
+  );
+  const clampedReportedSsrcCountInSinglePacket = Math.min(
+    Math.max(Math.trunc(context.reportedSsrcCountInSinglePacket), 1),
+    8,
+  );
+
+  if (
+    context.ccfbPacketLengthOverreadOrInvalidRtpfb205Fmt11HeaderDetected ||
+    context.unnegotiatedRtcpFbCcfbInSdpSentDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "drop_truncated_or_unnegotiated_rfc8888_rtcp_ccfb_packet_0ms",
+      reason:
+        "Critical WebRTC & SIP RFC 8888 RTCP Congestion Control Feedback (CCFB) framing violation: packet length overread, invalid RTPFB PT=205 / FMT=11 header, or unnegotiated a=rtcp-fb:* ccfb sent; dropping malformed RTCP CCFB packet in 0ms.",
+      clampedCcfbReportsPerSecondRate,
+      clampedReportedSsrcCountInSinglePacket,
+    };
+  }
+
+  if (
+    context.sequenceRangeHalfSpaceWrapBombOrAto13BitOverflowDetected ||
+    context.invalidEcnBitsOrNonMonotonicReportTimestampRegressionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "reject_spoofed_ccfb_sequence_window_ato_or_ecn_metrics",
+      reason:
+        "WebRTC & SIP RFC 8888 RTCP CCFB metric integrity violation: num_reports >16384 half-space sequence wrap bomb, 13-bit Arrival Time Offset (ATO 1/1024s) overflow, invalid 2-bit ECN marking, or non-monotonic Report Timestamp regression detected; rejecting spoofed congestion feedback.",
+      clampedCcfbReportsPerSecondRate,
+      clampedReportedSsrcCountInSinglePacket,
+    };
+  }
+
+  if (
+    context.ccfbReportsPerSecondRate > 100 ||
+    context.reportedSsrcCountInSinglePacket > 8
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_ccfb_report_rate_and_ssrc_block_count",
+      reason:
+        "WebRTC & SIP RFC 8888 RTCP CCFB bandwidth budget exceeded: feedback report frequency exceeds 100 Hz or single CCFB packet reports >8 SSRCs; clamping to <=100 reports/s and <=8 SSRCs per packet.",
+      clampedCcfbReportsPerSecondRate,
+      clampedReportedSsrcCountInSinglePacket,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "WebRTC & SIP RFC 8888 RTCP CCFB (PT=205, FMT=11) SDP negotiation, <=16384 sequence window span, 13-bit ATO ticks, 2-bit ECN markings, and <=100 Hz / <=8 SSRC budget verified.",
+    clampedCcfbReportsPerSecondRate,
+    clampedReportedSsrcCountInSinglePacket,
+  };
+}
+
+
 
 
 
