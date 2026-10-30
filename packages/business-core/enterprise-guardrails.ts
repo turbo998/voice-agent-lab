@@ -52031,6 +52031,172 @@ export function evaluateWebrtcSipRfc3550Rfc4585RtpReplayWindowRtcpNackStormAndSe
   };
 }
 
+export interface SemiconductorHbm4BacksidePowerDeliveryTsvLaserViaAndHybridBondOverlayGuardContext {
+  readonly laserViaDrillOverburnOrBacksideDielectricCrackDetected: boolean;
+  readonly copperSeedPlatingRunawayOrHydrogenOutgasLelAbove10PctDetected: boolean;
+  readonly overlayDriftOver150NmOrTsvVoidRateOverSpecDetected: boolean;
+  readonly electroplatingBathContaminationOrChamberPressureExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndChemicalPurgeVerified: boolean;
+  readonly scbaLotoAndCuResiduePassivationVerified: boolean;
+}
+
+export interface SemiconductorHbm4BacksidePowerDeliveryTsvLaserViaAndHybridBondOverlayGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P525-SEMICONDUCTOR-HBM4-BACKSIDE-POWER-DELIVERY-TSV-LASER-VIA-AND-HYBRID-BOND-OVERLAY-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_laser_and_plating_power_in_0ms"
+    | "abort_hybrid_bond_sequence_and_hold_overlay_rework"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorHbm4BacksidePowerDeliveryTsvLaserViaAndHybridBondOverlayGuard(
+  context: SemiconductorHbm4BacksidePowerDeliveryTsvLaserViaAndHybridBondOverlayGuardContext,
+): SemiconductorHbm4BacksidePowerDeliveryTsvLaserViaAndHybridBondOverlayGuardDecision {
+  const policyId =
+    "P525-SEMICONDUCTOR-HBM4-BACKSIDE-POWER-DELIVERY-TSV-LASER-VIA-AND-HYBRID-BOND-OVERLAY-GUARD" as const;
+
+  if (
+    context.laserViaDrillOverburnOrBacksideDielectricCrackDetected ||
+    context.copperSeedPlatingRunawayOrHydrogenOutgasLelAbove10PctDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_laser_and_plating_power_in_0ms",
+      reason:
+        "Critical HBM4 backside power-delivery hazard (SEMI S2 / SEMI S6 / NFPA 318): laser via overburn/dielectric crack or Cu seed plating runaway with H2 outgas >=10% LEL detected; tripping laser and plating power in 0ms.",
+    };
+  }
+
+  if (
+    context.overlayDriftOver150NmOrTsvVoidRateOverSpecDetected ||
+    context.electroplatingBathContaminationOrChamberPressureExcursionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_hybrid_bond_sequence_and_hold_overlay_rework",
+      reason:
+        "HBM4 hybrid-bond process integrity violation: overlay drift >150 nm, TSV void-rate over spec, or bath/chamber excursion detected; aborting sequence and holding lot for overlay/metrology rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndChemicalPurgeVerified ||
+      !context.scbaLotoAndCuResiduePassivationVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "HBM4 maintenance lock: tool access requested before cooldown <45 °C and chemical purge verification, or without Cu-residue passivation and positive-pressure SCBA LOTO checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "HBM4 backside power-delivery TSV laser/plating controls, overlay bounds, and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceRestartGenerationMismatchAndCandidateFloodGuardContext {
+  readonly staleIceGenerationOrUfragPwdMismatchDetected: boolean;
+  readonly candidatePairFloodOrConnectivityCheckAmplificationDetected: boolean;
+  readonly selectedCandidatePairSwitchoverWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxRemoteCandidatesPerMLine: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceRestartGenerationMismatchAndCandidateFloodGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P526-WEBRTC-SIP-RFC8445-RFC8838-ICE-RESTART-GENERATION-MISMATCH-AND-CANDIDATE-FLOOD-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_generation_mismatch_or_candidate_flood_in_0ms"
+    | "reject_pair_switchover_without_consent_revalidation"
+    | "clamp_connectivity_check_rate_and_candidate_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxRemoteCandidatesPerMLine: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceRestartGenerationMismatchAndCandidateFloodGuard(
+  context: WebrtcSipRfc8445Rfc8838IceRestartGenerationMismatchAndCandidateFloodGuardContext,
+): WebrtcSipRfc8445Rfc8838IceRestartGenerationMismatchAndCandidateFloodGuardDecision {
+  const policyId =
+    "P526-WEBRTC-SIP-RFC8445-RFC8838-ICE-RESTART-GENERATION-MISMATCH-AND-CANDIDATE-FLOOD-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    200,
+  );
+  const clampedMaxRemoteCandidatesPerMLine = Math.min(
+    Math.max(Math.trunc(context.maxRemoteCandidatesPerMLine), 8),
+    64,
+  );
+
+  if (
+    context.staleIceGenerationOrUfragPwdMismatchDetected ||
+    context.candidatePairFloodOrConnectivityCheckAmplificationDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_generation_mismatch_or_candidate_flood_in_0ms",
+      reason:
+        "ICE transport integrity violation (RFC 8445 / RFC 8838): stale ICE generation/ufrag-pwd mismatch or candidate/connectivity-check flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxRemoteCandidatesPerMLine,
+    };
+  }
+
+  if (
+    context.selectedCandidatePairSwitchoverWithoutConsentRevalidationDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switchover_without_consent_revalidation",
+      reason:
+        "ICE candidate-pair continuity violation: selected pair switchover detected without consent freshness revalidation; rejecting candidate-pair transition.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxRemoteCandidatesPerMLine,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 200 ||
+    context.maxRemoteCandidatesPerMLine > 64
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_connectivity_check_rate_and_candidate_window",
+      reason:
+        "ICE rate-window bounds exceeded: connectivity checks >200/s or remote candidates per m-line >64; clamping to deterministic anti-flood bounds.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxRemoteCandidatesPerMLine,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE restart generation continuity, candidate-pair consent freshness, and anti-flood bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxRemoteCandidatesPerMLine,
+  };
+}
 
 
 
