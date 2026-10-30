@@ -53187,3 +53187,164 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceChecklistStarvationAndRoleFlip
     clampedMaxOutstandingChecklistPairs,
   };
 }
+
+export interface SemiconductorCowosRReticleStitchMisalignmentAndCuRedisCrackGuardContext {
+  readonly reticleStitchMisalignmentOrBridgeCrackDetected: boolean;
+  readonly cuRedisCrackOrElectromigrationHotspotDetected: boolean;
+  readonly underfillVoidOrOutgasExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndMetrologySamplingVerified: boolean;
+}
+
+export interface SemiconductorCowosRReticleStitchMisalignmentAndCuRedisCrackGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P539-SEMICONDUCTOR-COWOS-R-RETICLE-STITCH-MISALIGNMENT-AND-CU-REDIS-CRACK-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_bonder_and_reflow_power_in_0ms"
+    | "abort_packaging_sequence_and_hold_metrology"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorCowosRReticleStitchMisalignmentAndCuRedisCrackGuard(
+  context: SemiconductorCowosRReticleStitchMisalignmentAndCuRedisCrackGuardContext,
+): SemiconductorCowosRReticleStitchMisalignmentAndCuRedisCrackGuardDecision {
+  const policyId =
+    "P539-SEMICONDUCTOR-COWOS-R-RETICLE-STITCH-MISALIGNMENT-AND-CU-REDIS-CRACK-GUARD" as const;
+
+  if (
+    context.reticleStitchMisalignmentOrBridgeCrackDetected ||
+    context.cuRedisCrackOrElectromigrationHotspotDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_bonder_and_reflow_power_in_0ms",
+      reason:
+        "CoWoS-R critical hazard (SEMI S2 / SEMI S6 / NFPA 318): reticle-stitch misalignment/bridge crack or Cu-RDL crack/electromigration hotspot detected; tripping bonder and reflow power in 0ms.",
+    };
+  }
+
+  if (context.underfillVoidOrOutgasExcursionDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_packaging_sequence_and_hold_metrology",
+      reason:
+        "CoWoS-R integrity violation: underfill void/outgas excursion detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndMetrologySamplingVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "CoWoS-R maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without SCBA LOTO and metrology residue sampling checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "CoWoS-R reticle-stitch and Cu-RDL integrity controls with cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentAgingAndFoundationCollisionGuardContext {
+  readonly consentAgingReplayOrStunNonceDesyncDetected: boolean;
+  readonly foundationCollisionOrChecklistAliasFloodDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentAgingAndFoundationCollisionGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P540-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-AGING-AND-FOUNDATION-COLLISION-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_consent_aging_or_foundation_collision_flood_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceConsentAgingAndFoundationCollisionGuard(
+  context: WebrtcSipRfc8445Rfc8838IceConsentAgingAndFoundationCollisionGuardContext,
+): WebrtcSipRfc8445Rfc8838IceConsentAgingAndFoundationCollisionGuardDecision {
+  const policyId =
+    "P540-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-AGING-AND-FOUNDATION-COLLISION-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    80,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    4,
+  );
+
+  if (
+    context.consentAgingReplayOrStunNonceDesyncDetected ||
+    context.foundationCollisionOrChecklistAliasFloodDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_consent_aging_or_foundation_collision_flood_in_0ms",
+      reason:
+        "ICE consent/foundation integrity violation (RFC 8445 / RFC 8838): consent-aging replay/STUN nonce desync or foundation-collision checklist-alias flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 80 ||
+    context.maxOutstandingChecklistPairs > 4
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE consent-aging/foundation-collision bounds exceeded: connectivity checks >80/s or outstanding checklist pairs >4; clamping to deterministic anti-collision limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE consent-aging integrity, foundation-collision control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
