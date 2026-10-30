@@ -51697,6 +51697,172 @@ export function evaluateWebrtcSipRfc8445Rfc7675IceConsentFreshnessNominationCont
   };
 }
 
+export interface SemiconductorHighNaEuvScannerPellicleHydrogenPurgeAndCo2LaserSourceTinDebrisMitigationGuardContext {
+  readonly hydrogenPurgeLeakOrOxygenIngressDetected: boolean;
+  readonly co2LaserBackReflectionOrCollectorOvertempDetected: boolean;
+  readonly pellicleThermalDeformationOverSpecDetected: boolean;
+  readonly tinDropletGeneratorMisfireOrDebrisTrapDeltaPressureOverLimitDetected: boolean;
+  readonly sourceMaintenanceDoorRequested: boolean;
+  readonly sourceChamberCooledBelow40CAndHydrogenPurgeVerified: boolean;
+  readonly scbaLotoAndTinResiduePassivationVerified: boolean;
+}
+
+export interface SemiconductorHighNaEuvScannerPellicleHydrogenPurgeAndCo2LaserSourceTinDebrisMitigationGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P521-SEMICONDUCTOR-HIGH-NA-EUV-SCANNER-PELLICLE-HYDROGEN-PURGE-AND-CO2-LASER-SOURCE-TIN-DEBRIS-MITIGATION-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_lpp_source_and_isolate_hydrogen_in_0ms"
+    | "abort_exposure_and_hold_collector_clean_cycle"
+    | "lock_source_chamber_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorHighNaEuvScannerPellicleHydrogenPurgeAndCo2LaserSourceTinDebrisMitigationGuard(
+  context: SemiconductorHighNaEuvScannerPellicleHydrogenPurgeAndCo2LaserSourceTinDebrisMitigationGuardContext,
+): SemiconductorHighNaEuvScannerPellicleHydrogenPurgeAndCo2LaserSourceTinDebrisMitigationGuardDecision {
+  const policyId =
+    "P521-SEMICONDUCTOR-HIGH-NA-EUV-SCANNER-PELLICLE-HYDROGEN-PURGE-AND-CO2-LASER-SOURCE-TIN-DEBRIS-MITIGATION-GUARD" as const;
+
+  if (
+    context.hydrogenPurgeLeakOrOxygenIngressDetected ||
+    context.co2LaserBackReflectionOrCollectorOvertempDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_lpp_source_and_isolate_hydrogen_in_0ms",
+      reason:
+        "Critical High-NA EUV source hazard (SEMI S2 / SEMI S6 / NFPA 318 / IEC 60825): hydrogen purge leak or oxygen ingress, or CO2 laser back-reflection/collector overtemperature detected; tripping LPP source and isolating hydrogen manifold in 0ms.",
+    };
+  }
+
+  if (
+    context.pellicleThermalDeformationOverSpecDetected ||
+    context.tinDropletGeneratorMisfireOrDebrisTrapDeltaPressureOverLimitDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_exposure_and_hold_collector_clean_cycle",
+      reason:
+        "High-NA EUV process stability violation: pellicle thermal deformation exceeded spec or tin-droplet/debris trap delta-pressure exceeded clean-cycle limits; aborting exposure and holding lot for source/collector recovery.",
+    };
+  }
+
+  if (
+    context.sourceMaintenanceDoorRequested &&
+    (!context.sourceChamberCooledBelow40CAndHydrogenPurgeVerified ||
+      !context.scbaLotoAndTinResiduePassivationVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_source_chamber_until_cooldown_and_scba_loto_verified",
+      reason:
+        "High-NA EUV source maintenance lock: source chamber opening requested before cooldown <40 °C and hydrogen purge verification, or without tin-residue passivation and positive-pressure SCBA LOTO checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "High-NA EUV source hydrogen purge integrity, pellicle thermal envelope, and source maintenance cooldown/SCBA LOTO controls verified.",
+  };
+}
+
+export interface WebrtcSipRfc5766Rfc8656TurnRelayCredentialRotationAndAllocationFloodGuardContext {
+  readonly turnCredentialExpiredOrNonceReplayDetected: boolean;
+  readonly relayAllocationFloodOrBandwidthAbuseDetected: boolean;
+  readonly channelBindPeerMismatchOrPermissionExpiredReuseDetected: boolean;
+  readonly allocationLifetimeSeconds: number;
+  readonly maxConcurrentAllocationsPerSession: number;
+}
+
+export interface WebrtcSipRfc5766Rfc8656TurnRelayCredentialRotationAndAllocationFloodGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P522-WEBRTC-SIP-RFC5766-RFC8656-TURN-RELAY-CREDENTIAL-ROTATION-AND-ALLOCATION-FLOOD-GUARD";
+  readonly action:
+    | "allow"
+    | "reject_turn_request_and_rekey_credentials"
+    | "reject_channel_bind_or_permission_reuse"
+    | "clamp_allocation_lifetime_and_concurrency_window";
+  readonly reason: string;
+  readonly clampedAllocationLifetimeSeconds: number;
+  readonly clampedMaxConcurrentAllocationsPerSession: number;
+}
+
+export function evaluateWebrtcSipRfc5766Rfc8656TurnRelayCredentialRotationAndAllocationFloodGuard(
+  context: WebrtcSipRfc5766Rfc8656TurnRelayCredentialRotationAndAllocationFloodGuardContext,
+): WebrtcSipRfc5766Rfc8656TurnRelayCredentialRotationAndAllocationFloodGuardDecision {
+  const policyId =
+    "P522-WEBRTC-SIP-RFC5766-RFC8656-TURN-RELAY-CREDENTIAL-ROTATION-AND-ALLOCATION-FLOOD-GUARD" as const;
+
+  const clampedAllocationLifetimeSeconds = Math.min(
+    Math.max(Math.trunc(context.allocationLifetimeSeconds), 60),
+    600,
+  );
+  const clampedMaxConcurrentAllocationsPerSession = Math.min(
+    Math.max(Math.trunc(context.maxConcurrentAllocationsPerSession), 1),
+    16,
+  );
+
+  if (
+    context.turnCredentialExpiredOrNonceReplayDetected ||
+    context.relayAllocationFloodOrBandwidthAbuseDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_turn_request_and_rekey_credentials",
+      reason:
+        "TURN relay security violation (RFC 5766 / RFC 8656): expired credential, nonce replay, or allocation flood/bandwidth abuse detected; rejecting allocation request and forcing credential rotation.",
+      clampedAllocationLifetimeSeconds,
+      clampedMaxConcurrentAllocationsPerSession,
+    };
+  }
+
+  if (
+    context.channelBindPeerMismatchOrPermissionExpiredReuseDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_channel_bind_or_permission_reuse",
+      reason:
+        "TURN relay channel-bind integrity violation: peer mismatch or expired permission reuse detected; rejecting ChannelBind/Send indications.",
+      clampedAllocationLifetimeSeconds,
+      clampedMaxConcurrentAllocationsPerSession,
+    };
+  }
+
+  if (
+    context.allocationLifetimeSeconds > 600 ||
+    context.maxConcurrentAllocationsPerSession > 16
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_allocation_lifetime_and_concurrency_window",
+      reason:
+        "TURN relay allocation bounds exceeded: allocation lifetime >600s or concurrent allocation window >16; clamping to RFC-aligned relay limits.",
+      clampedAllocationLifetimeSeconds,
+      clampedMaxConcurrentAllocationsPerSession,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "TURN credential freshness, ChannelBind permission integrity, and relay allocation anti-flood bounds verified.",
+    clampedAllocationLifetimeSeconds,
+    clampedMaxConcurrentAllocationsPerSession,
+  };
+}
 
 
 
