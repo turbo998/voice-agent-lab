@@ -51530,7 +51530,172 @@ export function evaluateWebrtcSipRfc8828Rfc8829WebrtcIpAddressHandlingModeMdnsCa
   };
 }
 
+export interface SemiconductorAdvancedPackagingHbm3eThermocompressionCuCuHybridBondingFormicAcidH2PlasmaActivationSemiS2SemiS6Nfpa318Osha1910119FormicH2TripAlignmentAbortAndCooldownScbaLotoGuardContext {
+  readonly formicAcidVaporLeakOrHydrogenLelAbove10PctDetected: boolean;
+  readonly bondHeadHeaterRunawayOver420COrOverforceCompressionDetected: boolean;
+  readonly waferWarpOrDieToWaferAlignmentDriftOver200NmDetected: boolean;
+  readonly vacuumBondChamberPressureRiseOrOutgassingOverlimitDetected: boolean;
+  readonly bondChamberOrFormicAcidManifoldMaintenanceRequested: boolean;
+  readonly bondHeadCooledBelow45CAndFormicAcidHydrogenLinesPurgedVerified: boolean;
+  readonly copperOxidePassivationAndPositivePressureScbaLotoVerified: boolean;
+}
 
+export interface SemiconductorAdvancedPackagingHbm3eThermocompressionCuCuHybridBondingFormicAcidH2PlasmaActivationSemiS2SemiS6Nfpa318Osha1910119FormicH2TripAlignmentAbortAndCooldownScbaLotoGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P519-SEMICONDUCTOR-ADVANCED-PACKAGING-HBM3E-THERMOCOMPRESSION-CU-CU-HYBRID-BONDING-FORMIC-ACID-H2-PLASMA-ACTIVATION-SEMIS2-SEMIS6-NFPA318-OSHA1910119-FORMIC-H2-TRIP-ALIGNMENT-ABORT-AND-COOLDOWN-SCBA-LOTO-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_bond_head_heater_and_isolate_formic_h2_in_0ms"
+    | "abort_hbm_hybrid_bond_recipe_and_hold_alignment_rework"
+    | "lock_bond_chamber_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorAdvancedPackagingHbm3eThermocompressionCuCuHybridBondingFormicAcidH2PlasmaActivationSemiS2SemiS6Nfpa318Osha1910119FormicH2TripAlignmentAbortAndCooldownScbaLotoGuard(
+  context: SemiconductorAdvancedPackagingHbm3eThermocompressionCuCuHybridBondingFormicAcidH2PlasmaActivationSemiS2SemiS6Nfpa318Osha1910119FormicH2TripAlignmentAbortAndCooldownScbaLotoGuardContext,
+): SemiconductorAdvancedPackagingHbm3eThermocompressionCuCuHybridBondingFormicAcidH2PlasmaActivationSemiS2SemiS6Nfpa318Osha1910119FormicH2TripAlignmentAbortAndCooldownScbaLotoGuardDecision {
+  const policyId =
+    "P519-SEMICONDUCTOR-ADVANCED-PACKAGING-HBM3E-THERMOCOMPRESSION-CU-CU-HYBRID-BONDING-FORMIC-ACID-H2-PLASMA-ACTIVATION-SEMIS2-SEMIS6-NFPA318-OSHA1910119-FORMIC-H2-TRIP-ALIGNMENT-ABORT-AND-COOLDOWN-SCBA-LOTO-GUARD" as const;
+
+  if (
+    context.formicAcidVaporLeakOrHydrogenLelAbove10PctDetected ||
+    context.bondHeadHeaterRunawayOver420COrOverforceCompressionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_bond_head_heater_and_isolate_formic_h2_in_0ms",
+      reason:
+        "Critical HBM3E thermo-compression Cu-Cu hybrid bonding hazard (SEMI S2 / SEMI S6 / NFPA 318 / OSHA 1910.119): formic acid vapor leak or H2 >=10% LEL, or bond-head >420 °C overforce runaway detected; tripping heater power and isolating formic acid/hydrogen manifold in 0ms.",
+    };
+  }
+
+  if (
+    context.waferWarpOrDieToWaferAlignmentDriftOver200NmDetected ||
+    context.vacuumBondChamberPressureRiseOrOutgassingOverlimitDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_hbm_hybrid_bond_recipe_and_hold_alignment_rework",
+      reason:
+        "HBM3E Cu-Cu hybrid bonding process drift: wafer warp or die-to-wafer alignment drift >200 nm, or vacuum bond chamber pressure rise/outgassing over limit; aborting recipe and holding lot for metrology/alignment rework.",
+    };
+  }
+
+  if (
+    context.bondChamberOrFormicAcidManifoldMaintenanceRequested &&
+    (!context.bondHeadCooledBelow45CAndFormicAcidHydrogenLinesPurgedVerified ||
+      !context.copperOxidePassivationAndPositivePressureScbaLotoVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_bond_chamber_until_cooldown_and_scba_loto_verified",
+      reason:
+        "HBM3E hybrid-bond maintenance lock: chamber/manifold opening requested before bond-head cools <45 °C and formic-acid/H2 lines are purged, or without Cu-oxide passivation and positive-pressure SCBA mechanical LOTO verification.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "HBM3E thermo-compression Cu-Cu hybrid bonding formic-acid/H2 controls, alignment bounds, and <45 °C cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc7675IceConsentFreshnessNominationContinuityAndStunConsentFloodGuardContext {
+  readonly consentFreshnessRequestTimeoutOrSixConsecutiveProbeFailuresDetected: boolean;
+  readonly nominatedCandidatePairChangedWithoutIceRestartCredentialRotationDetected: boolean;
+  readonly stunConsentRequestAmplificationOrFloodPatternDetected: boolean;
+  readonly consentIntervalMs: number;
+  readonly maxOutstandingConsentRequests: number;
+}
+
+export interface WebrtcSipRfc8445Rfc7675IceConsentFreshnessNominationContinuityAndStunConsentFloodGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P520-WEBRTC-SIP-RFC8445-RFC7675-ICE-CONSENT-FRESHNESS-NOMINATION-CONTINUITY-AND-STUN-CONSENT-FLOOD-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_stun_consent_timeout_or_flood_probe_in_0ms"
+    | "reject_candidate_pair_rebind_without_ice_restart_credentials"
+    | "clamp_consent_interval_and_outstanding_probe_window";
+  readonly reason: string;
+  readonly clampedConsentIntervalMs: number;
+  readonly clampedMaxOutstandingConsentRequests: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc7675IceConsentFreshnessNominationContinuityAndStunConsentFloodGuard(
+  context: WebrtcSipRfc8445Rfc7675IceConsentFreshnessNominationContinuityAndStunConsentFloodGuardContext,
+): WebrtcSipRfc8445Rfc7675IceConsentFreshnessNominationContinuityAndStunConsentFloodGuardDecision {
+  const policyId =
+    "P520-WEBRTC-SIP-RFC8445-RFC7675-ICE-CONSENT-FRESHNESS-NOMINATION-CONTINUITY-AND-STUN-CONSENT-FLOOD-GUARD" as const;
+
+  const clampedConsentIntervalMs = Math.min(
+    Math.max(Math.trunc(context.consentIntervalMs), 5000),
+    30000,
+  );
+  const clampedMaxOutstandingConsentRequests = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingConsentRequests), 1),
+    6,
+  );
+
+  if (
+    context.consentFreshnessRequestTimeoutOrSixConsecutiveProbeFailuresDetected ||
+    context.stunConsentRequestAmplificationOrFloodPatternDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_stun_consent_timeout_or_flood_probe_in_0ms",
+      reason:
+        "Critical WebRTC ICE consent freshness violation (RFC 7675 / RFC 8445): consent binding timeout, six consecutive probe failures, or STUN consent amplification/flood pattern detected; dropping media path in 0ms.",
+      clampedConsentIntervalMs,
+      clampedMaxOutstandingConsentRequests,
+    };
+  }
+
+  if (
+    context.nominatedCandidatePairChangedWithoutIceRestartCredentialRotationDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_candidate_pair_rebind_without_ice_restart_credentials",
+      reason:
+        "WebRTC ICE nomination continuity violation: nominated candidate pair switched without valid ICE restart ufrag/pwd credential rotation and consent revalidation; rejecting path rebind.",
+      clampedConsentIntervalMs,
+      clampedMaxOutstandingConsentRequests,
+    };
+  }
+
+  if (
+    context.consentIntervalMs < 5000 ||
+    context.maxOutstandingConsentRequests > 6
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_consent_interval_and_outstanding_probe_window",
+      reason:
+        "WebRTC ICE consent probe pacing out of bounds: consent interval <5,000 ms or outstanding consent request window >6; clamping to RFC-aligned interval/window bounds.",
+      clampedConsentIntervalMs,
+      clampedMaxOutstandingConsentRequests,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "WebRTC ICE consent freshness cadence, nomination continuity, and STUN consent anti-flood bounds verified.",
+    clampedConsentIntervalMs,
+    clampedMaxOutstandingConsentRequests,
+  };
+}
 
 
 
