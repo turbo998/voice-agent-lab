@@ -53509,3 +53509,164 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceCandidateAliasAndChecklistOsci
     clampedMaxOutstandingChecklistPairs,
   };
 }
+
+export interface SemiconductorHbm5BacksideMicroviaCollapseAndDielectricPumpOutGuardContext {
+  readonly backsideMicroviaCollapseOrPlatingNeckDetected: boolean;
+  readonly dielectricPumpOutOrViaLinerCrackDetected: boolean;
+  readonly annealOutgasOrWarpageExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndMetrologySamplingVerified: boolean;
+}
+
+export interface SemiconductorHbm5BacksideMicroviaCollapseAndDielectricPumpOutGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P543-SEMICONDUCTOR-HBM5-BACKSIDE-MICROVIA-COLLAPSE-AND-DIELECTRIC-PUMP-OUT-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_plating_and_anneal_power_in_0ms"
+    | "abort_packaging_sequence_and_hold_metrology"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorHbm5BacksideMicroviaCollapseAndDielectricPumpOutGuard(
+  context: SemiconductorHbm5BacksideMicroviaCollapseAndDielectricPumpOutGuardContext,
+): SemiconductorHbm5BacksideMicroviaCollapseAndDielectricPumpOutGuardDecision {
+  const policyId =
+    "P543-SEMICONDUCTOR-HBM5-BACKSIDE-MICROVIA-COLLAPSE-AND-DIELECTRIC-PUMP-OUT-GUARD" as const;
+
+  if (
+    context.backsideMicroviaCollapseOrPlatingNeckDetected ||
+    context.dielectricPumpOutOrViaLinerCrackDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_plating_and_anneal_power_in_0ms",
+      reason:
+        "HBM5 critical hazard (SEMI S2 / SEMI S6 / NFPA 318): backside microvia collapse/plating neck or dielectric pump-out/via-liner crack detected; tripping plating and anneal power in 0ms.",
+    };
+  }
+
+  if (context.annealOutgasOrWarpageExcursionDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_packaging_sequence_and_hold_metrology",
+      reason:
+        "HBM5 integrity violation: anneal outgas or warpage excursion detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndMetrologySamplingVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "HBM5 maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without SCBA LOTO and metrology residue sampling checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "HBM5 backside microvia integrity and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceNominationEchoAndConsentLagGuardContext {
+  readonly nominationEchoReplayOrTieBreakerLoopDetected: boolean;
+  readonly consentLagOscillationOrTriggeredCheckBurstDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceNominationEchoAndConsentLagGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P544-WEBRTC-SIP-RFC8445-RFC8838-ICE-NOMINATION-ECHO-AND-CONSENT-LAG-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_nomination_echo_or_consent_lag_flood_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceNominationEchoAndConsentLagGuard(
+  context: WebrtcSipRfc8445Rfc8838IceNominationEchoAndConsentLagGuardContext,
+): WebrtcSipRfc8445Rfc8838IceNominationEchoAndConsentLagGuardDecision {
+  const policyId =
+    "P544-WEBRTC-SIP-RFC8445-RFC8838-ICE-NOMINATION-ECHO-AND-CONSENT-LAG-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    60,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    2,
+  );
+
+  if (
+    context.nominationEchoReplayOrTieBreakerLoopDetected ||
+    context.consentLagOscillationOrTriggeredCheckBurstDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_nomination_echo_or_consent_lag_flood_in_0ms",
+      reason:
+        "ICE nomination/consent integrity violation (RFC 8445 / RFC 8838): nomination-echo replay/tie-breaker loop or consent-lag oscillation flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 60 ||
+    context.maxOutstandingChecklistPairs > 2
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE nomination-echo/consent-lag bounds exceeded: connectivity checks >60/s or outstanding checklist pairs >2; clamping to deterministic anti-oscillation limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE nomination echo control, consent-lag stability, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
