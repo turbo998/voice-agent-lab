@@ -50635,6 +50635,185 @@ export function evaluateWebrtcSipRfc8888RtcpCongestionControlFeedbackCcfbReportB
   };
 }
 
+export interface SemiconductorWaferFabEcdCopperDamasceneElectroplatingBathCuSo4H2So4AdditiveDosageAndAnodeSludgeGuardContext {
+  readonly sulfuricAcidElectrolyteLeakInPlatingCellOrCabinetExhaustBelow125PaDetected: boolean;
+  readonly platingWaveformReversePulseOvercurrentArcOrWaferContactRingHotspotOver65CDetected: boolean;
+  readonly hydrogenGasEvolutionInSealedAnodeChamberOver25PctLelDetected: boolean;
+  readonly organicAcceleratorSuppressorLevelerCvsConcentrationDriftOver15PctDetected: boolean;
+  readonly copperAnodePassivationFilmOrAnolyteCatholyteMembraneDifferentialPressureFaultDetected: boolean;
+  readonly acidicCopperSulfateRinseWaterDivertedToGeneralDrainWithoutIonExchangeDetected: boolean;
+  readonly platingCellAnodeBasketOrDiaphragmMaintenanceRequested: boolean;
+  readonly dcRectifierZeroCurrentAndAcidElectrolyteDrainedFlushedVerified: boolean;
+  readonly chemicalSplashPpeAndSpindleHeadMechanicalLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabEcdCopperDamasceneElectroplatingBathCuSo4H2So4AdditiveDosageAndAnodeSludgeGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P509-SEMICONDUCTOR-WAFER-FAB-ECD-COPPER-DAMASCENE-ELECTROPLATING-BATH-CUSO4-H2SO4-ADDITIVE-DOSAGE-AND-ANODE-SLUDGE-SEMIS2-SEMIS6-NFPA318-EPA40CFR433-OSHA1910147-RECTIFIER-H2-TRIP-ION-EXCHANGE-ABORT-AND-CELL-LOTO-GUARD";
+  readonly action:
+    | "allow"
+    | "lock_ecd_plating_cell_and_anode_chamber_until_rectifier_zero_and_acid_flush_loto"
+    | "abort_wafer_electroplating_and_divert_cu_waste_to_ion_exchange_resin"
+    | "trip_ecd_dc_pulse_rectifier_and_purge_anode_h2_headspace_in_0ms";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabEcdCopperDamasceneElectroplatingBathCuSo4H2So4AdditiveDosageAndAnodeSludgeSemiS2SemiS6Nfpa318Epa40Cfr433Osha1910147RectifierH2TripIonExchangeAbortAndCellLotoGuard(
+  context: SemiconductorWaferFabEcdCopperDamasceneElectroplatingBathCuSo4H2So4AdditiveDosageAndAnodeSludgeGuardContext,
+): SemiconductorWaferFabEcdCopperDamasceneElectroplatingBathCuSo4H2So4AdditiveDosageAndAnodeSludgeGuardDecision {
+  const policyId =
+    "P509-SEMICONDUCTOR-WAFER-FAB-ECD-COPPER-DAMASCENE-ELECTROPLATING-BATH-CUSO4-H2SO4-ADDITIVE-DOSAGE-AND-ANODE-SLUDGE-SEMIS2-SEMIS6-NFPA318-EPA40CFR433-OSHA1910147-RECTIFIER-H2-TRIP-ION-EXCHANGE-ABORT-AND-CELL-LOTO-GUARD" as const;
+
+  if (
+    context.sulfuricAcidElectrolyteLeakInPlatingCellOrCabinetExhaustBelow125PaDetected ||
+    context.platingWaveformReversePulseOvercurrentArcOrWaferContactRingHotspotOver65CDetected ||
+    context.hydrogenGasEvolutionInSealedAnodeChamberOver25PctLelDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "trip_ecd_dc_pulse_rectifier_and_purge_anode_h2_headspace_in_0ms",
+      reason:
+        "Critical semiconductor wafer Fab ECD copper Damascene electroplating hazard (SEMI S2 / SEMI S6 / NFPA 318): CuSO4/H2SO4/HCl acid electrolyte leak or cabinet exhaust <125 Pa, reverse-pulse rectifier arc overcurrent / wafer contact-ring hotspot >=65 C, or cathode/anode H2 evolution >=25% LEL detected; tripping DC/pulse rectifier and N2-purging anode headspace in 0ms.",
+    };
+  }
+
+  if (
+    context.organicAcceleratorSuppressorLevelerCvsConcentrationDriftOver15PctDetected ||
+    context.copperAnodePassivationFilmOrAnolyteCatholyteMembraneDifferentialPressureFaultDetected ||
+    context.acidicCopperSulfateRinseWaterDivertedToGeneralDrainWithoutIonExchangeDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "abort_wafer_electroplating_and_divert_cu_waste_to_ion_exchange_resin",
+      reason:
+        "Semiconductor wafer Fab ECD copper electroplating bath & environmental violation (SEMI S2 / EPA 40 CFR 433): organic accelerator/suppressor/leveler CVS concentration drift >=15% (void/seam defect risk), phosphorized Cu anode passivation or cationic membrane delta-P fault, or acidic Cu2+ rinse water routed to general drain without chelate ion-exchange treatment; aborting plating and locking Cu waste diverter.",
+    };
+  }
+
+  if (
+    context.platingCellAnodeBasketOrDiaphragmMaintenanceRequested &&
+    (!context.dcRectifierZeroCurrentAndAcidElectrolyteDrainedFlushedVerified ||
+      !context.chemicalSplashPpeAndSpindleHeadMechanicalLotoVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "lock_ecd_plating_cell_and_anode_chamber_until_rectifier_zero_and_acid_flush_loto",
+      reason:
+        "Semiconductor wafer Fab ECD copper electroplating maintenance safety violation (SEMI S2 / OSHA 1910.147): anode basket or diaphragm maintenance requested without DC rectifier zero-current isolation, H2SO4/CuSO4 bath drain & DIW flush, or spindle head mechanical LOTO verification; locking plating cell.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Semiconductor wafer Fab ECD copper Damascene electroplating rectifier stability, H2 headspace dilution, CVS additive balance, EPA 40 CFR 433 ion-exchange Cu recovery, and cell LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8854WebrtcFeculpfecFlexfecOpusInbandFecRedundancyAndRecoveryMatrixBombGuardContext {
+  readonly flexfecRtpHeaderLengthOverreadOrBitmaskRowColOutOfBoundsDetected: boolean;
+  readonly unnegotiatedFlexfec03OrUlpfecPayloadTypeSentDetected: boolean;
+  readonly circularProtectedSsrcSelfReferenceOrDuplicateRecoveryPacketLoopDetected: boolean;
+  readonly multiStreamFecCrossMidMediaTypeMismatchDetected: boolean;
+  readonly fecOverheadBitrateRatioPercent: number;
+  readonly flexfecProtectionWindowSpanPackets: number;
+}
+
+export interface WebrtcSipRfc8854WebrtcFeculpfecFlexfecOpusInbandFecRedundancyAndRecoveryMatrixBombGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P510-WEBRTC-SIP-RFC8854-WEBRTC-FEC-ULPFEC-FLEXFEC-OPUS-INBAND-FEC-REDUNDANCY-AND-RECOVERY-MATRIX-BOMB-GUARD";
+  readonly action:
+    | "allow"
+    | "clamp_fec_overhead_ratio_and_flexfec_protection_window"
+    | "reject_circular_fec_ssrc_reference_or_cross_mid_mismatch"
+    | "drop_malformed_or_unnegotiated_rfc8854_fec_packet_0ms";
+  readonly reason: string;
+  readonly clampedFecOverheadBitrateRatioPercent: number;
+  readonly clampedFlexfecProtectionWindowSpanPackets: number;
+}
+
+export function evaluateWebrtcSipRfc8854WebrtcFeculpfecFlexfecOpusInbandFecRedundancyAndRecoveryMatrixBombGuard(
+  context: WebrtcSipRfc8854WebrtcFeculpfecFlexfecOpusInbandFecRedundancyAndRecoveryMatrixBombGuardContext,
+): WebrtcSipRfc8854WebrtcFeculpfecFlexfecOpusInbandFecRedundancyAndRecoveryMatrixBombGuardDecision {
+  const policyId =
+    "P510-WEBRTC-SIP-RFC8854-WEBRTC-FEC-ULPFEC-FLEXFEC-OPUS-INBAND-FEC-REDUNDANCY-AND-RECOVERY-MATRIX-BOMB-GUARD" as const;
+
+  const clampedFecOverheadBitrateRatioPercent = Math.min(
+    Math.max(Math.trunc(context.fecOverheadBitrateRatioPercent), 0),
+    50,
+  );
+  const clampedFlexfecProtectionWindowSpanPackets = Math.min(
+    Math.max(Math.trunc(context.flexfecProtectionWindowSpanPackets), 1),
+    48,
+  );
+
+  if (
+    context.flexfecRtpHeaderLengthOverreadOrBitmaskRowColOutOfBoundsDetected ||
+    context.unnegotiatedFlexfec03OrUlpfecPayloadTypeSentDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_malformed_or_unnegotiated_rfc8854_fec_packet_0ms",
+      reason:
+        "Critical WebRTC & SIP RFC 8854 / RFC 8627 / RFC 5109 FEC framing violation: FlexFEC-03 / ULPFEC header length overread, K/L/M bitmask matrix row/column out-of-bounds, or unnegotiated FEC payload type sent; dropping malformed FEC packet in 0ms.",
+      clampedFecOverheadBitrateRatioPercent,
+      clampedFlexfecProtectionWindowSpanPackets,
+    };
+  }
+
+  if (
+    context.circularProtectedSsrcSelfReferenceOrDuplicateRecoveryPacketLoopDetected ||
+    context.multiStreamFecCrossMidMediaTypeMismatchDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "reject_circular_fec_ssrc_reference_or_cross_mid_mismatch",
+      reason:
+        "WebRTC & SIP RFC 8854 / RFC 8627 FEC topology violation: circular protected-SSRC self-reference (FEC stream protecting itself), duplicate XOR recovery loop, or cross-MID audio/video media-type mismatch detected; rejecting invalid FEC recovery association.",
+      clampedFecOverheadBitrateRatioPercent,
+      clampedFlexfecProtectionWindowSpanPackets,
+    };
+  }
+
+  if (
+    context.fecOverheadBitrateRatioPercent > 50 ||
+    context.flexfecProtectionWindowSpanPackets > 48
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "clamp_fec_overhead_ratio_and_flexfec_protection_window",
+      reason:
+        "WebRTC & SIP RFC 8854 FEC redundancy budget exceeded: FEC overhead bitrate ratio exceeds 50% of media stream or FlexFEC 2D protection window span exceeds 48 packets; clamping to <=50% FEC overhead and <=48-packet protection window.",
+      clampedFecOverheadBitrateRatioPercent,
+      clampedFlexfecProtectionWindowSpanPackets,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "WebRTC & SIP RFC 8854 / RFC 8627 / RFC 6716 FEC (Opus in-band FEC, RED, ULPFEC, FlexFEC-03) negotiation, acyclic SSRC binding, and <=50% overhead / <=48-packet window verified.",
+    clampedFecOverheadBitrateRatioPercent,
+    clampedFlexfecProtectionWindowSpanPackets,
+  };
+}
+
+
 
 
 
