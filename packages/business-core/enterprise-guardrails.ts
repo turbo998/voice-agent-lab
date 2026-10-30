@@ -53026,3 +53026,164 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceRenominationSpoofAndPairChurnG
     clampedMaxOutstandingChecklistPairs,
   };
 }
+
+export interface SemiconductorAdvancedPackagingGlassCoreInterposerWarpAndMicrobumpVoidingGuardContext {
+  readonly interposerWarpOrGlassCoreCrackDetected: boolean;
+  readonly microbumpVoidingOrHeadInPillowDetected: boolean;
+  readonly underfillDelaminationOrOutgasExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndMetrologySamplingVerified: boolean;
+}
+
+export interface SemiconductorAdvancedPackagingGlassCoreInterposerWarpAndMicrobumpVoidingGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P537-SEMICONDUCTOR-GLASS-CORE-INTERPOSER-WARP-AND-MICROBUMP-VOIDING-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_reflow_and_bonder_power_in_0ms"
+    | "abort_packaging_sequence_and_hold_metrology"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorAdvancedPackagingGlassCoreInterposerWarpAndMicrobumpVoidingGuard(
+  context: SemiconductorAdvancedPackagingGlassCoreInterposerWarpAndMicrobumpVoidingGuardContext,
+): SemiconductorAdvancedPackagingGlassCoreInterposerWarpAndMicrobumpVoidingGuardDecision {
+  const policyId =
+    "P537-SEMICONDUCTOR-GLASS-CORE-INTERPOSER-WARP-AND-MICROBUMP-VOIDING-GUARD" as const;
+
+  if (
+    context.interposerWarpOrGlassCoreCrackDetected ||
+    context.microbumpVoidingOrHeadInPillowDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_reflow_and_bonder_power_in_0ms",
+      reason:
+        "Advanced-packaging critical hazard (SEMI S2 / SEMI S6 / NFPA 318): interposer warp/glass-core crack or microbump voiding/head-in-pillow detected; tripping reflow and bonder power in 0ms.",
+    };
+  }
+
+  if (context.underfillDelaminationOrOutgasExcursionDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_packaging_sequence_and_hold_metrology",
+      reason:
+        "Advanced-packaging integrity violation: underfill delamination/outgas excursion detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndMetrologySamplingVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "Advanced-packaging maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without SCBA LOTO and metrology residue sampling checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Advanced-packaging interposer/microbump integrity and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceChecklistStarvationAndRoleFlipGuardContext {
+  readonly roleFlipReplayOrControlledAgentConflictDetected: boolean;
+  readonly checklistStarvationOrTriggeredCheckStormDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceChecklistStarvationAndRoleFlipGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P538-WEBRTC-SIP-RFC8445-RFC8838-ICE-CHECKLIST-STARVATION-AND-ROLE-FLIP-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_role_flip_or_starvation_flood_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceChecklistStarvationAndRoleFlipGuard(
+  context: WebrtcSipRfc8445Rfc8838IceChecklistStarvationAndRoleFlipGuardContext,
+): WebrtcSipRfc8445Rfc8838IceChecklistStarvationAndRoleFlipGuardDecision {
+  const policyId =
+    "P538-WEBRTC-SIP-RFC8445-RFC8838-ICE-CHECKLIST-STARVATION-AND-ROLE-FLIP-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    90,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    5,
+  );
+
+  if (
+    context.roleFlipReplayOrControlledAgentConflictDetected ||
+    context.checklistStarvationOrTriggeredCheckStormDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_role_flip_or_starvation_flood_in_0ms",
+      reason:
+        "ICE role/checklist integrity violation (RFC 8445 / RFC 8838): role-flip replay/agent conflict or checklist-starvation flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 90 ||
+    context.maxOutstandingChecklistPairs > 5
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE checklist-starvation bounds exceeded: connectivity checks >90/s or outstanding checklist pairs >5; clamping to deterministic anti-starvation limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE role integrity, checklist-starvation control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
