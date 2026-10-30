@@ -53348,3 +53348,164 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceConsentAgingAndFoundationColli
     clampedMaxOutstandingChecklistPairs,
   };
 }
+
+export interface SemiconductorCpoFiberArrayAttachEpoxyVoidAndMicrolensMisalignmentGuardContext {
+  readonly fiberArrayEpoxyVoidOrAttachShiftDetected: boolean;
+  readonly microlensMisalignmentOrWaveguideCouplingExcursionDetected: boolean;
+  readonly uvCureOutgasOrThermalRunawayDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndMetrologySamplingVerified: boolean;
+}
+
+export interface SemiconductorCpoFiberArrayAttachEpoxyVoidAndMicrolensMisalignmentGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P541-SEMICONDUCTOR-CPO-FIBER-ARRAY-ATTACH-EPOXY-VOID-AND-MICROLENS-MISALIGNMENT-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_uv_cure_and_aligner_power_in_0ms"
+    | "abort_packaging_sequence_and_hold_metrology"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorCpoFiberArrayAttachEpoxyVoidAndMicrolensMisalignmentGuard(
+  context: SemiconductorCpoFiberArrayAttachEpoxyVoidAndMicrolensMisalignmentGuardContext,
+): SemiconductorCpoFiberArrayAttachEpoxyVoidAndMicrolensMisalignmentGuardDecision {
+  const policyId =
+    "P541-SEMICONDUCTOR-CPO-FIBER-ARRAY-ATTACH-EPOXY-VOID-AND-MICROLENS-MISALIGNMENT-GUARD" as const;
+
+  if (
+    context.fiberArrayEpoxyVoidOrAttachShiftDetected ||
+    context.microlensMisalignmentOrWaveguideCouplingExcursionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_uv_cure_and_aligner_power_in_0ms",
+      reason:
+        "CPO critical hazard (SEMI S2 / SEMI S6 / NFPA 318): fiber-array epoxy void/attach shift or microlens-waveguide misalignment detected; tripping UV cure and aligner power in 0ms.",
+    };
+  }
+
+  if (context.uvCureOutgasOrThermalRunawayDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_packaging_sequence_and_hold_metrology",
+      reason:
+        "CPO integrity violation: UV cure outgas or thermal runaway detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndMetrologySamplingVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "CPO maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without SCBA LOTO and metrology residue sampling checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "CPO fiber-array attach, microlens coupling, and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceCandidateAliasAndChecklistOscillationGuardContext {
+  readonly candidateAliasReplayOrUfragPwdDesyncDetected: boolean;
+  readonly checklistOscillationOrTriggeredCheckBurstDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceCandidateAliasAndChecklistOscillationGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P542-WEBRTC-SIP-RFC8445-RFC8838-ICE-CANDIDATE-ALIAS-AND-CHECKLIST-OSCILLATION-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_candidate_alias_or_checklist_oscillation_flood_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceCandidateAliasAndChecklistOscillationGuard(
+  context: WebrtcSipRfc8445Rfc8838IceCandidateAliasAndChecklistOscillationGuardContext,
+): WebrtcSipRfc8445Rfc8838IceCandidateAliasAndChecklistOscillationGuardDecision {
+  const policyId =
+    "P542-WEBRTC-SIP-RFC8445-RFC8838-ICE-CANDIDATE-ALIAS-AND-CHECKLIST-OSCILLATION-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    70,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    3,
+  );
+
+  if (
+    context.candidateAliasReplayOrUfragPwdDesyncDetected ||
+    context.checklistOscillationOrTriggeredCheckBurstDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_candidate_alias_or_checklist_oscillation_flood_in_0ms",
+      reason:
+        "ICE candidate/checklist integrity violation (RFC 8445 / RFC 8838): candidate-alias replay/ufrag-pwd desync or checklist-oscillation flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 70 ||
+    context.maxOutstandingChecklistPairs > 3
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE candidate-alias/checklist-oscillation bounds exceeded: connectivity checks >70/s or outstanding checklist pairs >3; clamping to deterministic anti-oscillation limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE candidate integrity, checklist-oscillation control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
