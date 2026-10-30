@@ -53991,3 +53991,164 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceConsentNonceReuseAndChecklistT
       clampedMaxOutstandingChecklistPairs,
     };
   }
+
+    export interface SemiconductorHbm7BacksidePowerDeliveryRedistributionCrackAndHybridBondVoidGuardContext {
+      readonly backsidePowerRedistributionCrackOrTraceLiftDetected: boolean;
+      readonly hybridBondVoidClusterOrDieShiftDetected: boolean;
+      readonly thermoCompressionOutgasOrWarpageExcursionDetected: boolean;
+      readonly maintenanceDoorRequested: boolean;
+      readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+      readonly scbaLotoAndMetrologySamplingVerified: boolean;
+    }
+
+    export interface SemiconductorHbm7BacksidePowerDeliveryRedistributionCrackAndHybridBondVoidGuardDecision {
+      readonly violated: boolean;
+      readonly policyId: "P549-SEMICONDUCTOR-HBM7-BACKSIDE-POWER-DELIVERY-REDISTRIBUTION-CRACK-AND-HYBRID-BOND-VOID-GUARD";
+      readonly action:
+        | "allow"
+        | "trip_thermo_compression_and_laser_repair_power_in_0ms"
+        | "abort_packaging_sequence_and_hold_metrology"
+        | "lock_tool_until_cooldown_and_scba_loto_verified";
+      readonly reason: string;
+    }
+
+    export function evaluateSemiconductorHbm7BacksidePowerDeliveryRedistributionCrackAndHybridBondVoidGuard(
+      context: SemiconductorHbm7BacksidePowerDeliveryRedistributionCrackAndHybridBondVoidGuardContext,
+    ): SemiconductorHbm7BacksidePowerDeliveryRedistributionCrackAndHybridBondVoidGuardDecision {
+      const policyId =
+        "P549-SEMICONDUCTOR-HBM7-BACKSIDE-POWER-DELIVERY-REDISTRIBUTION-CRACK-AND-HYBRID-BOND-VOID-GUARD" as const;
+
+      if (
+        context.backsidePowerRedistributionCrackOrTraceLiftDetected ||
+        context.hybridBondVoidClusterOrDieShiftDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "trip_thermo_compression_and_laser_repair_power_in_0ms",
+          reason:
+            "HBM7 critical hazard (SEMI S2 / SEMI S6 / NFPA 318): backside power-delivery redistribution crack/trace-lift or hybrid-bond void-cluster/die-shift detected; tripping thermo-compression and laser-repair power in 0ms.",
+        };
+      }
+
+      if (context.thermoCompressionOutgasOrWarpageExcursionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "abort_packaging_sequence_and_hold_metrology",
+          reason:
+            "HBM7 integrity violation: thermo-compression outgas or warpage excursion detected; aborting sequence and holding lot for metrology/rework.",
+        };
+      }
+
+      if (
+        context.maintenanceDoorRequested &&
+        (!context.toolCooledBelow45CAndN2PurgeVerified ||
+          !context.scbaLotoAndMetrologySamplingVerified)
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "lock_tool_until_cooldown_and_scba_loto_verified",
+          reason:
+            "HBM7 maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without SCBA LOTO and metrology residue sampling checks.",
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "HBM7 backside power-delivery integrity and cooldown SCBA LOTO checks verified.",
+      };
+    }
+
+    export interface WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardContext {
+      readonly consentEpochRollbackOrTieBreakerReplayDetected: boolean;
+      readonly checklistCollapseOrTriggeredCheckBurstDetected: boolean;
+      readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+      readonly maxConnectivityChecksPerSecond: number;
+      readonly maxOutstandingChecklistPairs: number;
+    }
+
+    export interface WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardDecision {
+      readonly violated: boolean;
+      readonly policyId: "P550-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-EPOCH-ROLLBACK-AND-CHECKLIST-COLLAPSE-GUARD";
+      readonly action:
+        | "allow"
+        | "drop_consent_epoch_rollback_or_checklist_collapse_flood_in_0ms"
+        | "reject_pair_switch_without_consent_revalidation"
+        | "clamp_check_rate_and_checklist_window";
+      readonly reason: string;
+      readonly clampedMaxConnectivityChecksPerSecond: number;
+      readonly clampedMaxOutstandingChecklistPairs: number;
+    }
+
+    export function evaluateWebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuard(
+      context: WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardContext,
+    ): WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardDecision {
+      const policyId =
+        "P550-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-EPOCH-ROLLBACK-AND-CHECKLIST-COLLAPSE-GUARD" as const;
+
+      const clampedMaxConnectivityChecksPerSecond = Math.min(
+        Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+        30,
+      );
+      const clampedMaxOutstandingChecklistPairs = Math.min(
+        Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+        2,
+      );
+
+      if (
+        context.consentEpochRollbackOrTieBreakerReplayDetected ||
+        context.checklistCollapseOrTriggeredCheckBurstDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_consent_epoch_rollback_or_checklist_collapse_flood_in_0ms",
+          reason:
+            "ICE consent/checklist integrity violation (RFC 8445 / RFC 8838): consent-epoch rollback/tie-breaker replay or checklist-collapse flood detected; dropping path in 0ms.",
+          clampedMaxConnectivityChecksPerSecond,
+          clampedMaxOutstandingChecklistPairs,
+        };
+      }
+
+      if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_pair_switch_without_consent_revalidation",
+          reason:
+            "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+          clampedMaxConnectivityChecksPerSecond,
+          clampedMaxOutstandingChecklistPairs,
+        };
+      }
+
+      if (
+        context.maxConnectivityChecksPerSecond > 30 ||
+        context.maxOutstandingChecklistPairs > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_check_rate_and_checklist_window",
+          reason:
+            "ICE consent-epoch/checklist-collapse bounds exceeded: connectivity checks >30/s or outstanding checklist pairs >2; clamping to deterministic anti-thrash limits.",
+          clampedMaxConnectivityChecksPerSecond,
+          clampedMaxOutstandingChecklistPairs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "ICE consent-epoch integrity, checklist-collapse control, and consent revalidation bounds verified.",
+        clampedMaxConnectivityChecksPerSecond,
+        clampedMaxOutstandingChecklistPairs,
+      };
+    }
