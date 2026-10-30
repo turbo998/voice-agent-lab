@@ -52363,6 +52363,170 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceRoleConflictAndNominationRaceG
   };
 }
 
+export interface SemiconductorGlassCoreSubstrateTgvMetallizationAndCuPillarThermoCompressionGuardContext {
+  readonly laserViaDrillCrackOrGlassCoreChippingDetected: boolean;
+  readonly tgvMetallizationPlatingRunawayOrHydrogenLelAbove10PctDetected: boolean;
+  readonly cuPillarCoplanarityOverSpecOrMicrovoidRateExcursionDetected: boolean;
+  readonly solventOutgasOrChamberPressureExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndCuResiduePassivationVerified: boolean;
+}
+
+export interface SemiconductorGlassCoreSubstrateTgvMetallizationAndCuPillarThermoCompressionGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P529-SEMICONDUCTOR-GLASS-CORE-SUBSTRATE-TGV-METALLIZATION-AND-CU-PILLAR-THERMOCOMPRESSION-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_tgv_laser_and_plating_power_in_0ms"
+    | "abort_cu_pillar_sequence_and_hold_metrology_rework"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorGlassCoreSubstrateTgvMetallizationAndCuPillarThermoCompressionGuard(
+  context: SemiconductorGlassCoreSubstrateTgvMetallizationAndCuPillarThermoCompressionGuardContext,
+): SemiconductorGlassCoreSubstrateTgvMetallizationAndCuPillarThermoCompressionGuardDecision {
+  const policyId =
+    "P529-SEMICONDUCTOR-GLASS-CORE-SUBSTRATE-TGV-METALLIZATION-AND-CU-PILLAR-THERMOCOMPRESSION-GUARD" as const;
+
+  if (
+    context.laserViaDrillCrackOrGlassCoreChippingDetected ||
+    context.tgvMetallizationPlatingRunawayOrHydrogenLelAbove10PctDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_tgv_laser_and_plating_power_in_0ms",
+      reason:
+        "Critical glass-core substrate hazard (SEMI S2 / SEMI S6 / NFPA 318): TGV laser crack/chipping or metallization plating runaway with H2 >=10% LEL detected; tripping laser/plating power in 0ms.",
+    };
+  }
+
+  if (
+    context.cuPillarCoplanarityOverSpecOrMicrovoidRateExcursionDetected ||
+    context.solventOutgasOrChamberPressureExcursionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_cu_pillar_sequence_and_hold_metrology_rework",
+      reason:
+        "Glass-core Cu-pillar process integrity violation: coplanarity over spec, microvoid excursion, or solvent/chamber pressure anomaly detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndCuResiduePassivationVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "Glass-core maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without Cu-residue passivation and positive-pressure SCBA LOTO checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Glass-core TGV/plating controls, Cu-pillar metrology bounds, and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentRollbackAndChecklistExhaustionGuardContext {
+  readonly staleChecklistRollbackOrGenerationRegressionDetected: boolean;
+  readonly triggeredChecklistExhaustionOrPairChurnFloodDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentRollbackAndChecklistExhaustionGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P530-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-ROLLBACK-AND-CHECKLIST-EXHAUSTION-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_checklist_regression_or_pair_churn_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceConsentRollbackAndChecklistExhaustionGuard(
+  context: WebrtcSipRfc8445Rfc8838IceConsentRollbackAndChecklistExhaustionGuardContext,
+): WebrtcSipRfc8445Rfc8838IceConsentRollbackAndChecklistExhaustionGuardDecision {
+  const policyId =
+    "P530-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-ROLLBACK-AND-CHECKLIST-EXHAUSTION-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    160,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    12,
+  );
+
+  if (
+    context.staleChecklistRollbackOrGenerationRegressionDetected ||
+    context.triggeredChecklistExhaustionOrPairChurnFloodDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_checklist_regression_or_pair_churn_in_0ms",
+      reason:
+        "ICE control-plane integrity violation (RFC 8445 / RFC 8838): checklist generation regression/rollback or pair-churn flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 160 ||
+    context.maxOutstandingChecklistPairs > 12
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE checklist bounds exceeded: connectivity checks >160/s or outstanding checklist pairs >12; clamping to deterministic anti-exhaustion limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE checklist generation continuity, pair-switch consent freshness, and anti-exhaustion bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
 
 
 
