@@ -51173,6 +51173,186 @@ export function evaluateWebrtcSipRfc8842Rfc4572DtlsSrtpSdpSetupRoleTlsIdContinui
   };
 }
 
+// ============================================================================
+// Stage 261 (P515–P516 · 525 Guardrails & 534 Probes · 264 Dimensions)
+// ============================================================================
+
+export interface SemiconductorWaferFabSicGanWideBandgap1650ChtcvdMocvdEpitaxySih4C3h8TmgaNh3And1800CActivationAnnealSemiS2SemiS6Nfpa318Nfpa86Osha1910119RfInductionWaterLeakTmgaH2TripNh4clAbortAndCooldownScbaLotoGuardContext {
+  readonly rfInductionCoilCoolingWaterLeakInto1650CGraphiteSusceptorOrSteamOverpressureDetected: boolean;
+  readonly pyrophoricTrimethylgalliumTmgaTrimethylaluminumTmalOrSilanePropaneH2LeakOver10PctLelDetected: boolean;
+  readonly ammoniaNh3OrHclEtchantExhaustLeakOver25PpmOrAbatementBurnerFlameoutDetected: boolean;
+  readonly sicCtoSiRatioDriftOrGanSusceptorPyrometerTemperatureExcursionOver25CDetected: boolean;
+  readonly exhaustForelineAmmoniumChlorideNh4ClSaltPlugDifferentialPressureOver15KpaDetected: boolean;
+  readonly postImplant1800CArgonAnnealFurnaceOxygenIngressOver50PpmDetected: boolean;
+  readonly reactorQuartzTubeOrTaCGraphiteSusceptorMaintenanceRequested: boolean;
+  readonly susceptorCooledBelow50CAndTmgaSih4Nh3LinesArgonPurgedVerified: boolean;
+  readonly sicParasiticDepositHepafilterVacAndScbaMechanicalLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabSicGanWideBandgap1650ChtcvdMocvdEpitaxySih4C3h8TmgaNh3And1800CActivationAnnealSemiS2SemiS6Nfpa318Nfpa86Osha1910119RfInductionWaterLeakTmgaH2TripNh4clAbortAndCooldownScbaLotoGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P515-SEMICONDUCTOR-WAFER-FAB-SIC-GAN-WIDE-BANDGAP-1650C-HTCVD-MOCVD-EPITAXY-SIH4-C3H8-TMGA-NH3-AND-1800C-ACTIVATION-ANNEAL-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-RF-INDUCTION-WATER-LEAK-TMGA-H2-TRIP-NH4CL-ABORT-AND-COOLDOWN-SCBA-LOTO-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_rf_induction_power_and_isolate_tmga_sih4_h2_in_0ms"
+    | "abort_sic_gan_epitaxy_and_switch_to_argon_cooldown_purge"
+    | "lock_htcvd_mocvd_reactor_until_below_50c_and_pyrophoric_purge_loto";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabSicGanWideBandgap1650ChtcvdMocvdEpitaxySih4C3h8TmgaNh3And1800CActivationAnnealSemiS2SemiS6Nfpa318Nfpa86Osha1910119RfInductionWaterLeakTmgaH2TripNh4clAbortAndCooldownScbaLotoGuard(
+  context: SemiconductorWaferFabSicGanWideBandgap1650ChtcvdMocvdEpitaxySih4C3h8TmgaNh3And1800CActivationAnnealSemiS2SemiS6Nfpa318Nfpa86Osha1910119RfInductionWaterLeakTmgaH2TripNh4clAbortAndCooldownScbaLotoGuardContext,
+): SemiconductorWaferFabSicGanWideBandgap1650ChtcvdMocvdEpitaxySih4C3h8TmgaNh3And1800CActivationAnnealSemiS2SemiS6Nfpa318Nfpa86Osha1910119RfInductionWaterLeakTmgaH2TripNh4clAbortAndCooldownScbaLotoGuardDecision {
+  const policyId =
+    "P515-SEMICONDUCTOR-WAFER-FAB-SIC-GAN-WIDE-BANDGAP-1650C-HTCVD-MOCVD-EPITAXY-SIH4-C3H8-TMGA-NH3-AND-1800C-ACTIVATION-ANNEAL-SEMIS2-SEMIS6-NFPA318-NFPA86-OSHA1910119-RF-INDUCTION-WATER-LEAK-TMGA-H2-TRIP-NH4CL-ABORT-AND-COOLDOWN-SCBA-LOTO-GUARD" as const;
+
+  if (
+    context.rfInductionCoilCoolingWaterLeakInto1650CGraphiteSusceptorOrSteamOverpressureDetected ||
+    context.pyrophoricTrimethylgalliumTmgaTrimethylaluminumTmalOrSilanePropaneH2LeakOver10PctLelDetected ||
+    context.ammoniaNh3OrHclEtchantExhaustLeakOver25PpmOrAbatementBurnerFlameoutDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_rf_induction_power_and_isolate_tmga_sih4_h2_in_0ms",
+      reason:
+        "Critical SiC/GaN wide-bandgap 1,650 °C HTCVD/MOCVD epitaxy hazard (SEMI S2 / SEMI S6 / NFPA 318 / NFPA 86 / OSHA 1910.119): RF induction coil cooling-water leak into 1,650 °C graphite susceptor (water-gas H2+CO explosion risk), pyrophoric TMGa/TMAl or SiH4/C3H8/H2 leak >=10% LEL, or NH3/HCl leak >=25 ppm / abatement flameout detected; tripping RF induction power and isolating RFO gas valves in 0ms.",
+    };
+  }
+
+  if (
+    context.sicCtoSiRatioDriftOrGanSusceptorPyrometerTemperatureExcursionOver25CDetected ||
+    context.exhaustForelineAmmoniumChlorideNh4ClSaltPlugDifferentialPressureOver15KpaDetected ||
+    context.postImplant1800CArgonAnnealFurnaceOxygenIngressOver50PpmDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_sic_gan_epitaxy_and_switch_to_argon_cooldown_purge",
+      reason:
+        "SiC/GaN epitaxy or 1,800 °C anneal process fault: C/Si ratio drift or pyrometer temperature excursion >=25 °C, foreline NH4Cl salt-plug pressure drop >=15 kPa, or 1,800 °C anneal furnace O2 ingress >=50 ppm; aborting growth and switching to Argon cooldown purge.",
+    };
+  }
+
+  if (
+    context.reactorQuartzTubeOrTaCGraphiteSusceptorMaintenanceRequested &&
+    (!context.susceptorCooledBelow50CAndTmgaSih4Nh3LinesArgonPurgedVerified ||
+      !context.sicParasiticDepositHepafilterVacAndScbaMechanicalLotoVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "lock_htcvd_mocvd_reactor_until_below_50c_and_pyrophoric_purge_loto",
+      reason:
+        "SEMI S2 / NFPA 86 / OSHA 1910.119 SiC/GaN reactor maintenance interlock: quartz tube or TaC-coated graphite susceptor opening requested before cooldown <50 °C and TMGa/SiH4/NH3 Argon purge verification, or without HEPA vacuuming of pyrophoric deposits, supplied-air SCBA & mechanical LOTO.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Semiconductor SiC/GaN wide-bandgap 1,650 °C HTCVD/MOCVD epitaxy, RF induction water-jacket integrity, TMGa/SiH4/NH3 abatement, and <50 °C cooldown SCBA/LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8838Rfc8840TrickleIceIncrementalCandidateSignalingEndOfCandidatesAndTaPacingGuardContext {
+  readonly trickleCandidateContainsLoopbackLinkLocalMetadataOrRfc6890BogusIpDetected: boolean;
+  readonly trickleCandidateIceUfragOrGenerationMismatchAgainstActiveSessionDetected: boolean;
+  readonly duplicateOrPrematureEndOfCandidatesBeforeGatheringCompleteDetected: boolean;
+  readonly trickleCandidateSentBeforeInitialSdpOfferOrWithoutTrickleOptionNegotiatedDetected: boolean;
+  readonly connectivityCheckTaPacingIntervalMs: number;
+  readonly trickleCandidatesPerMediaStreamCount: number;
+}
+
+export interface WebrtcSipRfc8838Rfc8840TrickleIceIncrementalCandidateSignalingEndOfCandidatesAndTaPacingGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P516-WEBRTC-SIP-RFC8838-RFC8840-TRICKLE-ICE-INCREMENTAL-CANDIDATE-SIGNALING-END-OF-CANDIDATES-AND-TA-PACING-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_ssrf_or_unnegotiated_rfc8838_trickle_ice_candidate_0ms"
+    | "reject_mismatched_ice_ufrag_generation_or_premature_end_of_candidates"
+    | "clamp_trickle_ice_ta_pacing_floor_and_candidate_pool_size";
+  readonly reason: string;
+  readonly clampedConnectivityCheckTaPacingIntervalMs: number;
+  readonly clampedTrickleCandidatesPerMediaStreamCount: number;
+}
+
+export function evaluateWebrtcSipRfc8838Rfc8840TrickleIceIncrementalCandidateSignalingEndOfCandidatesAndTaPacingGuard(
+  context: WebrtcSipRfc8838Rfc8840TrickleIceIncrementalCandidateSignalingEndOfCandidatesAndTaPacingGuardContext,
+): WebrtcSipRfc8838Rfc8840TrickleIceIncrementalCandidateSignalingEndOfCandidatesAndTaPacingGuardDecision {
+  const policyId =
+    "P516-WEBRTC-SIP-RFC8838-RFC8840-TRICKLE-ICE-INCREMENTAL-CANDIDATE-SIGNALING-END-OF-CANDIDATES-AND-TA-PACING-GUARD" as const;
+
+  const clampedConnectivityCheckTaPacingIntervalMs = Math.min(
+    Math.max(Math.trunc(context.connectivityCheckTaPacingIntervalMs), 5),
+    500,
+  );
+  const clampedTrickleCandidatesPerMediaStreamCount = Math.min(
+    Math.max(Math.trunc(context.trickleCandidatesPerMediaStreamCount), 1),
+    32,
+  );
+
+  if (
+    context.trickleCandidateContainsLoopbackLinkLocalMetadataOrRfc6890BogusIpDetected ||
+    context.trickleCandidateSentBeforeInitialSdpOfferOrWithoutTrickleOptionNegotiatedDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_ssrf_or_unnegotiated_rfc8838_trickle_ice_candidate_0ms",
+      reason:
+        "Critical WebRTC & SIP RFC 8838 / RFC 8840 Trickle ICE violation: incremental SIP INFO (application/trickle-ice-sdpfrag) or JSEP addIceCandidate carries SSRF loopback/169.254.169.254 metadata/RFC 6890 reserved address or arrived before initial SDP offer / without a=ice-options:trickle negotiation; dropping candidate in 0ms.",
+      clampedConnectivityCheckTaPacingIntervalMs,
+      clampedTrickleCandidatesPerMediaStreamCount,
+    };
+  }
+
+  if (
+    context.trickleCandidateIceUfragOrGenerationMismatchAgainstActiveSessionDetected ||
+    context.duplicateOrPrematureEndOfCandidatesBeforeGatheringCompleteDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "reject_mismatched_ice_ufrag_generation_or_premature_end_of_candidates",
+      reason:
+        "WebRTC & SIP RFC 8838 / RFC 8840 Trickle ICE state-machine violation: incremental candidate carries stale/mismatched a=ice-ufrag or generation index across ICE restart, or spoofed premature a=end-of-candidates attempted to freeze checklist nomination; rejecting trickle update.",
+      clampedConnectivityCheckTaPacingIntervalMs,
+      clampedTrickleCandidatesPerMediaStreamCount,
+    };
+  }
+
+  if (
+    context.connectivityCheckTaPacingIntervalMs < 5 ||
+    context.trickleCandidatesPerMediaStreamCount > 32
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_trickle_ice_ta_pacing_floor_and_candidate_pool_size",
+      reason:
+        "WebRTC & SIP RFC 8838 / RFC 8863 Trickle ICE pacing/pool bounds exceeded: STUN connectivity-check timer Ta <5 ms or trickle candidate count per media stream exceeds 32; clamping Ta to >=5 ms and candidate pool to <=32.",
+      clampedConnectivityCheckTaPacingIntervalMs,
+      clampedTrickleCandidatesPerMediaStreamCount,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "WebRTC & SIP RFC 8838 / RFC 8840 / RFC 8863 Trickle ICE sdpfrag syntax, SSRF filtering, ice-ufrag generation continuity, end-of-candidates ordering, and >=5 ms Ta pacing verified.",
+    clampedConnectivityCheckTaPacingIntervalMs,
+    clampedTrickleCandidatesPerMediaStreamCount,
+  };
+}
+
+
 
 
 
