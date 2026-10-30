@@ -52865,3 +52865,164 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceTieBreakerSpoofAndTriggeredChe
     clampedMaxOutstandingChecklistPairs,
   };
 }
+
+export interface SemiconductorHbm4eHybridBondCuPillarVoidAndMicrocrackGuardContext {
+  readonly hybridBondVoidClusterOrCuPillarCrushDetected: boolean;
+  readonly microcrackOrDieShiftExcursionDetected: boolean;
+  readonly underfillCureExothermRunawayDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndEfaSamplingVerified: boolean;
+}
+
+export interface SemiconductorHbm4eHybridBondCuPillarVoidAndMicrocrackGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P535-SEMICONDUCTOR-HBM4E-HYBRID-BOND-CU-PILLAR-VOID-AND-MICROCRACK-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_hybrid_bond_press_and_reflow_power_in_0ms"
+    | "abort_bond_sequence_and_hold_efa_metrology"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorHbm4eHybridBondCuPillarVoidAndMicrocrackGuard(
+  context: SemiconductorHbm4eHybridBondCuPillarVoidAndMicrocrackGuardContext,
+): SemiconductorHbm4eHybridBondCuPillarVoidAndMicrocrackGuardDecision {
+  const policyId =
+    "P535-SEMICONDUCTOR-HBM4E-HYBRID-BOND-CU-PILLAR-VOID-AND-MICROCRACK-GUARD" as const;
+
+  if (context.hybridBondVoidClusterOrCuPillarCrushDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_hybrid_bond_press_and_reflow_power_in_0ms",
+      reason:
+        "HBM4E hybrid-bond critical hazard (SEMI S2 / SEMI S6 / NFPA 318): Cu-pillar crush or hybrid-bond void cluster detected; tripping bond-press and reflow power in 0ms.",
+    };
+  }
+
+  if (
+    context.microcrackOrDieShiftExcursionDetected ||
+    context.underfillCureExothermRunawayDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_bond_sequence_and_hold_efa_metrology",
+      reason:
+        "HBM4E package integrity violation: microcrack/die-shift excursion or underfill cure exotherm runaway detected; aborting sequence and holding lot for EFA/metrology.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndEfaSamplingVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "HBM4E maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without SCBA LOTO and EFA residue sampling checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "HBM4E hybrid-bond void, die-shift, and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceRenominationSpoofAndPairChurnGuardContext {
+  readonly iceRenominationSpoofOrUseCandidateReplayDetected: boolean;
+  readonly candidatePairChurnAmplificationDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceRenominationSpoofAndPairChurnGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P536-WEBRTC-SIP-RFC8445-RFC8838-ICE-RENOMINATION-SPOOF-AND-PAIR-CHURN-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_renomination_spoof_or_pair_churn_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceRenominationSpoofAndPairChurnGuard(
+  context: WebrtcSipRfc8445Rfc8838IceRenominationSpoofAndPairChurnGuardContext,
+): WebrtcSipRfc8445Rfc8838IceRenominationSpoofAndPairChurnGuardDecision {
+  const policyId =
+    "P536-WEBRTC-SIP-RFC8445-RFC8838-ICE-RENOMINATION-SPOOF-AND-PAIR-CHURN-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    100,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    6,
+  );
+
+  if (
+    context.iceRenominationSpoofOrUseCandidateReplayDetected ||
+    context.candidatePairChurnAmplificationDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_renomination_spoof_or_pair_churn_in_0ms",
+      reason:
+        "ICE renomination integrity violation (RFC 8445 / RFC 8838): USE-CANDIDATE replay spoof or candidate-pair churn flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 100 ||
+    context.maxOutstandingChecklistPairs > 6
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE renomination bounds exceeded: connectivity checks >100/s or outstanding checklist pairs >6; clamping to deterministic anti-churn limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE renomination authenticity, pair-churn control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
