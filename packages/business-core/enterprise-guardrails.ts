@@ -51864,6 +51864,172 @@ export function evaluateWebrtcSipRfc5766Rfc8656TurnRelayCredentialRotationAndAll
   };
 }
 
+export interface SemiconductorAdvancedPackagingCowosLInterposerMicrobumpReflowFluxOutgasAndWarpageClampGuardContext {
+  readonly fluxOutgassingOrHydrogenCarrierLelAbove10PctDetected: boolean;
+  readonly reflowHotPlateOvertempAbove320COrNitrogenFlowLossDetected: boolean;
+  readonly interposerWarpageOver80UmOrMicrobumpVoidRateAboveSpecDetected: boolean;
+  readonly vacuumTransferClusterPressureRiseOrParticleBurstOverLimitDetected: boolean;
+  readonly chamberMaintenanceDoorRequested: boolean;
+  readonly clusterCooledBelow45CAndNitrogenPurgeVerified: boolean;
+  readonly scbaLotoAndFluxResiduePassivationVerified: boolean;
+}
+
+export interface SemiconductorAdvancedPackagingCowosLInterposerMicrobumpReflowFluxOutgasAndWarpageClampGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P523-SEMICONDUCTOR-ADVANCED-PACKAGING-COWOS-L-INTERPOSER-MICROBUMP-REFLOW-FLUX-OUTGAS-AND-WARPAGE-CLAMP-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_reflow_heater_and_isolate_hydrogen_carrier_in_0ms"
+    | "abort_reflow_recipe_and_hold_metrology_rework"
+    | "lock_cluster_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorAdvancedPackagingCowosLInterposerMicrobumpReflowFluxOutgasAndWarpageClampGuard(
+  context: SemiconductorAdvancedPackagingCowosLInterposerMicrobumpReflowFluxOutgasAndWarpageClampGuardContext,
+): SemiconductorAdvancedPackagingCowosLInterposerMicrobumpReflowFluxOutgasAndWarpageClampGuardDecision {
+  const policyId =
+    "P523-SEMICONDUCTOR-ADVANCED-PACKAGING-COWOS-L-INTERPOSER-MICROBUMP-REFLOW-FLUX-OUTGAS-AND-WARPAGE-CLAMP-GUARD" as const;
+
+  if (
+    context.fluxOutgassingOrHydrogenCarrierLelAbove10PctDetected ||
+    context.reflowHotPlateOvertempAbove320COrNitrogenFlowLossDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_reflow_heater_and_isolate_hydrogen_carrier_in_0ms",
+      reason:
+        "Critical CoWoS-L microbump reflow hazard (SEMI S2 / SEMI S6 / NFPA 318): flux outgassing or hydrogen-carrier >=10% LEL, or hot-plate >320 °C / nitrogen flow loss detected; tripping reflow heater and isolating carrier gas manifold in 0ms.",
+    };
+  }
+
+  if (
+    context.interposerWarpageOver80UmOrMicrobumpVoidRateAboveSpecDetected ||
+    context.vacuumTransferClusterPressureRiseOrParticleBurstOverLimitDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_reflow_recipe_and_hold_metrology_rework",
+      reason:
+        "CoWoS-L microbump process integrity violation: interposer warpage >80 um, microbump void-rate over spec, or vacuum transfer cluster pressure/particle burst excursion detected; aborting recipe and holding lot for metrology rework.",
+    };
+  }
+
+  if (
+    context.chamberMaintenanceDoorRequested &&
+    (!context.clusterCooledBelow45CAndNitrogenPurgeVerified ||
+      !context.scbaLotoAndFluxResiduePassivationVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_cluster_until_cooldown_and_scba_loto_verified",
+      reason:
+        "CoWoS-L cluster maintenance lock: chamber opening requested before cooldown <45 °C and nitrogen purge verification, or without flux-residue passivation and positive-pressure SCBA LOTO checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "CoWoS-L microbump reflow outgassing controls, warpage/void bounds, and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc3550Rfc4585RtpReplayWindowRtcpNackStormAndSequenceWrapGuardContext {
+  readonly srtpReplayWindowOverflowOrRtpSequenceWrapAnomalyDetected: boolean;
+  readonly rtcpNackAmplificationOrFeedbackStormDetected: boolean;
+  readonly sourceSsrcChangedWithoutDtlsSrtpContextRotationDetected: boolean;
+  readonly maxNackPerSecond: number;
+  readonly maxRetransmissionBufferPackets: number;
+}
+
+export interface WebrtcSipRfc3550Rfc4585RtpReplayWindowRtcpNackStormAndSequenceWrapGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P524-WEBRTC-SIP-RFC3550-RFC4585-RTP-REPLAY-WINDOW-RTCP-NACK-STORM-AND-SEQUENCE-WRAP-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_replay_or_feedback_storm_path_in_0ms"
+    | "reject_ssrc_context_rebind_without_key_rotation"
+    | "clamp_nack_rate_and_retransmission_buffer";
+  readonly reason: string;
+  readonly clampedMaxNackPerSecond: number;
+  readonly clampedMaxRetransmissionBufferPackets: number;
+}
+
+export function evaluateWebrtcSipRfc3550Rfc4585RtpReplayWindowRtcpNackStormAndSequenceWrapGuard(
+  context: WebrtcSipRfc3550Rfc4585RtpReplayWindowRtcpNackStormAndSequenceWrapGuardContext,
+): WebrtcSipRfc3550Rfc4585RtpReplayWindowRtcpNackStormAndSequenceWrapGuardDecision {
+  const policyId =
+    "P524-WEBRTC-SIP-RFC3550-RFC4585-RTP-REPLAY-WINDOW-RTCP-NACK-STORM-AND-SEQUENCE-WRAP-GUARD" as const;
+
+  const clampedMaxNackPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxNackPerSecond), 10),
+    120,
+  );
+  const clampedMaxRetransmissionBufferPackets = Math.min(
+    Math.max(Math.trunc(context.maxRetransmissionBufferPackets), 64),
+    2048,
+  );
+
+  if (
+    context.srtpReplayWindowOverflowOrRtpSequenceWrapAnomalyDetected ||
+    context.rtcpNackAmplificationOrFeedbackStormDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_replay_or_feedback_storm_path_in_0ms",
+      reason:
+        "RTP/RTCP transport security violation (RFC 3550 / RFC 4585): replay-window overflow, sequence-wrap anomaly, or RTCP NACK amplification storm detected; dropping affected media path in 0ms.",
+      clampedMaxNackPerSecond,
+      clampedMaxRetransmissionBufferPackets,
+    };
+  }
+
+  if (
+    context.sourceSsrcChangedWithoutDtlsSrtpContextRotationDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_ssrc_context_rebind_without_key_rotation",
+      reason:
+        "RTP SSRC context integrity violation: source SSRC rebind detected without DTLS-SRTP context/key rotation and replay-window reset; rejecting stream rebind.",
+      clampedMaxNackPerSecond,
+      clampedMaxRetransmissionBufferPackets,
+    };
+  }
+
+  if (
+    context.maxNackPerSecond > 120 ||
+    context.maxRetransmissionBufferPackets > 2048
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_nack_rate_and_retransmission_buffer",
+      reason:
+        "RTP retransmission control bounds exceeded: NACK feedback rate >120/s or retransmission buffer >2,048 packets; clamping to deterministic transport limits.",
+      clampedMaxNackPerSecond,
+      clampedMaxRetransmissionBufferPackets,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "RTP replay-window continuity, SSRC context stability, and RTCP NACK anti-storm limits verified.",
+    clampedMaxNackPerSecond,
+    clampedMaxRetransmissionBufferPackets,
+  };
+}
 
 
 
