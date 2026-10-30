@@ -51352,6 +51352,185 @@ export function evaluateWebrtcSipRfc8838Rfc8840TrickleIceIncrementalCandidateSig
   };
 }
 
+export interface SemiconductorWaferFab3dNandCryogenicHighAspectRatioHarChannelEtch165CHotPhosphoricAcidH3po4NitrideStripAndWf6Sih4WordlineAldSemiS2SemiS6Nfpa318Nfpa69Osha1910119H3po4SteamBoiloverWf6Sih4CosTripCryoChuckAbortAndHfScbaLotoGuardContext {
+  readonly hotPhosphoricAcid165CDiWaterDosingSteamExplosionOrBoiloverOverpressureDetected: boolean;
+  readonly tungstenHexafluorideWf6SilaneSih4OrCarbonylSulfideCosH2sLeakOverTlvOr10PctLelDetected: boolean;
+  readonly cryogenicEtchEscLiquidNitrogenCoolantRuptureOrRfArcOvertempDetected: boolean;
+  readonly harChannelEtchFluorocarbonPolymerPlugOrCryoChuckTempDriftOver3CDetected: boolean;
+  readonly hotH3po4BathSilicaSupersaturationOrSelectiveOxideRegrowthDriftDetected: boolean;
+  readonly wordlineAldForelineAmmoniumFluorideNh4fTiF4SaltClogOver12KpaDetected: boolean;
+  readonly cryoEtchChamberOrHotH3po4QuartzBathMaintenanceRequested: boolean;
+  readonly h3po4BathCooledBelow45CAndWf6CosHfLinesArgonPurgedVerified: boolean;
+  readonly anhydrousHfFluoridePassivationCalciumGluconateAndScbaLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFab3dNandCryogenicHighAspectRatioHarChannelEtch165CHotPhosphoricAcidH3po4NitrideStripAndWf6Sih4WordlineAldSemiS2SemiS6Nfpa318Nfpa69Osha1910119H3po4SteamBoiloverWf6Sih4CosTripCryoChuckAbortAndHfScbaLotoGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P517-SEMICONDUCTOR-WAFER-FAB-3D-NAND-CRYOGENIC-HIGH-ASPECT-RATIO-HAR-CHANNEL-ETCH-165C-HOT-PHOSPHORIC-ACID-H3PO4-NITRIDE-STRIP-AND-WF6-SIH4-WORDLINE-ALD-SEMIS2-SEMIS6-NFPA318-NFPA69-OSHA1910119-H3PO4-STEAM-BOILOVER-WF6-SIH4-COS-TRIP-CRYO-CHUCK-ABORT-AND-HF-SCBA-LOTO-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_rf_heater_and_isolate_wf6_sih4_cos_h3po4_in_0ms"
+    | "abort_3d_nand_har_etch_or_wordline_ald_and_divert_to_scrubber"
+    | "lock_3d_nand_cryo_etch_and_h3po4_bath_until_cooled_and_hf_scba_loto";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFab3dNandCryogenicHighAspectRatioHarChannelEtch165CHotPhosphoricAcidH3po4NitrideStripAndWf6Sih4WordlineAldSemiS2SemiS6Nfpa318Nfpa69Osha1910119H3po4SteamBoiloverWf6Sih4CosTripCryoChuckAbortAndHfScbaLotoGuard(
+  context: SemiconductorWaferFab3dNandCryogenicHighAspectRatioHarChannelEtch165CHotPhosphoricAcidH3po4NitrideStripAndWf6Sih4WordlineAldSemiS2SemiS6Nfpa318Nfpa69Osha1910119H3po4SteamBoiloverWf6Sih4CosTripCryoChuckAbortAndHfScbaLotoGuardContext,
+): SemiconductorWaferFab3dNandCryogenicHighAspectRatioHarChannelEtch165CHotPhosphoricAcidH3po4NitrideStripAndWf6Sih4WordlineAldSemiS2SemiS6Nfpa318Nfpa69Osha1910119H3po4SteamBoiloverWf6Sih4CosTripCryoChuckAbortAndHfScbaLotoGuardDecision {
+  const policyId =
+    "P517-SEMICONDUCTOR-WAFER-FAB-3D-NAND-CRYOGENIC-HIGH-ASPECT-RATIO-HAR-CHANNEL-ETCH-165C-HOT-PHOSPHORIC-ACID-H3PO4-NITRIDE-STRIP-AND-WF6-SIH4-WORDLINE-ALD-SEMIS2-SEMIS6-NFPA318-NFPA69-OSHA1910119-H3PO4-STEAM-BOILOVER-WF6-SIH4-COS-TRIP-CRYO-CHUCK-ABORT-AND-HF-SCBA-LOTO-GUARD" as const;
+
+  if (
+    context.hotPhosphoricAcid165CDiWaterDosingSteamExplosionOrBoiloverOverpressureDetected ||
+    context.tungstenHexafluorideWf6SilaneSih4OrCarbonylSulfideCosH2sLeakOverTlvOr10PctLelDetected ||
+    context.cryogenicEtchEscLiquidNitrogenCoolantRuptureOrRfArcOvertempDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_rf_heater_and_isolate_wf6_sih4_cos_h3po4_in_0ms",
+      reason:
+        "Critical 3D NAND 300+ layer HAR cryogenic etch / 165 °C H3PO4 strip / WF6 wordline ALD hazard (SEMI S2 / SEMI S6 / NFPA 318 / NFPA 69 / OSHA 1910.119): 165 °C hot H3PO4 DI-water spiking steam boilover, WF6/SiH4/B2H6/COS/H2S/HF leak >=TLV or >=10% LEL, or -70 °C LN2 cryo-ESC rupture / RF arc detected; tripping RF/heaters and isolating RFO valves in 0ms.",
+    };
+  }
+
+  if (
+    context.harChannelEtchFluorocarbonPolymerPlugOrCryoChuckTempDriftOver3CDetected ||
+    context.hotH3po4BathSilicaSupersaturationOrSelectiveOxideRegrowthDriftDetected ||
+    context.wordlineAldForelineAmmoniumFluorideNh4fTiF4SaltClogOver12KpaDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_3d_nand_har_etch_or_wordline_ald_and_divert_to_scrubber",
+      reason:
+        "3D NAND HAR channel etch, 165 °C H3PO4 nitride exhumation, or WF6 wordline ALD drift: cryo-ESC temperature drift >=3 °C / fluorocarbon plug, H3PO4 silica supersaturation drift, or foreline NH4F/TiF4 salt-plug >=12 kPa; aborting recipe and diverting exhaust to abatement scrubber.",
+    };
+  }
+
+  if (
+    context.cryoEtchChamberOrHotH3po4QuartzBathMaintenanceRequested &&
+    (!context.h3po4BathCooledBelow45CAndWf6CosHfLinesArgonPurgedVerified ||
+      !context.anhydrousHfFluoridePassivationCalciumGluconateAndScbaLotoVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "lock_3d_nand_cryo_etch_and_h3po4_bath_until_cooled_and_hf_scba_loto",
+      reason:
+        "SEMI S2 / OSHA 1910.119 3D NAND maintenance interlock: cryo-etch chamber or 165 °C H3PO4 quartz bath opening requested before bath cools <45 °C and WF6/COS/HF lines are Argon-purged, or without fluoride passivation, Calcium Gluconate kit, supplied-air SCBA & mechanical LOTO.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Semiconductor 3D NAND 300+ layer HAR cryogenic channel etch, 165 °C H3PO4 nitride strip, WF6/SiH4 wordline ALD, and <45 °C HF SCBA/LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8828Rfc8829WebrtcIpAddressHandlingModeMdnsCandidateObfuscationAndLocalSubnetEnumerationGuardContext {
+  readonly rfc1918PrivateOrIpv6TemporaryHostIpExposedInMdnsRequiredModeDetected: boolean;
+  readonly malformedNonRfc4122UuidOrMultiAddressTxtRecordMdnsCandidateInjectionDetected: boolean;
+  readonly disableNonProxiedUdpModeViolatedByDirectHostOrStunSrflxCandidateLeakDetected: boolean;
+  readonly crossOriginWebrtcLocalSubnetPortScanOrUnconsentedHostGatheringDetected: boolean;
+  readonly mdnsHostnameResolutionTimeoutMs: number;
+  readonly activeMdnsObfuscatedCandidatesPerSessionCount: number;
+}
+
+export interface WebrtcSipRfc8828Rfc8829WebrtcIpAddressHandlingModeMdnsCandidateObfuscationAndLocalSubnetEnumerationGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P518-WEBRTC-SIP-RFC8828-RFC8829-WEBRTC-IP-ADDRESS-HANDLING-MODE-MDNS-CANDIDATE-OBFUSCATION-AND-LOCAL-SUBNET-ENUMERATION-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_rfc8828_private_ip_leak_or_malformed_mdns_candidate_0ms"
+    | "reject_non_proxied_udp_policy_bypass_or_local_subnet_enumeration"
+    | "clamp_mdns_resolution_timeout_and_obfuscated_candidate_count";
+  readonly reason: string;
+  readonly clampedMdnsHostnameResolutionTimeoutMs: number;
+  readonly clampedActiveMdnsObfuscatedCandidatesPerSessionCount: number;
+}
+
+export function evaluateWebrtcSipRfc8828Rfc8829WebrtcIpAddressHandlingModeMdnsCandidateObfuscationAndLocalSubnetEnumerationGuard(
+  context: WebrtcSipRfc8828Rfc8829WebrtcIpAddressHandlingModeMdnsCandidateObfuscationAndLocalSubnetEnumerationGuardContext,
+): WebrtcSipRfc8828Rfc8829WebrtcIpAddressHandlingModeMdnsCandidateObfuscationAndLocalSubnetEnumerationGuardDecision {
+  const policyId =
+    "P518-WEBRTC-SIP-RFC8828-RFC8829-WEBRTC-IP-ADDRESS-HANDLING-MODE-MDNS-CANDIDATE-OBFUSCATION-AND-LOCAL-SUBNET-ENUMERATION-GUARD" as const;
+
+  const clampedMdnsHostnameResolutionTimeoutMs = Math.min(
+    Math.max(Math.trunc(context.mdnsHostnameResolutionTimeoutMs), 100),
+    3000,
+  );
+  const clampedActiveMdnsObfuscatedCandidatesPerSessionCount = Math.min(
+    Math.max(
+      Math.trunc(context.activeMdnsObfuscatedCandidatesPerSessionCount),
+      1,
+    ),
+    8,
+  );
+
+  if (
+    context.rfc1918PrivateOrIpv6TemporaryHostIpExposedInMdnsRequiredModeDetected ||
+    context.malformedNonRfc4122UuidOrMultiAddressTxtRecordMdnsCandidateInjectionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_rfc8828_private_ip_leak_or_malformed_mdns_candidate_0ms",
+      reason:
+        "Critical WebRTC & SIP RFC 8828 / RFC 6762 IP privacy violation: raw RFC 1918 / IPv6 LAN host IP exposed without mDNS .local UUIDv4 obfuscation or malformed non-RFC 4122 `<uuidv4>.local` / multi-record mDNS amplification candidate detected; dropping candidate in 0ms.",
+      clampedMdnsHostnameResolutionTimeoutMs,
+      clampedActiveMdnsObfuscatedCandidatesPerSessionCount,
+    };
+  }
+
+  if (
+    context.disableNonProxiedUdpModeViolatedByDirectHostOrStunSrflxCandidateLeakDetected ||
+    context.crossOriginWebrtcLocalSubnetPortScanOrUnconsentedHostGatheringDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "reject_non_proxied_udp_policy_bypass_or_local_subnet_enumeration",
+      reason:
+        "WebRTC & SIP RFC 8828 IP handling policy bypass: Mode 4 (disable_non_proxied_udp) violated by direct host/srflx UDP candidate emission or cross-origin local-subnet enumeration / unconsented host candidate gathering attempted; rejecting ICE candidate.",
+      clampedMdnsHostnameResolutionTimeoutMs,
+      clampedActiveMdnsObfuscatedCandidatesPerSessionCount,
+    };
+  }
+
+  if (
+    context.mdnsHostnameResolutionTimeoutMs > 3000 ||
+    context.activeMdnsObfuscatedCandidatesPerSessionCount > 8
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_mdns_resolution_timeout_and_obfuscated_candidate_count",
+      reason:
+        "WebRTC & SIP RFC 8828 / RFC 6762 mDNS candidate bounds exceeded: mDNS resolution timeout >3,000 ms or active `.local` obfuscated candidates per session exceed 8; clamping timeout to <=3,000 ms and mDNS candidates to <=8.",
+      clampedMdnsHostnameResolutionTimeoutMs,
+      clampedActiveMdnsObfuscatedCandidatesPerSessionCount,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "WebRTC & SIP RFC 8828 / RFC 8829 / RFC 6762 IP address handling mode, mDNS `<uuidv4>.local` host obfuscation, non-proxied UDP suppression, and <=3,000 ms resolution bounds verified.",
+    clampedMdnsHostnameResolutionTimeoutMs,
+    clampedActiveMdnsObfuscatedCandidatesPerSessionCount,
+  };
+}
+
+
 
 
 
