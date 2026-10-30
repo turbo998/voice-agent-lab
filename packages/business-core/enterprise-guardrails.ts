@@ -50991,6 +50991,189 @@ export function evaluateWebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBund
   };
 }
 
+// ============================================================================
+// Stage 260 (P513–P514 · 523 Guardrails & 532 Probes · 263 Dimensions)
+// ============================================================================
+
+export interface SemiconductorWaferFabGaaNanosheetSigeSelectiveClf3VaporEtchAndHkmgHfo2TinAldSemiS2SemiS6Nfpa318Nfpa400Osha1910119Clf3HalogenTripTemahAmpouleAbortAndPassivationScbaLotoGuardContext {
+  readonly clf3ChlorineTrifluorideOrF2GasCabinetLeakOver0_1PpmDetected: boolean;
+  readonly sigeEpitaxyGermaneGeH4OrDichlorosilaneDcsOver10PctLelDetected: boolean;
+  readonly forelineDryPumpHalogenExothermOver180COrN2PurgeLossDetected: boolean;
+  readonly hkmgTemahTdmahPrecursorAmpouleOvertempOver115COrCarrierGasReverseFlowDetected: boolean;
+  readonly sigeNanosheetSelectiveEtchSelectivityDriftOrO3RadicalDoseFaultDetected: boolean;
+  readonly halogenDryScrubberChemisorbentBedBreakthroughOver0_05PpmHfClf3Detected: boolean;
+  readonly etchOrAldChamberQuartzwareMaintenanceRequested: boolean;
+  readonly clf3LineArgonPurgedFluoridePassivatedAndZeroHalogenVerified: boolean;
+  readonly suppliedAirScbaCalciumGluconateKitAndChamberLidLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFabGaaNanosheetSigeSelectiveClf3VaporEtchAndHkmgHfo2TinAldSemiS2SemiS6Nfpa318Nfpa400Osha1910119Clf3HalogenTripTemahAmpouleAbortAndPassivationScbaLotoGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P513-SEMICONDUCTOR-WAFER-FAB-GAA-NANOSHEET-SIGE-SELECTIVE-CLF3-VAPOR-ETCH-AND-HKMG-HFO2-TIN-ALD-SEMIS2-SEMIS6-NFPA318-NFPA400-OSHA1910119-CLF3-HALOGEN-TRIP-TEMAH-AMPOULE-ABORT-AND-PASSIVATION-SCBA-LOTO-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_clf3_geh4_rfo_valves_and_flood_argon_ballast_in_0ms"
+    | "abort_gaa_etch_or_hkmg_ald_and_isolate_temah_ampoule"
+    | "lock_gaa_etch_and_ald_chamber_until_clf3_purge_and_scba_loto";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFabGaaNanosheetSigeSelectiveClf3VaporEtchAndHkmgHfo2TinAldSemiS2SemiS6Nfpa318Nfpa400Osha1910119Clf3HalogenTripTemahAmpouleAbortAndPassivationScbaLotoGuard(
+  context: SemiconductorWaferFabGaaNanosheetSigeSelectiveClf3VaporEtchAndHkmgHfo2TinAldSemiS2SemiS6Nfpa318Nfpa400Osha1910119Clf3HalogenTripTemahAmpouleAbortAndPassivationScbaLotoGuardContext,
+): SemiconductorWaferFabGaaNanosheetSigeSelectiveClf3VaporEtchAndHkmgHfo2TinAldSemiS2SemiS6Nfpa318Nfpa400Osha1910119Clf3HalogenTripTemahAmpouleAbortAndPassivationScbaLotoGuardDecision {
+  const policyId =
+    "P513-SEMICONDUCTOR-WAFER-FAB-GAA-NANOSHEET-SIGE-SELECTIVE-CLF3-VAPOR-ETCH-AND-HKMG-HFO2-TIN-ALD-SEMIS2-SEMIS6-NFPA318-NFPA400-OSHA1910119-CLF3-HALOGEN-TRIP-TEMAH-AMPOULE-ABORT-AND-PASSIVATION-SCBA-LOTO-GUARD" as const;
+
+  if (
+    context.clf3ChlorineTrifluorideOrF2GasCabinetLeakOver0_1PpmDetected ||
+    context.sigeEpitaxyGermaneGeH4OrDichlorosilaneDcsOver10PctLelDetected ||
+    context.forelineDryPumpHalogenExothermOver180COrN2PurgeLossDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_clf3_geh4_rfo_valves_and_flood_argon_ballast_in_0ms",
+      reason:
+        "Critical GAA Nanosheet ClF3 / SiGe / HKMG ALD hazard (SEMI S2 / SEMI S6 / NFPA 318 / NFPA 400 / OSHA 1910.119): hypergolic Chlorine Trifluoride (ClF3) or F2 leak >=0.1 ppm (TLV ceiling), Germane (GeH4) / DCS >=10% LEL, or foreline dry-pump halogen exotherm >=180 °C / N2 purge loss detected; tripping RFO cylinder valves and flooding Argon/N2 dilution ballast in 0ms.",
+    };
+  }
+
+  if (
+    context.hkmgTemahTdmahPrecursorAmpouleOvertempOver115COrCarrierGasReverseFlowDetected ||
+    context.sigeNanosheetSelectiveEtchSelectivityDriftOrO3RadicalDoseFaultDetected ||
+    context.halogenDryScrubberChemisorbentBedBreakthroughOver0_05PpmHfClf3Detected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_gaa_etch_or_hkmg_ald_and_isolate_temah_ampoule",
+      reason:
+        "GAA Nanosheet selective etch / HKMG ALD process or abatement fault: TEMAH/TDMAH HfO2 precursor ampoule over-temperature >=115 °C or carrier reverse-flow, SiGe nanosheet release selectivity drift / O3 radical dose fault, or dry-scrubber chemisorbent breakthrough >=0.05 ppm HF/ClF3; aborting recipe and isolating precursor ampoule.",
+    };
+  }
+
+  if (
+    context.etchOrAldChamberQuartzwareMaintenanceRequested &&
+    (!context.clf3LineArgonPurgedFluoridePassivatedAndZeroHalogenVerified ||
+      !context.suppliedAirScbaCalciumGluconateKitAndChamberLidLotoVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_gaa_etch_and_ald_chamber_until_clf3_purge_and_scba_loto",
+      reason:
+        "SEMI S2 / OSHA 1910.119 GAA Nanosheet chamber maintenance interlock: quartzware or chamber opening requested before ClF3 line Argon cyclic purge, metal-fluoride passivation & 0.00 ppm halogen verification, or without supplied-air SCBA, HF Calcium Gluconate antidote kit & mechanical lid LOTO.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Semiconductor GAA Nanosheet ClF3 selective SiGe vapor etch, HKMG HfO2/TiN ALD precursor ampoules, dry-pump halogen ballast, and SCBA/LOTO interlocks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8842Rfc4572DtlsSrtpSdpSetupRoleTlsIdContinuityAndCertificateFingerprintPinningGuardContext {
+  readonly sdpFingerprintUsesDeprecatedMd5Sha1OrMalformedHexStringDetected: boolean;
+  readonly dtlsServerCertificateFingerprintMismatchAgainstSdpPinnedDigestDetected: boolean;
+  readonly answererSelectedInvalidActiveActiveOrPassivePassiveSetupRoleConflictDetected: boolean;
+  readonly sdpTlsIdChangedWithoutNewDtlsHandshakeOrIceRestartDetected: boolean;
+  readonly sdpFingerprintAttributeCountPerMediaSection: number;
+  readonly dtlsClientHelloCookieRetransmissionRatePerSecond: number;
+}
+
+export interface WebrtcSipRfc8842Rfc4572DtlsSrtpSdpSetupRoleTlsIdContinuityAndCertificateFingerprintPinningGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P514-WEBRTC-SIP-RFC8842-RFC4572-DTLS-SRTP-SDP-SETUP-ROLE-TLS-ID-CONTINUITY-AND-CERTIFICATE-FINGERPRINT-PINNING-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_weak_or_mismatched_rfc8842_dtls_certificate_fingerprint_0ms"
+    | "reject_conflicting_sdp_setup_role_or_unrestarted_tls_id_mutation"
+    | "clamp_sdp_fingerprint_count_and_dtls_client_hello_rate";
+  readonly reason: string;
+  readonly clampedSdpFingerprintAttributeCountPerMediaSection: number;
+  readonly clampedDtlsClientHelloCookieRetransmissionRatePerSecond: number;
+}
+
+export function evaluateWebrtcSipRfc8842Rfc4572DtlsSrtpSdpSetupRoleTlsIdContinuityAndCertificateFingerprintPinningGuard(
+  context: WebrtcSipRfc8842Rfc4572DtlsSrtpSdpSetupRoleTlsIdContinuityAndCertificateFingerprintPinningGuardContext,
+): WebrtcSipRfc8842Rfc4572DtlsSrtpSdpSetupRoleTlsIdContinuityAndCertificateFingerprintPinningGuardDecision {
+  const policyId =
+    "P514-WEBRTC-SIP-RFC8842-RFC4572-DTLS-SRTP-SDP-SETUP-ROLE-TLS-ID-CONTINUITY-AND-CERTIFICATE-FINGERPRINT-PINNING-GUARD" as const;
+
+  const clampedSdpFingerprintAttributeCountPerMediaSection = Math.min(
+    Math.max(Math.trunc(context.sdpFingerprintAttributeCountPerMediaSection), 1),
+    4,
+  );
+  const clampedDtlsClientHelloCookieRetransmissionRatePerSecond = Math.min(
+    Math.max(
+      Math.trunc(context.dtlsClientHelloCookieRetransmissionRatePerSecond),
+      1,
+    ),
+    20,
+  );
+
+  if (
+    context.sdpFingerprintUsesDeprecatedMd5Sha1OrMalformedHexStringDetected ||
+    context.dtlsServerCertificateFingerprintMismatchAgainstSdpPinnedDigestDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "drop_weak_or_mismatched_rfc8842_dtls_certificate_fingerprint_0ms",
+      reason:
+        "Critical WebRTC & SIP RFC 8842 / RFC 4572 / RFC 8122 DTLS-SRTP certificate fingerprint violation: SDP a=fingerprint uses deprecated MD5/SHA-1 hash or malformed hex syntax, or the DTLS peer certificate digest does not match the pinned SDP SHA-256/SHA-384/SHA-512 fingerprint; dropping DTLS session in 0ms.",
+      clampedSdpFingerprintAttributeCountPerMediaSection,
+      clampedDtlsClientHelloCookieRetransmissionRatePerSecond,
+    };
+  }
+
+  if (
+    context.answererSelectedInvalidActiveActiveOrPassivePassiveSetupRoleConflictDetected ||
+    context.sdpTlsIdChangedWithoutNewDtlsHandshakeOrIceRestartDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "reject_conflicting_sdp_setup_role_or_unrestarted_tls_id_mutation",
+      reason:
+        "WebRTC & SIP RFC 8842 SDP DTLS state-machine violation: Answerer negotiated a deadlocked active/active or passive/passive a=setup role pair (or answered with a=setup:actpass), or mutated a=tls-id without triggering a fresh DTLS handshake; rejecting SDP offer/answer.",
+      clampedSdpFingerprintAttributeCountPerMediaSection,
+      clampedDtlsClientHelloCookieRetransmissionRatePerSecond,
+    };
+  }
+
+  if (
+    context.sdpFingerprintAttributeCountPerMediaSection > 4 ||
+    context.dtlsClientHelloCookieRetransmissionRatePerSecond > 20
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_sdp_fingerprint_count_and_dtls_client_hello_rate",
+      reason:
+        "WebRTC & SIP RFC 8842 / RFC 9147 DTLS-SRTP resource bounds exceeded: SDP media section carries >4 a=fingerprint attributes or DTLS ClientHello/HelloRetryRequest rate exceeds 20/s; clamping to <=4 fingerprints and <=20 ClientHellos/s.",
+      clampedSdpFingerprintAttributeCountPerMediaSection,
+      clampedDtlsClientHelloCookieRetransmissionRatePerSecond,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "WebRTC & SIP RFC 8842 / RFC 4572 / RFC 9147 DTLS-SRTP SHA-256+ certificate fingerprint pinning, a=setup active/passive role pairing, a=tls-id session continuity, and ClientHello rate bounds verified.",
+    clampedSdpFingerprintAttributeCountPerMediaSection,
+    clampedDtlsClientHelloCookieRetransmissionRatePerSecond,
+  };
+}
+
+
 
 
 
