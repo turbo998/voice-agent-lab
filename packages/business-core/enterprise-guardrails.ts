@@ -52198,6 +52198,170 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceRestartGenerationMismatchAndCa
   };
 }
 
+export interface SemiconductorPanelLevelFanOutRdlCopperPlatingLaserDebondAndWarpageOutgasGuardContext {
+  readonly laserDebondOverheatOrCarrierGlassCrackDetected: boolean;
+  readonly rdlCopperPlatingRunawayOrHydrogenLelAbove10PctDetected: boolean;
+  readonly panelWarpageOver120UmOrViaVoidRateOverSpecDetected: boolean;
+  readonly solventOutgasOrExhaustPressureExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndCuSolventResiduePassivationVerified: boolean;
+}
+
+export interface SemiconductorPanelLevelFanOutRdlCopperPlatingLaserDebondAndWarpageOutgasGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P527-SEMICONDUCTOR-PANEL-LEVEL-FAN-OUT-RDL-COPPER-PLATING-LASER-DEBOND-AND-WARPAGE-OUTGAS-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_laser_debond_and_plating_power_in_0ms"
+    | "abort_panel_run_and_hold_metrology_rework"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorPanelLevelFanOutRdlCopperPlatingLaserDebondAndWarpageOutgasGuard(
+  context: SemiconductorPanelLevelFanOutRdlCopperPlatingLaserDebondAndWarpageOutgasGuardContext,
+): SemiconductorPanelLevelFanOutRdlCopperPlatingLaserDebondAndWarpageOutgasGuardDecision {
+  const policyId =
+    "P527-SEMICONDUCTOR-PANEL-LEVEL-FAN-OUT-RDL-COPPER-PLATING-LASER-DEBOND-AND-WARPAGE-OUTGAS-GUARD" as const;
+
+  if (
+    context.laserDebondOverheatOrCarrierGlassCrackDetected ||
+    context.rdlCopperPlatingRunawayOrHydrogenLelAbove10PctDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_laser_debond_and_plating_power_in_0ms",
+      reason:
+        "Critical FOPLP hazard (SEMI S2 / SEMI S6 / NFPA 318): laser debond overheat/carrier-glass crack or RDL Cu plating runaway with H2 >=10% LEL detected; tripping laser/plating power in 0ms.",
+    };
+  }
+
+  if (
+    context.panelWarpageOver120UmOrViaVoidRateOverSpecDetected ||
+    context.solventOutgasOrExhaustPressureExcursionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_panel_run_and_hold_metrology_rework",
+      reason:
+        "Panel-level fan-out process integrity violation: warpage >120 um, via-void over spec, or solvent/exhaust excursion detected; aborting run and holding panel for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndCuSolventResiduePassivationVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "FOPLP maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without Cu/solvent residue passivation and positive-pressure SCBA LOTO checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Panel-level fan-out laser/plating controls, warpage/void bounds, and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceRoleConflictAndNominationRaceGuardContext {
+  readonly iceControlledRoleConflictOrTieBreakerMismatchDetected: boolean;
+  readonly nominationRaceOrMultiPairCommitDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingNominatedPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceRoleConflictAndNominationRaceGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P528-WEBRTC-SIP-RFC8445-RFC8838-ICE-ROLE-CONFLICT-AND-NOMINATION-RACE-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_role_conflict_or_nomination_race_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_outstanding_nomination_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingNominatedPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceRoleConflictAndNominationRaceGuard(
+  context: WebrtcSipRfc8445Rfc8838IceRoleConflictAndNominationRaceGuardContext,
+): WebrtcSipRfc8445Rfc8838IceRoleConflictAndNominationRaceGuardDecision {
+  const policyId =
+    "P528-WEBRTC-SIP-RFC8445-RFC8838-ICE-ROLE-CONFLICT-AND-NOMINATION-RACE-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    180,
+  );
+  const clampedMaxOutstandingNominatedPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingNominatedPairs), 1),
+    8,
+  );
+
+  if (
+    context.iceControlledRoleConflictOrTieBreakerMismatchDetected ||
+    context.nominationRaceOrMultiPairCommitDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_role_conflict_or_nomination_race_in_0ms",
+      reason:
+        "ICE control-plane integrity violation (RFC 8445 / RFC 8838): role conflict/tie-breaker mismatch or nomination race with multi-pair commit detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingNominatedPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate pair switched without consent freshness revalidation; rejecting pair transition.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingNominatedPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 180 ||
+    context.maxOutstandingNominatedPairs > 8
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_outstanding_nomination_window",
+      reason:
+        "ICE nomination bounds exceeded: connectivity checks >180/s or outstanding nominated pairs >8; clamping to deterministic anti-race bounds.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingNominatedPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE role consistency, nomination serialization, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingNominatedPairs,
+  };
+}
 
 
 
