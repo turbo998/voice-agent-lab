@@ -52655,6 +52655,7 @@ export function evaluateWebrtcSipRfc8445Rfc8838IcePacingTimeoutAndFoundationFloo
     };
   }
 
+
   if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
     return {
       violated: true,
@@ -52700,3 +52701,167 @@ export function evaluateWebrtcSipRfc8445Rfc8838IcePacingTimeoutAndFoundationFloo
 
 
 
+export interface SemiconductorBacksidePdNetworkRdlDelaminationAndPowerViaVoidGuardContext {
+  readonly backsidePowerRdlDelaminationOrTraceLiftDetected: boolean;
+  readonly powerViaVoidRateOrElectromigrationHotspotExcursionDetected: boolean;
+  readonly dielectricCrackOrUnderfillOutgasExcursionDetected: boolean;
+  readonly packageWarpageOrCoplanarityExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndResiduePassivationVerified: boolean;
+}
+
+export interface SemiconductorBacksidePdNetworkRdlDelaminationAndPowerViaVoidGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P533-SEMICONDUCTOR-BACKSIDE-PD-NETWORK-RDL-DELAMINATION-AND-POWER-VIA-VOID-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_backside_power_rdl_laser_and_plating_power_in_0ms"
+    | "abort_pd_network_sequence_and_hold_metrology_rework"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorBacksidePdNetworkRdlDelaminationAndPowerViaVoidGuard(
+  context: SemiconductorBacksidePdNetworkRdlDelaminationAndPowerViaVoidGuardContext,
+): SemiconductorBacksidePdNetworkRdlDelaminationAndPowerViaVoidGuardDecision {
+  const policyId =
+    "P533-SEMICONDUCTOR-BACKSIDE-PD-NETWORK-RDL-DELAMINATION-AND-POWER-VIA-VOID-GUARD" as const;
+
+  if (
+    context.backsidePowerRdlDelaminationOrTraceLiftDetected ||
+    context.powerViaVoidRateOrElectromigrationHotspotExcursionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_backside_power_rdl_laser_and_plating_power_in_0ms",
+      reason:
+        "Backside-PD critical hazard (SEMI S2 / SEMI S6 / NFPA 318): RDL delamination/trace lift or power-via void/electromigration hotspot detected; tripping laser and plating power in 0ms.",
+    };
+  }
+
+  if (
+    context.dielectricCrackOrUnderfillOutgasExcursionDetected ||
+    context.packageWarpageOrCoplanarityExcursionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_pd_network_sequence_and_hold_metrology_rework",
+      reason:
+        "Backside-PD package integrity violation: dielectric crack/underfill outgas excursion or package warpage/coplanarity excursion detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndResiduePassivationVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "Backside-PD maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without residue passivation and positive-pressure SCBA LOTO checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Backside-PD RDL, power-via integrity, and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceTieBreakerSpoofAndTriggeredCheckFloodGuardContext {
+  readonly iceTieBreakerSpoofOrRoleOscillationDetected: boolean;
+  readonly triggeredCheckAmplificationOrNominationFloodDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceTieBreakerSpoofAndTriggeredCheckFloodGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P534-WEBRTC-SIP-RFC8445-RFC8838-ICE-TIEBREAKER-SPOOF-AND-TRIGGERED-CHECK-FLOOD-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_tiebreaker_spoof_or_triggered_check_flood_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceTieBreakerSpoofAndTriggeredCheckFloodGuard(
+  context: WebrtcSipRfc8445Rfc8838IceTieBreakerSpoofAndTriggeredCheckFloodGuardContext,
+): WebrtcSipRfc8445Rfc8838IceTieBreakerSpoofAndTriggeredCheckFloodGuardDecision {
+  const policyId =
+    "P534-WEBRTC-SIP-RFC8445-RFC8838-ICE-TIEBREAKER-SPOOF-AND-TRIGGERED-CHECK-FLOOD-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    120,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    8,
+  );
+
+  if (
+    context.iceTieBreakerSpoofOrRoleOscillationDetected ||
+    context.triggeredCheckAmplificationOrNominationFloodDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_tiebreaker_spoof_or_triggered_check_flood_in_0ms",
+      reason:
+        "ICE tiebreaker/triggered-check integrity violation (RFC 8445 / RFC 8838): role oscillation spoof or triggered-check flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 120 ||
+    context.maxOutstandingChecklistPairs > 8
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE triggered-check bounds exceeded: connectivity checks >120/s or outstanding checklist pairs >8; clamping to deterministic anti-flood limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE tiebreaker authenticity, triggered-check flood control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
