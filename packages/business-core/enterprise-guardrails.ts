@@ -54064,91 +54064,252 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceConsentNonceReuseAndChecklistT
       };
     }
 
-    export interface WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardContext {
-      readonly consentEpochRollbackOrTieBreakerReplayDetected: boolean;
-      readonly checklistCollapseOrTriggeredCheckBurstDetected: boolean;
-      readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
-      readonly maxConnectivityChecksPerSecond: number;
-      readonly maxOutstandingChecklistPairs: number;
-    }
+export interface WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardContext {
+  readonly consentEpochRollbackOrTieBreakerReplayDetected: boolean;
+  readonly checklistCollapseOrTriggeredCheckBurstDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
 
-    export interface WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardDecision {
-      readonly violated: boolean;
-      readonly policyId: "P550-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-EPOCH-ROLLBACK-AND-CHECKLIST-COLLAPSE-GUARD";
-      readonly action:
-        | "allow"
-        | "drop_consent_epoch_rollback_or_checklist_collapse_flood_in_0ms"
-        | "reject_pair_switch_without_consent_revalidation"
-        | "clamp_check_rate_and_checklist_window";
-      readonly reason: string;
-      readonly clampedMaxConnectivityChecksPerSecond: number;
-      readonly clampedMaxOutstandingChecklistPairs: number;
-    }
+export interface WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P550-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-EPOCH-ROLLBACK-AND-CHECKLIST-COLLAPSE-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_consent_epoch_rollback_or_checklist_collapse_flood_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
 
-    export function evaluateWebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuard(
-      context: WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardContext,
-    ): WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardDecision {
-      const policyId =
-        "P550-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-EPOCH-ROLLBACK-AND-CHECKLIST-COLLAPSE-GUARD" as const;
+export function evaluateWebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuard(
+  context: WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardContext,
+): WebrtcSipRfc8445Rfc8838IceConsentEpochRollbackAndChecklistCollapseGuardDecision {
+  const policyId =
+    "P550-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-EPOCH-ROLLBACK-AND-CHECKLIST-COLLAPSE-GUARD" as const;
 
-      const clampedMaxConnectivityChecksPerSecond = Math.min(
-        Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
-        30,
-      );
-      const clampedMaxOutstandingChecklistPairs = Math.min(
-        Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
-        2,
-      );
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    30,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    2,
+  );
 
-      if (
-        context.consentEpochRollbackOrTieBreakerReplayDetected ||
-        context.checklistCollapseOrTriggeredCheckBurstDetected
-      ) {
-        return {
-          violated: true,
-          policyId,
-          action: "drop_consent_epoch_rollback_or_checklist_collapse_flood_in_0ms",
-          reason:
-            "ICE consent/checklist integrity violation (RFC 8445 / RFC 8838): consent-epoch rollback/tie-breaker replay or checklist-collapse flood detected; dropping path in 0ms.",
-          clampedMaxConnectivityChecksPerSecond,
-          clampedMaxOutstandingChecklistPairs,
-        };
-      }
+  if (
+    context.consentEpochRollbackOrTieBreakerReplayDetected ||
+    context.checklistCollapseOrTriggeredCheckBurstDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_consent_epoch_rollback_or_checklist_collapse_flood_in_0ms",
+      reason:
+        "ICE consent/checklist integrity violation (RFC 8445 / RFC 8838): consent-epoch rollback/tie-breaker replay or checklist-collapse flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
 
-      if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
-        return {
-          violated: true,
-          policyId,
-          action: "reject_pair_switch_without_consent_revalidation",
-          reason:
-            "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
-          clampedMaxConnectivityChecksPerSecond,
-          clampedMaxOutstandingChecklistPairs,
-        };
-      }
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
 
-      if (
-        context.maxConnectivityChecksPerSecond > 30 ||
-        context.maxOutstandingChecklistPairs > 2
-      ) {
-        return {
-          violated: true,
-          policyId,
-          action: "clamp_check_rate_and_checklist_window",
-          reason:
-            "ICE consent-epoch/checklist-collapse bounds exceeded: connectivity checks >30/s or outstanding checklist pairs >2; clamping to deterministic anti-thrash limits.",
-          clampedMaxConnectivityChecksPerSecond,
-          clampedMaxOutstandingChecklistPairs,
-        };
-      }
+  if (
+    context.maxConnectivityChecksPerSecond > 30 ||
+    context.maxOutstandingChecklistPairs > 2
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE consent-epoch/checklist-collapse bounds exceeded: connectivity checks >30/s or outstanding checklist pairs >2; clamping to deterministic anti-thrash limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
 
-      return {
-        violated: false,
-        policyId,
-        action: "allow",
-        reason:
-          "ICE consent-epoch integrity, checklist-collapse control, and consent revalidation bounds verified.",
-        clampedMaxConnectivityChecksPerSecond,
-        clampedMaxOutstandingChecklistPairs,
-      };
-    }
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE consent-epoch integrity, checklist-collapse control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
+
+export interface SemiconductorHbm8BacksidePowerViaElectromigrationAndHybridBondInterfacialDelaminationGuardContext {
+  readonly backsidePowerViaElectromigrationHotspotDetected: boolean;
+  readonly hybridBondInterfacialDelaminationOrCuExtrusionDetected: boolean;
+  readonly transientThermalRunawayOrDieWarpExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndMetrologySamplingVerified: boolean;
+}
+
+export interface SemiconductorHbm8BacksidePowerViaElectromigrationAndHybridBondInterfacialDelaminationGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P551-SEMICONDUCTOR-HBM8-BACKSIDE-POWER-VIA-ELECTROMIGRATION-AND-HYBRID-BOND-INTERFACIAL-DELAMINATION-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_thermo_compression_and_anneal_power_in_0ms"
+    | "abort_packaging_sequence_and_hold_metrology"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorHbm8BacksidePowerViaElectromigrationAndHybridBondInterfacialDelaminationGuard(
+  context: SemiconductorHbm8BacksidePowerViaElectromigrationAndHybridBondInterfacialDelaminationGuardContext,
+): SemiconductorHbm8BacksidePowerViaElectromigrationAndHybridBondInterfacialDelaminationGuardDecision {
+  const policyId =
+    "P551-SEMICONDUCTOR-HBM8-BACKSIDE-POWER-VIA-ELECTROMIGRATION-AND-HYBRID-BOND-INTERFACIAL-DELAMINATION-GUARD" as const;
+
+  if (
+    context.backsidePowerViaElectromigrationHotspotDetected ||
+    context.hybridBondInterfacialDelaminationOrCuExtrusionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_thermo_compression_and_anneal_power_in_0ms",
+      reason:
+        "HBM8 critical hazard (SEMI S2 / SEMI S6 / NFPA 318): backside power-via electromigration hotspot or hybrid-bond interfacial delamination/Cu extrusion detected; tripping thermo-compression and anneal power in 0ms.",
+    };
+  }
+
+  if (context.transientThermalRunawayOrDieWarpExcursionDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_packaging_sequence_and_hold_metrology",
+      reason:
+        "HBM8 integrity violation: transient thermal-runaway or die-warp excursion detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndMetrologySamplingVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "HBM8 maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without SCBA LOTO and metrology residue sampling checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "HBM8 backside power-via integrity and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentSequenceDesyncAndTriggeredNominationStormGuardContext {
+  readonly consentSequenceDesyncOrEpochWrapReplayDetected: boolean;
+  readonly triggeredNominationStormOrChecklistBurstDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentSequenceDesyncAndTriggeredNominationStormGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P552-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-SEQUENCE-DESYNC-AND-TRIGGERED-NOMINATION-STORM-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_consent_sequence_desync_or_nomination_storm_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceConsentSequenceDesyncAndTriggeredNominationStormGuard(
+  context: WebrtcSipRfc8445Rfc8838IceConsentSequenceDesyncAndTriggeredNominationStormGuardContext,
+): WebrtcSipRfc8445Rfc8838IceConsentSequenceDesyncAndTriggeredNominationStormGuardDecision {
+  const policyId =
+    "P552-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-SEQUENCE-DESYNC-AND-TRIGGERED-NOMINATION-STORM-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    20,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    2,
+  );
+
+  if (
+    context.consentSequenceDesyncOrEpochWrapReplayDetected ||
+    context.triggeredNominationStormOrChecklistBurstDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_consent_sequence_desync_or_nomination_storm_in_0ms",
+      reason:
+        "ICE consent sequence integrity violation (RFC 8445 / RFC 8838): consent sequence desync/epoch-wrap replay or triggered nomination storm detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 20 ||
+    context.maxOutstandingChecklistPairs > 2
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE consent-sequence/nomination-storm bounds exceeded: connectivity checks >20/s or outstanding checklist pairs >2; clamping to deterministic anti-thrash limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE consent-sequence integrity, nomination-storm control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
