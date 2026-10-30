@@ -52528,9 +52528,170 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceConsentRollbackAndChecklistExh
   };
 }
 
+export interface SemiconductorChipletUcieCpoReticleBridgeAndLaserFiberAttachGuardContext {
+  readonly ucieReticleBridgeAlignmentOverSpecDetected: boolean;
+  readonly cpoMicroRingThermalRunawayOrLaserPowerExcursionDetected: boolean;
+  readonly opticalFiberAttachEpoxyOutgasOrCureProfileExcursionDetected: boolean;
+  readonly packageCoplanarityOrCoWoSInterposerWarpageExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndOpticalResiduePassivationVerified: boolean;
+}
 
+export interface SemiconductorChipletUcieCpoReticleBridgeAndLaserFiberAttachGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P531-SEMICONDUCTOR-CHIPLET-UCIE-CPO-RETICLE-BRIDGE-AND-LASER-FIBER-ATTACH-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_cpo_laser_and_attach_heater_power_in_0ms"
+    | "abort_ucie_attach_sequence_and_hold_metrology_rework"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
 
+export function evaluateSemiconductorChipletUcieCpoReticleBridgeAndLaserFiberAttachGuard(
+  context: SemiconductorChipletUcieCpoReticleBridgeAndLaserFiberAttachGuardContext,
+): SemiconductorChipletUcieCpoReticleBridgeAndLaserFiberAttachGuardDecision {
+  const policyId =
+    "P531-SEMICONDUCTOR-CHIPLET-UCIE-CPO-RETICLE-BRIDGE-AND-LASER-FIBER-ATTACH-GUARD" as const;
 
+  if (
+    context.ucieReticleBridgeAlignmentOverSpecDetected ||
+    context.cpoMicroRingThermalRunawayOrLaserPowerExcursionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_cpo_laser_and_attach_heater_power_in_0ms",
+      reason:
+        "Critical UCIe/CPO hazard (SEMI S2 / SEMI S6 / NFPA 318): reticle-bridge alignment over spec or CPO micro-ring laser/thermal excursion detected; tripping laser and attach-heater power in 0ms.",
+    };
+  }
+
+  if (
+    context.opticalFiberAttachEpoxyOutgasOrCureProfileExcursionDetected ||
+    context.packageCoplanarityOrCoWoSInterposerWarpageExcursionDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_ucie_attach_sequence_and_hold_metrology_rework",
+      reason:
+        "UCIe/CPO package integrity violation: fiber-attach epoxy outgas/cure excursion or package coplanarity/interposer warpage excursion detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndOpticalResiduePassivationVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "UCIe/CPO maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without optical-residue passivation and positive-pressure SCBA LOTO checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "UCIe/CPO laser-attach controls, package metrology bounds, and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IcePacingTimeoutAndFoundationFloodGuardContext {
+  readonly staleFoundationReuseOrChecklistRegenerationLoopDetected: boolean;
+  readonly triggeredConnectivityPacingTimeoutFloodDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IcePacingTimeoutAndFoundationFloodGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P532-WEBRTC-SIP-RFC8445-RFC8838-ICE-PACING-TIMEOUT-AND-FOUNDATION-FLOOD-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_foundation_reuse_or_pacing_timeout_flood_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IcePacingTimeoutAndFoundationFloodGuard(
+  context: WebrtcSipRfc8445Rfc8838IcePacingTimeoutAndFoundationFloodGuardContext,
+): WebrtcSipRfc8445Rfc8838IcePacingTimeoutAndFoundationFloodGuardDecision {
+  const policyId =
+    "P532-WEBRTC-SIP-RFC8445-RFC8838-ICE-PACING-TIMEOUT-AND-FOUNDATION-FLOOD-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    140,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    10,
+  );
+
+  if (
+    context.staleFoundationReuseOrChecklistRegenerationLoopDetected ||
+    context.triggeredConnectivityPacingTimeoutFloodDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_foundation_reuse_or_pacing_timeout_flood_in_0ms",
+      reason:
+        "ICE pacing/foundation integrity violation (RFC 8445 / RFC 8838): stale foundation reuse, checklist regeneration loop, or pacing-timeout flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 140 ||
+    context.maxOutstandingChecklistPairs > 10
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE pacing bounds exceeded: connectivity checks >140/s or outstanding checklist pairs >10; clamping to deterministic anti-flood limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE foundation consistency, pacing-timeout control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
 
 
 
