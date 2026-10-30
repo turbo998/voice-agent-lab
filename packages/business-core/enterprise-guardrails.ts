@@ -50813,6 +50813,185 @@ export function evaluateWebrtcSipRfc8854WebrtcFeculpfecFlexfecOpusInbandFecRedun
   };
 }
 
+export interface SemiconductorWaferFab3dTsvHybridBondingFlipChipThermoCompressionBonderFormicAcidFluxlessPlasmaAndHighSpeedWaferDicingSawGuardContext {
+  readonly formicAcidVaporChamberLeakOver5PpmOrH2FormingGasOver25PctLelDetected: boolean;
+  readonly highSpeedDicingSpindleOver50000RpmBladeShatterOrCoolantLossDetected: boolean;
+  readonly bonderThermoCompressionHeadThermalRunawayOver420COrForceOverloadDetected: boolean;
+  readonly hybridBondCuPadSurfaceParticleOrPlasmaActivationVacuumLossOver80PaDetected: boolean;
+  readonly waferBowWarpageVacuumChuckLossOrSubMicronAlignmentDriftOver200NmDetected: boolean;
+  readonly dicingSlurrySiliconKerfDrainConductivityOrResistivityInterlockFaultDetected: boolean;
+  readonly bonderChamberOrDicingSpindleBladeReplacementRequested: boolean;
+  readonly formicAcidChamberN2PurgedAndHeaterCooledBelow45CVerified: boolean;
+  readonly spindleZeroSpeedBrakeAndBladeGuardMechanicalLotoVerified: boolean;
+}
+
+export interface SemiconductorWaferFab3dTsvHybridBondingFlipChipThermoCompressionBonderFormicAcidFluxlessPlasmaAndHighSpeedWaferDicingSawGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P511-SEMICONDUCTOR-WAFER-FAB-3D-TSV-HYBRID-BONDING-FLIP-CHIP-THERMO-COMPRESSION-BONDER-FORMIC-ACID-FLUXLESS-PLASMA-AND-HIGH-SPEED-WAFER-DICING-SAW-SEMIS2-SEMIS6-NFPA318-ANSIB11-OSHA1910147-FORMIC-BLADE-TRIP-ALIGNMENT-ABORT-AND-SPINDLE-LOTO-GUARD";
+  readonly action:
+    | "allow"
+    | "lock_bonder_chamber_and_dicing_spindle_until_n2_purge_cool_and_blade_loto"
+    | "abort_hybrid_bond_or_dicing_and_park_thermo_compression_head"
+    | "trip_bonder_heater_dicing_spindle_and_isolate_formic_acid_vapor_in_0ms";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorWaferFab3dTsvHybridBondingFlipChipThermoCompressionBonderFormicAcidFluxlessPlasmaAndHighSpeedWaferDicingSawSemiS2SemiS6Nfpa318AnsiB11Osha1910147FormicBladeTripAlignmentAbortAndSpindleLotoGuard(
+  context: SemiconductorWaferFab3dTsvHybridBondingFlipChipThermoCompressionBonderFormicAcidFluxlessPlasmaAndHighSpeedWaferDicingSawGuardContext,
+): SemiconductorWaferFab3dTsvHybridBondingFlipChipThermoCompressionBonderFormicAcidFluxlessPlasmaAndHighSpeedWaferDicingSawGuardDecision {
+  const policyId =
+    "P511-SEMICONDUCTOR-WAFER-FAB-3D-TSV-HYBRID-BONDING-FLIP-CHIP-THERMO-COMPRESSION-BONDER-FORMIC-ACID-FLUXLESS-PLASMA-AND-HIGH-SPEED-WAFER-DICING-SAW-SEMIS2-SEMIS6-NFPA318-ANSIB11-OSHA1910147-FORMIC-BLADE-TRIP-ALIGNMENT-ABORT-AND-SPINDLE-LOTO-GUARD" as const;
+
+  if (
+    context.formicAcidVaporChamberLeakOver5PpmOrH2FormingGasOver25PctLelDetected ||
+    context.highSpeedDicingSpindleOver50000RpmBladeShatterOrCoolantLossDetected ||
+    context.bonderThermoCompressionHeadThermalRunawayOver420COrForceOverloadDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "trip_bonder_heater_dicing_spindle_and_isolate_formic_acid_vapor_in_0ms",
+      reason:
+        "Critical semiconductor 3D-IC TSV hybrid bonding / wafer dicing hazard (SEMI S2 / SEMI S6 / NFPA 318 / ANSI B11): HCOOH formic acid vapor leak >=5 ppm or H2/N2 forming gas >=25% LEL, 60,000 RPM diamond dicing blade shatter / DIW coolant loss, or TCB bond-head thermal runaway >=420 C / force overload detected; tripping bonder heater and spindle and isolating formic acid vapor in 0ms.",
+    };
+  }
+
+  if (
+    context.hybridBondCuPadSurfaceParticleOrPlasmaActivationVacuumLossOver80PaDetected ||
+    context.waferBowWarpageVacuumChuckLossOrSubMicronAlignmentDriftOver200NmDetected ||
+    context.dicingSlurrySiliconKerfDrainConductivityOrResistivityInterlockFaultDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "abort_hybrid_bond_or_dicing_and_park_thermo_compression_head",
+      reason:
+        "Semiconductor 3D-IC TSV hybrid bonding / dicing process violation (SEMI S2 / SEMI S8): Cu-Cu hybrid bond pad particle or N2/Ar plasma activation vacuum >=80 Pa, wafer warpage chuck vacuum loss / alignment drift >=200 nm, or CO2-injected DIW dicing kerf resistivity fault detected; aborting bonding/dicing and parking TCB head.",
+    };
+  }
+
+  if (
+    context.bonderChamberOrDicingSpindleBladeReplacementRequested &&
+    (!context.formicAcidChamberN2PurgedAndHeaterCooledBelow45CVerified ||
+      !context.spindleZeroSpeedBrakeAndBladeGuardMechanicalLotoVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "lock_bonder_chamber_and_dicing_spindle_until_n2_purge_cool_and_blade_loto",
+      reason:
+        "Semiconductor 3D-IC TSV bonder / dicing saw maintenance safety violation (SEMI S2 / ANSI B11 / OSHA 1910.147): chamber entry or diamond blade replacement requested without HCOOH formic acid N2 purge, bond-head cooldown <45 C, or 0 RPM air-bearing spindle brake LOTO verification; locking enclosure.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "Semiconductor 3D-IC TSV Cu-Cu hybrid bonding, fluxless formic acid vapor containment, sub-200nm alignment, 60,000 RPM dicing spindle coolant, and blade LOTO verified.",
+  };
+}
+
+export interface WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportAddressParityAndMidTagGuardContext {
+  readonly bundleGroupContainsDuplicateOrUndefinedMidIdentificationTagDetected: boolean;
+  readonly bundleOnlyTaggedMidLacksSharedBundleTransportCategoryDetected: boolean;
+  readonly answererSelectedOffererRejectedZeroPortMidAsBundleTagDetected: boolean;
+  readonly bundledMediaDescriptionsHaveConflictingIceUfragPwdOrDtlsFingerprintDetected: boolean;
+  readonly bundledMediaMlineCountInSingleGroup: number;
+  readonly rtpMidHeaderExtensionByteLength: number;
+}
+
+export interface WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportAddressParityAndMidTagGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P512-WEBRTC-SIP-RFC8843-NEGOTIATING-MEDIA-MULTIPLEXING-USING-SDP-BUNDLE-TRANSPORT-ADDRESS-PARITY-AND-MID-TAG-GUARD";
+  readonly action:
+    | "allow"
+    | "clamp_bundle_group_mline_count_and_mid_tag_length"
+    | "reject_conflicting_bundle_ice_dtls_transport_or_dead_bundle_tag"
+    | "drop_malformed_rfc8843_sdp_bundle_group_or_orphan_bundle_only_0ms";
+  readonly reason: string;
+  readonly clampedBundledMediaMlineCountInSingleGroup: number;
+  readonly clampedRtpMidHeaderExtensionByteLength: number;
+}
+
+export function evaluateWebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportAddressParityAndMidTagGuard(
+  context: WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportAddressParityAndMidTagGuardContext,
+): WebrtcSipRfc8843NegotiatingMediaMultiplexingUsingSdpBundleTransportAddressParityAndMidTagGuardDecision {
+  const policyId =
+    "P512-WEBRTC-SIP-RFC8843-NEGOTIATING-MEDIA-MULTIPLEXING-USING-SDP-BUNDLE-TRANSPORT-ADDRESS-PARITY-AND-MID-TAG-GUARD" as const;
+
+  const clampedBundledMediaMlineCountInSingleGroup = Math.min(
+    Math.max(Math.trunc(context.bundledMediaMlineCountInSingleGroup), 1),
+    16,
+  );
+  const clampedRtpMidHeaderExtensionByteLength = Math.min(
+    Math.max(Math.trunc(context.rtpMidHeaderExtensionByteLength), 1),
+    16,
+  );
+
+  if (
+    context.bundleGroupContainsDuplicateOrUndefinedMidIdentificationTagDetected ||
+    context.bundleOnlyTaggedMidLacksSharedBundleTransportCategoryDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "drop_malformed_rfc8843_sdp_bundle_group_or_orphan_bundle_only_0ms",
+      reason:
+        "Critical WebRTC & SIP RFC 8843 SDP BUNDLE multiplexing syntax violation: a=group:BUNDLE contains duplicate or undefined a=mid identification-tag, or an m= section with a=bundle-only (port 0) is outside a valid BUNDLE group; dropping malformed SDP BUNDLE offer/answer in 0ms.",
+      clampedBundledMediaMlineCountInSingleGroup,
+      clampedRtpMidHeaderExtensionByteLength,
+    };
+  }
+
+  if (
+    context.answererSelectedOffererRejectedZeroPortMidAsBundleTagDetected ||
+    context.bundledMediaDescriptionsHaveConflictingIceUfragPwdOrDtlsFingerprintDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action:
+        "reject_conflicting_bundle_ice_dtls_transport_or_dead_bundle_tag",
+      reason:
+        "WebRTC & SIP RFC 8843 BUNDLE transport-category violation: Answerer selected a rejected (port 0 without bundle-only) m= line as the tagged BUNDLE address, or bundled m= sections have conflicting ICE ufrag/pwd, DTLS a=fingerprint, or a=setup roles; rejecting inconsistent BUNDLE negotiation.",
+      clampedBundledMediaMlineCountInSingleGroup,
+      clampedRtpMidHeaderExtensionByteLength,
+    };
+  }
+
+  if (
+    context.bundledMediaMlineCountInSingleGroup > 16 ||
+    context.rtpMidHeaderExtensionByteLength > 16
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_bundle_group_mline_count_and_mid_tag_length",
+      reason:
+        "WebRTC & SIP RFC 8843 / RFC 9143 BUNDLE multiplexing resource bounds exceeded: single a=group:BUNDLE exceeds 16 m= sections or SDES/RTP a=mid token exceeds 16 bytes; clamping to <=16 bundled m= lines and <=16-byte MID tags.",
+      clampedBundledMediaMlineCountInSingleGroup,
+      clampedRtpMidHeaderExtensionByteLength,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "WebRTC & SIP RFC 8843 / RFC 9143 SDP BUNDLE group syntax, shared ICE/DTLS transport-category parity, active BUNDLE-tag selection, and <=16 m= lines / <=16-byte MID bounds verified.",
+    clampedBundledMediaMlineCountInSingleGroup,
+    clampedRtpMidHeaderExtensionByteLength,
+  };
+}
+
+
 
 
 
