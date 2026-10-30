@@ -53670,3 +53670,164 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceNominationEchoAndConsentLagGua
     clampedMaxOutstandingChecklistPairs,
   };
 }
+
+export interface SemiconductorHbm6HybridBondTsvCopperPumpingAndIntermetallicVoidGuardContext {
+  readonly hybridBondCopperPumpingOrTsvExtrusionDetected: boolean;
+  readonly intermetallicVoidOrKirkendallCrackDetected: boolean;
+  readonly thermoCompressionOvertempOrOverforceDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndMetrologySamplingVerified: boolean;
+}
+
+export interface SemiconductorHbm6HybridBondTsvCopperPumpingAndIntermetallicVoidGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P545-SEMICONDUCTOR-HBM6-HYBRID-BOND-TSV-COPPER-PUMPING-AND-INTERMETALLIC-VOID-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_thermo_compression_and_reflow_power_in_0ms"
+    | "abort_packaging_sequence_and_hold_metrology"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorHbm6HybridBondTsvCopperPumpingAndIntermetallicVoidGuard(
+  context: SemiconductorHbm6HybridBondTsvCopperPumpingAndIntermetallicVoidGuardContext,
+): SemiconductorHbm6HybridBondTsvCopperPumpingAndIntermetallicVoidGuardDecision {
+  const policyId =
+    "P545-SEMICONDUCTOR-HBM6-HYBRID-BOND-TSV-COPPER-PUMPING-AND-INTERMETALLIC-VOID-GUARD" as const;
+
+  if (
+    context.hybridBondCopperPumpingOrTsvExtrusionDetected ||
+    context.intermetallicVoidOrKirkendallCrackDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_thermo_compression_and_reflow_power_in_0ms",
+      reason:
+        "HBM6 critical hazard (SEMI S2 / SEMI S6 / NFPA 318): hybrid-bond copper pumping/TSV extrusion or intermetallic void/Kirkendall crack detected; tripping thermo-compression and reflow power in 0ms.",
+    };
+  }
+
+  if (context.thermoCompressionOvertempOrOverforceDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_packaging_sequence_and_hold_metrology",
+      reason:
+        "HBM6 integrity violation: thermo-compression over-temperature/over-force excursion detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndMetrologySamplingVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "HBM6 maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without SCBA LOTO and metrology residue sampling checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "HBM6 hybrid-bond TSV integrity and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentNonceReuseAndChecklistThrashGuardContext {
+  readonly consentNonceReuseOrNominationReplayDetected: boolean;
+  readonly checklistThrashOrTriggeredCheckBurstDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentNonceReuseAndChecklistThrashGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P546-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-NONCE-REUSE-AND-CHECKLIST-THRASH-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_consent_nonce_reuse_or_checklist_thrash_flood_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceConsentNonceReuseAndChecklistThrashGuard(
+  context: WebrtcSipRfc8445Rfc8838IceConsentNonceReuseAndChecklistThrashGuardContext,
+): WebrtcSipRfc8445Rfc8838IceConsentNonceReuseAndChecklistThrashGuardDecision {
+  const policyId =
+    "P546-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-NONCE-REUSE-AND-CHECKLIST-THRASH-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 10),
+    50,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 2),
+    2,
+  );
+
+  if (
+    context.consentNonceReuseOrNominationReplayDetected ||
+    context.checklistThrashOrTriggeredCheckBurstDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_consent_nonce_reuse_or_checklist_thrash_flood_in_0ms",
+      reason:
+        "ICE consent/checklist integrity violation (RFC 8445 / RFC 8838): consent nonce reuse/nomination replay or checklist-thrash flood detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 50 ||
+    context.maxOutstandingChecklistPairs > 2
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE consent nonce/checklist-thrash bounds exceeded: connectivity checks >50/s or outstanding checklist pairs >2; clamping to deterministic anti-thrash limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE consent nonce integrity, checklist-thrash control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
