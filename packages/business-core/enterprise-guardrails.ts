@@ -66385,6 +66385,168 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // Stage 355 (P703 & P704 — 358-Dimension Milestone · 713 Guardrails & 722 Probes · 358 Dimensions · 534 Live POC Trap Probes)
+    export interface SemiconductorHbm84BacksidePowerHeadpondFractureAndHybridBondPadScalingContext {
+      backsidePowerHeadpondFractureOrCopperNeckingDetected: boolean;
+      hybridBondPadScalingOrInterposerEdgeSpallDetected: boolean;
+      transientHotspotOrDieWarpExcursionDetected: boolean;
+      maintenanceDoorRequested: boolean;
+      toolCooledBelow45CAndN2PurgeVerified: boolean;
+      scbaLotoAndMetrologySamplingVerified: boolean;
+    }
+
+    export interface SemiconductorHbm84BacksidePowerHeadpondFractureAndHybridBondPadScalingDecision {
+      violated: boolean;
+      policyId: "P703-SEMICONDUCTOR-HBM84-BACKSIDE-POWER-HEADPOND-FRACTURE-AND-HYBRID-BOND-PAD-SCALING-GUARD";
+      action:
+        | "trip_thermo_compression_and_anneal_power_in_0ms"
+        | "abort_packaging_sequence_and_hold_metrology"
+        | "lock_tool_until_cooldown_and_scba_loto_verified"
+        | "allow";
+      reason: string;
+    }
+
+    export function evaluateSemiconductorHbm84BacksidePowerHeadpondFractureAndHybridBondPadScalingGuard(
+      context: SemiconductorHbm84BacksidePowerHeadpondFractureAndHybridBondPadScalingContext,
+    ): SemiconductorHbm84BacksidePowerHeadpondFractureAndHybridBondPadScalingDecision {
+      const policyId =
+        "P703-SEMICONDUCTOR-HBM84-BACKSIDE-POWER-HEADPOND-FRACTURE-AND-HYBRID-BOND-PAD-SCALING-GUARD" as const;
+
+      if (
+        context.backsidePowerHeadpondFractureOrCopperNeckingDetected ||
+        context.hybridBondPadScalingOrInterposerEdgeSpallDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "trip_thermo_compression_and_anneal_power_in_0ms",
+          reason:
+            "SEMI S2 / SEMI S6 / NFPA 318 HBM84 hazard: backside power-headpond fracture/copper-necking or hybrid-bond pad-scaling/interposer-edge-spall detected; tripping thermo-compression and anneal power in 0ms.",
+        };
+      }
+
+      if (context.transientHotspotOrDieWarpExcursionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "abort_packaging_sequence_and_hold_metrology",
+          reason:
+            "HBM84 process excursion: transient hotspot or die-warp excursion detected; aborting packaging sequence and holding lot for metrology.",
+        };
+      }
+
+      if (
+        context.maintenanceDoorRequested &&
+        (!context.toolCooledBelow45CAndN2PurgeVerified ||
+          !context.scbaLotoAndMetrologySamplingVerified)
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "lock_tool_until_cooldown_and_scba_loto_verified",
+          reason:
+            "HBM84 maintenance safety lock: chamber cooldown <45 °C with N2 purge and SCBA LOTO/metrology sampling must be verified before unlocking maintenance access.",
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "HBM84 backside power-headpond integrity, hybrid-bond pad-scaling stability, and maintenance LOTO preconditions verified.",
+      };
+    }
+
+    export interface WebrtcSipRfc8445Rfc8838IceConsentHeadpondPhaseSkewAndNominationAftergale2StormContext {
+      consentHeadpondPhaseSkewOrTieBreakerReplayDetected: boolean;
+      nominationAftergale2StormOrChecklistBurstDetected: boolean;
+      selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+      maxConnectivityChecksPerSecond: number;
+      maxOutstandingChecklistPairs: number;
+    }
+
+    export interface WebrtcSipRfc8445Rfc8838IceConsentHeadpondPhaseSkewAndNominationAftergale2StormDecision {
+      violated: boolean;
+      policyId: "P704-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-HEADPOND-PHASE-SKEW-AND-NOMINATION-AFTERGALE2-STORM-GUARD";
+      action:
+        | "drop_consent_headpond_phase_skew_or_nomination_aftergale2_storm_in_0ms"
+        | "reject_pair_switch_without_consent_revalidation"
+        | "clamp_check_rate_and_checklist_window"
+        | "allow";
+      reason: string;
+      clampedMaxConnectivityChecksPerSecond: number;
+      clampedMaxOutstandingChecklistPairs: number;
+    }
+
+    export function evaluateWebrtcSipRfc8445Rfc8838IceConsentHeadpondPhaseSkewAndNominationAftergale2StormGuard(
+      context: WebrtcSipRfc8445Rfc8838IceConsentHeadpondPhaseSkewAndNominationAftergale2StormContext,
+    ): WebrtcSipRfc8445Rfc8838IceConsentHeadpondPhaseSkewAndNominationAftergale2StormDecision {
+      const policyId =
+        "P704-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-HEADPOND-PHASE-SKEW-AND-NOMINATION-AFTERGALE2-STORM-GUARD" as const;
+      const clampedMaxConnectivityChecksPerSecond = Math.min(
+        Math.max(context.maxConnectivityChecksPerSecond, 1),
+        1,
+      );
+      const clampedMaxOutstandingChecklistPairs = Math.min(
+        Math.max(context.maxOutstandingChecklistPairs, 1),
+        1,
+      );
+
+      if (
+        context.consentHeadpondPhaseSkewOrTieBreakerReplayDetected ||
+        context.nominationAftergale2StormOrChecklistBurstDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "drop_consent_headpond_phase_skew_or_nomination_aftergale2_storm_in_0ms",
+          reason:
+            "RFC 8445 / RFC 8838 ICE violation: consent-headpond-phase skew/tie-breaker replay or nomination-aftergale2 storm/checklist burst detected; dropping offending path in 0ms.",
+          clampedMaxConnectivityChecksPerSecond,
+          clampedMaxOutstandingChecklistPairs,
+        };
+      }
+
+      if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_pair_switch_without_consent_revalidation",
+          reason:
+            "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+          clampedMaxConnectivityChecksPerSecond,
+          clampedMaxOutstandingChecklistPairs,
+        };
+      }
+
+      if (
+        context.maxConnectivityChecksPerSecond > 1 ||
+        context.maxOutstandingChecklistPairs > 1
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_check_rate_and_checklist_window",
+          reason:
+            "ICE consent-headpond-phase-skew/aftergale2 bounds exceeded: connectivity checks >1/s or outstanding checklist pairs >1; clamping to deterministic anti-thrash limits.",
+          clampedMaxConnectivityChecksPerSecond,
+          clampedMaxOutstandingChecklistPairs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "ICE consent-headpond-phase skew integrity, nomination-aftergale2 control, and consent revalidation bounds verified.",
+        clampedMaxConnectivityChecksPerSecond,
+        clampedMaxOutstandingChecklistPairs,
+      };
+    }
+
 
 
 
