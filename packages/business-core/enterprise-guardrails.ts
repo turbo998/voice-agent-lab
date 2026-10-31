@@ -63483,6 +63483,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SemiconductorHbm66BacksidePowerTroughFractureAndHybridBondPadSpallingGuardContext {
+      backsidePowerTroughFractureOrCopperNeckingDetected: boolean;
+      hybridBondPadSpallingOrInterposerEdgeSpallDetected: boolean;
+      transientHotspotOrDieWarpExcursionDetected: boolean;
+      maintenanceDoorRequested: boolean;
+      toolCooledBelow45CAndN2PurgeVerified: boolean;
+      scbaLotoAndMetrologySamplingVerified: boolean;
+    }
+
+    export interface SemiconductorHbm66BacksidePowerTroughFractureAndHybridBondPadSpallingGuardResult {
+      violated: boolean;
+      policyId: "P667-SEMICONDUCTOR-HBM66-BACKSIDE-POWER-TROUGH-FRACTURE-AND-HYBRID-BOND-PAD-SPALLING-GUARD";
+      action:
+        | "allow"
+        | "trip_thermo_compression_and_anneal_power_in_0ms"
+        | "abort_packaging_sequence_and_hold_metrology"
+        | "lock_tool_until_cooldown_and_scba_loto_verified";
+      reason: string;
+    }
+
+    export function evaluateSemiconductorHbm66BacksidePowerTroughFractureAndHybridBondPadSpallingGuard(
+      context: SemiconductorHbm66BacksidePowerTroughFractureAndHybridBondPadSpallingGuardContext,
+    ): SemiconductorHbm66BacksidePowerTroughFractureAndHybridBondPadSpallingGuardResult {
+      const policyId =
+        "P667-SEMICONDUCTOR-HBM66-BACKSIDE-POWER-TROUGH-FRACTURE-AND-HYBRID-BOND-PAD-SPALLING-GUARD";
+
+      if (
+        context.backsidePowerTroughFractureOrCopperNeckingDetected ||
+        context.hybridBondPadSpallingOrInterposerEdgeSpallDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "trip_thermo_compression_and_anneal_power_in_0ms",
+          reason:
+            "HBM66 backside power-delivery or hybrid-bond integrity hazard (SEMI S2 / SEMI S6 / NFPA 318): backside power-trough fracture/copper-necking or hybrid-bond pad-spalling/interposer-edge-spall detected; tripping thermo-compression and anneal power in 0ms.",
+        };
+      }
+
+      if (context.transientHotspotOrDieWarpExcursionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "abort_packaging_sequence_and_hold_metrology",
+          reason:
+            "HBM66 process excursion: transient hotspot or die-warp excursion detected; aborting packaging sequence and holding lot for metrology inspection.",
+        };
+      }
+
+      if (
+        context.maintenanceDoorRequested &&
+        (!context.toolCooledBelow45CAndN2PurgeVerified ||
+          !context.scbaLotoAndMetrologySamplingVerified)
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "lock_tool_until_cooldown_and_scba_loto_verified",
+          reason:
+            "HBM66 maintenance safety interlock: tool cooldown <45 C with N2 purge and SCBA LOTO/metrology residue sampling are required before chamber access.",
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "HBM66 backside power-trough integrity, hybrid-bond pad-spalling stability, and maintenance interlocks verified.",
+      };
+    }
+
+    export interface WebrtcSipRfc8445Rfc8838IceConsentTroughPhaseSkewAndNominationAftermaelstromStormGuardContext {
+      consentTroughPhaseSkewOrTieBreakerReplayDetected: boolean;
+      nominationAftermaelstromStormOrChecklistBurstDetected: boolean;
+      selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+      maxConnectivityChecksPerSecond: number;
+      maxOutstandingChecklistPairs: number;
+    }
+
+    export interface WebrtcSipRfc8445Rfc8838IceConsentTroughPhaseSkewAndNominationAftermaelstromStormGuardResult {
+      violated: boolean;
+      policyId: "P668-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-TROUGH-PHASE-SKEW-AND-NOMINATION-AFTERMAELSTROM-STORM-GUARD";
+      action:
+        | "allow"
+        | "drop_consent_trough_phase_skew_or_nomination_aftermaelstrom_storm_in_0ms"
+        | "reject_pair_switch_without_consent_revalidation"
+        | "clamp_check_rate_and_checklist_window";
+      reason: string;
+      clampedMaxConnectivityChecksPerSecond: number;
+      clampedMaxOutstandingChecklistPairs: number;
+    }
+
+    export function evaluateWebrtcSipRfc8445Rfc8838IceConsentTroughPhaseSkewAndNominationAftermaelstromStormGuard(
+      context: WebrtcSipRfc8445Rfc8838IceConsentTroughPhaseSkewAndNominationAftermaelstromStormGuardContext,
+    ): WebrtcSipRfc8445Rfc8838IceConsentTroughPhaseSkewAndNominationAftermaelstromStormGuardResult {
+      const policyId =
+        "P668-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-TROUGH-PHASE-SKEW-AND-NOMINATION-AFTERMAELSTROM-STORM-GUARD";
+      const clampedMaxConnectivityChecksPerSecond = Math.min(
+        Math.max(context.maxConnectivityChecksPerSecond, 1),
+        1,
+      );
+      const clampedMaxOutstandingChecklistPairs = Math.min(
+        Math.max(context.maxOutstandingChecklistPairs, 1),
+        1,
+      );
+
+      if (
+        context.consentTroughPhaseSkewOrTieBreakerReplayDetected ||
+        context.nominationAftermaelstromStormOrChecklistBurstDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_consent_trough_phase_skew_or_nomination_aftermaelstrom_storm_in_0ms",
+          reason:
+            "ICE consent-trough-phase skew violation (RFC 8445 / RFC 8838): consent-trough-phase skew/tie-breaker replay or nomination-aftermaelstrom storm detected; dropping path in 0ms.",
+          clampedMaxConnectivityChecksPerSecond,
+          clampedMaxOutstandingChecklistPairs,
+        };
+      }
+
+      if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_pair_switch_without_consent_revalidation",
+          reason:
+            "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+          clampedMaxConnectivityChecksPerSecond,
+          clampedMaxOutstandingChecklistPairs,
+        };
+      }
+
+      if (
+        context.maxConnectivityChecksPerSecond > 1 ||
+        context.maxOutstandingChecklistPairs > 1
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_check_rate_and_checklist_window",
+          reason:
+            "ICE consent-trough-phase-skew/aftermaelstrom bounds exceeded: connectivity checks >1/s or outstanding checklist pairs >1; clamping to deterministic anti-thrash limits.",
+          clampedMaxConnectivityChecksPerSecond,
+          clampedMaxOutstandingChecklistPairs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "ICE consent-trough-phase skew integrity, nomination-aftermaelstrom control, and consent revalidation bounds verified.",
+        clampedMaxConnectivityChecksPerSecond,
+        clampedMaxOutstandingChecklistPairs,
+      };
+    }
+
 
 
 
