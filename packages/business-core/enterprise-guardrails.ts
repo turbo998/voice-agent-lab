@@ -55602,3 +55602,164 @@ export function evaluateWebrtcSipRfc8445Rfc8838IceConsentSequenceInversionAndNom
     clampedMaxOutstandingChecklistPairs,
   };
 }
+
+export interface SemiconductorHbm17BacksidePowerViaLinerFractureAndHybridBondPadCrateringGuardContext {
+  readonly backsidePowerViaLinerFractureOrCopperNeckingDetected: boolean;
+  readonly hybridBondPadCrateringOrInterposerEdgeShearDetected: boolean;
+  readonly transientHotspotOrDieWarpExcursionDetected: boolean;
+  readonly maintenanceDoorRequested: boolean;
+  readonly toolCooledBelow45CAndN2PurgeVerified: boolean;
+  readonly scbaLotoAndMetrologySamplingVerified: boolean;
+}
+
+export interface SemiconductorHbm17BacksidePowerViaLinerFractureAndHybridBondPadCrateringGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P569-SEMICONDUCTOR-HBM17-BACKSIDE-POWER-VIA-LINER-FRACTURE-AND-HYBRID-BOND-PAD-CRATERING-GUARD";
+  readonly action:
+    | "allow"
+    | "trip_thermo_compression_and_anneal_power_in_0ms"
+    | "abort_packaging_sequence_and_hold_metrology"
+    | "lock_tool_until_cooldown_and_scba_loto_verified";
+  readonly reason: string;
+}
+
+export function evaluateSemiconductorHbm17BacksidePowerViaLinerFractureAndHybridBondPadCrateringGuard(
+  context: SemiconductorHbm17BacksidePowerViaLinerFractureAndHybridBondPadCrateringGuardContext,
+): SemiconductorHbm17BacksidePowerViaLinerFractureAndHybridBondPadCrateringGuardDecision {
+  const policyId =
+    "P569-SEMICONDUCTOR-HBM17-BACKSIDE-POWER-VIA-LINER-FRACTURE-AND-HYBRID-BOND-PAD-CRATERING-GUARD" as const;
+
+  if (
+    context.backsidePowerViaLinerFractureOrCopperNeckingDetected ||
+    context.hybridBondPadCrateringOrInterposerEdgeShearDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "trip_thermo_compression_and_anneal_power_in_0ms",
+      reason:
+        "HBM17 critical hazard (SEMI S2 / SEMI S6 / NFPA 318): backside power-via-liner fracture/copper-necking or hybrid-bond pad-cratering/interposer-edge-shear detected; tripping thermo-compression and anneal power in 0ms.",
+    };
+  }
+
+  if (context.transientHotspotOrDieWarpExcursionDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "abort_packaging_sequence_and_hold_metrology",
+      reason:
+        "HBM17 integrity violation: transient hotspot or die-warp excursion detected; aborting sequence and holding lot for metrology/rework.",
+    };
+  }
+
+  if (
+    context.maintenanceDoorRequested &&
+    (!context.toolCooledBelow45CAndN2PurgeVerified ||
+      !context.scbaLotoAndMetrologySamplingVerified)
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "lock_tool_until_cooldown_and_scba_loto_verified",
+      reason:
+        "HBM17 maintenance lock: maintenance requested before cooldown <45 °C and N2 purge verification, or without SCBA LOTO and metrology residue sampling checks.",
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "HBM17 backside power-via-liner integrity and cooldown SCBA LOTO checks verified.",
+  };
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentVectorInversionAndNominationReboundStormGuardContext {
+  readonly consentVectorInversionOrTieBreakerReplayDetected: boolean;
+  readonly nominationReboundStormOrChecklistBurstDetected: boolean;
+  readonly selectedPairSwitchWithoutConsentRevalidationDetected: boolean;
+  readonly maxConnectivityChecksPerSecond: number;
+  readonly maxOutstandingChecklistPairs: number;
+}
+
+export interface WebrtcSipRfc8445Rfc8838IceConsentVectorInversionAndNominationReboundStormGuardDecision {
+  readonly violated: boolean;
+  readonly policyId: "P570-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-VECTOR-INVERSION-AND-NOMINATION-REBOUND-STORM-GUARD";
+  readonly action:
+    | "allow"
+    | "drop_consent_vector_inversion_or_nomination_rebound_storm_in_0ms"
+    | "reject_pair_switch_without_consent_revalidation"
+    | "clamp_check_rate_and_checklist_window";
+  readonly reason: string;
+  readonly clampedMaxConnectivityChecksPerSecond: number;
+  readonly clampedMaxOutstandingChecklistPairs: number;
+}
+
+export function evaluateWebrtcSipRfc8445Rfc8838IceConsentVectorInversionAndNominationReboundStormGuard(
+  context: WebrtcSipRfc8445Rfc8838IceConsentVectorInversionAndNominationReboundStormGuardContext,
+): WebrtcSipRfc8445Rfc8838IceConsentVectorInversionAndNominationReboundStormGuardDecision {
+  const policyId =
+    "P570-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-VECTOR-INVERSION-AND-NOMINATION-REBOUND-STORM-GUARD" as const;
+
+  const clampedMaxConnectivityChecksPerSecond = Math.min(
+    Math.max(Math.trunc(context.maxConnectivityChecksPerSecond), 1),
+    1,
+  );
+  const clampedMaxOutstandingChecklistPairs = Math.min(
+    Math.max(Math.trunc(context.maxOutstandingChecklistPairs), 1),
+    1,
+  );
+
+  if (
+    context.consentVectorInversionOrTieBreakerReplayDetected ||
+    context.nominationReboundStormOrChecklistBurstDetected
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "drop_consent_vector_inversion_or_nomination_rebound_storm_in_0ms",
+      reason:
+        "ICE consent-vector inversion violation (RFC 8445 / RFC 8838): consent-vector inversion/tie-breaker replay or nomination-rebound storm detected; dropping path in 0ms.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (context.selectedPairSwitchWithoutConsentRevalidationDetected) {
+    return {
+      violated: true,
+      policyId,
+      action: "reject_pair_switch_without_consent_revalidation",
+      reason:
+        "ICE continuity violation: selected candidate-pair switch attempted without consent freshness revalidation; rejecting switch.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  if (
+    context.maxConnectivityChecksPerSecond > 1 ||
+    context.maxOutstandingChecklistPairs > 1
+  ) {
+    return {
+      violated: true,
+      policyId,
+      action: "clamp_check_rate_and_checklist_window",
+      reason:
+        "ICE consent-vector-inversion/rebound bounds exceeded: connectivity checks >1/s or outstanding checklist pairs >1; clamping to deterministic anti-thrash limits.",
+      clampedMaxConnectivityChecksPerSecond,
+      clampedMaxOutstandingChecklistPairs,
+    };
+  }
+
+  return {
+    violated: false,
+    policyId,
+    action: "allow",
+    reason:
+      "ICE consent-vector inversion integrity, nomination-rebound control, and consent revalidation bounds verified.",
+    clampedMaxConnectivityChecksPerSecond,
+    clampedMaxOutstandingChecklistPairs,
+  };
+}
