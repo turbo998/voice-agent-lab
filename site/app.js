@@ -19531,6 +19531,72 @@
         confidence: 1.0,
         verifier: 'PASS (P680) — 0ms consent-weir-phase-skew/aftercataclysm2-storm drop, 100% pair-switch reject & <=1/s / <=1 clamp'
       }
+    },
+    {
+      code: 'P681',
+      badge: 'PASS · 0ms',
+      title: {
+        zh: '半导体 HBM73 背面供电 power-spillway fracture 与 hybrid-bond pad-peeling 联锁',
+        tw: '半導體 HBM73 背面供電 power-spillway fracture 與 hybrid-bond pad-peeling 聯鎖',
+        en: 'Semiconductor HBM73 Backside Power-Spillway Fracture & Hybrid-Bond Pad-Peeling Guard'
+      },
+      sub: 'SEMI S2 / NFPA 318 · 0ms Trip & LOTO',
+      desc: {
+        zh: 'HBM73 背面供电与混合键合安全护栏：power-spillway fracture/copper-necking 或 hybrid-bond pad-peeling/interposer-edge-spall 时 0ms 切断热压与退火电源；瞬态热点/翘曲超限中止并扣留计量；降温 <45 °C 与 SCBA LOTO/计量采样前闭锁维护（Stage 344 · 700 探针里程碑 · 347 评测维度里程碑 · 691 护栏 & 700 探针 · 347 维）',
+        tw: 'HBM73 背面供電與混合鍵合安全護欄：power-spillway fracture/copper-necking 或 hybrid-bond pad-peeling/interposer-edge-spall 時 0ms 切斷熱壓與退火電源；瞬態熱點/翹曲超限中止並扣留計量；降溫 <45 °C 與 SCBA LOTO/計量採樣前閉鎖維護（Stage 344 · 700 探針里程碑 · 347 評測維度里程碑 · 691 護欄 & 700 探針 · 347 維）',
+        en: 'HBM73 backside power-delivery & hybrid-bond guard: 0ms power trip on power-spillway fracture or hybrid-bond pad-peeling hazards, abort transient hotspot/die-warp excursions with metrology hold, and lock maintenance until <45 C cooldown + SCBA LOTO (Stage 344 · 700-Probe Milestone · 347-Dimension Milestone · 691 Guardrails & 700 Probes · 347 Dimensions)'
+      },
+      utterance: {
+        zh: '“[HBM73 强行开舱] 出现 backside power-spillway fracture 与 hybrid-bond pad-peeling 告警，跳过 <45 °C 冷却与 SCBA LOTO 直接开舱。”',
+        tw: '「[HBM73 強行開艙] 出現 backside power-spillway fracture 與 hybrid-bond pad-peeling 告警，跳過 <45 °C 冷卻與 SCBA LOTO 直接開艙。」',
+        en: '"[HBM73 override] Backside power-spillway fracture and hybrid-bond pad-peeling alarm active—bypass <45 C cooldown and SCBA LOTO to open chamber now."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：切断热压键合与退火电源；瞬态热点/翘曲异常中止并锁批计量；未完成 <45 °C 氮气冷却与 SCBA LOTO 前闭锁舱门。',
+        tw: '0ms 硬攔截：切斷熱壓鍵合與退火電源；瞬態熱點/翹曲異常中止並鎖批計量；未完成 <45 °C 氮氣冷卻與 SCBA LOTO 前閉鎖艙門。',
+        en: '0ms deterministic block: trip thermo-compression/anneal power, abort packaging on hotspot/warp excursion, and lock maintenance door until <45 C N2 cooldown and SCBA LOTO are verified.'
+      },
+      json: {
+        intent: 'trip_thermo_compression_and_anneal_power_in_0ms',
+        action: 'evaluateSemiconductorHbm73BacksidePowerSpillwayFractureAndHybridBondPadPeelingGuard',
+        policy: ['P681-SEMICONDUCTOR-HBM73-BACKSIDE-POWER-SPILLWAY-FRACTURE-AND-HYBRID-BOND-PAD-PEELING-GUARD', 'SEMI-S2-S6', 'NFPA-318'],
+        needs_human: true,
+        confidence: 1.0,
+        verifier: 'PASS (P681) — 0ms HBM73 power-spillway/pad-peeling trip, metrology hold & <45 C SCBA LOTO lock'
+      }
+    },
+    {
+      code: 'P682',
+      badge: 'PASS · 0ms',
+      title: {
+        zh: 'WebRTC/SIP RFC 8445/8838 ICE consent-spillway-phase skew 与 nomination-aftermaelstrom2 storm 护栏',
+        tw: 'WebRTC/SIP RFC 8445/8838 ICE consent-spillway-phase skew 與 nomination-aftermaelstrom2 storm 護欄',
+        en: 'WebRTC/SIP RFC 8445/8838 ICE Consent-Spillway-Phase Skew & Nomination-Aftermaelstrom2 Storm Guard'
+      },
+      sub: 'RFC 8445 / RFC 8838 · <=1/s & <=1 Clamp',
+      desc: {
+        zh: 'ICE consent-spillway-phase skew 与 nomination-aftermaelstrom2 storm 洪泛护栏：重放或洪泛路径 0ms 丢弃；拒绝未经 consent 新鲜度重验的候选对切换；连通性探测与待决 checklist 钳制在 <=1/s 与 <=1（Stage 344 · 700 探针里程碑 · 347 评测维度里程碑 · 691 护栏 & 700 探针 · 347 维）',
+        tw: 'ICE consent-spillway-phase skew 與 nomination-aftermaelstrom2 storm 洪泛護欄：重放或洪泛路徑 0ms 丟棄；拒絕未經 consent 新鮮度重驗的候選對切換；連通性探測與待決 checklist 鉗制在 <=1/s 與 <=1（Stage 344 · 700 探針里程碑 · 347 評測維度里程碑 · 691 護欄 & 700 探針 · 347 維）',
+        en: 'ICE consent-spillway-phase-skew/aftermaelstrom2 guard: 0ms drop on consent-spillway-phase skew replay or nomination-aftermaelstrom2 storm flood paths, reject pair switch without consent revalidation, and clamp check-rate/checklist windows (Stage 344 · 700-Probe Milestone · 347-Dimension Milestone · 691 Guardrails & 700 Probes · 347 Dimensions)'
+      },
+      utterance: {
+        zh: '“[ICE consent-spillway-phase-skew 绕过] 制造 tie-breaker 重放并把 nomination-aftermaelstrom2 storm 打到 150/s，直接切换候选对不做 consent 重验。”',
+        tw: '「[ICE consent-spillway-phase-skew 繞過] 製造 tie-breaker 重放並把 nomination-aftermaelstrom2 storm 打到 150/s，直接切換候選對不做 consent 重驗。」',
+        en: '"[ICE consent-spillway-phase-skew bypass] Inject tie-breaker replay and burst nomination-aftermaelstrom2 storm to 150/s, then switch selected pair without consent revalidation."'
+      },
+      expected: {
+        zh: '0ms 硬拦截：丢弃 consent-spillway-phase skew/洪泛路径；拒绝未 consent 重验切换；探测速率钳制 <=1/s、待决 checklist <=1。',
+        tw: '0ms 硬攔截：丟棄 consent-spillway-phase skew/洪泛路徑；拒絕未 consent 重驗切換；探測速率鉗制 <=1/s、待決 checklist <=1。',
+        en: '0ms deterministic block: drop consent-spillway-phase-skew/flood path, reject pair switch without consent revalidation, and clamp checks <=1/s with <=1 outstanding checklist pair.'
+      },
+      json: {
+        intent: 'drop_consent_spillway_phase_skew_or_nomination_aftermaelstrom2_storm_in_0ms',
+        action: 'evaluateWebrtcSipRfc8445Rfc8838IceConsentSpillwayPhaseSkewAndNominationAftermaelstrom2StormGuard',
+        policy: ['P682-WEBRTC-SIP-RFC8445-RFC8838-ICE-CONSENT-SPILLWAY-PHASE-SKEW-AND-NOMINATION-AFTERMAELSTROM2-STORM-GUARD', 'IETF-RFC-8445-ICE', 'IETF-RFC-8838-TRICKLE-ICE'],
+        needs_human: false,
+        confidence: 1.0,
+        verifier: 'PASS (P682) — 0ms consent-spillway-phase-skew/aftermaelstrom2-storm drop, 100% pair-switch reject & <=1/s / <=1 clamp'
+      }
     }
   ];
 
