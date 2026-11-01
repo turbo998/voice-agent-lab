@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:;" />
+  <title>Azure Speech Fast Transcription Diarization PoC · 7-Card 4:5 Benchmark Report</title>
+  <style>
+    :root {
+      --bg-page: #0B1120;
+      --bg-card: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --text-subtle: #64748B;
+      --border-light: #E2E8F0;
+      --blue-primary: #2563EB;
+      --blue-bar: #3B82F6;
+      --slate-bar: #CBD5E1;
+      --green-bg: #ECFDF5;
+      --green-border: #A7F3D0;
+      --green-text: #065F46;
+      --amber-bg: #FFFBEB;
+      --amber-border: #FDE68A;
+      --amber-text: #92400E;
+      --red-bg: #FEF2F2;
+      --red-border: #FECACA;
+      --red-text: #991B1B;
+      --dark-panel: #0F172A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg-page);
+      color: #F8FAFC;
+      min-height: 100vh;
+      padding: 20px 16px 60px;
+    }
+    .topbar {
+      max-width: 1120px;
+      margin: 0 auto 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 14px;
+      padding: 12px 18px;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .back-link {
+      color: #60A5FA;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      background: rgba(37, 99, 235, 0.12);
+    }
+    .back-link:hover { background: rgba(37, 99, 235, 0.25); }
+    .topbar-title { font-size: 15px; font-weight: 700; color: #F8FAFC; }
+    .controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      background: #1E293B;
+      color: #E2E8F0;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn.active, .btn:hover {
+      background: #2563EB;
+      border-color: #3B82F6;
+      color: #FFFFFF;
+    }
+    .deck-wrapper { max-width: 900px; margin: 0 auto; }
+    .deck-wrapper.grid-mode {
+      max-width: 1400px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 24px;
+    }
+    .card-4x5 {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 4 / 5;
+      min-height: 880px;
+      background: var(--bg-card);
+      color: var(--text-main);
+      border-radius: 24px;
+      padding: 32px 36px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #E2E8F0;
+    }
+    .card-4x5.active-card { display: flex; }
+    .deck-wrapper.grid-mode .card-4x5 {
+      display: flex;
+      aspect-ratio: auto;
+      min-height: 760px;
+      padding: 24px 26px;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #475569;
+      border-bottom: 1px solid #F1F5F9;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+    .card-badge {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .card-headline {
+      font-size: 25px;
+      line-height: 1.24;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 10px;
+    }
+    .gradient-accent {
+      background: linear-gradient(90deg, #2563EB, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .card-sub {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .workbench-3col {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .wb-col {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .wb-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #64748B;
+    }
+    .pill-item {
+      padding: 8px 10px;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+    .band-tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .band-auto { background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-border); }
+    .band-confirm { background: var(--amber-bg); color: var(--amber-text); border: 1px solid var(--amber-border); }
+    .band-human { background: var(--red-bg); color: var(--red-text); border: 1px solid var(--red-border); }
+    .type-badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: #E0E7FF;
+      color: #3730A3;
+      font-weight: 800;
+    }
+    .quote-box {
+      background: #F1F5F9;
+      border-left: 4px solid #2563EB;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      color: #1E293B;
+      margin-bottom: 12px;
+    }
+    .decision-stack { display: flex; flex-direction: column; gap: 11px; flex: 1; }
+    .decision-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 13px 15px;
+    }
+    .decision-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      gap: 8px;
+    }
+    .prob-bar-track {
+      height: 10px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 7px 0 5px;
+    }
+    .prob-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #2563EB, #3B82F6);
+      border-radius: 999px;
+    }
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .matrix-table th {
+      text-align: left;
+      padding: 8px 9px;
+      background: #F1F5F9;
+      color: #334155;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid #CBD5E1;
+    }
+    .matrix-table td {
+      padding: 8px 9px;
+      border-bottom: 1px solid #E2E8F0;
+      vertical-align: middle;
+    }
+    .code-panel {
+      background: var(--dark-panel);
+      color: #E2E8F0;
+      border-radius: 14px;
+      padding: 13px 15px;
+      font-family: "Cascadia Code", "Consolas", monospace;
+      font-size: 11.2px;
+      line-height: 1.45;
+      overflow-x: auto;
+    }
+    .flow-arrow {
+      text-align: center;
+      font-weight: 800;
+      color: #2563EB;
+      font-size: 13px;
+      margin: 5px 0;
+    }
+    .latency-group {
+      margin-bottom: 11px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 11px 14px;
+    }
+    .latency-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 145px 1fr 74px;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      margin-bottom: 5px;
+    }
+    .bar-track {
+      height: 12px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar-primary { height: 100%; background: var(--blue-bar); border-radius: 999px; }
+    .bar-baseline { height: 100%; background: var(--slate-bar); border-radius: 999px; }
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .fit-card {
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+    .fit-good { background: var(--green-bg); border: 1px solid var(--green-border); color: var(--green-text); }
+    .fit-bad { background: var(--red-bg); border: 1px solid var(--red-border); color: var(--red-text); }
+    .card-footer {
+      background: #0F172A;
+      color: #E2E8F0;
+      border-radius: 12px;
+      padding: 11px 15px;
+      font-size: 11.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .callout-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .callout-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 11px 13px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-left">
+      <a class="back-link" href="./index.html">← Voice Agent Hub</a>
+      <a class="back-link" href="../index.html">🏠 Homepage</a>
+      <span class="topbar-title">Azure Speech Fast Transcription Diarization PoC · 7-Card 4:5 Benchmark Deck</span>
+    </div>
+    <div class="controls">
+      <button class="btn" id="prevBtn" type="button">◀ Prev</button>
+      <span id="cardIndicator" style="font-size:12px;font-weight:700;padding:0 6px;">1 / 7</span>
+      <button class="btn" id="nextBtn" type="button">Next ▶</button>
+      <button class="btn" id="toggleGridBtn" type="button">⊞ Grid View (All 7)</button>
+    </div>
+  </div>
+
+  <div class="deck-wrapper" id="deckWrapper">
+    <!-- CARD 1: OVERVIEW & WORKBENCH -->
+    <article class="card-4x5 active-card">
+      <div>
+        <div class="card-header">
+          <span>1 / 7 · HANDS-ON · AZURE SPEECH DIARIZATION POC</span>
+          <span class="card-badge">MEASURED · SDK 1.0.0 FIX</span>
+        </div>
+        <h1 class="card-headline">
+          Explicit <span class="gradient-accent">diarization.enabled=true</span> Restores 0% → 100% Speaker Labeling &amp; 100% Stereo Channel Agreement
+        </h1>
+        <p class="card-sub">
+          Root-cause diagnosis on <code>azure-ai-transcription==1.0.0</code>: setting <code>maxSpeakers</code> alone omits the wire flag required by Azure Fast Transcription. Fixing wire serialization + <code>--locale auto</code> achieves 100% speaker coverage at 0.057 RTF.
+        </p>
+      </div>
+
+      <div class="workbench-3col">
+        <div class="wb-col">
+          <div class="wb-title">1. Experiment Matrix &amp; Gates</div>
+          <div class="pill-item"><span>Official Control (29.49s)</span><span class="band-tag band-auto">8/8 (100%)</span></div>
+          <div class="pill-item"><span>Customer Longest (224.8s)</span><span class="band-tag band-auto">28/28 (100%)</span></div>
+          <div class="pill-item"><span>Stereo Channel Agreement</span><span class="band-tag band-auto">100% (33.75s)</span></div>
+          <div class="pill-item"><span>Single-Speaker (file-01)</span><span class="band-tag band-confirm">Confirm (1 Phrase)</span></div>
+          <div class="pill-item"><span>Silent / Sparse (03, 04, 05)</span><span class="band-tag band-human">Send to Human</span></div>
+        </div>
+
+        <div class="wb-col">
+          <div class="wb-title">2. Wire Definition Fix (SDK 1.0.0)</div>
+          <div class="code-panel" style="font-size:10.5px;flex:1;">
+// BEFORE (0/8 Speaker Labels):
+{"locales":["en-US"],
+ "diarization":{"maxSpeakers":2}}
+
+// AFTER (8/8 Speaker Labels):
+{"locales":["en-US"],
+ "diarization":{
+   "maxSpeakers":2,
+   "enabled":true
+ }}
+
+// Customer Auto-Locale Wire:
+{"diarization":{
+   "maxSpeakers":2,
+   "enabled":true
+ }}</div>
+        </div>
+
+        <div class="wb-col">
+          <div class="wb-title">3. Telemetry &amp; Top Decisions</div>
+          <div class="pill-item"><span>Control RTF (After Fix)</span><strong>0.304 (8.97s)</strong></div>
+          <div class="pill-item"><span>Customer-02 RTF (224.8s)</span><strong style="color:#059669;">0.057 (17.5× RT)</strong></div>
+          <div class="pill-item"><span>Detected Locale (Auto)</span><strong>es-ES (Spanish)</strong></div>
+          <div class="pill-item"><span>Sensitivity (max=3 / 4)</span><strong>Stable 2 Speakers</strong></div>
+          <div class="pill-item"><span>Auth Mode</span><strong>Entra ID (Zero Key)</strong></div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span><strong>Provenance:</strong> <code>measured</code> (Official Control) + <code>anonymized_reported</code> (Customer Metrics JSON · Zero Audio/Transcripts)</span>
+        <span>Commit: <code>31b25c8</code> · 16/16 Tests</span>
+      </div>
+    </article>
+
+    <!-- CARD 2: SINGLE-CASE DEEP DIVE -->
+    <article class="card-4x5">
+      <div>
+        <div class="card-header">
+          <span>2 / 7 · SCENARIO: OFFICIAL CONTROL &amp; CUSTOMER-FILE-02</span>
+          <span class="card-badge">CASE BREAKDOWN</span>
+        </div>
+        <h2 class="card-headline">
+          8/8 Control Phrases (0.927 Conf) &amp; 28/28 Customer Phrases Synchronized to Physical Stereo Channels
+        </h2>
+        <div class="quote-box">
+          <strong>Input Audio Profile:</strong> (1) Official two-speaker mono PCM control (<code>29.4875s</code>, <code>en-US</code>, Steve &amp; Katie); (2) Customer 8 kHz 16-bit PCM stereo recording <code>customer-file-02.wav</code> (<code>224.8s</code>, auto-detected <code>es-ES</code>).
+        </div>
+      </div>
+
+      <div class="decision-stack">
+        <div class="decision-card">
+          <div class="decision-top">
+            <div><span class="type-badge">score</span> <strong>Official Control After Fix (<code>enabled=true</code>)</strong></div>
+            <span class="band-tag band-auto">Act automatically · 100.0% Coverage</span>
+          </div>
+          <div style="font-size:12px;color:#475569;">8/8 phrases labeled across Speakers <code>1</code> &amp; <code>2</code> · Mean Confidence <code>0.9267</code> · Elapsed <code>8.97s</code> (RTF <code>0.304</code>)</div>
+          <div class="prob-bar-track"><div class="prob-bar-fill" style="width:100%;"></div></div>
+        </div>
+
+        <div class="decision-card">
+          <div class="decision-top">
+            <div><span class="type-badge">choice</span> <strong>Customer-File-02 Diarization vs. Stereo Channel Baseline</strong></div>
+            <span class="band-tag band-auto">Act automatically · 100.0% Agreement</span>
+          </div>
+          <div style="font-size:12px;color:#475569;">28/28 phrases labeled (<code>es-ES</code>, RTF <code>0.057</code>) · Over <code>33,750 ms</code> non-overlapping speech, optimal bijection maps <code>Speaker 1 → Ch 1</code> &amp; <code>Speaker 2 → Ch 0</code> with <code>100.0%</code> overlap agreement.</div>
+          <div class="prob-bar-track"><div class="prob-bar-fill" style="width:100%;"></div></div>
+        </div>
+
+        <div class="decision-card">
+          <div class="decision-top">
+            <div><span class="type-badge">noul</span> <strong>Sparse / Silent Customer Recordings (<code>file-03 / 04 / 05</code>)</strong></div>
+            <span class="band-tag band-human">Send to a human · Manual QA Gate</span>
+          </div>
+          <div style="font-size:12px;color:#475569;"><code>file-03</code> (126.3s, 0 phrases), <code>file-04</code> (116.9s, 0 phrases), and <code>file-05</code> (108.3s, 2 phrases @ <code>0.2158</code> confidence) are flagged by preflight &amp; abstention rules rather than counted as false passes.</div>
+          <div class="prob-bar-track"><div class="prob-bar-fill" style="width:21.6%;background:#EF4444;"></div></div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span><strong>Verification:</strong> <code>evidence/official-control/after-fix/summary.json</code> &amp; <code>evidence/customer-metrics-sanitized.json</code></span>
+        <span>Zero Fabricated Coordinates</span>
+      </div>
+    </article>
+
+    <!-- CARD 3: FULL EVALUATION MATRIX -->
+    <article class="card-4x5">
+      <div>
+        <div class="card-header">
+          <span>3 / 7 · WHAT I TESTED</span>
+          <span class="card-badge">7-RUN EVALUATION MATRIX</span>
+        </div>
+        <h2 class="card-headline">
+          Full Evaluation Matrix: Control Before/After + 5 Customer Recordings
+        </h2>
+        <p class="card-sub">
+          Separating SDK serialization defects (`Before Fix` `✕`) from genuine audio sparsity (`file-03/04/05`) across 7 sealed test runs.
+        </p>
+      </div>
+
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>SCENARIO / FILE</th>
+            <th>DURATION &amp; LOCALE</th>
+            <th>PHRASES / COVERAGE</th>
+            <th>ACTION / GATE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Control (Before Fix)</strong></td>
+            <td><code>29.49s</code> · <code>en-US</code></td>
+            <td><strong style="color:#DC2626;">✕ 0 / 8 (0.0%)</strong> · 0 Speakers</td>
+            <td><span class="band-tag band-human">Wire Defect (Omitted Flag)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Control (After Fix)</strong></td>
+            <td><code>29.49s</code> · <code>en-US</code></td>
+            <td><strong style="color:#059669;">✓ 8 / 8 (100.0%)</strong> · Spk 1, 2 (<code>0.927</code>)</td>
+            <td><span class="band-tag band-auto">Act automatically</span></td>
+          </tr>
+          <tr>
+            <td><strong>customer-file-01.wav</strong></td>
+            <td><code>147.50s</code> · <code>es-ES</code> (auto)</td>
+            <td><code>1 / 1 (100.0%)</code> · Spk 1 (<code>0.756</code>)</td>
+            <td><span class="band-tag band-confirm">Confirm (Single-Speaker)</span></td>
+          </tr>
+          <tr>
+            <td><strong>customer-file-02.wav</strong></td>
+            <td><code>224.80s</code> · <code>es-ES</code> (auto)</td>
+            <td><strong style="color:#059669;">✓ 28 / 28 (100.0%)</strong> · Spk 1, 2 (<code>0.603</code>)</td>
+            <td><span class="band-tag band-auto">Act automatically (100% Ch Match)</span></td>
+          </tr>
+          <tr>
+            <td><strong>customer-file-03.wav</strong></td>
+            <td><code>126.28s</code> · <code>[]</code> (auto)</td>
+            <td><strong style="color:#DC2626;">✕ 0 Phrases</strong> (<code>coverage: null</code>)</td>
+            <td><span class="band-tag band-human">Send to a human (No Speech)</span></td>
+          </tr>
+          <tr>
+            <td><strong>customer-file-04.wav</strong></td>
+            <td><code>116.92s</code> · <code>[]</code> (auto)</td>
+            <td><strong style="color:#DC2626;">✕ 0 Phrases</strong> (<code>coverage: null</code>)</td>
+            <td><span class="band-tag band-human">Send to a human (No Speech)</span></td>
+          </tr>
+          <tr>
+            <td><strong>customer-file-05.wav</strong></td>
+            <td><code>108.28s</code> · <code>en-US, es-ES</code></td>
+            <td><code>2 / 2 (100.0%)</code> · Low Conf (<code>0.216</code>)</td>
+            <td><span class="band-tag band-human">Send to a human (Conf &lt; 0.50)</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-grid-2">
+        <div class="callout-box">
+          <strong>Threshold Gating Policy:</strong> Require <code>coverage &gt;= 95%</code>, <code>phrases &gt;= 4</code>, and <code>mean_confidence &gt;= 0.55</code> for automated speaker attribution.
+        </div>
+        <div class="callout-box">
+          <strong>Failure Analysis:</strong> Once <code>enabled=true</code> and <code>--locale auto</code> are set, remaining misses are 100% attributable to audio silence/SNR, not SDK failures.
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span><strong>Acceptance Target:</strong> 5/5 valid WAVs processed · RTF &lt; 1.0 · Non-overlap channel agreement &gt;= 90%</span>
+        <span>Actual Agreement: 100.0%</span>
+      </div>
+    </article>
+
+    <!-- CARD 4: UNDER THE HOOD -->
+    <article class="card-4x5">
+      <div>
+        <div class="card-header">
+          <span>4 / 7 · UNDER THE HOOD</span>
+          <span class="card-badge">PROTOCOL &amp; SCORING MECHANICS</span>
+        </div>
+        <h2 class="card-headline">
+          SDK Wire-Patch &amp; Deterministic Non-Overlap Stereo Channel Agreement Verifier
+        </h2>
+        <p class="card-sub">
+          How <code>speech_poc/azure_client.py</code> enforces wire serialization and how <code>speech_poc/metrics.py</code> computes permutation-optimal channel consistency.
+        </p>
+      </div>
+
+      <div class="code-panel">
+# 1. speech_poc/azure_client.py — Explicit Wire Enablement + Entra DefaultAzureCredential
+kwargs: dict[str, object] = {}
+if locale is not None:               # --locale auto passes None -> omits "locales" array
+    kwargs["locales"] = [locale]
+if max_speakers is not None:
+    diarization = TranscriptionDiarizationOptions(max_speakers=max_speakers)
+    diarization.enabled = True       # Critical fix for azure-ai-transcription==1.0.0
+    kwargs["diarization_options"] = diarization
+options = TranscriptionOptions(**kwargs)</div>
+
+      <div class="flow-arrow">↓ Multipart POST /speechtotext/transcriptions:transcribe?api-version=2024-11-15 ↓</div>
+
+      <div class="code-panel">
+# 2. speech_poc/metrics.py — Permutation-Optimal Speaker-to-Channel Consistency
+# Excludes intervals where Channel 0 and Channel 1 overlap; finds bijection maximizing ms overlap
+for candidate in itertools.permutations(channels, len(speakers)):
+    mapping = dict(zip(speakers, candidate))
+    matched = sum(overlap_ms(d_seg, c_seg) for d_seg, c_seg in non_overlapping_pairs
+                  if mapping.get(d_seg.speaker) == c_seg.channel)
+# Result on customer-file-02.wav:
+# {"agreement_rate": 1.0, "eligible_milliseconds": 33750, "speaker_channel_map": {"1": 1, "2": 0}}</div>
+
+      <div class="card-footer">
+        <span><strong>Security Baseline:</strong> <code>infra/speech.bicep</code> sets <code>disableLocalAuth: true</code> + RBAC role <code>f2dc8367-1007-4938-bd23-fe263f013447</code></span>
+        <span>Unit Tests: 16 / 16 Passed</span>
+      </div>
+    </article>
+
+    <!-- CARD 5: ROBUSTNESS CHECK -->
+    <article class="card-4x5">
+      <div>
+        <div class="card-header">
+          <span>5 / 7 · ROBUSTNESS CHECK</span>
+          <span class="card-badge">PERTURBATION &amp; SENSITIVITY</span>
+        </div>
+        <h2 class="card-headline">
+          Zero Over-Clustering Across maxSpeakers=2/3/4 &amp; +100 pt Lift from Explicit Flag
+        </h2>
+        <p class="card-sub">
+          Testing parameter perturbations on <code>customer-file-02.wav</code> (Experiment B vs. Experiment C) and official control wire-flag toggling.
+        </p>
+      </div>
+
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>PERTURBATION DIMENSION</th>
+            <th>BASELINE (`maxSpeakers=2`)</th>
+            <th>PERTURBED (`maxSpeakers=3 / 4`)</th>
+            <th>CHANGE (PTS / DELTA)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Customer-02 Speaker Coverage</strong></td>
+            <td><code>100.0%</code> (28 / 28 phrases)</td>
+            <td><code>100.0%</code> (28 / 28 at max=3 &amp; 4)</td>
+            <td><strong style="color:#059669;">0.0 pts (100% Stable)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Customer-02 Detected Speakers</strong></td>
+            <td><code>2 Speakers</code> (<code>[1, 2]</code>)</td>
+            <td><code>2 Speakers</code> (<code>[1, 2]</code> at max=3 &amp; 4)</td>
+            <td><strong style="color:#059669;">0 False Clusters</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Customer-02 Mean Confidence</strong></td>
+            <td><code>60.28%</code> (<code>0.60278</code>)</td>
+            <td><code>60.28%</code> (<code>0.60278</code>)</td>
+            <td><strong style="color:#059669;">0.00 pts</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Customer-02 Real-Time Factor</strong></td>
+            <td><code>0.0572 RTF</code> (<code>12.85s</code>)</td>
+            <td><code>0.0543 RTF</code> (<code>12.20s</code> @ max=3/4)</td>
+            <td><strong style="color:#059669;">-0.0029 RTF (-5.1%)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Control Wire Flag (`enabled`)</strong></td>
+            <td><code>0.0%</code> (<code>enabled</code> omitted)</td>
+            <td><code>100.0%</code> (<code>enabled=true</code>)</td>
+            <td><strong style="color:#2563EB;">+100.0 pts (0/8 → 8/8)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-grid-2">
+        <div class="callout-box">
+          <strong>Speaker Ceiling Invariance:</strong> Setting <code>--sensitivity-speakers 3 4</code> did not hallucinate a 3rd or 4th speaker on two-party calls.
+        </div>
+        <div class="callout-box">
+          <strong>Auto-Locale Resilience:</strong> Omitting fixed <code>en-US</code> via <code>--locale auto</code> cleanly identified <code>es-ES</code> across all 28 phrases.
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span><strong>Regression Guard:</strong> <code>test_diarization_request_explicitly_enables_service_feature</code> &amp; <code>test_auto_locale_is_omitted</code></span>
+        <span>100% Deterministic</span>
+      </div>
+    </article>
+
+    <!-- CARD 6: LATENCY / RTF -->
+    <article class="card-4x5">
+      <div>
+        <div class="card-header">
+          <span>6 / 7 · LATENCY &amp; THROUGHPUT</span>
+          <span class="card-badge">REAL-TIME FACTOR (RTF)</span>
+        </div>
+        <h2 class="card-headline">
+          17.5× to 48.8× Faster Than Real Time Across 108s–225s Recordings
+        </h2>
+        <p class="card-sub">
+          Comparing actual Azure Fast Transcription processing time (`#3B82F6`) against real-time audio duration (`#CBD5E1`, `RTF = 1.000`).
+        </p>
+      </div>
+
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+        <div class="latency-group">
+          <div class="latency-head">
+            <span>1. Customer-File-02 (224.8s Stereo · 28 Phrases · es-ES)</span>
+            <span style="color:#2563EB;">RTF = 0.057 (17.5× Faster)</span>
+          </div>
+          <div class="bar-row">
+            <span>Fast Transcription (max=2)</span>
+            <div class="bar-track"><div class="bar-primary" style="width:5.72%;"></div></div>
+            <strong>12.85 s</strong>
+          </div>
+          <div class="bar-row">
+            <span>Real-Time Audio Duration</span>
+            <div class="bar-track"><div class="bar-baseline" style="width:100%;"></div></div>
+            <span>224.80 s</span>
+          </div>
+        </div>
+
+        <div class="latency-group">
+          <div class="latency-head">
+            <span>2. Customer-File-01 (147.5s · 1 Phrase) &amp; File-03 (126.3s · Silent)</span>
+            <span style="color:#2563EB;">RTF = 0.027 / 0.021 (36×–48× Faster)</span>
+          </div>
+          <div class="bar-row">
+            <span>File-01 Processing Time</span>
+            <div class="bar-track"><div class="bar-primary" style="width:2.74%;"></div></div>
+            <strong>4.04 s</strong>
+          </div>
+          <div class="bar-row">
+            <span>File-03 Processing Time</span>
+            <div class="bar-track"><div class="bar-primary" style="width:2.05%;"></div></div>
+            <strong>2.59 s</strong>
+          </div>
+        </div>
+
+        <div class="latency-group">
+          <div class="latency-head">
+            <span>3. Official 2-Speaker Control Sample (29.49s Mono · 8 Phrases · en-US)</span>
+            <span style="color:#2563EB;">RTF = 0.304 (3.3× Faster)</span>
+          </div>
+          <div class="bar-row">
+            <span>After Fix (<code>enabled=true</code>)</span>
+            <div class="bar-track"><div class="bar-primary" style="width:30.41%;"></div></div>
+            <strong>8.97 s</strong>
+          </div>
+          <div class="bar-row">
+            <span>Before Fix (No Diarization)</span>
+            <div class="bar-track"><div class="bar-baseline" style="width:28.04%;"></div></div>
+            <span>8.27 s</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span><strong>Key Insight:</strong> Enabling speaker diarization adds only <code>+0.70s</code> on the 29.5s control while maintaining <code>&lt;0.06 RTF</code> on 3.7-minute calls.</span>
+        <span>All Runs Faster Than Real-Time</span>
+      </div>
+    </article>
+
+    <!-- CARD 7: MY TAKE -->
+    <article class="card-4x5">
+      <div>
+        <div class="card-header">
+          <span>7 / 7 · MY TAKE</span>
+          <span class="card-badge">GOOD FIT VS. NOT FOR &amp; READINESS</span>
+        </div>
+        <h2 class="card-headline">
+          Architectural Guidance: Combine Stereo Channel Baseline with Explicit Diarization Gate
+        </h2>
+        <p class="card-sub">
+          Production engineering recommendations from the Azure Speech Fast Transcription Diarization PoC.
+        </p>
+      </div>
+
+      <div class="fit-grid">
+        <div class="fit-card fit-good">
+          <div style="font-size:15px;font-weight:800;">✅ Good Fit (Recommended)</div>
+          <p>• <strong>Post-Call QA &amp; Dual-Recording Audits:</strong> Synchronous Fast Transcription at <code>0.02–0.06 RTF</code> processes 3–4 minute calls in <code>4–13 seconds</code>.</p>
+          <p>• <strong>Mono Mixed Recordings with Unknown Locale:</strong> Pair explicit <code>diarization.enabled = True</code> with <code>--locale auto</code> and <code>maxSpeakers=2..4</code>.</p>
+          <p>• <strong>Split-Channel Stereo Contact Centers:</strong> Retain Channel Transcription (<code>active_channels=[0,1]</code>) as deterministic ground truth and cross-check against mono diarization.</p>
+          <p>• <strong>Zero-Key Enterprise Security:</strong> Provision Speech S0 with <code>disableLocalAuth: true</code> and resource-scoped <code>DefaultAzureCredential</code>.</p>
+        </div>
+
+        <div class="fit-card fit-bad">
+          <div style="font-size:15px;font-weight:800;">⛔ Not For (Anti-Patterns)</div>
+          <p>• <strong>Relying on Default <code>maxSpeakers</code> in SDK 1.0.0:</strong> Omitting <code>diarization.enabled = True</code> silently drops all speaker labels (<code>0/8</code>).</p>
+          <p>• <strong>Hardcoding <code>en-US</code> on Multilingual/Spanish Queues:</strong> Causes severe confidence degradation when callers speak <code>es-ES</code>.</p>
+          <p>• <strong>Treating Silent/Sparse Audio as Diarization Pass:</strong> Files with <code>0</code> phrases (<code>file-03/04</code>) or <code>&lt;0.50</code> confidence (<code>file-05</code>) must route to manual review.</p>
+          <p>• <strong>Sub-200ms Live Full-Duplex Interruption:</strong> Fast Transcription is for synchronous file/chunk transcription; use <code>GPT-Live-1</code> / Voice Live for real-time S2S barge-in.</p>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span><strong>Repo:</strong> <code>turbo998/azure-speech-diarization-poc</code> &amp; <code>turbo998/voice-agent-lab</code></span>
+        <span>CSP: <code>default-src 'none'; style-src 'unsafe-inline'</code></span>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    (function () {
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.card-4x5'));
+      var idx = 0;
+      var wrapper = document.getElementById('deckWrapper');
+      var indicator = document.getElementById('cardIndicator');
+      var prevBtn = document.getElementById('prevBtn');
+      var nextBtn = document.getElementById('nextBtn');
+      var gridBtn = document.getElementById('toggleGridBtn');
+
+      function render() {
+        cards.forEach(function (c, i) {
+          c.classList.toggle('active-card', i === idx);
+        });
+        indicator.textContent = (idx + 1) + ' / ' + cards.length;
+      }
+
+      prevBtn.addEventListener('click', function () {
+        idx = (idx - 1 + cards.length) % cards.length;
+        render();
+      });
+      nextBtn.addEventListener('click', function () {
+        idx = (idx + 1) % cards.length;
+        render();
+      });
+      gridBtn.addEventListener('click', function () {
+        var isGrid = wrapper.classList.toggle('grid-mode');
+        gridBtn.classList.toggle('active', isGrid);
+        gridBtn.textContent = isGrid ? '▢ Single Card View' : '⊞ Grid View (All 7)';
+      });
+      document.addEventListener('keydown', function (e) {
+        if (wrapper.classList.contains('grid-mode')) return;
+        if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+          idx = (idx + 1) % cards.length;
+          render();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          idx = (idx - 1 + cards.length) % cards.length;
+          render();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

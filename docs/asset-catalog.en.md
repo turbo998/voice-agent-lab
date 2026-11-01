@@ -14,6 +14,9 @@
 | **12-Slide Azure Executive Briefing Deck** | 📽️ 16:9 HTML Deck | `https://turbo998.github.io/voice-agent-lab/deck.html` (`site/deck.html`) | 12-slide executive presentation with bilingual headings, keyboard navigation, and print-to-PDF support. |
 | **7-Card 4:5 Visual Benchmark Report** | 📊 7-Card Visual Deck | `https://turbo998.github.io/voice-agent-lab/benchmark-cards.html` (`site/benchmark-cards.html`) | 7-card 4:5 portrait evaluation report backed by sealed JSON telemetry (`site/data/voice-agent-benchmark-report.json`). |
 | **GPT-Live (`gpt-live-1`) Partner Engineering Training Portal** | 🎓 Trilingual H5 | `https://turbo998.github.io/gpt-live-1-demo/training.html` | 6 engineering modules, 3 high-res architecture diagrams, FinOps calculator, and partner certification quiz. |
+| **Azure Speech Fast Transcription Diarization 7-Card Report** | 📊 7-Card Visual Deck | `https://turbo998.github.io/voice/diarization-benchmark-cards.html` (`site/diarization-benchmark-cards.html`) | 7-card 4:5 benchmark report for `azure-ai-transcription==1.0.0` `diarization.enabled=true` fix (`0/8 → 8/8` control, `28/28` customer call at `0.057 RTF`, `100%` stereo channel agreement). |
+| **GPT-Live (`gpt-live-1`) 4m20s Live Demo Video & Handbook** | 🎬 MP4 Video + Bilingual Guide | `https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4` · [`docs/gpt-live-partner-demo-handbook.en.md`](./gpt-live-partner-demo-handbook.en.md) | 4m20s live Azure `gpt-live-1` recording (greeting, barge-in, clock, math, web search), 6-minute run-of-show, and `$20.41/mo` Azure Retail Prices API cost breakdown. |
+| **Standalone Azure Speech Diarization PoC Repository** | 📦 Public GitHub Repo | `https://github.com/turbo998/azure-speech-diarization-poc` (`experiments/azure-speech-diarization-poc/`) | Local WAV preflight/split/downmix CLI, keyless `DefaultAzureCredential` Fast Transcription client, optimal speaker-to-channel bijection matcher, Bicep IaC, and 16 unit tests. |
 
 ---
 

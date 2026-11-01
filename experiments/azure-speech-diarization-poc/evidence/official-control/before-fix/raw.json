@@ -1,0 +1,402 @@
+{
+  "durationMilliseconds": 29487,
+  "combinedPhrases": [
+    {
+      "text": "Good morning Steve. Good morning Katie. Have you tried the latest real-time diarization in Microsoft Speech Service? Which can tell you who said what in real-time? Not yet, I've been using the batch transcription with diarization functionality, but it produces diarization result until whole audio get processed. Is the new feature can diarize in real-time? Absolutely. That's exciting, let me try it right now."
+    }
+  ],
+  "phrases": [
+    {
+      "offsetMilliseconds": 110,
+      "durationMilliseconds": 1040,
+      "text": "Good morning Steve.",
+      "words": [
+        {
+          "text": "Good",
+          "offsetMilliseconds": 110,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "morning",
+          "offsetMilliseconds": 350,
+          "durationMilliseconds": 320
+        },
+        {
+          "text": "Steve.",
+          "offsetMilliseconds": 670,
+          "durationMilliseconds": 480
+        }
+      ],
+      "locale": "en-US",
+      "confidence": 0.9267105
+    },
+    {
+      "offsetMilliseconds": 2030,
+      "durationMilliseconds": 960,
+      "text": "Good morning Katie.",
+      "words": [
+        {
+          "text": "Good",
+          "offsetMilliseconds": 2030,
+          "durationMilliseconds": 160
+        },
+        {
+          "text": "morning",
+          "offsetMilliseconds": 2190,
+          "durationMilliseconds": 320
+        },
+        {
+          "text": "Katie.",
+          "offsetMilliseconds": 2510,
+          "durationMilliseconds": 480
+        }
+      ],
+      "locale": "en-US",
+      "confidence": 0.9267105
+    },
+    {
+      "offsetMilliseconds": 3870,
+      "durationMilliseconds": 4160,
+      "text": "Have you tried the latest real-time diarization in Microsoft Speech Service?",
+      "words": [
+        {
+          "text": "Have",
+          "offsetMilliseconds": 3870,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "you",
+          "offsetMilliseconds": 4110,
+          "durationMilliseconds": 80
+        },
+        {
+          "text": "tried",
+          "offsetMilliseconds": 4190,
+          "durationMilliseconds": 320
+        },
+        {
+          "text": "the",
+          "offsetMilliseconds": 4510,
+          "durationMilliseconds": 120
+        },
+        {
+          "text": "latest",
+          "offsetMilliseconds": 4630,
+          "durationMilliseconds": 440
+        },
+        {
+          "text": "real-time",
+          "offsetMilliseconds": 5070,
+          "durationMilliseconds": 480
+        },
+        {
+          "text": "diarization",
+          "offsetMilliseconds": 5550,
+          "durationMilliseconds": 800
+        },
+        {
+          "text": "in",
+          "offsetMilliseconds": 6350,
+          "durationMilliseconds": 80
+        },
+        {
+          "text": "Microsoft",
+          "offsetMilliseconds": 6430,
+          "durationMilliseconds": 640
+        },
+        {
+          "text": "Speech",
+          "offsetMilliseconds": 7070,
+          "durationMilliseconds": 400
+        },
+        {
+          "text": "Service?",
+          "offsetMilliseconds": 7470,
+          "durationMilliseconds": 560
+        }
+      ],
+      "locale": "en-US",
+      "confidence": 0.9267105
+    },
+    {
+      "offsetMilliseconds": 8190,
+      "durationMilliseconds": 3280,
+      "text": "Which can tell you who said what in real-time?",
+      "words": [
+        {
+          "text": "Which",
+          "offsetMilliseconds": 8190,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "can",
+          "offsetMilliseconds": 8430,
+          "durationMilliseconds": 200
+        },
+        {
+          "text": "tell",
+          "offsetMilliseconds": 8630,
+          "durationMilliseconds": 200
+        },
+        {
+          "text": "you",
+          "offsetMilliseconds": 8830,
+          "durationMilliseconds": 160
+        },
+        {
+          "text": "who",
+          "offsetMilliseconds": 8990,
+          "durationMilliseconds": 400
+        },
+        {
+          "text": "said",
+          "offsetMilliseconds": 9470,
+          "durationMilliseconds": 560
+        },
+        {
+          "text": "what",
+          "offsetMilliseconds": 10110,
+          "durationMilliseconds": 480
+        },
+        {
+          "text": "in",
+          "offsetMilliseconds": 10670,
+          "durationMilliseconds": 160
+        },
+        {
+          "text": "real-time?",
+          "offsetMilliseconds": 10830,
+          "durationMilliseconds": 640
+        }
+      ],
+      "locale": "en-US",
+      "confidence": 0.9267105
+    },
+    {
+      "offsetMilliseconds": 12350,
+      "durationMilliseconds": 8080,
+      "text": "Not yet, I've been using the batch transcription with diarization functionality, but it produces diarization result until whole audio get processed.",
+      "words": [
+        {
+          "text": "Not",
+          "offsetMilliseconds": 12350,
+          "durationMilliseconds": 320
+        },
+        {
+          "text": "yet,",
+          "offsetMilliseconds": 12670,
+          "durationMilliseconds": 320
+        },
+        {
+          "text": "I've",
+          "offsetMilliseconds": 13070,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "been",
+          "offsetMilliseconds": 13310,
+          "durationMilliseconds": 160
+        },
+        {
+          "text": "using",
+          "offsetMilliseconds": 13470,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "the",
+          "offsetMilliseconds": 13710,
+          "durationMilliseconds": 120
+        },
+        {
+          "text": "batch",
+          "offsetMilliseconds": 13830,
+          "durationMilliseconds": 320
+        },
+        {
+          "text": "transcription",
+          "offsetMilliseconds": 14150,
+          "durationMilliseconds": 600
+        },
+        {
+          "text": "with",
+          "offsetMilliseconds": 14750,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "diarization",
+          "offsetMilliseconds": 14990,
+          "durationMilliseconds": 720
+        },
+        {
+          "text": "functionality,",
+          "offsetMilliseconds": 15710,
+          "durationMilliseconds": 800
+        },
+        {
+          "text": "but",
+          "offsetMilliseconds": 16750,
+          "durationMilliseconds": 160
+        },
+        {
+          "text": "it",
+          "offsetMilliseconds": 16910,
+          "durationMilliseconds": 80
+        },
+        {
+          "text": "produces",
+          "offsetMilliseconds": 16990,
+          "durationMilliseconds": 480
+        },
+        {
+          "text": "diarization",
+          "offsetMilliseconds": 17470,
+          "durationMilliseconds": 800
+        },
+        {
+          "text": "result",
+          "offsetMilliseconds": 18270,
+          "durationMilliseconds": 400
+        },
+        {
+          "text": "until",
+          "offsetMilliseconds": 18670,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "whole",
+          "offsetMilliseconds": 18910,
+          "durationMilliseconds": 320
+        },
+        {
+          "text": "audio",
+          "offsetMilliseconds": 19230,
+          "durationMilliseconds": 360
+        },
+        {
+          "text": "get",
+          "offsetMilliseconds": 19590,
+          "durationMilliseconds": 200
+        },
+        {
+          "text": "processed.",
+          "offsetMilliseconds": 19790,
+          "durationMilliseconds": 640
+        }
+      ],
+      "locale": "en-US",
+      "confidence": 0.9267105
+    },
+    {
+      "offsetMilliseconds": 21310,
+      "durationMilliseconds": 2560,
+      "text": "Is the new feature can diarize in real-time?",
+      "words": [
+        {
+          "text": "Is",
+          "offsetMilliseconds": 21310,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "the",
+          "offsetMilliseconds": 21550,
+          "durationMilliseconds": 80
+        },
+        {
+          "text": "new",
+          "offsetMilliseconds": 21630,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "feature",
+          "offsetMilliseconds": 21870,
+          "durationMilliseconds": 400
+        },
+        {
+          "text": "can",
+          "offsetMilliseconds": 22270,
+          "durationMilliseconds": 240
+        },
+        {
+          "text": "diarize",
+          "offsetMilliseconds": 22510,
+          "durationMilliseconds": 560
+        },
+        {
+          "text": "in",
+          "offsetMilliseconds": 23070,
+          "durationMilliseconds": 120
+        },
+        {
+          "text": "real-time?",
+          "offsetMilliseconds": 23190,
+          "durationMilliseconds": 680
+        }
+      ],
+      "locale": "en-US",
+      "confidence": 0.9267105
+    },
+    {
+      "offsetMilliseconds": 24670,
+      "durationMilliseconds": 960,
+      "text": "Absolutely.",
+      "words": [
+        {
+          "text": "Absolutely.",
+          "offsetMilliseconds": 24670,
+          "durationMilliseconds": 960
+        }
+      ],
+      "locale": "en-US",
+      "confidence": 0.9267105
+    },
+    {
+      "offsetMilliseconds": 26430,
+      "durationMilliseconds": 2320,
+      "text": "That's exciting, let me try it right now.",
+      "words": [
+        {
+          "text": "That's",
+          "offsetMilliseconds": 26430,
+          "durationMilliseconds": 320
+        },
+        {
+          "text": "exciting,",
+          "offsetMilliseconds": 26750,
+          "durationMilliseconds": 640
+        },
+        {
+          "text": "let",
+          "offsetMilliseconds": 27470,
+          "durationMilliseconds": 200
+        },
+        {
+          "text": "me",
+          "offsetMilliseconds": 27670,
+          "durationMilliseconds": 120
+        },
+        {
+          "text": "try",
+          "offsetMilliseconds": 27790,
+          "durationMilliseconds": 280
+        },
+        {
+          "text": "it",
+          "offsetMilliseconds": 28070,
+          "durationMilliseconds": 120
+        },
+        {
+          "text": "right",
+          "offsetMilliseconds": 28190,
+          "durationMilliseconds": 160
+        },
+        {
+          "text": "now.",
+          "offsetMilliseconds": 28350,
+          "durationMilliseconds": 400
+        }
+      ],
+      "locale": "en-US",
+      "confidence": 0.9267105
+    }
+  ]
+}

@@ -10,7 +10,9 @@
 
 - 🌐 **交互式售前门户与实时沙箱**：[**`https://turbo998.github.io/voice-agent-lab/`**](https://turbo998.github.io/voice-agent-lab/)（支持简/繁/英切换、4 通道延迟模拟、BOM 推荐器与 TCO 计算器）
 - 📊 **12 页高管汇报演示文稿（16:9 Deck）**：[**`https://turbo998.github.io/voice-agent-lab/deck.html`**](https://turbo998.github.io/voice-agent-lab/deck.html)（零外部依赖 HTML 幻灯片，支持键盘翻页与 PDF 打印）
-- 🃏 **7-Card (4:5) 视觉模型基准报告**：[**`https://turbo998.github.io/voice-agent-lab/benchmark-cards.html`**](https://turbo998.github.io/voice-agent-lab/benchmark-cards.html)（基于 Azure East US 2 实测与 `site/data/voice-agent-benchmark-report.json` 密封评测数据）
+- 🃏 **7-Card (4:5) 视觉模型基准报告（Voice Live & 多模型路由）**：[**`https://turbo998.github.io/voice-agent-lab/benchmark-cards.html`**](https://turbo998.github.io/voice-agent-lab/benchmark-cards.html)（基于 Azure East US 2 实测与 `site/data/voice-agent-benchmark-report.json` 密封评测数据）
+- 🎙️ **7-Card (4:5) Azure Speech 说话人分离与双声道归属 PoC 报告**：[**`https://turbo998.github.io/voice/diarization-benchmark-cards.html`**](https://turbo998.github.io/voice/diarization-benchmark-cards.html)（对应 [`docs/azure-speech-diarization-poc.md`](docs/azure-speech-diarization-poc.md) 与独立仓 [`turbo998/azure-speech-diarization-poc`](https://github.com/turbo998/azure-speech-diarization-poc)）
+- 🎬 **GPT-Live (`gpt-live-1`) 4 分 20 秒 Azure 实录视频与售前演示手册**：[**在线播放 (`GPT-Live-Azure-demo.mp4`)**](https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4) · [**售前演示手册 (`docs/gpt-live-partner-demo-handbook.md`)**](docs/gpt-live-partner-demo-handbook.md)
 
 ### 核心工程与商业指标速览
 
@@ -18,6 +20,7 @@
 | :--- | :--- | :--- | :--- |
 | **全双工打断响应（Barge-in Flush）** | **`< 170ms`**（端到端音频首包 `P50 = 310ms`） | `GPT-Live-1` 边听边说 + 客户端音频缓冲即时排空 + 单调递增 `turnEpoch` 状态机 | [`docs/solution-architecture.md`](docs/solution-architecture.md) |
 | **僵尸工具副作用拦截率** | **`100%`**（`0` 脏写提交） | 用户打断瞬间递增 `turnEpoch`，自动吊销在途工具回调与过期音频帧（`T07` / `P01–P90`） | [`packages/business-core/enterprise-guardrails.ts`](packages/business-core/enterprise-guardrails.ts) |
+| **说话人分离与双声道归属一致率** | **`100%` 覆盖 (`8/8` & `28/28`) · `100%` 声道对齐** | 修复 `azure-ai-transcription==1.0.0` `diarization.enabled=true` 序列化 + `--locale auto`（`RTF = 0.057`，快于实时 **17.5×**） | [`docs/azure-speech-diarization-poc.md`](docs/azure-speech-diarization-poc.md) |
 | **金融双录与合规原文保真度** | **`100% Verbatim`**（零自由改写） | 触发法定风险揭示条款时动态切入 **通道 ④ 级联 `HD Dragon TTS`** 并锁定 `<=1.15x` 语速（`P60` / `P181–P270`） | [`docs/business-scenarios.md`](docs/business-scenarios.md) |
 | **生产级护栏与 POC 探针覆盖** | **4 大分类 / 386 个实时 POC 探针** | 覆盖声学打断、SIP/WebRTC 弱网、PCI/HIPAA/双录合规、多 Agent 工具幂等与工业安全互锁 | [`docs/presales-playbook.md`](docs/presales-playbook.md) |
 | **企业级 FinOps 单位分钟 TCO** | **`$0.048 – $0.076 / min`**（节省 **`65%–78%`**） | 混合语义 VAD（`Phi4-mm-realtime`）+ 80% 提示词缓存 + 4 轮音频滑窗裁剪（对比按分钟计费 SaaS `$0.18–$0.25/min`） | [`docs/competitive-analysis.md`](docs/competitive-analysis.md) |
@@ -92,6 +95,8 @@
 | **交互式 H5 售前门户与实时语音沙箱** | [**`https://turbo998.github.io/voice-agent-lab/`**](https://turbo998.github.io/voice-agent-lab/) (`site/index.html`) | 内置 **简体中文 / 繁體中文 / English (`zh-CN` / `zh-TW` / `en`)** 切换；含 **20 大行业场景 (`S1–S20`)**、4 大参考架构、交互式 BOM 选型器、7 大竞品攻防卡、**Web Audio 实时语音沙箱（含 534 Live POC Trap Probes）** 与 **FinOps TCO 计算器** |
 | **12 页 Azure 高管汇报 Deck (16:9)** | [**`https://turbo998.github.io/voice-agent-lab/deck.html`**](https://turbo998.github.io/voice-agent-lab/deck.html) (`site/deck.html`) | 遵循 `azure-style-presentation` 规范的零依赖 HTML 演示文稿：涵盖 2026 语音智能体拐点、4 通道架构、`turnEpoch` 投机取消、Sierra / Retell / ElevenLabs / Nova Sonic 竞品对比与 2 周 POC 验收标准 |
 | **7-Card (4:5) 视觉模型基准评测报告** | [**`https://turbo998.github.io/voice-agent-lab/benchmark-cards.html`**](https://turbo998.github.io/voice-agent-lab/benchmark-cards.html) (`site/benchmark-cards.html`) | 遵循 7-Card 4:5 竖版评测规范：基于 Azure East US 2 实测 (`gpt-4.1-mini` / `gpt-4.1` / `gpt-5.4-mini` / `gpt-live-1`) 与密封评测数据 (`site/data/voice-agent-benchmark-report.json`) |
+| **Azure Speech 说话人分离与双声道归属 PoC (7-Card + 源码)** | [**`https://turbo998.github.io/voice/diarization-benchmark-cards.html`**](https://turbo998.github.io/voice/diarization-benchmark-cards.html) · [`中文报告`](docs/azure-speech-diarization-poc.md) · [`EN`](docs/azure-speech-diarization-poc.en.md) | 定位并修复 `azure-ai-transcription==1.0.0` `diarization.enabled=true` 序列化缺陷；官方双人样本 `0/8 → 8/8` (`100%`)，客户 `224.8s` 双声道录音 `28/28` (`RTF=0.057`) 且声道归属一致率 `100%` |
+| **GPT-Live (`gpt-live-1`) 客户演示手册与 4m20s 实录视频** | [**`https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4`**](https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4) · [`中文手册`](docs/gpt-live-partner-demo-handbook.md) · [`EN`](docs/gpt-live-partner-demo-handbook.en.md) | 涵盖三平面逻辑架构、6 分钟标准现场演示脚本、打断与事务边界、Azure Retail Prices API 成本核算（月均 `$20.41`）及 4 分 20 秒实机录像 |
 | **四范式方案架构与电信网联指南** | [`docs/solution-architecture.md`](docs/solution-architecture.md) · [`EN`](docs/solution-architecture.en.md) | 顶置 **核心架构概览与双 SVG 架构图**；对比 Paradigm A–D 四大范式，详解 PSTN/SIP ↔ ACS 时序、弱网抗损曲线、`turnEpoch` 状态机及 **四大类生产护栏（`P01–P350+`）** |
 | **售前实战打单手册与 POC 交付指南** | [`docs/presales-playbook.md`](docs/presales-playbook.md) · [`EN`](docs/presales-playbook.en.md) | 首轮客户 5 维 Discovery 问卷、竞对设伏提问、15 分钟现场演示脚本、2 周 POC 验收标准、**534 个现场照妖镜探针（A01–P704）** 与存量竞品两阶段替换剧本 |
 | **20 大行业业务场景与 ROI 白皮书** | [`docs/business-scenarios.md`](docs/business-scenarios.md) · [`EN`](docs/business-scenarios.en.md) | 深度拆解智能硬件出海、快餐 Drive-Thru、车险 FNOL、车载 eCall、航旅 PCI 支付、政务热线、财富双录 (`WM-DUAL-01`)、酒店礼宾 (`HOSP-PMS-01`) 等 20 大场景端到端呼叫流与 TCO 模型 |

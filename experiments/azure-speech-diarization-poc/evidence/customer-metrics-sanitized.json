@@ -1,0 +1,83 @@
+{
+  "files": [
+    {
+      "name": "customer-file-01.wav",
+      "duration_seconds": 147.5,
+      "phrases": 1,
+      "speaker_label_coverage": 1.0,
+      "speakers": [1],
+      "locales": ["es-ES"],
+      "mean_confidence": 0.7563063,
+      "real_time_factor": 0.02737597016957036
+    },
+    {
+      "name": "customer-file-02.wav",
+      "duration_seconds": 224.8,
+      "phrases": 28,
+      "speaker_label_coverage": 1.0,
+      "speakers": [1, 2],
+      "locales": ["es-ES"],
+      "mean_confidence": 0.6027797542857142,
+      "real_time_factor": 0.05718184208169702
+    },
+    {
+      "name": "customer-file-03.wav",
+      "duration_seconds": 126.28,
+      "phrases": 0,
+      "speaker_label_coverage": null,
+      "speakers": [],
+      "locales": [],
+      "mean_confidence": null,
+      "real_time_factor": 0.0205028207159656
+    },
+    {
+      "name": "customer-file-04.wav",
+      "duration_seconds": 116.92,
+      "phrases": 0,
+      "speaker_label_coverage": null,
+      "speakers": [],
+      "locales": [],
+      "mean_confidence": null,
+      "real_time_factor": 0.022427755730251967
+    },
+    {
+      "name": "customer-file-05.wav",
+      "duration_seconds": 108.28,
+      "phrases": 2,
+      "speaker_label_coverage": 1.0,
+      "speakers": [1, 2],
+      "locales": ["en-US", "es-ES"],
+      "mean_confidence": 0.215841875,
+      "real_time_factor": 0.026156430550677016
+    }
+  ],
+  "longest_file_sensitivity": [
+    {
+      "max_speakers": 3,
+      "phrases": 28,
+      "speaker_label_coverage": 1.0,
+      "speakers": [1, 2],
+      "locale": "es-ES",
+      "mean_confidence": 0.6027797542857142,
+      "real_time_factor": 0.054259323843322306
+    },
+    {
+      "max_speakers": 4,
+      "phrases": 28,
+      "speaker_label_coverage": 1.0,
+      "speakers": [1, 2],
+      "locale": "es-ES",
+      "mean_confidence": 0.6027797542857142,
+      "real_time_factor": 0.05426063523136884
+    }
+  ],
+  "longest_file_channel_consistency": {
+    "agreement_rate": 1.0,
+    "eligible_milliseconds": 33750,
+    "speaker_channel_map": {
+      "1": 1,
+      "2": 0
+    }
+  },
+  "privacy_note": "Customer transcript text and audio are intentionally excluded."
+}

@@ -1,0 +1,79 @@
+{
+  "audio": "official-two-speaker-control.wav",
+  "duration_seconds": 29.4875,
+  "elapsed_seconds": 8.26763519999804,
+  "real_time_factor": 0.28037762441705943,
+  "phrase_count": 8,
+  "speaker_labeled_phrase_count": 0,
+  "speaker_label_coverage": 0.0,
+  "speakers": [],
+  "locales": [
+    "en-US"
+  ],
+  "phrases": [
+    {
+      "speaker": null,
+      "locale": "en-US",
+      "text": "Good morning Steve.",
+      "confidence": 0.9267105,
+      "offset_milliseconds": 110,
+      "duration_milliseconds": 1040
+    },
+    {
+      "speaker": null,
+      "locale": "en-US",
+      "text": "Good morning Katie.",
+      "confidence": 0.9267105,
+      "offset_milliseconds": 2030,
+      "duration_milliseconds": 960
+    },
+    {
+      "speaker": null,
+      "locale": "en-US",
+      "text": "Have you tried the latest real-time diarization in Microsoft Speech Service?",
+      "confidence": 0.9267105,
+      "offset_milliseconds": 3870,
+      "duration_milliseconds": 4160
+    },
+    {
+      "speaker": null,
+      "locale": "en-US",
+      "text": "Which can tell you who said what in real-time?",
+      "confidence": 0.9267105,
+      "offset_milliseconds": 8190,
+      "duration_milliseconds": 3280
+    },
+    {
+      "speaker": null,
+      "locale": "en-US",
+      "text": "Not yet, I've been using the batch transcription with diarization functionality, but it produces diarization result until whole audio get processed.",
+      "confidence": 0.9267105,
+      "offset_milliseconds": 12350,
+      "duration_milliseconds": 8080
+    },
+    {
+      "speaker": null,
+      "locale": "en-US",
+      "text": "Is the new feature can diarize in real-time?",
+      "confidence": 0.9267105,
+      "offset_milliseconds": 21310,
+      "duration_milliseconds": 2560
+    },
+    {
+      "speaker": null,
+      "locale": "en-US",
+      "text": "Absolutely.",
+      "confidence": 0.9267105,
+      "offset_milliseconds": 24670,
+      "duration_milliseconds": 960
+    },
+    {
+      "speaker": null,
+      "locale": "en-US",
+      "text": "That's exciting, let me try it right now.",
+      "confidence": 0.9267105,
+      "offset_milliseconds": 26430,
+      "duration_milliseconds": 2320
+    }
+  ]
+}

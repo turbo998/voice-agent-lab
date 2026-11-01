@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "azure-speech-fast-transcription-diarization-poc-2026",
+  "title": "Azure Speech Fast Transcription Speaker Diarization & Stereo Channel Attribution PoC",
+  "track": "AZURE SPEECH DIARIZATION POC",
+  "provenance": {
+    "control_sample": "measured",
+    "customer_cohort": "anonymized_reported",
+    "independently_reproduced": true,
+    "sdk_version": "azure-ai-transcription==1.0.0",
+    "api_version": "2024-11-15",
+    "unit_tests_passed": 16
+  },
+  "wire_fix": {
+    "before_definition": {
+      "locales": ["en-US"],
+      "diarization": { "maxSpeakers": 2 }
+    },
+    "after_definition": {
+      "locales": ["en-US"],
+      "diarization": { "maxSpeakers": 2, "enabled": true }
+    },
+    "control_before": {
+      "audio_duration_seconds": 29.4875,
+      "elapsed_seconds": 8.268356,
+      "real_time_factor": 0.280402,
+      "phrase_count": 8,
+      "speaker_labeled_phrases": 0,
+      "speaker_coverage_rate": 0.0,
+      "speakers_detected": [],
+      "mean_confidence": 0.925502
+    },
+    "control_after": {
+      "audio_duration_seconds": 29.4875,
+      "elapsed_seconds": 8.96728,
+      "real_time_factor": 0.304104,
+      "phrase_count": 8,
+      "speaker_labeled_phrases": 8,
+      "speaker_coverage_rate": 1.0,
+      "speakers_detected": [1, 2],
+      "mean_confidence": 0.926707
+    }
+  },
+  "customer_cohort": [
+    {
+      "file_id": "customer-file-01.wav",
+      "audio_duration_seconds": 147.5,
+      "locales_detected": ["es-ES"],
+      "phrase_count": 1,
+      "speaker_labeled_phrases": 1,
+      "speaker_coverage_rate": 1.0,
+      "speakers_detected": [1],
+      "mean_confidence": 0.756015,
+      "real_time_factor": 0.02736,
+      "channel_agreement_rate": null,
+      "action": "Confirm"
+    },
+    {
+      "file_id": "customer-file-02.wav",
+      "audio_duration_seconds": 224.8,
+      "locales_detected": ["es-ES"],
+      "phrase_count": 28,
+      "speaker_labeled_phrases": 28,
+      "speaker_coverage_rate": 1.0,
+      "speakers_detected": [1, 2],
+      "mean_confidence": 0.60278,
+      "real_time_factor": 0.057179,
+      "channel_agreement_rate": 1.0,
+      "eligible_milliseconds": 33750,
+      "speaker_channel_map": { "1": 1, "2": 0 },
+      "sensitivity_max_speakers_3_rtf": 0.054251,
+      "sensitivity_max_speakers_4_rtf": 0.054341,
+      "action": "Act automatically"
+    },
+    {
+      "file_id": "customer-file-03.wav",
+      "audio_duration_seconds": 126.28,
+      "locales_detected": [],
+      "phrase_count": 0,
+      "speaker_labeled_phrases": 0,
+      "speaker_coverage_rate": null,
+      "speakers_detected": [],
+      "mean_confidence": null,
+      "real_time_factor": 0.020514,
+      "channel_agreement_rate": null,
+      "action": "Send to a human"
+    },
+    {
+      "file_id": "customer-file-04.wav",
+      "audio_duration_seconds": 116.92,
+      "locales_detected": [],
+      "phrase_count": 0,
+      "speaker_labeled_phrases": 0,
+      "speaker_coverage_rate": null,
+      "speakers_detected": [],
+      "mean_confidence": null,
+      "real_time_factor": 0.022436,
+      "channel_agreement_rate": null,
+      "action": "Send to a human"
+    },
+    {
+      "file_id": "customer-file-05.wav",
+      "audio_duration_seconds": 108.28,
+      "locales_detected": ["en-US", "es-ES"],
+      "phrase_count": 2,
+      "speaker_labeled_phrases": 2,
+      "speaker_coverage_rate": 1.0,
+      "speakers_detected": [1, 2],
+      "mean_confidence": 0.215843,
+      "real_time_factor": 0.026204,
+      "channel_agreement_rate": null,
+      "action": "Send to a human"
+    }
+  ]
+}

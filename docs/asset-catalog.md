@@ -15,6 +15,9 @@
 | **企业级 Voice Agent 7-Card 4:5 视觉评测报告** | 📊 7-Card 评测卡 (`github.io`) | `https://turbo998.github.io/voice-agent-lab/benchmark-cards.html` | 对齐 `benchmark-harness-engineering` 规范，展示 Azure 多模型路由与实时语音实测延迟、声学抗扰、同音词归一化与安全护栏评测 |
 | **GPT-Live (`gpt-live-1`) 合作伙伴工程师技术培训门户** | 🎓 三语培训 H5 (`github.io`) | `https://turbo998.github.io/gpt-live-1-demo/training.html` | 6 大工程模块、3 张高清架构图深度价值拆解（Voice Live 全景 / 4 层流式管道 / 三平面解耦）、FinOps 计算器与现场通关测验 |
 | **GPT-Live 7-Card 专项基准测试报告** | 📊 7-Card 评测卡 (`github.io`) | `https://turbo998.github.io/gpt-live-1-demo/benchmark-cards.html` | 聚焦 `gpt-live-1` vs `gpt-realtime-2` 在 8 类全双工打断探针、12 项饮品同音词与 DragonHDFlash 盲测 MOS 的对比 |
+| **Azure Speech 说话人分离与双声道归属 7-Card 报告** | 📊 7-Card 评测卡 (`github.io`) | `https://turbo998.github.io/voice/diarization-benchmark-cards.html` (`site/diarization-benchmark-cards.html`) | 呈现 `azure-ai-transcription==1.0.0` `diarization.enabled=true` 修复前后对照（`0/8 → 8/8`）、5 文件客户集矩阵、`33.75s` 双声道 `100%` 一致率与 `RTF=0.057` 延迟分布 |
+| **GPT-Live (`gpt-live-1`) 4分20秒实录视频与演示手册** | 🎬 MP4 实录 + 双语手册 | `https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4` · [`docs/gpt-live-partner-demo-handbook.md`](gpt-live-partner-demo-handbook.md) | 4 分 20 秒真实 Azure `gpt-live-1` 语音对话、打断、服务端时钟、算术与联网搜索录像，配齐 6 分钟售前剧本与 `$20.41/月` 成本测算 |
+| **Azure Speech Diarization 独立公开代码仓** | 📦 GitHub 独立仓库 | `https://github.com/turbo998/azure-speech-diarization-poc` (`experiments/azure-speech-diarization-poc/`) | 含本地 WAV 预检/分轨/混音、Fast Transcription 零密钥客户端、双声道一致性匹配算法、Bicep 模板与 16 项单元测试 |
 | **Azure GPT-Live 实时语音实机工作台** | ☁️ Azure App Service 实机 | `https://gpt-live-demo-0922-qc.azurewebsites.net/` | 部署于 Azure Linux App Service，通过 Managed Identity 免密钥直连 Azure AI Foundry `gpt-live-1` + `gpt-4.1-mini` |
 
 ---

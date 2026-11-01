@@ -53,6 +53,8 @@
         <a class="btn-primary" href="#sandbox" id="heroBtnSandbox">🎙️ 立即体验多引擎实时语音沙盒</a>
         <a class="btn-secondary" href="./deck.html" id="heroBtnDeck">📽️ 打开 12 页 Azure 高管演示幻灯片 (Slide Deck)</a>
         <a class="btn-secondary" href="./benchmark-cards.html" id="heroBtnCards">📊 查看 7-Card (4:5) 模型基准评测报告</a>
+        <a class="btn-secondary" href="./diarization-benchmark-cards.html" style="border-color:rgba(52,211,153,0.45);color:#6EE7B7;">🎙️ 查看 Speech 说话人分离 7-Card 报告</a>
+        <a class="btn-outline" href="#live-video-showcase" style="border-color:rgba(251,191,36,0.5);color:#FCD34D;">🎬 观看 GPT-Live 4m20s 实录视频</a>
         <a class="btn-outline" href="https://gpt-live-demo-0922-qc.azurewebsites.net/" target="_blank" rel="noopener noreferrer">🌐 访问 Azure 线上 `gpt-live-1` S2S 实测环境 ↗</a>
         <a class="btn-outline" href="https://github.com/turbo998/voice-agent-lab" target="_blank" rel="noopener noreferrer">📦 GitHub 代码与白皮书仓库 ↗</a>
       </div>
@@ -504,6 +506,47 @@
         </p>
       </div>
 
+      <!-- NEW: Live Video Player & Speech Diarization PoC Spotlight -->
+      <div class="panel-grid-2" id="live-video-showcase" style="margin-bottom:20px;">
+        <div class="glass-panel">
+          <div class="panel-title">
+            <span>🎬 GPT-Live (`gpt-live-1`) 4 分 20 秒 Azure 实机演示录像与售前手册</span>
+            <span class="badge badge-blue">1600×1000 · Real Azure Audio</span>
+          </div>
+          <p style="font-size:12.5px;color:#CBD5E1;margin-bottom:10px;">
+            实录展示 <strong>Azure App Service (B1) + Foundry `gpt-live-1` + `gpt-4.1-mini`</strong> 的自然语音问候、中途开口打断（Barge-in）、服务端时钟、精确算术（<code>10+20=30</code> / <code>18×25+125=575</code>）及带来源链接的语音触发原生联网搜索（月度典型 20 场演示总成本仅 <strong>$20.41/月</strong>）：
+          </p>
+          <video controls preload="metadata" style="width:100%;border-radius:12px;border:1px solid rgba(148,163,184,0.28);background:#020617;margin-bottom:10px;">
+            <source src="https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4" type="video/mp4" />
+            <source src="https://github.com/turbo998/gpt-live-1-demo/releases/download/v0.4.0/GPT-Live-Azure-demo.mp4" type="video/mp4" />
+            您的浏览器不支持 HTML5 视频播放，请点击下方链接直接下载观看。
+          </video>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a class="btn-primary" href="https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4" target="_blank" rel="noopener noreferrer" style="flex:1;justify-content:center;font-size:12px;padding:8px 10px;">▶️ 在线全屏播放 MP4 ↗</a>
+            <a class="btn-secondary" href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/gpt-live-partner-demo-handbook.md" target="_blank" rel="noopener noreferrer" style="flex:1;justify-content:center;font-size:12px;padding:8px 10px;">📘 6 分钟现场演示手册 (中/EN) ↗</a>
+          </div>
+        </div>
+
+        <div class="glass-panel">
+          <div class="panel-title">
+            <span>🎙️ Azure Speech Fast Transcription 说话人分离与双声道归属 PoC</span>
+            <span class="badge badge-green">0% → 100% Fix · RTF 0.057</span>
+          </div>
+          <p style="font-size:12.5px;color:#CBD5E1;margin-bottom:10px;">
+            针对客户 8 kHz 16-bit PCM 双声道录音定位并修复 <code>azure-ai-transcription==1.0.0</code> 未自动序列化 <code>"enabled": true</code> 的协议层缺陷，建立本地 PCM 预检 + 官方双人控制对照 + 双声道物理分轨（Experiment A）vs 单声道混音分离（Experiment B）vs 说话人上限敏感度（Experiment C）评测体系：
+          </p>
+          <ul class="feature-list" style="margin-bottom:12px;font-size:12.5px;">
+            <li><strong>官方双人控制样本 (29.49s)</strong>：显式设置 <code>diarization.enabled = True</code> 后，Speaker 覆盖率从 <code>0/8 (0%)</code> 恢复至 <strong><code>8/8 (100.0%)</code></strong>（置信度 <code>0.927</code>，<code>RTF = 0.304</code>）</li>
+            <li><strong>客户最长双声道录音 (224.8s, <code>es-ES</code>)</strong>：配合 <code>--locale auto</code> 实现 <strong><code>28/28 (100.0%)</code></strong> 覆盖，处理仅需 <code>12.85s</code>（<strong><code>RTF = 0.057</code>，快于实时 17.5×</strong>）</li>
+            <li><strong>双声道归属一致率 &amp; 敏感度</strong>：在 <code>33.75s</code> 非重叠语音区间与物理左右声道映射一致率达 <strong><code>100.0%</code></strong>；<code>maxSpeakers=3/4</code> 零过分割</li>
+          </ul>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a class="btn-primary" href="./diarization-benchmark-cards.html" style="flex:1;justify-content:center;font-size:12px;padding:8px 10px;">📊 打开 Diarization 7-Card 报告 ↗</a>
+            <a class="btn-secondary" href="https://github.com/turbo998/azure-speech-diarization-poc" target="_blank" rel="noopener noreferrer" style="flex:1;justify-content:center;font-size:12px;padding:8px 10px;">📦 独立公开仓库 (16 Tests) ↗</a>
+          </div>
+        </div>
+      </div>
+
       <div class="panel-grid-3">
         <div class="glass-panel">
           <div class="panel-title">
@@ -511,10 +554,11 @@
             <span class="badge badge-blue">Measured on Azure</span>
           </div>
           <p style="font-size:13px;color:#CBD5E1;margin-bottom:12px;">
-            同时提供 **7-Card 4:5 竖版模型基准评测卡片** 与 **12-Slide Azure 高管架构与竞对演示幻灯片**（支持键盘翻页与一键导出 PDF）：
+            同时提供 **两套 7-Card 4:5 竖版基准评测卡片** 与 **12-Slide Azure 高管架构与竞对演示幻灯片**（支持键盘翻页与一键导出 PDF）：
           </p>
           <div style="display:flex;flex-direction:column;gap:8px;">
-            <a class="btn-primary" href="./benchmark-cards.html" style="width:100%;justify-content:center;">📊 打开 7-Card 4:5 交互式评测卡片 ↗</a>
+            <a class="btn-primary" href="./benchmark-cards.html" style="width:100%;justify-content:center;">📊 打开 Voice Live &amp; 路由 7-Card 评测卡 ↗</a>
+            <a class="btn-secondary" href="./diarization-benchmark-cards.html" style="width:100%;justify-content:center;">🎙️ 打开 Speech 说话人分离 7-Card 评测卡 ↗</a>
             <a class="btn-secondary" href="./deck.html" style="width:100%;justify-content:center;">📽️ 打开 12-Slide 高管演示幻灯片 (Deck) ↗</a>
           </div>
         </div>
@@ -522,17 +566,17 @@
         <div class="glass-panel">
           <div class="panel-title">
             <span>📚 核心售前白皮书与打单手册 (`docs/`)</span>
-            <span class="badge badge-green">8 Markdown Guides</span>
+            <span class="badge badge-green">10 Bilingual Guides</span>
           </div>
           <ul class="feature-list" style="margin-bottom:12px;">
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/business-scenarios.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">1. `docs/business-scenarios.md`</a> — 八大高价值业务场景（含车载 eCall、航旅 PCI、政务12345与跨境物流AMD）与 ROI 模型</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/solution-architecture.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">2. `docs/solution-architecture.md`</a> — 四大架构、SIP/编解码损耗表、AMD外呼状态机与多智能体交接规范</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/competitive-analysis.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">3. `docs/competitive-analysis.md`</a> — Sierra / Retell / ElevenLabs / Vapi / Cartesia 拆解与平滑迁移映射表</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/presales-playbook.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">4. `docs/presales-playbook.md`</a> — 客户破冰 5 问、竞对挖坑话术、10大 POC 照妖镜探针与两阶段迁移剧本</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/voice-agent-evaluation-rubric.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">5. `docs/voice-agent-evaluation-rubric.md`</a> — 24 项声学、同音词、事务幂等与红队越狱评测规范</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/speech-container-guide.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">6. `docs/speech-container-guide.md`</a> — Azure Speech 本地 Docker 容器部署与防火墙白名单指南</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">7. `docs/asset-catalog.md`</a> — 跨仓库语音技术资产归档与 GitHub Pages 交付清单</li>
-            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/daily/2026-10-18.md" target="_blank" rel="noopener noreferrer" style="color:#34D399;text-decoration:none;font-weight:700;">8. `docs/daily/2026-10-18.md`</a> — 最新持续深度研究与竞品/架构演进日报</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/business-scenarios.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">1. `docs/business-scenarios.md`</a> — 二十大高价值业务场景（含车载 eCall、航旅 PCI、政务12345与财富双录）与 ROI 模型</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/solution-architecture.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">2. `docs/solution-architecture.md`</a> — 四大架构、SIP/编解码损耗表、AMD外呼状态机与 `turnEpoch` 护栏规范</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/azure-speech-diarization-poc.md" target="_blank" rel="noopener noreferrer" style="color:#34D399;text-decoration:none;font-weight:700;">3. `docs/azure-speech-diarization-poc.md`</a> — Azure Speech 说话人分离 SDK 1.0.0 修复与双声道 100% 归属对齐报告 (中/EN)</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/gpt-live-partner-demo-handbook.md" target="_blank" rel="noopener noreferrer" style="color:#FBBF24;text-decoration:none;font-weight:700;">4. `docs/gpt-live-partner-demo-handbook.md`</a> — GPT-Live 客户合作伙伴 6 分钟演示手册、实录视频说明与成本核算 (中/EN)</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/competitive-analysis.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">5. `docs/competitive-analysis.md`</a> — Sierra / Retell / ElevenLabs / Vapi / Nova Sonic 拆解与平滑迁移映射表</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/presales-playbook.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">6. `docs/presales-playbook.md`</a> — 客户破冰 5 问、竞对挖坑话术、POC 照妖镜探针与两阶段迁移剧本</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/speech-container-guide.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">7. `docs/speech-container-guide.md`</a> — Azure Speech 本地 Docker 容器部署与防火墙白名单指南</li>
+            <li><a href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md" target="_blank" rel="noopener noreferrer" style="color:#60A5FA;text-decoration:none;font-weight:700;">8. `docs/asset-catalog.md`</a> — 跨仓库语音技术资产归档与 GitHub Pages 交付清单</li>
           </ul>
         </div>
 
@@ -542,8 +586,9 @@
             <span class="badge badge-purple">Multi-Repo Ecosystem</span>
           </div>
           <ul class="feature-list">
-            <li><strong><a href="https://github.com/turbo998/voice-agent-lab" target="_blank" rel="noopener noreferrer" style="color:#38BDF8;text-decoration:none;">turbo998/voice-agent-lab</a></strong>：Retell + Azure AI Foundry 双语客服全栈工程 + 66 项单测 + 售前总门户</li>
-            <li><strong><a href="https://github.com/turbo998/gpt-live-1-demo" target="_blank" rel="noopener noreferrer" style="color:#38BDF8;text-decoration:none;">turbo998/gpt-live-1-demo</a></strong>：Azure Voice Live (`gpt-live-1`) 金融/政务/汽车三场景原生 S2S 演示 (<a href="https://gpt-live-demo-0922-qc.azurewebsites.net/" target="_blank" rel="noopener noreferrer" style="color:#34D399;">线上环境 ↗</a>)</li>
+            <li><strong><a href="https://github.com/turbo998/voice-agent-lab" target="_blank" rel="noopener noreferrer" style="color:#38BDF8;text-decoration:none;">turbo998/voice-agent-lab</a></strong>：Voice Live 四通道架构 + 双语客服全栈工程 + 售前总门户</li>
+            <li><strong><a href="https://github.com/turbo998/gpt-live-1-demo" target="_blank" rel="noopener noreferrer" style="color:#38BDF8;text-decoration:none;">turbo998/gpt-live-1-demo</a></strong>：Azure Voice Live (`gpt-live-1`) 实时语音工作台、培训门户与 4m20s 实录视频 (<a href="https://gpt-live-demo-0922-qc.azurewebsites.net/" target="_blank" rel="noopener noreferrer" style="color:#34D399;">线上环境 ↗</a>)</li>
+            <li><strong><a href="https://github.com/turbo998/azure-speech-diarization-poc" target="_blank" rel="noopener noreferrer" style="color:#34D399;text-decoration:none;">turbo998/azure-speech-diarization-poc</a></strong>：Azure Speech Fast Transcription 说话人分离与双声道一致性 PoC 独立仓</li>
             <li><strong><a href="https://github.com/turbo998/ai-gaming-lab" target="_blank" rel="noopener noreferrer" style="color:#38BDF8;text-decoration:none;">turbo998/ai-gaming-lab</a></strong>：游戏语音智能体与 Voice Live SDK 架构指南</li>
             <li><strong><a href="https://github.com/turbo998/benchmark-harness-engineering" target="_blank" rel="noopener noreferrer" style="color:#38BDF8;text-decoration:none;">turbo998/benchmark-harness-engineering</a></strong>：Constellation 路由评测与 7-Card 生成器</li>
           </ul>
