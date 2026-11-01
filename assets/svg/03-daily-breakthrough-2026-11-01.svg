@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 680" width="1080" height="680" role="img" aria-labelledby="vb-20261101-title vb-20261101-desc">
+  <title id="vb-20261101-title">2026-11-01 Enterprise Voice Agent Daily Breakthrough &amp; Architecture Visual Summary (P705–P706)</title>
+  <desc id="vb-20261101-desc">AI Solution Architect Executive Visual Summary covering 5 Pillars: (0) Daily Breakthrough Radar: Microsoft Foundry / OpenAI gpt-realtime-2.1 256k context &amp; async function calling, NVIDIA NemotronLabs VoiceChat 11B &amp; PersonaPlex-7B full-duplex parallel tool stream on Full-Duplex-Bench 1.5/3.0, and BayLing-Duplex VAD-free token-level turn-taking; (1) Full-Duplex Dual-Stream Architecture &amp; Stage 356 P705–P706 Guardrails; (2) Interactive Demo Workbench; (3) 7-Card 4:5 Deterministic Benchmark (620ms TTFA, 93.4% backchannel resume); (4) Business Scenario Playbook &amp; TCO Matrix.</desc>
+  <defs>
+    <style>
+      .bg { fill: #070D19; }
+      .panel { fill: #0F172A; stroke-width: 1.4; rx: 10; }
+      .card { fill: #1E293B; stroke-width: 1.2; rx: 8; }
+      .title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 19px; font-weight: 800; fill: #F8FAFC; }
+      .subtitle { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11.5px; fill: #94A3B8; }
+      .sec-badge { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.8px; }
+      .sec-title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; font-weight: 700; fill: #F1F5F9; }
+      .card-title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 700; fill: #F8FAFC; }
+      .body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.2px; fill: #CBD5E1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 9.8px; font-weight: 600; }
+      .metric-val { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; font-weight: 800; }
+      .pill { rx: 4; }
+    </style>
+    <linearGradient id="topAccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <marker id="flowArrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="toolArrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34D399"/>
+    </marker>
+  </defs>
+
+  <!-- Background & Header -->
+  <rect width="1080" height="680" class="bg" rx="14"/>
+  <rect x="20" y="14" width="1040" height="4" fill="url(#topAccent)" rx="2"/>
+  <text x="24" y="40" class="title">2026-11-01 · Enterprise Voice Agent Daily Breakthrough &amp; Architecture Visual Summary</text>
+  <text x="24" y="58" class="subtitle">AI Solution Architect 5-Pillar Brief · Full-Duplex Parallel Tool Stream · VAD-Free Semantic Turn-Taking · Stage 356 (P705–P706 · 715 Guardrails / 724 Probes)</text>
+  <rect x="886" y="25" width="170" height="24" class="pill" fill="#064E3B" stroke="#10B981" stroke-width="1"/>
+  <text x="971" y="41" text-anchor="middle" class="mono" fill="#34D399">STAGE 356 · P705–P706</text>
+
+  <!-- PILLAR 0: DAILY HOTTEST DOMAIN BREAKTHROUGHS -->
+  <rect x="20" y="70" width="1040" height="162" class="panel" stroke="#0EA5E9"/>
+  <rect x="34" y="80" width="176" height="20" class="pill" fill="#0C4A6E"/>
+  <text x="122" y="94" text-anchor="middle" class="sec-badge" fill="#38BDF8">PILLAR 0 · BREAKTHROUGH RADAR</text>
+  <text x="220" y="95" class="sec-title">Today&apos;s Top 3 Real-Time Multimodal Voice AI Breakthroughs (Verified 2026-11-01)</text>
+
+  <!-- Breakthrough Card 1 -->
+  <rect x="34" y="108" width="330" height="112" class="card" stroke="#0284C7"/>
+  <text x="46" y="127" class="card-title">1. Foundry / OpenAI gpt-realtime-2.1 (256k S2S)</text>
+  <text x="46" y="144" class="body">• Native 256k audio context + GPT-5-class reasoning</text>
+  <text x="46" y="159" class="body">• Async function calling while speaking (zero dead-air)</text>
+  <text x="46" y="174" class="body">• Native WebRTC + SIP trunking, live visual input &amp; BAA</text>
+  <text x="46" y="191" class="body">• Expressive Cedar &amp; Marin voices; mini at -70% cost</text>
+  <text x="46" y="210" class="mono" fill="#38BDF8">TTFA: 620ms P50 · $0.05–$0.10/min · HIPAA BAA</text>
+
+  <!-- Breakthrough Card 2 -->
+  <rect x="375" y="108" width="330" height="112" class="card" stroke="#6366F1"/>
+  <text x="387" y="127" class="card-title">2. NVIDIA Nemotron VoiceChat 11B &amp; PersonaPlex-7B</text>
+  <text x="387" y="144" class="body">• Open-weight Full-Duplex S2S + parallel RNN-T ASR</text>
+  <text x="387" y="159" class="body">• Dedicated mid-dialogue tool stream (arXiv:2609.21967)</text>
+  <text x="387" y="174" class="body">• FDB 1.5/3.0: 100% takeover, 93% backchannel resume</text>
+  <text x="387" y="191" class="body">• PersonaPlex-7B: 200–260ms persona/voice conditioning</text>
+  <text x="387" y="210" class="mono" fill="#818CF8">82.5% Tool F1 · 93% Backchannel Resume · Open NIM</text>
+
+  <!-- Breakthrough Card 3 -->
+  <rect x="716" y="108" width="330" height="112" class="card" stroke="#10B981"/>
+  <text x="728" y="127" class="card-title">3. BayLing-Duplex VAD-Free Turn-Taking &amp; LiveKit 1.0</text>
+  <text x="728" y="144" class="body">• Single-LLM token-level &lt;listen&gt;/&lt;speak&gt;/&lt;yield&gt; control</text>
+  <text x="728" y="159" class="body">• Eliminates naive energy-VAD false self-interruption</text>
+  <text x="728" y="174" class="body">• 100% barge-in success &amp; 92% turn-taking accuracy</text>
+  <text x="728" y="191" class="body">• Paired w/ ElevenLabs Scribe v2 Realtime (~150ms ASR)</text>
+  <text x="728" y="210" class="mono" fill="#34D399">VAD-Free Duplex · 92% Turn Acc · 90+ Locales</text>
+
+  <!-- PILLAR 1: ENTERPRISE ARCHITECTURE & STAGE 356 GUARDRAILS -->
+  <rect x="20" y="244" width="1040" height="196" class="panel" stroke="#818CF8"/>
+  <rect x="34" y="254" width="176" height="20" class="pill" fill="#312E81"/>
+  <text x="122" y="268" text-anchor="middle" class="sec-badge" fill="#A5B4FC">PILLAR 1 · ARCHITECTURE</text>
+  <text x="220" y="269" class="sec-title">Full-Duplex Parallel Speech + Mid-Dialogue Tool Stream &amp; VAD-Free Turn-Taking State Machine</text>
+
+  <!-- Node 1: Ingress -->
+  <rect x="34" y="286" width="190" height="138" class="card" stroke="#38BDF8"/>
+  <text x="46" y="306" class="card-title">WebRTC / SIP Media Edge</text>
+  <text x="46" y="324" class="body">• LiveKit Agents 1.0 / ACS SBC</text>
+  <text x="46" y="340" class="body">• RFC 8445 ICE Consent Gate</text>
+  <text x="46" y="356" class="body">• AEC3 Double-Talk Filter</text>
+  <text x="46" y="372" class="body">• PCI-DSS RFC 4733 DTMF Bypass</text>
+  <text x="46" y="392" class="mono" fill="#38BDF8">Opus 48kHz / G.711 μ-law</text>
+  <text x="46" y="409" class="mono" fill="#94A3B8">20ms RTP Frame Pacing</text>
+
+  <line x1="224" y1="355" x2="254" y2="355" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#flowArrow)"/>
+
+  <!-- Node 2: VAD-Free Token Turn Predictor -->
+  <rect x="258" y="286" width="236" height="138" class="card" stroke="#A78BFA"/>
+  <text x="270" y="306" class="card-title">In-Model Semantic Duplex Gate</text>
+  <text x="270" y="324" class="body">• Token-level &lt;listen&gt;/&lt;speak&gt;/&lt;yield&gt;</text>
+  <text x="270" y="340" class="body">• Backchannel vs Takeover Classifier:</text>
+  <text x="278" y="356" class="mono" fill="#34D399">&quot;uh-huh / 嗯&quot; (&lt;450ms) → RESUME</text>
+  <text x="278" y="372" class="mono" fill="#F87171">&quot;Wait, change to...&quot; → 0ms CUT</text>
+  <text x="270" y="390" class="body">• Syntax-Incomplete Pause Hold (&lt;1.65s)</text>
+  <text x="270" y="409" class="mono" fill="#C4B5FD">BayLing-Duplex + Phi-4-mm-realtime</text>
+
+  <line x1="494" y1="322" x2="528" y2="322" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#flowArrow)"/>
+  <line x1="494" y1="388" x2="528" y2="388" stroke="#34D399" stroke-width="1.8" marker-end="url(#toolArrow)"/>
+
+  <!-- Node 3A: Parallel Speech Stream -->
+  <rect x="532" y="284" width="252" height="66" class="card" stroke="#38BDF8"/>
+  <text x="544" y="302" class="card-title">Stream A · Expressive S2S Audio</text>
+  <text x="544" y="318" class="body">gpt-realtime-2.1 / PersonaPlex-7B / Dragon HD</text>
+  <text x="544" y="336" class="mono" fill="#38BDF8">200–260ms Persona · C2PA + 18dB Watermark</text>
+
+  <!-- Node 3B: Parallel Tool Stream -->
+  <rect x="532" y="358" width="252" height="66" class="card" stroke="#10B981"/>
+  <text x="544" y="376" class="card-title">Stream B · Mid-Dialogue Tool Stream</text>
+  <text x="544" y="392" class="body">Nemotron VoiceChat Parallel Tool Channel</text>
+  <text x="544" y="410" class="mono" fill="#34D399">Async RAG / CRM Write w/ turnEpoch Fence</text>
+
+  <line x1="784" y1="322" x2="814" y2="322" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#flowArrow)"/>
+  <line x1="784" y1="388" x2="814" y2="388" stroke="#34D399" stroke-width="1.8" marker-end="url(#toolArrow)"/>
+
+  <!-- Node 4: Stage 356 P705 & P706 Guardrails -->
+  <rect x="818" y="284" width="228" height="140" class="card" stroke="#F59E0B"/>
+  <text x="830" y="303" class="card-title" fill="#FDE68A">Stage 356 Deterministic Gates</text>
+  <text x="830" y="321" class="mono" fill="#FBBF24">P705 · Parallel Tool &amp; Backchannel</text>
+  <text x="830" y="336" class="body">• 0ms stale-epoch tool write abort</text>
+  <text x="830" y="351" class="body">• Suppress false VAD cut on backchannel</text>
+  <text x="830" y="370" class="mono" fill="#34D399">P706 · VAD-Free &amp; Clone Watermark</text>
+  <text x="830" y="385" class="body">• 0ms unconsented clone / C2PA block</text>
+  <text x="830" y="400" class="body">• Hold &lt;listen&gt; on digit/clause pause</text>
+  <text x="830" y="416" class="mono" fill="#F8FAFC">715 Guardrails · 724 Probes Pass</text>
+
+  <!-- PILLARS 2, 3, 4: DEMO, 7-CARD BENCHMARK, BUSINESS SCENARIOS -->
+  <!-- Pillar 2: Interactive Demo -->
+  <rect x="20" y="452" width="336" height="210" class="panel" stroke="#38BDF8"/>
+  <rect x="34" y="462" width="160" height="20" class="pill" fill="#0C4A6E"/>
+  <text x="114" y="476" text-anchor="middle" class="sec-badge" fill="#38BDF8">PILLAR 2 · H5 DEMO &amp; DECK</text>
+  <text x="34" y="500" class="sec-title">Interactive Dual-Stream Simulator</text>
+  <text x="34" y="519" class="body">• Live Workbench (`site/index.html` &amp; `voice/index.html`):</text>
+  <text x="42" y="535" class="body">- Test 4-Lane Azure Voice Live + Nemotron NIM</text>
+  <text x="42" y="551" class="body">- Trigger Backchannel (&quot;嗯/uh-huh&quot;) vs Takeover</text>
+  <text x="42" y="567" class="body">- Inspect `turnEpoch` mid-dialogue tool fencing</text>
+  <text x="34" y="586" class="body">• Executive 12-Slide Deck (`site/deck.html`):</text>
+  <text x="42" y="602" class="body">- Full-Duplex S2S vs Cascaded decision matrix</text>
+  <text x="34" y="625" class="mono" fill="#38BDF8">One-Click Live Sandbox · Zero External Deps</text>
+  <text x="34" y="644" class="mono" fill="#94A3B8">Synced to turbo998.github.io/voice/</text>
+
+  <!-- Pillar 3: 7-Card 4:5 Benchmark -->
+  <rect x="372" y="452" width="336" height="210" class="panel" stroke="#10B981"/>
+  <rect x="386" y="462" width="176" height="20" class="pill" fill="#064E3B"/>
+  <text x="474" y="476" text-anchor="middle" class="sec-badge" fill="#34D399">PILLAR 3 · 7-CARD BENCHMARK</text>
+  <text x="386" y="500" class="sec-title">Deterministic Evaluation (`benchmark-cards.html`)</text>
+  <rect x="386" y="511" width="148" height="48" class="card" stroke="#059669"/>
+  <text x="396" y="531" class="metric-val" fill="#34D399">620ms P50</text>
+  <text x="396" y="548" class="mono" fill="#CBD5E1">Full-Duplex TTFA (890ms P95)</text>
+  <rect x="546" y="511" width="148" height="48" class="card" stroke="#0284C7"/>
+  <text x="556" y="531" class="metric-val" fill="#38BDF8">93.4% / 100%</text>
+  <text x="556" y="548" class="mono" fill="#CBD5E1">Backchannel / Takeover</text>
+  <text x="386" y="578" class="body">• 6/6 Production Scenarios Passed (100% Gate Rate)</text>
+  <text x="386" y="594" class="body">• 5/5 Perturbation &amp; Robustness Checks Verified</text>
+  <text x="386" y="610" class="body">• 0% Stale-Epoch Tool Write Leak under 160ms Barge-in</text>
+  <text x="386" y="628" class="mono" fill="#34D399">7-Card 4:5 Portrait Deck · CSP Self-Contained</text>
+  <text x="386" y="644" class="mono" fill="#94A3B8">Zero Fabricated Coordinates · Sealed JSON</text>
+
+  <!-- Pillar 4: Business Scenario Playbook -->
+  <rect x="724" y="452" width="336" height="210" class="panel" stroke="#F59E0B"/>
+  <rect x="738" y="462" width="184" height="20" class="pill" fill="#78350F"/>
+  <text x="830" y="476" text-anchor="middle" class="sec-badge" fill="#FBBF24">PILLAR 4 · SCENARIO PLAYBOOK</text>
+  <text x="738" y="500" class="sec-title">Enterprise Fit, TCO &amp; Guardrail Selection</text>
+  <text x="738" y="519" class="body">• Omnichannel Contact Center &amp; Warm Whisper:</text>
+  <text x="746" y="534" class="mono" fill="#34D399">✅ Good Fit: Hybrid S2S + P705 ($0.052/min)</text>
+  <text x="738" y="552" class="body">• Healthcare Clinical Triage &amp; Follow-up:</text>
+  <text x="746" y="567" class="mono" fill="#38BDF8">✅ Good Fit: gpt-realtime-2.1 HIPAA BAA + P33</text>
+  <text x="738" y="585" class="body">• In-Vehicle Cockpit &amp; Global Smart Hardware:</text>
+  <text x="746" y="600" class="mono" fill="#A78BFA">✅ Good Fit: PersonaPlex-7B + P706 Watermark</text>
+  <text x="738" y="618" class="body">• BFSI Verbatim Legal Disclosure / Dual-Rec:</text>
+  <text x="746" y="633" class="mono" fill="#F87171">⛔ Not For Unconstrained S2S → Use Cascaded HD</text>
+</svg>

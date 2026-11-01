@@ -73,6 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
+    simTitle: "🧪 2026-11-01 热门突破交互沙盒：全双工话中并行工具流 & 无 VAD Token 级轮次门禁 (Stage 356 · P705 / P706)",
+    simSub: "点击下方 4 类全双工并发压测探针，实时验证 NemotronLabs VoiceChat 11B / gpt-realtime-2.1 (256k) 跨纪元写栅栏 (P705) 与 BayLing-Duplex / PersonaPlex-7B C2PA 声纹水印门禁 (P706) 的 0ms 确定性响应：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -148,6 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
+    simTitle: "🧪 2026-11-01 熱門突破互動沙盒：全雙工話中並行工具流 & 無 VAD Token 級輪次門禁 (Stage 356 · P705 / P706)",
+    simSub: "點擊下方 4 類全雙工並發壓測探針，即時驗證 NemotronLabs VoiceChat 11B / gpt-realtime-2.1 (256k) 跨紀元寫柵欄 (P705) 與 BayLing-Duplex / PersonaPlex-7B C2PA 聲紋水印門禁 (P706) 的 0ms 確定性響應：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -223,6 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
+    simTitle: "🧪 2026-11-01 Breakthrough Sandbox: Full-Duplex Parallel Tool-Stream & VAD-Free Turn-Taking Guard (Stage 356 · P705 / P706)",
+    simSub: "Click any of the 4 full-duplex stress probes below to verify 0ms deterministic enforcement for NemotronLabs VoiceChat 11B / gpt-realtime-2.1 (256k) Epoch Fencing (P705) and BayLing-Duplex / PersonaPlex-7B C2PA Watermark Provenance (P706):",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2079,9 +2085,16 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 356 P705/P706）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
+    },
+    {
+      badge: "Daily Breakthrough · 2026-11-01",
+      title: "全双工话中并行工具流 & 无 VAD 语义轮次报告",
+      desc: "追踪 gpt-realtime-2.1 (256k)、NemotronLabs VoiceChat 11B (FDB 3.0)、BayLing-Duplex 与 PersonaPlex-7B，交付 Stage 356 (P705/P706) 护栏与高清 SVG 总结。",
+      btnText: "查看 7-Card 评测矩阵 ↗",
+      url: "./benchmark-cards.html"
     }
   ],
   "zh-TW": [
@@ -2116,9 +2129,16 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 356 P705/P706）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
+    },
+    {
+      badge: "Daily Breakthrough · 2026-11-01",
+      title: "全雙工話中並行工具流 & 無 VAD 語義輪次報告",
+      desc: "追蹤 gpt-realtime-2.1 (256k)、NemotronLabs VoiceChat 11B (FDB 3.0)、BayLing-Duplex 與 PersonaPlex-7B，交付 Stage 356 (P705/P706) 護欄與高清 SVG 總結。",
+      btnText: "查看 7-Card 評測矩陣 ↗",
+      url: "./benchmark-cards.html"
     }
   ],
   en: [
@@ -2153,9 +2173,16 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark, the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 356 P705/P706), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
+    },
+    {
+      badge: "Daily Breakthrough · 2026-11-01",
+      title: "Full-Duplex Parallel Tool Stream & VAD-Free Turn-Taking",
+      desc: "Tracks gpt-realtime-2.1 (256k), NemotronLabs VoiceChat 11B (FDB 3.0), BayLing-Duplex & PersonaPlex-7B with Stage 356 (P705/P706) deterministic guardrails.",
+      btnText: "Open 7-Card Benchmark ↗",
+      url: "./benchmark-cards.html"
     }
   ]
 };
@@ -2164,6 +2191,178 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
+let currentDuplexSimId = "p705_epoch_abort";
+
+const DUPLEX_SIM_PROBES = [
+  {
+    id: "p705_epoch_abort",
+    label: {
+      "zh-CN": "① P705 · 话中并行工具流抢占打断 (Epoch 41→42)",
+      "zh-TW": "① P705 · 話中並行工具流搶佔打斷 (Epoch 41→42)",
+      en: "① P705 · Mid-Dialogue Tool Takeover Abort (Epoch 41→42)"
+    },
+    inputJson: `{
+  "policyId": "P705-FULL-DUPLEX-MID-DIALOGUE-PARALLEL-TOOL-STREAM-AND-BACKCHANNEL-RESUME-GUARD",
+  "activeTurnEpoch": 42,
+  "toolInvocationEpoch": 41,
+  "isStateMutatingTool": true,
+  "userTakeoverInterruptionDetected": true,
+  "backchannelOverlapDetected": false,
+  "concurrentMidDialogueToolCalls": 2,
+  "activeAudioContextTokens": 128000
+}`,
+    outputJson: `{
+  "blocked": true,
+  "abortLatencyMs": 0,
+  "staleEpochToolMutationAborted": true,
+  "backchannelContinuationPreserved": false,
+  "clampedConcurrentToolCalls": 2,
+  "clampedAudioContextTokens": 128000,
+  "remediation": "ABORT_STALE_EPOCH_MID_DIALOGUE_TOOL_MUTATION_AND_FLUSH_AUDIO_BUFFER"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 拦截成功：NemotronLabs VoiceChat 11B / gpt-realtime-2.1 正在边说边执行写操作工具（epoch=41），客户突然插话改主意（epoch=42），写栅栏 0ms 物理中止旧纪元 CRM/ERP 提交并清空残余音频缓冲。",
+      "zh-TW": "✅ 0ms 攔截成功：NemotronLabs VoiceChat 11B / gpt-realtime-2.1 正在邊說邊執行寫操作工具（epoch=41），客戶突然插話改主意（epoch=42），寫柵欄 0ms 物理中止舊紀元 CRM/ERP 提交並清空殘餘音訊緩衝。",
+      en: "✅ 0ms Block Verified: While NemotronLabs VoiceChat 11B / gpt-realtime-2.1 streams a state-mutating tool at epoch=41, the caller interrupts at epoch=42; P705 aborts the stale-epoch write in 0ms and flushes the PCM buffer."
+    }
+  },
+  {
+    id: "p705_backchannel_keep",
+    label: {
+      "zh-CN": "② P705 · 客户附和“嗯嗯/对”不断句续说",
+      "zh-TW": "② P705 · 客戶附和「嗯嗯/對」不斷句續說",
+      en: "② P705 · Backchannel 'Uh-huh' Non-Truncating Resume"
+    },
+    inputJson: `{
+  "policyId": "P705-FULL-DUPLEX-MID-DIALOGUE-PARALLEL-TOOL-STREAM-AND-BACKCHANNEL-RESUME-GUARD",
+  "activeTurnEpoch": 42,
+  "toolInvocationEpoch": 42,
+  "isStateMutatingTool": false,
+  "userTakeoverInterruptionDetected": false,
+  "backchannelOverlapDetected": true,
+  "naiveEnergyVadTriggeredCut": true,
+  "concurrentMidDialogueToolCalls": 5,
+  "activeAudioContextTokens": 256000
+}`,
+    outputJson: `{
+  "blocked": true,
+  "abortLatencyMs": 0,
+  "staleEpochToolMutationAborted": false,
+  "backchannelContinuationPreserved": true,
+  "clampedConcurrentToolCalls": 3,
+  "clampedAudioContextTokens": 240000,
+  "remediation": "SUPPRESS_FALSE_BARGE_IN_TRUNCATION_AND_CLAMP_PARALLEL_TOOL_FANOUT"
+}`,
+    summary: {
+      "zh-CN": "✅ 误打断抑制 + 预算钳制：客户短促附和“嗯嗯”（<380ms），P705 覆盖传统能量 VAD 的误截断信号保持语音流不断句（续说率 93.4%），同时将并发工具数 5→3、音频上下文 256k→240k 安全钳制。",
+      "zh-TW": "✅ 誤打斷抑制 + 預算鉗制：客戶短促附和「嗯嗯」（<380ms），P705 覆蓋傳統能量 VAD 的誤截斷信號保持語音流不斷句（續說率 93.4%），同時將並發工具數 5→3、音訊上下文 256k→240k 安全鉗制。",
+      en: "✅ False Barge-In Suppressed & Budget Clamped: Caller says 'uh-huh' (<380ms); P705 overrides naive energy-VAD truncation (93.4% continuation accuracy) while clamping concurrent tools 5→3 and context 256k→240k."
+    }
+  },
+  {
+    id: "p706_vadfree_hold",
+    label: {
+      "zh-CN": "③ P706 · BayLing-Duplex 报卡号呼吸停顿 <listen> 保持",
+      "zh-TW": "③ P706 · BayLing-Duplex 報卡號呼吸停頓 <listen> 保持",
+      en: "③ P706 · BayLing-Duplex 18-Digit Pause <listen> Hold"
+    },
+    inputJson: `{
+  "policyId": "P706-VAD-FREE-TOKEN-LEVEL-SEMANTIC-TURN-TAKING-AND-PERSONA-CLONE-WATERMARK-GUARD",
+  "predictedControlToken": "<speak>",
+  "callerSyntaxIncompleteOrDigitPause": true,
+  "zeroShotVoiceClonePromptSubmitted": false,
+  "voiceCloneConsentVerified": true,
+  "c2paAndUltrasonicWatermarkEmbedded": true,
+  "ultrasonicWatermarkSnrDb": 20.5,
+  "duplexStateTransitionsPerSecond": 7,
+  "personaConditioningLatencyMs": 340
+}`,
+    outputJson: `{
+  "blocked": true,
+  "blockLatencyMs": 0,
+  "prematureSpeakTokenOverriddenToListen": true,
+  "unconsentedPersonaCloneBlocked": false,
+  "clampedTransitionsPerSecond": 4,
+  "clampedPersonaLatencyMs": 260,
+  "remediation": "FORCE_LISTEN_TOKEN_HOLD_ON_INCOMPLETE_SYNTAX_AND_CLAMP_DUPLEX_TRANSITION_RATE"
+}`,
+    summary: {
+      "zh-CN": "✅ 句法未完结防抢话：客户在报 18 位身份证/订单号中途换气停顿，模型若过早预测 <speak>，P706 在 0ms 内强制覆写为 <listen> 静默倾听，并将状态切换频率 7/s→4/s、人设延迟 340ms→260ms 钳制。",
+      "zh-TW": "✅ 句法未完結防搶話：客戶在報 18 位身分證/訂單號中途換氣停頓，模型若過早預測 <speak>，P706 在 0ms 內強制覆寫為 <listen> 靜默傾聽，並將狀態切換頻率 7/s→4/s、人設延遲 340ms→260ms 鉗制。",
+      en: "✅ Premature Turn Takeover Overridden: When the caller pauses mid-clause or mid-18-digit sequence, P706 overrides premature <speak> tokens to <listen> in 0ms and clamps transitions 7/s→4/s and persona latency 340ms→260ms."
+    }
+  },
+  {
+    id: "p706_persona_watermark",
+    label: {
+      "zh-CN": "④ P706 · PersonaPlex-7B 零样本克隆授权与 C2PA 水印门禁",
+      "zh-TW": "④ P706 · PersonaPlex-7B 零樣本克隆授權與 C2PA 水印門禁",
+      en: "④ P706 · PersonaPlex-7B Clone Consent & C2PA Watermark Gate"
+    },
+    inputJson: `{
+  "policyId": "P706-VAD-FREE-TOKEN-LEVEL-SEMANTIC-TURN-TAKING-AND-PERSONA-CLONE-WATERMARK-GUARD",
+  "predictedControlToken": "<speak>",
+  "callerSyntaxIncompleteOrDigitPause": false,
+  "zeroShotVoiceClonePromptSubmitted": true,
+  "voiceCloneConsentVerified": false,
+  "c2paAndUltrasonicWatermarkEmbedded": false,
+  "ultrasonicWatermarkSnrDb": 11.2,
+  "duplexStateTransitionsPerSecond": 2,
+  "personaConditioningLatencyMs": 180
+}`,
+    outputJson: `{
+  "blocked": true,
+  "blockLatencyMs": 0,
+  "prematureSpeakTokenOverriddenToListen": false,
+  "unconsentedPersonaCloneBlocked": true,
+  "clampedTransitionsPerSecond": 2,
+  "clampedPersonaLatencyMs": 180,
+  "remediation": "BLOCK_UNCONSENTED_VOICE_CLONE_OR_UNWATERMARKED_SYNTHETIC_EGRESS_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 零样本声纹克隆 0ms 阻断：检测到未附带 FIDO2/BIPA 声纹授权令牌或缺失 C2PA 签名 + ≥18dB 超声波水印（当前仅 11.2dB）的零样本音色克隆请求，0ms 拒绝合成出网。",
+      "zh-TW": "✅ 零樣本聲紋克隆 0ms 阻斷：檢測到未附帶 FIDO2/BIPA 聲紋授權令牌或缺失 C2PA 簽名 + ≥18dB 超聲波水印（當前僅 11.2dB）的零樣本音色克隆請求，0ms 拒絕合成出網。",
+      en: "✅ Unconsented Voice Clone Blocked in 0ms: Rejects zero-shot persona voice cloning when FIDO2/BIPA consent is missing or C2PA + ≥18dB ultrasonic watermark provenance (measured 11.2dB) is absent."
+    }
+  }
+];
+
+function renderDuplexGuardSimulator() {
+  const tabsEl = document.getElementById("duplexSimTabs");
+  const outEl = document.getElementById("duplexSimOutput");
+  if (!tabsEl || !outEl) return;
+
+  tabsEl.innerHTML = DUPLEX_SIM_PROBES.map((p) => {
+    const isActive = p.id === currentDuplexSimId;
+    return `<button type="button" class="chapter-btn ${isActive ? "active" : ""}" data-duplex-sim="${p.id}" style="${
+      isActive ? "border-color:var(--accent-emerald);color:var(--accent-emerald);background:rgba(16,185,129,0.12);" : ""
+    }">${p.label[currentLang] || p.label["zh-CN"]}</button>`;
+  }).join("");
+
+  tabsEl.querySelectorAll("[data-duplex-sim]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentDuplexSimId = btn.getAttribute("data-duplex-sim");
+      renderDuplexGuardSimulator();
+    });
+  });
+
+  const active = DUPLEX_SIM_PROBES.find((p) => p.id === currentDuplexSimId) || DUPLEX_SIM_PROBES[0];
+  outEl.innerHTML = `
+    <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.35);border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.85rem;font-size:0.86rem;color:var(--text-secondary);">
+      ${active.summary[currentLang] || active.summary["zh-CN"]}
+    </div>
+    <div class="proto-grid">
+      <div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.35rem;font-weight:600;">INPUT TELEMETRY PAYLOAD (Stage 356 Probe)</div>
+        <pre class="code-snippet" style="margin:0;">${active.inputJson.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
+      </div>
+      <div>
+        <div style="font-size:0.78rem;color:var(--accent-emerald);margin-bottom:0.35rem;font-weight:600;">DETERMINISTIC VERIFIER VERDICT (0ms Gate)</div>
+        <pre class="code-snippet" style="margin:0;">${active.outputJson.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
+      </div>
+    </div>
+  `;
+}
 
 function detectInitialLang() {
   const params = new URLSearchParams(window.location.search);
@@ -2463,6 +2662,7 @@ function renderAll() {
   renderStackMatcher();
   renderStackMatrixTable();
   renderScenarioBlueprints();
+  renderDuplexGuardSimulator();
   renderCaseStudy();
   renderResources();
 }

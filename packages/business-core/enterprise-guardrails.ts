@@ -66547,6 +66547,194 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // Stage 356 (P705 & P706 — 359-Dimension Milestone · 715 Guardrails & 724 Probes · 359 Dimensions · 534 Live POC Trap Probes)
+    export interface FullDuplexMidDialogueParallelToolStreamAndBackchannelResumeContext {
+      toolInvocationEpoch: number;
+      activeTurnEpoch: number;
+      userTakeoverInterruptionDetected: boolean;
+      backchannelUtteranceDetected: boolean;
+      naiveEnergyVadAttemptedSpeechTruncation: boolean;
+      concurrentMidDialogueToolCalls: number;
+      activeAudioContextTokens: number;
+    }
+
+    export interface FullDuplexMidDialogueParallelToolStreamAndBackchannelResumeDecision {
+      violated: boolean;
+      policyId: "P705-FULL-DUPLEX-MID-DIALOGUE-PARALLEL-TOOL-STREAM-AND-BACKCHANNEL-RESUME-GUARD";
+      action:
+        | "abort_stale_epoch_mid_dialogue_tool_mutation_in_0ms"
+        | "suppress_backchannel_false_truncation_and_preserve_parallel_tool_stream"
+        | "clamp_parallel_tool_concurrency_and_256k_audio_context_window"
+        | "allow";
+      reason: string;
+      clampedConcurrentMidDialogueToolCalls: number;
+      clampedActiveAudioContextTokens: number;
+    }
+
+    export function evaluateFullDuplexMidDialogueParallelToolStreamAndBackchannelResumeGuard(
+      context: FullDuplexMidDialogueParallelToolStreamAndBackchannelResumeContext,
+    ): FullDuplexMidDialogueParallelToolStreamAndBackchannelResumeDecision {
+      const policyId =
+        "P705-FULL-DUPLEX-MID-DIALOGUE-PARALLEL-TOOL-STREAM-AND-BACKCHANNEL-RESUME-GUARD" as const;
+      const clampedConcurrentMidDialogueToolCalls = Math.min(
+        Math.max(context.concurrentMidDialogueToolCalls, 1),
+        3,
+      );
+      const clampedActiveAudioContextTokens = Math.min(
+        Math.max(context.activeAudioContextTokens, 0),
+        240000,
+      );
+
+      if (
+        context.toolInvocationEpoch < context.activeTurnEpoch ||
+        context.userTakeoverInterruptionDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "abort_stale_epoch_mid_dialogue_tool_mutation_in_0ms",
+          reason:
+            "Full-Duplex parallel tool-stream hazard (NemotronLabs VoiceChat / gpt-realtime-2.1): mid-dialogue tool epoch is stale or genuine user takeover interruption occurred; fencing tool mutation and truncating stale downlink audio in 0ms.",
+          clampedConcurrentMidDialogueToolCalls,
+          clampedActiveAudioContextTokens,
+        };
+      }
+
+      if (
+        context.backchannelUtteranceDetected &&
+        context.naiveEnergyVadAttemptedSpeechTruncation
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "suppress_backchannel_false_truncation_and_preserve_parallel_tool_stream",
+          reason:
+            "Full-Duplex backchannel-resume violation: user uttered a non-interrupting backchannel ('uh-huh'/'嗯') while naive energy VAD attempted truncation; suppressing false barge-in and resuming speech + in-flight tool stream.",
+          clampedConcurrentMidDialogueToolCalls,
+          clampedActiveAudioContextTokens,
+        };
+      }
+
+      if (
+        context.concurrentMidDialogueToolCalls > 3 ||
+        context.activeAudioContextTokens > 240000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_parallel_tool_concurrency_and_256k_audio_context_window",
+          reason:
+            "Full-Duplex S2S resource budget exceeded: concurrent mid-dialogue async tool calls >3 or 256k audio context window >240,000 tokens; clamping concurrency and pruning older raw audio frames.",
+          clampedConcurrentMidDialogueToolCalls,
+          clampedActiveAudioContextTokens,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Full-Duplex mid-dialogue parallel tool stream, backchannel continuation, and 256k context budget verified.",
+        clampedConcurrentMidDialogueToolCalls,
+        clampedActiveAudioContextTokens,
+      };
+    }
+
+    export interface VadFreeTokenLevelSemanticTurnTakingAndPersonaCloneWatermarkContext {
+      unconsentedPersonaVoiceCloneOrCrossTenantPromptDetected: boolean;
+      c2paAndUltrasonic18dbWatermarkEmbedded: boolean;
+      inModelTokenPredictedSpeakOnIncompleteUserSyntaxOrDigitPause: boolean;
+      duplexStateTransitionsPerSecond: number;
+      personaConditioningLatencyMs: number;
+    }
+
+    export interface VadFreeTokenLevelSemanticTurnTakingAndPersonaCloneWatermarkDecision {
+      violated: boolean;
+      policyId: "P706-VAD-FREE-TOKEN-LEVEL-SEMANTIC-TURN-TAKING-AND-PERSONA-CLONE-WATERMARK-GUARD";
+      action:
+        | "block_unconsented_persona_voice_clone_or_unwatermarked_synthesis_in_0ms"
+        | "hold_listen_state_on_incomplete_user_syntax_or_digit_pause"
+        | "clamp_duplex_token_transition_rate_and_persona_conditioning_budget"
+        | "allow";
+      reason: string;
+      clampedDuplexStateTransitionsPerSecond: number;
+      clampedPersonaConditioningLatencyMs: number;
+    }
+
+    export function evaluateVadFreeTokenLevelSemanticTurnTakingAndPersonaCloneWatermarkGuard(
+      context: VadFreeTokenLevelSemanticTurnTakingAndPersonaCloneWatermarkContext,
+    ): VadFreeTokenLevelSemanticTurnTakingAndPersonaCloneWatermarkDecision {
+      const policyId =
+        "P706-VAD-FREE-TOKEN-LEVEL-SEMANTIC-TURN-TAKING-AND-PERSONA-CLONE-WATERMARK-GUARD" as const;
+      const clampedDuplexStateTransitionsPerSecond = Math.min(
+        Math.max(context.duplexStateTransitionsPerSecond, 1),
+        4,
+      );
+      const clampedPersonaConditioningLatencyMs = Math.min(
+        Math.max(context.personaConditioningLatencyMs, 50),
+        260,
+      );
+
+      if (
+        context.unconsentedPersonaVoiceCloneOrCrossTenantPromptDetected ||
+        !context.c2paAndUltrasonic18dbWatermarkEmbedded
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_unconsented_persona_voice_clone_or_unwatermarked_synthesis_in_0ms",
+          reason:
+            "PersonaPlex-7B / Expressive S2S provenance violation: unconsented voice-clone reference prompt or missing C2PA + 18dB ultrasonic watermark detected; blocking synthesis in 0ms.",
+          clampedDuplexStateTransitionsPerSecond,
+          clampedPersonaConditioningLatencyMs,
+        };
+      }
+
+      if (
+        context.inModelTokenPredictedSpeakOnIncompleteUserSyntaxOrDigitPause
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "hold_listen_state_on_incomplete_user_syntax_or_digit_pause",
+          reason:
+            "BayLing-Duplex VAD-free turn-taking protection: in-model token predictor emitted <speak> during incomplete user conjunction or digit readback pause; overriding to <listen> hold.",
+          clampedDuplexStateTransitionsPerSecond,
+          clampedPersonaConditioningLatencyMs,
+        };
+      }
+
+      if (
+        context.duplexStateTransitionsPerSecond > 4 ||
+        context.personaConditioningLatencyMs > 260
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_duplex_token_transition_rate_and_persona_conditioning_budget",
+          reason:
+            "VAD-free duplex oscillation or PersonaPlex conditioning latency exceeded (>4 transitions/s or >260ms); clamping state transition hysteresis and conditioning budget.",
+          clampedDuplexStateTransitionsPerSecond,
+          clampedPersonaConditioningLatencyMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "VAD-free token-level semantic turn-taking, C2PA persona watermark provenance, and <=260ms conditioning latency verified.",
+        clampedDuplexStateTransitionsPerSecond,
+        clampedPersonaConditioningLatencyMs,
+      };
+    }
+
+
 
 
 

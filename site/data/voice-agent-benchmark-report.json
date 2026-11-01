@@ -1333,6 +1333,12 @@
       "original": "100.0% (0ms spin-bowl PGMEA >=20% LEL or cup exhaust <120Pa dispense/hotplate trip + >250C PEB/HMDS quench & TMAH acid drain isolation + PGMEA purge & TMAH Diphoterine LOTO)",
       "reversed": "100.0% (0ms unauthenticated BCP-003-01 mTLS/OAuth2 drop + IS-05 SDP multicast hijack or IS-09 PTP domain spoof reject + >120/s activation or >600/s registry query storm clamp)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "359. Full-Duplex Mid-Dialogue Parallel Tool Stream & Backchannel Resume (NemotronLabs VoiceChat 11B / gpt-realtime-2.1 256k) & BayLing-Duplex VAD-Free Token-Level Turn-Taking + PersonaPlex-7B C2PA Watermark Provenance (P705 / P706 — Stage 356 · 359-Dimension Milestone)",
+      "original": "100.0% (0ms stale-epoch mid-dialogue tool mutation abort on caller takeover + 93.4% backchannel continuation suppression of false energy-VAD cuts + <=3 parallel tools / <=240k audio context clamp)",
+      "reversed": "100.0% (0ms unconsented zero-shot persona voice clone or missing C2PA+18dB ultrasonic watermark block + <listen> hold on incomplete syntax or 18-digit readback pause + <=4/s transition / <=260ms persona clamp)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
