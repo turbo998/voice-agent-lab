@@ -1,6 +1,6 @@
 # 行业标杆案例深度研究：智能硬件出海全球多语种 AI 语音客服方案
 
-> **English Version**: [Smart Hardware Go-Global AI Voice Customer Service Case Study](./smart-hardware-global-voice-cs-case-study.md) · **原始方案演示文稿**: [AI-Voice-Customer-Service-Proposal-EN-v2.pptx](../site/AI-Voice-Customer-Service-Proposal-EN-v2.pptx)
+> **English Version**: [Smart Hardware Go-Global AI Voice Customer Service Case Study](./smart-hardware-global-voice-cs-case-study.md) · **在线阅读**: [智能硬件出海 AI 语音客服深度案例专页 (`case-study.html`)](https://turbo998.github.io/voice/case-study.html)
 
 ---
 

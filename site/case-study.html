@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>智能硬件出海 6 语种 AI 语音客服深度案例研究 · Smart-Ring Global Voice CS Case Study</title>
+  <meta name="description" content="智能硬件出海（25万→75万只智能戒指）全球 6 语种 AI 语音客服生产方案深度案例研究：从业务痛点到 PoC/Prod 验收指标、Voice Live 四模式、两阶段幂等写入、MS-Decision-1 路由评测、$0.08/分钟成本拆解与 Azure/GCP 对比。" />
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .doc-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    .doc-hero {
+      background: linear-gradient(145deg, rgba(17, 25, 43, 0.96), rgba(11, 16, 30, 0.96));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.75rem;
+    }
+    .doc-hero h1 {
+      font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+      line-height: 1.28;
+      margin: 0.6rem 0 0.75rem;
+    }
+    .doc-sec {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.35rem;
+    }
+    .doc-sec h2 {
+      font-size: 1.22rem;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-sec h3 {
+      font-size: 1.02rem;
+      color: var(--text-primary);
+      margin: 1rem 0 0.5rem;
+    }
+    .doc-sec p, .doc-sec li {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.68;
+    }
+    .doc-sec ul, .doc-sec ol {
+      padding-left: 1.3rem;
+      margin: 0.5rem 0;
+    }
+    .doc-sec li {
+      margin-bottom: 0.35rem;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    .toc-link {
+      display: block;
+      padding: 0.55rem 0.8rem;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+    .toc-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-badge">CS</div>
+      <div>
+        <div class="brand-title" id="topBrandTitle">AI Voice 行业应用案例深度研究</div>
+        <div class="brand-sub" id="topBrandSub">智能硬件出海 · 6 语种 7×24 语音客服完整生产方案</div>
+      </div>
+    </div>
+
+    <nav class="topnav" aria-label="Case Study Navigation">
+      <a href="./index.html#theme-case-study" id="backPortalLink">← 返回语音门户案例概览</a>
+      <a href="./index.html#theme-stack" id="navStackLink">技术栈选型测评</a>
+      <a href="./index.html#theme-scenarios" id="navScenarioLink">四大行业蓝图</a>
+      <a href="../index.html" id="backHomeLink">← 返回个人主页</a>
+    </nav>
+
+    <div class="topbar-actions">
+      <div class="lang-switch" role="group" aria-label="Language Switcher">
+        <button type="button" class="lang-btn active" data-lang="zh-CN">简体</button>
+        <button type="button" class="lang-btn" data-lang="zh-TW">繁體</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="doc-container" id="caseMainContainer"></main>
+
+  <script src="./app.js"></script>
+  <script>
+    const CASE_FULL_PAGE_I18N = {
+      "zh-CN": {
+        topBrandTitle: "AI Voice 行业应用案例深度研究",
+        topBrandSub: "智能硬件出海 · 6 语种 7×24 语音客服完整生产方案",
+        backPortalLink: "← 返回语音门户案例概览",
+        navStackLink: "技术栈选型测评",
+        navScenarioLink: "四大行业蓝图",
+        backHomeLink: "← 返回个人主页",
+        eyebrow: "FLAGSHIP CASE STUDY · 行业应用场景完整架构与 ROI 拆解",
+        heroTitle: "智能硬件出海全球多语种 AI 语音客服方案（25万 → 75万只智能戒指）",
+        heroLead: "本案例源自一家 30 人智能健康戒指（睡眠/心率监测 + 订阅制 App）出海初创企业的完整生产方案：在北美、欧洲、日韩 6 语种来电量从 10 万通/年激增至 30 万通/年（180 万分钟）的背景下，通过 Azure Voice Live API + GPT-4.1 mini + MS-Decision-1 + Foundry IQ，将人工坐席从 18 席精简至 8 席，单通成本从 $5.00 降至 $0.40（5 个月回本）。"
+      },
+      "zh-TW": {
+        topBrandTitle: "AI Voice 行業應用案例深度研究",
+        topBrandSub: "智能硬體出海 · 6 語種 7×24 語音客服完整生產方案",
+        backPortalLink: "← 返回語音門戶案例概覽",
+        navStackLink: "技術棧選型測評",
+        navScenarioLink: "四大行業藍圖",
+        backHomeLink: "← 返回個人主頁",
+        eyebrow: "FLAGSHIP CASE STUDY · 行業應用場景完整架構與 ROI 拆解",
+        heroTitle: "智能硬體出海全球多語種 AI 語音客服方案（25萬 → 75萬隻智能戒指）",
+        heroLead: "本案例源自一家 30 人智能健康戒指（睡眠/心率監測 + 訂閱制 App）出海初創企業的完整生產方案：在北美、歐洲、日韓 6 語種來電量從 10 萬通/年激增至 30 萬通/年（180 萬分鐘）的背景下，透過 Azure Voice Live API + GPT-4.1 mini + MS-Decision-1 + Foundry IQ，將人工坐席從 18 席精簡至 8 席，單通成本從 $5.00 降至 $0.40（5 個月回本）。"
+      },
+      en: {
+        topBrandTitle: "AI Voice Flagship Industry Case Study",
+        topBrandSub: "Smart Hardware Go-Global · 6-Language 24×7 Voice CS Blueprint",
+        backPortalLink: "← Back to Voice Portal Overview",
+        navStackLink: "Stack & Benchmarks",
+        navScenarioLink: "4 Scenario Blueprints",
+        backHomeLink: "← Back to Home",
+        eyebrow: "FLAGSHIP CASE STUDY · END-TO-END ARCHITECTURE, BENCHMARKS & FINOPS ROI",
+        heroTitle: "AI Voice Customer Service for Smart Hardware Go-Global (250K → 750K Smart Rings)",
+        heroLead: "Full production case study for a 30-person smart-ring startup (sleep/health tracking + subscription app) scaling across North America, Europe, Korea, and Japan in 6 languages: handling 3× call growth (100K → 300K calls/yr, 1.8M minutes) on Azure Voice Live API + GPT-4.1 mini + MS-Decision-1 + Foundry IQ while reducing human seats from 18 to 8 and cutting cost per call from $5.00 to $0.40 (5-month payback)."
+      }
+    };
+
+    function renderFullCasePage(lang) {
+      const t = CASE_FULL_PAGE_I18N[lang] || CASE_FULL_PAGE_I18N["zh-CN"];
+      document.documentElement.lang = lang;
+      document.getElementById("topBrandTitle").textContent = t.topBrandTitle;
+      document.getElementById("topBrandSub").textContent = t.topBrandSub;
+      document.getElementById("backPortalLink").textContent = t.backPortalLink;
+      document.getElementById("navStackLink").textContent = t.navStackLink;
+      document.getElementById("navScenarioLink").textContent = t.navScenarioLink;
+      document.getElementById("backHomeLink").textContent = t.backHomeLink;
+
+      const kpis = CASE_STUDY_DATA.kpis[lang] || CASE_STUDY_DATA.kpis["zh-CN"];
+      const tabs = CASE_STUDY_DATA.tabs;
+
+      const container = document.getElementById("caseMainContainer");
+      container.innerHTML = `
+        <section class="doc-hero">
+          <span class="theme-pill theme-two">${t.eyebrow}</span>
+          <h1>${t.heroTitle}</h1>
+          <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.68;margin-bottom:1.1rem;">${t.heroLead}</p>
+          <div class="flow-steps">
+            ${kpis.map(k => `
+              <div class="flow-step">
+                <span class="flow-step-num">${k.num}</span>
+                <div class="flow-step-title">${k.title}</div>
+                <p class="flow-step-desc">${k.desc}</p>
+              </div>
+            `).join("")}
+          </div>
+          <div class="toc-grid">
+            ${tabs.map((sec, idx) => `
+              <a class="toc-link" href="#case-sec-${idx + 1}">${sec.label[lang]}</a>
+            `).join("")}
+          </div>
+        </section>
+        ${tabs.map((sec, idx) => `
+          <section class="doc-sec" id="case-sec-${idx + 1}">
+            <h2>${sec.label[lang]}</h2>
+            ${sec.html[lang] || sec.html["zh-CN"]}
+          </section>
+        `).join("")}
+      `;
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      let lang = detectInitialLang();
+      renderFullCasePage(lang);
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const next = btn.getAttribute("data-lang");
+          if (!next) return;
+          localStorage.setItem("voice_portal_lang", next);
+          renderFullCasePage(next);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

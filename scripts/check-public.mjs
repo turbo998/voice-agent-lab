@@ -21,9 +21,6 @@ const reviewedImages = new Set([
   "docs/assets/synthetic-ops.png",
   "docs/assets/architecture.png",
 ]);
-const reviewedPptx = new Set([
-  "site/AI-Voice-Customer-Service-Proposal-EN-v2.pptx",
-]);
 const failures = [];
 for (const path of files) {
   if (prohibitedPaths.test(path) && !/(^|\/)\.env\.example$/.test(path)) {
@@ -36,9 +33,7 @@ for (const path of files) {
     continue;
   }
   if (bytes.includes(0)) {
-    const isReviewedPng = reviewedImages.has(path) && bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
-    const isReviewedPptx = reviewedPptx.has(path) && bytes.subarray(0, 4).equals(Buffer.from([80, 75, 3, 4]));
-    if (!isReviewedPng && !isReviewedPptx) {
+    if (!reviewedImages.has(path) || !bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) {
       failures.push({ path, reason: "binary artifact requires explicit review" });
     }
     continue;

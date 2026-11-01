@@ -77,7 +77,8 @@ test("Simplified learner-first AI Voice portal index.html and app.js include 2 c
   assert.ok(indexHtml.includes("./deck.html"), "index.html missing link to ./deck.html");
   assert.ok(indexHtml.includes("./benchmark-cards.html"), "index.html missing link to ./benchmark-cards.html");
   assert.ok(indexHtml.includes("./diarization-benchmark-cards.html"), "index.html missing link to ./diarization-benchmark-cards.html");
-  assert.ok(indexHtml.includes("./AI-Voice-Customer-Service-Proposal-EN-v2.pptx"), "index.html missing link to proposal PPTX");
+  assert.ok(indexHtml.includes("./case-study.html"), "index.html missing link to ./case-study.html");
+  assert.ok(!indexHtml.includes(".pptx"), "index.html must not expose PPTX download");
 
   for (const keyword of [
     "gpt-live-1",

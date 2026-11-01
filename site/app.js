@@ -69,8 +69,7 @@ const UI_TEXT = {
     caseBannerTitle: "💍 客户画像与北极星目标：销量翻 3 倍（250K → 750K），客服席位不增反降（18 席 → 8 席）",
     caseBannerSub:
       "覆盖北美、欧洲、日韩 6 种语言 · 年均 10 万通→30 万通来电（60万→180万分钟） · 38% 发生在非工作时段 · 涉锂电池发热与心率睡眠数据合规红线",
-    btnDownloadPptx: "⬇ 下载 13 页完整方案 PPTX",
-    btnReadCaseDoc: "阅读完整双语研究报告 ↗",
+    btnReadCaseDoc: "阅读完整案例研究报告 ↗",
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
@@ -145,8 +144,7 @@ const UI_TEXT = {
     caseBannerTitle: "💍 客戶畫像與北極星目標：銷量翻 3 倍（250K → 750K），客服席位不增反降（18 席 → 8 席）",
     caseBannerSub:
       "覆蓋北美、歐洲、日韓 6 種語言 · 年均 10 萬通→30 萬通來電（60萬→180萬分鐘） · 38% 發生在非工作時段 · 涉鋰電池發熱與心率睡眠資料合規紅線",
-    btnDownloadPptx: "⬇ 下載 13 頁完整方案 PPTX",
-    btnReadCaseDoc: "閱讀完整雙語研究報告 ↗",
+    btnReadCaseDoc: "閱讀完整案例研究報告 ↗",
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
@@ -221,8 +219,7 @@ const UI_TEXT = {
     caseBannerTitle: "💍 Customer Profile & North Star: 3× Shipments (250K → 750K Rings) While Reducing Seats (18 → 8)",
     caseBannerSub:
       "6 languages across NA, Europe, Korea & Japan · 100K → 300K calls/yr (600K → 1.8M min) · 38% after-hours · Strict battery-safety & health-data redlines",
-    btnDownloadPptx: "⬇ Download 13-Slide Proposal PPTX",
-    btnReadCaseDoc: "Read Full Bilingual Case Study ↗",
+    btnReadCaseDoc: "Read Full Case Study Report ↗",
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
@@ -2052,11 +2049,11 @@ async function handleSizeExchangeMcp(orderId, newSize, session) {
 const RESOURCES_DATA = {
   "zh-CN": [
     {
-      badge: "Case Study · 13-Slide Proposal",
-      title: "智能硬件出海 6 语种 AI 语音客服方案 (PPTX + 双语深度报告)",
+      badge: "Flagship Case Study",
+      title: "智能硬件出海 6 语种 AI 语音客服深度案例研究",
       desc: "涵盖 25万→75万只智能戒指业务痛点转化、Voice Live 四模式、两阶段幂等写入、MS-Decision-1 路由评测、$0.08/分钟成本拆解与 Azure/GCP 对标。",
-      btnText: "阅读中文深度研究报告 ↗",
-      url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/smart-hardware-global-voice-cs-case-study.zh-CN.md"
+      btnText: "阅读完整案例研究专页 ↗",
+      url: "./case-study.html"
     },
     {
       badge: "Repo 01 · Live S2S",
@@ -2089,11 +2086,11 @@ const RESOURCES_DATA = {
   ],
   "zh-TW": [
     {
-      badge: "Case Study · 13-Slide Proposal",
-      title: "智能硬體出海 6 語種 AI 語音客服方案 (PPTX + 雙語深度報告)",
+      badge: "Flagship Case Study",
+      title: "智能硬體出海 6 語種 AI 語音客服深度案例研究",
       desc: "涵蓋 25萬→75萬隻智能戒指業務痛點轉化、Voice Live 四模式、兩階段冪等寫入、MS-Decision-1 路由評測、$0.08/分鐘成本拆解與 Azure/GCP 對標。",
-      btnText: "閱讀中文深度研究報告 ↗",
-      url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/smart-hardware-global-voice-cs-case-study.zh-CN.md"
+      btnText: "閱讀完整案例研究專頁 ↗",
+      url: "./case-study.html?lang=zh-TW"
     },
     {
       badge: "Repo 01 · Live S2S",
@@ -2126,11 +2123,11 @@ const RESOURCES_DATA = {
   ],
   en: [
     {
-      badge: "Case Study · 13-Slide Proposal",
-      title: "Smart-Ring Go-Global 6-Language AI Voice CS Case Study (PPTX + Report)",
+      badge: "Flagship Case Study",
+      title: "Smart-Ring Go-Global 6-Language AI Voice CS Case Study",
       desc: "Complete production case study covering PoC/Prod SLAs, 4 Voice Live modes, Two-Phase writes, MS-Decision-1 router benchmark, $0.08/min FinOps ROI, and Azure vs. GCP.",
-      btnText: "Read Full Case Study (EN) ↗",
-      url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/smart-hardware-global-voice-cs-case-study.md"
+      btnText: "Read Full Case Study Page ↗",
+      url: "./case-study.html?lang=en"
     },
     {
       badge: "Repo 01 · Live S2S",
@@ -2350,7 +2347,7 @@ function renderScenarioBlueprints() {
           ${bp.links
             .map(
               (lnk, idx) =>
-                `<a class="btn ${idx === 0 ? "btn-primary" : ""}" href="${lnk.url}" target="_blank" rel="noopener">${lnk.label[currentLang]}</a>`
+                `<a class="btn ${idx === 0 ? "btn-primary" : ""}" href="${lnk.url}" ${lnk.url.startsWith("#") ? "" : 'target="_blank" rel="noopener"'}>${lnk.label[currentLang]}</a>`
             )
             .join("")}
         </div>
@@ -2374,8 +2371,10 @@ function renderCaseStudy() {
   if (docLinkEl) {
     docLinkEl.href =
       currentLang === "en"
-        ? "https://github.com/turbo998/voice-agent-lab/blob/main/docs/smart-hardware-global-voice-cs-case-study.md"
-        : "https://github.com/turbo998/voice-agent-lab/blob/main/docs/smart-hardware-global-voice-cs-case-study.zh-CN.md";
+        ? "./case-study.html?lang=en"
+        : currentLang === "zh-TW"
+        ? "./case-study.html?lang=zh-TW"
+        : "./case-study.html";
   }
 
   const kpis = CASE_STUDY_DATA.kpis[currentLang] || CASE_STUDY_DATA.kpis["zh-CN"];

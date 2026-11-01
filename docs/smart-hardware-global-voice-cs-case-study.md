@@ -1,6 +1,6 @@
 # Flagship Industry Case Study: AI Voice Customer Service for Smart Hardware Go-Global
 
-> **中文版本**: [智能硬件出海全球多语种 AI 语音客服方案深度研究](./smart-hardware-global-voice-cs-case-study.zh-CN.md) · **Original Slide Deck**: [AI-Voice-Customer-Service-Proposal-EN-v2.pptx](../site/AI-Voice-Customer-Service-Proposal-EN-v2.pptx)
+> **中文版本**: [智能硬件出海全球多语种 AI 语音客服方案深度研究](./smart-hardware-global-voice-cs-case-study.zh-CN.md) · **Online Reader**: [Smart-Ring Global AI Voice CS Case Study (`case-study.html`)](https://turbo998.github.io/voice/case-study.html?lang=en)
 
 ---
 

@@ -13,7 +13,7 @@
 - 🃏 **7-Card (4:5) 视觉模型基准报告（Voice Live & 多模型路由）**：[**`https://turbo998.github.io/voice-agent-lab/benchmark-cards.html`**](https://turbo998.github.io/voice-agent-lab/benchmark-cards.html)（基于 Azure East US 2 实测与 `site/data/voice-agent-benchmark-report.json` 密封评测数据）
 - 🎙️ **7-Card (4:5) Azure Speech 说话人分离与双声道归属 PoC 报告**：[**`https://turbo998.github.io/voice/diarization-benchmark-cards.html`**](https://turbo998.github.io/voice/diarization-benchmark-cards.html)（对应 [`docs/azure-speech-diarization-poc.md`](docs/azure-speech-diarization-poc.md) 与独立仓 [`turbo998/azure-speech-diarization-poc`](https://github.com/turbo998/azure-speech-diarization-poc)）
 - 🎬 **GPT-Live (`gpt-live-1`) 4 分 20 秒 Azure 实录视频与售前演示手册**：[**在线播放 (`GPT-Live-Azure-demo.mp4`)**](https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4) · [**售前演示手册 (`docs/gpt-live-partner-demo-handbook.md`)**](docs/gpt-live-partner-demo-handbook.md)
-- 💍 **行业标杆案例深度研究（智能硬件出海 6 语种 AI 语音客服 · 25 万→75 万台智能戒指）**：[**中文深度研究 (`docs/smart-hardware-global-voice-cs-case-study.zh-CN.md`)**](docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) · [**English Case Study (`docs/smart-hardware-global-voice-cs-case-study.md`)**](docs/smart-hardware-global-voice-cs-case-study.md) · [**13 页方案 PPTX (`AI-Voice-Customer-Service-Proposal-EN-v2.pptx`)**](site/AI-Voice-Customer-Service-Proposal-EN-v2.pptx)
+- 💍 **行业标杆案例深度研究（智能硬件出海 6 语种 AI 语音客服 · 25 万→75 万台智能戒指）**：[**在线深度案例专页 (`case-study.html`)**](https://turbo998.github.io/voice/case-study.html) · [**中文深度研究 (`docs/smart-hardware-global-voice-cs-case-study.zh-CN.md`)**](docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) · [**English Case Study (`docs/smart-hardware-global-voice-cs-case-study.md`)**](docs/smart-hardware-global-voice-cs-case-study.md)
 
 ### 核心工程与商业指标速览
 
