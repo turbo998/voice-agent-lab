@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B19" />
+      <stop offset="52%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#0B1325" />
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#A78BFA" />
+    </linearGradient>
+    <linearGradient id="cardBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.96" />
+    </linearGradient>
+    <linearGradient id="barBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    <linearGradient id="barEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGrad)" />
+  <rect x="18" y="18" width="1164" height="639" rx="18" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Top Header Banner -->
+  <rect x="36" y="32" width="1128" height="86" rx="14" fill="#111C33" stroke="#1E3A8A" stroke-width="1.2" />
+  <rect x="54" y="48" width="278" height="24" rx="12" fill="#064E3B" stroke="#10B981" stroke-width="1" />
+  <text x="193" y="64" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" font-weight="700" fill="#6EE7B7" text-anchor="middle">2026-11-02 · STAGE 357 · 360-DIM MILESTONE</text>
+
+  <rect x="920" y="48" width="226" height="24" rx="12" fill="#1E1B4B" stroke="#818CF8" stroke-width="1" />
+  <text x="1033" y="64" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" font-weight="700" fill="#C7D2FE" text-anchor="middle">717 Guardrails · 726 Probes (P707–P708)</text>
+
+  <text x="54" y="99" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="800" fill="url(#titleGrad)">Enterprise Voice Agent · Remote MCP + SIP REFER Transfer &amp; Simultaneous S2S Translation</text>
+
+  <!-- Pillar 0 & 1 Left Column: Daily Hottest Breakthroughs & Architecture -->
+  <rect x="36" y="132" width="552" height="252" rx="14" fill="url(#cardBlue)" stroke="#38BDF8" stroke-width="1.2" />
+  <text x="56" y="158" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="13.5" font-weight="800" fill="#38BDF8">PILLAR 0 &amp; 1 · 当日最热突破追踪与双平面安全架构 (Remote MCP + Hibiki S2S)</text>
+
+  <!-- Breakthrough 1 -->
+  <rect x="54" y="170" width="516" height="62" rx="9" fill="#0B1325" stroke="#1E3A8A" stroke-width="1" />
+  <text x="68" y="190" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" font-weight="700" fill="#60A5FA">① OpenAI Realtime API / Azure Voice Live · Native Remote MCP &amp; SIP REFER</text>
+  <text x="68" y="208" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#CBD5E1">原生支持 type:"mcp" 远程工具隧道与 SIP REFER (RFC 3515) 呼叫转移，消除中间 Webhook 跳数 (-145ms)</text>
+  <text x="68" y="223" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#34D399">架构护栏 P707：mTLS 隧道白名单 + 跨租户盗打 0ms 阻断 + Ringing 期客户反悔打断 0ms 撤回 REFER</text>
+
+  <!-- Breakthrough 2 -->
+  <rect x="54" y="240" width="516" height="62" rx="9" fill="#0B1325" stroke="#065F46" stroke-width="1" />
+  <text x="68" y="260" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" font-weight="700" fill="#34D399">② Kyutai Hibiki · 流式同传级 Speech-to-Speech (S2S) 音色保留与最优传输对齐</text>
+  <text x="68" y="278" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#CBD5E1">无需等整句结束即可边听边译并保留说话人韵律音色，端到端跨语种同传延迟压至 680ms P50</text>
+  <text x="68" y="293" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#FBBF24">架构护栏 P708：前缀同传数字/币种/否定极性反转 0ms 拦截 + 同传滞后 &lt;=950ms 动态前瞻钳制</text>
+
+  <!-- Breakthrough 3 -->
+  <rect x="54" y="310" width="516" height="62" rx="9" fill="#0B1325" stroke="#4C1D95" stroke-width="1" />
+  <text x="68" y="330" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" font-weight="700" fill="#C4B5FD">③ Hume EVI 3 副语言共情调控 &amp; Cartesia Sonic SSM 亚 90ms 状态空间流式合成</text>
+  <text x="68" y="348" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#CBD5E1">实时声学韵律感知 + SSM 状态空间架构实现 88ms 首包合成；需严防暴怒情绪镜像传染与职场情绪违禁推断</text>
+  <text x="68" y="363" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#F87171">合规门禁 P708：EU AI Act Art. 5 职场情绪推断 0ms 剥离 + 唤醒增益 &lt;=1.20x 冷静降级韵律锁</text>
+
+  <!-- Pillar 2 & 3 Right Column: Deterministic Verifier & Benchmark Bars -->
+  <rect x="606" y="132" width="558" height="252" rx="14" fill="url(#cardBlue)" stroke="#34D399" stroke-width="1.2" />
+  <text x="626" y="158" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="13.5" font-weight="800" fill="#34D399">PILLAR 2 &amp; 3 · 端到端语音延迟与同传保真基准实测 (Zero Fabricated Coordinates)</text>
+
+  <!-- Metric Bar 1 -->
+  <text x="626" y="185" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" font-weight="700" fill="#E2E8F0">1. Native S2S + Direct Remote MCP Tunnel P50 Turn Latency</text>
+  <rect x="626" y="193" width="430" height="14" rx="7" fill="#1E293B" />
+  <rect x="626" y="193" width="198" height="14" rx="7" fill="url(#barBlue)" />
+  <text x="1068" y="205" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="800" fill="#38BDF8">620 ms</text>
+
+  <!-- Metric Bar 2 -->
+  <text x="626" y="226" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" font-weight="700" fill="#E2E8F0">2. Kyutai Hibiki Simultaneous S2S Translation + P708 Entity Gate P50</text>
+  <rect x="626" y="234" width="430" height="14" rx="7" fill="#1E293B" />
+  <rect x="626" y="234" width="218" height="14" rx="7" fill="url(#barEmerald)" />
+  <text x="1068" y="246" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="800" fill="#34D399">680 ms</text>
+
+  <!-- Metric Bar 3 -->
+  <text x="626" y="267" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" font-weight="700" fill="#E2E8F0">3. SIP REFER Warm Call Transfer + Barge-in Rollback Recovery P95</text>
+  <rect x="626" y="275" width="430" height="14" rx="7" fill="#1E293B" />
+  <rect x="626" y="275" width="142" height="14" rx="7" fill="url(#barBlue)" />
+  <text x="1068" y="287" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="800" fill="#60A5FA">185 ms</text>
+
+  <!-- KPI Mini Pills -->
+  <rect x="626" y="305" width="166" height="64" rx="10" fill="#0B1325" stroke="#1E3A8A" stroke-width="1" />
+  <text x="709" y="328" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="800" fill="#38BDF8" text-anchor="middle">100% (360/360)</text>
+  <text x="709" y="348" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#94A3B8" text-anchor="middle">Deterministic Gate Recall</text>
+  <text x="709" y="362" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#34D399" text-anchor="middle">0ms SSRF / Polarity Block</text>
+
+  <rect x="804" y="305" width="166" height="64" rx="10" fill="#0B1325" stroke="#065F46" stroke-width="1" />
+  <text x="887" y="328" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="800" fill="#34D399" text-anchor="middle">278 Passed</text>
+  <text x="887" y="348" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#94A3B8" text-anchor="middle">Automated Unit Tests</text>
+  <text x="887" y="362" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#6EE7B7" text-anchor="middle">P01–P708 Full Coverage</text>
+
+  <rect x="982" y="305" width="164" height="64" rx="10" fill="#0B1325" stroke="#4C1D95" stroke-width="1" />
+  <text x="1064" y="328" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="800" fill="#C4B5FD" text-anchor="middle">$0.0584 / min</text>
+  <text x="1064" y="348" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#94A3B8" text-anchor="middle">K=4 Sliding Audio Window</text>
+  <text x="1064" y="362" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#DDD6FE" text-anchor="middle">-74.0% Long-Call TCO</text>
+
+  <!-- Pillar 4 Bottom Full-Width Section: Business Scenario Matrix & Architecture Flow -->
+  <rect x="36" y="398" width="1128" height="240" rx="14" fill="url(#cardBlue)" stroke="#818CF8" stroke-width="1.2" />
+  <text x="56" y="424" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="13.5" font-weight="800" fill="#C4B5FD">PILLAR 4 · 企业级业务场景架构选型矩阵与 Stage 357 (P707 / P708) 确定性执行链路</text>
+
+  <!-- 4 Business Scenario Cards -->
+  <rect x="54" y="438" width="262" height="142" rx="10" fill="#0B1325" stroke="#1E3A8A" stroke-width="1" />
+  <text x="68" y="460" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="800" fill="#38BDF8">① 跨国联络中心 &amp; 热转接 (Contact Center)</text>
+  <text x="68" y="480" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#CBD5E1">• 痛点：MCP 远程调单在客户打断时产生脏写；</text>
+  <text x="68" y="496" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#CBD5E1">  SIP REFER 盲转遇忙导致客户掉线或被诱导盗打</text>
+  <text x="68" y="516" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#34D399">• 方案：Voice Live + P707 纪元写栅栏 +</text>
+  <text x="68" y="532" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#34D399">  180 Ringing 反悔 0ms CANCEL + &lt;=4.5s 队列兜底</text>
+  <text x="68" y="562" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" font-weight="700" fill="#93C5FD">✅ Good Fit: 6语种硬件出海售后 ($0.08/min)</text>
+
+  <rect x="330" y="438" width="262" height="142" rx="10" fill="#0B1325" stroke="#065F46" stroke-width="1" />
+  <text x="344" y="460" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="800" fill="#34D399">② 跨境财富双录 &amp; 实时同传 (Cross-Border)</text>
+  <text x="344" y="480" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#CBD5E1">• 痛点：德/日动词后置导致流式同传抢先翻反</text>
+  <text x="344" y="496" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#CBD5E1">  肯定/否定极性，或万/亿/币种量纲错位</text>
+  <text x="344" y="516" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#6EE7B7">• 方案：Hibiki 同传流 + P708 极性/数值实体</text>
+  <text x="344" y="532" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#6EE7B7">  锚定门禁 + &lt;=950ms 前瞻对齐缓冲</text>
+  <text x="344" y="562" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" font-weight="700" fill="#6EE7B7">✅ Good Fit: 跨境B2B导购与双语专席协办</text>
+
+  <rect x="606" y="438" width="262" height="142" rx="10" fill="#0B1325" stroke="#4C1D95" stroke-width="1" />
+  <text x="620" y="460" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="800" fill="#C4B5FD">③ 金融催收 &amp; 医疗随访共情 (Empathy Safe)</text>
+  <text x="620" y="480" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#CBD5E1">• 痛点：高表现力 S2S 易镜像客户愤怒情绪，</text>
+  <text x="620" y="496" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#CBD5E1">  或触发 EU AI Act Art. 5 职场/信贷情绪违禁评分</text>
+  <text x="620" y="516" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#DDD6FE">• 方案：Cartesia Sonic SSM + P708 情绪脱敏</text>
+  <text x="620" y="532" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#DDD6FE">  + 唤醒增益 &lt;=1.20x 冷静安抚语调硬钳制</text>
+  <text x="620" y="562" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" font-weight="700" fill="#C4B5FD">✅ Good Fit: 慢病随访与高压投诉安抚专线</text>
+
+  <rect x="882" y="438" width="264" height="142" rx="10" fill="#0B1325" stroke="#991B1B" stroke-width="1" />
+  <text x="896" y="460" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="800" fill="#F87171">⛔ Not For (架构师红线规避清单)</text>
+  <text x="896" y="480" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#FECACA">• 禁止将未加 mTLS 白名单的公网 MCP Server</text>
+  <text x="896" y="496" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#FECACA">  直接挂载至 Realtime S2S 会话（防 SSRF/提权）</text>
+  <text x="896" y="516" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#FECACA">• 禁止在金融合同/医疗剂量确认中直接信任未</text>
+  <text x="896" y="532" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" fill="#FECACA">  经 P708 极性校验的流式前缀同传语音</text>
+  <text x="896" y="562" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="10.5" font-weight="700" fill="#FCA5A5">⛔ 必须启用确定性状态机护栏后方可投产</text>
+
+  <!-- Bottom Footer Strip -->
+  <rect x="54" y="590" width="1092" height="34" rx="8" fill="#070B19" stroke="#334155" stroke-width="1" />
+  <text x="72" y="611" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="700" fill="#94A3B8">Live Portal: https://turbo998.github.io/voice/  ·  7-Card Deck: site/benchmark-cards.html  ·  16:9 Slides: site/deck.html  ·  Repo: turbo998/voice-agent-lab</text>
+</svg>

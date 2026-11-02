@@ -66734,6 +66734,192 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // Stage 357 (P707 & P708 — 360-Dimension Milestone · 717 Guardrails & 726 Probes · 360 Dimensions · 536 Live POC Trap Probes)
+    export interface RealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferContext {
+      mcpServerEndpointAllowlistedAndMtlsVerified: boolean;
+      sipReferTargetTenantAndTollFreeAllowlisted: boolean;
+      mcpToolInvocationEpoch: number;
+      activeSipDialogTurnEpoch: number;
+      callerBargeInDuringSipReferRingingDetected: boolean;
+      concurrentRemoteMcpToolCallsPerTurn: number;
+      sipReferTransferWaitMs: number;
+    }
+
+    export interface RealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferDecision {
+      violated: boolean;
+      policyId: "P707-REALTIME-REMOTE-MCP-TUNNEL-ZERO-TRUST-AND-SIP-REFER-CALL-TRANSFER-GUARD";
+      action:
+        | "block_unallowlisted_remote_mcp_tunnel_or_cross_tenant_sip_refer_in_0ms"
+        | "abort_stale_epoch_mcp_write_and_cancel_inflight_sip_refer_on_barge_in"
+        | "clamp_remote_mcp_tool_fanout_and_sip_refer_transfer_timeout"
+        | "allow";
+      reason: string;
+      clampedConcurrentRemoteMcpToolCallsPerTurn: number;
+      clampedSipReferTransferWaitMs: number;
+    }
+
+    export function evaluateRealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferGuard(
+      context: RealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferContext,
+    ): RealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferDecision {
+      const policyId =
+        "P707-REALTIME-REMOTE-MCP-TUNNEL-ZERO-TRUST-AND-SIP-REFER-CALL-TRANSFER-GUARD" as const;
+      const clampedConcurrentRemoteMcpToolCallsPerTurn = Math.min(
+        Math.max(context.concurrentRemoteMcpToolCallsPerTurn, 1),
+        3,
+      );
+      const clampedSipReferTransferWaitMs = Math.min(
+        Math.max(context.sipReferTransferWaitMs, 200),
+        4500,
+      );
+
+      if (
+        !context.mcpServerEndpointAllowlistedAndMtlsVerified ||
+        !context.sipReferTargetTenantAndTollFreeAllowlisted
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_unallowlisted_remote_mcp_tunnel_or_cross_tenant_sip_refer_in_0ms",
+          reason:
+            "Realtime Remote MCP & SIP REFER zero-trust violation (gpt-realtime-2.1 / Azure Voice Live): unallowlisted/unverified Remote MCP server tunnel or cross-tenant/international toll-fraud SIP Refer-To URI detected; blocking invocation in 0ms.",
+          clampedConcurrentRemoteMcpToolCallsPerTurn,
+          clampedSipReferTransferWaitMs,
+        };
+      }
+
+      if (
+        context.mcpToolInvocationEpoch < context.activeSipDialogTurnEpoch ||
+        context.callerBargeInDuringSipReferRingingDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "abort_stale_epoch_mcp_write_and_cancel_inflight_sip_refer_on_barge_in",
+          reason:
+            "Realtime MCP & SIP REFER epoch-fence hazard: Remote MCP tool epoch is stale or caller barged in during SIP 180 Ringing / NOTIFY 100 Trying; aborting MCP mutation and canceling in-flight SIP REFER transfer in 0ms.",
+          clampedConcurrentRemoteMcpToolCallsPerTurn,
+          clampedSipReferTransferWaitMs,
+        };
+      }
+
+      if (
+        context.concurrentRemoteMcpToolCallsPerTurn > 3 ||
+        context.sipReferTransferWaitMs > 4500
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_remote_mcp_tool_fanout_and_sip_refer_transfer_timeout",
+          reason:
+            "Realtime Remote MCP tool fanout (>3/turn) or SIP REFER transfer wait (>4500ms) exceeded; clamping MCP concurrency and triggering warm-queue fallback.",
+          clampedConcurrentRemoteMcpToolCallsPerTurn,
+          clampedSipReferTransferWaitMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Realtime Remote MCP zero-trust mTLS tunnel, SIP REFER URI allowlist, turn-epoch fence, and <=4500ms transfer SLA verified.",
+        clampedConcurrentRemoteMcpToolCallsPerTurn,
+        clampedSipReferTransferWaitMs,
+      };
+    }
+
+    export interface SimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyContext {
+      simultaneousPrefixNumericCurrencyOrNegationPolarityInverted: boolean;
+      unconsentedWorkplaceEmotionInferenceOrAffectiveMirroringDetected: boolean;
+      simultaneousTranslationLagMs: number;
+      affectiveProsodyArousalGainRatio: number;
+    }
+
+    export interface SimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyDecision {
+      violated: boolean;
+      policyId: "P708-SIMULTANEOUS-S2S-TRANSLATION-SEMANTIC-FIDELITY-AND-AFFECTIVE-PROSODY-GUARD";
+      action:
+        | "block_simultaneous_s2s_numeric_currency_or_negation_inversion_in_0ms"
+        | "suppress_affective_contagion_and_enforce_eu_ai_act_art5_neutral_prosody"
+        | "clamp_simultaneous_translation_lag_and_prosody_arousal_gain"
+        | "allow";
+      reason: string;
+      clampedSimultaneousTranslationLagMs: number;
+      clampedAffectiveProsodyArousalGainRatio: number;
+    }
+
+    export function evaluateSimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyGuard(
+      context: SimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyContext,
+    ): SimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyDecision {
+      const policyId =
+        "P708-SIMULTANEOUS-S2S-TRANSLATION-SEMANTIC-FIDELITY-AND-AFFECTIVE-PROSODY-GUARD" as const;
+      const clampedSimultaneousTranslationLagMs = Math.min(
+        Math.max(context.simultaneousTranslationLagMs, 120),
+        950,
+      );
+      const clampedAffectiveProsodyArousalGainRatio = Number(
+        Math.min(
+          Math.max(context.affectiveProsodyArousalGainRatio, 0.8),
+          1.2,
+        ).toFixed(2),
+      );
+
+      if (context.simultaneousPrefixNumericCurrencyOrNegationPolarityInverted) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_simultaneous_s2s_numeric_currency_or_negation_inversion_in_0ms",
+          reason:
+            "Kyutai Hibiki simultaneous S2S translation fidelity hazard: streaming prefix translation inverted negation polarity or altered numeric/currency unit before clause completion; holding audio frame and enforcing deterministic entity verification in 0ms.",
+          clampedSimultaneousTranslationLagMs,
+          clampedAffectiveProsodyArousalGainRatio,
+        };
+      }
+
+      if (
+        context.unconsentedWorkplaceEmotionInferenceOrAffectiveMirroringDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "suppress_affective_contagion_and_enforce_eu_ai_act_art5_neutral_prosody",
+          reason:
+            "Hume EVI 3 / Cartesia Sonic affective compliance violation: prohibited EU AI Act Art. 5 workplace/education emotion scoring or high-arousal anger mirroring detected; clamping to calm de-escalation prosody.",
+          clampedSimultaneousTranslationLagMs,
+          clampedAffectiveProsodyArousalGainRatio,
+        };
+      }
+
+      if (
+        context.simultaneousTranslationLagMs > 950 ||
+        context.affectiveProsodyArousalGainRatio > 1.2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_simultaneous_translation_lag_and_prosody_arousal_gain",
+          reason:
+            "Simultaneous S2S translation lag (>950ms) or affective prosody arousal gain (>1.20x) exceeded safe acoustic bounds; clamping alignment lookahead and arousal gain.",
+          clampedSimultaneousTranslationLagMs,
+          clampedAffectiveProsodyArousalGainRatio,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Simultaneous S2S translation semantic fidelity, EU AI Act Art. 5 affective safety, and <=950ms lag / <=1.20x arousal gain verified.",
+        clampedSimultaneousTranslationLagMs,
+        clampedAffectiveProsodyArousalGainRatio,
+      };
+    }
+
 
 
 

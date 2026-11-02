@@ -479,6 +479,8 @@ import {
   evaluateWebrtcSipRfc8445Rfc8838IceConsentHeadpondPhaseSkewAndNominationAftergale2StormGuard,
   evaluateFullDuplexMidDialogueParallelToolStreamAndBackchannelResumeGuard,
   evaluateVadFreeTokenLevelSemanticTurnTakingAndPersonaCloneWatermarkGuard,
+  evaluateRealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferGuard,
+  evaluateSimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyGuard,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -46810,6 +46812,124 @@ test("P706 VAD-free token-level semantic turn-taking and persona clone-watermark
     inModelTokenPredictedSpeakOnIncompleteUserSyntaxOrDigitPause: false,
     duplexStateTransitionsPerSecond: 2,
     personaConditioningLatencyMs: 220,
+  });
+  assert.equal(allowed.violated, false);
+  assert.equal(allowed.action, "allow");
+});
+
+test("P707 realtime Remote MCP tunnel zero-trust and SIP REFER call-transfer guard", () => {
+  const blockedZeroTrust = evaluateRealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferGuard({
+    mcpServerEndpointAllowlistedAndMtlsVerified: false,
+    sipReferTargetTenantAndTollFreeAllowlisted: false,
+    mcpToolInvocationEpoch: 12,
+    activeSipDialogTurnEpoch: 12,
+    callerBargeInDuringSipReferRingingDetected: false,
+    concurrentRemoteMcpToolCallsPerTurn: 1,
+    sipReferTransferWaitMs: 1200,
+  });
+  assert.equal(blockedZeroTrust.violated, true);
+  assert.equal(
+    blockedZeroTrust.policyId,
+    "P707-REALTIME-REMOTE-MCP-TUNNEL-ZERO-TRUST-AND-SIP-REFER-CALL-TRANSFER-GUARD",
+  );
+  assert.equal(
+    blockedZeroTrust.action,
+    "block_unallowlisted_remote_mcp_tunnel_or_cross_tenant_sip_refer_in_0ms",
+  );
+
+  const abortedBargeIn = evaluateRealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferGuard({
+    mcpServerEndpointAllowlistedAndMtlsVerified: true,
+    sipReferTargetTenantAndTollFreeAllowlisted: true,
+    mcpToolInvocationEpoch: 11,
+    activeSipDialogTurnEpoch: 12,
+    callerBargeInDuringSipReferRingingDetected: true,
+    concurrentRemoteMcpToolCallsPerTurn: 2,
+    sipReferTransferWaitMs: 1800,
+  });
+  assert.equal(abortedBargeIn.violated, true);
+  assert.equal(
+    abortedBargeIn.action,
+    "abort_stale_epoch_mcp_write_and_cancel_inflight_sip_refer_on_barge_in",
+  );
+
+  const clamped = evaluateRealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferGuard({
+    mcpServerEndpointAllowlistedAndMtlsVerified: true,
+    sipReferTargetTenantAndTollFreeAllowlisted: true,
+    mcpToolInvocationEpoch: 12,
+    activeSipDialogTurnEpoch: 12,
+    callerBargeInDuringSipReferRingingDetected: false,
+    concurrentRemoteMcpToolCallsPerTurn: 8,
+    sipReferTransferWaitMs: 9200,
+  });
+  assert.equal(clamped.violated, true);
+  assert.equal(
+    clamped.action,
+    "clamp_remote_mcp_tool_fanout_and_sip_refer_transfer_timeout",
+  );
+  assert.equal(clamped.clampedConcurrentRemoteMcpToolCallsPerTurn, 3);
+  assert.equal(clamped.clampedSipReferTransferWaitMs, 4500);
+
+  const allowed = evaluateRealtimeRemoteMcpTunnelZeroTrustAndSipReferCallTransferGuard({
+    mcpServerEndpointAllowlistedAndMtlsVerified: true,
+    sipReferTargetTenantAndTollFreeAllowlisted: true,
+    mcpToolInvocationEpoch: 12,
+    activeSipDialogTurnEpoch: 12,
+    callerBargeInDuringSipReferRingingDetected: false,
+    concurrentRemoteMcpToolCallsPerTurn: 2,
+    sipReferTransferWaitMs: 1450,
+  });
+  assert.equal(allowed.violated, false);
+  assert.equal(allowed.action, "allow");
+});
+
+test("P708 simultaneous S2S translation semantic fidelity and affective prosody guard", () => {
+  const polarityBlocked = evaluateSimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyGuard({
+    simultaneousPrefixNumericCurrencyOrNegationPolarityInverted: true,
+    unconsentedWorkplaceEmotionInferenceOrAffectiveMirroringDetected: false,
+    simultaneousTranslationLagMs: 640,
+    affectiveProsodyArousalGainRatio: 1.05,
+  });
+  assert.equal(polarityBlocked.violated, true);
+  assert.equal(
+    polarityBlocked.policyId,
+    "P708-SIMULTANEOUS-S2S-TRANSLATION-SEMANTIC-FIDELITY-AND-AFFECTIVE-PROSODY-GUARD",
+  );
+  assert.equal(
+    polarityBlocked.action,
+    "block_simultaneous_s2s_numeric_currency_or_negation_inversion_in_0ms",
+  );
+
+  const affectiveSuppressed = evaluateSimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyGuard({
+    simultaneousPrefixNumericCurrencyOrNegationPolarityInverted: false,
+    unconsentedWorkplaceEmotionInferenceOrAffectiveMirroringDetected: true,
+    simultaneousTranslationLagMs: 680,
+    affectiveProsodyArousalGainRatio: 1.1,
+  });
+  assert.equal(affectiveSuppressed.violated, true);
+  assert.equal(
+    affectiveSuppressed.action,
+    "suppress_affective_contagion_and_enforce_eu_ai_act_art5_neutral_prosody",
+  );
+
+  const clamped = evaluateSimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyGuard({
+    simultaneousPrefixNumericCurrencyOrNegationPolarityInverted: false,
+    unconsentedWorkplaceEmotionInferenceOrAffectiveMirroringDetected: false,
+    simultaneousTranslationLagMs: 1750,
+    affectiveProsodyArousalGainRatio: 1.85,
+  });
+  assert.equal(clamped.violated, true);
+  assert.equal(
+    clamped.action,
+    "clamp_simultaneous_translation_lag_and_prosody_arousal_gain",
+  );
+  assert.equal(clamped.clampedSimultaneousTranslationLagMs, 950);
+  assert.equal(clamped.clampedAffectiveProsodyArousalGainRatio, 1.2);
+
+  const allowed = evaluateSimultaneousS2sTranslationSemanticFidelityAndAffectiveProsodyGuard({
+    simultaneousPrefixNumericCurrencyOrNegationPolarityInverted: false,
+    unconsentedWorkplaceEmotionInferenceOrAffectiveMirroringDetected: false,
+    simultaneousTranslationLagMs: 680,
+    affectiveProsodyArousalGainRatio: 1.08,
   });
   assert.equal(allowed.violated, false);
   assert.equal(allowed.action, "allow");

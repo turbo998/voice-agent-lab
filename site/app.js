@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-01 热门突破交互沙盒：全双工话中并行工具流 & 无 VAD Token 级轮次门禁 (Stage 356 · P705 / P706)",
-    simSub: "点击下方 4 类全双工并发压测探针，实时验证 NemotronLabs VoiceChat 11B / gpt-realtime-2.1 (256k) 跨纪元写栅栏 (P705) 与 BayLing-Duplex / PersonaPlex-7B C2PA 声纹水印门禁 (P706) 的 0ms 确定性响应：",
+    simTitle: "🧪 2026-11-02 热门突破交互沙盒：原生 Remote MCP + SIP REFER 转接 & Hibiki 流式同传极性门禁 (Stage 357 · P705–P708)",
+    simSub: "点击下方全双工与跨语种同传压测探针，实时验证 gpt-realtime-2.1 Remote MCP + SIP REFER 振铃打断撤回 (P707)、Kyutai Hibiki 流式同传极性防反转 & Hume EVI 3 / Cartesia Sonic 情绪门禁 (P708) 以及 P705 / P706 的 0ms 确定性响应：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-01 熱門突破互動沙盒：全雙工話中並行工具流 & 無 VAD Token 級輪次門禁 (Stage 356 · P705 / P706)",
-    simSub: "點擊下方 4 類全雙工並發壓測探針，即時驗證 NemotronLabs VoiceChat 11B / gpt-realtime-2.1 (256k) 跨紀元寫柵欄 (P705) 與 BayLing-Duplex / PersonaPlex-7B C2PA 聲紋水印門禁 (P706) 的 0ms 確定性響應：",
+    simTitle: "🧪 2026-11-02 熱門突破互動沙盒：原生 Remote MCP + SIP REFER 轉接 & Hibiki 流式同傳極性門禁 (Stage 357 · P705–P708)",
+    simSub: "點擊下方全雙工與跨語種同傳壓測探針，即時驗證 gpt-realtime-2.1 Remote MCP + SIP REFER 振鈴打斷撤回 (P707)、Kyutai Hibiki 流式同傳極性防反轉 & Hume EVI 3 / Cartesia Sonic 情緒門禁 (P708) 以及 P705 / P706 的 0ms 確定性響應：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-01 Breakthrough Sandbox: Full-Duplex Parallel Tool-Stream & VAD-Free Turn-Taking Guard (Stage 356 · P705 / P706)",
-    simSub: "Click any of the 4 full-duplex stress probes below to verify 0ms deterministic enforcement for NemotronLabs VoiceChat 11B / gpt-realtime-2.1 (256k) Epoch Fencing (P705) and BayLing-Duplex / PersonaPlex-7B C2PA Watermark Provenance (P706):",
+    simTitle: "🧪 2026-11-02 Breakthrough Sandbox: Native Remote MCP + SIP REFER Transfer & Hibiki Simultaneous S2S Polarity Guard (Stage 357 · P705–P708)",
+    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for gpt-realtime-2.1 Remote MCP + SIP REFER Barge-In Cancel (P707), Kyutai Hibiki Simultaneous S2S Polarity Lock & Hume EVI 3 / Cartesia Sonic Affective Clamp (P708), and P705 / P706:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 356 P705/P706）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 357 P707/P708 · 360维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-01",
-      title: "全双工话中并行工具流 & 无 VAD 语义轮次报告",
-      desc: "追踪 gpt-realtime-2.1 (256k)、NemotronLabs VoiceChat 11B (FDB 3.0)、BayLing-Duplex 与 PersonaPlex-7B，交付 Stage 356 (P705/P706) 护栏与高清 SVG 总结。",
+      badge: "Daily Breakthrough · 2026-11-02",
+      title: "原生 Remote MCP + SIP REFER 转接 & Hibiki 流式同传极性保真",
+      desc: "追踪 gpt-realtime-2.1 Remote MCP & SIP REFER、Kyutai Hibiki 流式同传 S2S 与 Hume EVI 3 / Cartesia Sonic SSM，交付 Stage 357 (P707/P708) 护栏与高清 SVG 总结。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 356 P705/P706）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 357 P707/P708 · 360維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-01",
-      title: "全雙工話中並行工具流 & 無 VAD 語義輪次報告",
-      desc: "追蹤 gpt-realtime-2.1 (256k)、NemotronLabs VoiceChat 11B (FDB 3.0)、BayLing-Duplex 與 PersonaPlex-7B，交付 Stage 356 (P705/P706) 護欄與高清 SVG 總結。",
+      badge: "Daily Breakthrough · 2026-11-02",
+      title: "原生 Remote MCP + SIP REFER 轉接 & Hibiki 流式同傳極性保真",
+      desc: "追蹤 gpt-realtime-2.1 Remote MCP & SIP REFER、Kyutai Hibiki 流式同傳 S2S 與 Hume EVI 3 / Cartesia Sonic SSM，交付 Stage 357 (P707/P708) 護欄與高清 SVG 總結。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 356 P705/P706), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 357 P707/P708 · 360-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-01",
-      title: "Full-Duplex Parallel Tool Stream & VAD-Free Turn-Taking",
-      desc: "Tracks gpt-realtime-2.1 (256k), NemotronLabs VoiceChat 11B (FDB 3.0), BayLing-Duplex & PersonaPlex-7B with Stage 356 (P705/P706) deterministic guardrails.",
+      badge: "Daily Breakthrough · 2026-11-02",
+      title: "Native Remote MCP + SIP REFER & Hibiki Simultaneous S2S Fidelity",
+      desc: "Tracks gpt-realtime-2.1 Remote MCP & SIP REFER, Kyutai Hibiki simultaneous S2S & Hume EVI 3 / Cartesia Sonic SSM with Stage 357 (P707/P708) deterministic guardrails.",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,66 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p705_epoch_abort";
+let currentDuplexSimId = "p707_mcp_sip_refer";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p707_mcp_sip_refer",
+    label: {
+      "zh-CN": "① P707 · Remote MCP + SIP REFER 振铃打断 0ms 撤回",
+      "zh-TW": "① P707 · Remote MCP + SIP REFER 振鈴打斷 0ms 撤回",
+      en: "① P707 · Remote MCP + SIP REFER Ringing Barge-In Abort"
+    },
+    inputJson: `{
+  "policyId": "P707-REALTIME-REMOTE-MCP-TUNNEL-ZERO-TRUST-AND-SIP-REFER-CALL-TRANSFER-GUARD",
+  "mcpServerEndpointAllowlistedAndMtlsVerified": true,
+  "sipReferTargetTenantAndTollFreeAllowlisted": true,
+  "mcpToolInvocationEpoch": 11,
+  "activeSipDialogTurnEpoch": 12,
+  "callerBargeInDuringSipReferRingingDetected": true,
+  "concurrentRemoteMcpToolCallsPerTurn": 5,
+  "sipReferTransferWaitMs": 6800
+}`,
+    outputJson: `{
+  "violated": true,
+  "abortLatencyMs": 0,
+  "action": "abort_stale_epoch_mcp_write_and_cancel_inflight_sip_refer_on_barge_in",
+  "clampedConcurrentRemoteMcpToolCallsPerTurn": 3,
+  "clampedSipReferTransferWaitMs": 4500
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 跨纪元写撤回 + SIP REFER 取消：客户在 180 Ringing 振铃期间突然开口反悔（epoch 11→12），P707 在 0ms 内回滚在途 Remote MCP 写操作、发送 SIP CANCEL 终止盲转，并将并发工具 5→3、转接超时 6800ms→4500ms 钳制。",
+      "zh-TW": "✅ 0ms 跨紀元寫撤回 + SIP REFER 取消：客戶在 180 Ringing 振鈴期間突然開口反悔（epoch 11→12），P707 在 0ms 內回滾在途 Remote MCP 寫操作、發送 SIP CANCEL 終止盲轉，並將並發工具 5→3、轉接超時 6800ms→4500ms 鉗制。",
+      en: "✅ 0ms Stale-Epoch MCP Abort & SIP REFER Cancel: Caller barges in during 180 Ringing (epoch 11→12); P707 aborts the in-flight Remote MCP mutation, cancels SIP REFER in 0ms, and clamps MCP fanout 5→3 and wait 6800ms→4500ms."
+    }
+  },
+  {
+    id: "p708_hibiki_affective",
+    label: {
+      "zh-CN": "② P708 · Hibiki 流式同传极性防反转 & EVI 3 情绪抑制",
+      "zh-TW": "② P708 · Hibiki 流式同傳極性防反轉 & EVI 3 情緒抑制",
+      en: "② P708 · Hibiki Simultaneous S2S Polarity & Affective Clamp"
+    },
+    inputJson: `{
+  "policyId": "P708-SIMULTANEOUS-S2S-TRANSLATION-SEMANTIC-FIDELITY-AND-AFFECTIVE-PROSODY-GUARD",
+  "simultaneousPrefixNumericCurrencyOrNegationPolarityInverted": true,
+  "unconsentedWorkplaceEmotionInferenceOrAffectiveMirroringDetected": true,
+  "simultaneousTranslationLagMs": 1420,
+  "affectiveProsodyArousalGainRatio": 1.65
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_simultaneous_s2s_numeric_currency_or_negation_inversion_in_0ms",
+  "clampedSimultaneousTranslationLagMs": 950,
+  "clampedAffectiveProsodyArousalGainRatio": 1.2
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 流式同传极性锁定 + 情绪降级：Kyutai Hibiki 在德/日动词后置从句完结前出现否定极性/币种反转，P708 在 0ms 内挂起问题音频帧，同时剥离 EU AI Act Art. 5 违禁情绪推断并将同传滞后 1420ms→950ms、唤醒度 1.65x→1.20x 钳制。",
+      "zh-TW": "✅ 0ms 流式同傳極性鎖定 + 情緒降級：Kyutai Hibiki 在德/日動詞後置從句完結前出現否定極性/幣種反轉，P708 在 0ms 內掛起問題音訊幀，同時剝離 EU AI Act Art. 5 違禁情緒推斷並將同傳滯後 1420ms→950ms、喚醒度 1.65x→1.20x 鉗制。",
+      en: "✅ 0ms Simultaneous S2S Polarity Lock & Affective Clamp: Blocks premature prefix negation/currency inversion in Kyutai Hibiki while enforcing EU AI Act Art. 5 emotion stripping and clamping lag 1420ms→950ms and arousal 1.65x→1.20x."
+    }
+  },
   {
     id: "p705_epoch_abort",
     label: {
@@ -2353,7 +2410,7 @@ function renderDuplexGuardSimulator() {
     </div>
     <div class="proto-grid">
       <div>
-        <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.35rem;font-weight:600;">INPUT TELEMETRY PAYLOAD (Stage 356 Probe)</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.35rem;font-weight:600;">INPUT TELEMETRY PAYLOAD (Stage 357 Probe)</div>
         <pre class="code-snippet" style="margin:0;">${active.inputJson.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
       </div>
       <div>
