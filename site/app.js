@@ -73,7 +73,7 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-02 热门突破交互沙盒：原生 Remote MCP + SIP REFER 转接 & Hibiki 流式同传极性门禁 (Stage 357 · P705–P708)",
+    simTitle: "🧪 2026-11-02 热门突破交互沙盒：原生 Remote MCP + SIP REFER 转接 & Hibiki 流式同传极性门禁 (Stage 357 / Stage 356 · P705–P708)",
     simSub: "点击下方全双工与跨语种同传压测探针，实时验证 gpt-realtime-2.1 Remote MCP + SIP REFER 振铃打断撤回 (P707)、Kyutai Hibiki 流式同传极性防反转 & Hume EVI 3 / Cartesia Sonic 情绪门禁 (P708) 以及 P705 / P706 的 0ms 确定性响应：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
@@ -150,7 +150,7 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-02 熱門突破互動沙盒：原生 Remote MCP + SIP REFER 轉接 & Hibiki 流式同傳極性門禁 (Stage 357 · P705–P708)",
+    simTitle: "🧪 2026-11-02 熱門突破互動沙盒：原生 Remote MCP + SIP REFER 轉接 & Hibiki 流式同傳極性門禁 (Stage 357 / Stage 356 · P705–P708)",
     simSub: "點擊下方全雙工與跨語種同傳壓測探針，即時驗證 gpt-realtime-2.1 Remote MCP + SIP REFER 振鈴打斷撤回 (P707)、Kyutai Hibiki 流式同傳極性防反轉 & Hume EVI 3 / Cartesia Sonic 情緒門禁 (P708) 以及 P705 / P706 的 0ms 確定性響應：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
@@ -227,7 +227,7 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-02 Breakthrough Sandbox: Native Remote MCP + SIP REFER Transfer & Hibiki Simultaneous S2S Polarity Guard (Stage 357 · P705–P708)",
+    simTitle: "🧪 2026-11-02 Breakthrough Sandbox: Native Remote MCP + SIP REFER Transfer & Hibiki Simultaneous S2S Polarity Guard (Stage 357 / Stage 356 · P705–P708)",
     simSub: "Click any stress probe below to verify 0ms deterministic enforcement for gpt-realtime-2.1 Remote MCP + SIP REFER Barge-In Cancel (P707), Kyutai Hibiki Simultaneous S2S Polarity Lock & Hume EVI 3 / Cartesia Sonic Affective Clamp (P708), and P705 / P706:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
@@ -2216,7 +2216,8 @@ const DUPLEX_SIM_PROBES = [
   "abortLatencyMs": 0,
   "action": "abort_stale_epoch_mcp_write_and_cancel_inflight_sip_refer_on_barge_in",
   "clampedConcurrentRemoteMcpToolCallsPerTurn": 3,
-  "clampedSipReferTransferWaitMs": 4500
+  "clampedSipReferTransferWaitMs": 4500,
+  "remediation": "ABORT_STALE_EPOCH_MCP_WRITE_AND_CANCEL_INFLIGHT_SIP_REFER_ON_BARGE_IN"
 }`,
     summary: {
       "zh-CN": "✅ 0ms 跨纪元写撤回 + SIP REFER 取消：客户在 180 Ringing 振铃期间突然开口反悔（epoch 11→12），P707 在 0ms 内回滚在途 Remote MCP 写操作、发送 SIP CANCEL 终止盲转，并将并发工具 5→3、转接超时 6800ms→4500ms 钳制。",
@@ -2243,7 +2244,8 @@ const DUPLEX_SIM_PROBES = [
   "blockLatencyMs": 0,
   "action": "block_simultaneous_s2s_numeric_currency_or_negation_inversion_in_0ms",
   "clampedSimultaneousTranslationLagMs": 950,
-  "clampedAffectiveProsodyArousalGainRatio": 1.2
+  "clampedAffectiveProsodyArousalGainRatio": 1.2,
+  "remediation": "BLOCK_SIMULTANEOUS_S2S_NUMERIC_CURRENCY_OR_NEGATION_INVERSION_IN_0MS"
 }`,
     summary: {
       "zh-CN": "✅ 0ms 流式同传极性锁定 + 情绪降级：Kyutai Hibiki 在德/日动词后置从句完结前出现否定极性/币种反转，P708 在 0ms 内挂起问题音频帧，同时剥离 EU AI Act Art. 5 违禁情绪推断并将同传滞后 1420ms→950ms、唤醒度 1.65x→1.20x 钳制。",
