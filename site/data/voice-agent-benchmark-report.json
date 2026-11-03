@@ -1345,6 +1345,12 @@
       "original": "100.0% (0ms unallowlisted Remote MCP mTLS tunnel or cross-tenant SIP Refer-To toll-fraud block + 0ms stale-epoch MCP write abort & in-flight SIP REFER cancel on ringing-phase caller barge-in + <=3 MCP tools/turn & <=4500ms transfer clamp)",
       "reversed": "100.0% (0ms streaming prefix numeric/currency/negation polarity inversion block + EU AI Act Art. 5 workplace emotion stripping & anger-contagion suppression + <=950ms translation lag & <=1.20x arousal gain clamp)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "361. Proactive Audio Bystander Silence Gate & Live Extended-Thinking Pacing (Gemini 3.8 Live / Azure Voice Live) & Sub-3s Zero-Shot Voice Clone BIPA/C2PA Watermark + WebRTC SFU Multi-Agent Bot-Loop Guard (Qwen3-TTS / Chatterbox / CosyVoice 3 / LiveKit / Pipecat) (P709 / P710 — Stage 358 · 361-Dimension Milestone)",
+      "original": "100.0% (0ms proactive chime-in suppression on bystander speech, background media, or unmasked screen PII + 0ms stale-epoch extended-thinking abort with pacing earcon + <=900ms silence & >=0.88 confidence clamp)",
+      "reversed": "100.0% (0ms unconsented BIPA or cross-tenant zero-shot voice clone & missing C2PA+PerTh watermark block + 0ms WebRTC SFU bot-to-bot audio loop detachment + <=45ms avatar viseme skew & [3, 15]s reference clip clamp)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

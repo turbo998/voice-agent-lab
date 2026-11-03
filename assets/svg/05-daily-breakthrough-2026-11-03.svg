@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060B18" />
+      <stop offset="50%" stop-color="#0B162C" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="accentBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <linearGradient id="accentEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="accentAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#EF4444" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGrad)" />
+
+  <!-- Subtle Grid Lines -->
+  <g stroke="#1E293B" stroke-width="1" opacity="0.55">
+    <line x1="0" y1="90" x2="1200" y2="90" />
+    <line x1="0" y1="220" x2="1200" y2="220" />
+    <line x1="0" y1="450" x2="1200" y2="450" />
+    <line x1="0" y1="620" x2="1200" y2="620" />
+    <line x1="400" y1="90" x2="400" y2="620" />
+    <line x1="800" y1="90" x2="800" y2="620" />
+  </g>
+
+  <!-- Top Header Banner -->
+  <rect x="28" y="18" width="1144" height="64" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+  <rect x="42" y="31" width="230" height="38" rx="8" fill="url(#accentBlue)" />
+  <text x="157" y="55" fill="#FFFFFF" font-size="13.5" font-weight="800" text-anchor="middle" letter-spacing="0.6">STAGE 358 · 2026-11-03</text>
+
+  <text x="290" y="45" fill="#F8FAFC" font-size="17.5" font-weight="800">Enterprise Voice Agent Nightly Architect Brief — Proactive Audio Pacing, Sub-3s Zero-Shot Voice Clone &amp; WebRTC SFU Guard</text>
+  <text x="290" y="67" fill="#94A3B8" font-size="12.5" font-weight="500">AI Solution Architect 5-Pillar Delivery · Gemini 3.8 Live Proactive Audio + Live Extended Thinking · Qwen3-TTS / Chatterbox / CosyVoice 3 · LiveKit / Pipecat SFU</text>
+
+  <rect x="1032" y="31" width="126" height="38" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="1.2" />
+  <text x="1095" y="47" fill="#A7F3D0" font-size="10.5" font-weight="700" text-anchor="middle">361 DIMENSIONS</text>
+  <text x="1095" y="62" fill="#34D399" font-size="11.5" font-weight="800" text-anchor="middle">719 GUARDRAILS</text>
+
+  <!-- ==================== ROW 1: PILLARS 0, 1, 2 ==================== -->
+
+  <!-- Pillar 0 Card: Daily Hottest Breakthrough Tracking -->
+  <g transform="translate(28, 96)" filter="url(#shadow)">
+    <rect width="368" height="252" rx="12" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5" />
+    <rect x="16" y="14" width="336" height="28" rx="6" fill="#0C4A6E" />
+    <text x="26" y="33" fill="#7DD3FC" font-size="12" font-weight="800" letter-spacing="0.5">PILLAR 0 · 2026-11-03 HOTTEST BREAKTHROUGHS</text>
+
+    <!-- Item 1 -->
+    <circle cx="28" cy="64" r="5" fill="#38BDF8" />
+    <text x="42" y="68" fill="#F1F5F9" font-size="13" font-weight="700">1. Proactive Audio &amp; Live Extended Thinking S2S</text>
+    <text x="42" y="86" fill="#94A3B8" font-size="11.5">Gemini 3.8 Live &amp; Azure Voice Live combine proactive chime-in</text>
+    <text x="42" y="102" fill="#38BDF8" font-size="11.5" font-weight="600">Risk: Bystander speech false chime-in &amp; &gt;900ms thinking dead-air</text>
+
+    <!-- Item 2 -->
+    <circle cx="28" cy="128" r="5" fill="#818CF8" />
+    <text x="42" y="132" fill="#F1F5F9" font-size="13" font-weight="700">2. Sub-3s Zero-Shot Streaming Voice Cloning</text>
+    <text x="42" y="150" fill="#94A3B8" font-size="11.5">Qwen3-TTS, Chatterbox &amp; CosyVoice 3 clone timbre in &lt;3s clip</text>
+    <text x="42" y="166" fill="#A5B4FC" font-size="11.5" font-weight="600">Risk: Unconsented BIPA cloning &amp; cross-tenant voiceprint leak</text>
+
+    <!-- Item 3 -->
+    <circle cx="28" cy="192" r="5" fill="#34D399" />
+    <text x="42" y="196" fill="#F1F5F9" font-size="13" font-weight="700">3. Programmable WebRTC SFU Multi-Agent Rooms</text>
+    <text x="42" y="214" fill="#94A3B8" font-size="11.5">LiveKit Agents + Pipecat + HF speech-to-speech + Avatar visemes</text>
+    <text x="42" y="230" fill="#6EE7B7" font-size="11.5" font-weight="600">Risk: Bot-to-bot SFU audio subscription loop &amp; &gt;45ms lip-sync drift</text>
+  </g>
+
+  <!-- Pillar 1 Card: Enterprise Reference Architecture & P709-P710 -->
+  <g transform="translate(416, 96)" filter="url(#shadow)">
+    <rect width="368" height="252" rx="12" fill="url(#cardGrad)" stroke="#6366F1" stroke-width="1.5" />
+    <rect x="16" y="14" width="336" height="28" rx="6" fill="#1E1B4B" />
+    <text x="26" y="33" fill="#A5B4FC" font-size="12" font-weight="800" letter-spacing="0.5">PILLAR 1 · ARCHITECTURE &amp; P709–P710 GUARDRAILS</text>
+
+    <!-- Architecture Flow Diagram -->
+    <rect x="18" y="52" width="102" height="50" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2" />
+    <text x="69" y="73" fill="#E2E8F0" font-size="11" font-weight="700" text-anchor="middle">Proactive S2S</text>
+    <text x="69" y="90" fill="#7DD3FC" font-size="10" text-anchor="middle">Gaze/Wake Gate</text>
+
+    <path d="M 122 77 L 138 77" stroke="#64748B" stroke-width="2" />
+
+    <rect x="140" y="52" width="104" height="50" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2" />
+    <text x="192" y="73" fill="#FDE68A" font-size="11" font-weight="700" text-anchor="middle">P709 &amp; P710</text>
+    <text x="192" y="90" fill="#F59E0B" font-size="10" text-anchor="middle">0ms Inline Firewall</text>
+
+    <path d="M 246 77 L 262 77" stroke="#64748B" stroke-width="2" />
+
+    <rect x="264" y="52" width="86" height="50" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2" />
+    <text x="307" y="73" fill="#A7F3D0" font-size="11" font-weight="700" text-anchor="middle">SFU &amp; Clone</text>
+    <text x="307" y="90" fill="#34D399" font-size="10" text-anchor="middle">C2PA + Viseme</text>
+
+    <!-- P709 Box -->
+    <rect x="18" y="114" width="332" height="60" rx="8" fill="#090D16" stroke="#334155" stroke-width="1" />
+    <text x="28" y="132" fill="#38BDF8" font-size="11.5" font-weight="800">P709 · Proactive Bystander Gate &amp; Thinking Pacing</text>
+    <text x="28" y="149" fill="#CBD5E1" font-size="10.5">• Suppress chime-in on bystander speech / unmasked visual PII in 0ms</text>
+    <text x="28" y="164" fill="#94A3B8" font-size="10.5">• Abort stale-epoch thinking; clamp silence ≤900ms &amp; conf ≥0.88</text>
+
+    <!-- P710 Box -->
+    <rect x="18" y="182" width="332" height="58" rx="8" fill="#090D16" stroke="#334155" stroke-width="1" />
+    <text x="28" y="200" fill="#34D399" font-size="11.5" font-weight="800">P710 · Zero-Shot Voice Clone BIPA &amp; WebRTC SFU Guard</text>
+    <text x="28" y="216" fill="#CBD5E1" font-size="10.5">• Block unconsented BIPA / cross-tenant voice clone or missing C2PA</text>
+    <text x="28" y="231" fill="#94A3B8" font-size="10.5">• Detach SFU bot-to-bot audio loop; clamp viseme skew ≤45ms &amp; clip ≤15s</text>
+  </g>
+
+  <!-- Pillar 2 Card: Interactive Demo & Workbench Evolution -->
+  <g transform="translate(804, 96)" filter="url(#shadow)">
+    <rect width="368" height="252" rx="12" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5" />
+    <rect x="16" y="14" width="336" height="28" rx="6" fill="#064E3B" />
+    <text x="26" y="33" fill="#6EE7B7" font-size="12" font-weight="800" letter-spacing="0.5">PILLAR 2 · INTERACTIVE WORKBENCH &amp; DECK</text>
+
+    <rect x="18" y="52" width="332" height="56" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1" />
+    <text x="30" y="72" fill="#ECFDF5" font-size="12.5" font-weight="700">Live Full-Duplex &amp; Guardrail Simulator</text>
+    <text x="30" y="90" fill="#6EE7B7" font-size="11">6 Interactive Presets: P709 Bystander/Thinking · P710 Clone/SFU</text>
+    <text x="30" y="103" fill="#94A3B8" font-size="10">Plus P707 Remote MCP/SIP · P708 Sim-S2S · P705–P706 Full-Duplex</text>
+
+    <rect x="18" y="116" width="332" height="58" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1" />
+    <text x="30" y="135" fill="#F8FAFC" font-size="12" font-weight="700">Deterministic Telemetry &amp; Remediation Output</text>
+    <text x="30" y="152" fill="#94A3B8" font-size="10.8">Real-time JSON trace: policyId, action, clampedSilenceMs (900ms),</text>
+    <text x="30" y="167" fill="#94A3B8" font-size="10.8">clampedConfidence (0.88), clampedVisemeSkewMs (45ms) &amp; remediation</text>
+
+    <rect x="18" y="182" width="332" height="58" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1" />
+    <text x="30" y="201" fill="#7DD3FC" font-size="12" font-weight="700">One-Click Customer Experience Surfaces</text>
+    <text x="30" y="218" fill="#CBD5E1" font-size="10.8">• /voice/index.html (Dual-Mode Sandbox + P705–P710 Simulator)</text>
+    <text x="30" y="233" fill="#CBD5E1" font-size="10.8">• /voice/deck.html (11-Slide Executive Deck) &amp; /voice/benchmark-cards.html</text>
+  </g>
+
+  <!-- ==================== ROW 2: PILLARS 3 & 4 ==================== -->
+
+  <!-- Pillar 3 Card: Reproducible Benchmark & 7-Card Visual Evaluation -->
+  <g transform="translate(28, 364)" filter="url(#shadow)">
+    <rect width="566" height="248" rx="12" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5" />
+    <rect x="16" y="14" width="534" height="28" rx="6" fill="#451A03" />
+    <text x="26" y="33" fill="#FCD34D" font-size="12" font-weight="800" letter-spacing="0.5">PILLAR 3 · REPRODUCIBLE BENCHMARK &amp; 7-CARD (4:5) EVALUATION (361 DIMENSIONS)</text>
+
+    <!-- Latency Comparison Bars -->
+    <text x="22" y="62" fill="#E2E8F0" font-size="12" font-weight="700">End-to-End Turn &amp; Guardrail Latency (P50 / P95 — Measured + Sealed Report)</text>
+
+    <!-- Bar 1 -->
+    <text x="22" y="85" fill="#CBD5E1" font-size="11">Native S2S + P709/P710</text>
+    <rect x="168" y="73" width="135" height="16" rx="4" fill="url(#accentBlue)" />
+    <text x="311" y="85" fill="#38BDF8" font-size="11" font-weight="700">295ms P50 / 460ms P95 (0ms Guard Overhead)</text>
+
+    <!-- Bar 2 -->
+    <text x="22" y="110" fill="#CBD5E1" font-size="11">Cascaded Fast-RAG</text>
+    <rect x="168" y="98" width="235" height="16" rx="4" fill="url(#accentEmerald)" />
+    <text x="411" y="110" fill="#34D399" font-size="11" font-weight="700">580ms P50 / 840ms P95 (100% Grounded)</text>
+
+    <!-- Bar 3 -->
+    <text x="22" y="135" fill="#CBD5E1" font-size="11">Unguarded Extended S2S</text>
+    <rect x="168" y="123" width="330" height="16" rx="4" fill="url(#accentAmber)" />
+    <text x="504" y="135" fill="#F87171" font-size="11" font-weight="700">1,850ms Dead-Air</text>
+
+    <!-- KPI Grid -->
+    <rect x="20" y="152" width="168" height="80" rx="8" fill="#090D16" stroke="#334155" />
+    <text x="104" y="175" fill="#94A3B8" font-size="10.5" font-weight="700" text-anchor="middle">EVALUATION MATRIX</text>
+    <text x="104" y="200" fill="#38BDF8" font-size="20" font-weight="800" text-anchor="middle">361 / 361</text>
+    <text x="104" y="220" fill="#64748B" font-size="10" text-anchor="middle">Dimensions · 728 Probes</text>
+
+    <rect x="199" y="152" width="168" height="80" rx="8" fill="#090D16" stroke="#334155" />
+    <text x="283" y="175" fill="#94A3B8" font-size="10.5" font-weight="700" text-anchor="middle">BYSTANDER &amp; CLONE GUARD</text>
+    <text x="283" y="200" fill="#34D399" font-size="20" font-weight="800" text-anchor="middle">100% (0.0 pts)</text>
+    <text x="283" y="220" fill="#64748B" font-size="10" text-anchor="middle">0ms Block · ≤900ms Pacing</text>
+
+    <rect x="378" y="152" width="168" height="80" rx="8" fill="#090D16" stroke="#334155" />
+    <text x="462" y="175" fill="#94A3B8" font-size="10.5" font-weight="700" text-anchor="middle">AUTOMATED TEST SUITE</text>
+    <text x="462" y="200" fill="#FBBF24" font-size="20" font-weight="800" text-anchor="middle">280 / 280</text>
+    <text x="462" y="220" fill="#64748B" font-size="10" text-anchor="middle">719 Guardrails · 0 Failures</text>
+  </g>
+
+  <!-- Pillar 4 Card: Business Scenario & Solution Playbook -->
+  <g transform="translate(608, 364)" filter="url(#shadow)">
+    <rect width="564" height="248" rx="12" fill="url(#cardGrad)" stroke="#EC4899" stroke-width="1.5" />
+    <rect x="16" y="14" width="532" height="28" rx="6" fill="#500724" />
+    <text x="26" y="33" fill="#F472B6" font-size="12" font-weight="800" letter-spacing="0.5">PILLAR 4 · ENTERPRISE SCENARIO MATRIX, TCO &amp; GOOD FIT VS NOT FOR</text>
+
+    <!-- Scenario Table -->
+    <rect x="18" y="50" width="528" height="114" rx="8" fill="#090D16" stroke="#334155" />
+    <text x="28" y="69" fill="#94A3B8" font-size="10.5" font-weight="700">SCENARIO</text>
+    <text x="195" y="69" fill="#94A3B8" font-size="10.5" font-weight="700">RECOMMENDED PATTERN</text>
+    <text x="415" y="69" fill="#94A3B8" font-size="10.5" font-weight="700">GUARDRAIL &amp; TCO</text>
+    <line x1="18" y1="76" x2="546" y2="76" stroke="#1E293B" />
+
+    <text x="28" y="94" fill="#F1F5F9" font-size="11" font-weight="600">Smart Field / Co-Pilot Desk</text>
+    <text x="195" y="94" fill="#38BDF8" font-size="11">Proactive S2S + Extended Thinking</text>
+    <text x="415" y="94" fill="#34D399" font-size="11">P709 Gate · $0.056/min</text>
+
+    <text x="28" y="114" fill="#F1F5F9" font-size="11" font-weight="600">VIP Brand Concierge &amp; Avatar</text>
+    <text x="195" y="114" fill="#A5B4FC" font-size="11">Zero-Shot Clone + WebRTC SFU Room</text>
+    <text x="415" y="114" fill="#34D399" font-size="11">P710 BIPA/SFU · $0.049/min</text>
+
+    <text x="28" y="134" fill="#F1F5F9" font-size="11" font-weight="600">Cross-Border Service Desk</text>
+    <text x="195" y="134" fill="#FCD34D" font-size="11">Native S2S Sim-Interp + Spec-RAG</text>
+    <text x="415" y="134" fill="#34D399" font-size="11">P707 + P708 · $0.062/min</text>
+
+    <text x="28" y="154" fill="#F1F5F9" font-size="11" font-weight="600">BFSI Wealth &amp; Claims Audit</text>
+    <text x="195" y="154" fill="#6EE7B7" font-size="11">Cascaded Dual-Engine + SIP REC</text>
+    <text x="415" y="154" fill="#34D399" font-size="11">P705–P710 · $0.042/min</text>
+
+    <!-- Good Fit vs Not For Boxes -->
+    <rect x="18" y="172" width="258" height="62" rx="8" fill="#052E16" stroke="#10B981" stroke-width="1" />
+    <text x="28" y="190" fill="#6EE7B7" font-size="11" font-weight="800">GOOD FIT (PRODUCTION READY)</text>
+    <text x="28" y="206" fill="#D1FAE5" font-size="10">• P709-gated Proactive Audio + ≤900ms thinking</text>
+    <text x="28" y="221" fill="#D1FAE5" font-size="10">• P710 BIPA/C2PA clone + SFU loop-free rooms</text>
+
+    <rect x="288" y="172" width="258" height="62" rx="8" fill="#450A0A" stroke="#EF4444" stroke-width="1" />
+    <text x="298" y="190" fill="#FCA5A5" font-size="11" font-weight="800">NOT FOR (DO NOT DEPLOY)</text>
+    <text x="298" y="206" fill="#FEE2E2" font-size="10">• Unfiltered proactive mic chime-in on bystanders</text>
+    <text x="298" y="221" fill="#FEE2E2" font-size="10">• Unconsented 3s voice cloning or SFU bot loops</text>
+  </g>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="624" width="1144" height="36" rx="8" fill="#090D16" stroke="#1E293B" />
+  <text x="44" y="646" fill="#94A3B8" font-size="11.5" font-weight="600">Repo: github.com/turbo998/voice-agent-lab (main) · Live Portal: turbo998.github.io/voice/ · 7-Card Report: turbo998.github.io/voice/benchmark-cards.html</text>
+  <text x="1156" y="646" fill="#38BDF8" font-size="11.5" font-weight="700" text-anchor="end">Verified: 280 Pass · CSP Self-Contained</text>
+</svg>

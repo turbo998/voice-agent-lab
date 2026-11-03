@@ -66920,6 +66920,189 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface ProactiveAudioBystanderSilenceGateAndLiveExtendedThinkingPacingContext {
+      bystanderSideConversationOrBackgroundMediaDetected: boolean;
+      unmaskedPrivateScreenOrBystanderPiiInVisualContext: boolean;
+      liveExtendedThinkingStaleTurnEpochDetected: boolean;
+      liveExtendedThinkingSilenceWithoutFillerMs: number;
+      proactiveChimeInConfidenceScore: number;
+    }
+
+    export interface ProactiveAudioBystanderSilenceGateAndLiveExtendedThinkingPacingDecision {
+      violated: boolean;
+      policyId: "P709-PROACTIVE-AUDIO-BYSTANDER-SILENCE-GATE-AND-LIVE-EXTENDED-THINKING-PACING-GUARD";
+      action:
+        | "suppress_proactive_chime_in_on_bystander_speech_or_unmasked_visual_pii_in_0ms"
+        | "abort_stale_epoch_extended_thinking_output_and_inject_pacing_earcon"
+        | "clamp_extended_thinking_dead_air_window_and_proactive_confidence_threshold"
+        | "allow";
+      reason: string;
+      clampedLiveExtendedThinkingSilenceWithoutFillerMs: number;
+      clampedProactiveChimeInConfidenceScore: number;
+    }
+
+    export function evaluateProactiveAudioBystanderSilenceGateAndLiveExtendedThinkingPacingGuard(
+      context: ProactiveAudioBystanderSilenceGateAndLiveExtendedThinkingPacingContext,
+    ): ProactiveAudioBystanderSilenceGateAndLiveExtendedThinkingPacingDecision {
+      const policyId =
+        "P709-PROACTIVE-AUDIO-BYSTANDER-SILENCE-GATE-AND-LIVE-EXTENDED-THINKING-PACING-GUARD" as const;
+      const clampedLiveExtendedThinkingSilenceWithoutFillerMs = Math.min(
+        Math.max(context.liveExtendedThinkingSilenceWithoutFillerMs, 150),
+        900,
+      );
+      const clampedProactiveChimeInConfidenceScore = Number(
+        Math.min(
+          Math.max(context.proactiveChimeInConfidenceScore, 0.88),
+          0.99,
+        ).toFixed(2),
+      );
+
+      if (
+        context.bystanderSideConversationOrBackgroundMediaDetected ||
+        context.unmaskedPrivateScreenOrBystanderPiiInVisualContext
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "suppress_proactive_chime_in_on_bystander_speech_or_unmasked_visual_pii_in_0ms",
+          reason:
+            "Proactive Audio bystander/privacy hazard (Gemini 3.8 Live / Azure Voice Live): side conversation with a bystander, background TV/media audio, or unmasked private screen PII detected; suppressing proactive chime-in in 0ms.",
+          clampedLiveExtendedThinkingSilenceWithoutFillerMs,
+          clampedProactiveChimeInConfidenceScore,
+        };
+      }
+
+      if (context.liveExtendedThinkingStaleTurnEpochDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "abort_stale_epoch_extended_thinking_output_and_inject_pacing_earcon",
+          reason:
+            "Live Extended Thinking epoch skew detected: caller updated or barged in while deep reasoning was in flight; aborting stale reasoning speech and injecting non-verbal pacing earcon in 0ms.",
+          clampedLiveExtendedThinkingSilenceWithoutFillerMs,
+          clampedProactiveChimeInConfidenceScore,
+        };
+      }
+
+      if (
+        context.liveExtendedThinkingSilenceWithoutFillerMs > 900 ||
+        context.proactiveChimeInConfidenceScore < 0.88
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_extended_thinking_dead_air_window_and_proactive_confidence_threshold",
+          reason:
+            "Live Extended Thinking dead-air window (>900ms without pacing filler) or low proactive chime-in confidence (<0.88) detected; clamping silence budget and enforcing >=0.88 device-directed intent threshold.",
+          clampedLiveExtendedThinkingSilenceWithoutFillerMs,
+          clampedProactiveChimeInConfidenceScore,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Proactive Audio device-directed intent (>=0.88), visual PII masking, and Live Extended Thinking <=900ms pacing verified.",
+        clampedLiveExtendedThinkingSilenceWithoutFillerMs,
+        clampedProactiveChimeInConfidenceScore,
+      };
+    }
+
+    export interface ZeroShotVoiceCloneBipaConsentAndWebrtcSfuBotLoopContext {
+      cryptographicBipaConsentAndDualC2paWatermarkVerified: boolean;
+      crossTenantReferenceVoiceEmbeddingAccessDetected: boolean;
+      webrtcSfuSelfOrPeerBotAudioTrackLoopDetected: boolean;
+      avatarVisemeAudioSyncSkewMs: number;
+      zeroShotCloneReferenceClipDurationSec: number;
+    }
+
+    export interface ZeroShotVoiceCloneBipaConsentAndWebrtcSfuBotLoopDecision {
+      violated: boolean;
+      policyId: "P710-ZERO-SHOT-VOICE-CLONE-BIPA-CONSENT-AND-WEBRTC-SFU-BOT-LOOP-GUARD";
+      action:
+        | "block_unconsented_or_cross_tenant_zero_shot_voice_clone_in_0ms"
+        | "break_webrtc_sfu_bot_audio_subscription_loop_in_0ms"
+        | "clamp_avatar_viseme_sync_skew_and_reference_clip_window"
+        | "allow";
+      reason: string;
+      clampedAvatarVisemeAudioSyncSkewMs: number;
+      clampedZeroShotCloneReferenceClipDurationSec: number;
+    }
+
+    export function evaluateZeroShotVoiceCloneBipaConsentAndWebrtcSfuBotLoopGuard(
+      context: ZeroShotVoiceCloneBipaConsentAndWebrtcSfuBotLoopContext,
+    ): ZeroShotVoiceCloneBipaConsentAndWebrtcSfuBotLoopDecision {
+      const policyId =
+        "P710-ZERO-SHOT-VOICE-CLONE-BIPA-CONSENT-AND-WEBRTC-SFU-BOT-LOOP-GUARD" as const;
+      const clampedAvatarVisemeAudioSyncSkewMs = Math.min(
+        Math.max(context.avatarVisemeAudioSyncSkewMs, 0),
+        45,
+      );
+      const clampedZeroShotCloneReferenceClipDurationSec = Math.min(
+        Math.max(context.zeroShotCloneReferenceClipDurationSec, 3),
+        15,
+      );
+
+      if (
+        !context.cryptographicBipaConsentAndDualC2paWatermarkVerified ||
+        context.crossTenantReferenceVoiceEmbeddingAccessDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_unconsented_or_cross_tenant_zero_shot_voice_clone_in_0ms",
+          reason:
+            "Zero-shot streaming voice clone violation (Qwen3-TTS / Chatterbox / CosyVoice 3): missing cryptographic BIPA/CUBI consent, missing dual C2PA + PerTh/18dB watermark, or cross-tenant speaker embedding access detected; blocking synthesis in 0ms.",
+          clampedAvatarVisemeAudioSyncSkewMs,
+          clampedZeroShotCloneReferenceClipDurationSec,
+        };
+      }
+
+      if (context.webrtcSfuSelfOrPeerBotAudioTrackLoopDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "break_webrtc_sfu_bot_audio_subscription_loop_in_0ms",
+          reason:
+            "WebRTC SFU multi-agent room loop hazard (LiveKit Agents / Pipecat): agent subscribed to its own or a peer bot's TTS audio track (RFC 3840 automata); detaching bot track subscription in 0ms.",
+          clampedAvatarVisemeAudioSyncSkewMs,
+          clampedZeroShotCloneReferenceClipDurationSec,
+        };
+      }
+
+      if (
+        context.avatarVisemeAudioSyncSkewMs > 45 ||
+        context.zeroShotCloneReferenceClipDurationSec > 15
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_avatar_viseme_sync_skew_and_reference_clip_window",
+          reason:
+            "Avatar viseme-audio lip-sync skew (>45ms ITU-R BT.1359) or reference voice clip window (>15s) exceeded safe bounds; clamping viseme jitter buffer and reference duration.",
+          clampedAvatarVisemeAudioSyncSkewMs,
+          clampedZeroShotCloneReferenceClipDurationSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Zero-shot voice clone BIPA/C2PA provenance, tenant embedding isolation, WebRTC SFU bot-loop exclusion, and <=45ms viseme sync verified.",
+        clampedAvatarVisemeAudioSyncSkewMs,
+        clampedZeroShotCloneReferenceClipDurationSec,
+      };
+    }
+
+
 
 
 

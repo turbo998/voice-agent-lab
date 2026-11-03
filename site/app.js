@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-02 热门突破交互沙盒：原生 Remote MCP + SIP REFER 转接 & Hibiki 流式同传极性门禁 (Stage 357 / Stage 356 · P705–P708)",
-    simSub: "点击下方全双工与跨语种同传压测探针，实时验证 gpt-realtime-2.1 Remote MCP + SIP REFER 振铃打断撤回 (P707)、Kyutai Hibiki 流式同传极性防反转 & Hume EVI 3 / Cartesia Sonic 情绪门禁 (P708) 以及 P705 / P706 的 0ms 确定性响应：",
+    simTitle: "🧪 2026-11-03 热门突破交互沙盒：Proactive Audio 旁人静默门控 + 慢思考节奏 & 3s 零样本声纹克隆 BIPA + WebRTC SFU 防回环 (Stage 358 / Stage 357 / Stage 356 · P705–P710)",
+    simSub: "点击下方全双工与多模态压测探针，实时验证 Gemini 3.8 Live / Azure Voice Live 主动插话旁人静默与慢思考节奏门禁 (P709)、Qwen3-TTS / Chatterbox / CosyVoice 3 零样本克隆 BIPA 水印与 LiveKit / Pipecat SFU 房间防死循环 (P710) 以及 P705–P708 的 0ms 确定性响应：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-02 熱門突破互動沙盒：原生 Remote MCP + SIP REFER 轉接 & Hibiki 流式同傳極性門禁 (Stage 357 / Stage 356 · P705–P708)",
-    simSub: "點擊下方全雙工與跨語種同傳壓測探針，即時驗證 gpt-realtime-2.1 Remote MCP + SIP REFER 振鈴打斷撤回 (P707)、Kyutai Hibiki 流式同傳極性防反轉 & Hume EVI 3 / Cartesia Sonic 情緒門禁 (P708) 以及 P705 / P706 的 0ms 確定性響應：",
+    simTitle: "🧪 2026-11-03 熱門突破互動沙盒：Proactive Audio 旁人靜默門控 + 慢思考節奏 & 3s 零樣本聲紋克隆 BIPA + WebRTC SFU 防迴環 (Stage 358 / Stage 357 / Stage 356 · P705–P710)",
+    simSub: "點擊下方全雙工與多模態壓測探針，即時驗證 Gemini 3.8 Live / Azure Voice Live 主動插話旁人靜默與慢思考節奏門禁 (P709)、Qwen3-TTS / Chatterbox / CosyVoice 3 零樣本克隆 BIPA 水印與 LiveKit / Pipecat SFU 房間防死循環 (P710) 以及 P705–P708 的 0ms 確定性響應：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-02 Breakthrough Sandbox: Native Remote MCP + SIP REFER Transfer & Hibiki Simultaneous S2S Polarity Guard (Stage 357 / Stage 356 · P705–P708)",
-    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for gpt-realtime-2.1 Remote MCP + SIP REFER Barge-In Cancel (P707), Kyutai Hibiki Simultaneous S2S Polarity Lock & Hume EVI 3 / Cartesia Sonic Affective Clamp (P708), and P705 / P706:",
+    simTitle: "🧪 2026-11-03 Breakthrough Sandbox: Proactive Audio Bystander Gate + Thinking Pacing & Sub-3s Zero-Shot Voice Clone BIPA + WebRTC SFU Loop Guard (Stage 358 / Stage 357 / Stage 356 · P705–P710)",
+    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for Gemini 3.8 Live / Azure Voice Live Proactive Audio & Live Extended Thinking Pacing (P709), Qwen3-TTS / Chatterbox / CosyVoice 3 Zero-Shot Clone BIPA + LiveKit / Pipecat SFU Loop Guard (P710), and P705–P708:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 357 P707/P708 · 360维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 358 P709/P710 · 361维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-02",
-      title: "原生 Remote MCP + SIP REFER 转接 & Hibiki 流式同传极性保真",
-      desc: "追踪 gpt-realtime-2.1 Remote MCP & SIP REFER、Kyutai Hibiki 流式同传 S2S 与 Hume EVI 3 / Cartesia Sonic SSM，交付 Stage 357 (P707/P708) 护栏与高清 SVG 总结。",
+      badge: "Daily Breakthrough · 2026-11-03",
+      title: "Proactive Audio 慢思考门控 & 3s 零样本声纹克隆 + SFU 防死循环",
+      desc: "追踪 Gemini 3.8 Live / Azure Voice Live 主动音频与通话中慢思考、Qwen3-TTS / Chatterbox / CosyVoice 3 零样本声纹克隆及 LiveKit / Pipecat WebRTC SFU，交付 Stage 358 (P709/P710) 护栏与高清 SVG 总结。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 357 P707/P708 · 360維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 358 P709/P710 · 361維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-02",
-      title: "原生 Remote MCP + SIP REFER 轉接 & Hibiki 流式同傳極性保真",
-      desc: "追蹤 gpt-realtime-2.1 Remote MCP & SIP REFER、Kyutai Hibiki 流式同傳 S2S 與 Hume EVI 3 / Cartesia Sonic SSM，交付 Stage 357 (P707/P708) 護欄與高清 SVG 總結。",
+      badge: "Daily Breakthrough · 2026-11-03",
+      title: "Proactive Audio 慢思考門控 & 3s 零樣本聲紋克隆 + SFU 防死循環",
+      desc: "追蹤 Gemini 3.8 Live / Azure Voice Live 主動音訊與通話中慢思考、Qwen3-TTS / Chatterbox / CosyVoice 3 零樣本聲紋克隆及 LiveKit / Pipecat WebRTC SFU，交付 Stage 358 (P709/P710) 護欄與高清 SVG 總結。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 357 P707/P708 · 360-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 358 P709/P710 · 361-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-02",
-      title: "Native Remote MCP + SIP REFER & Hibiki Simultaneous S2S Fidelity",
-      desc: "Tracks gpt-realtime-2.1 Remote MCP & SIP REFER, Kyutai Hibiki simultaneous S2S & Hume EVI 3 / Cartesia Sonic SSM with Stage 357 (P707/P708) deterministic guardrails.",
+      badge: "Daily Breakthrough · 2026-11-03",
+      title: "Proactive Audio Thinking Pacing & Sub-3s Voice Clone + SFU Guard",
+      desc: "Tracks Gemini 3.8 Live / Azure Voice Live Proactive Audio & Extended Thinking, Qwen3-TTS / Chatterbox / CosyVoice 3 zero-shot cloning & LiveKit / Pipecat WebRTC SFU with Stage 358 (P709/P710) guardrails.",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,67 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p707_mcp_sip_refer";
+let currentDuplexSimId = "p709_proactive_thinking";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p709_proactive_thinking",
+    label: {
+      "zh-CN": "🔥 P709 · Proactive Audio 旁人静默门控 & 慢思考 ≤900ms 钳制",
+      "zh-TW": "🔥 P709 · Proactive Audio 旁人靜默門控 & 慢思考 ≤900ms 鉗制",
+      en: "🔥 P709 · Proactive Audio Bystander Gate & ≤900ms Thinking Pacing"
+    },
+    inputJson: `{
+  "policyId": "P709-PROACTIVE-AUDIO-BYSTANDER-SILENCE-GATE-AND-LIVE-EXTENDED-THINKING-PACING-GUARD",
+  "bystanderSideConversationOrBackgroundMediaDetected": true,
+  "unmaskedPrivateScreenOrBystanderPiiInVisualContext": true,
+  "liveExtendedThinkingStaleTurnEpochDetected": false,
+  "liveExtendedThinkingSilenceWithoutFillerMs": 1850,
+  "proactiveChimeInConfidenceScore": 0.62
+}`,
+    outputJson: `{
+  "violated": true,
+  "suppressLatencyMs": 0,
+  "action": "suppress_proactive_chime_in_on_bystander_speech_or_unmasked_visual_pii_in_0ms",
+  "clampedLiveExtendedThinkingSilenceWithoutFillerMs": 900,
+  "clampedProactiveChimeInConfidenceScore": 0.88,
+  "remediation": "SUPPRESS_PROACTIVE_CHIME_IN_ON_BYSTANDER_SPEECH_OR_UNMASKED_VISUAL_PII_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 旁人插话抑制 + 慢思考死寂钳制：检测到用户正与身边旁人交谈且屏幕存在未脱敏 PII，同时模型出现 1850ms 无填充慢思考死寂（置信度 0.62）；P709 在 0ms 内抑制主动插话，并将慢思考无填充静默窗口 1850ms→900ms、主动插话置信度门槛 0.62→0.88 钳制。",
+      "zh-TW": "✅ 0ms 旁人插話抑制 + 慢思考死寂鉗制：檢測到用戶正與身邊旁人交談且螢幕存在未脫敏 PII，同時模型出現 1850ms 無填充慢思考死寂（置信度 0.62）；P709 在 0ms 內抑制主動插話，並將慢思考無填充靜默窗口 1850ms→900ms、主動插話置信度門檻 0.62→0.88 鉗制。",
+      en: "✅ 0ms Bystander Chime-In Suppression & Extended Thinking Pacing: Detects bystander side-speech and unmasked screen PII alongside an 1850ms unpaced thinking stall; P709 suppresses proactive chime-in in 0ms and clamps silence 1850ms→900ms and confidence 0.62→0.88."
+    }
+  },
+  {
+    id: "p710_clone_sfu_loop",
+    label: {
+      "zh-CN": "🔥 P710 · 3s 零样本声纹克隆 BIPA 水印 & WebRTC SFU 防死循环",
+      "zh-TW": "🔥 P710 · 3s 零樣本聲紋克隆 BIPA 水印 & WebRTC SFU 防死循環",
+      en: "🔥 P710 · Sub-3s Zero-Shot Voice Clone BIPA & WebRTC SFU Loop Guard"
+    },
+    inputJson: `{
+  "policyId": "P710-ZERO-SHOT-VOICE-CLONE-BIPA-CONSENT-AND-WEBRTC-SFU-BOT-LOOP-GUARD",
+  "cryptographicBipaConsentAndDualC2paWatermarkVerified": false,
+  "crossTenantReferenceVoiceEmbeddingAccessDetected": true,
+  "webrtcSfuSelfOrPeerBotAudioTrackLoopDetected": true,
+  "avatarVisemeAudioSyncSkewMs": 112,
+  "zeroShotCloneReferenceClipDurationSec": 42
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_unconsented_or_cross_tenant_zero_shot_voice_clone_in_0ms",
+  "clampedAvatarVisemeAudioSyncSkewMs": 45,
+  "clampedZeroShotCloneReferenceClipDurationSec": 15,
+  "remediation": "BLOCK_UNCONSENTED_OR_CROSS_TENANT_ZERO_SHOT_VOICE_CLONE_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 零样本克隆阻断 + SFU 防死循环 + 唇音同步：拦截无 BIPA 加密授权/跨租户的 Qwen3-TTS / Chatterbox / CosyVoice 3 声纹克隆请求，摘除 LiveKit / Pipecat SFU 房间 Bot 互订音轨死循环，并将数字人唇音偏差 112ms→45ms（ITU-R BT.1359）、参考音频 42s→15s 钳制。",
+      "zh-TW": "✅ 0ms 零樣本克隆阻斷 + SFU 防死循環 + 唇音同步：攔截無 BIPA 加密授權/跨租戶的 Qwen3-TTS / Chatterbox / CosyVoice 3 聲紋克隆請求，摘除 LiveKit / Pipecat SFU 房間 Bot 互訂音軌死循環，並將數字人唇音偏差 112ms→45ms（ITU-R BT.1359）、參考音訊 42s→15s 鉗制。",
+      en: "✅ 0ms Zero-Shot Clone Block, SFU Bot-Loop Break & Viseme Sync: Blocks unconsented/cross-tenant zero-shot voice cloning, breaks WebRTC SFU bot-to-bot audio track loops, and clamps avatar viseme skew 112ms→45ms and reference clip 42s→15s."
+    }
+  },
   {
     id: "p707_mcp_sip_refer",
     label: {
@@ -2412,7 +2470,7 @@ function renderDuplexGuardSimulator() {
     </div>
     <div class="proto-grid">
       <div>
-        <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.35rem;font-weight:600;">INPUT TELEMETRY PAYLOAD (Stage 357 Probe)</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.35rem;font-weight:600;">INPUT TELEMETRY PAYLOAD (Stage 358 Probe)</div>
         <pre class="code-snippet" style="margin:0;">${active.inputJson.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
       </div>
       <div>
