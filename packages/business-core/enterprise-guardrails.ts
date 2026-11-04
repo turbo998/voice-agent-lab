@@ -67102,6 +67102,189 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface RealtimePromptablePreambleConsistencyAndAlphanumericReadbackContext {
+      preambleCommentaryContradictsFinalAnswerOrLeaksToolArgs: boolean;
+      alphanumericCodeOrOrderIdReadbackMismatchDetected: boolean;
+      callerBargeInDuringPreambleCommentaryUncancelled: boolean;
+      preambleCommentaryDurationMs: number;
+      alphanumericReadbackConfidenceScore: number;
+    }
+
+    export interface RealtimePromptablePreambleConsistencyAndAlphanumericReadbackDecision {
+      violated: boolean;
+      policyId: "P711-REALTIME-PROMPTABLE-PREAMBLE-CONSISTENCY-AND-ALPHANUMERIC-READBACK-GUARD";
+      action:
+        | "block_contradictory_preamble_or_alphanumeric_readback_mismatch_in_0ms"
+        | "abort_preamble_commentary_and_reset_turn_epoch_on_barge_in_in_0ms"
+        | "clamp_preamble_commentary_budget_and_alphanumeric_confidence_floor"
+        | "allow";
+      reason: string;
+      clampedPreambleCommentaryDurationMs: number;
+      clampedAlphanumericReadbackConfidenceScore: number;
+    }
+
+    export function evaluateRealtimePromptablePreambleConsistencyAndAlphanumericReadbackGuard(
+      context: RealtimePromptablePreambleConsistencyAndAlphanumericReadbackContext,
+    ): RealtimePromptablePreambleConsistencyAndAlphanumericReadbackDecision {
+      const policyId =
+        "P711-REALTIME-PROMPTABLE-PREAMBLE-CONSISTENCY-AND-ALPHANUMERIC-READBACK-GUARD" as const;
+      const clampedPreambleCommentaryDurationMs = Math.min(
+        Math.max(context.preambleCommentaryDurationMs, 120),
+        650,
+      );
+      const clampedAlphanumericReadbackConfidenceScore = Math.min(
+        Math.max(context.alphanumericReadbackConfidenceScore, 0.95),
+        0.99,
+      );
+
+      if (
+        context.preambleCommentaryContradictsFinalAnswerOrLeaksToolArgs ||
+        context.alphanumericCodeOrOrderIdReadbackMismatchDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_contradictory_preamble_or_alphanumeric_readback_mismatch_in_0ms",
+          reason:
+            "Realtime promptable preamble or alphanumeric readback hazard (gpt-realtime-2.1 / 2.1-mini / Azure Voice Live): commentary preamble promised approval/outcome contradicting final_answer, leaked internal tool parameters, or drifted on alphanumeric confirmation/order ID readback; blocking in 0ms.",
+          clampedPreambleCommentaryDurationMs,
+          clampedAlphanumericReadbackConfidenceScore,
+        };
+      }
+
+      if (context.callerBargeInDuringPreambleCommentaryUncancelled) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "abort_preamble_commentary_and_reset_turn_epoch_on_barge_in_in_0ms",
+          reason:
+            "Caller barged in during commentary preamble phase while tool call was in flight; aborting preamble audio stream, fencing pending tool mutation, and resetting turnEpoch in 0ms.",
+          clampedPreambleCommentaryDurationMs,
+          clampedAlphanumericReadbackConfidenceScore,
+        };
+      }
+
+      if (
+        context.preambleCommentaryDurationMs > 650 ||
+        context.alphanumericReadbackConfidenceScore < 0.95
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_preamble_commentary_budget_and_alphanumeric_confidence_floor",
+          reason:
+            "Promptable preamble commentary duration (>650ms) or alphanumeric readback confidence (<0.95) out of bounds; clamping commentary window to <=650ms and enforcing >=0.95 NATO/digit readback confidence floor.",
+          clampedPreambleCommentaryDurationMs,
+          clampedAlphanumericReadbackConfidenceScore,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Promptable preamble neutral status framing, <=650ms duration budget, and >=0.95 character-by-character alphanumeric readback fidelity verified.",
+        clampedPreambleCommentaryDurationMs,
+        clampedAlphanumericReadbackConfidenceScore,
+      };
+    }
+
+    export interface AffectiveTurnTakingProsodyEscalationAndSpeakerProfileIsolationContext {
+      unverifiedSecondarySpeakerProfileHijackDetected: boolean;
+      affectiveProsodyContagionOrPrematureTurnStealDetected: boolean;
+      multiPartyTurnHandoffCollisionDetected: boolean;
+      affectiveExpressivenessGainRatio: number;
+      emotionalPauseSilenceHoldWindowMs: number;
+    }
+
+    export interface AffectiveTurnTakingProsodyEscalationAndSpeakerProfileIsolationDecision {
+      violated: boolean;
+      policyId: "P712-AFFECTIVE-TURN-TAKING-PROSODY-ESCALATION-AND-SPEAKER-PROFILE-ISOLATION-GUARD";
+      action:
+        | "block_secondary_speaker_hijack_or_affective_turn_steal_in_0ms"
+        | "serialize_multiparty_turn_handoff_and_lock_primary_caller_profile"
+        | "clamp_affective_expressiveness_gain_and_emotional_pause_hold_window"
+        | "allow";
+      reason: string;
+      clampedAffectiveExpressivenessGainRatio: number;
+      clampedEmotionalPauseSilenceHoldWindowMs: number;
+    }
+
+    export function evaluateAffectiveTurnTakingProsodyEscalationAndSpeakerProfileIsolationGuard(
+      context: AffectiveTurnTakingProsodyEscalationAndSpeakerProfileIsolationContext,
+    ): AffectiveTurnTakingProsodyEscalationAndSpeakerProfileIsolationDecision {
+      const policyId =
+        "P712-AFFECTIVE-TURN-TAKING-PROSODY-ESCALATION-AND-SPEAKER-PROFILE-ISOLATION-GUARD" as const;
+      const clampedAffectiveExpressivenessGainRatio = Math.min(
+        Math.max(context.affectiveExpressivenessGainRatio, 0.85),
+        1.25,
+      );
+      const clampedEmotionalPauseSilenceHoldWindowMs = Math.min(
+        Math.max(context.emotionalPauseSilenceHoldWindowMs, 750),
+        1800,
+      );
+
+      if (
+        context.unverifiedSecondarySpeakerProfileHijackDetected ||
+        context.affectiveProsodyContagionOrPrematureTurnStealDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_secondary_speaker_hijack_or_affective_turn_steal_in_0ms",
+          reason:
+            "Affective turn-taking or speaker-profile ASR violation (ElevenLabs Conversational AI 2.0 / Cartesia Sonic & Ink / Retell AI): unverified secondary speaker attempted account mutation on primary caller's channel, or affective prosody mirrored frustration / stole an emotional pause turn; blocking in 0ms.",
+          clampedAffectiveExpressivenessGainRatio,
+          clampedEmotionalPauseSilenceHoldWindowMs,
+        };
+      }
+
+      if (context.multiPartyTurnHandoffCollisionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "serialize_multiparty_turn_handoff_and_lock_primary_caller_profile",
+          reason:
+            "Simultaneous multi-party speaker handoff collision detected on shared telephony/WebRTC stream; serializing turn handoff and locking write-privilege to verified primary speaker profile.",
+          clampedAffectiveExpressivenessGainRatio,
+          clampedEmotionalPauseSilenceHoldWindowMs,
+        };
+      }
+
+      if (
+        context.affectiveExpressivenessGainRatio > 1.25 ||
+        context.emotionalPauseSilenceHoldWindowMs < 750
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_affective_expressiveness_gain_and_emotional_pause_hold_window",
+          reason:
+            "Affective expressiveness gain (>1.25x) or emotional pause silence hold window (<750ms) out of bounds; clamping prosody expressiveness and enforcing >=750ms distress/hesitation hold window.",
+          clampedAffectiveExpressivenessGainRatio,
+          clampedEmotionalPauseSilenceHoldWindowMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Affective turn-taking de-escalation prosody (<=1.25x), >=750ms emotional pause hold window, and primary speaker-profile write isolation verified.",
+        clampedAffectiveExpressivenessGainRatio,
+        clampedEmotionalPauseSilenceHoldWindowMs,
+      };
+    }
+
+
 
 
 

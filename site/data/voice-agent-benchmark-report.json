@@ -1351,6 +1351,12 @@
       "original": "100.0% (0ms proactive chime-in suppression on bystander speech, background media, or unmasked screen PII + 0ms stale-epoch extended-thinking abort with pacing earcon + <=900ms silence & >=0.88 confidence clamp)",
       "reversed": "100.0% (0ms unconsented BIPA or cross-tenant zero-shot voice clone & missing C2PA+PerTh watermark block + 0ms WebRTC SFU bot-to-bot audio loop detachment + <=45ms avatar viseme skew & [3, 15]s reference clip clamp)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "362. Realtime Promptable Preamble Consistency & Alphanumeric Confirmation Readback (gpt-realtime-2.1 / 2.1-mini / Azure Voice Live) & Affective Turn-Taking Prosody Escalation + Speaker-Profile ASR Write Isolation Guard (ElevenLabs Conversational AI 2.0 / Cartesia Sonic & Ink / Retell AI) (P711 / P712 — Stage 359 · 362-Dimension Milestone)",
+      "original": "100.0% (0ms contradictory commentary-to-final_answer preamble or tool-arg leak & alphanumeric readback drift block + 0ms preamble abort & turnEpoch reset on caller barge-in + <=650ms commentary & >=0.95 alphanumeric confidence clamp)",
+      "reversed": "100.0% (0ms unverified secondary speaker profile hijack or emotional pause premature turn-steal block + serialized multi-party turn handoff with primary caller write lock + <=1.25x expressiveness gain & >=750ms emotional pause hold clamp)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

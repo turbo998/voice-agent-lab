@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#131C38" />
+    </linearGradient>
+    <linearGradient id="accentCyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="accentAmber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#EF4444" />
+    </linearGradient>
+    <linearGradient id="accentEmerald" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="accentPurple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad)" />
+  <rect x="18" y="18" width="1164" height="639" rx="16" fill="none" stroke="#1E293B" stroke-width="2" />
+
+  <!-- Top Header Banner -->
+  <rect x="36" y="32" width="1128" height="84" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5" />
+  <rect x="52" y="48" width="246" height="24" rx="12" fill="url(#accentCyan)" />
+  <text x="175" y="64" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">2026-11-04 · STAGE 359 BREAKTHROUGH</text>
+  <rect x="310" y="48" width="335" height="24" rx="12" fill="#312E81" stroke="#818CF8" stroke-width="1" />
+  <text x="477" y="64" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" fill="#E0E7FF" text-anchor="middle">362 DIMENSIONS · 721 GUARDRAILS · 730 PROBES</text>
+  <text x="52" y="98" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="800" fill="#F8FAFC">Promptable Preambles &amp; Alphanumeric Readback (P711) + Affective Turn-Taking &amp; Speaker-Profile ASR Isolation (P712)</text>
+
+  <!-- Pillar 0 & 1: Left Column -->
+  <rect x="36" y="132" width="554" height="248" rx="12" fill="#1E293B" fill-opacity="0.65" stroke="#06B6D4" stroke-width="1.5" />
+  <rect x="52" y="148" width="290" height="22" rx="6" fill="#083344" />
+  <text x="62" y="163" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" fill="#22D3EE">PILLAR 0 &amp; 1 · HOTTEST BREAKTHROUGH &amp; P711 GUARD</text>
+  <text x="52" y="192" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="700" fill="#F1F5F9">gpt-realtime-2.1 / 2.1-mini &amp; Azure Voice Live Promptable Preambles</text>
+  <text x="52" y="214" font-family="Segoe UI, Inter, sans-serif" font-size="12" fill="#94A3B8">• Split Turn Phases: Promptable commentary (preamble) vs. final_answer + reasoning_effort</text>
+  <text x="52" y="234" font-family="Segoe UI, Inter, sans-serif" font-size="12" fill="#94A3B8">• Alphanumeric Fidelity: Native confirmation code, order ID, &amp; policy number readback</text>
+  <rect x="52" y="250" width="522" height="114" rx="8" fill="#0F172A" stroke="#0E7490" stroke-width="1" />
+  <text x="66" y="272" font-family="Consolas, monospace" font-size="11.5" font-weight="700" fill="#38BDF8">P711-REALTIME-PROMPTABLE-PREAMBLE-CONSISTENCY-AND-ALPHANUMERIC-READBACK-GUARD</text>
+  <text x="66" y="294" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#E2E8F0">1. Contradictory Preamble / Tool Leak / Readback Drift → 0ms Block (100% Intercept)</text>
+  <text x="66" y="314" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#E2E8F0">2. Barge-In During Preamble Phase → 0ms Abort Commentary + Reset turnEpoch Fence</text>
+  <text x="66" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#E2E8F0">3. Preamble Budget &amp; Readback Floor → Clamp Commentary &lt;=650ms &amp; Confidence &gt;=0.95</text>
+  <text x="66" y="352" font-family="Consolas, monospace" font-size="11" fill="#34D399">Status: PASS · 0 Semantic Contradictions · 0 Alphanumeric Readback Drifts</text>
+
+  <!-- Pillar 1B & 2: Right Column -->
+  <rect x="610" y="132" width="554" height="248" rx="12" fill="#1E293B" fill-opacity="0.65" stroke="#8B5CF6" stroke-width="1.5" />
+  <rect x="626" y="148" width="320" height="22" rx="6" fill="#2E1065" />
+  <text x="636" y="163" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" fill="#C4B5FD">PILLAR 1B &amp; 2 · AFFECTIVE TURN-TAKING &amp; P712 GUARD</text>
+  <text x="626" y="192" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="700" fill="#F1F5F9">ElevenLabs 2.0 + Cartesia Sonic/Ink Affective &amp; Speaker-Profile ASR</text>
+  <text x="626" y="214" font-family="Segoe UI, Inter, sans-serif" font-size="12" fill="#94A3B8">• Affective Turn-Taking: Prosodic + lexical emotion fusion for dynamic turn endpointing</text>
+  <text x="626" y="234" font-family="Segoe UI, Inter, sans-serif" font-size="12" fill="#94A3B8">• Speaker-Aware Streaming ASR: Multi-party speaker profile attribution on shared audio</text>
+  <rect x="626" y="250" width="522" height="114" rx="8" fill="#0F172A" stroke="#6D28D9" stroke-width="1" />
+  <text x="640" y="272" font-family="Consolas, monospace" font-size="11.5" font-weight="700" fill="#A78BFA">P712-AFFECTIVE-TURN-TAKING-PROSODY-ESCALATION-AND-SPEAKER-PROFILE-ISOLATION-GUARD</text>
+  <text x="640" y="294" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#E2E8F0">1. Secondary Speaker Hijack / Affective Turn-Steal → 0ms Block (100% Intercept)</text>
+  <text x="640" y="314" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#E2E8F0">2. Multi-Party Turn Handoff Collision → Serialize Handoff + Lock Primary Profile</text>
+  <text x="640" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#E2E8F0">3. Prosody Gain &amp; Emotional Pause Hold → Clamp Gain &lt;=1.25x &amp; Hold &gt;=750ms</text>
+  <text x="640" y="352" font-family="Consolas, monospace" font-size="11" fill="#34D399">Status: PASS · 0 Secondary Speaker Writes · 0 Affective Escalation Loops</text>
+
+  <!-- Pillar 3: Bottom Left (7-Card Benchmark & Metrics) -->
+  <rect x="36" y="396" width="554" height="196" rx="12" fill="#1E293B" fill-opacity="0.65" stroke="#10B981" stroke-width="1.5" />
+  <rect x="52" y="412" width="295" height="22" rx="6" fill="#064E3B" />
+  <text x="62" y="427" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" fill="#6EE7B7">PILLAR 3 · 7-CARD (4:5) BENCHMARK &amp; LATENCY MATRIX</text>
+  <text x="52" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#F1F5F9">362 Dimensions · 721 Guardrails · 730 Probes · 281 Unit Tests (100%)</text>
+
+  <!-- Mini Metric Boxes -->
+  <rect x="52" y="468" width="166" height="64" rx="8" fill="#0F172A" stroke="#334155" />
+  <text x="135" y="490" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Preamble + Readback</text>
+  <text x="135" y="516" font-family="Segoe UI, Inter, sans-serif" font-size="18" font-weight="800" fill="#38BDF8" text-anchor="middle">&lt;=650ms / 0.95</text>
+
+  <rect x="230" y="468" width="166" height="64" rx="8" fill="#0F172A" stroke="#334155" />
+  <text x="313" y="490" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Affective Pause Hold</text>
+  <text x="313" y="516" font-family="Segoe UI, Inter, sans-serif" font-size="18" font-weight="800" fill="#A78BFA" text-anchor="middle">&gt;=750ms / 1.25x</text>
+
+  <rect x="408" y="468" width="166" height="64" rx="8" fill="#0F172A" stroke="#334155" />
+  <text x="491" y="490" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Guardrail Overhead</text>
+  <text x="491" y="516" font-family="Segoe UI, Inter, sans-serif" font-size="18" font-weight="800" fill="#34D399" text-anchor="middle">0ms Sync Gate</text>
+
+  <text x="52" y="556" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#CBD5E1">• Card 3 &amp; Card 5: Dimension 362 sealed in benchmark-cards.html &amp; voice-agent-benchmark-report.json</text>
+  <text x="52" y="576" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#CBD5E1">• Interactive Sandbox: p711_preamble_alphanumeric &amp; p712_affective_speaker live in site/app.js</text>
+
+  <!-- Pillar 4: Bottom Right (Business Scenarios & Playbook) -->
+  <rect x="610" y="396" width="554" height="196" rx="12" fill="#1E293B" fill-opacity="0.65" stroke="#F59E0B" stroke-width="1.5" />
+  <rect x="626" y="412" width="310" height="22" rx="6" fill="#451A03" />
+  <text x="636" y="427" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" fill="#FCD34D">PILLAR 4 · ENTERPRISE SCENARIO FIT &amp; SOLUTION PLAYBOOK</text>
+  <text x="626" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#F1F5F9">High-Value Scenario Matrix (Good Fit vs. Not For)</text>
+
+  <rect x="626" y="468" width="254" height="108" rx="8" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1" />
+  <text x="638" y="488" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#34D399">✅ GOOD FIT (P711 + P712 Locked)</text>
+  <text x="638" y="508" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#E2E8F0">• BFSI Wire/Order Readback (&gt;=0.95 floor)</text>
+  <text x="638" y="526" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#E2E8F0">• Airline PNR / Policy Code Verification</text>
+  <text x="638" y="544" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#E2E8F0">• Distress Triage (&gt;=750ms Pause Hold)</text>
+  <text x="638" y="562" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#E2E8F0">• Speaker-Isolated Household Banking</text>
+
+  <rect x="894" y="468" width="254" height="108" rx="8" fill="#450A0A" fill-opacity="0.35" stroke="#EF4444" stroke-width="1" />
+  <text x="906" y="488" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#F87171">⛔ NOT FOR (Unguarded Deployment)</text>
+  <text x="906" y="508" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#E2E8F0">• Freeform Preamble Promising Approval</text>
+  <text x="906" y="526" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#E2E8F0">• Unverified Alphanumeric Code Readback</text>
+  <text x="906" y="544" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#E2E8F0">• Affective Prosody Mirroring Anger/Sarcasm</text>
+  <text x="906" y="562" font-family="Segoe UI, Inter, sans-serif" font-size="11" fill="#E2E8F0">• Shared-Mic Secondary Speaker Account Edits</text>
+
+  <!-- Footer Bar -->
+  <rect x="36" y="606" width="1128" height="36" rx="8" fill="#0F172A" stroke="#1E293B" />
+  <text x="52" y="629" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="600" fill="#94A3B8">turbo998/voice-agent-lab · AI Solution Architect Daily Research · Bilingual (zh-CN / en) · Synced to main &amp; turbo998.github.io</text>
+  <text x="1148" y="629" font-family="Consolas, monospace" font-size="12" font-weight="700" fill="#38BDF8" text-anchor="end">P711 · P712 · 281 TESTS PASS</text>
+</svg>

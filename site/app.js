@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-03 热门突破交互沙盒：Proactive Audio 旁人静默门控 + 慢思考节奏 & 3s 零样本声纹克隆 BIPA + WebRTC SFU 防回环 (Stage 358 / Stage 357 / Stage 356 · P705–P710)",
-    simSub: "点击下方全双工与多模态压测探针，实时验证 Gemini 3.8 Live / Azure Voice Live 主动插话旁人静默与慢思考节奏门禁 (P709)、Qwen3-TTS / Chatterbox / CosyVoice 3 零样本克隆 BIPA 水印与 LiveKit / Pipecat SFU 房间防死循环 (P710) 以及 P705–P708 的 0ms 确定性响应：",
+    simTitle: "🧪 2026-11-04 热门突破交互沙盒：Promptable Preambles 导语一致性 + 确认码复诵 & 情绪感知轮次 + 说话人档案写隔离 (Stage 359 / Stage 358 / Stage 357 · P705–P712)",
+    simSub: "点击下方全双工与多模态压测探针，实时验证 gpt-realtime-2.1 / 2.1-mini & Azure Voice Live 可编程过渡导语一致性与字母数字确认码复诵门禁 (P711)、ElevenLabs 2.0 / Cartesia Sonic & Ink 副语言情绪轮次与主呼人声纹写隔离 (P712) 以及 P705–P710 的 0ms 确定性响应：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-03 熱門突破互動沙盒：Proactive Audio 旁人靜默門控 + 慢思考節奏 & 3s 零樣本聲紋克隆 BIPA + WebRTC SFU 防迴環 (Stage 358 / Stage 357 / Stage 356 · P705–P710)",
-    simSub: "點擊下方全雙工與多模態壓測探針，即時驗證 Gemini 3.8 Live / Azure Voice Live 主動插話旁人靜默與慢思考節奏門禁 (P709)、Qwen3-TTS / Chatterbox / CosyVoice 3 零樣本克隆 BIPA 水印與 LiveKit / Pipecat SFU 房間防死循環 (P710) 以及 P705–P708 的 0ms 確定性響應：",
+    simTitle: "🧪 2026-11-04 熱門突破互動沙盒：Promptable Preambles 導語一致性 + 確認碼複誦 & 情緒感知輪次 + 說話人檔案寫隔離 (Stage 359 / Stage 358 / Stage 357 · P705–P712)",
+    simSub: "點擊下方全雙工與多模態壓測探針，即時驗證 gpt-realtime-2.1 / 2.1-mini & Azure Voice Live 可編程過渡導語一致性與字母數字確認碼複誦門禁 (P711)、ElevenLabs 2.0 / Cartesia Sonic & Ink 副語言情緒輪次與主呼人聲紋寫隔離 (P712) 以及 P705–P710 的 0ms 確定性響應：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-03 Breakthrough Sandbox: Proactive Audio Bystander Gate + Thinking Pacing & Sub-3s Zero-Shot Voice Clone BIPA + WebRTC SFU Loop Guard (Stage 358 / Stage 357 / Stage 356 · P705–P710)",
-    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for Gemini 3.8 Live / Azure Voice Live Proactive Audio & Live Extended Thinking Pacing (P709), Qwen3-TTS / Chatterbox / CosyVoice 3 Zero-Shot Clone BIPA + LiveKit / Pipecat SFU Loop Guard (P710), and P705–P708:",
+    simTitle: "🧪 2026-11-04 Breakthrough Sandbox: Promptable Preamble Consistency + Alphanumeric Readback & Affective Turn-Taking + Speaker-Profile Isolation (Stage 359 / Stage 358 / Stage 357 · P705–P712)",
+    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for gpt-realtime-2.1 / 2.1-mini & Azure Voice Live Promptable Preambles & Alphanumeric Readback (P711), ElevenLabs 2.0 / Cartesia Sonic & Ink Affective Turn-Taking & Speaker-Profile Isolation (P712), and P705–P710:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 358 P709/P710 · 361维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 359 P711/P712 · 362维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-03",
-      title: "Proactive Audio 慢思考门控 & 3s 零样本声纹克隆 + SFU 防死循环",
-      desc: "追踪 Gemini 3.8 Live / Azure Voice Live 主动音频与通话中慢思考、Qwen3-TTS / Chatterbox / CosyVoice 3 零样本声纹克隆及 LiveKit / Pipecat WebRTC SFU，交付 Stage 358 (P709/P710) 护栏与高清 SVG 总结。",
+      badge: "Daily Breakthrough · 2026-11-04",
+      title: "Promptable Preambles 确认码复诵 & 情绪轮次说话人档案写隔离",
+      desc: "追踪 gpt-realtime-2.1 / 2.1-mini & Azure Voice Live 可编程过渡导语与字母数字复诵、ElevenLabs 2.0 / Cartesia Sonic & Ink 副语言轮次与流式声纹档案 ASR，交付 Stage 359 (P711/P712) 护栏与高清 SVG 总结。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 358 P709/P710 · 361維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 359 P711/P712 · 362維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-03",
-      title: "Proactive Audio 慢思考門控 & 3s 零樣本聲紋克隆 + SFU 防死循環",
-      desc: "追蹤 Gemini 3.8 Live / Azure Voice Live 主動音訊與通話中慢思考、Qwen3-TTS / Chatterbox / CosyVoice 3 零樣本聲紋克隆及 LiveKit / Pipecat WebRTC SFU，交付 Stage 358 (P709/P710) 護欄與高清 SVG 總結。",
+      badge: "Daily Breakthrough · 2026-11-04",
+      title: "Promptable Preambles 確認碼複誦 & 情緒輪次說話人檔案寫隔離",
+      desc: "追蹤 gpt-realtime-2.1 / 2.1-mini & Azure Voice Live 可編程過渡導語與字母數字複誦、ElevenLabs 2.0 / Cartesia Sonic & Ink 副語言輪次與流式聲紋檔案 ASR，交付 Stage 359 (P711/P712) 護欄與高清 SVG 總結。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 358 P709/P710 · 361-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 359 P711/P712 · 362-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-03",
-      title: "Proactive Audio Thinking Pacing & Sub-3s Voice Clone + SFU Guard",
-      desc: "Tracks Gemini 3.8 Live / Azure Voice Live Proactive Audio & Extended Thinking, Qwen3-TTS / Chatterbox / CosyVoice 3 zero-shot cloning & LiveKit / Pipecat WebRTC SFU with Stage 358 (P709/P710) guardrails.",
+      badge: "Daily Breakthrough · 2026-11-04",
+      title: "Promptable Preamble Readback & Affective Turn Speaker Isolation",
+      desc: "Tracks gpt-realtime-2.1 / 2.1-mini & Azure Voice Live Promptable Preambles & alphanumeric readback, plus ElevenLabs 2.0 / Cartesia Sonic & Ink affective turn-taking with Stage 359 (P711/P712) guardrails.",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,67 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p709_proactive_thinking";
+let currentDuplexSimId = "p711_preamble_alphanumeric";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p711_preamble_alphanumeric",
+    label: {
+      "zh-CN": "🔥 P711 · Promptable Preamble 导语一致性 & 字母数字 ≥0.95 复诵",
+      "zh-TW": "🔥 P711 · Promptable Preamble 導語一致性 & 字母數字 ≥0.95 複誦",
+      en: "🔥 P711 · Promptable Preamble Consistency & ≥0.95 Alphanumeric Readback"
+    },
+    inputJson: `{
+  "policyId": "P711-REALTIME-PROMPTABLE-PREAMBLE-CONSISTENCY-AND-ALPHANUMERIC-READBACK-GUARD",
+  "preambleCommentaryContradictsFinalAnswerOrLeaksToolArgs": true,
+  "alphanumericCodeOrOrderIdReadbackMismatchDetected": true,
+  "callerBargeInDuringPreambleCommentaryUncancelled": false,
+  "preambleCommentaryDurationMs": 1120,
+  "alphanumericReadbackConfidenceScore": 0.78
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_contradictory_preamble_or_alphanumeric_readback_mismatch_in_0ms",
+  "clampedPreambleCommentaryDurationMs": 650,
+  "clampedAlphanumericReadbackConfidenceScore": 0.95,
+  "remediation": "BLOCK_CONTRADICTORY_PREAMBLE_OR_ALPHANUMERIC_READBACK_MISMATCH_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 矛盾导语与确认码复诵漂移拦截：检测到 gpt-realtime-2.1 在 commentary 过渡导语阶段提前承诺退款（与最终拒赔结果矛盾）且 PNR 确认码出现 8/A 窄带失配（置信度 0.78）；P711 在 0ms 内阻断违规播报，并将导语窗口 1120ms→650ms、复诵置信度门槛 0.78→0.95 钳制。",
+      "zh-TW": "✅ 0ms 矛盾導語與確認碼複誦漂移攔截：檢測到 gpt-realtime-2.1 在 commentary 過渡導語階段提前承諾退款（與最終拒賠結果矛盾）且 PNR 確認碼出現 8/A 窄帶失配（置信度 0.78）；P711 在 0ms 內阻斷違規播報，並將導語窗口 1120ms→650ms、複誦置信度門檻 0.78→0.95 鉗制。",
+      en: "✅ 0ms Contradictory Preamble & Alphanumeric Readback Block: Detects commentary preamble promising an unapproved refund alongside a PNR 8/A readback mismatch (confidence 0.78); P711 blocks the utterance in 0ms and clamps preamble budget 1120ms→650ms and confidence floor 0.78→0.95."
+    }
+  },
+  {
+    id: "p712_affective_speaker",
+    label: {
+      "zh-CN": "🔥 P712 · 副语言情绪停顿 ≥750ms 保持 & 主呼人声纹写隔离",
+      "zh-TW": "🔥 P712 · 副語言情緒停頓 ≥750ms 保持 & 主呼人聲紋寫隔離",
+      en: "🔥 P712 · Affective Pause ≥750ms Hold & Speaker-Profile Write Isolation"
+    },
+    inputJson: `{
+  "policyId": "P712-AFFECTIVE-TURN-TAKING-PROSODY-ESCALATION-AND-SPEAKER-PROFILE-ISOLATION-GUARD",
+  "unverifiedSecondarySpeakerProfileHijackDetected": true,
+  "affectiveProsodyContagionOrPrematureTurnStealDetected": true,
+  "multiPartyTurnHandoffCollisionDetected": true,
+  "affectiveExpressivenessGainRatio": 1.68,
+  "emotionalPauseSilenceHoldWindowMs": 420
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_secondary_speaker_hijack_or_affective_turn_steal_in_0ms",
+  "clampedAffectiveExpressivenessGainRatio": 1.25,
+  "clampedEmotionalPauseSilenceHoldWindowMs": 750,
+  "remediation": "BLOCK_SECONDARY_SPEAKER_HIJACK_OR_AFFECTIVE_TURN_STEAL_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 旁人声纹越权写拦截 + 情绪停顿防抢话：拦截免提通话中未核验次要说话人的账户改签指令与哭诉停顿（420ms）抢话，并将 ElevenLabs 2.0 / Cartesia Sonic 情绪表现力增益 1.68x→1.25x、情绪犹豫静默保持窗口 420ms→750ms 钳制。",
+      "zh-TW": "✅ 0ms 旁人聲紋越權寫攔截 + 情緒停頓防搶話：攔截免提通話中未核驗次要說話人的帳戶改簽指令與哭訴停頓（420ms）搶話，並將 ElevenLabs 2.0 / Cartesia Sonic 情緒表現力增益 1.68x→1.25x、情緒猶豫靜默保持窗口 420ms→750ms 鉗制。",
+      en: "✅ 0ms Secondary Speaker Hijack & Affective Turn-Steal Block: Blocks unauthorized account mutation from an unverified secondary speaker and premature interruption on a 420ms distress pause, clamping expressiveness gain 1.68x→1.25x and emotional pause hold 420ms→750ms."
+    }
+  },
   {
     id: "p709_proactive_thinking",
     label: {
@@ -2470,7 +2528,7 @@ function renderDuplexGuardSimulator() {
     </div>
     <div class="proto-grid">
       <div>
-        <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.35rem;font-weight:600;">INPUT TELEMETRY PAYLOAD (Stage 358 Probe)</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.35rem;font-weight:600;">INPUT TELEMETRY PAYLOAD (Stage 359 Probe)</div>
         <pre class="code-snippet" style="margin:0;">${active.inputJson.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
       </div>
       <div>
