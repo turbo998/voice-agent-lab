@@ -67284,6 +67284,189 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface HybridSipWebrtcWarmTransferWhisperAndRfc4733DtmfPciBypassContext {
+      unverifiedReferTargetOrUnmaskedWhisperPiiDetected: boolean;
+      inBandDtmfAudioBleedIntoLlmContextDetected: boolean;
+      callerHungUpOrBargedInDuringWarmTransferBridge: boolean;
+      warmTransferWhisperBriefingDurationMs: number;
+      rfc4733DtmfInterDigitGapMs: number;
+    }
+
+    export interface HybridSipWebrtcWarmTransferWhisperAndRfc4733DtmfPciBypassDecision {
+      violated: boolean;
+      policyId: "P713-HYBRID-SIP-WEBRTC-WARM-TRANSFER-WHISPER-AND-RFC4733-DTMF-PCI-BYPASS-GUARD";
+      action:
+        | "block_unverified_sip_refer_or_inband_dtmf_pci_bleed_in_0ms"
+        | "abort_warm_transfer_bridge_and_reclaim_caller_leg_in_0ms"
+        | "clamp_warm_transfer_whisper_duration_and_rfc4733_dtmf_gap"
+        | "allow";
+      reason: string;
+      clampedWarmTransferWhisperBriefingDurationMs: number;
+      clampedRfc4733DtmfInterDigitGapMs: number;
+    }
+
+    export function evaluateHybridSipWebrtcWarmTransferWhisperAndRfc4733DtmfPciBypassGuard(
+      context: HybridSipWebrtcWarmTransferWhisperAndRfc4733DtmfPciBypassContext,
+    ): HybridSipWebrtcWarmTransferWhisperAndRfc4733DtmfPciBypassDecision {
+      const policyId =
+        "P713-HYBRID-SIP-WEBRTC-WARM-TRANSFER-WHISPER-AND-RFC4733-DTMF-PCI-BYPASS-GUARD" as const;
+      const clampedWarmTransferWhisperBriefingDurationMs = Math.min(
+        Math.max(context.warmTransferWhisperBriefingDurationMs, 250),
+        1800,
+      );
+      const clampedRfc4733DtmfInterDigitGapMs = Math.min(
+        Math.max(context.rfc4733DtmfInterDigitGapMs, 70),
+        250,
+      );
+
+      if (
+        context.unverifiedReferTargetOrUnmaskedWhisperPiiDetected ||
+        context.inBandDtmfAudioBleedIntoLlmContextDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_unverified_sip_refer_or_inband_dtmf_pci_bleed_in_0ms",
+          reason:
+            "Hybrid SIP/WebRTC warm transfer or RFC 4733 DTMF PCI hazard (OpenAI Realtime API /refer · Azure Voice Live · VoiceBlender · LiveKit SIP): unallowlisted SIP Refer-To target, unmasked PII in supervisor whisper briefing, or in-band DTMF card/PIN audio bleeding into LLM context; blocking in 0ms.",
+          clampedWarmTransferWhisperBriefingDurationMs,
+          clampedRfc4733DtmfInterDigitGapMs,
+        };
+      }
+
+      if (context.callerHungUpOrBargedInDuringWarmTransferBridge) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "abort_warm_transfer_bridge_and_reclaim_caller_leg_in_0ms",
+          reason:
+            "Caller hung up or barged in during hybrid SIP+WebRTC warm-transfer whisper bridge; aborting supervisor leg and reclaiming caller media session in 0ms.",
+          clampedWarmTransferWhisperBriefingDurationMs,
+          clampedRfc4733DtmfInterDigitGapMs,
+        };
+      }
+
+      if (
+        context.warmTransferWhisperBriefingDurationMs > 1800 ||
+        context.rfc4733DtmfInterDigitGapMs < 70
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_warm_transfer_whisper_duration_and_rfc4733_dtmf_gap",
+          reason:
+            "Warm-transfer supervisor whisper briefing duration (>1800ms) or RFC 4733 out-of-band DTMF inter-digit gap (<70ms) out of bounds; clamping whisper window to <=1800ms and enforcing >=70ms DTMF inter-digit gap.",
+          clampedWarmTransferWhisperBriefingDurationMs,
+          clampedRfc4733DtmfInterDigitGapMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Allowlisted SIP/WebRTC warm-transfer target, PII-redacted <=1800ms whisper briefing, and RFC 4733 out-of-band DTMF PCI vault bypass (>=70ms inter-digit gap) verified.",
+        clampedWarmTransferWhisperBriefingDurationMs,
+        clampedRfc4733DtmfInterDigitGapMs,
+      };
+    }
+
+    export interface RnnoiseAnsweringMachineDetectionBeepGateAndSoftwareAecSelfBargeInContext {
+      preBeepVoicemailPiiDisclosureOrFalseHumanAmdDetected: boolean;
+      residualAcousticEchoSelfBargeInLoopDetected: boolean;
+      ambiguousFaxOrCarrierSitToneDetected: boolean;
+      amdClassificationLatencyMs: number;
+      aecEchoReturnLossEnhancementDb: number;
+    }
+
+    export interface RnnoiseAnsweringMachineDetectionBeepGateAndSoftwareAecSelfBargeInDecision {
+      violated: boolean;
+      policyId: "P714-RNNOISE-ANSWERING-MACHINE-DETECTION-BEEP-GATE-AND-SOFTWARE-AEC-SELF-BARGE-IN-GUARD";
+      action:
+        | "block_pre_beep_voicemail_pii_leak_or_residual_echo_self_barge_in_0ms"
+        | "abort_outbound_call_on_sit_fax_tone_and_mark_dnc_safe_retry_in_0ms"
+        | "clamp_amd_classification_window_and_aec_erle_floor"
+        | "allow";
+      reason: string;
+      clampedAmdClassificationLatencyMs: number;
+      clampedAecEchoReturnLossEnhancementDb: number;
+    }
+
+    export function evaluateRnnoiseAnsweringMachineDetectionBeepGateAndSoftwareAecSelfBargeInGuard(
+      context: RnnoiseAnsweringMachineDetectionBeepGateAndSoftwareAecSelfBargeInContext,
+    ): RnnoiseAnsweringMachineDetectionBeepGateAndSoftwareAecSelfBargeInDecision {
+      const policyId =
+        "P714-RNNOISE-ANSWERING-MACHINE-DETECTION-BEEP-GATE-AND-SOFTWARE-AEC-SELF-BARGE-IN-GUARD" as const;
+      const clampedAmdClassificationLatencyMs = Math.min(
+        Math.max(context.amdClassificationLatencyMs, 150),
+        950,
+      );
+      const clampedAecEchoReturnLossEnhancementDb = Math.min(
+        Math.max(context.aecEchoReturnLossEnhancementDb, 18),
+        45,
+      );
+
+      if (
+        context.preBeepVoicemailPiiDisclosureOrFalseHumanAmdDetected ||
+        context.residualAcousticEchoSelfBargeInLoopDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_pre_beep_voicemail_pii_leak_or_residual_echo_self_barge_in_0ms",
+          reason:
+            "RNNoise AMD voicemail beep gate or software AEC residual-echo violation (VoiceBlender RNNoise AMD · Retell AI · Silero VAD · WebRTC AEC3): outbound agent attempted PII disclosure before voicemail beep (TCPA/FDCPA/HIPAA hazard) or speakerphone residual echo triggered self-barge-in loop; blocking in 0ms.",
+          clampedAmdClassificationLatencyMs,
+          clampedAecEchoReturnLossEnhancementDb,
+        };
+      }
+
+      if (context.ambiguousFaxOrCarrierSitToneDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "abort_outbound_call_on_sit_fax_tone_and_mark_dnc_safe_retry_in_0ms",
+          reason:
+            "Carrier Special Information Tone (SIT) or fax modem handshake detected on outbound leg; aborting call leg in 0ms and recording DNC-safe disposition.",
+          clampedAmdClassificationLatencyMs,
+          clampedAecEchoReturnLossEnhancementDb,
+        };
+      }
+
+      if (
+        context.amdClassificationLatencyMs > 950 ||
+        context.aecEchoReturnLossEnhancementDb < 18
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_amd_classification_window_and_aec_erle_floor",
+          reason:
+            "AMD classification latency (>950ms) or software AEC Echo Return Loss Enhancement (<18dB ERLE) out of bounds; clamping AMD decision budget to <=950ms and enforcing >=18dB ERLE suppression floor.",
+          clampedAmdClassificationLatencyMs,
+          clampedAecEchoReturnLossEnhancementDb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "RNNoise AMD classification (<=950ms), post-beep voicemail PII gate, and software AEC3 residual echo suppression (>=18dB ERLE) verified.",
+        clampedAmdClassificationLatencyMs,
+        clampedAecEchoReturnLossEnhancementDb,
+      };
+    }
+
+
 
 
 

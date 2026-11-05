@@ -1357,6 +1357,12 @@
       "original": "100.0% (0ms contradictory commentary-to-final_answer preamble or tool-arg leak & alphanumeric readback drift block + 0ms preamble abort & turnEpoch reset on caller barge-in + <=650ms commentary & >=0.95 alphanumeric confidence clamp)",
       "reversed": "100.0% (0ms unverified secondary speaker profile hijack or emotional pause premature turn-steal block + serialized multi-party turn handoff with primary caller write lock + <=1.25x expressiveness gain & >=750ms emotional pause hold clamp)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "363. Hybrid SIP/WebRTC Warm Transfer Context-Whisper & Out-of-Band RFC 4733 DTMF PCI Vault Bypass (OpenAI Realtime SIP /refer · VoiceBlender v0.2.0 · LiveKit SIP) & RNNoise Answering Machine Detection (AMD) Voicemail Beep Gate + Software WebRTC AEC3 Residual-Echo Self-Barge-In Guard (P713 / P714 — Stage 360 · 363-Dimension Milestone)",
+      "original": "100.0% (0ms unverified SIP Refer-To target or unmasked whisper PII & in-band DTMF audio bleed into LLM context block + 0ms warm-transfer bridge abort & caller leg reclaim on hangup/barge-in + <=1800ms whisper & >=70ms RFC 4733 DTMF gap clamp)",
+      "reversed": "100.0% (0ms pre-beep voicemail PII disclosure or speakerphone residual-echo self-barge-in loop block + 0ms outbound leg abort on carrier SIT/fax tone with DNC-safe retry + <=950ms AMD latency & >=18dB AEC3 ERLE clamp)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

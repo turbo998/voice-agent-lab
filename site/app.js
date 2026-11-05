@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-04 热门突破交互沙盒：Promptable Preambles 导语一致性 + 确认码复诵 & 情绪感知轮次 + 说话人档案写隔离 (Stage 359 / Stage 358 / Stage 357 · P705–P712)",
-    simSub: "点击下方全双工与多模态压测探针，实时验证 gpt-realtime-2.1 / 2.1-mini & Azure Voice Live 可编程过渡导语一致性与字母数字确认码复诵门禁 (P711)、ElevenLabs 2.0 / Cartesia Sonic & Ink 副语言情绪轮次与主呼人声纹写隔离 (P712) 以及 P705–P710 的 0ms 确定性响应：",
+    simTitle: "🧪 2026-11-05 热门突破交互沙盒：SIP/WebRTC 混合热转接耳语 + RFC 4733 带外按键脱敏 & RNNoise 语音信箱 Beep 门控 + AEC3 防自打断 (Stage 360 / Stage 359 / Stage 358 · P705–P714)",
+    simSub: "点击下方全双工与多模态压测探针，实时验证 OpenAI Realtime SIP /refer · VoiceBlender · LiveKit SIP 混合热转接坐席耳语与 RFC 4733 带外 DTMF PCI 旁路门禁 (P713)、RNNoise 频谱 AMD 语音信箱 Beep 门控与 WebRTC AEC3 防回声自打断 (P714) 以及 P705–P712 的 0ms 确定性响应：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-04 熱門突破互動沙盒：Promptable Preambles 導語一致性 + 確認碼複誦 & 情緒感知輪次 + 說話人檔案寫隔離 (Stage 359 / Stage 358 / Stage 357 · P705–P712)",
-    simSub: "點擊下方全雙工與多模態壓測探針，即時驗證 gpt-realtime-2.1 / 2.1-mini & Azure Voice Live 可編程過渡導語一致性與字母數字確認碼複誦門禁 (P711)、ElevenLabs 2.0 / Cartesia Sonic & Ink 副語言情緒輪次與主呼人聲紋寫隔離 (P712) 以及 P705–P710 的 0ms 確定性響應：",
+    simTitle: "🧪 2026-11-05 熱門突破互動沙盒：SIP/WebRTC 混合熱轉接耳語 + RFC 4733 帶外按鍵脫敏 & RNNoise 語音信箱 Beep 門控 + AEC3 防自打斷 (Stage 360 / Stage 359 / Stage 358 · P705–P714)",
+    simSub: "點擊下方全雙工與多模態壓測探針，即時驗證 OpenAI Realtime SIP /refer · VoiceBlender · LiveKit SIP 混合熱轉接坐席耳語與 RFC 4733 帶外 DTMF PCI 旁路門禁 (P713)、RNNoise 頻譜 AMD 語音信箱 Beep 門控與 WebRTC AEC3 防回聲自打斷 (P714) 以及 P705–P712 的 0ms 確定性響應：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-04 Breakthrough Sandbox: Promptable Preamble Consistency + Alphanumeric Readback & Affective Turn-Taking + Speaker-Profile Isolation (Stage 359 / Stage 358 / Stage 357 · P705–P712)",
-    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for gpt-realtime-2.1 / 2.1-mini & Azure Voice Live Promptable Preambles & Alphanumeric Readback (P711), ElevenLabs 2.0 / Cartesia Sonic & Ink Affective Turn-Taking & Speaker-Profile Isolation (P712), and P705–P710:",
+    simTitle: "🧪 2026-11-05 Breakthrough Sandbox: Hybrid SIP/WebRTC Warm Transfer + RFC 4733 DTMF PCI Vault & RNNoise AMD Beep Gate + Software AEC3 Guard (Stage 360 / Stage 359 / Stage 358 · P705–P714)",
+    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for OpenAI Realtime SIP /refer · VoiceBlender · LiveKit SIP Warm Transfer & Out-of-Band RFC 4733 DTMF PCI Bypass (P713), RNNoise AMD Voicemail Beep Gate & Software AEC3 Self-Barge-In Guard (P714), and P705–P712:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 359 P711/P712 · 362维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 360 P713/P714 · 363维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-04",
-      title: "Promptable Preambles 确认码复诵 & 情绪轮次说话人档案写隔离",
-      desc: "追踪 gpt-realtime-2.1 / 2.1-mini & Azure Voice Live 可编程过渡导语与字母数字复诵、ElevenLabs 2.0 / Cartesia Sonic & Ink 副语言轮次与流式声纹档案 ASR，交付 Stage 359 (P711/P712) 护栏与高清 SVG 总结。",
+      badge: "Daily Breakthrough · 2026-11-05",
+      title: "SIP/WebRTC 混合热转接耳语 & RNNoise 语音信箱 Beep 门控",
+      desc: "追踪 OpenAI Realtime SIP /refer、VoiceBlender v0.2.0 与 LiveKit SIP 混合热转接耳语及 RFC 4733 带外 DTMF 脱敏，以及 RNNoise AMD 语音信箱 Beep 门控与软件 AEC3 防自打断，交付 Stage 360 (P713/P714) 护栏与高清 SVG 总结。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 359 P711/P712 · 362維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 360 P713/P714 · 363維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-04",
-      title: "Promptable Preambles 確認碼複誦 & 情緒輪次說話人檔案寫隔離",
-      desc: "追蹤 gpt-realtime-2.1 / 2.1-mini & Azure Voice Live 可編程過渡導語與字母數字複誦、ElevenLabs 2.0 / Cartesia Sonic & Ink 副語言輪次與流式聲紋檔案 ASR，交付 Stage 359 (P711/P712) 護欄與高清 SVG 總結。",
+      badge: "Daily Breakthrough · 2026-11-05",
+      title: "SIP/WebRTC 混合熱轉接耳語 & RNNoise 語音信箱 Beep 門控",
+      desc: "追蹤 OpenAI Realtime SIP /refer、VoiceBlender v0.2.0 與 LiveKit SIP 混合熱轉接耳語及 RFC 4733 帶外 DTMF 脫敏，以及 RNNoise AMD 語音信箱 Beep 門控與軟體 AEC3 防自打斷，交付 Stage 360 (P713/P714) 護欄與高清 SVG 總結。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 359 P711/P712 · 362-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 360 P713/P714 · 363-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-04",
-      title: "Promptable Preamble Readback & Affective Turn Speaker Isolation",
-      desc: "Tracks gpt-realtime-2.1 / 2.1-mini & Azure Voice Live Promptable Preambles & alphanumeric readback, plus ElevenLabs 2.0 / Cartesia Sonic & Ink affective turn-taking with Stage 359 (P711/P712) guardrails.",
+      badge: "Daily Breakthrough · 2026-11-05",
+      title: "Hybrid SIP/WebRTC Warm Transfer & RNNoise AMD Beep Gate",
+      desc: "Tracks OpenAI Realtime SIP /refer, VoiceBlender v0.2.0 & LiveKit SIP warm transfer with RFC 4733 DTMF PCI bypass, plus RNNoise AMD voicemail beep gating & software AEC3 with Stage 360 (P713/P714) guardrails.",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,67 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p711_preamble_alphanumeric";
+let currentDuplexSimId = "p713_warm_transfer_dtmf";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p713_warm_transfer_dtmf",
+    label: {
+      "zh-CN": "🔥 P713 · SIP/WebRTC 混合热转接 ≤1800ms 耳语 & RFC 4733 带外 DTMF 脱敏",
+      "zh-TW": "🔥 P713 · SIP/WebRTC 混合熱轉接 ≤1800ms 耳語 & RFC 4733 帶外 DTMF 脫敏",
+      en: "🔥 P713 · Hybrid SIP/WebRTC Warm Transfer ≤1800ms Whisper & RFC 4733 DTMF PCI Bypass"
+    },
+    inputJson: `{
+  "policyId": "P713-HYBRID-SIP-WEBRTC-WARM-TRANSFER-WHISPER-AND-RFC4733-DTMF-PCI-BYPASS-GUARD",
+  "unverifiedReferTargetOrUnmaskedWhisperPiiDetected": true,
+  "inBandDtmfAudioBleedIntoLlmContextDetected": true,
+  "callerHungUpOrBargedInDuringWarmTransferBridge": false,
+  "warmTransferWhisperBriefingDurationMs": 2650,
+  "rfc4733DtmfInterDigitGapMs": 35
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_unverified_sip_refer_or_inband_dtmf_pci_bleed_in_0ms",
+  "clampedWarmTransferWhisperBriefingDurationMs": 1800,
+  "clampedRfc4733DtmfInterDigitGapMs": 70,
+  "remediation": "BLOCK_UNVERIFIED_SIP_REFER_OR_INBAND_DTMF_PCI_BLEED_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 跨租户 SIP REFER 盗打与带内 DTMF 卡号泄密拦截：检测到未加白名单的 Refer-To URI 及带内 DTMF 按键音直接流入大模型音频上下文（违反 PCI-DSS v4.0）；P713 在 0ms 内阻断违规桥接、剥离带内按键音并切入 RFC 4733 带外事件通道，同时将坐席耳语时长 2650ms→1800ms、按键间隔 35ms→70ms 钳制。",
+      "zh-TW": "✅ 0ms 跨租戶 SIP REFER 盜打與帶內 DTMF 卡號洩密攔截：檢測到未加白名單的 Refer-To URI 及帶內 DTMF 按鍵音直接流入大模型音訊上下文（違反 PCI-DSS v4.0）；P713 在 0ms 內阻斷違規橋接、剝離帶內按鍵音並切入 RFC 4733 帶外事件通道，同時將坐席耳語時長 2650ms→1800ms、按鍵間隔 35ms→70ms 鉗制。",
+      en: "✅ 0ms Unverified SIP REFER & In-Band DTMF PCI Leak Block: Intercepts an unallowlisted Refer-To URI and in-band DTMF card digits bleeding into the LLM audio window; P713 blocks in 0ms, enforces RFC 4733 out-of-band DTMF vaulting, and clamps supervisor whisper 2650ms→1800ms and inter-digit gap 35ms→70ms."
+    }
+  },
+  {
+    id: "p714_rnnoise_amd_aec",
+    label: {
+      "zh-CN": "🔥 P714 · RNNoise 语音信箱 Beep 前防泄密 & 软件 AEC3 ≥18dB 防自打断",
+      "zh-TW": "🔥 P714 · RNNoise 語音信箱 Beep 前防洩密 & 軟體 AEC3 ≥18dB 防自打斷",
+      en: "🔥 P714 · RNNoise AMD Pre-Beep PII Gate & Software AEC3 ≥18dB Self-Barge-In Guard"
+    },
+    inputJson: `{
+  "policyId": "P714-RNNOISE-ANSWERING-MACHINE-DETECTION-BEEP-GATE-AND-SOFTWARE-AEC-SELF-BARGE-IN-GUARD",
+  "preBeepVoicemailPiiDisclosureOrFalseHumanAmdDetected": true,
+  "residualAcousticEchoSelfBargeInLoopDetected": true,
+  "ambiguousFaxOrCarrierSitToneDetected": false,
+  "amdClassificationLatencyMs": 1620,
+  "aecEchoReturnLossEnhancementDb": 11
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_pre_beep_voicemail_pii_leak_or_residual_echo_self_barge_in_0ms",
+  "clampedAmdClassificationLatencyMs": 950,
+  "clampedAecEchoReturnLossEnhancementDb": 18,
+  "remediation": "BLOCK_PRE_BEEP_VOICEMAIL_PII_LEAK_OR_RESIDUAL_ECHO_SELF_BARGE_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 语音信箱 Beep 前 PII 泄密阻断 + 免提回声自打断抑制：拦截智能外呼在语音信箱提示音（Beep）前抢先播报患者/账单敏感 PII 及免提外放残余回声引发的自打断死循环，并将 RNNoise AMD 判定窗口 1620ms→950ms、软件 AEC3 回声损耗增强（ERLE）11dB→18dB 下限钳制。",
+      "zh-TW": "✅ 0ms 語音信箱 Beep 前 PII 洩密阻斷 + 免提回聲自打斷抑制：攔截智能外呼在語音信箱提示音（Beep）前搶先播報患者/帳單敏感 PII 及免提外放殘餘回聲引發的自打斷死循環，並將 RNNoise AMD 判定窗口 1620ms→950ms、軟體 AEC3 回聲損耗增強（ERLE）11dB→18dB 下限鉗制。",
+      en: "✅ 0ms Pre-Beep Voicemail PII Leak & Residual Echo Self-Barge-In Block: Prevents outbound agent from speaking sensitive HIPAA/FDCPA PII before the voicemail beep and stops speakerphone residual echo self-interruption, clamping AMD latency 1620ms→950ms and AEC3 ERLE floor 11dB→18dB."
+    }
+  },
   {
     id: "p711_preamble_alphanumeric",
     label: {
