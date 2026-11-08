@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="55%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="redGrad11" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#450a0a" />
+      <stop offset="100%" stop-color="#7f1d1d" />
+    </linearGradient>
+    <linearGradient id="greenGrad11" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+    <linearGradient id="blueGrad11" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg11)" />
+
+  <!-- Header -->
+  <rect x="28" y="20" width="1144" height="78" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="48" y="50" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" letter-spacing="1">STAGE 367 · ROUND 7 STANDALONE ARCHITECTURE FAQ · P727–P728 · 370-DIMENSION MILESTONE</text>
+  <text x="48" y="78" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="800">智能外呼应答机检测 (AMD) 与 TCPA 合规节奏：并行流式乐观微问候 vs. 双时区最严交集门禁</text>
+
+  <!-- Left Column: Legacy Outbound Failure Modes -->
+  <rect x="28" y="114" width="554" height="248" rx="12" fill="#1c1917" stroke="#ef4444" stroke-width="1.5" />
+  <rect x="44" y="128" width="522" height="32" rx="6" fill="url(#redGrad11)" />
+  <text x="58" y="149" fill="#fecaca" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">❌ 传统外呼三大生产事故（串行阻塞冷场 / 盲播信箱截断 / 单时区越界）</text>
+
+  <rect x="44" y="172" width="522" height="54" rx="8" fill="#291515" stroke="#7f1d1d" />
+  <text x="58" y="193" fill="#fca5a5" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">1. 串行阻塞式 AMD (Blocking Serial AMD) → 真人说“喂”后死寂 3.5 秒</text>
+  <text x="58" y="213" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">&gt;35% 真人误以为骚扰电话秒挂，且超出 FCC TSR 2,000ms 响应红线计为违法弃呼</text>
+
+  <rect x="44" y="234" width="522" height="54" rx="8" fill="#291515" stroke="#7f1d1d" />
+  <text x="58" y="255" fill="#fca5a5" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">2. 无 AMD 接通即盲播 (Blind Playback) → 与语音信箱提示音抢话</text>
+  <text x="58" y="275" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">前 10 秒核心内容讲在未录音提示音上，等 950Hz 嘟声开始录音时只剩半句“再见”</text>
+
+  <rect x="44" y="296" width="522" height="54" rx="8" fill="#291515" stroke="#7f1d1d" />
+  <text x="58" y="317" fill="#fca5a5" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">3. 单看号段时区 + 忽略 RND 回收号 → 凌晨 05:30 扰民与隐私外泄</text>
+  <text x="58" y="337" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">纽约 212 号段机主搬去西雅图被凌晨吵醒；号码注销易主后仍按旧授权拨打 ($500–$1,500/通罚款)</text>
+
+  <!-- Right Column: P727 Parallel Streaming AMD + Optimistic Greeting -->
+  <rect x="602" y="114" width="570" height="248" rx="12" fill="#0f2922" stroke="#10b981" stroke-width="1.5" />
+  <rect x="618" y="128" width="538" height="32" rx="6" fill="url(#greenGrad11)" />
+  <text x="632" y="149" fill="#d1fae5" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">✅ 方案 A：并行流式 AMD + &lt;=600ms 乐观微问候 + 嘟声重置 (P727)</text>
+
+  <rect x="618" y="172" width="538" height="54" rx="8" fill="#063729" stroke="#047857" />
+  <text x="632" y="193" fill="#6ee7b7" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Step 1 · 真人“喂/Hello”尾音后 &lt;=600ms 立即播报乐观微问候</text>
+  <text x="632" y="213" fill="#ecfdf5" font-family="system-ui, -apple-system, sans-serif" font-size="12">“您好李女士，这里是仁济随访中心…” → 真人感受 0.4s 极速自然响应，零冷场进入多轮对话</text>
+
+  <rect x="618" y="234" width="538" height="54" rx="8" fill="#063729" stroke="#047857" />
+  <text x="632" y="255" fill="#6ee7b7" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Step 2 · 后台全双工并行运行“声学韵律 + 流式 ASR + Goertzel 嘟声检测”</text>
+  <text x="632" y="275" fill="#ecfdf5" font-family="system-ui, -apple-system, sans-serif" font-size="12">实时识别连续长提示语或 850Hz–1050Hz 留言嘟声 (Beep Tone)，策略状态机立即取消多轮流</text>
+
+  <rect x="618" y="296" width="538" height="54" rx="8" fill="#063729" stroke="#047857" />
+  <text x="632" y="317" fill="#6ee7b7" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Step 3 · 嘟声结束后 250ms 从头播放 &lt;=25s 高密度独立完整留言脚本</text>
+  <text x="632" y="337" fill="#ecfdf5" font-family="system-ui, -apple-system, sans-serif" font-size="12">自动切换为低成本确定性 TTS 播报完整事项与回拨专线，避免盲播截断前半句</text>
+
+  <!-- Bottom Section: P728 Conservative Dual-Timezone & Safe-Harbor Gate + Quantitative Scorecard -->
+  <rect x="28" y="378" width="1144" height="202" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <rect x="44" y="392" width="1112" height="32" rx="6" fill="url(#blueGrad11)" />
+  <text x="58" y="413" fill="#e0f2fe" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">🛡️ 方案 B：TCPA 双时区最严交集窗口 (NPA ∩ 邮编地址) + FCC RND 回收号核验与 &lt;=2.5% 弃呼率策略门禁 (P728)</text>
+
+  <rect x="44" y="438" width="356" height="126" rx="8" fill="#1e293b" stroke="#475569" />
+  <text x="60" y="462" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">1. 双时区最严交集 (Conservative Dual-TZ)</text>
+  <text x="60" y="486" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">• 手机号段时区: 美东 EST (08:00–20:00)</text>
+  <text x="60" y="506" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">• 居住邮编时区: 美西 PST (08:00–20:00)</text>
+  <text x="60" y="528" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">→ 仅允许交集 11:00–20:00 EST 发起 SIP INVITE</text>
+  <text x="60" y="548" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11">任一端处于宵禁窗口即由离线策略拦截并重排队列</text>
+
+  <rect x="418" y="438" width="360" height="126" rx="8" fill="#1e293b" stroke="#475569" />
+  <text x="434" y="462" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">2. DNC + FCC RND 回收号时间戳校验</text>
+  <text x="434" y="486" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">• 核验 National / State / Internal DNC 名单</text>
+  <text x="434" y="506" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">• 校验 ConsentTime &gt; RND LastDisconnectDate</text>
+  <text x="434" y="528" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">→ 拦截已易主回收号，减少前机主 PII 暴露风险</text>
+  <text x="434" y="548" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11">按键/语音退订 (Opt-Out) 策略预算钳制 &lt;= 500ms</text>
+
+  <rect x="796" y="438" width="360" height="126" rx="8" fill="#1e293b" stroke="#475569" />
+  <text x="812" y="462" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">3. Stage 367 定量门禁与 Provenance 边界</text>
+  <text x="812" y="486" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">• 乐观微问候预算: &lt;= 600ms (低于 2,000ms 门槛)</text>
+  <text x="812" y="506" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">• 30天滚动弃呼率预算: &lt;= 2.5% (FCC 上限 &lt;3.0%)</text>
+  <text x="812" y="528" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">• 离线策略计时: 0ms (1ms 分辨率舍入桶, synthetic)</text>
+  <text x="812" y="548" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="11">• 生产 Beep/RND 网络 RTT: not_measured (150–300ms 预算)</text>
+
+  <!-- Footer -->
+  <rect x="28" y="594" width="1144" height="58" rx="10" fill="#111827" stroke="#334155" />
+  <text x="48" y="619" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">Provenance &amp; Verification: Stage 367 (P727–P728) · 370 Evaluation Dimensions · 737 Guardrails · 746 Probes · 807/807 Unit Tests PASS</text>
+  <text x="48" y="639" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="11">Offline synthetic policy check falls in 1ms-resolution 0ms rounding bucket (not proof of &lt;1ms live DSP); carrier SIP/DSP beep &amp; RND RTT marked not_measured.</text>
+</svg>

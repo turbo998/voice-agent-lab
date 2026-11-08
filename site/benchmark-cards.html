@@ -1114,10 +1114,17 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>369. [专题6 `docs/pci-dtmf-dual-stream-redaction-faq.md`] 电话支付 `PCI-DSS v4.0 SAQ-A` 边缘 `RFC 4733` 带外按键旁路与大模型零卡号接触护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截客户口述卡号直通 ASR/LLM 或付款期未暂停上行音频流、强制开启 `&lt;=-65 dBFS` 带内按键音陷波并将暴露给大模型的明文卡号位数钳制为 `0` [仅回传 `tok_xxxx`]；真实边缘 SBC RTP 剥离与 PCI 金库 Token 化往返耗时 `not_measured`）&amp; `SIPREC` 双流延迟内存环形缓冲（`Lookahead Ring Buffer &gt;=600ms`）与词首尾 `&gt;=150ms` 声学护城河实时消音护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截未消音明文 PII 音频落盘 WORM 存储或音字不同步脱敏、实时对话流保持 `0ms` 额外缓冲并将录音分叉流 RAM 环形缓冲钳制在 `&gt;=600ms` 及词边缘消音护城河 `&gt;=150ms`；真实流式 NER 与 WORM 存储写入耗时 `not_measured`）(`P725` / `P726` · Stage 366 · 369 评测维度里程碑 · 735 护栏 &amp; 744 探针 · 369 维)</strong>
+                <strong>369. [专题6A `docs/voice-pci-dtmf-scope-faq.md` &amp; 专题6B `docs/siprec-pii-audio-redaction-faq.md`] 电话支付边缘 `RFC 4733` 带外按键采集旁路与缩减下游大模型卡号暴露面护栏（`1ms` 计时分辨率下四舍五入 `0ms` 仅代表落在 `[0ms, 1ms)` 舍入桶内的离线 `synthetic` 策略配置检查，非真实 DSP 耗时或法规认证：拦截客户口述卡号直通 ASR/LLM 或付款期未暂停上行音频流，将合成策略参数钳制为 `&lt;=-65 dBFS` 陷波且 `rawPanDigitsExposedToLlm = 0`；实际接触 CHD 的边缘 SBC 仍在范围内，最终 `SAQ-A/SAQ-D` 资格须由收单方/QSA 按实际数据流、TPSP AoC、录音与异常回退核定，授权后严禁存储 CVV 等 SAD 即使加密；真实 SBC RTP 剥离与 PCI 金库往返耗时 `not_measured`）&amp; `SIPREC` 录音分叉流延迟内存环形缓冲（合成策略 `&gt;=600ms`）与词首尾 `&gt;=150ms` 声学护城河消音及 `Fail-Closed` 隔离护栏（明确只消音 SIPREC 录音不会自动净化 `0ms` 实时 AI 对话流；遇客户抢跑口述 PAN 须同步触发实时流 LLM 中断与内存擦除，遇 NER 迟到/漏检强制 Fail-Closed 隔离挂起阻断直写 WORM；真实流式 NER 与 WORM 写入耗时 `not_measured`）(`P725` / `P726` · Stage 366 · 369 维)</strong>
               </td>
-              <td><code>P725 / P726 deterministic PCI-DSS SAQ-A RFC 4733 edge DTMF bypass zero-LLM-PAN scope &amp; dual-stream SIPREC ring-buffer audio beep redaction guard</code></td>
-              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
+              <td><code>P725 / P726 deterministic RFC 4733 edge DTMF bypass downstream LLM scope-reduction &amp; dual-stream SIPREC ring-buffer audio redaction fail-closed quarantine guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms Bucket (1ms Res, Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>370. [专题7 `docs/outbound-amd-voicemail-tcpa-faq.md`] 智能外呼并行流式应答机检测（`Parallel Streaming AMD`）与 `&lt;=600ms` 乐观微问候及语音信箱嘟声（`Beep`）重置护栏（`1ms` 计时分辨率下四舍五入 `0ms` 仅代表落在 `[0ms, 1ms)` 舍入桶内的离线 `synthetic` 策略配置检查：拦截串行阻塞式 AMD 造成 `&gt;2000ms` 死寂冷场触发真人挂断或盲播截断信箱留言，强制在被叫首声“喂”后 `&lt;=600ms` 触发乐观微问候，遇语音信箱嘟声重置为 `&lt;=25s` 完整留言脚本；真实运营商 SIP 信令与 `850Hz-1050Hz` 嘟声检测窗口耗时 `not_measured`）&amp; `TCPA / TSR` 双时区最严交集（`NPA-NXX ∩ 常住邮编`）+ `FCC RND` 回收号核验与 `&lt;=2.5%` 弃呼率安全港门禁（拦截跨时区宵禁越界或跳过 DNC/RND 直接外呼，将 30 天滚动弃呼率钳制在 `&lt;=2.5%` 并确保按键/语音退订响应 `&lt;=500ms`；真实外部 DNC/RND API 查询耗时 `not_measured`）(`P727` / `P728` · Stage 367 · 370 评测维度里程碑 · 737 护栏 &amp; 746 探针 · 370 维)</strong>
+              </td>
+              <td><code>P727 / P728 deterministic outbound parallel streaming AMD optimistic greeting beep-reset &amp; TCPA conservative dual-timezone RND/DNC abandonment safe-harbor guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms Bucket (1ms Res, Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
@@ -4211,10 +4218,17 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>369. [专题6 `docs/pci-dtmf-dual-stream-redaction-faq.md`] 电话支付 `PCI-DSS v4.0 SAQ-A` 边缘 `RFC 4733` 带外按键旁路与大模型零卡号接触护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截客户口述卡号直通 ASR/LLM 或付款期未暂停上行音频流、强制开启 `&lt;=-65 dBFS` 带内按键音陷波并将暴露给大模型的明文卡号位数钳制为 `0` [仅回传 `tok_xxxx`]；真实边缘 SBC RTP 剥离与 PCI 金库 Token 化往返耗时 `not_measured`）&amp; `SIPREC` 双流延迟内存环形缓冲（`Lookahead Ring Buffer &gt;=600ms`）与词首尾 `&gt;=150ms` 声学护城河实时消音护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截未消音明文 PII 音频落盘 WORM 存储或音字不同步脱敏、实时对话流保持 `0ms` 额外缓冲并将录音分叉流 RAM 环形缓冲钳制在 `&gt;=600ms` 及词边缘消音护城河 `&gt;=150ms`；真实流式 NER 与 WORM 存储写入耗时 `not_measured`）(`P725` / `P726` · Stage 366 · 369 评测维度里程碑 · 735 护栏 &amp; 744 探针 · 369 维)</strong>
+                <strong>369. [专题6A `docs/voice-pci-dtmf-scope-faq.md` &amp; 专题6B `docs/siprec-pii-audio-redaction-faq.md`] 电话支付边缘 `RFC 4733` 带外按键采集旁路与缩减下游大模型卡号暴露面护栏（`1ms` 计时分辨率下四舍五入 `0ms` 仅代表落在 `[0ms, 1ms)` 舍入桶内的离线 `synthetic` 策略配置检查，非真实 DSP 耗时或法规认证：拦截客户口述卡号直通 ASR/LLM 或付款期未暂停上行音频流，将合成策略参数钳制为 `&lt;=-65 dBFS` 陷波且 `rawPanDigitsExposedToLlm = 0`；实际接触 CHD 的边缘 SBC 仍在范围内，最终 `SAQ-A/SAQ-D` 资格须由收单方/QSA 按实际数据流、TPSP AoC、录音与异常回退核定，授权后严禁存储 CVV 等 SAD 即使加密；真实 SBC RTP 剥离与 PCI 金库往返耗时 `not_measured`）&amp; `SIPREC` 录音分叉流延迟内存环形缓冲（合成策略 `&gt;=600ms`）与词首尾 `&gt;=150ms` 声学护城河消音及 `Fail-Closed` 隔离护栏（明确只消音 SIPREC 录音不会自动净化 `0ms` 实时 AI 对话流；遇客户抢跑口述 PAN 须同步触发实时流 LLM 中断与内存擦除，遇 NER 迟到/漏检强制 Fail-Closed 隔离挂起阻断直写 WORM；真实流式 NER 与 WORM 写入耗时 `not_measured`）(`P725` / `P726` · Stage 366 · 369 维)</strong>
               </td>
-              <td><code>P725 / P726 deterministic PCI-DSS SAQ-A RFC 4733 edge DTMF bypass zero-LLM-PAN scope &amp; dual-stream SIPREC ring-buffer audio beep redaction guard</code></td>
-              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
+              <td><code>P725 / P726 deterministic RFC 4733 edge DTMF bypass downstream LLM scope-reduction &amp; dual-stream SIPREC ring-buffer audio redaction fail-closed quarantine guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms Bucket (1ms Res, Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>370. [专题7 `docs/outbound-amd-voicemail-tcpa-faq.md`] 智能外呼并行流式应答机检测（`Parallel Streaming AMD`）与 `&lt;=600ms` 乐观微问候及语音信箱嘟声（`Beep`）重置护栏（`1ms` 计时分辨率下四舍五入 `0ms` 仅代表落在 `[0ms, 1ms)` 舍入桶内的离线 `synthetic` 策略配置检查：拦截串行阻塞式 AMD 造成 `&gt;2000ms` 死寂冷场触发真人挂断或盲播截断信箱留言，强制在被叫首声“喂”后 `&lt;=600ms` 触发乐观微问候，遇语音信箱嘟声重置为 `&lt;=25s` 完整留言脚本；真实运营商 SIP 信令与 `850Hz-1050Hz` 嘟声检测窗口耗时 `not_measured`）&amp; `TCPA / TSR` 双时区最严交集（`NPA-NXX ∩ 常住邮编`）+ `FCC RND` 回收号核验与 `&lt;=2.5%` 弃呼率安全港门禁（拦截跨时区宵禁越界或跳过 DNC/RND 直接外呼，将 30 天滚动弃呼率钳制在 `&lt;=2.5%` 并确保按键/语音退订响应 `&lt;=500ms`；真实外部 DNC/RND API 查询耗时 `not_measured`）(`P727` / `P728` · Stage 367 · 370 评测维度里程碑 · 737 护栏 &amp; 746 探针 · 370 维)</strong>
+              </td>
+              <td><code>P727 / P728 deterministic outbound parallel streaming AMD optimistic greeting beep-reset &amp; TCPA conservative dual-timezone RND/DNC abandonment safe-harbor guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms Bucket (1ms Res, Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>

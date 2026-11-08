@@ -68327,7 +68327,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "pause_asr_llm_upstream_and_switch_to_rfc4733_edge_dtmf_vault_bypass_in_0ms",
           reason:
-            "PCI-DSS v4.0 SAQ-A Scope Violation: Caller attempted to speak PAN/CVV into active ASR/LLM stream or upstream audio leg remained unpaused during keypad entry; offline policy state machine pausing ASR/LLM upstream and diverting RFC 4733 DTMF digits to edge PCI vault (<1ms policy check).",
+            "Voice Payment CHD Exposure Policy Check: Caller attempted to speak PAN/CVV into active ASR/LLM stream or upstream audio leg remained unpaused during keypad entry; offline synthetic policy state machine pausing ASR/LLM upstream and diverting RFC 4733 DTMF digits to edge PCI vault (goal: reduce downstream LLM CHD exposure; actual SAQ/PCI scope requires Acquirer/QSA evaluation of TPSP demarcation and edge SBCs; 0ms at 1ms timer resolution is a [0ms, 1ms) rounding bucket, not a formal compliance certification).",
           clampedInbandDtmfToneBleedDb,
           clampedRawPanDigitsExposedToLlm,
         };
@@ -68342,7 +68342,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           policyId,
           action: "clamp_inband_dtmf_tone_suppression_and_zero_llm_pan_exposure",
           reason:
-            "In-band DTMF tone bleed (>-65 dBFS) or raw PAN digits exposed to LLM (>0) out of PCI SAQ-A bounds; clamping tone bleed ceiling to <=-65 dBFS and LLM PAN digit exposure to 0 (token-only).",
+            "In-band DTMF tone bleed (>-65 dBFS local synthetic policy budget) or raw PAN digits exposed to LLM (>0) out of policy bounds; clamping tone bleed budget to <=-65 dBFS and LLM PAN digit exposure to 0 (token-only; final PCI scope/SAQ eligibility subject to Acquirer/QSA assessment).",
           clampedInbandDtmfToneBleedDb,
           clampedRawPanDigitsExposedToLlm,
         };
@@ -68353,11 +68353,14 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
         policyId,
         action: "allow",
         reason:
-          "PCI-DSS v4.0 SAQ-A RFC 4733 edge DTMF intercept, ASR/LLM upstream pause, tone bleed suppression (<=-65 dBFS), and 0 raw PAN digits to LLM verified.",
+          "Offline synthetic policy check passed: RFC 4733 edge DTMF intercept, ASR/LLM upstream pause, tone bleed budget (<=-65 dBFS), and 0 raw PAN digits to LLM verified (Acquirer/QSA determines actual SAQ scope; not a formal compliance certification).",
         clampedInbandDtmfToneBleedDb,
         clampedRawPanDigitsExposedToLlm,
       };
     }
+
+    export const evaluatePciDssDtmfMediaBypassGate =
+      evaluatePciDssSaqADtmfMediaBypassGate;
 
     export interface DualStreamSiprecPiiAudioRedactionContext {
       unredactedAudioPiiFlushedToWormOrTranscriptDesyncDetected: boolean;
@@ -68398,7 +68401,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "block_unredacted_siprec_flush_and_zero_pcm_ringbuffer_span_in_0ms",
           reason:
-            "Dual-Stream SIPREC PII Audio Leak Violation: Spoken PII span was about to flush to WORM storage without PCM zeroing/420Hz beep masking or transcript redaction desynchronized from audio; offline policy state machine zeroing delayed RAM ring-buffer PCM span before disk write (<1ms policy check).",
+            "Dual-Stream SIPREC Archival Redaction Policy Check: Spoken PII span was about to flush to WORM storage without PCM zeroing/beep masking, NER lag exceeded lookahead window, or transcript redaction desynchronized; offline synthetic policy state machine triggering Fail-Closed quarantine and RAM ring-buffer scrub before disk write (protects archival recording fork only, does not sanitize 0ms real-time AI leg; 0ms at 1ms timer resolution is a [0ms, 1ms) rounding bucket).",
           clampedRecordingRingBufferLookaheadMs,
           clampedPrePostAcousticMaskPaddingMs,
         };
@@ -68413,7 +68416,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           policyId,
           action: "clamp_siprec_lookahead_ringbuffer_and_acoustic_mask_padding",
           reason:
-            "SIPREC lookahead ring-buffer delay (<600ms) or acoustic pre/post mask padding (<150ms) insufficient to catch plosive onset/coda syllables; clamping lookahead buffer to >=600ms and acoustic padding to >=150ms.",
+            "SIPREC lookahead ring-buffer policy budget (<600ms) or acoustic pre/post mask padding budget (<150ms) below local synthetic policy budgets; clamping lookahead buffer to >=600ms and acoustic padding to >=150ms (Fail-Closed quarantine required if live NER lag exceeds buffer).",
           clampedRecordingRingBufferLookaheadMs,
           clampedPrePostAcousticMaskPaddingMs,
         };
@@ -68424,9 +68427,153 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
         policyId,
         action: "allow",
         reason:
-          "Dual-Stream SIPREC delayed RAM ring-buffer lookahead (>=600ms) and synchronized PCM + transcript PII redaction padding (>=150ms) verified.",
+          "Offline synthetic policy check passed: Dual-Stream SIPREC RAM ring-buffer lookahead budget (>=600ms) and pre/post padding budget (>=150ms) verified for archival fork.",
         clampedRecordingRingBufferLookaheadMs,
         clampedPrePostAcousticMaskPaddingMs,
+      };
+    }
+
+    export interface ParallelStreamingAmdOptimisticGreetingContext {
+      blockingAmdDeadAirOrMidGreetingVoicemailTruncationDetected: boolean;
+      optimisticHumanGreetingOnsetMs: number;
+      voicemailMessageMaxDurationSec: number;
+    }
+
+    export interface ParallelStreamingAmdOptimisticGreetingDecision {
+      violated: boolean;
+      policyId: "P727-OUTBOUND-PARALLEL-STREAMING-AMD-OPTIMISTIC-GREETING-AND-VOICEMAIL-BEEP-RESET-GUARD";
+      action:
+        | "cancel_live_dialogue_on_amd_beep_and_reset_to_voicemail_script_in_0ms"
+        | "clamp_optimistic_greeting_onset_and_voicemail_script_duration"
+        | "allow";
+      reason: string;
+      clampedOptimisticHumanGreetingOnsetMs: number;
+      clampedVoicemailMessageMaxDurationSec: number;
+    }
+
+    export function evaluateParallelStreamingAmdOptimisticGreetingAndVoicemailResetGate(
+      context: ParallelStreamingAmdOptimisticGreetingContext,
+    ): ParallelStreamingAmdOptimisticGreetingDecision {
+      const policyId =
+        "P727-OUTBOUND-PARALLEL-STREAMING-AMD-OPTIMISTIC-GREETING-AND-VOICEMAIL-BEEP-RESET-GUARD" as const;
+      const clampedOptimisticHumanGreetingOnsetMs = Math.min(
+        Math.max(context.optimisticHumanGreetingOnsetMs, 150),
+        600,
+      );
+      const clampedVoicemailMessageMaxDurationSec = Math.min(
+        Math.max(context.voicemailMessageMaxDurationSec, 10),
+        25,
+      );
+
+      if (context.blockingAmdDeadAirOrMidGreetingVoicemailTruncationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "cancel_live_dialogue_on_amd_beep_and_reset_to_voicemail_script_in_0ms",
+          reason:
+            "Outbound AMD Pacing Policy Check: Blocking serial AMD caused >2000ms dead air after human 'Hello?' or blind playback truncated voicemail before the 850Hz-1050Hz beep; offline synthetic policy state machine switching to parallel streaming AMD + optimistic <=600ms greeting with beep-triggered voicemail script reset (0ms at 1ms timer resolution is a [0ms, 1ms) rounding bucket).",
+          clampedOptimisticHumanGreetingOnsetMs,
+          clampedVoicemailMessageMaxDurationSec,
+        };
+      }
+
+      if (
+        context.optimisticHumanGreetingOnsetMs > 600 ||
+        context.voicemailMessageMaxDurationSec > 25
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_optimistic_greeting_onset_and_voicemail_script_duration",
+          reason:
+            "Optimistic human greeting onset (>600ms synthetic budget) or voicemail callback message duration (>25s synthetic budget) exceeds outbound engagement bounds; clamping onset to <=600ms and voicemail duration to <=25s.",
+          clampedOptimisticHumanGreetingOnsetMs,
+          clampedVoicemailMessageMaxDurationSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Parallel streaming AMD with <=600ms optimistic human greeting and <=25s post-beep voicemail script reset verified.",
+        clampedOptimisticHumanGreetingOnsetMs,
+        clampedVoicemailMessageMaxDurationSec,
+      };
+    }
+
+    export interface OutboundTcpaConservativeDualTimezoneContext {
+      areaCodeOrPostalTimezoneOutsideCurfewOrDncRndHitDetected: boolean;
+      rolling30DayAbandonmentRatePct: number;
+      mandatoryOptOutKeypressResponseMs: number;
+    }
+
+    export interface OutboundTcpaConservativeDualTimezoneDecision {
+      violated: boolean;
+      policyId: "P728-OUTBOUND-TCPA-CONSERVATIVE-DUAL-TIMEZONE-DNC-RND-AND-ABANDONMENT-SAFE-HARBOR-GUARD";
+      action:
+        | "block_outbound_sip_invite_on_curfew_dnc_or_reassigned_number_in_0ms"
+        | "clamp_predictive_dialer_abandonment_rate_and_optout_keypress_latency"
+        | "allow";
+      reason: string;
+      clampedRolling30DayAbandonmentRatePct: number;
+      clampedMandatoryOptOutKeypressResponseMs: number;
+    }
+
+    export function evaluateOutboundTcpaConservativeDualTimezoneAndRndConsentGate(
+      context: OutboundTcpaConservativeDualTimezoneContext,
+    ): OutboundTcpaConservativeDualTimezoneDecision {
+      const policyId =
+        "P728-OUTBOUND-TCPA-CONSERVATIVE-DUAL-TIMEZONE-DNC-RND-AND-ABANDONMENT-SAFE-HARBOR-GUARD" as const;
+      const clampedRolling30DayAbandonmentRatePct = Math.min(
+        Math.max(context.rolling30DayAbandonmentRatePct, 0),
+        2.5,
+      );
+      const clampedMandatoryOptOutKeypressResponseMs = Math.min(
+        Math.max(context.mandatoryOptOutKeypressResponseMs, 50),
+        500,
+      );
+
+      if (context.areaCodeOrPostalTimezoneOutsideCurfewOrDncRndHitDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_outbound_sip_invite_on_curfew_dnc_or_reassigned_number_in_0ms",
+          reason:
+            "Outbound TCPA/TSR Safe-Harbor Policy Check: Either NPA-NXX area-code timezone or postal-address timezone falls outside the stricter local calling window (08:00-20:00/21:00) or number matched National/Internal DNC or FCC Reassigned Numbers Database (RND); offline synthetic policy state machine blocking SIP INVITE before dial (0ms at 1ms timer resolution is a [0ms, 1ms) rounding bucket).",
+          clampedRolling30DayAbandonmentRatePct,
+          clampedMandatoryOptOutKeypressResponseMs,
+        };
+      }
+
+      if (
+        context.rolling30DayAbandonmentRatePct > 2.5 ||
+        context.mandatoryOptOutKeypressResponseMs > 500
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_predictive_dialer_abandonment_rate_and_optout_keypress_latency",
+          reason:
+            "Rolling 30-day call abandonment rate (>2.5% synthetic safety threshold against FCC 3% cap) or automated opt-out keypress handling (>500ms budget) out of bounds; clamping abandonment rate to <=2.5% and opt-out handling to <=500ms.",
+          clampedRolling30DayAbandonmentRatePct,
+          clampedMandatoryOptOutKeypressResponseMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Outbound TCPA conservative dual-timezone intersection window, DNC/RND clearance, <=2.5% abandonment safe-harbor budget, and <=500ms automated opt-out verified.",
+        clampedRolling30DayAbandonmentRatePct,
+        clampedMandatoryOptOutKeypressResponseMs,
       };
     }
 

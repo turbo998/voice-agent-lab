@@ -1395,9 +1395,15 @@
       "delta_pts": 0.0
     },
     {
-      "question": "369. [Topic 6: pci-dtmf-dual-stream-redaction-faq] PCI-DSS v4.0 SAQ-A Out-of-Band RFC 4733 DTMF Edge Media Bypass & Zero-LLM-PAN Scope Gate + Dual-Stream SIPREC Lookahead Ring-Buffer (>=600ms) & Pre/Post Coarticulation Moat (>=150ms) Audio Redaction Guard (P725 / P726 — Stage 366 · 369-Dimension Milestone)",
-      "original": "100.0% (<1ms [0ms rounded, synthetic] offline policy pause of upstream ASR/LLM audio during payment and block on spoken PAN capture + <=-65 dBFS in-band DTMF tone bleed & 0 raw PAN digits exposed to LLM clamp [token-only]; live SBC RTP stripping and PCI Vault tokenization round-trip latency is not_measured)",
-      "reversed": "100.0% (<1ms [0ms rounded, synthetic] offline policy block on unredacted PII audio flushing to WORM storage or audio/transcript redaction desync + >=600ms SIPREC RAM lookahead ring buffer [0ms added to live AI stream] & >=150ms pre/post acoustic mask padding clamp; live WORM disk flush latency is not_measured)",
+      "question": "369. [Topic 6A: voice-pci-dtmf-scope-faq & Topic 6B: siprec-pii-audio-redaction-faq] Out-of-Band RFC 4733 DTMF Edge Media Bypass & Downstream LLM PAN Exposure Reduction Gate + Dual-Stream SIPREC Lookahead Ring-Buffer (>=600ms) & Pre/Post Coarticulation Moat (>=150ms) Audio Redaction & Fail-Closed Quarantine Guard (P725 / P726 — Stage 366 · 369-Dimension Milestone)",
+      "original": "100.0% (0ms reading in 1ms clock-resolution rounding bucket [0ms, 1ms) for offline synthetic policy check: pauses upstream ASR/LLM audio during payment and clamps synthetic in-band DTMF bleed parameter to <=-65 dBFS & rawPanDigitsExposedToLlm = 0 [targets reducing downstream LLM exposure; edge SBC touching CHD stays in scope, SAQ eligibility requires acquirer/QSA verification of TPSP AoC/recording/fallbacks, post-auth CVV/SAD storage strictly prohibited even if encrypted; live SBC RTP strip & PCI Vault RTT is not_measured])",
+      "reversed": "100.0% (0ms reading in 1ms clock-resolution rounding bucket [0ms, 1ms) for offline synthetic policy check: sets synthetic SIPREC archival lookahead parameter to >=600ms & >=150ms pre/post moat [scrubbing SIPREC does NOT sanitize the 0ms real-time AI stream; unprompted spoken PAN requires real-time LLM abort + volatile context purge, and NER lag/miss triggers Fail-Closed quarantine blocking WORM flush; live streaming NER & WORM disk write latency is not_measured])",
+      "delta_pts": 0.0
+    },
+    {
+      "question": "370. [Topic 7: outbound-amd-voicemail-tcpa-faq] Outbound Parallel Streaming AMD + <=600ms Optimistic Micro-Greeting & <=25s Voicemail Beep-Reset Guard + TCPA/TSR Conservative Dual-Timezone Intersection (Area-Code TZ ∩ Postal-Address TZ), FCC Reassigned Numbers Database (RND), <=2.5% Abandonment Safe-Harbor & <=500ms Opt-Out Guard (P727 / P728 — Stage 367 · 370-Dimension Milestone)",
+      "original": "100.0% (0ms reading in 1ms clock-resolution rounding bucket [0ms, 1ms) for offline synthetic policy check: blocks serial blocking AMD >2000ms dead air and blind voicemail truncation, enforcing <=600ms optimistic human micro-greeting and <=25s post-beep voicemail script reset; live carrier SIP signaling and 850-1050Hz beep detection window latency is not_measured)",
+      "reversed": "100.0% (0ms reading in 1ms clock-resolution rounding bucket [0ms, 1ms) for offline synthetic policy check: blocks cross-timezone curfew or unchecked RND/DNC outbound dialing, clamping 30-day rolling abandonment rate to <=2.5% and automated opt-out response to <=500ms; live external DNC/FCC RND API RTT is not_measured)",
       "delta_pts": 0.0
     }
   ],

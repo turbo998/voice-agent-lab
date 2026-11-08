@@ -23,50 +23,50 @@
 
   <!-- Header -->
   <rect x="32" y="22" width="1136" height="84" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-  <text x="54" y="54" fill="#38bdf8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="1">2026-11-08 · ROUND 6 SINGLE-TOPIC FAQ · STAGE 366 (P725–P726 · 369 DIMENSIONS · 735 GUARDRAILS · 805 TESTS)</text>
-  <text x="54" y="84" fill="#f8fafc" font-family="Segoe UI, Inter, sans-serif" font-size="22" font-weight="800">PCI-DSS v4.0 语音支付带外 DTMF 旁路 (P725) 与 SIPREC 双流延迟环形缓冲实时消音 (P726)</text>
+  <text x="54" y="54" fill="#38bdf8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="1">2026-11-08 · ROUND 6 STANDALONE SPLIT (6A: P725 PAYMENT BYPASS | 6B: P726 SIPREC ARCHIVAL REDACTION)</text>
+  <text x="54" y="84" fill="#f8fafc" font-family="Segoe UI, Inter, sans-serif" font-size="21" font-weight="800">电话支付边缘 RFC 4733 旁路范围分界 (P725) 与 SIPREC 延迟环形缓冲 Fail-Closed 归档脱敏 (P726)</text>
 
   <!-- Left Column: Bad Path vs Good Path -->
   <rect x="32" y="122" width="554" height="248" rx="14" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
-  <text x="52" y="152" fill="#fca5a5" font-family="Segoe UI, Inter, sans-serif" font-size="16" font-weight="800">❌ 传统错误方案：口述卡号进 ASR/LLM + 事后文本打星号 (SAQ-D 全栈染毒)</text>
-  <text x="52" y="180" fill="#fef2f2" font-family="Segoe UI, Inter, sans-serif" font-size="13.5">1. 接触即传染：16位卡号与CVV流经 ASR、LLM 显存与日志，全套 AI 平台沦为 PCI SAQ-D</text>
-  <text x="52" y="206" fill="#fef2f2" font-family="Segoe UI, Inter, sans-serif" font-size="13.5">2. 同音词漏网：口述 "4111" 被转写为 "for won won won"，数字正则替换彻底失效</text>
-  <text x="52" y="232" fill="#fef2f2" font-family="Segoe UI, Inter, sans-serif" font-size="13.5">3. 带内按键音还原：录音残留 -12 dBFS 按键双音频谱，10行 FFT 代码即可逆向解码卡号</text>
-  <text x="52" y="258" fill="#fef2f2" font-family="Segoe UI, Inter, sans-serif" font-size="13.5">4. WORM 录音明文落盘：事后批处理无法覆写防篡改存储，且词首尾 80ms 辅音清晰可辨</text>
+  <text x="52" y="152" fill="#fca5a5" font-family="Segoe UI, Inter, sans-serif" font-size="15.5" font-weight="800">❌ 反面设计：口述卡号进 ASR/LLM 或误把录音消音当实时流隔离</text>
+  <text x="52" y="180" fill="#fef2f2" font-family="Segoe UI, Inter, sans-serif" font-size="13">1. 暴露面扩散：口述 PAN/CVV 流经 ASR、LLM 显存与日志，扩大 PCI 评估边界</text>
+  <text x="52" y="206" fill="#fef2f2" font-family="Segoe UI, Inter, sans-serif" font-size="13">2. 授权后留存 CVV 违规：即使录音文件已加密，授权后存储 CVV/SAD 仍违反 PCI Req 3.3.1</text>
+  <text x="52" y="232" fill="#fef2f2" font-family="Segoe UI, Inter, sans-serif" font-size="13">3. 单靠 SIPREC 消音不保护 LLM：0ms 实时支路仍会将抢跑口述的卡号送进 ASR/LLM</text>
+  <text x="52" y="258" fill="#fef2f2" font-family="Segoe UI, Inter, sans-serif" font-size="13">4. 固定缓冲无 Fail-Closed 风险：NER 推理超时 (&gt;600ms) 或漏检会导致未消音 PCM 落盘</text>
   <rect x="52" y="278" width="514" height="74" rx="10" fill="#1f0909" stroke="#ef4444" stroke-width="1"/>
-  <text x="68" y="304" fill="#fca5a5" font-family="Consolas, monospace" font-size="13" font-weight="700">Audit Failure: rawPanDigitsExposedToLlm = 16 | inbandBleed = -12 dBFS</text>
-  <text x="68" y="328" fill="#fecaca" font-family="Consolas, monospace" font-size="12.5">SIPREC WORM Audio: 100% Plaintext Spoken PII Persisted to Disk</text>
+  <text x="68" y="304" fill="#fca5a5" font-family="Consolas, monospace" font-size="12.5" font-weight="700">Risk: rawPanDigitsExposedToLlm = 16 | Post-Auth CVV Stored in Audio</text>
+  <text x="68" y="328" fill="#fecaca" font-family="Consolas, monospace" font-size="12">Note: Local policy checks do NOT replace formal QSA / Acquirer assessment</text>
 
   <!-- Right Column Top: P725 -->
   <rect x="606" y="122" width="562" height="248" rx="14" fill="url(#greenCard)" stroke="#4ade80" stroke-width="1.5"/>
-  <text x="626" y="152" fill="#86efac" font-family="Segoe UI, Inter, sans-serif" font-size="16" font-weight="800">🛡️ P725：PCI-DSS SAQ-A 边缘 RFC 4733 带外按键旁路与大模型零接触</text>
-  <text x="626" y="180" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13.5">• 上行语音暂停锁：进入付款节点立即暂停发往 ASR/LLM 的上行音频流 (Paused)</text>
-  <text x="626" y="206" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13.5">• 带外剥离 + 陷波：边缘 SBC 剥离 RFC 4733 (PT=101) 并压制带内按键音 &lt;= -65 dBFS</text>
-  <text x="626" y="232" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13.5">• 金库单向 Token 化：直连 PCI Vault 换取 tok_visa_4242，LLM 暴露卡号位数强制 = 0</text>
-  <text x="626" y="258" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13.5">• 合规降维收益：AI 推理集群与录音系统 100% 脱离持卡人数据环境 (保持轻量 SAQ-A)</text>
+  <text x="626" y="152" fill="#86efac" font-family="Segoe UI, Inter, sans-serif" font-size="15.5" font-weight="800">🛡️ 专题 6A (P725)：边缘 RFC 4733 按键截流与 PCI 分界点评估</text>
+  <text x="626" y="180" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13">• 支付窗口挂起 AI 上行：进入按键采集时暂停发往 ASR/LLM 的上行音频流</text>
+  <text x="626" y="206" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13">• 带外剥离 + 合成预算滤波：剥离 RFC 4733 并按 &lt;= -65 dBFS 策略预算抑制带内余音</text>
+  <text x="626" y="232" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13">• 目标减少 LLM 暴露：金库返回 tok_visa_4242，下游 LLM 暴露原始卡号位数 = 0</text>
+  <text x="626" y="258" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13">• 范围由收单方/QSA 核定：接触 CHD 的边缘 SBC 仍在范围内，SAQ-A 需满足完整 TPSP 外包</text>
   <rect x="626" y="278" width="522" height="74" rx="10" fill="#031c0d" stroke="#22c55e" stroke-width="1"/>
-  <text x="642" y="304" fill="#86efac" font-family="Consolas, monospace" font-size="13" font-weight="700">P725 Gate (&lt;1ms synthetic policy check | live Vault RTT: not_measured):</text>
-  <text x="642" y="328" fill="#bbf7d0" font-family="Consolas, monospace" font-size="12.5">clampedInbandDtmfToneBleedDb &lt;= -65 dBFS | rawPanDigitsExposedToLlm = 0</text>
+  <text x="642" y="304" fill="#86efac" font-family="Consolas, monospace" font-size="12.5" font-weight="700">P725 Offline Config Check (0ms in 1ms rounding bucket | synthetic):</text>
+  <text x="642" y="328" fill="#bbf7d0" font-family="Consolas, monospace" font-size="12">clampedInbandDtmfToneBleedDb &lt;= -65 dBFS | rawPanDigitsExposedToLlm = 0</text>
 
   <!-- Bottom Full-Width: P726 Dual-Stream Ring Buffer & Decision Matrix -->
   <rect x="32" y="386" width="1136" height="264" rx="14" fill="url(#blueCard)" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="54" y="418" fill="#93c5fd" font-family="Segoe UI, Inter, sans-serif" font-size="17" font-weight="800">🔒 P726：非按键口述隐私 (身份证/住址/病史/抢跑报卡号) 的 SIPREC 双流延迟内存环形缓冲实时消音</text>
+  <text x="54" y="418" fill="#93c5fd" font-family="Segoe UI, Inter, sans-serif" font-size="16.5" font-weight="800">🔒 专题 6B (P726)：SIPREC 录音支路延迟环形缓冲消音 + 抢跑口述熔断 + Fail-Closed 隔离</text>
 
   <!-- Track 1 Box -->
   <rect x="54" y="434" width="530" height="92" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>
-  <text x="72" y="460" fill="#38bdf8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">轨道 1：实时 AI 对话流 (0ms 额外缓冲延迟 ➔ 保持极速 TTFA)</text>
-  <text x="72" y="484" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="13">• 麦克风音频直通流式 ASR + 词级时间戳 NER，毫秒级标定敏感词区间 [t_start, t_end]</text>
-  <text x="72" y="508" fill="#94a3b8" font-family="Consolas, monospace" font-size="12">NER Span Detected: [1200ms, 2650ms] -&gt; Expand ±150ms Moat -&gt; [1050ms, 2800ms]</text>
+  <text x="72" y="460" fill="#38bdf8" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700">支路 1：0ms 实时 AI 对话流 (注意：P726 自身不延时/不净化此实时流)</text>
+  <text x="72" y="484" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• 正常口述 PII 标定 [t1, t2]；若客户抢跑口述 PAN，立即 Abort LLM 并清空未落盘缓冲</text>
+  <text x="72" y="508" fill="#94a3b8" font-family="Consolas, monospace" font-size="11.5">Unprompted Spoken PAN -&gt; Abort LLM Turn + Purge RAM Context + Redirect Keypad</text>
 
   <!-- Track 2 Box -->
   <rect x="614" y="434" width="532" height="92" rx="10" fill="#0f172a" stroke="#a78bfa" stroke-width="1.2"/>
-  <text x="632" y="460" fill="#c4b5fd" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">轨道 2：SIPREC 录音分叉流 (600ms–1,500ms 加密 RAM 前瞻环形缓冲)</text>
-  <text x="632" y="484" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="13">• 音频在 RAM 排队 800ms，落盘前将 [t_start-150ms, t_end+150ms] 抹零换 420Hz Beep</text>
-  <text x="632" y="508" fill="#cbd5e1" font-family="Consolas, monospace" font-size="12">WORM Disk Flush: 0% Plaintext Audio | Pre/Post Coarticulation Moat &gt;= 150ms</text>
+  <text x="632" y="460" fill="#c4b5fd" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700">支路 2：SIPREC 录音归档流 (&gt;=600ms RAM 环形缓冲 + &gt;=150ms 安全垫预算)</text>
+  <text x="632" y="484" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• 窗口内命中则抹零/换 Beep；若 NER 迟到 (&gt;缓冲窗) 或漏检，Fail-Closed 转入加密隔离区</text>
+  <text x="632" y="508" fill="#cbd5e1" font-family="Consolas, monospace" font-size="11.5">nerLagMs &gt; lookaheadBufferMs -&gt; Fail-Closed Quarantine + Offline Forced Alignment</text>
 
   <!-- Bottom Summary Strip -->
   <rect x="54" y="542" width="1092" height="90" rx="10" fill="#091326" stroke="#334155" stroke-width="1"/>
-  <text x="74" y="568" fill="#fbbf24" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">📊 架构师三句话选型铁律 &amp; 数据口径声明 (Provenance Guardrail)：</text>
-  <text x="74" y="592" fill="#f8fafc" font-family="Segoe UI, Inter, sans-serif" font-size="13">① 信用卡 PAN/CVV/PIN 必选边缘 RFC 4733 带外按键旁路 (P725, SAQ-A)；② 口述身份证/住址/病史必选 SIPREC &gt;=600ms RAM 环形缓冲 + ±150ms 护城河实时消音 (P726)。</text>
-  <text x="74" y="616" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">③ 口径边界：本地离线内存策略状态机拦截耗时 &lt;1ms (1ms 计时分辨率下记 0ms, synthetic)；真实生产 SBC/HSM 金库往返与 WORM 写入延迟标为 not_measured；行业参考标为 anonymized_reported。</text>
+  <text x="74" y="568" fill="#fbbf24" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700">📊 架构师边界声明与 Provenance 铁律 (依据 PCI SSC 官方电话支付指南 &amp; v4.0 SAQ-A 规范)：</text>
+  <text x="74" y="592" fill="#f8fafc" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">① P725 旨在减少下游 LLM 暴露，实际 PCI 范围与 SAQ 资格由收单方/QSA 按数据流、商户自控 SBC、TPSP AoC 与录音/异常旁路核定；本 Demo 非合规认证。</text>
+  <text x="74" y="616" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="12">② 1ms 分辨率下四舍五入 0ms 仅代表离线合成策略检查落在 [0ms, 1ms) 舍入桶内，不能证明真实 DSP 执行 &lt;1ms；真实媒体/金库/WORM 延迟标为 not_measured。</text>
 </svg>
