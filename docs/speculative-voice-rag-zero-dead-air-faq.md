@@ -1,5 +1,9 @@
 # 企业级低延迟语音 RAG 与异步工具调用防冷场架构选型与原理解析 FAQ：同步阻塞查库 vs. 投机式预检索 (Speculative Voice RAG) vs. 异步双工工具流怎么选？可编排过渡话术 (Promptable Preambles) 与纪元写栅栏 (Epoch Write Fence) 是如何运作的？
 
+> **🧭 单专题独立指南导航（兼容聚合入口）**：为方便架构师按单一决策域独立查阅，本入口内容已拆分为两篇专注单专题的六段式 FAQ 指南（保留本页作为兼容导航入口）：
+> 1. **专题 3A（只读知识检索选型 · `P719`）**：[`docs/speculative-voice-rag-faq.md`](./speculative-voice-rag-faq.md) —— 聚焦**句尾串行语音 RAG vs. 投机式只读预检索 (Speculative Voice RAG)**、口语微切片预算（`<= 120 Tokens/块`）与句尾提交前语义等价核验（`cos >= 0.88`）。
+> 2. **专题 3B（写状态异步工具取消与回滚 · `P720`）**：[`docs/voice-tool-epoch-fence-faq.md`](./voice-tool-epoch-fence-faq.md) —— 聚焦**同步阻塞工具 vs. 异步单调递增 `turnEpoch` 写栅栏 + Saga 逆向补偿回滚**与三级零死寂前导话术掩盖（`350ms / 2,000ms / 5,000ms`）。
+>
 > **文档定位**：面向 AI 解决方案架构师（AI Solution Architect）与呼叫中心/智能客服技术负责人的实战决策指南  
 > **核心场景**：企业客服知识库问答（Voice RAG）、银行查账/改期/退订工具调用（Function Calling / Remote MCP）、慢速外部 ERP/CRM 接口防冷场（Zero-Dead-Air）、全双工打断事务回滚  
 > **对标基线**：`Stage 363` · `P719–P720` · `366` 评测维度 · `729` 确定性护栏 · `738` 探针  

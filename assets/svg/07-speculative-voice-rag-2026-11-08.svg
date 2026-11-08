@@ -30,9 +30,9 @@
   <!-- Header -->
   <rect x="36" y="34" width="1128" height="82" rx="12" fill="#111C38" stroke="#334155" stroke-width="1.5"/>
   <rect x="52" y="48" width="210" height="24" rx="12" fill="#065F46" stroke="#10B981" stroke-width="1"/>
-  <text x="157" y="64" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 363 · P719–P720 · FAQ #3</text>
-  <text x="278" y="65" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="20" font-weight="800">企业级低延迟语音 RAG 与异步工具防冷场架构选型一图流总结</text>
-  <text x="52" y="96" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13">Speculative Voice RAG (投机预检索) vs. Async Tool Stream (三阶防冷场话术) · 句尾改口二次核验 (P719) &amp; 话中打断纪元写栅栏 (P720)</text>
+  <text x="157" y="64" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 363 · SPLIT 3A &amp; 3B</text>
+  <text x="278" y="65" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="20" font-weight="800">低延迟语音只读检索 (3A: P719) 与异步写工具纪元栅栏 (3B: P720) 选型总结</text>
+  <text x="52" y="96" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12.5">单专题 3A: docs/speculative-voice-rag-faq.md (P719 只读投机 RAG) ｜ 单专题 3B: docs/voice-tool-epoch-fence-faq.md (P720 异步写栅栏与 Saga) · &lt;1ms synthetic 策略口径</text>
 
   <!-- Left Column: Timeline Comparison (Blocking vs Speculative + 3-Tier Pacing) -->
   <rect x="36" y="130" width="552" height="260" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.5"/>
@@ -81,17 +81,17 @@
 
   <!-- P719 Box -->
   <rect x="622" y="170" width="524" height="98" rx="8" fill="#13223E" stroke="#10B981" stroke-width="1.2"/>
-  <text x="636" y="192" fill="#34D399" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700">🛡️ P719 · 投机预检索句尾反转二次核验 (Pre-Commit Query Revalidation)</text>
+  <text x="636" y="192" fill="#34D399" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12.5" font-weight="700">🛡️ 专题 3A (speculative-voice-rag-faq.md) · P719 只读投机预检索句尾二次核验</text>
   <text x="636" y="213" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 痛点：客户前半句说“查白金卡年费”(已触发预取)，句尾改口“…不对，查普通金卡”</text>
-  <text x="636" y="233" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：落音瞬间比对 Partial vs Final 相似度(&gt;=0.88)与实体/否定极性；反转则策略层 &lt;1ms 废止旧缓存</text>
-  <text x="636" y="253" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="11">• 铁律：严禁只读投机越界触发 POST/DELETE 写接口；语音微切片强制 &lt;=120 Tokens/块 (Top-3 &lt;=360 Tokens)</text>
+  <text x="636" y="233" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：比对 Partial vs Final 相似度(&gt;=0.88)与否定极性；反转则策略状态机 &lt;1ms (synthetic) 废止旧缓存</text>
+  <text x="636" y="253" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="11">• 口径：只读幂等锁 + &lt;=120 Tokens 微切片；真实外部向量库重查(120~180ms)为 not_measured</text>
 
   <!-- P720 Box -->
   <rect x="622" y="278" width="524" height="98" rx="8" fill="#1F1638" stroke="#C084FC" stroke-width="1.2"/>
-  <text x="636" y="300" fill="#E879F9" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700">🔒 P720 · 异步写工具纪元写栅栏与 Saga 逆向补偿 (Epoch Write Fence)</text>
+  <text x="636" y="300" fill="#E879F9" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12.5" font-weight="700">🔒 专题 3B (voice-tool-epoch-fence-faq.md) · P720 异步工具纪元写栅栏与 Saga</text>
   <text x="636" y="321" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 痛点：AI 正在跑 1.8s 退票接口(epoch=22)，客户在 900ms 喊“等等别退了！”(epoch=23)</text>
-  <text x="636" y="341" fill="#F5D0FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：检测到 invocationEpoch(22) !== activeTurnEpoch(23)，策略层 &lt;1ms 触发 AbortSignal + Saga 冲正</text>
-  <text x="636" y="361" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="11">• 铁律：前导话术(Preamble)在接口返回前严禁提前播报金额/机密或承诺“已经办理成功”</text>
+  <text x="636" y="341" fill="#F5D0FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：检测到 invocationEpoch(22) !== activeTurnEpoch(23)，策略状态机 &lt;1ms (synthetic) 触发 Saga 冲正</text>
+  <text x="636" y="361" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="11">• 口径：前导话术禁提前承诺；真实外部 CRM/ERP 事务回滚网络 I/O 为 not_measured</text>
 
   <!-- Bottom Row: 3-Pattern Architect Decision Matrix + Quantitative Benchmark -->
   <rect x="36" y="404" width="1128" height="236" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>

@@ -67991,6 +67991,160 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface NonlinearEchoBargeInSuppressionContext {
+      speakerphoneNonlinearHarmonicEchoLeakTriggeringFalseBargeInDetected: boolean;
+      echoReturnLossEnhancementErleDb: number;
+      downlinkTtsSpectralEnvelopeCorrelation: number;
+    }
+
+    export interface NonlinearEchoBargeInSuppressionDecision {
+      violated: boolean;
+      policyId: "P721-DOUBLE-TALK-NONLINEAR-RESIDUAL-ECHO-BARGE-IN-SUPPRESSION-GUARD";
+      action:
+        | "suppress_nonlinear_speakerphone_echo_false_barge_in_in_0ms"
+        | "clamp_erle_floor_and_nonlinear_spectral_suppression_ceiling"
+        | "allow";
+      reason: string;
+      clampedEchoReturnLossEnhancementErleDb: number;
+      clampedDownlinkTtsSpectralEnvelopeCorrelation: number;
+    }
+
+    export function evaluateNonlinearEchoBargeInSuppressionGate(
+      context: NonlinearEchoBargeInSuppressionContext,
+    ): NonlinearEchoBargeInSuppressionDecision {
+      const policyId =
+        "P721-DOUBLE-TALK-NONLINEAR-RESIDUAL-ECHO-BARGE-IN-SUPPRESSION-GUARD" as const;
+      const clampedEchoReturnLossEnhancementErleDb = Math.min(
+        Math.max(context.echoReturnLossEnhancementErleDb, 18),
+        35,
+      );
+      const clampedDownlinkTtsSpectralEnvelopeCorrelation = Number(
+        Math.min(
+          Math.max(context.downlinkTtsSpectralEnvelopeCorrelation, 0.1),
+          0.77,
+        ).toFixed(2),
+      );
+
+      if (
+        context.speakerphoneNonlinearHarmonicEchoLeakTriggeringFalseBargeInDetected ||
+        (context.echoReturnLossEnhancementErleDb < 18 &&
+          context.downlinkTtsSpectralEnvelopeCorrelation >= 0.78)
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "suppress_nonlinear_speakerphone_echo_false_barge_in_in_0ms",
+          reason:
+            "Double-Talk Nonlinear Residual Echo Violation: miniature speaker clipping harmonics degraded ERLE below 18 dB while uplink envelope strongly correlated (>=0.78) with downlink TTS reference; offline policy state machine suppressing false self-barge-in (<1ms policy check).",
+          clampedEchoReturnLossEnhancementErleDb,
+          clampedDownlinkTtsSpectralEnvelopeCorrelation,
+        };
+      }
+
+      if (
+        context.echoReturnLossEnhancementErleDb < 18 ||
+        context.downlinkTtsSpectralEnvelopeCorrelation >= 0.78
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_erle_floor_and_nonlinear_spectral_suppression_ceiling",
+          reason:
+            "Speakerphone ERLE (<18 dB) or downlink TTS spectral correlation (>=0.78) outside safe acoustic isolation bounds; clamping ERLE floor to >=18 dB and correlation ceiling to <=0.77.",
+          clampedEchoReturnLossEnhancementErleDb,
+          clampedDownlinkTtsSpectralEnvelopeCorrelation,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Double-talk nonlinear residual echo suppression (ERLE >=18 dB and downlink TTS envelope correlation <=0.77) verified.",
+        clampedEchoReturnLossEnhancementErleDb,
+        clampedDownlinkTtsSpectralEnvelopeCorrelation,
+      };
+    }
+
+    export interface TargetSpeakerCrosstalkLockContext {
+      bystanderOrTvBackgroundVoiceInjectedIntoActiveTurnDetected: boolean;
+      primarySpeakerEmbeddingCosineSimilarity: number;
+      nearFieldPrimaryCallerSnrAttenuationDeltaDb: number;
+    }
+
+    export interface TargetSpeakerCrosstalkLockDecision {
+      violated: boolean;
+      policyId: "P722-TARGET-SPEAKER-EXTRACTION-PRIMARY-CALLER-CROSSTALK-LOCK-GUARD";
+      action:
+        | "drop_bystander_or_tv_crosstalk_frame_without_barge_in_flush_in_0ms"
+        | "clamp_primary_speaker_cosine_floor_and_near_field_snr_delta"
+        | "allow";
+      reason: string;
+      clampedPrimarySpeakerEmbeddingCosineSimilarity: number;
+      clampedNearFieldPrimaryCallerSnrAttenuationDeltaDb: number;
+    }
+
+    export function evaluateTargetSpeakerCrosstalkLockGate(
+      context: TargetSpeakerCrosstalkLockContext,
+    ): TargetSpeakerCrosstalkLockDecision {
+      const policyId =
+        "P722-TARGET-SPEAKER-EXTRACTION-PRIMARY-CALLER-CROSSTALK-LOCK-GUARD" as const;
+      const clampedPrimarySpeakerEmbeddingCosineSimilarity = Number(
+        Math.min(
+          Math.max(context.primarySpeakerEmbeddingCosineSimilarity, 0.82),
+          1.0,
+        ).toFixed(2),
+      );
+      const clampedNearFieldPrimaryCallerSnrAttenuationDeltaDb = Math.min(
+        Math.max(context.nearFieldPrimaryCallerSnrAttenuationDeltaDb, 0),
+        12,
+      );
+
+      if (
+        context.bystanderOrTvBackgroundVoiceInjectedIntoActiveTurnDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "drop_bystander_or_tv_crosstalk_frame_without_barge_in_flush_in_0ms",
+          reason:
+            "Target Speaker Crosstalk Isolation Violation: background passenger/bystander or TV speech did not match anchored primary caller embedding e_primary; offline policy state machine tagging frame bystander_crosstalk_ignored without flushing TTS or polluting LLM context (<1ms policy check).",
+          clampedPrimarySpeakerEmbeddingCosineSimilarity,
+          clampedNearFieldPrimaryCallerSnrAttenuationDeltaDb,
+        };
+      }
+
+      if (
+        context.primarySpeakerEmbeddingCosineSimilarity < 0.82 ||
+        context.nearFieldPrimaryCallerSnrAttenuationDeltaDb > 12
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_primary_speaker_cosine_floor_and_near_field_snr_delta",
+          reason:
+            "Primary speaker embedding cosine similarity (<0.82) or near-field SNR attenuation delta (>12 dB) out of bounds; clamping cosine floor to >=0.82 and max attenuation delta to <=12 dB.",
+          clampedPrimarySpeakerEmbeddingCosineSimilarity,
+          clampedNearFieldPrimaryCallerSnrAttenuationDeltaDb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Target speaker extraction primary caller embedding lock (cosine >=0.82) and near-field SNR delta (<=12 dB) verified.",
+        clampedPrimarySpeakerEmbeddingCosineSimilarity,
+        clampedNearFieldPrimaryCallerSnrAttenuationDeltaDb,
+      };
+    }
+
+
 
 
 

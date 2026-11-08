@@ -1,5 +1,9 @@
 # Enterprise Low-Latency Voice RAG & Zero-Dead-Air Tool Calling Selection & Principle Deep-Dive FAQ: When to Choose Synchronous Blocking vs. Speculative Voice RAG vs. Async Tool Streams, and How Do Promptable Preambles & Epoch Write Fences Work Under the Hood?
 
+> **🧭 Single-Topic Standalone Guide Navigation (Compatibility Hub)**: For clean, single-decision-domain reading, this guide is split into two standalone 6-part FAQ guides (this page remains as a backwards-compatible hub):
+> 1. **Topic 3A (Read-Only Voice RAG Selection · `P719`)**: [`docs/speculative-voice-rag-faq.en.md`](./speculative-voice-rag-faq.en.md) — **Serial Post-EOU Voice RAG vs. Speculative Read-Only Voice RAG**, Voice Micro-Chunking (`<= 120 Tokens/chunk`), and Pre-Commit EOU Equivalence Verification (`cos >= 0.88`).
+> 2. **Topic 3B (State-Mutating Async Tool Cancellation & Rollbacks · `P720`)**: [`docs/voice-tool-epoch-fence-faq.en.md`](./voice-tool-epoch-fence-faq.en.md) — **Synchronous Blocking Tools vs. Monotonic `turnEpoch` Write Fence + Saga Compensating Rollbacks** and 3-Tier Zero-Dead-Air Pacing (`350ms / 2,000ms / 5,000ms`).
+>
 > **Target Audience**: AI Solution Architects & Contact Center / Voice Engineering Leads  
 > **Core Scenarios**: Enterprise Knowledge Base Q&A (Voice RAG), Banking/Airline/CRM Tool Calling (Function Calling & Remote MCP), Slow Backend Zero-Dead-Air Masking, and Full-Duplex Barge-in Transaction Rollback  
 > **Baseline**: `Stage 363` · `P719–P720` · `366` Evaluation Dimensions · `729` Deterministic Guardrails · `738` Probes  

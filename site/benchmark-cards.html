@@ -1093,9 +1093,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>366. 投机式语音 RAG（`Speculative Voice RAG`）句尾反转二次核验与 `120-Token` 语音微切片护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截半句 ASR 草稿越界触发 `POST/PUT/DELETE` 写操作或客户句尾反转改口 `similarity &lt;0.88` 时误用旧预取缓存、强制 `EOU` 句尾一致性核验及单块 `&lt;=120 Tokens` / 总注入 `&lt;=360 Tokens` 钳制）&amp; 异步语音写工具单调递增纪元写栅栏（`Monotonic turnEpoch Write Fence`）与三阶渐进式防冷场 + Saga 逆向冲正护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截客户中途打断后旧纪元 `activeTurnEpoch &gt; toolInvocationEpoch` 僵尸写提交或过渡导语剧透未核验金额/提前承诺成功、发出 `AbortSignal` + Saga 冲正指令及未掩蔽冷场 `&lt;=1000ms` / 导语触发 `&lt;=450ms` 钳制）(`P719` / `P720` · Stage 363 · 366 评测维度里程碑 · 729 护栏 &amp; 738 探针 · 366 维)</strong>
+                <strong>366. [专题3A `docs/speculative-voice-rag-faq.md`] 投机式只读语音 RAG（`Speculative Voice RAG`）句尾反转二次核验与 `120-Token` 语音微切片护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截半句 ASR 草稿越界触发 `POST/PUT/DELETE` 写操作或客户句尾反转改口 `similarity &lt;0.88` 时误用旧预取缓存、强制 `EOU` 句尾一致性核验及单块 `&lt;=120 Tokens` / 总注入 `&lt;=360 Tokens` 钳制；真实外部向量库回退重查耗时 `not_measured`）&amp; [专题3B `docs/voice-tool-epoch-fence-faq.md`] 异步语音写工具单调递增纪元写栅栏（`Monotonic turnEpoch Write Fence`）与三阶渐进式防冷场 + Saga 逆向冲正护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截客户中途打断后旧纪元 `activeTurnEpoch &gt; toolInvocationEpoch` 僵尸写提交或过渡导语剧透未核验金额/提前承诺成功、发出 `AbortSignal` + Saga 冲正指令及未掩蔽冷场 `&lt;=1000ms` / 导语触发 `&lt;=450ms` 钳制；真实外部 CRM/ERP 事务回滚网络 I/O `not_measured`）(`P719` / `P720` · Stage 363 · 366 评测维度里程碑 · 729 护栏 &amp; 738 探针 · 366 维)</strong>
               </td>
               <td><code>P719 / P720 deterministic speculative voice RAG EOU pivot cache coherency micro-chunk &amp; async tool monotonic turnEpoch write fence Saga rollback guard</code></td>
+              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>367. [专题4 `docs/barge-in-echo-crosstalk-faq.md`] 全双工打断双讲非线性残余回声门禁（`Double-Talk Nonlinear Residual Echo Suppression`）与手机免提削波防自打断护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截大音量免提微型扬声器非线性削波导致 `ERLE &lt;18dB` 且与下行 TTS 包络相关度 `&gt;=0.78` 引发的虚假自打断及 `ERLE &gt;=18dB` / 包络相关度 `&lt;=0.77` 钳制；真实端到端 DSP 非线性谱减耗时 `not_measured`）&amp; 流式目标说话人提取（`Target Speaker Extraction, TSE`）主叫声纹余弦锁定与旁人/电视背景防串音护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截副驾闲聊或客厅电视背景音 `cos(e_frame, e_primary) &lt;0.82` 或远场衰减 `&gt;12dB` 串入主叫会话触发误打断、静默标记 `bystander_crosstalk_ignored` 不清空下行缓冲及主叫声纹余弦 `&gt;=0.82` / 近场衰减差 `&lt;=12dB` 钳制；真实流式 TSE 神经声纹帧推理耗时 `not_measured`）(`P721` / `P722` · Stage 364 · 367 评测维度里程碑 · 731 护栏 &amp; 740 探针 · 367 维)</strong>
+              </td>
+              <td><code>P721 / P722 deterministic double-talk nonlinear speakerphone residual echo barge-in suppression &amp; target speaker extraction primary caller cosine lock guard</code></td>
               <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4169,9 +4176,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>366. 投机式语音 RAG（`Speculative Voice RAG`）句尾反转二次核验与 `120-Token` 语音微切片护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截半句 ASR 草稿越界触发 `POST/PUT/DELETE` 写操作或客户句尾反转改口 `similarity &lt;0.88` 时误用旧预取缓存、强制 `EOU` 句尾一致性核验及单块 `&lt;=120 Tokens` / 总注入 `&lt;=360 Tokens` 钳制）&amp; 异步语音写工具单调递增纪元写栅栏（`Monotonic turnEpoch Write Fence`）与三阶渐进式防冷场 + Saga 逆向冲正护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截客户中途打断后旧纪元 `activeTurnEpoch &gt; toolInvocationEpoch` 僵尸写提交或过渡导语剧透未核验金额/提前承诺成功、发出 `AbortSignal` + Saga 冲正指令及未掩蔽冷场 `&lt;=1000ms` / 导语触发 `&lt;=450ms` 钳制）(`P719` / `P720` · Stage 363 · 366 评测维度里程碑 · 729 护栏 &amp; 738 探针 · 366 维)</strong>
+                <strong>366. [专题3A `docs/speculative-voice-rag-faq.md`] 投机式只读语音 RAG（`Speculative Voice RAG`）句尾反转二次核验与 `120-Token` 语音微切片护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截半句 ASR 草稿越界触发 `POST/PUT/DELETE` 写操作或客户句尾反转改口 `similarity &lt;0.88` 时误用旧预取缓存、强制 `EOU` 句尾一致性核验及单块 `&lt;=120 Tokens` / 总注入 `&lt;=360 Tokens` 钳制；真实外部向量库回退重查耗时 `not_measured`）&amp; [专题3B `docs/voice-tool-epoch-fence-faq.md`] 异步语音写工具单调递增纪元写栅栏（`Monotonic turnEpoch Write Fence`）与三阶渐进式防冷场 + Saga 逆向冲正护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截客户中途打断后旧纪元 `activeTurnEpoch &gt; toolInvocationEpoch` 僵尸写提交或过渡导语剧透未核验金额/提前承诺成功、发出 `AbortSignal` + Saga 冲正指令及未掩蔽冷场 `&lt;=1000ms` / 导语触发 `&lt;=450ms` 钳制；真实外部 CRM/ERP 事务回滚网络 I/O `not_measured`）(`P719` / `P720` · Stage 363 · 366 评测维度里程碑 · 729 护栏 &amp; 738 探针 · 366 维)</strong>
               </td>
               <td><code>P719 / P720 deterministic speculative voice RAG EOU pivot cache coherency micro-chunk &amp; async tool monotonic turnEpoch write fence Saga rollback guard</code></td>
+              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>367. [专题4 `docs/barge-in-echo-crosstalk-faq.md`] 全双工打断双讲非线性残余回声门禁（`Double-Talk Nonlinear Residual Echo Suppression`）与手机免提削波防自打断护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截大音量免提微型扬声器非线性削波导致 `ERLE &lt;18dB` 且与下行 TTS 包络相关度 `&gt;=0.78` 引发的虚假自打断及 `ERLE &gt;=18dB` / 包络相关度 `&lt;=0.77` 钳制；真实端到端 DSP 非线性谱减耗时 `not_measured`）&amp; 流式目标说话人提取（`Target Speaker Extraction, TSE`）主叫声纹余弦锁定与旁人/电视背景防串音护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截副驾闲聊或客厅电视背景音 `cos(e_frame, e_primary) &lt;0.82` 或远场衰减 `&gt;12dB` 串入主叫会话触发误打断、静默标记 `bystander_crosstalk_ignored` 不清空下行缓冲及主叫声纹余弦 `&gt;=0.82` / 近场衰减差 `&lt;=12dB` 钳制；真实流式 TSE 神经声纹帧推理耗时 `not_measured`）(`P721` / `P722` · Stage 364 · 367 评测维度里程碑 · 731 护栏 &amp; 740 探针 · 367 维)</strong>
+              </td>
+              <td><code>P721 / P722 deterministic double-talk nonlinear speakerphone residual echo barge-in suppression &amp; target speaker extraction primary caller cosine lock guard</code></td>
               <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

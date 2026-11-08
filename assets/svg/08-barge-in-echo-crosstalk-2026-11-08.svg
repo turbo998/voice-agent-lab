@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGrad08" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentBlue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="accentGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad08)" rx="16"/>
+  <rect x="18" y="18" width="1164" height="639" rx="14" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="40" y="34" width="330" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="205" y="53" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+    STAGE 364 · P721–P722 · FULL-DUPLEX ACOUSTIC ISOLATION
+  </text>
+
+  <rect x="384" y="34" width="460" height="28" rx="14" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="614" y="53" fill="#CBD5E1" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">
+    SINGLE-TOPIC FAQ: docs/barge-in-echo-crosstalk-faq.md (.en.md)
+  </text>
+
+  <text x="40" y="96" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="25" font-weight="800">
+    企业全双工打断声学隔离选型：线性 AEC3 vs. 非线性残余回声门禁 (P721) + 主叫声纹锁定 (P722)
+  </text>
+  <text x="40" y="122" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="13.5">
+    解决手机大音量免提外放“喇叭削波破音自打断”与车载/客厅“副驾闲聊或电视广告被误认为客户指令”两大声学顽疾
+  </text>
+
+  <!-- Left Column: Decision Matrix by Acoustic Environment -->
+  <rect x="40" y="142" width="545" height="255" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="60" y="172" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="16" font-weight="700">
+    1. 架构选型分界线（按终端放音形态与物理声场环境切分）
+  </text>
+
+  <!-- Tier A -->
+  <rect x="58" y="186" width="508" height="56" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="74" y="208" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700">
+    🟢 方案 A：基础线性声学管线（佩戴耳机 / 贴耳听筒 + 安静室内 SNR &gt; 20dB）
+  </text>
+  <text x="74" y="229" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    WebRTC 内置线性 AEC3 + 能量 VAD + 语义判停 EOU (P716) · 帧耗时 5~10ms · 零额外算力开销
+  </text>
+
+  <!-- Tier B -->
+  <rect x="58" y="252" width="508" height="62" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="74" y="274" fill="#FBBF24" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700">
+    🟡 方案 B：线性 AEC3 + 双讲非线性残余回声门禁（P721 · 单人手机大音量免提 &gt;80%）
+  </text>
+  <text x="74" y="295" fill="#CBD5E1" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    校验 ERLE &gt;= 18 dB 且对比下行 TTS 包络相关度 (&lt;0.78) · 拦截微型扬声器振膜削波三次/五次谐波自打断
+  </text>
+
+  <!-- Tier C -->
+  <rect x="58" y="324" width="508" height="62" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="74" y="346" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700">
+    🚀 方案 C：非线性回声门禁 (P721) + 流式目标说话人提取主叫锁定 (P722 TSE · 多人/车载/客厅)
+  </text>
+  <text x="74" y="367" fill="#D1FAE5" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    首轮锚定主叫近场声纹 e_primary · 帧级校验 cos(e_frame, e_primary) &gt;= 0.82 · 静默丢弃副驾与电视广告串音
+  </text>
+
+  <!-- Right Column: First Principles Under the Hood -->
+  <rect x="605" y="142" width="555" height="255" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="625" y="172" fill="#A78BFA" font-family="Segoe UI, Inter, sans-serif" font-size="16" font-weight="700">
+    2. 底层第一性原理：为什么线性 AEC 防不住免提破音与旁人插话？
+  </text>
+
+  <rect x="623" y="186" width="518" height="96" rx="8" fill="#1E293B" stroke="#818CF8" stroke-width="1.2"/>
+  <text x="639" y="208" fill="#C4B5FD" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700">
+    🔊 P721 双讲非线性残余回声门禁（Speakerphone Nonlinear Clipping Gate）
+  </text>
+  <text x="639" y="229" fill="#CBD5E1" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    • 物理根因：手机喇叭 &gt;80% 音量发生非线性削波，凭空产生原始 TTS 数字参考流中不存在的高次谐波
+  </text>
+  <text x="639" y="249" fill="#CBD5E1" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    • 护栏机制：当 ERLE &lt; 18 dB 且上行残余与下行 TTS 包络相关度 &gt;= 0.78 时，判定为非线性残余回声
+  </text>
+  <text x="639" y="269" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="600">
+    • 判定口径：离线策略状态机 &lt;1ms (1ms 分辨率记 0ms, synthetic) 抑制虚假自打断；生产 DSP 预算 8~15ms
+  </text>
+
+  <rect x="623" y="292" width="518" height="94" rx="8" fill="#1E293B" stroke="#34D399" stroke-width="1.2"/>
+  <text x="639" y="314" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700">
+    🎯 P722 目标说话人提取与主叫声纹余弦锁定（Primary Speaker TSE Lock）
+  </text>
+  <text x="639" y="335" fill="#CBD5E1" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    • 物理根因：普通 VAD/ASR“认声不认人”；事后录音分轨 (Diarization) 无法在实时毫秒级拦住旁人抢话
+  </text>
+  <text x="639" y="355" fill="#CBD5E1" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    • 护栏机制：首轮锁定主叫 e_primary；后续帧 cos &lt; 0.82 或远场能量衰减 &gt; 12dB 标记为 bystander_crosstalk_ignored
+  </text>
+  <text x="639" y="375" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="600">
+    • 判定口径：离线策略状态机 &lt;1ms (synthetic) 静默丢弃串音；流式神经声纹推理生产预算 15~40ms (not_measured)
+  </text>
+
+  <!-- Bottom Quantitative & Provenance Section -->
+  <rect x="40" y="412" width="1120" height="222" rx="12" fill="#0B1120" stroke="#334155" stroke-width="1.5"/>
+  <text x="60" y="442" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="15.5" font-weight="700">
+    3. Stage 364 定量验证矩阵与严格数据溯源口径（Dimension 367 · Guardrails 731 · Probes 740）
+  </text>
+
+  <!-- 3 Metric Cards -->
+  <rect x="60" y="458" width="352" height="118" rx="10" fill="#1E293B" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="78" y="484" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700">
+    探针 ①：手机 90% 免提削波自打断防御 (P721)
+  </text>
+  <text x="78" y="508" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    输入：ERLE = 11 dB (&lt;18 dB), TTS 包络相关度 = 0.86
+  </text>
+  <text x="78" y="530" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700">
+    输出：nonlinear_echo_barge_in_suppressed (&lt;1ms synthetic)
+  </text>
+  <text x="78" y="552" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="11">
+    传统基线每 3~5s 误自断 (anonymized_reported) vs 门禁拦截
+  </text>
+
+  <rect x="424" y="458" width="352" height="118" rx="10" fill="#1E293B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="442" y="484" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700">
+    探针 ②：副驾/电视大喊“取消套餐”防串音 (P722)
+  </text>
+  <text x="442" y="508" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    输入：cos(e_frame, e_primary) = 0.39 (&lt;0.82), 远场衰减 15dB
+  </text>
+  <text x="442" y="530" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700">
+    输出：bystander_crosstalk_ignored (&lt;1ms synthetic)
+  </text>
+  <text x="442" y="552" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="11">
+    不清空下行 TTS 缓冲、不污染 LLM 上下文；TSE 预算 15~40ms
+  </text>
+
+  <rect x="788" y="458" width="352" height="118" rx="10" fill="#1E293B" stroke="#A78BFA" stroke-width="1.2"/>
+  <text x="806" y="484" fill="#C4B5FD" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700">
+    探针 ③：主叫客户本人近讲真实打断放行
+  </text>
+  <text x="806" y="508" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">
+    输入：cos(e_frame, e_primary) = 0.91 (&gt;=0.82), ERLE = 23 dB
+  </text>
+  <text x="806" y="530" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700">
+    输出：verified_primary_speaker_barge_in (&lt;1ms synthetic)
+  </text>
+  <text x="806" y="552" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="11">
+    避免盲目调高静态 VAD 阈值导致主叫正常轻声打断失灵
+  </text>
+
+  <!-- Provenance Footer -->
+  <text x="60" y="608" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">
+    📌 Provenance 口径：行业声学基线为 anonymized_reported (independently_reproduced=false)；P721–P722 的 &lt;1ms (1ms 分辨率记 0ms) 为离线策略状态机评估 (synthetic)，流式 DSP/TSE 端到端推理耗时为 not_measured。
+  </text>
+</svg>

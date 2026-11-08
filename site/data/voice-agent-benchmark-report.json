@@ -1377,9 +1377,15 @@
       "delta_pts": 0.0
     },
     {
-      "question": "366. Speculative Voice RAG Cache Coherency & End-of-Utterance Pivot Revalidation + 120-Token Voice Micro-Chunk Guard & Async Voice Tool Monotonic turnEpoch Write Fence + Three-Tier Dead-Air Masking & Saga Rollback Guard (P719 / P720 — Stage 363 · 366-Dimension Milestone)",
-      "original": "100.0% (<1ms [0ms rounded, synthetic] offline policy block on partial-ASR speculative state-mutating write tools or stale prefetched RAG cache hits after caller end-of-utterance pivot [similarity <0.88] + voice micro-chunking clamp <=120 tokens/chunk & <=360 total tokens)",
-      "reversed": "100.0% (<1ms [0ms rounded, synthetic] offline policy abort + Saga rollback directive on stale turnEpoch write commits after caller barge-in or preamble leaks of unverified amounts/premature success + <=1000ms unmasked dead-air & <=450ms preamble trigger clamp)",
+      "question": "366. [Topic 3A: speculative-voice-rag-faq] Read-Only Speculative Voice RAG Cache Coherency & End-of-Utterance Pivot Revalidation + 120-Token Micro-Chunk Guard & [Topic 3B: voice-tool-epoch-fence-faq] Async Voice Tool Monotonic turnEpoch Write Fence + Three-Tier Dead-Air Masking & Saga Rollback Guard (P719 / P720 — Stage 363 · 366-Dimension Milestone)",
+      "original": "100.0% (<1ms [0ms rounded, synthetic] offline policy block on partial-ASR speculative state-mutating write tools or stale prefetched RAG cache hits after caller end-of-utterance pivot [similarity <0.88] + voice micro-chunking clamp <=120 tokens/chunk & <=360 total tokens; live vector DB fallback re-query is not_measured)",
+      "reversed": "100.0% (<1ms [0ms rounded, synthetic] offline policy abort + Saga rollback directive on stale turnEpoch write commits after caller barge-in or preamble leaks of unverified amounts/premature success + <=1000ms unmasked dead-air & <=450ms preamble trigger clamp; live external CRM/ERP Saga network I/O is not_measured)",
+      "delta_pts": 0.0
+    },
+    {
+      "question": "367. [Topic 4: barge-in-echo-crosstalk-faq] Double-Talk Nonlinear Residual Echo Suppression & Speakerphone Clipping Barge-In Gate + Streaming Target Speaker Extraction (TSE) Primary Caller Cosine Lock & Bystander Crosstalk Guard (P721 / P722 — Stage 364 · 367-Dimension Milestone)",
+      "original": "100.0% (<1ms [0ms rounded, synthetic] offline policy block on loud speakerphone nonlinear clipping harmonics triggering false self-barge-in [ERLE <18dB with >=0.78 downlink TTS spectral correlation] + >=18dB ERLE floor & <=0.77 correlation ceiling clamp; live DSP nonlinear filter latency is not_measured)",
+      "reversed": "100.0% (<1ms [0ms rounded, synthetic] offline policy drop of passenger/bystander or TV background speech [cosine similarity <0.82 vs. primary caller anchor e_primary or >12dB near-field SNR drop] tagged bystander_crosstalk_ignored without flushing TTS + >=0.82 cosine floor & <=12dB SNR delta clamp; live streaming TSE frame inference is not_measured)",
       "delta_pts": 0.0
     }
   ],

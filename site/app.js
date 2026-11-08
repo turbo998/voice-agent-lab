@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-08 三专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715) · 语义判停 EOU (P716) · WebRTC vs WS 抗抖动与 AEC3 (P717) · SIP 8kHz 带限抗混叠重采样 (P718) · 投机预检索句尾核验 (P719) · 异步工具纪元写栅栏 (P720) (Stage 363 · P705–P720)",
-    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略状态机（计时分辨率 1ms，判定耗时 <1ms 四舍五入记为 0ms；真实生产网络/模型切换耗时未在此本地沙盒实测 not_measured）对 P715–P720 六大核心语音架构护栏的规则判定：",
+    simTitle: "🧪 2026-11-08 单专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715/P716) · WebRTC vs WS vs SIP 8kHz 带限重采样 (P717/P718) · 只读投机语音 RAG [专题3A: P719] · 异步工具纪元写栅栏 [专题3B: P720] · 免提非线性回声门禁与主叫声纹防串音 [专题4: P721/P722] (Stage 364 · P705–P722)",
+    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略状态机（计时分辨率 1ms，判定耗时 <1ms 四舍五入记为 0ms；真实生产网络/向量库重查/Saga 回滚/流式声学 DSP 帧推理耗时未在此本地沙盒实测 not_measured）对 P715–P722 核心语音架构护栏的规则判定：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-08 三專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715) · 語義判停 EOU (P716) · WebRTC vs WS 抗抖動與 AEC3 (P717) · SIP 8kHz 帶限抗混疊重採樣 (P718) · 投機預檢索句尾核驗 (P719) · 非同步工具紀元寫柵欄 (P720) (Stage 363 · P705–P720)",
-    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略狀態機（計時解析度 1ms，判定耗時 <1ms 四捨五入記為 0ms；真實生產網路/模型切換耗時未在此本地沙盒實測 not_measured）對 P715–P720 六大核心語音架構護欄的規則判定：",
+    simTitle: "🧪 2026-11-08 單專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715/P716) · WebRTC vs WS vs SIP 8kHz 帶限重採樣 (P717/P718) · 唯讀投機語音 RAG [專題3A: P719] · 非同步工具紀元寫柵欄 [專題3B: P720] · 免持非線性回聲門禁與主叫聲紋防串音 [專題4: P721/P722] (Stage 364 · P705–P722)",
+    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略狀態機（計時解析度 1ms，判定耗時 <1ms 四捨五入記為 0ms；真實生產網路/向量庫重查/Saga 回滾/流式聲學 DSP 幀推理耗時未在此本地沙盒實測 not_measured）對 P715–P722 核心語音架構護欄的規則判定：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-08 Triple Architect FAQ Policy Sandbox: Cascaded vs. S2S Lock (P715) · Semantic EOU (P716) · WebRTC vs. WS HOL/AEC3 (P717) · SIP 8kHz Band-Limited Resampling (P718) · Speculative Voice RAG (P719) · Epoch Write Fence (P720) (Stage 363 · P705–P720)",
-    simSub: "Click any synthetic probe below to inspect offline in-memory policy state-machine evaluation (<1ms check rounded to 0ms at 1ms timer resolution; live production network/model cutover is not_measured in this local sandbox) across P715–P720:",
+    simTitle: "🧪 2026-11-08 Single-Topic Architect FAQ Policy Sandbox: Cascaded vs. S2S (P715/P716) · WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718) · Read-Only Speculative Voice RAG [Topic 3A: P719] · Async Tool Epoch Write Fence [Topic 3B: P720] · Nonlinear Echo & TSE Crosstalk Lock [Topic 4: P721/P722] (Stage 364 · P705–P722)",
+    simSub: "Click any synthetic probe below to inspect offline in-memory policy state-machine evaluation (<1ms check rounded to 0ms at 1ms timer resolution; live production network/vector DB/Saga rollback/streaming DSP inference latency is not_measured in this local sandbox) across P715–P722:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 363 P719/P720 · 366维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 364 P721/P722 · 367维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "级联 vs S2S & WebRTC/WS/SIP & 投机式语音 RAG 三专题 FAQ",
-      desc: "通俗拆解级联 vs S2S 合规泳道、WebRTC vs WebSocket vs SIP 接入与 8kHz 带限抗混叠重采样，以及投机式语音 RAG 句尾反转核验与纪元写栅栏（Stage 361–363 · P715–P720）。",
+      title: "5 篇独立单专题语音架构选型 FAQ（级联/S2S · WebRTC/WS/SIP · 只读投机 RAG · 异步写工具栅栏 · 免提防自断与防串音）",
+      desc: "单专题独立指南：① 级联 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重采样 (P717/P718)；③ 只读投机语音 RAG (speculative-voice-rag-faq.md · P719)；④ 异步工具纪元写栅栏与 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免提非线性回声门禁与主叫声纹防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 363 P719/P720 · 366維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 364 P721/P722 · 367維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "級聯 vs S2S & WebRTC/WS/SIP & 投機式語音 RAG 三專題 FAQ",
-      desc: "通俗拆解級聯 vs S2S 合規泳道、WebRTC vs WebSocket vs SIP 接入與 8kHz 帶限抗混疊重採樣，以及投機式語音 RAG 句尾反轉核驗與紀元寫柵欄（Stage 361–363 · P715–P720）。",
+      title: "5 篇獨立單專題語音架構選型 FAQ（級聯/S2S · WebRTC/WS/SIP · 唯讀投機 RAG · 非同步寫工具柵欄 · 免持防自斷與防串音）",
+      desc: "單專題獨立指南：① 級聯 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重採樣 (P717/P718)；③ 唯讀投機語音 RAG (speculative-voice-rag-faq.md · P719)；④ 非同步工具紀元寫柵欄與 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免持非線性回聲門禁與主叫聲紋防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 363 P719/P720 · 366-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 364 P721/P722 · 367-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "Cascaded vs. S2S, WebRTC/WS/SIP & Speculative Voice RAG FAQs",
-      desc: "Plain-language deep dives into Cascaded vs. S2S, WebRTC vs. WebSocket vs. SIP ingress, 8kHz band-limited anti-aliased resampling, Speculative Voice RAG, and Epoch Write Fences (Stage 361–363 · P715–P720).",
+      title: "5 Single-Topic Architect Selection FAQs (Cascaded/S2S · WebRTC/WS/SIP · Speculative RAG · Tool Epoch Fence · Barge-in Echo & Crosstalk)",
+      desc: "Standalone single-topic guides: (1) Cascaded vs. S2S (P715/P716); (2) WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718); (3) Read-Only Speculative Voice RAG (speculative-voice-rag-faq.en.md · P719); (4) Async Tool turnEpoch Write Fence & Saga (voice-tool-epoch-fence-faq.en.md · P720); (5) Nonlinear Echo & TSE Crosstalk Lock (barge-in-echo-crosstalk-faq.en.md · P721/P722).",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,17 +2191,76 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p719_speculative_voice_rag_revalidation";
+let currentDuplexSimId = "p721_nonlinear_echo_barge_in_suppression";
 
 const DUPLEX_SIM_PROBES = [
   {
-    id: "p719_speculative_voice_rag_revalidation",
+    id: "p721_nonlinear_echo_barge_in_suppression",
     label: {
-      "zh-CN": "🔥 P719 · 投机式语音 RAG 句尾反转二次核验 & 120-Token 微切片护栏",
-      "zh-TW": "🔥 P719 · 投機式語音 RAG 句尾反轉二次核驗 & 120-Token 微切片護欄",
-      en: "🔥 P719 · Speculative Voice RAG EOU Revalidation & Micro-Chunk Guard"
+      "zh-CN": "🔥 [专题4 · barge-in-echo-crosstalk-faq] P721 · 手机免提非线性残余回声门禁 (ERLE >= 18dB)",
+      "zh-TW": "🔥 [專題4 · barge-in-echo-crosstalk-faq] P721 · 手機免持非線性殘餘回聲門禁 (ERLE >= 18dB)",
+      en: "🔥 [Topic 4 · barge-in-echo-crosstalk-faq] P721 · Nonlinear Speakerphone Echo Gate (ERLE >= 18dB)"
     },
     inputJson: `{
+  "topicGuide": "docs/barge-in-echo-crosstalk-faq.md (.en.md)",
+  "policyId": "P721-DOUBLE-TALK-NONLINEAR-RESIDUAL-ECHO-BARGE-IN-SUPPRESSION-GUARD",
+  "speakerphoneNonlinearHarmonicEchoLeakTriggeringFalseBargeInDetected": true,
+  "echoReturnLossEnhancementErleDb": 11,
+  "downlinkTtsSpectralEnvelopeCorrelation": 0.86
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalLatencyMs": "<1ms (0ms rounded at 1ms resolution, synthetic)",
+  "liveDspNonlinearFilterLatency": "not_measured in local unit test (production budget 8-15ms)",
+  "action": "suppress_nonlinear_speakerphone_echo_false_barge_in_in_0ms",
+  "clampedEchoReturnLossEnhancementErleDb": 18,
+  "clampedDownlinkTtsSpectralEnvelopeCorrelation": 0.77,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题4：全双工声学隔离 · docs/barge-in-echo-crosstalk-faq.md] <1ms 离线策略状态机判定（Synthetic；真实 DSP 非线性谱减耗时未在本地单测实测 not_measured）：当手机 >80% 大音量免提外放导致微型喇叭非线性削波（ERLE=11dB < 18dB 且与下行 TTS 包络相关度 0.86 >= 0.78）时，精准识别为本机破音残余回声并抑制虚假自打断。",
+      "zh-TW": "✅ [專題4：全雙工聲學隔離 · docs/barge-in-echo-crosstalk-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實 DSP 非線性譜減耗時未在本地單測實測 not_measured）：當手機 >80% 大音量免持外放導致微型喇叭非線性削波（ERLE=11dB < 18dB 且與下行 TTS 包絡相關度 0.86 >= 0.78）時，精準識別為本機破音殘餘回聲並抑制虛假自打斷。",
+      en: "✅ [Topic 4: Full-Duplex Acoustic Isolation · docs/barge-in-echo-crosstalk-faq.en.md] <1ms Offline Policy State-Machine Verdict (Synthetic; live DSP nonlinear filter latency is not_measured in local tests): Detects speakerphone nonlinear clipping harmonics (ERLE 11dB < 18dB with 0.86 downlink TTS correlation) and suppresses false self-barge-in."
+    }
+  },
+  {
+    id: "p722_target_speaker_crosstalk_lock",
+    label: {
+      "zh-CN": "🔥 [专题4 · barge-in-echo-crosstalk-faq] P722 · 目标说话人提取主叫声纹锁 (cos >= 0.82)",
+      "zh-TW": "🔥 [專題4 · barge-in-echo-crosstalk-faq] P722 · 目標說話人提取主叫聲紋鎖 (cos >= 0.82)",
+      en: "🔥 [Topic 4 · barge-in-echo-crosstalk-faq] P722 · Target Speaker Primary Caller Lock (cos >= 0.82)"
+    },
+    inputJson: `{
+  "topicGuide": "docs/barge-in-echo-crosstalk-faq.md (.en.md)",
+  "policyId": "P722-TARGET-SPEAKER-EXTRACTION-PRIMARY-CALLER-CROSSTALK-LOCK-GUARD",
+  "bystanderOrTvBackgroundVoiceInjectedIntoActiveTurnDetected": true,
+  "primarySpeakerEmbeddingCosineSimilarity": 0.39,
+  "nearFieldPrimaryCallerSnrAttenuationDeltaDb": 16
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalLatencyMs": "<1ms (0ms rounded at 1ms resolution, synthetic)",
+  "liveStreamingTseFrameInferenceLatency": "not_measured in local unit test (production budget 15-40ms)",
+  "action": "drop_bystander_or_tv_crosstalk_frame_without_barge_in_flush_in_0ms",
+  "clampedPrimarySpeakerEmbeddingCosineSimilarity": 0.82,
+  "clampedNearFieldPrimaryCallerSnrAttenuationDeltaDb": 12,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题4：全双工声学隔离 · docs/barge-in-echo-crosstalk-faq.md] <1ms 离线策略状态机判定（Synthetic；流式神经 TSE 声纹模型帧推理耗时未在本地单测实测 not_measured）：副驾乘客或客厅电视插话（与首轮主叫声纹锚点 e_primary 余弦相似度 0.39 < 0.82，远场衰减 16dB > 12dB）被静默标记为 bystander_crosstalk_ignored，不中断 TTS 播报且不污染 LLM 上下文。",
+      "zh-TW": "✅ [專題4：全雙工聲學隔離 · docs/barge-in-echo-crosstalk-faq.md] <1ms 離線策略狀態機判定（Synthetic；流式神經 TSE 聲紋模型幀推理耗時未在本地單測實測 not_measured）：副駕乘客或客廳電視插話（與首輪主叫聲紋錨點 e_primary 餘弦相似度 0.39 < 0.82，遠場衰減 16dB > 12dB）被靜默標記為 bystander_crosstalk_ignored，不中斷 TTS 播報且不污染 LLM 上下文。",
+      en: "✅ [Topic 4: Full-Duplex Acoustic Isolation · docs/barge-in-echo-crosstalk-faq.en.md] <1ms Offline Policy State-Machine Verdict (Synthetic; live streaming TSE frame inference latency is not_measured in local tests): Drops passenger/TV background speech (cosine similarity 0.39 < 0.82 vs. primary caller anchor e_primary) without flushing TTS playback or polluting LLM context."
+    }
+  },
+  {
+    id: "p719_speculative_voice_rag_revalidation",
+    label: {
+      "zh-CN": "🔥 [专题3A · speculative-voice-rag-faq] P719 · 只读投机语音 RAG 句尾二次核验 & 120-Token 微切片",
+      "zh-TW": "🔥 [專題3A · speculative-voice-rag-faq] P719 · 唯讀投機語音 RAG 句尾二次核驗 & 120-Token 微切片",
+      en: "🔥 [Topic 3A · speculative-voice-rag-faq] P719 · Read-Only Speculative Voice RAG EOU Revalidation"
+    },
+    inputJson: `{
+  "topicGuide": "docs/speculative-voice-rag-faq.md (.en.md)",
   "policyId": "P719-SPECULATIVE-VOICE-RAG-CACHE-COHERENCY-AND-ZERO-DEAD-AIR-MASKING-GUARD",
   "speculativePartialAsrTriggeredStateMutatingToolDetected": true,
   "lateUtteranceEntityOrPolarityPivotWithoutCacheEvictionDetected": true,
@@ -2212,6 +2271,7 @@ const DUPLEX_SIM_PROBES = [
     outputJson: `{
   "violated": true,
   "policyEvalLatencyMs": "<1ms (0ms rounded, synthetic)",
+  "liveVectorDbFallbackRequeryLatency": "not_measured in local unit test (production budget 120-180ms)",
   "action": "block_speculative_write_tool_or_evict_stale_pivot_rag_cache_in_0ms",
   "clampedSpeculativeQuerySemanticSimilarityFloor": 0.88,
   "clampedVoiceRagMaxChunkTokens": 120,
@@ -2219,19 +2279,20 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ <1ms 离线策略状态机判定（Synthetic）：拦截半句 ASR 草稿越界触发 POST/DELETE 写操作，以及客户句尾改口（如“查白金卡…算了查金卡”，相似度 0.62 < 0.88）时误读作废旧缓存；P719 同时将语音 RAG 微切片钳制在 <=120 Tokens/块（总注入 <=360 Tokens），防止长文档预填充拖慢首字延迟。",
-      "zh-TW": "✅ <1ms 離線策略狀態機判定（Synthetic）：攔截半句 ASR 草稿越界觸發 POST/DELETE 寫操作，以及客戶句尾改口（如「查白金卡…算了查金卡」，相似度 0.62 < 0.88）時誤讀作廢舊快取；P719 同時將語音 RAG 微切片鉗制在 <=120 Tokens/塊（總注入 <=360 Tokens），防止長文檔預填充拖慢首字延遲。",
-      en: "✅ <1ms Offline Policy State-Machine Check (Synthetic): Blocks partial-ASR speculation from triggering state-mutating write tools and evicts stale prefetched RAG cache on caller end-of-utterance pivots (similarity 0.62 < 0.88), while clamping voice micro-chunks to <=120 tokens/chunk (<=360 total)."
+      "zh-CN": "✅ [专题3A：只读投机语音检索 · docs/speculative-voice-rag-faq.md] <1ms 离线策略状态机判定（Synthetic；真实外部向量库回退重查耗时 120~180ms 未在本地单测实测 not_measured）：拦截半句 ASR 草稿越界触发写操作，以及客户句尾改口（如“查白金卡…算了查金卡”，相似度 0.62 < 0.88）时误读作废旧缓存；同时将语音 RAG 微切片钳制在 <=120 Tokens/块（总注入 <=360 Tokens）。",
+      "zh-TW": "✅ [專題3A：唯讀投機語音檢索 · docs/speculative-voice-rag-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實外部向量庫回退重查耗時 120~180ms 未在本地單測實測 not_measured）：攔截半句 ASR 草稿越界觸發寫操作，以及客戶句尾改口（如「查白金卡…算了查金卡」，相似度 0.62 < 0.88）時誤讀作廢舊快取；同時將語音 RAG 微切片鉗制在 <=120 Tokens/塊（總注入 <=360 Tokens）。",
+      en: "✅ [Topic 3A: Read-Only Speculative Voice RAG · docs/speculative-voice-rag-faq.en.md] <1ms Offline Policy State-Machine Check (Synthetic; live external vector DB fallback re-query is not_measured in local tests): Blocks partial-ASR speculation from triggering write tools and evicts stale prefetched RAG cache on caller end-of-utterance pivots (similarity 0.62 < 0.88), while clamping voice micro-chunks to <=120 tokens/chunk (<=360 total)."
     }
   },
   {
     id: "p720_async_tool_epoch_write_fence",
     label: {
-      "zh-CN": "🔥 P720 · 异步写工具单调纪元写栅栏 (turnEpoch) & 三阶防冷场护栏",
-      "zh-TW": "🔥 P720 · 非同步寫工具單調紀元寫柵欄 (turnEpoch) & 三階防冷場護欄",
-      en: "🔥 P720 · Async Tool Monotonic turnEpoch Write Fence & Saga Rollback Guard"
+      "zh-CN": "🔥 [专题3B · voice-tool-epoch-fence-faq] P720 · 异步写工具单调纪元写栅栏 (turnEpoch) & Saga 回滚",
+      "zh-TW": "🔥 [專題3B · voice-tool-epoch-fence-faq] P720 · 非同步寫工具單調紀元寫柵欄 (turnEpoch) & Saga 回滾",
+      en: "🔥 [Topic 3B · voice-tool-epoch-fence-faq] P720 · Async Tool Monotonic turnEpoch Write Fence & Saga"
     },
     inputJson: `{
+  "topicGuide": "docs/voice-tool-epoch-fence-faq.md (.en.md)",
   "policyId": "P720-ASYNC-VOICE-TOOL-CALL-EPOCH-WRITE-FENCE-AND-SAGA-COMPENSATION-GUARD",
   "staleTurnEpochStateMutatingToolCommitAfterBargeInDetected": true,
   "preambleLeakedUnverifiedAmountSecretOrClaimedPrematureSuccessDetected": true,
@@ -2241,15 +2302,16 @@ const DUPLEX_SIM_PROBES = [
     outputJson: `{
   "violated": true,
   "policyEvalLatencyMs": "<1ms (0ms rounded, synthetic)",
+  "liveExternalCrmSagaNetworkRollbackLatency": "not_measured in local unit test",
   "action": "abort_stale_epoch_write_and_trigger_saga_rollback_or_block_preamble_leak_in_0ms",
   "clampedUnmaskedDeadAirSilenceDuringSlowToolCallMs": 1000,
   "clampedPromptablePreambleTriggerLatencyMs": 450,
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ <1ms 离线策略状态机判定（Synthetic）：当客户在慢速写接口返回前插话反悔（activeTurnEpoch > toolInvocationEpoch）或过渡话术提前剧透未核验金额/承诺成功时，策略层立即发出 AbortSignal 与 Saga 逆向冲正指令，并将慢接口静默冷场窗口钳制在 <=1000ms（300ms 前导话术 → 1.5s 音效 → 3.5s 安抚）。",
-      "zh-TW": "✅ <1ms 離線策略狀態機判定（Synthetic）：當客戶在慢速寫介面返回前插話反悔（activeTurnEpoch > toolInvocationEpoch）或過渡話術提前劇透未核驗金額/承諾成功時，策略層立即發出 AbortSignal 與 Saga 逆向沖正指令，並將慢介面靜默冷場窗口鉗制在 <=1000ms（300ms 前導話術 → 1.5s 音效 → 3.5s 安撫）。",
-      en: "✅ <1ms Offline Policy State-Machine Check (Synthetic): Emits an AbortSignal + Saga rollback directive when caller barge-in advances activeTurnEpoch past toolInvocationEpoch on a write tool or when a preamble leaks unverified amounts, while clamping unmasked dead air to <=1000ms."
+      "zh-CN": "✅ [专题3B：写状态异步工具取消与回滚 · docs/voice-tool-epoch-fence-faq.md] <1ms 离线策略状态机判定（Synthetic；真实外部 CRM/ERP 逆向补偿网络 I/O 耗时未在本地单测实测 not_measured）：当客户在慢速写接口返回前插话反悔（activeTurnEpoch > toolInvocationEpoch）或过渡话术提前剧透未核验金额/承诺成功时，策略层立即发出 AbortSignal 与 Saga 逆向冲正指令，并将慢接口静默冷场窗口钳制在 <=1000ms。",
+      "zh-TW": "✅ [專題3B：寫狀態非同步工具取消與回滾 · docs/voice-tool-epoch-fence-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實外部 CRM/ERP 逆向補償網路 I/O 耗時未在本地單測實測 not_measured）：當客戶在慢速寫介面返回前插話反悔（activeTurnEpoch > toolInvocationEpoch）或過渡話術提前劇透未核驗金額/承諾成功時，策略層立即發出 AbortSignal 與 Saga 逆向沖正指令，並將慢介面靜默冷場窗口鉗制在 <=1000ms。",
+      en: "✅ [Topic 3B: State-Mutating Async Tool Cancellation & Rollbacks · docs/voice-tool-epoch-fence-faq.en.md] <1ms Offline Policy State-Machine Check (Synthetic; live external CRM/ERP Saga rollback network I/O is not_measured in local tests): Emits an AbortSignal + Saga rollback directive when caller barge-in advances activeTurnEpoch past toolInvocationEpoch on a write tool or when a preamble leaks unverified amounts, while clamping unmasked dead air to <=1000ms."
     }
   },
   {
