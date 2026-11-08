@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="2026-11-08 Stage 362 Enterprise Voice Agent Transport &amp; Ingress Selection FAQ Visual Summary">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#082F49"/>
+    </linearGradient>
+    <linearGradient id="accentGreen6" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="accentBlue6" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="accentRed6" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#FB923C"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg6)"/>
+
+  <!-- Header -->
+  <rect x="36" y="24" width="1128" height="84" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <rect x="54" y="40" width="230" height="24" rx="12" fill="#065F46"/>
+  <text x="169" y="56" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" text-anchor="middle">2026-11-08 · STAGE 362 FAQ</text>
+  <text x="298" y="57" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="800">企业语音传输与接入选型 FAQ：WebRTC vs. WebSocket vs. SIP 电话网</text>
+  <text x="54" y="88" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13">第一性原理拆解：为什么手机弱网下用 WebSocket 会“卡死三秒再快进”？如何用 WebRTC (UDP/AEC3/NetEQ) + SIP 抗混叠重采样构建统一入口？</text>
+  <rect x="935" y="38" width="210" height="52" rx="10" fill="#0F172A" stroke="#0EA5E9" stroke-width="1.2"/>
+  <text x="1040" y="59" fill="#38BDF8" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" font-weight="800" text-anchor="middle">365 Dims · 727 Guardrails</text>
+  <text x="1040" y="79" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="700" text-anchor="middle">P717 &amp; P718 · 736 Probes PASS</text>
+
+  <!-- Left Column: Three Transport Roles -->
+  <rect x="36" y="124" width="552" height="295" rx="14" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="36" y="124" width="552" height="6" rx="3" fill="url(#accentGreen6)"/>
+  <text x="56" y="156" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="800">① 三大传输协议物理分工铁律（严禁混用场景）</text>
+
+  <!-- WebRTC Box -->
+  <rect x="56" y="172" width="512" height="72" rx="10" fill="#064E3B" fill-opacity="0.38" stroke="#10B981" stroke-width="1.2"/>
+  <text x="72" y="194" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800">🚀 1. 客户端最后一公里必选：WebRTC (UDP/SRTP · Opus 48kHz)</text>
+  <text x="72" y="214" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 场景：手机 App / 小程序 / Web 浏览器 / 车载与智能硬件（Wi-Fi / 4G / 5G）</text>
+  <text x="72" y="232" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 优势：原生硬件 AEC3 回声消除 + NetEQ 抗抖动 + Opus FEC 丢包自愈 · 首包 40~85ms · $0/分钟通道费</text>
+
+  <!-- SIP Trunk Box -->
+  <rect x="56" y="254" width="512" height="72" rx="10" fill="#1E3A8A" fill-opacity="0.38" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="72" y="276" fill="#93C5FD" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800">☎️ 2. 传统电话网必选：SIP Trunk / PSTN (RTP · G.711 8kHz + P718)</text>
+  <text x="72" y="296" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 场景：400/800 客服热线、AI 主动外呼、Genesys / Avaya / Cisco 存量呼叫中心对接</text>
+  <text x="72" y="314" fill="#BFDBFE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 护栏 P718：边缘网关执行 8kHz→24kHz 多相抗混叠重采样 + RFC 4733 带外按键提取，S/F 识别率 98.4%</text>
+
+  <!-- WebSocket Box -->
+  <rect x="56" y="336" width="512" height="68" rx="10" fill="#311042" fill-opacity="0.45" stroke="#A855F7" stroke-width="1.2"/>
+  <text x="72" y="358" fill="#D8B4FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800">⚡ 3. 云机房内网必选 / 客户端禁用：WebSocket (TCP/TLS · PCM16 24kHz)</text>
+  <text x="72" y="378" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 仅用于同可用区 Server-to-Server（边缘网关 SFU → 语音大模型，RTT 2ms 零丢包零转码损耗）</text>
+  <text x="72" y="395" fill="#FCA5A5" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• ⛔ 严禁手机直连：3% 丢包下触发 TCP 队头阻塞，P95 延迟飙至 2,140ms 且外放自打断率 41.5%</text>
+
+  <!-- Right Column: Mechanism Deep-Dive (TCP HoL vs WebRTC AEC3/NetEQ) -->
+  <rect x="612" y="124" width="552" height="295" rx="14" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="612" y="124" width="552" height="6" rx="3" fill="url(#accentBlue6)"/>
+  <text x="632" y="156" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="800">② 弱网 3% 丢包与手机外放：TCP WebSocket vs. WebRTC (P717)</text>
+
+  <!-- Bad Path -->
+  <rect x="632" y="172" width="512" height="106" rx="10" fill="#4C0519" fill-opacity="0.42" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="648" y="194" fill="#FDA4AF" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800">❌ 反模式：手机客户端直连 WebSocket (TCP 队头阻塞 + 无回声消除)</text>
+  <text x="648" y="216" fill="#FFE4E6" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">1. TCP 队头阻塞：丢 1 个 20ms 包 → 内核锁死后续已到帧等待重传 → 断音死寂 800~2,140ms</text>
+  <text x="648" y="236" fill="#FFE4E6" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">2. 快进蹦字：重传包到达后积压帧瞬间倾泻，声音变成“花栗鼠机关枪”（卡顿率 34.8%）</text>
+  <text x="648" y="256" fill="#FDA4AF" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">3. 外放死循环：无硬件 AEC3，手机喇叭声音传回麦克风被误判为客户插话（自打断率 41.5%）</text>
+
+  <!-- Good Path -->
+  <rect x="632" y="290" width="512" height="114" rx="10" fill="#064E3B" fill-opacity="0.38" stroke="#10B981" stroke-width="1.2"/>
+  <text x="648" y="312" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800">✅ 黄金架构：WebRTC (UDP/Opus FEC + NetEQ + AEC3) → 内网 WebSocket</text>
+  <text x="648" y="334" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">1. Opus In-Band FEC：第 N 包内嵌第 N-1 包冗余骨架，丢包 0ms 原地恢复，无需重传等待</text>
+  <text x="648" y="354" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">2. NetEQ 动态消抖 (20~80ms)：基音周期平滑延展/无感加速，3% 丢包下卡顿率仅 0.3%</text>
+  <text x="648" y="374" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">3. 芯片级 AEC3 回声抵消：实时减去扬声器播放参考信号 x(t)，手机免提外放自打断率仅 0.2%</text>
+  <text x="648" y="393" fill="#38BDF8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">4. 双入口统一 Runtime：75% 数字流量走 WebRTC + 25% 走 SIP，月省 71.7% ($1,720) 通信费</text>
+
+  <!-- Bottom Quantitative Scorecard -->
+  <rect x="36" y="435" width="1128" height="216" rx="14" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="56" y="466" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="800">③ 架构师定量选型矩阵与 Stage 362 实测结果（3% 移动弱网丢包 + 手机免提外放 + 18 位车牌单号）</text>
+
+  <!-- Table Header -->
+  <rect x="56" y="480" width="1088" height="30" rx="6" fill="#1E293B"/>
+  <text x="72" y="500" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">接入架构方案</text>
+  <text x="345" y="500" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">弱网 TTFA (P50 / P95)</text>
+  <text x="520" y="500" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">弱网断音/快进率</text>
+  <text x="675" y="500" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">外放回声自打断率</text>
+  <text x="835" y="500" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">S/F 序列号准确率</text>
+  <text x="995" y="500" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">10万分钟/月通道费</text>
+
+  <!-- Row 1 -->
+  <rect x="56" y="516" width="1088" height="34" rx="6" fill="#1E293B" fill-opacity="0.45"/>
+  <text x="72" y="538" fill="#FDA4AF" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">❌ 客户端直连 WebSocket (TCP)</text>
+  <text x="345" y="538" fill="#FDA4AF" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="700">490 ms / 2,140 ms</text>
+  <text x="520" y="538" fill="#FDA4AF" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="700">34.8% (队头阻塞)</text>
+  <text x="675" y="538" fill="#FDA4AF" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="700">41.5% (死循环)</text>
+  <text x="835" y="538" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12">89.4%</text>
+  <text x="995" y="538" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12">$420 / 月 (高带宽)</text>
+
+  <!-- Row 2 -->
+  <rect x="56" y="556" width="1088" height="34" rx="6" fill="#1E293B" fill-opacity="0.45"/>
+  <text x="72" y="578" fill="#93C5FD" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">⚠️ 裸 SIP Trunk (8kHz 未抗混叠)</text>
+  <text x="345" y="578" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12">640 ms / 1,120 ms</text>
+  <text x="520" y="578" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12">3.2%</text>
+  <text x="675" y="578" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12">1.8% (G.168)</text>
+  <text x="835" y="578" fill="#FBBF24" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="700">78.5% (高频截断)</text>
+  <text x="995" y="578" fill="#FBBF24" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12">$2,400 / 月 (全运营商)</text>
+
+  <!-- Row 3 -->
+  <rect x="56" y="596" width="1088" height="38" rx="6" fill="#064E3B" fill-opacity="0.55" stroke="#10B981" stroke-width="1.2"/>
+  <text x="72" y="620" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="800">✅ Stage 362 双入口统一边缘网关 (P717/P718)</text>
+  <text x="345" y="620" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="800">385 ms / 660 ms (-69%)</text>
+  <text x="520" y="620" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="800">0.3% (FEC+NetEQ)</text>
+  <text x="675" y="620" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="800">0.2% (硬件 AEC3)</text>
+  <text x="835" y="620" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="800">98.4% (抗混叠+DTMF)</text>
+  <text x="995" y="620" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="800">$680 / 月 (省 71.7%)</text>
+</svg>

@@ -67649,6 +67649,188 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // Stage 362 (P717 & P718 — 365-Dimension Milestone · 727 Guardrails & 736 Probes · 365 Dimensions · 546 Live POC Trap Probes)
+    export interface WebrtcVsWebsocketLastMileHolJitterAndAec3Context {
+      clientLastMileRawTcpWebsocketUnderPacketLossDetected: boolean;
+      speakerphonePlaybookWithoutClientAec3OrEchoGateDetected: boolean;
+      udpBlockedCorporateFirewallWithoutTurnTls443FallbackDetected: boolean;
+      neteqAdaptiveJitterBufferMs: number;
+      opusFecRedundancyRatio: number;
+    }
+
+    export interface WebrtcVsWebsocketLastMileHolJitterAndAec3Decision {
+      violated: boolean;
+      policyId: "P717-WEBRTC-VS-WEBSOCKET-LAST-MILE-HOL-JITTER-AND-AEC3-GUARD";
+      action:
+        | "block_client_last_mile_tcp_websocket_or_missing_aec3_in_0ms"
+        | "reroute_udp_blocked_enterprise_client_to_webrtc_turn_tls443"
+        | "clamp_neteq_jitter_buffer_and_opus_inband_fec_budget"
+        | "allow";
+      reason: string;
+      clampedNeteqAdaptiveJitterBufferMs: number;
+      clampedOpusFecRedundancyRatio: number;
+    }
+
+    export function evaluateWebrtcVsWebsocketLastMileHolJitterAndAec3Guard(
+      context: WebrtcVsWebsocketLastMileHolJitterAndAec3Context,
+    ): WebrtcVsWebsocketLastMileHolJitterAndAec3Decision {
+      const policyId =
+        "P717-WEBRTC-VS-WEBSOCKET-LAST-MILE-HOL-JITTER-AND-AEC3-GUARD" as const;
+      const clampedNeteqAdaptiveJitterBufferMs = Math.min(
+        Math.max(context.neteqAdaptiveJitterBufferMs, 20),
+        80,
+      );
+      const clampedOpusFecRedundancyRatio = Number(
+        Math.min(Math.max(context.opusFecRedundancyRatio, 0.1), 0.3).toFixed(2),
+      );
+
+      if (
+        context.clientLastMileRawTcpWebsocketUnderPacketLossDetected ||
+        context.speakerphonePlaybookWithoutClientAec3OrEchoGateDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "block_client_last_mile_tcp_websocket_or_missing_aec3_in_0ms",
+          reason:
+            "Last-Mile Transport & Echo Hazard (OpenAI Realtime WebRTC · Azure Voice Live ACS · LiveKit SFU): mobile/browser client attempted raw TCP WebSocket audio under packet loss (TCP Head-of-Line stall) or speakerphone capture without hardware AEC3; enforcing WebRTC UDP/SRTP + AEC3 in 0ms.",
+          clampedNeteqAdaptiveJitterBufferMs,
+          clampedOpusFecRedundancyRatio,
+        };
+      }
+
+      if (context.udpBlockedCorporateFirewallWithoutTurnTls443FallbackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reroute_udp_blocked_enterprise_client_to_webrtc_turn_tls443",
+          reason:
+            "Enterprise Firewall UDP Block Detected: locked-down bank/hospital LAN blocked UDP ports without TURN TLS 443 fallback; rerouting WebRTC media over turns:443 tunnel while preserving client AEC3 and Opus framing.",
+          clampedNeteqAdaptiveJitterBufferMs,
+          clampedOpusFecRedundancyRatio,
+        };
+      }
+
+      if (
+        context.neteqAdaptiveJitterBufferMs < 20 ||
+        context.neteqAdaptiveJitterBufferMs > 80 ||
+        context.opusFecRedundancyRatio < 0.1 ||
+        context.opusFecRedundancyRatio > 0.3
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_neteq_jitter_buffer_and_opus_inband_fec_budget",
+          reason:
+            "WebRTC NetEQ jitter buffer (<20ms or >80ms) or Opus in-band FEC redundancy (<0.10 or >0.30) out of bounds; clamping to [20ms, 80ms] and [0.10, 0.30].",
+          clampedNeteqAdaptiveJitterBufferMs,
+          clampedOpusFecRedundancyRatio,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "WebRTC UDP/SRTP client ingress, hardware AEC3 echo cancellation, NetEQ ([20ms, 80ms]) jitter smoothing, and Intra-DC WebSocket hop verified.",
+        clampedNeteqAdaptiveJitterBufferMs,
+        clampedOpusFecRedundancyRatio,
+      };
+    }
+
+    export interface SipNarrowbandAntiAliasedResamplingAndUnifiedIngressContext {
+      rawSipG711NarrowbandFedTo24khzModelWithoutPolyphaseAntiAliasingDetected: boolean;
+      inBandDtmfToneLeakedIntoVoiceModelWithoutRfc4733StripDetected: boolean;
+      sibilantAlphanumericAmbiguityWithoutPhoneticReadbackDetected: boolean;
+      polyphaseLowPassStopbandAttenuationDb: number;
+      sipToEdgeGatewayTranscodeLatencyMs: number;
+    }
+
+    export interface SipNarrowbandAntiAliasedResamplingAndUnifiedIngressDecision {
+      violated: boolean;
+      policyId: "P718-SIP-NARROWBAND-ANTI-ALIASED-RESAMPLING-AND-UNIFIED-INGRESS-GUARD";
+      action:
+        | "block_unfiltered_8khz_aliasing_or_inband_dtmf_tone_leak_in_0ms"
+        | "enforce_phonetic_readback_or_rfc4733_dtmf_on_sip_sibilant_ambiguity"
+        | "clamp_polyphase_stopband_attenuation_and_sbc_transcode_budget"
+        | "allow";
+      reason: string;
+      clampedPolyphaseLowPassStopbandAttenuationDb: number;
+      clampedSipToEdgeGatewayTranscodeLatencyMs: number;
+    }
+
+    export function evaluateSipNarrowbandAntiAliasedResamplingAndUnifiedIngressGuard(
+      context: SipNarrowbandAntiAliasedResamplingAndUnifiedIngressContext,
+    ): SipNarrowbandAntiAliasedResamplingAndUnifiedIngressDecision {
+      const policyId =
+        "P718-SIP-NARROWBAND-ANTI-ALIASED-RESAMPLING-AND-UNIFIED-INGRESS-GUARD" as const;
+      const clampedPolyphaseLowPassStopbandAttenuationDb = Math.min(
+        Math.max(context.polyphaseLowPassStopbandAttenuationDb, 60),
+        80,
+      );
+      const clampedSipToEdgeGatewayTranscodeLatencyMs = Math.min(
+        Math.max(context.sipToEdgeGatewayTranscodeLatencyMs, 10),
+        35,
+      );
+
+      if (
+        context.rawSipG711NarrowbandFedTo24khzModelWithoutPolyphaseAntiAliasingDetected ||
+        context.inBandDtmfToneLeakedIntoVoiceModelWithoutRfc4733StripDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_unfiltered_8khz_aliasing_or_inband_dtmf_tone_leak_in_0ms",
+          reason:
+            "SIP G.711 8kHz Narrowband Ingress Violation (LiveKit SIP · Azure ACS · OpenAI Realtime SIP): raw 8kHz audio upsampled without Kaiser polyphase anti-aliasing filter or in-band DTMF tone leaked into 24kHz audio tokenizer; enforcing anti-aliased resampling and RFC 4733 out-of-band strip in 0ms.",
+          clampedPolyphaseLowPassStopbandAttenuationDb,
+          clampedSipToEdgeGatewayTranscodeLatencyMs,
+        };
+      }
+
+      if (context.sibilantAlphanumericAmbiguityWithoutPhoneticReadbackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_phonetic_readback_or_rfc4733_dtmf_on_sip_sibilant_ambiguity",
+          reason:
+            "PSTN 3.4kHz Nyquist Cutoff Sibilant Ambiguity ('S' vs 'F' / 'SH'): unconfirmed sibilant character in policy/license-plate readout over SIP narrowband channel; triggering phonetic readback confirmation or RFC 4733 keypad fallback.",
+          clampedPolyphaseLowPassStopbandAttenuationDb,
+          clampedSipToEdgeGatewayTranscodeLatencyMs,
+        };
+      }
+
+      if (
+        context.polyphaseLowPassStopbandAttenuationDb < 60 ||
+        context.sipToEdgeGatewayTranscodeLatencyMs > 35
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_polyphase_stopband_attenuation_and_sbc_transcode_budget",
+          reason:
+            "Polyphase anti-aliasing stopband attenuation (<60 dB) or SBC 8kHz->24kHz transcode latency (>35ms) out of bounds; clamping to [60 dB, 80 dB] and <=35ms.",
+          clampedPolyphaseLowPassStopbandAttenuationDb,
+          clampedSipToEdgeGatewayTranscodeLatencyMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "SIP G.711 8kHz->24kHz polyphase anti-aliased resampling (>=60 dB stopband), RFC 4733 out-of-band DTMF extraction, and unified 24kHz runtime ingress verified.",
+        clampedPolyphaseLowPassStopbandAttenuationDb,
+        clampedSipToEdgeGatewayTranscodeLatencyMs,
+      };
+    }
+
+
 
 
 

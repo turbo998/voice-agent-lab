@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-08 架构选型 FAQ 交互沙盒：级联 vs 原生 S2S 动态合规泳道锁 (P715) & 语义判停 EOU + 投机式语音 RAG 防冷场 (P716) (Stage 361 · P705–P716)",
-    simSub: "点击下方全双工与多模态压测探针，实时验证级联 STT+LLM+TTS 与原生 S2S 动态合规泳道切换及法定免责条款 ≥98% 逐字锁 (P715)、语义级判停 EOU 动态等待窗口与投机式只读语音 RAG 300ms 语境垫话防冷场 (P716) 以及 P705–P714 的 0ms 确定性响应：",
+    simTitle: "🧪 2026-11-08 双专题架构选型 FAQ 交互沙盒：级联 vs S2S 合规锁 (P715) · 语义判停 + 投机式 RAG (P716) · WebRTC vs WebSocket 抗抖动与 AEC3 (P717) · SIP 8kHz 抗混叠重采样与统一网关 (P718) (Stage 362 · P705–P718)",
+    simSub: "点击下方全双工与多模态压测探针，实时验证级联 vs 原生 S2S 动态合规泳道锁 (P715)、语义级判停 EOU 与投机式语音 RAG 防冷场 (P716)、WebRTC vs WebSocket 最后一公里抗抖动与 AEC3 防自断 (P717)、SIP 8kHz 多相抗混叠重采样与跨通道会话防漂移 (P718) 的 0ms 确定性响应：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-08 架構選型 FAQ 互動沙盒：級聯 vs 原生 S2S 動態合規泳道鎖 (P715) & 語義判停 EOU + 投機式語音 RAG 防冷場 (P716) (Stage 361 · P705–P716)",
-    simSub: "點擊下方全雙工與多模態壓測探針，即時驗證級聯 STT+LLM+TTS 與原生 S2S 動態合規泳道切換及法定免責條款 ≥98% 逐字鎖 (P715)、語義級判停 EOU 動態等待窗口與投機式唯讀語音 RAG 300ms 語境墊話防冷場 (P716) 以及 P705–P714 的 0ms 確定性響應：",
+    simTitle: "🧪 2026-11-08 雙專題架構選型 FAQ 互動沙盒：級聯 vs S2S 合規鎖 (P715) · 語義判停 + 投機式 RAG (P716) · WebRTC vs WebSocket 抗抖動與 AEC3 (P717) · SIP 8kHz 抗混疊重採樣與統一網關 (P718) (Stage 362 · P705–P718)",
+    simSub: "點擊下方全雙工與多模態壓測探針，即時驗證級聯 vs 原生 S2S 動態合規泳道鎖 (P715)、語義級判停 EOU 與投機式語音 RAG 防冷場 (P716)、WebRTC vs WebSocket 最後一公里抗抖動與 AEC3 防自斷 (P717)、SIP 8kHz 多相抗混疊重採樣與跨通道會話防漂移 (P718) 的 0ms 確定性響應：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-08 Architect FAQ Sandbox: Cascaded vs. Native S2S Compliance Lane Lock (P715) & Semantic Turn EOU + Speculative Voice RAG Guard (P716) (Stage 361 · P705–P716)",
-    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for Hybrid Dual-Lane S2S/Cascaded Compliance Lane Switch & >=98% Verbatim Legal Lock (P715), Semantic Turn Detection EOU Dynamic Window & Speculative Read-Only Voice RAG 300ms Preamble Filler (P716), and P705–P714:",
+    simTitle: "🧪 2026-11-08 Dual Architect FAQ Sandbox: Cascaded vs. S2S Lock (P715) · Semantic EOU + Speculative RAG (P716) · WebRTC vs. WebSocket HOL/AEC3 (P717) · SIP 8kHz Anti-Aliased Resampling (P718) (Stage 362 · P705–P718)",
+    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for Hybrid Dual-Lane S2S/Cascaded Compliance Lock (P715), Semantic Turn EOU & Speculative Voice RAG (P716), WebRTC vs. WebSocket Last-Mile HOL Jitter & AEC3 (P717), and SIP 8kHz Polyphase Resampling & Unified Gateway Parity (P718):",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 361 P715/P716 · 364维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 362 P717/P718 · 365维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Architect FAQ · 2026-11-08",
-      title: "级联 STT+LLM+TTS vs 原生 S2S 选型与语义判停/投机式 RAG FAQ 专题",
-      desc: "通俗拆解级联管道 vs 原生 S2S vs 双轨混合架构选型决策树、语义判停 (Semantic EOU)、全双工打断与投机式语音 RAG 底层原理，交付 Stage 361 (P715/P716) 护栏与高清 SVG 总结。",
+      badge: "Architect FAQs · 2026-11-08",
+      title: "级联 vs S2S 大脑层 & WebRTC vs WebSocket vs SIP 接入网双专题 FAQ",
+      desc: "通俗拆解级联 vs 原生 S2S、语义判停 EOU、投机式 RAG，以及 WebRTC vs WebSocket vs SIP 接入选型、TCP 队头阻塞、NetEQ、AEC3 与 8kHz 多相抗混叠升采样（Stage 361–362 · P715–P718）。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 361 P715/P716 · 364維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 362 P717/P718 · 365維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Architect FAQ · 2026-11-08",
-      title: "級聯 STT+LLM+TTS vs 原生 S2S 選型與語義判停/投機式 RAG FAQ 專題",
-      desc: "通俗拆解級聯管道 vs 原生 S2S vs 雙軌混合架構選型決策樹、語義判停 (Semantic EOU)、全雙工打斷與投機式語音 RAG 底層原理，交付 Stage 361 (P715/P716) 護欄與高清 SVG 總結。",
+      badge: "Architect FAQs · 2026-11-08",
+      title: "級聯 vs S2S 大腦層 & WebRTC vs WebSocket vs SIP 接入網雙專題 FAQ",
+      desc: "通俗拆解級聯 vs 原生 S2S、語義判停 EOU、投機式 RAG，以及 WebRTC vs WebSocket vs SIP 接入選型、TCP 隊頭阻塞、NetEQ、AEC3 與 8kHz 多相抗混疊升採樣（Stage 361–362 · P715–P718）。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 361 P715/P716 · 364-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 362 P717/P718 · 365-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
-      badge: "Architect FAQ · 2026-11-08",
-      title: "Cascaded vs. Native S2S Selection & Semantic EOU / Speculative RAG FAQ",
-      desc: "Plain-language deep dive into Cascaded vs. Native S2S vs. Hybrid Dual-Lane selection, Semantic Turn EOU, full-duplex barge-in, and Speculative Voice RAG with Stage 361 (P715/P716) guardrails.",
+      badge: "Architect FAQs · 2026-11-08",
+      title: "Cascaded vs. S2S & WebRTC vs. WebSocket vs. SIP Dual FAQs",
+      desc: "Plain-language deep dives into Cascaded vs. S2S, Semantic EOU, Speculative RAG, plus WebRTC vs. WebSocket vs. SIP ingress, TCP HOL blocking, NetEQ, AEC3, and 8kHz polyphase resampling (Stage 361–362 · P715–P718).",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,67 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p715_cascaded_s2s_lane_lock";
+let currentDuplexSimId = "p717_webrtc_vs_websocket_hol_aec3";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p717_webrtc_vs_websocket_hol_aec3",
+    label: {
+      "zh-CN": "🔥 P717 · WebRTC vs WebSocket 最后一公里抗抖动 & AEC3 免提回声防自断",
+      "zh-TW": "🔥 P717 · WebRTC vs WebSocket 最後一公里抗抖動 & AEC3 免提回聲防自斷",
+      en: "🔥 P717 · WebRTC vs. WebSocket Last-Mile HOL Jitter & AEC3 Self-Barge-In Guard"
+    },
+    inputJson: `{
+  "policyId": "P717-WEBRTC-VS-WEBSOCKET-LAST-MILE-HOL-JITTER-AND-AEC3-GUARD",
+  "clientLastMileRawTcpWebsocketUnderPacketLossDetected": true,
+  "speakerphonePlaybookWithoutClientAec3OrEchoGateDetected": true,
+  "udpBlockedCorporateFirewallWithoutTurnTls443FallbackDetected": false,
+  "neteqAdaptiveJitterBufferMs": 140,
+  "opusFecRedundancyRatio": 0.45
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_client_last_mile_tcp_websocket_or_missing_aec3_in_0ms",
+  "clampedNeteqAdaptiveJitterBufferMs": 80,
+  "clampedOpusFecRedundancyRatio": 0.3,
+  "remediation": "BLOCK_CLIENT_LAST_MILE_TCP_WEBSOCKET_OR_MISSING_AEC3_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 无线最后一公里裸 WebSocket 队头阻塞雪崩与免提自打断拦截：拦截在 4G/5G 弱网下用裸 TCP WebSocket 直传音频引发的 800ms+ 队头阻塞卡顿及缺失 AEC3 导致的免提回声自打断；P717 强制客户端走 WebRTC UDP/SRTP + Opus LBRR，并将 NetEQ 抖动缓冲 140ms→80ms、Opus FEC 冗余率 0.45→0.30 钳制。",
+      "zh-TW": "✅ 0ms 無線最後一公里裸 WebSocket 隊頭阻塞雪崩與免提自打斷攔截：攔截在 4G/5G 弱網下用裸 TCP WebSocket 直傳音訊引發的 800ms+ 隊頭阻塞卡頓及缺失 AEC3 導致的免提回聲自打斷；P717 強制客戶端走 WebRTC UDP/SRTP + Opus LBRR，並將 NetEQ 抖動緩衝 140ms→80ms、Opus FEC 冗餘率 0.45→0.30 鉗制。",
+      en: "✅ 0ms Last-Mile Raw TCP WebSocket HOL Stall & Speakerphone Echo Block: Intercepts raw TCP WebSocket Head-of-Line blocking stalls on lossy cellular networks and unmitigated speakerphone echo loops; P717 enforces WebRTC UDP/SRTP + AEC3 and clamps NetEQ jitter buffer 140ms→80ms and Opus FEC ratio 0.45→0.30."
+    }
+  },
+  {
+    id: "p718_sip_narrowband_resampling_unified_gateway",
+    label: {
+      "zh-CN": "🔥 P718 · SIP 8kHz→24kHz 多相抗混叠升采样 & RFC 4733 带外剥离护栏",
+      "zh-TW": "🔥 P718 · SIP 8kHz→24kHz 多相抗混疊升採樣 & RFC 4733 帶外剝離護欄",
+      en: "🔥 P718 · SIP 8kHz→24kHz Polyphase Resampling & RFC 4733 DTMF Strip Guard"
+    },
+    inputJson: `{
+  "policyId": "P718-SIP-NARROWBAND-ANTI-ALIASED-RESAMPLING-AND-UNIFIED-INGRESS-GUARD",
+  "rawSipG711NarrowbandFedTo24khzModelWithoutPolyphaseAntiAliasingDetected": true,
+  "inBandDtmfToneLeakedIntoVoiceModelWithoutRfc4733StripDetected": true,
+  "sibilantAlphanumericAmbiguityWithoutPhoneticReadbackDetected": false,
+  "polyphaseLowPassStopbandAttenuationDb": 42,
+  "sipToEdgeGatewayTranscodeLatencyMs": 65
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_unfiltered_8khz_aliasing_or_inband_dtmf_tone_leak_in_0ms",
+  "clampedPolyphaseLowPassStopbandAttenuationDb": 60,
+  "clampedSipToEdgeGatewayTranscodeLatencyMs": 35,
+  "remediation": "BLOCK_UNFILTERED_8KHZ_ALIASING_OR_INBAND_DTMF_TONE_LEAK_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms SIP 8kHz 粗暴插值伪影拦截 + 带内 DTMF 混入大模型阻断：拦截运营商 8kHz G.711 未经 Kaiser 多相低通抗混叠滤波直接插值引发的金属镜像伪影及带内 DTMF 嘟嘟声污染 24kHz 语音分词器；P718 将阻带衰减下限 42dB→60dB、SBC 转码耗时 65ms→35ms 钳制。",
+      "zh-TW": "✅ 0ms SIP 8kHz 粗暴插值偽影攔截 + 帶內 DTMF 混入大模型阻斷：攔截電信商 8kHz G.711 未經 Kaiser 多相低通抗混疊濾波直接插值引發的金屬鏡像偽影及帶內 DTMF 嘟嘟聲污染 24kHz 語音分詞器；P718 將阻帶衰減下限 42dB→60dB、SBC 轉碼耗時 65ms→35ms 鉗制。",
+      en: "✅ 0ms Narrowband Aliasing & In-Band DTMF Leak Block: Prevents un-filtered 8kHz→24kHz spectral aliasing and in-band DTMF tones leaking into 24kHz audio tokenizers, clamping polyphase stopband attenuation 42dB→60dB and SBC transcode latency 65ms→35ms."
+    }
+  },
   {
     id: "p715_cascaded_s2s_lane_lock",
     label: {

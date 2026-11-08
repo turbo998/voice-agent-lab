@@ -1369,6 +1369,12 @@
       "original": "100.0% (0ms unverified freeform S2S generation on mandatory verbatim legal clause or text-layer PII/schema bypass block + 0ms mid-call PCM frame realignment & cascaded TTS fallback + <=350ms lane-switch handoff & >=0.98 verbatim token match clamp)",
       "reversed": "100.0% (0ms premature acoustic VAD cutoff on incomplete syntax/number readout or unverified speculative RAG cache commit block + 0ms interruptible contextual filler injection on slow retrieval + [350ms, 1200ms] EOU hold & <=700ms filler trigger clamp)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "365. WebRTC (UDP/SRTP/Opus) vs. WebSocket (TCP/TLS) Last-Mile HOL Jitter & Software AEC3 Self-Barge-In Guard & SIP Narrowband 8kHz->24kHz Polyphase Anti-Aliased Resampling + Unified Ingress Parity Guard (P717 / P718 — Stage 362 · 365-Dimension Milestone)",
+      "original": "100.0% (0ms lossy wireless raw TCP WebSocket HOL stall or speakerphone echo self-barge-in block + 0ms Opus LBRR in-band FEC concealment on TURN-TCP fallback + <=160ms NetEQ jitter buffer & >=18dB AEC3 ERLE clamp)",
+      "reversed": "100.0% (0ms unfiltered 8kHz->24kHz spectral aliasing / tandem lossy transcode or cross-channel turnEpoch/idempotency drift block + 0ms RTP clock resync & 80ms PLC comfort-noise injection + <=8ms polyphase filter latency & <=40ms RTP clock drift clamp)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
