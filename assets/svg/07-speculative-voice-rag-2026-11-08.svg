@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg363" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#131C38"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg363)"/>
+  <rect x="18" y="18" width="1164" height="639" rx="16" fill="#0B132B" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="36" y="34" width="1128" height="82" rx="12" fill="#111C38" stroke="#334155" stroke-width="1.5"/>
+  <rect x="52" y="48" width="210" height="24" rx="12" fill="#065F46" stroke="#10B981" stroke-width="1"/>
+  <text x="157" y="64" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 363 · P719–P720 · FAQ #3</text>
+  <text x="278" y="65" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="20" font-weight="800">企业级低延迟语音 RAG 与异步工具防冷场架构选型一图流总结</text>
+  <text x="52" y="96" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13">Speculative Voice RAG (投机预检索) vs. Async Tool Stream (三阶防冷场话术) · 句尾改口二次核验 (P719) &amp; 话中打断纪元写栅栏 (P720)</text>
+
+  <!-- Left Column: Timeline Comparison (Blocking vs Speculative + 3-Tier Pacing) -->
+  <rect x="36" y="130" width="552" height="260" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="54" y="156" fill="#FCA5A5" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="700">① 为什么传统同步阻塞 RAG 在电话里必崩？（>1,200ms 死寂 = 客户喊“喂？”）</text>
+
+  <!-- Legacy Bar -->
+  <text x="54" y="182" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600">❌ 传统同步阻塞 RAG（客户说完才查库 → 1,850ms 死亡冷场，追问率 38.4%）</text>
+  <rect x="54" y="190" width="120" height="26" rx="4" fill="#475569"/>
+  <text x="114" y="207" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">VAD 判停 500ms</text>
+  <rect x="176" y="190" width="90" height="26" rx="4" fill="#7C2D12"/>
+  <text x="221" y="207" fill="#FED7AA" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Tool 350ms</text>
+  <rect x="268" y="190" width="130" height="26" rx="4" fill="#991B1B"/>
+  <text x="333" y="207" fill="#FECACA" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">向量检索+重排 450ms</text>
+  <rect x="400" y="190" width="168" height="26" rx="4" fill="#DC2626"/>
+  <text x="484" y="207" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">读长文+TTS 550ms (1.85s!)</text>
+
+  <!-- Speculative Voice RAG Bar -->
+  <text x="54" y="242" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600">✅ 投机式流式预检索 Speculative Voice RAG（趁说话中途预取 → 感知等待 320ms）</text>
+  <rect x="54" y="250" width="210" height="26" rx="4" fill="#1E3A8A" stroke="#38BDF8" stroke-width="1"/>
+  <text x="159" y="267" fill="#BAE6FD" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">说话中途 60% 触发后台预取 (-600ms)</text>
+  <rect x="268" y="250" width="130" height="26" rx="4" fill="#065F46" stroke="#10B981" stroke-width="1"/>
+  <text x="333" y="267" fill="#A7F3D0" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">P719 策略核验 &lt;1ms</text>
+  <rect x="402" y="250" width="166" height="26" rx="4" fill="url(#emeraldGrad)"/>
+  <text x="485" y="267" fill="#052E16" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" text-anchor="middle">微切片直出 TTFA 320ms!</text>
+
+  <!-- 3-Tier Zero-Dead-Air Pacing Clock -->
+  <text x="54" y="302" fill="#FDE68A" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600">🎭 慢接口（1.2s–5s）三阶防冷场时间轴（3-Tier Zero-Dead-Air Pacing Clock）</text>
+  <rect x="54" y="310" width="170" height="64" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="64" y="330" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Tier 1 · T = 300ms</text>
+  <text x="64" y="348" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">可编排过渡话术 Preamble</text>
+  <text x="64" y="364" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10">“正在帮您查10月账单…”</text>
+
+  <rect x="232" y="310" width="164" height="64" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="242" y="330" fill="#FBBF24" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Tier 2 · T = 1,500ms</text>
+  <text x="242" y="348" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">轻柔声学提示音 Earcon</text>
+  <text x="242" y="364" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10">-24dBFS 翻页/键盘轻敲声</text>
+
+  <rect x="404" y="310" width="166" height="64" rx="8" fill="#1E293B" stroke="#C084FC" stroke-width="1"/>
+  <text x="414" y="330" fill="#C084FC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Tier 3 · T = 3,500ms</text>
+  <text x="414" y="348" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">二次进度安抚 / 降级</text>
+  <text x="414" y="364" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10">“马上好…” / >5s 转短信</text>
+
+  <!-- Right Column: P719 & P720 Core Guardrail Mechanics -->
+  <rect x="604" y="130" width="560" height="260" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="622" y="156" fill="#7DD3FC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="700">② 两大核心安全机制：句尾反转核验 (P719) &amp; 话中打断纪元写栅栏 (P720)</text>
+
+  <!-- P719 Box -->
+  <rect x="622" y="170" width="524" height="98" rx="8" fill="#13223E" stroke="#10B981" stroke-width="1.2"/>
+  <text x="636" y="192" fill="#34D399" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700">🛡️ P719 · 投机预检索句尾反转二次核验 (Pre-Commit Query Revalidation)</text>
+  <text x="636" y="213" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 痛点：客户前半句说“查白金卡年费”(已触发预取)，句尾改口“…不对，查普通金卡”</text>
+  <text x="636" y="233" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：落音瞬间比对 Partial vs Final 相似度(&gt;=0.88)与实体/否定极性；反转则策略层 &lt;1ms 废止旧缓存</text>
+  <text x="636" y="253" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="11">• 铁律：严禁只读投机越界触发 POST/DELETE 写接口；语音微切片强制 &lt;=120 Tokens/块 (Top-3 &lt;=360 Tokens)</text>
+
+  <!-- P720 Box -->
+  <rect x="622" y="278" width="524" height="98" rx="8" fill="#1F1638" stroke="#C084FC" stroke-width="1.2"/>
+  <text x="636" y="300" fill="#E879F9" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700">🔒 P720 · 异步写工具纪元写栅栏与 Saga 逆向补偿 (Epoch Write Fence)</text>
+  <text x="636" y="321" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 痛点：AI 正在跑 1.8s 退票接口(epoch=22)，客户在 900ms 喊“等等别退了！”(epoch=23)</text>
+  <text x="636" y="341" fill="#F5D0FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：检测到 invocationEpoch(22) !== activeTurnEpoch(23)，策略层 &lt;1ms 触发 AbortSignal + Saga 冲正</text>
+  <text x="636" y="361" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="11">• 铁律：前导话术(Preamble)在接口返回前严禁提前播报金额/机密或承诺“已经办理成功”</text>
+
+  <!-- Bottom Row: 3-Pattern Architect Decision Matrix + Quantitative Benchmark -->
+  <rect x="36" y="404" width="1128" height="236" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="54" y="430" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="700">③ 语音架构师一刀切选型矩阵与定量实测账本（Stage 363 · 366 评测维度 · 729 护栏 · 738 探针）</text>
+
+  <!-- 3 Pattern Cards -->
+  <rect x="54" y="444" width="352" height="178" rx="10" fill="#132238" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="70" y="468" fill="#38BDF8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700">⚡ 模式 A：内存语义缓存 (&lt;250ms)</text>
+  <text x="70" y="492" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 适用：营业时间、标准费率、高频热点</text>
+  <text x="70" y="514" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 架构：Redis/内存直接命中，内联注入 Prompt</text>
+  <text x="70" y="536" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 感知延迟：TTFA ~280ms，零外部网络往返</text>
+  <rect x="70" y="582" width="320" height="26" rx="6" fill="#0C4A6E"/>
+  <text x="230" y="599" fill="#BAE6FD" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">严禁把 &gt;400ms 的外部向量库做成同步阻塞！</text>
+
+  <rect x="424" y="444" width="352" height="178" rx="10" fill="#0E2925" stroke="#10B981" stroke-width="1.2"/>
+  <text x="440" y="468" fill="#34D399" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700">🚀 模式 B：投机式预检索 RAG (250–1200ms)</text>
+  <text x="440" y="492" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 适用：10万+ 篇保险条款、产品手册只读查询</text>
+  <text x="440" y="514" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 架构：流式 ASR 60% 提前检索 + P719 句尾核验</text>
+  <text x="440" y="536" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 实测收益：TTFA 1850ms → 320ms (提速 82.7%)</text>
+  <text x="440" y="558" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 句尾改口错读率：19.6% → 0.0% (合成基准 P719)</text>
+  <rect x="440" y="582" width="320" height="26" rx="6" fill="#065F46"/>
+  <text x="600" y="599" fill="#D1FAE5" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">必配：&lt;=120 Token 语音微切片 + 只读幂等锁</text>
+
+  <rect x="794" y="444" width="352" height="178" rx="10" fill="#23153C" stroke="#C084FC" stroke-width="1.2"/>
+  <text x="810" y="468" fill="#E879F9" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700">🎭 模式 C：异步工具流 + 写栅栏 (1.2–5s)</text>
+  <text x="810" y="492" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 适用：银行转账、航司退改签、ERP/CRM 写操作</text>
+  <text x="810" y="514" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 架构：300ms 前导话术 + 1.5s 音效 + P720 写栅栏</text>
+  <text x="810" y="536" fill="#F5D0FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 实测收益：“喂喂”冷场追问率 38.4% → &lt;0.6%</text>
+  <text x="810" y="558" fill="#F5D0FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 打断孤儿写入率：14.2% → 0.0% (合成基准 P720)</text>
+  <rect x="810" y="582" width="320" height="26" rx="6" fill="#581C87"/>
+  <text x="970" y="599" fill="#F3E8FF" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">必配：turnEpoch 纪元校验 + 前导话术禁提前承诺</text>
+</svg>

@@ -1079,17 +1079,24 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>364. 级联管道（`STT+LLM+TTS`）与原生端到端语音（`Native S2S`）动态合规泳道切换与法定免责条款逐字锁护栏（`0ms` 法定必读条款节点原生 S2S 自由发挥改词或文本层 PII 脱敏/工具 Schema 旁路阻断、通话中途泳道切换采样率/帧对齐异常 `0ms` 平滑降级至受控级联 TTS 及泳道切换耗时 `&lt;=350ms` / 逐字匹配率 `&gt;=98%` 钳制）&amp; 语义级轮次判停（`Semantic Turn Detection EOU`）防报卡号抢话与投机式只读语音 RAG（`Speculative Voice RAG`）语境垫话防冷场护栏（`0ms` 句法未完结/数字拼读喘气误截断或最终 ASR 确认前投机缓存抢跑写提交阻断、慢速检索超阈值 `0ms` 注入可打断语境垫话及语义判停等待窗口 `[350ms, 1200ms]` / 垫话触发预算 `&lt;=700ms` 钳制）(`P715` / `P716` · Stage 361 · 364 评测维度里程碑 · 725 护栏 &amp; 734 探针 · 364 维)</strong>
+                <strong>364. 级联管道（`STT+LLM+TTS`）与原生端到端语音（`Native S2S`）动态合规泳道切换与法定免责条款逐字锁护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截法定必读条款节点原生 S2S 自由发挥改词或文本层 PII 脱敏/工具 Schema 旁路、通话中途泳道切换采样率/帧对齐异常平滑降级至受控级联 TTS 及生产泳道切换预算 `&lt;=350ms` / 逐字匹配率 `&gt;=98%` 钳制）&amp; 语义级轮次判停（`Semantic Turn Detection EOU`）防报卡号抢话与投机式只读语音 RAG（`Speculative Voice RAG`）语境垫话防冷场护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截句法未完结/数字拼读喘气误截断或最终 ASR 确认前投机缓存抢跑写提交、慢速检索超阈值注入可打断语境垫话及语义判停等待窗口 `[350ms, 1200ms]` / 垫话触发预算 `&lt;=700ms` 钳制）(`P715` / `P716` · Stage 361 · 364 评测维度里程碑 · 725 护栏 &amp; 734 探针 · 364 维)</strong>
               </td>
               <td><code>P715 / P716 deterministic cascaded-vs-S2S compliance lane switch verbatim legal lock &amp; semantic turn EOU detection speculative voice RAG pacing guard</code></td>
-              <td><span class="badge-pass">PASS · 0ms Block (100%)</span></td>
+              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>365. 客户端最后一公里 WebRTC（`UDP/SRTP/Opus`）与裸 WebSocket（`TCP/TLS`）队头阻塞防雪崩与软件 `WebRTC AEC3` 免提回声防自打断护栏（`0ms` 无线弱网裸 TCP WebSocket 队头阻塞雪崩或免提回声未消除自打断拦截、`TURN-TCP` 降级延迟毛刺 `0ms` 启用 `Opus LBRR` 带内 FEC 重建及 `NetEQ` 抖动缓冲 `&lt;=160ms` / `AEC3 ERLE &gt;=18dB` 钳制）&amp; 运营商 SIP 中继 `8kHz→24kHz` 多相抗混叠升采样与双轨统一网关跨通道会话防漂移护栏（`0ms` 无抗混叠滤波粗暴插值伪影/二次有损转码或跨通道 `turnEpoch`/工具幂等锁漂移阻断、SIP RTP 时钟漂移/乱序突发 `0ms` 时钟重同步并注入 `80ms` PLC 隐藏帧及重采样滤波耗时 `&lt;=8ms` / 时钟漂移容差 `&lt;=40ms` 钳制）(`P717` / `P718` · Stage 362 · 365 评测维度里程碑 · 727 护栏 &amp; 736 探针 · 365 维)</strong>
+                <strong>365. 客户端最后一公里 WebRTC（`UDP/SRTP/Opus` 弱网默认优先）与裸 WebSocket（`TCP/TLS` UDP受限或自建端侧AEC时例外）队头阻塞防雪崩与软件 `WebRTC AEC3` 免提回声防自打断护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截无线弱网无自建缓冲裸 TCP WebSocket 队头阻塞雪崩或免提回声未消除自打断、`TURN-TCP` 降级启用 `Opus LBRR` 带内 FEC 重建及 `NetEQ` 抖动缓冲 `&lt;=160ms` / `AEC3 ERLE &gt;=18dB` 钳制）&amp; 运营商 SIP 中继 `8kHz→24kHz` 带限多相抗混叠重采样（对齐 24kHz 格式并滤除镜像伪影，不恢复 `8kHz` 已丢失的 `&gt;4kHz` 宽带频段，配合 `RFC 4733` DTMF 与双字词复诵）与双轨统一网关跨通道会话防漂移护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截粗暴插值伪影/二次有损转码或跨通道 `turnEpoch`/工具幂等锁漂移及滤波耗时 `&lt;=8ms` / 时钟漂移容差 `&lt;=40ms` 钳制）(`P717` / `P718` · Stage 362 · 365 评测维度里程碑 · 727 护栏 &amp; 736 探针 · 365 维)</strong>
               </td>
-              <td><code>P717 / P718 deterministic WebRTC-vs-WebSocket last-mile HOL jitter AEC3 &amp; SIP 8kHz-to-24kHz polyphase resampling unified ingress parity guard</code></td>
-              <td><span class="badge-pass">PASS · 0ms Block (100%)</span></td>
+              <td><code>P717 / P718 deterministic WebRTC-vs-WebSocket last-mile HOL jitter AEC3 &amp; SIP 8kHz-to-24kHz band-limited anti-aliased resampling unified ingress parity guard</code></td>
+              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>366. 投机式语音 RAG（`Speculative Voice RAG`）句尾反转二次核验与 `120-Token` 语音微切片护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截半句 ASR 草稿越界触发 `POST/PUT/DELETE` 写操作或客户句尾反转改口 `similarity &lt;0.88` 时误用旧预取缓存、强制 `EOU` 句尾一致性核验及单块 `&lt;=120 Tokens` / 总注入 `&lt;=360 Tokens` 钳制）&amp; 异步语音写工具单调递增纪元写栅栏（`Monotonic turnEpoch Write Fence`）与三阶渐进式防冷场 + Saga 逆向冲正护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截客户中途打断后旧纪元 `activeTurnEpoch &gt; toolInvocationEpoch` 僵尸写提交或过渡导语剧透未核验金额/提前承诺成功、发出 `AbortSignal` + Saga 冲正指令及未掩蔽冷场 `&lt;=1000ms` / 导语触发 `&lt;=450ms` 钳制）(`P719` / `P720` · Stage 363 · 366 评测维度里程碑 · 729 护栏 &amp; 738 探针 · 366 维)</strong>
+              </td>
+              <td><code>P719 / P720 deterministic speculative voice RAG EOU pivot cache coherency micro-chunk &amp; async tool monotonic turnEpoch write fence Saga rollback guard</code></td>
+              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
@@ -4148,17 +4155,24 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>364. 级联管道（`STT+LLM+TTS`）与原生端到端语音（`Native S2S`）动态合规泳道切换与法定免责条款逐字锁护栏（`0ms` 法定必读条款节点原生 S2S 自由发挥改词或文本层 PII 脱敏/工具 Schema 旁路阻断、通话中途泳道切换采样率/帧对齐异常 `0ms` 平滑降级至受控级联 TTS 及泳道切换耗时 `&lt;=350ms` / 逐字匹配率 `&gt;=98%` 钳制）&amp; 语义级轮次判停（`Semantic Turn Detection EOU`）防报卡号抢话与投机式只读语音 RAG（`Speculative Voice RAG`）语境垫话防冷场护栏（`0ms` 句法未完结/数字拼读喘气误截断或最终 ASR 确认前投机缓存抢跑写提交阻断、慢速检索超阈值 `0ms` 注入可打断语境垫话及语义判停等待窗口 `[350ms, 1200ms]` / 垫话触发预算 `&lt;=700ms` 钳制）(`P715` / `P716` · Stage 361 · 364 评测维度里程碑 · 725 护栏 &amp; 734 探针 · 364 维)</strong>
+                <strong>364. 级联管道（`STT+LLM+TTS`）与原生端到端语音（`Native S2S`）动态合规泳道切换与法定免责条款逐字锁护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截法定必读条款节点原生 S2S 自由发挥改词或文本层 PII 脱敏/工具 Schema 旁路、通话中途泳道切换采样率/帧对齐异常平滑降级至受控级联 TTS 及生产泳道切换预算 `&lt;=350ms` / 逐字匹配率 `&gt;=98%` 钳制）&amp; 语义级轮次判停（`Semantic Turn Detection EOU`）防报卡号抢话与投机式只读语音 RAG（`Speculative Voice RAG`）语境垫话防冷场护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截句法未完结/数字拼读喘气误截断或最终 ASR 确认前投机缓存抢跑写提交、慢速检索超阈值注入可打断语境垫话及语义判停等待窗口 `[350ms, 1200ms]` / 垫话触发预算 `&lt;=700ms` 钳制）(`P715` / `P716` · Stage 361 · 364 评测维度里程碑 · 725 护栏 &amp; 734 探针 · 364 维)</strong>
               </td>
               <td><code>P715 / P716 deterministic cascaded-vs-S2S compliance lane switch verbatim legal lock &amp; semantic turn EOU detection speculative voice RAG pacing guard</code></td>
-              <td><span class="badge-pass">PASS · 0ms Block (100%)</span></td>
+              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>365. 客户端最后一公里 WebRTC（`UDP/SRTP/Opus`）与裸 WebSocket（`TCP/TLS`）队头阻塞防雪崩与软件 `WebRTC AEC3` 免提回声防自打断护栏（`0ms` 无线弱网裸 TCP WebSocket 队头阻塞雪崩或免提回声未消除自打断拦截、`TURN-TCP` 降级延迟毛刺 `0ms` 启用 `Opus LBRR` 带内 FEC 重建及 `NetEQ` 抖动缓冲 `&lt;=160ms` / `AEC3 ERLE &gt;=18dB` 钳制）&amp; 运营商 SIP 中继 `8kHz→24kHz` 多相抗混叠升采样与双轨统一网关跨通道会话防漂移护栏（`0ms` 无抗混叠滤波粗暴插值伪影/二次有损转码或跨通道 `turnEpoch`/工具幂等锁漂移阻断、SIP RTP 时钟漂移/乱序突发 `0ms` 时钟重同步并注入 `80ms` PLC 隐藏帧及重采样滤波耗时 `&lt;=8ms` / 时钟漂移容差 `&lt;=40ms` 钳制）(`P717` / `P718` · Stage 362 · 365 评测维度里程碑 · 727 护栏 &amp; 736 探针 · 365 维)</strong>
+                <strong>365. 客户端最后一公里 WebRTC（`UDP/SRTP/Opus` 弱网默认优先）与裸 WebSocket（`TCP/TLS` UDP受限或自建端侧AEC时例外）队头阻塞防雪崩与软件 `WebRTC AEC3` 免提回声防自打断护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截无线弱网无自建缓冲裸 TCP WebSocket 队头阻塞雪崩或免提回声未消除自打断、`TURN-TCP` 降级启用 `Opus LBRR` 带内 FEC 重建及 `NetEQ` 抖动缓冲 `&lt;=160ms` / `AEC3 ERLE &gt;=18dB` 钳制）&amp; 运营商 SIP 中继 `8kHz→24kHz` 带限多相抗混叠重采样（对齐 24kHz 格式并滤除镜像伪影，不恢复 `8kHz` 已丢失的 `&gt;4kHz` 宽带频段，配合 `RFC 4733` DTMF 与双字词复诵）与双轨统一网关跨通道会话防漂移护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截粗暴插值伪影/二次有损转码或跨通道 `turnEpoch`/工具幂等锁漂移及滤波耗时 `&lt;=8ms` / 时钟漂移容差 `&lt;=40ms` 钳制）(`P717` / `P718` · Stage 362 · 365 评测维度里程碑 · 727 护栏 &amp; 736 探针 · 365 维)</strong>
               </td>
-              <td><code>P717 / P718 deterministic WebRTC-vs-WebSocket last-mile HOL jitter AEC3 &amp; SIP 8kHz-to-24kHz polyphase resampling unified ingress parity guard</code></td>
-              <td><span class="badge-pass">PASS · 0ms Block (100%)</span></td>
+              <td><code>P717 / P718 deterministic WebRTC-vs-WebSocket last-mile HOL jitter AEC3 &amp; SIP 8kHz-to-24kHz band-limited anti-aliased resampling unified ingress parity guard</code></td>
+              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>366. 投机式语音 RAG（`Speculative Voice RAG`）句尾反转二次核验与 `120-Token` 语音微切片护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略状态机拦截半句 ASR 草稿越界触发 `POST/PUT/DELETE` 写操作或客户句尾反转改口 `similarity &lt;0.88` 时误用旧预取缓存、强制 `EOU` 句尾一致性核验及单块 `&lt;=120 Tokens` / 总注入 `&lt;=360 Tokens` 钳制）&amp; 异步语音写工具单调递增纪元写栅栏（`Monotonic turnEpoch Write Fence`）与三阶渐进式防冷场 + Saga 逆向冲正护栏（`&lt;1ms [0ms rounded, synthetic]` 离线策略拦截客户中途打断后旧纪元 `activeTurnEpoch &gt; toolInvocationEpoch` 僵尸写提交或过渡导语剧透未核验金额/提前承诺成功、发出 `AbortSignal` + Saga 冲正指令及未掩蔽冷场 `&lt;=1000ms` / 导语触发 `&lt;=450ms` 钳制）(`P719` / `P720` · Stage 363 · 366 评测维度里程碑 · 729 护栏 &amp; 738 探针 · 366 维)</strong>
+              </td>
+              <td><code>P719 / P720 deterministic speculative voice RAG EOU pivot cache coherency micro-chunk &amp; async tool monotonic turnEpoch write fence Saga rollback guard</code></td>
+              <td><span class="badge-pass">PASS · &lt;1ms Policy (100% Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>

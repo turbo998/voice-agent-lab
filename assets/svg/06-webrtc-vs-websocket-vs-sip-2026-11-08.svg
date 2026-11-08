@@ -46,13 +46,13 @@
   <rect x="56" y="254" width="512" height="72" rx="10" fill="#1E3A8A" fill-opacity="0.38" stroke="#3B82F6" stroke-width="1.2"/>
   <text x="72" y="276" fill="#93C5FD" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800">☎️ 2. 传统电话网必选：SIP Trunk / PSTN (RTP · G.711 8kHz + P718)</text>
   <text x="72" y="296" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 场景：400/800 客服热线、AI 主动外呼、Genesys / Avaya / Cisco 存量呼叫中心对接</text>
-  <text x="72" y="314" fill="#BFDBFE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 护栏 P718：边缘网关执行 8kHz→24kHz 多相抗混叠重采样 + RFC 4733 带外按键提取，S/F 识别率 98.4%</text>
+  <text x="72" y="314" fill="#BFDBFE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 护栏 P718：8kHz→24kHz 带限抗混叠重采样(对齐格式/滤除镜像伪影，不恢复 &gt;4kHz 丢失频段) + RFC 4733 DTMF</text>
 
   <!-- WebSocket Box -->
   <rect x="56" y="336" width="512" height="68" rx="10" fill="#311042" fill-opacity="0.45" stroke="#A855F7" stroke-width="1.2"/>
-  <text x="72" y="358" fill="#D8B4FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800">⚡ 3. 云机房内网必选 / 客户端禁用：WebSocket (TCP/TLS · PCM16 24kHz)</text>
-  <text x="72" y="378" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 仅用于同可用区 Server-to-Server（边缘网关 SFU → 语音大模型，RTT 2ms 零丢包零转码损耗）</text>
-  <text x="72" y="395" fill="#FCA5A5" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• ⛔ 严禁手机直连：3% 丢包下触发 TCP 队头阻塞，P95 延迟飙至 2,140ms 且外放自打断率 41.5%</text>
+  <text x="72" y="358" fill="#D8B4FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800">⚡ 3. 云机房内网首选 / 弱网终端慎用：WebSocket (TCP/TLS · PCM16 24kHz)</text>
+  <text x="72" y="378" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 适用：同可用区 Server-to-Server (SFU → Voice LLM)；或 UDP/TURN 受限且端侧自建系统 AEC/缓冲时兜底</text>
+  <text x="72" y="395" fill="#FCA5A5" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• ⚠️ 弱网默认优先 WebRTC：裸 WS 在 3% 丢包下触发 TCP 队头阻塞 (P95 2,140ms)，无端侧 AEC 时易自打断</text>
 
   <!-- Right Column: Mechanism Deep-Dive (TCP HoL vs WebRTC AEC3/NetEQ) -->
   <rect x="612" y="124" width="552" height="295" rx="14" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>

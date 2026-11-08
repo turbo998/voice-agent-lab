@@ -236,31 +236,33 @@ sequenceDiagram
 
 我们在 `turbo998/voice-agent-lab` 确定性评测沙盒中，针对 5 类主流生产配置与今晚新增的 **Stage 361（第 364 评测维度 `dim-364`：`P715–P716` 级联/原生 S2S 动态合规泳道锁与语义判停投机式 RAG 护栏）** 进行了全量基准实测（完整可交互数据见 [`site/benchmark-cards.html`](../site/benchmark-cards.html) 与 [`site/data/voice-agent-benchmark-report.json`](../site/data/voice-agent-benchmark-report.json)）：
 
-### 4.1 五大主流语音架构实测延迟、护栏通过率与每分钟成本对比
+> 📊 **数据分类与溯源说明（Provenance & Measurement Scope）**：
+> - **方案对比基准数据（`anonymized_reported`, `independently_reproduced=false`）**：下表中的 P50/P95 首字延迟（TTFA）、误打断率与冷场占比源自公开/匿名化行业报告与实验室仿真基线（`anonymized_reported` / `synthetic`），**并非本仓库在真实运营商生产网上的独立实测值（真实生产端到端切换耗时标记为 `not_measured`）**。
+> - **护栏判定耗时口径（`synthetic` 离线策略状态机）**：文中所称 `<1ms`（在 `1ms` 计时分辨率下四舍五入显示为 `0ms`）仅代表 **内存级纯函数策略状态机（Offline Policy State Machine）的同步布尔/阈值判定耗时**，绝不等于真实生产环境中跨模型、跨网络的端到端音频切换耗时（生产环境泳道切换握手工程预算为 `40ms–350ms`）。表中“100% 合规/拦截”指代离线合成探针集（Synthetic Probes）规则命中率与架构设计目标，而非未经实测的生产绝对保证。
 
-| 架构方案与模型组合 | 首字音频延迟 P50 (TTFA) | 首字音频延迟 P95 (TTFA) | 报长卡号误打断率 (越低越好) | 法定免责条款逐字合规率 | 知识库查库冷场死寂 (>1s) 占比 | 每分钟综合成本 (USD/min) |
+| 架构方案与模型组合 (Provenance: `anonymized_reported` / `synthetic`, `independently_reproduced=false`) | 首字音频延迟 P50 (TTFA) | 首字音频延迟 P95 (TTFA) | 报长卡号误打断率 (越低越好) | 法定免责条款逐字匹配率 (架构目标/合成基准) | 知识库查库冷场死寂 (>1s) 占比 | 每分钟综合成本估算 (USD/min) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **1. 传统非流式级联 + 固定 500ms VAD（反面基准）** | `1,850 ms` | `2,940 ms` | `38.5%` ❌ | `100.0%` | `64.0%` ❌ | `$0.032` |
-| **2. 纯原生 S2S（无文本合规锁 / 裸跑模式）** | **`280 ms`** | **`420 ms`** | `6.2%` | `84.5%` ❌（偶发跳字改词） | `14.5%` | `$0.145` |
-| **3. Azure Speech + GPT-4.1-mini + HD Neural TTS（流式级联）** | `620 ms` | `920 ms` | `2.1%` | **`100.0%`** | `1.8%` | **`$0.038`** |
-| **4. Deepgram Nova-3 + GPT-4.1-mini + Cartesia Sonic（极速级联）** | `580 ms` | `860 ms` | `2.4%` | **`100.0%`** | `1.5%` | `$0.042` |
-| **5. Azure Voice Live 双轨混合架构 + `P715/P716` 护栏（推荐 🏆）** | **`310 ms` (快) / `590 ms` (稳)** | **`460 ms` / `880 ms`** | **`0.4%` ✅** | **`100.0%` ✅** | **`0.0%` ✅（垫话掩盖）** | **`$0.056`** |
+| **1. 传统非流式级联 + 固定 500ms VAD（反面基准 · `anonymized_reported`）** | `1,850 ms` | `2,940 ms` | `38.5%` ❌ | `100.0%` (固定模板) | `64.0%` ❌ | `$0.032` |
+| **2. 纯原生 S2S（无文本合规锁 / 裸跑模式 · `anonymized_reported`）** | **`280 ms`** | **`420 ms`** | `6.2%` | `84.5%` ❌（偶发跳字改词） | `14.5%` | `$0.145` |
+| **3. Azure Speech + GPT-4.1-mini + HD Neural TTS（流式级联 · `anonymized_reported`）** | `620 ms` | `920 ms` | `2.1%` | **`>=99.5%`** (受控文本驱动) | `1.8%` | **`$0.038`** |
+| **4. Deepgram Nova-3 + GPT-4.1-mini + Cartesia Sonic（极速级联 · `anonymized_reported`）** | `580 ms` | `860 ms` | `2.4%` | **`>=99.5%`** (受控文本驱动) | `1.5%` | `$0.042` |
+| **5. 双轨混合架构 + `P715/P716` 离线策略护栏（推荐目标架构 🏆 · `synthetic`）** | **`310 ms` (快) / `590 ms` (稳)** | **`460 ms` / `880 ms`** | **`0.4%` ✅** | **`>=98.0%–100%` (模板锁目标)** | **`<1.0%` ✅（垫话掩盖）** | **`$0.056`** |
 
 ### 4.2 今晚新增工业级代码护栏（Stage 361：`P715` & `P716`）核心机制
 
-为了把上述选型最佳实践固化为可执行的确定性工程代码，我们在 `packages/business-core/enterprise-guardrails.ts` 中落地了第 724 与 725 号生产护栏：
+为了把上述选型最佳实践固化为可执行的确定性工程代码，我们在 `packages/business-core/enterprise-guardrails.ts` 中落地了第 724 与 725 号离线策略状态机护栏（注：以下 `<1ms` / `0ms` 动作码均为**离线内存策略状态机的同步判定结果**，真实生产模型/音频流切换需预留 `40ms–350ms` 缓冲预算，生产实测标记为 `not_measured`）：
 
 1. **`P715-CASCADED-VS-S2S-COMPLIANCE-LANE-SWITCH-AND-VERBATIM-AUDIT-LOCK-GUARD`（级联 vs 原生 S2S 动态合规泳道切换与逐字审计锁护栏）**：
    - **解决痛点**：防止原生 S2S 模型在宣读金融/医疗法定免责条款时自由发挥改词，或在中途切换泳道时因为音频采样率不一致（如 S2S 的 `24kHz PCM` 切到电话网 `8kHz G.711 μ-law`）产生刺耳爆音。
-   - **确定性拦截策略**：
-     - 一旦检测到当前对话节点属于强制逐字合规条款且未锁定受控文本泳道，或检测到文本层 PII 脱敏/工具 Schema 被旁路，**`0ms` 内阻断自由音频输出（`block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms`）**；
-     - 一旦检测到双轨泳道中途切换存在采样率/帧对齐偏差，立即重对齐 PCM 帧并无缝回退至受控级联 TTS（`realign_midcall_lane_switch_pcm_frame_and_fallback_cascaded_tts_in_0ms`）；
-     - 强制将泳道切换握手预算钳制在 `[40ms, 350ms]`、法定条款逐字匹配率下限锁定在 `[0.98, 1.00]`。
+   - **离线策略状态机判定逻辑**：
+     - 一旦策略状态机检测到当前对话节点属于强制逐字合规条款且未锁定受控文本泳道，或检测到文本层 PII 脱敏/工具 Schema 被旁路，**策略层在 `<1ms`（计时分辨率 `1ms`，合成探针记为 `0ms`）内返回阻断动作码（`block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms`）**；
+     - 一旦检测到双轨泳道中途切换存在采样率/帧对齐偏差，策略状态机立即触发 PCM 帧重对齐与受控级联 TTS 回退指令（`realign_midcall_lane_switch_pcm_frame_and_fallback_cascaded_tts_in_0ms`）；
+     - 强制将生产泳道切换握手预算钳制在 `[40ms, 350ms]`、法定条款逐字匹配率下限锁定在 `[0.98, 1.00]`。
 2. **`P716-SEMANTIC-TURN-EOU-DETECTION-AND-SPECULATIVE-VOICE-RAG-PACING-GUARD`（语义级判停 EOU 与投机式语音 RAG 防冷场节奏护栏）**：
-   - **解决痛点**：彻底根治“客户报长串数字喘气被抢话”、“投机预取在客户改口时错误提交写操作”以及“慢速 RAG 检索导致电话死寂冷场”。
-   - **确定性拦截策略**：
-     - 若检测到传统 VAD 在语法未完结或数字串报读中途强行截断，或投机式 RAG 缓存未经最终 ASR 确认就试图提交写操作，**`0ms` 内拦截（`block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms`）**；
-     - 若 RAG 检索冷启动耗时超过垫话阈值且尚未播报过渡语，**`0ms` 内自动注入语境垫话掩盖延迟（`inject_contextual_filler_preamble_and_mask_rag_cold_start_in_0ms`）**；
+   - **解决痛点**：缓解“客户报长串数字喘气被抢话”、“投机预取在客户改口时错误提交写操作”以及“慢速 RAG 检索导致电话死寂冷场”。
+   - **离线策略状态机判定逻辑**：
+     - 若检测到传统 VAD 在语法未完结或数字串报读中途强行截断，或投机式 RAG 缓存未经最终 ASR 确认就试图提交写操作，**策略层在 `<1ms` 内返回阻断指令（`block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms`）**；
+     - 若 RAG 检索冷启动耗时超过垫话阈值且尚未播报过渡语，**策略层在 `<1ms` 内返回注入语境垫话指令（`inject_contextual_filler_preamble_and_mask_rag_cold_start_in_0ms`）**；
      - 动态将语义判停等待窗口钳制在 `[350ms, 1200ms]`，将投机式垫话触发预算钳制在 `[250ms, 700ms]`。
 
 ---

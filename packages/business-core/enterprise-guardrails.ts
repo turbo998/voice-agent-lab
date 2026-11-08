@@ -67824,11 +67824,173 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
         policyId,
         action: "allow",
         reason:
-          "SIP G.711 8kHz->24kHz polyphase anti-aliased resampling (>=60 dB stopband), RFC 4733 out-of-band DTMF extraction, and unified 24kHz runtime ingress verified.",
+          "SIP G.711 8kHz->24kHz polyphase band-limited anti-aliased resampling (>=60 dB stopband), RFC 4733 out-of-band DTMF extraction, and unified 24kHz runtime ingress verified.",
         clampedPolyphaseLowPassStopbandAttenuationDb,
         clampedSipToEdgeGatewayTranscodeLatencyMs,
       };
     }
+
+    export interface SpeculativeVoiceRagCacheCoherencyAndZeroDeadAirMaskingContext {
+      speculativePartialAsrTriggeredStateMutatingToolDetected: boolean;
+      lateUtteranceEntityOrPolarityPivotWithoutCacheEvictionDetected: boolean;
+      speculativeQuerySemanticSimilarity: number;
+      voiceRagMaxChunkTokens: number;
+      voiceRagTotalInjectedTokens: number;
+    }
+
+    export interface SpeculativeVoiceRagCacheCoherencyAndZeroDeadAirMaskingDecision {
+      violated: boolean;
+      policyId: "P719-SPECULATIVE-VOICE-RAG-CACHE-COHERENCY-AND-ZERO-DEAD-AIR-MASKING-GUARD";
+      action:
+        | "block_speculative_write_tool_or_evict_stale_pivot_rag_cache_in_0ms"
+        | "clamp_voice_rag_micro_chunk_token_budget"
+        | "allow";
+      reason: string;
+      clampedSpeculativeQuerySemanticSimilarityFloor: number;
+      clampedVoiceRagMaxChunkTokens: number;
+      clampedVoiceRagTotalInjectedTokens: number;
+    }
+
+    export function evaluateSpeculativeVoiceRagCacheCoherencyAndZeroDeadAirMaskingGuard(
+      context: SpeculativeVoiceRagCacheCoherencyAndZeroDeadAirMaskingContext,
+    ): SpeculativeVoiceRagCacheCoherencyAndZeroDeadAirMaskingDecision {
+      const policyId =
+        "P719-SPECULATIVE-VOICE-RAG-CACHE-COHERENCY-AND-ZERO-DEAD-AIR-MASKING-GUARD" as const;
+      const clampedSpeculativeQuerySemanticSimilarityFloor = Math.min(
+        Math.max(context.speculativeQuerySemanticSimilarity, 0.88),
+        1.0,
+      );
+      const clampedVoiceRagMaxChunkTokens = Math.min(
+        Math.max(context.voiceRagMaxChunkTokens, 40),
+        120,
+      );
+      const clampedVoiceRagTotalInjectedTokens = Math.min(
+        Math.max(context.voiceRagTotalInjectedTokens, 80),
+        360,
+      );
+
+      if (
+        context.speculativePartialAsrTriggeredStateMutatingToolDetected ||
+        context.lateUtteranceEntityOrPolarityPivotWithoutCacheEvictionDetected ||
+        context.speculativeQuerySemanticSimilarity < 0.88
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_speculative_write_tool_or_evict_stale_pivot_rag_cache_in_0ms",
+          reason:
+            "Speculative Voice RAG Coherency Violation (Pre-Commit EOU Revalidation): partial-ASR speculation attempted a state-mutating write tool or caller pivoted entity/polarity at end-of-utterance (similarity <0.88); offline policy state machine blocking write and evicting stale speculative cache (<1ms policy check).",
+          clampedSpeculativeQuerySemanticSimilarityFloor,
+          clampedVoiceRagMaxChunkTokens,
+          clampedVoiceRagTotalInjectedTokens,
+        };
+      }
+
+      if (
+        context.voiceRagMaxChunkTokens > 120 ||
+        context.voiceRagTotalInjectedTokens > 360
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_voice_rag_micro_chunk_token_budget",
+          reason:
+            "Voice RAG Micro-Chunking Budget Exceeded (>120 tokens/chunk or >360 total injected tokens); clamping to <=120 tokens/chunk and <=360 total tokens to prevent realtime LLM prefill TTFA spikes.",
+          clampedSpeculativeQuerySemanticSimilarityFloor,
+          clampedVoiceRagMaxChunkTokens,
+          clampedVoiceRagTotalInjectedTokens,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Speculative read-only Voice RAG pre-commit EOU equivalence (>=0.88 similarity) and micro-chunk budget (<=120 tokens/chunk, <=360 total tokens) verified.",
+        clampedSpeculativeQuerySemanticSimilarityFloor,
+        clampedVoiceRagMaxChunkTokens,
+        clampedVoiceRagTotalInjectedTokens,
+      };
+    }
+
+    export interface AsyncVoiceToolCallEpochWriteFenceAndSagaCompensationContext {
+      staleTurnEpochStateMutatingToolCommitAfterBargeInDetected: boolean;
+      preambleLeakedUnverifiedAmountSecretOrClaimedPrematureSuccessDetected: boolean;
+      unmaskedDeadAirSilenceDuringSlowToolCallMs: number;
+      promptablePreambleTriggerLatencyMs: number;
+    }
+
+    export interface AsyncVoiceToolCallEpochWriteFenceAndSagaCompensationDecision {
+      violated: boolean;
+      policyId: "P720-ASYNC-VOICE-TOOL-CALL-EPOCH-WRITE-FENCE-AND-SAGA-COMPENSATION-GUARD";
+      action:
+        | "abort_stale_epoch_write_and_trigger_saga_rollback_or_block_preamble_leak_in_0ms"
+        | "inject_3tier_zero_dead_air_preamble_and_clamp_silence_window"
+        | "allow";
+      reason: string;
+      clampedUnmaskedDeadAirSilenceDuringSlowToolCallMs: number;
+      clampedPromptablePreambleTriggerLatencyMs: number;
+    }
+
+    export function evaluateAsyncVoiceToolCallEpochWriteFenceAndSagaCompensationGuard(
+      context: AsyncVoiceToolCallEpochWriteFenceAndSagaCompensationContext,
+    ): AsyncVoiceToolCallEpochWriteFenceAndSagaCompensationDecision {
+      const policyId =
+        "P720-ASYNC-VOICE-TOOL-CALL-EPOCH-WRITE-FENCE-AND-SAGA-COMPENSATION-GUARD" as const;
+      const clampedUnmaskedDeadAirSilenceDuringSlowToolCallMs = Math.min(
+        Math.max(context.unmaskedDeadAirSilenceDuringSlowToolCallMs, 150),
+        1000,
+      );
+      const clampedPromptablePreambleTriggerLatencyMs = Math.min(
+        Math.max(context.promptablePreambleTriggerLatencyMs, 250),
+        450,
+      );
+
+      if (
+        context.staleTurnEpochStateMutatingToolCommitAfterBargeInDetected ||
+        context.preambleLeakedUnverifiedAmountSecretOrClaimedPrematureSuccessDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "abort_stale_epoch_write_and_trigger_saga_rollback_or_block_preamble_leak_in_0ms",
+          reason:
+            "Async Voice Tool Epoch Write Fence / Preamble Safety Violation: caller barge-in incremented activeTurnEpoch past toolInvocationEpoch on a state-mutating tool or preamble claimed premature outcome/secret; offline policy state machine emitting AbortSignal + Saga rollback directive (<1ms policy check).",
+          clampedUnmaskedDeadAirSilenceDuringSlowToolCallMs,
+          clampedPromptablePreambleTriggerLatencyMs,
+        };
+      }
+
+      if (
+        context.unmaskedDeadAirSilenceDuringSlowToolCallMs > 1000 ||
+        context.promptablePreambleTriggerLatencyMs < 250 ||
+        context.promptablePreambleTriggerLatencyMs > 450
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "inject_3tier_zero_dead_air_preamble_and_clamp_silence_window",
+          reason:
+            "Slow tool call dead-air silence (>1000ms) or promptable preamble trigger window (<250ms or >450ms) out of bounds; injecting 3-tier pacing (300ms preamble -> 1500ms earcon -> 3500ms hold brief) and clamping max silence to <=1000ms.",
+          clampedUnmaskedDeadAirSilenceDuringSlowToolCallMs,
+          clampedPromptablePreambleTriggerLatencyMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Monotonic turnEpoch write fence, Saga compensation readiness, safe promptable preamble, and <=1000ms 3-tier zero-dead-air pacing verified.",
+        clampedUnmaskedDeadAirSilenceDuringSlowToolCallMs,
+        clampedPromptablePreambleTriggerLatencyMs,
+      };
+    }
+
 
 
 

@@ -67,4 +67,4 @@
 3. **`azure-speech-diarization-poc`（Azure AI Speech 实时说话人分离与会议洞察 POC）**
    - 核心亮点：基于 Azure AI Speech SDK 实现多说话人实时分离（Speaker Diarization）、会议角色识别与实时字幕流，适用于银行双录、线下面对面理财顾问与门诊问诊归档。
 
-<!-- Stage 362: P341–P718 (727 deterministic enterprise guardrails, 736 Live POC Trap Probes, 365 dimensions; flagship FAQs: docs/cascaded-vs-s2s-semantic-turn-faq.md & docs/webrtc-vs-websocket-vs-sip-ingress-selection-faq.md; latest 2026-11-08 daily report: docs/daily/2026-11-08.md & assets/svg/05-daily-breakthrough-2026-11-08.svg & assets/svg/06-webrtc-vs-websocket-vs-sip-2026-11-08.svg) -->
+<!-- Stage 363: P341–P720 (729 deterministic enterprise guardrails, 738 Live POC Trap Probes, 366 dimensions; flagship FAQs: docs/cascaded-vs-s2s-semantic-turn-faq.md & docs/webrtc-vs-websocket-vs-sip-ingress-selection-faq.md & docs/speculative-voice-rag-zero-dead-air-faq.md; latest 2026-11-08 daily report: docs/daily/2026-11-08.md & assets/svg/05-daily-breakthrough-2026-11-08.svg & assets/svg/06-webrtc-vs-websocket-vs-sip-2026-11-08.svg & assets/svg/07-speculative-voice-rag-2026-11-08.svg) -->
