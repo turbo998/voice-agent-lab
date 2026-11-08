@@ -68144,6 +68144,154 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WarmTransferContextPacketIntegrityContext {
+      blindTransferWithoutSignedContextPacketOrRepeatSlotPromptDetected: boolean;
+      briefingSummaryWordCount: number;
+      confirmedSlotCoverageRatio: number;
+    }
+
+    export interface WarmTransferContextPacketIntegrityDecision {
+      violated: boolean;
+      policyId: "P723-WARM-TRANSFER-SIGNED-CONTEXT-PACKET-ZERO-REPEAT-HANDOFF-GUARD";
+      action:
+        | "block_blind_handoff_and_synthesize_signed_context_packet_in_0ms"
+        | "clamp_briefing_word_budget_and_confirmed_slot_coverage"
+        | "allow";
+      reason: string;
+      clampedBriefingSummaryWordCount: number;
+      clampedConfirmedSlotCoverageRatio: number;
+    }
+
+    export function evaluateWarmTransferContextPacketIntegrityGate(
+      context: WarmTransferContextPacketIntegrityContext,
+    ): WarmTransferContextPacketIntegrityDecision {
+      const policyId =
+        "P723-WARM-TRANSFER-SIGNED-CONTEXT-PACKET-ZERO-REPEAT-HANDOFF-GUARD" as const;
+      const clampedBriefingSummaryWordCount = Math.min(
+        Math.max(context.briefingSummaryWordCount, 12),
+        45,
+      );
+      const clampedConfirmedSlotCoverageRatio = Number(
+        Math.min(Math.max(context.confirmedSlotCoverageRatio, 0.95), 1.0).toFixed(
+          2,
+        ),
+      );
+
+      if (
+        context.blindTransferWithoutSignedContextPacketOrRepeatSlotPromptDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_blind_handoff_and_synthesize_signed_context_packet_in_0ms",
+          reason:
+            "Warm Transfer Context Integrity Violation: escalation attempted without a signed Context Packet (callCorrelationId, KYC badge, confirmedSlots) or prompted human agent to re-ask verified slots; offline policy state machine synthesizing 45-word structured screen-pop packet (<1ms policy check).",
+          clampedBriefingSummaryWordCount,
+          clampedConfirmedSlotCoverageRatio,
+        };
+      }
+
+      if (
+        context.briefingSummaryWordCount > 45 ||
+        context.confirmedSlotCoverageRatio < 0.95
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_briefing_word_budget_and_confirmed_slot_coverage",
+          reason:
+            "Screen-pop briefing summary exceeds 45-word glance budget or confirmed slot coverage is below 0.95; clamping summary length to <=45 words and slot coverage to >=0.95.",
+          clampedBriefingSummaryWordCount,
+          clampedConfirmedSlotCoverageRatio,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Signed Warm Transfer Context Packet (<=45 words, >=0.95 confirmed slot coverage, zero repeat KYC prompt) verified.",
+        clampedBriefingSummaryWordCount,
+        clampedConfirmedSlotCoverageRatio,
+      };
+    }
+
+    export interface ConsultativeWhisperChannelIsolationContext {
+      whisperBriefingAudioLeakedToCallerALegOrUnackedBridgeDetected: boolean;
+      callerWhisperLeakAttenuationDb: number;
+      bLegRingTimeoutMs: number;
+    }
+
+    export interface ConsultativeWhisperChannelIsolationDecision {
+      violated: boolean;
+      policyId: "P724-CONSULTATIVE-WARM-TRANSFER-WHISPER-CHANNEL-ISOLATION-AND-HOLD-FALLBACK-GUARD";
+      action:
+        | "mute_whisper_bleed_lock_caller_hold_or_reengage_ai_on_timeout_in_0ms"
+        | "clamp_whisper_isolation_attenuation_and_b_leg_ring_timeout"
+        | "allow";
+      reason: string;
+      clampedCallerWhisperLeakAttenuationDb: number;
+      clampedBLegRingTimeoutMs: number;
+    }
+
+    export function evaluateConsultativeWhisperChannelIsolationGate(
+      context: ConsultativeWhisperChannelIsolationContext,
+    ): ConsultativeWhisperChannelIsolationDecision {
+      const policyId =
+        "P724-CONSULTATIVE-WARM-TRANSFER-WHISPER-CHANNEL-ISOLATION-AND-HOLD-FALLBACK-GUARD" as const;
+      const clampedCallerWhisperLeakAttenuationDb = Math.min(
+        Math.max(context.callerWhisperLeakAttenuationDb, -96),
+        -70,
+      );
+      const clampedBLegRingTimeoutMs = Math.min(
+        Math.max(context.bLegRingTimeoutMs, 5000),
+        12000,
+      );
+
+      if (
+        context.whisperBriefingAudioLeakedToCallerALegOrUnackedBridgeDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "mute_whisper_bleed_lock_caller_hold_or_reengage_ai_on_timeout_in_0ms",
+          reason:
+            "Consultative Whisper Channel Isolation Violation: B2BUA mixer attempted to stream AI whisper briefing while Caller A-Leg was not isolated on comfort hold (>-70 dBFS) or bridged legs before specialist ACK; offline policy state machine forcing A-Leg isolation or graceful AI re-engagement (<1ms policy check).",
+          clampedCallerWhisperLeakAttenuationDb,
+          clampedBLegRingTimeoutMs,
+        };
+      }
+
+      if (
+        context.callerWhisperLeakAttenuationDb > -70 ||
+        context.bLegRingTimeoutMs > 12000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_whisper_isolation_attenuation_and_b_leg_ring_timeout",
+          reason:
+            "Caller whisper leak attenuation (>-70 dBFS) or B-Leg ring timeout (>12000ms) out of bounds; clamping caller whisper gain ceiling to <=-70 dBFS and ring timeout to <=12000ms.",
+          clampedCallerWhisperLeakAttenuationDb,
+          clampedBLegRingTimeoutMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Consultative Warm Transfer one-way whisper isolation (<=-70 dBFS to Caller A-Leg) and B-Leg ring timeout (<=12000ms) verified.",
+        clampedCallerWhisperLeakAttenuationDb,
+        clampedBLegRingTimeoutMs,
+      };
+    }
+
+
 
 
 
