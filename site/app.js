@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-08 单专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715/P716) · WebRTC vs WS vs SIP 8kHz 带限重采样 (P717/P718) · 只读投机语音 RAG [专题3A: P719] · 异步工具纪元写栅栏 [专题3B: P720] · 免提非线性回声与主叫声纹锁 [专题4: P721/P722] · 热转接 CTI 签名屏弹与单向耳语隔离 [专题5: P723/P724] (Stage 365 · P705–P724)",
-    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略状态机（计时分辨率 1ms，判定耗时 <1ms 四舍五入记为 0ms；真实生产网络/向量库重查/Saga 回滚/流式声学 DSP 帧推理/SIP B2BUA 桥接信令耗时未在此本地沙盒实测 not_measured）对 P715–P724 核心语音架构护栏的规则判定：",
+    simTitle: "🧪 2026-11-08 单专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715/P716) · WebRTC vs WS vs SIP 8kHz 带限重采样 (P717/P718) · 只读投机语音 RAG [专题3A: P719] · 异步工具纪元写栅栏 [专题3B: P720] · 免提非线性回声与主叫声纹锁 [专题4: P721/P722] · 热转接 CTI 签名屏弹与单向耳语隔离 [专题5: P723/P724] · PCI-DSS 按键旁路与 SIPREC 双流环形缓冲消音 [专题6: P725/P726] (Stage 366 · P705–P726)",
+    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略状态机（计时分辨率 1ms，判定耗时 <1ms 四舍五入记为 0ms；真实生产网络/向量库重查/Saga 回滚/流式声学 DSP 帧推理/SIP B2BUA 桥接信令/PCI 金库与 WORM 存储写入耗时未在此本地沙盒实测 not_measured）对 P715–P726 核心语音架构护栏的规则判定：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-08 單專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715/P716) · WebRTC vs WS vs SIP 8kHz 帶限重採樣 (P717/P718) · 唯讀投機語音 RAG [專題3A: P719] · 非同步工具紀元寫柵欄 [專題3B: P720] · 免持非線性回聲與主叫聲紋鎖 [專題4: P721/P722] · 熱轉接 CTI 簽名屏彈與單向耳語隔離 [專題5: P723/P724] (Stage 365 · P705–P724)",
-    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略狀態機（計時解析度 1ms，判定耗時 <1ms 四捨五入記為 0ms；真實生產網路/向量庫重查/Saga 回滾/流式聲學 DSP 幀推理/SIP B2BUA 橋接信令耗時未在此本地沙盒實測 not_measured）對 P715–P724 核心語音架構護欄的規則判定：",
+    simTitle: "🧪 2026-11-08 單專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715/P716) · WebRTC vs WS vs SIP 8kHz 帶限重採樣 (P717/P718) · 唯讀投機語音 RAG [專題3A: P719] · 非同步工具紀元寫柵欄 [專題3B: P720] · 免持非線性回聲與主叫聲紋鎖 [專題4: P721/P722] · 熱轉接 CTI 簽名屏彈與單向耳語隔離 [專題5: P723/P724] · PCI-DSS 按鍵旁路與 SIPREC 雙流環形緩衝消音 [專題6: P725/P726] (Stage 366 · P705–P726)",
+    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略狀態機（計時解析度 1ms，判定耗時 <1ms 四捨五入記為 0ms；真實生產網路/向量庫重查/Saga 回滾/流式聲學 DSP 幀推理/SIP B2BUA 橋接信令/PCI 金庫與 WORM 儲存寫入耗時未在此本地沙盒實測 not_measured）對 P715–P726 核心語音架構護欄的規則判定：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-08 Single-Topic Architect FAQ Policy Sandbox: Cascaded vs. S2S (P715/P716) · WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718) · Read-Only Speculative Voice RAG [Topic 3A: P719] · Async Tool Epoch Write Fence [Topic 3B: P720] · Nonlinear Echo & TSE Crosstalk Lock [Topic 4: P721/P722] · Warm-Transfer Signed Screen-Pop & One-Way Whisper Isolation [Topic 5: P723/P724] (Stage 365 · P705–P724)",
-    simSub: "Click any synthetic probe below to inspect offline in-memory policy state-machine evaluation (<1ms check rounded to 0ms at 1ms timer resolution; live production network/vector DB/Saga rollback/streaming DSP inference/SIP B2BUA bridge signaling latency is not_measured in this local sandbox) across P715–P724:",
+    simTitle: "🧪 2026-11-08 Single-Topic Architect FAQ Policy Sandbox: Cascaded vs. S2S (P715/P716) · WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718) · Read-Only Speculative Voice RAG [Topic 3A: P719] · Async Tool Epoch Write Fence [Topic 3B: P720] · Nonlinear Echo & TSE Crosstalk Lock [Topic 4: P721/P722] · Warm-Transfer Signed Screen-Pop & One-Way Whisper Isolation [Topic 5: P723/P724] · PCI-DSS DTMF Bypass & Dual-Stream SIPREC Audio Redaction [Topic 6: P725/P726] (Stage 366 · P705–P726)",
+    simSub: "Click any synthetic probe below to inspect offline in-memory policy state-machine evaluation (<1ms check rounded to 0ms at 1ms timer resolution; live production network/vector DB/Saga rollback/streaming DSP inference/SIP B2BUA bridge signaling/PCI Vault & WORM storage latency is not_measured in this local sandbox) across P715–P726:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 365 P723/P724 · 368维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 366 P725/P726 · 369维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "6 篇独立单专题语音架构选型 FAQ（级联/S2S · WebRTC/WS/SIP · 只读投机 RAG · 异步写工具栅栏 · 免提防自断与防串音 · 热转接与单向耳语）",
-      desc: "单专题独立指南：① 级联 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重采样 (P717/P718)；③ 只读投机语音 RAG (speculative-voice-rag-faq.md · P719)；④ 异步工具纪元写栅栏与 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免提非线性回声门禁与主叫声纹防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人机协同转接 CTI 签名屏弹与双腿协商单向耳语 (warm-transfer-whisper-handoff-faq.md · P723/P724)。",
+      title: "7 篇独立单专题语音架构选型 FAQ（级联/S2S · WebRTC/WS/SIP · 只读投机 RAG · 异步写工具栅栏 · 免提防自断与防串音 · 热转接与单向耳语 · PCI 按键旁路与双流消音）",
+      desc: "单专题独立指南：① 级联 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重采样 (P717/P718)；③ 只读投机语音 RAG (speculative-voice-rag-faq.md · P719)；④ 异步工具纪元写栅栏与 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免提非线性回声门禁与主叫声纹防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人机协同转接 CTI 签名屏弹与双腿协商单向耳语 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ PCI-DSS RFC 4733 带外按键旁路与 SIPREC 环形缓冲实时消音 (pci-dtmf-dual-stream-redaction-faq.md · P725/P726)。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 365 P723/P724 · 368維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 366 P725/P726 · 369維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "6 篇獨立單專題語音架構選型 FAQ（級聯/S2S · WebRTC/WS/SIP · 唯讀投機 RAG · 非同步寫工具柵欄 · 免持防自斷與防串音 · 熱轉接與單向耳語）",
-      desc: "單專題獨立指南：① 級聯 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重採樣 (P717/P718)；③ 唯讀投機語音 RAG (speculative-voice-rag-faq.md · P719)；④ 非同步工具紀元寫柵欄與 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免持非線性回聲門禁與主叫聲紋防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人機協同轉接 CTI 簽名屏彈與雙腿協商單向耳語 (warm-transfer-whisper-handoff-faq.md · P723/P724)。",
+      title: "7 篇獨立單專題語音架構選型 FAQ（級聯/S2S · WebRTC/WS/SIP · 唯讀投機 RAG · 非同步寫工具柵欄 · 免持防自斷與防串音 · 熱轉接與單向耳語 · PCI 按鍵旁路與雙流消音）",
+      desc: "單專題獨立指南：① 級聯 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重採樣 (P717/P718)；③ 唯讀投機語音 RAG (speculative-voice-rag-faq.md · P719)；④ 非同步工具紀元寫柵欄與 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免持非線性回聲門禁與主叫聲紋防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人機協同轉接 CTI 簽名屏彈與雙腿協商單向耳語 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ PCI-DSS RFC 4733 帶外按鍵旁路與 SIPREC 環形緩衝即時消音 (pci-dtmf-dual-stream-redaction-faq.md · P725/P726)。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 365 P723/P724 · 368-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 366 P725/P726 · 369-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "6 Single-Topic Architect Selection FAQs (Cascaded/S2S · WebRTC/WS/SIP · Speculative RAG · Tool Epoch Fence · Barge-in Echo & Crosstalk · Warm Transfer & Whisper)",
-      desc: "Standalone single-topic guides: (1) Cascaded vs. S2S (P715/P716); (2) WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718); (3) Read-Only Speculative Voice RAG (speculative-voice-rag-faq.en.md · P719); (4) Async Tool turnEpoch Write Fence & Saga (voice-tool-epoch-fence-faq.en.md · P720); (5) Nonlinear Echo & TSE Crosstalk Lock (barge-in-echo-crosstalk-faq.en.md · P721/P722); (6) Warm Transfer Signed Context Packet & Consultative Whisper Handoff (warm-transfer-whisper-handoff-faq.en.md · P723/P724).",
+      title: "7 Single-Topic Architect Selection FAQs (Cascaded/S2S · WebRTC/WS/SIP · Speculative RAG · Tool Epoch Fence · Barge-in Echo & Crosstalk · Warm Transfer & Whisper · PCI DTMF Bypass & Dual-Stream Redaction)",
+      desc: "Standalone single-topic guides: (1) Cascaded vs. S2S (P715/P716); (2) WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718); (3) Read-Only Speculative Voice RAG (speculative-voice-rag-faq.en.md · P719); (4) Async Tool turnEpoch Write Fence & Saga (voice-tool-epoch-fence-faq.en.md · P720); (5) Nonlinear Echo & TSE Crosstalk Lock (barge-in-echo-crosstalk-faq.en.md · P721/P722); (6) Warm Transfer Signed Context Packet & Consultative Whisper Handoff (warm-transfer-whisper-handoff-faq.en.md · P723/P724); (7) PCI-DSS RFC 4733 DTMF Bypass & Dual-Stream SIPREC Audio Redaction (pci-dtmf-dual-stream-redaction-faq.en.md · P725/P726).",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,67 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p723_warm_transfer_context_packet_integrity";
+let currentDuplexSimId = "p725_pci_dss_saq_a_dtmf_media_bypass";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p725_pci_dss_saq_a_dtmf_media_bypass",
+    label: {
+      "zh-CN": "🔥 [专题6 · pci-dtmf-dual-stream-redaction-faq] P725 · PCI-DSS SAQ-A 带外按键旁路与 LLM 零接触锁 (<=-65dBFS)",
+      "zh-TW": "🔥 [專題6 · pci-dtmf-dual-stream-redaction-faq] P725 · PCI-DSS SAQ-A 帶外按鍵旁路與 LLM 零接觸鎖 (<=-65dBFS)",
+      en: "🔥 [Topic 6 · pci-dtmf-dual-stream-redaction-faq] P725 · PCI SAQ-A RFC 4733 Bypass & 0-PAN LLM Gate"
+    },
+    inputJson: `{
+  "topicGuide": "docs/pci-dtmf-dual-stream-redaction-faq.md (.en.md)",
+  "policyId": "P725-VOICE-PAYMENT-PCI-DSS-V4-SAQ-A-RFC4733-DTMF-EDGE-INTERCEPT-ASR-PAUSE-AND-ZERO-LLM-PAN-SCOPE-GUARD",
+  "spokenPanOrUnpausedAsrUpstreamDuringPaymentDetected": true,
+  "inbandDtmfToneBleedDb": -14,
+  "rawPanDigitsExposedToLlm": 16
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalLatencyMs": "<1ms (0ms rounded at 1ms resolution, synthetic)",
+  "liveSbcRtpStripAndPciVaultTokenLatency": "not_measured in local unit test (production budget 120-380ms)",
+  "action": "pause_asr_llm_upstream_and_switch_to_rfc4733_edge_dtmf_vault_bypass_in_0ms",
+  "clampedInbandDtmfToneBleedDb": -65,
+  "clampedRawPanDigitsExposedToLlm": 0,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题6：PCI-DSS 电话支付旁路与双流实时消音 · docs/pci-dtmf-dual-stream-redaction-faq.md] <1ms 离线策略状态机判定（Synthetic；真实边缘 SBC RTP 剥离与 PCI 金库 Token 化往返耗时未在本地单测实测 not_measured）：拦截客户口述卡号直通 ASR/LLM 或付款期未暂停上行音频流，强制开启 <=-65 dBFS 带内按键音陷波并将暴露给大模型的明文卡号位数钳制为 0（仅回传 tok_xxxx），确保 AI 栈保持轻量 SAQ-A 范围。",
+      "zh-TW": "✅ [專題6：PCI-DSS 電話支付旁路與雙流即時消音 · docs/pci-dtmf-dual-stream-redaction-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實邊緣 SBC RTP 剝離與 PCI 金庫 Token 化往返耗時未在本地單測實測 not_measured）：攔截客戶口述卡號直通 ASR/LLM 或付款期未暫停上行音訊流，強制開啟 <=-65 dBFS 帶內按鍵音陷波並將暴露給大模型的明文卡號位數鉗制為 0（僅回傳 tok_xxxx），確保 AI 棧保持輕量 SAQ-A 範圍。",
+      en: "✅ [Topic 6: PCI-DSS DTMF Bypass & Dual-Stream SIPREC Redaction · docs/pci-dtmf-dual-stream-redaction-faq.en.md] <1ms Offline Policy State-Machine Verdict (Synthetic; live SBC RTP stripping and PCI Token Vault round-trip latency is not_measured in local tests): Pauses upstream ASR/LLM audio during payment, clamps in-band DTMF tone bleed to <=-65 dBFS, and forces 0 raw PAN digits exposed to the LLM."
+    }
+  },
+  {
+    id: "p726_dual_stream_siprec_pii_audio_redaction",
+    label: {
+      "zh-CN": "🔥 [专题6 · pci-dtmf-dual-stream-redaction-faq] P726 · SIPREC 双流 >=600ms 环形缓冲与 ±150ms 声学护城河消音",
+      "zh-TW": "🔥 [專題6 · pci-dtmf-dual-stream-redaction-faq] P726 · SIPREC 雙流 >=600ms 環形緩衝與 ±150ms 聲學護城河消音",
+      en: "🔥 [Topic 6 · pci-dtmf-dual-stream-redaction-faq] P726 · Dual-Stream SIPREC >=600ms RAM Buffer & ±150ms Moat"
+    },
+    inputJson: `{
+  "topicGuide": "docs/pci-dtmf-dual-stream-redaction-faq.md (.en.md)",
+  "policyId": "P726-DUAL-STREAM-SIPREC-REALTIME-RINGBUFFER-AUDIO-BEEP-MASKING-AND-SYNCHRONIZED-TRANSCRIPT-REDACTION-GUARD",
+  "unredactedAudioPiiFlushedToWormOrTranscriptDesyncDetected": true,
+  "recordingRingBufferLookaheadMs": 180,
+  "prePostAcousticMaskPaddingMs": 40
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalLatencyMs": "<1ms (0ms rounded at 1ms resolution, synthetic)",
+  "liveWormStorageFlushAndStreamingNerLatency": "not_measured in local unit test (production buffer 600-1500ms)",
+  "action": "block_unredacted_siprec_flush_and_zero_pcm_ringbuffer_span_in_0ms",
+  "clampedRecordingRingBufferLookaheadMs": 600,
+  "clampedPrePostAcousticMaskPaddingMs": 150,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题6：PCI-DSS 电话支付旁路与双流实时消音 · docs/pci-dtmf-dual-stream-redaction-faq.md] <1ms 离线策略状态机判定（Synthetic；真实流式 NER 推理与 WORM 存储写入耗时未在本地单测实测 not_measured）：拦截未消音明文 PII 音频直接落盘 WORM 存储或音字不同步脱敏，强制将 SIPREC 录音流内存环形缓冲前瞻窗口钳制在 >=600ms（实时对话流保持 0ms 额外缓冲）并向词首尾外扩 >=150ms 声学消音护城河，彻底抹除协同发音辅音残留。",
+      "zh-TW": "✅ [專題6：PCI-DSS 電話支付旁路與雙流即時消音 · docs/pci-dtmf-dual-stream-redaction-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實流式 NER 推理與 WORM 儲存寫入耗時未在本地單測實測 not_measured）：攔截未消音明文 PII 音訊直接落盤 WORM 儲存或音字不同步脫敏，強制將 SIPREC 錄音流記憶體環形緩衝前瞻視窗鉗制在 >=600ms（即時對話流保持 0ms 額外緩衝）並向詞首尾外擴 >=150ms 聲學消音護城河，徹底抹除協同發音輔音殘留。",
+      en: "✅ [Topic 6: PCI-DSS DTMF Bypass & Dual-Stream SIPREC Redaction · docs/pci-dtmf-dual-stream-redaction-faq.en.md] <1ms Offline Policy State-Machine Verdict (Synthetic; live streaming NER and WORM storage write latency is not_measured in local tests): Blocks plaintext PII audio flushes to WORM storage, clamping the RAM lookahead ring buffer to >=600ms (0ms added to live AI stream) and acoustic pre/post mask padding to >=150ms."
+    }
+  },
   {
     id: "p723_warm_transfer_context_packet_integrity",
     label: {

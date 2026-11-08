@@ -68291,6 +68291,146 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface PciDssSaqADtmfMediaBypassContext {
+      spokenPanOrUnpausedAsrUpstreamDuringPaymentDetected: boolean;
+      inbandDtmfToneBleedDb: number;
+      rawPanDigitsExposedToLlm: number;
+    }
+
+    export interface PciDssSaqADtmfMediaBypassDecision {
+      violated: boolean;
+      policyId: "P725-VOICE-PAYMENT-PCI-DSS-V4-SAQ-A-RFC4733-DTMF-EDGE-INTERCEPT-ASR-PAUSE-AND-ZERO-LLM-PAN-SCOPE-GUARD";
+      action:
+        | "pause_asr_llm_upstream_and_switch_to_rfc4733_edge_dtmf_vault_bypass_in_0ms"
+        | "clamp_inband_dtmf_tone_suppression_and_zero_llm_pan_exposure"
+        | "allow";
+      reason: string;
+      clampedInbandDtmfToneBleedDb: number;
+      clampedRawPanDigitsExposedToLlm: number;
+    }
+
+    export function evaluatePciDssSaqADtmfMediaBypassGate(
+      context: PciDssSaqADtmfMediaBypassContext,
+    ): PciDssSaqADtmfMediaBypassDecision {
+      const policyId =
+        "P725-VOICE-PAYMENT-PCI-DSS-V4-SAQ-A-RFC4733-DTMF-EDGE-INTERCEPT-ASR-PAUSE-AND-ZERO-LLM-PAN-SCOPE-GUARD" as const;
+      const clampedInbandDtmfToneBleedDb = Math.min(
+        Math.max(context.inbandDtmfToneBleedDb, -96),
+        -65,
+      );
+      const clampedRawPanDigitsExposedToLlm = 0;
+
+      if (context.spokenPanOrUnpausedAsrUpstreamDuringPaymentDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "pause_asr_llm_upstream_and_switch_to_rfc4733_edge_dtmf_vault_bypass_in_0ms",
+          reason:
+            "PCI-DSS v4.0 SAQ-A Scope Violation: Caller attempted to speak PAN/CVV into active ASR/LLM stream or upstream audio leg remained unpaused during keypad entry; offline policy state machine pausing ASR/LLM upstream and diverting RFC 4733 DTMF digits to edge PCI vault (<1ms policy check).",
+          clampedInbandDtmfToneBleedDb,
+          clampedRawPanDigitsExposedToLlm,
+        };
+      }
+
+      if (
+        context.inbandDtmfToneBleedDb > -65 ||
+        context.rawPanDigitsExposedToLlm > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_inband_dtmf_tone_suppression_and_zero_llm_pan_exposure",
+          reason:
+            "In-band DTMF tone bleed (>-65 dBFS) or raw PAN digits exposed to LLM (>0) out of PCI SAQ-A bounds; clamping tone bleed ceiling to <=-65 dBFS and LLM PAN digit exposure to 0 (token-only).",
+          clampedInbandDtmfToneBleedDb,
+          clampedRawPanDigitsExposedToLlm,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "PCI-DSS v4.0 SAQ-A RFC 4733 edge DTMF intercept, ASR/LLM upstream pause, tone bleed suppression (<=-65 dBFS), and 0 raw PAN digits to LLM verified.",
+        clampedInbandDtmfToneBleedDb,
+        clampedRawPanDigitsExposedToLlm,
+      };
+    }
+
+    export interface DualStreamSiprecPiiAudioRedactionContext {
+      unredactedAudioPiiFlushedToWormOrTranscriptDesyncDetected: boolean;
+      recordingRingBufferLookaheadMs: number;
+      prePostAcousticMaskPaddingMs: number;
+    }
+
+    export interface DualStreamSiprecPiiAudioRedactionDecision {
+      violated: boolean;
+      policyId: "P726-DUAL-STREAM-SIPREC-REALTIME-RINGBUFFER-AUDIO-BEEP-MASKING-AND-SYNCHRONIZED-TRANSCRIPT-REDACTION-GUARD";
+      action:
+        | "block_unredacted_siprec_flush_and_zero_pcm_ringbuffer_span_in_0ms"
+        | "clamp_siprec_lookahead_ringbuffer_and_acoustic_mask_padding"
+        | "allow";
+      reason: string;
+      clampedRecordingRingBufferLookaheadMs: number;
+      clampedPrePostAcousticMaskPaddingMs: number;
+    }
+
+    export function evaluateDualStreamSiprecPiiAudioRedactionGate(
+      context: DualStreamSiprecPiiAudioRedactionContext,
+    ): DualStreamSiprecPiiAudioRedactionDecision {
+      const policyId =
+        "P726-DUAL-STREAM-SIPREC-REALTIME-RINGBUFFER-AUDIO-BEEP-MASKING-AND-SYNCHRONIZED-TRANSCRIPT-REDACTION-GUARD" as const;
+      const clampedRecordingRingBufferLookaheadMs = Math.min(
+        Math.max(context.recordingRingBufferLookaheadMs, 600),
+        1500,
+      );
+      const clampedPrePostAcousticMaskPaddingMs = Math.min(
+        Math.max(context.prePostAcousticMaskPaddingMs, 150),
+        300,
+      );
+
+      if (context.unredactedAudioPiiFlushedToWormOrTranscriptDesyncDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_unredacted_siprec_flush_and_zero_pcm_ringbuffer_span_in_0ms",
+          reason:
+            "Dual-Stream SIPREC PII Audio Leak Violation: Spoken PII span was about to flush to WORM storage without PCM zeroing/420Hz beep masking or transcript redaction desynchronized from audio; offline policy state machine zeroing delayed RAM ring-buffer PCM span before disk write (<1ms policy check).",
+          clampedRecordingRingBufferLookaheadMs,
+          clampedPrePostAcousticMaskPaddingMs,
+        };
+      }
+
+      if (
+        context.recordingRingBufferLookaheadMs < 600 ||
+        context.prePostAcousticMaskPaddingMs < 150
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_siprec_lookahead_ringbuffer_and_acoustic_mask_padding",
+          reason:
+            "SIPREC lookahead ring-buffer delay (<600ms) or acoustic pre/post mask padding (<150ms) insufficient to catch plosive onset/coda syllables; clamping lookahead buffer to >=600ms and acoustic padding to >=150ms.",
+          clampedRecordingRingBufferLookaheadMs,
+          clampedPrePostAcousticMaskPaddingMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Dual-Stream SIPREC delayed RAM ring-buffer lookahead (>=600ms) and synchronized PCM + transcript PII redaction padding (>=150ms) verified.",
+        clampedRecordingRingBufferLookaheadMs,
+        clampedPrePostAcousticMaskPaddingMs,
+      };
+    }
+
+
 
 
 

@@ -1389,9 +1389,15 @@
       "delta_pts": 0.0
     },
     {
-      "question": "368. [Topic 5: warm-transfer-whisper-handoff-faq] AI-to-Human Warm Transfer Signed CTI Context Packet & Zero-Repeat Lock + Consultative B2BUA One-Way Whisper Channel Isolation (<=-70 dBFS) & Ring-Timeout Fallback Guard (P723 / P724 — Stage 365 · 368-Dimension Milestone)",
+      "question": "368. [Topic 5: warm-transfer-whisper-handoff-faq] AI-to-Human Warm Transfer Signed CTI Context Packet & Zero-Repeat Lock + Consultative B2BUA One-Way Whisper Channel Isolation (<=-70 dBFS) & Ring-Timeout Fallback Guard (P723 / P724 — Stage 365 · 369-Dimension Milestone)",
       "original": "100.0% (<1ms [0ms rounded, synthetic] offline policy block on blind transfer missing a signed Context Packet or prompting human agents to re-ask verified slots + <=45-word screen-pop summary & >=0.95 confirmed slot coverage clamp; live CTI WebSocket push and SIP REFER signaling latency is not_measured)",
       "reversed": "100.0% (<1ms [0ms rounded, synthetic] offline policy mute of AI whisper bleed toward Caller A-Leg [>-70 dBFS] or premature un-ACKed bridge + <=-70 dBFS caller whisper isolation & <=12000ms B-Leg ring timeout clamp with automatic AI re-engagement; live SIP B2BUA dual-leg bridge latency is not_measured)",
+      "delta_pts": 0.0
+    },
+    {
+      "question": "369. [Topic 6: pci-dtmf-dual-stream-redaction-faq] PCI-DSS v4.0 SAQ-A Out-of-Band RFC 4733 DTMF Edge Media Bypass & Zero-LLM-PAN Scope Gate + Dual-Stream SIPREC Lookahead Ring-Buffer (>=600ms) & Pre/Post Coarticulation Moat (>=150ms) Audio Redaction Guard (P725 / P726 — Stage 366 · 369-Dimension Milestone)",
+      "original": "100.0% (<1ms [0ms rounded, synthetic] offline policy pause of upstream ASR/LLM audio during payment and block on spoken PAN capture + <=-65 dBFS in-band DTMF tone bleed & 0 raw PAN digits exposed to LLM clamp [token-only]; live SBC RTP stripping and PCI Vault tokenization round-trip latency is not_measured)",
+      "reversed": "100.0% (<1ms [0ms rounded, synthetic] offline policy block on unredacted PII audio flushing to WORM storage or audio/transcript redaction desync + >=600ms SIPREC RAM lookahead ring buffer [0ms added to live AI stream] & >=150ms pre/post acoustic mask padding clamp; live WORM disk flush latency is not_measured)",
       "delta_pts": 0.0
     }
   ],
