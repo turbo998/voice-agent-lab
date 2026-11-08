@@ -198,7 +198,7 @@ sequenceDiagram
 
 > 📊 **数据分类与溯源说明（Provenance & Measurement Scope）**：
 > - **方案对比基准数据（`anonymized_reported` / `synthetic`, `independently_reproduced=false`）**：下表中的弱网延迟、断流率、外放回声自打断率与序列号识别率源自匿名化行业报告与合成弱网仿真模型（`anonymized_reported` / `synthetic`），**并非本仓库在真实运营商现网的独立实测值（现网端到端指标记为 `not_measured`）**。
-> - **护栏判定耗时口径（`synthetic` 离线策略状态机）**：表中 `<1ms`（在 `1ms` 计时分辨率下四舍五入显示为 `0ms`）仅代表 `P717`–`P718` **内存级纯函数策略状态机的离线判定耗时**，而非真实生产网关切换耗时。
+> - **护栏判定耗时口径（`synthetic` 离线策略状态机）**：表中 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（名义 `1ms` 显示分辨率下报告为 `0ms`；实际耗时未解析/未实测；不建立 sub-1ms 物理上界）仅代表 `P717`–`P718` **内存级纯函数策略状态机的离线判定耗时**，而非真实生产网关切换耗时。
 
 | 评测指标（3% 弱网丢包 + 手机外放场景 · Provenance: `anonymized_reported` / `synthetic`, `independently_reproduced=false`） | 客户端裸 WebSocket (无端侧 AEC/自定义缓冲) | 裸 SIP Trunk (8kHz 线性插值无抗混叠滤波) | **WebRTC + SIP 统一边缘网关目标架构 (`Stage 362 P717/P718`)** | 工程收益与客户价值解读 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -207,7 +207,7 @@ sequenceDiagram
 | **手机外放回声自我打断率 (Echo Self-Barge-in)** | `41.5%`（未集成端侧 AEC 时） | `1.8%` | **`0.2%`**（WebRTC AEC3 + 残余回声护栏） | 免戴耳机开手机免提也能自然对话（若用 WS 则须自建端侧系统 AEC） |
 | **含 `S/F/SH` 序列号/车牌首轮识别率** | `89.4%` | `78.5%`（>4kHz 丢失 + 镜像混叠污染） | **`98.4%`**（P718 带限抗混叠滤波 + RFC 4733 DTMF/拼读确认） | 滤除混叠伪影并配合带外 DTMF/双字词确认，弥补 8kHz 高频物理缺失 |
 | **10 万分钟/月 综合通信通道成本估算 (Telecom TCO)** | `$420 / 月`（未压缩带宽） | `$2,400 / 月`（全量走运营商分钟费） | **`$680 / 月`**（75% 数字流量分流至 WebRTC + 25% SIP 热线） | 引导 App/公众号用户走 WebRTC 语音，**每月估算节省 $1,720（-71.7%）话费** |
-| **Stage 362 离线策略护栏 (`P717`–`P718`) 探针通过率** | 无护栏 | 无护栏 | **`736/736` 合成探针通过 (`synthetic`)** | `<1ms`（`0ms` 四舍五入）离线策略状态机拦截弱网裸 WS 与无滤波混叠配置 |
+| **Stage 362 离线策略护栏 (`P717`–`P718`) 探针通过率** | 无护栏 | 无护栏 | **`736/736` 合成探针通过 (`synthetic`)** | `0ms`（名义 `1ms` 分辨率观测值，真实耗时未解析 `not_measured`）离线策略状态机拦截弱网裸 WS 与无滤波混叠配置 |
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **专题定位（Round 3A 单一决策主题）**：聚焦企业级 Voice Agent 的**只读知识检索（Read-Only Voice RAG）架构选型**——何时使用句尾串行检索，何时启用流式 Partial ASR 投机预检索，以及如何通过口语微切片（Voice Micro-Chunking）与句尾提交前语义等价核验（`P719`）兼顾低延迟与防答非所问。  
 > **姐妹篇导航（写操作工具并发与打断回滚）**：涉及修改外部系统状态的异步工具取消、`turnEpoch` 写栅栏与 Saga 补偿回滚，请查阅独立专题 [`docs/voice-tool-epoch-fence-faq.md`](./voice-tool-epoch-fence-faq.md)。  
-> **数据口径声明**：文内行业检索延迟与成本区间为 `anonymized_reported`（`independently_reproduced=false`）；`P719` 护栏的 `<1ms`（本机计时分辨率 `1ms` 下四舍五入记为 `0ms`）特指**离线内存策略状态机（`synthetic`）**判定耗时，**未在本地单元测试中实测（`not_measured`）真实生产向量数据库重检索网络往返耗时（生产工程预算通常 `35ms–120ms`）**。
+> **数据口径声明**：文内行业检索延迟与成本区间为 `anonymized_reported`（`independently_reproduced=false`）；`P719` 护栏的 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（名义 `1ms` 显示分辨率下报告为 `0ms`；实际耗时未解析/未实测；不建立 sub-1ms 物理上界）特指**离线内存策略状态机（`synthetic`）**判定耗时，**未在本地单元测试中实测（`not_measured`）真实生产向量数据库重检索网络往返耗时（生产工程预算通常 `35ms–120ms`）**。
 
 ---
 
@@ -14,7 +14,7 @@
 2. **为什么把网页聊天的文本 RAG 直接照搬到电话语音里会显得“又慢又啰嗦”？**
    - 网页文本 RAG 习惯一次性注入 `5` 个各 `500–800 Tokens` 的长文档切片（合计 `2,500+ Tokens`）。在实时语音通话中，过长的上下文会显著拉高大模型首字预填充（Prefill TTFA）耗时，且生成书面化长难句让听众抓不住重点。语音 RAG 应执行**口语微切片预算（Voice Micro-Chunking，`P719` 护栏：单切片 `<= 120 Tokens`，总注入 `<= 360 Tokens`）**，入库时即提炼口语化结论摘要。
 3. **投机式预检索的核心安全护栏（句尾提交前语义等价核验 `P719`）**：
-   - 人类口语常在最后半秒发生**句尾反转或实体改口**（例如前半句说“帮我查一下退票手续费……”，最后半秒改口“……算了先看改签明天的规则”）。因此，Partial ASR 阶段预取的缓存**绝不能盲目直接注入生成**，必须在确认句尾（Final EOU）后由 `P719` 校验预取查询与完整句尾查询的语义余弦相似度（`similarity >= 0.88` 且无否定词/实体翻转）——离线策略状态机在 `<1ms`（`1ms` 计时分辨率记 `0ms`，`synthetic`）内判定失效缓存驱逐并回退至基于完整句尾的实时重检索（注：真实生产向量库重检索耗时本地单测 `not_measured`）。
+   - 人类口语常在最后半秒发生**句尾反转或实体改口**（例如前半句说“帮我查一下退票手续费……”，最后半秒改口“……算了先看改签明天的规则”）。因此，Partial ASR 阶段预取的缓存**绝不能盲目直接注入生成**，必须在确认句尾（Final EOU）后由 `P719` 校验预取查询与完整句尾查询的语义余弦相似度（`similarity >= 0.88` 且无否定词/实体翻转）——离线策略状态机在 `0ms reported at nominal 1ms display resolution`（实际耗时未解析 `not_measured`，不建立 sub-1ms 上界，`synthetic`）内判定失效缓存驱逐并回退至基于完整句尾的实时重检索（注：真实生产向量库重检索耗时本地单测 `not_measured`）。
 
 ---
 
@@ -40,7 +40,7 @@
     1. **只读隔离铁律**：在 `P719` 护栏中，投机阶段**严禁触发任何改变外部状态的写操作工具**，仅允许执行幂等只读向量/全文检索。
     2. **句尾双向量等价核验**：当双层语义判停（`P716`）发出 `Final EOU` 信号时，网关计算投机预取查询 `q_spec` 与最终完整句查询 `q_final` 的语义嵌入余弦相似度 `cos(q_spec, q_final)`，同时扫描是否出现极性反转词（“算了/不对/改成/不要”）：
        - **命中有效预热（`cos >= 0.88` 且无反转）**：直接复用内存预热切片，实现句尾零检索等待；
-       - **命中句尾改口（`cos < 0.88` 或检测到否定反转）**：`P719` 离线策略状态机在 `<1ms`（本机计时分辨率 `1ms`，`synthetic`）内判定驱逐旧缓存，自动回退（Fallback）为使用 `q_final` 发起干净的实时检索（真实生产数据库重查耗时约 `35ms–120ms`，本地单测 `not_measured`），宁可多花几十毫秒重查，也绝不拿错知识回答客户。
+       - **命中句尾改口（`cos < 0.88` 或检测到否定反转）**：`P719` 离线策略状态机在 `0ms reported at nominal 1ms display resolution`（实际耗时未解析 `not_measured`，不建立 sub-1ms 上界，`synthetic`）内判定驱逐旧缓存，自动回退（Fallback）为使用 `q_final` 发起干净的实时检索（真实生产数据库重查耗时约 `35ms–120ms`，本地单测 `not_measured`），宁可多花几十毫秒重查，也绝不拿错知识回答客户。
 
 ---
 
@@ -68,7 +68,7 @@ flowchart TD
     Q1 -- "中大型企业知识库 (百条~百万级条款)\n混合向量+Rerank 耗时 180ms~600ms" --> Q2{"客户提问句式特征？"}
 
     Q2 -- "超短单词指令 (如仅说“查余额”)" --> SerialMicro["🟡 方案 B：句尾串行检索 + 口语微切片\n• 单切片 <= 120 Tokens / 总注入 <= 360 Tokens\n• 配合 350ms 礼貌前导语掩盖等待"]
-    Q2 -- "自然长句咨询 (平均句长 > 1.5 秒)" --> SpecRAG["🚀 方案 C：投机式只读预检索 (Speculative Voice RAG · P719)\n• Partial ASR 60%~80% 阶段异步预热 Top-3 微切片\n• Final EOU 提交前强制校验语义等价 cos >= 0.88\n• 句尾改口 <1ms 策略驱逐旧缓存并安全回退重查"]
+    Q2 -- "自然长句咨询 (平均句长 > 1.5 秒)" --> SpecRAG["🚀 方案 C：投机式只读预检索 (Speculative Voice RAG · P719)\n• Partial ASR 60%~80% 阶段异步预热 Top-3 微切片\n• Final EOU 提交前强制校验语义等价 cos >= 0.88\n• 句尾改口 离线策略 (0ms@1ms res.) 驱逐旧缓存并安全回退重查"]
 ```
 
 ### 3.2 传统句尾串行长切片 RAG vs. 投机式微切片 + 句尾核验 RAG 对比图（`flowchart LR`）
@@ -85,7 +85,7 @@ flowchart LR
     subgraph Modern["✅ 投机式只读语音 RAG + 口语微切片管线（Stage 363 P719）"]
         direction LR
         M1["客户说到前半句主干\n(Partial ASR 流)"] --> M2["后台异步预检索 Top-3\n口语微切片 (<=120 Tokens/块)"]
-        M2 --> M3["Final EOU 语义等价核验 (P719)\n• cos >= 0.88：直接复用预热缓存\n• 句尾改口 (<0.88)：<1ms 策略驱逐并重查"]
+        M2 --> M3["Final EOU 语义等价核验 (P719)\n• cos >= 0.88：直接复用预热缓存\n• 句尾改口 (<0.88)：离线策略 (0ms@1ms res.) 驱逐并重查"]
         M3 --> M4["🎯 生产预期效果：\n句尾检索等待重叠隐藏\n口语回答干脆自然"]
     end
 ```
@@ -108,14 +108,14 @@ sequenceDiagram
     VectorDB-->>Guard: 返回 Top-3 口语微切片 (共 280 Tokens <= 360 预算) 存入短期缓存
     User->>ASR: 🗣️ “……每年可以免费进几次？” (t = 1,200ms 触发 Final EOU)
     ASR->>Guard: 提交完整句 q_final
-    Guard->>Guard: P719 离线策略核验 (<1ms synthetic)：cos(q_spec, q_final) = 0.93 (>=0.88)
+    Guard->>Guard: P719 离线策略核验 (0ms@1ms res. synthetic)：cos(q_spec, q_final) = 0.93 (>=0.88)
     Guard->>LLM: 立即注入已预热的 280 Tokens 微切片 (句尾额外检索等待 ~0ms)
 
     Note over User,LLM: 情况 B：客户句尾最后半秒改口反转，P719 驱逐脏缓存防答非所问
     User->>ASR: 🗣️ “帮我查一下白金卡退卡年费……” (t = 550ms，触发退卡预取)
     User->>ASR: 🗣️ “……不对算了，帮我查积分换里程比例！” (t = 1,300ms 触发 Final EOU)
     ASR->>Guard: 检测到句尾改口：cos(q_spec, q_final) = 0.52 (<0.88)
-    Guard->>Guard: P719 离线策略状态机 (<1ms synthetic) 驱逐“退卡年费”失效缓存
+    Guard->>Guard: P719 离线策略状态机 (0ms@1ms res. synthetic) 驱逐“退卡年费”失效缓存
     Guard->>VectorDB: 安全回退：按完整句“积分换里程比例”发起新检索 (真实重查耗时 35~120ms)
     VectorDB-->>LLM: 注入准确的“积分换里程”微切片并播报
 ```
@@ -140,9 +140,9 @@ sequenceDiagram
 
 | 测试场景 / 探针 ID | 传统无防护/照搬网页 RAG 表现 | Stage 363 (`P719`) 防御管线表现 | 数据分类与工程说明 |
 | :--- | :--- | :--- | :--- |
-| **客户句尾最后半秒改口反转 (`cos=0.52 < 0.88`)** | 盲目注入前半句预取的旧条款切片，导致 AI 答非所问 | **`P719` 离线策略状态机在 `<1ms`（`1ms` 计时分辨率记 `0ms`，`synthetic`）内阻断旧缓存注入并触发回退重检索** | 兼顾投机预热的低延迟与句尾改口时的准确性（真实向量库重查耗时本地单测 `not_measured`） |
-| **上游检索器返回 `165 Tokens/块`、总计 `420 Tokens` 的超长文本段落** | 拉高实时语音 LLM 首字 TTFA 并引发书面语朗读 | **`P719` 离线策略状态机在 `<1ms`（`synthetic`）内将切片预算钳位至 `<= 120 Tokens/块`、总计 `<= 360 Tokens`** | 保护实时语音流的首字响应速度与口语简洁度 |
-| **Partial ASR 阶段误尝试触发写状态工具** | 客户话没说完就发起改单请求 | **`P719` 强制只读隔离：投机阶段 `<1ms`（`synthetic`）拦截一切写状态工具调用** | 严守“投机只读、落槌才写”架构边界 |
+| **客户句尾最后半秒改口反转 (`cos=0.52 < 0.88`)** | 盲目注入前半句预取的旧条款切片，导致 AI 答非所问 | **`P719` 离线策略状态机在 `0ms reported at nominal 1ms display resolution`（实际耗时未解析 `not_measured`，不建立 sub-1ms 上界，`synthetic`）内阻断旧缓存注入并触发回退重检索** | 兼顾投机预热的低延迟与句尾改口时的准确性（真实向量库重查耗时本地单测 `not_measured`） |
+| **上游检索器返回 `165 Tokens/块`、总计 `420 Tokens` 的超长文本段落** | 拉高实时语音 LLM 首字 TTFA 并引发书面语朗读 | **`P719` 离线策略状态机在 `0ms`（名义 `1ms` 分辨率观测读数，实际耗时未解析 `not_measured`，不建立 sub-1ms 上界，`synthetic`）内将切片预算钳位至 `<= 120 Tokens/块`、总计 `<= 360 Tokens`** | 保护实时语音流的首字响应速度与口语简洁度 |
+| **Partial ASR 阶段误尝试触发写状态工具** | 客户话没说完就发起改单请求 | **`P719` 强制只读隔离：投机阶段 `0ms`（名义 `1ms` 分辨率观测读数，实际耗时未解析 `not_measured`，不建立 sub-1ms 上界，`synthetic`）拦截一切写状态工具调用** | 严守“投机只读、落槌才写”架构边界 |
 
 ---
 

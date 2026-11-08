@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-08 单专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715/P716) · WebRTC vs WS vs SIP 8kHz 带限重采样 (P717/P718) · 只读投机语音 RAG [专题3A: P719] · 异步工具纪元写栅栏 [专题3B: P720] · 免提非线性回声与主叫声纹锁 [专题4: P721/P722] · 热转接 CTI 签名屏弹与单向耳语隔离 [专题5: P723/P724] · PCI 按键采集旁路缩减暴露 [专题6A: P725] · SIPREC 录音双流消音与 Fail-Closed 隔离 [专题6B: P726] · 智能外呼并行 AMD 与 TCPA 安全港门禁 [专题7: P727/P728] (Stage 367 · P705–P728)",
-    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略/配置状态机（计时分辨率 1ms，四舍五入 0ms 仅代表落在 [0ms, 1ms) 舍入桶内的离线配置检查，不能证明真实媒体/DSP 执行耗时 <1ms 或构成法规认证；真实生产网络/向量库/Saga/DSP/SIP/PCI 金库/WORM/外呼信令耗时未在此本地沙盒实测 not_measured）对 P715–P728 核心语音架构护栏的规则判定：",
+    simTitle: "🧪 2026-11-08 单专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715/P716) · WebRTC vs WS vs SIP 8kHz 带限重采样 (P717/P718) · 只读投机语音 RAG [专题3A: P719] · 异步工具纪元写栅栏 [专题3B: P720] · 免提非线性回声与主叫声纹锁 [专题4: P721/P722] · 热转接 CTI 签名屏弹与单向耳语隔离 [专题5: P723/P724] · PCI 按键采集旁路缩减暴露 [专题6A: P725] · SIPREC 录音双流消音与 Fail-Closed 隔离 [专题6B: P726] · 智能外呼并行 AMD 与 TCPA 安全港门禁 [专题7: P727/P728] · 字母数字混排实体消歧与 SSML 分块复诵 [专题8: P729/P730] (Stage 368 · P705–P730)",
+    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略/配置状态机（计时口径：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实生产网络/向量库/Saga/DSP/SIP/PCI 金库/WORM/外呼信令/ASR 解码/TTS 渲染耗时未在此本地沙盒实测 not_measured）对 P715–P730 核心语音架构护栏的规则判定：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-08 單專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715/P716) · WebRTC vs WS vs SIP 8kHz 帶限重採樣 (P717/P718) · 唯讀投機語音 RAG [專題3A: P719] · 非同步工具紀元寫柵欄 [專題3B: P720] · 免持非線性回聲與主叫聲紋鎖 [專題4: P721/P722] · 熱轉接 CTI 簽名屏彈與單向耳語隔離 [專題5: P723/P724] · PCI 按鍵採集旁路縮減暴露 [專題6A: P725] · SIPREC 錄音雙流消音與 Fail-Closed 隔離 [專題6B: P726] · 智能外呼並行 AMD 與 TCPA 安全港門禁 [專題7: P727/P728] (Stage 367 · P705–P728)",
-    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略/配置狀態機（計時解析度 1ms，四捨五入 0ms 僅代表落在 [0ms, 1ms) 捨入桶內的離線配置檢查，不能證明真實媒體/DSP 執行耗時 <1ms 或構成法規認證；真實生產網路/向量庫/Saga/DSP/SIP/PCI 金庫/WORM/外呼信令耗時未在此本地沙盒實測 not_measured）對 P715–P728 核心語音架構護欄的規則判定：",
+    simTitle: "🧪 2026-11-08 單專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715/P716) · WebRTC vs WS vs SIP 8kHz 帶限重採樣 (P717/P718) · 唯讀投機語音 RAG [專題3A: P719] · 非同步工具紀元寫柵欄 [專題3B: P720] · 免持非線性回聲與主叫聲紋鎖 [專題4: P721/P722] · 熱轉接 CTI 簽名屏彈與單向耳語隔離 [專題5: P723/P724] · PCI 按鍵採集旁路縮減暴露 [專題6A: P725] · SIPREC 錄音雙流消音與 Fail-Closed 隔離 [專題6B: P726] · 智能外呼並行 AMD 與 TCPA 安全港門禁 [專題7: P727/P728] · 字母數字混排實體消歧與 SSML 分塊複誦 [專題8: P729/P730] (Stage 368 · P705–P730)",
+    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略/配置狀態機（計時口徑：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實生產網路/向量庫/Saga/DSP/SIP/PCI 金庫/WORM/外呼信令/ASR 解碼/TTS 渲染耗時未在此本地沙盒實測 not_measured）對 P715–P730 核心語音架構護欄的規則判定：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-08 Single-Topic Architect FAQ Policy Sandbox: Cascaded vs. S2S (P715/P716) · WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718) · Read-Only Speculative Voice RAG [Topic 3A: P719] · Async Tool Epoch Write Fence [Topic 3B: P720] · Nonlinear Echo & TSE Crosstalk Lock [Topic 4: P721/P722] · Warm-Transfer Signed Screen-Pop & One-Way Whisper Isolation [Topic 5: P723/P724] · PCI DTMF Bypass Scope-Reduction [Topic 6A: P725] · SIPREC Archival Redaction & Fail-Closed Quarantine [Topic 6B: P726] · Outbound Parallel AMD & TCPA Safe-Harbor Gate [Topic 7: P727/P728] (Stage 367 · P705–P728)",
-    simSub: "Click any synthetic probe below to inspect offline in-memory policy/configuration state-machine checks (0ms reading at 1ms clock resolution only indicates the [0ms, 1ms) rounding bucket, not proof of <1ms live media/DSP execution or regulatory certification; live network/vector DB/Saga/DSP/SIP/PCI Vault/WORM/carrier signaling latency is not_measured in this local sandbox) across P715–P728:",
+    simTitle: "🧪 2026-11-08 Single-Topic Architect FAQ Policy Sandbox: Cascaded vs. S2S (P715/P716) · WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718) · Read-Only Speculative Voice RAG [Topic 3A: P719] · Async Tool Epoch Write Fence [Topic 3B: P720] · Nonlinear Echo & TSE Crosstalk Lock [Topic 4: P721/P722] · Warm-Transfer Signed Screen-Pop & One-Way Whisper Isolation [Topic 5: P723/P724] · PCI DTMF Bypass Scope-Reduction [Topic 6A: P725] · SIPREC Archival Redaction & Fail-Closed Quarantine [Topic 6B: P726] · Outbound Parallel AMD & TCPA Safe-Harbor Gate [Topic 7: P727/P728] · Alphanumeric Disambiguation & SSML Phonetic Readback [Topic 8: P729/P730] (Stage 368 · P705–P730)",
+    simSub: "Click any synthetic probe below to inspect offline in-memory policy/configuration state-machine checks (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live network/vector DB/Saga/DSP/SIP/PCI Vault/WORM/carrier signaling/ASR/TTS latency is not_measured in this local sandbox) across P715–P730:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 367 P727/P728 · 370维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 368 P729/P730 · 371维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "9 篇独立单专题语音架构选型 FAQ（级联/S2S · WebRTC/WS/SIP · 只读投机 RAG · 异步写工具栅栏 · 免提防自断与防串音 · 热转接与单向耳语 · PCI 按键采集旁路 [6A] · SIPREC 录音双流消音 [6B] · 智能外呼并行 AMD 与 TCPA 安全港 [7]）",
-      desc: "单专题独立指南：① 级联 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重采样 (P717/P718)；③ 只读投机语音 RAG (speculative-voice-rag-faq.md · P719)；④ 异步工具纪元写栅栏与 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免提非线性回声门禁与主叫声纹防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人机协同转接 CTI 签名屏弹与双腿协商单向耳语 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 电话支付按键采集旁路与 PCI 范围评估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 录音流环形缓冲消音与 Fail-Closed 隔离 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼并行流式 AMD 与 TCPA 双时区安全港门禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)。",
+      title: "10 篇独立单专题语音架构选型 FAQ（级联/S2S · WebRTC/WS/SIP · 只读投机 RAG · 异步写工具栅栏 · 免提防自断与防串音 · 热转接与单向耳语 · PCI 按键采集旁路 [6A] · SIPREC 录音双流消音 [6B] · 智能外呼并行 AMD 与 TCPA 安全港 [7] · 字母数字混排消歧与 SSML 分块复诵 [8]）",
+      desc: "单专题独立指南：① 级联 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重采样 (P717/P718)；③ 只读投机语音 RAG (speculative-voice-rag-faq.md · P719)；④ 异步工具纪元写栅栏与 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免提非线性回声门禁与主叫声纹防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人机协同转接 CTI 签名屏弹与双腿协商单向耳语 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 电话支付按键采集旁路与 PCI 范围评估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 录音流环形缓冲消音与 Fail-Closed 隔离 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼并行流式 AMD 与 TCPA 双时区安全港门禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母数字混排实体消歧与 SSML 分块复诵确认 (voice-alphanumeric-disambiguation-faq.md · P729/P730)。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 367 P727/P728 · 370維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 368 P729/P730 · 371維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "9 篇獨立單專題語音架構選型 FAQ（級聯/S2S · WebRTC/WS/SIP · 唯讀投機 RAG · 非同步寫工具柵欄 · 免持防自斷與防串音 · 熱轉接與單向耳語 · PCI 按鍵採集旁路 [6A] · SIPREC 錄音雙流消音 [6B] · 智能外呼並行 AMD 與 TCPA 安全港 [7]）",
-      desc: "單專題獨立指南：① 級聯 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重採樣 (P717/P718)；③ 唯讀投機語音 RAG (speculative-voice-rag-faq.md · P719)；④ 非同步工具紀元寫柵欄與 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免持非線性回聲門禁與主叫聲紋防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人機協同轉接 CTI 簽名屏彈與雙腿協商單向耳語 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 電話支付按鍵採集旁路與 PCI 範圍評估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 錄音流環形緩衝消音與 Fail-Closed 隔離 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼並行流式 AMD 與 TCPA 雙時區安全港門禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)。",
+      title: "10 篇獨立單專題語音架構選型 FAQ（級聯/S2S · WebRTC/WS/SIP · 唯讀投機 RAG · 非同步寫工具柵欄 · 免持防自斷與防串音 · 熱轉接與單向耳語 · PCI 按鍵採集旁路 [6A] · SIPREC 錄音雙流消音 [6B] · 智能外呼並行 AMD 與 TCPA 安全港 [7] · 字母數字混排消歧與 SSML 分塊複誦 [8]）",
+      desc: "單專題獨立指南：① 級聯 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重採樣 (P717/P718)；③ 唯讀投機語音 RAG (speculative-voice-rag-faq.md · P719)；④ 非同步工具紀元寫柵欄與 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免持非線性回聲門禁與主叫聲紋防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人機協同轉接 CTI 簽名屏彈與雙腿協商單向耳語 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 電話支付按鍵採集旁路與 PCI 範圍評估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 錄音流環形緩衝消音與 Fail-Closed 隔離 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼並行流式 AMD 與 TCPA 雙時區安全港門禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母數字混排實體消歧與 SSML 分塊複誦確認 (voice-alphanumeric-disambiguation-faq.md · P729/P730)。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 367 P727/P728 · 370-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 368 P729/P730 · 371-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "9 Single-Topic Architect Selection FAQs (Cascaded/S2S · WebRTC/WS/SIP · Speculative RAG · Tool Epoch Fence · Barge-in Echo & Crosstalk · Warm Transfer & Whisper · PCI DTMF Bypass [6A] · SIPREC Audio Redaction [6B] · Outbound Parallel AMD & TCPA Safe-Harbor [7])",
-      desc: "Standalone single-topic guides: (1) Cascaded vs. S2S (P715/P716); (2) WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718); (3) Read-Only Speculative Voice RAG (speculative-voice-rag-faq.en.md · P719); (4) Async Tool turnEpoch Write Fence & Saga (voice-tool-epoch-fence-faq.en.md · P720); (5) Nonlinear Echo & TSE Crosstalk Lock (barge-in-echo-crosstalk-faq.en.md · P721/P722); (6) Warm Transfer Signed Context Packet & Consultative Whisper Handoff (warm-transfer-whisper-handoff-faq.en.md · P723/P724); (7) Telephone Payment DTMF Bypass & PCI Scope Boundaries (voice-pci-dtmf-scope-faq.en.md · P725); (8) SIPREC Archival Ring-Buffer Redaction & Fail-Closed Quarantine (siprec-pii-audio-redaction-faq.en.md · P726); (9) Outbound Parallel Streaming AMD & TCPA Dual-Timezone Safe-Harbor Gate (outbound-amd-voicemail-tcpa-faq.en.md · P727/P728).",
+      title: "10 Single-Topic Architect Selection FAQs (Cascaded/S2S · WebRTC/WS/SIP · Speculative RAG · Tool Epoch Fence · Barge-in Echo & Crosstalk · Warm Transfer & Whisper · PCI DTMF Bypass [6A] · SIPREC Audio Redaction [6B] · Outbound Parallel AMD & TCPA Safe-Harbor [7] · Alphanumeric Disambiguation & SSML Readback [8])",
+      desc: "Standalone single-topic guides: (1) Cascaded vs. S2S (P715/P716); (2) WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718); (3) Read-Only Speculative Voice RAG (speculative-voice-rag-faq.en.md · P719); (4) Async Tool turnEpoch Write Fence & Saga (voice-tool-epoch-fence-faq.en.md · P720); (5) Nonlinear Echo & TSE Crosstalk Lock (barge-in-echo-crosstalk-faq.en.md · P721/P722); (6) Warm Transfer Signed Context Packet & Consultative Whisper Handoff (warm-transfer-whisper-handoff-faq.en.md · P723/P724); (7) Telephone Payment DTMF Bypass & PCI Scope Boundaries (voice-pci-dtmf-scope-faq.en.md · P725); (8) SIPREC Archival Ring-Buffer Redaction & Fail-Closed Quarantine (siprec-pii-audio-redaction-faq.en.md · P726); (9) Outbound Parallel Streaming AMD & TCPA Dual-Timezone Safe-Harbor Gate (outbound-amd-voicemail-tcpa-faq.en.md · P727/P728); (10) Alphanumeric Entity Disambiguation & SSML Chunked Phonetic Readback (voice-alphanumeric-disambiguation-faq.en.md · P729/P730).",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,67 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p727_outbound_parallel_amd_optimistic_greeting";
+let currentDuplexSimId = "p729_alphanumeric_acoustic_disambiguation";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p729_alphanumeric_acoustic_disambiguation",
+    label: {
+      "zh-CN": "🔥 [专题8 · voice-alphanumeric-disambiguation-faq] P729 · 字母数字混排声学易混音消歧 + 槽位正则与校验位门禁 (12–18dB)",
+      "zh-TW": "🔥 [專題8 · voice-alphanumeric-disambiguation-faq] P729 · 字母數字混排聲學易混音消歧 + 槽位正則與校驗位門禁 (12–18dB)",
+      en: "🔥 [Topic 8 · voice-alphanumeric-disambiguation-faq] P729 · Alphanumeric Confusable Disambiguation & Checksum Gate"
+    },
+    inputJson: `{
+  "topicGuide": "docs/voice-alphanumeric-disambiguation-faq.md (.en.md)",
+  "policyId": "P729-VOICE-ALPHANUMERIC-ACOUSTIC-CONFUSABLE-DISAMBIGUATION-GRAMMAR-SLOT-AND-CHECKSUM-VERIFICATION-GUARD",
+  "acousticConfusableMismatchOrChecksumFailureDetected": true,
+  "dynamicPhraseBoostDb": 4,
+  "confusableSlotConfidenceThreshold": 0.62
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
+  "liveAsrPhonemeDecoderAndMultiModalPushLatency": "not_measured in local unit test (production budget 120-260ms)",
+  "action": "block_unverified_alphanumeric_commit_and_prompt_targeted_slot_repair_in_0ms",
+  "clampedDynamicPhraseBoostDb": 12,
+  "clampedConfusableSlotConfidenceThreshold": 0.88,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题8：字母数字混排消歧与 SSML 分块复诵 · docs/voice-alphanumeric-disambiguation-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实 ASR 音素解码与多模态卡片推送耗时 not_measured）：拦截 B/D/P/T/V 或 M/N 电话窄带爆破音混淆、O/0 与 I/1 跨位串位及 Mod-10/ISO-3779 校验位失败，自动将 ASR 动态短语增益钳制在 12–18 dB、易混音置信度阈值钳制在 >=0.88，并触发单槽位靶向重问。",
+      "zh-TW": "✅ [專題8：字母數字混排消歧與 SSML 分塊複誦 · docs/voice-alphanumeric-disambiguation-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實 ASR 音素解碼與多模態卡片推送耗時 not_measured）：攔截 B/D/P/T/V 或 M/N 電話窄帶爆破音混淆、O/0 與 I/1 跨位串位及 Mod-10/ISO-3779 校驗位失敗，自動將 ASR 動態短語增益鉗制在 12–18 dB、易混音置信度閾值鉗制在 >=0.88，並觸發單槽位靶向重問。",
+      en: "✅ [Topic 8: Alphanumeric Disambiguation & SSML Readback · docs/voice-alphanumeric-disambiguation-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live ASR phoneme decoding latency not_measured locally): Blocks E-Set/nasal confusable ambiguity, O/0 or I/1 slot type errors, and Mod-10/ISO-3779 checksum failures, clamping ASR phrase boost to 12–18 dB and slot confidence threshold to >=0.88."
+    }
+  },
+  {
+    id: "p730_ssml_chunked_phonetic_readback",
+    label: {
+      "zh-CN": "🔥 [专题8 · voice-alphanumeric-disambiguation-faq] P730 · SSML 3–4 位分块停顿 (250–400ms) + 易混音释义复诵确认门禁",
+      "zh-TW": "🔥 [專題8 · voice-alphanumeric-disambiguation-faq] P730 · SSML 3–4 位分塊停頓 (250–400ms) + 易混音釋義複誦確認門禁",
+      en: "🔥 [Topic 8 · voice-alphanumeric-disambiguation-faq] P730 · SSML 3–4 Char Chunked Phonetic Readback & Confirmation Gate"
+    },
+    inputJson: `{
+  "topicGuide": "docs/voice-alphanumeric-disambiguation-faq.md (.en.md)",
+  "policyId": "P730-SSML-CHUNKED-PHONETIC-READBACK-AND-TARGETED-SLOT-REPAIR-CONFIRMATION-GUARD",
+  "unstructuredRapidReadbackOrUnconfirmedMutationDetected": true,
+  "readbackChunkSizeChars": 10,
+  "interChunkProsodyBreakMs": 60
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
+  "liveSsmlTtsSynthesisAndAudioStreamLatency": "not_measured in local unit test (production budget 180-320ms)",
+  "action": "enforce_ssml_chunked_phonetic_readback_and_targeted_slot_confirmation_in_0ms",
+  "clampedReadbackChunkSizeChars": 4,
+  "clampedInterChunkProsodyBreakMs": 250,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题8：字母数字混排消歧与 SSML 分块复诵 · docs/voice-alphanumeric-disambiguation-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实 SSML TTS 合成流耗时 not_measured）：拦截将 10–17 位编号一口气连读或未经复诵确认直接改写后端数据库，强制每块 <=4 位字符、块间插入 250–400ms SSML <break> 停顿，并对易混字母自动附加“B 如北京/Bravo”释义复诵。",
+      "zh-TW": "✅ [專題8：字母數字混排消歧與 SSML 分塊複誦 · docs/voice-alphanumeric-disambiguation-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實 SSML TTS 合成流耗時 not_measured）：攔截將 10–17 位編號一口氣連讀或未經複誦確認直接改寫後端資料庫，強制每塊 <=4 位字元、塊間插入 250–400ms SSML <break> 停頓，並對易混字母自動附加「B 如北京/Bravo」釋義複誦。",
+      en: "✅ [Topic 8: Alphanumeric Disambiguation & SSML Readback · docs/voice-alphanumeric-disambiguation-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SSML TTS rendering latency not_measured locally): Blocks unstructured rapid string readback and unconfirmed backend writes, clamping readback chunk size to <=4 chars and SSML inter-chunk prosody breaks to 250–400ms with targeted phonetic expansion."
+    }
+  },
   {
     id: "p727_outbound_parallel_amd_optimistic_greeting",
     label: {
@@ -2210,7 +2268,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalTimerReading": "0ms (falls within 1ms clock-resolution rounding bucket [0ms, 1ms), synthetic)",
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
   "liveCarrierSipAndGoertzelBeepDetectionLatency": "not_measured in local unit test (production beep confirmation 150-300ms)",
   "action": "switch_to_parallel_streaming_amd_with_optimistic_greeting_and_voicemail_beep_reset_in_0ms",
   "clampedOptimisticHumanGreetingOnsetMs": 600,
@@ -2218,9 +2276,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题7：智能外呼并行 AMD 与 TCPA 安全港 · docs/outbound-amd-voicemail-tcpa-faq.md] 离线策略/配置检查（1ms 计时分辨率下读数 0ms 仅代表落在 [0ms, 1ms) 舍入桶，非真实 DSP 耗时；真实运营商 SIP 与 850-1050Hz 嘟声检测窗口未在本地单测实测 not_measured）：拦截串行阻塞式 AMD 造成 >2s 死寂冷场或无 AMD 盲播截断信箱留言，强制在真人说“喂”后 <=600ms 触发乐观微问候，遇语音信箱嘟声立即重置为 <=25s 完整留言脚本。",
-      "zh-TW": "✅ [專題7：智能外呼並行 AMD 與 TCPA 安全港 · docs/outbound-amd-voicemail-tcpa-faq.md] 離線策略/配置檢查（1ms 計時解析度下讀數 0ms 僅代表落在 [0ms, 1ms) 捨入桶，非真實 DSP 耗時；真實電信商 SIP 與 850-1050Hz 嘟聲檢測視窗未在本地單測實測 not_measured）：攔截串行阻塞式 AMD 造成 >2s 死寂冷場或無 AMD 盲播截斷信箱留言，強制在真人說「喂」後 <=600ms 觸發樂觀微問候，遇語音信箱嘟聲立即重置為 <=25s 完整留言腳本。",
-      en: "✅ [Topic 7: Outbound Parallel AMD & TCPA Safe-Harbor · docs/outbound-amd-voicemail-tcpa-faq.en.md] Offline Policy/Config Check (0ms reading at 1ms clock resolution only indicates the [0ms, 1ms) rounding bucket, not live DSP time; carrier SIP & beep detection window not_measured locally): Replaces serial blocking AMD dead air and blind voicemail truncation with <=600ms optimistic human micro-greeting and <=25s post-beep voicemail script reset."
+      "zh-CN": "✅ [专题7：智能外呼并行 AMD 与 TCPA 安全港 · docs/outbound-amd-voicemail-tcpa-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实运营商 SIP 与 850-1050Hz 嘟声检测窗口未在本地单测实测 not_measured）：拦截串行阻塞式 AMD 造成 >2s 死寂冷场或无 AMD 盲播截断信箱留言，强制在真人说“喂”后 <=600ms 触发乐观微问候，遇语音信箱嘟声立即重置为 <=25s 完整留言脚本。",
+      "zh-TW": "✅ [專題7：智能外呼並行 AMD 與 TCPA 安全港 · docs/outbound-amd-voicemail-tcpa-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實電信商 SIP 與 850-1050Hz 嘟聲檢測視窗未在本地單測實測 not_measured）：攔截串行阻塞式 AMD 造成 >2s 死寂冷場或無 AMD 盲播截斷信箱留言，強制在真人說「喂」後 <=600ms 觸發樂觀微問候，遇語音信箱嘟聲立即重置為 <=25s 完整留言腳本。",
+      en: "✅ [Topic 7: Outbound Parallel AMD & TCPA Safe-Harbor · docs/outbound-amd-voicemail-tcpa-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; carrier SIP & beep detection window not_measured locally): Replaces serial blocking AMD dead air and blind voicemail truncation with <=600ms optimistic human micro-greeting and <=25s post-beep voicemail script reset."
     }
   },
   {
@@ -2239,7 +2297,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalTimerReading": "0ms (falls within 1ms clock-resolution rounding bucket [0ms, 1ms), synthetic)",
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
   "liveExternalDncAndFccRndDatabaseRtt": "not_measured in local unit test (production API RTT 40-120ms)",
   "action": "block_noncompliant_outbound_dial_and_enforce_dual_timezone_rnd_dnc_gate_in_0ms",
   "clampedRolling30DayAbandonmentRatePct": 2.5,
@@ -2247,9 +2305,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题7：智能外呼并行 AMD 与 TCPA 安全港 · docs/outbound-amd-voicemail-tcpa-faq.md] 离线策略/配置检查（1ms 计时分辨率下读数 0ms 仅代表落在 [0ms, 1ms) 舍入桶，非真实合规认证；真实外部 DNC/FCC RND API 查询耗时未在本地单测实测 not_measured）：拦截跨时区宵禁越界或跳过 RND/DNC 直接外呼，强制取号段与常住地址最严交集窗口、将 30 天滚动弃呼率钳制在 <=2.5%（低于 3% 阈值）并确保退订响应 <=500ms。",
-      "zh-TW": "✅ [專題7：智能外呼並行 AMD 與 TCPA 安全港 · docs/outbound-amd-voicemail-tcpa-faq.md] 離線策略/配置檢查（1ms 計時解析度下讀數 0ms 僅代表落在 [0ms, 1ms) 捨入桶，非真實合規認證；真實外部 DNC/FCC RND API 查詢耗時未在本地單測實測 not_measured）：攔截跨時區宵禁越界或跳過 RND/DNC 直接外呼，強制取號段與常住地址最嚴交集視窗、將 30 天滾動棄呼率鉗制在 <=2.5%（低於 3% 閾值）並確保退訂響應 <=500ms。",
-      en: "✅ [Topic 7: Outbound Parallel AMD & TCPA Safe-Harbor · docs/outbound-amd-voicemail-tcpa-faq.en.md] Offline Policy/Config Check (0ms reading at 1ms clock resolution only indicates the [0ms, 1ms) rounding bucket, not regulatory certification; live external DNC/FCC RND API RTT not_measured locally): Blocks cross-timezone curfew or unchecked RND/DNC dialing, clamps 30-day rolling abandonment rate to <=2.5%, and enforces <=500ms opt-out response."
+      "zh-CN": "✅ [专题7：智能外呼并行 AMD 与 TCPA 安全港 · docs/outbound-amd-voicemail-tcpa-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实外部 DNC/FCC RND API 查询耗时未在本地单测实测 not_measured）：拦截跨时区宵禁越界或跳过 RND/DNC 直接外呼，强制取号段与常住地址最严交集窗口、将 30 天滚动弃呼率钳制在 <=2.5%（低于 3% 阈值）并确保退订响应 <=500ms。",
+      "zh-TW": "✅ [專題7：智能外呼並行 AMD 與 TCPA 安全港 · docs/outbound-amd-voicemail-tcpa-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實外部 DNC/FCC RND API 查詢耗時未在本地單測實測 not_measured）：攔截跨時區宵禁越界或跳過 RND/DNC 直接外呼，強制取號段與常住地址最嚴交集視窗、將 30 天滾動棄呼率鉗制在 <=2.5%（低於 3% 閾值）並確保退訂響應 <=500ms。",
+      en: "✅ [Topic 7: Outbound Parallel AMD & TCPA Safe-Harbor · docs/outbound-amd-voicemail-tcpa-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live external DNC/FCC RND API RTT not_measured locally): Blocks cross-timezone curfew or unchecked RND/DNC dialing, clamps 30-day rolling abandonment rate to <=2.5%, and enforces <=500ms opt-out response."
     }
   },
   {
@@ -2268,7 +2326,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalTimerReading": "0ms (falls within 1ms clock-resolution rounding bucket [0ms, 1ms), synthetic)",
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
   "liveSbcRtpStripAndPciVaultTokenLatency": "not_measured in local unit test (production budget 120-380ms)",
   "scopeDisclaimer": "Targets reducing downstream LLM CHD exposure; SAQ-A eligibility requires acquirer/QSA verification of full TPSP outsourcing, merchant SBC vs. TPSP AoC, call recording, and fallback paths; edge SBC touching CHD stays in scope; not a compliance certification.",
   "action": "pause_asr_llm_upstream_and_switch_to_rfc4733_edge_dtmf_vault_bypass_in_0ms",
@@ -2277,9 +2335,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题6A：电话支付按键旁路与 PCI 范围界定 · docs/voice-pci-dtmf-scope-faq.md] 离线策略/配置检查（1ms 计时分辨率下四舍五入 0ms 仅代表落在 [0ms, 1ms) 舍入桶，非真实 DSP 执行耗时或合规认证；真实边缘 SBC RTP 剥离与 PCI 金库往返耗时 not_measured）：拦截客户口述卡号直通 ASR/LLM 或付款期未暂停上行音频流，将合成策略参数钳制为 <=-65 dBFS 陷波且暴露给下游 LLM 的明文卡号位数 = 0（目标缩减下游 AI 暴露面；实际接觸 CHD 的边缘 SBC 仍在范围内，最终 SAQ-A/SAQ-D 资格须由收单方/QSA 按实际数据流、TPSP AoC、录音与异常回退核定，授权后严禁存储 CVV 等 SAD 即使加密）。",
-      "zh-TW": "✅ [專題6A：電話支付按鍵旁路與 PCI 範圍界定 · docs/voice-pci-dtmf-scope-faq.md] 離線策略/配置檢查（1ms 計時解析度下四捨五入 0ms 僅代表落在 [0ms, 1ms) 捨入桶，非真實 DSP 執行耗時或合規認證；真實邊緣 SBC RTP 剝離與 PCI 金庫往返耗時 not_measured）：攔截客戶口述卡號直通 ASR/LLM 或付款期未暫停上行音訊流，將合成策略參數鉗制為 <=-65 dBFS 陷波且暴露給下游 LLM 的明文卡號位數 = 0（目標縮減下游 AI 暴露面；實際接觸 CHD 的邊緣 SBC 仍在範圍內，最終 SAQ-A/SAQ-D 資格須由收單方/QSA 按實際資料流、TPSP AoC、錄音與異常回退核定，授權後嚴禁儲存 CVV 等 SAD 即使加密）。",
-      en: "✅ [Topic 6A: Telephone Payment DTMF Bypass & PCI Scope Boundaries · docs/voice-pci-dtmf-scope-faq.en.md] Offline Policy/Config Check (0ms reading at 1ms clock resolution only indicates the [0ms, 1ms) rounding bucket, not live DSP execution or compliance certification; live SBC RTP strip & Token Vault RTT not_measured locally): Pauses upstream ASR/LLM audio during payment, clamps synthetic in-band DTMF bleed parameter to <=-65 dBFS, and sets downstream LLM raw PAN digits to 0 (targets reducing downstream LLM exposure; edge SBC touching CHD stays in scope, SAQ eligibility requires acquirer/QSA verification of TPSP AoC/recording/fallbacks, and post-auth CVV/SAD storage is strictly prohibited even if encrypted)."
+      "zh-CN": "✅ [专题6A：电话支付按键旁路与 PCI 范围界定 · docs/voice-pci-dtmf-scope-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实边缘 SBC RTP 剥离与 PCI 金库往返耗时 not_measured）：拦截客户口述卡号直通 ASR/LLM 或付款期未暂停上行音频流，将合成策略参数钳制为 <=-65 dBFS 陷波且暴露给下游 LLM 的明文卡号位数 = 0（目标缩减下游 AI 暴露面；实际接触 CHD 的边缘 SBC 仍在范围内，最终 SAQ-A/SAQ-D 资格须由收单方/QSA 按实际数据流、TPSP AoC、录音与异常回退核定，授权后严禁存储 CVV 等 SAD 即使加密）。",
+      "zh-TW": "✅ [專題6A：電話支付按鍵旁路與 PCI 範圍界定 · docs/voice-pci-dtmf-scope-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實邊緣 SBC RTP 剝離與 PCI 金庫往返耗時 not_measured）：攔截客戶口述卡號直通 ASR/LLM 或付款期未暫停上行音訊流，將合成策略參數鉗制為 <=-65 dBFS 陷波且暴露給下游 LLM 的明文卡號位數 = 0（目標縮減下游 AI 暴露面；實際接觸 CHD 的邊緣 SBC 仍在範圍內，最終 SAQ-A/SAQ-D 資格須由收單方/QSA 按實際資料流、TPSP AoC、錄音與異常回退核定，授權後嚴禁儲存 CVV 等 SAD 即使加密）。",
+      en: "✅ [Topic 6A: Telephone Payment DTMF Bypass & PCI Scope Boundaries · docs/voice-pci-dtmf-scope-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC RTP strip & Token Vault RTT not_measured locally): Pauses upstream ASR/LLM audio during payment, clamps synthetic in-band DTMF bleed parameter to <=-65 dBFS, and sets downstream LLM raw PAN digits to 0 (targets reducing downstream LLM exposure; edge SBC touching CHD stays in scope, SAQ eligibility requires acquirer/QSA verification of TPSP AoC/recording/fallbacks, and post-auth CVV/SAD storage is strictly prohibited even if encrypted)."
     }
   },
   {
@@ -2298,7 +2356,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalTimerReading": "0ms (falls within 1ms clock-resolution rounding bucket [0ms, 1ms), synthetic)",
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
   "liveWormStorageFlushAndStreamingNerLatency": "not_measured in local unit test (production buffer 600-1500ms)",
   "composableBoundaryAndFailClosedRule": "SIPREC archival redaction does NOT sanitize the 0ms real-time AI stream (requires P725 + real-time LLM abort & volatile context purge on unprompted spoken PAN); if nerLagMs > lookaheadBufferMs or NER misses occur, triggers Fail-Closed quarantine blocking WORM flush.",
   "action": "block_unredacted_siprec_flush_and_zero_pcm_ringbuffer_span_in_0ms",
@@ -2307,9 +2365,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题6B：SIPREC 录音流环形缓冲消音与 Fail-Closed 隔离 · docs/siprec-pii-audio-redaction-faq.md] 离线策略/配置检查（1ms 计时分辨率下四舍五入 0ms 仅代表落在 [0ms, 1ms) 舍入桶，非真实 DSP 耗时；真实流式 NER 与 WORM 写入耗时 not_measured）：将 SIPREC 归档录音流合成策略前瞻缓冲设为 >=600ms 且外扩 >=150ms 声学护城河（工程合成预算而非 PCI 法定常数）；明确只消音 SIPREC 录音不会净化 0ms 实时 AI 对话流（遇客户抢跑口述 PAN 须同步触发实时流 LLM 中断与内存上下文擦除，遇 NER 迟到/漏检强制触发 Fail-Closed 隔离挂起并阻断直写 WORM）。",
-      "zh-TW": "✅ [專題6B：SIPREC 錄音流環形緩衝消音與 Fail-Closed 隔離 · docs/siprec-pii-audio-redaction-faq.md] 離線策略/配置檢查（1ms 計時解析度下四捨五入 0ms 僅代表落在 [0ms, 1ms) 捨入桶，非真實 DSP 耗時；真實流式 NER 與 WORM 寫入耗時 not_measured）：將 SIPREC 歸檔錄音流合成策略前瞻緩衝設為 >=600ms 且外擴 >=150ms 聲學護城河（工程合成預算而非 PCI 法定常數）；明確只消音 SIPREC 錄音不會淨化 0ms 即時 AI 對話流（遇客戶搶跑口述 PAN 須同步觸發即時流 LLM 中斷與記憶體上下文擦除，遇 NER 遲到/漏檢強制觸發 Fail-Closed 隔離掛起並阻斷直寫 WORM）。",
-      en: "✅ [Topic 6B: SIPREC Archival Ring-Buffer Redaction & Fail-Closed Quarantine · docs/siprec-pii-audio-redaction-faq.en.md] Offline Policy/Config Check (0ms reading at 1ms clock resolution only indicates the [0ms, 1ms) rounding bucket, not live DSP execution; live streaming NER & WORM write latency not_measured locally): Sets synthetic SIPREC archival lookahead parameter to >=600ms with >=150ms pre/post moat (engineering synthetic budgets, not PCI statutory constants); explicitly notes that scrubbing SIPREC does NOT sanitize the 0ms real-time AI stream (unprompted spoken PAN requires real-time LLM turn abort + volatile context purge, and NER lag/miss triggers Fail-Closed quarantine blocking WORM flush)."
+      "zh-CN": "✅ [专题6B：SIPREC 录音流环形缓冲消音与 Fail-Closed 隔离 · docs/siprec-pii-audio-redaction-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实流式 NER 与 WORM 写入耗时 not_measured）：将 SIPREC 归档录音流合成策略前瞻缓冲设为 >=600ms 且外扩 >=150ms 声学护城河（工程合成预算而非 PCI 法定常数）；明确只消音 SIPREC 录音不会净化 0ms 实时 AI 对话流（遇客户抢跑口述 PAN 须同步触发实时流 LLM 中断与内存上下文擦除，遇 NER 迟到/漏检强制触发 Fail-Closed 隔离挂起并阻断直写 WORM）。",
+      "zh-TW": "✅ [專題6B：SIPREC 錄音流環形緩衝消音與 Fail-Closed 隔離 · docs/siprec-pii-audio-redaction-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實流式 NER 與 WORM 寫入耗時 not_measured）：將 SIPREC 歸檔錄音流合成策略前瞻緩衝設為 >=600ms 且外擴 >=150ms 聲學護城河（工程合成預算而非 PCI 法定常數）；明確只消音 SIPREC 錄音不會淨化 0ms 即時 AI 對話流（遇客戶搶跑口述 PAN 須同步觸發即時流 LLM 中斷與記憶體上下文擦除，遇 NER 遲到/漏檢強制觸發 Fail-Closed 隔離掛起並阻斷直寫 WORM）。",
+      en: "✅ [Topic 6B: SIPREC Archival Ring-Buffer Redaction & Fail-Closed Quarantine · docs/siprec-pii-audio-redaction-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live streaming NER & WORM write latency not_measured locally): Sets synthetic SIPREC archival lookahead parameter to >=600ms with >=150ms pre/post moat (engineering synthetic budgets, not PCI statutory constants); explicitly notes that scrubbing SIPREC does NOT sanitize the 0ms real-time AI stream (unprompted spoken PAN requires real-time LLM turn abort + volatile context purge, and NER lag/miss triggers Fail-Closed quarantine blocking WORM flush)."
     }
   },
   {
@@ -2328,7 +2386,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded at 1ms resolution, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "liveCtiWebSocketPushAndSipReferLatency": "not_measured in local unit test (production budget 180-320ms)",
   "action": "block_blind_handoff_and_synthesize_signed_context_packet_in_0ms",
   "clampedBriefingSummaryWordCount": 45,
@@ -2336,9 +2394,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题5：人机协同热转接与单向耳语 · docs/warm-transfer-whisper-handoff-faq.md] <1ms 离线策略状态机判定（Synthetic；真实 CTI 桌面推送与 SIP REFER 信令耗时未在本地单测实测 not_measured）：拦截缺失 HMAC 签名 Context Packet 的无状态盲转，自动将交接摘要钳制在 <=45 词（3 秒扫读上限）并锁定已核身槽位覆盖率 >=0.95，杜绝人工坐席重复盘问。",
-      "zh-TW": "✅ [專題5：人機協同熱轉接與單向耳語 · docs/warm-transfer-whisper-handoff-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實 CTI 桌面推送與 SIP REFER 信令耗時未在本地單測實測 not_measured）：攔截缺失 HMAC 簽名 Context Packet 的無狀態盲轉，自動將交接摘要鉗制在 <=45 詞（3 秒掃讀上限）並鎖定已核身槽位覆蓋率 >=0.95，杜絕人工坐席重複盤問。",
-      en: "✅ [Topic 5: AI-to-Human Warm Transfer & Whisper · docs/warm-transfer-whisper-handoff-faq.en.md] <1ms Offline Policy State-Machine Verdict (Synthetic; live CTI WebSocket push and SIP REFER signaling latency is not_measured in local tests): Blocks blind transfer missing a signed Context Packet, clamps screen-pop summary to <=45 words, and enforces >=0.95 verified slot coverage."
+      "zh-CN": "✅ [专题5：人机协同热转接与单向耳语 · docs/warm-transfer-whisper-handoff-faq.md] 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic；真实 CTI 桌面推送与 SIP REFER 信令耗时未在本地单测实测 not_measured）：拦截缺失 HMAC 签名 Context Packet 的无状态盲转，自动将交接摘要钳制在 <=45 词（3 秒扫读上限）并锁定已核身槽位覆盖率 >=0.95，杜绝人工坐席重复盘问。",
+      "zh-TW": "✅ [專題5：人機協同熱轉接與單向耳語 · docs/warm-transfer-whisper-handoff-faq.md] 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic；真實 CTI 桌面推送與 SIP REFER 信令耗時未在本地單測實測 not_measured）：攔截缺失 HMAC 簽名 Context Packet 的無狀態盲轉，自動將交接摘要鉗制在 <=45 詞（3 秒掃讀上限）並鎖定已核身槽位覆蓋率 >=0.95，杜絕人工坐席重複盤問。",
+      en: "✅ [Topic 5: AI-to-Human Warm Transfer & Whisper · docs/warm-transfer-whisper-handoff-faq.en.md] 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Verdict (Synthetic; live CTI WebSocket push and SIP REFER signaling latency is not_measured in local tests): Blocks blind transfer missing a signed Context Packet, clamps screen-pop summary to <=45 words, and enforces >=0.95 verified slot coverage."
     }
   },
   {
@@ -2357,7 +2415,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded at 1ms resolution, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "liveSipB2buaDualLegBridgeLatency": "not_measured in local unit test (production whisper 4-6s)",
   "action": "mute_whisper_bleed_lock_caller_hold_or_reengage_ai_on_timeout_in_0ms",
   "clampedCallerWhisperLeakAttenuationDb": -70,
@@ -2365,9 +2423,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题5：人机协同热转接与单向耳语 · docs/warm-transfer-whisper-handoff-faq.md] <1ms 离线策略状态机判定（Synthetic；真实 SIP B2BUA 双腿桥接与耳语播报耗时未在本地单测实测 not_measured）：强制 B2BUA 混音矩阵对客户 A-Leg 保持 <=-70 dBFS 物理隔离（严防内部风险标签耳语泄露给客户），并将 B-Leg 振铃超时钳制在 <=12000ms，超时自动由 AI 收回主呼提供预约回拨。",
-      "zh-TW": "✅ [專題5：人機協同熱轉接與單向耳語 · docs/warm-transfer-whisper-handoff-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實 SIP B2BUA 雙腿橋接與耳語播報耗時未在本地單測實測 not_measured）：強制 B2BUA 混音矩陣對客戶 A-Leg 保持 <=-70 dBFS 物理隔離（嚴防內部風險標籤耳語洩露給客戶），並將 B-Leg 振鈴超時鉗制在 <=12000ms，超時自動由 AI 收回主呼提供預約回撥。",
-      en: "✅ [Topic 5: AI-to-Human Warm Transfer & Whisper · docs/warm-transfer-whisper-handoff-faq.en.md] <1ms Offline Policy State-Machine Verdict (Synthetic; live SIP B2BUA dual-leg bridging latency is not_measured in local tests): Enforces <=-70 dBFS isolation on Caller A-Leg during AI-to-Agent whisper briefing and clamps B-Leg ring timeout to <=12000ms with automatic AI fallback."
+      "zh-CN": "✅ [专题5：人机协同热转接与单向耳语 · docs/warm-transfer-whisper-handoff-faq.md] 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic；真实 SIP B2BUA 双腿桥接与耳语播报耗时未在本地单测实测 not_measured）：强制 B2BUA 混音矩阵对客户 A-Leg 保持 <=-70 dBFS 物理隔离（严防内部风险标签耳语泄露给客户），并将 B-Leg 振铃超时钳制在 <=12000ms，超时自动由 AI 收回主呼提供预约回拨。",
+      "zh-TW": "✅ [專題5：人機協同熱轉接與單向耳語 · docs/warm-transfer-whisper-handoff-faq.md] 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic；真實 SIP B2BUA 雙腿橋接與耳語播報耗時未在本地單測實測 not_measured）：強制 B2BUA 混音矩陣對客戶 A-Leg 保持 <=-70 dBFS 物理隔離（嚴防內部風險標籤耳語洩露給客戶），並將 B-Leg 振鈴超時鉗制在 <=12000ms，超時自動由 AI 收回主呼提供預約回撥。",
+      en: "✅ [Topic 5: AI-to-Human Warm Transfer & Whisper · docs/warm-transfer-whisper-handoff-faq.en.md] 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Verdict (Synthetic; live SIP B2BUA dual-leg bridging latency is not_measured in local tests): Enforces <=-70 dBFS isolation on Caller A-Leg during AI-to-Agent whisper briefing and clamps B-Leg ring timeout to <=12000ms with automatic AI fallback."
     }
   },
   {
@@ -2386,7 +2444,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded at 1ms resolution, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "liveDspNonlinearFilterLatency": "not_measured in local unit test (production budget 8-15ms)",
   "action": "suppress_nonlinear_speakerphone_echo_false_barge_in_in_0ms",
   "clampedEchoReturnLossEnhancementErleDb": 18,
@@ -2394,9 +2452,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题4：全双工声学隔离 · docs/barge-in-echo-crosstalk-faq.md] <1ms 离线策略状态机判定（Synthetic；真实 DSP 非线性谱减耗时未在本地单测实测 not_measured）：当手机 >80% 大音量免提外放导致微型喇叭非线性削波（ERLE=11dB < 18dB 且与下行 TTS 包络相关度 0.86 >= 0.78）时，精准识别为本机破音残余回声并抑制虚假自打断。",
-      "zh-TW": "✅ [專題4：全雙工聲學隔離 · docs/barge-in-echo-crosstalk-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實 DSP 非線性譜減耗時未在本地單測實測 not_measured）：當手機 >80% 大音量免持外放導致微型喇叭非線性削波（ERLE=11dB < 18dB 且與下行 TTS 包絡相關度 0.86 >= 0.78）時，精準識別為本機破音殘餘回聲並抑制虛假自打斷。",
-      en: "✅ [Topic 4: Full-Duplex Acoustic Isolation · docs/barge-in-echo-crosstalk-faq.en.md] <1ms Offline Policy State-Machine Verdict (Synthetic; live DSP nonlinear filter latency is not_measured in local tests): Detects speakerphone nonlinear clipping harmonics (ERLE 11dB < 18dB with 0.86 downlink TTS correlation) and suppresses false self-barge-in."
+      "zh-CN": "✅ [专题4：全双工声学隔离 · docs/barge-in-echo-crosstalk-faq.md] 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic；真实 DSP 非线性谱减耗时未在本地单测实测 not_measured）：当手机 >80% 大音量免提外放导致微型喇叭非线性削波（ERLE=11dB < 18dB 且与下行 TTS 包络相关度 0.86 >= 0.78）时，精准识别为本机破音残余回声并抑制虚假自打断。",
+      "zh-TW": "✅ [專題4：全雙工聲學隔離 · docs/barge-in-echo-crosstalk-faq.md] 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic；真實 DSP 非線性譜減耗時未在本地單測實測 not_measured）：當手機 >80% 大音量免持外放導致微型喇叭非線性削波（ERLE=11dB < 18dB 且與下行 TTS 包絡相關度 0.86 >= 0.78）時，精準識別為本機破音殘餘回聲並抑制虛假自打斷。",
+      en: "✅ [Topic 4: Full-Duplex Acoustic Isolation · docs/barge-in-echo-crosstalk-faq.en.md] 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Verdict (Synthetic; live DSP nonlinear filter latency is not_measured in local tests): Detects speakerphone nonlinear clipping harmonics (ERLE 11dB < 18dB with 0.86 downlink TTS correlation) and suppresses false self-barge-in."
     }
   },
   {
@@ -2415,7 +2473,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded at 1ms resolution, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "liveStreamingTseFrameInferenceLatency": "not_measured in local unit test (production budget 15-40ms)",
   "action": "drop_bystander_or_tv_crosstalk_frame_without_barge_in_flush_in_0ms",
   "clampedPrimarySpeakerEmbeddingCosineSimilarity": 0.82,
@@ -2423,9 +2481,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题4：全双工声学隔离 · docs/barge-in-echo-crosstalk-faq.md] <1ms 离线策略状态机判定（Synthetic；流式神经 TSE 声纹模型帧推理耗时未在本地单测实测 not_measured）：副驾乘客或客厅电视插话（与首轮主叫声纹锚点 e_primary 余弦相似度 0.39 < 0.82，远场衰减 16dB > 12dB）被静默标记为 bystander_crosstalk_ignored，不中断 TTS 播报且不污染 LLM 上下文。",
-      "zh-TW": "✅ [專題4：全雙工聲學隔離 · docs/barge-in-echo-crosstalk-faq.md] <1ms 離線策略狀態機判定（Synthetic；流式神經 TSE 聲紋模型幀推理耗時未在本地單測實測 not_measured）：副駕乘客或客廳電視插話（與首輪主叫聲紋錨點 e_primary 餘弦相似度 0.39 < 0.82，遠場衰減 16dB > 12dB）被靜默標記為 bystander_crosstalk_ignored，不中斷 TTS 播報且不污染 LLM 上下文。",
-      en: "✅ [Topic 4: Full-Duplex Acoustic Isolation · docs/barge-in-echo-crosstalk-faq.en.md] <1ms Offline Policy State-Machine Verdict (Synthetic; live streaming TSE frame inference latency is not_measured in local tests): Drops passenger/TV background speech (cosine similarity 0.39 < 0.82 vs. primary caller anchor e_primary) without flushing TTS playback or polluting LLM context."
+      "zh-CN": "✅ [专题4：全双工声学隔离 · docs/barge-in-echo-crosstalk-faq.md] 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic；流式神经 TSE 声纹模型帧推理耗时未在本地单测实测 not_measured）：副驾乘客或客厅电视插话（与首轮主叫声纹锚点 e_primary 余弦相似度 0.39 < 0.82，远场衰减 16dB > 12dB）被静默标记为 bystander_crosstalk_ignored，不中断 TTS 播报且不污染 LLM 上下文。",
+      "zh-TW": "✅ [專題4：全雙工聲學隔離 · docs/barge-in-echo-crosstalk-faq.md] 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic；流式神經 TSE 聲紋模型幀推理耗時未在本地單測實測 not_measured）：副駕乘客或客廳電視插話（與首輪主叫聲紋錨點 e_primary 餘弦相似度 0.39 < 0.82，遠場衰減 16dB > 12dB）被靜默標記為 bystander_crosstalk_ignored，不中斷 TTS 播報且不污染 LLM 上下文。",
+      en: "✅ [Topic 4: Full-Duplex Acoustic Isolation · docs/barge-in-echo-crosstalk-faq.en.md] 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Verdict (Synthetic; live streaming TSE frame inference latency is not_measured in local tests): Drops passenger/TV background speech (cosine similarity 0.39 < 0.82 vs. primary caller anchor e_primary) without flushing TTS playback or polluting LLM context."
     }
   },
   {
@@ -2446,7 +2504,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "liveVectorDbFallbackRequeryLatency": "not_measured in local unit test (production budget 120-180ms)",
   "action": "block_speculative_write_tool_or_evict_stale_pivot_rag_cache_in_0ms",
   "clampedSpeculativeQuerySemanticSimilarityFloor": 0.88,
@@ -2455,9 +2513,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题3A：只读投机语音检索 · docs/speculative-voice-rag-faq.md] <1ms 离线策略状态机判定（Synthetic；真实外部向量库回退重查耗时 120~180ms 未在本地单测实测 not_measured）：拦截半句 ASR 草稿越界触发写操作，以及客户句尾改口（如“查白金卡…算了查金卡”，相似度 0.62 < 0.88）时误读作废旧缓存；同时将语音 RAG 微切片钳制在 <=120 Tokens/块（总注入 <=360 Tokens）。",
-      "zh-TW": "✅ [專題3A：唯讀投機語音檢索 · docs/speculative-voice-rag-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實外部向量庫回退重查耗時 120~180ms 未在本地單測實測 not_measured）：攔截半句 ASR 草稿越界觸發寫操作，以及客戶句尾改口（如「查白金卡…算了查金卡」，相似度 0.62 < 0.88）時誤讀作廢舊快取；同時將語音 RAG 微切片鉗制在 <=120 Tokens/塊（總注入 <=360 Tokens）。",
-      en: "✅ [Topic 3A: Read-Only Speculative Voice RAG · docs/speculative-voice-rag-faq.en.md] <1ms Offline Policy State-Machine Check (Synthetic; live external vector DB fallback re-query is not_measured in local tests): Blocks partial-ASR speculation from triggering write tools and evicts stale prefetched RAG cache on caller end-of-utterance pivots (similarity 0.62 < 0.88), while clamping voice micro-chunks to <=120 tokens/chunk (<=360 total)."
+      "zh-CN": "✅ [专题3A：只读投机语音检索 · docs/speculative-voice-rag-faq.md] 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic；真实外部向量库回退重查耗时 120~180ms 未在本地单测实测 not_measured）：拦截半句 ASR 草稿越界触发写操作，以及客户句尾改口（如“查白金卡…算了查金卡”，相似度 0.62 < 0.88）时误读作废旧缓存；同时将语音 RAG 微切片钳制在 <=120 Tokens/块（总注入 <=360 Tokens）。",
+      "zh-TW": "✅ [專題3A：唯讀投機語音檢索 · docs/speculative-voice-rag-faq.md] 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic；真實外部向量庫回退重查耗時 120~180ms 未在本地單測實測 not_measured）：攔截半句 ASR 草稿越界觸發寫操作，以及客戶句尾改口（如「查白金卡…算了查金卡」，相似度 0.62 < 0.88）時誤讀作廢舊快取；同時將語音 RAG 微切片鉗制在 <=120 Tokens/塊（總注入 <=360 Tokens）。",
+      en: "✅ [Topic 3A: Read-Only Speculative Voice RAG · docs/speculative-voice-rag-faq.en.md] 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Check (Synthetic; live external vector DB fallback re-query is not_measured in local tests): Blocks partial-ASR speculation from triggering write tools and evicts stale prefetched RAG cache on caller end-of-utterance pivots (similarity 0.62 < 0.88), while clamping voice micro-chunks to <=120 tokens/chunk (<=360 total)."
     }
   },
   {
@@ -2477,7 +2535,7 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "liveExternalCrmSagaNetworkRollbackLatency": "not_measured in local unit test",
   "action": "abort_stale_epoch_write_and_trigger_saga_rollback_or_block_preamble_leak_in_0ms",
   "clampedUnmaskedDeadAirSilenceDuringSlowToolCallMs": 1000,
@@ -2485,9 +2543,9 @@ const DUPLEX_SIM_PROBES = [
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ [专题3B：写状态异步工具取消与回滚 · docs/voice-tool-epoch-fence-faq.md] <1ms 离线策略状态机判定（Synthetic；真实外部 CRM/ERP 逆向补偿网络 I/O 耗时未在本地单测实测 not_measured）：当客户在慢速写接口返回前插话反悔（activeTurnEpoch > toolInvocationEpoch）或过渡话术提前剧透未核验金额/承诺成功时，策略层立即发出 AbortSignal 与 Saga 逆向冲正指令，并将慢接口静默冷场窗口钳制在 <=1000ms。",
-      "zh-TW": "✅ [專題3B：寫狀態非同步工具取消與回滾 · docs/voice-tool-epoch-fence-faq.md] <1ms 離線策略狀態機判定（Synthetic；真實外部 CRM/ERP 逆向補償網路 I/O 耗時未在本地單測實測 not_measured）：當客戶在慢速寫介面返回前插話反悔（activeTurnEpoch > toolInvocationEpoch）或過渡話術提前劇透未核驗金額/承諾成功時，策略層立即發出 AbortSignal 與 Saga 逆向沖正指令，並將慢介面靜默冷場窗口鉗制在 <=1000ms。",
-      en: "✅ [Topic 3B: State-Mutating Async Tool Cancellation & Rollbacks · docs/voice-tool-epoch-fence-faq.en.md] <1ms Offline Policy State-Machine Check (Synthetic; live external CRM/ERP Saga rollback network I/O is not_measured in local tests): Emits an AbortSignal + Saga rollback directive when caller barge-in advances activeTurnEpoch past toolInvocationEpoch on a write tool or when a preamble leaks unverified amounts, while clamping unmasked dead air to <=1000ms."
+      "zh-CN": "✅ [专题3B：写状态异步工具取消与回滚 · docs/voice-tool-epoch-fence-faq.md] 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic；真实外部 CRM/ERP 逆向补偿网络 I/O 耗时未在本地单测实测 not_measured）：当客户在慢速写接口返回前插话反悔（activeTurnEpoch > toolInvocationEpoch）或过渡话术提前剧透未核验金额/承诺成功时，策略层立即发出 AbortSignal 与 Saga 逆向冲正指令，并将慢接口静默冷场窗口钳制在 <=1000ms。",
+      "zh-TW": "✅ [專題3B：寫狀態非同步工具取消與回滾 · docs/voice-tool-epoch-fence-faq.md] 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic；真實外部 CRM/ERP 逆向補償網路 I/O 耗時未在本地單測實測 not_measured）：當客戶在慢速寫介面返回前插話反悔（activeTurnEpoch > toolInvocationEpoch）或過渡話術提前劇透未核驗金額/承諾成功時，策略層立即發出 AbortSignal 與 Saga 逆向沖正指令，並將慢介面靜默冷場窗口鉗制在 <=1000ms。",
+      en: "✅ [Topic 3B: State-Mutating Async Tool Cancellation & Rollbacks · docs/voice-tool-epoch-fence-faq.en.md] 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Check (Synthetic; live external CRM/ERP Saga rollback network I/O is not_measured in local tests): Emits an AbortSignal + Saga rollback directive when caller barge-in advances activeTurnEpoch past toolInvocationEpoch on a write tool or when a preamble leaks unverified amounts, while clamping unmasked dead air to <=1000ms."
     }
   },
   {
@@ -2507,16 +2565,16 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "action": "block_client_last_mile_tcp_websocket_or_missing_aec3_in_0ms",
   "clampedNeteqAdaptiveJitterBufferMs": 80,
   "clampedOpusFecRedundancyRatio": 0.3,
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ <1ms 离线策略状态机判定（Synthetic）：在 4G/5G 弱网丢包且未自建端侧系统 AEC/自定义缓冲时，拦截裸 TCP WebSocket 直传音频引发的队头阻塞与免提回声自打断；默认优先路由至 WebRTC UDP/SRTP + AEC3（若 UDP 受限或端侧已自建硬件 AEC/缓冲则按例外策略放行），并将 NetEQ 缓冲钳制在 [20ms, 80ms]。",
-      "zh-TW": "✅ <1ms 離線策略狀態機判定（Synthetic）：在 4G/5G 弱網丟包且未自建端側系統 AEC/自定義緩衝時，攔截裸 TCP WebSocket 直傳音訊引發的隊頭阻塞與免提回聲自打斷；預設優先路由至 WebRTC UDP/SRTP + AEC3（若 UDP 受限或端側已自建硬體 AEC/緩衝則按例外策略放行），並將 NetEQ 緩衝鉗制在 [20ms, 80ms]。",
-      en: "✅ <1ms Offline Policy State-Machine Check (Synthetic): Flags unbuffered raw TCP WebSocket under cellular packet loss or speakerphone playback lacking client AEC; defaults to WebRTC UDP/SRTP + AEC3 (allowing TURN/TLS 443 or custom native OS AEC + jitter buffer exceptions) and clamps NetEQ to [20ms, 80ms]."
+      "zh-CN": "✅ 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic）：在 4G/5G 弱网丢包且未自建端侧系统 AEC/自定义缓冲时，拦截裸 TCP WebSocket 直传音频引发的队头阻塞与免提回声自打断；默认优先路由至 WebRTC UDP/SRTP + AEC3（若 UDP 受限或端侧已自建硬件 AEC/缓冲则按例外策略放行），并将 NetEQ 缓冲钳制在 [20ms, 80ms]。",
+      "zh-TW": "✅ 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic）：在 4G/5G 弱網丟包且未自建端側系統 AEC/自定義緩衝時，攔截裸 TCP WebSocket 直傳音訊引發的隊頭阻塞與免提回聲自打斷；預設優先路由至 WebRTC UDP/SRTP + AEC3（若 UDP 受限或端側已自建硬體 AEC/緩衝則按例外策略放行），並將 NetEQ 緩衝鉗制在 [20ms, 80ms]。",
+      en: "✅ 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Check (Synthetic): Flags unbuffered raw TCP WebSocket under cellular packet loss or speakerphone playback lacking client AEC; defaults to WebRTC UDP/SRTP + AEC3 (allowing TURN/TLS 443 or custom native OS AEC + jitter buffer exceptions) and clamps NetEQ to [20ms, 80ms]."
     }
   },
   {
@@ -2536,16 +2594,16 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "action": "block_unfiltered_8khz_aliasing_or_inband_dtmf_tone_leak_in_0ms",
   "clampedPolyphaseLowPassStopbandAttenuationDb": 60,
   "clampedSipToEdgeGatewayTranscodeLatencyMs": 35,
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ <1ms 离线策略状态机判定（Synthetic）：拦截 8kHz G.711 未经多相低通滤波直接线性插值引发的 4kHz–12kHz 镜像混叠伪影（注：带限重采样仅匹配 24kHz 采样格式并抑制混叠，无法恢复 8kHz 电话网已丢失的 >4kHz 宽带高频信息，需配合 RFC 4733 DTMF 与双字词拼读确认），并将阻带衰减钳制在 >=60dB。",
-      "zh-TW": "✅ <1ms 離線策略狀態機判定（Synthetic）：攔截 8kHz G.711 未經多相低通濾波直接線性插值引發的 4kHz–12kHz 鏡像混疊偽影（註：帶限重採樣僅匹配 24kHz 採樣格式並抑制混疊，無法恢復 8kHz 電話網已丟失的 >4kHz 寬帶高頻資訊，需配合 RFC 4733 DTMF 與雙字詞拼讀確認），並將阻帶衰減鉗制在 >=60dB。",
-      en: "✅ <1ms Offline Policy State-Machine Check (Synthetic): Blocks unfiltered 8kHz→24kHz linear interpolation spectral aliasing and in-band DTMF leaks (band-limited resampling aligns 24kHz format and suppresses imaging without recovering lost >4kHz PSTN frequencies, pairing with RFC 4733 DTMF & phonetic confirmation)."
+      "zh-CN": "✅ 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic）：拦截 8kHz G.711 未经多相低通滤波直接线性插值引发的 4kHz–12kHz 镜像混叠伪影（注：带限重采样仅匹配 24kHz 采样格式并抑制混叠，无法恢复 8kHz 电话网已丢失的 >4kHz 宽带高频信息，需配合 RFC 4733 DTMF 与双字词拼读确认），并将阻带衰减钳制在 >=60dB。",
+      "zh-TW": "✅ 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic）：攔截 8kHz G.711 未經多相低通濾波直接線性插值引發的 4kHz–12kHz 鏡像混疊偽影（註：帶限重採樣僅匹配 24kHz 採樣格式並抑制混疊，無法恢復 8kHz 電話網已丟失的 >4kHz 寬帶高頻資訊，需配合 RFC 4733 DTMF 與雙字詞拼讀確認），並將阻帶衰減鉗制在 >=60dB。",
+      en: "✅ 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Check (Synthetic): Blocks unfiltered 8kHz→24kHz linear interpolation spectral aliasing and in-band DTMF leaks (band-limited resampling aligns 24kHz format and suppresses imaging without recovering lost >4kHz PSTN frequencies, pairing with RFC 4733 DTMF & phonetic confirmation)."
     }
   },
   {
@@ -2565,16 +2623,16 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "action": "block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms",
   "clampedLaneSwitchHandoffLatencyMs": 350,
   "clampedVerbatimScriptTokenMatchRatio": 0.98,
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ <1ms 离线策略状态机判定（Synthetic）：当对话进入金融/医疗法定免责声明节点时，策略层拦截纯原生 S2S 自由改词（合成探针匹配率 86%）及未脱敏 PII 旁路，发出切入受控级联 TTS 稳车道指令（生产环境端到端切换握手预算钳制在 [40ms, 350ms]，逐字匹配下限钳制在 0.98）。",
-      "zh-TW": "✅ <1ms 離線策略狀態機判定（Synthetic）：當對話進入金融/醫療法定免責聲明節點時，策略層攔截純原生 S2S 自由改詞（合成探針匹配率 86%）及未脫敏 PII 旁路，發出切入受控級聯 TTS 穩車道指令（生產環境端到端切換握手預算鉗制在 [40ms, 350ms]，逐字匹配下限鉗制在 0.98）。",
-      en: "✅ <1ms Offline Policy State-Machine Check (Synthetic): Flags freeform Native S2S paraphrasing (86% synthetic match) on regulated disclosure nodes and emits a deterministic cascaded TTS lane-switch directive (clamping production lane-switch handoff budget to [40ms, 350ms] and verbatim match floor to 0.98)."
+      "zh-CN": "✅ 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic）：当对话进入金融/医疗法定免责声明节点时，策略层拦截纯原生 S2S 自由改词（合成探针匹配率 86%）及未脱敏 PII 旁路，发出切入受控级联 TTS 稳车道指令（生产环境端到端切换握手预算钳制在 [40ms, 350ms]，逐字匹配下限钳制在 0.98）。",
+      "zh-TW": "✅ 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic）：當對話進入金融/醫療法定免責聲明節點時，策略層攔截純原生 S2S 自由改詞（合成探針匹配率 86%）及未脫敏 PII 旁路，發出切入受控級聯 TTS 穩車道指令（生產環境端到端切換握手預算鉗制在 [40ms, 350ms]，逐字匹配下限鉗制在 0.98）。",
+      en: "✅ 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Check (Synthetic): Flags freeform Native S2S paraphrasing (86% synthetic match) on regulated disclosure nodes and emits a deterministic cascaded TTS lane-switch directive (clamping production lane-switch handoff budget to [40ms, 350ms] and verbatim match floor to 0.98)."
     }
   },
   {
@@ -2594,16 +2652,16 @@ const DUPLEX_SIM_PROBES = [
 }`,
     outputJson: `{
   "violated": true,
-  "policyEvalLatencyMs": "<1ms (0ms rounded, synthetic)",
+  "policyEvalLatencyMs": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established, synthetic",
   "action": "block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms",
   "clampedSemanticEouHoldWindowMs": 1200,
   "clampedSpeculativeRagFillerTriggerLatencyMs": 700,
   "provenance": "synthetic"
 }`,
     summary: {
-      "zh-CN": "✅ <1ms 离线策略状态机判定（Synthetic）：拦截传统 VAD 在客户报 16 位卡号喘气时的粗暴截断，以及客户句末改口前投机缓存抢先提交写操作；P716 将语义判停等待窗口钳制在 [350ms, 1200ms]，并将慢速 RAG 语境垫话触发预算钳制在 [250ms, 700ms]。",
-      "zh-TW": "✅ <1ms 離線策略狀態機判定（Synthetic）：攔截傳統 VAD 在客戶報 16 位卡號喘氣時的粗暴截斷，以及客戶句末改口前投機快取搶先提交寫操作；P716 將語義判停等待窗口鉗制在 [350ms, 1200ms]，並將慢速 RAG 語境墊話觸發預算鉗制在 [250ms, 700ms]。",
-      en: "✅ <1ms Offline Policy State-Machine Check (Synthetic): Stops acoustic VAD from cutting off callers mid-number readout and blocks speculative RAG from committing write tools before final ASR verification, clamping EOU hold window to [350ms, 1200ms] and filler trigger budget to [250ms, 700ms]."
+      "zh-CN": "✅ 0ms (名义 1ms 分辨率观测值，实际耗时未解析，不建立 sub-1ms 上界) 离线策略状态机判定（Synthetic）：拦截传统 VAD 在客户报 16 位卡号喘气时的粗暴截断，以及客户句末改口前投机缓存抢先提交写操作；P716 将语义判停等待窗口钳制在 [350ms, 1200ms]，并将慢速 RAG 语境垫话触发预算钳制在 [250ms, 700ms]。",
+      "zh-TW": "✅ 0ms (名義 1ms 解析度觀測值，實際耗時未解析，不建立 sub-1ms 上界) 離線策略狀態機判定（Synthetic）：攔截傳統 VAD 在客戶報 16 位卡號喘氣時的粗暴截斷，以及客戶句末改口前投機快取搶先提交寫操作；P716 將語義判停等待窗口鉗制在 [350ms, 1200ms]，並將慢速 RAG 語境墊話觸發預算鉗制在 [250ms, 700ms]。",
+      en: "✅ 0ms (reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established) Offline Policy State-Machine Check (Synthetic): Stops acoustic VAD from cutting off callers mid-number readout and blocks speculative RAG from committing write tools before final ASR verification, clamping EOU hold window to [350ms, 1200ms] and filler trigger budget to [250ms, 700ms]."
     }
   },
   {

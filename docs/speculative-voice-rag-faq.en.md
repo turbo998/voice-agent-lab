@@ -2,7 +2,7 @@
 
 > **Single-Topic Scope (Round 3A)**: Focused strictly on **Read-Only Knowledge Retrieval (Voice RAG) architecture selection**—when to use serial post-EOU retrieval vs. streaming partial-ASR speculative prefetching, and how Voice Micro-Chunking and Pre-Commit EOU Equivalence Verification (`P719`) eliminate both dead air and stale-cache hallucinations.  
 > **Companion Guide (State-Mutating Tool Cancellation & Rollbacks)**: For asynchronous state-mutating tool execution, monotonic `turnEpoch` write fences, and Saga compensation on barge-in (`P720`), see [`docs/voice-tool-epoch-fence-faq.en.md`](./voice-tool-epoch-fence-faq.en.md).  
-> **Data Provenance Note**: Industry retrieval latency and cost ranges are tagged `anonymized_reported` (`independently_reproduced=false`). The `<1ms` (`0ms` rounded at `1ms` local clock resolution) latency for `P719` refers strictly to **offline in-memory policy state-machine evaluation (`synthetic`)**; **live production vector database re-query network round-trip latency (`35ms–120ms` production budget) is `not_measured` in local unit tests**.
+> **Data Provenance Note**: Industry retrieval latency and cost ranges are tagged `anonymized_reported` (`independently_reproduced=false`). The `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` latency for `P719` refers strictly to **offline in-memory policy state-machine evaluation (`synthetic`)**; **live production vector database re-query network round-trip latency (`35ms–120ms` production budget) is `not_measured` in local unit tests**.
 
 ---
 
@@ -14,7 +14,7 @@
 2. **Why Copying Web-Chat Text RAG Directly into Voice Calls Causes Sluggish, Robotic Responses**:
    - Web-chat RAG pipelines routinely inject 5 chunks of `500–800 Tokens` each (`2,500+ Tokens` total). In real-time voice conversations, oversized context bloats LLM prefill Time-to-First-Audio (TTFA) and causes the TTS to read dense legal prose aloud. Voice RAG requires **Voice Micro-Chunking (`P719` guardrail: `<= 120 Tokens` per chunk, `<= 360 Tokens` total injected context)** pre-distilled into spoken-style summaries at ingestion time.
 3. **The Mandatory Safety Gate for Speculative Prefetching (Pre-Commit EOU Equivalence Gate `P719`)**:
-   - Callers frequently pivot or negate their intent in the final 500ms of an utterance (*"Check the cancellation fee... actually never mind, check tomorrow's change fee instead"*). Speculatively prefetched chunks **must never be injected blindly**: at Final EOU, `P719` verifies semantic equivalence (`cosineSimilarity >= 0.88` with no polarity/entity flip). The offline policy state machine evicts stale caches in `<1ms` (`1ms` clock resolution, `synthetic`) and falls back to a clean Final-EOU retrieval (live production vector re-query latency is `not_measured` in local unit tests).
+   - Callers frequently pivot or negate their intent in the final 500ms of an utterance (*"Check the cancellation fee... actually never mind, check tomorrow's change fee instead"*). Speculatively prefetched chunks **must never be injected blindly**: at Final EOU, `P719` verifies semantic equivalence (`cosineSimilarity >= 0.88` with no polarity/entity flip). The offline policy state machine evicts stale caches in `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` (`synthetic`) and falls back to a clean Final-EOU retrieval (live production vector re-query latency is `not_measured` in local unit tests).
 
 ---
 
@@ -38,7 +38,7 @@
     1. **Strict Read-Only Speculation**: `P719` blocks any state-mutating tool from firing during partial ASR speculation.
     2. **Pre-Commit EOU Semantic Equivalence Verification**: When Final EOU (`P716`) fires, the gateway computes cosine similarity between the speculative query `q_spec` and final query `q_final` (`cos(q_spec, q_final)`):
        - **Cache Hit (`cos >= 0.88`, no negation pivot)**: The pre-warmed micro-chunks are injected immediately with near-zero post-EOU retrieval wait.
-       - **Late Pivot Eviction (`cos < 0.88` or polarity flip)**: The `P719` offline policy state machine evicts the stale cache in `<1ms` (`1ms` clock resolution, `synthetic`) and falls back to querying `q_final` fresh (`35ms–120ms` live DB budget; `not_measured` in local unit tests).
+       - **Late Pivot Eviction (`cos < 0.88` or polarity flip)**: The `P719` offline policy state machine evicts the stale cache in `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` (`synthetic`) and falls back to querying `q_final` fresh (`35ms–120ms` live DB budget; `not_measured` in local unit tests).
 
 ---
 
@@ -64,7 +64,7 @@ flowchart TD
     Q1 -- "Enterprise KB (100s to 1M+ docs)\nHybrid Vector + Rerank takes 180ms~600ms" --> Q2{"Typical Caller Utterance Length?"}
 
     Q2 -- "1-2 word commands ('Check balance')" --> SerialMicro["🟡 Option B: Serial RAG + Voice Micro-Chunking\n• <= 120 Tokens/chunk, <= 360 Tokens total\n• Pair with 350ms polite acknowledgment preamble"]
-    Q2 -- "Natural conversational sentences (> 1.5s)" --> SpecRAG["🚀 Option C: Speculative Read-Only Voice RAG (P719)\n• Async prefetch Top-3 micro-chunks on 60%~80% Partial ASR\n• Enforce Pre-Commit EOU equivalence (cos >= 0.88)\n• <1ms offline policy cache eviction on late-utterance pivot"]
+    Q2 -- "Natural conversational sentences (> 1.5s)" --> SpecRAG["🚀 Option C: Speculative Read-Only Voice RAG (P719)\n• Async prefetch Top-3 micro-chunks on 60%~80% Partial ASR\n• Enforce Pre-Commit EOU equivalence (cos >= 0.88)\n• offline policy (0ms@1ms res.) cache eviction on late-utterance pivot"]
 ```
 
 ### 3.2 Legacy Web-Style Serial RAG vs. Stage 363 Speculative Micro-Chunk Voice RAG (`flowchart LR`)
@@ -81,7 +81,7 @@ flowchart LR
     subgraph Modern["✅ Speculative Read-Only Voice RAG + Micro-Chunking (Stage 363 P719)"]
         direction LR
         M1["Caller speaks main clause\n(Streaming Partial ASR)"] --> M2["Async prefetch Top-3\nVoice Micro-Chunks (<=120 Tok)"]
-        M2 --> M3["Pre-Commit EOU Gate (P719)\n• cos >= 0.88: Reuse warm cache\n• Pivot (<0.88): <1ms evict & re-query"]
+        M2 --> M3["Pre-Commit EOU Gate (P719)\n• cos >= 0.88: Reuse warm cache\n• Pivot (<0.88): offline policy evict & re-query"]
         M3 --> M4["🎯 Target Outcome:\nRetrieval hidden behind speech\n& crisp spoken answers"]
     end
 ```
@@ -104,14 +104,14 @@ sequenceDiagram
     VectorDB-->>Guard: Returns Top-3 Voice Micro-Chunks (280 Tokens <= 360 budget)
     User->>ASR: 🗣️ "...access works for guests?" (t = 1,200ms Final EOU)
     ASR->>Guard: Emits final query q_final
-    Guard->>Guard: P719 Offline Policy Check (<1ms synthetic): cos(q_spec, q_final) = 0.93 (>=0.88)
+    Guard->>Guard: P719 Offline Policy Check (0ms@1ms res. synthetic): cos(q_spec, q_final) = 0.93 (>=0.88)
     Guard->>LLM: Injects pre-warmed 280-Token micro-chunks immediately
 
     Note over User,LLM: Case B: Late-Utterance Pivot — P719 Evicts Stale Cache Before Generation
     User->>ASR: 🗣️ "Check the Platinum Card cancellation fee..." (t = 550ms)
     User->>ASR: 🗣️ "...wait no, check the points-to-miles transfer ratio!" (t = 1,300ms Final EOU)
     ASR->>Guard: Detects late pivot: cos(q_spec, q_final) = 0.52 (<0.88)
-    Guard->>Guard: P719 Offline Policy State Machine (<1ms synthetic) evicts stale cancellation cache
+    Guard->>Guard: P719 Offline Policy State Machine (0ms@1ms res. synthetic) evicts stale cancellation cache
     Guard->>VectorDB: Fallback fresh query on 'points-to-miles ratio' (35~120ms live DB budget)
     VectorDB-->>LLM: Injects accurate points-transfer micro-chunks
 ```
@@ -124,7 +124,7 @@ sequenceDiagram
 | :--- | :--- | :--- | :--- | :--- |
 | **Best-Fit Scenarios** | Text chatbots only (**Not for live voice**) | Tiny static FAQs (`< 20` items) or 1-word commands | Demo scripts only (fails when real callers change their mind mid-sentence) | **Banking advisory, airline policy hotlines, hardware troubleshooting, healthcare & public-sector FAQs** |
 | **Post-EOU Retrieval Wait** | `500ms – 1,200ms+` | `200ms – 450ms` | `< 30ms` on hit | **Near-zero extra post-EOU wait on ~80%+ stable turns; safe fallback re-query (`35ms – 120ms`) on ~15–20% pivoted turns** |
-| **Immunity to Late-Utterance Pivots** | 🟢 High (waits for EOU) | 🟢 High (waits for EOU) | 🔴 **Low (answers the wrong question on late pivots)** | 🟢 **High (`P719` enforces `cos >= 0.88` pre-commit check and evicts stale caches in `<1ms` `synthetic`)** |
+| **Immunity to Late-Utterance Pivots** | 🟢 High (waits for EOU) | 🟢 High (waits for EOU) | 🔴 **Low (answers the wrong question on late pivots)** | 🟢 **High (`P719` enforces `cos >= 0.88` pre-commit check and evicts stale caches in `0ms` @ nominal `1ms` res. (`synthetic`, actual duration unresolved))** |
 | **LLM Prefill Token Load** | 🔴 Heavy (`2,000+ Tokens`) | 🟢 Light (`<= 360 Tokens`) | 🟡 Unbounded | 🟢 **Light (`<= 120 Tokens/chunk`, `<= 360 Tokens` total)** |
 | **Vector DB Compute Cost** | 1.0x baseline | 1.0x baseline | 2.0x – 3.0x | **~1.25x – 1.4x (`< $0.001/min` incremental TCO with entity-locked debouncing)** |
 
@@ -134,9 +134,9 @@ sequenceDiagram
 
 | Probe Scenario | Unprotected / Web-Style RAG Baseline | Stage 363 (`P719`) Guarded Pipeline | Data Provenance & Engineering Notes |
 | :--- | :--- | :--- | :--- |
-| **Caller pivots intent in final 500ms (`cos=0.52 < 0.88`)** | Stale speculative cache injected into LLM prompt | **`P719` offline policy state machine (`<1ms` at `1ms` clock resolution, `synthetic`) evicts stale cache and triggers fresh EOU retrieval** | Live vector DB fallback re-query latency (`35ms–120ms` budget) is `not_measured` in local unit tests |
-| **Retriever returns `165 Tokens/chunk` (`420 Tokens` total)** | Inflates real-time LLM prefill TTFA | **`P719` (`<1ms` `synthetic`) clamps micro-chunk budget to `<= 120 Tokens/chunk` and `<= 360 Tokens` total** | Prevents prefill latency spikes on voice models |
-| **Partial ASR attempts state-mutating tool call** | Premature mutation before caller finishes speaking | **`P719` (`<1ms` `synthetic`) blocks state-mutating tools during speculation** | Enforces strict read-only speculation |
+| **Caller pivots intent in final 500ms (`cos=0.52 < 0.88`)** | Stale speculative cache injected into LLM prompt | **`P719` offline policy state machine (`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`, `synthetic`) evicts stale cache and triggers fresh EOU retrieval** | Live vector DB fallback re-query latency (`35ms–120ms` budget) is `not_measured` in local unit tests |
+| **Retriever returns `165 Tokens/chunk` (`420 Tokens` total)** | Inflates real-time LLM prefill TTFA | **`P719` (`0ms` @ nominal `1ms` res., `synthetic`, actual duration unresolved) clamps micro-chunk budget to `<= 120 Tokens/chunk` and `<= 360 Tokens` total** | Prevents prefill latency spikes on voice models |
+| **Partial ASR attempts state-mutating tool call** | Premature mutation before caller finishes speaking | **`P719` (`0ms` @ nominal `1ms` res., `synthetic`, actual duration unresolved) blocks state-mutating tools during speculation** | Enforces strict read-only speculation |
 
 ---
 

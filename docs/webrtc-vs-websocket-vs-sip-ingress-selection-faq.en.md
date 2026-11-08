@@ -197,7 +197,7 @@ sequenceDiagram
 
 > 📊 **Data Classification & Provenance Scope**:
 > - **Comparative Cohort Figures (`anonymized_reported` / `synthetic`, `independently_reproduced=false`)**: Latency, freeze rate, echo self-interruption, and dictation accuracy below derive from anonymized industry reports and synthetic packet-loss simulations (`anonymized_reported` / `synthetic`); live carrier production cutover metrics are `not_measured` in this repository's local test suite.
-> - **Guardrail Evaluation Timing (`synthetic` Offline Policy State Machine)**: `<1ms` (rounded to `0ms` at `1ms` timer resolution) denotes **in-memory synchronous policy function evaluation time** for `P717`–`P718`, not live production network/media cutover latency.
+> - **Guardrail Evaluation Timing (`synthetic` Offline Policy State Machine)**: `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` denotes **in-memory synchronous policy function evaluation time** for `P717`–`P718`, not live production network/media cutover latency.
 
 | Metric (3% Cellular Packet Loss + Speakerphone · Provenance: `anonymized_reported` / `synthetic`, `independently_reproduced=false`) | Client Raw WebSocket (Without Native Client AEC/Jitter Buffer) | Raw SIP Trunk (8kHz Linear Interpolation Without Anti-Aliasing) | **Unified WebRTC + SIP Edge Gateway Target (`Stage 362 P717/P718`)** | Engineering & Customer Value |
 | :--- | :--- | :--- | :--- | :--- |
@@ -206,7 +206,7 @@ sequenceDiagram
 | **Speakerphone Echo Self-Interruption Rate** | `41.5%` (When lacking client-side AEC) | `1.8%` | **`0.2%`** (WebRTC AEC3 + residual echo guard) | Hands-free speakerphone support (raw WS requires custom OS-level AEC integration) |
 | **`S/F/SH` Alphanumeric Dictation 1st-Turn Accuracy** | `89.4%` | `78.5%` (>4kHz loss + spectral aliasing) | **`98.4%`** (P718 band-limited anti-aliasing + RFC 4733 DTMF / phonetic check) | Suppresses aliasing artifacts and pairs DTMF/phonetics to offset 8kHz bandwidth limits |
 | **Estimated Monthly Telecom TCO (100,000 min/mo)** | `$420 / mo` (Uncompressed egress bloat) | `$2,400 / mo` (100% carrier per-min billing) | **`$680 / mo`** (75% WebRTC digital deflection + 25% SIP) | Deflecting app/web callers to WebRTC saves an estimated **$1,720/mo (-71.7%)** |
-| **Stage 362 Offline Policy Guard (`P717`–`P718`) Probe Pass Rate** | Unguarded | Unguarded | **`736/736` Synthetic Probes (`synthetic`)** | `<1ms` (`0ms` rounded) offline state-machine check against unbuffered TCP & aliasing |
+| **Stage 362 Offline Policy Guard (`P717`–`P718`) Probe Pass Rate** | Unguarded | Unguarded | **`736/736` Synthetic Probes (`synthetic`)** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) offline state-machine check against unbuffered TCP & aliasing |
 
 ---
 

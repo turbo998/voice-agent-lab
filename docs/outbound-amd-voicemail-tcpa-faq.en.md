@@ -13,8 +13,8 @@
    - **For enterprise outbound Voice Agents (clinical follow-ups, prescription reminders, delivery scheduling, financial servicing), never use legacy Serial Blocking AMD (`2.5s–4.0s` silent analysis after `200 OK`) and never use Blind Immediate Playback—always enforce Parallel Streaming AMD + `<=600ms` Optimistic Micro-Greeting + Voicemail Beep-Reset (`P727`)**: Serial blocking AMD leaves a live human caller sitting in `2,500ms–4,000ms` of dead silence after saying `"Hello?"`, causing `>35%` of humans to hang up immediately and violating the **FCC TCPA / FTC Telemarketing Sales Rule (`16 CFR § 310.4(b)(1)(iv)`)**, which classifies any call that fails to respond within **`2,000ms` (2 seconds)** of the callee's greeting as an unlawful **Abandoned Call** (capped at `<3%` over 30 days). Conversely, blind immediate playback talks over the carrier voicemail greeting so that when the `850Hz–1050Hz` recording beep finally sounds, only the last 2 seconds (`"...goodbye!"`) are recorded. `P727` starts a natural optimistic micro-greeting within **`<=600ms`** of `"Hello?"` while running a parallel acoustic + streaming ASR voicemail classifier in the background—if a voicemail greeting or beep tone is detected, it immediately cancels live multi-turn dialogue, waits for the beep to finish, and plays a clean, self-contained **`<=25s` voicemail callback script** from the beginning.
 2. **When Conservative Dual-Timezone Intersection & FCC Reassigned Numbers Database (RND) Pre-Dial Gating (`P728`) Is Mandatory**:
    - **Whenever placing outbound calls across multiple timezones or to mobile numbers, never rely solely on the phone number's area code (`NPA-NXX`) for local calling hours and never dial without checking the FCC Reassigned Numbers Database (RND) (`P728`)**: Millions of mobile subscribers keep an East Coast area code (`212` NYC, `EST`) after moving to the West Coast (`PST`, 3 hours behind). Dialing at `08:30 EST` wakes a California resident at `05:30 PST`, exposing the enterprise to **$500–$1,500 per call in statutory TCPA damages**. `P728` enforces the **Most Restrictive Intersection Window (`Area-Code Timezone ∩ Postal-Address Timezone`)** against federal (`08:00–21:00`) and stricter state curfews (e.g., Florida/Washington `08:00–20:00`), verifies National/Internal DNC and that prior express consent post-dates the last **FCC RND** disconnect date, clamps the rolling 30-day abandonment rate to **`<=2.5%`**, and processes interactive keypress/spoken opt-outs within **`<=500ms`**.
-3. **Timer Resolution (`1ms` Rounding Bucket) & Offline Policy Check vs. Production Latency Boundary**:
-   - In this repository's deterministic guardrail suite, when serial blocking AMD dead air / mid-greeting voicemail truncation (`P727`) or dual-timezone curfew / DNC / RND / abandonment threshold violations (`P728`) are detected, unit tests evaluate an **offline in-memory policy/configuration state machine (`synthetic`)**. A local timer reading of `0ms` under **`1ms` clock resolution only indicates that the offline check fell into the sub-resolution `0ms` rounding bucket (`[0ms, 1ms)`), NOT proof of true `<1ms` execution (nor live media/DSP execution), and offline `synthetic` policy checks do not measure end-to-end media latency or constitute regulatory certification**.
+3. **Nominal `1ms` Display Resolution & Offline Policy Check vs. Production Latency Boundary**:
+   - In this repository's deterministic guardrail suite, when serial blocking AMD dead air / mid-greeting voicemail truncation (`P727`) or dual-timezone curfew / DNC / RND / abandonment threshold violations (`P728`) are detected, unit tests evaluate an **offline in-memory policy/configuration state machine (`synthetic`)**. Timer readings follow the strict provenance disclosure: **`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` (offline `synthetic` policy checks do not establish a `sub-1ms` physical duration upper bound, do not measure end-to-end media latency, and do not constitute regulatory certification)**.
    - **Production Engineering Budget**: Live carrier SIP `183/200 OK` signaling, DSP Goertzel/FFT `850Hz–1050Hz` beep confirmation windows (typically `150ms–300ms`), and external DNC/RND database lookup RTTs depend on live carrier trunks and external APIs and are explicitly marked **`not_measured`** in local unit tests; cited industry hang-up and compliance figures are marked **`anonymized_reported` (`independently_reproduced=false`)**.
 
 ![Enterprise Voice Agent Outbound AMD & TCPA Safe-Harbor Pacing Architecture Summary](../assets/svg/11-outbound-amd-voicemail-tcpa-2026-11-08.svg)
@@ -45,7 +45,7 @@
     2. **Step 2 (Full-Duplex Parallel Acoustic + Streaming ASR Voicemail Classifier)**: While playing that short greeting (isolated via AEC3), the edge gateway analyzes the incoming audio stream in parallel:
        - **Acoustic Track**: Measures continuous speech cadence and scans for the `850Hz–1050Hz` sinusoidal voicemail beep via a sliding Goertzel filter.
        - **Streaming Lexical Track**: Matches early ASR tokens against voicemail signatures (`"leave a message"`, `"after the tone"`, `"mailbox is full"`, `"not available"`).
-    3. **Step 3 (Offline State-Machine Cancel in `0ms` Rounding Bucket & Post-Beep Reset to `<=25s` Voicemail Script)**: The instant the parallel classifier detects a voicemail greeting or beep tone, `P727` cancels the interactive multi-turn S2S/LLM dialogue leg, waits for the beep tone to finish, and restarts from the beginning with a concise **`<=25s` standalone voicemail callback message** synthesized via cost-efficient deterministic TTS.
+    3. **Step 3 (Offline State-Machine Cancel & Post-Beep Reset to `<=25s` Voicemail Script)**: The instant the parallel classifier detects a voicemail greeting or beep tone, `P727` cancels the interactive multi-turn S2S/LLM dialogue leg, waits for the beep tone to finish, and restarts from the beginning with a concise **`<=25s` standalone voicemail callback message** synthesized via cost-efficient deterministic TTS.
 
 ### Q3: Why do enterprises still get sued under TCPA when they restrict outbound dialing to 8 AM–9 PM based on the phone number's area code? How does the Conservative Dual-Timezone Intersection & RND Gate (`P728`) work?
 
@@ -65,13 +65,13 @@
 ```mermaid
 flowchart TD
     A["📞 Enterprise Outbound Voice Call<br/>(Clinical Follow-Up / Delivery ETA / Servicing)"] --> B{"1. Pre-Dial TCPA & RND Gate (P728)<br/>Is (Area-Code TZ ∩ Postal TZ) within 08:00–20:00?<br/>Are DNC & FCC RND cleared?"}
-    B -- "❌ Outside Intersection Window<br/>or DNC / RND Reassigned Hit" --> C["🛑 P728 Offline Gate Blocks SIP INVITE (0ms rounding bucket)<br/>Reschedule to Valid Intersection Window or Purge Number"]
+    B -- "❌ Outside Intersection Window<br/>or DNC / RND Reassigned Hit" --> C["🛑 P728 Offline Gate Blocks SIP INVITE<br/>Reschedule to Valid Intersection Window or Purge Number"]
     B -- "✅ Dual-TZ Intersection Valid + DNC/RND Cleared<br/>+ Rolling 30-Day Abandonment <=2.5%" --> D{"2. Post-Answer (SIP 200 OK)<br/>Which AMD & Greeting Pacing Architecture?"}
     D -- "Option A: Legacy Serial Blocking AMD<br/>(Wait 2.5s–4.0s in silence before speaking)" --> E["❌ 3.5s Dead Air After Human 'Hello?'<br/>>35% Human Hang-Ups + Violates FCC 2.0s Rule"]
     D -- "Option B: Blind Immediate Playback<br/>(Stream full pitch at 200 OK without AMD)" --> F["❌ Talks Over Carrier Voicemail Greeting<br/>Only last 2s recorded after 950Hz Beep"]
     D -- "Option C: Parallel Streaming AMD + Optimistic Greeting (P727)<br/>(<=600ms Micro-Greeting + Parallel Acoustic/ASR Classifier)" --> G{"3. Parallel Classifier Verdict?"}
     G -- "🧑 Live Human ('Hello?' + pause)" --> H["✅ Zero-Dead-Air Multi-Turn Voice Dialogue<br/>(Full Barge-in + <=500ms Keypress/Spoken Opt-Out)"]
-    G -- "📼 Voicemail (Long Monologue / 850Hz–1050Hz Beep)" --> I["✅ P727 Offline Gate (0ms rounding bucket) Cancels Live Dialogue · Waits for Beep<br/>Plays Clean <=25s Voicemail Script from Start"]
+    G -- "📼 Voicemail (Long Monologue / 850Hz–1050Hz Beep)" --> I["✅ P727 Offline Gate Cancels Live Dialogue · Waits for Beep<br/>Plays Clean <=25s Voicemail Script from Start"]
 
     style C fill:#3b1219,stroke:#f87171,color:#fecaca
     style E fill:#3b1219,stroke:#f87171,color:#fecaca
@@ -112,7 +112,7 @@ sequenceDiagram
     participant Agent as Voice Agent Runtime
 
     Note over Dialer,Edge: Phase 1: Pre-Dial Conservative Dual-Timezone + DNC/RND Gate (P728)
-    Dialer->>Dialer: Verify (Area-Code TZ ∩ Postal TZ) inside 08:00–20:00<br/>+ DNC/RND cleared + 30-day abandonment <= 2.5% (offline policy check 0ms rounding bucket)
+    Dialer->>Dialer: Verify (Area-Code TZ ∩ Postal TZ) inside 08:00–20:00<br/>+ DNC/RND cleared + 30-day abandonment <= 2.5% (offline synthetic policy check)
     Dialer->>Callee: Send SIP INVITE
     Callee-->>Edge: SIP 200 OK + Initial Uplink Audio Frames
 
@@ -124,7 +124,7 @@ sequenceDiagram
     else Branch B: Carrier Voicemail Answers (Monologue + 950Hz Beep)
         Callee->>Edge: "You've reached Sarah, please leave a message after the tone..." (6.5s)
         Edge->>Callee: (Initial optimistic micro-greeting started at 550ms)
-        Edge->>Edge: Parallel ASR matches "leave a message" + continuous cadence!<br/>P727 offline state machine (0ms rounding bucket) cancels interactive dialogue & enters Wait-for-Beep
+        Edge->>Edge: Parallel ASR matches "leave a message" + continuous cadence!<br/>P727 offline state machine cancels interactive dialogue & enters Wait-for-Beep
         Callee->>Edge: 🔊 950Hz Voicemail Beep Tone (500ms duration)
         Edge->>Agent: 250ms post-beep -> Trigger Reset-to-Voicemail-Script
         Agent->>Callee: Play clean <=25s standalone callback voicemail from start
@@ -149,7 +149,7 @@ sequenceDiagram
 
 ## ⑤ 🧪 Quantitative Evaluation & 7-Card Benchmark Findings (Stage 367 · `P727–P728`)
 
-> **Provenance & Measurement Boundary**: Deterministic guardrail metrics below come from `packages/business-core/enterprise-guardrails.ts` and `tests/presales-portal.test.ts` (`site/data/voice-agent-benchmark-report.json` Dimension 370). Local unit tests measure the **offline in-memory policy state machine** decision time (a `0ms` reading under `1ms` timer resolution only indicates falling into the `[0ms, 1ms)` sub-resolution rounding bucket, NOT proof of true `<1ms` physical execution, labeled `synthetic`); live carrier SIP signaling, DSP Goertzel beep confirmation windows, and external DNC/RND API RTTs are explicitly marked `not_measured`; industry hang-up and regulatory baselines are marked `anonymized_reported` (`independently_reproduced=false`).
+> **Provenance & Measurement Boundary**: Deterministic guardrail metrics below come from `packages/business-core/enterprise-guardrails.ts` and `tests/presales-portal.test.ts` (`site/data/voice-agent-benchmark-report.json` Dimension 370). Local unit tests evaluate the **offline in-memory policy state machine** (`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`, labeled `synthetic`); live carrier SIP signaling, DSP Goertzel beep confirmation windows, and external DNC/RND API RTTs are explicitly marked `not_measured`; industry hang-up and regulatory baselines are marked `anonymized_reported` (`independently_reproduced=false`).
 
 | Evaluation Metric / Probe | Legacy Blocking AMD / Single-Timezone Dialer | `P727 + P728` Parallel Optimistic AMD & Safe-Harbor Gate | Verification Status & Provenance |
 | :--- | :--- | :--- | :--- |
@@ -157,7 +157,7 @@ sequenceDiagram
 | **Post-Beep Voicemail Script Duration (`voicemailMessageMaxDurationSec`)** | Truncated mid-sentence or `>45s` cutoff | **Reset after beep and clamped to `<= 25s` self-contained script** | `deterministic_guardrail_verified` · `synthetic` |
 | **Rolling 30-Day Call Abandonment Rate (`rolling30DayAbandonmentRatePct`)** | `4.2%–8.5%` (Breaches FCC `<3.0%` safe-harbor cap) | **Clamped to `<= 2.5%` (Preserves `0.5%` compliance safety buffer)** | `deterministic_guardrail_verified` · `synthetic` |
 | **Automated Opt-Out Keypress/Voice Latency (`mandatoryOptOutKeypressResponseMs`)** | Batch 24h–72h update (Continued unwanted calls) | **Clamped to `<= 500ms` real-time global DNC write & polite hang-up** | `deterministic_guardrail_verified` · `synthetic` |
-| **Offline Policy Check Timer Reading (`Policy Gate Timer Reading`)** | Unprotected | **`0ms` (falls within the `1ms` clock-resolution rounding bucket; not live DSP time)** | `synthetic` (`1ms`-resolution rounding bucket only) |
+| **Offline Policy Check Timer Reading (`Policy Gate Timer Reading`)** | Unprotected | **`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`** | `synthetic` (offline policy logic check; not live DSP time) |
 | **Live Carrier Beep Confirmation & External RND API RTT** | Carrier-dependent | **`not_measured` (Production budget: `150ms–300ms` beep window, `40ms–120ms` RND RTT)** | `not_measured` (zero fabricated coordinates) |
 
 ---
@@ -165,7 +165,7 @@ sequenceDiagram
 ## ⑥ 🛠️ Appendix: Production Outbound AMD & TCPA Safe-Harbor Launch Checklist
 
 - [ ] **1. Replace Serial Blocking AMD with `<=600ms` Optimistic Micro-Greeting (`P727`)**: Have you disabled legacy `2.5s–4.0s` silent blocking AMD and configured the edge media gateway to play an optimistic micro-greeting within **`<=600ms`** of the callee's initial `"Hello?"` while running parallel acoustic + streaming ASR voicemail classification?
-- [ ] **2. `850Hz–1050Hz` Voicemail Beep Detection & `<=25s` Post-Beep Script Reset (`P727`)**: When the parallel classifier detects a voicemail greeting or `850Hz–1050Hz` beep tone, does the state machine cancel interactive S2S/LLM dialogue immediately (offline policy check in `0ms` rounding bucket at `1ms` clock resolution), wait for the beep to finish, and play a self-contained **`<=25s`** callback message from the beginning?
+- [ ] **2. `850Hz–1050Hz` Voicemail Beep Detection & `<=25s` Post-Beep Script Reset (`P727`)**: When the parallel classifier detects a voicemail greeting or `850Hz–1050Hz` beep tone, does the state machine cancel interactive S2S/LLM dialogue immediately (offline policy check: `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured`), wait for the beep to finish, and play a self-contained **`<=25s`** callback message from the beginning?
 - [ ] **3. Conservative Dual-Timezone Intersection (`Area-Code TZ ∩ Postal-Address TZ`, `P728`)**: Before sending any SIP `INVITE`, does the dialer intersect the phone number's `NPA-NXX` timezone with the customer's postal address timezone and enforce the strictest federal/state calling window (`08:00–20:00/21:00`)?
 - [ ] **4. National/Internal DNC & FCC Reassigned Numbers Database (`RND`) Consent Timestamp Check (`P728`)**: Does the pre-dial gate verify that the customer's recorded consent timestamp is newer than the number's last disconnect date in the **FCC RND** so you never disclose PII to a reassigned number's new owner?
 - [ ] **5. `<=2.5%` Abandonment Safe-Harbor Clamp & `<=500ms` Instant Opt-Out (`P728`)**: Is the outbound pacing governor clamped at a **`<=2.5%`** rolling 30-day abandonment rate (below the `3.0%` FCC TSR cap), with automated keypress/spoken opt-out writing to the global DNC registry within **`<=500ms`**?

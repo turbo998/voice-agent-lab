@@ -16,8 +16,8 @@
 2. **敏感认证数据（SAD/CVV）的绝对存储禁令 vs. 与 `SIPREC` 录音消音（`P726`）的正交边界**：
    - **授权后严禁以任何形式存储 SAD（即使已加密也不例外）**：根据 PCI DSS 要求（Req 3.3.1），CVV2/CVC2/PIN 等敏感认证数据（SAD）在支付授权完成后**严禁存储于任何持久或调试介质（包括 `.wav` 通话录音、ASR 转写日志、LLM Trace 与数据库），即使经过高强度加密也绝无例外**。
    - **采集层旁路（`P725`）与归档层延迟消音（`P726`）是不同且可叠加的边界**：`P725` 在**边缘网关输入侧**拦截按键并暂停上行 AI 音频，防止卡号进入 ASR/LLM；而 [`P726`（SIPREC 延迟环形缓冲消音）](./siprec-pii-audio-redaction-faq.md)仅作用于**并联的合规录音归档支路**（其 `0ms` 实时 AI 对话支路依然会把客户口述音频送给 ASR/LLM）。因此，**仅做 `SIPREC` 录音消音绝不会自动净化 ASR/LLM 的数据暴露**；在支付场景中，必须以 `P725` 边缘采集旁路为主控防线，并以 `P726` 作为防范客户意外抢先口述敏感信息的录音归档补偿防线。
-3. **本机计时分辨率（`1ms` 舍入桶）与离线策略状态机检查 vs. 生产环境实测边界（Provenance 说明）**：
-   - 在本仓库确定性护栏测试中，`P725` 所采用的带内按键余音抑制阈值（`<= -65 dBFS`）与大模型暴露卡号位数（`0`）均为**本地工程策略配置/合成模型检查（`synthetic`）**，并非 PCI DSS 标准文本规定的法定分贝数值。本机计时器读数为 `0ms`（计时分辨率 `1ms`）**仅说明该离线内存策略/配置检查落在了低于计时器粒度/四舍五入的 `0ms` 舍入桶（`[0ms, 1ms)` Rounding Bucket）内，绝不能证明真实耗时 `<1ms`（更不能证明真实媒体/DSP 执行 `<1ms`），且离线 `synthetic` 策略不测量真实媒体端到端延迟，亦不构成法规或 QSA 合规认证**。
+3. **本机名义 `1ms` 显示分辨率下的 `0ms` 读数 vs. 生产环境实测边界（Provenance 说明）**：
+   - 在本仓库确定性护栏测试中，`P725` 所采用的带内按键余音抑制阈值（`<= -65 dBFS`）与大模型暴露卡号位数（`0`）均为**本地工程策略配置/合成模型检查（`synthetic`）**，并非 PCI DSS 标准文本规定的法定分贝数值。本机计时读数采用统一数学口径：**`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（名义 `1ms` 显示分辨率下报告为 `0ms`；实际物理耗时未解析/未实测；不建立 `sub-1ms` 物理耗时上界保证，更不测量真实媒体/DSP 端到端延迟，亦不构成法规或 QSA 合规认证）**。
    - 真实生产环境中的 SBC DSP 滤波残余、运营商 SIP 中继抖动、以及第三方 PCI Token Vault HSM 网络往返耗时（工程预算通常 `120ms–380ms`）在本地单测中显式标注为 **`not_measured`**；行业背景参考数据标为 **`anonymized_reported`（`independently_reproduced=false`）**。
 
 ![企业语音智能体电话支付采集旁路与双流 SIPREC 脱敏架构总结](../assets/svg/10-pci-dtmf-dual-stream-redaction-2026-11-08.svg)
@@ -115,7 +115,7 @@ sequenceDiagram
 
     AI->>Caller: “请在手机键盘输入 16 位卡号与 3 位安全码，以井号键结束”
     AI->>Edge: 开启支付拦截窗口 (enter_payment_dtmf_intercept)
-    Note over Edge,AI: P725 离线策略门禁 (0ms 舍入桶 @ 1ms 分辨率 synthetic，非真实媒体耗时)：挂起通往 ASR/LLM 的上行音频，注入静音帧
+    Note over Edge,AI: P725 离线策略门禁 (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured)：挂起通往 ASR/LLM 的上行音频，注入静音帧
     Caller->>Edge: 按下 16 位卡号 + 3 位 CVV + # (RFC 4733 Payload 101 + 少量带内余音)
     Edge->>Edge: 剥离 RFC 4733 事件，DSP 陷波将带内按键余音钳制至 <= -65 dBFS (本地合成预算)
     Edge->>Vault: mTLS POST /v1/tokenize (传送 PAN + 一次性授权 CVV)
@@ -148,7 +148,7 @@ sequenceDiagram
 | :--- | :--- | :--- | :--- |
 | **下游 LLM 暴露原始卡号位数 (`rawPanDigitsExposedToLlm`)** | `16` 位 PAN + `3` 位 CVV 明文进入 Prompt | **强制钳制为 `0` 位（仅传递 `tok_visa_...` 脱敏令牌）** | `deterministic_guardrail_verified` · `synthetic` |
 | **带内 DTMF 按键音频泄漏衰减预算 (`inbandDtmfToneBleedDb`)** | `-12 dBFS ~ -18 dBFS`（频谱可轻易还原按键） | **本地工程策略钳制 `<= -65 dBFS`（结合上行静音阻断）** | `deterministic_guardrail_verified` · `synthetic`（工程策略预算） |
-| **离线策略检查计时读数 (`Policy Gate Timer Reading`)** | 无支付窗口上行挂起门禁 | **`0ms`（位于 `1ms` 计时分辨率的四舍五入桶内，非真实 DSP 耗时）** | `synthetic`（仅表征离线配置检查落在 `1ms` 舍入桶） |
+| **离线策略检查计时读数 (`Policy Gate Timer Reading`)** | 无支付窗口上行挂起门禁 | **`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`** | `synthetic`（离线内存策略逻辑核验，非真实 DSP 耗时） |
 | **生产环境 SBC 报文剥离与 PCI 金库 Token 化 RTT** | 视外部网络与金库部署而定 | **`not_measured`（生产工程预算通常为 `120ms–380ms`）** | `not_measured`（严禁虚构线上实测值） |
 
 ---

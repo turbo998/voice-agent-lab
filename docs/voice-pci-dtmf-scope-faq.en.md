@@ -16,8 +16,8 @@
 2. **Absolute Post-Authorization Prohibition on Storing SAD (Even Encrypted) & Orthogonal Boundary with `SIPREC` Audio Redaction (`P726`)**:
    - **Never Store CVV/SAD After Authorization—Encryption Is Not an Exception**: Under PCI-DSS Requirement 3.3.1, Sensitive Authentication Data (CVV2/CVC2/CID, PIN) must **never be retained after authorization in any persistent or debug medium (`.wav` call recordings, ASR logs, LLM traces, or databases), even if encrypted**.
    - **Edge Capture Bypass (`P725`) and Delayed Recording Redaction (`P726`) Are Distinct, Composable Controls**: `P725` isolates the **upstream payment capture path** so keypad digits never enter ASR/LLM. By contrast, [`P726` (Dual-Stream SIPREC Ring-Buffer Audio Redaction)](./siprec-pii-audio-redaction-faq.en.md) only redacts the **delayed recording/archival fork** while the `0ms` real-time AI dialogue stream still flows to ASR/LLM. Therefore, **redacting `SIPREC` recordings alone does not sanitize ASR/LLM exposure**; architects should enforce `P725` for payment capture and layer `P726` to prevent unprompted spoken PII/CHD from persisting in archival storage.
-3. **Timer Resolution (`1ms` Rounding Bucket) & Offline Policy Check vs. Production Measurement Boundary**:
-   - In this repository's deterministic guardrail suite, the `-65 dBFS` in-band tone suppression threshold and `rawPanDigitsExposedToLlm = 0` check in `P725` are **local `synthetic` engineering policy/configuration checks**, not fixed decibel numbers mandated by the PCI-DSS standard. A local timer reading of `0ms` under **`1ms` clock resolution only indicates that the offline in-memory policy check fell into the sub-resolution `0ms` rounding bucket (`[0ms, 1ms)`), NOT proof of true `<1ms` execution (nor `<1ms` live media/DSP processing), and offline `synthetic` policy checks do not measure end-to-end media latency or constitute regulatory certification**.
+3. **Nominal `1ms` Display Resolution & Offline Policy Check vs. Production Measurement Boundary**:
+   - In this repository's deterministic guardrail suite, the `-65 dBFS` in-band tone suppression threshold and `rawPanDigitsExposedToLlm = 0` check in `P725` are **local `synthetic` engineering policy/configuration checks**, not fixed decibel numbers mandated by the PCI-DSS standard. Timer readings follow the strict provenance disclosure: **`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` (offline `synthetic` policy checks do not establish a `sub-1ms` physical duration upper bound, do not measure live media/DSP latency, and do not constitute regulatory certification)**.
    - Live SBC DSP filtering, carrier SIP trunk jitter, and external PCI Token Vault HSM round-trip latency (typically `120ms–380ms` engineering budget) are explicitly marked **`not_measured`** in local unit tests; cited industry context figures are marked **`anonymized_reported` (`independently_reproduced=false`)**.
 
 ![Enterprise Voice Agent Payment Capture Bypass & Dual-Stream SIPREC Redaction Summary](../assets/svg/10-pci-dtmf-dual-stream-redaction-2026-11-08.svg)
@@ -111,7 +111,7 @@ sequenceDiagram
 
     AI->>Caller: "Please enter your 16-digit card number and 3-digit security code on your keypad, followed by pound."
     AI->>Edge: Activate payment intercept window (enter_payment_dtmf_intercept)
-    Note over Edge,AI: P725 Offline Policy Gate (0ms rounding bucket @ 1ms resolution synthetic, not live media latency): Pause upstream audio to ASR/LLM & inject silence frames
+    Note over Edge,AI: P725 Offline Policy Gate (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured): Pause upstream audio to ASR/LLM & inject silence frames
     Caller->>Edge: Presses 16-digit PAN + 3-digit CVV + # (RFC 4733 Payload 101 + transient tone bleed)
     Edge->>Edge: Strip RFC 4733 events & clamp in-band tone bleed to <= -65 dBFS (local synthetic policy budget)
     Edge->>Vault: mTLS POST /v1/tokenize (PAN + one-time CVV)
@@ -144,7 +144,7 @@ sequenceDiagram
 | :--- | :--- | :--- | :--- |
 | **Raw PAN Digits Exposed to Downstream LLM (`rawPanDigitsExposedToLlm`)** | `16` PAN digits + `3` CVV digits leaked to prompt | **Clamped to `0` digits (passes opaque `tok_visa_...` only)** | `deterministic_guardrail_verified` · `synthetic` |
 | **In-Band DTMF Tone Bleed Policy Budget (`inbandDtmfToneBleedDb`)** | `-12 dBFS` to `-18 dBFS` (recoverable via spectrogram) | **Clamped to `<= -65 dBFS` local policy budget (+ upstream audio mute)** | `deterministic_guardrail_verified` · `synthetic` (local policy budget) |
-| **Offline Policy Check Timer Reading (`Policy Gate Timer Reading`)** | Unprotected | **`0ms` (falls within the `1ms` clock-resolution rounding bucket; not live DSP time)** | `synthetic` (`1ms`-resolution rounding bucket only) |
+| **Offline Policy Check Timer Reading (`Policy Gate Timer Reading`)** | Unprotected | **`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`** | `synthetic` (offline policy logic check; not live DSP time) |
 | **Live SBC Packet Stripping & PCI Token Vault HSM RTT** | Network-dependent | **`not_measured` (Production engineering budget: `120ms–380ms`)** | `not_measured` (zero fabricated coordinates) |
 
 ---

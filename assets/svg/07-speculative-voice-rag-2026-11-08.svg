@@ -32,7 +32,7 @@
   <rect x="52" y="48" width="210" height="24" rx="12" fill="#065F46" stroke="#10B981" stroke-width="1"/>
   <text x="157" y="64" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 363 · SPLIT 3A &amp; 3B</text>
   <text x="278" y="65" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="20" font-weight="800">低延迟语音只读检索 (3A: P719) 与异步写工具纪元栅栏 (3B: P720) 选型总结</text>
-  <text x="52" y="96" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12.5">单专题 3A: docs/speculative-voice-rag-faq.md (P719 只读投机 RAG) ｜ 单专题 3B: docs/voice-tool-epoch-fence-faq.md (P720 异步写栅栏与 Saga) · &lt;1ms synthetic 策略口径</text>
+  <text x="52" y="96" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12.5">单专题 3A: docs/speculative-voice-rag-faq.md (P719 只读投机 RAG) ｜ 单专题 3B: docs/voice-tool-epoch-fence-faq.md (P720 异步写栅栏与 Saga) · 0ms reported @ nominal 1ms res. synthetic 策略口径（不建立 sub-1ms 上界）</text>
 
   <!-- Left Column: Timeline Comparison (Blocking vs Speculative + 3-Tier Pacing) -->
   <rect x="36" y="130" width="552" height="260" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.5"/>
@@ -54,7 +54,7 @@
   <rect x="54" y="250" width="210" height="26" rx="4" fill="#1E3A8A" stroke="#38BDF8" stroke-width="1"/>
   <text x="159" y="267" fill="#BAE6FD" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">说话中途 60% 触发后台预取 (-600ms)</text>
   <rect x="268" y="250" width="130" height="26" rx="4" fill="#065F46" stroke="#10B981" stroke-width="1"/>
-  <text x="333" y="267" fill="#A7F3D0" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">P719 策略核验 &lt;1ms</text>
+  <text x="333" y="267" fill="#A7F3D0" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">P719 策略核验 (0ms@1ms res.)</text>
   <rect x="402" y="250" width="166" height="26" rx="4" fill="url(#emeraldGrad)"/>
   <text x="485" y="267" fill="#052E16" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" text-anchor="middle">微切片直出 TTFA 320ms!</text>
 
@@ -83,14 +83,14 @@
   <rect x="622" y="170" width="524" height="98" rx="8" fill="#13223E" stroke="#10B981" stroke-width="1.2"/>
   <text x="636" y="192" fill="#34D399" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12.5" font-weight="700">🛡️ 专题 3A (speculative-voice-rag-faq.md) · P719 只读投机预检索句尾二次核验</text>
   <text x="636" y="213" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 痛点：客户前半句说“查白金卡年费”(已触发预取)，句尾改口“…不对，查普通金卡”</text>
-  <text x="636" y="233" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：比对 Partial vs Final 相似度(&gt;=0.88)与否定极性；反转则策略状态机 &lt;1ms (synthetic) 废止旧缓存</text>
+  <text x="636" y="233" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：比对 Partial vs Final 相似度(&gt;=0.88)与否定极性；反转则策略状态机 0ms@1ms res. (synthetic, unresolved) 废止旧缓存</text>
   <text x="636" y="253" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="11">• 口径：只读幂等锁 + &lt;=120 Tokens 微切片；真实外部向量库重查(120~180ms)为 not_measured</text>
 
   <!-- P720 Box -->
   <rect x="622" y="278" width="524" height="98" rx="8" fill="#1F1638" stroke="#C084FC" stroke-width="1.2"/>
   <text x="636" y="300" fill="#E879F9" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12.5" font-weight="700">🔒 专题 3B (voice-tool-epoch-fence-faq.md) · P720 异步工具纪元写栅栏与 Saga</text>
   <text x="636" y="321" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 痛点：AI 正在跑 1.8s 退票接口(epoch=22)，客户在 900ms 喊“等等别退了！”(epoch=23)</text>
-  <text x="636" y="341" fill="#F5D0FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：检测到 invocationEpoch(22) !== activeTurnEpoch(23)，策略状态机 &lt;1ms (synthetic) 触发 Saga 冲正</text>
+  <text x="636" y="341" fill="#F5D0FE" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">• 机制：检测到 invocationEpoch(22) !== activeTurnEpoch(23)，策略状态机 0ms@1ms res. (synthetic, unresolved) 触发 Saga 冲正</text>
   <text x="636" y="361" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="11">• 口径：前导话术禁提前承诺；真实外部 CRM/ERP 事务回滚网络 I/O 为 not_measured</text>
 
   <!-- Bottom Row: 3-Pattern Architect Decision Matrix + Quantitative Benchmark -->

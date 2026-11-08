@@ -238,7 +238,7 @@ sequenceDiagram
 
 > 📊 **数据分类与溯源说明（Provenance & Measurement Scope）**：
 > - **方案对比基准数据（`anonymized_reported`, `independently_reproduced=false`）**：下表中的 P50/P95 首字延迟（TTFA）、误打断率与冷场占比源自公开/匿名化行业报告与实验室仿真基线（`anonymized_reported` / `synthetic`），**并非本仓库在真实运营商生产网上的独立实测值（真实生产端到端切换耗时标记为 `not_measured`）**。
-> - **护栏判定耗时口径（`synthetic` 离线策略状态机）**：文中所称 `<1ms`（在 `1ms` 计时分辨率下四舍五入显示为 `0ms`）仅代表 **内存级纯函数策略状态机（Offline Policy State Machine）的同步布尔/阈值判定耗时**，绝不等于真实生产环境中跨模型、跨网络的端到端音频切换耗时（生产环境泳道切换握手工程预算为 `40ms–350ms`）。表中“100% 合规/拦截”指代离线合成探针集（Synthetic Probes）规则命中率与架构设计目标，而非未经实测的生产绝对保证。
+> - **护栏判定耗时口径（`synthetic` 离线策略状态机）**：文中所称 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（名义 `1ms` 显示分辨率下报告为 `0ms`；实际耗时未解析/未实测；不建立 sub-1ms 物理上界）仅代表 **内存级纯函数策略状态机（Offline Policy State Machine）的同步布尔/阈值判定耗时**，绝不等于真实生产环境中跨模型、跨网络的端到端音频切换耗时（生产环境泳道切换握手工程预算为 `40ms–350ms`）。表中“100% 合规/拦截”指代离线合成探针集（Synthetic Probes）规则命中率与架构设计目标，而非未经实测的生产绝对保证。
 
 | 架构方案与模型组合 (Provenance: `anonymized_reported` / `synthetic`, `independently_reproduced=false`) | 首字音频延迟 P50 (TTFA) | 首字音频延迟 P95 (TTFA) | 报长卡号误打断率 (越低越好) | 法定免责条款逐字匹配率 (架构目标/合成基准) | 知识库查库冷场死寂 (>1s) 占比 | 每分钟综合成本估算 (USD/min) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -250,19 +250,19 @@ sequenceDiagram
 
 ### 4.2 今晚新增工业级代码护栏（Stage 361：`P715` & `P716`）核心机制
 
-为了把上述选型最佳实践固化为可执行的确定性工程代码，我们在 `packages/business-core/enterprise-guardrails.ts` 中落地了第 724 与 725 号离线策略状态机护栏（注：以下 `<1ms` / `0ms` 动作码均为**离线内存策略状态机的同步判定结果**，真实生产模型/音频流切换需预留 `40ms–350ms` 缓冲预算，生产实测标记为 `not_measured`）：
+为了把上述选型最佳实践固化为可执行的确定性工程代码，我们在 `packages/business-core/enterprise-guardrails.ts` 中落地了第 724 与 725 号离线策略状态机护栏（注：以下 `0ms` (reported at nominal `1ms` display resolution; actual duration unresolved/not_measured) 动作码均为**离线内存策略状态机的同步判定结果**，真实生产模型/音频流切换需预留 `40ms–350ms` 缓冲预算，生产实测标记为 `not_measured`）：
 
 1. **`P715-CASCADED-VS-S2S-COMPLIANCE-LANE-SWITCH-AND-VERBATIM-AUDIT-LOCK-GUARD`（级联 vs 原生 S2S 动态合规泳道切换与逐字审计锁护栏）**：
    - **解决痛点**：防止原生 S2S 模型在宣读金融/医疗法定免责条款时自由发挥改词，或在中途切换泳道时因为音频采样率不一致（如 S2S 的 `24kHz PCM` 切到电话网 `8kHz G.711 μ-law`）产生刺耳爆音。
    - **离线策略状态机判定逻辑**：
-     - 一旦策略状态机检测到当前对话节点属于强制逐字合规条款且未锁定受控文本泳道，或检测到文本层 PII 脱敏/工具 Schema 被旁路，**策略层在 `<1ms`（计时分辨率 `1ms`，合成探针记为 `0ms`）内返回阻断动作码（`block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms`）**；
+     - 一旦策略状态机检测到当前对话节点属于强制逐字合规条款且未锁定受控文本泳道，或检测到文本层 PII 脱敏/工具 Schema 被旁路，**策略层在 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（`synthetic`）内返回阻断动作码（`block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms`）**；
      - 一旦检测到双轨泳道中途切换存在采样率/帧对齐偏差，策略状态机立即触发 PCM 帧重对齐与受控级联 TTS 回退指令（`realign_midcall_lane_switch_pcm_frame_and_fallback_cascaded_tts_in_0ms`）；
      - 强制将生产泳道切换握手预算钳制在 `[40ms, 350ms]`、法定条款逐字匹配率下限锁定在 `[0.98, 1.00]`。
 2. **`P716-SEMANTIC-TURN-EOU-DETECTION-AND-SPECULATIVE-VOICE-RAG-PACING-GUARD`（语义级判停 EOU 与投机式语音 RAG 防冷场节奏护栏）**：
    - **解决痛点**：缓解“客户报长串数字喘气被抢话”、“投机预取在客户改口时错误提交写操作”以及“慢速 RAG 检索导致电话死寂冷场”。
    - **离线策略状态机判定逻辑**：
-     - 若检测到传统 VAD 在语法未完结或数字串报读中途强行截断，或投机式 RAG 缓存未经最终 ASR 确认就试图提交写操作，**策略层在 `<1ms` 内返回阻断指令（`block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms`）**；
-     - 若 RAG 检索冷启动耗时超过垫话阈值且尚未播报过渡语，**策略层在 `<1ms` 内返回注入语境垫话指令（`inject_contextual_filler_preamble_and_mask_rag_cold_start_in_0ms`）**；
+     - 若检测到传统 VAD 在语法未完结或数字串报读中途强行截断，或投机式 RAG 缓存未经最终 ASR 确认就试图提交写操作，**策略层同步（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`）返回阻断指令（`block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms`）**；
+     - 若 RAG 检索冷启动耗时超过垫话阈值且尚未播报过渡语，**策略层同步（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`）返回注入语境垫话指令（`inject_contextual_filler_preamble_and_mask_rag_cold_start_in_0ms`）**；
      - 动态将语义判停等待窗口钳制在 `[350ms, 1200ms]`，将投机式垫话触发预算钳制在 `[250ms, 700ms]`。
 
 ---

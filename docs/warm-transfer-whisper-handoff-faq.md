@@ -2,7 +2,7 @@
 
 > **文档定位**：面向 AI Solution Architect（AI 解决方案架构师）与企业联络中心/客服中心技术负责人的**单一架构决策实战选型指南**（Strictly Single-Topic Decision Guide）。  
 > **本篇唯一聚焦问题**：当企业语音智能体（Voice Agent）遇到越权审批、高情绪投诉或复杂异常必须转接人工坐席（AI-to-Human Escalation）时，**到底该用传统盲转（Cold / Blind Transfer，`SIP REFER`）、单腿转接 + CTI 工单弹屏（Screen-Pop Transfer），还是双腿咨询温转 + AI 耳语摘要播报（Dual-Leg Consultative Warm Transfer + Whisper Briefing）？如何既消灭客户“跟人工把姓名、订单号、委屈再重复讲一遍”的糟糕体验，又严防 AI 对坐席说的内部耳语提示（Whisper）漏音给客户？**  
-> **数据溯源口径（Provenance & Calibration）**：文中离线护栏状态机（`P723` / `P724`）执行耗时属于 `synthetic` 确定性契约测试（本机 `1ms` 计时分辨率下判定耗时 `<1ms`，四舍五入显示 `0ms`；生产环境 PBX/SBC 呼叫建立、坐席振铃排队与真实 SIP 信令耗时标记为 `not_measured`）；行业联络中心转人工通话时长与满意度基准标注为 `anonymized_reported`（`independently_reproduced=false`）。
+> **数据溯源口径（Provenance & Calibration）**：文中离线护栏状态机（`P723` / `P724`）执行耗时属于 `synthetic` 确定性契约测试（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（名义 `1ms` 显示分辨率下报告为 `0ms`；实际耗时未解析/未实测；不建立 sub-1ms 物理上界）；生产环境 PBX/SBC 呼叫建立、坐席振铃排队与真实 SIP 信令耗时标记为 `not_measured`）；行业联络中心转人工通话时长与满意度基准标注为 `anonymized_reported`（`independently_reproduced=false`）。
 
 ![企业语音智能体转人工架构选型：盲转 vs CTI 弹屏 vs 双腿咨询温转与耳语隔离](../assets/svg/09-warm-transfer-whisper-handoff-2026-11-08.svg)
 
@@ -18,7 +18,7 @@
    - **单腿转接 + CTI 结构化弹屏（SIP Transfer + Signed Context Screen-Pop，`P723`）**：适用于 **85% 的标准企业客服中心（订单售后、账单查询、常规排障）**。AI 将会话浓缩为结构化 JSON 状态包（`verifiedIdentity`、`intent`、`keySlots`、`sentiment`、`redactedSummary`），通过 CRM/CTI Webhook 推送到坐席屏幕，同时将 SIP 呼叫转入技能组队列；转接成功后即释放 AI 媒体端口。
    - **双腿咨询温转 + AI 耳语播报（Dual-Leg Consultative Warm Transfer + Whisper Briefing，`P723 + P724`）**：适用于 **VIP 财富管理、高敏医疗急诊分诊、高愤怒客户投诉升级、外勤车载坐席（不便看大屏）**。系统保持客户通话腿（A-Leg）播放等待音乐，同时拨通人工坐席腿（B-Leg）；坐席接通后，AI 用 5～8 秒倍速语音（`1.25x–1.35x`）单向向坐席“耳语（Whisper）”播报案情摘要与核身状态，坐席确认后再将 A-Leg 与 B-Leg 桥接三方通话或平滑移交。
 3. **双腿温转的生产级红线是“单向耳语声道绝对隔离（`P724`）”与“零重复追问状态包完整性（`P723`）”**：
-   - 在双腿温转的耳语阶段（Whisper Phase），B2BUA 媒体混音器必须将 AI 耳语流严格绑定为 `agent_only_tx`，并强制校验客户侧处于等待音状态且耳语向客户侧泄漏能量 `<= -70 dBFS`（离线策略状态机判定耗时 `<1ms`，`synthetic`），严防客户听到“该客户情绪激动、信用等级 C”等内部提示。
+   - 在双腿温转的耳语阶段（Whisper Phase），B2BUA 媒体混音器必须将 AI 耳语流严格绑定为 `agent_only_tx`，并强制校验客户侧处于等待音状态且耳语向客户侧泄漏能量 `<= -70 dBFS`（离线策略状态机判定读数 `0ms` @ 名义 `1ms` 分辨率，实际耗时未解析 `not_measured`，不建立 sub-1ms 上界，`synthetic`），严防客户听到“该客户情绪激动、信用等级 C”等内部提示。
 
 ---
 
@@ -67,7 +67,7 @@
          3. `confirmedSlots`（已确认的核心槽位，如订单号、金额、故障码，坐席禁止重复索取）；
          4. `escalationReasonCode`（转人工原因：越权金额、情绪告警、工具超时、客户主动要求）；
          5. `conciseBriefingUnder45Words`（45 词以内的结构化摘要 + 下一步建议动作 `recommendedNextAction`）。
-       - 若任一必填字段缺失或把已采集槽位标记为需重复询问（`repeatVerifiedSlotPrompt === true`），`P723` 状态机在 `<1ms`（`synthetic`）内阻断不完整转接并自动补齐摘要。
+       - 若任一必填字段缺失或把已采集槽位标记为需重复询问（`repeatVerifiedSlotPrompt === true`），`P723` 状态机在 `0ms`（名义 `1ms` 分辨率观测读数，实际耗时未解析 `not_measured`，不建立 sub-1ms 上界，`synthetic`）内阻断不完整转接并自动补齐摘要。
   2. **`P724` 咨询温转单向耳语声道隔离与超时回退护栏（Consultative Whisper One-Way Audio Isolation & Hold Fallback Guard）**：
      - **痛点**：在双腿温转时，如果媒体网关混音矩阵（Audio Mixer Matrix）配置错误，在 B-Leg 刚接通时就把 A-Leg（客户）和 B-Leg（坐席）混音了，AI 对坐席播报的耳语（例如“注意：该客户情绪极度暴躁，历史投诉 4 次，属于高流失风险”）就会原封不动被客户听到，瞬间引爆公关危机！
      - **底层运作机制**：
@@ -126,7 +126,7 @@ sequenceDiagram
     participant Human as 👨‍💼 人工坐席腿 (B-Leg)
 
     Caller->>AgentAI: “你们冷链寄来的生鲜全化了，我要全额退！”
-    Note over AgentAI: P723 封装结构化状态包 (<1ms synthetic)<br/>kyc=verified_otp, order=#8841, sentiment=high_risk
+    Note over AgentAI: P723 封装结构化状态包 (0ms@1ms res. synthetic)<br/>kyc=verified_otp, order=#8841, sentiment=high_risk
     AgentAI->>Caller: “王先生，我已为您登记 #8841 破损理赔，现在为您接入理赔主管直接办退款，无需重复说明，请稍候。”
     AgentAI->>B2BUA: 1. 锁定 A-Leg 进入 On-Hold 舒适等待音 (切断耳语向 A-Leg 混音 <= -70 dBFS)
     B2BUA-->>Caller: 🎵 播放柔和等待音 (完全听不到 B-Leg 耳语)
@@ -160,7 +160,7 @@ sequenceDiagram
 ## ⑤ 🧪 简明定量算例与 Benchmark 核心发现（Quantitative Evaluation & 7-Card Insights）
 
 > **数据分类与口径声明**：
-> 1. **离线策略与混音契约验证（`synthetic`）**：`P723`（温转上下文状态包 schema 完整性与零重复核身校验）与 `P724`（双腿咨询温转单向耳语隔离 `<= -70 dBFS` 与超时回退校验）在本地确定性测试集上的策略执行耗时均为 `<1ms`（本机 `1ms` 计时分辨率下四舍五入记为 `0ms`），契约拦截率 `100%`。
+> 1. **离线策略与混音契约验证（`synthetic`）**：`P723`（温转上下文状态包 schema 完整性与零重复核身校验）与 `P724`（双腿咨询温转单向耳语隔离 `<= -70 dBFS` 与超时回退校验）在本地确定性测试集上的策略执行计时读数遵循 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（名义 `1ms` 显示分辨率下报告为 `0ms`，实际耗时未解析/未实测，不建立 sub-1ms 物理上界），契约拦截率 `100%`。
 > 2. **行业联络中心运营收益算例（`anonymized_reported`, `independently_reproduced=false`）**：基于企业联络中心转人工队列公开案例与架构容量模型测算；真实生产环境 PBX 排队时长与坐席接听耗时取决于客户现场排班（`not_measured` in local unit tests）。
 
 ### 5.1 为什么 `P723` 结构化交接能帮 500 席呼叫中心每年省下数百万坐席工时成本？（定量账本）
@@ -178,11 +178,11 @@ sequenceDiagram
 
 | 评测探针 / 场景 ID | 输入特征与故障注入设定 | 期望动作 | 实测契约准确率 (`synthetic`) | 离线判定耗时 (`1ms` 分辨率) | 生产端到端 PBX/SIP 耗时 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`P723` 正常交接探针** | 含 `callCorrelationId`、`verified_otp`、已确认槽位、38 词摘要与建议动作，`repeatVerifiedSlotPrompt=false` | `allow_handoff_zero_repeat` | **100% Pass** | `<1ms` (`0ms` rounded) | `not_measured` (依现场 CTI/PBX 而定) |
-| **`P723` 缺失槽位/重复核身拦截** | 状态包丢失 `confirmedSlots` 或试图让坐席重复询问已核身字段 (`repeatVerifiedSlotPrompt=true`) | `block_and_synthesize_context_packet` | **100% Intercepted** | `<1ms` (`0ms` rounded) | `not_measured` |
-| **`P724` 耳语单向隔离正常探针** | `callerLegState='on_hold_comfort_audio'`，`callerWhisperGainDb=-85 dBFS <= -70 dBFS`，`whisperSpeechRate=1.3x` | `stream_whisper_to_agent_only` | **100% Pass** | `<1ms` (`0ms` rounded) | `not_measured` (耳语时长约 `5–7s` 设计值) |
-| **`P724` 客户侧未隔离漏音熔断** | B-Leg 摘机瞬间 A-Leg 未进 Hold 或 `callerWhisperGainDb=-18 dBFS > -70 dBFS` | `mute_whisper_and_force_caller_hold` | **100% Intercepted** | `<1ms` (`0ms` rounded) | `not_measured` |
-| **`P724` B-Leg 超时未接优雅回退** | 坐席腿振铃 `15,000ms > whisperTimeoutMs (12,000ms)` 未接听 | `cancel_b_leg_and_reengage_caller_ai` | **100% Intercepted** | `<1ms` (`0ms` rounded) | `not_measured` |
+| **`P723` 正常交接探针** | 含 `callCorrelationId`、`verified_otp`、已确认槽位、38 词摘要与建议动作，`repeatVerifiedSlotPrompt=false` | `allow_handoff_zero_repeat` | **100% Pass** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` (依现场 CTI/PBX 而定) |
+| **`P723` 缺失槽位/重复核身拦截** | 状态包丢失 `confirmedSlots` 或试图让坐席重复询问已核身字段 (`repeatVerifiedSlotPrompt=true`) | `block_and_synthesize_context_packet` | **100% Intercepted** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` |
+| **`P724` 耳语单向隔离正常探针** | `callerLegState='on_hold_comfort_audio'`，`callerWhisperGainDb=-85 dBFS <= -70 dBFS`，`whisperSpeechRate=1.3x` | `stream_whisper_to_agent_only` | **100% Pass** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` (耳语时长约 `5–7s` 设计值) |
+| **`P724` 客户侧未隔离漏音熔断** | B-Leg 摘机瞬间 A-Leg 未进 Hold 或 `callerWhisperGainDb=-18 dBFS > -70 dBFS` | `mute_whisper_and_force_caller_hold` | **100% Intercepted** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` |
+| **`P724` B-Leg 超时未接优雅回退** | 坐席腿振铃 `15,000ms > whisperTimeoutMs (12,000ms)` 未接听 | `cancel_b_leg_and_reengage_caller_ai` | **100% Intercepted** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` |
 
 ---
 

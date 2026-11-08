@@ -2,7 +2,7 @@
 
 > **Document Role**: A **strictly single-topic decision guide** for AI Solution Architects and Enterprise Contact Center Engineering Leads.  
 > **Single Architectural Question Answered**: When an Enterprise Voice Agent must escalate a call to a human agent (due to authorization limits, high-emotion complaints, or complex exceptions), **when should you select Cold/Blind Transfer (`SIP REFER`), Single-Leg Transfer with Signed CTI Screen-Pop (`P723`), or Dual-Leg Consultative Warm Transfer with AI Whisper Briefing (`P723 + P724`)? How do you eliminate the frustrating "please repeat your name, order ID, and issue all over again" experience while guaranteeing that internal AI-to-agent whisper notes never leak to the caller's audio channel?**  
-> **Data Provenance & Calibration**: Offline guardrail state-machine checks (`P723` / `P724`) are labeled `synthetic` deterministic contract tests (`<1ms` execution latency at `1ms` timer resolution, rounded to `0ms`; live production PBX/SBC call setup, queue wait, and SIP signaling latencies are labeled `not_measured` in local unit tests). Contact center handle-time savings and CSAT figures are labeled `anonymized_reported` (`independently_reproduced=false`).
+> **Data Provenance & Calibration**: Offline guardrail state-machine checks (`P723` / `P724`) are labeled `synthetic` deterministic contract tests (`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`; live production PBX/SBC call setup, queue wait, and SIP signaling latencies are labeled `not_measured` in local unit tests). Contact center handle-time savings and CSAT figures are labeled `anonymized_reported` (`independently_reproduced=false`).
 
 ![Enterprise Voice Agent AI-to-Human Handoff Selection: Cold Transfer vs. CTI Screen-Pop vs. Dual-Leg Consultative Warm Transfer & Whisper Isolation](../assets/svg/09-warm-transfer-whisper-handoff-2026-11-08.svg)
 
@@ -18,7 +18,7 @@
    - **Architecture B — Single-Leg Transfer + Signed CTI Context Screen-Pop (`SIP REFER + P723`)**: The **default workhorse for 85% of enterprise contact centers** (order support, billing, standard troubleshooting where agents sit in front of a CRM/CTI desktop and queue wait times may exceed 15 seconds). The AI writes a signed 45-word JSON Context Packet (`verifiedIdentityState`, `confirmedSlots`, `escalationReasonCode`, `recommendedNextAction`) keyed by `callCorrelationId` (passed in the SIP `User-to-User` header), executes `SIP REFER` to hand the audio leg back to the PBX queue, and immediately releases the AI media port.
    - **Architecture C — Dual-Leg Consultative Warm Transfer + One-Way Whisper Briefing (`Dual-Leg B2BUA + P723 + P724`)**: Required for **VIP wealth management, urgent clinical triage, high-anger complaint escalations, and mobile/field specialists (store managers, on-call doctors, roadside technicians using Bluetooth headsets without a CRM screen)**. The B2BUA places the caller leg (`A-Leg`) on comfort hold, dials the specialist leg (`B-Leg`), plays a 5–8 second `1.3x` speed one-way AI whisper briefing to the specialist, waits for DTMF/voice acknowledgment, and then bridges `A-Leg` and `B-Leg`.
 3. **Production Guardrails Require Zero-Repeat Context Integrity (`P723`) and `-70 dBFS` One-Way Whisper Audio Isolation (`P724`)**:
-   - During the Whisper Briefing phase, the B2BUA audio mixer matrix must lock the caller leg to comfort-hold audio and enforce `callerWhisperGainDb <= -70 dBFS` (`<1ms` offline state-machine verification, `synthetic`), guaranteeing the caller never overhears internal risk/sentiment briefing notes.
+   - During the Whisper Briefing phase, the B2BUA audio mixer matrix must lock the caller leg to comfort-hold audio and enforce `callerWhisperGainDb <= -70 dBFS` (`0ms` (@ nominal `1ms` res., `unresolved/not_measured`) offline state-machine verification, `synthetic`), guaranteeing the caller never overhears internal risk/sentiment briefing notes.
 
 ---
 
@@ -57,7 +57,7 @@
   1. **`P723` — Warm Transfer Context Packet Schema & Zero-Repeat Handoff Guard (`evaluateWarmTransferContextPacketIntegrityGate`)**:
      - **Failure Mode Prevented**: Dumping a 3,000-word raw ASR transcript onto the agent's screen (which no agent can read in 2 seconds) or forgetting to pass the cryptographic KYC verification flag (`verifiedIdentityState`), forcing the human agent to re-verify the caller's ID and order number.
      - **How It Works Under the Hood**:
-       - Before any escalation is allowed, `P723` validates 5 mandatory fields in `<1ms` (`synthetic`): `callCorrelationId`, `verifiedIdentityState` (`verified_otp` / `verified_pin` / `unverified`), non-empty `confirmedSlots`, `escalationReasonCode`, and a concise summary `briefingWordCount <= 45` with `recommendedNextAction`. It also blocks any handoff template where `repeatVerifiedSlotPrompt === true`.
+       - Before any escalation is allowed, `P723` validates 5 mandatory fields (`0ms` @ nominal `1ms` display resolution; actual duration unresolved/not_measured; `synthetic`): `callCorrelationId`, `verifiedIdentityState` (`verified_otp` / `verified_pin` / `unverified`), non-empty `confirmedSlots`, `escalationReasonCode`, and a concise summary `briefingWordCount <= 45` with `recommendedNextAction`. It also blocks any handoff template where `repeatVerifiedSlotPrompt === true`.
   2. **`P724` — Consultative Whisper One-Way Audio Isolation & Hold Fallback Guard (`evaluateConsultativeWhisperChannelIsolationGate`)**:
      - **Failure Mode Prevented**: Misconfiguring the B2BUA audio mixer matrix so that when `B-Leg` answers, the AI's internal whisper briefing (*"Warning: caller is furious, 4 prior complaints, churn risk high"*) is mixed into `A-Leg` and heard by the customer!
      - **How It Works Under the Hood**:
@@ -116,7 +116,7 @@ sequenceDiagram
     participant Human as 👨‍💼 Human Specialist Leg (B-Leg)
 
     Caller->>AgentAI: "My cold-chain order #8841 arrived completely thawed, I need a full refund!"
-    Note over AgentAI: P723 builds signed Context Packet (<1ms synthetic)<br/>kyc=verified_otp, order=#8841, sentiment=high_risk
+    Note over AgentAI: P723 builds signed Context Packet (0ms@1ms res. synthetic)<br/>kyc=verified_otp, order=#8841, sentiment=high_risk
     AgentAI->>Caller: "Mr. Wang, I have logged claim #8841 and verified your account. Let me connect you to our supervisor—you won't need to repeat anything."
     AgentAI->>B2BUA: 1. Lock A-Leg to On-Hold Comfort Audio (enforce callerWhisperGainDb <= -70 dBFS)
     B2BUA-->>Caller: 🎵 Streams comfort hold music (0% B-Leg whisper bleed)
@@ -150,7 +150,7 @@ sequenceDiagram
 ## ⑤ 🧪 Quantitative Worked Example & 7-Card Benchmark Insights
 
 > **Data Provenance Disclosure**:
-> 1. **Offline Deterministic Guardrail Verification (`synthetic`)**: `P723` (Context Packet schema & zero-repeat verification) and `P724` (One-way whisper isolation `<= -70 dBFS` & timeout fallback) execute in `<1ms` at `1ms` local timer resolution (rounded to `0ms`), achieving `100%` contract accuracy across simulated fault injections.
+> 1. **Offline Deterministic Guardrail Verification (`synthetic`)**: `P723` (Context Packet schema & zero-repeat verification) and `P724` (One-way whisper isolation `<= -70 dBFS` & timeout fallback) execute in `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`, `synthetic`, achieving `100%` contract accuracy across simulated fault injections.
 > 2. **Contact Center Operational ROI Model (`anonymized_reported`, `independently_reproduced=false`)**: Derived from enterprise contact center AHT benchmarks; actual production PBX queue wait and agent answer latencies depend on live staffing (`not_measured` in local unit tests).
 
 ### 5.1 Quantitative ROI: How Much Handle Time Does `P723` Zero-Repeat Handoff Save in a 500-Seat Contact Center?
@@ -166,11 +166,11 @@ Consider an enterprise contact center handling **20,000 AI-to-human escalations 
 
 | Probe / Scenario ID | Input Contract & Fault Injection | Expected Action | Contract Accuracy (`synthetic`) | Offline Gate Latency (`1ms` res.) | Production PBX/SIP Leg Latency |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`P723` Valid Handoff Packet** | Contains `callCorrelationId`, `verified_otp`, confirmed slots, 38-word briefing, `repeatVerifiedSlotPrompt=false` | `allow_handoff_zero_repeat` | **100% Pass** | `<1ms` (`0ms` rounded) | `not_measured` (CTI/PBX dependent) |
-| **`P723` Missing Slot / Repeat Prompt Block** | Missing `confirmedSlots` or `repeatVerifiedSlotPrompt=true` on already-verified KYC | `block_and_synthesize_context_packet` | **100% Intercepted** | `<1ms` (`0ms` rounded) | `not_measured` |
-| **`P724` Isolated Whisper Stream** | `callerLegState='on_hold_comfort_audio'`, `callerWhisperGainDb=-85 dBFS <= -70 dBFS`, `whisperSpeechRate=1.3x` | `stream_whisper_to_agent_only` | **100% Pass** | `<1ms` (`0ms` rounded) | `not_measured` (`~5–7s` design audio) |
-| **`P724` Whisper Bleed Circuit Breaker** | Caller leg not on hold or `callerWhisperGainDb=-18 dBFS > -70 dBFS` during whisper | `mute_whisper_and_force_caller_hold` | **100% Intercepted** | `<1ms` (`0ms` rounded) | `not_measured` |
-| **`P724` B-Leg Ring Timeout Fallback** | `bLegRingElapsedMs=15,000ms > whisperTimeoutMs (12,000ms)` without agent pickup | `cancel_b_leg_and_reengage_caller_ai` | **100% Intercepted** | `<1ms` (`0ms` rounded) | `not_measured` |
+| **`P723` Valid Handoff Packet** | Contains `callCorrelationId`, `verified_otp`, confirmed slots, 38-word briefing, `repeatVerifiedSlotPrompt=false` | `allow_handoff_zero_repeat` | **100% Pass** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` (CTI/PBX dependent) |
+| **`P723` Missing Slot / Repeat Prompt Block** | Missing `confirmedSlots` or `repeatVerifiedSlotPrompt=true` on already-verified KYC | `block_and_synthesize_context_packet` | **100% Intercepted** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` |
+| **`P724` Isolated Whisper Stream** | `callerLegState='on_hold_comfort_audio'`, `callerWhisperGainDb=-85 dBFS <= -70 dBFS`, `whisperSpeechRate=1.3x` | `stream_whisper_to_agent_only` | **100% Pass** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` (`~5–7s` design audio) |
+| **`P724` Whisper Bleed Circuit Breaker** | Caller leg not on hold or `callerWhisperGainDb=-18 dBFS > -70 dBFS` during whisper | `mute_whisper_and_force_caller_hold` | **100% Intercepted** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` |
+| **`P724` B-Leg Ring Timeout Fallback** | `bLegRingElapsedMs=15,000ms > whisperTimeoutMs (12,000ms)` without agent pickup | `cancel_b_leg_and_reengage_caller_ai` | **100% Intercepted** | `0ms` reported @ nominal `1ms` res. (`unresolved/not_measured`) | `not_measured` |
 
 ---
 

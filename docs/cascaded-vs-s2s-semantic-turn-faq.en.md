@@ -233,7 +233,7 @@ We evaluated 5 production voice configurations alongside tonight's **Stage 361 (
 
 > 📊 **Data Classification & Provenance Scope**:
 > - **Comparative Cohort Figures (`anonymized_reported`, `independently_reproduced=false`)**: P50/P95 TTFA latency, cut-off rates, and dead-air ratios below reflect anonymized industry reference figures and synthetic simulation models (`anonymized_reported` / `synthetic`); live carrier/production end-to-end lane-cutover latency is `not_measured` in this repository's local test environment.
-> - **Guardrail Evaluation Timing (`synthetic` Offline Policy State Machine)**: References to `<1ms` (rounded to `0ms` at `1ms` clock resolution) denote **in-memory synchronous policy function evaluation time**, NOT live production audio/network lane-switching latency (which is budgeted at `40ms–350ms`). "100%" figures represent synthetic policy probe pass rates or architectural design targets rather than unmeasured live production guarantees.
+> - **Guardrail Evaluation Timing (`synthetic` Offline Policy State Machine)**: References to `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` denote **in-memory synchronous policy function evaluation time**, NOT live production audio/network lane-switching latency (which is budgeted at `40ms–350ms`). "100%" figures represent synthetic policy probe pass rates or architectural design targets rather than unmeasured live production guarantees.
 
 | Architecture & Model Stack (Provenance: `anonymized_reported` / `synthetic`, `independently_reproduced=false`) | TTFA Latency P50 | TTFA Latency P95 | Premature Cut-Off Rate on 16-Digit Numbers | Verbatim Disclosure Match (Target / Synthetic) | RAG Lookup Dead-Air (>1s Silence) Rate | Estimated TCO (USD/min) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -245,18 +245,18 @@ We evaluated 5 production voice configurations alongside tonight's **Stage 361 (
 
 ### 4.2 Production Guardrails Added in Stage 361 (`P715` & `P716`)
 
-In `packages/business-core/enterprise-guardrails.ts`, we codified these selection principles into offline deterministic policy state-machine guardrails #724 and #725 (note: `<1ms` / `0ms` action codes reflect **in-memory policy state-machine evaluation**, while live production audio/network lane switching is budgeted at `40ms–350ms` and marked `not_measured` in local unit tests):
+In `packages/business-core/enterprise-guardrails.ts`, we codified these selection principles into offline deterministic policy state-machine guardrails #724 and #725 (note: `0ms` (reported at nominal `1ms` display resolution; actual duration unresolved/not_measured) action codes reflect **in-memory policy state-machine evaluation**, while live production audio/network lane switching is budgeted at `40ms–350ms` and marked `not_measured` in local unit tests):
 
 1. **`P715-CASCADED-VS-S2S-COMPLIANCE-LANE-SWITCH-AND-VERBATIM-AUDIT-LOCK-GUARD`**:
    - **Problem Solved**: Prevents Native S2S models from paraphrasing legally mandated financial/clinical disclosures or introducing audio pops during mid-call lane transitions between `24kHz PCM` (S2S) and `8kHz G.711` (PSTN).
    - **Offline Policy State-Machine Logic**:
-     - Emits a synchronous block decision (`<1ms` in-memory check, rounded to `0ms` at `1ms` timer resolution: `block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms`) when mandatory verbatim clauses or text-layer PII/schema rules are bypassed;
+     - Emits a synchronous block decision (`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`, in-memory `synthetic` check: `block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms`) when mandatory verbatim clauses or text-layer PII/schema rules are bypassed;
      - Emits a PCM frame realignment and cascaded TTS fallback decision (`realign_midcall_lane_switch_pcm_frame_and_fallback_cascaded_tts_in_0ms`) when a mid-call codec/sample-rate mismatch is detected;
      - Clamps the production lane-switch handoff budget to `[40ms, 350ms]` and enforces a `[0.98, 1.00]` verbatim token match floor.
 2. **`P716-SEMANTIC-TURN-EOU-DETECTION-AND-SPECULATIVE-VOICE-RAG-PACING-GUARD`**:
    - **Problem Solved**: Mitigates premature VAD cut-offs during caller pauses, prevents speculative RAG from committing write operations before final ASR verification, and masks slow RAG cold starts with contextual preamble fillers.
    - **Offline Policy State-Machine Logic**:
-     - Emits a synchronous block decision (`<1ms` in-memory check: `block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms`) on incomplete syntax/digit readouts or unverified speculative RAG commits;
+     - Emits a synchronous block decision (`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`, in-memory `synthetic` check: `block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms`) on incomplete syntax/digit readouts or unverified speculative RAG commits;
      - Emits a contextual preamble trigger (`inject_contextual_filler_preamble_and_mask_rag_cold_start_in_0ms`) whenever simulated RAG cold-start exceeds the filler threshold;
      - Clamps the Semantic EOU hold window to `[350ms, 1200ms]` and speculative filler trigger latency to `[250ms, 700ms]`.
 

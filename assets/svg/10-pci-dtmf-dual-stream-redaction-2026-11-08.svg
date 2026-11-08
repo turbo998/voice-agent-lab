@@ -45,7 +45,7 @@
   <text x="626" y="232" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13">• 目标减少 LLM 暴露：金库返回 tok_visa_4242，下游 LLM 暴露原始卡号位数 = 0</text>
   <text x="626" y="258" fill="#f0fdf4" font-family="Segoe UI, Inter, sans-serif" font-size="13">• 范围由收单方/QSA 核定：接触 CHD 的边缘 SBC 仍在范围内，SAQ-A 需满足完整 TPSP 外包</text>
   <rect x="626" y="278" width="522" height="74" rx="10" fill="#031c0d" stroke="#22c55e" stroke-width="1"/>
-  <text x="642" y="304" fill="#86efac" font-family="Consolas, monospace" font-size="12.5" font-weight="700">P725 Offline Config Check (0ms in 1ms rounding bucket | synthetic):</text>
+  <text x="642" y="304" fill="#86efac" font-family="Consolas, monospace" font-size="11.5" font-weight="700">P725 Offline Config Check (0ms @ nominal 1ms res; actual unresolved | synthetic):</text>
   <text x="642" y="328" fill="#bbf7d0" font-family="Consolas, monospace" font-size="12">clampedInbandDtmfToneBleedDb &lt;= -65 dBFS | rawPanDigitsExposedToLlm = 0</text>
 
   <!-- Bottom Full-Width: P726 Dual-Stream Ring Buffer & Decision Matrix -->
@@ -68,5 +68,5 @@
   <rect x="54" y="542" width="1092" height="90" rx="10" fill="#091326" stroke="#334155" stroke-width="1"/>
   <text x="74" y="568" fill="#fbbf24" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700">📊 架构师边界声明与 Provenance 铁律 (依据 PCI SSC 官方电话支付指南 &amp; v4.0 SAQ-A 规范)：</text>
   <text x="74" y="592" fill="#f8fafc" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">① P725 旨在减少下游 LLM 暴露，实际 PCI 范围与 SAQ 资格由收单方/QSA 按数据流、商户自控 SBC、TPSP AoC 与录音/异常旁路核定；本 Demo 非合规认证。</text>
-  <text x="74" y="616" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="12">② 1ms 分辨率下四舍五入 0ms 仅代表离线合成策略检查落在 [0ms, 1ms) 舍入桶内，不能证明真实 DSP 执行 &lt;1ms；真实媒体/金库/WORM 延迟标为 not_measured。</text>
+  <text x="74" y="616" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">② Timer: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
 </svg>

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1060" width="1600" height="1060" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <linearGradient id="bgGrad12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#131C31"/>
+    </linearGradient>
+    <linearGradient id="hdrGrad12" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="redCard12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A1215"/>
+      <stop offset="100%" stop-color="#180B0D"/>
+    </linearGradient>
+    <linearGradient id="greenCard12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B261C"/>
+      <stop offset="100%" stop-color="#071711"/>
+    </linearGradient>
+    <linearGradient id="blueCard12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2342"/>
+      <stop offset="100%" stop-color="#0A162B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="1060" fill="url(#bgGrad12)"/>
+
+  <!-- Top Header Banner -->
+  <rect x="40" y="28" width="1520" height="108" rx="16" fill="url(#hdrGrad12)"/>
+  <text x="68" y="64" fill="#E0F2FE" font-size="15" font-weight="700" letter-spacing="1.5">STAGE 368 · ROUND 8 SINGLE-TOPIC ARCHITECTURE FAQ · P729 + P730 DETERMINISTIC GUARDRAILS</text>
+  <text x="68" y="98" fill="#FFFFFF" font-size="26" font-weight="800">企业语音高危字母/数字编号（PNR/VIN/保单号）防听错消歧与 SSML 分块锚点拼读回执</text>
+  <text x="68" y="122" fill="#BAE6FD" font-size="14" font-weight="500">Alphanumeric Entity Acoustic Disambiguation, Checksum Gate (P729) &amp; SSML Chunked NATO Phonetic Readback (P730)</text>
+  <rect x="1290" y="48" width="242" height="68" rx="12" fill="#090D16" fill-opacity="0.45" stroke="#7DD3FC" stroke-width="1.2"/>
+  <text x="1411" y="76" fill="#38BDF8" font-size="14" font-weight="800" text-anchor="middle">0ms @ Nominal 1ms Res</text>
+  <text x="1411" y="98" fill="#E2E8F0" font-size="11.5" text-anchor="middle">Actual Duration Unresolved</text>
+  <text x="1411" y="112" fill="#94A3B8" font-size="10.5" text-anchor="middle">No sub-1ms bound · not_measured</text>
+
+  <!-- Row 1: Acoustic First Principle (Why 8kHz Phone Lines Break Bare Letters) vs P729/P730 Solution -->
+  <rect x="40" y="156" width="745" height="310" rx="14" fill="url(#redCard12)" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="64" y="190" fill="#FCA5A5" font-size="18" font-weight="800">❌ 为什么电话里报单号总把 F 听成 S、B 听成 D？（8kHz 窄带声学盲区）</text>
+  <text x="64" y="216" fill="#FECACA" font-size="13">1. PSTN G.711 (8kHz 采样) 物理切除 &gt;3.4kHz 高频能量，清擦音 S vs F 的 4–8kHz 摩擦共振峰丢失</text>
+  <text x="64" y="238" fill="#FECACA" font-size="13">2. 英语 E-set {B,C,D,E,G,P,T,V,Z} 共享相同 /iː/ 元音尾音，仅靠开头 20–50ms 辅音爆破区分</text>
+  <text x="64" y="260" fill="#FECACA" font-size="13">3. 零上下文高熵编号（如 B8N7F2）无语义冗余，LLM 强行“纠错”只会触发幻觉篡改单号</text>
+  <text x="64" y="282" fill="#FECACA" font-size="13">4. 对称听觉盲区：TTS 机械连读裸字母 &quot;B-8-N-7-S-2&quot;，客户在 8kHz 听筒里同样分不清 S 和 F！</text>
+
+  <!-- Frequency Spectrum Diagram Inside Left Card -->
+  <rect x="64" y="302" width="695" height="142" rx="10" fill="#0F172A" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="84" y="326" fill="#F8FAFC" font-size="13" font-weight="700">PSTN G.711 通带 (300Hz – 3400Hz) vs 辅音高频截断示意</text>
+  <!-- Passband Box -->
+  <rect x="84" y="340" width="380" height="72" rx="6" fill="#064E3B" fill-opacity="0.55" stroke="#10B981" stroke-width="1.5"/>
+  <text x="274" y="366" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">✅ 电话保留通带 (300Hz – 3400Hz)</text>
+  <text x="274" y="388" fill="#D1FAE5" font-size="12" text-anchor="middle">元音共振峰 F1/F2 完整保留 → &quot;Foxtrot&quot; vs &quot;Sierra&quot; 清晰可辨</text>
+  <!-- Cutoff Box -->
+  <rect x="476" y="340" width="262" height="72" rx="6" fill="#7F1D1D" fill-opacity="0.55" stroke="#F87171" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="607" y="366" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">⛔ &gt;3.4kHz 物理切除区 (4–8kHz)</text>
+  <text x="607" y="388" fill="#FEE2E2" font-size="12" text-anchor="middle">裸字母 /s/ vs /f/、/b/ vs /d/ 爆破能量丢失</text>
+  <text x="84" y="432" fill="#94A3B8" font-size="11">声学第一性原理：用多音节锚点词的低频元音共振峰 (F1/F2) 替代已丢失的高频单辅音摩擦噪声</text>
+
+  <!-- Right Card: P729 + P730 Dual Deterministic Gate -->
+  <rect x="815" y="156" width="745" height="310" rx="14" fill="url(#greenCard12)" stroke="#10B981" stroke-width="1.5"/>
+  <text x="839" y="190" fill="#6EE7B7" font-size="18" font-weight="800">✅ P729 + P730 双门禁状态机：数学校验前置 + SSML 分块锚点局部修复</text>
+
+  <!-- Step 1: P729 -->
+  <rect x="839" y="208" width="697" height="112" rx="10" fill="#0F172A" stroke="#059669" stroke-width="1.2"/>
+  <text x="859" y="232" fill="#34D399" font-size="14" font-weight="800">🛡️ P729：声学易混集置信度拦截与确定性校验位门禁 (Pre-API Gate)</text>
+  <text x="859" y="255" fill="#E2E8F0" font-size="12.5">• 位置级字符集掩码：如 17 位 VIN 严禁包含 I / O / Q；仅在纯数字掩码槽位允许 'O'→'0'、'幺'→'1'、'拐'→'7'</text>
+  <text x="859" y="277" fill="#E2E8F0" font-size="12.5">• 确定性数学校验位：本地预验 Luhn Mod-10、VIN 第 9 位 Mod-11、ISO 7064，未过校验严禁调后端 API</text>
+  <text x="859" y="299" fill="#E2E8F0" font-size="12.5">• 四大窄带易混簇扫描：{B,C,D,G,P,T,V}、{S,F,X}、{M,N}、{1/7, 0/O} 单字置信度 &lt;0.82 自动转入局部消歧</text>
+
+  <!-- Step 2: P730 -->
+  <rect x="839" y="332" width="697" height="114" rx="10" fill="#0F172A" stroke="#0284C7" stroke-width="1.2"/>
+  <text x="859" y="356" fill="#38BDF8" font-size="14" font-weight="800">🎙️ P730：SSML 3-3-4 节奏分块 + 北约字母表/中文锚点回读 + 局部槽位修复</text>
+  <text x="859" y="379" fill="#E2E8F0" font-size="12.5">• 工作记忆分块：每块 3～4 字符 + &lt;break time=&quot;250ms&quot;/&gt; + &lt;say-as interpret-as=&quot;characters&quot;&gt; (rate 90%)</text>
+  <text x="859" y="401" fill="#E2E8F0" font-size="12.5">• 词汇锚点展开：易混字母自动展开为 &quot;F as in Foxtrot / S as in Sierra&quot; 或 &quot;B 奔驰的奔 / F 飞机的飞&quot;</text>
+  <text x="859" y="423" fill="#E2E8F0" font-size="12.5">• 局部槽位追问 (Slot Repair)：锁定已确认分块 (&quot;B8N&quot;)，仅重问存疑分块 (&quot;7-Foxtrot-2 还是 7-Sierra-2&quot;)，≤2轮上限</text>
+
+  <!-- Row 2: 3-Tier Architecture Selection Matrix -->
+  <rect x="40" y="486" width="1520" height="275" rx="14" fill="url(#blueCard12)" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="64" y="520" fill="#93C5FD" font-size="18" font-weight="800">🧭 语音架构师三档选型决策矩阵（按编码信息熵 × 校验位结构 × 客户终端场景）</text>
+
+  <!-- Tier 1 Card -->
+  <rect x="64" y="538" width="474" height="202" rx="12" fill="#0F172A" stroke="#22C55E" stroke-width="1.4"/>
+  <text x="84" y="566" fill="#4ADE80" font-size="15" font-weight="800">第一档：短纯数字 / 强前缀数字码 (≤6 位)</text>
+  <text x="84" y="590" fill="#94A3B8" font-size="12.5">典型场景：短信验证码、手机后四位、分机号、纯数字短工单</text>
+  <text x="84" y="616" fill="#F8FAFC" font-size="13" font-weight="700">架构选型：受限数字语法 ASR + 3-3 节奏直读</text>
+  <text x="84" y="640" fill="#CBD5E1" font-size="12">• 仅开放 0-9 数字词表偏置，支持“幺(1)/拐(7)/洞(0)”映射</text>
+  <text x="84" y="662" fill="#CBD5E1" font-size="12">• 10 个数字声学间距大，无需冗余字母表锚点</text>
+  <text x="84" y="684" fill="#CBD5E1" font-size="12">• 平均交互耗时：~4–6 秒/次（1 轮快速完成）</text>
+  <text x="84" y="716" fill="#86EFAC" font-size="12" font-weight="700">✅ 纯语音极速闭环 · TCO ~$0.01/次</text>
+
+  <!-- Tier 2 Card -->
+  <rect x="563" y="538" width="474" height="202" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+  <text x="583" y="566" fill="#38BDF8" font-size="15" font-weight="800">第二档：高危字母数字混合码 (6～17 位 · 纯语音主力)</text>
+  <text x="583" y="590" fill="#94A3B8" font-size="12.5">典型场景：6位航司 PNR、17位车架号 VIN、保单号、运单号（车载/固话）</text>
+  <text x="583" y="616" fill="#F8FAFC" font-size="13" font-weight="700">架构选型：P729 易混校验门禁 + P730 SSML 分块锚点回读</text>
+  <text x="583" y="640" fill="#CBD5E1" font-size="12">• 本地预检 VIN Mod-11 / Luhn 与禁 I/O/Q 掩码 (synthetic 离线策略)</text>
+  <text x="583" y="662" fill="#CBD5E1" font-size="12">• SSML 3-3-4 分组 + 250ms 停顿 + NATO/中文锚点词局部修复</text>
+  <text x="583" y="684" fill="#CBD5E1" font-size="12">• 免视/老年友好，单槽位追问仅需 +3.5～5.0 秒（免整串重背）</text>
+  <text x="583" y="716" fill="#7DD3FC" font-size="12" font-weight="700">🛡️ 阻断 LLM 幻觉改号 · 架构目标两轮收敛率 93%–98%</text>
+
+  <!-- Tier 3 Card -->
+  <rect x="1062" y="538" width="474" height="202" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.4"/>
+  <text x="1082" y="566" fill="#FBBF24" font-size="15" font-weight="800">第三档：超长无校验自由串 (&gt;12 位) 或强噪逃生舱</text>
+  <text x="1082" y="590" fill="#94A3B8" font-size="12.5">典型场景：复杂长邮箱、24位无校验硬件序列号、强噪连续2轮未收敛</text>
+  <text x="1082" y="616" fill="#F8FAFC" font-size="13" font-weight="700">架构选型：多模态带外输入 (SMS/WhatsApp 卡片 / DTMF)</text>
+  <text x="1082" y="640" fill="#CBD5E1" font-size="12">• 超过人类工作记忆与窄带声学极限时，严禁语音无限死磕</text>
+  <text x="1082" y="662" fill="#CBD5E1" font-size="12">• 连续 2 轮局部槽位消歧未过 → 自动下发一次性 H5 录入卡片</text>
+  <text x="1082" y="684" fill="#CBD5E1" font-size="12">• 若转接人工坐席，自动携带已锁定的高置信度槽位上下文</text>
+  <text x="1082" y="716" fill="#FDE68A" font-size="12" font-weight="700">📲 ≤2 轮强制逃生舱 · 杜绝死循环投诉</text>
+
+  <!-- Row 3: Quantitative Comparison & Production Checklist -->
+  <rect x="40" y="780" width="1520" height="250" rx="14" fill="#0B1120" stroke="#475569" stroke-width="1.5"/>
+  <text x="64" y="814" fill="#F8FAFC" font-size="17" font-weight="800">📊 端到端交互对比实例（6位航司 PNR: B8N7F2）与生产上线 6 项核验铁律 (Architect Checklist)</text>
+
+  <!-- Left Sub-box: Example Trace -->
+  <rect x="64" y="830" width="710" height="180" rx="10" fill="#111827" stroke="#334155" stroke-width="1"/>
+  <text x="84" y="856" fill="#38BDF8" font-size="13.5" font-weight="700">🔍 局部槽位修复 (Partial Slot-Level Repair) 实战轨迹对比：</text>
+  <text x="84" y="882" fill="#FCA5A5" font-size="12.5">❌ 传统整串重背：客户说 &quot;B8N7F2&quot; → 机器听成 &quot;B8N7S2&quot; → 报“查无此单请重说全部6位” → 耗时 18s+ 仍错</text>
+  <text x="84" y="908" fill="#6EE7B7" font-size="12.5">✅ P729 易混拦截：识别 Slot[0..2]=&quot;B8N&quot;(conf≥0.91) 锁定；Slot[4] 落入 {S,F} 擦音簇 (conf=0.61 &lt; 0.82)</text>
+  <text x="84" y="934" fill="#BAE6FD" font-size="12.5">✅ P730 分块追问：&quot;前三位 Bravo-8-November 已确认 [停顿 250ms] 第五位请问是 Foxtrot 还是 Sierra？&quot;</text>
+  <text x="84" y="960" fill="#F8FAFC" font-size="12.5">✅ 客户仅答一词：&quot;Foxtrot（飞机的飞）&quot; → 3.5 秒精准收敛为 &quot;B8N7F2&quot; → 放行后端订单查询 API</text>
+  <text x="84" y="992" fill="#94A3B8" font-size="11">Provenance: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Right Sub-box: 6 Checkitems -->
+  <rect x="796" y="830" width="740" height="180" rx="10" fill="#111827" stroke="#334155" stroke-width="1"/>
+  <text x="816" y="856" fill="#A7F3D0" font-size="13.5" font-weight="700">🛠️ 生产环境上线核验清单（交付客户必查）：</text>
+  <text x="816" y="880" fill="#E2E8F0" font-size="12">☑ 1. 严禁 LLM 对无语义编号做自由拼写补全；仅纯数字掩码位允许确定性 'O'→'0' / '幺'→'1' 归约</text>
+  <text x="816" y="903" fill="#E2E8F0" font-size="12">☑ 2. 本地前置 Luhn Mod-10 / VIN 第9位 Mod-11 及禁 I/O/Q 校验 (P729)，未过校验物理阻断 API</text>
+  <text x="816" y="926" fill="#E2E8F0" font-size="12">☑ 3. 超过 5 位编号回读强制 SSML 3～4 字符分块 + 250ms &lt;break&gt; + interpret-as=&quot;characters&quot; (P730)</text>
+  <text x="816" y="949" fill="#E2E8F0" font-size="12">☑ 4. 8kHz 窄带遇到 {B,C,D,G,P,T,V} / {S,F,X} / {M,N} 强制展开为 NATO 或中文稳态词锚点</text>
+  <text x="816" y="972" fill="#E2E8F0" font-size="12">☑ 5. 实施局部槽位追问（锁定高置信度分块，仅重问存疑分块），严禁每次报错让客户从头重背</text>
+  <text x="816" y="995" fill="#E2E8F0" font-size="12">☑ 6. 同一槽位连续 ≤2 轮语音未收敛，自动降级 SMS/WhatsApp 一次性卡片或带上下文转接人工</text>
+</svg>

@@ -83,11 +83,11 @@
   <text x="812" y="462" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">3. Stage 367 定量门禁与 Provenance 边界</text>
   <text x="812" y="486" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">• 乐观微问候预算: &lt;= 600ms (低于 2,000ms 门槛)</text>
   <text x="812" y="506" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12">• 30天滚动弃呼率预算: &lt;= 2.5% (FCC 上限 &lt;3.0%)</text>
-  <text x="812" y="528" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">• 离线策略计时: 0ms (1ms 分辨率舍入桶, synthetic)</text>
+  <text x="812" y="528" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700">• 离线策略计时: 0ms @ nominal 1ms res (synthetic)</text>
   <text x="812" y="548" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="11">• 生产 Beep/RND 网络 RTT: not_measured (150–300ms 预算)</text>
 
   <!-- Footer -->
   <rect x="28" y="594" width="1144" height="58" rx="10" fill="#111827" stroke="#334155" />
   <text x="48" y="619" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">Provenance &amp; Verification: Stage 367 (P727–P728) · 370 Evaluation Dimensions · 737 Guardrails · 746 Probes · 807/807 Unit Tests PASS</text>
-  <text x="48" y="639" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="11">Offline synthetic policy check falls in 1ms-resolution 0ms rounding bucket (not proof of &lt;1ms live DSP); carrier SIP/DSP beep &amp; RND RTT marked not_measured.</text>
+  <text x="48" y="639" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="11">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; carrier SIP/DSP beep &amp; RND RTT marked not_measured.</text>
 </svg>

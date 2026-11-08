@@ -16,8 +16,8 @@
 2. **第一性原理：为什么流式 NER 识别总比声音慢半拍？为什么需要“延迟环形缓冲 + 双向声学安全垫 + Fail-Closed 熔断”？**：
    - **流式 ASR/NER 识别天然存在因果滞后（Causal Recognition Lag）**：当客户说出“我的身份证号是 3101...”时，声波在第 `0ms` 就已经产生了；但流式 ASR 转写出文字、再由流式命名实体识别（NER）判定这是敏感 PII，通常需要 **`250ms–550ms`** 的积累与推理时间。如果不对录音归档流做内存延迟缓冲，等 NER 发出“消音指令”时，前几个数字的明文 PCM 声波早已写入磁盘 `.wav` 文件！
    - **本地合成预算阈值（`600ms–1,500ms` 环形缓冲 + `150ms` 双向安全垫）不能保证所有语速/延迟下 100% 零残留，必须配置 Fail-Closed 归档熔断**：本仓库策略检查中设定的 `>= 600ms` 内存环形缓冲与 `>= 150ms` 前后声学安全垫（Pre/Post Padding）属于**本地工程策略预算（`synthetic`）**，并非法规硬编码值。在极快语速、方言漏检或 ASR/NER 推理抖动超时（`nerLagMs > lookaheadBufferMs`）时，在线滑动窗口仍可能迟到或漏检；此时归档网关必须执行 **Fail-Closed（故障闭合）**——**严禁将超时或置信度不足的原始 PCM 分片直接刷入持久盘**，而是将其转入加密隔离暂存区（Quarantine Staging），触发全句离线二次扫描与人工/合规复核。
-3. **本机计时分辨率（`1ms` 舍入桶）与离线合成策略检查 vs. 生产实测边界（Provenance 说明）**：
-   - 在本仓库单元测试中，`P726`（`evaluateDualStreamSiprecPiiAudioRedactionGate`）检验的是**缓冲窗口、安全垫配置与越界阻断的离线内存策略状态机（`synthetic`）**。本机计时器读数为 `0ms`（计时分辨率 `1ms`）**仅说明该内存配置检查落在低于计时器粒度/四舍五入的 `0ms` 舍入桶（`[0ms, 1ms)` Rounding Bucket）内，绝不能证明真实耗时 `<1ms`（更不能证明真实媒体流 DSP 处理 `<1ms`），且离线 `synthetic` 策略不测量实际媒体端到端耗时，亦不代表生产法规认证**。
+3. **本机名义 `1ms` 显示分辨率下的 `0ms` 读数 vs. 生产实测边界（Provenance 说明）**：
+   - 在本仓库单元测试中，`P726`（`evaluateDualStreamSiprecPiiAudioRedactionGate`）检验的是**缓冲窗口、安全垫配置与越界阻断的离线内存策略状态机（`synthetic`）**。本机计时器读数采用统一数学口径：**`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（名义 `1ms` 显示分辨率下报告为 `0ms`；实际物理耗时未解析/未实测；不建立 `sub-1ms` 物理耗时上界保证，更不测量真实媒体流 DSP 端到端耗时，亦不代表生产法规认证）**。
    - 真实生产环境中的 SIPREC RTP 分包抖动、流式 ASR/NER GPU 推理延迟、Biquad 带阻滤波 DSP 运算耗时及 WORM 对象存储 I/O 延迟均标注为 **`not_measured`**；外部参考数据标为 **`anonymized_reported`（`independently_reproduced=false`）**。
 
 ![企业语音智能体电话支付采集旁路与双流 SIPREC 脱敏架构总结](../assets/svg/10-pci-dtmf-dual-stream-redaction-2026-11-08.svg)
@@ -146,13 +146,13 @@ sequenceDiagram
 
 > **数据来源、计时分辨率与 Provenance 声明**：以下指标来自 `packages/business-core/enterprise-guardrails.ts` 中的 `evaluateDualStreamSiprecPiiAudioLookaheadRedactionGate`（`P726`）及 `tests/presales-portal.test.ts` 封存评测数据。请特别注意：
 > 1. **`600ms` 环形缓冲窗口与 `150ms` 前后声学安全垫均为本地 `synthetic` 工程策略配置阈值**，并非法规条文规定的固定数值，也不能在所有极端语速或 NER 延迟下保证 100% 物理零残留（超窗场景必须依赖 Fail-Closed 隔离区兜底）。
-> 2. **本机计时分辨率 `1ms` 下的 `0ms` 读数仅表明该离线内存策略/配置检查落在了 `[0ms, 1ms)` 的四舍五入桶（Rounding Bucket）内**，绝不代表真实音频 DSP 滤波或流式 NER 推理耗时 `<1ms`，更不构成法规合规认证；真实 SIPREC 媒体流处理与磁盘 I/O 延迟显式标注为 `not_measured`。
+> 2. **计时读数遵循严格口径：`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`**（名义 `1ms` 显示分辨率下报告为 `0ms`，实际物理耗时未解析/未实测，不建立 `sub-1ms` 上界保证），绝不代表真实音频 DSP 滤波或流式 NER 推理耗时 `sub-1ms`，更不构成法规合规认证；真实 SIPREC 媒体流处理与磁盘 I/O 延迟显式标注为 `not_measured`。
 
 | 评测探针 / 对比项 | 无延迟直写盘 / 安全垫不足基线 (`Lookahead=200ms, Pad=40ms`) | `P726` 双流内存环形缓冲与双向安全垫策略门禁 | 验证状态与数据属性（Provenance） |
 | :--- | :--- | :--- | :--- |
 | **`SIPREC` 内存环形缓冲窗口配置 (`lookaheadBufferMs`)** | `200ms`（小于常见流式 NER 识别滞后，触发拦截） | **策略门禁强制钳制 `>= 600ms`（工程预算范围 `600ms–1,500ms`）** | `deterministic_guardrail_verified` · `synthetic`（本地策略配置检查） |
 | **敏感词前后声学安全垫配置 (`prePostPaddingMs`)** | `40ms`（无法覆盖协同发音起音/尾音混响，触发拦截） | **策略门禁强制钳制 `>= 150ms` 双向安全垫预算** | `deterministic_guardrail_verified` · `synthetic`（本地策略配置检查） |
-| **离线策略检查计时读数 (`Offline Config Check Time`)** | 不适用 | **`0ms`（位于 `1ms` 计时分辨率的四舍五入桶内，非真实 DSP 耗时）** | `synthetic`（仅表征内存状态机检查落在 `1ms` 舍入桶） |
+| **离线策略检查计时读数 (`Offline Config Check Time`)** | 不适用 | **`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`** | `synthetic`（仅表征离线内存策略逻辑核验，非真实 DSP 耗时） |
 | **真实生产环境流式 NER 识别滞后与 DSP 覆写耗时** | 随模型尺寸与语速波动 | **`not_measured`（超窗或漏检时必须触发 Fail-Closed 隔离重扫）** | `not_measured`（严禁将策略 PASS 当作真实 DSP 零残留保证） |
 
 ---

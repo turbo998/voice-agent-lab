@@ -13,8 +13,8 @@
    - **企业主动外呼（医疗随访、物流预约、金融账单提醒、续保回访）严禁使用传统“串行阻塞式 AMD（先静默听 3.5 秒判断真人还是信箱再开口）”，也严禁“接通即无脑盲播整段话术”，必须强制选用“并行流式 AMD + `<=600ms` 乐观微问候 + 嘟声（Beep）打断重置架构（`P727` 护栏）”**：传统阻塞式 AMD 在客户接电话说“喂？”之后让 AI 死寂冷场 `2,500ms–4,000ms`，不仅导致 `>35%` 的真人客户以为是骚扰电话直接秒挂，更直接触犯美国 **FCC TCPA / TSR `16 CFR § 310.4(b)(1)(iv)`“客户说完问候语后 `2,000ms` 内必须出声响应，否则计为非法弃呼（Abandoned Call，30 天滚动上限 `<3%`）”** 的监管红线；而接通即盲播则会在进语音信箱时把前半段核心内容全讲在运营商提示音上，等 `850Hz–1050Hz` 留言“嘟”声响起时只剩半句“再见”。`P727` 通过在检测到首声“喂”后 **`<=600ms` 立即播报乐观短问候（如“您好，这里是某医院随访助手…”）**，同时在后台并行运行声学+流式 ASR 信箱分类器——一旦识别为语音信箱提示语或捕获留言“嘟”声，立即中断实时对话状态机并重置为 **`<=25s` 独立完整留言脚本**。
 2. **什么场景下必须启用“双时区最严交集窗口 + DNC/RND 回收号拨前硬门禁（`P728`）”？**
    - **凡涉及跨省/跨州主动外呼，严禁仅按手机号前三位号段（NPA-NXX）判断客户当前所在时区，也严禁跳过回收号数据库（FCC RND）直接发起 SIP `INVITE`（`P728` 护栏）**：在现代人口流动下，大量纽约号段（`212`，东岸 `EST`）的机主实际定居在旧金山（西岸 `PST`，慢 3 小时）。若在美东时间早上 `08:30` 按号段外呼，西岸客户凌晨 `05:30` 被吵醒，单通电话面临 **$500–$1,500 美元 TCPA 法定赔偿**。`P728` 强制在发起 SIP `INVITE` 前执行**“手机号段时区 ∩ 账单/常住地址时区”的最严交集窗口校验**（如联邦 `08:00–21:00` 或佛罗里达/华盛顿州更严的 `08:00–20:00`），同时核验国家/企业内部禁呼名单（DNC）、**FCC 回收重新放号数据库（RND）**、将 30 天滚动弃呼率安全钳制在 **`<=2.5%`**，并确保客户按键/语音退订（Opt-Out）在 **`<=500ms`** 内生效。
-3. **本机计时分辨率（`1ms` 舍入桶）与离线策略状态机检查 vs. 生产环境真实端到端预算（Provenance 边界说明）**：
-   - 在本仓库确定性护栏测试中，当检测到阻塞式 AMD 死寂超时/盲播截断（`P727`）或跨时区宵禁越界/DNC 与 RND 命中/弃呼率超限（`P728`）时，检验的是**离线内存策略/配置状态机（Offline In-Memory Policy State Machine，属性：`synthetic`）**。本机计时器读数为 `0ms`（计时分辨率 `1ms`）**仅说明该离线配置检查落在 `1ms` 分辨率的四舍五入桶（`[0ms, 1ms)` Rounding Bucket）内，绝不能证明真实媒体/DSP 执行耗时 `<1ms`，更不构成生产法规认证**。
+3. **本机名义 `1ms` 显示分辨率下的 `0ms` 读数 vs. 生产环境真实端到端预算（Provenance 边界说明）**：
+   - 在本仓库确定性护栏测试中，当检测到阻塞式 AMD 死寂超时/盲播截断（`P727`）或跨时区宵禁越界/DNC 与 RND 命中/弃呼率超限（`P728`）时，检验的是**离线内存策略/配置状态机（Offline In-Memory Policy State Machine，属性：`synthetic`）**。本机计时读数采用统一数学口径：**`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（名义 `1ms` 显示分辨率下报告为 `0ms`；实际物理耗时未解析/未实测；不建立 `sub-1ms` 物理耗时上界保证，更不构成生产法规认证）**。
    - **生产环境工程预算说明**：真实运营商 SIP `183/200 OK` 信令协商、DSP 频谱 `850Hz–1050Hz` 嘟声（Beep）能量检测窗口（通常需 `120ms–350ms` 连续帧确认）与国家级 DNC/RND API 外部查询耗时依赖真实外部线路，在本地单测中显式标注为 **`not_measured`**；文中引用的行业接通率、弃呼率与法务合规基线均标注为 **`anonymized_reported`（`independently_reproduced=false`）**。
 
 ![企业语音智能体智能外呼 AMD 与 TCPA 合规接起节奏架构选型一图流总结](../assets/svg/11-outbound-amd-voicemail-tcpa-2026-11-08.svg)
@@ -46,7 +46,7 @@
     2. **第二步（后台双路并行流式信箱分类器）**：在 AI 播报这句 1.8 秒短问候的同时，边缘网关在后台全双工监听上行音频流（由于有 AEC3 回声消除，AI 自己的声音不会干扰上行检测）：
        - **声学特征轨（Acoustic Classifier）**：实时检测连续无停顿机械朗读韵律，并用窄带 Goertzel / FFT 滤波器扫描 `850Hz–1050Hz` 语音信箱特征“嘟”声（Beep Tone）。
        - **流式语义轨（Streaming ASR Prefix Matcher）**：在 `<150ms` 内匹配高频信箱前缀词（如 `"无法接听"`、`"语音信箱"`、`"秘书台"`、`"leave a message"`、`"after the tone"`）。
-    3. **第三步（一旦确认信箱或捕获“嘟”声，离线状态机在 `0ms` 舍入桶内重置为 `<=25s` 专属留言脚本）**：一旦后台分类器判定对方是语音信箱，状态机立即**掐断当前多轮交互式对话流**，静默等待信箱提示音结束及“嘟”声响起；在“嘟”声结束后的 `300ms` 内，从头完整播放一段专为收听设计的**高密度单向留言脚本（`<=25 秒`，包含机构名称、核心通知事项与免排队回拨专线）**，播完立即优雅挂机（`SIP BYE`），既不冷场真人，也绝不截断信箱留言！
+    3. **第三步（一旦确认信箱或捕获“嘟”声，离线状态机重置为 `<=25s` 专属留言脚本）**：一旦后台分类器判定对方是语音信箱，状态机立即**掐断当前多轮交互式对话流**，静默等待信箱提示音结束及“嘟”声响起；在“嘟”声结束后的 `300ms` 内，从头完整播放一段专为收听设计的**高密度单向留言脚本（`<=25 秒`，包含机构名称、核心通知事项与免排队回拨专线）**，播完立即优雅挂机（`SIP BYE`），既不冷场真人，也绝不截断信箱留言！
 
 ### Q3：为什么企业按“手机号归属地时区”设置早 8 点到晚 9 点外呼，依然会被客户起诉违反 TCPA 宵禁法规？什么是“双时区最严交集窗口 + RND 回收号硬门禁（`P728`）”？
 
@@ -56,7 +56,7 @@
     - 根据 **FCC TCPA（`47 CFR § 64.1200(c)(1)`）** 与各州“小 TCPA 法案”（如佛罗里达州 FTSA、华盛顿州、俄克拉荷马州要求 `08:00–20:00` 甚至一天最多拨打 3 次），如果号段时区与客户 CRM 账单/居住地址时区不一致，**唯一零风险的工程准则是取两个时区合法拨打窗口的“数学交集（Most Restrictive Intersection Window）”**！例如：美东号段（`EST`）+ 美西住址（`PST`），若按美东 08:00–20:00 与美西 08:00–20:00 取交集，则只允许在**美东时间 `11:00–20:00`（即美西时间 `08:00–17:00`）**之间发起外呼，确保无论客户身处两地哪一端，都绝不会在清早 8 点前或晚上 8 点后被电话吵醒。
   - **第二重陷阱：前机主签过授权同意书，不代表现机主同意（FCC RND 回收号数据库）**：
     - 每年有超过 3,500 万个手机号码因欠费或注销被运营商回收，并在冷却期后重新发给新用户。即使你数据库里有“张先生 6 个月前签署的短信/语音通知同意书（Prior Express Consent）”，如果该号码在 2 个月前已注销并被运营商重新分配给了李女士，你打过去核对张先生的医疗账单，不仅触发 **HIPAA/隐私泄露**，还会失去 TCPA 授权抗辩！
-    - 因此，`P728` 护栏强制在发起 SIP `INVITE` 前核验 **上次获客授权日期（Consent Timestamp）是否早于 FCC RND（Reassigned Numbers Database）记录的最近一次断网回收日期**；一旦发现号码已易主或命中 DNC 名单，在离线策略门禁（`0ms` 舍入桶 @ `1ms` 计时分辨率）内直接阻断拨号并标记号码失效。
+    - 因此，`P728` 护栏强制在发起 SIP `INVITE` 前核验 **上次获客授权日期（Consent Timestamp）是否早于 FCC RND（Reassigned Numbers Database）记录的最近一次断网回收日期**；一旦发现号码已易主或命中 DNC 名单，在离线策略门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured`）内直接阻断拨号并标记号码失效。
 
 ---
 
@@ -67,13 +67,13 @@
 ```mermaid
 flowchart TD
     A["📞 企业主动外呼场景接入<br/>(医疗随访 / 物流预约 / 金融提醒 / 续保回访)"] --> B{"1. 拨前合规门禁 (P728)<br/>号段时区 vs 居住地址时区是否一致？<br/>DNC 与 FCC RND 回收号是否核验？"}
-    B -- "❌ 未核验或任一时区处于宵禁期<br/>(如 <08:00 或 >20:00/21:00)" --> C["🛑 P728 离线策略状态机 (0ms 舍入桶) 阻断 SIP INVITE<br/>排入下一合法交集时区窗口或标记号码失效"]
+    B -- "❌ 未核验或任一时区处于宵禁期<br/>(如 <08:00 或 >20:00/21:00)" --> C["🛑 P728 离线策略状态机阻断 SIP INVITE<br/>排入下一合法交集时区窗口或标记号码失效"]
     B -- "✅ 双时区交集窗口合法 + DNC/RND 通过<br/>+ 30天弃呼率 <=2.5%" --> D{"2. 电话接通后 (SIP 200 OK)<br/>应答机检测 (AMD) 与首句问候策略怎么选？"}
     D -- "方案 A：传统串行阻塞式 AMD<br/>(先静音听 2.5s–4.0s 再决定)" --> E["❌ 真人说“喂”后死寂冷场 3.5 秒<br/>>35% 真人秒挂 + 违反 FCC 2秒弃呼红线"]
     D -- "方案 B：无 AMD 接通即盲播<br/>(200 OK 立即播放完整通知)" --> F["❌ 遇语音信箱时与提示音抢话<br/>850Hz 嘟声开始录音时只剩半句“再见”"]
     D -- "方案 C：并行流式 AMD + 乐观微问候 (P727)<br/>(<=600ms 短问候 + 后台声学/ASR双轨检测)" --> G{"3. 后台并行流式分类器判定结果？"}
     G -- "🧑 判定为真人 (短促“喂”+停顿)" --> H["✅ 零冷场无缝衔接到多轮实时语音对话<br/>(支持随时打断与按键/语音 <=500ms 退订)"]
-    G -- "📼 判定为语音信箱 (长提示音 / 850Hz-1050Hz 嘟声)" --> I["✅ P727 离线状态机 (0ms 舍入桶) 取消多轮交互流 · 等待嘟声结束<br/>从头播放 <=25s 高密度完整回拨留言脚本"]
+    G -- "📼 判定为语音信箱 (长提示音 / 850Hz-1050Hz 嘟声)" --> I["✅ P727 离线状态机取消多轮交互流 · 等待嘟声结束<br/>从头播放 <=25s 高密度完整回拨留言脚本"]
 
     style C fill:#3b1219,stroke:#f87171,color:#fecaca
     style E fill:#3b1219,stroke:#f87171,color:#fecaca
@@ -114,7 +114,7 @@ sequenceDiagram
     participant Agent as 实时语音智能体 (Voice Agent)
 
     Note over Dialer,Edge: 阶段 1：拨前双时区最严交集 + DNC/RND 回收号硬门禁 (P728)
-    Dialer->>Dialer: 校验 (号段时区 ∩ 邮编地址时区) 均在 08:00–20:00 内<br/>+ DNC/RND 未命中 + 30天弃呼率 <= 2.5% (离线策略核验 0ms 舍入桶)
+    Dialer->>Dialer: 校验 (号段时区 ∩ 邮编地址时区) 均在 08:00–20:00 内<br/>+ DNC/RND 未命中 + 30天弃呼率 <= 2.5% (离线策略核验 synthetic)
     Dialer->>Callee: 发起 SIP INVITE 外呼请求
     Callee-->>Edge: SIP 200 OK (接通) + 首段上行语音流
 
@@ -126,7 +126,7 @@ sequenceDiagram
     else 分支 B：转入语音信箱（长提示音 + 950Hz 嘟声 Beep）
         Callee->>Edge: “您拨打的用户正忙，请在嘟声后留言…” (持续 6.5 秒)
         Edge->>Callee: (前 550ms 曾尝试乐观微问候)
-        Edge->>Edge: 后台并行 ASR 命中“请在嘟声后留言” + 声学连续韵律判定为 Voicemail！<br/>P727 离线状态机 (0ms 舍入桶) 取消实时多轮对话流，进入 Wait-for-Beep 监听态
+        Edge->>Edge: 后台并行 ASR 命中“请在嘟声后留言” + 声学连续韵律判定为 Voicemail！<br/>P727 离线状态机取消实时多轮对话流，进入 Wait-for-Beep 监听态
         Callee->>Edge: 🔊 950Hz 标准留言嘟声 (Beep Tone, 持续 500ms)
         Edge->>Agent: 嘟声结束 250ms 后触发 Reset-to-Voicemail-Script
         Agent->>Callee: 从头清晰播报 <=25s 独立完整留言（含事项摘要与回拨号码）
@@ -151,7 +151,7 @@ sequenceDiagram
 
 ## ⑤ 🧪 简明定量实测与 7-Card Benchmark 核心发现（Stage 367 · `P727–P728`）
 
-> **数据来源与 Provenance 声明**：以下确定性门禁指标来自本仓库 `packages/business-core/enterprise-guardrails.ts` 与 `tests/presales-portal.test.ts` 的封存评测数据（`site/data/voice-agent-benchmark-report.json` Dimension 370）。本地单元测试验证的是**离线内存策略状态机（Offline In-Memory Policy State Machine）**的判定耗时（本机计时器分辨率 `1ms` 下读数为 `0ms`，仅说明低于计时分辨率/落入 `[0ms, 1ms)` 四舍五入桶，不能证明真实耗时 `<1ms`，标记为 `synthetic`）；真实运营商 SIP 中继信令、DSP 嘟声检测窗口与外部 RND API 往返延迟显式标记为 `not_measured`；行业基线对比数据标记为 `anonymized_reported` (`independently_reproduced=false`)。
+> **数据来源与 Provenance 声明**：以下确定性门禁指标来自本仓库 `packages/business-core/enterprise-guardrails.ts` 与 `tests/presales-portal.test.ts` 的封存评测数据（`site/data/voice-agent-benchmark-report.json` Dimension 370）。本地单元测试验证的是**离线内存策略状态机（Offline In-Memory Policy State Machine）**，计时口径为 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`（标记为 `synthetic`）；真实运营商 SIP 中继信令、DSP 嘟声检测窗口与外部 RND API 往返延迟显式标记为 `not_measured`；行业基线对比数据标记为 `anonymized_reported` (`independently_reproduced=false`)。
 
 | 评测探针 / 对比项 | 阻塞式 AMD / 单时区粗放外呼（反面基线） | `P727 + P728` 并行流式乐观 AMD 与双时区安全港架构 | 验证状态与数据属性（Provenance） |
 | :--- | :--- | :--- | :--- |
@@ -159,7 +159,7 @@ sequenceDiagram
 | **语音信箱留言脚本时长控制 (`voicemailMessageMaxDurationSec`)** | 盲播截断或冗长超时（`>45s` 被运营商信箱截断） | **嘟声后重置并钳制在 `<= 25s`（高密度完整回拨留言）** | `deterministic_guardrail_verified` · `synthetic` |
 | **30 天滚动外呼弃呼率安全港门禁 (`rolling30DayAbandonmentRatePct`)** | `4.2%–8.5%`（突破 FCC TSR `<3.0%` 法定上限） | **强制安全钳制 `<= 2.5%`（预留 `0.5%` 缓冲安全垫）** | `deterministic_guardrail_verified` · `synthetic` |
 | **按键/语音退订响应延迟 (`mandatoryOptOutKeypressResponseMs`)** | 事后人工批处理（`24h–72h` 才生效，期间继续误拨） | **实时拦截并钳制在 `<= 500ms` 内写入全局 DNC 退订表** | `deterministic_guardrail_verified` · `synthetic` |
-| **离线策略检查计时读数 (`Policy Gate Timer Reading`)** | 无拨前双时区交集与嘟声重置状态机 | **`0ms`（位于 `1ms` 计时分辨率的四舍五入桶内，非真实 DSP 耗时）** | `synthetic`（仅表征离线配置检查落在 `1ms` 舍入桶） |
+| **离线策略检查计时读数 (`Policy Gate Timer Reading`)** | 无拨前双时区交集与嘟声重置状态机 | **`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`** | `synthetic`（离线内存策略逻辑核验，非真实 DSP 耗时） |
 | **真实生产环境运营商 Beep 帧确认与 RND API RTT** | 视运营商网络而定 | **`not_measured`（生产工程预算：Beep 确认 `150ms–300ms`，RND 查询 `40ms–120ms`）** | `not_measured`（避免虚构线上测量值） |
 
 ---

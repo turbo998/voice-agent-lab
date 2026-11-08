@@ -1,7 +1,7 @@
 # Enterprise Voice Agent Full-Duplex Barge-in Acoustic Isolation Selection FAQ: Basic Linear AEC3+VAD vs. Nonlinear Residual Echo Suppression (`P721`) & Target Speaker Extraction (`P722`), and How Do Speakerphone Self-Barge-in Prevention & Bystander Crosstalk Isolation Work Under the Hood?
 
 > **Single-Topic Scope (Round 4)**: Focused strictly on **full-duplex acoustic front-end barge-in isolation**—when browser/mobile built-in Linear AEC3 + Energy VAD is sufficient vs. when to deploy Double-Talk Nonlinear Residual Echo Suppression (`P721`) and Target Speaker Extraction Primary Speaker Locking (`P722`) to eliminate speakerphone self-interruption and background bystander/TV command injection.  
-> **Data Provenance Note**: Industry acoustic separation latencies, ERLE benchmarks, and false barge-in rates are tagged `anonymized_reported` (`independently_reproduced=false`). The `<1ms` (`0ms` rounded at `1ms` local clock resolution) latency reported for `P721–P722` refers strictly to **offline in-memory policy state-machine evaluation (`synthetic`)**; **live end-to-end streaming acoustic DSP filtering and neural Target Speaker Extraction frame inference (`15ms–40ms/frame` production budget) are `not_measured` in local unit tests**.
+> **Data Provenance Note**: Industry acoustic separation latencies, ERLE benchmarks, and false barge-in rates are tagged `anonymized_reported` (`independently_reproduced=false`). The `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` latency reported for `P721–P722` refers strictly to **offline in-memory policy state-machine evaluation (`synthetic`)**; **live end-to-end streaming acoustic DSP filtering and neural Target Speaker Extraction frame inference (`15ms–40ms/frame` production budget) are `not_measured` in local unit tests**.
 
 ---
 
@@ -11,9 +11,9 @@
    - When callers use **headphones or a close-to-ear handset in a quiet room** (`SNR > 20 dB`), a **Basic Linear Acoustic Pipeline (WebRTC Linear AEC3 + Energy VAD + Semantic EOU `P716`)** achieves low latency with zero extra neural DSP compute.
    - When callers use a **mobile speakerphone at high volume (>80%), an in-car cabin speaker system, a living room with a TV playing, or an open office**, linear AEC3 and energy thresholds suffer from chronic self-interruption and bystander command injection—architects should upgrade to **Double-Talk Nonlinear Residual Echo Suppression (`P721`) + Target Speaker Extraction Primary Speaker Locking (`P722`)**.
 2. **Why Does a Voice Agent Still "Interrupt Itself" on Speakerphone Even When `echoCancellation: true` Is Enabled?**
-   - Linear AEC assumes a **linear transfer function** between the speaker output and microphone input. Above 80% volume, miniature smartphone speakers physically **clip and resonate non-linearly**, generating 3rd- and 5th-order harmonics that do not exist in the digital TTS reference stream. Linear adaptive FIR filters cannot subtract these nonlinear harmonics, so the leaked residual echo trips the VAD. By enforcing the **`P721` Double-Talk Nonlinear Residual Echo Gate (`ERLE >= 18 dB` + downlink TTS spectral envelope correlation check)**, the offline policy state machine suppresses false speakerphone self-barge-in in `<1ms` (`1ms` clock resolution, `synthetic`).
+   - Linear AEC assumes a **linear transfer function** between the speaker output and microphone input. Above 80% volume, miniature smartphone speakers physically **clip and resonate non-linearly**, generating 3rd- and 5th-order harmonics that do not exist in the digital TTS reference stream. Linear adaptive FIR filters cannot subtract these nonlinear harmonics, so the leaked residual echo trips the VAD. By enforcing the **`P721` Double-Talk Nonlinear Residual Echo Gate (`ERLE >= 18 dB` + downlink TTS spectral envelope correlation check)**, the offline policy state machine suppresses false speakerphone self-barge-in in `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` (`synthetic`).
 3. **Production Gold-Standard Pattern (Near-Field Primary Speaker Embedding Lock + Silent Bystander Crosstalk Rejection `P722`)**:
-   - Standard VAD and ASR are speaker-agnostic—if a passenger or TV commercial shouts *"Cancel the order!"*, ASR transcribes it into the caller's prompt. Production pipelines anchor the primary caller's speaker embedding (`e_primary`) during the first 3 seconds of verified near-field speech and enforce **`P722` Primary Speaker Cosine Locking (`cosineSimilarity >= 0.82` and near-field SNR delta `<= 12 dB`)** on every overlapping speech frame, dropping background speech as `bystander_crosstalk_ignored` in `<1ms` (`synthetic` policy verdict) without flushing TTS playback or polluting LLM context.
+   - Standard VAD and ASR are speaker-agnostic—if a passenger or TV commercial shouts *"Cancel the order!"*, ASR transcribes it into the caller's prompt. Production pipelines anchor the primary caller's speaker embedding (`e_primary`) during the first 3 seconds of verified near-field speech and enforce **`P722` Primary Speaker Cosine Locking (`cosineSimilarity >= 0.82` and near-field SNR delta `<= 12 dB`)** on every overlapping speech frame, dropping background speech as `bystander_crosstalk_ignored` (`0ms` @ nominal `1ms` display resolution; actual duration unresolved/not_measured; `synthetic` policy verdict) without flushing TTS playback or polluting LLM context.
 
 ---
 
@@ -39,7 +39,7 @@
     - At 90% speakerphone volume, the tiny phone speaker diaphragm physically clips—creating `1,500Hz` and `2,500Hz` harmonic distortion. Because those frequencies were never in the digital TTS reference, the linear filter lets them pass straight through into the VAD, causing the AI to interrupt itself!
   - **How `P721` Stops Nonlinear Self-Barge-in**:
     1. **Continuous ERLE (Echo Return Loss Enhancement) Monitoring**: Measures how many decibels of echo attenuation the AEC is achieving (`>= 18–25 dB` under linear operation; drops `< 14 dB` during speaker clipping).
-    2. **Downlink Envelope Correlation Gate**: When uplink mic energy spikes during active TTS playback, `P721` checks spectral envelope correlation with the downlink TTS reference. If correlation is high (`>= 0.78`) while `ERLE < 18 dB`, it classifies the spike as **nonlinear speakerphone residual echo** rather than human double-talk, blocking false barge-in in `<1ms` (`synthetic` policy verdict).
+    2. **Downlink Envelope Correlation Gate**: When uplink mic energy spikes during active TTS playback, `P721` checks spectral envelope correlation with the downlink TTS reference. If correlation is high (`>= 0.78`) while `ERLE < 18 dB`, it classifies the spike as **nonlinear speakerphone residual echo** rather than human double-talk, blocking false barge-in (`0ms` @ nominal `1ms` display resolution; actual duration unresolved/not_measured; `synthetic` policy verdict).
 
 ---
 
@@ -66,7 +66,7 @@ flowchart TD
     Q1 -- "Mobile Speakerphone / Smart Speaker /\nIn-Car Cabin / Living Room or Open Office" --> Q2{"Primary Acoustic Interference Source?"}
 
     Q2 -- "Solo caller on loud speakerphone\n(Nonlinear speaker clipping harmonics)" --> NonlinearGate["🟡 Option B: Linear AEC3 + Nonlinear Residual Echo Gate (P721)\n• Enforce ERLE >= 18 dB & downlink correlation gate (<0.78)\n• Suppresses false self-barge-in from speaker clipping"]
-    Q2 -- "Multi-person room / Car cabin / TV background\n(Speakerphone echo + bystander speech)" --> FullTSE["🚀 Option C: Nonlinear Echo Gate (P721) + Target Speaker Lock TSE (P722)\n• Anchor primary caller embedding e_primary on Turn 1\n• Frame-level cosine lock (cos >= 0.82) & near-field SNR gate (<= 12 dB)\n• <1ms policy drop of passenger/TV crosstalk without flushing TTS"]
+    Q2 -- "Multi-person room / Car cabin / TV background\n(Speakerphone echo + bystander speech)" --> FullTSE["🚀 Option C: Nonlinear Echo Gate (P721) + Target Speaker Lock TSE (P722)\n• Anchor primary caller embedding e_primary on Turn 1\n• Frame-level cosine lock (cos >= 0.82) & near-field SNR gate (<= 12 dB)\n• offline policy (0ms@1ms res.) drop of passenger/TV crosstalk without flushing TTS"]
 ```
 
 ### 3.2 Legacy Linear AEC+VAD vs. Stage 364 Acoustic Isolation Pipeline (`flowchart LR`)
@@ -107,12 +107,12 @@ sequenceDiagram
     Note over Speaker,Agent: Phase 2: AI speaks on loud speakerphone; speaker diaphragm clips non-linearly
     Agent->>Speaker: 🔊 TTS: "Your monthly plan total is $199, which includes..."
     Speaker-->>Gate721: Nonlinear 1.5kHz/2.5kHz harmonics leak past linear AEC
-    Gate721->>Gate721: P721 Offline Policy Verdict (<1ms synthetic): ERLE=12dB (<18dB) & TTS correlation=0.86 (>=0.78)
+    Gate721->>Gate721: P721 Offline Policy Verdict (0ms@1ms res. synthetic): ERLE=12dB (<18dB) & TTS correlation=0.86 (>=0.78)
     Gate721-->>Agent: 🛑 Suppresses false self-barge-in (TTS continues smoothly)
 
     Note over Bystander,Agent: Phase 3: Passenger shouts in background, followed by true primary caller barge-in
     Bystander->>Gate722: 🗣️ Passenger shouts: "Just cancel the whole plan!"
-    Gate722->>Gate722: P722 Offline Policy Verdict (<1ms synthetic; streaming TSE DSP budget 15~30ms):<br/>cos(e_frame, e_primary) = 0.39 (<0.82) -> tagged bystander_crosstalk_ignored
+    Gate722->>Gate722: P722 Offline Policy Verdict (0ms@1ms res. synthetic; streaming TSE DSP budget 15~30ms):<br/>cos(e_frame, e_primary) = 0.39 (<0.82) -> tagged bystander_crosstalk_ignored
     Gate722-->>Agent: 🛑 Silently drops bystander frames (No TTS flush, no LLM context pollution)
     Caller->>Gate722: 🗣️ Primary Caller: "Hold on, what is that $30 add-on fee?"
     Gate722->>Gate722: P722 Verified: cos = 0.91 (>=0.82) & ERLE = 23 dB
@@ -128,7 +128,7 @@ sequenceDiagram
 | Dimension | Option A: Basic Linear Acoustic Pipeline (Linear AEC3 + Energy VAD) | Option B: Linear AEC3 + Nonlinear Residual Echo Gate (`P721`) | Option C: Post-Utterance Speaker Diarization | Option D: Nonlinear Echo Gate + Streaming Target Speaker Lock (`P721 + P722`) |
 | :--- | :--- | :--- | :--- | :--- |
 | **Best-Fit Scenarios** | Quiet indoor calls with headset or close-to-ear handset | **Solo caller using loud mobile speakerphone or inexpensive hardware speaker** | Post-call QA analytics and multi-speaker meeting transcripts | **Loud mobile speakerphone, multi-passenger car cabins, living room TV background, open offices, kiosks** |
-| **Per-Frame Acoustic Latency** | `5ms – 10ms` | **`8ms – 15ms`** (envelope correlation + nonlinear spectral masking; `<1ms` policy gate `synthetic`) | `500ms – 3,000ms+` (too slow for real-time barge-in gating) | **`15ms – 40ms`** (streaming speaker embedding lock + TSE masking; `<1ms` policy gate `synthetic`) |
+| **Per-Frame Acoustic Latency** | `5ms – 10ms` | **`8ms – 15ms`** (envelope correlation + nonlinear spectral masking; `0ms` reported @ nominal `1ms` res. policy gate `synthetic`, actual duration unresolved) | `500ms – 3,000ms+` (too slow for real-time barge-in gating) | **`15ms – 40ms`** (streaming speaker embedding lock + TSE masking; `0ms` reported @ nominal `1ms` res. policy gate `synthetic`, actual duration unresolved) |
 | **Loud Speakerphone Self-Barge-in Immunity** | 🔴 Weak (clipping harmonics bypass linear AEC) | 🟢 **Strong (`ERLE >= 18 dB` + downlink correlation gate suppresses clipping echo)** | 🔴 None | 🟢 **Strong (dual nonlinear echo gate + primary speaker verification)** |
 | **Bystander & TV Crosstalk Immunity** | 🔴 None (speaker-blind) | 🔴 None (only suppresses self-echo, not external voices) | 🟡 Post-hoc labeling only; cannot stop real-time TTS cutoff | 🟢 **Strong (`cos >= 0.82` primary speaker lock drops background voices silently)** |
 | **Incremental TCO (`$/min`)** | Baseline `$0.000/min` | `+$0.0005/min` (lightweight DSP) | `+$0.002 – $0.004/min` (batch) | **`+$0.002 – $0.004/min`** (streaming edge/gateway neural speaker lock) |
@@ -139,9 +139,9 @@ sequenceDiagram
 
 | Probe Scenario | Legacy Linear AEC+VAD Baseline (`anonymized_reported`) | Stage 364 (`P721–P722`) Guarded Pipeline | Data Provenance & Engineering Notes |
 | :--- | :--- | :--- | :--- |
-| **Mobile speakerphone at 90% volume clipping (`ERLE=11 dB < 18 dB`, downlink correlation `0.86`) (`P721` probe)** | Nonlinear harmonics trigger false self-barge-in every `3–5s` | **`P721` offline policy state machine (`<1ms` at `1ms` clock resolution, `synthetic`) blocks false self-barge-in and clamps nonlinear suppression floor** | Live DSP nonlinear spectral suppression latency (`8ms–15ms` budget) is `not_measured` in local unit tests |
-| **Passenger or TV shouts *"Cancel the plan!"* (`cos=0.39 < 0.82`) (`P722` probe)** | Bystander speech interrupts TTS and enters LLM prompt | **`P722` offline policy state machine (`<1ms` `synthetic`) drops bystander crosstalk (`bystander_crosstalk_ignored`) without flushing TTS** | Live streaming TSE frame inference latency (`15ms–40ms` budget) is `not_measured` in local unit tests |
-| **Primary caller interrupts in near-field (`cos=0.91 >= 0.82`, `ERLE=23 dB`) (`P721/P722` probe)** | Static high VAD thresholds deafen agent to real caller | **Primary speaker & ERLE verified; policy state machine (`<1ms` `synthetic`) allows true barge-in** | Preserves natural full-duplex interruption for the primary caller |
+| **Mobile speakerphone at 90% volume clipping (`ERLE=11 dB < 18 dB`, downlink correlation `0.86`) (`P721` probe)** | Nonlinear harmonics trigger false self-barge-in every `3–5s` | **`P721` offline policy state machine (`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`, `synthetic`) blocks false self-barge-in and clamps nonlinear suppression floor** | Live DSP nonlinear spectral suppression latency (`8ms–15ms` budget) is `not_measured` in local unit tests |
+| **Passenger or TV shouts *"Cancel the plan!"* (`cos=0.39 < 0.82`) (`P722` probe)** | Bystander speech interrupts TTS and enters LLM prompt | **`P722` offline policy state machine (`0ms` @ nominal `1ms` res., `synthetic`, actual duration unresolved) drops bystander crosstalk (`bystander_crosstalk_ignored`) without flushing TTS** | Live streaming TSE frame inference latency (`15ms–40ms` budget) is `not_measured` in local unit tests |
+| **Primary caller interrupts in near-field (`cos=0.91 >= 0.82`, `ERLE=23 dB`) (`P721/P722` probe)** | Static high VAD thresholds deafen agent to real caller | **Primary speaker & ERLE verified; policy state machine (`0ms` @ nominal `1ms` res., `synthetic`, actual duration unresolved) allows true barge-in** | Preserves natural full-duplex interruption for the primary caller |
 
 ---
 
@@ -150,4 +150,4 @@ sequenceDiagram
 - [ ] **1. Double-Talk Nonlinear Residual Echo Gate (`P721` `ERLE >= 18 dB`)**: Is nonlinear harmonic suppression active downstream of linear AEC3 to block speakerphone clipping self-barge-in?
 - [ ] **2. First-Turn Primary Speaker Enrollment Anchor (`P722` `e_primary`)**: Does the gateway anchor the primary caller's near-field speaker embedding during Turn 1 (with support for explicit verbal handoff re-anchoring)?
 - [ ] **3. Silent Bystander Crosstalk Drop (`cos >= 0.82` & Near-Field SNR Gate)**: Are background voices (`< 0.82` similarity or `> 12 dB` SNR drop) dropped before triggering TTS buffer flushes or ASR transcription?
-- [ ] **4. Separate Telemetry for `<1ms` Policy Gate vs. Streaming DSP Inference**: Do production metrics separate offline policy evaluation (`<1ms` `synthetic`) from streaming neural TSE frame inference (`15ms–40ms`), never reporting unmeasured DSP latency as `0ms`?
+- [ ] **4. Separate Telemetry for Offline Policy Gate (`0ms` @ `1ms` res.) vs. Streaming DSP Inference**: Do production metrics separate offline policy evaluation (`0ms` @ nominal `1ms` res., `synthetic`, actual duration unresolved) from streaming neural TSE frame inference (`15ms–40ms`), never reporting unmeasured DSP latency as `0ms`?

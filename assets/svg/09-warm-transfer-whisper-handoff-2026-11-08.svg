@@ -23,7 +23,7 @@
   <g transform="translate(40, 26)">
     <rect x="0" y="0" width="350" height="28" rx="14" fill="#1E1B4B" stroke="#818CF8" stroke-width="1.2"/>
     <text x="175" y="19" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 365 · ROUND 5 SINGLE-TOPIC FAQ · P723–P724</text>
-    <text x="368" y="20" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="12">Provenance: synthetic (&lt;1ms offline state machine, 1ms res.) | Live PBX leg setup: not_measured</text>
+    <text x="368" y="20" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="12">Provenance: synthetic (0ms reported @ nominal 1ms res.; actual duration unresolved/not_measured; no sub-1ms bound) | Live PBX leg setup: not_measured</text>
 
     <text x="0" y="58" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="25" font-weight="800">企业语音转人工选型：盲转 (SIP REFER)、CTI 弹屏 vs 双腿咨询温转 + Whisper 耳语</text>
     <text x="0" y="84" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="600">AI-to-Human Escalation: Cold Blind Transfer vs. P723 Signed Context Screen-Pop vs. P724 Dual-Leg Whisper Briefing</text>
@@ -78,7 +78,7 @@
   <!-- Bottom Mechanism Panel: P723 + P724 Dual-Leg Mixer & Zero-Repeat Pipeline -->
   <g transform="translate(40, 386)">
     <rect width="1120" height="248" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
-    <text x="24" y="32" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="800">底层核心原理：P723 零重复状态包契约 + P724 B2BUA 单向耳语混音隔离矩阵 (&lt;1ms synthetic gate)</text>
+    <text x="24" y="32" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="800">底层核心原理：P723 零重复状态包契约 + P724 B2BUA 单向耳语混音隔离矩阵 (0ms reported @ nominal 1ms res. synthetic gate)</text>
 
     <!-- Step 1: P723 Context Packet -->
     <g transform="translate(24, 50)">

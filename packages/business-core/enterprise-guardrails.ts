@@ -67880,7 +67880,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "block_speculative_write_tool_or_evict_stale_pivot_rag_cache_in_0ms",
           reason:
-            "Speculative Voice RAG Coherency Violation (Pre-Commit EOU Revalidation): partial-ASR speculation attempted a state-mutating write tool or caller pivoted entity/polarity at end-of-utterance (similarity <0.88); offline policy state machine blocking write and evicting stale speculative cache (<1ms policy check).",
+            "Speculative Voice RAG Coherency Violation (Pre-Commit EOU Revalidation): partial-ASR speculation attempted a state-mutating write tool or caller pivoted entity/polarity at end-of-utterance (similarity <0.88); offline policy state machine blocking write and evicting stale speculative cache (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; synthetic policy check).",
           clampedSpeculativeQuerySemanticSimilarityFloor,
           clampedVoiceRagMaxChunkTokens,
           clampedVoiceRagTotalInjectedTokens,
@@ -67958,7 +67958,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "abort_stale_epoch_write_and_trigger_saga_rollback_or_block_preamble_leak_in_0ms",
           reason:
-            "Async Voice Tool Epoch Write Fence / Preamble Safety Violation: caller barge-in incremented activeTurnEpoch past toolInvocationEpoch on a state-mutating tool or preamble claimed premature outcome/secret; offline policy state machine emitting AbortSignal + Saga rollback directive (<1ms policy check).",
+            "Async Voice Tool Epoch Write Fence / Preamble Safety Violation: caller barge-in incremented activeTurnEpoch past toolInvocationEpoch on a state-mutating tool or preamble claimed premature outcome/secret; offline policy state machine emitting AbortSignal + Saga rollback directive (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; synthetic policy check).",
           clampedUnmaskedDeadAirSilenceDuringSlowToolCallMs,
           clampedPromptablePreambleTriggerLatencyMs,
         };
@@ -68035,7 +68035,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           policyId,
           action: "suppress_nonlinear_speakerphone_echo_false_barge_in_in_0ms",
           reason:
-            "Double-Talk Nonlinear Residual Echo Violation: miniature speaker clipping harmonics degraded ERLE below 18 dB while uplink envelope strongly correlated (>=0.78) with downlink TTS reference; offline policy state machine suppressing false self-barge-in (<1ms policy check).",
+            "Double-Talk Nonlinear Residual Echo Violation: miniature speaker clipping harmonics degraded ERLE below 18 dB while uplink envelope strongly correlated (>=0.78) with downlink TTS reference; offline policy state machine suppressing false self-barge-in (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; synthetic policy check).",
           clampedEchoReturnLossEnhancementErleDb,
           clampedDownlinkTtsSpectralEnvelopeCorrelation,
         };
@@ -68111,7 +68111,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "drop_bystander_or_tv_crosstalk_frame_without_barge_in_flush_in_0ms",
           reason:
-            "Target Speaker Crosstalk Isolation Violation: background passenger/bystander or TV speech did not match anchored primary caller embedding e_primary; offline policy state machine tagging frame bystander_crosstalk_ignored without flushing TTS or polluting LLM context (<1ms policy check).",
+            "Target Speaker Crosstalk Isolation Violation: background passenger/bystander or TV speech did not match anchored primary caller embedding e_primary; offline policy state machine tagging frame bystander_crosstalk_ignored without flushing TTS or polluting LLM context (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; synthetic policy check).",
           clampedPrimarySpeakerEmbeddingCosineSimilarity,
           clampedNearFieldPrimaryCallerSnrAttenuationDeltaDb,
         };
@@ -68186,7 +68186,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "block_blind_handoff_and_synthesize_signed_context_packet_in_0ms",
           reason:
-            "Warm Transfer Context Integrity Violation: escalation attempted without a signed Context Packet (callCorrelationId, KYC badge, confirmedSlots) or prompted human agent to re-ask verified slots; offline policy state machine synthesizing 45-word structured screen-pop packet (<1ms policy check).",
+            "Warm Transfer Context Integrity Violation: escalation attempted without a signed Context Packet (callCorrelationId, KYC badge, confirmedSlots) or prompted human agent to re-ask verified slots; offline policy state machine synthesizing 45-word structured screen-pop packet (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; synthetic policy check).",
           clampedBriefingSummaryWordCount,
           clampedConfirmedSlotCoverageRatio,
         };
@@ -68259,7 +68259,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "mute_whisper_bleed_lock_caller_hold_or_reengage_ai_on_timeout_in_0ms",
           reason:
-            "Consultative Whisper Channel Isolation Violation: B2BUA mixer attempted to stream AI whisper briefing while Caller A-Leg was not isolated on comfort hold (>-70 dBFS) or bridged legs before specialist ACK; offline policy state machine forcing A-Leg isolation or graceful AI re-engagement (<1ms policy check).",
+            "Consultative Whisper Channel Isolation Violation: B2BUA mixer attempted to stream AI whisper briefing while Caller A-Leg was not isolated on comfort hold (>-70 dBFS) or bridged legs before specialist ACK; offline policy state machine forcing A-Leg isolation or graceful AI re-engagement (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; synthetic policy check).",
           clampedCallerWhisperLeakAttenuationDb,
           clampedBLegRingTimeoutMs,
         };
@@ -68327,7 +68327,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "pause_asr_llm_upstream_and_switch_to_rfc4733_edge_dtmf_vault_bypass_in_0ms",
           reason:
-            "Voice Payment CHD Exposure Policy Check: Caller attempted to speak PAN/CVV into active ASR/LLM stream or upstream audio leg remained unpaused during keypad entry; offline synthetic policy state machine pausing ASR/LLM upstream and diverting RFC 4733 DTMF digits to edge PCI vault (goal: reduce downstream LLM CHD exposure; actual SAQ/PCI scope requires Acquirer/QSA evaluation of TPSP demarcation and edge SBCs; 0ms at 1ms timer resolution is a [0ms, 1ms) rounding bucket, not a formal compliance certification).",
+            "Voice Payment CHD Exposure Policy Check: Caller attempted to speak PAN/CVV into active ASR/LLM stream or upstream audio leg remained unpaused during keypad entry; offline synthetic policy state machine pausing ASR/LLM upstream and diverting RFC 4733 DTMF digits to edge PCI vault (goal: reduce downstream LLM CHD exposure; actual SAQ/PCI scope requires Acquirer/QSA evaluation of TPSP demarcation and edge SBCs; 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; not a formal compliance certification).",
           clampedInbandDtmfToneBleedDb,
           clampedRawPanDigitsExposedToLlm,
         };
@@ -68401,7 +68401,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "block_unredacted_siprec_flush_and_zero_pcm_ringbuffer_span_in_0ms",
           reason:
-            "Dual-Stream SIPREC Archival Redaction Policy Check: Spoken PII span was about to flush to WORM storage without PCM zeroing/beep masking, NER lag exceeded lookahead window, or transcript redaction desynchronized; offline synthetic policy state machine triggering Fail-Closed quarantine and RAM ring-buffer scrub before disk write (protects archival recording fork only, does not sanitize 0ms real-time AI leg; 0ms at 1ms timer resolution is a [0ms, 1ms) rounding bucket).",
+            "Dual-Stream SIPREC Archival Redaction Policy Check: Spoken PII span was about to flush to WORM storage without PCM zeroing/beep masking, NER lag exceeded lookahead window, or transcript redaction desynchronized; offline synthetic policy state machine triggering Fail-Closed quarantine and RAM ring-buffer scrub before disk write (protects archival recording fork only, does not sanitize 0ms real-time AI leg; 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
           clampedRecordingRingBufferLookaheadMs,
           clampedPrePostAcousticMaskPaddingMs,
         };
@@ -68472,7 +68472,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "cancel_live_dialogue_on_amd_beep_and_reset_to_voicemail_script_in_0ms",
           reason:
-            "Outbound AMD Pacing Policy Check: Blocking serial AMD caused >2000ms dead air after human 'Hello?' or blind playback truncated voicemail before the 850Hz-1050Hz beep; offline synthetic policy state machine switching to parallel streaming AMD + optimistic <=600ms greeting with beep-triggered voicemail script reset (0ms at 1ms timer resolution is a [0ms, 1ms) rounding bucket).",
+            "Outbound AMD Pacing Policy Check: Blocking serial AMD caused >2000ms dead air after human 'Hello?' or blind playback truncated voicemail before the 850Hz-1050Hz beep; offline synthetic policy state machine switching to parallel streaming AMD + optimistic <=600ms greeting with beep-triggered voicemail script reset (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
           clampedOptimisticHumanGreetingOnsetMs,
           clampedVoicemailMessageMaxDurationSec,
         };
@@ -68544,7 +68544,7 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           action:
             "block_outbound_sip_invite_on_curfew_dnc_or_reassigned_number_in_0ms",
           reason:
-            "Outbound TCPA/TSR Safe-Harbor Policy Check: Either NPA-NXX area-code timezone or postal-address timezone falls outside the stricter local calling window (08:00-20:00/21:00) or number matched National/Internal DNC or FCC Reassigned Numbers Database (RND); offline synthetic policy state machine blocking SIP INVITE before dial (0ms at 1ms timer resolution is a [0ms, 1ms) rounding bucket).",
+            "Outbound TCPA/TSR Safe-Harbor Policy Check: Either NPA-NXX area-code timezone or postal-address timezone falls outside the stricter local calling window (08:00-20:00/21:00) or number matched National/Internal DNC or FCC Reassigned Numbers Database (RND); offline synthetic policy state machine blocking SIP INVITE before dial (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
           clampedRolling30DayAbandonmentRatePct,
           clampedMandatoryOptOutKeypressResponseMs,
         };
@@ -68574,6 +68574,149 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
           "Offline synthetic policy check passed: Outbound TCPA conservative dual-timezone intersection window, DNC/RND clearance, <=2.5% abandonment safe-harbor budget, and <=500ms automated opt-out verified.",
         clampedRolling30DayAbandonmentRatePct,
         clampedMandatoryOptOutKeypressResponseMs,
+      };
+    }
+
+    export interface AlphanumericAcousticDisambiguationContext {
+      acousticConfusableMismatchOrChecksumFailureDetected: boolean;
+      dynamicPhraseBoostDb: number;
+      confusableSlotConfidenceThreshold: number;
+    }
+
+    export interface AlphanumericAcousticDisambiguationDecision {
+      violated: boolean;
+      policyId: "P729-VOICE-ALPHANUMERIC-ACOUSTIC-CONFUSABLE-DISAMBIGUATION-GRAMMAR-SLOT-AND-CHECKSUM-VERIFICATION-GUARD";
+      action:
+        | "block_unverified_alphanumeric_commit_and_prompt_targeted_slot_repair_in_0ms"
+        | "clamp_dynamic_phrase_boost_and_slot_confidence_threshold"
+        | "allow";
+      reason: string;
+      clampedDynamicPhraseBoostDb: number;
+      clampedConfusableSlotConfidenceThreshold: number;
+    }
+
+    export function evaluateAlphanumericAcousticDisambiguationAndChecksumGate(
+      context: AlphanumericAcousticDisambiguationContext,
+    ): AlphanumericAcousticDisambiguationDecision {
+      const policyId =
+        "P729-VOICE-ALPHANUMERIC-ACOUSTIC-CONFUSABLE-DISAMBIGUATION-GRAMMAR-SLOT-AND-CHECKSUM-VERIFICATION-GUARD" as const;
+      const clampedDynamicPhraseBoostDb = Math.min(
+        Math.max(context.dynamicPhraseBoostDb, 12),
+        18,
+      );
+      const clampedConfusableSlotConfidenceThreshold = Math.min(
+        Math.max(context.confusableSlotConfidenceThreshold, 0.88),
+        0.96,
+      );
+
+      if (context.acousticConfusableMismatchOrChecksumFailureDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_unverified_alphanumeric_commit_and_prompt_targeted_slot_repair_in_0ms",
+          reason:
+            "Alphanumeric Entity Disambiguation Policy Check: E-Set/nasal acoustic confusable ambiguity (B/D/P/T/V or M/N), O/0 or I/1 slot type violation, or Mod-10/Mod-11/ISO-3779 checksum failure detected; offline synthetic policy state machine blocking backend query/write and triggering targeted single-character phonetic slot repair (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedDynamicPhraseBoostDb,
+          clampedConfusableSlotConfidenceThreshold,
+        };
+      }
+
+      if (
+        context.dynamicPhraseBoostDb < 12 ||
+        context.dynamicPhraseBoostDb > 18 ||
+        context.confusableSlotConfidenceThreshold < 0.88
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_dynamic_phrase_boost_and_slot_confidence_threshold",
+          reason:
+            "ASR dynamic alphanumeric phrase boost (<12 dB or >18 dB synthetic policy budget) or confusable slot confidence threshold (<0.88 synthetic budget) out of bounds; clamping phrase boost to 12-18 dB and slot confidence threshold to >=0.88.",
+          clampedDynamicPhraseBoostDb,
+          clampedConfusableSlotConfidenceThreshold,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Alphanumeric slot grammar mask, NATO/localized phonetic normalization, checksum gate, and 12-18 dB dynamic phrase boost verified.",
+        clampedDynamicPhraseBoostDb,
+        clampedConfusableSlotConfidenceThreshold,
+      };
+    }
+
+    export interface SsmlChunkedPhoneticReadbackContext {
+      unstructuredRapidReadbackOrUnconfirmedMutationDetected: boolean;
+      readbackChunkSizeChars: number;
+      interChunkProsodyBreakMs: number;
+    }
+
+    export interface SsmlChunkedPhoneticReadbackDecision {
+      violated: boolean;
+      policyId: "P730-SSML-CHUNKED-PHONETIC-READBACK-AND-TARGETED-SLOT-REPAIR-CONFIRMATION-GUARD";
+      action:
+        | "enforce_ssml_chunked_phonetic_readback_and_targeted_slot_confirmation_in_0ms"
+        | "clamp_readback_chunk_size_and_inter_chunk_prosody_break"
+        | "allow";
+      reason: string;
+      clampedReadbackChunkSizeChars: number;
+      clampedInterChunkProsodyBreakMs: number;
+    }
+
+    export function evaluateSsmlChunkedPhoneticReadbackAndConfirmationGate(
+      context: SsmlChunkedPhoneticReadbackContext,
+    ): SsmlChunkedPhoneticReadbackDecision {
+      const policyId =
+        "P730-SSML-CHUNKED-PHONETIC-READBACK-AND-TARGETED-SLOT-REPAIR-CONFIRMATION-GUARD" as const;
+      const clampedReadbackChunkSizeChars = Math.min(
+        Math.max(context.readbackChunkSizeChars, 2),
+        4,
+      );
+      const clampedInterChunkProsodyBreakMs = Math.min(
+        Math.max(context.interChunkProsodyBreakMs, 250),
+        400,
+      );
+
+      if (context.unstructuredRapidReadbackOrUnconfirmedMutationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_ssml_chunked_phonetic_readback_and_targeted_slot_confirmation_in_0ms",
+          reason:
+            "SSML Chunked Phonetic Readback Policy Check: TTS attempted unstructured rapid string readback without say-as characters/chunk pauses or attempted backend write before explicit readback confirmation; offline synthetic policy state machine enforcing 3-4 char chunking, 250-400ms SSML prosody breaks, and targeted confusable phonetic expansion (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedReadbackChunkSizeChars,
+          clampedInterChunkProsodyBreakMs,
+        };
+      }
+
+      if (
+        context.readbackChunkSizeChars > 4 ||
+        context.interChunkProsodyBreakMs < 250
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_readback_chunk_size_and_inter_chunk_prosody_break",
+          reason:
+            "Readback chunk size (>4 chars synthetic cognitive-load budget) or SSML inter-chunk prosody break (<250ms synthetic budget) out of bounds; clamping chunk size to <=4 chars and prosody break to 250-400ms.",
+          clampedReadbackChunkSizeChars,
+          clampedInterChunkProsodyBreakMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SSML 3-4 character chunked readback, 250-400ms prosody breaks, and explicit slot confirmation verified.",
+        clampedReadbackChunkSizeChars,
+        clampedInterChunkProsodyBreakMs,
       };
     }
 

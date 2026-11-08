@@ -86,7 +86,7 @@
     • 护栏机制：当 ERLE &lt; 18 dB 且上行残余与下行 TTS 包络相关度 &gt;= 0.78 时，判定为非线性残余回声
   </text>
   <text x="639" y="269" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="600">
-    • 判定口径：离线策略状态机 &lt;1ms (1ms 分辨率记 0ms, synthetic) 抑制虚假自打断；生产 DSP 预算 8~15ms
+    • 判定口径：离线策略状态机 0ms reported @ nominal 1ms res. (actual duration unresolved/not_measured; no sub-1ms bound, synthetic) 抑制虚假自打断；生产 DSP 预算 8~15ms
   </text>
 
   <rect x="623" y="292" width="518" height="94" rx="8" fill="#1E293B" stroke="#34D399" stroke-width="1.2"/>
@@ -100,7 +100,7 @@
     • 护栏机制：首轮锁定主叫 e_primary；后续帧 cos &lt; 0.82 或远场能量衰减 &gt; 12dB 标记为 bystander_crosstalk_ignored
   </text>
   <text x="639" y="375" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="600">
-    • 判定口径：离线策略状态机 &lt;1ms (synthetic) 静默丢弃串音；流式神经声纹推理生产预算 15~40ms (not_measured)
+    • 判定口径：离线策略状态机 0ms@1ms res. (synthetic, unresolved) 静默丢弃串音；流式神经声纹推理生产预算 15~40ms (not_measured)
   </text>
 
   <!-- Bottom Quantitative & Provenance Section -->
@@ -118,7 +118,7 @@
     输入：ERLE = 11 dB (&lt;18 dB), TTS 包络相关度 = 0.86
   </text>
   <text x="78" y="530" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700">
-    输出：nonlinear_echo_barge_in_suppressed (&lt;1ms synthetic)
+    输出：nonlinear_echo_barge_in_suppressed (0ms@1ms res. synthetic)
   </text>
   <text x="78" y="552" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="11">
     传统基线每 3~5s 误自断 (anonymized_reported) vs 门禁拦截
@@ -132,7 +132,7 @@
     输入：cos(e_frame, e_primary) = 0.39 (&lt;0.82), 远场衰减 15dB
   </text>
   <text x="442" y="530" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700">
-    输出：bystander_crosstalk_ignored (&lt;1ms synthetic)
+    输出：bystander_crosstalk_ignored (0ms@1ms res. synthetic)
   </text>
   <text x="442" y="552" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="11">
     不清空下行 TTS 缓冲、不污染 LLM 上下文；TSE 预算 15~40ms
@@ -146,7 +146,7 @@
     输入：cos(e_frame, e_primary) = 0.91 (&gt;=0.82), ERLE = 23 dB
   </text>
   <text x="806" y="530" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700">
-    输出：verified_primary_speaker_barge_in (&lt;1ms synthetic)
+    输出：verified_primary_speaker_barge_in (0ms@1ms res. synthetic)
   </text>
   <text x="806" y="552" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="11">
     避免盲目调高静态 VAD 阈值导致主叫正常轻声打断失灵
@@ -154,6 +154,6 @@
 
   <!-- Provenance Footer -->
   <text x="60" y="608" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">
-    📌 Provenance 口径：行业声学基线为 anonymized_reported (independently_reproduced=false)；P721–P722 的 &lt;1ms (1ms 分辨率记 0ms) 为离线策略状态机评估 (synthetic)，流式 DSP/TSE 端到端推理耗时为 not_measured。
+    📌 Provenance 口径：行业声学基线为 anonymized_reported (independently_reproduced=false)；P721–P722 的 0ms reported at nominal 1ms display resolution (actual duration unresolved/not_measured; no sub-1ms upper bound established) 为离线策略状态机评估 (synthetic)，流式 DSP/TSE 端到端推理耗时为 not_measured。
   </text>
 </svg>
