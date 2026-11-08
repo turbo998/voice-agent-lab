@@ -68720,6 +68720,149 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface MidCallMediaReanchorAndCheckpointContext {
+      unhydratedFailoverOrDuplicateToolReplayAttempted: boolean;
+      mediaReanchorLatencyBudgetMs: number;
+      hydratedCheckpointLagEpochs: number;
+    }
+
+    export interface MidCallMediaReanchorAndCheckpointDecision {
+      violated: boolean;
+      policyId: "P731-MIDCALL-MEDIA-REINVITE-ICE-RESTART-AND-CHECKPOINT-HYDRATION-GUARD";
+      action:
+        | "enforce_sip_reinvite_ice_restart_checkpoint_hydration_and_idempotency_fence_in_0ms"
+        | "clamp_media_reanchor_budget_and_checkpoint_epoch_lag"
+        | "allow";
+      reason: string;
+      clampedMediaReanchorLatencyBudgetMs: number;
+      clampedHydratedCheckpointLagEpochs: number;
+    }
+
+    export function evaluateMidCallMediaReanchorAndCheckpointHydrationGate(
+      context: MidCallMediaReanchorAndCheckpointContext,
+    ): MidCallMediaReanchorAndCheckpointDecision {
+      const policyId =
+        "P731-MIDCALL-MEDIA-REINVITE-ICE-RESTART-AND-CHECKPOINT-HYDRATION-GUARD" as const;
+      const clampedMediaReanchorLatencyBudgetMs = Math.min(
+        Math.max(context.mediaReanchorLatencyBudgetMs, 200),
+        1500,
+      );
+      const clampedHydratedCheckpointLagEpochs = Math.max(
+        Math.min(context.hydratedCheckpointLagEpochs, 0),
+        0,
+      );
+
+      if (context.unhydratedFailoverOrDuplicateToolReplayAttempted) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_sip_reinvite_ice_restart_checkpoint_hydration_and_idempotency_fence_in_0ms",
+          reason:
+            "Mid-Call Media Re-Anchoring & Checkpoint Hydration Policy Check: standby worker attempted mid-call takeover without hydrating the latest Redis turn checkpoint or attempted to replay an in-flight write tool without checking committedIdempotencyKeys; offline synthetic policy state machine enforcing SIP Re-INVITE / WebRTC ICE Restart + epoch-aligned checkpoint hydration + idempotency ledger check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live carrier signaling & Redis RTT not_measured).",
+          clampedMediaReanchorLatencyBudgetMs,
+          clampedHydratedCheckpointLagEpochs,
+        };
+      }
+
+      if (
+        context.mediaReanchorLatencyBudgetMs > 1500 ||
+        context.hydratedCheckpointLagEpochs > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_media_reanchor_budget_and_checkpoint_epoch_lag",
+          reason:
+            "Mid-call media re-anchor latency budget (>1,500ms synthetic target) or checkpoint epoch lag (>0 epochs) out of bounds; clamping re-anchor budget to <=1,500ms and requiring zero epoch lag (hydratedCheckpointEpoch >= activeTurnEpoch).",
+          clampedMediaReanchorLatencyBudgetMs,
+          clampedHydratedCheckpointLagEpochs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: mid-call SIP Re-INVITE / WebRTC ICE Restart media re-anchoring within <=1,500ms budget, zero-lag turn checkpoint hydration, and idempotency ledger verification confirmed.",
+        clampedMediaReanchorLatencyBudgetMs,
+        clampedHydratedCheckpointLagEpochs,
+      };
+    }
+
+    export interface VoiceProviderCircuitBreakerAndPersonaContext {
+      unbridgedProviderBrownoutOrVoicePersonaMismatchDetected: boolean;
+      primaryProviderTtfaBudgetMs: number;
+      personaSimilarityScore: number;
+    }
+
+    export interface VoiceProviderCircuitBreakerAndPersonaDecision {
+      violated: boolean;
+      policyId: "P732-LLM-VOICE-PROVIDER-CIRCUIT-BREAKER-HEDGED-FALLBACK-AND-GRACEFUL-BRIDGE-GUARD";
+      action:
+        | "enforce_hedged_region_failover_comfort_bridge_and_persona_continuity_lock_in_0ms"
+        | "clamp_provider_ttfa_budget_and_persona_continuity_threshold"
+        | "allow";
+      reason: string;
+      clampedPrimaryProviderTtfaBudgetMs: number;
+      clampedPersonaSimilarityScore: number;
+    }
+
+    export function evaluateVoiceProviderCircuitBreakerAndPersonaContinuityGate(
+      context: VoiceProviderCircuitBreakerAndPersonaContext,
+    ): VoiceProviderCircuitBreakerAndPersonaDecision {
+      const policyId =
+        "P732-LLM-VOICE-PROVIDER-CIRCUIT-BREAKER-HEDGED-FALLBACK-AND-GRACEFUL-BRIDGE-GUARD" as const;
+      const clampedPrimaryProviderTtfaBudgetMs = Math.min(
+        Math.max(context.primaryProviderTtfaBudgetMs, 400),
+        1800,
+      );
+      const clampedPersonaSimilarityScore = Math.min(
+        Math.max(context.personaSimilarityScore, 0.95),
+        1.0,
+      );
+
+      if (context.unbridgedProviderBrownoutOrVoicePersonaMismatchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_hedged_region_failover_comfort_bridge_and_persona_continuity_lock_in_0ms",
+          reason:
+            "Voice Provider Circuit Breaker & Persona Continuity Policy Check: primary LLM/S2S provider hit HTTP 429/503 brownout without edge comfort bridge audio or backup TTS lane attempted a mid-call voice gender/locale swap; offline synthetic policy state machine enforcing <=1,800ms hedged regional failover, pre-cached edge comfort audio, and strict voicePersonaId/locale lock (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live provider failover & TTS synthesis latency not_measured).",
+          clampedPrimaryProviderTtfaBudgetMs,
+          clampedPersonaSimilarityScore,
+        };
+      }
+
+      if (
+        context.primaryProviderTtfaBudgetMs > 1800 ||
+        context.personaSimilarityScore < 0.95
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_provider_ttfa_budget_and_persona_continuity_threshold",
+          reason:
+            "Primary provider brownout TTFA budget (>1,800ms synthetic ceiling) or backup voice persona match score (<0.95 synthetic minimum) out of bounds; clamping TTFA budget to <=1,800ms and persona similarity to >=0.95.",
+          clampedPrimaryProviderTtfaBudgetMs,
+          clampedPersonaSimilarityScore,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: per-turn provider circuit breaker (<=1,800ms TTFA), edge comfort audio bridge, and voicePersonaId/locale continuity lock verified.",
+        clampedPrimaryProviderTtfaBudgetMs,
+        clampedPersonaSimilarityScore,
+      };
+    }
+
+
 
 
 

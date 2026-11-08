@@ -1411,6 +1411,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks E-Set/nasal confusable ambiguity [B/D/P/T/V, M/N], O/0 or I/1 slot type errors, and Mod-10/ISO-3779 checksum failures, clamping ASR dynamic phrase boost to 12-18 dB and slot confidence threshold to >=0.88; live ASR phoneme decoding latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unstructured rapid string readback and unconfirmed backend writes, clamping readback chunk size to <=4 chars and SSML inter-chunk prosody breaks to 250-400ms with targeted phonetic expansion; live SSML TTS rendering latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "372. [Topic 9: voice-midcall-failover-session-recovery-faq] Mid-Call Media Re-Anchoring (SIP Re-INVITE / WebRTC ICE Restart <=1,500ms), Redis Turn Checkpoint Hydration & Idempotency Replay Fence + LLM/Voice Provider Circuit Breaker (<=1,800ms), Edge Comfort Audio Bridge & Persona Continuity Lock (>=0.95) (P731 / P732 — Stage 369 · 372-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unhydrated standby worker takeover and duplicate in-flight write-tool replay, clamping media re-anchor budget to <=1,500ms, requiring zero epoch lag, and verifying committedIdempotencyKeys; live carrier SIP signaling and Redis RTT is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unbridged provider brownout dead air and mid-call voice gender/locale swaps, clamping primary TTFA circuit-breaker threshold to <=1,800ms, triggering edge pre-cached comfort audio, and locking voicePersonaId similarity to >=0.95; live cross-region model failover and TTS synthesis latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

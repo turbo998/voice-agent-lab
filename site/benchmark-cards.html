@@ -1128,9 +1128,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>371. [专题8 `docs/voice-alphanumeric-disambiguation-faq.md`] 字母数字混排实体（`PNR / VIN / 保单号 / 序列号`）声学易混音消歧与槽位正则及校验位门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截 `B/D/P/T/V`、`M/N` 窄带爆破音混淆、`O/0` 与 `I/1` 跨位串位及 `Mod-10/ISO-3779` 校验位失败，将 ASR 动态短语增益钳制在 `12–18 dB` 且易混音置信度阈值 `&gt;=0.88`；真实 ASR 音素解码与多模态卡片推送耗时 `not_measured`）&amp; `SSML` 分块韵律停顿（`3–4 chars` + `250–400ms &lt;break&gt;`）与易混字母音标释义复诵确认门禁（拦截一口气连读长编号或未经复诵确认直接改写后端数据库；真实 SSML TTS 渲染耗时 `not_measured`）(`P729` / `P730` · Stage 368 · 371 评测维度里程碑 · 739 护栏 &amp; 748 探针 · 371 维)</strong>
+                <strong>371. [专题8 `docs/voice-alphanumeric-disambiguation-faq.md`] 字母数字混排实体（`PNR / VIN / 保单号 / 序列号`）声学易混音消歧与槽位正则及校验位门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截 `B/D/P/T/V`、`M/N` 窄带爆破音混淆、`O/0` 与 `I/1` 跨位串位及 `Mod-10/ISO-3779` 校验位失败，将 ASR 动态短语增益钳制在 `12–18 dB` 且易混音置信度阈值 `&gt;=0.88`；真实 ASR 音素解码与多模态卡片推送耗时 `not_measured`）&amp; `SSML` 分块韵律停顿（`3–4 chars` + `250–400ms &lt;break&gt;`）与易混字母音标释义复诵确认门禁（拦截一口气连读长编号或未经复诵确认直接改写后端数据库；真实 SSML TTS 渲染耗时 `not_measured`）(`P729` / `P730` · Stage 368 · 371 维)</strong>
               </td>
               <td><code>P729 / P730 deterministic alphanumeric acoustic confusable disambiguation checksum gate &amp; SSML chunked phonetic readback confirmation guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>372. [专题9 `docs/voice-midcall-failover-session-recovery-faq.md`] 通话中故障无感媒体流重锚定（`SIP Re-INVITE / WebRTC ICE Restart &lt;=1,500ms`）与 `Redis` 轮次快照热恢复及幂等账本防重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截备用 Worker 未加载最新轮次快照直接空白接管或对在途写操作盲目二次重放，强制 `hydratedCheckpointEpoch == activeTurnEpoch` 与 `committedIdempotencyKeys` 核验；真实运营商 SIP 信令与 Redis 跨可用区读取耗时 `not_measured`）&amp; 大模型/语音服务商逐轮首字超时熔断对冲（`&lt;=1,800ms`）、边缘预缓存安抚垫音与降级通道音色一致性锁（拦截 `HTTP 429/503` 无声干等或中途切换男女声/语种口音，强制 `voicePersonaId` 相似度 `&gt;=0.95`；真实跨区模型故障转移与 TTS 合成流耗时 `not_measured`）(`P731` / `P732` · Stage 369 · 372 评测维度里程碑 · 741 护栏 &amp; 750 探针 · 372 维)</strong>
+              </td>
+              <td><code>P731 / P732 deterministic mid-call SIP Re-INVITE / ICE Restart checkpoint hydration idempotency guard &amp; voice provider circuit-breaker comfort bridge persona continuity lock</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4239,9 +4246,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>371. [专题8 `docs/voice-alphanumeric-disambiguation-faq.md`] 字母数字混排实体（`PNR / VIN / 保单号 / 序列号`）声学易混音消歧与槽位正则及校验位门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截 `B/D/P/T/V`、`M/N` 窄带爆破音混淆、`O/0` 与 `I/1` 跨位串位及 `Mod-10/ISO-3779` 校验位失败，将 ASR 动态短语增益钳制在 `12–18 dB` 且易混音置信度阈值 `&gt;=0.88`；真实 ASR 音素解码与多模态卡片推送耗时 `not_measured`）&amp; `SSML` 分块韵律停顿（`3–4 chars` + `250–400ms &lt;break&gt;`）与易混字母音标释义复诵确认门禁（拦截一口气连读长编号或未经复诵确认直接改写后端数据库；真实 SSML TTS 渲染耗时 `not_measured`）(`P729` / `P730` · Stage 368 · 371 评测维度里程碑 · 739 护栏 &amp; 748 探针 · 371 维)</strong>
+                <strong>371. [专题8 `docs/voice-alphanumeric-disambiguation-faq.md`] 字母数字混排实体（`PNR / VIN / 保单号 / 序列号`）声学易混音消歧与槽位正则及校验位门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截 `B/D/P/T/V`、`M/N` 窄带爆破音混淆、`O/0` 与 `I/1` 跨位串位及 `Mod-10/ISO-3779` 校验位失败，将 ASR 动态短语增益钳制在 `12–18 dB` 且易混音置信度阈值 `&gt;=0.88`；真实 ASR 音素解码与多模态卡片推送耗时 `not_measured`）&amp; `SSML` 分块韵律停顿（`3–4 chars` + `250–400ms &lt;break&gt;`）与易混字母音标释义复诵确认门禁（拦截一口气连读长编号或未经复诵确认直接改写后端数据库；真实 SSML TTS 渲染耗时 `not_measured`）(`P729` / `P730` · Stage 368 · 371 维)</strong>
               </td>
               <td><code>P729 / P730 deterministic alphanumeric acoustic confusable disambiguation checksum gate &amp; SSML chunked phonetic readback confirmation guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>372. [专题9 `docs/voice-midcall-failover-session-recovery-faq.md`] 通话中故障无感媒体流重锚定（`SIP Re-INVITE / WebRTC ICE Restart &lt;=1,500ms`）与 `Redis` 轮次快照热恢复及幂等账本防重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截备用 Worker 未加载最新轮次快照直接空白接管或对在途写操作盲目二次重放，强制 `hydratedCheckpointEpoch == activeTurnEpoch` 与 `committedIdempotencyKeys` 核验；真实运营商 SIP 信令与 Redis 跨可用区读取耗时 `not_measured`）&amp; 大模型/语音服务商逐轮首字超时熔断对冲（`&lt;=1,800ms`）、边缘预缓存安抚垫音与降级通道音色一致性锁（拦截 `HTTP 429/503` 无声干等或中途切换男女声/语种口音，强制 `voicePersonaId` 相似度 `&gt;=0.95`；真实跨区模型故障转移与 TTS 合成流耗时 `not_measured`）(`P731` / `P732` · Stage 369 · 372 评测维度里程碑 · 741 护栏 &amp; 750 探针 · 372 维)</strong>
+              </td>
+              <td><code>P731 / P732 deterministic mid-call SIP Re-INVITE / ICE Restart checkpoint hydration idempotency guard &amp; voice provider circuit-breaker comfort bridge persona continuity lock</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

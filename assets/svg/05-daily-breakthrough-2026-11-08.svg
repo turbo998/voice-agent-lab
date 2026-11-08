@@ -148,7 +148,7 @@
     <rect x="16" y="42" width="334" height="96" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
     <text x="26" y="62" fill="#38bdf8" font-family="Consolas, monospace" font-size="12" font-weight="700">P715 · 级联/S2S 动态合规泳道与逐字锁</text>
     <text x="26" y="82" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">• 法定免责条款强制锁定受控 TTS (&gt;=98% 匹配)</text>
-    <text x="26" y="100" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">• 拦截未脱敏 PII 直入 S2S 上下文 (0ms@1ms res. 离线策略判定)</text>
+    <text x="26" y="100" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="10.2">• 拦截未脱敏 PII 入 S2S (0ms@1ms res.; actual duration unresolved/not_measured; no sub-1ms bound)</text>
     <text x="26" y="118" fill="#6ee7b7" font-family="Consolas, monospace" font-size="10.5">Clamps: switch [40, 350]ms | match [0.98, 1.0]</text>
 
     <rect x="16" y="148" width="334" height="96" rx="8" fill="#091526" stroke="#10b981" stroke-width="1"/>
@@ -157,8 +157,8 @@
     <text x="26" y="206" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">• 严禁 Final ASR 确认前提交投机写操作 + 垫话掩盖</text>
     <text x="26" y="224" fill="#6ee7b7" font-family="Consolas, monospace" font-size="10.5">Clamps: EOU [350, 1200]ms | filler [250, 700]ms</text>
 
-    <text x="16" y="262" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">
-      📊 累计覆盖：364 维度 · 725 生产护栏 · 734 探针 · 285 单元测试
+    <text x="16" y="262" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="10.2" font-weight="600">
+      📊 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established
     </text>
   </g>
 </svg>

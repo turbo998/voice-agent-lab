@@ -69,7 +69,7 @@
   <!-- Good Path -->
   <rect x="632" y="290" width="512" height="114" rx="10" fill="#064E3B" fill-opacity="0.38" stroke="#10B981" stroke-width="1.2"/>
   <text x="648" y="312" fill="#6EE7B7" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800">✅ 黄金架构：WebRTC (UDP/Opus FEC + NetEQ + AEC3) → 内网 WebSocket</text>
-  <text x="648" y="334" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">1. Opus In-Band FEC：第 N 包内嵌第 N-1 包冗余骨架，丢包 0ms 原地恢复，无需重传等待</text>
+  <text x="648" y="334" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="11.5">1. Opus In-Band FEC：第 N 包内嵌第 N-1 包冗余骨架，接收端利用下一包冗余重建，无需等待 ARQ 重传 (no ARQ retransmit wait)</text>
   <text x="648" y="354" fill="#E2E8F0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">2. NetEQ 动态消抖 (20~80ms)：基音周期平滑延展/无感加速，3% 丢包下卡顿率仅 0.3%</text>
   <text x="648" y="374" fill="#A7F3D0" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12">3. 芯片级 AEC3 回声抵消：实时减去扬声器播放参考信号 x(t)，手机免提外放自打断率仅 0.2%</text>
   <text x="648" y="393" fill="#38BDF8" font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700">4. 双入口统一 Runtime：75% 数字流量走 WebRTC + 25% 走 SIP，月省 71.7% ($1,720) 通信费</text>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="title desc">
+  <title id="title">Enterprise Voice Agent Mid-Call Media Failover &amp; Session State Recovery Architecture (Stage 369 · P731–P732)</title>
+  <desc id="desc">Visual comparison of stateless call-drop failure vs SIP Re-INVITE / WebRTC ICE Restart mid-call media re-anchoring with turn-checkpoint hydration (P731) and hedged LLM/TTS provider circuit-breaker failover with voice persona lock (P732).</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentCyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="accentGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="accentRed" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad)"/>
+
+  <!-- Header -->
+  <rect x="28" y="20" width="1144" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="44" y="34" width="190" height="24" rx="6" fill="url(#accentCyan)"/>
+  <text x="139" y="50" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">STAGE 369 · ROUND 9 · P731–P732</text>
+  <text x="248" y="51" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800">Mid-Call Media Failover (SIP Re-INVITE / ICE Restart) &amp; Checkpoint Recovery</text>
+  <text x="44" y="78" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12">通话中网关/模型故障不断线重锚定：SIP Re-INVITE / WebRTC ICE Restart + 对话纪元快照热恢复 (P731) 与多区域模型熔断对冲切换 (P732)</text>
+
+  <!-- Left Panel: Legacy Stateless Failure vs P731 Media Re-Anchoring -->
+  <rect x="28" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="44" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="58" y="145" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">① P731: Mid-Call Media Re-Anchoring &amp; Checkpoint Hydration</text>
+
+  <!-- Legacy Trap Box -->
+  <rect x="44" y="168" width="528" height="118" rx="8" fill="#1F1218" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="58" y="190" fill="#F87171" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">⛔ Legacy Stateless Worker Crash (2m into Call)</text>
+  <text x="58" y="212" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Worker Pod OOM / Region A Drain -&gt; RTP Socket Closes -&gt; 10s Dead Air -&gt; Call Drops</text>
+  <text x="58" y="232" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Or Naive Reconnect Wipes In-Memory History -&gt; Bot Asks "Who are you?" All Over Again</text>
+  <text x="58" y="252" fill="#FCA5A5" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Worse: Unfenced Retry Re-Executes Already-Committed Payment / Booking Tool Call!</text>
+  <text x="58" y="272" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10">Industry Baseline: &gt;68% caller abandonment when forced to redial &amp; re-authenticate (anonymized_reported)</text>
+
+  <!-- P731 Engineered Path Box -->
+  <rect x="44" y="298" width="528" height="244" rx="8" fill="#0B211D" stroke="#10B981" stroke-width="1.5"/>
+  <text x="58" y="320" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P731: Signaling Anchor Split + Re-INVITE / ICE Restart + Checkpoint Hydration</text>
+  <text x="58" y="344" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">1. Decouple Signaling &amp; Media: Edge SBC / TURN cluster holds carrier call leg alive</text>
+  <text x="58" y="366" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">2. Per-Turn Delta Checkpoint: Commit {verifiedIdentity, turnEpoch, confirmedSlots,</text>
+  <text x="72" y="384" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">committedIdempotencyKeys[], rollingSummary} to Redis/Cosmos after every turn</text>
+  <text x="58" y="408" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">3. Fast Media Re-Anchor (&lt;=1,500ms budget): Trigger SIP Re-INVITE (new SDP c=/m=)</text>
+  <text x="72" y="426" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">or WebRTC ICE Restart (new ice-ufrag/ice-pwd) to Standby Media Worker in Region B</text>
+  <text x="58" y="450" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">4. Idempotent Resume: Standby Worker loads checkpoint, skips committed tool keys,</text>
+  <text x="72" y="468" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">and resumes exact dialogue step without re-asking caller identity</text>
+  <rect x="58" y="484" width="500" height="44" rx="6" fill="#064E3B"/>
+  <text x="70" y="502" fill="#A7F3D0" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P731 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="70" y="518" fill="#6EE7B7" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Right Panel: P732 LLM/TTS Provider Circuit Breaker & Hedged Failover -->
+  <rect x="612" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="628" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="642" y="145" fill="#A78BFA" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">② P732: Provider Circuit Breaker, Hedged Stream &amp; Persona Continuity</text>
+
+  <!-- Decision Matrix Table in SVG -->
+  <rect x="628" y="168" width="528" height="156" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="642" y="190" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Failover Tier Comparison (Architecture Target vs Cost)</text>
+  <text x="642" y="214" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">• Tier 1: Stateless Drop &amp; Redial — Only for non-critical FAQ lines; loses call &amp; state</text>
+  <text x="642" y="236" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Tier 2: SIP Re-INVITE / ICE Restart + Redis Checkpoint (P731 Recommended)</text>
+  <text x="654" y="254" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">~800ms–1,500ms audio bridge pause, only +5% state overhead, preserves call &amp; slots</text>
+  <text x="642" y="276" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Tier 3: Dual-Region 1+1 RTP Shadowing — Only for 988/ER/Trading VIP lines</text>
+  <text x="654" y="294" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">~50ms–150ms RTP switch, ~2.0x media compute cost</text>
+
+  <!-- P732 Engineered Box -->
+  <rect x="628" y="336" width="528" height="206" rx="8" fill="#17153B" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="642" y="358" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P732: Brownout Detection (HTTP 429/503 or TTFA &gt; 1,800ms)</text>
+  <text x="642" y="382" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Pre-Cached Edge Comfort Audio: Play local edge PCM bridge ("请稍候，正在为您刷新连接...")</text>
+  <text x="654" y="400" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">when primary LLM/S2S first-token latency exceeds 1,800ms threshold</text>
+  <text x="642" y="424" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Secondary Region / Cascaded Fallback: Reroute turn to healthy secondary region</text>
+  <text x="642" y="448" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Voice Persona &amp; Locale Lock: Enforce matching timbre/gender/locale voiceId on backup</text>
+  <text x="654" y="466" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">TTS so the agent never swaps from a female Mandarin voice to a male English voice mid-call</text>
+  <rect x="642" y="482" width="500" height="46" rx="6" fill="#2E1065"/>
+  <text x="654" y="500" fill="#DDD6FE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P732 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="654" y="516" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Bottom Provenance Banner -->
+  <rect x="28" y="572" width="1144" height="82" rx="10" fill="#090D16" stroke="#334155" stroke-width="1.2"/>
+  <text x="44" y="596" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">PROVENANCE &amp; MEASUREMENT BOUNDARY DISCLOSURE (STAGE 369 · DIMENSION 372)</text>
+  <text x="44" y="618" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Offline Policy State Machine (P731/P732): 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic).</text>
+  <text x="44" y="638" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Live Production Media/Signaling Failover: Carrier SIP Re-INVITE, WebRTC STUN/TURN ICE Restart, and Redis replication RTT are not_measured in local unit tests (engineering budget: 800ms–1,500ms).</text>
+</svg>

@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-08 单专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715/P716) · WebRTC vs WS vs SIP 8kHz 带限重采样 (P717/P718) · 只读投机语音 RAG [专题3A: P719] · 异步工具纪元写栅栏 [专题3B: P720] · 免提非线性回声与主叫声纹锁 [专题4: P721/P722] · 热转接 CTI 签名屏弹与单向耳语隔离 [专题5: P723/P724] · PCI 按键采集旁路缩减暴露 [专题6A: P725] · SIPREC 录音双流消音与 Fail-Closed 隔离 [专题6B: P726] · 智能外呼并行 AMD 与 TCPA 安全港门禁 [专题7: P727/P728] · 字母数字混排实体消歧与 SSML 分块复诵 [专题8: P729/P730] (Stage 368 · P705–P730)",
-    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略/配置状态机（计时口径：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实生产网络/向量库/Saga/DSP/SIP/PCI 金库/WORM/外呼信令/ASR 解码/TTS 渲染耗时未在此本地沙盒实测 not_measured）对 P715–P730 核心语音架构护栏的规则判定：",
+    simTitle: "🧪 2026-11-08 单专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715/P716) · WebRTC vs WS vs SIP 8kHz 带限重采样 (P717/P718) · 只读投机语音 RAG [专题3A: P719] · 异步工具纪元写栅栏 [专题3B: P720] · 免提非线性回声与主叫声纹锁 [专题4: P721/P722] · 热转接 CTI 签名屏弹与单向耳语隔离 [专题5: P723/P724] · PCI 按键采集旁路缩减暴露 [专题6A: P725] · SIPREC 录音双流消音与 Fail-Closed 隔离 [专题6B: P726] · 智能外呼并行 AMD 与 TCPA 安全港门禁 [专题7: P727/P728] · 字母数字混排实体消歧与 SSML 分块复诵 [专题8: P729/P730] · 通话中灾备切换与会话状态无损热恢复 [专题9: P731/P732] (Stage 369 · P705–P732)",
+    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略/配置状态机（计时口径：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实生产网络/向量库/Saga/DSP/SIP/PCI 金库/WORM/外呼信令/ASR 解码/TTS 渲染/跨区容灾切换耗时未在此本地沙盒实测 not_measured）对 P715–P732 核心语音架构护栏的规则判定：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-08 單專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715/P716) · WebRTC vs WS vs SIP 8kHz 帶限重採樣 (P717/P718) · 唯讀投機語音 RAG [專題3A: P719] · 非同步工具紀元寫柵欄 [專題3B: P720] · 免持非線性回聲與主叫聲紋鎖 [專題4: P721/P722] · 熱轉接 CTI 簽名屏彈與單向耳語隔離 [專題5: P723/P724] · PCI 按鍵採集旁路縮減暴露 [專題6A: P725] · SIPREC 錄音雙流消音與 Fail-Closed 隔離 [專題6B: P726] · 智能外呼並行 AMD 與 TCPA 安全港門禁 [專題7: P727/P728] · 字母數字混排實體消歧與 SSML 分塊複誦 [專題8: P729/P730] (Stage 368 · P705–P730)",
-    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略/配置狀態機（計時口徑：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實生產網路/向量庫/Saga/DSP/SIP/PCI 金庫/WORM/外呼信令/ASR 解碼/TTS 渲染耗時未在此本地沙盒實測 not_measured）對 P715–P730 核心語音架構護欄的規則判定：",
+    simTitle: "🧪 2026-11-08 單專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715/P716) · WebRTC vs WS vs SIP 8kHz 帶限重採樣 (P717/P718) · 唯讀投機語音 RAG [專題3A: P719] · 非同步工具紀元寫柵欄 [專題3B: P720] · 免持非線性回聲與主叫聲紋鎖 [專題4: P721/P722] · 熱轉接 CTI 簽名屏彈與單向耳語隔離 [專題5: P723/P724] · PCI 按鍵採集旁路縮減暴露 [專題6A: P725] · SIPREC 錄音雙流消音與 Fail-Closed 隔離 [專題6B: P726] · 智能外呼並行 AMD 與 TCPA 安全港門禁 [專題7: P727/P728] · 字母數字混排實體消歧與 SSML 分塊複誦 [專題8: P729/P730] · 通話中災備切換與會話狀態無損熱恢復 [專題9: P731/P732] (Stage 369 · P705–P732)",
+    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略/配置狀態機（計時口徑：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實生產網路/向量庫/Saga/DSP/SIP/PCI 金庫/WORM/外呼信令/ASR 解碼/TTS 渲染/跨區容災切換耗時未在此本地沙盒實測 not_measured）對 P715–P732 核心語音架構護欄的規則判定：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-08 Single-Topic Architect FAQ Policy Sandbox: Cascaded vs. S2S (P715/P716) · WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718) · Read-Only Speculative Voice RAG [Topic 3A: P719] · Async Tool Epoch Write Fence [Topic 3B: P720] · Nonlinear Echo & TSE Crosstalk Lock [Topic 4: P721/P722] · Warm-Transfer Signed Screen-Pop & One-Way Whisper Isolation [Topic 5: P723/P724] · PCI DTMF Bypass Scope-Reduction [Topic 6A: P725] · SIPREC Archival Redaction & Fail-Closed Quarantine [Topic 6B: P726] · Outbound Parallel AMD & TCPA Safe-Harbor Gate [Topic 7: P727/P728] · Alphanumeric Disambiguation & SSML Phonetic Readback [Topic 8: P729/P730] (Stage 368 · P705–P730)",
-    simSub: "Click any synthetic probe below to inspect offline in-memory policy/configuration state-machine checks (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live network/vector DB/Saga/DSP/SIP/PCI Vault/WORM/carrier signaling/ASR/TTS latency is not_measured in this local sandbox) across P715–P730:",
+    simTitle: "🧪 2026-11-08 Single-Topic Architect FAQ Policy Sandbox: Cascaded vs. S2S (P715/P716) · WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718) · Read-Only Speculative Voice RAG [Topic 3A: P719] · Async Tool Epoch Write Fence [Topic 3B: P720] · Nonlinear Echo & TSE Crosstalk Lock [Topic 4: P721/P722] · Warm-Transfer Signed Screen-Pop & One-Way Whisper Isolation [Topic 5: P723/P724] · PCI DTMF Bypass Scope-Reduction [Topic 6A: P725] · SIPREC Archival Redaction & Fail-Closed Quarantine [Topic 6B: P726] · Outbound Parallel AMD & TCPA Safe-Harbor Gate [Topic 7: P727/P728] · Alphanumeric Disambiguation & SSML Phonetic Readback [Topic 8: P729/P730] · Mid-Call Disaster Recovery & Session State Continuity [Topic 9: P731/P732] (Stage 369 · P705–P732)",
+    simSub: "Click any synthetic probe below to inspect offline in-memory policy/configuration state-machine checks (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live network/vector DB/Saga/DSP/SIP/PCI Vault/WORM/carrier signaling/ASR/TTS/failover latency is not_measured in this local sandbox) across P715–P732:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 368 P729/P730 · 371维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 369 P731/P732 · 372维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "10 篇独立单专题语音架构选型 FAQ（级联/S2S · WebRTC/WS/SIP · 只读投机 RAG · 异步写工具栅栏 · 免提防自断与防串音 · 热转接与单向耳语 · PCI 按键采集旁路 [6A] · SIPREC 录音双流消音 [6B] · 智能外呼并行 AMD 与 TCPA 安全港 [7] · 字母数字混排消歧与 SSML 分块复诵 [8]）",
-      desc: "单专题独立指南：① 级联 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重采样 (P717/P718)；③ 只读投机语音 RAG (speculative-voice-rag-faq.md · P719)；④ 异步工具纪元写栅栏与 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免提非线性回声门禁与主叫声纹防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人机协同转接 CTI 签名屏弹与双腿协商单向耳语 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 电话支付按键采集旁路与 PCI 范围评估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 录音流环形缓冲消音与 Fail-Closed 隔离 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼并行流式 AMD 与 TCPA 双时区安全港门禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母数字混排实体消歧与 SSML 分块复诵确认 (voice-alphanumeric-disambiguation-faq.md · P729/P730)。",
+      title: "11 篇独立单专题语音架构选型 FAQ（级联/S2S · WebRTC/WS/SIP · 只读投机 RAG · 异步写工具栅栏 · 免提防自断与防串音 · 热转接与单向耳语 · PCI 按键采集旁路 [6A] · SIPREC 录音双流消音 [6B] · 智能外呼并行 AMD 与 TCPA 安全港 [7] · 字母数字混排消歧与 SSML 分块复诵 [8] · 通话中灾备切换与会话无损恢复 [9]）",
+      desc: "单专题独立指南：① 级联 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重采样 (P717/P718)；③ 只读投机语音 RAG (speculative-voice-rag-faq.md · P719)；④ 异步工具纪元写栅栏与 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免提非线性回声门禁与主叫声纹防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人机协同转接 CTI 签名屏弹与双腿协商单向耳语 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 电话支付按键采集旁路与 PCI 范围评估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 录音流环形缓冲消音与 Fail-Closed 隔离 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼并行流式 AMD 与 TCPA 双时区安全港门禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母数字混排实体消歧与 SSML 分块复诵确认 (voice-alphanumeric-disambiguation-faq.md · P729/P730)；⑪ 通话中故障无感热切换与会话状态无损恢复 (voice-midcall-failover-session-recovery-faq.md · P731/P732)。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 368 P729/P730 · 371維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 369 P731/P732 · 372維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "10 篇獨立單專題語音架構選型 FAQ（級聯/S2S · WebRTC/WS/SIP · 唯讀投機 RAG · 非同步寫工具柵欄 · 免持防自斷與防串音 · 熱轉接與單向耳語 · PCI 按鍵採集旁路 [6A] · SIPREC 錄音雙流消音 [6B] · 智能外呼並行 AMD 與 TCPA 安全港 [7] · 字母數字混排消歧與 SSML 分塊複誦 [8]）",
-      desc: "單專題獨立指南：① 級聯 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重採樣 (P717/P718)；③ 唯讀投機語音 RAG (speculative-voice-rag-faq.md · P719)；④ 非同步工具紀元寫柵欄與 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免持非線性回聲門禁與主叫聲紋防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人機協同轉接 CTI 簽名屏彈與雙腿協商單向耳語 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 電話支付按鍵採集旁路與 PCI 範圍評估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 錄音流環形緩衝消音與 Fail-Closed 隔離 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼並行流式 AMD 與 TCPA 雙時區安全港門禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母數字混排實體消歧與 SSML 分塊複誦確認 (voice-alphanumeric-disambiguation-faq.md · P729/P730)。",
+      title: "11 篇獨立單專題語音架構選型 FAQ（級聯/S2S · WebRTC/WS/SIP · 唯讀投機 RAG · 非同步寫工具柵欄 · 免持防自斷與防串音 · 熱轉接與單向耳語 · PCI 按鍵採集旁路 [6A] · SIPREC 錄音雙流消音 [6B] · 智能外呼並行 AMD 與 TCPA 安全港 [7] · 字母數字混排消歧與 SSML 分塊複誦 [8] · 通話中災備切換與會話無損恢復 [9]）",
+      desc: "單專題獨立指南：① 級聯 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重採樣 (P717/P718)；③ 唯讀投機語音 RAG (speculative-voice-rag-faq.md · P719)；④ 非同步工具紀元寫柵欄與 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免持非線性回聲門禁與主叫聲紋防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人機協同轉接 CTI 簽名屏彈與雙腿協商單向耳語 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 電話支付按鍵採集旁路與 PCI 範圍評估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 錄音流環形緩衝消音與 Fail-Closed 隔離 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼並行流式 AMD 與 TCPA 雙時區安全港門禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母數字混排實體消歧與 SSML 分塊複誦確認 (voice-alphanumeric-disambiguation-faq.md · P729/P730)；⑪ 通話中故障無感熱切換與會話狀態無損恢復 (voice-midcall-failover-session-recovery-faq.md · P731/P732)。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 368 P729/P730 · 371-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 369 P731/P732 · 372-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-08",
-      title: "10 Single-Topic Architect Selection FAQs (Cascaded/S2S · WebRTC/WS/SIP · Speculative RAG · Tool Epoch Fence · Barge-in Echo & Crosstalk · Warm Transfer & Whisper · PCI DTMF Bypass [6A] · SIPREC Audio Redaction [6B] · Outbound Parallel AMD & TCPA Safe-Harbor [7] · Alphanumeric Disambiguation & SSML Readback [8])",
-      desc: "Standalone single-topic guides: (1) Cascaded vs. S2S (P715/P716); (2) WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718); (3) Read-Only Speculative Voice RAG (speculative-voice-rag-faq.en.md · P719); (4) Async Tool turnEpoch Write Fence & Saga (voice-tool-epoch-fence-faq.en.md · P720); (5) Nonlinear Echo & TSE Crosstalk Lock (barge-in-echo-crosstalk-faq.en.md · P721/P722); (6) Warm Transfer Signed Context Packet & Consultative Whisper Handoff (warm-transfer-whisper-handoff-faq.en.md · P723/P724); (7) Telephone Payment DTMF Bypass & PCI Scope Boundaries (voice-pci-dtmf-scope-faq.en.md · P725); (8) SIPREC Archival Ring-Buffer Redaction & Fail-Closed Quarantine (siprec-pii-audio-redaction-faq.en.md · P726); (9) Outbound Parallel Streaming AMD & TCPA Dual-Timezone Safe-Harbor Gate (outbound-amd-voicemail-tcpa-faq.en.md · P727/P728); (10) Alphanumeric Entity Disambiguation & SSML Chunked Phonetic Readback (voice-alphanumeric-disambiguation-faq.en.md · P729/P730).",
+      title: "11 Single-Topic Architect Selection FAQs (Cascaded/S2S · WebRTC/WS/SIP · Speculative RAG · Tool Epoch Fence · Barge-in Echo & Crosstalk · Warm Transfer & Whisper · PCI DTMF Bypass [6A] · SIPREC Audio Redaction [6B] · Outbound Parallel AMD & TCPA Safe-Harbor [7] · Alphanumeric Disambiguation & SSML Readback [8] · Mid-Call Failover & Session Recovery [9])",
+      desc: "Standalone single-topic guides: (1) Cascaded vs. S2S (P715/P716); (2) WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718); (3) Read-Only Speculative Voice RAG (speculative-voice-rag-faq.en.md · P719); (4) Async Tool turnEpoch Write Fence & Saga (voice-tool-epoch-fence-faq.en.md · P720); (5) Nonlinear Echo & TSE Crosstalk Lock (barge-in-echo-crosstalk-faq.en.md · P721/P722); (6) Warm Transfer Signed Context Packet & Consultative Whisper Handoff (warm-transfer-whisper-handoff-faq.en.md · P723/P724); (7) Telephone Payment DTMF Bypass & PCI Scope Boundaries (voice-pci-dtmf-scope-faq.en.md · P725); (8) SIPREC Archival Ring-Buffer Redaction & Fail-Closed Quarantine (siprec-pii-audio-redaction-faq.en.md · P726); (9) Outbound Parallel Streaming AMD & TCPA Dual-Timezone Safe-Harbor Gate (outbound-amd-voicemail-tcpa-faq.en.md · P727/P728); (10) Alphanumeric Entity Disambiguation & SSML Chunked Phonetic Readback (voice-alphanumeric-disambiguation-faq.en.md · P729/P730); (11) Mid-Call Disaster Recovery & Session State Continuity (voice-midcall-failover-session-recovery-faq.en.md · P731/P732).",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,67 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p729_alphanumeric_acoustic_disambiguation";
+let currentDuplexSimId = "p731_midcall_media_reinvite_checkpoint_hydration";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p731_midcall_media_reinvite_checkpoint_hydration",
+    label: {
+      "zh-CN": "🔥 [专题9 · voice-midcall-failover-session-recovery-faq] P731 · 通话中媒体流热重锚定 (SIP Re-INVITE / ICE Restart <=1.5s) + Redis 轮次快照热恢复与幂等防重门禁",
+      "zh-TW": "🔥 [專題9 · voice-midcall-failover-session-recovery-faq] P731 · 通話中媒體流熱重錨定 (SIP Re-INVITE / ICE Restart <=1.5s) + Redis 輪次快照熱恢復與冪等防重門禁",
+      en: "🔥 [Topic 9 · voice-midcall-failover-session-recovery-faq] P731 · Mid-Call Media Re-Anchoring (<=1.5s) & Checkpoint Hydration Gate"
+    },
+    inputJson: `{
+  "topicGuide": "docs/voice-midcall-failover-session-recovery-faq.md (.en.md)",
+  "policyId": "P731-MIDCALL-MEDIA-REINVITE-ICE-RESTART-AND-CHECKPOINT-HYDRATION-GUARD",
+  "unhydratedFailoverOrDuplicateToolReplayAttempted": true,
+  "mediaReanchorLatencyBudgetMs": 4200,
+  "hydratedCheckpointLagEpochs": 2
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
+  "liveSipReinviteIceRestartAndRedisHydrationLatency": "not_measured in local unit test (production budget <=1,500ms)",
+  "action": "enforce_sip_reinvite_ice_restart_checkpoint_hydration_and_idempotency_fence_in_0ms",
+  "clampedMediaReanchorLatencyBudgetMs": 1500,
+  "clampedHydratedCheckpointLagEpochs": 0,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题9：通话中故障热切换与会话状态无损恢复 · docs/voice-midcall-failover-session-recovery-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实运营商 SIP Re-INVITE / WebRTC ICE Restart 媒体重锚定与 Redis 读取耗时 not_measured）：拦截备用 Worker 未加载最新轮次快照直接空白接管或对在途写操作盲目二次重放，强制在 <=1,500ms 预算内完成媒体重锚定、校验 hydratedCheckpointEpoch == activeTurnEpoch，并通过 committedIdempotencyKeys 幂等账本防重。",
+      "zh-TW": "✅ [專題9：通話中故障熱切換與會話狀態無損恢復 · docs/voice-midcall-failover-session-recovery-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實電信商 SIP Re-INVITE / WebRTC ICE Restart 媒體重錨定與 Redis 讀取耗時 not_measured）：攔截備用 Worker 未載入最新輪次快照直接空白接管或對在途寫操作盲目二次重放，強制在 <=1,500ms 預算內完成媒體重錨定、校驗 hydratedCheckpointEpoch == activeTurnEpoch，並通過 committedIdempotencyKeys 冪等帳本防重。",
+      en: "✅ [Topic 9: Mid-Call Failover & Session State Continuity · docs/voice-midcall-failover-session-recovery-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIP Re-INVITE / WebRTC ICE Restart and Redis RTT not_measured locally): Blocks unhydrated standby worker takeover and duplicate write-tool replay, clamping media re-anchor budget to <=1,500ms, requiring zero epoch lag, and verifying committedIdempotencyKeys."
+    }
+  },
+  {
+    id: "p732_voice_provider_circuit_breaker_persona_continuity",
+    label: {
+      "zh-CN": "🔥 [专题9 · voice-midcall-failover-session-recovery-faq] P732 · 大模型/语音服务商逐轮熔断对冲 (<=1.8s) + 边缘安抚垫音与音色一致性锁 (voicePersonaId >=0.95)",
+      "zh-TW": "🔥 [專題9 · voice-midcall-failover-session-recovery-faq] P732 · 大模型/語音服務商逐輪熔斷對沖 (<=1.8s) + 邊緣安撫墊音與音色一致性鎖 (voicePersonaId >=0.95)",
+      en: "🔥 [Topic 9 · voice-midcall-failover-session-recovery-faq] P732 · Provider Circuit Breaker (<=1.8s), Comfort Bridge & Persona Lock"
+    },
+    inputJson: `{
+  "topicGuide": "docs/voice-midcall-failover-session-recovery-faq.md (.en.md)",
+  "policyId": "P732-LLM-VOICE-PROVIDER-CIRCUIT-BREAKER-HEDGED-FALLBACK-AND-GRACEFUL-BRIDGE-GUARD",
+  "unbridgedProviderBrownoutOrVoicePersonaMismatchDetected": true,
+  "primaryProviderTtfaBudgetMs": 6000,
+  "personaSimilarityScore": 0.72
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
+  "liveCrossRegionFailoverAndTtsSynthesisLatency": "not_measured in local unit test (production budget <=1,800ms)",
+  "action": "enforce_hedged_region_failover_comfort_bridge_and_persona_continuity_lock_in_0ms",
+  "clampedPrimaryProviderTtfaBudgetMs": 1800,
+  "clampedPersonaSimilarityScore": 0.95,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题9：通话中故障热切换与会话状态无损恢复 · docs/voice-midcall-failover-session-recovery-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实跨区模型故障转移与 TTS 合成流耗时 not_measured）：拦截主模型 HTTP 429/503 限流时无安抚音频干等或降级通道中途切换男女声/语种口音，强制首字音频超时熔断阈值 <=1,800ms、触发边缘预缓存安抚垫音，并锁定 voicePersonaId 与语种口音一致（相似度 >=0.95）。",
+      "zh-TW": "✅ [專題9：通話中故障熱切換與會話狀態無損恢復 · docs/voice-midcall-failover-session-recovery-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實跨區模型故障轉移與 TTS 合成流耗時 not_measured）：攔截主模型 HTTP 429/503 限流時無安撫音訊乾等或降級通道中途切換男女聲/語種口音，強制首字音訊超時熔斷閾值 <=1,800ms、觸發邊緣預快取安撫墊音，並鎖定 voicePersonaId 與語種口音一致（相似度 >=0.95）。",
+      en: "✅ [Topic 9: Mid-Call Failover & Session State Continuity · docs/voice-midcall-failover-session-recovery-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live cross-region model failover and TTS synthesis latency not_measured locally): Blocks unbridged provider brownout dead air and mid-call voice gender/locale swaps, clamping primary TTFA circuit-breaker threshold to <=1,800ms, playing edge pre-cached comfort audio, and locking voicePersonaId continuity (>=0.95)."
+    }
+  },
   {
     id: "p729_alphanumeric_acoustic_disambiguation",
     label: {
