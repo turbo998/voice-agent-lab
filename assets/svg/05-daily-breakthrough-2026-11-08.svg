@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="2026-11-08 Enterprise Voice Agent Architecture Selection FAQ &amp; Stage 361 (P715-P716) Visual Summary">
+  <defs>
+    <linearGradient id="bg261108" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="52%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0078d4"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="cardDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadow261108" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg261108)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#accentCyan)"/>
+
+  <!-- Header Banner -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="460" height="28" rx="14" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+    <text x="16" y="18" fill="#7dd3fc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.6">
+      2026-11-08 · ARCHITECT FAQ DEEP DIVE · STAGE 361 (P715–P716 · 364 DIMS)
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="25" font-weight="800">
+      企业语音智能体选型 FAQ：级联 (STT+LLM+TTS) vs 原生 S2S 与语义判停实战指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      Cascaded Pipeline vs. Native Speech-to-Speech · Semantic Turn Detection (EOU) · Speculative Voice RAG · 544 Live POC Probes
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(860, 22)" filter="url(#shadow261108)">
+    <rect x="0" y="0" width="150" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="75" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">双轨混合首字延迟</text>
+    <text x="75" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="21" font-weight="800">295 / 580ms</text>
+
+    <rect x="160" y="0" width="148" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="234" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">364 维确定性护栏</text>
+    <text x="234" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="21" font-weight="800">100% PASS</text>
+  </g>
+
+  <!-- Row 1: 3 Architecture Selection Cards (Q1 & Q2 Summary) -->
+  <g transform="translate(32, 116)" filter="url(#shadow261108)">
+    <!-- Card A: Streaming Cascaded -->
+    <rect x="0" y="0" width="366" height="235" rx="12" fill="url(#cardDark)" stroke="#3b82f6" stroke-width="1.5"/>
+    <rect x="14" y="14" width="145" height="22" rx="6" fill="#1e3a8a"/>
+    <text x="24" y="29" fill="#93c5fd" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">方案 A · 流式级联管道</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Streaming STT + LLM + TTS</text>
+    <text x="14" y="76" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">大白话：速记员 + 智囊顾问 + 播音员三人接力</text>
+    <line x1="14" y1="88" x2="352" y2="88" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="109" fill="#60a5fa" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">✅ 严格优于纯 S2S 的场景（Q2 核心结论）：</text>
+    <text x="14" y="129" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">• 金融/医保法定免责条款 100% 一字不差播报</text>
+    <text x="14" y="148" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">• 进大模型前本地文本级 PII/PCI 脱敏与审计</text>
+    <text x="14" y="167" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">• 上万条生僻药名/SKU 热词词表 + 10+ 工具链</text>
+    <rect x="14" y="184" width="338" height="36" rx="8" fill="#091526" stroke="#1e3a8a" stroke-width="1"/>
+    <text x="24" y="206" fill="#93c5fd" font-family="Consolas, monospace" font-size="11.5" font-weight="700">TTFA P50: 580~620ms | 成本: $0.038/min</text>
+
+    <!-- Card B: Native Speech-to-Speech -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="235" rx="12" fill="url(#cardDark)" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="160" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">方案 B · 原生端到端语音</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Native Speech-to-Speech (S2S)</text>
+      <text x="14" y="76" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">大白话：母语专家直接听声回声，不绕道纯文字</text>
+      <line x1="14" y1="88" x2="352" y2="88" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="109" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">⚡ 首选原生 S2S 的场景（Q1 核心结论）：</text>
+      <text x="14" y="129" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">• 车载副驾、AI 心理陪伴、VIP 导购、口语外教</text>
+      <text x="14" y="148" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">• 原生听懂叹气/笑声/犹豫/怒气，高情商共情</text>
+      <text x="14" y="167" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">• 一句话中英粤无缝混说（Code-Switching）</text>
+      <rect x="14" y="184" width="338" height="36" rx="8" fill="#180d2c" stroke="#581c87" stroke-width="1"/>
+      <text x="24" y="206" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11.5" font-weight="700">TTFA P50: 280~310ms | 成本: $0.145/min</text>
+    </g>
+
+    <!-- Card C: Hybrid Dual-Lane (Recommended) -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="235" rx="12" fill="url(#cardDark)" stroke="#10b981" stroke-width="2"/>
+      <rect x="14" y="14" width="195" height="22" rx="6" fill="#064e3b"/>
+      <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">方案 C · 双轨混合架构 (推荐 🏆)</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Hybrid Dual-Lane (S2S + 级联)</text>
+      <text x="14" y="76" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">大白话：快车道负责寒暄共情 + 稳车道负责合规交易</text>
+      <line x1="14" y1="88" x2="352" y2="88" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="109" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">🏆 2026 企业生产主力形态（P715 护栏锁定）：</text>
+      <text x="14" y="129" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">• 寒暄/安抚走 S2S 快车道（&lt;310ms 极速人情味）</text>
+      <text x="14" y="148" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">• 查账/支付/免责条款 &lt;120ms 切入受控级联稳车道</text>
+      <text x="14" y="167" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">• P715 采样率对齐 + P713 按键音支付零明文旁路</text>
+      <rect x="14" y="184" width="338" height="36" rx="8" fill="#05231b" stroke="#047857" stroke-width="1"/>
+      <text x="24" y="206" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11.5" font-weight="700">合规率: 100% | 误打断: 0.4% | $0.056/min</text>
+    </g>
+  </g>
+
+  <!-- Row 2 Left: Q3 Deep-Dive — Why Voice Bots Feel Robotic & How 3 Primitives Fix It -->
+  <g transform="translate(32, 368)" filter="url(#shadow261108)">
+    <rect x="0" y="0" width="751" height="275" rx="12" fill="url(#cardDark)" stroke="#1e293b" stroke-width="1.5"/>
+    <text x="18" y="28" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="14" font-weight="800">
+      🔍 Q3 核心原理解析：为什么传统语音机器人像“人工智障”？三大实时机制如何破局？
+    </text>
+
+    <!-- Mechanism 1 -->
+    <g transform="translate(18, 44)">
+      <rect x="0" y="0" width="715" height="66" rx="8" fill="#091526" stroke="#1e3a8a" stroke-width="1"/>
+      <rect x="10" y="10" width="142" height="22" rx="5" fill="#0284c7"/>
+      <text x="18" y="25" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">1. 语义级判停 (EOU)</text>
+      <text x="162" y="25" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">❌ 传统痛点：固定 500ms 静音秒表，客户报卡号喘口气就被粗暴抢话（误打断率 38.5%）</text>
+      <text x="12" y="49" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">
+        ✅ <tspan fill="#7dd3fc" font-weight="700">第一性原理解法 (P716)</tspan>：并联 20ms 语义模型看“语法是否完整 + 句末是否降调”；话未说完动态放宽至 1200ms，说完 180ms 秒接话。
+      </text>
+    </g>
+
+    <!-- Mechanism 2 -->
+    <g transform="translate(18, 120)">
+      <rect x="0" y="0" width="715" height="66" rx="8" fill="#091526" stroke="#1e3a8a" stroke-width="1"/>
+      <rect x="10" y="10" width="142" height="22" rx="5" fill="#7c3aed"/>
+      <text x="18" y="25" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">2. 全双工打断 + AEC</text>
+      <text x="162" y="25" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">❌ 传统痛点：客户插话后机器人还在自顾自念缓冲池残留语音；或开免提时被自己回声打断</text>
+      <text x="12" y="49" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">
+        ✅ <tspan fill="#c4b5fd" font-weight="700">第一性原理解法 (P714 + turnEpoch)</tspan>：WebRTC AEC3 (&gt;=18dB ERLE) 滤除自激回声；真人插话瞬间原子递增 turnEpoch 秒清残留包。
+      </text>
+    </g>
+
+    <!-- Mechanism 3 -->
+    <g transform="translate(18, 196)">
+      <rect x="0" y="0" width="715" height="66" rx="8" fill="#091526" stroke="#047857" stroke-width="1"/>
+      <rect x="10" y="10" width="142" height="22" rx="5" fill="#059669"/>
+      <text x="18" y="25" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">3. 投机式语音 RAG</text>
+      <text x="162" y="25" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">❌ 传统痛点：等客户说完才去查知识库，电话死寂 2~4 秒，客户以为掉线直呼“喂喂喂”</text>
+      <text x="12" y="49" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.5">
+        ✅ <tspan fill="#6ee7b7" font-weight="700">第一性原理解法 (P716 + P711)</tspan>：客户说话途中用半截字幕只读预取热缓存；超 300ms 自动注入 400ms 语境垫话，零死寂冷场！
+      </text>
+    </g>
+  </g>
+
+  <!-- Row 2 Right: Tonight's Code Guardrails (Stage 361: P715 & P716) -->
+  <g transform="translate(802, 368)" filter="url(#shadow261108)">
+    <rect x="0" y="0" width="366" height="275" rx="12" fill="url(#cardDark)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="16" y="28" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="14" font-weight="800">
+      🛡️ Stage 361 新增确定性护栏 (P715–P716)
+    </text>
+
+    <rect x="16" y="42" width="334" height="96" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+    <text x="26" y="62" fill="#38bdf8" font-family="Consolas, monospace" font-size="12" font-weight="700">P715 · 级联/S2S 动态合规泳道与逐字锁</text>
+    <text x="26" y="82" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">• 法定免责条款强制锁定受控 TTS (&gt;=98% 匹配)</text>
+    <text x="26" y="100" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">• 拦截未脱敏 PII 直入 S2S 上下文 (0ms 阻断)</text>
+    <text x="26" y="118" fill="#6ee7b7" font-family="Consolas, monospace" font-size="10.5">Clamps: switch [40, 350]ms | match [0.98, 1.0]</text>
+
+    <rect x="16" y="148" width="334" height="96" rx="8" fill="#091526" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="168" fill="#34d399" font-family="Consolas, monospace" font-size="12" font-weight="700">P716 · 语义判停 EOU 与投机式 RAG 护栏</text>
+    <text x="26" y="188" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">• 拦截未完结句法/长串数字报读中途抢话</text>
+    <text x="26" y="206" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">• 严禁 Final ASR 确认前提交投机写操作 + 垫话掩盖</text>
+    <text x="26" y="224" fill="#6ee7b7" font-family="Consolas, monospace" font-size="10.5">Clamps: EOU [350, 1200]ms | filler [250, 700]ms</text>
+
+    <text x="16" y="262" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">
+      📊 累计覆盖：364 维度 · 725 生产护栏 · 734 探针 · 285 单元测试
+    </text>
+  </g>
+</svg>

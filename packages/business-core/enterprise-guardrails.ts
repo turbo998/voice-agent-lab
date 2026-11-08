@@ -67466,6 +67466,190 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface CascadedVsS2sComplianceLaneSwitchAndVerbatimAuditLockContext {
+      unverifiedS2sFreeformGenerationOnMandatoryVerbatimClauseDetected: boolean;
+      textLayerPiiRedactionOrToolSchemaBypassInS2sLaneDetected: boolean;
+      midCallLaneSwitchAudioCodecOrSampleRateMismatchDetected: boolean;
+      laneSwitchHandoffLatencyMs: number;
+      verbatimScriptTokenMatchRatio: number;
+    }
+
+    export interface CascadedVsS2sComplianceLaneSwitchAndVerbatimAuditLockDecision {
+      violated: boolean;
+      policyId: "P715-CASCADED-VS-S2S-COMPLIANCE-LANE-SWITCH-AND-VERBATIM-AUDIT-LOCK-GUARD";
+      action:
+        | "block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms"
+        | "realign_midcall_lane_switch_pcm_frame_and_fallback_cascaded_tts_in_0ms"
+        | "clamp_lane_switch_handoff_budget_and_verbatim_match_floor"
+        | "allow";
+      reason: string;
+      clampedLaneSwitchHandoffLatencyMs: number;
+      clampedVerbatimScriptTokenMatchRatio: number;
+    }
+
+    export function evaluateCascadedVsS2sComplianceLaneSwitchAndVerbatimAuditLockGuard(
+      context: CascadedVsS2sComplianceLaneSwitchAndVerbatimAuditLockContext,
+    ): CascadedVsS2sComplianceLaneSwitchAndVerbatimAuditLockDecision {
+      const policyId =
+        "P715-CASCADED-VS-S2S-COMPLIANCE-LANE-SWITCH-AND-VERBATIM-AUDIT-LOCK-GUARD" as const;
+      const clampedLaneSwitchHandoffLatencyMs = Math.min(
+        Math.max(context.laneSwitchHandoffLatencyMs, 40),
+        350,
+      );
+      const clampedVerbatimScriptTokenMatchRatio = Math.min(
+        Math.max(context.verbatimScriptTokenMatchRatio, 0.98),
+        1.0,
+      );
+
+      if (
+        context.unverifiedS2sFreeformGenerationOnMandatoryVerbatimClauseDetected ||
+        context.textLayerPiiRedactionOrToolSchemaBypassInS2sLaneDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms",
+          reason:
+            "Cascaded vs. Native S2S compliance lane or verbatim audit lock violation (Azure Voice Live Hybrid · OpenAI Realtime · Cartesia/ElevenLabs TTS): freeform S2S audio attempted on mandatory regulatory disclaimer or bypassed text-layer PII DLP / tool schema validation; blocking in 0ms.",
+          clampedLaneSwitchHandoffLatencyMs,
+          clampedVerbatimScriptTokenMatchRatio,
+        };
+      }
+
+      if (context.midCallLaneSwitchAudioCodecOrSampleRateMismatchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "realign_midcall_lane_switch_pcm_frame_and_fallback_cascaded_tts_in_0ms",
+          reason:
+            "Mid-call S2S-to-Cascaded lane switch audio sample rate or PCM frame boundary mismatch detected (24kHz PCM vs. 8kHz G.711); realigning PCM frame boundary and falling back to deterministic cascaded TTS in 0ms.",
+          clampedLaneSwitchHandoffLatencyMs,
+          clampedVerbatimScriptTokenMatchRatio,
+        };
+      }
+
+      if (
+        context.laneSwitchHandoffLatencyMs > 350 ||
+        context.verbatimScriptTokenMatchRatio < 0.98
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_lane_switch_handoff_budget_and_verbatim_match_floor",
+          reason:
+            "Dual-lane switch handoff latency (>350ms) or mandatory verbatim script token match ratio (<0.98) out of bounds; clamping handoff budget to <=350ms and enforcing >=0.98 verbatim token match floor.",
+          clampedLaneSwitchHandoffLatencyMs,
+          clampedVerbatimScriptTokenMatchRatio,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Hybrid Dual-Lane S2S/Cascaded compliance switch (<=350ms), PCM sample-rate alignment, and mandatory verbatim script token lock (>=0.98) verified.",
+        clampedLaneSwitchHandoffLatencyMs,
+        clampedVerbatimScriptTokenMatchRatio,
+      };
+    }
+
+    export interface SemanticTurnEouDetectionAndSpeculativeVoiceRagPacingContext {
+      prematureVADEouCutOffOnIncompleteSyntaxOrNumberReadoutDetected: boolean;
+      unverifiedSpeculativeRagCacheCommittedBeforeFinalAsrVerified: boolean;
+      ragRetrievalColdStartDeadAirExceededFillerThresholdDetected: boolean;
+      semanticEouHoldWindowMs: number;
+      speculativeRagFillerTriggerLatencyMs: number;
+    }
+
+    export interface SemanticTurnEouDetectionAndSpeculativeVoiceRagPacingDecision {
+      violated: boolean;
+      policyId: "P716-SEMANTIC-TURN-EOU-DETECTION-AND-SPECULATIVE-VOICE-RAG-PACING-GUARD";
+      action:
+        | "block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms"
+        | "inject_contextual_filler_preamble_and_mask_rag_cold_start_in_0ms"
+        | "clamp_semantic_eou_hold_window_and_speculative_filler_budget"
+        | "allow";
+      reason: string;
+      clampedSemanticEouHoldWindowMs: number;
+      clampedSpeculativeRagFillerTriggerLatencyMs: number;
+    }
+
+    export function evaluateSemanticTurnEouDetectionAndSpeculativeVoiceRagPacingGuard(
+      context: SemanticTurnEouDetectionAndSpeculativeVoiceRagPacingContext,
+    ): SemanticTurnEouDetectionAndSpeculativeVoiceRagPacingDecision {
+      const policyId =
+        "P716-SEMANTIC-TURN-EOU-DETECTION-AND-SPECULATIVE-VOICE-RAG-PACING-GUARD" as const;
+      const clampedSemanticEouHoldWindowMs = Math.min(
+        Math.max(context.semanticEouHoldWindowMs, 350),
+        1200,
+      );
+      const clampedSpeculativeRagFillerTriggerLatencyMs = Math.min(
+        Math.max(context.speculativeRagFillerTriggerLatencyMs, 250),
+        700,
+      );
+
+      if (
+        context.prematureVADEouCutOffOnIncompleteSyntaxOrNumberReadoutDetected ||
+        context.unverifiedSpeculativeRagCacheCommittedBeforeFinalAsrVerified
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms",
+          reason:
+            "Semantic Turn EOU or Speculative Voice RAG commit violation (LiveKit EOU · Pipecat Smart Turn · Azure Voice Live · Foundry IQ): acoustic VAD attempted premature cut-off during incomplete syntax/digit readout or speculative RAG cache attempted write/commit before final ASR verification; blocking in 0ms.",
+          clampedSemanticEouHoldWindowMs,
+          clampedSpeculativeRagFillerTriggerLatencyMs,
+        };
+      }
+
+      if (context.ragRetrievalColdStartDeadAirExceededFillerThresholdDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "inject_contextual_filler_preamble_and_mask_rag_cold_start_in_0ms",
+          reason:
+            "Enterprise RAG or ERP tool retrieval latency exceeded dead-air threshold (>300ms); injecting bounded contextual preamble filler in 0ms to mask backend retrieval latency without dead air.",
+          clampedSemanticEouHoldWindowMs,
+          clampedSpeculativeRagFillerTriggerLatencyMs,
+        };
+      }
+
+      if (
+        context.semanticEouHoldWindowMs < 350 ||
+        context.semanticEouHoldWindowMs > 1200 ||
+        context.speculativeRagFillerTriggerLatencyMs > 700
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_semantic_eou_hold_window_and_speculative_filler_budget",
+          reason:
+            "Semantic EOU silence hold window (<350ms or >1200ms) or speculative RAG filler trigger latency (>700ms) out of bounds; clamping EOU hold window to [350ms, 1200ms] and filler trigger budget to <=700ms.",
+          clampedSemanticEouHoldWindowMs,
+          clampedSpeculativeRagFillerTriggerLatencyMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Semantic Turn EOU syntax/prosody hold window ([350ms, 1200ms]), read-only speculative Voice RAG prefetch, and <=700ms preamble filler budget verified.",
+        clampedSemanticEouHoldWindowMs,
+        clampedSpeculativeRagFillerTriggerLatencyMs,
+      };
+    }
+
+
 
 
 

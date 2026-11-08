@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-05 热门突破交互沙盒：SIP/WebRTC 混合热转接耳语 + RFC 4733 带外按键脱敏 & RNNoise 语音信箱 Beep 门控 + AEC3 防自打断 (Stage 360 / Stage 359 / Stage 358 · P705–P714)",
-    simSub: "点击下方全双工与多模态压测探针，实时验证 OpenAI Realtime SIP /refer · VoiceBlender · LiveKit SIP 混合热转接坐席耳语与 RFC 4733 带外 DTMF PCI 旁路门禁 (P713)、RNNoise 频谱 AMD 语音信箱 Beep 门控与 WebRTC AEC3 防回声自打断 (P714) 以及 P705–P712 的 0ms 确定性响应：",
+    simTitle: "🧪 2026-11-08 架构选型 FAQ 交互沙盒：级联 vs 原生 S2S 动态合规泳道锁 (P715) & 语义判停 EOU + 投机式语音 RAG 防冷场 (P716) (Stage 361 · P705–P716)",
+    simSub: "点击下方全双工与多模态压测探针，实时验证级联 STT+LLM+TTS 与原生 S2S 动态合规泳道切换及法定免责条款 ≥98% 逐字锁 (P715)、语义级判停 EOU 动态等待窗口与投机式只读语音 RAG 300ms 语境垫话防冷场 (P716) 以及 P705–P714 的 0ms 确定性响应：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-05 熱門突破互動沙盒：SIP/WebRTC 混合熱轉接耳語 + RFC 4733 帶外按鍵脫敏 & RNNoise 語音信箱 Beep 門控 + AEC3 防自打斷 (Stage 360 / Stage 359 / Stage 358 · P705–P714)",
-    simSub: "點擊下方全雙工與多模態壓測探針，即時驗證 OpenAI Realtime SIP /refer · VoiceBlender · LiveKit SIP 混合熱轉接坐席耳語與 RFC 4733 帶外 DTMF PCI 旁路門禁 (P713)、RNNoise 頻譜 AMD 語音信箱 Beep 門控與 WebRTC AEC3 防回聲自打斷 (P714) 以及 P705–P712 的 0ms 確定性響應：",
+    simTitle: "🧪 2026-11-08 架構選型 FAQ 互動沙盒：級聯 vs 原生 S2S 動態合規泳道鎖 (P715) & 語義判停 EOU + 投機式語音 RAG 防冷場 (P716) (Stage 361 · P705–P716)",
+    simSub: "點擊下方全雙工與多模態壓測探針，即時驗證級聯 STT+LLM+TTS 與原生 S2S 動態合規泳道切換及法定免責條款 ≥98% 逐字鎖 (P715)、語義級判停 EOU 動態等待窗口與投機式唯讀語音 RAG 300ms 語境墊話防冷場 (P716) 以及 P705–P714 的 0ms 確定性響應：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-05 Breakthrough Sandbox: Hybrid SIP/WebRTC Warm Transfer + RFC 4733 DTMF PCI Vault & RNNoise AMD Beep Gate + Software AEC3 Guard (Stage 360 / Stage 359 / Stage 358 · P705–P714)",
-    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for OpenAI Realtime SIP /refer · VoiceBlender · LiveKit SIP Warm Transfer & Out-of-Band RFC 4733 DTMF PCI Bypass (P713), RNNoise AMD Voicemail Beep Gate & Software AEC3 Self-Barge-In Guard (P714), and P705–P712:",
+    simTitle: "🧪 2026-11-08 Architect FAQ Sandbox: Cascaded vs. Native S2S Compliance Lane Lock (P715) & Semantic Turn EOU + Speculative Voice RAG Guard (P716) (Stage 361 · P705–P716)",
+    simSub: "Click any stress probe below to verify 0ms deterministic enforcement for Hybrid Dual-Lane S2S/Cascaded Compliance Lane Switch & >=98% Verbatim Legal Lock (P715), Semantic Turn Detection EOU Dynamic Window & Speculative Read-Only Voice RAG 300ms Preamble Filler (P716), and P705–P714:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 360 P713/P714 · 363维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 361 P715/P716 · 364维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-05",
-      title: "SIP/WebRTC 混合热转接耳语 & RNNoise 语音信箱 Beep 门控",
-      desc: "追踪 OpenAI Realtime SIP /refer、VoiceBlender v0.2.0 与 LiveKit SIP 混合热转接耳语及 RFC 4733 带外 DTMF 脱敏，以及 RNNoise AMD 语音信箱 Beep 门控与软件 AEC3 防自打断，交付 Stage 360 (P713/P714) 护栏与高清 SVG 总结。",
+      badge: "Architect FAQ · 2026-11-08",
+      title: "级联 STT+LLM+TTS vs 原生 S2S 选型与语义判停/投机式 RAG FAQ 专题",
+      desc: "通俗拆解级联管道 vs 原生 S2S vs 双轨混合架构选型决策树、语义判停 (Semantic EOU)、全双工打断与投机式语音 RAG 底层原理，交付 Stage 361 (P715/P716) 护栏与高清 SVG 总结。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 360 P713/P714 · 363維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 361 P715/P716 · 364維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-05",
-      title: "SIP/WebRTC 混合熱轉接耳語 & RNNoise 語音信箱 Beep 門控",
-      desc: "追蹤 OpenAI Realtime SIP /refer、VoiceBlender v0.2.0 與 LiveKit SIP 混合熱轉接耳語及 RFC 4733 帶外 DTMF 脫敏，以及 RNNoise AMD 語音信箱 Beep 門控與軟體 AEC3 防自打斷，交付 Stage 360 (P713/P714) 護欄與高清 SVG 總結。",
+      badge: "Architect FAQ · 2026-11-08",
+      title: "級聯 STT+LLM+TTS vs 原生 S2S 選型與語義判停/投機式 RAG FAQ 專題",
+      desc: "通俗拆解級聯管道 vs 原生 S2S vs 雙軌混合架構選型決策樹、語義判停 (Semantic EOU)、全雙工打斷與投機式語音 RAG 底層原理，交付 Stage 361 (P715/P716) 護欄與高清 SVG 總結。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 360 P713/P714 · 363-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 361 P715/P716 · 364-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
-      badge: "Daily Breakthrough · 2026-11-05",
-      title: "Hybrid SIP/WebRTC Warm Transfer & RNNoise AMD Beep Gate",
-      desc: "Tracks OpenAI Realtime SIP /refer, VoiceBlender v0.2.0 & LiveKit SIP warm transfer with RFC 4733 DTMF PCI bypass, plus RNNoise AMD voicemail beep gating & software AEC3 with Stage 360 (P713/P714) guardrails.",
+      badge: "Architect FAQ · 2026-11-08",
+      title: "Cascaded vs. Native S2S Selection & Semantic EOU / Speculative RAG FAQ",
+      desc: "Plain-language deep dive into Cascaded vs. Native S2S vs. Hybrid Dual-Lane selection, Semantic Turn EOU, full-duplex barge-in, and Speculative Voice RAG with Stage 361 (P715/P716) guardrails.",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,67 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p713_warm_transfer_dtmf";
+let currentDuplexSimId = "p715_cascaded_s2s_lane_lock";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p715_cascaded_s2s_lane_lock",
+    label: {
+      "zh-CN": "🔥 P715 · 级联 vs 原生 S2S 动态合规泳道切换 & 法定条款 ≥98% 逐字锁",
+      "zh-TW": "🔥 P715 · 級聯 vs 原生 S2S 動態合規泳道切換 & 法定條款 ≥98% 逐字鎖",
+      en: "🔥 P715 · Cascaded vs. S2S Compliance Lane Switch & ≥98% Verbatim Legal Lock"
+    },
+    inputJson: `{
+  "policyId": "P715-CASCADED-VS-S2S-COMPLIANCE-LANE-SWITCH-AND-VERBATIM-AUDIT-LOCK-GUARD",
+  "unverifiedS2sFreeformGenerationOnMandatoryVerbatimClauseDetected": true,
+  "textLayerPiiRedactionOrToolSchemaBypassInS2sLaneDetected": true,
+  "midCallLaneSwitchAudioCodecOrSampleRateMismatchDetected": false,
+  "laneSwitchHandoffLatencyMs": 490,
+  "verbatimScriptTokenMatchRatio": 0.86
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_unverified_s2s_on_verbatim_clause_or_text_audit_bypass_in_0ms",
+  "clampedLaneSwitchHandoffLatencyMs": 350,
+  "clampedVerbatimScriptTokenMatchRatio": 0.98,
+  "remediation": "BLOCK_UNVERIFIED_S2S_ON_VERBATIM_CLAUSE_OR_TEXT_AUDIT_BYPASS_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 法定免责条款自由发挥与未脱敏 PII 旁路阻断：当对话进入金融/医疗法定免责声明节点时，拦截纯原生 S2S 自由发挥改词（匹配率仅 86%）及未脱敏音频直入模型上下文；P715 在 0ms 内强制切入受控级联 TTS 稳车道，并将泳道切换耗时 490ms→350ms、逐字匹配率 0.86→0.98 钳制。",
+      "zh-TW": "✅ 0ms 法定免責條款自由發揮與未脫敏 PII 旁路阻斷：當對話進入金融/醫療法定免責聲明節點時，攔截純原生 S2S 自由發揮改詞（匹配率僅 86%）及未脫敏音訊直入模型上下文；P715 在 0ms 內強制切入受控級聯 TTS 穩車道，並將泳道切換耗時 490ms→350ms、逐字匹配率 0.86→0.98 鉗制。",
+      en: "✅ 0ms Mandatory Verbatim Clause & Text-Audit Bypass Block: Intercepts freeform Native S2S paraphrasing (86% match) on a regulated disclosure node and unredacted PII audio bypass; P715 locks the turn into the deterministic cascaded TTS lane in 0ms and clamps lane-switch handoff 490ms→350ms and verbatim match floor 0.86→0.98."
+    }
+  },
+  {
+    id: "p716_semantic_eou_speculative_rag",
+    label: {
+      "zh-CN": "🔥 P716 · 语义级判停 EOU 防报卡号抢话 & 投机式语音 RAG 300ms 垫话防冷场",
+      "zh-TW": "🔥 P716 · 語義級判停 EOU 防報卡號搶話 & 投機式語音 RAG 300ms 墊話防冷場",
+      en: "🔥 P716 · Semantic Turn EOU Anti-Cutoff & Speculative Voice RAG Filler Guard"
+    },
+    inputJson: `{
+  "policyId": "P716-SEMANTIC-TURN-EOU-DETECTION-AND-SPECULATIVE-VOICE-RAG-PACING-GUARD",
+  "prematureVADEouCutOffOnIncompleteSyntaxOrNumberReadoutDetected": true,
+  "unverifiedSpeculativeRagCacheCommittedBeforeFinalAsrVerified": true,
+  "ragRetrievalColdStartDeadAirExceededFillerThresholdDetected": false,
+  "semanticEouHoldWindowMs": 1680,
+  "speculativeRagFillerTriggerLatencyMs": 950
+}`,
+    outputJson: `{
+  "violated": true,
+  "blockLatencyMs": 0,
+  "action": "block_premature_vad_cutoff_or_unverified_speculative_rag_commit_in_0ms",
+  "clampedSemanticEouHoldWindowMs": 1200,
+  "clampedSpeculativeRagFillerTriggerLatencyMs": 700,
+  "remediation": "BLOCK_PREMATURE_VAD_CUTOFF_OR_UNVERIFIED_SPECULATIVE_RAG_COMMIT_IN_0MS"
+}`,
+    summary: {
+      "zh-CN": "✅ 0ms 报长串卡号喘气抢话拦截 + 投机式 RAG 防抢跑写提交：拦截传统 VAD 在客户报 16 位卡号喘气时的粗暴截断，以及客户句末改口前投机缓存抢先提交写操作；P716 将语义判停等待窗口钳制在 [350ms, 1200ms]，并将慢速 RAG 语境垫话触发预算 950ms→700ms 钳制，实现零死寂冷场。",
+      "zh-TW": "✅ 0ms 報長串卡號喘氣搶話攔截 + 投機式 RAG 防搶跑寫提交：攔截傳統 VAD 在客戶報 16 位卡號喘氣時的粗暴截斷，以及客戶句末改口前投機快取搶先提交寫操作；P716 將語義判停等待窗口鉗制在 [350ms, 1200ms]，並將慢速 RAG 語境墊話觸發預算 950ms→700ms 鉗制，實現零死寂冷場。",
+      en: "✅ 0ms Premature VAD Cut-Off & Unverified Speculative RAG Commit Block: Stops acoustic VAD from cutting off callers mid-number readout and blocks speculative RAG from committing write tools before final ASR verification, clamping EOU hold window to [350ms, 1200ms] and filler trigger budget 950ms→700ms."
+    }
+  },
   {
     id: "p713_warm_transfer_dtmf",
     label: {

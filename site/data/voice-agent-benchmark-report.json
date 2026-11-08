@@ -1363,6 +1363,12 @@
       "original": "100.0% (0ms unverified SIP Refer-To target or unmasked whisper PII & in-band DTMF audio bleed into LLM context block + 0ms warm-transfer bridge abort & caller leg reclaim on hangup/barge-in + <=1800ms whisper & >=70ms RFC 4733 DTMF gap clamp)",
       "reversed": "100.0% (0ms pre-beep voicemail PII disclosure or speakerphone residual-echo self-barge-in loop block + 0ms outbound leg abort on carrier SIT/fax tone with DNC-safe retry + <=950ms AMD latency & >=18dB AEC3 ERLE clamp)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "364. Cascaded (STT+LLM+TTS) vs. Native S2S Compliance Lane Switch & Verbatim Legal Audit Lock & Semantic Turn Detection (EOU) Anti-Cutoff + Speculative Voice RAG Pacing Guard (P715 / P716 — Stage 361 · 364-Dimension Milestone)",
+      "original": "100.0% (0ms unverified freeform S2S generation on mandatory verbatim legal clause or text-layer PII/schema bypass block + 0ms mid-call PCM frame realignment & cascaded TTS fallback + <=350ms lane-switch handoff & >=0.98 verbatim token match clamp)",
+      "reversed": "100.0% (0ms premature acoustic VAD cutoff on incomplete syntax/number readout or unverified speculative RAG cache commit block + 0ms interruptible contextual filler injection on slow retrieval + [350ms, 1200ms] EOU hold & <=700ms filler trigger clamp)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
