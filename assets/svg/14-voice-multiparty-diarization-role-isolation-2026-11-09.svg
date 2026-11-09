@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="title desc">
+  <title id="title">Enterprise Voice Agent Multi-Party Streaming Diarization &amp; Speaker Role Privilege Isolation (Stage 370 · P733–P734)</title>
+  <desc id="desc">Visual comparison of legacy single-channel mixed-mono speaker splicing vs P733 overlap-aware streaming diarization (&lt;=320ms window) and P734 speaker-role privilege fence with bystander write lock.</desc>
+  <defs>
+    <linearGradient id="bgGrad14" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentCyan14" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="accentGreen14" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad14)"/>
+
+  <!-- Header -->
+  <rect x="28" y="20" width="1144" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="44" y="34" width="198" height="24" rx="6" fill="url(#accentCyan14)"/>
+  <text x="143" y="50" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">STAGE 370 · TOPIC 10 · P733–P734</text>
+  <text x="256" y="51" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800">Multi-Party Streaming Diarization &amp; Speaker-Role Write Privilege Isolation</text>
+  <text x="44" y="78" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12">多人同场免提与三方通话防越权：流式重叠语音分离归因 (P733) 与主叫声纹角色写权限锁 + 旁人建议主叫复核 (P734)</text>
+
+  <!-- Left Panel: P733 Overlap-Aware Streaming Diarization -->
+  <rect x="28" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="44" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="58" y="145" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">① P733: Overlap-Aware Streaming Diarization (&lt;=320ms Frame Attribution)</text>
+
+  <!-- Legacy Mixed-Mono Trap -->
+  <rect x="44" y="168" width="528" height="118" rx="8" fill="#1F1218" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="58" y="190" fill="#F87171" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">⛔ Legacy Mixed-Mono ASR (Frankenstein Sentence Splicing)</text>
+  <text x="58" y="212" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Caller (Speaker 1): "Transfer $500 to my savings..."</text>
+  <text x="58" y="232" fill="#FCA5A5" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Bystander / Roommate (Speaker 2 chimes in): "...make it $5,000 to account 8899!"</text>
+  <text x="58" y="252" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Legacy ASR merges both voices into one string -&gt; LLM executes unauthorized $5,000 wire!</text>
+  <text x="58" y="272" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10">Industry Baseline: &gt;31% DER degradation on overlapping speech with naive VAD+Clustering (anonymized_reported)</text>
+
+  <!-- P733 Engineered Path -->
+  <rect x="44" y="298" width="528" height="244" rx="8" fill="#0B211D" stroke="#10B981" stroke-width="1.5"/>
+  <text x="58" y="320" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P733: Hybrid Channel Split + EEND Overlap-Aware Diarization</text>
+  <text x="58" y="344" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">1. Tiered Channel Selection: Use SIP Stereo / Multi-Mic Beamforming when physically</text>
+  <text x="72" y="362" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">available; enforce EEND + d-Vector streaming diarization on single-mic speakerphone</text>
+  <text x="58" y="386" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">2. Sub-Second Frame Window (&lt;=320ms): Sliding frame-level multi-label classification</text>
+  <text x="72" y="404" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">detects simultaneous speech (S1 + S2 active) instead of waiting for silence gaps</text>
+  <text x="58" y="428" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">3. Structured Speaker XML Tagging: Every token injected into LLM carries</text>
+  <text x="72" y="446" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">&lt;speaker id="S1" role="verified_primary" sim="0.91"&gt; vs &lt;speaker id="S2" role="bystander"&gt;</text>
+  <rect x="58" y="484" width="500" height="44" rx="6" fill="#064E3B"/>
+  <text x="70" y="502" fill="#A7F3D0" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P733 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="70" y="518" fill="#6EE7B7" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Right Panel: P734 Speaker-Role Privilege Fence & Bystander Write Lock -->
+  <rect x="612" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="628" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="642" y="145" fill="#A78BFA" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">② P734: Speaker-Role RBAC Fence &amp; Primary Caller Re-Confirmation Lock</text>
+
+  <!-- Architecture Comparison Box -->
+  <rect x="628" y="168" width="528" height="156" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="642" y="190" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Diarization Architecture Selection Matrix</text>
+  <text x="642" y="214" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">• Path A: Dual-Channel SIPREC / Multi-Mic Beamforming — 0ms extra DSP lag, 100% channel split</text>
+  <text x="642" y="236" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Path B: Streaming EEND + d-Vector Role Lock (P733+P734 Recommended for PSTN/Mobile)</text>
+  <text x="654" y="254" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">&lt;=320ms frame window, isolates mobile speakerphone bystanders &amp; 3-way conference legs</text>
+  <text x="642" y="276" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Path C: Post-Call Batch Diarization (Azure Fast Transcription RTF=0.057)</text>
+  <text x="654" y="294" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">Ideal for offline QA / compliance analytics; cannot block mid-call bystander tool hijacks</text>
+
+  <!-- P734 Engineered Box -->
+  <rect x="628" y="336" width="528" height="206" rx="8" fill="#17153B" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="642" y="358" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P734: Three-Tier Speaker RBAC &amp; Zero-Overlap Write Gate</text>
+  <text x="642" y="382" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Role Tiering: verified_primary (Full R/W) vs authorized_advisor (Read/Draft) vs</text>
+  <text x="654" y="400" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">unverified_bystander (Context-Only; 0% direct tool mutation or PII readout privilege)</text>
+  <text x="642" y="424" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Hard Write Pre-Condition: Require primarySpeakerCosineSim &gt;= 0.82 AND</text>
+  <text x="654" y="442" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">activeOverlapRatio &lt;= 0.05 before committing any payment, booking, or address change</text>
+  <text x="642" y="466" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Bystander Slot Quarantine: Hold bystander-suggested parameters until Primary confirms</text>
+  <rect x="642" y="482" width="500" height="46" rx="6" fill="#2E1065"/>
+  <text x="654" y="500" fill="#DDD6FE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P734 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="654" y="516" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Bottom Provenance Banner -->
+  <rect x="28" y="572" width="1144" height="82" rx="10" fill="#090D16" stroke="#334155" stroke-width="1.2"/>
+  <text x="44" y="596" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">PROVENANCE &amp; MEASUREMENT BOUNDARY DISCLOSURE (STAGE 370 · DIMENSION 373)</text>
+  <text x="44" y="618" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Offline Policy State Machine (P733/P734): 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic).</text>
+  <text x="44" y="638" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Live Acoustic Diarization DSP: Real-time EEND/d-Vector inference latency is not_measured in local policy tests; offline Azure Fast Transcription PoC measured at RTF=0.057 (measured).</text>
+</svg>

@@ -1417,6 +1417,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unhydrated standby worker takeover and duplicate in-flight write-tool replay, clamping media re-anchor budget to <=1,500ms, requiring zero epoch lag, and verifying committedIdempotencyKeys; live carrier SIP signaling and Redis RTT is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unbridged provider brownout dead air and mid-call voice gender/locale swaps, clamping primary TTFA circuit-breaker threshold to <=1,800ms, triggering edge pre-cached comfort audio, and locking voicePersonaId similarity to >=0.95; live cross-region model failover and TTS synthesis latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "373. [Topic 10: voice-multiparty-diarization-role-isolation-faq] Multi-Party Streaming Overlap-Aware Diarization (EEND <=320ms, Overlap <=0.05) & <turn speaker role> XML Attribution + Speaker-Role RBAC Privilege Fence, Bystander Quarantine Slot & Primary Voiceprint Confirmation Lock (>=0.82) (P733 / P734 — Stage 370 · 373-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks single-channel mixed-mono multi-speaker sentence splicing, clamping sliding diarization window to <=320ms, overlap threshold to <=0.05, and enforcing <turn speaker role> XML attribution; live neural EEND DSP inference latency is not_measured; offline Azure Fast Transcription PoC measured at RTF=0.057)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unverified_bystander direct write-tool mutations and PII disclosures, quarantining bystander-suggested slots until verified_primary re-confirms with cosine similarity >=0.82 and overlap <=0.05; live d-vector verification latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

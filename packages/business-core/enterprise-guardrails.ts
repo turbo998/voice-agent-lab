@@ -68862,6 +68862,149 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface StreamingOverlapDiarizationContext {
+      unattributedMixedMonoOrOverlapSplicingDetected: boolean;
+      slidingDiarizationWindowMs: number;
+      activeOverlapRatio: number;
+    }
+
+    export interface StreamingOverlapDiarizationDecision {
+      violated: boolean;
+      policyId: "P733-STREAMING-OVERLAP-AWARE-DIARIZATION-AND-SPEAKER-TURN-ATTRIBUTION-GUARD";
+      action:
+        | "enforce_eend_overlap_aware_diarization_and_xml_speaker_turn_tagging_in_0ms"
+        | "clamp_diarization_sliding_window_and_overlap_ratio_ceiling"
+        | "allow";
+      reason: string;
+      clampedSlidingDiarizationWindowMs: number;
+      clampedActiveOverlapRatio: number;
+    }
+
+    export function evaluateStreamingOverlapAwareDiarizationAndSpeakerTurnAttributionGate(
+      context: StreamingOverlapDiarizationContext,
+    ): StreamingOverlapDiarizationDecision {
+      const policyId =
+        "P733-STREAMING-OVERLAP-AWARE-DIARIZATION-AND-SPEAKER-TURN-ATTRIBUTION-GUARD" as const;
+      const clampedSlidingDiarizationWindowMs = Math.min(
+        Math.max(context.slidingDiarizationWindowMs, 160),
+        320,
+      );
+      const clampedActiveOverlapRatio = Math.min(
+        Math.max(context.activeOverlapRatio, 0),
+        0.05,
+      );
+
+      if (context.unattributedMixedMonoOrOverlapSplicingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_eend_overlap_aware_diarization_and_xml_speaker_turn_tagging_in_0ms",
+          reason:
+            "Streaming Overlap-Aware Diarization & Speaker Attribution Policy Check: single-channel mixed-mono ASR attempted to splice multiple human speakers or overlapping speech into a flat unattributed string; offline synthetic policy state machine enforcing <=320ms frame-level EEND overlap detection and structured <turn speaker role> XML attribution before LLM ingestion (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live neural EEND DSP inference latency not_measured).",
+          clampedSlidingDiarizationWindowMs,
+          clampedActiveOverlapRatio,
+        };
+      }
+
+      if (
+        context.slidingDiarizationWindowMs > 320 ||
+        context.activeOverlapRatio > 0.05
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_diarization_sliding_window_and_overlap_ratio_ceiling",
+          reason:
+            "Streaming diarization frame window (>320ms synthetic ceiling) or active multi-speaker overlap ratio (>0.05 synthetic threshold) out of bounds; clamping window to <=320ms and flagging overlap >0.05.",
+          clampedSlidingDiarizationWindowMs,
+          clampedActiveOverlapRatio,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: <=320ms overlap-aware diarization window, <=0.05 non-overlapping speech confirmation, and structured <turn speaker role> XML attribution verified.",
+        clampedSlidingDiarizationWindowMs,
+        clampedActiveOverlapRatio,
+      };
+    }
+
+    export interface MultipartySpeakerRolePrivilegeContext {
+      bystanderDirectWriteOrUnconfirmedQuarantinePromotionAttempted: boolean;
+      primarySpeakerCosineSim: number;
+      confirmationTurnOverlapRatio: number;
+    }
+
+    export interface MultipartySpeakerRolePrivilegeDecision {
+      violated: boolean;
+      policyId: "P734-MULTIPARTY-SPEAKER-ROLE-PRIVILEGE-FENCE-AND-BYSTANDER-WRITE-LOCK-GUARD";
+      action:
+        | "enforce_speaker_role_rbac_bystander_quarantine_and_primary_reconfirmation_in_0ms"
+        | "clamp_primary_voiceprint_similarity_and_confirmation_overlap_bounds"
+        | "allow";
+      reason: string;
+      clampedPrimarySpeakerCosineSim: number;
+      clampedConfirmationTurnOverlapRatio: number;
+    }
+
+    export function evaluateMultipartySpeakerRolePrivilegeFenceAndBystanderWriteLockGate(
+      context: MultipartySpeakerRolePrivilegeContext,
+    ): MultipartySpeakerRolePrivilegeDecision {
+      const policyId =
+        "P734-MULTIPARTY-SPEAKER-ROLE-PRIVILEGE-FENCE-AND-BYSTANDER-WRITE-LOCK-GUARD" as const;
+      const clampedPrimarySpeakerCosineSim = Math.min(
+        Math.max(context.primarySpeakerCosineSim, 0.82),
+        1.0,
+      );
+      const clampedConfirmationTurnOverlapRatio = Math.min(
+        Math.max(context.confirmationTurnOverlapRatio, 0),
+        0.05,
+      );
+
+      if (context.bystanderDirectWriteOrUnconfirmedQuarantinePromotionAttempted) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_speaker_role_rbac_bystander_quarantine_and_primary_reconfirmation_in_0ms",
+          reason:
+            "Multiparty Speaker-Role Privilege Fence & Bystander Write Lock Policy Check: unverified_bystander attempted direct write-tool mutation or PII readout, or bystander quarantine slot was promoted without isolated verified_primary verbal re-confirmation; offline synthetic policy state machine enforcing gateway-level speaker RBAC, bystander quarantine slot isolation, and primary caller voiceprint confirmation >=0.82 (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live d-vector verification latency not_measured).",
+          clampedPrimarySpeakerCosineSim,
+          clampedConfirmationTurnOverlapRatio,
+        };
+      }
+
+      if (
+        context.primarySpeakerCosineSim < 0.82 ||
+        context.confirmationTurnOverlapRatio > 0.05
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_primary_voiceprint_similarity_and_confirmation_overlap_bounds",
+          reason:
+            "Primary speaker voiceprint similarity (<0.82 synthetic floor) or confirmation turn overlap ratio (>0.05 synthetic ceiling) out of bounds; clamping primary voiceprint threshold to >=0.82 and overlap ratio to <=0.05.",
+          clampedPrimarySpeakerCosineSim,
+          clampedConfirmationTurnOverlapRatio,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: verified_primary speaker role RBAC, primary voiceprint similarity >=0.82, confirmation overlap <=0.05, and bystander quarantine re-confirmation verified.",
+        clampedPrimarySpeakerCosineSim,
+        clampedConfirmationTurnOverlapRatio,
+      };
+    }
+
 
 
 

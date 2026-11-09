@@ -1135,9 +1135,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>372. [专题9 `docs/voice-midcall-failover-session-recovery-faq.md`] 通话中故障无感媒体流重锚定（`SIP Re-INVITE / WebRTC ICE Restart &lt;=1,500ms`）与 `Redis` 轮次快照热恢复及幂等账本防重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截备用 Worker 未加载最新轮次快照直接空白接管或对在途写操作盲目二次重放，强制 `hydratedCheckpointEpoch == activeTurnEpoch` 与 `committedIdempotencyKeys` 核验；真实运营商 SIP 信令与 Redis 跨可用区读取耗时 `not_measured`）&amp; 大模型/语音服务商逐轮首字超时熔断对冲（`&lt;=1,800ms`）、边缘预缓存安抚垫音与降级通道音色一致性锁（拦截 `HTTP 429/503` 无声干等或中途切换男女声/语种口音，强制 `voicePersonaId` 相似度 `&gt;=0.95`；真实跨区模型故障转移与 TTS 合成流耗时 `not_measured`）(`P731` / `P732` · Stage 369 · 372 评测维度里程碑 · 741 护栏 &amp; 750 探针 · 372 维)</strong>
+                <strong>372. [专题9 `docs/voice-midcall-failover-session-recovery-faq.md`] 通话中故障无感媒体流重锚定（`SIP Re-INVITE / WebRTC ICE Restart &lt;=1,500ms`）与 `Redis` 轮次快照热恢复及幂等账本防重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截备用 Worker 未加载最新轮次快照直接空白接管或对在途写操作盲目二次重放，强制 `hydratedCheckpointEpoch == activeTurnEpoch` 与 `committedIdempotencyKeys` 核验；真实运营商 SIP 信令与 Redis 跨可用区读取耗时 `not_measured`）&amp; 大模型/语音服务商逐轮首字超时熔断对冲（`&lt;=1,800ms`）、边缘预缓存安抚垫音与降级通道音色一致性锁（拦截 `HTTP 429/503` 无声干等或中途切换男女声/语种口音，强制 `voicePersonaId` 相似度 `&gt;=0.95`；真实跨区模型故障转移与 TTS 合成流耗时 `not_measured`）(`P731` / `P732` · Stage 369 · 372 维)</strong>
               </td>
               <td><code>P731 / P732 deterministic mid-call SIP Re-INVITE / ICE Restart checkpoint hydration idempotency guard &amp; voice provider circuit-breaker comfort bridge persona continuity lock</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>373. [专题10 `docs/voice-multiparty-diarization-role-isolation-faq.md`] 多人同场免提与三方通话流式重叠感知说话人分离（`EEND &lt;=320ms`）与 `&lt;turn speaker role&gt;` 结构化归因门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截单麦混音将多位说话人或重叠抢话直接拼接为无角色标签字符串，将滑窗钳制在 `&lt;=320ms` 且重叠阈值 `&lt;=0.05`；真实在线 EEND DSP 推理耗时 `not_measured`，离线批处理 PoC 实测 `RTF=0.057` `measured`）&amp; 多说话人角色 RBAC 写权限围栏、旁人参数 `Quarantine` 隔离槽与主叫声纹（`&gt;=0.82`）单独复核锁（拦截 `unverified_bystander` 直接触发写操作工具或套取账户 PII；真实声纹提取耗时 `not_measured`）(`P733` / `P734` · Stage 370 · 373 评测维度里程碑 · 743 护栏 &amp; 752 探针 · 373 维)</strong>
+              </td>
+              <td><code>P733 / P734 deterministic streaming overlap-aware diarization turn attribution gate &amp; multiparty speaker-role RBAC quarantine write lock</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4253,9 +4260,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>372. [专题9 `docs/voice-midcall-failover-session-recovery-faq.md`] 通话中故障无感媒体流重锚定（`SIP Re-INVITE / WebRTC ICE Restart &lt;=1,500ms`）与 `Redis` 轮次快照热恢复及幂等账本防重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截备用 Worker 未加载最新轮次快照直接空白接管或对在途写操作盲目二次重放，强制 `hydratedCheckpointEpoch == activeTurnEpoch` 与 `committedIdempotencyKeys` 核验；真实运营商 SIP 信令与 Redis 跨可用区读取耗时 `not_measured`）&amp; 大模型/语音服务商逐轮首字超时熔断对冲（`&lt;=1,800ms`）、边缘预缓存安抚垫音与降级通道音色一致性锁（拦截 `HTTP 429/503` 无声干等或中途切换男女声/语种口音，强制 `voicePersonaId` 相似度 `&gt;=0.95`；真实跨区模型故障转移与 TTS 合成流耗时 `not_measured`）(`P731` / `P732` · Stage 369 · 372 评测维度里程碑 · 741 护栏 &amp; 750 探针 · 372 维)</strong>
+                <strong>372. [专题9 `docs/voice-midcall-failover-session-recovery-faq.md`] 通话中故障无感媒体流重锚定（`SIP Re-INVITE / WebRTC ICE Restart &lt;=1,500ms`）与 `Redis` 轮次快照热恢复及幂等账本防重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截备用 Worker 未加载最新轮次快照直接空白接管或对在途写操作盲目二次重放，强制 `hydratedCheckpointEpoch == activeTurnEpoch` 与 `committedIdempotencyKeys` 核验；真实运营商 SIP 信令与 Redis 跨可用区读取耗时 `not_measured`）&amp; 大模型/语音服务商逐轮首字超时熔断对冲（`&lt;=1,800ms`）、边缘预缓存安抚垫音与降级通道音色一致性锁（拦截 `HTTP 429/503` 无声干等或中途切换男女声/语种口音，强制 `voicePersonaId` 相似度 `&gt;=0.95`；真实跨区模型故障转移与 TTS 合成流耗时 `not_measured`）(`P731` / `P732` · Stage 369 · 372 维)</strong>
               </td>
               <td><code>P731 / P732 deterministic mid-call SIP Re-INVITE / ICE Restart checkpoint hydration idempotency guard &amp; voice provider circuit-breaker comfort bridge persona continuity lock</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>373. [专题10 `docs/voice-multiparty-diarization-role-isolation-faq.md`] 多人同场免提与三方通话流式重叠感知说话人分离（`EEND &lt;=320ms`）与 `&lt;turn speaker role&gt;` 结构化归因门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截单麦混音将多位说话人或重叠抢话直接拼接为无角色标签字符串，将滑窗钳制在 `&lt;=320ms` 且重叠阈值 `&lt;=0.05`；真实在线 EEND DSP 推理耗时 `not_measured`，离线批处理 PoC 实测 `RTF=0.057` `measured`）&amp; 多说话人角色 RBAC 写权限围栏、旁人参数 `Quarantine` 隔离槽与主叫声纹（`&gt;=0.82`）单独复核锁（拦截 `unverified_bystander` 直接触发写操作工具或套取账户 PII；真实声纹提取耗时 `not_measured`）(`P733` / `P734` · Stage 370 · 373 评测维度里程碑 · 743 护栏 &amp; 752 探针 · 373 维)</strong>
+              </td>
+              <td><code>P733 / P734 deterministic streaming overlap-aware diarization turn attribution gate &amp; multiparty speaker-role RBAC quarantine write lock</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
