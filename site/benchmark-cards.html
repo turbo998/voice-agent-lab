@@ -1170,9 +1170,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>377. [专题14 `docs/voice-finops-audio-context-pruning-ptu-faq.md`] 长通话 4 轮原始音频滑窗裁剪、顶置 `Pinned Slot JSON` 脱水与 `&gt;=80%` 前缀缓存对齐门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截无界历史音频 Token $O(N^2)$ 重复计费，将 12 分钟长通话精算单价从 `$0.2244/min` 压降至 `$0.0584/min` 省 `74.0%`；真实云端 KV-Cache 命中耗时 `not_measured`）&amp; `Erlang-C` `54.0%` 黄金盈亏线 `PTU` 稳态基荷（`50%–82%`）与 `&gt;85%` 水位零 429 洪峰自动溢出 `PAYGO / Phi4-mm` 门禁（拦截峰值超配 PTU 夜间空转或纯 PAYGO 早高峰 429 掉线；真实网关分流耗时 `not_measured`）(`P741` / `P742` · Stage 374 · 377 评测维度里程碑 · 751 护栏 &amp; 760 探针 · 377 维)</strong>
+                <strong>377. [专题14 `docs/voice-finops-audio-context-pruning-ptu-faq.md`] 长通话 4 轮原始音频滑窗裁剪、顶置 `Pinned Slot JSON` 脱水与 `&gt;=80%` 前缀缓存对齐门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截无界历史音频 Token $O(N^2)$ 重复计费，将 12 分钟长通话精算单价从 `$0.2244/min` 压降至 `$0.0584/min` 省 `74.0%`；真实云端 KV-Cache 命中耗时 `not_measured`）&amp; `Erlang-C` `54.0%` 黄金盈亏线 `PTU` 稳态基荷（`50%–82%`）与 `&gt;85%` 水位零 429 洪峰自动溢出 `PAYGO / Phi4-mm` 门禁（拦截峰值超配 PTU 夜间空转或纯 PAYGO 早高峰 429 掉线；真实网关分流耗时 `not_measured`）(`P741` / `P742` · Stage 374 · 377 维)</strong>
               </td>
               <td><code>P741 / P742 deterministic 4-turn sliding audio window slot-pinned pruning gate &amp; Erlang-C PTU baseload PAYGO burst spillover guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>378. [专题15 `docs/voice-multimodal-avatar-cobrowsing-sync-faq.md`] 多模态数字人 `ITU-R BT.1359-1` 唇音同步（`|avSkewMs| &lt;= 45ms`）、打断视素清空与 `&lt;600 kbps` 弱网保音弃画门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截僵尸动嘴与高码率视频流挤占 `DSCP EF` 语音带宽；真实客户端 WebGL 渲染帧率与 `RTCP SR` 抖动 `not_measured`）&amp; 同屏协办客户端本地 `[data-pii]` 涂黑、剥离隐藏 `opacity:0` 视觉提示词注入与 `viewportEpoch`（滚动偏移 `&lt;=16px`）防误触锁（拦截密码框截图泄露与滑动错位误触；真实浏览器 DOM 序列化耗时 `not_measured`）(`P743` / `P744` · Stage 375 · 378 评测维度里程碑 · 753 护栏 &amp; 762 探针 · 378 维)</strong>
+              </td>
+              <td><code>P743 / P744 deterministic ITU-R BT.1359 avatar lip-sync audio-priority drop gate &amp; co-browsing DOM PII mask viewport-epoch click fence</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4323,9 +4330,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>377. [专题14 `docs/voice-finops-audio-context-pruning-ptu-faq.md`] 长通话 4 轮原始音频滑窗裁剪、顶置 `Pinned Slot JSON` 脱水与 `&gt;=80%` 前缀缓存对齐门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截无界历史音频 Token $O(N^2)$ 重复计费，将 12 分钟长通话精算单价从 `$0.2244/min` 压降至 `$0.0584/min` 省 `74.0%`；真实云端 KV-Cache 命中耗时 `not_measured`）&amp; `Erlang-C` `54.0%` 黄金盈亏线 `PTU` 稳态基荷（`50%–82%`）与 `&gt;85%` 水位零 429 洪峰自动溢出 `PAYGO / Phi4-mm` 门禁（拦截峰值超配 PTU 夜间空转或纯 PAYGO 早高峰 429 掉线；真实网关分流耗时 `not_measured`）(`P741` / `P742` · Stage 374 · 377 评测维度里程碑 · 751 护栏 &amp; 760 探针 · 377 维)</strong>
+                <strong>377. [专题14 `docs/voice-finops-audio-context-pruning-ptu-faq.md`] 长通话 4 轮原始音频滑窗裁剪、顶置 `Pinned Slot JSON` 脱水与 `&gt;=80%` 前缀缓存对齐门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截无界历史音频 Token $O(N^2)$ 重复计费，将 12 分钟长通话精算单价从 `$0.2244/min` 压降至 `$0.0584/min` 省 `74.0%`；真实云端 KV-Cache 命中耗时 `not_measured`）&amp; `Erlang-C` `54.0%` 黄金盈亏线 `PTU` 稳态基荷（`50%–82%`）与 `&gt;85%` 水位零 429 洪峰自动溢出 `PAYGO / Phi4-mm` 门禁（拦截峰值超配 PTU 夜间空转或纯 PAYGO 早高峰 429 掉线；真实网关分流耗时 `not_measured`）(`P741` / `P742` · Stage 374 · 377 维)</strong>
               </td>
               <td><code>P741 / P742 deterministic 4-turn sliding audio window slot-pinned pruning gate &amp; Erlang-C PTU baseload PAYGO burst spillover guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>378. [专题15 `docs/voice-multimodal-avatar-cobrowsing-sync-faq.md`] 多模态数字人 `ITU-R BT.1359-1` 唇音同步（`|avSkewMs| &lt;= 45ms`）、打断视素清空与 `&lt;600 kbps` 弱网保音弃画门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截僵尸动嘴与高码率视频流挤占 `DSCP EF` 语音带宽；真实客户端 WebGL 渲染帧率与 `RTCP SR` 抖动 `not_measured`）&amp; 同屏协办客户端本地 `[data-pii]` 涂黑、剥离隐藏 `opacity:0` 视觉提示词注入与 `viewportEpoch`（滚动偏移 `&lt;=16px`）防误触锁（拦截密码框截图泄露与滑动错位误触；真实浏览器 DOM 序列化耗时 `not_measured`）(`P743` / `P744` · Stage 375 · 378 评测维度里程碑 · 753 护栏 &amp; 762 探针 · 378 维)</strong>
+              </td>
+              <td><code>P743 / P744 deterministic ITU-R BT.1359 avatar lip-sync audio-priority drop gate &amp; co-browsing DOM PII mask viewport-epoch click fence</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

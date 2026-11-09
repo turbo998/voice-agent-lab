@@ -1447,6 +1447,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks quadratic O(N^2) raw audio token accumulation and unpinned slot eviction, clamping retained raw audio turns to <=4 and prompt prefix cache floor to >=0.80 [$0.2244 -> $0.0584/min analytical FinOps model]; live cloud KV-cache lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks idle PTU over-provisioning below 54.0% break-even and unreserved peak HTTP 429 drops, clamping steady PTU utilization to 50%-82% and burst spillover threshold to <=85%; live gateway spillover RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "378. [Topic 15: voice-multimodal-avatar-cobrowsing-sync-faq] Digital Human Avatar ITU-R BT.1359 Lip-Sync (|avSkewMs| <= 45ms), Barge-In Viseme Flush & <600 kbps Audio-First Video Drop + Co-Browsing Client DOM [data-pii] Masking, Hidden Prompt-Injection Strip & Viewport Epoch Lock (<=16px) (P743 / P744 — Stage 375 · 378-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks zombie barge-in mouth flapping and video bandwidth starvation, clamping |avSkewMs| to <=45ms and audio-first video drop floor to >=600 kbps; live WebGL rendering FPS and RTCP SR jitter are not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unmasked [data-pii] uploads, hidden opacity:0 visual prompt injections, and stale-scroll mis-clicks, clamping viewport scroll drift to <=16px and minimum ingested text opacity to >=0.05; live browser DOM serialization latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

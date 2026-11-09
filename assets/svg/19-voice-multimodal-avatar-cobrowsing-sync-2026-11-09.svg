@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="title desc">
+  <title id="title">Enterprise Voice Agent Multimodal Avatar Lip-Sync &amp; Visual Co-Browsing Architecture (Stage 375 · P743–P744)</title>
+  <desc id="desc">Visual comparison of cloud video avatar bandwidth starvation &amp; visual prompt injection vs P743 ITU-R BT.1359 lip-sync skew lock (&lt;=45ms) + audio-first congestion drop and P744 Co-Browsing DOM PII masking + viewportEpoch synchronization.</desc>
+  <defs>
+    <linearGradient id="bgGrad19" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentCyan19" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="accentGreen19" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad19)"/>
+
+  <!-- Header -->
+  <rect x="28" y="20" width="1144" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="44" y="34" width="198" height="24" rx="6" fill="url(#accentCyan19)"/>
+  <text x="143" y="50" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">STAGE 375 · TOPIC 15 · P743–P744</text>
+  <text x="256" y="51" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800">Multimodal Avatar Lip-Sync (&lt;=45ms) &amp; Co-Browsing Viewport Safety</text>
+  <text x="44" y="78" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12">多模态数字人唇音同步与同屏协办架构选型：ITU-R BT.1359 唇形对齐+弱网保音弃画 (P743) 与同屏 DOM 遮罩+视口纪元锁 (P744)</text>
+
+  <!-- Left Panel: P743 Avatar Lip-Sync & Audio-Priority Degradation -->
+  <rect x="28" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="44" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="58" y="145" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">① P743: Avatar Lip-Sync (&lt;=45ms Skew) &amp; Audio-First Congestion Drop</text>
+
+  <!-- Legacy Cloud Video Avatar Trap -->
+  <rect x="44" y="168" width="528" height="118" rx="8" fill="#1F1218" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="58" y="190" fill="#F87171" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">⛔ Legacy Cloud Video Avatar Over Lossy Mobile Network</text>
+  <text x="58" y="212" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• 1080p Cloud Avatar stream hogs 2.5 Mbps -&gt; starves 32 kbps Opus voice on 4G!</text>
+  <text x="58" y="232" fill="#FCA5A5" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Audio arrives 220ms before video -&gt; uncanny-valley "badly dubbed movie" effect</text>
+  <text x="58" y="252" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• On caller barge-in, zombie avatar mouth keeps flapping for 600ms after audio stops!</text>
+  <text x="58" y="272" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10">ITU-R BT.1359-1 Threshold: Humans notice A/V skew beyond +45ms (audio lead) / -125ms (audio lag)</text>
+
+  <!-- P743 Engineered Path -->
+  <rect x="44" y="298" width="528" height="244" rx="8" fill="#0B211D" stroke="#10B981" stroke-width="1.5"/>
+  <text x="58" y="320" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P743: Client Viseme Driver / RTCP SR Sync (&lt;=45ms) + Audio-First Drop</text>
+  <text x="58" y="344" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">1. Client-Side Viseme Driven vs Cloud Pixel Stream: Send 2 kbps Viseme IDs alongside</text>
+  <text x="72" y="362" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">Opus audio for mobile apps (99% less bandwidth); reserve Cloud Pixel Avatar for kiosks</text>
+  <text x="58" y="386" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">2. Tight Lip-Sync Lock (|avSkewMs| &lt;= 45ms): Align RTP timestamps via RTCP SR</text>
+  <text x="72" y="404" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">wallclock and flush viseme/video buffers in 0ms when turnEpoch increments on barge-in</text>
+  <text x="58" y="428" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">3. Audio-First Graceful Degradation: Drop video to static portrait + waveform when</text>
+  <text x="72" y="446" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">available bandwidth &lt; 600 kbps, protecting DSCP EF voice intelligibility 100%</text>
+  <rect x="58" y="484" width="500" height="44" rx="6" fill="#064E3B"/>
+  <text x="70" y="502" fill="#A7F3D0" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P743 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="70" y="518" fill="#6EE7B7" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Right Panel: P744 Co-Browsing DOM Masking & Viewport Epoch Sync -->
+  <rect x="612" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="628" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="642" y="145" fill="#A78BFA" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">② P744: Co-Browsing DOM PII Masking &amp; Viewport Epoch Lock</text>
+
+  <!-- Modality Selection Matrix Box -->
+  <rect x="628" y="168" width="528" height="156" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="642" y="190" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Multimodal Voice Modality Selection Matrix</text>
+  <text x="642" y="214" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">• Modality A: Pure Audio Stream — Best for PSTN, driving, eyes-busy field ops (32 kbps)</text>
+  <text x="642" y="236" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Modality B: Voice + Visual Co-Browsing / UI Cards (P744 Recommended for App/Web CS)</text>
+  <text x="654" y="254" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">3x faster form completion than reading tables aloud; uses lightweight SCTP DataChannel</text>
+  <text x="642" y="276" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Modality C: Voice + 2D/3D Digital Human Avatar (P743 for Kiosks / Wealth / Tutoring)</text>
+  <text x="654" y="294" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">High visual empathy; requires &lt;=45ms lip-sync lock &amp; audio-priority fallback</text>
+
+  <!-- P744 Engineered Box -->
+  <rect x="628" y="336" width="528" height="206" rx="8" fill="#17153B" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="642" y="358" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P744: Client-Side DOM Redaction &amp; Viewport-Epoch Click Fence</text>
+  <text x="642" y="382" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Pre-Capture DOM/Canvas Masking: Mask password/CVV/SSN fields ([data-pii]) on the</text>
+  <text x="654" y="400" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">client before capturing screenshots or DOM trees for the multimodal model</text>
+  <text x="642" y="424" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Anti-Visual Prompt Injection: Strip opacity:0 / font-size:0 / off-screen text nodes</text>
+  <text x="654" y="442" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">that attempt to hijack the voice agent via hidden webpage text</text>
+  <text x="642" y="466" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Viewport Epoch Fence: Block stale UI clicks if user scrolled (viewportDriftPx &lt;= 16px)</text>
+  <rect x="642" y="482" width="500" height="46" rx="6" fill="#2E1065"/>
+  <text x="654" y="500" fill="#DDD6FE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P744 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="654" y="516" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Bottom Provenance Banner -->
+  <rect x="28" y="572" width="1144" height="82" rx="10" fill="#090D16" stroke="#334155" stroke-width="1.2"/>
+  <text x="44" y="596" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">PROVENANCE &amp; MEASUREMENT BOUNDARY DISCLOSURE (STAGE 375 · DIMENSION 378)</text>
+  <text x="44" y="618" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Offline Policy State Machine (P743/P744): 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic).</text>
+  <text x="44" y="638" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Live WebRTC Video Rendering &amp; DOM Capture: GPU viseme rendering FPS and RTCP SR network jitter are not_measured in local unit tests.</text>
+</svg>

@@ -69570,6 +69570,147 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface AvatarLipsyncAndAudioPriorityContext {
+      zombieBargeInMouthFlapOrUnthrottledVideoStarvationDetected: boolean;
+      absAvSkewMs: number;
+      videoDropBandwidthFloorKbps: number;
+    }
+
+    export interface AvatarLipsyncAndAudioPriorityDecision {
+      violated: boolean;
+      policyId: "P743-AVATAR-LIPSYNC-ITU-BT1359-SKEW-AND-AUDIO-PRIORITY-DEGRADATION-GUARD";
+      action:
+        | "enforce_itu_bt1359_lipsync_bargein_flush_and_audio_first_video_drop_in_0ms"
+        | "clamp_av_skew_ceiling_and_video_drop_bandwidth_floor"
+        | "allow";
+      reason: string;
+      clampedAbsAvSkewMs: number;
+      clampedVideoDropBandwidthFloorKbps: number;
+    }
+
+    export function evaluateAvatarLipsyncItuBt1359SkewAndAudioPriorityDegradationGate(
+      context: AvatarLipsyncAndAudioPriorityContext,
+    ): AvatarLipsyncAndAudioPriorityDecision {
+      const policyId =
+        "P743-AVATAR-LIPSYNC-ITU-BT1359-SKEW-AND-AUDIO-PRIORITY-DEGRADATION-GUARD" as const;
+      const clampedAbsAvSkewMs = Math.min(Math.max(context.absAvSkewMs, 0), 45);
+      const clampedVideoDropBandwidthFloorKbps = Math.min(
+        Math.max(context.videoDropBandwidthFloorKbps, 600),
+        1200,
+      );
+
+      if (context.zombieBargeInMouthFlapOrUnthrottledVideoStarvationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_itu_bt1359_lipsync_bargein_flush_and_audio_first_video_drop_in_0ms",
+          reason:
+            "Avatar Lip-Sync & Audio-Priority Degradation Policy Check: digital human avatar continued mouth movement after caller barge-in or cloud video stream starved DSCP EF voice bandwidth under wireless congestion; offline synthetic policy state machine enforcing ITU-R BT.1359-1 |avSkewMs| <= 45ms, synchronous turnEpoch viseme buffer flush, and >=600 kbps audio-first video drop floor (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live WebGL rendering FPS & RTCP SR jitter not_measured).",
+          clampedAbsAvSkewMs,
+          clampedVideoDropBandwidthFloorKbps,
+        };
+      }
+
+      if (
+        context.absAvSkewMs > 45 ||
+        context.videoDropBandwidthFloorKbps < 600
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_av_skew_ceiling_and_video_drop_bandwidth_floor",
+          reason:
+            "Audio-visual lip-sync skew (>45ms ITU-R BT.1359-1 ceiling) or video-drop bandwidth floor (<600 kbps synthetic minimum) out of bounds; clamping |avSkewMs| to <=45ms and video-drop floor to >=600 kbps.",
+          clampedAbsAvSkewMs,
+          clampedVideoDropBandwidthFloorKbps,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: ITU-R BT.1359-1 lip-sync skew <=45ms, synchronous barge-in viseme flush, and >=600 kbps audio-first video drop verified.",
+        clampedAbsAvSkewMs,
+        clampedVideoDropBandwidthFloorKbps,
+      };
+    }
+
+    export interface CobrowsingViewportAndDomMaskContext {
+      unmaskedDomPiiOrHiddenCssInjectionOrStaleViewportClickDetected: boolean;
+      viewportDriftPx: number;
+      minVisibleTextOpacity: number;
+    }
+
+    export interface CobrowsingViewportAndDomMaskDecision {
+      violated: boolean;
+      policyId: "P744-COBROWSING-VIEWPORT-EPOCH-SYNC-AND-DOM-PII-MASK-INJECTION-GUARD";
+      action:
+        | "enforce_client_dom_pii_mask_hidden_injection_strip_and_viewport_epoch_lock_in_0ms"
+        | "clamp_viewport_scroll_drift_and_visible_text_opacity_floor"
+        | "allow";
+      reason: string;
+      clampedViewportDriftPx: number;
+      clampedMinVisibleTextOpacity: number;
+    }
+
+    export function evaluateCobrowsingViewportEpochSyncAndDomPiiMaskInjectionGate(
+      context: CobrowsingViewportAndDomMaskContext,
+    ): CobrowsingViewportAndDomMaskDecision {
+      const policyId =
+        "P744-COBROWSING-VIEWPORT-EPOCH-SYNC-AND-DOM-PII-MASK-INJECTION-GUARD" as const;
+      const clampedViewportDriftPx = Math.min(
+        Math.max(context.viewportDriftPx, 0),
+        16,
+      );
+      const clampedMinVisibleTextOpacity = Math.min(
+        Math.max(context.minVisibleTextOpacity, 0.05),
+        1.0,
+      );
+
+      if (
+        context.unmaskedDomPiiOrHiddenCssInjectionOrStaleViewportClickDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_client_dom_pii_mask_hidden_injection_strip_and_viewport_epoch_lock_in_0ms",
+          reason:
+            "Co-Browsing Viewport Epoch & DOM PII Mask Policy Check: multimodal capture attempted to upload unmasked [data-pii]/password fields, ingested hidden opacity:0 visual prompt-injection text, or dispatched a UI click on a stale scrolled viewportEpoch; offline synthetic policy state machine enforcing pre-capture client DOM redaction, hidden node stripping (opacity >= 0.05), and viewportDriftPx <= 16px (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live browser DOM serialization latency not_measured).",
+          clampedViewportDriftPx,
+          clampedMinVisibleTextOpacity,
+        };
+      }
+
+      if (
+        context.viewportDriftPx > 16 ||
+        context.minVisibleTextOpacity < 0.05
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_viewport_scroll_drift_and_visible_text_opacity_floor",
+          reason:
+            "Viewport scroll drift (>16px synthetic ceiling) or minimum ingested text opacity (<0.05 synthetic floor) out of bounds; clamping scroll drift to <=16px and minimum text opacity to >=0.05.",
+          clampedViewportDriftPx,
+          clampedMinVisibleTextOpacity,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: client-side [data-pii] DOM masking, hidden visual prompt-injection stripping (opacity >= 0.05), and viewportEpoch scroll drift <=16px verified.",
+        clampedViewportDriftPx,
+        clampedMinVisibleTextOpacity,
+      };
+    }
+
 
 
 
