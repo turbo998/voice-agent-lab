@@ -69427,6 +69427,149 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SlidingAudioContextPruningContext {
+      unboundedRawAudioHistoryOrUnpinnedSlotEvictionDetected: boolean;
+      maxRetainedRawAudioTurns: number;
+      promptPrefixCacheHitRatio: number;
+    }
+
+    export interface SlidingAudioContextPruningDecision {
+      violated: boolean;
+      policyId: "P741-SLIDING-AUDIO-CONTEXT-WINDOW-AND-SLOT-PINNED-TRANSCRIPT-PRUNING-GUARD";
+      action:
+        | "enforce_4turn_audio_sliding_window_and_pinned_slot_json_compaction_in_0ms"
+        | "clamp_raw_audio_turn_window_and_prefix_cache_hit_floor"
+        | "allow";
+      reason: string;
+      clampedMaxRetainedRawAudioTurns: number;
+      clampedPromptPrefixCacheHitRatio: number;
+    }
+
+    export function evaluateSlidingAudioContextWindowAndSlotPinnedTranscriptPruningGate(
+      context: SlidingAudioContextPruningContext,
+    ): SlidingAudioContextPruningDecision {
+      const policyId =
+        "P741-SLIDING-AUDIO-CONTEXT-WINDOW-AND-SLOT-PINNED-TRANSCRIPT-PRUNING-GUARD" as const;
+      const clampedMaxRetainedRawAudioTurns = Math.min(
+        Math.max(context.maxRetainedRawAudioTurns, 2),
+        4,
+      );
+      const clampedPromptPrefixCacheHitRatio = Math.min(
+        Math.max(context.promptPrefixCacheHitRatio, 0.8),
+        1.0,
+      );
+
+      if (context.unboundedRawAudioHistoryOrUnpinnedSlotEvictionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_4turn_audio_sliding_window_and_pinned_slot_json_compaction_in_0ms",
+          reason:
+            "Sliding Audio Context Window & Slot-Pinned Pruning Policy Check: long S2S call retained unbounded raw audio turns (O(N^2) billing bloat) or evicted early turns without pinning verified slots into the canonical JSON header; offline synthetic policy state machine enforcing <=4 raw audio turns, 10:1 text dehydration for older turns, and >=80% prompt prefix cache alignment (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live cloud KV-cache lookup latency not_measured).",
+          clampedMaxRetainedRawAudioTurns,
+          clampedPromptPrefixCacheHitRatio,
+        };
+      }
+
+      if (
+        context.maxRetainedRawAudioTurns > 4 ||
+        context.promptPrefixCacheHitRatio < 0.8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_raw_audio_turn_window_and_prefix_cache_hit_floor",
+          reason:
+            "Retained raw audio turn window (>4 turns synthetic ceiling) or prompt prefix cache hit ratio (<0.80 synthetic floor) out of bounds; clamping raw audio window to <=4 turns and prefix cache floor to >=0.80.",
+          clampedMaxRetainedRawAudioTurns,
+          clampedPromptPrefixCacheHitRatio,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: <=4-turn raw audio sliding window, top-pinned canonical slot ledger, and >=80% prompt prefix cache alignment verified.",
+        clampedMaxRetainedRawAudioTurns,
+        clampedPromptPrefixCacheHitRatio,
+      };
+    }
+
+    export interface ErlangCPtuSpilloverContext {
+      unreservedPeak429OrOverprovisionedIdlePtuWasteDetected: boolean;
+      ptuSteadyUtilizationPct: number;
+      burstSpilloverThresholdPct: number;
+    }
+
+    export interface ErlangCPtuSpilloverDecision {
+      violated: boolean;
+      policyId: "P742-ERLANG-C-PTU-BASELOAD-RESERVATION-AND-PAYGO-BURST-SPILLOVER-GUARD";
+      action:
+        | "enforce_erlang_c_ptu_baseload_and_paygo_phi4_spillover_in_0ms"
+        | "clamp_ptu_utilization_band_and_spillover_threshold"
+        | "allow";
+      reason: string;
+      clampedPtuSteadyUtilizationPct: number;
+      clampedBurstSpilloverThresholdPct: number;
+    }
+
+    export function evaluateErlangCPtuBaseloadReservationAndPaygoBurstSpilloverGate(
+      context: ErlangCPtuSpilloverContext,
+    ): ErlangCPtuSpilloverDecision {
+      const policyId =
+        "P742-ERLANG-C-PTU-BASELOAD-RESERVATION-AND-PAYGO-BURST-SPILLOVER-GUARD" as const;
+      const clampedPtuSteadyUtilizationPct = Math.min(
+        Math.max(context.ptuSteadyUtilizationPct, 50),
+        82,
+      );
+      const clampedBurstSpilloverThresholdPct = Math.min(
+        Math.max(context.burstSpilloverThresholdPct, 75),
+        85,
+      );
+
+      if (context.unreservedPeak429OrOverprovisionedIdlePtuWasteDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_erlang_c_ptu_baseload_and_paygo_phi4_spillover_in_0ms",
+          reason:
+            "Erlang-C PTU Baseload & PAYGO Spillover Policy Check: capacity plan either ran 100% unreserved PAYGO into peak HTTP 429 throttling or over-provisioned 100% PTU below the 54.0% break-even utilization line; offline synthetic policy state machine enforcing 50%-82% PTU steady utilization and <=85% burst spillover routing to PAYGO / Phi4-mm-realtime (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live gateway token-bucket spillover RTT not_measured).",
+          clampedPtuSteadyUtilizationPct,
+          clampedBurstSpilloverThresholdPct,
+        };
+      }
+
+      if (
+        context.ptuSteadyUtilizationPct < 50 ||
+        context.ptuSteadyUtilizationPct > 82 ||
+        context.burstSpilloverThresholdPct > 85
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ptu_utilization_band_and_spillover_threshold",
+          reason:
+            "PTU steady utilization (outside 50%-82% synthetic target band) or burst spillover threshold (>85% synthetic ceiling) out of bounds; clamping PTU target utilization to 50%-82% and spillover threshold to <=85%.",
+          clampedPtuSteadyUtilizationPct,
+          clampedBurstSpilloverThresholdPct,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Erlang-C PTU steady baseload utilization (50%-82%, above 54% break-even) and <=85% zero-429 burst spillover verified.",
+        clampedPtuSteadyUtilizationPct,
+        clampedBurstSpilloverThresholdPct,
+      };
+    }
+
 
 
 

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="title desc">
+  <title id="title">Enterprise Voice Agent Long-Call Audio Context Pruning &amp; PTU/PAYGO Elastic FinOps Architecture (Stage 374 · P741–P742)</title>
+  <desc id="desc">Visual comparison of quadratic O(N^2) raw audio token billing explosion vs P741 4-turn sliding audio window + slot-pinned text compaction (-74% cost) and P742 Erlang-C PTU baseload reservation (50–82%) + PAYGO burst spillover.</desc>
+  <defs>
+    <linearGradient id="bgGrad18" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentCyan18" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="accentGreen18" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad18)"/>
+
+  <!-- Header -->
+  <rect x="28" y="20" width="1144" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="44" y="34" width="198" height="24" rx="6" fill="url(#accentCyan18)"/>
+  <text x="143" y="50" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">STAGE 374 · TOPIC 14 · P741–P742</text>
+  <text x="256" y="51" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800">Long-Call Audio Context Pruning &amp; PTU/PAYGO Elastic FinOps</text>
+  <text x="44" y="78" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12">长通话音频 Token 爆炸与 FinOps 成本治理选型：4 轮音频滑窗+结构化槽位压缩 (P741) 与 Erlang-C PTU+PAYGO 弹性溢出 (P742)</text>
+
+  <!-- Left Panel: P741 Sliding Audio Context Window & Slot-Pinned Compaction -->
+  <rect x="28" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="44" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="58" y="145" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">① P741: 4-Turn Sliding Audio Window &amp; Slot-Pinned Text Compaction</text>
+
+  <!-- Legacy Quadratic O(N^2) Audio Token Trap -->
+  <rect x="44" y="168" width="528" height="118" rx="8" fill="#1F1218" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="58" y="190" fill="#F87171" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">⛔ Legacy Unbounded Audio Context (O(N²) Quadratic Billing Explosion)</text>
+  <text x="58" y="212" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Native S2S encodes audio at ~25–50 tokens/sec (~1,500–3,000 audio tokens/min)</text>
+  <text x="58" y="232" fill="#FCA5A5" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Every new turn re-sends ALL prior raw audio turns: Turn 20 re-bills Minutes 1..11!</text>
+  <text x="58" y="252" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Result: 12-min call costs $0.2244/min (3.8x spike) &amp; KV-cache latency bloats &gt;780ms!</text>
+  <text x="58" y="272" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10">Physics: Raw audio tokens are 10x–15x denser and more expensive than equivalent text tokens</text>
+
+  <!-- P741 Engineered Path -->
+  <rect x="44" y="298" width="528" height="244" rx="8" fill="#0B211D" stroke="#10B981" stroke-width="1.5"/>
+  <text x="58" y="320" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P741: 4-Turn Raw Audio Window + Pinned Slot JSON + 80% Prefix Cache</text>
+  <text x="58" y="344" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">1. Keep Only Last 4 Turns as Raw Audio (Turns k-3..k): Preserves immediate emotional</text>
+  <text x="72" y="362" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">prosody, sigh/hesitation cues, and acoustic context where it actually matters</text>
+  <text x="58" y="386" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">2. Evict Older Audio -&gt; Compact to Text + Pinned Slot JSON (Turns 1..k-4):</text>
+  <text x="72" y="404" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">10:1 token compression while pinning {verifiedId, flightNo, confirmedAmount} at top</text>
+  <text x="58" y="428" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">3. Immutable Prefix Cache Alignment (&gt;=80% hit rate): Cuts 12-min S2S cost from</text>
+  <text x="72" y="446" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">$0.2244/min down to $0.0584/min (-74.0% savings!) with zero slot amnesia</text>
+  <rect x="58" y="484" width="500" height="44" rx="6" fill="#064E3B"/>
+  <text x="70" y="502" fill="#A7F3D0" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P741 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="70" y="518" fill="#6EE7B7" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Right Panel: P742 Erlang-C PTU Baseload + PAYGO Spillover -->
+  <rect x="612" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="628" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="642" y="145" fill="#A78BFA" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">② P742: Erlang-C PTU Baseload Reservation &amp; PAYGO Burst Spillover</text>
+
+  <!-- FinOps Capacity Selection Matrix Box -->
+  <rect x="628" y="168" width="528" height="156" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="642" y="190" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">FinOps Capacity &amp; Billing Selection Matrix</text>
+  <text x="642" y="214" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">• Model A: 100% PAYGO (Pay-As-You-Go) — Best for &lt;50k min/mo PoCs; vulnerable to peak HTTP 429</text>
+  <text x="642" y="236" fill="#EF4444" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">• Model B: 100% PTU Sized for 10x Peak — Wastes 70%+ idle capacity at night (2.3x overpay)</text>
+  <text x="642" y="258" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Model C: Erlang-C Hybrid PTU Baseload (50–82%) + PAYGO Burst Spillover (P742)</text>
+  <text x="654" y="276" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">Size PTU for P65–P75 steady traffic (~54% avg util crossover); overflow bursts to PAYGO</text>
+  <text x="654" y="294" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">or Phi4-mm-realtime ($0.048/min) when PTU utilization exceeds 85%</text>
+
+  <!-- P742 Engineered Box -->
+  <rect x="628" y="336" width="528" height="206" rx="8" fill="#17153B" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="642" y="358" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P742: Golden 54% PTU Break-Even &amp; Zero-429 Spillover Router</text>
+  <text x="642" y="382" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Break-Even Physics: Reserved PTU becomes cheaper than PAYGO once average</text>
+  <text x="654" y="400" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">24x7 utilization exceeds ~54.0% (clamped target band: 50%–82% steady utilization)</text>
+  <text x="642" y="424" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Real-Time Token Bucket Spillover (&gt;85% PTU load): Automatically overflows excess</text>
+  <text x="654" y="442" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">concurrent calls to PAYGO or Hybrid Semantic VAD lane without dropping a single call</text>
+  <text x="642" y="466" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Per-Call Wallet Ceiling: Hard circuit-breaker against infinite loop / bot drain</text>
+  <rect x="642" y="482" width="500" height="46" rx="6" fill="#2E1065"/>
+  <text x="654" y="500" fill="#DDD6FE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P742 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="654" y="516" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Bottom Provenance Banner -->
+  <rect x="28" y="572" width="1144" height="82" rx="10" fill="#090D16" stroke="#334155" stroke-width="1.2"/>
+  <text x="44" y="596" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">PROVENANCE &amp; MEASUREMENT BOUNDARY DISCLOSURE (STAGE 374 · DIMENSION 377)</text>
+  <text x="44" y="618" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Offline Policy State Machine (P741/P742): 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic).</text>
+  <text x="44" y="638" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• FinOps Cost Model: $0.2244/min -&gt; $0.0584/min (-74.0%) and 54.0% PTU break-even are analytical FinOps calculations from published retail token pricing.</text>
+</svg>

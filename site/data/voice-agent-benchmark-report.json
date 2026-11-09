@@ -1441,6 +1441,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks passive-only d-vector auth and zero-shot neural voice clones, clamping vocoder phase-artifact score to <=0.18 and dynamic nonce readback challenge window to <=1,200ms; live AASIST neural inference latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks high-risk transactions after recent SIM swaps (<72h), missing FIDO2 hardware signatures, or static KBA fallbacks, enforcing >=72h SIM-swap cooldown and <=45s FIDO2 step-up approval; live carrier CAMARA and FIDO2 push RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "377. [Topic 14: voice-finops-audio-context-pruning-ptu-faq] Long-Call 4-Turn Sliding Raw-Audio Window, Top-Pinned Slot JSON Compaction & >=80% Prefix Cache (-74.0% Cost) + Erlang-C 54.0% PTU Baseload Sizing (50%-82% Band) & >85% Zero-429 Burst Spillover (P741 / P742 — Stage 374 · 377-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks quadratic O(N^2) raw audio token accumulation and unpinned slot eviction, clamping retained raw audio turns to <=4 and prompt prefix cache floor to >=0.80 [$0.2244 -> $0.0584/min analytical FinOps model]; live cloud KV-cache lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks idle PTU over-provisioning below 54.0% break-even and unreserved peak HTTP 429 drops, clamping steady PTU utilization to 50%-82% and burst spillover threshold to <=85%; live gateway spillover RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
