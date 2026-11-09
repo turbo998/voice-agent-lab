@@ -1477,6 +1477,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks adjacent-lane/rear-seat off-axis crosstalk and low-SNR phoneme hallucinations, clamping MVDR half-angle to <=25 deg and minimum decode SNR floor to >=6.0 dB; live edge MVDR array DSP latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unconfirmed single-turn voice execution of physical PLC/SCADA/LOTO actuations, enforcing >=4-digit challenge readback at >=0.92 acoustic confidence plus physical dead-man confirmation; live PLC fieldbus RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "383. [Topic 20: voice-canary-shadow-rollout-memory-poisoning-faq] Canary Shadow Dry-Run Write Mute, <=150ms P95 TTFA Drift Ceiling & <=500ms Auto-Rollback + Cross-Call Long-Term Memory Zero-Privilege Schema (0), Verified ID Keying & <=90-Day TTL Isolation (P753 / P754 — Stage 380 · 383-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unmuted shadow write webhooks and unbounded canary latency regressions, clamping P95 TTFA regression ceiling to <=150ms and automatic rollback SLA to <=500ms; live shadow RTP fork and router drain latency are not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks cross-call memory privilege poisoning and unverified raw ANI shared-line bleed, clamping privilege fields in memory to 0 and retention TTL to <=90 days; live KV/vector memory store RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

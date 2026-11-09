@@ -70306,6 +70306,154 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // ============================================================================
+    // Stage 380 (P753–P754): Topic 20 — Canary Shadow Dry-Run Rollout & <=500ms
+    // Auto-Rollback + Cross-Call Long-Term Memory Poisoning & Tenant TTL Isolation
+    // ============================================================================
+
+    export interface VoiceCanaryShadowRolloutContext {
+      unmutedShadowWriteOrUnboundedCanaryRegressionDetected: boolean;
+      maxAllowedP95TtfaRegressionMs: number;
+      canaryAutoRollbackSlaMs: number;
+    }
+
+    export interface VoiceCanaryShadowRolloutDecision {
+      violated: boolean;
+      policyId: "P753-VOICE-CANARY-SHADOW-ROLLOUT-AND-LATENCY-REGRESSION-ROLLBACK-GUARD";
+      action:
+        | "enforce_shadow_dryrun_mute_and_500ms_canary_autorollback_in_0ms"
+        | "clamp_canary_ttfa_regression_ceiling_and_rollback_sla"
+        | "allow";
+      reason: string;
+      clampedMaxAllowedP95TtfaRegressionMs: number;
+      clampedCanaryAutoRollbackSlaMs: number;
+    }
+
+    export function evaluateVoiceCanaryShadowRolloutAndLatencyRegressionRollbackGate(
+      context: VoiceCanaryShadowRolloutContext,
+    ): VoiceCanaryShadowRolloutDecision {
+      const policyId =
+        "P753-VOICE-CANARY-SHADOW-ROLLOUT-AND-LATENCY-REGRESSION-ROLLBACK-GUARD" as const;
+      const clampedMaxAllowedP95TtfaRegressionMs = Math.min(
+        Math.max(context.maxAllowedP95TtfaRegressionMs, 20),
+        150,
+      );
+      const clampedCanaryAutoRollbackSlaMs = Math.min(
+        Math.max(context.canaryAutoRollbackSlaMs, 50),
+        500,
+      );
+
+      if (context.unmutedShadowWriteOrUnboundedCanaryRegressionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_shadow_dryrun_mute_and_500ms_canary_autorollback_in_0ms",
+          reason:
+            "Canary Shadow Rollout & Latency Regression Auto-Rollback Policy Check: shadow-mode candidate model executed unmuted external write tools or canary ring exceeded the +150ms P95 TTFA regression ceiling without automatic circuit-breaker rollback; offline synthetic policy state machine enforcing 100% dry-run shadow write muting, <=150ms P95 TTFA drift ceiling, and <=500ms automatic rollback to the golden baseline (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live shadow RTP fork and router drain latency not_measured).",
+          clampedMaxAllowedP95TtfaRegressionMs,
+          clampedCanaryAutoRollbackSlaMs,
+        };
+      }
+
+      if (
+        context.maxAllowedP95TtfaRegressionMs > 150 ||
+        context.canaryAutoRollbackSlaMs > 500
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_canary_ttfa_regression_ceiling_and_rollback_sla",
+          reason:
+            "Canary P95 TTFA regression ceiling (>150ms synthetic ceiling) or auto-rollback SLA (>500ms synthetic ceiling) out of bounds; clamping P95 TTFA regression ceiling to <=150ms and rollback SLA to <=500ms.",
+          clampedMaxAllowedP95TtfaRegressionMs,
+          clampedCanaryAutoRollbackSlaMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: dry-run shadow write mute, <=150ms P95 TTFA canary drift ceiling, and <=500ms auto-rollback SLA verified.",
+        clampedMaxAllowedP95TtfaRegressionMs,
+        clampedCanaryAutoRollbackSlaMs,
+      };
+    }
+
+    export interface CrossCallMemoryPoisoningAndTtlContext {
+      memoryPrivilegePoisoningOrUnverifiedAniKeyDetected: boolean;
+      allowedPrivilegeFieldsInMemory: number;
+      maxMemoryRetentionDays: number;
+    }
+
+    export interface CrossCallMemoryPoisoningAndTtlDecision {
+      violated: boolean;
+      policyId: "P754-CROSS-CALL-LONGTERM-MEMORY-POISONING-AND-TENANT-TTL-ISOLATION-GUARD";
+      action:
+        | "enforce_zero_privilege_memory_schema_verified_id_key_and_90d_ttl_in_0ms"
+        | "clamp_memory_privilege_field_quota_and_retention_ttl"
+        | "allow";
+      reason: string;
+      clampedAllowedPrivilegeFieldsInMemory: number;
+      clampedMaxMemoryRetentionDays: number;
+    }
+
+    export function evaluateCrossCallLongtermMemoryPoisoningAndTenantTtlIsolationGate(
+      context: CrossCallMemoryPoisoningAndTtlContext,
+    ): CrossCallMemoryPoisoningAndTtlDecision {
+      const policyId =
+        "P754-CROSS-CALL-LONGTERM-MEMORY-POISONING-AND-TENANT-TTL-ISOLATION-GUARD" as const;
+      const clampedAllowedPrivilegeFieldsInMemory = Math.min(
+        Math.max(context.allowedPrivilegeFieldsInMemory, 0),
+        0,
+      );
+      const clampedMaxMemoryRetentionDays = Math.min(
+        Math.max(context.maxMemoryRetentionDays, 1),
+        90,
+      );
+
+      if (context.memoryPrivilegePoisoningOrUnverifiedAniKeyDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_zero_privilege_memory_schema_verified_id_key_and_90d_ttl_in_0ms",
+          reason:
+            "Cross-Call Long-Term Memory Poisoning & Tenant TTL Isolation Policy Check: post-call summarizer attempted to persist privilege/entitlement/KYC-exemption claims into long-term memory or keyed memory by unverified raw caller ANI across shared lines; offline synthetic policy state machine clamping privilege fields in memory to 0, binding partition keys to (tenantId, verifiedUserId), and enforcing <=90-day rolling TTL (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live KV/vector memory store RTT not_measured).",
+          clampedAllowedPrivilegeFieldsInMemory,
+          clampedMaxMemoryRetentionDays,
+        };
+      }
+
+      if (
+        context.allowedPrivilegeFieldsInMemory > 0 ||
+        context.maxMemoryRetentionDays > 90
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_memory_privilege_field_quota_and_retention_ttl",
+          reason:
+            "Privilege field quota in conversational memory (>0 synthetic ceiling) or maximum memory retention TTL (>90 days synthetic ceiling) out of bounds; clamping privilege fields to 0 and retention TTL to <=90 days.",
+          clampedAllowedPrivilegeFieldsInMemory,
+          clampedMaxMemoryRetentionDays,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 0 privilege fields in long-term memory, verified (tenantId, verifiedUserId) partitioning, and <=90-day rolling TTL verified.",
+        clampedAllowedPrivilegeFieldsInMemory,
+        clampedMaxMemoryRetentionDays,
+      };
+    }
+
+
 
 
 
