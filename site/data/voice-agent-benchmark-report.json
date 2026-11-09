@@ -1453,6 +1453,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks zombie barge-in mouth flapping and video bandwidth starvation, clamping |avSkewMs| to <=45ms and audio-first video drop floor to >=600 kbps; live WebGL rendering FPS and RTCP SR jitter are not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unmasked [data-pii] uploads, hidden opacity:0 visual prompt injections, and stale-scroll mis-clicks, clamping viewport scroll drift to <=16px and minimum ingested text opacity to >=0.05; live browser DOM serialization latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "379. [Topic 16: voice-affective-prosody-emotion-deescalation-faq] Affective Prosody De-Escalation (0.88x-0.94x Rate, >=350ms Pause, Zero Upsell) & EU AI Act Art. 5(1)(f) Workplace Emotion Lock + Crisis Distress >=1800ms Silence Window & <=15s Zero-Retention Specialist Handoff (P745 / P746 — Stage 376 · 379-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks prohibited workplace employee-leg biometric emotion inference under EU AI Act Art. 5(1)(f) and cheerful upsell prompts on high-arousal callers, clamping de-escalation rate to 0.88x-0.94x and empathy pause to >=350ms; live acoustic F0 extraction latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks rigid 600ms mid-sobbing cut-offs and freeform LLM crisis counseling, widening EOU silence window to >=1800ms, clamping specialist warm handoff SLA to <=15s, and enforcing zero-training retention; live CTI crisis routing latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

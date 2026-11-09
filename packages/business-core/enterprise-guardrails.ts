@@ -69711,6 +69711,157 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // ============================================================================
+    // Stage 376 (P745–P746): Topic 16 — Affective Prosody De-Escalation, EU AI
+    // Act Art. 5(1)(f) Workplace Emotion Compliance & Crisis Distress Silence Gate
+    // ============================================================================
+
+    export interface AffectiveProsodyAndEuAiActContext {
+      workplaceEmotionOrCheerfulUpsellOnAngryCallerDetected: boolean;
+      deescalationSpeakingRate: number;
+      empathyPauseMs: number;
+    }
+
+    export interface AffectiveProsodyAndEuAiActDecision {
+      violated: boolean;
+      policyId: "P745-AFFECTIVE-PROSODY-DEESCALATION-AND-EU-AI-ACT-EMOTION-GUARD";
+      action:
+        | "enforce_deescalation_prosody_and_block_workplace_emotion_in_0ms"
+        | "clamp_deescalation_speaking_rate_and_empathy_pause_floor"
+        | "allow";
+      reason: string;
+      clampedDeescalationSpeakingRate: number;
+      clampedEmpathyPauseMs: number;
+    }
+
+    export function evaluateAffectiveProsodyDeescalationAndEuAiActEmotionGate(
+      context: AffectiveProsodyAndEuAiActContext,
+    ): AffectiveProsodyAndEuAiActDecision {
+      const policyId =
+        "P745-AFFECTIVE-PROSODY-DEESCALATION-AND-EU-AI-ACT-EMOTION-GUARD" as const;
+      const clampedDeescalationSpeakingRate = Math.min(
+        Math.max(context.deescalationSpeakingRate, 0.88),
+        0.94,
+      );
+      const clampedEmpathyPauseMs = Math.min(
+        Math.max(context.empathyPauseMs, 350),
+        1000,
+      );
+
+      if (context.workplaceEmotionOrCheerfulUpsellOnAngryCallerDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_deescalation_prosody_and_block_workplace_emotion_in_0ms",
+          reason:
+            "Affective Prosody De-Escalation & EU AI Act Art. 5(1)(f) Policy Check: pipeline attempted biometric emotion inference on an internal employee/agent leg (prohibited under EU AI Act Art. 5(1)(f)) or injected cheerful >1.0x promotional upsell speech on a high-arousal angry customer leg (arousal >= 0.72); offline synthetic policy state machine blocking workplace emotion inference, muting upsell slots, and clamping de-escalation rate to 0.88x–0.94x with empathyPauseMs >= 350ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live acoustic F0/arousal DSP latency not_measured).",
+          clampedDeescalationSpeakingRate,
+          clampedEmpathyPauseMs,
+        };
+      }
+
+      if (
+        context.deescalationSpeakingRate < 0.88 ||
+        context.deescalationSpeakingRate > 0.94 ||
+        context.empathyPauseMs < 350
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_deescalation_speaking_rate_and_empathy_pause_floor",
+          reason:
+            "De-escalation speaking rate (outside 0.88x–0.94x synthetic band) or pre-response empathy pause (<350ms synthetic floor) out of bounds; clamping speaking rate to 0.88x–0.94x and empathy pause to >=350ms.",
+          clampedDeescalationSpeakingRate,
+          clampedEmpathyPauseMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: EU AI Act Art. 5(1)(f) workplace emotion inference blocked, upsell slots muted, and de-escalation cadence (0.88x–0.94x, >=350ms pause) verified.",
+        clampedDeescalationSpeakingRate,
+        clampedEmpathyPauseMs,
+      };
+    }
+
+    export interface CrisisDistressSilenceAndHandoffContext {
+      prematureCryCutOffOrFreeformCrisisCounselingOrTrainingRetentionDetected: boolean;
+      distressSilenceWindowMs: number;
+      crisisSpecialistHandoffSlaSec: number;
+    }
+
+    export interface CrisisDistressSilenceAndHandoffDecision {
+      violated: boolean;
+      policyId: "P746-CRISIS-DISTRESS-SILENCE-WINDOW-AND-ZERO-RETENTION-HANDOFF-GUARD";
+      action:
+        | "enforce_distress_1800ms_silence_fixed_crisis_bridge_and_zero_retention_in_0ms"
+        | "clamp_distress_silence_window_and_crisis_handoff_sla"
+        | "allow";
+      reason: string;
+      clampedDistressSilenceWindowMs: number;
+      clampedCrisisSpecialistHandoffSlaSec: number;
+    }
+
+    export function evaluateCrisisDistressSilenceWindowAndZeroRetentionHandoffGate(
+      context: CrisisDistressSilenceAndHandoffContext,
+    ): CrisisDistressSilenceAndHandoffDecision {
+      const policyId =
+        "P746-CRISIS-DISTRESS-SILENCE-WINDOW-AND-ZERO-RETENTION-HANDOFF-GUARD" as const;
+      const clampedDistressSilenceWindowMs = Math.min(
+        Math.max(context.distressSilenceWindowMs, 1800),
+        3500,
+      );
+      const clampedCrisisSpecialistHandoffSlaSec = Math.min(
+        Math.max(context.crisisSpecialistHandoffSlaSec, 1),
+        15,
+      );
+
+      if (
+        context.prematureCryCutOffOrFreeformCrisisCounselingOrTrainingRetentionDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_distress_1800ms_silence_fixed_crisis_bridge_and_zero_retention_in_0ms",
+          reason:
+            "Crisis Distress Silence Window & Zero-Retention Handoff Policy Check: pipeline cut off a sobbing/dysarthric caller using a rigid <1800ms EOU timer, permitted open-ended LLM counseling during an acute crisis, or retained vulnerable distress audio in model-training logs; offline synthetic policy state machine widening distress EOU silence window to >=1800ms, freezing freeform counseling, enforcing <=15s human specialist handoff, and purging training retention (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live CTI crisis routing latency not_measured).",
+          clampedDistressSilenceWindowMs,
+          clampedCrisisSpecialistHandoffSlaSec,
+        };
+      }
+
+      if (
+        context.distressSilenceWindowMs < 1800 ||
+        context.crisisSpecialistHandoffSlaSec > 15
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_distress_silence_window_and_crisis_handoff_sla",
+          reason:
+            "Distress EOU silence window (<1800ms synthetic floor) or crisis specialist handoff SLA (>15s synthetic ceiling) out of bounds; clamping silence window to >=1800ms and crisis handoff SLA to <=15s.",
+          clampedDistressSilenceWindowMs,
+          clampedCrisisSpecialistHandoffSlaSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: distress EOU silence window >=1800ms, fixed crisis bridge script, <=15s specialist handoff SLA, and zero-training retention verified.",
+        clampedDistressSilenceWindowMs,
+        clampedCrisisSpecialistHandoffSlaSec,
+      };
+    }
+
+
 
 
 

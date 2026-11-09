@@ -73,8 +73,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套仓库与深入阅读",
     resTitle: "五、配套开源仓库与可视化评测报告汇总",
     resDesc: "所有代码、架构图、7-Card 评测报告均已开源并提供中英对照文档，方便按需深入学习或二次开发：",
-    simTitle: "🧪 2026-11-09 单专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715/P716) · WebRTC vs WS vs SIP 8kHz 带限重采样 (P717/P718) · 只读投机语音 RAG [专题3A: P719] · 异步工具纪元写栅栏 [专题3B: P720] · 免提非线性回声与主叫声纹锁 [专题4: P721/P722] · 热转接 CTI 签名屏弹与单向耳语隔离 [专题5: P723/P724] · PCI 按键采集旁路缩减暴露 [专题6A: P725] · SIPREC 录音双流消音与 Fail-Closed 隔离 [专题6B: P726] · 智能外呼并行 AMD 与 TCPA 安全港门禁 [专题7: P727/P728] · 字母数字混排实体消歧与 SSML 分块复诵 [专题8: P729/P730] · 通话中灾备切换与会话状态无损热恢复 [专题9: P731/P732] · 多人同场流式说话人分离与角色权限锁 [专题10: P733/P734] · 句内中英粤混说与同音色跨语种合成 [专题11: P735/P736] · 端云混合量化容器断网逃生与原声零出境 [专题12: P737/P738] · 抗深伪相位活体检测与多因子零摩擦核身 [专题13: P739/P740] · 长通话4轮音频滑窗钉扎与PTU/PAYGO弹性FinOps [专题14: P741/P742] · 多模态数字人唇音同步与同屏协办防注入 [专题15: P743/P744] (Stage 375 · P705–P744)",
-    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略/配置状态机（计时口径：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实生产网络/向量库/Saga/DSP/SIP/PCI 金库/WORM/外呼信令/ASR 解码/TTS 渲染/跨区容灾切换/流式 EEND 分离/多语种束搜索/边缘 NPU 量化/AASIST 反深伪/KV-Cache/WebGL 渲染耗时未在此本地沙盒实测 not_measured）对 P715–P744 核心语音架构护栏的规则判定：",
+    simTitle: "🧪 2026-11-09 单专题架构选型 FAQ 离线策略状态机沙盒：级联 vs S2S 合规锁 (P715/P716) · WebRTC vs WS vs SIP 8kHz 带限重采样 (P717/P718) · 只读投机语音 RAG [专题3A: P719] · 异步工具纪元写栅栏 [专题3B: P720] · 免提非线性回声与主叫声纹锁 [专题4: P721/P722] · 热转接 CTI 签名屏弹与单向耳语隔离 [专题5: P723/P724] · PCI 按键采集旁路缩减暴露 [专题6A: P725] · SIPREC 录音双流消音与 Fail-Closed 隔离 [专题6B: P726] · 智能外呼并行 AMD 与 TCPA 安全港门禁 [专题7: P727/P728] · 字母数字混排实体消歧与 SSML 分块复诵 [专题8: P729/P730] · 通话中灾备切换与会话状态无损热恢复 [专题9: P731/P732] · 多人同场流式说话人分离与角色权限锁 [专题10: P733/P734] · 句内中英粤混说与同音色跨语种合成 [专题11: P735/P736] · 端云混合量化容器断网逃生与原声零出境 [专题12: P737/P738] · 抗深伪相位活体检测与多因子零摩擦核身 [专题13: P739/P740] · 长通话4轮音频滑窗钉扎与PTU/PAYGO弹性FinOps [专题14: P741/P742] · 多模态数字人唇音同步与同屏协办防注入 [专题15: P743/P744] · 情感韵律降速安抚与EU合规及哭泣长静音门禁 [专题16: P745/P746] (Stage 376 · P705–P746)",
+    simSub: "点击下方合成压测探针（Synthetic Policy Probes），验证离线内存策略/配置状态机（计时口径：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实生产网络/向量库/Saga/DSP/SIP/PCI 金库/WORM/外呼信令/ASR 解码/TTS 渲染/跨区容灾切换/流式 EEND 分离/多语种束搜索/边缘 NPU 量化/AASIST 反深伪/KV-Cache/WebGL 渲染/声学 F0 提取耗时未在此本地沙盒实测 not_measured）对 P715–P746 核心语音架构护栏的规则判定：",
     footerLeft: "AI Voice 开发者学习与方案门户 · 聚焦「技术选型测评」与「行业场景快速搭建」",
     footerDeck: "架构师演示幻灯片 (16:9 Deck) ↗"
   },
@@ -150,8 +150,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · 配套倉庫與深入閱讀",
     resTitle: "五、配套開源倉庫與視覺化評測報告匯總",
     resDesc: "所有程式碼、架構圖、7-Card 評測報告均已開源並提供中英對照文檔，方便按需深入學習或二次開發：",
-    simTitle: "🧪 2026-11-09 單專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715/P716) · WebRTC vs WS vs SIP 8kHz 帶限重採樣 (P717/P718) · 唯讀投機語音 RAG [專題3A: P719] · 非同步工具紀元寫柵欄 [專題3B: P720] · 免持非線性回聲與主叫聲紋鎖 [專題4: P721/P722] · 熱轉接 CTI 簽名屏彈與單向耳語隔離 [專題5: P723/P724] · PCI 按鍵採集旁路縮減暴露 [專題6A: P725] · SIPREC 錄音雙流消音與 Fail-Closed 隔離 [專題6B: P726] · 智能外呼並行 AMD 與 TCPA 安全港門禁 [專題7: P727/P728] · 字母數字混排實體消歧與 SSML 分塊複誦 [專題8: P729/P730] · 通話中災備切換與會話狀態無損熱恢復 [專題9: P731/P732] · 多人同場流式說話人分離與角色權限鎖 [專題10: P733/P734] · 句內中英粵混說與同音色跨語種合成 [專題11: P735/P736] · 端雲混合量化容器斷網逃生與原聲零出境 [專題12: P737/P738] · 抗深偽相位活體檢測與多因子零摩擦核身 [專題13: P739/P740] · 長通話4輪音訊滑窗釘扎與PTU/PAYGO彈性FinOps [專題14: P741/P742] · 多模態數字人唇音同步與同屏協辦防注入 [專題15: P743/P744] (Stage 375 · P705–P744)",
-    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略/配置狀態機（計時口徑：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實生產網路/向量庫/Saga/DSP/SIP/PCI 金庫/WORM/外呼信令/ASR 解碼/TTS 渲染/跨區容災切換/流式 EEND 分離/多語種束搜索/邊緣 NPU 量化/AASIST 反深偽/KV-Cache/WebGL 渲染耗時未在此本地沙盒實測 not_measured）對 P715–P744 核心語音架構護欄的規則判定：",
+    simTitle: "🧪 2026-11-09 單專題架構選型 FAQ 離線策略狀態機沙盒：級聯 vs S2S 合規鎖 (P715/P716) · WebRTC vs WS vs SIP 8kHz 帶限重採樣 (P717/P718) · 唯讀投機語音 RAG [專題3A: P719] · 非同步工具紀元寫柵欄 [專題3B: P720] · 免持非線性回聲與主叫聲紋鎖 [專題4: P721/P722] · 熱轉接 CTI 簽名屏彈與單向耳語隔離 [專題5: P723/P724] · PCI 按鍵採集旁路縮減暴露 [專題6A: P725] · SIPREC 錄音雙流消音與 Fail-Closed 隔離 [專題6B: P726] · 智能外呼並行 AMD 與 TCPA 安全港門禁 [專題7: P727/P728] · 字母數字混排實體消歧與 SSML 分塊複誦 [專題8: P729/P730] · 通話中災備切換與會話狀態無損熱恢復 [專題9: P731/P732] · 多人同場流式說話人分離與角色權限鎖 [專題10: P733/P734] · 句內中英粵混說與同音色跨語種合成 [專題11: P735/P736] · 端雲混合量化容器斷網逃生與原聲零出境 [專題12: P737/P738] · 抗深偽相位活體檢測與多因子零摩擦核身 [專題13: P739/P740] · 長通話4輪音訊滑窗釘扎與PTU/PAYGO彈性FinOps [專題14: P741/P742] · 多模態數字人唇音同步與同屏協辦防注入 [專題15: P743/P744] · 情感韻律降速安撫與EU合規及哭泣長靜音門禁 [專題16: P745/P746] (Stage 376 · P705–P746)",
+    simSub: "點擊下方合成壓測探針（Synthetic Policy Probes），驗證離線記憶體策略/配置狀態機（計時口徑：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實生產網路/向量庫/Saga/DSP/SIP/PCI 金庫/WORM/外呼信令/ASR 解碼/TTS 渲染/跨區容災切換/流式 EEND 分離/多語種束搜索/邊緣 NPU 量化/AASIST 反深偽/KV-Cache/WebGL 渲染/聲學 F0 提取耗時未在此本地沙盒實測 not_measured）對 P715–P746 核心語音架構護欄的規則判定：",
     footerLeft: "AI Voice 開發者學習與方案門戶 · 聚焦「技術選型測評」與「行業場景快速搭建」",
     footerDeck: "架構師演示投影片 (16:9 Deck) ↗"
   },
@@ -227,8 +227,8 @@ const UI_TEXT = {
     resPill: "OPEN SOURCE & REPORTS · REPOSITORIES & BENCHMARK DECKS",
     resTitle: "5. Open-Source Repositories & Visual Benchmark Reports",
     resDesc: "All repositories, bilingual guides, and 7-Card benchmark decks are open-source and ready to clone:",
-    simTitle: "🧪 2026-11-09 Single-Topic Architect FAQ Policy Sandbox: Cascaded vs. S2S (P715/P716) · WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718) · Read-Only Speculative Voice RAG [Topic 3A: P719] · Async Tool Epoch Write Fence [Topic 3B: P720] · Nonlinear Echo & TSE Crosstalk Lock [Topic 4: P721/P722] · Warm-Transfer Signed Screen-Pop & One-Way Whisper Isolation [Topic 5: P723/P724] · PCI DTMF Bypass Scope-Reduction [Topic 6A: P725] · SIPREC Archival Redaction & Fail-Closed Quarantine [Topic 6B: P726] · Outbound Parallel AMD & TCPA Safe-Harbor Gate [Topic 7: P727/P728] · Alphanumeric Disambiguation & SSML Phonetic Readback [Topic 8: P729/P730] · Mid-Call Disaster Recovery & Session State Continuity [Topic 9: P731/P732] · Multi-Party Streaming Diarization & Speaker-Role Write Lock [Topic 10: P733/P734] · Intra-Sentence Code-Switching & Multilingual TTS Timbre Continuity [Topic 11: P735/P736] · Edge-Cloud Quantized Container & Sovereign Audio Residency [Topic 12: P737/P738] · Anti-Deepfake Phase Liveness & Multi-Factor Voice Auth [Topic 13: P739/P740] · Long-Call 4-Turn Audio Pruning & PTU/PAYGO Elastic FinOps [Topic 14: P741/P742] · Multimodal Avatar Lip-Sync & Co-Browsing Safety [Topic 15: P743/P744] (Stage 375 · P705–P744)",
-    simSub: "Click any synthetic probe below to inspect offline in-memory policy/configuration state-machine checks (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live network/vector DB/Saga/DSP/SIP/PCI Vault/WORM/carrier signaling/ASR/TTS/failover/EEND/beam-search/edge-NPU/AASIST/KV-cache/WebGL latency is not_measured in this local sandbox) across P715–P744:",
+    simTitle: "🧪 2026-11-09 Single-Topic Architect FAQ Policy Sandbox: Cascaded vs. S2S (P715/P716) · WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718) · Read-Only Speculative Voice RAG [Topic 3A: P719] · Async Tool Epoch Write Fence [Topic 3B: P720] · Nonlinear Echo & TSE Crosstalk Lock [Topic 4: P721/P722] · Warm-Transfer Signed Screen-Pop & One-Way Whisper Isolation [Topic 5: P723/P724] · PCI DTMF Bypass Scope-Reduction [Topic 6A: P725] · SIPREC Archival Redaction & Fail-Closed Quarantine [Topic 6B: P726] · Outbound Parallel AMD & TCPA Safe-Harbor Gate [Topic 7: P727/P728] · Alphanumeric Disambiguation & SSML Phonetic Readback [Topic 8: P729/P730] · Mid-Call Disaster Recovery & Session State Continuity [Topic 9: P731/P732] · Multi-Party Streaming Diarization & Speaker-Role Write Lock [Topic 10: P733/P734] · Intra-Sentence Code-Switching & Multilingual TTS Timbre Continuity [Topic 11: P735/P736] · Edge-Cloud Quantized Container & Sovereign Audio Residency [Topic 12: P737/P738] · Anti-Deepfake Phase Liveness & Multi-Factor Voice Auth [Topic 13: P739/P740] · Long-Call 4-Turn Audio Pruning & PTU/PAYGO Elastic FinOps [Topic 14: P741/P742] · Multimodal Avatar Lip-Sync & Co-Browsing Safety [Topic 15: P743/P744] · Affective Prosody De-Escalation, EU AI Act Compliance & Distress Silence [Topic 16: P745/P746] (Stage 376 · P705–P746)",
+    simSub: "Click any synthetic probe below to inspect offline in-memory policy/configuration state-machine checks (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live network/vector DB/Saga/DSP/SIP/PCI Vault/WORM/carrier signaling/ASR/TTS/failover/EEND/beam-search/edge-NPU/AASIST/KV-cache/WebGL/acoustic-F0 latency is not_measured in this local sandbox) across P715–P746:",
     footerLeft: "AI Voice Learner & Builder Portal · Focused on Stack Selection & Practical Scenario Blueprints",
     footerDeck: "Architect Slide Deck (16:9) ↗"
   }
@@ -2085,14 +2085,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "双份 4:5 标准评测报告与 16:9 演示讲义",
-      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 375 P743/P744 · 378维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
+      desc: "包含《实时语音与路由评测 7-Card 报告（含 Stage 376 P745/P746 · 379维里程碑）》、《说话人分离与分轨 PoC 7-Card 报告》以及《16:9 架构演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-09",
-      title: "17 篇独立单专题语音架构选型 FAQ（级联/S2S · WebRTC/WS/SIP · 只读投机 RAG · 异步写工具栅栏 · 免提防自断与防串音 · 热转接与单向耳语 · PCI 按键采集旁路 [6A] · SIPREC 录音双流消音 [6B] · 智能外呼并行 AMD 与 TCPA 安全港 [7] · 字母数字混排消歧与 SSML 分块复诵 [8] · 通话中灾备切换与会话无损恢复 [9] · 多人同场流式说话人分离与角色权限锁 [10] · 句内中英粤混说与同音色跨语种合成 [11] · 端云混合量化容器断网逃生与原声零出境 [12] · 抗深伪相位活体检测与多因子零摩擦核身 [13] · 长通话4轮音频滑窗钉扎与PTU/PAYGO弹性FinOps [14] · 多模态数字人唇音同步与同屏协办防注入 [15]）",
-      desc: "单专题独立指南：① 级联 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重采样 (P717/P718)；③ 只读投机语音 RAG (speculative-voice-rag-faq.md · P719)；④ 异步工具纪元写栅栏与 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免提非线性回声门禁与主叫声纹防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人机协同转接 CTI 签名屏弹与双腿协商单向耳语 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 电话支付按键采集旁路与 PCI 范围评估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 录音流环形缓冲消音与 Fail-Closed 隔离 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼并行流式 AMD 与 TCPA 双时区安全港门禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母数字混排实体消歧与 SSML 分块复诵确认 (voice-alphanumeric-disambiguation-faq.md · P729/P730)；⑪ 通话中故障无感热切换与会话状态无损恢复 (voice-midcall-failover-session-recovery-faq.md · P731/P732)；⑫ 多人同场流式说话人分离与角色权限隔离 (voice-multiparty-diarization-role-isolation-faq.md · P733/P734)；⑬ 多语种句内中英粤混说子词解码与同音色跨语种合成 (voice-multilingual-codeswitch-dialect-faq.md · P735/P736)；⑭ 端云混合非对称量化容器断网逃生与主权原声本地终结 (voice-edge-cloud-quantized-container-failover-faq.md · P737/P738)；⑮ 抗深伪声码器相位活体检测与多因子零摩擦核身 (voice-anti-deepfake-liveness-auth-faq.md · P739/P740)；⑯ 长通话 4 轮音频滑窗钉扎压缩与 PTU/PAYGO 弹性 FinOps (voice-finops-audio-context-pruning-ptu-faq.md · P741/P742)；⑰ 多模态数字人唇音同步与同屏协办防注入 (voice-multimodal-avatar-cobrowsing-sync-faq.md · P743/P744)。",
+      title: "18 篇独立单专题语音架构选型 FAQ（级联/S2S · WebRTC/WS/SIP · 只读投机 RAG · 异步写工具栅栏 · 免提防自断与防串音 · 热转接与单向耳语 · PCI 按键采集旁路 [6A] · SIPREC 录音双流消音 [6B] · 智能外呼并行 AMD 与 TCPA 安全港 [7] · 字母数字混排消歧与 SSML 分块复诵 [8] · 通话中灾备切换与会话无损恢复 [9] · 多人同场流式说话人分离与角色权限锁 [10] · 句内中英粤混说与同音色跨语种合成 [11] · 端云混合量化容器断网逃生与原声零出境 [12] · 抗深伪相位活体检测与多因子零摩擦核身 [13] · 长通话4轮音频滑窗钉扎与PTU/PAYGO弹性FinOps [14] · 多模态数字人唇音同步与同屏协办防注入 [15] · 情感韵律降速安抚与EU合规及哭泣长静音门禁 [16]）",
+      desc: "单专题独立指南：① 级联 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重采样 (P717/P718)；③ 只读投机语音 RAG (speculative-voice-rag-faq.md · P719)；④ 异步工具纪元写栅栏与 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免提非线性回声门禁与主叫声纹防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人机协同转接 CTI 签名屏弹与双腿协商单向耳语 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 电话支付按键采集旁路与 PCI 范围评估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 录音流环形缓冲消音与 Fail-Closed 隔离 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼并行流式 AMD 与 TCPA 双时区安全港门禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母数字混排实体消歧与 SSML 分块复诵确认 (voice-alphanumeric-disambiguation-faq.md · P729/P730)；⑪ 通话中故障无感热切换与会话状态无损恢复 (voice-midcall-failover-session-recovery-faq.md · P731/P732)；⑫ 多人同场流式说话人分离与角色权限隔离 (voice-multiparty-diarization-role-isolation-faq.md · P733/P734)；⑬ 多语种句内中英粤混说子词解码与同音色跨语种合成 (voice-multilingual-codeswitch-dialect-faq.md · P735/P736)；⑭ 端云混合非对称量化容器断网逃生与主权原声本地终结 (voice-edge-cloud-quantized-container-failover-faq.md · P737/P738)；⑮ 抗深伪声码器相位活体检测与多因子零摩擦核身 (voice-anti-deepfake-liveness-auth-faq.md · P739/P740)；⑯ 长通话 4 轮音频滑窗钉扎压缩与 PTU/PAYGO 弹性 FinOps (voice-finops-audio-context-pruning-ptu-faq.md · P741/P742)；⑰ 多模态数字人唇音同步与同屏协办防注入 (voice-multimodal-avatar-cobrowsing-sync-faq.md · P743/P744)；⑱ 情感韵律降速安抚、EU AI Act 职场红线与哭泣长静音门禁 (voice-affective-prosody-emotion-deescalation-faq.md · P745/P746)。",
       btnText: "查看 7-Card 评测矩阵 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2129,14 +2129,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "雙份 4:5 標準評測報告與 16:9 演示講義",
-      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 375 P743/P744 · 378維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
+      desc: "包含《即時語音與路由評測 7-Card 報告（含 Stage 376 P745/P746 · 379維里程碑）》、《說話人分離與分軌 PoC 7-Card 報告》以及《16:9 架構演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-09",
-      title: "17 篇獨立單專題語音架構選型 FAQ（級聯/S2S · WebRTC/WS/SIP · 唯讀投機 RAG · 非同步寫工具柵欄 · 免持防自斷與防串音 · 熱轉接與單向耳語 · PCI 按鍵採集旁路 [6A] · SIPREC 錄音雙流消音 [6B] · 智能外呼並行 AMD 與 TCPA 安全港 [7] · 字母數字混排消歧與 SSML 分塊複誦 [8] · 通話中災備切換與會話無損恢復 [9] · 多人同場流式說話人分離與角色權限鎖 [10] · 句內中英粵混說與同音色跨語種合成 [11] · 端雲混合量化容器斷網逃生與原聲零出境 [12] · 抗深偽相位活體檢測與多因子零摩擦核身 [13] · 長通話4輪音訊滑窗釘扎與PTU/PAYGO彈性FinOps [14] · 多模態數字人唇音同步與同屏協辦防注入 [15]）",
-      desc: "單專題獨立指南：① 級聯 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重採樣 (P717/P718)；③ 唯讀投機語音 RAG (speculative-voice-rag-faq.md · P719)；④ 非同步工具紀元寫柵欄與 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免持非線性回聲門禁與主叫聲紋防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人機協同轉接 CTI 簽名屏彈與雙腿協商單向耳語 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 電話支付按鍵採集旁路與 PCI 範圍評估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 錄音流環形緩衝消音與 Fail-Closed 隔離 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼並行流式 AMD 與 TCPA 雙時區安全港門禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母數字混排實體消歧與 SSML 分塊複誦確認 (voice-alphanumeric-disambiguation-faq.md · P729/P730)；⑪ 通話中故障無感熱切換與會話狀態無損恢復 (voice-midcall-failover-session-recovery-faq.md · P731/P732)；⑫ 多人同場流式說話人分離與角色權限隔離 (voice-multiparty-diarization-role-isolation-faq.md · P733/P734)；⑬ 多語種句內中英粵混說子詞解碼與同音色跨語種合成 (voice-multilingual-codeswitch-dialect-faq.md · P735/P736)；⑭ 端雲混合非對稱量化容器斷網逃生與主權原聲本地終結 (voice-edge-cloud-quantized-container-failover-faq.md · P737/P738)；⑮ 抗深偽聲碼器相位活體檢測與多因子零摩擦核身 (voice-anti-deepfake-liveness-auth-faq.md · P739/P740)；⑯ 長通話 4 輪音訊滑窗釘扎壓縮與 PTU/PAYGO 彈性 FinOps (voice-finops-audio-context-pruning-ptu-faq.md · P741/P742)；⑰ 多模態數字人唇音同步與同屏協辦防注入 (voice-multimodal-avatar-cobrowsing-sync-faq.md · P743/P744)。",
+      title: "18 篇獨立單專題語音架構選型 FAQ（級聯/S2S · WebRTC/WS/SIP · 唯讀投機 RAG · 非同步寫工具柵欄 · 免持防自斷與防串音 · 熱轉接與單向耳語 · PCI 按鍵採集旁路 [6A] · SIPREC 錄音雙流消音 [6B] · 智能外呼並行 AMD 與 TCPA 安全港 [7] · 字母數字混排消歧與 SSML 分塊複誦 [8] · 通話中災備切換與會話無損恢復 [9] · 多人同場流式說話人分離與角色權限鎖 [10] · 句內中英粵混說與同音色跨語種合成 [11] · 端雲混合量化容器斷網逃生與原聲零出境 [12] · 抗深偽相位活體檢測與多因子零摩擦核身 [13] · 長通話4輪音訊滑窗釘扎與PTU/PAYGO彈性FinOps [14] · 多模態數字人唇音同步與同屏協辦防注入 [15] · 情感韻律降速安撫與EU合規及哭泣長靜音門禁 [16]）",
+      desc: "單專題獨立指南：① 級聯 vs S2S (P715/P716)；② WebRTC vs WS vs SIP 8kHz 重採樣 (P717/P718)；③ 唯讀投機語音 RAG (speculative-voice-rag-faq.md · P719)；④ 非同步工具紀元寫柵欄與 Saga (voice-tool-epoch-fence-faq.md · P720)；⑤ 免持非線性回聲門禁與主叫聲紋防串音 (barge-in-echo-crosstalk-faq.md · P721/P722)；⑥ 人機協同轉接 CTI 簽名屏彈與雙腿協商單向耳語 (warm-transfer-whisper-handoff-faq.md · P723/P724)；⑦ 電話支付按鍵採集旁路與 PCI 範圍評估 (voice-pci-dtmf-scope-faq.md · P725)；⑧ SIPREC 錄音流環形緩衝消音與 Fail-Closed 隔離 (siprec-pii-audio-redaction-faq.md · P726)；⑨ 智能外呼並行流式 AMD 與 TCPA 雙時區安全港門禁 (outbound-amd-voicemail-tcpa-faq.md · P727/P728)；⑩ 字母數字混排實體消歧與 SSML 分塊複誦確認 (voice-alphanumeric-disambiguation-faq.md · P729/P730)；⑪ 通話中故障無感熱切換與會話狀態無損恢復 (voice-midcall-failover-session-recovery-faq.md · P731/P732)；⑫ 多人同場流式說話人分離與角色權限隔離 (voice-multiparty-diarization-role-isolation-faq.md · P733/P734)；⑬ 多語種句內中英粵混說子詞解碼與同音色跨語種合成 (voice-multilingual-codeswitch-dialect-faq.md · P735/P736)；⑭ 端雲混合非對稱量化容器斷網逃生與主權原聲本地終結 (voice-edge-cloud-quantized-container-failover-faq.md · P737/P738)；⑮ 抗深偽聲碼器相位活體檢測與多因子零摩擦核身 (voice-anti-deepfake-liveness-auth-faq.md · P739/P740)；⑯ 長通話 4 輪音訊滑窗釘扎壓縮與 PTU/PAYGO 彈性 FinOps (voice-finops-audio-context-pruning-ptu-faq.md · P741/P742)；⑰ 多模態數字人唇音同步與同屏協辦防注入 (voice-multimodal-avatar-cobrowsing-sync-faq.md · P743/P744)；⑱ 情感韻律降速安撫、EU AI Act 職場紅線與哭泣長靜音門禁 (voice-affective-prosody-emotion-deescalation-faq.md · P745/P746)。",
       btnText: "查看 7-Card 評測矩陣 ↗",
       url: "./benchmark-cards.html"
     }
@@ -2173,14 +2173,14 @@ const RESOURCES_DATA = {
     {
       badge: "7-Card Visual Reports",
       title: "7-Card Benchmark Decks & 16:9 Slides",
-      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 375 P743/P744 · 378-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
+      desc: "Includes the Realtime Voice 7-Card Benchmark (through Stage 376 P745/P746 · 379-Dim Milestone), the Speech Diarization PoC 7-Card Report, and the 16:9 Architect Presentation Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     },
     {
       badge: "Architect FAQs · 2026-11-09",
-      title: "17 Single-Topic Architect Selection FAQs (Cascaded/S2S · WebRTC/WS/SIP · Speculative RAG · Tool Epoch Fence · Barge-in Echo & Crosstalk · Warm Transfer & Whisper · PCI DTMF Bypass [6A] · SIPREC Audio Redaction [6B] · Outbound Parallel AMD & TCPA Safe-Harbor [7] · Alphanumeric Disambiguation & SSML Readback [8] · Mid-Call Failover & Session Recovery [9] · Multi-Party Streaming Diarization & Role Lock [10] · Intra-Sentence Code-Switching & Multilingual TTS [11] · Edge Quantized Container & Sovereign Residency [12] · Anti-Deepfake Phase Liveness & FIDO2 Auth [13] · Long-Call Audio Pruning & PTU/PAYGO FinOps [14] · Multimodal Avatar Lip-Sync & Co-Browsing [15])",
-      desc: "Standalone single-topic guides: (1) Cascaded vs. S2S (P715/P716); (2) WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718); (3) Read-Only Speculative Voice RAG (speculative-voice-rag-faq.en.md · P719); (4) Async Tool turnEpoch Write Fence & Saga (voice-tool-epoch-fence-faq.en.md · P720); (5) Nonlinear Echo & TSE Crosstalk Lock (barge-in-echo-crosstalk-faq.en.md · P721/P722); (6) Warm Transfer Signed Context Packet & Consultative Whisper Handoff (warm-transfer-whisper-handoff-faq.en.md · P723/P724); (7) Telephone Payment DTMF Bypass & PCI Scope Boundaries (voice-pci-dtmf-scope-faq.en.md · P725); (8) SIPREC Archival Ring-Buffer Redaction & Fail-Closed Quarantine (siprec-pii-audio-redaction-faq.en.md · P726); (9) Outbound Parallel Streaming AMD & TCPA Dual-Timezone Safe-Harbor Gate (outbound-amd-voicemail-tcpa-faq.en.md · P727/P728); (10) Alphanumeric Entity Disambiguation & SSML Chunked Phonetic Readback (voice-alphanumeric-disambiguation-faq.en.md · P729/P730); (11) Mid-Call Disaster Recovery & Session State Continuity (voice-midcall-failover-session-recovery-faq.en.md · P731/P732); (12) Multi-Party Streaming Diarization & Speaker-Role Write Isolation (voice-multiparty-diarization-role-isolation-faq.en.md · P733/P734); (13) Intra-Sentence Code-Switching Unified Sub-Word Decoding & Multilingual TTS Continuity (voice-multilingual-codeswitch-dialect-faq.en.md · P735/P736); (14) Edge-Cloud Quantized Speech Container & Sovereign Audio Residency (voice-edge-cloud-quantized-container-failover-faq.en.md · P737/P738); (15) Anti-Deepfake Vocoder Phase Liveness & Multi-Factor Voice Auth (voice-anti-deepfake-liveness-auth-faq.en.md · P739/P740); (16) Long-Call 4-Turn Audio Window Pruning & PTU/PAYGO Elastic FinOps (voice-finops-audio-context-pruning-ptu-faq.en.md · P741/P742); (17) Multimodal Avatar Lip-Sync & Visual Co-Browsing Safety (voice-multimodal-avatar-cobrowsing-sync-faq.en.md · P743/P744).",
+      title: "18 Single-Topic Architect Selection FAQs (Cascaded/S2S · WebRTC/WS/SIP · Speculative RAG · Tool Epoch Fence · Barge-in Echo & Crosstalk · Warm Transfer & Whisper · PCI DTMF Bypass [6A] · SIPREC Audio Redaction [6B] · Outbound Parallel AMD & TCPA Safe-Harbor [7] · Alphanumeric Disambiguation & SSML Readback [8] · Mid-Call Failover & Session Recovery [9] · Multi-Party Streaming Diarization & Role Lock [10] · Intra-Sentence Code-Switching & Multilingual TTS [11] · Edge Quantized Container & Sovereign Residency [12] · Anti-Deepfake Phase Liveness & FIDO2 Auth [13] · Long-Call Audio Pruning & PTU/PAYGO FinOps [14] · Multimodal Avatar Lip-Sync & Co-Browsing [15] · Affective Prosody, EU AI Act & Crisis Silence [16])",
+      desc: "Standalone single-topic guides: (1) Cascaded vs. S2S (P715/P716); (2) WebRTC vs. WS vs. SIP 8kHz Resampling (P717/P718); (3) Read-Only Speculative Voice RAG (speculative-voice-rag-faq.en.md · P719); (4) Async Tool turnEpoch Write Fence & Saga (voice-tool-epoch-fence-faq.en.md · P720); (5) Nonlinear Echo & TSE Crosstalk Lock (barge-in-echo-crosstalk-faq.en.md · P721/P722); (6) Warm Transfer Signed Context Packet & Consultative Whisper Handoff (warm-transfer-whisper-handoff-faq.en.md · P723/P724); (7) Telephone Payment DTMF Bypass & PCI Scope Boundaries (voice-pci-dtmf-scope-faq.en.md · P725); (8) SIPREC Archival Ring-Buffer Redaction & Fail-Closed Quarantine (siprec-pii-audio-redaction-faq.en.md · P726); (9) Outbound Parallel Streaming AMD & TCPA Dual-Timezone Safe-Harbor Gate (outbound-amd-voicemail-tcpa-faq.en.md · P727/P728); (10) Alphanumeric Entity Disambiguation & SSML Chunked Phonetic Readback (voice-alphanumeric-disambiguation-faq.en.md · P729/P730); (11) Mid-Call Disaster Recovery & Session State Continuity (voice-midcall-failover-session-recovery-faq.en.md · P731/P732); (12) Multi-Party Streaming Diarization & Speaker-Role Write Isolation (voice-multiparty-diarization-role-isolation-faq.en.md · P733/P734); (13) Intra-Sentence Code-Switching Unified Sub-Word Decoding & Multilingual TTS Continuity (voice-multilingual-codeswitch-dialect-faq.en.md · P735/P736); (14) Edge-Cloud Quantized Speech Container & Sovereign Audio Residency (voice-edge-cloud-quantized-container-failover-faq.en.md · P737/P738); (15) Anti-Deepfake Vocoder Phase Liveness & Multi-Factor Voice Auth (voice-anti-deepfake-liveness-auth-faq.en.md · P739/P740); (16) Long-Call 4-Turn Audio Window Pruning & PTU/PAYGO Elastic FinOps (voice-finops-audio-context-pruning-ptu-faq.en.md · P741/P742); (17) Multimodal Avatar Lip-Sync & Visual Co-Browsing Safety (voice-multimodal-avatar-cobrowsing-sync-faq.en.md · P743/P744); (18) Affective Prosody De-Escalation, EU AI Act Workplace Compliance & Crisis Distress Silence (voice-affective-prosody-emotion-deescalation-faq.en.md · P745/P746).",
       btnText: "Open 7-Card Benchmark ↗",
       url: "./benchmark-cards.html"
     }
@@ -2191,9 +2191,67 @@ let currentLang = "zh-CN";
 let currentStackId = "s2s_grounded";
 let currentScenarioId = "customer_service";
 let currentCaseTabId = "goals";
-let currentDuplexSimId = "p743_avatar_lipsync_audio_priority_drop";
+let currentDuplexSimId = "p745_affective_prosody_eu_ai_act_lock";
 
 const DUPLEX_SIM_PROBES = [
+  {
+    id: "p745_affective_prosody_eu_ai_act_lock",
+    label: {
+      "zh-CN": "🔥 [专题16 · voice-affective-prosody-emotion-deescalation-faq] P745 · 盛怒来电 0.88x–0.94x 降速安抚 + 禁推销与 EU AI Act Art. 5(1)(f) 职场声道隔离锁",
+      "zh-TW": "🔥 [專題16 · voice-affective-prosody-emotion-deescalation-faq] P745 · 盛怒來電 0.88x–0.94x 降速安撫 + 禁推銷與 EU AI Act Art. 5(1)(f) 職場聲道隔離鎖",
+      en: "🔥 [Topic 16 · voice-affective-prosody-emotion-deescalation-faq] P745 · 0.88x–0.94x De-Escalation Pacing & EU AI Act Art. 5(1)(f) Workplace Lock"
+    },
+    inputJson: `{
+  "topicGuide": "docs/voice-affective-prosody-emotion-deescalation-faq.md (.en.md)",
+  "policyId": "P745-AFFECTIVE-PROSODY-DEESCALATION-AND-EU-AI-ACT-EMOTION-GUARD",
+  "workplaceEmotionOrCheerfulUpsellOnAngryCallerDetected": true,
+  "deescalationSpeakingRate": 1.18,
+  "empathyPauseMs": 80
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
+  "liveAcousticF0AndArousalDspLatency": "not_measured in local unit test (arousal >= 0.72 triggers 0.88x-0.94x calm cadence)",
+  "action": "enforce_deescalation_prosody_and_block_workplace_emotion_in_0ms",
+  "clampedDeescalationSpeakingRate": 0.94,
+  "clampedEmpathyPauseMs": 350,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题16：情感韵律安抚与 EU AI Act 职场红线 · docs/voice-affective-prosody-emotion-deescalation-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实声学 F0 提取耗时 not_measured）：拦截对内部员工/坐席声道实施生物情绪识别（违反 EU AI Act Art. 5(1)(f)）或在客户盛怒（arousal >= 0.72）时以 1.18x 欢快音色播报促销话术，强制钳制安抚语速在 0.88x–0.94x 且句首共情停顿 >=350ms。",
+      "zh-TW": "✅ [專題16：情感韻律安撫與 EU AI Act 職場紅線 · docs/voice-affective-prosody-emotion-deescalation-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實聲學 F0 提取耗時 not_measured）：攔截對內部員工/坐席聲道實施生物情緒識別（違反 EU AI Act Art. 5(1)(f)）或在客戶盛怒（arousal >= 0.72）時以 1.18x 歡快音色播報促銷話術，強制鉗制安撫語速在 0.88x–0.94x 且句首共情停頓 >=350ms。",
+      en: "✅ [Topic 16: Affective Prosody De-Escalation & EU AI Act Compliance · docs/voice-affective-prosody-emotion-deescalation-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live acoustic F0 DSP latency not_measured locally): Blocks prohibited workplace biometric emotion inference under EU AI Act Art. 5(1)(f) and cheerful upsell prompts on angry callers, clamping speaking rate to 0.88x–0.94x and empathy pause to >=350ms."
+    }
+  },
+  {
+    id: "p746_crisis_distress_1800ms_silence_zero_retention",
+    label: {
+      "zh-CN": "🔥 [专题16 · voice-affective-prosody-emotion-deescalation-faq] P746 · 哭泣/脆弱来电 >=1800ms 判停展宽 + 危机固定关怀语与 <=15s 专家零留存转接锁",
+      "zh-TW": "🔥 [專題16 · voice-affective-prosody-emotion-deescalation-faq] P746 · 哭泣/脆弱來電 >=1800ms 判停展寬 + 危機固定關懷語與 <=15s 專家零留存轉接鎖",
+      en: "🔥 [Topic 16 · voice-affective-prosody-emotion-deescalation-faq] P746 · >=1800ms Distress Silence Window, Fixed Crisis Script & Zero-Retention Handoff"
+    },
+    inputJson: `{
+  "topicGuide": "docs/voice-affective-prosody-emotion-deescalation-faq.md (.en.md)",
+  "policyId": "P746-CRISIS-DISTRESS-SILENCE-WINDOW-AND-ZERO-RETENTION-HANDOFF-GUARD",
+  "prematureCryCutOffOrFreeformCrisisCounselingOrTrainingRetentionDetected": true,
+  "distressSilenceWindowMs": 600,
+  "crisisSpecialistHandoffSlaSec": 60
+}`,
+    outputJson: `{
+  "violated": true,
+  "policyEvalTimerReading": "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)",
+  "liveCtiCrisisQueueRoutingLatency": "not_measured in local unit test (production crisis transfer SLA <=15s)",
+  "action": "enforce_distress_1800ms_silence_fixed_crisis_bridge_and_zero_retention_in_0ms",
+  "clampedDistressSilenceWindowMs": 1800,
+  "clampedCrisisSpecialistHandoffSlaSec": 15,
+  "provenance": "synthetic"
+}`,
+    summary: {
+      "zh-CN": "✅ [专题16：情感韵律安抚与哭泣长静音门禁 · docs/voice-affective-prosody-emotion-deescalation-faq.md] 离线策略/配置检查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真实 CTI 危机转接耗时 not_measured）：拦截 600ms 死板 VAD 截断哭泣换气（误截断率从 96.8% 压降至 <0.8%）、阻断 LLM 自由生成伪心理咨询建议并清除模型训练留存，强制判停窗口 >=1800ms 且专家转接 SLA <=15s。",
+      "zh-TW": "✅ [專題16：情感韻律安撫與哭泣長靜音門禁 · docs/voice-affective-prosody-emotion-deescalation-faq.md] 離線策略/配置檢查（0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established；真實 CTI 危機轉接耗時 not_measured）：攔截 600ms 死板 VAD 截斷哭泣換氣（誤截斷率從 96.8% 壓降至 <0.8%）、阻斷 LLM 自由生成偽心理諮詢建議並清除模型訓練留存，強制判停窗口 >=1800ms 且專家轉接 SLA <=15s。",
+      en: "✅ [Topic 16: Affective Prosody De-Escalation & Crisis Distress Silence · docs/voice-affective-prosody-emotion-deescalation-faq.en.md] Offline Policy/Config Check (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live CTI crisis routing latency not_measured locally): Blocks rigid 600ms mid-sobbing cut-offs and freeform LLM crisis counseling, widening EOU silence window to >=1800ms, clamping specialist warm handoff SLA to <=15s, and enforcing zero-training retention."
+    }
+  },
   {
     id: "p743_avatar_lipsync_audio_priority_drop",
     label: {

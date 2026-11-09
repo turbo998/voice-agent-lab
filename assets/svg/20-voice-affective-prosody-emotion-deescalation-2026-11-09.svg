@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg20" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1020" />
+      <stop offset="50%" stop-color="#131C31" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="accentRose" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F43F5E" />
+      <stop offset="100%" stop-color="#FB7185" />
+    </linearGradient>
+    <linearGradient id="accentTeal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#14B8A6" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <linearGradient id="accentAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#EAB308" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg20)" />
+
+  <!-- Header -->
+  <rect x="36" y="26" width="1128" height="84" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+  <rect x="54" y="42" width="286" height="26" rx="6" fill="url(#accentRose)" />
+  <text x="197" y="59" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 376 · TOPIC 16 · P745–P746</text>
+  <text x="356" y="60" fill="#F8FAFC" font-family="Segoe UI, sans-serif" font-size="20" font-weight="700">情感韵律安抚、EU AI Act 职场合规边界与哭泣长静音门禁架构</text>
+  <text x="54" y="92" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13">Affective Prosody De-Escalation (0.88x–0.94x Rate, EU AI Act Art. 5(1)(f) Workplace Lock) &amp; Crisis Distress Silence Window (&gt;=1800ms) (379 Dims)</text>
+
+  <!-- Left Panel: P745 Affective Prosody De-Escalation & EU AI Act Art. 5(1)(f) Lock -->
+  <rect x="36" y="128" width="552" height="420" rx="14" fill="#1E293B" stroke="#F43F5E" stroke-width="1.5" />
+  <rect x="56" y="148" width="512" height="38" rx="8" fill="#4C0519" />
+  <text x="312" y="172" fill="#FDA4AF" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. P745 情绪激越自动降速安抚 (0.88x–0.94x) 与 EU AI Act 职场红线锁</text>
+
+  <rect x="56" y="202" width="246" height="145" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+  <text x="179" y="226" fill="#FB7185" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">高愤怒/焦躁来电声学特征</text>
+  <text x="72" y="250" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 激越度 Arousal Score &gt;= 0.72</text>
+  <text x="72" y="272" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 严禁欢快高亢促销音 (+15% Pitch)</text>
+  <text x="72" y="294" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 切换 Calm De-Escalation 韵律</text>
+  <text x="72" y="316" fill="#34D399" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">• 语速钳制 0.88x–0.94x · 停顿 &gt;=350ms</text>
+
+  <rect x="322" y="202" width="246" height="145" rx="10" fill="#0F172A" stroke="#EF4444" stroke-width="1.2" />
+  <text x="445" y="226" fill="#F87171" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">EU AI Act Art. 5(1)(f) 合规红线</text>
+  <text x="338" y="250" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 严禁对员工/坐席声道做生物情绪识别</text>
+  <text x="338" y="272" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 内部 HR/工位通道锁定仅做文本合规</text>
+  <text x="338" y="294" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 客户侧仅做非生物特征语速/话术适配</text>
+  <text x="338" y="316" fill="#FBBF24" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">• 违禁职场情绪推断 100% 物理熔断</text>
+
+  <!-- Prosody Pacing Timeline Box -->
+  <rect x="56" y="363" width="512" height="165" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+  <text x="76" y="388" fill="#F43F5E" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700">声学韵律状态机与促销静音门禁 (P745 State Machine):</text>
+  <text x="76" y="414" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">[Arousal &gt;= 0.72] -&gt; Clamp TTS Rate in [0.88x, 0.94x] &amp; Pitch -6%</text>
+  <text x="76" y="438" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">[Upsell/Promo Prompt] -&gt; Suppress 100% during High-Arousal Recovery</text>
+  <text x="76" y="462" fill="#F87171" font-family="Consolas, monospace" font-size="12">[Agent/Employee Leg] -&gt; Block Biometric Emotion Inference (Art. 5(1)(f))</text>
+  <text x="76" y="492" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">收益：消除客户盛怒时 AI“欢快推销/火上浇油”，同时确保跨国呼叫中心 100% 符合欧盟 AI 法案。</text>
+
+  <!-- Right Panel: P746 Crisis Distress Silence Window & Zero-Retention Specialist Handoff -->
+  <rect x="612" y="128" width="552" height="420" rx="14" fill="#1E293B" stroke="#14B8A6" stroke-width="1.5" />
+  <rect x="632" y="148" width="512" height="38" rx="8" fill="#042F2E" />
+  <text x="888" y="172" fill="#5EEAD4" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. P746 哭泣/脆弱来电 &gt;=1800ms 判停展宽与危机专家零留存转接锁</text>
+
+  <rect x="632" y="202" width="246" height="145" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+  <text x="755" y="226" fill="#2DD4BF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">脆弱来电动态 EOU 展宽</text>
+  <text x="648" y="250" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 常规 VAD/EOU (600ms) 会打断抽泣换气</text>
+  <text x="648" y="272" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 检出哭泣/急促喘息/高龄构音障碍</text>
+  <text x="648" y="294" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 动态展宽判停窗口 &gt;= 1800ms</text>
+  <text x="648" y="316" fill="#34D399" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">• 抽泣中途被 AI 抢话率压降至 0%</text>
+
+  <rect x="898" y="202" width="246" height="145" rx="10" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2" />
+  <text x="1021" y="226" fill="#FBBF24" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">危机心理红线与零训练留存</text>
+  <text x="914" y="250" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 严禁 LLM 自由生成“伪心理咨询话术”</text>
+  <text x="914" y="272" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 播报固定审核关怀语 + 优先转接专家</text>
+  <text x="914" y="294" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 转接 SLA 上限 &lt;= 15s (VIP Crisis Queue)</text>
+  <text x="914" y="316" fill="#F43F5E" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">• 脆弱音频强制 Zero-Training Retention</text>
+
+  <!-- Crisis Handoff Box -->
+  <rect x="632" y="363" width="512" height="165" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+  <text x="652" y="388" fill="#2DD4BF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700">脆弱/危机通话双轨保护与转接流水线 (P746 Crisis Guard):</text>
+  <text x="652" y="414" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">1. Sobbing/Dysarthria Detected -&gt; EOU Silence Window: 600ms -&gt; 1800ms</text>
+  <text x="652" y="438" fill="#34D399" font-family="Consolas, monospace" font-size="12">2. Crisis/Self-Harm Trigger -&gt; Freeze Freeform LLM &amp; Play Fixed Script</text>
+  <text x="652" y="462" fill="#FBBF24" font-family="Consolas, monospace" font-size="12">3. Warm Handoff (&lt;=15s SLA) + Purge Distress Audio from Training Sink</text>
+  <text x="652" y="492" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">收益：兼顾高龄/悲伤客户的人文关怀容忍度与医疗/金融危机场景的绝对合规底线。</text>
+
+  <!-- Footer Provenance Banner -->
+  <rect x="36" y="564" width="1128" height="84" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5" />
+  <rect x="54" y="582" width="164" height="24" rx="5" fill="url(#accentAmber)" />
+  <text x="136" y="598" fill="#0F172A" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700" text-anchor="middle">PROVENANCE &amp; BOUNDARY</text>
+  <text x="234" y="598" fill="#E2E8F0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600">离线策略验证：818 项单测全绿 · 755 护栏 · 764 探针（574 Live POC Trap Probes）· 379 评测维度</text>
+  <text x="54" y="626" fill="#94A3B8" font-family="Consolas, monospace" font-size="11">Timer Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (live acoustic F0/EOU DSP latency not_measured)</text>
+</svg>
