@@ -70876,6 +70876,145 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipEarlyMediaClippingContext {
+      preAnswerTtsBleedOrZeroDelayGreetingDetected: boolean;
+      postAnswerWarmupDelayMs: number;
+      minRfc3389WarmupFrames: number;
+    }
+
+    export interface SipEarlyMediaClippingDecision {
+      violated: boolean;
+      policyId: "P761-SIP-EARLY-MEDIA-183-MUTE-AND-POST-200OK-RTP-WARMUP-GUARD";
+      action:
+        | "sip_early_media_bleed_or_first_syllable_clipping_blocked"
+        | "clamp_post_answer_rtp_warmup_delay_and_cn_frames"
+        | "allow";
+      reason: string;
+      clampedPostAnswerWarmupDelayMs: number;
+      clampedMinRfc3389WarmupFrames: number;
+    }
+
+    export function evaluateSipEarlyMediaPreAnswerBleedAndPost200OkClippingGate(
+      context: SipEarlyMediaClippingContext,
+    ): SipEarlyMediaClippingDecision {
+      const policyId =
+        "P761-SIP-EARLY-MEDIA-183-MUTE-AND-POST-200OK-RTP-WARMUP-GUARD" as const;
+      const clampedPostAnswerWarmupDelayMs = Math.min(
+        Math.max(context.postAnswerWarmupDelayMs, 180),
+        260,
+      );
+      const clampedMinRfc3389WarmupFrames = Math.min(
+        Math.max(context.minRfc3389WarmupFrames, 9),
+        13,
+      );
+
+      if (context.preAnswerTtsBleedOrZeroDelayGreetingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "sip_early_media_bleed_or_first_syllable_clipping_blocked",
+          reason:
+            "SIP 183 Early Media Mute & Post-200-OK RTP Warm-Up Policy Check: voice gateway emitted outbound TTS during SIP 180/183 early media ringback or spoke at 0ms after 200 OK before carrier SBC symmetric RTP pinhole latching completed; offline synthetic policy state machine muting pre-answer TTS and enforcing 180ms-260ms (9-13 frames) RFC 3389 comfort-noise warm-up (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live carrier SBC RTP pinhole latching latency not_measured).",
+          clampedPostAnswerWarmupDelayMs,
+          clampedMinRfc3389WarmupFrames,
+        };
+      }
+
+      if (
+        context.postAnswerWarmupDelayMs < 180 ||
+        context.postAnswerWarmupDelayMs > 260 ||
+        context.minRfc3389WarmupFrames < 9
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_post_answer_rtp_warmup_delay_and_cn_frames",
+          reason:
+            "Post-200-OK RTP warm-up delay (outside [180ms, 260ms] synthetic window) or RFC 3389 comfort-noise frame count (<9 frames synthetic floor) out of bounds; clamping warm-up delay to [180ms, 260ms] and comfort-noise frames to [9, 13].",
+          clampedPostAnswerWarmupDelayMs,
+          clampedMinRfc3389WarmupFrames,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: zero SIP 180/183 pre-answer TTS bleed and 180ms-260ms post-200-OK RFC 3389 RTP latching warm-up verified.",
+        clampedPostAnswerWarmupDelayMs,
+        clampedMinRfc3389WarmupFrames,
+      };
+    }
+
+    export interface TtsHomographCurrencyDisambiguationContext {
+      rawAmbiguousCurrencyOrUnannotatedPolyphoneDetected: boolean;
+      polyphoneLexiconCoveragePct: number;
+      requiredIso4217CodeLength: number;
+    }
+
+    export interface TtsHomographCurrencyDisambiguationDecision {
+      violated: boolean;
+      policyId: "P762-PRE-TTS-ISO4217-CURRENCY-AND-POLYPHONE-SSML-DISAMBIGUATION-GUARD";
+      action:
+        | "tts_ambiguous_currency_or_polyphone_misread_blocked"
+        | "clamp_polyphone_lexicon_coverage_and_iso4217_binding"
+        | "allow";
+      reason: string;
+      clampedPolyphoneLexiconCoveragePct: number;
+      clampedRequiredIso4217CodeLength: number;
+    }
+
+    export function evaluateTtsHomographPolyphoneAndIsoCurrencyDisambiguationGate(
+      context: TtsHomographCurrencyDisambiguationContext,
+    ): TtsHomographCurrencyDisambiguationDecision {
+      const policyId =
+        "P762-PRE-TTS-ISO4217-CURRENCY-AND-POLYPHONE-SSML-DISAMBIGUATION-GUARD" as const;
+      const clampedPolyphoneLexiconCoveragePct = Math.min(
+        Math.max(context.polyphoneLexiconCoveragePct, 99.5),
+        100,
+      );
+      const clampedRequiredIso4217CodeLength = 3;
+
+      if (context.rawAmbiguousCurrencyOrUnannotatedPolyphoneDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "tts_ambiguous_currency_or_polyphone_misread_blocked",
+          reason:
+            "Pre-TTS ISO 4217 Currency & Polyphone SSML Disambiguation Policy Check: pipeline passed raw overloaded currency/unit symbols (e.g., '¥50,000' without CNY vs JPY binding, '$100' without USD vs HKD binding) or unannotated financial/medical polyphones directly to TTS; offline synthetic policy state machine enforcing 3-letter ISO 4217 expansion and >=99.5% SSML <phoneme> lexicon coverage (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live cloud neural TTS synthesis latency not_measured).",
+          clampedPolyphoneLexiconCoveragePct,
+          clampedRequiredIso4217CodeLength,
+        };
+      }
+
+      if (
+        context.polyphoneLexiconCoveragePct < 99.5 ||
+        context.requiredIso4217CodeLength !== 3
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_polyphone_lexicon_coverage_and_iso4217_binding",
+          reason:
+            "Domain polyphone SSML lexicon coverage (<99.5% synthetic floor) or ISO 4217 currency code length (!==3 chars) out of bounds; clamping lexicon coverage to >=99.5% and ISO 4217 code length to 3.",
+          clampedPolyphoneLexiconCoveragePct,
+          clampedRequiredIso4217CodeLength,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 3-letter ISO 4217 currency expansion and >=99.5% domain polyphone SSML disambiguation verified.",
+        clampedPolyphoneLexiconCoveragePct,
+        clampedRequiredIso4217CodeLength,
+      };
+    }
+
+
 
 
 

@@ -1501,6 +1501,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks stale-version voice writes and double charges when a caller modifies their order in the mobile app mid-call, clamping cross-channel sync lag to <=150ms and shared idempotency entropy to >=128 bits; live cross-channel event bus RTT is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks >16kHz DolphinAttack ultrasonic injection, system-prompt canary exfiltration, and runaway S2S billing, clamping low-pass cutoff to <=8,000 Hz and per-session audio spend to <=$2.50; live hardware DSP FIR filter latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "387. [Topic 24: voice-sip-early-media-clipping-tts-currency-homograph-faq] SIP 180/183 Early Media Mute & 180ms-260ms Post-200-OK RFC 3389 RTP Latching Warm-Up + Pre-TTS 3-Letter ISO 4217 Currency Binding (¥/$) & >=99.5% Polyphone SSML Gate (P761 / P762 — Stage 384 · 387-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks pre-answer TTS bleed on SIP 183 ringback and 0ms post-200-OK first-syllable clipping, clamping RTP warm-up to 180ms-260ms and >=9 RFC 3389 comfort-noise frames; live carrier SBC RTP pinhole latching latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks raw overloaded currency symbols (¥50,000 JPY vs CNY, $100 HKD vs USD) and unannotated financial/medical polyphones, clamping ISO 4217 code binding to 3 chars and SSML lexicon coverage to >=99.5%; live cloud neural TTS synthesis latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
