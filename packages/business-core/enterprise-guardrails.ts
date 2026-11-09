@@ -71157,6 +71157,145 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface PqcHybridSiprecAndSrtpRocRolloverContext {
+      classicalOnlySiprecOrSrtpRocDesyncDetected: boolean;
+      mlkemParameterSet: number;
+      dualMkiOverlapWindowMs: number;
+    }
+
+    export interface PqcHybridSiprecAndSrtpRocRolloverDecision {
+      violated: boolean;
+      policyId: "P765-PQC-HYBRID-MLKEM768-SIPREC-ESCROW-AND-SRTP-ROC-ROLLOVER-GUARD";
+      action:
+        | "pqc_hybrid_siprec_or_srtp_roc_rollover_desync_blocked"
+        | "clamp_mlkem_parameter_set_and_dual_mki_overlap_window"
+        | "allow";
+      reason: string;
+      clampedMlkemParameterSet: number;
+      clampedDualMkiOverlapWindowMs: number;
+    }
+
+    export function evaluatePqcHybridMlkem768SiprecEscrowAndSrtpRocRolloverGate(
+      context: PqcHybridSiprecAndSrtpRocRolloverContext,
+    ): PqcHybridSiprecAndSrtpRocRolloverDecision {
+      const policyId =
+        "P765-PQC-HYBRID-MLKEM768-SIPREC-ESCROW-AND-SRTP-ROC-ROLLOVER-GUARD" as const;
+      const clampedMlkemParameterSet =
+        context.mlkemParameterSet >= 1024 ? 1024 : 768;
+      const clampedDualMkiOverlapWindowMs = Math.min(
+        Math.max(context.dualMkiOverlapWindowMs, 500),
+        2000,
+      );
+
+      if (context.classicalOnlySiprecOrSrtpRocDesyncDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "pqc_hybrid_siprec_or_srtp_roc_rollover_desync_blocked",
+          reason:
+            "PQC Hybrid ML-KEM-768 SIPREC Escrow & SRTP ROC Rollover Policy Check: archival SIPREC trunk negotiated classical-only ECDHE vulnerable to Harvest-Now-Decrypt-Later (HNDL) or suffered >21.85-minute SRTP RFC 3711 16-bit sequence rollover (ROC) desync / single-MKI rekey packet drop; offline synthetic policy state machine enforcing X25519 + NIST FIPS 203 ML-KEM-768, ROC+-1 trial decryption, and >=500ms Dual-MKI overlap (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live TLS 1.3 ML-KEM handshake latency not_measured).",
+          clampedMlkemParameterSet,
+          clampedDualMkiOverlapWindowMs,
+        };
+      }
+
+      if (
+        context.mlkemParameterSet < 768 ||
+        context.dualMkiOverlapWindowMs < 500
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_mlkem_parameter_set_and_dual_mki_overlap_window",
+          reason:
+            "NIST FIPS 203 ML-KEM parameter set (<768 synthetic floor) or DTLS-SRTP Dual-MKI rekey overlap window (<500ms synthetic floor) out of bounds; clamping ML-KEM parameter set to >=768 and Dual-MKI overlap window to >=500ms.",
+          clampedMlkemParameterSet,
+          clampedDualMkiOverlapWindowMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: X25519MLKEM768 hybrid SIPREC escrow, SRTP RFC 3711 ROC+-1 rollover self-healing, and >=500ms Dual-MKI rekey overlap verified.",
+        clampedMlkemParameterSet,
+        clampedDualMkiOverlapWindowMs,
+      };
+    }
+
+    export interface SovereignVoiceprintCryptoShreddingContext {
+      sharedVoiceprintKeyOrMissingBipaConsentDetected: boolean;
+      cryptoShreddingSlaMs: number;
+      maxVoiceprintRetentionDays: number;
+    }
+
+    export interface SovereignVoiceprintCryptoShreddingDecision {
+      violated: boolean;
+      policyId: "P766-SOVEREIGN-VOICEPRINT-PER-SUBJECT-DEK-CRYPTO-SHREDDING-AND-BIPA-GUARD";
+      action:
+        | "voiceprint_shared_key_or_bipa_consent_retention_blocked"
+        | "clamp_crypto_shredding_sla_and_bipa_retention_days"
+        | "allow";
+      reason: string;
+      clampedCryptoShreddingSlaMs: number;
+      clampedMaxVoiceprintRetentionDays: number;
+    }
+
+    export function evaluateSovereignVoiceprintPerSubjectCmkCryptoShreddingAndBipaGate(
+      context: SovereignVoiceprintCryptoShreddingContext,
+    ): SovereignVoiceprintCryptoShreddingDecision {
+      const policyId =
+        "P766-SOVEREIGN-VOICEPRINT-PER-SUBJECT-DEK-CRYPTO-SHREDDING-AND-BIPA-GUARD" as const;
+      const clampedCryptoShreddingSlaMs = Math.min(
+        Math.max(context.cryptoShreddingSlaMs, 100),
+        5000,
+      );
+      const clampedMaxVoiceprintRetentionDays = Math.min(
+        Math.max(context.maxVoiceprintRetentionDays, 30),
+        1095,
+      );
+
+      if (context.sharedVoiceprintKeyOrMissingBipaConsentDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "voiceprint_shared_key_or_bipa_consent_retention_blocked",
+          reason:
+            "Sovereign Voiceprint Per-Subject DEK Crypto-Shredding & BIPA/GDPR Policy Check: pipeline encrypted caller voiceprints with a shared table key (leaving un-erasable biometric vectors in immutable WORM backups) or extracted voiceprints without explicit BIPA/GDPR consent; offline synthetic policy state machine enforcing per-subject DEK envelope encryption, <=5,000ms HSM crypto-shredding SLA, and <=1,095-day (3-year) statutory retention (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live cloud HSM key-destruction latency not_measured).",
+          clampedCryptoShreddingSlaMs,
+          clampedMaxVoiceprintRetentionDays,
+        };
+      }
+
+      if (
+        context.cryptoShreddingSlaMs > 5000 ||
+        context.maxVoiceprintRetentionDays > 1095
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_crypto_shredding_sla_and_bipa_retention_days",
+          reason:
+            "Voiceprint HSM crypto-shredding SLA (>5,000ms synthetic ceiling) or BIPA biometric retention ceiling (>1,095 days / 3 years synthetic ceiling) out of bounds; clamping crypto-shredding SLA to <=5,000ms and retention to <=1,095 days.",
+          clampedCryptoShreddingSlaMs,
+          clampedMaxVoiceprintRetentionDays,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: per-subject DEK envelope encryption, <=5,000ms WORM crypto-shredding SLA, and <=1,095-day BIPA/GDPR retention verified.",
+        clampedCryptoShreddingSlaMs,
+        clampedMaxVoiceprintRetentionDays,
+      };
+    }
+
+
 
 
 

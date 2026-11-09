@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad30" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentCyan30" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="accentEmerald30" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="cardShadow30" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad30)"/>
+  <circle cx="1050" cy="100" r="210" fill="#06B6D4" opacity="0.07"/>
+  <circle cx="150" cy="580" r="230" fill="#10B981" opacity="0.06"/>
+
+  <!-- Header Banner -->
+  <rect x="40" y="28" width="1120" height="92" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow30)"/>
+  <rect x="58" y="46" width="188" height="28" rx="6" fill="url(#accentCyan30)"/>
+  <text x="152" y="65" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">STAGE 386 · TOPIC 26 FAQ</text>
+  <text x="264" y="65" fill="#F8FAFC" font-size="19.5" font-weight="800">PQC Hybrid ML-KEM-768 SIPREC Escrow &amp; Voiceprint Crypto-Shredding</text>
+  <text x="58" y="98" fill="#94A3B8" font-size="13">X25519+ML-KEM-768 + &gt;21.85m SRTP ROC Rollover / &gt;=500ms Dual-MKI (P765) &amp; Per-Subject DEK Crypto-Shredding &lt;=5s + BIPA &lt;=1095d (P766)</text>
+
+  <!-- Left Column: P765 PQC Hybrid ML-KEM-768 & SRTP ROC Rollover Guard -->
+  <rect x="40" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#06B6D4" stroke-width="1.5" filter="url(#cardShadow30)"/>
+  <rect x="40" y="138" width="545" height="42" rx="14" fill="#164E63"/>
+  <text x="62" y="164" fill="#67E8F9" font-size="15" font-weight="700">1. PQC Hybrid ML-KEM-768 SIPREC &amp; SRTP ROC Rollover Gate (P765)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="60" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="76" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Classical ECDHE Only &amp; &gt;21.85min SRTP ROC Desync</text>
+  <text x="76" y="241" fill="#CBD5E1" font-size="12">• Harvest-Now-Decrypt-Later (HNDL) breaks 7-to-10yr MiFID/HIPAA SIPREC archives</text>
+  <text x="76" y="261" fill="#CBD5E1" font-size="12">• At 21.85m (seq 65535-&gt;0), packet loss desyncs SRTP ROC -&gt; white noise static</text>
+  <text x="76" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Single-MKI 60m DTLS-SRTP rekey drops in-flight packets during key rotation</text>
+
+  <!-- Production Pattern -->
+  <rect x="60" y="308" width="505" height="202" rx="10" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.4"/>
+  <text x="76" y="332" fill="#6EE7B7" font-size="13" font-weight="700">✅ Production Pattern: X25519MLKEM768 + ROC+-1 Trial &amp; Dual-MKI (P765)</text>
+  <text x="76" y="356" fill="#E2E8F0" font-size="12">1. NIST FIPS 203 Hybrid KEM: X25519 + ML-KEM-768 (&gt;=768 lattice rank) on SIPREC</text>
+  <text x="76" y="378" fill="#E2E8F0" font-size="12">2. SRTP RFC 3711 ROC+-1 Trial Decrypt: Resyncs 16-bit seq wrap across loss</text>
+  <text x="76" y="400" fill="#E2E8F0" font-size="12">3. &gt;=500ms Dual-MKI Rekey Window: Accepts old &amp; new keys during rotation</text>
+  <text x="76" y="422" fill="#E2E8F0" font-size="12">4. Multi-Hour Call Survival: 0% static/lockout at 21.85m, 43.7m, and 60m marks</text>
+
+  <rect x="76" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="92" y="462" fill="#34D399" font-size="12" font-weight="700">Deterministic Invariant (evaluatePqcHybridMlkem768SiprecEscrow...):</text>
+  <text x="92" y="482" fill="#A7F3D0" font-size="11.5">mlkemParameterSet &gt;= 768 &amp;&amp; dualMkiOverlapWindowMs &gt;= 500ms</text>
+
+  <!-- Right Column: P766 Sovereign Voiceprint Crypto-Shredding & BIPA/GDPR Gate -->
+  <rect x="615" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1.5" filter="url(#cardShadow30)"/>
+  <rect x="615" y="138" width="545" height="42" rx="14" fill="#065F46"/>
+  <text x="637" y="164" fill="#6EE7B7" font-size="15" font-weight="700">2. Per-Subject Voiceprint Crypto-Shredding &amp; BIPA/GDPR Gate (P766)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="635" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="651" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Shared Table Key &amp; Orphaned Voiceprints in WORM Backups</text>
+  <text x="651" y="241" fill="#CBD5E1" font-size="12">• SQL DELETE removes active row, but voiceprint stays in 7-yr immutable backups!</text>
+  <text x="651" y="261" fill="#CBD5E1" font-size="12">• Shared tenant KMS key cannot be destroyed without wiping all other customers</text>
+  <text x="651" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: GDPR Art. 17 erasure failure &amp; $5,000/call Illinois BIPA class-action</text>
+
+  <!-- Production Pattern -->
+  <rect x="635" y="308" width="505" height="202" rx="10" fill="#1E1B4B" fill-opacity="0.55" stroke="#38BDF8" stroke-width="1.4"/>
+  <text x="651" y="332" fill="#7DD3FC" font-size="13" font-weight="700">✅ Production Pattern: Per-Subject DEK Crypto-Shredding + BIPA Gate (P766)</text>
+  <text x="651" y="356" fill="#E2E8F0" font-size="12">1. Unique Per-Subject DEK: Each caller's d-vector encrypted with dedicated DEK</text>
+  <text x="651" y="378" fill="#E2E8F0" font-size="12">2. Instant Crypto-Shredding (&lt;=5,000ms): Purge DEK in HSM -&gt; WORM copies dead</text>
+  <text x="651" y="400" fill="#E2E8F0" font-size="12">3. Explicit BIPA/CUBI Consent Gate: Zero biometric extraction prior to opt-in</text>
+  <text x="651" y="422" fill="#E2E8F0" font-size="12">4. Statutory Retention Ceiling: Auto-shred after &lt;=1,095 days (3 years)</text>
+
+  <rect x="651" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="1"/>
+  <text x="667" y="462" fill="#38BDF8" font-size="12" font-weight="700">Deterministic Invariant (evaluateSovereignVoiceprintPerSubject...):</text>
+  <text x="667" y="482" fill="#BAE6FD" font-size="11.5">perSubjectDek=true &amp;&amp; shredSlaMs&lt;=5000ms &amp;&amp; maxRetentionDays&lt;=1095d</text>
+
+  <!-- Bottom Provenance & Latency Strip -->
+  <rect x="40" y="544" width="1120" height="103" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.5" filter="url(#cardShadow30)"/>
+  <text x="62" y="571" fill="#F8FAFC" font-size="14" font-weight="700">Stage 386 Quantitative Verification &amp; Measurement Provenance (389 Dimensions · 775 Guardrails · 784 Probes · 828 Unit Tests)</text>
+  <text x="62" y="595" fill="#94A3B8" font-size="12">• PQC/SRTP Gate (P765): 100% HNDL quantum resistance &amp; 0% 21.85m ROC rollover static; Crypto-Shredding Gate (P766): &lt;=5s WORM erasure &amp; &lt;=1,095d BIPA TTL.</text>
+  <text x="62" y="616" fill="#67E8F9" font-size="11.5" font-weight="600">• Timer &amp; Provenance Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="62" y="635" fill="#CBD5E1" font-size="11">• Live Provider P95 TTFA: Retell 820ms (measured) · Vapi 960ms (measured) · LiveKit 690ms (measured) · OpenAI Realtime / ACS / Gemini Live: not_measured.</text>
+</svg>

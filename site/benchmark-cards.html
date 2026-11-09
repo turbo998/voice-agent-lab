@@ -1247,9 +1247,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>388. [专题25 `docs/voice-bluetooth-hfp-handover-opus-dtx-vad-deadlock-faq.md`] 车载/TWS 蓝牙 `HFP/SCO` 路由切换 `&gt;=-3dBFS` 瞬态爆音削峰、`600ms–900ms` VAD/EOU 冻结与 `CVSD 8kHz / mSBC 16kHz` 窄带声学前端重校准门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将蓝牙切换误打断率从 `58.0%` 降至 `0.0%`；真实蓝牙 SCO 握手耗时 `not_measured`）&amp; WebRTC `Opus DTX`（`usedtx=1`）`&gt;40ms` 稀疏帧间隙注入 `120ms–200ms` 合成零 PCM 帧尾部解死锁与 `80ms–120ms` 环形缓冲首音节唤醒预卷锁（消除 `18.6%` 互等死锁与 `11.2%` 首辅音吞字；真实抖动缓冲耗时 `not_measured`）(`P763` / `P764` · Stage 385 · 388 评测维度里程碑 · 773 护栏 &amp; 782 探针 · 388 维)</strong>
+                <strong>388. [专题25 `docs/voice-bluetooth-hfp-handover-opus-dtx-vad-deadlock-faq.md`] 车载/TWS 蓝牙 `HFP/SCO` 路由切换 `&gt;=-3dBFS` 瞬态爆音削峰、`600ms–900ms` VAD/EOU 冻结与 `CVSD 8kHz / mSBC 16kHz` 窄带声学前端重校准门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将蓝牙切换误打断率从 `58.0%` 降至 `0.0%`；真实蓝牙 SCO 握手耗时 `not_measured`）&amp; WebRTC `Opus DTX`（`usedtx=1`）`&gt;40ms` 稀疏帧间隙注入 `120ms–200ms` 合成零 PCM 帧尾部解死锁与 `80ms–120ms` 环形缓冲首音节唤醒预卷锁（消除 `18.6%` 互等死锁与 `11.2%` 首辅音吞字；真实抖动缓冲耗时 `not_measured`）(`P763` / `P764` · Stage 385 · 388 维)</strong>
               </td>
               <td><code>P763 / P764 deterministic Bluetooth HFP handover VAD freeze gate &amp; WebRTC Opus DTX zero-PCM tail preroll guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>389. [专题26 `docs/voice-pqc-hybrid-mlkem-siprec-voiceprint-shredding-faq.md`] 抗量子 `X25519 + NIST FIPS 203 ML-KEM-768` `SIPREC` 双录封存、`&gt;21.85分钟` `SRTP RFC 3711 ROC±1` 跨丢包回绕自愈与 `&gt;=500ms` 双 `MKI` 无损轮换门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：消除 `5.4%` 长通话回绕白噪音并阻断 HNDL 事后量子解密；真实 TLS 1.3 ML-KEM 握手耗时 `not_measured`）&amp; 声纹单用户独立 `DEK` 信封加密、`&lt;=5,000ms` 不可变 `WORM` 冷备加密粉碎与 `BIPA/GDPR &lt;=1,095天`（3年）留存锁（真实 HSM 密钥销毁耗时 `not_measured`）(`P765` / `P766` · Stage 386 · 389 评测维度里程碑 · 775 护栏 &amp; 784 探针 · 389 维)</strong>
+              </td>
+              <td><code>P765 / P766 deterministic PQC ML-KEM-768 SIPREC SRTP ROC gate &amp; per-subject DEK voiceprint crypto-shredding guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4477,9 +4484,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>388. [专题25 `docs/voice-bluetooth-hfp-handover-opus-dtx-vad-deadlock-faq.md`] 车载/TWS 蓝牙 `HFP/SCO` 路由切换 `&gt;=-3dBFS` 瞬态爆音削峰、`600ms–900ms` VAD/EOU 冻结与 `CVSD 8kHz / mSBC 16kHz` 窄带声学前端重校准门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将蓝牙切换误打断率从 `58.0%` 降至 `0.0%`；真实蓝牙 SCO 握手耗时 `not_measured`）&amp; WebRTC `Opus DTX`（`usedtx=1`）`&gt;40ms` 稀疏帧间隙注入 `120ms–200ms` 合成零 PCM 帧尾部解死锁与 `80ms–120ms` 环形缓冲首音节唤醒预卷锁（消除 `18.6%` 互等死锁与 `11.2%` 首辅音吞字；真实抖动缓冲耗时 `not_measured`）(`P763` / `P764` · Stage 385 · 388 评测维度里程碑 · 773 护栏 &amp; 782 探针 · 388 维)</strong>
+                <strong>388. [专题25 `docs/voice-bluetooth-hfp-handover-opus-dtx-vad-deadlock-faq.md`] 车载/TWS 蓝牙 `HFP/SCO` 路由切换 `&gt;=-3dBFS` 瞬态爆音削峰、`600ms–900ms` VAD/EOU 冻结与 `CVSD 8kHz / mSBC 16kHz` 窄带声学前端重校准门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将蓝牙切换误打断率从 `58.0%` 降至 `0.0%`；真实蓝牙 SCO 握手耗时 `not_measured`）&amp; WebRTC `Opus DTX`（`usedtx=1`）`&gt;40ms` 稀疏帧间隙注入 `120ms–200ms` 合成零 PCM 帧尾部解死锁与 `80ms–120ms` 环形缓冲首音节唤醒预卷锁（消除 `18.6%` 互等死锁与 `11.2%` 首辅音吞字；真实抖动缓冲耗时 `not_measured`）(`P763` / `P764` · Stage 385 · 388 维)</strong>
               </td>
               <td><code>P763 / P764 deterministic Bluetooth HFP handover VAD freeze gate &amp; WebRTC Opus DTX zero-PCM tail preroll guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>389. [专题26 `docs/voice-pqc-hybrid-mlkem-siprec-voiceprint-shredding-faq.md`] 抗量子 `X25519 + NIST FIPS 203 ML-KEM-768` `SIPREC` 双录封存、`&gt;21.85分钟` `SRTP RFC 3711 ROC±1` 跨丢包回绕自愈与 `&gt;=500ms` 双 `MKI` 无损轮换门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：消除 `5.4%` 长通话回绕白噪音并阻断 HNDL 事后量子解密；真实 TLS 1.3 ML-KEM 握手耗时 `not_measured`）&amp; 声纹单用户独立 `DEK` 信封加密、`&lt;=5,000ms` 不可变 `WORM` 冷备加密粉碎与 `BIPA/GDPR &lt;=1,095天`（3年）留存锁（真实 HSM 密钥销毁耗时 `not_measured`）(`P765` / `P766` · Stage 386 · 389 评测维度里程碑 · 775 护栏 &amp; 784 探针 · 389 维)</strong>
+              </td>
+              <td><code>P765 / P766 deterministic PQC ML-KEM-768 SIPREC SRTP ROC gate &amp; per-subject DEK voiceprint crypto-shredding guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

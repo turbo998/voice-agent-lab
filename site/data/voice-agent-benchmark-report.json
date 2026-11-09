@@ -1513,6 +1513,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks Bluetooth route-switch DC pop false barge-ins, premature EOU during SCO setup, and uncalibrated CVSD 8kHz aliasing, clamping handover VAD freeze to 600ms-900ms and sample rate to >=8,000 Hz; live Bluetooth SCO link negotiation latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: breaks Opus DTX server-VAD hangover starvation deadlocks and prevents initial consonant clipping, clamping synthetic zero-PCM tail to 120ms-200ms and circular onset pre-roll to 80ms-120ms; live WebRTC jitter-buffer DTX synthesis latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "389. [Topic 26: voice-pqc-hybrid-mlkem-siprec-voiceprint-shredding-faq] Post-Quantum X25519 + ML-KEM-768 SIPREC Escrow, >21.85m SRTP ROC+-1 Self-Healing & >=500ms Dual-MKI + Per-Subject DEK Voiceprint Crypto-Shredding (<=5s) & BIPA <=1,095-Day Retention Guard (P765 / P766 — Stage 386 · 389-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks classical-only SIPREC archival trunks and >21.85-minute SRTP ROC rollover static desyncs, clamping ML-KEM parameter set to >=768 and Dual-MKI overlap window to >=500ms; live TLS 1.3 ML-KEM handshake latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks shared-key voiceprint storage and unconsented biometric extraction, clamping HSM crypto-shredding SLA to <=5,000ms across WORM backups and BIPA retention to <=1,095 days; live cloud HSM key-destruction latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
