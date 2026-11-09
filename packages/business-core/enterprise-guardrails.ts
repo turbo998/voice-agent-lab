@@ -69861,6 +69861,154 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // ============================================================================
+    // Stage 377 (P747–P748): Topic 17 — Post-Call Verbal Promise vs. CRM Ticket
+    // Reconciliation (<=3,000ms SLA) & Deterministic 100-Point QA Rubric Gate
+    // ============================================================================
+
+    export interface PostcallPromiseTicketReconciliationContext {
+      unreconciledVerbalPromiseOrSilentTicketDropDetected: boolean;
+      reconciliationWindowMs: number;
+      maxAllowedPromiseDriftUsd: number;
+    }
+
+    export interface PostcallPromiseTicketReconciliationDecision {
+      violated: boolean;
+      policyId: "P747-POSTCALL-VERBAL-PROMISE-VS-CRM-TICKET-RECONCILIATION-GUARD";
+      action:
+        | "enforce_postcall_promise_ticket_reconciliation_and_compensation_in_0ms"
+        | "clamp_reconciliation_window_and_zero_promise_drift"
+        | "allow";
+      reason: string;
+      clampedReconciliationWindowMs: number;
+      clampedMaxAllowedPromiseDriftUsd: number;
+    }
+
+    export function evaluatePostcallVerbalPromiseVsCrmTicketReconciliationGate(
+      context: PostcallPromiseTicketReconciliationContext,
+    ): PostcallPromiseTicketReconciliationDecision {
+      const policyId =
+        "P747-POSTCALL-VERBAL-PROMISE-VS-CRM-TICKET-RECONCILIATION-GUARD" as const;
+      const clampedReconciliationWindowMs = Math.min(
+        Math.max(context.reconciliationWindowMs, 100),
+        3000,
+      );
+      const clampedMaxAllowedPromiseDriftUsd = Math.min(
+        Math.max(context.maxAllowedPromiseDriftUsd, 0),
+        0,
+      );
+
+      if (context.unreconciledVerbalPromiseOrSilentTicketDropDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_postcall_promise_ticket_reconciliation_and_compensation_in_0ms",
+          reason:
+            "Post-Call Verbal Promise vs. CRM Ticket Reconciliation Policy Check: assistant verbally promised a fee waiver/refund/order action that failed to commit in the CRM/ERP backend on hangup; offline synthetic policy state machine enforcing <=3,000ms post-call ledger reconciliation, $0.00 allowed drift, and automatic idempotent retry / P1 supervisor escalation (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live CRM database query RTT not_measured).",
+          clampedReconciliationWindowMs,
+          clampedMaxAllowedPromiseDriftUsd,
+        };
+      }
+
+      if (
+        context.reconciliationWindowMs > 3000 ||
+        context.maxAllowedPromiseDriftUsd > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_reconciliation_window_and_zero_promise_drift",
+          reason:
+            "Post-call reconciliation window (>3,000ms synthetic ceiling) or allowed promise-vs-ticket financial drift (>$0.00 synthetic ceiling) out of bounds; clamping reconciliation window to <=3,000ms and allowed drift to $0.00.",
+          clampedReconciliationWindowMs,
+          clampedMaxAllowedPromiseDriftUsd,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: post-call verbal promise vs. CRM ticket reconciliation <=3,000ms and $0.00 drift tolerance verified.",
+        clampedReconciliationWindowMs,
+        clampedMaxAllowedPromiseDriftUsd,
+      };
+    }
+
+    export interface DeterministicPostcallQaRubricContext {
+      uncitedFreeformLlmJudgeOrHighScoreDriftDetected: boolean;
+      maxRubricScoreVariancePts: number;
+      minEvidenceCitationCoverage: number;
+    }
+
+    export interface DeterministicPostcallQaRubricDecision {
+      violated: boolean;
+      policyId: "P748-DETERMINISTIC-100PT-POSTCALL-QA-RUBRIC-AND-CALIBRATED-JUDGE-GUARD";
+      action:
+        | "enforce_deterministic_60_40_qa_rubric_and_100pct_timestamp_citations_in_0ms"
+        | "clamp_rubric_score_variance_and_citation_coverage_floor"
+        | "allow";
+      reason: string;
+      clampedMaxRubricScoreVariancePts: number;
+      clampedMinEvidenceCitationCoverage: number;
+    }
+
+    export function evaluateDeterministic100PtPostcallQaRubricAndCalibratedJudgeGate(
+      context: DeterministicPostcallQaRubricContext,
+    ): DeterministicPostcallQaRubricDecision {
+      const policyId =
+        "P748-DETERMINISTIC-100PT-POSTCALL-QA-RUBRIC-AND-CALIBRATED-JUDGE-GUARD" as const;
+      const clampedMaxRubricScoreVariancePts = Math.min(
+        Math.max(context.maxRubricScoreVariancePts, 0),
+        2.0,
+      );
+      const clampedMinEvidenceCitationCoverage = Math.min(
+        Math.max(context.minEvidenceCitationCoverage, 1.0),
+        1.0,
+      );
+
+      if (context.uncitedFreeformLlmJudgeOrHighScoreDriftDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_deterministic_60_40_qa_rubric_and_100pct_timestamp_citations_in_0ms",
+          reason:
+            "Deterministic 100-Point Post-Call QA Rubric Policy Check: pipeline used a freeform uncited 0-100 LLM judge with high run-to-run score drift or ungrounded point deductions; offline synthetic policy state machine enforcing a 60/40 deterministic + atomic rubric split, <=2.0pt cross-run variance, and 100% [turnId, startMs, endMs] transcript citation coverage (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live post-call batch evaluation latency not_measured).",
+          clampedMaxRubricScoreVariancePts,
+          clampedMinEvidenceCitationCoverage,
+        };
+      }
+
+      if (
+        context.maxRubricScoreVariancePts > 2.0 ||
+        context.minEvidenceCitationCoverage < 1.0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_rubric_score_variance_and_citation_coverage_floor",
+          reason:
+            "Maximum rubric score variance (>2.0 pts synthetic ceiling) or minimum evidence citation coverage (<1.0 synthetic floor) out of bounds; clamping variance to <=2.0 pts and citation coverage to 1.0.",
+          clampedMaxRubricScoreVariancePts,
+          clampedMinEvidenceCitationCoverage,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 60/40 deterministic + atomic QA rubric, <=2.0pt score variance, and 100% timestamp citation coverage verified.",
+        clampedMaxRubricScoreVariancePts,
+        clampedMinEvidenceCitationCoverage,
+      };
+    }
+
+
 
 
 
