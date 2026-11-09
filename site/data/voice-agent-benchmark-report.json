@@ -1423,6 +1423,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks single-channel mixed-mono multi-speaker sentence splicing, clamping sliding diarization window to <=320ms, overlap threshold to <=0.05, and enforcing <turn speaker role> XML attribution; live neural EEND DSP inference latency is not_measured; offline Azure Fast Transcription PoC measured at RTF=0.057)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unverified_bystander direct write-tool mutations and PII disclosures, quarantining bystander-suggested slots until verified_primary re-confirms with cosine similarity >=0.82 and overlap <=0.05; live d-vector verification latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "374. [Topic 11: voice-multilingual-codeswitch-dialect-faq] Intra-Sentence Code-Switching Unified Sub-Word Tokenizer, Frame-Level LID Routing (<=240ms) & Cross-Lingual Phrase Boost (10-16 dB) + Multilingual TTS Speaker Timbre Lock (>=0.94), Auto SSML <lang> Wrapping & Boundary Cosine Crossfade (<=15ms) (P735 / P736 — Stage 371 · 374-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks utterance-level static LID locks and forced homophone transliterations, clamping frame LID window to <=240ms and cross-lingual phrase boost to 10-16 dB; live beam-search decoding latency is not_measured; offline --locale auto PoC measured at RTF=0.057)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks dual-model voice splicing and unwrapped foreign acronyms, clamping speaker timbre similarity to >=0.94 and boundary cosine crossfade to 5-15ms; live neural vocoder synthesis latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

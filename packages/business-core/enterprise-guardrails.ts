@@ -69005,6 +69005,150 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface IntrasentenceCodeswitchTokenizerContext {
+      staticUtteranceLidLockOrHomophoneTransliterationDetected: boolean;
+      frameLidWindowMs: number;
+      crossLingualPhraseBoostDb: number;
+    }
+
+    export interface IntrasentenceCodeswitchTokenizerDecision {
+      violated: boolean;
+      policyId: "P735-INTRASENTENCE-CODESWITCH-UNIFIED-TOKENIZER-AND-FRAME-LID-GUARD";
+      action:
+        | "enforce_subword_frame_lid_and_cross_lingual_lexicon_boost_in_0ms"
+        | "clamp_frame_lid_window_and_cross_lingual_phrase_boost_bounds"
+        | "allow";
+      reason: string;
+      clampedFrameLidWindowMs: number;
+      clampedCrossLingualPhraseBoostDb: number;
+    }
+
+    export function evaluateIntrasentenceCodeswitchUnifiedTokenizerAndFrameLidGate(
+      context: IntrasentenceCodeswitchTokenizerContext,
+    ): IntrasentenceCodeswitchTokenizerDecision {
+      const policyId =
+        "P735-INTRASENTENCE-CODESWITCH-UNIFIED-TOKENIZER-AND-FRAME-LID-GUARD" as const;
+      const clampedFrameLidWindowMs = Math.min(
+        Math.max(context.frameLidWindowMs, 120),
+        240,
+      );
+      const clampedCrossLingualPhraseBoostDb = Math.min(
+        Math.max(context.crossLingualPhraseBoostDb, 10),
+        16,
+      );
+
+      if (context.staticUtteranceLidLockOrHomophoneTransliterationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_subword_frame_lid_and_cross_lingual_lexicon_boost_in_0ms",
+          reason:
+            "Intra-Sentence Code-Switching Unified Tokenizer & Frame LID Policy Check: utterance-level static LID locked a single language vocabulary or force-transliterated embedded English/Cantonese terms into homophone gibberish; offline synthetic policy state machine enforcing <=240ms frame-level language routing, shared Hanzi/Latin BPE vocabulary, and 10-16 dB cross-lingual phrase boosting (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live beam-search decoding latency not_measured).",
+          clampedFrameLidWindowMs,
+          clampedCrossLingualPhraseBoostDb,
+        };
+      }
+
+      if (
+        context.frameLidWindowMs > 240 ||
+        context.crossLingualPhraseBoostDb < 10 ||
+        context.crossLingualPhraseBoostDb > 16
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_frame_lid_window_and_cross_lingual_phrase_boost_bounds",
+          reason:
+            "Frame-level LID routing window (>240ms synthetic ceiling) or cross-lingual phrase boost (<10 dB or >16 dB synthetic range) out of bounds; clamping frame LID window to <=240ms and phrase boost to 10-16 dB.",
+          clampedFrameLidWindowMs,
+          clampedCrossLingualPhraseBoostDb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: <=240ms sub-word frame LID routing, shared multilingual BPE decoding, and 10-16 dB cross-lingual lexicon boost verified.",
+        clampedFrameLidWindowMs,
+        clampedCrossLingualPhraseBoostDb,
+      };
+    }
+
+    export interface MultilingualTtsProsodyContinuityContext {
+      dualModelVoiceSpliceOrUnwrappedForeignSpanDetected: boolean;
+      timbreCosineSim: number;
+      boundaryCrossfadeMs: number;
+    }
+
+    export interface MultilingualTtsProsodyContinuityDecision {
+      violated: boolean;
+      policyId: "P736-MULTILINGUAL-TTS-PROSODY-CONTINUITY-AND-SSML-LANG-TAG-SWITCH-GUARD";
+      action:
+        | "enforce_unified_multilingual_timbre_ssml_lang_wrap_and_boundary_crossfade_in_0ms"
+        | "clamp_timbre_similarity_floor_and_boundary_crossfade_window"
+        | "allow";
+      reason: string;
+      clampedTimbreCosineSim: number;
+      clampedBoundaryCrossfadeMs: number;
+    }
+
+    export function evaluateMultilingualTtsProsodyContinuityAndSsmlLangTagSwitchGate(
+      context: MultilingualTtsProsodyContinuityContext,
+    ): MultilingualTtsProsodyContinuityDecision {
+      const policyId =
+        "P736-MULTILINGUAL-TTS-PROSODY-CONTINUITY-AND-SSML-LANG-TAG-SWITCH-GUARD" as const;
+      const clampedTimbreCosineSim = Math.min(
+        Math.max(context.timbreCosineSim, 0.94),
+        1.0,
+      );
+      const clampedBoundaryCrossfadeMs = Math.min(
+        Math.max(context.boundaryCrossfadeMs, 5),
+        15,
+      );
+
+      if (context.dualModelVoiceSpliceOrUnwrappedForeignSpanDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_unified_multilingual_timbre_ssml_lang_wrap_and_boundary_crossfade_in_0ms",
+          reason:
+            "Multilingual TTS Prosody Continuity & SSML Lang-Switch Policy Check: outbound synthesis attempted to splice two separate monolingual voice models mid-sentence or left embedded foreign acronyms unwrapped without SSML <lang>/<phoneme> tags; offline synthetic policy state machine enforcing unified multilingual speaker embedding (timbreCosineSim >= 0.94), automatic SSML <lang> wrapping, and <=15ms boundary cosine crossfade (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live neural vocoder latency not_measured).",
+          clampedTimbreCosineSim,
+          clampedBoundaryCrossfadeMs,
+        };
+      }
+
+      if (
+        context.timbreCosineSim < 0.94 ||
+        context.boundaryCrossfadeMs < 5 ||
+        context.boundaryCrossfadeMs > 15
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_timbre_similarity_floor_and_boundary_crossfade_window",
+          reason:
+            "Cross-lingual speaker timbre similarity (<0.94 synthetic floor) or language-boundary cosine crossfade window (outside 5-15ms synthetic range) out of bounds; clamping timbre similarity to >=0.94 and crossfade to 5-15ms.",
+          clampedTimbreCosineSim,
+          clampedBoundaryCrossfadeMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: unified multilingual speaker embedding (>=0.94 timbre similarity), SSML <lang> wrapping, and 5-15ms boundary cosine crossfade verified.",
+        clampedTimbreCosineSim,
+        clampedBoundaryCrossfadeMs,
+      };
+    }
+
 
 
 

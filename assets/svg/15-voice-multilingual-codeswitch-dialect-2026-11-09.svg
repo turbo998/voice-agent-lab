@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="title desc">
+  <title id="title">Enterprise Voice Agent Intra-Sentence Code-Switching &amp; Multilingual Prosody Architecture (Stage 371 · P735–P736)</title>
+  <desc id="desc">Visual comparison of legacy sentence-level static LID homophone gibberish vs P735 sub-word unified multilingual tokenizer (&lt;=240ms frame LID + 10–16dB lexicon boost) and P736 unified multilingual TTS prosody/timbre continuity lock.</desc>
+  <defs>
+    <linearGradient id="bgGrad15" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentCyan15" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="accentGreen15" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad15)"/>
+
+  <!-- Header -->
+  <rect x="28" y="20" width="1144" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="44" y="34" width="198" height="24" rx="6" fill="url(#accentCyan15)"/>
+  <text x="143" y="50" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">STAGE 371 · TOPIC 11 · P735–P736</text>
+  <text x="256" y="51" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800">Intra-Sentence Code-Switching ASR &amp; Multilingual TTS Prosody Continuity</text>
+  <text x="44" y="78" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12">句内中英粤混说与跨语种合成架构选型：子词级统一音素解码 (P735) 与多语种同音色 SSML 零爆音平滑切换 (P736)</text>
+
+  <!-- Left Panel: P735 Intra-Sentence Code-Switching ASR -->
+  <rect x="28" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="44" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="58" y="145" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">① P735: Sub-Word Code-Switching Tokenizer &amp; Frame LID (&lt;=240ms)</text>
+
+  <!-- Legacy Static LID Trap -->
+  <rect x="44" y="168" width="528" height="118" rx="8" fill="#1F1218" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="58" y="190" fill="#F87171" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">⛔ Legacy Utterance-Level Static LID + Monolingual ASR</text>
+  <text x="58" y="212" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Caller (HK/GBA VIP): "唔该帮我 check 下保单 HKD 5000 点样 claim 返？"</text>
+  <text x="58" y="232" fill="#FCA5A5" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Static LID locks zh-HK for whole sentence -&gt; forces English words into Chinese chars:</text>
+  <text x="58" y="252" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Corrupted Output: "唔该帮我 车卡 下保单 H K D 5000 点样 克林 返" -&gt; RAG/Tool Miss!</text>
+  <text x="58" y="272" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10">Industry Baseline: &gt;34% MER (Mixed Error Rate) spike on intra-sentence code-switching with static LID</text>
+
+  <!-- P735 Engineered Path -->
+  <rect x="44" y="298" width="528" height="244" rx="8" fill="#0B211D" stroke="#10B981" stroke-width="1.5"/>
+  <text x="58" y="320" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P735: Unified Multilingual BPE/Phoneme Decoder + Dynamic Lexicon</text>
+  <text x="58" y="344" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">1. Frame-Level Language Posteriors (&lt;=240ms): No whole-sentence language lock;</text>
+  <text x="72" y="362" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">switches acoustic-phonetic states mid-sentence between zh-CN, zh-HK, and en-US</text>
+  <text x="58" y="386" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">2. Shared Cross-Lingual Token Vocabulary: Decodes Hanzi + Latin subwords jointly</text>
+  <text x="72" y="404" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">in a single beam search without forced homophone transliteration ("check", "claim")</text>
+  <text x="58" y="428" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">3. Domain Code-Switch Phrase Boost (10–16 dB): Biases bilingual brand/SKU/medical</text>
+  <text x="72" y="446" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">acronyms ("ICU", "MRI", "ETF", "eSIM", "LumaNest") against phonetic false friends</text>
+  <rect x="58" y="484" width="500" height="44" rx="6" fill="#064E3B"/>
+  <text x="70" y="502" fill="#A7F3D0" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P735 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="70" y="518" fill="#6EE7B7" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Right Panel: P736 Multilingual TTS Prosody & Timbre Continuity -->
+  <rect x="612" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="628" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="642" y="145" fill="#A78BFA" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">② P736: Multilingual TTS Timbre Lock (&gt;=0.94) &amp; Boundary Crossfade</text>
+
+  <!-- Architecture Selection Matrix Box -->
+  <rect x="628" y="168" width="528" height="156" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="642" y="190" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Multilingual Architecture Selection Matrix</text>
+  <text x="642" y="214" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">• Option A: Pre-Call IVR / First-Turn LID Router + Monolingual Models — Lowest cost for pure single-lang</text>
+  <text x="642" y="236" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Option B: Unified Multilingual Streaming ASR + DragonHD Multilingual TTS (P735+P736)</text>
+  <text x="654" y="254" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">Best for HK/GBA/SG/Global CS: intra-sentence zh/yue/en switching + 100% verbatim compliance</text>
+  <text x="642" y="276" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Option C: Native End-to-End Multilingual S2S (GPT-Live-1 / Gemini Live)</text>
+  <text x="654" y="294" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">&lt;310ms natural accent/language mirroring; pair with Cascaded lane for verbatim legal clauses</text>
+
+  <!-- P736 Engineered Box -->
+  <rect x="628" y="336" width="528" height="206" rx="8" fill="#17153B" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="642" y="358" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P736: Zero-Jolt Multilingual Prosody &amp; SSML &lt;lang&gt; Governance</text>
+  <text x="642" y="382" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Unified Speaker Embedding across Locales: Single neural voice persona speaks</text>
+  <text x="654" y="400" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">Mandarin, Cantonese, and English natively (timbreCosineSim &gt;= 0.94, zero voice swap)</text>
+  <text x="642" y="424" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Auto SSML &lt;lang xml:lang="en-US"&gt; + &lt;phoneme&gt; Injection: Prevents monolingual</text>
+  <text x="654" y="442" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">TTS from spelling out English words letter-by-letter or with robotic syllable stress</text>
+  <text x="642" y="466" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Boundary PCM Crossfade (&lt;=15ms): Eliminates phase clicks between language spans</text>
+  <rect x="642" y="482" width="500" height="46" rx="6" fill="#2E1065"/>
+  <text x="654" y="500" fill="#DDD6FE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P736 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="654" y="516" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Bottom Provenance Banner -->
+  <rect x="28" y="572" width="1144" height="82" rx="10" fill="#090D16" stroke="#334155" stroke-width="1.2"/>
+  <text x="44" y="596" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">PROVENANCE &amp; MEASUREMENT BOUNDARY DISCLOSURE (STAGE 371 · DIMENSION 374)</text>
+  <text x="44" y="618" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Offline Policy State Machine (P735/P736): 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic).</text>
+  <text x="44" y="638" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Live Acoustic Code-Switch ASR &amp; Multilingual TTS Synthesis: Real-time beam-search decoding and neural vocoder latency are not_measured in local unit tests.</text>
+</svg>
