@@ -1483,6 +1483,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unmuted shadow write webhooks and unbounded canary latency regressions, clamping P95 TTFA regression ceiling to <=150ms and automatic rollback SLA to <=500ms; live shadow RTP fork and router drain latency are not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks cross-call memory privilege poisoning and unverified raw ANI shared-line bleed, clamping privilege fields in memory to 0 and retention TTL to <=90 days; live KV/vector memory store RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "384. [Topic 21: voice-accessibility-disfluency-e911-pidflo-bridge-faq] EAA/ADA Speech Disfluency >=2,200ms Adaptive EOU, Zero Auto-Hangup & <=2 Reprompts to RFC 4103 RTT + Emergency E911/112 <=200ms Zero-Auth Preemption & >=95% PIDF-LO Local PSAP Bridge (P755 / P756 — Stage 381 · 384-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks mid-word stutter cut-offs and 3-strike auto-hangups, widening disfluency EOU window to >=2,200ms and capping voice-only reprompts at <=2 before activating RFC 4103 RTT/keypad; live SIP RTT negotiation latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks KYC interrogation and national-queue misrouting during life-safety emergencies, clamping zero-auth preemption to <=200ms and RFC 6442 PIDF-LO location confidence to >=95%; live ESInet/PSAP trunk setup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

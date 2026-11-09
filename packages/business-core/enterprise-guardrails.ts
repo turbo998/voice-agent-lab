@@ -70453,6 +70453,155 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // ============================================================================
+    // Stage 381 (P755–P756): Topic 21 — EAA/ADA Speech Disfluency Adaptive EOU &
+    // RFC 4103 RTT Fallback + Emergency E911/112 PIDF-LO Zero-Auth PSAP Bridge
+    // ============================================================================
+
+    export interface SpeechDisfluencyAdaptiveEouContext {
+      stutterMidWordCutOffOrThreeStrikeAutoHangupDetected: boolean;
+      disfluencyEouWindowMs: number;
+      maxVoiceOnlyReprompts: number;
+    }
+
+    export interface SpeechDisfluencyAdaptiveEouDecision {
+      violated: boolean;
+      policyId: "P755-EAA-ADA-SPEECH-DISFLUENCY-ADAPTIVE-EOU-AND-RTT-FALLBACK-GUARD";
+      action:
+        | "enforce_disfluency_2200ms_eou_and_rfc4103_rtt_fallback_in_0ms"
+        | "clamp_disfluency_eou_window_and_voice_reprompt_ceiling"
+        | "allow";
+      reason: string;
+      clampedDisfluencyEouWindowMs: number;
+      clampedMaxVoiceOnlyReprompts: number;
+    }
+
+    export function evaluateEaaAdaSpeechDisfluencyAdaptiveEouAndRttFallbackGate(
+      context: SpeechDisfluencyAdaptiveEouContext,
+    ): SpeechDisfluencyAdaptiveEouDecision {
+      const policyId =
+        "P755-EAA-ADA-SPEECH-DISFLUENCY-ADAPTIVE-EOU-AND-RTT-FALLBACK-GUARD" as const;
+      const clampedDisfluencyEouWindowMs = Math.min(
+        Math.max(context.disfluencyEouWindowMs, 2200),
+        4000,
+      );
+      const clampedMaxVoiceOnlyReprompts = Math.min(
+        Math.max(context.maxVoiceOnlyReprompts, 1),
+        2,
+      );
+
+      if (context.stutterMidWordCutOffOrThreeStrikeAutoHangupDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_disfluency_2200ms_eou_and_rfc4103_rtt_fallback_in_0ms",
+          reason:
+            "EAA/ADA Speech Disfluency Adaptive EOU & RTT Fallback Policy Check: pipeline cut off a stuttering/aphasic caller mid-word using a rigid <2,200ms EOU timer or auto-disconnected the call after repeated ASR failures; offline synthetic policy state machine widening disfluency EOU window to >=2,200ms, banning 3-strike auto-hangup, and activating RFC 4103 Real-Time Text / keypad fallback within <=2 reprompts (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIP RFC 4103 RTT negotiation latency not_measured).",
+          clampedDisfluencyEouWindowMs,
+          clampedMaxVoiceOnlyReprompts,
+        };
+      }
+
+      if (
+        context.disfluencyEouWindowMs < 2200 ||
+        context.maxVoiceOnlyReprompts > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_disfluency_eou_window_and_voice_reprompt_ceiling",
+          reason:
+            "Disfluency EOU silence window (<2,200ms synthetic floor) or consecutive voice-only reprompt limit (>2 synthetic ceiling) out of bounds; clamping EOU window to >=2,200ms and voice-only reprompts to <=2.",
+          clampedDisfluencyEouWindowMs,
+          clampedMaxVoiceOnlyReprompts,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: EAA/ADA disfluency EOU window >=2,200ms, zero auto-disconnect, and <=2 reprompts to RFC 4103 RTT fallback verified.",
+        clampedDisfluencyEouWindowMs,
+        clampedMaxVoiceOnlyReprompts,
+      };
+    }
+
+    export interface EmergencyE911PidfloPsapBridgeContext {
+      emergencyKycGateOrMissingPidfloLocationDetected: boolean;
+      emergencyPreemptionBudgetMs: number;
+      minPidfloLocationConfidencePct: number;
+    }
+
+    export interface EmergencyE911PidfloPsapBridgeDecision {
+      violated: boolean;
+      policyId: "P756-EMERGENCY-E911-112-PIDFLO-GEOLOCATION-AND-ZERO-AUTH-PSAP-PREEMPTION-GUARD";
+      action:
+        | "enforce_zero_auth_200ms_emergency_preemption_and_pidflo_psap_bridge_in_0ms"
+        | "clamp_emergency_preemption_budget_and_pidflo_confidence_floor"
+        | "allow";
+      reason: string;
+      clampedEmergencyPreemptionBudgetMs: number;
+      clampedMinPidfloLocationConfidencePct: number;
+    }
+
+    export function evaluateEmergencyE911PidfloGeolocationAndZeroAuthPsapPreemptionGate(
+      context: EmergencyE911PidfloPsapBridgeContext,
+    ): EmergencyE911PidfloPsapBridgeDecision {
+      const policyId =
+        "P756-EMERGENCY-E911-112-PIDFLO-GEOLOCATION-AND-ZERO-AUTH-PSAP-PREEMPTION-GUARD" as const;
+      const clampedEmergencyPreemptionBudgetMs = Math.min(
+        Math.max(context.emergencyPreemptionBudgetMs, 10),
+        200,
+      );
+      const clampedMinPidfloLocationConfidencePct = Math.min(
+        Math.max(context.minPidfloLocationConfidencePct, 95),
+        100,
+      );
+
+      if (context.emergencyKycGateOrMissingPidfloLocationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_zero_auth_200ms_emergency_preemption_and_pidflo_psap_bridge_in_0ms",
+          reason:
+            "Emergency E911/112 PIDF-LO & Zero-Auth PSAP Preemption Policy Check: pipeline demanded KYC/account verification during a life-safety emergency or routed an emergency call without a >=95%-confidence RFC 6442 PIDF-LO geolocation header to the local PSAP; offline synthetic policy state machine enforcing <=200ms zero-auth preemption and >=95% PIDF-LO location confidence (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live ESInet / PSAP trunk setup latency not_measured).",
+          clampedEmergencyPreemptionBudgetMs,
+          clampedMinPidfloLocationConfidencePct,
+        };
+      }
+
+      if (
+        context.emergencyPreemptionBudgetMs > 200 ||
+        context.minPidfloLocationConfidencePct < 95
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_emergency_preemption_budget_and_pidflo_confidence_floor",
+          reason:
+            "Emergency zero-auth preemption budget (>200ms synthetic ceiling) or PIDF-LO location confidence floor (<95% synthetic floor) out of bounds; clamping preemption budget to <=200ms and location confidence to >=95%.",
+          clampedEmergencyPreemptionBudgetMs,
+          clampedMinPidfloLocationConfidencePct,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: <=200ms zero-auth emergency preemption and >=95% RFC 6442 PIDF-LO local PSAP geolocation bridge verified.",
+        clampedEmergencyPreemptionBudgetMs,
+        clampedMinPidfloLocationConfidencePct,
+      };
+    }
+
+
 
 
 

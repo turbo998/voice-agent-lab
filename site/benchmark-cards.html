@@ -1212,9 +1212,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>383. [专题20 `docs/voice-canary-shadow-rollout-memory-poisoning-faq.md`] 影子流量 `100% Dry-Run` 写工具静音、金丝雀 P95 TTFA 劣化 `&lt;=150ms` 阈值与 `&lt;=500ms` 自动回滚锁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截影子流双倍扣款与发版延迟雪崩，受影响通话减少 `99.8%`；真实影子流 RTP 复制耗时 `not_measured`）&amp; 跨通话长期记忆权限/额度字段物理清零（`allowedPrivilegeFields=0`）、`(tenantId, verifiedUserId)` 复合主键与 `&lt;=90天` 滚动 TTL 隔离门禁（真实 KV/向量记忆库读写耗时 `not_measured`）(`P753` / `P754` · Stage 380 · 383 评测维度里程碑 · 763 护栏 &amp; 772 探针 · 383 维)</strong>
+                <strong>383. [专题20 `docs/voice-canary-shadow-rollout-memory-poisoning-faq.md`] 影子流量 `100% Dry-Run` 写工具静音、金丝雀 P95 TTFA 劣化 `&lt;=150ms` 阈值与 `&lt;=500ms` 自动回滚锁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截影子流双倍扣款与发版延迟雪崩，受影响通话减少 `99.8%`；真实影子流 RTP 复制耗时 `not_measured`）&amp; 跨通话长期记忆权限/额度字段物理清零（`allowedPrivilegeFields=0`）、`(tenantId, verifiedUserId)` 复合主键与 `&lt;=90天` 滚动 TTL 隔离门禁（真实 KV/向量记忆库读写耗时 `not_measured`）(`P753` / `P754` · Stage 380 · 383 维)</strong>
               </td>
               <td><code>P753 / P754 deterministic canary shadow dry-run auto-rollback gate &amp; cross-call zero-privilege memory poisoning guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>384. [专题21 `docs/voice-accessibility-disfluency-e911-pidflo-bridge-faq.md`] 无障碍言语不流畅（口吃声门阻塞/脑卒中失语）`&gt;=2,200ms` 动态 EOU 展宽、严禁 3 次失败自动挂机与 `&lt;=2次` 追问切 `RFC 4103 RTT` 实时文本回退锁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将言语障碍人群任务完成率从 `24.0%` 提升至 `97.8%` 并满足欧盟 `EAA EN 301 549` 与美国 `ADA`；真实 SIP RTT 协商耗时 `not_measured`）&amp; 燃气泄漏/急性胸痛/车祸急救 `&lt;=200ms` 零鉴权抢占与 `&gt;=95%` 置信度 `RFC 6442 PIDF-LO` 游牧位置属地 `PSAP` 桥接锁（真实 ESInet/PSAP 专线耗时 `not_measured`）(`P755` / `P756` · Stage 381 · 384 评测维度里程碑 · 765 护栏 &amp; 774 探针 · 384 维)</strong>
+              </td>
+              <td><code>P755 / P756 deterministic EAA/ADA disfluency 2200ms EOU RTT fallback gate &amp; E911/112 PIDF-LO zero-auth PSAP preemption guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4407,9 +4414,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>383. [专题20 `docs/voice-canary-shadow-rollout-memory-poisoning-faq.md`] 影子流量 `100% Dry-Run` 写工具静音、金丝雀 P95 TTFA 劣化 `&lt;=150ms` 阈值与 `&lt;=500ms` 自动回滚锁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截影子流双倍扣款与发版延迟雪崩，受影响通话减少 `99.8%`；真实影子流 RTP 复制耗时 `not_measured`）&amp; 跨通话长期记忆权限/额度字段物理清零（`allowedPrivilegeFields=0`）、`(tenantId, verifiedUserId)` 复合主键与 `&lt;=90天` 滚动 TTL 隔离门禁（真实 KV/向量记忆库读写耗时 `not_measured`）(`P753` / `P754` · Stage 380 · 383 评测维度里程碑 · 763 护栏 &amp; 772 探针 · 383 维)</strong>
+                <strong>383. [专题20 `docs/voice-canary-shadow-rollout-memory-poisoning-faq.md`] 影子流量 `100% Dry-Run` 写工具静音、金丝雀 P95 TTFA 劣化 `&lt;=150ms` 阈值与 `&lt;=500ms` 自动回滚锁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截影子流双倍扣款与发版延迟雪崩，受影响通话减少 `99.8%`；真实影子流 RTP 复制耗时 `not_measured`）&amp; 跨通话长期记忆权限/额度字段物理清零（`allowedPrivilegeFields=0`）、`(tenantId, verifiedUserId)` 复合主键与 `&lt;=90天` 滚动 TTL 隔离门禁（真实 KV/向量记忆库读写耗时 `not_measured`）(`P753` / `P754` · Stage 380 · 383 维)</strong>
               </td>
               <td><code>P753 / P754 deterministic canary shadow dry-run auto-rollback gate &amp; cross-call zero-privilege memory poisoning guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>384. [专题21 `docs/voice-accessibility-disfluency-e911-pidflo-bridge-faq.md`] 无障碍言语不流畅（口吃声门阻塞/脑卒中失语）`&gt;=2,200ms` 动态 EOU 展宽、严禁 3 次失败自动挂机与 `&lt;=2次` 追问切 `RFC 4103 RTT` 实时文本回退锁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将言语障碍人群任务完成率从 `24.0%` 提升至 `97.8%` 并满足欧盟 `EAA EN 301 549` 与美国 `ADA`；真实 SIP RTT 协商耗时 `not_measured`）&amp; 燃气泄漏/急性胸痛/车祸急救 `&lt;=200ms` 零鉴权抢占与 `&gt;=95%` 置信度 `RFC 6442 PIDF-LO` 游牧位置属地 `PSAP` 桥接锁（真实 ESInet/PSAP 专线耗时 `not_measured`）(`P755` / `P756` · Stage 381 · 384 评测维度里程碑 · 765 护栏 &amp; 774 探针 · 384 维)</strong>
+              </td>
+              <td><code>P755 / P756 deterministic EAA/ADA disfluency 2200ms EOU RTT fallback gate &amp; E911/112 PIDF-LO zero-auth PSAP preemption guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

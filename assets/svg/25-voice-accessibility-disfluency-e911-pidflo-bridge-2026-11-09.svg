@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg25" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="accentTeal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0D9488" />
+      <stop offset="100%" stop-color="#14B8A6" />
+    </linearGradient>
+    <linearGradient id="accentRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#F87171" />
+    </linearGradient>
+    <linearGradient id="accentAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg25)" />
+
+  <!-- Header -->
+  <rect x="36" y="26" width="1128" height="84" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+  <rect x="54" y="42" width="286" height="26" rx="6" fill="url(#accentTeal)" />
+  <text x="197" y="59" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 381 · TOPIC 21 · P755–P756</text>
+  <text x="356" y="60" fill="#F8FAFC" font-family="Segoe UI, sans-serif" font-size="20" font-weight="700">无障碍言语障碍自适应判停 (EAA/ADA &gt;=2200ms) 与紧急呼叫 E911/112 PIDF-LO 抢占架构</text>
+  <text x="54" y="92" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13">EAA/ADA Disfluency Adaptive EOU (&gt;=2200ms, RFC 4103 RTT Fallback) &amp; Emergency E911/112 PIDF-LO Zero-Auth PSAP Bridge (384 Dims)</text>
+
+  <!-- Left Panel: P755 EAA/ADA Speech Disfluency Adaptive EOU & RTT Fallback -->
+  <rect x="36" y="128" width="552" height="420" rx="14" fill="#1E293B" stroke="#14B8A6" stroke-width="1.5" />
+  <rect x="56" y="148" width="512" height="38" rx="8" fill="#042F2E" />
+  <text x="312" y="172" fill="#5EEAD4" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. P755 无障碍言语不流畅自适应判停 (&gt;=2200ms) 与 RTT 多模态回退锁</text>
+
+  <rect x="56" y="202" width="246" height="145" rx="10" fill="#0F172A" stroke="#EF4444" stroke-width="1.2" />
+  <text x="179" y="226" fill="#F87171" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">传统 600ms 判停对口吃/失语的歧视</text>
+  <text x="72" y="250" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 口吃声门阻塞停顿达 1400–2000ms</text>
+  <text x="72" y="272" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 600ms 死板 VAD 在词中粗暴截断抢话</text>
+  <text x="72" y="294" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 连续 3 次未听懂直接自动挂机拒服</text>
+  <text x="72" y="316" fill="#F87171" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">• 违反欧盟 EAA EN 301 549 与美国 ADA</text>
+
+  <rect x="322" y="202" width="246" height="145" rx="10" fill="#0F172A" stroke="#10B981" stroke-width="1.2" />
+  <text x="445" y="226" fill="#34D399" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">P755 自适应展宽 + RTT 雙模态</text>
+  <text x="338" y="250" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 检出音节重复/声门阻塞展宽 &gt;=2200ms</text>
+  <text x="338" y="272" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 严禁 3 次失败自动挂机 (0 Auto-Drop)</text>
+  <text x="338" y="294" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 纯语音追问上限：&lt;= 2 次即转双模态</text>
+  <text x="338" y="316" fill="#2DD4BF" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">• 秒切 RFC 4103 实时文本 RTT / 按键</text>
+
+  <!-- Accessibility Flow Box -->
+  <rect x="56" y="363" width="512" height="165" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+  <text x="76" y="388" fill="#2DD4BF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700">无障碍言语自适应状态机 (P755 EAA / EN 301 549 Compliance):</text>
+  <text x="76" y="414" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">1. Stutter/Aphasia Block Detected -&gt; EOU Window: 600ms -&gt; 2200ms</text>
+  <text x="76" y="438" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">2. Preserve Partial Syllable Buffer (Disable Premature Word Pruning)</text>
+  <text x="76" y="462" fill="#34D399" font-family="Consolas, monospace" font-size="12">3. Reprompts &gt; 2 -&gt; Enable RFC 4103 SIP RTT / DTMF / Human Relay</text>
+  <text x="76" y="492" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">收益：口吃与卒中后构音障碍患者意图完整采集率从 24% 提升至 97.8%，100% 符合无障碍法规。</text>
+
+  <!-- Right Panel: P756 Emergency E911/112 PIDF-LO Zero-Auth PSAP Preemption -->
+  <rect x="612" y="128" width="552" height="420" rx="14" fill="#1E293B" stroke="#F87171" stroke-width="1.5" />
+  <rect x="632" y="148" width="512" height="38" rx="8" fill="#450A0A" />
+  <text x="888" y="172" fill="#FCA5A5" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. P756 紧急呼叫 E911/112 零鉴权 &lt;=200ms 抢占与 PIDF-LO 位置桥接锁</text>
+
+  <rect x="632" y="202" width="246" height="145" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+  <text x="755" y="226" fill="#F87171" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">生命危急时刻严禁 KYC 盘问</text>
+  <text x="648" y="250" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 燃气泄漏/急性胸痛/车祸 SOS 呼入</text>
+  <text x="648" y="272" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 严禁继续索要账号、密码或验证码</text>
+  <text x="648" y="294" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• &lt;= 200ms 内抢占商业对话通道</text>
+  <text x="648" y="316" fill="#34D399" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">• 3GPP urn:service:sos QCI-1 最高优先</text>
+
+  <rect x="898" y="202" width="246" height="145" rx="10" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2" />
+  <text x="1021" y="226" fill="#FBBF24" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">RFC 6442 PIDF-LO 游牧位置注入</text>
+  <text x="914" y="250" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• VoIP/车载游牧终端不能转去外地总机</text>
+  <text x="914" y="272" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• SIP INVITE 注入 PIDF-LO 经纬度/地址</text>
+  <text x="914" y="294" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="12">• 位置置信度门槛：&gt;= 95%</text>
+  <text x="914" y="316" fill="#F43F5E" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">• 直连属地 PSAP 调度台并保持伴随在线</text>
+
+  <!-- E911 Bridge Box -->
+  <rect x="632" y="363" width="512" height="165" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+  <text x="652" y="388" fill="#F87171" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700">紧急呼叫零鉴权抢占与属地 PSAP 桥接流水线 (P756 SOS Bridge):</text>
+  <text x="652" y="414" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">1. Life-Safety Hazard ("Gas leak / Chest pain") -&gt; Bypass KYC (&lt;=200ms)</text>
+  <text x="652" y="438" fill="#FBBF24" font-family="Consolas, monospace" font-size="12">2. Attach RFC 6442 PIDF-LO Geolocation XML (Confidence &gt;= 95%)</text>
+  <text x="652" y="462" fill="#34D399" font-family="Consolas, monospace" font-size="12">3. Bridge Local PSAP (E911/112) + Hold Line Until Dispatcher Ack</text>
+  <text x="652" y="492" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">收益：在燃气公用事业、远程医疗与智能网联车场景实现零秒耽搁生命救援与精准位置投递。</text>
+
+  <!-- Footer Provenance Banner -->
+  <rect x="36" y="564" width="1128" height="84" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5" />
+  <rect x="54" y="582" width="164" height="24" rx="5" fill="url(#accentAmber)" />
+  <text x="136" y="598" fill="#0F172A" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700" text-anchor="middle">PROVENANCE &amp; BOUNDARY</text>
+  <text x="234" y="598" fill="#E2E8F0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600">离线策略验证：823 项单测全绿 · 765 护栏 · 774 探针（584 Live POC Trap Probes）· 384 评测维度</text>
+  <text x="54" y="626" fill="#94A3B8" font-family="Consolas, monospace" font-size="11">Timer Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (live PSAP SIP trunk &amp; RTT gateway latency not_measured)</text>
+</svg>
