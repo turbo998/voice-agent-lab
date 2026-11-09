@@ -1495,6 +1495,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks streaming S2S negation inversion and 15mg/50mg dosage drift, clamping Wait-k to <=3 tokens and clause lag to <=650ms while failing closed to bilingual clarification readback; live cross-lingual neural MT decoding latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks cross-tenant custom vocabulary bleed and over-boosted stop-word hallucinations, clamping shallow-fusion boost within [1.0, 4.5] and minimum phonetic edit distance to >=2; live ASR WFST lattice expansion latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "386. [Topic 23: voice-omnichannel-cas-concurrency-ultrasonic-wallet-guard-faq] Omnichannel Voice + Mobile App If-Match CAS Concurrency Lock, <=150ms Event Sync & >=128-Bit Idempotency + <=8,000 Hz Ultrasonic Low-Pass Filter, System-Prompt Canary & <=$2.50 S2S Cost Breaker (P759 / P760 — Stage 383 · 386-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks stale-version voice writes and double charges when a caller modifies their order in the mobile app mid-call, clamping cross-channel sync lag to <=150ms and shared idempotency entropy to >=128 bits; live cross-channel event bus RTT is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks >16kHz DolphinAttack ultrasonic injection, system-prompt canary exfiltration, and runaway S2S billing, clamping low-pass cutoff to <=8,000 Hz and per-session audio spend to <=$2.50; live hardware DSP FIR filter latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

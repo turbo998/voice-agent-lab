@@ -70736,6 +70736,147 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface OmnichannelVoiceAppCasConcurrencyContext {
+      staleVoiceStateVersionOrDuplicateMutationDetected: boolean;
+      maxCrossChannelSyncLagMs: number;
+      minIdempotencyKeyEntropyBits: number;
+    }
+
+    export interface OmnichannelVoiceAppCasConcurrencyDecision {
+      violated: boolean;
+      policyId: "P759-OMNICHANNEL-VOICE-APP-CAS-OPTIMISTIC-CONCURRENCY-AND-IDEMPOTENCY-GUARD";
+      action:
+        | "omnichannel_cas_version_conflict_or_double_charge_blocked"
+        | "clamp_cross_channel_sync_lag_and_idempotency_entropy"
+        | "allow";
+      reason: string;
+      clampedMaxCrossChannelSyncLagMs: number;
+      clampedMinIdempotencyKeyEntropyBits: number;
+    }
+
+    export function evaluateOmnichannelVoiceAppCasOptimisticConcurrencyAndDoubleChargeGate(
+      context: OmnichannelVoiceAppCasConcurrencyContext,
+    ): OmnichannelVoiceAppCasConcurrencyDecision {
+      const policyId =
+        "P759-OMNICHANNEL-VOICE-APP-CAS-OPTIMISTIC-CONCURRENCY-AND-IDEMPOTENCY-GUARD" as const;
+      const clampedMaxCrossChannelSyncLagMs = Math.min(
+        Math.max(context.maxCrossChannelSyncLagMs, 20),
+        150,
+      );
+      const clampedMinIdempotencyKeyEntropyBits = Math.min(
+        Math.max(context.minIdempotencyKeyEntropyBits, 128),
+        256,
+      );
+
+      if (context.staleVoiceStateVersionOrDuplicateMutationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "omnichannel_cas_version_conflict_or_double_charge_blocked",
+          reason:
+            "Omnichannel Voice + Mobile App CAS Optimistic Concurrency Policy Check: voice agent attempted to commit an order/payment mutation using a stale stateVersion already modified concurrently by the caller in the mobile app; offline synthetic policy state machine blocking duplicate charge/overwrite, enforcing If-Match CAS version parity, <=150ms cross-channel event sync, and >=128-bit shared idempotency keys (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live cross-channel Redis/Kafka event bus RTT not_measured).",
+          clampedMaxCrossChannelSyncLagMs,
+          clampedMinIdempotencyKeyEntropyBits,
+        };
+      }
+
+      if (
+        context.maxCrossChannelSyncLagMs > 150 ||
+        context.minIdempotencyKeyEntropyBits < 128
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_cross_channel_sync_lag_and_idempotency_entropy",
+          reason:
+            "Cross-channel event sync lag (>150ms synthetic ceiling) or idempotency key entropy (<128 bits synthetic floor) out of bounds; clamping sync lag to <=150ms and idempotency key entropy to >=128 bits.",
+          clampedMaxCrossChannelSyncLagMs,
+          clampedMinIdempotencyKeyEntropyBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: If-Match CAS version parity, <=150ms cross-channel state sync, and >=128-bit shared idempotency key verified.",
+        clampedMaxCrossChannelSyncLagMs,
+        clampedMinIdempotencyKeyEntropyBits,
+      };
+    }
+
+    export interface UltrasonicFilterAndDenialOfWalletCanaryContext {
+      ultrasonicCarrierOrSystemPromptCanaryLeakDetected: boolean;
+      ultrasonicLowPassCutoffHz: number;
+      maxSessionAudioCostUsd: number;
+    }
+
+    export interface UltrasonicFilterAndDenialOfWalletCanaryDecision {
+      violated: boolean;
+      policyId: "P760-ULTRASONIC-LOWPASS-FILTER-AND-S2S-DENIAL-OF-WALLET-CANARY-GUARD";
+      action:
+        | "ultrasonic_injection_or_denial_of_wallet_canary_blocked"
+        | "clamp_ultrasonic_lowpass_cutoff_and_session_cost_cap"
+        | "allow";
+      reason: string;
+      clampedUltrasonicLowPassCutoffHz: number;
+      clampedMaxSessionAudioCostUsd: number;
+    }
+
+    export function evaluateUltrasonicSubliminalFilterAndS2sDenialOfWalletCanaryGate(
+      context: UltrasonicFilterAndDenialOfWalletCanaryContext,
+    ): UltrasonicFilterAndDenialOfWalletCanaryDecision {
+      const policyId =
+        "P760-ULTRASONIC-LOWPASS-FILTER-AND-S2S-DENIAL-OF-WALLET-CANARY-GUARD" as const;
+      const clampedUltrasonicLowPassCutoffHz = Math.min(
+        Math.max(context.ultrasonicLowPassCutoffHz, 3400),
+        8000,
+      );
+      const clampedMaxSessionAudioCostUsd = Math.min(
+        Math.max(context.maxSessionAudioCostUsd, 0.25),
+        2.5,
+      );
+
+      if (context.ultrasonicCarrierOrSystemPromptCanaryLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "ultrasonic_injection_or_denial_of_wallet_canary_blocked",
+          reason:
+            "Ultrasonic Subliminal Injection & S2S Denial-of-Wallet Canary Policy Check: ingress detected >16kHz modulated ultrasonic carrier energy (DolphinAttack) or egress matched a confidential system-prompt canary token / runaway S2S billing loop; offline synthetic policy state machine enforcing <=8,000 Hz brick-wall low-pass filtering, zero-ms canary mute, and <=$2.50 per-session S2S audio spend cap (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live hardware DSP FIR filter latency not_measured).",
+          clampedUltrasonicLowPassCutoffHz,
+          clampedMaxSessionAudioCostUsd,
+        };
+      }
+
+      if (
+        context.ultrasonicLowPassCutoffHz > 8000 ||
+        context.maxSessionAudioCostUsd > 2.5
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ultrasonic_lowpass_cutoff_and_session_cost_cap",
+          reason:
+            "Acoustic low-pass filter cutoff (>8,000 Hz synthetic ceiling) or per-session S2S audio spend cap (>$2.50 USD synthetic ceiling) out of bounds; clamping low-pass cutoff to <=8,000 Hz and session audio spend cap to <=$2.50.",
+          clampedUltrasonicLowPassCutoffHz,
+          clampedMaxSessionAudioCostUsd,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: <=8,000 Hz anti-ultrasonic low-pass cutoff, zero system-prompt canary leakage, and <=$2.50 per-session S2S cost cap verified.",
+        clampedUltrasonicLowPassCutoffHz,
+        clampedMaxSessionAudioCostUsd,
+      };
+    }
+
+
 
 
 
