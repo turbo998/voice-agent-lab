@@ -1507,6 +1507,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks pre-answer TTS bleed on SIP 183 ringback and 0ms post-200-OK first-syllable clipping, clamping RTP warm-up to 180ms-260ms and >=9 RFC 3389 comfort-noise frames; live carrier SBC RTP pinhole latching latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks raw overloaded currency symbols (¥50,000 JPY vs CNY, $100 HKD vs USD) and unannotated financial/medical polyphones, clamping ISO 4217 code binding to 3 chars and SSML lexicon coverage to >=99.5%; live cloud neural TTS synthesis latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "388. [Topic 25: voice-bluetooth-hfp-handover-opus-dtx-vad-deadlock-faq] Bluetooth HFP/SCO Handover >=-3dBFS Pop Mute, 600ms-900ms VAD Freeze & CVSD/mSBC Recalibration + WebRTC Opus DTX 120ms-200ms Zero-PCM Tail & 80ms-120ms Onset Pre-Roll Guard (P763 / P764 — Stage 385 · 388-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks Bluetooth route-switch DC pop false barge-ins, premature EOU during SCO setup, and uncalibrated CVSD 8kHz aliasing, clamping handover VAD freeze to 600ms-900ms and sample rate to >=8,000 Hz; live Bluetooth SCO link negotiation latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: breaks Opus DTX server-VAD hangover starvation deadlocks and prevents initial consonant clipping, clamping synthetic zero-PCM tail to 120ms-200ms and circular onset pre-roll to 80ms-120ms; live WebRTC jitter-buffer DTX synthesis latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

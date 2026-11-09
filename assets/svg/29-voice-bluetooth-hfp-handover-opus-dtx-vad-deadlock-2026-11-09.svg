@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad29" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentBlue29" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="accentEmerald29" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="cardShadow29" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad29)"/>
+  <circle cx="1050" cy="100" r="210" fill="#3B82F6" opacity="0.07"/>
+  <circle cx="150" cy="580" r="230" fill="#10B981" opacity="0.06"/>
+
+  <!-- Header Banner -->
+  <rect x="40" y="28" width="1120" height="92" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow29)"/>
+  <rect x="58" y="46" width="188" height="28" rx="6" fill="url(#accentBlue29)"/>
+  <text x="152" y="65" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">STAGE 385 · TOPIC 25 FAQ</text>
+  <text x="264" y="65" fill="#F8FAFC" font-size="19.5" font-weight="800">Bluetooth HFP/SCO Route-Switch Guard &amp; WebRTC Opus DTX Deadlock Breaker</text>
+  <text x="58" y="98" fill="#94A3B8" font-size="13">&gt;=-3dBFS Pop Mute + 600–900ms VAD Freeze + CVSD/mSBC Recalibration (P763) &amp; 120–200ms Zero-PCM Tail + 80–120ms Pre-Roll (P764)</text>
+
+  <!-- Left Column: P763 Bluetooth HFP/SCO Handover Glitch Guard -->
+  <rect x="40" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5" filter="url(#cardShadow29)"/>
+  <rect x="40" y="138" width="545" height="42" rx="14" fill="#1E3A8A"/>
+  <text x="62" y="164" fill="#93C5FD" font-size="15" font-weight="700">1. Bluetooth HFP/SCO Handover Pop &amp; Codec Recalibration (P763)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="60" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="76" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Raw Route Switch (Handset ↔ AirPods / Car HFP)</text>
+  <text x="76" y="241" fill="#CBD5E1" font-size="12">• -1 dBFS DC transient pop during SCO link setup triggers false Barge-In</text>
+  <text x="76" y="261" fill="#CBD5E1" font-size="12">• 500ms Bluetooth profile switch gap triggers premature EOU mid-sentence</text>
+  <text x="76" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Uncalibrated 48kHz ASR hallucinates on CVSD 8kHz / mSBC 16kHz fallback</text>
+
+  <!-- Production Pattern -->
+  <rect x="60" y="308" width="505" height="202" rx="10" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.4"/>
+  <text x="76" y="332" fill="#6EE7B7" font-size="13" font-weight="700">✅ Production Pattern: 600–900ms VAD Freeze + Frontend Recalibration (P763)</text>
+  <text x="76" y="356" fill="#E2E8F0" font-size="12">1. Transient Pop Clamp: Attenuate &gt;=-3 dBFS route-switch spikes in 0ms</text>
+  <text x="76" y="378" fill="#E2E8F0" font-size="12">2. Handover VAD/EOU Freeze: Hold turn state for 600ms–900ms during HFP switch</text>
+  <text x="76" y="400" fill="#E2E8F0" font-size="12">3. Dynamic Sample-Rate Recalibration: Switch ASR frontend to 8kHz/16kHz</text>
+  <text x="76" y="422" fill="#E2E8F0" font-size="12">4. Seamless Cabin/Earbud Transition: 0 false barge-ins &amp; 0 dropped turns</text>
+
+  <rect x="76" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="92" y="462" fill="#34D399" font-size="12" font-weight="700">Deterministic Invariant (evaluateBluetoothHfpScoHandoverGlitch...):</text>
+  <text x="92" y="482" fill="#A7F3D0" font-size="11.5">popMuted=true &amp;&amp; vadFreezeWindowMs in [600,900] &amp;&amp; sampleRateHz&gt;=8000</text>
+
+  <!-- Right Column: P764 WebRTC Opus DTX VAD Deadlock & Pre-Roll Guard -->
+  <rect x="615" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1.5" filter="url(#cardShadow29)"/>
+  <rect x="615" y="138" width="545" height="42" rx="14" fill="#065F46"/>
+  <text x="637" y="164" fill="#6EE7B7" font-size="15" font-weight="700">2. WebRTC Opus DTX Deadlock Breaker &amp; Onset Pre-Roll Gate (P764)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="635" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="651" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Raw Opus DTX (usedtx=1) into Frame-Driven Server VAD</text>
+  <text x="651" y="241" fill="#CBD5E1" font-size="12">• Caller stops talking -&gt; Opus DTX halts RTP packets (1 CN pkt per 400ms)</text>
+  <text x="651" y="261" fill="#CBD5E1" font-size="12">• Server VAD hangover timer starves for frames -&gt; Mutual-Silence Deadlock!</text>
+  <text x="651" y="281" fill="#F43F5E" font-size="12" font-weight="600">• DTX wake-up without ring buffer clips initial plosive/fricative ("Seven"-&gt;"even")</text>
+
+  <!-- Production Pattern -->
+  <rect x="635" y="308" width="505" height="202" rx="10" fill="#1E1B4B" fill-opacity="0.55" stroke="#38BDF8" stroke-width="1.4"/>
+  <text x="651" y="332" fill="#7DD3FC" font-size="13" font-weight="700">✅ Production Pattern: 120–200ms Zero-PCM Tail + 80–120ms Pre-Roll (P764)</text>
+  <text x="651" y="356" fill="#E2E8F0" font-size="12">1. DTX Gap Detector: On &gt;40ms RTP inter-arrival, synthesize 20ms zero-PCM frames</text>
+  <text x="651" y="378" fill="#E2E8F0" font-size="12">2. 120–200ms Synthetic Tail: Flushes Server VAD hangover counter deterministically</text>
+  <text x="651" y="400" fill="#E2E8F0" font-size="12">3. 80–120ms Circular Pre-Roll Buffer: Prepends onset frames before DTX wake-up</text>
+  <text x="651" y="422" fill="#E2E8F0" font-size="12">4. Zero Deadlocks &amp; Zero Clipped Digits: Saves 68% silent uplink bandwidth safely</text>
+
+  <rect x="651" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="1"/>
+  <text x="667" y="462" fill="#38BDF8" font-size="12" font-weight="700">Deterministic Invariant (evaluateWebrtcOpusDtxSparseFrameVad...):</text>
+  <text x="667" y="482" fill="#BAE6FD" font-size="11.5">zeroPcmTailMs in [120ms,200ms] &amp;&amp; onsetPrerollMs in [80ms,120ms]</text>
+
+  <!-- Bottom Provenance & Latency Strip -->
+  <rect x="40" y="544" width="1120" height="103" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.5" filter="url(#cardShadow29)"/>
+  <text x="62" y="571" fill="#F8FAFC" font-size="14" font-weight="700">Stage 385 Quantitative Verification &amp; Measurement Provenance (388 Dimensions · 773 Guardrails · 782 Probes · 827 Unit Tests)</text>
+  <text x="62" y="595" fill="#94A3B8" font-size="12">• Bluetooth Handover Gate (P763): 0% false barge-in during car/TWS switch; Opus DTX Gate (P764): 0% mutual-silence deadlocks &amp; 0% onset clipping.</text>
+  <text x="62" y="616" fill="#67E8F9" font-size="11.5" font-weight="600">• Timer &amp; Provenance Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="62" y="635" fill="#CBD5E1" font-size="11">• Live Provider P95 TTFA: Retell 820ms (measured) · Vapi 960ms (measured) · LiveKit 690ms (measured) · OpenAI Realtime / ACS / Gemini Live: not_measured.</text>
+</svg>

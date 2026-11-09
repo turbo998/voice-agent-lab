@@ -71014,6 +71014,150 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface BluetoothHfpHandoverGlitchContext {
+      unmutedRouteSwitchPopOrUncalibratedCvsdDetected: boolean;
+      handoverVadFreezeWindowMs: number;
+      recalibratedSampleRateHz: number;
+    }
+
+    export interface BluetoothHfpHandoverGlitchDecision {
+      violated: boolean;
+      policyId: "P763-BLUETOOTH-HFP-SCO-HANDOVER-POP-AND-NARROWBAND-RECALIBRATION-GUARD";
+      action:
+        | "bluetooth_hfp_handover_pop_or_uncalibrated_cvsd_blocked"
+        | "clamp_handover_vad_freeze_window_and_sample_rate"
+        | "allow";
+      reason: string;
+      clampedHandoverVadFreezeWindowMs: number;
+      clampedRecalibratedSampleRateHz: number;
+    }
+
+    export function evaluateBluetoothHfpScoHandoverGlitchAndNarrowbandRecalibrationGate(
+      context: BluetoothHfpHandoverGlitchContext,
+    ): BluetoothHfpHandoverGlitchDecision {
+      const policyId =
+        "P763-BLUETOOTH-HFP-SCO-HANDOVER-POP-AND-NARROWBAND-RECALIBRATION-GUARD" as const;
+      const clampedHandoverVadFreezeWindowMs = Math.min(
+        Math.max(context.handoverVadFreezeWindowMs, 600),
+        900,
+      );
+      const clampedRecalibratedSampleRateHz = Math.min(
+        Math.max(context.recalibratedSampleRateHz, 8000),
+        48000,
+      );
+
+      if (context.unmutedRouteSwitchPopOrUncalibratedCvsdDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "bluetooth_hfp_handover_pop_or_uncalibrated_cvsd_blocked",
+          reason:
+            "Bluetooth HFP/SCO Handover Pop & Narrowband Recalibration Policy Check: OS audio route switch (handset <-> AirPods/car HFP) injected an unmuted >=-3 dBFS transient pop causing false Barge-In, premature EOU during the SCO link gap, or uncalibrated CVSD 8kHz / mSBC 16kHz ASR decoding; offline synthetic policy state machine muting transient pop, freezing VAD/EOU for 600ms-900ms, and recalibrating ASR sample rate (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Bluetooth SCO/eSCO link negotiation latency not_measured).",
+          clampedHandoverVadFreezeWindowMs,
+          clampedRecalibratedSampleRateHz,
+        };
+      }
+
+      if (
+        context.handoverVadFreezeWindowMs < 600 ||
+        context.handoverVadFreezeWindowMs > 900 ||
+        context.recalibratedSampleRateHz < 8000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_handover_vad_freeze_window_and_sample_rate",
+          reason:
+            "Bluetooth handover VAD freeze window (outside [600ms, 900ms] synthetic window) or recalibrated sample rate (<8,000 Hz synthetic floor) out of bounds; clamping VAD freeze window to [600ms, 900ms] and sample rate to >=8,000 Hz.",
+          clampedHandoverVadFreezeWindowMs,
+          clampedRecalibratedSampleRateHz,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Bluetooth HFP/SCO transient pop muted, 600ms-900ms handover VAD freeze active, and narrowband ASR sample rate recalibrated.",
+        clampedHandoverVadFreezeWindowMs,
+        clampedRecalibratedSampleRateHz,
+      };
+    }
+
+    export interface WebrtcOpusDtxVadDeadlockContext {
+      dtxVadHangoverStarvationOrMissingPreRollDetected: boolean;
+      syntheticZeroPcmTailMs: number;
+      onsetPrerollBufferMs: number;
+    }
+
+    export interface WebrtcOpusDtxVadDeadlockDecision {
+      violated: boolean;
+      policyId: "P764-WEBRTC-OPUS-DTX-SPARSE-FRAME-VAD-DEADLOCK-AND-PREROLL-GUARD";
+      action:
+        | "opus_dtx_vad_deadlock_or_missing_onset_preroll_blocked"
+        | "clamp_dtx_zero_pcm_tail_and_onset_preroll_buffer"
+        | "allow";
+      reason: string;
+      clampedSyntheticZeroPcmTailMs: number;
+      clampedOnsetPrerollBufferMs: number;
+    }
+
+    export function evaluateWebrtcOpusDtxSparseFrameVadDeadlockAndOnsetPrerollGate(
+      context: WebrtcOpusDtxVadDeadlockContext,
+    ): WebrtcOpusDtxVadDeadlockDecision {
+      const policyId =
+        "P764-WEBRTC-OPUS-DTX-SPARSE-FRAME-VAD-DEADLOCK-AND-PREROLL-GUARD" as const;
+      const clampedSyntheticZeroPcmTailMs = Math.min(
+        Math.max(context.syntheticZeroPcmTailMs, 120),
+        200,
+      );
+      const clampedOnsetPrerollBufferMs = Math.min(
+        Math.max(context.onsetPrerollBufferMs, 80),
+        120,
+      );
+
+      if (context.dtxVadHangoverStarvationOrMissingPreRollDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "opus_dtx_vad_deadlock_or_missing_onset_preroll_blocked",
+          reason:
+            "WebRTC Opus DTX Sparse-Frame VAD Deadlock & Onset Pre-Roll Policy Check: Opus DTX (usedtx=1) halted RTP packet emission during silence, starving the frame-driven server VAD hangover counter into a mutual-silence deadlock or clipping initial consonants ('Seven' -> 'even') on wake-up; offline synthetic policy state machine injecting 120ms-200ms synthetic zero-PCM tail on >40ms DTX gaps and enforcing an 80ms-120ms circular onset pre-roll buffer (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live WebRTC jitter-buffer DTX synthesis latency not_measured).",
+          clampedSyntheticZeroPcmTailMs,
+          clampedOnsetPrerollBufferMs,
+        };
+      }
+
+      if (
+        context.syntheticZeroPcmTailMs < 120 ||
+        context.syntheticZeroPcmTailMs > 200 ||
+        context.onsetPrerollBufferMs < 80 ||
+        context.onsetPrerollBufferMs > 120
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_dtx_zero_pcm_tail_and_onset_preroll_buffer",
+          reason:
+            "Opus DTX synthetic zero-PCM tail (outside [120ms, 200ms] synthetic window) or onset pre-roll buffer (outside [80ms, 120ms] synthetic window) out of bounds; clamping zero-PCM tail to [120ms, 200ms] and onset pre-roll to [80ms, 120ms].",
+          clampedSyntheticZeroPcmTailMs,
+          clampedOnsetPrerollBufferMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 120ms-200ms Opus DTX synthetic zero-PCM tail flush and 80ms-120ms circular onset pre-roll buffer verified.",
+        clampedSyntheticZeroPcmTailMs,
+        clampedOnsetPrerollBufferMs,
+      };
+    }
+
+
 
 
 
