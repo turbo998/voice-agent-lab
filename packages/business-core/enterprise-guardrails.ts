@@ -70008,6 +70008,156 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // ============================================================================
+    // Stage 378 (P749–P750): Topic 18 — Multi-Agent Voice Swarm Single Front-Stage
+    // Persona & Ping-Pong Loop Guard + Sub-Agent Least-Privilege Taint Fence
+    // ============================================================================
+
+    export interface VoiceSwarmFrontstageAndLoopContext {
+      multiPersonaAudioTakeoverOrCyclicPingpongLoopDetected: boolean;
+      maxSubagentHopsPerTurn: number;
+      subagentRpcTimeoutMs: number;
+    }
+
+    export interface VoiceSwarmFrontstageAndLoopDecision {
+      violated: boolean;
+      policyId: "P749-VOICE-SWARM-SINGLE-FRONTSTAGE-PERSONA-AND-PINGPONG-LOOP-GUARD";
+      action:
+        | "enforce_single_frontstage_persona_and_abort_pingpong_loop_in_0ms"
+        | "clamp_subagent_hop_limit_and_rpc_timeout_budget"
+        | "allow";
+      reason: string;
+      clampedMaxSubagentHopsPerTurn: number;
+      clampedSubagentRpcTimeoutMs: number;
+    }
+
+    export function evaluateVoiceSwarmSingleFrontstagePersonaAndPingpongLoopGate(
+      context: VoiceSwarmFrontstageAndLoopContext,
+    ): VoiceSwarmFrontstageAndLoopDecision {
+      const policyId =
+        "P749-VOICE-SWARM-SINGLE-FRONTSTAGE-PERSONA-AND-PINGPONG-LOOP-GUARD" as const;
+      const clampedMaxSubagentHopsPerTurn = Math.min(
+        Math.max(context.maxSubagentHopsPerTurn, 1),
+        2,
+      );
+      const clampedSubagentRpcTimeoutMs = Math.min(
+        Math.max(context.subagentRpcTimeoutMs, 100),
+        650,
+      );
+
+      if (context.multiPersonaAudioTakeoverOrCyclicPingpongLoopDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_single_frontstage_persona_and_abort_pingpong_loop_in_0ms",
+          reason:
+            "Multi-Agent Voice Swarm Front-Stage Persona & Ping-Pong Loop Policy Check: sub-agents attempted direct peer-to-peer audio stream takeover (causing voice-timbre switching and handoff dead air) or entered an A->B->A cyclic delegation loop; offline synthetic policy state machine locking a single front-stage voice host, clamping delegation hops to <=2 per turn (<=650ms RPC budget), and breaking cyclic handoffs (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live inter-agent RPC network RTT not_measured).",
+          clampedMaxSubagentHopsPerTurn,
+          clampedSubagentRpcTimeoutMs,
+        };
+      }
+
+      if (
+        context.maxSubagentHopsPerTurn > 2 ||
+        context.subagentRpcTimeoutMs > 650
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_subagent_hop_limit_and_rpc_timeout_budget",
+          reason:
+            "Per-turn sub-agent delegation hops (>2 hops synthetic ceiling) or headless sub-agent RPC timeout (>650ms synthetic ceiling) out of bounds; clamping hops to <=2 and RPC timeout to <=650ms.",
+          clampedMaxSubagentHopsPerTurn,
+          clampedSubagentRpcTimeoutMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: single front-stage voice persona locked, <=2 headless sub-agent hops per turn, and <=650ms RPC timeout verified.",
+        clampedMaxSubagentHopsPerTurn,
+        clampedSubagentRpcTimeoutMs,
+      };
+    }
+
+    export interface SubagentLeastPrivilegeAndTaintContext {
+      readonlySubagentWriteToolGrantOrTaintedInjectionPassThroughDetected: boolean;
+      allowedWriteToolsForReadonlySubagent: number;
+      subagentSchemaStrictnessRatio: number;
+    }
+
+    export interface SubagentLeastPrivilegeAndTaintDecision {
+      violated: boolean;
+      policyId: "P750-SUBAGENT-LEAST-PRIVILEGE-SCOPED-TOKEN-AND-INDIRECT-INJECTION-GUARD";
+      action:
+        | "enforce_subagent_zero_write_privilege_and_tainted_schema_strip_in_0ms"
+        | "clamp_readonly_write_tool_quota_and_schema_strictness"
+        | "allow";
+      reason: string;
+      clampedAllowedWriteToolsForReadonlySubagent: number;
+      clampedSubagentSchemaStrictnessRatio: number;
+    }
+
+    export function evaluateSubagentLeastPrivilegeScopedTokenAndIndirectInjectionGate(
+      context: SubagentLeastPrivilegeAndTaintContext,
+    ): SubagentLeastPrivilegeAndTaintDecision {
+      const policyId =
+        "P750-SUBAGENT-LEAST-PRIVILEGE-SCOPED-TOKEN-AND-INDIRECT-INJECTION-GUARD" as const;
+      const clampedAllowedWriteToolsForReadonlySubagent = Math.min(
+        Math.max(context.allowedWriteToolsForReadonlySubagent, 0),
+        0,
+      );
+      const clampedSubagentSchemaStrictnessRatio = Math.min(
+        Math.max(context.subagentSchemaStrictnessRatio, 1.0),
+        1.0,
+      );
+
+      if (
+        context.readonlySubagentWriteToolGrantOrTaintedInjectionPassThroughDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_subagent_zero_write_privilege_and_tainted_schema_strip_in_0ms",
+          reason:
+            "Sub-Agent Least-Privilege Scoped Token & Indirect Injection Policy Check: read-only RAG/lookup sub-agent was granted state-mutating write tools or passed untrusted external CRM/document text without 100% strict JSON schema taint stripping; offline synthetic policy state machine enforcing 0 write tools for read-only sub-agents and 1.0 schema strictness (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live MCP gateway authorization latency not_measured).",
+          clampedAllowedWriteToolsForReadonlySubagent,
+          clampedSubagentSchemaStrictnessRatio,
+        };
+      }
+
+      if (
+        context.allowedWriteToolsForReadonlySubagent > 0 ||
+        context.subagentSchemaStrictnessRatio < 1.0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_readonly_write_tool_quota_and_schema_strictness",
+          reason:
+            "Write-tool quota for read-only sub-agent (>0 synthetic ceiling) or sub-agent output schema strictness (<1.0 synthetic floor) out of bounds; clamping write tools to 0 and schema strictness to 1.0.",
+          clampedAllowedWriteToolsForReadonlySubagent,
+          clampedSubagentSchemaStrictnessRatio,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 0 write tools granted to read-only sub-agents and 100% strict JSON schema taint stripping verified.",
+        clampedAllowedWriteToolsForReadonlySubagent,
+        clampedSubagentSchemaStrictnessRatio,
+      };
+    }
+
+
 
 
 

@@ -1465,6 +1465,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unfulfilled verbal commitments caused by hangup race conditions or webhook timeouts, clamping post-call reconciliation window to <=3,000ms and allowed financial drift to $0.00; live CRM database query RTT is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks freeform uncited LLM QA scoring and high score drift, clamping rubric variance to <=2.0 pts and enforcing 100% [turnId, startMs, endMs] transcript citation coverage; live batch QA evaluation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "381. [Topic 18: voice-multi-agent-swarm-handoff-loop-guard-faq] Single Front-Stage Voice Persona + <=650ms Headless Specialist Sub-Agents & <=2 Hops Ping-Pong Loop Guard + Read-Only Sub-Agent Zero Write Tools (0) & 100% Strict Schema Taint Stripping (P749 / P750 — Stage 378 · 381-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks peer-to-peer multi-bot audio takeover and A->B->A ping-pong loops, locking a single front-stage voice host and clamping delegation to <=2 hops per turn and <=650ms RPC timeout; live inter-agent RPC network RTT is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks write-tool grants on read-only sub-agents and cross-agent indirect prompt injections, clamping read-only write-tool quota to 0 and output schema strictness to 1.0; live MCP gateway authorization latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
