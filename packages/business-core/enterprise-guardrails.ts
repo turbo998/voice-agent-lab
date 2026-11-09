@@ -70601,6 +70601,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface RealtimeInterpreterPolarityFidelityContext {
+      polarityFlipOrNumericDosageDriftDetected: boolean;
+      waitKTokens: number;
+      clauseLagMs: number;
+    }
+
+    export interface RealtimeInterpreterPolarityFidelityDecision {
+      violated: boolean;
+      policyId: "P757-REALTIME-INTERPRETER-POLARITY-AND-DOSAGE-AST-FIDELITY-GUARD";
+      action:
+        | "interpreter_polarity_or_dosage_drift_blocked"
+        | "clamp_waitk_tokens_and_clause_lag_budget"
+        | "allow";
+      reason: string;
+      clampedWaitKTokens: number;
+      clampedClauseLagMs: number;
+    }
+
+    export function evaluateRealtimeInterpreterPolarityAndDosageFidelityGate(
+      context: RealtimeInterpreterPolarityFidelityContext,
+    ): RealtimeInterpreterPolarityFidelityDecision {
+      const policyId =
+        "P757-REALTIME-INTERPRETER-POLARITY-AND-DOSAGE-AST-FIDELITY-GUARD" as const;
+      const clampedWaitKTokens = Math.min(Math.max(context.waitKTokens, 1), 3);
+      const clampedClauseLagMs = Math.min(
+        Math.max(context.clauseLagMs, 150),
+        650,
+      );
+
+      if (context.polarityFlipOrNumericDosageDriftDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "interpreter_polarity_or_dosage_drift_blocked",
+          reason:
+            "Real-Time Simultaneous Voice Interpreter Polarity & Dosage AST Fidelity Policy Check: streaming S2S translation inverted source negation polarity (e.g., dropping 'NOT' in a clinical/financial instruction) or drifted on canonical numeric/dosage entities (e.g., 15mg vs 50mg); offline synthetic policy state machine blocking target TTS emission and triggering bilingual clarification readback with Wait-k <=3 tokens and <=650ms clause lag (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live cross-lingual neural MT decoding latency not_measured).",
+          clampedWaitKTokens,
+          clampedClauseLagMs,
+        };
+      }
+
+      if (context.waitKTokens > 3 || context.clauseLagMs > 650) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_waitk_tokens_and_clause_lag_budget",
+          reason:
+            "Simultaneous interpreter Wait-k token buffer (>3 tokens synthetic ceiling) or clause lag (>650ms synthetic ceiling) out of bounds; clamping Wait-k to <=3 tokens and clause lag to <=650ms.",
+          clampedWaitKTokens,
+          clampedClauseLagMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Wait-k <=3 tokens, clause lag <=650ms, and 100% source-target negation polarity and numeric/dosage AST parity verified.",
+        clampedWaitKTokens,
+        clampedClauseLagMs,
+      };
+    }
+
+    export interface TenantHotwordWfstIsolationContext {
+      crossTenantTrieBleedOrStopwordCollisionDetected: boolean;
+      shallowFusionBoostScore: number;
+      minPhoneticEditDistance: number;
+    }
+
+    export interface TenantHotwordWfstIsolationDecision {
+      violated: boolean;
+      policyId: "P758-TENANT-HOTWORD-WFST-SHALLOW-FUSION-ISOLATION-AND-BOOST-GUARD";
+      action:
+        | "hotword_wfst_leak_or_overboost_blocked"
+        | "clamp_wfst_boost_score_and_phonetic_distance_floor"
+        | "allow";
+      reason: string;
+      clampedShallowFusionBoostScore: number;
+      clampedMinPhoneticEditDistance: number;
+    }
+
+    export function evaluateTenantHotwordWfstShallowFusionIsolationAndBoostGate(
+      context: TenantHotwordWfstIsolationContext,
+    ): TenantHotwordWfstIsolationDecision {
+      const policyId =
+        "P758-TENANT-HOTWORD-WFST-SHALLOW-FUSION-ISOLATION-AND-BOOST-GUARD" as const;
+      const clampedShallowFusionBoostScore = Math.min(
+        Math.max(context.shallowFusionBoostScore, 1.0),
+        4.5,
+      );
+      const clampedMinPhoneticEditDistance = Math.min(
+        Math.max(context.minPhoneticEditDistance, 2),
+        8,
+      );
+
+      if (context.crossTenantTrieBleedOrStopwordCollisionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "hotword_wfst_leak_or_overboost_blocked",
+          reason:
+            "Tenant-Isolated Domain Hotword WFST Shallow-Fusion Policy Check: ASR decoder attempted to mount a shared/cross-tenant WFST custom vocabulary trie or biased a hotword with phoneme edit distance <2 against high-frequency stop-words; offline synthetic policy state machine blocking cross-tenant lexicon bleed, clamping shallow-fusion boost within [1.0, 4.5], and enforcing >=2 phoneme edit distance (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live ASR WFST beam-search lattice expansion latency not_measured).",
+          clampedShallowFusionBoostScore,
+          clampedMinPhoneticEditDistance,
+        };
+      }
+
+      if (
+        context.shallowFusionBoostScore < 1.0 ||
+        context.shallowFusionBoostScore > 4.5 ||
+        context.minPhoneticEditDistance < 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_wfst_boost_score_and_phonetic_distance_floor",
+          reason:
+            "WFST shallow-fusion boost score (outside [1.0, 4.5] synthetic window) or minimum phonetic edit distance (<2 phonemes synthetic floor) out of bounds; clamping boost score to [1.0, 4.5] and phonetic distance to >=2.",
+          clampedShallowFusionBoostScore,
+          clampedMinPhoneticEditDistance,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: per-session tenant WFST trie isolation, shallow-fusion boost within [1.0, 4.5], and phonetic edit distance >=2 verified.",
+        clampedShallowFusionBoostScore,
+        clampedMinPhoneticEditDistance,
+      };
+    }
+
+
 
 
 

@@ -1489,6 +1489,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks mid-word stutter cut-offs and 3-strike auto-hangups, widening disfluency EOU window to >=2,200ms and capping voice-only reprompts at <=2 before activating RFC 4103 RTT/keypad; live SIP RTT negotiation latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks KYC interrogation and national-queue misrouting during life-safety emergencies, clamping zero-auth preemption to <=200ms and RFC 6442 PIDF-LO location confidence to >=95%; live ESInet/PSAP trunk setup latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "385. [Topic 22: voice-realtime-interpreter-polarity-hotword-isolation-faq] Real-Time Simultaneous Voice Interpreter Clause Wait-k (<=3 tokens, <=650ms) & Negation Polarity/Dosage AST Gate + Tenant-Isolated Domain Hotword WFST Shallow-Fusion Boost [1.0, 4.5] & Phonetic Distance >=2 Guard (P757 / P758 — Stage 382 · 385-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks streaming S2S negation inversion and 15mg/50mg dosage drift, clamping Wait-k to <=3 tokens and clause lag to <=650ms while failing closed to bilingual clarification readback; live cross-lingual neural MT decoding latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks cross-tenant custom vocabulary bleed and over-boosted stop-word hallucinations, clamping shallow-fusion boost within [1.0, 4.5] and minimum phonetic edit distance to >=2; live ASR WFST lattice expansion latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

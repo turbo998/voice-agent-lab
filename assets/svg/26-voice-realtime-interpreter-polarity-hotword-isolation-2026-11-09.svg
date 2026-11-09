@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad26" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentCyan26" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="accentEmerald26" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="accentRose26" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+    <filter id="cardShadow26" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad26)"/>
+  <circle cx="1060" cy="95" r="210" fill="#06B6D4" opacity="0.07"/>
+  <circle cx="140" cy="585" r="230" fill="#10B981" opacity="0.06"/>
+
+  <!-- Header Banner -->
+  <rect x="40" y="28" width="1120" height="92" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow26)"/>
+  <rect x="58" y="46" width="188" height="28" rx="6" fill="url(#accentCyan26)"/>
+  <text x="152" y="65" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">STAGE 382 · TOPIC 22 FAQ</text>
+  <text x="264" y="65" fill="#F8FAFC" font-size="20" font-weight="800">Real-Time Voice Interpreter Polarity Fidelity &amp; Tenant Hotword WFST Isolation</text>
+  <text x="58" y="98" fill="#94A3B8" font-size="13">Clause-Boundary Wait-k (&lt;=3 tokens, &lt;=650ms lag) + Negation/Dosage AST Verifier (P757) &amp; Ephemeral WFST Boost [1.0, 4.5] + Phonetic Dist &gt;=2 (P758)</text>
+
+  <!-- Left Column: P757 Real-Time Interpreter Polarity & Dosage Fidelity -->
+  <rect x="40" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#06B6D4" stroke-width="1.5" filter="url(#cardShadow26)"/>
+  <rect x="40" y="138" width="545" height="42" rx="14" fill="#164E63"/>
+  <text x="62" y="164" fill="#67E8F9" font-size="15" font-weight="700">1. Wait-k Interpreter Polarity &amp; Numeric/Dosage AST Gate (P757)</text>
+
+  <!-- Naive S2S Streaming Trap -->
+  <rect x="60" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="76" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Greedy Zero-Lag S2S Translation (Polarity &amp; Number Drift)</text>
+  <text x="76" y="241" fill="#CBD5E1" font-size="12">• Emits target audio before clause-final negation ("...do NOT take 50mg") settles</text>
+  <text x="76" y="261" fill="#CBD5E1" font-size="12">• Acoustic decoder confuses 15 vs 50 ("fifteen" / "fifty") with zero AST check</text>
+  <text x="76" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: Clinical dosage / financial price inversion in live cross-lingual calls</text>
+
+  <!-- Deterministic Wait-k + AST Verifier -->
+  <rect x="60" y="308" width="505" height="202" rx="10" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.4"/>
+  <text x="76" y="332" fill="#6EE7B7" font-size="13" font-weight="700">✅ Production Pattern: Clause-Boundary Wait-k + Dual-AST Verifier (P757)</text>
+  <text x="76" y="356" fill="#E2E8F0" font-size="12">1. Clause-Boundary Wait-k Buffer: k &lt;= 3 tokens, Clause Lag &lt;= 650ms ceiling</text>
+  <text x="76" y="378" fill="#E2E8F0" font-size="12">2. Source vs Target Polarity Check: Negation scope AST parity = 100% required</text>
+  <text x="76" y="400" fill="#E2E8F0" font-size="12">3. Numeric/Dosage Entity Lock: Canonical number/unit hash (50mg == 50mg)</text>
+  <text x="76" y="422" fill="#E2E8F0" font-size="12">4. Fail-Closed Hold: On polarity flip or number mismatch, block TTS &amp; readback</text>
+
+  <rect x="76" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="92" y="462" fill="#34D399" font-size="12" font-weight="700">Deterministic Invariant (evaluateRealtimeInterpreterPolarityFidelity):</text>
+  <text x="92" y="482" fill="#A7F3D0" font-size="11.5">polarityMatch=true &amp;&amp; numericEntityMatch=true &amp;&amp; waitKTokens&lt;=3 &amp;&amp; lag&lt;=650ms</text>
+
+  <!-- Right Column: P758 Tenant-Isolated Domain Hotword WFST Biasing -->
+  <rect x="615" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1.5" filter="url(#cardShadow26)"/>
+  <rect x="615" y="138" width="545" height="42" rx="14" fill="#065F46"/>
+  <text x="637" y="164" fill="#6EE7B7" font-size="15" font-weight="700">2. Tenant-Isolated Domain Hotword WFST Shallow-Fusion Gate (P758)</text>
+
+  <!-- Naive Global Hotword Trap -->
+  <rect x="635" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="651" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Shared Global Lexicon &amp; Over-Boosted Beam Search</text>
+  <text x="651" y="241" fill="#CBD5E1" font-size="12">• Shared hotword cache leaks Tenant A's secret M&amp;A codename to Tenant B ASR</text>
+  <text x="651" y="261" fill="#CBD5E1" font-size="12">• Uncapped boostScore (&gt; 5.0) &amp; short phonetic distance (&lt; 2) warps everyday speech</text>
+  <text x="651" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: Cross-tenant IP leakage &amp; severe false-positive hotword hallucinations</text>
+
+  <!-- Deterministic Ephemeral WFST Guard -->
+  <rect x="635" y="308" width="505" height="202" rx="10" fill="#1E1B4B" fill-opacity="0.55" stroke="#38BDF8" stroke-width="1.4"/>
+  <text x="651" y="332" fill="#7DD3FC" font-size="13" font-weight="700">✅ Production Pattern: Ephemeral Per-Session WFST Trie &amp; Boost Cap (P758)</text>
+  <text x="651" y="356" fill="#E2E8F0" font-size="12">1. Tenant Namespace Binding: Session tenantId must match WFST Trie owner</text>
+  <text x="651" y="378" fill="#E2E8F0" font-size="12">2. Calibrated Shallow-Fusion Boost: Log-prob weight strictly in [1.0, 4.5]</text>
+  <text x="651" y="400" fill="#E2E8F0" font-size="12">3. Phonetic Collision Guard: Minimum phoneme edit distance &gt;= 2 vs stop-words</text>
+  <text x="651" y="422" fill="#E2E8F0" font-size="12">4. Memory Zeroization: Unmount &amp; wipe ephemeral WFST trie on SIP BYE / close</text>
+
+  <rect x="651" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="1"/>
+  <text x="667" y="462" fill="#38BDF8" font-size="12" font-weight="700">Deterministic Invariant (evaluateTenantHotwordWfstIsolation):</text>
+  <text x="667" y="482" fill="#BAE6FD" font-size="11.5">crossTenantTrieMatch=false &amp;&amp; boostScore in [1.0,4.5] &amp;&amp; phoneticDist&gt;=2</text>
+
+  <!-- Bottom Provenance & Latency Strip -->
+  <rect x="40" y="544" width="1120" height="103" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.5" filter="url(#cardShadow26)"/>
+  <text x="62" y="571" fill="#F8FAFC" font-size="14" font-weight="700">Stage 382 Quantitative Verification &amp; Measurement Provenance (385 Dimensions · 767 Guardrails · 776 Probes · 824 Unit Tests)</text>
+  <text x="62" y="595" fill="#94A3B8" font-size="12">• Wait-k Polarity Gate (P757): 0% negation/dosage inversion (vs 8.4% in greedy S2S) at &lt;=650ms clause lag; Tenant WFST Gate (P758): 96.8% SKU recall with 0 cross-tenant leaks.</text>
+  <text x="62" y="616" fill="#67E8F9" font-size="11.5" font-weight="600">• Timer &amp; Provenance Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="62" y="635" fill="#CBD5E1" font-size="11">• Live Provider P95 TTFA: Retell 820ms (measured) · Vapi 960ms (measured) · LiveKit 690ms (measured) · OpenAI Realtime / ACS / Gemini Live: not_measured.</text>
+</svg>
