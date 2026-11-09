@@ -1519,6 +1519,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks classical-only SIPREC archival trunks and >21.85-minute SRTP ROC rollover static desyncs, clamping ML-KEM parameter set to >=768 and Dual-MKI overlap window to >=500ms; live TLS 1.3 ML-KEM handshake latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks shared-key voiceprint storage and unconsented biometric extraction, clamping HSM crypto-shredding SLA to <=5,000ms across WORM backups and BIPA retention to <=1,095 days; live cloud HSM key-destruction latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "390. [Topic 27: voice-realtime-mos-lqo-degradation-sip-rtp-hairpin-anchor-faq] ITU-T G.107 Real-Time MOS-LQO (<3.10) Opus FEC, <=8-Word Speech & SMS/RCS Card Fallback + Multi-Region SIP/RTP Hairpin Elimination & <=75ms Regional Edge Media Anchor Guard (P767 / P768 — Stage 387 · Historic 390-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks verbose speech recitation over degraded cellular links below MOS-LQO 3.10, clamping voice-only MOS floor to >=3.10 and degraded spoken prompt to <=8 words with SMS/RCS card fallback; live carrier SMS/RCS gateway latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks transoceanic UDP/RTP hairpinning across continents, clamping regional media anchor RTT to <=75ms and local edge barge-in cutoff to <=50ms; live transoceanic backbone RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

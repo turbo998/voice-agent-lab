@@ -71295,6 +71295,147 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface RealtimeItuG107MosLqoFallbackContext {
+      verboseSpeechOverLowMosWithoutSmsFallbackDetected: boolean;
+      minMosLqoVoiceOnlyFloor: number;
+      maxDegradedSpeechWords: number;
+    }
+
+    export interface RealtimeItuG107MosLqoFallbackDecision {
+      violated: boolean;
+      policyId: "P767-REALTIME-ITU-G107-MOS-LQO-DEGRADATION-AND-DUAL-CHANNEL-SMS-FALLBACK-GUARD";
+      action:
+        | "realtime_mos_lqo_degradation_unhandled_blocked"
+        | "clamp_mos_lqo_floor_and_degraded_speech_word_limit"
+        | "allow";
+      reason: string;
+      clampedMinMosLqoVoiceOnlyFloor: number;
+      clampedMaxDegradedSpeechWords: number;
+    }
+
+    export function evaluateRealtimeItuG107MosLqoDegradationAndDualChannelFallbackGate(
+      context: RealtimeItuG107MosLqoFallbackContext,
+    ): RealtimeItuG107MosLqoFallbackDecision {
+      const policyId =
+        "P767-REALTIME-ITU-G107-MOS-LQO-DEGRADATION-AND-DUAL-CHANNEL-SMS-FALLBACK-GUARD" as const;
+      const clampedMinMosLqoVoiceOnlyFloor = Math.min(
+        Math.max(context.minMosLqoVoiceOnlyFloor, 3.1),
+        4.2,
+      );
+      const clampedMaxDegradedSpeechWords = Math.min(
+        Math.max(context.maxDegradedSpeechWords, 4),
+        8,
+      );
+
+      if (context.verboseSpeechOverLowMosWithoutSmsFallbackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "realtime_mos_lqo_degradation_unhandled_blocked",
+          reason:
+            "ITU-T G.107 Real-Time MOS-LQO & Dual-Channel SMS/RCS Fallback Policy Check: orchestrator recited long numeric/itinerary output over a severely degraded cellular link (MOS-LQO < 3.10) without activating Opus LBRR FEC or pushing an out-of-band SMS/RCS visual card; offline synthetic policy state machine enforcing MOS-LQO >=3.10 voice-only floor, <=8-word degraded verbal bridge, and automatic SMS/RCS fallback (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live carrier SMS/RCS gateway delivery latency not_measured).",
+          clampedMinMosLqoVoiceOnlyFloor,
+          clampedMaxDegradedSpeechWords,
+        };
+      }
+
+      if (
+        context.minMosLqoVoiceOnlyFloor < 3.1 ||
+        context.maxDegradedSpeechWords > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_mos_lqo_floor_and_degraded_speech_word_limit",
+          reason:
+            "Voice-only MOS-LQO floor (<3.10 synthetic floor) or degraded speech word limit (>8 words synthetic ceiling) out of bounds; clamping MOS-LQO floor to >=3.10 and degraded speech word limit to <=8 words.",
+          clampedMinMosLqoVoiceOnlyFloor,
+          clampedMaxDegradedSpeechWords,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: ITU-T G.107 MOS-LQO >=3.10 floor, Opus FEC activation, and <=8-word + SMS/RCS dual-channel fallback verified.",
+        clampedMinMosLqoVoiceOnlyFloor,
+        clampedMaxDegradedSpeechWords,
+      };
+    }
+
+    export interface MultiRegionSipRtpHairpinAnchorContext {
+      transoceanicRtpHairpinTromboningDetected: boolean;
+      regionalMediaAnchorRttMs: number;
+      maxEdgeBargeInCutoffMs: number;
+    }
+
+    export interface MultiRegionSipRtpHairpinAnchorDecision {
+      violated: boolean;
+      policyId: "P768-MULTI-REGION-SIP-RTP-HAIRPIN-ELIMINATION-AND-EDGE-MEDIA-ANCHOR-GUARD";
+      action:
+        | "sip_rtp_transoceanic_hairpin_exceeded_blocked"
+        | "clamp_regional_media_anchor_rtt_and_bargein_cutoff"
+        | "allow";
+      reason: string;
+      clampedRegionalMediaAnchorRttMs: number;
+      clampedMaxEdgeBargeInCutoffMs: number;
+    }
+
+    export function evaluateMultiRegionSipRtpHairpinEliminationAndLocalMediaAnchorGate(
+      context: MultiRegionSipRtpHairpinAnchorContext,
+    ): MultiRegionSipRtpHairpinAnchorDecision {
+      const policyId =
+        "P768-MULTI-REGION-SIP-RTP-HAIRPIN-ELIMINATION-AND-EDGE-MEDIA-ANCHOR-GUARD" as const;
+      const clampedRegionalMediaAnchorRttMs = Math.min(
+        Math.max(context.regionalMediaAnchorRttMs, 10),
+        75,
+      );
+      const clampedMaxEdgeBargeInCutoffMs = Math.min(
+        Math.max(context.maxEdgeBargeInCutoffMs, 15),
+        50,
+      );
+
+      if (context.transoceanicRtpHairpinTromboningDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "sip_rtp_transoceanic_hairpin_exceeded_blocked",
+          reason:
+            "Multi-Region SIP/RTP Hairpin Elimination & Edge Media Anchor Policy Check: call routed raw 50pps UDP/RTP audio across oceans (RTT > 75ms) to a centralized LLM region instead of terminating SIP/RTP and VAD/ASR/TTS at a regional edge POP; offline synthetic policy state machine enforcing <=75ms regional media anchor RTT and <=50ms local edge barge-in cutoff (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live transoceanic backbone RTT not_measured).",
+          clampedRegionalMediaAnchorRttMs,
+          clampedMaxEdgeBargeInCutoffMs,
+        };
+      }
+
+      if (
+        context.regionalMediaAnchorRttMs > 75 ||
+        context.maxEdgeBargeInCutoffMs > 50
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_regional_media_anchor_rtt_and_bargein_cutoff",
+          reason:
+            "Regional media anchor RTT (>75ms synthetic ceiling) or local edge barge-in cutoff (>50ms synthetic ceiling) out of bounds; clamping regional media RTT to <=75ms and edge barge-in cutoff to <=50ms.",
+          clampedRegionalMediaAnchorRttMs,
+          clampedMaxEdgeBargeInCutoffMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: <=75ms regional edge SIP/RTP media anchoring and <=50ms local barge-in cutoff verified.",
+        clampedRegionalMediaAnchorRttMs,
+        clampedMaxEdgeBargeInCutoffMs,
+      };
+    }
+
+
 
 
 

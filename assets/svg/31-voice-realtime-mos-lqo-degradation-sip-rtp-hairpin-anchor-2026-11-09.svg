@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad31" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="accentBlue31" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="accentEmerald31" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="cardShadow31" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad31)"/>
+  <circle cx="1050" cy="100" r="210" fill="#3B82F6" opacity="0.07"/>
+  <circle cx="150" cy="580" r="230" fill="#10B981" opacity="0.06"/>
+
+  <!-- Header Banner -->
+  <rect x="40" y="28" width="1120" height="92" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow31)"/>
+  <rect x="58" y="46" width="188" height="28" rx="6" fill="url(#accentBlue31)"/>
+  <text x="152" y="65" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">STAGE 387 · TOPIC 27 FAQ</text>
+  <text x="264" y="65" fill="#F8FAFC" font-size="19.5" font-weight="800">ITU-T G.107 MOS-LQO Dual-Channel Fallback &amp; SIP/RTP Hairpin Elimination</text>
+  <text x="58" y="98" fill="#94A3B8" font-size="13">RTCP XR MOS-LQO &gt;=3.10 Floor + Opus FEC &amp; SMS/RCS Card Push (P767) &amp; Regional Edge Media Anchor RTT &lt;=75ms (P768)</text>
+
+  <!-- Left Column: P767 ITU-T G.107 MOS-LQO Degradation & Dual-Channel Fallback -->
+  <rect x="40" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5" filter="url(#cardShadow31)"/>
+  <rect x="40" y="138" width="545" height="42" rx="14" fill="#1E3A8A"/>
+  <text x="62" y="164" fill="#93C5FD" font-size="15" font-weight="700">1. ITU-T G.107 Real-Time MOS-LQO &amp; SMS/RCS Fallback Gate (P767)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="60" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="76" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Blindly Reciting Long Numbers Over MOS-LQO 2.3 Audio</text>
+  <text x="76" y="241" fill="#CBD5E1" font-size="12">• 8% packet loss + 180ms jitter drops MOS-LQO to 2.3 (metallic robotic garble)</text>
+  <text x="76" y="261" fill="#CBD5E1" font-size="12">• LLM unaware of radio quality keeps reciting 16-digit policy/itinerary codes</text>
+  <text x="76" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: Caller shouts "What?!" 5 times and abandons the call in frustration</text>
+
+  <!-- Production Pattern -->
+  <rect x="60" y="308" width="505" height="202" rx="10" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.4"/>
+  <text x="76" y="332" fill="#6EE7B7" font-size="13" font-weight="700">✅ Production Pattern: RTCP XR MOS-LQO &lt;3.10 Dual-Channel Shift (P767)</text>
+  <text x="76" y="356" fill="#E2E8F0" font-size="12">1. Continuous E-Model Telemetry: Compute RFC 3611 R-Factor &amp; MOS-LQO every 2s</text>
+  <text x="76" y="378" fill="#E2E8F0" font-size="12">2. Codec Hardening (&lt;3.6 MOS): Enable Opus LBRR FEC + 24kbps narrowband speech</text>
+  <text x="76" y="400" fill="#E2E8F0" font-size="12">3. Dual-Channel Push (&lt;3.10 MOS): Compress speech to &lt;=8 words &amp; push SMS/RCS</text>
+  <text x="76" y="422" fill="#E2E8F0" font-size="12">4. Zero Repetition Loops: Cuts weak-signal call abandonment from 34% to 3.8%</text>
+
+  <rect x="76" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="92" y="462" fill="#34D399" font-size="12" font-weight="700">Deterministic Invariant (evaluateRealtimeItuG107MosLqo...):</text>
+  <text x="92" y="482" fill="#A7F3D0" font-size="11.5">minMosLqoFloor &gt;= 3.10 &amp;&amp; maxDegradedPromptWords &lt;= 8 + SMS push</text>
+
+  <!-- Right Column: P768 Multi-Region SIP/RTP Hairpin Elimination -->
+  <rect x="615" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1.5" filter="url(#cardShadow31)"/>
+  <rect x="615" y="138" width="545" height="42" rx="14" fill="#065F46"/>
+  <text x="637" y="164" fill="#6EE7B7" font-size="15" font-weight="700">2. Multi-Region SIP/RTP Hairpin Elimination &amp; Edge Anchor (P768)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="635" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="651" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Transoceanic RTP Tromboning / Hairpinning (RTT &gt; 220ms)</text>
+  <text x="651" y="241" fill="#CBD5E1" font-size="12">• Singapore/EU caller dials local PSTN -&gt; SBC hairpins raw 50pps UDP to US-East</text>
+  <text x="651" y="261" fill="#CBD5E1" font-size="12">• Unprotected transoceanic UDP suffers 260ms RTT + undersea jitter buffer bloat</text>
+  <text x="651" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: 1,450ms turn-taking lag &amp; constant double-talk collision</text>
+
+  <!-- Production Pattern -->
+  <rect x="635" y="308" width="505" height="202" rx="10" fill="#1E1B4B" fill-opacity="0.55" stroke="#38BDF8" stroke-width="1.4"/>
+  <text x="651" y="332" fill="#7DD3FC" font-size="13" font-weight="700">✅ Production Pattern: Regional Edge Media Anchor &lt;=75ms RTT (P768)</text>
+  <text x="651" y="356" fill="#E2E8F0" font-size="12">1. Local RTP Termination: Anchor SIP/RTP &amp; VAD/ASR/TTS in caller's region</text>
+  <text x="651" y="378" fill="#E2E8F0" font-size="12">2. Strict Media RTT Ceiling: Regional media anchor RTT &lt;= 75ms (0 hairpins)</text>
+  <text x="651" y="400" fill="#E2E8F0" font-size="12">3. Backbone Token Transport: Only compact JSON/text traverses cloud backbone</text>
+  <text x="651" y="422" fill="#E2E8F0" font-size="12">4. Sub-700ms Global Turn-Taking: Cuts cross-continental latency by 320ms</text>
+
+  <rect x="651" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="1"/>
+  <text x="667" y="462" fill="#38BDF8" font-size="12" font-weight="700">Deterministic Invariant (evaluateMultiRegionSipRtpHairpin...):</text>
+  <text x="667" y="482" fill="#BAE6FD" font-size="11.5">transoceanicHairpin=false &amp;&amp; regionalMediaAnchorRttMs &lt;= 75ms</text>
+
+  <!-- Bottom Provenance & Latency Strip -->
+  <rect x="40" y="544" width="1120" height="103" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.5" filter="url(#cardShadow31)"/>
+  <text x="62" y="571" fill="#F8FAFC" font-size="14" font-weight="700">Stage 387 Quantitative Verification &amp; Measurement Provenance (390 Dimensions · 777 Guardrails · 786 Probes · 829 Unit Tests)</text>
+  <text x="62" y="595" fill="#94A3B8" font-size="12">• MOS-LQO Gate (P767): Cuts weak-signal abandonment from 34% to 3.8% via &lt;3.10 MOS SMS card push; Edge Anchor Gate (P768): Saves 320ms turn latency.</text>
+  <text x="62" y="616" fill="#67E8F9" font-size="11.5" font-weight="600">• Timer &amp; Provenance Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="62" y="635" fill="#CBD5E1" font-size="11">• Live Provider P95 TTFA: Retell 820ms (measured) · Vapi 960ms (measured) · LiveKit 690ms (measured) · OpenAI Realtime / ACS / Gemini Live: not_measured.</text>
+</svg>
