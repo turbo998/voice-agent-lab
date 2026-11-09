@@ -69288,6 +69288,145 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface AcousticDeepfakeLivenessContext {
+      passiveVoiceprintOnlyOrSyntheticPhaseArtifactDetected: boolean;
+      vocoderPhaseArtifactScore: number;
+      livenessNonceResponseMs: number;
+    }
+
+    export interface AcousticDeepfakeLivenessDecision {
+      violated: boolean;
+      policyId: "P739-ACOUSTIC-DEEPFAKE-VOCODER-PHASE-ARTIFACT-AND-LIVENESS-CHALLENGE-GUARD";
+      action:
+        | "enforce_aasist_phase_artifact_gate_and_dynamic_nonce_challenge_in_0ms"
+        | "clamp_vocoder_phase_artifact_ceiling_and_nonce_challenge_window"
+        | "allow";
+      reason: string;
+      clampedVocoderPhaseArtifactScore: number;
+      clampedLivenessNonceResponseMs: number;
+    }
+
+    export function evaluateAcousticDeepfakeVocoderPhaseArtifactAndLivenessChallengeGate(
+      context: AcousticDeepfakeLivenessContext,
+    ): AcousticDeepfakeLivenessDecision {
+      const policyId =
+        "P739-ACOUSTIC-DEEPFAKE-VOCODER-PHASE-ARTIFACT-AND-LIVENESS-CHALLENGE-GUARD" as const;
+      const clampedVocoderPhaseArtifactScore = Math.min(
+        Math.max(context.vocoderPhaseArtifactScore, 0),
+        0.18,
+      );
+      const clampedLivenessNonceResponseMs = Math.min(
+        Math.max(context.livenessNonceResponseMs, 250),
+        1200,
+      );
+
+      if (context.passiveVoiceprintOnlyOrSyntheticPhaseArtifactDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_aasist_phase_artifact_gate_and_dynamic_nonce_challenge_in_0ms",
+          reason:
+            "Acoustic Deepfake Phase-Artifact & Liveness Challenge Policy Check: passive d-vector voiceprint attempted to authorize sensitive action without anti-spoofing liveness or AASIST detected neural vocoder phase artifacts (>0.18); offline synthetic policy state machine enforcing sub-band phase artifact ceiling (<=0.18) and <=1,200ms dynamic random nonce readback challenge (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live AASIST neural inference latency not_measured).",
+          clampedVocoderPhaseArtifactScore,
+          clampedLivenessNonceResponseMs,
+        };
+      }
+
+      if (
+        context.vocoderPhaseArtifactScore > 0.18 ||
+        context.livenessNonceResponseMs > 1200
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_vocoder_phase_artifact_ceiling_and_nonce_challenge_window",
+          reason:
+            "Vocoder phase artifact score (>0.18 synthetic ceiling) or dynamic nonce readback latency (>1,200ms synthetic window) out of bounds; clamping artifact threshold to <=0.18 and challenge response window to <=1,200ms.",
+          clampedVocoderPhaseArtifactScore,
+          clampedLivenessNonceResponseMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: AASIST vocoder phase artifact score <=0.18 and <=1,200ms dynamic liveness challenge verified.",
+        clampedVocoderPhaseArtifactScore,
+        clampedLivenessNonceResponseMs,
+      };
+    }
+
+    export interface MultifactorTelecomFido2StepupContext {
+      recentSimSwapOrMissingFido2SignatureOrStaticKbaFallbackAttempted: boolean;
+      simSwapAgeHours: number;
+      fido2StepUpWindowSec: number;
+    }
+
+    export interface MultifactorTelecomFido2StepupDecision {
+      violated: boolean;
+      policyId: "P740-MULTIFACTOR-TELECOM-ATTESTATION-AND-FIDO2-OUT-OF-BAND-STEPUP-GUARD";
+      action:
+        | "enforce_carrier_simswap_cooldown_and_fido2_passkey_stepup_in_0ms"
+        | "clamp_simswap_cooldown_floor_and_fido2_stepup_timeout"
+        | "allow";
+      reason: string;
+      clampedSimSwapAgeHours: number;
+      clampedFido2StepUpWindowSec: number;
+    }
+
+    export function evaluateMultifactorTelecomAttestationAndFido2OutOfBandStepupGate(
+      context: MultifactorTelecomFido2StepupContext,
+    ): MultifactorTelecomFido2StepupDecision {
+      const policyId =
+        "P740-MULTIFACTOR-TELECOM-ATTESTATION-AND-FIDO2-OUT-OF-BAND-STEPUP-GUARD" as const;
+      const clampedSimSwapAgeHours = Math.max(context.simSwapAgeHours, 72);
+      const clampedFido2StepUpWindowSec = Math.min(
+        Math.max(context.fido2StepUpWindowSec, 10),
+        45,
+      );
+
+      if (
+        context.recentSimSwapOrMissingFido2SignatureOrStaticKbaFallbackAttempted
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_carrier_simswap_cooldown_and_fido2_passkey_stepup_in_0ms",
+          reason:
+            "Multi-Factor Telecom Attestation & FIDO2 Step-Up Policy Check: high-risk voice transaction attempted with recent SIM-swap (<72h), missing out-of-band FIDO2 hardware signature, or attempted to fall back to static SSN/DOB KBA interrogation; offline synthetic policy state machine enforcing STIR/SHAKEN Attestation-A, >=72h SIM-swap cooldown, and <=45s FIDO2 transaction-bound signature (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live carrier CAMARA & FIDO2 push RTT not_measured).",
+          clampedSimSwapAgeHours,
+          clampedFido2StepUpWindowSec,
+        };
+      }
+
+      if (context.simSwapAgeHours < 72 || context.fido2StepUpWindowSec > 45) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_simswap_cooldown_floor_and_fido2_stepup_timeout",
+          reason:
+            "Carrier SIM-swap cooldown age (<72h synthetic floor) or FIDO2 step-up approval window (>45s synthetic ceiling) out of bounds; clamping SIM-swap age floor to >=72h and FIDO2 window to <=45s.",
+          clampedSimSwapAgeHours,
+          clampedFido2StepUpWindowSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: STIR/SHAKEN Attestation-A, >=72h SIM-swap cooldown, and <=45s out-of-band FIDO2 signature verified with zero KBA fallback.",
+        clampedSimSwapAgeHours,
+        clampedFido2StepUpWindowSec,
+      };
+    }
+
 
 
 

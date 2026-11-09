@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="title desc">
+  <title id="title">Enterprise Voice Agent Anti-Deepfake Liveness &amp; Multi-Factor Telecom Authentication Architecture (Stage 373 · P739–P740)</title>
+  <desc id="desc">Visual comparison of legacy KBA &amp; passive voiceprint spoofing vulnerability vs P739 AASIST vocoder phase-artifact liveness detection (&lt;=0.18 artifact threshold) + dynamic nonce challenge and P740 STIR/SHAKEN + SIM-Swap (&gt;=72h) + FIDO2 step-up authentication.</desc>
+  <defs>
+    <linearGradient id="bgGrad17" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentCyan17" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="accentGreen17" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad17)"/>
+
+  <!-- Header -->
+  <rect x="28" y="20" width="1144" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="44" y="34" width="198" height="24" rx="6" fill="url(#accentCyan17)"/>
+  <text x="143" y="50" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">STAGE 373 · TOPIC 13 · P739–P740</text>
+  <text x="256" y="51" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800">Anti-Deepfake Liveness Detection &amp; Multi-Factor Voice Authentication</text>
+  <text x="44" y="78" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12">实时防 AI 克隆声音与零摩擦电话核身架构选型：声码器相位伪影活体检测 (P739) 与运营商信令+FIDO2 阶梯鉴权 (P740)</text>
+
+  <!-- Left Panel: P739 Acoustic Anti-Deepfake & Liveness Challenge -->
+  <rect x="28" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="44" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="58" y="145" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">① P739: AASIST Vocoder Phase-Artifact &amp; Dynamic Liveness Gate</text>
+
+  <!-- Legacy Passive Voiceprint + KBA Trap -->
+  <rect x="44" y="168" width="528" height="118" rx="8" fill="#1F1218" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="58" y="190" fill="#F87171" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">⛔ Legacy KBA + Passive-Only Voiceprint (Defeated by 3s Zero-Shot Clone)</text>
+  <text x="58" y="212" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Attacker scrapes 3s TikTok/WeChat voice note -&gt; runs real-time TTS voice clone</text>
+  <text x="58" y="232" fill="#FCA5A5" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Legacy d-vector cosine similarity scores 0.89 (matches target vocal tract timbre!)</text>
+  <text x="58" y="252" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Plus leaked DOB/SSN answers KBA questions -&gt; account drained in 60 seconds!</text>
+  <text x="58" y="272" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10">Industry Baseline: &gt;45s KBA interrogation friction &amp; high false-accept rate on modern neural clones</text>
+
+  <!-- P739 Engineered Path -->
+  <rect x="44" y="298" width="528" height="244" rx="8" fill="#0B211D" stroke="#10B981" stroke-width="1.5"/>
+  <text x="58" y="320" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P739: Sub-Band Phase Artifact (AASIST) + Dynamic Nonce Liveness</text>
+  <text x="58" y="344" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">1. Why Clones Fool d-Vectors but Fail Phase Checks: Neural vocoders (HiFi-GAN/Diffusion)</text>
+  <text x="72" y="362" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">match mel-spectrum amplitude but leave periodic phase discontinuities &amp; high-freq cutoffs</text>
+  <text x="58" y="386" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">2. Streaming AASIST Graph Attention (&lt;=450ms): Flags vocoderPhaseArtifactScore &gt; 0.18</text>
+  <text x="72" y="404" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">or missing human glottal micro-tremor / acoustic pop energy</text>
+  <text x="58" y="428" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">3. Dynamic Nonce Micro-Challenge: Suspect stream must read back a fresh random phrase</text>
+  <text x="72" y="446" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">within &lt;=1,200ms (exposing real-time voice-changer synthesis lag &amp; replay attacks)</text>
+  <rect x="58" y="484" width="500" height="44" rx="6" fill="#064E3B"/>
+  <text x="70" y="502" fill="#A7F3D0" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P739 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="70" y="518" fill="#6EE7B7" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Right Panel: P740 Telecom Attestation + SIM-Swap + FIDO2 Step-Up -->
+  <rect x="612" y="108" width="560" height="450" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <rect x="628" y="124" width="528" height="32" rx="6" fill="#1E293B"/>
+  <text x="642" y="145" fill="#A78BFA" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">② P740: Telecom Attestation, SIM-Swap Cooldown &amp; FIDO2 Step-Up</text>
+
+  <!-- Authentication Tier Selection Matrix Box -->
+  <rect x="628" y="168" width="528" height="156" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="642" y="190" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Risk-Tiered Voice Authentication Matrix</text>
+  <text x="642" y="214" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">• Tier 1 (Low-Risk Read-Only): Passive STIR/SHAKEN Level-A + CAMARA Number Verify (0s friction)</text>
+  <text x="642" y="236" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Tier 2 (Medium-Risk Account Inquiry): P739 AASIST Liveness + Enrolled d-Vector Match</text>
+  <text x="654" y="254" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">Verifies caller while speaking naturally; blocks pre-recorded &amp; zero-shot TTS clones</text>
+  <text x="642" y="276" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">• Tier 3 (High-Risk Wire / SIM-Swap / Password Reset): P740 Out-of-Band FIDO2/Passkey</text>
+  <text x="654" y="294" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="10">Never trust voice alone for wires! Require SIM-Swap &gt;=72h + FIDO2 biometric push (&lt;=45s)</text>
+
+  <!-- P740 Engineered Box -->
+  <rect x="628" y="336" width="528" height="206" rx="8" fill="#17153B" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="642" y="358" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">✅ P740: Defense-in-Depth Carrier + Cryptographic Step-Up Fence</text>
+  <text x="642" y="382" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Carrier Network Verification: Require STIR/SHAKEN Attestation-A AND carrier</text>
+  <text x="654" y="400" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">SIM-swap / port-out age &gt;= 72 hours before trusting caller ANI or SMS OTP</text>
+  <text x="642" y="424" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Cryptographic FIDO2 / Passkey Push (&lt;=45s window): For high-value mutations,</text>
+  <text x="654" y="442" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="11">push a signed transaction challenge to the user's registered mobile banking app</text>
+  <text x="642" y="466" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Zero KBA Fallback: Strictly prohibit falling back to static mother's maiden name / DOB</text>
+  <rect x="642" y="482" width="500" height="46" rx="6" fill="#2E1065"/>
+  <text x="654" y="500" fill="#DDD6FE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">P740 Offline Policy Check: 0ms reported at nominal 1ms display resolution;</text>
+  <text x="654" y="516" fill="#C4B5FD" font-family="system-ui, -apple-system, sans-serif" font-size="10">actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic)</text>
+
+  <!-- Bottom Provenance Banner -->
+  <rect x="28" y="572" width="1144" height="82" rx="10" fill="#090D16" stroke="#334155" stroke-width="1.2"/>
+  <text x="44" y="596" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">PROVENANCE &amp; MEASUREMENT BOUNDARY DISCLOSURE (STAGE 373 · DIMENSION 376)</text>
+  <text x="44" y="618" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Offline Policy State Machine (P739/P740): 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (synthetic).</text>
+  <text x="44" y="638" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11">• Live Acoustic Anti-Spoofing DSP &amp; Carrier CAMARA API: Real-time AASIST inference and telecom API RTT are not_measured in local unit tests.</text>
+</svg>

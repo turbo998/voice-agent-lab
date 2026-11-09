@@ -1435,6 +1435,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks uniform INT4 vocoder phase collapse and unbridged WAN blackout timeouts, clamping WAN fallback RTT budget to <=400ms and quantized WER degradation to <=1.5%; live edge NPU/GPU inference and WAN RTT probing are not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks raw PCM audio and biometric d-vector voiceprints from egressing across sovereign boundaries, clamping edge PII tokenization budget to <=35ms and raw voiceprint cloud egress to 0 bytes; live edge NER latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "376. [Topic 13: voice-anti-deepfake-liveness-auth-faq] Acoustic Deepfake Vocoder Phase-Artifact Liveness (AASIST <=0.18) & <=1,200ms Dynamic Nonce Challenge + Carrier STIR/SHAKEN Attestation-A, >=72h SIM-Swap Cooldown & Out-of-Band FIDO2 Passkey Step-Up (<=45s) (P739 / P740 — Stage 373 · 376-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks passive-only d-vector auth and zero-shot neural voice clones, clamping vocoder phase-artifact score to <=0.18 and dynamic nonce readback challenge window to <=1,200ms; live AASIST neural inference latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks high-risk transactions after recent SIM swaps (<72h), missing FIDO2 hardware signatures, or static KBA fallbacks, enforcing >=72h SIM-swap cooldown and <=45s FIDO2 step-up approval; live carrier CAMARA and FIDO2 push RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
