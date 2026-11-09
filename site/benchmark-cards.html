@@ -1149,9 +1149,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>374. [专题11 `docs/voice-multilingual-codeswitch-dialect-faq.md`] 句内中英粤混说（`Intra-Sentence Code-Switching`）统一子词解码、帧级语种路由（`&lt;=240ms`）与跨语种专业术语偏置门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截整句静态单语锁 `Static LID` 将句内英文单词强行转写为同音汉字乱码，将帧级 LID 窗口钳制在 `&lt;=240ms` 且跨语种短语偏置钳制在 `10–16 dB`；真实在线多语种束搜索解码耗时 `not_measured`，离线 `--locale auto` 实测 `RTF=0.057` `measured`）&amp; 多语种 TTS 统一声纹连续性锁（`timbreCosineSim &gt;= 0.94`）、自动 `SSML &lt;lang&gt;` 包裹与 `&lt;=15ms` 边界余弦交叉淡变护栏（拦截双模型硬拼接变声爆音与中式散装发音；真实神经声码器渲染耗时 `not_measured`）(`P735` / `P736` · Stage 371 · 374 评测维度里程碑 · 745 护栏 &amp; 754 探针 · 374 维)</strong>
+                <strong>374. [专题11 `docs/voice-multilingual-codeswitch-dialect-faq.md`] 句内中英粤混说（`Intra-Sentence Code-Switching`）统一子词解码、帧级语种路由（`&lt;=240ms`）与跨语种专业术语偏置门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截整句静态单语锁 `Static LID` 将句内英文单词强行转写为同音汉字乱码，将帧级 LID 窗口钳制在 `&lt;=240ms` 且跨语种短语偏置钳制在 `10–16 dB`；真实在线多语种束搜索解码耗时 `not_measured`，离线 `--locale auto` 实测 `RTF=0.057` `measured`）&amp; 多语种 TTS 统一声纹连续性锁（`timbreCosineSim &gt;= 0.94`）、自动 `SSML &lt;lang&gt;` 包裹与 `&lt;=15ms` 边界余弦交叉淡变护栏（拦截双模型硬拼接变声爆音与中式散装发音；真实神经声码器渲染耗时 `not_measured`）(`P735` / `P736` · Stage 371 · 374 维)</strong>
               </td>
               <td><code>P735 / P736 deterministic intra-sentence code-switching sub-word frame LID gate &amp; multilingual TTS timbre continuity boundary crossfade guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>375. [专题12 `docs/voice-edge-cloud-quantized-container-failover-faq.md`] 边缘非对称混合精度量化语音容器（`FP16` 前端/声码器 + `INT8/FP8` 编码器，词错率劣化 `&lt;=1.5%`）与广域网弱网/断网（`WAN RTT &lt;= 400ms`）本地逃生门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截全链路粗暴 `INT4` 量化电音失真与隧道断网超时失联；真实边缘 NPU 量化吞吐与广域网探针 RTT `not_measured`）&amp; 数据主权原始音频本地终结、`&lt;=35ms` 边缘内存令牌化与原始生物声纹（`d-vector`）零字节出境围栏（拦截未脱敏原声与声纹跨主权边界上云；真实边缘 NER 延迟 `not_measured`）(`P737` / `P738` · Stage 372 · 375 评测维度里程碑 · 747 护栏 &amp; 756 探针 · 375 维)</strong>
+              </td>
+              <td><code>P737 / P738 deterministic edge asymmetric quantized speech container WAN blackout fallback gate &amp; sovereign local audio residency zero-voiceprint cloud egress guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4281,9 +4288,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>374. [专题11 `docs/voice-multilingual-codeswitch-dialect-faq.md`] 句内中英粤混说（`Intra-Sentence Code-Switching`）统一子词解码、帧级语种路由（`&lt;=240ms`）与跨语种专业术语偏置门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截整句静态单语锁 `Static LID` 将句内英文单词强行转写为同音汉字乱码，将帧级 LID 窗口钳制在 `&lt;=240ms` 且跨语种短语偏置钳制在 `10–16 dB`；真实在线多语种束搜索解码耗时 `not_measured`，离线 `--locale auto` 实测 `RTF=0.057` `measured`）&amp; 多语种 TTS 统一声纹连续性锁（`timbreCosineSim &gt;= 0.94`）、自动 `SSML &lt;lang&gt;` 包裹与 `&lt;=15ms` 边界余弦交叉淡变护栏（拦截双模型硬拼接变声爆音与中式散装发音；真实神经声码器渲染耗时 `not_measured`）(`P735` / `P736` · Stage 371 · 374 评测维度里程碑 · 745 护栏 &amp; 754 探针 · 374 维)</strong>
+                <strong>374. [专题11 `docs/voice-multilingual-codeswitch-dialect-faq.md`] 句内中英粤混说（`Intra-Sentence Code-Switching`）统一子词解码、帧级语种路由（`&lt;=240ms`）与跨语种专业术语偏置门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截整句静态单语锁 `Static LID` 将句内英文单词强行转写为同音汉字乱码，将帧级 LID 窗口钳制在 `&lt;=240ms` 且跨语种短语偏置钳制在 `10–16 dB`；真实在线多语种束搜索解码耗时 `not_measured`，离线 `--locale auto` 实测 `RTF=0.057` `measured`）&amp; 多语种 TTS 统一声纹连续性锁（`timbreCosineSim &gt;= 0.94`）、自动 `SSML &lt;lang&gt;` 包裹与 `&lt;=15ms` 边界余弦交叉淡变护栏（拦截双模型硬拼接变声爆音与中式散装发音；真实神经声码器渲染耗时 `not_measured`）(`P735` / `P736` · Stage 371 · 374 维)</strong>
               </td>
               <td><code>P735 / P736 deterministic intra-sentence code-switching sub-word frame LID gate &amp; multilingual TTS timbre continuity boundary crossfade guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>375. [专题12 `docs/voice-edge-cloud-quantized-container-failover-faq.md`] 边缘非对称混合精度量化语音容器（`FP16` 前端/声码器 + `INT8/FP8` 编码器，词错率劣化 `&lt;=1.5%`）与广域网弱网/断网（`WAN RTT &lt;= 400ms`）本地逃生门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：拦截全链路粗暴 `INT4` 量化电音失真与隧道断网超时失联；真实边缘 NPU 量化吞吐与广域网探针 RTT `not_measured`）&amp; 数据主权原始音频本地终结、`&lt;=35ms` 边缘内存令牌化与原始生物声纹（`d-vector`）零字节出境围栏（拦截未脱敏原声与声纹跨主权边界上云；真实边缘 NER 延迟 `not_measured`）(`P737` / `P738` · Stage 372 · 375 评测维度里程碑 · 747 护栏 &amp; 756 探针 · 375 维)</strong>
+              </td>
+              <td><code>P737 / P738 deterministic edge asymmetric quantized speech container WAN blackout fallback gate &amp; sovereign local audio residency zero-voiceprint cloud egress guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

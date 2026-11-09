@@ -1429,6 +1429,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks utterance-level static LID locks and forced homophone transliterations, clamping frame LID window to <=240ms and cross-lingual phrase boost to 10-16 dB; live beam-search decoding latency is not_measured; offline --locale auto PoC measured at RTF=0.057)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks dual-model voice splicing and unwrapped foreign acronyms, clamping speaker timbre similarity to >=0.94 and boundary cosine crossfade to 5-15ms; live neural vocoder synthesis latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "375. [Topic 12: voice-edge-cloud-quantized-container-failover-faq] Edge Asymmetric Mixed-Precision Speech Container (FP16 Frontend/Vocoder + INT8/FP8 Bulk, <=1.5% WER Drift) & <=400ms WAN Blackout Fallback + Sovereign Local Audio Termination, <=35ms Edge Ephemeral Tokenization & 0-Byte Raw Voiceprint Cloud Egress (P737 / P738 — Stage 372 · 375-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks uniform INT4 vocoder phase collapse and unbridged WAN blackout timeouts, clamping WAN fallback RTT budget to <=400ms and quantized WER degradation to <=1.5%; live edge NPU/GPU inference and WAN RTT probing are not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks raw PCM audio and biometric d-vector voiceprints from egressing across sovereign boundaries, clamping edge PII tokenization budget to <=35ms and raw voiceprint cloud egress to 0 bytes; live edge NER latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

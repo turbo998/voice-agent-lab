@@ -69149,6 +69149,145 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface EdgeQuantizedSpeechContainerContext {
+      uniformInt4VocoderCollapseOrUnbridgedWanBlackoutDetected: boolean;
+      wanRttBudgetMs: number;
+      werDegradationPct: number;
+    }
+
+    export interface EdgeQuantizedSpeechContainerDecision {
+      violated: boolean;
+      policyId: "P737-EDGE-QUANTIZED-SPEECH-CONTAINER-WAN-BLACKOUT-FALLBACK-GUARD";
+      action:
+        | "enforce_asymmetric_fp16_int8_edge_container_and_wan_fallback_in_0ms"
+        | "clamp_wan_rtt_budget_and_quantization_wer_drift_ceiling"
+        | "allow";
+      reason: string;
+      clampedWanRttBudgetMs: number;
+      clampedWerDegradationPct: number;
+    }
+
+    export function evaluateEdgeQuantizedSpeechContainerWanBlackoutFallbackGate(
+      context: EdgeQuantizedSpeechContainerContext,
+    ): EdgeQuantizedSpeechContainerDecision {
+      const policyId =
+        "P737-EDGE-QUANTIZED-SPEECH-CONTAINER-WAN-BLACKOUT-FALLBACK-GUARD" as const;
+      const clampedWanRttBudgetMs = Math.min(
+        Math.max(context.wanRttBudgetMs, 150),
+        400,
+      );
+      const clampedWerDegradationPct = Math.min(
+        Math.max(context.werDegradationPct, 0),
+        1.5,
+      );
+
+      if (context.uniformInt4VocoderCollapseOrUnbridgedWanBlackoutDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_asymmetric_fp16_int8_edge_container_and_wan_fallback_in_0ms",
+          reason:
+            "Edge Quantized Speech Container & WAN Fallback Policy Check: edge deployment attempted uniform INT4 quantization across the acoustic frontend/vocoder or failed to switch to the local speech container during WAN blackout (RTT > 400ms); offline synthetic policy state machine enforcing asymmetric FP16 frontend/vocoder + INT8/FP8 encoder quantization (<=1.5% WER drift) and <=400ms WAN circuit-breaker fallback (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live edge NPU throughput and WAN RTT probing not_measured).",
+          clampedWanRttBudgetMs,
+          clampedWerDegradationPct,
+        };
+      }
+
+      if (context.wanRttBudgetMs > 400 || context.werDegradationPct > 1.5) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_wan_rtt_budget_and_quantization_wer_drift_ceiling",
+          reason:
+            "WAN fallback RTT threshold (>400ms synthetic ceiling) or quantized WER degradation (>1.5% synthetic ceiling) out of bounds; clamping WAN RTT budget to <=400ms and WER drift to <=1.5%.",
+          clampedWanRttBudgetMs,
+          clampedWerDegradationPct,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: asymmetric FP16/INT8 edge speech container (<=1.5% WER drift) and <=400ms WAN blackout fallback verified.",
+        clampedWanRttBudgetMs,
+        clampedWerDegradationPct,
+      };
+    }
+
+    export interface SovereignAudioResidencyContext {
+      rawAudioOrVoiceprintCrossBorderCloudEgressAttempted: boolean;
+      edgeTokenizationLatencyBudgetMs: number;
+      rawVoiceprintBytesEgressingCloud: number;
+    }
+
+    export interface SovereignAudioResidencyDecision {
+      violated: boolean;
+      policyId: "P738-SOVEREIGN-AUDIO-RESIDENCY-AND-LOCAL-VOICEPRINT-ZERO-CLOUD-EGRESS-GUARD";
+      action:
+        | "enforce_local_edge_audio_termination_and_ephemeral_pii_vault_scrub_in_0ms"
+        | "clamp_edge_tokenization_budget_and_zero_voiceprint_egress"
+        | "allow";
+      reason: string;
+      clampedEdgeTokenizationLatencyBudgetMs: number;
+      clampedRawVoiceprintBytesEgressingCloud: number;
+    }
+
+    export function evaluateSovereignAudioResidencyAndLocalVoiceprintZeroCloudEgressGate(
+      context: SovereignAudioResidencyContext,
+    ): SovereignAudioResidencyDecision {
+      const policyId =
+        "P738-SOVEREIGN-AUDIO-RESIDENCY-AND-LOCAL-VOICEPRINT-ZERO-CLOUD-EGRESS-GUARD" as const;
+      const clampedEdgeTokenizationLatencyBudgetMs = Math.min(
+        Math.max(context.edgeTokenizationLatencyBudgetMs, 5),
+        35,
+      );
+      const clampedRawVoiceprintBytesEgressingCloud = Math.max(
+        Math.min(context.rawVoiceprintBytesEgressingCloud, 0),
+        0,
+      );
+
+      if (context.rawAudioOrVoiceprintCrossBorderCloudEgressAttempted) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_local_edge_audio_termination_and_ephemeral_pii_vault_scrub_in_0ms",
+          reason:
+            "Sovereign Audio Residency & Zero-Voiceprint Cloud Egress Policy Check: raw unredacted PCM audio waveform or biometric d-vector voiceprint embedding attempted to egress across sovereign/on-prem boundaries to a public cloud endpoint; offline synthetic policy state machine enforcing local edge container audio termination, <=35ms ephemeral PII tokenization, and 0-byte raw voiceprint egress (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live edge NER/tokenization latency not_measured).",
+          clampedEdgeTokenizationLatencyBudgetMs,
+          clampedRawVoiceprintBytesEgressingCloud,
+        };
+      }
+
+      if (
+        context.edgeTokenizationLatencyBudgetMs > 35 ||
+        context.rawVoiceprintBytesEgressingCloud > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_edge_tokenization_budget_and_zero_voiceprint_egress",
+          reason:
+            "Edge PII tokenization latency budget (>35ms synthetic ceiling) or raw voiceprint cloud egress bytes (>0 bytes) out of bounds; clamping tokenization budget to <=35ms and raw voiceprint egress to 0 bytes.",
+          clampedEdgeTokenizationLatencyBudgetMs,
+          clampedRawVoiceprintBytesEgressingCloud,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: sovereign local audio termination, <=35ms edge PII tokenization, and 0-byte raw voiceprint cloud egress verified.",
+        clampedEdgeTokenizationLatencyBudgetMs,
+        clampedRawVoiceprintBytesEgressingCloud,
+      };
+    }
+
 
 
 
