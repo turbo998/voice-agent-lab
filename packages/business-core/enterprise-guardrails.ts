@@ -70157,6 +70157,156 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    // ============================================================================
+    // Stage 379 (P751–P752): Topic 19 — Far-Field 85dB MVDR Beamforming Cone &
+    // Low-SNR Anti-Hallucination Hold + Industrial OSHA LOTO Challenge Interlock
+    // ============================================================================
+
+    export interface FarfieldMvdrBeamformingAndLowSnrContext {
+      offAxisCrosstalkOrLowSnrPhonemeHallucinationCommitDetected: boolean;
+      beamformingHalfAngleDeg: number;
+      minDecodeSnrDb: number;
+    }
+
+    export interface FarfieldMvdrBeamformingAndLowSnrDecision {
+      violated: boolean;
+      policyId: "P751-FARFIELD-MVDR-BEAMFORMING-CONE-AND-LOW-SNR-PHONEME-HALLUCINATION-GUARD";
+      action:
+        | "enforce_mvdr_25deg_beam_cone_and_hold_low_snr_hallucination_in_0ms"
+        | "clamp_beamforming_cone_angle_and_min_decode_snr_floor"
+        | "allow";
+      reason: string;
+      clampedBeamformingHalfAngleDeg: number;
+      clampedMinDecodeSnrDb: number;
+    }
+
+    export function evaluateFarfieldMvdrBeamformingConeAndLowSnrHallucinationGate(
+      context: FarfieldMvdrBeamformingAndLowSnrContext,
+    ): FarfieldMvdrBeamformingAndLowSnrDecision {
+      const policyId =
+        "P751-FARFIELD-MVDR-BEAMFORMING-CONE-AND-LOW-SNR-PHONEME-HALLUCINATION-GUARD" as const;
+      const clampedBeamformingHalfAngleDeg = Math.min(
+        Math.max(context.beamformingHalfAngleDeg, 5),
+        25,
+      );
+      const clampedMinDecodeSnrDb = Math.min(
+        Math.max(context.minDecodeSnrDb, 6.0),
+        20.0,
+      );
+
+      if (context.offAxisCrosstalkOrLowSnrPhonemeHallucinationCommitDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_mvdr_25deg_beam_cone_and_hold_low_snr_hallucination_in_0ms",
+          reason:
+            "Far-Field MVDR Beamforming Cone & Low-SNR Anti-Hallucination Policy Check: pipeline ingested adjacent-lane/rear-seat crosstalk outside the +-25 deg spatial cone or committed hallucinated phoneme tokens during a <6.0 dB noise transient; offline synthetic policy state machine clamping MVDR half-angle to <=25 deg and holding commits below 6.0 dB SNR (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live edge MVDR array DSP latency not_measured).",
+          clampedBeamformingHalfAngleDeg,
+          clampedMinDecodeSnrDb,
+        };
+      }
+
+      if (
+        context.beamformingHalfAngleDeg > 25 ||
+        context.minDecodeSnrDb < 6.0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_beamforming_cone_angle_and_min_decode_snr_floor",
+          reason:
+            "MVDR beamforming half-angle (>25 deg synthetic ceiling) or minimum decode SNR floor (<6.0 dB synthetic floor) out of bounds; clamping half-angle to <=25 deg and minimum SNR to >=6.0 dB.",
+          clampedBeamformingHalfAngleDeg,
+          clampedMinDecodeSnrDb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: MVDR beamforming half-angle <=25 deg and >=6.0 dB low-SNR anti-hallucination hold verified.",
+        clampedBeamformingHalfAngleDeg,
+        clampedMinDecodeSnrDb,
+      };
+    }
+
+    export interface IndustrialOshaLotoChallengeInterlockContext {
+      unconfirmedSingleTurnIndustrialActuationOrLotoBypassDetected: boolean;
+      challengeCodeDigits: number;
+      minActuationConfidence: number;
+    }
+
+    export interface IndustrialOshaLotoChallengeInterlockDecision {
+      violated: boolean;
+      policyId: "P752-INDUSTRIAL-HANDSFREE-OSHA-LOTO-CHALLENGE-READBACK-INTERLOCK-GUARD";
+      action:
+        | "enforce_osha_loto_4digit_challenge_readback_and_deadman_interlock_in_0ms"
+        | "clamp_loto_challenge_digits_and_actuation_confidence_floor"
+        | "allow";
+      reason: string;
+      clampedChallengeCodeDigits: number;
+      clampedMinActuationConfidence: number;
+    }
+
+    export function evaluateIndustrialHandsfreeOshaLotoChallengeReadbackInterlockGate(
+      context: IndustrialOshaLotoChallengeInterlockContext,
+    ): IndustrialOshaLotoChallengeInterlockDecision {
+      const policyId =
+        "P752-INDUSTRIAL-HANDSFREE-OSHA-LOTO-CHALLENGE-READBACK-INTERLOCK-GUARD" as const;
+      const clampedChallengeCodeDigits = Math.min(
+        Math.max(context.challengeCodeDigits, 4),
+        8,
+      );
+      const clampedMinActuationConfidence = Math.min(
+        Math.max(context.minActuationConfidence, 0.92),
+        1.0,
+      );
+
+      if (
+        context.unconfirmedSingleTurnIndustrialActuationOrLotoBypassDetected
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_osha_loto_4digit_challenge_readback_and_deadman_interlock_in_0ms",
+          reason:
+            "Industrial Hands-Free OSHA 1910.147 LOTO Challenge-Readback Interlock Policy Check: pipeline attempted single-turn voice execution of a physical PLC/SCADA valve/breaker/LOTO actuation without bone-conduction verification, >=4-digit challenge readback, and physical dead-man switch confirmation; offline synthetic policy state machine enforcing >=4 challenge digits and >=0.92 acoustic confidence (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live PLC fieldbus RTT not_measured).",
+          clampedChallengeCodeDigits,
+          clampedMinActuationConfidence,
+        };
+      }
+
+      if (
+        context.challengeCodeDigits < 4 ||
+        context.minActuationConfidence < 0.92
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_loto_challenge_digits_and_actuation_confidence_floor",
+          reason:
+            "OSHA LOTO challenge code length (<4 digits synthetic floor) or minimum actuation acoustic confidence (<0.92 synthetic floor) out of bounds; clamping challenge digits to >=4 and confidence to >=0.92.",
+          clampedChallengeCodeDigits,
+          clampedMinActuationConfidence,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: OSHA 1910.147 LOTO >=4-digit challenge readback, >=0.92 acoustic confidence, and physical dead-man interlock verified.",
+        clampedChallengeCodeDigits,
+        clampedMinActuationConfidence,
+      };
+    }
+
+
 
 
 
