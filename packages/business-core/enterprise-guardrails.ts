@@ -72541,6 +72541,147 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcFlexfecOpusLbrrCongestionSpiralContext {
+      unboundedFecDuringQueueCongestionDetected: boolean;
+      maxFecOverheadPct: number;
+      maxTotalAudioFecBwePct: number;
+    }
+
+    export interface WebrtcFlexfecOpusLbrrCongestionSpiralDecision {
+      violated: boolean;
+      policyId: "P785-WEBRTC-FLEXFEC-OPUS-LBRR-CONGESTION-SPIRAL-AND-OVERHEAD-GUARD";
+      action:
+        | "webrtc_fec_congestion_spiral_blocked"
+        | "clamp_fec_overhead_and_total_bwe_pct"
+        | "allow";
+      reason: string;
+      clampedMaxFecOverheadPct: number;
+      clampedMaxTotalAudioFecBwePct: number;
+    }
+
+    export function evaluateWebrtcFlexfecOpusLbrrCongestionSpiralAndOverheadGate(
+      context: WebrtcFlexfecOpusLbrrCongestionSpiralContext,
+    ): WebrtcFlexfecOpusLbrrCongestionSpiralDecision {
+      const policyId =
+        "P785-WEBRTC-FLEXFEC-OPUS-LBRR-CONGESTION-SPIRAL-AND-OVERHEAD-GUARD" as const;
+      const clampedMaxFecOverheadPct = Math.min(
+        Math.max(context.maxFecOverheadPct, 5),
+        25,
+      );
+      const clampedMaxTotalAudioFecBwePct = Math.min(
+        Math.max(context.maxTotalAudioFecBwePct, 50),
+        85,
+      );
+
+      if (context.unboundedFecDuringQueueCongestionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "webrtc_fec_congestion_spiral_blocked",
+          reason:
+            "WebRTC RFC 8627 FlexFEC / Opus LBRR Anti-Congestion Spiral Policy Check: sender injected >25% FEC parity or pushed total Audio+FEC bitrate above 85% of TWCC BWE during bottleneck queue congestion (triggering a self-induced packet-loss spiral from 5% to 48%); offline synthetic policy state machine enforcing Opus source-rate downshift first, <=25% FEC overhead cap, and <=85% BWE total ceiling (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live FlexFEC XOR recovery latency not_measured).",
+          clampedMaxFecOverheadPct,
+          clampedMaxTotalAudioFecBwePct,
+        };
+      }
+
+      if (
+        context.maxFecOverheadPct > 25 ||
+        context.maxTotalAudioFecBwePct > 85
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_fec_overhead_and_total_bwe_pct",
+          reason:
+            "FEC redundancy overhead (>25% synthetic ceiling) or combined Audio+FEC BWE utilization (>85% synthetic ceiling) out of bounds; clamping FEC overhead to <=25% and total Audio+FEC BWE budget to <=85%.",
+          clampedMaxFecOverheadPct,
+          clampedMaxTotalAudioFecBwePct,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Opus source-rate downshift priority, <=25% FEC overhead cap, and <=85% TWCC BWE headroom verified.",
+        clampedMaxFecOverheadPct,
+        clampedMaxTotalAudioFecBwePct,
+      };
+    }
+
+    export interface WebrtcRfc2198RedNestingBombContext {
+      recursiveRedInRedOrOffsetOverflowDetected: boolean;
+      maxRedBlocksPerPacket: number;
+      maxRedTimestampOffsetTicks: number;
+    }
+
+    export interface WebrtcRfc2198RedNestingBombDecision {
+      violated: boolean;
+      policyId: "P786-WEBRTC-RFC2198-RED-RECURSIVE-NESTING-BOMB-AND-OFFSET-GUARD";
+      action:
+        | "webrtc_rfc2198_red_nesting_or_offset_blocked"
+        | "clamp_red_blocks_and_timestamp_offset"
+        | "allow";
+      reason: string;
+      clampedMaxRedBlocksPerPacket: number;
+      clampedMaxRedTimestampOffsetTicks: number;
+    }
+
+    export function evaluateWebrtcRfc2198RedRecursiveNestingBombAndOffsetGate(
+      context: WebrtcRfc2198RedNestingBombContext,
+    ): WebrtcRfc2198RedNestingBombDecision {
+      const policyId =
+        "P786-WEBRTC-RFC2198-RED-RECURSIVE-NESTING-BOMB-AND-OFFSET-GUARD" as const;
+      const clampedMaxRedBlocksPerPacket = Math.min(
+        Math.max(context.maxRedBlocksPerPacket, 1),
+        2,
+      );
+      const clampedMaxRedTimestampOffsetTicks = Math.min(
+        Math.max(context.maxRedTimestampOffsetTicks, 960),
+        4800,
+      );
+
+      if (context.recursiveRedInRedOrOffsetOverflowDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "webrtc_rfc2198_red_nesting_or_offset_blocked",
+          reason:
+            "WebRTC RFC 2198 audio/red Recursive Nesting Bomb & Offset Policy Check: inbound RFC 2198 packet contained self-referential RED-in-RED payload types (causing recursive parser stack overflow), >2 redundant blocks, or 14-bit timestamp offset >4,800 ticks (>100ms at 48kHz); offline synthetic policy state machine enforcing 0 RED-in-RED recursion, <=2 redundant blocks/packet, and <=4,800-tick timestamp offset (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RFC 2198 packet unpacking latency not_measured).",
+          clampedMaxRedBlocksPerPacket,
+          clampedMaxRedTimestampOffsetTicks,
+        };
+      }
+
+      if (
+        context.maxRedBlocksPerPacket > 2 ||
+        context.maxRedTimestampOffsetTicks > 4800
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_red_blocks_and_timestamp_offset",
+          reason:
+            "RFC 2198 redundant block count (>2 synthetic ceiling) or 14-bit timestamp offset (>4,800 ticks synthetic ceiling) out of bounds; clamping redundant blocks to <=2 and timestamp offset to <=4,800 ticks.",
+          clampedMaxRedBlocksPerPacket,
+          clampedMaxRedTimestampOffsetTicks,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 0 RED-in-RED recursion, <=2 redundant blocks per packet, and <=4,800-tick (100ms@48kHz) timestamp offset verified.",
+        clampedMaxRedBlocksPerPacket,
+        clampedMaxRedTimestampOffsetTicks,
+      };
+    }
+
+
 
 
 

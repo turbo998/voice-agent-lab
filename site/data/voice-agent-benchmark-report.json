@@ -1569,9 +1569,15 @@
       "delta_pts": 0.0
     },
     {
-      "question": "398. [Topic 35: voice-edge-hsm-ff1-tokenization-symmetric-rtp-latching-faq] Edge SBC/HSM NIST SP 800-38G FF1 Format-Preserving Tokenization (0 Cloud Plaintext, <=5ms) + RFC 4961 Crypto-Authenticated RTP Latching (Anti-RTP-Bleed) & RFC 5761 rtcp-mux Guard (P783 / P784 — Stage 395 · Historic 398-Dimension Milestone)",
+      "question": "398. [Topic 35: voice-edge-hsm-ff1-tokenization-symmetric-rtp-latching-faq] Edge SBC/HSM NIST SP 800-38G FF1 Format-Preserving Tokenization (0 Cloud Plaintext, <=5ms) + RFC 4961 Crypto-Authenticated RTP Latching (Anti-RTP-Bleed) & RFC 5761 rtcp-mux Guard (P783 / P784 — Stage 395 · 398-Dimension Milestone)",
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks plaintext 16-digit PAN/SSN entering cloud AI memory and schema-breaking UUID tokens, enforcing 0 cloud plaintext digits and <=5ms DMZ edge HSM NIST FF1 tokenization; live PCIe HSM FF1 cipher latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks blind first-packet RFC 4961 RTP Bleed audio hijacking and dual-port RTP+RTCP waste, enforcing 0 unauthenticated NAT re-latches and 1 UDP port/stream via RFC 5761 rtcp-mux; live kernel SRTP HMAC verification latency is not_measured)",
+      "delta_pts": 0.0
+    },
+    {
+      "question": "399. [Topic 36: voice-webrtc-flexfec-lbrr-congestion-spiral-rfc2198-red-faq] WebRTC RFC 8627 FlexFEC / Opus LBRR Anti-Congestion Spiral (<=25% Overhead, <=85% BWE) + RFC 2198 audio/red Zero-Recursion (<=2 Blocks) & 14-Bit Offset (<=4,800 Ticks) Guard (P785 / P786 — Stage 396 · Historic 399-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 2x/3x FEC redundancy inflation during bottleneck queue congestion that causes 48.5% self-inflicted packet loss, clamping FEC overhead to <=25% and combined Audio+FEC bitrate to <=85% BWE; live FlexFEC XOR recovery latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks recursive RED-in-RED payload-type nesting bombs and >4,800-tick (>100ms) stale timestamp offsets, enforcing <=2 redundant blocks/packet and <=4,800-tick offsets; live RFC 2198 unpacking latency is not_measured)",
       "delta_pts": 0.0
     }
   ],
