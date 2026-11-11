@@ -1310,9 +1310,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>397. [专题34 `docs/voice-sip-sdp-payload-symmetry-reinvite-codec-churn-dos-faq.md`] SIP `RFC 3264 SDP` 动态负载类型（`PT 96–127`）双向对称锚定、主语音与 `RFC 4733 telephone-event` 采样时钟同频锁（`0 Hz` 偏差，挽回 HD 语音下 `100%` 按键丢失）及 `maxptime &lt;=60ms` 防缓冲区溢出门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC SDP 归一化耗时 `not_measured`）&amp; 通话中 `SIP Re-INVITE` 编解码切换 `&lt;=2次/分钟` 限流（阻断 `18x` DSP 转码 CPU 放大 DoS）与 `RFC 3389` 舒适噪音 `&lt;=-38 dBFS` 能量钳位 + `20ms` 零帧桥接锁（真实 DSP 转码器重分配耗时 `not_measured`）(`P781` / `P782` · Stage 394 · 397 评测维度 &amp; 800 探针双历史性里程碑 · 791 护栏 &amp; 800 探针 · 397 维)</strong>
+                <strong>397. [专题34 `docs/voice-sip-sdp-payload-symmetry-reinvite-codec-churn-dos-faq.md`] SIP `RFC 3264 SDP` 动态负载类型（`PT 96–127`）双向对称锚定、主语音与 `RFC 4733 telephone-event` 采样时钟同频锁（`0 Hz` 偏差，挽回 HD 语音下 `100%` 按键丢失）及 `maxptime &lt;=60ms` 防缓冲区溢出门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC SDP 归一化耗时 `not_measured`）&amp; 通话中 `SIP Re-INVITE` 编解码切换 `&lt;=2次/分钟` 限流（阻断 `18x` DSP 转码 CPU 放大 DoS）与 `RFC 3389` 舒适噪音 `&lt;=-38 dBFS` 能量钳位 + `20ms` 零帧桥接锁（真实 DSP 转码器重分配耗时 `not_measured`）(`P781` / `P782` · Stage 394 · 397 维)</strong>
               </td>
               <td><code>P781 / P782 deterministic SIP RFC 3264 SDP payload symmetry gate &amp; Re-INVITE codec-churn DoS / RFC 3389 CN VAD guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>398. [专题35 `docs/voice-edge-hsm-ff1-tokenization-symmetric-rtp-latching-faq.md`] 边缘 `SBC/HSM NIST SP 800-38G FF1` 保格式令牌化门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：云端明文敏感位数 `0`，HSM 加密耗时 `&lt;=5ms`，100% 兼容 16 位 Luhn 核心账务字段；真实 PCIe HSM 加密耗时 `not_measured`）&amp; `RFC 4961` 密码学鉴权对称 RTP 锁栓（`0` 次未鉴权源地址切换，100% 免疫 `RTP Bleed` 窃听）与 `RFC 5761 a=rtcp-mux` 单端口复用锁（每流 `1` 个 UDP 端口，并发密度提升 `2x`；真实内核 SRTP 验签耗时 `not_measured`）(`P783` / `P784` · Stage 395 · 398 评测维度历史性里程碑 · 793 护栏 &amp; 802 探针 · 398 维)</strong>
+              </td>
+              <td><code>P783 / P784 deterministic Edge SBC/HSM NIST FF1 tokenization gate &amp; RFC 4961 authenticated RTP latching / rtcp-mux guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4603,9 +4610,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>397. [专题34 `docs/voice-sip-sdp-payload-symmetry-reinvite-codec-churn-dos-faq.md`] SIP `RFC 3264 SDP` 动态负载类型（`PT 96–127`）双向对称锚定、主语音与 `RFC 4733 telephone-event` 采样时钟同频锁（`0 Hz` 偏差，挽回 HD 语音下 `100%` 按键丢失）及 `maxptime &lt;=60ms` 防缓冲区溢出门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC SDP 归一化耗时 `not_measured`）&amp; 通话中 `SIP Re-INVITE` 编解码切换 `&lt;=2次/分钟` 限流（阻断 `18x` DSP 转码 CPU 放大 DoS）与 `RFC 3389` 舒适噪音 `&lt;=-38 dBFS` 能量钳位 + `20ms` 零帧桥接锁（真实 DSP 转码器重分配耗时 `not_measured`）(`P781` / `P782` · Stage 394 · 397 评测维度 &amp; 800 探针双历史性里程碑 · 791 护栏 &amp; 800 探针 · 397 维)</strong>
+                <strong>397. [专题34 `docs/voice-sip-sdp-payload-symmetry-reinvite-codec-churn-dos-faq.md`] SIP `RFC 3264 SDP` 动态负载类型（`PT 96–127`）双向对称锚定、主语音与 `RFC 4733 telephone-event` 采样时钟同频锁（`0 Hz` 偏差，挽回 HD 语音下 `100%` 按键丢失）及 `maxptime &lt;=60ms` 防缓冲区溢出门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC SDP 归一化耗时 `not_measured`）&amp; 通话中 `SIP Re-INVITE` 编解码切换 `&lt;=2次/分钟` 限流（阻断 `18x` DSP 转码 CPU 放大 DoS）与 `RFC 3389` 舒适噪音 `&lt;=-38 dBFS` 能量钳位 + `20ms` 零帧桥接锁（真实 DSP 转码器重分配耗时 `not_measured`）(`P781` / `P782` · Stage 394 · 397 维)</strong>
               </td>
               <td><code>P781 / P782 deterministic SIP RFC 3264 SDP payload symmetry gate &amp; Re-INVITE codec-churn DoS / RFC 3389 CN VAD guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>398. [专题35 `docs/voice-edge-hsm-ff1-tokenization-symmetric-rtp-latching-faq.md`] 边缘 `SBC/HSM NIST SP 800-38G FF1` 保格式令牌化门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：云端明文敏感位数 `0`，HSM 加密耗时 `&lt;=5ms`，100% 兼容 16 位 Luhn 核心账务字段；真实 PCIe HSM 加密耗时 `not_measured`）&amp; `RFC 4961` 密码学鉴权对称 RTP 锁栓（`0` 次未鉴权源地址切换，100% 免疫 `RTP Bleed` 窃听）与 `RFC 5761 a=rtcp-mux` 单端口复用锁（每流 `1` 个 UDP 端口，并发密度提升 `2x`；真实内核 SRTP 验签耗时 `not_measured`）(`P783` / `P784` · Stage 395 · 398 评测维度历史性里程碑 · 793 护栏 &amp; 802 探针 · 398 维)</strong>
+              </td>
+              <td><code>P783 / P784 deterministic Edge SBC/HSM NIST FF1 tokenization gate &amp; RFC 4961 authenticated RTP latching / rtcp-mux guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

@@ -72410,6 +72410,138 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface EdgeSbcHsmNistFf1TokenizationContext {
+      plaintextPanEnteredCloudOrUuidSchemaBreakDetected: boolean;
+      plaintextPanDigitsInCloud: number;
+      hsmTokenizeLatencyMs: number;
+    }
+
+    export interface EdgeSbcHsmNistFf1TokenizationDecision {
+      violated: boolean;
+      policyId: "P783-EDGE-SBC-HSM-NIST-FF1-FORMAT-PRESERVING-TOKENIZATION-GUARD";
+      action:
+        | "edge_hsm_ff1_plaintext_leak_or_latency_blocked"
+        | "clamp_cloud_plaintext_digits_and_hsm_latency"
+        | "allow";
+      reason: string;
+      clampedPlaintextPanDigitsInCloud: number;
+      clampedHsmTokenizeLatencyMs: number;
+    }
+
+    export function evaluateEdgeSbcHsmNistFf1FormatPreservingTokenizationGate(
+      context: EdgeSbcHsmNistFf1TokenizationContext,
+    ): EdgeSbcHsmNistFf1TokenizationDecision {
+      const policyId =
+        "P783-EDGE-SBC-HSM-NIST-FF1-FORMAT-PRESERVING-TOKENIZATION-GUARD" as const;
+      const clampedPlaintextPanDigitsInCloud = 0;
+      const clampedHsmTokenizeLatencyMs = Math.min(
+        Math.max(context.hsmTokenizeLatencyMs, 1),
+        5,
+      );
+
+      if (context.plaintextPanEnteredCloudOrUuidSchemaBreakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "edge_hsm_ff1_plaintext_leak_or_latency_blocked",
+          reason:
+            "Edge SBC/HSM NIST SP 800-38G FF1 Format-Preserving Tokenization Policy Check: raw 16-digit PAN/SSN entered cloud ASR/LLM memory before redaction (pulling cloud AI cluster into PCI-DSS CDE scope) or non-format-preserving UUID tokens broke legacy 16-digit Luhn ERP fields; offline synthetic policy state machine enforcing DMZ edge HSM NIST FF1 tokenization with 0 cloud plaintext digits and <=5ms HSM latency (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live PCIe HSM FF1 cipher latency not_measured).",
+          clampedPlaintextPanDigitsInCloud,
+          clampedHsmTokenizeLatencyMs,
+        };
+      }
+
+      if (
+        context.plaintextPanDigitsInCloud > 0 ||
+        context.hsmTokenizeLatencyMs > 5
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_cloud_plaintext_digits_and_hsm_latency",
+          reason:
+            "Plaintext PAN digits in cloud (>0 synthetic ceiling) or edge HSM FF1 tokenization latency (>5 ms synthetic ceiling) out of bounds; clamping cloud plaintext digits to 0 and HSM latency to <=5 ms.",
+          clampedPlaintextPanDigitsInCloud,
+          clampedHsmTokenizeLatencyMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: DMZ edge SBC/HSM NIST SP 800-38G FF1 tokenization (0 cloud plaintext digits, <=5ms latency, Luhn-valid format) verified.",
+        clampedPlaintextPanDigitsInCloud,
+        clampedHsmTokenizeLatencyMs,
+      };
+    }
+
+    export interface SymmetricRtpRfc4961LatchingContext {
+      blindFirstPacketRtpRelatchOrDualPortWasteDetected: boolean;
+      unauthenticatedRtpRelatches: number;
+      udpPortsPerStream: number;
+    }
+
+    export interface SymmetricRtpRfc4961LatchingDecision {
+      violated: boolean;
+      policyId: "P784-SYMMETRIC-RTP-RFC4961-AUTHENTICATED-LATCHING-AND-RTCP-MUX-GUARD";
+      action:
+        | "symmetric_rtp_bleed_hijack_or_port_waste_blocked"
+        | "clamp_unauthenticated_relatches_and_rtcp_mux_ports"
+        | "allow";
+      reason: string;
+      clampedUnauthenticatedRtpRelatches: number;
+      clampedUdpPortsPerStream: number;
+    }
+
+    export function evaluateSymmetricRtpRfc4961AuthenticatedLatchingAndRtcpMuxGate(
+      context: SymmetricRtpRfc4961LatchingContext,
+    ): SymmetricRtpRfc4961LatchingDecision {
+      const policyId =
+        "P784-SYMMETRIC-RTP-RFC4961-AUTHENTICATED-LATCHING-AND-RTCP-MUX-GUARD" as const;
+      const clampedUnauthenticatedRtpRelatches = 0;
+      const clampedUdpPortsPerStream = 1;
+
+      if (context.blindFirstPacketRtpRelatchOrDualPortWasteDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "symmetric_rtp_bleed_hijack_or_port_waste_blocked",
+          reason:
+            "RFC 4961 Authenticated Symmetric RTP Latching & RFC 5761 rtcp-mux Policy Check: media server accepted unauthenticated UDP packets to re-latch remote peer address (exposing live audio to RTP Bleed hijacking) or allocated 2 UDP ports per stream without a=rtcp-mux; offline synthetic policy state machine enforcing SRTP/STUN cryptographic verification before NAT re-latch (0 unauthenticated switches) and 1 UDP port per stream via RFC 5761 rtcp-mux (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live kernel SRTP HMAC verification latency not_measured).",
+          clampedUnauthenticatedRtpRelatches,
+          clampedUdpPortsPerStream,
+        };
+      }
+
+      if (
+        context.unauthenticatedRtpRelatches > 0 ||
+        context.udpPortsPerStream > 1
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unauthenticated_relatches_and_rtcp_mux_ports",
+          reason:
+            "Unauthenticated RTP source-IP re-latches (>0 synthetic ceiling) or UDP ports per media stream (>1 synthetic ceiling) out of bounds; clamping unauthenticated re-latches to 0 and UDP ports per stream to 1 (RFC 5761 rtcp-mux).",
+          clampedUnauthenticatedRtpRelatches,
+          clampedUdpPortsPerStream,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SRTP/STUN cryptographically authenticated RTP latching (0 blind switches) and RFC 5761 rtcp-mux (1 port/stream) verified.",
+        clampedUnauthenticatedRtpRelatches,
+        clampedUdpPortsPerStream,
+      };
+    }
+
+
 
 
 

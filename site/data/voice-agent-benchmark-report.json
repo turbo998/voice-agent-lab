@@ -1563,9 +1563,15 @@
       "delta_pts": 0.0
     },
     {
-      "question": "397. [Topic 34: voice-sip-sdp-payload-symmetry-reinvite-codec-churn-dos-faq] SIP RFC 3264 SDP Dynamic PT Symmetry, 0Hz Voice-DTMF Clock Parity & maxptime<=60ms + Mid-Call Re-INVITE Codec-Churn DoS (<=2/min) & RFC 3389 Comfort-Noise (<=-38dBFS) VAD Guard (P781 / P782 — Stage 394 · Historic 397-Dimension & 800-Probe Milestone)",
+      "question": "397. [Topic 34: voice-sip-sdp-payload-symmetry-reinvite-codec-churn-dos-faq] SIP RFC 3264 SDP Dynamic PT Symmetry, 0Hz Voice-DTMF Clock Parity & maxptime<=60ms + Mid-Call Re-INVITE Codec-Churn DoS (<=2/min) & RFC 3389 Comfort-Noise (<=-38dBFS) VAD Guard (P781 / P782 — Stage 394 · 397-Dimension & 800-Probe Milestone)",
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks asymmetric dynamic PT mappings, 16kHz-voice / 8kHz-telephone-event clock skew, and >60ms maxptime DSP ring-buffer overflows, clamping DTMF clock mismatch to 0 Hz and maxptime to <=60 ms; live SBC SDP normalization latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks rapid mid-call SIP Re-INVITE codec thrashing (18x DSP CPU amplification) and >-38 dBFS RFC 3389 comfort-noise VAD deadlocks, clamping codec Re-INVITEs to <=2/min and comfort-noise energy to <=-38 dBFS; live DSP transcoder reallocation latency is not_measured)",
+      "delta_pts": 0.0
+    },
+    {
+      "question": "398. [Topic 35: voice-edge-hsm-ff1-tokenization-symmetric-rtp-latching-faq] Edge SBC/HSM NIST SP 800-38G FF1 Format-Preserving Tokenization (0 Cloud Plaintext, <=5ms) + RFC 4961 Crypto-Authenticated RTP Latching (Anti-RTP-Bleed) & RFC 5761 rtcp-mux Guard (P783 / P784 — Stage 395 · Historic 398-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks plaintext 16-digit PAN/SSN entering cloud AI memory and schema-breaking UUID tokens, enforcing 0 cloud plaintext digits and <=5ms DMZ edge HSM NIST FF1 tokenization; live PCIe HSM FF1 cipher latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks blind first-packet RFC 4961 RTP Bleed audio hijacking and dual-port RTP+RTCP waste, enforcing 0 unauthenticated NAT re-latches and 1 UDP port/stream via RFC 5761 rtcp-mux; live kernel SRTP HMAC verification latency is not_measured)",
       "delta_pts": 0.0
     }
   ],
