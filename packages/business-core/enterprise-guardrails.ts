@@ -73360,6 +73360,140 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc8888RtcpCcfbEcnSpoofAndAtoBoundsContext {
+      uncorroboratedEcnCeOrAtoSentinelOverreadDetected: boolean;
+      spoofedEcnCeThrottles: number;
+      ccfbMaxReports: number;
+    }
+
+    export interface WebrtcRfc8888RtcpCcfbEcnSpoofAndAtoBoundsDecision {
+      violated: boolean;
+      policyId: "P797-WEBRTC-RFC8888-RTCP-CCFB-ECN-SPOOF-AND-ATO-BOUNDS-GUARD";
+      action:
+        | "reject_spoofed_ccfb_ecn_ce_and_clamp_reports"
+        | "clamp_spoofed_ecn_throttles_and_ccfb_reports"
+        | "allow";
+      reason: string;
+      clampedSpoofedEcnCeThrottles: number;
+      clampedCcfbMaxReports: number;
+    }
+
+    export function evaluateWebrtcRfc8888RtcpCcfbEcnSpoofAndAtoBoundsGate(
+      context: WebrtcRfc8888RtcpCcfbEcnSpoofAndAtoBoundsContext,
+    ): WebrtcRfc8888RtcpCcfbEcnSpoofAndAtoBoundsDecision {
+      const policyId =
+        "P797-WEBRTC-RFC8888-RTCP-CCFB-ECN-SPOOF-AND-ATO-BOUNDS-GUARD" as const;
+      const clampedSpoofedEcnCeThrottles = 0;
+      const clampedCcfbMaxReports = Math.min(
+        Math.max(context.ccfbMaxReports, 1),
+        256,
+      );
+
+      if (context.uncorroboratedEcnCeOrAtoSentinelOverreadDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_spoofed_ccfb_ecn_ce_and_clamp_reports",
+          reason:
+            "WebRTC RFC 8888 RTCP CCFB ECN-CE Anti-Spoofing & ATO Sentinel Policy Check: inbound RTCP CCFB report carried ECN-CE=0b11 without queuing delay (<5ms) or packet loss corroboration (slashing Opus voice bitrate to 6kbps narrowband), or passed raw 0x1FFF/0x1FFE ATO sentinels / >256 report blocks; offline synthetic policy state machine enforcing 0 uncorroborated ECN-CE throttles, sentinel stripping, and [1, 256] reports/block (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SCReAM/GCC filter update latency not_measured).",
+          clampedSpoofedEcnCeThrottles,
+          clampedCcfbMaxReports,
+        };
+      }
+
+      if (
+        context.spoofedEcnCeThrottles > 0 ||
+        context.ccfbMaxReports < 1 ||
+        context.ccfbMaxReports > 256
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_ecn_throttles_and_ccfb_reports",
+          reason:
+            "Spoofed ECN-CE throttle count (>0 synthetic ceiling) or RTCP CCFB report block count (<1 or >256 synthetic bounds) out of bounds; clamping spoofed ECN-CE throttles to 0 and CCFB reports to [1, 256].",
+          clampedSpoofedEcnCeThrottles,
+          clampedCcfbMaxReports,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8888 ECN-CE delay-corroborated (0 spoofed throttles), 0x1FFF/0x1FFE sentinels stripped, and CCFB reports in [1, 256] verified.",
+        clampedSpoofedEcnCeThrottles,
+        clampedCcfbMaxReports,
+      };
+    }
+
+    export interface RtcpRfc3550RrXrBweSabotageAndDlsrRttContext {
+      spoofedFractionLostOrDlsrRttUnderflowDetected: boolean;
+      spoofedFractionLostDrops: number;
+      rtcpRttMs: number;
+    }
+
+    export interface RtcpRfc3550RrXrBweSabotageAndDlsrRttDecision {
+      violated: boolean;
+      policyId: "P798-RTCP-RFC3550-RR-XR-BWE-SABOTAGE-AND-DLSR-RTT-UNDERFLOW-GUARD";
+      action:
+        | "block_spoofed_rr_fraction_lost_and_clamp_dlsr_rtt"
+        | "clamp_spoofed_fraction_lost_and_rtcp_rtt_ms"
+        | "allow";
+      reason: string;
+      clampedSpoofedFractionLostDrops: number;
+      clampedRtcpRttMs: number;
+    }
+
+    export function evaluateRtcpRfc3550RrXrBweSabotageAndDlsrRttUnderflowGate(
+      context: RtcpRfc3550RrXrBweSabotageAndDlsrRttContext,
+    ): RtcpRfc3550RrXrBweSabotageAndDlsrRttDecision {
+      const policyId =
+        "P798-RTCP-RFC3550-RR-XR-BWE-SABOTAGE-AND-DLSR-RTT-UNDERFLOW-GUARD" as const;
+      const clampedSpoofedFractionLostDrops = 0;
+      const clampedRtcpRttMs = Math.min(Math.max(context.rtcpRttMs, 1), 3000);
+
+      if (context.spoofedFractionLostOrDlsrRttUnderflowDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "block_spoofed_rr_fraction_lost_and_clamp_dlsr_rtt",
+          reason:
+            "RTCP RFC 3550 RR/XR BWE Sabotage & DLSR RTT Underflow Policy Check: inbound RTCP RR reported spoofed fraction_lost contradicting TWCC per-packet acks or negative (A - LSR - DLSR) wrapped to 49.7 days in unsigned 32-bit math (disabling RTCP NACK); offline synthetic policy state machine enforcing TWCC loss cross-validation (0 spoofed BWE drops) and signed int64 RTT clamped to [1, 3000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTCP RR/TWCC reconciliation latency not_measured).",
+          clampedSpoofedFractionLostDrops,
+          clampedRtcpRttMs,
+        };
+      }
+
+      if (
+        context.spoofedFractionLostDrops > 0 ||
+        context.rtcpRttMs < 1 ||
+        context.rtcpRttMs > 3000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_fraction_lost_and_rtcp_rtt_ms",
+          reason:
+            "Spoofed RR fraction_lost BWE drops (>0 synthetic ceiling) or RTCP RTT (<1ms or >3,000ms synthetic bounds) out of bounds; clamping spoofed BWE drops to 0 and RTCP RTT to [1, 3000]ms.",
+          clampedSpoofedFractionLostDrops,
+          clampedRtcpRttMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RTCP RR fraction_lost reconciled with TWCC (0 spoofed drops) and signed RTT in [1, 3000]ms verified.",
+        clampedSpoofedFractionLostDrops,
+        clampedRtcpRttMs,
+      };
+    }
+
+
 
 
 

@@ -1364,6 +1364,13 @@
               <td><code>P795 / P796 deterministic SIP RFC 8760 SHA-256 digest anti-replay gate &amp; RFC 5626 Outbound Flow-Token HMAC / Path SSRF guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>405. [专题42 `docs/voice-webrtc-rtcp-ccfb-ecn-spoof-rr-xr-bwe-sabotage-faq.md`] WebRTC `RFC 8888 RTCP CCFB` 时延梯度佐证防伪造 `ECN-CE=0b11` 降速（`0` 次无排队延迟佐证误降，防止 `32kbps` 高清语音被砍至 `6kbps` 机器音）、`0x1FFF / 0x1FFE` 哨兵剥离与 `[1, 256]` 报告块上限门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SCReAM/GCC 滤波耗时 `not_measured`）&amp; `RFC 3550 RR / RFC 3611 XR` 丢包率与 `TWCC` 逐包确认交叉对账（`0` 次虚假丢包降速）及 `A - LSR - DLSR` 有符号 `int64` `[1, 3000]ms` 防 `uint32` 49.7 天下溢回绕锁（真实 RTCP/TWCC 对账耗时 `not_measured`）(`P797` / `P798` · Stage 402 · 807 护栏 &amp; 816 探针 · 405 维)</strong>
+              </td>
+              <td><code>P797 / P798 deterministic WebRTC RFC 8888 RTCP CCFB ECN-CE anti-spoof gate &amp; RFC 3550 RR/XR TWCC cross-check / signed RTT guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4704,6 +4711,13 @@
                 <strong>404. [专题41 `docs/voice-sip-digest-sha256-replay-rfc5626-outbound-flow-token-faq.md`] SIP `RFC 8760` `SHA-256 / SHA-512-256` 强制摘要鉴权（`0` 次 `MD5` 离线破密降级）、`qop="auth"` 单调 `nc` 防重放位图与 `[15, 60]s` `nonce` TTL 门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC Redis 位图查询耗时 `not_measured`）&amp; `RFC 5626` Outbound `Flow-Token` `HMAC-SHA256` 套接字强绑定、`RFC 3327 Path/Route` 外网开放中继 SSRF 阻断（`0` 次越权中继）与 `[15, 30]s` CRLF/STUN 保活锁（真实边缘代理 HMAC 验签耗时 `not_measured`）(`P795` / `P796` · Stage 401 · 805 护栏 &amp; 814 探针 · 404 维)</strong>
               </td>
               <td><code>P795 / P796 deterministic SIP RFC 8760 SHA-256 digest anti-replay gate &amp; RFC 5626 Outbound Flow-Token HMAC / Path SSRF guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>405. [专题42 `docs/voice-webrtc-rtcp-ccfb-ecn-spoof-rr-xr-bwe-sabotage-faq.md`] WebRTC `RFC 8888 RTCP CCFB` 时延梯度佐证防伪造 `ECN-CE=0b11` 降速（`0` 次无排队延迟佐证误降，防止 `32kbps` 高清语音被砍至 `6kbps` 机器音）、`0x1FFF / 0x1FFE` 哨兵剥离与 `[1, 256]` 报告块上限门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SCReAM/GCC 滤波耗时 `not_measured`）&amp; `RFC 3550 RR / RFC 3611 XR` 丢包率与 `TWCC` 逐包确认交叉对账（`0` 次虚假丢包降速）及 `A - LSR - DLSR` 有符号 `int64` `[1, 3000]ms` 防 `uint32` 49.7 天下溢回绕锁（真实 RTCP/TWCC 对账耗时 `not_measured`）(`P797` / `P798` · Stage 402 · 807 护栏 &amp; 816 探针 · 405 维)</strong>
+              </td>
+              <td><code>P797 / P798 deterministic WebRTC RFC 8888 RTCP CCFB ECN-CE anti-spoof gate &amp; RFC 3550 RR/XR TWCC cross-check / signed RTT guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

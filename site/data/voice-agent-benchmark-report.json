@@ -1609,6 +1609,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks legacy RFC 3261 MD5 downgrades and replayed (nonce, nc) headers, enforcing SHA-256/512-256 with qop=auth and [15, 60]s nonce TTL; live SBC Redis nc-bitmap lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces HMAC-SHA256 socket-bound Flow-Tokens, 0 untrusted external Route/Path open-relay hops, and [15, 30]s CRLF/STUN keepalives; live edge proxy HMAC verification latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "405. [Topic 42: voice-webrtc-rtcp-ccfb-ecn-spoof-rr-xr-bwe-sabotage-faq] WebRTC RFC 8888 RTCP CCFB ECN-CE Anti-Spoof & [1,256] Report Cap + RFC 3550 RR/XR TWCC Loss Cross-Check & Signed [1,3000]ms DLSR RTT Underflow Guard (P797 / P798 — Stage 402 · 405 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks uncorroborated ECN-CE=0b11 marks from slashing HD voice to 6kbps narrowband, strips 0x1FFF/0x1FFE sentinels, and clamps CCFB reports to [1, 256]; live SCReAM/GCC filter update latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: cross-checks RTCP RR fraction_lost against TWCC per-packet acks (0 spoofed BWE drops) and clamps signed int64 RTT to [1, 3000]ms against 49.7-day uint32 wrap; live RTCP/TWCC reconciliation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

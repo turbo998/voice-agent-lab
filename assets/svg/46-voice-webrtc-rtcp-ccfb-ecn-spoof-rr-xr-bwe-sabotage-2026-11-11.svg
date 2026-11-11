@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg46" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="blueGrad46" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad46" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065F46"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg46)"/>
+
+  <!-- Header -->
+  <rect x="36" y="24" width="1128" height="84" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <text x="56" y="56" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1">STAGE 402 · TOPIC 42 · WEBRTC RFC 8888 RTCP CCFB ECN-CE &amp; RFC 3550 RR/XR BWE SABOTAGE FAQ (P797–P798)</text>
+  <text x="56" y="84" fill="#F8FAFC" font-family="Segoe UI, system-ui, sans-serif" font-size="20.5" font-weight="700">WebRTC RFC 8888 RTCP CCFB ECN-CE Anti-Spoof &amp; RFC 3550 RR/XR DLSR RTT Underflow Guard</text>
+  <rect x="968" y="38" width="176" height="32" rx="16" fill="#065F46" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1056" y="59" text-anchor="middle" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Stage 402 · 405 Dims</text>
+
+  <!-- Left Column: P797 WebRTC RFC 8888 RTCP CCFB ECN-CE Anti-Spoofing & ATO Metric-Block Bounds -->
+  <rect x="36" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5"/>
+  <rect x="36" y="124" width="552" height="44" rx="12" fill="url(#blueGrad46)"/>
+  <text x="56" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P797 · WebRTC RFC 8888 RTCP CCFB ECN-CE &amp; ATO Bounds Guard</text>
+
+  <!-- Anti-pattern Box Left -->
+  <rect x="56" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="72" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: Spoofed ECN-CE Bitrate Collapse &amp; ATO 0x1FFF Overread</text>
+  <text x="72" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Forged ECN-CE (0b11) in RTCP CCFB with 0% loss &amp; &lt;5ms delay tricks</text>
+  <text x="72" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  sender into slashing Opus bitrate to 6kbps robotic speech in 200ms</text>
+  <text x="72" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Unbounded num_reports (&gt;256) or raw 0x1FFF ATO sentinel corrupts RTT</text>
+  <text x="72" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: Fake Congestion Collapse (6kbps) · CCFB Metric-Block Overread</text>
+
+  <!-- Best Practice Box Left -->
+  <rect x="56" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="72" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ Delay-Corroborated ECN-CE Gate &amp; [1, 256] CCFB Report Block Cap</text>
+  <text x="72" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. ECN-CE Cross-Validation: Ignore ECN-CE=0b11 throttling when ATO</text>
+  <text x="72" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   one-way queuing gradient is &lt;5ms and loss is 0% (0 spoofed throttles)</text>
+  <text x="72" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. Sentinel &amp; Block Bounds: Filter 0x1FFF (lost) / 0x1FFE (overdue)</text>
+  <text x="72" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   before delay math and clamp num_reports to [1, 256] packets/block</text>
+  <text x="72" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P797: spoofedEcnCeThrottles = 0 · ccfbMaxReports = [1, 256]</text>
+  <text x="72" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 False ECN-CE Bitrate Drops · 100% Safe CCFB Parsing</text>
+
+  <!-- Bottom KPI Pill Left -->
+  <rect x="56" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="72" y="530" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateWebrtcRfc8888RtcpCcfbEcnSpoofAndAtoBoundsGate`)</text>
+  <text x="72" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedSpoofedEcnCeThrottles = 0 | clampedCcfbMaxReports = [1, 256]</text>
+  <text x="72" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: reject_spoofed_ccfb_ecn_ce_and_clamp_reports (0ms @ 1ms grid)</text>
+
+  <!-- Right Column: P798 RTP/RTCP RFC 3550 RR/XR Spoofed fraction_lost & DLSR RTT Underflow -->
+  <rect x="612" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="612" y="124" width="552" height="44" rx="12" fill="url(#emeraldGrad46)"/>
+  <text x="632" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P798 · RTCP RFC 3550 RR/XR BWE Sabotage &amp; DLSR RTT Underflow</text>
+
+  <!-- Anti-pattern Box Right -->
+  <rect x="632" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="648" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: Spoofed fraction_lost=255 &amp; Unsigned 32-Bit RTT Wrap</text>
+  <text x="648" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Peer sends RR fraction_lost=255 (99.6% loss) while TWCC shows 0% loss</text>
+  <text x="648" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Slight OS timer skew makes (A - LSR - DLSR) = -2ms → wraps to</text>
+  <text x="648" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  4,294,967,294ms in uint32, disabling RTCP NACK &amp; freezing NetEQ!</text>
+  <text x="648" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: 49.7-Day Unsigned RTT Wrap · BWE Starvation · NACK Disabled</text>
+
+  <!-- Best Practice Box Right -->
+  <rect x="632" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="648" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ TWCC-Corroborated Loss Gate &amp; Signed [1, 3000]ms RTT Clamp</text>
+  <text x="648" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. Cross-Check RR vs TWCC: Reject RR fraction_lost &gt;25% when TWCC</text>
+  <text x="648" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   per-packet acks confirm &lt;2% actual loss (0 spoofed BWE sabotages)</text>
+  <text x="648" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. Signed DLSR Math: Compute (A - LSR - DLSR) in signed int64 and</text>
+  <text x="648" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   clamp RTCP RTT to [1, 3000]ms (preventing uint32 underflow wrap)</text>
+  <text x="648" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P798: spoofedFractionLostDrops = 0 · rtcpRttMs = [1, 3000]ms</text>
+  <text x="648" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Unsigned RTT Underflows · 100% NACK &amp; BWE Stability</text>
+
+  <!-- Bottom KPI Pill Right -->
+  <rect x="632" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="648" y="530" fill="#34D399" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateRtcpRfc3550RrXrBweSabotageAndDlsrRttUnderflowGate`)</text>
+  <text x="648" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedSpoofedFractionLostDrops = 0 | clampedRtcpRttMs = [1, 3000]ms</text>
+  <text x="648" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: block_spoofed_rr_fraction_lost_and_clamp_dlsr_rtt (0ms @ 1ms grid)</text>
+
+  <!-- Footer Provenance -->
+  <rect x="36" y="614" width="1128" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="640" fill="#94A3B8" font-family="Consolas, monospace" font-size="11">Provenance: synthetic deterministic evaluation | 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+</svg>
