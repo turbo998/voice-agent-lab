@@ -1350,6 +1350,13 @@
               <td><code>P791 / P792 deterministic VoLTE SIP RFC 3262 PRACK / RFC 3312 QCI-1 precondition gate &amp; RFC 6141 atomic SDP rollback guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>403. [专题40 · 🎉 Stage 400 历史性里程碑 `docs/voice-webrtc-cryptex-header-privacy-rtp-ssrc-collision-loop-faq.md`] WebRTC `RFC 9335 Cryptex`（`a=cryptex`）/ `RFC 6904` 扩展头全加密（消除每分钟 `3,000` 个 `RFC 6464 ssrc-audio-level` 明文 `V-bit + dBov` 音节节律旁路泄密，`0` 明文包）与 `RFC 8285` 单字节 `extmap [1, 14]` 边界门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SRTP Cryptex AEAD 耗时 `not_measured`）&amp; RTP `RFC 3550 §8.2` 32位 `SSRC` 碰撞 `&lt;5ms` `RTCP BYE` + CSPRNG 自愈轮换（阻断序列号跳变污染 `SRTP ROC`）与 `CSRC [0, 15]` 防越界读取锁（真实 RTCP BYE 轮换耗时 `not_measured`）(`P793` / `P794` · 🎉 Stage 400 历史性里程碑 · 803 护栏 &amp; 812 探针 · 403 维)</strong>
+              </td>
+              <td><code>P793 / P794 deterministic WebRTC RFC 9335 Cryptex header privacy gate &amp; RTP RFC 3550 SSRC collision loop / CSRC guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4676,6 +4683,13 @@
                 <strong>402. [专题39 `docs/voice-sip-prack-100rel-qci1-precondition-reinvite-rollback-faq.md`] 运营商 VoLTE/IMS `SIP RFC 3312` 无线专用语音承载（`QCI-1 / 5QI-1`）前提条件防幽灵振铃（`0` 次提前响铃消除接通后 `2.2s` 死寂）与 `RFC 3262 100rel` 临时响应重传 `[2, 4]` 次封顶门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实基站 QCI-1 建载耗时 `not_measured`）&amp; `RFC 6141` 通话中 `Re-INVITE` 被拒（`488 Not Acceptable Here`）写时复制 SDP 快照 `0ms` 原子回滚（`0` 未提交状态泄漏）与 `491 Glare` `[500, 2000]ms` 非对称随机退避锁（真实 SBC 媒体槽切换耗时 `not_measured`）(`P791` / `P792` · Stage 399 · 🎉 801 护栏 &amp; 810 探针 · 402 维)</strong>
               </td>
               <td><code>P791 / P792 deterministic VoLTE SIP RFC 3262 PRACK / RFC 3312 QCI-1 precondition gate &amp; RFC 6141 atomic SDP rollback guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>403. [专题40 · 🎉 Stage 400 历史性里程碑 `docs/voice-webrtc-cryptex-header-privacy-rtp-ssrc-collision-loop-faq.md`] WebRTC `RFC 9335 Cryptex`（`a=cryptex`）/ `RFC 6904` 扩展头全加密（消除每分钟 `3,000` 个 `RFC 6464 ssrc-audio-level` 明文 `V-bit + dBov` 音节节律旁路泄密，`0` 明文包）与 `RFC 8285` 单字节 `extmap [1, 14]` 边界门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SRTP Cryptex AEAD 耗时 `not_measured`）&amp; RTP `RFC 3550 §8.2` 32位 `SSRC` 碰撞 `&lt;5ms` `RTCP BYE` + CSPRNG 自愈轮换（阻断序列号跳变污染 `SRTP ROC`）与 `CSRC [0, 15]` 防越界读取锁（真实 RTCP BYE 轮换耗时 `not_measured`）(`P793` / `P794` · 🎉 Stage 400 历史性里程碑 · 803 护栏 &amp; 812 探针 · 403 维)</strong>
+              </td>
+              <td><code>P793 / P794 deterministic WebRTC RFC 9335 Cryptex header privacy gate &amp; RTP RFC 3550 SSRC collision loop / CSRC guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

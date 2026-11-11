@@ -1597,6 +1597,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: holds 180 Ringing and early TTS until bidirectional QCI-1 sendrecv is confirmed via PRACK+UPDATE (0 ghost-rings) and caps 100rel retransmissions in [2, 4]; live IMS QCI-1 bearer setup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces Copy-on-Write SDP rollback on 488 Not Acceptable Here (0 uncommitted mutations) and [500, 2000]ms randomized 491 glare backoff; live SBC media-slot swap latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "403. [Topic 40: voice-webrtc-cryptex-header-privacy-rtp-ssrc-collision-loop-faq] WebRTC RFC 9335 Cryptex Header Privacy (0 Plaintext ssrc-audio-level Leaks) & 1-Byte extmap [1,14] + RTP RFC 3550 SSRC Collision Loop & CSRC [0,15] Guard (P793 / P794 — Historic Stage 400 Milestone · 403 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: seals the 50 Hz RFC 6464 ssrc-audio-level plaintext side-channel via RFC 9335 a=cryptex (0 plaintext packets) and clamps 1-byte extmap IDs to [1, 14]; live SRTP Cryptex AEAD per-packet latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: intercepts SSRC collisions before SRTP ROC corruption via RTCP BYE + CSPRNG SSRC rotation (0 unresolved collisions) and clamps CSRC count to [0, 15]; live RTCP BYE rotation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

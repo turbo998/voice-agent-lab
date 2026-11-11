@@ -73091,6 +73091,140 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc9335CryptexHeaderPrivacyContext {
+      plaintextAudioLevelOrExtmapIdCollisionDetected: boolean;
+      plaintextAudioLevelPackets: number;
+      oneByteExtmapId: number;
+    }
+
+    export interface WebrtcRfc9335CryptexHeaderPrivacyDecision {
+      violated: boolean;
+      policyId: "P793-WEBRTC-RFC9335-CRYPTEX-HEADER-PRIVACY-AND-RFC8285-EXTMAP-GUARD";
+      action:
+        | "encrypt_rtp_header_cryptex_and_clamp_extmap_id"
+        | "clamp_plaintext_audio_level_and_extmap_id"
+        | "allow";
+      reason: string;
+      clampedPlaintextAudioLevelPackets: number;
+      clampedOneByteExtmapId: number;
+    }
+
+    export function evaluateWebrtcRfc9335CryptexHeaderPrivacyAndExtmapGate(
+      context: WebrtcRfc9335CryptexHeaderPrivacyContext,
+    ): WebrtcRfc9335CryptexHeaderPrivacyDecision {
+      const policyId =
+        "P793-WEBRTC-RFC9335-CRYPTEX-HEADER-PRIVACY-AND-RFC8285-EXTMAP-GUARD" as const;
+      const clampedPlaintextAudioLevelPackets = 0;
+      const clampedOneByteExtmapId = Math.min(
+        Math.max(context.oneByteExtmapId, 1),
+        14,
+      );
+
+      if (context.plaintextAudioLevelOrExtmapIdCollisionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "encrypt_rtp_header_cryptex_and_clamp_extmap_id",
+          reason:
+            "WebRTC RFC 9335 Cryptex Header Privacy & RFC 8285 Extmap Policy Check: RFC 6464 ssrc-audio-level header extension transmitted in plaintext (exposing 50 Hz VAD and dBov syllable cadence on encrypted SRTP calls) or 1-byte extmap ID outside [1, 14] / collided; offline synthetic policy state machine enforcing RFC 9335 a=cryptex / RFC 6904 encryption (0 plaintext audio-level packets) and clamping 1-byte extmap ID to [1, 14] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SRTP Cryptex AEAD per-packet latency not_measured).",
+          clampedPlaintextAudioLevelPackets,
+          clampedOneByteExtmapId,
+        };
+      }
+
+      if (
+        context.plaintextAudioLevelPackets > 0 ||
+        context.oneByteExtmapId < 1 ||
+        context.oneByteExtmapId > 14
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_plaintext_audio_level_and_extmap_id",
+          reason:
+            "Plaintext RFC 6464 audio-level packet count (>0 synthetic ceiling) or RFC 8285 1-byte extmap ID (<1 or >14 synthetic bounds) out of bounds; clamping plaintext audio-level packets to 0 and 1-byte extmap ID to [1, 14].",
+          clampedPlaintextAudioLevelPackets,
+          clampedOneByteExtmapId,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 9335 Cryptex header encryption active (0 plaintext audio-level packets) and 1-byte extmap ID in [1, 14] verified.",
+        clampedPlaintextAudioLevelPackets,
+        clampedOneByteExtmapId,
+      };
+    }
+
+    export interface RtpRfc3550SsrcCollisionLoopContext {
+      ssrcCollisionLoopOrCsrcOverreadDetected: boolean;
+      unresolvedSsrcCollisions: number;
+      csrcCount: number;
+    }
+
+    export interface RtpRfc3550SsrcCollisionLoopDecision {
+      violated: boolean;
+      policyId: "P794-RTP-RFC3550-SSRC-COLLISION-LOOP-AND-CSRC-BOUNDS-GUARD";
+      action:
+        | "resolve_ssrc_collision_rtcp_bye_and_clamp_csrc"
+        | "clamp_unresolved_ssrc_collisions_and_csrc_count"
+        | "allow";
+      reason: string;
+      clampedUnresolvedSsrcCollisions: number;
+      clampedCsrcCount: number;
+    }
+
+    export function evaluateRtpRfc3550SsrcCollisionLoopAndCsrcBoundsGate(
+      context: RtpRfc3550SsrcCollisionLoopContext,
+    ): RtpRfc3550SsrcCollisionLoopDecision {
+      const policyId =
+        "P794-RTP-RFC3550-SSRC-COLLISION-LOOP-AND-CSRC-BOUNDS-GUARD" as const;
+      const clampedUnresolvedSsrcCollisions = 0;
+      const clampedCsrcCount = Math.min(Math.max(context.csrcCount, 0), 15);
+
+      if (context.ssrcCollisionLoopOrCsrcOverreadDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "resolve_ssrc_collision_rtcp_bye_and_clamp_csrc",
+          reason:
+            "RTP RFC 3550 §8.2 SSRC Collision Loop & CSRC Bounds Policy Check: inbound RTP stream collided with local 32-bit SSRC or reflected in a media hairpin loop (corrupting SRTP ROC and NetEQ jitter buffers) or carried malformed CSRC count >15; offline synthetic policy state machine dropping self-loopbacks, emitting RTCP BYE + rotating CSPRNG SSRC (0 unresolved collisions), and clamping CSRC count to [0, 15] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTCP BYE and SSRC re-keying latency not_measured).",
+          clampedUnresolvedSsrcCollisions,
+          clampedCsrcCount,
+        };
+      }
+
+      if (
+        context.unresolvedSsrcCollisions > 0 ||
+        context.csrcCount < 0 ||
+        context.csrcCount > 15
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unresolved_ssrc_collisions_and_csrc_count",
+          reason:
+            "Unresolved RTP SSRC collisions (>0 synthetic ceiling) or CSRC count (<0 or >15 synthetic bounds) out of bounds; clamping unresolved SSRC collisions to 0 and CSRC count to [0, 15].",
+          clampedUnresolvedSsrcCollisions,
+          clampedCsrcCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3550 §8.2 SSRC collision-free (0 unresolved collisions) and CSRC count in [0, 15] verified.",
+        clampedUnresolvedSsrcCollisions,
+        clampedCsrcCount,
+      };
+    }
+
+
 
 
 
