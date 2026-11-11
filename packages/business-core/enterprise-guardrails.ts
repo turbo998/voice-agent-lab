@@ -71435,6 +71435,147 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface PstnAmrWbG711TandemTranscodingTrfoContext {
+      amrWbToG711TandemDowngradeDetected: boolean;
+      negotiatedSipSampleRateHz: number;
+      narrowbandFricativePreEmphasisDb: number;
+    }
+
+    export interface PstnAmrWbG711TandemTranscodingTrfoDecision {
+      violated: boolean;
+      policyId: "P769-PSTN-AMR-WB-G711-TANDEM-TRANSCODING-TRFO-AND-FRICATIVE-GAIN-GUARD";
+      action:
+        | "pstn_tandem_transcoding_fricative_loss_blocked"
+        | "clamp_sip_wideband_sample_rate_and_fricative_preemphasis"
+        | "allow";
+      reason: string;
+      clampedNegotiatedSipSampleRateHz: number;
+      clampedNarrowbandFricativePreEmphasisDb: number;
+    }
+
+    export function evaluatePstnAmrWbG711TandemTranscodingTrfoAndFricativeGainGate(
+      context: PstnAmrWbG711TandemTranscodingTrfoContext,
+    ): PstnAmrWbG711TandemTranscodingTrfoDecision {
+      const policyId =
+        "P769-PSTN-AMR-WB-G711-TANDEM-TRANSCODING-TRFO-AND-FRICATIVE-GAIN-GUARD" as const;
+      const clampedNegotiatedSipSampleRateHz = Math.min(
+        Math.max(context.negotiatedSipSampleRateHz, 16000),
+        48000,
+      );
+      const clampedNarrowbandFricativePreEmphasisDb = Math.min(
+        Math.max(context.narrowbandFricativePreEmphasisDb, 3.0),
+        6.0,
+      );
+
+      if (context.amrWbToG711TandemDowngradeDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "pstn_tandem_transcoding_fricative_loss_blocked",
+          reason:
+            "PSTN/VoLTE 3GPP TS 23.153 TrFO & Fricative Preservation Policy Check: SIP trunk downgraded mobile 16kHz AMR-WB audio to 8kHz G.711 (3.4kHz brick-wall filter stripping 4kHz-7kHz F/S unvoiced fricatives) before cloud upsampling; offline synthetic policy state machine enforcing >=16,000 Hz wideband TrFO negotiation and 3.0-6.0 dB narrowband high-shelf pre-emphasis (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live carrier IMS/SBC SDP negotiation latency not_measured).",
+          clampedNegotiatedSipSampleRateHz,
+          clampedNarrowbandFricativePreEmphasisDb,
+        };
+      }
+
+      if (
+        context.negotiatedSipSampleRateHz < 16000 ||
+        context.narrowbandFricativePreEmphasisDb < 3.0 ||
+        context.narrowbandFricativePreEmphasisDb > 6.0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_sip_wideband_sample_rate_and_fricative_preemphasis",
+          reason:
+            "Negotiated SIP sample rate (<16,000 Hz wideband floor) or narrowband fricative pre-emphasis gain (outside [3.0, 6.0] dB synthetic bounds) out of bounds; clamping sample rate to >=16,000 Hz and fricative pre-emphasis gain to [3.0, 6.0] dB.",
+          clampedNegotiatedSipSampleRateHz,
+          clampedNarrowbandFricativePreEmphasisDb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 3GPP TS 23.153 TrFO >=16,000 Hz wideband negotiation and [3.0, 6.0] dB fricative pre-emphasis verified.",
+        clampedNegotiatedSipSampleRateHz,
+        clampedNarrowbandFricativePreEmphasisDb,
+      };
+    }
+
+    export interface RtpJitterBufferClockDriftAsrcContext {
+      uncompensatedClockSkewOrZeroFillClickDetected: boolean;
+      maxResidualClockDriftPpm: number;
+      maxWsolaUnderrunWindowMs: number;
+    }
+
+    export interface RtpJitterBufferClockDriftAsrcDecision {
+      violated: boolean;
+      policyId: "P770-RTP-JITTER-BUFFER-CLOCK-DRIFT-ASRC-AND-UNDERRUN-CLICK-GUARD";
+      action:
+        | "rtp_clock_drift_underrun_click_blocked"
+        | "clamp_residual_clock_drift_ppm_and_wsola_window"
+        | "allow";
+      reason: string;
+      clampedMaxResidualClockDriftPpm: number;
+      clampedMaxWsolaUnderrunWindowMs: number;
+    }
+
+    export function evaluateRtpJitterBufferClockDriftAsrcAndUnderrunClickGate(
+      context: RtpJitterBufferClockDriftAsrcContext,
+    ): RtpJitterBufferClockDriftAsrcDecision {
+      const policyId =
+        "P770-RTP-JITTER-BUFFER-CLOCK-DRIFT-ASRC-AND-UNDERRUN-CLICK-GUARD" as const;
+      const clampedMaxResidualClockDriftPpm = Math.min(
+        Math.max(context.maxResidualClockDriftPpm, 5),
+        50,
+      );
+      const clampedMaxWsolaUnderrunWindowMs = Math.min(
+        Math.max(context.maxWsolaUnderrunWindowMs, 5),
+        15,
+      );
+
+      if (context.uncompensatedClockSkewOrZeroFillClickDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rtp_clock_drift_underrun_click_blocked",
+          reason:
+            "RTP Sample Clock-Drift ASRC & WSOLA Underrun Click Policy Check: media gateway allowed uncompensated quartz crystal skew (>50 ppm) or inserted raw zero-PCM frames during jitter-buffer underrun (causing metallic step clicks and AEC3 delay reference desynchronization); offline synthetic policy state machine enforcing <=50 ppm polyphase ASRC resynchronization and <=15ms WSOLA zero-crossing concealment (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live DSP polyphase resampling CPU overhead not_measured).",
+          clampedMaxResidualClockDriftPpm,
+          clampedMaxWsolaUnderrunWindowMs,
+        };
+      }
+
+      if (
+        context.maxResidualClockDriftPpm > 50 ||
+        context.maxWsolaUnderrunWindowMs > 15
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_residual_clock_drift_ppm_and_wsola_window",
+          reason:
+            "Residual clock drift (>50 ppm synthetic ceiling) or WSOLA underrun concealment window (>15ms synthetic ceiling) out of bounds; clamping residual clock drift to <=50 ppm and WSOLA window to <=15ms.",
+          clampedMaxResidualClockDriftPpm,
+          clampedMaxWsolaUnderrunWindowMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Kalman polyphase ASRC <=50 ppm clock-drift synchronization and <=15ms WSOLA zero-crossing underrun splice verified.",
+        clampedMaxResidualClockDriftPpm,
+        clampedMaxWsolaUnderrunWindowMs,
+      };
+    }
+
 
 
 

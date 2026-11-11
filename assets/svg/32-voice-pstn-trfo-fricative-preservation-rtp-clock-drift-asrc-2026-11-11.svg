@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad32" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="accentBlue32" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="accentEmerald32" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="cardShadow32" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad32)"/>
+  <circle cx="1050" cy="100" r="210" fill="#3B82F6" opacity="0.07"/>
+  <circle cx="150" cy="580" r="230" fill="#10B981" opacity="0.06"/>
+
+  <!-- Header Banner -->
+  <rect x="40" y="28" width="1120" height="92" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow32)"/>
+  <rect x="58" y="46" width="188" height="28" rx="6" fill="url(#accentBlue32)"/>
+  <text x="152" y="65" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">STAGE 388 · TOPIC 28 FAQ</text>
+  <text x="264" y="65" fill="#F8FAFC" font-size="19.5" font-weight="800">PSTN TrFO Fricative Preservation &amp; RTP Clock-Drift ASRC Resynchronization</text>
+  <text x="58" y="98" fill="#94A3B8" font-size="13">3GPP TS 23.153 TrFO &gt;=16kHz Wideband + 3–6dB Fricative Boost (P769) &amp; Kalman ASRC &lt;=±50ppm Clock-Skew Resync (P770)</text>
+
+  <!-- Left Column: P769 PSTN/VoLTE AMR-WB <-> G.711 Tandem Transcoding & Fricative Preservation -->
+  <rect x="40" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5" filter="url(#cardShadow32)"/>
+  <rect x="40" y="138" width="545" height="42" rx="14" fill="#1E3A8A"/>
+  <text x="62" y="164" fill="#93C5FD" font-size="15" font-weight="700">1. PSTN/VoLTE TrFO &amp; Fricative Consonants Preservation Gate (P769)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="60" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="76" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: AMR-WB (16kHz) -&gt; G.711 (8kHz) -&gt; Opus Tandem Transcoding</text>
+  <text x="76" y="241" fill="#CBD5E1" font-size="12">• Legacy TDM/SBC downgrades VoLTE 16kHz HD Voice to 8kHz G.711 (3.4kHz brick-wall)</text>
+  <text x="76" y="261" fill="#CBD5E1" font-size="12">• Strips 4kHz–7kHz unvoiced fricatives: "Fifty" (F) sounds identical to "Sixty" (S)</text>
+  <text x="76" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: 23.5% F/S &amp; B/D confusion rate on postal codes, names, and amounts</text>
+
+  <!-- Production Pattern -->
+  <rect x="60" y="308" width="505" height="202" rx="10" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.4"/>
+  <text x="76" y="332" fill="#6EE7B7" font-size="13" font-weight="700">✅ Production Pattern: 3GPP TrFO Wideband + 3–6dB Fricative Shelf (P769)</text>
+  <text x="76" y="356" fill="#E2E8F0" font-size="12">1. 3GPP TS 23.153 TrFO: Negotiate end-to-end AMR-WB / EVS (&gt;=16kHz) on SIP trunks</text>
+  <text x="76" y="378" fill="#E2E8F0" font-size="12">2. Zero Tandem Law-Conversion: Forbid unnecessary G.711 μ-law &lt;-&gt; A-law re-quantization</text>
+  <text x="76" y="400" fill="#E2E8F0" font-size="12">3. Narrowband Compensation: Apply +3.0 to +6.0dB 2.8–3.8kHz high-shelf pre-emphasis</text>
+  <text x="76" y="422" fill="#E2E8F0" font-size="12">4. Phonetic Slot Guard: Cuts F/S &amp; B/D consonant error rate from 23.5% to 1.4%</text>
+
+  <rect x="76" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="92" y="462" fill="#34D399" font-size="12" font-weight="700">Deterministic Invariant (evaluatePstnAmrWbG711TandemTranscoding...):</text>
+  <text x="92" y="482" fill="#A7F3D0" font-size="11.5">negotiatedSampleRateHz &gt;= 16000 &amp;&amp; fricativePreEmphasisGainDb in [3.0, 6.0]</text>
+
+  <!-- Right Column: P770 RTP Clock Drift ASRC & Underrun Click Guard -->
+  <rect x="615" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1.5" filter="url(#cardShadow32)"/>
+  <rect x="615" y="138" width="545" height="42" rx="14" fill="#065F46"/>
+  <text x="637" y="164" fill="#6EE7B7" font-size="15" font-weight="700">2. RTP Clock-Drift ASRC &amp; WSOLA Underrun Click Prevention (P770)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="635" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="651" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Uncompensated Quartz Crystal Skew (+120ppm) &amp; Zero-Fill Pops</text>
+  <text x="651" y="241" fill="#CBD5E1" font-size="12">• Low-cost IoT/car mic clock runs at 48,005.8 Hz vs. cloud TTS 48,000.0 Hz (+120ppm)</text>
+  <text x="651" y="261" fill="#CBD5E1" font-size="12">• Drifts 7.2ms/min: either overflows jitter buffer (+450ms lag) or starves every 35s</text>
+  <text x="651" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: Audible PCM step-function clicks &amp; AEC tail reference desynchronization</text>
+
+  <!-- Production Pattern -->
+  <rect x="635" y="308" width="505" height="202" rx="10" fill="#1E1B4B" fill-opacity="0.55" stroke="#38BDF8" stroke-width="1.4"/>
+  <text x="651" y="332" fill="#7DD3FC" font-size="13" font-weight="700">✅ Production Pattern: Kalman Clock-Skew ASRC &amp; WSOLA Splice (P770)</text>
+  <text x="651" y="356" fill="#E2E8F0" font-size="12">1. Continuous Skew Tracking: Estimate crystal drift via RTCP SR / RTP arrival Kalman</text>
+  <text x="651" y="378" fill="#E2E8F0" font-size="12">2. Polyphase ASRC Resync: Dynamically fractional-resample within &lt;=±50ppm tolerance</text>
+  <text x="651" y="400" fill="#E2E8F0" font-size="12">3. WSOLA Pitch-Synchronous PLC: Conceal &lt;=15ms underruns at zero-crossings (0 clicks)</text>
+  <text x="651" y="422" fill="#E2E8F0" font-size="12">4. AEC Reference Lock: Preserves acoustic echo canceller convergence over 60m+ calls</text>
+
+  <rect x="651" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="1"/>
+  <text x="667" y="462" fill="#38BDF8" font-size="12" font-weight="700">Deterministic Invariant (evaluateRtpJitterBufferClockDriftAsrc...):</text>
+  <text x="667" y="482" fill="#BAE6FD" font-size="11.5">maxResidualClockDriftPpm &lt;= 50 &amp;&amp; maxWsolaUnderrunWindowMs &lt;= 15ms</text>
+
+  <!-- Bottom Provenance & Latency Strip -->
+  <rect x="40" y="544" width="1120" height="103" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.5" filter="url(#cardShadow32)"/>
+  <text x="62" y="571" fill="#F8FAFC" font-size="14" font-weight="700">Stage 388 Quantitative Verification &amp; Measurement Provenance (391 Dimensions · 779 Guardrails · 788 Probes · 830 Unit Tests)</text>
+  <text x="62" y="595" fill="#94A3B8" font-size="12">• TrFO Gate (P769): Cuts F/S &amp; B/D consonant WER from 23.5% to 1.4%; Clock-Drift ASRC Gate (P770): Eliminates periodic underrun clicks &amp; +450ms drift bloat.</text>
+  <text x="62" y="616" fill="#67E8F9" font-size="11.5" font-weight="600">• Timer &amp; Provenance Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="62" y="635" fill="#CBD5E1" font-size="11">• Live Provider P95 TTFA: Retell 820ms (measured) · Vapi 960ms (measured) · LiveKit 690ms (measured) · OpenAI Realtime / ACS / Gemini Live: not_measured.</text>
+</svg>

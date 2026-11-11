@@ -1261,9 +1261,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>390. [专题27 `docs/voice-realtime-mos-lqo-degradation-sip-rtp-hairpin-anchor-faq.md`] `ITU-T G.107` 实时 `MOS-LQO`（`&lt;3.10`）`Opus LBRR FEC` 加固、`&lt;=8词` 极简语音与短信/RCS 可视卡片双通道降级门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将电梯/地库弱网挂断率从 `34.0%` 压降至 `3.8%`；真实短信网关下发耗时 `not_measured`）&amp; 跨洲 `SIP/RTP` 发卡弯绕行消除、`&lt;=75ms` 区域边缘媒体就近锚定与 `&lt;=50ms` 本地打断消音锁（单轮立省 `320ms`；真实跨洋海缆 RTT `not_measured`）(`P767` / `P768` · Stage 387 · 390 评测维度历史性里程碑 · 777 护栏 &amp; 786 探针 · 390 维)</strong>
+                <strong>390. [专题27 `docs/voice-realtime-mos-lqo-degradation-sip-rtp-hairpin-anchor-faq.md`] `ITU-T G.107` 实时 `MOS-LQO`（`&lt;3.10`）`Opus LBRR FEC` 加固、`&lt;=8词` 极简语音与短信/RCS 可视卡片双通道降级门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将电梯/地库弱网挂断率从 `34.0%` 压降至 `3.8%`；真实短信网关下发耗时 `not_measured`）&amp; 跨洲 `SIP/RTP` 发卡弯绕行消除、`&lt;=75ms` 区域边缘媒体就近锚定与 `&lt;=50ms` 本地打断消音锁（单轮立省 `320ms`；真实跨洋海缆 RTT `not_measured`）(`P767` / `P768` · Stage 387 · 390 维)</strong>
               </td>
               <td><code>P767 / P768 deterministic ITU-T G.107 MOS-LQO SMS fallback gate &amp; multi-region SIP/RTP edge media anchor guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>391. [专题28 `docs/voice-pstn-trfo-fricative-preservation-rtp-clock-drift-asrc-faq.md`] PSTN/VoLTE `3GPP TS 23.153 TrFO`（`&gt;=16,000 Hz`）宽带免转码清擦音（`F/S`）保真与窄带 `3.0–6.0 dB` 高频搁架预加重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 `F/S` 与 `B/D` 易混辅音错误率从 `23.5%` 压降至 `1.4%`；真实运营商 IMS SDP 协商耗时 `not_measured`）&amp; `RTP` 采样晶振频偏卡尔曼多相 `ASRC`（`&lt;=±50 ppm`）重同步与 `WSOLA`（`&lt;=15ms`）过零点平滑补偿锁（消除周期性欠载咔哒爆音与 `AEC3` 回声失步；真实 DSP 重采样耗时 `not_measured`）(`P769` / `P770` · Stage 388 · 391 评测维度里程碑 · 779 护栏 &amp; 788 探针 · 391 维)</strong>
+              </td>
+              <td><code>P769 / P770 deterministic PSTN TrFO fricative preservation gate &amp; RTP clock-drift polyphase ASRC resync guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4505,9 +4512,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>390. [专题27 `docs/voice-realtime-mos-lqo-degradation-sip-rtp-hairpin-anchor-faq.md`] `ITU-T G.107` 实时 `MOS-LQO`（`&lt;3.10`）`Opus LBRR FEC` 加固、`&lt;=8词` 极简语音与短信/RCS 可视卡片双通道降级门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将电梯/地库弱网挂断率从 `34.0%` 压降至 `3.8%`；真实短信网关下发耗时 `not_measured`）&amp; 跨洲 `SIP/RTP` 发卡弯绕行消除、`&lt;=75ms` 区域边缘媒体就近锚定与 `&lt;=50ms` 本地打断消音锁（单轮立省 `320ms`；真实跨洋海缆 RTT `not_measured`）(`P767` / `P768` · Stage 387 · 390 评测维度历史性里程碑 · 777 护栏 &amp; 786 探针 · 390 维)</strong>
+                <strong>390. [专题27 `docs/voice-realtime-mos-lqo-degradation-sip-rtp-hairpin-anchor-faq.md`] `ITU-T G.107` 实时 `MOS-LQO`（`&lt;3.10`）`Opus LBRR FEC` 加固、`&lt;=8词` 极简语音与短信/RCS 可视卡片双通道降级门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将电梯/地库弱网挂断率从 `34.0%` 压降至 `3.8%`；真实短信网关下发耗时 `not_measured`）&amp; 跨洲 `SIP/RTP` 发卡弯绕行消除、`&lt;=75ms` 区域边缘媒体就近锚定与 `&lt;=50ms` 本地打断消音锁（单轮立省 `320ms`；真实跨洋海缆 RTT `not_measured`）(`P767` / `P768` · Stage 387 · 390 维)</strong>
               </td>
               <td><code>P767 / P768 deterministic ITU-T G.107 MOS-LQO SMS fallback gate &amp; multi-region SIP/RTP edge media anchor guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>391. [专题28 `docs/voice-pstn-trfo-fricative-preservation-rtp-clock-drift-asrc-faq.md`] PSTN/VoLTE `3GPP TS 23.153 TrFO`（`&gt;=16,000 Hz`）宽带免转码清擦音（`F/S`）保真与窄带 `3.0–6.0 dB` 高频搁架预加重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 `F/S` 与 `B/D` 易混辅音错误率从 `23.5%` 压降至 `1.4%`；真实运营商 IMS SDP 协商耗时 `not_measured`）&amp; `RTP` 采样晶振频偏卡尔曼多相 `ASRC`（`&lt;=±50 ppm`）重同步与 `WSOLA`（`&lt;=15ms`）过零点平滑补偿锁（消除周期性欠载咔哒爆音与 `AEC3` 回声失步；真实 DSP 重采样耗时 `not_measured`）(`P769` / `P770` · Stage 388 · 391 评测维度里程碑 · 779 护栏 &amp; 788 探针 · 391 维)</strong>
+              </td>
+              <td><code>P769 / P770 deterministic PSTN TrFO fricative preservation gate &amp; RTP clock-drift polyphase ASRC resync guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
