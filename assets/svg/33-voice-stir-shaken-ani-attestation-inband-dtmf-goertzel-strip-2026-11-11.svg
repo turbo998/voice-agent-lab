@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad33" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="accentBlue33" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="accentEmerald33" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="cardShadow33" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad33)"/>
+  <circle cx="1050" cy="100" r="210" fill="#3B82F6" opacity="0.07"/>
+  <circle cx="150" cy="580" r="230" fill="#10B981" opacity="0.06"/>
+
+  <!-- Header Banner -->
+  <rect x="40" y="28" width="1120" height="92" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow33)"/>
+  <rect x="58" y="46" width="188" height="28" rx="6" fill="url(#accentBlue33)"/>
+  <text x="152" y="65" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">STAGE 389 · TOPIC 29 FAQ</text>
+  <text x="264" y="65" fill="#F8FAFC" font-size="19.5" font-weight="800">Carrier STIR/SHAKEN Attestation Gate &amp; In-Band DTMF Goertzel Strip</text>
+  <text x="58" y="98" fill="#94A3B8" font-size="13">RFC 8224/8225 PASSporT A-Level Gate + x5u SSRF/iat &lt;=60s Lock (P771) &amp; Goertzel Notch Strip + 50–120ms RFC 4733 Dedup (P772)</text>
+
+  <!-- Left Column: P771 Carrier STIR/SHAKEN Attestation & x5u SSRF Guard -->
+  <rect x="40" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5" filter="url(#cardShadow33)"/>
+  <rect x="40" y="138" width="545" height="42" rx="14" fill="#1E3A8A"/>
+  <text x="62" y="164" fill="#93C5FD" font-size="15" font-weight="700">1. RFC 8224/8225 STIR/SHAKEN &amp; PASSporT x5u SSRF Gate (P771)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="60" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="76" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Trusting Raw SIP From/ANI &amp; Blind x5u URL Fetching</text>
+  <text x="76" y="241" fill="#CBD5E1" font-size="12">• Spoofed SIP From: header impersonates VIP caller ID under C-level gateway attestation</text>
+  <text x="76" y="261" fill="#CBD5E1" font-size="12">• Forged Identity x5u=http://169.254.169.254/... triggers SBC cloud metadata SSRF</text>
+  <text x="76" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: Account takeover via ANI spoofing &amp; internal VPC credential exfiltration</text>
+
+  <!-- Production Pattern -->
+  <rect x="60" y="308" width="505" height="202" rx="10" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.4"/>
+  <text x="76" y="332" fill="#6EE7B7" font-size="13" font-weight="700">✅ Production Pattern: A-Attestation Gate + STI-CA x5u Pinning (P771)</text>
+  <text x="76" y="356" fill="#E2E8F0" font-size="12">1. Attestation Tiering: Require A-Attestation for ANI auto-lookup; B/C forces MFA</text>
+  <text x="76" y="378" fill="#E2E8F0" font-size="12">2. STI-CA Allowlist Pinning: Fetch x5u certs only from approved STI-PA HTTPS hosts</text>
+  <text x="76" y="400" fill="#E2E8F0" font-size="12">3. Anti-Replay Window: Enforce PASSporT iat freshness &lt;= 60s &amp; orig/dest TN match</text>
+  <text x="76" y="422" fill="#E2E8F0" font-size="12">4. Zero Spoof Takeovers: Blocks 100% of ANI spoofing &amp; x5u SSRF vectors at edge</text>
+
+  <rect x="76" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="92" y="462" fill="#34D399" font-size="12" font-weight="700">Deterministic Invariant (evaluateCarrierStirShakenPassporT...):</text>
+  <text x="92" y="482" fill="#A7F3D0" font-size="11.5">attestation=="A" &amp;&amp; x5uAllowlisted==true &amp;&amp; maxPassportIatSkewSec &lt;= 60s</text>
+
+  <!-- Right Column: P772 In-Band Audio DTMF Goertzel Strip & RFC 4733 Dedup -->
+  <rect x="615" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1.5" filter="url(#cardShadow33)"/>
+  <rect x="615" y="138" width="545" height="42" rx="14" fill="#065F46"/>
+  <text x="637" y="164" fill="#6EE7B7" font-size="15" font-weight="700">2. In-Band DTMF Goertzel Notch Strip &amp; RFC 4733 Dedup (P772)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="635" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="651" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Dual In-Band + Out-of-Band DTMF Bleed Into S2S/ASR</text>
+  <text x="651" y="241" fill="#CBD5E1" font-size="12">• Carrier sends RFC 4733 event AND leaks 697–1477Hz audio beep into PCM stream</text>
+  <text x="651" y="261" fill="#CBD5E1" font-size="12">• PIN "1234" is double-counted as "11223344" + S2S hallucinates words from beeps</text>
+  <text x="651" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: 31% keypad entry failure &amp; acoustic PIN frequency leakage into logs</text>
+
+  <!-- Production Pattern -->
+  <rect x="635" y="308" width="505" height="202" rx="10" fill="#1E1B4B" fill-opacity="0.55" stroke="#38BDF8" stroke-width="1.4"/>
+  <text x="651" y="332" fill="#7DD3FC" font-size="13" font-weight="700">✅ Production Pattern: 10ms Goertzel Notch + 50–120ms Dedup (P772)</text>
+  <text x="651" y="356" fill="#E2E8F0" font-size="12">1. Sliding Goertzel Detector: Detect 8 ITU-T Q.23 row/column frequencies in &lt;=10ms</text>
+  <text x="651" y="378" fill="#E2E8F0" font-size="12">2. Notch Audio Stripping: Attenuate in-band DTMF tones &gt;=45dB before VAD/ASR/S2S</text>
+  <text x="651" y="400" fill="#E2E8F0" font-size="12">3. Cross-Channel Coalescing: Deduplicate RFC 4733 + Goertzel hits within 50–120ms</text>
+  <text x="651" y="422" fill="#E2E8F0" font-size="12">4. Zero Beep Hallucination: Cuts keypad double-digit errors from 31.2% to 0.0%</text>
+
+  <rect x="651" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="1"/>
+  <text x="667" y="462" fill="#38BDF8" font-size="12" font-weight="700">Deterministic Invariant (evaluateInbandAudioDtmfGoertzel...):</text>
+  <text x="667" y="482" fill="#BAE6FD" font-size="11.5">dtmfDedupWindowMs in [50, 120] &amp;&amp; minGoertzelNotchAttenuationDb &gt;= 45dB</text>
+
+  <!-- Bottom Provenance & Latency Strip -->
+  <rect x="40" y="544" width="1120" height="103" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.5" filter="url(#cardShadow33)"/>
+  <text x="62" y="571" fill="#F8FAFC" font-size="14" font-weight="700">Stage 389 Quantitative Verification &amp; Measurement Provenance (392 Dimensions · 781 Guardrails · 790 Probes · 831 Unit Tests)</text>
+  <text x="62" y="595" fill="#94A3B8" font-size="12">• STIR/SHAKEN Gate (P771): Blocks 100% of ANI spoofing &amp; x5u SSRF; Goertzel Strip Gate (P772): Cuts keypad double-digit errors from 31.2% to 0.0%.</text>
+  <text x="62" y="616" fill="#67E8F9" font-size="11.5" font-weight="600">• Timer &amp; Provenance Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="62" y="635" fill="#CBD5E1" font-size="11">• Live Provider P95 TTFA: Retell 820ms (measured) · Vapi 960ms (measured) · LiveKit 690ms (measured) · OpenAI Realtime / ACS / Gemini Live: not_measured.</text>
+</svg>

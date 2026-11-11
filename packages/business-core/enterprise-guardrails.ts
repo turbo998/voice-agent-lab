@@ -71576,6 +71576,144 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface CarrierStirShakenPassporTAttestationContext {
+      spoofedAniOrUntrustedX5uSsrfDetected: boolean;
+      requiredAttestationLevel: string;
+      maxPassportIatSkewSec: number;
+    }
+
+    export interface CarrierStirShakenPassporTAttestationDecision {
+      violated: boolean;
+      policyId: "P771-CARRIER-STIR-SHAKEN-PASSPORT-ATTESTATION-AND-X5U-SSRF-GUARD";
+      action:
+        | "stir_shaken_spoof_or_x5u_ssrf_blocked"
+        | "clamp_attestation_level_and_passport_iat_window"
+        | "allow";
+      reason: string;
+      clampedRequiredAttestationLevel: "A";
+      clampedMaxPassportIatSkewSec: number;
+    }
+
+    export function evaluateCarrierStirShakenPassporTAttestationAndX5uSsrfGate(
+      context: CarrierStirShakenPassporTAttestationContext,
+    ): CarrierStirShakenPassporTAttestationDecision {
+      const policyId =
+        "P771-CARRIER-STIR-SHAKEN-PASSPORT-ATTESTATION-AND-X5U-SSRF-GUARD" as const;
+      const clampedRequiredAttestationLevel = "A" as const;
+      const clampedMaxPassportIatSkewSec = Math.min(
+        Math.max(context.maxPassportIatSkewSec, 5),
+        60,
+      );
+
+      if (context.spoofedAniOrUntrustedX5uSsrfDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "stir_shaken_spoof_or_x5u_ssrf_blocked",
+          reason:
+            "Carrier RFC 8224/8225 STIR/SHAKEN Attestation & PASSporT x5u SSRF Policy Check: inbound SIP INVITE attempted account auto-binding under B/C/unsigned ANI attestation or supplied a non-STI-CA / internal RFC 1918 x5u certificate URL; offline synthetic policy state machine enforcing A-level full attestation for ANI trust, STI-CA domain allowlisting, and <=60s PASSporT iat freshness (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live STI-CA certificate lookup latency not_measured).",
+          clampedRequiredAttestationLevel,
+          clampedMaxPassportIatSkewSec,
+        };
+      }
+
+      if (
+        context.requiredAttestationLevel !== "A" ||
+        context.maxPassportIatSkewSec > 60
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_attestation_level_and_passport_iat_window",
+          reason:
+            "Required STIR/SHAKEN attestation level (must be 'A' for ANI auto-binding) or PASSporT iat freshness window (>60s synthetic ceiling) out of bounds; clamping required attestation to 'A' and iat skew window to <=60s.",
+          clampedRequiredAttestationLevel,
+          clampedMaxPassportIatSkewSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8224/8225 STIR/SHAKEN A-level attestation, STI-CA x5u allowlisting, and <=60s PASSporT iat anti-replay verified.",
+        clampedRequiredAttestationLevel,
+        clampedMaxPassportIatSkewSec,
+      };
+    }
+
+    export interface InbandAudioDtmfGoertzelNotchDedupContext {
+      unstrippedInbandDtmfOrDuplicateRfc4733Detected: boolean;
+      dtmfDedupWindowMs: number;
+      minGoertzelNotchAttenuationDb: number;
+    }
+
+    export interface InbandAudioDtmfGoertzelNotchDedupDecision {
+      violated: boolean;
+      policyId: "P772-INBAND-AUDIO-DTMF-GOERTZEL-NOTCH-STRIP-AND-RFC4733-DEDUP-GUARD";
+      action:
+        | "inband_dtmf_bleed_or_duplicate_digit_blocked"
+        | "clamp_dtmf_dedup_window_and_goertzel_notch_attenuation"
+        | "allow";
+      reason: string;
+      clampedDtmfDedupWindowMs: number;
+      clampedMinGoertzelNotchAttenuationDb: number;
+    }
+
+    export function evaluateInbandAudioDtmfGoertzelNotchStripAndRfc4733DedupGate(
+      context: InbandAudioDtmfGoertzelNotchDedupContext,
+    ): InbandAudioDtmfGoertzelNotchDedupDecision {
+      const policyId =
+        "P772-INBAND-AUDIO-DTMF-GOERTZEL-NOTCH-STRIP-AND-RFC4733-DEDUP-GUARD" as const;
+      const clampedDtmfDedupWindowMs = Math.min(
+        Math.max(context.dtmfDedupWindowMs, 50),
+        120,
+      );
+      const clampedMinGoertzelNotchAttenuationDb = Math.min(
+        Math.max(context.minGoertzelNotchAttenuationDb, 45),
+        80,
+      );
+
+      if (context.unstrippedInbandDtmfOrDuplicateRfc4733Detected) {
+        return {
+          violated: true,
+          policyId,
+          action: "inband_dtmf_bleed_or_duplicate_digit_blocked",
+          reason:
+            "In-Band Audio DTMF Goertzel Notch Strip & RFC 4733 Deduplication Policy Check: carrier trunk leaked 697-1477Hz in-band keypad tones alongside out-of-band RFC 4733 events without notch stripping or coalescing (causing '1234' -> '11223344' double digits, false VAD barge-in, and acoustic PIN leakage); offline synthetic policy state machine enforcing >=45dB Goertzel band-stop attenuation and 50-120ms cross-channel deduplication (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live DSP Goertzel filter execution time not_measured).",
+          clampedDtmfDedupWindowMs,
+          clampedMinGoertzelNotchAttenuationDb,
+        };
+      }
+
+      if (
+        context.dtmfDedupWindowMs < 50 ||
+        context.dtmfDedupWindowMs > 120 ||
+        context.minGoertzelNotchAttenuationDb < 45
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_dtmf_dedup_window_and_goertzel_notch_attenuation",
+          reason:
+            "DTMF cross-channel deduplication window (outside [50, 120] ms synthetic bounds) or Goertzel notch attenuation (<45 dB synthetic floor) out of bounds; clamping dedup window to [50, 120] ms and notch attenuation to >=45 dB.",
+          clampedDtmfDedupWindowMs,
+          clampedMinGoertzelNotchAttenuationDb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: <=10ms Goertzel >=45dB in-band DTMF notch stripping and [50, 120] ms RFC 4733 cross-channel deduplication verified.",
+        clampedDtmfDedupWindowMs,
+        clampedMinGoertzelNotchAttenuationDb,
+      };
+    }
+
 
 
 

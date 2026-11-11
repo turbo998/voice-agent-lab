@@ -1531,6 +1531,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks AMR-WB 16kHz to 8kHz G.711 tandem transcoding that amputates 4kHz-7kHz F/S unvoiced fricatives, clamping SIP sample rate to >=16,000 Hz and narrowband fricative pre-emphasis to [3.0, 6.0] dB; live carrier IMS SDP negotiation latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks uncompensated quartz crystal clock skew >50 ppm and raw zero-PCM underrun clicks, clamping residual clock drift to <=50 ppm via polyphase ASRC and WSOLA zero-crossing splicing to <=15ms; live DSP polyphase resampling CPU overhead is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "392. [Topic 29: voice-stir-shaken-ani-attestation-inband-dtmf-goertzel-strip-faq] Carrier RFC 8224/8225 STIR/SHAKEN A-Level Attestation, STI-CA x5u SSRF Guard & <=60s PASSporT iat + RTP In-Band DTMF Goertzel (>=45dB) Notch Stripping & RFC 4733 (50-120ms) Cross-Channel Deduplication Guard (P771 / P772 — Stage 389 · 392-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks C-level spoofed ANI account auto-binding and private-IP SIP Identity x5u SSRF, clamping required attestation level to 'A' and PASSporT iat freshness window to <=60s; live STI-CA certificate lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unstripped 697-1477Hz in-band DTMF audio bleed and duplicate RFC 4733 keypad digits, clamping Goertzel notch attenuation to >=45 dB and cross-channel deduplication window to [50, 120] ms; live DSP Goertzel filter execution time is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

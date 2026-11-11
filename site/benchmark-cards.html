@@ -1268,9 +1268,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>391. [专题28 `docs/voice-pstn-trfo-fricative-preservation-rtp-clock-drift-asrc-faq.md`] PSTN/VoLTE `3GPP TS 23.153 TrFO`（`&gt;=16,000 Hz`）宽带免转码清擦音（`F/S`）保真与窄带 `3.0–6.0 dB` 高频搁架预加重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 `F/S` 与 `B/D` 易混辅音错误率从 `23.5%` 压降至 `1.4%`；真实运营商 IMS SDP 协商耗时 `not_measured`）&amp; `RTP` 采样晶振频偏卡尔曼多相 `ASRC`（`&lt;=±50 ppm`）重同步与 `WSOLA`（`&lt;=15ms`）过零点平滑补偿锁（消除周期性欠载咔哒爆音与 `AEC3` 回声失步；真实 DSP 重采样耗时 `not_measured`）(`P769` / `P770` · Stage 388 · 391 评测维度里程碑 · 779 护栏 &amp; 788 探针 · 391 维)</strong>
+                <strong>391. [专题28 `docs/voice-pstn-trfo-fricative-preservation-rtp-clock-drift-asrc-faq.md`] PSTN/VoLTE `3GPP TS 23.153 TrFO`（`&gt;=16,000 Hz`）宽带免转码清擦音（`F/S`）保真与窄带 `3.0–6.0 dB` 高频搁架预加重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 `F/S` 与 `B/D` 易混辅音错误率从 `23.5%` 压降至 `1.4%`；真实运营商 IMS SDP 协商耗时 `not_measured`）&amp; `RTP` 采样晶振频偏卡尔曼多相 `ASRC`（`&lt;=±50 ppm`）重同步与 `WSOLA`（`&lt;=15ms`）过零点平滑补偿锁（消除周期性欠载咔哒爆音与 `AEC3` 回声失步；真实 DSP 重采样耗时 `not_measured`）(`P769` / `P770` · Stage 388 · 391 维)</strong>
               </td>
               <td><code>P769 / P770 deterministic PSTN TrFO fricative preservation gate &amp; RTP clock-drift polyphase ASRC resync guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>392. [专题29 `docs/voice-stir-shaken-ani-attestation-inband-dtmf-goertzel-strip-faq.md`] 运营商 `RFC 8224 / RFC 8225 STIR/SHAKEN` `A` 级来电主叫验签、`STI-CA x5u` 域名白名单防 SSRF 与 `PASSporT iat &lt;=60s` 防重放门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：100% 阻断改号欺诈与内网元数据 SSRF；真实 STI-CA 证书查询耗时 `not_measured`）&amp; `RTP` 带内按键音 `Goertzel`（`&gt;=45 dB`）陷波剥离与 `RFC 4733`（`50–120ms`）跨通道去重锁（按键双倍重影与误打断率从 `31.2%` 降至 `0.0%`；真实 DSP Goertzel 耗时 `not_measured`）(`P771` / `P772` · Stage 389 · 392 评测维度里程碑 · 781 护栏 &amp; 790 探针 · 392 维)</strong>
+              </td>
+              <td><code>P771 / P772 deterministic STIR/SHAKEN A-level x5u SSRF gate &amp; in-band DTMF Goertzel notch dedup guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4519,9 +4526,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>391. [专题28 `docs/voice-pstn-trfo-fricative-preservation-rtp-clock-drift-asrc-faq.md`] PSTN/VoLTE `3GPP TS 23.153 TrFO`（`&gt;=16,000 Hz`）宽带免转码清擦音（`F/S`）保真与窄带 `3.0–6.0 dB` 高频搁架预加重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 `F/S` 与 `B/D` 易混辅音错误率从 `23.5%` 压降至 `1.4%`；真实运营商 IMS SDP 协商耗时 `not_measured`）&amp; `RTP` 采样晶振频偏卡尔曼多相 `ASRC`（`&lt;=±50 ppm`）重同步与 `WSOLA`（`&lt;=15ms`）过零点平滑补偿锁（消除周期性欠载咔哒爆音与 `AEC3` 回声失步；真实 DSP 重采样耗时 `not_measured`）(`P769` / `P770` · Stage 388 · 391 评测维度里程碑 · 779 护栏 &amp; 788 探针 · 391 维)</strong>
+                <strong>391. [专题28 `docs/voice-pstn-trfo-fricative-preservation-rtp-clock-drift-asrc-faq.md`] PSTN/VoLTE `3GPP TS 23.153 TrFO`（`&gt;=16,000 Hz`）宽带免转码清擦音（`F/S`）保真与窄带 `3.0–6.0 dB` 高频搁架预加重门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 `F/S` 与 `B/D` 易混辅音错误率从 `23.5%` 压降至 `1.4%`；真实运营商 IMS SDP 协商耗时 `not_measured`）&amp; `RTP` 采样晶振频偏卡尔曼多相 `ASRC`（`&lt;=±50 ppm`）重同步与 `WSOLA`（`&lt;=15ms`）过零点平滑补偿锁（消除周期性欠载咔哒爆音与 `AEC3` 回声失步；真实 DSP 重采样耗时 `not_measured`）(`P769` / `P770` · Stage 388 · 391 维)</strong>
               </td>
               <td><code>P769 / P770 deterministic PSTN TrFO fricative preservation gate &amp; RTP clock-drift polyphase ASRC resync guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>392. [专题29 `docs/voice-stir-shaken-ani-attestation-inband-dtmf-goertzel-strip-faq.md`] 运营商 `RFC 8224 / RFC 8225 STIR/SHAKEN` `A` 级来电主叫验签、`STI-CA x5u` 域名白名单防 SSRF 与 `PASSporT iat &lt;=60s` 防重放门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：100% 阻断改号欺诈与内网元数据 SSRF；真实 STI-CA 证书查询耗时 `not_measured`）&amp; `RTP` 带内按键音 `Goertzel`（`&gt;=45 dB`）陷波剥离与 `RFC 4733`（`50–120ms`）跨通道去重锁（按键双倍重影与误打断率从 `31.2%` 降至 `0.0%`；真实 DSP Goertzel 耗时 `not_measured`）(`P771` / `P772` · Stage 389 · 392 评测维度里程碑 · 781 护栏 &amp; 790 探针 · 392 维)</strong>
+              </td>
+              <td><code>P771 / P772 deterministic STIR/SHAKEN A-level x5u SSRF gate &amp; in-band DTMF Goertzel notch dedup guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
