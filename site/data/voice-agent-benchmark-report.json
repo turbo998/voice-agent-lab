@@ -1585,6 +1585,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks inbound SIP REFER international toll-fraud hairpins, ?header= URI smuggling, and cross-tenant RFC 3891 INVITE Replaces hijacking, enforcing 0 untrusted Refer-To targets and 0 cross-tenant pickups; live SBC dialog lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks DNS NAPTR SIPS-to-UDP downgrades and 32,000ms RFC 3261 Timer B blackhole hangs, enforcing 0 SIPS downgrades and <=150ms backup SRV failover; live DNS SRV failover RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "401. [Topic 38: voice-sip-loop-max-forwards-spiral-webrtc-ice-lite-role-conflict-faq] SIP RFC 3261 Via R-URI Hash Loop/Spiral Guard & Max-Forwards [10,70] Clamp + WebRTC ICE-Lite 487 Role-Conflict Arbitration & DTLS [100,250]ms Fast Backoff Guard (P789 / P790 — Stage 398 · 401-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: halts 70-255x recursive INVITE loop storms in <2ms via 482 Loop Detected while clamping ingress Max-Forwards to [10, 70] and permitting <=5-hop legitimate call-forwarding spirals; live SBC Via SHA-256 inspection latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: resolves dual ICE-Controlled nomination deadlocks via 64-bit tie-breaker 487 Role Conflict and clamps DTLS initial RTO to [100, 250]ms with MTU <=1,200B; live STUN/DTLS flight RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

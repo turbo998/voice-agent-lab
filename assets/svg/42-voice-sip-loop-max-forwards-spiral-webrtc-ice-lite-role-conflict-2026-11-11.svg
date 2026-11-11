@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg42" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="redGrad42" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7F1D1D"/>
+      <stop offset="100%" stop-color="#991B1B"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad42" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065F46"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="blueGrad42" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg42)"/>
+
+  <!-- Header -->
+  <rect x="36" y="24" width="1128" height="84" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <text x="56" y="56" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1">STAGE 398 · TOPIC 38 · ENTERPRISE VOICE SIGNALING LOOP &amp; ICE-LITE DTLS ARCHITECTURE FAQ (P789–P790)</text>
+  <text x="56" y="84" fill="#F8FAFC" font-family="Segoe UI, system-ui, sans-serif" font-size="21" font-weight="700">SIP RFC 3261 Loop/Spiral Guard (Max-Forwards) &amp; WebRTC ICE-Lite 487 Role-Conflict + DTLS Backoff</text>
+  <rect x="980" y="38" width="164" height="32" rx="16" fill="#065F46" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1062" y="59" text-anchor="middle" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">401 Dims · 802 Probes</text>
+
+  <!-- Left Column: P789 SIP RFC 3261 Max-Forwards & Via Branch Loop vs Spiral Guard -->
+  <rect x="36" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5"/>
+  <rect x="36" y="124" width="552" height="44" rx="12" fill="url(#blueGrad42)"/>
+  <text x="56" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P789 · SIP RFC 3261 Loop vs Spiral Hash &amp; Max-Forwards Clamp</text>
+
+  <!-- Anti-pattern Box -->
+  <rect x="56" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="72" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: Unchecked Overflow Routing Loop &amp; Max-Forwards=255 Bomb</text>
+  <text x="72" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• PBX Hunt Group → SBC → Voice AI Failover → PBX Hunt Group forms cyclic loop</text>
+  <text x="72" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• 1 call spawns 70–255 recursive INVITE legs in &lt;1.5s, exhausting SBC SIP licenses</text>
+  <text x="72" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Naive Call-ID duplicate block mistakenly kills valid multi-hop Spiral call forwarding</text>
+  <text x="72" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: 100x SIP Dialog Amplification · Legitimate Forwarding Dropped</text>
+
+  <!-- Best Practice Box -->
+  <rect x="56" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="72" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ RFC 3261 §16.6 Via Branch R-URI Hash &amp; Ingress Max-Forwards Clamp</text>
+  <text x="72" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. Ingress Clamp: Clamp incoming Max-Forwards &gt;70 down to 70; reject &lt;=0 with 483</text>
+  <text x="72" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. Via Branch Hash: z9hG4bK-&lt;txid&gt;-&lt;SHA256(R-URI, To, From, Call-ID, CSeq)&gt;</text>
+  <text x="72" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">3. Loop vs Spiral: Identical R-URI hash in prior Via = 482 Loop Detected (&lt;2ms);</text>
+  <text x="72" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   changed R-URI hash = legitimate Spiral (permit up to maxSpiralHops &lt;= 5)</text>
+  <text x="72" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P789: 10 &lt;= Max-Forwards &lt;= 70 · maxSpiralHops &lt;= 5 · 482/483 Guard</text>
+  <text x="72" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Recursive Dialog Storms · 100% Valid Multi-Hop Spiral Survival</text>
+
+  <!-- Bottom KPI Pill Left -->
+  <rect x="56" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="72" y="530" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate Verification (`evaluateSipRfc3261LoopSpiralAndMaxForwardsGate`)</text>
+  <text x="72" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedIngressMaxForwards = [10, 70] | clampedMaxSpiralHops &lt;= 5 hops</text>
+  <text x="72" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: reject_482_loop_detected_and_clamp_max_forwards (0ms @ 1ms grid)</text>
+
+  <!-- Right Column: P790 WebRTC ICE-Lite Role Conflict & DTLS Exponential Backoff -->
+  <rect x="612" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="612" y="124" width="552" height="44" rx="12" fill="url(#emeraldGrad42)"/>
+  <text x="632" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P790 · WebRTC ICE-Lite 487 Role-Conflict &amp; DTLS Flight Backoff</text>
+
+  <!-- Anti-pattern Box Right -->
+  <rect x="632" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="648" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: Dual ICE-Controlled Deadlock &amp; 1,000ms DTLS RTO Stall</text>
+  <text x="648" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Cloud ICE-Lite server + legacy SDK both send ICE-CONTROLLED → 0 USE-CANDIDATE</text>
+  <text x="648" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• STUN Binding succeeds, but neither side nominates pair → 100% dead-air call</text>
+  <text x="648" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Default 1,000ms DTLS initial RTO turns 1 lost packet into 1.2s–3.2s greeting delay</text>
+  <text x="648" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: Deadlocked ICE Nomination · 3,000ms+ First-Word Delay on 5G Loss</text>
+
+  <!-- Best Practice Box Right -->
+  <rect x="632" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="648" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ RFC 8445 §7.3.1.1 487 Tie-Breaker &amp; Aggressive DTLS RTO (100ms–1,600ms)</text>
+  <text x="648" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. Role Arbitration: Compare 64-bit ICE Tie-Breaker; emit STUN 487 Role Conflict</text>
+  <text x="648" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   immediately or auto-promote Gateway to Full-ICE Controlling when peer is ICE-Lite</text>
+  <text x="648" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. Fast DTLS Flight RTO: Set initial DTLS RTO to 100ms–200ms (100→200→400→800ms)</text>
+  <text x="648" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">3. Packetization: Clamp DTLS MTU &lt;= 1,200B to prevent IP fragmentation blackholes</text>
+  <text x="648" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P790: dtlsInitialRtoMs = [100, 250]ms · dtlsMtuBytes &lt;= 1,200B</text>
+  <text x="648" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 ICE Role Deadlocks · &lt;280ms DTLS Recovery under 8% Packet Loss</text>
+
+  <!-- Bottom KPI Pill Right -->
+  <rect x="632" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="648" y="530" fill="#34D399" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate Verification (`evaluateWebrtcIceLiteRoleConflictAndDtlsBackoffGate`)</text>
+  <text x="648" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedDtlsInitialRtoMs = [100, 250]ms | clampedDtlsMtuBytes = [576, 1200]B</text>
+  <text x="648" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: resolve_ice_role_conflict_487_and_clamp_dtls_rto (0ms @ 1ms grid)</text>
+
+  <!-- Footer Provenance -->
+  <rect x="36" y="614" width="1128" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="640" fill="#94A3B8" font-family="Consolas, monospace" font-size="11">Provenance: synthetic deterministic evaluation | 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+</svg>

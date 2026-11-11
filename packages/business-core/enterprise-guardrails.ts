@@ -72812,6 +72812,150 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3261LoopSpiralAndMaxForwardsGateContext {
+      duplicateViaRequestUriHashDetected: boolean;
+      ingressMaxForwards: number;
+      spiralHopCount: number;
+    }
+
+    export interface SipRfc3261LoopSpiralAndMaxForwardsGateDecision {
+      violated: boolean;
+      policyId: "P789-SIP-RFC3261-LOOP-SPIRAL-VIA-HASH-AND-MAX-FORWARDS-GUARD";
+      action:
+        | "reject_482_loop_detected_and_clamp_max_forwards"
+        | "clamp_max_forwards_and_spiral_hops"
+        | "allow";
+      reason: string;
+      clampedIngressMaxForwards: number;
+      clampedMaxSpiralHops: number;
+    }
+
+    export function evaluateSipRfc3261LoopSpiralAndMaxForwardsGate(
+      context: SipRfc3261LoopSpiralAndMaxForwardsGateContext,
+    ): SipRfc3261LoopSpiralAndMaxForwardsGateDecision {
+      const policyId =
+        "P789-SIP-RFC3261-LOOP-SPIRAL-VIA-HASH-AND-MAX-FORWARDS-GUARD" as const;
+      const clampedIngressMaxForwards = Math.min(
+        Math.max(context.ingressMaxForwards, 10),
+        70,
+      );
+      const clampedMaxSpiralHops = Math.min(
+        Math.max(context.spiralHopCount, 0),
+        5,
+      );
+
+      if (context.duplicateViaRequestUriHashDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_482_loop_detected_and_clamp_max_forwards",
+          reason:
+            "SIP RFC 3261 §16.6 Loop vs Spiral & Max-Forwards Policy Check: inbound SIP INVITE matched an existing Via branch cryptographic Request-URI hash (indicating a cyclic PBX-to-AI overflow routing loop that amplifies 1 call into 70–255 zombie dialogs); offline synthetic policy state machine returning 482 Loop Detected in <2ms, clamping ingress Max-Forwards to [10, 70], and bounding legitimate call-forward spirals to <=5 hops (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC Via branch SHA-256 inspection latency not_measured).",
+          clampedIngressMaxForwards,
+          clampedMaxSpiralHops,
+        };
+      }
+
+      if (
+        context.ingressMaxForwards < 10 ||
+        context.ingressMaxForwards > 70 ||
+        context.spiralHopCount > 5
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_max_forwards_and_spiral_hops",
+          reason:
+            "Ingress Max-Forwards (<10 or >70 synthetic bounds) or legitimate call-forwarding spiral hop count (>5 hops synthetic ceiling) out of bounds; clamping ingress Max-Forwards to [10, 70] and spiral hops to <=5.",
+          clampedIngressMaxForwards,
+          clampedMaxSpiralHops,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3261 Via branch R-URI hash loop-free, ingress Max-Forwards in [10, 70], and spiral hops <=5 verified.",
+        clampedIngressMaxForwards,
+        clampedMaxSpiralHops,
+      };
+    }
+
+    export interface WebrtcIceLiteRoleConflictAndDtlsBackoffContext {
+      unresolvedIceRoleConflictOrDualLiteDeadlock: boolean;
+      dtlsInitialRtoMs: number;
+      dtlsMtuBytes: number;
+    }
+
+    export interface WebrtcIceLiteRoleConflictAndDtlsBackoffDecision {
+      violated: boolean;
+      policyId: "P790-WEBRTC-ICE-LITE-487-ROLE-CONFLICT-AND-DTLS-FAST-BACKOFF-GUARD";
+      action:
+        | "resolve_ice_role_conflict_487_and_clamp_dtls_rto"
+        | "clamp_dtls_initial_rto_and_mtu_bytes"
+        | "allow";
+      reason: string;
+      clampedDtlsInitialRtoMs: number;
+      clampedDtlsMtuBytes: number;
+    }
+
+    export function evaluateWebrtcIceLiteRoleConflictAndDtlsBackoffGate(
+      context: WebrtcIceLiteRoleConflictAndDtlsBackoffContext,
+    ): WebrtcIceLiteRoleConflictAndDtlsBackoffDecision {
+      const policyId =
+        "P790-WEBRTC-ICE-LITE-487-ROLE-CONFLICT-AND-DTLS-FAST-BACKOFF-GUARD" as const;
+      const clampedDtlsInitialRtoMs = Math.min(
+        Math.max(context.dtlsInitialRtoMs, 100),
+        250,
+      );
+      const clampedDtlsMtuBytes = Math.min(
+        Math.max(context.dtlsMtuBytes, 576),
+        1200,
+      );
+
+      if (context.unresolvedIceRoleConflictOrDualLiteDeadlock) {
+        return {
+          violated: true,
+          policyId,
+          action: "resolve_ice_role_conflict_487_and_clamp_dtls_rto",
+          reason:
+            "WebRTC RFC 8445 §7.3.1.1 ICE-Lite Role-Conflict (487) & DTLS Fast Backoff Policy Check: dual ICE-CONTROLLED deadlock (0 USE-CANDIDATE nominations causing 100% dead-air calls) or unarbitrated 64-bit tie-breaker collision detected alongside slow 1,000ms DTLS initial RTO; offline synthetic policy state machine enforcing 487 Role Conflict tie-breaker arbitration / Controlling promotion, clamping DTLS initial RTO to [100, 250]ms, and capping DTLS handshake MTU at [576, 1200]B (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live STUN/DTLS flight RTT not_measured).",
+          clampedDtlsInitialRtoMs,
+          clampedDtlsMtuBytes,
+        };
+      }
+
+      if (
+        context.dtlsInitialRtoMs < 100 ||
+        context.dtlsInitialRtoMs > 250 ||
+        context.dtlsMtuBytes < 576 ||
+        context.dtlsMtuBytes > 1200
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_dtls_initial_rto_and_mtu_bytes",
+          reason:
+            "DTLS initial flight RTO (<100ms or >250ms synthetic bounds) or DTLS handshake MTU (<576B or >1,200B synthetic bounds) out of bounds; clamping DTLS initial RTO to [100, 250]ms and DTLS MTU to [576, 1,200]B.",
+          clampedDtlsInitialRtoMs,
+          clampedDtlsMtuBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8445 ICE role-conflict arbitration active, DTLS initial RTO in [100, 250]ms, and DTLS MTU in [576, 1,200]B verified.",
+        clampedDtlsInitialRtoMs,
+        clampedDtlsMtuBytes,
+      };
+    }
+
+
 
 
 

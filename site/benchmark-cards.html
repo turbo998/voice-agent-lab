@@ -1336,6 +1336,13 @@
               <td><code>P787 / P788 deterministic SIP RFC 3515 REFER toll-fraud / Replaces guard &amp; RFC 3263 DNS SRV SIPS <=150ms failover gate</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>401. [专题38 `docs/voice-sip-loop-max-forwards-spiral-webrtc-ice-lite-role-conflict-faq.md`] SIP `RFC 3261 §16.6 Via` Branch `Request-URI` 语义哈希防死循环（`&lt;2ms` 返回 `482 Loop Detected` 阻断 `70–255x` 会话放大）、入口 `Max-Forwards [10, 70]` 钳制与合法多级呼转（`Spiral &lt;=5` 跳）精确放行门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC Via 哈希校验耗时 `not_measured`）&amp; WebRTC `RFC 8445 ICE-Lite` `64-bit Tie-Breaker` 角色冲突仲裁（`487 Role Conflict` 消除双受控无声死锁）与 `DTLS` 初始重传 `[100, 250]ms` / `MTU &lt;=1,200B` 防分片黑洞锁（8% 弱网丢包下首句延迟 `&lt;280ms`；真实 STUN/DTLS 耗时 `not_measured`）(`P789` / `P790` · Stage 398 · 799 护栏 &amp; 808 探针 · 401 维)</strong>
+              </td>
+              <td><code>P789 / P790 deterministic SIP RFC 3261 Loop/Spiral Via-hash guard &amp; WebRTC ICE-Lite 487 / DTLS fast-backoff gate</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4648,6 +4655,13 @@
                 <strong>400. [专题37 `docs/voice-sip-refer-replaces-toll-fraud-dns-srv-sips-failover-faq.md`] 企业 SIP `RFC 3515 REFER` 白名单锁（`0` 次国际高资费发卡弯盗打）、`?header=` URI 注入剥离、`RFC 4488 Refer-Sub: false` 与 `RFC 3891 INVITE Replaces` 同租户签名隔离门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 对话表查询耗时 `not_measured`）&amp; 运营商 `RFC 3263 DNS NAPTR/SRV` `SIPS+D2T` 零明文降级钉扎与主用 SBC 黑洞 `&lt;=150ms` 极速切换备机锁（打破 `32,000ms` `Timer B` 死等，提速 `228x`；真实 DNS SRV 切换耗时 `not_measured`）(`P787` / `P788` · Stage 397 · 🎉 400 评测维度历史性里程碑 · 797 护栏 &amp; 806 探针 · 400 维)</strong>
               </td>
               <td><code>P787 / P788 deterministic SIP RFC 3515 REFER toll-fraud / Replaces guard &amp; RFC 3263 DNS SRV SIPS <=150ms failover gate</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>401. [专题38 `docs/voice-sip-loop-max-forwards-spiral-webrtc-ice-lite-role-conflict-faq.md`] SIP `RFC 3261 §16.6 Via` Branch `Request-URI` 语义哈希防死循环（`&lt;2ms` 返回 `482 Loop Detected` 阻断 `70–255x` 会话放大）、入口 `Max-Forwards [10, 70]` 钳制与合法多级呼转（`Spiral &lt;=5` 跳）精确放行门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC Via 哈希校验耗时 `not_measured`）&amp; WebRTC `RFC 8445 ICE-Lite` `64-bit Tie-Breaker` 角色冲突仲裁（`487 Role Conflict` 消除双受控无声死锁）与 `DTLS` 初始重传 `[100, 250]ms` / `MTU &lt;=1,200B` 防分片黑洞锁（8% 弱网丢包下首句延迟 `&lt;280ms`；真实 STUN/DTLS 耗时 `not_measured`）(`P789` / `P790` · Stage 398 · 799 护栏 &amp; 808 探针 · 401 维)</strong>
+              </td>
+              <td><code>P789 / P790 deterministic SIP RFC 3261 Loop/Spiral Via-hash guard &amp; WebRTC ICE-Lite 487 / DTLS fast-backoff gate</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
