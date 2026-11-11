@@ -1549,6 +1549,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks autoregressive S2S shouting mirroring over angry caller turns, clamping integrated loudness to [-20.0, -16.0] LUFS and speech rate to [135, 165] WPM; live ITU-R BS.1770-4 DSP integration latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 500ms mid-clause EOU interruptions on dangling conjunctions/prepositions and unwatermarked synthetic audio, clamping syntactic hold to [1100, 1600] ms and C2PA spread-spectrum watermark SNR to >=38 dB; live watermark DSP embedding latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "395. [Topic 32: voice-webrtc-twcc-audio-priority-burst-loss-plc-hallucination-faq] WebRTC TWCC DSCP EF (46) Audio-Priority Preemption & <350kbps Video Shedding + Burst Packet-Loss (<=60ms) NetEQ PLC Anti-Hallucination & RFC 4585 RTCP NACK (<=120ms) Guard (P777 / P778 — Stage 392 · Historic 395-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks video/avatar keyframes starving 32kbps Opus voice streams under cellular congestion, clamping video shedding BWE floor to >=350 kbps and reserved audio+FEC floor to >=24 kbps; live TWCC BWE Kalman convergence latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks >60ms unflagged neural/NetEQ PLC vowel extrapolation that causes phantom ASR/S2S digit hallucinations, clamping unflagged PLC ceiling to <=60ms and selective audio RTCP NACK RTT to <=120ms; live RTCP NACK retransmission RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

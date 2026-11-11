@@ -71999,6 +71999,146 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcTwccAudioPrioritySheddingContext {
+      videoKeyframesStarvingAudioUnderLowBweDetected: boolean;
+      minVideoSheddingBweKbps: number;
+      reservedAudioFloorKbps: number;
+    }
+
+    export interface WebrtcTwccAudioPrioritySheddingDecision {
+      violated: boolean;
+      policyId: "P777-WEBRTC-TWCC-AUDIO-PRIORITY-AND-DSCP-EF46-CONGESTION-SHEDDING-GUARD";
+      action:
+        | "webrtc_twcc_audio_starvation_blocked"
+        | "clamp_video_shedding_bwe_and_reserved_audio_floor"
+        | "allow";
+      reason: string;
+      clampedMinVideoSheddingBweKbps: number;
+      clampedReservedAudioFloorKbps: number;
+    }
+
+    export function evaluateWebrtcTwccAudioPriorityAndDscpEf46CongestionSheddingGate(
+      context: WebrtcTwccAudioPrioritySheddingContext,
+    ): WebrtcTwccAudioPrioritySheddingDecision {
+      const policyId =
+        "P777-WEBRTC-TWCC-AUDIO-PRIORITY-AND-DSCP-EF46-CONGESTION-SHEDDING-GUARD" as const;
+      const clampedMinVideoSheddingBweKbps = Math.min(
+        Math.max(context.minVideoSheddingBweKbps, 350),
+        800,
+      );
+      const clampedReservedAudioFloorKbps = Math.min(
+        Math.max(context.reservedAudioFloorKbps, 24),
+        64,
+      );
+
+      if (context.videoKeyframesStarvingAudioUnderLowBweDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "webrtc_twcc_audio_starvation_blocked",
+          reason:
+            "WebRTC TWCC Audio-Priority & DSCP EF (46) Congestion Shedding Policy Check: shared FIFO pacer queued 32kbps Opus voice packets behind 150KB video/avatar keyframes or failed to shed video tracks when TWCC BWE dropped below 350kbps; offline synthetic policy state machine enforcing DSCP EF (46) audio preemption, >=24kbps reserved audio+FEC floor, and >=350kbps video shedding threshold (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live TWCC BWE Kalman convergence latency not_measured).",
+          clampedMinVideoSheddingBweKbps,
+          clampedReservedAudioFloorKbps,
+        };
+      }
+
+      if (
+        context.minVideoSheddingBweKbps < 350 ||
+        context.reservedAudioFloorKbps < 24
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_video_shedding_bwe_and_reserved_audio_floor",
+          reason:
+            "Video shedding BWE threshold (<350 kbps synthetic floor) or reserved audio+FEC bitrate floor (<24 kbps synthetic floor) out of bounds; clamping video shedding BWE floor to >=350 kbps and reserved audio floor to >=24 kbps.",
+          clampedMinVideoSheddingBweKbps,
+          clampedReservedAudioFloorKbps,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC DSCP EF (46) strict audio priority, >=24kbps reserved audio+FEC floor, and >=350kbps video shedding verified.",
+        clampedMinVideoSheddingBweKbps,
+        clampedReservedAudioFloorKbps,
+      };
+    }
+
+    export interface PacketLossBurstPlcAntiHallucinationContext {
+      unflaggedLongPlcBurstOrPhantomPhonemeDetected: boolean;
+      maxUnflaggedPlcBurstMs: number;
+      maxAudioNackRttMs: number;
+    }
+
+    export interface PacketLossBurstPlcAntiHallucinationDecision {
+      violated: boolean;
+      policyId: "P778-PACKET-LOSS-BURST-PLC-ANTI-HALLUCINATION-AND-RFC4585-NACK-GUARD";
+      action:
+        | "burst_loss_plc_hallucination_blocked"
+        | "clamp_max_plc_burst_ms_and_audio_nack_rtt"
+        | "allow";
+      reason: string;
+      clampedMaxUnflaggedPlcBurstMs: number;
+      clampedMaxAudioNackRttMs: number;
+    }
+
+    export function evaluatePacketLossBurstPlcAntiHallucinationAndRfc4585NackGate(
+      context: PacketLossBurstPlcAntiHallucinationContext,
+    ): PacketLossBurstPlcAntiHallucinationDecision {
+      const policyId =
+        "P778-PACKET-LOSS-BURST-PLC-ANTI-HALLUCINATION-AND-RFC4585-NACK-GUARD" as const;
+      const clampedMaxUnflaggedPlcBurstMs = Math.min(
+        Math.max(context.maxUnflaggedPlcBurstMs, 20),
+        60,
+      );
+      const clampedMaxAudioNackRttMs = Math.min(
+        Math.max(context.maxAudioNackRttMs, 20),
+        120,
+      );
+
+      if (context.unflaggedLongPlcBurstOrPhantomPhonemeDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "burst_loss_plc_hallucination_blocked",
+          reason:
+            "Packet-Loss Burst NetEQ PLC Anti-Hallucination & RFC 4585 NACK Policy Check: media decoder extrapolated >60ms of synthetic neural/NetEQ PLC waveforms across a cellular handover burst without tagging <plc_masked_gap/> (causing ASR/S2S to hallucinate phantom digits/confirmations); offline synthetic policy state machine enforcing <=60ms unflagged PLC ceiling and <=120ms RTT selective RFC 4585 RTCP NACK recovery (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTCP NACK retransmission RTT not_measured).",
+          clampedMaxUnflaggedPlcBurstMs,
+          clampedMaxAudioNackRttMs,
+        };
+      }
+
+      if (
+        context.maxUnflaggedPlcBurstMs > 60 ||
+        context.maxAudioNackRttMs > 120
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_max_plc_burst_ms_and_audio_nack_rtt",
+          reason:
+            "Unflagged PLC extrapolation burst ceiling (>60ms synthetic ceiling) or audio RTCP NACK RTT threshold (>120ms synthetic ceiling) out of bounds; clamping unflagged PLC ceiling to <=60ms and audio NACK RTT to <=120ms.",
+          clampedMaxUnflaggedPlcBurstMs,
+          clampedMaxAudioNackRttMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: <=60ms unflagged NetEQ PLC extrapolation cap, <plc_masked_gap/> slot lock, and <=120ms RFC 4585 RTCP NACK verified.",
+        clampedMaxUnflaggedPlcBurstMs,
+        clampedMaxAudioNackRttMs,
+      };
+    }
+
 
 
 
