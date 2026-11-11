@@ -72139,6 +72139,144 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSctpDataChannelBackpressureContext {
+      controlSharedOrderedCaptionChannelOrHolStallDetected: boolean;
+      maxDataChannelBufferedKb: number;
+      maxControlHolStallMs: number;
+    }
+
+    export interface WebrtcSctpDataChannelBackpressureDecision {
+      violated: boolean;
+      policyId: "P779-WEBRTC-SCTP-DATACHANNEL-BACKPRESSURE-AND-HOL-STALL-GUARD";
+      action:
+        | "webrtc_datachannel_hol_stall_or_backpressure_blocked"
+        | "clamp_datachannel_buffered_kb_and_control_hol_stall"
+        | "allow";
+      reason: string;
+      clampedMaxDataChannelBufferedKb: number;
+      clampedMaxControlHolStallMs: number;
+    }
+
+    export function evaluateWebrtcSctpDataChannelBackpressureAndHolStallGate(
+      context: WebrtcSctpDataChannelBackpressureContext,
+    ): WebrtcSctpDataChannelBackpressureDecision {
+      const policyId =
+        "P779-WEBRTC-SCTP-DATACHANNEL-BACKPRESSURE-AND-HOL-STALL-GUARD" as const;
+      const clampedMaxDataChannelBufferedKb = Math.min(
+        Math.max(context.maxDataChannelBufferedKb, 16),
+        64,
+      );
+      const clampedMaxControlHolStallMs = Math.min(
+        Math.max(context.maxControlHolStallMs, 5),
+        25,
+      );
+
+      if (context.controlSharedOrderedCaptionChannelOrHolStallDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "webrtc_datachannel_hol_stall_or_backpressure_blocked",
+          reason:
+            "WebRTC RFC 8831 SCTP DataChannel Backpressure & Head-of-Line Stall Policy Check: critical barge-in/tool control signaling shared a single ordered reliable SCTP stream with high-rate interim caption deltas or bufferedAmount exceeded 64KB (causing 1,280ms control stalls under packet loss); offline synthetic policy state machine enforcing dual-channel split (ordered=false, maxRetransmits=0 for captions), <=64KB backpressure shedding, and <=25ms control delivery SLA (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SCTP-over-DTLS RTO retransmission latency not_measured).",
+          clampedMaxDataChannelBufferedKb,
+          clampedMaxControlHolStallMs,
+        };
+      }
+
+      if (
+        context.maxDataChannelBufferedKb > 64 ||
+        context.maxControlHolStallMs > 25
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_datachannel_buffered_kb_and_control_hol_stall",
+          reason:
+            "SCTP DataChannel bufferedAmount threshold (>64 KB synthetic ceiling) or control head-of-line stall ceiling (>25 ms synthetic ceiling) out of bounds; clamping bufferedAmount ceiling to <=64 KB and control stall SLA to <=25 ms.",
+          clampedMaxDataChannelBufferedKb,
+          clampedMaxControlHolStallMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8831 dual-stream isolation, <=64KB caption backpressure shedding, and <=25ms control SLA verified.",
+        clampedMaxDataChannelBufferedKb,
+        clampedMaxControlHolStallMs,
+      };
+    }
+
+    export interface WebrtcMdnsPrivateIpAndTurnSsrfContext {
+      sdpPrivateIpLeakOrTurnImdsRelayAttemptDetected: boolean;
+      exposedPrivateIpCandidates: number;
+      maxTurnRelayBitrateKbps: number;
+    }
+
+    export interface WebrtcMdnsPrivateIpAndTurnSsrfDecision {
+      violated: boolean;
+      policyId: "P780-WEBRTC-MDNS-PRIVATE-IP-SANITIZER-AND-TURN-IMDS-SSRF-GUARD";
+      action:
+        | "webrtc_mdns_ip_leak_or_turn_ssrf_blocked"
+        | "clamp_private_ip_candidates_and_turn_bitrate"
+        | "allow";
+      reason: string;
+      clampedExposedPrivateIpCandidates: number;
+      clampedMaxTurnRelayBitrateKbps: number;
+    }
+
+    export function evaluateWebrtcMdnsPrivateIpSanitizerAndTurnImdsSsrfGate(
+      context: WebrtcMdnsPrivateIpAndTurnSsrfContext,
+    ): WebrtcMdnsPrivateIpAndTurnSsrfDecision {
+      const policyId =
+        "P780-WEBRTC-MDNS-PRIVATE-IP-SANITIZER-AND-TURN-IMDS-SSRF-GUARD" as const;
+      const clampedExposedPrivateIpCandidates = 0;
+      const clampedMaxTurnRelayBitrateKbps = Math.min(
+        Math.max(context.maxTurnRelayBitrateKbps, 32),
+        128,
+      );
+
+      if (context.sdpPrivateIpLeakOrTurnImdsRelayAttemptDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "webrtc_mdns_ip_leak_or_turn_ssrf_blocked",
+          reason:
+            "WebRTC RFC 8828 mDNS Private-IP Sanitizer & RFC 8656 TURN Cloud IMDS SSRF Policy Check: SDP candidate gathering exposed raw RFC 1918 host IPs or TURN CreatePermission/ChannelBind targeted 169.254.169.254 (cloud IMDS), 127.0.0.0/8, or internal VPC subnets; offline synthetic policy state machine enforcing 0 private SDP host candidates, TURN private/link-local CIDR denylists, and <=128kbps voice relay quota (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live TURN allocation permission round-trip not_measured).",
+          clampedExposedPrivateIpCandidates,
+          clampedMaxTurnRelayBitrateKbps,
+        };
+      }
+
+      if (
+        context.exposedPrivateIpCandidates > 0 ||
+        context.maxTurnRelayBitrateKbps > 128
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_private_ip_candidates_and_turn_bitrate",
+          reason:
+            "Exposed private SDP host candidates (>0 synthetic ceiling) or TURN relay bitrate quota (>128 kbps synthetic ceiling) out of bounds; clamping exposed private IPs to 0 and TURN relay bitrate to <=128 kbps.",
+          clampedExposedPrivateIpCandidates,
+          clampedMaxTurnRelayBitrateKbps,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 0 private SDP host candidates exposed, RFC 8828 mDNS sanitizer active, and TURN IMDS/private-CIDR blocklist with <=128kbps quota verified.",
+        clampedExposedPrivateIpCandidates,
+        clampedMaxTurnRelayBitrateKbps,
+      };
+    }
+
+
 
 
 

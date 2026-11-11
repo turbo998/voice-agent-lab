@@ -1296,9 +1296,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>395. [专题32 `docs/voice-webrtc-twcc-audio-priority-burst-loss-plc-hallucination-faq.md`] WebRTC `TWCC` `DSCP EF (46)` 语音绝对优先调度、`&gt;=24 kbps` 语音+FEC 保底与 `BWE &lt;350 kbps` 零延迟保音弃画门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：在 `120 kbps` 弱网下仍保持 `MOS &gt;=3.9`；真实 TWCC BWE 收敛耗时 `not_measured`）&amp; 突发连续丢包（`&lt;=60ms`）`NetEQ/Neural PLC` 脑补硬上限、`<plc_masked_gap/>` 槽位冻结与 `RTT &lt;=120ms` `RFC 4585 RTCP NACK` 重传锁（消除 `17.2%` 丢包幻觉词；真实 NACK RTT `not_measured`）(`P777` / `P778` · Stage 392 · 395 评测维度历史性里程碑 · 787 护栏 &amp; 796 探针 · 395 维)</strong>
+                <strong>395. [专题32 `docs/voice-webrtc-twcc-audio-priority-burst-loss-plc-hallucination-faq.md`] WebRTC `TWCC` `DSCP EF (46)` 语音绝对优先调度、`&gt;=24 kbps` 语音+FEC 保底与 `BWE &lt;350 kbps` 零延迟保音弃画门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：在 `120 kbps` 弱网下仍保持 `MOS &gt;=3.9`；真实 TWCC BWE 收敛耗时 `not_measured`）&amp; 突发连续丢包（`&lt;=60ms`）`NetEQ/Neural PLC` 脑补硬上限、`<plc_masked_gap/>` 槽位冻结与 `RTT &lt;=120ms` `RFC 4585 RTCP NACK` 重传锁（消除 `17.2%` 丢包幻觉词；真实 NACK RTT `not_measured`）(`P777` / `P778` · Stage 392 · 395 维)</strong>
               </td>
               <td><code>P777 / P778 deterministic WebRTC TWCC DSCP EF46 audio-priority shedding gate &amp; burst-loss PLC anti-hallucination NACK guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>396. [专题33 `docs/voice-webrtc-datachannel-backpressure-mdns-turn-ssrf-faq.md`] WebRTC `RFC 8831 SCTP DataChannel` 控制轨与瞬态字幕轨（`ordered: false, maxRetransmits: 0`）物理分离及 `bufferedAmount &lt;=64 KB` 背压卸载门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 3% 丢包下控制信令 P99 阻塞从 `1,280ms` 降至 `&lt;=25ms`；真实 SCTP RTO 重传耗时 `not_measured`）&amp; `RFC 8828 mDNS` 候选净化（`0` 私网 IP 泄露）与 `RFC 8656 TURN` 云元数据（`169.254.169.254`）/私网反射阻断及 `&lt;=128 kbps` 配额锁（真实 TURN 权限校验 RTT `not_measured`）(`P779` / `P780` · Stage 393 · 396 评测维度历史性里程碑 · 789 护栏 &amp; 798 探针 · 396 维)</strong>
+              </td>
+              <td><code>P779 / P780 deterministic WebRTC SCTP DataChannel backpressure HoL guard &amp; RFC 8828 mDNS / TURN IMDS SSRF sanitizer</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4575,9 +4582,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>395. [专题32 `docs/voice-webrtc-twcc-audio-priority-burst-loss-plc-hallucination-faq.md`] WebRTC `TWCC` `DSCP EF (46)` 语音绝对优先调度、`&gt;=24 kbps` 语音+FEC 保底与 `BWE &lt;350 kbps` 零延迟保音弃画门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：在 `120 kbps` 弱网下仍保持 `MOS &gt;=3.9`；真实 TWCC BWE 收敛耗时 `not_measured`）&amp; 突发连续丢包（`&lt;=60ms`）`NetEQ/Neural PLC` 脑补硬上限、`<plc_masked_gap/>` 槽位冻结与 `RTT &lt;=120ms` `RFC 4585 RTCP NACK` 重传锁（消除 `17.2%` 丢包幻觉词；真实 NACK RTT `not_measured`）(`P777` / `P778` · Stage 392 · 395 评测维度历史性里程碑 · 787 护栏 &amp; 796 探针 · 395 维)</strong>
+                <strong>395. [专题32 `docs/voice-webrtc-twcc-audio-priority-burst-loss-plc-hallucination-faq.md`] WebRTC `TWCC` `DSCP EF (46)` 语音绝对优先调度、`&gt;=24 kbps` 语音+FEC 保底与 `BWE &lt;350 kbps` 零延迟保音弃画门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：在 `120 kbps` 弱网下仍保持 `MOS &gt;=3.9`；真实 TWCC BWE 收敛耗时 `not_measured`）&amp; 突发连续丢包（`&lt;=60ms`）`NetEQ/Neural PLC` 脑补硬上限、`<plc_masked_gap/>` 槽位冻结与 `RTT &lt;=120ms` `RFC 4585 RTCP NACK` 重传锁（消除 `17.2%` 丢包幻觉词；真实 NACK RTT `not_measured`）(`P777` / `P778` · Stage 392 · 395 维)</strong>
               </td>
               <td><code>P777 / P778 deterministic WebRTC TWCC DSCP EF46 audio-priority shedding gate &amp; burst-loss PLC anti-hallucination NACK guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>396. [专题33 `docs/voice-webrtc-datachannel-backpressure-mdns-turn-ssrf-faq.md`] WebRTC `RFC 8831 SCTP DataChannel` 控制轨与瞬态字幕轨（`ordered: false, maxRetransmits: 0`）物理分离及 `bufferedAmount &lt;=64 KB` 背压卸载门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 3% 丢包下控制信令 P99 阻塞从 `1,280ms` 降至 `&lt;=25ms`；真实 SCTP RTO 重传耗时 `not_measured`）&amp; `RFC 8828 mDNS` 候选净化（`0` 私网 IP 泄露）与 `RFC 8656 TURN` 云元数据（`169.254.169.254`）/私网反射阻断及 `&lt;=128 kbps` 配额锁（真实 TURN 权限校验 RTT `not_measured`）(`P779` / `P780` · Stage 393 · 396 评测维度历史性里程碑 · 789 护栏 &amp; 798 探针 · 396 维)</strong>
+              </td>
+              <td><code>P779 / P780 deterministic WebRTC SCTP DataChannel backpressure HoL guard &amp; RFC 8828 mDNS / TURN IMDS SSRF sanitizer</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

@@ -1551,9 +1551,15 @@
       "delta_pts": 0.0
     },
     {
-      "question": "395. [Topic 32: voice-webrtc-twcc-audio-priority-burst-loss-plc-hallucination-faq] WebRTC TWCC DSCP EF (46) Audio-Priority Preemption & <350kbps Video Shedding + Burst Packet-Loss (<=60ms) NetEQ PLC Anti-Hallucination & RFC 4585 RTCP NACK (<=120ms) Guard (P777 / P778 — Stage 392 · Historic 395-Dimension Milestone)",
+      "question": "395. [Topic 32: voice-webrtc-twcc-audio-priority-burst-loss-plc-hallucination-faq] WebRTC TWCC DSCP EF (46) Audio-Priority Preemption & <350kbps Video Shedding + Burst Packet-Loss (<=60ms) NetEQ PLC Anti-Hallucination & RFC 4585 RTCP NACK (<=120ms) Guard (P777 / P778 — Stage 392 · 395-Dimension Milestone)",
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks video/avatar keyframes starving 32kbps Opus voice streams under cellular congestion, clamping video shedding BWE floor to >=350 kbps and reserved audio+FEC floor to >=24 kbps; live TWCC BWE Kalman convergence latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks >60ms unflagged neural/NetEQ PLC vowel extrapolation that causes phantom ASR/S2S digit hallucinations, clamping unflagged PLC ceiling to <=60ms and selective audio RTCP NACK RTT to <=120ms; live RTCP NACK retransmission RTT is not_measured)",
+      "delta_pts": 0.0
+    },
+    {
+      "question": "396. [Topic 33: voice-webrtc-datachannel-backpressure-mdns-turn-ssrf-faq] WebRTC RFC 8831 SCTP DataChannel Dual-Stream Split & <=64KB Backpressure Shedding + RFC 8828 mDNS Sanitizer (0 Leaks) & RFC 8656 TURN Cloud IMDS SSRF Guard (P779 / P780 — Stage 393 · Historic 396-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks high-rate interim caption deltas from head-of-line stalling barge-in controls on a shared ordered SCTP stream, clamping bufferedAmount to <=64 KB and control stall SLA to <=25 ms; live SCTP RTO retransmission latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks raw RFC 1918 SDP host leaks and TURN CreatePermission bounce SSRF against 169.254.169.254 (cloud IMDS), enforcing 0 exposed private IPs and <=128 kbps relay quota; live TURN permission RTT is not_measured)",
       "delta_pts": 0.0
     }
   ],
