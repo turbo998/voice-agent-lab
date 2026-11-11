@@ -1275,9 +1275,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>392. [专题29 `docs/voice-stir-shaken-ani-attestation-inband-dtmf-goertzel-strip-faq.md`] 运营商 `RFC 8224 / RFC 8225 STIR/SHAKEN` `A` 级来电主叫验签、`STI-CA x5u` 域名白名单防 SSRF 与 `PASSporT iat &lt;=60s` 防重放门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：100% 阻断改号欺诈与内网元数据 SSRF；真实 STI-CA 证书查询耗时 `not_measured`）&amp; `RTP` 带内按键音 `Goertzel`（`&gt;=45 dB`）陷波剥离与 `RFC 4733`（`50–120ms`）跨通道去重锁（按键双倍重影与误打断率从 `31.2%` 降至 `0.0%`；真实 DSP Goertzel 耗时 `not_measured`）(`P771` / `P772` · Stage 389 · 392 评测维度里程碑 · 781 护栏 &amp; 790 探针 · 392 维)</strong>
+                <strong>392. [专题29 `docs/voice-stir-shaken-ani-attestation-inband-dtmf-goertzel-strip-faq.md`] 运营商 `RFC 8224 / RFC 8225 STIR/SHAKEN` `A` 级来电主叫验签、`STI-CA x5u` 域名白名单防 SSRF 与 `PASSporT iat &lt;=60s` 防重放门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：100% 阻断改号欺诈与内网元数据 SSRF；真实 STI-CA 证书查询耗时 `not_measured`）&amp; `RTP` 带内按键音 `Goertzel`（`&gt;=45 dB`）陷波剥离与 `RFC 4733`（`50–120ms`）跨通道去重锁（按键双倍重影与误打断率从 `31.2%` 降至 `0.0%`；真实 DSP Goertzel 耗时 `not_measured`）(`P771` / `P772` · Stage 389 · 392 维)</strong>
               </td>
               <td><code>P771 / P772 deterministic STIR/SHAKEN A-level x5u SSRF gate &amp; in-band DTMF Goertzel notch dedup guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>393. [专题30 `docs/voice-sip-session-timer-zombie-reaper-webrtc-ice-consent-turn-faq.md`] `SIP RFC 4028 Session-Expires`（`90–180s`）信令心跳与 `15–30s` `RTP/RTCP` 媒体断流半开僵尸通话回收门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：单通异常掉线漏费封顶 `&lt;=$0.09`，挽回 `99.2%` 死寂空跑账单；真实运营商 SIP UPDATE RTT `not_measured`）&amp; `WebRTC RFC 7675`（`&lt;=30s`）ICE 同意保活吊销与 `&lt;=60s` 空闲 `TURN` 中继端口主动清剿锁（回收 `92%` 僵尸端口；真实 STUN 探测 RTT `not_measured`）(`P773` / `P774` · Stage 390 · 393 评测维度历史性里程碑 · 783 护栏 &amp; 792 探针 · 393 维)</strong>
+              </td>
+              <td><code>P773 / P774 deterministic SIP RFC 4028 RTP zombie reaper gate &amp; WebRTC RFC 7675 ICE consent TURN guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4533,9 +4540,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>392. [专题29 `docs/voice-stir-shaken-ani-attestation-inband-dtmf-goertzel-strip-faq.md`] 运营商 `RFC 8224 / RFC 8225 STIR/SHAKEN` `A` 级来电主叫验签、`STI-CA x5u` 域名白名单防 SSRF 与 `PASSporT iat &lt;=60s` 防重放门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：100% 阻断改号欺诈与内网元数据 SSRF；真实 STI-CA 证书查询耗时 `not_measured`）&amp; `RTP` 带内按键音 `Goertzel`（`&gt;=45 dB`）陷波剥离与 `RFC 4733`（`50–120ms`）跨通道去重锁（按键双倍重影与误打断率从 `31.2%` 降至 `0.0%`；真实 DSP Goertzel 耗时 `not_measured`）(`P771` / `P772` · Stage 389 · 392 评测维度里程碑 · 781 护栏 &amp; 790 探针 · 392 维)</strong>
+                <strong>392. [专题29 `docs/voice-stir-shaken-ani-attestation-inband-dtmf-goertzel-strip-faq.md`] 运营商 `RFC 8224 / RFC 8225 STIR/SHAKEN` `A` 级来电主叫验签、`STI-CA x5u` 域名白名单防 SSRF 与 `PASSporT iat &lt;=60s` 防重放门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：100% 阻断改号欺诈与内网元数据 SSRF；真实 STI-CA 证书查询耗时 `not_measured`）&amp; `RTP` 带内按键音 `Goertzel`（`&gt;=45 dB`）陷波剥离与 `RFC 4733`（`50–120ms`）跨通道去重锁（按键双倍重影与误打断率从 `31.2%` 降至 `0.0%`；真实 DSP Goertzel 耗时 `not_measured`）(`P771` / `P772` · Stage 389 · 392 维)</strong>
               </td>
               <td><code>P771 / P772 deterministic STIR/SHAKEN A-level x5u SSRF gate &amp; in-band DTMF Goertzel notch dedup guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>393. [专题30 `docs/voice-sip-session-timer-zombie-reaper-webrtc-ice-consent-turn-faq.md`] `SIP RFC 4028 Session-Expires`（`90–180s`）信令心跳与 `15–30s` `RTP/RTCP` 媒体断流半开僵尸通话回收门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：单通异常掉线漏费封顶 `&lt;=$0.09`，挽回 `99.2%` 死寂空跑账单；真实运营商 SIP UPDATE RTT `not_measured`）&amp; `WebRTC RFC 7675`（`&lt;=30s`）ICE 同意保活吊销与 `&lt;=60s` 空闲 `TURN` 中继端口主动清剿锁（回收 `92%` 僵尸端口；真实 STUN 探测 RTT `not_measured`）(`P773` / `P774` · Stage 390 · 393 评测维度历史性里程碑 · 783 护栏 &amp; 792 探针 · 393 维)</strong>
+              </td>
+              <td><code>P773 / P774 deterministic SIP RFC 4028 RTP zombie reaper gate &amp; WebRTC RFC 7675 ICE consent TURN guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

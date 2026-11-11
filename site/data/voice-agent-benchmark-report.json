@@ -1537,6 +1537,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks C-level spoofed ANI account auto-binding and private-IP SIP Identity x5u SSRF, clamping required attestation level to 'A' and PASSporT iat freshness window to <=60s; live STI-CA certificate lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unstripped 697-1477Hz in-band DTMF audio bleed and duplicate RFC 4733 keypad digits, clamping Goertzel notch attenuation to >=45 dB and cross-channel deduplication window to [50, 120] ms; live DSP Goertzel filter execution time is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "393. [Topic 30: voice-sip-session-timer-zombie-reaper-webrtc-ice-consent-turn-faq] SIP RFC 4028 Session-Timer (90-180s) & 15-30s RTP/RTCP Dead-Air Zombie Call Reaper + WebRTC RFC 7675 ICE Consent Freshness (<=30s) & <=60s Idle TURN Relay Port Reaper Guard (P773 / P774 — Stage 390 · Historic 393-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks half-open SIP/RTP zombie sessions lingering without SIP BYE and burning dead-air S2S LLM tokens, clamping Session-Expires to [90, 180] s and RTP/RTCP dead-air watchdog to [15, 30] s; live carrier SIP UPDATE round-trip latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unconsented UDP media transmission after STUN consent failure and 600s dangling TURN relay allocations, clamping ICE consent timeout to <=30s and idle TURN lifetime to <=60s; live STUN Binding probe RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

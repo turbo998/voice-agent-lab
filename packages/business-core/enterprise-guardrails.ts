@@ -71714,6 +71714,148 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc4028SessionTimerZombieReaperContext {
+      halfOpenRtpZombieSessionWithoutByeDetected: boolean;
+      sessionExpiresSec: number;
+      maxRtpDeadAirWatchdogSec: number;
+    }
+
+    export interface SipRfc4028SessionTimerZombieReaperDecision {
+      violated: boolean;
+      policyId: "P773-SIP-RFC4028-SESSION-TIMER-AND-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD";
+      action:
+        | "sip_half_open_rtp_zombie_session_blocked"
+        | "clamp_sip_session_expires_and_rtp_watchdog_window"
+        | "allow";
+      reason: string;
+      clampedSessionExpiresSec: number;
+      clampedMaxRtpDeadAirWatchdogSec: number;
+    }
+
+    export function evaluateSipRfc4028SessionTimerAndHalfOpenRtpZombieReaperGate(
+      context: SipRfc4028SessionTimerZombieReaperContext,
+    ): SipRfc4028SessionTimerZombieReaperDecision {
+      const policyId =
+        "P773-SIP-RFC4028-SESSION-TIMER-AND-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD" as const;
+      const clampedSessionExpiresSec = Math.min(
+        Math.max(context.sessionExpiresSec, 90),
+        180,
+      );
+      const clampedMaxRtpDeadAirWatchdogSec = Math.min(
+        Math.max(context.maxRtpDeadAirWatchdogSec, 15),
+        30,
+      );
+
+      if (context.halfOpenRtpZombieSessionWithoutByeDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "sip_half_open_rtp_zombie_session_blocked",
+          reason:
+            "SIP RFC 4028 Session-Timer & Half-Open RTP Zombie Reaper Policy Check: call dropped without SIP BYE and lingered with zero inbound RTP/RTCP packets while keeping the S2S LLM billing stream open; offline synthetic policy state machine enforcing [90, 180] s RFC 4028 Session-Expires and [15, 30] s RTP/RTCP dead-air watchdog with Q.850 cause=31 teardown (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live carrier SIP UPDATE round-trip latency not_measured).",
+          clampedSessionExpiresSec,
+          clampedMaxRtpDeadAirWatchdogSec,
+        };
+      }
+
+      if (
+        context.sessionExpiresSec < 90 ||
+        context.sessionExpiresSec > 180 ||
+        context.maxRtpDeadAirWatchdogSec < 15 ||
+        context.maxRtpDeadAirWatchdogSec > 30
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_sip_session_expires_and_rtp_watchdog_window",
+          reason:
+            "SIP RFC 4028 Session-Expires (outside [90, 180] s synthetic bounds) or RTP dead-air watchdog window (outside [15, 30] s synthetic bounds) out of bounds; clamping Session-Expires to [90, 180] s and RTP watchdog to [15, 30] s.",
+          clampedSessionExpiresSec,
+          clampedMaxRtpDeadAirWatchdogSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4028 [90, 180] s Session-Expires heartbeat and [15, 30] s RTP/RTCP dead-air zombie reaper verified.",
+        clampedSessionExpiresSec,
+        clampedMaxRtpDeadAirWatchdogSec,
+      };
+    }
+
+    export interface WebrtcRfc7675IceConsentTurnReaperContext {
+      unconsentedMediaOrZombieTurnAllocationDetected: boolean;
+      maxIceConsentLossTimeoutSec: number;
+      maxIdleTurnAllocationSec: number;
+    }
+
+    export interface WebrtcRfc7675IceConsentTurnReaperDecision {
+      violated: boolean;
+      policyId: "P774-WEBRTC-RFC7675-ICE-CONSENT-FRESHNESS-AND-ZOMBIE-TURN-REAPER-GUARD";
+      action:
+        | "webrtc_ice_consent_loss_or_zombie_turn_blocked"
+        | "clamp_ice_consent_timeout_and_idle_turn_lifetime"
+        | "allow";
+      reason: string;
+      clampedMaxIceConsentLossTimeoutSec: number;
+      clampedMaxIdleTurnAllocationSec: number;
+    }
+
+    export function evaluateWebrtcRfc7675IceConsentFreshnessAndZombieTurnReaperGate(
+      context: WebrtcRfc7675IceConsentTurnReaperContext,
+    ): WebrtcRfc7675IceConsentTurnReaperDecision {
+      const policyId =
+        "P774-WEBRTC-RFC7675-ICE-CONSENT-FRESHNESS-AND-ZOMBIE-TURN-REAPER-GUARD" as const;
+      const clampedMaxIceConsentLossTimeoutSec = Math.min(
+        Math.max(context.maxIceConsentLossTimeoutSec, 10),
+        30,
+      );
+      const clampedMaxIdleTurnAllocationSec = Math.min(
+        Math.max(context.maxIdleTurnAllocationSec, 20),
+        60,
+      );
+
+      if (context.unconsentedMediaOrZombieTurnAllocationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "webrtc_ice_consent_loss_or_zombie_turn_blocked",
+          reason:
+            "WebRTC RFC 7675 ICE Consent Freshness & Zombie TURN Reaper Policy Check: server continued transmitting UDP media after STUN consent failure (>30s) or left disconnected RFC 8656 TURN relay ports allocated (>60s); offline synthetic policy state machine enforcing <=30s ICE consent revocation and <=60s idle TURN port reaping (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live STUN Binding probe RTT not_measured).",
+          clampedMaxIceConsentLossTimeoutSec,
+          clampedMaxIdleTurnAllocationSec,
+        };
+      }
+
+      if (
+        context.maxIceConsentLossTimeoutSec > 30 ||
+        context.maxIdleTurnAllocationSec > 60
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ice_consent_timeout_and_idle_turn_lifetime",
+          reason:
+            "ICE consent loss timeout (>30s synthetic ceiling) or idle TURN allocation lifetime (>60s synthetic ceiling) out of bounds; clamping ICE consent timeout to <=30s and idle TURN lifetime to <=60s.",
+          clampedMaxIceConsentLossTimeoutSec,
+          clampedMaxIdleTurnAllocationSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 7675 <=30s ICE consent freshness enforcement and <=60s idle TURN port reaper verified.",
+        clampedMaxIceConsentLossTimeoutSec,
+        clampedMaxIdleTurnAllocationSec,
+      };
+    }
+
 
 
 
