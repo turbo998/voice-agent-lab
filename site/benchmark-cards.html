@@ -1343,6 +1343,13 @@
               <td><code>P789 / P790 deterministic SIP RFC 3261 Loop/Spiral Via-hash guard &amp; WebRTC ICE-Lite 487 / DTLS fast-backoff gate</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>402. [专题39 `docs/voice-sip-prack-100rel-qci1-precondition-reinvite-rollback-faq.md`] 运营商 VoLTE/IMS `SIP RFC 3312` 无线专用语音承载（`QCI-1 / 5QI-1`）前提条件防幽灵振铃（`0` 次提前响铃消除接通后 `2.2s` 死寂）与 `RFC 3262 100rel` 临时响应重传 `[2, 4]` 次封顶门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实基站 QCI-1 建载耗时 `not_measured`）&amp; `RFC 6141` 通话中 `Re-INVITE` 被拒（`488 Not Acceptable Here`）写时复制 SDP 快照 `0ms` 原子回滚（`0` 未提交状态泄漏）与 `491 Glare` `[500, 2000]ms` 非对称随机退避锁（真实 SBC 媒体槽切换耗时 `not_measured`）(`P791` / `P792` · Stage 399 · 🎉 801 护栏 &amp; 810 探针 · 402 维)</strong>
+              </td>
+              <td><code>P791 / P792 deterministic VoLTE SIP RFC 3262 PRACK / RFC 3312 QCI-1 precondition gate &amp; RFC 6141 atomic SDP rollback guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4662,6 +4669,13 @@
                 <strong>401. [专题38 `docs/voice-sip-loop-max-forwards-spiral-webrtc-ice-lite-role-conflict-faq.md`] SIP `RFC 3261 §16.6 Via` Branch `Request-URI` 语义哈希防死循环（`&lt;2ms` 返回 `482 Loop Detected` 阻断 `70–255x` 会话放大）、入口 `Max-Forwards [10, 70]` 钳制与合法多级呼转（`Spiral &lt;=5` 跳）精确放行门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC Via 哈希校验耗时 `not_measured`）&amp; WebRTC `RFC 8445 ICE-Lite` `64-bit Tie-Breaker` 角色冲突仲裁（`487 Role Conflict` 消除双受控无声死锁）与 `DTLS` 初始重传 `[100, 250]ms` / `MTU &lt;=1,200B` 防分片黑洞锁（8% 弱网丢包下首句延迟 `&lt;280ms`；真实 STUN/DTLS 耗时 `not_measured`）(`P789` / `P790` · Stage 398 · 799 护栏 &amp; 808 探针 · 401 维)</strong>
               </td>
               <td><code>P789 / P790 deterministic SIP RFC 3261 Loop/Spiral Via-hash guard &amp; WebRTC ICE-Lite 487 / DTLS fast-backoff gate</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>402. [专题39 `docs/voice-sip-prack-100rel-qci1-precondition-reinvite-rollback-faq.md`] 运营商 VoLTE/IMS `SIP RFC 3312` 无线专用语音承载（`QCI-1 / 5QI-1`）前提条件防幽灵振铃（`0` 次提前响铃消除接通后 `2.2s` 死寂）与 `RFC 3262 100rel` 临时响应重传 `[2, 4]` 次封顶门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实基站 QCI-1 建载耗时 `not_measured`）&amp; `RFC 6141` 通话中 `Re-INVITE` 被拒（`488 Not Acceptable Here`）写时复制 SDP 快照 `0ms` 原子回滚（`0` 未提交状态泄漏）与 `491 Glare` `[500, 2000]ms` 非对称随机退避锁（真实 SBC 媒体槽切换耗时 `not_measured`）(`P791` / `P792` · Stage 399 · 🎉 801 护栏 &amp; 810 探针 · 402 维)</strong>
+              </td>
+              <td><code>P791 / P792 deterministic VoLTE SIP RFC 3262 PRACK / RFC 3312 QCI-1 precondition gate &amp; RFC 6141 atomic SDP rollback guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

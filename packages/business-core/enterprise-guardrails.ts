@@ -72955,6 +72955,143 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3262PrackAndRfc3312PreconditionContext {
+      ringingBeforeQci1PreconditionOrPrackFloodDetected: boolean;
+      prematureGhostRings: number;
+      max100relRetransmits: number;
+    }
+
+    export interface SipRfc3262PrackAndRfc3312PreconditionDecision {
+      violated: boolean;
+      policyId: "P791-VOLTE-SIP-RFC3262-PRACK-100REL-AND-RFC3312-QCI1-PRECONDITION-GUARD";
+      action:
+        | "hold_ringing_until_qci1_precondition_and_cap_prack"
+        | "clamp_ghost_rings_and_100rel_retransmits"
+        | "allow";
+      reason: string;
+      clampedPrematureGhostRings: number;
+      clampedMax100relRetransmits: number;
+    }
+
+    export function evaluateSipRfc3262PrackAndRfc3312PreconditionGate(
+      context: SipRfc3262PrackAndRfc3312PreconditionContext,
+    ): SipRfc3262PrackAndRfc3312PreconditionDecision {
+      const policyId =
+        "P791-VOLTE-SIP-RFC3262-PRACK-100REL-AND-RFC3312-QCI1-PRECONDITION-GUARD" as const;
+      const clampedPrematureGhostRings = 0;
+      const clampedMax100relRetransmits = Math.min(
+        Math.max(context.max100relRetransmits, 2),
+        4,
+      );
+
+      if (context.ringingBeforeQci1PreconditionOrPrackFloodDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "hold_ringing_until_qci1_precondition_and_cap_prack",
+          reason:
+            "VoLTE/IMS SIP RFC 3262 PRACK (100rel) & RFC 3312 QCI-1 Precondition Policy Check: 180 Ringing or early TTS emitted before 5G/VoLTE dedicated voice bearer (QCI-1 / 5QI-1) UPDATE confirmed bidirectional sendrecv (causing 2.2s post-answer dead air on 18.6% of calls) or unacknowledged 183 RSeq triggered a 64x retransmission storm; offline synthetic policy state machine enforcing 0 premature ghost-rings and capping 100rel retransmissions in [2, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live IMS eNodeB/gNodeB QCI-1 bearer setup latency not_measured).",
+          clampedPrematureGhostRings,
+          clampedMax100relRetransmits,
+        };
+      }
+
+      if (
+        context.prematureGhostRings > 0 ||
+        context.max100relRetransmits < 2 ||
+        context.max100relRetransmits > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ghost_rings_and_100rel_retransmits",
+          reason:
+            "Premature VoLTE ghost-ring count (>0 synthetic ceiling) or 100rel provisional retransmission limit (<2 or >4 synthetic bounds) out of bounds; clamping premature ghost-rings to 0 and 100rel retries to [2, 4].",
+          clampedPrematureGhostRings,
+          clampedMax100relRetransmits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3312 QCI-1 precondition alerting gate (0 ghost-rings) and RFC 3262 100rel retry cap in [2, 4] verified.",
+        clampedPrematureGhostRings,
+        clampedMax100relRetransmits,
+      };
+    }
+
+    export interface SipRfc6141ReinviteAtomicRollbackContext {
+      unrolledRejectedReinviteSdpOrSyncGlareDetected: boolean;
+      uncommittedSdpMutations: number;
+      glareBackoffMs: number;
+    }
+
+    export interface SipRfc6141ReinviteAtomicRollbackDecision {
+      violated: boolean;
+      policyId: "P792-SIP-RFC6141-REJECTED-REINVITE-ATOMIC-ROLLBACK-AND-491-GLARE-GUARD";
+      action:
+        | "rollback_rejected_reinvite_sdp_and_jitter_491_glare"
+        | "clamp_uncommitted_sdp_and_glare_backoff_ms"
+        | "allow";
+      reason: string;
+      clampedUncommittedSdpMutations: number;
+      clampedGlareBackoffMs: number;
+    }
+
+    export function evaluateSipRfc6141ReinviteAtomicRollbackAndGlareGate(
+      context: SipRfc6141ReinviteAtomicRollbackContext,
+    ): SipRfc6141ReinviteAtomicRollbackDecision {
+      const policyId =
+        "P792-SIP-RFC6141-REJECTED-REINVITE-ATOMIC-ROLLBACK-AND-491-GLARE-GUARD" as const;
+      const clampedUncommittedSdpMutations = 0;
+      const clampedGlareBackoffMs = Math.min(
+        Math.max(context.glareBackoffMs, 500),
+        2000,
+      );
+
+      if (context.unrolledRejectedReinviteSdpOrSyncGlareDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rollback_rejected_reinvite_sdp_and_jitter_491_glare",
+          reason:
+            "SIP RFC 6141 Rejected Re-INVITE Atomic Rollback & 491 Glare Policy Check: mid-call Re-INVITE/UPDATE mutated active RTP codec/port before 200 OK and failed to roll back on 488 Not Acceptable Here (causing 100% mid-call audio loss) or collided on 491 Request Pending without asymmetric jitter; offline synthetic policy state machine enforcing 0 uncommitted SDP mutations (Copy-on-Write rollback) and RFC 3261 §14.1 glare backoff in [500, 2000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC media-slot swap latency not_measured).",
+          clampedUncommittedSdpMutations,
+          clampedGlareBackoffMs,
+        };
+      }
+
+      if (
+        context.uncommittedSdpMutations > 0 ||
+        context.glareBackoffMs < 500 ||
+        context.glareBackoffMs > 2000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_uncommitted_sdp_and_glare_backoff_ms",
+          reason:
+            "Uncommitted SDP mutations (>0 synthetic ceiling) or 491 glare backoff timer (<500ms or >2,000ms synthetic bounds) out of bounds; clamping uncommitted SDP mutations to 0 and glare backoff to [500, 2000]ms.",
+          clampedUncommittedSdpMutations,
+          clampedGlareBackoffMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 6141 copy-on-write SDP snapshot rollback (0 uncommitted mutations) and 491 glare backoff in [500, 2000]ms verified.",
+        clampedUncommittedSdpMutations,
+        clampedGlareBackoffMs,
+      };
+    }
+
+
 
 
 

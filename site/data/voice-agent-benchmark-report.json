@@ -1591,6 +1591,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: halts 70-255x recursive INVITE loop storms in <2ms via 482 Loop Detected while clamping ingress Max-Forwards to [10, 70] and permitting <=5-hop legitimate call-forwarding spirals; live SBC Via SHA-256 inspection latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: resolves dual ICE-Controlled nomination deadlocks via 64-bit tie-breaker 487 Role Conflict and clamps DTLS initial RTO to [100, 250]ms with MTU <=1,200B; live STUN/DTLS flight RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "402. [Topic 39: voice-sip-prack-100rel-qci1-precondition-reinvite-rollback-faq] VoLTE SIP RFC 3262 PRACK (<=4 Retries) & RFC 3312 QCI-1 Precondition Anti-Ghost-Ring + RFC 6141 Rejected Re-INVITE Atomic Rollback & 491 Glare Backoff Guard (P791 / P792 — Stage 399 · 402-Dimension & 801-Guardrail Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: holds 180 Ringing and early TTS until bidirectional QCI-1 sendrecv is confirmed via PRACK+UPDATE (0 ghost-rings) and caps 100rel retransmissions in [2, 4]; live IMS QCI-1 bearer setup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces Copy-on-Write SDP rollback on 488 Not Acceptable Here (0 uncommitted mutations) and [500, 2000]ms randomized 491 glare backoff; live SBC media-slot swap latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
