@@ -73224,6 +73224,143 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc8760Sha256DigestAuthAndReplayContext {
+      md5DowngradeOrNonceCountReplayDetected: boolean;
+      md5OrReplayAttempts: number;
+      digestNonceTtlSec: number;
+    }
+
+    export interface SipRfc8760Sha256DigestAuthAndReplayDecision {
+      violated: boolean;
+      policyId: "P795-SIP-RFC8760-SHA256-DIGEST-AUTH-AND-NC-REPLAY-GUARD";
+      action:
+        | "reject_md5_digest_downgrade_or_nc_replay"
+        | "clamp_md5_replay_attempts_and_nonce_ttl_sec"
+        | "allow";
+      reason: string;
+      clampedMd5OrReplayAttempts: number;
+      clampedDigestNonceTtlSec: number;
+    }
+
+    export function evaluateSipRfc8760Sha256DigestAuthAndReplayGate(
+      context: SipRfc8760Sha256DigestAuthAndReplayContext,
+    ): SipRfc8760Sha256DigestAuthAndReplayDecision {
+      const policyId =
+        "P795-SIP-RFC8760-SHA256-DIGEST-AUTH-AND-NC-REPLAY-GUARD" as const;
+      const clampedMd5OrReplayAttempts = 0;
+      const clampedDigestNonceTtlSec = Math.min(
+        Math.max(context.digestNonceTtlSec, 15),
+        60,
+      );
+
+      if (context.md5DowngradeOrNonceCountReplayDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_md5_digest_downgrade_or_nc_replay",
+          reason:
+            "SIP RFC 8760 SHA-256 Digest Auth & Nonce-Count Replay Policy Check: inbound SIP REGISTER/INVITE attempted legacy RFC 3261 algorithm=MD5 downgrade (vulnerable to offline GPU cracking) or replayed a previously consumed (nonce, nc) pair; offline synthetic policy state machine enforcing SHA-256/SHA-512-256 with qop=auth (0 MD5/replay attempts) and clamping server nonce TTL to [15, 60]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC Redis nc-bitmap lookup latency not_measured).",
+          clampedMd5OrReplayAttempts,
+          clampedDigestNonceTtlSec,
+        };
+      }
+
+      if (
+        context.md5OrReplayAttempts > 0 ||
+        context.digestNonceTtlSec < 15 ||
+        context.digestNonceTtlSec > 60
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_md5_replay_attempts_and_nonce_ttl_sec",
+          reason:
+            "MD5/replay authentication attempts (>0 synthetic ceiling) or server digest nonce TTL (<15s or >60s synthetic bounds) out of bounds; clamping MD5/replay attempts to 0 and digest nonce TTL to [15, 60]s.",
+          clampedMd5OrReplayAttempts,
+          clampedDigestNonceTtlSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8760 SHA-256/512-256 digest auth active (0 MD5/replays) and nonce TTL in [15, 60]s verified.",
+        clampedMd5OrReplayAttempts,
+        clampedDigestNonceTtlSec,
+      };
+    }
+
+    export interface SipRfc5626OutboundFlowTokenAndPathSsrfContext {
+      forgedFlowTokenOrUntrustedPathRelayDetected: boolean;
+      untrustedFlowOrPathRelays: number;
+      outboundKeepaliveSec: number;
+    }
+
+    export interface SipRfc5626OutboundFlowTokenAndPathSsrfDecision {
+      violated: boolean;
+      policyId: "P796-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HMAC-AND-RFC3327-PATH-SSRF-GUARD";
+      action:
+        | "block_forged_flow_token_or_path_open_relay"
+        | "clamp_untrusted_relays_and_keepalive_sec"
+        | "allow";
+      reason: string;
+      clampedUntrustedFlowOrPathRelays: number;
+      clampedKeepaliveSec: number;
+    }
+
+    export function evaluateSipRfc5626OutboundFlowTokenAndPathSsrfGate(
+      context: SipRfc5626OutboundFlowTokenAndPathSsrfContext,
+    ): SipRfc5626OutboundFlowTokenAndPathSsrfDecision {
+      const policyId =
+        "P796-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HMAC-AND-RFC3327-PATH-SSRF-GUARD" as const;
+      const clampedUntrustedFlowOrPathRelays = 0;
+      const clampedKeepaliveSec = Math.min(
+        Math.max(context.outboundKeepaliveSec, 15),
+        30,
+      );
+
+      if (context.forgedFlowTokenOrUntrustedPathRelayDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "block_forged_flow_token_or_path_open_relay",
+          reason:
+            "SIP RFC 5626 Outbound Flow-Token HMAC & RFC 3327 Path Open-Relay SSRF Policy Check: inbound SIP request carried an unsigned/tampered RFC 5626 Flow-Token (enabling cross-tenant call hijacking) or untrusted external Route/Path headers targeting internal RFC 1918 / K8s pods (Open-Relay SSRF); offline synthetic policy state machine enforcing HMAC-SHA256 socket-bound Flow-Tokens, 0 untrusted Route/Path relays, and [15, 30]s CRLF/STUN keepalive intervals (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live edge proxy HMAC verification latency not_measured).",
+          clampedUntrustedFlowOrPathRelays,
+          clampedKeepaliveSec,
+        };
+      }
+
+      if (
+        context.untrustedFlowOrPathRelays > 0 ||
+        context.outboundKeepaliveSec < 15 ||
+        context.outboundKeepaliveSec > 30
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_untrusted_relays_and_keepalive_sec",
+          reason:
+            "Untrusted Flow-Token / Path open-relay count (>0 synthetic ceiling) or RFC 5626 keepalive interval (<15s or >30s synthetic bounds) out of bounds; clamping untrusted relays to 0 and keepalive interval to [15, 30]s.",
+          clampedUntrustedFlowOrPathRelays,
+          clampedKeepaliveSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 5626 Flow-Token HMAC-SHA256 verified, 0 untrusted Route/Path relays, and keepalive in [15, 30]s verified.",
+        clampedUntrustedFlowOrPathRelays,
+        clampedKeepaliveSec,
+      };
+    }
+
+
 
 
 

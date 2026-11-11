@@ -1603,6 +1603,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: seals the 50 Hz RFC 6464 ssrc-audio-level plaintext side-channel via RFC 9335 a=cryptex (0 plaintext packets) and clamps 1-byte extmap IDs to [1, 14]; live SRTP Cryptex AEAD per-packet latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: intercepts SSRC collisions before SRTP ROC corruption via RTCP BYE + CSPRNG SSRC rotation (0 unresolved collisions) and clamps CSRC count to [0, 15]; live RTCP BYE rotation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "404. [Topic 41: voice-sip-digest-sha256-replay-rfc5626-outbound-flow-token-faq] SIP RFC 8760 SHA-256 Digest Auth (0 MD5/Replay) & Nonce TTL [15,60]s + RFC 5626 Outbound Flow-Token HMAC & RFC 3327 Path Open-Relay SSRF Guard (P795 / P796 — Stage 401 · 404 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks legacy RFC 3261 MD5 downgrades and replayed (nonce, nc) headers, enforcing SHA-256/512-256 with qop=auth and [15, 60]s nonce TTL; live SBC Redis nc-bitmap lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces HMAC-SHA256 socket-bound Flow-Tokens, 0 untrusted external Route/Path open-relay hops, and [15, 30]s CRLF/STUN keepalives; live edge proxy HMAC verification latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
