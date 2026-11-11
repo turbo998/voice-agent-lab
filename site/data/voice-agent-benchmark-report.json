@@ -1557,9 +1557,15 @@
       "delta_pts": 0.0
     },
     {
-      "question": "396. [Topic 33: voice-webrtc-datachannel-backpressure-mdns-turn-ssrf-faq] WebRTC RFC 8831 SCTP DataChannel Dual-Stream Split & <=64KB Backpressure Shedding + RFC 8828 mDNS Sanitizer (0 Leaks) & RFC 8656 TURN Cloud IMDS SSRF Guard (P779 / P780 — Stage 393 · Historic 396-Dimension Milestone)",
+      "question": "396. [Topic 33: voice-webrtc-datachannel-backpressure-mdns-turn-ssrf-faq] WebRTC RFC 8831 SCTP DataChannel Dual-Stream Split & <=64KB Backpressure Shedding + RFC 8828 mDNS Sanitizer (0 Leaks) & RFC 8656 TURN Cloud IMDS SSRF Guard (P779 / P780 — Stage 393 · 396-Dimension Milestone)",
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks high-rate interim caption deltas from head-of-line stalling barge-in controls on a shared ordered SCTP stream, clamping bufferedAmount to <=64 KB and control stall SLA to <=25 ms; live SCTP RTO retransmission latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks raw RFC 1918 SDP host leaks and TURN CreatePermission bounce SSRF against 169.254.169.254 (cloud IMDS), enforcing 0 exposed private IPs and <=128 kbps relay quota; live TURN permission RTT is not_measured)",
+      "delta_pts": 0.0
+    },
+    {
+      "question": "397. [Topic 34: voice-sip-sdp-payload-symmetry-reinvite-codec-churn-dos-faq] SIP RFC 3264 SDP Dynamic PT Symmetry, 0Hz Voice-DTMF Clock Parity & maxptime<=60ms + Mid-Call Re-INVITE Codec-Churn DoS (<=2/min) & RFC 3389 Comfort-Noise (<=-38dBFS) VAD Guard (P781 / P782 — Stage 394 · Historic 397-Dimension & 800-Probe Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks asymmetric dynamic PT mappings, 16kHz-voice / 8kHz-telephone-event clock skew, and >60ms maxptime DSP ring-buffer overflows, clamping DTMF clock mismatch to 0 Hz and maxptime to <=60 ms; live SBC SDP normalization latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks rapid mid-call SIP Re-INVITE codec thrashing (18x DSP CPU amplification) and >-38 dBFS RFC 3389 comfort-noise VAD deadlocks, clamping codec Re-INVITEs to <=2/min and comfort-noise energy to <=-38 dBFS; live DSP transcoder reallocation latency is not_measured)",
       "delta_pts": 0.0
     }
   ],

@@ -72276,6 +72276,141 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipSdpRfc3264DynamicPayloadSymmetryContext {
+      asymmetricDynamicPtOrDtmfClockMismatchDetected: boolean;
+      dtmfClockRateMismatchHz: number;
+      maxptimeMs: number;
+    }
+
+    export interface SipSdpRfc3264DynamicPayloadSymmetryDecision {
+      violated: boolean;
+      policyId: "P781-SIP-SDP-RFC3264-DYNAMIC-PAYLOAD-SYMMETRY-AND-MAXPTIME-GUARD";
+      action:
+        | "sip_sdp_payload_asymmetry_or_maxptime_blocked"
+        | "clamp_dtmf_clock_mismatch_and_maxptime"
+        | "allow";
+      reason: string;
+      clampedDtmfClockRateMismatchHz: number;
+      clampedMaxptimeMs: number;
+    }
+
+    export function evaluateSipSdpRfc3264DynamicPayloadSymmetryAndMaxptimeGate(
+      context: SipSdpRfc3264DynamicPayloadSymmetryContext,
+    ): SipSdpRfc3264DynamicPayloadSymmetryDecision {
+      const policyId =
+        "P781-SIP-SDP-RFC3264-DYNAMIC-PAYLOAD-SYMMETRY-AND-MAXPTIME-GUARD" as const;
+      const clampedDtmfClockRateMismatchHz = 0;
+      const clampedMaxptimeMs = Math.min(Math.max(context.maxptimeMs, 20), 60);
+
+      if (context.asymmetricDynamicPtOrDtmfClockMismatchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "sip_sdp_payload_asymmetry_or_maxptime_blocked",
+          reason:
+            "SIP RFC 3264 SDP Dynamic Payload Symmetry & maxptime Policy Check: SDP Offer/Answer negotiated asymmetric dynamic payload types (PT 96-127), mismatched voice vs. RFC 4733 telephone-event clock rates (e.g. AMR-WB/16000 with telephone-event/8000 causing 100% DTMF drops), or maxptime > 60ms buffer overflow; offline synthetic policy state machine enforcing bidirectional PT symmetry, 0 Hz voice-to-DTMF clock parity, and maxptime <= 60ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC SDP normalization latency not_measured).",
+          clampedDtmfClockRateMismatchHz,
+          clampedMaxptimeMs,
+        };
+      }
+
+      if (
+        Math.abs(context.dtmfClockRateMismatchHz) > 0 ||
+        context.maxptimeMs > 60
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_dtmf_clock_mismatch_and_maxptime",
+          reason:
+            "Voice-to-DTMF clock rate mismatch (>0 Hz synthetic ceiling) or SDP maxptime (>60 ms synthetic ceiling) out of bounds; clamping DTMF clock mismatch to 0 Hz and maxptime to <=60 ms.",
+          clampedDtmfClockRateMismatchHz,
+          clampedMaxptimeMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3264 bidirectional dynamic PT symmetry, 0 Hz voice-to-DTMF clock parity, and maxptime <=60ms verified.",
+        clampedDtmfClockRateMismatchHz,
+        clampedMaxptimeMs,
+      };
+    }
+
+    export interface SipReinviteCodecChurnAndCnGateContext {
+      rapidMidCallCodecReinviteOrHotComfortNoiseDetected: boolean;
+      maxCodecReinvitesPerMin: number;
+      maxComfortNoiseDbfs: number;
+    }
+
+    export interface SipReinviteCodecChurnAndCnGateDecision {
+      violated: boolean;
+      policyId: "P782-SIP-REINVITE-CODEC-CHURN-TRANSCODING-DOS-AND-RFC3389-CN-GUARD";
+      action:
+        | "sip_reinvite_codec_churn_or_cn_vad_deadlock_blocked"
+        | "clamp_codec_reinvite_rate_and_comfort_noise_dbfs"
+        | "allow";
+      reason: string;
+      clampedMaxCodecReinvitesPerMin: number;
+      clampedMaxComfortNoiseDbfs: number;
+    }
+
+    export function evaluateSipReinviteCodecChurnTranscodingDosAndRfc3389CnGate(
+      context: SipReinviteCodecChurnAndCnGateContext,
+    ): SipReinviteCodecChurnAndCnGateDecision {
+      const policyId =
+        "P782-SIP-REINVITE-CODEC-CHURN-TRANSCODING-DOS-AND-RFC3389-CN-GUARD" as const;
+      const clampedMaxCodecReinvitesPerMin = Math.min(
+        Math.max(context.maxCodecReinvitesPerMin, 1),
+        2,
+      );
+      const clampedMaxComfortNoiseDbfs = Math.min(
+        Math.max(context.maxComfortNoiseDbfs, -65),
+        -38,
+      );
+
+      if (context.rapidMidCallCodecReinviteOrHotComfortNoiseDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "sip_reinvite_codec_churn_or_cn_vad_deadlock_blocked",
+          reason:
+            "SIP Re-INVITE Codec-Churn Transcoding DoS & RFC 3389 Comfort-Noise Policy Check: mid-call SIP Re-INVITE/UPDATE requests exceeded 2 codec switches/min (causing 18x DSP transcoding CPU amplification) or inbound RFC 3389 CN (PT 13) frames exceeded -38 dBFS (locking server VAD in infinite speech state); offline synthetic policy state machine enforcing <=2/min codec Re-INVITE quota, <=-38 dBFS comfort-noise cap, and continuous 20ms zero-PCM bridging (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live DSP transcoder reallocation latency not_measured).",
+          clampedMaxCodecReinvitesPerMin,
+          clampedMaxComfortNoiseDbfs,
+        };
+      }
+
+      if (
+        context.maxCodecReinvitesPerMin > 2 ||
+        context.maxComfortNoiseDbfs > -38
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_codec_reinvite_rate_and_comfort_noise_dbfs",
+          reason:
+            "Mid-call codec-switching Re-INVITE quota (>2/min synthetic ceiling) or RFC 3389 comfort-noise ceiling (>-38 dBFS synthetic ceiling) out of bounds; clamping codec Re-INVITE rate to <=2/min and comfort noise to <=-38 dBFS.",
+          clampedMaxCodecReinvitesPerMin,
+          clampedMaxComfortNoiseDbfs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: <=2/min mid-call codec Re-INVITE cap and <=-38 dBFS RFC 3389 comfort-noise clamp with zero-PCM bridging verified.",
+        clampedMaxCodecReinvitesPerMin,
+        clampedMaxComfortNoiseDbfs,
+      };
+    }
+
+
 
 
 

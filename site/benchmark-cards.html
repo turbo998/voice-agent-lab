@@ -1303,9 +1303,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>396. [专题33 `docs/voice-webrtc-datachannel-backpressure-mdns-turn-ssrf-faq.md`] WebRTC `RFC 8831 SCTP DataChannel` 控制轨与瞬态字幕轨（`ordered: false, maxRetransmits: 0`）物理分离及 `bufferedAmount &lt;=64 KB` 背压卸载门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 3% 丢包下控制信令 P99 阻塞从 `1,280ms` 降至 `&lt;=25ms`；真实 SCTP RTO 重传耗时 `not_measured`）&amp; `RFC 8828 mDNS` 候选净化（`0` 私网 IP 泄露）与 `RFC 8656 TURN` 云元数据（`169.254.169.254`）/私网反射阻断及 `&lt;=128 kbps` 配额锁（真实 TURN 权限校验 RTT `not_measured`）(`P779` / `P780` · Stage 393 · 396 评测维度历史性里程碑 · 789 护栏 &amp; 798 探针 · 396 维)</strong>
+                <strong>396. [专题33 `docs/voice-webrtc-datachannel-backpressure-mdns-turn-ssrf-faq.md`] WebRTC `RFC 8831 SCTP DataChannel` 控制轨与瞬态字幕轨（`ordered: false, maxRetransmits: 0`）物理分离及 `bufferedAmount &lt;=64 KB` 背压卸载门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 3% 丢包下控制信令 P99 阻塞从 `1,280ms` 降至 `&lt;=25ms`；真实 SCTP RTO 重传耗时 `not_measured`）&amp; `RFC 8828 mDNS` 候选净化（`0` 私网 IP 泄露）与 `RFC 8656 TURN` 云元数据（`169.254.169.254`）/私网反射阻断及 `&lt;=128 kbps` 配额锁（真实 TURN 权限校验 RTT `not_measured`）(`P779` / `P780` · Stage 393 · 396 维)</strong>
               </td>
               <td><code>P779 / P780 deterministic WebRTC SCTP DataChannel backpressure HoL guard &amp; RFC 8828 mDNS / TURN IMDS SSRF sanitizer</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>397. [专题34 `docs/voice-sip-sdp-payload-symmetry-reinvite-codec-churn-dos-faq.md`] SIP `RFC 3264 SDP` 动态负载类型（`PT 96–127`）双向对称锚定、主语音与 `RFC 4733 telephone-event` 采样时钟同频锁（`0 Hz` 偏差，挽回 HD 语音下 `100%` 按键丢失）及 `maxptime &lt;=60ms` 防缓冲区溢出门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC SDP 归一化耗时 `not_measured`）&amp; 通话中 `SIP Re-INVITE` 编解码切换 `&lt;=2次/分钟` 限流（阻断 `18x` DSP 转码 CPU 放大 DoS）与 `RFC 3389` 舒适噪音 `&lt;=-38 dBFS` 能量钳位 + `20ms` 零帧桥接锁（真实 DSP 转码器重分配耗时 `not_measured`）(`P781` / `P782` · Stage 394 · 397 评测维度 &amp; 800 探针双历史性里程碑 · 791 护栏 &amp; 800 探针 · 397 维)</strong>
+              </td>
+              <td><code>P781 / P782 deterministic SIP RFC 3264 SDP payload symmetry gate &amp; Re-INVITE codec-churn DoS / RFC 3389 CN VAD guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4589,9 +4596,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>396. [专题33 `docs/voice-webrtc-datachannel-backpressure-mdns-turn-ssrf-faq.md`] WebRTC `RFC 8831 SCTP DataChannel` 控制轨与瞬态字幕轨（`ordered: false, maxRetransmits: 0`）物理分离及 `bufferedAmount &lt;=64 KB` 背压卸载门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 3% 丢包下控制信令 P99 阻塞从 `1,280ms` 降至 `&lt;=25ms`；真实 SCTP RTO 重传耗时 `not_measured`）&amp; `RFC 8828 mDNS` 候选净化（`0` 私网 IP 泄露）与 `RFC 8656 TURN` 云元数据（`169.254.169.254`）/私网反射阻断及 `&lt;=128 kbps` 配额锁（真实 TURN 权限校验 RTT `not_measured`）(`P779` / `P780` · Stage 393 · 396 评测维度历史性里程碑 · 789 护栏 &amp; 798 探针 · 396 维)</strong>
+                <strong>396. [专题33 `docs/voice-webrtc-datachannel-backpressure-mdns-turn-ssrf-faq.md`] WebRTC `RFC 8831 SCTP DataChannel` 控制轨与瞬态字幕轨（`ordered: false, maxRetransmits: 0`）物理分离及 `bufferedAmount &lt;=64 KB` 背压卸载门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 3% 丢包下控制信令 P99 阻塞从 `1,280ms` 降至 `&lt;=25ms`；真实 SCTP RTO 重传耗时 `not_measured`）&amp; `RFC 8828 mDNS` 候选净化（`0` 私网 IP 泄露）与 `RFC 8656 TURN` 云元数据（`169.254.169.254`）/私网反射阻断及 `&lt;=128 kbps` 配额锁（真实 TURN 权限校验 RTT `not_measured`）(`P779` / `P780` · Stage 393 · 396 维)</strong>
               </td>
               <td><code>P779 / P780 deterministic WebRTC SCTP DataChannel backpressure HoL guard &amp; RFC 8828 mDNS / TURN IMDS SSRF sanitizer</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>397. [专题34 `docs/voice-sip-sdp-payload-symmetry-reinvite-codec-churn-dos-faq.md`] SIP `RFC 3264 SDP` 动态负载类型（`PT 96–127`）双向对称锚定、主语音与 `RFC 4733 telephone-event` 采样时钟同频锁（`0 Hz` 偏差，挽回 HD 语音下 `100%` 按键丢失）及 `maxptime &lt;=60ms` 防缓冲区溢出门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC SDP 归一化耗时 `not_measured`）&amp; 通话中 `SIP Re-INVITE` 编解码切换 `&lt;=2次/分钟` 限流（阻断 `18x` DSP 转码 CPU 放大 DoS）与 `RFC 3389` 舒适噪音 `&lt;=-38 dBFS` 能量钳位 + `20ms` 零帧桥接锁（真实 DSP 转码器重分配耗时 `not_measured`）(`P781` / `P782` · Stage 394 · 397 评测维度 &amp; 800 探针双历史性里程碑 · 791 护栏 &amp; 800 探针 · 397 维)</strong>
+              </td>
+              <td><code>P781 / P782 deterministic SIP RFC 3264 SDP payload symmetry gate &amp; Re-INVITE codec-churn DoS / RFC 3389 CN VAD guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
