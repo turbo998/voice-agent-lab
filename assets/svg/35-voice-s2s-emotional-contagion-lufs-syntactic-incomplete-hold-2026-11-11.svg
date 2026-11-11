@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad35" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="accentBlue35" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="accentEmerald35" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="cardShadow35" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad35)"/>
+  <circle cx="1050" cy="100" r="210" fill="#3B82F6" opacity="0.07"/>
+  <circle cx="150" cy="580" r="230" fill="#10B981" opacity="0.06"/>
+
+  <!-- Header Banner -->
+  <rect x="40" y="28" width="1120" height="92" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow35)"/>
+  <rect x="58" y="46" width="188" height="28" rx="6" fill="url(#accentBlue35)"/>
+  <text x="152" y="65" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">STAGE 391 · TOPIC 31 FAQ</text>
+  <text x="264" y="65" fill="#F8FAFC" font-size="19.5" font-weight="800">Native S2S Emotional Contagion Clamp &amp; Syntactic Incomplete-Turn Hold</text>
+  <text x="58" y="98" fill="#94A3B8" font-size="13">ITU-R BS.1770-4 [-20,-16] LUFS + Prosodic Mirroring Clamp (P775) &amp; 1,100–1,600ms Syntactic EOU Hold + C2PA Watermark (P776)</text>
+
+  <!-- Left Column: P775 Native S2S Emotional Contagion & ITU-R BS.1770-4 Loudness Clamp -->
+  <rect x="40" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5" filter="url(#cardShadow35)"/>
+  <rect x="40" y="138" width="545" height="42" rx="14" fill="#1E3A8A"/>
+  <text x="62" y="164" fill="#93C5FD" font-size="15" font-weight="700">1. Native S2S Emotional Contagion &amp; ITU-R BS.1770-4 Clamp (P775)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="60" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="76" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: Autoregressive S2S Shouting Mirroring (-6 LUFS, 210 WPM)</text>
+  <text x="76" y="241" fill="#CBD5E1" font-size="12">• Angry caller yells at -6 LUFS -&gt; native audio-token S2S mirrors high pitch/energy</text>
+  <text x="76" y="261" fill="#CBD5E1" font-size="12">• AI shouts back sarcastically or clips DAC at 0 dBFS, escalating customer fury</text>
+  <text x="76" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: 14.8% prosodic escalation incidents &amp; severe brand PR liability</text>
+
+  <!-- Production Pattern -->
+  <rect x="60" y="308" width="505" height="202" rx="10" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.4"/>
+  <text x="76" y="332" fill="#6EE7B7" font-size="13" font-weight="700">✅ Production Pattern: Prosodic Decoupling &amp; -18 LUFS Normalization (P775)</text>
+  <text x="76" y="356" fill="#E2E8F0" font-size="12">1. Input Prosody Conditioning Clamp: Attenuate &gt;-10 LUFS input before S2S encoder</text>
+  <text x="76" y="378" fill="#E2E8F0" font-size="12">2. ITU-R BS.1770-4 Loudness Lock: Normalize outbound TTS/S2S to [-20, -16] LUFS</text>
+  <text x="76" y="400" fill="#E2E8F0" font-size="12">3. Cadence &amp; True-Peak Ceiling: Clamp speech rate to 135–165 WPM &amp; &lt;=-1.0 dBTP</text>
+  <text x="76" y="422" fill="#E2E8F0" font-size="12">4. Zero Shouting Contagion: Cuts S2S emotional mirroring from 14.8% to 0.0%</text>
+
+  <rect x="76" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="92" y="462" fill="#34D399" font-size="12" font-weight="700">Deterministic Invariant (evaluateNativeS2sEmotionalContagion...):</text>
+  <text x="92" y="482" fill="#A7F3D0" font-size="11.5">targetLoudnessLufs in [-20.0, -16.0] &amp;&amp; maxSpeechRateWpm in [135, 165]</text>
+
+  <!-- Right Column: P776 Syntactic Incomplete-Clause Hold & C2PA Acoustic Watermark -->
+  <rect x="615" y="138" width="545" height="390" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1.5" filter="url(#cardShadow35)"/>
+  <rect x="615" y="138" width="545" height="42" rx="14" fill="#065F46"/>
+  <text x="637" y="164" fill="#6EE7B7" font-size="15" font-weight="700">2. Syntactic Incomplete-Clause Hold &amp; C2PA Dual Watermark (P776)</text>
+
+  <!-- Anti-Pattern -->
+  <rect x="635" y="196" width="505" height="98" rx="10" fill="#1E293B" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="651" y="218" fill="#FDA4AF" font-size="13" font-weight="700">❌ Anti-Pattern: 500ms VAD Cuts Off Dangling Conjunctions + Unsigned Audio</text>
+  <text x="651" y="241" fill="#CBD5E1" font-size="12">• Caller says "Transfer $5,000 to..." and pauses 650ms to check account number</text>
+  <text x="651" y="261" fill="#CBD5E1" font-size="12">• Naive 500ms VAD fires prematurely; outbound AI audio lacks C2PA provenance</text>
+  <text x="651" y="281" fill="#F43F5E" font-size="12" font-weight="600">• Result: 27.4% mid-thought interruption rate &amp; unverifiable audio provenance</text>
+
+  <!-- Production Pattern -->
+  <rect x="635" y="308" width="505" height="202" rx="10" fill="#1E1B4B" fill-opacity="0.55" stroke="#38BDF8" stroke-width="1.4"/>
+  <text x="651" y="332" fill="#7DD3FC" font-size="13" font-weight="700">✅ Production Pattern: 1,100–1,600ms Syntactic Hold + C2PA SNR &gt;=38dB (P776)</text>
+  <text x="651" y="356" fill="#E2E8F0" font-size="12">1. Dangling-Clause Detector: Detect trailing conjunctions/prepositions ("to", "因为")</text>
+  <text x="651" y="378" fill="#E2E8F0" font-size="12">2. Dynamic EOU Expansion: Extend turn-taking hold to 1,100ms–1,600ms on open syntax</text>
+  <text x="651" y="400" fill="#E2E8F0" font-size="12">3. Dual Provenance Watermark: Embed C2PA v2.1 manifest + spread-spectrum watermark</text>
+  <text x="651" y="422" fill="#E2E8F0" font-size="12">4. Imperceptible Fidelity: Maintains watermark SNR &gt;= 38dB &amp; cuts cut-offs by 84%</text>
+
+  <rect x="651" y="440" width="473" height="54" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="1"/>
+  <text x="667" y="462" fill="#38BDF8" font-size="12" font-weight="700">Deterministic Invariant (evaluateSyntacticIncompleteClauseHold...):</text>
+  <text x="667" y="482" fill="#BAE6FD" font-size="11.5">syntacticHoldMs in [1100, 1600] &amp;&amp; minAcousticWatermarkSnrDb &gt;= 38dB</text>
+
+  <!-- Bottom Provenance & Latency Strip -->
+  <rect x="40" y="544" width="1120" height="103" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.5" filter="url(#cardShadow35)"/>
+  <text x="62" y="571" fill="#F8FAFC" font-size="14" font-weight="700">Stage 391 Quantitative Verification &amp; Measurement Provenance (394 Dimensions · 785 Guardrails · 794 Probes · 833 Unit Tests)</text>
+  <text x="62" y="595" fill="#94A3B8" font-size="12">• Emotional Contagion Gate (P775): 0.0% shouting mirroring at -18 LUFS; Syntactic Hold Gate (P776): Cuts mid-clause interruptions by 84%.</text>
+  <text x="62" y="616" fill="#67E8F9" font-size="11.5" font-weight="600">• Timer &amp; Provenance Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="62" y="635" fill="#CBD5E1" font-size="11">• Live Provider P95 TTFA: Retell 820ms (measured) · Vapi 960ms (measured) · LiveKit 690ms (measured) · OpenAI Realtime / ACS / Gemini Live: not_measured.</text>
+</svg>

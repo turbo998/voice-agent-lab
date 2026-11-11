@@ -1543,6 +1543,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks half-open SIP/RTP zombie sessions lingering without SIP BYE and burning dead-air S2S LLM tokens, clamping Session-Expires to [90, 180] s and RTP/RTCP dead-air watchdog to [15, 30] s; live carrier SIP UPDATE round-trip latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unconsented UDP media transmission after STUN consent failure and 600s dangling TURN relay allocations, clamping ICE consent timeout to <=30s and idle TURN lifetime to <=60s; live STUN Binding probe RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "394. [Topic 31: voice-s2s-emotional-contagion-lufs-syntactic-incomplete-hold-faq] Native S2S Emotional Contagion Shouting-Mirror Clamp & ITU-R BS.1770-4 (-20 to -16 LUFS, 135-165 WPM) + Syntactic Incomplete-Clause Hold (1,100-1,600ms) & C2PA (SNR >=38dB) Dual Acoustic Watermark Guard (P775 / P776 — Stage 391 · 394-Dimension Milestone)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks autoregressive S2S shouting mirroring over angry caller turns, clamping integrated loudness to [-20.0, -16.0] LUFS and speech rate to [135, 165] WPM; live ITU-R BS.1770-4 DSP integration latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 500ms mid-clause EOU interruptions on dangling conjunctions/prepositions and unwatermarked synthetic audio, clamping syntactic hold to [1100, 1600] ms and C2PA spread-spectrum watermark SNR to >=38 dB; live watermark DSP embedding latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

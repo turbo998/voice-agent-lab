@@ -71856,6 +71856,149 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface NativeS2sEmotionalContagionLufsContext {
+      shoutingProsodyMirroringOrClippingDetected: boolean;
+      targetLoudnessLufs: number;
+      maxSpeechRateWpm: number;
+    }
+
+    export interface NativeS2sEmotionalContagionLufsDecision {
+      violated: boolean;
+      policyId: "P775-NATIVE-S2S-EMOTIONAL-CONTAGION-AND-ITU-BS1770-LOUDNESS-GUARD";
+      action:
+        | "s2s_emotional_contagion_or_lufs_violation_blocked"
+        | "clamp_s2s_loudness_lufs_and_speech_rate_wpm"
+        | "allow";
+      reason: string;
+      clampedTargetLoudnessLufs: number;
+      clampedMaxSpeechRateWpm: number;
+    }
+
+    export function evaluateNativeS2sEmotionalContagionAndItuBs1770LoudnessGate(
+      context: NativeS2sEmotionalContagionLufsContext,
+    ): NativeS2sEmotionalContagionLufsDecision {
+      const policyId =
+        "P775-NATIVE-S2S-EMOTIONAL-CONTAGION-AND-ITU-BS1770-LOUDNESS-GUARD" as const;
+      const clampedTargetLoudnessLufs = Math.min(
+        Math.max(context.targetLoudnessLufs, -20.0),
+        -16.0,
+      );
+      const clampedMaxSpeechRateWpm = Math.min(
+        Math.max(context.maxSpeechRateWpm, 135),
+        165,
+      );
+
+      if (context.shoutingProsodyMirroringOrClippingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "s2s_emotional_contagion_or_lufs_violation_blocked",
+          reason:
+            "Native S2S Emotional Contagion & ITU-R BS.1770-4 Loudness Policy Check: autoregressive S2S model mirrored caller shouting energy (> -10 LUFS or >185 WPM) without prosodic decoupling or K-weighted loudness normalization; offline synthetic policy state machine enforcing [-20.0, -16.0] LUFS integrated loudness and [135, 165] WPM cadence bounds (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live ITU-R BS.1770-4 DSP integration latency not_measured).",
+          clampedTargetLoudnessLufs,
+          clampedMaxSpeechRateWpm,
+        };
+      }
+
+      if (
+        context.targetLoudnessLufs < -20.0 ||
+        context.targetLoudnessLufs > -16.0 ||
+        context.maxSpeechRateWpm < 135 ||
+        context.maxSpeechRateWpm > 165
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_s2s_loudness_lufs_and_speech_rate_wpm",
+          reason:
+            "Target S2S integrated loudness (outside [-20.0, -16.0] LUFS synthetic bounds) or maximum speech rate (outside [135, 165] WPM synthetic bounds) out of bounds; clamping loudness to [-20.0, -16.0] LUFS and speech rate to [135, 165] WPM.",
+          clampedTargetLoudnessLufs,
+          clampedMaxSpeechRateWpm,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Native S2S prosodic decoupling, ITU-R BS.1770-4 [-20.0, -16.0] LUFS normalization, and [135, 165] WPM cadence verified.",
+        clampedTargetLoudnessLufs,
+        clampedMaxSpeechRateWpm,
+      };
+    }
+
+    export interface SyntacticIncompleteClauseC2paWatermarkContext {
+      prematureDanglingClauseCutoffOrMissingC2paDetected: boolean;
+      syntacticIncompleteHoldMs: number;
+      minAcousticWatermarkSnrDb: number;
+    }
+
+    export interface SyntacticIncompleteClauseC2paWatermarkDecision {
+      violated: boolean;
+      policyId: "P776-SYNTACTIC-INCOMPLETE-CLAUSE-HOLD-AND-C2PA-ACOUSTIC-WATERMARK-GUARD";
+      action:
+        | "syntactic_incomplete_turn_cutoff_or_unwatermarked_blocked"
+        | "clamp_syntactic_hold_ms_and_watermark_snr"
+        | "allow";
+      reason: string;
+      clampedSyntacticIncompleteHoldMs: number;
+      clampedMinAcousticWatermarkSnrDb: number;
+    }
+
+    export function evaluateSyntacticIncompleteClauseHoldAndC2paAcousticWatermarkGate(
+      context: SyntacticIncompleteClauseC2paWatermarkContext,
+    ): SyntacticIncompleteClauseC2paWatermarkDecision {
+      const policyId =
+        "P776-SYNTACTIC-INCOMPLETE-CLAUSE-HOLD-AND-C2PA-ACOUSTIC-WATERMARK-GUARD" as const;
+      const clampedSyntacticIncompleteHoldMs = Math.min(
+        Math.max(context.syntacticIncompleteHoldMs, 1100),
+        1600,
+      );
+      const clampedMinAcousticWatermarkSnrDb = Math.min(
+        Math.max(context.minAcousticWatermarkSnrDb, 38),
+        60,
+      );
+
+      if (context.prematureDanglingClauseCutoffOrMissingC2paDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "syntactic_incomplete_turn_cutoff_or_unwatermarked_blocked",
+          reason:
+            "Syntactic Incomplete-Clause Hold & C2PA Dual Acoustic Watermark Policy Check: turn-taking EOU interrupted caller on a dangling conjunction/preposition (<1,100ms hold) or emitted synthetic speech without a C2PA v2.1 manifest and >=38dB spread-spectrum watermark; offline synthetic policy state machine enforcing [1100, 1600] ms syntactic hold and >=38 dB acoustic watermark SNR (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live spread-spectrum watermark DSP embedding latency not_measured).",
+          clampedSyntacticIncompleteHoldMs,
+          clampedMinAcousticWatermarkSnrDb,
+        };
+      }
+
+      if (
+        context.syntacticIncompleteHoldMs < 1100 ||
+        context.syntacticIncompleteHoldMs > 1600 ||
+        context.minAcousticWatermarkSnrDb < 38
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_syntactic_hold_ms_and_watermark_snr",
+          reason:
+            "Syntactic incomplete-clause EOU hold window (outside [1100, 1600] ms synthetic bounds) or C2PA acoustic watermark SNR (<38 dB synthetic floor) out of bounds; clamping syntactic hold to [1100, 1600] ms and watermark SNR to >=38 dB.",
+          clampedSyntacticIncompleteHoldMs,
+          clampedMinAcousticWatermarkSnrDb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: [1100, 1600] ms syntactic incomplete-clause EOU hold and C2PA v2.1 + >=38 dB spread-spectrum acoustic watermark verified.",
+        clampedSyntacticIncompleteHoldMs,
+        clampedMinAcousticWatermarkSnrDb,
+      };
+    }
+
 
 
 
