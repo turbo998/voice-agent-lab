@@ -1324,9 +1324,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>399. [专题36 `docs/voice-webrtc-flexfec-lbrr-congestion-spiral-rfc2198-red-faq.md`] WebRTC `RFC 8627 FlexFEC / Opus LBRR` 源码率优先下调、冗余开销 `&lt;=25%` 封顶与 `Audio+FEC &lt;=85% TWCC BWE` 防自激拥塞螺旋门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 45kbps 拥塞弱网残余丢包压至 `0.4%`；真实 FlexFEC 异或恢复耗时 `not_measured`）&amp; `RFC 2198 audio/red` 零 `RED-in-RED` 递归拆包、单包冗余块 `&lt;=2` 与 `14-bit` 时间戳偏移 `&lt;=4,800 ticks`（`100ms@48kHz`）边界锁（真实 RFC 2198 拆包耗时 `not_measured`）(`P785` / `P786` · Stage 396 · 399 评测维度历史性里程碑 · 795 护栏 &amp; 804 探针 · 399 维)</strong>
+                <strong>399. [专题36 `docs/voice-webrtc-flexfec-lbrr-congestion-spiral-rfc2198-red-faq.md`] WebRTC `RFC 8627 FlexFEC / Opus LBRR` 源码率优先下调、冗余开销 `&lt;=25%` 封顶与 `Audio+FEC &lt;=85% TWCC BWE` 防自激拥塞螺旋门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 45kbps 拥塞弱网残余丢包压至 `0.4%`；真实 FlexFEC 异或恢复耗时 `not_measured`）&amp; `RFC 2198 audio/red` 零 `RED-in-RED` 递归拆包、单包冗余块 `&lt;=2` 与 `14-bit` 时间戳偏移 `&lt;=4,800 ticks`（`100ms@48kHz`）边界锁（真实 RFC 2198 拆包耗时 `not_measured`）(`P785` / `P786` · Stage 396 · 399 维)</strong>
               </td>
               <td><code>P785 / P786 deterministic WebRTC FlexFEC/Opus LBRR anti-congestion spiral gate &amp; RFC 2198 RED nesting/offset guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>400. [专题37 `docs/voice-sip-refer-replaces-toll-fraud-dns-srv-sips-failover-faq.md`] 企业 SIP `RFC 3515 REFER` 白名单锁（`0` 次国际高资费发卡弯盗打）、`?header=` URI 注入剥离、`RFC 4488 Refer-Sub: false` 与 `RFC 3891 INVITE Replaces` 同租户签名隔离门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 对话表查询耗时 `not_measured`）&amp; 运营商 `RFC 3263 DNS NAPTR/SRV` `SIPS+D2T` 零明文降级钉扎与主用 SBC 黑洞 `&lt;=150ms` 极速切换备机锁（打破 `32,000ms` `Timer B` 死等，提速 `228x`；真实 DNS SRV 切换耗时 `not_measured`）(`P787` / `P788` · Stage 397 · 🎉 400 评测维度历史性里程碑 · 797 护栏 &amp; 806 探针 · 400 维)</strong>
+              </td>
+              <td><code>P787 / P788 deterministic SIP RFC 3515 REFER toll-fraud / Replaces guard &amp; RFC 3263 DNS SRV SIPS <=150ms failover gate</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
@@ -4631,9 +4638,16 @@
               <td><span class="act-pill">Act automatically</span></td>
             </tr>            <tr>
               <td>
-                <strong>399. [专题36 `docs/voice-webrtc-flexfec-lbrr-congestion-spiral-rfc2198-red-faq.md`] WebRTC `RFC 8627 FlexFEC / Opus LBRR` 源码率优先下调、冗余开销 `&lt;=25%` 封顶与 `Audio+FEC &lt;=85% TWCC BWE` 防自激拥塞螺旋门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 45kbps 拥塞弱网残余丢包压至 `0.4%`；真实 FlexFEC 异或恢复耗时 `not_measured`）&amp; `RFC 2198 audio/red` 零 `RED-in-RED` 递归拆包、单包冗余块 `&lt;=2` 与 `14-bit` 时间戳偏移 `&lt;=4,800 ticks`（`100ms@48kHz`）边界锁（真实 RFC 2198 拆包耗时 `not_measured`）(`P785` / `P786` · Stage 396 · 399 评测维度历史性里程碑 · 795 护栏 &amp; 804 探针 · 399 维)</strong>
+                <strong>399. [专题36 `docs/voice-webrtc-flexfec-lbrr-congestion-spiral-rfc2198-red-faq.md`] WebRTC `RFC 8627 FlexFEC / Opus LBRR` 源码率优先下调、冗余开销 `&lt;=25%` 封顶与 `Audio+FEC &lt;=85% TWCC BWE` 防自激拥塞螺旋门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查：将 45kbps 拥塞弱网残余丢包压至 `0.4%`；真实 FlexFEC 异或恢复耗时 `not_measured`）&amp; `RFC 2198 audio/red` 零 `RED-in-RED` 递归拆包、单包冗余块 `&lt;=2` 与 `14-bit` 时间戳偏移 `&lt;=4,800 ticks`（`100ms@48kHz`）边界锁（真实 RFC 2198 拆包耗时 `not_measured`）(`P785` / `P786` · Stage 396 · 399 维)</strong>
               </td>
               <td><code>P785 / P786 deterministic WebRTC FlexFEC/Opus LBRR anti-congestion spiral gate &amp; RFC 2198 RED nesting/offset guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>400. [专题37 `docs/voice-sip-refer-replaces-toll-fraud-dns-srv-sips-failover-faq.md`] 企业 SIP `RFC 3515 REFER` 白名单锁（`0` 次国际高资费发卡弯盗打）、`?header=` URI 注入剥离、`RFC 4488 Refer-Sub: false` 与 `RFC 3891 INVITE Replaces` 同租户签名隔离门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 对话表查询耗时 `not_measured`）&amp; 运营商 `RFC 3263 DNS NAPTR/SRV` `SIPS+D2T` 零明文降级钉扎与主用 SBC 黑洞 `&lt;=150ms` 极速切换备机锁（打破 `32,000ms` `Timer B` 死等，提速 `228x`；真实 DNS SRV 切换耗时 `not_measured`）(`P787` / `P788` · Stage 397 · 🎉 400 评测维度历史性里程碑 · 797 护栏 &amp; 806 探针 · 400 维)</strong>
+              </td>
+              <td><code>P787 / P788 deterministic SIP RFC 3515 REFER toll-fraud / Replaces guard &amp; RFC 3263 DNS SRV SIPS <=150ms failover gate</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

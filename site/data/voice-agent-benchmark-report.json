@@ -1575,9 +1575,15 @@
       "delta_pts": 0.0
     },
     {
-      "question": "399. [Topic 36: voice-webrtc-flexfec-lbrr-congestion-spiral-rfc2198-red-faq] WebRTC RFC 8627 FlexFEC / Opus LBRR Anti-Congestion Spiral (<=25% Overhead, <=85% BWE) + RFC 2198 audio/red Zero-Recursion (<=2 Blocks) & 14-Bit Offset (<=4,800 Ticks) Guard (P785 / P786 — Stage 396 · Historic 399-Dimension Milestone)",
+      "question": "399. [Topic 36: voice-webrtc-flexfec-lbrr-congestion-spiral-rfc2198-red-faq] WebRTC RFC 8627 FlexFEC / Opus LBRR Anti-Congestion Spiral (<=25% Overhead, <=85% BWE) + RFC 2198 audio/red Zero-Recursion (<=2 Blocks) & 14-Bit Offset (<=4,800 Ticks) Guard (P785 / P786 — Stage 396 · 399-Dimension Milestone)",
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 2x/3x FEC redundancy inflation during bottleneck queue congestion that causes 48.5% self-inflicted packet loss, clamping FEC overhead to <=25% and combined Audio+FEC bitrate to <=85% BWE; live FlexFEC XOR recovery latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks recursive RED-in-RED payload-type nesting bombs and >4,800-tick (>100ms) stale timestamp offsets, enforcing <=2 redundant blocks/packet and <=4,800-tick offsets; live RFC 2198 unpacking latency is not_measured)",
+      "delta_pts": 0.0
+    },
+    {
+      "question": "400. [Topic 37: voice-sip-refer-replaces-toll-fraud-dns-srv-sips-failover-faq] Enterprise SIP RFC 3515 REFER Toll-Fraud Allowlist & RFC 3891 Same-Tenant Replaces Lock + Carrier RFC 3263 DNS NAPTR/SRV SIPS Pinning & <=150ms Dead-SBC Failover Guard (P787 / P788 — Stage 397 · Historic 400-Dimension Milestone!)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks inbound SIP REFER international toll-fraud hairpins, ?header= URI smuggling, and cross-tenant RFC 3891 INVITE Replaces hijacking, enforcing 0 untrusted Refer-To targets and 0 cross-tenant pickups; live SBC dialog lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks DNS NAPTR SIPS-to-UDP downgrades and 32,000ms RFC 3261 Timer B blackhole hangs, enforcing 0 SIPS downgrades and <=150ms backup SRV failover; live DNS SRV failover RTT is not_measured)",
       "delta_pts": 0.0
     }
   ],

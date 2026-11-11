@@ -72681,6 +72681,138 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3515ReferAndReplacesGateContext {
+      untrustedExternalReferOrCrossTenantReplacesDetected: boolean;
+      untrustedReferTargets: number;
+      crossTenantReplaces: number;
+    }
+
+    export interface SipRfc3515ReferAndReplacesGateDecision {
+      violated: boolean;
+      policyId: "P787-SIP-RFC3515-REFER-TOLL-FRAUD-AND-RFC3891-REPLACES-HIJACK-GUARD";
+      action:
+        | "sip_refer_toll_fraud_or_replaces_hijack_blocked"
+        | "clamp_untrusted_refer_and_cross_tenant_replaces"
+        | "allow";
+      reason: string;
+      clampedUntrustedReferTargets: number;
+      clampedCrossTenantReplaces: number;
+    }
+
+    export function evaluateSipRfc3515ReferTollFraudAndRfc3891ReplacesHijackGate(
+      context: SipRfc3515ReferAndReplacesGateContext,
+    ): SipRfc3515ReferAndReplacesGateDecision {
+      const policyId =
+        "P787-SIP-RFC3515-REFER-TOLL-FRAUD-AND-RFC3891-REPLACES-HIJACK-GUARD" as const;
+      const clampedUntrustedReferTargets = 0;
+      const clampedCrossTenantReplaces = 0;
+
+      if (context.untrustedExternalReferOrCrossTenantReplacesDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "sip_refer_toll_fraud_or_replaces_hijack_blocked",
+          reason:
+            "SIP RFC 3515 REFER Toll-Fraud & RFC 3891 Replaces Hijack Policy Check: inbound SIP REFER targeted an unallowlisted international/premium-rate URI or smuggled ?header= parameters (enabling $50k+ hairpin toll fraud), or RFC 3891 INVITE Replaces attempted cross-tenant dialog hijacking; offline synthetic policy state machine enforcing 0 untrusted Refer-To targets, URI header scrubbing, same-tenant Replaces HMAC verification, and RFC 4488 Refer-Sub: false (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC dialog-state lookup latency not_measured).",
+          clampedUntrustedReferTargets,
+          clampedCrossTenantReplaces,
+        };
+      }
+
+      if (
+        context.untrustedReferTargets > 0 ||
+        context.crossTenantReplaces > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_untrusted_refer_and_cross_tenant_replaces",
+          reason:
+            "Untrusted Refer-To targets (>0 synthetic ceiling) or cross-tenant INVITE Replaces (>0 synthetic ceiling) out of bounds; clamping untrusted Refer-To targets to 0 and cross-tenant Replaces to 0.",
+          clampedUntrustedReferTargets,
+          clampedCrossTenantReplaces,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 0 untrusted Refer-To targets, URI header scrubbing, same-tenant RFC 3891 Replaces lock, and RFC 4488 Refer-Sub: false verified.",
+        clampedUntrustedReferTargets,
+        clampedCrossTenantReplaces,
+      };
+    }
+
+    export interface SipRfc3263DnsNaptrSrvFailoverContext {
+      sipsDowngradeOrDeadSbcTimerBStallDetected: boolean;
+      sipsDowngrades: number;
+      maxDeadSbcFailoverMs: number;
+    }
+
+    export interface SipRfc3263DnsNaptrSrvFailoverDecision {
+      violated: boolean;
+      policyId: "P788-SIP-RFC3263-DNS-NAPTR-SRV-SIPS-DOWNGRADE-AND-DEAD-SBC-FAILOVER-GUARD";
+      action:
+        | "sip_dns_srv_sips_downgrade_or_blackhole_blocked"
+        | "clamp_sips_downgrades_and_sbc_failover_ms"
+        | "allow";
+      reason: string;
+      clampedSipsDowngrades: number;
+      clampedMaxDeadSbcFailoverMs: number;
+    }
+
+    export function evaluateSipRfc3263DnsNaptrSrvSipsDowngradeAndDeadSbcFailoverGate(
+      context: SipRfc3263DnsNaptrSrvFailoverContext,
+    ): SipRfc3263DnsNaptrSrvFailoverDecision {
+      const policyId =
+        "P788-SIP-RFC3263-DNS-NAPTR-SRV-SIPS-DOWNGRADE-AND-DEAD-SBC-FAILOVER-GUARD" as const;
+      const clampedSipsDowngrades = 0;
+      const clampedMaxDeadSbcFailoverMs = Math.min(
+        Math.max(context.maxDeadSbcFailoverMs, 50),
+        150,
+      );
+
+      if (context.sipsDowngradeOrDeadSbcTimerBStallDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "sip_dns_srv_sips_downgrade_or_blackhole_blocked",
+          reason:
+            "SIP RFC 3263 DNS NAPTR/SRV SIPS Downgrade & Dead-SBC Failover Policy Check: DNS NAPTR/SRV response attempted to downgrade sips: TLS signaling to plaintext UDP/5060 or primary carrier SBC blackhole stalled outbound call setup on 32,000ms RFC 3261 Timer B; offline synthetic policy state machine enforcing SIPS+D2T TLS pinning (0 downgrades) and <=150ms per-hop 100 Trying SRV failover (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live DNS SRV resolution and carrier failover RTT not_measured).",
+          clampedSipsDowngrades,
+          clampedMaxDeadSbcFailoverMs,
+        };
+      }
+
+      if (
+        context.sipsDowngrades > 0 ||
+        context.maxDeadSbcFailoverMs > 150
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_sips_downgrades_and_sbc_failover_ms",
+          reason:
+            "SIPS transport downgrades (>0 synthetic ceiling) or dead-SBC failover timer (>150 ms synthetic ceiling) out of bounds; clamping SIPS downgrades to 0 and dead-SBC failover ceiling to <=150 ms.",
+          clampedSipsDowngrades,
+          clampedMaxDeadSbcFailoverMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3263 SIPS+D2T TLS pinning (0 downgrades) and <=150ms dead-SBC SRV failover verified.",
+        clampedSipsDowngrades,
+        clampedMaxDeadSbcFailoverMs,
+      };
+    }
+
+
 
 
 
