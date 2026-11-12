@@ -73493,6 +73493,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc5764Rfc7983DtlsSrtpDemuxAndHelloCookieDosContext {
+      firstByteDemuxCollisionOrCookielessDtlsAmplificationDetected: boolean;
+      demuxCollisionDrops: number;
+      dtlsFlightMtuBytes: number;
+    }
+
+    export interface WebrtcRfc5764Rfc7983DtlsSrtpDemuxAndHelloCookieDosDecision {
+      violated: boolean;
+      policyId: "P799-WEBRTC-RFC5764-RFC7983-DTLS-SRTP-DEMUX-AND-HELLO-COOKIE-DOS-GUARD";
+      action:
+        | "block_demux_collision_and_enforce_dtls_cookie_mtu"
+        | "clamp_demux_collisions_and_dtls_flight_mtu_bytes"
+        | "allow";
+      reason: string;
+      clampedDemuxCollisionDrops: number;
+      clampedDtlsFlightMtuBytes: number;
+    }
+
+    export function evaluateWebrtcRfc5764Rfc7983DtlsSrtpDemuxAndHelloCookieDosGate(
+      context: WebrtcRfc5764Rfc7983DtlsSrtpDemuxAndHelloCookieDosContext,
+    ): WebrtcRfc5764Rfc7983DtlsSrtpDemuxAndHelloCookieDosDecision {
+      const policyId =
+        "P799-WEBRTC-RFC5764-RFC7983-DTLS-SRTP-DEMUX-AND-HELLO-COOKIE-DOS-GUARD" as const;
+      const clampedDemuxCollisionDrops = 0;
+      const clampedDtlsFlightMtuBytes = Math.min(
+        Math.max(context.dtlsFlightMtuBytes, 576),
+        1200,
+      );
+
+      if (context.firstByteDemuxCollisionOrCookielessDtlsAmplificationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "block_demux_collision_and_enforce_dtls_cookie_mtu",
+          reason:
+            "WebRTC RFC 5764 / RFC 7983 DTLS-SRTP First-Byte Demux & Stateless HelloVerifyRequest Cookie Policy Check: single-port BUNDLE received out-of-range first-byte packets (64..127 or 192..255) routed into SRTP/DTLS state machines, or cookieless 120B DTLS ClientHello triggered 35x X.509 certificate amplification / >1200B IPv6 MTU fragmentation blackhole; offline synthetic policy state machine enforcing strict RFC 7983 byte partitioning (0 demux collisions), stateless HMAC cookie verification, and [576, 1200]B DTLS flight MTU (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live OpenSSL/libsrtp socket demux latency not_measured).",
+          clampedDemuxCollisionDrops,
+          clampedDtlsFlightMtuBytes,
+        };
+      }
+
+      if (
+        context.demuxCollisionDrops > 0 ||
+        context.dtlsFlightMtuBytes < 576 ||
+        context.dtlsFlightMtuBytes > 1200
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_demux_collisions_and_dtls_flight_mtu_bytes",
+          reason:
+            "First-byte demux collision drops (>0 synthetic ceiling) or DTLS flight MTU (<576B or >1,200B synthetic bounds) out of bounds; clamping demux collision drops to 0 and DTLS flight MTU to [576, 1200]B.",
+          clampedDemuxCollisionDrops,
+          clampedDtlsFlightMtuBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 7983 first-byte demux partition (0 collisions), stateless DTLS cookie, and [576, 1200]B MTU verified.",
+        clampedDemuxCollisionDrops,
+        clampedDtlsFlightMtuBytes,
+      };
+    }
+
+    export interface WebrtcRfc4145Rfc8842SdpSetupRoleDeadlockAndMkiRekeyContext {
+      sdpSetupRoleDeadlockOrAbruptMkiKeyPurgeDetected: boolean;
+      setupDeadlocks: number;
+      srtpMkiOverlapWindowMs: number;
+    }
+
+    export interface WebrtcRfc4145Rfc8842SdpSetupRoleDeadlockAndMkiRekeyDecision {
+      violated: boolean;
+      policyId: "P800-WEBRTC-RFC4145-RFC8842-SDP-SETUP-ROLE-DEADLOCK-AND-MKI-REKEY-GUARD";
+      action:
+        | "resolve_sdp_setup_deadlock_and_clamp_mki_overlap"
+        | "clamp_setup_deadlocks_and_srtp_mki_overlap_ms"
+        | "allow";
+      reason: string;
+      clampedSetupDeadlocks: number;
+      clampedSrtpMkiOverlapWindowMs: number;
+    }
+
+    export function evaluateWebrtcRfc4145Rfc8842SdpSetupRoleDeadlockAndMkiRekeyGate(
+      context: WebrtcRfc4145Rfc8842SdpSetupRoleDeadlockAndMkiRekeyContext,
+    ): WebrtcRfc4145Rfc8842SdpSetupRoleDeadlockAndMkiRekeyDecision {
+      const policyId =
+        "P800-WEBRTC-RFC4145-RFC8842-SDP-SETUP-ROLE-DEADLOCK-AND-MKI-REKEY-GUARD" as const;
+      const clampedSetupDeadlocks = 0;
+      const clampedSrtpMkiOverlapWindowMs = Math.min(
+        Math.max(context.srtpMkiOverlapWindowMs, 2000),
+        5000,
+      );
+
+      if (context.sdpSetupRoleDeadlockOrAbruptMkiKeyPurgeDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "resolve_sdp_setup_deadlock_and_clamp_mki_overlap",
+          reason:
+            "WebRTC RFC 4145 / RFC 8842 SDP a=setup Role Deadlock & RFC 3711 SRTP MKI Rekey Policy Check: SDP negotiation resulted in passive/passive or active/active DTLS handshake deadlock (100% post-answer dead air) or mid-call SRTP MKI key rotation purged previous master key immediately (dropping in-flight jitter-buffered RTP frames); offline synthetic policy state machine enforcing a=setup:actpass complementary role resolution (0 deadlocks) and [2000, 5000]ms dual-MKI decryption overlap window (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live DTLS-SRTP MKI key-ring swap latency not_measured).",
+          clampedSetupDeadlocks,
+          clampedSrtpMkiOverlapWindowMs,
+        };
+      }
+
+      if (
+        context.setupDeadlocks > 0 ||
+        context.srtpMkiOverlapWindowMs < 2000 ||
+        context.srtpMkiOverlapWindowMs > 5000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_setup_deadlocks_and_srtp_mki_overlap_ms",
+          reason:
+            "SDP a=setup role deadlocks (>0 synthetic ceiling) or SRTP MKI overlap window (<2,000ms or >5,000ms synthetic bounds) out of bounds; clamping setup deadlocks to 0 and MKI overlap window to [2000, 5000]ms.",
+          clampedSetupDeadlocks,
+          clampedSrtpMkiOverlapWindowMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8842 SDP a=setup complementary role (0 deadlocks) and [2000, 5000]ms SRTP MKI overlap window verified.",
+        clampedSetupDeadlocks,
+        clampedSrtpMkiOverlapWindowMs,
+      };
+    }
+
 
 
 

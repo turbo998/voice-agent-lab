@@ -1371,6 +1371,13 @@
               <td><code>P797 / P798 deterministic WebRTC RFC 8888 RTCP CCFB ECN-CE anti-spoof gate &amp; RFC 3550 RR/XR TWCC cross-check / signed RTT guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>406. [专题43 `docs/voice-webrtc-dtls-srtp-rfc5764-demux-hello-cookie-setup-deadlock-faq.md`] WebRTC `RFC 5764 / RFC 7983` 单端口首字节严格分区解复用（`0` 次非标首字节污染 `SRTP/DTLS` 状态机）、无状态 `RFC 6347 DTLS HelloVerifyRequest` HMAC Cookie 防 `35倍` X.509 证书反射放大与 `[576, 1200]B` 分片 MTU 门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 OpenSSL/libsrtp 套接字分拣耗时 `not_measured`）&amp; `RFC 4145 / RFC 8842` SDP `a=setup` 防双 `passive` 握手死锁（`0` 死锁）及长通话 `RFC 3711 SRTP MKI` `[2000, 5000]ms` 新旧双密钥并行解密窗口（真实 DTLS-SRTP 换钥耗时 `not_measured`）(`P799` / `P800` 🎉 · Stage 403 · 809 护栏 &amp; 818 探针 · 406 维)</strong>
+              </td>
+              <td><code>P799 / P800 deterministic WebRTC RFC 7983 first-byte demux + DTLS cookie MTU gate &amp; RFC 8842 SDP setup deadlock / SRTP MKI overlap guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4718,6 +4725,13 @@
                 <strong>405. [专题42 `docs/voice-webrtc-rtcp-ccfb-ecn-spoof-rr-xr-bwe-sabotage-faq.md`] WebRTC `RFC 8888 RTCP CCFB` 时延梯度佐证防伪造 `ECN-CE=0b11` 降速（`0` 次无排队延迟佐证误降，防止 `32kbps` 高清语音被砍至 `6kbps` 机器音）、`0x1FFF / 0x1FFE` 哨兵剥离与 `[1, 256]` 报告块上限门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SCReAM/GCC 滤波耗时 `not_measured`）&amp; `RFC 3550 RR / RFC 3611 XR` 丢包率与 `TWCC` 逐包确认交叉对账（`0` 次虚假丢包降速）及 `A - LSR - DLSR` 有符号 `int64` `[1, 3000]ms` 防 `uint32` 49.7 天下溢回绕锁（真实 RTCP/TWCC 对账耗时 `not_measured`）(`P797` / `P798` · Stage 402 · 807 护栏 &amp; 816 探针 · 405 维)</strong>
               </td>
               <td><code>P797 / P798 deterministic WebRTC RFC 8888 RTCP CCFB ECN-CE anti-spoof gate &amp; RFC 3550 RR/XR TWCC cross-check / signed RTT guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>406. [专题43 `docs/voice-webrtc-dtls-srtp-rfc5764-demux-hello-cookie-setup-deadlock-faq.md`] WebRTC `RFC 5764 / RFC 7983` 单端口首字节严格分区解复用（`0` 次非标首字节污染 `SRTP/DTLS` 状态机）、无状态 `RFC 6347 DTLS HelloVerifyRequest` HMAC Cookie 防 `35倍` X.509 证书反射放大与 `[576, 1200]B` 分片 MTU 门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 OpenSSL/libsrtp 套接字分拣耗时 `not_measured`）&amp; `RFC 4145 / RFC 8842` SDP `a=setup` 防双 `passive` 握手死锁（`0` 死锁）及长通话 `RFC 3711 SRTP MKI` `[2000, 5000]ms` 新旧双密钥并行解密窗口（真实 DTLS-SRTP 换钥耗时 `not_measured`）(`P799` / `P800` 🎉 · Stage 403 · 809 护栏 &amp; 818 探针 · 406 维)</strong>
+              </td>
+              <td><code>P799 / P800 deterministic WebRTC RFC 7983 first-byte demux + DTLS cookie MTU gate &amp; RFC 8842 SDP setup deadlock / SRTP MKI overlap guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

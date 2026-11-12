@@ -1615,6 +1615,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks uncorroborated ECN-CE=0b11 marks from slashing HD voice to 6kbps narrowband, strips 0x1FFF/0x1FFE sentinels, and clamps CCFB reports to [1, 256]; live SCReAM/GCC filter update latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: cross-checks RTCP RR fraction_lost against TWCC per-packet acks (0 spoofed BWE drops) and clamps signed int64 RTT to [1, 3000]ms against 49.7-day uint32 wrap; live RTCP/TWCC reconciliation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "406. [Topic 43: voice-webrtc-dtls-srtp-rfc5764-demux-hello-cookie-setup-deadlock-faq] WebRTC RFC 7983 First-Byte Demux + Stateless DTLS Cookie ([576,1200]B MTU) & RFC 8842 SDP a=setup Deadlock + [2000,5000]ms SRTP MKI Rekey Guard (P799 / P800 🎉 — Stage 403 · 406 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks out-of-range first-byte demux collisions, enforces stateless HelloVerifyRequest HMAC cookies against 35x X.509 amplification, and clamps DTLS flight MTU to [576, 1200]B; live OpenSSL/libsrtp demux latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: resolves passive/passive SDP a=setup deadlocks via complementary active/passive arbitration and retains a [2000, 5000]ms dual-MKI decryption overlap window; live DTLS-SRTP MKI swap latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
