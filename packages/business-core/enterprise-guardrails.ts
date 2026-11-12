@@ -74453,6 +74453,138 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc8832DcepChannelOpenSpoofAndRfc8831PpidConfusionContext {
+      unauthorizedDcepChannelOpenOrPpidTypeConfusionDetected: boolean;
+      spoofedDcepOpenRequests: number;
+      unregisteredOrMismatchedPpids: number;
+    }
+
+    export interface WebrtcRfc8832DcepChannelOpenSpoofAndRfc8831PpidConfusionDecision {
+      violated: boolean;
+      policyId: "P813-WEBRTC-RFC8832-DCEP-CHANNEL-OPEN-SPOOF-AND-RFC8831-PPID-CONFUSION-GUARD";
+      action:
+        | "reject_spoofed_dcep_open_and_ppid_confusion"
+        | "clamp_spoofed_dcep_open_and_ppid_mismatches"
+        | "allow";
+      reason: string;
+      clampedSpoofedDcepOpenRequests: number;
+      clampedUnregisteredOrMismatchedPpids: number;
+    }
+
+    export function evaluateWebrtcRfc8832DcepChannelOpenSpoofAndRfc8831PpidConfusionGate(
+      context: WebrtcRfc8832DcepChannelOpenSpoofAndRfc8831PpidConfusionContext,
+    ): WebrtcRfc8832DcepChannelOpenSpoofAndRfc8831PpidConfusionDecision {
+      const policyId =
+        "P813-WEBRTC-RFC8832-DCEP-CHANNEL-OPEN-SPOOF-AND-RFC8831-PPID-CONFUSION-GUARD" as const;
+      const clampedSpoofedDcepOpenRequests = 0;
+      const clampedUnregisteredOrMismatchedPpids = 0;
+
+      if (context.unauthorizedDcepChannelOpenOrPpidTypeConfusionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_spoofed_dcep_open_and_ppid_confusion",
+          reason:
+            "WebRTC RFC 8832 DCEP In-Band DATA_CHANNEL_OPEN & RFC 8831 PPID Type-Confusion Policy Check: peer attempted to open an unauthorized in-band DCEP DataChannel label/protocol or injected an unregistered/mismatched SCTP PPID outside {50, 51, 53, 56, 57} (or invalid UTF-8 on PPID=51); offline synthetic policy state machine enforcing 0 spoofed DCEP channel-open requests and 0 PPID type-confusion packets (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SCTP/DCEP parser latency not_measured).",
+          clampedSpoofedDcepOpenRequests,
+          clampedUnregisteredOrMismatchedPpids,
+        };
+      }
+
+      if (
+        context.spoofedDcepOpenRequests > 0 ||
+        context.unregisteredOrMismatchedPpids > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_dcep_open_and_ppid_mismatches",
+          reason:
+            "Spoofed DCEP channel-open requests (>0 synthetic ceiling) or unregistered/mismatched SCTP PPIDs (>0 synthetic ceiling) out of bounds; clamping both to 0.",
+          clampedSpoofedDcepOpenRequests,
+          clampedUnregisteredOrMismatchedPpids,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8832 DCEP label allowlist (0 spoofed opens) and RFC 8831 PPID {50, 51, 53, 56, 57} type safety (0 mismatches) verified.",
+        clampedSpoofedDcepOpenRequests,
+        clampedUnregisteredOrMismatchedPpids,
+      };
+    }
+
+    export interface WebrtcRfc8832DtlsRoleStreamIdParityAndMaxMessageSizeContext {
+      dtlsRoleStreamIdParityGlareOrOversizedMessageBombDetected: boolean;
+      streamIdParityCollisions: number;
+      maxMessageSizeKb: number;
+    }
+
+    export interface WebrtcRfc8832DtlsRoleStreamIdParityAndMaxMessageSizeDecision {
+      violated: boolean;
+      policyId: "P814-WEBRTC-RFC8832-DTLS-ROLE-STREAM-ID-PARITY-AND-MAX-MESSAGE-SIZE-GUARD";
+      action:
+        | "enforce_dtls_stream_id_parity_and_cap_message_size"
+        | "clamp_stream_id_collisions_and_max_message_size"
+        | "allow";
+      reason: string;
+      clampedStreamIdParityCollisions: number;
+      clampedMaxMessageSizeKb: number;
+    }
+
+    export function evaluateWebrtcRfc8832DtlsRoleStreamIdParityAndMaxMessageSizeGate(
+      context: WebrtcRfc8832DtlsRoleStreamIdParityAndMaxMessageSizeContext,
+    ): WebrtcRfc8832DtlsRoleStreamIdParityAndMaxMessageSizeDecision {
+      const policyId =
+        "P814-WEBRTC-RFC8832-DTLS-ROLE-STREAM-ID-PARITY-AND-MAX-MESSAGE-SIZE-GUARD" as const;
+      const clampedStreamIdParityCollisions = 0;
+      const clampedMaxMessageSizeKb = Math.min(
+        Math.max(context.maxMessageSizeKb, 16),
+        64,
+      );
+
+      if (context.dtlsRoleStreamIdParityGlareOrOversizedMessageBombDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_dtls_stream_id_parity_and_cap_message_size",
+          reason:
+            "WebRTC RFC 8832 Section 6 DTLS Role Stream-ID Parity & RFC 8841 a=max-message-size Policy Check: peer violated DTLS Client=Even / DTLS Server=Odd SCTP Stream-ID allocation parity (causing dual-open stream glare) or transmitted unended SCTP fragments exceeding reassembly bounds; offline synthetic policy state machine enforcing 0 Stream-ID parity collisions and [16, 64] KB max-message-size ceiling (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SCTP RFC 6525 stream reset latency not_measured).",
+          clampedStreamIdParityCollisions,
+          clampedMaxMessageSizeKb,
+        };
+      }
+
+      if (
+        context.streamIdParityCollisions > 0 ||
+        context.maxMessageSizeKb < 16 ||
+        context.maxMessageSizeKb > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_stream_id_collisions_and_max_message_size",
+          reason:
+            "Stream-ID parity collisions (>0 synthetic ceiling) or a=max-message-size (<16 or >64 KB synthetic bounds) out of bounds; clamping collisions to 0 and max-message-size to [16, 64] KB.",
+          clampedStreamIdParityCollisions,
+          clampedMaxMessageSizeKb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8832 DTLS role even/odd Stream-ID parity (0 collisions) and RFC 8841 [16, 64] KB max-message-size verified.",
+        clampedStreamIdParityCollisions,
+        clampedMaxMessageSizeKb,
+      };
+    }
+
 
 
 

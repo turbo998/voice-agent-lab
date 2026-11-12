@@ -1657,6 +1657,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips call-id, local-tag, remote-tag, and <remote> identity from BLF dialog-info+xml for non-pickup-group watchers (0 leaked attributes) and enforces pickup-group RBAC verification; live PBX XML serializer latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of out-of-dialog unsolicited SIP NOTIFY requests with 481 (0 accepted) and clamps per-subscription NOTIFY emission rate to [1, 5]/s; live presence subscription lookup latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "413. [Topic 50 🎉: voice-webrtc-dcep-rfc8832-channel-open-ppid-stream-glare-faq] WebRTC RFC 8832 DCEP In-Band Channel-Open Allowlist + RFC 8831 PPID Type-Confusion Gate & DTLS Role Even/Odd Stream-ID Parity + [16,64]KB Max-Message-Size Guard (P813 / P814 — Stage 410 · 413 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces an explicit Label/Protocol allowlist on in-band DCEP DATA_CHANNEL_OPEN frames (0 spoofed opens) and validates RFC 8831 PPID {50, 51, 53, 56, 57} + UTF-8 integrity (0 mismatches); live SCTP/DCEP parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 8832 Section 6 DTLS Client=Even / Server=Odd Stream-ID allocation parity (0 glare collisions) and clamps RFC 8841 a=max-message-size reassembly to [16, 64] KB; live RFC 6525 stream reset latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

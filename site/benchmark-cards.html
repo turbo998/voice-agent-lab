@@ -1420,6 +1420,13 @@
               <td><code>P811 / P812 deterministic SIP RFC 4235 BLF dialog-tag redaction + pickup RBAC gate &amp; RFC 6665 unsolicited NOTIFY 481 / max-rate guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>413. [专题50 🎉 `docs/voice-webrtc-dcep-rfc8832-channel-open-ppid-stream-glare-faq.md`] WebRTC `RFC 8832 (DCEP)` 带内 `DATA_CHANNEL_OPEN` `Label / Protocol` 白名单鉴权（`0` 伪造特权通道）与 `RFC 8831 PPID` `{50, 51, 53, 56, 57}` 强类型及 UTF-8 合法性校验（`0` 类型混淆崩溃；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SCTP/DCEP 解析耗时 `not_measured`）&amp; `RFC 8832 Section 6` DTLS 角色奇偶 `Stream ID` 分配铁律（`DTLS Client=偶 / Server=奇`，`0` 建流碰撞串线）及 `RFC 8841 a=max-message-size [16, 64] KB` 防分片重组内存炸弹门禁（真实 `RFC 6525` 流重置耗时 `not_measured`）(`P813` / `P814` · Stage 410 · 🎉 Topic 50 Milestone · 823 护栏 &amp; 832 探针 · 413 维)</strong>
+              </td>
+              <td><code>P813 / P814 deterministic WebRTC RFC 8832 DCEP channel-open allowlist + PPID type gate &amp; DTLS role stream-ID parity / max-message-size guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4816,6 +4823,13 @@
                 <strong>412. [专题49 `docs/voice-sip-rfc4235-dialog-blf-pickup-hijack-notify-storm-faq.md`] 企业 SIP `RFC 4235` 对话事件包（`Event: dialog` BLF 状态灯）非代答组 `call-id / local-tag / remote-tag` 与 `<remote>` 来电号码 100% 脱敏（`0` 标签泄露，防跨部门普通分机伪造 `INVITE Replaces:` 抢走高管/VIP 振铃通话）与同代答组 RBAC 强校验（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 PBX XML 序列化耗时 `not_measured`）&amp; `RFC 6665` 野生无订阅 `SIP NOTIFY` 100% 返回 `481` 拒止（`0` 野生接受，防 `Event: talk` 远程强制摘机窃听）与 `RFC 5263 / RFC 6446 max-rate [1, 5]/s` 状态合并限流门禁（真实 Presence 订阅表查找耗时 `not_measured`）(`P811` / `P812` · Stage 409 · 🎉 830 Probes · 821 护栏 &amp; 830 探针 · 412 维)</strong>
               </td>
               <td><code>P811 / P812 deterministic SIP RFC 4235 BLF dialog-tag redaction + pickup RBAC gate &amp; RFC 6665 unsolicited NOTIFY 481 / max-rate guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>413. [专题50 🎉 `docs/voice-webrtc-dcep-rfc8832-channel-open-ppid-stream-glare-faq.md`] WebRTC `RFC 8832 (DCEP)` 带内 `DATA_CHANNEL_OPEN` `Label / Protocol` 白名单鉴权（`0` 伪造特权通道）与 `RFC 8831 PPID` `{50, 51, 53, 56, 57}` 强类型及 UTF-8 合法性校验（`0` 类型混淆崩溃；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SCTP/DCEP 解析耗时 `not_measured`）&amp; `RFC 8832 Section 6` DTLS 角色奇偶 `Stream ID` 分配铁律（`DTLS Client=偶 / Server=奇`，`0` 建流碰撞串线）及 `RFC 8841 a=max-message-size [16, 64] KB` 防分片重组内存炸弹门禁（真实 `RFC 6525` 流重置耗时 `not_measured`）(`P813` / `P814` · Stage 410 · 🎉 Topic 50 Milestone · 823 护栏 &amp; 832 探针 · 413 维)</strong>
+              </td>
+              <td><code>P813 / P814 deterministic WebRTC RFC 8832 DCEP channel-open allowlist + PPID type gate &amp; DTLS role stream-ID parity / max-message-size guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

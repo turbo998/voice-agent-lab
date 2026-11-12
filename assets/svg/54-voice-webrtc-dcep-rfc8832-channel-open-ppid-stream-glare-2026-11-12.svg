@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg54" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="blueGrad54" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad54" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065F46"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg54)"/>
+
+  <!-- Header -->
+  <rect x="36" y="24" width="1128" height="84" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <text x="56" y="56" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1">STAGE 410 · TOPIC 50 🎉 · WEBRTC DCEP RFC 8832 CHANNEL-OPEN &amp; PPID / STREAM-ID GLARE FAQ (P813–P814)</text>
+  <text x="56" y="84" fill="#F8FAFC" font-family="Segoe UI, system-ui, sans-serif" font-size="20.5" font-weight="700">WebRTC RFC 8832 DCEP Channel-Open + PPID Type Gate &amp; DTLS Role Stream-ID Parity Guard</text>
+  <rect x="960" y="38" width="184" height="32" rx="16" fill="#065F46" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1052" y="59" text-anchor="middle" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Stage 410 · Topic 50 🎉 · 413D</text>
+
+  <!-- Left Column: P813 WebRTC RFC 8832 DCEP DATA_CHANNEL_OPEN & RFC 8831 PPID Type Confusion Gate -->
+  <rect x="36" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5"/>
+  <rect x="36" y="124" width="552" height="44" rx="12" fill="url(#blueGrad54)"/>
+  <text x="56" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P813 · WebRTC RFC 8832 DCEP Open &amp; RFC 8831 PPID Gate</text>
+
+  <!-- Anti-pattern Box Left -->
+  <rect x="56" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="72" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: Rogue In-Band DCEP Open &amp; PPID Type Confusion</text>
+  <text x="72" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Client sends in-band DCEP DATA_CHANNEL_OPEN (PPID=50) to open</text>
+  <text x="72" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  server-only control channel (label=&quot;oai-events&quot; / &quot;mcp-admin&quot;)</text>
+  <text x="72" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Sending binary PPID=53 or invalid UTF-8 on PPID=51 crashes parser</text>
+  <text x="72" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: Unauthorized Tool Control Injection · JSON/UTF-8 Parser Crash</text>
+
+  <!-- Best Practice Box Left -->
+  <rect x="56" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="72" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ DCEP Label/Protocol Allowlist &amp; Strict PPID `50/51/53/56/57` Lock</text>
+  <text x="72" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. DCEP Open ACL: Reject unauthorized in-band DATA_CHANNEL_OPEN</text>
+  <text x="72" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   attempts targeting privileged labels/protocols (0 spoofed opens)</text>
+  <text x="72" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. Strict PPID Registry: Enforce exact RFC 8831 PPID (50=DCEP,</text>
+  <text x="72" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   51=UTF-8 String, 53=Binary, 56/57=Empty) with UTF-8 validation</text>
+  <text x="72" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P813: spoofedDcepOpens = 0 · mismatchedPpids = 0</text>
+  <text x="72" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Privileged Channel Hijacks · 0 PPID Type-Confusion Crashes</text>
+
+  <!-- Bottom KPI Pill Left -->
+  <rect x="56" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="72" y="530" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateWebrtcRfc8832DcepChannelOpenSpoofAndRfc8831PpidConfusionGate`)</text>
+  <text x="72" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedSpoofedDcepOpenRequests = 0 | clampedUnregisteredOrMismatchedPpids = 0</text>
+  <text x="72" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: reject_spoofed_dcep_open_and_ppid_confusion (0ms @ 1ms grid)</text>
+
+  <!-- Right Column: P814 WebRTC RFC 8832 DTLS Role Even/Odd Stream-ID Parity & Max-Message-Size Guard -->
+  <rect x="612" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="612" y="124" width="552" height="44" rx="12" fill="url(#emeraldGrad54)"/>
+  <text x="632" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P814 · WebRTC RFC 8832 Stream-ID Parity &amp; Message-Size Guard</text>
+
+  <!-- Anti-pattern Box Right -->
+  <rect x="632" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="648" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: Even/Odd Stream-ID Glare &amp; 16MB Fragmentation Bomb</text>
+  <text x="648" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Both peers allocate Stream ID 0 or 2 simultaneously, cross-wiring</text>
+  <text x="648" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  transcript events into the function-call execution channel</text>
+  <text x="648" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Unbounded SCTP message fragments (&gt;256KB, no E-bit) exhaust RAM</text>
+  <text x="648" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: DataChannel Stream Glare · SCTP Reassembly Buffer OOM</text>
+
+  <!-- Best Practice Box Right -->
+  <rect x="632" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="648" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ DTLS Role Even/Odd Stream-ID Rule &amp; [16, 64] KB Message Cap</text>
+  <text x="648" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. RFC 8832 Section 6 Parity Rule: DTLS Client MUST allocate Even</text>
+  <text x="648" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   Stream IDs (0,2,4...); DTLS Server MUST allocate Odd IDs (1,3,5...)</text>
+  <text x="648" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. RFC 8841 a=max-message-size: Clamp SCTP message reassembly ceiling</text>
+  <text x="648" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   to [16, 64] KB, resetting streams on oversized unended fragments</text>
+  <text x="648" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P814: streamIdCollisions = 0 · maxMessageSizeKb = [16, 64]KB</text>
+  <text x="648" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Stream-ID Glare Collisions · 0 Reassembly OOM Crashes</text>
+
+  <!-- Bottom KPI Pill Right -->
+  <rect x="632" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="648" y="530" fill="#34D399" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateWebrtcRfc8832DtlsRoleStreamIdParityAndMaxMessageSizeGate`)</text>
+  <text x="648" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedStreamIdParityCollisions = 0 | clampedMaxMessageSizeKb = [16, 64]KB</text>
+  <text x="648" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: enforce_dtls_stream_id_parity_and_cap_message_size (0ms @ 1ms grid)</text>
+
+  <!-- Footer Provenance -->
+  <rect x="36" y="614" width="1128" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="640" fill="#94A3B8" font-family="Consolas, monospace" font-size="11">Provenance: synthetic deterministic evaluation | 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+</svg>
