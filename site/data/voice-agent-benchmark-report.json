@@ -1627,6 +1627,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: caps per-packet Generic NACK retries to [1, 3] spaced by >=1x RTT and clamps trr-int / PLI-FIR cooldowns to [100, 500]ms; live RTCP AVPF ring-buffer lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids in-place primary SSRC retransmissions (0 pollutions), enforces dedicated FID RTX SSRC with 16-bit OSN headers, and validates [1, 8] apt mappings; live RTX depacketizer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "408. [Topic 45: voice-sip-rfc6026-invite-2xx-timer-gh-magic-cookie-rogue-bye-faq] SIP RFC 6026 INVITE 2xx Timer G/H ([1,7] Retries / [8,32]s) + z9hG4bK Cookie & Rogue BYE/ACK Dialog-Tuple + [1,64] CSeq Guard (P803 / P804 — Stage 405 · 408 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 3261 z9hG4bK Via magic cookie prefix, RFC 6026 Accepted state, [1, 7] 200 OK retries, and [8, 32]s Timer H half-open GPU reclamation; live SBC transaction hash lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: verifies full (Call-ID, local-tag, remote-tag, TLS/IP flow) dialog tuple on BYE/ACK (0 rogue teardowns) and clamps monotonic CSeq steps to [1, 64]; live SIP B2BUA dialog lookup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

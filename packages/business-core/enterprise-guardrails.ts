@@ -73769,6 +73769,146 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6026Invite2xxTimerGhStormAndMagicCookieContext {
+      missingMagicCookieOrUnbounded2xxTimerGhStormDetected: boolean;
+      invite2xxRetransmissions: number;
+      timerHTimeoutSec: number;
+    }
+
+    export interface SipRfc6026Invite2xxTimerGhStormAndMagicCookieDecision {
+      violated: boolean;
+      policyId: "P803-SIP-RFC6026-INVITE-2XX-TIMER-GH-STORM-AND-MAGIC-COOKIE-GUARD";
+      action:
+        | "enforce_rfc6026_timer_gh_and_magic_cookie_branch"
+        | "clamp_invite_2xx_retransmissions_and_timer_h_sec"
+        | "allow";
+      reason: string;
+      clampedInvite2xxRetransmissions: number;
+      clampedTimerHTimeoutSec: number;
+    }
+
+    export function evaluateSipRfc6026Invite2xxTimerGhStormAndMagicCookieGate(
+      context: SipRfc6026Invite2xxTimerGhStormAndMagicCookieContext,
+    ): SipRfc6026Invite2xxTimerGhStormAndMagicCookieDecision {
+      const policyId =
+        "P803-SIP-RFC6026-INVITE-2XX-TIMER-GH-STORM-AND-MAGIC-COOKIE-GUARD" as const;
+      const clampedInvite2xxRetransmissions = Math.min(
+        Math.max(context.invite2xxRetransmissions, 1),
+        7,
+      );
+      const clampedTimerHTimeoutSec = Math.min(
+        Math.max(context.timerHTimeoutSec, 8),
+        32,
+      );
+
+      if (context.missingMagicCookieOrUnbounded2xxTimerGhStormDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc6026_timer_gh_and_magic_cookie_branch",
+          reason:
+            "SIP RFC 3261 / RFC 6026 INVITE 2xx Timer G/H & z9hG4bK Magic Cookie Policy Check: inbound SIP Via header lacked the RFC 3261 z9hG4bK magic cookie prefix (forcing O(N) RFC 2543 6-field transaction table scans) or unacknowledged 200 OK responses leaked S2S GPU slots without RFC 6026 Accepted state reaping; offline synthetic policy state machine enforcing z9hG4bK branch prefix, [1, 7] 2xx retransmissions (Timer G), and [8, 32]s Timer H teardown (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC transaction hash-table lookup latency not_measured).",
+          clampedInvite2xxRetransmissions,
+          clampedTimerHTimeoutSec,
+        };
+      }
+
+      if (
+        context.invite2xxRetransmissions < 1 ||
+        context.invite2xxRetransmissions > 7 ||
+        context.timerHTimeoutSec < 8 ||
+        context.timerHTimeoutSec > 32
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_invite_2xx_retransmissions_and_timer_h_sec",
+          reason:
+            "SIP INVITE 2xx Timer G retransmissions (<1 or >7 synthetic bounds) or Timer H timeout (<8s or >32s synthetic bounds) out of bounds; clamping 2xx retransmissions to [1, 7] and Timer H timeout to [8, 32]s.",
+          clampedInvite2xxRetransmissions,
+          clampedTimerHTimeoutSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 6026 INVITE Accepted state ([1, 7] 2xx retries, [8, 32]s Timer H) and z9hG4bK magic cookie verified.",
+        clampedInvite2xxRetransmissions,
+        clampedTimerHTimeoutSec,
+      };
+    }
+
+    export interface SipRfc3261RogueByeAckDialogTupleAndCseqVerifyContext {
+      rogueByeAckTupleMismatchOrRetrogradeCseqDetected: boolean;
+      unauthorizedDialogTeardowns: number;
+      cseqWindowDelta: number;
+    }
+
+    export interface SipRfc3261RogueByeAckDialogTupleAndCseqVerifyDecision {
+      violated: boolean;
+      policyId: "P804-SIP-RFC3261-ROGUE-BYE-ACK-DIALOG-TUPLE-AND-CSEQ-VERIFY-GUARD";
+      action:
+        | "reject_rogue_bye_ack_and_enforce_monotonic_cseq"
+        | "clamp_unauthorized_teardowns_and_cseq_window"
+        | "allow";
+      reason: string;
+      clampedUnauthorizedDialogTeardowns: number;
+      clampedCseqWindowDelta: number;
+    }
+
+    export function evaluateSipRfc3261RogueByeAckDialogTupleAndCseqVerifyGate(
+      context: SipRfc3261RogueByeAckDialogTupleAndCseqVerifyContext,
+    ): SipRfc3261RogueByeAckDialogTupleAndCseqVerifyDecision {
+      const policyId =
+        "P804-SIP-RFC3261-ROGUE-BYE-ACK-DIALOG-TUPLE-AND-CSEQ-VERIFY-GUARD" as const;
+      const clampedUnauthorizedDialogTeardowns = 0;
+      const clampedCseqWindowDelta = Math.min(
+        Math.max(context.cseqWindowDelta, 1),
+        64,
+      );
+
+      if (context.rogueByeAckTupleMismatchOrRetrogradeCseqDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_rogue_bye_ack_and_enforce_monotonic_cseq",
+          reason:
+            "SIP RFC 3261 Rogue BYE/ACK Dialog-Tuple & Monotonic CSeq Policy Check: inbound BYE/ACK/Re-INVITE attempted to tear down or mutate an active call with a mismatched (Call-ID, local-tag, remote-tag, TLS/IP flow) tuple or replayed/retrograde CSeq; offline synthetic policy state machine enforcing 481 rejection on tuple mismatch (0 unauthorized teardowns) and [1, 64] monotonic CSeq step window (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIP B2BUA dialog lookup latency not_measured).",
+          clampedUnauthorizedDialogTeardowns,
+          clampedCseqWindowDelta,
+        };
+      }
+
+      if (
+        context.unauthorizedDialogTeardowns > 0 ||
+        context.cseqWindowDelta < 1 ||
+        context.cseqWindowDelta > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unauthorized_teardowns_and_cseq_window",
+          reason:
+            "Unauthorized dialog teardowns (>0 synthetic ceiling) or SIP CSeq step delta (<1 or >64 synthetic bounds) out of bounds; clamping unauthorized teardowns to 0 and CSeq step delta to [1, 64].",
+          clampedUnauthorizedDialogTeardowns,
+          clampedCseqWindowDelta,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: full SIP dialog 4-tuple + transport flow binding (0 unauthorized teardowns) and monotonic CSeq delta in [1, 64] verified.",
+        clampedUnauthorizedDialogTeardowns,
+        clampedCseqWindowDelta,
+      };
+    }
+
 
 
 

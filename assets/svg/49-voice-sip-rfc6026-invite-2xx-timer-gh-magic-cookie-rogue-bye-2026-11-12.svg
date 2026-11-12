@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg49" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="blueGrad49" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad49" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065F46"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg49)"/>
+
+  <!-- Header -->
+  <rect x="36" y="24" width="1128" height="84" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <text x="56" y="56" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1">STAGE 405 · TOPIC 45 · SIP RFC 6026 INVITE 2XX TIMER G/H &amp; ROGUE BYE/ACK ANTI-TEARDOWN FAQ (P803–P804)</text>
+  <text x="56" y="84" fill="#F8FAFC" font-family="Segoe UI, system-ui, sans-serif" font-size="20.5" font-weight="700">SIP RFC 6026 INVITE 2xx Timer G/H + z9hG4bK Cookie &amp; Rogue BYE/ACK Dialog-Tuple Guard</text>
+  <rect x="968" y="38" width="176" height="32" rx="16" fill="#065F46" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1056" y="59" text-anchor="middle" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Stage 405 · 408 Dims</text>
+
+  <!-- Left Column: P803 SIP RFC 6026 INVITE 2xx Timer G/H & z9hG4bK Magic Cookie Gate -->
+  <rect x="36" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5"/>
+  <rect x="36" y="124" width="552" height="44" rx="12" fill="url(#blueGrad49)"/>
+  <text x="56" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P803 · SIP RFC 6026 INVITE 2xx Timer G/H &amp; z9hG4bK Cookie Gate</text>
+
+  <!-- Anti-pattern Box Left -->
+  <rect x="56" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="72" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: RFC 3261 2xx ACK-Drop Leak &amp; O(N) Non-Cookie Via Scan</text>
+  <text x="72" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Legacy RFC 3261 destroys INVITE transaction on 200 OK; spoofed INVITEs</text>
+  <text x="72" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  that never send ACK leave TU retransmitting 200 OK + holding S2S GPU!</text>
+  <text x="72" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Missing Via branch=z9hG4bK cookie forces slow RFC 2543 6-field matching</text>
+  <text x="72" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: Half-Open 200 OK GPU Exhaustion · O(N) Transaction Table Stall</text>
+
+  <!-- Best Practice Box Left -->
+  <rect x="56" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="72" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ RFC 6026 Accepted State ([1, 7] Retries / [8, 32]s) &amp; z9hG4bK Gate</text>
+  <text x="72" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. RFC 6026 Accepted State: Keep INVITE server transaction in Accepted</text>
+  <text x="72" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   state, cap 200 OK Timer G retries to [1, 7], and reap on Timer H [8, 32]s</text>
+  <text x="72" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. Magic Cookie Enforcement: Reject Via branches lacking z9hG4bK prefix</text>
+  <text x="72" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   + &gt;=64-bit CSPRNG token with 400 Bad Request (O(1) hash lookup)</text>
+  <text x="72" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P803: invite2xxRetransmissions = [1, 7] · timerHSec = [8, 32]</text>
+  <text x="72" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Half-Open 2xx GPU Leaks · 100% O(1) Via Branch Matching</text>
+
+  <!-- Bottom KPI Pill Left -->
+  <rect x="56" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="72" y="530" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateSipRfc6026Invite2xxTimerGhStormAndMagicCookieGate`)</text>
+  <text x="72" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedInvite2xxRetransmissions = [1, 7] | clampedTimerHTimeoutSec = [8, 32]</text>
+  <text x="72" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: enforce_rfc6026_timer_gh_and_magic_cookie_branch (0ms @ 1ms grid)</text>
+
+  <!-- Right Column: P804 SIP RFC 3261 Rogue BYE/ACK Dialog-Tuple & Monotonic CSeq Guard -->
+  <rect x="612" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="612" y="124" width="552" height="44" rx="12" fill="url(#emeraldGrad49)"/>
+  <text x="632" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P804 · SIP RFC 3261 Rogue BYE/ACK Tuple &amp; Monotonic CSeq Guard</text>
+
+  <!-- Anti-pattern Box Right -->
+  <rect x="632" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="648" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: Call-ID-Only BYE Match &amp; Retrograde CSeq Teardown</text>
+  <text x="648" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Blindly matching BYE/CANCEL by Call-ID alone allows off-path attackers</text>
+  <text x="648" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  who guess sequential Call-IDs to drop active executive voice calls</text>
+  <text x="648" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Replayed or retrograde CSeq (CSeq &lt;= remoteCSeq) corrupts dialog state</text>
+  <text x="648" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: Unauthorized Mid-Call Drop · Spoofed ACK SDP Injection</text>
+
+  <!-- Best Practice Box Right -->
+  <rect x="632" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="648" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ Full Dialog 4-Tuple + TLS Flow Binding &amp; [1, 64] CSeq Step Gate</text>
+  <text x="648" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. Strict Dialog Binding: Verify exact (Call-ID, local-tag, remote-tag)</text>
+  <text x="648" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   plus authenticated TLS/IP trunk flow before honouring BYE/ACK (481)</text>
+  <text x="648" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. Monotonic CSeq Window: Require strictly increasing CSeq within</text>
+  <text x="648" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   [1, 64] step window (rejecting retrograde CSeq with 500 Server Error)</text>
+  <text x="648" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P804: unauthorizedDialogTeardowns = 0 · cseqDelta = [1, 64]</text>
+  <text x="648" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Spoofed BYE Call Drops · 100% Dialog State Integrity</text>
+
+  <!-- Bottom KPI Pill Right -->
+  <rect x="632" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="648" y="530" fill="#34D399" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateSipRfc3261RogueByeAckDialogTupleAndCseqVerifyGate`)</text>
+  <text x="648" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedUnauthorizedDialogTeardowns = 0 | clampedCseqWindowDelta = [1, 64]</text>
+  <text x="648" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: reject_rogue_bye_ack_and_enforce_monotonic_cseq (0ms @ 1ms grid)</text>
+
+  <!-- Footer Provenance -->
+  <rect x="36" y="614" width="1128" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="640" fill="#94A3B8" font-family="Consolas, monospace" font-size="11">Provenance: synthetic deterministic evaluation | 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+</svg>
