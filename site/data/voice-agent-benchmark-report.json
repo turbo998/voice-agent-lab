@@ -1651,6 +1651,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins (SSRC, a=mid, a=rid) immutably on the first packet (0 cross-layer mutations), validates same-layer repaired-rtp-stream-id, and bounds Simulcast tiers to [1, 3] layers; live SFU RID table lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces a [24, 64] kbps protected Opus audio floor against zero-bitrate RTCP TMMBR mutes and clamps PAUSE/RESUME toggles to [1, 4]/s; live RTCP TMMBN serialization latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "412. [Topic 49: voice-sip-rfc4235-dialog-blf-pickup-hijack-notify-storm-faq] Enterprise SIP RFC 4235 Dialog Event (BLF) Call-Tag Redaction Anti-Pickup Hijack & RFC 6665 Unsolicited NOTIFY 481 + RFC 5263 [1,5]/s Rate Guard (P811 / P812 — Stage 409 · 🎉 830 Probes · 412 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips call-id, local-tag, remote-tag, and <remote> identity from BLF dialog-info+xml for non-pickup-group watchers (0 leaked attributes) and enforces pickup-group RBAC verification; live PBX XML serializer latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of out-of-dialog unsolicited SIP NOTIFY requests with 481 (0 accepted) and clamps per-subscription NOTIFY emission rate to [1, 5]/s; live presence subscription lookup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

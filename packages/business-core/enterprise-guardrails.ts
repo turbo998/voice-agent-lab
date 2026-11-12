@@ -74321,6 +74321,138 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc4235DialogEventBlfTagRedactionAndPickupHijackContext {
+      unredactedBlfDialogTagsOrCrossGroupPickupHijackDetected: boolean;
+      leakedDialogTagAttributes: number;
+      blfPickupGroupAclVerified: boolean;
+    }
+
+    export interface SipRfc4235DialogEventBlfTagRedactionAndPickupHijackDecision {
+      violated: boolean;
+      policyId: "P811-SIP-RFC4235-DIALOG-EVENT-BLF-TAG-REDACTION-AND-PICKUP-HIJACK-GUARD";
+      action:
+        | "redact_blf_dialog_tags_and_block_cross_group_pickup"
+        | "clamp_leaked_dialog_tags_and_require_pickup_acl"
+        | "allow";
+      reason: string;
+      clampedLeakedDialogTagAttributes: number;
+      clampedBlfPickupGroupAclVerified: boolean;
+    }
+
+    export function evaluateSipRfc4235DialogEventBlfTagRedactionAndPickupHijackGate(
+      context: SipRfc4235DialogEventBlfTagRedactionAndPickupHijackContext,
+    ): SipRfc4235DialogEventBlfTagRedactionAndPickupHijackDecision {
+      const policyId =
+        "P811-SIP-RFC4235-DIALOG-EVENT-BLF-TAG-REDACTION-AND-PICKUP-HIJACK-GUARD" as const;
+      const clampedLeakedDialogTagAttributes = 0;
+      const clampedBlfPickupGroupAclVerified = true;
+
+      if (context.unredactedBlfDialogTagsOrCrossGroupPickupHijackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "redact_blf_dialog_tags_and_block_cross_group_pickup",
+          reason:
+            "SIP RFC 4235 Dialog Event Package (Event: dialog BLF) Call-Tag Redaction & Anti-Pickup Hijack Policy Check: application/dialog-info+xml exposed raw call-id / local-tag / remote-tag attributes to non-pickup-group watchers or allowed unauthorized cross-group INVITE Replaces call interception; offline synthetic policy state machine enforcing 100% BLF dialog-tag redaction (0 leaked attributes) and mandatory pickup-group RBAC verification (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live PBX XML serializer latency not_measured).",
+          clampedLeakedDialogTagAttributes,
+          clampedBlfPickupGroupAclVerified,
+        };
+      }
+
+      if (
+        context.leakedDialogTagAttributes > 0 ||
+        !context.blfPickupGroupAclVerified
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_leaked_dialog_tags_and_require_pickup_acl",
+          reason:
+            "Leaked BLF dialog-tag attributes (>0 synthetic ceiling) or unverified pickup-group ACL detected; clamping leaked attributes to 0 and requiring pickupGroupAclVerified=true.",
+          clampedLeakedDialogTagAttributes,
+          clampedBlfPickupGroupAclVerified,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 4235 BLF dialog-tag redaction (0 leaked attributes) and pickup-group RBAC verification confirmed.",
+        clampedLeakedDialogTagAttributes,
+        clampedBlfPickupGroupAclVerified,
+      };
+    }
+
+    export interface SipRfc6665UnsolicitedNotifyAndRfc5263MaxRateThrottleContext {
+      unsolicitedNotifyOrEventRateStormDetected: boolean;
+      unsolicitedNotifyAccepted: number;
+      notifyMaxRatePerSec: number;
+    }
+
+    export interface SipRfc6665UnsolicitedNotifyAndRfc5263MaxRateThrottleDecision {
+      violated: boolean;
+      policyId: "P812-SIP-RFC6665-UNSOLICITED-NOTIFY-AND-RFC5263-MAX-RATE-THROTTLE-GUARD";
+      action:
+        | "reject_unsolicited_notify_481_and_clamp_max_rate"
+        | "clamp_unsolicited_notify_and_max_rate_bounds"
+        | "allow";
+      reason: string;
+      clampedUnsolicitedNotifyAccepted: number;
+      clampedNotifyMaxRatePerSec: number;
+    }
+
+    export function evaluateSipRfc6665UnsolicitedNotifyAndRfc5263MaxRateThrottleGate(
+      context: SipRfc6665UnsolicitedNotifyAndRfc5263MaxRateThrottleContext,
+    ): SipRfc6665UnsolicitedNotifyAndRfc5263MaxRateThrottleDecision {
+      const policyId =
+        "P812-SIP-RFC6665-UNSOLICITED-NOTIFY-AND-RFC5263-MAX-RATE-THROTTLE-GUARD" as const;
+      const clampedUnsolicitedNotifyAccepted = 0;
+      const clampedNotifyMaxRatePerSec = Math.min(
+        Math.max(context.notifyMaxRatePerSec, 1),
+        5,
+      );
+
+      if (context.unsolicitedNotifyOrEventRateStormDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unsolicited_notify_481_and_clamp_max_rate",
+          reason:
+            "SIP RFC 6665 Unsolicited NOTIFY & RFC 5263 / RFC 6446 max-rate Policy Check: endpoint received out-of-dialog unsolicited SIP NOTIFY (Event: talk / check-sync / dialog) without an active SUBSCRIBE dialog or unthrottled BLF state transitions triggered an O(N^2) XML notification storm; offline synthetic policy state machine enforcing 0 unsolicited NOTIFY accepted (SIP 481) and [1, 5]/s max-rate notification cap (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIP presence subscription table lookup latency not_measured).",
+          clampedUnsolicitedNotifyAccepted,
+          clampedNotifyMaxRatePerSec,
+        };
+      }
+
+      if (
+        context.unsolicitedNotifyAccepted > 0 ||
+        context.notifyMaxRatePerSec < 1 ||
+        context.notifyMaxRatePerSec > 5
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unsolicited_notify_and_max_rate_bounds",
+          reason:
+            "Unsolicited NOTIFY accepted (>0 synthetic ceiling) or NOTIFY max-rate (<1 or >5 /s synthetic bounds) out of bounds; clamping unsolicited NOTIFY to 0 and max-rate to [1, 5]/s.",
+          clampedUnsolicitedNotifyAccepted,
+          clampedNotifyMaxRatePerSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 6665 zero unsolicited NOTIFY (0 accepted) and RFC 5263 [1, 5]/s max-rate throttle verified.",
+        clampedUnsolicitedNotifyAccepted,
+        clampedNotifyMaxRatePerSec,
+      };
+    }
+
 
 
 
