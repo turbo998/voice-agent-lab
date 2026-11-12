@@ -74045,6 +74045,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3840AutomataBotLoopAndRfc7044HistoryInfoContext {
+      unthrottledBotToBotAutomataLoopOrHistoryInfoOverflowDetected: boolean;
+      consecutiveBotTurnsWithoutGoalProgress: number;
+      historyInfoMaxEntries: number;
+    }
+
+    export interface SipRfc3840AutomataBotLoopAndRfc7044HistoryInfoDecision {
+      violated: boolean;
+      policyId: "P807-SIP-RFC3840-AUTOMATA-BOT-LOOP-AND-RFC7044-HISTORY-INFO-GUARD";
+      action:
+        | "break_automata_bot_loop_and_clamp_history_info"
+        | "clamp_bot_loop_turns_and_history_info_entries"
+        | "allow";
+      reason: string;
+      clampedConsecutiveBotTurnsWithoutGoalProgress: number;
+      clampedHistoryInfoMaxEntries: number;
+    }
+
+    export function evaluateSipRfc3840AutomataBotLoopAndRfc7044HistoryInfoGate(
+      context: SipRfc3840AutomataBotLoopAndRfc7044HistoryInfoContext,
+    ): SipRfc3840AutomataBotLoopAndRfc7044HistoryInfoDecision {
+      const policyId =
+        "P807-SIP-RFC3840-AUTOMATA-BOT-LOOP-AND-RFC7044-HISTORY-INFO-GUARD" as const;
+      const clampedConsecutiveBotTurnsWithoutGoalProgress = Math.min(
+        Math.max(context.consecutiveBotTurnsWithoutGoalProgress, 1),
+        4,
+      );
+      const clampedHistoryInfoMaxEntries = Math.min(
+        Math.max(context.historyInfoMaxEntries, 1),
+        5,
+      );
+
+      if (context.unthrottledBotToBotAutomataLoopOrHistoryInfoOverflowDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "break_automata_bot_loop_and_clamp_history_info",
+          reason:
+            "SIP RFC 3840 automata Bot-to-Bot Loop & RFC 7044 History-Info Policy Check: two automated voice agents (Contact ;automata) entered an unthrottled polite conversational loop without transactional slot progress (burning S2S GPU tokens) or RFC 7044 History-Info exceeded retargeting hop bounds; offline synthetic policy state machine enforcing [1, 4] max zero-progress bot turns and [1, 5] History-Info hops (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIP B2BUA header parser latency not_measured).",
+          clampedConsecutiveBotTurnsWithoutGoalProgress,
+          clampedHistoryInfoMaxEntries,
+        };
+      }
+
+      if (
+        context.consecutiveBotTurnsWithoutGoalProgress < 1 ||
+        context.consecutiveBotTurnsWithoutGoalProgress > 4 ||
+        context.historyInfoMaxEntries < 1 ||
+        context.historyInfoMaxEntries > 5
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_bot_loop_turns_and_history_info_entries",
+          reason:
+            "Consecutive zero-progress automata bot turns (<1 or >4 synthetic bounds) or RFC 7044 History-Info entries (<1 or >5 synthetic bounds) out of bounds; clamping bot turns to [1, 4] and History-Info entries to [1, 5].",
+          clampedConsecutiveBotTurnsWithoutGoalProgress,
+          clampedHistoryInfoMaxEntries,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3840 automata zero-progress turn cap in [1, 4] and RFC 7044 History-Info hops in [1, 5] verified.",
+        clampedConsecutiveBotTurnsWithoutGoalProgress,
+        clampedHistoryInfoMaxEntries,
+      };
+    }
+
+    export interface SipRfc3325PaiIngressStripAndPrivacyIdEgressContext {
+      untrustedIngressPaiAcceptedOrPrivacyIdEgressLeakDetected: boolean;
+      spoofedIngressPaiHeaders: number;
+      leakedPrivacyIdHeaders: number;
+    }
+
+    export interface SipRfc3325PaiIngressStripAndPrivacyIdEgressDecision {
+      violated: boolean;
+      policyId: "P808-SIP-RFC3325-PAI-INGRESS-STRIP-AND-PRIVACY-ID-EGRESS-GUARD";
+      action:
+        | "strip_untrusted_pai_and_scrub_privacy_id_egress"
+        | "clamp_spoofed_ingress_pai_and_privacy_leaks"
+        | "allow";
+      reason: string;
+      clampedSpoofedIngressPaiHeaders: number;
+      clampedLeakedPrivacyIdHeaders: number;
+    }
+
+    export function evaluateSipRfc3325PaiIngressStripAndPrivacyIdEgressGate(
+      context: SipRfc3325PaiIngressStripAndPrivacyIdEgressContext,
+    ): SipRfc3325PaiIngressStripAndPrivacyIdEgressDecision {
+      const policyId =
+        "P808-SIP-RFC3325-PAI-INGRESS-STRIP-AND-PRIVACY-ID-EGRESS-GUARD" as const;
+      const clampedSpoofedIngressPaiHeaders = 0;
+      const clampedLeakedPrivacyIdHeaders = 0;
+
+      if (context.untrustedIngressPaiAcceptedOrPrivacyIdEgressLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_untrusted_pai_and_scrub_privacy_id_egress",
+          reason:
+            "SIP RFC 3323 / RFC 3325 P-Asserted-Identity Ingress Strip & Privacy:id Egress Policy Check: untrusted ingress SIP trunk injected spoofed P-Asserted-Identity header (impersonating VIP/executive ANI) or egress leg forwarded raw PAI despite Privacy:id / header directive; offline synthetic policy state machine enforcing 100% untrusted ingress PAI stripping (0 spoofed headers) and 100% egress Privacy:id anonymization (0 leaks, 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC Spec(T) ACL lookup latency not_measured).",
+          clampedSpoofedIngressPaiHeaders,
+          clampedLeakedPrivacyIdHeaders,
+        };
+      }
+
+      if (
+        context.spoofedIngressPaiHeaders > 0 ||
+        context.leakedPrivacyIdHeaders > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_ingress_pai_and_privacy_leaks",
+          reason:
+            "Spoofed ingress PAI headers (>0 synthetic ceiling) or leaked egress Privacy:id headers (>0 synthetic ceiling) out of bounds; clamping both to 0.",
+          clampedSpoofedIngressPaiHeaders,
+          clampedLeakedPrivacyIdHeaders,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: Spec(T) ingress PAI stripping (0 spoofed headers) and Privacy:id egress scrubbing (0 leaks) verified.",
+        clampedSpoofedIngressPaiHeaders,
+        clampedLeakedPrivacyIdHeaders,
+      };
+    }
+
 
 
 

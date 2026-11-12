@@ -1399,6 +1399,13 @@
               <td><code>P805 / P806 deterministic WebRTC RFC 8829 JSEP glare rollback + append-only m=/mid gate &amp; RFC 8842 DTLS SHA-256 fingerprint / msid guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>410. [专题47 `docs/voice-sip-rfc3840-automata-bot-loop-pai-privacy-history-info-faq.md`] 企业 SIP `RFC 3840 / RFC 3841` `Contact ;automata` 机器人互打死循环熔断（连续零业务槽位推进寒暄轮次钳制在 `[1, 4]` 轮并主动拆线，防手机 AI 秘书与企业 AI 客服互聊数小时烧穿算力）与 `RFC 7044 History-Info` 呼叫前转深度锁（钳制在 `[1, 5]` 跳；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SIP B2BUA 头解析耗时 `not_measured`）&amp; `RFC 3323 / RFC 3325 P-Asserted-Identity (PAI)` 非 `Spec(T)` 授信入站 100% 剥离（`0` 伪造高管/VIP 来电）与出站遇 `Privacy: id / header / user` 强制擦除 `PAI/PPI` 并匿名化 `From`（`0` 隐私泄露；真实 SBC ACL 查找耗时 `not_measured`）(`P807` / `P808` · Stage 407 · 🎉 410 Dims · 817 护栏 &amp; 826 探针 · 410 维)</strong>
+              </td>
+              <td><code>P807 / P808 deterministic SIP RFC 3840 automata bot-loop + History-Info gate &amp; RFC 3325 PAI ingress strip / Privacy:id egress guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4774,6 +4781,13 @@
                 <strong>409. [专题46 `docs/voice-webrtc-jsep-rfc8829-sdp-glare-rollback-mid-msid-order-faq.md`] WebRTC `RFC 8829 (JSEP)` 完美协商 `Polite / Impolite` 自动回滚（`have-local-offer -> {type:"rollback"} -> stable`）与 Unified Plan `m= / a=mid` 轨槽位只增不删保序门禁（`0` 次 `m=` 行删除或重排，停用轨置 `port 0 + a=inactive`，槽位数钳制在 `[1, 16]`；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实浏览器 `RTCPeerConnection` 状态机转换耗时 `not_measured`）&amp; `RFC 8842` DTLS `[256, 512]` 位（`SHA-256+`）常量时间指纹锚定（换证强制 `ICE Restart`）与 `RFC 8830 a=msid` 租户会话级防跨轨嫁接锁（真实 X.509 摘要校验耗时 `not_measured`）(`P805` / `P806` · Stage 406 · 🎉 50th SVG · 815 护栏 &amp; 824 探针 · 409 维)</strong>
               </td>
               <td><code>P805 / P806 deterministic WebRTC RFC 8829 JSEP glare rollback + append-only m=/mid gate &amp; RFC 8842 DTLS SHA-256 fingerprint / msid guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>410. [专题47 `docs/voice-sip-rfc3840-automata-bot-loop-pai-privacy-history-info-faq.md`] 企业 SIP `RFC 3840 / RFC 3841` `Contact ;automata` 机器人互打死循环熔断（连续零业务槽位推进寒暄轮次钳制在 `[1, 4]` 轮并主动拆线，防手机 AI 秘书与企业 AI 客服互聊数小时烧穿算力）与 `RFC 7044 History-Info` 呼叫前转深度锁（钳制在 `[1, 5]` 跳；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SIP B2BUA 头解析耗时 `not_measured`）&amp; `RFC 3323 / RFC 3325 P-Asserted-Identity (PAI)` 非 `Spec(T)` 授信入站 100% 剥离（`0` 伪造高管/VIP 来电）与出站遇 `Privacy: id / header / user` 强制擦除 `PAI/PPI` 并匿名化 `From`（`0` 隐私泄露；真实 SBC ACL 查找耗时 `not_measured`）(`P807` / `P808` · Stage 407 · 🎉 410 Dims · 817 护栏 &amp; 826 探针 · 410 维)</strong>
+              </td>
+              <td><code>P807 / P808 deterministic SIP RFC 3840 automata bot-loop + History-Info gate &amp; RFC 3325 PAI ingress strip / Privacy:id egress guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

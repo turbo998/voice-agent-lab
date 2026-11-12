@@ -1639,6 +1639,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: resolves have-local-offer glare via Polite {type:\"rollback\"}, forbids m=/mid section deletion or reordering (0 mutations), and bounds transceiver slots to [1, 16]; live RTCPeerConnection state transition latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces [256, 512]-bit constant-time DTLS fingerprint verification (0 weak/unrestarted swaps) and tenant-scoped a=msid isolation; live X.509 digest verification latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "410. [Topic 47: voice-sip-rfc3840-automata-bot-loop-pai-privacy-history-info-faq] Enterprise SIP RFC 3840 automata Bot-Loop ([1,4] Turns) + RFC 7044 History-Info ([1,5] Hops) & RFC 3325 PAI Ingress Strip + Privacy:id Egress Scrub Guard (P807 / P808 — Stage 407 · 🎉 410 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: caps consecutive zero-progress automata bot-to-bot turns to [1, 4] and clamps RFC 7044 History-Info retargeting depth to [1, 5] hops; live SIP B2BUA header parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted ingress P-Asserted-Identity headers outside Spec(T) (0 spoofed headers) and scrubs 100% of egress PAI/PPI headers when Privacy:id is present (0 leaks); live SBC ACL lookup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

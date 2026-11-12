@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg51" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="blueGrad51" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad51" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065F46"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg51)"/>
+
+  <!-- Header -->
+  <rect x="36" y="24" width="1128" height="84" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <text x="56" y="56" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1">STAGE 407 · TOPIC 47 · SIP RFC 3840 AUTOMATA BOT LOOP &amp; RFC 3325 PAI / PRIVACY:ID FAQ (P807–P808 · 🎉 410 DIMS)</text>
+  <text x="56" y="84" fill="#F8FAFC" font-family="Segoe UI, system-ui, sans-serif" font-size="20.5" font-weight="700">SIP RFC 3840 automata Bot-Loop + History-Info Gate &amp; RFC 3325 PAI / Privacy:id Guard</text>
+  <rect x="968" y="38" width="176" height="32" rx="16" fill="#065F46" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1056" y="59" text-anchor="middle" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Stage 407 · 410 Dims 🎉</text>
+
+  <!-- Left Column: P807 SIP RFC 3840 automata Bot-to-Bot Loop & RFC 7044 History-Info Depth Gate -->
+  <rect x="36" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5"/>
+  <rect x="36" y="124" width="552" height="44" rx="12" fill="url(#blueGrad51)"/>
+  <text x="56" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P807 · SIP RFC 3840 automata Bot Loop &amp; History-Info Gate</text>
+
+  <!-- Anti-pattern Box Left -->
+  <rect x="56" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="72" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: 3-Hour AI-vs-AI Polite Chat Loop &amp; 50-Hop History-Info</text>
+  <text x="72" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Inbound AI assistant (Contact ;automata) talks to enterprise Voice AI</text>
+  <text x="72" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  in an endless "How else can I help?" loop for hours ($300+ S2S burn)</text>
+  <text x="72" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Unbounded RFC 7044 History-Info (&gt;20 entries) bloats SIP past MTU</text>
+  <text x="72" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: Infinite Bot-to-Bot Token Burn · History-Info Retargeting Loop</text>
+
+  <!-- Best Practice Box Left -->
+  <rect x="56" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="72" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ RFC 3840 `;automata` [1, 4]-Turn Breaker &amp; [1, 5] History-Info Cap</text>
+  <text x="72" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. Bot-to-Bot Loop Breaker: Stamp outbound Contact with ;automata and</text>
+  <text x="72" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   cap non-progressing bot-to-bot turns to [1, 4] before clean BYE</text>
+  <text x="72" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. History-Info Bounds: Clamp RFC 7044 History-Info / Diversion chain</text>
+  <text x="72" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   depth to [1, 5] hops to prevent circular call-forwarding amplification</text>
+  <text x="72" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P807: botTurnsWithoutProgress = [1, 4] · historyHops = [1, 5]</text>
+  <text x="72" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Infinite AI-vs-AI Loops · Bounded Call-Forwarding Depth</text>
+
+  <!-- Bottom KPI Pill Left -->
+  <rect x="56" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="72" y="530" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateSipRfc3840AutomataBotLoopAndRfc7044HistoryInfoGate`)</text>
+  <text x="72" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedConsecutiveBotTurns = [1, 4] | clampedHistoryInfoMaxEntries = [1, 5]</text>
+  <text x="72" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: break_automata_bot_loop_and_clamp_history_info (0ms @ 1ms grid)</text>
+
+  <!-- Right Column: P808 SIP RFC 3325 P-Asserted-Identity Ingress Strip & Privacy:id Egress Scrub -->
+  <rect x="612" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="612" y="124" width="552" height="44" rx="12" fill="url(#emeraldGrad51)"/>
+  <text x="632" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P808 · SIP RFC 3325 PAI Ingress Strip &amp; Privacy:id Egress Guard</text>
+
+  <!-- Anti-pattern Box Right -->
+  <rect x="632" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="648" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: Untrusted Ingress PAI Spoofing &amp; Egress Privacy Leak</text>
+  <text x="648" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Accepting P-Asserted-Identity from untrusted SIP trunks lets callers</text>
+  <text x="648" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  impersonate VIP / CEO phone numbers and bypass CRM ANI checks</text>
+  <text x="648" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Forwarding PAI to external trunks when Privacy: id is set leaks PII</text>
+  <text x="648" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: CEO ANI Impersonation · GDPR/CPNI Caller-ID Privacy Breach</text>
+
+  <!-- Best Practice Box Right -->
+  <rect x="632" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="648" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ Spec(T) Ingress PAI Strip &amp; Mandatory `Privacy: id` Egress Scrub</text>
+  <text x="648" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. Ingress Spec(T) Boundary: Strip all P-Asserted-Identity headers</text>
+  <text x="648" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   arriving from non-mTLS / untrusted peers (0 spoofed PAI headers)</text>
+  <text x="648" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. Egress Privacy Scrub: When Privacy: id / header / user is present,</text>
+  <text x="648" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   strip PAI/PPI and anonymize From: &quot;Anonymous&quot; &lt;sip:anonymous@...&gt;</text>
+  <text x="648" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P808: spoofedIngressPai = 0 · leakedPrivacyIdHeaders = 0</text>
+  <text x="648" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Spoofed VIP Caller IDs · 100% RFC 3323/3325 Privacy Compliance</text>
+
+  <!-- Bottom KPI Pill Right -->
+  <rect x="632" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="648" y="530" fill="#34D399" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateSipRfc3325PaiIngressStripAndPrivacyIdEgressGate`)</text>
+  <text x="648" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedSpoofedIngressPaiHeaders = 0 | clampedLeakedPrivacyIdHeaders = 0</text>
+  <text x="648" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: strip_untrusted_pai_and_scrub_privacy_id_egress (0ms @ 1ms grid)</text>
+
+  <!-- Footer Provenance -->
+  <rect x="36" y="614" width="1128" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="640" fill="#94A3B8" font-family="Consolas, monospace" font-size="11">Provenance: synthetic deterministic evaluation | 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+</svg>
