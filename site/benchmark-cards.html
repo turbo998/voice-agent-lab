@@ -1392,6 +1392,13 @@
               <td><code>P803 / P804 deterministic SIP RFC 6026 INVITE 2xx Timer G/H + z9hG4bK cookie gate &amp; rogue BYE/ACK dialog-tuple / CSeq guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>409. [专题46 `docs/voice-webrtc-jsep-rfc8829-sdp-glare-rollback-mid-msid-order-faq.md`] WebRTC `RFC 8829 (JSEP)` 完美协商 `Polite / Impolite` 自动回滚（`have-local-offer -> {type:"rollback"} -> stable`）与 Unified Plan `m= / a=mid` 轨槽位只增不删保序门禁（`0` 次 `m=` 行删除或重排，停用轨置 `port 0 + a=inactive`，槽位数钳制在 `[1, 16]`；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实浏览器 `RTCPeerConnection` 状态机转换耗时 `not_measured`）&amp; `RFC 8842` DTLS `[256, 512]` 位（`SHA-256+`）常量时间指纹锚定（换证强制 `ICE Restart`）与 `RFC 8830 a=msid` 租户会话级防跨轨嫁接锁（真实 X.509 摘要校验耗时 `not_measured`）(`P805` / `P806` · Stage 406 · 🎉 50th SVG · 815 护栏 &amp; 824 探针 · 409 维)</strong>
+              </td>
+              <td><code>P805 / P806 deterministic WebRTC RFC 8829 JSEP glare rollback + append-only m=/mid gate &amp; RFC 8842 DTLS SHA-256 fingerprint / msid guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4760,6 +4767,13 @@
                 <strong>408. [专题45 `docs/voice-sip-rfc6026-invite-2xx-timer-gh-magic-cookie-rogue-bye-faq.md`] 企业 SIP `RFC 3261 / RFC 6026` `INVITE 2xx` 服务端事务 `Accepted` 状态机（`Timer G [1, 7]` 次重传上限与 `Timer H [8, 32]s` 未确认半开超时回收，防半开呼叫耗尽 S2S GPU 槽位）与顶层 `Via branch=z9hG4bK` 魔术 Cookie 强校验（拒绝 $O(N)$ `RFC 2543` 慢扫描；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 事务表哈希耗时 `not_measured`）&amp; 对话内 `BYE / ACK` 四元组 `(Call-ID, local-tag, remote-tag, TLS/IP 流)` 强绑定（`0` 次伪造拆线）及单调递增 `CSeq [1, 64]` 步进窗口门禁（真实 B2BUA 对话查找耗时 `not_measured`）(`P803` / `P804` · Stage 405 · 813 护栏 &amp; 822 探针 · 408 维)</strong>
               </td>
               <td><code>P803 / P804 deterministic SIP RFC 6026 INVITE 2xx Timer G/H + z9hG4bK cookie gate &amp; rogue BYE/ACK dialog-tuple / CSeq guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>409. [专题46 `docs/voice-webrtc-jsep-rfc8829-sdp-glare-rollback-mid-msid-order-faq.md`] WebRTC `RFC 8829 (JSEP)` 完美协商 `Polite / Impolite` 自动回滚（`have-local-offer -> {type:"rollback"} -> stable`）与 Unified Plan `m= / a=mid` 轨槽位只增不删保序门禁（`0` 次 `m=` 行删除或重排，停用轨置 `port 0 + a=inactive`，槽位数钳制在 `[1, 16]`；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实浏览器 `RTCPeerConnection` 状态机转换耗时 `not_measured`）&amp; `RFC 8842` DTLS `[256, 512]` 位（`SHA-256+`）常量时间指纹锚定（换证强制 `ICE Restart`）与 `RFC 8830 a=msid` 租户会话级防跨轨嫁接锁（真实 X.509 摘要校验耗时 `not_measured`）(`P805` / `P806` · Stage 406 · 🎉 50th SVG · 815 护栏 &amp; 824 探针 · 409 维)</strong>
+              </td>
+              <td><code>P805 / P806 deterministic WebRTC RFC 8829 JSEP glare rollback + append-only m=/mid gate &amp; RFC 8842 DTLS SHA-256 fingerprint / msid guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

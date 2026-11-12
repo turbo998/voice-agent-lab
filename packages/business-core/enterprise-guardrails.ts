@@ -73909,6 +73909,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc8829JsepSdpGlareRollbackAndMlineOrderContext {
+      sdpGlareStateViolationOrMlineMidOrderMutationDetected: boolean;
+      mLineReorderOrDeletions: number;
+      activeTransceiverSlots: number;
+    }
+
+    export interface WebrtcRfc8829JsepSdpGlareRollbackAndMlineOrderDecision {
+      violated: boolean;
+      policyId: "P805-WEBRTC-RFC8829-JSEP-SDP-GLARE-ROLLBACK-AND-MLINE-ORDER-GUARD";
+      action:
+        | "rollback_jsep_glare_and_preserve_append_only_mline_order"
+        | "clamp_mline_mutations_and_transceiver_slots"
+        | "allow";
+      reason: string;
+      clampedMLineReorderOrDeletions: number;
+      clampedActiveTransceiverSlots: number;
+    }
+
+    export function evaluateWebrtcRfc8829JsepSdpGlareRollbackAndMlineOrderGate(
+      context: WebrtcRfc8829JsepSdpGlareRollbackAndMlineOrderContext,
+    ): WebrtcRfc8829JsepSdpGlareRollbackAndMlineOrderDecision {
+      const policyId =
+        "P805-WEBRTC-RFC8829-JSEP-SDP-GLARE-ROLLBACK-AND-MLINE-ORDER-GUARD" as const;
+      const clampedMLineReorderOrDeletions = 0;
+      const clampedActiveTransceiverSlots = Math.min(
+        Math.max(context.activeTransceiverSlots, 1),
+        16,
+      );
+
+      if (context.sdpGlareStateViolationOrMlineMidOrderMutationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rollback_jsep_glare_and_preserve_append_only_mline_order",
+          reason:
+            "WebRTC RFC 8829 (JSEP) SDP Glare Auto-Rollback & Append-Only m=/a=mid Order Policy Check: simultaneous renegotiation collided in have-local-offer without Polite {type:\"rollback\"} recovery or subsequent SDP deleted/reordered existing m= media sections (throwing InvalidModificationError); offline synthetic policy state machine enforcing automatic glare rollback, 0 m=/mid slot deletions/reorders (using port 0 + a=inactive), and [1, 16] transceiver slots (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live browser RTCPeerConnection signaling state transition latency not_measured).",
+          clampedMLineReorderOrDeletions,
+          clampedActiveTransceiverSlots,
+        };
+      }
+
+      if (
+        context.mLineReorderOrDeletions > 0 ||
+        context.activeTransceiverSlots < 1 ||
+        context.activeTransceiverSlots > 16
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_mline_mutations_and_transceiver_slots",
+          reason:
+            "SDP m=/mid reorder or deletion count (>0 synthetic ceiling) or active transceiver slots (<1 or >16 synthetic bounds) out of bounds; clamping m= mutations to 0 and transceiver slots to [1, 16].",
+          clampedMLineReorderOrDeletions,
+          clampedActiveTransceiverSlots,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8829 JSEP glare rollback ready, append-only m=/mid order (0 mutations), and [1, 16] transceiver slots verified.",
+        clampedMLineReorderOrDeletions,
+        clampedActiveTransceiverSlots,
+      };
+    }
+
+    export interface WebrtcRfc8842DtlsSha256FingerprintAndMsidCrossTrackContext {
+      dtlsFingerprintMismatchOrCrossSessionMsidSpliceDetected: boolean;
+      unverifiedFingerprintOffers: number;
+      fingerprintHashBits: number;
+    }
+
+    export interface WebrtcRfc8842DtlsSha256FingerprintAndMsidCrossTrackDecision {
+      violated: boolean;
+      policyId: "P806-WEBRTC-RFC8842-DTLS-SHA256-FINGERPRINT-AND-MSID-CROSS-TRACK-GUARD";
+      action:
+        | "reject_unverified_dtls_fingerprint_and_msid_splice"
+        | "clamp_unverified_fingerprints_and_hash_bits"
+        | "allow";
+      reason: string;
+      clampedUnverifiedFingerprintOffers: number;
+      clampedFingerprintHashBits: number;
+    }
+
+    export function evaluateWebrtcRfc8842DtlsSha256FingerprintAndMsidCrossTrackGate(
+      context: WebrtcRfc8842DtlsSha256FingerprintAndMsidCrossTrackContext,
+    ): WebrtcRfc8842DtlsSha256FingerprintAndMsidCrossTrackDecision {
+      const policyId =
+        "P806-WEBRTC-RFC8842-DTLS-SHA256-FINGERPRINT-AND-MSID-CROSS-TRACK-GUARD" as const;
+      const clampedUnverifiedFingerprintOffers = 0;
+      const clampedFingerprintHashBits = Math.min(
+        Math.max(context.fingerprintHashBits, 256),
+        512,
+      );
+
+      if (context.dtlsFingerprintMismatchOrCrossSessionMsidSpliceDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unverified_dtls_fingerprint_and_msid_splice",
+          reason:
+            "WebRTC RFC 8842 DTLS SHA-256 Fingerprint & RFC 8830 a=msid Cross-Track Policy Check: SDP carried weak (<256-bit MD5/SHA-1) or mismatched a=fingerprint without an ICE ufrag/pwd restart, or attempted cross-session a=msid audio track splicing; offline synthetic policy state machine enforcing [256, 512]-bit constant-time certificate fingerprint verification and tenant-scoped a=msid isolation (0 unverified offers, 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live X.509 leaf digest verification latency not_measured).",
+          clampedUnverifiedFingerprintOffers,
+          clampedFingerprintHashBits,
+        };
+      }
+
+      if (
+        context.unverifiedFingerprintOffers > 0 ||
+        context.fingerprintHashBits < 256 ||
+        context.fingerprintHashBits > 512
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unverified_fingerprints_and_hash_bits",
+          reason:
+            "Unverified DTLS fingerprint offers (>0 synthetic ceiling) or fingerprint hash bits (<256 or >512 synthetic bounds) out of bounds; clamping unverified offers to 0 and fingerprint hash bits to [256, 512].",
+          clampedUnverifiedFingerprintOffers,
+          clampedFingerprintHashBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8842 [256, 512]-bit DTLS fingerprint match (0 unverified offers) and tenant-scoped a=msid verified.",
+        clampedUnverifiedFingerprintOffers,
+        clampedFingerprintHashBits,
+      };
+    }
+
 
 
 

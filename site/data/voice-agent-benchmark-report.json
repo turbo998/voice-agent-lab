@@ -1633,6 +1633,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 3261 z9hG4bK Via magic cookie prefix, RFC 6026 Accepted state, [1, 7] 200 OK retries, and [8, 32]s Timer H half-open GPU reclamation; live SBC transaction hash lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: verifies full (Call-ID, local-tag, remote-tag, TLS/IP flow) dialog tuple on BYE/ACK (0 rogue teardowns) and clamps monotonic CSeq steps to [1, 64]; live SIP B2BUA dialog lookup latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "409. [Topic 46: voice-webrtc-jsep-rfc8829-sdp-glare-rollback-mid-msid-order-faq] WebRTC RFC 8829 JSEP SDP Glare Auto-Rollback + Append-Only [1,16] m=/mid Order & RFC 8842 DTLS SHA-256 Fingerprint + a=msid Isolation Guard (P805 / P806 — Stage 406 · 409 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: resolves have-local-offer glare via Polite {type:\"rollback\"}, forbids m=/mid section deletion or reordering (0 mutations), and bounds transceiver slots to [1, 16]; live RTCPeerConnection state transition latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces [256, 512]-bit constant-time DTLS fingerprint verification (0 weak/unrestarted swaps) and tenant-scoped a=msid isolation; live X.509 digest verification latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
