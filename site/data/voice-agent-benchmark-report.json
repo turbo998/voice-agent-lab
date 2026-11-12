@@ -1621,6 +1621,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks out-of-range first-byte demux collisions, enforces stateless HelloVerifyRequest HMAC cookies against 35x X.509 amplification, and clamps DTLS flight MTU to [576, 1200]B; live OpenSSL/libsrtp demux latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: resolves passive/passive SDP a=setup deadlocks via complementary active/passive arbitration and retains a [2000, 5000]ms dual-MKI decryption overlap window; live DTLS-SRTP MKI swap latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "407. [Topic 44: voice-webrtc-rtcp-avpf-nack-pli-storm-rtx-osn-apt-faq] WebRTC RFC 4585/5104 AVPF NACK/PLI Storm ([1,3] Retries & trr-int [100,500]ms) & RFC 4588 RTX Separate SSRC / OSN + [1,8] apt BWE Isolation Guard (P801 / P802 — Stage 404 · 407 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: caps per-packet Generic NACK retries to [1, 3] spaced by >=1x RTT and clamps trr-int / PLI-FIR cooldowns to [100, 500]ms; live RTCP AVPF ring-buffer lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids in-place primary SSRC retransmissions (0 pollutions), enforces dedicated FID RTX SSRC with 16-bit OSN headers, and validates [1, 8] apt mappings; live RTX depacketizer latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

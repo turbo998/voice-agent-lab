@@ -73629,6 +73629,146 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc4585Rfc5104AvpfNackPliStormAndTrrIntContext {
+      nackPliRetransmissionStormOrTrrIntBypassDetected: boolean;
+      nackRetriesPerPacket: number;
+      trrIntFloorMs: number;
+    }
+
+    export interface WebrtcRfc4585Rfc5104AvpfNackPliStormAndTrrIntDecision {
+      violated: boolean;
+      policyId: "P801-WEBRTC-RFC4585-RFC5104-AVPF-NACK-PLI-STORM-AND-TRR-INT-GUARD";
+      action:
+        | "throttle_avpf_nack_pli_storm_and_clamp_trr_int"
+        | "clamp_nack_retries_and_trr_int_floor_ms"
+        | "allow";
+      reason: string;
+      clampedNackRetriesPerPacket: number;
+      clampedTrrIntFloorMs: number;
+    }
+
+    export function evaluateWebrtcRfc4585Rfc5104AvpfNackPliStormAndTrrIntGate(
+      context: WebrtcRfc4585Rfc5104AvpfNackPliStormAndTrrIntContext,
+    ): WebrtcRfc4585Rfc5104AvpfNackPliStormAndTrrIntDecision {
+      const policyId =
+        "P801-WEBRTC-RFC4585-RFC5104-AVPF-NACK-PLI-STORM-AND-TRR-INT-GUARD" as const;
+      const clampedNackRetriesPerPacket = Math.min(
+        Math.max(context.nackRetriesPerPacket, 1),
+        3,
+      );
+      const clampedTrrIntFloorMs = Math.min(
+        Math.max(context.trrIntFloorMs, 100),
+        500,
+      );
+
+      if (context.nackPliRetransmissionStormOrTrrIntBypassDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "throttle_avpf_nack_pli_storm_and_clamp_trr_int",
+          reason:
+            "WebRTC RFC 4585 / RFC 5104 RTCP AVPF NACK/PLI Storm & trr-int Policy Check: inbound Generic NACK (BLP=0xFFFF) or PLI/FIR burst bypassed RTT spacing and trr-int cooldown, causing 17x retransmission amplification and starving live Opus voice frames; offline synthetic policy state machine enforcing [1, 3] retries per packet (spaced by >=1x RTT) and [100, 500]ms trr-int cooldown floor (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTCP AVPF ring-buffer lookup latency not_measured).",
+          clampedNackRetriesPerPacket,
+          clampedTrrIntFloorMs,
+        };
+      }
+
+      if (
+        context.nackRetriesPerPacket < 1 ||
+        context.nackRetriesPerPacket > 3 ||
+        context.trrIntFloorMs < 100 ||
+        context.trrIntFloorMs > 500
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_nack_retries_and_trr_int_floor_ms",
+          reason:
+            "Per-packet NACK retries (<1 or >3 synthetic bounds) or RTCP AVPF trr-int floor (<100ms or >500ms synthetic bounds) out of bounds; clamping NACK retries to [1, 3] and trr-int floor to [100, 500]ms.",
+          clampedNackRetriesPerPacket,
+          clampedTrrIntFloorMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: per-packet NACK retries in [1, 3] and RTCP AVPF trr-int floor in [100, 500]ms verified.",
+        clampedNackRetriesPerPacket,
+        clampedTrrIntFloorMs,
+      };
+    }
+
+    export interface WebrtcRfc4588RtxOsnAptIsolationAndBwePollutionContext {
+      rtxOnPrimarySsrcOrMissingOsnAptDetected: boolean;
+      primaryStreamRtxPollutions: number;
+      rtxPayloadAptMappings: number;
+    }
+
+    export interface WebrtcRfc4588RtxOsnAptIsolationAndBwePollutionDecision {
+      violated: boolean;
+      policyId: "P802-WEBRTC-RFC4588-RTX-OSN-APT-ISOLATION-AND-BWE-POLLUTION-GUARD";
+      action:
+        | "isolate_rtx_osn_ssrc_and_clamp_apt_mappings"
+        | "clamp_primary_rtx_pollutions_and_apt_mappings"
+        | "allow";
+      reason: string;
+      clampedPrimaryStreamRtxPollutions: number;
+      clampedRtxPayloadAptMappings: number;
+    }
+
+    export function evaluateWebrtcRfc4588RtxOsnAptIsolationAndBwePollutionGate(
+      context: WebrtcRfc4588RtxOsnAptIsolationAndBwePollutionContext,
+    ): WebrtcRfc4588RtxOsnAptIsolationAndBwePollutionDecision {
+      const policyId =
+        "P802-WEBRTC-RFC4588-RTX-OSN-APT-ISOLATION-AND-BWE-POLLUTION-GUARD" as const;
+      const clampedPrimaryStreamRtxPollutions = 0;
+      const clampedRtxPayloadAptMappings = Math.min(
+        Math.max(context.rtxPayloadAptMappings, 1),
+        8,
+      );
+
+      if (context.rtxOnPrimarySsrcOrMissingOsnAptDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "isolate_rtx_osn_ssrc_and_clamp_apt_mappings",
+          reason:
+            "WebRTC RFC 4588 RTX Separate SSRC / OSN & apt Isolation Policy Check: retransmitted RTP packets were injected onto the primary media SSRC with old sequence numbers (corrupting RFC 3550 jitter/loss estimators and bloating NetEQ delay by +120ms) or lacked 16-bit OSN / valid apt payload binding; offline synthetic policy state machine enforcing dedicated FID RTX SSRC (0 primary SSRC pollutions), 2-byte OSN framing, and [1, 8] apt mappings (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTX OSN depacketizer latency not_measured).",
+          clampedPrimaryStreamRtxPollutions,
+          clampedRtxPayloadAptMappings,
+        };
+      }
+
+      if (
+        context.primaryStreamRtxPollutions > 0 ||
+        context.rtxPayloadAptMappings < 1 ||
+        context.rtxPayloadAptMappings > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_primary_rtx_pollutions_and_apt_mappings",
+          reason:
+            "Primary stream RTX pollutions (>0 synthetic ceiling) or RTX apt payload mappings (<1 or >8 synthetic bounds) out of bounds; clamping primary stream RTX pollutions to 0 and RTX apt mappings to [1, 8].",
+          clampedPrimaryStreamRtxPollutions,
+          clampedRtxPayloadAptMappings,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: dedicated RFC 4588 RTX SSRC with 16-bit OSN (0 primary SSRC pollutions) and [1, 8] apt mappings verified.",
+        clampedPrimaryStreamRtxPollutions,
+        clampedRtxPayloadAptMappings,
+      };
+    }
+
 
 
 

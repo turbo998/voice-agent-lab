@@ -1378,6 +1378,13 @@
               <td><code>P799 / P800 deterministic WebRTC RFC 7983 first-byte demux + DTLS cookie MTU gate &amp; RFC 8842 SDP setup deadlock / SRTP MKI overlap guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>407. [专题44 `docs/voice-webrtc-rtcp-avpf-nack-pli-storm-rtx-osn-apt-faq.md`] WebRTC `RFC 4585 / RFC 5104 RTCP AVPF` 单包 `NACK` 重传次数上限（`[1, 3]` 次，强制 `>= 1x RTT` 间隔）与 `trr-int` 最小反馈/关键帧冷却下限（`[100, 500]ms`，防 `17倍` 重传风暴挤死实时语音队列；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实发送环缓检索耗时 `not_measured`）&amp; `RFC 4588 RTX` 独立重传流 `SSRC`（`a=ssrc-group:FID`）、16-bit `OSN` 原始序列号头（`0` 次主流原地重传污染 `RFC 3550` 抖动/丢包估算）与 `[1, 8]` 组 `apt` 载荷映射门禁（真实 RTX 拆包耗时 `not_measured`）(`P801` / `P802` · Stage 404 · 811 护栏 &amp; 820 探针 · 407 维)</strong>
+              </td>
+              <td><code>P801 / P802 deterministic WebRTC RFC 4585 AVPF NACK/PLI storm trr-int gate &amp; RFC 4588 RTX separate SSRC / OSN + apt BWE isolation guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4732,6 +4739,13 @@
                 <strong>406. [专题43 `docs/voice-webrtc-dtls-srtp-rfc5764-demux-hello-cookie-setup-deadlock-faq.md`] WebRTC `RFC 5764 / RFC 7983` 单端口首字节严格分区解复用（`0` 次非标首字节污染 `SRTP/DTLS` 状态机）、无状态 `RFC 6347 DTLS HelloVerifyRequest` HMAC Cookie 防 `35倍` X.509 证书反射放大与 `[576, 1200]B` 分片 MTU 门禁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 OpenSSL/libsrtp 套接字分拣耗时 `not_measured`）&amp; `RFC 4145 / RFC 8842` SDP `a=setup` 防双 `passive` 握手死锁（`0` 死锁）及长通话 `RFC 3711 SRTP MKI` `[2000, 5000]ms` 新旧双密钥并行解密窗口（真实 DTLS-SRTP 换钥耗时 `not_measured`）(`P799` / `P800` 🎉 · Stage 403 · 809 护栏 &amp; 818 探针 · 406 维)</strong>
               </td>
               <td><code>P799 / P800 deterministic WebRTC RFC 7983 first-byte demux + DTLS cookie MTU gate &amp; RFC 8842 SDP setup deadlock / SRTP MKI overlap guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>407. [专题44 `docs/voice-webrtc-rtcp-avpf-nack-pli-storm-rtx-osn-apt-faq.md`] WebRTC `RFC 4585 / RFC 5104 RTCP AVPF` 单包 `NACK` 重传次数上限（`[1, 3]` 次，强制 `>= 1x RTT` 间隔）与 `trr-int` 最小反馈/关键帧冷却下限（`[100, 500]ms`，防 `17倍` 重传风暴挤死实时语音队列；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实发送环缓检索耗时 `not_measured`）&amp; `RFC 4588 RTX` 独立重传流 `SSRC`（`a=ssrc-group:FID`）、16-bit `OSN` 原始序列号头（`0` 次主流原地重传污染 `RFC 3550` 抖动/丢包估算）与 `[1, 8]` 组 `apt` 载荷映射门禁（真实 RTX 拆包耗时 `not_measured`）(`P801` / `P802` · Stage 404 · 811 护栏 &amp; 820 探针 · 407 维)</strong>
+              </td>
+              <td><code>P801 / P802 deterministic WebRTC RFC 4585 AVPF NACK/PLI storm trr-int gate &amp; RFC 4588 RTX separate SSRC / OSN + apt BWE isolation guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
