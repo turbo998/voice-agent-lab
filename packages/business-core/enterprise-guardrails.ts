@@ -74181,6 +74181,146 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc8851Rfc8852SimulcastRidAndRepairedRidContext {
+      unnegotiatedRidOrCrossLayerRepairedRidHijackDetected: boolean;
+      crossLayerRidMutations: number;
+      activeSimulcastLayers: number;
+    }
+
+    export interface WebrtcRfc8851Rfc8852SimulcastRidAndRepairedRidDecision {
+      violated: boolean;
+      policyId: "P809-WEBRTC-RFC8851-RFC8852-SIMULCAST-RID-AND-REPAIRED-RID-GUARD";
+      action:
+        | "drop_spoofed_simulcast_rid_and_clamp_layers"
+        | "clamp_cross_layer_rid_mutations_and_simulcast_layers"
+        | "allow";
+      reason: string;
+      clampedCrossLayerRidMutations: number;
+      clampedActiveSimulcastLayers: number;
+    }
+
+    export function evaluateWebrtcRfc8851Rfc8852SimulcastRidAndRepairedRidGate(
+      context: WebrtcRfc8851Rfc8852SimulcastRidAndRepairedRidContext,
+    ): WebrtcRfc8851Rfc8852SimulcastRidAndRepairedRidDecision {
+      const policyId =
+        "P809-WEBRTC-RFC8851-RFC8852-SIMULCAST-RID-AND-REPAIRED-RID-GUARD" as const;
+      const clampedCrossLayerRidMutations = 0;
+      const clampedActiveSimulcastLayers = Math.min(
+        Math.max(context.activeSimulcastLayers, 1),
+        3,
+      );
+
+      if (context.unnegotiatedRidOrCrossLayerRepairedRidHijackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_spoofed_simulcast_rid_and_clamp_layers",
+          reason:
+            "WebRTC RFC 8851 / RFC 8852 Simulcast RID & Repaired-RID Policy Check: RTP packet carried unnegotiated rtp-stream-id (a=rid), attempted mid-call SSRC-to-RID cross-layer rebinding, or bound repaired-rtp-stream-id across media sections; offline synthetic policy state machine enforcing immutable first-packet (SSRC, a=mid, a=rid) pinning (0 cross-layer mutations) and [1, 3] Simulcast layers (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU RID routing table lookup latency not_measured).",
+          clampedCrossLayerRidMutations,
+          clampedActiveSimulcastLayers,
+        };
+      }
+
+      if (
+        context.crossLayerRidMutations > 0 ||
+        context.activeSimulcastLayers < 1 ||
+        context.activeSimulcastLayers > 3
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_cross_layer_rid_mutations_and_simulcast_layers",
+          reason:
+            "Cross-layer RID mutations (>0 synthetic ceiling) or active Simulcast layers (<1 or >3 synthetic bounds) out of bounds; clamping mutations to 0 and Simulcast layers to [1, 3].",
+          clampedCrossLayerRidMutations,
+          clampedActiveSimulcastLayers,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: immutable RFC 8852 (SSRC, a=mid, a=rid) pinning (0 mutations) and [1, 3] Simulcast layers verified.",
+        clampedCrossLayerRidMutations,
+        clampedActiveSimulcastLayers,
+      };
+    }
+
+    export interface WebrtcRfc5104TmmbrZeroBitrateMuteStormAndPauseResumeContext {
+      tmmbrZeroBitrateAudioMuteOrPauseResumeFloodDetected: boolean;
+      minGuaranteedAudioBitrateKbps: number;
+      pauseResumeTogglesPerSec: number;
+    }
+
+    export interface WebrtcRfc5104TmmbrZeroBitrateMuteStormAndPauseResumeDecision {
+      violated: boolean;
+      policyId: "P810-WEBRTC-RFC5104-TMMBR-ZERO-BITRATE-MUTE-STORM-AND-PAUSE-RESUME-GUARD";
+      action:
+        | "enforce_audio_tmmbr_floor_and_throttle_pause_resume"
+        | "clamp_audio_bitrate_floor_and_pause_resume_rate"
+        | "allow";
+      reason: string;
+      clampedMinGuaranteedAudioBitrateKbps: number;
+      clampedPauseResumeTogglesPerSec: number;
+    }
+
+    export function evaluateWebrtcRfc5104TmmbrZeroBitrateMuteStormAndPauseResumeGate(
+      context: WebrtcRfc5104TmmbrZeroBitrateMuteStormAndPauseResumeContext,
+    ): WebrtcRfc5104TmmbrZeroBitrateMuteStormAndPauseResumeDecision {
+      const policyId =
+        "P810-WEBRTC-RFC5104-TMMBR-ZERO-BITRATE-MUTE-STORM-AND-PAUSE-RESUME-GUARD" as const;
+      const clampedMinGuaranteedAudioBitrateKbps = Math.min(
+        Math.max(context.minGuaranteedAudioBitrateKbps, 24),
+        64,
+      );
+      const clampedPauseResumeTogglesPerSec = Math.min(
+        Math.max(context.pauseResumeTogglesPerSec, 1),
+        4,
+      );
+
+      if (context.tmmbrZeroBitrateAudioMuteOrPauseResumeFloodDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_audio_tmmbr_floor_and_throttle_pause_resume",
+          reason:
+            "WebRTC RFC 5104 RTCP TMMBR Zero-Bitrate Audio Mute & RFC 7728 PAUSE/RESUME Policy Check: incoming RTCP TMMBR attempted to throttle primary Opus voice SSRC below 24 kbps (or 0 bps mute) or rapid PAUSE/RESUME toggles triggered an IDR keyframe storm; offline synthetic policy state machine enforcing [24, 64] kbps protected audio floor and [1, 4]/s PAUSE/RESUME rate cap (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTCP TMMBN feedback serialization latency not_measured).",
+          clampedMinGuaranteedAudioBitrateKbps,
+          clampedPauseResumeTogglesPerSec,
+        };
+      }
+
+      if (
+        context.minGuaranteedAudioBitrateKbps < 24 ||
+        context.minGuaranteedAudioBitrateKbps > 64 ||
+        context.pauseResumeTogglesPerSec < 1 ||
+        context.pauseResumeTogglesPerSec > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_audio_bitrate_floor_and_pause_resume_rate",
+          reason:
+            "Protected audio bitrate floor (<24 or >64 kbps synthetic bounds) or PAUSE/RESUME toggle rate (<1 or >4 /s synthetic bounds) out of bounds; clamping audio floor to [24, 64] kbps and toggle rate to [1, 4]/s.",
+          clampedMinGuaranteedAudioBitrateKbps,
+          clampedPauseResumeTogglesPerSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 5104 [24, 64] kbps protected audio floor and [1, 4]/s PAUSE/RESUME rate cap verified.",
+        clampedMinGuaranteedAudioBitrateKbps,
+        clampedPauseResumeTogglesPerSec,
+      };
+    }
+
 
 
 

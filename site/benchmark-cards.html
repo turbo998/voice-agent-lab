@@ -1406,6 +1406,13 @@
               <td><code>P807 / P808 deterministic SIP RFC 3840 automata bot-loop + History-Info gate &amp; RFC 3325 PAI ingress strip / Privacy:id egress guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>411. [专题48 `docs/voice-webrtc-simulcast-rfc8851-rid-spoof-tmmbr-mute-storm-faq.md`] WebRTC `RFC 8851 / RFC 8852` Simulcast 多流联播 `(SSRC, a=mid, a=rid)` 首包不可变钉扎（`0` 次通话中途跨层 `rid` 篡改与跨轨 `repaired-rtp-stream-id` 劫持，单轨联播层数钳制在 `[1, 3]` 层；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU RID 路由表查找耗时 `not_measured`）&amp; `RFC 5104 RTCP TMMBR` 主音频流 `[24, 64] kbps` 最低保底码率锁（严禁 `TMMBR=0 bps` 将语音智能体静音）及 `RFC 7728 PAUSE / RESUME` `[1, 4]/s` 启停迟滞门禁（真实 `TMMBN` 反馈序列化耗时 `not_measured`）(`P809` / `P810` · Stage 408 · 🎉 50th Standalone FAQ · 819 护栏 &amp; 828 探针 · 411 维)</strong>
+              </td>
+              <td><code>P809 / P810 deterministic WebRTC RFC 8851/8852 Simulcast RID + repaired-RID gate &amp; RFC 5104 TMMBR audio floor / pause-resume guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4788,6 +4795,13 @@
                 <strong>410. [专题47 `docs/voice-sip-rfc3840-automata-bot-loop-pai-privacy-history-info-faq.md`] 企业 SIP `RFC 3840 / RFC 3841` `Contact ;automata` 机器人互打死循环熔断（连续零业务槽位推进寒暄轮次钳制在 `[1, 4]` 轮并主动拆线，防手机 AI 秘书与企业 AI 客服互聊数小时烧穿算力）与 `RFC 7044 History-Info` 呼叫前转深度锁（钳制在 `[1, 5]` 跳；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SIP B2BUA 头解析耗时 `not_measured`）&amp; `RFC 3323 / RFC 3325 P-Asserted-Identity (PAI)` 非 `Spec(T)` 授信入站 100% 剥离（`0` 伪造高管/VIP 来电）与出站遇 `Privacy: id / header / user` 强制擦除 `PAI/PPI` 并匿名化 `From`（`0` 隐私泄露；真实 SBC ACL 查找耗时 `not_measured`）(`P807` / `P808` · Stage 407 · 🎉 410 Dims · 817 护栏 &amp; 826 探针 · 410 维)</strong>
               </td>
               <td><code>P807 / P808 deterministic SIP RFC 3840 automata bot-loop + History-Info gate &amp; RFC 3325 PAI ingress strip / Privacy:id egress guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>411. [专题48 `docs/voice-webrtc-simulcast-rfc8851-rid-spoof-tmmbr-mute-storm-faq.md`] WebRTC `RFC 8851 / RFC 8852` Simulcast 多流联播 `(SSRC, a=mid, a=rid)` 首包不可变钉扎（`0` 次通话中途跨层 `rid` 篡改与跨轨 `repaired-rtp-stream-id` 劫持，单轨联播层数钳制在 `[1, 3]` 层；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU RID 路由表查找耗时 `not_measured`）&amp; `RFC 5104 RTCP TMMBR` 主音频流 `[24, 64] kbps` 最低保底码率锁（严禁 `TMMBR=0 bps` 将语音智能体静音）及 `RFC 7728 PAUSE / RESUME` `[1, 4]/s` 启停迟滞门禁（真实 `TMMBN` 反馈序列化耗时 `not_measured`）(`P809` / `P810` · Stage 408 · 🎉 50th Standalone FAQ · 819 护栏 &amp; 828 探针 · 411 维)</strong>
+              </td>
+              <td><code>P809 / P810 deterministic WebRTC RFC 8851/8852 Simulcast RID + repaired-RID gate &amp; RFC 5104 TMMBR audio floor / pause-resume guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
