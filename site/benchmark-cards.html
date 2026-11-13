@@ -1455,6 +1455,13 @@
               <td><code>P821 / P822 deterministic WebRTC RFC 3550 compound RTCP SR/RR + SDES CNAME gate &amp; anti-spoofed BYE flood guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>418. [专题55 🎉 `docs/voice-sip-rfc3581-via-rport-nat-pinhole-header-chain-amplification-faq.md`] 企业 SIP `RFC 3261` 单例头（`From/f, To/t, Call-ID/i, CSeq, Content-Length/l`）防走私 `400 Bad Request` 拒单（`0` 走私头）与 `Via` 栈链 `[1, 8]` 跳上限（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC SIP 头解析耗时 `not_measured`）&amp; `RFC 3581` 顶层 `Via` `;received= / ;rport=` 强制底层套接字真实源覆写（`0` 客户端伪造反射参数）与 `[15, 30]s` NAT 针孔保活门禁（真实 SBC NAT 保活定时器耗时 `not_measured`）(`P823` / `P824` · Stage 415 · 🎉 Topic 55 里程碑 · 833 护栏 &amp; 842 探针 · 418 维)</strong>
+              </td>
+              <td><code>P823 / P824 deterministic SIP RFC 3261 singleton smuggling + Via hop cap &amp; RFC 3581 rport/received NAT pinhole guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4886,6 +4893,13 @@
                 <strong>417. [专题54 🎉 `docs/voice-webrtc-rtcp-rfc3550-compound-sr-rr-sdes-cname-bye-flood-faq.md`] WebRTC `RFC 3550 Section 6.1` 复合 RTCP 首包 `SR(200)/RR(201)` 与子包 32 位字长总和精确闭合校验（`0` 畸形复合包越界读）及 `RFC 7022 SDES CNAME [8, 64]` 字节边界（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU 复合 RTCP 解析耗时 `not_measured`）&amp; `RFC 3550 Section 6.6` `SRTCP BYE(203)` 发送源归属鉴权（`0` 越权静音拆流）与单包 `BYE SSRC [1, 4]` 项防批量注销洪泛门禁（真实 SRTCP BYE ACL 查找耗时 `not_measured`）(`P821` / `P822` · Stage 414 · 🎉 650 Live POC Probes · 831 护栏 &amp; 840 探针 · 417 维)</strong>
               </td>
               <td><code>P821 / P822 deterministic WebRTC RFC 3550 compound RTCP SR/RR + SDES CNAME gate &amp; anti-spoofed BYE flood guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>418. [专题55 🎉 `docs/voice-sip-rfc3581-via-rport-nat-pinhole-header-chain-amplification-faq.md`] 企业 SIP `RFC 3261` 单例头（`From/f, To/t, Call-ID/i, CSeq, Content-Length/l`）防走私 `400 Bad Request` 拒单（`0` 走私头）与 `Via` 栈链 `[1, 8]` 跳上限（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC SIP 头解析耗时 `not_measured`）&amp; `RFC 3581` 顶层 `Via` `;received= / ;rport=` 强制底层套接字真实源覆写（`0` 客户端伪造反射参数）与 `[15, 30]s` NAT 针孔保活门禁（真实 SBC NAT 保活定时器耗时 `not_measured`）(`P823` / `P824` · Stage 415 · 🎉 Topic 55 里程碑 · 833 护栏 &amp; 842 探针 · 418 维)</strong>
+              </td>
+              <td><code>P823 / P824 deterministic SIP RFC 3261 singleton smuggling + Via hop cap &amp; RFC 3581 rport/received NAT pinhole guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

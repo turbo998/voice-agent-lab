@@ -75121,6 +75121,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3261ViaChainAmplificationAndSingletonHeaderSmugglingContext {
+      singletonHeaderSmugglingOrViaChainAmplificationDetected: boolean;
+      singletonHeaderSmugglingAttempts: number;
+      maxViaHeaderHops: number;
+    }
+
+    export interface SipRfc3261ViaChainAmplificationAndSingletonHeaderSmugglingDecision {
+      violated: boolean;
+      policyId: "P823-SIP-RFC3261-VIA-CHAIN-AMPLIFICATION-AND-SINGLETON-HEADER-SMUGGLING-GUARD";
+      action:
+        | "reject_singleton_smuggling_400_and_cap_via_hops"
+        | "clamp_singleton_smuggling_and_via_hop_bounds"
+        | "allow";
+      reason: string;
+      clampedSingletonHeaderSmugglingAttempts: number;
+      clampedMaxViaHeaderHops: number;
+    }
+
+    export function evaluateSipRfc3261ViaChainAmplificationAndSingletonHeaderSmugglingGate(
+      context: SipRfc3261ViaChainAmplificationAndSingletonHeaderSmugglingContext,
+    ): SipRfc3261ViaChainAmplificationAndSingletonHeaderSmugglingDecision {
+      const policyId =
+        "P823-SIP-RFC3261-VIA-CHAIN-AMPLIFICATION-AND-SINGLETON-HEADER-SMUGGLING-GUARD" as const;
+      const clampedSingletonHeaderSmugglingAttempts = 0;
+      const clampedMaxViaHeaderHops = Math.min(
+        Math.max(context.maxViaHeaderHops, 1),
+        8,
+      );
+
+      if (context.singletonHeaderSmugglingOrViaChainAmplificationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_singleton_smuggling_400_and_cap_via_hops",
+          reason:
+            "Enterprise SIP RFC 3261 Singleton Header Smuggling & Via Chain Amplification Policy Check: inbound SIP message contained duplicate singleton headers (From/f, To/t, Call-ID/i, CSeq, Max-Forwards, or Content-Length/l) or stacked >8 Via headers to trigger fragmentation/amplification; offline synthetic policy state machine enforcing 0 singleton header smuggling attempts (SIP 400) and [1, 8] Via header hop bounds (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC SIP header normalizer latency not_measured).",
+          clampedSingletonHeaderSmugglingAttempts,
+          clampedMaxViaHeaderHops,
+        };
+      }
+
+      if (
+        context.singletonHeaderSmugglingAttempts > 0 ||
+        context.maxViaHeaderHops < 1 ||
+        context.maxViaHeaderHops > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_singleton_smuggling_and_via_hop_bounds",
+          reason:
+            "Singleton header smuggling attempts (>0 synthetic ceiling) or Via header hops (<1 or >8 synthetic bounds) out of bounds; clamping smuggling attempts to 0 and Via hops to [1, 8].",
+          clampedSingletonHeaderSmugglingAttempts,
+          clampedMaxViaHeaderHops,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3261 singleton header uniqueness (0 smuggling attempts) and [1, 8] Via header hop bounds verified.",
+        clampedSingletonHeaderSmugglingAttempts,
+        clampedMaxViaHeaderHops,
+      };
+    }
+
+    export interface SipRfc3581RportReceivedNatPinholeHijackAndSourceBindingContext {
+      clientPrepopulatedRportReceivedOrNatPinholeHijackDetected: boolean;
+      spoofedRportReceivedParams: number;
+      natBindingRefreshSec: number;
+    }
+
+    export interface SipRfc3581RportReceivedNatPinholeHijackAndSourceBindingDecision {
+      violated: boolean;
+      policyId: "P824-SIP-RFC3581-RPORT-RECEIVED-NAT-PINHOLE-HIJACK-AND-SOURCE-BINDING-GUARD";
+      action:
+        | "overwrite_rport_received_from_socket_and_clamp_keepalive"
+        | "clamp_spoofed_rport_params_and_nat_refresh_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedRportReceivedParams: number;
+      clampedNatBindingRefreshSec: number;
+    }
+
+    export function evaluateSipRfc3581RportReceivedNatPinholeHijackAndSourceBindingGate(
+      context: SipRfc3581RportReceivedNatPinholeHijackAndSourceBindingContext,
+    ): SipRfc3581RportReceivedNatPinholeHijackAndSourceBindingDecision {
+      const policyId =
+        "P824-SIP-RFC3581-RPORT-RECEIVED-NAT-PINHOLE-HIJACK-AND-SOURCE-BINDING-GUARD" as const;
+      const clampedSpoofedRportReceivedParams = 0;
+      const clampedNatBindingRefreshSec = Math.min(
+        Math.max(context.natBindingRefreshSec, 15),
+        30,
+      );
+
+      if (context.clientPrepopulatedRportReceivedOrNatPinholeHijackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "overwrite_rport_received_from_socket_and_clamp_keepalive",
+          reason:
+            "Enterprise SIP RFC 3581 Symmetric Response Routing (;rport / ;received) NAT Pinhole Hijack Policy Check: client pre-populated top-Via ;received= or ;rport= parameters to reflect SIP responses toward a third-party/internal target; offline synthetic policy state machine unconditionally overwriting received/rport from the verified transport socket (0 spoofed parameters) and clamping NAT binding keepalive refresh to [15, 30]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC socket 5-tuple lookup latency not_measured).",
+          clampedSpoofedRportReceivedParams,
+          clampedNatBindingRefreshSec,
+        };
+      }
+
+      if (
+        context.spoofedRportReceivedParams > 0 ||
+        context.natBindingRefreshSec < 15 ||
+        context.natBindingRefreshSec > 30
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_rport_params_and_nat_refresh_bounds",
+          reason:
+            "Spoofed client rport/received parameters (>0 synthetic ceiling) or NAT binding refresh interval (<15 or >30s synthetic bounds) out of bounds; clamping spoofed parameters to 0 and NAT refresh to [15, 30]s.",
+          clampedSpoofedRportReceivedParams,
+          clampedNatBindingRefreshSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3581 unconditional socket source binding (0 spoofed rport/received params) and [15, 30]s NAT keepalive refresh verified.",
+        clampedSpoofedRportReceivedParams,
+        clampedNatBindingRefreshSec,
+      };
+    }
+
 
 
 

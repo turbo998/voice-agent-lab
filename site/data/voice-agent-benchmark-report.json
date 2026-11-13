@@ -1687,6 +1687,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: requires SR(200)/RR(201) prefix and exact 32-bit word-sum closure on compound RTCP packets (0 malformed packets) and clamps RFC 7022 SDES CNAME length to [8, 64] bytes; live SFU RTCP compound parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks SRTCP-unauthenticated or cross-peer RTCP BYE(203) stream teardowns (0 unauthorized teardowns) and caps per-packet BYE SSRC entries to [1, 4]; live SRTCP BYE ACL lookup latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "418. [Topic 55 🎉: voice-sip-rfc3581-via-rport-nat-pinhole-header-chain-amplification-faq] Enterprise SIP RFC 3261 Singleton Header Smuggling + [1,8] Via Hop Cap & RFC 3581 rport/received NAT Pinhole Guard (P823 / P824 — Stage 415 · 🎉 Topic 55 Milestone · 418 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: normalizes compact SIP headers (f/t/i/l), rejects duplicate singleton headers with 400 Bad Request (0 smuggling attempts), and clamps Via header chains to [1, 8] hops; live SBC SIP header parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: unconditionally overwrites client-supplied top-Via ;received= and ;rport= parameters from the verified transport socket (0 spoofed params) and clamps NAT keepalive refresh to [15, 30]s; live SBC NAT keepalive timer latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

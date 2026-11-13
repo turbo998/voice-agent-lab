@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg59" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="blueGrad59" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad59" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065F46"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg59)"/>
+
+  <!-- Header -->
+  <rect x="36" y="24" width="1128" height="84" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <text x="56" y="56" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1">STAGE 415 · TOPIC 55 🎉 · SIP RFC 3261/3581 VIA CHAIN + SINGLETON SMUGGLING &amp; RPORT NAT GUARD FAQ (P823–P824)</text>
+  <text x="56" y="84" fill="#F8FAFC" font-family="Segoe UI, system-ui, sans-serif" font-size="20.5" font-weight="700">SIP RFC 3261 Singleton Smuggling + Via Cap Gate &amp; RFC 3581 rport/received Guard</text>
+  <rect x="948" y="38" width="196" height="32" rx="16" fill="#065F46" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1046" y="59" text-anchor="middle" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Stage 415 · Topic 55 🎉 · 418D</text>
+
+  <!-- Left Column: P823 SIP RFC 3261 Via Chain Amplification & Singleton Header Smuggling Gate -->
+  <rect x="36" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5"/>
+  <rect x="36" y="124" width="552" height="44" rx="12" fill="url(#blueGrad59)"/>
+  <text x="56" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P823 · SIP RFC 3261 Singleton Smuggling &amp; Via Chain Gate</text>
+
+  <!-- Anti-pattern Box Left -->
+  <rect x="56" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="72" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: `From:` + `f:` Smuggling &amp; 50-Hop Via Bloat</text>
+  <text x="72" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Attacker sends both From: guest and compact f: ceo; perimeter WAF</text>
+  <text x="72" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  checks first header while downstream AI parser uses last header</text>
+  <text x="72" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• 50 forged Via headers inflate SIP packets beyond 1500B UDP MTU</text>
+  <text x="72" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: ACL Identity Bypass · 4.5KB Fragmented Via Amplification</text>
+
+  <!-- Best Practice Box Left -->
+  <rect x="56" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="72" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ Compact Alias Normalization + `400` Gate &amp; `[1, 8]` Via Cap</text>
+  <text x="72" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. Strict Singleton Uniqueness: Expand f/t/i/l aliases and reject</text>
+  <text x="72" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   any duplicate From/To/Call-ID/CSeq/Content-Length with SIP 400</text>
+  <text x="72" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. Bounded Via Stack Depth: Clamp inbound Via header chains to</text>
+  <text x="72" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   [1, 8] hops (84% reduction in maximum Via header overhead)</text>
+  <text x="72" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P823: singletonSmuggling = 0 · maxViaHeaderHops = [1, 8]</text>
+  <text x="72" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Header-Smuggling Bypasses · 0 Via Fragmentation Bombs</text>
+
+  <!-- Bottom KPI Pill Left -->
+  <rect x="56" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="72" y="530" fill="#38BDF8" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateSipRfc3261ViaChainAmplificationAndSingletonHeaderSmugglingGate`)</text>
+  <text x="72" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedSingletonHeaderSmugglingAttempts = 0 | clampedMaxViaHeaderHops = [1, 8]</text>
+  <text x="72" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: reject_singleton_smuggling_400_and_cap_via_hops (0ms @ 1ms grid)</text>
+
+  <!-- Right Column: P824 SIP RFC 3581 rport/received NAT Pinhole Hijack & Source Binding Guard -->
+  <rect x="612" y="124" width="552" height="476" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="612" y="124" width="552" height="44" rx="12" fill="url(#emeraldGrad59)"/>
+  <text x="632" y="152" fill="#FFFFFF" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700">P824 · SIP RFC 3581 rport/received NAT Pinhole Guard</text>
+
+  <!-- Anti-pattern Box Right -->
+  <rect x="632" y="184" width="512" height="128" rx="8" fill="#1E1B2E" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="648" y="208" fill="#FCA5A5" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">⛔ Anti-Pattern: Client-Prepopulated `;received=VictimIP;rport=Port`</text>
+  <text x="648" y="230" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• Attacker pre-fills Via ;received=10.0.0.1;rport=6379; unhardened</text>
+  <text x="648" y="250" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">  SBC skips overwriting existing values and reflects 200 OK to target</text>
+  <text x="648" y="270" fill="#E2E8F0" font-family="Segoe UI, system-ui, sans-serif" font-size="12">• 120s NAT keepalive lets carrier UDP pinholes expire mid-call</text>
+  <text x="648" y="292" fill="#F87171" font-family="Consolas, monospace" font-size="11">Impact: Third-Party SIP Response Reflection · Mid-Call NAT Teardown</text>
+
+  <!-- Best Practice Box Right -->
+  <rect x="632" y="326" width="512" height="164" rx="8" fill="#062E26" stroke="#10B981" stroke-width="1.2"/>
+  <text x="648" y="350" fill="#6EE7B7" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700">✅ Unconditional Socket 5-Tuple Overwrite &amp; `[15, 30]s` Keepalive</text>
+  <text x="648" y="372" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">1. Mandatory Socket Binding: Strip any client-supplied received/rport</text>
+  <text x="648" y="392" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   values and overwrite with verified socket remoteAddress:remotePort</text>
+  <text x="648" y="412" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">2. NAT Pinhole Refresh Lock: Clamp CRLF / STUN binding keepalives</text>
+  <text x="648" y="432" fill="#ECFDF5" font-family="Segoe UI, system-ui, sans-serif" font-size="12">   to [15, 30]s to survive strict carrier CGNAT 35s UDP timeouts</text>
+  <text x="648" y="454" fill="#34D399" font-family="Consolas, monospace" font-size="11">Policy P824: spoofedRportParams = 0 · natRefreshSec = [15, 30]s</text>
+  <text x="648" y="476" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">Result: 0 Reflected SIP Responses · 0 CGNAT Pinhole Dropouts</text>
+
+  <!-- Bottom KPI Pill Right -->
+  <rect x="632" y="506" width="512" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="648" y="530" fill="#34D399" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700">Deterministic Gate (`evaluateSipRfc3581RportReceivedNatPinholeHijackAndSourceBindingGate`)</text>
+  <text x="648" y="550" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">clampedSpoofedRportReceivedParams = 0 | clampedNatBindingRefreshSec = [15, 30]s</text>
+  <text x="648" y="568" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="11">Action: overwrite_rport_received_from_socket_and_clamp_keepalive (0ms @ 1ms grid)</text>
+
+  <!-- Footer Provenance -->
+  <rect x="36" y="614" width="1128" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="640" fill="#94A3B8" font-family="Consolas, monospace" font-size="11">Provenance: synthetic deterministic evaluation | 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+</svg>
