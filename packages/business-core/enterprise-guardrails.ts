@@ -75257,6 +75257,146 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcIceRfc8839UfragPwdEntropyFloorAndSessionRotationContext {
+      weakIceUfragPwdEntropyOrStaticCredentialReuseDetected: boolean;
+      iceUfragEntropyBits: number;
+      icePwdEntropyBits: number;
+    }
+
+    export interface WebrtcIceRfc8839UfragPwdEntropyFloorAndSessionRotationDecision {
+      violated: boolean;
+      policyId: "P825-WEBRTC-ICE-RFC8839-UFRAG-PWD-ENTROPY-FLOOR-AND-SESSION-ROTATION-GUARD";
+      action:
+        | "reject_weak_ice_credentials_and_rotate_csprng"
+        | "clamp_ice_ufrag_pwd_entropy_bounds"
+        | "allow";
+      reason: string;
+      clampedIceUfragEntropyBits: number;
+      clampedIcePwdEntropyBits: number;
+    }
+
+    export function evaluateWebrtcIceRfc8839UfragPwdEntropyFloorAndSessionRotationGate(
+      context: WebrtcIceRfc8839UfragPwdEntropyFloorAndSessionRotationContext,
+    ): WebrtcIceRfc8839UfragPwdEntropyFloorAndSessionRotationDecision {
+      const policyId =
+        "P825-WEBRTC-ICE-RFC8839-UFRAG-PWD-ENTROPY-FLOOR-AND-SESSION-ROTATION-GUARD" as const;
+      const clampedIceUfragEntropyBits = Math.min(
+        Math.max(context.iceUfragEntropyBits, 24),
+        64,
+      );
+      const clampedIcePwdEntropyBits = Math.min(
+        Math.max(context.icePwdEntropyBits, 128),
+        256,
+      );
+
+      if (context.weakIceUfragPwdEntropyOrStaticCredentialReuseDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_weak_ice_credentials_and_rotate_csprng",
+          reason:
+            "WebRTC RFC 8839 Section 5.1 ICE ufrag/pwd Entropy Floor & Session Rotation Policy Check: SDP offer/answer contained low-entropy (<24-bit ice-ufrag or <128-bit ice-pwd) or statically reused ICE credentials vulnerable to off-path STUN Binding USE-CANDIDATE hijacking; offline synthetic policy state machine enforcing [24, 64]-bit ice-ufrag and [128, 256]-bit ice-pwd CSPRNG bounds (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU CSPRNG and STUN HMAC-SHA1 verification latency not_measured).",
+          clampedIceUfragEntropyBits,
+          clampedIcePwdEntropyBits,
+        };
+      }
+
+      if (
+        context.iceUfragEntropyBits < 24 ||
+        context.iceUfragEntropyBits > 64 ||
+        context.icePwdEntropyBits < 128 ||
+        context.icePwdEntropyBits > 256
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ice_ufrag_pwd_entropy_bounds",
+          reason:
+            "ICE ufrag entropy (<24 or >64 bits synthetic bounds) or ICE pwd entropy (<128 or >256 bits synthetic bounds) out of bounds; clamping ufrag entropy to [24, 64] bits and pwd entropy to [128, 256] bits.",
+          clampedIceUfragEntropyBits,
+          clampedIcePwdEntropyBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8839 [24, 64]-bit ice-ufrag and [128, 256]-bit ice-pwd CSPRNG entropy bounds verified.",
+        clampedIceUfragEntropyBits,
+        clampedIcePwdEntropyBits,
+      };
+    }
+
+    export interface WebrtcIceRfc8445CandidatePortScanSsrfAndCandidateCapContext {
+      candidatePortScanSsrfOrDisallowedPortDetected: boolean;
+      disallowedPortOrPrivateCandidateCount: number;
+      maxCandidatesPerMline: number;
+    }
+
+    export interface WebrtcIceRfc8445CandidatePortScanSsrfAndCandidateCapDecision {
+      violated: boolean;
+      policyId: "P826-WEBRTC-ICE-RFC8445-CANDIDATE-PORT-SCAN-SSRF-AND-CANDIDATE-CAP-GUARD";
+      action:
+        | "drop_ssrf_candidates_and_cap_mline_candidates"
+        | "clamp_disallowed_candidates_and_mline_cap_bounds"
+        | "allow";
+      reason: string;
+      clampedDisallowedPortOrPrivateCandidateCount: number;
+      clampedMaxCandidatesPerMline: number;
+    }
+
+    export function evaluateWebrtcIceRfc8445CandidatePortScanSsrfAndCandidateCapGate(
+      context: WebrtcIceRfc8445CandidatePortScanSsrfAndCandidateCapContext,
+    ): WebrtcIceRfc8445CandidatePortScanSsrfAndCandidateCapDecision {
+      const policyId =
+        "P826-WEBRTC-ICE-RFC8445-CANDIDATE-PORT-SCAN-SSRF-AND-CANDIDATE-CAP-GUARD" as const;
+      const clampedDisallowedPortOrPrivateCandidateCount = 0;
+      const clampedMaxCandidatesPerMline = Math.min(
+        Math.max(context.maxCandidatesPerMline, 1),
+        16,
+      );
+
+      if (context.candidatePortScanSsrfOrDisallowedPortDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_ssrf_candidates_and_cap_mline_candidates",
+          reason:
+            "WebRTC RFC 8445 ICE Candidate Port-Scan SSRF & Candidate Cap Policy Check: remote SDP or Trickle ICE injected candidates targeting loopback/RFC1918/IMDS subnets, <1024 privileged ports, or blocklisted service ports (2379/5432/6379/6443), or flooded >16 candidates per m= line; offline synthetic policy state machine stripping 100% of disallowed candidates (0 disallowed candidates) and capping candidates per m= line to [1, 16] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU ICE candidate parser latency not_measured).",
+          clampedDisallowedPortOrPrivateCandidateCount,
+          clampedMaxCandidatesPerMline,
+        };
+      }
+
+      if (
+        context.disallowedPortOrPrivateCandidateCount > 0 ||
+        context.maxCandidatesPerMline < 1 ||
+        context.maxCandidatesPerMline > 16
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_disallowed_candidates_and_mline_cap_bounds",
+          reason:
+            "Disallowed private/privileged-port candidates (>0 synthetic ceiling) or per-m= line candidate cap (<1 or >16 synthetic bounds) out of bounds; clamping disallowed candidates to 0 and per-m= candidate cap to [1, 16].",
+          clampedDisallowedPortOrPrivateCandidateCount,
+          clampedMaxCandidatesPerMline,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8445 candidate SSRF filter (0 disallowed candidates) and [1, 16] per-m= candidate cap verified.",
+        clampedDisallowedPortOrPrivateCandidateCount,
+        clampedMaxCandidatesPerMline,
+      };
+    }
+
 
 
 

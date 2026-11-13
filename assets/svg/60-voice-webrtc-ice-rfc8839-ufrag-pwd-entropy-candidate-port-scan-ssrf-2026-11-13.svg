@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg60" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent60" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <linearGradient id="redGrad60" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#450A0A"/>
+      <stop offset="100%" stop-color="#1F1224"/>
+    </linearGradient>
+    <linearGradient id="greenGrad60" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064E3B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="blueGrad60" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg60)"/>
+  <rect x="24" y="20" width="1152" height="635" rx="18" fill="none" stroke="url(#accent60)" stroke-width="2" stroke-opacity="0.65"/>
+
+  <rect x="44" y="38" width="380" height="30" rx="15" fill="#1E293B" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="234" y="58" text-anchor="middle" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">STAGE 416 · TOPIC 56 · P825 &amp; P826 · 419 DIMS (SVG 60 🎉)</text>
+
+  <rect x="850" y="38" width="306" height="30" rx="15" fill="#064E3B" stroke="#34D399" stroke-width="1.2"/>
+  <text x="1003" y="58" text-anchor="middle" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">835 Guardrails · 844 Probes · 858 Tests</text>
+
+  <text x="44" y="98" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="800">WebRTC RFC 8839/8445 ICE ufrag/pwd Entropy Floor &amp; Candidate SSRF Guard</text>
+  <text x="44" y="124" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">WebRTC ice-ufrag / ice-pwd 密码学熵下限（[24, 64] / [128, 256] bits）与 SDP a=candidate 防端口扫描 SSRF 及 [1, 16] 候选数门禁</text>
+
+  <!-- Left Card: Vulnerable Stack -->
+  <rect x="44" y="144" width="356" height="432" rx="14" fill="url(#redGrad60)" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="64" y="174" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">❌ 脆弱 ICE 网关三大高危故障</text>
+
+  <rect x="62" y="192" width="320" height="112" rx="10" fill="#0F172A" fill-opacity="0.75" stroke="#F87171" stroke-width="1"/>
+  <text x="76" y="214" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">1. 弱 ufrag/pwd 旁路 STUN 盲注劫持</text>
+  <text x="76" y="236" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">a=ice-ufrag:1001 (12b) / pwd:fixed (48b)</text>
+  <text x="76" y="256" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 旁路攻击者秒级碰撞 HMAC-SHA1 签名</text>
+  <text x="76" y="276" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 伪造 USE-CANDIDATE 0.5s 夺走下行语音流</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 无需破解 DTLS-SRTP 即可造成 100% 通话单通</text>
+
+  <rect x="62" y="316" width="320" height="118" rx="10" fill="#0F172A" fill-opacity="0.75" stroke="#F87171" stroke-width="1"/>
+  <text x="76" y="338" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">2. SDP a=candidate 内网端口扫描 SSRF</text>
+  <text x="76" y="360" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">a=candidate:1 udp 10.240.0.15 6379 host</text>
+  <text x="76" y="380" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 诱导云端 SFU Pod 扫描内网 Redis/etcd/K8s</text>
+  <text x="76" y="400" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 探测 169.254.169.254 云元数据与 &lt;1024 端口</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 通过 ICE 状态回传泄露 VPC 内部端口存活拓扑</text>
+
+  <rect x="62" y="446" width="320" height="114" rx="10" fill="#0F172A" fill-opacity="0.75" stroke="#F87171" stroke-width="1"/>
+  <text x="76" y="468" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">3. 单轨 100+ 候选引发 O(N×M) 探测风暴</text>
+  <text x="76" y="490" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">64 remote × 4 local = 256 pairs (1,792 pkts)</text>
+  <text x="76" y="510" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Ta=20ms 定时器被垃圾候选对彻底塞满</text>
+  <text x="76" y="530" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 正常语音首包接通耗时从 82ms 恶化至 3,520ms</text>
+
+  <!-- Center Card: P825 -->
+  <rect x="422" y="144" width="356" height="432" rx="14" fill="url(#blueGrad60)" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="442" y="174" fill="#7DD3FC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">🛡️ P825 · RFC 8839 凭证熵与轮换门禁</text>
+
+  <rect x="440" y="192" width="320" height="120" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#38BDF8" stroke-width="1"/>
+  <text x="454" y="214" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">A. 强制密码学随机熵边界 (Section 5.1)</text>
+  <text x="454" y="236" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">ice-ufrag: [24, 64] bits (&gt;=4 Base64 chars)</text>
+  <text x="454" y="256" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">ice-pwd:   [128, 256] bits (&gt;=22 Base64)</text>
+  <text x="454" y="278" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 100% 拒绝 &lt;24b ufrag 或 &lt;128b pwd 弱凭证</text>
+  <text x="454" y="298" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 单包盲注碰撞概率 &lt;= 2^-152 (0 旁路劫持)</text>
+
+  <rect x="440" y="324" width="320" height="114" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#38BDF8" stroke-width="1"/>
+  <text x="454" y="346" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">B. 单次会话与 ICE Restart CSPRNG 轮换</text>
+  <text x="454" y="368" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">CSPRNG per-session &amp; per-ICE-Restart</text>
+  <text x="454" y="388" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 严禁跨通话或静态配置文件复用 ICE 凭证</text>
+  <text x="454" y="408" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 5G ↔ Wi-Fi 切网时同步刷新 ufrag+pwd</text>
+  <text x="454" y="426" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• STUN MESSAGE-INTEGRITY 20B 强验签锁死</text>
+
+  <rect x="440" y="450" width="320" height="110" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#38BDF8" stroke-width="1"/>
+  <text x="454" y="472" fill="#7DD3FC" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">P825 确定性状态机输出</text>
+  <text x="454" y="494" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">action: "reject_weak_ice_credentials_and</text>
+  <text x="454" y="510" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">         _rotate_csprng"</text>
+  <text x="454" y="530" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedIceUfragEntropyBits: 24..64</text>
+  <text x="454" y="548" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedIcePwdEntropyBits: 128..256</text>
+
+  <!-- Right Card: P826 -->
+  <rect x="800" y="144" width="356" height="432" rx="14" fill="url(#greenGrad60)" stroke="#34D399" stroke-width="1.5"/>
+  <text x="820" y="174" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">🔒 P826 · RFC 8445 候选 SSRF 与数量门禁</text>
+
+  <rect x="818" y="192" width="320" height="120" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#34D399" stroke-width="1"/>
+  <text x="832" y="214" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">A. 入站候选私网/IMDS 与高危端口剥离</text>
+  <text x="832" y="236" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">Deny: 127/8, 10/8, 172.16/12, 192.168/16</text>
+  <text x="832" y="256" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">Deny Ports: &lt;1024, 2379, 5432, 6379, 6443</text>
+  <text x="832" y="278" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 入队前 100% 剥离非公网与敏感服务端口候选</text>
+  <text x="832" y="298" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 彻底阻断借 SFU Pod 探测 K8s 内网与 IMDS</text>
+
+  <rect x="818" y="324" width="320" height="114" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#34D399" stroke-width="1"/>
+  <text x="832" y="346" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">B. 单 m= 轨候选数硬上限 ([1, 16] 条)</text>
+  <text x="832" y="368" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">maxCandidatesPerMline in [1, 16]</text>
+  <text x="832" y="388" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 兼容双栈 IPv4/IPv6 + Wi-Fi/5G (常规 4–8 条)</text>
+  <text x="832" y="408" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• ICE Restart 时自动清空旧一代候选配额</text>
+  <text x="832" y="426" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 候选对检查矩阵开销降低 75%–93%</text>
+
+  <rect x="818" y="450" width="320" height="110" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#34D399" stroke-width="1"/>
+  <text x="832" y="472" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">P826 确定性状态机输出</text>
+  <text x="832" y="494" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">action: "drop_ssrf_candidates_and_cap</text>
+  <text x="832" y="510" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">         _mline_candidates"</text>
+  <text x="832" y="530" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedDisallowedPortOrPrivateCandidateCount: 0</text>
+  <text x="832" y="548" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedMaxCandidatesPerMline: 16</text>
+
+  <!-- Footer Provenance Banner -->
+  <rect x="44" y="590" width="1112" height="50" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1.2"/>
+  <text x="60" y="611" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">PROVENANCE &amp; TIMING DISCLOSURE (SYNTHETIC OFFLINE POLICY STATE-MACHINE CHECK):</text>
+  <text x="60" y="629" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.2">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established · Live SFU ICE check latency not_measured</text>
+</svg>

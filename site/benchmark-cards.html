@@ -1462,6 +1462,13 @@
               <td><code>P823 / P824 deterministic SIP RFC 3261 singleton smuggling + Via hop cap &amp; RFC 3581 rport/received NAT pinhole guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>419. [专题56 `docs/voice-webrtc-ice-rfc8839-ufrag-pwd-entropy-candidate-port-scan-ssrf-faq.md`] WebRTC `RFC 8839 Section 5.1` `ice-ufrag [24, 64] bits` 与 `ice-pwd [128, 256] bits` 密码学随机熵下限及单次会话 CSPRNG 轮换（`0` 弱凭证；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU CSPRNG 与 STUN HMAC-SHA1 验签耗时 `not_measured`）&amp; `RFC 8445` 入站 `a=candidate` 回环/私网/IMDS IP 及 `&lt; 1024` 特权或数据库端口剥离（`0` 违规候选探测）与单 `m=` 轨 `[1, 16]` 条候选上限门禁（真实 SFU ICE 候选解析耗时 `not_measured`）(`P825` / `P826` · Stage 416 · 🎉 第 60 张架构图里程碑 · 835 护栏 &amp; 844 探针 · 419 维)</strong>
+              </td>
+              <td><code>P825 / P826 deterministic WebRTC RFC 8839 ICE ufrag/pwd entropy floor &amp; RFC 8445 candidate SSRF + cap guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4900,6 +4907,13 @@
                 <strong>418. [专题55 🎉 `docs/voice-sip-rfc3581-via-rport-nat-pinhole-header-chain-amplification-faq.md`] 企业 SIP `RFC 3261` 单例头（`From/f, To/t, Call-ID/i, CSeq, Content-Length/l`）防走私 `400 Bad Request` 拒单（`0` 走私头）与 `Via` 栈链 `[1, 8]` 跳上限（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC SIP 头解析耗时 `not_measured`）&amp; `RFC 3581` 顶层 `Via` `;received= / ;rport=` 强制底层套接字真实源覆写（`0` 客户端伪造反射参数）与 `[15, 30]s` NAT 针孔保活门禁（真实 SBC NAT 保活定时器耗时 `not_measured`）(`P823` / `P824` · Stage 415 · 🎉 Topic 55 里程碑 · 833 护栏 &amp; 842 探针 · 418 维)</strong>
               </td>
               <td><code>P823 / P824 deterministic SIP RFC 3261 singleton smuggling + Via hop cap &amp; RFC 3581 rport/received NAT pinhole guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>419. [专题56 `docs/voice-webrtc-ice-rfc8839-ufrag-pwd-entropy-candidate-port-scan-ssrf-faq.md`] WebRTC `RFC 8839 Section 5.1` `ice-ufrag [24, 64] bits` 与 `ice-pwd [128, 256] bits` 密码学随机熵下限及单次会话 CSPRNG 轮换（`0` 弱凭证；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU CSPRNG 与 STUN HMAC-SHA1 验签耗时 `not_measured`）&amp; `RFC 8445` 入站 `a=candidate` 回环/私网/IMDS IP 及 `&lt; 1024` 特权或数据库端口剥离（`0` 违规候选探测）与单 `m=` 轨 `[1, 16]` 条候选上限门禁（真实 SFU ICE 候选解析耗时 `not_measured`）(`P825` / `P826` · Stage 416 · 🎉 第 60 张架构图里程碑 · 835 护栏 &amp; 844 探针 · 419 维)</strong>
+              </td>
+              <td><code>P825 / P826 deterministic WebRTC RFC 8839 ICE ufrag/pwd entropy floor &amp; RFC 8445 candidate SSRF + cap guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

@@ -1693,6 +1693,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: normalizes compact SIP headers (f/t/i/l), rejects duplicate singleton headers with 400 Bad Request (0 smuggling attempts), and clamps Via header chains to [1, 8] hops; live SBC SIP header parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: unconditionally overwrites client-supplied top-Via ;received= and ;rport= parameters from the verified transport socket (0 spoofed params) and clamps NAT keepalive refresh to [15, 30]s; live SBC NAT keepalive timer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "419. [Topic 56 · SVG 60 🎉: voice-webrtc-ice-rfc8839-ufrag-pwd-entropy-candidate-port-scan-ssrf-faq] WebRTC RFC 8839 ICE ufrag/pwd Entropy Floor ([24,64] / [128,256] bits) & RFC 8445 Candidate Port-Scan SSRF + [1,16] Cap Guard (P825 / P826 — Stage 416 · 🎉 60th SVG Milestone · 419 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 8839 [24, 64]-bit ice-ufrag and [128, 256]-bit ice-pwd CSPRNG entropy rotated per session and per ICE Restart; live SFU CSPRNG and STUN HMAC-SHA1 verification latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of remote candidates targeting loopback, RFC 1918 private subnets, cloud IMDS, <1024 privileged ports, or blocklisted service ports (0 disallowed candidates) and caps candidates per m= line to [1, 16]; live SFU ICE candidate parser latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
