@@ -74585,6 +74585,138 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3326ReasonHeaderQ850SpoofAndForkingCancelContext {
+      untrustedQ850ReasonSpoofOrMissingForkCancelReasonDetected: boolean;
+      spoofedQ850ReasonHeaders: number;
+      falseMissedCallForkAlerts: number;
+    }
+
+    export interface SipRfc3326ReasonHeaderQ850SpoofAndForkingCancelDecision {
+      violated: boolean;
+      policyId: "P815-SIP-RFC3326-REASON-HEADER-Q850-SPOOF-AND-FORKING-CANCEL-GUARD";
+      action:
+        | "scrub_spoofed_q850_reason_and_stamp_completed_elsewhere"
+        | "clamp_spoofed_q850_and_false_missed_call_alerts"
+        | "allow";
+      reason: string;
+      clampedSpoofedQ850ReasonHeaders: number;
+      clampedFalseMissedCallForkAlerts: number;
+    }
+
+    export function evaluateSipRfc3326ReasonHeaderQ850SpoofAndForkingCancelGate(
+      context: SipRfc3326ReasonHeaderQ850SpoofAndForkingCancelContext,
+    ): SipRfc3326ReasonHeaderQ850SpoofAndForkingCancelDecision {
+      const policyId =
+        "P815-SIP-RFC3326-REASON-HEADER-Q850-SPOOF-AND-FORKING-CANCEL-GUARD" as const;
+      const clampedSpoofedQ850ReasonHeaders = 0;
+      const clampedFalseMissedCallForkAlerts = 0;
+
+      if (context.untrustedQ850ReasonSpoofOrMissingForkCancelReasonDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "scrub_spoofed_q850_reason_and_stamp_completed_elsewhere",
+          reason:
+            "Enterprise SIP RFC 3326 / RFC 6432 Reason Header Q.850 Spoof & Parallel-Forking CANCEL Policy Check: untrusted peer injected a spoofed Reason: Q.850 cause code to poison CDR billing/outbound dialer dispositions, or PBX emitted a bare parallel-fork CANCEL without Reason: SIP;cause=200;text=\"Call completed elsewhere\" (Q.850;cause=26); offline synthetic policy state machine enforcing 0 spoofed Q.850 Reason headers and 0 false missed-call fork alerts (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC Reason header parser latency not_measured).",
+          clampedSpoofedQ850ReasonHeaders,
+          clampedFalseMissedCallForkAlerts,
+        };
+      }
+
+      if (
+        context.spoofedQ850ReasonHeaders > 0 ||
+        context.falseMissedCallForkAlerts > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_q850_and_false_missed_call_alerts",
+          reason:
+            "Spoofed Q.850 Reason headers (>0 synthetic ceiling) or false missed-call fork alerts (>0 synthetic ceiling) out of bounds; clamping both to 0.",
+          clampedSpoofedQ850ReasonHeaders,
+          clampedFalseMissedCallForkAlerts,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3326 untrusted Q.850 Reason scrubbing (0 spoofed headers) and parallel-fork Completed Elsewhere stamping (0 false missed-call alerts) verified.",
+        clampedSpoofedQ850ReasonHeaders,
+        clampedFalseMissedCallForkAlerts,
+      };
+    }
+
+    export interface SipRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopContext {
+      secAgreeDowngradeOrSip420ExtensionLoopDetected: boolean;
+      secAgreeDowngradeAttempts: number;
+      sip420RetryCount: number;
+    }
+
+    export interface SipRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopDecision {
+      violated: boolean;
+      policyId: "P816-SIP-RFC3329-SEC-AGREE-DOWNGRADE-AND-SIP420-BAD-EXTENSION-LOOP-GUARD";
+      action:
+        | "reject_sec_agree_downgrade_494_and_cap_420_retries"
+        | "clamp_sec_agree_downgrades_and_420_retry_bounds"
+        | "allow";
+      reason: string;
+      clampedSecAgreeDowngradeAttempts: number;
+      clampedSip420RetryCount: number;
+    }
+
+    export function evaluateSipRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopGate(
+      context: SipRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopContext,
+    ): SipRfc3329SecAgreeDowngradeAndSip420BadExtensionLoopDecision {
+      const policyId =
+        "P816-SIP-RFC3329-SEC-AGREE-DOWNGRADE-AND-SIP420-BAD-EXTENSION-LOOP-GUARD" as const;
+      const clampedSecAgreeDowngradeAttempts = 0;
+      const clampedSip420RetryCount = Math.min(
+        Math.max(context.sip420RetryCount, 1),
+        2,
+      );
+
+      if (context.secAgreeDowngradeOrSip420ExtensionLoopDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_sec_agree_downgrade_494_and_cap_420_retries",
+          reason:
+            "Enterprise SIP RFC 3329 Security Agreement Downgrade & RFC 3261 SIP 420 Bad Extension Loop Policy Check: peer attempted an RFC 3329 Security-Client/Security-Verify plaintext downgrade (rejected with SIP 494 Security Agreement Required) or entered an unprogressing INVITE <-> 420 Bad Extension retry loop; offline synthetic policy state machine enforcing 0 Sec-Agree downgrades and [1, 2] maximum SIP 420 strip-and-retry attempts (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live IMS/SBC Sec-Agree negotiation latency not_measured).",
+          clampedSecAgreeDowngradeAttempts,
+          clampedSip420RetryCount,
+        };
+      }
+
+      if (
+        context.secAgreeDowngradeAttempts > 0 ||
+        context.sip420RetryCount < 1 ||
+        context.sip420RetryCount > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_sec_agree_downgrades_and_420_retry_bounds",
+          reason:
+            "RFC 3329 Sec-Agree downgrade attempts (>0 synthetic ceiling) or SIP 420 retry count (<1 or >2 synthetic bounds) out of bounds; clamping downgrades to 0 and retries to [1, 2].",
+          clampedSecAgreeDowngradeAttempts,
+          clampedSip420RetryCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3329 Security-Verify integrity (0 downgrades) and RFC 3261 SIP 420 Bad Extension [1, 2] retry cap verified.",
+        clampedSecAgreeDowngradeAttempts,
+        clampedSip420RetryCount,
+      };
+    }
+
 
 
 

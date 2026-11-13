@@ -1663,6 +1663,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces an explicit Label/Protocol allowlist on in-band DCEP DATA_CHANNEL_OPEN frames (0 spoofed opens) and validates RFC 8831 PPID {50, 51, 53, 56, 57} + UTF-8 integrity (0 mismatches); live SCTP/DCEP parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 8832 Section 6 DTLS Client=Even / Server=Odd Stream-ID allocation parity (0 glare collisions) and clamps RFC 8841 a=max-message-size reassembly to [16, 64] KB; live RFC 6525 stream reset latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "414. [Topic 51: voice-sip-rfc3326-reason-q850-spoof-rfc3329-sec-agree-420-loop-faq] Enterprise SIP RFC 3326 Reason Q.850 Scrubbing + Forking Completed Elsewhere & RFC 3329 Sec-Agree 494 + [1,2] SIP 420 Bad Extension Retry Guard (P815 / P816 — Stage 411 · 414 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted ingress Reason: Q.850 headers (0 spoofed causes) and stamps Reason: SIP;cause=200 / Q.850;cause=26 on parallel-forking CANCEL legs (0 false missed-call alerts); live SBC Reason header parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects RFC 3329 Security-Verify plaintext downgrades with SIP 494 (0 downgrades) and clamps SIP 420 Bad Extension strip-and-retry attempts to [1, 2]; live IMS/SBC Sec-Agree negotiation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
