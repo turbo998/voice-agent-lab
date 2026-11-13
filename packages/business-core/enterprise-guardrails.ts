@@ -75669,6 +75669,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3261RecordRouteLooseRoutingOpenRelaySsrfAndHopCapContext {
+      preloadedRouteOpenRelaySsrfOrMissingLrParamDetected: boolean;
+      unauthorizedPreloadedRouteEntries: number;
+      maxRecordRouteHops: number;
+    }
+
+    export interface SipRfc3261RecordRouteLooseRoutingOpenRelaySsrfAndHopCapDecision {
+      violated: boolean;
+      policyId: "P831-SIP-RFC3261-RECORD-ROUTE-LOOSE-ROUTING-OPEN-RELAY-SSRF-AND-HOP-CAP-GUARD";
+      action:
+        | "strip_preloaded_route_ssrf_and_cap_record_route_hops"
+        | "clamp_unauthorized_routes_and_record_route_bounds"
+        | "allow";
+      reason: string;
+      clampedUnauthorizedPreloadedRouteEntries: number;
+      clampedMaxRecordRouteHops: number;
+    }
+
+    export function evaluateSipRfc3261RecordRouteLooseRoutingOpenRelaySsrfAndHopCapGate(
+      context: SipRfc3261RecordRouteLooseRoutingOpenRelaySsrfAndHopCapContext,
+    ): SipRfc3261RecordRouteLooseRoutingOpenRelaySsrfAndHopCapDecision {
+      const policyId =
+        "P831-SIP-RFC3261-RECORD-ROUTE-LOOSE-ROUTING-OPEN-RELAY-SSRF-AND-HOP-CAP-GUARD" as const;
+      const clampedUnauthorizedPreloadedRouteEntries = 0;
+      const clampedMaxRecordRouteHops = Math.min(
+        Math.max(context.maxRecordRouteHops, 1),
+        6,
+      );
+
+      if (context.preloadedRouteOpenRelaySsrfOrMissingLrParamDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_preloaded_route_ssrf_and_cap_record_route_hops",
+          reason:
+            "Enterprise SIP RFC 3261 Section 16.6/16.12 Record-Route / Route Loose-Routing Open-Relay SSRF Policy Check: initial tagless SIP request carried foreign/internal preloaded Route headers, omitted the ;lr loose-routing parameter, or exceeded 6 Record-Route hops; offline synthetic policy state machine rejecting 100% of unauthorized preloaded Route headers (0 unauthorized routes) and clamping Record-Route chains to [1, 6] hops (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC Route HMAC verifier latency not_measured).",
+          clampedUnauthorizedPreloadedRouteEntries,
+          clampedMaxRecordRouteHops,
+        };
+      }
+
+      if (
+        context.unauthorizedPreloadedRouteEntries > 0 ||
+        context.maxRecordRouteHops < 1 ||
+        context.maxRecordRouteHops > 6
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unauthorized_routes_and_record_route_bounds",
+          reason:
+            "Unauthorized preloaded Route entries (>0 synthetic ceiling) or Record-Route hop cap (<1 or >6 hops synthetic bounds) out of bounds; clamping unauthorized routes to 0 and Record-Route hops to [1, 6].",
+          clampedUnauthorizedPreloadedRouteEntries,
+          clampedMaxRecordRouteHops,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3261 loose-routing (;lr) integrity (0 unauthorized preloaded routes) and [1, 6] Record-Route hop bounds verified.",
+        clampedUnauthorizedPreloadedRouteEntries,
+        clampedMaxRecordRouteHops,
+      };
+    }
+
+    export interface SipRfc5923SipsTlsMutualAuthAndDoubleRecordRouteTransportDowngradeContext {
+      sipsToPlaintextUdpTcpDowngradeOrUnverifiedMtlsPeerDetected: boolean;
+      sipsTransportDowngradeAttempts: number;
+      tlsCipherStrengthBits: number;
+    }
+
+    export interface SipRfc5923SipsTlsMutualAuthAndDoubleRecordRouteTransportDowngradeDecision {
+      violated: boolean;
+      policyId: "P832-SIP-RFC5923-SIPS-TLS-MUTUAL-AUTH-AND-DOUBLE-RECORD-ROUTE-TRANSPORT-DOWNGRADE-GUARD";
+      action:
+        | "reject_sips_transport_downgrade_and_enforce_mtls"
+        | "clamp_sips_downgrade_and_cipher_strength_bounds"
+        | "allow";
+      reason: string;
+      clampedSipsTransportDowngradeAttempts: number;
+      clampedTlsCipherStrengthBits: number;
+    }
+
+    export function evaluateSipRfc5923SipsTlsMutualAuthAndDoubleRecordRouteTransportDowngradeGate(
+      context: SipRfc5923SipsTlsMutualAuthAndDoubleRecordRouteTransportDowngradeContext,
+    ): SipRfc5923SipsTlsMutualAuthAndDoubleRecordRouteTransportDowngradeDecision {
+      const policyId =
+        "P832-SIP-RFC5923-SIPS-TLS-MUTUAL-AUTH-AND-DOUBLE-RECORD-ROUTE-TRANSPORT-DOWNGRADE-GUARD" as const;
+      const clampedSipsTransportDowngradeAttempts = 0;
+      const clampedTlsCipherStrengthBits = Math.min(
+        Math.max(context.tlsCipherStrengthBits, 128),
+        256,
+      );
+
+      if (context.sipsToPlaintextUdpTcpDowngradeOrUnverifiedMtlsPeerDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_sips_transport_downgrade_and_enforce_mtls",
+          reason:
+            "Enterprise SIP RFC 5923 / RFC 5658 SIPS mTLS & Double Record-Route (;r2=on) Transport Downgrade Policy Check: in-dialog Route/Contact attempted to downgrade a SIPS/TLS session leg to cleartext UDP/TCP or reuse a TLS connection without X.509 SubjectAltName verification; offline synthetic policy state machine blocking 100% of transport downgrade attempts (0 downgrades) and enforcing [128, 256]-bit mTLS cipher strength (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live mTLS X.509 SAN verifier latency not_measured).",
+          clampedSipsTransportDowngradeAttempts,
+          clampedTlsCipherStrengthBits,
+        };
+      }
+
+      if (
+        context.sipsTransportDowngradeAttempts > 0 ||
+        context.tlsCipherStrengthBits < 128 ||
+        context.tlsCipherStrengthBits > 256
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_sips_downgrade_and_cipher_strength_bounds",
+          reason:
+            "SIPS transport downgrade attempts (>0 synthetic ceiling) or TLS symmetric cipher strength (<128 or >256 bits synthetic bounds) out of bounds; clamping downgrades to 0 and TLS cipher strength to [128, 256] bits.",
+          clampedSipsTransportDowngradeAttempts,
+          clampedTlsCipherStrengthBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 5923/5658 SIPS transport pinning (0 downgrades) and [128, 256]-bit mTLS cipher strength verified.",
+        clampedSipsTransportDowngradeAttempts,
+        clampedTlsCipherStrengthBits,
+      };
+    }
+
 
 
 

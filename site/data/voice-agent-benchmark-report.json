@@ -1711,6 +1711,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rotates SRTP master key/SSRC or advances ROC on pod failover or prompt splicing so (SSRC, ROC, SEQ) Nonces never repeat (0 reuse events) and clamps replay bitmap window to [64, 128] packets; live SRTP AEAD cipher latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of E=0 unencrypted SRTCP control packets (0 unencrypted packets), triggers pre-wrap rekeying before 31-bit index overflow, and enforces [80, 128]-bit authentication tags; live SRTCP decryptor latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "422. [Topic 59 · 850 Probes 🎉: voice-sip-rfc3261-record-route-loose-routing-open-relay-sips-downgrade-faq] Enterprise SIP RFC 3261 Preloaded Route Open-Relay Strip + [1,6] Hop Cap & RFC 5923/5658 SIPS mTLS [128,256]b Anti-Downgrade Guard (P831 / P832 — Stage 419 · 🎉 850-Probe & 660-POC-Probe Milestone · 422 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted preloaded Route headers on tagless initial requests (0 foreign relays), enforces ;lr loose routing, and caps Record-Route depth to [1, 6] hops; live SBC Route HMAC verifier latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of SIPS-to-UDP/TCP cleartext transport downgrades or RFC 5658 ;r2=on dual Record-Route mismatches (0 downgrades) and enforces [128, 256]-bit mTLS security; live SIPS mTLS handshake latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

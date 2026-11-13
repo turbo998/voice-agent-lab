@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg63" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent63" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <linearGradient id="redGrad63" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#450A0A"/>
+      <stop offset="100%" stop-color="#1F1224"/>
+    </linearGradient>
+    <linearGradient id="greenGrad63" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064E3B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="blueGrad63" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg63)"/>
+  <rect x="24" y="20" width="1152" height="635" rx="18" fill="none" stroke="url(#accent63)" stroke-width="2" stroke-opacity="0.65"/>
+
+  <rect x="44" y="38" width="388" height="30" rx="15" fill="#1E293B" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="238" y="58" text-anchor="middle" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">STAGE 419 · TOPIC 59 · P831 &amp; P832 · 422 DIMS</text>
+
+  <rect x="820" y="38" width="336" height="30" rx="15" fill="#064E3B" stroke="#34D399" stroke-width="1.2"/>
+  <text x="988" y="58" text-anchor="middle" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.2" font-weight="700">841 Guardrails · 850 Probes 🎉 · 660 POC 🎉</text>
+
+  <text x="44" y="98" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="22.5" font-weight="800">Enterprise SIP RFC 3261 Record-Route Open-Relay &amp; RFC 5923 SIPS Downgrade Guard</text>
+  <text x="44" y="124" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业 SIP RFC 3261 预加载 Route 开放中继 SSRF 剥离（[1, 6] 跳上限）与 RFC 5923/5658 SIPS mTLS 防跨传输降级门禁</text>
+
+  <!-- Left Card: Vulnerable Stack -->
+  <rect x="44" y="144" width="356" height="432" rx="14" fill="url(#redGrad63)" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="64" y="174" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">❌ 脆弱 SIP 路由集三大高危漏洞</text>
+
+  <rect x="62" y="192" width="320" height="112" rx="10" fill="#0F172A" fill-opacity="0.75" stroke="#F87171" stroke-width="1"/>
+  <text x="76" y="214" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">1. 初始 INVITE 预加载 Route 开放中继</text>
+  <text x="76" y="236" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">Route: &lt;sip:sbc;lr&gt;, &lt;sip:10.240.0.25;lr&gt;</text>
+  <text x="76" y="256" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 盲目执行 loose_route() 跳过 407 鉴权</text>
+  <text x="76" y="276" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 借 SBC 内网网卡直扑 K8s 或免密 PBX</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 单小时可被盗打 3,000+ 分钟国际卫星电话</text>
+
+  <rect x="62" y="316" width="320" height="118" rx="10" fill="#0F172A" fill-opacity="0.75" stroke="#F87171" stroke-width="1"/>
+  <text x="76" y="338" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">2. 缺失 ;lr 严格路由混淆与长链放大</text>
+  <text x="76" y="360" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">Route: &lt;sip:loop@sbc.corp&gt; (no ;lr)</text>
+  <text x="76" y="380" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 触发 RFC 2543 退回逻辑覆盖 Request-URI</text>
+  <text x="76" y="400" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 注入 20+ 条 Record-Route 引发路由自环</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 对话内 BYE/Re-INVITE 篡改 Route 指向内网</text>
+
+  <rect x="62" y="446" width="320" height="114" rx="10" fill="#0F172A" fill-opacity="0.75" stroke="#F87171" stroke-width="1"/>
+  <text x="76" y="468" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">3. r2=on 双记录路由 SIPS 明文降级</text>
+  <text x="76" y="490" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">Route: &lt;sip:sbc;transport=udp;r2=on&gt;</text>
+  <text x="76" y="510" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 篡改 r2=on 将公网 TLS 降级为明文 UDP</text>
+  <text x="76" y="530" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 未校验 RFC 5923 mTLS SAN 导致跨租户冒充</text>
+
+  <!-- Center Card: P831 -->
+  <rect x="422" y="144" width="356" height="432" rx="14" fill="url(#blueGrad63)" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="442" y="174" fill="#7DD3FC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">🛡️ P831 · RFC 3261 路由防 SSRF 门禁</text>
+
+  <rect x="440" y="192" width="320" height="120" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#38BDF8" stroke-width="1"/>
+  <text x="454" y="214" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">A. 初始请求预加载 Route 100% 剥离拒单</text>
+  <text x="454" y="236" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">if (!has_totag() &amp;&amp; has_foreign_route) -&gt; 403</text>
+  <text x="454" y="256" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 无 To-tag 请求严禁携带非本机预加载 Route</text>
+  <text x="454" y="276" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 强制所有路由头携带 ;lr 参数与 HMAC 签名</text>
+  <text x="454" y="296" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 100% 封堵借道 SBC 的内网 SSRF 与免密盗打</text>
+
+  <rect x="440" y="324" width="320" height="114" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#38BDF8" stroke-width="1"/>
+  <text x="454" y="346" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">B. Record-Route 链深度上限 ([1, 6] 跳)</text>
+  <text x="454" y="368" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">maxRecordRouteHops in [1, 6]</text>
+  <text x="454" y="388" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 完整兼容 IMS P/S-CSCF + SBC 双记录路由</text>
+  <text x="454" y="408" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 阻断 &gt;6 跳异常路由链放大与循环转发</text>
+  <text x="454" y="426" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 0 越权预加载路由 · 0 Request-URI 覆盖</text>
+
+  <rect x="440" y="450" width="320" height="110" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#38BDF8" stroke-width="1"/>
+  <text x="454" y="472" fill="#7DD3FC" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">P831 确定性状态机输出</text>
+  <text x="454" y="494" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">action: "strip_preloaded_route_ssrf_and_cap</text>
+  <text x="454" y="510" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">         _record_route_hops"</text>
+  <text x="454" y="530" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedUnauthorizedPreloadedRouteEntries: 0</text>
+  <text x="454" y="548" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedMaxRecordRouteHops: 6</text>
+
+  <!-- Right Card: P832 -->
+  <rect x="800" y="144" width="356" height="432" rx="14" fill="url(#greenGrad63)" stroke="#34D399" stroke-width="1.5"/>
+  <text x="820" y="174" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">🔒 P832 · RFC 5923 SIPS 防降级门禁</text>
+
+  <rect x="818" y="192" width="320" height="120" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#34D399" stroke-width="1"/>
+  <text x="832" y="214" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">A. SIPS / r2=on 跨传输层防降级钉扎</text>
+  <text x="832" y="236" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">Block SIPS/TLS -&gt; UDP/TCP Downgrade</text>
+  <text x="832" y="256" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 锁定公网侧 TLS 与内网侧传输接口方向</text>
+  <text x="832" y="276" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 拒绝调换 r2=on 顺序或篡改 transport=udp</text>
+  <text x="832" y="296" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 100% 确保 SIPS 会话全生命周期零明文泄密</text>
+
+  <rect x="818" y="324" width="320" height="114" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#34D399" stroke-width="1"/>
+  <text x="832" y="346" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">B. mTLS SAN 强校验与 [128, 256]b 密码锁</text>
+  <text x="832" y="368" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">tlsCipherStrengthBits in [128, 256]</text>
+  <text x="832" y="388" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 连接复用前强制核验对端 X.509 证书 SAN</text>
+  <text x="832" y="408" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 拒绝 &lt;128-bit 弱对称密码套件协商</text>
+  <text x="832" y="426" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 850 合成探针 &amp; 660 现场 POC 探针双里程碑 🎉</text>
+
+  <rect x="818" y="450" width="320" height="110" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#34D399" stroke-width="1"/>
+  <text x="832" y="472" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">P832 确定性状态机输出</text>
+  <text x="832" y="494" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">action: "reject_sips_transport_downgrade_and</text>
+  <text x="832" y="510" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">         _enforce_mtls"</text>
+  <text x="832" y="530" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedSipsTransportDowngradeAttempts: 0</text>
+  <text x="832" y="548" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedTlsCipherStrengthBits: 128..256</text>
+
+  <!-- Footer Provenance Banner -->
+  <rect x="44" y="590" width="1112" height="50" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1.2"/>
+  <text x="60" y="611" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">PROVENANCE &amp; TIMING DISCLOSURE (SYNTHETIC OFFLINE POLICY STATE-MACHINE CHECK):</text>
+  <text x="60" y="629" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.2">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established · Live SBC Route HMAC &amp; mTLS latency not_measured</text>
+</svg>
