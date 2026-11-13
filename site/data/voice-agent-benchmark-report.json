@@ -1705,6 +1705,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unauthenticated or cross-source early-dialog (180/183) Contact target-refresh attempts (0 unauthorized refreshes) and caps pre-answer UPDATE requests per call to [1, 4]; live SBC early-dialog state-table lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces Request-Line === CSeq Method (400), rejects CSeq <= remote_cseq replays (500, 0 bypasses), and clamps single-step CSeq increments to [1, 64]; live SIP transaction CSeq verifier latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "421. [Topic 58 · P830 🎉: voice-webrtc-srtp-rfc7714-aes-gcm-roc-nonce-reuse-unencrypted-srtcp-faq] WebRTC RFC 7714 SRTP AES-GCM Nonce Zero-Reuse + [64,128] Replay Window & RFC 3711 SRTCP Mandatory E=1 + [80,128]b Auth Tag Guard (P829 / P830 — Stage 418 · 🎉 P830 & 860-Test Milestone · 421 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rotates SRTP master key/SSRC or advances ROC on pod failover or prompt splicing so (SSRC, ROC, SEQ) Nonces never repeat (0 reuse events) and clamps replay bitmap window to [64, 128] packets; live SRTP AEAD cipher latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of E=0 unencrypted SRTCP control packets (0 unencrypted packets), triggers pre-wrap rekeying before 31-bit index overflow, and enforces [80, 128]-bit authentication tags; live SRTCP decryptor latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

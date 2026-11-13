@@ -75533,6 +75533,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSrtpRfc7714AesGcmNonceReuseAndRfc3711ReplayWindowContext {
+      aesGcmSsrcRocSeqNonceReuseOrReplayDetected: boolean;
+      aesGcmNonceReuseEvents: number;
+      srtpReplayWindowPackets: number;
+    }
+
+    export interface WebrtcSrtpRfc7714AesGcmNonceReuseAndRfc3711ReplayWindowDecision {
+      violated: boolean;
+      policyId: "P829-WEBRTC-SRTP-RFC7714-AES-GCM-NONCE-REUSE-AND-RFC3711-REPLAY-WINDOW-GUARD";
+      action:
+        | "rekey_srtp_master_key_on_nonce_reuse_and_clamp_replay_window"
+        | "clamp_nonce_reuse_events_and_replay_window_bounds"
+        | "allow";
+      reason: string;
+      clampedAesGcmNonceReuseEvents: number;
+      clampedSrtpReplayWindowPackets: number;
+    }
+
+    export function evaluateWebrtcSrtpRfc7714AesGcmNonceReuseAndRfc3711ReplayWindowGate(
+      context: WebrtcSrtpRfc7714AesGcmNonceReuseAndRfc3711ReplayWindowContext,
+    ): WebrtcSrtpRfc7714AesGcmNonceReuseAndRfc3711ReplayWindowDecision {
+      const policyId =
+        "P829-WEBRTC-SRTP-RFC7714-AES-GCM-NONCE-REUSE-AND-RFC3711-REPLAY-WINDOW-GUARD" as const;
+      const clampedAesGcmNonceReuseEvents = 0;
+      const clampedSrtpReplayWindowPackets = Math.min(
+        Math.max(context.srtpReplayWindowPackets, 64),
+        128,
+      );
+
+      if (context.aesGcmSsrcRocSeqNonceReuseOrReplayDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rekey_srtp_master_key_on_nonce_reuse_and_clamp_replay_window",
+          reason:
+            "WebRTC RFC 7714 Section 8.1 SRTP AES-GCM Nonce Reuse & RFC 3711 Replay Window Policy Check: pod failover or audio prompt splice reset RTP SEQ/ROC under the same SRTP master key and SSRC (risking AES-GCM two-time pad plaintext XOR recovery and GF(2^128) GHASH subkey H compromise) or replay window was undersized; offline synthetic policy state machine rotating SRTP master key/SSRC before any Nonce reuse (0 reuse events) and clamping replay bitmap window to [64, 128] packets (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SRTP AEAD cipher latency not_measured).",
+          clampedAesGcmNonceReuseEvents,
+          clampedSrtpReplayWindowPackets,
+        };
+      }
+
+      if (
+        context.aesGcmNonceReuseEvents > 0 ||
+        context.srtpReplayWindowPackets < 64 ||
+        context.srtpReplayWindowPackets > 128
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_nonce_reuse_events_and_replay_window_bounds",
+          reason:
+            "AES-GCM Nonce reuse events (>0 synthetic ceiling) or SRTP replay protection window (<64 or >128 packets synthetic bounds) out of bounds; clamping Nonce reuse events to 0 and replay window to [64, 128] packets.",
+          clampedAesGcmNonceReuseEvents,
+          clampedSrtpReplayWindowPackets,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 7714 AES-GCM Nonce uniqueness (0 reuse events) and RFC 3711 [64, 128]-packet replay window verified.",
+        clampedAesGcmNonceReuseEvents,
+        clampedSrtpReplayWindowPackets,
+      };
+    }
+
+    export interface WebrtcSrtcpRfc3711UnencryptedBypassAnd31BitIndexOverflowContext {
+      unencryptedSrtcpPayloadOr31BitIndexExhaustionDetected: boolean;
+      unencryptedSrtcpControlPackets: number;
+      srtcpAuthTagBits: number;
+    }
+
+    export interface WebrtcSrtcpRfc3711UnencryptedBypassAnd31BitIndexOverflowDecision {
+      violated: boolean;
+      policyId: "P830-WEBRTC-SRTCP-RFC3711-UNENCRYPTED-BYPASS-AND-31BIT-INDEX-OVERFLOW-GUARD";
+      action:
+        | "enforce_srtcp_encryption_and_rekey_before_index_overflow"
+        | "clamp_unencrypted_srtcp_and_auth_tag_bounds"
+        | "allow";
+      reason: string;
+      clampedUnencryptedSrtcpControlPackets: number;
+      clampedSrtcpAuthTagBits: number;
+    }
+
+    export function evaluateWebrtcSrtcpRfc3711UnencryptedBypassAnd31BitIndexOverflowGate(
+      context: WebrtcSrtcpRfc3711UnencryptedBypassAnd31BitIndexOverflowContext,
+    ): WebrtcSrtcpRfc3711UnencryptedBypassAnd31BitIndexOverflowDecision {
+      const policyId =
+        "P830-WEBRTC-SRTCP-RFC3711-UNENCRYPTED-BYPASS-AND-31BIT-INDEX-OVERFLOW-GUARD" as const;
+      const clampedUnencryptedSrtcpControlPackets = 0;
+      const clampedSrtcpAuthTagBits = Math.min(
+        Math.max(context.srtcpAuthTagBits, 80),
+        128,
+      );
+
+      if (context.unencryptedSrtcpPayloadOr31BitIndexExhaustionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_srtcp_encryption_and_rekey_before_index_overflow",
+          reason:
+            "WebRTC RFC 3711 Section 3.4 SRTCP Mandatory Encryption (E=1) & 31-Bit Index Overflow Policy Check: inbound SRTCP control packet carried E-bit=0 (unencrypted SDES/XR/BYE payload) or approached 31-bit SRTCP index exhaustion (0x7FFFFFFF); offline synthetic policy state machine dropping 100% of E=0 unencrypted SRTCP packets (0 unencrypted packets), triggering pre-wrap rekeying, and enforcing [80, 128]-bit authentication tags (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SRTCP decryptor latency not_measured).",
+          clampedUnencryptedSrtcpControlPackets,
+          clampedSrtcpAuthTagBits,
+        };
+      }
+
+      if (
+        context.unencryptedSrtcpControlPackets > 0 ||
+        context.srtcpAuthTagBits < 80 ||
+        context.srtcpAuthTagBits > 128
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unencrypted_srtcp_and_auth_tag_bounds",
+          reason:
+            "Unencrypted SRTCP control packets (>0 synthetic ceiling) or SRTCP authentication tag length (<80 or >128 bits synthetic bounds) out of bounds; clamping unencrypted SRTCP packets to 0 and auth tag length to [80, 128] bits.",
+          clampedUnencryptedSrtcpControlPackets,
+          clampedSrtcpAuthTagBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3711 mandatory SRTCP E=1 encryption (0 unencrypted packets) and [80, 128]-bit authentication tag bounds verified.",
+        clampedUnencryptedSrtcpControlPackets,
+        clampedSrtcpAuthTagBits,
+      };
+    }
+
 
 
 

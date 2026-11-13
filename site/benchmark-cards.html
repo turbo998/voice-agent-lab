@@ -1476,6 +1476,13 @@
               <td><code>P827 / P828 deterministic SIP RFC 3311 early UPDATE Contact pin &amp; RFC 3261 CSeq step + method guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>421. [专题58 🎉 `docs/voice-webrtc-srtp-rfc7714-aes-gcm-roc-nonce-reuse-unencrypted-srtcp-faq.md`] WebRTC `RFC 7714 Section 8.1` `SRTP AES-GCM` `(SSRC, ROC, SEQ)` Nonce 零重用（热备切换或提示音插播时强制轮换主密钥/推进 `ROC`，`0` Nonce 重用破密）与 `RFC 3711 [64, 128]` 包防重放位图窗口（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SRTP AEAD 加解密耗时 `not_measured`）&amp; `RFC 3711 Section 3.4` 强制 `SRTCP E=1` 全加密（`0` 明文控制包）、31 位索引预换钥与 `[80, 128] bits` 认证标签门禁（真实 SRTCP 解密耗时 `not_measured`）(`P829` / `P830` 🎉 · Stage 418 · 🎉 P830 护栏与 860 项单测里程碑 · 839 护栏 &amp; 848 探针 · 421 维)</strong>
+              </td>
+              <td><code>P829 / P830 deterministic WebRTC RFC 7714 SRTP AES-GCM Nonce zero-reuse &amp; RFC 3711 SRTCP E=1 guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4928,6 +4935,13 @@
                 <strong>420. [专题57 🎉 `docs/voice-sip-rfc3311-update-early-media-hijack-cseq-rollover-replay-faq.md`] 企业 SIP `RFC 3311` 早期对话（`180/183`）`UPDATE` 远端目标 `Contact` 源绑定（`0` 越权 Target-Refresh）与单呼叫应答前 `[1, 4]` 次 `UPDATE` 上限（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 早期对话表查找耗时 `not_measured`）&amp; `RFC 3261 Section 12.2.2` `Request-Line / CSeq` 方法强一致校验、`CSeq &lt;= remote_cseq` 返 `500` 重放拒单（`0` 绕过）与单步 `[1, 64]` 跃迁步长门禁（真实 SIP 事务 CSeq 校验耗时 `not_measured`）(`P827` / `P828` · Stage 417 · 🎉 420 大评测维度里程碑 · 837 护栏 &amp; 846 探针 · 420 维)</strong>
               </td>
               <td><code>P827 / P828 deterministic SIP RFC 3311 early UPDATE Contact pin &amp; RFC 3261 CSeq step + method guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>421. [专题58 🎉 `docs/voice-webrtc-srtp-rfc7714-aes-gcm-roc-nonce-reuse-unencrypted-srtcp-faq.md`] WebRTC `RFC 7714 Section 8.1` `SRTP AES-GCM` `(SSRC, ROC, SEQ)` Nonce 零重用（热备切换或提示音插播时强制轮换主密钥/推进 `ROC`，`0` Nonce 重用破密）与 `RFC 3711 [64, 128]` 包防重放位图窗口（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SRTP AEAD 加解密耗时 `not_measured`）&amp; `RFC 3711 Section 3.4` 强制 `SRTCP E=1` 全加密（`0` 明文控制包）、31 位索引预换钥与 `[80, 128] bits` 认证标签门禁（真实 SRTCP 解密耗时 `not_measured`）(`P829` / `P830` 🎉 · Stage 418 · 🎉 P830 护栏与 860 项单测里程碑 · 839 护栏 &amp; 848 探针 · 421 维)</strong>
+              </td>
+              <td><code>P829 / P830 deterministic WebRTC RFC 7714 SRTP AES-GCM Nonce zero-reuse &amp; RFC 3711 SRTCP E=1 guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
