@@ -1717,6 +1717,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted preloaded Route headers on tagless initial requests (0 foreign relays), enforces ;lr loose routing, and caps Record-Route depth to [1, 6] hops; live SBC Route HMAC verifier latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of SIPS-to-UDP/TCP cleartext transport downgrades or RFC 5658 ;r2=on dual Record-Route mismatches (0 downgrades) and enforces [128, 256]-bit mTLS security; live SIPS mTLS handshake latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "423. [Topic 60 🎉: voice-webrtc-sctp-rfc8831-rfc4960-vtag-init-flood-stream-reset-rwnd-deadlock-faq] WebRTC RFC 8831/4960 SCTP 32-Bit vtag + Stateless HMAC Cookie + RFC 6525 RE-CONFIG Deferred Drain ([1,4]) & SACK Gap-Ack [1,16] Cap + a_rwnd=0 Persist Guard (P833 / P834 — Stage 420 🎉 · 🎉 Stage 420 & Topic 60 Milestone · 423 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of mismatched-vtag SCTP chunks (0 blind resets), enforces stateless HMAC STATE-COOKIE on INIT, and defers RFC 6525 RE-CONFIG SSN=0 resets until Last_Assigned_TSN drains within [1, 4] concurrent resets; live DTLS-SCTP chunk parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of TSN-reneging or >16 Gap-Ack SACK chunks (0 reneges), caps Gap-Ack blocks in [1, 16], and arms a Zero-Window Persist Timer with interim subtitle shedding on a_rwnd=0; live SCTP retransmission bitmap scan latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

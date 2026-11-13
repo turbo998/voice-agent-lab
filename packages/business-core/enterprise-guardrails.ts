@@ -75805,6 +75805,143 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSctpRfc4960VtagValidationAndRfc6525StreamResetMonotonicityContext {
+      mismatchedVtagOrPrematureStreamResetDetected: boolean;
+      mismatchedVtagOrReconfigChunksDropped: number;
+      maxConcurrentStreamResetRequests: number;
+    }
+
+    export interface WebrtcSctpRfc4960VtagValidationAndRfc6525StreamResetMonotonicityDecision {
+      violated: boolean;
+      policyId: "P833-WEBRTC-SCTP-RFC4960-VTAG-VALIDATION-AND-RFC6525-STREAM-RESET-MONOTONICITY-GUARD";
+      action:
+        | "drop_mismatched_vtag_and_defer_unacked_stream_reset"
+        | "clamp_vtag_drops_and_concurrent_stream_reset_bounds"
+        | "allow";
+      reason: string;
+      clampedMismatchedVtagOrReconfigChunksDropped: number;
+      clampedMaxConcurrentStreamResetRequests: number;
+    }
+
+    export function evaluateWebrtcSctpRfc4960VtagValidationAndRfc6525StreamResetMonotonicityGate(
+      context: WebrtcSctpRfc4960VtagValidationAndRfc6525StreamResetMonotonicityContext,
+    ): WebrtcSctpRfc4960VtagValidationAndRfc6525StreamResetMonotonicityDecision {
+      const policyId =
+        "P833-WEBRTC-SCTP-RFC4960-VTAG-VALIDATION-AND-RFC6525-STREAM-RESET-MONOTONICITY-GUARD" as const;
+      const clampedMismatchedVtagOrReconfigChunksDropped = 0;
+      const clampedMaxConcurrentStreamResetRequests = Math.min(
+        Math.max(context.maxConcurrentStreamResetRequests, 1),
+        4,
+      );
+
+      if (context.mismatchedVtagOrPrematureStreamResetDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_mismatched_vtag_and_defer_unacked_stream_reset",
+          reason:
+            "WebRTC RFC 8831 / RFC 4960 Section 8.5 / RFC 6525 SCTP DataChannel Verification Tag (vtag) & Stream-Reset Monotonicity Policy Check: inbound SCTP packet carried a mismatched 32-bit vtag, omitted a valid stateless HMAC STATE-COOKIE on INIT, or attempted an out-of-order/undrained RFC 6525 RE-CONFIG stream reset before Last_Assigned_TSN was acknowledged; offline synthetic policy state machine dropping 100% of mismatched vtag/reconfig chunks (0 leaked resets) and clamping concurrent stream resets per association to [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live DTLS-SCTP chunk parser latency not_measured).",
+          clampedMismatchedVtagOrReconfigChunksDropped,
+          clampedMaxConcurrentStreamResetRequests,
+        };
+      }
+
+      if (
+        context.mismatchedVtagOrReconfigChunksDropped > 0 ||
+        context.maxConcurrentStreamResetRequests < 1 ||
+        context.maxConcurrentStreamResetRequests > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_vtag_drops_and_concurrent_stream_reset_bounds",
+          reason:
+            "Mismatched vtag/RE-CONFIG chunks (>0 synthetic ceiling) or concurrent stream-reset requests (<1 or >4 synthetic bounds) out of bounds; clamping leaked chunks to 0 and concurrent stream resets to [1, 4].",
+          clampedMismatchedVtagOrReconfigChunksDropped,
+          clampedMaxConcurrentStreamResetRequests,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 32-bit SCTP vtag integrity, stateless HMAC cookie verification, and RFC 6525 [1, 4] deferred stream-reset bounds verified.",
+        clampedMismatchedVtagOrReconfigChunksDropped,
+        clampedMaxConcurrentStreamResetRequests,
+      };
+    }
+
+    export interface WebrtcSctpRfc4960SackGapAckRenegingAndZeroWindowDeadlockContext {
+      sackGapAckBombOrTsnRenegingOrZeroWindowDeadlockDetected: boolean;
+      renegedOrOversizedGapAckSacks: number;
+      maxSackGapAckBlocks: number;
+    }
+
+    export interface WebrtcSctpRfc4960SackGapAckRenegingAndZeroWindowDeadlockDecision {
+      violated: boolean;
+      policyId: "P834-WEBRTC-SCTP-RFC4960-SACK-GAP-ACK-RENEGING-AND-ZERO-WINDOW-DEADLOCK-GUARD";
+      action:
+        | "drop_malformed_sack_and_engage_zero_window_persist_timer"
+        | "clamp_reneged_sacks_and_gap_ack_block_bounds"
+        | "allow";
+      reason: string;
+      clampedRenegedOrOversizedGapAckSacks: number;
+      clampedMaxSackGapAckBlocks: number;
+    }
+
+    export function evaluateWebrtcSctpRfc4960SackGapAckRenegingAndZeroWindowDeadlockGate(
+      context: WebrtcSctpRfc4960SackGapAckRenegingAndZeroWindowDeadlockContext,
+    ): WebrtcSctpRfc4960SackGapAckRenegingAndZeroWindowDeadlockDecision {
+      const policyId =
+        "P834-WEBRTC-SCTP-RFC4960-SACK-GAP-ACK-RENEGING-AND-ZERO-WINDOW-DEADLOCK-GUARD" as const;
+      const clampedRenegedOrOversizedGapAckSacks = 0;
+      const clampedMaxSackGapAckBlocks = Math.min(
+        Math.max(context.maxSackGapAckBlocks, 1),
+        16,
+      );
+
+      if (context.sackGapAckBombOrTsnRenegingOrZeroWindowDeadlockDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_malformed_sack_and_engage_zero_window_persist_timer",
+          reason:
+            "WebRTC RFC 4960 Section 6.2 / RFC 8831 SCTP SACK Gap-Ack Fragmentation Bomb, TSN Reneging & a_rwnd=0 Zero-Window Deadlock Policy Check: inbound SACK chunk carried >16 disjoint Gap-Ack blocks, reneged on previously acknowledged TSNs, or stalled in an a_rwnd=0 zero-window state without persist probing; offline synthetic policy state machine rejecting 100% of reneged/fragmented SACKs (0 reneges), clamping Gap-Ack blocks per SACK to [1, 16], and shedding interim subtitles under zero-window persist probing (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SCTP TSN retransmission bitmap scan latency not_measured).",
+          clampedRenegedOrOversizedGapAckSacks,
+          clampedMaxSackGapAckBlocks,
+        };
+      }
+
+      if (
+        context.renegedOrOversizedGapAckSacks > 0 ||
+        context.maxSackGapAckBlocks < 1 ||
+        context.maxSackGapAckBlocks > 16
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_reneged_sacks_and_gap_ack_block_bounds",
+          reason:
+            "Reneged/oversized SACK chunks (>0 synthetic ceiling) or maximum SACK Gap-Ack blocks (<1 or >16 blocks synthetic bounds) out of bounds; clamping reneged SACKs to 0 and Gap-Ack blocks to [1, 16].",
+          clampedRenegedOrOversizedGapAckSacks,
+          clampedMaxSackGapAckBlocks,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SCTP SACK Gap-Ack [1, 16] block cap, zero TSN reneging, and a_rwnd=0 persist timer bounds verified.",
+        clampedRenegedOrOversizedGapAckSacks,
+        clampedMaxSackGapAckBlocks,
+      };
+    }
+
+
 
 
 

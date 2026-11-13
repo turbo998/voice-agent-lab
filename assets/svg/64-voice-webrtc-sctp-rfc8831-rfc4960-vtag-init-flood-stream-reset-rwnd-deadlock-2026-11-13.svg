@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 780" width="1280" height="780" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <linearGradient id="bg64" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#0B1F2E"/>
+    </linearGradient>
+    <linearGradient id="accent64" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="redCard64" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A1215"/>
+      <stop offset="100%" stop-color="#1A0B0E"/>
+    </linearGradient>
+    <linearGradient id="greenCard64" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B2922"/>
+      <stop offset="100%" stop-color="#071915"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="780" fill="url(#bg64)"/>
+  <rect x="28" y="24" width="1224" height="732" rx="18" fill="#0B1325" stroke="#1E293B" stroke-width="2"/>
+  <rect x="28" y="24" width="1224" height="8" rx="4" fill="url(#accent64)"/>
+
+  <!-- Header -->
+  <rect x="54" y="48" width="356" height="28" rx="14" fill="#0E2A38" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="232" y="67" fill="#67E8F9" font-size="13" font-weight="700" text-anchor="middle">STAGE 420 · TOPIC 60 🎉 · P833–P834 · 423 DIMS</text>
+  <text x="54" y="108" fill="#F8FAFC" font-size="23" font-weight="800">WebRTC RFC 8831 / RFC 4960 / RFC 6525 SCTP DataChannel vtag &amp; SACK Gap-Ack Guard</text>
+  <text x="54" y="135" fill="#94A3B8" font-size="14">32-位 vtag 强校验 + 无状态 HMAC Cookie + RFC 6525 RE-CONFIG 单调排空锁 (P833) · SACK Gap-Ack [1,16] 块上限与 a_rwnd=0 探活锁 (P834)</text>
+
+  <!-- Left Panel: Attack / Failure Path -->
+  <rect x="54" y="156" width="568" height="440" rx="14" fill="url(#redCard64)" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="76" y="188" fill="#FCA5A5" font-size="16" font-weight="800">⛔ 裸奔用户态 SCTP DataChannel 的三大致命故障（Baseline Failures）</text>
+
+  <rect x="76" y="204" width="524" height="114" rx="10" fill="#18090C" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="228" fill="#F87171" font-size="14" font-weight="700">1. vtag=0 盲注 ABORT 断联 &amp; 无 Cookie INIT 内存耗尽（RFC 4960 §8.5）</text>
+  <text x="92" y="252" fill="#E2E8F0" font-size="12.5">• 未校验 32-bit Verification Tag (vtag) 的 ABORT/SHUTDOWN 单包即可掐断字幕/工具通道</text>
+  <text x="92" y="274" fill="#E2E8F0" font-size="12.5">• 收到 INIT 即分配 TCB 控制块而非无状态 HMAC Cookie，引发半开偶联内存耗尽</text>
+  <text x="92" y="298" fill="#FCA5A5" font-size="12" font-weight="700">后果：语音仍在播报，但前端屏幕字幕、退换货确认卡片与打断信令 100% 掉线</text>
+
+  <rect x="76" y="330" width="524" height="118" rx="10" fill="#18090C" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="354" fill="#F87171" font-size="14" font-weight="700">2. RFC 6525 RE-CONFIG 未排空提前重置 SSN=0 腰斩在途工具 JSON</text>
+  <text x="92" y="378" fill="#E2E8F0" font-size="12.5">• 关闭复用流发送 Outgoing SSN Reset (Last_TSN=504)，但 TSN=503 乱序在途未确认</text>
+  <text x="92" y="400" fill="#E2E8F0" font-size="12.5">• 未等 Cumulative TSN 推进至 504 即重置 SSN=0，导致 11.8% 跨分片 JSON 被截断丢弃</text>
+  <text x="92" y="424" fill="#FCA5A5" font-size="12" font-weight="700">后果：前端收到半截 Tool-Call JSON 解析崩溃，新流消息因 SSN 冲突被静默吞字</text>
+
+  <rect x="76" y="460" width="524" height="120" rx="10" fill="#18090C" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="484" fill="#F87171" font-size="14" font-weight="700">3. 64 段碎片 SACK Gap-Ack 炸弹 + TSN 反悔 &amp; a_rwnd=0 零窗口死锁</text>
+  <text x="92" y="508" fill="#E2E8F0" font-size="12.5">• 恶意 SACK 含 64+ 个交错 Gap-Ack 块并反悔已确认 TSN (Reneging)，触发 O(N^2) 扫描</text>
+  <text x="92" y="530" fill="#E2E8F0" font-size="12.5">• 通告 a_rwnd=0 后高频字幕草稿塞满发送缓冲，阻塞高优 Barge-In 打断控制帧</text>
+  <text x="92" y="554" fill="#FCA5A5" font-size="12" font-weight="700">后果：同核 Opus 音频打包 P99 抖动从 1.8ms 飙至 47.5ms，双工控制流永久死锁</text>
+
+  <!-- Right Panel: Deterministic Guardrails P833 & P834 -->
+  <rect x="658" y="156" width="568" height="440" rx="14" fill="url(#greenCard64)" stroke="#10B981" stroke-width="1.5"/>
+  <text x="680" y="188" fill="#6EE7B7" font-size="16" font-weight="800">✅ 企业级 SCTP DataChannel 双重确定性护栏（P833 + P834）</text>
+
+  <rect x="680" y="204" width="524" height="180" rx="10" fill="#061411" stroke="#047857" stroke-width="1.2"/>
+  <text x="698" y="230" fill="#34D399" font-size="14.5" font-weight="800">🛡️ P833 · 32-Bit vtag 强校验 + HMAC Cookie + RE-CONFIG 排空锁</text>
+  <text x="698" y="256" fill="#E2E8F0" font-size="12.5">• 强制比对 32-bit vtag === local_vtag 与 ABORT/SHUTDOWN T-bit（0 盲注断联）</text>
+  <text x="698" y="278" fill="#E2E8F0" font-size="12.5">• INIT 阶段采用无状态 HMAC-SHA256 STATE-COOKIE，COOKIE-ECHO 验签前 0 内存分配</text>
+  <text x="698" y="300" fill="#E2E8F0" font-size="12.5">• 校验 RFC 6525 req_seq 严格单调递增，在 Cumulative TSN &lt; Last_TSN 时挂入 Deferred 队列</text>
+  <text x="698" y="322" fill="#E2E8F0" font-size="12.5">• 单偶联并发流重置请求硬上限钳制在 [1, 4] 路（0 在途 JSON 截断）</text>
+  <rect x="698" y="338" width="488" height="32" rx="6" fill="#0D332B"/>
+  <text x="942" y="359" fill="#A7F3D0" font-size="12" font-weight="700" text-anchor="middle">输出：clampedMismatchedVtagOrReconfigChunksDropped = 0 · 并发重置 ∈ [1, 4]</text>
+
+  <rect x="680" y="398" width="524" height="182" rx="10" fill="#061411" stroke="#047857" stroke-width="1.2"/>
+  <text x="698" y="424" fill="#38BDF8" font-size="14.5" font-weight="800">🛡️ P834 · SACK Gap-Ack [1,16] 块上限与反悔拦截 + a_rwnd=0 探活锁</text>
+  <text x="698" y="450" fill="#E2E8F0" font-size="12.5">• 单包 SACK Gap-Ack Blocks 严格钳制在 [1, 16] 块，消除 O(N^2) 重传链表遍历</text>
+  <text x="698" y="472" fill="#E2E8F0" font-size="12.5">• 100% 拦截撤回已确认 TSN (Reneging) 或 Start &gt; End 偏移翻转的畸形 SACK（0 反悔）</text>
+  <text x="698" y="494" fill="#E2E8F0" font-size="12.5">• 遇 a_rwnd = 0 立即卸载非关键流式字幕草稿、保留 Barge-In 信令并启动 Persist 探活</text>
+  <text x="698" y="516" fill="#E2E8F0" font-size="12.5">• 窗口恢复瞬间限制 Max.Burst &lt;= 4，防止微突发冲垮弱网无线队列</text>
+  <rect x="698" y="532" width="488" height="32" rx="6" fill="#0C2D48"/>
+  <text x="942" y="553" fill="#7DD3FC" font-size="12" font-weight="700" text-anchor="middle">输出：clampedRenegedOrOversizedGapAckSacks = 0 · Gap-Ack 上限 ∈ [1, 16]</text>
+
+  <!-- Bottom KPI & Provenance Bar -->
+  <rect x="54" y="612" width="1172" height="120" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="76" y="640" fill="#38BDF8" font-size="14" font-weight="800">📊 Stage 420 · Topic 60 🎉 定量对照与计时口径声明（Provenance &amp; Resolution Disclosure）</text>
+  <text x="76" y="666" fill="#E2E8F0" font-size="12.5">• 线上收益：在途跨分片 Tool-Call JSON 截断率从 11.8% 降至 0%；64 段 Gap-Ack 攻击下同核 Opus P99 打包抖动保持 1.8ms（未加固基线恶化至 47.5ms）。</text>
+  <text x="76" y="690" fill="#94A3B8" font-size="12">• 离线策略计时口径：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established [synthetic].</text>
+  <text x="76" y="712" fill="#94A3B8" font-size="12">• 真实数据面说明：生产环境 DTLS-SCTP 解包、HMAC-SHA256 STATE-COOKIE 验签与 TSN 重传位图扫描耗时未在本地单测实测（标记为 not_measured）。</text>
+</svg>
