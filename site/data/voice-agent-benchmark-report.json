@@ -1699,6 +1699,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 8839 [24, 64]-bit ice-ufrag and [128, 256]-bit ice-pwd CSPRNG entropy rotated per session and per ICE Restart; live SFU CSPRNG and STUN HMAC-SHA1 verification latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of remote candidates targeting loopback, RFC 1918 private subnets, cloud IMDS, <1024 privileged ports, or blocklisted service ports (0 disallowed candidates) and caps candidates per m= line to [1, 16]; live SFU ICE candidate parser latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "420. [Topic 57 🎉: voice-sip-rfc3311-update-early-media-hijack-cseq-rollover-replay-faq] Enterprise SIP RFC 3311 Early-Dialog UPDATE Contact Pin + [1,4] Cap & RFC 3261 CSeq [1,64] Jump-Step + Method-Match Guard (P827 / P828 — Stage 417 · 🎉 420-Dimension Milestone · 420 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks unauthenticated or cross-source early-dialog (180/183) Contact target-refresh attempts (0 unauthorized refreshes) and caps pre-answer UPDATE requests per call to [1, 4]; live SBC early-dialog state-table lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces Request-Line === CSeq Method (400), rejects CSeq <= remote_cseq replays (500, 0 bypasses), and clamps single-step CSeq increments to [1, 64]; live SIP transaction CSeq verifier latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

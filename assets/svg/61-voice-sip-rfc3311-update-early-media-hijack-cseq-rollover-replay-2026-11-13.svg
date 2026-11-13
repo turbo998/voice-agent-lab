@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg61" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent61" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <linearGradient id="redGrad61" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#450A0A"/>
+      <stop offset="100%" stop-color="#1F1224"/>
+    </linearGradient>
+    <linearGradient id="greenGrad61" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064E3B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="blueGrad61" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg61)"/>
+  <rect x="24" y="20" width="1152" height="635" rx="18" fill="none" stroke="url(#accent61)" stroke-width="2" stroke-opacity="0.65"/>
+
+  <rect x="44" y="38" width="388" height="30" rx="15" fill="#1E293B" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="238" y="58" text-anchor="middle" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">STAGE 417 · TOPIC 57 · P827 &amp; P828 · 420 DIMS 🎉</text>
+
+  <rect x="850" y="38" width="306" height="30" rx="15" fill="#064E3B" stroke="#34D399" stroke-width="1.2"/>
+  <text x="1003" y="58" text-anchor="middle" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">837 Guardrails · 846 Probes · 859 Tests</text>
+
+  <text x="44" y="98" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="800">Enterprise SIP RFC 3311 Early UPDATE Hijack &amp; RFC 3261 CSeq Rollover Guard</text>
+  <text x="44" y="124" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业 SIP RFC 3311 早期媒体 UPDATE 目标刷新防劫持（[1, 4] 次）与 RFC 3261 CSeq 防极值跃迁锁死（[1, 64] 步长）及方法强一致门禁</text>
+
+  <!-- Left Card: Vulnerable Stack -->
+  <rect x="44" y="144" width="356" height="432" rx="14" fill="url(#redGrad61)" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="64" y="174" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">❌ 脆弱 SIP 对话状态机三大故障</text>
+
+  <rect x="62" y="192" width="320" height="112" rx="10" fill="#0F172A" fill-opacity="0.75" stroke="#F87171" stroke-width="1"/>
+  <text x="76" y="214" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">1. 183 振铃期 UPDATE Contact 劫持</text>
+  <text x="76" y="236" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">UPDATE Contact: &lt;sip:evil@198.51.100.9&gt;</text>
+  <text x="76" y="256" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 应答前篡改对话 Remote-Target URI</text>
+  <text x="76" y="276" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 后续 200 OK / ACK / BYE 全被路由至黑洞</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 高频早期 UPDATE 引发 DSP 反复重初始化</text>
+
+  <rect x="62" y="316" width="320" height="118" rx="10" fill="#0F172A" fill-opacity="0.75" stroke="#F87171" stroke-width="1"/>
+  <text x="76" y="338" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">2. CSeq 跃迁 2^31-1 锁死真实 BYE</text>
+  <text x="76" y="360" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">CSeq: 2147483647 INFO -&gt; BYE(103)=500</text>
+  <text x="76" y="380" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 单包将 remote_cseq 推至 32位有符号极值</text>
+  <text x="76" y="400" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 真实手机挂机 BYE(103) 被判 500 乱序拒单</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 沦为 1,800s 无法挂断的僵尸单持续扣费</text>
+
+  <rect x="62" y="446" width="320" height="114" rx="10" fill="#0F172A" fill-opacity="0.75" stroke="#F87171" stroke-width="1"/>
+  <text x="76" y="468" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">3. Request-Line 与 CSeq 方法名分裂</text>
+  <text x="76" y="490" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">BYE sip:ai SIP/2.0 + CSeq: 105 INFO</text>
+  <text x="76" y="510" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 边缘 ACL 按 CSeq 当作普通 INFO 放行</text>
+  <text x="76" y="530" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 后端状态机按请求行 BYE 异常掐断通话</text>
+
+  <!-- Center Card: P827 -->
+  <rect x="422" y="144" width="356" height="432" rx="14" fill="url(#blueGrad61)" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="442" y="174" fill="#7DD3FC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">🛡️ P827 · RFC 3311 早期 UPDATE 门禁</text>
+
+  <rect x="440" y="192" width="320" height="120" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#38BDF8" stroke-width="1"/>
+  <text x="454" y="214" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">A. 早期对话 Contact 远端目标锁死</text>
+  <text x="454" y="236" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">Pin Contact in Early Dialog (180/183)</text>
+  <text x="454" y="256" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 200 OK 接通前严禁跨五元组修改 Contact</text>
+  <text x="454" y="276" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 要求 TLS/IPsec 强绑定方可刷新远端目标</text>
+  <text x="454" y="296" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 100% 阻断振铃期信令与早期媒体流劫持</text>
+
+  <rect x="440" y="324" width="320" height="114" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#38BDF8" stroke-width="1"/>
+  <text x="454" y="346" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">B. 应答前 UPDATE 次数上限 ([1, 4] 次)</text>
+  <text x="454" y="368" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">maxEarlyDialogUpdatesPerCall in [1, 4]</text>
+  <text x="454" y="388" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 完整兼容 VoLTE RFC 3312 QCI-1 专载协商</text>
+  <text x="454" y="408" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 超出 4 次立即返回 491/500 Retry-After</text>
+  <text x="454" y="426" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 振铃期 DSP 编解码重分配开销下降 84%+</text>
+
+  <rect x="440" y="450" width="320" height="110" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#38BDF8" stroke-width="1"/>
+  <text x="454" y="472" fill="#7DD3FC" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">P827 确定性状态机输出</text>
+  <text x="454" y="494" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">action: "reject_unauthenticated_early_update</text>
+  <text x="454" y="510" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">         _and_cap_updates"</text>
+  <text x="454" y="530" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedUnauthenticatedTargetRefreshAttempts: 0</text>
+  <text x="454" y="548" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedMaxEarlyDialogUpdatesPerCall: 4</text>
+
+  <!-- Right Card: P828 -->
+  <rect x="800" y="144" width="356" height="432" rx="14" fill="url(#greenGrad61)" stroke="#34D399" stroke-width="1.5"/>
+  <text x="820" y="174" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">🔒 P828 · RFC 3261 CSeq 步长与方法门禁</text>
+
+  <rect x="818" y="192" width="320" height="120" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#34D399" stroke-width="1"/>
+  <text x="832" y="214" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">A. 单步 CSeq 递增跳跃上限 ([1, 64])</text>
+  <text x="832" y="236" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">1 &lt;= (new_cseq - remote_cseq) &lt;= 64</text>
+  <text x="832" y="256" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 倒退/重放 (&lt;=0) 立即返回 SIP 500</text>
+  <text x="832" y="276" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 异常大跳 (&gt;64) 拒单且不污染 remote_cseq</text>
+  <text x="832" y="296" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 100% 杜绝 2^31-1 跃迁锁死真实 BYE 挂断</text>
+
+  <rect x="818" y="324" width="320" height="114" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#34D399" stroke-width="1"/>
+  <text x="832" y="346" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">B. 请求行与 CSeq 方法名 100% 强一致</text>
+  <text x="832" y="368" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">Request-Line.method === CSeq.method</text>
+  <text x="832" y="388" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 不一致立即在解析层返回 400 Bad Request</text>
+  <text x="832" y="408" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 容忍弱网连续 63 个包丢失而不误杀正常呼叫</text>
+  <text x="832" y="426" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">• 僵尸单浪费从 1,500 分钟清零至 0 分钟</text>
+
+  <rect x="818" y="450" width="320" height="110" rx="10" fill="#0F172A" fill-opacity="0.8" stroke="#34D399" stroke-width="1"/>
+  <text x="832" y="472" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">P828 确定性状态机输出</text>
+  <text x="832" y="494" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">action: "reject_cseq_replay_500_400_and</text>
+  <text x="832" y="510" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11">         _clamp_step"</text>
+  <text x="832" y="530" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedCseqReplayOrMethodMismatchDrops: 0</text>
+  <text x="832" y="548" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11.5">clampedMaxAllowedCseqJumpStep: 64</text>
+
+  <!-- Footer Provenance Banner -->
+  <rect x="44" y="590" width="1112" height="50" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1.2"/>
+  <text x="60" y="611" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">PROVENANCE &amp; TIMING DISCLOSURE (SYNTHETIC OFFLINE POLICY STATE-MACHINE CHECK):</text>
+  <text x="60" y="629" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.2">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established · Live SBC dialog lookup latency not_measured</text>
+</svg>

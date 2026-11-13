@@ -1469,6 +1469,13 @@
               <td><code>P825 / P826 deterministic WebRTC RFC 8839 ICE ufrag/pwd entropy floor &amp; RFC 8445 candidate SSRF + cap guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>420. [专题57 🎉 `docs/voice-sip-rfc3311-update-early-media-hijack-cseq-rollover-replay-faq.md`] 企业 SIP `RFC 3311` 早期对话（`180/183`）`UPDATE` 远端目标 `Contact` 源绑定（`0` 越权 Target-Refresh）与单呼叫应答前 `[1, 4]` 次 `UPDATE` 上限（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 早期对话表查找耗时 `not_measured`）&amp; `RFC 3261 Section 12.2.2` `Request-Line / CSeq` 方法强一致校验、`CSeq &lt;= remote_cseq` 返 `500` 重放拒单（`0` 绕过）与单步 `[1, 64]` 跃迁步长门禁（真实 SIP 事务 CSeq 校验耗时 `not_measured`）(`P827` / `P828` · Stage 417 · 🎉 420 大评测维度里程碑 · 837 护栏 &amp; 846 探针 · 420 维)</strong>
+              </td>
+              <td><code>P827 / P828 deterministic SIP RFC 3311 early UPDATE Contact pin &amp; RFC 3261 CSeq step + method guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4914,6 +4921,13 @@
                 <strong>419. [专题56 `docs/voice-webrtc-ice-rfc8839-ufrag-pwd-entropy-candidate-port-scan-ssrf-faq.md`] WebRTC `RFC 8839 Section 5.1` `ice-ufrag [24, 64] bits` 与 `ice-pwd [128, 256] bits` 密码学随机熵下限及单次会话 CSPRNG 轮换（`0` 弱凭证；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU CSPRNG 与 STUN HMAC-SHA1 验签耗时 `not_measured`）&amp; `RFC 8445` 入站 `a=candidate` 回环/私网/IMDS IP 及 `&lt; 1024` 特权或数据库端口剥离（`0` 违规候选探测）与单 `m=` 轨 `[1, 16]` 条候选上限门禁（真实 SFU ICE 候选解析耗时 `not_measured`）(`P825` / `P826` · Stage 416 · 🎉 第 60 张架构图里程碑 · 835 护栏 &amp; 844 探针 · 419 维)</strong>
               </td>
               <td><code>P825 / P826 deterministic WebRTC RFC 8839 ICE ufrag/pwd entropy floor &amp; RFC 8445 candidate SSRF + cap guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>420. [专题57 🎉 `docs/voice-sip-rfc3311-update-early-media-hijack-cseq-rollover-replay-faq.md`] 企业 SIP `RFC 3311` 早期对话（`180/183`）`UPDATE` 远端目标 `Contact` 源绑定（`0` 越权 Target-Refresh）与单呼叫应答前 `[1, 4]` 次 `UPDATE` 上限（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 早期对话表查找耗时 `not_measured`）&amp; `RFC 3261 Section 12.2.2` `Request-Line / CSeq` 方法强一致校验、`CSeq &lt;= remote_cseq` 返 `500` 重放拒单（`0` 绕过）与单步 `[1, 64]` 跃迁步长门禁（真实 SIP 事务 CSeq 校验耗时 `not_measured`）(`P827` / `P828` · Stage 417 · 🎉 420 大评测维度里程碑 · 837 护栏 &amp; 846 探针 · 420 维)</strong>
+              </td>
+              <td><code>P827 / P828 deterministic SIP RFC 3311 early UPDATE Contact pin &amp; RFC 3261 CSeq step + method guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

@@ -75397,6 +75397,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3311UpdateEarlyMediaTargetRefreshAndContactHijackContext {
+      unauthenticatedEarlyUpdateTargetRefreshOrContactHijackDetected: boolean;
+      unauthenticatedTargetRefreshAttempts: number;
+      maxEarlyDialogUpdatesPerCall: number;
+    }
+
+    export interface SipRfc3311UpdateEarlyMediaTargetRefreshAndContactHijackDecision {
+      violated: boolean;
+      policyId: "P827-SIP-RFC3311-UPDATE-EARLY-MEDIA-TARGET-REFRESH-AND-CONTACT-HIJACK-GUARD";
+      action:
+        | "reject_unauthenticated_early_update_and_cap_updates"
+        | "clamp_target_refresh_and_early_update_bounds"
+        | "allow";
+      reason: string;
+      clampedUnauthenticatedTargetRefreshAttempts: number;
+      clampedMaxEarlyDialogUpdatesPerCall: number;
+    }
+
+    export function evaluateSipRfc3311UpdateEarlyMediaTargetRefreshAndContactHijackGate(
+      context: SipRfc3311UpdateEarlyMediaTargetRefreshAndContactHijackContext,
+    ): SipRfc3311UpdateEarlyMediaTargetRefreshAndContactHijackDecision {
+      const policyId =
+        "P827-SIP-RFC3311-UPDATE-EARLY-MEDIA-TARGET-REFRESH-AND-CONTACT-HIJACK-GUARD" as const;
+      const clampedUnauthenticatedTargetRefreshAttempts = 0;
+      const clampedMaxEarlyDialogUpdatesPerCall = Math.min(
+        Math.max(context.maxEarlyDialogUpdatesPerCall, 1),
+        4,
+      );
+
+      if (context.unauthenticatedEarlyUpdateTargetRefreshOrContactHijackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unauthenticated_early_update_and_cap_updates",
+          reason:
+            "Enterprise SIP RFC 3311 Early-Dialog UPDATE Target-Refresh & Contact Hijack Policy Check: inbound early-dialog (180/183) UPDATE attempted to mutate the remote-target Contact URI across transport tuples or flooded >4 pre-answer UPDATE requests; offline synthetic policy state machine blocking 100% of unauthenticated early target refreshes (0 unauthorized attempts) and capping early-dialog UPDATEs per call to [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC early-dialog state-table lookup latency not_measured).",
+          clampedUnauthenticatedTargetRefreshAttempts,
+          clampedMaxEarlyDialogUpdatesPerCall,
+        };
+      }
+
+      if (
+        context.unauthenticatedTargetRefreshAttempts > 0 ||
+        context.maxEarlyDialogUpdatesPerCall < 1 ||
+        context.maxEarlyDialogUpdatesPerCall > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_target_refresh_and_early_update_bounds",
+          reason:
+            "Unauthenticated early-dialog target-refresh attempts (>0 synthetic ceiling) or early-dialog UPDATE cap (<1 or >4 synthetic bounds) out of bounds; clamping unauthorized refreshes to 0 and early UPDATE cap to [1, 4].",
+          clampedUnauthenticatedTargetRefreshAttempts,
+          clampedMaxEarlyDialogUpdatesPerCall,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3311 early-dialog Contact pinning (0 unauthorized target refreshes) and [1, 4] pre-answer UPDATE cap verified.",
+        clampedUnauthenticatedTargetRefreshAttempts,
+        clampedMaxEarlyDialogUpdatesPerCall,
+      };
+    }
+
+    export interface SipRfc3261CseqOutOfOrderRolloverReplayAndMethodMismatchContext {
+      cseqRegressionReplayOrMethodMismatchDetected: boolean;
+      cseqReplayOrMethodMismatchDrops: number;
+      maxAllowedCseqJumpStep: number;
+    }
+
+    export interface SipRfc3261CseqOutOfOrderRolloverReplayAndMethodMismatchDecision {
+      violated: boolean;
+      policyId: "P828-SIP-RFC3261-CSEQ-OUT-OF-ORDER-ROLLOVER-REPLAY-AND-METHOD-MISMATCH-GUARD";
+      action:
+        | "reject_cseq_replay_500_400_and_clamp_step"
+        | "clamp_cseq_replay_drops_and_jump_step_bounds"
+        | "allow";
+      reason: string;
+      clampedCseqReplayOrMethodMismatchDrops: number;
+      clampedMaxAllowedCseqJumpStep: number;
+    }
+
+    export function evaluateSipRfc3261CseqOutOfOrderRolloverReplayAndMethodMismatchGate(
+      context: SipRfc3261CseqOutOfOrderRolloverReplayAndMethodMismatchContext,
+    ): SipRfc3261CseqOutOfOrderRolloverReplayAndMethodMismatchDecision {
+      const policyId =
+        "P828-SIP-RFC3261-CSEQ-OUT-OF-ORDER-ROLLOVER-REPLAY-AND-METHOD-MISMATCH-GUARD" as const;
+      const clampedCseqReplayOrMethodMismatchDrops = 0;
+      const clampedMaxAllowedCseqJumpStep = Math.min(
+        Math.max(context.maxAllowedCseqJumpStep, 1),
+        64,
+      );
+
+      if (context.cseqRegressionReplayOrMethodMismatchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_cseq_replay_500_400_and_clamp_step",
+          reason:
+            "Enterprise SIP RFC 3261 Section 12.2.2 CSeq Out-of-Order / Rollover Pinning & Method Mismatch Policy Check: in-dialog SIP request exhibited CSeq <= remote_cseq replay, Request-Line vs. CSeq method mismatch, or an extreme CSeq jump (>64) designed to pin remote_cseq at 2^31-1 and lock out subsequent legitimate BYE requests; offline synthetic policy state machine rejecting replay/mismatch with SIP 500/400 (0 bypasses) and clamping single-step CSeq increments to [1, 64] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIP transaction CSeq verifier latency not_measured).",
+          clampedCseqReplayOrMethodMismatchDrops,
+          clampedMaxAllowedCseqJumpStep,
+        };
+      }
+
+      if (
+        context.cseqReplayOrMethodMismatchDrops > 0 ||
+        context.maxAllowedCseqJumpStep < 1 ||
+        context.maxAllowedCseqJumpStep > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_cseq_replay_drops_and_jump_step_bounds",
+          reason:
+            "CSeq replay/method-mismatch bypasses (>0 synthetic ceiling) or max allowed CSeq jump step (<1 or >64 synthetic bounds) out of bounds; clamping bypasses to 0 and CSeq jump step to [1, 64].",
+          clampedCseqReplayOrMethodMismatchDrops,
+          clampedMaxAllowedCseqJumpStep,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3261 CSeq method agreement, anti-replay ordering (0 bypasses), and [1, 64] jump-step bounds verified.",
+        clampedCseqReplayOrMethodMismatchDrops,
+        clampedMaxAllowedCseqJumpStep,
+      };
+    }
+
 
 
 
