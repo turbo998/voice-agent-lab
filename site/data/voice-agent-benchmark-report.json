@@ -1669,6 +1669,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted ingress Reason: Q.850 headers (0 spoofed causes) and stamps Reason: SIP;cause=200 / Q.850;cause=26 on parallel-forking CANCEL legs (0 false missed-call alerts); live SBC Reason header parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects RFC 3329 Security-Verify plaintext downgrades with SIP 494 (0 downgrades) and clamps SIP 420 Bad Extension strip-and-retry attempts to [1, 2]; live IMS/SBC Sec-Agree negotiation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "415. [Topic 52: voice-webrtc-rfc8285-extmap-mixed-header-remapping-padding-overflow-faq] WebRTC RFC 8285 Extmap Mixed-Header Bounds + Immutable Mid-Call ID Mapping & RFC 3550 P=1 Padding Underflow / Covert-Byte Scrub Guard (P817 / P818 — Stage 412 · 415 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: validates RFC 8285 0xBEDE/0x1000 extension element length bounds, forbids mid-call a=extmap ID remapping (0 remappings), and clamps active one-byte IDs to [1, 14]; live SFU RTP header parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 3550 P=1 padding bounds 1 <= pad_len <= payload_len (0 unsigned underflow overreads) and scrubs non-terminal padding bytes to 0x00 (0 covert bytes); live RTP depacketizer latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

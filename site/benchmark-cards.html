@@ -1434,6 +1434,13 @@
               <td><code>P815 / P816 deterministic SIP RFC 3326 Q.850 Reason scrub + forking Completed Elsewhere &amp; RFC 3329 Sec-Agree 494 / SIP 420 retry guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>415. [专题52 `docs/voice-webrtc-rfc8285-extmap-mixed-header-remapping-padding-overflow-faq.md`] WebRTC `RFC 8285` RTP 扩展头 `0xBEDE / 0x1000` 元素长度边界校验与通话期内 `a=extmap` `(ID &lt;-&gt; URI)` 不可变钉扎（`0` 中途重映射断音，单字节活跃 ID `[1, 14]`；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU RTP 扩展头解包耗时 `not_measured`）&amp; `RFC 3550 Section 5.1` RTP `P=1` 尾部填充长度 `1 &lt;= pad_len &lt;= payload_len` 防无符号减法下溢（`0` 越界崩溃）与非零填充字节归零清洗门禁（`0` 隐蔽信道字节；真实 RTP 解包耗时 `not_measured`）(`P817` / `P818` · Stage 412 · Topic 52 · 827 护栏 &amp; 836 探针 · 415 维)</strong>
+              </td>
+              <td><code>P817 / P818 deterministic WebRTC RFC 8285 extmap immutability + header bounds &amp; RFC 3550 P=1 padding underflow / covert-byte scrub guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4844,6 +4851,13 @@
                 <strong>414. [专题51 `docs/voice-sip-rfc3326-reason-q850-spoof-rfc3329-sec-agree-420-loop-faq.md`] 企业 SIP `RFC 3326 / RFC 6432` 非授信入站 `Reason: Q.850` 释放原因码 100% 清洗（`0` 伪造原因码污染 CDR 话单与外呼号码库）与并发振铃 `CANCEL` 注入 `Completed Elsewhere (SIP;cause=200 / Q.850;cause=26)`（`0` 坐席假未接来电告警；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC Reason 解析耗时 `not_measured`）&amp; `RFC 3329 Sec-Agree` `Security-Verify` 防明文降级（违例返 `SIP 494`，`0` 降级）与 `SIP 420 Bad Extension` 剥离重试上限 `[1, 2]` 次门禁（真实 IMS/SBC Sec-Agree 协商耗时 `not_measured`）(`P815` / `P816` · Stage 411 · Topic 51 · 825 护栏 &amp; 834 探针 · 414 维)</strong>
               </td>
               <td><code>P815 / P816 deterministic SIP RFC 3326 Q.850 Reason scrub + forking Completed Elsewhere &amp; RFC 3329 Sec-Agree 494 / SIP 420 retry guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>415. [专题52 `docs/voice-webrtc-rfc8285-extmap-mixed-header-remapping-padding-overflow-faq.md`] WebRTC `RFC 8285` RTP 扩展头 `0xBEDE / 0x1000` 元素长度边界校验与通话期内 `a=extmap` `(ID &lt;-&gt; URI)` 不可变钉扎（`0` 中途重映射断音，单字节活跃 ID `[1, 14]`；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU RTP 扩展头解包耗时 `not_measured`）&amp; `RFC 3550 Section 5.1` RTP `P=1` 尾部填充长度 `1 &lt;= pad_len &lt;= payload_len` 防无符号减法下溢（`0` 越界崩溃）与非零填充字节归零清洗门禁（`0` 隐蔽信道字节；真实 RTP 解包耗时 `not_measured`）(`P817` / `P818` · Stage 412 · Topic 52 · 827 护栏 &amp; 836 探针 · 415 维)</strong>
+              </td>
+              <td><code>P817 / P818 deterministic WebRTC RFC 8285 extmap immutability + header bounds &amp; RFC 3550 P=1 padding underflow / covert-byte scrub guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

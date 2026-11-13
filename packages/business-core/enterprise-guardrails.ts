@@ -74717,6 +74717,138 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc8285ExtmapMixedHeaderAndMidCallIdRemapContext {
+      unnegotiatedMixedExtmapOrMidCallIdRemapDetected: boolean;
+      midCallExtmapIdRemappings: number;
+      activeExtmapIds: number;
+    }
+
+    export interface WebrtcRfc8285ExtmapMixedHeaderAndMidCallIdRemapDecision {
+      violated: boolean;
+      policyId: "P817-WEBRTC-RFC8285-EXTMAP-MIXED-HEADER-AND-MIDCALL-ID-REMAP-GUARD";
+      action:
+        | "reject_extmap_id_remap_and_enforce_rfc8285_bounds"
+        | "clamp_extmap_remappings_and_active_id_bounds"
+        | "allow";
+      reason: string;
+      clampedMidCallExtmapIdRemappings: number;
+      clampedActiveExtmapIds: number;
+    }
+
+    export function evaluateWebrtcRfc8285ExtmapMixedHeaderAndMidCallIdRemapGate(
+      context: WebrtcRfc8285ExtmapMixedHeaderAndMidCallIdRemapContext,
+    ): WebrtcRfc8285ExtmapMixedHeaderAndMidCallIdRemapDecision {
+      const policyId =
+        "P817-WEBRTC-RFC8285-EXTMAP-MIXED-HEADER-AND-MIDCALL-ID-REMAP-GUARD" as const;
+      const clampedMidCallExtmapIdRemappings = 0;
+      const clampedActiveExtmapIds = Math.min(
+        Math.max(context.activeExtmapIds, 1),
+        14,
+      );
+
+      if (context.unnegotiatedMixedExtmapOrMidCallIdRemapDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_extmap_id_remap_and_enforce_rfc8285_bounds",
+          reason:
+            "WebRTC RFC 8285 RTP Header Extension 0xBEDE/0x1000 & Mid-Call a=extmap ID Remapping Policy Check: peer transmitted an unnegotiated two-byte 0x1000 header extension / out-of-bounds element length L or attempted to remap an active a=extmap numeric ID to a different URI during mid-call SDP renegotiation; offline synthetic policy state machine enforcing 0 mid-call extmap ID remappings and [1, 14] one-byte extension ID bounds (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU RTP header parser latency not_measured).",
+          clampedMidCallExtmapIdRemappings,
+          clampedActiveExtmapIds,
+        };
+      }
+
+      if (
+        context.midCallExtmapIdRemappings > 0 ||
+        context.activeExtmapIds < 1 ||
+        context.activeExtmapIds > 14
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_extmap_remappings_and_active_id_bounds",
+          reason:
+            "Mid-call a=extmap ID remappings (>0 synthetic ceiling) or active one-byte extmap IDs (<1 or >14 synthetic bounds) out of bounds; clamping remappings to 0 and active IDs to [1, 14].",
+          clampedMidCallExtmapIdRemappings,
+          clampedActiveExtmapIds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8285 immutable a=extmap URI-to-ID binding (0 remappings) and [1, 14] one-byte extension ID bounds verified.",
+        clampedMidCallExtmapIdRemappings,
+        clampedActiveExtmapIds,
+      };
+    }
+
+    export interface WebrtcRtpRfc3550PaddingUnderflowAndCovertChannelScrubContext {
+      rtpPaddingLengthOverreadOrNonZeroCovertPaddingDetected: boolean;
+      paddingLengthOverreads: number;
+      nonZeroPaddingCovertBytes: number;
+    }
+
+    export interface WebrtcRtpRfc3550PaddingUnderflowAndCovertChannelScrubDecision {
+      violated: boolean;
+      policyId: "P818-WEBRTC-RTP-RFC3550-PADDING-UNDERFLOW-AND-COVERT-CHANNEL-SCRUB-GUARD";
+      action:
+        | "drop_padding_underflow_and_scrub_covert_bytes"
+        | "clamp_padding_overreads_and_covert_bytes"
+        | "allow";
+      reason: string;
+      clampedPaddingLengthOverreads: number;
+      clampedNonZeroPaddingCovertBytes: number;
+    }
+
+    export function evaluateWebrtcRtpRfc3550PaddingUnderflowAndCovertChannelScrubGate(
+      context: WebrtcRtpRfc3550PaddingUnderflowAndCovertChannelScrubContext,
+    ): WebrtcRtpRfc3550PaddingUnderflowAndCovertChannelScrubDecision {
+      const policyId =
+        "P818-WEBRTC-RTP-RFC3550-PADDING-UNDERFLOW-AND-COVERT-CHANNEL-SCRUB-GUARD" as const;
+      const clampedPaddingLengthOverreads = 0;
+      const clampedNonZeroPaddingCovertBytes = 0;
+
+      if (context.rtpPaddingLengthOverreadOrNonZeroCovertPaddingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_padding_underflow_and_scrub_covert_bytes",
+          reason:
+            "WebRTC RTP RFC 3550 Section 5.1 P=1 Padding Underflow & Covert-Channel Scrubbing Policy Check: packet had P=1 with trailing pad_len == 0 or pad_len > payload_len (triggering unsigned integer underflow heap overread) or contained non-zero covert-channel bytes inside the padding region; offline synthetic policy state machine enforcing 0 padding length overreads and 0 non-zero covert padding bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTP depacketizer latency not_measured).",
+          clampedPaddingLengthOverreads,
+          clampedNonZeroPaddingCovertBytes,
+        };
+      }
+
+      if (
+        context.paddingLengthOverreads > 0 ||
+        context.nonZeroPaddingCovertBytes > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_padding_overreads_and_covert_bytes",
+          reason:
+            "RTP P=1 padding length overreads (>0 synthetic ceiling) or non-zero covert padding bytes (>0 synthetic ceiling) out of bounds; clamping both to 0.",
+          clampedPaddingLengthOverreads,
+          clampedNonZeroPaddingCovertBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3550 P=1 padding bounds 1 <= pad_len <= payload_len (0 overreads) and 0x00 padding byte integrity (0 covert bytes) verified.",
+        clampedPaddingLengthOverreads,
+        clampedNonZeroPaddingCovertBytes,
+      };
+    }
+
 
 
 
