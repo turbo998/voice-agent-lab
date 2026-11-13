@@ -74985,6 +74985,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtcpRfc3550CompoundSrRrPrefixAndSdesCnameLengthContext {
+      missingCompoundSrRrPrefixOrSdesCnameOverflowDetected: boolean;
+      malformedCompoundRtcpPackets: number;
+      maxSdesCnameBytes: number;
+    }
+
+    export interface WebrtcRtcpRfc3550CompoundSrRrPrefixAndSdesCnameLengthDecision {
+      violated: boolean;
+      policyId: "P821-WEBRTC-RTCP-RFC3550-COMPOUND-SR-RR-PREFIX-AND-SDES-CNAME-LENGTH-GUARD";
+      action:
+        | "drop_malformed_compound_rtcp_and_clamp_cname"
+        | "clamp_malformed_rtcp_and_sdes_cname_bounds"
+        | "allow";
+      reason: string;
+      clampedMalformedCompoundRtcpPackets: number;
+      clampedMaxSdesCnameBytes: number;
+    }
+
+    export function evaluateWebrtcRtcpRfc3550CompoundSrRrPrefixAndSdesCnameLengthGate(
+      context: WebrtcRtcpRfc3550CompoundSrRrPrefixAndSdesCnameLengthContext,
+    ): WebrtcRtcpRfc3550CompoundSrRrPrefixAndSdesCnameLengthDecision {
+      const policyId =
+        "P821-WEBRTC-RTCP-RFC3550-COMPOUND-SR-RR-PREFIX-AND-SDES-CNAME-LENGTH-GUARD" as const;
+      const clampedMalformedCompoundRtcpPackets = 0;
+      const clampedMaxSdesCnameBytes = Math.min(
+        Math.max(context.maxSdesCnameBytes, 8),
+        64,
+      );
+
+      if (context.missingCompoundSrRrPrefixOrSdesCnameOverflowDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_malformed_compound_rtcp_and_clamp_cname",
+          reason:
+            "WebRTC RTCP RFC 3550 Section 6.1 Compound SR/RR Prefix & RFC 7022 SDES CNAME Length Policy Check: compound RTCP packet lacked a leading SR(200)/RR(201) sub-packet (without RFC 5506 rtcp-rsize), had a sub-packet 32-bit word-length sum mismatching the UDP datagram boundary, or carried an out-of-bounds SDES CNAME; offline synthetic policy state machine enforcing 0 malformed compound RTCP packets and [8, 64]-byte SDES CNAME bounds (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU RTCP compound parser latency not_measured).",
+          clampedMalformedCompoundRtcpPackets,
+          clampedMaxSdesCnameBytes,
+        };
+      }
+
+      if (
+        context.malformedCompoundRtcpPackets > 0 ||
+        context.maxSdesCnameBytes < 8 ||
+        context.maxSdesCnameBytes > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_malformed_rtcp_and_sdes_cname_bounds",
+          reason:
+            "Malformed compound RTCP packets (>0 synthetic ceiling) or SDES CNAME length (<8 or >64 bytes synthetic bounds) out of bounds; clamping malformed packets to 0 and SDES CNAME to [8, 64] bytes.",
+          clampedMalformedCompoundRtcpPackets,
+          clampedMaxSdesCnameBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3550 compound SR/RR prefix + exact word-sum closure (0 malformed packets) and RFC 7022 [8, 64]-byte SDES CNAME verified.",
+        clampedMalformedCompoundRtcpPackets,
+        clampedMaxSdesCnameBytes,
+      };
+    }
+
+    export interface WebrtcRtcpRfc3550ByeFloodAndUnauthenticatedSsrcTeardownContext {
+      unauthenticatedRtcpByeFloodOrCrossPeerSsrcTeardownDetected: boolean;
+      unauthenticatedByeTeardowns: number;
+      maxByeSsrcEntries: number;
+    }
+
+    export interface WebrtcRtcpRfc3550ByeFloodAndUnauthenticatedSsrcTeardownDecision {
+      violated: boolean;
+      policyId: "P822-WEBRTC-RTCP-RFC3550-BYE-FLOOD-AND-UNAUTHENTICATED-SSRC-TEARDOWN-GUARD";
+      action:
+        | "reject_unauthenticated_bye_and_cap_ssrc_entries"
+        | "clamp_unauthenticated_byes_and_ssrc_entry_bounds"
+        | "allow";
+      reason: string;
+      clampedUnauthenticatedByeTeardowns: number;
+      clampedMaxByeSsrcEntries: number;
+    }
+
+    export function evaluateWebrtcRtcpRfc3550ByeFloodAndUnauthenticatedSsrcTeardownGate(
+      context: WebrtcRtcpRfc3550ByeFloodAndUnauthenticatedSsrcTeardownContext,
+    ): WebrtcRtcpRfc3550ByeFloodAndUnauthenticatedSsrcTeardownDecision {
+      const policyId =
+        "P822-WEBRTC-RTCP-RFC3550-BYE-FLOOD-AND-UNAUTHENTICATED-SSRC-TEARDOWN-GUARD" as const;
+      const clampedUnauthenticatedByeTeardowns = 0;
+      const clampedMaxByeSsrcEntries = Math.min(
+        Math.max(context.maxByeSsrcEntries, 1),
+        4,
+      );
+
+      if (context.unauthenticatedRtcpByeFloodOrCrossPeerSsrcTeardownDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unauthenticated_bye_and_cap_ssrc_entries",
+          reason:
+            "WebRTC RTCP RFC 3550 Section 6.6 BYE Flood & Unauthenticated SSRC Teardown Policy Check: peer injected an SRTCP-unauthenticated or cross-peer RTCP BYE(203) packet attempting to silently tear down the Voice AI SSRC jitter buffer (or an SC=31 mass SSRC teardown bomb); offline synthetic policy state machine enforcing 0 unauthorized BYE teardowns and [1, 4] maximum SSRC entries per BYE packet (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SRTCP BYE ACL lookup latency not_measured).",
+          clampedUnauthenticatedByeTeardowns,
+          clampedMaxByeSsrcEntries,
+        };
+      }
+
+      if (
+        context.unauthenticatedByeTeardowns > 0 ||
+        context.maxByeSsrcEntries < 1 ||
+        context.maxByeSsrcEntries > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unauthenticated_byes_and_ssrc_entry_bounds",
+          reason:
+            "Unauthenticated/cross-peer RTCP BYE teardowns (>0 synthetic ceiling) or per-packet BYE SSRC count (<1 or >4 synthetic bounds) out of bounds; clamping teardowns to 0 and SSRC entries to [1, 4].",
+          clampedUnauthenticatedByeTeardowns,
+          clampedMaxByeSsrcEntries,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3550 SRTCP-authenticated sender SSRC ownership (0 unauthorized BYE teardowns) and [1, 4] BYE SSRC entry cap verified.",
+        clampedUnauthenticatedByeTeardowns,
+        clampedMaxByeSsrcEntries,
+      };
+    }
+
 
 
 

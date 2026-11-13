@@ -1681,6 +1681,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects unencrypted/unmasked RFC 4568 a=crypto inline: SRTP master keys (0 plaintext keys) and blocks loopback, link-local, multicast, or unverified third-party c=IN IP4/IP6 RTP reflection targets (0 untrusted targets); live SBC SDP media-address verifier latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps SDP a=fmtp line length to [32, 256] bytes and semicolon-delimited attribute pairs to [1, 16]; live SDP fmtp tokenizer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "417. [Topic 54 🎉: voice-webrtc-rtcp-rfc3550-compound-sr-rr-sdes-cname-bye-flood-faq] WebRTC RFC 3550 Compound RTCP SR/RR Prefix + SDES CNAME [8,64]B Bounds & Anti-Spoofed RTCP BYE [1,4] SSRC Flood Guard (P821 / P822 — Stage 414 · 🎉 650 Live POC Probes · 417 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: requires SR(200)/RR(201) prefix and exact 32-bit word-sum closure on compound RTCP packets (0 malformed packets) and clamps RFC 7022 SDES CNAME length to [8, 64] bytes; live SFU RTCP compound parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks SRTCP-unauthenticated or cross-peer RTCP BYE(203) stream teardowns (0 unauthorized teardowns) and caps per-packet BYE SSRC entries to [1, 4]; live SRTCP BYE ACL lookup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

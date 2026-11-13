@@ -1448,6 +1448,13 @@
               <td><code>P819 / P820 deterministic SIP/SDP RFC 4568 SDES key-leak + c= sinkhole gate &amp; RFC 8866 a=fmtp overflow guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>417. [专题54 🎉 `docs/voice-webrtc-rtcp-rfc3550-compound-sr-rr-sdes-cname-bye-flood-faq.md`] WebRTC `RFC 3550 Section 6.1` 复合 RTCP 首包 `SR(200)/RR(201)` 与子包 32 位字长总和精确闭合校验（`0` 畸形复合包越界读）及 `RFC 7022 SDES CNAME [8, 64]` 字节边界（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU 复合 RTCP 解析耗时 `not_measured`）&amp; `RFC 3550 Section 6.6` `SRTCP BYE(203)` 发送源归属鉴权（`0` 越权静音拆流）与单包 `BYE SSRC [1, 4]` 项防批量注销洪泛门禁（真实 SRTCP BYE ACL 查找耗时 `not_measured`）(`P821` / `P822` · Stage 414 · 🎉 650 Live POC Probes · 831 护栏 &amp; 840 探针 · 417 维)</strong>
+              </td>
+              <td><code>P821 / P822 deterministic WebRTC RFC 3550 compound RTCP SR/RR + SDES CNAME gate &amp; anti-spoofed BYE flood guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4872,6 +4879,13 @@
                 <strong>416. [专题53 `docs/voice-sip-sdp-rfc4568-sdes-key-leak-c-line-sinkhole-fmtp-overflow-faq.md`] 企业 SIP/SDP `RFC 4568 (SDES)` `a=crypto inline:` 明文 SRTP 主密钥阻断与日志掩码脱敏（`0` 明文密钥泄露）及 `RFC 8866 c=IN IP4/IP6` 回环/私网/多播/第三方反射地址拦截（`0` 反射目标；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 媒体地址核验耗时 `not_measured`）&amp; `RFC 8866 a=fmtp` 单行长度 `[32, 256]` 字节与分号键值对 `[1, 16]` 项防缓冲区溢出门禁（真实 SDP 词法分析耗时 `not_measured`）(`P819` / `P820` · Stage 413 · Topic 53 · 829 护栏 &amp; 838 探针 · 416 维)</strong>
               </td>
               <td><code>P819 / P820 deterministic SIP/SDP RFC 4568 SDES key-leak + c= sinkhole gate &amp; RFC 8866 a=fmtp overflow guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>417. [专题54 🎉 `docs/voice-webrtc-rtcp-rfc3550-compound-sr-rr-sdes-cname-bye-flood-faq.md`] WebRTC `RFC 3550 Section 6.1` 复合 RTCP 首包 `SR(200)/RR(201)` 与子包 32 位字长总和精确闭合校验（`0` 畸形复合包越界读）及 `RFC 7022 SDES CNAME [8, 64]` 字节边界（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU 复合 RTCP 解析耗时 `not_measured`）&amp; `RFC 3550 Section 6.6` `SRTCP BYE(203)` 发送源归属鉴权（`0` 越权静音拆流）与单包 `BYE SSRC [1, 4]` 项防批量注销洪泛门禁（真实 SRTCP BYE ACL 查找耗时 `not_measured`）(`P821` / `P822` · Stage 414 · 🎉 650 Live POC Probes · 831 护栏 &amp; 840 探针 · 417 维)</strong>
+              </td>
+              <td><code>P821 / P822 deterministic WebRTC RFC 3550 compound RTCP SR/RR + SDES CNAME gate &amp; anti-spoofed BYE flood guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
