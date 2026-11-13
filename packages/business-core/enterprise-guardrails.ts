@@ -74849,6 +74849,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipSdpRfc4568SdesInlineKeyLeakAndConnectionSinkholeContext {
+      plaintextSdesInlineKeyOrUntrustedConnectionTargetDetected: boolean;
+      plaintextSdesInlineKeys: number;
+      untrustedConnectionTargets: number;
+    }
+
+    export interface SipSdpRfc4568SdesInlineKeyLeakAndConnectionSinkholeDecision {
+      violated: boolean;
+      policyId: "P819-SIP-SDP-RFC4568-SDES-INLINE-KEY-LEAK-AND-CONNECTION-SINKHOLE-GUARD";
+      action:
+        | "reject_plaintext_sdes_and_block_c_line_sinkhole"
+        | "clamp_plaintext_sdes_keys_and_untrusted_c_targets"
+        | "allow";
+      reason: string;
+      clampedPlaintextSdesInlineKeys: number;
+      clampedUntrustedConnectionTargets: number;
+    }
+
+    export function evaluateSipSdpRfc4568SdesInlineKeyLeakAndConnectionSinkholeGate(
+      context: SipSdpRfc4568SdesInlineKeyLeakAndConnectionSinkholeContext,
+    ): SipSdpRfc4568SdesInlineKeyLeakAndConnectionSinkholeDecision {
+      const policyId =
+        "P819-SIP-SDP-RFC4568-SDES-INLINE-KEY-LEAK-AND-CONNECTION-SINKHOLE-GUARD" as const;
+      const clampedPlaintextSdesInlineKeys = 0;
+      const clampedUntrustedConnectionTargets = 0;
+
+      if (context.plaintextSdesInlineKeyOrUntrustedConnectionTargetDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_plaintext_sdes_and_block_c_line_sinkhole",
+          reason:
+            "Enterprise SIP/SDP RFC 4568 SDES Inline Key-Leak & RFC 8866 c= Connection Sinkhole Policy Check: SDP contained an unencrypted/unmasked a=crypto inline: SRTP master key or specified a loopback, link-local, multicast, or unverified third-party c=IN IP4/IP6 RTP reflection target; offline synthetic policy state machine enforcing 0 plaintext SDES inline keys and 0 untrusted c= connection targets (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC SDP media-address verifier latency not_measured).",
+          clampedPlaintextSdesInlineKeys,
+          clampedUntrustedConnectionTargets,
+        };
+      }
+
+      if (
+        context.plaintextSdesInlineKeys > 0 ||
+        context.untrustedConnectionTargets > 0
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_plaintext_sdes_keys_and_untrusted_c_targets",
+          reason:
+            "Plaintext SDES inline keys (>0 synthetic ceiling) or untrusted SDP c= connection targets (>0 synthetic ceiling) out of bounds; clamping both to 0.",
+          clampedPlaintextSdesInlineKeys,
+          clampedUntrustedConnectionTargets,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 4568 zero plaintext SDES inline keys (0 leaks) and RFC 8866 verified c= connection target (0 reflection targets) verified.",
+        clampedPlaintextSdesInlineKeys,
+        clampedUntrustedConnectionTargets,
+      };
+    }
+
+    export interface SipSdpRfc8866FmtpParameterOverflowAndLineLengthContext {
+      fmtpLineLengthOverflowOrAttributeBombDetected: boolean;
+      maxFmtpLineBytes: number;
+      maxFmtpAttributePairs: number;
+    }
+
+    export interface SipSdpRfc8866FmtpParameterOverflowAndLineLengthDecision {
+      violated: boolean;
+      policyId: "P820-SIP-SDP-RFC8866-FMTP-PARAMETER-OVERFLOW-AND-LINE-LENGTH-GUARD";
+      action:
+        | "cap_fmtp_line_bytes_and_attribute_pairs"
+        | "clamp_fmtp_line_length_and_attribute_bounds"
+        | "allow";
+      reason: string;
+      clampedMaxFmtpLineBytes: number;
+      clampedMaxFmtpAttributePairs: number;
+    }
+
+    export function evaluateSipSdpRfc8866FmtpParameterOverflowAndLineLengthGate(
+      context: SipSdpRfc8866FmtpParameterOverflowAndLineLengthContext,
+    ): SipSdpRfc8866FmtpParameterOverflowAndLineLengthDecision {
+      const policyId =
+        "P820-SIP-SDP-RFC8866-FMTP-PARAMETER-OVERFLOW-AND-LINE-LENGTH-GUARD" as const;
+      const clampedMaxFmtpLineBytes = Math.min(
+        Math.max(context.maxFmtpLineBytes, 32),
+        256,
+      );
+      const clampedMaxFmtpAttributePairs = Math.min(
+        Math.max(context.maxFmtpAttributePairs, 1),
+        16,
+      );
+
+      if (context.fmtpLineLengthOverflowOrAttributeBombDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "cap_fmtp_line_bytes_and_attribute_pairs",
+          reason:
+            "Enterprise SIP/SDP RFC 8866 a=fmtp Parameter Overflow Bomb Policy Check: SDP contained an oversized a=fmtp codec parameter line (>256B) or excessive semicolon-delimited attribute pairs (>16 pairs); offline synthetic policy state machine clamping a=fmtp line length to [32, 256] bytes and attribute pairs to [1, 16] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SDP fmtp tokenizer latency not_measured).",
+          clampedMaxFmtpLineBytes,
+          clampedMaxFmtpAttributePairs,
+        };
+      }
+
+      if (
+        context.maxFmtpLineBytes < 32 ||
+        context.maxFmtpLineBytes > 256 ||
+        context.maxFmtpAttributePairs < 1 ||
+        context.maxFmtpAttributePairs > 16
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_fmtp_line_length_and_attribute_bounds",
+          reason:
+            "SDP a=fmtp line length (<32 or >256 bytes synthetic bounds) or attribute pairs (<1 or >16 pairs synthetic bounds) out of bounds; clamping to [32, 256] bytes and [1, 16] pairs.",
+          clampedMaxFmtpLineBytes,
+          clampedMaxFmtpAttributePairs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8866 a=fmtp line length within [32, 256] bytes and attribute pairs within [1, 16] verified.",
+        clampedMaxFmtpLineBytes,
+        clampedMaxFmtpAttributePairs,
+      };
+    }
+
 
 
 

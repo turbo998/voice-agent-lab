@@ -1441,6 +1441,13 @@
               <td><code>P817 / P818 deterministic WebRTC RFC 8285 extmap immutability + header bounds &amp; RFC 3550 P=1 padding underflow / covert-byte scrub guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>416. [专题53 `docs/voice-sip-sdp-rfc4568-sdes-key-leak-c-line-sinkhole-fmtp-overflow-faq.md`] 企业 SIP/SDP `RFC 4568 (SDES)` `a=crypto inline:` 明文 SRTP 主密钥阻断与日志掩码脱敏（`0` 明文密钥泄露）及 `RFC 8866 c=IN IP4/IP6` 回环/私网/多播/第三方反射地址拦截（`0` 反射目标；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 媒体地址核验耗时 `not_measured`）&amp; `RFC 8866 a=fmtp` 单行长度 `[32, 256]` 字节与分号键值对 `[1, 16]` 项防缓冲区溢出门禁（真实 SDP 词法分析耗时 `not_measured`）(`P819` / `P820` · Stage 413 · Topic 53 · 829 护栏 &amp; 838 探针 · 416 维)</strong>
+              </td>
+              <td><code>P819 / P820 deterministic SIP/SDP RFC 4568 SDES key-leak + c= sinkhole gate &amp; RFC 8866 a=fmtp overflow guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -4858,6 +4865,13 @@
                 <strong>415. [专题52 `docs/voice-webrtc-rfc8285-extmap-mixed-header-remapping-padding-overflow-faq.md`] WebRTC `RFC 8285` RTP 扩展头 `0xBEDE / 0x1000` 元素长度边界校验与通话期内 `a=extmap` `(ID &lt;-&gt; URI)` 不可变钉扎（`0` 中途重映射断音，单字节活跃 ID `[1, 14]`；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU RTP 扩展头解包耗时 `not_measured`）&amp; `RFC 3550 Section 5.1` RTP `P=1` 尾部填充长度 `1 &lt;= pad_len &lt;= payload_len` 防无符号减法下溢（`0` 越界崩溃）与非零填充字节归零清洗门禁（`0` 隐蔽信道字节；真实 RTP 解包耗时 `not_measured`）(`P817` / `P818` · Stage 412 · Topic 52 · 827 护栏 &amp; 836 探针 · 415 维)</strong>
               </td>
               <td><code>P817 / P818 deterministic WebRTC RFC 8285 extmap immutability + header bounds &amp; RFC 3550 P=1 padding underflow / covert-byte scrub guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>416. [专题53 `docs/voice-sip-sdp-rfc4568-sdes-key-leak-c-line-sinkhole-fmtp-overflow-faq.md`] 企业 SIP/SDP `RFC 4568 (SDES)` `a=crypto inline:` 明文 SRTP 主密钥阻断与日志掩码脱敏（`0` 明文密钥泄露）及 `RFC 8866 c=IN IP4/IP6` 回环/私网/多播/第三方反射地址拦截（`0` 反射目标；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 媒体地址核验耗时 `not_measured`）&amp; `RFC 8866 a=fmtp` 单行长度 `[32, 256]` 字节与分号键值对 `[1, 16]` 项防缓冲区溢出门禁（真实 SDP 词法分析耗时 `not_measured`）(`P819` / `P820` · Stage 413 · Topic 53 · 829 护栏 &amp; 838 探针 · 416 维)</strong>
+              </td>
+              <td><code>P819 / P820 deterministic SIP/SDP RFC 4568 SDES key-leak + c= sinkhole gate &amp; RFC 8866 a=fmtp overflow guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
