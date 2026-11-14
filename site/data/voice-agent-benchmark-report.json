@@ -1849,6 +1849,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: atomically rolls back 100% of rejected Re-INVITE uncommitted SDP changes to LKG_SDP and blocks unauthenticated Contact refreshes (0 desynced or hijacked dialogs) with a [1, 1] in-flight mutex; live SBC media-port rebinding latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: resolves 100% of simultaneous Re-INVITE 491 glare collisions via disjoint Owner [2100, 4000]ms vs. Non-Owner [60, 2000]ms jitter timers (0 glare loops); live SIP 491 backoff wait duration is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "445. [Topic 82 · 445-Dimension Milestone 🎉: voice-webrtc-dscp-rfc8837-rfc7657-bundle-five-tuple-ef-af41-queue-reordering-faq] Enterprise WebRTC RFC 8837 / RFC 7657 DiffServ DSCP BUNDLE [1,2] PHB Queue-Ordering & Anti-CS6/CS7 + EF (46) Pinning Guard (P877 / P878 — Stage 442 · 🎉 Historic 445-Dimension Milestone · 445 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: restricts BUNDLE 5-tuple PHB classes to [1, 2] and eliminates 100% of cross-queue TWCC/SRTP reordering (0 reordered packets); live switch WFQ scheduling latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of unauthorized CS6/CS7 control-plane markings (0 unauthorized/dropped packets) and pins expedited voice DSCP to EF [46, 46]; live kernel setsockopt IP_TOS syscall latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

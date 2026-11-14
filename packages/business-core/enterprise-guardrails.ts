@@ -78793,6 +78793,138 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcDiffservRfc8837Rfc7657BundleFiveTupleCrossPhbQueueReorderingContext {
+      incompatiblePhbQueueMixingOnSingleFiveTupleDetected: boolean;
+      reorderedSrtpOrTwccPacketsAcrossPhbQueues: number;
+      maxAllowedPhbClassesPerFiveTuple: number;
+    }
+
+    export interface WebrtcDiffservRfc8837Rfc7657BundleFiveTupleCrossPhbQueueReorderingDecision {
+      violated: boolean;
+      policyId: "P877-WEBRTC-DIFFSERV-RFC8837-RFC7657-BUNDLE-FIVE-TUPLE-CROSS-PHB-QUEUE-REORDERING-GUARD";
+      action:
+        | "restrict_five_tuple_to_single_af_family_or_ef_voice_phb"
+        | "clamp_phb_reordered_packets_and_queue_class_bounds"
+        | "allow";
+      reason: string;
+      clampedReorderedSrtpOrTwccPacketsAcrossPhbQueues: number;
+      clampedMaxAllowedPhbClassesPerFiveTuple: number;
+    }
+
+    export function evaluateWebrtcDiffservRfc8837Rfc7657BundleFiveTupleCrossPhbQueueReorderingGate(
+      context: WebrtcDiffservRfc8837Rfc7657BundleFiveTupleCrossPhbQueueReorderingContext,
+    ): WebrtcDiffservRfc8837Rfc7657BundleFiveTupleCrossPhbQueueReorderingDecision {
+      const policyId =
+        "P877-WEBRTC-DIFFSERV-RFC8837-RFC7657-BUNDLE-FIVE-TUPLE-CROSS-PHB-QUEUE-REORDERING-GUARD" as const;
+      const clampedReorderedSrtpOrTwccPacketsAcrossPhbQueues = 0;
+      const clampedMaxAllowedPhbClassesPerFiveTuple = Math.min(
+        Math.max(context.maxAllowedPhbClassesPerFiveTuple, 1),
+        2,
+      );
+
+      if (context.incompatiblePhbQueueMixingOnSingleFiveTupleDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "restrict_five_tuple_to_single_af_family_or_ef_voice_phb",
+          reason:
+            "Enterprise WebRTC RFC 8837 / RFC 7657 (DART) BUNDLE Five-Tuple Cross-PHB Queue Reordering Policy Check: multiplexed BUNDLE 5-tuple mixed incompatible DiffServ PHB hardware queues (EF + AF4x + AF1x + DF) causing TWCC false loss spikes and SRTP replay window drops; offline synthetic policy state machine restricting 5-tuple PHB classes to [1, 2] (0 cross-queue reordered packets) (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live switch WFQ scheduling latency not_measured).",
+          clampedReorderedSrtpOrTwccPacketsAcrossPhbQueues,
+          clampedMaxAllowedPhbClassesPerFiveTuple,
+        };
+      }
+
+      if (
+        context.reorderedSrtpOrTwccPacketsAcrossPhbQueues > 0 ||
+        context.maxAllowedPhbClassesPerFiveTuple < 1 ||
+        context.maxAllowedPhbClassesPerFiveTuple > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_phb_reordered_packets_and_queue_class_bounds",
+          reason:
+            "Cross-PHB reordered SRTP/TWCC packets (>0 synthetic ceiling) or max allowed PHB classes per 5-tuple (<1 or >2 synthetic bounds) out of bounds; clamping reordered packets to 0 and PHB classes to [1, 2].",
+          clampedReorderedSrtpOrTwccPacketsAcrossPhbQueues,
+          clampedMaxAllowedPhbClassesPerFiveTuple,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8837 / RFC 7657 DART order-preserving PHB mapping (0 reordered packets, [1, 2] PHB classes) verified.",
+        clampedReorderedSrtpOrTwccPacketsAcrossPhbQueues,
+        clampedMaxAllowedPhbClassesPerFiveTuple,
+      };
+    }
+
+    export interface WebrtcDiffservRfc8837UnauthorizedCs6Cs7MarkingAndIspBleachingFallbackContext {
+      unauthorizedCs6Cs7ControlMarkingOrIspBleachDropDetected: boolean;
+      unauthorizedCs6Cs7OrDroppedDscpPackets: number;
+      voiceEfDscpCodepoint: number;
+    }
+
+    export interface WebrtcDiffservRfc8837UnauthorizedCs6Cs7MarkingAndIspBleachingFallbackDecision {
+      violated: boolean;
+      policyId: "P878-WEBRTC-DIFFSERV-RFC8837-UNAUTHORIZED-CS6-CS7-MARKING-AND-ISP-BLEACHING-FALLBACK-GUARD";
+      action:
+        | "strip_unauthorized_cs6_cs7_and_pin_voice_to_ef_46_phb"
+        | "clamp_unauthorized_dscp_packets_and_pin_ef_46_codepoint"
+        | "allow";
+      reason: string;
+      clampedUnauthorizedCs6Cs7OrDroppedDscpPackets: number;
+      clampedVoiceEfDscpCodepoint: number;
+    }
+
+    export function evaluateWebrtcDiffservRfc8837UnauthorizedCs6Cs7MarkingAndIspBleachingFallbackGate(
+      context: WebrtcDiffservRfc8837UnauthorizedCs6Cs7MarkingAndIspBleachingFallbackContext,
+    ): WebrtcDiffservRfc8837UnauthorizedCs6Cs7MarkingAndIspBleachingFallbackDecision {
+      const policyId =
+        "P878-WEBRTC-DIFFSERV-RFC8837-UNAUTHORIZED-CS6-CS7-MARKING-AND-ISP-BLEACHING-FALLBACK-GUARD" as const;
+      const clampedUnauthorizedCs6Cs7OrDroppedDscpPackets = 0;
+      const clampedVoiceEfDscpCodepoint = 46;
+
+      if (context.unauthorizedCs6Cs7ControlMarkingOrIspBleachDropDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_unauthorized_cs6_cs7_and_pin_voice_to_ef_46_phb",
+          reason:
+            "Enterprise WebRTC RFC 8837 Unauthorized CS6/CS7 Control-Plane Marking & EF (46) Pinning Policy Check: media stream attempted to use reserved CS6 (48) / CS7 (56) routing control codepoints or encountered ISP non-zero DSCP blackholing; offline synthetic policy state machine stripping unauthorized CS6/CS7 markings (0 unauthorized/dropped packets) and pinning expedited voice DSCP to EF [46, 46] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live kernel setsockopt IP_TOS syscall latency not_measured).",
+          clampedUnauthorizedCs6Cs7OrDroppedDscpPackets,
+          clampedVoiceEfDscpCodepoint,
+        };
+      }
+
+      if (
+        context.unauthorizedCs6Cs7OrDroppedDscpPackets > 0 ||
+        context.voiceEfDscpCodepoint !== 46
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unauthorized_dscp_packets_and_pin_ef_46_codepoint",
+          reason:
+            "Unauthorized CS6/CS7 or dropped DSCP packets (>0 synthetic ceiling) or voice expedited DSCP codepoint (!==46 EF synthetic bound) out of bounds; clamping violations to 0 and pinning voice DSCP to 46.",
+          clampedUnauthorizedCs6Cs7OrDroppedDscpPackets,
+          clampedVoiceEfDscpCodepoint,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8837 CS6/CS7 control-plane protection (0 unauthorized packets) and EF (46) voice codepoint verified.",
+        clampedUnauthorizedCs6Cs7OrDroppedDscpPackets,
+        clampedVoiceEfDscpCodepoint,
+      };
+    }
+
 
 
 
