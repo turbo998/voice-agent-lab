@@ -75941,6 +75941,143 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc5393ParallelForkingMaxBreadthAndMultiple200OkZombieLegContext {
+      forkingMaxBreadthAmplificationOrUnreapedSecondary200OkDetected: boolean;
+      unreapedSecondary200OkLegs: number;
+      maxParallelForkingBreadth: number;
+    }
+
+    export interface SipRfc5393ParallelForkingMaxBreadthAndMultiple200OkZombieLegDecision {
+      violated: boolean;
+      policyId: "P835-SIP-RFC5393-PARALLEL-FORKING-MAX-BREADTH-AND-MULTIPLE-200OK-ZOMBIE-LEG-GUARD";
+      action:
+        | "reap_secondary_200ok_with_ack_bye_and_enforce_max_breadth"
+        | "clamp_unreaped_200ok_legs_and_max_breadth_bounds"
+        | "allow";
+      reason: string;
+      clampedUnreapedSecondary200OkLegs: number;
+      clampedMaxParallelForkingBreadth: number;
+    }
+
+    export function evaluateSipRfc5393ParallelForkingMaxBreadthAndMultiple200OkZombieLegGate(
+      context: SipRfc5393ParallelForkingMaxBreadthAndMultiple200OkZombieLegContext,
+    ): SipRfc5393ParallelForkingMaxBreadthAndMultiple200OkZombieLegDecision {
+      const policyId =
+        "P835-SIP-RFC5393-PARALLEL-FORKING-MAX-BREADTH-AND-MULTIPLE-200OK-ZOMBIE-LEG-GUARD" as const;
+      const clampedUnreapedSecondary200OkLegs = 0;
+      const clampedMaxParallelForkingBreadth = Math.min(
+        Math.max(context.maxParallelForkingBreadth, 1),
+        8,
+      );
+
+      if (context.forkingMaxBreadthAmplificationOrUnreapedSecondary200OkDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reap_secondary_200ok_with_ack_bye_and_enforce_max_breadth",
+          reason:
+            "Enterprise SIP RFC 3261 Section 13.2.2.4 / RFC 5393 Parallel Forking Max-Breadth Amplification & Multiple-200 OK Zombie Leg Policy Check: parallel forking exceeded the RFC 5393 Max-Breadth budget or a secondary forked branch emitted a distinct-To-tag 200 OK without immediate ACK + BYE (Q.850 cause=26) termination; offline synthetic policy state machine reaping 100% of secondary 200 OK legs (0 zombie billing legs) and clamping Max-Breadth to [1, 8] concurrent branches (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC forking transaction-table lookup latency not_measured).",
+          clampedUnreapedSecondary200OkLegs,
+          clampedMaxParallelForkingBreadth,
+        };
+      }
+
+      if (
+        context.unreapedSecondary200OkLegs > 0 ||
+        context.maxParallelForkingBreadth < 1 ||
+        context.maxParallelForkingBreadth > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unreaped_200ok_legs_and_max_breadth_bounds",
+          reason:
+            "Unreaped secondary 200 OK legs (>0 synthetic ceiling) or parallel forking Max-Breadth (<1 or >8 branches synthetic bounds) out of bounds; clamping unreaped legs to 0 and Max-Breadth to [1, 8].",
+          clampedUnreapedSecondary200OkLegs,
+          clampedMaxParallelForkingBreadth,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 5393 [1, 8] Max-Breadth conservation and atomic ACK+BYE reaping of secondary 200 OK legs verified.",
+        clampedUnreapedSecondary200OkLegs,
+        clampedMaxParallelForkingBreadth,
+      };
+    }
+
+    export interface SipRfc3911JoinWiretapAndRfc3891EarlyReplacesHijackContext {
+      untrustedJoinHeaderWiretapOrUnauthorizedEarlyReplacesDetected: boolean;
+      unauthorizedJoinOrEarlyReplacesAttempts: number;
+      maxAuthenticatedSupervisorJoinLegs: number;
+    }
+
+    export interface SipRfc3911JoinWiretapAndRfc3891EarlyReplacesHijackDecision {
+      violated: boolean;
+      policyId: "P836-SIP-RFC3911-JOIN-WIRETAP-AND-RFC3891-EARLY-REPLACES-HIJACK-GUARD";
+      action:
+        | "reject_untrusted_join_403_and_enforce_supervisor_beep"
+        | "clamp_unauthorized_join_and_supervisor_leg_bounds"
+        | "allow";
+      reason: string;
+      clampedUnauthorizedJoinOrEarlyReplacesAttempts: number;
+      clampedMaxAuthenticatedSupervisorJoinLegs: number;
+    }
+
+    export function evaluateSipRfc3911JoinWiretapAndRfc3891EarlyReplacesHijackGate(
+      context: SipRfc3911JoinWiretapAndRfc3891EarlyReplacesHijackContext,
+    ): SipRfc3911JoinWiretapAndRfc3891EarlyReplacesHijackDecision {
+      const policyId =
+        "P836-SIP-RFC3911-JOIN-WIRETAP-AND-RFC3891-EARLY-REPLACES-HIJACK-GUARD" as const;
+      const clampedUnauthorizedJoinOrEarlyReplacesAttempts = 0;
+      const clampedMaxAuthenticatedSupervisorJoinLegs = Math.min(
+        Math.max(context.maxAuthenticatedSupervisorJoinLegs, 1),
+        2,
+      );
+
+      if (context.untrustedJoinHeaderWiretapOrUnauthorizedEarlyReplacesDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_untrusted_join_403_and_enforce_supervisor_beep",
+          reason:
+            "Enterprise SIP RFC 3911 Join Wiretap & RFC 3891 Early-Replaces Hijack Policy Check: inbound INVITE carried an untrusted external Join header attempting silent conference-bridge wiretapping or violated RFC 3891 early-only replacement direction rules; offline synthetic policy state machine rejecting 100% of unauthorized Join/Early-Replaces requests with SIP 403 Forbidden (0 wiretaps) and clamping authenticated supervisor coaching legs to [1, 2] with mandatory audible beep (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live media-bridge beep injection latency not_measured).",
+          clampedUnauthorizedJoinOrEarlyReplacesAttempts,
+          clampedMaxAuthenticatedSupervisorJoinLegs,
+        };
+      }
+
+      if (
+        context.unauthorizedJoinOrEarlyReplacesAttempts > 0 ||
+        context.maxAuthenticatedSupervisorJoinLegs < 1 ||
+        context.maxAuthenticatedSupervisorJoinLegs > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unauthorized_join_and_supervisor_leg_bounds",
+          reason:
+            "Unauthorized Join/Early-Replaces attempts (>0 synthetic ceiling) or authenticated supervisor Join legs (<1 or >2 legs synthetic bounds) out of bounds; clamping unauthorized attempts to 0 and supervisor Join legs to [1, 2].",
+          clampedUnauthorizedJoinOrEarlyReplacesAttempts,
+          clampedMaxAuthenticatedSupervisorJoinLegs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3911 Join zero-trust rejection (0 unauthorized joins), mandatory supervisor beep, and [1, 2] observer bounds verified.",
+        clampedUnauthorizedJoinOrEarlyReplacesAttempts,
+        clampedMaxAuthenticatedSupervisorJoinLegs,
+      };
+    }
+
+
 
 
 

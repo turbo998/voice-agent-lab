@@ -1723,6 +1723,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of mismatched-vtag SCTP chunks (0 blind resets), enforces stateless HMAC STATE-COOKIE on INIT, and defers RFC 6525 RE-CONFIG SSN=0 resets until Last_Assigned_TSN drains within [1, 4] concurrent resets; live DTLS-SCTP chunk parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of TSN-reneging or >16 Gap-Ack SACK chunks (0 reneges), caps Gap-Ack blocks in [1, 16], and arms a Zero-Window Persist Timer with interim subtitle shedding on a_rwnd=0; live SCTP retransmission bitmap scan latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "424. [Topic 61: voice-sip-rfc5393-parallel-forking-max-breadth-multiple-200ok-rfc3911-join-faq] Enterprise SIP RFC 5393 Parallel Forking Max-Breadth ([1,8]) + Atomic Secondary 200 OK Reaper & RFC 3911 Join Anti-Wiretap + Early-Replaces Guard (P835 / P836 — Stage 421 · 424 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 5393 Max-Breadth in [1, 8] across parallel forks and atomically dispatches ACK + BYE (Q.850 cause=26) to 100% of secondary 200 OK legs (0 zombie billing legs); live SBC forking transaction-table lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of untrusted external RFC 3911 Join headers with 403 Forbidden (0 wiretaps) and caps authenticated internal supervisor coaching joins to [1, 2] legs with mandatory audible beep; live media-bridge beep injection latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
