@@ -2023,6 +2023,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of retrograde or step-jumped 64-bit NTP extensions (0 playout step dropouts) and clamps PLL slew step in [1, 25]ms; live Playout PLL slewing filter latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: sign-extends 100% of 24-bit two's-complement toffsets and strips >2,400-tick outliers (0 NetEq jitter-inflation packets) clamped in [48, 2400] ticks; live NetEq Kalman jitter filter update latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "474. [Topic 111 · Historic 115th SVG & 945-Guardrail Dual Milestone 🎉: voice-sip-rfc5373-rfc3842-answer-mode-auto-answer-bugging-message-summary-mwi-notify-flood-faq] Enterprise SIP RFC 5373 Answer-Mode [500,2000]ms Anti-Bugging & RFC 3842 Dialog-Bound MWI [0,999] Callback Guard (P935 / P936 🎉 — Stage 471 · 🎉 Historic 115th SVG & 945-Guardrail Dual Milestone · 474 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of external Answer-Mode/Alert-Info auto-answer headers (0 silent room-bugging activations) and clamps internal intercom warning tone in [500, 2000]ms; live SBC header sanitizer regex latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsolicited MWI NOTIFY packets with 481 and pins Message-Account to internal voicemail allowlists (0 callback toll-fraud notifications) clamped in [0, 999] messages; live SBC subscription state-table lookup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

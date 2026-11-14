@@ -82732,6 +82732,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc5373AnswerModeAutoBuggingStripAnd403ForbiddenContext {
+      unauthorizedAutoAnswerOrSilentBuggingHeaderDetected: boolean;
+      silentRoomBuggingAutoAnswerActivations: number;
+      intercomWarningToneDurationMs: number;
+    }
+
+    export interface SipRfc5373AnswerModeAutoBuggingStripAnd403ForbiddenDecision {
+      violated: boolean;
+      policyId: "P935-SIP-RFC5373-ANSWER-MODE-AUTO-BUGGING-STRIP-AND-403-FORBIDDEN-GUARD";
+      action:
+        | "strip_auto_answer_headers_reject_require_403_and_enforce_warning_tone"
+        | "clamp_silent_bugging_activations_and_warning_tone_bounds"
+        | "allow";
+      reason: string;
+      clampedSilentRoomBuggingAutoAnswerActivations: number;
+      clampedIntercomWarningToneDurationMs: number;
+    }
+
+    export function evaluateSipRfc5373AnswerModeAutoBuggingStripAnd403ForbiddenGate(
+      context: SipRfc5373AnswerModeAutoBuggingStripAnd403ForbiddenContext,
+    ): SipRfc5373AnswerModeAutoBuggingStripAnd403ForbiddenDecision {
+      const policyId =
+        "P935-SIP-RFC5373-ANSWER-MODE-AUTO-BUGGING-STRIP-AND-403-FORBIDDEN-GUARD" as const;
+      const clampedSilentRoomBuggingAutoAnswerActivations = 0;
+      const clampedIntercomWarningToneDurationMs = Math.min(
+        Math.max(context.intercomWarningToneDurationMs, 500),
+        2000,
+      );
+
+      if (context.unauthorizedAutoAnswerOrSilentBuggingHeaderDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_auto_answer_headers_reject_require_403_and_enforce_warning_tone",
+          reason:
+            "Enterprise SIP RFC 5373 Answer-Mode / Priv-Answer-Mode & Alert-Info Auto-Answer Anti-Bugging Policy Check: external INVITE carried Answer-Mode: Auto, Priv-Answer-Mode: Auto, or Call-Info/Alert-Info answer-after=0 attempting silent speakerphone mic activation ('Bug My House' attack); offline synthetic policy state machine stripping external auto-answer headers or rejecting with SIP 403 Forbidden (0 silent room-bugging activations) and clamping internal intercom warning tone duration to [500, 2000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC header sanitizer regex latency not_measured).",
+          clampedSilentRoomBuggingAutoAnswerActivations,
+          clampedIntercomWarningToneDurationMs,
+        };
+      }
+
+      if (
+        context.silentRoomBuggingAutoAnswerActivations > 0 ||
+        context.intercomWarningToneDurationMs < 500 ||
+        context.intercomWarningToneDurationMs > 2000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_silent_bugging_activations_and_warning_tone_bounds",
+          reason:
+            "Silent room-bugging auto-answer activations (>0 synthetic ceiling) or intercom warning tone duration (<500ms or >2000ms synthetic bounds) out of bounds; clamping activations to 0 and warning tone duration to [500, 2000]ms.",
+          clampedSilentRoomBuggingAutoAnswerActivations,
+          clampedIntercomWarningToneDurationMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 5373 auto-answer anti-bugging strip/403 gate (0 silent activations) and [500, 2000]ms intercom warning tone verified.",
+        clampedSilentRoomBuggingAutoAnswerActivations,
+        clampedIntercomWarningToneDurationMs,
+      };
+    }
+
+    export interface SipRfc3842MessageSummaryMwiUnsolicitedNotifyAndCallbackUriContext {
+      unsolicitedMwiNotifyOrExternalPremiumCallbackUriDetected: boolean;
+      spoofedMwiCallbackTollFraudNotifications: number;
+      maxMwiVoiceMessageCount: number;
+    }
+
+    export interface SipRfc3842MessageSummaryMwiUnsolicitedNotifyAndCallbackUriDecision {
+      violated: boolean;
+      policyId: "P936-SIP-RFC3842-MESSAGE-SUMMARY-MWI-UNSOLICITED-NOTIFY-AND-CALLBACK-URI-GUARD";
+      action:
+        | "reject_unsolicited_mwi_with_481_and_pin_internal_message_account"
+        | "clamp_spoofed_mwi_notifications_and_message_count_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedMwiCallbackTollFraudNotifications: number;
+      clampedMaxMwiVoiceMessageCount: number;
+    }
+
+    export function evaluateSipRfc3842MessageSummaryMwiUnsolicitedNotifyAndCallbackUriGate(
+      context: SipRfc3842MessageSummaryMwiUnsolicitedNotifyAndCallbackUriContext,
+    ): SipRfc3842MessageSummaryMwiUnsolicitedNotifyAndCallbackUriDecision {
+      const policyId =
+        "P936-SIP-RFC3842-MESSAGE-SUMMARY-MWI-UNSOLICITED-NOTIFY-AND-CALLBACK-URI-GUARD" as const;
+      const clampedSpoofedMwiCallbackTollFraudNotifications = 0;
+      const clampedMaxMwiVoiceMessageCount = Math.min(
+        Math.max(context.maxMwiVoiceMessageCount, 0),
+        999,
+      );
+
+      if (context.unsolicitedMwiNotifyOrExternalPremiumCallbackUriDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unsolicited_mwi_with_481_and_pin_internal_message_account",
+          reason:
+            "Enterprise SIP RFC 3842 Message-Summary (MWI) Unsolicited NOTIFY & Callback URI Toll-Fraud Policy Check: out-of-dialog unsolicited Event: message-summary NOTIFY or external premium-rate Message-Account callback URI detected; offline synthetic policy state machine rejecting unsolicited MWI with SIP 481 and pinning Message-Account to internal voicemail allowlist (0 spoofed MWI callback notifications) while clamping Voice-Message count to [0, 999] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC subscription state-table lookup latency not_measured).",
+          clampedSpoofedMwiCallbackTollFraudNotifications,
+          clampedMaxMwiVoiceMessageCount,
+        };
+      }
+
+      if (
+        context.spoofedMwiCallbackTollFraudNotifications > 0 ||
+        context.maxMwiVoiceMessageCount < 0 ||
+        context.maxMwiVoiceMessageCount > 999
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_mwi_notifications_and_message_count_bounds",
+          reason:
+            "Spoofed MWI callback toll-fraud notifications (>0 synthetic ceiling) or max MWI Voice-Message count (<0 or >999 synthetic bounds) out of bounds; clamping violations to 0 and message count to [0, 999].",
+          clampedSpoofedMwiCallbackTollFraudNotifications,
+          clampedMaxMwiVoiceMessageCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3842 dialog-bound MWI + internal Message-Account allowlist (0 spoofed notifications) and [0, 999] message count bounds verified.",
+        clampedSpoofedMwiCallbackTollFraudNotifications,
+        clampedMaxMwiVoiceMessageCount,
+      };
+    }
+
 
 
 
