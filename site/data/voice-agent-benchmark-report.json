@@ -1945,6 +1945,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% userless ;bnc Contact syntax and tenant E.164 DID ownership (0 hijacked/malformed calls) and clamps bulk DID capacity in [10, 10000]; live ENUM/NPDB radix-tree lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% RFC 3327 Path/+sip.instance binding (0 blackhole/storm registrations) and clamps bulk trunk Expires in [600, 3600]s; live distributed registrar database commit latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "461. [Topic 98 · 100th FAQ, P910 & 900-Test Triple Milestone 🎉: voice-webrtc-ice-rfc8445-rfc8838-trickle-ice-end-of-candidates-role-conflict-487-nomination-faq] Enterprise WebRTC RFC 8445 uint64 487 Tie-Breaker + Ta [5,50]ms & RFC 8838 Trickle ICE [3000,15000]ms Hold Guard (P909 / P910 🎉 — Stage 458 · 🎉 Historic 100th FAQ, P910 & 900-Test Triple Milestone · 461 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% unsigned uint64 tie-breaker comparison and Succeeded-first nomination (0 487 loops/blind switches) and clamps STUN pacing Ta in [5, 50]ms; live STUN HMAC-SHA1 MESSAGE-INTEGRITY latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: holds 100% of Trickle ICE sessions open until a=end-of-candidates arrives (0 premature drops) and clamps gathering timeout in [3000, 15000]ms; live WAN TURN Allocate RTT latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

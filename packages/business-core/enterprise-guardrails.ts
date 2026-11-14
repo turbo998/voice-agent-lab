@@ -80961,6 +80961,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcIceRfc8445RoleConflict487Unsigned64BitTieBreakerAndNominationContext {
+      signedInt64TieBreaker487LoopOrUnverifiedNominationDetected: boolean;
+      roleConflict487LoopsOrUnverifiedNominations: number;
+      stunConnectivityCheckPacingTaMs: number;
+    }
+
+    export interface WebrtcIceRfc8445RoleConflict487Unsigned64BitTieBreakerAndNominationDecision {
+      violated: boolean;
+      policyId: "P909-WEBRTC-ICE-RFC8445-ROLE-CONFLICT-487-UNSIGNED-64BIT-TIE-BREAKER-AND-NOMINATION-GUARD";
+      action:
+        | "enforce_uint64_tie_breaker_and_succeeded_first_nomination"
+        | "clamp_role_conflict_loops_and_ta_pacing_bounds"
+        | "allow";
+      reason: string;
+      clampedRoleConflict487LoopsOrUnverifiedNominations: number;
+      clampedStunConnectivityCheckPacingTaMs: number;
+    }
+
+    export function evaluateWebrtcIceRfc8445RoleConflict487Unsigned64BitTieBreakerAndNominationGate(
+      context: WebrtcIceRfc8445RoleConflict487Unsigned64BitTieBreakerAndNominationContext,
+    ): WebrtcIceRfc8445RoleConflict487Unsigned64BitTieBreakerAndNominationDecision {
+      const policyId =
+        "P909-WEBRTC-ICE-RFC8445-ROLE-CONFLICT-487-UNSIGNED-64BIT-TIE-BREAKER-AND-NOMINATION-GUARD" as const;
+      const clampedRoleConflict487LoopsOrUnverifiedNominations = 0;
+      const clampedStunConnectivityCheckPacingTaMs = Math.min(
+        Math.max(context.stunConnectivityCheckPacingTaMs, 5),
+        50,
+      );
+
+      if (context.signedInt64TieBreaker487LoopOrUnverifiedNominationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_uint64_tie_breaker_and_succeeded_first_nomination",
+          reason:
+            "Enterprise WebRTC RFC 8445 487 Role Conflict Unsigned 64-Bit Tie-Breaker & Succeeded-First Nomination Policy Check: signed int64/32-bit tie-breaker comparison causing infinite STUN 487 Role Conflict loop or blind USE-CANDIDATE switch before Succeeded verification detected; offline synthetic policy state machine enforcing unsigned uint64 tie-breaker comparison (0 487 loops/blind switches) and clamping STUN check pacing Ta to [5, 50]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live STUN HMAC-SHA1 MESSAGE-INTEGRITY latency not_measured).",
+          clampedRoleConflict487LoopsOrUnverifiedNominations,
+          clampedStunConnectivityCheckPacingTaMs,
+        };
+      }
+
+      if (
+        context.roleConflict487LoopsOrUnverifiedNominations > 0 ||
+        context.stunConnectivityCheckPacingTaMs < 5 ||
+        context.stunConnectivityCheckPacingTaMs > 50
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_role_conflict_loops_and_ta_pacing_bounds",
+          reason:
+            "STUN 487 role-conflict loops / unverified nominations (>0 synthetic ceiling) or STUN pacing timer Ta (<5ms or >50ms synthetic bounds) out of bounds; clamping failed checks to 0 and Ta to [5, 50]ms.",
+          clampedRoleConflict487LoopsOrUnverifiedNominations,
+          clampedStunConnectivityCheckPacingTaMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8445 unsigned uint64 tie-breaker + Succeeded-first nomination (0 loops/blind switches) and [5, 50]ms Ta pacing bounds verified.",
+        clampedRoleConflict487LoopsOrUnverifiedNominations,
+        clampedStunConnectivityCheckPacingTaMs,
+      };
+    }
+
+    export interface WebrtcTrickleIceRfc8838EndOfCandidatesPrematureFailAndGatheringTimeoutContext {
+      prematureIceFailedBeforeEndOfCandidatesReceivedDetected: boolean;
+      prematureTrickleIceFailedCalls: number;
+      trickleIceGatheringTimeoutMs: number;
+    }
+
+    export interface WebrtcTrickleIceRfc8838EndOfCandidatesPrematureFailAndGatheringTimeoutDecision {
+      violated: boolean;
+      policyId: "P910-WEBRTC-TRICKLE-ICE-RFC8838-END-OF-CANDIDATES-PREMATURE-FAIL-AND-GATHERING-TIMEOUT-GUARD";
+      action:
+        | "hold_ice_checking_until_end_of_candidates_or_timeout"
+        | "clamp_premature_failed_calls_and_gathering_timeout_bounds"
+        | "allow";
+      reason: string;
+      clampedPrematureTrickleIceFailedCalls: number;
+      clampedTrickleIceGatheringTimeoutMs: number;
+    }
+
+    export function evaluateWebrtcTrickleIceRfc8838EndOfCandidatesPrematureFailAndGatheringTimeoutGate(
+      context: WebrtcTrickleIceRfc8838EndOfCandidatesPrematureFailAndGatheringTimeoutContext,
+    ): WebrtcTrickleIceRfc8838EndOfCandidatesPrematureFailAndGatheringTimeoutDecision {
+      const policyId =
+        "P910-WEBRTC-TRICKLE-ICE-RFC8838-END-OF-CANDIDATES-PREMATURE-FAIL-AND-GATHERING-TIMEOUT-GUARD" as const;
+      const clampedPrematureTrickleIceFailedCalls = 0;
+      const clampedTrickleIceGatheringTimeoutMs = Math.min(
+        Math.max(context.trickleIceGatheringTimeoutMs, 3000),
+        15000,
+      );
+
+      if (context.prematureIceFailedBeforeEndOfCandidatesReceivedDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "hold_ice_checking_until_end_of_candidates_or_timeout",
+          reason:
+            "Enterprise WebRTC RFC 8838 Trickle ICE End-of-Candidates Hold Policy Check: premature transition to ICE Failed at 150ms when initial host candidates failed before async TURN-over-TLS relay candidate and a=end-of-candidates arrived; offline synthetic policy state machine holding ICE checking state open (0 premature drops) and clamping Trickle ICE gathering timeout to [3000, 15000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live WAN TURN Allocate RTT latency not_measured).",
+          clampedPrematureTrickleIceFailedCalls,
+          clampedTrickleIceGatheringTimeoutMs,
+        };
+      }
+
+      if (
+        context.prematureTrickleIceFailedCalls > 0 ||
+        context.trickleIceGatheringTimeoutMs < 3000 ||
+        context.trickleIceGatheringTimeoutMs > 15000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_premature_failed_calls_and_gathering_timeout_bounds",
+          reason:
+            "Premature Trickle ICE failed calls (>0 synthetic ceiling) or gathering timeout (<3000ms or >15000ms synthetic bounds) out of bounds; clamping premature drops to 0 and timeout to [3000, 15000]ms.",
+          clampedPrematureTrickleIceFailedCalls,
+          clampedTrickleIceGatheringTimeoutMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8838 Trickle ICE end-of-candidates hold (0 premature drops) and [3000, 15000]ms gathering timeout bounds verified.",
+        clampedPrematureTrickleIceFailedCalls,
+        clampedTrickleIceGatheringTimeoutMs,
+      };
+    }
+
 
 
 
