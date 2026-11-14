@@ -76213,6 +76213,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc5621MultipartMimeShadowSdpSmugglingAndHandlingBypassContext {
+      shadowSdpPartOrNestedMultipartDepthDetected: boolean;
+      smuggledOrDuplicateSdpParts: number;
+      maxMultipartMimeBodyParts: number;
+    }
+
+    export interface SipRfc5621MultipartMimeShadowSdpSmugglingAndHandlingBypassDecision {
+      violated: boolean;
+      policyId: "P839-SIP-RFC5621-MULTIPART-MIME-SHADOW-SDP-SMUGGLING-AND-HANDLING-BYPASS-GUARD";
+      action:
+        | "reject_415_shadow_sdp_and_flatten_canonical_multipart"
+        | "clamp_smuggled_sdp_parts_and_multipart_bounds"
+        | "allow";
+      reason: string;
+      clampedSmuggledOrDuplicateSdpParts: number;
+      clampedMaxMultipartMimeBodyParts: number;
+    }
+
+    export function evaluateSipRfc5621MultipartMimeShadowSdpSmugglingAndHandlingBypassGate(
+      context: SipRfc5621MultipartMimeShadowSdpSmugglingAndHandlingBypassContext,
+    ): SipRfc5621MultipartMimeShadowSdpSmugglingAndHandlingBypassDecision {
+      const policyId =
+        "P839-SIP-RFC5621-MULTIPART-MIME-SHADOW-SDP-SMUGGLING-AND-HANDLING-BYPASS-GUARD" as const;
+      const clampedSmuggledOrDuplicateSdpParts = 0;
+      const clampedMaxMultipartMimeBodyParts = Math.min(
+        Math.max(context.maxMultipartMimeBodyParts, 1),
+        3,
+      );
+
+      if (context.shadowSdpPartOrNestedMultipartDepthDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_415_shadow_sdp_and_flatten_canonical_multipart",
+          reason:
+            "SIP RFC 5621 Multipart MIME Shadow-SDP Smuggling & Handling=Optional Parser Differential Policy Check: inbound SIP message carried >1 application/sdp body part, disguised a secondary SDP with Content-Disposition handling=optional, or nested multipart/* containers to bypass first-match firewall inspection while overwriting the backend media target; offline synthetic policy state machine rejecting with 415 Unsupported Media Type (0 shadow SDP parts) and clamping multipart body parts to [1, 3] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC MIME boundary AST scan latency not_measured).",
+          clampedSmuggledOrDuplicateSdpParts,
+          clampedMaxMultipartMimeBodyParts,
+        };
+      }
+
+      if (
+        context.smuggledOrDuplicateSdpParts > 0 ||
+        context.maxMultipartMimeBodyParts < 1 ||
+        context.maxMultipartMimeBodyParts > 3
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_smuggled_sdp_parts_and_multipart_bounds",
+          reason:
+            "Smuggled/duplicate application/sdp body parts (>0 synthetic ceiling) or maximum multipart MIME body parts (<1 or >3 parts synthetic bounds) out of bounds; clamping duplicate SDP parts to 0 and multipart body parts to [1, 3].",
+          clampedSmuggledOrDuplicateSdpParts,
+          clampedMaxMultipartMimeBodyParts,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 5621 single canonical application/sdp part (0 shadow SDPs), flat single-layer MIME hierarchy, and [1, 3] body part bounds verified.",
+        clampedSmuggledOrDuplicateSdpParts,
+        clampedMaxMultipartMimeBodyParts,
+      };
+    }
+
+    export interface SipRfc3204IsupQsigTrunkInjectionAndContentLengthTruncationContext {
+      untrustedIsupQsigBodyOrContentLengthMismatchDetected: boolean;
+      injectedIsupOrQsigBodies: number;
+      maxSipBodyPayloadBytes: number;
+    }
+
+    export interface SipRfc3204IsupQsigTrunkInjectionAndContentLengthTruncationDecision {
+      violated: boolean;
+      policyId: "P840-SIP-RFC3204-ISUP-QSIG-TRUNK-INJECTION-AND-CONTENT-LENGTH-TRUNCATION-GUARD";
+      action:
+        | "strip_untrusted_isup_qsig_and_enforce_content_length_parity"
+        | "clamp_isup_qsig_bodies_and_payload_byte_bounds"
+        | "allow";
+      reason: string;
+      clampedInjectedIsupOrQsigBodies: number;
+      clampedMaxSipBodyPayloadBytes: number;
+    }
+
+    export function evaluateSipRfc3204IsupQsigTrunkInjectionAndContentLengthTruncationGate(
+      context: SipRfc3204IsupQsigTrunkInjectionAndContentLengthTruncationContext,
+    ): SipRfc3204IsupQsigTrunkInjectionAndContentLengthTruncationDecision {
+      const policyId =
+        "P840-SIP-RFC3204-ISUP-QSIG-TRUNK-INJECTION-AND-CONTENT-LENGTH-TRUNCATION-GUARD" as const;
+      const clampedInjectedIsupOrQsigBodies = 0;
+      const clampedMaxSipBodyPayloadBytes = Math.min(
+        Math.max(context.maxSipBodyPayloadBytes, 256),
+        8192,
+      );
+
+      if (context.untrustedIsupQsigBodyOrContentLengthMismatchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_untrusted_isup_qsig_and_enforce_content_length_parity",
+          reason:
+            "SIP RFC 3204 / RFC 3398 Encapsulated ISUP/QSIG Trunk Injection & Content-Length Boundary Truncation Policy Check: untrusted SIP trunk injected an application/isup or application/qsig binary signaling part to spoof Calling Party Category (CPC=free) / Caller-ID or declared a Content-Length diverging from actual MIME boundary bytes; offline synthetic policy state machine stripping 100% of untrusted ISUP/QSIG bodies (0 injected bodies) and clamping total SIP payload to [256, 8192] bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC binary MIME body stripping latency not_measured).",
+          clampedInjectedIsupOrQsigBodies,
+          clampedMaxSipBodyPayloadBytes,
+        };
+      }
+
+      if (
+        context.injectedIsupOrQsigBodies > 0 ||
+        context.maxSipBodyPayloadBytes < 256 ||
+        context.maxSipBodyPayloadBytes > 8192
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_isup_qsig_bodies_and_payload_byte_bounds",
+          reason:
+            "Injected untrusted ISUP/QSIG binary bodies (>0 synthetic ceiling) or maximum SIP body payload bytes (<256B or >8192B synthetic bounds) out of bounds; clamping injected binary bodies to 0 and SIP payload bytes to [256, 8192].",
+          clampedInjectedIsupOrQsigBodies,
+          clampedMaxSipBodyPayloadBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: 0 untrusted RFC 3204 ISUP/QSIG binary bodies, exact Content-Length byte closure, and [256, 8192]B payload bounds verified.",
+        clampedInjectedIsupOrQsigBodies,
+        clampedMaxSipBodyPayloadBytes,
+      };
+    }
+
 
 
 

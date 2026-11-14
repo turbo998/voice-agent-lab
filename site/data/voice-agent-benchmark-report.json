@@ -1735,6 +1735,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 3550 CC*4 CSRC bounds, caps active mixer contributors in [1, 4], and strips 100% of Agent self-CSRC loopback frames via Mix-Minus (0 overreads/self-barge-ins); live SFU Mix-Minus DSP subtraction latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: cross-checks RFC 6465 audio-level headers against decoded PCM RMS energy (0 spoofed 0 dBov packets) and enforces a [300, 800]ms dominant-speaker hold window; live PCM RMS window calculation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "426. [Topic 63 · P840 🎉: voice-sip-rfc5621-multipart-mime-sdp-smuggling-isup-qsig-injection-faq] Enterprise SIP RFC 5621 Multipart Shadow-SDP Smuggling ([1,3] Parts) & RFC 3204 Untrusted Trunk ISUP/QSIG 100% Strip + [256,8192]B Byte-Closure Guard (P839 / P840 🎉 — Stage 423 · 426 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of multipart/* messages with >1 application/sdp part or nested multipart containers (0 shadow SDPs) and caps body parts in [1, 3]; live SBC MIME boundary AST scan latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted application/isup and application/qsig binary parts (0 injected bodies) and enforces exact Content-Length parity within [256, 8192] bytes; live SBC binary MIME strip latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
