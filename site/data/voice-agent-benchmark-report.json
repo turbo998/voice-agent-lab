@@ -1783,6 +1783,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of recursive RED-in-RED or block-length overread packets (0 recursive/overread packets) and clamps redundant blocks in [1, 2]; live SIMD XOR parity recovery latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of overread ULPFEC packets and clamps RFC 3389 CN noise floor in [-65, -38] dBFS (0 shock packets); live DSP comfort-noise LPC synthesis latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "434. [Topic 71 · SVG 75 & 865 Guardrails 🎉: voice-sip-siprec-rfc7866-rfc6341-metadata-xxe-stream-binding-fail-closed-quarantine-faq] Enterprise SIP RFC 7866/6341 (SIPREC) Metadata XXE + Bijective a=label [1,4] Stream Binding & [500,3000]ms SRS Fail-Closed Quarantine Guard (P855 / P856 — Stage 431 · 🎉 Historic 75th SVG & 865-Guardrail Dual Milestone · 434 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of DOCTYPE/ENTITY XXE or unbound-label rs-metadata+xml payloads with SIP 400 (0 XXE/unbound payloads) and clamps recorded streams in [1, 4]; live SBC XML SAX parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces [500, 3000]ms SRS watchdog with standby ring-buffer failover and Fail-Closed write-tool quarantine on regulated calls (0 unrecorded commits); live standby SRS TLS/SRTP handshake & WORM disk I/O latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

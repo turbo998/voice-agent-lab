@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg75" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent75" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg75)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="380" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="234" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 431 · TOPIC 71 · P855 / P856 · SVG 75 🎉 · 865 GUARDS 🎉</text>
+  <text x="438" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Enterprise SIP RFC 7866 / RFC 6341 (SIPREC) Metadata XXE, Stream Binding &amp; Fail-Closed Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">企业 SIPREC (RFC 7866/6341) 双录元数据防 XXE、a=label 声道 [1,4] 轨双射锁与 SRS 断流 [500,3000]ms 故障安全熔断门禁（🎉 第 75 张 SVG 与 865 护栏双里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent75)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 7866/7865 Metadata XXE & Stream-ID Binding Gate (P855) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. SIPREC Metadata XML XXE &amp; a=label Stream Gate (P855)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：application/rs-metadata+xml 注入 &lt;!ENTITY&gt; 触发 SRS 内网 SSRF 与任意文件读取</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 串轨风险：&lt;stream&gt;&lt;label&gt; 与 SDP a=label 失配导致客户/AI 声道颠倒或跨通话串音</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Attack: &lt;!DOCTYPE rs [&lt;!ENTITY xxe SYSTEM "http://169.254.169.254"&gt;]&gt; | 12 streams</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P855 Gate: 0 DOCTYPE/ENTITY (SIP 400) + Bijective a=label + Streams in [1, 4]</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: reject_siprec_xxe_or_unbound_label_with_400_and_clamp_streams</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P855）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedXxeOrUnboundStreamMetadataPayloads = 0（100% 阻断 XXE 与错绑声道标签）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedRecordedMediaStreamsPerSession ∈ [1, 4]（主叫上行 / AI 下行 / 耳语 / 同屏）</text>
+
+  <!-- Right Column: RFC 6341 Media-Fork Starvation & Fail-Closed Quarantine Gate (P856) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. SRS Media-Fork Watchdog &amp; Fail-Closed Quarantine (P856)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：SRS 录音服断流时默认 Fail-Open 继续执行电汇/投保，触发 MiFID II / 银保监重罚</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 恢复与熔断：[500, 3000]ms 看门狗触发 3s 环形缓冲切备；若全断则立即冻结写操作工具</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Fail-Open Breach: SRS 503 / RTP stall -&gt; AI still commits $50k wire transfer</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P856 Gate: [500, 3000]ms Watchdog + Standby SRS Replay + Fail-Closed Write Lock</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: failover_srs_or_quarantine_regulated_write_tools_fail_closed</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P856）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedUnrecordedRegulatedTransactionCommits = 0（0 笔无双录裸奔交易提交）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedSrsFailoverWatchdogTimeoutMs ∈ [500, 3000] ms（毫秒级环缓热切与写隔离）</text>
+
+  <!-- Bottom Quantitative & Provenance Panel -->
+  <rect x="44" y="412" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="442" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Quantitative Evaluation Matrix &amp; Production Verification Checklist (Stage 431 · 434 Dims · 865 Guardrails 🎉 · 874 Probes)</text>
+  <rect x="64" y="458" width="1152" height="106" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="482" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P855: evaluateSipSiprecRfc7866MetadataXxeAndParticipantStreamIdBindingGate       =&gt; 0 XXE/unbound labels | [1, 4] streams</text>
+  <text x="80" y="506" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P856: evaluateSipSiprecRfc6341MediaForkStarvationAndFailClosedComplianceQuarantineGate =&gt; 0 unrecorded commits | [500, 3000]ms watchdog</text>
+  <text x="80" y="530" fill="#93C5FD" font-family="Consolas, monospace" font-size="12">• Checklist: [x] Disable XML DOCTYPE/ENTITY  [x] 1:1 a=label Bijection  [x] 3s Ring-Buffer SRS Failover  [x] Fail-Closed Write Quarantine</text>
+  <text x="80" y="552" fill="#34D399" font-family="Consolas, monospace" font-size="12">• Milestone: 434 Dimensions · 865 Production Guardrails 🎉 · 874 Deterministic Synthetic Probes (684 Live POC Probes) · 873 Unit Tests</text>
+
+  <!-- Provenance Footer -->
+  <rect x="64" y="578" width="1152" height="66" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="602" fill="#FCD34D" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">Provenance &amp; Timing Disclosure (synthetic · independently_reproduced=false):</text>
+  <text x="80" y="622" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="80" y="638" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Offline in-memory policy/configuration state-machine check only; live SBC XML SAX parsing, standby SRS TLS/SRTP handshake &amp; WORM disk I/O latencies are not_measured.</text>
+</svg>

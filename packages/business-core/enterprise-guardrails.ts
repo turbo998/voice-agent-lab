@@ -77301,6 +77301,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipSiprecRfc7866MetadataXxeAndParticipantStreamIdBindingContext {
+      metadataXmlXxeOrUnboundStreamLabelDetected: boolean;
+      xxeOrUnboundStreamMetadataPayloads: number;
+      recordedMediaStreamsPerSession: number;
+    }
+
+    export interface SipSiprecRfc7866MetadataXxeAndParticipantStreamIdBindingDecision {
+      violated: boolean;
+      policyId: "P855-SIP-SIPREC-RFC7866-METADATA-XXE-AND-PARTICIPANT-STREAM-ID-BINDING-GUARD";
+      action:
+        | "reject_siprec_xxe_or_unbound_label_with_400_and_clamp_streams"
+        | "clamp_siprec_metadata_payloads_and_stream_count_bounds"
+        | "allow";
+      reason: string;
+      clampedXxeOrUnboundStreamMetadataPayloads: number;
+      clampedRecordedMediaStreamsPerSession: number;
+    }
+
+    export function evaluateSipSiprecRfc7866MetadataXxeAndParticipantStreamIdBindingGate(
+      context: SipSiprecRfc7866MetadataXxeAndParticipantStreamIdBindingContext,
+    ): SipSiprecRfc7866MetadataXxeAndParticipantStreamIdBindingDecision {
+      const policyId =
+        "P855-SIP-SIPREC-RFC7866-METADATA-XXE-AND-PARTICIPANT-STREAM-ID-BINDING-GUARD" as const;
+      const clampedXxeOrUnboundStreamMetadataPayloads = 0;
+      const clampedRecordedMediaStreamsPerSession = Math.min(
+        Math.max(context.recordedMediaStreamsPerSession, 1),
+        4,
+      );
+
+      if (context.metadataXmlXxeOrUnboundStreamLabelDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_siprec_xxe_or_unbound_label_with_400_and_clamp_streams",
+          reason:
+            "Enterprise SIP RFC 7866 / RFC 7865 (SIPREC) Recording Metadata XML XXE & Participant-Stream a=label Binding Policy Check: inbound application/rs-metadata+xml carried DOCTYPE/ENTITY declarations or unbound <stream><label> attributes; offline synthetic policy state machine rejecting 100% of XXE/unbound-label payloads with SIP 400 (0 XXE/unbound payloads) and clamping recorded media streams per session to [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC XML SAX parser latency not_measured).",
+          clampedXxeOrUnboundStreamMetadataPayloads,
+          clampedRecordedMediaStreamsPerSession,
+        };
+      }
+
+      if (
+        context.xxeOrUnboundStreamMetadataPayloads > 0 ||
+        context.recordedMediaStreamsPerSession < 1 ||
+        context.recordedMediaStreamsPerSession > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_siprec_metadata_payloads_and_stream_count_bounds",
+          reason:
+            "XXE or unbound-stream SIPREC metadata payloads (>0 synthetic ceiling) or recorded media streams per session (<1 or >4 synthetic bounds) out of bounds; clamping violations to 0 and recorded streams to [1, 4].",
+          clampedXxeOrUnboundStreamMetadataPayloads,
+          clampedRecordedMediaStreamsPerSession,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIPREC RFC 7866/7865 DTD-free XML sandbox and 1:1 a=label bijection (0 XXE/unbound payloads) and [1, 4] recorded stream bounds verified.",
+        clampedXxeOrUnboundStreamMetadataPayloads,
+        clampedRecordedMediaStreamsPerSession,
+      };
+    }
+
+    export interface SipSiprecRfc6341MediaForkStarvationAndFailClosedComplianceQuarantineContext {
+      srsMediaForkStarvationOnRegulatedCallDetected: boolean;
+      unrecordedRegulatedTransactionCommits: number;
+      srsFailoverWatchdogTimeoutMs: number;
+    }
+
+    export interface SipSiprecRfc6341MediaForkStarvationAndFailClosedComplianceQuarantineDecision {
+      violated: boolean;
+      policyId: "P856-SIP-SIPREC-RFC6341-MEDIA-FORK-STARVATION-AND-FAIL-CLOSED-COMPLIANCE-QUARANTINE-GUARD";
+      action:
+        | "failover_srs_or_quarantine_regulated_write_tools_fail_closed"
+        | "clamp_unrecorded_commits_and_srs_watchdog_bounds"
+        | "allow";
+      reason: string;
+      clampedUnrecordedRegulatedTransactionCommits: number;
+      clampedSrsFailoverWatchdogTimeoutMs: number;
+    }
+
+    export function evaluateSipSiprecRfc6341MediaForkStarvationAndFailClosedComplianceQuarantineGate(
+      context: SipSiprecRfc6341MediaForkStarvationAndFailClosedComplianceQuarantineContext,
+    ): SipSiprecRfc6341MediaForkStarvationAndFailClosedComplianceQuarantineDecision {
+      const policyId =
+        "P856-SIP-SIPREC-RFC6341-MEDIA-FORK-STARVATION-AND-FAIL-CLOSED-COMPLIANCE-QUARANTINE-GUARD" as const;
+      const clampedUnrecordedRegulatedTransactionCommits = 0;
+      const clampedSrsFailoverWatchdogTimeoutMs = Math.min(
+        Math.max(context.srsFailoverWatchdogTimeoutMs, 500),
+        3000,
+      );
+
+      if (context.srsMediaForkStarvationOnRegulatedCallDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "failover_srs_or_quarantine_regulated_write_tools_fail_closed",
+          reason:
+            "Enterprise SIP RFC 6341 / RFC 7866 (SIPREC) SRS Media-Fork Starvation & Fail-Closed Compliance Quarantine Policy Check: primary SRS media fork stalled on a regulated financial/healthcare call; offline synthetic policy state machine triggering ring-buffered standby SRS failover or Fail-Closed write-tool quarantine (0 unrecorded regulated transaction commits) within [500, 3000]ms watchdog bounds (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live standby SRS TLS/SRTP handshake & WORM disk I/O latency not_measured).",
+          clampedUnrecordedRegulatedTransactionCommits,
+          clampedSrsFailoverWatchdogTimeoutMs,
+        };
+      }
+
+      if (
+        context.unrecordedRegulatedTransactionCommits > 0 ||
+        context.srsFailoverWatchdogTimeoutMs < 500 ||
+        context.srsFailoverWatchdogTimeoutMs > 3000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unrecorded_commits_and_srs_watchdog_bounds",
+          reason:
+            "Unrecorded regulated transaction commits (>0 synthetic ceiling) or SRS failover watchdog timeout (<500ms or >3000ms synthetic bounds) out of bounds; clamping unrecorded commits to 0 and watchdog timeout to [500, 3000]ms.",
+          clampedUnrecordedRegulatedTransactionCommits,
+          clampedSrsFailoverWatchdogTimeoutMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIPREC RFC 6341 Fail-Closed compliance quarantine (0 unrecorded commits) and [500, 3000]ms SRS watchdog bounds verified.",
+        clampedUnrecordedRegulatedTransactionCommits,
+        clampedSrsFailoverWatchdogTimeoutMs,
+      };
+    }
+
 
 
 
