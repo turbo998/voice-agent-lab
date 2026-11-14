@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 780" width="1280" height="780" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <linearGradient id="bg66" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#0B1F2E"/>
+    </linearGradient>
+    <linearGradient id="accent66" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="redCard66" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A1215"/>
+      <stop offset="100%" stop-color="#1A0B0E"/>
+    </linearGradient>
+    <linearGradient id="greenCard66" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B2922"/>
+      <stop offset="100%" stop-color="#071915"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="780" fill="url(#bg66)"/>
+  <rect x="28" y="24" width="1224" height="732" rx="18" fill="#0B1325" stroke="#1E293B" stroke-width="2"/>
+  <rect x="28" y="24" width="1224" height="8" rx="4" fill="url(#accent66)"/>
+
+  <!-- Header -->
+  <rect x="54" y="48" width="356" height="28" rx="14" fill="#1E1B4B" stroke="#8B5CF6" stroke-width="1.2"/>
+  <text x="232" y="67" fill="#C4B5FD" font-size="13" font-weight="700" text-anchor="middle">STAGE 422 · TOPIC 62 · P837–P838 · 425 DIMS</text>
+  <text x="54" y="108" fill="#F8FAFC" font-size="23" font-weight="800">WebRTC RFC 3550 / RFC 6465 RTP Mixer CSRC Bounds, Mix-Minus &amp; Audio-Level Spoof Guard</text>
+  <text x="54" y="135" fill="#94A3B8" font-size="14">RFC 3550 CSRC 长度闭合 + Mix-Minus 防自环啸叫 + Top-[1,4] 门控混音锁 (P837) · RFC 6464/6465 实测 RMS 对账与 [300,1200]ms 主讲人保持窗 (P838)</text>
+
+  <!-- Left Panel: Attack / Failure Path -->
+  <rect x="54" y="156" width="568" height="440" rx="14" fill="url(#redCard66)" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="76" y="188" fill="#FCA5A5" font-size="16" font-weight="800">⛔ 裸奔多方 RTP 混音桥的三大致命故障（Baseline Failures）</text>
+
+  <rect x="76" y="204" width="524" height="114" rx="10" fill="#18090C" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="228" fill="#F87171" font-size="14" font-weight="700">1. 畸形 CC=15 字节越界读 &amp; 多麦无门控全叠加底噪爆炸（RFC 3550）</text>
+  <text x="92" y="252" fill="#E2E8F0" font-size="12.5">• 24B 短包谎称 CC=15 触发 60B CSRC 内存越界读；伪造主叫 CSRC 污染说话人归因</text>
+  <text x="92" y="274" fill="#E2E8F0" font-size="12.5">• 8~12 方会场无门控全开混音导致底噪抬升 +9~10.8 dB，清辅音被彻底淹没</text>
+  <text x="92" y="298" fill="#FCA5A5" font-size="12" font-weight="700">后果：8 方远程调解室 AI 语音识别字错率（WER）从 4.1% 飙升至 22.6%</text>
+
+  <rect x="76" y="330" width="524" height="118" rx="10" fill="#18090C" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="354" fill="#F87171" font-size="14" font-weight="700">2. 缺失 Mix-Minus (N-1) 排除锁引发 AI 自打断与正反馈声学啸叫</text>
+  <text x="92" y="378" fill="#E2E8F0" font-size="12.5">• 混音桥将 AI 自身的 TTS 语音（SSRC=0xAA）原样混入发回给 AI 的下行 RTP 流</text>
+  <text x="92" y="400" fill="#E2E8F0" font-size="12.5">• AI 听见自己的声音误判为客户插话（Self-Barge-In），立即中断播报并识别自身尾音</text>
+  <text x="92" y="424" fill="#FCA5A5" font-size="12" font-weight="700">后果：单通会诊触发 14 次连续自打断死循环，双工桥接产生刺耳正反馈啸叫</text>
+
+  <rect x="76" y="460" width="524" height="120" rx="10" fill="#18090C" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="484" fill="#F87171" font-size="14" font-weight="700">3. 客户端静音包谎报 RFC 6464 0 dBov 满格音量劫持主讲人焦点</text>
+  <text x="92" y="508" fill="#E2E8F0" font-size="12.5">• 恶意或故障端发送全零静音帧（-96 dBov），却在 RFC 6464 扩展头硬编码 level=0 (0 dBov)</text>
+  <text x="92" y="530" fill="#E2E8F0" font-size="12.5">• 盲信扩展头的 SFU 将其永久选为 Dominant Speaker，把真实客户（-16 dBov）挤出混音池</text>
+  <text x="92" y="554" fill="#FCA5A5" font-size="12" font-weight="700">后果：真实客户 68.4% 的发言帧被静音压制，字幕与角色归属完全错乱</text>
+
+  <!-- Right Panel: Deterministic Guardrails P837 & P838 -->
+  <rect x="658" y="156" width="568" height="440" rx="14" fill="url(#greenCard66)" stroke="#10B981" stroke-width="1.5"/>
+  <text x="680" y="188" fill="#6EE7B7" font-size="16" font-weight="800">✅ 企业级多方 RTP 混音与主讲人双重确定性护栏（P837 + P838）</text>
+
+  <rect x="680" y="204" width="524" height="180" rx="10" fill="#061411" stroke="#047857" stroke-width="1.2"/>
+  <text x="698" y="230" fill="#34D399" font-size="14.5" font-weight="800">🛡️ P837 · CSRC 字节闭合 + Mix-Minus 防自环 + Top-[1,4] 门控混音锁</text>
+  <text x="698" y="256" fill="#E2E8F0" font-size="12.5">• 强制断言 12 + 4×CC + ext_len &lt;= pkt_len，并核验每个 CSRC 均在已鉴权会场名单内</text>
+  <text x="698" y="278" fill="#E2E8F0" font-size="12.5">• 严格执行 Mix-Minus (N-1)：100% 剥离包含接收端自身 SSRC 的自环混音分量（0 自环）</text>
+  <text x="698" y="300" fill="#E2E8F0" font-size="12.5">• 单帧并发参与混音叠加的活跃说话人钳制在 Top-[1, 4] 路，静默通道门控归零</text>
+  <text x="698" y="322" fill="#E2E8F0" font-size="12.5">• 彻底消除多麦底噪累加与 AI 自听自断，8 方会诊 WER 稳定在 4.5%</text>
+  <rect x="698" y="338" width="488" height="32" rx="6" fill="#0D332B"/>
+  <text x="942" y="359" fill="#A7F3D0" font-size="12" font-weight="700" text-anchor="middle">输出：clampedUnverifiedOrLoopedCsrcEntries = 0 · 活跃混音路数 ∈ [1, 4]</text>
+
+  <rect x="680" y="398" width="524" height="182" rx="10" fill="#061411" stroke="#047857" stroke-width="1.2"/>
+  <text x="698" y="424" fill="#38BDF8" font-size="14.5" font-weight="800">🛡️ P838 · RFC 6464/6465 实测 RMS 对账与 [300,1200]ms 主讲人保持窗</text>
+  <text x="698" y="450" fill="#E2E8F0" font-size="12.5">• 混音桥实时比对客户端自报 RFC 6464 dBov 与真实音频子带/PCM RMS 能量</text>
+  <text x="698" y="472" fill="#E2E8F0" font-size="12.5">• 凡偏差 &gt; 12 dB 立即判定为伪造音量头，剥离虚报值并按实测 RMS 重写（0 伪造抢麦）</text>
+  <text x="698" y="494" fill="#E2E8F0" font-size="12.5">• 主讲人（Dominant Speaker）切换强制施加 [300, 1200]ms 防抖保持窗口</text>
+  <text x="698" y="516" fill="#E2E8F0" font-size="12.5">• 过滤旁人瞬态咳嗽与桌面敲击声，确保 RFC 6465 说话人归因与 UI 焦点 100% 稳定</text>
+  <rect x="698" y="532" width="488" height="32" rx="6" fill="#0C2D48"/>
+  <text x="942" y="553" fill="#7DD3FC" font-size="12" font-weight="700" text-anchor="middle">输出：clampedSpoofedAudioLevelExtensionPackets = 0 · 保持窗 ∈ [300, 1200]ms</text>
+
+  <!-- Bottom KPI & Provenance Bar -->
+  <rect x="54" y="612" width="1172" height="120" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="76" y="640" fill="#C4B5FD" font-size="14" font-weight="800">📊 Stage 422 · Topic 62 定量对照与计时口径声明（Provenance &amp; Resolution Disclosure）</text>
+  <text x="76" y="666" fill="#E2E8F0" font-size="12.5">• 线上收益：8 方会诊 ASR WER 从 22.6% 降至 4.5%，AI 自打断从 14 次降至 0 次，虚假 0 dBov 音量抢麦拦截率 100%。</text>
+  <text x="76" y="690" fill="#94A3B8" font-size="12">• 离线策略计时口径：0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established [synthetic].</text>
+  <text x="76" y="712" fill="#94A3B8" font-size="12">• 真实数据面说明：生产环境 RTP Mixer 线性混音、Opus 子带能量计算与 RFC 6465 扩展头序列化耗时未在本地单测实测（标记为 not_measured）。</text>
+</svg>

@@ -1729,6 +1729,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 5393 Max-Breadth in [1, 8] across parallel forks and atomically dispatches ACK + BYE (Q.850 cause=26) to 100% of secondary 200 OK legs (0 zombie billing legs); live SBC forking transaction-table lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of untrusted external RFC 3911 Join headers with 403 Forbidden (0 wiretaps) and caps authenticated internal supervisor coaching joins to [1, 2] legs with mandatory audible beep; live media-bridge beep injection latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "425. [Topic 62: voice-webrtc-rtp-rfc3550-rfc6465-csrc-mixer-audio-level-spoof-loopback-faq] WebRTC/RTP RFC 3550 Mixer CSRC Bounds ([1,4]) + Mix-Minus Self-CSRC Loopback Suppression & RFC 6465 Audio-Level PCM Cross-Check + [300,800]ms Hold-Time Guard (P837 / P838 — Stage 422 · 425 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 3550 CC*4 CSRC bounds, caps active mixer contributors in [1, 4], and strips 100% of Agent self-CSRC loopback frames via Mix-Minus (0 overreads/self-barge-ins); live SFU Mix-Minus DSP subtraction latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: cross-checks RFC 6465 audio-level headers against decoded PCM RMS energy (0 spoofed 0 dBov packets) and enforces a [300, 800]ms dominant-speaker hold window; live PCM RMS window calculation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

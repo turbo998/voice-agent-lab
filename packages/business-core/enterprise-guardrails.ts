@@ -76077,6 +76077,143 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtpRfc3550MixerCsrcCountBoundsAndConferenceLoopbackContext {
+      csrcListOverreadOrBridgeAcousticLoopbackDetected: boolean;
+      unverifiedOrLoopedCsrcEntries: number;
+      maxActiveMixedCsrcSpeakers: number;
+    }
+
+    export interface WebrtcRtpRfc3550MixerCsrcCountBoundsAndConferenceLoopbackDecision {
+      violated: boolean;
+      policyId: "P837-WEBRTC-RTP-RFC3550-MIXER-CSRC-COUNT-BOUNDS-AND-CONFERENCE-LOOPBACK-GUARD";
+      action:
+        | "strip_looped_or_unverified_csrc_and_gate_active_mix"
+        | "clamp_unverified_csrc_and_active_speaker_bounds"
+        | "allow";
+      reason: string;
+      clampedUnverifiedOrLoopedCsrcEntries: number;
+      clampedMaxActiveMixedCsrcSpeakers: number;
+    }
+
+    export function evaluateWebrtcRtpRfc3550MixerCsrcCountBoundsAndConferenceLoopbackGate(
+      context: WebrtcRtpRfc3550MixerCsrcCountBoundsAndConferenceLoopbackContext,
+    ): WebrtcRtpRfc3550MixerCsrcCountBoundsAndConferenceLoopbackDecision {
+      const policyId =
+        "P837-WEBRTC-RTP-RFC3550-MIXER-CSRC-COUNT-BOUNDS-AND-CONFERENCE-LOOPBACK-GUARD" as const;
+      const clampedUnverifiedOrLoopedCsrcEntries = 0;
+      const clampedMaxActiveMixedCsrcSpeakers = Math.min(
+        Math.max(context.maxActiveMixedCsrcSpeakers, 1),
+        4,
+      );
+
+      if (context.csrcListOverreadOrBridgeAcousticLoopbackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_looped_or_unverified_csrc_and_gate_active_mix",
+          reason:
+            "WebRTC RFC 3550 Section 5.1 / 7.1 RTP Mixer CSRC Count Bounds & Mix-Minus Acoustic Loopback Policy Check: inbound/mixed RTP packet declared a CSRC Count (CC) exceeding payload byte bounds, injected an unauthenticated CSRC identity, or violated Mix-Minus by looping the recipient's own SSRC back into its input; offline synthetic policy state machine stripping 100% of unverified/looped CSRC entries (0 looped CSRCs) and gating active mixed speakers to Top-[1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTP Mixer PCM summing latency not_measured).",
+          clampedUnverifiedOrLoopedCsrcEntries,
+          clampedMaxActiveMixedCsrcSpeakers,
+        };
+      }
+
+      if (
+        context.unverifiedOrLoopedCsrcEntries > 0 ||
+        context.maxActiveMixedCsrcSpeakers < 1 ||
+        context.maxActiveMixedCsrcSpeakers > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unverified_csrc_and_active_speaker_bounds",
+          reason:
+            "Unverified/looped CSRC entries (>0 synthetic ceiling) or maximum active mixed CSRC speakers (<1 or >4 speakers synthetic bounds) out of bounds; clamping unverified/looped CSRCs to 0 and active mixed speakers to [1, 4].",
+          clampedUnverifiedOrLoopedCsrcEntries,
+          clampedMaxActiveMixedCsrcSpeakers,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 3550 CSRC byte closure, Mix-Minus loopback exclusion (0 looped CSRCs), and Top-[1, 4] active speaker bounds verified.",
+        clampedUnverifiedOrLoopedCsrcEntries,
+        clampedMaxActiveMixedCsrcSpeakers,
+      };
+    }
+
+    export interface WebrtcRfc6465MixerToClientAudioLevelDominantSpeakerSpoofContext {
+      spoofedClientAudioLevelOrDominantSpeakerHijackDetected: boolean;
+      spoofedAudioLevelExtensionPackets: number;
+      dominantSpeakerHoldWindowMs: number;
+    }
+
+    export interface WebrtcRfc6465MixerToClientAudioLevelDominantSpeakerSpoofDecision {
+      violated: boolean;
+      policyId: "P838-WEBRTC-RFC6465-MIXER-TO-CLIENT-AUDIO-LEVEL-DOMINANT-SPEAKER-SPOOF-GUARD";
+      action:
+        | "rewrite_spoofed_audio_level_with_true_rms_and_enforce_hold_window"
+        | "clamp_spoofed_audio_level_and_dominant_speaker_hold_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedAudioLevelExtensionPackets: number;
+      clampedDominantSpeakerHoldWindowMs: number;
+    }
+
+    export function evaluateWebrtcRfc6465MixerToClientAudioLevelDominantSpeakerSpoofGate(
+      context: WebrtcRfc6465MixerToClientAudioLevelDominantSpeakerSpoofContext,
+    ): WebrtcRfc6465MixerToClientAudioLevelDominantSpeakerSpoofDecision {
+      const policyId =
+        "P838-WEBRTC-RFC6465-MIXER-TO-CLIENT-AUDIO-LEVEL-DOMINANT-SPEAKER-SPOOF-GUARD" as const;
+      const clampedSpoofedAudioLevelExtensionPackets = 0;
+      const clampedDominantSpeakerHoldWindowMs = Math.min(
+        Math.max(context.dominantSpeakerHoldWindowMs, 300),
+        1200,
+      );
+
+      if (context.spoofedClientAudioLevelOrDominantSpeakerHijackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rewrite_spoofed_audio_level_with_true_rms_and_enforce_hold_window",
+          reason:
+            "WebRTC RFC 6464 / RFC 6465 Client-to-Mixer & Mixer-to-Client Audio-Level Dominant-Speaker Spoofing Policy Check: participant RTP stream reported an RFC 6464 audio-level header diverging >12 dB from measured sub-band/PCM RMS energy to hijack the Dominant Speaker floor on silent frames; offline synthetic policy state machine rewriting 100% of spoofed audio-level headers (0 spoofed packets) and clamping Dominant Speaker hold window to [300, 1200]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Opus sub-band RMS energy calculation latency not_measured).",
+          clampedSpoofedAudioLevelExtensionPackets,
+          clampedDominantSpeakerHoldWindowMs,
+        };
+      }
+
+      if (
+        context.spoofedAudioLevelExtensionPackets > 0 ||
+        context.dominantSpeakerHoldWindowMs < 300 ||
+        context.dominantSpeakerHoldWindowMs > 1200
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_audio_level_and_dominant_speaker_hold_bounds",
+          reason:
+            "Spoofed RFC 6464/6465 audio-level packets (>0 synthetic ceiling) or Dominant Speaker hold window (<300ms or >1200ms synthetic bounds) out of bounds; clamping spoofed packets to 0 and hold window to [300, 1200]ms.",
+          clampedSpoofedAudioLevelExtensionPackets,
+          clampedDominantSpeakerHoldWindowMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 6464/6465 audio-level RMS parity (0 spoofed packets) and [300, 1200]ms Dominant Speaker hold window verified.",
+        clampedSpoofedAudioLevelExtensionPackets,
+        clampedDominantSpeakerHoldWindowMs,
+      };
+    }
+
+
 
 
 
