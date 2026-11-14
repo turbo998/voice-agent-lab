@@ -82596,6 +82596,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtpRfc6051RapidSyncNtpHeaderExtensionStepAndMonotonicityContext {
+      retrogradeOrStepJumpNtpHeaderExtensionDetected: boolean;
+      ntpStepJumpOrRetrogradePackets: number;
+      maxNtpSlewAdjustmentStepMs: number;
+    }
+
+    export interface WebrtcRtpRfc6051RapidSyncNtpHeaderExtensionStepAndMonotonicityDecision {
+      violated: boolean;
+      policyId: "P933-WEBRTC-RTP-RFC6051-RAPID-SYNC-NTP-HEADER-EXTENSION-STEP-AND-MONOTONICITY-GUARD";
+      action:
+        | "strip_retrograde_ntp_extension_and_apply_pll_slew_limit"
+        | "clamp_ntp_step_packets_and_slew_step_bounds"
+        | "allow";
+      reason: string;
+      clampedNtpStepJumpOrRetrogradePackets: number;
+      clampedMaxNtpSlewAdjustmentStepMs: number;
+    }
+
+    export function evaluateWebrtcRtpRfc6051RapidSyncNtpHeaderExtensionStepAndMonotonicityGate(
+      context: WebrtcRtpRfc6051RapidSyncNtpHeaderExtensionStepAndMonotonicityContext,
+    ): WebrtcRtpRfc6051RapidSyncNtpHeaderExtensionStepAndMonotonicityDecision {
+      const policyId =
+        "P933-WEBRTC-RTP-RFC6051-RAPID-SYNC-NTP-HEADER-EXTENSION-STEP-AND-MONOTONICITY-GUARD" as const;
+      const clampedNtpStepJumpOrRetrogradePackets = 0;
+      const clampedMaxNtpSlewAdjustmentStepMs = Math.min(
+        Math.max(context.maxNtpSlewAdjustmentStepMs, 1),
+        25,
+      );
+
+      if (context.retrogradeOrStepJumpNtpHeaderExtensionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_retrograde_ntp_extension_and_apply_pll_slew_limit",
+          reason:
+            "Enterprise WebRTC RFC 6051 Rapid Synchronisation 64-bit NTP Header-Extension Monotonicity & PLL Slew Policy Check: RTP packet carried retrograde or >25ms step-jumped 64-bit NTP header extension diverging from RTCP SR wallclock baseline; offline synthetic policy state machine stripping raw step-jump NTP extensions (0 playout step dropouts) and clamping PLL slewing adjustment to [1, 25]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Playout PLL slewing filter latency not_measured).",
+          clampedNtpStepJumpOrRetrogradePackets,
+          clampedMaxNtpSlewAdjustmentStepMs,
+        };
+      }
+
+      if (
+        context.ntpStepJumpOrRetrogradePackets > 0 ||
+        context.maxNtpSlewAdjustmentStepMs < 1 ||
+        context.maxNtpSlewAdjustmentStepMs > 25
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ntp_step_packets_and_slew_step_bounds",
+          reason:
+            "RFC 6051 NTP step-jump / retrograde packets (>0 synthetic ceiling) or max NTP PLL slew adjustment step (<1ms or >25ms synthetic bounds) out of bounds; clamping violations to 0 and PLL slew step to [1, 25]ms.",
+          clampedNtpStepJumpOrRetrogradePackets,
+          clampedMaxNtpSlewAdjustmentStepMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 6051 monotonic 64-bit NTP header extension (0 step-jump packets) and [1, 25]ms PLL slew bounds verified.",
+        clampedNtpStepJumpOrRetrogradePackets,
+        clampedMaxNtpSlewAdjustmentStepMs,
+      };
+    }
+
+    export interface WebrtcRtpRfc5450TransmissionTimeOffsetBoundsAndJitterInflationContext {
+      unextended24BitSignOrExtremeToffsetJitterInflationDetected: boolean;
+      jitterInflatingToffsetPackets: number;
+      maxAllowedTransmissionTimeOffsetTicks: number;
+    }
+
+    export interface WebrtcRtpRfc5450TransmissionTimeOffsetBoundsAndJitterInflationDecision {
+      violated: boolean;
+      policyId: "P934-WEBRTC-RTP-RFC5450-TRANSMISSION-TIME-OFFSET-BOUNDS-AND-JITTER-INFLATION-GUARD";
+      action:
+        | "sign_extend_24bit_toffset_and_strip_jitter_inflating_outliers"
+        | "clamp_toffset_outlier_packets_and_tick_envelope_bounds"
+        | "allow";
+      reason: string;
+      clampedJitterInflatingToffsetPackets: number;
+      clampedMaxAllowedTransmissionTimeOffsetTicks: number;
+    }
+
+    export function evaluateWebrtcRtpRfc5450TransmissionTimeOffsetBoundsAndJitterInflationGate(
+      context: WebrtcRtpRfc5450TransmissionTimeOffsetBoundsAndJitterInflationContext,
+    ): WebrtcRtpRfc5450TransmissionTimeOffsetBoundsAndJitterInflationDecision {
+      const policyId =
+        "P934-WEBRTC-RTP-RFC5450-TRANSMISSION-TIME-OFFSET-BOUNDS-AND-JITTER-INFLATION-GUARD" as const;
+      const clampedJitterInflatingToffsetPackets = 0;
+      const clampedMaxAllowedTransmissionTimeOffsetTicks = Math.min(
+        Math.max(context.maxAllowedTransmissionTimeOffsetTicks, 48),
+        2400,
+      );
+
+      if (context.unextended24BitSignOrExtremeToffsetJitterInflationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "sign_extend_24bit_toffset_and_strip_jitter_inflating_outliers",
+          reason:
+            "Enterprise WebRTC RFC 5450 Transmission Time Offset (toffset) 24-Bit Sign Extension & Jitter-Inflation Policy Check: RTP packet carried unextended 24-bit negative two's-complement toffset or >2,400-tick (>50ms @ 48kHz) outlier inflating RFC 3550 interarrival jitter and NetEq target delay; offline synthetic policy state machine enforcing arithmetic sign extension and stripping outlier toffsets (0 jitter-inflating packets) while clamping max allowed |toffset| to [48, 2400] ticks (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live NetEq Kalman jitter filter update latency not_measured).",
+          clampedJitterInflatingToffsetPackets,
+          clampedMaxAllowedTransmissionTimeOffsetTicks,
+        };
+      }
+
+      if (
+        context.jitterInflatingToffsetPackets > 0 ||
+        context.maxAllowedTransmissionTimeOffsetTicks < 48 ||
+        context.maxAllowedTransmissionTimeOffsetTicks > 2400
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_toffset_outlier_packets_and_tick_envelope_bounds",
+          reason:
+            "Jitter-inflating RFC 5450 toffset packets (>0 synthetic ceiling) or max allowed transmission time offset ticks (<48 or >2400 synthetic bounds) out of bounds; clamping violations to 0 and |toffset| envelope to [48, 2400] ticks.",
+          clampedJitterInflatingToffsetPackets,
+          clampedMaxAllowedTransmissionTimeOffsetTicks,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 5450 24-bit sign extension (0 jitter-inflating packets) and [48, 2400]-tick toffset envelope verified.",
+        clampedJitterInflatingToffsetPackets,
+        clampedMaxAllowedTransmissionTimeOffsetTicks,
+      };
+    }
+
 
 
 
