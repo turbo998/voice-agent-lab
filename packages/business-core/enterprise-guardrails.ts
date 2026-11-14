@@ -76485,6 +76485,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipWebrtcSdpRfc8866OriginSessIdMutationAndVersionRetrogradeContext {
+      originSessIdMutationOrVersionRetrogradeDetected: boolean;
+      retrogradeOrMutatedOriginOffers: number;
+      maxSdpVersionIncrementPerReinvite: number;
+    }
+
+    export interface SipWebrtcSdpRfc8866OriginSessIdMutationAndVersionRetrogradeDecision {
+      violated: boolean;
+      policyId: "P843-SIP-WEBRTC-SDP-RFC8866-ORIGIN-SESS-ID-MUTATION-AND-VERSION-RETROGRADE-GUARD";
+      action:
+        | "reject_488_origin_mutation_or_retrograde_sess_version"
+        | "clamp_origin_mutation_and_version_step_bounds"
+        | "allow";
+      reason: string;
+      clampedRetrogradeOrMutatedOriginOffers: number;
+      clampedMaxSdpVersionIncrementPerReinvite: number;
+    }
+
+    export function evaluateSipWebrtcSdpRfc8866OriginSessIdMutationAndVersionRetrogradeGate(
+      context: SipWebrtcSdpRfc8866OriginSessIdMutationAndVersionRetrogradeContext,
+    ): SipWebrtcSdpRfc8866OriginSessIdMutationAndVersionRetrogradeDecision {
+      const policyId =
+        "P843-SIP-WEBRTC-SDP-RFC8866-ORIGIN-SESS-ID-MUTATION-AND-VERSION-RETROGRADE-GUARD" as const;
+      const clampedRetrogradeOrMutatedOriginOffers = 0;
+      const clampedMaxSdpVersionIncrementPerReinvite = Math.min(
+        Math.max(context.maxSdpVersionIncrementPerReinvite, 1),
+        16,
+      );
+
+      if (context.originSessIdMutationOrVersionRetrogradeDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_488_origin_mutation_or_retrograde_sess_version",
+          reason:
+            "SIP/WebRTC SDP RFC 8866 Section 5.2 / RFC 3264 Origin (o=) sess-id Immutability & sess-version Monotonicity Policy Check: in-dialog Re-INVITE/UPDATE mutated origin sess-id, sent a retrograde sess-version < committed version, or modified media attributes without advancing sess-version; offline synthetic policy state machine rejecting with SIP 488 Not Acceptable Here (0 retrograde/mutated offers) and clamping per-renegotiation version increment to [1, 16] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC SDP AST diff latency not_measured).",
+          clampedRetrogradeOrMutatedOriginOffers,
+          clampedMaxSdpVersionIncrementPerReinvite,
+        };
+      }
+
+      if (
+        context.retrogradeOrMutatedOriginOffers > 0 ||
+        context.maxSdpVersionIncrementPerReinvite < 1 ||
+        context.maxSdpVersionIncrementPerReinvite > 16
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_origin_mutation_and_version_step_bounds",
+          reason:
+            "Retrograde/mutated SDP Origin offers (>0 synthetic ceiling) or maximum SDP version increment per Re-INVITE (<1 or >16 step synthetic bounds) out of bounds; clamping retrograde/mutated offers to 0 and version increment step to [1, 16].",
+          clampedRetrogradeOrMutatedOriginOffers,
+          clampedMaxSdpVersionIncrementPerReinvite,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8866 Origin sess-id immutability, sess-version monotonicity (0 retrograde offers), and [1, 16] step bounds verified.",
+        clampedRetrogradeOrMutatedOriginOffers,
+        clampedMaxSdpVersionIncrementPerReinvite,
+      };
+    }
+
+    export interface SipWebrtcSdpRfc8843DanglingBundleMidAndMaxptimeBufferOverflowContext {
+      danglingBundleMidOrMaxptimeBufferOverflowDetected: boolean;
+      danglingOrDuplicateBundleMids: number;
+      negotiatedMaxptimeMs: number;
+    }
+
+    export interface SipWebrtcSdpRfc8843DanglingBundleMidAndMaxptimeBufferOverflowDecision {
+      violated: boolean;
+      policyId: "P844-SIP-WEBRTC-SDP-RFC8843-DANGLING-BUNDLE-MID-AND-MAXPTIME-BUFFER-OVERFLOW-GUARD";
+      action:
+        | "reject_dangling_bundle_mid_and_clamp_maxptime_buffer"
+        | "clamp_dangling_bundle_mid_and_maxptime_bounds"
+        | "allow";
+      reason: string;
+      clampedDanglingOrDuplicateBundleMids: number;
+      clampedNegotiatedMaxptimeMs: number;
+    }
+
+    export function evaluateSipWebrtcSdpRfc8843DanglingBundleMidAndMaxptimeBufferOverflowGate(
+      context: SipWebrtcSdpRfc8843DanglingBundleMidAndMaxptimeBufferOverflowContext,
+    ): SipWebrtcSdpRfc8843DanglingBundleMidAndMaxptimeBufferOverflowDecision {
+      const policyId =
+        "P844-SIP-WEBRTC-SDP-RFC8843-DANGLING-BUNDLE-MID-AND-MAXPTIME-BUFFER-OVERFLOW-GUARD" as const;
+      const clampedDanglingOrDuplicateBundleMids = 0;
+      const clampedNegotiatedMaxptimeMs = Math.min(
+        Math.max(context.negotiatedMaxptimeMs, 10),
+        60,
+      );
+
+      if (context.danglingBundleMidOrMaxptimeBufferOverflowDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_dangling_bundle_mid_and_clamp_maxptime_buffer",
+          reason:
+            "SIP/WebRTC SDP RFC 8843 / RFC 5888 Dangling BUNDLE MID & RFC 8866 a=maxptime Buffer Overflow Policy Check: SDP offer declared a dangling or duplicate MID in a=group:BUNDLE without a matching active m= section or requested a=ptime/a=maxptime > 60ms exceeding fixed DSP ring-buffer slots; offline synthetic policy state machine enforcing bijective BUNDLE MID closure (0 dangling/duplicate MIDs) and clamping negotiated maxptime to [10, 60]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU BUNDLE demux table update latency not_measured).",
+          clampedDanglingOrDuplicateBundleMids,
+          clampedNegotiatedMaxptimeMs,
+        };
+      }
+
+      if (
+        context.danglingOrDuplicateBundleMids > 0 ||
+        context.negotiatedMaxptimeMs < 10 ||
+        context.negotiatedMaxptimeMs > 60
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_dangling_bundle_mid_and_maxptime_bounds",
+          reason:
+            "Dangling/duplicate a=group:BUNDLE MIDs (>0 synthetic ceiling) or negotiated maxptime (<10ms or >60ms synthetic bounds) out of bounds; clamping dangling/duplicate MIDs to 0 and negotiated maxptime to [10, 60]ms.",
+          clampedDanglingOrDuplicateBundleMids,
+          clampedNegotiatedMaxptimeMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8843 bijective BUNDLE MID closure (0 dangling/duplicate MIDs) and [10, 60]ms maxptime buffer bounds verified.",
+        clampedDanglingOrDuplicateBundleMids,
+        clampedNegotiatedMaxptimeMs,
+      };
+    }
+
 
 
 

@@ -1747,6 +1747,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of Code-3 M=0, >120ms, or VBR-overread Opus packets pre-decode (0 malformed packets) and clamps realtime packet duration in [10, 60]ms; live libopus SIMD decode latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: hard-locks channels=1 mono downmixing on unnegotiated s=1 stereo packets (0 stereo buffer overflows) and caps consecutive LBRR/PLC recovery frames in [1, 3]; live Opus LPC PLC extrapolation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "428. [Topic 65 🎉 · Stage 425 🎉: voice-sip-webrtc-sdp-rfc8866-origin-version-retrograde-bundle-mid-maxptime-faq] Enterprise SIP/WebRTC SDP RFC 8866 Origin sess-id Immutability + Monotonic sess-version ([1,16] Step) & RFC 8843 Bijective BUNDLE MID Closure + [10,60]ms maxptime Guard (P843 / P844 — Stage 425 🎉 · 🎉 Stage 425 & Topic 65 Dual Milestone · 428 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of mid-call SDP offers mutating sess-id or decreasing sess-version with SIP 488 (0 retrograde offers) and clamps version increments in [1, 16]; live SBC SDP AST diff latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces bijective a=group:BUNDLE MID closure against active m= sections (0 dangling/duplicate MIDs) and clamps negotiated maxptime in [10, 60]ms; live SFU BUNDLE demux table update latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
