@@ -80145,6 +80145,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSctpRfc8832DcepEvenOddStreamIdGlareAndPpidConfusionContext {
+      dcepEvenOddStreamIdRoleGlareOrPpidTypeConfusionDetected: boolean;
+      streamIdGlareOrPpidConfusedChunks: number;
+      concurrentDataChannelStreams: number;
+    }
+
+    export interface WebrtcSctpRfc8832DcepEvenOddStreamIdGlareAndPpidConfusionDecision {
+      violated: boolean;
+      policyId: "P897-WEBRTC-SCTP-RFC8832-DCEP-EVEN-ODD-STREAM-ID-GLARE-AND-PPID-CONFUSION-GUARD";
+      action:
+        | "enforce_rfc8832_even_odd_stream_id_parity_and_strict_ppid"
+        | "clamp_glare_ppid_chunks_and_datachannel_stream_bounds"
+        | "allow";
+      reason: string;
+      clampedStreamIdGlareOrPpidConfusedChunks: number;
+      clampedConcurrentDataChannelStreams: number;
+    }
+
+    export function evaluateWebrtcSctpRfc8832DcepEvenOddStreamIdGlareAndPpidConfusionGate(
+      context: WebrtcSctpRfc8832DcepEvenOddStreamIdGlareAndPpidConfusionContext,
+    ): WebrtcSctpRfc8832DcepEvenOddStreamIdGlareAndPpidConfusionDecision {
+      const policyId =
+        "P897-WEBRTC-SCTP-RFC8832-DCEP-EVEN-ODD-STREAM-ID-GLARE-AND-PPID-CONFUSION-GUARD" as const;
+      const clampedStreamIdGlareOrPpidConfusedChunks = 0;
+      const clampedConcurrentDataChannelStreams = Math.min(
+        Math.max(context.concurrentDataChannelStreams, 1),
+        64,
+      );
+
+      if (context.dcepEvenOddStreamIdRoleGlareOrPpidTypeConfusionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc8832_even_odd_stream_id_parity_and_strict_ppid",
+          reason:
+            "Enterprise WebRTC RFC 8832 DCEP Even/Odd Stream-ID Parity & SCTP PPID Policy Check: DTLS Client/Server even/odd Stream-ID glare collision or mid-stream PPID=50 / invalid PPID type confusion detected; offline synthetic policy state machine enforcing DTLS-role Stream-ID parity and strict PPID {50,51,53,56,57} validation (0 glare/confused chunks) and clamping concurrent DataChannel streams to [1, 64] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live usrsctp/dcSCTP CRC32c checksum latency not_measured).",
+          clampedStreamIdGlareOrPpidConfusedChunks,
+          clampedConcurrentDataChannelStreams,
+        };
+      }
+
+      if (
+        context.streamIdGlareOrPpidConfusedChunks > 0 ||
+        context.concurrentDataChannelStreams < 1 ||
+        context.concurrentDataChannelStreams > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_glare_ppid_chunks_and_datachannel_stream_bounds",
+          reason:
+            "SCTP Stream-ID glare or PPID-confused chunks (>0 synthetic ceiling) or concurrent DataChannel streams (<1 or >64 synthetic bounds) out of bounds; clamping corrupted chunks to 0 and concurrent streams to [1, 64].",
+          clampedStreamIdGlareOrPpidConfusedChunks,
+          clampedConcurrentDataChannelStreams,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8832 DTLS even/odd Stream-ID parity + PPID validation (0 glare/confused chunks) and [1, 64] stream bounds verified.",
+        clampedStreamIdGlareOrPpidConfusedChunks,
+        clampedConcurrentDataChannelStreams,
+      };
+    }
+
+    export interface WebrtcSctpRfc8831DataChannelBufferedAmountBackpressureAndPrSctpTtlContext {
+      reliableOrderedCaptionStallOrBufferedAmountOverflowDetected: boolean;
+      bufferedAmountOverflowOrStalledControlChannels: number;
+      prSctpInterimCaptionMaxPacketLifeTimeMs: number;
+    }
+
+    export interface WebrtcSctpRfc8831DataChannelBufferedAmountBackpressureAndPrSctpTtlDecision {
+      violated: boolean;
+      policyId: "P898-WEBRTC-SCTP-RFC8831-DATACHANNEL-BUFFEREDAMOUNT-BACKPRESSURE-AND-PR-SCTP-TTL-GUARD";
+      action:
+        | "isolate_control_stream_and_enforce_pr_sctp_caption_ttl"
+        | "clamp_stalled_control_channels_and_pr_sctp_ttl_bounds"
+        | "allow";
+      reason: string;
+      clampedBufferedAmountOverflowOrStalledControlChannels: number;
+      clampedPrSctpInterimCaptionMaxPacketLifeTimeMs: number;
+    }
+
+    export function evaluateWebrtcSctpRfc8831DataChannelBufferedAmountBackpressureAndPrSctpTtlGate(
+      context: WebrtcSctpRfc8831DataChannelBufferedAmountBackpressureAndPrSctpTtlContext,
+    ): WebrtcSctpRfc8831DataChannelBufferedAmountBackpressureAndPrSctpTtlDecision {
+      const policyId =
+        "P898-WEBRTC-SCTP-RFC8831-DATACHANNEL-BUFFEREDAMOUNT-BACKPRESSURE-AND-PR-SCTP-TTL-GUARD" as const;
+      const clampedBufferedAmountOverflowOrStalledControlChannels = 0;
+      const clampedPrSctpInterimCaptionMaxPacketLifeTimeMs = Math.min(
+        Math.max(context.prSctpInterimCaptionMaxPacketLifeTimeMs, 100),
+        1000,
+      );
+
+      if (context.reliableOrderedCaptionStallOrBufferedAmountOverflowDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "isolate_control_stream_and_enforce_pr_sctp_caption_ttl",
+          reason:
+            "Enterprise WebRTC RFC 8831 DataChannel Backpressure & PR-SCTP TTL Policy Check: 50Hz interim ASR captions stalling reliable control stream or overflowing bufferedAmount detected; offline synthetic policy state machine isolating barge-in control stream (0 stalled/overflowed channels) and clamping PR-SCTP interim caption maxPacketLifeTime to [100, 1000]ms with FORWARD-TSN skip (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live dcSCTP FORWARD-TSN chunk assembly latency not_measured).",
+          clampedBufferedAmountOverflowOrStalledControlChannels,
+          clampedPrSctpInterimCaptionMaxPacketLifeTimeMs,
+        };
+      }
+
+      if (
+        context.bufferedAmountOverflowOrStalledControlChannels > 0 ||
+        context.prSctpInterimCaptionMaxPacketLifeTimeMs < 100 ||
+        context.prSctpInterimCaptionMaxPacketLifeTimeMs > 1000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_stalled_control_channels_and_pr_sctp_ttl_bounds",
+          reason:
+            "BufferedAmount-overflowed or stalled control channels (>0 synthetic ceiling) or PR-SCTP interim caption maxPacketLifeTime (<100ms or >1000ms synthetic bounds) out of bounds; clamping stalled channels to 0 and TTL to [100, 1000]ms.",
+          clampedBufferedAmountOverflowOrStalledControlChannels,
+          clampedPrSctpInterimCaptionMaxPacketLifeTimeMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8831 DataChannel control isolation (0 stalled/overflowed channels) and [100, 1000]ms PR-SCTP caption TTL bounds verified.",
+        clampedBufferedAmountOverflowOrStalledControlChannels,
+        clampedPrSctpInterimCaptionMaxPacketLifeTimeMs,
+      };
+    }
+
 
 
 

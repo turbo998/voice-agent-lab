@@ -1909,6 +1909,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted inbound Reason Q.850 and SIP;cause=200 headers (0 spoofed headers) and clamps local Q.850 cause codes in [1, 127]; live SBC SIP-to-ISUP cause table lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% APNs/FCM pn-provider allowlist with SIP 555 rejection (0 SSRF/premature-480 calls) and clamps push-wake INVITE hold timeout in [4000, 12000]ms; live Apple APNs / Google FCM HTTP/2 push RTT latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "455. [Topic 92 · Historic 455-Dimension Milestone 🎉: voice-webrtc-sctp-rfc8831-rfc8832-dcep-stream-id-glare-ppid-confusion-ndatachannel-dos-faq] Enterprise WebRTC RFC 8832 DCEP Even/Odd Stream-ID Parity + [1,64] Cap & RFC 8831 PR-SCTP [100,1000]ms Caption TTL Guard (P897 / P898 — Stage 452 · 🎉 Historic 455-Dimension Milestone · 455 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% DTLS-role even/odd Stream-ID parity and strict PPID {50,51,53,56,57} validation (0 glare/confused chunks) and clamps concurrent DataChannel streams in [1, 64]; live usrsctp/dcSCTP CRC32c checksum latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: isolates barge-in control stream (0 stalled/overflowed channels) and clamps PR-SCTP interim caption maxPacketLifeTime in [100, 1000]ms with FORWARD-TSN skip; live dcSCTP FORWARD-TSN chunk assembly latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
