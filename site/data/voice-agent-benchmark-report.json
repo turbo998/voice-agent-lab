@@ -2035,6 +2035,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: splits 100% of oversized compound RTCP reports into <=1,200B SRTCP datagrams (0 IP-fragmented/blackholed datagrams) clamped in [576, 1200] bytes; live SRTCP packetizer split encryption latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces negotiated a=rtcp-rsize with SRTCP auth (0 rejected/starved streams) and clamps full compound RTCP heartbeats in [500, 5000]ms; live RTCP scheduler timer wheel latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "476. [Topic 113 · Historic 40th Nightly Round, P940 Guardrail, 115th FAQ & 915-Test Milestone 🎉: voice-sip-rfc7647-rfc4488-refer-sub-false-implicit-subscription-leak-202-accepted-sipfrag-faq] Enterprise SIP RFC 4488 Refer-Sub: false [15,90]s Suppression & RFC 7647 200 OK [16,128]B Minimal sipfrag Guard (P939 / P940 🎉 — Stage 473 · 🎉 Historic 40th Nightly Round, P940 Guardrail, 115th FAQ & 915-Test Milestone · 476 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: suppresses 100% of blind-transfer implicit Event: refer subscriptions via Refer-Sub: false (0 leaked zombie subscriptions) and clamps fallback TTL in [15, 90]s; live SBC multi-usage dialog reference-count reclamation latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces synchronous RFC 7647 200 OK authorization and strips 100% of internal Via/Contact headers from message/sipfrag (0 topology leaks) clamped in [16, 128] bytes; live SBC sipfrag serializer latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

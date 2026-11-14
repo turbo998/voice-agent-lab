@@ -83004,6 +83004,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc4488ReferSubFalseImplicitSubscriptionSuppressionContext {
+      unnecessaryImplicitReferSubscriptionOrZombieLeakDetected: boolean;
+      leakedImplicitReferSubscriptions: number;
+      implicitReferSubscriptionTtlSeconds: number;
+    }
+
+    export interface SipRfc4488ReferSubFalseImplicitSubscriptionSuppressionDecision {
+      violated: boolean;
+      policyId: "P939-SIP-RFC4488-REFER-SUB-FALSE-IMPLICIT-SUBSCRIPTION-SUPPRESSION-GUARD";
+      action:
+        | "enforce_refer_sub_false_and_reap_orphan_refer_subscriptions"
+        | "clamp_leaked_refer_subscriptions_and_ttl_bounds"
+        | "allow";
+      reason: string;
+      clampedLeakedImplicitReferSubscriptions: number;
+      clampedImplicitReferSubscriptionTtlSeconds: number;
+    }
+
+    export function evaluateSipRfc4488ReferSubFalseImplicitSubscriptionSuppressionGate(
+      context: SipRfc4488ReferSubFalseImplicitSubscriptionSuppressionContext,
+    ): SipRfc4488ReferSubFalseImplicitSubscriptionSuppressionDecision {
+      const policyId =
+        "P939-SIP-RFC4488-REFER-SUB-FALSE-IMPLICIT-SUBSCRIPTION-SUPPRESSION-GUARD" as const;
+      const clampedLeakedImplicitReferSubscriptions = 0;
+      const clampedImplicitReferSubscriptionTtlSeconds = Math.min(
+        Math.max(context.implicitReferSubscriptionTtlSeconds, 15),
+        90,
+      );
+
+      if (context.unnecessaryImplicitReferSubscriptionOrZombieLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_refer_sub_false_and_reap_orphan_refer_subscriptions",
+          reason:
+            "Enterprise SIP RFC 4488 Refer-Sub: false Implicit Subscription Suppression Policy Check: blind AI-to-human REFER omitted Supported: norefersub / Refer-Sub: false leaving orphan Event: refer subscriptions pinning dialog memory after BYE; offline synthetic policy state machine enforcing Refer-Sub: false suppression (0 leaked implicit refer subscriptions) and clamping fallback subscription TTL to [15, 90]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC multi-usage dialog reference-count reclamation latency not_measured).",
+          clampedLeakedImplicitReferSubscriptions,
+          clampedImplicitReferSubscriptionTtlSeconds,
+        };
+      }
+
+      if (
+        context.leakedImplicitReferSubscriptions > 0 ||
+        context.implicitReferSubscriptionTtlSeconds < 15 ||
+        context.implicitReferSubscriptionTtlSeconds > 90
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_leaked_refer_subscriptions_and_ttl_bounds",
+          reason:
+            "Leaked implicit SIP Event: refer subscriptions (>0 synthetic ceiling) or fallback refer subscription TTL (<15s or >90s synthetic bounds) out of bounds; clamping leaked subscriptions to 0 and TTL to [15, 90]s.",
+          clampedLeakedImplicitReferSubscriptions,
+          clampedImplicitReferSubscriptionTtlSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4488 Refer-Sub: false suppression (0 leaked subscriptions) and [15, 90]s fallback TTL verified.",
+        clampedLeakedImplicitReferSubscriptions,
+        clampedImplicitReferSubscriptionTtlSeconds,
+      };
+    }
+
+    export interface SipRfc7647ReferExplicit200OkAndSipfragMinimalStatusContext {
+      deprecated202AcceptedOrVerboseSipfragTopologyLeakDetected: boolean;
+      leakedSipfragTopologyOrDeprecated202Packets: number;
+      maxSipfragBodyBytes: number;
+    }
+
+    export interface SipRfc7647ReferExplicit200OkAndSipfragMinimalStatusDecision {
+      violated: boolean;
+      policyId: "P940-SIP-RFC7647-REFER-EXPLICIT-200-OK-AND-SIPFRAG-MINIMAL-STATUS-GUARD";
+      action:
+        | "enforce_rfc7647_synchronous_200ok_and_strip_sipfrag_headers"
+        | "clamp_sipfrag_topology_leaks_and_body_byte_bounds"
+        | "allow";
+      reason: string;
+      clampedLeakedSipfragTopologyOrDeprecated202Packets: number;
+      clampedMaxSipfragBodyBytes: number;
+    }
+
+    export function evaluateSipRfc7647ReferExplicit200OkAndSipfragMinimalStatusGate(
+      context: SipRfc7647ReferExplicit200OkAndSipfragMinimalStatusContext,
+    ): SipRfc7647ReferExplicit200OkAndSipfragMinimalStatusDecision {
+      const policyId =
+        "P940-SIP-RFC7647-REFER-EXPLICIT-200-OK-AND-SIPFRAG-MINIMAL-STATUS-GUARD" as const;
+      const clampedLeakedSipfragTopologyOrDeprecated202Packets = 0;
+      const clampedMaxSipfragBodyBytes = Math.min(
+        Math.max(context.maxSipfragBodyBytes, 16),
+        128,
+      );
+
+      if (context.deprecated202AcceptedOrVerboseSipfragTopologyLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc7647_synchronous_200ok_and_strip_sipfrag_headers",
+          reason:
+            "Enterprise SIP RFC 7647 / RFC 3420 REFER Synchronous 200 OK & Minimal message/sipfrag Sanitization Policy Check: REFER response used deprecated 202 Accepted or NOTIFY message/sipfrag body leaked internal Via/Contact/Server headers; offline synthetic policy state machine enforcing synchronous 200 OK authorization and stripping sipfrag to minimal status line (0 topology-leaking sipfrag packets) clamped to [16, 128] bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC sipfrag serializer latency not_measured).",
+          clampedLeakedSipfragTopologyOrDeprecated202Packets,
+          clampedMaxSipfragBodyBytes,
+        };
+      }
+
+      if (
+        context.leakedSipfragTopologyOrDeprecated202Packets > 0 ||
+        context.maxSipfragBodyBytes < 16 ||
+        context.maxSipfragBodyBytes > 128
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_sipfrag_topology_leaks_and_body_byte_bounds",
+          reason:
+            "Leaked message/sipfrag topology / deprecated 202 packets (>0 synthetic ceiling) or max sipfrag body bytes (<16B or >128B synthetic bounds) out of bounds; clamping violations to 0 and sipfrag body size to [16, 128] bytes.",
+          clampedLeakedSipfragTopologyOrDeprecated202Packets,
+          clampedMaxSipfragBodyBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7647 synchronous 200 OK + status-line-only message/sipfrag (0 topology leaks) and [16, 128]B bounds verified.",
+        clampedLeakedSipfragTopologyOrDeprecated202Packets,
+        clampedMaxSipfragBodyBytes,
+      };
+    }
+
 
 
 
