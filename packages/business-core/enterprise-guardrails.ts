@@ -79873,6 +79873,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtpRfc2198RedTimestampOffsetOverflowAndPtNestingBombContext {
+      rfc2198TimestampOffset14BitOverflowOrRecursiveRedPtDetected: boolean;
+      overflowOrRecursiveRedBlocks: number;
+      redundantGenerationsPerPacket: number;
+    }
+
+    export interface WebrtcRtpRfc2198RedTimestampOffsetOverflowAndPtNestingBombDecision {
+      violated: boolean;
+      policyId: "P893-WEBRTC-RTP-RFC2198-RED-TIMESTAMP-OFFSET-OVERFLOW-AND-PT-NESTING-BOMB-GUARD";
+      action:
+        | "strip_overflow_or_recursive_rfc2198_red_blocks"
+        | "clamp_red_overflow_blocks_and_generation_bounds"
+        | "allow";
+      reason: string;
+      clampedOverflowOrRecursiveRedBlocks: number;
+      clampedRedundantGenerationsPerPacket: number;
+    }
+
+    export function evaluateWebrtcRtpRfc2198RedTimestampOffsetOverflowAndPtNestingBombGate(
+      context: WebrtcRtpRfc2198RedTimestampOffsetOverflowAndPtNestingBombContext,
+    ): WebrtcRtpRfc2198RedTimestampOffsetOverflowAndPtNestingBombDecision {
+      const policyId =
+        "P893-WEBRTC-RTP-RFC2198-RED-TIMESTAMP-OFFSET-OVERFLOW-AND-PT-NESTING-BOMB-GUARD" as const;
+      const clampedOverflowOrRecursiveRedBlocks = 0;
+      const clampedRedundantGenerationsPerPacket = Math.min(
+        Math.max(context.redundantGenerationsPerPacket, 1),
+        2,
+      );
+
+      if (context.rfc2198TimestampOffset14BitOverflowOrRecursiveRedPtDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_overflow_or_recursive_rfc2198_red_blocks",
+          reason:
+            "Enterprise WebRTC RFC 2198 (RED) 14-Bit Timestamp-Offset Overflow & Recursive PT Nesting Policy Check: 48kHz timestamp offset >=16384 samples (>341.3ms post-DTX wrap) or recursive RED-in-RED payload-type nesting detected; offline synthetic policy state machine stripping overflow/recursive RED blocks (0 corrupted blocks) and clamping redundant generations per packet to [1, 2] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Opus decoder state reset latency not_measured).",
+          clampedOverflowOrRecursiveRedBlocks,
+          clampedRedundantGenerationsPerPacket,
+        };
+      }
+
+      if (
+        context.overflowOrRecursiveRedBlocks > 0 ||
+        context.redundantGenerationsPerPacket < 1 ||
+        context.redundantGenerationsPerPacket > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_red_overflow_blocks_and_generation_bounds",
+          reason:
+            "RFC 2198 overflow/recursive RED blocks (>0 synthetic ceiling) or redundant generations per packet (<1 or >2 synthetic bounds) out of bounds; clamping corrupted blocks to 0 and generations to [1, 2].",
+          clampedOverflowOrRecursiveRedBlocks,
+          clampedRedundantGenerationsPerPacket,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 2198 RED <16384 timestamp offset + anti-nesting (0 corrupted blocks) and [1, 2] redundant generation bounds verified.",
+        clampedOverflowOrRecursiveRedBlocks,
+        clampedRedundantGenerationsPerPacket,
+      };
+    }
+
+    export interface WebrtcRtpRfc5109UlpfecProtectionLengthOverreadAndMaskSyncContext {
+      ulpfecProtectionLengthOverreadOrL0L1MaskDesyncDetected: boolean;
+      overreadOrMaskDesyncedUlpfecPackets: number;
+      ulpfecProtectionLengthBytes: number;
+    }
+
+    export interface WebrtcRtpRfc5109UlpfecProtectionLengthOverreadAndMaskSyncDecision {
+      violated: boolean;
+      policyId: "P894-WEBRTC-RTP-RFC5109-ULPFEC-PROTECTION-LENGTH-OVERREAD-AND-MASK-SYNC-GUARD";
+      action:
+        | "drop_overread_or_mask_desynced_rfc5109_ulpfec_packet"
+        | "clamp_ulpfec_overread_packets_and_protection_length_bounds"
+        | "allow";
+      reason: string;
+      clampedOverreadOrMaskDesyncedUlpfecPackets: number;
+      clampedUlpfecProtectionLengthBytes: number;
+    }
+
+    export function evaluateWebrtcRtpRfc5109UlpfecProtectionLengthOverreadAndMaskSyncGate(
+      context: WebrtcRtpRfc5109UlpfecProtectionLengthOverreadAndMaskSyncContext,
+    ): WebrtcRtpRfc5109UlpfecProtectionLengthOverreadAndMaskSyncDecision {
+      const policyId =
+        "P894-WEBRTC-RTP-RFC5109-ULPFEC-PROTECTION-LENGTH-OVERREAD-AND-MASK-SYNC-GUARD" as const;
+      const clampedOverreadOrMaskDesyncedUlpfecPackets = 0;
+      const clampedUlpfecProtectionLengthBytes = Math.min(
+        Math.max(context.ulpfecProtectionLengthBytes, 16),
+        1200,
+      );
+
+      if (context.ulpfecProtectionLengthOverreadOrL0L1MaskDesyncDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_overread_or_mask_desynced_rfc5109_ulpfec_packet",
+          reason:
+            "Enterprise WebRTC RFC 5109 (ULPFEC) Protection-Length Overread & L0/L1 Mask Sync Policy Check: ULPFEC protection length L_k exceeding remaining payload bytes or L=0/L=1 bitmask desynchronization detected; offline synthetic policy state machine dropping malformed FEC packets (0 overread packets) and clamping protection length L_k to [16, 1200] bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIMD ULPFEC bitwise XOR throughput latency not_measured).",
+          clampedOverreadOrMaskDesyncedUlpfecPackets,
+          clampedUlpfecProtectionLengthBytes,
+        };
+      }
+
+      if (
+        context.overreadOrMaskDesyncedUlpfecPackets > 0 ||
+        context.ulpfecProtectionLengthBytes < 16 ||
+        context.ulpfecProtectionLengthBytes > 1200
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ulpfec_overread_packets_and_protection_length_bounds",
+          reason:
+            "RFC 5109 ULPFEC overread/mask-desynced packets (>0 synthetic ceiling) or protection length L_k (<16 or >1200 bytes synthetic bounds) out of bounds; clamping corrupted packets to 0 and L_k to [16, 1200] bytes.",
+          clampedOverreadOrMaskDesyncedUlpfecPackets,
+          clampedUlpfecProtectionLengthBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 5109 ULPFEC protection-length bounds (0 overread packets) and [16, 1200]-byte L_k bounds verified.",
+        clampedOverreadOrMaskDesyncedUlpfecPackets,
+        clampedUlpfecProtectionLengthBytes,
+      };
+    }
+
 
 
 

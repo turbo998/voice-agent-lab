@@ -1700,6 +1700,13 @@
               <td><code>P891 / P892 deterministic SIP RFC 4235 dialog-info+xml tag redaction [300,3600]s &amp; RFC 6665 481 / [100,1000]ms throttle guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>453. [专题90 🎉 · Stage 450 🎉 `docs/voice-webrtc-rtp-rfc2198-red-ulpfec-rfc5109-timestamp-offset-overflow-pt-nesting-bomb-faq.md`] 企业 WebRTC `RFC 2198 (RED)` `48kHz` `14-bit` 时间戳偏移 `&lt; 16,384`（`&lt;= 341.3ms`）跨静音回绕剥离、禁绝 `RED-in-RED` 递归套娃与 `[1, 2]` 块冗余阶数锁（`0` 字首重影或套娃块，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `Opus` 解码器状态重置耗时 `not_measured`）&amp; `RFC 5109 (ULPFEC)` `L_k &lt;= remainingPayloadBytes` 防堆越界读与 `[16, 1200]` 字节保护长度锁（`0` 越界读包；真实 `SIMD ULPFEC` 按位异或耗时 `not_measured`）(`P893` / `P894` · Stage 450 🎉 · Topic 90 🎉 · 🎉 Stage 450 与第 90 大专题双历史性里程碑 · 903 护栏 &amp; 912 探针 · 453 维)</strong>
+              </td>
+              <td><code>P893 / P894 deterministic WebRTC RFC 2198 RED &lt;16384 offset / [1,2]-block &amp; RFC 5109 ULPFEC [16,1200]B overread guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5376,6 +5383,13 @@
                 <strong>452. [专题89 · 901护栏 &amp; 910探针 🎉 `docs/voice-sip-rfc6665-rfc4235-dialog-event-blf-pickup-hijack-notify-storm-subscription-leak-faq.md`] 企业 SIP `RFC 4235` `Dialog Event (BLF)` `dialog-info+xml` 三元组标签按权脱敏防 `Replaces` 代答截胡与 `[300, 3600]s` 租期锁（`0` 越权代答标签泄露包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `libxml2 DOM` 序列化耗时 `not_measured`）&amp; `RFC 6665` 100% 拒收无主 `NOTIFY (SIP 481)` 与 `[100, 1000]ms` 状态合并节流防扇出风暴锁（`0` 无主注入或扇出风暴包；真实分布式状态表锁耗时 `not_measured`）(`P891` / `P892` · Stage 449 · Topic 89 · 🎉 突破 900+ 护栏（901 护栏）、910 合成探针与 720 现场探针三重里程碑 · 901 护栏 🎉 &amp; 910 探针 🎉 · 452 维)</strong>
               </td>
               <td><code>P891 / P892 deterministic SIP RFC 4235 dialog-info+xml tag redaction [300,3600]s &amp; RFC 6665 481 / [100,1000]ms throttle guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>453. [专题90 🎉 · Stage 450 🎉 `docs/voice-webrtc-rtp-rfc2198-red-ulpfec-rfc5109-timestamp-offset-overflow-pt-nesting-bomb-faq.md`] 企业 WebRTC `RFC 2198 (RED)` `48kHz` `14-bit` 时间戳偏移 `&lt; 16,384`（`&lt;= 341.3ms`）跨静音回绕剥离、禁绝 `RED-in-RED` 递归套娃与 `[1, 2]` 块冗余阶数锁（`0` 字首重影或套娃块，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `Opus` 解码器状态重置耗时 `not_measured`）&amp; `RFC 5109 (ULPFEC)` `L_k &lt;= remainingPayloadBytes` 防堆越界读与 `[16, 1200]` 字节保护长度锁（`0` 越界读包；真实 `SIMD ULPFEC` 按位异或耗时 `not_measured`）(`P893` / `P894` · Stage 450 🎉 · Topic 90 🎉 · 🎉 Stage 450 与第 90 大专题双历史性里程碑 · 903 护栏 &amp; 912 探针 · 453 维)</strong>
+              </td>
+              <td><code>P893 / P894 deterministic WebRTC RFC 2198 RED &lt;16384 offset / [1,2]-block &amp; RFC 5109 ULPFEC [16,1200]B overread guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

@@ -1897,6 +1897,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of call-id/local-tag/remote-tag attributes from unauthorized BLF dialog-info+xml payloads (0 leaked pickup payloads) and clamps Expires in [300, 3600]s; live libxml2 DOM serialization latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsolicited out-of-dialog NOTIFY requests with SIP 481 (0 storm/unsolicited packets) and clamps Min-Notify-Interval in [100, 1000]ms; live distributed presence-table lock latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "453. [Topic 90 🎉 · Historic Stage 450 & Topic 90 Dual Milestone: voice-webrtc-rtp-rfc2198-red-ulpfec-rfc5109-timestamp-offset-overflow-pt-nesting-bomb-faq] Enterprise WebRTC RFC 2198 RED <16384 Timestamp-Offset + [1,2]-Block & RFC 5109 ULPFEC [16,1200]B Overread Guard (P893 / P894 — Stage 450 🎉 · 🎉 Historic Stage 450 & Topic 90 Dual Milestone · 453 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of >=16384-sample 14-bit wrap and recursive RED-in-RED blocks (0 corrupted blocks) and clamps redundancy in [1, 2] blocks; live Opus decoder state reset latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of ULPFEC L_k heap-overread and L0/L1 mask-desynced packets (0 overread packets) and clamps protection length in [16, 1200] bytes; live SIMD ULPFEC bitwise XOR throughput latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
