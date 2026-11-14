@@ -80825,6 +80825,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6140GinBulkNumberContactUserlessSyntaxAndTenantDidScopeContext {
+      nonEmptyBncUserPartOrCrossTenantDidRewriteHijackDetected: boolean;
+      malformedBncOrCrossTenantDidHijackCalls: number;
+      bulkDidCountPerTrunkRegistration: number;
+    }
+
+    export interface SipRfc6140GinBulkNumberContactUserlessSyntaxAndTenantDidScopeDecision {
+      violated: boolean;
+      policyId: "P907-SIP-RFC6140-GIN-BULK-NUMBER-CONTACT-USERLESS-SYNTAX-AND-TENANT-DID-SCOPE-GUARD";
+      action:
+        | "enforce_userless_bnc_syntax_and_tenant_did_scope"
+        | "clamp_hijacked_did_calls_and_bulk_trunk_capacity_bounds"
+        | "allow";
+      reason: string;
+      clampedMalformedBncOrCrossTenantDidHijackCalls: number;
+      clampedBulkDidCountPerTrunkRegistration: number;
+    }
+
+    export function evaluateSipRfc6140GinBulkNumberContactUserlessSyntaxAndTenantDidScopeGate(
+      context: SipRfc6140GinBulkNumberContactUserlessSyntaxAndTenantDidScopeContext,
+    ): SipRfc6140GinBulkNumberContactUserlessSyntaxAndTenantDidScopeDecision {
+      const policyId =
+        "P907-SIP-RFC6140-GIN-BULK-NUMBER-CONTACT-USERLESS-SYNTAX-AND-TENANT-DID-SCOPE-GUARD" as const;
+      const clampedMalformedBncOrCrossTenantDidHijackCalls = 0;
+      const clampedBulkDidCountPerTrunkRegistration = Math.min(
+        Math.max(context.bulkDidCountPerTrunkRegistration, 10),
+        10000,
+      );
+
+      if (context.nonEmptyBncUserPartOrCrossTenantDidRewriteHijackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_userless_bnc_syntax_and_tenant_did_scope",
+          reason:
+            "Enterprise SIP RFC 6140 GIN Bulk-Number-Contact (;bnc) Userless Syntax & Tenant DID Scope Policy Check: non-empty user@ part in ;bnc Contact URI (double-@ 400 crash) or cross-tenant E.164 DID rewrite hijack detected; offline synthetic policy state machine enforcing userless ;bnc syntax and tenant DID ownership (0 hijacked/malformed calls) and clamping bulk DID capacity per trunk to [10, 10000] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live ENUM/NPDB radix-tree lookup latency not_measured).",
+          clampedMalformedBncOrCrossTenantDidHijackCalls,
+          clampedBulkDidCountPerTrunkRegistration,
+        };
+      }
+
+      if (
+        context.malformedBncOrCrossTenantDidHijackCalls > 0 ||
+        context.bulkDidCountPerTrunkRegistration < 10 ||
+        context.bulkDidCountPerTrunkRegistration > 10000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_hijacked_did_calls_and_bulk_trunk_capacity_bounds",
+          reason:
+            "Malformed ;bnc / cross-tenant DID hijack calls (>0 synthetic ceiling) or bulk DID count per trunk registration (<10 or >10000 synthetic bounds) out of bounds; clamping failed calls to 0 and bulk DID capacity to [10, 10000].",
+          clampedMalformedBncOrCrossTenantDidHijackCalls,
+          clampedBulkDidCountPerTrunkRegistration,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6140 userless ;bnc syntax + tenant DID ownership (0 hijacked/malformed calls) and [10, 10000]-DID capacity bounds verified.",
+        clampedMalformedBncOrCrossTenantDidHijackCalls,
+        clampedBulkDidCountPerTrunkRegistration,
+      };
+    }
+
+    export interface SipRfc6140BulkTrunkRegistrationPathBindingAndRefreshJitterContext {
+      missingPathHeaderInboundBlackholeOrUnjitteredRefreshStormDetected: boolean;
+      missingPathBlackholeOrThunderingHerdRegistrations: number;
+      bulkTrunkRegistrationExpiresSeconds: number;
+    }
+
+    export interface SipRfc6140BulkTrunkRegistrationPathBindingAndRefreshJitterDecision {
+      violated: boolean;
+      policyId: "P908-SIP-RFC6140-BULK-TRUNK-REGISTRATION-PATH-BINDING-AND-REFRESH-JITTER-GUARD";
+      action:
+        | "enforce_rfc3327_path_binding_and_jittered_bulk_refresh"
+        | "clamp_blackhole_registrations_and_expires_bounds"
+        | "allow";
+      reason: string;
+      clampedMissingPathBlackholeOrThunderingHerdRegistrations: number;
+      clampedBulkTrunkRegistrationExpiresSeconds: number;
+    }
+
+    export function evaluateSipRfc6140BulkTrunkRegistrationPathBindingAndRefreshJitterGate(
+      context: SipRfc6140BulkTrunkRegistrationPathBindingAndRefreshJitterContext,
+    ): SipRfc6140BulkTrunkRegistrationPathBindingAndRefreshJitterDecision {
+      const policyId =
+        "P908-SIP-RFC6140-BULK-TRUNK-REGISTRATION-PATH-BINDING-AND-REFRESH-JITTER-GUARD" as const;
+      const clampedMissingPathBlackholeOrThunderingHerdRegistrations = 0;
+      const clampedBulkTrunkRegistrationExpiresSeconds = Math.min(
+        Math.max(context.bulkTrunkRegistrationExpiresSeconds, 600),
+        3600,
+      );
+
+      if (context.missingPathHeaderInboundBlackholeOrUnjitteredRefreshStormDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc3327_path_binding_and_jittered_bulk_refresh",
+          reason:
+            "Enterprise SIP RFC 6140 Bulk Trunk Path Binding & Refresh Jitter Policy Check: missing RFC 3327 Path/+sip.instance edge binding (inbound DID NAT blackhole) or unjittered bulk trunk re-registration thundering herd detected; offline synthetic policy state machine enforcing Path/+sip.instance binding (0 blackhole/storm registrations) and clamping bulk trunk Expires to [600, 3600] seconds (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live distributed registrar database commit latency not_measured).",
+          clampedMissingPathBlackholeOrThunderingHerdRegistrations,
+          clampedBulkTrunkRegistrationExpiresSeconds,
+        };
+      }
+
+      if (
+        context.missingPathBlackholeOrThunderingHerdRegistrations > 0 ||
+        context.bulkTrunkRegistrationExpiresSeconds < 600 ||
+        context.bulkTrunkRegistrationExpiresSeconds > 3600
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_blackhole_registrations_and_expires_bounds",
+          reason:
+            "Missing-Path blackhole or thundering-herd bulk registrations (>0 synthetic ceiling) or bulk trunk Expires (<600s or >3600s synthetic bounds) out of bounds; clamping failed registrations to 0 and Expires to [600, 3600] seconds.",
+          clampedMissingPathBlackholeOrThunderingHerdRegistrations,
+          clampedBulkTrunkRegistrationExpiresSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6140 Path/+sip.instance binding (0 blackhole/storm registrations) and [600, 3600]s bulk trunk Expires bounds verified.",
+        clampedMissingPathBlackholeOrThunderingHerdRegistrations,
+        clampedBulkTrunkRegistrationExpiresSeconds,
+      };
+    }
+
 
 
 

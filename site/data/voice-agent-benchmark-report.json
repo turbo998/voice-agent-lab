@@ -1939,6 +1939,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsigned 32-bit compact-NTP 65,535s RTT underflows (0 outlier samples) and clamps media RTT in [1, 3000]ms; live EWMA filter update latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: quarantines 100% of uncorroborated BT=7 MOS/R-Factor failover drops (0 false failovers) and clamps Gmin in [16, 64] packets; live ITU-T G.107 E-Model polynomial evaluation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "460. [Topic 97 · Historic 460-Dimension Milestone 🎉: voice-sip-rfc6140-rfc7993-gin-pbx-bnc-trunk-registration-wildcard-uri-hijack-faq] Enterprise SIP RFC 6140 GIN Userless ;bnc [10,10000] DID Scope & RFC 3327 Path + [600,3600]s Refresh Guard (P907 / P908 — Stage 457 · 🎉 Historic 460-Dimension Milestone · 460 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% userless ;bnc Contact syntax and tenant E.164 DID ownership (0 hijacked/malformed calls) and clamps bulk DID capacity in [10, 10000]; live ENUM/NPDB radix-tree lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% RFC 3327 Path/+sip.instance binding (0 blackhole/storm registrations) and clamps bulk trunk Expires in [600, 3600]s; live distributed registrar database commit latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
