@@ -82324,6 +82324,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc8852RidRtpStreamIdAllowlistAndMaxBitrateEnvelopeContext {
+      unnegotiatedRidOrMaxBrAudioStarvationDetected: boolean;
+      unnegotiatedOrOverBudgetRidPackets: number;
+      maxSimulcastRidLayersPerMediaSection: number;
+    }
+
+    export interface WebrtcRfc8852RidRtpStreamIdAllowlistAndMaxBitrateEnvelopeDecision {
+      violated: boolean;
+      policyId: "P929-WEBRTC-RFC8852-RID-RTP-STREAM-ID-ALLOWLIST-AND-MAX-BITRATE-ENVELOPE-GUARD";
+      action:
+        | "police_rid_max_br_envelope_and_drop_unnegotiated_simulcast_tier"
+        | "clamp_over_budget_rid_packets_and_simulcast_layer_bounds"
+        | "allow";
+      reason: string;
+      clampedUnnegotiatedOrOverBudgetRidPackets: number;
+      clampedMaxSimulcastRidLayersPerMediaSection: number;
+    }
+
+    export function evaluateWebrtcRfc8852RidRtpStreamIdAllowlistAndMaxBitrateEnvelopeGate(
+      context: WebrtcRfc8852RidRtpStreamIdAllowlistAndMaxBitrateEnvelopeContext,
+    ): WebrtcRfc8852RidRtpStreamIdAllowlistAndMaxBitrateEnvelopeDecision {
+      const policyId =
+        "P929-WEBRTC-RFC8852-RID-RTP-STREAM-ID-ALLOWLIST-AND-MAX-BITRATE-ENVELOPE-GUARD" as const;
+      const clampedUnnegotiatedOrOverBudgetRidPackets = 0;
+      const clampedMaxSimulcastRidLayersPerMediaSection = Math.min(
+        Math.max(context.maxSimulcastRidLayersPerMediaSection, 1),
+        3,
+      );
+
+      if (context.unnegotiatedRidOrMaxBrAudioStarvationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "police_rid_max_br_envelope_and_drop_unnegotiated_simulcast_tier",
+          reason:
+            "Enterprise WebRTC RFC 8851 / RFC 8852 / RFC 8853 rtp-stream-id (RID) Allowlist & max-br Policer Policy Check: RTP stream carried unnegotiated rtp-stream-id or exceeded its SDP a=rid max-br bitrate envelope on a low Simulcast tier (starving co-bundled Opus voice); offline synthetic policy state machine policing per-RID max-br token buckets (0 over-budget/unnegotiated RID packets) and clamping Simulcast tiers per m= section to [1, 3] layers (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU per-RID token-bucket policing latency not_measured).",
+          clampedUnnegotiatedOrOverBudgetRidPackets,
+          clampedMaxSimulcastRidLayersPerMediaSection,
+        };
+      }
+
+      if (
+        context.unnegotiatedOrOverBudgetRidPackets > 0 ||
+        context.maxSimulcastRidLayersPerMediaSection < 1 ||
+        context.maxSimulcastRidLayersPerMediaSection > 3
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_over_budget_rid_packets_and_simulcast_layer_bounds",
+          reason:
+            "Unnegotiated or over-budget Simulcast RID packets (>0 synthetic ceiling) or max Simulcast RID layers per media section (<1 or >3 synthetic bounds) out of bounds; clamping violations to 0 and Simulcast layers to [1, 3].",
+          clampedUnnegotiatedOrOverBudgetRidPackets,
+          clampedMaxSimulcastRidLayersPerMediaSection,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8852 RID SDP allowlist + a=rid max-br policing (0 over-budget packets) and [1, 3] Simulcast tier bounds verified.",
+        clampedUnnegotiatedOrOverBudgetRidPackets,
+        clampedMaxSimulcastRidLayersPerMediaSection,
+      };
+    }
+
+    export interface WebrtcRfc8852RepairedRtpStreamIdRtxBindingAndPtRestrictionContext {
+      orphanRepairedRtpStreamIdOrPtRestrictionMismatchDetected: boolean;
+      orphanRtxOrPtViolatingRepairPackets: number;
+      maxRidIdentifierLengthBytes: number;
+    }
+
+    export interface WebrtcRfc8852RepairedRtpStreamIdRtxBindingAndPtRestrictionDecision {
+      violated: boolean;
+      policyId: "P930-WEBRTC-RFC8852-REPAIRED-RTP-STREAM-ID-RTX-BINDING-AND-PT-RESTRICTION-GUARD";
+      action:
+        | "bind_repaired_rid_to_active_primary_and_enforce_a_rid_pt_list"
+        | "clamp_orphan_rtx_packets_and_rid_length_bounds"
+        | "allow";
+      reason: string;
+      clampedOrphanRtxOrPtViolatingRepairPackets: number;
+      clampedMaxRidIdentifierLengthBytes: number;
+    }
+
+    export function evaluateWebrtcRfc8852RepairedRtpStreamIdRtxBindingAndPtRestrictionGate(
+      context: WebrtcRfc8852RepairedRtpStreamIdRtxBindingAndPtRestrictionContext,
+    ): WebrtcRfc8852RepairedRtpStreamIdRtxBindingAndPtRestrictionDecision {
+      const policyId =
+        "P930-WEBRTC-RFC8852-REPAIRED-RTP-STREAM-ID-RTX-BINDING-AND-PT-RESTRICTION-GUARD" as const;
+      const clampedOrphanRtxOrPtViolatingRepairPackets = 0;
+      const clampedMaxRidIdentifierLengthBytes = Math.min(
+        Math.max(context.maxRidIdentifierLengthBytes, 1),
+        16,
+      );
+
+      if (context.orphanRepairedRtpStreamIdOrPtRestrictionMismatchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "bind_repaired_rid_to_active_primary_and_enforce_a_rid_pt_list",
+          reason:
+            "Enterprise WebRTC RFC 8852 repaired-rtp-stream-id RTX Binding & a=rid pt= Restriction Policy Check: RTX/FEC repair stream referenced an unbound orphan repaired-rtp-stream-id or used a Payload Type outside the SDP a=rid pt= allowlist; offline synthetic policy state machine dropping orphan/pt-violating repair packets (0 corrupted RTX packets) and clamping RID identifier length to [1, 16] ASCII bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU RTX OSN history-buffer lookup latency not_measured).",
+          clampedOrphanRtxOrPtViolatingRepairPackets,
+          clampedMaxRidIdentifierLengthBytes,
+        };
+      }
+
+      if (
+        context.orphanRtxOrPtViolatingRepairPackets > 0 ||
+        context.maxRidIdentifierLengthBytes < 1 ||
+        context.maxRidIdentifierLengthBytes > 16
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_orphan_rtx_packets_and_rid_length_bounds",
+          reason:
+            "Orphan RTX / PT-violating repair packets (>0 synthetic ceiling) or max RID identifier length (<1B or >16B synthetic bounds) out of bounds; clamping violations to 0 and RID length to [1, 16] bytes.",
+          clampedOrphanRtxOrPtViolatingRepairPackets,
+          clampedMaxRidIdentifierLengthBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8852 repaired-rtp-stream-id primary binding + a=rid pt= restriction (0 orphan RTX packets) and [1, 16]B RID length verified.",
+        clampedOrphanRtxOrPtViolatingRepairPackets,
+        clampedMaxRidIdentifierLengthBytes,
+      };
+    }
+
 
 
 

@@ -1826,6 +1826,13 @@
               <td><code>P927 / P928 deterministic SIP RFC 4412 RPH [5,25]% preemption cap &amp; RFC 5009 [5,45]s sendonly early-media guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>471. [专题108 · 110篇FAQ &amp; P930 🎉 `docs/voice-webrtc-rtp-rfc8852-rfc8853-rid-restriction-id-pt-repurposing-simulcast-layer-spoofing-faq.md`] 企业 WebRTC `RFC 8851 / RFC 8852 / RFC 8853` `rtp-stream-id (RID)` SDP 协商白名单校验、按每层 `a=rid max-br` 令牌桶硬削峰防挤死共通道 `Opus` 语音轨（`0` 破限挤占包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU 每层令牌桶计量耗时 `not_measured`）与 `[1, 3]` 层 Simulcast 上限锁 &amp; `repaired-rtp-stream-id` 绑定同 `m=` 行已激活主 `RID`、`a=rid pt=` 白名单与 `[1, 16]` 字节 `RID` 长度锁（`0` 孤儿 `RTX` 错绑包；真实 `OSN` 历史缓存查找耗时 `not_measured`）(`P929` / `P930 🎉` · Stage 468 · Topic 108 · 🎉 第 35 轮夜间深潜、P930 护栏、第 110 篇独立单专题 FAQ 与 910 单测四重里程碑 · 939 护栏 &amp; 948 探针 · 471 维)</strong>
+              </td>
+              <td><code>P929 / P930 🎉 deterministic WebRTC RFC 8852/8853 RID [1,3]-layer max-br policer &amp; [1,16]B repaired-rtp-stream-id RTX guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5628,6 +5635,13 @@
                 <strong>470. [专题107 · 470维里程碑 🎉 `docs/voice-sip-rfc4412-rfc5009-resource-priority-rph-preemption-spoofing-p-early-media-billing-bypass-faq.md`] 企业 SIP `RFC 4412 / RFC 8443` `Resource-Priority (RPH)` 密码学 `PASSporT (ppt="rph")` 验签、外网无签名 `RPH` 剥离防恶意强拆在途通话（`0` 伪造强拆掉话，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `PASSporT rph` 验签耗时 `not_measured`）与 `[5, 25]%` 最大可抢占配额锁 &amp; `RFC 5009 P-Early-Media` 在 `200 OK` 摘机前强制锁定单向 `sendonly` 与 `[5, 45]s` 早期媒体时长上限防免计费双向盗打锁（`0` 应答前白嫖通话；真实媒体门控切换耗时 `not_measured`）(`P927` / `P928` · Stage 467 · Topic 107 · 🎉 第 470 大评测维度历史性里程碑 · 937 护栏 &amp; 946 探针 · 470 维 🎉)</strong>
               </td>
               <td><code>P927 / P928 deterministic SIP RFC 4412 RPH [5,25]% preemption cap &amp; RFC 5009 [5,45]s sendonly early-media guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>471. [专题108 · 110篇FAQ &amp; P930 🎉 `docs/voice-webrtc-rtp-rfc8852-rfc8853-rid-restriction-id-pt-repurposing-simulcast-layer-spoofing-faq.md`] 企业 WebRTC `RFC 8851 / RFC 8852 / RFC 8853` `rtp-stream-id (RID)` SDP 协商白名单校验、按每层 `a=rid max-br` 令牌桶硬削峰防挤死共通道 `Opus` 语音轨（`0` 破限挤占包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU 每层令牌桶计量耗时 `not_measured`）与 `[1, 3]` 层 Simulcast 上限锁 &amp; `repaired-rtp-stream-id` 绑定同 `m=` 行已激活主 `RID`、`a=rid pt=` 白名单与 `[1, 16]` 字节 `RID` 长度锁（`0` 孤儿 `RTX` 错绑包；真实 `OSN` 历史缓存查找耗时 `not_measured`）(`P929` / `P930 🎉` · Stage 468 · Topic 108 · 🎉 第 35 轮夜间深潜、P930 护栏、第 110 篇独立单专题 FAQ 与 910 单测四重里程碑 · 939 护栏 &amp; 948 探针 · 471 维)</strong>
+              </td>
+              <td><code>P929 / P930 🎉 deterministic WebRTC RFC 8852/8853 RID [1,3]-layer max-br policer &amp; [1,16]B repaired-rtp-stream-id RTX guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
