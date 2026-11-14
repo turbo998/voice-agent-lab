@@ -80281,6 +80281,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3840AutomataBotToBotLoopAndActorMsgTakerDetectionContext {
+      unlabeledAutomataOrBotToBotInfiniteConversationLoopDetected: boolean;
+      infiniteBotToBotLoopCalls: number;
+      maxBotToAutomataTurnExchanges: number;
+    }
+
+    export interface SipRfc3840AutomataBotToBotLoopAndActorMsgTakerDetectionDecision {
+      violated: boolean;
+      policyId: "P899-SIP-RFC3840-AUTOMATA-BOT-TO-BOT-LOOP-AND-ACTOR-MSG-TAKER-DETECTION-GUARD";
+      action:
+        | "enforce_rfc3840_automata_tag_and_break_bot_to_bot_loop"
+        | "clamp_bot_loop_calls_and_turn_exchange_bounds"
+        | "allow";
+      reason: string;
+      clampedInfiniteBotToBotLoopCalls: number;
+      clampedMaxBotToAutomataTurnExchanges: number;
+    }
+
+    export function evaluateSipRfc3840AutomataBotToBotLoopAndActorMsgTakerDetectionGate(
+      context: SipRfc3840AutomataBotToBotLoopAndActorMsgTakerDetectionContext,
+    ): SipRfc3840AutomataBotToBotLoopAndActorMsgTakerDetectionDecision {
+      const policyId =
+        "P899-SIP-RFC3840-AUTOMATA-BOT-TO-BOT-LOOP-AND-ACTOR-MSG-TAKER-DETECTION-GUARD" as const;
+      const clampedInfiniteBotToBotLoopCalls = 0;
+      const clampedMaxBotToAutomataTurnExchanges = Math.min(
+        Math.max(context.maxBotToAutomataTurnExchanges, 1),
+        3,
+      );
+
+      if (context.unlabeledAutomataOrBotToBotInfiniteConversationLoopDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc3840_automata_tag_and_break_bot_to_bot_loop",
+          reason:
+            "Enterprise SIP RFC 3840 Automata Bot-to-Bot Loop & Actor=msg-taker Policy Check: missing Contact ;automata capability tag or unbounded AI Bot-to-Bot call-screener conversation loop detected; offline synthetic policy state machine enforcing ;automata tagging, breaking Bot-to-Bot loops (0 infinite loop calls), and clamping Bot-to-Automata turn exchanges to [1, 3] turns before concise BYE (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live semantic call-screener classification latency not_measured).",
+          clampedInfiniteBotToBotLoopCalls,
+          clampedMaxBotToAutomataTurnExchanges,
+        };
+      }
+
+      if (
+        context.infiniteBotToBotLoopCalls > 0 ||
+        context.maxBotToAutomataTurnExchanges < 1 ||
+        context.maxBotToAutomataTurnExchanges > 3
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_bot_loop_calls_and_turn_exchange_bounds",
+          reason:
+            "Infinite Bot-to-Bot loop calls (>0 synthetic ceiling) or max Bot-to-Automata turn exchanges (<1 or >3 synthetic bounds) out of bounds; clamping loop calls to 0 and turn ceiling to [1, 3] turns.",
+          clampedInfiniteBotToBotLoopCalls,
+          clampedMaxBotToAutomataTurnExchanges,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3840 ;automata tagging (0 infinite Bot-to-Bot loop calls) and [1, 3]-turn Bot-to-Automata bounds verified.",
+        clampedInfiniteBotToBotLoopCalls,
+        clampedMaxBotToAutomataTurnExchanges,
+      };
+    }
+
+    export interface SipRfc3841CallerPreferencesRejectAutomataAndQValueStarvationContext {
+      requireExplicitHumanQueueStarvationOrAutomataMisrouteDetected: boolean;
+      starvedHumanEscalationOrMisroutedBotCalls: number;
+      callerPreferenceContactMilliQ: number;
+    }
+
+    export interface SipRfc3841CallerPreferencesRejectAutomataAndQValueStarvationDecision {
+      violated: boolean;
+      policyId: "P900-SIP-RFC3841-CALLER-PREFERENCES-REJECT-AUTOMATA-AND-Q-VALUE-STARVATION-GUARD";
+      action:
+        | "strip_starving_require_explicit_and_enforce_reject_automata"
+        | "clamp_starved_escalation_calls_and_milli_q_bounds"
+        | "allow";
+      reason: string;
+      clampedStarvedHumanEscalationOrMisroutedBotCalls: number;
+      clampedCallerPreferenceContactMilliQ: number;
+    }
+
+    export function evaluateSipRfc3841CallerPreferencesRejectAutomataAndQValueStarvationGate(
+      context: SipRfc3841CallerPreferencesRejectAutomataAndQValueStarvationContext,
+    ): SipRfc3841CallerPreferencesRejectAutomataAndQValueStarvationDecision {
+      const policyId =
+        "P900-SIP-RFC3841-CALLER-PREFERENCES-REJECT-AUTOMATA-AND-Q-VALUE-STARVATION-GUARD" as const;
+      const clampedStarvedHumanEscalationOrMisroutedBotCalls = 0;
+      const clampedCallerPreferenceContactMilliQ = Math.min(
+        Math.max(context.callerPreferenceContactMilliQ, 100),
+        1000,
+      );
+
+      if (context.requireExplicitHumanQueueStarvationOrAutomataMisrouteDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_starving_require_explicit_and_enforce_reject_automata",
+          reason:
+            "Enterprise SIP RFC 3841 Caller Preferences Anti-Starvation & Reject-Automata Policy Check: Accept-Contact ;require;explicit starving unlabeled human desk phones (SIP 480) or missing Reject-Contact: *;automata detected; offline synthetic policy state machine stripping starving ;require;explicit flags (0 starved escalation calls) and clamping Contact routing priority to [100, 1000] milli-q (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIP proxy RFC 3841 predicate-intersection latency not_measured).",
+          clampedStarvedHumanEscalationOrMisroutedBotCalls,
+          clampedCallerPreferenceContactMilliQ,
+        };
+      }
+
+      if (
+        context.starvedHumanEscalationOrMisroutedBotCalls > 0 ||
+        context.callerPreferenceContactMilliQ < 100 ||
+        context.callerPreferenceContactMilliQ > 1000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_starved_escalation_calls_and_milli_q_bounds",
+          reason:
+            "Starved human-escalation / misrouted bot calls (>0 synthetic ceiling) or Contact routing priority (<100 or >1000 milli-q synthetic bounds) out of bounds; clamping failed calls to 0 and priority to [100, 1000] milli-q.",
+          clampedStarvedHumanEscalationOrMisroutedBotCalls,
+          clampedCallerPreferenceContactMilliQ,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3841 caller preferences anti-starvation (0 starved escalation calls) and [100, 1000] milli-q priority bounds verified.",
+        clampedStarvedHumanEscalationOrMisroutedBotCalls,
+        clampedCallerPreferenceContactMilliQ,
+      };
+    }
+
 
 
 

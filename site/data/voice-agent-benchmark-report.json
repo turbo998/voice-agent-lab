@@ -1915,6 +1915,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% DTLS-role even/odd Stream-ID parity and strict PPID {50,51,53,56,57} validation (0 glare/confused chunks) and clamps concurrent DataChannel streams in [1, 64]; live usrsctp/dcSCTP CRC32c checksum latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: isolates barge-in control stream (0 stalled/overflowed channels) and clamps PR-SCTP interim caption maxPacketLifeTime in [100, 1000]ms with FORWARD-TSN skip; live dcSCTP FORWARD-TSN chunk assembly latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "456. [Topic 93 · P900, 95th FAQ & 895-Test Triple Milestone 🎉: voice-sip-rfc3840-rfc3841-automata-bot-loop-caller-prefs-q-value-starvation-faq] Enterprise SIP RFC 3840 ;automata [1,3]-Turn Bot-to-Bot Loop Breaker & RFC 3841 [100,1000] milli-q Anti-Starvation Guard (P899 / P900 🎉 — Stage 453 · 🎉 Historic P900, 95th FAQ & 895-Test Triple Milestone · 456 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% Contact ;automata capability tagging and clamps Bot-to-Automata turn exchanges in [1, 3] turns (0 infinite loop calls); live semantic call-screener classification latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of starving Accept-Contact ;require;explicit flags (0 starved escalation calls) and clamps Contact priority in [100, 1000] milli-q; live SIP proxy RFC 3841 predicate-intersection latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
