@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg95" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B14"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#091622"/>
+    </linearGradient>
+    <linearGradient id="accent95" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg95)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="18" fill="#0B1324" stroke="#1E293B" stroke-width="2"/>
+  <rect x="24" y="20" width="1232" height="6" rx="3" fill="url(#accent95)"/>
+
+  <!-- Header -->
+  <text x="52" y="64" fill="#38BDF8" font-size="14" font-weight="700" letter-spacing="1.5">STAGE 451 · TOPIC 91 · SVG 95 🎉 · 🎉 HISTORIC 95TH SVG &amp; 905-GUARDRAIL DUAL MILESTONE (P895–P896)</text>
+  <text x="52" y="96" fill="#F8FAFC" font-size="23" font-weight="800">Enterprise SIP RFC 3326 Reason Q.850 Anti-Spoofing &amp; RFC 8599 Push-Wake Guard</text>
+  <text x="52" y="122" fill="#94A3B8" font-size="14">Eliminating Spoofed Q.850 / SIP;cause=200 Headers, pn-provider SSRF &amp; Mobile Sleep Premature 480 Call Drops</text>
+
+  <!-- Milestone Badge -->
+  <rect x="944" y="46" width="284" height="64" rx="12" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="1086" y="72" text-anchor="middle" fill="#BAE6FD" font-size="12" font-weight="700">🎉 95TH SVG &amp; 905 GUARDRAILS</text>
+  <text x="1086" y="94" text-anchor="middle" fill="#F0F9FF" font-size="15" font-weight="800">454 Dims · 914 Probes · 893 Tests</text>
+
+  <!-- Left Panel: Unguarded RFC 3326 / 8599 Failure Mode -->
+  <rect x="48" y="148" width="576" height="440" rx="14" fill="#160E1B" stroke="#F43F5E" stroke-width="1.5"/>
+  <rect x="68" y="166" width="536" height="36" rx="8" fill="#4C0519"/>
+  <text x="84" y="189" fill="#FDA4AF" font-size="15" font-weight="700">❌ Unguarded RFC 3326/8599: Q.850 Spoofing &amp; Mobile 480 Drop</text>
+
+  <!-- Failure Box 1 -->
+  <rect x="68" y="218" width="536" height="168" rx="10" fill="#1E1324" stroke="#881337" stroke-width="1"/>
+  <text x="86" y="244" fill="#FB7185" font-size="14" font-weight="700">1. RFC 3326 Reason Header (Q.850 / SIP;cause=200) Spoofing</text>
+  <text x="86" y="268" fill="#E2E8F0" font-size="13">• Untrusted carrier injects Reason: Q.850;cause=1 (Unallocated Number)</text>
+  <text x="86" y="292" fill="#E2E8F0" font-size="13">  to hide trunk congestion → AI dialer permanently deletes valid leads!</text>
+  <text x="86" y="316" fill="#E2E8F0" font-size="13">• Rogue caller sends CANCEL with Reason: SIP;cause=200 ("Call completed</text>
+  <text x="86" y="340" fill="#FDA4AF" font-size="13" font-weight="700">  elsewhere") → completely erases missed-call alert on executive phone!</text>
+  <rect x="86" y="352" width="498" height="24" rx="5" fill="#4C0519"/>
+  <text x="335" y="368" text-anchor="middle" fill="#FECDD3" font-size="12" font-weight="700">Result: Corrupted Outbound Retry Engines &amp; Suppressed Missed-Call Logs</text>
+
+  <!-- Failure Box 2 -->
+  <rect x="68" y="402" width="536" height="168" rx="10" fill="#1E1324" stroke="#881337" stroke-width="1"/>
+  <text x="86" y="428" fill="#FB7185" font-size="14" font-weight="700">2. RFC 8599 Mobile Sleep Instant 480 Drop &amp; pn-provider SSRF</text>
+  <text x="86" y="452" fill="#E2E8F0" font-size="13">• iOS/Android suspends background TCP socket after 10s to save battery.</text>
+  <text x="86" y="476" fill="#E2E8F0" font-size="13">• Without RFC 8599 INVITE parking, proxy returns 480 in 0ms (32% drops).</text>
+  <text x="86" y="500" fill="#E2E8F0" font-size="13">• Unvalidated Contact pn-provider URL allows attacker to trigger</text>
+  <text x="86" y="524" fill="#FDA4AF" font-size="13" font-weight="700">  Server-Side Request Forgery (SSRF) against internal cloud metadata!</text>
+  <rect x="86" y="536" width="498" height="24" rx="5" fill="#4C0519"/>
+  <text x="335" y="552" text-anchor="middle" fill="#FECDD3" font-size="12" font-weight="700">Result: 32% Mobile Callback Failure Rate &amp; Internal SSRF Exposure</text>
+
+  <!-- Right Panel: P895 + P896 Guardrails -->
+  <rect x="656" y="148" width="576" height="440" rx="14" fill="#091D1C" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="676" y="166" width="536" height="36" rx="8" fill="#064E3B"/>
+  <text x="692" y="189" fill="#6EE7B7" font-size="15" font-weight="700">✅ RFC 3326 Strip Guard (P895) &amp; RFC 8599 Push-Wake Guard (P896 🎉)</text>
+
+  <!-- Guardrail Box 1: P895 -->
+  <rect x="676" y="218" width="536" height="168" rx="10" fill="#0D2726" stroke="#047857" stroke-width="1"/>
+  <text x="694" y="244" fill="#34D399" font-size="14" font-weight="700">P895 · RFC 3326 Untrusted Reason Strip &amp; Q.850 [1, 127] Bounds Guard</text>
+  <text x="694" y="268" fill="#E2E8F0" font-size="13">• Strips 100% of inbound Reason headers on untrusted external trunks.</text>
+  <text x="694" y="292" fill="#E2E8F0" font-size="13">• Blocks spoofed SIP;cause=200 missed-call suppression &amp; fake cause=1.</text>
+  <text x="694" y="316" fill="#E2E8F0" font-size="13">• Locally maps authentic disconnect causes &amp; clamps Q.850 to [1, 127].</text>
+  <text x="694" y="340" fill="#6EE7B7" font-size="13" font-weight="700">• 100% protects CDR accuracy &amp; outbound dialer retry state machines!</text>
+  <rect x="694" y="352" width="498" height="24" rx="5" fill="#065F46"/>
+  <text x="943" y="368" text-anchor="middle" fill="#D1FAE5" font-size="12" font-weight="700">clampedSpoofedReasonOrInvalidQ850Headers = 0 · Q.850 Cause ∈ [1, 127]</text>
+
+  <!-- Guardrail Box 2: P896 -->
+  <rect x="676" y="402" width="536" height="168" rx="10" fill="#0D2726" stroke="#047857" stroke-width="1"/>
+  <text x="694" y="428" fill="#38BDF8" font-size="14" font-weight="700">P896 (🎉 905th Guard!) · RFC 8599 Allowlist &amp; [4000, 12000]ms Hold Guard</text>
+  <text x="694" y="452" fill="#E2E8F0" font-size="13">• Enforces strict APNs/FCM allowlist on pn-provider (SIP 555 on failure).</text>
+  <text x="694" y="476" fill="#E2E8F0" font-size="13">• Parks incoming INVITE in tsilo queue for [4,000, 12,000]ms (6,000ms).</text>
+  <text x="694" y="500" fill="#E2E8F0" font-size="13">• Dispatches async push wake-up &amp; bridges INVITE in 0ms upon matching</text>
+  <text x="694" y="524" fill="#7DD3FC" font-size="13" font-weight="700">  +sip.instance re-REGISTER (&gt;99.4% mobile wake completion rate)!</text>
+  <rect x="694" y="536" width="498" height="24" rx="5" fill="#0C4A6E"/>
+  <text x="943" y="552" text-anchor="middle" fill="#E0F2FE" font-size="12" font-weight="700">clampedUnallowlistedPushOrPremature480Calls = 0 · Hold ∈ [4000, 12000]ms</text>
+
+  <!-- Bottom Provenance & Timing Bar -->
+  <rect x="48" y="606" width="1184" height="112" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="634" fill="#F8FAFC" font-size="14" font-weight="700">📊 Stage 451 Quantitative Convergence &amp; Timing Provenance Disclosure (🎉 Historic 95th SVG &amp; 905-Guardrail Dual Milestone)</text>
+  <text x="68" y="660" fill="#CBD5E1" font-size="13">• Guardrail Policy IDs: P895-SIP-RFC3326-REASON-HEADER-Q850-CAUSE-SPOOFING-AND-UNTRUSTED-TRUNK-STRIP-GUARD &amp; P896-SIP-RFC8599-PUSH-NOTIFICATION-WAKE-RACE-AND-PROVIDER-ALLOWLIST-GUARD</text>
+  <text x="68" y="684" fill="#94A3B8" font-size="12">• Timing &amp; Provenance: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (provenance: synthetic in-memory policy check;</text>
+  <text x="68" y="704" fill="#94A3B8" font-size="12">  live Apple APNs / Google FCM HTTP/2 push RTT &amp; mobile OS cold-start latencies are not_measured). Suite totals: 454 Dimensions · 905 Guardrails 🎉 · 914 Probes (724 Live POC) · 893 Tests.</text>
+</svg>

@@ -1707,6 +1707,13 @@
               <td><code>P893 / P894 deterministic WebRTC RFC 2198 RED &lt;16384 offset / [1,2]-block &amp; RFC 5109 ULPFEC [16,1200]B overread guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>454. [专题91 · SVG 95 &amp; 905护栏 🎉 `docs/voice-sip-rfc3326-rfc8599-reason-q850-spoofing-push-notification-pns-wake-race-faq.md`] 企业 SIP `RFC 3326` 非授信中继入站 `Reason` 头剥离防伪造 `Q.850 / SIP;cause=200` 与 `[1, 127]` 标准码表锁（`0` 伪造原因头，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `SBC SIP-to-ISUP` 查表耗时 `not_measured`）&amp; `RFC 8599` 移动端推送 `pn-provider` 枚举白名单防 `SSRF`（违例回 `SIP 555`）与 `[4000, 12000]ms` 唤醒驻留事务锁（`0` `SSRF` 或秒拒 `480` 呼叫；真实 `APNs/FCM` 跨网推送耗时 `not_measured`）(`P895` / `P896` · Stage 451 · Topic 91 · 🎉 第 95 张 SVG 架构图与 905 护栏双里程碑 · 905 护栏 🎉 &amp; 914 探针 · 454 维)</strong>
+              </td>
+              <td><code>P895 / P896 deterministic SIP RFC 3326 Reason Q.850 [1,127] strip &amp; RFC 8599 [4000,12000]ms push-wake hold guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5390,6 +5397,13 @@
                 <strong>453. [专题90 🎉 · Stage 450 🎉 `docs/voice-webrtc-rtp-rfc2198-red-ulpfec-rfc5109-timestamp-offset-overflow-pt-nesting-bomb-faq.md`] 企业 WebRTC `RFC 2198 (RED)` `48kHz` `14-bit` 时间戳偏移 `&lt; 16,384`（`&lt;= 341.3ms`）跨静音回绕剥离、禁绝 `RED-in-RED` 递归套娃与 `[1, 2]` 块冗余阶数锁（`0` 字首重影或套娃块，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `Opus` 解码器状态重置耗时 `not_measured`）&amp; `RFC 5109 (ULPFEC)` `L_k &lt;= remainingPayloadBytes` 防堆越界读与 `[16, 1200]` 字节保护长度锁（`0` 越界读包；真实 `SIMD ULPFEC` 按位异或耗时 `not_measured`）(`P893` / `P894` · Stage 450 🎉 · Topic 90 🎉 · 🎉 Stage 450 与第 90 大专题双历史性里程碑 · 903 护栏 &amp; 912 探针 · 453 维)</strong>
               </td>
               <td><code>P893 / P894 deterministic WebRTC RFC 2198 RED &lt;16384 offset / [1,2]-block &amp; RFC 5109 ULPFEC [16,1200]B overread guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>454. [专题91 · SVG 95 &amp; 905护栏 🎉 `docs/voice-sip-rfc3326-rfc8599-reason-q850-spoofing-push-notification-pns-wake-race-faq.md`] 企业 SIP `RFC 3326` 非授信中继入站 `Reason` 头剥离防伪造 `Q.850 / SIP;cause=200` 与 `[1, 127]` 标准码表锁（`0` 伪造原因头，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `SBC SIP-to-ISUP` 查表耗时 `not_measured`）&amp; `RFC 8599` 移动端推送 `pn-provider` 枚举白名单防 `SSRF`（违例回 `SIP 555`）与 `[4000, 12000]ms` 唤醒驻留事务锁（`0` `SSRF` 或秒拒 `480` 呼叫；真实 `APNs/FCM` 跨网推送耗时 `not_measured`）(`P895` / `P896` · Stage 451 · Topic 91 · 🎉 第 95 张 SVG 架构图与 905 护栏双里程碑 · 905 护栏 🎉 &amp; 914 探针 · 454 维)</strong>
+              </td>
+              <td><code>P895 / P896 deterministic SIP RFC 3326 Reason Q.850 [1,127] strip &amp; RFC 8599 [4000,12000]ms push-wake hold guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

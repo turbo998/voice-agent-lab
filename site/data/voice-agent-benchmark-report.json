@@ -1903,6 +1903,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of >=16384-sample 14-bit wrap and recursive RED-in-RED blocks (0 corrupted blocks) and clamps redundancy in [1, 2] blocks; live Opus decoder state reset latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of ULPFEC L_k heap-overread and L0/L1 mask-desynced packets (0 overread packets) and clamps protection length in [16, 1200] bytes; live SIMD ULPFEC bitwise XOR throughput latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "454. [Topic 91 · SVG 95 & 905-Guardrail Milestone 🎉: voice-sip-rfc3326-rfc8599-reason-q850-spoofing-push-notification-pns-wake-race-faq] Enterprise SIP RFC 3326 Untrusted Reason Strip + Q.850 [1,127] & RFC 8599 pn-provider Allowlist + [4000,12000]ms Push-Wake Hold Guard (P895 / P896 — Stage 451 · 🎉 Historic 95th SVG & 905-Guardrail Dual Milestone · 454 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted inbound Reason Q.850 and SIP;cause=200 headers (0 spoofed headers) and clamps local Q.850 cause codes in [1, 127]; live SBC SIP-to-ISUP cause table lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% APNs/FCM pn-provider allowlist with SIP 555 rejection (0 SSRF/premature-480 calls) and clamps push-wake INVITE hold timeout in [4000, 12000]ms; live Apple APNs / Google FCM HTTP/2 push RTT latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

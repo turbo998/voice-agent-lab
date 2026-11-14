@@ -80009,6 +80009,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3326ReasonHeaderQ850CauseSpoofingAndUntrustedTrunkStripContext {
+      untrustedIngressReasonQ850OrCallCompletedElsewhereSpoofDetected: boolean;
+      spoofedReasonOrInvalidQ850Headers: number;
+      q850DisconnectCauseCode: number;
+    }
+
+    export interface SipRfc3326ReasonHeaderQ850CauseSpoofingAndUntrustedTrunkStripDecision {
+      violated: boolean;
+      policyId: "P895-SIP-RFC3326-REASON-HEADER-Q850-CAUSE-SPOOFING-AND-UNTRUSTED-TRUNK-STRIP-GUARD";
+      action:
+        | "strip_untrusted_rfc3326_reason_and_remap_local_q850"
+        | "clamp_spoofed_reason_headers_and_q850_cause_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedReasonOrInvalidQ850Headers: number;
+      clampedQ850DisconnectCauseCode: number;
+    }
+
+    export function evaluateSipRfc3326ReasonHeaderQ850CauseSpoofingAndUntrustedTrunkStripGate(
+      context: SipRfc3326ReasonHeaderQ850CauseSpoofingAndUntrustedTrunkStripContext,
+    ): SipRfc3326ReasonHeaderQ850CauseSpoofingAndUntrustedTrunkStripDecision {
+      const policyId =
+        "P895-SIP-RFC3326-REASON-HEADER-Q850-CAUSE-SPOOFING-AND-UNTRUSTED-TRUNK-STRIP-GUARD" as const;
+      const clampedSpoofedReasonOrInvalidQ850Headers = 0;
+      const clampedQ850DisconnectCauseCode = Math.min(
+        Math.max(context.q850DisconnectCauseCode, 1),
+        127,
+      );
+
+      if (context.untrustedIngressReasonQ850OrCallCompletedElsewhereSpoofDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_untrusted_rfc3326_reason_and_remap_local_q850",
+          reason:
+            "Enterprise SIP RFC 3326 Reason Header (Q.850 / SIP;cause=200) Spoofing Policy Check: untrusted trunk injected spoofed Q.850 disconnect cause or SIP;cause=200 missed-call suppression header; offline synthetic policy state machine stripping untrusted Reason headers (0 spoofed headers) and clamping locally mapped ITU-T Q.850 cause code to [1, 127] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC SIP-to-ISUP cause table lookup latency not_measured).",
+          clampedSpoofedReasonOrInvalidQ850Headers,
+          clampedQ850DisconnectCauseCode,
+        };
+      }
+
+      if (
+        context.spoofedReasonOrInvalidQ850Headers > 0 ||
+        context.q850DisconnectCauseCode < 1 ||
+        context.q850DisconnectCauseCode > 127
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_reason_headers_and_q850_cause_bounds",
+          reason:
+            "Spoofed RFC 3326 Reason headers (>0 synthetic ceiling) or ITU-T Q.850 disconnect cause code (<1 or >127 synthetic bounds) out of bounds; clamping spoofed headers to 0 and Q.850 cause code to [1, 127].",
+          clampedSpoofedReasonOrInvalidQ850Headers,
+          clampedQ850DisconnectCauseCode,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3326 untrusted Reason header stripping (0 spoofed headers) and [1, 127] Q.850 cause bounds verified.",
+        clampedSpoofedReasonOrInvalidQ850Headers,
+        clampedQ850DisconnectCauseCode,
+      };
+    }
+
+    export interface SipRfc8599PushNotificationWakeRaceAndProviderAllowlistContext {
+      unallowlistedPnProviderSsrfOrPremature480MobileDropDetected: boolean;
+      unallowlistedPushOrPremature480Calls: number;
+      pushWakeInviteHoldTimeoutMs: number;
+    }
+
+    export interface SipRfc8599PushNotificationWakeRaceAndProviderAllowlistDecision {
+      violated: boolean;
+      policyId: "P896-SIP-RFC8599-PUSH-NOTIFICATION-WAKE-RACE-AND-PROVIDER-ALLOWLIST-GUARD";
+      action:
+        | "enforce_rfc8599_provider_allowlist_and_hold_invite_for_wake"
+        | "clamp_unallowlisted_push_calls_and_hold_timeout_bounds"
+        | "allow";
+      reason: string;
+      clampedUnallowlistedPushOrPremature480Calls: number;
+      clampedPushWakeInviteHoldTimeoutMs: number;
+    }
+
+    export function evaluateSipRfc8599PushNotificationWakeRaceAndProviderAllowlistGate(
+      context: SipRfc8599PushNotificationWakeRaceAndProviderAllowlistContext,
+    ): SipRfc8599PushNotificationWakeRaceAndProviderAllowlistDecision {
+      const policyId =
+        "P896-SIP-RFC8599-PUSH-NOTIFICATION-WAKE-RACE-AND-PROVIDER-ALLOWLIST-GUARD" as const;
+      const clampedUnallowlistedPushOrPremature480Calls = 0;
+      const clampedPushWakeInviteHoldTimeoutMs = Math.min(
+        Math.max(context.pushWakeInviteHoldTimeoutMs, 4000),
+        12000,
+      );
+
+      if (context.unallowlistedPnProviderSsrfOrPremature480MobileDropDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc8599_provider_allowlist_and_hold_invite_for_wake",
+          reason:
+            "Enterprise SIP RFC 8599 Mobile Push-Wake Race & pn-provider Allowlist Policy Check: unlisted pn-provider SSRF attempt or premature 0ms 480 drop on suspended mobile endpoint detected; offline synthetic policy state machine enforcing APNs/FCM allowlist (SIP 555 on violation, 0 SSRF/premature-480 calls) and clamping push-wake INVITE hold timeout to [4000, 12000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Apple APNs / Google FCM HTTP/2 push RTT latency not_measured).",
+          clampedUnallowlistedPushOrPremature480Calls,
+          clampedPushWakeInviteHoldTimeoutMs,
+        };
+      }
+
+      if (
+        context.unallowlistedPushOrPremature480Calls > 0 ||
+        context.pushWakeInviteHoldTimeoutMs < 4000 ||
+        context.pushWakeInviteHoldTimeoutMs > 12000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unallowlisted_push_calls_and_hold_timeout_bounds",
+          reason:
+            "Unallowlisted RFC 8599 push / premature 480 calls (>0 synthetic ceiling) or push-wake INVITE hold timeout (<4000ms or >12000ms synthetic bounds) out of bounds; clamping failed calls to 0 and hold timeout to [4000, 12000]ms.",
+          clampedUnallowlistedPushOrPremature480Calls,
+          clampedPushWakeInviteHoldTimeoutMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 8599 pn-provider allowlist (0 SSRF/premature-480 calls) and [4000, 12000]ms push-wake INVITE hold bounds verified.",
+        clampedUnallowlistedPushOrPremature480Calls,
+        clampedPushWakeInviteHoldTimeoutMs,
+      };
+    }
+
 
 
 
