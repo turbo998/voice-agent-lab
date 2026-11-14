@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg90" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent90" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg90)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="408" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="248" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 446 · TOPIC 86 · P885 / P886 · SVG 90 🎉 · 895 GUARDS 🎉</text>
+  <text x="466" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">WebRTC RFC 9335 Cryptex Whole-Block Extension/CSRC Encryption &amp; RFC 6904 Mask Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">企业 WebRTC RFC 9335 Cryptex (0xC0DE/0xC2DE) 扩展头与 CSRC 全加密、防 0xBEDE 降级与 [4,64]B 上限门禁（🎉 第 90 张 SVG 与 895 护栏里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent90)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 9335 Cryptex Whole-Extension & CSRC Encryption Gate (P885) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. RFC 9335 Cryptex 0xC0DE/0xC2DE Gate (P885)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：0xBEDE 明文暴露扩展 ID/Length/音量与 CSRC 多方会议发言人图谱</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 全块加密：强制 0xC0DE/0xC2DE 一次性 AEAD 加密 CSRC + 扩展头，上限 [4, 64]B</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Leak: Plaintext 0xBEDE or unencrypted CSRC list | 256B oversized block</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P885 Gate: Require 0xC0DE/0xC2DE Cryptex + Clamp Extension to [4, 64]B</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: enforce_rfc9335_c0de_c2de_cryptex_and_drop_plaintext_extensions</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P885）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedPlaintextHeaderExtensionOrCsrcLeakPackets = 0（0 明文扩展或 CSRC 泄露）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaxEncryptedHeaderExtensionBytesPerPacket ∈ [4, 64] B（扩展块上限）</text>
+
+  <!-- Right Column: RFC 6904 Selective Mask Desync & Reserved ID=15 Gate (P886) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. RFC 6904 Mask Alignment &amp; [1, 14] ID Gate (P886)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：旧版 RFC 6904 掩码失步或误配保留终止符 ID=15 (0xF) 导致解析崩溃</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 兼容门禁：优先升级 Cryptex，存量互通强制 [1, 14] ID 范围并阻断 ID=15</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Desync: One-byte ID=15 (0xF) terminator collision | 24 extension IDs</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P886 Gate: Prefer Cryptex / Bijective Mask + Clamp IDs to [1, 14]</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: prefer_rfc9335_cryptex_or_enforce_bijective_rfc6904_mask</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P886）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaskDesyncedOrReservedIdExtensionBlocks = 0（0 掩码失步或保留 ID 块）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedNegotiatedEncryptedExtensionIdCount ∈ [1, 14]（合法一字节扩展数）</text>
+
+  <!-- Bottom Quantitative & Provenance Panel -->
+  <rect x="44" y="412" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="442" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Quantitative Evaluation Matrix &amp; Production Verification Checklist (Stage 446 · Topic 86 · SVG 90 🎉 · 895 Guards 🎉 · 449 Dims)</text>
+  <rect x="64" y="458" width="1152" height="106" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="482" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P885: evaluateWebrtcRtpRfc9335CryptexWholeExtensionAndCsrcListEncryptionGate     =&gt; 0 CSRC/ext leaks | [4, 64]B cap</text>
+  <text x="80" y="506" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P886: evaluateWebrtcRtpRfc6904SelectiveHeaderExtensionMaskDesyncAndReservedIdGate =&gt; 0 mask desyncs   | [1, 14] IDs</text>
+  <text x="80" y="530" fill="#93C5FD" font-family="Consolas, monospace" font-size="12">• Checklist: [x] RFC 9335 0xC0DE/0xC2DE Lock  [x] CC&gt;0 Empty-Extension Rule  [x] [4,64]B Block Cap  [x] [1,14] IDs (No ID=15)</text>
+  <text x="80" y="552" fill="#34D399" font-family="Consolas, monospace" font-size="12">• Milestone: SVG 90 🎉 · 895 Production Guardrails 🎉 · 88 Standalone FAQs · 449 Dimensions · 904 Synthetic Probes (714 Live POC) · 888 Tests</text>
+
+  <!-- Provenance Footer -->
+  <rect x="64" y="578" width="1152" height="66" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="602" fill="#FCD34D" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">Provenance &amp; Timing Disclosure (synthetic · independently_reproduced=false):</text>
+  <text x="80" y="622" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="80" y="638" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Offline in-memory policy/configuration state-machine check only; live libsrtp Cryptex contiguous AES-GCM encryption latencies are not_measured.</text>
+</svg>

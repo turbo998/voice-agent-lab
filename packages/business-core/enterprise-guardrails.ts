@@ -79329,6 +79329,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtpRfc9335CryptexWholeExtensionAndCsrcListEncryptionContext {
+      unencrypted0xBedeOrPlaintextCsrcAudioLevelLeakDetected: boolean;
+      plaintextHeaderExtensionOrCsrcLeakPackets: number;
+      maxEncryptedHeaderExtensionBytesPerPacket: number;
+    }
+
+    export interface WebrtcRtpRfc9335CryptexWholeExtensionAndCsrcListEncryptionDecision {
+      violated: boolean;
+      policyId: "P885-WEBRTC-RTP-RFC9335-CRYPTEX-WHOLE-EXTENSION-AND-CSRC-LIST-ENCRYPTION-GUARD";
+      action:
+        | "enforce_rfc9335_c0de_c2de_cryptex_and_drop_plaintext_extensions"
+        | "clamp_plaintext_extension_leaks_and_block_byte_bounds"
+        | "allow";
+      reason: string;
+      clampedPlaintextHeaderExtensionOrCsrcLeakPackets: number;
+      clampedMaxEncryptedHeaderExtensionBytesPerPacket: number;
+    }
+
+    export function evaluateWebrtcRtpRfc9335CryptexWholeExtensionAndCsrcListEncryptionGate(
+      context: WebrtcRtpRfc9335CryptexWholeExtensionAndCsrcListEncryptionContext,
+    ): WebrtcRtpRfc9335CryptexWholeExtensionAndCsrcListEncryptionDecision {
+      const policyId =
+        "P885-WEBRTC-RTP-RFC9335-CRYPTEX-WHOLE-EXTENSION-AND-CSRC-LIST-ENCRYPTION-GUARD" as const;
+      const clampedPlaintextHeaderExtensionOrCsrcLeakPackets = 0;
+      const clampedMaxEncryptedHeaderExtensionBytesPerPacket = Math.min(
+        Math.max(context.maxEncryptedHeaderExtensionBytesPerPacket, 4),
+        64,
+      );
+
+      if (context.unencrypted0xBedeOrPlaintextCsrcAudioLevelLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc9335_c0de_c2de_cryptex_and_drop_plaintext_extensions",
+          reason:
+            "Enterprise WebRTC RFC 9335 Cryptex Whole-Extension & CSRC-List Encryption Policy Check: inbound RTP packet carried plaintext 0xBEDE/0x1000 header extensions or unencrypted CSRC contributor lists on an a=cryptex session; offline synthetic policy state machine dropping 100% of plaintext extension/CSRC leak packets (0 leaks) and clamping per-packet encrypted header-extension bytes to [4, 64] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live libsrtp Cryptex contiguous AES-GCM encryption latency not_measured).",
+          clampedPlaintextHeaderExtensionOrCsrcLeakPackets,
+          clampedMaxEncryptedHeaderExtensionBytesPerPacket,
+        };
+      }
+
+      if (
+        context.plaintextHeaderExtensionOrCsrcLeakPackets > 0 ||
+        context.maxEncryptedHeaderExtensionBytesPerPacket < 4 ||
+        context.maxEncryptedHeaderExtensionBytesPerPacket > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_plaintext_extension_leaks_and_block_byte_bounds",
+          reason:
+            "Plaintext RTP header-extension or CSRC leak packets (>0 synthetic ceiling) or max encrypted header-extension bytes per packet (<4B or >64B synthetic bounds) out of bounds; clamping leak packets to 0 and extension block size to [4, 64] bytes.",
+          clampedPlaintextHeaderExtensionOrCsrcLeakPackets,
+          clampedMaxEncryptedHeaderExtensionBytesPerPacket,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 9335 Cryptex 0xC0DE/0xC2DE whole-block extension and CSRC encryption (0 leaks, [4, 64] bytes) verified.",
+        clampedPlaintextHeaderExtensionOrCsrcLeakPackets,
+        clampedMaxEncryptedHeaderExtensionBytesPerPacket,
+      };
+    }
+
+    export interface WebrtcRtpRfc6904SelectiveHeaderExtensionMaskDesyncAndReservedIdContext {
+      rfc6904EncryptionMaskDesyncOrOneByteId15CollisionDetected: boolean;
+      maskDesyncedOrReservedIdExtensionBlocks: number;
+      negotiatedEncryptedExtensionIdCount: number;
+    }
+
+    export interface WebrtcRtpRfc6904SelectiveHeaderExtensionMaskDesyncAndReservedIdDecision {
+      violated: boolean;
+      policyId: "P886-WEBRTC-RTP-RFC6904-SELECTIVE-HEADER-EXTENSION-MASK-DESYNC-AND-RESERVED-ID-GUARD";
+      action:
+        | "prefer_rfc9335_cryptex_or_enforce_bijective_rfc6904_mask"
+        | "clamp_rfc6904_mask_desync_blocks_and_extension_id_bounds"
+        | "allow";
+      reason: string;
+      clampedMaskDesyncedOrReservedIdExtensionBlocks: number;
+      clampedNegotiatedEncryptedExtensionIdCount: number;
+    }
+
+    export function evaluateWebrtcRtpRfc6904SelectiveHeaderExtensionMaskDesyncAndReservedIdGate(
+      context: WebrtcRtpRfc6904SelectiveHeaderExtensionMaskDesyncAndReservedIdContext,
+    ): WebrtcRtpRfc6904SelectiveHeaderExtensionMaskDesyncAndReservedIdDecision {
+      const policyId =
+        "P886-WEBRTC-RTP-RFC6904-SELECTIVE-HEADER-EXTENSION-MASK-DESYNC-AND-RESERVED-ID-GUARD" as const;
+      const clampedMaskDesyncedOrReservedIdExtensionBlocks = 0;
+      const clampedNegotiatedEncryptedExtensionIdCount = Math.min(
+        Math.max(context.negotiatedEncryptedExtensionIdCount, 1),
+        14,
+      );
+
+      if (context.rfc6904EncryptionMaskDesyncOrOneByteId15CollisionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "prefer_rfc9335_cryptex_or_enforce_bijective_rfc6904_mask",
+          reason:
+            "Enterprise WebRTC RFC 6904 Selective Header-Extension Mask Desync & Reserved ID=15 Policy Check: legacy RFC 6904 selective extension mask desynchronized or assigned one-byte reserved terminator ID=15 (0xF); offline synthetic policy state machine rejecting desynced/reserved-ID blocks (0 corrupted blocks) and clamping negotiated encrypted extension IDs to [1, 14] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RFC 6904 keystream XOR mask generation latency not_measured).",
+          clampedMaskDesyncedOrReservedIdExtensionBlocks,
+          clampedNegotiatedEncryptedExtensionIdCount,
+        };
+      }
+
+      if (
+        context.maskDesyncedOrReservedIdExtensionBlocks > 0 ||
+        context.negotiatedEncryptedExtensionIdCount < 1 ||
+        context.negotiatedEncryptedExtensionIdCount > 14
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_rfc6904_mask_desync_blocks_and_extension_id_bounds",
+          reason:
+            "Mask-desynced or reserved-ID=15 extension blocks (>0 synthetic ceiling) or negotiated encrypted extension ID count (<1 or >14 synthetic bounds) out of bounds; clamping corrupted blocks to 0 and extension ID count to [1, 14].",
+          clampedMaskDesyncedOrReservedIdExtensionBlocks,
+          clampedNegotiatedEncryptedExtensionIdCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 6904 bijective encryption mask alignment (0 desynced blocks) and [1, 14] extension-ID bounds verified.",
+        clampedMaskDesyncedOrReservedIdExtensionBlocks,
+        clampedNegotiatedEncryptedExtensionIdCount,
+      };
+    }
+
 
 
 

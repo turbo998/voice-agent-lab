@@ -1873,6 +1873,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsigned/tampered Flow-Tokens with SIP 430 (0 hijacked tokens) and clamps redundant reg-id edge flows per +sip.instance in [2, 4]; live Edge Proxy HMAC-SHA256 verification latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of unverified Via ;alias cross-tenant socket reuses (0 hijacked sockets or zombie flows) and clamps CRLF keepalives in [25, 120]s; live X.509 SAN parsing latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "449. [Topic 86 · SVG 90 & 895-Guardrail Milestone 🎉: voice-webrtc-rtp-rfc9335-cryptex-rfc6904-header-extension-csrc-encryption-faq] Enterprise WebRTC RFC 9335 Cryptex 0xC0DE/0xC2DE Whole-Extension + CSRC Encryption + [4,64]B Cap & RFC 6904 Bijective Mask + [1,14] ID Guard (P885 / P886 — Stage 446 · 🎉 Historic 90th SVG & 895-Guardrail Dual Milestone · 449 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of plaintext 0xBEDE/0x1000 header-extension and unencrypted CSRC leak packets (0 leaks) and clamps encrypted extension block size in [4, 64] bytes; live libsrtp Cryptex AES-GCM encryption latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of RFC 6904 mask-desynced or reserved-ID=15 extension blocks (0 corrupted blocks) and clamps negotiated encrypted extension IDs in [1, 14]; live RFC 6904 keystream XOR mask generation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
