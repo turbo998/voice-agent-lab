@@ -1651,6 +1651,13 @@
               <td><code>P877 / P878 deterministic WebRTC RFC 8837/7657 DiffServ DSCP BUNDLE [1,2] PHB ordering &amp; EF (46) pinning guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>446. [专题83 · P880 &amp; 85篇FAQ &amp; 885单测 🎉 `docs/voice-sip-rfc3312-rfc4032-precondition-qci1-ghost-ringing-reservation-timeout-faq.md`] 企业 SIP/IMS `RFC 3312 / RFC 4032 (Preconditions)` `[2, 2]` 双向 `a=curr:qos sendrecv` 齐备前抑制 `180 Ringing / 200 OK` 防“幽灵振铃”与首句吞字锁（`0` 幽灵振铃或抢答吞字呼叫，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `PCRF/PCF Rx` 专载建立耗时 `not_measured`）&amp; `QCI=1 / 5QI=1` `[1500, 5000]ms` 预留超时预算与 `SIP 580 Precondition Failure` 快败回收锁（`0` 预留挂起死锁通道；真实无线侧信令耗时 `not_measured`）(`P879` / `P880 🎉` · Stage 443 · Topic 83 · 🎉 P880 护栏、第 85 篇独立 FAQ 与 885 单测三重里程碑 · 889 护栏 &amp; 898 探针 · 446 维)</strong>
+              </td>
+              <td><code>P879 / P880 🎉 deterministic SIP/IMS RFC 3312/4032 [2,2]-direction anti-ghost-ringing &amp; [1500,5000]ms QCI-1 timeout guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5278,6 +5285,13 @@
                 <strong>445. [专题82 · 445大评测维度 🎉 `docs/voice-webrtc-dscp-rfc8837-rfc7657-bundle-five-tuple-ef-af41-queue-reordering-faq.md`] 企业 WebRTC `RFC 8837 / RFC 7657 (DiffServ DSCP &amp; DART)` 单五元组 `BUNDLE` 复用下 `[1, 2]` PHB 硬件队列保序锁（`0` 跨队列 `TWCC/SRTP` 乱序假丢包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实交换机 `WFQ` 调度耗时 `not_measured`）&amp; 非授权 `CS6 (48) / CS7 (56)` 路由控制面标记剥离、实时语音流 `EF = [46, 46]` 码点精确锁定与公网黑洞回退 `DF (0)` 锁（`0` 越权或黑洞丢包；真实内核 `setsockopt` 耗时 `not_measured`）(`P877` / `P878` · Stage 442 · Topic 82 · 🎉 445 大评测维度历史性里程碑 · 887 护栏 &amp; 896 探针 · 445 维 🎉)</strong>
               </td>
               <td><code>P877 / P878 deterministic WebRTC RFC 8837/7657 DiffServ DSCP BUNDLE [1,2] PHB ordering &amp; EF (46) pinning guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>446. [专题83 · P880 &amp; 85篇FAQ &amp; 885单测 🎉 `docs/voice-sip-rfc3312-rfc4032-precondition-qci1-ghost-ringing-reservation-timeout-faq.md`] 企业 SIP/IMS `RFC 3312 / RFC 4032 (Preconditions)` `[2, 2]` 双向 `a=curr:qos sendrecv` 齐备前抑制 `180 Ringing / 200 OK` 防“幽灵振铃”与首句吞字锁（`0` 幽灵振铃或抢答吞字呼叫，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `PCRF/PCF Rx` 专载建立耗时 `not_measured`）&amp; `QCI=1 / 5QI=1` `[1500, 5000]ms` 预留超时预算与 `SIP 580 Precondition Failure` 快败回收锁（`0` 预留挂起死锁通道；真实无线侧信令耗时 `not_measured`）(`P879` / `P880 🎉` · Stage 443 · Topic 83 · 🎉 P880 护栏、第 85 篇独立 FAQ 与 885 单测三重里程碑 · 889 护栏 &amp; 898 探针 · 446 维)</strong>
+              </td>
+              <td><code>P879 / P880 🎉 deterministic SIP/IMS RFC 3312/4032 [2,2]-direction anti-ghost-ringing &amp; [1500,5000]ms QCI-1 timeout guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

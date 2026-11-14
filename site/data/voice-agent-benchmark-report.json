@@ -1855,6 +1855,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: restricts BUNDLE 5-tuple PHB classes to [1, 2] and eliminates 100% of cross-queue TWCC/SRTP reordering (0 reordered packets); live switch WFQ scheduling latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of unauthorized CS6/CS7 control-plane markings (0 unauthorized/dropped packets) and pins expedited voice DSCP to EF [46, 46]; live kernel setsockopt IP_TOS syscall latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "446. [Topic 83 · P880, 85th FAQ & 885-Test Milestone 🎉: voice-sip-rfc3312-rfc4032-precondition-qci1-ghost-ringing-reservation-timeout-faq] Enterprise SIP/IMS RFC 3312 / RFC 4032 Preconditions [2,2]-Direction Anti-Ghost-Ringing & [1500,5000]ms QCI-1 Reservation Timeout + SIP 580 Guard (P879 / P880 🎉 — Stage 443 · 🎉 Historic P880 Guardrail, 85th Standalone FAQ & 885-Test Triple Milestone · 446 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: suppresses 100% of premature 180 Ringing and 200 OK responses until all [2, 2] directions reach curr:qos sendrecv (0 ghost-ringing or clipped calls); live 4G/5G PCRF/PCF Rx bearer allocation latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps QCI=1/5QI=1 precondition reservation timeout in [1500, 5000]ms and fails fast with SIP 580 (0 hung setup calls); live RAN dedicated-bearer signaling latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

@@ -78925,6 +78925,138 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3312Rfc4032PreconditionUnmetAlertingGhostRingingContext {
+      premature180RingingBeforeCurrQosSendrecvMetDetected: boolean;
+      ghostRingingOrClippedAnswerCalls: number;
+      requiredPreconditionConfirmDirections: number;
+    }
+
+    export interface SipRfc3312Rfc4032PreconditionUnmetAlertingGhostRingingDecision {
+      violated: boolean;
+      policyId: "P879-SIP-RFC3312-RFC4032-PRECONDITION-UNMET-ALERTING-GHOST-RINGING-GUARD";
+      action:
+        | "suppress_180_ringing_until_curr_qos_sendrecv_satisfied"
+        | "clamp_ghost_ringing_calls_and_confirm_direction_bounds"
+        | "allow";
+      reason: string;
+      clampedGhostRingingOrClippedAnswerCalls: number;
+      clampedRequiredPreconditionConfirmDirections: number;
+    }
+
+    export function evaluateSipRfc3312Rfc4032PreconditionUnmetAlertingGhostRingingGate(
+      context: SipRfc3312Rfc4032PreconditionUnmetAlertingGhostRingingContext,
+    ): SipRfc3312Rfc4032PreconditionUnmetAlertingGhostRingingDecision {
+      const policyId =
+        "P879-SIP-RFC3312-RFC4032-PRECONDITION-UNMET-ALERTING-GHOST-RINGING-GUARD" as const;
+      const clampedGhostRingingOrClippedAnswerCalls = 0;
+      const clampedRequiredPreconditionConfirmDirections = 2;
+
+      if (context.premature180RingingBeforeCurrQosSendrecvMetDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "suppress_180_ringing_until_curr_qos_sendrecv_satisfied",
+          reason:
+            "Enterprise SIP/IMS RFC 3312 / RFC 4032 Precondition Unmet Alerting Ghost-Ringing Policy Check: gateway attempted to emit 180 Ringing or 200 OK while a=curr:qos local/remote was still none; offline synthetic policy state machine suppressing alerting until all [2, 2] directions reach sendrecv (0 ghost-ringing or clipped-greeting calls) (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live 4G/5G PCRF/PCF Rx bearer allocation latency not_measured).",
+          clampedGhostRingingOrClippedAnswerCalls,
+          clampedRequiredPreconditionConfirmDirections,
+        };
+      }
+
+      if (
+        context.ghostRingingOrClippedAnswerCalls > 0 ||
+        context.requiredPreconditionConfirmDirections !== 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ghost_ringing_calls_and_confirm_direction_bounds",
+          reason:
+            "Ghost-ringing or clipped-answer calls (>0 synthetic ceiling) or required precondition confirm directions (!==2 synthetic bidirectional bound) out of bounds; clamping violations to 0 and required directions to 2.",
+          clampedGhostRingingOrClippedAnswerCalls,
+          clampedRequiredPreconditionConfirmDirections,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3312 / RFC 4032 [2, 2]-direction curr:qos sendrecv alerting gate (0 ghost-ringing/clipped calls) verified.",
+        clampedGhostRingingOrClippedAnswerCalls,
+        clampedRequiredPreconditionConfirmDirections,
+      };
+    }
+
+    export interface SipRfc3312VolteQci1ReservationTimeoutFallbackAnd580PreconditionFailureContext {
+      indefinitePreconditionReservationHangOrUnhandled580Detected: boolean;
+      hungPreconditionSetupCalls: number;
+      preconditionReservationTimeoutMs: number;
+    }
+
+    export interface SipRfc3312VolteQci1ReservationTimeoutFallbackAnd580PreconditionFailureDecision {
+      violated: boolean;
+      policyId: "P880-SIP-RFC3312-VOLTE-QCI1-RESERVATION-TIMEOUT-FALLBACK-AND-580-PRECONDITION-FAILURE-GUARD";
+      action:
+        | "downgrade_to_best_effort_or_fail_fast_with_sip_580_within_budget"
+        | "clamp_hung_precondition_calls_and_reservation_timeout_bounds"
+        | "allow";
+      reason: string;
+      clampedHungPreconditionSetupCalls: number;
+      clampedPreconditionReservationTimeoutMs: number;
+    }
+
+    export function evaluateSipRfc3312VolteQci1ReservationTimeoutFallbackAnd580PreconditionFailureGate(
+      context: SipRfc3312VolteQci1ReservationTimeoutFallbackAnd580PreconditionFailureContext,
+    ): SipRfc3312VolteQci1ReservationTimeoutFallbackAnd580PreconditionFailureDecision {
+      const policyId =
+        "P880-SIP-RFC3312-VOLTE-QCI1-RESERVATION-TIMEOUT-FALLBACK-AND-580-PRECONDITION-FAILURE-GUARD" as const;
+      const clampedHungPreconditionSetupCalls = 0;
+      const clampedPreconditionReservationTimeoutMs = Math.min(
+        Math.max(context.preconditionReservationTimeoutMs, 1500),
+        5000,
+      );
+
+      if (context.indefinitePreconditionReservationHangOrUnhandled580Detected) {
+        return {
+          violated: true,
+          policyId,
+          action: "downgrade_to_best_effort_or_fail_fast_with_sip_580_within_budget",
+          reason:
+            "Enterprise SIP/IMS RFC 3312 VoLTE/VoNR QCI=1 Reservation Timeout & SIP 580 Precondition Failure Policy Check: call stalled in 183 Session Progress waiting for a lost confirming UPDATE without a bounded reservation timer; offline synthetic policy state machine failing fast with SIP 580 or downgrading optional QoS (0 hung setup calls) and clamping reservation timeout to [1500, 5000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RAN dedicated-bearer signaling latency not_measured).",
+          clampedHungPreconditionSetupCalls,
+          clampedPreconditionReservationTimeoutMs,
+        };
+      }
+
+      if (
+        context.hungPreconditionSetupCalls > 0 ||
+        context.preconditionReservationTimeoutMs < 1500 ||
+        context.preconditionReservationTimeoutMs > 5000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_hung_precondition_calls_and_reservation_timeout_bounds",
+          reason:
+            "Hung precondition setup calls (>0 synthetic ceiling) or precondition reservation timeout (<1500ms or >5000ms synthetic bounds) out of bounds; clamping hung calls to 0 and timeout to [1500, 5000]ms.",
+          clampedHungPreconditionSetupCalls,
+          clampedPreconditionReservationTimeoutMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3312 QCI=1 reservation timeout ([1500, 5000]ms) and SIP 580 fail-fast gate (0 hung setup calls) verified.",
+        clampedHungPreconditionSetupCalls,
+        clampedPreconditionReservationTimeoutMs,
+      };
+    }
+
 
 
 
