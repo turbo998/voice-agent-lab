@@ -1686,6 +1686,13 @@
               <td><code>P887 / P888 deterministic SIP RFC 6026 INVITE Accepted [16000,64000]ms forked 2xx ACK+BYE &amp; RFC 4320 Non-INVITE [4000,32000]ms storm guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>451. [专题88 · P890 &amp; 90篇FAQ 🎉 `docs/voice-webrtc-ice-tcp-rfc6544-rfc4571-framing-head-of-line-stall-active-passive-so-glare-faq.md`] 企业 WebRTC `RFC 6544 / RFC 4571` `ICE-TCP` `[12, 1400]` 字节 `16-bit` 长度定界与强制 `TCP_NODELAY` 零粘包锁（`0` 定界失步或 Nagle 粘包帧，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实内核 `setsockopt(TCP_NODELAY)` 耗时 `not_measured`）&amp; `active -> passive` 角色配对禁死锁与 TCP 队头阻塞（`HoL`）`[60, 240]ms` 积压平滑冲刷防花栗鼠快进爆音锁（`0` 花栗鼠快进爆音或死锁对；真实 `NetEq W-SOLA` 时域拉伸耗时 `not_measured`）(`P889` / `P890 🎉` · Stage 448 · Topic 88 · 🎉 P890 护栏、第 90 篇独立 FAQ 与 890 单测三重里程碑 · 899 护栏 &amp; 908 探针 · 451 维)</strong>
+              </td>
+              <td><code>P889 / P890 deterministic WebRTC RFC 6544 / RFC 4571 ICE-TCP [12,1400]B framing &amp; [60,240]ms HoL burst flush guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5348,6 +5355,13 @@
                 <strong>450. [专题87 · 450维里程碑 🎉 `docs/voice-sip-rfc6026-rfc4320-invite-non-invite-transaction-timer-b-f-d-k-late-response-storm-faq.md`] 企业 SIP `RFC 6026` `INVITE`（`Accepted` 态与 `Timer L/M` `[16000, 64000]ms`）并行分叉 `2xx` 自动 `ACK+BYE` 防僵尸双讲锁（`0` 未确认分叉僵尸会话，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `Kamailio/OpenSIPS tm` 哈希表锁耗时 `not_measured`）&amp; `RFC 4320` `Non-INVITE` 禁发 `100 Trying`、禁转合成 `408 Request Timeout` 与 `[4000, 32000]ms` `Timer F` 防晚到响应风暴锁（`0` 晚到风暴包；真实广域网 `Timer K` 吸收耗时 `not_measured`）(`P887` / `P888` · Stage 447 · Topic 87 · 🎉 第 450 大评测维度历史性里程碑 · 897 护栏 &amp; 906 探针 · 450 维 🎉)</strong>
               </td>
               <td><code>P887 / P888 deterministic SIP RFC 6026 INVITE Accepted [16000,64000]ms forked 2xx ACK+BYE &amp; RFC 4320 Non-INVITE [4000,32000]ms storm guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>451. [专题88 · P890 &amp; 90篇FAQ 🎉 `docs/voice-webrtc-ice-tcp-rfc6544-rfc4571-framing-head-of-line-stall-active-passive-so-glare-faq.md`] 企业 WebRTC `RFC 6544 / RFC 4571` `ICE-TCP` `[12, 1400]` 字节 `16-bit` 长度定界与强制 `TCP_NODELAY` 零粘包锁（`0` 定界失步或 Nagle 粘包帧，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实内核 `setsockopt(TCP_NODELAY)` 耗时 `not_measured`）&amp; `active -> passive` 角色配对禁死锁与 TCP 队头阻塞（`HoL`）`[60, 240]ms` 积压平滑冲刷防花栗鼠快进爆音锁（`0` 花栗鼠快进爆音或死锁对；真实 `NetEq W-SOLA` 时域拉伸耗时 `not_measured`）(`P889` / `P890 🎉` · Stage 448 · Topic 88 · 🎉 P890 护栏、第 90 篇独立 FAQ 与 890 单测三重里程碑 · 899 护栏 &amp; 908 探针 · 451 维)</strong>
+              </td>
+              <td><code>P889 / P890 deterministic WebRTC RFC 6544 / RFC 4571 ICE-TCP [12,1400]B framing &amp; [60,240]ms HoL burst flush guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

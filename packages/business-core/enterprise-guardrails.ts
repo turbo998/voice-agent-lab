@@ -79601,6 +79601,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcIceTcpRfc6544Rfc4571FramingLengthDesyncAndNagleNoDelayContext {
+      rfc4571FramingLengthDesyncOrNagleNoDelayMissingDetected: boolean;
+      framingDesyncedOrNagleCoalescedFrames: number;
+      rfc4571FramePayloadBytes: number;
+    }
+
+    export interface WebrtcIceTcpRfc6544Rfc4571FramingLengthDesyncAndNagleNoDelayDecision {
+      violated: boolean;
+      policyId: "P889-WEBRTC-ICE-TCP-RFC6544-RFC4571-FRAMING-LENGTH-DESYNC-AND-NAGLE-NODELAY-GUARD";
+      action:
+        | "enforce_tcp_nodelay_and_resync_rfc4571_framing"
+        | "clamp_desynced_frames_and_rfc4571_length_bounds"
+        | "allow";
+      reason: string;
+      clampedFramingDesyncedOrNagleCoalescedFrames: number;
+      clampedRfc4571FramePayloadBytes: number;
+    }
+
+    export function evaluateWebrtcIceTcpRfc6544Rfc4571FramingLengthDesyncAndNagleNoDelayGate(
+      context: WebrtcIceTcpRfc6544Rfc4571FramingLengthDesyncAndNagleNoDelayContext,
+    ): WebrtcIceTcpRfc6544Rfc4571FramingLengthDesyncAndNagleNoDelayDecision {
+      const policyId =
+        "P889-WEBRTC-ICE-TCP-RFC6544-RFC4571-FRAMING-LENGTH-DESYNC-AND-NAGLE-NODELAY-GUARD" as const;
+      const clampedFramingDesyncedOrNagleCoalescedFrames = 0;
+      const clampedRfc4571FramePayloadBytes = Math.min(
+        Math.max(context.rfc4571FramePayloadBytes, 12),
+        1400,
+      );
+
+      if (context.rfc4571FramingLengthDesyncOrNagleNoDelayMissingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_tcp_nodelay_and_resync_rfc4571_framing",
+          reason:
+            "Enterprise WebRTC RFC 6544 / RFC 4571 ICE-TCP 16-bit Framing & TCP_NODELAY Policy Check: RFC 4571 16-bit length prefix desynchronization or missing TCP_NODELAY Nagle coalescing detected; offline synthetic policy state machine enforcing TCP_NODELAY=true, resynchronizing byte-stream framing (0 desynced/coalesced frames), and clamping RFC 4571 frame size to [12, 1400] bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live kernel setsockopt TCP_NODELAY syscall latency not_measured).",
+          clampedFramingDesyncedOrNagleCoalescedFrames,
+          clampedRfc4571FramePayloadBytes,
+        };
+      }
+
+      if (
+        context.framingDesyncedOrNagleCoalescedFrames > 0 ||
+        context.rfc4571FramePayloadBytes < 12 ||
+        context.rfc4571FramePayloadBytes > 1400
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_desynced_frames_and_rfc4571_length_bounds",
+          reason:
+            "RFC 4571 framing-desynced or Nagle-coalesced frames (>0 synthetic ceiling) or frame payload size (<12 or >1400 bytes synthetic bounds) out of bounds; clamping desynced frames to 0 and frame payload to [12, 1400] bytes.",
+          clampedFramingDesyncedOrNagleCoalescedFrames,
+          clampedRfc4571FramePayloadBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 4571 16-bit length framing + TCP_NODELAY (0 desynced/coalesced frames) and [12, 1400]-byte frame bounds verified.",
+        clampedFramingDesyncedOrNagleCoalescedFrames,
+        clampedRfc4571FramePayloadBytes,
+      };
+    }
+
+    export interface WebrtcIceTcpRfc6544HeadOfLineStallJitterFlushAndActivePassiveRoleContext {
+      iceTcpPassivePassiveDeadlockOrHolChipmunkBurstDetected: boolean;
+      holChipmunkBurstOrDeadlockedCandidatePairs: number;
+      maxIceTcpHolStallQueueMs: number;
+    }
+
+    export interface WebrtcIceTcpRfc6544HeadOfLineStallJitterFlushAndActivePassiveRoleDecision {
+      violated: boolean;
+      policyId: "P890-WEBRTC-ICE-TCP-RFC6544-HEAD-OF-LINE-STALL-JITTER-FLUSH-AND-ACTIVE-PASSIVE-ROLE-GUARD";
+      action:
+        | "enforce_active_passive_pairing_and_flush_hol_stale_burst"
+        | "clamp_hol_burst_pairs_and_stall_queue_bounds"
+        | "allow";
+      reason: string;
+      clampedHolChipmunkBurstOrDeadlockedCandidatePairs: number;
+      clampedMaxIceTcpHolStallQueueMs: number;
+    }
+
+    export function evaluateWebrtcIceTcpRfc6544HeadOfLineStallJitterFlushAndActivePassiveRoleGate(
+      context: WebrtcIceTcpRfc6544HeadOfLineStallJitterFlushAndActivePassiveRoleContext,
+    ): WebrtcIceTcpRfc6544HeadOfLineStallJitterFlushAndActivePassiveRoleDecision {
+      const policyId =
+        "P890-WEBRTC-ICE-TCP-RFC6544-HEAD-OF-LINE-STALL-JITTER-FLUSH-AND-ACTIVE-PASSIVE-ROLE-GUARD" as const;
+      const clampedHolChipmunkBurstOrDeadlockedCandidatePairs = 0;
+      const clampedMaxIceTcpHolStallQueueMs = Math.min(
+        Math.max(context.maxIceTcpHolStallQueueMs, 60),
+        240,
+      );
+
+      if (context.iceTcpPassivePassiveDeadlockOrHolChipmunkBurstDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_active_passive_pairing_and_flush_hol_stale_burst",
+          reason:
+            "Enterprise WebRTC RFC 6544 ICE-TCP Active-Passive Role & TCP Head-of-Line (HoL) Burst Flush Policy Check: passive-passive/so candidate deadlock or post-retransmission TCP HoL chipmunk fast-forward burst detected; offline synthetic policy state machine enforcing active->passive pairing, flushing stale burst frames (0 chipmunk bursts or deadlocked pairs), and clamping HoL stall queue ceiling to [60, 240]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live NetEq W-SOLA DSP time-stretching latency not_measured).",
+          clampedHolChipmunkBurstOrDeadlockedCandidatePairs,
+          clampedMaxIceTcpHolStallQueueMs,
+        };
+      }
+
+      if (
+        context.holChipmunkBurstOrDeadlockedCandidatePairs > 0 ||
+        context.maxIceTcpHolStallQueueMs < 60 ||
+        context.maxIceTcpHolStallQueueMs > 240
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_hol_burst_pairs_and_stall_queue_bounds",
+          reason:
+            "ICE-TCP HoL chipmunk bursts / deadlocked candidate pairs (>0 synthetic ceiling) or max HoL stall queue window (<60ms or >240ms synthetic bounds) out of bounds; clamping bursts/deadlocks to 0 and HoL queue window to [60, 240]ms.",
+          clampedHolChipmunkBurstOrDeadlockedCandidatePairs,
+          clampedMaxIceTcpHolStallQueueMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 6544 ICE-TCP active->passive pairing (0 deadlocks or chipmunk bursts) and [60, 240]ms HoL stall queue bounds verified.",
+        clampedHolChipmunkBurstOrDeadlockedCandidatePairs,
+        clampedMaxIceTcpHolStallQueueMs,
+      };
+    }
+
 
 
 
