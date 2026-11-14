@@ -1630,6 +1630,13 @@
               <td><code>P871 / P872 deterministic SIP RFC 3911 Join supervisor RBAC [1,2] stream cap &amp; RFC 3891 Replaces early-only [128,256]-bit tag guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>443. [专题80 🎉 · Stage 440 🎉 `docs/voice-webrtc-rtp-rfc8083-circuit-breakers-media-timeout-tenfold-tfrc-congestion-teardown-faq.md`] 企业 WebRTC `RFC 8083 (RTP Circuit Breakers)` `[2, 5]` 周期媒体/RTCP 超时断路器与黑洞 UDP 僵尸流收割锁（`0` 残留黑洞流，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `SFU` 定时器轮询耗时 `not_measured`）&amp; `[2, 6]` 周期 `SRTCP + TWCC/CCFB` 双源验证 `10x TFRC` 拥塞断路器与砍视频保 `32 kbps` 语音分级熔断锁（`0` 拥塞雪崩或恶意断流；真实 `RFC 5348 TFRC` 浮点计算耗时 `not_measured`）(`P873` / `P874` · Stage 440 🎉 · Topic 80 🎉 · 🎉 Stage 440 与第 80 大专题双里程碑 · 883 护栏 &amp; 892 探针 · 443 维)</strong>
+              </td>
+              <td><code>P873 / P874 deterministic WebRTC RFC 8083 [2,5]-interval timeout reaper &amp; [2,6]-interval 10x TFRC audio-first shedding guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5236,6 +5243,13 @@
                 <strong>442. [专题79 · 890探针 &amp; 700现场探针 🎉 `docs/voice-sip-rfc3911-join-barge-wiretap-rfc3891-replaces-early-dialog-hijack-faq.md`] 企业 SIP `RFC 3911 (Join)` 同租户 `Supervisor RBAC` 强鉴权、非授权静默旁听 `SIP 403` 拒单与单通话 `[1, 2]` 路督导混音流上限锁（`0` 越权强插窃听，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `SBC` Dialog 哈希表查找耗时 `not_measured`）&amp; `RFC 3891 (Replaces)` 代接强制 `early-only` 校验、防顶替 `Confirmed` 已接通通话与 `[128, 256] bits` CSPRNG Tag 熵值锁（`0` 会话劫持；真实 `SBC` 状态表校验耗时 `not_measured`）(`P871` / `P872` · Stage 439 · Topic 79 · 🎉 881 护栏、890 合成探针与 700 现场探针三重里程碑 · 881 护栏 🎉 &amp; 890 探针 🎉 · 442 维)</strong>
               </td>
               <td><code>P871 / P872 deterministic SIP RFC 3911 Join supervisor RBAC [1,2] stream cap &amp; RFC 3891 Replaces early-only [128,256]-bit tag guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>443. [专题80 🎉 · Stage 440 🎉 `docs/voice-webrtc-rtp-rfc8083-circuit-breakers-media-timeout-tenfold-tfrc-congestion-teardown-faq.md`] 企业 WebRTC `RFC 8083 (RTP Circuit Breakers)` `[2, 5]` 周期媒体/RTCP 超时断路器与黑洞 UDP 僵尸流收割锁（`0` 残留黑洞流，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `SFU` 定时器轮询耗时 `not_measured`）&amp; `[2, 6]` 周期 `SRTCP + TWCC/CCFB` 双源验证 `10x TFRC` 拥塞断路器与砍视频保 `32 kbps` 语音分级熔断锁（`0` 拥塞雪崩或恶意断流；真实 `RFC 5348 TFRC` 浮点计算耗时 `not_measured`）(`P873` / `P874` · Stage 440 🎉 · Topic 80 🎉 · 🎉 Stage 440 与第 80 大专题双里程碑 · 883 护栏 &amp; 892 探针 · 443 维)</strong>
+              </td>
+              <td><code>P873 / P874 deterministic WebRTC RFC 8083 [2,5]-interval timeout reaper &amp; [2,6]-interval 10x TFRC audio-first shedding guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

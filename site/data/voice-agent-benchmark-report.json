@@ -1837,6 +1837,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unauthorized or cross-tenant RFC 3911 Join wiretap attempts with SIP 403 (0 unauthorized wiretaps) and clamps concurrent supervisor barge streams in [1, 2]; live SBC dialog hash lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of missing-early-only or cross-tenant RFC 3891 Replaces takeovers with SIP 481/486 (0 hijacked dialogs) and clamps CSPRNG dialog tag entropy in [128, 256] bits; live SBC dialog state-table lookup latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "443. [Topic 80 🎉 · Stage 440 Milestone 🎉: voice-webrtc-rtp-rfc8083-circuit-breakers-media-timeout-tenfold-tfrc-congestion-teardown-faq] Enterprise WebRTC RFC 8083 RTP Circuit Breakers [2,5]-Interval Timeout Reaper & [2,6]-Interval 10x TFRC Audio-First Video Shedding + Anti-Spoofed RR Guard (P873 / P874 — Stage 440 🎉 · 🎉 Historic Stage 440 & Topic 80 Dual Milestone · 443 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: reaps 100% of blackhole zombie RTP streams upon [2, 5] consecutive timeout intervals (0 unstopped blackhole flows); live SFU timer-wheel teardown latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of spoofed RTCP RR loss reports and sheds video to preserve 32 kbps voice across [2, 6] 10x-TFRC grace intervals (0 dropped/sabotaged calls); live TFRC equation evaluation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

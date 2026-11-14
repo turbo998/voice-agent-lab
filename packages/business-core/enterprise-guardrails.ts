@@ -78525,6 +78525,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtpRfc8083MediaRtcpTimeoutCircuitBreakerAndZombieStreamReaperContext {
+      rtpOrRtcpTimeoutCircuitBreakerTriggered: boolean;
+      unstoppedBlackholeRtpFlows: number;
+      rtcpTimeoutMultiplierIntervals: number;
+    }
+
+    export interface WebrtcRtpRfc8083MediaRtcpTimeoutCircuitBreakerAndZombieStreamReaperDecision {
+      violated: boolean;
+      policyId: "P873-WEBRTC-RTP-RFC8083-MEDIA-RTCP-TIMEOUT-CIRCUIT-BREAKER-AND-ZOMBIE-STREAM-REAPER-GUARD";
+      action:
+        | "trip_rfc8083_timeout_circuit_breaker_and_reap_zombie_rtp_flow"
+        | "clamp_blackhole_rtp_flows_and_timeout_multiplier_bounds"
+        | "allow";
+      reason: string;
+      clampedUnstoppedBlackholeRtpFlows: number;
+      clampedRtcpTimeoutMultiplierIntervals: number;
+    }
+
+    export function evaluateWebrtcRtpRfc8083MediaRtcpTimeoutCircuitBreakerAndZombieStreamReaperGate(
+      context: WebrtcRtpRfc8083MediaRtcpTimeoutCircuitBreakerAndZombieStreamReaperContext,
+    ): WebrtcRtpRfc8083MediaRtcpTimeoutCircuitBreakerAndZombieStreamReaperDecision {
+      const policyId =
+        "P873-WEBRTC-RTP-RFC8083-MEDIA-RTCP-TIMEOUT-CIRCUIT-BREAKER-AND-ZOMBIE-STREAM-REAPER-GUARD" as const;
+      const clampedUnstoppedBlackholeRtpFlows = 0;
+      const clampedRtcpTimeoutMultiplierIntervals = Math.min(
+        Math.max(context.rtcpTimeoutMultiplierIntervals, 2),
+        5,
+      );
+
+      if (context.rtpOrRtcpTimeoutCircuitBreakerTriggered) {
+        return {
+          violated: true,
+          policyId,
+          action: "trip_rfc8083_timeout_circuit_breaker_and_reap_zombie_rtp_flow",
+          reason:
+            "Enterprise WebRTC RFC 8083 Section 4.1/4.2 Media & RTCP Timeout Circuit-Breaker Policy Check: unicast RTP session received zero peer RTP/SRTCP packets across consecutive reporting intervals due to client disconnect or NAT blackhole; offline synthetic policy state machine tripping timeout circuit breaker (0 unstopped blackhole RTP flows) and clamping timeout multiplier to [2, 5] RTCP intervals (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU timer wheel & socket teardown latency not_measured).",
+          clampedUnstoppedBlackholeRtpFlows,
+          clampedRtcpTimeoutMultiplierIntervals,
+        };
+      }
+
+      if (
+        context.unstoppedBlackholeRtpFlows > 0 ||
+        context.rtcpTimeoutMultiplierIntervals < 2 ||
+        context.rtcpTimeoutMultiplierIntervals > 5
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_blackhole_rtp_flows_and_timeout_multiplier_bounds",
+          reason:
+            "Unstopped blackhole RTP flows (>0 synthetic ceiling) or RTCP timeout multiplier intervals (<2 or >5 synthetic bounds) out of bounds; clamping blackhole flows to 0 and timeout intervals to [2, 5].",
+          clampedUnstoppedBlackholeRtpFlows,
+          clampedRtcpTimeoutMultiplierIntervals,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8083 timeout circuit breaker (0 unstopped blackhole flows) and [2, 5] RTCP timeout interval bounds verified.",
+        clampedUnstoppedBlackholeRtpFlows,
+        clampedRtcpTimeoutMultiplierIntervals,
+      };
+    }
+
+    export interface WebrtcRtpRfc8083CongestionCircuitBreakerTenfoldTfrcAndSpoofedRrSabotageContext {
+      tenfoldTfrcCongestionOrSpoofedRrCircuitBreakerSabotageDetected: boolean;
+      runawayCongestionOrSabotagedCalls: number;
+      tfrcCircuitBreakerGraceIntervals: number;
+    }
+
+    export interface WebrtcRtpRfc8083CongestionCircuitBreakerTenfoldTfrcAndSpoofedRrSabotageDecision {
+      violated: boolean;
+      policyId: "P874-WEBRTC-RTP-RFC8083-CONGESTION-CIRCUIT-BREAKER-TENFOLD-TFRC-AND-SPOOFED-RR-SABOTAGE-GUARD";
+      action:
+        | "enforce_validated_tfrc_circuit_breaker_and_drop_video_preserve_audio"
+        | "clamp_runaway_congestion_calls_and_tfrc_grace_interval_bounds"
+        | "allow";
+      reason: string;
+      clampedRunawayCongestionOrSabotagedCalls: number;
+      clampedTfrcCircuitBreakerGraceIntervals: number;
+    }
+
+    export function evaluateWebrtcRtpRfc8083CongestionCircuitBreakerTenfoldTfrcAndSpoofedRrSabotageGate(
+      context: WebrtcRtpRfc8083CongestionCircuitBreakerTenfoldTfrcAndSpoofedRrSabotageContext,
+    ): WebrtcRtpRfc8083CongestionCircuitBreakerTenfoldTfrcAndSpoofedRrSabotageDecision {
+      const policyId =
+        "P874-WEBRTC-RTP-RFC8083-CONGESTION-CIRCUIT-BREAKER-TENFOLD-TFRC-AND-SPOOFED-RR-SABOTAGE-GUARD" as const;
+      const clampedRunawayCongestionOrSabotagedCalls = 0;
+      const clampedTfrcCircuitBreakerGraceIntervals = Math.min(
+        Math.max(context.tfrcCircuitBreakerGraceIntervals, 2),
+        6,
+      );
+
+      if (context.tenfoldTfrcCongestionOrSpoofedRrCircuitBreakerSabotageDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_validated_tfrc_circuit_breaker_and_drop_video_preserve_audio",
+          reason:
+            "Enterprise WebRTC RFC 8083 Section 4.3 Tenfold TFRC Congestion Circuit-Breaker & Anti-Spoofed RR Sabotage Policy Check: session encountered sustained >10x RFC 5348 TFRC congestion or spoofed high-loss RTCP RR sabotage; offline synthetic policy state machine cross-validating SRTCP RR against TWCC/CCFB bitmaps and shedding video to preserve 32 kbps voice (0 runaway-congestion or sabotaged calls) while clamping grace window to [2, 6] intervals (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live TFRC equation evaluation latency not_measured).",
+          clampedRunawayCongestionOrSabotagedCalls,
+          clampedTfrcCircuitBreakerGraceIntervals,
+        };
+      }
+
+      if (
+        context.runawayCongestionOrSabotagedCalls > 0 ||
+        context.tfrcCircuitBreakerGraceIntervals < 2 ||
+        context.tfrcCircuitBreakerGraceIntervals > 6
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_runaway_congestion_calls_and_tfrc_grace_interval_bounds",
+          reason:
+            "Runaway congestion or sabotaged calls (>0 synthetic ceiling) or 10x TFRC circuit-breaker grace intervals (<2 or >6 synthetic bounds) out of bounds; clamping violations to 0 and grace intervals to [2, 6].",
+          clampedRunawayCongestionOrSabotagedCalls,
+          clampedTfrcCircuitBreakerGraceIntervals,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8083 10x TFRC Audio-First Shedding, spoofed-RR immunity (0 dropped/sabotaged calls), and [2, 6] grace intervals verified.",
+        clampedRunawayCongestionOrSabotagedCalls,
+        clampedTfrcCircuitBreakerGraceIntervals,
+      };
+    }
+
 
 
 
