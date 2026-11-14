@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg72" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent72" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg72)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="350" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="219" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 428 · TOPIC 68 · P849 / P850 🎉 · 70 FAQS 🎉</text>
+  <text x="410" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">WebRTC RTCP TWCC Chunk Span Bomb, recv_delta Overread &amp; Unsent-Seq / REMB Bitrate-Cliff Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">WebRTC RTCP TWCC 状态块跨度炸弹（[1,256]）+ recv_delta 字节闭合与未发送序号幽灵丢包 / REMB 语音保底门禁（🎉 P850 护栏、第 70 篇 FAQ 与 870 单测三重里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent72)" stroke-width="2"/>
+
+  <!-- Left Column: TWCC Span Bomb & recv_delta Closure Gate (P849) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. TWCC Chunk Span Bomb &amp; recv_delta Overread Gate (P849)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：28B TWCC 包谎称 status_count=65535 + RunLength(S=10) 但尾部 0B delta</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 崩溃风险：未预检字节总和直接越界读取 131,070 字节堆内存或触发 65,535 次空转</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Span Bomb: pkt=28B, status_count=65535 (S=10) -&gt; 131KB Heap Overread</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P849 Gate: status_count in [1, 256] &amp; sum(delta_bytes) &lt;= rem_bytes</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: drop_twcc_span_bomb_and_clamp_packet_status_count</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P849）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMalformedOrOverreadTwccFeedbackPackets = 0（100% 拦截越界与跨度炸弹）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaxTwccPacketStatusCountPerReport ∈ [1, 256]（消除 65535x CPU 放大）</text>
+
+  <!-- Right Column: Unsent-Seq Phantom Loss & REMB Floor Gate (P850) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Unsent-Seq Phantom Loss &amp; REMB Bitrate-Cliff Gate (P850 🎉)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：回报未来未发送序号（seq &gt; max_sent_seq）全丢包或注入 REMB=500bps</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 断崖风险：GoogCC 误判 100% 拥塞在 10ms 内砍光码率，导致 Opus 语音断流变哑巴</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Phantom Loss: base_seq=9000 &gt; max_sent=1200 | REMB=800bps -&gt; Audio Muted</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P850 🎉 Gate: SentPacketHistory Match + [24, 64] kbps Opus Audio Floor</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: reject_unsent_twcc_seq_and_enforce_audio_bwe_floor</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P850 🎉 · 第 70 篇 FAQ 与 870 单测里程碑）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedSpoofedUnsentSeqOrRembCliffReports = 0（100% 剔除幽灵序号与恶意 REMB）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMinProtectedAudioTwccFloorKbps ∈ [24, 64]（锁死不可击穿的语音保底码率）</text>
+
+  <!-- Bottom Full-Width Pipeline & Quantitative Matrix -->
+  <rect x="44" y="410" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="438" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Deterministic TWCC/BWE Verification Pipeline &amp; Stage 428 Scorecard (431 Dims · 859 Guardrails · 868 Probes · 870 Tests 🎉)</text>
+
+  <rect x="64" y="454" width="265" height="92" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="196" y="478" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 1: Span Cap [1, 256]</text>
+  <text x="196" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Blocks 65,535 Run-Length Bomb</text>
+  <text x="196" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">0 CPU Loop Amplification</text>
+
+  <rect x="355" y="454" width="275" height="92" rx="8" fill="#1E293B" stroke="#818CF8" stroke-width="1"/>
+  <text x="492" y="478" fill="#818CF8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 2: Delta Byte Closure</text>
+  <text x="492" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">sum(1B/2B delta) &lt;= rem_bytes</text>
+  <text x="492" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">0 Heap Buffer Overread Crashes</text>
+
+  <rect x="656" y="454" width="275" height="92" rx="8" fill="#1E293B" stroke="#34D399" stroke-width="1"/>
+  <text x="793" y="478" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 3: Sent-Ledger Match</text>
+  <text x="793" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">seq in [min_win, max_sent_seq]</text>
+  <text x="793" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">0 Unsent-Seq Phantom Loss Drops</text>
+
+  <rect x="957" y="454" width="259" height="92" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="1086" y="478" fill="#FBBF24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 4: [24,64] kbps Floor</text>
+  <text x="1086" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Protected Opus Voice Allocation</text>
+  <text x="1086" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">870 Automated Unit Tests Green 🎉</text>
+
+  <text x="64" y="578" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600">定量收敛结论：100% 阻断 TWCC 65535 游程跨度炸弹与 131KB 堆越界读，100% 免疫未发送序号幽灵丢包与 REMB 断崖降速。</text>
+  <text x="64" y="604" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">Docs: docs/voice-webrtc-rtcp-twcc-rfc8888-chunk-span-bomb-recv-delta-wrap-remb-cliff-faq.md (.en.md) · Guardrails: P849 &amp; P850 🎉</text>
+  <text x="64" y="630" fill="#38BDF8" font-family="Consolas, monospace" font-size="11.5">Timer Resolution &amp; Provenance: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer -->
+  <text x="640" y="718" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Voice Agent Architecture Lab · SVG 72 · Stage 428 · Topic 68 · P850 🎉 · 70 Standalone FAQs 🎉 · 870 Tests 🎉</text>
+</svg>

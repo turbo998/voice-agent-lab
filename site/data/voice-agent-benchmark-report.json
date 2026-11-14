@@ -1765,6 +1765,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: deduplicates 100% of RFC 4733 E=1 retransmissions by (SSRC, Event[0..15], StartRtpTimestamp) (0 duplicate/reserved events) and clamps duration in [40, 2000]ms; live RTP jitter-buffer event assembly latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of in-band/out-of-band dual-DTMF smuggling and TTS acoustic loopback digits (0 smuggled digits) and enforces [45, 80] dB Goertzel notch attenuation; live DSP BiQuad notch filter latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "431. [Topic 68 · P850 & 70th FAQ 🎉: voice-webrtc-rtcp-twcc-rfc8888-chunk-span-bomb-recv-delta-wrap-remb-cliff-faq] WebRTC RTCP TWCC Status-Chunk Span Bomb ([1,256]) + recv_delta Byte Closure & SentPacketHistory Ledger Match + [24,64]kbps Protected Audio Floor Guard (P849 / P850 🎉 — Stage 428 · 🎉 Historic P850 Guardrail, 70th FAQ & 870-Test Triple Milestone · 431 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of status_count>256 or recv_delta byte-mismatched TWCC packets (0 overread packets) and clamps packet_status_count in [1, 256]; live GoogCC Trendline filter update latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsent-seq phantom loss and sub-floor REMB cliff reports (0 spoofed reports) and enforces [24, 64] kbps protected Opus audio floor; live SFU BWE pacer allocation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

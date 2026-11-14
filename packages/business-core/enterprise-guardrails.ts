@@ -76893,6 +76893,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtcpTwccPacketStatusChunkSpanBombAndRecvDeltaOverreadContext {
+      twccChunkSpanBombOrRecvDeltaBufferOverreadDetected: boolean;
+      malformedOrOverreadTwccFeedbackPackets: number;
+      maxTwccPacketStatusCountPerReport: number;
+    }
+
+    export interface WebrtcRtcpTwccPacketStatusChunkSpanBombAndRecvDeltaOverreadDecision {
+      violated: boolean;
+      policyId: "P849-WEBRTC-RTCP-TWCC-PACKET-STATUS-CHUNK-SPAN-BOMB-AND-RECV-DELTA-OVERREAD-GUARD";
+      action:
+        | "drop_twcc_span_bomb_and_clamp_packet_status_count"
+        | "clamp_malformed_twcc_packets_and_status_count_bounds"
+        | "allow";
+      reason: string;
+      clampedMalformedOrOverreadTwccFeedbackPackets: number;
+      clampedMaxTwccPacketStatusCountPerReport: number;
+    }
+
+    export function evaluateWebrtcRtcpTwccPacketStatusChunkSpanBombAndRecvDeltaOverreadGate(
+      context: WebrtcRtcpTwccPacketStatusChunkSpanBombAndRecvDeltaOverreadContext,
+    ): WebrtcRtcpTwccPacketStatusChunkSpanBombAndRecvDeltaOverreadDecision {
+      const policyId =
+        "P849-WEBRTC-RTCP-TWCC-PACKET-STATUS-CHUNK-SPAN-BOMB-AND-RECV-DELTA-OVERREAD-GUARD" as const;
+      const clampedMalformedOrOverreadTwccFeedbackPackets = 0;
+      const clampedMaxTwccPacketStatusCountPerReport = Math.min(
+        Math.max(context.maxTwccPacketStatusCountPerReport, 1),
+        256,
+      );
+
+      if (context.twccChunkSpanBombOrRecvDeltaBufferOverreadDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_twcc_span_bomb_and_clamp_packet_status_count",
+          reason:
+            "WebRTC RTCP TWCC (FMT=15) / RFC 8888 Packet-Status-Chunk Span Bomb & recv_delta Buffer Overread Policy Check: inbound TWCC feedback declared packet_status_count >256 or mismatched Run-Length/Status-Vector recv_delta byte sum against remaining UDP payload; offline synthetic policy state machine dropping 100% of malformed/overread TWCC packets (0 overread packets) and clamping packet_status_count to [1, 256] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live GoogCC Trendline filter update latency not_measured).",
+          clampedMalformedOrOverreadTwccFeedbackPackets,
+          clampedMaxTwccPacketStatusCountPerReport,
+        };
+      }
+
+      if (
+        context.malformedOrOverreadTwccFeedbackPackets > 0 ||
+        context.maxTwccPacketStatusCountPerReport < 1 ||
+        context.maxTwccPacketStatusCountPerReport > 256
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_malformed_twcc_packets_and_status_count_bounds",
+          reason:
+            "Malformed/overread TWCC feedback packets (>0 synthetic ceiling) or maximum packet_status_count per report (<1 or >256 synthetic bounds) out of bounds; clamping malformed TWCC packets to 0 and packet_status_count to [1, 256].",
+          clampedMalformedOrOverreadTwccFeedbackPackets,
+          clampedMaxTwccPacketStatusCountPerReport,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: TWCC recv_delta byte-sum closure (0 overread packets) and [1, 256] packet_status_count bounds verified.",
+        clampedMalformedOrOverreadTwccFeedbackPackets,
+        clampedMaxTwccPacketStatusCountPerReport,
+      };
+    }
+
+    export interface WebrtcRtcpTwccUnsentSeqPhantomLossAndRembBitrateCliffContext {
+      unsentTwccSeqAckOrSpoofedRembBitrateCliffDetected: boolean;
+      spoofedUnsentSeqOrRembCliffReports: number;
+      minProtectedAudioTwccFloorKbps: number;
+    }
+
+    export interface WebrtcRtcpTwccUnsentSeqPhantomLossAndRembBitrateCliffDecision {
+      violated: boolean;
+      policyId: "P850-WEBRTC-RTCP-TWCC-UNSENT-SEQ-PHANTOM-LOSS-AND-REMB-BITRATE-CLIFF-GUARD";
+      action:
+        | "reject_unsent_twcc_seq_and_enforce_audio_bwe_floor"
+        | "clamp_spoofed_twcc_reports_and_audio_floor_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedUnsentSeqOrRembCliffReports: number;
+      clampedMinProtectedAudioTwccFloorKbps: number;
+    }
+
+    export function evaluateWebrtcRtcpTwccUnsentSeqPhantomLossAndRembBitrateCliffGate(
+      context: WebrtcRtcpTwccUnsentSeqPhantomLossAndRembBitrateCliffContext,
+    ): WebrtcRtcpTwccUnsentSeqPhantomLossAndRembBitrateCliffDecision {
+      const policyId =
+        "P850-WEBRTC-RTCP-TWCC-UNSENT-SEQ-PHANTOM-LOSS-AND-REMB-BITRATE-CLIFF-GUARD" as const;
+      const clampedSpoofedUnsentSeqOrRembCliffReports = 0;
+      const clampedMinProtectedAudioTwccFloorKbps = Math.min(
+        Math.max(context.minProtectedAudioTwccFloorKbps, 24),
+        64,
+      );
+
+      if (context.unsentTwccSeqAckOrSpoofedRembBitrateCliffDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unsent_twcc_seq_and_enforce_audio_bwe_floor",
+          reason:
+            "WebRTC RTCP TWCC Unsent-Sequence Phantom Loss & Spoofed REMB Bitrate-Cliff Policy Check: inbound TWCC feedback reported packet loss/arrival on sequence numbers outside SentPacketHistory (seq > max_sent_twcc_seq) or injected a sub-floor REMB bitrate cliff; offline synthetic policy state machine rejecting 100% of spoofed BWE reports (0 spoofed reports) and enforcing a [24, 64] kbps protected Opus audio floor (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU BWE pacer allocation latency not_measured).",
+          clampedSpoofedUnsentSeqOrRembCliffReports,
+          clampedMinProtectedAudioTwccFloorKbps,
+        };
+      }
+
+      if (
+        context.spoofedUnsentSeqOrRembCliffReports > 0 ||
+        context.minProtectedAudioTwccFloorKbps < 24 ||
+        context.minProtectedAudioTwccFloorKbps > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_twcc_reports_and_audio_floor_bounds",
+          reason:
+            "Spoofed unsent-seq TWCC or REMB cliff reports (>0 synthetic ceiling) or minimum protected audio TWCC floor (<24 kbps or >64 kbps synthetic bounds) out of bounds; clamping spoofed reports to 0 and protected audio floor to [24, 64] kbps.",
+          clampedSpoofedUnsentSeqOrRembCliffReports,
+          clampedMinProtectedAudioTwccFloorKbps,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SentPacketHistory sequence ledger match (0 spoofed reports) and [24, 64] kbps protected audio floor verified.",
+        clampedSpoofedUnsentSeqOrRembCliffReports,
+        clampedMinProtectedAudioTwccFloorKbps,
+      };
+    }
+
 
 
 

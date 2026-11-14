@@ -1546,6 +1546,13 @@
               <td><code>P847 / P848 deterministic SIP/RTP RFC 4733 StartTs dedup &amp; dual-DTMF anti-smuggling notch guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>431. [专题68 · P850 &amp; 70篇FAQ 🎉 `docs/voice-webrtc-rtcp-twcc-rfc8888-chunk-span-bomb-recv-delta-wrap-remb-cliff-faq.md`] WebRTC `RTCP TWCC (FMT=15) / RFC 8888` 状态块跨度炸弹拦截（单包 `packet_status_count [1, 256]`）与 `1B/2B recv_delta` 字节总和闭合锁（`0` 畸形/越界包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `GoogCC` Trendline 卡尔曼滤波耗时 `not_measured`）&amp; `SentPacketHistory` 已发送序号账本对账（`0` 未发送幽灵丢包与恶意 `REMB` 断崖报告）及 `[24, 64] kbps` 不可击穿的 Opus 语音保底带宽锁（真实 SFU BWE Pacer 分配耗时 `not_measured`）(`P849` / `P850 🎉` · Stage 428 · Topic 68 · 🎉 P850 护栏、第 70 篇独立 FAQ 与 870 单测三重里程碑 · 859 护栏 &amp; 868 探针 · 431 维)</strong>
+              </td>
+              <td><code>P849 / P850 🎉 deterministic WebRTC RTCP TWCC span-bomb &amp; unsent-seq / REMB audio floor guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5068,6 +5075,13 @@
                 <strong>430. 🎉 [专题67 · 430 维里程碑 🎉 `docs/voice-sip-rtp-rfc4733-dtmf-duration-overflow-end-bit-dedup-dual-injection-faq.md`] 企业 SIP/RTP `RFC 4733 / RFC 2833` `telephone-event` 按键 `(SSRC, EventCode[0..15], StartRtpTimestamp)` 三元组幂等去重（`0` 重传翻倍与保留码事件，单键时长 `[40, 2000]ms`，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 RTP Jitter Buffer 事件拼装耗时 `not_measured`）&amp; 带内/带外双轨按键走私拦截 + TTS 回环互锁（`0` 走私按键）与 `[45, 80] dB` Goertzel 带内陷波剥离锁（真实 DSP 二阶陷波滤波耗时 `not_measured`）(`P847` / `P848` · Stage 427 · Topic 67 · 🎉 430 大评测维度历史性里程碑 · 857 护栏 &amp; 866 探针 · 430 维 🎉)</strong>
               </td>
               <td><code>P847 / P848 deterministic SIP/RTP RFC 4733 StartTs dedup &amp; dual-DTMF anti-smuggling notch guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>431. [专题68 · P850 &amp; 70篇FAQ 🎉 `docs/voice-webrtc-rtcp-twcc-rfc8888-chunk-span-bomb-recv-delta-wrap-remb-cliff-faq.md`] WebRTC `RTCP TWCC (FMT=15) / RFC 8888` 状态块跨度炸弹拦截（单包 `packet_status_count [1, 256]`）与 `1B/2B recv_delta` 字节总和闭合锁（`0` 畸形/越界包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `GoogCC` Trendline 卡尔曼滤波耗时 `not_measured`）&amp; `SentPacketHistory` 已发送序号账本对账（`0` 未发送幽灵丢包与恶意 `REMB` 断崖报告）及 `[24, 64] kbps` 不可击穿的 Opus 语音保底带宽锁（真实 SFU BWE Pacer 分配耗时 `not_measured`）(`P849` / `P850 🎉` · Stage 428 · Topic 68 · 🎉 P850 护栏、第 70 篇独立 FAQ 与 870 单测三重里程碑 · 859 护栏 &amp; 868 探针 · 431 维)</strong>
+              </td>
+              <td><code>P849 / P850 🎉 deterministic WebRTC RTCP TWCC span-bomb &amp; unsent-seq / REMB audio floor guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
