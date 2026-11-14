@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg71" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent71" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg71)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="330" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="209" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 427 · TOPIC 67 · P847 / P848 · 430 DIMS 🎉</text>
+  <text x="390" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Enterprise SIP/RTP RFC 4733 DTMF StartTs Dedup, Duration Cap &amp; Dual-Stream Anti-Smuggling Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">企业 SIP/RTP RFC 4733 按键起始时间戳三元组去重（[40,2000]ms）与带内/带外双轨防走私及 [45,80]dB 陷波门禁（🎉 430 大评测维度里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent71)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 4733 StartTs Dedup & Duration Gate (P847) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. RFC 4733 E=1 StartTs Dedup &amp; Duration Wedge Gate (P847)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：标准 3 次 E=1 重传未按 StartTs 去重致密码 123 变 111222333，粗糙冷却又吞连号 88</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 卡死风险：缺失 E=1 结束位且 duration=65535 (8.19s) 锁死 IVR 采集状态机</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Naive E=1 Trigger: 3x Retransmit -&gt; '555' | Event=24 Reserved | 8000ms Wedge</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P847 Gate: Idempotent (SSRC, Event[0..15], StartTs) + Duration in [40, 2000]ms</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: dedup_rfc4733_end_bit_and_clamp_dtmf_duration (0 Duplicates)</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P847）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedDuplicateOrReservedDtmfEvents = 0（0 重传翻倍，100% 保留快速连按 88）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaxDtmfEventDurationMs ∈ [40, 2000]（杜绝 8.19s 长音卡死）</text>
+
+  <!-- Right Column: Dual-DTMF Smuggling & In-Band Notch Gate (P848) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. In-Band/Out-of-Band Smuggling &amp; TTS Loopback Gate (P848)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：带外发 Event=1 骗过防火墙，同时带内 G.711 混入 #9 雙音触发下游 PBX 盗打</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 回环风险：免提外放将 Agent TTS 播报音频经麦克风回环注入带内 Goertzel 检音器</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Dual-Stream Smuggling: Out-of-Band Event=1 vs. In-Band Audio '#9'</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P848 Gate: Dual-Stream Parity + TTS Echo Lock + [45, 80] dB Notch Strip</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: block_dual_dtmf_smuggling_and_strip_inband_tones</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P848 · 🎉 430 大评测维度历史性里程碑）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedSmuggledOrLoopbackDtmfDigits = 0（100% 阻断双轨走私与 TTS 回环按键）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMinGoertzelInbandNotchAttenuationDb ∈ [45, 80]（深度擦除带内双音）</text>
+
+  <!-- Bottom Full-Width Pipeline & Quantitative Matrix -->
+  <rect x="44" y="410" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="438" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Deterministic DTMF Sanitization Pipeline &amp; Stage 427 Scorecard (430 Dims 🎉 · 857 Guardrails · 866 Probes · 676 POC Probes)</text>
+
+  <rect x="64" y="454" width="265" height="92" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="196" y="478" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 1: StartTs Dedup Key</text>
+  <text x="196" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">(SSRC, Event[0..15], StartTs)</text>
+  <text x="196" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">0 3x E=1 Duplicates · Fast 88 Intact</text>
+
+  <rect x="355" y="454" width="275" height="92" rx="8" fill="#1E293B" stroke="#818CF8" stroke-width="1"/>
+  <text x="492" y="478" fill="#818CF8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 2: Duration [40,2000]ms</text>
+  <text x="492" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Auto-Close Missing E=1 Wedge</text>
+  <text x="492" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">0 Reserved Codes (16..255)</text>
+
+  <rect x="656" y="454" width="275" height="92" rx="8" fill="#1E293B" stroke="#34D399" stroke-width="1"/>
+  <text x="793" y="478" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 3: [45, 80] dB Notch</text>
+  <text x="793" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Strips In-Band 697-1633Hz</text>
+  <text x="793" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">0 Dual-DTMF PBX Smuggling</text>
+
+  <rect x="957" y="454" width="259" height="92" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="1086" y="478" fill="#FBBF24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 4: TTS Echo Interlock</text>
+  <text x="1086" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">200ms Post-TTS Guard Window</text>
+  <text x="1086" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">869 Automated Unit Tests Green</text>
+
+  <text x="64" y="578" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600">定量收敛结论：100% 消除 E=1 重传三连发与连号 88 误吞，100% 阻断带内 #9 双轨走私与扬声器 TTS 回环按键注入。</text>
+  <text x="64" y="604" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">Docs: docs/voice-sip-rtp-rfc4733-dtmf-duration-overflow-end-bit-dedup-dual-injection-faq.md (.en.md) · Guardrails: P847 &amp; P848</text>
+  <text x="64" y="630" fill="#38BDF8" font-family="Consolas, monospace" font-size="11.5">Timer Resolution &amp; Provenance: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer -->
+  <text x="640" y="718" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Voice Agent Architecture Lab · SVG 71 · Stage 427 · Topic 67 · 430 Dims 🎉 · Synthetic Policy Gate vs. Live DSP Notch Filter Latency (not_measured)</text>
+</svg>

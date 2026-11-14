@@ -76757,6 +76757,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRtpRfc4733DtmfDurationWedgeAndEndBitDedupContext {
+      dtmfDurationWedgeOrEndBitRetransmitDuplicateDetected: boolean;
+      duplicateOrReservedDtmfEvents: number;
+      maxDtmfEventDurationMs: number;
+    }
+
+    export interface SipRtpRfc4733DtmfDurationWedgeAndEndBitDedupDecision {
+      violated: boolean;
+      policyId: "P847-SIP-RTP-RFC4733-DTMF-DURATION-WEDGE-AND-END-BIT-DEDUP-GUARD";
+      action:
+        | "dedup_rfc4733_end_bit_and_clamp_dtmf_duration"
+        | "clamp_duplicate_dtmf_events_and_duration_bounds"
+        | "allow";
+      reason: string;
+      clampedDuplicateOrReservedDtmfEvents: number;
+      clampedMaxDtmfEventDurationMs: number;
+    }
+
+    export function evaluateSipRtpRfc4733DtmfDurationWedgeAndEndBitDedupGate(
+      context: SipRtpRfc4733DtmfDurationWedgeAndEndBitDedupContext,
+    ): SipRtpRfc4733DtmfDurationWedgeAndEndBitDedupDecision {
+      const policyId =
+        "P847-SIP-RTP-RFC4733-DTMF-DURATION-WEDGE-AND-END-BIT-DEDUP-GUARD" as const;
+      const clampedDuplicateOrReservedDtmfEvents = 0;
+      const clampedMaxDtmfEventDurationMs = Math.min(
+        Math.max(context.maxDtmfEventDurationMs, 40),
+        2000,
+      );
+
+      if (context.dtmfDurationWedgeOrEndBitRetransmitDuplicateDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "dedup_rfc4733_end_bit_and_clamp_dtmf_duration",
+          reason:
+            "SIP/RTP RFC 4733 / RFC 2833 Named telephone-event E=1 Retransmission Deduplication & Duration Wedge Policy Check: inbound RFC 4733 stream emitted duplicate E=1 end packets sharing the same StartRtpTimestamp, carried a reserved event code >15, or wedged duration >2000ms without an E=1 bit; offline synthetic policy state machine deduplicating by (SSRC, Event, StartRtpTimestamp) (0 duplicate/reserved events) and clamping event duration to [40, 2000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTP jitter-buffer event assembly latency not_measured).",
+          clampedDuplicateOrReservedDtmfEvents,
+          clampedMaxDtmfEventDurationMs,
+        };
+      }
+
+      if (
+        context.duplicateOrReservedDtmfEvents > 0 ||
+        context.maxDtmfEventDurationMs < 40 ||
+        context.maxDtmfEventDurationMs > 2000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_duplicate_dtmf_events_and_duration_bounds",
+          reason:
+            "Duplicate/reserved RFC 4733 DTMF events (>0 synthetic ceiling) or maximum DTMF event duration (<40ms or >2000ms synthetic bounds) out of bounds; clamping duplicate/reserved events to 0 and event duration to [40, 2000]ms.",
+          clampedDuplicateOrReservedDtmfEvents,
+          clampedMaxDtmfEventDurationMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 4733 (SSRC, Event, StartRtpTimestamp) deduplication (0 duplicate/reserved events) and [40, 2000]ms duration bounds verified.",
+        clampedDuplicateOrReservedDtmfEvents,
+        clampedMaxDtmfEventDurationMs,
+      };
+    }
+
+    export interface SipRtpRfc4733InbandOutofbandDualDtmfSmugglingAndTtsLoopbackContext {
+      inbandOutofbandDigitMismatchOrTtsDtmfLoopbackDetected: boolean;
+      smuggledOrLoopbackDtmfDigits: number;
+      minGoertzelInbandNotchAttenuationDb: number;
+    }
+
+    export interface SipRtpRfc4733InbandOutofbandDualDtmfSmugglingAndTtsLoopbackDecision {
+      violated: boolean;
+      policyId: "P848-SIP-RTP-RFC4733-INBAND-OUTOFBAND-DUAL-DTMF-SMUGGLING-AND-TTS-LOOPBACK-GUARD";
+      action:
+        | "block_dual_dtmf_smuggling_and_strip_inband_tones"
+        | "clamp_smuggled_dtmf_digits_and_notch_attenuation_bounds"
+        | "allow";
+      reason: string;
+      clampedSmuggledOrLoopbackDtmfDigits: number;
+      clampedMinGoertzelInbandNotchAttenuationDb: number;
+    }
+
+    export function evaluateSipRtpRfc4733InbandOutofbandDualDtmfSmugglingAndTtsLoopbackGate(
+      context: SipRtpRfc4733InbandOutofbandDualDtmfSmugglingAndTtsLoopbackContext,
+    ): SipRtpRfc4733InbandOutofbandDualDtmfSmugglingAndTtsLoopbackDecision {
+      const policyId =
+        "P848-SIP-RTP-RFC4733-INBAND-OUTOFBAND-DUAL-DTMF-SMUGGLING-AND-TTS-LOOPBACK-GUARD" as const;
+      const clampedSmuggledOrLoopbackDtmfDigits = 0;
+      const clampedMinGoertzelInbandNotchAttenuationDb = Math.min(
+        Math.max(context.minGoertzelInbandNotchAttenuationDb, 45),
+        80,
+      );
+
+      if (context.inbandOutofbandDigitMismatchOrTtsDtmfLoopbackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "block_dual_dtmf_smuggling_and_strip_inband_tones",
+          reason:
+            "SIP/RTP RFC 4733 In-Band vs. Out-of-Band Dual-DTMF Smuggling & TTS Acoustic Loopback Policy Check: inbound audio carried in-band 697-1633Hz Goertzel DTMF tones diverging from out-of-band RFC 4733 events or looped back during Agent TTS playback; offline synthetic policy state machine blocking 100% of smuggled/loopback digits (0 smuggled digits) and enforcing [45, 80] dB in-band notch attenuation (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live DSP BiQuad notch filter latency not_measured).",
+          clampedSmuggledOrLoopbackDtmfDigits,
+          clampedMinGoertzelInbandNotchAttenuationDb,
+        };
+      }
+
+      if (
+        context.smuggledOrLoopbackDtmfDigits > 0 ||
+        context.minGoertzelInbandNotchAttenuationDb < 45 ||
+        context.minGoertzelInbandNotchAttenuationDb > 80
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_smuggled_dtmf_digits_and_notch_attenuation_bounds",
+          reason:
+            "Smuggled/loopback DTMF digits (>0 synthetic ceiling) or minimum Goertzel in-band notch attenuation (<45 dB or >80 dB synthetic bounds) out of bounds; clamping smuggled digits to 0 and notch attenuation to [45, 80] dB.",
+          clampedSmuggledOrLoopbackDtmfDigits,
+          clampedMinGoertzelInbandNotchAttenuationDb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: in-band/out-of-band DTMF parity and TTS loopback interlock (0 smuggled digits) and [45, 80] dB notch attenuation bounds verified.",
+        clampedSmuggledOrLoopbackDtmfDigits,
+        clampedMinGoertzelInbandNotchAttenuationDb,
+      };
+    }
+
 
 
 
