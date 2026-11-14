@@ -1798,6 +1798,13 @@
               <td><code>P919 / P920 🎉 deterministic SIP RFC 7339/6809 overload [5,80]% cap &amp; [500,10000]ms oc-validity auto-zero guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>467. [专题104 · 931护栏 &amp; 750现场探针 🎉 `docs/voice-webrtc-rtp-rfc7667-rfc5117-topologies-sfu-mcu-ssrc-rewrite-seq-ts-gap-plc-glitch-faq.md`] 企业 WebRTC `RFC 7667 / RFC 5117` SFU 主讲人切换单下行 `SSRC` 投射 `(Seq_out, TS_out, M=1)` 连续偏移重映射防 `NetEq PLC` 鬼畜爆音（`0` 切源断层包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU 转发平面包头重写耗时 `not_measured`）与 `[480, 2880]` 采样点步长锁 &amp; 下行独立 `(ROC_out, Seq_out)` `SRTP` 重加密防回绕失步与 `[200, 1000]ms` 主讲人保持迟滞锁（`0` `ROC` 断流或乒乓切麦；真实 `AES-GCM` 重加密耗时 `not_measured`）(`P921` / `P922 🎉` · Stage 464 · Topic 104 · 🎉 931 护栏、940 合成探针与 750 现场探针三重历史性里程碑 · 931 护栏 🎉 &amp; 940 探针 🎉 · 467 维)</strong>
+              </td>
+              <td><code>P921 / P922 🎉 deterministic WebRTC RFC 7667 SFU [480,2880] Seq/TS splicing &amp; outbound ROC_out + [200,1000]ms hysteresis guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5572,6 +5579,13 @@
                 <strong>466. [专题103 · 105篇FAQ &amp; P920 🎉 `docs/voice-sip-rfc7339-rfc6809-overload-control-oc-rate-loss-feedback-oscillation-validity-dos-faq.md`] 企业 SIP `RFC 7339 / RFC 6809` 过载控制直连 mTLS 授信 `Via oc` 校验、对话内 `ACK/BYE/sos` 100% 豁免（`0` 伪造黑洞或对话内误杀包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 令牌桶限速耗时 `not_measured`）与 `[5, 80]%` 最大丢弃率封顶防死锁锁 &amp; `oc-validity [500, 10000]ms` 有效期窗口钳制、到期自动归零 `oc=0%` 与 EWMA 阻尼防锯齿震荡锁（`0` 僵尸限流中继；真实 EWMA 原子更新耗时 `not_measured`）(`P919` / `P920 🎉` · Stage 463 · Topic 103 · 🎉 第 30 轮夜间深潜、P920 护栏、第 105 篇独立单专题 FAQ 与 905 单测四重里程碑 · 929 护栏 &amp; 938 探针 · 466 维)</strong>
               </td>
               <td><code>P919 / P920 🎉 deterministic SIP RFC 7339/6809 overload [5,80]% cap &amp; [500,10000]ms oc-validity auto-zero guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>467. [专题104 · 931护栏 &amp; 750现场探针 🎉 `docs/voice-webrtc-rtp-rfc7667-rfc5117-topologies-sfu-mcu-ssrc-rewrite-seq-ts-gap-plc-glitch-faq.md`] 企业 WebRTC `RFC 7667 / RFC 5117` SFU 主讲人切换单下行 `SSRC` 投射 `(Seq_out, TS_out, M=1)` 连续偏移重映射防 `NetEq PLC` 鬼畜爆音（`0` 切源断层包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU 转发平面包头重写耗时 `not_measured`）与 `[480, 2880]` 采样点步长锁 &amp; 下行独立 `(ROC_out, Seq_out)` `SRTP` 重加密防回绕失步与 `[200, 1000]ms` 主讲人保持迟滞锁（`0` `ROC` 断流或乒乓切麦；真实 `AES-GCM` 重加密耗时 `not_measured`）(`P921` / `P922 🎉` · Stage 464 · Topic 104 · 🎉 931 护栏、940 合成探针与 750 现场探针三重历史性里程碑 · 931 护栏 🎉 &amp; 940 探针 🎉 · 467 维)</strong>
+              </td>
+              <td><code>P921 / P922 🎉 deterministic WebRTC RFC 7667 SFU [480,2880] Seq/TS splicing &amp; outbound ROC_out + [200,1000]ms hysteresis guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

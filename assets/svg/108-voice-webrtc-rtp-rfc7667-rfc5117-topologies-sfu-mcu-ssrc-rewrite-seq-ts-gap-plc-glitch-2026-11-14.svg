@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg108" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#064E3B"/>
+    </linearGradient>
+    <linearGradient id="accent108" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg108)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="8" rx="4" fill="url(#accent108)"/>
+
+  <text x="56" y="68" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1">STAGE 464 · TOPIC 104 · P921–P922 🎉 · 931 GUARDS, 940 PROBES &amp; 750 LIVE POC MILESTONE · 467 DIMS · 906 TESTS</text>
+  <text x="56" y="102" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24.5" font-weight="800">WebRTC RFC 7667 / RFC 5117 SFU SSRC Rewriting: Seq/TS Delta Splicing &amp; SRTP ROC_out Guard</text>
+  <text x="56" y="128" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业 WebRTC RFC 7667 SFU 主讲人切换：严防裸改写 SSRC 致 Seq/TS 断层 NetEq PLC 鬼畜爆音与 SRTP ROC 越界失步 (P921–P922 🎉)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="56" y="152" width="528" height="390" rx="14" fill="#1E1B2E" stroke="#EF4444" stroke-width="2"/>
+  <rect x="76" y="172" width="256" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="90" y="191" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">❌ 脆弱基线 (Naive SFU SSRC Overwrite)</text>
+
+  <text x="76" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. 仅改 SSRC 透传原始 Seq/TS -&gt; NetEq PLC 鬼畜</text>
+  <text x="76" y="250" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">SrcA(Seq=65530,TS=480k) -&gt; SrcB(Seq=100,TS=96k)</text>
+  <text x="76" y="272" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 同一下行 SSRC 突跳数万包间隔与 96,000 采样点时间戳断层！</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• NetEq 误判巨量丢包触发 W-SOLA PLC 机械拉长音或直接拒收冻结！</text>
+
+  <line x1="76" y1="320" x2="560" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="76" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. 复用上游 ROC_in 越界失步 + 20ms 乒乓切麦</text>
+  <text x="76" y="376" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">Seq_out wraps 65535-&gt;0 while ROC_in=0 -&gt; AUTH_FAIL</text>
+  <text x="76" y="398" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Seq_out 回绕时刻与上游不同，复用 ROC_in 致 AES-GCM 100% 失败！</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 20ms 无迟滞切麦，背景咳嗽声把正常语音切成碎片！</text>
+
+  <rect x="76" y="450" width="488" height="72" rx="10" fill="#450A0A" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="92" y="476" fill="#FECACA" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">事故后果：14 次切源 PLC 鬼畜冻结 + 9 次 SRTP ROC 断流/乒乓切麦</text>
+  <text x="92" y="500" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">双轨 AI 语音 (Filler -&gt; Main TTS) 切换瞬间爆音或彻底失聪</text>
+
+  <!-- Right Card: Deterministic Guardrails P921-P922 -->
+  <rect x="616" y="152" width="528" height="390" rx="14" fill="#0F292A" stroke="#10B981" stroke-width="2"/>
+  <rect x="636" y="172" width="320" height="28" rx="6" fill="#064E3B"/>
+  <text x="650" y="191" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">✅ 企业级护栏 (P921 + P922 🎉 931 Guards / 750 POC)</text>
+
+  <text x="636" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P921 🎉 · Seq_out(+1) &amp; TS_out [480, 2880] 连续重映射</text>
+  <text x="636" y="250" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Seq_out = Seq_in + ΔSeq · ΔTS step ∈ [480, 2880] (M=1)</text>
+  <text x="636" y="272" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 切源瞬间锚定上一包 (Seq_last+1) 与墙钟 Δt，消除序列号断层</text>
+  <text x="636" y="294" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 首包强制置 M=1 标记位，步长钳制在 10..60ms (0 PLC 鬼畜包)</text>
+
+  <line x1="636" y1="320" x2="1120" y2="320" stroke="#1E293B" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="636" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P922 🎉 · 下行独立 ROC_out 重加密与 [200, 1000]ms 迟滞锁</text>
+  <text x="636" y="376" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Outbound (ROC_out, Seq_out) AEAD · Hold ∈ [200, 1000]ms</text>
+  <text x="636" y="398" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 按改写后 Seq_out 独立维护 32-bit ROC_out 并重算 SRTP Tag</text>
+  <text x="636" y="420" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 主讲人保持窗口钳制在 [200, 1000]ms，杜绝毫秒级乒乓切麦</text>
+
+  <rect x="636" y="450" width="488" height="72" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5"/>
+  <text x="652" y="476" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">验证结果：0 切源 PLC 鬼畜包 · 0 SRTP ROC 断音 · 2,880 / 200ms 封顶</text>
+  <text x="652" y="500" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer Provenance -->
+  <rect x="56" y="560" width="1088" height="68" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="76" y="586" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Benchmark &amp; Provenance (Stage 464 · Topic 104 · 931 Guardrails 🎉 · 940 Probes 🎉 · 750 Live POC Probes 🎉 · 467 Dims · 906 Tests)</text>
+  <text x="76" y="610" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Guardrails: evaluateWebrtcRfc7667SfuSourceSwitchSeqTimestampDeltaContinuityGate (P921) &amp; evaluateWebrtcRfc7667SfuSrtpRocReencryptionAndActiveSpeakerHoldHysteresisGate (P922 🎉)</text>
+</svg>

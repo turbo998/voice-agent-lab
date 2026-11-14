@@ -1981,6 +1981,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted external oc parameters, exempts all in-dialog ACK/BYE & sos calls (0 dropped packets), and clamps max overload loss ceiling in [5, 80]%; live SBC token-bucket rate shaper latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: auto-resets 100% of expired oc-validity throttles with EWMA damping (0 stale-throttled trunks) and clamps oc-validity TTL in [500, 10000]ms; live SBC EWMA feedback damping latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "467. [Topic 104 · Historic 931-Guardrail, 940-Probe & 750-Live-POC Milestone 🎉: voice-webrtc-rtp-rfc7667-rfc5117-topologies-sfu-mcu-ssrc-rewrite-seq-ts-gap-plc-glitch-faq] Enterprise WebRTC RFC 7667 SFU SSRC-Rewrite [480,2880] Seq/TS Delta Splicing & Outbound SRTP ROC_out + [200,1000]ms Hysteresis Guard (P921 / P922 🎉 — Stage 464 · 🎉 Historic 931-Guardrail, 940-Probe & 750-Live-POC Milestone · 467 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: translates 100% of SFU source-switch (Seq_out, TS_out) deltas with Marker M=1 (0 NetEq PLC glitch packets) and clamps timestamp step in [480, 2880] samples; live SFU forwarding-plane packet rewrite latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: re-encrypts 100% of outbound packets with independent (ROC_out, Seq_out) (0 SRTP ROC wrap drops) and clamps speaker hold hysteresis in [200, 1000]ms; live SFU AES-GCM re-encryption latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

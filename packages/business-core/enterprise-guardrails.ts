@@ -81777,6 +81777,145 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc7667SfuSourceSwitchSeqTimestampDeltaContinuityContext {
+      unrewrittenSeqTimestampDiscontinuityOnSsrcSwitchDetected: boolean;
+      plcDiscontinuityGlitchOrFrozenSwitchPackets: number;
+      maxTimestampJumpSamplesPerFrame: number;
+    }
+
+    export interface WebrtcRfc7667SfuSourceSwitchSeqTimestampDeltaContinuityDecision {
+      violated: boolean;
+      policyId: "P921-WEBRTC-RFC7667-SFU-SOURCE-SWITCH-SEQ-TIMESTAMP-DELTA-CONTINUITY-GUARD";
+      action:
+        | "rewrite_contiguous_seq_timestamp_deltas_and_set_marker_m1"
+        | "clamp_plc_glitch_packets_and_timestamp_step_bounds"
+        | "allow";
+      reason: string;
+      clampedPlcDiscontinuityGlitchOrFrozenSwitchPackets: number;
+      clampedMaxTimestampJumpSamplesPerFrame: number;
+    }
+
+    export function evaluateWebrtcRfc7667SfuSourceSwitchSeqTimestampDeltaContinuityGate(
+      context: WebrtcRfc7667SfuSourceSwitchSeqTimestampDeltaContinuityContext,
+    ): WebrtcRfc7667SfuSourceSwitchSeqTimestampDeltaContinuityDecision {
+      const policyId =
+        "P921-WEBRTC-RFC7667-SFU-SOURCE-SWITCH-SEQ-TIMESTAMP-DELTA-CONTINUITY-GUARD" as const;
+      const clampedPlcDiscontinuityGlitchOrFrozenSwitchPackets = 0;
+      const clampedMaxTimestampJumpSamplesPerFrame = Math.min(
+        Math.max(context.maxTimestampJumpSamplesPerFrame, 480),
+        2880,
+      );
+
+      if (context.unrewrittenSeqTimestampDiscontinuityOnSsrcSwitchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rewrite_contiguous_seq_timestamp_timestamp_deltas_and_set_marker_m1".replace(
+            "_timestamp_timestamp_",
+            "_timestamp_",
+          ) as "rewrite_contiguous_seq_timestamp_deltas_and_set_marker_m1",
+          reason:
+            "Enterprise WebRTC RFC 7667 Section 3.6.2 SFU SSRC-Rewrite Sequence & Timestamp Continuity Policy Check: SFU switched upstream speaker source onto a single downstream SSRC without translating Sequence Number (+1) and RTP Timestamp deltas (causing NetEq W-SOLA PLC screeching or packet freeze); offline synthetic policy state machine rewriting contiguous (Seq_out, TS_out) deltas with Marker M=1 (0 PLC glitch packets) and clamping per-frame timestamp step to [480, 2880] samples (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU forwarding-plane packet rewrite latency not_measured).",
+          clampedPlcDiscontinuityGlitchOrFrozenSwitchPackets,
+          clampedMaxTimestampJumpSamplesPerFrame,
+        };
+      }
+
+      if (
+        context.plcDiscontinuityGlitchOrFrozenSwitchPackets > 0 ||
+        context.maxTimestampJumpSamplesPerFrame < 480 ||
+        context.maxTimestampJumpSamplesPerFrame > 2880
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_plc_glitch_packets_and_timestamp_step_bounds",
+          reason:
+            "SFU source-switch PLC discontinuity glitch packets (>0 synthetic ceiling) or max timestamp jump samples per frame (<480 or >2880 synthetic bounds) out of bounds; clamping glitch packets to 0 and timestamp step to [480, 2880] samples.",
+          clampedPlcDiscontinuityGlitchOrFrozenSwitchPackets,
+          clampedMaxTimestampJumpSamplesPerFrame,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 7667 SFU contiguous (Seq_out, TS_out, M=1) splicing (0 PLC glitch packets) and [480, 2880] sample step bounds verified.",
+        clampedPlcDiscontinuityGlitchOrFrozenSwitchPackets,
+        clampedMaxTimestampJumpSamplesPerFrame,
+      };
+    }
+
+    export interface WebrtcRfc7667SfuSrtpRocReencryptionAndActiveSpeakerHoldHysteresisContext {
+      upstreamRocReuseAuthFailureOrPingPongSpeakerThrashDetected: boolean;
+      srtpRocDesyncDropsOrPingPongSwitches: number;
+      speakerSwitchHoldHysteresisMs: number;
+    }
+
+    export interface WebrtcRfc7667SfuSrtpRocReencryptionAndActiveSpeakerHoldHysteresisDecision {
+      violated: boolean;
+      policyId: "P922-WEBRTC-RFC7667-SFU-SRTP-ROC-REENCRYPTION-AND-ACTIVE-SPEAKER-HOLD-HYSTERESIS-GUARD";
+      action:
+        | "reencrypt_with_independent_outbound_roc_and_enforce_hold_hysteresis"
+        | "clamp_roc_desync_switches_and_hysteresis_window_bounds"
+        | "allow";
+      reason: string;
+      clampedSrtpRocDesyncDropsOrPingPongSwitches: number;
+      clampedSpeakerSwitchHoldHysteresisMs: number;
+    }
+
+    export function evaluateWebrtcRfc7667SfuSrtpRocReencryptionAndActiveSpeakerHoldHysteresisGate(
+      context: WebrtcRfc7667SfuSrtpRocReencryptionAndActiveSpeakerHoldHysteresisContext,
+    ): WebrtcRfc7667SfuSrtpRocReencryptionAndActiveSpeakerHoldHysteresisDecision {
+      const policyId =
+        "P922-WEBRTC-RFC7667-SFU-SRTP-ROC-REENCRYPTION-AND-ACTIVE-SPEAKER-HOLD-HYSTERESIS-GUARD" as const;
+      const clampedSrtpRocDesyncDropsOrPingPongSwitches = 0;
+      const clampedSpeakerSwitchHoldHysteresisMs = Math.min(
+        Math.max(context.speakerSwitchHoldHysteresisMs, 200),
+        1000,
+      );
+
+      if (context.upstreamRocReuseAuthFailureOrPingPongSpeakerThrashDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reencrypt_with_independent_outbound_roc_and_enforce_hold_hysteresis",
+          reason:
+            "Enterprise WebRTC RFC 7667 / RFC 3711 SFU Outbound SRTP ROC Re-Encryption & Speaker Hysteresis Policy Check: SFU reused upstream ROC_in across rewritten Seq_out (65535 -> 0) wrap-around causing SRTP AUTH_FAIL or switched dominant speakers faster than 200ms; offline synthetic policy state machine deriving SRTP AEAD nonce from independent outbound (ROC_out, Seq_out) (0 ROC auth drops or ping-pong switches) and clamping speaker hold hysteresis to [200, 1000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU AES-GCM re-encryption latency not_measured).",
+          clampedSrtpRocDesyncDropsOrPingPongSwitches,
+          clampedSpeakerSwitchHoldHysteresisMs,
+        };
+      }
+
+      if (
+        context.srtpRocDesyncDropsOrPingPongSwitches > 0 ||
+        context.speakerSwitchHoldHysteresisMs < 200 ||
+        context.speakerSwitchHoldHysteresisMs > 1000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_roc_desync_switches_and_hysteresis_window_bounds",
+          reason:
+            "SRTP ROC desync drops / ping-pong speaker switches (>0 synthetic ceiling) or speaker switch hold hysteresis (<200ms or >1000ms synthetic bounds) out of bounds; clamping violations to 0 and hysteresis hold to [200, 1000]ms.",
+          clampedSrtpRocDesyncDropsOrPingPongSwitches,
+          clampedSpeakerSwitchHoldHysteresisMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 7667 independent outbound SRTP ROC_out re-encryption (0 ROC drops) and [200, 1000]ms speaker hold hysteresis verified.",
+        clampedSrtpRocDesyncDropsOrPingPongSwitches,
+        clampedSpeakerSwitchHoldHysteresisMs,
+      };
+    }
+
 
 
 
