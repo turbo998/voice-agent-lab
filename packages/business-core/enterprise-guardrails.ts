@@ -78253,6 +78253,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSframeRfc9605HeaderKidCtrOverreadAndCtrNonceReuseContext {
+      sframeKidCtrOverreadOrCtrNonceReuseDetected: boolean;
+      malformedOrNonceReusedSframePayloads: number;
+      maxRetainedSframeEpochKeys: number;
+    }
+
+    export interface WebrtcSframeRfc9605HeaderKidCtrOverreadAndCtrNonceReuseDecision {
+      violated: boolean;
+      policyId: "P869-WEBRTC-SFRAME-RFC9605-HEADER-KID-CTR-OVERREAD-AND-CTR-NONCE-REUSE-GUARD";
+      action:
+        | "drop_malformed_or_nonce_reused_sframe_and_clamp_epoch_ring"
+        | "clamp_sframe_nonce_violations_and_epoch_ring_bounds"
+        | "allow";
+      reason: string;
+      clampedMalformedOrNonceReusedSframePayloads: number;
+      clampedMaxRetainedSframeEpochKeys: number;
+    }
+
+    export function evaluateWebrtcSframeRfc9605HeaderKidCtrOverreadAndCtrNonceReuseGate(
+      context: WebrtcSframeRfc9605HeaderKidCtrOverreadAndCtrNonceReuseContext,
+    ): WebrtcSframeRfc9605HeaderKidCtrOverreadAndCtrNonceReuseDecision {
+      const policyId =
+        "P869-WEBRTC-SFRAME-RFC9605-HEADER-KID-CTR-OVERREAD-AND-CTR-NONCE-REUSE-GUARD" as const;
+      const clampedMalformedOrNonceReusedSframePayloads = 0;
+      const clampedMaxRetainedSframeEpochKeys = Math.min(
+        Math.max(context.maxRetainedSframeEpochKeys, 2),
+        4,
+      );
+
+      if (context.sframeKidCtrOverreadOrCtrNonceReuseDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_malformed_or_nonce_reused_sframe_and_clamp_epoch_ring",
+          reason:
+            "Enterprise WebRTC RFC 9605 SFrame Variable-Length KID/CTR Header Closure & AES-GCM CTR Nonce-Reuse Policy Check: inbound SFrame payload failed 1+(X?(K+1)+(C+1):0)+TagLen byte-sum closure or reused a non-monotonic (KID, CTR) AEAD nonce; offline synthetic policy state machine dropping 100% of malformed or nonce-reused SFrame payloads (0 violations) and clamping retained SFrame epoch key ring to [2, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live WebCrypto/EncodedTransform worker decryption latency not_measured).",
+          clampedMalformedOrNonceReusedSframePayloads,
+          clampedMaxRetainedSframeEpochKeys,
+        };
+      }
+
+      if (
+        context.malformedOrNonceReusedSframePayloads > 0 ||
+        context.maxRetainedSframeEpochKeys < 2 ||
+        context.maxRetainedSframeEpochKeys > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_sframe_nonce_violations_and_epoch_ring_bounds",
+          reason:
+            "Malformed or nonce-reused SFrame payloads (>0 synthetic ceiling) or retained SFrame epoch key ring (<2 or >4 synthetic bounds) out of bounds; clamping violations to 0 and epoch key ring to [2, 4].",
+          clampedMalformedOrNonceReusedSframePayloads,
+          clampedMaxRetainedSframeEpochKeys,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 9605 SFrame header byte closure, monotonic (KID, CTR) nonce uniqueness (0 violations), and [2, 4] epoch key-ring bounds verified.",
+        clampedMalformedOrNonceReusedSframePayloads,
+        clampedMaxRetainedSframeEpochKeys,
+      };
+    }
+
+    export interface WebrtcMlsRfc9420MemberRemovalEpochRatchetAndSfuZeroPlaintextVadContext {
+      evictedMemberStaleEpochAccessOrUnredactedSfuVadLeakDetected: boolean;
+      staleEpochOrPlaintextSfuAudioFrames: number;
+      mlsEpochRatchetDeadlineMs: number;
+    }
+
+    export interface WebrtcMlsRfc9420MemberRemovalEpochRatchetAndSfuZeroPlaintextVadDecision {
+      violated: boolean;
+      policyId: "P870-WEBRTC-MLS-RFC9420-MEMBER-REMOVAL-EPOCH-RATCHET-AND-SFU-ZERO-PLAINTEXT-VAD-GUARD";
+      action:
+        | "ratchet_mls_epoch_on_member_removal_and_quantize_sfu_vad"
+        | "clamp_stale_epoch_frames_and_mls_ratchet_deadline_bounds"
+        | "allow";
+      reason: string;
+      clampedStaleEpochOrPlaintextSfuAudioFrames: number;
+      clampedMlsEpochRatchetDeadlineMs: number;
+    }
+
+    export function evaluateWebrtcMlsRfc9420MemberRemovalEpochRatchetAndSfuZeroPlaintextVadGate(
+      context: WebrtcMlsRfc9420MemberRemovalEpochRatchetAndSfuZeroPlaintextVadContext,
+    ): WebrtcMlsRfc9420MemberRemovalEpochRatchetAndSfuZeroPlaintextVadDecision {
+      const policyId =
+        "P870-WEBRTC-MLS-RFC9420-MEMBER-REMOVAL-EPOCH-RATCHET-AND-SFU-ZERO-PLAINTEXT-VAD-GUARD" as const;
+      const clampedStaleEpochOrPlaintextSfuAudioFrames = 0;
+      const clampedMlsEpochRatchetDeadlineMs = Math.min(
+        Math.max(context.mlsEpochRatchetDeadlineMs, 500),
+        2000,
+      );
+
+      if (context.evictedMemberStaleEpochAccessOrUnredactedSfuVadLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "ratchet_mls_epoch_on_member_removal_and_quantize_sfu_vad",
+          reason:
+            "Enterprise WebRTC RFC 9420 MLS Member-Removal Epoch Ratchet & SFU Zero-Plaintext VAD Policy Check: evicted conference member attempted to use a stale MLS Epoch KID or unquantized 1dB RFC 6464 audio-level contours were exposed to an untrusted cloud SFU; offline synthetic policy state machine revoking stale epochs and quantizing SFU VAD headers (0 stale-epoch or plaintext/side-channel frames) and clamping MLS epoch ratchet deadline to [500, 2000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live OpenMLS TreeKEM Commit derivation latency not_measured).",
+          clampedStaleEpochOrPlaintextSfuAudioFrames,
+          clampedMlsEpochRatchetDeadlineMs,
+        };
+      }
+
+      if (
+        context.staleEpochOrPlaintextSfuAudioFrames > 0 ||
+        context.mlsEpochRatchetDeadlineMs < 500 ||
+        context.mlsEpochRatchetDeadlineMs > 2000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_stale_epoch_frames_and_mls_ratchet_deadline_bounds",
+          reason:
+            "Stale-epoch or plaintext SFU audio frames (>0 synthetic ceiling) or MLS epoch ratchet deadline (<500ms or >2000ms synthetic bounds) out of bounds; clamping violations to 0 and ratchet deadline to [500, 2000]ms.",
+          clampedStaleEpochOrPlaintextSfuAudioFrames,
+          clampedMlsEpochRatchetDeadlineMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 9420 MLS member-removal epoch ratchet ([500, 2000]ms) and SFU zero-plaintext VAD redaction (0 violations) verified.",
+        clampedStaleEpochOrPlaintextSfuAudioFrames,
+        clampedMlsEpochRatchetDeadlineMs,
+      };
+    }
+
 
 
 

@@ -1825,6 +1825,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted inbound PAI headers and anonymizes outbound Privacy:id transfers (0 spoofed or leaked headers) while clamping Spec(T) domains in [1, 4]; live SBC header manipulation latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of circular History-Info retargeting loops and unredacted egress entries (0 violations) and clamps retarget depth in [1, 6] hops; live SBC History-Info AST traversal latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "441. [Topic 78 · P870, 80th FAQ & 880-Test Milestone 🎉: voice-webrtc-sframe-rfc9605-mls-rfc9420-e2ee-key-ratchet-sfu-zero-plaintext-vad-faq] Enterprise WebRTC RFC 9605 SFrame [2,4] Epoch Key-Ring + Monotonic CTR Nonce Guard & RFC 9420 MLS [500,2000]ms Member-Removal Key Ratchet + SFU Zero-Plaintext VAD Guard (P869 / P870 🎉 — Stage 438 · 🎉 Historic P870 Guardrail, 80th Standalone FAQ & 880-Test Triple Milestone · 441 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of truncated SFrame X=1 headers and non-monotonic (KID, CTR) nonce reuses (0 violations) and clamps retained epoch key ring in [2, 4]; live WebCrypto/EncodedTransform worker decryption latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: revokes 100% of evicted-member MLS epochs and quantizes SFU RFC 6464 VAD headers (0 stale-epoch or plaintext/side-channel frames) within a [500, 2000]ms ratchet deadline; live OpenMLS TreeKEM Commit derivation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

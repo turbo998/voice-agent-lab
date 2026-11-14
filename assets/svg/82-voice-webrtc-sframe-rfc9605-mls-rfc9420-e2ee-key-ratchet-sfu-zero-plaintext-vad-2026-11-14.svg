@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg82" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent82" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg82)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="408" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="248" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 438 · TOPIC 78 · P869 / P870 🎉 · 80TH FAQ 🎉 · 880 TESTS 🎉</text>
+  <text x="466" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">WebRTC RFC 9605 SFrame / RFC 9420 MLS E2EE Key Ratchet &amp; SFU Zero-Plaintext VAD Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">企业 WebRTC RFC 9605 SFrame 变长头防越界/防 CTR 重用、RFC 9420 MLS [500,2000]ms 离会棘轮换钥与 SFU 零明文门禁（🎉 P870、第 80 篇 FAQ 与 880 单测三重里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent82)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 9605 SFrame Header Overread & Nonce Reuse Gate (P869) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. SFrame KID/CTR Byte Closure &amp; Nonce Gate (P869)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：畸形 X=1 变长 KID/CTR 头引发密文长度无符号整数下溢越界崩溃</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 破密风险：编码器重置导致同一 KID 下重复使用 CTR，破坏 AES-GCM 机密性</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Attack: Truncated X=1 (K=7,C=7) frame | Duplicate (KID, CTR) nonce</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P869 Gate: 1+K+C+Tag Byte Closure + Monotonic CTR + [2, 4] Epoch Ring</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: drop_malformed_or_nonce_reused_sframe_and_clamp_epoch_ring</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P869）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMalformedOrNonceReusedSframePayloads = 0（0 越界与 Nonce 重用帧）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaxRetainedSframeEpochKeys ∈ [2, 4]（过渡期保留历史 Epoch 密钥上限）</text>
+
+  <!-- Right Column: RFC 9420 MLS Removal Epoch Ratchet & SFU Zero-Plaintext Gate (P870 🎉) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. MLS Removal Ratchet &amp; SFU Zero-Plaintext Gate (P870 🎉)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：被踢出会议的外部顾问继续用旧 Epoch 密钥窃听，或 SFU 泄露 1dB 音量包络</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 棘轮铁律：离会后 [500, 2000]ms 内强制推进 MLS Epoch 换钥并脱敏 RFC 6464 扩展头</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Leak: Evicted member replays KID=0xE0 | Unredacted 1dB RFC 6464 at SFU</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P870 Gate: [500, 2000]ms MLS Epoch Ratchet + Quantized SFU VAD</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: ratchet_mls_epoch_on_member_removal_and_quantize_sfu_vad</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P870 🎉）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedStaleEpochOrPlaintextSfuAudioFrames = 0（0 旧纪元越权与明文泄露帧）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMlsEpochRatchetDeadlineMs ∈ [500, 2000] ms（离会 MLS 棘轮换钥时限）</text>
+
+  <!-- Bottom Quantitative & Provenance Panel -->
+  <rect x="44" y="412" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="442" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Quantitative Evaluation Matrix &amp; Production Verification Checklist (Stage 438 · Topic 78 · P870 🎉 · 80th FAQ 🎉 · 880 Tests 🎉)</text>
+  <rect x="64" y="458" width="1152" height="106" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="482" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P869:    evaluateWebrtcSframeRfc9605HeaderKidCtrOverreadAndCtrNonceReuseGate        =&gt; 0 nonce/overread | [2, 4] keys</text>
+  <text x="80" y="506" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P870 🎉: evaluateWebrtcMlsRfc9420MemberRemovalEpochRatchetAndSfuZeroPlaintextVadGate =&gt; 0 stale/leaks    | [500, 2000]ms</text>
+  <text x="80" y="530" fill="#93C5FD" font-family="Consolas, monospace" font-size="12">• Checklist: [x] SFrame 1+K+C+Tag Closure  [x] Monotonic CTR Nonce  [x] [500,2000]ms MLS Ratchet  [x] SFU RFC 6464 Quantization</text>
+  <text x="80" y="552" fill="#34D399" font-family="Consolas, monospace" font-size="12">• Milestone: P870 🎉 · 80th Standalone FAQ 🎉 · 880 Unit Tests 🎉 · 441 Dimensions · 879 Guardrails · 888 Synthetic Probes (698 Live POC)</text>
+
+  <!-- Provenance Footer -->
+  <rect x="64" y="578" width="1152" height="66" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="602" fill="#FCD34D" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">Provenance &amp; Timing Disclosure (synthetic · independently_reproduced=false):</text>
+  <text x="80" y="622" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="80" y="638" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Offline in-memory policy/configuration state-machine check only; live WebCrypto/OpenMLS TreeKEM derivation &amp; EncodedTransform worker latencies are not_measured.</text>
+</svg>
