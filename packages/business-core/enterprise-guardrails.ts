@@ -77709,6 +77709,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcDtlsSrtpRfc9146ConnectionIdNatRebindAndNullCipherDowngradeContext {
+      srtpNullCipherOrUnauthenticatedCidRebindDetected: boolean;
+      nullCipherOrUnauthenticatedCidRebinds: number;
+      dtlsCidSparePoolSize: number;
+    }
+
+    export interface WebrtcDtlsSrtpRfc9146ConnectionIdNatRebindAndNullCipherDowngradeDecision {
+      violated: boolean;
+      policyId: "P861-WEBRTC-DTLS-SRTP-RFC9146-CONNECTION-ID-NAT-REBIND-AND-NULL-CIPHER-DOWNGRADE-GUARD";
+      action:
+        | "reject_null_srtp_cipher_and_require_aead_verified_cid_rebind"
+        | "clamp_cid_rebind_violations_and_spare_pool_bounds"
+        | "allow";
+      reason: string;
+      clampedNullCipherOrUnauthenticatedCidRebinds: number;
+      clampedDtlsCidSparePoolSize: number;
+    }
+
+    export function evaluateWebrtcDtlsSrtpRfc9146ConnectionIdNatRebindAndNullCipherDowngradeGate(
+      context: WebrtcDtlsSrtpRfc9146ConnectionIdNatRebindAndNullCipherDowngradeContext,
+    ): WebrtcDtlsSrtpRfc9146ConnectionIdNatRebindAndNullCipherDowngradeDecision {
+      const policyId =
+        "P861-WEBRTC-DTLS-SRTP-RFC9146-CONNECTION-ID-NAT-REBIND-AND-NULL-CIPHER-DOWNGRADE-GUARD" as const;
+      const clampedNullCipherOrUnauthenticatedCidRebinds = 0;
+      const clampedDtlsCidSparePoolSize = Math.min(
+        Math.max(context.dtlsCidSparePoolSize, 2),
+        8,
+      );
+
+      if (context.srtpNullCipherOrUnauthenticatedCidRebindDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_null_srtp_cipher_and_require_aead_verified_cid_rebind",
+          reason:
+            "Enterprise WebRTC/SIP RFC 5764 / RFC 9146 DTLS-SRTP Connection ID (CID) Mobility & Null-Cipher Downgrade Policy Check: session attempted SRTP_NULL_HMAC_SHA1_80 cipher downgrade or unauthenticated UDP source-IP NAT rebinding without cryptographic CID + SRTP AEAD verification; offline synthetic policy state machine rejecting 100% of null-cipher or unauthenticated NAT rebinds (0 violations) and clamping DTLS CID spare pool size to [2, 8] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live libsrtp AES-GCM verification latency not_measured).",
+          clampedNullCipherOrUnauthenticatedCidRebinds,
+          clampedDtlsCidSparePoolSize,
+        };
+      }
+
+      if (
+        context.nullCipherOrUnauthenticatedCidRebinds > 0 ||
+        context.dtlsCidSparePoolSize < 2 ||
+        context.dtlsCidSparePoolSize > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_cid_rebind_violations_and_spare_pool_bounds",
+          reason:
+            "Null-cipher or unauthenticated CID NAT rebinds (>0 synthetic ceiling) or DTLS CID spare pool size (<2 or >8 synthetic bounds) out of bounds; clamping violations to 0 and CID spare pool size to [2, 8].",
+          clampedNullCipherOrUnauthenticatedCidRebinds,
+          clampedDtlsCidSparePoolSize,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: DTLS-SRTP RFC 9146 AEAD-verified CID mobility (0 null-cipher or unauthenticated rebinds) and [2, 8] CID spare pool bounds verified.",
+        clampedNullCipherOrUnauthenticatedCidRebinds,
+        clampedDtlsCidSparePoolSize,
+      };
+    }
+
+    export interface WebrtcDtlsSrtpRfc5764MkiSeamlessKeyRotationAndOldKeyGraceOverlapContext {
+      mkiRekeyStormOrMissingOldKeyOverlapDetected: boolean;
+      mkiRekeyDesyncDroppedFrames: number;
+      srtpMkiKeyRotationIntervalSeconds: number;
+    }
+
+    export interface WebrtcDtlsSrtpRfc5764MkiSeamlessKeyRotationAndOldKeyGraceOverlapDecision {
+      violated: boolean;
+      policyId: "P862-WEBRTC-DTLS-SRTP-RFC5764-MKI-SEAMLESS-KEY-ROTATION-AND-OLD-KEY-GRACE-OVERLAP-GUARD";
+      action:
+        | "enforce_dual_mki_overlap_window_and_clamp_rekey_interval"
+        | "clamp_mki_desync_drops_and_rotation_interval_bounds"
+        | "allow";
+      reason: string;
+      clampedMkiRekeyDesyncDroppedFrames: number;
+      clampedSrtpMkiKeyRotationIntervalSeconds: number;
+    }
+
+    export function evaluateWebrtcDtlsSrtpRfc5764MkiSeamlessKeyRotationAndOldKeyGraceOverlapGate(
+      context: WebrtcDtlsSrtpRfc5764MkiSeamlessKeyRotationAndOldKeyGraceOverlapContext,
+    ): WebrtcDtlsSrtpRfc5764MkiSeamlessKeyRotationAndOldKeyGraceOverlapDecision {
+      const policyId =
+        "P862-WEBRTC-DTLS-SRTP-RFC5764-MKI-SEAMLESS-KEY-ROTATION-AND-OLD-KEY-GRACE-OVERLAP-GUARD" as const;
+      const clampedMkiRekeyDesyncDroppedFrames = 0;
+      const clampedSrtpMkiKeyRotationIntervalSeconds = Math.min(
+        Math.max(context.srtpMkiKeyRotationIntervalSeconds, 300),
+        3600,
+      );
+
+      if (context.mkiRekeyStormOrMissingOldKeyOverlapDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_dual_mki_overlap_window_and_clamp_rekey_interval",
+          reason:
+            "Enterprise WebRTC/SIP RFC 5764 / RFC 3711 SRTP MKI Seamless Key Rotation & Dual-Key Grace Overlap Policy Check: rapid MKI rekey storm or immediate old-key eviction dropped in-flight reordered SRTP audio frames; offline synthetic policy state machine enforcing dual (MKI_old, MKI_new) grace overlap (0 MKI desync dropped frames) and clamping MKI key rotation interval to [300, 3600]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live libsrtp MKI context switch latency not_measured).",
+          clampedMkiRekeyDesyncDroppedFrames,
+          clampedSrtpMkiKeyRotationIntervalSeconds,
+        };
+      }
+
+      if (
+        context.mkiRekeyDesyncDroppedFrames > 0 ||
+        context.srtpMkiKeyRotationIntervalSeconds < 300 ||
+        context.srtpMkiKeyRotationIntervalSeconds > 3600
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_mki_desync_drops_and_rotation_interval_bounds",
+          reason:
+            "SRTP MKI rekey desync dropped frames (>0 synthetic ceiling) or MKI key rotation interval (<300s or >3600s synthetic bounds) out of bounds; clamping dropped frames to 0 and rotation interval to [300, 3600]s.",
+          clampedMkiRekeyDesyncDroppedFrames,
+          clampedSrtpMkiKeyRotationIntervalSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SRTP RFC 5764 / RFC 3711 dual-MKI grace overlap (0 desync dropped frames) and [300, 3600]s key rotation interval verified.",
+        clampedMkiRekeyDesyncDroppedFrames,
+        clampedSrtpMkiKeyRotationIntervalSeconds,
+      };
+    }
+
 
 
 

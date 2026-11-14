@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg78" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent78" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg78)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="396" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="242" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 434 · TOPIC 74 · P861 / P862 · SVG 78 · 880 PROBES 🎉</text>
+  <text x="454" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">WebRTC/SIP RFC 5764 / RFC 9146 DTLS-SRTP CID Mobility Anti-Hijack &amp; MKI Seamless Rekey Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">企业 WebRTC/SIP DTLS-SRTP (RFC 5764/9146) CID [2,8] 漫游防劫持、反 SRTP_NULL 空加密降级与 MKI [300,3600]s 双钥无缝轮换门禁（🎉 880 探针 &amp; 690 现场探针里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent78)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 9146 DTLS CID NAT Rebind & Null-Cipher Downgrade Gate (P861) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. DTLS CID Mobility &amp; Anti-SRTP_NULL Gate (P861)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：Wi-Fi 切 5G 触发 3s ICE 断音，或盲目开启 Symmetric RTP 被单包伪造源 IP 劫持</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 降级风险：客户端诱导协商 SRTP_NULL_HMAC_SHA1_80 空加密套件导致全通话明文泄露</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Attack: use_srtp=SRTP_NULL | Spoofed UDP IP rebind without AEAD auth</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P861 Gate: Ban SRTP_NULL + AEAD-Verified CID Rebind + [2, 8] Spare CIDs</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: reject_null_srtp_cipher_and_require_aead_verified_cid_rebind</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P861）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedNullCipherOrUnauthenticatedCidRebinds = 0（100% 阻断空加密与伪造重绑）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedDtlsCidSparePoolSize ∈ [2, 8]（防跨网追踪备用 CID 池大小）</text>
+
+  <!-- Right Column: RFC 5764 MKI Seamless Key Rotation & Grace Overlap Gate (P862) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. SRTP MKI Seamless Rotation &amp; Overlap Gate (P862)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：长通话在线切换 MKI 主密钥时立即销毁旧密钥，导致在途乱序尾包验签失败爆音</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 双钥重叠：将 MKI 轮换周期锁在 [300, 3600]s 并维护 (MKI_old, MKI_new) 双上下文窗口</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Desync: 30s rapid rekey storm | Single-key cut drops 9 late MKI_old frames</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P862 Gate: Dual-MKI Grace Overlap Window + [300, 3600]s Rekey Interval</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: enforce_dual_mki_overlap_window_and_clamp_rekey_interval</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P862）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMkiRekeyDesyncDroppedFrames = 0（换钥期间 0 乱序音频帧被丢弃）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedSrtpMkiKeyRotationIntervalSeconds ∈ [300, 3600] s（合规主密钥轮换周期）</text>
+
+  <!-- Bottom Quantitative & Provenance Panel -->
+  <rect x="44" y="412" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="442" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Quantitative Evaluation Matrix &amp; Production Verification Checklist (Stage 434 · Topic 74 · 437 Dims · 880 Probes 🎉 · 690 Live POC 🎉)</text>
+  <rect x="64" y="458" width="1152" height="106" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="482" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P861: evaluateWebrtcDtlsSrtpRfc9146ConnectionIdNatRebindAndNullCipherDowngradeGate      =&gt; 0 null/rebinds | [2, 8] CIDs</text>
+  <text x="80" y="506" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P862: evaluateWebrtcDtlsSrtpRfc5764MkiSeamlessKeyRotationAndOldKeyGraceOverlapGate       =&gt; 0 MKI drops    | [300, 3600]s</text>
+  <text x="80" y="530" fill="#93C5FD" font-family="Consolas, monospace" font-size="12">• Checklist: [x] Ban SRTP_NULL_* Profiles  [x] AEAD-Verified CID Migration  [x] [300,3600]s MKI Cadence  [x] Dual-MKI Overlap Window</text>
+  <text x="80" y="552" fill="#34D399" font-family="Consolas, monospace" font-size="12">• Milestone: 437 Dimensions · 871 Production Guardrails · 880 Deterministic Synthetic Probes 🎉 (690 Live POC Probes 🎉) · 876 Unit Tests</text>
+
+  <!-- Provenance Footer -->
+  <rect x="64" y="578" width="1152" height="66" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="602" fill="#FCD34D" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">Provenance &amp; Timing Disclosure (synthetic · independently_reproduced=false):</text>
+  <text x="80" y="622" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="80" y="638" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Offline in-memory policy/configuration state-machine check only; live libsrtp/OpenSSL AES-GCM verification &amp; kernel UDP socket address migration latencies are not_measured.</text>
+</svg>

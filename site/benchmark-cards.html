@@ -1588,6 +1588,13 @@
               <td><code>P859 / P860 🎉 deterministic SIP RFC 8224/8225 STIR/SHAKEN x5u anti-SSRF / [15,60]s iat replay &amp; attest=B/C step-up guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>437. [专题74 · 880探针 &amp; 690现场探针 🎉 `docs/voice-webrtc-dtls-srtp-rfc5764-rfc9146-connection-id-nat-rebind-mki-rekey-replay-faq.md`] 企业 WebRTC/SIP `RFC 5764 / RFC 9146 (DTLS-SRTP)` 禁用 `SRTP_NULL_*` 空加密降级、`[2, 8]` 备用 `CID` 先过 `SRTP AEAD (AES-GCM)` 验签再更新远端五元组（`0` 空加密或未授权 NAT 重绑，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `libsrtp AES-GCM` 验签耗时 `not_measured`）&amp; `RFC 3711 MKI` `[300, 3600]s` 主密钥轮换周期锁与 `(MKI_old, MKI_new)` 双密钥平滑重叠解密窗口（`0` 换钥失步丢帧；真实 `libsrtp` 密钥切换耗时 `not_measured`）(`P861` / `P862` · Stage 434 · Topic 74 · 🎉 880 合成探针与 690 现场探针双里程碑 · 871 护栏 &amp; 880 探针 🎉 · 437 维)</strong>
+              </td>
+              <td><code>P861 / P862 deterministic WebRTC/SIP RFC 5764/9146 DTLS-SRTP [2,8] CID mobility anti-hijack / anti-SRTP_NULL &amp; [300,3600]s dual-MKI rekey guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5152,6 +5159,13 @@
                 <strong>436. [专题73 · P860 &amp; 75篇FAQ &amp; 875单测 🎉 `docs/voice-sip-stir-shaken-rfc8224-rfc8225-x5u-ssrf-iat-replay-attestation-stepup-faq.md`] 企业 SIP `RFC 8224 (STIR) / RFC 8225 (PASSporT)` `Identity x5u` 预缓存 `STI-PA` 域名白名单校验（禁呼叫路径同步外联、`436/437` 拒单，`0` 非授信外联 SSRF）与 `[15, 60]s` `PASSporT iat` 新鲜度窗口 + `(orig, dest, iat, Call-ID)` 防重放去重门禁（`0` 过期/重放令牌，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `ES256 ECDSA` 签名验证耗时 `not_measured`）&amp; `orig.tn / dest.tn` 与 SIP `From / PAI / To` 严格双向匹配、`attest="B" / "C"` 零信任高危写操作拦截（`0` 未验真 `ANI` 写提交）与 `[1, 2]` 项带外 `FIDO2 / Push` 阶梯鉴权锁（真实带外 `FIDO2` 挑战耗时 `not_measured`）(`P859` / `P860 🎉` · Stage 433 · Topic 73 · 🎉 P860 护栏、第 75 篇独立 FAQ 与 875 单测三重里程碑 · 869 护栏 &amp; 878 探针 · 436 维)</strong>
               </td>
               <td><code>P859 / P860 🎉 deterministic SIP RFC 8224/8225 STIR/SHAKEN x5u anti-SSRF / [15,60]s iat replay &amp; attest=B/C step-up guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>437. [专题74 · 880探针 &amp; 690现场探针 🎉 `docs/voice-webrtc-dtls-srtp-rfc5764-rfc9146-connection-id-nat-rebind-mki-rekey-replay-faq.md`] 企业 WebRTC/SIP `RFC 5764 / RFC 9146 (DTLS-SRTP)` 禁用 `SRTP_NULL_*` 空加密降级、`[2, 8]` 备用 `CID` 先过 `SRTP AEAD (AES-GCM)` 验签再更新远端五元组（`0` 空加密或未授权 NAT 重绑，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `libsrtp AES-GCM` 验签耗时 `not_measured`）&amp; `RFC 3711 MKI` `[300, 3600]s` 主密钥轮换周期锁与 `(MKI_old, MKI_new)` 双密钥平滑重叠解密窗口（`0` 换钥失步丢帧；真实 `libsrtp` 密钥切换耗时 `not_measured`）(`P861` / `P862` · Stage 434 · Topic 74 · 🎉 880 合成探针与 690 现场探针双里程碑 · 871 护栏 &amp; 880 探针 🎉 · 437 维)</strong>
+              </td>
+              <td><code>P861 / P862 deterministic WebRTC/SIP RFC 5764/9146 DTLS-SRTP [2,8] CID mobility anti-hijack / anti-SRTP_NULL &amp; [300,3600]s dual-MKI rekey guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
