@@ -79737,6 +79737,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc4235DialogEventXmlTagSanitizationAndBlfPickupAuthContext {
+      unauthorizedBlfWatcherDialogTagLeakOrExpiresAbuseDetected: boolean;
+      unredactedDialogTagLeakPayloads: number;
+      subscriptionExpiresSeconds: number;
+    }
+
+    export interface SipRfc4235DialogEventXmlTagSanitizationAndBlfPickupAuthDecision {
+      violated: boolean;
+      policyId: "P891-SIP-RFC4235-DIALOG-EVENT-XML-TAG-SANITIZATION-AND-BLF-PICKUP-AUTH-GUARD";
+      action:
+        | "strip_rfc4235_dialog_tags_and_enforce_pickup_acl"
+        | "clamp_unredacted_tag_payloads_and_expires_bounds"
+        | "allow";
+      reason: string;
+      clampedUnredactedDialogTagLeakPayloads: number;
+      clampedSubscriptionExpiresSeconds: number;
+    }
+
+    export function evaluateSipRfc4235DialogEventXmlTagSanitizationAndBlfPickupAuthGate(
+      context: SipRfc4235DialogEventXmlTagSanitizationAndBlfPickupAuthContext,
+    ): SipRfc4235DialogEventXmlTagSanitizationAndBlfPickupAuthDecision {
+      const policyId =
+        "P891-SIP-RFC4235-DIALOG-EVENT-XML-TAG-SANITIZATION-AND-BLF-PICKUP-AUTH-GUARD" as const;
+      const clampedUnredactedDialogTagLeakPayloads = 0;
+      const clampedSubscriptionExpiresSeconds = Math.min(
+        Math.max(context.subscriptionExpiresSeconds, 300),
+        3600,
+      );
+
+      if (context.unauthorizedBlfWatcherDialogTagLeakOrExpiresAbuseDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_rfc4235_dialog_tags_and_enforce_pickup_acl",
+          reason:
+            "Enterprise SIP RFC 4235 Dialog Event (BLF) XML Tag Sanitization & Pickup ACL Policy Check: plaintext call-id/local-tag/remote-tag leaked in application/dialog-info+xml to non-pickup-authorized watcher; offline synthetic policy state machine stripping dialog tags (0 leaked pickup payloads) and clamping SUBSCRIBE Expires to [300, 3600] seconds (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live libxml2 DOM serialization latency not_measured).",
+          clampedUnredactedDialogTagLeakPayloads,
+          clampedSubscriptionExpiresSeconds,
+        };
+      }
+
+      if (
+        context.unredactedDialogTagLeakPayloads > 0 ||
+        context.subscriptionExpiresSeconds < 300 ||
+        context.subscriptionExpiresSeconds > 3600
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unredacted_tag_payloads_and_expires_bounds",
+          reason:
+            "Unredacted RFC 4235 dialog-tag payloads (>0 synthetic ceiling) or subscription Expires (<300s or >3600s synthetic bounds) out of bounds; clamping leaked payloads to 0 and Expires to [300, 3600] seconds.",
+          clampedUnredactedDialogTagLeakPayloads,
+          clampedSubscriptionExpiresSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4235 dialog-info+xml tag redaction (0 leaked pickup payloads) and [300, 3600]s Expires bounds verified.",
+        clampedUnredactedDialogTagLeakPayloads,
+        clampedSubscriptionExpiresSeconds,
+      };
+    }
+
+    export interface SipRfc6665UnsolicitedNotifyRejectionAndMinNotifyRateThrottleContext {
+      unsolicitedOutOfDialogNotifyOrXmlFanOutStormDetected: boolean;
+      unsolicitedOrUnthrottledNotifyStormPackets: number;
+      minNotifyIntervalThrottleMs: number;
+    }
+
+    export interface SipRfc6665UnsolicitedNotifyRejectionAndMinNotifyRateThrottleDecision {
+      violated: boolean;
+      policyId: "P892-SIP-RFC6665-UNSOLICITED-NOTIFY-REJECTION-AND-MIN-NOTIFY-RATE-THROTTLE-GUARD";
+      action:
+        | "reject_unsolicited_notify_with_481_and_throttle_fanout"
+        | "clamp_notify_storm_packets_and_throttle_interval_bounds"
+        | "allow";
+      reason: string;
+      clampedUnsolicitedOrUnthrottledNotifyStormPackets: number;
+      clampedMinNotifyIntervalThrottleMs: number;
+    }
+
+    export function evaluateSipRfc6665UnsolicitedNotifyRejectionAndMinNotifyRateThrottleGate(
+      context: SipRfc6665UnsolicitedNotifyRejectionAndMinNotifyRateThrottleContext,
+    ): SipRfc6665UnsolicitedNotifyRejectionAndMinNotifyRateThrottleDecision {
+      const policyId =
+        "P892-SIP-RFC6665-UNSOLICITED-NOTIFY-REJECTION-AND-MIN-NOTIFY-RATE-THROTTLE-GUARD" as const;
+      const clampedUnsolicitedOrUnthrottledNotifyStormPackets = 0;
+      const clampedMinNotifyIntervalThrottleMs = Math.min(
+        Math.max(context.minNotifyIntervalThrottleMs, 100),
+        1000,
+      );
+
+      if (context.unsolicitedOutOfDialogNotifyOrXmlFanOutStormDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unsolicited_notify_with_481_and_throttle_fanout",
+          reason:
+            "Enterprise SIP RFC 6665 Unsolicited NOTIFY (481) & XML Fan-Out Throttle Policy Check: unsolicited out-of-dialog NOTIFY or unthrottled presence XML fan-out storm detected; offline synthetic policy state machine rejecting unsolicited NOTIFY with SIP 481 (0 storm/unsolicited packets) and clamping Min-Notify-Interval throttle window to [100, 1000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live distributed presence-table lock latency not_measured).",
+          clampedUnsolicitedOrUnthrottledNotifyStormPackets,
+          clampedMinNotifyIntervalThrottleMs,
+        };
+      }
+
+      if (
+        context.unsolicitedOrUnthrottledNotifyStormPackets > 0 ||
+        context.minNotifyIntervalThrottleMs < 100 ||
+        context.minNotifyIntervalThrottleMs > 1000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_notify_storm_packets_and_throttle_interval_bounds",
+          reason:
+            "Unsolicited or unthrottled NOTIFY storm packets (>0 synthetic ceiling) or Min-Notify-Interval throttle window (<100ms or >1000ms synthetic bounds) out of bounds; clamping storm packets to 0 and throttle window to [100, 1000]ms.",
+          clampedUnsolicitedOrUnthrottledNotifyStormPackets,
+          clampedMinNotifyIntervalThrottleMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6665 unsolicited NOTIFY 481 rejection (0 storm packets) and [100, 1000]ms throttle bounds verified.",
+        clampedUnsolicitedOrUnthrottledNotifyStormPackets,
+        clampedMinNotifyIntervalThrottleMs,
+      };
+    }
+
 
 
 

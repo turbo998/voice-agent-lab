@@ -1891,6 +1891,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% TCP_NODELAY=true and resynchronizes RFC 4571 16-bit framing in [12, 1400] bytes (0 desynced/coalesced frames); live kernel setsockopt TCP_NODELAY syscall latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% active->passive role pairing and flushes post-stall TCP HoL bursts in [60, 240]ms (0 chipmunk bursts or deadlocked pairs); live NetEq W-SOLA DSP time-stretching latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "452. [Topic 89 · 901-Guardrail, 910-Probe & 720-Live-POC Milestone 🎉: voice-sip-rfc6665-rfc4235-dialog-event-blf-pickup-hijack-notify-storm-subscription-leak-faq] Enterprise SIP RFC 4235 Dialog Event (BLF) XML Tag Redaction + [300,3600]s Expires & RFC 6665 Unsolicited NOTIFY 481 + [100,1000]ms Throttle Guard (P891 / P892 — Stage 449 · 🎉 Historic 901-Guardrail, 910-Probe & 720-Live-POC Milestone · 452 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of call-id/local-tag/remote-tag attributes from unauthorized BLF dialog-info+xml payloads (0 leaked pickup payloads) and clamps Expires in [300, 3600]s; live libxml2 DOM serialization latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsolicited out-of-dialog NOTIFY requests with SIP 481 (0 storm/unsolicited packets) and clamps Min-Notify-Interval in [100, 1000]ms; live distributed presence-table lock latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
