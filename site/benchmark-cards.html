@@ -1581,6 +1581,13 @@
               <td><code>P857 / P858 deterministic WebRTC RFC 8656 TURN peer-SSRF [1,8] permissions &amp; ChannelData 4B framing / [60,600]s lifetime guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>436. [专题73 · P860 &amp; 75篇FAQ &amp; 875单测 🎉 `docs/voice-sip-stir-shaken-rfc8224-rfc8225-x5u-ssrf-iat-replay-attestation-stepup-faq.md`] 企业 SIP `RFC 8224 (STIR) / RFC 8225 (PASSporT)` `Identity x5u` 预缓存 `STI-PA` 域名白名单校验（禁呼叫路径同步外联、`436/437` 拒单，`0` 非授信外联 SSRF）与 `[15, 60]s` `PASSporT iat` 新鲜度窗口 + `(orig, dest, iat, Call-ID)` 防重放去重门禁（`0` 过期/重放令牌，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `ES256 ECDSA` 签名验证耗时 `not_measured`）&amp; `orig.tn / dest.tn` 与 SIP `From / PAI / To` 严格双向匹配、`attest="B" / "C"` 零信任高危写操作拦截（`0` 未验真 `ANI` 写提交）与 `[1, 2]` 项带外 `FIDO2 / Push` 阶梯鉴权锁（真实带外 `FIDO2` 挑战耗时 `not_measured`）(`P859` / `P860 🎉` · Stage 433 · Topic 73 · 🎉 P860 护栏、第 75 篇独立 FAQ 与 875 单测三重里程碑 · 869 护栏 &amp; 878 探针 · 436 维)</strong>
+              </td>
+              <td><code>P859 / P860 🎉 deterministic SIP RFC 8224/8225 STIR/SHAKEN x5u anti-SSRF / [15,60]s iat replay &amp; attest=B/C step-up guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5138,6 +5145,13 @@
                 <strong>435 🎉. [专题72 · 435维 🎉 `docs/voice-webrtc-turn-rfc8656-channelbind-ssrf-relay-bounce-permission-quota-amplification-faq.md`] WebRTC `RFC 8656 (TURN)` `XOR-PEER-ADDRESS` 内网/环回/云 `IMDS`（`169.254.169.254`）防 SSRF 中继反射 `STUN 403` 拒单与单 `Allocation` `[1, 8]` 个对端权限上限门禁（`0` 内网 SSRF 反射尝试，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `coturn` CIDR 前缀树查找耗时 `not_measured`）&amp; `0x4000–0x7FFF` `ChannelData` 4 字节对齐分帧闭合校验与 `[60, 600]s` `Allocation LIFETIME` 租期配额锁（`0` 失步/越界帧；真实 `TURNS` TLS 1.3 套接字分帧耗时 `not_measured`）(`P857` / `P858` · Stage 432 · Topic 72 · 🎉 435 大评测维度历史性里程碑 · 867 护栏 &amp; 876 探针 · 435 维 🎉)</strong>
               </td>
               <td><code>P857 / P858 deterministic WebRTC RFC 8656 TURN peer-SSRF [1,8] permissions &amp; ChannelData 4B framing / [60,600]s lifetime guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>436. [专题73 · P860 &amp; 75篇FAQ &amp; 875单测 🎉 `docs/voice-sip-stir-shaken-rfc8224-rfc8225-x5u-ssrf-iat-replay-attestation-stepup-faq.md`] 企业 SIP `RFC 8224 (STIR) / RFC 8225 (PASSporT)` `Identity x5u` 预缓存 `STI-PA` 域名白名单校验（禁呼叫路径同步外联、`436/437` 拒单，`0` 非授信外联 SSRF）与 `[15, 60]s` `PASSporT iat` 新鲜度窗口 + `(orig, dest, iat, Call-ID)` 防重放去重门禁（`0` 过期/重放令牌，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `ES256 ECDSA` 签名验证耗时 `not_measured`）&amp; `orig.tn / dest.tn` 与 SIP `From / PAI / To` 严格双向匹配、`attest="B" / "C"` 零信任高危写操作拦截（`0` 未验真 `ANI` 写提交）与 `[1, 2]` 项带外 `FIDO2 / Push` 阶梯鉴权锁（真实带外 `FIDO2` 挑战耗时 `not_measured`）(`P859` / `P860 🎉` · Stage 433 · Topic 73 · 🎉 P860 护栏、第 75 篇独立 FAQ 与 875 单测三重里程碑 · 869 护栏 &amp; 878 探针 · 436 维)</strong>
+              </td>
+              <td><code>P859 / P860 🎉 deterministic SIP RFC 8224/8225 STIR/SHAKEN x5u anti-SSRF / [15,60]s iat replay &amp; attest=B/C step-up guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

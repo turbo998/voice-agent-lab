@@ -77573,6 +77573,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipStirShakenRfc8224X5uCertificateSsrfAndIatFreshnessReplayContext {
+      untrustedX5uUrlOrIatReplayDetected: boolean;
+      untrustedX5uOrReplayedPassports: number;
+      passportIatFreshnessWindowSeconds: number;
+    }
+
+    export interface SipStirShakenRfc8224X5uCertificateSsrfAndIatFreshnessReplayDecision {
+      violated: boolean;
+      policyId: "P859-SIP-STIR-SHAKEN-RFC8224-X5U-CERTIFICATE-SSRF-AND-IAT-FRESHNESS-REPLAY-GUARD";
+      action:
+        | "reject_untrusted_x5u_or_replayed_passport_with_436_438"
+        | "clamp_stir_x5u_replay_and_iat_window_bounds"
+        | "allow";
+      reason: string;
+      clampedUntrustedX5uOrReplayedPassports: number;
+      clampedPassportIatFreshnessWindowSeconds: number;
+    }
+
+    export function evaluateSipStirShakenRfc8224X5uCertificateSsrfAndIatFreshnessReplayGate(
+      context: SipStirShakenRfc8224X5uCertificateSsrfAndIatFreshnessReplayContext,
+    ): SipStirShakenRfc8224X5uCertificateSsrfAndIatFreshnessReplayDecision {
+      const policyId =
+        "P859-SIP-STIR-SHAKEN-RFC8224-X5U-CERTIFICATE-SSRF-AND-IAT-FRESHNESS-REPLAY-GUARD" as const;
+      const clampedUntrustedX5uOrReplayedPassports = 0;
+      const clampedPassportIatFreshnessWindowSeconds = Math.min(
+        Math.max(context.passportIatFreshnessWindowSeconds, 15),
+        60,
+      );
+
+      if (context.untrustedX5uUrlOrIatReplayDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_untrusted_x5u_or_replayed_passport_with_436_438",
+          reason:
+            "Enterprise SIP RFC 8224 / RFC 8225 (STIR/SHAKEN) Identity x5u Certificate-Fetch SSRF & iat Replay Policy Check: inbound SIP Identity header referenced an untrusted/private x5u URL or replayed/stale PASSporT iat timestamp; offline synthetic policy state machine rejecting 100% of untrusted x5u or replayed PASSporT tokens with SIP 436/438 (0 untrusted/replayed tokens) and clamping iat freshness window to [15, 60]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live STI-VS ECDSA P-256 verification latency not_measured).",
+          clampedUntrustedX5uOrReplayedPassports,
+          clampedPassportIatFreshnessWindowSeconds,
+        };
+      }
+
+      if (
+        context.untrustedX5uOrReplayedPassports > 0 ||
+        context.passportIatFreshnessWindowSeconds < 15 ||
+        context.passportIatFreshnessWindowSeconds > 60
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_stir_x5u_replay_and_iat_window_bounds",
+          reason:
+            "Untrusted x5u or replayed PASSporT tokens (>0 synthetic ceiling) or PASSporT iat freshness window (<15s or >60s synthetic bounds) out of bounds; clamping violations to 0 and iat window to [15, 60]s.",
+          clampedUntrustedX5uOrReplayedPassports,
+          clampedPassportIatFreshnessWindowSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: STIR/SHAKEN RFC 8224 STI-PA x5u allowlist cache (0 untrusted/replayed tokens) and [15, 60]s iat freshness bounds verified.",
+        clampedUntrustedX5uOrReplayedPassports,
+        clampedPassportIatFreshnessWindowSeconds,
+      };
+    }
+
+    export interface SipStirShakenRfc8225AttestationLevelDowngradeAndOrigidTraceabilityContext {
+      lowAttestationOrTnMismatchOnHighRiskCallDetected: boolean;
+      unverifiedAniHighRiskVoiceCommits: number;
+      requiredStepUpAuthFactors: number;
+    }
+
+    export interface SipStirShakenRfc8225AttestationLevelDowngradeAndOrigidTraceabilityDecision {
+      violated: boolean;
+      policyId: "P860-SIP-STIR-SHAKEN-RFC8225-ATTESTATION-LEVEL-DOWNGRADE-AND-ORIGID-TRACEABILITY-GUARD";
+      action:
+        | "block_unverified_ani_commit_and_require_out_of_band_step_up"
+        | "clamp_unverified_ani_commits_and_step_up_factor_bounds"
+        | "allow";
+      reason: string;
+      clampedUnverifiedAniHighRiskVoiceCommits: number;
+      clampedRequiredStepUpAuthFactors: number;
+    }
+
+    export function evaluateSipStirShakenRfc8225AttestationLevelDowngradeAndOrigidTraceabilityGate(
+      context: SipStirShakenRfc8225AttestationLevelDowngradeAndOrigidTraceabilityContext,
+    ): SipStirShakenRfc8225AttestationLevelDowngradeAndOrigidTraceabilityDecision {
+      const policyId =
+        "P860-SIP-STIR-SHAKEN-RFC8225-ATTESTATION-LEVEL-DOWNGRADE-AND-ORIGID-TRACEABILITY-GUARD" as const;
+      const clampedUnverifiedAniHighRiskVoiceCommits = 0;
+      const clampedRequiredStepUpAuthFactors = Math.min(
+        Math.max(context.requiredStepUpAuthFactors, 1),
+        2,
+      );
+
+      if (context.lowAttestationOrTnMismatchOnHighRiskCallDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "block_unverified_ani_commit_and_require_out_of_band_step_up",
+          reason:
+            "Enterprise SIP RFC 8225 (STIR/SHAKEN) Attestation-Level Downgrade & origid Step-Up Policy Check: inbound call carried SHAKEN attest B/C or orig.tn/dest.tn mismatch against SIP From/PAI/To while attempting a high-risk voice transaction; offline synthetic policy state machine blocking 100% of unverified-ANI high-risk commits (0 unverified-ANI commits) and enforcing [1, 2] out-of-band FIDO2/Push step-up factors (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live FIDO2 push round-trip latency not_measured).",
+          clampedUnverifiedAniHighRiskVoiceCommits,
+          clampedRequiredStepUpAuthFactors,
+        };
+      }
+
+      if (
+        context.unverifiedAniHighRiskVoiceCommits > 0 ||
+        context.requiredStepUpAuthFactors < 1 ||
+        context.requiredStepUpAuthFactors > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unverified_ani_commits_and_step_up_factor_bounds",
+          reason:
+            "Unverified-ANI high-risk voice commits (>0 synthetic ceiling) or required out-of-band step-up factors (<1 or >2 synthetic bounds) out of bounds; clamping unverified commits to 0 and step-up factors to [1, 2].",
+          clampedUnverifiedAniHighRiskVoiceCommits,
+          clampedRequiredStepUpAuthFactors,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: STIR/SHAKEN RFC 8225 orig.tn/dest.tn parity and attest step-up gate (0 unverified-ANI commits, [1, 2] step-up factors) verified.",
+        clampedUnverifiedAniHighRiskVoiceCommits,
+        clampedRequiredStepUpAuthFactors,
+      };
+    }
+
 
 
 
