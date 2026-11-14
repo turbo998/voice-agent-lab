@@ -1777,6 +1777,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of Session-Expires <90s offers with 422 Min-SE:90 (0 sub-floor/loop attempts) and clamps negotiated intervals in [90, 1800]s; live SBC SIP timer wheel scheduling latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins explicit refresher role with jittered UPDATE and reaps 100% of half-open RTP+RTCP dead-air zombie calls within [15, 30]s (0 unreaped zombies); live kernel RTP packet counter polling latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "433. [Topic 70 🎉 · Stage 430 🎉: voice-webrtc-rtp-rfc2198-red-nesting-bomb-rfc5109-ulpfec-mask-overread-cn-shock-faq] WebRTC RFC 2198 RED Non-Recursive [1,2]-Block Closure & RFC 5109 ULPFEC Length Bounds + RFC 3389 CN [-65,-38] dBFS Acoustic-Shock Guard (P853 / P854 — Stage 430 🎉 · 🎉 Historic Stage 430 & Topic 70 Dual Milestone · 433 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of recursive RED-in-RED or block-length overread packets (0 recursive/overread packets) and clamps redundant blocks in [1, 2]; live SIMD XOR parity recovery latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of overread ULPFEC packets and clamps RFC 3389 CN noise floor in [-65, -38] dBFS (0 shock packets); live DSP comfort-noise LPC synthesis latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

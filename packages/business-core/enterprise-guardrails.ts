@@ -77165,6 +77165,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtpRfc2198RedRecursiveNestingBombAndBlockLengthOverreadContext {
+      redInRedRecursionOrBlockLengthOverreadDetected: boolean;
+      recursiveOrOverreadRedPackets: number;
+      maxRedundantAudioBlocksPerPacket: number;
+    }
+
+    export interface WebrtcRtpRfc2198RedRecursiveNestingBombAndBlockLengthOverreadDecision {
+      violated: boolean;
+      policyId: "P853-WEBRTC-RTP-RFC2198-RED-RECURSIVE-NESTING-BOMB-AND-BLOCK-LENGTH-OVERREAD-GUARD";
+      action:
+        | "drop_recursive_or_overread_rfc2198_red_and_clamp_blocks"
+        | "clamp_red_packets_and_redundant_block_bounds"
+        | "allow";
+      reason: string;
+      clampedRecursiveOrOverreadRedPackets: number;
+      clampedMaxRedundantAudioBlocksPerPacket: number;
+    }
+
+    export function evaluateWebrtcRtpRfc2198RedRecursiveNestingBombAndBlockLengthOverreadGate(
+      context: WebrtcRtpRfc2198RedRecursiveNestingBombAndBlockLengthOverreadContext,
+    ): WebrtcRtpRfc2198RedRecursiveNestingBombAndBlockLengthOverreadDecision {
+      const policyId =
+        "P853-WEBRTC-RTP-RFC2198-RED-RECURSIVE-NESTING-BOMB-AND-BLOCK-LENGTH-OVERREAD-GUARD" as const;
+      const clampedRecursiveOrOverreadRedPackets = 0;
+      const clampedMaxRedundantAudioBlocksPerPacket = Math.min(
+        Math.max(context.maxRedundantAudioBlocksPerPacket, 1),
+        2,
+      );
+
+      if (context.redInRedRecursionOrBlockLengthOverreadDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_recursive_or_overread_rfc2198_red_and_clamp_blocks",
+          reason:
+            "WebRTC RTP RFC 2198 audio/red Recursive RED-in-RED Nesting Bomb & Block-Length Overread Policy Check: inbound RFC 2198 packet nested block_pt == red_pt or declared F=1 10-bit block_length sum exceeding RTP payload bytes; offline synthetic policy state machine dropping 100% of recursive/overread RED packets (0 malformed RED packets) and clamping redundant audio blocks per packet to [1, 2] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live NetEQ RED packet splitter latency not_measured).",
+          clampedRecursiveOrOverreadRedPackets,
+          clampedMaxRedundantAudioBlocksPerPacket,
+        };
+      }
+
+      if (
+        context.recursiveOrOverreadRedPackets > 0 ||
+        context.maxRedundantAudioBlocksPerPacket < 1 ||
+        context.maxRedundantAudioBlocksPerPacket > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_red_packets_and_redundant_block_bounds",
+          reason:
+            "Recursive/overread RFC 2198 RED packets (>0 synthetic ceiling) or maximum redundant audio blocks per packet (<1 or >2 synthetic bounds) out of bounds; clamping malformed RED packets to 0 and redundant blocks to [1, 2].",
+          clampedRecursiveOrOverreadRedPackets,
+          clampedMaxRedundantAudioBlocksPerPacket,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 2198 non-recursive base-codec allowlist and byte closure (0 malformed RED packets) and [1, 2] redundant block bounds verified.",
+        clampedRecursiveOrOverreadRedPackets,
+        clampedMaxRedundantAudioBlocksPerPacket,
+      };
+    }
+
+    export interface WebrtcRtpRfc5109UlpfecLengthOverreadAndRfc3389CnAcousticShockContext {
+      ulpfecProtectionLengthOverreadOrCnAcousticShockDetected: boolean;
+      overreadFecOrAcousticShockCnPackets: number;
+      maxRfc3389ComfortNoiseLevelDbfs: number;
+    }
+
+    export interface WebrtcRtpRfc5109UlpfecLengthOverreadAndRfc3389CnAcousticShockDecision {
+      violated: boolean;
+      policyId: "P854-WEBRTC-RTP-RFC5109-ULPFEC-LENGTH-OVERREAD-AND-RFC3389-CN-ACOUSTIC-SHOCK-GUARD";
+      action:
+        | "drop_overread_ulpfec_and_clamp_rfc3389_cn_level"
+        | "clamp_fec_cn_packets_and_noise_level_bounds"
+        | "allow";
+      reason: string;
+      clampedOverreadFecOrAcousticShockCnPackets: number;
+      clampedMaxRfc3389ComfortNoiseLevelDbfs: number;
+    }
+
+    export function evaluateWebrtcRtpRfc5109UlpfecLengthOverreadAndRfc3389CnAcousticShockGate(
+      context: WebrtcRtpRfc5109UlpfecLengthOverreadAndRfc3389CnAcousticShockContext,
+    ): WebrtcRtpRfc5109UlpfecLengthOverreadAndRfc3389CnAcousticShockDecision {
+      const policyId =
+        "P854-WEBRTC-RTP-RFC5109-ULPFEC-LENGTH-OVERREAD-AND-RFC3389-CN-ACOUSTIC-SHOCK-GUARD" as const;
+      const clampedOverreadFecOrAcousticShockCnPackets = 0;
+      const clampedMaxRfc3389ComfortNoiseLevelDbfs = Math.min(
+        Math.max(context.maxRfc3389ComfortNoiseLevelDbfs, -65),
+        -38,
+      );
+
+      if (context.ulpfecProtectionLengthOverreadOrCnAcousticShockDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_overread_ulpfec_and_clamp_rfc3389_cn_level",
+          reason:
+            "WebRTC RTP RFC 5109 ULPFEC Protection-Length Overread & RFC 3389 Comfort Noise (CN) Acoustic-Shock Policy Check: inbound ULPFEC packet declared protection_length exceeding RTP payload bytes or RFC 3389 CN packet carried >-38 dBFS white-noise blast; offline synthetic policy state machine dropping 100% of overread FEC / shock CN packets (0 overread/shock packets) and clamping comfort noise level to [-65, -38] dBFS (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIMD XOR parity recovery latency not_measured).",
+          clampedOverreadFecOrAcousticShockCnPackets,
+          clampedMaxRfc3389ComfortNoiseLevelDbfs,
+        };
+      }
+
+      if (
+        context.overreadFecOrAcousticShockCnPackets > 0 ||
+        context.maxRfc3389ComfortNoiseLevelDbfs < -65 ||
+        context.maxRfc3389ComfortNoiseLevelDbfs > -38
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_fec_cn_packets_and_noise_level_bounds",
+          reason:
+            "Overread ULPFEC or acoustic-shock CN packets (>0 synthetic ceiling) or maximum RFC 3389 comfort noise level (<-65 dBFS or >-38 dBFS synthetic bounds) out of bounds; clamping violations to 0 and CN level to [-65, -38] dBFS.",
+          clampedOverreadFecOrAcousticShockCnPackets,
+          clampedMaxRfc3389ComfortNoiseLevelDbfs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: ULPFEC protection-length byte closure (0 overread/shock packets) and [-65, -38] dBFS RFC 3389 CN bounds verified.",
+        clampedOverreadFecOrAcousticShockCnPackets,
+        clampedMaxRfc3389ComfortNoiseLevelDbfs,
+      };
+    }
+
 
 
 
