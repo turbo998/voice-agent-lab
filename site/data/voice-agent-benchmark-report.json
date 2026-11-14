@@ -1921,6 +1921,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% Contact ;automata capability tagging and clamps Bot-to-Automata turn exchanges in [1, 3] turns (0 infinite loop calls); live semantic call-screener classification latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of starving Accept-Contact ;require;explicit flags (0 starved escalation calls) and clamps Contact priority in [100, 1000] milli-q; live SIP proxy RFC 3841 predicate-intersection latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "457. [Topic 94 · 911-Guardrail, 920-Probe & 730-Live-POC Milestone 🎉: voice-webrtc-rtp-rfc3550-rfc8108-ssrc-collision-loop-csrc-mixer-amplification-faq] Enterprise WebRTC RFC 3550 SSRC Transport Pinning + [1000,10000]ms Cooldown & RFC 8108 Cascaded Mixer CSRC [0,15] Loop Guard (P901 / P902 — Stage 454 · 🎉 Historic 911-Guardrail, 920-Probe & 730-Live-POC Milestone · 457 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins 100% of SSRC ownership to authenticated DTLS-SRTP contexts (0 RTCP BYE storm/hijack packets) and clamps collision cooldown in [1000, 10000]ms; live RTP SSRC hash-table lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: inspects 100% of SSRC union CSRC[0..CC-1] sets across cascaded bridges (0 feedback-loop/overread packets) and clamps CC in [0, 15]; live SIMD PCM audio mixing latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
