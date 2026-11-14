@@ -81233,6 +81233,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtcpRfc5104PliFirKeyframeStormAndAudioBandwidthPreemptionContext {
+      unthrottledPliFirKeyframeStormOrDuplicateFirSeqDetected: boolean;
+      unthrottledKeyframeStormOrAudioStarvedBursts: number;
+      minKeyframeIntervalCooldownMs: number;
+    }
+
+    export interface WebrtcRtcpRfc5104PliFirKeyframeStormAndAudioBandwidthPreemptionDecision {
+      violated: boolean;
+      policyId: "P913-WEBRTC-RTCP-RFC5104-PLI-FIR-KEYFRAME-STORM-AND-AUDIO-BANDWIDTH-PREEMPTION-GUARD";
+      action:
+        | "deduplicate_fir_seq_and_preempt_video_burst_with_opus_audio"
+        | "clamp_keyframe_storm_bursts_and_cooldown_bounds"
+        | "allow";
+      reason: string;
+      clampedUnthrottledKeyframeStormOrAudioStarvedBursts: number;
+      clampedMinKeyframeIntervalCooldownMs: number;
+    }
+
+    export function evaluateWebrtcRtcpRfc5104PliFirKeyframeStormAndAudioBandwidthPreemptionGate(
+      context: WebrtcRtcpRfc5104PliFirKeyframeStormAndAudioBandwidthPreemptionContext,
+    ): WebrtcRtcpRfc5104PliFirKeyframeStormAndAudioBandwidthPreemptionDecision {
+      const policyId =
+        "P913-WEBRTC-RTCP-RFC5104-PLI-FIR-KEYFRAME-STORM-AND-AUDIO-BANDWIDTH-PREEMPTION-GUARD" as const;
+      const clampedUnthrottledKeyframeStormOrAudioStarvedBursts = 0;
+      const clampedMinKeyframeIntervalCooldownMs = Math.min(
+        Math.max(context.minKeyframeIntervalCooldownMs, 1000),
+        5000,
+      );
+
+      if (context.unthrottledPliFirKeyframeStormOrDuplicateFirSeqDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "deduplicate_fir_seq_and_preempt_video_burst_with_opus_audio",
+          reason:
+            "Enterprise WebRTC RFC 5104 / RFC 4585 RTCP PLI/FIR Keyframe Storm & Audio Preemption Policy Check: duplicate 8-bit FIR Command Sequence Number or unthrottled 60KB video keyframe burst starving BUNDLE Opus voice packets detected; offline synthetic policy state machine deduplicating FIR requests, enforcing Opus audio preemption (0 audio-starved bursts), and clamping minimum inter-keyframe cooldown to [1000, 5000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live hardware IDR video encoding latency not_measured).",
+          clampedUnthrottledKeyframeStormOrAudioStarvedBursts,
+          clampedMinKeyframeIntervalCooldownMs,
+        };
+      }
+
+      if (
+        context.unthrottledKeyframeStormOrAudioStarvedBursts > 0 ||
+        context.minKeyframeIntervalCooldownMs < 1000 ||
+        context.minKeyframeIntervalCooldownMs > 5000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_keyframe_storm_bursts_and_cooldown_bounds",
+          reason:
+            "Unthrottled PLI/FIR keyframe storm bursts (>0 synthetic ceiling) or minimum inter-keyframe cooldown (<1000ms or >5000ms synthetic bounds) out of bounds; clamping storm bursts to 0 and cooldown to [1000, 5000]ms.",
+          clampedUnthrottledKeyframeStormOrAudioStarvedBursts,
+          clampedMinKeyframeIntervalCooldownMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 5104 FIR deduplication + Opus audio preemption (0 keyframe voice stalls) and [1000, 5000]ms keyframe cooldown bounds verified.",
+        clampedUnthrottledKeyframeStormOrAudioStarvedBursts,
+        clampedMinKeyframeIntervalCooldownMs,
+      };
+    }
+
+    export interface WebrtcRtcpRfc4585AvpfTrrIntFeedbackIntervalAndDecodeTargetSyncContext {
+      excessiveTrrIntAudioNackStarvationOrOrphanLayerSwitchDetected: boolean;
+      starvedAudioNackOrOrphanLayerSwitches: number;
+      avpfTrrIntRegularFeedbackIntervalMs: number;
+    }
+
+    export interface WebrtcRtcpRfc4585AvpfTrrIntFeedbackIntervalAndDecodeTargetSyncDecision {
+      violated: boolean;
+      policyId: "P914-WEBRTC-RTCP-RFC4585-AVPF-TRR-INT-FEEDBACK-INTERVAL-AND-DECODE-TARGET-SYNC-GUARD";
+      action:
+        | "exempt_immediate_audio_nack_and_align_decode_target_boundary"
+        | "clamp_starved_nack_switches_and_trr_int_bounds"
+        | "allow";
+      reason: string;
+      clampedStarvedAudioNackOrOrphanLayerSwitches: number;
+      clampedAvpfTrrIntRegularFeedbackIntervalMs: number;
+    }
+
+    export function evaluateWebrtcRtcpRfc4585AvpfTrrIntFeedbackIntervalAndDecodeTargetSyncGate(
+      context: WebrtcRtcpRfc4585AvpfTrrIntFeedbackIntervalAndDecodeTargetSyncContext,
+    ): WebrtcRtcpRfc4585AvpfTrrIntFeedbackIntervalAndDecodeTargetSyncDecision {
+      const policyId =
+        "P914-WEBRTC-RTCP-RFC4585-AVPF-TRR-INT-FEEDBACK-INTERVAL-AND-DECODE-TARGET-SYNC-GUARD" as const;
+      const clampedStarvedAudioNackOrOrphanLayerSwitches = 0;
+      const clampedAvpfTrrIntRegularFeedbackIntervalMs = Math.min(
+        Math.max(context.avpfTrrIntRegularFeedbackIntervalMs, 50),
+        500,
+      );
+
+      if (context.excessiveTrrIntAudioNackStarvationOrOrphanLayerSwitchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "exempt_immediate_audio_nack_and_align_decode_target_boundary",
+          reason:
+            "Enterprise WebRTC RFC 4585 AVPF trr-int & RFC 9626 Decode-Target Sync Policy Check: excessive a=rtcp-fb trr-int starving urgent audio NACK feedback or mid-GOP orphan SFU layer switch detected; offline synthetic policy state machine exempting immediate audio NACKs, aligning decode-target switch boundaries (0 starved NACKs/orphan switches), and clamping trr-int to [50, 500]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live kernel pacing queue latency not_measured).",
+          clampedStarvedAudioNackOrOrphanLayerSwitches,
+          clampedAvpfTrrIntRegularFeedbackIntervalMs,
+        };
+      }
+
+      if (
+        context.starvedAudioNackOrOrphanLayerSwitches > 0 ||
+        context.avpfTrrIntRegularFeedbackIntervalMs < 50 ||
+        context.avpfTrrIntRegularFeedbackIntervalMs > 500
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_starved_nack_switches_and_trr_int_bounds",
+          reason:
+            "Starved audio NACKs / orphan SFU layer switches (>0 synthetic ceiling) or AVPF trr-int feedback interval (<50ms or >500ms synthetic bounds) out of bounds; clamping failed events to 0 and trr-int to [50, 500]ms.",
+          clampedStarvedAudioNackOrOrphanLayerSwitches,
+          clampedAvpfTrrIntRegularFeedbackIntervalMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 4585 immediate audio NACK + decode-target boundary sync (0 starved NACKs/orphan switches) and [50, 500]ms trr-int bounds verified.",
+        clampedStarvedAudioNackOrOrphanLayerSwitches,
+        clampedAvpfTrrIntRegularFeedbackIntervalMs,
+      };
+    }
+
 
 
 

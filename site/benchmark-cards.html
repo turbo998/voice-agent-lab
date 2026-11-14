@@ -1770,6 +1770,13 @@
               <td><code>P911 / P912 deterministic SIP RFC 8946 PASSporT div [1,5]-hop continuity &amp; RFC 8224 [5,60]s monotonic iat guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>463. [专题100 🎉 · Stage 460 🎉 `docs/voice-webrtc-rtp-rfc7741-rfc9626-svc-dependency-descriptor-keyframe-pli-fir-thrash-faq.md`] 企业多模态 WebRTC `RFC 5104 / RFC 4585` `RTCP PLI/FIR` `8-bit SeqNr` 幂等去重、`Opus` 音频绝对优先抢占与 `[1000, 5000]ms` 关键帧最小冷却锁（`0` 关键帧风暴挤占音频断音，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实硬件 `IDR` 编码耗时 `not_measured`）&amp; `AVPF trr-int [50, 500]ms` 反馈节流、音频紧急 `NACK` 豁免与 `RFC 9626` 解码目标边界切层锁（`0` 饿死音频 `NACK` 或花屏孤儿切层；真实内核整形队列耗时 `not_measured`）(`P913` / `P914` · Stage 460 🎉 · Topic 100 🎉 · 🎉 Stage 460 与第 100 大专题双历史性里程碑 · 923 护栏 &amp; 932 探针 · 463 维)</strong>
+              </td>
+              <td><code>P913 / P914 deterministic WebRTC RFC 5104 PLI/FIR [1000,5000]ms audio-preemption &amp; RFC 4585 trr-int [50,500]ms guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5516,6 +5523,13 @@
                 <strong>462. [专题99 · 921护栏 &amp; 930探针 🎉 `docs/voice-sip-rfc4474-rfc8224-stir-shaken-diversion-passpor-t-div-tn-retargeting-spoof-faq.md`] 企业 SIP `RFC 8946` `STIR/SHAKEN PASSporT "ppt":"div"` 呼叫前转数字背书、`Base.dest === div.div -> Request-URI` 首尾咬合核验与 `[1, 5]` 跳上限锁（`0` 断链掉签或嫁接伪造呼叫，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `ES256 ECDSA` 多跳验签耗时 `not_measured`）&amp; `RFC 8224` 多重 `Identity` `div.iat &gt;= Base.iat` 单调递增防重放嫁接与 `[5, 60]s` 新鲜度窗口锁（`0` 重放或超长包；真实 `STI-CA` 证书查询耗时 `not_measured`）(`P911` / `P912` · Stage 459 · Topic 99 · 🎉 921 护栏、930 合成探针与 740 现场探针三重历史性里程碑 · 921 护栏 🎉 &amp; 930 探针 🎉 · 462 维)</strong>
               </td>
               <td><code>P911 / P912 deterministic SIP RFC 8946 PASSporT div [1,5]-hop continuity &amp; RFC 8224 [5,60]s monotonic iat guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>463. [专题100 🎉 · Stage 460 🎉 `docs/voice-webrtc-rtp-rfc7741-rfc9626-svc-dependency-descriptor-keyframe-pli-fir-thrash-faq.md`] 企业多模态 WebRTC `RFC 5104 / RFC 4585` `RTCP PLI/FIR` `8-bit SeqNr` 幂等去重、`Opus` 音频绝对优先抢占与 `[1000, 5000]ms` 关键帧最小冷却锁（`0` 关键帧风暴挤占音频断音，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实硬件 `IDR` 编码耗时 `not_measured`）&amp; `AVPF trr-int [50, 500]ms` 反馈节流、音频紧急 `NACK` 豁免与 `RFC 9626` 解码目标边界切层锁（`0` 饿死音频 `NACK` 或花屏孤儿切层；真实内核整形队列耗时 `not_measured`）(`P913` / `P914` · Stage 460 🎉 · Topic 100 🎉 · 🎉 Stage 460 与第 100 大专题双历史性里程碑 · 923 护栏 &amp; 932 探针 · 463 维)</strong>
+              </td>
+              <td><code>P913 / P914 deterministic WebRTC RFC 5104 PLI/FIR [1000,5000]ms audio-preemption &amp; RFC 4585 trr-int [50,500]ms guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

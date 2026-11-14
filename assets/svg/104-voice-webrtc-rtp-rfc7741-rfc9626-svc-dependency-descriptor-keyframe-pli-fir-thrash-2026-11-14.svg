@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg104" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B14"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#091820"/>
+    </linearGradient>
+    <linearGradient id="accent104" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg104)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="18" fill="#0B1324" stroke="#1E293B" stroke-width="2"/>
+  <rect x="24" y="20" width="1232" height="6" rx="3" fill="url(#accent104)"/>
+
+  <!-- Header -->
+  <text x="52" y="64" fill="#10B981" font-size="14" font-weight="700" letter-spacing="1.5">STAGE 460 🎉 · TOPIC 100 🎉 · SVG 104 · 🎉 HISTORIC STAGE 460 &amp; 100TH TOPIC DUAL MILESTONE (P913–P914)</text>
+  <text x="52" y="96" fill="#F8FAFC" font-size="23" font-weight="800">Enterprise WebRTC RFC 5104 / RFC 4585 PLI/FIR Storm &amp; Audio Preemption Guard</text>
+  <text x="52" y="122" fill="#94A3B8" font-size="14">Eliminating 60KB Video Keyframe BUNDLE Queue Stalls on 20ms Opus Voice &amp; Orphan Layer-Switch Loops</text>
+
+  <!-- Milestone Badge -->
+  <rect x="936" y="46" width="292" height="64" rx="12" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="1082" y="72" text-anchor="middle" fill="#A7F3D0" font-size="12" font-weight="700">🎉 STAGE 460 · 100TH TOPIC MILESTONE</text>
+  <text x="1082" y="94" text-anchor="middle" fill="#ECFDF5" font-size="15" font-weight="800">463 Dims · 923 Guards · 932 Probes</text>
+
+  <!-- Left Panel: Unguarded PLI/FIR Storm Failure Mode -->
+  <rect x="48" y="148" width="576" height="440" rx="14" fill="#160E1B" stroke="#F43F5E" stroke-width="1.5"/>
+  <rect x="68" y="166" width="536" height="36" rx="8" fill="#4C0519"/>
+  <text x="84" y="189" fill="#FDA4AF" font-size="15" font-weight="700">❌ Unguarded Multimodal BUNDLE: 60KB I-Frame Stalls Voice</text>
+
+  <!-- Failure Box 1 -->
+  <rect x="68" y="218" width="536" height="168" rx="10" fill="#1E1324" stroke="#881337" stroke-width="1"/>
+  <text x="86" y="244" fill="#FB7185" font-size="14" font-weight="700">1. Unthrottled RTCP PLI / FIR Keyframe Micro-Burst Starving Voice</text>
+  <text x="86" y="268" fill="#E2E8F0" font-size="13">• Retransmitted FIR (same SeqNr) or 50ms PLI flood triggers back-to-</text>
+  <text x="86" y="292" fill="#E2E8F0" font-size="13">  back 60KB (480kbit) video keyframes (1,000x larger than 60B Opus).</text>
+  <text x="86" y="316" fill="#E2E8F0" font-size="13">• On a 2Mbps link, 3 unpaced keyframes clog the shared BUNDLE FIFO</text>
+  <text x="86" y="340" fill="#FDA4AF" font-size="13" font-weight="700">  for 720ms → starving 20ms Opus voice packets into robotic freeze!</text>
+  <rect x="86" y="352" width="498" height="24" rx="5" fill="#4C0519"/>
+  <text x="335" y="368" text-anchor="middle" fill="#FECDD3" font-size="12" font-weight="700">Result: 240–720ms Voice Queueing Stalls During Multimodal Video Loss</text>
+
+  <!-- Failure Box 2 -->
+  <rect x="68" y="402" width="536" height="168" rx="10" fill="#1E1324" stroke="#881337" stroke-width="1"/>
+  <text x="86" y="428" fill="#FB7185" font-size="14" font-weight="700">2. RFC 4585 trr-int NACK Starvation &amp; Mid-GOP Orphan Layer Switch</text>
+  <text x="86" y="452" fill="#E2E8F0" font-size="13">• Misconfigured a=rtcp-fb trr-int &gt; 1000ms suppresses urgent audio</text>
+  <text x="86" y="476" fill="#E2E8F0" font-size="13">  RTCP NACK recovery reports across the entire RTT window.</text>
+  <text x="86" y="500" fill="#E2E8F0" font-size="13">• SFU switches SVC/Simulcast layers mid-GOP without checking RFC 9626</text>
+  <text x="86" y="524" fill="#FDA4AF" font-size="13" font-weight="700">  Decode Target boundaries → triggers self-reinforcing PLI cascades!</text>
+  <rect x="86" y="536" width="498" height="24" rx="5" fill="#4C0519"/>
+  <text x="335" y="552" text-anchor="middle" fill="#FECDD3" font-size="12" font-weight="700">Result: Starved Audio Packet Recovery &amp; Self-Inflicted PLI Cascades</text>
+
+  <!-- Right Panel: P913 + P914 Guardrails -->
+  <rect x="656" y="148" width="576" height="440" rx="14" fill="#091D1C" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="676" y="166" width="536" height="36" rx="8" fill="#064E3B"/>
+  <text x="692" y="189" fill="#6EE7B7" font-size="15" font-weight="700">✅ RFC 5104 Cooldown Guard (P913) &amp; AVPF trr-int Guard (P914)</text>
+
+  <!-- Guardrail Box 1: P913 -->
+  <rect x="676" y="218" width="536" height="168" rx="10" fill="#0D2726" stroke="#047857" stroke-width="1"/>
+  <text x="694" y="244" fill="#34D399" font-size="14" font-weight="700">P913 · RFC 5104 FIR Dedup, Audio Preemption &amp; [1000, 5000]ms Guard</text>
+  <text x="694" y="268" fill="#E2E8F0" font-size="13">• Deduplicates repeated 8-bit FIR Command Sequence Numbers in 0ms.</text>
+  <text x="694" y="292" fill="#E2E8F0" font-size="13">• Grants 60B Opus voice packets strict priority preemption over video.</text>
+  <text x="694" y="316" fill="#E2E8F0" font-size="13">• Clamps minimum inter-keyframe cooldown to [1,000, 5,000]ms (2,000ms)</text>
+  <text x="694" y="340" fill="#6EE7B7" font-size="13" font-weight="700">  with paced keyframe slicing (0 keyframe-induced voice stalls)!</text>
+  <rect x="694" y="352" width="498" height="24" rx="5" fill="#065F46"/>
+  <text x="943" y="368" text-anchor="middle" fill="#D1FAE5" font-size="12" font-weight="700">clampedUnthrottledKeyframeStormOrAudioStarvedBursts = 0 · Cooldown ∈ [1000, 5000]ms</text>
+
+  <!-- Guardrail Box 2: P914 -->
+  <rect x="676" y="402" width="536" height="168" rx="10" fill="#0D2726" stroke="#047857" stroke-width="1"/>
+  <text x="694" y="428" fill="#38BDF8" font-size="14" font-weight="700">P914 · RFC 4585 AVPF trr-int [50, 500]ms &amp; Decode-Target Sync Guard</text>
+  <text x="694" y="452" fill="#E2E8F0" font-size="13">• Clamps a=rtcp-fb trr-int regular feedback interval to [50, 500]ms.</text>
+  <text x="694" y="476" fill="#E2E8F0" font-size="13">• Exempts urgent audio RTCP NACK packets for immediate transmission.</text>
+  <text x="694" y="500" fill="#E2E8F0" font-size="13">• Enforces RFC 9626 Dependency Descriptor decode-target boundary</text>
+  <text x="694" y="524" fill="#7DD3FC" font-size="13" font-weight="700">  alignment before switching SFU video layers (0 orphan frames)!</text>
+  <rect x="694" y="536" width="498" height="24" rx="5" fill="#0C4A6E"/>
+  <text x="943" y="552" text-anchor="middle" fill="#E0F2FE" font-size="12" font-weight="700">clampedStarvedAudioNackOrOrphanLayerSwitches = 0 · trr-int ∈ [50, 500]ms</text>
+
+  <!-- Bottom Provenance & Timing Bar -->
+  <rect x="48" y="606" width="1184" height="112" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="634" fill="#F8FAFC" font-size="14" font-weight="700">📊 Stage 460 🎉 Quantitative Convergence &amp; Timing Provenance Disclosure (🎉 Historic Stage 460 &amp; Topic 100 Dual Milestone!)</text>
+  <text x="68" y="660" fill="#CBD5E1" font-size="13">• Guardrail Policy IDs: P913-WEBRTC-RTCP-RFC5104-PLI-FIR-KEYFRAME-STORM-AND-AUDIO-BANDWIDTH-PREEMPTION-GUARD &amp; P914-WEBRTC-RTCP-RFC4585-AVPF-TRR-INT-FEEDBACK-INTERVAL-AND-DECODE-TARGET-SYNC-GUARD</text>
+  <text x="68" y="684" fill="#94A3B8" font-size="12">• Timing &amp; Provenance: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (provenance: synthetic in-memory policy check;</text>
+  <text x="68" y="704" fill="#94A3B8" font-size="12">  live hardware IDR video encoding &amp; kernel pacing queue latencies are not_measured). Suite totals: 463 Dimensions · 923 Guardrails · 932 Probes (742 Live POC) · 902 Tests.</text>
+</svg>

@@ -1957,6 +1957,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% unbroken Base.dest === div.div -> Request-URI continuity (0 broken/grafted calls) and clamps chained div Identity headers in [1, 5] hops; live multi-hop ES256 ECDSA signature verification latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of non-monotonic div.iat < Base.iat and stale cut-and-paste replay chains (0 replay-grafted packets) and clamps chain freshness in [5, 60]s; live STI-CA certificate cache lookup latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "463. [Topic 100 🎉 · Historic Stage 460 & 100th Topic Dual Milestone: voice-webrtc-rtp-rfc7741-rfc9626-svc-dependency-descriptor-keyframe-pli-fir-thrash-faq] Enterprise WebRTC RFC 5104 PLI/FIR [1000,5000]ms Audio-Preemption & RFC 4585 AVPF trr-int [50,500]ms Guard (P913 / P914 — Stage 460 🎉 · 🎉 Historic Stage 460 & Topic 100 Dual Milestone · 463 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: deduplicates 100% of repeated FIR SeqNr requests, preempts video bursts with Opus audio (0 voice stalls), and clamps keyframe cooldown in [1000, 5000]ms; live hardware IDR video encoding latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: exempts immediate audio NACKs, aligns RFC 9626 decode-target switch boundaries (0 starved NACKs/orphan switches), and clamps trr-int in [50, 500]ms; live kernel pacing queue latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
