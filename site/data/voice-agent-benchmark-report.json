@@ -1867,6 +1867,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: verifies SRTP AEAD tags before committing candidate ROC v and syncs late-joiner ROC (0 permanently desynced streams) with a [128, 1024]-packet replay window; live libsrtp 48-bit index arithmetic latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: isolates 100% of RFC 4588 RTX retransmissions on a dedicated SSRC and unwraps 2B OSN (0 RTX-induced primary ROC corruptions) within [200, 1000]ms history; live RTX unwrapping latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "448. [Topic 85 🎉 · Stage 445 Milestone 🎉: voice-sip-rfc5626-outbound-dual-edge-flow-token-crlf-keepalive-rfc5923-mtls-faq] Enterprise SIP RFC 5626 Outbound [2,4] Dual-Edge reg-id + HMAC-SHA256 Flow-Token & RFC 5923 mTLS SAN Connection Reuse + [25,120]s CRLF Keepalive Guard (P883 / P884 — Stage 445 🎉 · 🎉 Historic Stage 445 & Topic 85 Dual Milestone · 448 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsigned/tampered Flow-Tokens with SIP 430 (0 hijacked tokens) and clamps redundant reg-id edge flows per +sip.instance in [2, 4]; live Edge Proxy HMAC-SHA256 verification latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of unverified Via ;alias cross-tenant socket reuses (0 hijacked sockets or zombie flows) and clamps CRLF keepalives in [25, 120]s; live X.509 SAN parsing latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

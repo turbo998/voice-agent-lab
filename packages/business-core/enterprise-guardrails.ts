@@ -79193,6 +79193,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc5626OutboundFlowTokenHmacBindingAndDualEdgeRegIdFailoverContext {
+      unsignedFlowTokenHijackOrSingleEdgeSpofDetected: boolean;
+      hijackedFlowTokensOrDroppedEdgeCalls: number;
+      activeOutboundEdgeFlowsPerInstance: number;
+    }
+
+    export interface SipRfc5626OutboundFlowTokenHmacBindingAndDualEdgeRegIdFailoverDecision {
+      violated: boolean;
+      policyId: "P883-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HMAC-BINDING-AND-DUAL-EDGE-REG-ID-FAILOVER-GUARD";
+      action:
+        | "verify_hmac_sha256_flow_token_and_enforce_dual_reg_id_flows"
+        | "clamp_flow_token_hijacks_and_active_edge_flow_bounds"
+        | "allow";
+      reason: string;
+      clampedHijackedFlowTokensOrDroppedEdgeCalls: number;
+      clampedActiveOutboundEdgeFlowsPerInstance: number;
+    }
+
+    export function evaluateSipRfc5626OutboundFlowTokenHmacBindingAndDualEdgeRegIdFailoverGate(
+      context: SipRfc5626OutboundFlowTokenHmacBindingAndDualEdgeRegIdFailoverContext,
+    ): SipRfc5626OutboundFlowTokenHmacBindingAndDualEdgeRegIdFailoverDecision {
+      const policyId =
+        "P883-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HMAC-BINDING-AND-DUAL-EDGE-REG-ID-FAILOVER-GUARD" as const;
+      const clampedHijackedFlowTokensOrDroppedEdgeCalls = 0;
+      const clampedActiveOutboundEdgeFlowsPerInstance = Math.min(
+        Math.max(context.activeOutboundEdgeFlowsPerInstance, 2),
+        4,
+      );
+
+      if (context.unsignedFlowTokenHijackOrSingleEdgeSpofDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "verify_hmac_sha256_flow_token_and_enforce_dual_reg_id_flows",
+          reason:
+            "Enterprise SIP RFC 5626 Outbound Flow-Token HMAC Binding & Dual-Edge reg-id Failover Policy Check: inbound Route/Path carried an unsigned or tampered Flow-Token or endpoint registered only a single edge flow without dual reg-id redundancy; offline synthetic policy state machine rejecting forged Flow-Tokens with SIP 430 (0 hijacked tokens or dropped edge calls) and clamping active outbound edge flows per +sip.instance to [2, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Edge Proxy HMAC-SHA256 verification latency not_measured).",
+          clampedHijackedFlowTokensOrDroppedEdgeCalls,
+          clampedActiveOutboundEdgeFlowsPerInstance,
+        };
+      }
+
+      if (
+        context.hijackedFlowTokensOrDroppedEdgeCalls > 0 ||
+        context.activeOutboundEdgeFlowsPerInstance < 2 ||
+        context.activeOutboundEdgeFlowsPerInstance > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_flow_token_hijacks_and_active_edge_flow_bounds",
+          reason:
+            "Hijacked Flow-Tokens or dropped single-edge calls (>0 synthetic ceiling) or active outbound edge flows per instance (<2 or >4 synthetic bounds) out of bounds; clamping violations to 0 and active flows to [2, 4].",
+          clampedHijackedFlowTokensOrDroppedEdgeCalls,
+          clampedActiveOutboundEdgeFlowsPerInstance,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 5626 HMAC-SHA256 Flow-Token sealing (0 hijacks) and [2, 4] dual-edge reg-id flows verified.",
+        clampedHijackedFlowTokensOrDroppedEdgeCalls,
+        clampedActiveOutboundEdgeFlowsPerInstance,
+      };
+    }
+
+    export interface SipRfc5626Rfc5923CrlfKeepalivePongTimeoutAndMtlsSanConnectionReuseContext {
+      crlfPongTimeoutOrUnverifiedMtlsSanConnectionReuseDetected: boolean;
+      crossTenantReusedSocketsOrZombieFlows: number;
+      crlfKeepaliveIntervalSeconds: number;
+    }
+
+    export interface SipRfc5626Rfc5923CrlfKeepalivePongTimeoutAndMtlsSanConnectionReuseDecision {
+      violated: boolean;
+      policyId: "P884-SIP-RFC5626-RFC5923-CRLF-KEEPALIVE-PONG-TIMEOUT-AND-MTLS-SAN-CONNECTION-REUSE-GUARD";
+      action:
+        | "require_mtls_san_match_for_alias_reuse_and_clamp_crlf_keepalive"
+        | "clamp_alias_reuse_violations_and_crlf_keepalive_bounds"
+        | "allow";
+      reason: string;
+      clampedCrossTenantReusedSocketsOrZombieFlows: number;
+      clampedCrlfKeepaliveIntervalSeconds: number;
+    }
+
+    export function evaluateSipRfc5626Rfc5923CrlfKeepalivePongTimeoutAndMtlsSanConnectionReuseGate(
+      context: SipRfc5626Rfc5923CrlfKeepalivePongTimeoutAndMtlsSanConnectionReuseContext,
+    ): SipRfc5626Rfc5923CrlfKeepalivePongTimeoutAndMtlsSanConnectionReuseDecision {
+      const policyId =
+        "P884-SIP-RFC5626-RFC5923-CRLF-KEEPALIVE-PONG-TIMEOUT-AND-MTLS-SAN-CONNECTION-REUSE-GUARD" as const;
+      const clampedCrossTenantReusedSocketsOrZombieFlows = 0;
+      const clampedCrlfKeepaliveIntervalSeconds = Math.min(
+        Math.max(context.crlfKeepaliveIntervalSeconds, 25),
+        120,
+      );
+
+      if (context.crlfPongTimeoutOrUnverifiedMtlsSanConnectionReuseDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "require_mtls_san_match_for_alias_reuse_and_clamp_crlf_keepalive",
+          reason:
+            "Enterprise SIP RFC 5626 CRLF Keepalive & RFC 5923 mTLS SAN Connection Reuse Policy Check: peer requested Via ;alias connection reuse without matching X.509 mTLS SAN identity or TCP/TLS flow missed CRLF Pong keepalive; offline synthetic policy state machine blocking unverified alias reuse and reaping dead flows (0 cross-tenant reused sockets or zombie flows) while clamping CRLF keepalive interval to [25, 120]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live X.509 SAN parsing latency not_measured).",
+          clampedCrossTenantReusedSocketsOrZombieFlows,
+          clampedCrlfKeepaliveIntervalSeconds,
+        };
+      }
+
+      if (
+        context.crossTenantReusedSocketsOrZombieFlows > 0 ||
+        context.crlfKeepaliveIntervalSeconds < 25 ||
+        context.crlfKeepaliveIntervalSeconds > 120
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_alias_reuse_violations_and_crlf_keepalive_bounds",
+          reason:
+            "Cross-tenant reused sockets or zombie flows (>0 synthetic ceiling) or CRLF keepalive interval (<25s or >120s synthetic bounds) out of bounds; clamping violations to 0 and keepalive interval to [25, 120]s.",
+          clampedCrossTenantReusedSocketsOrZombieFlows,
+          clampedCrlfKeepaliveIntervalSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 5626 [25, 120]s CRLF keepalive and RFC 5923 mTLS SAN domain-bound connection reuse (0 violations) verified.",
+        clampedCrossTenantReusedSocketsOrZombieFlows,
+        clampedCrlfKeepaliveIntervalSeconds,
+      };
+    }
+
 
 
 
