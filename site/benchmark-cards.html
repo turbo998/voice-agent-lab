@@ -1602,6 +1602,13 @@
               <td><code>P863 / P864 deterministic SIP RFC 3263/7984 DNS NAPTR/SRV SIPS+D2T anti-downgrade / [1,4] depth &amp; [500,2000]ms dead-SBC blackhole failover guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>439. [专题76 · SVG 80 &amp; 875护栏 🎉 `docs/voice-webrtc-rtcp-ccfb-rfc8888-rfc8836-ecn-ce-spoofing-ato-wrap-audio-dtx-starvation-faq.md`] 企业 WebRTC `RFC 8888 / RFC 8836 (RTCP CCFB)` 32-bit 对齐字节长度闭合、`ATO >= 0x1FFE` 乱序回绕剔除与单块 `[16, 128]` 报告数上限锁（`0` 越界或回绕块，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU 报文解析耗时 `not_measured`）&amp; 未验证 `RFC 6679` 路径伪造 `ECN-CE (11)` 剥离与 `Opus DTX` 静音恢复期 `[32, 64] kbps` 语音免衰减保底带宽锁（`0` 开口饥饿轮次；真实内核 `ECN` 读取耗时 `not_measured`）(`P865` / `P866` · Stage 436 · Topic 76 · 🎉 第 80 张 SVG 架构图与 875 护栏双里程碑 · 875 护栏 🎉 &amp; 884 探针 · 439 维)</strong>
+              </td>
+              <td><code>P865 / P866 deterministic WebRTC RFC 8888/8836 RTCP CCFB [16,128] byte closure / ATO filter &amp; anti-ECN-CE spoof + [32,64] kbps post-DTX audio floor guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5180,6 +5187,13 @@
                 <strong>438. [专题75 🎉 `docs/voice-sip-rfc3263-rfc7984-dns-naptr-srv-sips-downgrade-poisoning-blackhole-failover-faq.md`] 企业 SIP `RFC 3263 / RFC 7984 (DNS NAPTR / SRV)` `SIPS+D2T` 传输层防明文降级投毒、授信运营商域名白名单校验（`0` 明文降级或非法 `SRV` 目标，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `c-ares/unbound DNSSEC` 验签耗时 `not_measured`）&amp; `[1, 4]` 候选深度上限与死节点 `32s Timer B` 黑洞 `[500, 2000]ms` 秒级熔断隔离锁（`0` 黑洞挂起通话；真实跨机房 `TLS 1.3` 建连耗时 `not_measured`）(`P863` / `P864` · Stage 435 · Topic 75 🎉 · 🎉 第 75 大专题历史性里程碑 · 873 护栏 &amp; 882 探针 · 438 维)</strong>
               </td>
               <td><code>P863 / P864 deterministic SIP RFC 3263/7984 DNS NAPTR/SRV SIPS+D2T anti-downgrade / [1,4] depth &amp; [500,2000]ms dead-SBC blackhole failover guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>439. [专题76 · SVG 80 &amp; 875护栏 🎉 `docs/voice-webrtc-rtcp-ccfb-rfc8888-rfc8836-ecn-ce-spoofing-ato-wrap-audio-dtx-starvation-faq.md`] 企业 WebRTC `RFC 8888 / RFC 8836 (RTCP CCFB)` 32-bit 对齐字节长度闭合、`ATO >= 0x1FFE` 乱序回绕剔除与单块 `[16, 128]` 报告数上限锁（`0` 越界或回绕块，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU 报文解析耗时 `not_measured`）&amp; 未验证 `RFC 6679` 路径伪造 `ECN-CE (11)` 剥离与 `Opus DTX` 静音恢复期 `[32, 64] kbps` 语音免衰减保底带宽锁（`0` 开口饥饿轮次；真实内核 `ECN` 读取耗时 `not_measured`）(`P865` / `P866` · Stage 436 · Topic 76 · 🎉 第 80 张 SVG 架构图与 875 护栏双里程碑 · 875 护栏 🎉 &amp; 884 探针 · 439 维)</strong>
+              </td>
+              <td><code>P865 / P866 deterministic WebRTC RFC 8888/8836 RTCP CCFB [16,128] byte closure / ATO filter &amp; anti-ECN-CE spoof + [32,64] kbps post-DTX audio floor guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

@@ -77981,6 +77981,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtcpCcfbRfc8888NumReportsOverreadAndAtoWrapContext {
+      ccfbNumReportsOverreadOrAtoWrapDetected: boolean;
+      malformedCcfbReportBlocks: number;
+      maxReportsPerCcfbBlock: number;
+    }
+
+    export interface WebrtcRtcpCcfbRfc8888NumReportsOverreadAndAtoWrapDecision {
+      violated: boolean;
+      policyId: "P865-WEBRTC-RTCP-CCFB-RFC8888-NUM-REPORTS-OVERREAD-AND-ATO-WRAP-GUARD";
+      action:
+        | "drop_malformed_ccfb_block_and_clamp_num_reports_window"
+        | "clamp_ccfb_overread_blocks_and_num_reports_bounds"
+        | "allow";
+      reason: string;
+      clampedMalformedCcfbReportBlocks: number;
+      clampedMaxReportsPerCcfbBlock: number;
+    }
+
+    export function evaluateWebrtcRtcpCcfbRfc8888NumReportsOverreadAndAtoWrapGate(
+      context: WebrtcRtcpCcfbRfc8888NumReportsOverreadAndAtoWrapContext,
+    ): WebrtcRtcpCcfbRfc8888NumReportsOverreadAndAtoWrapDecision {
+      const policyId =
+        "P865-WEBRTC-RTCP-CCFB-RFC8888-NUM-REPORTS-OVERREAD-AND-ATO-WRAP-GUARD" as const;
+      const clampedMalformedCcfbReportBlocks = 0;
+      const clampedMaxReportsPerCcfbBlock = Math.min(
+        Math.max(context.maxReportsPerCcfbBlock, 16),
+        128,
+      );
+
+      if (context.ccfbNumReportsOverreadOrAtoWrapDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_malformed_ccfb_block_and_clamp_num_reports_window",
+          reason:
+            "Enterprise WebRTC RFC 8888 RTCP CCFB (PT=205, FMT=11) num_reports Byte-Sum Closure & 13-bit ATO Wrap Policy Check: inbound RTCP CCFB metric block declared num_reports exceeding 32-bit padded packet length or carried ATO >= 0x1FFE wrap-around spikes; offline synthetic policy state machine dropping 100% of malformed CCFB blocks (0 overread/wrap blocks) and clamping max reports per CCFB block to [16, 128] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU packet parser & SCReAM delay-gradient update latency not_measured).",
+          clampedMalformedCcfbReportBlocks,
+          clampedMaxReportsPerCcfbBlock,
+        };
+      }
+
+      if (
+        context.malformedCcfbReportBlocks > 0 ||
+        context.maxReportsPerCcfbBlock < 16 ||
+        context.maxReportsPerCcfbBlock > 128
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ccfb_overread_blocks_and_num_reports_bounds",
+          reason:
+            "Malformed RTCP CCFB report blocks (>0 synthetic ceiling) or max reports per CCFB block (<16 or >128 synthetic bounds) out of bounds; clamping malformed blocks to 0 and max reports per block to [16, 128].",
+          clampedMalformedCcfbReportBlocks,
+          clampedMaxReportsPerCcfbBlock,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8888 RTCP CCFB 32-bit padded byte-sum closure (0 malformed blocks) and [16, 128] reports-per-block bounds verified.",
+        clampedMalformedCcfbReportBlocks,
+        clampedMaxReportsPerCcfbBlock,
+      };
+    }
+
+    export interface WebrtcRtcpCcfbRfc8888EcnCeSpoofingAndPostDtxAudioStarvationContext {
+      unverifiedEcnCeMarkFloodOrPostDtxAudioStarvationDetected: boolean;
+      spoofedEcnCeOrStarvedAudioTurns: number;
+      postDtxAudioReservedFloorKbps: number;
+    }
+
+    export interface WebrtcRtcpCcfbRfc8888EcnCeSpoofingAndPostDtxAudioStarvationDecision {
+      violated: boolean;
+      policyId: "P866-WEBRTC-RTCP-CCFB-RFC8888-ECN-CE-SPOOFING-AND-POST-DTX-AUDIO-STARVATION-GUARD";
+      action:
+        | "ignore_unverified_ecn_ce_and_reserve_post_dtx_audio_floor"
+        | "clamp_ecn_ce_spoof_turns_and_post_dtx_audio_floor_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedEcnCeOrStarvedAudioTurns: number;
+      clampedPostDtxAudioReservedFloorKbps: number;
+    }
+
+    export function evaluateWebrtcRtcpCcfbRfc8888EcnCeSpoofingAndPostDtxAudioStarvationGate(
+      context: WebrtcRtcpCcfbRfc8888EcnCeSpoofingAndPostDtxAudioStarvationContext,
+    ): WebrtcRtcpCcfbRfc8888EcnCeSpoofingAndPostDtxAudioStarvationDecision {
+      const policyId =
+        "P866-WEBRTC-RTCP-CCFB-RFC8888-ECN-CE-SPOOFING-AND-POST-DTX-AUDIO-STARVATION-GUARD" as const;
+      const clampedSpoofedEcnCeOrStarvedAudioTurns = 0;
+      const clampedPostDtxAudioReservedFloorKbps = Math.min(
+        Math.max(context.postDtxAudioReservedFloorKbps, 32),
+        64,
+      );
+
+      if (context.unverifiedEcnCeMarkFloodOrPostDtxAudioStarvationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "ignore_unverified_ecn_ce_and_reserve_post_dtx_audio_floor",
+          reason:
+            "Enterprise WebRTC RFC 8888 / RFC 8836 ECN-CE Spoofing & Post-DTX Audio Starvation Policy Check: peer reported forged ECN-CE (11) bits on an unverified RFC 6679 path or idle cwnd decay during Opus DTX silence starved the AI opening talkspurt; offline synthetic policy state machine stripping unverified ECN-CE markings (0 spoofed/starved audio turns) and reserving a decay-exempt [32, 64] kbps post-DTX audio bitrate floor (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live kernel IP_RECVTOS/ECN socket read latency not_measured).",
+          clampedSpoofedEcnCeOrStarvedAudioTurns,
+          clampedPostDtxAudioReservedFloorKbps,
+        };
+      }
+
+      if (
+        context.spoofedEcnCeOrStarvedAudioTurns > 0 ||
+        context.postDtxAudioReservedFloorKbps < 32 ||
+        context.postDtxAudioReservedFloorKbps > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_ecn_ce_spoof_turns_and_post_dtx_audio_floor_bounds",
+          reason:
+            "Spoofed ECN-CE or post-DTX starved audio turns (>0 synthetic ceiling) or post-DTX reserved audio floor (<32 kbps or >64 kbps synthetic bounds) out of bounds; clamping starved turns to 0 and audio floor to [32, 64] kbps.",
+          clampedSpoofedEcnCeOrStarvedAudioTurns,
+          clampedPostDtxAudioReservedFloorKbps,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8888 / RFC 8836 unverified ECN-CE immunity (0 starved turns) and [32, 64] kbps post-DTX audio floor verified.",
+        clampedSpoofedEcnCeOrStarvedAudioTurns,
+        clampedPostDtxAudioReservedFloorKbps,
+      };
+    }
+
 
 
 

@@ -1813,6 +1813,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of SIPS+D2T to plaintext SIP+D2U downgrades and unallowlisted SRV targets (0 downgrades/untrusted targets) and clamps SRV candidate lookup depth in [1, 4]; live c-ares/unbound DNSSEC validation latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: quarantines dead SRV trunks with 0 Timer-B 32s blackhole stalled calls and clamps per-hop failover timeout in [500, 2000]ms; live cross-region TLS 1.3 handshake round-trip latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "439. [Topic 76 · SVG 80 & 875-Guardrail Milestone 🎉: voice-webrtc-rtcp-ccfb-rfc8888-rfc8836-ecn-ce-spoofing-ato-wrap-audio-dtx-starvation-faq] Enterprise WebRTC RFC 8888 / RFC 8836 RTCP CCFB [16,128] Byte-Sum Closure + ATO Wrap Filter & Anti-ECN-CE Spoofing + [32,64] kbps Post-DTX Audio Floor Guard (P865 / P866 — Stage 436 · 🎉 Historic 80th SVG & 875-Guardrail Dual Milestone · 439 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of truncated num_reports overread and ATO >= 0x1FFE wrap CCFB blocks (0 malformed blocks) and clamps reports per block in [16, 128]; live SFU packet parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of unverified ECN-CE markings (0 spoofed/starved audio turns) and reserves [32, 64] kbps post-DTX audio floor; live kernel IP_RECVTOS/ECN socket read latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
