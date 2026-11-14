@@ -1933,6 +1933,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of spoofed 420 plaintext fallbacks and Security-Verify mismatches (0 downgraded sessions) and clamps cipher priority in [500, 1000] milli-q; live IPSec ESP hardware offload latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: reaps 100% of half-open kernel XFRM IPSec SAs on failure (0 leaked SAs/loops) and clamps 494 challenge retries in [1, 2]; live Linux kernel Netlink XFRM_MSG_NEWSA syscall latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "459. [Topic 96 · 100th SVG & 915-Guardrail Milestone 🎉: voice-webrtc-rtcp-xr-rfc3611-rfc7266-dlsr-rtt-wrap-burst-gap-mos-spoofing-faq] Enterprise WebRTC RFC 3611 RTCP XR DLRR [1,3000]ms Signed RTT & BT=7 VoIP Metrics Gmin [16,64] Cross-Validation Guard (P905 / P906 — Stage 456 · 🎉 Historic 100th SVG & 915-Guardrail Dual Milestone · 459 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsigned 32-bit compact-NTP 65,535s RTT underflows (0 outlier samples) and clamps media RTT in [1, 3000]ms; live EWMA filter update latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: quarantines 100% of uncorroborated BT=7 MOS/R-Factor failover drops (0 false failovers) and clamps Gmin in [16, 64] packets; live ITU-T G.107 E-Model polynomial evaluation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

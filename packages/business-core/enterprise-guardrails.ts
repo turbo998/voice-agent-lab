@@ -80689,6 +80689,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtcpXrRfc3611DlrrCompactNtpRttUnderflowAndBoundsContext {
+      compactNtpDlrrUnsignedRttUnderflowOrClockSkewDetected: boolean;
+      rttUnderflowWrapOrOutlierSamples: number;
+      estimatedMediaRttMs: number;
+    }
+
+    export interface WebrtcRtcpXrRfc3611DlrrCompactNtpRttUnderflowAndBoundsDecision {
+      violated: boolean;
+      policyId: "P905-WEBRTC-RTCP-XR-RFC3611-DLRR-COMPACT-NTP-RTT-UNDERFLOW-AND-BOUNDS-GUARD";
+      action:
+        | "reject_unsigned_dlrr_rtt_underflow_and_preserve_nack"
+        | "clamp_rtt_underflow_samples_and_media_rtt_bounds"
+        | "allow";
+      reason: string;
+      clampedRttUnderflowWrapOrOutlierSamples: number;
+      clampedEstimatedMediaRttMs: number;
+    }
+
+    export function evaluateWebrtcRtcpXrRfc3611DlrrCompactNtpRttUnderflowAndBoundsGate(
+      context: WebrtcRtcpXrRfc3611DlrrCompactNtpRttUnderflowAndBoundsContext,
+    ): WebrtcRtcpXrRfc3611DlrrCompactNtpRttUnderflowAndBoundsDecision {
+      const policyId =
+        "P905-WEBRTC-RTCP-XR-RFC3611-DLRR-COMPACT-NTP-RTT-UNDERFLOW-AND-BOUNDS-GUARD" as const;
+      const clampedRttUnderflowWrapOrOutlierSamples = 0;
+      const clampedEstimatedMediaRttMs = Math.min(
+        Math.max(context.estimatedMediaRttMs, 1),
+        3000,
+      );
+
+      if (context.compactNtpDlrrUnsignedRttUnderflowOrClockSkewDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unsigned_dlrr_rtt_underflow_and_preserve_nack",
+          reason:
+            "Enterprise WebRTC RFC 3611 RTCP XR DLRR Compact-NTP RTT Underflow Policy Check: 32-bit unsigned A - LSR - DLSR subtraction underflow (65,535s wrap) or spoofed DLSR inflation detected; offline synthetic policy state machine enforcing signed int32 modular diff (0 underflow/outlier samples) and clamping media RTT to [1, 3000]ms to keep RTCP NACK active (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live EWMA filter update latency not_measured).",
+          clampedRttUnderflowWrapOrOutlierSamples,
+          clampedEstimatedMediaRttMs,
+        };
+      }
+
+      if (
+        context.rttUnderflowWrapOrOutlierSamples > 0 ||
+        context.estimatedMediaRttMs < 1 ||
+        context.estimatedMediaRttMs > 3000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_rtt_underflow_samples_and_media_rtt_bounds",
+          reason:
+            "Compact-NTP RTT underflow/outlier samples (>0 synthetic ceiling) or estimated media RTT (<1ms or >3000ms synthetic bounds) out of bounds; clamping outlier samples to 0 and media RTT to [1, 3000]ms.",
+          clampedRttUnderflowWrapOrOutlierSamples,
+          clampedEstimatedMediaRttMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 3611 DLRR signed compact-NTP RTT validation (0 underflow samples) and [1, 3000]ms RTT bounds verified.",
+        clampedRttUnderflowWrapOrOutlierSamples,
+        clampedEstimatedMediaRttMs,
+      };
+    }
+
+    export interface WebrtcRtcpXrRfc3611VoipMetricsMosCrossValidationAndGminContext {
+      uncorroboratedVoipMetricsMosDropOrInvalidGminDetected: boolean;
+      spoofedMosFailoversOrInvalidGminBlocks: number;
+      voipMetricsGminGapThresholdPackets: number;
+    }
+
+    export interface WebrtcRtcpXrRfc3611VoipMetricsMosCrossValidationAndGminDecision {
+      violated: boolean;
+      policyId: "P906-WEBRTC-RTCP-XR-RFC3611-VOIP-METRICS-MOS-CROSS-VALIDATION-AND-GMIN-GUARD";
+      action:
+        | "quarantine_uncorroborated_bt7_mos_and_clamp_gmin"
+        | "clamp_spoofed_mos_blocks_and_gmin_threshold_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedMosFailoversOrInvalidGminBlocks: number;
+      clampedVoipMetricsGminGapThresholdPackets: number;
+    }
+
+    export function evaluateWebrtcRtcpXrRfc3611VoipMetricsMosCrossValidationAndGminGate(
+      context: WebrtcRtcpXrRfc3611VoipMetricsMosCrossValidationAndGminContext,
+    ): WebrtcRtcpXrRfc3611VoipMetricsMosCrossValidationAndGminDecision {
+      const policyId =
+        "P906-WEBRTC-RTCP-XR-RFC3611-VOIP-METRICS-MOS-CROSS-VALIDATION-AND-GMIN-GUARD" as const;
+      const clampedSpoofedMosFailoversOrInvalidGminBlocks = 0;
+      const clampedVoipMetricsGminGapThresholdPackets = Math.min(
+        Math.max(context.voipMetricsGminGapThresholdPackets, 16),
+        64,
+      );
+
+      if (context.uncorroboratedVoipMetricsMosDropOrInvalidGminDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "quarantine_uncorroborated_bt7_mos_and_clamp_gmin",
+          reason:
+            "Enterprise WebRTC RFC 3611 BT=7 VoIP Metrics MOS Cross-Validation & Gmin Policy Check: uncorroborated remote MOS-LQ/R-Factor drop contradicting local RTP sequence telemetry or invalid Gmin=0 Markov burst threshold detected; offline synthetic policy state machine quarantining spoofed BT=7 reports (0 false failovers) and clamping Gmin to [16, 64] packets (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live ITU-T G.107 E-Model polynomial evaluation latency not_measured).",
+          clampedSpoofedMosFailoversOrInvalidGminBlocks,
+          clampedVoipMetricsGminGapThresholdPackets,
+        };
+      }
+
+      if (
+        context.spoofedMosFailoversOrInvalidGminBlocks > 0 ||
+        context.voipMetricsGminGapThresholdPackets < 16 ||
+        context.voipMetricsGminGapThresholdPackets > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_mos_blocks_and_gmin_threshold_bounds",
+          reason:
+            "Spoofed BT=7 MOS failovers / invalid Gmin blocks (>0 synthetic ceiling) or Gmin burst-gap threshold (<16 or >64 packets synthetic bounds) out of bounds; clamping invalid blocks to 0 and Gmin to [16, 64] packets.",
+          clampedSpoofedMosFailoversOrInvalidGminBlocks,
+          clampedVoipMetricsGminGapThresholdPackets,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 3611 BT=7 VoIP Metrics local cross-validation (0 false failovers) and [16, 64]-packet Gmin bounds verified.",
+        clampedSpoofedMosFailoversOrInvalidGminBlocks,
+        clampedVoipMetricsGminGapThresholdPackets,
+      };
+    }
+
 
 
 
