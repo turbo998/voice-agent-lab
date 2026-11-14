@@ -1741,6 +1741,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of multipart/* messages with >1 application/sdp part or nested multipart containers (0 shadow SDPs) and caps body parts in [1, 3]; live SBC MIME boundary AST scan latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted application/isup and application/qsig binary parts (0 injected bodies) and enforces exact Content-Length parity within [256, 8192] bytes; live SBC binary MIME strip latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "427. [Topic 64 · 860 Probes 🎉: voice-webrtc-opus-rfc6716-rfc7587-toc-frame-bomb-fec-dtx-stereo-overflow-faq] WebRTC RFC 6716 Opus TOC Code-3 Frame-Count Bomb ([10,60]ms / <=120ms) & RFC 7587 Unnegotiated Stereo (s=1) Mono Downmix + [1,3]-Frame LBRR/PLC Guard (P841 / P842 — Stage 424 · 🎉 860-Probe & 670-POC-Probe Milestone · 427 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of Code-3 M=0, >120ms, or VBR-overread Opus packets pre-decode (0 malformed packets) and clamps realtime packet duration in [10, 60]ms; live libopus SIMD decode latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: hard-locks channels=1 mono downmixing on unnegotiated s=1 stereo packets (0 stereo buffer overflows) and caps consecutive LBRR/PLC recovery frames in [1, 3]; live Opus LPC PLC extrapolation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

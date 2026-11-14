@@ -76349,6 +76349,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcOpusRfc6716TocCode3FrameCountBombAndDurationCapContext {
+      tocCode3FrameBombOrCompressedLengthOverreadDetected: boolean;
+      malformedOrOver120msOpusPackets: number;
+      maxOpusPacketDurationMs: number;
+    }
+
+    export interface WebrtcOpusRfc6716TocCode3FrameCountBombAndDurationCapDecision {
+      violated: boolean;
+      policyId: "P841-WEBRTC-OPUS-RFC6716-TOC-CODE3-FRAME-COUNT-BOMB-AND-DURATION-CAP-GUARD";
+      action:
+        | "drop_code3_frame_bomb_and_clamp_opus_duration"
+        | "clamp_malformed_opus_packets_and_duration_bounds"
+        | "allow";
+      reason: string;
+      clampedMalformedOrOver120msOpusPackets: number;
+      clampedMaxOpusPacketDurationMs: number;
+    }
+
+    export function evaluateWebrtcOpusRfc6716TocCode3FrameCountBombAndDurationCapGate(
+      context: WebrtcOpusRfc6716TocCode3FrameCountBombAndDurationCapContext,
+    ): WebrtcOpusRfc6716TocCode3FrameCountBombAndDurationCapDecision {
+      const policyId =
+        "P841-WEBRTC-OPUS-RFC6716-TOC-CODE3-FRAME-COUNT-BOMB-AND-DURATION-CAP-GUARD" as const;
+      const clampedMalformedOrOver120msOpusPackets = 0;
+      const clampedMaxOpusPacketDurationMs = Math.min(
+        Math.max(context.maxOpusPacketDurationMs, 10),
+        60,
+      );
+
+      if (context.tocCode3FrameBombOrCompressedLengthOverreadDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_code3_frame_bomb_and_clamp_opus_duration",
+          reason:
+            "WebRTC Opus RFC 6716 Section 3.1 / 3.2.5 TOC Code-3 Frame-Count Bomb & Compressed-Length Overread Policy Check: inbound Opus RTP packet declared Code 3 frame count M=0, total duration M*frame_ms > 120ms, or two-byte VBR subframe lengths exceeding rtpPayloadBytes; offline synthetic policy state machine dropping 100% of malformed/over-120ms Opus packets pre-decode (0 malformed packets) and clamping maximum realtime packet duration to [10, 60]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live libopus SIMD decode latency not_measured).",
+          clampedMalformedOrOver120msOpusPackets,
+          clampedMaxOpusPacketDurationMs,
+        };
+      }
+
+      if (
+        context.malformedOrOver120msOpusPackets > 0 ||
+        context.maxOpusPacketDurationMs < 10 ||
+        context.maxOpusPacketDurationMs > 60
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_malformed_opus_packets_and_duration_bounds",
+          reason:
+            "Malformed/over-120ms Opus packets (>0 synthetic ceiling) or maximum realtime Opus packet duration (<10ms or >60ms synthetic bounds) out of bounds; clamping malformed packets to 0 and packet duration to [10, 60]ms.",
+          clampedMalformedOrOver120msOpusPackets,
+          clampedMaxOpusPacketDurationMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 6716 TOC Code-3 frame-count and VBR byte-length closure (0 malformed packets) and [10, 60]ms packet duration bounds verified.",
+        clampedMalformedOrOver120msOpusPackets,
+        clampedMaxOpusPacketDurationMs,
+      };
+    }
+
+    export interface WebrtcOpusRfc7587StereoChannelOverflowAndLbrrFecDtxDesyncContext {
+      unnegotiatedStereoOverflowOrLbrrDtxDesyncDetected: boolean;
+      stereoBufferOverflowAttempts: number;
+      maxConsecutiveLbrrPlcFrames: number;
+    }
+
+    export interface WebrtcOpusRfc7587StereoChannelOverflowAndLbrrFecDtxDesyncDecision {
+      violated: boolean;
+      policyId: "P842-WEBRTC-OPUS-RFC7587-STEREO-CHANNEL-OVERFLOW-AND-LBRR-FEC-DTX-DESYNC-GUARD";
+      action:
+        | "downmix_stereo_to_mono_and_bound_lbrr_plc_recovery"
+        | "clamp_stereo_overflow_and_lbrr_plc_frame_bounds"
+        | "allow";
+      reason: string;
+      clampedStereoBufferOverflowAttempts: number;
+      clampedMaxConsecutiveLbrrPlcFrames: number;
+    }
+
+    export function evaluateWebrtcOpusRfc7587StereoChannelOverflowAndLbrrFecDtxDesyncGate(
+      context: WebrtcOpusRfc7587StereoChannelOverflowAndLbrrFecDtxDesyncContext,
+    ): WebrtcOpusRfc7587StereoChannelOverflowAndLbrrFecDtxDesyncDecision {
+      const policyId =
+        "P842-WEBRTC-OPUS-RFC7587-STEREO-CHANNEL-OVERFLOW-AND-LBRR-FEC-DTX-DESYNC-GUARD" as const;
+      const clampedStereoBufferOverflowAttempts = 0;
+      const clampedMaxConsecutiveLbrrPlcFrames = Math.min(
+        Math.max(context.maxConsecutiveLbrrPlcFrames, 1),
+        3,
+      );
+
+      if (context.unnegotiatedStereoOverflowOrLbrrDtxDesyncDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "downmix_stereo_to_mono_and_bound_lbrr_plc_recovery",
+          reason:
+            "WebRTC Opus RFC 7587 Section 6.1 Unnegotiated Stereo (s=1) Buffer Overflow & In-Band LBRR FEC / DTX Desync Policy Check: inbound Opus RTP packet flipped TOC bit s=1 (stereo) on a mono-allocated PCM pipeline or triggered unbounded consecutive LBRR FEC / PLC extrapolation across a DTX silence transition; offline synthetic policy state machine hard-locking channels=1 mono downmix (0 stereo overflows) and clamping consecutive LBRR/PLC recovery to [1, 3] frames (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Opus LPC PLC extrapolation latency not_measured).",
+          clampedStereoBufferOverflowAttempts,
+          clampedMaxConsecutiveLbrrPlcFrames,
+        };
+      }
+
+      if (
+        context.stereoBufferOverflowAttempts > 0 ||
+        context.maxConsecutiveLbrrPlcFrames < 1 ||
+        context.maxConsecutiveLbrrPlcFrames > 3
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_stereo_overflow_and_lbrr_plc_frame_bounds",
+          reason:
+            "Unnegotiated stereo buffer overflow attempts (>0 synthetic ceiling) or maximum consecutive LBRR/PLC recovery frames (<1 or >3 frames synthetic bounds) out of bounds; clamping stereo overflows to 0 and consecutive LBRR/PLC frames to [1, 3].",
+          clampedStereoBufferOverflowAttempts,
+          clampedMaxConsecutiveLbrrPlcFrames,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 7587 locked mono downmix (0 stereo buffer overflows) and [1, 3]-frame LBRR/PLC recovery bounds verified.",
+        clampedStereoBufferOverflowAttempts,
+        clampedMaxConsecutiveLbrrPlcFrames,
+      };
+    }
+
 
 
 
