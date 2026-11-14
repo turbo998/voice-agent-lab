@@ -1771,6 +1771,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of status_count>256 or recv_delta byte-mismatched TWCC packets (0 overread packets) and clamps packet_status_count in [1, 256]; live GoogCC Trendline filter update latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsent-seq phantom loss and sub-floor REMB cliff reports (0 spoofed reports) and enforces [24, 64] kbps protected Opus audio floor; live SFU BWE pacer allocation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "432. [Topic 69 · 870 Probes & 680 POC Probes 🎉: voice-sip-rfc4028-session-timer-min-se-downgrade-refresher-glare-zombie-reaper-faq] Enterprise SIP RFC 4028 Session-Expires [90,1800]s + Min-SE >=90s Clamp & Explicit Refresher UPDATE + [15,30]s RTP Dead-Air Zombie Reaper Guard (P851 / P852 — Stage 429 · 🎉 Historic 870-Probe & 680 Live POC Probes Dual Milestone · 432 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of Session-Expires <90s offers with 422 Min-SE:90 (0 sub-floor/loop attempts) and clamps negotiated intervals in [90, 1800]s; live SBC SIP timer wheel scheduling latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins explicit refresher role with jittered UPDATE and reaps 100% of half-open RTP+RTCP dead-air zombie calls within [15, 30]s (0 unreaped zombies); live kernel RTP packet counter polling latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

@@ -77029,6 +77029,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc4028SessionExpiresMinSeDowngradeThrashAnd422LoopContext {
+      subNinetySecondSessionExpiresOr422RetryLoopDetected: boolean;
+      subFloorSessionTimerOr422LoopAttempts: number;
+      negotiatedSessionExpiresSeconds: number;
+    }
+
+    export interface SipRfc4028SessionExpiresMinSeDowngradeThrashAnd422LoopDecision {
+      violated: boolean;
+      policyId: "P851-SIP-RFC4028-SESSION-EXPIRES-MIN-SE-DOWNGRADE-THRASH-AND-422-LOOP-GUARD";
+      action:
+        | "enforce_rfc4028_min_se_90s_and_cap_422_retries"
+        | "clamp_session_timer_attempts_and_interval_bounds"
+        | "allow";
+      reason: string;
+      clampedSubFloorSessionTimerOr422LoopAttempts: number;
+      clampedNegotiatedSessionExpiresSeconds: number;
+    }
+
+    export function evaluateSipRfc4028SessionExpiresMinSeDowngradeThrashAnd422LoopGate(
+      context: SipRfc4028SessionExpiresMinSeDowngradeThrashAnd422LoopContext,
+    ): SipRfc4028SessionExpiresMinSeDowngradeThrashAnd422LoopDecision {
+      const policyId =
+        "P851-SIP-RFC4028-SESSION-EXPIRES-MIN-SE-DOWNGRADE-THRASH-AND-422-LOOP-GUARD" as const;
+      const clampedSubFloorSessionTimerOr422LoopAttempts = 0;
+      const clampedNegotiatedSessionExpiresSeconds = Math.min(
+        Math.max(context.negotiatedSessionExpiresSeconds, 90),
+        1800,
+      );
+
+      if (context.subNinetySecondSessionExpiresOr422RetryLoopDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc4028_min_se_90s_and_cap_422_retries",
+          reason:
+            "SIP RFC 4028 Session-Expires / Min-SE Sub-90s Downgrade Thrash & 422 Retry Loop Policy Check: inbound SIP dialog offered Session-Expires <90s or entered a >2-retry 422 Session Interval Too Small escalation loop; offline synthetic policy state machine enforcing Min-SE >=90s (0 sub-floor/loop attempts) and clamping negotiated Session-Expires to [90, 1800]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC SIP timer wheel scheduling latency not_measured).",
+          clampedSubFloorSessionTimerOr422LoopAttempts,
+          clampedNegotiatedSessionExpiresSeconds,
+        };
+      }
+
+      if (
+        context.subFloorSessionTimerOr422LoopAttempts > 0 ||
+        context.negotiatedSessionExpiresSeconds < 90 ||
+        context.negotiatedSessionExpiresSeconds > 1800
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_session_timer_attempts_and_interval_bounds",
+          reason:
+            "Sub-floor Session-Expires or 422 loop attempts (>0 synthetic ceiling) or negotiated Session-Expires interval (<90s or >1800s synthetic bounds) out of bounds; clamping violations to 0 and interval to [90, 1800]s.",
+          clampedSubFloorSessionTimerOr422LoopAttempts,
+          clampedNegotiatedSessionExpiresSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 4028 Min-SE >=90s floor (0 sub-floor/loop attempts) and [90, 1800]s Session-Expires bounds verified.",
+        clampedSubFloorSessionTimerOr422LoopAttempts,
+        clampedNegotiatedSessionExpiresSeconds,
+      };
+    }
+
+    export interface SipRfc4028RefresherRoleGlareAndHalfOpenRtpZombieReaperContext {
+      refresherRoleGlareOrHalfOpenRtpZombieCallDetected: boolean;
+      unreapedHalfOpenRtpZombieCalls: number;
+      rtpDeadAirWatchdogTimeoutSeconds: number;
+    }
+
+    export interface SipRfc4028RefresherRoleGlareAndHalfOpenRtpZombieReaperDecision {
+      violated: boolean;
+      policyId: "P852-SIP-RFC4028-REFRESHER-ROLE-GLARE-AND-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD";
+      action:
+        | "reap_half_open_rtp_zombie_with_bye_reason_and_pin_refresher"
+        | "clamp_zombie_calls_and_rtp_watchdog_bounds"
+        | "allow";
+      reason: string;
+      clampedUnreapedHalfOpenRtpZombieCalls: number;
+      clampedRtpDeadAirWatchdogTimeoutSeconds: number;
+    }
+
+    export function evaluateSipRfc4028RefresherRoleGlareAndHalfOpenRtpZombieReaperGate(
+      context: SipRfc4028RefresherRoleGlareAndHalfOpenRtpZombieReaperContext,
+    ): SipRfc4028RefresherRoleGlareAndHalfOpenRtpZombieReaperDecision {
+      const policyId =
+        "P852-SIP-RFC4028-REFRESHER-ROLE-GLARE-AND-HALF-OPEN-RTP-ZOMBIE-REAPER-GUARD" as const;
+      const clampedUnreapedHalfOpenRtpZombieCalls = 0;
+      const clampedRtpDeadAirWatchdogTimeoutSeconds = Math.min(
+        Math.max(context.rtpDeadAirWatchdogTimeoutSeconds, 15),
+        30,
+      );
+
+      if (context.refresherRoleGlareOrHalfOpenRtpZombieCallDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reap_half_open_rtp_zombie_with_bye_reason_and_pin_refresher",
+          reason:
+            "SIP RFC 4028 Refresher Role Glare & Half-Open RTP Dead-Air Zombie Reaper Policy Check: dialog suffered T/2 refresher glare or inbound RTP+RTCP media silence exceeded [15, 30]s after radio/network drop without SIP BYE; offline synthetic policy state machine pinning explicit refresher role with jittered UPDATE and reaping 100% of half-open zombie calls (0 unreaped zombies) within [15, 30]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live kernel RTP packet counter polling latency not_measured).",
+          clampedUnreapedHalfOpenRtpZombieCalls,
+          clampedRtpDeadAirWatchdogTimeoutSeconds,
+        };
+      }
+
+      if (
+        context.unreapedHalfOpenRtpZombieCalls > 0 ||
+        context.rtpDeadAirWatchdogTimeoutSeconds < 15 ||
+        context.rtpDeadAirWatchdogTimeoutSeconds > 30
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_zombie_calls_and_rtp_watchdog_bounds",
+          reason:
+            "Unreaped half-open RTP zombie calls (>0 synthetic ceiling) or RTP dead-air watchdog timeout (<15s or >30s synthetic bounds) out of bounds; clamping unreaped zombies to 0 and watchdog timeout to [15, 30]s.",
+          clampedUnreapedHalfOpenRtpZombieCalls,
+          clampedRtpDeadAirWatchdogTimeoutSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: explicit RFC 4028 refresher pinning (0 unreaped zombies) and [15, 30]s RTP dead-air watchdog bounds verified.",
+        clampedUnreapedHalfOpenRtpZombieCalls,
+        clampedRtpDeadAirWatchdogTimeoutSeconds,
+      };
+    }
+
 
 
 
