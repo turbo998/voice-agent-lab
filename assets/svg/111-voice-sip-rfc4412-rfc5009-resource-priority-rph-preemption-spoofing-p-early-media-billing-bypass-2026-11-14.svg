@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg111" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accent111" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg111)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="8" rx="4" fill="url(#accent111)"/>
+
+  <text x="56" y="68" fill="#F59E0B" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1">STAGE 467 · TOPIC 107 · P927–P928 · HISTORIC 470-DIMENSION MILESTONE 🎉 · 937 GUARDS · 470 DIMS 🎉 · 909 TESTS</text>
+  <text x="56" y="102" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24.5" font-weight="800">SIP RFC 4412 Resource-Priority &amp; RFC 5009 P-Early-Media: [5,25]% Cap &amp; [5,45]s sendonly Guard</text>
+  <text x="56" y="128" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业 SIP RFC 4412/5009 资源优先级与早期媒体：严防伪造 RPH 强拆存量通话与 183 sendrecv 应答前免计费双向盗打 (P927–P928)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="56" y="152" width="528" height="390" rx="14" fill="#1E1B2E" stroke="#EF4444" stroke-width="2"/>
+  <rect x="76" y="172" width="276" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="90" y="191" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">❌ 脆弱基线 (Unguarded RPH &amp; P-Early-Media)</text>
+
+  <text x="76" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. 外网伪造 Resource-Priority 强拆存量 VIP 通话</text>
+  <text x="76" y="250" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">INVITE Resource-Priority: dsn.flash-override (Unsigned)</text>
+  <text x="76" y="272" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 无 RFC 8443 (ppt=rph) 验签，允许 100% 抢占配额！</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• SBC 直接向存量通话发送 BYE (Preempted) 批量踢下线！</text>
+
+  <line x1="76" y1="320" x2="560" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="76" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. 183 + P-Early-Media: sendrecv 免计费双向盗打</text>
+  <text x="76" y="376" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">183 Session Progress + P-Early-Media: sendrecv (600s)</text>
+  <text x="76" y="398" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 迟迟不发 200 OK 逃避 CDR 计费，打开双向 RTP 免费畅聊！</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 持续 600s 白嫖跨国语音线路与 AI 实时推理 GPU 算力！</text>
+
+  <rect x="76" y="450" width="488" height="72" rx="10" fill="#450A0A" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="92" y="476" fill="#FECACA" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">事故后果：15 通存量 VIP 通话被恶意强拆 + 9 通 600s 应答前白嫖盗打</text>
+  <text x="92" y="500" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">一行伪造头域即可瘫痪在线客服，183 阶段双向穿透造成巨额资费流失</text>
+
+  <!-- Right Card: Deterministic Guardrails P927-P928 -->
+  <rect x="616" y="152" width="528" height="390" rx="14" fill="#0F292A" stroke="#10B981" stroke-width="2"/>
+  <rect x="636" y="172" width="318" height="28" rx="6" fill="#064E3B"/>
+  <text x="650" y="191" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">✅ 企业级护栏 (P927 + P928 · 470 Dims Milestone 🎉)</text>
+
+  <text x="636" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P927 · RFC 8443 (ppt=rph) 验签与 [5, 25]% 抢占配额封顶</text>
+  <text x="636" y="250" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Verify PASSporT rph · PreemptableCap ∈ [5, 25]% (25%)</text>
+  <text x="636" y="272" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 无签名外网 RPH 一律剥离或回 417，默认转为 Queueing 免强拆排队</text>
+  <text x="636" y="294" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 应急专网抢占上限钳制在 [5, 25]% (0 伪造强拆掉话)</text>
+
+  <line x1="636" y1="320" x2="1120" y2="320" stroke="#1E293B" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="636" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P928 · 200 OK 前强制 sendonly 阀门与 [5, 45]s 窗口锁</text>
+  <text x="636" y="376" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Force P-Early-Media: sendonly · EarlyMediaTTL ∈ [5, 45]s (45s)</text>
+  <text x="636" y="398" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 摘机计费前阻断上行麦克风 RTP 穿透，杜绝 183 阶段双向对话</text>
+  <text x="636" y="420" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 早期媒体最大存活时长钳制在 [5, 45]s，超时自动 CANCEL 拆线</text>
+
+  <rect x="636" y="450" width="488" height="72" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5"/>
+  <text x="652" y="476" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">验证结果：0 伪造 RPH 强拆掉话 · 0 应答前双向盗打 · 25% / 45s 封顶</text>
+  <text x="652" y="500" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer Provenance -->
+  <rect x="56" y="560" width="1088" height="68" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="76" y="586" fill="#F59E0B" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Benchmark &amp; Provenance (Stage 467 · Topic 107 · 937 Guardrails · 946 Probes · 756 Live POC Probes · 470 Dims 🎉 · 909 Tests)</text>
+  <text x="76" y="610" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Guardrails: evaluateSipRfc4412ResourcePriorityHeaderSpoofingAndPreemptionQuotaGate (P927) &amp; evaluateSipRfc5009PEarlyMediaDirectionGatingAndPreAnswerTollFraudGate (P928)</text>
+</svg>

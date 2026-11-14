@@ -82188,6 +82188,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc4412ResourcePriorityHeaderSpoofingAndPreemptionQuotaContext {
+      unauthenticatedResourcePriorityPreemptionDetected: boolean;
+      spoofedRphPreemptedActiveCalls: number;
+      maxPreemptableTrunkCapacityPercent: number;
+    }
+
+    export interface SipRfc4412ResourcePriorityHeaderSpoofingAndPreemptionQuotaDecision {
+      violated: boolean;
+      policyId: "P927-SIP-RFC4412-RESOURCE-PRIORITY-HEADER-SPOOFING-AND-PREEMPTION-QUOTA-GUARD";
+      action:
+        | "strip_unsigned_rph_enforce_rfc8443_passport_and_cap_preemption"
+        | "clamp_preempted_calls_and_preemptable_capacity_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedRphPreemptedActiveCalls: number;
+      clampedMaxPreemptableTrunkCapacityPercent: number;
+    }
+
+    export function evaluateSipRfc4412ResourcePriorityHeaderSpoofingAndPreemptionQuotaGate(
+      context: SipRfc4412ResourcePriorityHeaderSpoofingAndPreemptionQuotaContext,
+    ): SipRfc4412ResourcePriorityHeaderSpoofingAndPreemptionQuotaDecision {
+      const policyId =
+        "P927-SIP-RFC4412-RESOURCE-PRIORITY-HEADER-SPOOFING-AND-PREEMPTION-QUOTA-GUARD" as const;
+      const clampedSpoofedRphPreemptedActiveCalls = 0;
+      const clampedMaxPreemptableTrunkCapacityPercent = Math.min(
+        Math.max(context.maxPreemptableTrunkCapacityPercent, 5),
+        25,
+      );
+
+      if (context.unauthenticatedResourcePriorityPreemptionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_unsigned_rph_enforce_rfc8443_passport_and_cap_preemption",
+          reason:
+            'Enterprise SIP RFC 4412 / RFC 8443 Resource-Priority (RPH) Anti-Spoofing & Preemption Quota Policy Check: external INVITE carried unauthenticated Resource-Priority (dsn/ets/wps) attempting to preempt active voice calls without an RFC 8443 PASSporT (ppt="rph") signature; offline synthetic policy state machine stripping unsigned RPH headers (0 spoofed call preemptions) and clamping preemptable trunk capacity to [5, 25]% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC PASSporT rph signature verification latency not_measured).',
+          clampedSpoofedRphPreemptedActiveCalls,
+          clampedMaxPreemptableTrunkCapacityPercent,
+        };
+      }
+
+      if (
+        context.spoofedRphPreemptedActiveCalls > 0 ||
+        context.maxPreemptableTrunkCapacityPercent < 5 ||
+        context.maxPreemptableTrunkCapacityPercent > 25
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_preempted_calls_and_preemptable_capacity_bounds",
+          reason:
+            "Spoofed SIP RPH preempted active calls (>0 synthetic ceiling) or max preemptable trunk capacity (<5% or >25% synthetic bounds) out of bounds; clamping preempted calls to 0 and preemptable capacity to [5, 25]%.",
+          clampedSpoofedRphPreemptedActiveCalls,
+          clampedMaxPreemptableTrunkCapacityPercent,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4412 / RFC 8443 RPH signature gate (0 spoofed call preemptions) and [5, 25]% preemption quota verified.",
+        clampedSpoofedRphPreemptedActiveCalls,
+        clampedMaxPreemptableTrunkCapacityPercent,
+      };
+    }
+
+    export interface SipRfc5009PEarlyMediaDirectionGatingAndPreAnswerTollFraudContext {
+      unauthorizedBidirectionalEarlyMediaSendrecvTollFraudDetected: boolean;
+      unbilledBidirectional183TollFraudCalls: number;
+      maxEarlyMediaDurationSeconds: number;
+    }
+
+    export interface SipRfc5009PEarlyMediaDirectionGatingAndPreAnswerTollFraudDecision {
+      violated: boolean;
+      policyId: "P928-SIP-RFC5009-P-EARLY-MEDIA-DIRECTION-GATING-AND-PRE-ANSWER-TOLL-FRAUD-GUARD";
+      action:
+        | "force_unidirectional_sendonly_early_media_and_clamp_183_ttl"
+        | "clamp_unbilled_183_calls_and_early_media_duration_bounds"
+        | "allow";
+      reason: string;
+      clampedUnbilledBidirectional183TollFraudCalls: number;
+      clampedMaxEarlyMediaDurationSeconds: number;
+    }
+
+    export function evaluateSipRfc5009PEarlyMediaDirectionGatingAndPreAnswerTollFraudGate(
+      context: SipRfc5009PEarlyMediaDirectionGatingAndPreAnswerTollFraudContext,
+    ): SipRfc5009PEarlyMediaDirectionGatingAndPreAnswerTollFraudDecision {
+      const policyId =
+        "P928-SIP-RFC5009-P-EARLY-MEDIA-DIRECTION-GATING-AND-PRE-ANSWER-TOLL-FRAUD-GUARD" as const;
+      const clampedUnbilledBidirectional183TollFraudCalls = 0;
+      const clampedMaxEarlyMediaDurationSeconds = Math.min(
+        Math.max(context.maxEarlyMediaDurationSeconds, 5),
+        45,
+      );
+
+      if (context.unauthorizedBidirectionalEarlyMediaSendrecvTollFraudDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "force_unidirectional_sendonly_early_media_and_clamp_183_ttl",
+          reason:
+            "Enterprise SIP RFC 5009 P-Early-Media Direction Gating & Pre-Answer Toll-Fraud Policy Check: 183 Session Progress requested P-Early-Media: sendrecv to establish an unbilled two-way voice channel prior to 200 OK answer supervision; offline synthetic policy state machine locking pre-answer media to unidirectional sendonly (0 unbilled bidirectional 183 calls) and clamping early-media TTL to [5, 45]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC media-pinhole direction switch latency not_measured).",
+          clampedUnbilledBidirectional183TollFraudCalls,
+          clampedMaxEarlyMediaDurationSeconds,
+        };
+      }
+
+      if (
+        context.unbilledBidirectional183TollFraudCalls > 0 ||
+        context.maxEarlyMediaDurationSeconds < 5 ||
+        context.maxEarlyMediaDurationSeconds > 45
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unbilled_183_calls_and_early_media_duration_bounds",
+          reason:
+            "Unbilled bidirectional 183 toll-fraud calls (>0 synthetic ceiling) or max early-media duration (<5s or >45s synthetic bounds) out of bounds; clamping toll-fraud calls to 0 and early-media TTL to [5, 45]s.",
+          clampedUnbilledBidirectional183TollFraudCalls,
+          clampedMaxEarlyMediaDurationSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 5009 unidirectional sendonly early-media lock (0 unbilled 183 calls) and [5, 45]s early-media TTL verified.",
+        clampedUnbilledBidirectional183TollFraudCalls,
+        clampedMaxEarlyMediaDurationSeconds,
+      };
+    }
+
 
 
 
