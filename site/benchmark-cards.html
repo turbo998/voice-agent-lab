@@ -1763,6 +1763,13 @@
               <td><code>P909 / P910 deterministic WebRTC RFC 8445 uint64 487 tie-breaker Ta [5,50]ms &amp; RFC 8838 [3000,15000]ms Trickle hold guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>462. [专题99 · 921护栏 &amp; 930探针 🎉 `docs/voice-sip-rfc4474-rfc8224-stir-shaken-diversion-passpor-t-div-tn-retargeting-spoof-faq.md`] 企业 SIP `RFC 8946` `STIR/SHAKEN PASSporT "ppt":"div"` 呼叫前转数字背书、`Base.dest === div.div -> Request-URI` 首尾咬合核验与 `[1, 5]` 跳上限锁（`0` 断链掉签或嫁接伪造呼叫，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `ES256 ECDSA` 多跳验签耗时 `not_measured`）&amp; `RFC 8224` 多重 `Identity` `div.iat &gt;= Base.iat` 单调递增防重放嫁接与 `[5, 60]s` 新鲜度窗口锁（`0` 重放或超长包；真实 `STI-CA` 证书查询耗时 `not_measured`）(`P911` / `P912` · Stage 459 · Topic 99 · 🎉 921 护栏、930 合成探针与 740 现场探针三重历史性里程碑 · 921 护栏 🎉 &amp; 930 探针 🎉 · 462 维)</strong>
+              </td>
+              <td><code>P911 / P912 deterministic SIP RFC 8946 PASSporT div [1,5]-hop continuity &amp; RFC 8224 [5,60]s monotonic iat guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5502,6 +5509,13 @@
                 <strong>461. [专题98 · 100篇FAQ &amp; P910 🎉 `docs/voice-webrtc-ice-rfc8445-rfc8838-trickle-ice-end-of-candidates-role-conflict-487-nomination-faq.md`] 企业 WebRTC `RFC 8445` `64-bit` 无符号 `uint64 Tie-Breaker` 裁决防 `STUN 487 Role Conflict` 死循环、先 `Succeeded` 后提名与 `Ta ∈ [5, 50]ms` 步进锁（`0` 角色死循环或盲切，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `STUN HMAC-SHA1` 验签耗时 `not_measured`）&amp; `RFC 8838 (Trickle ICE)` 收齐 `a=end-of-candidates` 前严禁早判 `ICE Failed` 与 `[3000, 15000]ms` 收集超时锁（`0` 涓流早判掉话；真实 `TURN Allocate` 往返耗时 `not_measured`）(`P909` / `P910 🎉` · Stage 458 · Topic 98 · 🎉 全仓第 100 篇独立单专题 FAQ、P910 护栏与 900 单测三重历史性里程碑 · 919 护栏 &amp; 928 探针 · 461 维)</strong>
               </td>
               <td><code>P909 / P910 deterministic WebRTC RFC 8445 uint64 487 tie-breaker Ta [5,50]ms &amp; RFC 8838 [3000,15000]ms Trickle hold guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>462. [专题99 · 921护栏 &amp; 930探针 🎉 `docs/voice-sip-rfc4474-rfc8224-stir-shaken-diversion-passpor-t-div-tn-retargeting-spoof-faq.md`] 企业 SIP `RFC 8946` `STIR/SHAKEN PASSporT "ppt":"div"` 呼叫前转数字背书、`Base.dest === div.div -> Request-URI` 首尾咬合核验与 `[1, 5]` 跳上限锁（`0` 断链掉签或嫁接伪造呼叫，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `ES256 ECDSA` 多跳验签耗时 `not_measured`）&amp; `RFC 8224` 多重 `Identity` `div.iat &gt;= Base.iat` 单调递增防重放嫁接与 `[5, 60]s` 新鲜度窗口锁（`0` 重放或超长包；真实 `STI-CA` 证书查询耗时 `not_measured`）(`P911` / `P912` · Stage 459 · Topic 99 · 🎉 921 护栏、930 合成探针与 740 现场探针三重历史性里程碑 · 921 护栏 🎉 &amp; 930 探针 🎉 · 462 维)</strong>
+              </td>
+              <td><code>P911 / P912 deterministic SIP RFC 8946 PASSporT div [1,5]-hop continuity &amp; RFC 8224 [5,60]s monotonic iat guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

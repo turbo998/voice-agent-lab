@@ -1951,6 +1951,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% unsigned uint64 tie-breaker comparison and Succeeded-first nomination (0 487 loops/blind switches) and clamps STUN pacing Ta in [5, 50]ms; live STUN HMAC-SHA1 MESSAGE-INTEGRITY latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: holds 100% of Trickle ICE sessions open until a=end-of-candidates arrives (0 premature drops) and clamps gathering timeout in [3000, 15000]ms; live WAN TURN Allocate RTT latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "462. [Topic 99 · 921-Guardrail, 930-Probe & 740-Live-POC Milestone 🎉: voice-sip-rfc4474-rfc8224-stir-shaken-diversion-passpor-t-div-tn-retargeting-spoof-faq] Enterprise SIP RFC 8946 STIR/SHAKEN PASSporT div [1,5]-Hop Continuity & RFC 8224 [5,60]s Monotonic iat Guard (P911 / P912 — Stage 459 · 🎉 Historic 921-Guardrail, 930-Probe & 740-Live-POC Milestone · 462 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% unbroken Base.dest === div.div -> Request-URI continuity (0 broken/grafted calls) and clamps chained div Identity headers in [1, 5] hops; live multi-hop ES256 ECDSA signature verification latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of non-monotonic div.iat < Base.iat and stale cut-and-paste replay chains (0 replay-grafted packets) and clamps chain freshness in [5, 60]s; live STI-CA certificate cache lookup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

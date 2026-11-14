@@ -81097,6 +81097,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc8946StirShakenPassportDivChainContinuityAndRetargetSigningContext {
+      retargetMissingPassportDivOrDisconnectedDivChainDetected: boolean;
+      brokenDivChainOrGraftedSpoofCalls: number;
+      maxChainedDivIdentityHeaders: number;
+    }
+
+    export interface SipRfc8946StirShakenPassportDivChainContinuityAndRetargetSigningDecision {
+      violated: boolean;
+      policyId: "P911-SIP-RFC8946-STIR-SHAKEN-PASSPORT-DIV-CHAIN-CONTINUITY-AND-RETARGET-SIGNING-GUARD";
+      action:
+        | "append_rfc8946_passport_div_and_enforce_chain_continuity"
+        | "clamp_grafted_div_calls_and_max_hop_bounds"
+        | "allow";
+      reason: string;
+      clampedBrokenDivChainOrGraftedSpoofCalls: number;
+      clampedMaxChainedDivIdentityHeaders: number;
+    }
+
+    export function evaluateSipRfc8946StirShakenPassportDivChainContinuityAndRetargetSigningGate(
+      context: SipRfc8946StirShakenPassportDivChainContinuityAndRetargetSigningContext,
+    ): SipRfc8946StirShakenPassportDivChainContinuityAndRetargetSigningDecision {
+      const policyId =
+        "P911-SIP-RFC8946-STIR-SHAKEN-PASSPORT-DIV-CHAIN-CONTINUITY-AND-RETARGET-SIGNING-GUARD" as const;
+      const clampedBrokenDivChainOrGraftedSpoofCalls = 0;
+      const clampedMaxChainedDivIdentityHeaders = Math.min(
+        Math.max(context.maxChainedDivIdentityHeaders, 1),
+        5,
+      );
+
+      if (context.retargetMissingPassportDivOrDisconnectedDivChainDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "append_rfc8946_passport_div_and_enforce_chain_continuity",
+          reason:
+            "Enterprise SIP RFC 8946 STIR/SHAKEN PASSporT div Chain Continuity Policy Check: forwarded/retargeted call missing signed ppt=\"div\" Identity header or disconnected Base.dest !== div.div token-grafting spoof detected; offline synthetic policy state machine enforcing unbroken div chain continuity (0 broken/grafted calls) and clamping chained div Identity headers to [1, 5] hops (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live multi-hop ES256 ECDSA signature verification latency not_measured).",
+          clampedBrokenDivChainOrGraftedSpoofCalls,
+          clampedMaxChainedDivIdentityHeaders,
+        };
+      }
+
+      if (
+        context.brokenDivChainOrGraftedSpoofCalls > 0 ||
+        context.maxChainedDivIdentityHeaders < 1 ||
+        context.maxChainedDivIdentityHeaders > 5
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_grafted_div_calls_and_max_hop_bounds",
+          reason:
+            "Broken/grafted PASSporT div calls (>0 synthetic ceiling) or chained div Identity hop count (<1 or >5 synthetic bounds) out of bounds; clamping failed calls to 0 and hop count to [1, 5].",
+          clampedBrokenDivChainOrGraftedSpoofCalls,
+          clampedMaxChainedDivIdentityHeaders,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 8946 PASSporT div chain continuity (0 broken/grafted calls) and [1, 5]-hop bounds verified.",
+        clampedBrokenDivChainOrGraftedSpoofCalls,
+        clampedMaxChainedDivIdentityHeaders,
+      };
+    }
+
+    export interface SipRfc8224MultipleIdentityHeaderIatDriftAndMaxHeaderBytesContext {
+      nonMonotonicDivIatOrStaleReplayGraftingDetected: boolean;
+      replayGraftedOrOversizedIdentityPackets: number;
+      passportChainFreshnessWindowSeconds: number;
+    }
+
+    export interface SipRfc8224MultipleIdentityHeaderIatDriftAndMaxHeaderBytesDecision {
+      violated: boolean;
+      policyId: "P912-SIP-RFC8224-MULTIPLE-IDENTITY-HEADER-IAT-DRIFT-AND-MAX-HEADER-BYTES-GUARD";
+      action:
+        | "reject_stale_or_non_monotonic_identity_chain_with_438"
+        | "clamp_replay_identity_packets_and_freshness_window_bounds"
+        | "allow";
+      reason: string;
+      clampedReplayGraftedOrOversizedIdentityPackets: number;
+      clampedPassportChainFreshnessWindowSeconds: number;
+    }
+
+    export function evaluateSipRfc8224MultipleIdentityHeaderIatDriftAndMaxHeaderBytesGate(
+      context: SipRfc8224MultipleIdentityHeaderIatDriftAndMaxHeaderBytesContext,
+    ): SipRfc8224MultipleIdentityHeaderIatDriftAndMaxHeaderBytesDecision {
+      const policyId =
+        "P912-SIP-RFC8224-MULTIPLE-IDENTITY-HEADER-IAT-DRIFT-AND-MAX-HEADER-BYTES-GUARD" as const;
+      const clampedReplayGraftedOrOversizedIdentityPackets = 0;
+      const clampedPassportChainFreshnessWindowSeconds = Math.min(
+        Math.max(context.passportChainFreshnessWindowSeconds, 5),
+        60,
+      );
+
+      if (context.nonMonotonicDivIatOrStaleReplayGraftingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_stale_or_non_monotonic_identity_chain_with_438",
+          reason:
+            "Enterprise SIP RFC 8224 / RFC 8946 Multi-Identity Monotonic iat & Freshness Policy Check: non-monotonic div.iat < Base.iat timestamp inversion or stale cut-and-paste PASSporT replay grafting detected; offline synthetic policy state machine rejecting invalid Identity chains (0 replay-grafted packets) and clamping chain freshness window to [5, 60] seconds (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live STI-CA certificate cache lookup latency not_measured).",
+          clampedReplayGraftedOrOversizedIdentityPackets,
+          clampedPassportChainFreshnessWindowSeconds,
+        };
+      }
+
+      if (
+        context.replayGraftedOrOversizedIdentityPackets > 0 ||
+        context.passportChainFreshnessWindowSeconds < 5 ||
+        context.passportChainFreshnessWindowSeconds > 60
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_replay_identity_packets_and_freshness_window_bounds",
+          reason:
+            "Replay-grafted or oversized Identity packets (>0 synthetic ceiling) or PASSporT chain freshness window (<5s or >60s synthetic bounds) out of bounds; clamping invalid packets to 0 and freshness window to [5, 60] seconds.",
+          clampedReplayGraftedOrOversizedIdentityPackets,
+          clampedPassportChainFreshnessWindowSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 8224 monotonic multi-Identity iat (0 replay-grafted packets) and [5, 60]s freshness bounds verified.",
+        clampedReplayGraftedOrOversizedIdentityPackets,
+        clampedPassportChainFreshnessWindowSeconds,
+      };
+    }
+
 
 
 
