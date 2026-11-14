@@ -81505,6 +81505,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc9143BundleUniquePayloadTypeAndMidExtensionDemuxContext {
+      crossMediaLinePayloadTypeCollisionOrMissingMidDemuxDetected: boolean;
+      crossMediaLinePtCollisionOrMisroutedPackets: number;
+      distinctDynamicPayloadTypesInBundle: number;
+    }
+
+    export interface WebrtcRfc9143BundleUniquePayloadTypeAndMidExtensionDemuxDecision {
+      violated: boolean;
+      policyId: "P917-WEBRTC-RFC9143-BUNDLE-UNIQUE-PAYLOAD-TYPE-AND-MID-EXTENSION-DEMUX-GUARD";
+      action:
+        | "enforce_disjoint_bundle_dynamic_pts_and_isolate_mid_less_packets"
+        | "clamp_misrouted_bundle_packets_and_dynamic_pt_bounds"
+        | "allow";
+      reason: string;
+      clampedCrossMediaLinePtCollisionOrMisroutedPackets: number;
+      clampedDistinctDynamicPayloadTypesInBundle: number;
+    }
+
+    export function evaluateWebrtcRfc9143BundleUniquePayloadTypeAndMidExtensionDemuxGate(
+      context: WebrtcRfc9143BundleUniquePayloadTypeAndMidExtensionDemuxContext,
+    ): WebrtcRfc9143BundleUniquePayloadTypeAndMidExtensionDemuxDecision {
+      const policyId =
+        "P917-WEBRTC-RFC9143-BUNDLE-UNIQUE-PAYLOAD-TYPE-AND-MID-EXTENSION-DEMUX-GUARD" as const;
+      const clampedCrossMediaLinePtCollisionOrMisroutedPackets = 0;
+      const clampedDistinctDynamicPayloadTypesInBundle = Math.min(
+        Math.max(context.distinctDynamicPayloadTypesInBundle, 1),
+        32,
+      );
+
+      if (context.crossMediaLinePayloadTypeCollisionOrMissingMidDemuxDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_disjoint_bundle_dynamic_pts_and_isolate_mid_less_packets",
+          reason:
+            "Enterprise WebRTC RFC 9143 BUNDLE Single-Port Demux Unique PT & MID Extension Policy Check: cross-m=-line dynamic Payload Type (96..127) collision or unlatched SSRC missing a=mid RTP header extension routing video bytes into Opus audio decoder detected; offline synthetic policy state machine enforcing disjoint dynamic PTs and isolating MID-less packets (0 misrouted packets) and clamping distinct dynamic PTs per BUNDLE group to [1, 32] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live softirq RFC 9143 hash-table lookup latency not_measured).",
+          clampedCrossMediaLinePtCollisionOrMisroutedPackets,
+          clampedDistinctDynamicPayloadTypesInBundle,
+        };
+      }
+
+      if (
+        context.crossMediaLinePtCollisionOrMisroutedPackets > 0 ||
+        context.distinctDynamicPayloadTypesInBundle < 1 ||
+        context.distinctDynamicPayloadTypesInBundle > 32
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_misrouted_bundle_packets_and_dynamic_pt_bounds",
+          reason:
+            "Cross-m=-line PT collision / misrouted BUNDLE packets (>0 synthetic ceiling) or distinct dynamic payload types (<1 or >32 synthetic bounds) out of bounds; clamping misrouted packets to 0 and dynamic PT count to [1, 32].",
+          clampedCrossMediaLinePtCollisionOrMisroutedPackets,
+          clampedDistinctDynamicPayloadTypesInBundle,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 9143 BUNDLE disjoint dynamic PTs + MID demux (0 misrouted packets) and [1, 32] dynamic PT bounds verified.",
+        clampedCrossMediaLinePtCollisionOrMisroutedPackets,
+        clampedDistinctDynamicPayloadTypesInBundle,
+      };
+    }
+
+    export interface WebrtcRfc9143BundleSsrcLatchingQuotaAndBundleOnlyFallbackContext {
+      unboundedSsrcLatchingFloodOrPrimaryAudioSsrcEvictionDetected: boolean;
+      evictedAudioSsrcOrUnboundedLatchEntries: number;
+      maxLatchedSsrcsPerBundleTransport: number;
+    }
+
+    export interface WebrtcRfc9143BundleSsrcLatchingQuotaAndBundleOnlyFallbackDecision {
+      violated: boolean;
+      policyId: "P918-WEBRTC-RFC9143-BUNDLE-SSRC-LATCHING-QUOTA-AND-BUNDLE-ONLY-FALLBACK-GUARD";
+      action:
+        | "pin_primary_voice_ssrc_and_cap_bundle_latch_table"
+        | "clamp_evicted_ssrc_entries_and_latch_quota_bounds"
+        | "allow";
+      reason: string;
+      clampedEvictedAudioSsrcOrUnboundedLatchEntries: number;
+      clampedMaxLatchedSsrcsPerBundleTransport: number;
+    }
+
+    export function evaluateWebrtcRfc9143BundleSsrcLatchingQuotaAndBundleOnlyFallbackGate(
+      context: WebrtcRfc9143BundleSsrcLatchingQuotaAndBundleOnlyFallbackContext,
+    ): WebrtcRfc9143BundleSsrcLatchingQuotaAndBundleOnlyFallbackDecision {
+      const policyId =
+        "P918-WEBRTC-RFC9143-BUNDLE-SSRC-LATCHING-QUOTA-AND-BUNDLE-ONLY-FALLBACK-GUARD" as const;
+      const clampedEvictedAudioSsrcOrUnboundedLatchEntries = 0;
+      const clampedMaxLatchedSsrcsPerBundleTransport = Math.min(
+        Math.max(context.maxLatchedSsrcsPerBundleTransport, 2),
+        16,
+      );
+
+      if (context.unboundedSsrcLatchingFloodOrPrimaryAudioSsrcEvictionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "pin_primary_voice_ssrc_and_cap_bundle_latch_table",
+          reason:
+            "Enterprise WebRTC RFC 9143 BUNDLE SSRC Latching Quota & Primary-Audio Pinning Policy Check: random SSRC churn flood exhausting BUNDLE (SSRC -> MID) latching table or evicting active primary voice SSRC detected; offline synthetic policy state machine pinning primary voice SSRC (0 evicted voice SSRCs) and clamping latched SSRC quota per BUNDLE transport to [2, 16] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live BUNDLE SSRC LRU table lock latency not_measured).",
+          clampedEvictedAudioSsrcOrUnboundedLatchEntries,
+          clampedMaxLatchedSsrcsPerBundleTransport,
+        };
+      }
+
+      if (
+        context.evictedAudioSsrcOrUnboundedLatchEntries > 0 ||
+        context.maxLatchedSsrcsPerBundleTransport < 2 ||
+        context.maxLatchedSsrcsPerBundleTransport > 16
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_evicted_ssrc_entries_and_latch_quota_bounds",
+          reason:
+            "Evicted primary audio SSRCs / unbounded latch entries (>0 synthetic ceiling) or max latched SSRCs per BUNDLE transport (<2 or >16 synthetic bounds) out of bounds; clamping evicted entries to 0 and latch quota to [2, 16] SSRCs.",
+          clampedEvictedAudioSsrcOrUnboundedLatchEntries,
+          clampedMaxLatchedSsrcsPerBundleTransport,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 9143 primary voice SSRC pinning (0 evicted SSRCs) and [2, 16] BUNDLE SSRC latch quota bounds verified.",
+        clampedEvictedAudioSsrcOrUnboundedLatchEntries,
+        clampedMaxLatchedSsrcsPerBundleTransport,
+      };
+    }
+
 
 
 

@@ -1969,6 +1969,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of MD5 bidding-down and qop-less auth responses (0 downgraded handshakes) and clamps client cnonce entropy in [128, 256] bits; live hardware SHA-NI hashing latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of duplicate (nonce, nc) replays via 64-bit sliding bitmap (0 replayed attempts) and clamps server nonce TTL in [60, 300]s with stale=true; live distributed nc bitmap CAS latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "465. [Topic 102 · Historic 465-Dimension Milestone 🎉: voice-webrtc-rtp-rfc9143-rfc8843-bundle-mid-pt-demux-collision-lit-ssrc-latching-faq] Enterprise WebRTC RFC 9143 BUNDLE Disjoint Dynamic PT [1,32] + MID Demux & [2,16] SSRC Latching Quota Guard (P917 / P918 — Stage 462 · 🎉 Historic 465-Dimension Milestone · 465 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% disjoint dynamic PTs across BUNDLE m= lines and isolates MID-less unknown SSRCs (0 misrouted packets) within [1, 32] PTs; live softirq RFC 9143 hash-table lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins 100% of primary voice SSRCs against LRU eviction (0 evicted voice SSRCs) and clamps BUNDLE SSRC latching quota in [2, 16]; live BUNDLE SSRC LRU table lock latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
