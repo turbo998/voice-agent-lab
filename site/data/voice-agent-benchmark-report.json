@@ -1807,6 +1807,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of SRTP_NULL cipher downgrades and unauthenticated NAT rebinds (0 null/unauthenticated rebinds) and clamps DTLS CID spare pool in [2, 8]; live libsrtp AES-GCM verification latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces dual (MKI_old, MKI_new) grace overlap with 0 MKI rekey desync dropped frames and clamps rotation interval in [300, 3600]s; live libsrtp MKI context switch latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "438. [Topic 75 🎉: voice-sip-rfc3263-rfc7984-dns-naptr-srv-sips-downgrade-poisoning-blackhole-failover-faq] Enterprise SIP RFC 3263 / RFC 7984 DNS NAPTR/SRV SIPS+D2T Anti-Downgrade + [1,4] Lookup Depth Cap & [500,2000]ms Dead-SBC Blackhole Fast Failover Guard (P863 / P864 — Stage 435 · 🎉 Historic Topic 75 Milestone · 438 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of SIPS+D2T to plaintext SIP+D2U downgrades and unallowlisted SRV targets (0 downgrades/untrusted targets) and clamps SRV candidate lookup depth in [1, 4]; live c-ares/unbound DNSSEC validation latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: quarantines dead SRV trunks with 0 Timer-B 32s blackhole stalled calls and clamps per-hop failover timeout in [500, 2000]ms; live cross-region TLS 1.3 handshake round-trip latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

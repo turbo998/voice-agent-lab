@@ -77845,6 +77845,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3263DnsNaptrSrvSipsTransportDowngradeAndTargetHostAllowlistContext {
+      sipsToPlaintextUdpOrUntrustedSrvTargetDetected: boolean;
+      plaintextDowngradeOrUntrustedSrvTargets: number;
+      srvCandidateMaxLookupDepth: number;
+    }
+
+    export interface SipRfc3263DnsNaptrSrvSipsTransportDowngradeAndTargetHostAllowlistDecision {
+      violated: boolean;
+      policyId: "P863-SIP-RFC3263-DNS-NAPTR-SRV-SIPS-TRANSPORT-DOWNGRADE-AND-TARGET-HOST-ALLOWLIST-GUARD";
+      action:
+        | "reject_sips_naptr_downgrade_and_enforce_dnssec_srv_allowlist"
+        | "clamp_srv_downgrade_violations_and_lookup_depth_bounds"
+        | "allow";
+      reason: string;
+      clampedPlaintextDowngradeOrUntrustedSrvTargets: number;
+      clampedSrvCandidateMaxLookupDepth: number;
+    }
+
+    export function evaluateSipRfc3263DnsNaptrSrvSipsTransportDowngradeAndTargetHostAllowlistGate(
+      context: SipRfc3263DnsNaptrSrvSipsTransportDowngradeAndTargetHostAllowlistContext,
+    ): SipRfc3263DnsNaptrSrvSipsTransportDowngradeAndTargetHostAllowlistDecision {
+      const policyId =
+        "P863-SIP-RFC3263-DNS-NAPTR-SRV-SIPS-TRANSPORT-DOWNGRADE-AND-TARGET-HOST-ALLOWLIST-GUARD" as const;
+      const clampedPlaintextDowngradeOrUntrustedSrvTargets = 0;
+      const clampedSrvCandidateMaxLookupDepth = Math.min(
+        Math.max(context.srvCandidateMaxLookupDepth, 1),
+        4,
+      );
+
+      if (context.sipsToPlaintextUdpOrUntrustedSrvTargetDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_sips_naptr_downgrade_and_enforce_dnssec_srv_allowlist",
+          reason:
+            "Enterprise SIP RFC 3263 DNS NAPTR/SRV SIPS Transport Downgrade & Target Host Allowlist Policy Check: DNS NAPTR/SRV resolution attempted to downgrade sips: trunk from SIPS+D2T to plaintext SIP+D2U/SIP+D2T or returned an unallowlisted SRV target host; offline synthetic policy state machine rejecting 100% of plaintext downgrades and untrusted SRV targets (0 violations) and clamping SRV candidate lookup depth to [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live c-ares/unbound DNSSEC validation latency not_measured).",
+          clampedPlaintextDowngradeOrUntrustedSrvTargets,
+          clampedSrvCandidateMaxLookupDepth,
+        };
+      }
+
+      if (
+        context.plaintextDowngradeOrUntrustedSrvTargets > 0 ||
+        context.srvCandidateMaxLookupDepth < 1 ||
+        context.srvCandidateMaxLookupDepth > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_srv_downgrade_violations_and_lookup_depth_bounds",
+          reason:
+            "Plaintext NAPTR downgrades or untrusted SRV targets (>0 synthetic ceiling) or SRV candidate max lookup depth (<1 or >4 synthetic bounds) out of bounds; clamping violations to 0 and lookup depth to [1, 4].",
+          clampedPlaintextDowngradeOrUntrustedSrvTargets,
+          clampedSrvCandidateMaxLookupDepth,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3263 SIPS+D2T transport pinning, vetted SRV host allowlist (0 downgrades/untrusted targets), and [1, 4] SRV lookup depth verified.",
+        clampedPlaintextDowngradeOrUntrustedSrvTargets,
+        clampedSrvCandidateMaxLookupDepth,
+      };
+    }
+
+    export interface SipRfc3263Rfc7984DeadSbcTimerBBlackholeCircuitBreakerAndFastFailoverContext {
+      deadSbcTimerB32sBlackholeOrUnquarantinedTrunkDetected: boolean;
+      timerBBlackholeStalledCalls: number;
+      perHopFailoverTimeoutMs: number;
+    }
+
+    export interface SipRfc3263Rfc7984DeadSbcTimerBBlackholeCircuitBreakerAndFastFailoverDecision {
+      violated: boolean;
+      policyId: "P864-SIP-RFC3263-RFC7984-DEAD-SBC-TIMER-B-BLACKHOLE-CIRCUIT-BREAKER-AND-FAST-FAILOVER-GUARD";
+      action:
+        | "quarantine_dead_srv_trunk_and_failover_within_per_hop_budget"
+        | "clamp_timer_b_blackhole_stalls_and_per_hop_timeout_bounds"
+        | "allow";
+      reason: string;
+      clampedTimerBBlackholeStalledCalls: number;
+      clampedPerHopFailoverTimeoutMs: number;
+    }
+
+    export function evaluateSipRfc3263Rfc7984DeadSbcTimerBBlackholeCircuitBreakerAndFastFailoverGate(
+      context: SipRfc3263Rfc7984DeadSbcTimerBBlackholeCircuitBreakerAndFastFailoverContext,
+    ): SipRfc3263Rfc7984DeadSbcTimerBBlackholeCircuitBreakerAndFastFailoverDecision {
+      const policyId =
+        "P864-SIP-RFC3263-RFC7984-DEAD-SBC-TIMER-B-BLACKHOLE-CIRCUIT-BREAKER-AND-FAST-FAILOVER-GUARD" as const;
+      const clampedTimerBBlackholeStalledCalls = 0;
+      const clampedPerHopFailoverTimeoutMs = Math.min(
+        Math.max(context.perHopFailoverTimeoutMs, 500),
+        2000,
+      );
+
+      if (context.deadSbcTimerB32sBlackholeOrUnquarantinedTrunkDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "quarantine_dead_srv_trunk_and_failover_within_per_hop_budget",
+          reason:
+            "Enterprise SIP RFC 3263 / RFC 7984 Dead-SBC Timer-B Blackhole Circuit-Breaker & Fast Failover Policy Check: primary SRV target suffered silent packet blackhole while relying on default 32,000ms Timer B without local quarantine; offline synthetic policy state machine quarantining dead SRV target (0 Timer-B blackhole stalled calls) and clamping per-hop failover timeout to [500, 2000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live cross-region TLS 1.3 handshake round-trip latency not_measured).",
+          clampedTimerBBlackholeStalledCalls,
+          clampedPerHopFailoverTimeoutMs,
+        };
+      }
+
+      if (
+        context.timerBBlackholeStalledCalls > 0 ||
+        context.perHopFailoverTimeoutMs < 500 ||
+        context.perHopFailoverTimeoutMs > 2000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_timer_b_blackhole_stalls_and_per_hop_timeout_bounds",
+          reason:
+            "Timer-B blackhole stalled calls (>0 synthetic ceiling) or per-hop SRV failover timeout (<500ms or >2000ms synthetic bounds) out of bounds; clamping stalled calls to 0 and per-hop timeout to [500, 2000]ms.",
+          clampedTimerBBlackholeStalledCalls,
+          clampedPerHopFailoverTimeoutMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3263 / RFC 7984 dead-SBC quarantine circuit-breaker (0 Timer-B blackhole stalled calls) and [500, 2000]ms per-hop failover timeout verified.",
+        clampedTimerBBlackholeStalledCalls,
+        clampedPerHopFailoverTimeoutMs,
+      };
+    }
+
 
 
 

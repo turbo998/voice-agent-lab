@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg79" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent79" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg79)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="396" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="242" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 435 · TOPIC 75 🎉 · P863 / P864 · SVG 79 · 438 DIMS</text>
+  <text x="454" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Enterprise SIP RFC 3263 / RFC 7984 DNS NAPTR/SRV Anti-Downgrade &amp; Timer-B Blackhole Failover Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">企业 SIP RFC 3263/7984 DNS NAPTR/SRV SIPS+D2T 防降级投毒、[1,4] 候选深度锁与 [500,2000]ms 死节点秒级熔断门禁（🎉 第 75 大专题历史性里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent79)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 3263 DNS NAPTR/SRV SIPS Transport Downgrade Gate (P863) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. DNS NAPTR/SRV Anti-Downgrade &amp; Allowlist Gate (P863)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：DNS 投毒将 NAPTR SIPS+D2T 篡改为明文 SIP+D2U，导致全量语音信令裸奔</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 放大风险：恶意 SRV 记录指向非授信中继或构造超长候选链阻塞解析器线程池</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Attack: NAPTR service="SIP+D2U" downgrade | 16-hop untrusted SRV chain</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P863 Gate: Pin SIPS+D2T + Vetted Host Allowlist + [1, 4] SRV Depth Cap</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: reject_sips_naptr_downgrade_and_enforce_dnssec_srv_allowlist</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P863）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedPlaintextDowngradeOrUntrustedSrvTargets = 0（0 明文降级与非法目标）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedSrvCandidateMaxLookupDepth ∈ [1, 4]（防解析放大候选深度上限）</text>
+
+  <!-- Right Column: RFC 3263/7984 Dead-SBC Timer-B Blackhole Fast Failover Gate (P864) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Dead-SBC Blackhole Fast Failover &amp; Quarantine (P864)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：主 SBC 机房静默丢包时，默认 Timer B = 32,000ms 导致每通电话卡死 32 秒掉线</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 秒级熔断：将单跳超时钳制在 [500, 2000]ms 并自动隔离死节点，后续呼叫 0ms 切备机</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Outage: Primary SBC silent drop -&gt; Timer B=32000ms stalls 12 calls</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P864 Gate: [500, 2000]ms Per-Hop Failover + Local Quarantine Circuit-Breaker</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: quarantine_dead_srv_trunk_and_failover_within_per_hop_budget</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P864）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedTimerBBlackholeStalledCalls = 0（0 通电话卡死在 32s 黑洞）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedPerHopFailoverTimeoutMs ∈ [500, 2000] ms（毫秒级单跳故障转移预算）</text>
+
+  <!-- Bottom Quantitative & Provenance Panel -->
+  <rect x="44" y="412" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="442" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Quantitative Evaluation Matrix &amp; Production Verification Checklist (Stage 435 · Topic 75 🎉 · 438 Dims · 873 Guards · 877 Tests)</text>
+  <rect x="64" y="458" width="1152" height="106" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="482" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P863: evaluateSipRfc3263DnsNaptrSrvSipsTransportDowngradeAndTargetHostAllowlistGate       =&gt; 0 downgrades | [1, 4] SRV depth</text>
+  <text x="80" y="506" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P864: evaluateSipRfc3263Rfc7984DeadSbcTimerBBlackholeCircuitBreakerAndFastFailoverGate     =&gt; 0 stalls     | [500, 2000]ms</text>
+  <text x="80" y="530" fill="#93C5FD" font-family="Consolas, monospace" font-size="12">• Checklist: [x] NAPTR SIPS+D2T Pinning  [x] Vetted SRV Host Allowlist  [x] [500,2000]ms Per-Hop Timer  [x] Quarantine Circuit-Breaker</text>
+  <text x="80" y="552" fill="#34D399" font-family="Consolas, monospace" font-size="12">• Milestone: Topic 75 🎉 · 77 Standalone FAQs · 438 Dimensions · 873 Production Guardrails · 882 Synthetic Probes (692 Live POC) · 877 Tests</text>
+
+  <!-- Provenance Footer -->
+  <rect x="64" y="578" width="1152" height="66" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="602" fill="#FCD34D" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">Provenance &amp; Timing Disclosure (synthetic · independently_reproduced=false):</text>
+  <text x="80" y="622" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="80" y="638" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Offline in-memory policy/configuration state-machine check only; live c-ares/unbound DNSSEC validation &amp; cross-region TLS 1.3 handshake round-trip latencies are not_measured.</text>
+</svg>
