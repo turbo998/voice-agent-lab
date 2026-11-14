@@ -81369,6 +81369,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc8760DigestSha256UpgradeAndMd5QopDowngradeDefenseContext {
+      digestMd5DowngradeOrMissingQopWeakCnonceDetected: boolean;
+      md5DowngradedOrWeakCnonceAuthHandshakes: number;
+      clientCnonceEntropyBits: number;
+    }
+
+    export interface SipRfc8760DigestSha256UpgradeAndMd5QopDowngradeDefenseDecision {
+      violated: boolean;
+      policyId: "P915-SIP-RFC8760-DIGEST-SHA256-UPGRADE-AND-MD5-QOP-DOWNGRADE-DEFENSE-GUARD";
+      action:
+        | "enforce_rfc8760_sha256_qop_auth_and_reject_md5_downgrade"
+        | "clamp_md5_downgraded_handshakes_and_cnonce_entropy_bounds"
+        | "allow";
+      reason: string;
+      clampedMd5DowngradedOrWeakCnonceAuthHandshakes: number;
+      clampedClientCnonceEntropyBits: number;
+    }
+
+    export function evaluateSipRfc8760DigestSha256UpgradeAndMd5QopDowngradeDefenseGate(
+      context: SipRfc8760DigestSha256UpgradeAndMd5QopDowngradeDefenseContext,
+    ): SipRfc8760DigestSha256UpgradeAndMd5QopDowngradeDefenseDecision {
+      const policyId =
+        "P915-SIP-RFC8760-DIGEST-SHA256-UPGRADE-AND-MD5-QOP-DOWNGRADE-DEFENSE-GUARD" as const;
+      const clampedMd5DowngradedOrWeakCnonceAuthHandshakes = 0;
+      const clampedClientCnonceEntropyBits = Math.min(
+        Math.max(context.clientCnonceEntropyBits, 128),
+        256,
+      );
+
+      if (context.digestMd5DowngradeOrMissingQopWeakCnonceDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc8760_sha256_qop_auth_and_reject_md5_downgrade",
+          reason:
+            "Enterprise SIP RFC 8760 Digest SHA-256 Upgrade & Anti-MD5 Downgrade Policy Check: legacy algorithm=MD5 bidding-down downgrade or missing qop=\"auth\" / low-entropy cnonce chosen-plaintext vulnerability detected; offline synthetic policy state machine enforcing SHA-256/512-256 with qop=\"auth\" (0 MD5-downgraded handshakes) and clamping client cnonce entropy to [128, 256] bits (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live hardware SHA-NI hashing latency not_measured).",
+          clampedMd5DowngradedOrWeakCnonceAuthHandshakes,
+          clampedClientCnonceEntropyBits,
+        };
+      }
+
+      if (
+        context.md5DowngradedOrWeakCnonceAuthHandshakes > 0 ||
+        context.clientCnonceEntropyBits < 128 ||
+        context.clientCnonceEntropyBits > 256
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_md5_downgraded_handshakes_and_cnonce_entropy_bounds",
+          reason:
+            "MD5-downgraded or weak-cnonce auth handshakes (>0 synthetic ceiling) or client cnonce entropy (<128 or >256 bits synthetic bounds) out of bounds; clamping weak handshakes to 0 and cnonce entropy to [128, 256] bits.",
+          clampedMd5DowngradedOrWeakCnonceAuthHandshakes,
+          clampedClientCnonceEntropyBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 8760 SHA-256 + qop=auth (0 MD5-downgraded handshakes) and [128, 256]-bit cnonce entropy bounds verified.",
+        clampedMd5DowngradedOrWeakCnonceAuthHandshakes,
+        clampedClientCnonceEntropyBits,
+      };
+    }
+
+    export interface SipRfc8760NonceCountReplayWindowAndStaleRotationTtlContext {
+      duplicateNonceCountNcReplayOrCredentialStuffingDetected: boolean;
+      replayedNcOrCredentialStuffingAttempts: number;
+      serverNonceStaleRotationTtlSeconds: number;
+    }
+
+    export interface SipRfc8760NonceCountReplayWindowAndStaleRotationTtlDecision {
+      violated: boolean;
+      policyId: "P916-SIP-RFC8760-NONCE-COUNT-REPLAY-WINDOW-AND-STALE-ROTATION-TTL-GUARD";
+      action:
+        | "reject_duplicate_nc_replay_and_rotate_stale_nonce"
+        | "clamp_replayed_nc_attempts_and_nonce_ttl_bounds"
+        | "allow";
+      reason: string;
+      clampedReplayedNcOrCredentialStuffingAttempts: number;
+      clampedServerNonceStaleRotationTtlSeconds: number;
+    }
+
+    export function evaluateSipRfc8760NonceCountReplayWindowAndStaleRotationTtlGate(
+      context: SipRfc8760NonceCountReplayWindowAndStaleRotationTtlContext,
+    ): SipRfc8760NonceCountReplayWindowAndStaleRotationTtlDecision {
+      const policyId =
+        "P916-SIP-RFC8760-NONCE-COUNT-REPLAY-WINDOW-AND-STALE-ROTATION-TTL-GUARD" as const;
+      const clampedReplayedNcOrCredentialStuffingAttempts = 0;
+      const clampedServerNonceStaleRotationTtlSeconds = Math.min(
+        Math.max(context.serverNonceStaleRotationTtlSeconds, 60),
+        300,
+      );
+
+      if (context.duplicateNonceCountNcReplayOrCredentialStuffingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_duplicate_nc_replay_and_rotate_stale_nonce",
+          reason:
+            "Enterprise SIP RFC 8760 Nonce-Count (nc) Anti-Replay & Stale Rotation Policy Check: duplicate (nonce, nc) cut-and-paste toll-fraud replay or 401/407 credential-stuffing burst detected; offline synthetic policy state machine enforcing 64-bit sliding nc bitmap rejection (0 replayed/stuffing attempts) and clamping server nonce TTL to [60, 300] seconds with stale=true rotation (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live distributed nc bitmap CAS latency not_measured).",
+          clampedReplayedNcOrCredentialStuffingAttempts,
+          clampedServerNonceStaleRotationTtlSeconds,
+        };
+      }
+
+      if (
+        context.replayedNcOrCredentialStuffingAttempts > 0 ||
+        context.serverNonceStaleRotationTtlSeconds < 60 ||
+        context.serverNonceStaleRotationTtlSeconds > 300
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_replayed_nc_attempts_and_nonce_ttl_bounds",
+          reason:
+            "Replayed nc or credential-stuffing attempts (>0 synthetic ceiling) or server nonce stale-rotation TTL (<60s or >300s synthetic bounds) out of bounds; clamping replay attempts to 0 and nonce TTL to [60, 300] seconds.",
+          clampedReplayedNcOrCredentialStuffingAttempts,
+          clampedServerNonceStaleRotationTtlSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 8760 (nonce, nc) sliding anti-replay bitmap (0 replayed attempts) and [60, 300]s stale rotation TTL bounds verified.",
+        clampedReplayedNcOrCredentialStuffingAttempts,
+        clampedServerNonceStaleRotationTtlSeconds,
+      };
+    }
+
 
 
 

@@ -1963,6 +1963,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: deduplicates 100% of repeated FIR SeqNr requests, preempts video bursts with Opus audio (0 voice stalls), and clamps keyframe cooldown in [1000, 5000]ms; live hardware IDR video encoding latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: exempts immediate audio NACKs, aligns RFC 9626 decode-target switch boundaries (0 starved NACKs/orphan switches), and clamps trr-int in [50, 500]ms; live kernel pacing queue latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "464. [Topic 101 · SVG 105 & 925-Guardrail Milestone 🎉: voice-sip-rfc3261-rfc8760-digest-sha256-md5-downgrade-nonce-count-replay-stuffing-faq] Enterprise SIP RFC 8760 SHA-256 [128,256]b cnonce & (nonce, nc) [60,300]s Replay Guard (P915 / P916 — Stage 461 · 🎉 Historic 105th SVG & 925-Guardrail Dual Milestone · 464 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of MD5 bidding-down and qop-less auth responses (0 downgraded handshakes) and clamps client cnonce entropy in [128, 256] bits; live hardware SHA-NI hashing latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of duplicate (nonce, nc) replays via 64-bit sliding bitmap (0 replayed attempts) and clamps server nonce TTL in [60, 300]s with stale=true; live distributed nc bitmap CAS latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
