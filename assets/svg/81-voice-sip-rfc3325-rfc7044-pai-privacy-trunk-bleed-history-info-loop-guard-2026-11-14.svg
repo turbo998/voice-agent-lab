@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg81" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent81" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg81)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="396" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="242" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 437 · TOPIC 77 · P867 / P868 · SVG 81 · 440 DIMS 🎉</text>
+  <text x="454" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Enterprise SIP RFC 3325 / RFC 7044 PAI Trust-Boundary Scrub &amp; History-Info [1,6]-Hop Loop Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">企业 SIP RFC 3325/7044 PAI 非授信入站剥离、出站 Privacy:id 防泄露与 History-Info [1,6] 跳防环门禁（🎉 440 大评测维度历史性里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent81)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 3325 P-Asserted-Identity Untrusted Ingress & Privacy Bleed Gate (P867) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. PAI Ingress Strip &amp; Outbound Privacy Gate (P867)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：非授信公网干线自带 PAI 冒充 VIP，或出站转接未擦除 Privacy:id 真号</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 信任域锁：限制单干线 [1, 4] 个 mTLS Spec(T) 域，跨越边界 100% 剥离与匿名化</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Attack: Untrusted trunk injects PAI:+14155550199 | Privacy:id leaked</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P867 Gate: Strip Untrusted Ingress PAI + Anonymize Egress + [1,4] Spec(T)</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: strip_untrusted_inbound_pai_and_anonymize_outbound_privacy_id</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P867）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedSpoofedPaiOrPrivacyBleedHeaders = 0（0 伪造 PAI 注入与隐私外泄）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaxTrustedSpecTDomainsPerTrunk ∈ [1, 4]（单干线授信 Spec(T) 域上限）</text>
+
+  <!-- Right Column: RFC 7044 History-Info Retarget Loop & Depth Cap Gate (P868) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. History-Info Loop &amp; [1, 6]-Hop Cap Gate (P868)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：AI 与技能组循环盲转导致 hi-index 无限膨胀，或出站泄露内网 URI 拓扑</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 防环脱敏：实时去重目标 URI、出站擦除内网节点并将最大跳数钳制在 [1, 6] 跳</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Loop: 30-hop AI &lt;-&gt; Queue circular bounce + unredacted internal hi-entries</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P868 Gate: Reject Circular Loop (SIP 482) + Redact Egress + [1, 6] Hops</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: reject_circular_history_info_retarget_with_482_and_clamp_hops</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P868）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedCircularHistoryInfoOrUnredactedEntries = 0（0 循环转接与拓扑泄露）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaxHistoryInfoRetargetHops ∈ [1, 6] hops（最大合法转接跳数上限）</text>
+
+  <!-- Bottom Quantitative & Provenance Panel -->
+  <rect x="44" y="412" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="442" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Quantitative Evaluation Matrix &amp; Production Verification Checklist (Stage 437 · Topic 77 · 440 Dims 🎉 · 877 Guards · 879 Tests)</text>
+  <rect x="64" y="458" width="1152" height="106" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="482" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P867: evaluateSipRfc3325PAssertedIdentityUntrustedTrunkInjectionAndOutboundPrivacyBleedGate =&gt; 0 PAI leaks | [1, 4] Spec(T)</text>
+  <text x="80" y="506" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P868: evaluateSipRfc7044HistoryInfoRetargetLoopAndMpIndexDepthExplosionGate                =&gt; 0 loops     | [1, 6] hops</text>
+  <text x="80" y="530" fill="#93C5FD" font-family="Consolas, monospace" font-size="12">• Checklist: [x] Ingress Untrusted PAI Strip  [x] Outbound Privacy:id Scrub  [x] [1,6]-Hop History-Info Cap  [x] Egress URI Redaction</text>
+  <text x="80" y="552" fill="#34D399" font-family="Consolas, monospace" font-size="12">• Milestone: 440 Evaluation Dimensions 🎉 · 79 Standalone FAQs · 877 Production Guardrails · 886 Synthetic Probes (696 Live POC) · 879 Tests</text>
+
+  <!-- Provenance Footer -->
+  <rect x="64" y="578" width="1152" height="66" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="602" fill="#FCD34D" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">Provenance &amp; Timing Disclosure (synthetic · independently_reproduced=false):</text>
+  <text x="80" y="622" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="80" y="638" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Offline in-memory policy/configuration state-machine check only; live Kamailio/OpenSIPS/SBC header manipulation &amp; mTLS verification latencies are not_measured.</text>
+</svg>

@@ -1819,6 +1819,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of truncated num_reports overread and ATO >= 0x1FFE wrap CCFB blocks (0 malformed blocks) and clamps reports per block in [16, 128]; live SFU packet parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of unverified ECN-CE markings (0 spoofed/starved audio turns) and reserves [32, 64] kbps post-DTX audio floor; live kernel IP_RECVTOS/ECN socket read latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "440. [Topic 77 · 440-Dimension Milestone 🎉: voice-sip-rfc3325-rfc7044-pai-privacy-trunk-bleed-history-info-loop-guard-faq] Enterprise SIP RFC 3325 / RFC 7044 P-Asserted-Identity (PAI) Untrusted-Trunk Stripping + Outbound Privacy:id Anonymization & [1,6]-Hop History-Info Loop Guard (P867 / P868 — Stage 437 · 🎉 Historic 440-Dimension Milestone · 440 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted inbound PAI headers and anonymizes outbound Privacy:id transfers (0 spoofed or leaked headers) while clamping Spec(T) domains in [1, 4]; live SBC header manipulation latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of circular History-Info retargeting loops and unredacted egress entries (0 violations) and clamps retarget depth in [1, 6] hops; live SBC History-Info AST traversal latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

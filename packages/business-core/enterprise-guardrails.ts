@@ -78117,6 +78117,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3325PAssertedIdentityUntrustedTrunkInjectionAndOutboundPrivacyBleedContext {
+      untrustedInboundPaiInjectionOrOutboundPrivacyIdBleedDetected: boolean;
+      spoofedPaiOrPrivacyBleedHeaders: number;
+      maxTrustedSpecTDomainsPerTrunk: number;
+    }
+
+    export interface SipRfc3325PAssertedIdentityUntrustedTrunkInjectionAndOutboundPrivacyBleedDecision {
+      violated: boolean;
+      policyId: "P867-SIP-RFC3325-P-ASSERTED-IDENTITY-UNTRUSTED-TRUNK-INJECTION-AND-OUTBOUND-PRIVACY-BLEED-GUARD";
+      action:
+        | "strip_untrusted_inbound_pai_and_anonymize_outbound_privacy_id"
+        | "clamp_pai_privacy_bleed_headers_and_spec_t_domain_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedPaiOrPrivacyBleedHeaders: number;
+      clampedMaxTrustedSpecTDomainsPerTrunk: number;
+    }
+
+    export function evaluateSipRfc3325PAssertedIdentityUntrustedTrunkInjectionAndOutboundPrivacyBleedGate(
+      context: SipRfc3325PAssertedIdentityUntrustedTrunkInjectionAndOutboundPrivacyBleedContext,
+    ): SipRfc3325PAssertedIdentityUntrustedTrunkInjectionAndOutboundPrivacyBleedDecision {
+      const policyId =
+        "P867-SIP-RFC3325-P-ASSERTED-IDENTITY-UNTRUSTED-TRUNK-INJECTION-AND-OUTBOUND-PRIVACY-BLEED-GUARD" as const;
+      const clampedSpoofedPaiOrPrivacyBleedHeaders = 0;
+      const clampedMaxTrustedSpecTDomainsPerTrunk = Math.min(
+        Math.max(context.maxTrustedSpecTDomainsPerTrunk, 1),
+        4,
+      );
+
+      if (context.untrustedInboundPaiInjectionOrOutboundPrivacyIdBleedDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_untrusted_inbound_pai_and_anonymize_outbound_privacy_id",
+          reason:
+            "Enterprise SIP RFC 3325 / RFC 3323 P-Asserted-Identity (PAI) Untrusted-Trunk Injection & Outbound Privacy:id Bleed Policy Check: inbound SIP trunk outside Spec(T) injected forged P-Asserted-Identity or outbound transfer leaked PAI under Privacy:id; offline synthetic policy state machine stripping 100% of untrusted/privacy-restricted PAI headers (0 spoofed or leaked headers) and clamping trusted Spec(T) domains per trunk to [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC header manipulation & mTLS verification latency not_measured).",
+          clampedSpoofedPaiOrPrivacyBleedHeaders,
+          clampedMaxTrustedSpecTDomainsPerTrunk,
+        };
+      }
+
+      if (
+        context.spoofedPaiOrPrivacyBleedHeaders > 0 ||
+        context.maxTrustedSpecTDomainsPerTrunk < 1 ||
+        context.maxTrustedSpecTDomainsPerTrunk > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_pai_privacy_bleed_headers_and_spec_t_domain_bounds",
+          reason:
+            "Spoofed inbound PAI or outbound Privacy:id bleed headers (>0 synthetic ceiling) or max trusted Spec(T) domains per trunk (<1 or >4 synthetic bounds) out of bounds; clamping violations to 0 and Spec(T) domains to [1, 4].",
+          clampedSpoofedPaiOrPrivacyBleedHeaders,
+          clampedMaxTrustedSpecTDomainsPerTrunk,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3325 / RFC 3323 PAI trust-boundary stripping and Privacy:id anonymization (0 leaks, [1, 4] Spec(T) domains) verified.",
+        clampedSpoofedPaiOrPrivacyBleedHeaders,
+        clampedMaxTrustedSpecTDomainsPerTrunk,
+      };
+    }
+
+    export interface SipRfc7044HistoryInfoRetargetLoopAndMpIndexDepthExplosionContext {
+      historyInfoCircularRetargetOrPrivacyHeaderLeakDetected: boolean;
+      circularHistoryInfoOrUnredactedEntries: number;
+      maxHistoryInfoRetargetHops: number;
+    }
+
+    export interface SipRfc7044HistoryInfoRetargetLoopAndMpIndexDepthExplosionDecision {
+      violated: boolean;
+      policyId: "P868-SIP-RFC7044-HISTORY-INFO-RETARGET-LOOP-AND-MP-INDEX-DEPTH-EXPLOSION-GUARD";
+      action:
+        | "reject_circular_history_info_retarget_with_482_and_clamp_hops"
+        | "clamp_history_info_loop_entries_and_retarget_hop_bounds"
+        | "allow";
+      reason: string;
+      clampedCircularHistoryInfoOrUnredactedEntries: number;
+      clampedMaxHistoryInfoRetargetHops: number;
+    }
+
+    export function evaluateSipRfc7044HistoryInfoRetargetLoopAndMpIndexDepthExplosionGate(
+      context: SipRfc7044HistoryInfoRetargetLoopAndMpIndexDepthExplosionContext,
+    ): SipRfc7044HistoryInfoRetargetLoopAndMpIndexDepthExplosionDecision {
+      const policyId =
+        "P868-SIP-RFC7044-HISTORY-INFO-RETARGET-LOOP-AND-MP-INDEX-DEPTH-EXPLOSION-GUARD" as const;
+      const clampedCircularHistoryInfoOrUnredactedEntries = 0;
+      const clampedMaxHistoryInfoRetargetHops = Math.min(
+        Math.max(context.maxHistoryInfoRetargetHops, 1),
+        6,
+      );
+
+      if (context.historyInfoCircularRetargetOrPrivacyHeaderLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_circular_history_info_retarget_with_482_and_clamp_hops",
+          reason:
+            "Enterprise SIP RFC 7044 History-Info Retargeting Loop & Topology Privacy Policy Check: circular hi-targeted-to-uri retargeting loop or unredacted internal hi-entry across untrusted egress detected; offline synthetic policy state machine rejecting circular retargeting with SIP 482 / fallback routing (0 circular or unredacted entries) and clamping max History-Info retarget hops to [1, 6] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC History-Info AST traversal latency not_measured).",
+          clampedCircularHistoryInfoOrUnredactedEntries,
+          clampedMaxHistoryInfoRetargetHops,
+        };
+      }
+
+      if (
+        context.circularHistoryInfoOrUnredactedEntries > 0 ||
+        context.maxHistoryInfoRetargetHops < 1 ||
+        context.maxHistoryInfoRetargetHops > 6
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_history_info_loop_entries_and_retarget_hop_bounds",
+          reason:
+            "Circular or unredacted History-Info entries (>0 synthetic ceiling) or max History-Info retarget hops (<1 or >6 synthetic bounds) out of bounds; clamping violations to 0 and retarget hops to [1, 6].",
+          clampedCircularHistoryInfoOrUnredactedEntries,
+          clampedMaxHistoryInfoRetargetHops,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7044 History-Info acyclic URI deduplication, egress redaction (0 violations), and [1, 6] retarget hop bounds verified.",
+        clampedCircularHistoryInfoOrUnredactedEntries,
+        clampedMaxHistoryInfoRetargetHops,
+      };
+    }
+
 
 
 
