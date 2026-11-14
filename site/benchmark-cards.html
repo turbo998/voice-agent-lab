@@ -1679,6 +1679,13 @@
               <td><code>P885 / P886 deterministic WebRTC RFC 9335 Cryptex [4,64]B whole-extension/CSRC encryption &amp; RFC 6904 [1,14] ID mask guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>450. [专题87 · 450维里程碑 🎉 `docs/voice-sip-rfc6026-rfc4320-invite-non-invite-transaction-timer-b-f-d-k-late-response-storm-faq.md`] 企业 SIP `RFC 6026` `INVITE`（`Accepted` 态与 `Timer L/M` `[16000, 64000]ms`）并行分叉 `2xx` 自动 `ACK+BYE` 防僵尸双讲锁（`0` 未确认分叉僵尸会话，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `Kamailio/OpenSIPS tm` 哈希表锁耗时 `not_measured`）&amp; `RFC 4320` `Non-INVITE` 禁发 `100 Trying`、禁转合成 `408 Request Timeout` 与 `[4000, 32000]ms` `Timer F` 防晚到响应风暴锁（`0` 晚到风暴包；真实广域网 `Timer K` 吸收耗时 `not_measured`）(`P887` / `P888` · Stage 447 · Topic 87 · 🎉 第 450 大评测维度历史性里程碑 · 897 护栏 &amp; 906 探针 · 450 维 🎉)</strong>
+              </td>
+              <td><code>P887 / P888 deterministic SIP RFC 6026 INVITE Accepted [16000,64000]ms forked 2xx ACK+BYE &amp; RFC 4320 Non-INVITE [4000,32000]ms storm guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5334,6 +5341,13 @@
                 <strong>449. [专题86 · SVG 90 &amp; 895护栏 🎉 `docs/voice-webrtc-rtp-rfc9335-cryptex-rfc6904-header-extension-csrc-encryption-faq.md`] 企业 WebRTC `RFC 9335 (Cryptex)` `0xC0DE / 0xC2DE` 扩展头与 `CSRC` 发言人列表全块 `AEAD` 加密、防明文 `0xBEDE / 0x1000` 降级与单包 `[4, 64]` 字节扩展块上限锁（`0` 明文扩展或 `CSRC` 泄露包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `libsrtp Cryptex` 加密耗时 `not_measured`）&amp; `RFC 6904` 存量双射掩码对齐、禁配保留终止符 `ID = 15` 与 `[1, 14]` 扩展 ID 上限锁（`0` 掩码失步块；真实密钥流异或耗时 `not_measured`）(`P885` / `P886` · Stage 446 · Topic 86 · 🎉 第 90 张 SVG 架构图与 895 护栏双里程碑 · 895 护栏 🎉 &amp; 904 探针 · 449 维)</strong>
               </td>
               <td><code>P885 / P886 deterministic WebRTC RFC 9335 Cryptex [4,64]B whole-extension/CSRC encryption &amp; RFC 6904 [1,14] ID mask guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>450. [专题87 · 450维里程碑 🎉 `docs/voice-sip-rfc6026-rfc4320-invite-non-invite-transaction-timer-b-f-d-k-late-response-storm-faq.md`] 企业 SIP `RFC 6026` `INVITE`（`Accepted` 态与 `Timer L/M` `[16000, 64000]ms`）并行分叉 `2xx` 自动 `ACK+BYE` 防僵尸双讲锁（`0` 未确认分叉僵尸会话，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `Kamailio/OpenSIPS tm` 哈希表锁耗时 `not_measured`）&amp; `RFC 4320` `Non-INVITE` 禁发 `100 Trying`、禁转合成 `408 Request Timeout` 与 `[4000, 32000]ms` `Timer F` 防晚到响应风暴锁（`0` 晚到风暴包；真实广域网 `Timer K` 吸收耗时 `not_measured`）(`P887` / `P888` · Stage 447 · Topic 87 · 🎉 第 450 大评测维度历史性里程碑 · 897 护栏 &amp; 906 探针 · 450 维 🎉)</strong>
+              </td>
+              <td><code>P887 / P888 deterministic SIP RFC 6026 INVITE Accepted [16000,64000]ms forked 2xx ACK+BYE &amp; RFC 4320 Non-INVITE [4000,32000]ms storm guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

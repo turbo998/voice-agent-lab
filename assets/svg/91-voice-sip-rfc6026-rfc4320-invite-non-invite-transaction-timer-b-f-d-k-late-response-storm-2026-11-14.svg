@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg91" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B14"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#09131C"/>
+    </linearGradient>
+    <linearGradient id="accent91" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg91)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="18" fill="#0B1324" stroke="#1E293B" stroke-width="2"/>
+  <rect x="24" y="20" width="1232" height="6" rx="3" fill="url(#accent91)"/>
+
+  <!-- Header -->
+  <text x="52" y="64" fill="#38BDF8" font-size="14" font-weight="700" letter-spacing="1.5">STAGE 447 · TOPIC 87 · SVG 91 · 🎉 HISTORIC 450-DIMENSION MILESTONE (P887–P888)</text>
+  <text x="52" y="96" fill="#F8FAFC" font-size="23" font-weight="800">Enterprise SIP RFC 6026 Accepted State (Timer L/M) &amp; RFC 4320 Non-INVITE Storm Guard</text>
+  <text x="52" y="122" fill="#94A3B8" font-size="14">Eliminating Parallel-Forking 200 OK Zombie AI Dialogs &amp; Multi-Hop Non-INVITE Late-Response 408 Storms</text>
+
+  <!-- Milestone Badge -->
+  <rect x="976" y="46" width="252" height="64" rx="12" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="1102" y="72" text-anchor="middle" fill="#A7F3D0" font-size="12" font-weight="700">🎉 450 EVALUATION DIMENSIONS</text>
+  <text x="1102" y="94" text-anchor="middle" fill="#ECFDF5" font-size="15" font-weight="800">897 Guards · 906 Probes</text>
+
+  <!-- Left Panel: Legacy RFC 3261 Failure Mode -->
+  <rect x="48" y="148" width="576" height="440" rx="14" fill="#160E1B" stroke="#F43F5E" stroke-width="1.5"/>
+  <rect x="68" y="166" width="536" height="36" rx="8" fill="#4C0519"/>
+  <text x="84" y="189" fill="#FDA4AF" font-size="15" font-weight="700">❌ Legacy RFC 3261 Failure: 0ms 2xx Self-Destruct &amp; 408 Storm</text>
+
+  <!-- Failure Box 1 -->
+  <rect x="68" y="218" width="536" height="168" rx="10" fill="#1E1324" stroke="#881337" stroke-width="1"/>
+  <text x="86" y="244" fill="#FB7185" font-size="14" font-weight="700">1. INVITE 2xx Immediate Terminated State (Zombie Forked AI Calls)</text>
+  <text x="86" y="268" fill="#E2E8F0" font-size="13">• T=45ms: AI-Node-A returns 200 OK (tagA) → ICT immediately self-destructs!</text>
+  <text x="86" y="292" fill="#E2E8F0" font-size="13">• T=48ms: Parallel-forked AI-Node-B returns 200 OK (tagB) racing with CANCEL.</text>
+  <text x="86" y="316" fill="#E2E8F0" font-size="13">• Orphaned 200 OK has no ICT: either leaks to TU (dual-AI talk-over) or</text>
+  <text x="86" y="340" fill="#FDA4AF" font-size="13" font-weight="700">  retransmits for 64*T1 (32,000ms), locking 96+ GPU &amp; RTP ports in cluster!</text>
+  <rect x="86" y="352" width="498" height="24" rx="5" fill="#4C0519"/>
+  <text x="335" y="368" text-anchor="middle" fill="#FECDD3" font-size="12" font-weight="700">Result: Unacknowledged Forked 2xx Zombie Dialogs &amp; Spoofed 2xx Hijack</text>
+
+  <!-- Failure Box 2 -->
+  <rect x="68" y="402" width="536" height="168" rx="10" fill="#1E1324" stroke="#881337" stroke-width="1"/>
+  <text x="86" y="428" fill="#FB7185" font-size="14" font-weight="700">2. Non-INVITE (BYE / INFO / OPTIONS) Synthetic 408 Late-Response Storm</text>
+  <text x="86" y="452" fill="#E2E8F0" font-size="13">• Legacy proxy sends 100 Trying at Timer E2 (4s) &amp; synthetic 408 at Timer F.</text>
+  <text x="86" y="476" fill="#E2E8F0" font-size="13">• Upstream UAC receives 408 Request Timeout and deletes NIT transaction.</text>
+  <text x="86" y="500" fill="#E2E8F0" font-size="13">• Slow downstream gateway emits late 200 OK at T=33s → proxies with no</text>
+  <text x="86" y="524" fill="#FDA4AF" font-size="13" font-weight="700">  transaction state blindly forward orphaned 200 OK along Via headers!</text>
+  <rect x="86" y="536" width="498" height="24" rx="5" fill="#4C0519"/>
+  <text x="335" y="552" text-anchor="middle" fill="#FECDD3" font-size="12" font-weight="700">Result: Multi-Hop Late-Response Signaling Storm Across SBC Mesh</text>
+
+  <!-- Right Panel: RFC 6026 + RFC 4320 Guardrails -->
+  <rect x="656" y="148" width="576" height="440" rx="14" fill="#091D1C" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="676" y="166" width="536" height="36" rx="8" fill="#064E3B"/>
+  <text x="692" y="189" fill="#6EE7B7" font-size="15" font-weight="700">✅ RFC 6026 Accepted State (P887) &amp; RFC 4320 Storm Guard (P888)</text>
+
+  <!-- Guardrail Box 1: P887 -->
+  <rect x="676" y="218" width="536" height="168" rx="10" fill="#0D2726" stroke="#047857" stroke-width="1"/>
+  <text x="694" y="244" fill="#34D399" font-size="14" font-weight="700">P887 · RFC 6026 Accepted State (Timer L/M) &amp; Forked 2xx ACK+BYE</text>
+  <text x="694" y="268" fill="#E2E8F0" font-size="13">• Mandatory Accepted State: ICT (Timer M) &amp; IST (Timer L) stay alive for</text>
+  <text x="694" y="292" fill="#E2E8F0" font-size="13">  [16,000, 64,000]ms (nominal 64*T1 = 32,000ms) after first 2xx.</text>
+  <text x="694" y="316" fill="#E2E8F0" font-size="13">• Secondary Forked 200 OK (distinct To-tag): automatically sends ACK +</text>
+  <text x="694" y="340" fill="#6EE7B7" font-size="13" font-weight="700">  immediate BYE ("Call completed elsewhere") freeing AI node in 5ms!</text>
+  <rect x="694" y="352" width="498" height="24" rx="5" fill="#065F46"/>
+  <text x="943" y="368" text-anchor="middle" fill="#D1FAE5" font-size="12" font-weight="700">clampedUnackedForked2xxZombieDialogs = 0 · Timer M/L ∈ [16000, 64000]ms</text>
+
+  <!-- Guardrail Box 2: P888 -->
+  <rect x="676" y="402" width="536" height="168" rx="10" fill="#0D2726" stroke="#047857" stroke-width="1"/>
+  <text x="694" y="428" fill="#38BDF8" font-size="14" font-weight="700">P888 · RFC 4320 Non-INVITE 408/100 Suppression &amp; Timer F/K Guard</text>
+  <text x="694" y="452" fill="#E2E8F0" font-size="13">• Zero 100 Trying on NIT: forbids 100 Trying on BYE / INFO / OPTIONS.</text>
+  <text x="694" y="476" fill="#E2E8F0" font-size="13">• Zero Proxy Synthetic 408 Forwarding: silent blackhole on Timer F expiry</text>
+  <text x="694" y="500" fill="#E2E8F0" font-size="13">  instead of forwarding synthetic 408 Request Timeout upstream.</text>
+  <text x="694" y="524" fill="#7DD3FC" font-size="13" font-weight="700">• Clamps Non-INVITE Timer F to [4,000, 32,000]ms + Timer K (5s) absorption.</text>
+  <rect x="694" y="536" width="498" height="24" rx="5" fill="#0C4A6E"/>
+  <text x="943" y="552" text-anchor="middle" fill="#E0F2FE" font-size="12" font-weight="700">clampedLateResponseStormOrSynthetic408Packets = 0 · Timer F ∈ [4000, 32000]ms</text>
+
+  <!-- Bottom Provenance & Timing Bar -->
+  <rect x="48" y="606" width="1184" height="112" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="634" fill="#F8FAFC" font-size="14" font-weight="700">📊 Stage 447 Quantitative Convergence &amp; Timing Provenance Disclosure (🎉 Historic 450th Evaluation Dimension)</text>
+  <text x="68" y="660" fill="#CBD5E1" font-size="13">• Guardrail Policy IDs: P887-SIP-RFC6026-INVITE-ACCEPTED-STATE-AND-STRAY-2XX-FORKING-ACK-GUARD &amp; P888-SIP-RFC4320-NON-INVITE-LATE-RESPONSE-STORM-AND-408-SUPPRESSION-GUARD</text>
+  <text x="68" y="684" fill="#94A3B8" font-size="12">• Timing &amp; Provenance: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (provenance: synthetic in-memory policy check;</text>
+  <text x="68" y="704" fill="#94A3B8" font-size="12">  live Kamailio/OpenSIPS tm hash-table lock contention &amp; multi-hop WAN retransmission jitter are not_measured). Suite totals: 450 Dimensions 🎉 · 897 Guardrails · 906 Probes (716 Live POC) · 889 Tests.</text>
+</svg>

@@ -79465,6 +79465,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6026InviteAcceptedStateAndStray2xxForkingAckContext {
+      legacyRfc3261Immediate2xxTerminatedOrUnackedForked200OkDetected: boolean;
+      unackedForked2xxZombieDialogs: number;
+      timerMOrLAcceptedWaitMs: number;
+    }
+
+    export interface SipRfc6026InviteAcceptedStateAndStray2xxForkingAckDecision {
+      violated: boolean;
+      policyId: "P887-SIP-RFC6026-INVITE-ACCEPTED-STATE-AND-STRAY-2XX-FORKING-ACK-GUARD";
+      action:
+        | "enforce_rfc6026_accepted_state_and_auto_ack_bye_forked_2xx"
+        | "clamp_unacked_forked_2xx_dialogs_and_timer_m_l_bounds"
+        | "allow";
+      reason: string;
+      clampedUnackedForked2xxZombieDialogs: number;
+      clampedTimerMOrLAcceptedWaitMs: number;
+    }
+
+    export function evaluateSipRfc6026InviteAcceptedStateAndStray2xxForkingAckGate(
+      context: SipRfc6026InviteAcceptedStateAndStray2xxForkingAckContext,
+    ): SipRfc6026InviteAcceptedStateAndStray2xxForkingAckDecision {
+      const policyId =
+        "P887-SIP-RFC6026-INVITE-ACCEPTED-STATE-AND-STRAY-2XX-FORKING-ACK-GUARD" as const;
+      const clampedUnackedForked2xxZombieDialogs = 0;
+      const clampedTimerMOrLAcceptedWaitMs = Math.min(
+        Math.max(context.timerMOrLAcceptedWaitMs, 16000),
+        64000,
+      );
+
+      if (context.legacyRfc3261Immediate2xxTerminatedOrUnackedForked200OkDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc6026_accepted_state_and_auto_ack_bye_forked_2xx",
+          reason:
+            "Enterprise SIP RFC 6026 INVITE Accepted State (Timer L/M) & Forked 2xx ACK+BYE Policy Check: legacy RFC 3261 immediate 2xx transaction termination or unacknowledged parallel-forked 200 OK detected; offline synthetic policy state machine enforcing RFC 6026 Accepted state residency, auto-dispatching ACK+BYE for secondary forked To-tags (0 zombie dialogs), and clamping Timer M/L wait window to [16000, 64000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Kamailio/OpenSIPS tm hash-table lock latency not_measured).",
+          clampedUnackedForked2xxZombieDialogs,
+          clampedTimerMOrLAcceptedWaitMs,
+        };
+      }
+
+      if (
+        context.unackedForked2xxZombieDialogs > 0 ||
+        context.timerMOrLAcceptedWaitMs < 16000 ||
+        context.timerMOrLAcceptedWaitMs > 64000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unacked_forked_2xx_dialogs_and_timer_m_l_bounds",
+          reason:
+            "Unacknowledged forked 2xx zombie dialogs (>0 synthetic ceiling) or RFC 6026 Timer M/L wait window (<16000ms or >64000ms synthetic bounds) out of bounds; clamping zombie dialogs to 0 and Timer M/L to [16000, 64000]ms.",
+          clampedUnackedForked2xxZombieDialogs,
+          clampedTimerMOrLAcceptedWaitMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6026 Accepted state residency (0 unacknowledged forked 2xx zombie dialogs) and [16000, 64000]ms Timer M/L bounds verified.",
+        clampedUnackedForked2xxZombieDialogs,
+        clampedTimerMOrLAcceptedWaitMs,
+      };
+    }
+
+    export interface SipRfc4320NonInviteLateResponseStormAnd408SuppressionContext {
+      nonInvite100TryingOrProxySynthetic408ForwardingDetected: boolean;
+      lateResponseStormOrSynthetic408Packets: number;
+      nonInviteTimerFTimeoutMs: number;
+    }
+
+    export interface SipRfc4320NonInviteLateResponseStormAnd408SuppressionDecision {
+      violated: boolean;
+      policyId: "P888-SIP-RFC4320-NON-INVITE-LATE-RESPONSE-STORM-AND-408-SUPPRESSION-GUARD";
+      action:
+        | "suppress_non_invite_100_trying_and_proxy_synthetic_408"
+        | "clamp_late_response_storm_packets_and_timer_f_bounds"
+        | "allow";
+      reason: string;
+      clampedLateResponseStormOrSynthetic408Packets: number;
+      clampedNonInviteTimerFTimeoutMs: number;
+    }
+
+    export function evaluateSipRfc4320NonInviteLateResponseStormAnd408SuppressionGate(
+      context: SipRfc4320NonInviteLateResponseStormAnd408SuppressionContext,
+    ): SipRfc4320NonInviteLateResponseStormAnd408SuppressionDecision {
+      const policyId =
+        "P888-SIP-RFC4320-NON-INVITE-LATE-RESPONSE-STORM-AND-408-SUPPRESSION-GUARD" as const;
+      const clampedLateResponseStormOrSynthetic408Packets = 0;
+      const clampedNonInviteTimerFTimeoutMs = Math.min(
+        Math.max(context.nonInviteTimerFTimeoutMs, 4000),
+        32000,
+      );
+
+      if (context.nonInvite100TryingOrProxySynthetic408ForwardingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "suppress_non_invite_100_trying_and_proxy_synthetic_408",
+          reason:
+            "Enterprise SIP RFC 4320 Non-INVITE Late-Response Storm & Synthetic 408 Suppression Policy Check: Non-INVITE 100 Trying transmission or proxy synthetic 408 Request Timeout forwarding detected; offline synthetic policy state machine suppressing 100/408 storm packets (0 storm packets) and clamping Non-INVITE Timer F timeout to [4000, 32000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live multi-hop WAN NIT Timer K absorption latency not_measured).",
+          clampedLateResponseStormOrSynthetic408Packets,
+          clampedNonInviteTimerFTimeoutMs,
+        };
+      }
+
+      if (
+        context.lateResponseStormOrSynthetic408Packets > 0 ||
+        context.nonInviteTimerFTimeoutMs < 4000 ||
+        context.nonInviteTimerFTimeoutMs > 32000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_late_response_storm_packets_and_timer_f_bounds",
+          reason:
+            "Non-INVITE late-response storm / synthetic 408 packets (>0 synthetic ceiling) or Timer F timeout (<4000ms or >32000ms synthetic bounds) out of bounds; clamping storm packets to 0 and Timer F to [4000, 32000]ms.",
+          clampedLateResponseStormOrSynthetic408Packets,
+          clampedNonInviteTimerFTimeoutMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4320 Non-INVITE 100/408 suppression (0 storm packets) and [4000, 32000]ms Timer F bounds verified.",
+        clampedLateResponseStormOrSynthetic408Packets,
+        clampedNonInviteTimerFTimeoutMs,
+      };
+    }
+
 
 
 

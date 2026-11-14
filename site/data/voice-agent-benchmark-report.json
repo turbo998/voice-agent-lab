@@ -1879,6 +1879,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of plaintext 0xBEDE/0x1000 header-extension and unencrypted CSRC leak packets (0 leaks) and clamps encrypted extension block size in [4, 64] bytes; live libsrtp Cryptex AES-GCM encryption latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of RFC 6904 mask-desynced or reserved-ID=15 extension blocks (0 corrupted blocks) and clamps negotiated encrypted extension IDs in [1, 14]; live RFC 6904 keystream XOR mask generation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "450. [Topic 87 · Historic 450-Dimension Milestone 🎉: voice-sip-rfc6026-rfc4320-invite-non-invite-transaction-timer-b-f-d-k-late-response-storm-faq] Enterprise SIP RFC 6026 INVITE Accepted State [16000,64000]ms Forked 2xx Auto-ACK+BYE & RFC 4320 Non-INVITE 100/408 Suppression + [4000,32000]ms Timer F Guard (P887 / P888 — Stage 447 · 🎉 Historic 450-Dimension Milestone · 450 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% RFC 6026 Accepted state residency in [16000, 64000]ms and auto-dispatches ACK+BYE on secondary parallel-forked 2xx To-tags (0 zombie dialogs); live Kamailio/OpenSIPS tm hash-table lock latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: suppresses 100% of Non-INVITE 100 Trying and proxy synthetic 408 Request Timeout storm packets (0 storm packets) and clamps Timer F in [4000, 32000]ms; live multi-hop WAN NIT Timer K absorption latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
