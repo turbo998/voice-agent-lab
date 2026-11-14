@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg110" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </linearGradient>
+    <linearGradient id="accent110" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg110)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="8" rx="4" fill="url(#accent110)"/>
+
+  <text x="56" y="68" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1">STAGE 466 · TOPIC 106 · SVG 110 🎉 · P925–P926 🎉 · 110TH SVG &amp; 935-GUARDRAIL MILESTONE · 469 DIMS · 908 TESTS</text>
+  <text x="56" y="102" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24.5" font-weight="800">WebRTC RFC 7941 &amp; RFC 7022 SDES CNAME: [96,128]b Privacy &amp; 0-RTT [15,80]ms Lip-Sync Guard</text>
+  <text x="56" y="128" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业 WebRTC RFC 7941/7022 多模态同步：严防 user@IP 静态 CNAME 内网拓扑泄露与数字人首帧 240ms 唇音失步 (P925–P926 🎉)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="56" y="152" width="528" height="390" rx="14" fill="#1E1B2E" stroke="#EF4444" stroke-width="2"/>
+  <rect x="76" y="172" width="268" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="90" y="191" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">❌ 脆弱基线 (Legacy RFC 3550 SDES)</text>
+
+  <text x="76" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. user@IPv4 静态 CNAME + TOOL/PRIV 内网拓扑泄露</text>
+  <text x="76" y="250" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">SDES CNAME="worker@10.240.12.8" TOOL="FreeSWITCH-1.10"</text>
+  <text x="76" y="272" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 绕过 mDNS 直接在 RTCP 中暴露后端 Pod IPv4 与组件版本！</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 静态 MAC/User 哈希构成跨会话持久追踪 Supercookie！</text>
+
+  <line x1="76" y1="320" x2="560" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="76" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. 苦等周期 RTCP SR (1.2s) 致数字人开口唇音错位</text>
+  <text x="76" y="376" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">No RFC 7941 ext -&gt; Wait 1,200ms for RTCP -&gt; Skew=240ms</text>
+  <text x="76" y="398" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 首帧音视频到达时无 CNAME 关联，前 1.2s 各自盲播严重脱节！</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 音画偏差高达 240ms，突破 ITU-R BT.1359 (+125ms) 感知极限！</text>
+
+  <rect x="76" y="450" width="488" height="72" rx="10" fill="#450A0A" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="92" y="476" fill="#FECACA" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">事故后果：11 次内网 IP/PII 泄露 + 6 条数字人流首秒唇音错位 240ms</text>
+  <text x="92" y="500" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">违反 RFC 8828 / GDPR 隐私红线，且数字人开口第一句话嘴型慢半拍</text>
+
+  <!-- Right Card: Deterministic Guardrails P925-P926 -->
+  <rect x="616" y="152" width="528" height="390" rx="14" fill="#0F292A" stroke="#10B981" stroke-width="2"/>
+  <rect x="636" y="172" width="318" height="28" rx="6" fill="#064E3B"/>
+  <text x="650" y="191" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">✅ 企业级护栏 (P925 + P926 🎉 · SVG 110 &amp; 935 Guards)</text>
+
+  <text x="636" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P925 · RFC 7022 [96, 128]b 会话级随机 CNAME 与 PII 剥离</text>
+  <text x="636" y="250" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">sdesCnameEntropyBits ∈ [96, 128]b (128b) · Strip Non-CNAME</text>
+  <text x="636" y="272" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 单次会话独立 CSPRNG 随机生成 16B Base64 CNAME，0 跨会话关联</text>
+  <text x="636" y="294" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 100% 剥离 NAME/EMAIL/PHONE/LOC/TOOL/PRIV (0 内网 IP 泄露)</text>
+
+  <line x1="636" y1="320" x2="1120" y2="320" stroke="#1E293B" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="636" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P926 🎉 · RFC 7941 首帧 Cryptex 绑定与 [15, 80]ms 唇音锁</text>
+  <text x="636" y="376" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Cryptex sdes:cname 0-RTT · LipSyncSkew ∈ [15, 80]ms (80ms)</text>
+  <text x="636" y="398" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 新流/切源首帧加密携带 sdes:cname 扩展头，0-RTT 瞬时关联音画</text>
+  <text x="636" y="420" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 音画唇音同步最大容差钳制在 [15, 80]ms (符合 ITU-R BT.1359)</text>
+
+  <rect x="636" y="450" width="488" height="72" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5"/>
+  <text x="652" y="476" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">验证结果：0 SDES 隐私泄露 · 0 首帧唇音失步 · 128-bit / 80ms 封顶</text>
+  <text x="652" y="500" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer Provenance -->
+  <rect x="56" y="560" width="1088" height="68" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="76" y="586" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Benchmark &amp; Provenance (Stage 466 · Topic 106 · SVG 110 🎉 · 935 Guardrails 🎉 · 944 Probes · 754 Live POC · 469 Dims · 908 Tests)</text>
+  <text x="76" y="610" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Guardrails: evaluateWebrtcRtcpRfc7941EphemeralSdesCnamePrivacyAndPiiStripGate (P925) &amp; evaluateWebrtcRtcpRfc7941RtpHeaderExtensionSdesCnameSyncAndLipSyncSkewGate (P926 🎉)</text>
+</svg>

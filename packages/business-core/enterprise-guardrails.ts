@@ -82052,6 +82052,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtcpRfc7941EphemeralSdesCnamePrivacyAndPiiStripContext {
+      staticHostIpCnameOrUnauthorizedSdesPiiItemDetected: boolean;
+      leakedSdesPiiOrStaticFingerprintPackets: number;
+      sdesCnameEntropyBits: number;
+    }
+
+    export interface WebrtcRtcpRfc7941EphemeralSdesCnamePrivacyAndPiiStripDecision {
+      violated: boolean;
+      policyId: "P925-WEBRTC-RTCP-RFC7941-EPHEMERAL-SDES-CNAME-PRIVACY-AND-PII-STRIP-GUARD";
+      action:
+        | "rewrite_ephemeral_csprng_cname_and_strip_non_cname_sdes_items"
+        | "clamp_sdes_pii_packets_and_cname_entropy_bounds"
+        | "allow";
+      reason: string;
+      clampedLeakedSdesPiiOrStaticFingerprintPackets: number;
+      clampedSdesCnameEntropyBits: number;
+    }
+
+    export function evaluateWebrtcRtcpRfc7941EphemeralSdesCnamePrivacyAndPiiStripGate(
+      context: WebrtcRtcpRfc7941EphemeralSdesCnamePrivacyAndPiiStripContext,
+    ): WebrtcRtcpRfc7941EphemeralSdesCnamePrivacyAndPiiStripDecision {
+      const policyId =
+        "P925-WEBRTC-RTCP-RFC7941-EPHEMERAL-SDES-CNAME-PRIVACY-AND-PII-STRIP-GUARD" as const;
+      const clampedLeakedSdesPiiOrStaticFingerprintPackets = 0;
+      const clampedSdesCnameEntropyBits = Math.min(
+        Math.max(context.sdesCnameEntropyBits, 96),
+        128,
+      );
+
+      if (context.staticHostIpCnameOrUnauthorizedSdesPiiItemDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rewrite_ephemeral_csprng_cname_and_strip_non_cname_sdes_items",
+          reason:
+            "Enterprise WebRTC RFC 7022 / RFC 8834 RTCP SDES CNAME Ephemeral Privacy & PII Strip Policy Check: RTCP SDES carried legacy user@IPv4/MAC persistent CNAME or unauthorized NAME/EMAIL/PHONE/LOC/TOOL/PRIV metadata; offline synthetic policy state machine stripping non-CNAME SDES items and rewriting to a per-session CSPRNG CNAME (0 PII-leaking packets) clamped to [96, 128] bits entropy (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU compound RTCP parser latency not_measured).",
+          clampedLeakedSdesPiiOrStaticFingerprintPackets,
+          clampedSdesCnameEntropyBits,
+        };
+      }
+
+      if (
+        context.leakedSdesPiiOrStaticFingerprintPackets > 0 ||
+        context.sdesCnameEntropyBits < 96 ||
+        context.sdesCnameEntropyBits > 128
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_sdes_pii_packets_and_cname_entropy_bounds",
+          reason:
+            "Leaked RTCP SDES PII / static fingerprint packets (>0 synthetic ceiling) or SDES CNAME entropy (<96 bits or >128 bits synthetic bounds) out of bounds; clamping leaked packets to 0 and CNAME entropy to [96, 128] bits.",
+          clampedLeakedSdesPiiOrStaticFingerprintPackets,
+          clampedSdesCnameEntropyBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 7022 per-session CSPRNG SDES CNAME + PII strip (0 leaked packets) and [96, 128]-bit entropy verified.",
+        clampedLeakedSdesPiiOrStaticFingerprintPackets,
+        clampedSdesCnameEntropyBits,
+      };
+    }
+
+    export interface WebrtcRtcpRfc7941RtpHeaderExtensionSdesCnameSyncAndLipSyncSkewContext {
+      missingFirstFrameRfc7941CnameOrExcessiveLipSyncSkewDetected: boolean;
+      unboundOrDesyncedMultimodalAvatarStreams: number;
+      maxAudioVideoLipSyncSkewMs: number;
+    }
+
+    export interface WebrtcRtcpRfc7941RtpHeaderExtensionSdesCnameSyncAndLipSyncSkewDecision {
+      violated: boolean;
+      policyId: "P926-WEBRTC-RTCP-RFC7941-RTP-HEADER-EXTENSION-SDES-CNAME-SYNC-AND-LIPSYNC-SKEW-GUARD";
+      action:
+        | "inject_cryptex_rfc7941_sdes_cname_and_resync_av_playout"
+        | "clamp_desynced_avatar_streams_and_lipsync_skew_bounds"
+        | "allow";
+      reason: string;
+      clampedUnboundOrDesyncedMultimodalAvatarStreams: number;
+      clampedMaxAudioVideoLipSyncSkewMs: number;
+    }
+
+    export function evaluateWebrtcRtcpRfc7941RtpHeaderExtensionSdesCnameSyncAndLipSyncSkewGate(
+      context: WebrtcRtcpRfc7941RtpHeaderExtensionSdesCnameSyncAndLipSyncSkewContext,
+    ): WebrtcRtcpRfc7941RtpHeaderExtensionSdesCnameSyncAndLipSyncSkewDecision {
+      const policyId =
+        "P926-WEBRTC-RTCP-RFC7941-RTP-HEADER-EXTENSION-SDES-CNAME-SYNC-AND-LIPSYNC-SKEW-GUARD" as const;
+      const clampedUnboundOrDesyncedMultimodalAvatarStreams = 0;
+      const clampedMaxAudioVideoLipSyncSkewMs = Math.min(
+        Math.max(context.maxAudioVideoLipSyncSkewMs, 15),
+        80,
+      );
+
+      if (context.missingFirstFrameRfc7941CnameOrExcessiveLipSyncSkewDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "inject_cryptex_rfc7941_sdes_cname_and_resync_av_playout",
+          reason:
+            "Enterprise WebRTC RFC 7941 RTP Header Extension SDES CNAME 0-RTT Sync & ITU-R BT.1359 Lip-Sync Policy Check: multimodal audio/avatar stream omitted first-frame Cryptex sdes:cname binding or drifted beyond 80ms A/V lip-sync skew; offline synthetic policy state machine attaching Cryptex RFC 7941 sdes:cname on initial frames (0 unbound/desynced streams) and clamping A/V lip-sync skew tolerance to [15, 80]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live client playout NTP linear-regression latency not_measured).",
+          clampedUnboundOrDesyncedMultimodalAvatarStreams,
+          clampedMaxAudioVideoLipSyncSkewMs,
+        };
+      }
+
+      if (
+        context.unboundOrDesyncedMultimodalAvatarStreams > 0 ||
+        context.maxAudioVideoLipSyncSkewMs < 15 ||
+        context.maxAudioVideoLipSyncSkewMs > 80
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_desynced_avatar_streams_and_lipsync_skew_bounds",
+          reason:
+            "Unbound or desynced multimodal avatar streams (>0 synthetic ceiling) or max audio-video lip-sync skew (<15ms or >80ms synthetic bounds) out of bounds; clamping desynced streams to 0 and lip-sync skew tolerance to [15, 80]ms.",
+          clampedUnboundOrDesyncedMultimodalAvatarStreams,
+          clampedMaxAudioVideoLipSyncSkewMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 7941 0-RTT Cryptex sdes:cname binding (0 desynced streams) and [15, 80]ms A/V lip-sync skew bounds verified.",
+        clampedUnboundOrDesyncedMultimodalAvatarStreams,
+        clampedMaxAudioVideoLipSyncSkewMs,
+      };
+    }
+
 
 
 

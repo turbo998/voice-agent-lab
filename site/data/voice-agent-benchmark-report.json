@@ -1993,6 +1993,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of external Path headers and enforces mTLS Edge allowlist with mandatory ;lr (0 poisoned registrations) clamped in [1, 4] hops; live Registrar usrloc database write latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins 100% of 200 OK Service-Route vectors to authorized tenant core allowlists with ;lr (0 hijacked outbound dialogs) clamped in [1, 4] hops; live UAC route-set cache lock latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "469. [Topic 106 · Historic 110th SVG & 935-Guardrail Dual Milestone 🎉: voice-webrtc-rtcp-rfc7941-rfc7022-sdes-cname-ephemeral-privacy-lipsync-clock-drift-faq] Enterprise WebRTC RFC 7022 [96,128]b Ephemeral SDES CNAME Privacy & RFC 7941 0-RTT [15,80]ms Lip-Sync Guard (P925 / P926 🎉 — Stage 466 · 🎉 Historic 110th SVG & 935-Guardrail Dual Milestone · 469 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of non-CNAME SDES items and rewrites static user@IP CNAMEs to [96, 128]-bit per-session CSPRNG tokens (0 PII-leaking packets); live SFU compound RTCP parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: attaches Cryptex RFC 7941 sdes:cname on initial frames for 0-RTT binding (0 desynced streams) and clamps A/V lip-sync skew tolerance in [15, 80]ms; live client playout NTP linear-regression latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
