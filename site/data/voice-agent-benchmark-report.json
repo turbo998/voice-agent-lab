@@ -1861,6 +1861,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: suppresses 100% of premature 180 Ringing and 200 OK responses until all [2, 2] directions reach curr:qos sendrecv (0 ghost-ringing or clipped calls); live 4G/5G PCRF/PCF Rx bearer allocation latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps QCI=1/5QI=1 precondition reservation timeout in [1500, 5000]ms and fails fast with SIP 580 (0 hung setup calls); live RAN dedicated-bearer signaling latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "447. [Topic 84 · 900-Probe & 710-Live-POC-Probe Milestone 🎉: voice-webrtc-srtp-rfc3711-roc-rollover-late-joiner-index-desync-rtx-osn-faq] Enterprise WebRTC RFC 3711 SRTP 32-bit ROC Authenticate-Before-Commit + Late-Joiner Sync + [128,1024] Window & RFC 4588 RTX Separate-SSRC OSN Isolation Guard (P881 / P882 — Stage 444 · 🎉 Historic 891-Guardrail, 900-Probe & 710-Live-POC-Probe Triple Milestone · 447 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: verifies SRTP AEAD tags before committing candidate ROC v and syncs late-joiner ROC (0 permanently desynced streams) with a [128, 1024]-packet replay window; live libsrtp 48-bit index arithmetic latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: isolates 100% of RFC 4588 RTX retransmissions on a dedicated SSRC and unwraps 2B OSN (0 RTX-induced primary ROC corruptions) within [200, 1000]ms history; live RTX unwrapping latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

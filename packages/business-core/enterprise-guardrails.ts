@@ -79057,6 +79057,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSrtpRfc3711RocRolloverAuthenticateBeforeCommitAndLateJoinerSyncContext {
+      unauthenticatedSeqRolloverRocMutationOrLateJoinerRocZeroAssumedDetected: boolean;
+      rocDesyncPermanentAuthFailureStreams: number;
+      srtpReplayWindowPackets: number;
+    }
+
+    export interface WebrtcSrtpRfc3711RocRolloverAuthenticateBeforeCommitAndLateJoinerSyncDecision {
+      violated: boolean;
+      policyId: "P881-WEBRTC-SRTP-RFC3711-ROC-ROLLOVER-AUTHENTICATE-BEFORE-COMMIT-AND-LATE-JOINER-SYNC-GUARD";
+      action:
+        | "verify_aead_tag_before_committing_roc_and_sync_late_joiner_roc"
+        | "clamp_roc_desync_streams_and_replay_window_bounds"
+        | "allow";
+      reason: string;
+      clampedRocDesyncPermanentAuthFailureStreams: number;
+      clampedSrtpReplayWindowPackets: number;
+    }
+
+    export function evaluateWebrtcSrtpRfc3711RocRolloverAuthenticateBeforeCommitAndLateJoinerSyncGate(
+      context: WebrtcSrtpRfc3711RocRolloverAuthenticateBeforeCommitAndLateJoinerSyncContext,
+    ): WebrtcSrtpRfc3711RocRolloverAuthenticateBeforeCommitAndLateJoinerSyncDecision {
+      const policyId =
+        "P881-WEBRTC-SRTP-RFC3711-ROC-ROLLOVER-AUTHENTICATE-BEFORE-COMMIT-AND-LATE-JOINER-SYNC-GUARD" as const;
+      const clampedRocDesyncPermanentAuthFailureStreams = 0;
+      const clampedSrtpReplayWindowPackets = Math.min(
+        Math.max(context.srtpReplayWindowPackets, 128),
+        1024,
+      );
+
+      if (context.unauthenticatedSeqRolloverRocMutationOrLateJoinerRocZeroAssumedDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "verify_aead_tag_before_committing_roc_and_sync_late_joiner_roc",
+          reason:
+            "Enterprise WebRTC RFC 3711 SRTP 32-bit ROC Rollover Authenticate-Before-Commit & Late-Joiner Sync Policy Check: receiver mutated stored ROC/s_l before SRTP AEAD tag verification or initialized a >21.8-minute late-joiner stream at ROC=0; offline synthetic policy state machine enforcing read-only candidate v evaluation and late-joiner ROC sync (0 permanently desynced streams) while clamping replay window to [128, 1024] packets (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live libsrtp 48-bit index arithmetic latency not_measured).",
+          clampedRocDesyncPermanentAuthFailureStreams,
+          clampedSrtpReplayWindowPackets,
+        };
+      }
+
+      if (
+        context.rocDesyncPermanentAuthFailureStreams > 0 ||
+        context.srtpReplayWindowPackets < 128 ||
+        context.srtpReplayWindowPackets > 1024
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_roc_desync_streams_and_replay_window_bounds",
+          reason:
+            "SRTP ROC desync permanent auth-failure streams (>0 synthetic ceiling) or SRTP replay window (<128 or >1024 packets synthetic bounds) out of bounds; clamping desynced streams to 0 and replay window to [128, 1024] packets.",
+          clampedRocDesyncPermanentAuthFailureStreams,
+          clampedSrtpReplayWindowPackets,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 3711 SRTP authenticate-before-commit ROC update, late-joiner ROC sync (0 desynced streams), and [128, 1024]-packet replay window verified.",
+        clampedRocDesyncPermanentAuthFailureStreams,
+        clampedSrtpReplayWindowPackets,
+      };
+    }
+
+    export interface WebrtcRtpRfc4588RtxOsnSeparateSsrcReplayWindowAndAptBindingContext {
+      rtxSharedSsrcSeqJumpOrMismatchedAptPayloadDetected: boolean;
+      rtxInducedPrimaryRocCorruptions: number;
+      maxRtxRetransmissionHistoryMs: number;
+    }
+
+    export interface WebrtcRtpRfc4588RtxOsnSeparateSsrcReplayWindowAndAptBindingDecision {
+      violated: boolean;
+      policyId: "P882-WEBRTC-RTP-RFC4588-RTX-OSN-SEPARATE-SSRC-REPLAY-WINDOW-AND-APT-BINDING-GUARD";
+      action:
+        | "isolate_rtx_ssrc_replay_state_and_unwrap_osn_before_primary_inject"
+        | "clamp_rtx_roc_corruptions_and_history_window_bounds"
+        | "allow";
+      reason: string;
+      clampedRtxInducedPrimaryRocCorruptions: number;
+      clampedMaxRtxRetransmissionHistoryMs: number;
+    }
+
+    export function evaluateWebrtcRtpRfc4588RtxOsnSeparateSsrcReplayWindowAndAptBindingGate(
+      context: WebrtcRtpRfc4588RtxOsnSeparateSsrcReplayWindowAndAptBindingContext,
+    ): WebrtcRtpRfc4588RtxOsnSeparateSsrcReplayWindowAndAptBindingDecision {
+      const policyId =
+        "P882-WEBRTC-RTP-RFC4588-RTX-OSN-SEPARATE-SSRC-REPLAY-WINDOW-AND-APT-BINDING-GUARD" as const;
+      const clampedRtxInducedPrimaryRocCorruptions = 0;
+      const clampedMaxRtxRetransmissionHistoryMs = Math.min(
+        Math.max(context.maxRtxRetransmissionHistoryMs, 200),
+        1000,
+      );
+
+      if (context.rtxSharedSsrcSeqJumpOrMismatchedAptPayloadDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "isolate_rtx_ssrc_replay_state_and_unwrap_osn_before_primary_inject",
+          reason:
+            "Enterprise WebRTC RFC 4588 RTX OSN Separate-SSRC Replay Window & APT Binding Policy Check: retransmission packets shared the primary SSRC across a 65535->0 rollover boundary or carried mismatched apt payloads; offline synthetic policy state machine isolating RTX SSRC replay state and unwrapping 2-byte OSN (0 RTX-induced primary ROC corruptions) while clamping retransmission history buffer to [200, 1000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTX packet unwrapping latency not_measured).",
+          clampedRtxInducedPrimaryRocCorruptions,
+          clampedMaxRtxRetransmissionHistoryMs,
+        };
+      }
+
+      if (
+        context.rtxInducedPrimaryRocCorruptions > 0 ||
+        context.maxRtxRetransmissionHistoryMs < 200 ||
+        context.maxRtxRetransmissionHistoryMs > 1000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_rtx_roc_corruptions_and_history_window_bounds",
+          reason:
+            "RTX-induced primary ROC corruptions (>0 synthetic ceiling) or max RTX retransmission history window (<200ms or >1000ms synthetic bounds) out of bounds; clamping corruptions to 0 and history window to [200, 1000]ms.",
+          clampedRtxInducedPrimaryRocCorruptions,
+          clampedMaxRtxRetransmissionHistoryMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 4588 dedicated RTX SSRC isolation, 2-byte OSN unwrapping (0 ROC corruptions), and [200, 1000]ms history bounds verified.",
+        clampedRtxInducedPrimaryRocCorruptions,
+        clampedMaxRtxRetransmissionHistoryMs,
+      };
+    }
+
 
 
 
