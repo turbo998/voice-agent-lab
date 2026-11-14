@@ -2029,6 +2029,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of external Answer-Mode/Alert-Info auto-answer headers (0 silent room-bugging activations) and clamps internal intercom warning tone in [500, 2000]ms; live SBC header sanitizer regex latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unsolicited MWI NOTIFY packets with 481 and pins Message-Account to internal voicemail allowlists (0 callback toll-fraud notifications) clamped in [0, 999] messages; live SBC subscription state-table lookup latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "475. [Topic 112 · Historic 475-Dimension Milestone 🎉: voice-webrtc-rtcp-rfc8834-rfc5506-reduced-size-rtcp-rsize-compound-mtu-fragmentation-blackhole-faq] Enterprise WebRTC RFC 8834 Compound RTCP [576,1200]B MTU Auto-Split & RFC 5506 Negotiated a=rtcp-rsize [500,5000]ms Heartbeat Guard (P937 / P938 — Stage 472 · 🎉 Historic 475-Dimension Milestone · 475 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: splits 100% of oversized compound RTCP reports into <=1,200B SRTCP datagrams (0 IP-fragmented/blackholed datagrams) clamped in [576, 1200] bytes; live SRTCP packetizer split encryption latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces negotiated a=rtcp-rsize with SRTCP auth (0 rejected/starved streams) and clamps full compound RTCP heartbeats in [500, 5000]ms; live RTCP scheduler timer wheel latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

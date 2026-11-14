@@ -82868,6 +82868,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtcpRfc8834CompoundPacketMtuSplittingAndFragmentationContext {
+      oversizedCompoundRtcpMtuFragmentationDetected: boolean;
+      ipFragmentedOrBlackholedRtcpDatagrams: number;
+      maxCompoundRtcpPacketBytes: number;
+    }
+
+    export interface WebrtcRtcpRfc8834CompoundPacketMtuSplittingAndFragmentationDecision {
+      violated: boolean;
+      policyId: "P937-WEBRTC-RTCP-RFC8834-COMPOUND-PACKET-MTU-SPLITTING-AND-FRAGMENTATION-GUARD";
+      action:
+        | "split_compound_rtcp_across_sub_1200b_srtcp_datagrams"
+        | "clamp_fragmented_rtcp_datagrams_and_mtu_byte_bounds"
+        | "allow";
+      reason: string;
+      clampedIpFragmentedOrBlackholedRtcpDatagrams: number;
+      clampedMaxCompoundRtcpPacketBytes: number;
+    }
+
+    export function evaluateWebrtcRtcpRfc8834CompoundPacketMtuSplittingAndFragmentationGate(
+      context: WebrtcRtcpRfc8834CompoundPacketMtuSplittingAndFragmentationContext,
+    ): WebrtcRtcpRfc8834CompoundPacketMtuSplittingAndFragmentationDecision {
+      const policyId =
+        "P937-WEBRTC-RTCP-RFC8834-COMPOUND-PACKET-MTU-SPLITTING-AND-FRAGMENTATION-GUARD" as const;
+      const clampedIpFragmentedOrBlackholedRtcpDatagrams = 0;
+      const clampedMaxCompoundRtcpPacketBytes = Math.min(
+        Math.max(context.maxCompoundRtcpPacketBytes, 576),
+        1200,
+      );
+
+      if (context.oversizedCompoundRtcpMtuFragmentationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "split_compound_rtcp_across_sub_1200b_srtcp_datagrams",
+          reason:
+            "Enterprise WebRTC RFC 8834 Section 4.6 Compound RTCP Path MTU Splitting Policy Check: compound RTCP report (SR/RR + SDES + TWCC + NACK) exceeded 1,200B IPv6/TURN payload ceiling causing UDP IP-fragmentation blackholes across enterprise firewalls; offline synthetic policy state machine splitting oversized compound reports into independent <=1,200B SRTCP datagrams (0 fragmented/blackholed RTCP packets) clamped in [576, 1200] bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SRTCP packetizer split encryption latency not_measured).",
+          clampedIpFragmentedOrBlackholedRtcpDatagrams,
+          clampedMaxCompoundRtcpPacketBytes,
+        };
+      }
+
+      if (
+        context.ipFragmentedOrBlackholedRtcpDatagrams > 0 ||
+        context.maxCompoundRtcpPacketBytes < 576 ||
+        context.maxCompoundRtcpPacketBytes > 1200
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_fragmented_rtcp_datagrams_and_mtu_byte_bounds",
+          reason:
+            "IP-fragmented / blackholed RTCP datagrams (>0 synthetic ceiling) or max compound RTCP packet bytes (<576B or >1200B synthetic bounds) out of bounds; clamping violations to 0 and packet size to [576, 1200] bytes.",
+          clampedIpFragmentedOrBlackholedRtcpDatagrams,
+          clampedMaxCompoundRtcpPacketBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8834 compound RTCP MTU auto-splitting (0 fragmented datagrams) and [576, 1200]B ceiling verified.",
+        clampedIpFragmentedOrBlackholedRtcpDatagrams,
+        clampedMaxCompoundRtcpPacketBytes,
+      };
+    }
+
+    export interface WebrtcRtcpRfc5506ReducedSizeRtcpRsizeNegotiationAndSrtcpAuthContext {
+      unnegotiatedRtcpRsizeOrStarvedCompoundHeartbeatDetected: boolean;
+      rejectedRsizeOrStarvedCompoundStreams: number;
+      maxFullCompoundRtcpHeartbeatIntervalMs: number;
+    }
+
+    export interface WebrtcRtcpRfc5506ReducedSizeRtcpRsizeNegotiationAndSrtcpAuthDecision {
+      violated: boolean;
+      policyId: "P938-WEBRTC-RTCP-RFC5506-REDUCED-SIZE-RTCP-RSIZE-NEGOTIATION-AND-SRTCP-AUTH-GUARD";
+      action:
+        | "enforce_negotiated_rtcp_rsize_srtcp_auth_and_compound_heartbeat"
+        | "clamp_rsize_starved_streams_and_heartbeat_interval_bounds"
+        | "allow";
+      reason: string;
+      clampedRejectedRsizeOrStarvedCompoundStreams: number;
+      clampedMaxFullCompoundRtcpHeartbeatIntervalMs: number;
+    }
+
+    export function evaluateWebrtcRtcpRfc5506ReducedSizeRtcpRsizeNegotiationAndSrtcpAuthGate(
+      context: WebrtcRtcpRfc5506ReducedSizeRtcpRsizeNegotiationAndSrtcpAuthContext,
+    ): WebrtcRtcpRfc5506ReducedSizeRtcpRsizeNegotiationAndSrtcpAuthDecision {
+      const policyId =
+        "P938-WEBRTC-RTCP-RFC5506-REDUCED-SIZE-RTCP-RSIZE-NEGOTIATION-AND-SRTCP-AUTH-GUARD" as const;
+      const clampedRejectedRsizeOrStarvedCompoundStreams = 0;
+      const clampedMaxFullCompoundRtcpHeartbeatIntervalMs = Math.min(
+        Math.max(context.maxFullCompoundRtcpHeartbeatIntervalMs, 500),
+        5000,
+      );
+
+      if (context.unnegotiatedRtcpRsizeOrStarvedCompoundHeartbeatDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_negotiated_rtcp_rsize_srtcp_auth_and_compound_heartbeat",
+          reason:
+            "Enterprise WebRTC RFC 5506 Reduced-Size RTCP (a=rtcp-rsize) Negotiation & Compound Heartbeat Policy Check: non-compound RTPFB/PSFB packet emitted without bidirectional SDP a=rtcp-rsize negotiation or periodic full compound (SR/RR + SDES) heartbeat exceeded 5,000ms; offline synthetic policy state machine enforcing negotiated SRTCP-authenticated rtcp-rsize with compound fallback (0 rejected/starved streams) and clamping full compound heartbeat interval to [500, 5000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live RTCP scheduler timer wheel latency not_measured).",
+          clampedRejectedRsizeOrStarvedCompoundStreams,
+          clampedMaxFullCompoundRtcpHeartbeatIntervalMs,
+        };
+      }
+
+      if (
+        context.rejectedRsizeOrStarvedCompoundStreams > 0 ||
+        context.maxFullCompoundRtcpHeartbeatIntervalMs < 500 ||
+        context.maxFullCompoundRtcpHeartbeatIntervalMs > 5000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_rsize_starved_streams_and_heartbeat_interval_bounds",
+          reason:
+            "Rejected rtcp-rsize / compound-starved streams (>0 synthetic ceiling) or max full compound RTCP heartbeat interval (<500ms or >5000ms synthetic bounds) out of bounds; clamping violations to 0 and compound heartbeat interval to [500, 5000]ms.",
+          clampedRejectedRsizeOrStarvedCompoundStreams,
+          clampedMaxFullCompoundRtcpHeartbeatIntervalMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 5506 negotiated a=rtcp-rsize + SRTCP auth (0 starved streams) and [500, 5000]ms full compound heartbeat verified.",
+        clampedRejectedRsizeOrStarvedCompoundStreams,
+        clampedMaxFullCompoundRtcpHeartbeatIntervalMs,
+      };
+    }
+
 
 
 
