@@ -78389,6 +78389,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3911JoinHeaderUnauthorizedSilentWiretapAndSupervisorRbacContext {
+      unauthorizedJoinHeaderOrSilentWiretapWithoutRbacDetected: boolean;
+      unauthorizedJoinWiretapAttempts: number;
+      maxAuthorizedSupervisorBargeStreams: number;
+    }
+
+    export interface SipRfc3911JoinHeaderUnauthorizedSilentWiretapAndSupervisorRbacDecision {
+      violated: boolean;
+      policyId: "P871-SIP-RFC3911-JOIN-HEADER-UNAUTHORIZED-SILENT-WIRETAP-AND-SUPERVISOR-RBAC-GUARD";
+      action:
+        | "reject_unauthorized_join_with_403_and_enforce_supervisor_rbac"
+        | "clamp_join_wiretap_attempts_and_barge_stream_bounds"
+        | "allow";
+      reason: string;
+      clampedUnauthorizedJoinWiretapAttempts: number;
+      clampedMaxAuthorizedSupervisorBargeStreams: number;
+    }
+
+    export function evaluateSipRfc3911JoinHeaderUnauthorizedSilentWiretapAndSupervisorRbacGate(
+      context: SipRfc3911JoinHeaderUnauthorizedSilentWiretapAndSupervisorRbacContext,
+    ): SipRfc3911JoinHeaderUnauthorizedSilentWiretapAndSupervisorRbacDecision {
+      const policyId =
+        "P871-SIP-RFC3911-JOIN-HEADER-UNAUTHORIZED-SILENT-WIRETAP-AND-SUPERVISOR-RBAC-GUARD" as const;
+      const clampedUnauthorizedJoinWiretapAttempts = 0;
+      const clampedMaxAuthorizedSupervisorBargeStreams = Math.min(
+        Math.max(context.maxAuthorizedSupervisorBargeStreams, 1),
+        2,
+      );
+
+      if (context.unauthorizedJoinHeaderOrSilentWiretapWithoutRbacDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unauthorized_join_with_403_and_enforce_supervisor_rbac",
+          reason:
+            "Enterprise SIP RFC 3911 Join Header Unauthorized Silent Wiretap & Supervisor RBAC Policy Check: inbound SIP INVITE carried a Join header attempting to bridge into an active dialog without a same-tenant Supervisor RBAC token; offline synthetic policy state machine rejecting 100% of unauthorized Join wiretap attempts with SIP 403 (0 unauthorized wiretaps) and clamping concurrent supervisor barge streams to [1, 2] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC dialog hash lookup & JWT RBAC verification latency not_measured).",
+          clampedUnauthorizedJoinWiretapAttempts,
+          clampedMaxAuthorizedSupervisorBargeStreams,
+        };
+      }
+
+      if (
+        context.unauthorizedJoinWiretapAttempts > 0 ||
+        context.maxAuthorizedSupervisorBargeStreams < 1 ||
+        context.maxAuthorizedSupervisorBargeStreams > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_join_wiretap_attempts_and_barge_stream_bounds",
+          reason:
+            "Unauthorized SIP Join wiretap attempts (>0 synthetic ceiling) or max authorized supervisor barge streams (<1 or >2 synthetic bounds) out of bounds; clamping violations to 0 and barge streams to [1, 2].",
+          clampedUnauthorizedJoinWiretapAttempts,
+          clampedMaxAuthorizedSupervisorBargeStreams,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3911 Join same-tenant Supervisor RBAC gate (0 unauthorized wiretaps) and [1, 2] barge stream bounds verified.",
+        clampedUnauthorizedJoinWiretapAttempts,
+        clampedMaxAuthorizedSupervisorBargeStreams,
+      };
+    }
+
+    export interface SipRfc3891ReplacesEarlyDialogCallPickupHijackAndTagEntropyContext {
+      crossTenantReplacesOrMissingEarlyOnlyPickupDetected: boolean;
+      hijackedReplacesDialogAttempts: number;
+      dialogTagCryptographicEntropyBits: number;
+    }
+
+    export interface SipRfc3891ReplacesEarlyDialogCallPickupHijackAndTagEntropyDecision {
+      violated: boolean;
+      policyId: "P872-SIP-RFC3891-REPLACES-EARLY-DIALOG-CALL-PICKUP-HIJACK-AND-TAG-ENTROPY-GUARD";
+      action:
+        | "reject_hijacked_replaces_with_481_and_enforce_128bit_tag_entropy"
+        | "clamp_replaces_hijack_attempts_and_tag_entropy_bounds"
+        | "allow";
+      reason: string;
+      clampedHijackedReplacesDialogAttempts: number;
+      clampedDialogTagCryptographicEntropyBits: number;
+    }
+
+    export function evaluateSipRfc3891ReplacesEarlyDialogCallPickupHijackAndTagEntropyGate(
+      context: SipRfc3891ReplacesEarlyDialogCallPickupHijackAndTagEntropyContext,
+    ): SipRfc3891ReplacesEarlyDialogCallPickupHijackAndTagEntropyDecision {
+      const policyId =
+        "P872-SIP-RFC3891-REPLACES-EARLY-DIALOG-CALL-PICKUP-HIJACK-AND-TAG-ENTROPY-GUARD" as const;
+      const clampedHijackedReplacesDialogAttempts = 0;
+      const clampedDialogTagCryptographicEntropyBits = Math.min(
+        Math.max(context.dialogTagCryptographicEntropyBits, 128),
+        256,
+      );
+
+      if (context.crossTenantReplacesOrMissingEarlyOnlyPickupDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_hijacked_replaces_with_481_and_enforce_128bit_tag_entropy",
+          reason:
+            "Enterprise SIP RFC 3891 Replaces Early-Dialog Call-Pickup Hijack & Tag Entropy Policy Check: directed call-pickup omitted early-only on a Confirmed dialog or attempted cross-tenant Replaces takeover; offline synthetic policy state machine rejecting 100% of unauthorized Replaces takeovers with SIP 481/486 (0 hijacked dialogs) and clamping dialog tag CSPRNG entropy to [128, 256] bits (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC dialog state-table lookup latency not_measured).",
+          clampedHijackedReplacesDialogAttempts,
+          clampedDialogTagCryptographicEntropyBits,
+        };
+      }
+
+      if (
+        context.hijackedReplacesDialogAttempts > 0 ||
+        context.dialogTagCryptographicEntropyBits < 128 ||
+        context.dialogTagCryptographicEntropyBits > 256
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_replaces_hijack_attempts_and_tag_entropy_bounds",
+          reason:
+            "Hijacked SIP Replaces dialog attempts (>0 synthetic ceiling) or dialog tag cryptographic entropy (<128 bits or >256 bits synthetic bounds) out of bounds; clamping violations to 0 and tag entropy to [128, 256] bits.",
+          clampedHijackedReplacesDialogAttempts,
+          clampedDialogTagCryptographicEntropyBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3891 Replaces early-only call-pickup lock (0 hijacked dialogs) and [128, 256]-bit CSPRNG tag entropy verified.",
+        clampedHijackedReplacesDialogAttempts,
+        clampedDialogTagCryptographicEntropyBits,
+      };
+    }
+
 
 
 

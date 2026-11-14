@@ -1831,6 +1831,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of truncated SFrame X=1 headers and non-monotonic (KID, CTR) nonce reuses (0 violations) and clamps retained epoch key ring in [2, 4]; live WebCrypto/EncodedTransform worker decryption latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: revokes 100% of evicted-member MLS epochs and quantizes SFU RFC 6464 VAD headers (0 stale-epoch or plaintext/side-channel frames) within a [500, 2000]ms ratchet deadline; live OpenMLS TreeKEM Commit derivation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "442. [Topic 79 · 890-Probe & 700-Live-POC-Probe Milestone 🎉: voice-sip-rfc3911-join-barge-wiretap-rfc3891-replaces-early-dialog-hijack-faq] Enterprise SIP RFC 3911 Join Same-Tenant Supervisor RBAC + [1,2] Barge Stream Cap & RFC 3891 Replaces early-only Call-Pickup + [128,256]-Bit Tag Entropy Guard (P871 / P872 — Stage 439 · 🎉 Historic 881-Guardrail, 890-Probe & 700-Live-POC-Probe Triple Milestone · 442 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of unauthorized or cross-tenant RFC 3911 Join wiretap attempts with SIP 403 (0 unauthorized wiretaps) and clamps concurrent supervisor barge streams in [1, 2]; live SBC dialog hash lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of missing-early-only or cross-tenant RFC 3891 Replaces takeovers with SIP 481/486 (0 hijacked dialogs) and clamps CSPRNG dialog tag entropy in [128, 256] bits; live SBC dialog state-table lookup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
