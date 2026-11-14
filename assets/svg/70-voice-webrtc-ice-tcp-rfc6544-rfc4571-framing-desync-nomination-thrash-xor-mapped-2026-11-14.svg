@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg70" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent70" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg70)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="330" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="209" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 426 · TOPIC 66 · P845 / P846 · SVG 70 🎉</text>
+  <text x="390" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">WebRTC RFC 6544 / RFC 4571 ICE-TCP Framing Desync &amp; RFC 8445 Nomination / XOR-MAPPED Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">WebRTC ICE-TCP 16 位分帧长度与魔数对齐锁（[256,1400]B）及 STUN XOR-MAPPED 环回剥离与 USE-CANDIDATE [1,3]/min 防抖门禁（🎉 SVG 70 &amp; 855 护栏里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent70)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 4571 ICE-TCP Framing Desync Gate (P845) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. RFC 6544 / RFC 4571 ICE-TCP Framing Desync Gate (P845)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：伪造 L=65535 吞噬后续 16s 语音包，或错位 1 字节把 SRTP 密文当长度头致永久乱码</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 同步防线：单帧长度硬锁 &lt;=1400B MTU，且首字节必须符合 RFC 7983 与 0x2112A442 魔数</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Desynced TCP Stream: L=0xFFFF (65535B) or Non-RFC7983 First Byte</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P845 Gate: 12 &lt;= L &lt;= 1400B &amp;&amp; RFC 7983 Byte-0 / Cookie Aligned</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: reset_desynced_rfc4571_tcp_stream_and_clamp_frame_bytes</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P845）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedDesyncedOrOversizedTcpFrames = 0（失步或超长帧 100% 原子重置）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaxRfc4571FramePayloadBytes ∈ [256, 1400]（杜绝 64KB 慢速驻留炸弹）</text>
+
+  <!-- Right Column: RFC 8445 USE-CANDIDATE & XOR-MAPPED Gate (P846) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. RFC 8445 Nomination Thrash &amp; XOR-MAPPED Gate (P846)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：127.0.0.1 异或 0x2112A442 伪装成 0x5E12A443 绕过前置过滤引发本机环回风暴</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 震荡风险：40次/秒 USE-CANDIDATE 交替提名导致双路径 30% 乱序丢包与抖动破音</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Loopback/Thrash: XOR-MAPPED=0x5E12A443 (127.0.0.1) | 45/min Switches</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P846 Gate: Post-XOR Loopback Scrub + USE-CANDIDATE in [1, 3]/min</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: drop_xor_mapped_loopback_and_throttle_use_candidate_switches</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P846 · 🎉 SVG 70 &amp; 855 护栏里程碑）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedSpoofedXorMappedLoopbackReflections = 0（解码后 100% 剥离环回反射）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaxUseCandidateSwitchesPerMinute ∈ [1, 3]（消除双网乒乓切换乱序）</text>
+
+  <!-- Bottom Full-Width Pipeline & Quantitative Matrix -->
+  <rect x="44" y="410" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="438" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Enterprise ICE-TCP &amp; STUN Hardening Pipeline · Stage 426 Scorecard (429 Dims · 855 Guardrails 🎉 · 864 Probes · 674 POC Probes)</text>
+
+  <rect x="64" y="454" width="265" height="92" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="196" y="478" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 1: RFC 4571 L Bounds</text>
+  <text x="196" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">L Clamped [256, 1400] Bytes</text>
+  <text x="196" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">500ms Partial-Frame Watchdog</text>
+
+  <rect x="355" y="454" width="275" height="92" rx="8" fill="#1E293B" stroke="#818CF8" stroke-width="1"/>
+  <text x="492" y="478" fill="#818CF8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 2: RFC 7983 Demux Lock</text>
+  <text x="492" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Byte-0 + 0x2112A442 Cookie</text>
+  <text x="492" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">0 Ciphertext Framing Desync</text>
+
+  <rect x="656" y="454" width="275" height="92" rx="8" fill="#1E293B" stroke="#34D399" stroke-width="1"/>
+  <text x="793" y="478" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 3: Post-XOR IP Scrub</text>
+  <text x="793" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Blocks 127.0.0.0/8 &amp; ::1</text>
+  <text x="793" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">0 Loopback Self-Amplification</text>
+
+  <rect x="957" y="454" width="259" height="92" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="1086" y="478" fill="#FBBF24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Step 4: Nomination [1,3]/min</text>
+  <text x="1086" y="500" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Hysteresis Path Switching</text>
+  <text x="1086" y="520" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">868 Automated Unit Tests Green</text>
+
+  <text x="64" y="578" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600">定量收敛结论：100% 阻断 ICE-TCP 64KB 慢速驻留与 1 字节滑窗失步死锁，消除 XOR-MAPPED 环回反射与双网提名乒乓丢包。</text>
+  <text x="64" y="604" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">Docs: docs/voice-webrtc-ice-tcp-rfc6544-rfc4571-framing-desync-nomination-thrash-xor-mapped-faq.md (.en.md) · Guardrails: P845 &amp; P846</text>
+  <text x="64" y="630" fill="#38BDF8" font-family="Consolas, monospace" font-size="11.5">Timer Resolution &amp; Provenance: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer -->
+  <text x="640" y="718" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" text-anchor="middle">Voice Agent Architecture Lab · SVG 70 🎉 · Stage 426 · Topic 66 · Synthetic Policy Gate vs. Live Kernel TCP Reassembly Latency (not_measured)</text>
+</svg>

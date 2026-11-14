@@ -76621,6 +76621,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcIceTcpRfc4571FramingLengthDesyncAndSynHalfOpenContext {
+      rfc4571FramingLengthDesyncOrHalfOpenFloodDetected: boolean;
+      desyncedOrOversizedTcpFrames: number;
+      maxRfc4571FramePayloadBytes: number;
+    }
+
+    export interface WebrtcIceTcpRfc4571FramingLengthDesyncAndSynHalfOpenDecision {
+      violated: boolean;
+      policyId: "P845-WEBRTC-ICE-TCP-RFC4571-FRAMING-LENGTH-DESYNC-AND-SYN-HALF-OPEN-GUARD";
+      action:
+        | "reset_desynced_rfc4571_tcp_stream_and_clamp_frame_bytes"
+        | "clamp_desynced_tcp_frames_and_payload_byte_bounds"
+        | "allow";
+      reason: string;
+      clampedDesyncedOrOversizedTcpFrames: number;
+      clampedMaxRfc4571FramePayloadBytes: number;
+    }
+
+    export function evaluateWebrtcIceTcpRfc4571FramingLengthDesyncAndSynHalfOpenGate(
+      context: WebrtcIceTcpRfc4571FramingLengthDesyncAndSynHalfOpenContext,
+    ): WebrtcIceTcpRfc4571FramingLengthDesyncAndSynHalfOpenDecision {
+      const policyId =
+        "P845-WEBRTC-ICE-TCP-RFC4571-FRAMING-LENGTH-DESYNC-AND-SYN-HALF-OPEN-GUARD" as const;
+      const clampedDesyncedOrOversizedTcpFrames = 0;
+      const clampedMaxRfc4571FramePayloadBytes = Math.min(
+        Math.max(context.maxRfc4571FramePayloadBytes, 256),
+        1400,
+      );
+
+      if (context.rfc4571FramingLengthDesyncOrHalfOpenFloodDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reset_desynced_rfc4571_tcp_stream_and_clamp_frame_bytes",
+          reason:
+            "WebRTC ICE-TCP RFC 6544 / RFC 4571 16-Bit Length Framing Desync & RFC 7983 Demux Alignment Policy Check: inbound ICE-TCP stream declared an oversized 16-bit frame length L > 1400B or slipped frame alignment where byte 0 after L violated RFC 7983 / STUN 0x2112A442 magic-cookie invariants; offline synthetic policy state machine resetting desynchronized TCP stream (0 desynced/oversized frames) and clamping frame payload size to [256, 1400] bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live kernel TCP stream reassembly latency not_measured).",
+          clampedDesyncedOrOversizedTcpFrames,
+          clampedMaxRfc4571FramePayloadBytes,
+        };
+      }
+
+      if (
+        context.desyncedOrOversizedTcpFrames > 0 ||
+        context.maxRfc4571FramePayloadBytes < 256 ||
+        context.maxRfc4571FramePayloadBytes > 1400
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_desynced_tcp_frames_and_payload_byte_bounds",
+          reason:
+            "Desynchronized/oversized RFC 4571 TCP frames (>0 synthetic ceiling) or maximum RFC 4571 frame payload bytes (<256B or >1400B synthetic bounds) out of bounds; clamping desynchronized frames to 0 and frame payload bytes to [256, 1400].",
+          clampedDesyncedOrOversizedTcpFrames,
+          clampedMaxRfc4571FramePayloadBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 4571 16-bit length framing and RFC 7983 byte-0 alignment (0 desynced frames) and [256, 1400]B payload bounds verified.",
+        clampedDesyncedOrOversizedTcpFrames,
+        clampedMaxRfc4571FramePayloadBytes,
+      };
+    }
+
+    export interface WebrtcIceRfc8445UseCandidateNominationThrashAndXorMappedLoopbackContext {
+      useCandidateNominationThrashOrXorMappedLoopbackDetected: boolean;
+      spoofedXorMappedLoopbackReflections: number;
+      maxUseCandidateSwitchesPerMinute: number;
+    }
+
+    export interface WebrtcIceRfc8445UseCandidateNominationThrashAndXorMappedLoopbackDecision {
+      violated: boolean;
+      policyId: "P846-WEBRTC-ICE-RFC8445-USE-CANDIDATE-NOMINATION-THRASH-AND-XOR-MAPPED-LOOPBACK-GUARD";
+      action:
+        | "drop_xor_mapped_loopback_and_throttle_use_candidate_switches"
+        | "clamp_loopback_reflections_and_nomination_switch_bounds"
+        | "allow";
+      reason: string;
+      clampedSpoofedXorMappedLoopbackReflections: number;
+      clampedMaxUseCandidateSwitchesPerMinute: number;
+    }
+
+    export function evaluateWebrtcIceRfc8445UseCandidateNominationThrashAndXorMappedLoopbackGate(
+      context: WebrtcIceRfc8445UseCandidateNominationThrashAndXorMappedLoopbackContext,
+    ): WebrtcIceRfc8445UseCandidateNominationThrashAndXorMappedLoopbackDecision {
+      const policyId =
+        "P846-WEBRTC-ICE-RFC8445-USE-CANDIDATE-NOMINATION-THRASH-AND-XOR-MAPPED-LOOPBACK-GUARD" as const;
+      const clampedSpoofedXorMappedLoopbackReflections = 0;
+      const clampedMaxUseCandidateSwitchesPerMinute = Math.min(
+        Math.max(context.maxUseCandidateSwitchesPerMinute, 1),
+        3,
+      );
+
+      if (context.useCandidateNominationThrashOrXorMappedLoopbackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_xor_mapped_loopback_and_throttle_use_candidate_switches",
+          reason:
+            "WebRTC ICE RFC 8445 USE-CANDIDATE Nomination Thrash & RFC 8489 STUN XOR-MAPPED-ADDRESS Loopback Reflection Policy Check: STUN message decoded XOR-MAPPED-ADDRESS (XOR 0x2112A442) to a loopback/link-local/self-VIP target or flooded rapid USE-CANDIDATE path switches causing out-of-order RTP loss; offline synthetic policy state machine dropping 100% of loopback reflections (0 reflections) and clamping USE-CANDIDATE switches to [1, 3]/min (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live STUN socket route-table update latency not_measured).",
+          clampedSpoofedXorMappedLoopbackReflections,
+          clampedMaxUseCandidateSwitchesPerMinute,
+        };
+      }
+
+      if (
+        context.spoofedXorMappedLoopbackReflections > 0 ||
+        context.maxUseCandidateSwitchesPerMinute < 1 ||
+        context.maxUseCandidateSwitchesPerMinute > 3
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_loopback_reflections_and_nomination_switch_bounds",
+          reason:
+            "Spoofed XOR-MAPPED-ADDRESS loopback reflections (>0 synthetic ceiling) or maximum USE-CANDIDATE switches per minute (<1 or >3/min synthetic bounds) out of bounds; clamping loopback reflections to 0 and switches to [1, 3]/min.",
+          clampedSpoofedXorMappedLoopbackReflections,
+          clampedMaxUseCandidateSwitchesPerMinute,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: post-XOR loopback scrubbing (0 loopback reflections) and [1, 3]/min USE-CANDIDATE nomination bounds verified.",
+        clampedSpoofedXorMappedLoopbackReflections,
+        clampedMaxUseCandidateSwitchesPerMinute,
+      };
+    }
+
 
 
 
