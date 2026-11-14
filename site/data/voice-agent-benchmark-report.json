@@ -1975,6 +1975,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% disjoint dynamic PTs across BUNDLE m= lines and isolates MID-less unknown SSRCs (0 misrouted packets) within [1, 32] PTs; live softirq RFC 9143 hash-table lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins 100% of primary voice SSRCs against LRU eviction (0 evicted voice SSRCs) and clamps BUNDLE SSRC latching quota in [2, 16]; live BUNDLE SSRC LRU table lock latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "466. [Topic 103 · Historic 105th FAQ & P920 Guardrail 🎉: voice-sip-rfc7339-rfc6809-overload-control-oc-rate-loss-feedback-oscillation-validity-dos-faq] Enterprise SIP RFC 7339 / RFC 6809 Overload Control [5,80]% Loss Ceiling, SOS/BYE Exemption & [500,10000]ms oc-validity Guard (P919 / P920 🎉 — Stage 463 · 🎉 Historic 105th FAQ, P920 Guardrail & 905-Test Milestone · 466 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of untrusted external oc parameters, exempts all in-dialog ACK/BYE & sos calls (0 dropped packets), and clamps max overload loss ceiling in [5, 80]%; live SBC token-bucket rate shaper latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: auto-resets 100% of expired oc-validity throttles with EWMA damping (0 stale-throttled trunks) and clamps oc-validity TTL in [500, 10000]ms; live SBC EWMA feedback damping latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

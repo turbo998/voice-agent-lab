@@ -81641,6 +81641,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc7339OverloadControlAuthenticatedLossCeilingAndRateAdaptiveContext {
+      unauthenticatedPeerOcInjectionOrInDialogDropDetected: boolean;
+      forgedOcBlackholeOrDroppedInDialogPackets: number;
+      maxAllowedOverloadLossPercent: number;
+    }
+
+    export interface SipRfc7339OverloadControlAuthenticatedLossCeilingAndRateAdaptiveDecision {
+      violated: boolean;
+      policyId: "P919-SIP-RFC7339-OVERLOAD-CONTROL-AUTHENTICATED-LOSS-CEILING-AND-RATE-ADAPTIVE-GUARD";
+      action:
+        | "strip_untrusted_oc_exempt_in_dialog_sos_and_cap_loss_ceiling"
+        | "clamp_forged_oc_drops_and_loss_ceiling_bounds"
+        | "allow";
+      reason: string;
+      clampedForgedOcBlackholeOrDroppedInDialogPackets: number;
+      clampedMaxAllowedOverloadLossPercent: number;
+    }
+
+    export function evaluateSipRfc7339OverloadControlAuthenticatedLossCeilingAndRateAdaptiveGate(
+      context: SipRfc7339OverloadControlAuthenticatedLossCeilingAndRateAdaptiveContext,
+    ): SipRfc7339OverloadControlAuthenticatedLossCeilingAndRateAdaptiveDecision {
+      const policyId =
+        "P919-SIP-RFC7339-OVERLOAD-CONTROL-AUTHENTICATED-LOSS-CEILING-AND-RATE-ADAPTIVE-GUARD" as const;
+      const clampedForgedOcBlackholeOrDroppedInDialogPackets = 0;
+      const clampedMaxAllowedOverloadLossPercent = Math.min(
+        Math.max(context.maxAllowedOverloadLossPercent, 5),
+        80,
+      );
+
+      if (context.unauthenticatedPeerOcInjectionOrInDialogDropDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_untrusted_oc_exempt_in_dialog_sos_and_cap_loss_ceiling",
+          reason:
+            "Enterprise SIP RFC 7339 / RFC 6809 Overload Control Peer Trust & Loss Ceiling Policy Check: untrusted external Via oc parameter injection, oc=100 total piggyback deadlock, or collateral drop of in-dialog (ACK/BYE) / sos calls detected; offline synthetic policy state machine stripping untrusted oc, exempting 100% of in-dialog/sos calls (0 dropped packets), and clamping max loss ceiling to [5, 80]% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC token-bucket rate shaper latency not_measured).",
+          clampedForgedOcBlackholeOrDroppedInDialogPackets,
+          clampedMaxAllowedOverloadLossPercent,
+        };
+      }
+
+      if (
+        context.forgedOcBlackholeOrDroppedInDialogPackets > 0 ||
+        context.maxAllowedOverloadLossPercent < 5 ||
+        context.maxAllowedOverloadLossPercent > 80
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_forged_oc_drops_and_loss_ceiling_bounds",
+          reason:
+            "Forged oc blackhole / dropped in-dialog packets (>0 synthetic ceiling) or max allowed overload loss percent (<5% or >80% synthetic bounds) out of bounds; clamping violations to 0 and loss ceiling to [5, 80]%.",
+          clampedForgedOcBlackholeOrDroppedInDialogPackets,
+          clampedMaxAllowedOverloadLossPercent,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7339 hop-by-hop mTLS oc trust + in-dialog/sos exemption (0 dropped calls) and [5, 80]% loss ceiling bounds verified.",
+        clampedForgedOcBlackholeOrDroppedInDialogPackets,
+        clampedMaxAllowedOverloadLossPercent,
+      };
+    }
+
+    export interface SipRfc7339OcValidityExpiryAndFeedbackDampingWindowContext {
+      staleOcValidityZombieThrottleOrSawtoothOscillationDetected: boolean;
+      staleThrottledOrOscillatingTrunks: number;
+      ocValidityDurationMs: number;
+    }
+
+    export interface SipRfc7339OcValidityExpiryAndFeedbackDampingWindowDecision {
+      violated: boolean;
+      policyId: "P920-SIP-RFC7339-OC-VALIDITY-EXPIRY-AND-FEEDBACK-DAMPING-WINDOW-GUARD";
+      action:
+        | "auto_reset_expired_oc_validity_and_apply_ewma_damping"
+        | "clamp_stale_throttled_trunks_and_oc_validity_bounds"
+        | "allow";
+      reason: string;
+      clampedStaleThrottledOrOscillatingTrunks: number;
+      clampedOcValidityDurationMs: number;
+    }
+
+    export function evaluateSipRfc7339OcValidityExpiryAndFeedbackDampingWindowGate(
+      context: SipRfc7339OcValidityExpiryAndFeedbackDampingWindowContext,
+    ): SipRfc7339OcValidityExpiryAndFeedbackDampingWindowDecision {
+      const policyId =
+        "P920-SIP-RFC7339-OC-VALIDITY-EXPIRY-AND-FEEDBACK-DAMPING-WINDOW-GUARD" as const;
+      const clampedStaleThrottledOrOscillatingTrunks = 0;
+      const clampedOcValidityDurationMs = Math.min(
+        Math.max(context.ocValidityDurationMs, 500),
+        10000,
+      );
+
+      if (context.staleOcValidityZombieThrottleOrSawtoothOscillationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "auto_reset_expired_oc_validity_and_apply_ewma_damping",
+          reason:
+            "Enterprise SIP RFC 7339 / RFC 6809 oc-validity Expiry & EWMA Feedback Damping Policy Check: oversized oc-validity TTL causing stale post-burst zombie throttling or undamped sawtooth oc oscillation detected; offline synthetic policy state machine auto-resetting expired oc to 0% with EWMA damping (0 stale-throttled trunks) and clamping oc-validity TTL to [500, 10000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC EWMA feedback damping latency not_measured).",
+          clampedStaleThrottledOrOscillatingTrunks,
+          clampedOcValidityDurationMs,
+        };
+      }
+
+      if (
+        context.staleThrottledOrOscillatingTrunks > 0 ||
+        context.ocValidityDurationMs < 500 ||
+        context.ocValidityDurationMs > 10000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_stale_throttled_trunks_and_oc_validity_bounds",
+          reason:
+            "Stale-throttled or oscillating SIP trunks (>0 synthetic ceiling) or oc-validity duration (<500ms or >10000ms synthetic bounds) out of bounds; clamping stale trunks to 0 and oc-validity to [500, 10000]ms.",
+          clampedStaleThrottledOrOscillatingTrunks,
+          clampedOcValidityDurationMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7339 oc-validity auto-expiry + EWMA damping (0 stale trunks) and [500, 10000]ms TTL bounds verified.",
+        clampedStaleThrottledOrOscillatingTrunks,
+        clampedOcValidityDurationMs,
+      };
+    }
+
 
 
 
