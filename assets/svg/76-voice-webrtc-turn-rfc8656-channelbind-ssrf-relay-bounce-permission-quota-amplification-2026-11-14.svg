@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg76" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent76" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg76)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="380" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="234" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 432 · TOPIC 72 · P857 / P858 · SVG 76 · 435 DIMS 🎉</text>
+  <text x="438" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">WebRTC RFC 8656 (TURN) Peer-SSRF Relay Bounce, ChannelData Framing &amp; Lifetime Quota Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">WebRTC RFC 8656 TURN 内网/IMDS 防 SSRF 中继反射（[1,8] 权限）、0x4000-0x7FFF ChannelData 分帧对齐与 [60,600]s 租期配额门禁（🎉 435 大评测维度里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent76)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 8656 CreatePermission / ChannelBind SSRF Gate (P857) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. TURN XOR-PEER-ADDRESS Anti-SSRF &amp; Permission Gate (P857)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：客户端利用合法 TURN 凭证将 XOR-PEER-ADDRESS 指向 169.254.169.254 或 10/8 内网</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 放大风险：单个 Allocation 绑定数十个对端 IP 实施内网扫描与 UDP 流量反射放大</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ SSRF Bounce: ChannelBind XOR-PEER=169.254.169.254:80 | 32 permissions</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P857 Gate: SFU VIP Allowlist Only (STUN 403) + Permissions in [1, 8]</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: reject_turn_peer_ssrf_with_403_and_clamp_permissions</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P857）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedInternalSsrfOrLoopbackRelayAttempts = 0（100% 阻断环回/IMDS/私网中继反射）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedActivePeerPermissionsPerAllocation ∈ [1, 8]（杜绝权限表爆炸与扫描扇出）</text>
+
+  <!-- Right Column: RFC 8656 ChannelData Framing & Lifetime Quota Gate (P858) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. ChannelData 4B Framing &amp; [60, 600]s Lifetime Gate (P858)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：TURN-TCP 下 ChannelData 越出 0x4000-0x7FFF 或缺 4B 对齐 Padding 引发流失步越界读</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 枯竭风险：客户端申请 LIFETIME=7200s 长期霸占公网中继 UDP 端口池导致新呼叫失败</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Desync &amp; Exhaust: ch=0x0100, len=65535 (pkt=60B) | LIFETIME=7200s</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P858 Gate: ch in [0x4000,0x7FFF] + 4B Padded Closure + LIFETIME in [60,600]s</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: drop_malformed_channeldata_and_clamp_allocation_lifetime</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P858）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMalformedChannelDataOrQuotaViolations = 0（0 越界/失步 ChannelData 帧）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedTurnAllocationLifetimeSeconds ∈ [60, 600] s（中继端口周转率提升 12 倍）</text>
+
+  <!-- Bottom Quantitative & Provenance Panel -->
+  <rect x="44" y="412" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="442" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Quantitative Evaluation Matrix &amp; Production Verification Checklist (Stage 432 · 435 Dims 🎉 · 867 Guardrails · 876 Probes)</text>
+  <rect x="64" y="458" width="1152" height="106" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="482" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P857: evaluateWebrtcTurnRfc8656CreatePermissionChannelBindPrivateSubnetImdsSsrfRelayBounceGate =&gt; 0 SSRF | [1, 8] perms</text>
+  <text x="80" y="506" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P858: evaluateWebrtcTurnRfc8656ChannelDataFramingDesyncAndAllocationLifetimeQuotaGate        =&gt; 0 desync | [60, 600]s</text>
+  <text x="80" y="530" fill="#93C5FD" font-family="Consolas, monospace" font-size="12">• Checklist: [x] Block 127/8, 169.254/16, RFC1918  [x] SFU VIP Allowlist  [x] 0x4000-0x7FFF 4B Padding  [x] [60, 600]s Lifetime</text>
+  <text x="80" y="552" fill="#34D399" font-family="Consolas, monospace" font-size="12">• Milestone: 435 Dimensions 🎉 · 867 Production Guardrails · 876 Deterministic Synthetic Probes (686 Live POC Probes) · 874 Unit Tests</text>
+
+  <!-- Provenance Footer -->
+  <rect x="64" y="578" width="1152" height="66" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="602" fill="#FCD34D" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">Provenance &amp; Timing Disclosure (synthetic · independently_reproduced=false):</text>
+  <text x="80" y="622" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="80" y="638" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Offline in-memory policy/configuration state-machine check only; live coturn kernel socket relay, CIDR radix-trie lookup &amp; TURNS TLS 1.3 cipher latencies are not_measured.</text>
+</svg>

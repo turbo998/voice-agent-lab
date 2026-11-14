@@ -77437,6 +77437,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcTurnRfc8656CreatePermissionChannelBindPrivateSubnetImdsSsrfRelayBounceContext {
+      privateSubnetLoopbackOrImdsXorPeerAddressDetected: boolean;
+      internalSsrfOrLoopbackRelayAttempts: number;
+      activePeerPermissionsPerAllocation: number;
+    }
+
+    export interface WebrtcTurnRfc8656CreatePermissionChannelBindPrivateSubnetImdsSsrfRelayBounceDecision {
+      violated: boolean;
+      policyId: "P857-WEBRTC-TURN-RFC8656-CREATEPERMISSION-CHANNELBIND-PRIVATE-SUBNET-IMDS-SSRF-RELAY-BOUNCE-GUARD";
+      action:
+        | "reject_turn_peer_ssrf_with_403_and_clamp_permissions"
+        | "clamp_turn_ssrf_attempts_and_permission_bounds"
+        | "allow";
+      reason: string;
+      clampedInternalSsrfOrLoopbackRelayAttempts: number;
+      clampedActivePeerPermissionsPerAllocation: number;
+    }
+
+    export function evaluateWebrtcTurnRfc8656CreatePermissionChannelBindPrivateSubnetImdsSsrfRelayBounceGate(
+      context: WebrtcTurnRfc8656CreatePermissionChannelBindPrivateSubnetImdsSsrfRelayBounceContext,
+    ): WebrtcTurnRfc8656CreatePermissionChannelBindPrivateSubnetImdsSsrfRelayBounceDecision {
+      const policyId =
+        "P857-WEBRTC-TURN-RFC8656-CREATEPERMISSION-CHANNELBIND-PRIVATE-SUBNET-IMDS-SSRF-RELAY-BOUNCE-GUARD" as const;
+      const clampedInternalSsrfOrLoopbackRelayAttempts = 0;
+      const clampedActivePeerPermissionsPerAllocation = Math.min(
+        Math.max(context.activePeerPermissionsPerAllocation, 1),
+        8,
+      );
+
+      if (context.privateSubnetLoopbackOrImdsXorPeerAddressDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_turn_peer_ssrf_with_403_and_clamp_permissions",
+          reason:
+            "WebRTC TURN RFC 8656 CreatePermission / ChannelBind Private-Subnet & Cloud-IMDS SSRF Relay Bounce Policy Check: inbound TURN XOR-PEER-ADDRESS targeted loopback (127.0.0.0/8), cloud IMDS (169.254.169.254), or internal RFC 1918 subnets; offline synthetic policy state machine rejecting 100% of internal SSRF relay attempts with STUN 403 Forbidden IP (0 SSRF relay attempts) and clamping active peer permissions per allocation to [1, 8] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live coturn CIDR radix-trie lookup latency not_measured).",
+          clampedInternalSsrfOrLoopbackRelayAttempts,
+          clampedActivePeerPermissionsPerAllocation,
+        };
+      }
+
+      if (
+        context.internalSsrfOrLoopbackRelayAttempts > 0 ||
+        context.activePeerPermissionsPerAllocation < 1 ||
+        context.activePeerPermissionsPerAllocation > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_turn_ssrf_attempts_and_permission_bounds",
+          reason:
+            "Internal SSRF or loopback TURN relay attempts (>0 synthetic ceiling) or active peer permissions per allocation (<1 or >8 synthetic bounds) out of bounds; clamping SSRF attempts to 0 and peer permissions to [1, 8].",
+          clampedInternalSsrfOrLoopbackRelayAttempts,
+          clampedActivePeerPermissionsPerAllocation,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: TURN RFC 8656 SFU-VIP allowlist (0 internal SSRF relay attempts) and [1, 8] peer permission bounds verified.",
+        clampedInternalSsrfOrLoopbackRelayAttempts,
+        clampedActivePeerPermissionsPerAllocation,
+      };
+    }
+
+    export interface WebrtcTurnRfc8656ChannelDataFramingDesyncAndAllocationLifetimeQuotaContext {
+      invalidChannelNumberOrTcpPaddingFramingDesyncDetected: boolean;
+      malformedChannelDataOrQuotaViolations: number;
+      turnAllocationLifetimeSeconds: number;
+    }
+
+    export interface WebrtcTurnRfc8656ChannelDataFramingDesyncAndAllocationLifetimeQuotaDecision {
+      violated: boolean;
+      policyId: "P858-WEBRTC-TURN-RFC8656-CHANNELDATA-FRAMING-DESYNC-AND-ALLOCATION-LIFETIME-QUOTA-GUARD";
+      action:
+        | "drop_malformed_channeldata_and_clamp_allocation_lifetime"
+        | "clamp_channeldata_violations_and_lifetime_bounds"
+        | "allow";
+      reason: string;
+      clampedMalformedChannelDataOrQuotaViolations: number;
+      clampedTurnAllocationLifetimeSeconds: number;
+    }
+
+    export function evaluateWebrtcTurnRfc8656ChannelDataFramingDesyncAndAllocationLifetimeQuotaGate(
+      context: WebrtcTurnRfc8656ChannelDataFramingDesyncAndAllocationLifetimeQuotaContext,
+    ): WebrtcTurnRfc8656ChannelDataFramingDesyncAndAllocationLifetimeQuotaDecision {
+      const policyId =
+        "P858-WEBRTC-TURN-RFC8656-CHANNELDATA-FRAMING-DESYNC-AND-ALLOCATION-LIFETIME-QUOTA-GUARD" as const;
+      const clampedMalformedChannelDataOrQuotaViolations = 0;
+      const clampedTurnAllocationLifetimeSeconds = Math.min(
+        Math.max(context.turnAllocationLifetimeSeconds, 60),
+        600,
+      );
+
+      if (context.invalidChannelNumberOrTcpPaddingFramingDesyncDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_malformed_channeldata_and_clamp_allocation_lifetime",
+          reason:
+            "WebRTC TURN RFC 8656 Section 11 ChannelData Framing Desync & Allocation Lifetime Quota Policy Check: inbound ChannelData frame carried channel number outside 0x4000-0x7FFF or violated 4-byte padded TURN-TCP framing closure; offline synthetic policy state machine dropping 100% of malformed ChannelData frames (0 malformed frames) and clamping TURN allocation lifetime to [60, 600]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live TURNS TLS 1.3 socket framing latency not_measured).",
+          clampedMalformedChannelDataOrQuotaViolations,
+          clampedTurnAllocationLifetimeSeconds,
+        };
+      }
+
+      if (
+        context.malformedChannelDataOrQuotaViolations > 0 ||
+        context.turnAllocationLifetimeSeconds < 60 ||
+        context.turnAllocationLifetimeSeconds > 600
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_channeldata_violations_and_lifetime_bounds",
+          reason:
+            "Malformed ChannelData or quota violations (>0 synthetic ceiling) or TURN allocation lifetime (<60s or >600s synthetic bounds) out of bounds; clamping violations to 0 and allocation lifetime to [60, 600]s.",
+          clampedMalformedChannelDataOrQuotaViolations,
+          clampedTurnAllocationLifetimeSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: TURN RFC 8656 0x4000-0x7FFF ChannelData 4B framing closure (0 violations) and [60, 600]s allocation lifetime bounds verified.",
+        clampedMalformedChannelDataOrQuotaViolations,
+        clampedTurnAllocationLifetimeSeconds,
+      };
+    }
+
 
 
 

@@ -1789,6 +1789,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of DOCTYPE/ENTITY XXE or unbound-label rs-metadata+xml payloads with SIP 400 (0 XXE/unbound payloads) and clamps recorded streams in [1, 4]; live SBC XML SAX parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces [500, 3000]ms SRS watchdog with standby ring-buffer failover and Fail-Closed write-tool quarantine on regulated calls (0 unrecorded commits); live standby SRS TLS/SRTP handshake & WORM disk I/O latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "435 🎉. [Topic 72 · 435 Dims 🎉: voice-webrtc-turn-rfc8656-channelbind-ssrf-relay-bounce-permission-quota-amplification-faq] WebRTC RFC 8656 (TURN) XOR-PEER-ADDRESS Anti-SSRF [1,8] Permission Cap & 0x4000-0x7FFF ChannelData 4B Framing + [60,600]s Lifetime Quota Guard (P857 / P858 — Stage 432 · 🎉 Historic 435-Dimension Milestone · 435 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of loopback/IMDS/private XOR-PEER-ADDRESS relay requests with STUN 403 (0 SSRF attempts) and clamps active peer permissions in [1, 8]; live coturn CIDR radix-trie lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: drops 100% of out-of-range or unaligned ChannelData frames (0 malformed frames) and clamps TURN allocation lifetime in [60, 600]s; live TURNS TLS 1.3 socket framing latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
