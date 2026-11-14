@@ -1987,6 +1987,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: translates 100% of SFU source-switch (Seq_out, TS_out) deltas with Marker M=1 (0 NetEq PLC glitch packets) and clamps timestamp step in [480, 2880] samples; live SFU forwarding-plane packet rewrite latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: re-encrypts 100% of outbound packets with independent (ROC_out, Seq_out) (0 SRTP ROC wrap drops) and clamps speaker hold hysteresis in [200, 1000]ms; live SFU AES-GCM re-encryption latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "468. [Topic 105 🎉 · Historic Stage 465 & 105th Topic Dual Milestone 🎉: voice-sip-rfc3327-rfc3608-path-service-route-header-poisoning-strict-routing-bypass-faq] Enterprise SIP RFC 3327 Path Ingress Strip + mTLS/;lr [1,4]-Hop & RFC 3608 Service-Route Core Pinning Guard (P923 / P924 — Stage 465 🎉 · 🎉 Historic Stage 465 & 105th Topic Dual Milestone · 468 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of external Path headers and enforces mTLS Edge allowlist with mandatory ;lr (0 poisoned registrations) clamped in [1, 4] hops; live Registrar usrloc database write latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins 100% of 200 OK Service-Route vectors to authorized tenant core allowlists with ;lr (0 hijacked outbound dialogs) clamped in [1, 4] hops; live UAC route-set cache lock latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

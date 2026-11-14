@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg109" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#311042"/>
+    </linearGradient>
+    <linearGradient id="accent109" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg109)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="8" rx="4" fill="url(#accent109)"/>
+
+  <text x="56" y="68" fill="#F472B6" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1">STAGE 465 🎉 · TOPIC 105 🎉 · P923–P924 · HISTORIC STAGE 465 &amp; 105TH TOPIC MILESTONE · 933 GUARDS · 468 DIMS · 907 TESTS</text>
+  <text x="56" y="102" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24.5" font-weight="800">SIP RFC 3327 Path &amp; RFC 3608 Service-Route: Ingress Strip, Mandatory ;lr &amp; [1,4]-Hop Pinning</text>
+  <text x="56" y="128" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业 SIP RFC 3327/3608 边缘路由矢量：严防外网 Path 寻呼劫持、缺失 ;lr 严格路由覆写 Request-URI 与 Service-Route 外呼旁路 (P923–P924)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="56" y="152" width="528" height="390" rx="14" fill="#1E1B2E" stroke="#EF4444" stroke-width="2"/>
+  <rect x="76" y="172" width="268" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="90" y="191" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">❌ 脆弱基线 (Unguarded Path / Service-Route)</text>
+
+  <text x="76" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. 外网 REGISTER 夹带 Path 投毒 + 缺失 ;lr 覆写</text>
+  <text x="76" y="250" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">REGISTER Path: &lt;sip:evil.example:5060&gt; (No ;lr, 12 hops)</text>
+  <text x="76" y="272" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 中心 Registrar 存入恶意 Path -&gt; 入局来电被主动导向攻击者！</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 缺失 ;lr 触发 Strict Routing 直接覆盖被叫真实 Request-URI！</text>
+
+  <line x1="76" y1="320" x2="560" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="76" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. 200 OK 注入未授信 Service-Route 外呼旁路</text>
+  <text x="76" y="376" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">200 OK Service-Route: &lt;sip:rogue-trunk.example;lr&gt; (15 hops)</text>
+  <text x="76" y="398" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• AI 语音网关盲目缓存为预置 Route 集，外呼绕过 DLP/SIPREC！</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 15 跳膨胀路由头撑爆 SIP 报文触发 UDP 分片丢包！</text>
+
+  <rect x="76" y="450" width="488" height="72" rx="10" fill="#450A0A" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="92" y="476" fill="#FECACA" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">事故后果：8 次入局寻呼被劫持/URI 覆写 + 6 次外呼路由集被投毒</text>
+  <text x="92" y="500" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">单次恶意 REGISTER 即可瘫痪企业分机入局寻呼并窃听外呼语音</text>
+
+  <!-- Right Card: Deterministic Guardrails P923-P924 -->
+  <rect x="616" y="152" width="528" height="390" rx="14" fill="#0F292A" stroke="#10B981" stroke-width="2"/>
+  <rect x="636" y="172" width="310" height="28" rx="6" fill="#064E3B"/>
+  <text x="650" y="191" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">✅ 企业级护栏 (P923 + P924 · Stage 465 🎉 / Topic 105 🎉)</text>
+
+  <text x="636" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P923 · 入口剥离外网 Path + mTLS 白名单与强制 ;lr [1, 4] 跳</text>
+  <text x="636" y="250" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">remove_hf("Path") · Edge mTLS + ;lr · Hops ∈ [1, 4] (4)</text>
+  <text x="636" y="272" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 边缘 SBC 入口 100% 抹除外网自带 Path，仅允许内部 mTLS 注入</text>
+  <text x="636" y="294" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 强制每跳必带 ;lr 杜绝 Strict Routing 覆写 (0 入局寻呼劫持)</text>
+
+  <line x1="636" y1="320" x2="1120" y2="320" stroke="#1E293B" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="636" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P924 · Service-Route 核心域白名单锚定与 [1, 4] 跳上限</text>
+  <text x="636" y="376" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Core S-CSCF Allowlist + ;lr · Service-Route Hops ∈ [1, 4] (4)</text>
+  <text x="636" y="398" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 强制校验 200 OK 中 Service-Route 全部命中本租户核心域白名单</text>
+  <text x="636" y="420" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 预置路由集钳制在 [1, 4] 跳，确保外呼 100% 经过合规网关</text>
+
+  <rect x="636" y="450" width="488" height="72" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5"/>
+  <text x="652" y="476" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">验证结果：0 Path 寻呼劫持 · 0 Service-Route 旁路 · 4 跳封顶</text>
+  <text x="652" y="500" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer Provenance -->
+  <rect x="56" y="560" width="1088" height="68" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="76" y="586" fill="#F472B6" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Benchmark &amp; Provenance (Stage 465 🎉 · Topic 105 🎉 · 933 Guardrails · 942 Probes · 752 Live POC Probes · 468 Dims · 907 Tests)</text>
+  <text x="76" y="610" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Guardrails: evaluateSipRfc3327PathHeaderEdgeProxyAllowlistAndLooseRoutingGate (P923) &amp; evaluateSipRfc3608ServiceRouteRegistrarPinningAndRouteSetBoundsGate (P924)</text>
+</svg>

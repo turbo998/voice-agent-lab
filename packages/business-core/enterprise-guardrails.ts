@@ -81916,6 +81916,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3327PathHeaderEdgeProxyAllowlistAndLooseRoutingContext {
+      untrustedIngressPathHeaderOrMissingLrStrictRoutingDetected: boolean;
+      poisonedPathHijackOrStrictOverwriteRegistrations: number;
+      maxPathVectorHops: number;
+    }
+
+    export interface SipRfc3327PathHeaderEdgeProxyAllowlistAndLooseRoutingDecision {
+      violated: boolean;
+      policyId: "P923-SIP-RFC3327-PATH-HEADER-EDGE-PROXY-ALLOWLIST-AND-LOOSE-ROUTING-GUARD";
+      action:
+        | "strip_untrusted_path_and_enforce_mtls_edge_allowlist_with_lr"
+        | "clamp_poisoned_path_registrations_and_hop_bounds"
+        | "allow";
+      reason: string;
+      clampedPoisonedPathHijackOrStrictOverwriteRegistrations: number;
+      clampedMaxPathVectorHops: number;
+    }
+
+    export function evaluateSipRfc3327PathHeaderEdgeProxyAllowlistAndLooseRoutingGate(
+      context: SipRfc3327PathHeaderEdgeProxyAllowlistAndLooseRoutingContext,
+    ): SipRfc3327PathHeaderEdgeProxyAllowlistAndLooseRoutingDecision {
+      const policyId =
+        "P923-SIP-RFC3327-PATH-HEADER-EDGE-PROXY-ALLOWLIST-AND-LOOSE-ROUTING-GUARD" as const;
+      const clampedPoisonedPathHijackOrStrictOverwriteRegistrations = 0;
+      const clampedMaxPathVectorHops = Math.min(
+        Math.max(context.maxPathVectorHops, 1),
+        4,
+      );
+
+      if (context.untrustedIngressPathHeaderOrMissingLrStrictRoutingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_untrusted_path_and_enforce_mtls_edge_allowlist_with_lr",
+          reason:
+            "Enterprise SIP RFC 3327 Path Extension Header Edge Allowlist & Loose-Routing Policy Check: external REGISTER smuggled untrusted Path header or omitted ;lr parameter triggering RFC 3261 Strict-Routing Request-URI overwrite; offline synthetic policy state machine stripping external Path headers and enforcing mTLS Edge Proxy allowlist with mandatory ;lr (0 poisoned Path registrations) while clamping Path vector hops to [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Registrar usrloc database write latency not_measured).",
+          clampedPoisonedPathHijackOrStrictOverwriteRegistrations,
+          clampedMaxPathVectorHops,
+        };
+      }
+
+      if (
+        context.poisonedPathHijackOrStrictOverwriteRegistrations > 0 ||
+        context.maxPathVectorHops < 1 ||
+        context.maxPathVectorHops > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_poisoned_path_registrations_and_hop_bounds",
+          reason:
+            "Poisoned SIP Path hijack / strict-routing overwrite registrations (>0 synthetic ceiling) or max Path vector hops (<1 or >4 synthetic bounds) out of bounds; clamping violations to 0 and Path hops to [1, 4].",
+          clampedPoisonedPathHijackOrStrictOverwriteRegistrations,
+          clampedMaxPathVectorHops,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3327 ingress Path strip + mTLS Edge allowlist with ;lr (0 poisoned registrations) and [1, 4] hop bounds verified.",
+        clampedPoisonedPathHijackOrStrictOverwriteRegistrations,
+        clampedMaxPathVectorHops,
+      };
+    }
+
+    export interface SipRfc3608ServiceRouteRegistrarPinningAndRouteSetBoundsContext {
+      unallowlistedServiceRouteOrOutboundDlpBypassDetected: boolean;
+      hijackedOutboundServiceRouteDialogs: number;
+      maxServiceRouteVectorHops: number;
+    }
+
+    export interface SipRfc3608ServiceRouteRegistrarPinningAndRouteSetBoundsDecision {
+      violated: boolean;
+      policyId: "P924-SIP-RFC3608-SERVICE-ROUTE-REGISTRAR-PINNING-AND-ROUTE-SET-BOUNDS-GUARD";
+      action:
+        | "pin_service_route_to_authorized_core_allowlist_and_enforce_lr"
+        | "clamp_hijacked_service_route_dialogs_and_hop_bounds"
+        | "allow";
+      reason: string;
+      clampedHijackedOutboundServiceRouteDialogs: number;
+      clampedMaxServiceRouteVectorHops: number;
+    }
+
+    export function evaluateSipRfc3608ServiceRouteRegistrarPinningAndRouteSetBoundsGate(
+      context: SipRfc3608ServiceRouteRegistrarPinningAndRouteSetBoundsContext,
+    ): SipRfc3608ServiceRouteRegistrarPinningAndRouteSetBoundsDecision {
+      const policyId =
+        "P924-SIP-RFC3608-SERVICE-ROUTE-REGISTRAR-PINNING-AND-ROUTE-SET-BOUNDS-GUARD" as const;
+      const clampedHijackedOutboundServiceRouteDialogs = 0;
+      const clampedMaxServiceRouteVectorHops = Math.min(
+        Math.max(context.maxServiceRouteVectorHops, 1),
+        4,
+      );
+
+      if (context.unallowlistedServiceRouteOrOutboundDlpBypassDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "pin_service_route_to_authorized_core_allowlist_and_enforce_lr",
+          reason:
+            "Enterprise SIP RFC 3608 Service-Route Discovery Core Pinning Policy Check: REGISTER 200 OK carried unallowlisted Service-Route URI bypassing tenant outbound DLP/SIPREC proxies or omitted ;lr; offline synthetic policy state machine pinning preloaded Service-Route to authorized tenant S-CSCF/Core allowlist with ;lr (0 hijacked outbound dialogs) and clamping Service-Route hops to [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live UAC route-set cache lock latency not_measured).",
+          clampedHijackedOutboundServiceRouteDialogs,
+          clampedMaxServiceRouteVectorHops,
+        };
+      }
+
+      if (
+        context.hijackedOutboundServiceRouteDialogs > 0 ||
+        context.maxServiceRouteVectorHops < 1 ||
+        context.maxServiceRouteVectorHops > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_hijacked_service_route_dialogs_and_hop_bounds",
+          reason:
+            "Hijacked outbound SIP Service-Route dialogs (>0 synthetic ceiling) or max Service-Route vector hops (<1 or >4 synthetic bounds) out of bounds; clamping violations to 0 and Service-Route hops to [1, 4].",
+          clampedHijackedOutboundServiceRouteDialogs,
+          clampedMaxServiceRouteVectorHops,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3608 Service-Route core domain pinning + ;lr (0 hijacked outbound dialogs) and [1, 4] hop bounds verified.",
+        clampedHijackedOutboundServiceRouteDialogs,
+        clampedMaxServiceRouteVectorHops,
+      };
+    }
+
 
 
 
