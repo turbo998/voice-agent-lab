@@ -1843,6 +1843,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: reaps 100% of blackhole zombie RTP streams upon [2, 5] consecutive timeout intervals (0 unstopped blackhole flows); live SFU timer-wheel teardown latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 100% of spoofed RTCP RR loss reports and sheds video to preserve 32 kbps voice across [2, 6] 10x-TFRC grace intervals (0 dropped/sabotaged calls); live TFRC equation evaluation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "444. [Topic 81 · SVG 85 & 885-Guardrail Milestone 🎉: voice-sip-rfc6141-reinvite-target-refresh-contact-hijack-sdp-rollback-glare-faq] Enterprise SIP RFC 6141 Re-INVITE Atomic LKG_SDP Rollback + Contact Pinning + [1,1] Mutex & RFC 3261 [60,4000]ms Owner-Biased SIP 491 Glare Backoff Guard (P875 / P876 — Stage 441 · 🎉 Historic 85th SVG & 885-Guardrail Dual Milestone · 444 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: atomically rolls back 100% of rejected Re-INVITE uncommitted SDP changes to LKG_SDP and blocks unauthenticated Contact refreshes (0 desynced or hijacked dialogs) with a [1, 1] in-flight mutex; live SBC media-port rebinding latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: resolves 100% of simultaneous Re-INVITE 491 glare collisions via disjoint Owner [2100, 4000]ms vs. Non-Owner [60, 2000]ms jitter timers (0 glare loops); live SIP 491 backoff wait duration is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

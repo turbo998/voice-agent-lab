@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg85" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent85" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg85)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="408" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="248" y="57" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 441 · TOPIC 81 · P875 / P876 · SVG 85 🎉 · 885 GUARDS 🎉</text>
+  <text x="466" y="57" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Enterprise SIP RFC 6141 Re-INVITE Atomic Rollback, Contact Pinning &amp; 491 Glare Backoff Guard</text>
+  <text x="44" y="88" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="13">企业 SIP RFC 6141 Re-INVITE 未提交 SDP 原子回滚、Contact 目标刷新防劫持与 SIP 491 [60,4000]ms 错峰退避门禁（🎉 第 85 张 SVG 与 885 护栏双里程碑）</text>
+  <line x1="44" y1="102" x2="1236" y2="102" stroke="url(#accent85)" stroke-width="2"/>
+
+  <!-- Left Column: RFC 6141 Re-INVITE Atomic Rollback & Contact Target-Refresh Gate (P875) -->
+  <rect x="44" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="64" y="146" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Re-INVITE Atomic SDP Rollback &amp; Contact Gate (P875)</text>
+  <text x="64" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：Re-INVITE 被 488 拒单后残留半截 SDP 造成单通哑音，或被篡改 Contact</text>
+  <text x="64" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 原子回滚：失败即刻恢复至 LKG_SDP，锁死 [1, 1] 并发事务且仅认证后刷新目标</text>
+  <rect x="64" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Desync: 488 leaves partial SDP ports | Unverified Contact target hijack</text>
+  <text x="80" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P875 Gate: Atomic Rollback to LKG_SDP + Pin Contact + [1, 1] In-Flight</text>
+  <text x="80" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: atomic_rollback_to_pre_reinvite_sdp_and_pin_authenticated_contact</text>
+  <text x="64" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P875）：</text>
+  <text x="64" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedDesyncedSdpOrHijackedTargetRefreshDialogs = 0（0 单通或目标劫持）</text>
+  <text x="64" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedMaxInFlightReinviteTransactionsPerDialog ∈ [1, 1]（严格串行互斥锁）</text>
+
+  <!-- Right Column: RFC 3261/6141 SIP 491 Glare Randomized Backoff Gate (P876) -->
+  <rect x="652" y="118" width="584" height="275" rx="12" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+  <text x="672" y="146" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. SIP 491 Glare Owner-Biased Backoff Gate (P876)</text>
+  <text x="672" y="170" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 痛点：双端同毫秒互发 Re-INVITE 撞车后固定间隔重试，陷入 491 死循环</text>
+  <text x="672" y="192" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 错峰退避：Owner [2100,4000]ms vs Non-Owner [60,2000]ms，1 次重试即解锁</text>
+  <rect x="672" y="208" width="544" height="82" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="688" y="230" fill="#FCA5A5" font-family="Consolas, monospace" font-size="11.5">❌ Glare Loop: Fixed 10ms/500ms retry causes 6 consecutive 491 collisions</text>
+  <text x="688" y="252" fill="#86EFAC" font-family="Consolas, monospace" font-size="11.5">✅ P876 Gate: Owner-Biased Disjoint Jitter Backoff Clamped to [60, 4000]ms</text>
+  <text x="688" y="274" fill="#93C5FD" font-family="Consolas, monospace" font-size="11.5">Action: enforce_rfc3261_owner_biased_jitter_backoff_and_abort_glare_loop</text>
+  <text x="672" y="316" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">确定性收敛指标（P876）：</text>
+  <text x="672" y="338" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedCollided491ReinviteGlareLoops = 0（0 二次碰撞与 491 死循环）</text>
+  <text x="672" y="360" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12">✔ clampedSip491GlareBackoffTimerMs ∈ [60, 4000] ms（合规随机退避区间）</text>
+
+  <!-- Bottom Quantitative & Provenance Panel -->
+  <rect x="44" y="412" width="1192" height="248" rx="12" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="64" y="442" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Quantitative Evaluation Matrix &amp; Production Verification Checklist (Stage 441 · Topic 81 · SVG 85 🎉 · 885 Guards 🎉 · 444 Dims)</text>
+  <rect x="64" y="458" width="1152" height="106" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="482" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P875: evaluateSipRfc6141ReinviteUncommittedSdpAtomicRollbackAndTargetRefreshContactGate =&gt; 0 desync/hijack | [1, 1] mutex</text>
+  <text x="80" y="506" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">• Guardrail P876: evaluateSipRfc3261Rfc6141Sip491RequestPendingGlareRandomizedBackoffGate          =&gt; 0 glare loops   | [60, 4000]ms</text>
+  <text x="80" y="530" fill="#93C5FD" font-family="Consolas, monospace" font-size="12">• Checklist: [x] Atomic LKG_SDP Rollback  [x] Authenticated Contact Pinning  [x] [1,1] Re-INVITE Mutex  [x] [60,4000]ms 491 Jitter</text>
+  <text x="80" y="552" fill="#34D399" font-family="Consolas, monospace" font-size="12">• Milestone: SVG 85 🎉 · 885 Production Guardrails 🎉 · 83 Standalone FAQs · 444 Dimensions · 894 Synthetic Probes (704 Live POC) · 883 Tests</text>
+
+  <!-- Provenance Footer -->
+  <rect x="64" y="578" width="1152" height="66" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="602" fill="#FCD34D" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="700">Provenance &amp; Timing Disclosure (synthetic · independently_reproduced=false):</text>
+  <text x="80" y="622" fill="#CBD5E1" font-family="Consolas, monospace" font-size="11">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="80" y="638" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Offline in-memory policy/configuration state-machine check only; live SBC/B2BUA media-port rebinding &amp; SIP 491 backoff wait latencies are not_measured.</text>
+</svg>

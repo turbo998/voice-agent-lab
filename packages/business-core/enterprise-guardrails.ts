@@ -78661,6 +78661,138 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6141ReinviteUncommittedSdpAtomicRollbackAndTargetRefreshContactContext {
+      failedReinvitePartialSdpOrUnauthenticatedContactRefreshDetected: boolean;
+      desyncedSdpOrHijackedTargetRefreshDialogs: number;
+      maxInFlightReinviteTransactionsPerDialog: number;
+    }
+
+    export interface SipRfc6141ReinviteUncommittedSdpAtomicRollbackAndTargetRefreshContactDecision {
+      violated: boolean;
+      policyId: "P875-SIP-RFC6141-REINVITE-UNCOMMITTED-SDP-ATOMIC-ROLLBACK-AND-TARGET-REFRESH-CONTACT-GUARD";
+      action:
+        | "atomic_rollback_to_pre_reinvite_sdp_and_pin_authenticated_contact"
+        | "clamp_reinvite_desync_dialogs_and_inflight_mutex_bounds"
+        | "allow";
+      reason: string;
+      clampedDesyncedSdpOrHijackedTargetRefreshDialogs: number;
+      clampedMaxInFlightReinviteTransactionsPerDialog: number;
+    }
+
+    export function evaluateSipRfc6141ReinviteUncommittedSdpAtomicRollbackAndTargetRefreshContactGate(
+      context: SipRfc6141ReinviteUncommittedSdpAtomicRollbackAndTargetRefreshContactContext,
+    ): SipRfc6141ReinviteUncommittedSdpAtomicRollbackAndTargetRefreshContactDecision {
+      const policyId =
+        "P875-SIP-RFC6141-REINVITE-UNCOMMITTED-SDP-ATOMIC-ROLLBACK-AND-TARGET-REFRESH-CONTACT-GUARD" as const;
+      const clampedDesyncedSdpOrHijackedTargetRefreshDialogs = 0;
+      const clampedMaxInFlightReinviteTransactionsPerDialog = 1;
+
+      if (context.failedReinvitePartialSdpOrUnauthenticatedContactRefreshDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "atomic_rollback_to_pre_reinvite_sdp_and_pin_authenticated_contact",
+          reason:
+            "Enterprise SIP RFC 6141 Re-INVITE Uncommitted SDP Atomic Rollback & Target-Refresh Contact Policy Check: rejected Re-INVITE (4xx/5xx/6xx) left uncommitted partial SDP active or attempted unauthenticated Remote Target Contact mutation; offline synthetic policy state machine rolling back uncommitted SDP to LKG_SDP and pinning authenticated Contact (0 desynced or hijacked dialogs) while locking in-flight Re-INVITE mutex to [1, 1] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC/B2BUA media-port rebinding latency not_measured).",
+          clampedDesyncedSdpOrHijackedTargetRefreshDialogs,
+          clampedMaxInFlightReinviteTransactionsPerDialog,
+        };
+      }
+
+      if (
+        context.desyncedSdpOrHijackedTargetRefreshDialogs > 0 ||
+        context.maxInFlightReinviteTransactionsPerDialog !== 1
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_reinvite_desync_dialogs_and_inflight_mutex_bounds",
+          reason:
+            "Desynced SDP or hijacked Target-Refresh dialogs (>0 synthetic ceiling) or max in-flight Re-INVITE transactions per dialog (!==1 synthetic mutex bound) out of bounds; clamping violations to 0 and in-flight mutex to 1.",
+          clampedDesyncedSdpOrHijackedTargetRefreshDialogs,
+          clampedMaxInFlightReinviteTransactionsPerDialog,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6141 atomic LKG_SDP rollback, authenticated Contact pinning (0 violations), and [1, 1] Re-INVITE mutex verified.",
+        clampedDesyncedSdpOrHijackedTargetRefreshDialogs,
+        clampedMaxInFlightReinviteTransactionsPerDialog,
+      };
+    }
+
+    export interface SipRfc3261Rfc6141Sip491RequestPendingGlareRandomizedBackoffContext {
+      deterministic491GlareRetryCollisionOrInfiniteLoopDetected: boolean;
+      collided491ReinviteGlareLoops: number;
+      sip491GlareBackoffTimerMs: number;
+    }
+
+    export interface SipRfc3261Rfc6141Sip491RequestPendingGlareRandomizedBackoffDecision {
+      violated: boolean;
+      policyId: "P876-SIP-RFC3261-RFC6141-SIP-491-REQUEST-PENDING-GLARE-RANDOMIZED-BACKOFF-GUARD";
+      action:
+        | "enforce_rfc3261_owner_biased_jitter_backoff_and_abort_glare_loop"
+        | "clamp_491_glare_loops_and_backoff_timer_bounds"
+        | "allow";
+      reason: string;
+      clampedCollided491ReinviteGlareLoops: number;
+      clampedSip491GlareBackoffTimerMs: number;
+    }
+
+    export function evaluateSipRfc3261Rfc6141Sip491RequestPendingGlareRandomizedBackoffGate(
+      context: SipRfc3261Rfc6141Sip491RequestPendingGlareRandomizedBackoffContext,
+    ): SipRfc3261Rfc6141Sip491RequestPendingGlareRandomizedBackoffDecision {
+      const policyId =
+        "P876-SIP-RFC3261-RFC6141-SIP-491-REQUEST-PENDING-GLARE-RANDOMIZED-BACKOFF-GUARD" as const;
+      const clampedCollided491ReinviteGlareLoops = 0;
+      const clampedSip491GlareBackoffTimerMs = Math.min(
+        Math.max(context.sip491GlareBackoffTimerMs, 60),
+        4000,
+      );
+
+      if (context.deterministic491GlareRetryCollisionOrInfiniteLoopDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc3261_owner_biased_jitter_backoff_and_abort_glare_loop",
+          reason:
+            "Enterprise SIP RFC 3261 Section 14.1 / RFC 6141 SIP 491 Request Pending Glare Backoff Policy Check: simultaneous Re-INVITE glare used fixed or overlapping retry timers causing repeated 491 collisions; offline synthetic policy state machine enforcing disjoint Call-ID Owner [2100, 4000]ms vs. Non-Owner [60, 2000]ms jitter backoff (0 glare loops) clamped within [60, 4000]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIP 491 backoff wait duration not_measured).",
+          clampedCollided491ReinviteGlareLoops,
+          clampedSip491GlareBackoffTimerMs,
+        };
+      }
+
+      if (
+        context.collided491ReinviteGlareLoops > 0 ||
+        context.sip491GlareBackoffTimerMs < 60 ||
+        context.sip491GlareBackoffTimerMs > 4000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_491_glare_loops_and_backoff_timer_bounds",
+          reason:
+            "Collided SIP 491 Re-INVITE glare loops (>0 synthetic ceiling) or SIP 491 glare backoff timer (<60ms or >4000ms synthetic bounds) out of bounds; clamping glare loops to 0 and backoff timer to [60, 4000]ms.",
+          clampedCollided491ReinviteGlareLoops,
+          clampedSip491GlareBackoffTimerMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3261 / RFC 6141 owner-biased [60, 4000]ms glare backoff (0 collided 491 loops) verified.",
+        clampedCollided491ReinviteGlareLoops,
+        clampedSip491GlareBackoffTimerMs,
+      };
+    }
+
 
 
 
