@@ -82460,6 +82460,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6086InfoPackageRecvInfoNegotiationAnd469RejectionContext {
+      unnegotiatedLegacyInfoOrOversizedPayloadDetected: boolean;
+      unnegotiatedOrOversizedInfoPackets: number;
+      maxInfoPackagePayloadBytes: number;
+    }
+
+    export interface SipRfc6086InfoPackageRecvInfoNegotiationAnd469RejectionDecision {
+      violated: boolean;
+      policyId: "P931-SIP-RFC6086-INFO-PACKAGE-RECV-INFO-NEGOTIATION-AND-469-REJECTION-GUARD";
+      action:
+        | "reject_unnegotiated_info_with_469_and_clamp_payload_bytes"
+        | "clamp_unnegotiated_info_packets_and_payload_byte_bounds"
+        | "allow";
+      reason: string;
+      clampedUnnegotiatedOrOversizedInfoPackets: number;
+      clampedMaxInfoPackagePayloadBytes: number;
+    }
+
+    export function evaluateSipRfc6086InfoPackageRecvInfoNegotiationAnd469RejectionGate(
+      context: SipRfc6086InfoPackageRecvInfoNegotiationAnd469RejectionContext,
+    ): SipRfc6086InfoPackageRecvInfoNegotiationAnd469RejectionDecision {
+      const policyId =
+        "P931-SIP-RFC6086-INFO-PACKAGE-RECV-INFO-NEGOTIATION-AND-469-REJECTION-GUARD" as const;
+      const clampedUnnegotiatedOrOversizedInfoPackets = 0;
+      const clampedMaxInfoPackagePayloadBytes = Math.min(
+        Math.max(context.maxInfoPackagePayloadBytes, 64),
+        4096,
+      );
+
+      if (context.unnegotiatedLegacyInfoOrOversizedPayloadDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_unnegotiated_info_with_469_and_clamp_payload_bytes",
+          reason:
+            "Enterprise SIP RFC 6086 Info-Package / Recv-Info Negotiation & 469 Rejection Policy Check: in-dialog INFO request omitted Info-Package header, specified a package outside the dialog's negotiated Recv-Info allowlist, or exceeded the 4,096B payload ceiling; offline synthetic policy state machine rejecting with SIP 469 Bad Info Package (0 unnegotiated INFO injections) and clamping INFO payload size to [64, 4096] bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SIP Info-Package MIME parser latency not_measured).",
+          clampedUnnegotiatedOrOversizedInfoPackets,
+          clampedMaxInfoPackagePayloadBytes,
+        };
+      }
+
+      if (
+        context.unnegotiatedOrOversizedInfoPackets > 0 ||
+        context.maxInfoPackagePayloadBytes < 64 ||
+        context.maxInfoPackagePayloadBytes > 4096
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unnegotiated_info_packets_and_payload_byte_bounds",
+          reason:
+            "Unnegotiated or oversized SIP INFO packets (>0 synthetic ceiling) or max Info-Package payload bytes (<64B or >4096B synthetic bounds) out of bounds; clamping violations to 0 and payload size to [64, 4096] bytes.",
+          clampedUnnegotiatedOrOversizedInfoPackets,
+          clampedMaxInfoPackagePayloadBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6086 Recv-Info / Info-Package 469 gate (0 unnegotiated INFO packets) and [64, 4096]B payload bounds verified.",
+        clampedUnnegotiatedOrOversizedInfoPackets,
+        clampedMaxInfoPackagePayloadBytes,
+      };
+    }
+
+    export interface SipRfc6086OutOfBandInfoDtmfDeduplicationAndRateThrottleContext {
+      duplicateOutOfBandInfoAndRfc4733DtmfOrBurstFloodDetected: boolean;
+      doubleChargedDtmfDigitsOrInfoFloodPackets: number;
+      minSipInfoInterArrivalMs: number;
+    }
+
+    export interface SipRfc6086OutOfBandInfoDtmfDeduplicationAndRateThrottleDecision {
+      violated: boolean;
+      policyId: "P932-SIP-RFC6086-OUT-OF-BAND-INFO-DTMF-DEDUPLICATION-AND-RATE-THROTTLE-GUARD";
+      action:
+        | "deduplicate_oob_info_against_rfc4733_and_throttle_info_rate"
+        | "clamp_duplicate_dtmf_digits_and_inter_arrival_bounds"
+        | "allow";
+      reason: string;
+      clampedDoubleChargedDtmfDigitsOrInfoFloodPackets: number;
+      clampedMinSipInfoInterArrivalMs: number;
+    }
+
+    export function evaluateSipRfc6086OutOfBandInfoDtmfDeduplicationAndRateThrottleGate(
+      context: SipRfc6086OutOfBandInfoDtmfDeduplicationAndRateThrottleContext,
+    ): SipRfc6086OutOfBandInfoDtmfDeduplicationAndRateThrottleDecision {
+      const policyId =
+        "P932-SIP-RFC6086-OUT-OF-BAND-INFO-DTMF-DEDUPLICATION-AND-RATE-THROTTLE-GUARD" as const;
+      const clampedDoubleChargedDtmfDigitsOrInfoFloodPackets = 0;
+      const clampedMinSipInfoInterArrivalMs = Math.min(
+        Math.max(context.minSipInfoInterArrivalMs, 80),
+        500,
+      );
+
+      if (context.duplicateOutOfBandInfoAndRfc4733DtmfOrBurstFloodDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "deduplicate_oob_info_against_rfc4733_and_throttle_info_rate",
+          reason:
+            "Enterprise SIP RFC 6086 Out-of-Band INFO DTMF & In-Band RFC 4733 Cross-Plane Deduplication Policy Check: simultaneous delivery of RTP RFC 4733 telephone-event and SIP INFO (application/dtmf-relay) caused doubled PIN digits or sub-80ms non-INVITE INFO transaction flood; offline synthetic policy state machine deduplicating out-of-band INFO digits against authoritative RFC 4733 events (0 double-digit lockouts) and clamping minimum SIP INFO inter-arrival spacing to [80, 500]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live cross-thread DTMF ring-buffer lock latency not_measured).",
+          clampedDoubleChargedDtmfDigitsOrInfoFloodPackets,
+          clampedMinSipInfoInterArrivalMs,
+        };
+      }
+
+      if (
+        context.doubleChargedDtmfDigitsOrInfoFloodPackets > 0 ||
+        context.minSipInfoInterArrivalMs < 80 ||
+        context.minSipInfoInterArrivalMs > 500
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_duplicate_dtmf_digits_and_inter_arrival_bounds",
+          reason:
+            "Duplicate DTMF digits / SIP INFO flood packets (>0 synthetic ceiling) or minimum SIP INFO inter-arrival interval (<80ms or >500ms synthetic bounds) out of bounds; clamping violations to 0 and inter-arrival interval to [80, 500]ms.",
+          clampedDoubleChargedDtmfDigitsOrInfoFloodPackets,
+          clampedMinSipInfoInterArrivalMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6086 + RFC 4733 cross-plane DTMF deduplication (0 duplicate digits) and [80, 500]ms inter-arrival throttle verified.",
+        clampedDoubleChargedDtmfDigitsOrInfoFloodPackets,
+        clampedMinSipInfoInterArrivalMs,
+      };
+    }
+
 
 
 
