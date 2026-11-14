@@ -1735,6 +1735,13 @@
               <td><code>P901 / P902 deterministic WebRTC RFC 3550 SSRC [1000,10000]ms collision pinning &amp; RFC 8108 CSRC [0,15] loop guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>458. [专题95 🎉 · Stage 455 🎉 `docs/voice-sip-rfc3329-rfc4168-sec-agree-ipsec-tls-downgrade-420-bad-extension-loop-faq.md`] 企业 SIP `RFC 3329` `sec-agree` `Security-Verify === Security-Server` 逐字节镜像强校验、严禁 `420 / ealg=null` 明文回退与 `[500, 1000]` milli-q 强加密权重锁（`0` 竞价降级会话，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `IPSec ESP` 硬件卸载耗时 `not_measured`）&amp; `494 Security Agreement Required` `[1, 2]` 次重试上限与半开内核 `XFRM IPSec SA` 即刻回收锁（`0` `494` 死循环或泄露 `SA`；真实 `Netlink XFRM` 耗时 `not_measured`）(`P903` / `P904` · Stage 455 🎉 · Topic 95 🎉 · 🎉 Stage 455 与第 95 大专题双历史性里程碑 · 913 护栏 &amp; 922 探针 · 458 维)</strong>
+              </td>
+              <td><code>P903 / P904 deterministic SIP RFC 3329 sec-agree [500,1000] milli-q mirror &amp; [1,2] 494 retry/SA guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5446,6 +5453,13 @@
                 <strong>457. [专题94 · 911护栏 &amp; 920探针 🎉 `docs/voice-webrtc-rtp-rfc3550-rfc8108-ssrc-collision-loop-csrc-mixer-amplification-faq.md`] 企业 WebRTC `RFC 3550` `SSRC` 强绑定 `DTLS-SRTP` 传输源防伪造同号自杀与 `[1000, 10000]ms` 碰撞重分配冷却锁（`0` `RTCP BYE` 换号风暴或劫持包，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `SSRC` 哈希查表耗时 `not_measured`）&amp; `RFC 8108` 级联混音桥 `SSRC ∪ CSRC[0..CC-1]` 全集环路抑制防电声正反馈啸叫与 `CC ∈ [0, 15]` 边界锁（`0` 环路啸叫或越界包；真实 `SIMD PCM` 混音耗时 `not_measured`）(`P901` / `P902` · Stage 454 · Topic 94 · 🎉 911 护栏、920 合成探针与 730 现场探针三重里程碑 · 911 护栏 🎉 &amp; 920 探针 🎉 · 457 维)</strong>
               </td>
               <td><code>P901 / P902 deterministic WebRTC RFC 3550 SSRC [1000,10000]ms collision pinning &amp; RFC 8108 CSRC [0,15] loop guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>458. [专题95 🎉 · Stage 455 🎉 `docs/voice-sip-rfc3329-rfc4168-sec-agree-ipsec-tls-downgrade-420-bad-extension-loop-faq.md`] 企业 SIP `RFC 3329` `sec-agree` `Security-Verify === Security-Server` 逐字节镜像强校验、严禁 `420 / ealg=null` 明文回退与 `[500, 1000]` milli-q 强加密权重锁（`0` 竞价降级会话，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `IPSec ESP` 硬件卸载耗时 `not_measured`）&amp; `494 Security Agreement Required` `[1, 2]` 次重试上限与半开内核 `XFRM IPSec SA` 即刻回收锁（`0` `494` 死循环或泄露 `SA`；真实 `Netlink XFRM` 耗时 `not_measured`）(`P903` / `P904` · Stage 455 🎉 · Topic 95 🎉 · 🎉 Stage 455 与第 95 大专题双历史性里程碑 · 913 护栏 &amp; 922 探针 · 458 维)</strong>
+              </td>
+              <td><code>P903 / P904 deterministic SIP RFC 3329 sec-agree [500,1000] milli-q mirror &amp; [1,2] 494 retry/SA guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

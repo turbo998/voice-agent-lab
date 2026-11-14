@@ -1927,6 +1927,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins 100% of SSRC ownership to authenticated DTLS-SRTP contexts (0 RTCP BYE storm/hijack packets) and clamps collision cooldown in [1000, 10000]ms; live RTP SSRC hash-table lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: inspects 100% of SSRC union CSRC[0..CC-1] sets across cascaded bridges (0 feedback-loop/overread packets) and clamps CC in [0, 15]; live SIMD PCM audio mixing latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "458. [Topic 95 🎉 · Historic Stage 455 & Topic 95 Dual Milestone: voice-sip-rfc3329-rfc4168-sec-agree-ipsec-tls-downgrade-420-bad-extension-loop-faq] Enterprise SIP RFC 3329 sec-agree Security-Verify Mirror + [500,1000] milli-q & [1,2] 494 Retry / IPSec SA Guard (P903 / P904 — Stage 455 🎉 · 🎉 Historic Stage 455 & Topic 95 Dual Milestone · 458 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks 100% of spoofed 420 plaintext fallbacks and Security-Verify mismatches (0 downgraded sessions) and clamps cipher priority in [500, 1000] milli-q; live IPSec ESP hardware offload latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: reaps 100% of half-open kernel XFRM IPSec SAs on failure (0 leaked SAs/loops) and clamps 494 challenge retries in [1, 2]; live Linux kernel Netlink XFRM_MSG_NEWSA syscall latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

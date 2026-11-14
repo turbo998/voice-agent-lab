@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg99" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B14"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#091820"/>
+    </linearGradient>
+    <linearGradient id="accent99" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg99)"/>
+  <rect x="24" y="20" width="1232" height="720" rx="18" fill="#0B1324" stroke="#1E293B" stroke-width="2"/>
+  <rect x="24" y="20" width="1232" height="6" rx="3" fill="url(#accent99)"/>
+
+  <!-- Header -->
+  <text x="52" y="64" fill="#10B981" font-size="14" font-weight="700" letter-spacing="1.5">STAGE 455 🎉 · TOPIC 95 🎉 · SVG 99 · 🎉 HISTORIC STAGE 455 &amp; TOPIC 95 DUAL MILESTONE (P903–P904)</text>
+  <text x="52" y="96" fill="#F8FAFC" font-size="23" font-weight="800">Enterprise SIP RFC 3329 sec-agree Anti-Downgrade &amp; 494 Retry Loop Guard</text>
+  <text x="52" y="122" fill="#94A3B8" font-size="14">Eliminating Spoofed 420 Plaintext Fallback, MITM 494 Bidding-Down Attacks &amp; Half-Open IPSec SA Exhaustion</text>
+
+  <!-- Milestone Badge -->
+  <rect x="944" y="46" width="284" height="64" rx="12" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="1086" y="72" text-anchor="middle" fill="#A7F3D0" font-size="12" font-weight="700">🎉 STAGE 455 · TOPIC 95 MILESTONE</text>
+  <text x="1086" y="94" text-anchor="middle" fill="#ECFDF5" font-size="15" font-weight="800">458 Dims · 913 Guards · 922 Probes</text>
+
+  <!-- Left Panel: Unguarded sec-agree Failure Mode -->
+  <rect x="48" y="148" width="576" height="440" rx="14" fill="#160E1B" stroke="#F43F5E" stroke-width="1.5"/>
+  <rect x="68" y="166" width="536" height="36" rx="8" fill="#4C0519"/>
+  <text x="84" y="189" fill="#FDA4AF" font-size="15" font-weight="700">❌ Unguarded RFC 3329: 420 Plaintext Fallback &amp; SA Exhaustion</text>
+
+  <!-- Failure Box 1 -->
+  <rect x="68" y="218" width="536" height="168" rx="10" fill="#1E1324" stroke="#881337" stroke-width="1"/>
+  <text x="86" y="244" fill="#FB7185" font-size="14" font-weight="700">1. Spoofed 420 Plaintext Fallback &amp; 494 Bidding-Down Attack</text>
+  <text x="86" y="268" fill="#E2E8F0" font-size="13">• MITM injects unauthenticated SIP 420 (Unsupported: sec-agree) →</text>
+  <text x="86" y="292" fill="#E2E8F0" font-size="13">  permissive UAC strips sec-agree and dials in plaintext UDP!</text>
+  <text x="86" y="316" fill="#E2E8F0" font-size="13">• Or MITM edits Step-1 494 Security-Server to ealg=null while server</text>
+  <text x="86" y="340" fill="#FDA4AF" font-size="13" font-weight="700">  skips Step-2 Security-Verify === Security-Server byte comparison!</text>
+  <rect x="86" y="352" width="498" height="24" rx="5" fill="#4C0519"/>
+  <text x="335" y="368" text-anchor="middle" fill="#FECDD3" font-size="12" font-weight="700">Result: Silent Downgrade of TLS/IPSec Voice Trunk to Plaintext Wiretap</text>
+
+  <!-- Failure Box 2 -->
+  <rect x="68" y="402" width="536" height="168" rx="10" fill="#1E1324" stroke="#881337" stroke-width="1"/>
+  <text x="86" y="428" fill="#FB7185" font-size="14" font-weight="700">2. Unbounded 494 Challenge Loop &amp; Kernel IPSec SA Exhaustion</text>
+  <text x="86" y="452" fill="#E2E8F0" font-size="13">• Every 494 Security Agreement Required challenge allocates 2 kernel</text>
+  <text x="86" y="476" fill="#E2E8F0" font-size="13">  XFRM IPSec Security Associations (inbound/outbound SPI + port).</text>
+  <text x="86" y="500" fill="#E2E8F0" font-size="13">• Uncapped 494 retries under spoofed 200 CPS flood leak 96,000+ half-</text>
+  <text x="86" y="524" fill="#FDA4AF" font-size="13" font-weight="700">  open IPSec SAs in 40 seconds, crashing SBC kernel IPsec tables!</text>
+  <rect x="86" y="536" width="498" height="24" rx="5" fill="#4C0519"/>
+  <text x="335" y="552" text-anchor="middle" fill="#FECDD3" font-size="12" font-weight="700">Result: SBC Kernel XFRM SA Table Exhaustion &amp; Handshake Deadlock</text>
+
+  <!-- Right Panel: P903 + P904 Guardrails -->
+  <rect x="656" y="148" width="576" height="440" rx="14" fill="#091D1C" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="676" y="166" width="536" height="36" rx="8" fill="#064E3B"/>
+  <text x="692" y="189" fill="#6EE7B7" font-size="15" font-weight="700">✅ RFC 3329 Mirror Guard (P903) &amp; 494 Retry/SA Guard (P904)</text>
+
+  <!-- Guardrail Box 1: P903 -->
+  <rect x="676" y="218" width="536" height="168" rx="10" fill="#0D2726" stroke="#047857" stroke-width="1"/>
+  <text x="694" y="244" fill="#34D399" font-size="14" font-weight="700">P903 · RFC 3329 Security-Verify Mirror &amp; [500, 1000] milli-q Guard</text>
+  <text x="694" y="268" fill="#E2E8F0" font-size="13">• Fail-Closed blocks 100% of 420 (Unsupported: sec-agree) &amp; ealg=null.</text>
+  <text x="694" y="292" fill="#E2E8F0" font-size="13">• Enforces byte-for-byte Security-Verify === Security-Server check.</text>
+  <text x="694" y="316" fill="#E2E8F0" font-size="13">• Clamps minimum security mechanism priority to [500, 1000] milli-q.</text>
+  <text x="694" y="340" fill="#6EE7B7" font-size="13" font-weight="700">• 100% defeats MITM bidding-down &amp; plaintext fallback attacks!</text>
+  <rect x="694" y="352" width="498" height="24" rx="5" fill="#065F46"/>
+  <text x="943" y="368" text-anchor="middle" fill="#D1FAE5" font-size="12" font-weight="700">clampedDowngradedPlaintextOrUnverifiedSecAgreeSessions = 0 · q ∈ [500, 1000]</text>
+
+  <!-- Guardrail Box 2: P904 -->
+  <rect x="676" y="402" width="536" height="168" rx="10" fill="#0D2726" stroke="#047857" stroke-width="1"/>
+  <text x="694" y="428" fill="#38BDF8" font-size="14" font-weight="700">P904 · RFC 3329 494 Retry [1, 2]-Cap &amp; Half-Open IPSec SA Reaper</text>
+  <text x="694" y="452" fill="#E2E8F0" font-size="13">• Clamps 494 Security Agreement Required retries to [1, 2] attempts.</text>
+  <text x="694" y="476" fill="#E2E8F0" font-size="13">• Aborts looping sec-agree handshakes in 0ms upon exceeding 2 retries.</text>
+  <text x="694" y="500" fill="#E2E8F0" font-size="13">• Immediately reaps pre-allocated half-open kernel XFRM IPSec SAs</text>
+  <text x="694" y="524" fill="#7DD3FC" font-size="13" font-weight="700">  on verification failure or timeout (0 leaked half-open SAs)!</text>
+  <rect x="694" y="536" width="498" height="24" rx="5" fill="#0C4A6E"/>
+  <text x="943" y="552" text-anchor="middle" fill="#E0F2FE" font-size="12" font-weight="700">clampedInfinite494RetryOrLeakedHalfOpenIpsecSas = 0 · Retries ∈ [1, 2]</text>
+
+  <!-- Bottom Provenance & Timing Bar -->
+  <rect x="48" y="606" width="1184" height="112" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="634" fill="#F8FAFC" font-size="14" font-weight="700">📊 Stage 455 🎉 Quantitative Convergence &amp; Timing Provenance Disclosure (🎉 Historic Stage 455 &amp; Topic 95 Dual Milestone)</text>
+  <text x="68" y="660" fill="#CBD5E1" font-size="13">• Guardrail Policy IDs: P903-SIP-RFC3329-SEC-AGREE-SECURITY-VERIFY-MIRROR-AND-PLAINTEXT-DOWNGRADE-GUARD &amp; P904-SIP-RFC3329-494-HANDSHAKE-RETRY-LOOP-AND-IPSEC-SA-QUOTA-GUARD</text>
+  <text x="68" y="684" fill="#94A3B8" font-size="12">• Timing &amp; Provenance: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established (provenance: synthetic in-memory policy check;</text>
+  <text x="68" y="704" fill="#94A3B8" font-size="12">  live Linux kernel Netlink XFRM_MSG_NEWSA syscall &amp; IPSec ESP hardware offload latencies are not_measured). Suite totals: 458 Dimensions · 913 Guardrails · 922 Probes (732 Live POC) · 897 Tests.</text>
+</svg>

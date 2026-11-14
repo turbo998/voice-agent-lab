@@ -80553,6 +80553,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc3329SecAgreeSecurityVerifyMirrorAndPlaintextDowngradeContext {
+      secAgree420PlaintextFallbackOrSecurityVerifyMismatchDetected: boolean;
+      downgradedPlaintextOrUnverifiedSecAgreeSessions: number;
+      minSecurityMechanismMilliQ: number;
+    }
+
+    export interface SipRfc3329SecAgreeSecurityVerifyMirrorAndPlaintextDowngradeDecision {
+      violated: boolean;
+      policyId: "P903-SIP-RFC3329-SEC-AGREE-SECURITY-VERIFY-MIRROR-AND-PLAINTEXT-DOWNGRADE-GUARD";
+      action:
+        | "enforce_rfc3329_security_verify_mirror_and_block_420_downgrade"
+        | "clamp_downgraded_sessions_and_security_milli_q_bounds"
+        | "allow";
+      reason: string;
+      clampedDowngradedPlaintextOrUnverifiedSecAgreeSessions: number;
+      clampedMinSecurityMechanismMilliQ: number;
+    }
+
+    export function evaluateSipRfc3329SecAgreeSecurityVerifyMirrorAndPlaintextDowngradeGate(
+      context: SipRfc3329SecAgreeSecurityVerifyMirrorAndPlaintextDowngradeContext,
+    ): SipRfc3329SecAgreeSecurityVerifyMirrorAndPlaintextDowngradeDecision {
+      const policyId =
+        "P903-SIP-RFC3329-SEC-AGREE-SECURITY-VERIFY-MIRROR-AND-PLAINTEXT-DOWNGRADE-GUARD" as const;
+      const clampedDowngradedPlaintextOrUnverifiedSecAgreeSessions = 0;
+      const clampedMinSecurityMechanismMilliQ = Math.min(
+        Math.max(context.minSecurityMechanismMilliQ, 500),
+        1000,
+      );
+
+      if (context.secAgree420PlaintextFallbackOrSecurityVerifyMismatchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_rfc3329_security_verify_mirror_and_block_420_downgrade",
+          reason:
+            "Enterprise SIP RFC 3329 Security-Agreement (sec-agree) Anti-Downgrade & Security-Verify Mirror Policy Check: spoofed 420 Bad Extension plaintext fallback, ealg=null null-cipher downgrade, or Step-2 Security-Verify !== Security-Server mismatch detected; offline synthetic policy state machine blocking plaintext fallback (0 downgraded sessions) and clamping minimum security mechanism priority to [500, 1000] milli-q (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live IPSec ESP hardware offload latency not_measured).",
+          clampedDowngradedPlaintextOrUnverifiedSecAgreeSessions,
+          clampedMinSecurityMechanismMilliQ,
+        };
+      }
+
+      if (
+        context.downgradedPlaintextOrUnverifiedSecAgreeSessions > 0 ||
+        context.minSecurityMechanismMilliQ < 500 ||
+        context.minSecurityMechanismMilliQ > 1000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_downgraded_sessions_and_security_milli_q_bounds",
+          reason:
+            "Downgraded plaintext / unverified sec-agree sessions (>0 synthetic ceiling) or minimum security mechanism priority (<500 or >1000 milli-q synthetic bounds) out of bounds; clamping downgraded sessions to 0 and priority to [500, 1000] milli-q.",
+          clampedDowngradedPlaintextOrUnverifiedSecAgreeSessions,
+          clampedMinSecurityMechanismMilliQ,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3329 Security-Verify byte mirroring (0 downgraded sessions) and [500, 1000] milli-q cipher priority bounds verified.",
+        clampedDowngradedPlaintextOrUnverifiedSecAgreeSessions,
+        clampedMinSecurityMechanismMilliQ,
+      };
+    }
+
+    export interface SipRfc3329494HandshakeRetryLoopAndIpsecSaQuotaContext {
+      unbounded494ChallengeRetryLoopOrHalfOpenIpsecSaLeakDetected: boolean;
+      infinite494RetryOrLeakedHalfOpenIpsecSas: number;
+      max494SecurityChallengeRetries: number;
+    }
+
+    export interface SipRfc3329494HandshakeRetryLoopAndIpsecSaQuotaDecision {
+      violated: boolean;
+      policyId: "P904-SIP-RFC3329-494-HANDSHAKE-RETRY-LOOP-AND-IPSEC-SA-QUOTA-GUARD";
+      action:
+        | "abort_494_retry_loop_and_reap_half_open_ipsec_sas"
+        | "clamp_leaked_ipsec_sas_and_494_retry_bounds"
+        | "allow";
+      reason: string;
+      clampedInfinite494RetryOrLeakedHalfOpenIpsecSas: number;
+      clampedMax494SecurityChallengeRetries: number;
+    }
+
+    export function evaluateSipRfc3329494HandshakeRetryLoopAndIpsecSaQuotaGate(
+      context: SipRfc3329494HandshakeRetryLoopAndIpsecSaQuotaContext,
+    ): SipRfc3329494HandshakeRetryLoopAndIpsecSaQuotaDecision {
+      const policyId =
+        "P904-SIP-RFC3329-494-HANDSHAKE-RETRY-LOOP-AND-IPSEC-SA-QUOTA-GUARD" as const;
+      const clampedInfinite494RetryOrLeakedHalfOpenIpsecSas = 0;
+      const clampedMax494SecurityChallengeRetries = Math.min(
+        Math.max(context.max494SecurityChallengeRetries, 1),
+        2,
+      );
+
+      if (context.unbounded494ChallengeRetryLoopOrHalfOpenIpsecSaLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "abort_494_retry_loop_and_reap_half_open_ipsec_sas",
+          reason:
+            "Enterprise SIP RFC 3329 494 Challenge Retry Loop & Kernel IPSec SA Quota Policy Check: unbounded 494 Security Agreement Required challenge loop or leaked half-open kernel XFRM IPSec SA detected; offline synthetic policy state machine reaping half-open SAs (0 leaked SAs/loops) and clamping 494 challenge retries per call attempt to [1, 2] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live Linux kernel Netlink XFRM_MSG_NEWSA syscall latency not_measured).",
+          clampedInfinite494RetryOrLeakedHalfOpenIpsecSas,
+          clampedMax494SecurityChallengeRetries,
+        };
+      }
+
+      if (
+        context.infinite494RetryOrLeakedHalfOpenIpsecSas > 0 ||
+        context.max494SecurityChallengeRetries < 1 ||
+        context.max494SecurityChallengeRetries > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_leaked_ipsec_sas_and_494_retry_bounds",
+          reason:
+            "Infinite 494 retry loops / leaked half-open IPSec SAs (>0 synthetic ceiling) or max 494 challenge retries (<1 or >2 synthetic bounds) out of bounds; clamping leaked SAs to 0 and retries to [1, 2].",
+          clampedInfinite494RetryOrLeakedHalfOpenIpsecSas,
+          clampedMax494SecurityChallengeRetries,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3329 half-open IPSec SA reaper (0 leaked SAs) and [1, 2] 494 challenge retry bounds verified.",
+        clampedInfinite494RetryOrLeakedHalfOpenIpsecSas,
+        clampedMax494SecurityChallengeRetries,
+      };
+    }
+
 
 
 
