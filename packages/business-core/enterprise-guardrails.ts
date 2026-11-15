@@ -84582,6 +84582,180 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseContext {
+      staleIceRestartCredentialsOrUnconfirmedPortZeroSlotReuseDetected: boolean;
+      unconfirmedPortZeroSlotReuses: number;
+      iceUfragLengthChars: number;
+      icePwdLengthChars: number;
+    }
+
+    export interface WebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "rotate_fresh_ice_ufrag_pwd_and_wait_for_port_zero_oa_completion"
+        | "clamp_unconfirmed_slot_reuses_and_ice_credential_lengths"
+        | "allow";
+      reason: string;
+      clampedUnconfirmedPortZeroSlotReuses: number;
+      clampedIceUfragLengthChars: number;
+      clampedIcePwdLengthChars: number;
+    }
+
+    /**
+     * P961 (🎉 970th Guardrail): WebRTC RFC 8829 / RFC 9429 JSEP iceRestart Credential Rotation ([4, 256] ufrag / [22, 256] pwd) & Confirmed Port-0 m-Line Slot Reuse Gate.
+     */
+    export function evaluateWebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseGate(
+      ctx: WebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseContext,
+    ): WebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseResult {
+      const policyId =
+        "P961-WEBRTC-JSEP-RFC8829-ICERESTART-CREDENTIAL-ROTATION-AND-STOPPED-TRANSCEIVER-SLOT-REUSE-GUARD";
+      const clampedUnconfirmedPortZeroSlotReuses = 0;
+      const clampedIceUfragLengthChars = Math.min(
+        256,
+        Math.max(
+          4,
+          Number.isFinite(ctx.iceUfragLengthChars)
+            ? Math.round(ctx.iceUfragLengthChars)
+            : 8,
+        ),
+      );
+      const clampedIcePwdLengthChars = Math.min(
+        256,
+        Math.max(
+          22,
+          Number.isFinite(ctx.icePwdLengthChars)
+            ? Math.round(ctx.icePwdLengthChars)
+            : 24,
+        ),
+      );
+
+      if (ctx.staleIceRestartCredentialsOrUnconfirmedPortZeroSlotReuseDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rotate_fresh_ice_ufrag_pwd_and_wait_for_port_zero_oa_completion",
+          reason:
+            "Stale WebRTC JSEP iceRestart ice-ufrag/ice-pwd reuse or premature m= slot reuse before port=0 Offer/Answer completion detected (RFC 8829 Section 5.2.2 / RFC 8839 Section 5.4); rotating fresh ICE credentials and deferring m= slot recycling until port=0 confirmation with a fresh a=mid (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnconfirmedPortZeroSlotReuses,
+          clampedIceUfragLengthChars,
+          clampedIcePwdLengthChars,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.unconfirmedPortZeroSlotReuses) ||
+        ctx.unconfirmedPortZeroSlotReuses !== 0 ||
+        !Number.isFinite(ctx.iceUfragLengthChars) ||
+        ctx.iceUfragLengthChars < 4 ||
+        ctx.iceUfragLengthChars > 256 ||
+        !Number.isFinite(ctx.icePwdLengthChars) ||
+        ctx.icePwdLengthChars < 22 ||
+        ctx.icePwdLengthChars > 256
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unconfirmed_slot_reuses_and_ice_credential_lengths",
+          reason:
+            "Unconfirmed port=0 m= slot reuses (>0 synthetic ceiling) or ICE credential lengths (ufrag <4 or >256, pwd <22 or >256 synthetic bounds) out of bounds; clamping unconfirmed reuses to 0, ice-ufrag to [4, 256] chars, and ice-pwd to [22, 256] chars.",
+          clampedUnconfirmedPortZeroSlotReuses,
+          clampedIceUfragLengthChars,
+          clampedIcePwdLengthChars,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC JSEP RFC 8829 iceRestart credential rotation ([4, 256] ufrag / [22, 256] pwd) and confirmed port=0 m= slot reuse (0 premature overwrites) verified.",
+        clampedUnconfirmedPortZeroSlotReuses,
+        clampedIceUfragLengthChars,
+        clampedIcePwdLengthChars,
+      };
+    }
+
+    export interface WebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineContext {
+      unhandledOfferGlareOrAccidentalBundledPortZeroReofferDetected: boolean;
+      unhandledGlareOrBundledPortZeroDrops: number;
+      activeBundledMlinePort: number;
+    }
+
+    export interface WebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "execute_polite_rollback_to_stable_and_preserve_bundled_mline_port"
+        | "clamp_glare_drops_and_active_bundled_mline_port"
+        | "allow";
+      reason: string;
+      clampedUnhandledGlareOrBundledPortZeroDrops: number;
+      clampedActiveBundledMlinePort: number;
+    }
+
+    /**
+     * P962 (🎉 Historic 971st Guardrail, 980th Sandbox Probe & 790th Live POC Probe Triple Milestone): WebRTC RFC 9429 / RFC 8843 Polite Glare Rollback to stable & Active BUNDLE Port>0 Discipline Gate.
+     */
+    export function evaluateWebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineGate(
+      ctx: WebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineContext,
+    ): WebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineResult {
+      const policyId =
+        "P962-WEBRTC-JSEP-RFC9429-GLARE-ROLLBACK-STATE-AND-BUNDLE-ONLY-PORT-ZERO-DISCIPLINE-GUARD";
+      const clampedUnhandledGlareOrBundledPortZeroDrops = 0;
+      const clampedActiveBundledMlinePort = Math.min(
+        65535,
+        Math.max(
+          9,
+          Number.isFinite(ctx.activeBundledMlinePort)
+            ? Math.round(ctx.activeBundledMlinePort)
+            : 9,
+        ),
+      );
+
+      if (ctx.unhandledOfferGlareOrAccidentalBundledPortZeroReofferDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "execute_polite_rollback_to_stable_and_preserve_bundled_mline_port",
+          reason:
+            "Unhandled WebRTC JSEP have-local-offer glare collision or accidental port=0 on active bundled m= line in re-Offer detected (RFC 9429 Section 4.1.8.2 / RFC 8843 Section 7.3); executing polite peer rollback to stable with restored a=mid bindings and preserving non-zero bundled m= port (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnhandledGlareOrBundledPortZeroDrops,
+          clampedActiveBundledMlinePort,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.unhandledGlareOrBundledPortZeroDrops) ||
+        ctx.unhandledGlareOrBundledPortZeroDrops !== 0 ||
+        !Number.isFinite(ctx.activeBundledMlinePort) ||
+        ctx.activeBundledMlinePort < 9 ||
+        ctx.activeBundledMlinePort > 65535
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_glare_drops_and_active_bundled_mline_port",
+          reason:
+            "Unhandled glare / bundled port=0 drops (>0 synthetic ceiling) or active bundled m= line port (<9 or >65535 synthetic bounds) out of bounds; clamping drops to 0 and bundled m= port to [9, 65535].",
+          clampedUnhandledGlareOrBundledPortZeroDrops,
+          clampedActiveBundledMlinePort,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC JSEP RFC 9429 polite glare rollback to stable (0 glare drops) and RFC 8843 active bundled m= port [9, 65535] verified.",
+        clampedUnhandledGlareOrBundledPortZeroDrops,
+        clampedActiveBundledMlinePort,
+      };
+    }
+
+
 
 
 

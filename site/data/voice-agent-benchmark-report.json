@@ -2101,6 +2101,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces [1, 4] allowlisted pn-provider domains (rejecting unknown with SIP 555) and strips pn-* device tokens from egress Contact headers (0 leaked/SSRF Contacts); live SIP Contact URI parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: holds inbound INVITE transactions in a [2, 10]s wake-wait queue awaiting matching +sip.instance re-registration (0 premature 480 drops) and deduplicates push requests 1:1; live APNs/FCM HTTP/2 push RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "487. [Topic 124 · Historic 971-Guardrail, 980-Probe & 790-Live-POC-Probe Triple Milestone 🎉: voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-faq] Enterprise WebRTC RFC 8829 / RFC 9429 JSEP iceRestart Credential Rotation, Port-0 Slot Reuse & Glare Rollback Guard (P961 / P962 🎉 — Stage 484 · 🎉 Historic 971-Guardrail, 980-Probe & 790-Live-POC-Probe Triple Milestone · 487 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rotates fresh ice-ufrag ([4, 256] chars) and ice-pwd ([22, 256] chars) on every iceRestart and defers stopped m= slot reuse until port=0 Offer/Answer completion with a fresh a=mid (0 premature overwrites); live ICE STUN connectivity check RTT is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: executes polite peer rollback from have-local-offer to stable on glare with restored a=mid bindings (0 glare drops) and preserves non-zero ports [9, 65535] on active bundled m= lines; live RTCPeerConnection SDP state transition latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

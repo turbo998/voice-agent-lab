@@ -1938,6 +1938,13 @@
               <td><code>P959 / P960 🎉 deterministic SIP RFC 8599 [1,4] pn-provider 555 allowlist &amp; [2,10]s wake-wait hold guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>487. [专题124 · 971护栏 &amp; 980探针 &amp; 790现场探针 🎉 `docs/voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-faq.md`] 企业 WebRTC `RFC 8829 / RFC 9429 (JSEP)` `iceRestart` 强制生成全新 `ice-ufrag`（`[4, 256]` 字符）与 `ice-pwd`（`[22, 256]` 字符）凭据轮换及 `port=0` 完整 Offer/Answer 闭环后复用 `m=` 槽位锁（`0` 未确认覆写槽位，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 STUN 连通性探测耗时 `not_measured`）&amp; `have-local-offer` 双向冲突礼貌回滚（`rollback` $\rightarrow$ `stable` 还原 `a=mid`）与活跃 `BUNDLE` `m=` 行非零端口 `[9, 65535]` 守恒门禁（`0` 同抢崩溃或误杀音轨；真实 `RTCPeerConnection` 状态迁移耗时 `not_measured`）(`P961` / `P962 🎉` · Stage 484 · Topic 124 · 🎉 第 971 道护栏、980 个沙盒探针与 790 个现场探针三重里程碑 · 971 护栏 🎉 &amp; 980 探针 🎉 · 487 维)</strong>
+              </td>
+              <td><code>P961 / P962 🎉 deterministic WebRTC JSEP RFC 8829 iceRestart rotation &amp; RFC 9429 glare rollback guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5852,6 +5859,13 @@
                 <strong>486. [专题123 · 第50轮 &amp; 125篇FAQ &amp; P960 🎉 `docs/voice-sip-rfc8599-push-notification-pn-prid-token-leak-555-unsupported-wake-timeout-faq.md`] 企业移动 SIP `RFC 8599 Push Notification` `[1, 4]` 个授信 `pn-provider` 域名白名单（未知回 `555` 阻断 `SSRF`）与出局 `Contact` 100% 剥离 `pn-prid / pn-param` 设备令牌锁（`0` 泄露或 `SSRF` `Contact`，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SIP `Contact` URI 解析耗时 `not_measured`）&amp; 移动坐席唤醒驻留等待窗口 `[2, 10]s` 与单事务 1:1 幂等推送去重门禁（`0` 唤醒前误判 `480` 掉话；真实 `APNs/FCM` 推送往返耗时 `not_measured`）(`P959` / `P960 🎉` · Stage 483 · Topic 123 · 🎉 第 50 轮夜间深潜、P960 护栏、第 125 篇独立单专题 FAQ 与 925 单测四重里程碑 · 969 护栏 &amp; 978 探针 · 486 维)</strong>
               </td>
               <td><code>P959 / P960 🎉 deterministic SIP RFC 8599 [1,4] pn-provider 555 allowlist &amp; [2,10]s wake-wait hold guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>487. [专题124 · 971护栏 &amp; 980探针 &amp; 790现场探针 🎉 `docs/voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-faq.md`] 企业 WebRTC `RFC 8829 / RFC 9429 (JSEP)` `iceRestart` 强制生成全新 `ice-ufrag`（`[4, 256]` 字符）与 `ice-pwd`（`[22, 256]` 字符）凭据轮换及 `port=0` 完整 Offer/Answer 闭环后复用 `m=` 槽位锁（`0` 未确认覆写槽位，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 STUN 连通性探测耗时 `not_measured`）&amp; `have-local-offer` 双向冲突礼貌回滚（`rollback` $\rightarrow$ `stable` 还原 `a=mid`）与活跃 `BUNDLE` `m=` 行非零端口 `[9, 65535]` 守恒门禁（`0` 同抢崩溃或误杀音轨；真实 `RTCPeerConnection` 状态迁移耗时 `not_measured`）(`P961` / `P962 🎉` · Stage 484 · Topic 124 · 🎉 第 971 道护栏、980 个沙盒探针与 790 个现场探针三重里程碑 · 971 护栏 🎉 &amp; 980 探针 🎉 · 487 维)</strong>
+              </td>
+              <td><code>P961 / P962 🎉 deterministic WebRTC JSEP RFC 8829 iceRestart rotation &amp; RFC 9429 glare rollback guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

@@ -264,6 +264,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-webrtc-sframe-rfc9605-cryptex-rfc9335-kid-ratchet-desync-tag-truncation-overhead-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P957", "P958", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc8599-push-notification-pn-prid-token-leak-555-unsupported-wake-timeout-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P959", "P960", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc8599-push-notification-pn-prid-token-leak-555-unsupported-wake-timeout-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P959", "P960", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P961", "P962", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P961", "P962", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -988,6 +990,8 @@ import {
   evaluateWebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataGate,
   evaluateSipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionGate,
   evaluateSipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleGate,
+  evaluateWebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseGate,
+  evaluateWebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -57886,6 +57890,93 @@ test("Stage 483: SIP RFC 8599 Push Notification 555 allowlist, pn-prid scrub and
   const svg127 = await readFile(new URL("../assets/svg/127-voice-sip-rfc8599-push-notification-pn-prid-token-leak-555-unsupported-wake-timeout-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg127, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg127, /STAGE 483 · TOPIC 123/);
+});
+
+test("Stage 484: WebRTC RFC 8829 / RFC 9429 JSEP iceRestart credential rotation, port=0 slot reuse and glare rollback guardrails (P961-P962)", async () => {
+  const blocked961 = evaluateWebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseGate({
+    staleIceRestartCredentialsOrUnconfirmedPortZeroSlotReuseDetected: true,
+    unconfirmedPortZeroSlotReuses: 9,
+    iceUfragLengthChars: 2,
+    icePwdLengthChars: 12,
+  });
+  assert.equal(blocked961.violated, true);
+  assert.equal(
+    blocked961.policyId,
+    "P961-WEBRTC-JSEP-RFC8829-ICERESTART-CREDENTIAL-ROTATION-AND-STOPPED-TRANSCEIVER-SLOT-REUSE-GUARD",
+  );
+  assert.equal(
+    blocked961.action,
+    "rotate_fresh_ice_ufrag_pwd_and_wait_for_port_zero_oa_completion",
+  );
+  assert.equal(blocked961.clampedUnconfirmedPortZeroSlotReuses, 0);
+  assert.equal(blocked961.clampedIceUfragLengthChars, 4);
+  assert.equal(blocked961.clampedIcePwdLengthChars, 22);
+  assert.match(blocked961.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped961 = evaluateWebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseGate({
+    staleIceRestartCredentialsOrUnconfirmedPortZeroSlotReuseDetected: false,
+    unconfirmedPortZeroSlotReuses: 0,
+    iceUfragLengthChars: 512,
+    icePwdLengthChars: 512,
+  });
+  assert.equal(clamped961.violated, true);
+  assert.equal(
+    clamped961.action,
+    "clamp_unconfirmed_slot_reuses_and_ice_credential_lengths",
+  );
+  assert.equal(clamped961.clampedIceUfragLengthChars, 256);
+  assert.equal(clamped961.clampedIcePwdLengthChars, 256);
+
+  const allowed961 = evaluateWebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseGate({
+    staleIceRestartCredentialsOrUnconfirmedPortZeroSlotReuseDetected: false,
+    unconfirmedPortZeroSlotReuses: 0,
+    iceUfragLengthChars: 8,
+    icePwdLengthChars: 24,
+  });
+  assert.equal(allowed961.violated, false);
+  assert.equal(allowed961.action, "allow");
+
+  const blocked962 = evaluateWebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineGate({
+    unhandledOfferGlareOrAccidentalBundledPortZeroReofferDetected: true,
+    unhandledGlareOrBundledPortZeroDrops: 17,
+    activeBundledMlinePort: 0,
+  });
+  assert.equal(blocked962.violated, true);
+  assert.equal(
+    blocked962.policyId,
+    "P962-WEBRTC-JSEP-RFC9429-GLARE-ROLLBACK-STATE-AND-BUNDLE-ONLY-PORT-ZERO-DISCIPLINE-GUARD",
+  );
+  assert.equal(
+    blocked962.action,
+    "execute_polite_rollback_to_stable_and_preserve_bundled_mline_port",
+  );
+  assert.equal(blocked962.clampedUnhandledGlareOrBundledPortZeroDrops, 0);
+  assert.equal(blocked962.clampedActiveBundledMlinePort, 9);
+  assert.match(blocked962.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped962 = evaluateWebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineGate({
+    unhandledOfferGlareOrAccidentalBundledPortZeroReofferDetected: false,
+    unhandledGlareOrBundledPortZeroDrops: 0,
+    activeBundledMlinePort: 70000,
+  });
+  assert.equal(clamped962.violated, true);
+  assert.equal(
+    clamped962.action,
+    "clamp_glare_drops_and_active_bundled_mline_port",
+  );
+  assert.equal(clamped962.clampedActiveBundledMlinePort, 65535);
+
+  const allowed962 = evaluateWebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineGate({
+    unhandledOfferGlareOrAccidentalBundledPortZeroReofferDetected: false,
+    unhandledGlareOrBundledPortZeroDrops: 0,
+    activeBundledMlinePort: 9,
+  });
+  assert.equal(allowed962.violated, false);
+  assert.equal(allowed962.action, "allow");
+
+  const svg128 = await readFile(new URL("../assets/svg/128-voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg128, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg128, /STAGE 484 · TOPIC 124/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {
