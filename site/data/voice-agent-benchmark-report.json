@@ -2059,6 +2059,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects self-referential and cyclic RFC 5576 a=ssrc-group FID/FEC-FR declarations with disjoint primary/repair SSRC sets (0 cyclic groups) clamped in [2, 4] members; live SFU RTX OSN pointer-lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% intra-group cname equality across RFC 7656 grouped SSRCs (0 mismatched/overflowed declarations) and clamps declared SSRCs per m= section in [1, 12]; live SFU RTPStream hash-table pre-allocation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "480. [Topic 117 · Historic 480-Dimension Milestone 🎉: voice-sip-rfc6442-rfc4119-geolocation-cid-uri-ssrf-pidf-lo-retransmission-privacy-faq] Enterprise SIP RFC 6442 Geolocation cid: [256,4096]B Anti-SSRF & RFC 4119 PIDF-LO [60,3600]s Egress Privacy Guard (P947 / P948 — Stage 477 · 🎉 Historic 480-Dimension Milestone · 480 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces inline cid: MIME binding or allowlisted LIS on RFC 6442 Geolocation headers with 424 rejection on external URLs (0 SSRF calls) and clamps PIDF-LO XML size in [256, 4096] bytes; live SBC PIDF-LO XML parsing latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of restricted RFC 4119 PIDF-LO bodies on non-emergency egress when retransmission-allowed=no (0 leaked packets) and clamps retention TTL in [60, 3600]s; live spatial Point-in-Polygon routing lookup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg121" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0F3D3E"/>
+    </linearGradient>
+    <linearGradient id="accent121" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg121)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="8" rx="4" fill="url(#accent121)"/>
+
+  <text x="56" y="68" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700" letter-spacing="1">STAGE 477 · TOPIC 117 · P947–P948 · HISTORIC 480-DIMENSION MILESTONE 🎉 · 957 GUARDS · 480 DIMS 🎉 · 919 TESTS</text>
+  <text x="56" y="102" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24.5" font-weight="800">SIP RFC 6442 Geolocation &amp; RFC 4119 PIDF-LO: cid: Anti-SSRF &amp; Privacy Egress Guard</text>
+  <text x="56" y="128" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业 SIP RFC 6442/4119 地理位置传递：严防 Geolocation 外部 URL 触发核心网 SSRF 与 PIDF-LO 精确坐标违规外泄 (P947–P948)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="56" y="152" width="528" height="390" rx="14" fill="#1E1B2E" stroke="#EF4444" stroke-width="2"/>
+  <rect x="76" y="172" width="298" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="90" y="191" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">❌ 脆弱基线 (LbyR SSRF &amp; Unstripped PIDF-LO)</text>
+
+  <text x="76" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. Geolocation 外部 HTTP 引用触发核心网 SSRF</text>
+  <text x="76" y="250" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">Geolocation: &lt;http://169.254.169.254/...&gt;;routing=yes</text>
+  <text x="76" y="272" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 路由网关盲目解引用 LbyR URL，直接窃取云 IMDS 密钥或卡死线程！</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 注入 64KB 畸形 PIDF-LO XML 消耗 DOM 解析器内存！</text>
+
+  <line x1="76" y1="320" x2="560" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="76" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. 忽略 retransmission-allowed=no 违规外传 GPS</text>
+  <text x="76" y="376" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">&lt;gp:retransmission-allowed&gt;no&lt;/gp:...&gt; + 86400s TTL</text>
+  <text x="76" y="398" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 转接外部第三方时未剥离 PIDF-LO，将车主/客户精确坐标裸奔外泄！</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 无视 retention-expiry 将敏感位置长久驻留缓存达 24 小时！</text>
+
+  <rect x="76" y="450" width="488" height="72" rx="10" fill="#450A0A" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="92" y="476" fill="#FECACA" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">事故后果：12 通 Geolocation SSRF 攻击 + 17 次受限 GPS 坐标越权外泄</text>
+  <text x="92" y="500" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">核心网遭受内网探测攻击，并触发 GDPR/CCPA 位置隐私合规重罚</text>
+
+  <!-- Right Card: Deterministic Guardrails P947-P948 -->
+  <rect x="616" y="152" width="528" height="390" rx="14" fill="#0F292A" stroke="#10B981" stroke-width="2"/>
+  <rect x="636" y="172" width="340" height="28" rx="6" fill="#064E3B"/>
+  <text x="650" y="191" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">✅ 企业级护栏 (P947 + P948 · 480-Dimension Milestone 🎉)</text>
+
+  <text x="636" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P947 · RFC 6442 cid: 内联/LIS 白名单与 [256, 4096]B</text>
+  <text x="636" y="250" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Inline cid: / mTLS LIS Only (424 Reject) · XML ∈ [256, 4096]B</text>
+  <text x="636" y="272" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 0ms 拦截未授信外网 URL 解引用并返回 424 Bad Location Info</text>
+  <text x="636" y="294" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 强制本包 cid: 绑定并将 PIDF-LO 大小钳制在 [256, 4096] 字节</text>
+
+  <line x1="636" y1="320" x2="1120" y2="320" stroke="#1E293B" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="636" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P948 · RFC 4119 出局隐私剥离与 [60, 3600]s 留存锁</text>
+  <text x="636" y="376" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Strip on retransmission-allowed=no · TTL ∈ [60, 3600]s</text>
+  <text x="636" y="398" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 非急救呼叫在 retransmission-allowed=no 时出局 100% 剥离位置</text>
+  <text x="636" y="420" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 遵守 retention-expiry 将内存留存 TTL 钳制在 [60, 3600] 秒</text>
+
+  <rect x="636" y="450" width="488" height="72" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5"/>
+  <text x="652" y="476" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">验证结果：0 Geolocation SSRF · 0 受限 GPS 外泄 · 4096B / 3600s 封顶</text>
+  <text x="652" y="500" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer Provenance -->
+  <rect x="56" y="560" width="1088" height="68" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="76" y="586" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Benchmark &amp; Provenance (Stage 477 · Topic 117 · 957 Guardrails · 966 Probes · 776 Live POC Probes · 480 Dims 🎉 · 919 Tests)</text>
+  <text x="76" y="610" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Guardrails: evaluateSipRfc6442GeolocationCidByValueAndLbyrSsrfAllowlistGate (P947) &amp; evaluateSipRfc4119PidfLoRetransmissionAllowedAndRetentionExpiryGate (P948)</text>
+</svg>

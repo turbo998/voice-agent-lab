@@ -83548,6 +83548,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6442GeolocationCidByValueAndLbyrSsrfAllowlistContext {
+      untrustedExternalGeolocationHttpUriOrSsrfDetected: boolean;
+      blockedGeolocationSsrfOrMalformedCidCalls: number;
+      maxPidfLoXmlBodyBytes: number;
+    }
+
+    export interface SipRfc6442GeolocationCidByValueAndLbyrSsrfAllowlistDecision {
+      violated: boolean;
+      policyId: "P947-SIP-RFC6442-GEOLOCATION-CID-BY-VALUE-AND-LBYR-SSRF-ALLOWLIST-GUARD";
+      action:
+        | "enforce_cid_by_value_or_lis_allowlist_and_block_geolocation_ssrf"
+        | "clamp_geolocation_ssrf_calls_and_pidflo_body_bytes"
+        | "allow";
+      reason: string;
+      clampedBlockedGeolocationSsrfOrMalformedCidCalls: number;
+      clampedMaxPidfLoXmlBodyBytes: number;
+    }
+
+    export function evaluateSipRfc6442GeolocationCidByValueAndLbyrSsrfAllowlistGate(
+      context: SipRfc6442GeolocationCidByValueAndLbyrSsrfAllowlistContext,
+    ): SipRfc6442GeolocationCidByValueAndLbyrSsrfAllowlistDecision {
+      const policyId =
+        "P947-SIP-RFC6442-GEOLOCATION-CID-BY-VALUE-AND-LBYR-SSRF-ALLOWLIST-GUARD" as const;
+      const clampedBlockedGeolocationSsrfOrMalformedCidCalls = 0;
+      const clampedMaxPidfLoXmlBodyBytes = Math.min(
+        Math.max(context.maxPidfLoXmlBodyBytes, 256),
+        4096,
+      );
+
+      if (context.untrustedExternalGeolocationHttpUriOrSsrfDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_cid_by_value_or_lis_allowlist_and_block_geolocation_ssrf",
+          reason:
+            "Enterprise SIP RFC 6442 Geolocation cid: By-Value & LbyR Anti-SSRF Policy Check: INVITE Geolocation header referenced untrusted external HTTP/HTTPS URL or cloud IMDS endpoint with Geolocation-Routing: yes; offline synthetic policy state machine enforcing inline cid: MIME binding or mTLS LIS allowlist (0 SSRF/malformed calls) with 424 Bad Location Information rejection and clamping PIDF-LO XML body to [256, 4096] bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC PIDF-LO XML parsing latency not_measured).",
+          clampedBlockedGeolocationSsrfOrMalformedCidCalls,
+          clampedMaxPidfLoXmlBodyBytes,
+        };
+      }
+
+      if (
+        context.blockedGeolocationSsrfOrMalformedCidCalls > 0 ||
+        context.maxPidfLoXmlBodyBytes < 256 ||
+        context.maxPidfLoXmlBodyBytes > 4096
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_geolocation_ssrf_calls_and_pidflo_body_bytes",
+          reason:
+            "Blocked SIP RFC 6442 Geolocation SSRF / malformed cid: calls (>0 synthetic ceiling) or max PIDF-LO XML body bytes (<256B or >4096B synthetic bounds) out of bounds; clamping violations to 0 and PIDF-LO body size to [256, 4096] bytes.",
+          clampedBlockedGeolocationSsrfOrMalformedCidCalls,
+          clampedMaxPidfLoXmlBodyBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6442 inline cid: / allowlisted LIS Geolocation (0 SSRF calls) and [256, 4096]B PIDF-LO bounds verified.",
+        clampedBlockedGeolocationSsrfOrMalformedCidCalls,
+        clampedMaxPidfLoXmlBodyBytes,
+      };
+    }
+
+    export interface SipRfc4119PidfLoRetransmissionAllowedAndRetentionExpiryContext {
+      pidfLoRetransmissionProhibitedOrExpiredLocationEgressDetected: boolean;
+      leakedRestrictedPidfLoEgressPackets: number;
+      locationRetentionTtlSeconds: number;
+    }
+
+    export interface SipRfc4119PidfLoRetransmissionAllowedAndRetentionExpiryDecision {
+      violated: boolean;
+      policyId: "P948-SIP-RFC4119-PIDF-LO-RETRANSMISSION-ALLOWED-AND-RETENTION-EXPIRY-GUARD";
+      action:
+        | "strip_pidflo_on_retransmission_no_and_purge_expired_coordinates"
+        | "clamp_restricted_pidflo_leaks_and_retention_ttl_seconds"
+        | "allow";
+      reason: string;
+      clampedLeakedRestrictedPidfLoEgressPackets: number;
+      clampedLocationRetentionTtlSeconds: number;
+    }
+
+    export function evaluateSipRfc4119PidfLoRetransmissionAllowedAndRetentionExpiryGate(
+      context: SipRfc4119PidfLoRetransmissionAllowedAndRetentionExpiryContext,
+    ): SipRfc4119PidfLoRetransmissionAllowedAndRetentionExpiryDecision {
+      const policyId =
+        "P948-SIP-RFC4119-PIDF-LO-RETRANSMISSION-ALLOWED-AND-RETENTION-EXPIRY-GUARD" as const;
+      const clampedLeakedRestrictedPidfLoEgressPackets = 0;
+      const clampedLocationRetentionTtlSeconds = Math.min(
+        Math.max(context.locationRetentionTtlSeconds, 60),
+        3600,
+      );
+
+      if (context.pidfLoRetransmissionProhibitedOrExpiredLocationEgressDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_pidflo_on_retransmission_no_and_purge_expired_coordinates",
+          reason:
+            "Enterprise SIP RFC 4119 PIDF-LO retransmission-allowed=no & retention-expiry Privacy Policy Check: non-emergency outbound call leg attempted to forward Geolocation/PIDF-LO with <gp:retransmission-allowed>no or retained coordinates beyond <gp:retention-expiry>; offline synthetic policy state machine stripping restricted PIDF-LO on egress (0 leaked packets) and clamping location cache TTL to [60, 3600]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live spatial Point-in-Polygon routing lookup latency not_measured).",
+          clampedLeakedRestrictedPidfLoEgressPackets,
+          clampedLocationRetentionTtlSeconds,
+        };
+      }
+
+      if (
+        context.leakedRestrictedPidfLoEgressPackets > 0 ||
+        context.locationRetentionTtlSeconds < 60 ||
+        context.locationRetentionTtlSeconds > 3600
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_restricted_pidflo_leaks_and_retention_ttl_seconds",
+          reason:
+            "Leaked restricted RFC 4119 PIDF-LO egress packets (>0 synthetic ceiling) or location retention TTL (<60s or >3600s synthetic bounds) out of bounds; clamping leaked packets to 0 and retention TTL to [60, 3600]s.",
+          clampedLeakedRestrictedPidfLoEgressPackets,
+          clampedLocationRetentionTtlSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4119 retransmission-allowed=no egress strip (0 leaked packets) and [60, 3600]s retention TTL verified.",
+        clampedLeakedRestrictedPidfLoEgressPackets,
+        clampedLocationRetentionTtlSeconds,
+      };
+    }
+
 
 
 
