@@ -2071,6 +2071,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: cross-verifies RFC 6464 ssrc-audio-level against RTP payload size and clears unnegotiated V-bit (0 hijacked dominant-speaker packets) clamped in [3, 127] -dBov; live SFU dominant-speaker EMA window update latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces exact RFC 6465 csrc-audio-level byte-count parity with RTP CC and zeroes reserved MSB bits (0 malformed packets) clamped in [1, 15] entries; live MCU/SFU CSRC extension serializer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "482. [Topic 119 · Historic 961-Guardrail, 970-Probe & 780-Live-POC-Probe Triple Milestone 🎉: voice-sip-rfc3455-rfc7315-p-charging-vector-icids-spoof-p-visited-network-id-bleed-faq] Enterprise & Carrier SIP RFC 7315 P-Charging-Vector [128,256]b CSPRNG icid-value & PCFA/PVNI [1,4]-Hop Border Scrub Guard (P951 / P952 🎉 — Stage 479 · 🎉 Historic 961-Guardrail, 970-Probe & 780-Live-POC-Probe Milestone · 482 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips untrusted ingress SIP P-Charging-Vector headers and mints [128, 256]-bit CSPRNG icid-value tokens (0 spoofed/colliding calls); live SBC CSPRNG token generation latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: scrubs RFC 7315 P-Charging-Function-Addresses, P-Visited-Network-ID, and cellular PANI across untrusted boundaries (0 leaked/hijacked packets) and clamps internal trust hops in [1, 4]; live Diameter Rf/Ro ACR/ACA accounting RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

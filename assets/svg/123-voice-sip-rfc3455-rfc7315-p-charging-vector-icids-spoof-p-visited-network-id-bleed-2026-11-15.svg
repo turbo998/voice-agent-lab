@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg123" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#064E3B"/>
+    </linearGradient>
+    <linearGradient id="accent123" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg123)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="8" rx="4" fill="url(#accent123)"/>
+
+  <text x="56" y="68" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700" letter-spacing="1">STAGE 479 · TOPIC 119 · P951–P952 🎉 · 961 GUARDS, 970 PROBES &amp; 780 LIVE POC MILESTONE · 482 DIMS · 921 TESTS</text>
+  <text x="56" y="102" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24.5" font-weight="800">SIP RFC 7315 / RFC 3455 3GPP P-Charging: CSPRNG icid-value &amp; Border Scrub Guard</text>
+  <text x="56" y="128" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业与运营商 SIP RFC 7315 计费私有头：严防外网伪造 P-Charging-Vector 嫁接逃费与 PCFA/PVNI/PANI 越界泄密 (P951–P952 🎉)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="56" y="152" width="528" height="390" rx="14" fill="#1E1B2E" stroke="#EF4444" stroke-width="2"/>
+  <rect x="76" y="172" width="302" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="90" y="191" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">❌ 脆弱基线 (Forged icid-value &amp; PCFA/PANI Leak)</text>
+
+  <text x="76" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. 外网伪造 P-Charging-Vector 冲销/嫁接话单</text>
+  <text x="76" y="250" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">P-Charging-Vector: icid-value="victim-tenant-01" (32b)</text>
+  <text x="76" y="272" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 入口未剥离外网自带 PCV，高额跨国呼叫被嫁接至受害租户账单！</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 32-bit 弱自增 icid-value 极易被遍历猜测触发主键冲突丢单！</text>
+
+  <line x1="76" y1="320" x2="560" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="76" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. PCFA 计费重定向劫持与出局拓扑/基站泄露</text>
+  <text x="76" y="376" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">PCFA: ccf=10.20.30.40 + PANI: utran-cell-id-3gpp=...</text>
+  <text x="76" y="398" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 接受外部 ccf=/ecf= 注入导致内部 Diameter 计费流向攻击者！</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 出局未清洗直接向第三方暴露核心计费 IP 与主叫手机基站 Cell-ID！</text>
+
+  <rect x="76" y="450" width="488" height="72" rx="10" fill="#450A0A" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="92" y="476" fill="#FECACA" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">事故后果：18 通嫁接/碰撞逃费呼叫 + 13 个计费拓扑与基站越界泄密包</text>
+  <text x="92" y="500" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">多租户 CDR 对账失真损收，且核心网计费节点与客户物理位置裸奔</text>
+
+  <!-- Right Card: Deterministic Guardrails P951-P952 -->
+  <rect x="616" y="152" width="528" height="390" rx="14" fill="#0F292A" stroke="#10B981" stroke-width="2"/>
+  <rect x="636" y="172" width="340" height="28" rx="6" fill="#064E3B"/>
+  <text x="650" y="191" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">✅ 企业级护栏 (P951 + P952 🎉 · 961 Guards &amp; 970 Probes)</text>
+
+  <text x="636" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P951 🎉 · RFC 7315 入口剥离与 [128, 256]b icid-value</text>
+  <text x="636" y="250" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Ingress PCV Strip + CSPRNG icid-value ∈ [128, 256]b</text>
+  <text x="636" y="272" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 非授信入口 100% 抹除外部自带 PCV，杜绝双头走私与话单嫁接</text>
+  <text x="636" y="294" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 由本域 SBC 采用 CSPRNG 签发 [128, 256]b 唯一计费标识</text>
+
+  <line x1="636" y1="320" x2="1120" y2="320" stroke="#1E293B" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="636" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P952 🎉 · RFC 7315 PCFA/PVNI/PANI 边界清洗与 [1, 4] 跳</text>
+  <text x="636" y="376" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Bi-Directional Spec(T) Border Scrub · TrustHops ∈ [1, 4]</text>
+  <text x="636" y="398" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 非授信边界双向 100% 剥离 PCFA、PVNI、PCV 与基站 PANI</text>
+  <text x="636" y="420" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 锁定内网计费白名单并将可信传递跳数钳制在 [1, 4] 跳</text>
+
+  <rect x="636" y="450" width="488" height="72" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5"/>
+  <text x="652" y="476" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">验证结果：0 话单嫁接逃费 · 0 计费拓扑/基站外泄 · 128b / 4 跳封顶</text>
+  <text x="652" y="500" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer Provenance -->
+  <rect x="56" y="560" width="1088" height="68" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="76" y="586" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Benchmark &amp; Provenance (Stage 479 · Topic 119 · 961 Guardrails 🎉 · 970 Probes 🎉 · 780 Live POC Probes 🎉 · 482 Dims · 921 Tests)</text>
+  <text x="76" y="610" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Guardrails: evaluateSipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationGate (P951 🎉) &amp; evaluateSipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubGate (P952 🎉)</text>
+</svg>

@@ -254,6 +254,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-sip-rfc6442-rfc4119-geolocation-cid-uri-ssrf-pidf-lo-retransmission-privacy-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P947", "P948", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-rtp-rfc6464-rfc6465-audio-level-v-bit-vad-poisoning-active-speaker-hijack-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P949", "P950", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-rtp-rfc6464-rfc6465-audio-level-v-bit-vad-poisoning-active-speaker-hijack-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P949", "P950", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc3455-rfc7315-p-charging-vector-icids-spoof-p-visited-network-id-bleed-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P951", "P952", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc3455-rfc7315-p-charging-vector-icids-spoof-p-visited-network-id-bleed-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P951", "P952", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -968,6 +970,8 @@ import {
   evaluateSipRfc4119PidfLoRetransmissionAllowedAndRetentionExpiryGate,
   evaluateWebrtcRtpRfc6464AudioLevelVBitVadVerificationAndActiveSpeakerHijackGate,
   evaluateWebrtcRtpRfc6465MixerCsrcAudioLevelCountAlignmentAndZeroVBitGate,
+  evaluateSipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationGate,
+  evaluateSipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -57456,6 +57460,88 @@ test("Stage 478 P949 & P950: WebRTC RFC 6464 [3,127] -dBov anti-hijack & RFC 646
   const svg122 = await readFile(new URL("../assets/svg/122-voice-webrtc-rtp-rfc6464-rfc6465-audio-level-v-bit-vad-poisoning-active-speaker-hijack-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg122, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg122, /STAGE 478 · TOPIC 118/);
+});
+
+test("Stage 479: SIP RFC 7315 / RFC 3455 P-Charging-Vector icid-value CSPRNG and PCFA/PVNI boundary scrub guardrails (P951-P952)", async () => {
+  const blocked951 = evaluateSipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationGate({
+    untrustedIngressPChargingVectorOrDuplicateIcidDetected: true,
+    spoofedOrCollidingChargingVectorCalls: 18,
+    icidValueEntropyBits: 32,
+  });
+  assert.equal(blocked951.violated, true);
+  assert.equal(
+    blocked951.policyId,
+    "P951-SIP-RFC7315-P-CHARGING-VECTOR-INGRESS-STRIP-AND-CRYPTOGRAPHIC-ICID-GENERATION-GUARD",
+  );
+  assert.equal(
+    blocked951.action,
+    "strip_untrusted_pcv_and_generate_csprng_icid_value",
+  );
+  assert.equal(blocked951.clampedSpoofedOrCollidingChargingVectorCalls, 0);
+  assert.equal(blocked951.clampedIcidValueEntropyBits, 128);
+  assert.match(blocked951.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped951 = evaluateSipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationGate({
+    untrustedIngressPChargingVectorOrDuplicateIcidDetected: false,
+    spoofedOrCollidingChargingVectorCalls: 0,
+    icidValueEntropyBits: 512,
+  });
+  assert.equal(clamped951.violated, true);
+  assert.equal(
+    clamped951.action,
+    "clamp_spoofed_pcv_calls_and_icid_entropy_bits",
+  );
+  assert.equal(clamped951.clampedIcidValueEntropyBits, 256);
+
+  const allowed951 = evaluateSipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationGate({
+    untrustedIngressPChargingVectorOrDuplicateIcidDetected: false,
+    spoofedOrCollidingChargingVectorCalls: 0,
+    icidValueEntropyBits: 128,
+  });
+  assert.equal(allowed951.violated, false);
+  assert.equal(allowed951.action, "allow");
+
+  const blocked952 = evaluateSipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubGate({
+    untrustedPChargingFunctionAddressOrEgressVisitedNetworkLeakDetected: true,
+    leakedOrHijackedChargingTopologyPackets: 13,
+    maxAllowedPHeaderTrustHops: 15,
+  });
+  assert.equal(blocked952.violated, true);
+  assert.equal(
+    blocked952.policyId,
+    "P952-SIP-RFC7315-P-CHARGING-FUNCTION-ADDRESSES-AND-VISITED-NETWORK-BOUNDARY-SCRUB-GUARD",
+  );
+  assert.equal(
+    blocked952.action,
+    "scrub_p_charging_and_visited_headers_at_untrusted_boundary",
+  );
+  assert.equal(blocked952.clampedLeakedOrHijackedChargingTopologyPackets, 0);
+  assert.equal(blocked952.clampedMaxAllowedPHeaderTrustHops, 4);
+  assert.match(blocked952.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped952 = evaluateSipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubGate({
+    untrustedPChargingFunctionAddressOrEgressVisitedNetworkLeakDetected: false,
+    leakedOrHijackedChargingTopologyPackets: 0,
+    maxAllowedPHeaderTrustHops: 0,
+  });
+  assert.equal(clamped952.violated, true);
+  assert.equal(
+    clamped952.action,
+    "clamp_charging_topology_leaks_and_trust_hop_bounds",
+  );
+  assert.equal(clamped952.clampedMaxAllowedPHeaderTrustHops, 1);
+
+  const allowed952 = evaluateSipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubGate({
+    untrustedPChargingFunctionAddressOrEgressVisitedNetworkLeakDetected: false,
+    leakedOrHijackedChargingTopologyPackets: 0,
+    maxAllowedPHeaderTrustHops: 3,
+  });
+  assert.equal(allowed952.violated, false);
+  assert.equal(allowed952.action, "allow");
+
+  const svg123 = await readFile(new URL("../assets/svg/123-voice-sip-rfc3455-rfc7315-p-charging-vector-icids-spoof-p-visited-network-id-bleed-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg123, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg123, /STAGE 479 · TOPIC 119/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {

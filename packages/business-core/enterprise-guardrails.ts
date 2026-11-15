@@ -83820,6 +83820,162 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationContext {
+      untrustedIngressPChargingVectorOrDuplicateIcidDetected: boolean;
+      spoofedOrCollidingChargingVectorCalls: number;
+      icidValueEntropyBits: number;
+    }
+
+    export interface SipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "strip_untrusted_pcv_and_generate_csprng_icid_value"
+        | "clamp_spoofed_pcv_calls_and_icid_entropy_bits"
+        | "allow";
+      reason: string;
+      clampedSpoofedOrCollidingChargingVectorCalls: number;
+      clampedIcidValueEntropyBits: number;
+    }
+
+    /**
+     * P951 (🎉 Historic 960th Guardrail): SIP RFC 7315 / RFC 3455 P-Charging-Vector Ingress Strip & [128, 256]-Bit CSPRNG icid-value Gate.
+     */
+    export function evaluateSipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationGate(
+      ctx: SipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationContext,
+    ): SipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationResult {
+      const policyId =
+        "P951-SIP-RFC7315-P-CHARGING-VECTOR-INGRESS-STRIP-AND-CRYPTOGRAPHIC-ICID-GENERATION-GUARD";
+      const clampedSpoofedOrCollidingChargingVectorCalls = 0;
+      const clampedIcidValueEntropyBits = Math.min(
+        256,
+        Math.max(
+          128,
+          Number.isFinite(ctx.icidValueEntropyBits)
+            ? Math.round(ctx.icidValueEntropyBits)
+            : 128,
+        ),
+      );
+
+      if (ctx.untrustedIngressPChargingVectorOrDuplicateIcidDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_untrusted_pcv_and_generate_csprng_icid_value",
+          reason:
+            "Untrusted ingress SIP P-Charging-Vector header or colliding/weak icid-value detected (RFC 7315 Section 4.6 / Section 5.2); stripping untrusted P-Charging-Vector and minting a [128, 256]-bit CSPRNG icid-value (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedSpoofedOrCollidingChargingVectorCalls,
+          clampedIcidValueEntropyBits,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.spoofedOrCollidingChargingVectorCalls) ||
+        ctx.spoofedOrCollidingChargingVectorCalls !== 0 ||
+        !Number.isFinite(ctx.icidValueEntropyBits) ||
+        ctx.icidValueEntropyBits < 128 ||
+        ctx.icidValueEntropyBits > 256
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_pcv_calls_and_icid_entropy_bits",
+          reason:
+            "Spoofed/colliding P-Charging-Vector calls (>0 synthetic ceiling) or icid-value entropy bits (<128 or >256 bits synthetic bounds) out of bounds; clamping spoofed calls to 0 and icid-value entropy to [128, 256] bits.",
+          clampedSpoofedOrCollidingChargingVectorCalls,
+          clampedIcidValueEntropyBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7315 untrusted ingress P-Charging-Vector strip (0 spoofed calls) and [128, 256]-bit CSPRNG icid-value verified.",
+        clampedSpoofedOrCollidingChargingVectorCalls,
+        clampedIcidValueEntropyBits,
+      };
+    }
+
+    export interface SipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubContext {
+      untrustedPChargingFunctionAddressOrEgressVisitedNetworkLeakDetected: boolean;
+      leakedOrHijackedChargingTopologyPackets: number;
+      maxAllowedPHeaderTrustHops: number;
+    }
+
+    export interface SipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "scrub_p_charging_and_visited_headers_at_untrusted_boundary"
+        | "clamp_charging_topology_leaks_and_trust_hop_bounds"
+        | "allow";
+      reason: string;
+      clampedLeakedOrHijackedChargingTopologyPackets: number;
+      clampedMaxAllowedPHeaderTrustHops: number;
+    }
+
+    /**
+     * P952 (🎉 Historic 961st Guardrail / 970th Probe / 780th Live POC Probe Milestone): SIP RFC 7315 P-Charging-Function-Addresses & P-Visited-Network-ID Bi-Directional Boundary Scrub Gate.
+     */
+    export function evaluateSipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubGate(
+      ctx: SipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubContext,
+    ): SipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubResult {
+      const policyId =
+        "P952-SIP-RFC7315-P-CHARGING-FUNCTION-ADDRESSES-AND-VISITED-NETWORK-BOUNDARY-SCRUB-GUARD";
+      const clampedLeakedOrHijackedChargingTopologyPackets = 0;
+      const clampedMaxAllowedPHeaderTrustHops = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxAllowedPHeaderTrustHops)
+            ? Math.round(ctx.maxAllowedPHeaderTrustHops)
+            : 4,
+        ),
+      );
+
+      if (ctx.untrustedPChargingFunctionAddressOrEgressVisitedNetworkLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "scrub_p_charging_and_visited_headers_at_untrusted_boundary",
+          reason:
+            "Untrusted SIP P-Charging-Function-Addresses (ccf/ecf) injection or egress P-Visited-Network-ID / P-Access-Network-Info boundary bleed detected (RFC 7315 Section 4.5 / Section 5.2); scrubbing all private charging/roaming headers at untrusted boundaries and clamping trust hops to [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedLeakedOrHijackedChargingTopologyPackets,
+          clampedMaxAllowedPHeaderTrustHops,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.leakedOrHijackedChargingTopologyPackets) ||
+        ctx.leakedOrHijackedChargingTopologyPackets !== 0 ||
+        !Number.isFinite(ctx.maxAllowedPHeaderTrustHops) ||
+        ctx.maxAllowedPHeaderTrustHops < 1 ||
+        ctx.maxAllowedPHeaderTrustHops > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_charging_topology_leaks_and_trust_hop_bounds",
+          reason:
+            "Leaked/hijacked charging-topology packets (>0 synthetic ceiling) or max allowed P-Header trust hops (<1 or >4 hops synthetic bounds) out of bounds; clamping leaked packets to 0 and trust hops to [1, 4].",
+          clampedLeakedOrHijackedChargingTopologyPackets,
+          clampedMaxAllowedPHeaderTrustHops,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7315 bi-directional PCFA/PVNI/PANI boundary scrub (0 leaked packets) and [1, 4]-hop trust bounds verified.",
+        clampedLeakedOrHijackedChargingTopologyPackets,
+        clampedMaxAllowedPHeaderTrustHops,
+      };
+    }
+
 
 
 
