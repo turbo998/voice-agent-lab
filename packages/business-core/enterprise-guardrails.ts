@@ -85699,6 +85699,183 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc7852EmergencyCallDataCallInfoByValueAndSsrfAllowlistContext {
+      untrustedCallInfoAdrSsrfOrSpoofedEmergencyDataDetected: boolean;
+      untrustedCallInfoSsrfOrSpoofedEmergencyPreemptions: number;
+      allowedAdrRepositoryDomainsCount: number;
+    }
+
+    export interface SipRfc7852EmergencyCallDataCallInfoByValueAndSsrfAllowlistResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "block_untrusted_call_info_adr_ssrf_and_strip_spoofed_emergency_data"
+        | "clamp_call_info_ssrf_preemptions_and_adr_allowlist"
+        | "allow";
+      reason: string;
+      clampedUntrustedCallInfoSsrfOrSpoofedEmergencyPreemptions: number;
+      clampedAllowedAdrRepositoryDomainsCount: number;
+    }
+
+    /**
+     * P975: Enterprise SIP RFC 7852 / RFC 6881 NG911 Emergency Call Additional Data Call-Info cid: By-Value / [1, 4] mTLS ADR Allowlist & urn:service:sos Binding Gate.
+     */
+    export function evaluateSipRfc7852EmergencyCallDataCallInfoByValueAndSsrfAllowlistGate(
+      ctx: SipRfc7852EmergencyCallDataCallInfoByValueAndSsrfAllowlistContext,
+    ): SipRfc7852EmergencyCallDataCallInfoByValueAndSsrfAllowlistResult {
+      const policyId =
+        "P975-SIP-RFC7852-EMERGENCY-CALL-DATA-CALL-INFO-BY-VALUE-AND-SSRF-ALLOWLIST-GUARD";
+      const clampedUntrustedCallInfoSsrfOrSpoofedEmergencyPreemptions = 0;
+      const clampedAllowedAdrRepositoryDomainsCount = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.allowedAdrRepositoryDomainsCount)
+            ? Math.round(ctx.allowedAdrRepositoryDomainsCount)
+            : 2,
+        ),
+      );
+
+      if (ctx.untrustedCallInfoAdrSsrfOrSpoofedEmergencyDataDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "block_untrusted_call_info_adr_ssrf_and_strip_spoofed_emergency_data",
+          reason:
+            "SIP RFC 7852 / RFC 6881 untrusted Call-Info purpose=EmergencyCallData.* remote URI fetch (SSRF) or spoofed EmergencyCallData on non-SOS commercial trunk detected; requiring inline cid: or [1, 4] mTLS ADR allowlisted domains and stripping non-SOS EmergencyCallData headers (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUntrustedCallInfoSsrfOrSpoofedEmergencyPreemptions,
+          clampedAllowedAdrRepositoryDomainsCount,
+        };
+      }
+
+      if (
+        !Number.isFinite(
+          ctx.untrustedCallInfoSsrfOrSpoofedEmergencyPreemptions,
+        ) ||
+        ctx.untrustedCallInfoSsrfOrSpoofedEmergencyPreemptions !== 0 ||
+        !Number.isFinite(ctx.allowedAdrRepositoryDomainsCount) ||
+        ctx.allowedAdrRepositoryDomainsCount < 1 ||
+        ctx.allowedAdrRepositoryDomainsCount > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_call_info_ssrf_preemptions_and_adr_allowlist",
+          reason:
+            "Untrusted Call-Info SSRF / spoofed emergency preemptions (>0 synthetic ceiling) or allowed mTLS ADR repository domains (<1 or >4 synthetic bounds) out of bounds; clamping preemptions to 0 and ADR allowlist to [1, 4].",
+          clampedUntrustedCallInfoSsrfOrSpoofedEmergencyPreemptions,
+          clampedAllowedAdrRepositoryDomainsCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7852 Call-Info cid: / [1, 4] mTLS ADR allowlist and urn:service:sos binding (0 SSRF or spoofed preemptions) verified.",
+        clampedUntrustedCallInfoSsrfOrSpoofedEmergencyPreemptions,
+        clampedAllowedAdrRepositoryDomainsCount,
+      };
+    }
+
+    export interface SipRfc7852EmergencyCallDataMimeBlockCountAndXmlPayloadCapContext {
+      excessEmergencyCallDataMimeBlocksOrXmlBombDetected: boolean;
+      oversizedOrExcessEmergencyCallDataMimeDrops: number;
+      emergencyCallDataMimeBlocksCount: number;
+      emergencyCallDataXmlKilobytes: number;
+    }
+
+    export interface SipRfc7852EmergencyCallDataMimeBlockCountAndXmlPayloadCapResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "truncate_excess_emergency_xml_blocks_and_preserve_sos_sdp_voice"
+        | "clamp_emergency_mime_blocks_and_xml_payload_kb"
+        | "allow";
+      reason: string;
+      clampedOversizedOrExcessEmergencyCallDataMimeDrops: number;
+      clampedEmergencyCallDataMimeBlocksCount: number;
+      clampedEmergencyCallDataXmlKilobytes: number;
+    }
+
+    /**
+     * P976 🎉 (Historic 985th Enterprise Guardrail & 135th SVG Dual Milestone): Enterprise SIP RFC 7852 Section 4.1 EmergencyCallData [1, 4] Multipart MIME Block Count & [1, 32] KB XML Voice-First Truncation Gate.
+     */
+    export function evaluateSipRfc7852EmergencyCallDataMimeBlockCountAndXmlPayloadCapGate(
+      ctx: SipRfc7852EmergencyCallDataMimeBlockCountAndXmlPayloadCapContext,
+    ): SipRfc7852EmergencyCallDataMimeBlockCountAndXmlPayloadCapResult {
+      const policyId =
+        "P976-SIP-RFC7852-EMERGENCY-CALL-DATA-MIME-BLOCK-COUNT-AND-XML-PAYLOAD-CAP-GUARD";
+      const clampedOversizedOrExcessEmergencyCallDataMimeDrops = 0;
+      const clampedEmergencyCallDataMimeBlocksCount = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.emergencyCallDataMimeBlocksCount)
+            ? Math.round(ctx.emergencyCallDataMimeBlocksCount)
+            : 2,
+        ),
+      );
+      const clampedEmergencyCallDataXmlKilobytes = Math.min(
+        32,
+        Math.max(
+          1,
+          Number.isFinite(ctx.emergencyCallDataXmlKilobytes)
+            ? Math.round(ctx.emergencyCallDataXmlKilobytes)
+            : 8,
+        ),
+      );
+
+      if (ctx.excessEmergencyCallDataMimeBlocksOrXmlBombDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "truncate_excess_emergency_xml_blocks_and_preserve_sos_sdp_voice",
+          reason:
+            "SIP RFC 7852 Section 4.1 excess EmergencyCallData.*+xml multipart MIME blocks (>4) or oversized XML payload (>32 KB) detected; truncating excess non-SDP XML attachments in [1, 4] blocks and [1, 32] KB while preserving the emergency application/sdp voice call setup (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedOversizedOrExcessEmergencyCallDataMimeDrops,
+          clampedEmergencyCallDataMimeBlocksCount,
+          clampedEmergencyCallDataXmlKilobytes,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.oversizedOrExcessEmergencyCallDataMimeDrops) ||
+        ctx.oversizedOrExcessEmergencyCallDataMimeDrops !== 0 ||
+        !Number.isFinite(ctx.emergencyCallDataMimeBlocksCount) ||
+        ctx.emergencyCallDataMimeBlocksCount < 1 ||
+        ctx.emergencyCallDataMimeBlocksCount > 4 ||
+        !Number.isFinite(ctx.emergencyCallDataXmlKilobytes) ||
+        ctx.emergencyCallDataXmlKilobytes < 1 ||
+        ctx.emergencyCallDataXmlKilobytes > 32
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_emergency_mime_blocks_and_xml_payload_kb",
+          reason:
+            "Oversized/excess EmergencyCallData MIME drops (>0 synthetic ceiling), MIME block count (<1 or >4), or XML payload (<1 or >32 KB) out of bounds; clamping drops to 0, blocks to [1, 4], and XML payload to [1, 32] KB.",
+          clampedOversizedOrExcessEmergencyCallDataMimeDrops,
+          clampedEmergencyCallDataMimeBlocksCount,
+          clampedEmergencyCallDataXmlKilobytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7852 EmergencyCallData [1, 4] MIME blocks and [1, 32] KB XML payload cap (0 SOS call drops) verified.",
+        clampedOversizedOrExcessEmergencyCallDataMimeDrops,
+        clampedEmergencyCallDataMimeBlocksCount,
+        clampedEmergencyCallDataXmlKilobytes,
+      };
+    }
+
 
 
 

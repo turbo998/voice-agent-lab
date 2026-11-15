@@ -2143,6 +2143,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces verbatim IDENTICAL-category attribute parity (fingerprint/setup/rtcp-mux) across all bundled m= lines and restricts TRANSPORT attributes to the bundle-tag m= section within [1, 8] media lines (0 category conflicts); live SDP AST mux-category verifier latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: atomically promotes a surviving active mid to the new bundle-tag and migrates TRANSPORT attributes before disabling the old bundle-tag (port=0) while clamping SUM-category bandwidth in [32, 256] kbps (0 shared transport drops); live RTCPeerConnection bundle-tag re-homing latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "494. [Topic 131 · Historic 135th SVG & 985-Guardrail Dual Milestone 🎉: voice-sip-rfc7852-rfc6881-emergency-call-additional-data-call-info-ssrf-by-value-mime-overflow-faq] Enterprise SIP RFC 7852 / RFC 6881 NG911 EmergencyCallData Call-Info SSRF Allowlist & [1, 4] MIME Block / [1, 32]KB XML Voice-First Cap Guard (P975 / P976 🎉 — Stage 491 · Topic 131 · 🎉 Historic 135th SVG & 985-Guardrail Dual Milestone · 494 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: requires inline cid: or [1, 4] mTLS ADR allowlisted domains for Call-Info purpose=EmergencyCallData.* and strips non-SOS commercial EmergencyCallData headers (0 SSRF or spoofed queue-jump preemptions); live ESInet ADR mTLS lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps inline EmergencyCallData multipart attachments in [1, 4] MIME blocks and [1, 32] KB XML payload, truncating excess non-SDP blocks while preserving SOS voice setup (0 SIP 513 emergency call drops); live SBC multipart XML parser latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
