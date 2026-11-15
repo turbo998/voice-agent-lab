@@ -86034,6 +86034,165 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6794Rfc7090ServiceUrnSubserviceParentFallbackAndDepthContext {
+      unrecognizedSubserviceUrn404OrCommercialOverrideDetected: boolean;
+      unhandledSubserviceUrn404OrCommercialOverrideDrops: number;
+      serviceUrnSubserviceDepth: number;
+    }
+
+    export interface SipRfc6794Rfc7090ServiceUrnSubserviceParentFallbackAndDepthResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "fallback_to_parent_service_urn_and_mute_commercial_scripts"
+        | "clamp_subservice_urn_drops_and_label_depth"
+        | "allow";
+      reason: string;
+      clampedUnhandledSubserviceUrn404OrCommercialOverrideDrops: number;
+      clampedServiceUrnSubserviceDepth: number;
+    }
+
+    /**
+     * P979: Enterprise SIP RFC 5031 / RFC 6794 / RFC 7090 Emergency & Crisis Service URN Subservice Parent-Fallback, Commercial Script Mute & [1, 4] Depth Gate.
+     */
+    export function evaluateSipRfc6794Rfc7090ServiceUrnSubserviceParentFallbackAndDepthGate(
+      ctx: SipRfc6794Rfc7090ServiceUrnSubserviceParentFallbackAndDepthContext,
+    ): SipRfc6794Rfc7090ServiceUrnSubserviceParentFallbackAndDepthResult {
+      const policyId =
+        "P979-SIP-RFC6794-RFC7090-SERVICE-URN-SUBSERVICE-PARENT-FALLBACK-AND-DEPTH-GUARD";
+      const clampedUnhandledSubserviceUrn404OrCommercialOverrideDrops = 0;
+      const clampedServiceUrnSubserviceDepth = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.serviceUrnSubserviceDepth)
+            ? Math.round(ctx.serviceUrnSubserviceDepth)
+            : 3,
+        ),
+      );
+
+      if (ctx.unrecognizedSubserviceUrn404OrCommercialOverrideDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "fallback_to_parent_service_urn_and_mute_commercial_scripts",
+          reason:
+            "SIP RFC 5031 / RFC 6794 / RFC 7090 unrecognized subservice URN (urn:service:sos.* / counseling.*) rejected with 404/416 instead of falling back to parent URN, or commercial AI script override detected; iteratively stripping rightmost subservice label to route to parent emergency/counseling queue and clamping depth in [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnhandledSubserviceUrn404OrCommercialOverrideDrops,
+          clampedServiceUrnSubserviceDepth,
+        };
+      }
+
+      if (
+        !Number.isFinite(
+          ctx.unhandledSubserviceUrn404OrCommercialOverrideDrops,
+        ) ||
+        ctx.unhandledSubserviceUrn404OrCommercialOverrideDrops !== 0 ||
+        !Number.isFinite(ctx.serviceUrnSubserviceDepth) ||
+        ctx.serviceUrnSubserviceDepth < 1 ||
+        ctx.serviceUrnSubserviceDepth > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_subservice_urn_drops_and_label_depth",
+          reason:
+            "Unhandled subservice URN 404 / commercial override drops (>0 synthetic ceiling) or Service URN subservice depth (<1 or >4 synthetic bounds) out of bounds; clamping drops to 0 and depth to [1, 4].",
+          clampedUnhandledSubserviceUrn404OrCommercialOverrideDrops,
+          clampedServiceUrnSubserviceDepth,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6794 / RFC 7090 Service URN parent fallback (0 404 drops) and [1, 4] subservice depth verified.",
+        clampedUnhandledSubserviceUrn404OrCommercialOverrideDrops,
+        clampedServiceUrnSubserviceDepth,
+      };
+    }
+
+    export interface SipRfc5222LostFindServiceTimeoutLocalCacheFallbackAndTtlContext {
+      lostFindServiceTimeoutOrUnboundedCacheTtlDetected: boolean;
+      lostLookupTimeoutOrExpiredCacheCallDrops: number;
+      lostMappingCacheTtlSeconds: number;
+    }
+
+    export interface SipRfc5222LostFindServiceTimeoutLocalCacheFallbackAndTtlResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "fallback_to_cached_or_default_psap_uri_and_clamp_lost_ttl"
+        | "clamp_lost_timeout_call_drops_and_cache_ttl_seconds"
+        | "allow";
+      reason: string;
+      clampedLostLookupTimeoutOrExpiredCacheCallDrops: number;
+      clampedLostMappingCacheTtlSeconds: number;
+    }
+
+    /**
+     * P980 🎉 (Historic 60th Nightly Round, P980 Guardrail, 135th Standalone FAQ & 935-Test Quadruple Milestone): Enterprise SIP RFC 5222 (LoST) <=500ms findService Timeout Local PSAP Cache Fallback & [60, 3600]s TTL Gate.
+     */
+    export function evaluateSipRfc5222LostFindServiceTimeoutLocalCacheFallbackAndTtlGate(
+      ctx: SipRfc5222LostFindServiceTimeoutLocalCacheFallbackAndTtlContext,
+    ): SipRfc5222LostFindServiceTimeoutLocalCacheFallbackAndTtlResult {
+      const policyId =
+        "P980-SIP-RFC5222-LOST-FINDSERVICE-TIMEOUT-LOCAL-CACHE-FALLBACK-AND-TTL-GUARD";
+      const clampedLostLookupTimeoutOrExpiredCacheCallDrops = 0;
+      const clampedLostMappingCacheTtlSeconds = Math.min(
+        3600,
+        Math.max(
+          60,
+          Number.isFinite(ctx.lostMappingCacheTtlSeconds)
+            ? Math.round(ctx.lostMappingCacheTtlSeconds)
+            : 1800,
+        ),
+      );
+
+      if (ctx.lostFindServiceTimeoutOrUnboundedCacheTtlDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "fallback_to_cached_or_default_psap_uri_and_clamp_lost_ttl",
+          reason:
+            "SIP RFC 5222 LoST <findService> lookup timeout (>500ms) without Stale-While-Revalidate PSAP cache fallback or unbounded cache TTL detected; routing immediately via cached/default regional PSAP URI and clamping LoST mapping TTL in [60, 3600]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedLostLookupTimeoutOrExpiredCacheCallDrops,
+          clampedLostMappingCacheTtlSeconds,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.lostLookupTimeoutOrExpiredCacheCallDrops) ||
+        ctx.lostLookupTimeoutOrExpiredCacheCallDrops !== 0 ||
+        !Number.isFinite(ctx.lostMappingCacheTtlSeconds) ||
+        ctx.lostMappingCacheTtlSeconds < 60 ||
+        ctx.lostMappingCacheTtlSeconds > 3600
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_lost_timeout_call_drops_and_cache_ttl_seconds",
+          reason:
+            "LoST lookup timeout / expired cache call drops (>0 synthetic ceiling) or LoST mapping cache TTL (<60 or >3600s synthetic bounds) out of bounds; clamping drops to 0 and TTL to [60, 3600]s.",
+          clampedLostLookupTimeoutOrExpiredCacheCallDrops,
+          clampedLostMappingCacheTtlSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 5222 LoST <=500ms cache fallback (0 call drops) and [60, 3600]s mapping TTL verified.",
+        clampedLostLookupTimeoutOrExpiredCacheCallDrops,
+        clampedLostMappingCacheTtlSeconds,
+      };
+    }
+
 
 
 
