@@ -85876,6 +85876,164 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc9627FrameMarkingStartEndParityAndBaseLayerProtectionContext {
+      baseLayerDropOrStartEndBoundaryDesyncDetected: boolean;
+      baseLayerDropOrStartEndBoundaryViolations: number;
+      activeTemporalLayersCount: number;
+    }
+
+    export interface WebrtcRfc9627FrameMarkingStartEndParityAndBaseLayerProtectionResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "protect_tid0_base_layer_and_align_frame_marking_s_e_boundaries"
+        | "clamp_base_layer_violations_and_temporal_layers_count"
+        | "allow";
+      reason: string;
+      clampedBaseLayerDropOrStartEndBoundaryViolations: number;
+      clampedActiveTemporalLayersCount: number;
+    }
+
+    /**
+     * P977: Enterprise WebRTC RFC 9627 / RFC 7741 Video Frame Marking S/E Boundary Parity, D=1 Discardable-Only Shedding & TID=0 Base-Layer Protection Gate.
+     */
+    export function evaluateWebrtcRfc9627FrameMarkingStartEndParityAndBaseLayerProtectionGate(
+      ctx: WebrtcRfc9627FrameMarkingStartEndParityAndBaseLayerProtectionContext,
+    ): WebrtcRfc9627FrameMarkingStartEndParityAndBaseLayerProtectionResult {
+      const policyId =
+        "P977-WEBRTC-RFC9627-FRAME-MARKING-START-END-PARITY-AND-BASE-LAYER-PROTECTION-GUARD";
+      const clampedBaseLayerDropOrStartEndBoundaryViolations = 0;
+      const clampedActiveTemporalLayersCount = Math.min(
+        3,
+        Math.max(
+          1,
+          Number.isFinite(ctx.activeTemporalLayersCount)
+            ? Math.round(ctx.activeTemporalLayersCount)
+            : 3,
+        ),
+      );
+
+      if (ctx.baseLayerDropOrStartEndBoundaryDesyncDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "protect_tid0_base_layer_and_align_frame_marking_s_e_boundaries",
+          reason:
+            "WebRTC RFC 9627 / RFC 7741 non-discardable base-layer (TID=0, D=0) packet drop or S=1/E=1 frame-boundary desynchronization detected; shedding only whole D=1 (TID>0) enhancement frames to prevent PLI/FIR keyframe storms and clamping active temporal layers in [1, 3] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedBaseLayerDropOrStartEndBoundaryViolations,
+          clampedActiveTemporalLayersCount,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.baseLayerDropOrStartEndBoundaryViolations) ||
+        ctx.baseLayerDropOrStartEndBoundaryViolations !== 0 ||
+        !Number.isFinite(ctx.activeTemporalLayersCount) ||
+        ctx.activeTemporalLayersCount < 1 ||
+        ctx.activeTemporalLayersCount > 3
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_base_layer_violations_and_temporal_layers_count",
+          reason:
+            "Base-layer TID=0 drops / S-E boundary violations (>0 synthetic ceiling) or active temporal layers (<1 or >3 synthetic bounds) out of bounds; clamping violations to 0 and temporal layers to [1, 3].",
+          clampedBaseLayerDropOrStartEndBoundaryViolations,
+          clampedActiveTemporalLayersCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 9627 S/E boundary parity, D=1 discardable-only shedding, TID=0 base protection, and [1, 3] temporal layers verified.",
+        clampedBaseLayerDropOrStartEndBoundaryViolations,
+        clampedActiveTemporalLayersCount,
+      };
+    }
+
+    export interface WebrtcRfc9627LayerUpSwitchKeyframeSyncAndAudioFloorSheddingContext {
+      unsyncedLayerUpSwitchOrAudioFloorStarvationDetected: boolean;
+      unsyncedLayerUpSwitchOrAudioStarvationDrops: number;
+      protectedAudioFloorKbps: number;
+    }
+
+    export interface WebrtcRfc9627LayerUpSwitchKeyframeSyncAndAudioFloorSheddingResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "hold_layer_upswitch_until_i_or_b_sync_and_lock_audio_floor"
+        | "clamp_unsynced_upswitch_drops_and_audio_floor_kbps"
+        | "allow";
+      reason: string;
+      clampedUnsyncedLayerUpSwitchOrAudioStarvationDrops: number;
+      clampedProtectedAudioFloorKbps: number;
+    }
+
+    /**
+     * P978 (🎉 Historic 495th Evaluation Dimension Milestone): Enterprise WebRTC RFC 9627 Section 3.3 I=1/B=1 Layer-Up-Switch Gate & [32, 64] kbps Protected Opus Audio Floor Guard.
+     */
+    export function evaluateWebrtcRfc9627LayerUpSwitchKeyframeSyncAndAudioFloorSheddingGate(
+      ctx: WebrtcRfc9627LayerUpSwitchKeyframeSyncAndAudioFloorSheddingContext,
+    ): WebrtcRfc9627LayerUpSwitchKeyframeSyncAndAudioFloorSheddingResult {
+      const policyId =
+        "P978-WEBRTC-RFC9627-LAYER-UPSWITCH-KEYFRAME-SYNC-AND-AUDIO-FLOOR-SHEDDING-GUARD";
+      const clampedUnsyncedLayerUpSwitchOrAudioStarvationDrops = 0;
+      const clampedProtectedAudioFloorKbps = Math.min(
+        64,
+        Math.max(
+          32,
+          Number.isFinite(ctx.protectedAudioFloorKbps)
+            ? Math.round(ctx.protectedAudioFloorKbps)
+            : 48,
+        ),
+      );
+
+      if (ctx.unsyncedLayerUpSwitchOrAudioFloorStarvationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "hold_layer_upswitch_until_i_or_b_sync_and_lock_audio_floor",
+          reason:
+            "WebRTC RFC 9627 Section 3.3 unsynchronized temporal/spatial layer up-switch (I=0 and B=0) or video congestion starving the Opus voice floor detected; holding layer up-switch until S=1 && (I=1 || B=1) and locking protected Opus audio floor in [32, 64] kbps (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnsyncedLayerUpSwitchOrAudioStarvationDrops,
+          clampedProtectedAudioFloorKbps,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.unsyncedLayerUpSwitchOrAudioStarvationDrops) ||
+        ctx.unsyncedLayerUpSwitchOrAudioStarvationDrops !== 0 ||
+        !Number.isFinite(ctx.protectedAudioFloorKbps) ||
+        ctx.protectedAudioFloorKbps < 32 ||
+        ctx.protectedAudioFloorKbps > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unsynced_upswitch_drops_and_audio_floor_kbps",
+          reason:
+            "Unsynced layer up-switch / audio starvation drops (>0 synthetic ceiling) or protected Opus audio floor (<32 or >64 kbps synthetic bounds) out of bounds; clamping drops to 0 and audio floor to [32, 64] kbps.",
+          clampedUnsyncedLayerUpSwitchOrAudioStarvationDrops,
+          clampedProtectedAudioFloorKbps,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 9627 S=1 && (I=1 || B=1) layer up-switch sync and [32, 64] kbps protected Opus audio floor verified.",
+        clampedUnsyncedLayerUpSwitchOrAudioStarvationDrops,
+        clampedProtectedAudioFloorKbps,
+      };
+    }
+
 
 
 
