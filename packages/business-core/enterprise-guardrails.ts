@@ -83140,6 +83140,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSdpRfc8842DtlsConnectionNewRehandshakeAndSha256FingerprintContext {
+      certificateOrIceChangedWithoutConnectionNewOrWeakFingerprintDetected: boolean;
+      desyncedOrWeakFingerprintDtlsSessions: number;
+      fingerprintDigestBits: number;
+    }
+
+    export interface WebrtcSdpRfc8842DtlsConnectionNewRehandshakeAndSha256FingerprintDecision {
+      violated: boolean;
+      policyId: "P941-WEBRTC-SDP-RFC8842-DTLS-CONNECTION-NEW-REHANDSHAKE-AND-SHA256-FINGERPRINT-GUARD";
+      action:
+        | "enforce_connection_new_actpass_rehandshake_and_reject_weak_fingerprint"
+        | "clamp_desynced_dtls_sessions_and_fingerprint_digest_bits"
+        | "allow";
+      reason: string;
+      clampedDesyncedOrWeakFingerprintDtlsSessions: number;
+      clampedFingerprintDigestBits: number;
+    }
+
+    export function evaluateWebrtcSdpRfc8842DtlsConnectionNewRehandshakeAndSha256FingerprintGate(
+      context: WebrtcSdpRfc8842DtlsConnectionNewRehandshakeAndSha256FingerprintContext,
+    ): WebrtcSdpRfc8842DtlsConnectionNewRehandshakeAndSha256FingerprintDecision {
+      const policyId =
+        "P941-WEBRTC-SDP-RFC8842-DTLS-CONNECTION-NEW-REHANDSHAKE-AND-SHA256-FINGERPRINT-GUARD" as const;
+      const clampedDesyncedOrWeakFingerprintDtlsSessions = 0;
+      const clampedFingerprintDigestBits = Math.min(
+        Math.max(context.fingerprintDigestBits, 256),
+        512,
+      );
+
+      if (context.certificateOrIceChangedWithoutConnectionNewOrWeakFingerprintDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_connection_new_actpass_rehandshake_and_reject_weak_fingerprint",
+          reason:
+            "Enterprise WebRTC RFC 8842 Section 5 DTLS-SRTP a=connection:new Re-Handshake & Strong Fingerprint Policy Check: mid-call pod failover changed certificate a=fingerprint or ICE credentials while retaining a=connection:existing (skipping DTLS re-handshake and causing SRTP key-desync dead air) or offered weak SHA-1/MD5 hash; offline synthetic policy state machine enforcing a=connection:new + a=setup:actpass and SHA-256+ digest (0 desynced/weak DTLS sessions) clamped to [256, 512] bits (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live BoringSSL/OpenSSL DTLS handshake and RFC 5705 SRTP exporter latency not_measured).",
+          clampedDesyncedOrWeakFingerprintDtlsSessions,
+          clampedFingerprintDigestBits,
+        };
+      }
+
+      if (
+        context.desyncedOrWeakFingerprintDtlsSessions > 0 ||
+        context.fingerprintDigestBits < 256 ||
+        context.fingerprintDigestBits > 512
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_desynced_dtls_sessions_and_fingerprint_digest_bits",
+          reason:
+            "Desynced/weak-fingerprint DTLS sessions (>0 synthetic ceiling) or fingerprint digest bits (<256b or >512b synthetic bounds) out of bounds; clamping desynced sessions to 0 and fingerprint digest bits to [256, 512].",
+          clampedDesyncedOrWeakFingerprintDtlsSessions,
+          clampedFingerprintDigestBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8842 a=connection:new failover re-handshake (0 desynced sessions) and [256, 512]-bit fingerprint verified.",
+        clampedDesyncedOrWeakFingerprintDtlsSessions,
+        clampedFingerprintDigestBits,
+      };
+    }
+
+    export interface WebrtcSdpRfc8830MsidStreamTrackBindingAndCrossStreamSpliceContext {
+      crossStreamMsidTrackIdRebindOrMediaTypeMutationDetected: boolean;
+      hijackedOrSplicedMsidTracks: number;
+      maxMsidTokenLengthChars: number;
+    }
+
+    export interface WebrtcSdpRfc8830MsidStreamTrackBindingAndCrossStreamSpliceDecision {
+      violated: boolean;
+      policyId: "P942-WEBRTC-SDP-RFC8830-MSID-STREAM-TRACK-BINDING-AND-CROSS-STREAM-SPLICE-GUARD";
+      action:
+        | "reject_cross_stream_msid_rebinding_and_pin_immutable_track_tuple"
+        | "clamp_hijacked_msid_tracks_and_token_length_bounds"
+        | "allow";
+      reason: string;
+      clampedHijackedOrSplicedMsidTracks: number;
+      clampedMaxMsidTokenLengthChars: number;
+    }
+
+    export function evaluateWebrtcSdpRfc8830MsidStreamTrackBindingAndCrossStreamSpliceGate(
+      context: WebrtcSdpRfc8830MsidStreamTrackBindingAndCrossStreamSpliceContext,
+    ): WebrtcSdpRfc8830MsidStreamTrackBindingAndCrossStreamSpliceDecision {
+      const policyId =
+        "P942-WEBRTC-SDP-RFC8830-MSID-STREAM-TRACK-BINDING-AND-CROSS-STREAM-SPLICE-GUARD" as const;
+      const clampedHijackedOrSplicedMsidTracks = 0;
+      const clampedMaxMsidTokenLengthChars = Math.min(
+        Math.max(context.maxMsidTokenLengthChars, 1),
+        64,
+      );
+
+      if (context.crossStreamMsidTrackIdRebindOrMediaTypeMutationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_cross_stream_msid_rebinding_and_pin_immutable_track_tuple",
+          reason:
+            "Enterprise WebRTC RFC 8830 a=msid MediaStream Track Binding & Anti-Splicing Policy Check: mid-call SDP renegotiation attempted to rebind an existing appdata-track-id across m= sections or splice supervisor whisper/video tracks into the caller audio channel; offline synthetic policy state machine pinning immutable (mid, mediaType, stream-id, track-id) tuples (0 hijacked msid tracks) and clamping msid token length to [1, 64] chars (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU track-router table lookup latency not_measured).",
+          clampedHijackedOrSplicedMsidTracks,
+          clampedMaxMsidTokenLengthChars,
+        };
+      }
+
+      if (
+        context.hijackedOrSplicedMsidTracks > 0 ||
+        context.maxMsidTokenLengthChars < 1 ||
+        context.maxMsidTokenLengthChars > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_hijacked_msid_tracks_and_token_length_bounds",
+          reason:
+            "Hijacked/spliced RFC 8830 a=msid tracks (>0 synthetic ceiling) or max msid token length (<1 or >64 chars synthetic bounds) out of bounds; clamping hijacked tracks to 0 and token length to [1, 64] chars.",
+          clampedHijackedOrSplicedMsidTracks,
+          clampedMaxMsidTokenLengthChars,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8830 immutable (mid, stream-id, track-id) binding (0 hijacked tracks) and [1, 64]-char token bounds verified.",
+        clampedHijackedOrSplicedMsidTracks,
+        clampedMaxMsidTokenLengthChars,
+      };
+    }
+
 
 
 

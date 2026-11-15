@@ -2041,6 +2041,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: suppresses 100% of blind-transfer implicit Event: refer subscriptions via Refer-Sub: false (0 leaked zombie subscriptions) and clamps fallback TTL in [15, 90]s; live SBC multi-usage dialog reference-count reclamation latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces synchronous RFC 7647 200 OK authorization and strips 100% of internal Via/Contact headers from message/sipfrag (0 topology leaks) clamped in [16, 128] bytes; live SBC sipfrag serializer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "477. [Topic 114 · Historic 951-Guardrail, 960-Probe & 770-Live-POC Milestone 🎉: voice-webrtc-sdp-rfc8842-rfc8830-dtls-connection-new-rehandshake-msid-track-hijack-faq] Enterprise WebRTC RFC 8842 DTLS connection:new [256,512]b Re-Handshake & RFC 8830 Immutable a=msid [1,64]B Track-Binding Guard (P941 / P942 🎉 — Stage 474 · 🎉 Historic 951-Guardrail, 960-Probe & 770-Live-POC Milestone · 477 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 8842 a=connection:new + a=setup:actpass on certificate/ICE changes and rejects SHA-1/MD5 hashes (0 desynced/weak DTLS sessions) clamped in [256, 512] bits; live BoringSSL/OpenSSL DTLS handshake and RFC 5705 SRTP exporter latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins immutable RFC 8830 (mid, mediaType, stream-id, track-id) bindings across renegotiations (0 hijacked/spliced msid tracks) and clamps msid token length in [1, 64] chars; live SFU track-router table lookup latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

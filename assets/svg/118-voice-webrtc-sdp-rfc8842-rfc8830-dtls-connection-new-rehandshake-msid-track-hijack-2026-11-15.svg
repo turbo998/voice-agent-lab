@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg118" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent118" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg118)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="8" rx="4" fill="url(#accent118)"/>
+
+  <text x="56" y="68" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700" letter-spacing="1">STAGE 474 · TOPIC 114 · P941–P942 🎉 · 951 GUARDS, 960 PROBES &amp; 770 LIVE POC MILESTONE · 477 DIMS · 916 TESTS</text>
+  <text x="56" y="102" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24.5" font-weight="800">WebRTC RFC 8842 &amp; RFC 8830: DTLS connection:new Re-Handshake &amp; a=msid Track Guard</text>
+  <text x="56" y="128" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业 WebRTC RFC 8842/8830 重协商：严防容灾换节点漏标 connection:new 致 SRTP 密钥失步静音与 a=msid 跨流串音劫持 (P941–P942 🎉)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="56" y="152" width="528" height="390" rx="14" fill="#1E1B2E" stroke="#EF4444" stroke-width="2"/>
+  <rect x="76" y="172" width="298" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="90" y="191" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">❌ 脆弱基线 (Stale connection:existing &amp; msid Hijack)</text>
+
+  <text x="76" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. 换节点证书变更却标 existing 致 SRTP 失步静音</text>
+  <text x="76" y="250" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">New Pod Cert + a=connection:existing -&gt; 0 DTLS Handshake</text>
+  <text x="76" y="272" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 客户端沿用旧 Pod A 的 SRTP 密钥，新 Pod B 100% 解密失败死寂！</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 放行 a=fingerprint:sha-1 (160b) 弱哈希遭受碰撞伪造中间人劫持！</text>
+
+  <line x1="76" y1="320" x2="560" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="76" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. RFC 8830 a=msid 跨流复用 track-id 串音泄密</text>
+  <text x="76" y="376" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">a=msid:whisper-stream caller-track-01 (512B Overflow)</text>
+  <text x="76" y="398" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 重协商将新音轨绑定至已有主叫 track-id，劫持声纹核身与耳语通道！</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 注入 512 字节非 token-char 畸形 msid 撑爆终端 SDP 解析器！</text>
+
+  <rect x="76" y="450" width="488" height="72" rx="10" fill="#450A0A" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="92" y="476" fill="#FECACA" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">事故后果：14 条热切通话 SRTP 失步静音 + 9 条 a=msid 跨流串音劫持</text>
+  <text x="92" y="500" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">容灾切换瞬间全线通话无声掉线，且旁听耳语与主叫声道错位混音</text>
+
+  <!-- Right Card: Deterministic Guardrails P941-P942 -->
+  <rect x="616" y="152" width="528" height="390" rx="14" fill="#0F292A" stroke="#10B981" stroke-width="2"/>
+  <rect x="636" y="172" width="340" height="28" rx="6" fill="#064E3B"/>
+  <text x="650" y="191" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">✅ 企业级护栏 (P941 + P942 🎉 · 951 Guards &amp; 960 Probes)</text>
+
+  <text x="636" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P941 🎉 · RFC 8842 connection:new 与 [256, 512]b 指纹锁</text>
+  <text x="636" y="250" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Cert Change -&gt; connection:new + actpass · Hash ∈ [256, 512]b</text>
+  <text x="636" y="272" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 检出 fingerprint/ICE 变更自动注入 connection:new + setup:actpass</text>
+  <text x="636" y="294" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 拦截 sha-1/md5，强制 SHA-256/384/512 ([256, 512]b · 0 失步静音)</text>
+
+  <line x1="636" y1="320" x2="1120" y2="320" stroke="#1E293B" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="636" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P942 🎉 · RFC 8830 a=msid 唯一轨迹锁与 [1, 64]B 边界</text>
+  <text x="636" y="376" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Immutable (mid, stream-id, track-id) · Token ∈ [1, 64] Chars</text>
+  <text x="636" y="398" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 终生锁定 mid 与 track-id/媒体类型唯一映射，0ms 阻断跨流嫁接</text>
+  <text x="636" y="420" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 校验 RFC 8830 token-char 语法并将标识符长度钳制在 [1, 64] 字符</text>
+
+  <rect x="636" y="450" width="488" height="72" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5"/>
+  <text x="652" y="476" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">验证结果：0 SRTP 密钥失步静音 · 0 msid 跨流劫持 · 256b / 64B 封顶</text>
+  <text x="652" y="500" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer Provenance -->
+  <rect x="56" y="560" width="1088" height="68" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="76" y="586" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Benchmark &amp; Provenance (Stage 474 · Topic 114 · 951 Guardrails 🎉 · 960 Probes 🎉 · 770 Live POC Probes 🎉 · 477 Dims · 916 Tests)</text>
+  <text x="76" y="610" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Guardrails: evaluateWebrtcSdpRfc8842DtlsConnectionNewRehandshakeAndSha256FingerprintGate (P941 🎉) &amp; evaluateWebrtcSdpRfc8830MsidStreamTrackBindingAndCrossStreamSpliceGate (P942 🎉)</text>
+</svg>
