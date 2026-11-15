@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg133" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accent133" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg133)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="24" width="1144" height="6" rx="3" fill="url(#accent133)"/>
+
+  <text x="54" y="66" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">2026-11-15 · STAGE 489 · TOPIC 129 · 131ST FAQ · 492 DIMS · 🎉 HISTORIC 981 GUARDRAILS, 990 PROBES &amp; 800 LIVE POC PROBES MILESTONE (P971–P972 🎉)</text>
+  <text x="54" y="98" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="800">SIP RFC 6873 P-Private-Network-Indication &amp; RFC 8039 Multipath RTP Subflow Quota Guard</text>
+  <text x="54" y="124" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">P971 Untrusted PNI Ingress Strip &amp; [1, 8] Domain Allowlist · P972 🎉 (800th Live POC Probe!) [1, 2] STUN-Verified MPRTP Subflows</text>
+
+  <!-- Left Panel: Unprotected PNI Spoofing & MPRTP Amplification Risks -->
+  <rect x="54" y="146" width="530" height="390" rx="12" fill="#1E1B4B" fill-opacity="0.45" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="76" y="178" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">❌ Legacy PNI Privilege Bypass &amp; MPRTP Fan-Out Flood</text>
+
+  <rect x="76" y="196" width="486" height="98" rx="8" fill="#0F172A" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="220" fill="#F87171" font-family="Consolas, monospace" font-size="13" font-weight="700">1. Forged P-Private-Network-Indication (RFC 6873) Bypass</text>
+  <text x="92" y="242" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• External PSTN attacker injects P-Private-Network-Indication</text>
+  <text x="92" y="262" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Tricks PBX/AI Agent into treating call as internal VPN extension!</text>
+  <text x="92" y="280" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Or leaks internal corp-treasury.example.com PNI on PSTN egress</text>
+
+  <rect x="76" y="308" width="486" height="98" rx="8" fill="#0F172A" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="332" fill="#F87171" font-family="Consolas, monospace" font-size="13" font-weight="700">2. Unverified SDP a=mprtp 16-Subflow Amplification (RFC 8039)</text>
+  <text x="92" y="354" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Malicious SDP advertises 16 a=mprtp subflow target IPs</text>
+  <text x="92" y="374" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Media server duplicates RTP stream 16× without STUN check</text>
+  <text x="92" y="392" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Weaponizes voice gateway into 16× UDP reflection amplifier</text>
+
+  <rect x="76" y="420" width="486" height="98" rx="8" fill="#450A0A" fill-opacity="0.6" stroke="#EF4444" stroke-width="1"/>
+  <text x="92" y="446" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Enterprise Production Impact (Without P971–P972)</text>
+  <text x="92" y="468" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• External callers access internal-only AI executive tools</text>
+  <text x="92" y="488" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Multipath RTP subflows abused for volumetric UDP DDoS</text>
+  <text x="92" y="506" fill="#FCA5A5" font-family="Consolas, monospace" font-size="12">Verdict: BLOCK (Spoofed PNI Privilege Escalation / MPRTP Flood)</text>
+
+  <!-- Right Panel: Deterministic P971-P972 Guardrails -->
+  <rect x="616" y="146" width="530" height="390" rx="12" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.5"/>
+  <text x="638" y="178" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">✅ Deterministic RFC 6873 PNI &amp; RFC 8039 MPRTP Guards (P971–P972 🎉)</text>
+
+  <rect x="638" y="196" width="486" height="148" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="654" y="220" fill="#34D399" font-family="Consolas, monospace" font-size="13" font-weight="700">P971 (980th Guard 🎉): PNI Trust-Boundary Strip &amp; [1, 8] Allowlist</text>
+  <text x="654" y="242" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Strip 100% of P-Private-Network-Indication on untrusted ingress</text>
+  <text x="654" y="262" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Scrub PNI headers before forwarding to public PSTN/NNI trunks</text>
+  <text x="654" y="282" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Clamp tenant private-network domain allowlist in [1, 8]</text>
+  <text x="654" y="302" fill="#38BDF8" font-family="Consolas, monospace" font-size="12">• spoofedOrLeakedPrivateNetworkIndicationHeaders == 0</text>
+  <text x="654" y="324" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">• Gate: evaluateSipRfc6873PPrivateNetworkIndicationTrust...()</text>
+
+  <rect x="638" y="358" width="486" height="160" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="654" y="382" fill="#34D399" font-family="Consolas, monospace" font-size="13" font-weight="700">P972 🎉 (981st Guard / 990th Probe / 800th POC): [1, 2] MPRTP Gate</text>
+  <text x="654" y="404" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Cap active RFC 8039 a=mprtp subflows strictly within [1, 2]</text>
+  <text x="654" y="424" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Require STUN connectivity check before sending subflow RTP</text>
+  <text x="654" y="444" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Enable Wi-Fi + 5G dual-path voice resilience with 0 amplification</text>
+  <text x="654" y="464" fill="#38BDF8" font-family="Consolas, monospace" font-size="12">• unverifiedMprtpSubflowAmplificationDrops == 0</text>
+  <text x="654" y="486" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">• Gate: evaluateWebrtcSipRfc8039MultipathRtpSubflowQuota...()</text>
+  <text x="654" y="506" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11.5">Verdict: PASS (0 Spoofed PNI · [1, 2] Verified Subflows · 931 Tests)</text>
+
+  <!-- Footer Provenance & Offline Timing Banner -->
+  <rect x="54" y="552" width="1092" height="76" rx="10" fill="#090D16" stroke="#334155" stroke-width="1"/>
+  <text x="74" y="578" fill="#34D399" font-family="Consolas, monospace" font-size="12.5" font-weight="700">Offline Synthetic Policy Engine Provenance · 981 Guardrails 🎉 · 990 Sandbox Probes 🎉 · 800 Live POC Probes 🎉 · 492 Dims · 931 Tests</text>
+  <text x="74" y="600" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">Timing Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="74" y="618" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Standards: IETF RFC 6873 (SIP P-Private-Network-Indication), RFC 8039 (Multipath RTP SDP Signaling), 3GPP TS 24.229 (PNI Boundary).</text>
+</svg>

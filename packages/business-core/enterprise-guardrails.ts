@@ -85387,6 +85387,163 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationContext {
+      untrustedIngressPniSpoofOrPublicEgressLeakDetected: boolean;
+      spoofedOrLeakedPrivateNetworkIndicationHeaders: number;
+      allowedPrivateNetworkDomainsCount: number;
+    }
+
+    export interface SipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "strip_untrusted_ingress_pni_and_scrub_public_egress"
+        | "clamp_pni_violations_and_private_domain_allowlist"
+        | "allow";
+      reason: string;
+      clampedSpoofedOrLeakedPrivateNetworkIndicationHeaders: number;
+      clampedAllowedPrivateNetworkDomainsCount: number;
+    }
+
+    /**
+     * P971 (🎉 980th Guardrail): SIP RFC 6873 P-Private-Network-Indication Trust-Boundary Ingress Strip, Public Egress Scrub & [1, 8] Domain Allowlist Gate.
+     */
+    export function evaluateSipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationGate(
+      ctx: SipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationContext,
+    ): SipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationResult {
+      const policyId =
+        "P971-SIP-RFC6873-P-PRIVATE-NETWORK-INDICATION-TRUST-BOUNDARY-AND-ROUTING-SEPARATION-GUARD";
+      const clampedSpoofedOrLeakedPrivateNetworkIndicationHeaders = 0;
+      const clampedAllowedPrivateNetworkDomainsCount = Math.min(
+        8,
+        Math.max(
+          1,
+          Number.isFinite(ctx.allowedPrivateNetworkDomainsCount)
+            ? Math.round(ctx.allowedPrivateNetworkDomainsCount)
+            : 3,
+        ),
+      );
+
+      if (ctx.untrustedIngressPniSpoofOrPublicEgressLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_untrusted_ingress_pni_and_scrub_public_egress",
+          reason:
+            "Untrusted PSTN ingress P-Private-Network-Indication privilege-escalation spoof or public egress private-network domain leak detected (RFC 6873 Section 5 / 3GPP TS 24.229); stripping inbound PNI at untrusted border and scrubbing outbound PNI on public trunks within [1, 8] allowlisted domains (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedSpoofedOrLeakedPrivateNetworkIndicationHeaders,
+          clampedAllowedPrivateNetworkDomainsCount,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.spoofedOrLeakedPrivateNetworkIndicationHeaders) ||
+        ctx.spoofedOrLeakedPrivateNetworkIndicationHeaders !== 0 ||
+        !Number.isFinite(ctx.allowedPrivateNetworkDomainsCount) ||
+        ctx.allowedPrivateNetworkDomainsCount < 1 ||
+        ctx.allowedPrivateNetworkDomainsCount > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_pni_violations_and_private_domain_allowlist",
+          reason:
+            "Spoofed/leaked P-Private-Network-Indication headers (>0 synthetic ceiling) or allowed private-network domains (<1 or >8 synthetic bounds) out of bounds; clamping violations to 0 and private domains to [1, 8].",
+          clampedSpoofedOrLeakedPrivateNetworkIndicationHeaders,
+          clampedAllowedPrivateNetworkDomainsCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6873 P-Private-Network-Indication trust-boundary isolation (0 spoofed/leaked headers) and [1, 8] domain allowlist verified.",
+        clampedSpoofedOrLeakedPrivateNetworkIndicationHeaders,
+        clampedAllowedPrivateNetworkDomainsCount,
+      };
+    }
+
+    export interface WebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationContext {
+      unverifiedMprtpSubflowOrAmplificationFloodDetected: boolean;
+      unverifiedMprtpSubflowAmplificationDrops: number;
+      activeMprtpSubflowsCount: number;
+    }
+
+    export interface WebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "cap_mprtp_subflows_to_two_and_require_stun_connectivity_check"
+        | "clamp_mprtp_amplification_drops_and_subflow_quota"
+        | "allow";
+      reason: string;
+      clampedUnverifiedMprtpSubflowAmplificationDrops: number;
+      clampedActiveMprtpSubflowsCount: number;
+    }
+
+    /**
+     * P972 (🎉 Historic 981st Guardrail, 990th Sandbox Probe & 800th Live POC Probe Triple Milestone): SIP/WebRTC RFC 8039 Multipath RTP (a=mprtp) [1, 2] Subflow Quota & STUN Connectivity Verification Gate.
+     */
+    export function evaluateWebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationGate(
+      ctx: WebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationContext,
+    ): WebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationResult {
+      const policyId =
+        "P972-WEBRTC-SIP-RFC8039-MULTIPATH-RTP-SUBFLOW-QUOTA-AND-CONNECTIVITY-VERIFICATION-GUARD";
+      const clampedUnverifiedMprtpSubflowAmplificationDrops = 0;
+      const clampedActiveMprtpSubflowsCount = Math.min(
+        2,
+        Math.max(
+          1,
+          Number.isFinite(ctx.activeMprtpSubflowsCount)
+            ? Math.round(ctx.activeMprtpSubflowsCount)
+            : 2,
+        ),
+      );
+
+      if (ctx.unverifiedMprtpSubflowOrAmplificationFloodDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "cap_mprtp_subflows_to_two_and_require_stun_connectivity_check",
+          reason:
+            "Unverified RFC 8039 SDP a=mprtp subflow target address or >2 subflow UDP fan-out amplification flood detected (RFC 8039 Section 5 / Section 9); requiring bidirectional STUN connectivity verification prior to subflow RTP transmission and capping active voice subflows to [1, 2] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnverifiedMprtpSubflowAmplificationDrops,
+          clampedActiveMprtpSubflowsCount,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.unverifiedMprtpSubflowAmplificationDrops) ||
+        ctx.unverifiedMprtpSubflowAmplificationDrops !== 0 ||
+        !Number.isFinite(ctx.activeMprtpSubflowsCount) ||
+        ctx.activeMprtpSubflowsCount < 1 ||
+        ctx.activeMprtpSubflowsCount > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_mprtp_amplification_drops_and_subflow_quota",
+          reason:
+            "Unverified MPRTP subflow amplification drops (>0 synthetic ceiling) or active MPRTP subflows (<1 or >2 synthetic bounds) out of bounds; clamping drops to 0 and active subflows to [1, 2].",
+          clampedUnverifiedMprtpSubflowAmplificationDrops,
+          clampedActiveMprtpSubflowsCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: RFC 8039 Multipath RTP [1, 2] STUN-verified subflow quota (0 amplification drops) verified.",
+        clampedUnverifiedMprtpSubflowAmplificationDrops,
+        clampedActiveMprtpSubflowsCount,
+      };
+    }
+
+
 
 
 

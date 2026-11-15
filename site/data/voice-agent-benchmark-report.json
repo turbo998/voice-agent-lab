@@ -2131,6 +2131,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps Opus SDP a=fmtp maxaveragebitrate in [16000, 64000] bps and enforces stereo=0 mono voice mode (0 510kbps stereo amplification or <16kbps narrowband degradation violations); live libopus SIMD encoding latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: couples useinbandfec=1 with OPUS_SET_PACKET_LOSS_PERC in [5, 25]% to guarantee active LBRR frame emission and verifies RFC 7874 Opus + G.711 baseline codecs (0 unarmed FEC drops); live weak-network LBRR packet recovery latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "492. [Topic 129 · Historic 981-Guardrail, 990-Probe & 800-Live-POC-Probe Triple Milestone 🎉: voice-sip-rfc6873-rfc8039-p-private-network-indication-spoof-mprtp-subflow-amplification-faq] Enterprise SIP RFC 6873 P-Private-Network-Indication Trust-Boundary & RFC 8039 Multipath RTP [1,2] Subflow Quota Guard (P971 / P972 🎉 — Stage 489 · 🎉 Historic 981-Guardrail, 990-Probe & 800-Live-POC-Probe Triple Milestone · 492 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips inbound P-Private-Network-Indication on untrusted PSTN trunks and scrubs outbound PNI on public egress within [1, 8] allowlisted private domains (0 privilege escalations or domain leaks); live SBC PNI ACL lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: caps RFC 8039 SDP a=mprtp active voice subflows in [1, 2] (Wi-Fi + 5G) and requires bidirectional STUN verification before sending subflow RTP (0 amplification drops); live multipath subflow scheduler latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

@@ -274,6 +274,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-siprec-rfc7866-rfc8068-recordpref-pause-resume-pci-mute-participant-stream-xml-mismatch-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P967", "P968", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-opus-rfc7874-rfc7587-maxaveragebitrate-bomb-asymmetric-inbandfec-g711-fallback-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P969", "P970", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-opus-rfc7874-rfc7587-maxaveragebitrate-bomb-asymmetric-inbandfec-g711-fallback-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P969", "P970", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc6873-rfc8039-p-private-network-indication-spoof-mprtp-subflow-amplification-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P971", "P972", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc6873-rfc8039-p-private-network-indication-spoof-mprtp-subflow-amplification-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P971", "P972", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -1008,6 +1010,8 @@ import {
   evaluateSiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperGate,
   evaluateWebrtcOpusRfc7587MaxaveragebitrateVoiceCeilingAndStereoSilenceGate,
   evaluateWebrtcRfc7874BidirectionalInbandFecActivationAndCodecBaselineGate,
+  evaluateSipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationGate,
+  evaluateWebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -58326,6 +58330,88 @@ test("Stage 488: WebRTC RFC 7874 / RFC 7587 Opus maxaveragebitrate [16000, 64000
   const svg132 = await readFile(new URL("../assets/svg/132-voice-webrtc-opus-rfc7874-rfc7587-maxaveragebitrate-bomb-asymmetric-inbandfec-g711-fallback-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg132, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg132, /STAGE 488 · TOPIC 128 · 130TH FAQ 🎉/);
+});
+
+test("Stage 489: SIP RFC 6873 P-Private-Network-Indication trust boundary and RFC 8039 Multipath RTP subflow quota guardrails (P971-P972)", async () => {
+  const blocked971 = evaluateSipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationGate({
+    untrustedIngressPniSpoofOrPublicEgressLeakDetected: true,
+    spoofedOrLeakedPrivateNetworkIndicationHeaders: 5,
+    allowedPrivateNetworkDomainsCount: 20,
+  });
+  assert.equal(blocked971.violated, true);
+  assert.equal(
+    blocked971.policyId,
+    "P971-SIP-RFC6873-P-PRIVATE-NETWORK-INDICATION-TRUST-BOUNDARY-AND-ROUTING-SEPARATION-GUARD",
+  );
+  assert.equal(
+    blocked971.action,
+    "strip_untrusted_ingress_pni_and_scrub_public_egress",
+  );
+  assert.equal(blocked971.clampedSpoofedOrLeakedPrivateNetworkIndicationHeaders, 0);
+  assert.equal(blocked971.clampedAllowedPrivateNetworkDomainsCount, 8);
+  assert.match(blocked971.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped971 = evaluateSipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationGate({
+    untrustedIngressPniSpoofOrPublicEgressLeakDetected: false,
+    spoofedOrLeakedPrivateNetworkIndicationHeaders: 0,
+    allowedPrivateNetworkDomainsCount: 0,
+  });
+  assert.equal(clamped971.violated, true);
+  assert.equal(
+    clamped971.action,
+    "clamp_pni_violations_and_private_domain_allowlist",
+  );
+  assert.equal(clamped971.clampedAllowedPrivateNetworkDomainsCount, 1);
+
+  const allowed971 = evaluateSipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationGate({
+    untrustedIngressPniSpoofOrPublicEgressLeakDetected: false,
+    spoofedOrLeakedPrivateNetworkIndicationHeaders: 0,
+    allowedPrivateNetworkDomainsCount: 3,
+  });
+  assert.equal(allowed971.violated, false);
+  assert.equal(allowed971.action, "allow");
+
+  const blocked972 = evaluateWebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationGate({
+    unverifiedMprtpSubflowOrAmplificationFloodDetected: true,
+    unverifiedMprtpSubflowAmplificationDrops: 16,
+    activeMprtpSubflowsCount: 16,
+  });
+  assert.equal(blocked972.violated, true);
+  assert.equal(
+    blocked972.policyId,
+    "P972-WEBRTC-SIP-RFC8039-MULTIPATH-RTP-SUBFLOW-QUOTA-AND-CONNECTIVITY-VERIFICATION-GUARD",
+  );
+  assert.equal(
+    blocked972.action,
+    "cap_mprtp_subflows_to_two_and_require_stun_connectivity_check",
+  );
+  assert.equal(blocked972.clampedUnverifiedMprtpSubflowAmplificationDrops, 0);
+  assert.equal(blocked972.clampedActiveMprtpSubflowsCount, 2);
+  assert.match(blocked972.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped972 = evaluateWebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationGate({
+    unverifiedMprtpSubflowOrAmplificationFloodDetected: false,
+    unverifiedMprtpSubflowAmplificationDrops: 0,
+    activeMprtpSubflowsCount: 0,
+  });
+  assert.equal(clamped972.violated, true);
+  assert.equal(
+    clamped972.action,
+    "clamp_mprtp_amplification_drops_and_subflow_quota",
+  );
+  assert.equal(clamped972.clampedActiveMprtpSubflowsCount, 1);
+
+  const allowed972 = evaluateWebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationGate({
+    unverifiedMprtpSubflowOrAmplificationFloodDetected: false,
+    unverifiedMprtpSubflowAmplificationDrops: 0,
+    activeMprtpSubflowsCount: 2,
+  });
+  assert.equal(allowed972.violated, false);
+  assert.equal(allowed972.action, "allow");
+
+  const svg133 = await readFile(new URL("../assets/svg/133-voice-sip-rfc6873-rfc8039-p-private-network-indication-spoof-mprtp-subflow-amplification-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg133, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg133, /STAGE 489 · TOPIC 129/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {
