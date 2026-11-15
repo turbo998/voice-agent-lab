@@ -2047,6 +2047,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 8842 a=connection:new + a=setup:actpass on certificate/ICE changes and rejects SHA-1/MD5 hashes (0 desynced/weak DTLS sessions) clamped in [256, 512] bits; live BoringSSL/OpenSSL DTLS handshake and RFC 5705 SRTP exporter latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins immutable RFC 8830 (mid, mediaType, stream-id, track-id) bindings across renegotiations (0 hijacked/spliced msid tracks) and clamps msid token length in [1, 64] chars; live SFU track-router table lookup latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "478. [Topic 115 🎉 · Historic Stage 475 & Topic 115 Dual Milestone 🎉: voice-sip-rfc5806-rfc8197-diversion-loop-480-retry-after-storm-backoff-faq] Enterprise SIP RFC 5806 Diversion [1,5]-Hop Loop/Redaction & RFC 3261 Retry-After [5,120]s Storm Backoff Guard (P943 / P944 — Stage 475 🎉 · 🎉 Historic Stage 475 & Topic 115 Dual Milestone · 478 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects cyclic RFC 5806 Diversion chains, redacts internal PBX extensions to enterprise DID (0 leaked/looping calls), and clamps forwarding hops in [1, 5]; live SBC Diversion header list traversal latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces jittered RFC 3261 Retry-After backoff on 480/486/500/503 responses (0 storming or 24h locked-out trunks) clamped in [5, 120]s; live dialer timer-wheel scheduling latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

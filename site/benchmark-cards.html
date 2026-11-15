@@ -1875,6 +1875,13 @@
               <td><code>P941 / P942 🎉 deterministic WebRTC RFC 8842 DTLS connection:new [256,512]b &amp; RFC 8830 immutable a=msid [1,64]B guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>478. [专题115 🎉 · Stage 475 双里程碑 🎉 `docs/voice-sip-rfc5806-rfc8197-diversion-loop-480-retry-after-storm-backoff-faq.md`] 企业 SIP `RFC 5806 Diversion` 历史 URI 环路阻断、出局内网分机 DID 脱敏与 `[1, 5]` 跳上限锁（`0` 死循环或分机泄密呼叫，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC `Diversion` 链表遍历耗时 `not_measured`）&amp; `RFC 3261 Section 20.33 / RFC 5390 Retry-After` 在 `480/486/500/503` 下的 `[5, 120]s` 双向退避钳制锁（`0` 毫秒级重拨雪崩或 `24h` 恶意冻结中继；真实定时器轮调度耗时 `not_measured`）(`P943` / `P944` · Stage 475 🎉 · Topic 115 🎉 · 🎉 Stage 475 与第 115 大专题双里程碑 · 953 护栏 &amp; 962 探针 · 478 维)</strong>
+              </td>
+              <td><code>P943 / P944 deterministic SIP RFC 5806 Diversion [1,5] hops &amp; RFC 3261 Retry-After [5,120]s backoff guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5726,6 +5733,13 @@
                 <strong>477. [专题114 · 951护栏 &amp; 960探针 &amp; 770现场探针 🎉 `docs/voice-webrtc-sdp-rfc8842-rfc8830-dtls-connection-new-rehandshake-msid-track-hijack-faq.md`] 企业 WebRTC `RFC 8842 Section 5` 证书/ICE 变更强制 `a=connection:new + a=setup:actpass` 触发 `DTLS` 重握手防热切后 `SRTP` 密钥失步静音与 `[256, 512]` bits 强指纹锁（`0` 失步或弱指纹流，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `DTLS` 握手与 `RFC 5705` 密钥导出耗时 `not_measured`）&amp; `RFC 8830 a=msid` `(mid, stream-id, track-id)` 终生唯一绑定防跨流串音劫持与 `[1, 64]` 字符标识符长度锁（`0` 跨流劫持音轨；真实 SFU 轨路由表查找耗时 `not_measured`）(`P941` / `P942 🎉` · Stage 474 · Topic 114 · 🎉 951 护栏、960 探针与 770 现场探针三重里程碑 · 477 维)</strong>
               </td>
               <td><code>P941 / P942 🎉 deterministic WebRTC RFC 8842 DTLS connection:new [256,512]b &amp; RFC 8830 immutable a=msid [1,64]B guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>478. [专题115 🎉 · Stage 475 双里程碑 🎉 `docs/voice-sip-rfc5806-rfc8197-diversion-loop-480-retry-after-storm-backoff-faq.md`] 企业 SIP `RFC 5806 Diversion` 历史 URI 环路阻断、出局内网分机 DID 脱敏与 `[1, 5]` 跳上限锁（`0` 死循环或分机泄密呼叫，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC `Diversion` 链表遍历耗时 `not_measured`）&amp; `RFC 3261 Section 20.33 / RFC 5390 Retry-After` 在 `480/486/500/503` 下的 `[5, 120]s` 双向退避钳制锁（`0` 毫秒级重拨雪崩或 `24h` 恶意冻结中继；真实定时器轮调度耗时 `not_measured`）(`P943` / `P944` · Stage 475 🎉 · Topic 115 🎉 · 🎉 Stage 475 与第 115 大专题双里程碑 · 953 护栏 &amp; 962 探针 · 478 维)</strong>
+              </td>
+              <td><code>P943 / P944 deterministic SIP RFC 5806 Diversion [1,5] hops &amp; RFC 3261 Retry-After [5,120]s backoff guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

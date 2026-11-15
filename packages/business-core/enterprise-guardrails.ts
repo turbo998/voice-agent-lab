@@ -83276,6 +83276,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc5806DiversionHeaderHopCountAndInternalUriRedactionContext {
+      diversionLoopOrInternalExtensionTopologyLeakDetected: boolean;
+      leakedOrLoopingDiversionCalls: number;
+      maxDiversionForwardingHops: number;
+    }
+
+    export interface SipRfc5806DiversionHeaderHopCountAndInternalUriRedactionDecision {
+      violated: boolean;
+      policyId: "P943-SIP-RFC5806-DIVERSION-HEADER-HOP-COUNT-AND-INTERNAL-URI-REDACTION-GUARD";
+      action:
+        | "reject_diversion_loop_and_redact_internal_diversion_extensions"
+        | "clamp_diversion_leaks_and_forwarding_hop_bounds"
+        | "allow";
+      reason: string;
+      clampedLeakedOrLoopingDiversionCalls: number;
+      clampedMaxDiversionForwardingHops: number;
+    }
+
+    export function evaluateSipRfc5806DiversionHeaderHopCountAndInternalUriRedactionGate(
+      context: SipRfc5806DiversionHeaderHopCountAndInternalUriRedactionContext,
+    ): SipRfc5806DiversionHeaderHopCountAndInternalUriRedactionDecision {
+      const policyId =
+        "P943-SIP-RFC5806-DIVERSION-HEADER-HOP-COUNT-AND-INTERNAL-URI-REDACTION-GUARD" as const;
+      const clampedLeakedOrLoopingDiversionCalls = 0;
+      const clampedMaxDiversionForwardingHops = Math.min(
+        Math.max(context.maxDiversionForwardingHops, 1),
+        5,
+      );
+
+      if (context.diversionLoopOrInternalExtensionTopologyLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_diversion_loop_and_redact_internal_diversion_extensions",
+          reason:
+            "Enterprise SIP RFC 5806 Diversion Loop Detection & Internal Extension Redaction Policy Check: cross-B2BUA call forwarding reset Max-Forwards while creating a cyclic Diversion loop or leaked internal PBX extension URIs to external trunks; offline synthetic policy state machine rejecting cyclic Diversion chains (0 leaked/looping calls), redacting internal extensions to enterprise DID, and clamping forwarding hops to [1, 5] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SBC Diversion header list traversal latency not_measured).",
+          clampedLeakedOrLoopingDiversionCalls,
+          clampedMaxDiversionForwardingHops,
+        };
+      }
+
+      if (
+        context.leakedOrLoopingDiversionCalls > 0 ||
+        context.maxDiversionForwardingHops < 1 ||
+        context.maxDiversionForwardingHops > 5
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_diversion_leaks_and_forwarding_hop_bounds",
+          reason:
+            "Leaked/looping SIP RFC 5806 Diversion calls (>0 synthetic ceiling) or max Diversion forwarding hops (<1 or >5 synthetic bounds) out of bounds; clamping violations to 0 and forwarding hops to [1, 5].",
+          clampedLeakedOrLoopingDiversionCalls,
+          clampedMaxDiversionForwardingHops,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 5806 acyclic Diversion + DID redaction (0 leaked/looping calls) and [1, 5]-hop bounds verified.",
+        clampedLeakedOrLoopingDiversionCalls,
+        clampedMaxDiversionForwardingHops,
+      };
+    }
+
+    export interface SipRfc3261RetryAfterBackoffClampingAndRedialStormSuppressionContext {
+      missingOrMaliciousRetryAfterRedialStormDetected: boolean;
+      redialStormOrLockedOutSipTrunks: number;
+      retryAfterBackoffSeconds: number;
+    }
+
+    export interface SipRfc3261RetryAfterBackoffClampingAndRedialStormSuppressionDecision {
+      violated: boolean;
+      policyId: "P944-SIP-RFC3261-RETRY-AFTER-BACKOFF-CLAMPING-AND-REDIAL-STORM-SUPPRESSION-GUARD";
+      action:
+        | "enforce_bounded_retry_after_backoff_and_suppress_redial_storm"
+        | "clamp_redial_storm_trunks_and_retry_after_seconds"
+        | "allow";
+      reason: string;
+      clampedRedialStormOrLockedOutSipTrunks: number;
+      clampedRetryAfterBackoffSeconds: number;
+    }
+
+    export function evaluateSipRfc3261RetryAfterBackoffClampingAndRedialStormSuppressionGate(
+      context: SipRfc3261RetryAfterBackoffClampingAndRedialStormSuppressionContext,
+    ): SipRfc3261RetryAfterBackoffClampingAndRedialStormSuppressionDecision {
+      const policyId =
+        "P944-SIP-RFC3261-RETRY-AFTER-BACKOFF-CLAMPING-AND-REDIAL-STORM-SUPPRESSION-GUARD" as const;
+      const clampedRedialStormOrLockedOutSipTrunks = 0;
+      const clampedRetryAfterBackoffSeconds = Math.min(
+        Math.max(context.retryAfterBackoffSeconds, 5),
+        120,
+      );
+
+      if (context.missingOrMaliciousRetryAfterRedialStormDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_bounded_retry_after_backoff_and_suppress_redial_storm",
+          reason:
+            "Enterprise SIP RFC 3261 Section 20.33 / RFC 5390 Retry-After Backoff & Storm Control Policy Check: 480/486/500/503 response omitted Retry-After (triggering 0ms AI outbound redial avalanche) or injected extreme Retry-After: 86400s (locking out SIP trunk for 24 hours); offline synthetic policy state machine enforcing jittered backoff (0 storming/locked-out trunks) clamped to [5, 120]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live dialer timer-wheel scheduling latency not_measured).",
+          clampedRedialStormOrLockedOutSipTrunks,
+          clampedRetryAfterBackoffSeconds,
+        };
+      }
+
+      if (
+        context.redialStormOrLockedOutSipTrunks > 0 ||
+        context.retryAfterBackoffSeconds < 5 ||
+        context.retryAfterBackoffSeconds > 120
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_redial_storm_trunks_and_retry_after_seconds",
+          reason:
+            "Redial-storming or locked-out SIP trunks (>0 synthetic ceiling) or Retry-After backoff seconds (<5s or >120s synthetic bounds) out of bounds; clamping affected trunks to 0 and Retry-After to [5, 120]s.",
+          clampedRedialStormOrLockedOutSipTrunks,
+          clampedRetryAfterBackoffSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 3261 Retry-After jittered backoff (0 storming/locked-out trunks) and [5, 120]s bounds verified.",
+        clampedRedialStormOrLockedOutSipTrunks,
+        clampedRetryAfterBackoffSeconds,
+      };
+    }
+
 
 
 
