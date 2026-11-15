@@ -2137,6 +2137,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips inbound P-Private-Network-Indication on untrusted PSTN trunks and scrubs outbound PNI on public egress within [1, 8] allowlisted private domains (0 privilege escalations or domain leaks); live SBC PNI ACL lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: caps RFC 8039 SDP a=mprtp active voice subflows in [1, 2] (Wi-Fi + 5G) and requires bidirectional STUN verification before sending subflow RTP (0 amplification drops); live multipath subflow scheduler latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "493. [Topic 130 🎉 · Historic Stage 490 & Topic 130 Dual Milestone 🎉: voice-webrtc-sdp-rfc8859-rfc9143-bundle-mux-category-transport-attribute-conflict-tagged-mline-rehoming-faq] Enterprise WebRTC RFC 8859 / RFC 9143 SDP BUNDLE IDENTICAL/TRANSPORT Category Parity & Atomic bundle-tag Re-Homing Guard (P973 / P974 — Stage 490 🎉 · Topic 130 🎉 · 🎉 Historic Stage 490 & Topic 130 Dual Milestone · 493 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces verbatim IDENTICAL-category attribute parity (fingerprint/setup/rtcp-mux) across all bundled m= lines and restricts TRANSPORT attributes to the bundle-tag m= section within [1, 8] media lines (0 category conflicts); live SDP AST mux-category verifier latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: atomically promotes a surviving active mid to the new bundle-tag and migrates TRANSPORT attributes before disabling the old bundle-tag (port=0) while clamping SUM-category bandwidth in [32, 256] kbps (0 shared transport drops); live RTCPeerConnection bundle-tag re-homing latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

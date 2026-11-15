@@ -276,6 +276,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-webrtc-opus-rfc7874-rfc7587-maxaveragebitrate-bomb-asymmetric-inbandfec-g711-fallback-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P969", "P970", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc6873-rfc8039-p-private-network-indication-spoof-mprtp-subflow-amplification-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P971", "P972", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc6873-rfc8039-p-private-network-indication-spoof-mprtp-subflow-amplification-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P971", "P972", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-sdp-rfc8859-rfc9143-bundle-mux-category-transport-attribute-conflict-tagged-mline-rehoming-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P973", "P974", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-sdp-rfc8859-rfc9143-bundle-mux-category-transport-attribute-conflict-tagged-mline-rehoming-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P973", "P974", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -1012,6 +1014,8 @@ import {
   evaluateWebrtcRfc7874BidirectionalInbandFecActivationAndCodecBaselineGate,
   evaluateSipRfc6873PPrivateNetworkIndicationTrustBoundaryAndRoutingSeparationGate,
   evaluateWebrtcSipRfc8039MultipathRtpSubflowQuotaAndConnectivityVerificationGate,
+  evaluateWebrtcSdpRfc8859BundleMuxCategoryIdenticalAndTransportAttributeGate,
+  evaluateWebrtcRfc9143TaggedMlineDisablementRehomingAndSumBandwidthGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -58412,6 +58416,88 @@ test("Stage 489: SIP RFC 6873 P-Private-Network-Indication trust boundary and RF
   const svg133 = await readFile(new URL("../assets/svg/133-voice-sip-rfc6873-rfc8039-p-private-network-indication-spoof-mprtp-subflow-amplification-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg133, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg133, /STAGE 489 · TOPIC 129/);
+});
+
+test("Stage 490: WebRTC RFC 8859 / RFC 9143 SDP BUNDLE mux categories and bundle-tag atomic re-homing guardrails (P973-P974)", async () => {
+  const blocked973 = evaluateWebrtcSdpRfc8859BundleMuxCategoryIdenticalAndTransportAttributeGate({
+    bundleIdenticalMismatchOrNonTaggedTransportConflictDetected: true,
+    identicalOrTransportCategoryBundleViolations: 4,
+    bundledMediaLinesCount: 16,
+  });
+  assert.equal(blocked973.violated, true);
+  assert.equal(
+    blocked973.policyId,
+    "P973-WEBRTC-SDP-RFC8859-BUNDLE-MUX-CATEGORY-IDENTICAL-AND-TRANSPORT-ATTRIBUTE-GUARD",
+  );
+  assert.equal(
+    blocked973.action,
+    "align_identical_bundle_attributes_and_strip_non_tagged_transport",
+  );
+  assert.equal(blocked973.clampedIdenticalOrTransportCategoryBundleViolations, 0);
+  assert.equal(blocked973.clampedBundledMediaLinesCount, 8);
+  assert.match(blocked973.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped973 = evaluateWebrtcSdpRfc8859BundleMuxCategoryIdenticalAndTransportAttributeGate({
+    bundleIdenticalMismatchOrNonTaggedTransportConflictDetected: false,
+    identicalOrTransportCategoryBundleViolations: 0,
+    bundledMediaLinesCount: 0,
+  });
+  assert.equal(clamped973.violated, true);
+  assert.equal(
+    clamped973.action,
+    "clamp_bundle_category_violations_and_mline_count",
+  );
+  assert.equal(clamped973.clampedBundledMediaLinesCount, 1);
+
+  const allowed973 = evaluateWebrtcSdpRfc8859BundleMuxCategoryIdenticalAndTransportAttributeGate({
+    bundleIdenticalMismatchOrNonTaggedTransportConflictDetected: false,
+    identicalOrTransportCategoryBundleViolations: 0,
+    bundledMediaLinesCount: 3,
+  });
+  assert.equal(allowed973.violated, false);
+  assert.equal(allowed973.action, "allow");
+
+  const blocked974 = evaluateWebrtcRfc9143TaggedMlineDisablementRehomingAndSumBandwidthGate({
+    unrehomedTaggedMlineDisablementOrSumBandwidthOverflowDetected: true,
+    unrehomedBundleTagDropsOrSumBandwidthOverflows: 2,
+    bundleSumBandwidthKbps: 1024,
+  });
+  assert.equal(blocked974.violated, true);
+  assert.equal(
+    blocked974.policyId,
+    "P974-WEBRTC-RFC9143-TAGGED-MLINE-DISABLEMENT-REHOMING-AND-SUM-BANDWIDTH-GUARD",
+  );
+  assert.equal(
+    blocked974.action,
+    "rehome_bundle_tag_to_surviving_mid_and_clamp_sum_bandwidth",
+  );
+  assert.equal(blocked974.clampedUnrehomedBundleTagDropsOrSumBandwidthOverflows, 0);
+  assert.equal(blocked974.clampedBundleSumBandwidthKbps, 256);
+  assert.match(blocked974.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped974 = evaluateWebrtcRfc9143TaggedMlineDisablementRehomingAndSumBandwidthGate({
+    unrehomedTaggedMlineDisablementOrSumBandwidthOverflowDetected: false,
+    unrehomedBundleTagDropsOrSumBandwidthOverflows: 0,
+    bundleSumBandwidthKbps: 8,
+  });
+  assert.equal(clamped974.violated, true);
+  assert.equal(
+    clamped974.action,
+    "clamp_unrehomed_drops_and_sum_bandwidth_kbps",
+  );
+  assert.equal(clamped974.clampedBundleSumBandwidthKbps, 32);
+
+  const allowed974 = evaluateWebrtcRfc9143TaggedMlineDisablementRehomingAndSumBandwidthGate({
+    unrehomedTaggedMlineDisablementOrSumBandwidthOverflowDetected: false,
+    unrehomedBundleTagDropsOrSumBandwidthOverflows: 0,
+    bundleSumBandwidthKbps: 96,
+  });
+  assert.equal(allowed974.violated, false);
+  assert.equal(allowed974.action, "allow");
+
+  const svg134 = await readFile(new URL("../assets/svg/134-voice-webrtc-sdp-rfc8859-rfc9143-bundle-mux-category-transport-attribute-conflict-tagged-mline-rehoming-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg134, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg134, /STAGE 490 🎉 · TOPIC 130 🎉/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {
