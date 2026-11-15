@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg120" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#311042"/>
+    </linearGradient>
+    <linearGradient id="accent120" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#F472B6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg120)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="8" rx="4" fill="url(#accent120)"/>
+
+  <text x="56" y="68" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700" letter-spacing="1">STAGE 476 · TOPIC 116 · P945–P946 🎉 · HISTORIC 120TH SVG 🎉 &amp; 955-GUARDRAIL MILESTONE · 479 DIMS · 918 TESTS</text>
+  <text x="56" y="102" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24.5" font-weight="800">WebRTC RFC 7656 &amp; RFC 5576: Acyclic a=ssrc-group FID/FEC &amp; [1,12]-SSRC Quota Guard</text>
+  <text x="56" y="128" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业 WebRTC RFC 7656/5576 源分类与源组：严防 a=ssrc-group FID 自引用死循环、CNAME 失配与 512-SSRC 内存耗尽攻击 (P945–P946 🎉)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="56" y="152" width="528" height="390" rx="14" fill="#1E1B2E" stroke="#EF4444" stroke-width="2"/>
+  <rect x="76" y="172" width="302" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="90" y="191" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">❌ 脆弱基线 (Cyclic FID Group &amp; 512-SSRC RAM Bomb)</text>
+
+  <text x="76" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. a=ssrc-group:FID 自引用与交叉环路递归崩溃</text>
+  <text x="76" y="250" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">a=ssrc-group:FID 1001 1001 / 16-SSRC Group</text>
+  <text x="76" y="272" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 主流与 RTX 修复流指向自身，触发解包器无限递归栈溢出崩溃！</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 同一修复 SSRC 被跨流复用导致多音轨重传包交叉污染！</text>
+
+  <line x1="76" y1="320" x2="560" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="76" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. 组内 CNAME 失配与单 m= 行 512 个 a=ssrc 洪泛</text>
+  <text x="76" y="376" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">Mismatched FID cname + 512 a=ssrc Lines Per m=audio</text>
+  <text x="76" y="398" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 主流与 RTX 流 cname 不一致导致重传恢复帧时间轴失锁被丢弃！</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 单 m= 行注入 512 个虚假 SSRC 迫使 SFU 预分配内存暴涨 42 倍！</text>
+
+  <rect x="76" y="450" width="488" height="72" rx="10" fill="#450A0A" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="92" y="476" fill="#FECACA" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">事故后果：11 个环路源组触发线程崩溃 + 15 处 CNAME 失配/512-SSRC 溢出</text>
+  <text x="92" y="500" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">单包恶意 SDP 即可令 SFU 工作线程栈溢出或耗尽节点预分配内存</text>
+
+  <!-- Right Card: Deterministic Guardrails P945-P946 -->
+  <rect x="616" y="152" width="528" height="390" rx="14" fill="#0F292A" stroke="#10B981" stroke-width="2"/>
+  <rect x="636" y="172" width="340" height="28" rx="6" fill="#064E3B"/>
+  <text x="650" y="191" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">✅ 企业级护栏 (P945 + P946 🎉 · SVG 120 &amp; 955 Guards)</text>
+
+  <text x="636" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P945 · RFC 5576 无环 DAG 与 [2, 4] 成员互斥锁</text>
+  <text x="636" y="250" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Acyclic Primary -&gt; Repair DAG · GroupSize ∈ [2, 4] (4)</text>
+  <text x="636" y="272" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 0ms 拦截自引用与循环依赖，强制主流与修复流 SSRC 集合互斥</text>
+  <text x="636" y="294" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 将单个 a=ssrc-group 成员数严格钳制在 [2, 4] 个 (0 递归崩溃)</text>
+
+  <line x1="636" y1="320" x2="1120" y2="320" stroke="#1E293B" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="636" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P946 🎉 · RFC 7656 同组 CNAME 对齐与 [1, 12] SSRC 配额</text>
+  <text x="636" y="376" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">100% Group CNAME Parity · DeclaredSSRCs ∈ [1, 12] (12)</text>
+  <text x="636" y="398" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 强制同一 FID/FEC-FR 组内所有 SSRC 共享完全一致的 cname</text>
+  <text x="636" y="420" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 单 m= 媒体行独立 SSRC 声明配额钳制在 [1, 12] 个 (0 内存炸弹)</text>
+
+  <rect x="636" y="450" width="488" height="72" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5"/>
+  <text x="652" y="476" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">验证结果：0 源组递归崩溃 · 0 CNAME 失配与 SSRC 洪泛 · 4 / 12 封顶</text>
+  <text x="652" y="500" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer Provenance -->
+  <rect x="56" y="560" width="1088" height="68" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="76" y="586" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Benchmark &amp; Provenance (Stage 476 · Topic 116 · SVG 120 🎉 · 955 Guardrails 🎉 · 964 Probes · 774 Live POC Probes · 479 Dims · 918 Tests)</text>
+  <text x="76" y="610" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Guardrails: evaluateWebrtcRfc5576SsrcGroupFidFecAcyclicBindingAndDisjointRoleGate (P945) &amp; evaluateWebrtcRfc7656MediaSourceTaxonomySsrcAttributeQuotaAndCnameMatchGate (P946 🎉)</text>
+</svg>

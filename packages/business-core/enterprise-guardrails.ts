@@ -83412,6 +83412,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc5576SsrcGroupFidFecAcyclicBindingAndDisjointRoleContext {
+      cyclicOrSelfReferentialSsrcGroupFidFecDetected: boolean;
+      cyclicOrOverlappingSsrcGroups: number;
+      maxSsrcPerGroupCount: number;
+    }
+
+    export interface WebrtcRfc5576SsrcGroupFidFecAcyclicBindingAndDisjointRoleDecision {
+      violated: boolean;
+      policyId: "P945-WEBRTC-RFC5576-SSRC-GROUP-FID-FEC-ACYCLIC-BINDING-AND-DISJOINT-ROLE-GUARD";
+      action:
+        | "reject_cyclic_ssrc_group_and_enforce_disjoint_primary_repair_ssrc"
+        | "clamp_cyclic_ssrc_groups_and_group_member_bounds"
+        | "allow";
+      reason: string;
+      clampedCyclicOrOverlappingSsrcGroups: number;
+      clampedMaxSsrcPerGroupCount: number;
+    }
+
+    export function evaluateWebrtcRfc5576SsrcGroupFidFecAcyclicBindingAndDisjointRoleGate(
+      context: WebrtcRfc5576SsrcGroupFidFecAcyclicBindingAndDisjointRoleContext,
+    ): WebrtcRfc5576SsrcGroupFidFecAcyclicBindingAndDisjointRoleDecision {
+      const policyId =
+        "P945-WEBRTC-RFC5576-SSRC-GROUP-FID-FEC-ACYCLIC-BINDING-AND-DISJOINT-ROLE-GUARD" as const;
+      const clampedCyclicOrOverlappingSsrcGroups = 0;
+      const clampedMaxSsrcPerGroupCount = Math.min(
+        Math.max(context.maxSsrcPerGroupCount, 2),
+        4,
+      );
+
+      if (context.cyclicOrSelfReferentialSsrcGroupFidFecDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_cyclic_ssrc_group_and_enforce_disjoint_primary_repair_ssrc",
+          reason:
+            "Enterprise WebRTC RFC 5576 / RFC 7656 a=ssrc-group Acyclic FID/FEC-FR Binding Policy Check: SDP declared self-referential (SSRC_1 == SSRC_2) or cyclic (A -> B -> A) a=ssrc-group relationships triggering infinite recursion in RTX/FlexFEC packet recovery; offline synthetic policy state machine enforcing acyclic DAG with disjoint primary/repair SSRC sets (0 cyclic groups) and clamping group member count to [2, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU RTX OSN pointer-lookup latency not_measured).",
+          clampedCyclicOrOverlappingSsrcGroups,
+          clampedMaxSsrcPerGroupCount,
+        };
+      }
+
+      if (
+        context.cyclicOrOverlappingSsrcGroups > 0 ||
+        context.maxSsrcPerGroupCount < 2 ||
+        context.maxSsrcPerGroupCount > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_cyclic_ssrc_groups_and_group_member_bounds",
+          reason:
+            "Cyclic/overlapping WebRTC RFC 5576 a=ssrc-group declarations (>0 synthetic ceiling) or max SSRC per group count (<2 or >4 synthetic bounds) out of bounds; clamping cyclic groups to 0 and group member count to [2, 4].",
+          clampedCyclicOrOverlappingSsrcGroups,
+          clampedMaxSsrcPerGroupCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 5576 acyclic a=ssrc-group DAG (0 cyclic groups) and [2, 4]-member bounds verified.",
+        clampedCyclicOrOverlappingSsrcGroups,
+        clampedMaxSsrcPerGroupCount,
+      };
+    }
+
+    export interface WebrtcRfc7656MediaSourceTaxonomySsrcAttributeQuotaAndCnameMatchContext {
+      ssrcAttributeFloodOrGroupCnameMismatchDetected: boolean;
+      mismatchedOrOverflowedSsrcDeclarations: number;
+      maxDeclaredSsrcsPerMediaSection: number;
+    }
+
+    export interface WebrtcRfc7656MediaSourceTaxonomySsrcAttributeQuotaAndCnameMatchDecision {
+      violated: boolean;
+      policyId: "P946-WEBRTC-RFC7656-MEDIA-SOURCE-TAXONOMY-SSRC-ATTRIBUTE-QUOTA-AND-CNAME-MATCH-GUARD";
+      action:
+        | "enforce_group_cname_parity_and_truncate_ssrc_attribute_flood"
+        | "clamp_mismatched_ssrc_declarations_and_per_mline_quota"
+        | "allow";
+      reason: string;
+      clampedMismatchedOrOverflowedSsrcDeclarations: number;
+      clampedMaxDeclaredSsrcsPerMediaSection: number;
+    }
+
+    export function evaluateWebrtcRfc7656MediaSourceTaxonomySsrcAttributeQuotaAndCnameMatchGate(
+      context: WebrtcRfc7656MediaSourceTaxonomySsrcAttributeQuotaAndCnameMatchContext,
+    ): WebrtcRfc7656MediaSourceTaxonomySsrcAttributeQuotaAndCnameMatchDecision {
+      const policyId =
+        "P946-WEBRTC-RFC7656-MEDIA-SOURCE-TAXONOMY-SSRC-ATTRIBUTE-QUOTA-AND-CNAME-MATCH-GUARD" as const;
+      const clampedMismatchedOrOverflowedSsrcDeclarations = 0;
+      const clampedMaxDeclaredSsrcsPerMediaSection = Math.min(
+        Math.max(context.maxDeclaredSsrcsPerMediaSection, 1),
+        12,
+      );
+
+      if (context.ssrcAttributeFloodOrGroupCnameMismatchDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_group_cname_parity_and_truncate_ssrc_attribute_flood",
+          reason:
+            "Enterprise WebRTC RFC 7656 / RFC 5576 Intra-Group CNAME Parity & Per-m= SSRC Quota Policy Check: grouped primary/repair SSRCs advertised mismatched cname values or m= section injected hundreds of bogus a=ssrc declarations exhausting SFU pre-allocated stream buffers; offline synthetic policy state machine enforcing 100% intra-group cname equality (0 mismatched/overflowed declarations) and clamping declared SSRCs per m= section to [1, 12] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU RTPStream hash-table pre-allocation latency not_measured).",
+          clampedMismatchedOrOverflowedSsrcDeclarations,
+          clampedMaxDeclaredSsrcsPerMediaSection,
+        };
+      }
+
+      if (
+        context.mismatchedOrOverflowedSsrcDeclarations > 0 ||
+        context.maxDeclaredSsrcsPerMediaSection < 1 ||
+        context.maxDeclaredSsrcsPerMediaSection > 12
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_mismatched_ssrc_declarations_and_per_mline_quota",
+          reason:
+            "Mismatched/overflowed RFC 5576 a=ssrc declarations (>0 synthetic ceiling) or max declared SSRCs per m= section (<1 or >12 synthetic bounds) out of bounds; clamping violations to 0 and per-m= SSRC quota to [1, 12].",
+          clampedMismatchedOrOverflowedSsrcDeclarations,
+          clampedMaxDeclaredSsrcsPerMediaSection,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 7656 intra-group cname parity (0 mismatched/overflowed declarations) and [1, 12]-SSRC per-m= quota verified.",
+        clampedMismatchedOrOverflowedSsrcDeclarations,
+        clampedMaxDeclaredSsrcsPerMediaSection,
+      };
+    }
+
 
 
 

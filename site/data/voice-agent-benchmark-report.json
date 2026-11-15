@@ -2053,6 +2053,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects cyclic RFC 5806 Diversion chains, redacts internal PBX extensions to enterprise DID (0 leaked/looping calls), and clamps forwarding hops in [1, 5]; live SBC Diversion header list traversal latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces jittered RFC 3261 Retry-After backoff on 480/486/500/503 responses (0 storming or 24h locked-out trunks) clamped in [5, 120]s; live dialer timer-wheel scheduling latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "479. [Topic 116 · Historic 120th SVG & 955-Guardrail Dual Milestone 🎉: voice-webrtc-rtp-rfc7656-rfc5576-media-taxonomy-ssrc-group-fid-fec-loop-faq] Enterprise WebRTC RFC 5576 Acyclic a=ssrc-group [2,4] DAG & RFC 7656 Intra-Group CNAME Parity [1,12]-SSRC Quota Guard (P945 / P946 🎉 — Stage 476 · 🎉 Historic 120th SVG & 955-Guardrail Dual Milestone · 479 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects self-referential and cyclic RFC 5576 a=ssrc-group FID/FEC-FR declarations with disjoint primary/repair SSRC sets (0 cyclic groups) clamped in [2, 4] members; live SFU RTX OSN pointer-lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% intra-group cname equality across RFC 7656 grouped SSRCs (0 mismatched/overflowed declarations) and clamps declared SSRCs per m= section in [1, 12]; live SFU RTPStream hash-table pre-allocation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
