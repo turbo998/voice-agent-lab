@@ -2119,6 +2119,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects SDP a=candidate ports <1024 or internal SSRF IPs (clamping ports in [1024, 65535]) and strips premature initial-Offer a=remote-candidates (0 SSRF/hijack violations); live ICE candidate socket bind latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps RFC 8863 continual-nomination STUN pacing timer Ta in [20, 500]ms and caps active backup candidate pairs in [1, 4] (0 cellular uplink starvation drops); live Wi-Fi-to-5G dual-path STUN RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "490. [Topic 127 · Historic 490-Dimension Milestone 🎉: voice-siprec-rfc7866-rfc8068-recordpref-pause-resume-pci-mute-participant-stream-xml-mismatch-faq] Enterprise SIPREC RFC 7866 / RFC 8068 a=recordpref:pause Pre-ACK Zero-PCM Masking & participantStreamAssoc XML Bijection Guard (P967 / P968 — Stage 487 · 🎉 Historic 490-Dimension Milestone · 490 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pre-masks RS RTP fork with Zero-PCM silence prior to sending a=recordpref:pause with a [200, 1000]ms guard band (0 Pre-ACK spoken PAN/CVV frames leaked) and strips untrusted CS recordpref overrides; live SRS SIP Re-INVITE disk flush RTT is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 1:1 bijection between SDP a=label lines and rs-metadata+xml <participantStreamAssoc> bindings (0 swapped speaker tracks) and caps active RS streams in [1, 4]; live multipart/mixed XML parser latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

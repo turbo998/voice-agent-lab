@@ -270,6 +270,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P963", "P964", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-sdp-rfc8839-rfc8863-ice-candidate-port-scan-ssrf-remote-candidates-spoof-ta-pacing-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P965", "P966", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-sdp-rfc8839-rfc8863-ice-candidate-port-scan-ssrf-remote-candidates-spoof-ta-pacing-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P965", "P966", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-siprec-rfc7866-rfc8068-recordpref-pause-resume-pci-mute-participant-stream-xml-mismatch-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P967", "P968", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-siprec-rfc7866-rfc8068-recordpref-pause-resume-pci-mute-participant-stream-xml-mismatch-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P967", "P968", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -1000,6 +1002,8 @@ import {
   evaluateSipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateGate,
   evaluateWebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateGate,
   evaluateWebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaGate,
+  evaluateSiprecRfc7866RecordprefPauseZeroPcmMaskingAndClientOverrideGate,
+  evaluateSiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -58154,6 +58158,88 @@ test("Stage 486: WebRTC RFC 8839 / RFC 8863 SDP ICE candidate port-scan SSRF, re
   const svg130 = await readFile(new URL("../assets/svg/130-voice-webrtc-sdp-rfc8839-rfc8863-ice-candidate-port-scan-ssrf-remote-candidates-spoof-ta-pacing-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg130, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg130, /STAGE 486 · TOPIC 126 · SVG 130 🎉/);
+});
+
+test("Stage 487: SIPREC RFC 7866 / RFC 8068 a=recordpref:pause Pre-ACK Zero-PCM masking and participantStreamAssoc XML bijection guardrails (P967-P968)", async () => {
+  const blocked967 = evaluateSiprecRfc7866RecordprefPauseZeroPcmMaskingAndClientOverrideGate({
+    preAckPauseAudioBleedOrUntrustedRecordprefStopDetected: true,
+    unmaskedPreAckPausedRecordingFrames: 9,
+    pauseMaskingGuardBandMs: 50,
+  });
+  assert.equal(blocked967.violated, true);
+  assert.equal(
+    blocked967.policyId,
+    "P967-SIPREC-RFC7866-RECORDPREF-PAUSE-ZERO-PCM-MASKING-AND-CLIENT-OVERRIDE-GUARD",
+  );
+  assert.equal(
+    blocked967.action,
+    "pre_mask_zero_pcm_before_pause_reinvite_and_strip_untrusted_recordpref",
+  );
+  assert.equal(blocked967.clampedUnmaskedPreAckPausedRecordingFrames, 0);
+  assert.equal(blocked967.clampedPauseMaskingGuardBandMs, 200);
+  assert.match(blocked967.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped967 = evaluateSiprecRfc7866RecordprefPauseZeroPcmMaskingAndClientOverrideGate({
+    preAckPauseAudioBleedOrUntrustedRecordprefStopDetected: false,
+    unmaskedPreAckPausedRecordingFrames: 0,
+    pauseMaskingGuardBandMs: 2500,
+  });
+  assert.equal(clamped967.violated, true);
+  assert.equal(
+    clamped967.action,
+    "clamp_unmasked_pause_frames_and_guard_band_ms",
+  );
+  assert.equal(clamped967.clampedPauseMaskingGuardBandMs, 1000);
+
+  const allowed967 = evaluateSiprecRfc7866RecordprefPauseZeroPcmMaskingAndClientOverrideGate({
+    preAckPauseAudioBleedOrUntrustedRecordprefStopDetected: false,
+    unmaskedPreAckPausedRecordingFrames: 0,
+    pauseMaskingGuardBandMs: 300,
+  });
+  assert.equal(allowed967.violated, false);
+  assert.equal(allowed967.action, "allow");
+
+  const blocked968 = evaluateSiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperGate({
+    participantStreamXmlLabelMismatchOrOrphanStreamDetected: true,
+    mismatchedOrOrphanSiprecStreamBindings: 3,
+    activeRecordingStreamsCount: 10,
+  });
+  assert.equal(blocked968.violated, true);
+  assert.equal(
+    blocked968.policyId,
+    "P968-SIPREC-RFC8068-PARTICIPANT-STREAM-XML-ASSOCIATION-AND-ORPHAN-STREAM-REAPER-GUARD",
+  );
+  assert.equal(
+    blocked968.action,
+    "rebind_participant_stream_assoc_xml_and_reap_orphan_streams",
+  );
+  assert.equal(blocked968.clampedMismatchedOrOrphanSiprecStreamBindings, 0);
+  assert.equal(blocked968.clampedActiveRecordingStreamsCount, 4);
+  assert.match(blocked968.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped968 = evaluateSiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperGate({
+    participantStreamXmlLabelMismatchOrOrphanStreamDetected: false,
+    mismatchedOrOrphanSiprecStreamBindings: 0,
+    activeRecordingStreamsCount: 0,
+  });
+  assert.equal(clamped968.violated, true);
+  assert.equal(
+    clamped968.action,
+    "clamp_mismatched_bindings_and_active_recording_streams",
+  );
+  assert.equal(clamped968.clampedActiveRecordingStreamsCount, 1);
+
+  const allowed968 = evaluateSiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperGate({
+    participantStreamXmlLabelMismatchOrOrphanStreamDetected: false,
+    mismatchedOrOrphanSiprecStreamBindings: 0,
+    activeRecordingStreamsCount: 2,
+  });
+  assert.equal(allowed968.violated, false);
+  assert.equal(allowed968.action, "allow");
+
+  const svg131 = await readFile(new URL("../assets/svg/131-voice-siprec-rfc7866-rfc8068-recordpref-pause-resume-pci-mute-participant-stream-xml-mismatch-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg131, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg131, /STAGE 487 · TOPIC 127/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {

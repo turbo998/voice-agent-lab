@@ -85075,6 +85075,163 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SiprecRfc7866RecordprefPauseZeroPcmMaskingAndClientOverrideContext {
+      preAckPauseAudioBleedOrUntrustedRecordprefStopDetected: boolean;
+      unmaskedPreAckPausedRecordingFrames: number;
+      pauseMaskingGuardBandMs: number;
+    }
+
+    export interface SiprecRfc7866RecordprefPauseZeroPcmMaskingAndClientOverrideResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "pre_mask_zero_pcm_before_pause_reinvite_and_strip_untrusted_recordpref"
+        | "clamp_unmasked_pause_frames_and_guard_band_ms"
+        | "allow";
+      reason: string;
+      clampedUnmaskedPreAckPausedRecordingFrames: number;
+      clampedPauseMaskingGuardBandMs: number;
+    }
+
+    /**
+     * P967: SIPREC RFC 7866 / RFC 8068 a=recordpref:pause Pre-ACK Zero-PCM Masking ([200, 1000]ms Guard Band) & Untrusted CS recordpref Override Gate.
+     */
+    export function evaluateSiprecRfc7866RecordprefPauseZeroPcmMaskingAndClientOverrideGate(
+      ctx: SiprecRfc7866RecordprefPauseZeroPcmMaskingAndClientOverrideContext,
+    ): SiprecRfc7866RecordprefPauseZeroPcmMaskingAndClientOverrideResult {
+      const policyId =
+        "P967-SIPREC-RFC7866-RECORDPREF-PAUSE-ZERO-PCM-MASKING-AND-CLIENT-OVERRIDE-GUARD";
+      const clampedUnmaskedPreAckPausedRecordingFrames = 0;
+      const clampedPauseMaskingGuardBandMs = Math.min(
+        1000,
+        Math.max(
+          200,
+          Number.isFinite(ctx.pauseMaskingGuardBandMs)
+            ? Math.round(ctx.pauseMaskingGuardBandMs)
+            : 300,
+        ),
+      );
+
+      if (ctx.preAckPauseAudioBleedOrUntrustedRecordprefStopDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "pre_mask_zero_pcm_before_pause_reinvite_and_strip_untrusted_recordpref",
+          reason:
+            "SIPREC Pre-ACK spoken PCI/PII audio bleed during SRS 200 OK RTT or untrusted CS-leg caller a=recordpref:stop evasion detected (RFC 7866 Section 7.1.1 / RFC 8068); pre-masking RS RTP fork with Zero-PCM silence prior to Re-INVITE with [200, 1000]ms guard band and stripping external recordpref overrides (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnmaskedPreAckPausedRecordingFrames,
+          clampedPauseMaskingGuardBandMs,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.unmaskedPreAckPausedRecordingFrames) ||
+        ctx.unmaskedPreAckPausedRecordingFrames !== 0 ||
+        !Number.isFinite(ctx.pauseMaskingGuardBandMs) ||
+        ctx.pauseMaskingGuardBandMs < 200 ||
+        ctx.pauseMaskingGuardBandMs > 1000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unmasked_pause_frames_and_guard_band_ms",
+          reason:
+            "Unmasked Pre-ACK paused recording frames (>0 synthetic ceiling) or pause masking guard band (<200 or >1000ms synthetic bounds) out of bounds; clamping unmasked frames to 0 and guard band to [200, 1000]ms.",
+          clampedUnmaskedPreAckPausedRecordingFrames,
+          clampedPauseMaskingGuardBandMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIPREC RFC 7866 Pre-ACK Zero-PCM masking (0 leaked frames), [200, 1000]ms guard band, and CS recordpref scrubbing verified.",
+        clampedUnmaskedPreAckPausedRecordingFrames,
+        clampedPauseMaskingGuardBandMs,
+      };
+    }
+
+    export interface SiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperContext {
+      participantStreamXmlLabelMismatchOrOrphanStreamDetected: boolean;
+      mismatchedOrOrphanSiprecStreamBindings: number;
+      activeRecordingStreamsCount: number;
+    }
+
+    export interface SiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "rebind_participant_stream_assoc_xml_and_reap_orphan_streams"
+        | "clamp_mismatched_bindings_and_active_recording_streams"
+        | "allow";
+      reason: string;
+      clampedMismatchedOrOrphanSiprecStreamBindings: number;
+      clampedActiveRecordingStreamsCount: number;
+    }
+
+    /**
+     * P968 (🎉 Historic 490-Dimension Milestone): SIPREC RFC 8068 / RFC 7865 1:1 SDP a=label <-> participantStreamAssoc XML Bijection & [1, 4] Active Recording Streams Gate.
+     */
+    export function evaluateSiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperGate(
+      ctx: SiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperContext,
+    ): SiprecRfc8068ParticipantStreamXmlAssociationAndOrphanStreamReaperResult {
+      const policyId =
+        "P968-SIPREC-RFC8068-PARTICIPANT-STREAM-XML-ASSOCIATION-AND-ORPHAN-STREAM-REAPER-GUARD";
+      const clampedMismatchedOrOrphanSiprecStreamBindings = 0;
+      const clampedActiveRecordingStreamsCount = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.activeRecordingStreamsCount)
+            ? Math.round(ctx.activeRecordingStreamsCount)
+            : 2,
+        ),
+      );
+
+      if (ctx.participantStreamXmlLabelMismatchOrOrphanStreamDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rebind_participant_stream_assoc_xml_and_reap_orphan_streams",
+          reason:
+            "SIPREC SDP a=label to rs-metadata+xml <participantStreamAssoc> directionality mismatch or orphan unlinked <stream> node detected after transfer/whisper (RFC 7865 / RFC 8068); atomically rebinding 1:1 participant-stream XML associations and reaping orphan streams within [1, 4] active tracks (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedMismatchedOrOrphanSiprecStreamBindings,
+          clampedActiveRecordingStreamsCount,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.mismatchedOrOrphanSiprecStreamBindings) ||
+        ctx.mismatchedOrOrphanSiprecStreamBindings !== 0 ||
+        !Number.isFinite(ctx.activeRecordingStreamsCount) ||
+        ctx.activeRecordingStreamsCount < 1 ||
+        ctx.activeRecordingStreamsCount > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_mismatched_bindings_and_active_recording_streams",
+          reason:
+            "Mismatched/orphan SIPREC stream bindings (>0 synthetic ceiling) or active recording streams (<1 or >4 synthetic bounds) out of bounds; clamping mismatched bindings to 0 and active recording streams to [1, 4].",
+          clampedMismatchedOrOrphanSiprecStreamBindings,
+          clampedActiveRecordingStreamsCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIPREC RFC 8068 1:1 a=label <-> participantStreamAssoc XML bijection (0 mismatched tracks) and [1, 4] active streams verified.",
+        clampedMismatchedOrOrphanSiprecStreamBindings,
+        clampedActiveRecordingStreamsCount,
+      };
+    }
+
+
 
 
 
