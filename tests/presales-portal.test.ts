@@ -258,6 +258,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-sip-rfc3455-rfc7315-p-charging-vector-icids-spoof-p-visited-network-id-bleed-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P951", "P952", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-sctp-rfc4960-rfc8831-heartbeat-amplification-abort-vtag-verification-hol-stall-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P953", "P954", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-sctp-rfc4960-rfc8831-heartbeat-amplification-abort-vtag-verification-hol-stall-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P953", "P954", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc7316-rfc7989-session-id-end-to-end-uuid-spoof-half-key-mutation-cdr-poisoning-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P955", "P956", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc7316-rfc7989-session-id-end-to-end-uuid-spoof-half-key-mutation-cdr-poisoning-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P955", "P956", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -976,6 +978,8 @@ import {
   evaluateSipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubGate,
   evaluateWebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsGate,
   evaluateWebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaGate,
+  evaluateSipRfc7989SessionIdUuidFormatAndIngressRewritingGate,
+  evaluateSipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -57628,6 +57632,88 @@ test("Stage 480: WebRTC SCTP RFC 4960 vtag/Heartbeat bounds and RFC 8831 PR-SCTP
   const svg124 = await readFile(new URL("../assets/svg/124-voice-webrtc-sctp-rfc4960-rfc8831-heartbeat-amplification-abort-vtag-verification-hol-stall-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg124, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg124, /STAGE 480 🎉 · TOPIC 120 🎉/);
+});
+
+test("Stage 481: SIP RFC 7989 / RFC 7316 Session-ID 32-Hex ingress rewrite and B2BUA half-key preservation guardrails (P955-P956)", async () => {
+  const blocked955 = evaluateSipRfc7989SessionIdUuidFormatAndIngressRewritingGate({
+    malformedOrSpoofedIngressSessionIdUuidDetected: true,
+    poisonedSessionIdCdrOrSiprecRecords: 16,
+    sessionIdHexLength: 36,
+  });
+  assert.equal(blocked955.violated, true);
+  assert.equal(
+    blocked955.policyId,
+    "P955-SIP-RFC7989-SESSION-ID-UUID-FORMAT-AND-INGRESS-REWRITING-GUARD",
+  );
+  assert.equal(
+    blocked955.action,
+    "rewrite_untrusted_ingress_session_id_and_enforce_32hex_uuid",
+  );
+  assert.equal(blocked955.clampedPoisonedSessionIdCdrOrSiprecRecords, 0);
+  assert.equal(blocked955.clampedSessionIdHexLength, 32);
+  assert.match(blocked955.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped955 = evaluateSipRfc7989SessionIdUuidFormatAndIngressRewritingGate({
+    malformedOrSpoofedIngressSessionIdUuidDetected: false,
+    poisonedSessionIdCdrOrSiprecRecords: 0,
+    sessionIdHexLength: 16,
+  });
+  assert.equal(clamped955.violated, true);
+  assert.equal(
+    clamped955.action,
+    "clamp_poisoned_session_id_records_and_hex_length",
+  );
+  assert.equal(clamped955.clampedSessionIdHexLength, 32);
+
+  const allowed955 = evaluateSipRfc7989SessionIdUuidFormatAndIngressRewritingGate({
+    malformedOrSpoofedIngressSessionIdUuidDetected: false,
+    poisonedSessionIdCdrOrSiprecRecords: 0,
+    sessionIdHexLength: 32,
+  });
+  assert.equal(allowed955.violated, false);
+  assert.equal(allowed955.action, "allow");
+
+  const blocked956 = evaluateSipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyGate({
+    b2buaBothHalvesOverwrittenOrInvalidNullRemoteDetected: true,
+    brokenEndToEndTraceabilityCallLegs: 11,
+    activeSessionIdUuidHalves: 0,
+  });
+  assert.equal(blocked956.violated, true);
+  assert.equal(
+    blocked956.policyId,
+    "P956-SIP-RFC7989-B2BUA-HALF-KEY-PRESERVATION-AND-REFER-SWAP-CONSISTENCY-GUARD",
+  );
+  assert.equal(
+    blocked956.action,
+    "preserve_surviving_half_uuid_on_b2bua_transfer_and_enforce_dual_halves",
+  );
+  assert.equal(blocked956.clampedBrokenEndToEndTraceabilityCallLegs, 0);
+  assert.equal(blocked956.clampedActiveSessionIdUuidHalves, 1);
+  assert.match(blocked956.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped956 = evaluateSipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyGate({
+    b2buaBothHalvesOverwrittenOrInvalidNullRemoteDetected: false,
+    brokenEndToEndTraceabilityCallLegs: 0,
+    activeSessionIdUuidHalves: 5,
+  });
+  assert.equal(clamped956.violated, true);
+  assert.equal(
+    clamped956.action,
+    "clamp_broken_traceability_legs_and_uuid_halves_bounds",
+  );
+  assert.equal(clamped956.clampedActiveSessionIdUuidHalves, 2);
+
+  const allowed956 = evaluateSipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyGate({
+    b2buaBothHalvesOverwrittenOrInvalidNullRemoteDetected: false,
+    brokenEndToEndTraceabilityCallLegs: 0,
+    activeSessionIdUuidHalves: 2,
+  });
+  assert.equal(allowed956.violated, false);
+  assert.equal(allowed956.action, "allow");
+
+  const svg125 = await readFile(new URL("../assets/svg/125-voice-sip-rfc7316-rfc7989-session-id-end-to-end-uuid-spoof-half-key-mutation-cdr-poisoning-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg125, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg125, /STAGE 481 · TOPIC 121/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {

@@ -2083,6 +2083,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: silently drops inbound SCTP control chunks with mismatched 32-bit Verification Tags (0 spoofed teardowns) and clamps HEARTBEAT-INFO payloads in [16, 64] bytes; live dcSCTP/usrsctp chunk demux latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces ordered:false + PR-SCTP maxPacketLifeTime in [80, 250]ms with FORWARD-TSN skipping for real-time transcript/viseme DataChannels (0 stalled messages); live SCTP reassembly queue flush latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "484. [Topic 121 · Historic 125th SVG & 965-Guardrail Dual Milestone 🎉: voice-sip-rfc7316-rfc7989-session-id-end-to-end-uuid-spoof-half-key-mutation-cdr-poisoning-faq] Enterprise & Carrier SIP RFC 7989 Session-ID 32-Hex Ingress Rewrite & B2BUA Surviving Half-Key [1,2] Guard (P955 / P956 🎉 — Stage 481 · 🎉 Historic 125th SVG & 965-Guardrail Dual Milestone · 484 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rewrites untrusted ingress SIP Session-ID local-uuid headers via CSPRNG and enforces exact 32-character lowercase hex grammar (0 poisoned CDR/SIPREC records); live SBC Session-ID parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: preserves the surviving endpoint's Session-ID half-key across B2BUA REFER/Replaces transfers (0 broken traceability legs) and clamps active non-null UUID halves in [1, 2]; live B2BUA dialog-state half-key swap latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

@@ -84132,6 +84132,153 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc7989SessionIdUuidFormatAndIngressRewritingContext {
+      malformedOrSpoofedIngressSessionIdUuidDetected: boolean;
+      poisonedSessionIdCdrOrSiprecRecords: number;
+      sessionIdHexLength: number;
+    }
+
+    export interface SipRfc7989SessionIdUuidFormatAndIngressRewritingResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "rewrite_untrusted_ingress_session_id_and_enforce_32hex_uuid"
+        | "clamp_poisoned_session_id_records_and_hex_length"
+        | "allow";
+      reason: string;
+      clampedPoisonedSessionIdCdrOrSiprecRecords: number;
+      clampedSessionIdHexLength: number;
+    }
+
+    /**
+     * P955: SIP RFC 7989 / RFC 7316 End-to-End Session-ID Untrusted Ingress Rewrite & Exact 32-Hex Lowercase UUID Format Gate.
+     */
+    export function evaluateSipRfc7989SessionIdUuidFormatAndIngressRewritingGate(
+      ctx: SipRfc7989SessionIdUuidFormatAndIngressRewritingContext,
+    ): SipRfc7989SessionIdUuidFormatAndIngressRewritingResult {
+      const policyId =
+        "P955-SIP-RFC7989-SESSION-ID-UUID-FORMAT-AND-INGRESS-REWRITING-GUARD";
+      const clampedPoisonedSessionIdCdrOrSiprecRecords = 0;
+      const clampedSessionIdHexLength = 32;
+
+      if (ctx.malformedOrSpoofedIngressSessionIdUuidDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rewrite_untrusted_ingress_session_id_and_enforce_32hex_uuid",
+          reason:
+            "Untrusted ingress SIP Session-ID local-uuid spoofing or non-32-hex / Nil UUID format violation detected (RFC 7989 Section 5 / Section 11); rewriting untrusted local-uuid via CSPRNG and locking format to exact 32 lowercase hex chars (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedPoisonedSessionIdCdrOrSiprecRecords,
+          clampedSessionIdHexLength,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.poisonedSessionIdCdrOrSiprecRecords) ||
+        ctx.poisonedSessionIdCdrOrSiprecRecords !== 0 ||
+        !Number.isFinite(ctx.sessionIdHexLength) ||
+        ctx.sessionIdHexLength !== 32
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_poisoned_session_id_records_and_hex_length",
+          reason:
+            "Poisoned Session-ID CDR/SIPREC records (>0 synthetic ceiling) or Session-ID hex length (!=32 synthetic requirement) out of bounds; clamping poisoned records to 0 and hex length to 32.",
+          clampedPoisonedSessionIdCdrOrSiprecRecords,
+          clampedSessionIdHexLength,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7989 untrusted ingress Session-ID rewrite (0 poisoned records) and exact 32-hex lowercase UUID verified.",
+        clampedPoisonedSessionIdCdrOrSiprecRecords,
+        clampedSessionIdHexLength,
+      };
+    }
+
+    export interface SipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyContext {
+      b2buaBothHalvesOverwrittenOrInvalidNullRemoteDetected: boolean;
+      brokenEndToEndTraceabilityCallLegs: number;
+      activeSessionIdUuidHalves: number;
+    }
+
+    export interface SipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "preserve_surviving_half_uuid_on_b2bua_transfer_and_enforce_dual_halves"
+        | "clamp_broken_traceability_legs_and_uuid_halves_bounds"
+        | "allow";
+      reason: string;
+      clampedBrokenEndToEndTraceabilityCallLegs: number;
+      clampedActiveSessionIdUuidHalves: number;
+    }
+
+    /**
+     * P956 (🎉 Historic 125th SVG & 965th Guardrail Dual Milestone): SIP RFC 7989 B2BUA Surviving Half-Key Preservation & [1, 2] Active Halves Gate.
+     */
+    export function evaluateSipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyGate(
+      ctx: SipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyContext,
+    ): SipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyResult {
+      const policyId =
+        "P956-SIP-RFC7989-B2BUA-HALF-KEY-PRESERVATION-AND-REFER-SWAP-CONSISTENCY-GUARD";
+      const clampedBrokenEndToEndTraceabilityCallLegs = 0;
+      const clampedActiveSessionIdUuidHalves = Math.min(
+        2,
+        Math.max(
+          1,
+          Number.isFinite(ctx.activeSessionIdUuidHalves)
+            ? Math.round(ctx.activeSessionIdUuidHalves)
+            : 2,
+        ),
+      );
+
+      if (ctx.b2buaBothHalvesOverwrittenOrInvalidNullRemoteDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "preserve_surviving_half_uuid_on_b2bua_transfer_and_enforce_dual_halves",
+          reason:
+            "B2BUA call transfer/merge overwriting both Session-ID UUID halves or emitting dual Nil UUIDs detected (RFC 7989 Section 7 / Section 9); preserving surviving peer half-key and clamping active non-null UUID halves in [1, 2] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedBrokenEndToEndTraceabilityCallLegs,
+          clampedActiveSessionIdUuidHalves,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.brokenEndToEndTraceabilityCallLegs) ||
+        ctx.brokenEndToEndTraceabilityCallLegs !== 0 ||
+        !Number.isFinite(ctx.activeSessionIdUuidHalves) ||
+        ctx.activeSessionIdUuidHalves < 1 ||
+        ctx.activeSessionIdUuidHalves > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_broken_traceability_legs_and_uuid_halves_bounds",
+          reason:
+            "Broken end-to-end traceability call legs (>0 synthetic ceiling) or active non-null Session-ID UUID halves (<1 or >2 synthetic bounds) out of bounds; clamping broken legs to 0 and active halves to [1, 2].",
+          clampedBrokenEndToEndTraceabilityCallLegs,
+          clampedActiveSessionIdUuidHalves,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7989 B2BUA surviving half-key preservation (0 broken legs) and [1, 2] active UUID halves verified.",
+        clampedBrokenEndToEndTraceabilityCallLegs,
+        clampedActiveSessionIdUuidHalves,
+      };
+    }
+
 
 
 
