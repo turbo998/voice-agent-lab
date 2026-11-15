@@ -85231,6 +85231,163 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcOpusRfc7587MaxaveragebitrateVoiceCeilingAndStereoSilenceContext {
+      opusBitrateBombOrStereoAmplificationDetected: boolean;
+      unboundedOpusBitrateOrStereoAmplificationViolations: number;
+      opusMaxAverageBitrateBps: number;
+    }
+
+    export interface WebrtcOpusRfc7587MaxaveragebitrateVoiceCeilingAndStereoSilenceResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "clamp_opus_maxaveragebitrate_to_speech_ceiling_and_force_mono"
+        | "clamp_opus_violations_and_speech_bitrate_bounds"
+        | "allow";
+      reason: string;
+      clampedUnboundedOpusBitrateOrStereoAmplificationViolations: number;
+      clampedOpusMaxAverageBitrateBps: number;
+    }
+
+    /**
+     * P969: WebRTC RFC 7587 / RFC 7874 Opus maxaveragebitrate [16000, 64000] bps Speech Ceiling & Mono (stereo=0) Anti-Amplification Gate.
+     */
+    export function evaluateWebrtcOpusRfc7587MaxaveragebitrateVoiceCeilingAndStereoSilenceGate(
+      ctx: WebrtcOpusRfc7587MaxaveragebitrateVoiceCeilingAndStereoSilenceContext,
+    ): WebrtcOpusRfc7587MaxaveragebitrateVoiceCeilingAndStereoSilenceResult {
+      const policyId =
+        "P969-WEBRTC-OPUS-RFC7587-MAXAVERAGEBITRATE-VOICE-CEILING-AND-STEREO-SILENCE-GUARD";
+      const clampedUnboundedOpusBitrateOrStereoAmplificationViolations = 0;
+      const clampedOpusMaxAverageBitrateBps = Math.min(
+        64000,
+        Math.max(
+          16000,
+          Number.isFinite(ctx.opusMaxAverageBitrateBps)
+            ? Math.round(ctx.opusMaxAverageBitrateBps)
+            : 32000,
+        ),
+      );
+
+      if (ctx.opusBitrateBombOrStereoAmplificationDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_opus_maxaveragebitrate_to_speech_ceiling_and_force_mono",
+          reason:
+            "WebRTC Opus SDP a=fmtp maxaveragebitrate 510kbps stereo amplification bomb or <16kbps narrowband speech degradation detected (RFC 7587 Section 6.1 / RFC 7874); clamping maxaveragebitrate to [16000, 64000] bps and enforcing stereo=0 mono voice mode (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnboundedOpusBitrateOrStereoAmplificationViolations,
+          clampedOpusMaxAverageBitrateBps,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.unboundedOpusBitrateOrStereoAmplificationViolations) ||
+        ctx.unboundedOpusBitrateOrStereoAmplificationViolations !== 0 ||
+        !Number.isFinite(ctx.opusMaxAverageBitrateBps) ||
+        ctx.opusMaxAverageBitrateBps < 16000 ||
+        ctx.opusMaxAverageBitrateBps > 64000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_opus_violations_and_speech_bitrate_bounds",
+          reason:
+            "Opus bitrate/stereo amplification violations (>0 synthetic ceiling) or maxaveragebitrate (<16000 or >64000 bps synthetic bounds) out of bounds; clamping violations to 0 and maxaveragebitrate to [16000, 64000] bps.",
+          clampedUnboundedOpusBitrateOrStereoAmplificationViolations,
+          clampedOpusMaxAverageBitrateBps,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC Opus RFC 7587 maxaveragebitrate [16000, 64000] bps speech ceiling and mono (stereo=0) verified.",
+        clampedUnboundedOpusBitrateOrStereoAmplificationViolations,
+        clampedOpusMaxAverageBitrateBps,
+      };
+    }
+
+    export interface WebrtcRfc7874BidirectionalInbandFecActivationAndCodecBaselineContext {
+      unarmedInbandFecZeroLossPercOrMissingCodecBaselineDetected: boolean;
+      inactiveInbandFecOrMissingBaselineCodecDrops: number;
+      configuredPacketLossPerc: number;
+    }
+
+    export interface WebrtcRfc7874BidirectionalInbandFecActivationAndCodecBaselineResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "arm_opus_packet_loss_perc_for_lbrr_fec_and_enforce_g711_baseline"
+        | "clamp_inactive_fec_drops_and_packet_loss_perc_bounds"
+        | "allow";
+      reason: string;
+      clampedInactiveInbandFecOrMissingBaselineCodecDrops: number;
+      clampedConfiguredPacketLossPerc: number;
+    }
+
+    /**
+     * P970 (🎉 Historic 55th Nightly Round, P970 Guardrail, 130th FAQ & 930-Test Quadruple Milestone): WebRTC RFC 7874 / RFC 7587 Opus LBRR In-Band FEC [5, 25]% packetLossPerc Coupling & Mandatory Opus/G.711 Baseline Gate.
+     */
+    export function evaluateWebrtcRfc7874BidirectionalInbandFecActivationAndCodecBaselineGate(
+      ctx: WebrtcRfc7874BidirectionalInbandFecActivationAndCodecBaselineContext,
+    ): WebrtcRfc7874BidirectionalInbandFecActivationAndCodecBaselineResult {
+      const policyId =
+        "P970-WEBRTC-RFC7874-BIDIRECTIONAL-INBAND-FEC-ACTIVATION-AND-CODEC-BASELINE-GUARD";
+      const clampedInactiveInbandFecOrMissingBaselineCodecDrops = 0;
+      const clampedConfiguredPacketLossPerc = Math.min(
+        25,
+        Math.max(
+          5,
+          Number.isFinite(ctx.configuredPacketLossPerc)
+            ? Math.round(ctx.configuredPacketLossPerc)
+            : 10,
+        ),
+      );
+
+      if (ctx.unarmedInbandFecZeroLossPercOrMissingCodecBaselineDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "arm_opus_packet_loss_perc_for_lbrr_fec_and_enforce_g711_baseline",
+          reason:
+            "Unarmed WebRTC Opus useinbandfec=1 with packetLossPerc=0% (emitting 0 LBRR FEC frames) or missing RFC 7874 mandatory G.711 (PCMU/PCMA) fallback codec detected (RFC 7874 Section 3 / RFC 7587 Section 6.1); coupling OPUS_SET_INBAND_FEC(1) with packetLossPerc in [5, 25]% and enforcing Opus + G.711 baseline (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedInactiveInbandFecOrMissingBaselineCodecDrops,
+          clampedConfiguredPacketLossPerc,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.inactiveInbandFecOrMissingBaselineCodecDrops) ||
+        ctx.inactiveInbandFecOrMissingBaselineCodecDrops !== 0 ||
+        !Number.isFinite(ctx.configuredPacketLossPerc) ||
+        ctx.configuredPacketLossPerc < 5 ||
+        ctx.configuredPacketLossPerc > 25
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_inactive_fec_drops_and_packet_loss_perc_bounds",
+          reason:
+            "Inactive in-band FEC / missing baseline codec drops (>0 synthetic ceiling) or configured packetLossPerc (<5 or >25% synthetic LBRR activation bounds) out of bounds; clamping drops to 0 and packetLossPerc to [5, 25]%.",
+          clampedInactiveInbandFecOrMissingBaselineCodecDrops,
+          clampedConfiguredPacketLossPerc,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 7874 Opus LBRR in-band FEC armed at [5, 25]% packetLossPerc and mandatory Opus + G.711 baseline verified.",
+        clampedInactiveInbandFecOrMissingBaselineCodecDrops,
+        clampedConfiguredPacketLossPerc,
+      };
+    }
+
+
 
 
 

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg132" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent132" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg132)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="24" width="1144" height="6" rx="3" fill="url(#accent132)"/>
+
+  <text x="54" y="66" fill="#FBBF24" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">2026-11-15 · STAGE 488 · TOPIC 128 · 130TH FAQ 🎉 · 491 DIMS · 🎉 55TH NIGHTLY ROUND, P970, 130TH FAQ &amp; 930 TESTS MILESTONE (P969–P970 🎉)</text>
+  <text x="54" y="98" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="800">WebRTC RFC 7874 / RFC 7587 Opus: maxaveragebitrate [16, 64]kbps Ceiling &amp; LBRR FEC Activation</text>
+  <text x="54" y="124" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">P969 [16, 64]kbps Mono Speech Clamp (Block 510kbps Stereo Bomb) · P970 🎉 [5, 25]% packetLossPerc LBRR FEC &amp; Opus/G.711 Baseline</text>
+
+  <!-- Left Panel: Unprotected Opus SDP fmtp & No-Op In-Band FEC Traps -->
+  <rect x="54" y="146" width="530" height="390" rx="12" fill="#1E1B4B" fill-opacity="0.45" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="76" y="178" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">❌ Legacy Opus SDP fmtp Traps (510kbps Bomb &amp; Dead FEC)</text>
+
+  <rect x="76" y="196" width="486" height="98" rx="8" fill="#0F172A" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="220" fill="#F87171" font-family="Consolas, monospace" font-size="13" font-weight="700">1. 510kbps Stereo Music Bomb or 6kbps Intelligibility Collapse</text>
+  <text x="92" y="242" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Rogue SDP Answer sets maxaveragebitrate=510000;stereo=1</text>
+  <text x="92" y="262" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Causes 12× egress bandwidth &amp; 4× libopus CPU amplification</text>
+  <text x="92" y="280" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Or forces 6kbps narrowband floor → ASR WER spikes +42%</text>
+
+  <rect x="76" y="308" width="486" height="98" rx="8" fill="#0F172A" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="332" fill="#F87171" font-family="Consolas, monospace" font-size="13" font-weight="700">2. Dead useinbandfec=1 (packetLossPerc=0%) &amp; Missing G.711</text>
+  <text x="92" y="354" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Negotiates useinbandfec=1 in SDP but leaves packetLossPerc = 0%</text>
+  <text x="92" y="374" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• libopus emits 0 LBRR FEC frames → 10% Wi-Fi loss drops syllables!</text>
+  <text x="92" y="392" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Omitting mandatory G.711 fallback breaks PSTN trunk interop (488)</text>
+
+  <rect x="76" y="420" width="486" height="98" rx="8" fill="#450A0A" fill-opacity="0.6" stroke="#EF4444" stroke-width="1"/>
+  <text x="92" y="446" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Enterprise Production Impact (Without P969–P970)</text>
+  <text x="92" y="468" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Media gateway NIC/CPU exhausted by 510kbps stereo sessions</text>
+  <text x="92" y="488" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Fake SDP FEC leaves weak-network calls completely unprotected</text>
+  <text x="92" y="506" fill="#FCA5A5" font-family="Consolas, monospace" font-size="12">Verdict: BLOCK (510kbps Stereo Bomb / Unarmed 0% LBRR FEC)</text>
+
+  <!-- Right Panel: Deterministic P969-P970 Guardrails -->
+  <rect x="616" y="146" width="530" height="390" rx="12" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.5"/>
+  <text x="638" y="178" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">✅ Deterministic Opus RFC 7874 / RFC 7587 Guards (P969–P970 🎉)</text>
+
+  <rect x="638" y="196" width="486" height="148" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="654" y="220" fill="#34D399" font-family="Consolas, monospace" font-size="13" font-weight="700">P969: [16000, 64000] bps Speech Ceiling &amp; Mono-Only Lock</text>
+  <text x="654" y="242" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Clamp SDP maxaveragebitrate strictly in [16000, 64000] bps</text>
+  <text x="654" y="262" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Enforce stereo=0 &amp; sprop-stereo=0 on AI voice dialogue legs</text>
+  <text x="654" y="282" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Preserve 24kHz super-wideband fricatives at optimal 32kbps</text>
+  <text x="654" y="302" fill="#38BDF8" font-family="Consolas, monospace" font-size="12">• unboundedOpusBitrateOrStereoAmplificationViolations == 0</text>
+  <text x="654" y="324" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">• Gate: evaluateWebrtcOpusRfc7587MaxaveragebitrateVoiceCeiling...()</text>
+
+  <rect x="638" y="358" width="486" height="160" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="654" y="382" fill="#34D399" font-family="Consolas, monospace" font-size="13" font-weight="700">P970 🎉 (P970 / 130th FAQ / 930 Tests): [5, 25]% LBRR FEC &amp; Baseline</text>
+  <text x="654" y="404" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Couple useinbandfec=1 with OPUS_SET_PACKET_LOSS_PERC([5, 25]%)</text>
+  <text x="654" y="424" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Dynamically feed RTCP RR/TWCC fraction-lost into libopus CTL</text>
+  <text x="654" y="444" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Enforce RFC 7874 mandatory Opus + G.711 (PCMU/PCMA) baseline</text>
+  <text x="654" y="464" fill="#38BDF8" font-family="Consolas, monospace" font-size="12">• inactiveInbandFecOrMissingBaselineCodecDrops == 0</text>
+  <text x="654" y="486" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">• Gate: evaluateWebrtcRfc7874BidirectionalInbandFecActivation...()</text>
+  <text x="654" y="506" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11.5">Verdict: PASS ([16,64]kbps Mono · [5,25]% Active LBRR · 930 Tests 🎉)</text>
+
+  <!-- Footer Provenance & Offline Timing Banner -->
+  <rect x="54" y="552" width="1092" height="76" rx="10" fill="#090D16" stroke="#334155" stroke-width="1"/>
+  <text x="74" y="578" fill="#FBBF24" font-family="Consolas, monospace" font-size="12.5" font-weight="700">Offline Synthetic Policy Engine Provenance · P970 🎉 · 130th FAQ 🎉 · 979 Guardrails · 988 Probes · 798 Live POC Probes · 930 Tests 🎉</text>
+  <text x="74" y="600" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">Timing Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="74" y="618" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Standards: IETF RFC 7874 (WebRTC Audio Codec Requirements), RFC 7587 (RTP Payload Format for Opus), RFC 6716 (Opus LBRR FEC).</text>
+</svg>

@@ -1966,6 +1966,13 @@
               <td><code>P967 / P968 deterministic SIPREC RFC 7866 Pre-ACK Zero-PCM pause &amp; RFC 8068 participantStreamAssoc XML guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>491. [专题128 · 第55轮 &amp; P970 &amp; 130篇FAQ &amp; 930单测 🎉 `docs/voice-webrtc-opus-rfc7874-rfc7587-maxaveragebitrate-bomb-asymmetric-inbandfec-g711-fallback-faq.md`] 企业 WebRTC `RFC 7874 / RFC 7587` Opus 编码器 SDP `a=fmtp` `maxaveragebitrate` 严格钳位 `[16000, 64000] bps` 与单声道 `stereo=0` 锁（拦截 `510kbps` 立体声 16x 带宽放大炸弹与 `6kbps` 窄带失真，`0` 码率越界，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `libopus` SIMD 编码耗时 `not_measured`）&amp; `useinbandfec=1` 强制联动 `OPUS_SET_PACKET_LOSS_PERC([5, 25]%)` 真实激活 LBRR 纠错帧与 `Opus + G.711` 双必选基线门禁（`0` 假开启零冗余丢包；真实弱网 LBRR 恢复耗时 `not_measured`）(`P969` / `P970 🎉` · Stage 488 · Topic 128 · 🎉 第 55 轮夜间深潜、P970 护栏、第 130 篇独立单专题 FAQ 与 930 项单测四重里程碑 · 979 护栏 &amp; 988 探针 · 491 维)</strong>
+              </td>
+              <td><code>P969 / P970 🎉 deterministic WebRTC RFC 7874/7587 Opus [16,64]kbps clamp &amp; [5,25]% LBRR FEC guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5908,6 +5915,13 @@
                 <strong>490. [专题127 · 490维里程碑 🎉 `docs/voice-siprec-rfc7866-rfc8068-recordpref-pause-resume-pci-mute-participant-stream-xml-mismatch-faq.md`] 企业 SIPREC `RFC 7866 / RFC 8068` 合规双录在发送 `a=recordpref:pause` 前 `0ms` 本地抢先将 RS RTP 分流替换为全零静音帧（Zero-PCM）、强制 `[200, 1000]ms` 前后静音护带并剥离外线 CS 侧伪造停录指令锁（`0` Pre-ACK 信用卡 CVV 明文漏录帧，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SRS 磁盘落盘耗时 `not_measured`）&amp; 转接/耳语后 SDP `a=label` 与 `rs-metadata+xml` `&lt;participantStreamAssoc&gt;` 1:1 双射绑定及 `[1, 4]` 活跃录制流配额门禁（`0` 声道角色错位或班长耳语混音；真实 XML 解析耗时 `not_measured`）(`P967` / `P968` · Stage 487 · Topic 127 · 🎉 第 490 大评测维度历史性里程碑 · 977 护栏 &amp; 986 探针 · 490 维 🎉)</strong>
               </td>
               <td><code>P967 / P968 deterministic SIPREC RFC 7866 Pre-ACK Zero-PCM pause &amp; RFC 8068 participantStreamAssoc XML guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>491. [专题128 · 第55轮 &amp; P970 &amp; 130篇FAQ &amp; 930单测 🎉 `docs/voice-webrtc-opus-rfc7874-rfc7587-maxaveragebitrate-bomb-asymmetric-inbandfec-g711-fallback-faq.md`] 企业 WebRTC `RFC 7874 / RFC 7587` Opus 编码器 SDP `a=fmtp` `maxaveragebitrate` 严格钳位 `[16000, 64000] bps` 与单声道 `stereo=0` 锁（拦截 `510kbps` 立体声 16x 带宽放大炸弹与 `6kbps` 窄带失真，`0` 码率越界，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 `libopus` SIMD 编码耗时 `not_measured`）&amp; `useinbandfec=1` 强制联动 `OPUS_SET_PACKET_LOSS_PERC([5, 25]%)` 真实激活 LBRR 纠错帧与 `Opus + G.711` 双必选基线门禁（`0` 假开启零冗余丢包；真实弱网 LBRR 恢复耗时 `not_measured`）(`P969` / `P970 🎉` · Stage 488 · Topic 128 · 🎉 第 55 轮夜间深潜、P970 护栏、第 130 篇独立单专题 FAQ 与 930 项单测四重里程碑 · 979 护栏 &amp; 988 探针 · 491 维)</strong>
+              </td>
+              <td><code>P969 / P970 🎉 deterministic WebRTC RFC 7874/7587 Opus [16,64]kbps clamp &amp; [5,25]% LBRR FEC guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

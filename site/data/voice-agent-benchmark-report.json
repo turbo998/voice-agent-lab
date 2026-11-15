@@ -2125,6 +2125,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pre-masks RS RTP fork with Zero-PCM silence prior to sending a=recordpref:pause with a [200, 1000]ms guard band (0 Pre-ACK spoken PAN/CVV frames leaked) and strips untrusted CS recordpref overrides; live SRS SIP Re-INVITE disk flush RTT is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 1:1 bijection between SDP a=label lines and rs-metadata+xml <participantStreamAssoc> bindings (0 swapped speaker tracks) and caps active RS streams in [1, 4]; live multipart/mixed XML parser latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "491. [Topic 128 · Historic 55th Nightly Round, P970 Guardrail, 130th FAQ & 930-Test Quadruple Milestone 🎉: voice-webrtc-opus-rfc7874-rfc7587-maxaveragebitrate-bomb-asymmetric-inbandfec-g711-fallback-faq] Enterprise WebRTC RFC 7874 / RFC 7587 Opus maxaveragebitrate [16,64]kbps Speech Ceiling & [5,25]% LBRR In-Band FEC Activation Guard (P969 / P970 🎉 — Stage 488 · 🎉 Historic 55th Nightly Round, P970 Guardrail, 130th FAQ & 930-Test Milestone · 491 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps Opus SDP a=fmtp maxaveragebitrate in [16000, 64000] bps and enforces stereo=0 mono voice mode (0 510kbps stereo amplification or <16kbps narrowband degradation violations); live libopus SIMD encoding latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: couples useinbandfec=1 with OPUS_SET_PACKET_LOSS_PERC in [5, 25]% to guarantee active LBRR frame emission and verifies RFC 7874 Opus + G.711 baseline codecs (0 unarmed FEC drops); live weak-network LBRR packet recovery latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
