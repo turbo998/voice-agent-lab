@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg127" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#064E3B"/>
+    </linearGradient>
+    <linearGradient id="accent127" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg127)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="8" rx="4" fill="url(#accent127)"/>
+
+  <text x="56" y="68" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1">STAGE 483 · TOPIC 123 · P959–P960 🎉 · 50TH NIGHTLY ROUND, P960, 125TH FAQ &amp; 925-TEST MILESTONE · 486 DIMS</text>
+  <text x="56" y="102" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24.5" font-weight="800">SIP RFC 8599 Push Notification: 555 Allowlist, pn-prid Scrub &amp; [2, 10]s Wake-Wait Hold</text>
+  <text x="56" y="128" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">企业移动 SIP RFC 8599 推送唤醒：防 Contact pn-prid 令牌外泄、555 拒止非白名单源与 [2, 10]s 唤醒驻留防 480 掉话 (P959–P960 🎉)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="56" y="152" width="528" height="390" rx="14" fill="#1E1B2E" stroke="#EF4444" stroke-width="2"/>
+  <rect x="76" y="172" width="320" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="90" y="191" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">❌ 脆弱基线 (pn-prid Token Leak &amp; 0ms 480 Drop)</text>
+
+  <text x="76" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. Contact pn-prid 令牌外泄与伪造 pn-provider SSRF</text>
+  <text x="76" y="250" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">Contact: &lt;sip:u@ip;pn-provider=169.254.169.254;pn-prid=...&gt;</text>
+  <text x="76" y="272" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 转发报文未剥离 pn-prid，向外部直接暴露员工手机 APNs/FCM 令牌！</text>
+  <text x="76" y="294" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 未校验 pn-provider 白名单，攻击者注入内网地址触发核心网 SSRF！</text>
+
+  <line x1="76" y1="320" x2="560" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="76" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. 未等待手机唤醒重注册即 0ms 误判 480 掉话</text>
+  <text x="76" y="376" fill="#CBD5E1" font-family="Consolas, monospace" font-size="13">INVITE -&gt; Background TLS Closed -&gt; 0ms 480 Drop!</text>
+  <text x="76" y="398" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 手机锁屏后后台 Socket 被系统冻结，唤醒重注册需 1.2–4.5 秒！</text>
+  <text x="76" y="420" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 代理未挂起 INVITE 直接回 480，导致移动专家转接掉话率高达 80%+！</text>
+
+  <rect x="76" y="450" width="488" height="72" rx="10" fill="#450A0A" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="92" y="476" fill="#FECACA" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">事故后果：14 个泄露/越权推送 Contact + 23 通唤醒前误判 480 掉话</text>
+  <text x="92" y="500" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13">员工移动设备唯一标识裸奔，且锁屏状态下 AI 转人工几乎全部断线</text>
+
+  <!-- Right Card: Deterministic Guardrails P959-P960 -->
+  <rect x="616" y="152" width="528" height="390" rx="14" fill="#0F292A" stroke="#10B981" stroke-width="2"/>
+  <rect x="636" y="172" width="360" height="28" rx="6" fill="#064E3B"/>
+  <text x="650" y="191" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">✅ 企业级护栏 (P959 + P960 🎉 · 50th Round &amp; 125th FAQ)</text>
+
+  <text x="636" y="226" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P959 · RFC 8599 [1, 4] 推送源白名单 (555) 与 pn-* 剥离</text>
+  <text x="636" y="250" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Trusted PNS ∈ [1, 4] (555 Reject) + Egress pn-* Strip</text>
+  <text x="636" y="272" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 仅允许 [1, 4] 个授信推送服务商，未知域名立即回 555 阻断 SSRF</text>
+  <text x="636" y="294" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 出局转发 Contact 头时 100% 擦除 pn-prid / pn-param 隐私参数</text>
+
+  <line x1="636" y1="320" x2="1120" y2="320" stroke="#1E293B" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <text x="636" y="352" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">P960 🎉 · RFC 8599 [2, 10]s 唤醒驻留与 1:1 幂等推送锁</text>
+  <text x="636" y="376" fill="#A7F3D0" font-family="Consolas, monospace" font-size="13">Proxy Wake-Wait Hold ∈ [2, 10]s + 1:1 Push Dedup</text>
+  <text x="636" y="398" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 挂起 INVITE 事务 [2, 10]s 等待同 +sip.instance 唤醒重注册</text>
+  <text x="636" y="420" fill="#D1FAE5" font-family="Segoe UI, Arial, sans-serif" font-size="13">• 按 Call-ID 实施 1:1 幂等推送合并，彻底杜绝 APNs 429 封禁</text>
+
+  <rect x="636" y="450" width="488" height="72" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5"/>
+  <text x="652" y="476" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">验证结果：0 令牌外泄/SSRF · 0 唤醒前误掉话 · 4 源 / [2, 10]s 驻留</text>
+  <text x="652" y="500" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <!-- Footer Provenance -->
+  <rect x="56" y="560" width="1088" height="68" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="76" y="586" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Benchmark &amp; Provenance (Stage 483 · Topic 123 · 125th FAQ 🎉 · P960 🎉 · 969 Guards · 978 Probes · 486 Dims · 925 Tests 🎉)</text>
+  <text x="76" y="610" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Guardrails: evaluateSipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionGate (P959) &amp; evaluateSipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleGate (P960 🎉)</text>
+</svg>

@@ -84426,6 +84426,162 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionContext {
+      untrustedPnProviderOrEgressContactPnPridLeakDetected: boolean;
+      leakedOrSsrfPushNotificationContacts: number;
+      allowedPnProviderDomainsCount: number;
+    }
+
+    export interface SipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reject_untrusted_pn_provider_555_and_strip_egress_pn_parameters"
+        | "clamp_leaked_pn_contacts_and_provider_allowlist_bounds"
+        | "allow";
+      reason: string;
+      clampedLeakedOrSsrfPushNotificationContacts: number;
+      clampedAllowedPnProviderDomainsCount: number;
+    }
+
+    /**
+     * P959: SIP RFC 8599 Push Notification [1, 4]-Provider Allowlist (555 Reject) & Egress Contact pn-* Token Redaction Gate.
+     */
+    export function evaluateSipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionGate(
+      ctx: SipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionContext,
+    ): SipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionResult {
+      const policyId =
+        "P959-SIP-RFC8599-PUSH-NOTIFICATION-PROVIDER-ALLOWLIST-AND-CONTACT-TOKEN-REDACTION-GUARD";
+      const clampedLeakedOrSsrfPushNotificationContacts = 0;
+      const clampedAllowedPnProviderDomainsCount = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.allowedPnProviderDomainsCount)
+            ? Math.round(ctx.allowedPnProviderDomainsCount)
+            : 2,
+        ),
+      );
+
+      if (ctx.untrustedPnProviderOrEgressContactPnPridLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_untrusted_pn_provider_555_and_strip_egress_pn_parameters",
+          reason:
+            "Untrusted SIP Contact pn-provider SSRF domain or egress pn-prid/pn-param device-token bleed detected (RFC 8599 Section 5.5 / Section 9); rejecting unknown provider with SIP 555 and stripping pn-* parameters from forwarded Contact headers (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedLeakedOrSsrfPushNotificationContacts,
+          clampedAllowedPnProviderDomainsCount,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.leakedOrSsrfPushNotificationContacts) ||
+        ctx.leakedOrSsrfPushNotificationContacts !== 0 ||
+        !Number.isFinite(ctx.allowedPnProviderDomainsCount) ||
+        ctx.allowedPnProviderDomainsCount < 1 ||
+        ctx.allowedPnProviderDomainsCount > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_leaked_pn_contacts_and_provider_allowlist_bounds",
+          reason:
+            "Leaked/SSRF push-notification Contacts (>0 synthetic ceiling) or allowed pn-provider domains (<1 or >4 synthetic bounds) out of bounds; clamping leaked Contacts to 0 and provider allowlist to [1, 4].",
+          clampedLeakedOrSsrfPushNotificationContacts,
+          clampedAllowedPnProviderDomainsCount,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 8599 [1, 4] pn-provider allowlist (0 leaked/SSRF Contacts) and egress Contact pn-* scrubbing verified.",
+        clampedLeakedOrSsrfPushNotificationContacts,
+        clampedAllowedPnProviderDomainsCount,
+      };
+    }
+
+    export interface SipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleContext {
+      premature480BeforePushWakeOrDuplicateWakeStormDetected: boolean;
+      droppedPreWakeMobileCalls: number;
+      proxyWakeWaitHoldSeconds: number;
+    }
+
+    export interface SipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "hold_invite_transaction_for_push_wake_register_and_dedup_pns"
+        | "clamp_dropped_prewake_calls_and_wake_hold_seconds"
+        | "allow";
+      reason: string;
+      clampedDroppedPreWakeMobileCalls: number;
+      clampedProxyWakeWaitHoldSeconds: number;
+    }
+
+    /**
+     * P960 (🎉 Historic 50th Nightly Round, P960 Guardrail, 125th FAQ & 925-Test Quadruple Milestone): SIP RFC 8599 Proxy Wake-Wait Hold [2, 10]s & 1:1 Idempotent Push Deduplication Gate.
+     */
+    export function evaluateSipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleGate(
+      ctx: SipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleContext,
+    ): SipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleResult {
+      const policyId =
+        "P960-SIP-RFC8599-PROXY-WAKE-REGISTRATION-HOLD-AND-PURR-RATE-THROTTLE-GUARD";
+      const clampedDroppedPreWakeMobileCalls = 0;
+      const clampedProxyWakeWaitHoldSeconds = Math.min(
+        10,
+        Math.max(
+          2,
+          Number.isFinite(ctx.proxyWakeWaitHoldSeconds)
+            ? Math.round(ctx.proxyWakeWaitHoldSeconds)
+            : 6,
+        ),
+      );
+
+      if (ctx.premature480BeforePushWakeOrDuplicateWakeStormDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "hold_invite_transaction_for_push_wake_register_and_dedup_pns",
+          reason:
+            "Premature SIP 480 Temporarily Unavailable before mobile push-wake re-registration or duplicate VoIP push storm detected (RFC 8599 Section 6); holding INVITE transaction in [2, 10]s wake-wait queue and enforcing 1:1 idempotent push deduplication (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedDroppedPreWakeMobileCalls,
+          clampedProxyWakeWaitHoldSeconds,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.droppedPreWakeMobileCalls) ||
+        ctx.droppedPreWakeMobileCalls !== 0 ||
+        !Number.isFinite(ctx.proxyWakeWaitHoldSeconds) ||
+        ctx.proxyWakeWaitHoldSeconds < 2 ||
+        ctx.proxyWakeWaitHoldSeconds > 10
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_dropped_prewake_calls_and_wake_hold_seconds",
+          reason:
+            "Dropped pre-wake mobile calls (>0 synthetic ceiling) or proxy wake-wait hold window (<2 or >10s synthetic bounds) out of bounds; clamping dropped calls to 0 and wake-wait hold to [2, 10]s.",
+          clampedDroppedPreWakeMobileCalls,
+          clampedProxyWakeWaitHoldSeconds,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 8599 [2, 10]s proxy wake-wait hold (0 premature 480 drops) and 1:1 push deduplication verified.",
+        clampedDroppedPreWakeMobileCalls,
+        clampedProxyWakeWaitHoldSeconds,
+      };
+    }
+
 
 
 

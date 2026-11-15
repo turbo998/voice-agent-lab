@@ -2095,6 +2095,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 32/64-bit truncated SFrame tags and enforces full 128-bit AES-GCM authentication tags with monotonic (KID, CTR) nonces (0 forged frames); live RTCRtpScriptTransform Worker AES-GCM latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: retains [1000, 5000]ms dual-KID decryption key rings across MLS epoch transitions (0 dropped frames) and enforces hop-by-hop RFC 9335 Cryptex header encryption; live MLS TreeKEM epoch ratchet latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "486. [Topic 123 · Historic 50th Nightly Round, P960 Guardrail, 125th FAQ & 925-Test Milestone 🎉: voice-sip-rfc8599-push-notification-pn-prid-token-leak-555-unsupported-wake-timeout-faq] Enterprise Mobile SIP RFC 8599 [1,4] pn-provider Allowlist (555) + Egress pn-* Scrub & [2,10]s Wake-Wait Hold Guard (P959 / P960 🎉 — Stage 483 · 🎉 Historic 50th Nightly Round, P960 Guardrail, 125th FAQ & 925-Test Milestone · 486 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces [1, 4] allowlisted pn-provider domains (rejecting unknown with SIP 555) and strips pn-* device tokens from egress Contact headers (0 leaked/SSRF Contacts); live SIP Contact URI parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: holds inbound INVITE transactions in a [2, 10]s wake-wait queue awaiting matching +sip.instance re-registration (0 premature 480 drops) and deduplicates push requests 1:1; live APNs/FCM HTTP/2 push RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

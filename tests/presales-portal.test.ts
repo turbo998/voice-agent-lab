@@ -262,6 +262,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-sip-rfc7316-rfc7989-session-id-end-to-end-uuid-spoof-half-key-mutation-cdr-poisoning-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P955", "P956", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-sframe-rfc9605-cryptex-rfc9335-kid-ratchet-desync-tag-truncation-overhead-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P957", "P958", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-sframe-rfc9605-cryptex-rfc9335-kid-ratchet-desync-tag-truncation-overhead-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P957", "P958", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc8599-push-notification-pn-prid-token-leak-555-unsupported-wake-timeout-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P959", "P960", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc8599-push-notification-pn-prid-token-leak-555-unsupported-wake-timeout-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P959", "P960", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -984,6 +986,8 @@ import {
   evaluateSipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyGate,
   evaluateWebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessGate,
   evaluateWebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataGate,
+  evaluateSipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionGate,
+  evaluateSipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -57800,6 +57804,88 @@ test("Stage 482: WebRTC RFC 9605 SFrame 128-bit AEAD tag and KID grace window + 
   const svg126 = await readFile(new URL("../assets/svg/126-voice-webrtc-sframe-rfc9605-cryptex-rfc9335-kid-ratchet-desync-tag-truncation-overhead-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg126, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg126, /STAGE 482 · TOPIC 122/);
+});
+
+test("Stage 483: SIP RFC 8599 Push Notification 555 allowlist, pn-prid scrub and [2, 10]s wake-wait hold guardrails (P959-P960)", async () => {
+  const blocked959 = evaluateSipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionGate({
+    untrustedPnProviderOrEgressContactPnPridLeakDetected: true,
+    leakedOrSsrfPushNotificationContacts: 14,
+    allowedPnProviderDomainsCount: 12,
+  });
+  assert.equal(blocked959.violated, true);
+  assert.equal(
+    blocked959.policyId,
+    "P959-SIP-RFC8599-PUSH-NOTIFICATION-PROVIDER-ALLOWLIST-AND-CONTACT-TOKEN-REDACTION-GUARD",
+  );
+  assert.equal(
+    blocked959.action,
+    "reject_untrusted_pn_provider_555_and_strip_egress_pn_parameters",
+  );
+  assert.equal(blocked959.clampedLeakedOrSsrfPushNotificationContacts, 0);
+  assert.equal(blocked959.clampedAllowedPnProviderDomainsCount, 4);
+  assert.match(blocked959.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped959 = evaluateSipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionGate({
+    untrustedPnProviderOrEgressContactPnPridLeakDetected: false,
+    leakedOrSsrfPushNotificationContacts: 0,
+    allowedPnProviderDomainsCount: 0,
+  });
+  assert.equal(clamped959.violated, true);
+  assert.equal(
+    clamped959.action,
+    "clamp_leaked_pn_contacts_and_provider_allowlist_bounds",
+  );
+  assert.equal(clamped959.clampedAllowedPnProviderDomainsCount, 1);
+
+  const allowed959 = evaluateSipRfc8599PushNotificationProviderAllowlistAndContactTokenRedactionGate({
+    untrustedPnProviderOrEgressContactPnPridLeakDetected: false,
+    leakedOrSsrfPushNotificationContacts: 0,
+    allowedPnProviderDomainsCount: 2,
+  });
+  assert.equal(allowed959.violated, false);
+  assert.equal(allowed959.action, "allow");
+
+  const blocked960 = evaluateSipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleGate({
+    premature480BeforePushWakeOrDuplicateWakeStormDetected: true,
+    droppedPreWakeMobileCalls: 23,
+    proxyWakeWaitHoldSeconds: 0,
+  });
+  assert.equal(blocked960.violated, true);
+  assert.equal(
+    blocked960.policyId,
+    "P960-SIP-RFC8599-PROXY-WAKE-REGISTRATION-HOLD-AND-PURR-RATE-THROTTLE-GUARD",
+  );
+  assert.equal(
+    blocked960.action,
+    "hold_invite_transaction_for_push_wake_register_and_dedup_pns",
+  );
+  assert.equal(blocked960.clampedDroppedPreWakeMobileCalls, 0);
+  assert.equal(blocked960.clampedProxyWakeWaitHoldSeconds, 2);
+  assert.match(blocked960.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped960 = evaluateSipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleGate({
+    premature480BeforePushWakeOrDuplicateWakeStormDetected: false,
+    droppedPreWakeMobileCalls: 0,
+    proxyWakeWaitHoldSeconds: 45,
+  });
+  assert.equal(clamped960.violated, true);
+  assert.equal(
+    clamped960.action,
+    "clamp_dropped_prewake_calls_and_wake_hold_seconds",
+  );
+  assert.equal(clamped960.clampedProxyWakeWaitHoldSeconds, 10);
+
+  const allowed960 = evaluateSipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleGate({
+    premature480BeforePushWakeOrDuplicateWakeStormDetected: false,
+    droppedPreWakeMobileCalls: 0,
+    proxyWakeWaitHoldSeconds: 6,
+  });
+  assert.equal(allowed960.violated, false);
+  assert.equal(allowed960.action, "allow");
+
+  const svg127 = await readFile(new URL("../assets/svg/127-voice-sip-rfc8599-push-notification-pn-prid-token-leak-555-unsupported-wake-timeout-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg127, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg127, /STAGE 483 · TOPIC 123/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {
