@@ -2077,6 +2077,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips untrusted ingress SIP P-Charging-Vector headers and mints [128, 256]-bit CSPRNG icid-value tokens (0 spoofed/colliding calls); live SBC CSPRNG token generation latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: scrubs RFC 7315 P-Charging-Function-Addresses, P-Visited-Network-ID, and cellular PANI across untrusted boundaries (0 leaked/hijacked packets) and clamps internal trust hops in [1, 4]; live Diameter Rf/Ro ACR/ACA accounting RTT is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "483. [Topic 120 🎉 · Historic Stage 480 & Topic 120 Dual Milestone 🎉: voice-webrtc-sctp-rfc4960-rfc8831-heartbeat-amplification-abort-vtag-verification-hol-stall-faq] Enterprise WebRTC SCTP RFC 4960 32-Bit vtag / [16,64]B Heartbeat Cap & RFC 8831 PR-SCTP [80,250]ms HoL Stall Guard (P953 / P954 — Stage 480 🎉 · 🎉 Historic Stage 480 & Topic 120 Dual Milestone · 483 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: silently drops inbound SCTP control chunks with mismatched 32-bit Verification Tags (0 spoofed teardowns) and clamps HEARTBEAT-INFO payloads in [16, 64] bytes; live dcSCTP/usrsctp chunk demux latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces ordered:false + PR-SCTP maxPacketLifeTime in [80, 250]ms with FORWARD-TSN skipping for real-time transcript/viseme DataChannels (0 stalled messages); live SCTP reassembly queue flush latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

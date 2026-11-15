@@ -256,6 +256,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-webrtc-rtp-rfc6464-rfc6465-audio-level-v-bit-vad-poisoning-active-speaker-hijack-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P949", "P950", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc3455-rfc7315-p-charging-vector-icids-spoof-p-visited-network-id-bleed-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P951", "P952", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc3455-rfc7315-p-charging-vector-icids-spoof-p-visited-network-id-bleed-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P951", "P952", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-sctp-rfc4960-rfc8831-heartbeat-amplification-abort-vtag-verification-hol-stall-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P953", "P954", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-sctp-rfc4960-rfc8831-heartbeat-amplification-abort-vtag-verification-hol-stall-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P953", "P954", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -972,6 +974,8 @@ import {
   evaluateWebrtcRtpRfc6465MixerCsrcAudioLevelCountAlignmentAndZeroVBitGate,
   evaluateSipRfc7315PChargingVectorIngressStripAndCryptographicIcidGenerationGate,
   evaluateSipRfc7315PChargingFunctionAddressesAndVisitedNetworkBoundaryScrubGate,
+  evaluateWebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsGate,
+  evaluateWebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -57542,6 +57546,88 @@ test("Stage 479: SIP RFC 7315 / RFC 3455 P-Charging-Vector icid-value CSPRNG and
   const svg123 = await readFile(new URL("../assets/svg/123-voice-sip-rfc3455-rfc7315-p-charging-vector-icids-spoof-p-visited-network-id-bleed-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg123, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg123, /STAGE 479 · TOPIC 119/);
+});
+
+test("Stage 480: WebRTC SCTP RFC 4960 vtag/Heartbeat bounds and RFC 8831 PR-SCTP Head-of-Line stall guardrails (P953-P954)", async () => {
+  const blocked953 = evaluateWebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsGate({
+    mismatchedSctpVerificationTagOrOversizedHeartbeatDetected: true,
+    spoofedOrAmplifiedSctpControlPackets: 19,
+    maxHeartbeatInfoPayloadBytes: 1200,
+  });
+  assert.equal(blocked953.violated, true);
+  assert.equal(
+    blocked953.policyId,
+    "P953-WEBRTC-SCTP-RFC4960-VERIFICATION-TAG-VALIDATION-AND-HEARTBEAT-INFO-BOUNDS-GUARD",
+  );
+  assert.equal(
+    blocked953.action,
+    "drop_mismatched_vtag_control_chunk_and_cap_heartbeat_info",
+  );
+  assert.equal(blocked953.clampedSpoofedOrAmplifiedSctpControlPackets, 0);
+  assert.equal(blocked953.clampedMaxHeartbeatInfoPayloadBytes, 64);
+  assert.match(blocked953.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped953 = evaluateWebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsGate({
+    mismatchedSctpVerificationTagOrOversizedHeartbeatDetected: false,
+    spoofedOrAmplifiedSctpControlPackets: 0,
+    maxHeartbeatInfoPayloadBytes: 4,
+  });
+  assert.equal(clamped953.violated, true);
+  assert.equal(
+    clamped953.action,
+    "clamp_spoofed_sctp_control_packets_and_heartbeat_bytes",
+  );
+  assert.equal(clamped953.clampedMaxHeartbeatInfoPayloadBytes, 16);
+
+  const allowed953 = evaluateWebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsGate({
+    mismatchedSctpVerificationTagOrOversizedHeartbeatDetected: false,
+    spoofedOrAmplifiedSctpControlPackets: 0,
+    maxHeartbeatInfoPayloadBytes: 32,
+  });
+  assert.equal(allowed953.violated, false);
+  assert.equal(allowed953.action, "allow");
+
+  const blocked954 = evaluateWebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaGate({
+    orderedReliableRealtimeTranscriptStallOrBufferOverflowDetected: true,
+    stalledOrOverflowedDataChannelMessages: 27,
+    maxPacketLifeTimeMs: 3000,
+  });
+  assert.equal(blocked954.violated, true);
+  assert.equal(
+    blocked954.policyId,
+    "P954-WEBRTC-SCTP-RFC8831-UNORDERED-PARTIAL-RELIABILITY-AND-SEND-BUFFER-QUOTA-GUARD",
+  );
+  assert.equal(
+    blocked954.action,
+    "enforce_unordered_pr_sctp_ttl_and_shed_stale_transcript_frames",
+  );
+  assert.equal(blocked954.clampedStalledOrOverflowedDataChannelMessages, 0);
+  assert.equal(blocked954.clampedMaxPacketLifeTimeMs, 250);
+  assert.match(blocked954.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped954 = evaluateWebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaGate({
+    orderedReliableRealtimeTranscriptStallOrBufferOverflowDetected: false,
+    stalledOrOverflowedDataChannelMessages: 0,
+    maxPacketLifeTimeMs: 10,
+  });
+  assert.equal(clamped954.violated, true);
+  assert.equal(
+    clamped954.action,
+    "clamp_stalled_datachannel_messages_and_packet_lifetime_ms",
+  );
+  assert.equal(clamped954.clampedMaxPacketLifeTimeMs, 80);
+
+  const allowed954 = evaluateWebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaGate({
+    orderedReliableRealtimeTranscriptStallOrBufferOverflowDetected: false,
+    stalledOrOverflowedDataChannelMessages: 0,
+    maxPacketLifeTimeMs: 150,
+  });
+  assert.equal(allowed954.violated, false);
+  assert.equal(allowed954.action, "allow");
+
+  const svg124 = await readFile(new URL("../assets/svg/124-voice-webrtc-sctp-rfc4960-rfc8831-heartbeat-amplification-abort-vtag-verification-hol-stall-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg124, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg124, /STAGE 480 🎉 · TOPIC 120 🎉/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {

@@ -83976,6 +83976,162 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsContext {
+      mismatchedSctpVerificationTagOrOversizedHeartbeatDetected: boolean;
+      spoofedOrAmplifiedSctpControlPackets: number;
+      maxHeartbeatInfoPayloadBytes: number;
+    }
+
+    export interface WebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "drop_mismatched_vtag_control_chunk_and_cap_heartbeat_info"
+        | "clamp_spoofed_sctp_control_packets_and_heartbeat_bytes"
+        | "allow";
+      reason: string;
+      clampedSpoofedOrAmplifiedSctpControlPackets: number;
+      clampedMaxHeartbeatInfoPayloadBytes: number;
+    }
+
+    /**
+     * P953: WebRTC SCTP RFC 4960 32-Bit Verification Tag (vtag) Validation & [16, 64]-Byte HEARTBEAT-INFO Cap Gate.
+     */
+    export function evaluateWebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsGate(
+      ctx: WebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsContext,
+    ): WebrtcSctpRfc4960VerificationTagValidationAndHeartbeatInfoBoundsResult {
+      const policyId =
+        "P953-WEBRTC-SCTP-RFC4960-VERIFICATION-TAG-VALIDATION-AND-HEARTBEAT-INFO-BOUNDS-GUARD";
+      const clampedSpoofedOrAmplifiedSctpControlPackets = 0;
+      const clampedMaxHeartbeatInfoPayloadBytes = Math.min(
+        64,
+        Math.max(
+          16,
+          Number.isFinite(ctx.maxHeartbeatInfoPayloadBytes)
+            ? Math.round(ctx.maxHeartbeatInfoPayloadBytes)
+            : 32,
+        ),
+      );
+
+      if (ctx.mismatchedSctpVerificationTagOrOversizedHeartbeatDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "drop_mismatched_vtag_control_chunk_and_cap_heartbeat_info",
+          reason:
+            "Mismatched 32-bit SCTP Verification Tag (vtag) on ABORT/SHUTDOWN/HEARTBEAT chunk or oversized HEARTBEAT-INFO payload detected (RFC 4960 Section 8.5 / Section 8.3); silently dropping mismatched vtag packet and capping HEARTBEAT-INFO in [16, 64] bytes (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedSpoofedOrAmplifiedSctpControlPackets,
+          clampedMaxHeartbeatInfoPayloadBytes,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.spoofedOrAmplifiedSctpControlPackets) ||
+        ctx.spoofedOrAmplifiedSctpControlPackets !== 0 ||
+        !Number.isFinite(ctx.maxHeartbeatInfoPayloadBytes) ||
+        ctx.maxHeartbeatInfoPayloadBytes < 16 ||
+        ctx.maxHeartbeatInfoPayloadBytes > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_spoofed_sctp_control_packets_and_heartbeat_bytes",
+          reason:
+            "Spoofed/amplified SCTP control packets (>0 synthetic ceiling) or max HEARTBEAT-INFO payload bytes (<16 or >64 bytes synthetic bounds) out of bounds; clamping spoofed packets to 0 and HEARTBEAT-INFO size to [16, 64] bytes.",
+          clampedSpoofedOrAmplifiedSctpControlPackets,
+          clampedMaxHeartbeatInfoPayloadBytes,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC SCTP RFC 4960 32-bit vtag verification (0 spoofed control packets) and [16, 64]-byte HEARTBEAT-INFO bounds verified.",
+        clampedSpoofedOrAmplifiedSctpControlPackets,
+        clampedMaxHeartbeatInfoPayloadBytes,
+      };
+    }
+
+    export interface WebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaContext {
+      orderedReliableRealtimeTranscriptStallOrBufferOverflowDetected: boolean;
+      stalledOrOverflowedDataChannelMessages: number;
+      maxPacketLifeTimeMs: number;
+    }
+
+    export interface WebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "enforce_unordered_pr_sctp_ttl_and_shed_stale_transcript_frames"
+        | "clamp_stalled_datachannel_messages_and_packet_lifetime_ms"
+        | "allow";
+      reason: string;
+      clampedStalledOrOverflowedDataChannelMessages: number;
+      clampedMaxPacketLifeTimeMs: number;
+    }
+
+    /**
+     * P954 (🎉 Historic Stage 480 & Topic 120 Dual Milestone): WebRTC RFC 8831 / RFC 3758 Unordered PR-SCTP [80, 250]ms TTL & Send-Buffer Shedding Gate.
+     */
+    export function evaluateWebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaGate(
+      ctx: WebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaContext,
+    ): WebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaResult {
+      const policyId =
+        "P954-WEBRTC-SCTP-RFC8831-UNORDERED-PARTIAL-RELIABILITY-AND-SEND-BUFFER-QUOTA-GUARD";
+      const clampedStalledOrOverflowedDataChannelMessages = 0;
+      const clampedMaxPacketLifeTimeMs = Math.min(
+        250,
+        Math.max(
+          80,
+          Number.isFinite(ctx.maxPacketLifeTimeMs)
+            ? Math.round(ctx.maxPacketLifeTimeMs)
+            : 150,
+        ),
+      );
+
+      if (ctx.orderedReliableRealtimeTranscriptStallOrBufferOverflowDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_unordered_pr_sctp_ttl_and_shed_stale_transcript_frames",
+          reason:
+            "Real-time transcript/viseme DataChannel using ordered:true full reliability causing Head-of-Line stall or bufferedAmount overflow detected (RFC 8831 Section 6 / RFC 3758 PR-SCTP); enforcing ordered:false with maxPacketLifeTime in [80, 250]ms and shedding expired frames via FORWARD-TSN (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedStalledOrOverflowedDataChannelMessages,
+          clampedMaxPacketLifeTimeMs,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.stalledOrOverflowedDataChannelMessages) ||
+        ctx.stalledOrOverflowedDataChannelMessages !== 0 ||
+        !Number.isFinite(ctx.maxPacketLifeTimeMs) ||
+        ctx.maxPacketLifeTimeMs < 80 ||
+        ctx.maxPacketLifeTimeMs > 250
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_stalled_datachannel_messages_and_packet_lifetime_ms",
+          reason:
+            "Stalled/overflowed DataChannel messages (>0 synthetic ceiling) or maxPacketLifeTime (<80 or >250ms synthetic bounds) out of bounds; clamping stalled messages to 0 and maxPacketLifeTime to [80, 250]ms.",
+          clampedStalledOrOverflowedDataChannelMessages,
+          clampedMaxPacketLifeTimeMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8831 unordered PR-SCTP (0 stalled messages) and [80, 250]ms maxPacketLifeTime bounds verified.",
+        clampedStalledOrOverflowedDataChannelMessages,
+        clampedMaxPacketLifeTimeMs,
+      };
+    }
+
 
 
 
