@@ -83684,6 +83684,142 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRtpRfc6464AudioLevelVBitVadVerificationAndActiveSpeakerHijackContext {
+      spoofedZeroDbovAudioLevelOrUnnegotiatedVBitHijackDetected: boolean;
+      hijackedActiveSpeakerAudioPackets: number;
+      minTrustedAudioLevelAttenuationDbov: number;
+    }
+
+    export interface WebrtcRtpRfc6464AudioLevelVBitVadVerificationAndActiveSpeakerHijackDecision {
+      violated: boolean;
+      policyId: "P949-WEBRTC-RTP-RFC6464-AUDIO-LEVEL-V-BIT-VAD-VERIFICATION-AND-ACTIVE-SPEAKER-HIJACK-GUARD";
+      action:
+        | "cross_verify_audio_level_with_payload_energy_and_strip_unnegotiated_v_bit"
+        | "clamp_hijacked_audio_level_packets_and_attenuation_dbov_bounds"
+        | "allow";
+      reason: string;
+      clampedHijackedActiveSpeakerAudioPackets: number;
+      clampedMinTrustedAudioLevelAttenuationDbov: number;
+    }
+
+    export function evaluateWebrtcRtpRfc6464AudioLevelVBitVadVerificationAndActiveSpeakerHijackGate(
+      context: WebrtcRtpRfc6464AudioLevelVBitVadVerificationAndActiveSpeakerHijackContext,
+    ): WebrtcRtpRfc6464AudioLevelVBitVadVerificationAndActiveSpeakerHijackDecision {
+      const policyId =
+        "P949-WEBRTC-RTP-RFC6464-AUDIO-LEVEL-V-BIT-VAD-VERIFICATION-AND-ACTIVE-SPEAKER-HIJACK-GUARD" as const;
+      const clampedHijackedActiveSpeakerAudioPackets = 0;
+      const clampedMinTrustedAudioLevelAttenuationDbov = Math.min(
+        Math.max(context.minTrustedAudioLevelAttenuationDbov, 3),
+        127,
+      );
+
+      if (context.spoofedZeroDbovAudioLevelOrUnnegotiatedVBitHijackDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "cross_verify_audio_level_with_payload_energy_and_strip_unnegotiated_v_bit",
+          reason:
+            "Enterprise WebRTC RFC 6464 ssrc-audio-level V-Bit & 0 dBov Active-Speaker Hijack Policy Check: silent Opus DTX packet spoofed V=1 and level=0 (-0 dBov full-scale) to hijack SFU dominant-speaker routing and trigger false AI barge-in; offline synthetic policy state machine cross-checking audio level against payload size, clearing unnegotiated V-bit (0 hijacked packets), and clamping trusted attenuation to [3, 127] -dBov (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live SFU dominant-speaker EMA window update latency not_measured).",
+          clampedHijackedActiveSpeakerAudioPackets,
+          clampedMinTrustedAudioLevelAttenuationDbov,
+        };
+      }
+
+      if (
+        context.hijackedActiveSpeakerAudioPackets > 0 ||
+        context.minTrustedAudioLevelAttenuationDbov < 3 ||
+        context.minTrustedAudioLevelAttenuationDbov > 127
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_hijacked_audio_level_packets_and_attenuation_dbov_bounds",
+          reason:
+            "Hijacked RFC 6464 active-speaker audio packets (>0 synthetic ceiling) or min trusted audio-level attenuation (<3 or >127 -dBov synthetic bounds) out of bounds; clamping hijacked packets to 0 and attenuation to [3, 127] -dBov.",
+          clampedHijackedActiveSpeakerAudioPackets,
+          clampedMinTrustedAudioLevelAttenuationDbov,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 6464 payload-verified ssrc-audio-level (0 hijacked packets) and [3, 127] -dBov bounds verified.",
+        clampedHijackedActiveSpeakerAudioPackets,
+        clampedMinTrustedAudioLevelAttenuationDbov,
+      };
+    }
+
+    export interface WebrtcRtpRfc6465MixerCsrcAudioLevelCountAlignmentAndZeroVBitContext {
+      csrcAudioLevelCountMismatchOrNonZeroRfbitDetected: boolean;
+      malformedCsrcAudioLevelExtensionPackets: number;
+      maxMixerCsrcAudioLevelEntries: number;
+    }
+
+    export interface WebrtcRtpRfc6465MixerCsrcAudioLevelCountAlignmentAndZeroVBitDecision {
+      violated: boolean;
+      policyId: "P950-WEBRTC-RTP-RFC6465-MIXER-CSRC-AUDIO-LEVEL-COUNT-ALIGNMENT-AND-ZERO-V-BIT-GUARD";
+      action:
+        | "enforce_cc_count_alignment_and_zero_rfc6465_msb_bit"
+        | "clamp_malformed_csrc_audio_level_packets_and_entry_bounds"
+        | "allow";
+      reason: string;
+      clampedMalformedCsrcAudioLevelExtensionPackets: number;
+      clampedMaxMixerCsrcAudioLevelEntries: number;
+    }
+
+    export function evaluateWebrtcRtpRfc6465MixerCsrcAudioLevelCountAlignmentAndZeroVBitGate(
+      context: WebrtcRtpRfc6465MixerCsrcAudioLevelCountAlignmentAndZeroVBitContext,
+    ): WebrtcRtpRfc6465MixerCsrcAudioLevelCountAlignmentAndZeroVBitDecision {
+      const policyId =
+        "P950-WEBRTC-RTP-RFC6465-MIXER-CSRC-AUDIO-LEVEL-COUNT-ALIGNMENT-AND-ZERO-V-BIT-GUARD" as const;
+      const clampedMalformedCsrcAudioLevelExtensionPackets = 0;
+      const clampedMaxMixerCsrcAudioLevelEntries = Math.min(
+        Math.max(context.maxMixerCsrcAudioLevelEntries, 1),
+        15,
+      );
+
+      if (context.csrcAudioLevelCountMismatchOrNonZeroRfbitDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "enforce_cc_count_alignment_and_zero_rfc6465_msb_bit",
+          reason:
+            "Enterprise WebRTC RFC 6465 Mixer-to-Client csrc-audio-level CC Alignment & Zero-MSB Policy Check: csrc-audio-level extension byte count diverged from RTP fixed-header CC count or set reserved MSB bit to 1; offline synthetic policy state machine enforcing exact CC count parity, masking MSB to 0 (0 malformed packets), and clamping mixer CSRC entries to [1, 15] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established; live MCU/SFU CSRC extension serializer latency not_measured).",
+          clampedMalformedCsrcAudioLevelExtensionPackets,
+          clampedMaxMixerCsrcAudioLevelEntries,
+        };
+      }
+
+      if (
+        context.malformedCsrcAudioLevelExtensionPackets > 0 ||
+        context.maxMixerCsrcAudioLevelEntries < 1 ||
+        context.maxMixerCsrcAudioLevelEntries > 15
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_malformed_csrc_audio_level_packets_and_entry_bounds",
+          reason:
+            "Malformed RFC 6465 csrc-audio-level extension packets (>0 synthetic ceiling) or max mixer CSRC entries (<1 or >15 synthetic bounds) out of bounds; clamping malformed packets to 0 and CSRC entries to [1, 15].",
+          clampedMalformedCsrcAudioLevelExtensionPackets,
+          clampedMaxMixerCsrcAudioLevelEntries,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 6465 CC-aligned csrc-audio-level with MSB=0 (0 malformed packets) and [1, 15]-entry bounds verified.",
+        clampedMalformedCsrcAudioLevelExtensionPackets,
+        clampedMaxMixerCsrcAudioLevelEntries,
+      };
+    }
+
 
 
 

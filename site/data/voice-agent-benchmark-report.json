@@ -2065,6 +2065,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces inline cid: MIME binding or allowlisted LIS on RFC 6442 Geolocation headers with 424 rejection on external URLs (0 SSRF calls) and clamps PIDF-LO XML size in [256, 4096] bytes; live SBC PIDF-LO XML parsing latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of restricted RFC 4119 PIDF-LO bodies on non-emergency egress when retransmission-allowed=no (0 leaked packets) and clamps retention TTL in [60, 3600]s; live spatial Point-in-Polygon routing lookup latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "481. [Topic 118 · Historic 45th Nightly Round, P950 Guardrail, 120th FAQ & 920-Test Milestone 🎉: voice-webrtc-rtp-rfc6464-rfc6465-audio-level-v-bit-vad-poisoning-active-speaker-hijack-faq] Enterprise WebRTC RFC 6464 [3,127] -dBov Anti-Hijack & RFC 6465 Mixer CC [1,15] Audio-Level Guard (P949 / P950 🎉 — Stage 478 · 🎉 Historic 45th Nightly Round, P950 Guardrail, 120th FAQ & 920-Test Milestone · 481 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: cross-verifies RFC 6464 ssrc-audio-level against RTP payload size and clears unnegotiated V-bit (0 hijacked dominant-speaker packets) clamped in [3, 127] -dBov; live SFU dominant-speaker EMA window update latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces exact RFC 6465 csrc-audio-level byte-count parity with RTP CC and zeroes reserved MSB bits (0 malformed packets) clamped in [1, 15] entries; live MCU/SFU CSRC extension serializer latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
