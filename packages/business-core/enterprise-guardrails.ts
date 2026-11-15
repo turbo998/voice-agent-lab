@@ -84755,6 +84755,154 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingContext {
+      untrustedNniPHeaderOrMultiHopViaLeakDetected: boolean;
+      leakedInternalNniHeaders: number;
+      exposedNniViaHops: number;
+    }
+
+    export interface SipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "strip_internal_nni_p_headers_and_collapse_via_to_single_ibcf_hop"
+        | "clamp_leaked_nni_headers_and_exposed_via_hops"
+        | "allow";
+      reason: string;
+      clampedLeakedInternalNniHeaders: number;
+      clampedExposedNniViaHops: number;
+    }
+
+    /**
+     * P963 (🎉 Historic Stage 485 & Topic 125 Dual Milestone): SIP RFC 7544 / RFC 6406 IMS NNI Peering IBCF P-Header Scrubbing & Single-Via Topology Hiding Gate.
+     */
+    export function evaluateSipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingGate(
+      ctx: SipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingContext,
+    ): SipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingResult {
+      const policyId =
+        "P963-SIP-RFC7544-IMS-NNI-PEERING-HEADER-SANITIZATION-AND-VIA-TOPOLOGY-HIDING-GUARD";
+      const clampedLeakedInternalNniHeaders = 0;
+      const clampedExposedNniViaHops = 1;
+
+      if (ctx.untrustedNniPHeaderOrMultiHopViaLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "strip_internal_nni_p_headers_and_collapse_via_to_single_ibcf_hop",
+          reason:
+            "Untrusted SIP IMS NNI peering internal P-header leak (P-Access-Network-Info / P-Associated-URI / Path / Service-Route) or multi-hop internal Via topology bleed detected (RFC 7544 Section 4 / RFC 6406); stripping internal P-headers and collapsing outbound Via stack to a single IBCF border hop (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedLeakedInternalNniHeaders,
+          clampedExposedNniViaHops,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.leakedInternalNniHeaders) ||
+        ctx.leakedInternalNniHeaders !== 0 ||
+        !Number.isFinite(ctx.exposedNniViaHops) ||
+        ctx.exposedNniViaHops !== 1
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_leaked_nni_headers_and_exposed_via_hops",
+          reason:
+            "Leaked internal NNI headers (>0 synthetic ceiling) or exposed NNI Via hops (!== 1 synthetic IBCF hop bound) out of bounds; clamping leaked headers to 0 and exposed Via hops to 1.",
+          clampedLeakedInternalNniHeaders,
+          clampedExposedNniViaHops,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7544 / RFC 6406 IMS NNI P-header scrubbing (0 leaked headers) and 1-hop IBCF Via topology hiding verified.",
+        clampedLeakedInternalNniHeaders,
+        clampedExposedNniViaHops,
+      };
+    }
+
+    export interface SipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateContext {
+      privateRfc1918SdpClineOrPeeringCpsBurstDetected: boolean;
+      unanchoredPrivateClineOrPeeringStormDrops: number;
+      peeringTrunkMaxCps: number;
+    }
+
+    export interface SipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "rewrite_sdp_cline_to_public_bgf_anchor_and_throttle_peering_cps"
+        | "clamp_unanchored_cline_drops_and_peering_trunk_cps"
+        | "allow";
+      reason: string;
+      clampedUnanchoredPrivateClineOrPeeringStormDrops: number;
+      clampedPeeringTrunkMaxCps: number;
+    }
+
+    /**
+     * P964: SIP RFC 7544 / RFC 8866 BGF Public SDP c= Media Anchor Rewrite & [5, 200] CPS Peering Trunk Token-Bucket Gate.
+     */
+    export function evaluateSipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateGate(
+      ctx: SipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateContext,
+    ): SipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateResult {
+      const policyId =
+        "P964-SIP-RFC7544-BGF-MEDIA-CONNECTION-ADDRESS-REWRITE-AND-PEERING-CPS-RATE-GUARD";
+      const clampedUnanchoredPrivateClineOrPeeringStormDrops = 0;
+      const clampedPeeringTrunkMaxCps = Math.min(
+        200,
+        Math.max(
+          5,
+          Number.isFinite(ctx.peeringTrunkMaxCps)
+            ? Math.round(ctx.peeringTrunkMaxCps)
+            : 60,
+        ),
+      );
+
+      if (ctx.privateRfc1918SdpClineOrPeeringCpsBurstDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "rewrite_sdp_cline_to_public_bgf_anchor_and_throttle_peering_cps",
+          reason:
+            "Unanchored private RFC 1918 / loopback SDP c= connection address leak or uncapped NNI peering INVITE CPS flood detected (RFC 7544 Section 5 / RFC 8866); rewriting SDP c= to public BGF media anchor IP and throttling per-trunk admission in [5, 200] CPS (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnanchoredPrivateClineOrPeeringStormDrops,
+          clampedPeeringTrunkMaxCps,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.unanchoredPrivateClineOrPeeringStormDrops) ||
+        ctx.unanchoredPrivateClineOrPeeringStormDrops !== 0 ||
+        !Number.isFinite(ctx.peeringTrunkMaxCps) ||
+        ctx.peeringTrunkMaxCps < 5 ||
+        ctx.peeringTrunkMaxCps > 200
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_unanchored_cline_drops_and_peering_trunk_cps",
+          reason:
+            "Unanchored private SDP c= / peering storm drops (>0 synthetic ceiling) or per-trunk peering CPS (<5 or >200 CPS synthetic bounds) out of bounds; clamping drops to 0 and trunk CPS to [5, 200].",
+          clampedUnanchoredPrivateClineOrPeeringStormDrops,
+          clampedPeeringTrunkMaxCps,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7544 BGF public SDP c= media anchor rewrite (0 private c= leaks) and [5, 200] CPS peering trunk rate cap verified.",
+        clampedUnanchoredPrivateClineOrPeeringStormDrops,
+        clampedPeeringTrunkMaxCps,
+      };
+    }
+
+
 
 
 

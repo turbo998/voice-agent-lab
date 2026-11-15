@@ -1945,6 +1945,13 @@
               <td><code>P961 / P962 🎉 deterministic WebRTC JSEP RFC 8829 iceRestart rotation &amp; RFC 9429 glare rollback guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>488. [专题125 🎉 · Stage 485 &amp; Topic 125 双里程碑 🎉 `docs/voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-faq.md`] 企业 SIP `RFC 7544 / RFC 6406` 运营商间 IMS NNI 互联边界 IBCF 100% 剥离 `P-Access-Network-Info / P-Associated-URI / Path / Service-Route` 私有头并将多跳内网 `Via` 折叠为唯一 `1` 跳 IBCF 边界拓扑隐藏锁（`0` 泄露私有头，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 IBCF SIP 头解析耗时 `not_measured`）&amp; BGF 强制重写 SDP `c=` 私网 `RFC 1918` 地址为公网锚定 IP 与单中继 `[5, 200] CPS` 令牌桶限流门禁（`0` 单通黑洞或洪峰雪崩；真实 BGF 内核 RTP 转发耗时 `not_measured`）(`P963` / `P964` · Stage 485 🎉 · Topic 125 🎉 · 🎉 Stage 485 与第 125 个专题历史性双里程碑 · 973 护栏 &amp; 982 探针 · 488 维)</strong>
+              </td>
+              <td><code>P963 / P964 deterministic SIP RFC 7544 IMS NNI IBCF 1-Via topology hiding &amp; BGF public c= anchor guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -5866,6 +5873,13 @@
                 <strong>487. [专题124 · 971护栏 &amp; 980探针 &amp; 790现场探针 🎉 `docs/voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-faq.md`] 企业 WebRTC `RFC 8829 / RFC 9429 (JSEP)` `iceRestart` 强制生成全新 `ice-ufrag`（`[4, 256]` 字符）与 `ice-pwd`（`[22, 256]` 字符）凭据轮换及 `port=0` 完整 Offer/Answer 闭环后复用 `m=` 槽位锁（`0` 未确认覆写槽位，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 STUN 连通性探测耗时 `not_measured`）&amp; `have-local-offer` 双向冲突礼貌回滚（`rollback` $\rightarrow$ `stable` 还原 `a=mid`）与活跃 `BUNDLE` `m=` 行非零端口 `[9, 65535]` 守恒门禁（`0` 同抢崩溃或误杀音轨；真实 `RTCPeerConnection` 状态迁移耗时 `not_measured`）(`P961` / `P962 🎉` · Stage 484 · Topic 124 · 🎉 第 971 道护栏、980 个沙盒探针与 790 个现场探针三重里程碑 · 971 护栏 🎉 &amp; 980 探针 🎉 · 487 维)</strong>
               </td>
               <td><code>P961 / P962 🎉 deterministic WebRTC JSEP RFC 8829 iceRestart rotation &amp; RFC 9429 glare rollback guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>488. [专题125 🎉 · Stage 485 &amp; Topic 125 双里程碑 🎉 `docs/voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-faq.md`] 企业 SIP `RFC 7544 / RFC 6406` 运营商间 IMS NNI 互联边界 IBCF 100% 剥离 `P-Access-Network-Info / P-Associated-URI / Path / Service-Route` 私有头并将多跳内网 `Via` 折叠为唯一 `1` 跳 IBCF 边界拓扑隐藏锁（`0` 泄露私有头，`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 IBCF SIP 头解析耗时 `not_measured`）&amp; BGF 强制重写 SDP `c=` 私网 `RFC 1918` 地址为公网锚定 IP 与单中继 `[5, 200] CPS` 令牌桶限流门禁（`0` 单通黑洞或洪峰雪崩；真实 BGF 内核 RTP 转发耗时 `not_measured`）(`P963` / `P964` · Stage 485 🎉 · Topic 125 🎉 · 🎉 Stage 485 与第 125 个专题历史性双里程碑 · 973 护栏 &amp; 982 探针 · 488 维)</strong>
+              </td>
+              <td><code>P963 / P964 deterministic SIP RFC 7544 IMS NNI IBCF 1-Via topology hiding &amp; BGF public c= anchor guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

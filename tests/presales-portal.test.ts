@@ -266,6 +266,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-sip-rfc8599-push-notification-pn-prid-token-leak-555-unsupported-wake-timeout-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P959", "P960", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P961", "P962", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P961", "P962", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P963", "P964", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P963", "P964", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -992,6 +994,8 @@ import {
   evaluateSipRfc8599ProxyWakeRegistrationHoldAndPurrRateThrottleGate,
   evaluateWebrtcJsepRfc8829IceRestartCredentialRotationAndStoppedTransceiverSlotReuseGate,
   evaluateWebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineGate,
+  evaluateSipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingGate,
+  evaluateSipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -57977,6 +57981,88 @@ test("Stage 484: WebRTC RFC 8829 / RFC 9429 JSEP iceRestart credential rotation,
   const svg128 = await readFile(new URL("../assets/svg/128-voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg128, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg128, /STAGE 484 · TOPIC 124/);
+});
+
+test("Stage 485: SIP RFC 7544 / RFC 6406 IMS NNI peering IBCF header scrub, single-Via topology hiding and BGF SDP c= anchor guardrails (P963-P964)", async () => {
+  const blocked963 = evaluateSipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingGate({
+    untrustedNniPHeaderOrMultiHopViaLeakDetected: true,
+    leakedInternalNniHeaders: 6,
+    exposedNniViaHops: 5,
+  });
+  assert.equal(blocked963.violated, true);
+  assert.equal(
+    blocked963.policyId,
+    "P963-SIP-RFC7544-IMS-NNI-PEERING-HEADER-SANITIZATION-AND-VIA-TOPOLOGY-HIDING-GUARD",
+  );
+  assert.equal(
+    blocked963.action,
+    "strip_internal_nni_p_headers_and_collapse_via_to_single_ibcf_hop",
+  );
+  assert.equal(blocked963.clampedLeakedInternalNniHeaders, 0);
+  assert.equal(blocked963.clampedExposedNniViaHops, 1);
+  assert.match(blocked963.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped963 = evaluateSipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingGate({
+    untrustedNniPHeaderOrMultiHopViaLeakDetected: false,
+    leakedInternalNniHeaders: 0,
+    exposedNniViaHops: 4,
+  });
+  assert.equal(clamped963.violated, true);
+  assert.equal(
+    clamped963.action,
+    "clamp_leaked_nni_headers_and_exposed_via_hops",
+  );
+  assert.equal(clamped963.clampedExposedNniViaHops, 1);
+
+  const allowed963 = evaluateSipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingGate({
+    untrustedNniPHeaderOrMultiHopViaLeakDetected: false,
+    leakedInternalNniHeaders: 0,
+    exposedNniViaHops: 1,
+  });
+  assert.equal(allowed963.violated, false);
+  assert.equal(allowed963.action, "allow");
+
+  const blocked964 = evaluateSipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateGate({
+    privateRfc1918SdpClineOrPeeringCpsBurstDetected: true,
+    unanchoredPrivateClineOrPeeringStormDrops: 19,
+    peeringTrunkMaxCps: 1500,
+  });
+  assert.equal(blocked964.violated, true);
+  assert.equal(
+    blocked964.policyId,
+    "P964-SIP-RFC7544-BGF-MEDIA-CONNECTION-ADDRESS-REWRITE-AND-PEERING-CPS-RATE-GUARD",
+  );
+  assert.equal(
+    blocked964.action,
+    "rewrite_sdp_cline_to_public_bgf_anchor_and_throttle_peering_cps",
+  );
+  assert.equal(blocked964.clampedUnanchoredPrivateClineOrPeeringStormDrops, 0);
+  assert.equal(blocked964.clampedPeeringTrunkMaxCps, 200);
+  assert.match(blocked964.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped964 = evaluateSipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateGate({
+    privateRfc1918SdpClineOrPeeringCpsBurstDetected: false,
+    unanchoredPrivateClineOrPeeringStormDrops: 0,
+    peeringTrunkMaxCps: 1,
+  });
+  assert.equal(clamped964.violated, true);
+  assert.equal(
+    clamped964.action,
+    "clamp_unanchored_cline_drops_and_peering_trunk_cps",
+  );
+  assert.equal(clamped964.clampedPeeringTrunkMaxCps, 5);
+
+  const allowed964 = evaluateSipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateGate({
+    privateRfc1918SdpClineOrPeeringCpsBurstDetected: false,
+    unanchoredPrivateClineOrPeeringStormDrops: 0,
+    peeringTrunkMaxCps: 60,
+  });
+  assert.equal(allowed964.violated, false);
+  assert.equal(allowed964.action, "allow");
+
+  const svg129 = await readFile(new URL("../assets/svg/129-voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg129, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg129, /STAGE 485 🎉 · TOPIC 125 🎉/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {

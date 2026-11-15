@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg129" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accent129" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg129)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="24" width="1144" height="6" rx="3" fill="url(#accent129)"/>
+
+  <text x="54" y="66" fill="#FBBF24" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">2026-11-15 · STAGE 485 🎉 · TOPIC 125 🎉 · 127TH FAQ · 488 DIMS · 🎉 HISTORIC STAGE 485 &amp; TOPIC 125 DUAL MILESTONE (P963–P964)</text>
+  <text x="54" y="98" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="800">SIP RFC 7544 / RFC 6406 IMS NNI Peering: IBCF Topology Hiding, P-Header Scrub &amp; BGF c= Anchor</text>
+  <text x="54" y="124" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">P963 IBCF Single-Via Topology Hiding &amp; P-Access-Network-Info Scrub · P964 BGF Public SDP c= Rewrite &amp; [5, 200] CPS Trunk Cap</text>
+
+  <!-- Left Panel: Unprotected IMS NNI Peering Failure Modes -->
+  <rect x="54" y="146" width="530" height="390" rx="12" fill="#1E1B4B" fill-opacity="0.45" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="76" y="178" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">❌ Unprotected Carrier NNI Peering Trunk Risks</text>
+
+  <rect x="76" y="196" width="486" height="98" rx="8" fill="#0F172A" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="220" fill="#F87171" font-family="Consolas, monospace" font-size="13" font-weight="700">1. Internal P-Header &amp; Multi-Hop Via Topology Bleed (RFC 7544)</text>
+  <text x="92" y="242" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Forwards P-Access-Network-Info (cell cgi-3gpp / Wi-Fi BSSID)</text>
+  <text x="92" y="262" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Exposes P-Associated-URI, Service-Route &amp; 5 internal Via IPs</text>
+  <text x="92" y="280" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Enables external topology mapping and subscriber alias harvesting</text>
+
+  <rect x="76" y="308" width="486" height="98" rx="8" fill="#0F172A" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="332" fill="#F87171" font-family="Consolas, monospace" font-size="13" font-weight="700">2. Unanchored RFC 1918 SDP c= Line &amp; Uncapped Peering CPS</text>
+  <text x="92" y="354" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Leaks pod IP c=IN IP4 10.244.18.9 into carrier NNI SDP Offer</text>
+  <text x="92" y="374" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Carrier RTP blackholes on private IP → 100% one-way dead air</text>
+  <text x="92" y="392" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Uncapped 1,500 CPS peering flood exhausts AI ASR/LLM GPU workers</text>
+
+  <rect x="76" y="420" width="486" height="98" rx="8" fill="#450A0A" fill-opacity="0.6" stroke="#EF4444" stroke-width="1"/>
+  <text x="92" y="446" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Enterprise Production Impact (Without P963–P964)</text>
+  <text x="92" y="468" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Internal K8s Voice Pod IPs &amp; cell-tower IDs leaked to third parties</text>
+  <text x="92" y="488" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Carrier interconnects drop RTP audio or trigger GPU starvation</text>
+  <text x="92" y="506" fill="#FCA5A5" font-family="Consolas, monospace" font-size="12">Verdict: BLOCK (NNI Topology Leak / Private SDP c= Blackhole)</text>
+
+  <!-- Right Panel: Deterministic P963-P964 Guardrails -->
+  <rect x="616" y="146" width="530" height="390" rx="12" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.5"/>
+  <text x="638" y="178" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">✅ Deterministic IMS NNI &amp; BGF Peering Guards (P963–P964)</text>
+
+  <rect x="638" y="196" width="486" height="148" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="654" y="220" fill="#34D399" font-family="Consolas, monospace" font-size="13" font-weight="700">P963: IBCF NNI Header Sanitization &amp; Single-Via Topology Hiding</text>
+  <text x="654" y="242" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Strip P-Access-Network-Info, P-Associated-URI, Path, Service-Route</text>
+  <text x="654" y="262" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Collapse internal Via / Record-Route stack to 1 IBCF edge hop</text>
+  <text x="654" y="282" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Tokenize Call-ID across untrusted NNI peering boundary</text>
+  <text x="654" y="302" fill="#38BDF8" font-family="Consolas, monospace" font-size="12">• leakedInternalNniHeaders == 0 &amp; exposedNniViaHops == 1</text>
+  <text x="654" y="324" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">• Gate: evaluateSipRfc7544ImsNniPeeringHeaderSanitization...()</text>
+
+  <rect x="638" y="358" width="486" height="160" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="654" y="382" fill="#34D399" font-family="Consolas, monospace" font-size="13" font-weight="700">P964: BGF Public SDP c= Anchor Rewrite &amp; [5, 200] CPS Trunk Cap</text>
+  <text x="654" y="404" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Block RFC 1918 / loopback / link-local IPs in NNI SDP c= lines</text>
+  <text x="654" y="424" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Force BGF public media anchor rewrite on all cross-carrier legs</text>
+  <text x="654" y="444" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Clamp per-trunk peering INVITE rate in [5, 200] CPS token bucket</text>
+  <text x="654" y="464" fill="#38BDF8" font-family="Consolas, monospace" font-size="12">• unanchoredPrivateClineOrPeeringStormDrops == 0</text>
+  <text x="654" y="486" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">• Gate: evaluateSipRfc7544BgfMediaConnectionAddressRewrite...()</text>
+  <text x="654" y="506" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11.5">Verdict: PASS (0 Leaked NNI Headers · 100% BGF Anchor · 927 Tests)</text>
+
+  <!-- Footer Provenance & Offline Timing Banner -->
+  <rect x="54" y="552" width="1092" height="76" rx="10" fill="#090D16" stroke="#334155" stroke-width="1"/>
+  <text x="74" y="578" fill="#FBBF24" font-family="Consolas, monospace" font-size="12.5" font-weight="700">Offline Synthetic Policy Engine Provenance · Stage 485 🎉 · Topic 125 🎉 · 973 Guardrails · 982 Probes · 792 Live POC Probes · 488 Dims · 927 Tests</text>
+  <text x="74" y="600" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">Timing Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="74" y="618" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Standards: IETF RFC 7544 (3GPP IMS NNI Interworking), RFC 6406 (Session PEERING), RFC 8866 (SDP c= Connection Data), 3GPP TS 29.165 (IBCF/BGF).</text>
+</svg>

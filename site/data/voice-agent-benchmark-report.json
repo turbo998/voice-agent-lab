@@ -2107,6 +2107,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rotates fresh ice-ufrag ([4, 256] chars) and ice-pwd ([22, 256] chars) on every iceRestart and defers stopped m= slot reuse until port=0 Offer/Answer completion with a fresh a=mid (0 premature overwrites); live ICE STUN connectivity check RTT is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: executes polite peer rollback from have-local-offer to stable on glare with restored a=mid bindings (0 glare drops) and preserves non-zero ports [9, 65535] on active bundled m= lines; live RTCPeerConnection SDP state transition latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "488. [Topic 125 🎉 · Historic Stage 485 & Topic 125 Dual Milestone 🎉: voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-faq] Enterprise SIP RFC 7544 / RFC 6406 IMS NNI Peering IBCF Header Scrub, Single-Via Topology Hiding & BGF Public SDP c= Anchor Guard (P963 / P964 — Stage 485 🎉 · Topic 125 🎉 · 🎉 Historic Stage 485 & Topic 125 Dual Milestone · 488 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips internal P-Access-Network-Info / P-Associated-URI / Path / Service-Route headers across untrusted NNI boundaries (0 leaked headers) and collapses outbound Via stacks to 1 IBCF hop; live IBCF SIP header AST rewrite latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rewrites private RFC 1918 SDP c= connection addresses to public BGF media anchor IPs (0 blackholed media legs) and clamps per-trunk peering admission in [5, 200] CPS; live BGF kernel RTP forwarding latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
