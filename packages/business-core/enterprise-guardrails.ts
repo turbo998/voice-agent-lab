@@ -84279,6 +84279,153 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessContext {
+      truncatedSframeAuthTagOrReusedCtrIvDetected: boolean;
+      forgedOrUnauthenticatedSframeAudioFrames: number;
+      sframeAuthTagBits: number;
+    }
+
+    export interface WebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reject_truncated_sframe_tag_and_enforce_128bit_aead"
+        | "clamp_forged_sframe_frames_and_auth_tag_bits"
+        | "allow";
+      reason: string;
+      clampedForgedOrUnauthenticatedSframeAudioFrames: number;
+      clampedSframeAuthTagBits: number;
+    }
+
+    /**
+     * P957: WebRTC RFC 9605 SFrame Full 128-Bit AES-GCM AEAD Auth-Tag & Monotonic (KID, CTR) IV Uniqueness Gate.
+     */
+    export function evaluateWebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessGate(
+      ctx: WebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessContext,
+    ): WebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessResult {
+      const policyId =
+        "P957-WEBRTC-RFC9605-SFRAME-FULL-AEAD-AUTH-TAG-AND-CTR-IV-UNIQUENESS-GUARD";
+      const clampedForgedOrUnauthenticatedSframeAudioFrames = 0;
+      const clampedSframeAuthTagBits = 128;
+
+      if (ctx.truncatedSframeAuthTagOrReusedCtrIvDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_truncated_sframe_tag_and_enforce_128bit_aead",
+          reason:
+            "Truncated 32/64-bit SFrame authentication tag or reused (KID, CTR) nonce detected (RFC 9605 Section 4.4 / Section 9.2); rejecting truncated-tag cipher suite and locking SFrame AEAD authentication tag to 128 bits (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedForgedOrUnauthenticatedSframeAudioFrames,
+          clampedSframeAuthTagBits,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.forgedOrUnauthenticatedSframeAudioFrames) ||
+        ctx.forgedOrUnauthenticatedSframeAudioFrames !== 0 ||
+        !Number.isFinite(ctx.sframeAuthTagBits) ||
+        ctx.sframeAuthTagBits !== 128
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_forged_sframe_frames_and_auth_tag_bits",
+          reason:
+            "Forged/unauthenticated SFrame audio frames (>0 synthetic ceiling) or SFrame authentication tag bits (!=128 bits synthetic requirement) out of bounds; clamping forged frames to 0 and tag bits to 128.",
+          clampedForgedOrUnauthenticatedSframeAudioFrames,
+          clampedSframeAuthTagBits,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 9605 SFrame full 128-bit AES-GCM tag (0 forged frames) and monotonic CTR uniqueness verified.",
+        clampedForgedOrUnauthenticatedSframeAudioFrames,
+        clampedSframeAuthTagBits,
+      };
+    }
+
+    export interface WebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataContext {
+      sframeKidEpochRotationDropOrUnencryptedMetadataLeakDetected: boolean;
+      droppedEpochTransitionAudioFrames: number;
+      kidDualKeyGraceWindowMs: number;
+    }
+
+    export interface WebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "retain_previous_kid_key_ring_and_enforce_cryptex_header_aead"
+        | "clamp_dropped_epoch_frames_and_kid_grace_window_ms"
+        | "allow";
+      reason: string;
+      clampedDroppedEpochTransitionAudioFrames: number;
+      clampedKidDualKeyGraceWindowMs: number;
+    }
+
+    /**
+     * P958 (🎉 Historic 485-Dimension Milestone): WebRTC RFC 9605 SFrame [1000, 5000]ms Dual-KID Grace Window & RFC 9335 Cryptex Header Gate.
+     */
+    export function evaluateWebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataGate(
+      ctx: WebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataContext,
+    ): WebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataResult {
+      const policyId =
+        "P958-WEBRTC-RFC9605-SFRAME-KID-EPOCH-GRACE-WINDOW-AND-CRYPTEX-METADATA-GUARD";
+      const clampedDroppedEpochTransitionAudioFrames = 0;
+      const clampedKidDualKeyGraceWindowMs = Math.min(
+        5000,
+        Math.max(
+          1000,
+          Number.isFinite(ctx.kidDualKeyGraceWindowMs)
+            ? Math.round(ctx.kidDualKeyGraceWindowMs)
+            : 2000,
+        ),
+      );
+
+      if (ctx.sframeKidEpochRotationDropOrUnencryptedMetadataLeakDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "retain_previous_kid_key_ring_and_enforce_cryptex_header_aead",
+          reason:
+            "Immediate 0ms SFrame KID key destruction dropping in-flight epoch-transition audio or missing RFC 9335 Cryptex hop-by-hop header encryption detected (RFC 9605 Section 5 / RFC 9335); retaining [1000, 5000]ms dual-KID key ring and enforcing Cryptex header AEAD (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedDroppedEpochTransitionAudioFrames,
+          clampedKidDualKeyGraceWindowMs,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.droppedEpochTransitionAudioFrames) ||
+        ctx.droppedEpochTransitionAudioFrames !== 0 ||
+        !Number.isFinite(ctx.kidDualKeyGraceWindowMs) ||
+        ctx.kidDualKeyGraceWindowMs < 1000 ||
+        ctx.kidDualKeyGraceWindowMs > 5000
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_dropped_epoch_frames_and_kid_grace_window_ms",
+          reason:
+            "Dropped epoch-transition audio frames (>0 synthetic ceiling) or KID dual-key grace window (<1000 or >5000ms synthetic bounds) out of bounds; clamping dropped frames to 0 and KID grace window to [1000, 5000]ms.",
+          clampedDroppedEpochTransitionAudioFrames,
+          clampedKidDualKeyGraceWindowMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 9605 SFrame [1000, 5000]ms dual-KID grace window (0 dropped frames) and RFC 9335 Cryptex verified.",
+        clampedDroppedEpochTransitionAudioFrames,
+        clampedKidDualKeyGraceWindowMs,
+      };
+    }
+
 
 
 

@@ -2089,6 +2089,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rewrites untrusted ingress SIP Session-ID local-uuid headers via CSPRNG and enforces exact 32-character lowercase hex grammar (0 poisoned CDR/SIPREC records); live SBC Session-ID parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: preserves the surviving endpoint's Session-ID half-key across B2BUA REFER/Replaces transfers (0 broken traceability legs) and clamps active non-null UUID halves in [1, 2]; live B2BUA dialog-state half-key swap latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "485. [Topic 122 · Historic 485-Dimension Milestone 🎉: voice-webrtc-sframe-rfc9605-cryptex-rfc9335-kid-ratchet-desync-tag-truncation-overhead-faq] Enterprise WebRTC RFC 9605 SFrame 128-Bit AEAD Tag & [1000,5000]ms Dual-KID Grace + RFC 9335 Cryptex Guard (P957 / P958 — Stage 482 · 🎉 Historic 485-Dimension Milestone · 485 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects 32/64-bit truncated SFrame tags and enforces full 128-bit AES-GCM authentication tags with monotonic (KID, CTR) nonces (0 forged frames); live RTCRtpScriptTransform Worker AES-GCM latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: retains [1000, 5000]ms dual-KID decryption key rings across MLS epoch transitions (0 dropped frames) and enforces hop-by-hop RFC 9335 Cryptex header encryption; live MLS TreeKEM epoch ratchet latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

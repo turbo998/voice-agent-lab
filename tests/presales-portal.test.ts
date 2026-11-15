@@ -260,6 +260,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-webrtc-sctp-rfc4960-rfc8831-heartbeat-amplification-abort-vtag-verification-hol-stall-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P953", "P954", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc7316-rfc7989-session-id-end-to-end-uuid-spoof-half-key-mutation-cdr-poisoning-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P955", "P956", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc7316-rfc7989-session-id-end-to-end-uuid-spoof-half-key-mutation-cdr-poisoning-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P955", "P956", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-sframe-rfc9605-cryptex-rfc9335-kid-ratchet-desync-tag-truncation-overhead-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P957", "P958", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-sframe-rfc9605-cryptex-rfc9335-kid-ratchet-desync-tag-truncation-overhead-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P957", "P958", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -980,6 +982,8 @@ import {
   evaluateWebrtcSctpRfc8831UnorderedPartialReliabilityAndSendBufferQuotaGate,
   evaluateSipRfc7989SessionIdUuidFormatAndIngressRewritingGate,
   evaluateSipRfc7989B2buaHalfKeyPreservationAndReferSwapConsistencyGate,
+  evaluateWebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessGate,
+  evaluateWebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -57714,6 +57718,88 @@ test("Stage 481: SIP RFC 7989 / RFC 7316 Session-ID 32-Hex ingress rewrite and B
   const svg125 = await readFile(new URL("../assets/svg/125-voice-sip-rfc7316-rfc7989-session-id-end-to-end-uuid-spoof-half-key-mutation-cdr-poisoning-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg125, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg125, /STAGE 481 · TOPIC 121/);
+});
+
+test("Stage 482: WebRTC RFC 9605 SFrame 128-bit AEAD tag and KID grace window + RFC 9335 Cryptex guardrails (P957-P958)", async () => {
+  const blocked957 = evaluateWebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessGate({
+    truncatedSframeAuthTagOrReusedCtrIvDetected: true,
+    forgedOrUnauthenticatedSframeAudioFrames: 15,
+    sframeAuthTagBits: 32,
+  });
+  assert.equal(blocked957.violated, true);
+  assert.equal(
+    blocked957.policyId,
+    "P957-WEBRTC-RFC9605-SFRAME-FULL-AEAD-AUTH-TAG-AND-CTR-IV-UNIQUENESS-GUARD",
+  );
+  assert.equal(
+    blocked957.action,
+    "reject_truncated_sframe_tag_and_enforce_128bit_aead",
+  );
+  assert.equal(blocked957.clampedForgedOrUnauthenticatedSframeAudioFrames, 0);
+  assert.equal(blocked957.clampedSframeAuthTagBits, 128);
+  assert.match(blocked957.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped957 = evaluateWebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessGate({
+    truncatedSframeAuthTagOrReusedCtrIvDetected: false,
+    forgedOrUnauthenticatedSframeAudioFrames: 0,
+    sframeAuthTagBits: 64,
+  });
+  assert.equal(clamped957.violated, true);
+  assert.equal(
+    clamped957.action,
+    "clamp_forged_sframe_frames_and_auth_tag_bits",
+  );
+  assert.equal(clamped957.clampedSframeAuthTagBits, 128);
+
+  const allowed957 = evaluateWebrtcRfc9605SframeFullAeadAuthTagAndCtrIvUniquenessGate({
+    truncatedSframeAuthTagOrReusedCtrIvDetected: false,
+    forgedOrUnauthenticatedSframeAudioFrames: 0,
+    sframeAuthTagBits: 128,
+  });
+  assert.equal(allowed957.violated, false);
+  assert.equal(allowed957.action, "allow");
+
+  const blocked958 = evaluateWebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataGate({
+    sframeKidEpochRotationDropOrUnencryptedMetadataLeakDetected: true,
+    droppedEpochTransitionAudioFrames: 22,
+    kidDualKeyGraceWindowMs: 0,
+  });
+  assert.equal(blocked958.violated, true);
+  assert.equal(
+    blocked958.policyId,
+    "P958-WEBRTC-RFC9605-SFRAME-KID-EPOCH-GRACE-WINDOW-AND-CRYPTEX-METADATA-GUARD",
+  );
+  assert.equal(
+    blocked958.action,
+    "retain_previous_kid_key_ring_and_enforce_cryptex_header_aead",
+  );
+  assert.equal(blocked958.clampedDroppedEpochTransitionAudioFrames, 0);
+  assert.equal(blocked958.clampedKidDualKeyGraceWindowMs, 1000);
+  assert.match(blocked958.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped958 = evaluateWebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataGate({
+    sframeKidEpochRotationDropOrUnencryptedMetadataLeakDetected: false,
+    droppedEpochTransitionAudioFrames: 0,
+    kidDualKeyGraceWindowMs: 12000,
+  });
+  assert.equal(clamped958.violated, true);
+  assert.equal(
+    clamped958.action,
+    "clamp_dropped_epoch_frames_and_kid_grace_window_ms",
+  );
+  assert.equal(clamped958.clampedKidDualKeyGraceWindowMs, 5000);
+
+  const allowed958 = evaluateWebrtcRfc9605SframeKidEpochGraceWindowAndCryptexMetadataGate({
+    sframeKidEpochRotationDropOrUnencryptedMetadataLeakDetected: false,
+    droppedEpochTransitionAudioFrames: 0,
+    kidDualKeyGraceWindowMs: 2000,
+  });
+  assert.equal(allowed958.violated, false);
+  assert.equal(allowed958.action, "allow");
+
+  const svg126 = await readFile(new URL("../assets/svg/126-voice-webrtc-sframe-rfc9605-cryptex-rfc9335-kid-ratchet-desync-tag-truncation-overhead-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg126, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg126, /STAGE 482 · TOPIC 122/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {
