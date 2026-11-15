@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg130" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent130" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg130)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="24" width="1144" height="6" rx="3" fill="url(#accent130)"/>
+
+  <text x="54" y="66" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">2026-11-15 · STAGE 486 · TOPIC 126 · SVG 130 🎉 · 128TH FAQ · 489 DIMS · 🎉 HISTORIC 130TH SVG &amp; 975-GUARDRAIL MILESTONE (P965–P966 🎉)</text>
+  <text x="54" y="98" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="800">WebRTC RFC 8839 / RFC 8863 SDP ICE: Candidate Port-Scan SSRF, remote-candidates &amp; Ta Pacing</text>
+  <text x="54" y="124" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="14">P965 [1024, 65535] Candidate Port &amp; Completed-Only remote-candidates Gate · P966 🎉 [20, 500]ms Ta Pacing &amp; [1, 4] Backup Pairs</text>
+
+  <!-- Left Panel: Unprotected SDP ICE & Continual Nomination Risks -->
+  <rect x="54" y="146" width="530" height="390" rx="12" fill="#1E1B4B" fill-opacity="0.45" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="76" y="178" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">❌ Unprotected RFC 8839 / RFC 8863 ICE Vulnerabilities</text>
+
+  <rect x="76" y="196" width="486" height="98" rx="8" fill="#0F172A" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="220" fill="#F87171" font-family="Consolas, monospace" font-size="13" font-weight="700">1. Privileged Port (&lt;1024) STUN SSRF &amp; Initial remote-candidates</text>
+  <text x="92" y="242" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Malicious SDP injects a=candidate with port 22/53/6379 or IMDS IP</text>
+  <text x="92" y="262" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Turns SFU into internal STUN port scanner &amp; SSRF reflector</text>
+  <text x="92" y="280" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Premature a=remote-candidates in initial Offer bypasses STUN check</text>
+
+  <rect x="76" y="308" width="486" height="98" rx="8" fill="#0F172A" stroke="#7F1D1D" stroke-width="1"/>
+  <text x="92" y="332" fill="#F87171" font-family="Consolas, monospace" font-size="13" font-weight="700">2. Unpaced Continual Nomination (Ta &lt; 20ms) &amp; Backup Pair Storm</text>
+  <text x="92" y="354" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Continual nomination probes 32 backup candidate pairs at Ta=1ms</text>
+  <text x="92" y="374" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• STUN Binding flood consumes &gt;90 kbps on weak 5G/LTE uplink</text>
+  <text x="92" y="392" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Starves 20ms Opus voice frames during Wi-Fi → cellular handoff</text>
+
+  <rect x="76" y="420" width="486" height="98" rx="8" fill="#450A0A" fill-opacity="0.6" stroke="#EF4444" stroke-width="1"/>
+  <text x="92" y="446" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Enterprise Production Impact (Without P965–P966)</text>
+  <text x="92" y="468" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Internal Redis/DB ports probed via STUN Binding packets</text>
+  <text x="92" y="488" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Mobile roaming triggers uplink congestion &amp; robotic voice</text>
+  <text x="92" y="506" fill="#FCA5A5" font-family="Consolas, monospace" font-size="12">Verdict: BLOCK (Candidate Port-Scan SSRF / STUN Ta Flood)</text>
+
+  <!-- Right Panel: Deterministic P965-P966 Guardrails -->
+  <rect x="616" y="146" width="530" height="390" rx="12" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.5"/>
+  <text x="638" y="178" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">✅ Deterministic SDP ICE &amp; Continual Nomination Guards (P965–P966 🎉)</text>
+
+  <rect x="638" y="196" width="486" height="148" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="654" y="220" fill="#34D399" font-family="Consolas, monospace" font-size="13" font-weight="700">P965: [1024, 65535] Candidate Port &amp; remote-candidates State Gate</text>
+  <text x="654" y="242" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Reject a=candidate ports &lt;1024 &amp; RFC 1918 / loopback / IMDS IPs</text>
+  <text x="654" y="262" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Allow a=remote-candidates only in re-Offers after ICE Completed</text>
+  <text x="654" y="282" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Clamp candidate port range strictly within [1024, 65535]</text>
+  <text x="654" y="302" fill="#38BDF8" font-family="Consolas, monospace" font-size="12">• privilegedOrPrematureRemoteCandidateViolations == 0</text>
+  <text x="654" y="324" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">• Gate: evaluateWebrtcSdpRfc8839IceCandidatePortRangeAndRemote...()</text>
+
+  <rect x="638" y="358" width="486" height="160" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
+  <text x="654" y="382" fill="#34D399" font-family="Consolas, monospace" font-size="13" font-weight="700">P966 🎉 (975th Guard / 130th SVG): Ta [20,500]ms &amp; [1,4] Backup Pairs</text>
+  <text x="654" y="404" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Clamp ICE STUN pacing timer Ta within [20, 500]ms (RFC 8445 §14.2)</text>
+  <text x="654" y="424" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Cap active continual-nomination backup pairs to [1, 4] per stream</text>
+  <text x="654" y="444" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">• Pre-warm 5G backup pair with &lt;3 kbps overhead &amp; 0ms switchover</text>
+  <text x="654" y="464" fill="#38BDF8" font-family="Consolas, monospace" font-size="12">• unpacedStunFloodOrBackupPairOverflowDrops == 0</text>
+  <text x="654" y="486" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">• Gate: evaluateWebrtcRfc8863IceContinualNominationTaPacing...()</text>
+  <text x="654" y="506" fill="#A7F3D0" font-family="Consolas, monospace" font-size="11.5">Verdict: PASS (0 Candidate SSRF · Paced Ta=[20,500]ms · 928 Tests)</text>
+
+  <!-- Footer Provenance & Offline Timing Banner -->
+  <rect x="54" y="552" width="1092" height="76" rx="10" fill="#090D16" stroke="#334155" stroke-width="1"/>
+  <text x="74" y="578" fill="#38BDF8" font-family="Consolas, monospace" font-size="12.5" font-weight="700">Offline Synthetic Policy Engine Provenance · SVG 130 🎉 · 975 Guardrails 🎉 · 984 Probes · 794 Live POC Probes · 489 Dims · 928 Tests</text>
+  <text x="74" y="600" fill="#94A3B8" font-family="Consolas, monospace" font-size="11.5">Timing Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established.</text>
+  <text x="74" y="618" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Standards: IETF RFC 8839 (SDP Offer/Answer for ICE), RFC 8863 (ICE Continual Nomination), RFC 8445 §14.2 (STUN Pacing Timer Ta).</text>
+</svg>

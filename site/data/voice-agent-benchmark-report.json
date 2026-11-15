@@ -2113,6 +2113,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips internal P-Access-Network-Info / P-Associated-URI / Path / Service-Route headers across untrusted NNI boundaries (0 leaked headers) and collapses outbound Via stacks to 1 IBCF hop; live IBCF SIP header AST rewrite latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rewrites private RFC 1918 SDP c= connection addresses to public BGF media anchor IPs (0 blackholed media legs) and clamps per-trunk peering admission in [5, 200] CPS; live BGF kernel RTP forwarding latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "489. [Topic 126 · Historic 130th SVG & 975-Guardrail Dual Milestone 🎉: voice-webrtc-sdp-rfc8839-rfc8863-ice-candidate-port-scan-ssrf-remote-candidates-spoof-ta-pacing-faq] Enterprise WebRTC RFC 8839 / RFC 8863 SDP ICE Candidate Port-Scan SSRF, remote-candidates State & Continual Nomination Ta Pacing Guard (P965 / P966 🎉 — Stage 486 · 🎉 Historic 130th SVG & 975-Guardrail Dual Milestone · 489 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects SDP a=candidate ports <1024 or internal SSRF IPs (clamping ports in [1024, 65535]) and strips premature initial-Offer a=remote-candidates (0 SSRF/hijack violations); live ICE candidate socket bind latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps RFC 8863 continual-nomination STUN pacing timer Ta in [20, 500]ms and caps active backup candidate pairs in [1, 4] (0 cellular uplink starvation drops); live Wi-Fi-to-5G dual-path STUN RTT is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

@@ -268,6 +268,8 @@ test("presales whitepapers exist and cover business scenarios, architectures, co
     { path: "../docs/voice-webrtc-jsep-rfc8829-rfc9429-transceiver-stop-port-zero-reuse-icerestart-credential-rollback-glare-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P961", "P962", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P963", "P964", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P963", "P964", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-sdp-rfc8839-rfc8863-ice-candidate-port-scan-ssrf-remote-candidates-spoof-ta-pacing-faq.md", mustContain: ["核心结论速览", "灵魂拷问 Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "语音架构师选型决策矩阵", "P965", "P966", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
+    { path: "../docs/voice-webrtc-sdp-rfc8839-rfc8863-ice-candidate-port-scan-ssrf-remote-candidates-spoof-ta-pacing-faq.en.md", mustContain: ["Executive Summary", "Architect & Customer Deep-Dive Q&A", "flowchart TD", "flowchart LR", "sequenceDiagram", "Architect Decision Matrix", "P965", "P966", "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.md", mustContain: ["兼容导航入口", "voice-pci-dtmf-scope-faq.md", "siprec-pii-audio-redaction-faq.md", "P725", "P726"] },
     { path: "../docs/pci-dtmf-dual-stream-redaction-faq.en.md", mustContain: ["Compatibility Navigation Hub", "voice-pci-dtmf-scope-faq.en.md", "siprec-pii-audio-redaction-faq.en.md", "P725", "P726"] },
     { path: "../docs/speculative-voice-rag-zero-dead-air-faq.md", mustContain: ["兼容导航入口", "speculative-voice-rag-faq.md", "voice-tool-epoch-fence-faq.md", "P719", "P720"] },
@@ -996,6 +998,8 @@ import {
   evaluateWebrtcJsepRfc9429GlareRollbackStateAndBundleOnlyPortZeroDisciplineGate,
   evaluateSipRfc7544ImsNniPeeringHeaderSanitizationAndViaTopologyHidingGate,
   evaluateSipRfc7544BgfMediaConnectionAddressRewriteAndPeeringCpsRateGate,
+  evaluateWebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateGate,
+  evaluateWebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaGate,
   evaluateSemiconductorEuvLppSourceMoltenTinDroplet30kwCo2LaserAndH2CollectorPurgeSemiS2SemiS6Nfpa318Nfpa69Iec60825Osha19101000H2VesselO2IntrusionAbatementTripCo2LaserBackReflectionQuenchAndStannaneSnh4ScbaLotoGuard,
   evaluateWebrtcSipRtpSmpteSt20591St20592AndSt122TimecodeGenerationTlvOverreadTaiUtcLeapSecondSpoofDropFrameDriftHfrSubframeInversionAndPtpAnnounceFloodGuard,
   evaluateSemiconductorPhotolithographyCoaterDeveloperTrackPgmeaEbrHmdsPebAndTmahDeveloperSemiS2SemiS6Nfpa318Nfpa30Osha19101000SpinBowlSolventLelExhaustLossTripPebHotplateOvertempTmahDrainIsolationAndDiphoterineLotoGuard,
@@ -58063,6 +58067,93 @@ test("Stage 485: SIP RFC 7544 / RFC 6406 IMS NNI peering IBCF header scrub, sing
   const svg129 = await readFile(new URL("../assets/svg/129-voice-sip-rfc7544-rfc6406-ims-nni-peering-header-scrub-private-c-line-anchor-forking-amplification-2026-11-15.svg", import.meta.url), "utf8");
   assert.match(svg129, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
   assert.match(svg129, /STAGE 485 🎉 · TOPIC 125 🎉/);
+});
+
+test("Stage 486: WebRTC RFC 8839 / RFC 8863 SDP ICE candidate port-scan SSRF, remote-candidates state and continual nomination Ta pacing guardrails (P965-P966)", async () => {
+  const blocked965 = evaluateWebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateGate({
+    privilegedCandidatePortOrPrematureRemoteCandidatesDetected: true,
+    privilegedOrPrematureRemoteCandidateViolations: 11,
+    candidatePort: 22,
+  });
+  assert.equal(blocked965.violated, true);
+  assert.equal(
+    blocked965.policyId,
+    "P965-WEBRTC-SDP-RFC8839-ICE-CANDIDATE-PORT-RANGE-AND-REMOTE-CANDIDATES-STATE-GUARD",
+  );
+  assert.equal(
+    blocked965.action,
+    "reject_privileged_candidate_port_ssrf_and_strip_premature_remote_candidates",
+  );
+  assert.equal(blocked965.clampedPrivilegedOrPrematureRemoteCandidateViolations, 0);
+  assert.equal(blocked965.clampedCandidatePort, 1024);
+  assert.match(blocked965.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped965 = evaluateWebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateGate({
+    privilegedCandidatePortOrPrematureRemoteCandidatesDetected: false,
+    privilegedOrPrematureRemoteCandidateViolations: 0,
+    candidatePort: 70000,
+  });
+  assert.equal(clamped965.violated, true);
+  assert.equal(
+    clamped965.action,
+    "clamp_candidate_violations_and_ephemeral_port_range",
+  );
+  assert.equal(clamped965.clampedCandidatePort, 65535);
+
+  const allowed965 = evaluateWebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateGate({
+    privilegedCandidatePortOrPrematureRemoteCandidatesDetected: false,
+    privilegedOrPrematureRemoteCandidateViolations: 0,
+    candidatePort: 51240,
+  });
+  assert.equal(allowed965.violated, false);
+  assert.equal(allowed965.action, "allow");
+
+  const blocked966 = evaluateWebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaGate({
+    unpacedContinualNominationStunFloodOrBackupPairOverflowDetected: true,
+    unpacedStunFloodOrBackupPairOverflowDrops: 18,
+    stunPacingTimerTaMs: 2,
+    activeBackupCandidatePairs: 16,
+  });
+  assert.equal(blocked966.violated, true);
+  assert.equal(
+    blocked966.policyId,
+    "P966-WEBRTC-RFC8863-ICE-CONTINUAL-NOMINATION-TA-PACING-AND-BACKUP-PAIR-QUOTA-GUARD",
+  );
+  assert.equal(
+    blocked966.action,
+    "throttle_stun_ta_pacing_timer_and_cap_backup_candidate_pairs",
+  );
+  assert.equal(blocked966.clampedUnpacedStunFloodOrBackupPairOverflowDrops, 0);
+  assert.equal(blocked966.clampedStunPacingTimerTaMs, 20);
+  assert.equal(blocked966.clampedActiveBackupCandidatePairs, 4);
+  assert.match(blocked966.reason, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+
+  const clamped966 = evaluateWebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaGate({
+    unpacedContinualNominationStunFloodOrBackupPairOverflowDetected: false,
+    unpacedStunFloodOrBackupPairOverflowDrops: 0,
+    stunPacingTimerTaMs: 2000,
+    activeBackupCandidatePairs: 0,
+  });
+  assert.equal(clamped966.violated, true);
+  assert.equal(
+    clamped966.action,
+    "clamp_stun_flood_drops_and_continual_nomination_bounds",
+  );
+  assert.equal(clamped966.clampedStunPacingTimerTaMs, 500);
+  assert.equal(clamped966.clampedActiveBackupCandidatePairs, 1);
+
+  const allowed966 = evaluateWebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaGate({
+    unpacedContinualNominationStunFloodOrBackupPairOverflowDetected: false,
+    unpacedStunFloodOrBackupPairOverflowDrops: 0,
+    stunPacingTimerTaMs: 50,
+    activeBackupCandidatePairs: 2,
+  });
+  assert.equal(allowed966.violated, false);
+  assert.equal(allowed966.action, "allow");
+
+  const svg130 = await readFile(new URL("../assets/svg/130-voice-webrtc-sdp-rfc8839-rfc8863-ice-candidate-port-scan-ssrf-remote-candidates-spoof-ta-pacing-2026-11-15.svg", import.meta.url), "utf8");
+  assert.match(svg130, /0ms reported at nominal 1ms display resolution; actual duration unresolved\/not_measured; no sub-1ms upper bound established/);
+  assert.match(svg130, /STAGE 486 · TOPIC 126 · SVG 130 🎉/);
 });
 
 test("P567 semiconductor HBM16 backside power-trench void and hybrid-bond seam-shear guard", () => {

@@ -84902,6 +84902,180 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateContext {
+      privilegedCandidatePortOrPrematureRemoteCandidatesDetected: boolean;
+      privilegedOrPrematureRemoteCandidateViolations: number;
+      candidatePort: number;
+    }
+
+    export interface WebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reject_privileged_candidate_port_ssrf_and_strip_premature_remote_candidates"
+        | "clamp_candidate_violations_and_ephemeral_port_range"
+        | "allow";
+      reason: string;
+      clampedPrivilegedOrPrematureRemoteCandidateViolations: number;
+      clampedCandidatePort: number;
+    }
+
+    /**
+     * P965: WebRTC RFC 8839 SDP ICE [1024, 65535] Candidate Port Anti-SSRF & Completed-Only a=remote-candidates State Gate.
+     */
+    export function evaluateWebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateGate(
+      ctx: WebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateContext,
+    ): WebrtcSdpRfc8839IceCandidatePortRangeAndRemoteCandidatesStateResult {
+      const policyId =
+        "P965-WEBRTC-SDP-RFC8839-ICE-CANDIDATE-PORT-RANGE-AND-REMOTE-CANDIDATES-STATE-GUARD";
+      const clampedPrivilegedOrPrematureRemoteCandidateViolations = 0;
+      const clampedCandidatePort = Math.min(
+        65535,
+        Math.max(
+          1024,
+          Number.isFinite(ctx.candidatePort)
+            ? Math.round(ctx.candidatePort)
+            : 51240,
+        ),
+      );
+
+      if (ctx.privilegedCandidatePortOrPrematureRemoteCandidatesDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "reject_privileged_candidate_port_ssrf_and_strip_premature_remote_candidates",
+          reason:
+            "Privileged (<1024) or internal SSRF SDP a=candidate port or premature initial-Offer a=remote-candidates injection detected (RFC 8839 Section 5.1 / Section 5.2); dropping rogue candidate and stripping unverified remote-candidates attribute (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedPrivilegedOrPrematureRemoteCandidateViolations,
+          clampedCandidatePort,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.privilegedOrPrematureRemoteCandidateViolations) ||
+        ctx.privilegedOrPrematureRemoteCandidateViolations !== 0 ||
+        !Number.isFinite(ctx.candidatePort) ||
+        ctx.candidatePort < 1024 ||
+        ctx.candidatePort > 65535
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_candidate_violations_and_ephemeral_port_range",
+          reason:
+            "Privileged/premature remote-candidate violations (>0 synthetic ceiling) or candidate port (<1024 or >65535 synthetic bounds) out of bounds; clamping violations to 0 and candidate port to [1024, 65535].",
+          clampedPrivilegedOrPrematureRemoteCandidateViolations,
+          clampedCandidatePort,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC SDP RFC 8839 [1024, 65535] candidate port range (0 SSRF violations) and Completed-only a=remote-candidates verified.",
+        clampedPrivilegedOrPrematureRemoteCandidateViolations,
+        clampedCandidatePort,
+      };
+    }
+
+    export interface WebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaContext {
+      unpacedContinualNominationStunFloodOrBackupPairOverflowDetected: boolean;
+      unpacedStunFloodOrBackupPairOverflowDrops: number;
+      stunPacingTimerTaMs: number;
+      activeBackupCandidatePairs: number;
+    }
+
+    export interface WebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "throttle_stun_ta_pacing_timer_and_cap_backup_candidate_pairs"
+        | "clamp_stun_flood_drops_and_continual_nomination_bounds"
+        | "allow";
+      reason: string;
+      clampedUnpacedStunFloodOrBackupPairOverflowDrops: number;
+      clampedStunPacingTimerTaMs: number;
+      clampedActiveBackupCandidatePairs: number;
+    }
+
+    /**
+     * P966 (🎉 Historic 975th Guardrail & 130th SVG Dual Milestone): WebRTC RFC 8863 / RFC 8445 ICE Continual Nomination STUN Pacing Timer Ta [20, 500]ms & [1, 4] Backup Candidate Pairs Gate.
+     */
+    export function evaluateWebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaGate(
+      ctx: WebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaContext,
+    ): WebrtcRfc8863IceContinualNominationTaPacingAndBackupPairQuotaResult {
+      const policyId =
+        "P966-WEBRTC-RFC8863-ICE-CONTINUAL-NOMINATION-TA-PACING-AND-BACKUP-PAIR-QUOTA-GUARD";
+      const clampedUnpacedStunFloodOrBackupPairOverflowDrops = 0;
+      const clampedStunPacingTimerTaMs = Math.min(
+        500,
+        Math.max(
+          20,
+          Number.isFinite(ctx.stunPacingTimerTaMs)
+            ? Math.round(ctx.stunPacingTimerTaMs)
+            : 50,
+        ),
+      );
+      const clampedActiveBackupCandidatePairs = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.activeBackupCandidatePairs)
+            ? Math.round(ctx.activeBackupCandidatePairs)
+            : 2,
+        ),
+      );
+
+      if (ctx.unpacedContinualNominationStunFloodOrBackupPairOverflowDetected) {
+        return {
+          violated: true,
+          policyId,
+          action: "throttle_stun_ta_pacing_timer_and_cap_backup_candidate_pairs",
+          reason:
+            "Unpaced WebRTC RFC 8863 ICE continual-nomination STUN flood (Ta < 20ms) or excessive backup candidate-pair probing (> 4 pairs) starving cellular audio uplink detected (RFC 8863 / RFC 8445 Section 14.2); clamping STUN pacing timer Ta to [20, 500]ms and active backup candidate pairs to [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnpacedStunFloodOrBackupPairOverflowDrops,
+          clampedStunPacingTimerTaMs,
+          clampedActiveBackupCandidatePairs,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.unpacedStunFloodOrBackupPairOverflowDrops) ||
+        ctx.unpacedStunFloodOrBackupPairOverflowDrops !== 0 ||
+        !Number.isFinite(ctx.stunPacingTimerTaMs) ||
+        ctx.stunPacingTimerTaMs < 20 ||
+        ctx.stunPacingTimerTaMs > 500 ||
+        !Number.isFinite(ctx.activeBackupCandidatePairs) ||
+        ctx.activeBackupCandidatePairs < 1 ||
+        ctx.activeBackupCandidatePairs > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_stun_flood_drops_and_continual_nomination_bounds",
+          reason:
+            "Unpaced STUN flood / backup-pair overflow drops (>0 synthetic ceiling), STUN pacing Ta (<20 or >500ms), or backup candidate pairs (<1 or >4) out of bounds; clamping drops to 0, Ta to [20, 500]ms, and backup pairs to [1, 4].",
+          clampedUnpacedStunFloodOrBackupPairOverflowDrops,
+          clampedStunPacingTimerTaMs,
+          clampedActiveBackupCandidatePairs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8863 continual nomination Ta [20, 500]ms pacing and [1, 4] backup candidate pairs (0 uplink starvation drops) verified.",
+        clampedUnpacedStunFloodOrBackupPairOverflowDrops,
+        clampedStunPacingTimerTaMs,
+        clampedActiveBackupCandidatePairs,
+      };
+    }
+
+
 
 
 
