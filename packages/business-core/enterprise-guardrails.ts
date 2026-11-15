@@ -86193,6 +86193,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSipRfc8840TrickleIceSdpfragContentTypeAndGenerationMatchContext {
+      staleIceGenerationUfragPwdOrUnnegotiatedSdpfragDetected: boolean;
+      staleGenerationChecklistPollutions: number;
+      maxCandidatesPerSdpfragPacket: number;
+    }
+
+    export interface WebrtcSipRfc8840TrickleIceSdpfragContentTypeAndGenerationMatchResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reject_488_stale_ufrag_pwd_generation_or_invalid_sdpfrag"
+        | "clamp_stale_generation_pollutions_and_candidates_per_sdpfrag"
+        | "allow";
+      reason: string;
+      clampedStaleGenerationChecklistPollutions: number;
+      clampedMaxCandidatesPerSdpfragPacket: number;
+    }
+
+    /**
+     * P981 (🎉 Historic 990th Enterprise Guardrail Milestone): Enterprise WebRTC/SIP RFC 8840 / RFC 8838 Trickle ICE application/trickle-ice+sdpfrag Content-Type, Active (ice-ufrag, ice-pwd, a=mid) Generation Parity & [1, 16] Candidates/Packet Gate.
+     */
+    export function evaluateWebrtcSipRfc8840TrickleIceSdpfragContentTypeAndGenerationMatchGate(
+      ctx: WebrtcSipRfc8840TrickleIceSdpfragContentTypeAndGenerationMatchContext,
+    ): WebrtcSipRfc8840TrickleIceSdpfragContentTypeAndGenerationMatchResult {
+      const policyId =
+        "P981-WEBRTC-SIP-RFC8840-TRICKLE-ICE-SDPFRAG-CONTENT-TYPE-AND-GENERATION-MATCH-GUARD";
+      const clampedStaleGenerationChecklistPollutions = 0;
+      const clampedMaxCandidatesPerSdpfragPacket = Math.min(
+        16,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxCandidatesPerSdpfragPacket)
+            ? Math.round(ctx.maxCandidatesPerSdpfragPacket)
+            : 8,
+        ),
+      );
+
+      if (ctx.staleIceGenerationUfragPwdOrUnnegotiatedSdpfragDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "reject_488_stale_ufrag_pwd_generation_or_invalid_sdpfrag",
+          reason:
+            "WebRTC/SIP RFC 8840 Section 4 Trickle ICE SIP INFO missing Info-Package: trickle-ice / application/trickle-ice+sdpfrag or carrying stale pre-restart ice-ufrag/ice-pwd or mismatched a=mid detected; rejecting with SIP 488/469 to prevent stale-generation checklist pollution and clamping candidates per sdpfrag in [1, 16] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedStaleGenerationChecklistPollutions,
+          clampedMaxCandidatesPerSdpfragPacket,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.staleGenerationChecklistPollutions) ||
+        ctx.staleGenerationChecklistPollutions !== 0 ||
+        !Number.isFinite(ctx.maxCandidatesPerSdpfragPacket) ||
+        ctx.maxCandidatesPerSdpfragPacket < 1 ||
+        ctx.maxCandidatesPerSdpfragPacket > 16
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_stale_generation_pollutions_and_candidates_per_sdpfrag",
+          reason:
+            "Stale ICE generation checklist pollutions (>0 synthetic ceiling) or candidates per sdpfrag packet (<1 or >16 synthetic bounds) out of bounds; clamping pollutions to 0 and candidates per packet to [1, 16].",
+          clampedStaleGenerationChecklistPollutions,
+          clampedMaxCandidatesPerSdpfragPacket,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC/SIP RFC 8840 Trickle ICE sdpfrag active generation match (0 pollutions) and [1, 16] candidates/packet verified.",
+        clampedStaleGenerationChecklistPollutions,
+        clampedMaxCandidatesPerSdpfragPacket,
+      };
+    }
+
+    export interface WebrtcSipRfc8840PostEndOfCandidatesInjectionAndInfoRateContext {
+      postEndOfCandidatesInjectionOrInfoFloodDetected: boolean;
+      postEndOfCandidatesAcceptedInjections: number;
+      maxSipInfoTrickleRatePerSec: number;
+    }
+
+    export interface WebrtcSipRfc8840PostEndOfCandidatesInjectionAndInfoRateResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "seal_checklist_after_end_of_candidates_and_throttle_sip_info_rate"
+        | "clamp_post_eoc_injections_and_sip_info_rate_per_sec"
+        | "allow";
+      reason: string;
+      clampedPostEndOfCandidatesAcceptedInjections: number;
+      clampedMaxSipInfoTrickleRatePerSec: number;
+    }
+
+    /**
+     * P982 🎉 (Historic 991st Guardrail, 1,000th Sandbox Probe & 810th Live POC Probe Triple Milestone): Enterprise WebRTC/SIP RFC 8840 Section 4.3 / RFC 8838 Post-end-of-candidates Checklist Seal & [1, 20] req/s SIP INFO Rate Gate.
+     */
+    export function evaluateWebrtcSipRfc8840PostEndOfCandidatesInjectionAndInfoRateGate(
+      ctx: WebrtcSipRfc8840PostEndOfCandidatesInjectionAndInfoRateContext,
+    ): WebrtcSipRfc8840PostEndOfCandidatesInjectionAndInfoRateResult {
+      const policyId =
+        "P982-WEBRTC-SIP-RFC8840-POST-END-OF-CANDIDATES-INJECTION-AND-INFO-RATE-GUARD";
+      const clampedPostEndOfCandidatesAcceptedInjections = 0;
+      const clampedMaxSipInfoTrickleRatePerSec = Math.min(
+        20,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxSipInfoTrickleRatePerSec)
+            ? Math.round(ctx.maxSipInfoTrickleRatePerSec)
+            : 10,
+        ),
+      );
+
+      if (ctx.postEndOfCandidatesInjectionOrInfoFloodDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "seal_checklist_after_end_of_candidates_and_throttle_sip_info_rate",
+          reason:
+            "WebRTC/SIP RFC 8840 Section 4.3 / RFC 8838 Section 4.1.1 candidate injection after a=end-of-candidates without an ICE Restart ufrag rotation or SIP INFO trickle-ice flood (>20 req/s) detected; sealing active generation checklist and throttling SIP INFO rate in [1, 20] req/s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedPostEndOfCandidatesAcceptedInjections,
+          clampedMaxSipInfoTrickleRatePerSec,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.postEndOfCandidatesAcceptedInjections) ||
+        ctx.postEndOfCandidatesAcceptedInjections !== 0 ||
+        !Number.isFinite(ctx.maxSipInfoTrickleRatePerSec) ||
+        ctx.maxSipInfoTrickleRatePerSec < 1 ||
+        ctx.maxSipInfoTrickleRatePerSec > 20
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action: "clamp_post_eoc_injections_and_sip_info_rate_per_sec",
+          reason:
+            "Post-end-of-candidates accepted injections (>0 synthetic ceiling) or SIP INFO trickle-ice rate (<1 or >20 req/s synthetic bounds) out of bounds; clamping post-EOC injections to 0 and rate to [1, 20] req/s.",
+          clampedPostEndOfCandidatesAcceptedInjections,
+          clampedMaxSipInfoTrickleRatePerSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC/SIP RFC 8840 post-end-of-candidates checklist seal (0 injections) and [1, 20] req/s SIP INFO rate verified.",
+        clampedPostEndOfCandidatesAcceptedInjections,
+        clampedMaxSipInfoTrickleRatePerSec,
+      };
+    }
+
+
 
 
 

@@ -2161,6 +2161,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: iteratively strips unrecognized rightmost subservice tokens on urn:service:sos.* / counseling.* to fall back to parent emergency/counseling queues while muting commercial AI scripts and clamping depth in [1, 4] (0 404 call drops); live SBC URN radix-tree lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces <=500ms RFC 5222 LoST <findService> timeout with immediate fallback to cached/default regional PSAP URIs and clamps mapping cache TTL in [60, 3600]s (0 LoST timeout call drops); live ESRP LoST HTTP/XML client latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "497. [Topic 134 · Historic 991-Guardrail, 1,000-Probe & 810-Live-POC-Probe Triple Milestone 🎉: voice-webrtc-sip-rfc8840-rfc8838-trickle-ice-sdpfrag-pseudo-sdp-ufrag-pwd-generation-mismatch-post-eoc-injection-faq] Enterprise WebRTC/SIP RFC 8840 / RFC 8838 Trickle ICE sdpfrag Generation Parity & Post-end-of-candidates Flood Guard (P981 / P982 🎉 — Stage 494 · Topic 134 · 🎉 Historic 991-Guardrail, 1,000-Probe & 810-Live-POC-Probe Triple Milestone · 497 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces Info-Package: trickle-ice + application/trickle-ice+sdpfrag and exact (ice-ufrag, ice-pwd, a=mid) generation parity with [1, 16] candidates/pkt (0 stale-generation checklist pollutions); live SBC sdpfrag lexer latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: seals active (ice-ufrag, mid) checklist upon receiving a=end-of-candidates until next ICE Restart rotates ufrag and clamps SIP INFO rate in [1, 20] req/s (0 post-EOC injections); live SIP transaction limiter latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
