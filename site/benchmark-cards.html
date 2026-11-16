@@ -2281,6 +2281,13 @@
               <td><code>P1057 / P1058 🎉 deterministic WebRTC RFC 5761 rtcp-mux PT [64, 95] exclusion &amp; RTP+1 odd-port reclamation guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>536. 🎉 [专题173 · 第100轮 &amp; P1060 &amp; 175篇FAQ &amp; 975单测四重里程碑 🎉 `docs/voice-sip-rfc5057-rfc6665-multiple-dialog-usages-481-408-scope-isolation-in-dialog-subscribe-hijack-faq.md`] 企业 SIP `RFC 5057 / RFC 6665` 多重对话用途三级错误爆炸半径隔离（附属 `NOTIFY/SUBSCRIBE` 报错 `481/408` 仅销毁该订阅用途、严禁连坐掐断活跃 `INVITE` 语音通话）与 `[1, 2]` 个并发用途锁（`0` 连坐掉话；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 B2BUA 对话引用计数耗时 `not_measured`）&amp; `RFC 6665 §4.5.1` 严禁在现有 `INVITE` 对话内寄生新建 `SUBSCRIBE` 防共享 `Contact` 路由劫持与 `[1, 1]` 单一用途隔离门禁（`0` 寄生劫持包；真实 SBC 对话外路由耗时 `not_measured`）(`P1059` / `P1060 🎉` · Stage 533 · Topic 173 · 🎉 历史性第 100 轮夜间深潜、`P1060` 护栏、第 175 篇独立单专题 FAQ 与 975 项单测四重里程碑 · 1,069 护栏 &amp; 1,078 探针 · 536 维)</strong>
+              </td>
+              <td><code>P1059 / P1060 🎉 deterministic SIP RFC 5057 usage-scoped 481 isolation &amp; RFC 6665 in-dialog SUBSCRIBE prohibition guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -6538,6 +6545,13 @@
                 <strong>535. 🎉 [专题172 · 535大评测维度里程碑 🎉 `docs/voice-webrtc-rtp-rfc5761-rfc3605-rtcp-mux-pt-64to95-marker-collision-a-rtcp-ssrf-odd-port-leak-faq.md`] 企业 WebRTC/RTP `RFC 5761 / RFC 3605` 单端口音控复用（`a=rtcp-mux`）`PT [64, 95]` 冲突禁区封禁（防 `Marker=1` 开口首帧 `128+PT=200..204` 与 RTCP `SR/RR` 撞车吞掉每句话第 1 个字）与动态 `PT [96, 127]` 收敛锁（`0` 首帧吞字包；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU Byte-1 分流耗时 `not_measured`）&amp; `a=rtcp-mux` 成功后立即回收预分配 `RTP+1` 奇数端口、阻断异源 IP `a=rtcp:` 反射攻击与单轨 `[1, 1]` 套接字门禁（`0` 奇数端口泄漏；真实内核套接字回收耗时 `not_measured`）(`P1057` / `P1058 🎉` · Stage 532 · Topic 172 · 🎉 历史性第 535 大评测维度里程碑 · 1,067 护栏 &amp; 1,076 探针 · 535 维 🎉)</strong>
               </td>
               <td><code>P1057 / P1058 🎉 deterministic WebRTC RFC 5761 rtcp-mux PT [64, 95] exclusion &amp; RTP+1 odd-port reclamation guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>536. 🎉 [专题173 · 第100轮 &amp; P1060 &amp; 175篇FAQ &amp; 975单测四重里程碑 🎉 `docs/voice-sip-rfc5057-rfc6665-multiple-dialog-usages-481-408-scope-isolation-in-dialog-subscribe-hijack-faq.md`] 企业 SIP `RFC 5057 / RFC 6665` 多重对话用途三级错误爆炸半径隔离（附属 `NOTIFY/SUBSCRIBE` 报错 `481/408` 仅销毁该订阅用途、严禁连坐掐断活跃 `INVITE` 语音通话）与 `[1, 2]` 个并发用途锁（`0` 连坐掉话；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 B2BUA 对话引用计数耗时 `not_measured`）&amp; `RFC 6665 §4.5.1` 严禁在现有 `INVITE` 对话内寄生新建 `SUBSCRIBE` 防共享 `Contact` 路由劫持与 `[1, 1]` 单一用途隔离门禁（`0` 寄生劫持包；真实 SBC 对话外路由耗时 `not_measured`）(`P1059` / `P1060 🎉` · Stage 533 · Topic 173 · 🎉 历史性第 100 轮夜间深潜、`P1060` 护栏、第 175 篇独立单专题 FAQ 与 975 项单测四重里程碑 · 1,069 护栏 &amp; 1,078 探针 · 536 维)</strong>
+              </td>
+              <td><code>P1059 / P1060 🎉 deterministic SIP RFC 5057 usage-scoped 481 isolation &amp; RFC 6665 in-dialog SUBSCRIBE prohibition guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

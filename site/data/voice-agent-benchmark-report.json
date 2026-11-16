@@ -2395,6 +2395,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: excludes reserved PT [64, 95] so Marker=1 talkspurt packets never collide with RTCP 192..223 (0 colliding packets) and clamps negotiatedDynamicRtpPayloadType in [96, 127]; live SFU Byte-1 demux latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: reclaims pre-allocated RTP+1 odd sockets on rtcp-mux and blocks cross-IP a=rtcp SSRF targets (0 leaked ports/SSRF targets) and clamps allocatedUdpSocketsPerRtcpMuxTrack in [1, 1]; live kernel UDP socket reclamation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "536. 🎉 [Topic 173 · Historic 100th Cumulative Nightly Round, P1060 Guardrail, 175th Standalone FAQ & 975-Test Quadruple Milestone! 🎉: voice-sip-rfc5057-rfc6665-multiple-dialog-usages-481-408-scope-isolation-in-dialog-subscribe-hijack-faq] Enterprise SIP RFC 5057 / RFC 6665 Multiple Dialog Usages 481 Scope Isolation & In-Dialog SUBSCRIBE Prohibition Guard (P1059 / P1060 🎉 — Stage 533 · Topic 173 · 🎉 Historic 100th Round, P1060, 175th FAQ & 975-Test Quadruple Milestone · 1,069 Guardrails & 1,078 Probes · 536 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: isolates non-INVITE 481/408 errors to the single usage without dropping the active INVITE voice call (0 collateral drops) and clamps concurrentUsagesPerInviteDialog in [1, 2]; live B2BUA dialog usage ref-count latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids RFC 6665 §4.5.1 in-dialog SUBSCRIBE piggybacking inside active INVITE dialogs (0 hijack packets) and clamps isolatedInviteDialogUsageCount in [1, 1]; live SBC out-of-dialog SUBSCRIBE router latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

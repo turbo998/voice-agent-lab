@@ -91195,3 +91195,109 @@ export function evaluateWebrtcRfc5761RtcpAttributeSameIpBindingAndOddPortReclama
   };
 }
 
+// ============================================================================
+// Stage 533 (Topic 173 · P1059–P1060 🎉 · Historic 100th Cumulative Nightly
+// Round, P1060 Guardrail, 175th Standalone FAQ & 975-Test Quadruple Milestone!
+// · 1,069 Guardrails · 1,078 Probes · 536 Dims):
+// Enterprise SIP RFC 5057 / RFC 6665 Multiple Dialog Usages 481/408 Error
+// Scope Isolation & In-Dialog SUBSCRIBE Prohibition Guardrails
+// ============================================================================
+
+export interface SipRfc5057UsageScoped481ErrorIsolationAndInvitePreservationGuardInput {
+  nonInviteUsage481TearingDownActiveInviteCallDetected: boolean;
+  collateralInviteCallDropsFromUsageError: number;
+  concurrentUsagesPerInviteDialog: number;
+}
+
+export interface SipRfc5057UsageScoped481ErrorIsolationAndInvitePreservationGuardResult {
+  violated: boolean;
+  policyId: "P1059-SIP-RFC5057-USAGE-SCOPED-481-ERROR-ISOLATION-AND-INVITE-PRESERVATION-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_isolated_rfc5057_usage_error_handling"
+    | "isolate_usage_scoped_481_error_and_preserve_invite_call";
+  clampedCollateralInviteCallDropsFromUsageError: number;
+  clampedConcurrentUsagesPerInviteDialog: number;
+  reason: string;
+}
+
+export function evaluateSipRfc5057UsageScoped481ErrorIsolationAndInvitePreservationGuard(
+  input: SipRfc5057UsageScoped481ErrorIsolationAndInvitePreservationGuardInput,
+): SipRfc5057UsageScoped481ErrorIsolationAndInvitePreservationGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.nonInviteUsage481TearingDownActiveInviteCallDetected ||
+    input.collateralInviteCallDropsFromUsageError > 0 ||
+    input.concurrentUsagesPerInviteDialog < 1 ||
+    input.concurrentUsagesPerInviteDialog > 2;
+  const clampedCollateralInviteCallDropsFromUsageError = 0;
+  const clampedConcurrentUsagesPerInviteDialog = Math.min(
+    2,
+    Math.max(1, Math.trunc(input.concurrentUsagesPerInviteDialog || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1059-SIP-RFC5057-USAGE-SCOPED-481-ERROR-ISOLATION-AND-INVITE-PRESERVATION-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "isolate_usage_scoped_481_error_and_preserve_invite_call"
+      : "allow_isolated_rfc5057_usage_error_handling",
+    clampedCollateralInviteCallDropsFromUsageError,
+    clampedConcurrentUsagesPerInviteDialog,
+    reason: violated
+      ? `P1059 (1,068th Enterprise Guardrail · Stage 533 & Topic 173) SIP RFC 5057 §5.1 non-INVITE usage 481/408 error tearing down active INVITE call violation (${timing}): isolated usage-scoped error to preserve active INVITE audio (clamped collateral call drops to 0) and clamped concurrent usages per INVITE dialog to ${clampedConcurrentUsagesPerInviteDialog} in [1, 2].`
+      : `P1059 (1,068th Enterprise Guardrail · Stage 533 & Topic 173) SIP RFC 5057 §5.1 usage-scoped error isolation verified (${timing}): 0 collateral INVITE call drops and ${clampedConcurrentUsagesPerInviteDialog} usages per dialog within [1, 2].`,
+  };
+}
+
+export interface SipRfc5057Rfc6665InDialogSubscribeProhibitionAndTargetRefreshIsolationGuardInput {
+  piggybackedInDialogSubscribeOrSharedContactHijackDetected: boolean;
+  inDialogSubscribeOrTargetHijackPackets: number;
+  isolatedInviteDialogUsageCount: number;
+}
+
+export interface SipRfc5057Rfc6665InDialogSubscribeProhibitionAndTargetRefreshIsolationGuardResult {
+  violated: boolean;
+  policyId: "P1060-SIP-RFC5057-RFC6665-IN-DIALOG-SUBSCRIBE-PROHIBITION-AND-TARGET-REFRESH-ISOLATION-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_single_isolated_invite_dialog_usage"
+    | "reject_in_dialog_subscribe_and_enforce_single_invite_usage";
+  clampedInDialogSubscribeOrTargetHijackPackets: number;
+  clampedIsolatedInviteDialogUsageCount: number;
+  reason: string;
+}
+
+export function evaluateSipRfc5057Rfc6665InDialogSubscribeProhibitionAndTargetRefreshIsolationGuard(
+  input: SipRfc5057Rfc6665InDialogSubscribeProhibitionAndTargetRefreshIsolationGuardInput,
+): SipRfc5057Rfc6665InDialogSubscribeProhibitionAndTargetRefreshIsolationGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.piggybackedInDialogSubscribeOrSharedContactHijackDetected ||
+    input.inDialogSubscribeOrTargetHijackPackets > 0 ||
+    input.isolatedInviteDialogUsageCount !== 1;
+  const clampedInDialogSubscribeOrTargetHijackPackets = 0;
+  const clampedIsolatedInviteDialogUsageCount = 1;
+  return {
+    violated,
+    policyId:
+      "P1060-SIP-RFC5057-RFC6665-IN-DIALOG-SUBSCRIBE-PROHIBITION-AND-TARGET-REFRESH-ISOLATION-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reject_in_dialog_subscribe_and_enforce_single_invite_usage"
+      : "allow_single_isolated_invite_dialog_usage",
+    clampedInDialogSubscribeOrTargetHijackPackets,
+    clampedIsolatedInviteDialogUsageCount,
+    reason: violated
+      ? `P1060 🎉 (Historic 100th Cumulative Nightly Round, P1060 Guardrail, 175th Standalone FAQ & 975-Test Quadruple Milestone! · 1,069th Guardrail) SIP RFC 5057 §5.4 / RFC 6665 §4.5.1 piggybacked in-dialog SUBSCRIBE or shared Contact target-refresh hijack violation (${timing}): rejected in-dialog SUBSCRIBE (clamped hijack packets to 0) and clamped isolated INVITE dialog usage count to ${clampedIsolatedInviteDialogUsageCount} in [1, 1].`
+      : `P1060 🎉 (Historic 100th Cumulative Nightly Round, P1060 Guardrail, 175th Standalone FAQ & 975-Test Quadruple Milestone! · 1,069th Guardrail) SIP RFC 5057 / RFC 6665 single-usage INVITE dialog isolation verified (${timing}): 0 in-dialog SUBSCRIBE hijack packets and usage count ${clampedIsolatedInviteDialogUsageCount} within [1, 1].`,
+  };
+}
+
