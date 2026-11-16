@@ -89776,3 +89776,116 @@ export function evaluateSipRfc3311EarlyDialogUpdateTargetRefreshAndRateGuard(
   };
 }
 
+// ============================================================================
+// Stage 520 🎉 (Topic 160 🎉 · P1033 🎉–P1034 🎉 · Historic Stage 520 &
+// Topic 160 Dual Milestone! · 1,043 Guardrails · 1,052 Probes · 523 Dims):
+// Enterprise WebRTC/RTP RFC 4588 / RFC 8854 RTP Retransmission (RTX) OSN
+// Cache Write-Once Lock & NACK Anti-Amplification Guardrails
+// ============================================================================
+
+export interface WebrtcRfc4588RtxOsnCacheOverwriteAndAptBindingGuardInput {
+  rtxOsnOverwritesReceivedFrameOrUnboundAptDetected: boolean;
+  spoofedRtxOsnFrameOverwrites: number;
+  rtxBufferRetentionWindowMs: number;
+}
+
+export interface WebrtcRfc4588RtxOsnCacheOverwriteAndAptBindingGuardResult {
+  violated: boolean;
+  policyId: "P1033-WEBRTC-RFC4588-RTX-OSN-CACHE-OVERWRITE-AND-APT-BINDING-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_verified_rfc4588_rtx_osn_and_apt_binding"
+    | "reject_unrequested_rtx_osn_overwrite_and_clamp_rtx_time_ms";
+  clampedSpoofedRtxOsnFrameOverwrites: number;
+  clampedRtxBufferRetentionWindowMs: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc4588RtxOsnCacheOverwriteAndAptBindingGuard(
+  input: WebrtcRfc4588RtxOsnCacheOverwriteAndAptBindingGuardInput,
+): WebrtcRfc4588RtxOsnCacheOverwriteAndAptBindingGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.rtxOsnOverwritesReceivedFrameOrUnboundAptDetected ||
+    input.spoofedRtxOsnFrameOverwrites > 0 ||
+    input.rtxBufferRetentionWindowMs < 100 ||
+    input.rtxBufferRetentionWindowMs > 1000;
+  const clampedSpoofedRtxOsnFrameOverwrites = 0;
+  const clampedRtxBufferRetentionWindowMs = Math.min(
+    1000,
+    Math.max(100, Math.trunc(input.rtxBufferRetentionWindowMs || 100)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1033-WEBRTC-RFC4588-RTX-OSN-CACHE-OVERWRITE-AND-APT-BINDING-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reject_unrequested_rtx_osn_overwrite_and_clamp_rtx_time_ms"
+      : "allow_verified_rfc4588_rtx_osn_and_apt_binding",
+    clampedSpoofedRtxOsnFrameOverwrites,
+    clampedRtxBufferRetentionWindowMs,
+    reason: violated
+      ? `P1033 🎉 (Historic Stage 520 & Topic 160 Dual Milestone! · 1,042nd Guardrail) WebRTC/RTP RFC 4588 RTX OSN overwrite of received frame or rtx-time window violation (${timing}): blocked unrequested OSN frame overwrites (clamped to 0) and clamped rtx-time buffer retention window to ${clampedRtxBufferRetentionWindowMs}ms in [100, 1000]ms.`
+      : `P1033 🎉 (Historic Stage 520 & Topic 160 Dual Milestone! · 1,042nd Guardrail) WebRTC/RTP RFC 4588 RTX OSN and rtx-time verified (${timing}): 0 frame overwrites and retention window ${clampedRtxBufferRetentionWindowMs}ms within [100, 1000]ms.`,
+  };
+}
+
+export interface WebrtcRfc4588NackRetransmitAmplificationAndBandwidthRatioGuardInput {
+  duplicateNackFloodOrRtxBandwidthAmplificationDetected: boolean;
+  maxRetransmissionsPerLostPacket: number;
+  maxRtxToMediaBitrateRatioPct: number;
+}
+
+export interface WebrtcRfc4588NackRetransmitAmplificationAndBandwidthRatioGuardResult {
+  violated: boolean;
+  policyId: "P1034-WEBRTC-RFC4588-NACK-RETRANSMIT-AMPLIFICATION-AND-BANDWIDTH-RATIO-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_bounded_rfc4588_nack_rtx_retransmission_budget"
+    | "cap_nack_retries_per_packet_and_clamp_rtx_bandwidth_ratio";
+  clampedMaxRetransmissionsPerLostPacket: number;
+  clampedMaxRtxToMediaBitrateRatioPct: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc4588NackRetransmitAmplificationAndBandwidthRatioGuard(
+  input: WebrtcRfc4588NackRetransmitAmplificationAndBandwidthRatioGuardInput,
+): WebrtcRfc4588NackRetransmitAmplificationAndBandwidthRatioGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.duplicateNackFloodOrRtxBandwidthAmplificationDetected ||
+    input.maxRetransmissionsPerLostPacket < 1 ||
+    input.maxRetransmissionsPerLostPacket > 2 ||
+    input.maxRtxToMediaBitrateRatioPct < 10 ||
+    input.maxRtxToMediaBitrateRatioPct > 25;
+  const clampedMaxRetransmissionsPerLostPacket = Math.min(
+    2,
+    Math.max(1, Math.trunc(input.maxRetransmissionsPerLostPacket || 1)),
+  );
+  const clampedMaxRtxToMediaBitrateRatioPct = Math.min(
+    25,
+    Math.max(10, Math.trunc(input.maxRtxToMediaBitrateRatioPct || 10)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1034-WEBRTC-RFC4588-NACK-RETRANSMIT-AMPLIFICATION-AND-BANDWIDTH-RATIO-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "cap_nack_retries_per_packet_and_clamp_rtx_bandwidth_ratio"
+      : "allow_bounded_rfc4588_nack_rtx_retransmission_budget",
+    clampedMaxRetransmissionsPerLostPacket,
+    clampedMaxRtxToMediaBitrateRatioPct,
+    reason: violated
+      ? `P1034 🎉 (Historic Stage 520 & Topic 160 Dual Milestone! · 1,043rd Guardrail) WebRTC/RTP RFC 4588 NACK retransmission amplification or RTX bandwidth ratio violation (${timing}): clamped max retransmissions per lost packet to ${clampedMaxRetransmissionsPerLostPacket} in [1, 2] and clamped max RTX-to-media bitrate ratio to ${clampedMaxRtxToMediaBitrateRatioPct}% in [10, 25]%.`
+      : `P1034 🎉 (Historic Stage 520 & Topic 160 Dual Milestone! · 1,043rd Guardrail) WebRTC/RTP RFC 4588 NACK/RTX budget verified (${timing}): max ${clampedMaxRetransmissionsPerLostPacket} retries per packet and ${clampedMaxRtxToMediaBitrateRatioPct}% RTX bitrate ratio within [10, 25]%.`,
+  };
+}
+

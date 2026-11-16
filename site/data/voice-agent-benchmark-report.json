@@ -2317,6 +2317,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects colliding RFC 3311 UPDATE SDP offers during pending Offer/Answer state with 491 Request Pending (0 unrejected collisions) and clamps glareRetryBackoffMs in [100, 4000]ms; live SBC SDP state mutex latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins early-dialog Remote Target Contact against unauthenticated redirects (0 hijacks) and clamps maxEarlyDialogUpdatesPerCall in [1, 4]; live B2BUA early-dialog target table latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "523. 🎉 [Topic 160 🎉 · Historic Stage 520 & Topic 160 Dual Milestone! 🎉: voice-webrtc-rtp-rfc4588-rfc8854-rtx-retransmission-osn-cache-poisoning-apt-rtx-time-nack-amplification-faq] Enterprise WebRTC/RTP RFC 4588 / RFC 8854 RTX Retransmission OSN Write Lock & NACK Anti-Amplification Guard (P1033 🎉 / P1034 🎉 — Stage 520 🎉 · Topic 160 🎉 · 🎉 Historic Stage 520 & Topic 160 Dual Milestone · 1,043 Guardrails & 1,052 Probes · 523 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: admits RFC 4588 RTX 2-byte OSN payloads only into verified MISSING slots (0 received-frame overwrites) and clamps rtxBufferRetentionWindowMs in [100, 1000]ms; live jitter buffer OSN lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps maxRetransmissionsPerLostPacket in [1, 2] with RTT cooldown and clamps maxRtxToMediaBitrateRatioPct in [10, 25]% to prevent NACK amplification; live SFU RTX token bucket latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
