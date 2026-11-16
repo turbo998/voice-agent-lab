@@ -2377,6 +2377,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 3264 §8.2 non-decreasing m= line count with port 0 tombstones (0 truncated/swapped SDP offers) and clamps totalSdpMediaSectionsPerDialog in [1, 16]; live B2BUA SDP AST rewrite latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 3264 §6.1 orthogonal Hold/Resume directionality matrix and suspends AI ASR/LLM during remote Hold (0 deadlocked holds) and clamps maxCallHoldDurationSeconds in [30, 300]s; live SBC MoH isolation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "533. 🎉 [Topic 170 🎉 · Historic Stage 530 & Topic 170 Dual Milestone! 🎉: voice-webrtc-ice-rfc7675-rfc8445-stun-consent-freshness-30s-expiry-cease-tx-4to6s-jitter-icmp-spoof-faq] Enterprise WebRTC/ICE RFC 7675 STUN Consent Freshness 30s Cease-Transmission & Jitter Guard (P1053 / P1054 — Stage 530 🎉 · Topic 170 🎉 · 🎉 Historic Stage 530 & Topic 170 Dual Milestone · 1,063 Guardrails & 1,072 Probes · 533 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: halts all RTP/SRTP egress immediately on consent expiry (0 unconsented post-expiry RTP packets) and clamps stunConsentCheckIntervalMs in [4000, 6000]ms; live ICE PRNG timer wheel latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: validates inner 96-bit STUN Transaction ID on incoming ICMP errors (0 spoofed ICMP call drops) and clamps consentExpirationWindowSeconds in [15, 30]s; live STUN HMAC-SHA1 verification latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

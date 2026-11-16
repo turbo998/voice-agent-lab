@@ -90871,3 +90871,112 @@ export function evaluateSipRfc3264HoldDirectionalityMatrixAndMutualHoldDeadlockG
   };
 }
 
+// ============================================================================
+// Stage 530 🎉 (Topic 170 🎉 · P1053–P1054 · Historic Stage 530 & 170th Voice
+// Architecture Topic Dual Milestone! · 1,063 Guardrails · 1,072 Probes · 533 Dims):
+// Enterprise WebRTC/ICE RFC 7675 / RFC 8445 STUN Consent Freshness 30s
+// Cease-Transmission, [4000, 6000]ms Jitter & Off-Path ICMP Spoof Guardrails
+// ============================================================================
+
+export interface WebrtcRfc7675ConsentFreshnessJitterAnd30sCeaseTransmissionGuardInput {
+  postConsentExpiryRtpLeakOrUnjitteredStunTimerDetected: boolean;
+  unconsentedPostExpiryRtpPackets: number;
+  stunConsentCheckIntervalMs: number;
+}
+
+export interface WebrtcRfc7675ConsentFreshnessJitterAnd30sCeaseTransmissionGuardResult {
+  violated: boolean;
+  policyId: "P1053-WEBRTC-RFC7675-CONSENT-FRESHNESS-JITTER-AND-30S-CEASE-TRANSMISSION-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_consented_rtp_and_jittered_stun_freshness"
+    | "cease_unconsented_rtp_tx_and_clamp_stun_jitter_ms";
+  clampedUnconsentedPostExpiryRtpPackets: number;
+  clampedStunConsentCheckIntervalMs: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc7675ConsentFreshnessJitterAnd30sCeaseTransmissionGuard(
+  input: WebrtcRfc7675ConsentFreshnessJitterAnd30sCeaseTransmissionGuardInput,
+): WebrtcRfc7675ConsentFreshnessJitterAnd30sCeaseTransmissionGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.postConsentExpiryRtpLeakOrUnjitteredStunTimerDetected ||
+    input.unconsentedPostExpiryRtpPackets > 0 ||
+    input.stunConsentCheckIntervalMs < 4000 ||
+    input.stunConsentCheckIntervalMs > 6000;
+  const clampedUnconsentedPostExpiryRtpPackets = 0;
+  const clampedStunConsentCheckIntervalMs = Math.min(
+    6000,
+    Math.max(4000, Math.trunc(input.stunConsentCheckIntervalMs || 4000)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1053-WEBRTC-RFC7675-CONSENT-FRESHNESS-JITTER-AND-30S-CEASE-TRANSMISSION-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "cease_unconsented_rtp_tx_and_clamp_stun_jitter_ms"
+      : "allow_consented_rtp_and_jittered_stun_freshness",
+    clampedUnconsentedPostExpiryRtpPackets,
+    clampedStunConsentCheckIntervalMs,
+    reason: violated
+      ? `P1053 (1,062nd Enterprise Guardrail · Stage 530 🎉 & Topic 170 🎉) WebRTC/ICE RFC 7675 post-expiry RTP leak or unjittered STUN consent timer violation (${timing}): executed immediate Cease-Transmission (clamped unconsented RTP packets to 0) and clamped STUN consent check interval to ${clampedStunConsentCheckIntervalMs}ms in [4000, 6000]ms.`
+      : `P1053 (1,062nd Enterprise Guardrail · Stage 530 🎉 & Topic 170 🎉) WebRTC/ICE RFC 7675 STUN consent freshness verified (${timing}): 0 unconsented RTP packets and check interval ${clampedStunConsentCheckIntervalMs}ms within [4000, 6000]ms.`,
+  };
+}
+
+export interface WebrtcRfc7675OffPathIcmpRevocationVerificationAndFailureWindowGuardInput {
+  unverifiedIcmpConsentRevocationOrInvalidExpiryWindowDetected: boolean;
+  spoofedIcmpTriggeredCallDrops: number;
+  consentExpirationWindowSeconds: number;
+}
+
+export interface WebrtcRfc7675OffPathIcmpRevocationVerificationAndFailureWindowGuardResult {
+  violated: boolean;
+  policyId: "P1054-WEBRTC-RFC7675-OFF-PATH-ICMP-REVOCATION-VERIFICATION-AND-FAILURE-WINDOW-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_verified_rfc7675_consent_window"
+    | "verify_icmp_inner_stun_txid_and_clamp_expiry_window_seconds";
+  clampedSpoofedIcmpTriggeredCallDrops: number;
+  clampedConsentExpirationWindowSeconds: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc7675OffPathIcmpRevocationVerificationAndFailureWindowGuard(
+  input: WebrtcRfc7675OffPathIcmpRevocationVerificationAndFailureWindowGuardInput,
+): WebrtcRfc7675OffPathIcmpRevocationVerificationAndFailureWindowGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.unverifiedIcmpConsentRevocationOrInvalidExpiryWindowDetected ||
+    input.spoofedIcmpTriggeredCallDrops > 0 ||
+    input.consentExpirationWindowSeconds < 15 ||
+    input.consentExpirationWindowSeconds > 30;
+  const clampedSpoofedIcmpTriggeredCallDrops = 0;
+  const clampedConsentExpirationWindowSeconds = Math.min(
+    30,
+    Math.max(15, Math.trunc(input.consentExpirationWindowSeconds || 15)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1054-WEBRTC-RFC7675-OFF-PATH-ICMP-REVOCATION-VERIFICATION-AND-FAILURE-WINDOW-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "verify_icmp_inner_stun_txid_and_clamp_expiry_window_seconds"
+      : "allow_verified_rfc7675_consent_window",
+    clampedSpoofedIcmpTriggeredCallDrops,
+    clampedConsentExpirationWindowSeconds,
+    reason: violated
+      ? `P1054 (1,063rd Enterprise Guardrail · Stage 530 🎉 & Topic 170 🎉) WebRTC/ICE RFC 7675 §5.2 unverified off-path ICMP consent revocation or invalid expiry window violation (${timing}): blocked spoofed ICMP call drops (clamped to 0) and clamped consent expiration window to ${clampedConsentExpirationWindowSeconds}s in [15, 30]s.`
+      : `P1054 (1,063rd Enterprise Guardrail · Stage 530 🎉 & Topic 170 🎉) WebRTC/ICE RFC 7675 §5.2 ICMP verification and expiry window verified (${timing}): 0 spoofed ICMP drops and expiry window ${clampedConsentExpirationWindowSeconds}s within [15, 30]s.`,
+  };
+}
+

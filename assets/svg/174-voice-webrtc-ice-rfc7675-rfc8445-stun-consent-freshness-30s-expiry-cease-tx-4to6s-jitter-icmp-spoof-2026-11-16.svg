@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg174" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent174" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg174)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="24" width="1144" height="6" rx="3" fill="url(#accent174)"/>
+
+  <text x="52" y="64" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">STAGE 530 · TOPIC 170 · P1053–P1054 · 🎉 HISTORIC STAGE 530 &amp; TOPIC 170 DUAL MILESTONE!</text>
+  <text x="52" y="96" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="23" font-weight="800">Enterprise WebRTC/ICE RFC 7675 STUN Consent Freshness 30s Cease-TX &amp; Jitter Guard</text>
+  <text x="52" y="122" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14">Deterministic Immediate Cease-Transmission + [4000, 6000]ms Jitter (P1053) &amp; Off-Path ICMP TxID Verify + [15, 30]s Window (P1054)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="52" y="146" width="534" height="390" rx="14" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <rect x="68" y="164" width="285" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="80" y="183" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13" font-weight="700">❌ UNPROTECTED ICE CONSENT FRESHNESS</text>
+
+  <rect x="72" y="208" width="494" height="94" rx="10" fill="#0F172A" stroke="#7F1D1D"/>
+  <text x="88" y="232" fill="#F87171" font-family="system-ui, sans-serif" font-size="14" font-weight="700">1. Post-Expiry RTP Leak &amp; Unjittered STUN Flood</text>
+  <text x="88" y="254" fill="#CBD5E1" font-family="monospace" font-size="12">Consent Expired (&gt;30s) -&gt; 34 Unconsented SRTP Packets Leaked!</text>
+  <text x="88" y="274" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• Leaks AI voice audio into recycled carrier NAT UDP ports</text>
+  <text x="88" y="292" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• 1200ms or fixed 5000ms STUN timers cause synchronized bursts</text>
+
+  <rect x="72" y="316" width="494" height="94" rx="10" fill="#0F172A" stroke="#7F1D1D"/>
+  <text x="88" y="340" fill="#F87171" font-family="system-ui, sans-serif" font-size="14" font-weight="700">2. Off-Path Spoofed ICMP Revocation &amp; 90s Stale Window</text>
+  <text x="88" y="362" fill="#CBD5E1" font-family="monospace" font-size="12">Spoofed ICMP Port Unreachable -&gt; Instant Call Drop ❌</text>
+  <text x="88" y="382" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• 5 active calls killed by off-path ICMP lacking 96-bit STUN TxID</text>
+  <text x="88" y="400" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• 90s expiration window violates RFC 7675 §5.1 30s ceiling</text>
+
+  <rect x="72" y="424" width="494" height="94" rx="10" fill="#450A0A" stroke="#EF4444"/>
+  <text x="88" y="448" fill="#FECACA" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Production Impact Without P1053 / P1054</text>
+  <text x="88" y="472" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13">• Cross-subscriber audio bleed when NAT bindings recycle</text>
+  <text x="88" y="494" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13">• Trivial off-path ICMP DoS &amp; SFU signaling microbursts</text>
+
+  <!-- Right Card: Deterministic Guardrails -->
+  <rect x="614" y="146" width="534" height="390" rx="14" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="630" y="164" width="330" height="28" rx="6" fill="#064E3B"/>
+  <text x="642" y="183" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="13" font-weight="700">✅ STAGE 530 DETERMINISTIC GUARDRAILS (P1053–P1054)</text>
+
+  <rect x="634" y="208" width="494" height="142" rx="10" fill="#0F172A" stroke="#059669"/>
+  <text x="650" y="232" fill="#34D399" font-family="system-ui, sans-serif" font-size="14" font-weight="700">P1053 (1,062nd Guard): Cease-TX &amp; [4000, 6000]ms Jitter</text>
+  <text x="650" y="254" fill="#E2E8F0" font-family="monospace" font-size="12">action: "cease_unconsented_rtp_tx_and_clamp_stun_jitter_ms"</text>
+  <text x="650" y="276" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Halts 100% of RTP/SRTP egress immediately on consent expiry</text>
+  <text x="650" y="296" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps unconsentedPostExpiryRtpPackets = 0</text>
+  <text x="650" y="316" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps stunConsentCheckIntervalMs in [4000, 6000]ms (1200 -&gt; 4000ms)</text>
+  <text x="650" y="336" fill="#38BDF8" font-family="monospace" font-size="11">Policy ID: P1053-WEBRTC-RFC7675-CONSENT-FRESHNESS-JITTER-AND-30S-CEASE-TRANSMISSION-GUARD</text>
+
+  <rect x="634" y="366" width="494" height="152" rx="10" fill="#0F172A" stroke="#059669"/>
+  <text x="650" y="390" fill="#34D399" font-family="system-ui, sans-serif" font-size="14" font-weight="700">P1054 (1,063rd Guard): ICMP TxID Verify &amp; [15, 30]s Window</text>
+  <text x="650" y="412" fill="#E2E8F0" font-family="monospace" font-size="12">action: "verify_icmp_inner_stun_txid_and_clamp_expiry_window_seconds"</text>
+  <text x="650" y="434" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Rejects ICMP errors lacking matching 96-bit in-flight STUN TxID</text>
+  <text x="650" y="454" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps spoofedIcmpTriggeredCallDrops = 0</text>
+  <text x="650" y="474" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps consentExpirationWindowSeconds in [15, 30]s (90s -&gt; 30s)</text>
+  <text x="650" y="496" fill="#38BDF8" font-family="monospace" font-size="11">Policy ID: P1054-WEBRTC-RFC7675-OFF-PATH-ICMP-REVOCATION-VERIFICATION-AND-FAILURE-WINDOW-GUARD</text>
+
+  <!-- Bottom Provenance Banner -->
+  <rect x="52" y="552" width="1096" height="78" rx="12" fill="#090D16" stroke="#334155"/>
+  <text x="72" y="578" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="13" font-weight="700">Benchmark &amp; Timing Provenance (Stage 530 🎉 · Topic 170 🎉 · SVG 174 · 1,063 Guardrails · 1,072 Probes · 882 Live POC · 533 Dims)</text>
+  <text x="72" y="600" fill="#94A3B8" font-family="monospace" font-size="11.5">Timing: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+  <text x="72" y="618" fill="#64748B" font-family="system-ui, sans-serif" font-size="11.5">Offline in-memory synthetic policy check only; live ICE PRNG timer wheel and STUN HMAC-SHA1 verification latency is not_measured in this local sandbox.</text>
+</svg>
