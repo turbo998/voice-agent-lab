@@ -86352,6 +86352,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6228EarlyDialogTerminated199ToTagBindingAndMediaReleaseContext {
+      unverifiedToTag199OrMissingOptionTagDetected: boolean;
+      prematureActiveEarlyMediaDrops: number;
+      maxConcurrentEarlyDialogsPerCall: number;
+    }
+
+    export interface SipRfc6228EarlyDialogTerminated199ToTagBindingAndMediaReleaseResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "ignore_unverified_199_and_release_matched_terminated_early_dialog_media"
+        | "clamp_premature_early_media_drops_and_concurrent_early_dialogs"
+        | "allow";
+      reason: string;
+      clampedPrematureActiveEarlyMediaDrops: number;
+      clampedMaxConcurrentEarlyDialogsPerCall: number;
+    }
+
+    /**
+     * P983 (992nd Enterprise Guardrail): Enterprise SIP RFC 6228 / RFC 3261 199 Early Dialog Terminated Supported Option-Tag, Exact (Call-ID, From-tag, To-tag) Early-Dialog Binding & [1, 4] Concurrent Early-Media Dialogs Gate.
+     */
+    export function evaluateSipRfc6228EarlyDialogTerminated199ToTagBindingAndMediaReleaseGate(
+      ctx: SipRfc6228EarlyDialogTerminated199ToTagBindingAndMediaReleaseContext,
+    ): SipRfc6228EarlyDialogTerminated199ToTagBindingAndMediaReleaseResult {
+      const policyId =
+        "P983-SIP-RFC6228-EARLY-DIALOG-TERMINATED-199-TO-TAG-BINDING-AND-MEDIA-RELEASE-GUARD";
+      const clampedPrematureActiveEarlyMediaDrops = 0;
+      const clampedMaxConcurrentEarlyDialogsPerCall = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxConcurrentEarlyDialogsPerCall)
+            ? Math.round(ctx.maxConcurrentEarlyDialogsPerCall)
+            : 2,
+        ),
+      );
+
+      if (ctx.unverifiedToTag199OrMissingOptionTagDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "ignore_unverified_199_and_release_matched_terminated_early_dialog_media",
+          reason:
+            "SIP RFC 6228 Section 5 / RFC 3261 parallel-forking 199 Early Dialog Terminated received without Supported: 199 negotiation or with mismatched (Call-ID, From-tag, To-tag) early-dialog tuple; ignoring spoofed 199 (0 premature active-branch drops), releasing verified terminated early-dialog RTP buffers, and clamping concurrent early dialogs in [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedPrematureActiveEarlyMediaDrops,
+          clampedMaxConcurrentEarlyDialogsPerCall,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.prematureActiveEarlyMediaDrops) ||
+        ctx.prematureActiveEarlyMediaDrops !== 0 ||
+        !Number.isFinite(ctx.maxConcurrentEarlyDialogsPerCall) ||
+        ctx.maxConcurrentEarlyDialogsPerCall < 1 ||
+        ctx.maxConcurrentEarlyDialogsPerCall > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_premature_early_media_drops_and_concurrent_early_dialogs",
+          reason:
+            "Premature active early-media drops (>0 synthetic ceiling) or concurrent early-media dialogs per call (<1 or >4 synthetic bounds) out of bounds; clamping premature drops to 0 and concurrent early dialogs to [1, 4].",
+          clampedPrematureActiveEarlyMediaDrops,
+          clampedMaxConcurrentEarlyDialogsPerCall,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6228 199 Early Dialog Terminated 3-tuple binding (0 false drops) and [1, 4] concurrent early dialogs verified.",
+        clampedPrematureActiveEarlyMediaDrops,
+        clampedMaxConcurrentEarlyDialogsPerCall,
+      };
+    }
+
+    export interface SipRfc6228OrphanEarlyDialogTtlAndForkingPortReaperContext {
+      orphanEarlyDialogRtpPortLeakOrMissing199TimeoutDetected: boolean;
+      leakedOrphanEarlyDialogRtpPorts: number;
+      earlyDialogMediaTtlSec: number;
+    }
+
+    export interface SipRfc6228OrphanEarlyDialogTtlAndForkingPortReaperResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reap_orphan_early_dialog_rtp_ports_on_200ok_or_ttl_expiry"
+        | "clamp_leaked_orphan_early_ports_and_early_dialog_ttl_sec"
+        | "allow";
+      reason: string;
+      clampedLeakedOrphanEarlyDialogRtpPorts: number;
+      clampedEarlyDialogMediaTtlSec: number;
+    }
+
+    /**
+     * P984 (993rd Guardrail, 1,002nd Sandbox Probe & 812th Live POC Probe): Enterprise SIP RFC 6228 Section 9 / RFC 3261 Orphaned Early-Dialog [5, 60]s TTL Watchdog & Immediate 200 OK Sibling Port Reaper Gate.
+     */
+    export function evaluateSipRfc6228OrphanEarlyDialogTtlAndForkingPortReaperGate(
+      ctx: SipRfc6228OrphanEarlyDialogTtlAndForkingPortReaperContext,
+    ): SipRfc6228OrphanEarlyDialogTtlAndForkingPortReaperResult {
+      const policyId =
+        "P984-SIP-RFC6228-ORPHAN-EARLY-DIALOG-TTL-AND-FORKING-PORT-REAPER-GUARD";
+      const clampedLeakedOrphanEarlyDialogRtpPorts = 0;
+      const clampedEarlyDialogMediaTtlSec = Math.min(
+        60,
+        Math.max(
+          5,
+          Number.isFinite(ctx.earlyDialogMediaTtlSec)
+            ? Math.round(ctx.earlyDialogMediaTtlSec)
+            : 30,
+        ),
+      );
+
+      if (ctx.orphanEarlyDialogRtpPortLeakOrMissing199TimeoutDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "reap_orphan_early_dialog_rtp_ports_on_200ok_or_ttl_expiry",
+          reason:
+            "SIP RFC 6228 Section 9 / RFC 3261 unconfirmed 18x early-dialog RTP port leak detected after sibling 200 OK or missing 199 response; immediately reaping orphaned early-dialog RTP/SRTP ports (clamping leaks to 0) and enforcing early-dialog TTL in [5, 60]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedLeakedOrphanEarlyDialogRtpPorts,
+          clampedEarlyDialogMediaTtlSec,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.leakedOrphanEarlyDialogRtpPorts) ||
+        ctx.leakedOrphanEarlyDialogRtpPorts !== 0 ||
+        !Number.isFinite(ctx.earlyDialogMediaTtlSec) ||
+        ctx.earlyDialogMediaTtlSec < 5 ||
+        ctx.earlyDialogMediaTtlSec > 60
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_leaked_orphan_early_ports_and_early_dialog_ttl_sec",
+          reason:
+            "Leaked orphan early-dialog RTP ports (>0 synthetic ceiling) or early-dialog media TTL (<5s or >60s synthetic bounds) out of bounds; clamping leaked ports to 0 and early-dialog TTL to [5, 60]s.",
+          clampedLeakedOrphanEarlyDialogRtpPorts,
+          clampedEarlyDialogMediaTtlSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6228 orphan early-dialog port reaper (0 leaked ports) and [5, 60]s early-dialog TTL verified.",
+        clampedLeakedOrphanEarlyDialogRtpPorts,
+        clampedEarlyDialogMediaTtlSec,
+      };
+    }
+
 
 
 

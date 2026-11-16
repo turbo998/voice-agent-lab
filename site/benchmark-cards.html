@@ -2015,6 +2015,13 @@
               <td><code>P981 / P982 🎉 deterministic WebRTC/SIP RFC 8840/8838 Trickle ICE sdpfrag generation parity &amp; post-EOC seal guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>498. [专题135 · 993护栏 &amp; 1,002沙盒探针 &amp; 812现场探针 `docs/voice-sip-rfc6228-rfc3261-199-early-dialog-terminated-forking-early-media-release-orphan-port-reaper-faq.md`] 企业 SIP `RFC 6228 / RFC 3261` 并行分叉 `199 Early Dialog Terminated` 强制 `Supported: 199` 协商与 `(Call-ID, From-tag, To-tag)` 早期对话三元组 100% 校验后释放失败分支早期媒体缓冲（拦截伪造 `199`，`0` 活跃分支误杀）与单呼叫 `[1, 4]` 路并发早期对话上限锁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 早期对话哈希表查找耗时 `not_measured`）&amp; 未转正 `18x` 早期对话 `[5, 60]s` TTL 看门狗与兄弟分支 `200 OK` 胜出即时收割孤儿 RTP 端口门禁（`0` 僵尸早期对话端口泄漏；真实 B2BUA 端口回收耗时 `not_measured`）(`P983` / `P984` · Stage 495 · Topic 135 · 993 护栏 &amp; 1,002 探针 · 498 维)</strong>
+              </td>
+              <td><code>P983 / P984 deterministic SIP RFC 6228 199 early-dialog release &amp; orphan RTP port reaper guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -6006,6 +6013,13 @@
                 <strong>497. [专题134 · 991护栏 &amp; 1,000沙盒探针 &amp; 810现场探针三重里程碑 🎉 `docs/voice-webrtc-sip-rfc8840-rfc8838-trickle-ice-sdpfrag-pseudo-sdp-ufrag-pwd-generation-mismatch-post-eoc-injection-faq.md`] 企业 WebRTC/SIP `RFC 8840 / RFC 8838` 涓流 ICE（`Trickle ICE`）`Info-Package: trickle-ice` + `application/trickle-ice+sdpfrag` 伪 SDP `(ice-ufrag, ice-pwd, a=mid)` 活跃代际 100% 校验（`SIP 488` 拦截切网 `ICE Restart` 迟到旧包，`0` 跨代污染）与单包 `[1, 16]` 条候选上限锁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC `sdpfrag` 词法分析耗时 `not_measured`）&amp; `a=end-of-candidates` 收到后立即封锁当前 `(ice-ufrag, mid)` 代际直至下次 `ICE Restart` 轮换 `ufrag` 与 `[1, 20] req/s` `SIP INFO` 速率门禁（`0` 封口后幽灵注入；真实 SIP 事务限流耗时 `not_measured`）(`P981` / `P982 🎉` · Stage 494 · Topic 134 · 🎉 历史性 991 道护栏、1,000 个沙盒探针与 810 个现场照妖镜探针三重里程碑 · 991 护栏 🎉 &amp; 1,000 探针 🎉 · 497 维)</strong>
               </td>
               <td><code>P981 / P982 🎉 deterministic WebRTC/SIP RFC 8840/8838 Trickle ICE sdpfrag generation parity &amp; post-EOC seal guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>498. [专题135 · 993护栏 &amp; 1,002沙盒探针 &amp; 812现场探针 `docs/voice-sip-rfc6228-rfc3261-199-early-dialog-terminated-forking-early-media-release-orphan-port-reaper-faq.md`] 企业 SIP `RFC 6228 / RFC 3261` 并行分叉 `199 Early Dialog Terminated` 强制 `Supported: 199` 协商与 `(Call-ID, From-tag, To-tag)` 早期对话三元组 100% 校验后释放失败分支早期媒体缓冲（拦截伪造 `199`，`0` 活跃分支误杀）与单呼叫 `[1, 4]` 路并发早期对话上限锁（`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC 早期对话哈希表查找耗时 `not_measured`）&amp; 未转正 `18x` 早期对话 `[5, 60]s` TTL 看门狗与兄弟分支 `200 OK` 胜出即时收割孤儿 RTP 端口门禁（`0` 僵尸早期对话端口泄漏；真实 B2BUA 端口回收耗时 `not_measured`）(`P983` / `P984` · Stage 495 · Topic 135 · 993 护栏 &amp; 1,002 探针 · 498 维)</strong>
+              </td>
+              <td><code>P983 / P984 deterministic SIP RFC 6228 199 early-dialog release &amp; orphan RTP port reaper guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

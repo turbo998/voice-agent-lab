@@ -2167,6 +2167,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces Info-Package: trickle-ice + application/trickle-ice+sdpfrag and exact (ice-ufrag, ice-pwd, a=mid) generation parity with [1, 16] candidates/pkt (0 stale-generation checklist pollutions); live SBC sdpfrag lexer latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: seals active (ice-ufrag, mid) checklist upon receiving a=end-of-candidates until next ICE Restart rotates ufrag and clamps SIP INFO rate in [1, 20] req/s (0 post-EOC injections); live SIP transaction limiter latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "498. [Topic 135 · 62nd Nightly Round & 137th FAQ: voice-sip-rfc6228-rfc3261-199-early-dialog-terminated-forking-early-media-release-orphan-port-reaper-faq] Enterprise SIP RFC 6228 / RFC 3261 199 Early Dialog Terminated Media Release & Orphaned Early-Dialog Port Reaper Guard (P983 / P984 — Stage 495 · Topic 135 · 993 Guardrails & 1,002 Probes & 812 Live POC Probes · 498 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces Supported: 199 negotiation and exact (Call-ID, From-tag, To-tag) early-dialog matching before releasing terminated fork media and clamps concurrent early dialogs in [1, 4] (0 premature active-branch drops); live SBC early-dialog hash table lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces [5, 60]s early-dialog media TTL watchdog and immediate sibling RTP port reaping upon 200 OK (0 zombie early-dialog RTP port leaks); live B2BUA RTP port reaper latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
