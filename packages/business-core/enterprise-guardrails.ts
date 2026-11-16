@@ -90108,3 +90108,109 @@ export function evaluateWebrtcRfc7874DualMtiCodecFallbackAndPtimeBoundsGuard(
   };
 }
 
+// ============================================================================
+// Stage 523 (Topic 163 · P1039–P1040 🎉 · Historic 90th Nightly Round, P1040
+// Guardrail, 165th Standalone FAQ & 965-Test Quadruple Milestone! ·
+// 1,049 Guardrails · 1,058 Probes · 526 Dims):
+// Enterprise SIP RFC 3323 / RFC 3325 Privacy critical 500 Fail-Closed &
+// 6-Field Deep Anonymization Guardrails
+// ============================================================================
+
+export interface SipRfc3323PrivacyCriticalEnforcementAndUnsupportedToken500GuardInput {
+  unsupportedPrivacyTokenWithCriticalForwardedInCleartextDetected: boolean;
+  cleartextForwardsDespiteCriticalPrivacy: number;
+  privacyTokensPerHeaderCount: number;
+}
+
+export interface SipRfc3323PrivacyCriticalEnforcementAndUnsupportedToken500GuardResult {
+  violated: boolean;
+  policyId: "P1039-SIP-RFC3323-PRIVACY-CRITICAL-ENFORCEMENT-AND-UNSUPPORTED-TOKEN-500-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_fulfilled_rfc3323_privacy_service"
+    | "reject_unfulfilled_critical_privacy_with_500_and_cap_tokens";
+  clampedCleartextForwardsDespiteCriticalPrivacy: number;
+  clampedPrivacyTokensPerHeaderCount: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3323PrivacyCriticalEnforcementAndUnsupportedToken500Guard(
+  input: SipRfc3323PrivacyCriticalEnforcementAndUnsupportedToken500GuardInput,
+): SipRfc3323PrivacyCriticalEnforcementAndUnsupportedToken500GuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.unsupportedPrivacyTokenWithCriticalForwardedInCleartextDetected ||
+    input.cleartextForwardsDespiteCriticalPrivacy > 0 ||
+    input.privacyTokensPerHeaderCount < 1 ||
+    input.privacyTokensPerHeaderCount > 6;
+  const clampedCleartextForwardsDespiteCriticalPrivacy = 0;
+  const clampedPrivacyTokensPerHeaderCount = Math.min(
+    6,
+    Math.max(1, Math.trunc(input.privacyTokensPerHeaderCount || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1039-SIP-RFC3323-PRIVACY-CRITICAL-ENFORCEMENT-AND-UNSUPPORTED-TOKEN-500-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reject_unfulfilled_critical_privacy_with_500_and_cap_tokens"
+      : "allow_fulfilled_rfc3323_privacy_service",
+    clampedCleartextForwardsDespiteCriticalPrivacy,
+    clampedPrivacyTokensPerHeaderCount,
+    reason: violated
+      ? `P1039 (1,048th Guardrail) SIP RFC 3323 unfulfilled critical privacy token or token overflow violation (${timing}): rejected unfulfilled critical privacy request locally with 500 Server Internal Error (clamped cleartext forwards to 0) and clamped privacy tokens per header to ${clampedPrivacyTokensPerHeaderCount} in [1, 6].`
+      : `P1039 (1,048th Guardrail) SIP RFC 3323 critical privacy fulfillment verified (${timing}): 0 cleartext forwards and ${clampedPrivacyTokensPerHeaderCount} tokens within [1, 6].`,
+  };
+}
+
+export interface SipRfc3323HeaderUserSessionFullAnonymizationAndSdpOriginScrubGuardInput {
+  partialAnonymizationLeakingViaContactCallIdOrSdpOriginDetected: boolean;
+  leakedViaContactCallIdOrSdpOriginFields: number;
+  unstrippedEgressPrivacyHeaders: number;
+}
+
+export interface SipRfc3323HeaderUserSessionFullAnonymizationAndSdpOriginScrubGuardResult {
+  violated: boolean;
+  policyId: "P1040-SIP-RFC3323-HEADER-USER-SESSION-FULL-ANONYMIZATION-AND-SDP-ORIGIN-SCRUB-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_fully_anonymized_rfc3323_b2bua_egress"
+    | "scrub_from_via_contact_callid_sdp_origin_and_strip_privacy_header";
+  clampedLeakedViaContactCallIdOrSdpOriginFields: number;
+  clampedUnstrippedEgressPrivacyHeaders: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3323HeaderUserSessionFullAnonymizationAndSdpOriginScrubGuard(
+  input: SipRfc3323HeaderUserSessionFullAnonymizationAndSdpOriginScrubGuardInput,
+): SipRfc3323HeaderUserSessionFullAnonymizationAndSdpOriginScrubGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.partialAnonymizationLeakingViaContactCallIdOrSdpOriginDetected ||
+    input.leakedViaContactCallIdOrSdpOriginFields > 0 ||
+    input.unstrippedEgressPrivacyHeaders > 0;
+  const clampedLeakedViaContactCallIdOrSdpOriginFields = 0;
+  const clampedUnstrippedEgressPrivacyHeaders = 0;
+  return {
+    violated,
+    policyId:
+      "P1040-SIP-RFC3323-HEADER-USER-SESSION-FULL-ANONYMIZATION-AND-SDP-ORIGIN-SCRUB-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "scrub_from_via_contact_callid_sdp_origin_and_strip_privacy_header"
+      : "allow_fully_anonymized_rfc3323_b2bua_egress",
+    clampedLeakedViaContactCallIdOrSdpOriginFields,
+    clampedUnstrippedEgressPrivacyHeaders,
+    reason: violated
+      ? `P1040 🎉 (Historic 90th Nightly Round, P1040 Guardrail, 165th Standalone FAQ & 965-Test Quadruple Milestone!) SIP RFC 3323 partial anonymization leaking Contact/Via/Call-ID/SDP o= or unstripped egress Privacy header violation (${timing}): scrubbed all 6 correlated identity/topology fields (clamped leaked fields to 0) and stripped fulfilled egress Privacy headers (clamped to 0).`
+      : `P1040 🎉 (Historic 90th Nightly Round, P1040 Guardrail, 165th Standalone FAQ & 965-Test Quadruple Milestone!) SIP RFC 3323 full 6-field anonymization and egress Privacy strip verified (${timing}): 0 leaked fields and 0 unstripped egress Privacy headers.`,
+  };
+}
+

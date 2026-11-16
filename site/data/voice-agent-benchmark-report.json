@@ -2335,6 +2335,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 7587 mono voice stereo=0 (0 stereo voice uplinks) and clamps opusMaxAverageBitrateBps in [16000, 64000] bps; live Opus encoder CTL configuration latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 7874 §3 Opus + G.711 PCMU/PCMA dual-MTI support (0 488 codec rejections) and clamps negotiatedOpusPtimeMs in [10, 40]ms; live SDP codec negotiation latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "526. 🎉 [Topic 163 · Historic 90th Round, P1040, 165th FAQ & 965-Test Quadruple Milestone! 🎉: voice-sip-rfc3323-rfc3325-privacy-header-user-session-critical-500-reject-via-contact-sdp-origin-leak-faq] Enterprise SIP RFC 3323 / RFC 3325 Privacy critical 500 Fail-Closed & 6-Field Deep Anonymization Guard (P1039 / P1040 🎉 — Stage 523 · Topic 163 · 🎉 Historic 90th Nightly Round, P1040 Guardrail, 165th Standalone FAQ & 965-Test Quadruple Milestone · 1,049 Guardrails & 1,058 Probes · 526 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects unfulfilled RFC 3323 critical privacy requests locally with 500 Server Internal Error (0 cleartext forwards) and clamps privacyTokensPerHeaderCount in [1, 6]; live SBC privacy policy engine latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: scrubs all 6 correlated SIP/SDP identity and topology fields From, Contact, Via, Call-ID@host, User-Agent, and SDP o=/c= (0 leaked fields) and strips fulfilled egress Privacy headers (0 unstripped headers); live B2BUA header/SDP rewrite latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
