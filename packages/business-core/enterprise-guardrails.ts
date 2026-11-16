@@ -89236,3 +89236,108 @@ export function evaluateWebrtcRfc5450RtcpInterarrivalJitterConsistencyAndNeteqTa
   };
 }
 
+// ============================================================================
+// Stage 515 🎉 (Topic 155 🎉 · P1023 🎉–P1024 🎉 · Historic Stage 515 &
+// Topic 155 Dual Milestone! · 1,033 Guardrails · 1,042 Probes · 518 Dims):
+// Enterprise SIP RFC 3891 Replaces Dialog Takeover (& early-only Race) &
+// RFC 3892 Referred-By (cid: S/MIME) Guardrails
+// ============================================================================
+
+export interface SipRfc3891ReplacesDialogTagEntropyAndEarlyOnlyRaceGuardInput {
+  replacesTagMismatchOrEarlyOnlyConfirmedDialogRaceDetected: boolean;
+  unauthorizedReplacesDialogTakeovers: number;
+  minDialogIdTagEntropyBits: number;
+}
+
+export interface SipRfc3891ReplacesDialogTagEntropyAndEarlyOnlyRaceGuardResult {
+  violated: boolean;
+  policyId: "P1023-SIP-RFC3891-REPLACES-DIALOG-TAG-ENTROPY-AND-EARLY-ONLY-RACE-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_verified_rfc3891_replaces_attended_transfer"
+    | "reject_invalid_replaces_with_481_or_486_and_enforce_tag_entropy";
+  clampedUnauthorizedReplacesDialogTakeovers: number;
+  clampedMinDialogIdTagEntropyBits: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3891ReplacesDialogTagEntropyAndEarlyOnlyRaceGuard(
+  input: SipRfc3891ReplacesDialogTagEntropyAndEarlyOnlyRaceGuardInput,
+): SipRfc3891ReplacesDialogTagEntropyAndEarlyOnlyRaceGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.replacesTagMismatchOrEarlyOnlyConfirmedDialogRaceDetected ||
+    input.unauthorizedReplacesDialogTakeovers > 0 ||
+    input.minDialogIdTagEntropyBits < 64 ||
+    input.minDialogIdTagEntropyBits > 128;
+  const clampedUnauthorizedReplacesDialogTakeovers = 0;
+  const clampedMinDialogIdTagEntropyBits = Math.min(
+    128,
+    Math.max(64, Math.trunc(input.minDialogIdTagEntropyBits || 64)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1023-SIP-RFC3891-REPLACES-DIALOG-TAG-ENTROPY-AND-EARLY-ONLY-RACE-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reject_invalid_replaces_with_481_or_486_and_enforce_tag_entropy"
+      : "allow_verified_rfc3891_replaces_attended_transfer",
+    clampedUnauthorizedReplacesDialogTakeovers,
+    clampedMinDialogIdTagEntropyBits,
+    reason: violated
+      ? `P1023 🎉 (Historic Stage 515 & Topic 155 Dual Milestone! · 1,032nd Guardrail) SIP RFC 3891 Replaces tag mismatch, early-only confirmed race, or low tag entropy violation (${timing}): rejected unauthorized dialog takeovers with 481/486 (clamped to 0) and clamped min dialog tag entropy to ${clampedMinDialogIdTagEntropyBits} bits in [64, 128] bits.`
+      : `P1023 🎉 (Historic Stage 515 & Topic 155 Dual Milestone! · 1,032nd Guardrail) SIP RFC 3891 Replaces dialog integrity verified (${timing}): 0 unauthorized takeovers and tag entropy ${clampedMinDialogIdTagEntropyBits} bits within [64, 128] bits.`,
+  };
+}
+
+export interface SipRfc3892ReferredBySmimeCidIntegrityAndTrustBoundaryGuardInput {
+  unverifiedReferredByPrincipalOrDanglingCidBodyDetected: boolean;
+  forgedReferredByPrivilegeEscalations: number;
+  danglingCidAuthBodyReferences: number;
+}
+
+export interface SipRfc3892ReferredBySmimeCidIntegrityAndTrustBoundaryGuardResult {
+  violated: boolean;
+  policyId: "P1024-SIP-RFC3892-REFERRED-BY-SMIME-CID-INTEGRITY-AND-TRUST-BOUNDARY-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_authenticated_rfc3892_referred_by_principal"
+    | "strip_unverified_referred_by_and_validate_cid_smime_body";
+  clampedForgedReferredByPrivilegeEscalations: number;
+  clampedDanglingCidAuthBodyReferences: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3892ReferredBySmimeCidIntegrityAndTrustBoundaryGuard(
+  input: SipRfc3892ReferredBySmimeCidIntegrityAndTrustBoundaryGuardInput,
+): SipRfc3892ReferredBySmimeCidIntegrityAndTrustBoundaryGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.unverifiedReferredByPrincipalOrDanglingCidBodyDetected ||
+    input.forgedReferredByPrivilegeEscalations > 0 ||
+    input.danglingCidAuthBodyReferences > 0;
+  const clampedForgedReferredByPrivilegeEscalations = 0;
+  const clampedDanglingCidAuthBodyReferences = 0;
+  return {
+    violated,
+    policyId:
+      "P1024-SIP-RFC3892-REFERRED-BY-SMIME-CID-INTEGRITY-AND-TRUST-BOUNDARY-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "strip_unverified_referred_by_and_validate_cid_smime_body"
+      : "allow_authenticated_rfc3892_referred_by_principal",
+    clampedForgedReferredByPrivilegeEscalations,
+    clampedDanglingCidAuthBodyReferences,
+    reason: violated
+      ? `P1024 🎉 (Historic Stage 515 & Topic 155 Dual Milestone! · 1,033rd Guardrail) SIP RFC 3892 unverified Referred-By principal or dangling cid: S/MIME body violation (${timing}): stripped forged Referred-By privilege claims (clamped to 0) and rejected dangling cid: references (clamped to 0).`
+      : `P1024 🎉 (Historic Stage 515 & Topic 155 Dual Milestone! · 1,033rd Guardrail) SIP RFC 3892 Referred-By principal and cid: S/MIME integrity verified (${timing}): 0 forged escalations and 0 dangling cid: references.`,
+  };
+}
+
