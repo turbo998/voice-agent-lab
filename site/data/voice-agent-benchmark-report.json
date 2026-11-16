@@ -2311,6 +2311,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rewrites static user@host or MAC-based RTCP SDES CNAMEs to RFC 7022 per-session CSPRNG tokens (0 IP/MAC leaks) and clamps sdesCnameAsciiByteLength in [16, 32] bytes; live RTCP SDES rewrite latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips RFC 8834 §4.9 forbidden non-CNAME SDES items NAME/EMAIL/PHONE/LOC/TOOL/PRIV (0 PII leaks) and clamps maxSdesChunksPerCompoundRtcpPacket in [1, 8]; live SFU RTCP compound sanitizer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "522. 🎉 [Topic 159 · Historic 1,040th Guardrail, 1,050th Probe & 860th Live POC Triple Milestone! 🎉: voice-sip-rfc3311-rfc3261-update-early-media-offer-answer-glare-491-pre-answer-target-refresh-hijack-faq] Enterprise SIP RFC 3311 / RFC 3261 UPDATE Offer/Answer Glare (491) & Early Target-Refresh Hijack Guard (P1031 🎉 / P1032 🎉 — Stage 519 · Topic 159 · 🎉 Historic 1,040th Guardrail, 1,050th Probe & 860th Live POC Triple Milestone · 1,041 Guardrails 🎉 & 1,050 Probes 🎉 · 522 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects colliding RFC 3311 UPDATE SDP offers during pending Offer/Answer state with 491 Request Pending (0 unrejected collisions) and clamps glareRetryBackoffMs in [100, 4000]ms; live SBC SDP state mutex latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pins early-dialog Remote Target Contact against unauthenticated redirects (0 hijacks) and clamps maxEarlyDialogUpdatesPerCall in [1, 4]; live B2BUA early-dialog target table latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

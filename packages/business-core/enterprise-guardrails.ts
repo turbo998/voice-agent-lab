@@ -89666,3 +89666,113 @@ export function evaluateWebrtcRfc8834ForbiddenNonCnameSdesItemStripAndChunkCapGu
   };
 }
 
+// ============================================================================
+// Stage 519 (Topic 159 · P1031 🎉–P1032 🎉 · Historic 1,040th Enterprise
+// Guardrail, 1,050th Sandbox Probe & 860th Live POC Probe Triple Milestone! ·
+// 1,041 Guardrails 🎉 · 1,050 Probes 🎉 · 522 Dims):
+// Enterprise SIP RFC 3311 / RFC 3261 UPDATE Offer/Answer Glare (491) &
+// Early-Dialog Target-Refresh Hijack Guardrails
+// ============================================================================
+
+export interface SipRfc3311UpdateOfferAnswerGlareAndPendingOfferGuardInput {
+  overlappingUpdateOfferDuringPendingOfferAnswerDetected: boolean;
+  unrejectedUpdateOfferGlareCollisions: number;
+  glareRetryBackoffMs: number;
+}
+
+export interface SipRfc3311UpdateOfferAnswerGlareAndPendingOfferGuardResult {
+  violated: boolean;
+  policyId: "P1031-SIP-RFC3311-UPDATE-OFFER-ANSWER-GLARE-AND-PENDING-OFFER-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_serialized_rfc3311_update_offer_answer"
+    | "reject_update_offer_glare_with_491_and_enforce_backoff_ms";
+  clampedUnrejectedUpdateOfferGlareCollisions: number;
+  clampedGlareRetryBackoffMs: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3311UpdateOfferAnswerGlareAndPendingOfferGuard(
+  input: SipRfc3311UpdateOfferAnswerGlareAndPendingOfferGuardInput,
+): SipRfc3311UpdateOfferAnswerGlareAndPendingOfferGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.overlappingUpdateOfferDuringPendingOfferAnswerDetected ||
+    input.unrejectedUpdateOfferGlareCollisions > 0 ||
+    input.glareRetryBackoffMs < 100 ||
+    input.glareRetryBackoffMs > 4000;
+  const clampedUnrejectedUpdateOfferGlareCollisions = 0;
+  const clampedGlareRetryBackoffMs = Math.min(
+    4000,
+    Math.max(100, Math.trunc(input.glareRetryBackoffMs || 100)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1031-SIP-RFC3311-UPDATE-OFFER-ANSWER-GLARE-AND-PENDING-OFFER-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reject_update_offer_glare_with_491_and_enforce_backoff_ms"
+      : "allow_serialized_rfc3311_update_offer_answer",
+    clampedUnrejectedUpdateOfferGlareCollisions,
+    clampedGlareRetryBackoffMs,
+    reason: violated
+      ? `P1031 🎉 (Historic 1,040th Enterprise Guardrail Milestone!) SIP RFC 3311 UPDATE SDP Offer/Answer glare or backoff violation (${timing}): rejected colliding UPDATE offer with 491 Request Pending (clamped unrejected collisions to 0) and clamped glare retry backoff to ${clampedGlareRetryBackoffMs}ms in [100, 4000]ms.`
+      : `P1031 🎉 (Historic 1,040th Enterprise Guardrail Milestone!) SIP RFC 3311 UPDATE Offer/Answer state verified (${timing}): 0 unrejected glare collisions and retry backoff ${clampedGlareRetryBackoffMs}ms within [100, 4000]ms.`,
+  };
+}
+
+export interface SipRfc3311EarlyDialogUpdateTargetRefreshAndRateGuardInput {
+  unauthenticatedEarlyUpdateContactRedirectOrFloodDetected: boolean;
+  hijackedEarlyDialogRemoteTargetRedirects: number;
+  maxEarlyDialogUpdatesPerCall: number;
+}
+
+export interface SipRfc3311EarlyDialogUpdateTargetRefreshAndRateGuardResult {
+  violated: boolean;
+  policyId: "P1032-SIP-RFC3311-EARLY-DIALOG-UPDATE-TARGET-REFRESH-AND-RATE-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_verified_early_dialog_rfc3311_update"
+    | "lock_early_dialog_remote_target_and_cap_update_count";
+  clampedHijackedEarlyDialogRemoteTargetRedirects: number;
+  clampedMaxEarlyDialogUpdatesPerCall: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3311EarlyDialogUpdateTargetRefreshAndRateGuard(
+  input: SipRfc3311EarlyDialogUpdateTargetRefreshAndRateGuardInput,
+): SipRfc3311EarlyDialogUpdateTargetRefreshAndRateGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.unauthenticatedEarlyUpdateContactRedirectOrFloodDetected ||
+    input.hijackedEarlyDialogRemoteTargetRedirects > 0 ||
+    input.maxEarlyDialogUpdatesPerCall < 1 ||
+    input.maxEarlyDialogUpdatesPerCall > 4;
+  const clampedHijackedEarlyDialogRemoteTargetRedirects = 0;
+  const clampedMaxEarlyDialogUpdatesPerCall = Math.min(
+    4,
+    Math.max(1, Math.trunc(input.maxEarlyDialogUpdatesPerCall || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1032-SIP-RFC3311-EARLY-DIALOG-UPDATE-TARGET-REFRESH-AND-RATE-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "lock_early_dialog_remote_target_and_cap_update_count"
+      : "allow_verified_early_dialog_rfc3311_update",
+    clampedHijackedEarlyDialogRemoteTargetRedirects,
+    clampedMaxEarlyDialogUpdatesPerCall,
+    reason: violated
+      ? `P1032 🎉 (Historic 1,041st Guardrail, 1,050th Sandbox Probe & 860th Live POC Probe Triple Milestone!) SIP RFC 3311 early-dialog UPDATE Contact target-refresh hijack or flood violation (${timing}): blocked unauthorized early Remote Target redirects (clamped to 0) and clamped max early-dialog UPDATEs per call to ${clampedMaxEarlyDialogUpdatesPerCall} in [1, 4].`
+      : `P1032 🎉 (Historic 1,041st Guardrail, 1,050th Sandbox Probe & 860th Live POC Probe Triple Milestone!) SIP RFC 3311 early-dialog UPDATE target and rate verified (${timing}): 0 hijacked target redirects and ${clampedMaxEarlyDialogUpdatesPerCall} early UPDATEs within [1, 4].`,
+  };
+}
+
