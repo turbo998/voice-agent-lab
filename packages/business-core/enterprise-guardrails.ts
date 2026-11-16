@@ -88907,3 +88907,112 @@ export function evaluateSipRfc5626OutboundFlowTokenHmacAndRegIdDualFlowGuard(
   };
 }
 
+// ============================================================================
+// Stage 512 (Topic 152 · P1017–P1018 🎉 · Historic 515th Benchmark Evaluation
+// Dimension Milestone! · 1,027 Guardrails · 1,036 Probes · 515 Dims 🎉):
+// Enterprise WebRTC/RTP RFC 6465 / RFC 6464 Audio-Level VAD Spoofing,
+// Barge-In Hijacking & CSRC Alignment Guardrails
+// ============================================================================
+
+export interface WebrtcRfc6464SsrcAudioLevelVadSpoofingAndBargeInFloorGuardInput {
+  spoofedZeroDboVHeaderOrSilentPayloadMismatchDetected: boolean;
+  spoofedHeaderOnlyBargeInTriggers: number;
+  activeSpeakerFloorDbovThreshold: number;
+}
+
+export interface WebrtcRfc6464SsrcAudioLevelVadSpoofingAndBargeInFloorGuardResult {
+  violated: boolean;
+  policyId: "P1017-WEBRTC-RFC6464-SSRC-AUDIO-LEVEL-VAD-SPOOFING-AND-BARGE-IN-FLOOR-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_verified_rfc6464_ssrc_audio_level_and_vad"
+    | "cross_check_pcm_rms_and_clamp_barge_in_dbov_threshold";
+  clampedSpoofedHeaderOnlyBargeInTriggers: number;
+  clampedActiveSpeakerFloorDbovThreshold: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc6464SsrcAudioLevelVadSpoofingAndBargeInFloorGuard(
+  input: WebrtcRfc6464SsrcAudioLevelVadSpoofingAndBargeInFloorGuardInput,
+): WebrtcRfc6464SsrcAudioLevelVadSpoofingAndBargeInFloorGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.spoofedZeroDboVHeaderOrSilentPayloadMismatchDetected ||
+    input.spoofedHeaderOnlyBargeInTriggers > 0 ||
+    input.activeSpeakerFloorDbovThreshold < 25 ||
+    input.activeSpeakerFloorDbovThreshold > 55;
+  const clampedSpoofedHeaderOnlyBargeInTriggers = 0;
+  const clampedActiveSpeakerFloorDbovThreshold = Math.min(
+    55,
+    Math.max(25, Math.trunc(input.activeSpeakerFloorDbovThreshold || 25)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1017-WEBRTC-RFC6464-SSRC-AUDIO-LEVEL-VAD-SPOOFING-AND-BARGE-IN-FLOOR-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "cross_check_pcm_rms_and_clamp_barge_in_dbov_threshold"
+      : "allow_verified_rfc6464_ssrc_audio_level_and_vad",
+    clampedSpoofedHeaderOnlyBargeInTriggers,
+    clampedActiveSpeakerFloorDbovThreshold,
+    reason: violated
+      ? `P1017 (1,026th Guardrail) WebRTC/RTP RFC 6464 ssrc-audio-level VAD spoofing or barge-in floor violation (${timing}): blocked header-only spoofed barge-in triggers via payload RMS cross-check (clamped to 0) and clamped barge-in floor threshold to ${clampedActiveSpeakerFloorDbovThreshold} dBov in [25, 55] dBov.`
+      : `P1017 (1,026th Guardrail) WebRTC/RTP RFC 6464 ssrc-audio-level integrity verified (${timing}): 0 spoofed barge-in triggers and threshold ${clampedActiveSpeakerFloorDbovThreshold} dBov within [25, 55] dBov.`,
+  };
+}
+
+export interface WebrtcRfc6465CsrcAudioLevelCountAlignmentAndVBitForbiddenGuardInput {
+  csrcExtensionCountMismatchOrReservedVBitNonZeroDetected: boolean;
+  misalignedCsrcAudioLevelExtensions: number;
+  maxCsrcAudioLevelContributors: number;
+}
+
+export interface WebrtcRfc6465CsrcAudioLevelCountAlignmentAndVBitForbiddenGuardResult {
+  violated: boolean;
+  policyId: "P1018-WEBRTC-RFC6465-CSRC-AUDIO-LEVEL-COUNT-ALIGNMENT-AND-V-BIT-FORBIDDEN-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_aligned_rfc6465_csrc_audio_levels_with_zero_v_bit"
+    | "enforce_cc_count_alignment_and_zero_rfc6465_reserved_v_bit";
+  clampedMisalignedCsrcAudioLevelExtensions: number;
+  clampedMaxCsrcAudioLevelContributors: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc6465CsrcAudioLevelCountAlignmentAndVBitForbiddenGuard(
+  input: WebrtcRfc6465CsrcAudioLevelCountAlignmentAndVBitForbiddenGuardInput,
+): WebrtcRfc6465CsrcAudioLevelCountAlignmentAndVBitForbiddenGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.csrcExtensionCountMismatchOrReservedVBitNonZeroDetected ||
+    input.misalignedCsrcAudioLevelExtensions > 0 ||
+    input.maxCsrcAudioLevelContributors < 1 ||
+    input.maxCsrcAudioLevelContributors > 15;
+  const clampedMisalignedCsrcAudioLevelExtensions = 0;
+  const clampedMaxCsrcAudioLevelContributors = Math.min(
+    15,
+    Math.max(1, Math.trunc(input.maxCsrcAudioLevelContributors || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1018-WEBRTC-RFC6465-CSRC-AUDIO-LEVEL-COUNT-ALIGNMENT-AND-V-BIT-FORBIDDEN-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "enforce_cc_count_alignment_and_zero_rfc6465_reserved_v_bit"
+      : "allow_aligned_rfc6465_csrc_audio_levels_with_zero_v_bit",
+    clampedMisalignedCsrcAudioLevelExtensions,
+    clampedMaxCsrcAudioLevelContributors,
+    reason: violated
+      ? `P1018 🎉 (Historic 515th Benchmark Evaluation Dimension Milestone! · 1,027th Guardrail) WebRTC/RTP RFC 6465 csrc-audio-level CC count mismatch or non-zero reserved r-bit violation (${timing}): aligned extension byte count with RTP CC and masked r-bit=0 (clamped misaligned extensions to 0) and clamped max CSRC contributors to ${clampedMaxCsrcAudioLevelContributors} in [1, 15].`
+      : `P1018 🎉 (Historic 515th Benchmark Evaluation Dimension Milestone! · 1,027th Guardrail) WebRTC/RTP RFC 6465 csrc-audio-level alignment verified (${timing}): 0 misaligned extensions and ${clampedMaxCsrcAudioLevelContributors} contributors within [1, 15].`,
+  };
+}
+

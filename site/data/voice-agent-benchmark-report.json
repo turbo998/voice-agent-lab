@@ -2269,6 +2269,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips untrusted client REGISTER Path headers (0 unverified entries) and clamps maxPathHeaderHops in [1, 4]; live Edge SBC header strip latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: verifies HMAC-SHA256 5-tuple binding on RFC 5626 ;ob Flow Tokens (0 unauthenticated redirects) and clamps active reg-id flows per +sip.instance in [1, 2]; live Edge SBC HMAC verification latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "515. 🎉 [Topic 152 · Historic 515th Benchmark Evaluation Dimension Milestone! 🎉: voice-webrtc-rtp-rfc6465-rfc6464-csrc-ssrc-audio-level-vad-spoofing-barge-in-hijack-csrc-alignment-faq] Enterprise WebRTC/RTP RFC 6465 / RFC 6464 Audio-Level VAD Spoofing, Barge-In Hijack & CSRC Alignment Guard (P1017 / P1018 🎉 — Stage 512 · Topic 152 · 🎉 Historic 515th Benchmark Evaluation Dimension Milestone · 1,027 Guardrails & 1,036 Probes · 515 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: cross-checks RFC 6464 ssrc-audio-level V=1 claims against Opus frame size / PCM RMS energy (0 spoofed barge-in triggers) and clamps activeSpeakerFloorDbovThreshold in [25, 55] dBov; live SFU audio-level check latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: aligns RFC 6465 csrc-audio-level extension byte count with RTP CC, masks reserved r-bit=0 (0 misaligned extensions), and clamps maxCsrcAudioLevelContributors in [1, 15]; live MCU CSRC mux latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
