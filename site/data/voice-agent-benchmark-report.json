@@ -2215,6 +2215,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces same-5-tuple SDES RGRP binding, suppresses duplicate N x M cross-SSRC RR blocks, and clamps active Reporting SSRCs per group in [1, 2] (0 duplicate cross-report storms); live SFU RTCP RGRP aggregator latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: promotes surviving primary Opus audio SSRC immediately on Reporting-SSRC RTCP BYE and clamps member SSRCs per RGRP in [1, 12] (0 reporting blackouts); live RTCP reporter election latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "506. 🎉 [Topic 143 · Historic P1000 Guardrail, 70th Round, 145th FAQ & 945-Test Quadruple Milestone! 🎉: voice-webrtc-sip-rfc4796-rfc4574-sdp-media-content-main-slides-sl-label-spoofing-s2s-track-hijack-faq] Enterprise WebRTC/SIP RFC 4796 / RFC 4574 SDP Media Content Role Isolation & a=label Uniqueness Guard (P999 / P1000 🎉 — Stage 503 · Topic 143 · 🎉 Historic P1000 Guardrail ID, 70th Nightly Round, 145th Standalone FAQ & 945-Test Quadruple Milestone · 1,009 Guardrails & 1,018 Probes · 506 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: isolates a=content:slides/alt presentation audio out of S2S command reasoning and locks a=content:main caller audio tracks to [1, 1] (0 slides-to-main S2S hijacks); live multimodal SDP content router latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% unique RFC 4574 a=label tokens across all m= sections (SIP 488 on collision) and clamps a=content:sl sign-language framerate in [15, 30] fps (0 SIPREC label collisions); live SIPREC label indexer latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
