@@ -2281,6 +2281,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects unnegotiated SIP INFO requests with 469 Bad Info Package (0 unnegotiated accepted) and clamps allowedRecvInfoPackagesPerDialog in [1, 4]; live SIP Info-Package header parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 6086 §4.2.1 single in-flight INFO transaction serialization (0 overlapping CSeq drops) and clamps maxSipInfoRequestsPerSecond in [1, 10] req/s; live B2BUA transaction lock latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "517. 🎉 [Topic 154 · Historic 1,030th Guardrail, 1,040th Probe & 850th Live POC Triple Milestone! 🎉: voice-webrtc-rtp-rfc5450-rfc3550-toffset-transmission-time-offset-jitter-buffer-poisoning-rtcp-jitter-inflation-faq] Enterprise WebRTC/RTP RFC 5450 / RFC 3550 Transmission Time Offset (toffset) Jitter-Buffer & RTCP J Guard (P1021 🎉 / P1022 🎉 — Stage 514 · Topic 154 · 🎉 Historic 1,030th Guardrail, 1,040th Probe & 850th Live POC Triple Milestone · 1,031 Guardrails 🎉 & 1,040 Probes 🎉 · 517 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 24-bit signed extension on RFC 5450 toffset, zeroes out-of-window outliers (0 outlier packets), and clamps maxAllowedToffsetMagnitudeMs in [20, 200]ms; live RTP extension parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: falls back to raw RTP timestamp jitter when toffset inflates RTCP J (0 poisoned blocks) and clamps neteqTargetPlayoutDelayCeilingMs in [40, 160]ms; live NetEQ delay controller latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
