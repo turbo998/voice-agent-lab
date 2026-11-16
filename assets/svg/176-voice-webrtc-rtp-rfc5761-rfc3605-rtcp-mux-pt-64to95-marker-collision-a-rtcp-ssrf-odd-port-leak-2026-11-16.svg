@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg176" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent176" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg176)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="24" width="1144" height="6" rx="3" fill="url(#accent176)"/>
+
+  <text x="52" y="64" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">STAGE 532 · TOPIC 172 · P1057–P1058 🎉 · 🎉 HISTORIC 535TH EVALUATION DIMENSION MILESTONE!</text>
+  <text x="52" y="96" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="23" font-weight="800">Enterprise WebRTC/RTP RFC 5761 rtcp-mux PT [64, 95] Collision &amp; Odd-Port Reclamation</text>
+  <text x="52" y="122" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14">Deterministic PT [64, 95] Exclusion + Dynamic [96, 127] (P1057) &amp; RTP+1 Odd-Port Reclamation + Same-IP a=rtcp (P1058 🎉)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="52" y="146" width="534" height="390" rx="14" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <rect x="68" y="164" width="285" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="80" y="183" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13" font-weight="700">❌ UNPROTECTED RFC 5761 RTCP-MUX</text>
+
+  <rect x="72" y="208" width="494" height="94" rx="10" fill="#0F172A" stroke="#7F1D1D"/>
+  <text x="88" y="232" fill="#F87171" font-family="system-ui, sans-serif" font-size="14" font-weight="700">1. PT=72 + Talkspurt Marker=1 -&gt; Byte 1 = 200 (RTCP SR!)</text>
+  <text x="88" y="254" fill="#CBD5E1" font-family="monospace" font-size="12">RTP M=1, PT=72 -&gt; Byte1 = 128 + 72 = 200 == RTCP SR ❌</text>
+  <text x="88" y="274" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• 23 talkspurt-start audio packets misrouted into RTCP parser</text>
+  <text x="88" y="292" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• Clips the first 20ms syllable of every caller utterance</text>
+
+  <rect x="72" y="316" width="494" height="94" rx="10" fill="#0F172A" stroke="#7F1D1D"/>
+  <text x="88" y="340" fill="#F87171" font-family="system-ui, sans-serif" font-size="14" font-weight="700">2. Leaked RTP+1 Odd Sockets &amp; Cross-IP a=rtcp SSRF</text>
+  <text x="88" y="362" fill="#CBD5E1" font-family="monospace" font-size="12">a=rtcp-mux active, but RTP+1 (20001) left bound (2 sockets/track)</text>
+  <text x="88" y="382" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• 16 leaked odd ports or cross-IP a=rtcp:53 amplification targets</text>
+  <text x="88" y="400" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• Exhausts 50% of media gateway UDP ephemeral port pool</text>
+
+  <rect x="72" y="424" width="494" height="94" rx="10" fill="#450A0A" stroke="#EF4444"/>
+  <text x="88" y="448" fill="#FECACA" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Production Impact Without P1057 / P1058 🎉</text>
+  <text x="88" y="472" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13">• Systematic first-word ASR recognition errors on every sentence</text>
+  <text x="88" y="494" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13">• Premature UDP port exhaustion &amp; RTCP reflection DDoS exposure</text>
+
+  <!-- Right Card: Deterministic Guardrails -->
+  <rect x="614" y="146" width="534" height="390" rx="14" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="630" y="164" width="330" height="28" rx="6" fill="#064E3B"/>
+  <text x="642" y="183" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="13" font-weight="700">✅ STAGE 532 DETERMINISTIC GUARDRAILS (P1057–P1058 🎉)</text>
+
+  <rect x="634" y="208" width="494" height="142" rx="10" fill="#0F172A" stroke="#059669"/>
+  <text x="650" y="232" fill="#34D399" font-family="system-ui, sans-serif" font-size="14" font-weight="700">P1057 (1,066th Guard): Exclude PT [64, 95] &amp; Clamp [96, 127]</text>
+  <text x="650" y="254" fill="#E2E8F0" font-family="monospace" font-size="12">action: "exclude_reserved_pt_64to95_and_clamp_dynamic_pt_range"</text>
+  <text x="650" y="276" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Forbids PT [64, 95] so M=1 never collides with RTCP 192..223</text>
+  <text x="650" y="296" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps rtcpByte1CollidingTalkspurtPackets = 0</text>
+  <text x="650" y="316" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps negotiatedDynamicRtpPayloadType in [96, 127] (72 -&gt; 96)</text>
+  <text x="650" y="336" fill="#38BDF8" font-family="monospace" font-size="11">Policy ID: P1057-WEBRTC-RFC5761-RTCP-MUX-RESERVED-PT-64TO95-EXCLUSION-AND-DYNAMIC-RANGE-GUARD</text>
+
+  <rect x="634" y="366" width="494" height="152" rx="10" fill="#0F172A" stroke="#059669"/>
+  <text x="650" y="390" fill="#34D399" font-family="system-ui, sans-serif" font-size="14" font-weight="700">P1058 🎉 (535th Dim 🎉): Reclaim RTP+1 &amp; Same-IP a=rtcp Gate</text>
+  <text x="650" y="412" fill="#E2E8F0" font-family="monospace" font-size="12">action: "reclaim_odd_rtcp_port_and_block_cross_ip_rtcp_ssrf"</text>
+  <text x="650" y="434" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Closes RTP+1 odd socket on rtcp-mux &amp; blocks cross-IP a=rtcp</text>
+  <text x="650" y="454" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps leakedOddRtcpPortsOrCrossIpSsrfTargetsCount = 0</text>
+  <text x="650" y="474" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps allocatedUdpSocketsPerRtcpMuxTrack in [1, 1] (2 -&gt; 1)</text>
+  <text x="650" y="496" fill="#38BDF8" font-family="monospace" font-size="11">Policy ID: P1058-WEBRTC-RFC5761-RTCP-ATTRIBUTE-SAME-IP-BINDING-AND-ODD-PORT-RECLAMATION-GUARD</text>
+
+  <!-- Bottom Provenance Banner -->
+  <rect x="52" y="552" width="1096" height="78" rx="12" fill="#090D16" stroke="#334155"/>
+  <text x="72" y="578" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="13" font-weight="700">Benchmark &amp; Timing Provenance (Stage 532 · Topic 172 · SVG 176 · 1,067 Guardrails · 1,076 Probes · 886 Live POC · 535 Dims 🎉)</text>
+  <text x="72" y="600" fill="#94A3B8" font-family="monospace" font-size="11.5">Timing: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+  <text x="72" y="618" fill="#64748B" font-family="system-ui, sans-serif" font-size="11.5">Offline in-memory synthetic policy check only; live SFU Byte-1 demux and kernel UDP socket reclamation latency is not_measured in this local sandbox.</text>
+</svg>

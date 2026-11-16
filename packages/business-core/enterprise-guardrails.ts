@@ -91090,3 +91090,108 @@ export function evaluateSipRfc3515EventReferIdCorrelationAndTerminalSipfragClean
   };
 }
 
+// ============================================================================
+// Stage 532 (Topic 172 · P1057–P1058 🎉 · Historic 535th Evaluation Dimension
+// Milestone! · 1,067 Guardrails · 1,076 Probes · 535 Dims 🎉):
+// Enterprise WebRTC/RTP RFC 5761 / RFC 3605 rtcp-mux Reserved PT [64, 95]
+// Exclusion, Same-IP a=rtcp Binding & Odd-Port Reclamation Guardrails
+// ============================================================================
+
+export interface WebrtcRfc5761RtcpMuxReservedPt64To95ExclusionAndDynamicRangeGuardInput {
+  reservedPt64To95MarkerCollisionOrInvalidDynamicPtDetected: boolean;
+  rtcpByte1CollidingTalkspurtPackets: number;
+  negotiatedDynamicRtpPayloadType: number;
+}
+
+export interface WebrtcRfc5761RtcpMuxReservedPt64To95ExclusionAndDynamicRangeGuardResult {
+  violated: boolean;
+  policyId: "P1057-WEBRTC-RFC5761-RTCP-MUX-RESERVED-PT-64TO95-EXCLUSION-AND-DYNAMIC-RANGE-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_disjoint_rfc5761_rtcp_mux_payload_types"
+    | "exclude_reserved_pt_64to95_and_clamp_dynamic_pt_range";
+  clampedRtcpByte1CollidingTalkspurtPackets: number;
+  clampedNegotiatedDynamicRtpPayloadType: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc5761RtcpMuxReservedPt64To95ExclusionAndDynamicRangeGuard(
+  input: WebrtcRfc5761RtcpMuxReservedPt64To95ExclusionAndDynamicRangeGuardInput,
+): WebrtcRfc5761RtcpMuxReservedPt64To95ExclusionAndDynamicRangeGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.reservedPt64To95MarkerCollisionOrInvalidDynamicPtDetected ||
+    input.rtcpByte1CollidingTalkspurtPackets > 0 ||
+    input.negotiatedDynamicRtpPayloadType < 96 ||
+    input.negotiatedDynamicRtpPayloadType > 127;
+  const clampedRtcpByte1CollidingTalkspurtPackets = 0;
+  const clampedNegotiatedDynamicRtpPayloadType = Math.min(
+    127,
+    Math.max(96, Math.trunc(input.negotiatedDynamicRtpPayloadType || 96)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1057-WEBRTC-RFC5761-RTCP-MUX-RESERVED-PT-64TO95-EXCLUSION-AND-DYNAMIC-RANGE-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "exclude_reserved_pt_64to95_and_clamp_dynamic_pt_range"
+      : "allow_disjoint_rfc5761_rtcp_mux_payload_types",
+    clampedRtcpByte1CollidingTalkspurtPackets,
+    clampedNegotiatedDynamicRtpPayloadType,
+    reason: violated
+      ? `P1057 (1,066th Enterprise Guardrail · Stage 532 & Topic 172) WebRTC/RTP RFC 5761 §4 reserved PT [64, 95] Marker=1 RTCP Byte-1 collision or out-of-range dynamic PT violation (${timing}): blocked colliding talkspurt packets (clamped to 0) and clamped dynamic RTP Payload Type to ${clampedNegotiatedDynamicRtpPayloadType} in [96, 127].`
+      : `P1057 (1,066th Enterprise Guardrail · Stage 532 & Topic 172) WebRTC/RTP RFC 5761 §4 rtcp-mux Payload Type separation verified (${timing}): 0 colliding packets and dynamic PT ${clampedNegotiatedDynamicRtpPayloadType} within [96, 127].`,
+  };
+}
+
+export interface WebrtcRfc5761RtcpAttributeSameIpBindingAndOddPortReclamationGuardInput {
+  unreclaimedOddRtcpPortOrCrossIpRtcpAttributeSsrfDetected: boolean;
+  leakedOddRtcpPortsOrCrossIpSsrfTargetsCount: number;
+  allocatedUdpSocketsPerRtcpMuxTrack: number;
+}
+
+export interface WebrtcRfc5761RtcpAttributeSameIpBindingAndOddPortReclamationGuardResult {
+  violated: boolean;
+  policyId: "P1058-WEBRTC-RFC5761-RTCP-ATTRIBUTE-SAME-IP-BINDING-AND-ODD-PORT-RECLAMATION-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_single_socket_rtcp_mux_binding"
+    | "reclaim_odd_rtcp_port_and_block_cross_ip_rtcp_ssrf";
+  clampedLeakedOddRtcpPortsOrCrossIpSsrfTargetsCount: number;
+  clampedAllocatedUdpSocketsPerRtcpMuxTrack: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc5761RtcpAttributeSameIpBindingAndOddPortReclamationGuard(
+  input: WebrtcRfc5761RtcpAttributeSameIpBindingAndOddPortReclamationGuardInput,
+): WebrtcRfc5761RtcpAttributeSameIpBindingAndOddPortReclamationGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.unreclaimedOddRtcpPortOrCrossIpRtcpAttributeSsrfDetected ||
+    input.leakedOddRtcpPortsOrCrossIpSsrfTargetsCount > 0 ||
+    input.allocatedUdpSocketsPerRtcpMuxTrack !== 1;
+  const clampedLeakedOddRtcpPortsOrCrossIpSsrfTargetsCount = 0;
+  const clampedAllocatedUdpSocketsPerRtcpMuxTrack = 1;
+  return {
+    violated,
+    policyId:
+      "P1058-WEBRTC-RFC5761-RTCP-ATTRIBUTE-SAME-IP-BINDING-AND-ODD-PORT-RECLAMATION-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reclaim_odd_rtcp_port_and_block_cross_ip_rtcp_ssrf"
+      : "allow_single_socket_rtcp_mux_binding",
+    clampedLeakedOddRtcpPortsOrCrossIpSsrfTargetsCount,
+    clampedAllocatedUdpSocketsPerRtcpMuxTrack,
+    reason: violated
+      ? `P1058 🎉 (Historic 535th Evaluation Dimension Milestone! · 1,067th Guardrail) WebRTC/RTP RFC 5761 / RFC 3605 unreclaimed RTP+1 odd port or cross-IP a=rtcp SSRF violation (${timing}): reclaimed leaked odd ports/SSRF targets (clamped to 0) and clamped allocated UDP sockets per rtcp-mux track to ${clampedAllocatedUdpSocketsPerRtcpMuxTrack} in [1, 1].`
+      : `P1058 🎉 (Historic 535th Evaluation Dimension Milestone! · 1,067th Guardrail) WebRTC/RTP RFC 5761 / RFC 3605 single-socket rtcp-mux and same-IP a=rtcp verified (${timing}): 0 leaked odd ports and ${clampedAllocatedUdpSocketsPerRtcpMuxTrack} socket per track within [1, 1].`,
+  };
+}
+

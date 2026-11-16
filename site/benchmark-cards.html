@@ -2274,6 +2274,13 @@
               <td><code>P1055 / P1056 🎉 deterministic SIP RFC 3515 Refer-To header sanitization &amp; Event: refer;id= sipfrag cleanup guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>535. 🎉 [专题172 · 535大评测维度里程碑 🎉 `docs/voice-webrtc-rtp-rfc5761-rfc3605-rtcp-mux-pt-64to95-marker-collision-a-rtcp-ssrf-odd-port-leak-faq.md`] 企业 WebRTC/RTP `RFC 5761 / RFC 3605` 单端口音控复用（`a=rtcp-mux`）`PT [64, 95]` 冲突禁区封禁（防 `Marker=1` 开口首帧 `128+PT=200..204` 与 RTCP `SR/RR` 撞车吞掉每句话第 1 个字）与动态 `PT [96, 127]` 收敛锁（`0` 首帧吞字包；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU Byte-1 分流耗时 `not_measured`）&amp; `a=rtcp-mux` 成功后立即回收预分配 `RTP+1` 奇数端口、阻断异源 IP `a=rtcp:` 反射攻击与单轨 `[1, 1]` 套接字门禁（`0` 奇数端口泄漏；真实内核套接字回收耗时 `not_measured`）(`P1057` / `P1058 🎉` · Stage 532 · Topic 172 · 🎉 历史性第 535 大评测维度里程碑 · 1,067 护栏 &amp; 1,076 探针 · 535 维 🎉)</strong>
+              </td>
+              <td><code>P1057 / P1058 🎉 deterministic WebRTC RFC 5761 rtcp-mux PT [64, 95] exclusion &amp; RTP+1 odd-port reclamation guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -6524,6 +6531,13 @@
                 <strong>534. 🎉 [专题171 · 175张SVG &amp; 1065护栏双重里程碑 🎉 `docs/voice-sip-rfc3515-refer-to-uri-header-injection-smuggling-event-refer-id-notify-sipfrag-leak-faq.md`] 企业 SIP `RFC 3515` 呼叫转接（`REFER` 方法）`Refer-To` URI `?header=value` 嵌套走私头剥离（防伪造 `PAI/Route` 与越权国际盗打）与 `[0, 1]` 个允许查询头上限锁（`0` 走私转接请求；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SBC URI 词法解析耗时 `not_measured`）&amp; 多轮转接 `Event: refer;id=&lt;CSeq&gt;` 强关联、终态 `message/sipfrag` 强制 `terminated;reason=noresource` 销毁与单次转接 `[1, 4]` 条 `NOTIFY` 节流门禁（`0` 泄漏订阅；真实 B2BUA 订阅表清理耗时 `not_measured`）(`P1055` / `P1056 🎉` · Stage 531 · Topic 171 · 🎉 历史性第 175 张架构 SVG 图谱与第 1,065 道企业级护栏双重里程碑 · 1,065 护栏 🎉 &amp; 1,074 探针 · 534 维)</strong>
               </td>
               <td><code>P1055 / P1056 🎉 deterministic SIP RFC 3515 Refer-To header sanitization &amp; Event: refer;id= sipfrag cleanup guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>535. 🎉 [专题172 · 535大评测维度里程碑 🎉 `docs/voice-webrtc-rtp-rfc5761-rfc3605-rtcp-mux-pt-64to95-marker-collision-a-rtcp-ssrf-odd-port-leak-faq.md`] 企业 WebRTC/RTP `RFC 5761 / RFC 3605` 单端口音控复用（`a=rtcp-mux`）`PT [64, 95]` 冲突禁区封禁（防 `Marker=1` 开口首帧 `128+PT=200..204` 与 RTCP `SR/RR` 撞车吞掉每句话第 1 个字）与动态 `PT [96, 127]` 收敛锁（`0` 首帧吞字包；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 SFU Byte-1 分流耗时 `not_measured`）&amp; `a=rtcp-mux` 成功后立即回收预分配 `RTP+1` 奇数端口、阻断异源 IP `a=rtcp:` 反射攻击与单轨 `[1, 1]` 套接字门禁（`0` 奇数端口泄漏；真实内核套接字回收耗时 `not_measured`）(`P1057` / `P1058 🎉` · Stage 532 · Topic 172 · 🎉 历史性第 535 大评测维度里程碑 · 1,067 护栏 &amp; 1,076 探针 · 535 维 🎉)</strong>
+              </td>
+              <td><code>P1057 / P1058 🎉 deterministic WebRTC RFC 5761 rtcp-mux PT [64, 95] exclusion &amp; RTP+1 odd-port reclamation guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

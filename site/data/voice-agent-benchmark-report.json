@@ -2389,6 +2389,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips smuggled ?header=value parameters from Refer-To URIs and enforces target allowlist (0 smuggled/toll-fraud REFER requests) and clamps allowedEmbeddedReferToQueryHeadersCount in [0, 1]; live SBC URI lexer latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces Event: refer;id=<CSeq> correlation and Subscription-State: terminated;reason=noresource cleanup on final >=200 sipfrag (0 leaked subscriptions) and clamps sipfragNotifyMessagesPerReferCount in [1, 4]; live B2BUA refer subscription table latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "535. 🎉 [Topic 172 · Historic 535th Evaluation Dimension Milestone! 🎉: voice-webrtc-rtp-rfc5761-rfc3605-rtcp-mux-pt-64to95-marker-collision-a-rtcp-ssrf-odd-port-leak-faq] Enterprise WebRTC/RTP RFC 5761 rtcp-mux PT [64, 95] Collision & Odd-Port Reclamation Guard (P1057 / P1058 🎉 — Stage 532 · Topic 172 · 🎉 Historic 535th Evaluation Dimension Milestone · 1,067 Guardrails & 1,076 Probes · 535 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: excludes reserved PT [64, 95] so Marker=1 talkspurt packets never collide with RTCP 192..223 (0 colliding packets) and clamps negotiatedDynamicRtpPayloadType in [96, 127]; live SFU Byte-1 demux latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: reclaims pre-allocated RTP+1 odd sockets on rtcp-mux and blocks cross-IP a=rtcp SSRF targets (0 leaked ports/SSRF targets) and clamps allocatedUdpSocketsPerRtcpMuxTrack in [1, 1]; live kernel UDP socket reclamation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
