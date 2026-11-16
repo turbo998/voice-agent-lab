@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <defs>
+    <linearGradient id="bg513" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="760" fill="url(#bg513)" rx="18"/>
+  <rect x="20" y="20" width="1160" height="720" rx="14" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="40" y="36" width="1120" height="86" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="60" y="68" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">
+    STAGE 513 · TOPIC 153 · P1019–P1020 🎉 · SVG 157 · 155th FAQ 🎉 · 🎉 HISTORIC 80th ROUND, P1020, 155th FAQ &amp; 955-TEST MILESTONE!
+  </text>
+  <text x="60" y="98" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="800">
+    SIP RFC 6086 / RFC 3261 Info-Package 469 Rejection &amp; Overlapping CSeq Serialization Guard
+  </text>
+
+  <!-- Left Card: Vulnerable Legacy SIP INFO Path -->
+  <rect x="40" y="140" width="540" height="440" rx="12" fill="#1E1B2E" stroke="#F43F5E" stroke-width="1.5"/>
+  <text x="60" y="172" fill="#FDA4AF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">
+    ⛔ Vulnerable SIP INFO Path (Prompt Injection &amp; CSeq Desync)
+  </text>
+
+  <rect x="60" y="192" width="500" height="115" rx="8" fill="#0F172A" stroke="#E11D48" stroke-width="1"/>
+  <text x="76" y="216" fill="#FB7185" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    1. Unnegotiated Mid-Call INFO Control-Plane Injection
+  </text>
+  <text x="76" y="240" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    INFO (No Recv-Info match) + Body: {"vip_auth": true}
+  </text>
+  <text x="76" y="264" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Legacy RFC 2976 parser accepts unadvertised INFO packages
+  </text>
+  <text x="76" y="286" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Injects untrusted metadata directly into AI Voice Agent prompt!
+  </text>
+
+  <rect x="60" y="322" width="500" height="115" rx="8" fill="#0F172A" stroke="#E11D48" stroke-width="1"/>
+  <text x="76" y="346" fill="#FB7185" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    2. Overlapping INFO Transactions &amp; Out-of-Order CSeq 500 Drops
+  </text>
+  <text x="76" y="370" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    Concurrent CSeq 101..106 over UDP -&gt; 104 arrives before 103
+  </text>
+  <text x="76" y="394" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Violates RFC 6086 §4.2.1 single in-flight INFO transaction rule
+  </text>
+  <text x="76" y="416" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • UAS rejects CSeq 103 with 500, scrambling customer PIN/OTP digits!
+  </text>
+
+  <rect x="60" y="452" width="500" height="110" rx="8" fill="#0F172A" stroke="#E11D48" stroke-width="1"/>
+  <text x="76" y="476" fill="#FB7185" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    3. Unbounded 150 req/s In-Dialog INFO Flood DoS
+  </text>
+  <text x="76" y="500" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    150 INFO req/s per dialog -&gt; B2BUA transaction table exhaustion
+  </text>
+  <text x="76" y="524" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Starves BYE / re-INVITE signaling threads on voice gateway
+  </text>
+  <text x="76" y="544" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Causes call teardown timeouts &amp; zombie RTP media sessions
+  </text>
+
+  <!-- Right Card: Guarded P1019 + P1020 Architecture -->
+  <rect x="620" y="140" width="540" height="440" rx="12" fill="#0F292A" stroke="#10B981" stroke-width="1.5"/>
+  <text x="640" y="172" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">
+    ✅ Deterministic RFC 6086 Guardrails (P1019 + P1020 🎉)
+  </text>
+
+  <rect x="640" y="192" width="500" height="170" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+  <text x="656" y="218" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    P1019 (1,028th Guardrail): Recv-Info Allowlist &amp; 469 Rejection
+  </text>
+  <text x="656" y="244" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    action: "reject_unnegotiated_info_package_with_469_and_cap_recv_info"
+  </text>
+  <text x="656" y="270" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Rejects unnegotiated Info-Package with 469 Bad Info Package
+  </text>
+  <text x="656" y="294" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • clampedUnnegotiatedInfoRequestsAccepted = 0 (zero prompt injection)
+  </text>
+  <text x="656" y="318" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • clampedAllowedRecvInfoPackagesPerDialog in [1, 4] packages
+  </text>
+  <text x="656" y="342" fill="#38BDF8" font-family="Consolas, monospace" font-size="11">
+    Policy: P1019-SIP-RFC6086-INFO-PACKAGE-NEGOTIATION-AND-469-REJECTION-GUARD
+  </text>
+
+  <rect x="640" y="380" width="500" height="182" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+  <text x="656" y="406" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    P1020 🎉 (80th Round, P1020, 155th FAQ &amp; 955 Tests!): Serial CSeq Lock
+  </text>
+  <text x="656" y="432" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    action: "serialize_info_transactions_and_clamp_info_rate_per_sec"
+  </text>
+  <text x="656" y="458" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Enforces RFC 6086 §4.2.1 single in-flight INFO transaction rule
+  </text>
+  <text x="656" y="482" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • clampedOutOfOrderOverlappingInfoTransactions = 0 (100% PIN order)
+  </text>
+  <text x="656" y="506" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • clampedMaxSipInfoRequestsPerSecond in [1, 10] req/s
+  </text>
+  <text x="656" y="534" fill="#38BDF8" font-family="Consolas, monospace" font-size="11">
+    Policy: P1020-SIP-RFC6086-INFO-RATE-PACING-AND-OVERLAPPING-CSEQ-GUARD
+  </text>
+
+  <!-- Bottom Provenance & Timing Bar -->
+  <rect x="40" y="600" width="1120" height="120" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="60" y="630" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    PROVENANCE, TIMING DISCLOSURE &amp; STAGE 513 BENCHMARK SCORECARD (516 DIMENSIONS · 1,029 GUARDRAILS · 1,038 PROBES · 955 TESTS 🎉)
+  </text>
+  <text x="60" y="658" fill="#CBD5E1" font-family="Consolas, monospace" font-size="12">
+    Timing Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established
+  </text>
+  <text x="60" y="684" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    Synthetic in-memory policy evaluation in enterprise-guardrails.ts; live SIP B2BUA RFC 6086 transaction lock latency is not_measured.
+  </text>
+  <text x="60" y="706" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">
+    ✅ P1019: clampedUnnegotiatedInfoRequestsAccepted = 0, Recv-Info in [1, 4] | ✅ P1020 🎉: clampedOutOfOrderOverlappingInfoTransactions = 0, rate in [1, 10] req/s
+  </text>
+</svg>

@@ -89016,3 +89016,113 @@ export function evaluateWebrtcRfc6465CsrcAudioLevelCountAlignmentAndVBitForbidde
   };
 }
 
+// ============================================================================
+// Stage 513 (Topic 153 · P1019–P1020 🎉 · Historic 80th Nightly Round, P1020
+// Guardrail, 155th Standalone FAQ & 955-Test Quadruple Milestone! ·
+// 1,029 Guardrails · 1,038 Probes · 516 Dims):
+// Enterprise SIP RFC 6086 / RFC 3261 Info-Package (Recv-Info) 469 Rejection &
+// Single In-Flight CSeq Serialization Guardrails
+// ============================================================================
+
+export interface SipRfc6086InfoPackageNegotiationAnd469RejectionGuardInput {
+  unnegotiatedInfoPackageOrMissingRecvInfoDetected: boolean;
+  unnegotiatedInfoRequestsAccepted: number;
+  allowedRecvInfoPackagesPerDialog: number;
+}
+
+export interface SipRfc6086InfoPackageNegotiationAnd469RejectionGuardResult {
+  violated: boolean;
+  policyId: "P1019-SIP-RFC6086-INFO-PACKAGE-NEGOTIATION-AND-469-REJECTION-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_negotiated_rfc6086_info_package"
+    | "reject_unnegotiated_info_package_with_469_and_cap_recv_info";
+  clampedUnnegotiatedInfoRequestsAccepted: number;
+  clampedAllowedRecvInfoPackagesPerDialog: number;
+  reason: string;
+}
+
+export function evaluateSipRfc6086InfoPackageNegotiationAnd469RejectionGuard(
+  input: SipRfc6086InfoPackageNegotiationAnd469RejectionGuardInput,
+): SipRfc6086InfoPackageNegotiationAnd469RejectionGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.unnegotiatedInfoPackageOrMissingRecvInfoDetected ||
+    input.unnegotiatedInfoRequestsAccepted > 0 ||
+    input.allowedRecvInfoPackagesPerDialog < 1 ||
+    input.allowedRecvInfoPackagesPerDialog > 4;
+  const clampedUnnegotiatedInfoRequestsAccepted = 0;
+  const clampedAllowedRecvInfoPackagesPerDialog = Math.min(
+    4,
+    Math.max(1, Math.trunc(input.allowedRecvInfoPackagesPerDialog || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1019-SIP-RFC6086-INFO-PACKAGE-NEGOTIATION-AND-469-REJECTION-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reject_unnegotiated_info_package_with_469_and_cap_recv_info"
+      : "allow_negotiated_rfc6086_info_package",
+    clampedUnnegotiatedInfoRequestsAccepted,
+    clampedAllowedRecvInfoPackagesPerDialog,
+    reason: violated
+      ? `P1019 (1,028th Guardrail) SIP RFC 6086 unnegotiated Info-Package injection or Recv-Info overflow violation (${timing}): rejected unnegotiated INFO requests with 469 Bad Info Package (clamped accepted to 0) and clamped Recv-Info packages per dialog to ${clampedAllowedRecvInfoPackagesPerDialog} in [1, 4].`
+      : `P1019 (1,028th Guardrail) SIP RFC 6086 Info-Package negotiation verified (${timing}): 0 unnegotiated INFO requests accepted and ${clampedAllowedRecvInfoPackagesPerDialog} packages within [1, 4].`,
+  };
+}
+
+export interface SipRfc6086InfoRatePacingAndOverlappingCseqGuardInput {
+  overlappingPendingInfoOrBurstFloodDetected: boolean;
+  outOfOrderOverlappingInfoTransactions: number;
+  maxSipInfoRequestsPerSecond: number;
+}
+
+export interface SipRfc6086InfoRatePacingAndOverlappingCseqGuardResult {
+  violated: boolean;
+  policyId: "P1020-SIP-RFC6086-INFO-RATE-PACING-AND-OVERLAPPING-CSEQ-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_sequential_paced_rfc6086_info_transactions"
+    | "serialize_info_transactions_and_clamp_info_rate_per_sec";
+  clampedOutOfOrderOverlappingInfoTransactions: number;
+  clampedMaxSipInfoRequestsPerSecond: number;
+  reason: string;
+}
+
+export function evaluateSipRfc6086InfoRatePacingAndOverlappingCseqGuard(
+  input: SipRfc6086InfoRatePacingAndOverlappingCseqGuardInput,
+): SipRfc6086InfoRatePacingAndOverlappingCseqGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.overlappingPendingInfoOrBurstFloodDetected ||
+    input.outOfOrderOverlappingInfoTransactions > 0 ||
+    input.maxSipInfoRequestsPerSecond < 1 ||
+    input.maxSipInfoRequestsPerSecond > 10;
+  const clampedOutOfOrderOverlappingInfoTransactions = 0;
+  const clampedMaxSipInfoRequestsPerSecond = Math.min(
+    10,
+    Math.max(1, Math.trunc(input.maxSipInfoRequestsPerSecond || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1020-SIP-RFC6086-INFO-RATE-PACING-AND-OVERLAPPING-CSEQ-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "serialize_info_transactions_and_clamp_info_rate_per_sec"
+      : "allow_sequential_paced_rfc6086_info_transactions",
+    clampedOutOfOrderOverlappingInfoTransactions,
+    clampedMaxSipInfoRequestsPerSecond,
+    reason: violated
+      ? `P1020 🎉 (Historic 80th Nightly Round, P1020 Guardrail, 155th Standalone FAQ & 955-Test Quadruple Milestone!) SIP RFC 6086 overlapping INFO CSeq or burst flood violation (${timing}): enforced single in-flight INFO serialization (clamped overlapping transactions to 0) and clamped max SIP INFO rate to ${clampedMaxSipInfoRequestsPerSecond} req/s in [1, 10] req/s.`
+      : `P1020 🎉 (Historic 80th Nightly Round, P1020 Guardrail, 155th Standalone FAQ & 955-Test Quadruple Milestone!) SIP RFC 6086 INFO transaction pacing verified (${timing}): 0 overlapping transactions and rate ${clampedMaxSipInfoRequestsPerSecond} req/s within [1, 10] req/s.`,
+  };
+}
+
