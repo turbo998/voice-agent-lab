@@ -89999,3 +89999,112 @@ export function evaluateSipRfc6141FailedReinviteTargetRefreshContactRollbackGuar
   };
 }
 
+// ============================================================================
+// Stage 522 (Topic 162 · P1037–P1038 🎉 · Historic 525th Benchmark Evaluation
+// Dimension Milestone! · 1,047 Guardrails · 1,056 Probes · 525 Dims 🎉):
+// Enterprise WebRTC/RTP RFC 7874 / RFC 7587 Audio Codec MTI (Opus + G.711),
+// maxaveragebitrate Window & Mono Speech Guardrails
+// ============================================================================
+
+export interface WebrtcRfc7587OpusMaxAverageBitrateAndMonoVoiceFirstGuardInput {
+  opusMaxAverageBitrateStarvationOrUnnecessaryStereoVoiceDetected: boolean;
+  stereoVoiceUplinkStreams: number;
+  opusMaxAverageBitrateBps: number;
+}
+
+export interface WebrtcRfc7587OpusMaxAverageBitrateAndMonoVoiceFirstGuardResult {
+  violated: boolean;
+  policyId: "P1037-WEBRTC-RFC7587-OPUS-MAX-AVERAGE-BITRATE-AND-MONO-VOICE-FIRST-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_bounded_mono_rfc7587_opus_voice_profile"
+    | "enforce_mono_voice_and_clamp_opus_maxaveragebitrate_bps";
+  clampedStereoVoiceUplinkStreams: number;
+  clampedOpusMaxAverageBitrateBps: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc7587OpusMaxAverageBitrateAndMonoVoiceFirstGuard(
+  input: WebrtcRfc7587OpusMaxAverageBitrateAndMonoVoiceFirstGuardInput,
+): WebrtcRfc7587OpusMaxAverageBitrateAndMonoVoiceFirstGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.opusMaxAverageBitrateStarvationOrUnnecessaryStereoVoiceDetected ||
+    input.stereoVoiceUplinkStreams > 0 ||
+    input.opusMaxAverageBitrateBps < 16000 ||
+    input.opusMaxAverageBitrateBps > 64000;
+  const clampedStereoVoiceUplinkStreams = 0;
+  const clampedOpusMaxAverageBitrateBps = Math.min(
+    64000,
+    Math.max(16000, Math.trunc(input.opusMaxAverageBitrateBps || 16000)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1037-WEBRTC-RFC7587-OPUS-MAX-AVERAGE-BITRATE-AND-MONO-VOICE-FIRST-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "enforce_mono_voice_and_clamp_opus_maxaveragebitrate_bps"
+      : "allow_bounded_mono_rfc7587_opus_voice_profile",
+    clampedStereoVoiceUplinkStreams,
+    clampedOpusMaxAverageBitrateBps,
+    reason: violated
+      ? `P1037 (1,046th Guardrail) WebRTC/RTP RFC 7587 Opus stereo=1 waste or maxaveragebitrate out-of-window violation (${timing}): enforced mono speech stereo=0 (clamped stereo streams to 0) and clamped maxaveragebitrate to ${clampedOpusMaxAverageBitrateBps} bps in [16000, 64000] bps.`
+      : `P1037 (1,046th Guardrail) WebRTC/RTP RFC 7587 Opus mono voice profile verified (${timing}): 0 stereo uplink streams and maxaveragebitrate ${clampedOpusMaxAverageBitrateBps} bps within [16000, 64000] bps.`,
+  };
+}
+
+export interface WebrtcRfc7874DualMtiCodecFallbackAndPtimeBoundsGuardInput {
+  missingMtiOpusG711FallbackOrExtremePtimeDetected: boolean;
+  rejectedNoCommonCodecCalls: number;
+  negotiatedOpusPtimeMs: number;
+}
+
+export interface WebrtcRfc7874DualMtiCodecFallbackAndPtimeBoundsGuardResult {
+  violated: boolean;
+  policyId: "P1038-WEBRTC-RFC7874-DUAL-MTI-CODEC-FALLBACK-AND-PTIME-BOUNDS-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_rfc7874_dual_mti_and_bounded_ptime"
+    | "enforce_rfc7874_opus_g711_mti_and_clamp_ptime_ms";
+  clampedRejectedNoCommonCodecCalls: number;
+  clampedNegotiatedOpusPtimeMs: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc7874DualMtiCodecFallbackAndPtimeBoundsGuard(
+  input: WebrtcRfc7874DualMtiCodecFallbackAndPtimeBoundsGuardInput,
+): WebrtcRfc7874DualMtiCodecFallbackAndPtimeBoundsGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.missingMtiOpusG711FallbackOrExtremePtimeDetected ||
+    input.rejectedNoCommonCodecCalls > 0 ||
+    input.negotiatedOpusPtimeMs < 10 ||
+    input.negotiatedOpusPtimeMs > 40;
+  const clampedRejectedNoCommonCodecCalls = 0;
+  const clampedNegotiatedOpusPtimeMs = Math.min(
+    40,
+    Math.max(10, Math.trunc(input.negotiatedOpusPtimeMs || 10)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1038-WEBRTC-RFC7874-DUAL-MTI-CODEC-FALLBACK-AND-PTIME-BOUNDS-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "enforce_rfc7874_opus_g711_mti_and_clamp_ptime_ms"
+      : "allow_rfc7874_dual_mti_and_bounded_ptime",
+    clampedRejectedNoCommonCodecCalls,
+    clampedNegotiatedOpusPtimeMs,
+    reason: violated
+      ? `P1038 🎉 (Historic 525th Benchmark Evaluation Dimension Milestone! · 1,047th Guardrail) WebRTC/RTP RFC 7874 missing Opus/G.711 MTI fallback or extreme ptime violation (${timing}): enforced Opus + G.711 dual-MTI support (clamped 488 rejections to 0) and clamped ptime to ${clampedNegotiatedOpusPtimeMs}ms in [10, 40]ms.`
+      : `P1038 🎉 (Historic 525th Benchmark Evaluation Dimension Milestone! · 1,047th Guardrail) WebRTC/RTP RFC 7874 dual-MTI and ptime verified (${timing}): 0 codec rejections and ptime ${clampedNegotiatedOpusPtimeMs}ms within [10, 40]ms.`,
+  };
+}
+

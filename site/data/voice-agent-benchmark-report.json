@@ -2329,6 +2329,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: preserves RFC 6141 §3 intermediate PRACK/UPDATE SDP checkpoints when outer re-INVITE is rejected (0 dropped audio streams) and clamps maxNestedOfferAnswerExchangesPerReinvite in [1, 3]; live B2BUA SDP checkpoint latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: atomically rolls back staged Contact Remote Targets on failed re-INVITE (0 desynced dialogs) and clamps reinviteTransactionTimeoutSec in [5, 32]s; live dialog target rollback latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "525. 🎉 [Topic 162 · Historic 525th Benchmark Evaluation Dimension Milestone! 🎉: voice-webrtc-rtp-rfc7874-rfc7587-opus-g711-mti-maxaveragebitrate-starvation-stereo-uplink-waste-faq] Enterprise WebRTC/RTP RFC 7874 / RFC 7587 Opus maxaveragebitrate, Mono Speech & Dual-MTI ptime Guard (P1037 / P1038 🎉 — Stage 522 · Topic 162 · 🎉 Historic 525th Benchmark Evaluation Dimension Milestone · 1,047 Guardrails & 1,056 Probes · 525 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 7587 mono voice stereo=0 (0 stereo voice uplinks) and clamps opusMaxAverageBitrateBps in [16000, 64000] bps; live Opus encoder CTL configuration latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 7874 §3 Opus + G.711 PCMU/PCMA dual-MTI support (0 488 codec rejections) and clamps negotiatedOpusPtimeMs in [10, 40]ms; live SDP codec negotiation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
