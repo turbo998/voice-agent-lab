@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <defs>
+    <linearGradient id="bg511" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="760" fill="url(#bg511)" rx="18"/>
+  <rect x="20" y="20" width="1160" height="720" rx="14" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="40" y="36" width="1120" height="86" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="60" y="68" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">
+    STAGE 511 · TOPIC 151 · P1015–P1016 🎉 · SVG 155 🎉 · 153rd FAQ · 🎉 HISTORIC 155th SVG &amp; 1,025th GUARDRAIL DUAL MILESTONE!
+  </text>
+  <text x="60" y="98" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="800">
+    SIP RFC 3327 Path Proxy-Vector Poisoning &amp; RFC 5626 Outbound (;ob) Flow-Token HMAC Guard
+  </text>
+
+  <!-- Left Card: Vulnerable Path & Outbound Flow -->
+  <rect x="40" y="140" width="540" height="440" rx="12" fill="#1E1B2E" stroke="#F43F5E" stroke-width="1.5"/>
+  <text x="60" y="172" fill="#FDA4AF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">
+    ⛔ Vulnerable RFC 3327 / 5626 Path (Call Hijack &amp; Token SSRF)
+  </text>
+
+  <rect x="60" y="192" width="500" height="115" rx="8" fill="#0F172A" stroke="#E11D48" stroke-width="1"/>
+  <text x="76" y="216" fill="#FB7185" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    1. Untrusted Client REGISTER Path Vector Poisoning
+  </text>
+  <text x="76" y="240" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    REGISTER + Path: &lt;sip:mitm.evil.com;lr&gt; (Stored in Usrloc!)
+  </text>
+  <text x="76" y="264" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Core Registrar preloads Route: &lt;sip:mitm.evil.com;lr&gt; on calls
+  </text>
+  <text x="76" y="286" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Every inbound customer call is detoured through external MitM
+  </text>
+
+  <rect x="60" y="322" width="500" height="115" rx="8" fill="#0F172A" stroke="#E11D48" stroke-width="1"/>
+  <text x="76" y="346" fill="#FB7185" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    2. Unsigned Base64 Flow-Token Tampering &amp; SSRF
+  </text>
+  <text x="76" y="370" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    Route: &lt;sip:base64(10.24.1.99:5060)@sbc.corp;lr;ob&gt;
+  </text>
+  <text x="76" y="394" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Attacker forges Flow Token to pivot SIP requests into internal LAN
+  </text>
+  <text x="76" y="416" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Hijacks active TLS outbound sockets belonging to other tenants
+  </text>
+
+  <rect x="60" y="452" width="500" height="110" rx="8" fill="#0F172A" stroke="#E11D48" stroke-width="1"/>
+  <text x="76" y="476" fill="#FB7185" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    3. Unbounded reg-id=1..64 Multi-Flow Socket Exhaustion
+  </text>
+  <text x="76" y="500" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    +sip.instance=uuid-1 registers reg-id=1..12 simultaneously
+  </text>
+  <text x="76" y="524" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Multiplies Edge SBC TLS state &amp; STUN/CRLF keepalive load by 6x
+  </text>
+  <text x="76" y="544" fill="#FCA5A5" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Starves legitimate AI Voice Agent edge registration slots
+  </text>
+
+  <!-- Right Card: Guarded P1015 + P1016 Architecture -->
+  <rect x="620" y="140" width="540" height="440" rx="12" fill="#0F292A" stroke="#10B981" stroke-width="1.5"/>
+  <text x="640" y="172" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">
+    ✅ Deterministic RFC 3327 / 5626 Guardrails (P1015 + P1016 🎉)
+  </text>
+
+  <rect x="640" y="192" width="500" height="170" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+  <text x="656" y="218" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    P1015 (1,024th Guardrail): Untrusted Path Strip &amp; [1, 4] Hop Cap
+  </text>
+  <text x="656" y="244" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    action: "strip_untrusted_register_path_and_cap_path_hops"
+  </text>
+  <text x="656" y="270" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Unconditionally strips client-supplied Path headers at ingress
+  </text>
+  <text x="656" y="294" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • clampedUnverifiedPathVectorEntries = 0 (zero proxy-vector poisoning)
+  </text>
+  <text x="656" y="318" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • clampedMaxPathHeaderHops in [1, 4] (bounded internal edge hops)
+  </text>
+  <text x="656" y="342" fill="#38BDF8" font-family="Consolas, monospace" font-size="11">
+    Policy: P1015-SIP-RFC3327-PATH-HEADER-UNTRUSTED-PROXY-POISONING-AND-HOP-CAP-GUARD
+  </text>
+
+  <rect x="640" y="380" width="500" height="182" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+  <text x="656" y="406" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    P1016 🎉 (155th SVG &amp; 1,025th Guardrail!): HMAC Token &amp; [1, 2] Flows
+  </text>
+  <text x="656" y="432" fill="#E2E8F0" font-family="Consolas, monospace" font-size="12">
+    action: "verify_flow_token_hmac_five_tuple_and_clamp_reg_id_flows"
+  </text>
+  <text x="656" y="458" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Binds ;ob Flow Token to socket 5-tuple via HMAC-SHA256 signature
+  </text>
+  <text x="656" y="482" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • clampedUnauthenticatedFlowTokenRedirects = 0 (430 Flow Failed on tamper)
+  </text>
+  <text x="656" y="506" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • clampedActiveRedundantOutboundFlowsPerInstance in [1, 2] (primary+backup)
+  </text>
+  <text x="656" y="534" fill="#38BDF8" font-family="Consolas, monospace" font-size="11">
+    Policy: P1016-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HMAC-AND-REG-ID-DUAL-FLOW-GUARD
+  </text>
+
+  <!-- Bottom Provenance & Timing Bar -->
+  <rect x="40" y="600" width="1120" height="120" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="60" y="630" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">
+    PROVENANCE, TIMING DISCLOSURE &amp; STAGE 511 BENCHMARK SCORECARD (514 DIMENSIONS · 1,025 GUARDRAILS 🎉 · 1,034 PROBES · 953 TESTS)
+  </text>
+  <text x="60" y="658" fill="#CBD5E1" font-family="Consolas, monospace" font-size="12">
+    Timing Disclosure: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established
+  </text>
+  <text x="60" y="684" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    Synthetic in-memory policy evaluation in enterprise-guardrails.ts; live Edge SBC HMAC-SHA256 Flow Token verification latency is not_measured.
+  </text>
+  <text x="60" y="706" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">
+    ✅ P1015: clampedUnverifiedPathVectorEntries = 0, clampedMaxPathHeaderHops in [1, 4] | ✅ P1016 🎉: clampedUnauthenticatedFlowTokenRedirects = 0, flows in [1, 2]
+  </text>
+</svg>

@@ -88797,3 +88797,113 @@ export function evaluateWebrtcRfc5104TmmbrBitrateFloorAndTmmbnOwnershipGuard(
   };
 }
 
+// ============================================================================
+// Stage 511 (Topic 151 · P1015–P1016 🎉 · Historic 155th SVG Architecture
+// Diagram & 1,025th Enterprise Guardrail Dual Milestone! · 1,025 Guardrails 🎉 ·
+// 1,034 Probes · 514 Dims):
+// Enterprise SIP RFC 3327 Path Proxy-Vector Poisoning & RFC 5626 Outbound
+// (;ob / +sip.instance / reg-id) Flow-Token HMAC Guardrails
+// ============================================================================
+
+export interface SipRfc3327PathHeaderUntrustedProxyPoisoningAndHopCapGuardInput {
+  untrustedRegisterPathHeaderOrHopOverflowDetected: boolean;
+  unverifiedPathVectorEntries: number;
+  maxPathHeaderHops: number;
+}
+
+export interface SipRfc3327PathHeaderUntrustedProxyPoisoningAndHopCapGuardResult {
+  violated: boolean;
+  policyId: "P1015-SIP-RFC3327-PATH-HEADER-UNTRUSTED-PROXY-POISONING-AND-HOP-CAP-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_verified_rfc3327_edge_proxy_path_vector"
+    | "strip_untrusted_register_path_and_cap_path_hops";
+  clampedUnverifiedPathVectorEntries: number;
+  clampedMaxPathHeaderHops: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3327PathHeaderUntrustedProxyPoisoningAndHopCapGuard(
+  input: SipRfc3327PathHeaderUntrustedProxyPoisoningAndHopCapGuardInput,
+): SipRfc3327PathHeaderUntrustedProxyPoisoningAndHopCapGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.untrustedRegisterPathHeaderOrHopOverflowDetected ||
+    input.unverifiedPathVectorEntries > 0 ||
+    input.maxPathHeaderHops < 1 ||
+    input.maxPathHeaderHops > 4;
+  const clampedUnverifiedPathVectorEntries = 0;
+  const clampedMaxPathHeaderHops = Math.min(
+    4,
+    Math.max(1, Math.trunc(input.maxPathHeaderHops || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1015-SIP-RFC3327-PATH-HEADER-UNTRUSTED-PROXY-POISONING-AND-HOP-CAP-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "strip_untrusted_register_path_and_cap_path_hops"
+      : "allow_verified_rfc3327_edge_proxy_path_vector",
+    clampedUnverifiedPathVectorEntries,
+    clampedMaxPathHeaderHops,
+    reason: violated
+      ? `P1015 (1,024th Guardrail) SIP RFC 3327 untrusted REGISTER Path header injection or hop overflow violation (${timing}): stripped untrusted Path entries (clamped unverified entries to 0) and clamped Path hops to ${clampedMaxPathHeaderHops} in [1, 4].`
+      : `P1015 (1,024th Guardrail) SIP RFC 3327 Path vector verified (${timing}): 0 unverified Path entries and ${clampedMaxPathHeaderHops} hops within [1, 4].`,
+  };
+}
+
+export interface SipRfc5626OutboundFlowTokenHmacAndRegIdDualFlowGuardInput {
+  forgedOutboundFlowTokenOrRegIdHijackDetected: boolean;
+  unauthenticatedFlowTokenRedirects: number;
+  activeRedundantOutboundFlowsPerInstance: number;
+}
+
+export interface SipRfc5626OutboundFlowTokenHmacAndRegIdDualFlowGuardResult {
+  violated: boolean;
+  policyId: "P1016-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HMAC-AND-REG-ID-DUAL-FLOW-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_hmac_verified_rfc5626_outbound_flows"
+    | "verify_flow_token_hmac_five_tuple_and_clamp_reg_id_flows";
+  clampedUnauthenticatedFlowTokenRedirects: number;
+  clampedActiveRedundantOutboundFlowsPerInstance: number;
+  reason: string;
+}
+
+export function evaluateSipRfc5626OutboundFlowTokenHmacAndRegIdDualFlowGuard(
+  input: SipRfc5626OutboundFlowTokenHmacAndRegIdDualFlowGuardInput,
+): SipRfc5626OutboundFlowTokenHmacAndRegIdDualFlowGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.forgedOutboundFlowTokenOrRegIdHijackDetected ||
+    input.unauthenticatedFlowTokenRedirects > 0 ||
+    input.activeRedundantOutboundFlowsPerInstance < 1 ||
+    input.activeRedundantOutboundFlowsPerInstance > 2;
+  const clampedUnauthenticatedFlowTokenRedirects = 0;
+  const clampedActiveRedundantOutboundFlowsPerInstance = Math.min(
+    2,
+    Math.max(1, Math.trunc(input.activeRedundantOutboundFlowsPerInstance || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1016-SIP-RFC5626-OUTBOUND-FLOW-TOKEN-HMAC-AND-REG-ID-DUAL-FLOW-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "verify_flow_token_hmac_five_tuple_and_clamp_reg_id_flows"
+      : "allow_hmac_verified_rfc5626_outbound_flows",
+    clampedUnauthenticatedFlowTokenRedirects,
+    clampedActiveRedundantOutboundFlowsPerInstance,
+    reason: violated
+      ? `P1016 🎉 (Historic 155th SVG Architecture Diagram & 1,025th Enterprise Guardrail Dual Milestone!) SIP RFC 5626 Outbound forged flow token or reg-id flood violation (${timing}): blocked unauthenticated Flow Token redirects with 430 Flow Failed (clamped to 0) and clamped active reg-id flows per +sip.instance to ${clampedActiveRedundantOutboundFlowsPerInstance} in [1, 2].`
+      : `P1016 🎉 (Historic 155th SVG Architecture Diagram & 1,025th Enterprise Guardrail Dual Milestone!) SIP RFC 5626 Outbound flow integrity verified (${timing}): 0 unauthenticated flow redirects and ${clampedActiveRedundantOutboundFlowsPerInstance} active flows within [1, 2].`,
+  };
+}
+

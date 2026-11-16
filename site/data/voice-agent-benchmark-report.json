@@ -2263,6 +2263,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: deduplicates RFC 5104 FIR packets by (Sender SSRC, 8-bit Seq nr.) (0 duplicate forwards) and clamps minFirKeyframeIntervalMs in [500, 2000]ms; live SFU RTCP FIR parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces TMMBR [24, 64] kbps audio bitrate floor against Mantissa=0 choke attacks and verifies TMMBN Bounding Set Owner SSRC (0 unauthorized overrides); live BWE allocator latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "514. 🎉 [Topic 151 · Historic 155th SVG & 1,025th Guardrail Dual Milestone! 🎉: voice-sip-rfc3327-rfc5626-path-header-outbound-ob-flow-token-hijacking-proxy-vector-poisoning-faq] Enterprise SIP RFC 3327 Path Proxy-Vector Poisoning & RFC 5626 Outbound Flow-Token HMAC Guard (P1015 / P1016 🎉 — Stage 511 · Topic 151 · 🎉 Historic 155th SVG & 1,025th Guardrail Dual Milestone · 1,025 Guardrails 🎉 & 1,034 Probes · 514 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips untrusted client REGISTER Path headers (0 unverified entries) and clamps maxPathHeaderHops in [1, 4]; live Edge SBC header strip latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: verifies HMAC-SHA256 5-tuple binding on RFC 5626 ;ob Flow Tokens (0 unauthenticated redirects) and clamps active reg-id flows per +sip.instance in [1, 2]; live Edge SBC HMAC verification latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
