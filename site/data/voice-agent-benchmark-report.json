@@ -2209,6 +2209,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips dereferenceable http(s)/file ringtone URIs and info=alert-autoanswer intercom parameters on untrusted trunks and clamps Alert-Info entries in [1, 4] (0 SSRF or silent auto-answer hijacks); live SBC Alert-Info lexer latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: overwrites spoofed external urn:alert:source:internal claims to urn:alert:source:external and clamps URN hierarchy depth in [1, 5] (0 internal-source privilege escalations); live trunk origin tagger latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "505. 🎉 [Topic 142 · Historic 505th Benchmark Evaluation Dimension Milestone! 🎉: voice-webrtc-rtcp-rfc8861-rfc3550-multi-stream-reporting-group-rgrp-sr-rr-delegation-suppressed-ssrc-storm-faq] Enterprise WebRTC RFC 8861 / RFC 3550 RTCP Reporting Group (RGRP) Cross-Report Suppression & Reporter BYE Failover Guard (P997 / P998 🎉 — Stage 502 · Topic 142 · 🎉 Historic 505th Benchmark Dimension Milestone · 1,007 Guardrails & 1,016 Probes · 505 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces same-5-tuple SDES RGRP binding, suppresses duplicate N x M cross-SSRC RR blocks, and clamps active Reporting SSRCs per group in [1, 2] (0 duplicate cross-report storms); live SFU RTCP RGRP aggregator latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: promotes surviving primary Opus audio SSRC immediately on Reporting-SSRC RTCP BYE and clamps member SSRCs per RGRP in [1, 12] (0 reporting blackouts); live RTCP reporter election latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

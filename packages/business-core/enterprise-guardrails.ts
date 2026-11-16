@@ -87472,6 +87472,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc8861RtcpReportingGroupRgrpSameEndpointBindingAndCrossReportSuppressionContext {
+      crossEndpointRgrpSpoofOrDuplicateCrossSsrcRrStormDetected: boolean;
+      duplicateCrossSsrcRrBlocks: number;
+      reportingSsrcsPerGroup: number;
+    }
+
+    export interface WebrtcRfc8861RtcpReportingGroupRgrpSameEndpointBindingAndCrossReportSuppressionResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "bind_sdes_rgrp_to_five_tuple_and_suppress_duplicate_cross_rr_blocks"
+        | "clamp_duplicate_cross_rr_blocks_and_reporting_ssrcs_per_group"
+        | "allow";
+      reason: string;
+      clampedDuplicateCrossSsrcRrBlocks: number;
+      clampedReportingSsrcsPerGroup: number;
+    }
+
+    /**
+     * P997 (1,006th Enterprise Guardrail): Enterprise WebRTC RFC 8861 / RFC 3550 Multi-Stream RTCP Reporting Group (a=rtcp-rgrp / SDES RGRP) Same-5-Tuple Binding, Duplicate Cross-SSRC RR Suppression & [1, 2] Reporters Gate.
+     */
+    export function evaluateWebrtcRfc8861RtcpReportingGroupRgrpSameEndpointBindingAndCrossReportSuppressionGate(
+      ctx: WebrtcRfc8861RtcpReportingGroupRgrpSameEndpointBindingAndCrossReportSuppressionContext,
+    ): WebrtcRfc8861RtcpReportingGroupRgrpSameEndpointBindingAndCrossReportSuppressionResult {
+      const policyId =
+        "P997-WEBRTC-RFC8861-RTCP-REPORTING-GROUP-RGRP-SAME-ENDPOINT-BINDING-AND-CROSS-REPORT-SUPPRESSION-GUARD";
+      const clampedDuplicateCrossSsrcRrBlocks = 0;
+      const clampedReportingSsrcsPerGroup = Math.min(
+        2,
+        Math.max(
+          1,
+          Number.isFinite(ctx.reportingSsrcsPerGroup)
+            ? Math.round(ctx.reportingSsrcsPerGroup)
+            : 1,
+        ),
+      );
+
+      if (ctx.crossEndpointRgrpSpoofOrDuplicateCrossSsrcRrStormDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "bind_sdes_rgrp_to_five_tuple_and_suppress_duplicate_cross_rr_blocks",
+          reason:
+            "WebRTC RFC 8861 Section 3 / RFC 3550 cross-endpoint SDES RGRP spoofing or N x M duplicate cross-SSRC RTCP Receiver Report (RR) storm detected; enforcing same-5-tuple RGRP binding, suppressing duplicate RR blocks (clamping to 0), and clamping active Reporting SSRCs per group in [1, 2] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedDuplicateCrossSsrcRrBlocks,
+          clampedReportingSsrcsPerGroup,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.duplicateCrossSsrcRrBlocks) ||
+        ctx.duplicateCrossSsrcRrBlocks !== 0 ||
+        !Number.isFinite(ctx.reportingSsrcsPerGroup) ||
+        ctx.reportingSsrcsPerGroup < 1 ||
+        ctx.reportingSsrcsPerGroup > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_duplicate_cross_rr_blocks_and_reporting_ssrcs_per_group",
+          reason:
+            "Duplicate cross-SSRC RR blocks (>0 synthetic ceiling) or active Reporting SSRCs per group (<1 or >2 synthetic bounds) out of bounds; clamping duplicate blocks to 0 and Reporting SSRCs to [1, 2].",
+          clampedDuplicateCrossSsrcRrBlocks,
+          clampedReportingSsrcsPerGroup,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8861 RTCP Reporting Group suppression (0 duplicate RRs) and [1, 2] Reporting SSRCs verified.",
+        clampedDuplicateCrossSsrcRrBlocks,
+        clampedReportingSsrcsPerGroup,
+      };
+    }
+
+    export interface WebrtcRfc8861ReportingSsrcByeFailoverAndGroupMemberCapContext {
+      reportingSsrcByeBlackoutOrGroupMemberOverflowDetected: boolean;
+      reportingSsrcByeBlackouts: number;
+      maxMemberSsrcsPerReportingGroup: number;
+    }
+
+    export interface WebrtcRfc8861ReportingSsrcByeFailoverAndGroupMemberCapResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "promote_surviving_audio_ssrc_on_reporter_bye_and_cap_group_members"
+        | "clamp_reporter_bye_blackouts_and_group_member_ssrcs"
+        | "allow";
+      reason: string;
+      clampedReportingSsrcByeBlackouts: number;
+      clampedMaxMemberSsrcsPerReportingGroup: number;
+    }
+
+    /**
+     * P998 🎉 (Historic 505th Benchmark Evaluation Dimension Milestone! · 1,007th Guardrail, 1,016th Sandbox Probe & 826th Live POC Probe): Enterprise WebRTC RFC 8861 Reporting-SSRC RTCP BYE Failover Election & [1, 12] Member SSRCs/Group Gate.
+     */
+    export function evaluateWebrtcRfc8861ReportingSsrcByeFailoverAndGroupMemberCapGate(
+      ctx: WebrtcRfc8861ReportingSsrcByeFailoverAndGroupMemberCapContext,
+    ): WebrtcRfc8861ReportingSsrcByeFailoverAndGroupMemberCapResult {
+      const policyId =
+        "P998-WEBRTC-RFC8861-REPORTING-SSRC-BYE-FAILOVER-AND-GROUP-MEMBER-CAP-GUARD";
+      const clampedReportingSsrcByeBlackouts = 0;
+      const clampedMaxMemberSsrcsPerReportingGroup = Math.min(
+        12,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxMemberSsrcsPerReportingGroup)
+            ? Math.round(ctx.maxMemberSsrcsPerReportingGroup)
+            : 6,
+        ),
+      );
+
+      if (ctx.reportingSsrcByeBlackoutOrGroupMemberOverflowDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "promote_surviving_audio_ssrc_on_reporter_bye_and_cap_group_members",
+          reason:
+            "WebRTC RFC 8861 Section 3.4 active Reporting SSRC sent RTCP BYE without failover promotion (blinding Opus FEC loss telemetry) or RGRP member count exceeded bounds; promoting surviving primary audio SSRC immediately (0 reporting blackouts) and clamping member SSRCs per RGRP in [1, 12] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedReportingSsrcByeBlackouts,
+          clampedMaxMemberSsrcsPerReportingGroup,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.reportingSsrcByeBlackouts) ||
+        ctx.reportingSsrcByeBlackouts !== 0 ||
+        !Number.isFinite(ctx.maxMemberSsrcsPerReportingGroup) ||
+        ctx.maxMemberSsrcsPerReportingGroup < 1 ||
+        ctx.maxMemberSsrcsPerReportingGroup > 12
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_reporter_bye_blackouts_and_group_member_ssrcs",
+          reason:
+            "Reporting SSRC BYE blackouts (>0 synthetic ceiling) or member SSRCs per RGRP (<1 or >12 synthetic bounds) out of bounds; clamping blackouts to 0 and member SSRCs to [1, 12].",
+          clampedReportingSsrcByeBlackouts,
+          clampedMaxMemberSsrcsPerReportingGroup,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8861 Reporter BYE failover (0 blackouts) and [1, 12] member SSRCs/group verified.",
+        clampedReportingSsrcByeBlackouts,
+        clampedMaxMemberSsrcsPerReportingGroup,
+      };
+    }
+
 
 
 
