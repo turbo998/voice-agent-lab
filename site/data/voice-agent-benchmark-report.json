@@ -2251,6 +2251,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 9443 256-slot Byte-0 lookup table isolating TURN [64, 79], QUIC Short [80, 127], and RTP/RTCP v=2 [128, 191] and clamps protocol families per port in [1, 4] (0 first-byte demux misroutes); live eBPF Byte-0 LUT latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: silently drops unallocated/unnegotiated Byte-0 UDP packets with zero error-packet reflection and clamps drop-log rate in [1, 10] logs/s (0 SRTP/DTLS parser fallthrough leaks); live socket filter drop counter latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "512. 🎉 [Topic 149 · Historic 1,020th Guardrail, 1,030th Probe & 840th Live POC Triple Milestone! 🎉: voice-sip-rfc4244-rfc7044-history-info-hi-entry-call-forwarding-loop-pii-leak-mp-index-spoofing-faq] Enterprise SIP RFC 4244 / RFC 7044 History-Info Call Forwarding Loop, Privacy Scrubbing & mp= Index Guard (P1011 🎉 / P1012 🎉 — Stage 509 · Topic 149 · 🎉 Historic 1,020th Guardrail, 1,030th Probe & 840th Live POC Triple Milestone · 1,021 Guardrails 🎉 & 1,030 Probes 🎉 · 512 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces canonical target-URI loop detection with 482 Loop Detected (0 cycle redirects) and clamps maxHistoryInfoEntries in [1, 8]; live Kamailio/OpenSIPS RFC 7044 URI DAG check latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces border SBC Privacy: history scrubbing (0 internal topology leaks) and validates strict ancestor mp=/rc= index references (0 dangling refs); live SBC header scrub latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

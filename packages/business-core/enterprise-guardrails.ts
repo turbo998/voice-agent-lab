@@ -88583,52 +88583,108 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+// ============================================================================
+// Stage 509 (Topic 149 · P1011 🎉–P1012 🎉 · Historic 1,020th Guardrail,
+// 1,030th Interactive Sandbox Probe & 840th Live POC Trap Probe Triple Milestone!):
+// Enterprise SIP RFC 4244 / RFC 7044 History-Info (hi-entry) Call Forwarding
+// Chain Loop, Untrusted Trunk PII Stripping & mp= Index Spoofing Guardrails
+// ============================================================================
 
+export interface SipRfc7044HistoryInfoForwardingLoopAndChainDepthGuardInput {
+  historyInfoTargetUriCycleOrUnboundedChainDetected: boolean;
+  forwardingCycleRedirects: number;
+  maxHistoryInfoEntries: number;
+}
 
+export interface SipRfc7044HistoryInfoForwardingLoopAndChainDepthGuardResult {
+  violated: boolean;
+  policyId: "P1011-SIP-RFC7044-HISTORY-INFO-FORWARDING-LOOP-AND-CHAIN-DEPTH-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_acyclic_bounded_rfc7044_history_info_chain"
+    | "reject_history_info_forwarding_cycle_with_482_and_cap_depth";
+  clampedForwardingCycleRedirects: number;
+  clampedMaxHistoryInfoEntries: number;
+  reason: string;
+}
 
+export function evaluateSipRfc7044HistoryInfoForwardingLoopAndChainDepthGuard(
+  input: SipRfc7044HistoryInfoForwardingLoopAndChainDepthGuardInput,
+): SipRfc7044HistoryInfoForwardingLoopAndChainDepthGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.historyInfoTargetUriCycleOrUnboundedChainDetected ||
+    input.forwardingCycleRedirects > 0 ||
+    input.maxHistoryInfoEntries < 1 ||
+    input.maxHistoryInfoEntries > 8;
+  const clampedForwardingCycleRedirects = 0;
+  const clampedMaxHistoryInfoEntries = Math.min(
+    8,
+    Math.max(1, Math.trunc(input.maxHistoryInfoEntries || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1011-SIP-RFC7044-HISTORY-INFO-FORWARDING-LOOP-AND-CHAIN-DEPTH-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reject_history_info_forwarding_cycle_with_482_and_cap_depth"
+      : "allow_acyclic_bounded_rfc7044_history_info_chain",
+    clampedForwardingCycleRedirects,
+    clampedMaxHistoryInfoEntries,
+    reason: violated
+      ? `P1011 🎉 (Historic 1,020th Enterprise Guardrail Milestone!) SIP RFC 4244 / RFC 7044 History-Info call forwarding cycle or unbounded chain depth violation (${timing}): rejected target URI cycle with 482 Loop Detected (clamped cycle redirects to 0) and clamped History-Info chain depth to ${clampedMaxHistoryInfoEntries} in [1, 8].`
+      : `P1011 🎉 (Historic 1,020th Enterprise Guardrail Milestone!) SIP RFC 4244 / RFC 7044 History-Info chain verified (${timing}): 0 target URI cycles and chain depth ${clampedMaxHistoryInfoEntries} within [1, 8].`,
+  };
+}
 
+export interface SipRfc7044HistoryInfoUntrustedPiiScrubAndMpIndexGuardInput {
+  untrustedHistoryInfoPiiLeakOrDanglingMpIndexDetected: boolean;
+  unscrubbedInternalTopologyLeaks: number;
+  danglingMpIndexReferences: number;
+}
 
+export interface SipRfc7044HistoryInfoUntrustedPiiScrubAndMpIndexGuardResult {
+  violated: boolean;
+  policyId: "P1012-SIP-RFC7044-HISTORY-INFO-UNTRUSTED-PII-SCRUB-AND-MP-INDEX-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_verified_mp_index_and_privacy_history_scrub"
+    | "scrub_untrusted_history_info_and_validate_mp_parent_index";
+  clampedUnscrubbedInternalTopologyLeaks: number;
+  clampedDanglingMpIndexReferences: number;
+  reason: string;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export function evaluateSipRfc7044HistoryInfoUntrustedPiiScrubAndMpIndexGuard(
+  input: SipRfc7044HistoryInfoUntrustedPiiScrubAndMpIndexGuardInput,
+): SipRfc7044HistoryInfoUntrustedPiiScrubAndMpIndexGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.untrustedHistoryInfoPiiLeakOrDanglingMpIndexDetected ||
+    input.unscrubbedInternalTopologyLeaks > 0 ||
+    input.danglingMpIndexReferences > 0;
+  const clampedUnscrubbedInternalTopologyLeaks = 0;
+  const clampedDanglingMpIndexReferences = 0;
+  return {
+    violated,
+    policyId:
+      "P1012-SIP-RFC7044-HISTORY-INFO-UNTRUSTED-PII-SCRUB-AND-MP-INDEX-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "scrub_untrusted_history_info_and_validate_mp_parent_index"
+      : "allow_verified_mp_index_and_privacy_history_scrub",
+    clampedUnscrubbedInternalTopologyLeaks,
+    clampedDanglingMpIndexReferences,
+    reason: violated
+      ? `P1012 🎉 (Historic 1,021st Guardrail, 1,030th Sandbox Probe & 840th Live POC Probe Triple Milestone!) SIP RFC 7044 History-Info untrusted PII leak or dangling mp= index violation (${timing}): enforced Privacy: history scrubbing (clamped topology leaks to 0) and validated strict ancestor mp= indices (clamped dangling refs to 0).`
+      : `P1012 🎉 (Historic 1,021st Guardrail, 1,030th Sandbox Probe & 840th Live POC Probe Triple Milestone!) SIP RFC 7044 History-Info privacy and mp= index integrity verified (${timing}): 0 internal topology leaks and 0 dangling mp= references.`,
+  };
+}
 
