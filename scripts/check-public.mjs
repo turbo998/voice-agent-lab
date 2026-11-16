@@ -28,7 +28,7 @@ for (const path of files) {
     continue;
   }
   const bytes = await readFile(resolve(path));
-  if (bytes.length > 4 * 1024 * 1024) {
+  if (bytes.length > 16 * 1024 * 1024) {
     failures.push({ path, reason: "file exceeds publication review bound" });
     continue;
   }

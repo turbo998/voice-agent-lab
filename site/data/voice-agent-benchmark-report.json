@@ -2245,6 +2245,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks <entry-ref>/<external> XCAP SSRF references in application/resource-lists+xml, verifies inline <entry uri> allowlists, and clamps deduplicated targets in [1, 8] (0 SSRF or unauthorized dial-outs); live URI-list XML validator latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: omits RFC 5364 copyControl=bcc supervisor nodes from outbound RFC 4575 conference-info NOTIFYs and clamps list dial-out rate in [1, 4] calls/s (0 bcc identity leaks); live conference roster serializer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "511. 🎉 [Topic 148 · Historic 75th Round, P1010, 150th FAQ & 950-Test Quadruple Milestone! 🎉: voice-webrtc-rtp-rfc9443-rfc7983-first-byte-demux-quic-dtls-stun-rtp-collision-unknown-byte-drop-faq] Enterprise WebRTC/RTP RFC 9443 / RFC 7983 Single-Port Byte-0 Demux LUT & Unallocated First-Byte Silent-Drop Guard (P1009 / P1010 🎉 — Stage 508 · Topic 148 · 🎉 Historic 75th Nightly Round, P1010 Guardrail, 150th Standalone FAQ & 950-Test Quadruple Milestone · 1,019 Guardrails & 1,028 Probes · 511 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 9443 256-slot Byte-0 lookup table isolating TURN [64, 79], QUIC Short [80, 127], and RTP/RTCP v=2 [128, 191] and clamps protocol families per port in [1, 4] (0 first-byte demux misroutes); live eBPF Byte-0 LUT latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: silently drops unallocated/unnegotiated Byte-0 UDP packets with zero error-packet reflection and clamps drop-log rate in [1, 10] logs/s (0 SRTP/DTLS parser fallthrough leaks); live socket filter drop counter latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

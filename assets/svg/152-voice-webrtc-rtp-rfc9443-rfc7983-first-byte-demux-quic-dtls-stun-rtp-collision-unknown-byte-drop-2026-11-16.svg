@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg152" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="accent152" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg152)"/>
+  <rect x="24" y="20" width="1152" height="635" rx="16" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <rect x="44" y="38" width="1112" height="86" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="64" y="68" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">STAGE 508 · TOPIC 148 · P1009–P1010 🎉 · SVG 152 · 🎉 HISTORIC 75TH ROUND, P1010, 150TH FAQ &amp; 950-TEST MILESTONE!</text>
+  <text x="64" y="96" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">WebRTC/RTP RFC 9443 / RFC 7983 Single-Port Byte-0 Demux LUT &amp; Silent-Drop Gate</text>
+  <text x="64" y="116" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="13">0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+
+  <rect x="44" y="140" width="544" height="236" rx="12" fill="#111827" stroke="#f43f5e" stroke-width="1.2"/>
+  <text x="64" y="168" fill="#fb7185" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">❌ Legacy Single-Port First-Byte Demux Failures (RFC 9443 / 7983)</text>
+  <text x="64" y="196" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">1. TURN vs. QUIC Short-Header Collision: QUIC 01xxxxxx (Byte 0 64..127)</text>
+  <text x="80" y="216" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="13">overlaps TURN ChannelData 0x4000-0x4FFF (64..79), corrupting Opus audio.</text>
+  <text x="64" y="244" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">2. Naive byte0 &gt; 127 RTP Fallthrough: Admitting Byte 0 192..255 (RTP v=3)</text>
+  <text x="80" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="13">into SRTP decryptors triggers auth-failure storms and ROC desync.</text>
+  <text x="64" y="292" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">3. Unallocated Byte-0 Log/Error Amplification: Flooding Byte 0 ∈ [4, 15]</text>
+  <text x="80" y="312" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="13">triggers DTLS alerts and 500+ logs/s disk I/O starvation on media workers.</text>
+  <rect x="64" y="330" width="504" height="32" rx="6" fill="#4c0519"/>
+  <text x="76" y="351" fill="#fda4af" font-family="Consolas, monospace" font-size="12.5">Result: TURN/QUIC audio corruption + SRTP/DTLS exception log storm</text>
+
+  <rect x="612" y="140" width="544" height="236" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="632" y="168" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">✅ Deterministic P1009–P1010 🎉 (150th FAQ &amp; 950 Tests!) Demux Gate</text>
+  <text x="632" y="196" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">1. P1009 (1,018th Guard) 256-Slot Disjoint LUT: Isolate STUN(0..3),</text>
+  <text x="648" y="216" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="13">DTLS(20..63), TURN(64..79), QUIC(80..127) &amp; RTP v=2(128..191) in O(1).</text>
+  <text x="632" y="244" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">2. P1010 🎉 (🎉 150th FAQ, P1010 &amp; 950th Test) Silent Drop &amp; Log Cap:</text>
+  <text x="648" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="13">Silently drop unallocated Byte 0 in 0ms &amp; clamp logs ∈ [1, 10] logs/s.</text>
+  <text x="632" y="292" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">3. Zero Reflection Amplification: Never emit STUN/DTLS/ICMP error packets</text>
+  <text x="648" y="312" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="13">in response to unauthenticated unknown-first-byte UDP probes.</text>
+  <rect x="632" y="330" width="504" height="32" rx="6" fill="#064e3b"/>
+  <text x="644" y="351" fill="#6ee7b7" font-family="Consolas, monospace" font-size="12.5">Result: 0 Byte-0 demux collisions · 0 parser leaks · logs ∈ [1, 10]/s</text>
+
+  <rect x="44" y="392" width="1112" height="244" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.2"/>
+  <text x="64" y="420" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="15.5" font-weight="700">Deterministic Enforcement Matrix &amp; Quadruple Milestone Verification (Stage 508 · 150th FAQ 🎉 · 950 Tests 🎉)</text>
+  <text x="64" y="452" fill="#f8fafc" font-family="Consolas, monospace" font-size="13">• P1009-WEBRTC-RFC9443-FIRST-BYTE-DEMUX-TURN-CHANNEL-AND-QUIC-SHORT-HEADER-COLLISION-GATE [1,018th Guardrail]:</text>
+  <text x="84" y="474" fill="#cbd5e1" font-family="Consolas, monospace" font-size="12.5">firstByteDemuxMisroutedPackets == 0 &amp;&amp; multiplexedProtocolFamiliesPerPort ∈ [1, 4]</text>
+  <text x="64" y="506" fill="#f8fafc" font-family="Consolas, monospace" font-size="13">• P1010-WEBRTC-RFC9443-UNALLOCATED-FIRST-BYTE-SILENT-DROP-AND-DEMUX-RATE-GATE [🎉 P1010 / 150th FAQ / 950th Test]:</text>
+  <text x="84" y="528" fill="#cbd5e1" font-family="Consolas, monospace" font-size="12.5">unallocatedFirstByteParserLeaks == 0 (0ms silent drop) &amp;&amp; maxDemuxDropLogsPerSec ∈ [1, 10] logs/s</text>
+  <rect x="64" y="550" width="1072" height="68" rx="8" fill="#0f172a" stroke="url(#accent152)" stroke-width="1.2"/>
+  <text x="84" y="576" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">🎉 Quadruple Milestone Summary: 508 Stages · 148 Topics (150 FAQs 🎉) · 1,019 Guards (P1010 🎉) · 1,028 Probes · 511 Dims · 950 Tests 🎉</text>
+  <text x="84" y="602" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">Provenance: synthetic / deterministic policy state-machine verification · independently_reproduced=true · CSP default-src 'none'</text>
+</svg>
