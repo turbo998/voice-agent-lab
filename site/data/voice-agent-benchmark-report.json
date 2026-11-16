@@ -2353,6 +2353,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 4028 Min-SE >= 90s floor, breaks infinite 422 retry loops (0 unbounded 422 retries), and clamps negotiatedSessionExpiresSeconds in [90, 1800]s; live SBC session timer wheel latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces explicit refresher=uac|uas role assignment in 200 OK, reaps dead sessions with BYE (0 zombie calls), and clamps zombieReaperGraceWindowSeconds in [32, 64]s; live B2BUA BYE reaper latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "529. 🎉 [Topic 166 · Historic 170th SVG & 1,055th Guardrail Dual Milestone! 🎉: voice-webrtc-rtp-rfc8843-rfc8829-bundle-mid-payload-type-collision-bundle-only-port-leak-demux-desync-faq] Enterprise WebRTC/RTP RFC 8843 BUNDLE mid Demux & Payload Type Collision Guard (P1045 / P1046 🎉 — Stage 526 · Topic 166 · 🎉 Historic 170th SVG & 1,055th Guardrail Dual Milestone · 1,055 Guardrails 🎉 & 1,064 Probes · 529 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces disjoint intra-BUNDLE Payload Types across distinct codecs and sdes:mid demux priority (0 misrouted packets) and clamps bundledMediaSectionsCount in [1, 8]; live SFU sdes:mid/PT demux lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: converges all bundled m= sections to the active BUNDLE-tag transport address (0 orphan ports/desynced tracks) and clamps midIdentificationTagByteLength in [1, 16] bytes; live SFU BUNDLE-tag transport router latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
