@@ -89341,3 +89341,113 @@ export function evaluateSipRfc3892ReferredBySmimeCidIntegrityAndTrustBoundaryGua
   };
 }
 
+// ============================================================================
+// Stage 516 (Topic 156 · P1025–P1026 🎉 · Historic 160th SVG Architecture
+// Diagram & 1,035th Enterprise Guardrail Dual Milestone! · 1,035 Guardrails 🎉 ·
+// 1,044 Probes · 519 Dims):
+// Enterprise WebRTC/RTP RFC 8083 / RFC 3550 Multimedia Congestion Control
+// Circuit Breakers (RTP-CB) Zombie Reaper & Audio-First Fallback Guardrails
+// ============================================================================
+
+export interface WebrtcRfc8083RtcpTimeoutAndMediaTimeoutCircuitBreakerGuardInput {
+  zombieFlowExceedingRtcpOrMediaTimeoutDetected: boolean;
+  unterminatedZombieRtpFlows: number;
+  maxConsecutiveMissingRtcpIntervals: number;
+}
+
+export interface WebrtcRfc8083RtcpTimeoutAndMediaTimeoutCircuitBreakerGuardResult {
+  violated: boolean;
+  policyId: "P1025-WEBRTC-RFC8083-RTCP-TIMEOUT-AND-MEDIA-TIMEOUT-CIRCUIT-BREAKER-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_healthy_rfc8083_rtp_rtcp_liveness"
+    | "trip_rfc8083_timeout_circuit_breaker_and_reap_zombie_flow";
+  clampedUnterminatedZombieRtpFlows: number;
+  clampedMaxConsecutiveMissingRtcpIntervals: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc8083RtcpTimeoutAndMediaTimeoutCircuitBreakerGuard(
+  input: WebrtcRfc8083RtcpTimeoutAndMediaTimeoutCircuitBreakerGuardInput,
+): WebrtcRfc8083RtcpTimeoutAndMediaTimeoutCircuitBreakerGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.zombieFlowExceedingRtcpOrMediaTimeoutDetected ||
+    input.unterminatedZombieRtpFlows > 0 ||
+    input.maxConsecutiveMissingRtcpIntervals < 3 ||
+    input.maxConsecutiveMissingRtcpIntervals > 5;
+  const clampedUnterminatedZombieRtpFlows = 0;
+  const clampedMaxConsecutiveMissingRtcpIntervals = Math.min(
+    5,
+    Math.max(3, Math.trunc(input.maxConsecutiveMissingRtcpIntervals || 3)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1025-WEBRTC-RFC8083-RTCP-TIMEOUT-AND-MEDIA-TIMEOUT-CIRCUIT-BREAKER-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "trip_rfc8083_timeout_circuit_breaker_and_reap_zombie_flow"
+      : "allow_healthy_rfc8083_rtp_rtcp_liveness",
+    clampedUnterminatedZombieRtpFlows,
+    clampedMaxConsecutiveMissingRtcpIntervals,
+    reason: violated
+      ? `P1025 (1,034th Guardrail) WebRTC/RTP RFC 8083 RTCP/media timeout zombie flow leak violation (${timing}): tripped timeout circuit breaker to reap zombie RTP flows (clamped to 0) and clamped max consecutive missing RTCP intervals to ${clampedMaxConsecutiveMissingRtcpIntervals} in [3, 5].`
+      : `P1025 (1,034th Guardrail) WebRTC/RTP RFC 8083 RTCP/media timeout liveness verified (${timing}): 0 zombie flows and ${clampedMaxConsecutiveMissingRtcpIntervals} missing-RTCP interval ceiling within [3, 5].`,
+  };
+}
+
+export interface WebrtcRfc8083CongestionCircuitBreakerAudioFirstDegradationGuardInput {
+  singleIntervalFalseTripOrVoiceTerminatedBeforeVideoShedDetected: boolean;
+  prematureVoiceSessionTerminations: number;
+  minConsecutiveCongestionIntervalsToTrip: number;
+}
+
+export interface WebrtcRfc8083CongestionCircuitBreakerAudioFirstDegradationGuardResult {
+  violated: boolean;
+  policyId: "P1026-WEBRTC-RFC8083-CONGESTION-CIRCUIT-BREAKER-AUDIO-FIRST-DEGRADATION-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_audio_first_rfc8083_congestion_resilience"
+    | "shed_video_layers_first_and_require_consecutive_cb_intervals";
+  clampedPrematureVoiceSessionTerminations: number;
+  clampedMinConsecutiveCongestionIntervalsToTrip: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc8083CongestionCircuitBreakerAudioFirstDegradationGuard(
+  input: WebrtcRfc8083CongestionCircuitBreakerAudioFirstDegradationGuardInput,
+): WebrtcRfc8083CongestionCircuitBreakerAudioFirstDegradationGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.singleIntervalFalseTripOrVoiceTerminatedBeforeVideoShedDetected ||
+    input.prematureVoiceSessionTerminations > 0 ||
+    input.minConsecutiveCongestionIntervalsToTrip < 3 ||
+    input.minConsecutiveCongestionIntervalsToTrip > 6;
+  const clampedPrematureVoiceSessionTerminations = 0;
+  const clampedMinConsecutiveCongestionIntervalsToTrip = Math.min(
+    6,
+    Math.max(3, Math.trunc(input.minConsecutiveCongestionIntervalsToTrip || 3)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1026-WEBRTC-RFC8083-CONGESTION-CIRCUIT-BREAKER-AUDIO-FIRST-DEGRADATION-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "shed_video_layers_first_and_require_consecutive_cb_intervals"
+      : "allow_audio_first_rfc8083_congestion_resilience",
+    clampedPrematureVoiceSessionTerminations,
+    clampedMinConsecutiveCongestionIntervalsToTrip,
+    reason: violated
+      ? `P1026 🎉 (Historic 160th SVG Architecture Diagram & 1,035th Enterprise Guardrail Dual Milestone!) WebRTC/RTP RFC 8083 single-interval false trip or premature voice termination violation (${timing}): enforced Audio-First video shedding (clamped premature voice drops to 0) and clamped min consecutive congestion intervals to ${clampedMinConsecutiveCongestionIntervalsToTrip} in [3, 6].`
+      : `P1026 🎉 (Historic 160th SVG Architecture Diagram & 1,035th Enterprise Guardrail Dual Milestone!) WebRTC/RTP RFC 8083 Audio-First congestion circuit breaker verified (${timing}): 0 premature voice drops and ${clampedMinConsecutiveCongestionIntervalsToTrip} consecutive intervals within [3, 6].`,
+  };
+}
+

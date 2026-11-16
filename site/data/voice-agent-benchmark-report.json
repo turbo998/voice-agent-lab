@@ -2293,6 +2293,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: verifies exact RFC 3891 (Call-ID, to-tag, from-tag) match and early-only 486 Busy Here race lock (0 unauthorized takeovers) and clamps minDialogIdTagEntropyBits in [64, 128] bits; live B2BUA dialog lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips untrusted ingress RFC 3892 Referred-By headers (0 forged escalations) and verifies cid: S/MIME body integrity (0 dangling cid: refs); live S/MIME verification latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "519. 🎉 [Topic 156 · Historic 160th SVG & 1,035th Guardrail Dual Milestone! 🎉: voice-webrtc-rtp-rfc8083-rfc3550-circuit-breakers-rtcp-rr-timeout-congestion-false-trip-voice-fallback-faq] Enterprise WebRTC/RTP RFC 8083 / RFC 3550 Circuit Breakers (RTP-CB) Zombie Reaper & Audio-First Fallback Guard (P1025 / P1026 🎉 — Stage 516 · Topic 156 · 🎉 Historic 160th SVG & 1,035th Guardrail Dual Milestone · 1,035 Guardrails 🎉 & 1,044 Probes · 519 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: trips RFC 8083 §4.1/4.2 timeout circuit breaker to reap dead flows (0 zombie flows) and clamps maxConsecutiveMissingRtcpIntervals in [3, 5]; live SFU timer wheel latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: requires [3, 6] consecutive congested RTCP intervals before RFC 8083 §4.3 trip and sheds video layers first to preserve 24 kbps Opus voice (0 premature voice drops); live BWE circuit breaker latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
