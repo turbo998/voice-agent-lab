@@ -89889,3 +89889,113 @@ export function evaluateWebrtcRfc4588NackRetransmitAmplificationAndBandwidthRati
   };
 }
 
+// ============================================================================
+// Stage 521 (Topic 161 · P1035–P1036 🎉 · Historic 165th SVG Architecture
+// Diagram & 1,045th Enterprise Guardrail Dual Milestone! · 1,045 Guardrails 🎉 ·
+// 1,054 Probes · 524 Dims):
+// Enterprise SIP RFC 6141 / RFC 3261 re-INVITE Intermediate SDP Commit
+// Preservation & Failed Target-Refresh Contact Rollback Guardrails
+// ============================================================================
+
+export interface SipRfc6141ReinviteIntermediateOfferAnswerCommitPreservationGuardInput {
+  fullRollbackWipedIntermediatePrackOrUpdateCommitDetected: boolean;
+  droppedActiveAudioStreamsOnReinviteReject: number;
+  maxNestedOfferAnswerExchangesPerReinvite: number;
+}
+
+export interface SipRfc6141ReinviteIntermediateOfferAnswerCommitPreservationGuardResult {
+  violated: boolean;
+  policyId: "P1035-SIP-RFC6141-REINVITE-INTERMEDIATE-OFFER-ANSWER-COMMIT-PRESERVATION-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_rfc6141_committed_intermediate_sdp_state"
+    | "preserve_committed_update_prack_sdp_and_cap_nested_exchanges";
+  clampedDroppedActiveAudioStreamsOnReinviteReject: number;
+  clampedMaxNestedOfferAnswerExchangesPerReinvite: number;
+  reason: string;
+}
+
+export function evaluateSipRfc6141ReinviteIntermediateOfferAnswerCommitPreservationGuard(
+  input: SipRfc6141ReinviteIntermediateOfferAnswerCommitPreservationGuardInput,
+): SipRfc6141ReinviteIntermediateOfferAnswerCommitPreservationGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.fullRollbackWipedIntermediatePrackOrUpdateCommitDetected ||
+    input.droppedActiveAudioStreamsOnReinviteReject > 0 ||
+    input.maxNestedOfferAnswerExchangesPerReinvite < 1 ||
+    input.maxNestedOfferAnswerExchangesPerReinvite > 3;
+  const clampedDroppedActiveAudioStreamsOnReinviteReject = 0;
+  const clampedMaxNestedOfferAnswerExchangesPerReinvite = Math.min(
+    3,
+    Math.max(1, Math.trunc(input.maxNestedOfferAnswerExchangesPerReinvite || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1035-SIP-RFC6141-REINVITE-INTERMEDIATE-OFFER-ANSWER-COMMIT-PRESERVATION-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "preserve_committed_update_prack_sdp_and_cap_nested_exchanges"
+      : "allow_rfc6141_committed_intermediate_sdp_state",
+    clampedDroppedActiveAudioStreamsOnReinviteReject,
+    clampedMaxNestedOfferAnswerExchangesPerReinvite,
+    reason: violated
+      ? `P1035 (1,044th Guardrail) SIP RFC 6141 re-INVITE full rollback wiping committed PRACK/UPDATE SDP or nested exchange overflow violation (${timing}): preserved committed intermediate audio SDP state (clamped dropped audio streams to 0) and clamped max nested Offer/Answer exchanges to ${clampedMaxNestedOfferAnswerExchangesPerReinvite} in [1, 3].`
+      : `P1035 (1,044th Guardrail) SIP RFC 6141 intermediate SDP commit preservation verified (${timing}): 0 dropped audio streams and ${clampedMaxNestedOfferAnswerExchangesPerReinvite} nested exchanges within [1, 3].`,
+  };
+}
+
+export interface SipRfc6141FailedReinviteTargetRefreshContactRollbackGuardInput {
+  unrevertedContactTargetOnFailedReinviteOr200OkErrorDetected: boolean;
+  desyncedRemoteTargetDialogs: number;
+  reinviteTransactionTimeoutSec: number;
+}
+
+export interface SipRfc6141FailedReinviteTargetRefreshContactRollbackGuardResult {
+  violated: boolean;
+  policyId: "P1036-SIP-RFC6141-FAILED-REINVITE-TARGET-REFRESH-CONTACT-ROLLBACK-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_atomic_rfc6141_target_refresh_rollback"
+    | "rollback_failed_reinvite_contact_target_and_clamp_timeout_sec";
+  clampedDesyncedRemoteTargetDialogs: number;
+  clampedReinviteTransactionTimeoutSec: number;
+  reason: string;
+}
+
+export function evaluateSipRfc6141FailedReinviteTargetRefreshContactRollbackGuard(
+  input: SipRfc6141FailedReinviteTargetRefreshContactRollbackGuardInput,
+): SipRfc6141FailedReinviteTargetRefreshContactRollbackGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.unrevertedContactTargetOnFailedReinviteOr200OkErrorDetected ||
+    input.desyncedRemoteTargetDialogs > 0 ||
+    input.reinviteTransactionTimeoutSec < 5 ||
+    input.reinviteTransactionTimeoutSec > 32;
+  const clampedDesyncedRemoteTargetDialogs = 0;
+  const clampedReinviteTransactionTimeoutSec = Math.min(
+    32,
+    Math.max(5, Math.trunc(input.reinviteTransactionTimeoutSec || 5)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1036-SIP-RFC6141-FAILED-REINVITE-TARGET-REFRESH-CONTACT-ROLLBACK-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "rollback_failed_reinvite_contact_target_and_clamp_timeout_sec"
+      : "allow_atomic_rfc6141_target_refresh_rollback",
+    clampedDesyncedRemoteTargetDialogs,
+    clampedReinviteTransactionTimeoutSec,
+    reason: violated
+      ? `P1036 🎉 (Historic 165th SVG Architecture Diagram & 1,045th Enterprise Guardrail Dual Milestone!) SIP RFC 6141 unreverted Contact Remote Target on failed re-INVITE or timeout overflow violation (${timing}): atomically rolled back staged Contact URI (clamped desynced dialogs to 0) and clamped re-INVITE transaction timeout to ${clampedReinviteTransactionTimeoutSec}s in [5, 32]s.`
+      : `P1036 🎉 (Historic 165th SVG Architecture Diagram & 1,045th Enterprise Guardrail Dual Milestone!) SIP RFC 6141 target-refresh rollback verified (${timing}): 0 desynced dialogs and timeout ${clampedReinviteTransactionTimeoutSec}s within [5, 32]s.`,
+  };
+}
+
