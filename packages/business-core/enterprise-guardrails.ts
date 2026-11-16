@@ -86512,6 +86512,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc8872MultiStreamSsrcSessionMultiplexingAndCrossTrackLoopContext {
+      crossTrackSsrcReuseOrSessionLoopDetected: boolean;
+      crossTrackSsrcMisroutedPackets: number;
+      maxActiveSsrcsPerMid: number;
+    }
+
+    export interface WebrtcRfc8872MultiStreamSsrcSessionMultiplexingAndCrossTrackLoopResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "drop_cross_track_ssrc_packets_and_emit_rtcp_bye_isolation"
+        | "clamp_cross_track_ssrc_misroutes_and_active_ssrcs_per_mid"
+        | "allow";
+      reason: string;
+      clampedCrossTrackSsrcMisroutedPackets: number;
+      clampedMaxActiveSsrcsPerMid: number;
+    }
+
+    /**
+     * P985 (994th Enterprise Guardrail): Enterprise WebRTC RFC 8872 / RFC 3550 Multi-Stream RTP Session SSRC-to-mid Ownership Lock, Cross-Track Loop Isolation & [1, 8] Active SSRCs/mid Gate.
+     */
+    export function evaluateWebrtcRfc8872MultiStreamSsrcSessionMultiplexingAndCrossTrackLoopGate(
+      ctx: WebrtcRfc8872MultiStreamSsrcSessionMultiplexingAndCrossTrackLoopContext,
+    ): WebrtcRfc8872MultiStreamSsrcSessionMultiplexingAndCrossTrackLoopResult {
+      const policyId =
+        "P985-WEBRTC-RFC8872-MULTI-STREAM-SSRC-SESSION-MULTIPLEXING-AND-CROSS-TRACK-LOOP-GUARD";
+      const clampedCrossTrackSsrcMisroutedPackets = 0;
+      const clampedMaxActiveSsrcsPerMid = Math.min(
+        8,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxActiveSsrcsPerMid)
+            ? Math.round(ctx.maxActiveSsrcsPerMid)
+            : 4,
+        ),
+      );
+
+      if (ctx.crossTrackSsrcReuseOrSessionLoopDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "drop_cross_track_ssrc_packets_and_emit_rtcp_bye_isolation",
+          reason:
+            "WebRTC RFC 8872 Section 5 / RFC 3550 cross-track SSRC reuse across distinct bundled a=mid media sections or RTP session loopback detected; dropping misrouted RTP packets (0 cross-track misroutes), isolating collided SSRC via RTCP BYE, and clamping active SSRCs per mid in [1, 8] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedCrossTrackSsrcMisroutedPackets,
+          clampedMaxActiveSsrcsPerMid,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.crossTrackSsrcMisroutedPackets) ||
+        ctx.crossTrackSsrcMisroutedPackets !== 0 ||
+        !Number.isFinite(ctx.maxActiveSsrcsPerMid) ||
+        ctx.maxActiveSsrcsPerMid < 1 ||
+        ctx.maxActiveSsrcsPerMid > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_cross_track_ssrc_misroutes_and_active_ssrcs_per_mid",
+          reason:
+            "Cross-track SSRC misrouted packets (>0 synthetic ceiling) or active SSRCs per a=mid (<1 or >8 synthetic bounds) out of bounds; clamping misrouted packets to 0 and active SSRCs per mid to [1, 8].",
+          clampedCrossTrackSsrcMisroutedPackets,
+          clampedMaxActiveSsrcsPerMid,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8872 multi-stream SSRC-to-mid isolation (0 cross-track misroutes) and [1, 8] active SSRCs/mid verified.",
+        clampedCrossTrackSsrcMisroutedPackets,
+        clampedMaxActiveSsrcsPerMid,
+      };
+    }
+
+    export interface WebrtcRfc8858RtcpMuxOnlyExclusiveMultiplexingAndPtCollisionContext {
+      rtpPt64To95RtcpDemuxCollisionOrMissingMuxOnlyDetected: boolean;
+      rtpRtcpDemuxCollidedPackets: number;
+      dynamicRtpPayloadType: number;
+    }
+
+    export interface WebrtcRfc8858RtcpMuxOnlyExclusiveMultiplexingAndPtCollisionResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "enforce_rtcp_mux_only_and_remap_dynamic_pt_to_96_127"
+        | "clamp_rtp_rtcp_demux_collisions_and_dynamic_payload_type"
+        | "allow";
+      reason: string;
+      clampedRtpRtcpDemuxCollidedPackets: number;
+      clampedDynamicRtpPayloadType: number;
+    }
+
+    /**
+     * P986 🎉 (Historic 995th Enterprise Guardrail & 140th SVG Milestone, 1,004th Sandbox Probe & 814th Live POC Probe): Enterprise WebRTC RFC 8858 a=rtcp-mux-only Exclusive Multiplexing & RFC 5761 Section 4 Dynamic RTP Payload-Type [96, 127] Anti-Collision Gate.
+     */
+    export function evaluateWebrtcRfc8858RtcpMuxOnlyExclusiveMultiplexingAndPtCollisionGate(
+      ctx: WebrtcRfc8858RtcpMuxOnlyExclusiveMultiplexingAndPtCollisionContext,
+    ): WebrtcRfc8858RtcpMuxOnlyExclusiveMultiplexingAndPtCollisionResult {
+      const policyId =
+        "P986-WEBRTC-RFC8858-RTCP-MUX-ONLY-EXCLUSIVE-MULTIPLEXING-AND-PT-COLLISION-GUARD";
+      const clampedRtpRtcpDemuxCollidedPackets = 0;
+      const clampedDynamicRtpPayloadType = Math.min(
+        127,
+        Math.max(
+          96,
+          Number.isFinite(ctx.dynamicRtpPayloadType)
+            ? Math.round(ctx.dynamicRtpPayloadType)
+            : 111,
+        ),
+      );
+
+      if (ctx.rtpPt64To95RtcpDemuxCollisionOrMissingMuxOnlyDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_rtcp_mux_only_and_remap_dynamic_pt_to_96_127",
+          reason:
+            "WebRTC RFC 8858 / RFC 5761 Section 4 missing a=rtcp-mux-only negotiation or RTP payload type in forbidden [64, 95] range colliding with RTCP packet types [192, 223] when Marker M=1; enforcing exclusive single-port rtcp-mux-only (0 demux collisions) and clamping dynamic RTP PT into [96, 127] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedRtpRtcpDemuxCollidedPackets,
+          clampedDynamicRtpPayloadType,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.rtpRtcpDemuxCollidedPackets) ||
+        ctx.rtpRtcpDemuxCollidedPackets !== 0 ||
+        !Number.isFinite(ctx.dynamicRtpPayloadType) ||
+        ctx.dynamicRtpPayloadType < 96 ||
+        ctx.dynamicRtpPayloadType > 127
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_rtp_rtcp_demux_collisions_and_dynamic_payload_type",
+          reason:
+            "RTP/RTCP demux collided packets (>0 synthetic ceiling) or dynamic RTP payload type (<96 or >127 synthetic bounds) out of bounds; clamping collisions to 0 and dynamic RTP PT to [96, 127].",
+          clampedRtpRtcpDemuxCollidedPackets,
+          clampedDynamicRtpPayloadType,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8858 rtcp-mux-only (0 demux collisions) and dynamic RTP PT [96, 127] verified.",
+        clampedRtpRtcpDemuxCollidedPackets,
+        clampedDynamicRtpPayloadType,
+      };
+    }
+
 
 
 

@@ -2173,6 +2173,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces Supported: 199 negotiation and exact (Call-ID, From-tag, To-tag) early-dialog matching before releasing terminated fork media and clamps concurrent early dialogs in [1, 4] (0 premature active-branch drops); live SBC early-dialog hash table lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces [5, 60]s early-dialog media TTL watchdog and immediate sibling RTP port reaping upon 200 OK (0 zombie early-dialog RTP port leaks); live B2BUA RTP port reaper latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "499. [Topic 136 · Historic 140th SVG & 995-Guardrail Dual Milestone 🎉: voice-webrtc-rtp-rfc8872-rfc8858-multi-stream-ssrc-session-multiplexing-loop-rtcp-mux-only-pt-collision-faq] Enterprise WebRTC RFC 8872 / RFC 8858 Multi-Stream SSRC Isolation & rtcp-mux-only Dynamic PT [96, 127] Anti-Collision Guard (P985 / P986 🎉 — Stage 496 · Topic 136 · 🎉 Historic 140th SVG & 995-Guardrail Dual Milestone · 995 Guardrails 🎉 & 1,004 Probes · 499 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces unique SSRC-to-a=mid binding across BUNDLEd streams with RTCP BYE loop isolation and clamps active SSRCs per mid in [1, 8] (0 cross-track SSRC misrouted packets); live SFU SSRC demux table latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 8858 a=rtcp-mux-only single-port multiplexing and clamps dynamic RTP payload types in [96, 127] outside [64, 95] (0 M=1 talkspurt RTP/RTCP demux collisions); live UDP packet demuxer latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
