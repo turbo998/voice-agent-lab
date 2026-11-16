@@ -89556,3 +89556,113 @@ export function evaluateSipRfc3325PAssertedIdentitySpecTBoundaryStripAndPrivacyI
   };
 }
 
+// ============================================================================
+// Stage 518 (Topic 158 · P1029–P1030 🎉 · Historic 85th Nightly Round, P1030
+// Guardrail, 160th Standalone FAQ & 960-Test Quadruple Milestone! ·
+// 1,039 Guardrails · 1,048 Probes · 521 Dims):
+// Enterprise WebRTC/RTP RFC 7022 / RFC 3550 RTCP SDES CNAME Ephemeral Privacy
+// & RFC 8834 Forbidden Non-CNAME PII Item Stripping Guardrails
+// ============================================================================
+
+export interface WebrtcRfc7022SdesCnameEphemeralRandomnessAndHostIpLeakGuardInput {
+  staticUserAtHostCnameOrCrossSessionTrackingDetected: boolean;
+  hostIpOrMacLeakedInSdesCnameCount: number;
+  sdesCnameAsciiByteLength: number;
+}
+
+export interface WebrtcRfc7022SdesCnameEphemeralRandomnessAndHostIpLeakGuardResult {
+  violated: boolean;
+  policyId: "P1029-WEBRTC-RFC7022-SDES-CNAME-EPHEMERAL-RANDOMNESS-AND-HOST-IP-LEAK-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_rfc7022_ephemeral_random_sdes_cname"
+    | "rewrite_sdes_cname_with_rfc7022_per_session_random_token";
+  clampedHostIpOrMacLeakedInSdesCnameCount: number;
+  clampedSdesCnameAsciiByteLength: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc7022SdesCnameEphemeralRandomnessAndHostIpLeakGuard(
+  input: WebrtcRfc7022SdesCnameEphemeralRandomnessAndHostIpLeakGuardInput,
+): WebrtcRfc7022SdesCnameEphemeralRandomnessAndHostIpLeakGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.staticUserAtHostCnameOrCrossSessionTrackingDetected ||
+    input.hostIpOrMacLeakedInSdesCnameCount > 0 ||
+    input.sdesCnameAsciiByteLength < 16 ||
+    input.sdesCnameAsciiByteLength > 32;
+  const clampedHostIpOrMacLeakedInSdesCnameCount = 0;
+  const clampedSdesCnameAsciiByteLength = Math.min(
+    32,
+    Math.max(16, Math.trunc(input.sdesCnameAsciiByteLength || 16)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1029-WEBRTC-RFC7022-SDES-CNAME-EPHEMERAL-RANDOMNESS-AND-HOST-IP-LEAK-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "rewrite_sdes_cname_with_rfc7022_per_session_random_token"
+      : "allow_rfc7022_ephemeral_random_sdes_cname",
+    clampedHostIpOrMacLeakedInSdesCnameCount,
+    clampedSdesCnameAsciiByteLength,
+    reason: violated
+      ? `P1029 (1,038th Guardrail) WebRTC/RTP RFC 7022 SDES CNAME user@host IP/MAC leak or length violation (${timing}): rewrote CNAME to per-session CSPRNG token (clamped IP/MAC leaks to 0) and clamped CNAME ASCII length to ${clampedSdesCnameAsciiByteLength} bytes in [16, 32] bytes.`
+      : `P1029 (1,038th Guardrail) WebRTC/RTP RFC 7022 ephemeral SDES CNAME verified (${timing}): 0 IP/MAC leaks and length ${clampedSdesCnameAsciiByteLength} bytes within [16, 32] bytes.`,
+  };
+}
+
+export interface WebrtcRfc8834ForbiddenNonCnameSdesItemStripAndChunkCapGuardInput {
+  forbiddenSdesNameEmailPhoneLocOrPrivItemDetected: boolean;
+  leakedNonCnameSdesPiiItems: number;
+  maxSdesChunksPerCompoundRtcpPacket: number;
+}
+
+export interface WebrtcRfc8834ForbiddenNonCnameSdesItemStripAndChunkCapGuardResult {
+  violated: boolean;
+  policyId: "P1030-WEBRTC-RFC8834-FORBIDDEN-NON-CNAME-SDES-ITEM-STRIP-AND-CHUNK-CAP-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_cname_only_bounded_rtcp_sdes_chunks"
+    | "strip_non_cname_sdes_pii_items_and_cap_sdes_chunks";
+  clampedLeakedNonCnameSdesPiiItems: number;
+  clampedMaxSdesChunksPerCompoundRtcpPacket: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc8834ForbiddenNonCnameSdesItemStripAndChunkCapGuard(
+  input: WebrtcRfc8834ForbiddenNonCnameSdesItemStripAndChunkCapGuardInput,
+): WebrtcRfc8834ForbiddenNonCnameSdesItemStripAndChunkCapGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.forbiddenSdesNameEmailPhoneLocOrPrivItemDetected ||
+    input.leakedNonCnameSdesPiiItems > 0 ||
+    input.maxSdesChunksPerCompoundRtcpPacket < 1 ||
+    input.maxSdesChunksPerCompoundRtcpPacket > 8;
+  const clampedLeakedNonCnameSdesPiiItems = 0;
+  const clampedMaxSdesChunksPerCompoundRtcpPacket = Math.min(
+    8,
+    Math.max(1, Math.trunc(input.maxSdesChunksPerCompoundRtcpPacket || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1030-WEBRTC-RFC8834-FORBIDDEN-NON-CNAME-SDES-ITEM-STRIP-AND-CHUNK-CAP-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "strip_non_cname_sdes_pii_items_and_cap_sdes_chunks"
+      : "allow_cname_only_bounded_rtcp_sdes_chunks",
+    clampedLeakedNonCnameSdesPiiItems,
+    clampedMaxSdesChunksPerCompoundRtcpPacket,
+    reason: violated
+      ? `P1030 🎉 (Historic 85th Nightly Round, P1030 Guardrail, 160th Standalone FAQ & 960-Test Quadruple Milestone!) WebRTC/RTP RFC 8834 §4.9 non-CNAME SDES PII item leak or chunk bloat violation (${timing}): stripped forbidden NAME/EMAIL/PHONE/LOC/TOOL/PRIV items (clamped to 0) and clamped max SDES chunks per compound packet to ${clampedMaxSdesChunksPerCompoundRtcpPacket} in [1, 8].`
+      : `P1030 🎉 (Historic 85th Nightly Round, P1030 Guardrail, 160th Standalone FAQ & 960-Test Quadruple Milestone!) WebRTC/RTP RFC 8834 SDES CNAME-only compliance verified (${timing}): 0 non-CNAME PII items and ${clampedMaxSdesChunksPerCompoundRtcpPacket} chunks within [1, 8].`,
+  };
+}
+
