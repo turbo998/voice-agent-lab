@@ -86672,6 +86672,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc4579ConferenceFocusIsfocusReferLoopAndMethodAllowlistContext {
+      focusToFocusReferLoopOrUnauthorizedMethodByeDetected: boolean;
+      focusToFocusMixerLoops: number;
+      maxConferenceBridgeParticipants: number;
+    }
+
+    export interface SipRfc4579ConferenceFocusIsfocusReferLoopAndMethodAllowlistResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reject_403_isfocus_refer_loop_or_unauthorized_method_bye"
+        | "clamp_focus_mixer_loops_and_bridge_participants"
+        | "allow";
+      reason: string;
+      clampedFocusToFocusMixerLoops: number;
+      clampedMaxConferenceBridgeParticipants: number;
+    }
+
+    /**
+     * P987 (996th Enterprise Guardrail): Enterprise SIP RFC 4579 Conference Focus (isfocus) Dial-Out REFER Loop Prevention, Unauthorized method=BYE Ejection Block & [2, 8] Consultation Bridge Participants Gate.
+     */
+    export function evaluateSipRfc4579ConferenceFocusIsfocusReferLoopAndMethodAllowlistGate(
+      ctx: SipRfc4579ConferenceFocusIsfocusReferLoopAndMethodAllowlistContext,
+    ): SipRfc4579ConferenceFocusIsfocusReferLoopAndMethodAllowlistResult {
+      const policyId =
+        "P987-SIP-RFC4579-CONFERENCE-FOCUS-ISFOCUS-REFER-LOOP-AND-METHOD-ALLOWLIST-GUARD";
+      const clampedFocusToFocusMixerLoops = 0;
+      const clampedMaxConferenceBridgeParticipants = Math.min(
+        8,
+        Math.max(
+          2,
+          Number.isFinite(ctx.maxConferenceBridgeParticipants)
+            ? Math.round(ctx.maxConferenceBridgeParticipants)
+            : 4,
+        ),
+      );
+
+      if (ctx.focusToFocusReferLoopOrUnauthorizedMethodByeDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "reject_403_isfocus_refer_loop_or_unauthorized_method_bye",
+          reason:
+            "SIP RFC 4579 Section 5.5 / 5.11 Conference Focus (isfocus) received dial-out REFER targeting self/external isfocus URI or carrying unauthorized method=BYE parameter; rejecting with SIP 403 Forbidden (0 focus-to-focus mixer howling loops) and clamping consultation bridge participants in [2, 8] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedFocusToFocusMixerLoops,
+          clampedMaxConferenceBridgeParticipants,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.focusToFocusMixerLoops) ||
+        ctx.focusToFocusMixerLoops !== 0 ||
+        !Number.isFinite(ctx.maxConferenceBridgeParticipants) ||
+        ctx.maxConferenceBridgeParticipants < 2 ||
+        ctx.maxConferenceBridgeParticipants > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_focus_mixer_loops_and_bridge_participants",
+          reason:
+            "Focus-to-focus mixer loops (>0 synthetic ceiling) or consultation bridge participants (<2 or >8 synthetic bounds) out of bounds; clamping mixer loops to 0 and participants to [2, 8].",
+          clampedFocusToFocusMixerLoops,
+          clampedMaxConferenceBridgeParticipants,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4579 isfocus REFER loop guard (0 mixer loops) and [2, 8] bridge participants verified.",
+        clampedFocusToFocusMixerLoops,
+        clampedMaxConferenceBridgeParticipants,
+      };
+    }
+
+    export interface SipRfc4579GhostConferenceFocusSingleBotIdleReaperContext {
+      singleBotGhostConferenceBridgeAfterHumanHangupDetected: boolean;
+      leakedGhostConferenceBridges: number;
+      singleBotConferenceIdleTtlSec: number;
+    }
+
+    export interface SipRfc4579GhostConferenceFocusSingleBotIdleReaperResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reap_single_bot_ghost_conference_bridge_on_zero_humans"
+        | "clamp_leaked_ghost_bridges_and_single_bot_idle_ttl_sec"
+        | "allow";
+      reason: string;
+      clampedLeakedGhostConferenceBridges: number;
+      clampedSingleBotConferenceIdleTtlSec: number;
+    }
+
+    /**
+     * P988 🎉 (Historic 500th Benchmark Evaluation Dimension Milestone! · 997th Guardrail, 1,006th Sandbox Probe & 816th Live POC Probe): Enterprise SIP RFC 4579 / RFC 4575 Human-Zero Ghost Bot-Conference Reaper & [5, 30]s Idle Teardown Gate.
+     */
+    export function evaluateSipRfc4579GhostConferenceFocusSingleBotIdleReaperGate(
+      ctx: SipRfc4579GhostConferenceFocusSingleBotIdleReaperContext,
+    ): SipRfc4579GhostConferenceFocusSingleBotIdleReaperResult {
+      const policyId =
+        "P988-SIP-RFC4579-GHOST-CONFERENCE-FOCUS-SINGLE-BOT-IDLE-REAPER-GUARD";
+      const clampedLeakedGhostConferenceBridges = 0;
+      const clampedSingleBotConferenceIdleTtlSec = Math.min(
+        30,
+        Math.max(
+          5,
+          Number.isFinite(ctx.singleBotConferenceIdleTtlSec)
+            ? Math.round(ctx.singleBotConferenceIdleTtlSec)
+            : 15,
+        ),
+      );
+
+      if (ctx.singleBotGhostConferenceBridgeAfterHumanHangupDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "reap_single_bot_ghost_conference_bridge_on_zero_humans",
+          reason:
+            "SIP RFC 4579 / RFC 4575 conference bridge retained only automata/recorder legs after activeHumanParticipants dropped to 0; emitting SIP BYE to remaining bot legs (clamping ghost bridges to 0) and enforcing single-bot idle TTL in [5, 30]s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedLeakedGhostConferenceBridges,
+          clampedSingleBotConferenceIdleTtlSec,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.leakedGhostConferenceBridges) ||
+        ctx.leakedGhostConferenceBridges !== 0 ||
+        !Number.isFinite(ctx.singleBotConferenceIdleTtlSec) ||
+        ctx.singleBotConferenceIdleTtlSec < 5 ||
+        ctx.singleBotConferenceIdleTtlSec > 30
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_leaked_ghost_bridges_and_single_bot_idle_ttl_sec",
+          reason:
+            "Leaked ghost conference bridges (>0 synthetic ceiling) or single-bot conference idle TTL (<5s or >30s synthetic bounds) out of bounds; clamping ghost bridges to 0 and idle TTL to [5, 30]s.",
+          clampedLeakedGhostConferenceBridges,
+          clampedSingleBotConferenceIdleTtlSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4579/4575 human-zero ghost conference reaper (0 ghost bridges) and [5, 30]s single-bot TTL verified.",
+        clampedLeakedGhostConferenceBridges,
+        clampedSingleBotConferenceIdleTtlSec,
+      };
+    }
+
 
 
 

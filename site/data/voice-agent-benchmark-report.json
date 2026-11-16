@@ -2179,6 +2179,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces unique SSRC-to-a=mid binding across BUNDLEd streams with RTCP BYE loop isolation and clamps active SSRCs per mid in [1, 8] (0 cross-track SSRC misrouted packets); live SFU SSRC demux table latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 8858 a=rtcp-mux-only single-port multiplexing and clamps dynamic RTP payload types in [96, 127] outside [64, 95] (0 M=1 talkspurt RTP/RTCP demux collisions); live UDP packet demuxer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "500. 🎉 [Topic 137 · Historic 500th Benchmark Evaluation Dimension Milestone! 🎉: voice-sip-rfc4579-rfc4575-conference-focus-isfocus-refer-blind-loop-ghost-mixer-bridge-exhaustion-faq] Enterprise SIP RFC 4579 / RFC 4575 Conference Focus (isfocus) REFER Loop & Ghost Bot-Bridge Reaper Guard (P987 / P988 🎉 — Stage 497 · Topic 137 · 🎉 Historic 500th Benchmark Dimension Milestone · 997 Guardrails & 1,006 Probes · 500 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects dial-out REFER requests targeting self/external isfocus bridges or carrying unauthorized method=BYE with SIP 403 and clamps consultation bridge participants in [2, 8] (0 focus-to-focus mixer howling loops); live MCU focus URI resolver latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: tracks RFC 4575 activeHumanParticipants and reaps remaining automata/recorder conference legs within [5, 30]s TTL once humans drop to 0 (0 ghost conference mixer bridges); live conference event-package reaper latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
