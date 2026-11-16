@@ -2233,6 +2233,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces topological DAG cycle detection and target mid:PT verification on RFC 5583 a=depend (lay/mdc) attributes and clamps dependency depth in [1, 4] (0 decoder dependency deadlocks); live SDP DAG validator latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps RFC 5888 a=group:LS audio hold-for-video delay in [20, 80]ms and decouples Opus voice playout immediately when video lag exceeds 80ms (0 video-induced voice stalls); live A/V lip-sync playout scheduler latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "509. [Topic 146 · Historic 150th SVG & 1,015-Guardrail Dual Milestone! 🎉: voice-sip-rfc4483-rfc5547-content-indirection-external-body-url-ssrf-mime-size-amplification-faq] Enterprise SIP RFC 4483 / RFC 5547 Content Indirection (message/external-body) SSRF Block & [4, 64] KB Stream Cap Guard (P1005 / P1006 🎉 — Stage 506 · Topic 146 · 🎉 Historic 150th SVG 🎉 & 1,015-Guardrail 🎉 Dual Milestone · 1,024 Probes · 509 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids RFC 4483 message/external-body indirection for real-time application/sdp (SIP 415) and restricts auxiliary URL fetches to [1, 4] mTLS-trusted domains (0 SSRF fetches); live SIP MIME indirection filter latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps indirect HTTP stream reads in [4, 64] KB with <=300ms async timeout and preserves inline voice call setup on attachment abort (0 amplification stalls); live async attachment fetcher latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

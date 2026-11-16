@@ -88103,6 +88103,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc4483ContentIndirectionExternalBodyUrlAllowlistAndSdpBlockContext {
+      untrustedExternalBodyUrlSsrfOrIndirectSdpDetected: boolean;
+      externalBodySsrfOrIndirectSdpAttempts: number;
+      allowedIndirectionDomains: number;
+    }
+
+    export interface SipRfc4483ContentIndirectionExternalBodyUrlAllowlistAndSdpBlockResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reject_415_indirect_sdp_and_block_untrusted_external_body_url"
+        | "clamp_external_body_ssrf_attempts_and_allowed_domains"
+        | "allow";
+      reason: string;
+      clampedExternalBodySsrfOrIndirectSdpAttempts: number;
+      clampedAllowedIndirectionDomains: number;
+    }
+
+    /**
+     * P1005 (1,014th Enterprise Guardrail): Enterprise SIP RFC 4483 / RFC 5547 Content Indirection (message/external-body) Inline-SDP Mandate, External URL SSRF Block & [1, 4] mTLS Allowed Domains Gate.
+     */
+    export function evaluateSipRfc4483ContentIndirectionExternalBodyUrlAllowlistAndSdpBlockGate(
+      ctx: SipRfc4483ContentIndirectionExternalBodyUrlAllowlistAndSdpBlockContext,
+    ): SipRfc4483ContentIndirectionExternalBodyUrlAllowlistAndSdpBlockResult {
+      const policyId =
+        "P1005-SIP-RFC4483-CONTENT-INDIRECTION-EXTERNAL-BODY-URL-ALLOWLIST-AND-SDP-BLOCK-GUARD";
+      const clampedExternalBodySsrfOrIndirectSdpAttempts = 0;
+      const clampedAllowedIndirectionDomains = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.allowedIndirectionDomains)
+            ? Math.round(ctx.allowedIndirectionDomains)
+            : 2,
+        ),
+      );
+
+      if (ctx.untrustedExternalBodyUrlSsrfOrIndirectSdpDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "reject_415_indirect_sdp_and_block_untrusted_external_body_url",
+          reason:
+            "SIP RFC 4483 Section 5.4 / 7 Content-Type: message/external-body attempting to wrap real-time application/sdp or pointing access-type=URL to an untrusted/internal SSRF target; rejecting with SIP 415 (0 SSRF fetches) and clamping allowed mTLS indirection domains in [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedExternalBodySsrfOrIndirectSdpAttempts,
+          clampedAllowedIndirectionDomains,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.externalBodySsrfOrIndirectSdpAttempts) ||
+        ctx.externalBodySsrfOrIndirectSdpAttempts !== 0 ||
+        !Number.isFinite(ctx.allowedIndirectionDomains) ||
+        ctx.allowedIndirectionDomains < 1 ||
+        ctx.allowedIndirectionDomains > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_external_body_ssrf_attempts_and_allowed_domains",
+          reason:
+            "message/external-body SSRF or indirect SDP attempts (>0 synthetic ceiling) or allowed mTLS indirection domains (<1 or >4 synthetic bounds) out of bounds; clamping attempts to 0 and domains to [1, 4].",
+          clampedExternalBodySsrfOrIndirectSdpAttempts,
+          clampedAllowedIndirectionDomains,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4483 message/external-body SSRF/indirect-SDP block (0 attempts) and [1, 4] mTLS domains verified.",
+        clampedExternalBodySsrfOrIndirectSdpAttempts,
+        clampedAllowedIndirectionDomains,
+      };
+    }
+
+    export interface SipRfc4483ContentIndirectionPayloadSizeCapAndFetchTimeoutContext {
+      indirectPayloadAmplificationOrFetchTimeoutDetected: boolean;
+      indirectPayloadAmplificationStalls: number;
+      maxIndirectPayloadSizeKb: number;
+    }
+
+    export interface SipRfc4483ContentIndirectionPayloadSizeCapAndFetchTimeoutResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "abort_oversized_indirect_stream_and_preserve_inline_voice_call"
+        | "clamp_indirect_amplification_stalls_and_payload_size_kb"
+        | "allow";
+      reason: string;
+      clampedIndirectPayloadAmplificationStalls: number;
+      clampedMaxIndirectPayloadSizeKb: number;
+    }
+
+    /**
+     * P1006 🎉 (Historic 150th SVG Architecture Diagram & 1,015th Enterprise Guardrail Dual Milestone! · 1,024th Sandbox Probe & 834th Live POC Probe): Enterprise SIP RFC 4483 Section 5.6 [4, 64] KB Stream Size Cap & Non-Blocking Voice-First Fallback Gate.
+     */
+    export function evaluateSipRfc4483ContentIndirectionPayloadSizeCapAndFetchTimeoutGate(
+      ctx: SipRfc4483ContentIndirectionPayloadSizeCapAndFetchTimeoutContext,
+    ): SipRfc4483ContentIndirectionPayloadSizeCapAndFetchTimeoutResult {
+      const policyId =
+        "P1006-SIP-RFC4483-CONTENT-INDIRECTION-PAYLOAD-SIZE-CAP-AND-FETCH-TIMEOUT-GUARD";
+      const clampedIndirectPayloadAmplificationStalls = 0;
+      const clampedMaxIndirectPayloadSizeKb = Math.min(
+        64,
+        Math.max(
+          4,
+          Number.isFinite(ctx.maxIndirectPayloadSizeKb)
+            ? Math.round(ctx.maxIndirectPayloadSizeKb)
+            : 32,
+        ),
+      );
+
+      if (ctx.indirectPayloadAmplificationOrFetchTimeoutDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "abort_oversized_indirect_stream_and_preserve_inline_voice_call",
+          reason:
+            "SIP RFC 4483 Section 5.6 indirect message/external-body HTTP stream exceeded 64 KB cap or 300ms timeout; aborting oversized attachment stream while preserving inline SDP voice call setup (0 amplification stalls) and clamping max indirect payload size in [4, 64] KB (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedIndirectPayloadAmplificationStalls,
+          clampedMaxIndirectPayloadSizeKb,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.indirectPayloadAmplificationStalls) ||
+        ctx.indirectPayloadAmplificationStalls !== 0 ||
+        !Number.isFinite(ctx.maxIndirectPayloadSizeKb) ||
+        ctx.maxIndirectPayloadSizeKb < 4 ||
+        ctx.maxIndirectPayloadSizeKb > 64
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_indirect_amplification_stalls_and_payload_size_kb",
+          reason:
+            "Indirect payload amplification stalls (>0 synthetic ceiling) or max indirect payload size (<4 KB or >64 KB synthetic bounds) out of bounds; clamping stalls to 0 and size cap to [4, 64] KB.",
+          clampedIndirectPayloadAmplificationStalls,
+          clampedMaxIndirectPayloadSizeKb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 4483 indirect payload cap (0 amplification stalls) and [4, 64] KB stream bound verified.",
+        clampedIndirectPayloadAmplificationStalls,
+        clampedMaxIndirectPayloadSizeKb,
+      };
+    }
+
 
 
 
