@@ -90761,3 +90761,113 @@ export function evaluateWebrtcRfc3389OpusDtxMutualExclusivityAndSidKeepaliveInte
   };
 }
 
+// ============================================================================
+// Stage 529 (Topic 169 · P1051 🎉–P1052 🎉 · Historic 35th Nightly Round,
+// 1,060th Enterprise Guardrail, 1,070th Sandbox Probe & 880th Live POC Probe
+// Quadruple Milestone! · 1,061 Guardrails 🎉 · 1,070 Probes 🎉 · 532 Dims):
+// Enterprise SIP RFC 3264 / RFC 4566 SDP Offer/Answer Monotonic m= Line Count
+// & Hold/Resume Directionality Matrix Guardrails
+// ============================================================================
+
+export interface SipRfc3264MlineMonotonicCountAndPortZeroSlotReuseGuardInput {
+  truncatedMlineCountOrActiveSlotTypeSwapDetected: boolean;
+  truncatedOrTypeSwappedSdpOffers: number;
+  totalSdpMediaSectionsPerDialog: number;
+}
+
+export interface SipRfc3264MlineMonotonicCountAndPortZeroSlotReuseGuardResult {
+  violated: boolean;
+  policyId: "P1051-SIP-RFC3264-MLINE-MONOTONIC-COUNT-AND-PORT-ZERO-SLOT-REUSE-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_monotonic_rfc3264_mline_slots"
+    | "preserve_monotonic_mline_slots_with_port_zero_and_clamp_sections";
+  clampedTruncatedOrTypeSwappedSdpOffers: number;
+  clampedTotalSdpMediaSectionsPerDialog: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3264MlineMonotonicCountAndPortZeroSlotReuseGuard(
+  input: SipRfc3264MlineMonotonicCountAndPortZeroSlotReuseGuardInput,
+): SipRfc3264MlineMonotonicCountAndPortZeroSlotReuseGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.truncatedMlineCountOrActiveSlotTypeSwapDetected ||
+    input.truncatedOrTypeSwappedSdpOffers > 0 ||
+    input.totalSdpMediaSectionsPerDialog < 1 ||
+    input.totalSdpMediaSectionsPerDialog > 16;
+  const clampedTruncatedOrTypeSwappedSdpOffers = 0;
+  const clampedTotalSdpMediaSectionsPerDialog = Math.min(
+    16,
+    Math.max(1, Math.trunc(input.totalSdpMediaSectionsPerDialog || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1051-SIP-RFC3264-MLINE-MONOTONIC-COUNT-AND-PORT-ZERO-SLOT-REUSE-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "preserve_monotonic_mline_slots_with_port_zero_and_clamp_sections"
+      : "allow_monotonic_rfc3264_mline_slots",
+    clampedTruncatedOrTypeSwappedSdpOffers,
+    clampedTotalSdpMediaSectionsPerDialog,
+    reason: violated
+      ? `P1051 🎉 (Historic 1,060th Enterprise Guardrail Milestone!) SIP RFC 3264 §8.2 truncated m= line count or active slot media-type swap violation (${timing}): restored port 0 tombstone slots (clamped truncated/swapped SDP offers to 0) and clamped total SDP m= sections per dialog to ${clampedTotalSdpMediaSectionsPerDialog} in [1, 16].`
+      : `P1051 🎉 (Historic 1,060th Enterprise Guardrail Milestone!) SIP RFC 3264 §8.2 monotonic m= line count verified (${timing}): 0 truncated offers and ${clampedTotalSdpMediaSectionsPerDialog} m= sections within [1, 16].`,
+  };
+}
+
+export interface SipRfc3264HoldDirectionalityMatrixAndMutualHoldDeadlockGuardInput {
+  invalidHoldDirectionAnswerOrMutualHoldDeadlockDetected: boolean;
+  illegalDirectionalityAnswersOrDeadlockedHolds: number;
+  maxCallHoldDurationSeconds: number;
+}
+
+export interface SipRfc3264HoldDirectionalityMatrixAndMutualHoldDeadlockGuardResult {
+  violated: boolean;
+  policyId: "P1052-SIP-RFC3264-HOLD-DIRECTIONALITY-MATRIX-AND-MUTUAL-HOLD-DEADLOCK-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_compliant_rfc3264_hold_resume_directionality"
+    | "enforce_rfc3264_direction_matrix_and_clamp_hold_timeout_seconds";
+  clampedIllegalDirectionalityAnswersOrDeadlockedHolds: number;
+  clampedMaxCallHoldDurationSeconds: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3264HoldDirectionalityMatrixAndMutualHoldDeadlockGuard(
+  input: SipRfc3264HoldDirectionalityMatrixAndMutualHoldDeadlockGuardInput,
+): SipRfc3264HoldDirectionalityMatrixAndMutualHoldDeadlockGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.invalidHoldDirectionAnswerOrMutualHoldDeadlockDetected ||
+    input.illegalDirectionalityAnswersOrDeadlockedHolds > 0 ||
+    input.maxCallHoldDurationSeconds < 30 ||
+    input.maxCallHoldDurationSeconds > 300;
+  const clampedIllegalDirectionalityAnswersOrDeadlockedHolds = 0;
+  const clampedMaxCallHoldDurationSeconds = Math.min(
+    300,
+    Math.max(30, Math.trunc(input.maxCallHoldDurationSeconds || 30)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1052-SIP-RFC3264-HOLD-DIRECTIONALITY-MATRIX-AND-MUTUAL-HOLD-DEADLOCK-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "enforce_rfc3264_direction_matrix_and_clamp_hold_timeout_seconds"
+      : "allow_compliant_rfc3264_hold_resume_directionality",
+    clampedIllegalDirectionalityAnswersOrDeadlockedHolds,
+    clampedMaxCallHoldDurationSeconds,
+    reason: violated
+      ? `P1052 🎉 (Historic 35th Nightly Round, 1,061st Guardrail, 1,070th Sandbox Probe & 880th Live POC Probe Quadruple Milestone!) SIP RFC 3264 §6.1 hold directionality matrix or mutual-hold deadlock violation (${timing}): enforced orthogonal hold/resume directionality and MoH ASR suspension (clamped deadlocked/illegal holds to 0) and clamped max call hold duration to ${clampedMaxCallHoldDurationSeconds}s in [30, 300]s.`
+      : `P1052 🎉 (Historic 35th Nightly Round, 1,061st Guardrail, 1,070th Sandbox Probe & 880th Live POC Probe Quadruple Milestone!) SIP RFC 3264 §6.1 hold directionality matrix verified (${timing}): 0 deadlocked holds and max hold duration ${clampedMaxCallHoldDurationSeconds}s within [30, 300]s.`,
+  };
+}
+

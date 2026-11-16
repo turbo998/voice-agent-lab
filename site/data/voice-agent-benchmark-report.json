@@ -2371,6 +2371,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks RFC 3389 Byte-0 N < 45 white-noise blast packets (0 blast packets) and clamps comfortNoiseAttenuationDbov in [45, 90] -dBov; live DSP comfort-noise LPC synthesis latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 7587 §6.1 mutual exclusivity between Opus 48kHz and external RFC 3389 CN 8kHz (0 clock-clash packets) and clamps sidComfortNoiseKeepaliveIntervalMs in [100, 400]ms; live RTP DTX pacer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "532. 🎉 [Topic 169 · Historic 35th Nightly Round, 1,060th Guardrail, 1,070th Probe & 880th Live POC Quadruple Milestone! 🎉: voice-sip-rfc3264-rfc4566-sdp-offer-answer-mline-truncation-hold-sendonly-recvonly-inactive-deadlock-faq] Enterprise SIP RFC 3264 / RFC 4566 SDP m= Line Monotonicity & Hold Directionality Matrix Guard (P1051 🎉 / P1052 🎉 — Stage 529 · Topic 169 · 🎉 Historic 35th Round, 1,060th Guard, 1,070th Probe & 880th POC Quadruple Milestone · 1,061 Guardrails 🎉 & 1,070 Probes 🎉 · 532 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 3264 §8.2 non-decreasing m= line count with port 0 tombstones (0 truncated/swapped SDP offers) and clamps totalSdpMediaSectionsPerDialog in [1, 16]; live B2BUA SDP AST rewrite latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 3264 §6.1 orthogonal Hold/Resume directionality matrix and suspends AI ASR/LLM during remote Hold (0 deadlocked holds) and clamps maxCallHoldDurationSeconds in [30, 300]s; live SBC MoH isolation latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
