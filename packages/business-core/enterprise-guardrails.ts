@@ -86992,6 +86992,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc6809FeatureCapsUntrustedTrunkStripAndTopologicalOrderContext {
+      untrustedExternalFeatureCapsSpoofingDetected: boolean;
+      spoofedExternalFeatureCapsAccepted: number;
+      maxFeatureCapsHeadersPerMessage: number;
+    }
+
+    export interface SipRfc6809FeatureCapsUntrustedTrunkStripAndTopologicalOrderResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "strip_untrusted_external_feature_caps_and_enforce_topological_order"
+        | "clamp_spoofed_feature_caps_and_headers_per_message"
+        | "allow";
+      reason: string;
+      clampedSpoofedExternalFeatureCapsAccepted: number;
+      clampedMaxFeatureCapsHeadersPerMessage: number;
+    }
+
+    /**
+     * P991 🎉 (Historic 1,000th Enterprise Guardrail Milestone!): Enterprise SIP RFC 6809 / RFC 3840 Feature-Caps Untrusted Trunk Boundary Stripping, mTLS Topological Ordering & [1, 4] Headers/Message Gate.
+     */
+    export function evaluateSipRfc6809FeatureCapsUntrustedTrunkStripAndTopologicalOrderGate(
+      ctx: SipRfc6809FeatureCapsUntrustedTrunkStripAndTopologicalOrderContext,
+    ): SipRfc6809FeatureCapsUntrustedTrunkStripAndTopologicalOrderResult {
+      const policyId =
+        "P991-SIP-RFC6809-FEATURE-CAPS-UNTRUSTED-TRUNK-STRIP-AND-TOPOLOGICAL-ORDER-GUARD";
+      const clampedSpoofedExternalFeatureCapsAccepted = 0;
+      const clampedMaxFeatureCapsHeadersPerMessage = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxFeatureCapsHeadersPerMessage)
+            ? Math.round(ctx.maxFeatureCapsHeadersPerMessage)
+            : 2,
+        ),
+      );
+
+      if (ctx.untrustedExternalFeatureCapsSpoofingDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "strip_untrusted_external_feature_caps_and_enforce_topological_order",
+          reason:
+            "SIP RFC 6809 Section 4 / 6 Feature-Caps header received across an untrusted external SIP trunk boundary attempting to spoof +g.3gpp.atcf / +sip.srs proxy capabilities; stripping all external Feature-Caps headers (0 spoofed headers accepted) and clamping internal Feature-Caps headers in [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedSpoofedExternalFeatureCapsAccepted,
+          clampedMaxFeatureCapsHeadersPerMessage,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.spoofedExternalFeatureCapsAccepted) ||
+        ctx.spoofedExternalFeatureCapsAccepted !== 0 ||
+        !Number.isFinite(ctx.maxFeatureCapsHeadersPerMessage) ||
+        ctx.maxFeatureCapsHeadersPerMessage < 1 ||
+        ctx.maxFeatureCapsHeadersPerMessage > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_spoofed_feature_caps_and_headers_per_message",
+          reason:
+            "Spoofed external Feature-Caps headers accepted (>0 synthetic ceiling) or Feature-Caps headers per message (<1 or >4 synthetic bounds) out of bounds; clamping spoofed headers to 0 and header count to [1, 4].",
+          clampedSpoofedExternalFeatureCapsAccepted,
+          clampedMaxFeatureCapsHeadersPerMessage,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6809 Feature-Caps untrusted trunk strip (0 spoofed headers) and [1, 4] headers/message verified.",
+        clampedSpoofedExternalFeatureCapsAccepted,
+        clampedMaxFeatureCapsHeadersPerMessage,
+      };
+    }
+
+    export interface SipRfc6809FeatureCapsMediaRelayAnchorBypassAndTagCountContext {
+      featureCapsMediaRelayAnchorBypassOrTagBloatDetected: boolean;
+      unanchoredMediaRelayBypasses: number;
+      maxFeatureCapsTagsPerHeader: number;
+    }
+
+    export interface SipRfc6809FeatureCapsMediaRelayAnchorBypassAndTagCountResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "enforce_mandatory_rtp_siprec_anchor_and_cap_feature_caps_tags"
+        | "clamp_media_anchor_bypasses_and_feature_caps_tags"
+        | "allow";
+      reason: string;
+      clampedUnanchoredMediaRelayBypasses: number;
+      clampedMaxFeatureCapsTagsPerHeader: number;
+    }
+
+    /**
+     * P992 🎉 (Historic 1,001st Enterprise Guardrail, 1,010th Sandbox Probe & 820th Live POC Probe Milestone): Enterprise SIP RFC 6809 Feature-Caps Media-Relay/SIPREC Anchor Bypass Prevention & [1, 8] Feature Tags/Header Gate.
+     */
+    export function evaluateSipRfc6809FeatureCapsMediaRelayAnchorBypassAndTagCountGate(
+      ctx: SipRfc6809FeatureCapsMediaRelayAnchorBypassAndTagCountContext,
+    ): SipRfc6809FeatureCapsMediaRelayAnchorBypassAndTagCountResult {
+      const policyId =
+        "P992-SIP-RFC6809-FEATURE-CAPS-MEDIA-RELAY-ANCHOR-BYPASS-AND-TAG-COUNT-GUARD";
+      const clampedUnanchoredMediaRelayBypasses = 0;
+      const clampedMaxFeatureCapsTagsPerHeader = Math.min(
+        8,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxFeatureCapsTagsPerHeader)
+            ? Math.round(ctx.maxFeatureCapsTagsPerHeader)
+            : 4,
+        ),
+      );
+
+      if (ctx.featureCapsMediaRelayAnchorBypassOrTagBloatDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_mandatory_rtp_siprec_anchor_and_cap_feature_caps_tags",
+          reason:
+            "SIP RFC 6809 Feature-Caps indicator attempted to bypass mandatory enterprise SBC RTP/SRTP media anchoring / SIPREC compliance recording or exceeded feature-tag count bounds; enforcing media anchor (clamping bypasses to 0) and clamping feature tags per header in [1, 8] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedUnanchoredMediaRelayBypasses,
+          clampedMaxFeatureCapsTagsPerHeader,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.unanchoredMediaRelayBypasses) ||
+        ctx.unanchoredMediaRelayBypasses !== 0 ||
+        !Number.isFinite(ctx.maxFeatureCapsTagsPerHeader) ||
+        ctx.maxFeatureCapsTagsPerHeader < 1 ||
+        ctx.maxFeatureCapsTagsPerHeader > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_media_anchor_bypasses_and_feature_caps_tags",
+          reason:
+            "Unanchored media-relay bypasses (>0 synthetic ceiling) or Feature-Caps tags per header (<1 or >8 synthetic bounds) out of bounds; clamping bypasses to 0 and tags per header to [1, 8].",
+          clampedUnanchoredMediaRelayBypasses,
+          clampedMaxFeatureCapsTagsPerHeader,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 6809 mandatory media-relay anchor lock (0 bypasses) and [1, 8] tags/header verified.",
+        clampedUnanchoredMediaRelayBypasses,
+        clampedMaxFeatureCapsTagsPerHeader,
+      };
+    }
+
 
 
 

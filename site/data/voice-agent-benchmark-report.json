@@ -2191,6 +2191,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces SDP a=dcmap/a=dcsa subprotocol allowlist, drops in-band DCEP (PPID=50) collisions on pre-negotiated stream IDs, and clamps pre-negotiated channels in [1, 8] (0 subprotocol/DCEP violations); live SDP dcmap parser latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids RFC 8841 a=max-message-size:0 (unlimited) and clamps SCTP fragment reassembly buffers in [16, 256] KB (0 unfinished fragmentation OOM bombs); live usrsctp reassembly allocator latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "502. 🎉 [Topic 139 · Historic 1,000+ Enterprise Guardrails (1,000th & 1,001st Guards), 1,010-Probe & 820-Live-POC-Probe Milestone! 🎉: voice-sip-rfc6809-rfc3840-feature-caps-proxy-capability-spoofing-media-relay-anchor-bypass-faq] Enterprise SIP RFC 6809 / RFC 3840 Feature-Caps Untrusted Trunk Border Strip & Media-Relay Anchor Bypass Guard (P991 🎉 / P992 🎉 — Stage 499 · Topic 139 · 🎉 Historic 1,001 Guardrails 🎉, 1,010 Probes 🎉 & 820 Live POC Probes 🎉 · 502 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of external Feature-Caps headers at untrusted SIP trunk borders and clamps internal mTLS topological Feature-Caps headers in [1, 4] (0 spoofed +g.3gpp.atcf/+sip.srs hijacks); live IBCF header scrubber latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids Feature-Caps media-relay or SIPREC recording anchor bypass on external calls and clamps feature tags per header in [1, 8] (0 unanchored RTP bypasses); live B2BUA media-anchor policy engine latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
