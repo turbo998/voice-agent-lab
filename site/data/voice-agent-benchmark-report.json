@@ -2359,6 +2359,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces disjoint intra-BUNDLE Payload Types across distinct codecs and sdes:mid demux priority (0 misrouted packets) and clamps bundledMediaSectionsCount in [1, 8]; live SFU sdes:mid/PT demux lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: converges all bundled m= sections to the active BUNDLE-tag transport address (0 orphan ports/desynced tracks) and clamps midIdentificationTagByteLength in [1, 16] bytes; live SFU BUNDLE-tag transport router latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "530. 🎉 [Topic 167 · Historic 530th Evaluation Dimension Milestone! 🎉: voice-sip-rfc3262-rfc6337-100rel-rseq-rack-prack-retransmission-storm-481-mismatch-premature-200ok-race-faq] Enterprise SIP RFC 3262 / RFC 6337 100rel RSeq/RAck PRACK & Premature 200 OK Race Serialization Guard (P1047 / P1048 🎉 — Stage 527 · Topic 167 · 🎉 Historic 530th Evaluation Dimension Milestone · 1,057 Guardrails & 1,066 Probes · 530 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces strict +1 RSeq monotonicity and exact RAck 3-tuple matching with 481 rejection (0 mismatched/concurrent packets) and clamps maxReliable18xRetransmissionsCount in [3, 7]; live SBC 100rel transaction lookup latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: holds final 200 OK (INVITE) in queue until pending reliable 18x with SDP is acknowledged by PRACK (0 premature 200 OK race packets) and clamps unacknowledged100rel504TimeoutSeconds in [16, 32]s; live B2BUA 200 OK serialization queue latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

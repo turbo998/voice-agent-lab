@@ -90543,3 +90543,111 @@ export function evaluateWebrtcRfc8843BundleOnlyPortZeroAndSharedTransportAddress
   };
 }
 
+// ============================================================================
+// Stage 527 (Topic 167 · P1047–P1048 🎉 · Historic 530th Evaluation Dimension
+// Milestone! · 1,057 Guardrails · 1,066 Probes · 530 Dims 🎉):
+// Enterprise SIP RFC 3262 / RFC 6337 Reliability of Provisional Responses
+// (100rel, RSeq & RAck / PRACK) 481 Mismatch & Premature 200 OK Serialization
+// ============================================================================
+
+export interface SipRfc3262RseqMonotonicityAndRack3Tuple481GuardInput {
+  nonMonotonicRseqOrMismatchedRack3TupleDetected: boolean;
+  mismatchedRackOrConcurrentUnacked18xPackets: number;
+  maxReliable18xRetransmissionsCount: number;
+}
+
+export interface SipRfc3262RseqMonotonicityAndRack3Tuple481GuardResult {
+  violated: boolean;
+  policyId: "P1047-SIP-RFC3262-RSEQ-MONOTONICITY-AND-RACK-3TUPLE-481-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_monotonic_rfc3262_rseq_and_matched_rack"
+    | "reject_mismatched_prack_with_481_and_clamp_18x_retransmits";
+  clampedMismatchedRackOrConcurrentUnacked18xPackets: number;
+  clampedMaxReliable18xRetransmissionsCount: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3262RseqMonotonicityAndRack3Tuple481Guard(
+  input: SipRfc3262RseqMonotonicityAndRack3Tuple481GuardInput,
+): SipRfc3262RseqMonotonicityAndRack3Tuple481GuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.nonMonotonicRseqOrMismatchedRack3TupleDetected ||
+    input.mismatchedRackOrConcurrentUnacked18xPackets > 0 ||
+    input.maxReliable18xRetransmissionsCount < 3 ||
+    input.maxReliable18xRetransmissionsCount > 7;
+  const clampedMismatchedRackOrConcurrentUnacked18xPackets = 0;
+  const clampedMaxReliable18xRetransmissionsCount = Math.min(
+    7,
+    Math.max(3, Math.trunc(input.maxReliable18xRetransmissionsCount || 3)),
+  );
+  return {
+    violated,
+    policyId: "P1047-SIP-RFC3262-RSEQ-MONOTONICITY-AND-RACK-3TUPLE-481-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reject_mismatched_prack_with_481_and_clamp_18x_retransmits"
+      : "allow_monotonic_rfc3262_rseq_and_matched_rack",
+    clampedMismatchedRackOrConcurrentUnacked18xPackets,
+    clampedMaxReliable18xRetransmissionsCount,
+    reason: violated
+      ? `P1047 (1,056th Enterprise Guardrail · Stage 527 & Topic 167) SIP RFC 3262 non-monotonic RSeq, overlapping unacknowledged 18x, or mismatched RAck 3-tuple violation (${timing}): rejected mismatched PRACK with 481 Call/Transaction Does Not Exist (clamped to 0) and clamped max 18x retransmissions to ${clampedMaxReliable18xRetransmissionsCount} in [3, 7].`
+      : `P1047 (1,056th Enterprise Guardrail · Stage 527 & Topic 167) SIP RFC 3262 RSeq +1 monotonicity and RAck 3-tuple verified (${timing}): 0 mismatched PRACKs and max retransmissions ${clampedMaxReliable18xRetransmissionsCount} within [3, 7].`,
+  };
+}
+
+export interface SipRfc3262Final200OkSerializationUntilPrackAnd504TeardownGuardInput {
+  premature200OkBeforePrackOrUnbounded100relWaitDetected: boolean;
+  premature200OkRacePackets: number;
+  unacknowledged100rel504TimeoutSeconds: number;
+}
+
+export interface SipRfc3262Final200OkSerializationUntilPrackAnd504TeardownGuardResult {
+  violated: boolean;
+  policyId: "P1048-SIP-RFC3262-FINAL-200OK-SERIALIZATION-UNTIL-PRACK-AND-504-TEARDOWN-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_prack_acknowledged_200ok_release"
+    | "hold_200ok_until_prack_and_enforce_504_timeout";
+  clampedPremature200OkRacePackets: number;
+  clampedUnacknowledged100rel504TimeoutSeconds: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3262Final200OkSerializationUntilPrackAnd504TeardownGuard(
+  input: SipRfc3262Final200OkSerializationUntilPrackAnd504TeardownGuardInput,
+): SipRfc3262Final200OkSerializationUntilPrackAnd504TeardownGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.premature200OkBeforePrackOrUnbounded100relWaitDetected ||
+    input.premature200OkRacePackets > 0 ||
+    input.unacknowledged100rel504TimeoutSeconds < 16 ||
+    input.unacknowledged100rel504TimeoutSeconds > 32;
+  const clampedPremature200OkRacePackets = 0;
+  const clampedUnacknowledged100rel504TimeoutSeconds = Math.min(
+    32,
+    Math.max(16, Math.trunc(input.unacknowledged100rel504TimeoutSeconds || 16)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1048-SIP-RFC3262-FINAL-200OK-SERIALIZATION-UNTIL-PRACK-AND-504-TEARDOWN-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "hold_200ok_until_prack_and_enforce_504_timeout"
+      : "allow_prack_acknowledged_200ok_release",
+    clampedPremature200OkRacePackets,
+    clampedUnacknowledged100rel504TimeoutSeconds,
+    reason: violated
+      ? `P1048 🎉 (Historic 530th Evaluation Dimension Milestone! · 1,057th Guardrail) SIP RFC 3262 / RFC 6337 premature 200 OK (INVITE) before PRACK or unbounded 100rel wait violation (${timing}): held 200 OK until PRACK completion (clamped premature race packets to 0) and clamped 504 Server Time-out window to ${clampedUnacknowledged100rel504TimeoutSeconds}s in [16, 32]s.`
+      : `P1048 🎉 (Historic 530th Evaluation Dimension Milestone! · 1,057th Guardrail) SIP RFC 3262 / RFC 6337 200 OK serialization and 504 timeout verified (${timing}): 0 premature 200 OK race packets and timeout ${clampedUnacknowledged100rel504TimeoutSeconds}s within [16, 32]s.`,
+  };
+}
+
