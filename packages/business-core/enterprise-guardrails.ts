@@ -90214,3 +90214,113 @@ export function evaluateSipRfc3323HeaderUserSessionFullAnonymizationAndSdpOrigin
   };
 }
 
+// ============================================================================
+// Stage 524 (Topic 164 · P1041 🎉–P1042 🎉 · Historic 1,050th Enterprise
+// Guardrail, 1,060th Sandbox Probe & 870th Live POC Probe Triple Milestone! ·
+// 1,051 Guardrails 🎉 · 1,060 Probes 🎉 · 527 Dims):
+// Enterprise WebRTC/RTP RFC 8852 / RFC 8851 RTP Stream Identifier (rid & rrid)
+// Immutable SSRC->rid Pinning & Mutual Exclusivity Guardrails
+// ============================================================================
+
+export interface WebrtcRfc8852RtpStreamIdAllowlistAndImmutableSsrcBindingGuardInput {
+  unnegotiatedRidTokenOrMidCallSsrcToRidRebindingDetected: boolean;
+  unnegotiatedOrReboundRidPackets: number;
+  maxSimulcastRidLayersPerMediaSection: number;
+}
+
+export interface WebrtcRfc8852RtpStreamIdAllowlistAndImmutableSsrcBindingGuardResult {
+  violated: boolean;
+  policyId: "P1041-WEBRTC-RFC8852-RTP-STREAM-ID-ALLOWLIST-AND-IMMUTABLE-SSRC-BINDING-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_negotiated_rfc8852_rid_and_pinned_ssrc"
+    | "drop_unnegotiated_rid_and_lock_ssrc_to_rid_binding";
+  clampedUnnegotiatedOrReboundRidPackets: number;
+  clampedMaxSimulcastRidLayersPerMediaSection: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc8852RtpStreamIdAllowlistAndImmutableSsrcBindingGuard(
+  input: WebrtcRfc8852RtpStreamIdAllowlistAndImmutableSsrcBindingGuardInput,
+): WebrtcRfc8852RtpStreamIdAllowlistAndImmutableSsrcBindingGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.unnegotiatedRidTokenOrMidCallSsrcToRidRebindingDetected ||
+    input.unnegotiatedOrReboundRidPackets > 0 ||
+    input.maxSimulcastRidLayersPerMediaSection < 1 ||
+    input.maxSimulcastRidLayersPerMediaSection > 3;
+  const clampedUnnegotiatedOrReboundRidPackets = 0;
+  const clampedMaxSimulcastRidLayersPerMediaSection = Math.min(
+    3,
+    Math.max(1, Math.trunc(input.maxSimulcastRidLayersPerMediaSection || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1041-WEBRTC-RFC8852-RTP-STREAM-ID-ALLOWLIST-AND-IMMUTABLE-SSRC-BINDING-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "drop_unnegotiated_rid_and_lock_ssrc_to_rid_binding"
+      : "allow_negotiated_rfc8852_rid_and_pinned_ssrc",
+    clampedUnnegotiatedOrReboundRidPackets,
+    clampedMaxSimulcastRidLayersPerMediaSection,
+    reason: violated
+      ? `P1041 🎉 (Historic 1,050th Enterprise Guardrail Milestone!) WebRTC/RTP RFC 8852 unnegotiated rid token or mid-call SSRC->rid rebinding violation (${timing}): dropped unnegotiated/rebound rid packets (clamped to 0) and clamped max Simulcast rid layers to ${clampedMaxSimulcastRidLayersPerMediaSection} in [1, 3].`
+      : `P1041 🎉 (Historic 1,050th Enterprise Guardrail Milestone!) WebRTC/RTP RFC 8852 SSRC->rid binding verified (${timing}): 0 rebound packets and ${clampedMaxSimulcastRidLayersPerMediaSection} Simulcast layers within [1, 3].`,
+  };
+}
+
+export interface WebrtcRfc8852RepairedRtpStreamIdExclusivityAndParentMatchGuardInput {
+  simultaneousRidAndRridInSamePacketOrOrphanRridDetected: boolean;
+  conflictingOrOrphanRepairedRidPackets: number;
+  ridTokenByteLength: number;
+}
+
+export interface WebrtcRfc8852RepairedRtpStreamIdExclusivityAndParentMatchGuardResult {
+  violated: boolean;
+  policyId: "P1042-WEBRTC-RFC8852-REPAIRED-RTP-STREAM-ID-EXCLUSIVITY-AND-PARENT-MATCH-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_exclusive_rfc8852_repaired_rid_binding"
+    | "enforce_rid_rrid_exclusivity_and_clamp_token_length_bytes";
+  clampedConflictingOrOrphanRepairedRidPackets: number;
+  clampedRidTokenByteLength: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc8852RepairedRtpStreamIdExclusivityAndParentMatchGuard(
+  input: WebrtcRfc8852RepairedRtpStreamIdExclusivityAndParentMatchGuardInput,
+): WebrtcRfc8852RepairedRtpStreamIdExclusivityAndParentMatchGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.simultaneousRidAndRridInSamePacketOrOrphanRridDetected ||
+    input.conflictingOrOrphanRepairedRidPackets > 0 ||
+    input.ridTokenByteLength < 1 ||
+    input.ridTokenByteLength > 16;
+  const clampedConflictingOrOrphanRepairedRidPackets = 0;
+  const clampedRidTokenByteLength = Math.min(
+    16,
+    Math.max(1, Math.trunc(input.ridTokenByteLength || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1042-WEBRTC-RFC8852-REPAIRED-RTP-STREAM-ID-EXCLUSIVITY-AND-PARENT-MATCH-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "enforce_rid_rrid_exclusivity_and_clamp_token_length_bytes"
+      : "allow_exclusive_rfc8852_repaired_rid_binding",
+    clampedConflictingOrOrphanRepairedRidPackets,
+    clampedRidTokenByteLength,
+    reason: violated
+      ? `P1042 🎉 (Historic 1,051st Guardrail, 1,060th Sandbox Probe & 870th Live POC Probe Triple Milestone!) WebRTC/RTP RFC 8852 simultaneous rid+rrid conflict, orphan rrid, or token length overflow violation (${timing}): dropped conflicting/orphan rrid packets (clamped to 0) and clamped rid/rrid token byte length to ${clampedRidTokenByteLength} bytes in [1, 16] bytes.`
+      : `P1042 🎉 (Historic 1,051st Guardrail, 1,060th Sandbox Probe & 870th Live POC Probe Triple Milestone!) WebRTC/RTP RFC 8852 rrid exclusivity and parent binding verified (${timing}): 0 conflicting/orphan rrid packets and token length ${clampedRidTokenByteLength} bytes within [1, 16] bytes.`,
+  };
+}
+
