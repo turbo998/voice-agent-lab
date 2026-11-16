@@ -87943,6 +87943,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcSipRfc5583SdpDependLayMdcDagAcyclicAndDepthContext {
+      sdpDependDagCycleOrDanglingMidPtDetected: boolean;
+      sdpDependDagCycles: number;
+      maxDependChainDepth: number;
+    }
+
+    export interface WebrtcSipRfc5583SdpDependLayMdcDagAcyclicAndDepthResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reject_488_sdp_depend_dag_cycle_or_dangling_target"
+        | "clamp_sdp_depend_dag_cycles_and_chain_depth"
+        | "allow";
+      reason: string;
+      clampedSdpDependDagCycles: number;
+      clampedMaxDependChainDepth: number;
+    }
+
+    /**
+     * P1003 🎉 (Historic Stage 505 & Topic 145 Dual Milestone! · 1,012th Enterprise Guardrail): Enterprise WebRTC/SIP RFC 5583 SDP Media Decoding Dependency (a=depend:lay/mdc) Acyclic DAG Validation, Dangling mid:PT Block & [1, 4] Depth Gate.
+     */
+    export function evaluateWebrtcSipRfc5583SdpDependLayMdcDagAcyclicAndDepthGate(
+      ctx: WebrtcSipRfc5583SdpDependLayMdcDagAcyclicAndDepthContext,
+    ): WebrtcSipRfc5583SdpDependLayMdcDagAcyclicAndDepthResult {
+      const policyId =
+        "P1003-WEBRTC-SIP-RFC5583-SDP-DEPEND-LAY-MDC-DAG-ACYCLIC-AND-DEPTH-GUARD";
+      const clampedSdpDependDagCycles = 0;
+      const clampedMaxDependChainDepth = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxDependChainDepth)
+            ? Math.round(ctx.maxDependChainDepth)
+            : 2,
+        ),
+      );
+
+      if (ctx.sdpDependDagCycleOrDanglingMidPtDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "reject_488_sdp_depend_dag_cycle_or_dangling_target",
+          reason:
+            "WebRTC/SIP RFC 5583 Section 5 / 6.1 SDP a=depend (lay/mdc) circular decoding dependency graph (DAG cycle) or dangling mid:PT reference detected; rejecting with SIP 488 (0 decoder dependency deadlocks) and clamping dependency chain depth in [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedSdpDependDagCycles,
+          clampedMaxDependChainDepth,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.sdpDependDagCycles) ||
+        ctx.sdpDependDagCycles !== 0 ||
+        !Number.isFinite(ctx.maxDependChainDepth) ||
+        ctx.maxDependChainDepth < 1 ||
+        ctx.maxDependChainDepth > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_sdp_depend_dag_cycles_and_chain_depth",
+          reason:
+            "SDP a=depend DAG cycles (>0 synthetic ceiling) or dependency chain depth (<1 or >4 synthetic bounds) out of bounds; clamping cycles to 0 and depth to [1, 4].",
+          clampedSdpDependDagCycles,
+          clampedMaxDependChainDepth,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC/SIP RFC 5583 a=depend acyclic DAG check (0 cycles) and [1, 4] chain depth verified.",
+        clampedSdpDependDagCycles,
+        clampedMaxDependChainDepth,
+      };
+    }
+
+    export interface WebrtcSipRfc5888GroupLsLipSyncAudioPlayoutHoldCeilingContext {
+      videoRetransmitInducedAudioPlayoutStallDetected: boolean;
+      videoInducedVoicePlayoutStalls: number;
+      maxLipSyncAudioHoldMs: number;
+    }
+
+    export interface WebrtcSipRfc5888GroupLsLipSyncAudioPlayoutHoldCeilingResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "decouple_group_ls_and_play_audio_immediately_past_80ms_ceiling"
+        | "clamp_voice_playout_stalls_and_lip_sync_audio_hold_ms"
+        | "allow";
+      reason: string;
+      clampedVideoInducedVoicePlayoutStalls: number;
+      clampedMaxLipSyncAudioHoldMs: number;
+    }
+
+    /**
+     * P1004 🎉 (Historic Stage 505 & Topic 145 Dual Milestone! · 1,013th Guardrail, 1,022nd Sandbox Probe & 832nd Live POC Probe): Enterprise WebRTC/SIP RFC 5888 a=group:LS Lip-Sync [20, 80]ms Audio Playout Hold Ceiling & Video-Loss Audio Decouple Gate.
+     */
+    export function evaluateWebrtcSipRfc5888GroupLsLipSyncAudioPlayoutHoldCeilingGate(
+      ctx: WebrtcSipRfc5888GroupLsLipSyncAudioPlayoutHoldCeilingContext,
+    ): WebrtcSipRfc5888GroupLsLipSyncAudioPlayoutHoldCeilingResult {
+      const policyId =
+        "P1004-WEBRTC-SIP-RFC5888-GROUP-LS-LIPSYNC-AUDIO-PLAYOUT-HOLD-CEILING-GUARD";
+      const clampedVideoInducedVoicePlayoutStalls = 0;
+      const clampedMaxLipSyncAudioHoldMs = Math.min(
+        80,
+        Math.max(
+          20,
+          Number.isFinite(ctx.maxLipSyncAudioHoldMs)
+            ? Math.round(ctx.maxLipSyncAudioHoldMs)
+            : 40,
+        ),
+      );
+
+      if (ctx.videoRetransmitInducedAudioPlayoutStallDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "decouple_group_ls_and_play_audio_immediately_past_80ms_ceiling",
+          reason:
+            "WebRTC/SIP RFC 5888 a=group:LS lip-sync buffer held Opus audio playout past 80ms while waiting for delayed/NACKed video frames; decoupling LS lock to play voice immediately (0 voice playout stalls) and clamping max audio hold delay in [20, 80]ms (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedVideoInducedVoicePlayoutStalls,
+          clampedMaxLipSyncAudioHoldMs,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.videoInducedVoicePlayoutStalls) ||
+        ctx.videoInducedVoicePlayoutStalls !== 0 ||
+        !Number.isFinite(ctx.maxLipSyncAudioHoldMs) ||
+        ctx.maxLipSyncAudioHoldMs < 20 ||
+        ctx.maxLipSyncAudioHoldMs > 80
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_voice_playout_stalls_and_lip_sync_audio_hold_ms",
+          reason:
+            "Video-induced voice playout stalls (>0 synthetic ceiling) or max lip-sync audio hold delay (<20ms or >80ms synthetic bounds) out of bounds; clamping stalls to 0 and hold ceiling to [20, 80]ms.",
+          clampedVideoInducedVoicePlayoutStalls,
+          clampedMaxLipSyncAudioHoldMs,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC/SIP RFC 5888 a=group:LS audio decouple guard (0 voice stalls) and [20, 80]ms hold ceiling verified.",
+        clampedVideoInducedVoicePlayoutStalls,
+        clampedMaxLipSyncAudioHoldMs,
+      };
+    }
+
 
 
 

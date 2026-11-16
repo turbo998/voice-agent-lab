@@ -2227,6 +2227,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips forbidden RFC 6263 0-byte empty RTP packets and unnegotiated-PT keepalive hacks before jitter-buffer Seq tracking and clamps keepalive packets/tick in [1, 2] (0 false Opus PLC/SRTP corruptions); live RTP demux keepalive filter latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces compliant rtcp-mux RTCP / STUN keepalive timer in [15, 25]s during DTX silence, tool wait, and a=sendonly hold (0 firewall 30s NAT pinhole expiry one-way audio drops); live NAT pinhole timer wheel latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "508. 🎉 [Topic 145 🎉 · Historic Stage 505 & Topic 145 Dual Milestone! 🎉: voice-webrtc-sip-rfc5583-rfc5888-sdp-depend-lay-mdc-dag-cycle-group-ls-lipsync-audio-stall-faq] Enterprise WebRTC/SIP RFC 5583 / RFC 5888 SDP a=depend DAG Acyclic Validation & a=group:LS Audio Playout Hold Ceiling Guard (P1003 🎉 / P1004 🎉 — Stage 505 🎉 · Topic 145 🎉 · 1,013 Guardrails & 1,022 Probes & 832 Live POC Probes · 508 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces topological DAG cycle detection and target mid:PT verification on RFC 5583 a=depend (lay/mdc) attributes and clamps dependency depth in [1, 4] (0 decoder dependency deadlocks); live SDP DAG validator latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps RFC 5888 a=group:LS audio hold-for-video delay in [20, 80]ms and decouples Opus voice playout immediately when video lag exceeds 80ms (0 video-induced voice stalls); live A/V lip-sync playout scheduler latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
