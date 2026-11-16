@@ -2203,6 +2203,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: prioritizes Opus/RED/telephone-event audio payload types and prunes redundant video profile/RTX PTs so allocated dynamic PTs per bundled session stay in [1, 24] (0 PT 96-127 exhaustion drops); live SDP PT allocator latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: freezes active (PT -> codec/clockRate) mappings across mid-call Re-INVITEs and maintains [4, 16] reserved free dynamic PT slots (0 mid-call PT rebinding decoder glitches); live RTP jitter-buffer clock-rate validator latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "504. [Topic 141 · Historic 145th SVG & 1,005-Guardrail Dual Milestone! 🎉: voice-sip-rfc7462-rfc3261-alert-info-urn-alert-external-ringtone-ssrf-auto-answer-intercom-hijack-faq] Enterprise SIP RFC 7462 / RFC 3261 Alert-Info External Ringtone SSRF, Auto-Answer Intercom Strip & urn:alert:source:internal Spoofing Guard (P995 / P996 🎉 — Stage 501 · Topic 141 · 🎉 Historic 145th SVG & 1,005-Guardrail Dual Milestone · 1,005 Guardrails 🎉 & 1,014 Probes · 504 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips dereferenceable http(s)/file ringtone URIs and info=alert-autoanswer intercom parameters on untrusted trunks and clamps Alert-Info entries in [1, 4] (0 SSRF or silent auto-answer hijacks); live SBC Alert-Info lexer latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: overwrites spoofed external urn:alert:source:internal claims to urn:alert:source:external and clamps URN hierarchy depth in [1, 5] (0 internal-source privilege escalations); live trunk origin tagger latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

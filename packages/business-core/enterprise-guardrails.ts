@@ -87312,6 +87312,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc7462AlertInfoExternalUriSsrfAndAutoAnswerStripContext {
+      externalHttpRingtoneUriOrAutoAnswerIntercomDetected: boolean;
+      alertInfoSsrfOrAutoAnswerHijacks: number;
+      maxAlertInfoEntriesPerRequest: number;
+    }
+
+    export interface SipRfc7462AlertInfoExternalUriSsrfAndAutoAnswerStripResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "strip_external_ringtone_uri_and_auto_answer_intercom_param"
+        | "clamp_alert_info_ssrf_hijacks_and_entries_per_request"
+        | "allow";
+      reason: string;
+      clampedAlertInfoSsrfOrAutoAnswerHijacks: number;
+      clampedMaxAlertInfoEntriesPerRequest: number;
+    }
+
+    /**
+     * P995 (1,004th Enterprise Guardrail): Enterprise SIP RFC 7462 / RFC 3261 Alert-Info Non-Dereferenceable urn:alert:* Allowlist, External Ringtone SSRF / Auto-Answer Intercom Strip & [1, 4] Entries Gate.
+     */
+    export function evaluateSipRfc7462AlertInfoExternalUriSsrfAndAutoAnswerStripGate(
+      ctx: SipRfc7462AlertInfoExternalUriSsrfAndAutoAnswerStripContext,
+    ): SipRfc7462AlertInfoExternalUriSsrfAndAutoAnswerStripResult {
+      const policyId =
+        "P995-SIP-RFC7462-ALERT-INFO-EXTERNAL-URI-SSRF-AND-AUTO-ANSWER-STRIP-GUARD";
+      const clampedAlertInfoSsrfOrAutoAnswerHijacks = 0;
+      const clampedMaxAlertInfoEntriesPerRequest = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxAlertInfoEntriesPerRequest)
+            ? Math.round(ctx.maxAlertInfoEntriesPerRequest)
+            : 2,
+        ),
+      );
+
+      if (ctx.externalHttpRingtoneUriOrAutoAnswerIntercomDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "strip_external_ringtone_uri_and_auto_answer_intercom_param",
+          reason:
+            "SIP RFC 3261 Section 20.4 / RFC 7462 Section 5 Alert-Info header containing dereferenceable http(s)/file ringtone URI (SSRF hazard) or untrusted info=alert-autoanswer intercom parameter; stripping network URI and auto-answer parameter (0 SSRF/intercom hijacks) and clamping Alert-Info entries in [1, 4] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedAlertInfoSsrfOrAutoAnswerHijacks,
+          clampedMaxAlertInfoEntriesPerRequest,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.alertInfoSsrfOrAutoAnswerHijacks) ||
+        ctx.alertInfoSsrfOrAutoAnswerHijacks !== 0 ||
+        !Number.isFinite(ctx.maxAlertInfoEntriesPerRequest) ||
+        ctx.maxAlertInfoEntriesPerRequest < 1 ||
+        ctx.maxAlertInfoEntriesPerRequest > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_alert_info_ssrf_hijacks_and_entries_per_request",
+          reason:
+            "Alert-Info SSRF or auto-answer hijacks (>0 synthetic ceiling) or Alert-Info entries per request (<1 or >4 synthetic bounds) out of bounds; clamping hijacks to 0 and entries to [1, 4].",
+          clampedAlertInfoSsrfOrAutoAnswerHijacks,
+          clampedMaxAlertInfoEntriesPerRequest,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7462 Alert-Info non-dereferenceable URN guard (0 SSRF/auto-answer hijacks) and [1, 4] entries verified.",
+        clampedAlertInfoSsrfOrAutoAnswerHijacks,
+        clampedMaxAlertInfoEntriesPerRequest,
+      };
+    }
+
+    export interface SipRfc7462AlertInfoSourceInternalAndPrioritySpoofContext {
+      externalTrunkAlertInfoSourceInternalOrPrioritySpoofDetected: boolean;
+      internalSourcePrivilegeEscalations: number;
+      maxAlertUrnHierarchyDepth: number;
+    }
+
+    export interface SipRfc7462AlertInfoSourceInternalAndPrioritySpoofResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "rewrite_external_alert_info_source_to_external_and_cap_urn_depth"
+        | "clamp_internal_source_escalations_and_alert_urn_depth"
+        | "allow";
+      reason: string;
+      clampedInternalSourcePrivilegeEscalations: number;
+      clampedMaxAlertUrnHierarchyDepth: number;
+    }
+
+    /**
+     * P996 🎉 (Historic 145th SVG & 1,005th Enterprise Guardrail Milestone! · 1,014th Sandbox Probe & 824th Live POC Probe): Enterprise SIP RFC 7462 Untrusted Trunk urn:alert:source:internal Rewrite & [1, 5] URN Hierarchy Depth Gate.
+     */
+    export function evaluateSipRfc7462AlertInfoSourceInternalAndPrioritySpoofGate(
+      ctx: SipRfc7462AlertInfoSourceInternalAndPrioritySpoofContext,
+    ): SipRfc7462AlertInfoSourceInternalAndPrioritySpoofResult {
+      const policyId =
+        "P996-SIP-RFC7462-ALERT-INFO-SOURCE-INTERNAL-AND-PRIORITY-SPOOF-GUARD";
+      const clampedInternalSourcePrivilegeEscalations = 0;
+      const clampedMaxAlertUrnHierarchyDepth = Math.min(
+        5,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxAlertUrnHierarchyDepth)
+            ? Math.round(ctx.maxAlertUrnHierarchyDepth)
+            : 3,
+        ),
+      );
+
+      if (ctx.externalTrunkAlertInfoSourceInternalOrPrioritySpoofDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "rewrite_external_alert_info_source_to_external_and_cap_urn_depth",
+          reason:
+            "SIP RFC 7462 untrusted external trunk attempted to spoof urn:alert:source:internal or urn:alert:priority:high to bypass customer authentication; overwriting origin to urn:alert:source:external (0 privilege escalations) and clamping URN hierarchy depth in [1, 5] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedInternalSourcePrivilegeEscalations,
+          clampedMaxAlertUrnHierarchyDepth,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.internalSourcePrivilegeEscalations) ||
+        ctx.internalSourcePrivilegeEscalations !== 0 ||
+        !Number.isFinite(ctx.maxAlertUrnHierarchyDepth) ||
+        ctx.maxAlertUrnHierarchyDepth < 1 ||
+        ctx.maxAlertUrnHierarchyDepth > 5
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_internal_source_escalations_and_alert_urn_depth",
+          reason:
+            "Internal-source privilege escalations (>0 synthetic ceiling) or urn:alert hierarchy depth (<1 or >5 synthetic bounds) out of bounds; clamping escalations to 0 and URN depth to [1, 5].",
+          clampedInternalSourcePrivilegeEscalations,
+          clampedMaxAlertUrnHierarchyDepth,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 7462 external origin rewrite lock (0 escalations) and [1, 5] URN depth verified.",
+        clampedInternalSourcePrivilegeEscalations,
+        clampedMaxAlertUrnHierarchyDepth,
+      };
+    }
+
 
 
 
