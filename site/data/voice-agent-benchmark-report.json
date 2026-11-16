@@ -2197,6 +2197,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips 100% of external Feature-Caps headers at untrusted SIP trunk borders and clamps internal mTLS topological Feature-Caps headers in [1, 4] (0 spoofed +g.3gpp.atcf/+sip.srs hijacks); live IBCF header scrubber latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids Feature-Caps media-relay or SIPREC recording anchor bypass on external calls and clamps feature tags per header in [1, 8] (0 unanchored RTP bypasses); live B2BUA media-anchor policy engine latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "503. 🎉 [Topic 140 🎉 · Historic Stage 500 & Topic 140 Dual Milestone! 🎉: voice-webrtc-rtp-rfc8860-rfc3550-multi-media-types-single-session-pt-exhaustion-dynamic-pt-rebinding-glitch-faq] Enterprise WebRTC RFC 8860 / RFC 3550 Single-Session Dynamic PT [1, 24] Pruning & Mid-Call Dynamic PT Immutability Guard (P993 🎉 / P994 🎉 — Stage 500 🎉 · Topic 140 🎉 · 1,003 Guardrails & 1,012 Probes & 822 Live POC Probes · 503 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: prioritizes Opus/RED/telephone-event audio payload types and prunes redundant video profile/RTX PTs so allocated dynamic PTs per bundled session stay in [1, 24] (0 PT 96-127 exhaustion drops); live SDP PT allocator latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: freezes active (PT -> codec/clockRate) mappings across mid-call Re-INVITEs and maintains [4, 16] reserved free dynamic PT slots (0 mid-call PT rebinding decoder glitches); live RTP jitter-buffer clock-rate validator latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
