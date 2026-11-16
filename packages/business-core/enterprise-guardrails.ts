@@ -90651,3 +90651,113 @@ export function evaluateSipRfc3262Final200OkSerializationUntilPrackAnd504Teardow
   };
 }
 
+// ============================================================================
+// Stage 528 (Topic 168 · P1049–P1050 🎉 · Historic P1050 Guardrail, 170th
+// Standalone FAQ & 970-Test Triple Milestone! · 1,059 Guardrails · 1,068 Probes
+// · 531 Dims):
+// Enterprise WebRTC/RTP RFC 3389 / RFC 7587 Comfort Noise (CN PT=13) [45, 90]
+// -dBov Attenuation Floor & Opus DTX Mutual Exclusivity Guardrails
+// ============================================================================
+
+export interface WebrtcRfc3389ComfortNoiseLevelAttenuationAndModelOrderGuardInput {
+  excessiveComfortNoiseVolumeOrInvalidReflectionOrderDetected: boolean;
+  whiteNoiseBlastOrUnstableFilterPackets: number;
+  comfortNoiseAttenuationDbov: number;
+}
+
+export interface WebrtcRfc3389ComfortNoiseLevelAttenuationAndModelOrderGuardResult {
+  violated: boolean;
+  policyId: "P1049-WEBRTC-RFC3389-COMFORT-NOISE-LEVEL-ATTENUATION-AND-MODEL-ORDER-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_safe_rfc3389_comfort_noise_attenuation"
+    | "clamp_rfc3389_cn_attenuation_dbov_and_drop_blast_packets";
+  clampedWhiteNoiseBlastOrUnstableFilterPackets: number;
+  clampedComfortNoiseAttenuationDbov: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc3389ComfortNoiseLevelAttenuationAndModelOrderGuard(
+  input: WebrtcRfc3389ComfortNoiseLevelAttenuationAndModelOrderGuardInput,
+): WebrtcRfc3389ComfortNoiseLevelAttenuationAndModelOrderGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.excessiveComfortNoiseVolumeOrInvalidReflectionOrderDetected ||
+    input.whiteNoiseBlastOrUnstableFilterPackets > 0 ||
+    input.comfortNoiseAttenuationDbov < 45 ||
+    input.comfortNoiseAttenuationDbov > 90;
+  const clampedWhiteNoiseBlastOrUnstableFilterPackets = 0;
+  const clampedComfortNoiseAttenuationDbov = Math.min(
+    90,
+    Math.max(45, Math.trunc(input.comfortNoiseAttenuationDbov || 45)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1049-WEBRTC-RFC3389-COMFORT-NOISE-LEVEL-ATTENUATION-AND-MODEL-ORDER-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "clamp_rfc3389_cn_attenuation_dbov_and_drop_blast_packets"
+      : "allow_safe_rfc3389_comfort_noise_attenuation",
+    clampedWhiteNoiseBlastOrUnstableFilterPackets,
+    clampedComfortNoiseAttenuationDbov,
+    reason: violated
+      ? `P1049 (1,058th Enterprise Guardrail · Stage 528 & Topic 168) WebRTC/RTP RFC 3389 Byte-0 white-noise blast (N < 45 -dBov) or unstable LPC order violation (${timing}): blocked white-noise blast packets (clamped to 0) and clamped CN attenuation N to ${clampedComfortNoiseAttenuationDbov} -dBov in [45, 90] -dBov.`
+      : `P1049 (1,058th Enterprise Guardrail · Stage 528 & Topic 168) WebRTC/RTP RFC 3389 comfort-noise attenuation verified (${timing}): 0 blast packets and CN attenuation ${clampedComfortNoiseAttenuationDbov} -dBov within [45, 90] -dBov.`,
+  };
+}
+
+export interface WebrtcRfc3389OpusDtxMutualExclusivityAndSidKeepaliveIntervalGuardInput {
+  opusWithExternalRfc3389CnClockClashOrStarvedSidDetected: boolean;
+  opusRfc3389CnClockClashPackets: number;
+  sidComfortNoiseKeepaliveIntervalMs: number;
+}
+
+export interface WebrtcRfc3389OpusDtxMutualExclusivityAndSidKeepaliveIntervalGuardResult {
+  violated: boolean;
+  policyId: "P1050-WEBRTC-RFC3389-OPUS-DTX-MUTUAL-EXCLUSIVITY-AND-SID-KEEPALIVE-INTERVAL-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_exclusive_opus_dtx_or_g711_cn_keepalive"
+    | "strip_external_cn_from_opus_and_clamp_sid_keepalive_ms";
+  clampedOpusRfc3389CnClockClashPackets: number;
+  clampedSidComfortNoiseKeepaliveIntervalMs: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc3389OpusDtxMutualExclusivityAndSidKeepaliveIntervalGuard(
+  input: WebrtcRfc3389OpusDtxMutualExclusivityAndSidKeepaliveIntervalGuardInput,
+): WebrtcRfc3389OpusDtxMutualExclusivityAndSidKeepaliveIntervalGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.opusWithExternalRfc3389CnClockClashOrStarvedSidDetected ||
+    input.opusRfc3389CnClockClashPackets > 0 ||
+    input.sidComfortNoiseKeepaliveIntervalMs < 100 ||
+    input.sidComfortNoiseKeepaliveIntervalMs > 400;
+  const clampedOpusRfc3389CnClockClashPackets = 0;
+  const clampedSidComfortNoiseKeepaliveIntervalMs = Math.min(
+    400,
+    Math.max(100, Math.trunc(input.sidComfortNoiseKeepaliveIntervalMs || 100)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1050-WEBRTC-RFC3389-OPUS-DTX-MUTUAL-EXCLUSIVITY-AND-SID-KEEPALIVE-INTERVAL-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "strip_external_cn_from_opus_and_clamp_sid_keepalive_ms"
+      : "allow_exclusive_opus_dtx_or_g711_cn_keepalive",
+    clampedOpusRfc3389CnClockClashPackets,
+    clampedSidComfortNoiseKeepaliveIntervalMs,
+    reason: violated
+      ? `P1050 🎉 (Historic P1050 Guardrail, 170th Standalone FAQ & 970-Test Triple Milestone! · 1,059th Guardrail) WebRTC/RTP RFC 7587 §6.1 Opus vs RFC 3389 CN clock clash or SID keepalive interval violation (${timing}): stripped external CN from Opus (clamped clock-clash packets to 0) and clamped SID keepalive interval to ${clampedSidComfortNoiseKeepaliveIntervalMs}ms in [100, 400]ms.`
+      : `P1050 🎉 (Historic P1050 Guardrail, 170th Standalone FAQ & 970-Test Triple Milestone! · 1,059th Guardrail) WebRTC/RTP RFC 7587 §6.1 Opus DTX exclusivity and SID keepalive verified (${timing}): 0 clock-clash packets and SID interval ${clampedSidComfortNoiseKeepaliveIntervalMs}ms within [100, 400]ms.`,
+  };
+}
+

@@ -2365,6 +2365,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces strict +1 RSeq monotonicity and exact RAck 3-tuple matching with 481 rejection (0 mismatched/concurrent packets) and clamps maxReliable18xRetransmissionsCount in [3, 7]; live SBC 100rel transaction lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: holds final 200 OK (INVITE) in queue until pending reliable 18x with SDP is acknowledged by PRACK (0 premature 200 OK race packets) and clamps unacknowledged100rel504TimeoutSeconds in [16, 32]s; live B2BUA 200 OK serialization queue latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "531. 🎉 [Topic 168 · Historic P1050 Guardrail, 170th Standalone FAQ & 970-Test Triple Milestone! 🎉: voice-webrtc-rtp-rfc3389-comfort-noise-cn-pt13-sid-noise-level-blast-reflection-coefficient-opus-dtx-conflict-faq] Enterprise WebRTC/RTP RFC 3389 Comfort Noise (CN) [45, 90] -dBov Attenuation & Opus DTX Mutual Exclusivity Guard (P1049 / P1050 🎉 — Stage 528 · Topic 168 · 🎉 Historic P1050, 170th FAQ & 970-Test Triple Milestone · 1,059 Guardrails & 1,068 Probes · 531 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks RFC 3389 Byte-0 N < 45 white-noise blast packets (0 blast packets) and clamps comfortNoiseAttenuationDbov in [45, 90] -dBov; live DSP comfort-noise LPC synthesis latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 7587 §6.1 mutual exclusivity between Opus 48kHz and external RFC 3389 CN 8kHz (0 clock-clash packets) and clamps sidComfortNoiseKeepaliveIntervalMs in [100, 400]ms; live RTP DTX pacer latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

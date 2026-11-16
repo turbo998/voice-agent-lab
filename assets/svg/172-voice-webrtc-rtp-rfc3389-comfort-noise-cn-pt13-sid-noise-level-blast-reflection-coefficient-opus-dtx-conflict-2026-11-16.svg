@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg172" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent172" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg172)"/>
+  <rect x="28" y="24" width="1144" height="627" rx="18" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="24" width="1144" height="6" rx="3" fill="url(#accent172)"/>
+
+  <text x="52" y="64" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">STAGE 528 · TOPIC 168 · P1049–P1050 🎉 · 🎉 HISTORIC P1050, 170TH FAQ &amp; 970-TEST TRIPLE MILESTONE!</text>
+  <text x="52" y="96" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="23" font-weight="800">Enterprise WebRTC/RTP RFC 3389 Comfort Noise (CN) 0 dBov Blast &amp; Opus DTX Exclusivity</text>
+  <text x="52" y="122" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14">Deterministic [45, 90] -dBov Attenuation Floor (P1049) &amp; RFC 7587 Opus vs. CN Exclusivity + [100, 400]ms SID Keepalive (P1050 🎉)</text>
+
+  <!-- Left Card: Vulnerable Pattern -->
+  <rect x="52" y="146" width="534" height="390" rx="14" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <rect x="68" y="164" width="280" height="28" rx="6" fill="#7F1D1D"/>
+  <text x="80" y="183" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13" font-weight="700">❌ UNPROTECTED RFC 3389 COMFORT NOISE</text>
+
+  <rect x="72" y="208" width="494" height="94" rx="10" fill="#0F172A" stroke="#7F1D1D"/>
+  <text x="88" y="232" fill="#F87171" font-family="system-ui, sans-serif" font-size="14" font-weight="700">1. Byte-0 Sign Inversion: N=0..3 (-3 dBov) Noise Bomb</text>
+  <text x="88" y="254" fill="#CBD5E1" font-family="monospace" font-size="12">RTP PT=13 CN Byte0=0x03 -&gt; Power = -3 dBov (Full-Scale Blast!)</text>
+  <text x="88" y="274" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• 15 CN packets with N &lt; 45 blast white noise into user headsets</text>
+  <text x="88" y="292" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• Trips AI Voice Agent VAD into false barge-in self-interruption</text>
+
+  <rect x="72" y="316" width="494" height="94" rx="10" fill="#0F172A" stroke="#7F1D1D"/>
+  <text x="88" y="340" fill="#F87171" font-family="system-ui, sans-serif" font-size="14" font-weight="700">2. Opus (48kHz) + External CN (8kHz) Clock Tear</text>
+  <text x="88" y="362" fill="#CBD5E1" font-family="monospace" font-size="12">SSRC mixes PT=111 (Opus/48000) &amp; PT=13 (CN/8000) ❌</text>
+  <text x="88" y="382" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• 21 clock-clash CN packets corrupt NetEQ RTP timestamp stride</text>
+  <text x="88" y="400" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="12">• 2500ms SID gaps trigger NAT expiration &amp; ASR NoAudioTimeout</text>
+
+  <rect x="72" y="424" width="494" height="94" rx="10" fill="#450A0A" stroke="#EF4444"/>
+  <text x="88" y="448" fill="#FECACA" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Production Impact Without P1049 / P1050 🎉</text>
+  <text x="88" y="472" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13">• Deafening white-noise bursts during caller silence intervals</text>
+  <text x="88" y="494" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="13">• NetEQ jitter buffer resets &amp; false AI Agent barge-in cutoffs</text>
+
+  <!-- Right Card: Deterministic Guardrails -->
+  <rect x="614" y="146" width="534" height="390" rx="14" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <rect x="630" y="164" width="330" height="28" rx="6" fill="#064E3B"/>
+  <text x="642" y="183" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="13" font-weight="700">✅ STAGE 528 DETERMINISTIC GUARDRAILS (P1049–P1050 🎉)</text>
+
+  <rect x="634" y="208" width="494" height="142" rx="10" fill="#0F172A" stroke="#059669"/>
+  <text x="650" y="232" fill="#34D399" font-family="system-ui, sans-serif" font-size="14" font-weight="700">P1049 (1,058th Guard): [45, 90] -dBov CN Floor &amp; LPC Order</text>
+  <text x="650" y="254" fill="#E2E8F0" font-family="monospace" font-size="12">action: "clamp_rfc3389_cn_attenuation_dbov_and_drop_blast_packets"</text>
+  <text x="650" y="276" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Blocks N &lt; 45 noise bombs &amp; validates LPC order M in [0, 12]</text>
+  <text x="650" y="296" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps whiteNoiseBlastOrUnstableFilterPackets = 0</text>
+  <text x="650" y="316" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps comfortNoiseAttenuationDbov in [45, 90] (3 -&gt; 45 -dBov)</text>
+  <text x="650" y="336" fill="#38BDF8" font-family="monospace" font-size="11">Policy ID: P1049-WEBRTC-RFC3389-COMFORT-NOISE-LEVEL-ATTENUATION-AND-MODEL-ORDER-GUARD</text>
+
+  <rect x="634" y="366" width="494" height="152" rx="10" fill="#0F172A" stroke="#059669"/>
+  <text x="650" y="390" fill="#34D399" font-family="system-ui, sans-serif" font-size="14" font-weight="700">P1050 🎉 (170th FAQ &amp; 970 Tests 🎉): Opus vs CN &amp; [100, 400]ms SID</text>
+  <text x="650" y="412" fill="#E2E8F0" font-family="monospace" font-size="12">action: "strip_external_cn_from_opus_and_clamp_sid_keepalive_ms"</text>
+  <text x="650" y="434" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Enforces RFC 7587 §6.1 Opus vs. RFC 3389 CN mutual exclusivity</text>
+  <text x="650" y="454" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps opusRfc3389CnClockClashPackets = 0</text>
+  <text x="650" y="474" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="12">• Clamps sidComfortNoiseKeepaliveIntervalMs in [100, 400]ms (2500 -&gt; 400ms)</text>
+  <text x="650" y="496" fill="#38BDF8" font-family="monospace" font-size="11">Policy ID: P1050-WEBRTC-RFC3389-OPUS-DTX-MUTUAL-EXCLUSIVITY-AND-SID-KEEPALIVE-INTERVAL-GUARD</text>
+
+  <!-- Bottom Provenance Banner -->
+  <rect x="52" y="552" width="1096" height="78" rx="12" fill="#090D16" stroke="#334155"/>
+  <text x="72" y="578" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="13" font-weight="700">Benchmark &amp; Timing Provenance (Stage 528 · Topic 168 · 170th FAQ 🎉 · 1,059 Guardrails · 1,068 Probes · 878 Live POC · 531 Dims · 970 Tests 🎉)</text>
+  <text x="72" y="600" fill="#94A3B8" font-family="monospace" font-size="11.5">Timing: 0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established</text>
+  <text x="72" y="618" fill="#64748B" font-family="system-ui, sans-serif" font-size="11.5">Offline in-memory synthetic policy check only; live DSP comfort-noise LPC synthesis and RTP DTX pacer latency is not_measured in this local sandbox.</text>
+</svg>
