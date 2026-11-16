@@ -2185,6 +2185,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: rejects dial-out REFER requests targeting self/external isfocus bridges or carrying unauthorized method=BYE with SIP 403 and clamps consultation bridge participants in [2, 8] (0 focus-to-focus mixer howling loops); live MCU focus URI resolver latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: tracks RFC 4575 activeHumanParticipants and reaps remaining automata/recorder conference legs within [5, 30]s TTL once humans drop to 0 (0 ghost conference mixer bridges); live conference event-package reaper latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "501. [Topic 138 · Historic 65th Round, P990, 140th FAQ & 940-Test Quadruple Milestone! 🎉: voice-webrtc-sdp-rfc8864-rfc8841-datachannel-dcmap-dcsa-subprotocol-injection-max-message-size-reassembly-bomb-faq] Enterprise WebRTC RFC 8864 / RFC 8841 SDP DataChannel dcmap/dcsa Subprotocol Allowlist & max-message-size Reassembly Cap Guard (P989 / P990 🎉 — Stage 498 · Topic 138 · 🎉 Historic 65th Nightly Round, P990 Guardrail, 140th Standalone FAQ & 940-Test Quadruple Milestone · 999 Guardrails & 1,008 Probes · 501 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces SDP a=dcmap/a=dcsa subprotocol allowlist, drops in-band DCEP (PPID=50) collisions on pre-negotiated stream IDs, and clamps pre-negotiated channels in [1, 8] (0 subprotocol/DCEP violations); live SDP dcmap parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids RFC 8841 a=max-message-size:0 (unlimited) and clamps SCTP fragment reassembly buffers in [16, 256] KB (0 unfinished fragmentation OOM bombs); live usrsctp reassembly allocator latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

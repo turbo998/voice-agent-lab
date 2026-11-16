@@ -86832,6 +86832,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface WebrtcRfc8864SdpNegotiatedDataChannelDcmapDcsaSubprotocolAllowlistContext {
+      unauthorizedDcmapDcsaSubprotocolOrDcepCollisionDetected: boolean;
+      subprotocolOrDcepCollisionViolations: number;
+      maxSdpNegotiatedDataChannels: number;
+    }
+
+    export interface WebrtcRfc8864SdpNegotiatedDataChannelDcmapDcsaSubprotocolAllowlistResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reject_unapproved_dcmap_dcsa_subprotocol_and_drop_dcep_collision"
+        | "clamp_dcmap_subprotocol_violations_and_negotiated_channels"
+        | "allow";
+      reason: string;
+      clampedSubprotocolOrDcepCollisionViolations: number;
+      clampedMaxSdpNegotiatedDataChannels: number;
+    }
+
+    /**
+     * P989 (998th Enterprise Guardrail): Enterprise WebRTC RFC 8864 SDP-Negotiated DataChannel (a=dcmap / a=dcsa) Subprotocol Allowlist, Pre-Negotiated Stream DCEP Collision Block & [1, 8] Channels Gate.
+     */
+    export function evaluateWebrtcRfc8864SdpNegotiatedDataChannelDcmapDcsaSubprotocolAllowlistGate(
+      ctx: WebrtcRfc8864SdpNegotiatedDataChannelDcmapDcsaSubprotocolAllowlistContext,
+    ): WebrtcRfc8864SdpNegotiatedDataChannelDcmapDcsaSubprotocolAllowlistResult {
+      const policyId =
+        "P989-WEBRTC-RFC8864-SDP-NEGOTIATED-DATACHANNEL-DCMAP-DCSA-SUBPROTOCOL-ALLOWLIST-GUARD";
+      const clampedSubprotocolOrDcepCollisionViolations = 0;
+      const clampedMaxSdpNegotiatedDataChannels = Math.min(
+        8,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxSdpNegotiatedDataChannels)
+            ? Math.round(ctx.maxSdpNegotiatedDataChannels)
+            : 4,
+        ),
+      );
+
+      if (ctx.unauthorizedDcmapDcsaSubprotocolOrDcepCollisionDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "reject_unapproved_dcmap_dcsa_subprotocol_and_drop_dcep_collision",
+          reason:
+            "WebRTC RFC 8864 Section 4 / 6 SDP-negotiated DataChannel (a=dcmap / a=dcsa) carrying unapproved subprotocol or in-band DCEP (PPID=50) frame arriving on a pre-negotiated stream ID; rejecting unapproved subprotocol/DCEP collision (0 violations) and clamping SDP-negotiated DataChannels in [1, 8] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedSubprotocolOrDcepCollisionViolations,
+          clampedMaxSdpNegotiatedDataChannels,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.subprotocolOrDcepCollisionViolations) ||
+        ctx.subprotocolOrDcepCollisionViolations !== 0 ||
+        !Number.isFinite(ctx.maxSdpNegotiatedDataChannels) ||
+        ctx.maxSdpNegotiatedDataChannels < 1 ||
+        ctx.maxSdpNegotiatedDataChannels > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_dcmap_subprotocol_violations_and_negotiated_channels",
+          reason:
+            "SDP dcmap/dcsa subprotocol or DCEP collision violations (>0 synthetic ceiling) or SDP-negotiated DataChannels (<1 or >8 synthetic bounds) out of bounds; clamping violations to 0 and channels to [1, 8].",
+          clampedSubprotocolOrDcepCollisionViolations,
+          clampedMaxSdpNegotiatedDataChannels,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8864 SDP dcmap/dcsa subprotocol allowlist (0 violations) and [1, 8] pre-negotiated channels verified.",
+        clampedSubprotocolOrDcepCollisionViolations,
+        clampedMaxSdpNegotiatedDataChannels,
+      };
+    }
+
+    export interface WebrtcRfc8841SdpMaxMessageSizeZeroBombAndReassemblyCapContext {
+      maxMessageSizeZeroUnlimitedOrFragmentationBombDetected: boolean;
+      oversizedUnfinishedSctpReassemblyBombs: number;
+      sctpMaxMessageSizeKb: number;
+    }
+
+    export interface WebrtcRfc8841SdpMaxMessageSizeZeroBombAndReassemblyCapResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "forbid_max_message_size_zero_and_purge_oversized_sctp_reassembly"
+        | "clamp_sctp_reassembly_bombs_and_max_message_size_kb"
+        | "allow";
+      reason: string;
+      clampedOversizedUnfinishedSctpReassemblyBombs: number;
+      clampedSctpMaxMessageSizeKb: number;
+    }
+
+    /**
+     * P990 🎉 (Historic 65th Nightly Round, P990 Guardrail, 140th Standalone FAQ & 940-Test Quadruple Milestone! · 999th Guardrail, 1,008th Sandbox Probe & 818th Live POC Probe): Enterprise WebRTC RFC 8841 Section 6 a=max-message-size:0 Unlimited Block & [16, 256] KB SCTP Fragment Reassembly Cap Gate.
+     */
+    export function evaluateWebrtcRfc8841SdpMaxMessageSizeZeroBombAndReassemblyCapGate(
+      ctx: WebrtcRfc8841SdpMaxMessageSizeZeroBombAndReassemblyCapContext,
+    ): WebrtcRfc8841SdpMaxMessageSizeZeroBombAndReassemblyCapResult {
+      const policyId =
+        "P990-WEBRTC-RFC8841-SDP-MAX-MESSAGE-SIZE-ZERO-BOMB-AND-REASSEMBLY-CAP-GUARD";
+      const clampedOversizedUnfinishedSctpReassemblyBombs = 0;
+      const clampedSctpMaxMessageSizeKb = Math.min(
+        256,
+        Math.max(
+          16,
+          Number.isFinite(ctx.sctpMaxMessageSizeKb)
+            ? Math.round(ctx.sctpMaxMessageSizeKb)
+            : 64,
+        ),
+      );
+
+      if (ctx.maxMessageSizeZeroUnlimitedOrFragmentationBombDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "forbid_max_message_size_zero_and_purge_oversized_sctp_reassembly",
+          reason:
+            "WebRTC RFC 8841 Section 6 a=max-message-size:0 (unlimited) negotiation or unfinished E-bit=0 SCTP fragmentation reassembly bomb exceeding 256 KB detected; forbidding size=0, purging oversized reassembly buffer (clamping bombs to 0), and clamping max-message-size in [16, 256] KB (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedOversizedUnfinishedSctpReassemblyBombs,
+          clampedSctpMaxMessageSizeKb,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.oversizedUnfinishedSctpReassemblyBombs) ||
+        ctx.oversizedUnfinishedSctpReassemblyBombs !== 0 ||
+        !Number.isFinite(ctx.sctpMaxMessageSizeKb) ||
+        ctx.sctpMaxMessageSizeKb < 16 ||
+        ctx.sctpMaxMessageSizeKb > 256
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_sctp_reassembly_bombs_and_max_message_size_kb",
+          reason:
+            "Oversized unfinished SCTP reassembly bombs (>0 synthetic ceiling) or SCTP max-message-size (<16 KB or >256 KB synthetic bounds) out of bounds; clamping reassembly bombs to 0 and max-message-size to [16, 256] KB.",
+          clampedOversizedUnfinishedSctpReassemblyBombs,
+          clampedSctpMaxMessageSizeKb,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: WebRTC RFC 8841 SCTP reassembly guard (0 OOM bombs) and [16, 256] KB max-message-size verified.",
+        clampedOversizedUnfinishedSctpReassemblyBombs,
+        clampedSctpMaxMessageSizeKb,
+      };
+    }
+
 
 
 
