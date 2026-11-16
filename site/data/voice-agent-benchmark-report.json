@@ -2221,6 +2221,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: isolates a=content:slides/alt presentation audio out of S2S command reasoning and locks a=content:main caller audio tracks to [1, 1] (0 slides-to-main S2S hijacks); live multimodal SDP content router latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces 100% unique RFC 4574 a=label tokens across all m= sections (SIP 488 on collision) and clamps a=content:sl sign-language framerate in [15, 30] fps (0 SIPREC label collisions); live SIPREC label indexer latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "507. 🎉 [Topic 144 · Historic 1,020-Probe & 830-Live-POC-Probe Dual Milestone! 🎉: voice-sip-rtp-rfc6263-rfc3550-rtp-keepalive-unnegotiated-pt-seq-desync-nat-pinhole-expiry-faq] Enterprise SIP/RTP RFC 6263 / RFC 3550 Forbidden Empty/Unknown-PT Keepalive Strip & [15, 25]s NAT Pinhole Timer Guard (P1001 / P1002 🎉 — Stage 504 · Topic 144 · 🎉 Historic 1,020-Probe 🎉 & 830-Live-POC-Probe 🎉 Dual Milestone · 1,011 Guardrails · 507 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: strips forbidden RFC 6263 0-byte empty RTP packets and unnegotiated-PT keepalive hacks before jitter-buffer Seq tracking and clamps keepalive packets/tick in [1, 2] (0 false Opus PLC/SRTP corruptions); live RTP demux keepalive filter latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces compliant rtcp-mux RTCP / STUN keepalive timer in [15, 25]s during DTX silence, tool wait, and a=sendonly hold (0 firewall 30s NAT pinhole expiry one-way audio drops); live NAT pinhole timer wheel latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

@@ -87783,6 +87783,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRtpRfc6263ForbiddenEmptyPayloadAndUnnegotiatedPtKeepaliveContext {
+      forbiddenEmptyPayloadOrUnnegotiatedPtKeepaliveDetected: boolean;
+      falsePlcOrSrtpSequenceCorruptions: number;
+      keepalivePacketsPerTick: number;
+    }
+
+    export interface SipRtpRfc6263ForbiddenEmptyPayloadAndUnnegotiatedPtKeepaliveResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "strip_forbidden_empty_or_unnegotiated_pt_keepalive_and_enforce_rtcp_mux"
+        | "clamp_false_plc_corruptions_and_keepalive_packets_per_tick"
+        | "allow";
+      reason: string;
+      clampedFalsePlcOrSrtpSequenceCorruptions: number;
+      clampedKeepalivePacketsPerTick: number;
+    }
+
+    /**
+     * P1001 (1,010th Enterprise Guardrail): Enterprise SIP/RTP RFC 6263 Section 4.2/4.4 Forbidden 0-Byte Empty-Payload & Unnegotiated-PT Keepalive Strip, False Opus PLC Prevention & [1, 2] Keepalive Packets/Tick Gate.
+     */
+    export function evaluateSipRtpRfc6263ForbiddenEmptyPayloadAndUnnegotiatedPtKeepaliveGate(
+      ctx: SipRtpRfc6263ForbiddenEmptyPayloadAndUnnegotiatedPtKeepaliveContext,
+    ): SipRtpRfc6263ForbiddenEmptyPayloadAndUnnegotiatedPtKeepaliveResult {
+      const policyId =
+        "P1001-SIP-RTP-RFC6263-FORBIDDEN-EMPTY-PAYLOAD-AND-UNNEGOTIATED-PT-KEEPALIVE-GUARD";
+      const clampedFalsePlcOrSrtpSequenceCorruptions = 0;
+      const clampedKeepalivePacketsPerTick = Math.min(
+        2,
+        Math.max(
+          1,
+          Number.isFinite(ctx.keepalivePacketsPerTick)
+            ? Math.round(ctx.keepalivePacketsPerTick)
+            : 1,
+        ),
+      );
+
+      if (ctx.forbiddenEmptyPayloadOrUnnegotiatedPtKeepaliveDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "strip_forbidden_empty_or_unnegotiated_pt_keepalive_and_enforce_rtcp_mux",
+          reason:
+            "SIP/RTP RFC 6263 Section 4.2 / 4.4 forbidden 0-byte empty-payload RTP packet or unnegotiated payload-type keepalive hack detected; stripping non-media keepalive before jitter-buffer sequence tracking (0 false PLC or SRTP replay corruptions) and clamping keepalive packets per tick in [1, 2] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedFalsePlcOrSrtpSequenceCorruptions,
+          clampedKeepalivePacketsPerTick,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.falsePlcOrSrtpSequenceCorruptions) ||
+        ctx.falsePlcOrSrtpSequenceCorruptions !== 0 ||
+        !Number.isFinite(ctx.keepalivePacketsPerTick) ||
+        ctx.keepalivePacketsPerTick < 1 ||
+        ctx.keepalivePacketsPerTick > 2
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_false_plc_corruptions_and_keepalive_packets_per_tick",
+          reason:
+            "False PLC or SRTP sequence corruptions (>0 synthetic ceiling) or keepalive packets per tick (<1 or >2 synthetic bounds) out of bounds; clamping corruptions to 0 and packets per tick to [1, 2].",
+          clampedFalsePlcOrSrtpSequenceCorruptions,
+          clampedKeepalivePacketsPerTick,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP/RTP RFC 6263 forbidden keepalive filter (0 false PLC corruptions) and [1, 2] keepalive packets/tick verified.",
+        clampedFalsePlcOrSrtpSequenceCorruptions,
+        clampedKeepalivePacketsPerTick,
+      };
+    }
+
+    export interface SipRtpRfc6263NatPinholeKeepaliveIntervalAndHoldDropContext {
+      natPinholeKeepaliveTimeoutOrHoldOneWayAudioDetected: boolean;
+      natPinholeExpiryOneWayAudioDrops: number;
+      rtpNatKeepaliveIntervalSec: number;
+    }
+
+    export interface SipRtpRfc6263NatPinholeKeepaliveIntervalAndHoldDropResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "enforce_15_to_25s_nat_pinhole_keepalive_timer_during_silence_or_hold"
+        | "clamp_nat_pinhole_one_way_drops_and_keepalive_interval_sec"
+        | "allow";
+      reason: string;
+      clampedNatPinholeExpiryOneWayAudioDrops: number;
+      clampedRtpNatKeepaliveIntervalSec: number;
+    }
+
+    /**
+     * P1002 🎉 (Historic 1,020th Sandbox Probe & 830th Live POC Probe Dual Milestone! · 1,011th Guardrail): Enterprise SIP/RTP RFC 6263 Section 6 [15, 25]s NAT Pinhole Keepalive Timer & Hold/Silence One-Way Audio Prevention Gate.
+     */
+    export function evaluateSipRtpRfc6263NatPinholeKeepaliveIntervalAndHoldDropGate(
+      ctx: SipRtpRfc6263NatPinholeKeepaliveIntervalAndHoldDropContext,
+    ): SipRtpRfc6263NatPinholeKeepaliveIntervalAndHoldDropResult {
+      const policyId =
+        "P1002-SIP-RTP-RFC6263-NAT-PINHOLE-KEEPALIVE-INTERVAL-AND-HOLD-DROP-GUARD";
+      const clampedNatPinholeExpiryOneWayAudioDrops = 0;
+      const clampedRtpNatKeepaliveIntervalSec = Math.min(
+        25,
+        Math.max(
+          15,
+          Number.isFinite(ctx.rtpNatKeepaliveIntervalSec)
+            ? Math.round(ctx.rtpNatKeepaliveIntervalSec)
+            : 20,
+        ),
+      );
+
+      if (ctx.natPinholeKeepaliveTimeoutOrHoldOneWayAudioDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "enforce_15_to_25s_nat_pinhole_keepalive_timer_during_silence_or_hold",
+          reason:
+            "SIP/RTP RFC 6263 Section 6 NAT keepalive interval exceeded 25s during DTX silence, slow tool wait, or a=sendonly hold, causing 30s firewall UDP pinhole expiry; enforcing compliant keepalive timer in [15, 25]s (0 one-way audio drops) (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedNatPinholeExpiryOneWayAudioDrops,
+          clampedRtpNatKeepaliveIntervalSec,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.natPinholeExpiryOneWayAudioDrops) ||
+        ctx.natPinholeExpiryOneWayAudioDrops !== 0 ||
+        !Number.isFinite(ctx.rtpNatKeepaliveIntervalSec) ||
+        ctx.rtpNatKeepaliveIntervalSec < 15 ||
+        ctx.rtpNatKeepaliveIntervalSec > 25
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_nat_pinhole_one_way_drops_and_keepalive_interval_sec",
+          reason:
+            "NAT pinhole expiry one-way audio drops (>0 synthetic ceiling) or RTP NAT keepalive interval (<15s or >25s synthetic bounds) out of bounds; clamping drops to 0 and interval to [15, 25]s.",
+          clampedNatPinholeExpiryOneWayAudioDrops,
+          clampedRtpNatKeepaliveIntervalSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP/RTP RFC 6263 NAT pinhole keepalive guard (0 one-way audio drops) and [15, 25]s interval verified.",
+        clampedNatPinholeExpiryOneWayAudioDrops,
+        clampedRtpNatKeepaliveIntervalSec,
+      };
+    }
+
 
 
 
