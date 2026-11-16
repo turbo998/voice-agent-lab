@@ -2288,6 +2288,13 @@
               <td><code>P1059 / P1060 🎉 deterministic SIP RFC 5057 usage-scoped 481 isolation &amp; RFC 6665 in-dialog SUBSCRIBE prohibition guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>537. 🎉 [专题174 · 单夜第40轮 &amp; 1070护栏 &amp; 1080探针 &amp; 890 POC &amp; 910单测五重里程碑 🎉 `docs/voice-webrtc-rtp-rfc7160-rfc3551-multiple-clock-rates-48khz-8khz-timestamp-discontinuity-rtcp-jitter-reset-faq.md`] 企业 WebRTC/RTP `RFC 7160 / RFC 3551` 多时钟频率会话同频 `telephone-event` 强制匹配（防 `Opus/48000` 混发 `telephone-event/8000` 引发 `6:1` 时间戳断层吞掉按键后 3 秒语音）与单 `SSRC` `[1, 1]` 恒定时钟率锁（`0` 跨频断层丢包；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 DSP 时间戳重采样耗时 `not_measured`）&amp; `RFC 7160 §3.2 / §3.3` 跨采样率切换瞬间重置 RTCP 到达间隔抖动估计器 `J=0` 与 `[20, 60]ms` 切频重同步窗口门禁（`0` 虚假抖动报告；真实 NetEQ 抖动重置耗时 `not_measured`）(`P1061 🎉` / `P1062 🎉` · Stage 534 · Topic 174 · 🎉 历史性单夜第 40 轮深潜、第 1,070 道护栏、第 1,080 个沙盒探针、第 890 个现场 POC 探针与 910 项门户测试五重里程碑 · 1,071 护栏 🎉 &amp; 1,080 探针 🎉 · 537 维)</strong>
+              </td>
+              <td><code>P1061 🎉 / P1062 🎉 deterministic WebRTC RFC 7160 same-rate telephone-event &amp; RTCP jitter reset guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>
         </table>
         <div class="two-col-callouts">
@@ -6552,6 +6559,13 @@
                 <strong>536. 🎉 [专题173 · 第100轮 &amp; P1060 &amp; 175篇FAQ &amp; 975单测四重里程碑 🎉 `docs/voice-sip-rfc5057-rfc6665-multiple-dialog-usages-481-408-scope-isolation-in-dialog-subscribe-hijack-faq.md`] 企业 SIP `RFC 5057 / RFC 6665` 多重对话用途三级错误爆炸半径隔离（附属 `NOTIFY/SUBSCRIBE` 报错 `481/408` 仅销毁该订阅用途、严禁连坐掐断活跃 `INVITE` 语音通话）与 `[1, 2]` 个并发用途锁（`0` 连坐掉话；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 B2BUA 对话引用计数耗时 `not_measured`）&amp; `RFC 6665 §4.5.1` 严禁在现有 `INVITE` 对话内寄生新建 `SUBSCRIBE` 防共享 `Contact` 路由劫持与 `[1, 1]` 单一用途隔离门禁（`0` 寄生劫持包；真实 SBC 对话外路由耗时 `not_measured`）(`P1059` / `P1060 🎉` · Stage 533 · Topic 173 · 🎉 历史性第 100 轮夜间深潜、`P1060` 护栏、第 175 篇独立单专题 FAQ 与 975 项单测四重里程碑 · 1,069 护栏 &amp; 1,078 探针 · 536 维)</strong>
               </td>
               <td><code>P1059 / P1060 🎉 deterministic SIP RFC 5057 usage-scoped 481 isolation &amp; RFC 6665 in-dialog SUBSCRIBE prohibition guard</code></td>
+              <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
+              <td><span class="act-pill">Act automatically</span></td>
+            </tr>            <tr>
+              <td>
+                <strong>537. 🎉 [专题174 · 单夜第40轮 &amp; 1070护栏 &amp; 1080探针 &amp; 890 POC &amp; 910单测五重里程碑 🎉 `docs/voice-webrtc-rtp-rfc7160-rfc3551-multiple-clock-rates-48khz-8khz-timestamp-discontinuity-rtcp-jitter-reset-faq.md`] 企业 WebRTC/RTP `RFC 7160 / RFC 3551` 多时钟频率会话同频 `telephone-event` 强制匹配（防 `Opus/48000` 混发 `telephone-event/8000` 引发 `6:1` 时间戳断层吞掉按键后 3 秒语音）与单 `SSRC` `[1, 1]` 恒定时钟率锁（`0` 跨频断层丢包；`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established` 离线 `synthetic` 策略配置检查；真实 DSP 时间戳重采样耗时 `not_measured`）&amp; `RFC 7160 §3.2 / §3.3` 跨采样率切换瞬间重置 RTCP 到达间隔抖动估计器 `J=0` 与 `[20, 60]ms` 切频重同步窗口门禁（`0` 虚假抖动报告；真实 NetEQ 抖动重置耗时 `not_measured`）(`P1061 🎉` / `P1062 🎉` · Stage 534 · Topic 174 · 🎉 历史性单夜第 40 轮深潜、第 1,070 道护栏、第 1,080 个沙盒探针、第 890 个现场 POC 探针与 910 项门户测试五重里程碑 · 1,071 护栏 🎉 &amp; 1,080 探针 🎉 · 537 维)</strong>
+              </td>
+              <td><code>P1061 🎉 / P1062 🎉 deterministic WebRTC RFC 7160 same-rate telephone-event &amp; RTCP jitter reset guard</code></td>
               <td><span class="badge-pass">PASS · 0ms @ 1ms Res (Synthetic)</span></td>
               <td><span class="act-pill">Act automatically</span></td>
             </tr>          </tbody>

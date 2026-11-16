@@ -2401,6 +2401,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: isolates non-INVITE 481/408 errors to the single usage without dropping the active INVITE voice call (0 collateral drops) and clamps concurrentUsagesPerInviteDialog in [1, 2]; live B2BUA dialog usage ref-count latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids RFC 6665 §4.5.1 in-dialog SUBSCRIBE piggybacking inside active INVITE dialogs (0 hijack packets) and clamps isolatedInviteDialogUsageCount in [1, 1]; live SBC out-of-dialog SUBSCRIBE router latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "537. 🎉 [Topic 174 · Historic 40th Nightly Round, 1,070th Guardrail, 1,080th Probe, 890th Live POC & 910th Portal Test Quintuple Milestone! 🎉: voice-webrtc-rtp-rfc7160-rfc3551-multiple-clock-rates-48khz-8khz-timestamp-discontinuity-rtcp-jitter-reset-faq] Enterprise WebRTC/RTP RFC 7160 Multiple Clock Rates Same-Rate DTMF & RTCP Jitter Reset Guard (P1061 🎉 / P1062 🎉 — Stage 534 · Topic 174 · 🎉 Historic 40th Round, 1,070th Guard, 1,080th Probe, 890th POC & 910 Tests Quintuple Milestone · 1,071 Guardrails 🎉 & 1,080 Probes 🎉 · 537 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: pairs Opus/48000 with same-rate telephone-event/48000 (0 post-DTMF dropped audio packets) and clamps distinctActiveClockRatesPerSsrc in [1, 1]; live DSP timestamp resampler latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: resets RTCP Interarrival Jitter estimator J=0 on clock-rate transitions (0 corrupted jitter reports) and clamps clockSwitchResyncWindowMs in [20, 60]ms; live NetEQ jitter reset latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

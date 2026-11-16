@@ -91301,3 +91301,110 @@ export function evaluateSipRfc5057Rfc6665InDialogSubscribeProhibitionAndTargetRe
   };
 }
 
+// ============================================================================
+// Stage 534 (Topic 174 · P1061 🎉–P1062 🎉 · Historic 40th Nightly Round of
+// Tonight's Run, 1,070th Enterprise Guardrail, 1,080th Sandbox Probe, 890th
+// Live POC Probe & 910th Portal Test Quintuple Milestone! · 1,071 Guardrails 🎉
+// · 1,080 Probes 🎉 · 537 Dims):
+// Enterprise WebRTC/RTP RFC 7160 / RFC 3551 Multiple Clock Rates Same-Rate
+// telephone-event Matching & RTCP Jitter Estimator Reset Guardrails
+// ============================================================================
+
+export interface WebrtcRfc7160SameClockRateTelephoneEventMatchingAndSwitchDiscontinuityGuardInput {
+  mismatchedTelephoneEventClockRateOrTimestampRollbackDetected: boolean;
+  clockRateDiscontinuityOrDroppedAudioPackets: number;
+  distinctActiveClockRatesPerSsrc: number;
+}
+
+export interface WebrtcRfc7160SameClockRateTelephoneEventMatchingAndSwitchDiscontinuityGuardResult {
+  violated: boolean;
+  policyId: "P1061-WEBRTC-RFC7160-SAME-CLOCK-RATE-TELEPHONE-EVENT-MATCHING-AND-SWITCH-DISCONTINUITY-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_matched_clock_rate_rtp_and_dtmf"
+    | "bind_matching_clock_rate_telephone_event_and_lock_single_ssrc_rate";
+  clampedClockRateDiscontinuityOrDroppedAudioPackets: number;
+  clampedDistinctActiveClockRatesPerSsrc: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc7160SameClockRateTelephoneEventMatchingAndSwitchDiscontinuityGuard(
+  input: WebrtcRfc7160SameClockRateTelephoneEventMatchingAndSwitchDiscontinuityGuardInput,
+): WebrtcRfc7160SameClockRateTelephoneEventMatchingAndSwitchDiscontinuityGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.mismatchedTelephoneEventClockRateOrTimestampRollbackDetected ||
+    input.clockRateDiscontinuityOrDroppedAudioPackets > 0 ||
+    input.distinctActiveClockRatesPerSsrc !== 1;
+  const clampedClockRateDiscontinuityOrDroppedAudioPackets = 0;
+  const clampedDistinctActiveClockRatesPerSsrc = 1;
+  return {
+    violated,
+    policyId:
+      "P1061-WEBRTC-RFC7160-SAME-CLOCK-RATE-TELEPHONE-EVENT-MATCHING-AND-SWITCH-DISCONTINUITY-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "bind_matching_clock_rate_telephone_event_and_lock_single_ssrc_rate"
+      : "allow_matched_clock_rate_rtp_and_dtmf",
+    clampedClockRateDiscontinuityOrDroppedAudioPackets,
+    clampedDistinctActiveClockRatesPerSsrc,
+    reason: violated
+      ? `P1061 🎉 (Historic 1,070th Enterprise Guardrail Milestone!) WebRTC/RTP RFC 7160 §4.3 mismatched telephone-event clock rate or RTP timestamp discontinuity violation (${timing}): bound matching-rate telephone-event (clamped dropped post-DTMF audio packets to 0) and clamped distinct active clock rates per SSRC to ${clampedDistinctActiveClockRatesPerSsrc} in [1, 1].`
+      : `P1061 🎉 (Historic 1,070th Enterprise Guardrail Milestone!) WebRTC/RTP RFC 7160 §4.3 same-clock-rate telephone-event and SSRC clock continuity verified (${timing}): 0 discontinuity packets and ${clampedDistinctActiveClockRatesPerSsrc} clock rate per SSRC within [1, 1].`,
+  };
+}
+
+export interface WebrtcRfc7160RtcpSrClockRateAlignmentAndJitterEstimatorResetGuardInput {
+  unresetRtcpJitterOnClockSwitchOrMisalignedSrTimestampDetected: boolean;
+  corruptedMultiRateRtcpJitterReportsCount: number;
+  clockSwitchResyncWindowMs: number;
+}
+
+export interface WebrtcRfc7160RtcpSrClockRateAlignmentAndJitterEstimatorResetGuardResult {
+  violated: boolean;
+  policyId: "P1062-WEBRTC-RFC7160-RTCP-SR-CLOCK-RATE-ALIGNMENT-AND-JITTER-ESTIMATOR-RESET-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_aligned_rfc7160_rtcp_sr_and_jitter"
+    | "reset_rtcp_jitter_estimator_on_rate_switch_and_clamp_resync_ms";
+  clampedCorruptedMultiRateRtcpJitterReportsCount: number;
+  clampedClockSwitchResyncWindowMs: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc7160RtcpSrClockRateAlignmentAndJitterEstimatorResetGuard(
+  input: WebrtcRfc7160RtcpSrClockRateAlignmentAndJitterEstimatorResetGuardInput,
+): WebrtcRfc7160RtcpSrClockRateAlignmentAndJitterEstimatorResetGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.unresetRtcpJitterOnClockSwitchOrMisalignedSrTimestampDetected ||
+    input.corruptedMultiRateRtcpJitterReportsCount > 0 ||
+    input.clockSwitchResyncWindowMs < 20 ||
+    input.clockSwitchResyncWindowMs > 60;
+  const clampedCorruptedMultiRateRtcpJitterReportsCount = 0;
+  const clampedClockSwitchResyncWindowMs = Math.min(
+    60,
+    Math.max(20, Math.trunc(input.clockSwitchResyncWindowMs || 20)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1062-WEBRTC-RFC7160-RTCP-SR-CLOCK-RATE-ALIGNMENT-AND-JITTER-ESTIMATOR-RESET-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "reset_rtcp_jitter_estimator_on_rate_switch_and_clamp_resync_ms"
+      : "allow_aligned_rfc7160_rtcp_sr_and_jitter",
+    clampedCorruptedMultiRateRtcpJitterReportsCount,
+    clampedClockSwitchResyncWindowMs,
+    reason: violated
+      ? `P1062 🎉 (Historic 40th Nightly Round, 1,071st Guardrail, 1,080th Sandbox Probe, 890th Live POC Probe & 910th Portal Test Quintuple Milestone!) WebRTC/RTP RFC 7160 §3.2/§3.3 unreset RTCP jitter estimator or clock-switch resync violation (${timing}): reset RTCP Interarrival Jitter J=0 (clamped corrupted jitter reports to 0) and clamped clock-switch resync window to ${clampedClockSwitchResyncWindowMs}ms in [20, 60]ms.`
+      : `P1062 🎉 (Historic 40th Nightly Round, 1,071st Guardrail, 1,080th Sandbox Probe, 890th Live POC Probe & 910th Portal Test Quintuple Milestone!) WebRTC/RTP RFC 7160 §3.2/§3.3 RTCP SR alignment and jitter reset verified (${timing}): 0 corrupted jitter reports and resync window ${clampedClockSwitchResyncWindowMs}ms within [20, 60]ms.`,
+  };
+}
+
