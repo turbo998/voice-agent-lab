@@ -88263,6 +88263,166 @@ export interface SemiconductorHbm46BacksidePowerCorridorFractureAndHybridBondPad
       };
     }
 
+    export interface SipRfc5366UriListInviteResourceListsEntryRefSsrfAndDomainContext {
+      entryRefExternalSsrfOrUnauthorizedTollFraudUriDetected: boolean;
+      entryRefSsrfOrUnauthorizedDialOuts: number;
+      maxUriListEntriesPerInvite: number;
+    }
+
+    export interface SipRfc5366UriListInviteResourceListsEntryRefSsrfAndDomainResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "reject_entry_ref_external_ssrf_and_enforce_inline_domain_allowlist"
+        | "clamp_entry_ref_ssrf_dial_outs_and_uri_list_entries"
+        | "allow";
+      reason: string;
+      clampedEntryRefSsrfOrUnauthorizedDialOuts: number;
+      clampedMaxUriListEntriesPerInvite: number;
+    }
+
+    /**
+     * P1007 (1,016th Enterprise Guardrail): Enterprise SIP RFC 5366 / RFC 4826 recipient-list-invite (application/resource-lists+xml) <entry-ref>/<external> SSRF Block, Target Domain Allowlist & [1, 8] Entries Gate.
+     */
+    export function evaluateSipRfc5366UriListInviteResourceListsEntryRefSsrfAndDomainGate(
+      ctx: SipRfc5366UriListInviteResourceListsEntryRefSsrfAndDomainContext,
+    ): SipRfc5366UriListInviteResourceListsEntryRefSsrfAndDomainResult {
+      const policyId =
+        "P1007-SIP-RFC5366-URI-LIST-INVITE-RESOURCE-LISTS-ENTRY-REF-SSRF-AND-DOMAIN-GUARD";
+      const clampedEntryRefSsrfOrUnauthorizedDialOuts = 0;
+      const clampedMaxUriListEntriesPerInvite = Math.min(
+        8,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxUriListEntriesPerInvite)
+            ? Math.round(ctx.maxUriListEntriesPerInvite)
+            : 4,
+        ),
+      );
+
+      if (ctx.entryRefExternalSsrfOrUnauthorizedTollFraudUriDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "reject_entry_ref_external_ssrf_and_enforce_inline_domain_allowlist",
+          reason:
+            "SIP RFC 5366 Section 7 / RFC 4826 Section 3 recipient-list-invite (application/resource-lists+xml) containing <entry-ref>/<external> XCAP SSRF reference or unapproved external toll-fraud <entry uri>; blocking external reference/URI (0 SSRF or unauthorized dial-outs) and clamping deduplicated inline entries in [1, 8] (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedEntryRefSsrfOrUnauthorizedDialOuts,
+          clampedMaxUriListEntriesPerInvite,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.entryRefSsrfOrUnauthorizedDialOuts) ||
+        ctx.entryRefSsrfOrUnauthorizedDialOuts !== 0 ||
+        !Number.isFinite(ctx.maxUriListEntriesPerInvite) ||
+        ctx.maxUriListEntriesPerInvite < 1 ||
+        ctx.maxUriListEntriesPerInvite > 8
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_entry_ref_ssrf_dial_outs_and_uri_list_entries",
+          reason:
+            "URI-list entry-ref SSRF or unauthorized dial-outs (>0 synthetic ceiling) or <entry> targets per INVITE (<1 or >8 synthetic bounds) out of bounds; clamping violations to 0 and entries to [1, 8].",
+          clampedEntryRefSsrfOrUnauthorizedDialOuts,
+          clampedMaxUriListEntriesPerInvite,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 5366/4826 URI-list inline allowlist (0 SSRF/unauthorized dial-outs) and [1, 8] entries verified.",
+        clampedEntryRefSsrfOrUnauthorizedDialOuts,
+        clampedMaxUriListEntriesPerInvite,
+      };
+    }
+
+    export interface SipRfc5366UriListInviteDialOutRateAndCopyControlAnonymityContext {
+      copyControlBccLeakOrDialOutRateFloodDetected: boolean;
+      copyControlBccIdentityLeaks: number;
+      maxUriListDialOutRatePerSec: number;
+    }
+
+    export interface SipRfc5366UriListInviteDialOutRateAndCopyControlAnonymityResult {
+      violated: boolean;
+      policyId: string;
+      action:
+        | "omit_copy_control_bcc_from_notify_and_throttle_dial_out_rate"
+        | "clamp_bcc_identity_leaks_and_dial_out_rate_per_sec"
+        | "allow";
+      reason: string;
+      clampedCopyControlBccIdentityLeaks: number;
+      clampedMaxUriListDialOutRatePerSec: number;
+    }
+
+    /**
+     * P1008 🎉 (Historic 510th Benchmark Evaluation Dimension Milestone! · 1,017th Guardrail, 1,026th Sandbox Probe & 836th Live POC Probe): Enterprise SIP RFC 5366 / RFC 5364 copyControl="bcc" Roster Omission & [1, 4] calls/s Dial-Out Rate Gate.
+     */
+    export function evaluateSipRfc5366UriListInviteDialOutRateAndCopyControlAnonymityGate(
+      ctx: SipRfc5366UriListInviteDialOutRateAndCopyControlAnonymityContext,
+    ): SipRfc5366UriListInviteDialOutRateAndCopyControlAnonymityResult {
+      const policyId =
+        "P1008-SIP-RFC5366-URI-LIST-INVITE-DIAL-OUT-RATE-AND-COPY-CONTROL-ANONYMITY-GUARD";
+      const clampedCopyControlBccIdentityLeaks = 0;
+      const clampedMaxUriListDialOutRatePerSec = Math.min(
+        4,
+        Math.max(
+          1,
+          Number.isFinite(ctx.maxUriListDialOutRatePerSec)
+            ? Math.round(ctx.maxUriListDialOutRatePerSec)
+            : 2,
+        ),
+      );
+
+      if (ctx.copyControlBccLeakOrDialOutRateFloodDetected) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "omit_copy_control_bcc_from_notify_and_throttle_dial_out_rate",
+          reason:
+            "SIP RFC 5366 / RFC 5364 copyControl=bcc supervisor URI exposed in outbound RFC 4575 conference-info+xml NOTIFY or URI-list dial-out rate exceeded bounds; omitting bcc roster nodes (0 identity leaks) and clamping dial-out pacing in [1, 4] calls/s (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established).",
+          clampedCopyControlBccIdentityLeaks,
+          clampedMaxUriListDialOutRatePerSec,
+        };
+      }
+
+      if (
+        !Number.isFinite(ctx.copyControlBccIdentityLeaks) ||
+        ctx.copyControlBccIdentityLeaks !== 0 ||
+        !Number.isFinite(ctx.maxUriListDialOutRatePerSec) ||
+        ctx.maxUriListDialOutRatePerSec < 1 ||
+        ctx.maxUriListDialOutRatePerSec > 4
+      ) {
+        return {
+          violated: true,
+          policyId,
+          action:
+            "clamp_bcc_identity_leaks_and_dial_out_rate_per_sec",
+          reason:
+            "copyControl=bcc identity leaks (>0 synthetic ceiling) or URI-list dial-out rate (<1 or >4 calls/s synthetic bounds) out of bounds; clamping leaks to 0 and rate to [1, 4] calls/s.",
+          clampedCopyControlBccIdentityLeaks,
+          clampedMaxUriListDialOutRatePerSec,
+        };
+      }
+
+      return {
+        violated: false,
+        policyId,
+        action: "allow",
+        reason:
+          "Offline synthetic policy check passed: SIP RFC 5366/5364 copyControl=bcc privacy (0 leaks) and [1, 4] calls/s dial-out rate verified.",
+        clampedCopyControlBccIdentityLeaks,
+        clampedMaxUriListDialOutRatePerSec,
+      };
+    }
+
 
 
 

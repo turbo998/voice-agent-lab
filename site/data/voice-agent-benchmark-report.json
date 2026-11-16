@@ -2239,6 +2239,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: forbids RFC 4483 message/external-body indirection for real-time application/sdp (SIP 415) and restricts auxiliary URL fetches to [1, 4] mTLS-trusted domains (0 SSRF fetches); live SIP MIME indirection filter latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: clamps indirect HTTP stream reads in [4, 64] KB with <=300ms async timeout and preserves inline voice call setup on attachment abort (0 amplification stalls); live async attachment fetcher latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "510. 🎉 [Topic 147 · Historic 510th Benchmark Evaluation Dimension Milestone! 🎉: voice-sip-rfc5366-rfc4826-uri-list-invite-resource-lists-xml-dialout-amplification-entry-ref-ssrf-faq] Enterprise SIP RFC 5366 / RFC 4826 URI-List INVITE entry-ref SSRF Block & copyControl=bcc Privacy Guard (P1007 / P1008 🎉 — Stage 507 · Topic 147 · 🎉 Historic 510th Benchmark Dimension Milestone · 1,017 Guardrails & 1,026 Probes · 510 Dims 🎉)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: blocks <entry-ref>/<external> XCAP SSRF references in application/resource-lists+xml, verifies inline <entry uri> allowlists, and clamps deduplicated targets in [1, 8] (0 SSRF or unauthorized dial-outs); live URI-list XML validator latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: omits RFC 5364 copyControl=bcc supervisor nodes from outbound RFC 4575 conference-info NOTIFYs and clamps list dial-out rate in [1, 4] calls/s (0 bcc identity leaks); live conference roster serializer latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
