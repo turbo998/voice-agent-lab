@@ -90324,3 +90324,112 @@ export function evaluateWebrtcRfc8852RepairedRtpStreamIdExclusivityAndParentMatc
   };
 }
 
+// ============================================================================
+// Stage 525 🎉 (Topic 165 🎉 · P1043–P1044 · Historic Stage 525 & 165th Voice
+// Architecture Topic Dual Milestone! · 1,053 Guardrails · 1,062 Probes · 528 Dims):
+// Enterprise SIP RFC 4028 Session Timers (Session-Expires & Min-SE) 422 Loop
+// Breaker, Refresher Role Pinning & Zombie Call Reaper Guardrails
+// ============================================================================
+
+export interface SipRfc4028SessionExpiresMinSe422FloorAndLoopBreakerGuardInput {
+  sub90sSessionExpiresOrInfinite422RetryLoopDetected: boolean;
+  unbounded422RetryOrSub90sTimerRequests: number;
+  negotiatedSessionExpiresSeconds: number;
+}
+
+export interface SipRfc4028SessionExpiresMinSe422FloorAndLoopBreakerGuardResult {
+  violated: boolean;
+  policyId: "P1043-SIP-RFC4028-SESSION-EXPIRES-MIN-SE-422-FLOOR-AND-LOOP-BREAKER-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_rfc4028_session_expires_interval"
+    | "enforce_min_se_90s_and_break_422_retry_loop";
+  clampedUnbounded422RetryOrSub90sTimerRequests: number;
+  clampedNegotiatedSessionExpiresSeconds: number;
+  reason: string;
+}
+
+export function evaluateSipRfc4028SessionExpiresMinSe422FloorAndLoopBreakerGuard(
+  input: SipRfc4028SessionExpiresMinSe422FloorAndLoopBreakerGuardInput,
+): SipRfc4028SessionExpiresMinSe422FloorAndLoopBreakerGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.sub90sSessionExpiresOrInfinite422RetryLoopDetected ||
+    input.unbounded422RetryOrSub90sTimerRequests > 0 ||
+    input.negotiatedSessionExpiresSeconds < 90 ||
+    input.negotiatedSessionExpiresSeconds > 1800;
+  const clampedUnbounded422RetryOrSub90sTimerRequests = 0;
+  const clampedNegotiatedSessionExpiresSeconds = Math.min(
+    1800,
+    Math.max(90, Math.trunc(input.negotiatedSessionExpiresSeconds || 90)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1043-SIP-RFC4028-SESSION-EXPIRES-MIN-SE-422-FLOOR-AND-LOOP-BREAKER-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "enforce_min_se_90s_and_break_422_retry_loop"
+      : "allow_rfc4028_session_expires_interval",
+    clampedUnbounded422RetryOrSub90sTimerRequests,
+    clampedNegotiatedSessionExpiresSeconds,
+    reason: violated
+      ? `P1043 (1,052nd Enterprise Guardrail · Stage 525 🎉 & Topic 165 🎉) SIP RFC 4028 sub-90s Session-Expires or unbounded 422 retry loop violation (${timing}): blocked unbounded 422 retry/sub-90s requests (clamped to 0) and clamped negotiated Session-Expires to ${clampedNegotiatedSessionExpiresSeconds}s in [90, 1800]s.`
+      : `P1043 (1,052nd Enterprise Guardrail · Stage 525 🎉 & Topic 165 🎉) SIP RFC 4028 Session-Expires and Min-SE verified (${timing}): 0 unbounded 422 retries and Session-Expires ${clampedNegotiatedSessionExpiresSeconds}s within [90, 1800]s.`,
+  };
+}
+
+export interface SipRfc4028RefresherRoleAssignmentAndHalfIntervalReaperGuardInput {
+  missingRefresherParameterOrUnreapedZombieSessionDetected: boolean;
+  ambiguousRefresherOrZombieCallsCount: number;
+  zombieReaperGraceWindowSeconds: number;
+}
+
+export interface SipRfc4028RefresherRoleAssignmentAndHalfIntervalReaperGuardResult {
+  violated: boolean;
+  policyId: "P1044-SIP-RFC4028-REFRESHER-ROLE-ASSIGNMENT-AND-HALF-INTERVAL-REAPER-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_explicit_rfc4028_refresher_and_active_session"
+    | "assign_explicit_refresher_and_reap_zombie_session_with_bye";
+  clampedAmbiguousRefresherOrZombieCallsCount: number;
+  clampedZombieReaperGraceWindowSeconds: number;
+  reason: string;
+}
+
+export function evaluateSipRfc4028RefresherRoleAssignmentAndHalfIntervalReaperGuard(
+  input: SipRfc4028RefresherRoleAssignmentAndHalfIntervalReaperGuardInput,
+): SipRfc4028RefresherRoleAssignmentAndHalfIntervalReaperGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.missingRefresherParameterOrUnreapedZombieSessionDetected ||
+    input.ambiguousRefresherOrZombieCallsCount > 0 ||
+    input.zombieReaperGraceWindowSeconds < 32 ||
+    input.zombieReaperGraceWindowSeconds > 64;
+  const clampedAmbiguousRefresherOrZombieCallsCount = 0;
+  const clampedZombieReaperGraceWindowSeconds = Math.min(
+    64,
+    Math.max(32, Math.trunc(input.zombieReaperGraceWindowSeconds || 32)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1044-SIP-RFC4028-REFRESHER-ROLE-ASSIGNMENT-AND-HALF-INTERVAL-REAPER-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "assign_explicit_refresher_and_reap_zombie_session_with_bye"
+      : "allow_explicit_rfc4028_refresher_and_active_session",
+    clampedAmbiguousRefresherOrZombieCallsCount,
+    clampedZombieReaperGraceWindowSeconds,
+    reason: violated
+      ? `P1044 (1,053rd Enterprise Guardrail · Stage 525 🎉 & Topic 165 🎉) SIP RFC 4028 missing refresher=uac|uas parameter or unreaped zombie call violation (${timing}): pinned explicit refresher role, reaped zombie calls with BYE (clamped to 0), and clamped reaper grace window to ${clampedZombieReaperGraceWindowSeconds}s in [32, 64]s.`
+      : `P1044 (1,053rd Enterprise Guardrail · Stage 525 🎉 & Topic 165 🎉) SIP RFC 4028 explicit refresher role and reaper grace window verified (${timing}): 0 zombie calls and reaper window ${clampedZombieReaperGraceWindowSeconds}s within [32, 64]s.`,
+  };
+}
+

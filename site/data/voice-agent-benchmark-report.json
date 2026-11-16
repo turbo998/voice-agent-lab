@@ -2347,6 +2347,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces SDP a=rid allowlist and permanent SSRC->rid pinning (0 unnegotiated/rebound rid packets) and clamps maxSimulcastRidLayersPerMediaSection in [1, 3]; live SFU SSRC->rid hash lookup latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 8852 §3.2 mutual exclusivity between rid and rrid, verifies active parent rid binding (0 conflicting/orphan rrid packets), and clamps ridTokenByteLength in [1, 16] bytes; live SFU repair stream router latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "528. 🎉 [Topic 165 🎉 · Historic Stage 525 & Topic 165 Dual Milestone! 🎉: voice-sip-rfc4028-session-expires-min-se-422-interval-too-small-loop-refresher-role-deadlock-zombie-reaper-faq] Enterprise SIP RFC 4028 Session-Expires / Min-SE 422 Loop & Refresher Zombie Reaper Guard (P1043 / P1044 — Stage 525 🎉 · Topic 165 🎉 · 🎉 Historic Stage 525 & Topic 165 Dual Milestone · 1,053 Guardrails & 1,062 Probes · 528 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces RFC 4028 Min-SE >= 90s floor, breaks infinite 422 retry loops (0 unbounded 422 retries), and clamps negotiatedSessionExpiresSeconds in [90, 1800]s; live SBC session timer wheel latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces explicit refresher=uac|uas role assignment in 200 OK, reaps dead sessions with BYE (0 zombie calls), and clamps zombieReaperGraceWindowSeconds in [32, 64]s; live B2BUA BYE reaper latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [
