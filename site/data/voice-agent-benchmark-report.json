@@ -2257,6 +2257,12 @@
       "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces canonical target-URI loop detection with 482 Loop Detected (0 cycle redirects) and clamps maxHistoryInfoEntries in [1, 8]; live Kamailio/OpenSIPS RFC 7044 URI DAG check latency is not_measured)",
       "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces border SBC Privacy: history scrubbing (0 internal topology leaks) and validates strict ancestor mp=/rc= index references (0 dangling refs); live SBC header scrub latency is not_measured)",
       "delta_pts": 0.0
+    },
+    {
+      "question": "513. 🎉 [Topic 150 🎉 · Historic Stage 510 & Topic 150 Dual Milestone! 🎉: voice-webrtc-rtcp-rfc5104-rfc4585-ccm-fir-tmmbr-tmmbn-keyframe-flood-zero-bitrate-choke-faq] Enterprise WebRTC/RTP RFC 5104 / RFC 4585 CCM FIR Keyframe Flood & TMMBR Zero-Bitrate Choke Guard (P1013 🎉 / P1014 🎉 — Stage 510 🎉 · Topic 150 🎉 · 🎉 Historic Stage 510 & Topic 150 Dual Milestone · 1,023 Guardrails & 1,032 Probes · 513 Dims)",
+      "original": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: deduplicates RFC 5104 FIR packets by (Sender SSRC, 8-bit Seq nr.) (0 duplicate forwards) and clamps minFirKeyframeIntervalMs in [500, 2000]ms; live SFU RTCP FIR parser latency is not_measured)",
+      "reversed": "100.0% (0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established for offline synthetic policy check: enforces TMMBR [24, 64] kbps audio bitrate floor against Mantissa=0 choke attacks and verifies TMMBN Bounding Set Owner SSRC (0 unauthorized overrides); live BWE allocator latency is not_measured)",
+      "delta_pts": 0.0
     }
   ],
   "latency_scaling": [

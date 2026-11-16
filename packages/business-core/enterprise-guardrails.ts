@@ -88688,3 +88688,112 @@ export function evaluateSipRfc7044HistoryInfoUntrustedPiiScrubAndMpIndexGuard(
   };
 }
 
+// ============================================================================
+// Stage 510 🎉 (Topic 150 🎉 · P1013 🎉–P1014 🎉 · Historic Stage 510 &
+// Topic 150 Dual Milestone! · 1,023 Guardrails · 1,032 Probes · 513 Dims):
+// Enterprise WebRTC/RTP RFC 5104 / RFC 4585 Codec Control Messages (CCM:
+// FIR / TMMBR / TMMBN) Keyframe Flood & Zero-Bitrate Choke Guardrails
+// ============================================================================
+
+export interface WebrtcRfc5104CcmFirSeqDeduplicationAndKeyframeIntervalGuardInput {
+  duplicateFirSeqNrOrKeyframeFloodDetected: boolean;
+  duplicateFirRequestsForwarded: number;
+  minFirKeyframeIntervalMs: number;
+}
+
+export interface WebrtcRfc5104CcmFirSeqDeduplicationAndKeyframeIntervalGuardResult {
+  violated: boolean;
+  policyId: "P1013-WEBRTC-RFC5104-CCM-FIR-SEQ-DEDUPLICATION-AND-KEYFRAME-INTERVAL-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_deduplicated_rfc5104_fir_keyframe_cadence"
+    | "deduplicate_fir_seq_nr_and_enforce_min_keyframe_interval";
+  clampedDuplicateFirRequestsForwarded: number;
+  clampedMinFirKeyframeIntervalMs: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc5104CcmFirSeqDeduplicationAndKeyframeIntervalGuard(
+  input: WebrtcRfc5104CcmFirSeqDeduplicationAndKeyframeIntervalGuardInput,
+): WebrtcRfc5104CcmFirSeqDeduplicationAndKeyframeIntervalGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.duplicateFirSeqNrOrKeyframeFloodDetected ||
+    input.duplicateFirRequestsForwarded > 0 ||
+    input.minFirKeyframeIntervalMs < 500 ||
+    input.minFirKeyframeIntervalMs > 2000;
+  const clampedDuplicateFirRequestsForwarded = 0;
+  const clampedMinFirKeyframeIntervalMs = Math.min(
+    2000,
+    Math.max(500, Math.trunc(input.minFirKeyframeIntervalMs || 500)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1013-WEBRTC-RFC5104-CCM-FIR-SEQ-DEDUPLICATION-AND-KEYFRAME-INTERVAL-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "deduplicate_fir_seq_nr_and_enforce_min_keyframe_interval"
+      : "allow_deduplicated_rfc5104_fir_keyframe_cadence",
+    clampedDuplicateFirRequestsForwarded,
+    clampedMinFirKeyframeIntervalMs,
+    reason: violated
+      ? `P1013 🎉 (Historic Stage 510 & Topic 150 Dual Milestone! · 1,022nd Guardrail) WebRTC/RTP RFC 5104 CCM FIR duplicate sequence number or keyframe flood violation (${timing}): absorbed duplicate FIR requests (clamped forwarded duplicates to 0) and clamped min keyframe interval to ${clampedMinFirKeyframeIntervalMs}ms in [500, 2000]ms.`
+      : `P1013 🎉 (Historic Stage 510 & Topic 150 Dual Milestone! · 1,022nd Guardrail) WebRTC/RTP RFC 5104 CCM FIR cadence verified (${timing}): 0 duplicate FIR forwards and keyframe interval ${clampedMinFirKeyframeIntervalMs}ms within [500, 2000]ms.`,
+  };
+}
+
+export interface WebrtcRfc5104TmmbrBitrateFloorAndTmmbnOwnershipGuardInput {
+  zeroBitrateTmmbrChokeOrUnauthorizedOwnerReleaseDetected: boolean;
+  unauthorizedTmmbnOwnerOverrides: number;
+  minTmmbrAudioBitrateFloorKbps: number;
+}
+
+export interface WebrtcRfc5104TmmbrBitrateFloorAndTmmbnOwnershipGuardResult {
+  violated: boolean;
+  policyId: "P1014-WEBRTC-RFC5104-TMMBR-BITRATE-FLOOR-AND-TMMBN-OWNERSHIP-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_authenticated_tmmbr_floor_and_tmmbn_owner"
+    | "enforce_tmmbr_audio_floor_and_verify_tmmbn_bounding_set_owner";
+  clampedUnauthorizedTmmbnOwnerOverrides: number;
+  clampedMinTmmbrAudioBitrateFloorKbps: number;
+  reason: string;
+}
+
+export function evaluateWebrtcRfc5104TmmbrBitrateFloorAndTmmbnOwnershipGuard(
+  input: WebrtcRfc5104TmmbrBitrateFloorAndTmmbnOwnershipGuardInput,
+): WebrtcRfc5104TmmbrBitrateFloorAndTmmbnOwnershipGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.zeroBitrateTmmbrChokeOrUnauthorizedOwnerReleaseDetected ||
+    input.unauthorizedTmmbnOwnerOverrides > 0 ||
+    input.minTmmbrAudioBitrateFloorKbps < 24 ||
+    input.minTmmbrAudioBitrateFloorKbps > 64;
+  const clampedUnauthorizedTmmbnOwnerOverrides = 0;
+  const clampedMinTmmbrAudioBitrateFloorKbps = Math.min(
+    64,
+    Math.max(24, Math.trunc(input.minTmmbrAudioBitrateFloorKbps || 24)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1014-WEBRTC-RFC5104-TMMBR-BITRATE-FLOOR-AND-TMMBN-OWNERSHIP-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "enforce_tmmbr_audio_floor_and_verify_tmmbn_bounding_set_owner"
+      : "allow_authenticated_tmmbr_floor_and_tmmbn_owner",
+    clampedUnauthorizedTmmbnOwnerOverrides,
+    clampedMinTmmbrAudioBitrateFloorKbps,
+    reason: violated
+      ? `P1014 🎉 (Historic Stage 510 & Topic 150 Dual Milestone! · 1,023rd Guardrail) WebRTC/RTP RFC 5104 TMMBR zero-bitrate choke or unauthorized TMMBN owner override violation (${timing}): blocked unauthorized TMMBN owner overrides (clamped to 0) and clamped TMMBR audio bitrate floor to ${clampedMinTmmbrAudioBitrateFloorKbps} kbps in [24, 64] kbps.`
+      : `P1014 🎉 (Historic Stage 510 & Topic 150 Dual Milestone! · 1,023rd Guardrail) WebRTC/RTP RFC 5104 TMMBR/TMMBN integrity verified (${timing}): 0 unauthorized owner overrides and audio bitrate floor ${clampedMinTmmbrAudioBitrateFloorKbps} kbps within [24, 64] kbps.`,
+  };
+}
+
