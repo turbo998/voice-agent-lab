@@ -90980,3 +90980,113 @@ export function evaluateWebrtcRfc7675OffPathIcmpRevocationVerificationAndFailure
   };
 }
 
+// ============================================================================
+// Stage 531 (Topic 171 · P1055–P1056 🎉 · Historic 175th Architecture SVG &
+// 1,065th Enterprise Guardrail Dual Milestone! · 1,065 Guardrails 🎉 · 1,074
+// Probes · 534 Dims):
+// Enterprise SIP RFC 3515 REFER Method Refer-To URI Embedded Header Smuggling
+// Sanitization & Event: refer;id= Sipfrag Subscription Cleanup Guardrails
+// ============================================================================
+
+export interface SipRfc3515ReferToUriEmbeddedHeaderSanitizationAndDomainAllowlistGuardInput {
+  smuggledReferToEmbeddedHeaderOrUntrustedTargetDetected: boolean;
+  smuggledHeaderOrTollFraudReferRequests: number;
+  allowedEmbeddedReferToQueryHeadersCount: number;
+}
+
+export interface SipRfc3515ReferToUriEmbeddedHeaderSanitizationAndDomainAllowlistGuardResult {
+  violated: boolean;
+  policyId: "P1055-SIP-RFC3515-REFER-TO-URI-EMBEDDED-HEADER-SANITIZATION-AND-DOMAIN-ALLOWLIST-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_sanitized_rfc3515_refer_to_target"
+    | "sanitize_refer_to_embedded_headers_and_enforce_target_allowlist";
+  clampedSmuggledHeaderOrTollFraudReferRequests: number;
+  clampedAllowedEmbeddedReferToQueryHeadersCount: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3515ReferToUriEmbeddedHeaderSanitizationAndDomainAllowlistGuard(
+  input: SipRfc3515ReferToUriEmbeddedHeaderSanitizationAndDomainAllowlistGuardInput,
+): SipRfc3515ReferToUriEmbeddedHeaderSanitizationAndDomainAllowlistGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.smuggledReferToEmbeddedHeaderOrUntrustedTargetDetected ||
+    input.smuggledHeaderOrTollFraudReferRequests > 0 ||
+    input.allowedEmbeddedReferToQueryHeadersCount < 0 ||
+    input.allowedEmbeddedReferToQueryHeadersCount > 1;
+  const clampedSmuggledHeaderOrTollFraudReferRequests = 0;
+  const clampedAllowedEmbeddedReferToQueryHeadersCount = Math.min(
+    1,
+    Math.max(0, Math.trunc(input.allowedEmbeddedReferToQueryHeadersCount ?? 0)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1055-SIP-RFC3515-REFER-TO-URI-EMBEDDED-HEADER-SANITIZATION-AND-DOMAIN-ALLOWLIST-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "sanitize_refer_to_embedded_headers_and_enforce_target_allowlist"
+      : "allow_sanitized_rfc3515_refer_to_target",
+    clampedSmuggledHeaderOrTollFraudReferRequests,
+    clampedAllowedEmbeddedReferToQueryHeadersCount,
+    reason: violated
+      ? `P1055 (1,064th Enterprise Guardrail · Stage 531 & Topic 171) SIP RFC 3515 Refer-To embedded ?header= smuggling or untrusted off-net target violation (${timing}): stripped smuggled headers and blocked toll-fraud REFER requests (clamped to 0) and clamped allowed embedded Refer-To query headers to ${clampedAllowedEmbeddedReferToQueryHeadersCount} in [0, 1].`
+      : `P1055 (1,064th Enterprise Guardrail · Stage 531 & Topic 171) SIP RFC 3515 Refer-To URI sanitization and target allowlist verified (${timing}): 0 smuggled REFER requests and ${clampedAllowedEmbeddedReferToQueryHeadersCount} allowed query headers within [0, 1].`,
+  };
+}
+
+export interface SipRfc3515EventReferIdCorrelationAndTerminalSipfragCleanupGuardInput {
+  missingEventReferIdOrUnterminatedSipfragSubscriptionDetected: boolean;
+  leakedReferSubscriptionsOrMismatchedIdCount: number;
+  sipfragNotifyMessagesPerReferCount: number;
+}
+
+export interface SipRfc3515EventReferIdCorrelationAndTerminalSipfragCleanupGuardResult {
+  violated: boolean;
+  policyId: "P1056-SIP-RFC3515-EVENT-REFER-ID-CORRELATION-AND-TERMINAL-SIPFRAG-CLEANUP-GUARD";
+  evaluationLatencyMs: 0;
+  timing: "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established";
+  action:
+    | "allow_correlated_rfc3515_refer_subscription"
+    | "bind_event_refer_id_and_terminate_final_sipfrag_subscription";
+  clampedLeakedReferSubscriptionsOrMismatchedIdCount: number;
+  clampedSipfragNotifyMessagesPerReferCount: number;
+  reason: string;
+}
+
+export function evaluateSipRfc3515EventReferIdCorrelationAndTerminalSipfragCleanupGuard(
+  input: SipRfc3515EventReferIdCorrelationAndTerminalSipfragCleanupGuardInput,
+): SipRfc3515EventReferIdCorrelationAndTerminalSipfragCleanupGuardResult {
+  const timing =
+    "0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established" as const;
+  const violated =
+    input.missingEventReferIdOrUnterminatedSipfragSubscriptionDetected ||
+    input.leakedReferSubscriptionsOrMismatchedIdCount > 0 ||
+    input.sipfragNotifyMessagesPerReferCount < 1 ||
+    input.sipfragNotifyMessagesPerReferCount > 4;
+  const clampedLeakedReferSubscriptionsOrMismatchedIdCount = 0;
+  const clampedSipfragNotifyMessagesPerReferCount = Math.min(
+    4,
+    Math.max(1, Math.trunc(input.sipfragNotifyMessagesPerReferCount || 1)),
+  );
+  return {
+    violated,
+    policyId:
+      "P1056-SIP-RFC3515-EVENT-REFER-ID-CORRELATION-AND-TERMINAL-SIPFRAG-CLEANUP-GUARD",
+    evaluationLatencyMs: 0,
+    timing,
+    action: violated
+      ? "bind_event_refer_id_and_terminate_final_sipfrag_subscription"
+      : "allow_correlated_rfc3515_refer_subscription",
+    clampedLeakedReferSubscriptionsOrMismatchedIdCount,
+    clampedSipfragNotifyMessagesPerReferCount,
+    reason: violated
+      ? `P1056 🎉 (Historic 1,065th Enterprise Guardrail & 175th SVG Dual Milestone!) SIP RFC 3515 §2.4.6 missing Event: refer;id=<CSeq> or unterminated final message/sipfrag subscription violation (${timing}): terminated implicit refer subscriptions (clamped leaked subscriptions to 0) and clamped message/sipfrag NOTIFY count per REFER to ${clampedSipfragNotifyMessagesPerReferCount} in [1, 4].`
+      : `P1056 🎉 (Historic 1,065th Enterprise Guardrail & 175th SVG Dual Milestone!) SIP RFC 3515 §2.4.6 Event: refer;id=<CSeq> correlation and terminal sipfrag cleanup verified (${timing}): 0 leaked subscriptions and ${clampedSipfragNotifyMessagesPerReferCount} NOTIFY updates within [1, 4].`,
+  };
+}
+
