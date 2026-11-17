@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Enterprise Real-Time Multilingual Simultaneous Interpretation &amp; Meeting Minutes Architecture &amp; Selection Guide">
+  <defs>
+    <linearGradient id="bgInterp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="barInterp" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="cardInterp" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowInterp" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgInterp)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barInterp)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+    <text x="16" y="18" fill="#7dd3fc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      MULTILINGUAL SIMULTANEOUS INTERPRETATION &amp; MEETING INTELLIGENCE
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="24" font-weight="800">
+      跨国企业实时多语种同传与智能会议纪要：架构设计与平台选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      Azure Live Interpreter (保留说话人原声音色同传) · 原生 S2S 双向交传 · 级联 Wait-k 广播同传 · 说话人分离纪要
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowInterp)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">端到端同传声学滞后</text>
+    <text x="81" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="19.5" font-weight="800">1.2s ~ 2.4s (子句锁)</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">对比人工同传成本降幅</text>
+    <text x="251" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="19.5" font-weight="800">-97% ($0.06/min)</text>
+  </g>
+
+  <!-- Row 1: 3 Interpretation Architecture Paradigms -->
+  <g transform="translate(32, 114)" filter="url(#shadowInterp)">
+    <!-- Option A: Azure Live Interpreter -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardInterp)" stroke="#10b981" stroke-width="2"/>
+    <rect x="14" y="14" width="206" height="22" rx="6" fill="#064e3b"/>
+    <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">路线 A · 原声保留实时同传 (推荐 🏆)</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Azure Speech Live Interpreter</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">场景：跨国高管会议、全球全员大会、Teams 协同</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心制胜优势：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 零样本保留发言人自己的真实音色与情绪说外语</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 70+ 语种免手动切换自动检测 (Continuous LID)</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 支持挂载企业专属热词表 (Phrase List) 防术语误译</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+    <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11.2" font-weight="700">同传滞后: 1.5~2.2s | 成本: ~$580/万分钟</text>
+
+    <!-- Option B: Cascaded Wait-k + Multi-Channel WebRTC -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardInterp)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="196" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">路线 B · 级联 Wait-k 多声道广播</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">STT + 术语受控 LLM/MT + 多语 TTS</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">场景：千人国际峰会 (扫码听12国语言)、并购谈判</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心制胜优势：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 1次识别 ➔ 扇出10国语言流，千人听众边际成本近 $0</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 子句边界 Wait-k 锁：彻底解决德/日/韩句尾否定反译</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 强制字典替换表 (Glossary Lock) 100% 锁定财报数字</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11.2" font-weight="700">同传滞后: 1.8~2.8s | 单语流: ~$390/万分钟</text>
+    </g>
+
+    <!-- Option C: Native S2S Interactive Interpreter -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardInterp)" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="192" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">路线 C · 原生 S2S 双向对话交传</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Voice Live S2S (GPT-Live-1)</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">场景：1对1 跨境医患问诊、外贸展位洽谈、涉外柜台</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心制胜优势：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 1对1 面对面双向交替传译延迟最低 (&lt;650ms)</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 能结合上下文主动追问澄清俚语或模糊表达</text>
+      <text x="14" y="164" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11.2">⚠️ 长篇 30 分钟单向演讲易出现摘要压缩，需选 A/B</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+      <text x="22" y="210" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11.2" font-weight="700">交传延迟: 450~780ms | 成本: ~$720/万分钟</text>
+    </g>
+  </g>
+
+  <!-- Row 2: SOV Negation Trap & Diarized Action-Item Pipeline -->
+  <g transform="translate(32, 372)" filter="url(#shadowInterp)">
+    <!-- Left Box: Solving the SOV (Japanese/German/Korean) Verb-Final Trap -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardInterp)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🛡️ 同传核心痛点攻克：如何防止日语/德语/韩语“句尾否定词漏译与抢译翻车”？
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      日语/韩语/德语从句属于“动词与否定词置后 (SOV)”结构，贪婪零等待抢译会把“绝不同意”先翻成“同意”：
+    </text>
+
+    <rect x="20" y="64" width="535" height="88" rx="8" fill="#1f121b" stroke="#ef4444" stroke-width="1"/>
+    <text x="32" y="84" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ❌ 贪婪逐词抢译事故 (0-Wait Greedy Streaming)：把医疗禁忌或并购红线翻反！
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 日语原话：「この条件では契約を締結することは…（停顿）…できません (不能签约)。」
+    </text>
+    <text x="32" y="124" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 贪婪模型听到前半句就抢先播报英文语音："Under these terms, we WILL sign the contract..."
+    </text>
+    <text x="32" y="142" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">
+      • 等听到尾词「できません」时，错误语音已经播进客户耳朵，无法撤回！
+    </text>
+
+    <rect x="20" y="164" width="535" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ✅ 架构师双速设计：“屏幕双语字幕 200ms 乐观快显 + 耳机语音子句边界 Wait-k 锁”
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 视觉字幕轨 (Optimistic UI)：200ms 实时滚动灰色预测译文，让参会者立刻知道对方在谈哪个话题；
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 耳机音频轨 (Clause-Boundary Wait-k)：锁定谓语/极性完整度与数字单位后才发声，100% 杜绝极性反译！
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 配合音频闪避 (Audio Ducking -18dB Original + 0dB Translated)，听感宛如联合国专业同传箱。
+    </text>
+
+    <!-- Right Box: Diarized Meeting Minutes & Action Item Engine -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardInterp)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        📝 散会 5 秒出纪要：多语种说话人分离 (Diarization) + 权责提取
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        基于本仓实测 `Azure Fast Transcription (RTF=0.057, 17.5x 实时速度)` 构建会议纪要闭环：
+      </text>
+
+      <rect x="20" y="64" width="501" height="112" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+      <text x="32" y="85" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+        三步解决“会议室单麦克风把张总和田中先生的话张冠李戴”：
+      </text>
+      <text x="32" y="106" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        1. 流式说话人分离 (`diarization.enabled=true` + `--locale auto`) 自动标注 `Speaker 1/2/3`；
+      </text>
+      <text x="32" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        2. 开场点名声纹锚定或 Teams 参会人音轨绑定，将 `Speaker 2` 映射为真实姓名 `[田中健太 - 东京研发]`；
+      </text>
+      <text x="32" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        3. 散会瞬间由 Foundry Agent 按 **【决议事项 · 待办 Action Items (含负责人+DDL) · 争议风险】**
+      </text>
+      <text x="32" y="162" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        同步生成中/英/日三语对齐纪要，每一条待办均绑定原声时间戳防扯皮！
+      </text>
+
+      <rect x="20" y="186" width="501" height="72" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="207" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        💰 成本震撼对比（以 2 小时跨国全员大会 / 5 国语言同传为例）：
+      </text>
+      <text x="32" y="227" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">
+        • 聘请 5 组专业人工同传译员 + 同传主机租赁：$6,000 ~ $10,000 / 场（需提前 2 周预约）
+      </text>
+      <text x="32" y="245" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        • Azure Live Interpreter + WebRTC 多语广播 + 自动三语纪要：仅 $18.50 / 场（立省 99.7%！）
+      </text>
+    </g>
+  </g>
+</svg>
