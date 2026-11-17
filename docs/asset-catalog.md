@@ -71,6 +71,7 @@
 | **行业场景 41** | **三甲医院住院床旁呼叫分诊、手术室无菌控屏与 WHO 核查 (`P155`)** | [`smart-hospital-inpatient-...-faq.md`](smart-hospital-inpatient-nurse-call-surgical-or-voice-selection-faq.md) | [`.en.md`](smart-hospital-inpatient-nurse-call-surgical-or-voice-selection-faq.en.md) | 卸载 62% 非临床按铃每班少走 7,600步 + 扫腕带录单省 70分钟 + `P155` 纱布差额红灯硬锁 |
 | **行业场景 42** | **连锁药房智能续方、听似药名消歧 (LASA/`P73`) 与特药事先授权 (`P95`)** | [`retail-pharmacy-rx-refill-...-faq.md`](retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.md) | [`.en.md`](retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.en.md) | 听似药名错配率降至 0.0% + 800ms 跨店移单挽回 64% 断货处方 + 特药 30s 秒批与禁 AI 拒保 |
 | **行业场景 43** | **超充场站锁枪 15秒自愈 (OCPP 2.0.1)、虚拟电厂 (VPP) 与光储安全** | [`energy-virtual-power-plant-...-faq.md`](energy-virtual-power-plant-ev-charging-station-voice-selection-faq.md) | [`.en.md`](energy-virtual-power-plant-ev-charging-station-voice-selection-faq.en.md) | 零电流防拉弧锁 + 充电故障 82.4% 远程自愈 + VPP 削峰邀约响应率从 18% 跃升至 79.4% |
+| **行业场景 44** | **对公银行财资四眼原则 (`P43`)、防 CEO 电诈与交易台切口 (`P60`/`P35`)** | [`corporate-banking-treasury-...-faq.md`](corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.md) | [`.en.md`](corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.en.md) | 异机硬件私钥四眼联签 + 交易员 Yard/Mine 切口 98.9% 准确率 + Pre-LLM 反洗钱零通风报信 |
 
 ### 2.1 售前咨询、架构设计与竞对白皮书 (`docs/`)
 
