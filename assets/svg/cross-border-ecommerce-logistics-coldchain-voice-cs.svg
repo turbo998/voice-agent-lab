@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Cross-Border E-Commerce, Global Logistics Delivery Rescheduling &amp; Cold-Chain Customs Voice AI Architecture &amp; Selection Guide">
+  <defs>
+    <linearGradient id="bgLog" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="barLog" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="cardLog" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowLog" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgLog)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barLog)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="18" fill="#6ee7b7" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      CROSS-BORDER E-COMMERCE · GLOBAL LOGISTICS · COLD-CHAIN CUSTOMS VOICE AI
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="23.5" font-weight="800">
+      跨境电商出海客服、全球物流派送与冷链关务：语音架构与选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      LumaNest 出海 6语种零增员扩容 3倍 · LOG-TCPA-01 海外外呼 AMD/TCPA 防罚单 · LOG-COLD-01 电放提单与海关 HS 防逃税
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowLog)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">末端派送二次妥投率</text>
+    <text x="81" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">+31% (省退件费)</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">出海多语种人力节省</text>
+    <text x="251" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">-78% ($0.05/min)</text>
+  </g>
+
+  <!-- Row 1: 3 Core Cross-Border & Logistics Voice Scenarios -->
+  <g transform="translate(32, 114)" filter="url(#shadowLog)">
+    <!-- Scenario 1: Go-Global Brand Multilingual After-Sales -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardLog)" stroke="#10b981" stroke-width="2"/>
+    <rect x="14" y="14" width="212" height="22" rx="6" fill="#064e3b"/>
+    <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 A · 出海品牌 20+ 语种售后 🏆</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">LumaNest 标杆：智能硬件/DTC</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：欧美日德西法时差颠倒、外籍客服月薪 $4,500</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 前台多语种全双工接待 + 后台统一生成中文审批工单</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">  国内懂业务的中文主管无需懂德语即可一键审批退换货！</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 固件排障投机 RAG：引导蓝牙重置拦截 68% 假性故障退货</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+    <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">实证: 销量 25万➔75万台，客服0扩编！</text>
+
+    <!-- Scenario 2: Last-Mile Delivery Rescheduling & AMD -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardLog)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 B · 海外末端派送与清关外呼</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">LOG-TCPA-01 改约 + 答录机留信</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：欧美客户80%拒接陌生电话进语音信箱、中东门牌不清</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 并行流式 AMD (P727)：真人接听 200ms 开口；若进语音信箱</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">  精准锁定 `Beep` 嘟声后留脱敏口信 + 推 WhatsApp 改派卡</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• TCPA 最严双时区与回收号码库 (RND) 拨号前阻断防诉讼</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: ACS/Retell + Foundry + WhatsApp</text>
+    </g>
+
+    <!-- Scenario 3: Cold-Chain Ocean Freight & Customs -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardLog)" stroke="#f59e0b" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#78350f"/>
+      <text x="24" y="29" fill="#fcd34d" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 C · 跨境海运冷链与关务门禁</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">LOG-COLD-01 电放提单 + P83 关务</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：冒充货主骗取电放提单提走百万货柜、虚报 HS 税号</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 电放提单 (Telex Release) 放货：严禁单凭语音口令放货！</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">  强制核验正本保函哈希 + 水单到账 + 双人复核锁</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 冷柜失温 (&gt;-15°C) 0ms 抢修 + 海关 HS 降税拆单拦截 (P83)</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#2a1608" stroke="#d97706" stroke-width="1"/>
+      <text x="22" y="210" fill="#fcd34d" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: LOG-COLD-01 + P83 OFAC/HS 护栏</text>
+    </g>
+  </g>
+
+  <!-- Row 2: The "Front-End Multilingual Voice + Back-End Chinese Console" Pattern & AMD Beep Lock -->
+  <g transform="translate(32, 372)" filter="url(#shadowLog)">
+    <!-- Left Box: The Go-Global Architecture Secret (LumaNest Pattern) -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardLog)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🌍 中国企业出海神级架构：“前台 20 国母语全双工语音 + 后台全中文工单审批台”
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      源于本仓智能戒指标杆案例 (`case-study.html`)：彻底打破“卖到哪国就必须在当地雇高薪外籍坐席”的魔咒！
+    </text>
+
+    <rect x="20" y="64" width="535" height="90" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+    <text x="32" y="84" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      1. 为什么传统出海客服成本高且管不住？
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 雇佣欧美/日本本地外包坐席不仅月薪高达 $3,500~$5,000/人，而且外包人员根本不懂深圳研发总部的硬件固件排障；
+    </text>
+    <text x="32" y="124" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 遇到一点小连接问题，海外外包坐席为了省事直接给客户批全额退货，导致硬件退货率高达 18%！
+    </text>
+    <text x="32" y="143" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      • 更危险的是：海外客户用英语诱导 AI 客服“不用退货直接给我打款”，若无后台审批锁直接造成巨额资损。
+    </text>
+
+    <rect x="20" y="164" width="535" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      2. 破局方案：前店后厂双语解耦 + 不可变版本锁草稿审批 (`DraftVersion Lock`)
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 前台：Azure Voice Live 用地道英/德/法/日/西/阿语 7×24 秒接，通过交互式排障挽回 **68%** 假性故障退货；
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 后台：确需补发或退款时，Foundry 自动生成 **全中文结构化审批单** 推送深圳/杭州运营后台，中文主管一键签批！
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 成果：出货量从 25 万台暴增至 75 万台（3倍），客服团队 0 扩编，单通成本仅 $0.055/分钟！
+    </text>
+
+    <!-- Right Box: Outbound AMD Beep Phase Lock & Customs Guard -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardLog)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        📦 海外物流外呼三大刚需：答录机 Beep 锁、自提柜卡片与关务防走私
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        欧美/澳洲收件人 75% 的陌生快递电话会转入语音信箱 (Voicemail)，传统外呼机器人全把话念在了提示音里：
+      </text>
+
+      <rect x="20" y="64" width="501" height="112" rx="8" fill="#181236" stroke="#a855f7" stroke-width="1"/>
+      <text x="32" y="85" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">
+        1. 并行流式答录机检测 + `Beep` 蜂鸣声相位锁 (`P25 / P727`)：
+      </text>
+      <text x="32" y="106" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • 真人接起：200ms 内用乐观微问候（“Hello!”）无缝接上包裹改约对话，消灭传统 AMD 2.5秒死寂；
+      </text>
+      <text x="32" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • 语音信箱：自动静默等待主叫信箱提示语播完并精准捕获 `400~1,200Hz Beep` 结束沿，留下一句脱敏回拨提示，
+      </text>
+      <text x="32" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • 同步向收件人手机推送 **WhatsApp / RCS 自提柜 (Parcel Locker) 一键改派地图卡片**！
+      </text>
+      <text x="32" y="163" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        2. 海关 HS 编码与 Section 321 防拆单锁 (`P83`)：0ms 阻断客户语音诱导改低申报价或拆单避税！
+      </text>
+
+      <rect x="20" y="186" width="501" height="72" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="207" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        💰 跨境物流与出海品牌（月均 50 万通全球电话）TCO 对比：
+      </text>
+      <text x="32" y="227" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 雇佣欧美/日韩本地BPO外包中心（$1.80 ~ $3.20 / 通）：`$1,150,000 / 月`
+      </text>
+      <text x="32" y="245" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        • Azure Voice Live + Foundry 全球边缘就近接入 + 中文审批后台：仅 `$42,000 / 月`（立省 96%！）
+      </text>
+    </g>
+  </g>
+</svg>
