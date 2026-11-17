@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Enterprise Interactive Voice + Avatar Digital Human Selection Guide for E-Commerce Livestream, Smart Showroom &amp; Bank VTM">
+  <defs>
+    <linearGradient id="bgAvatar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0b1830"/>
+      <stop offset="100%" stop-color="#061226"/>
+    </linearGradient>
+    <linearGradient id="barAvatar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="cardAvatar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowAvatar" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgAvatar)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barAvatar)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
+    <text x="16" y="18" fill="#e9d5ff" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      VOICE + AVATAR DIGITAL HUMAN · LIVESTREAM &amp; SMART SHOWROOM GUIDE
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="24" font-weight="800">
+      电商直播与线下展厅实时语音数字人：架构设计与平台选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      云端 WebRTC 视频流 (Azure Live Avatar / HeyGen) vs 端侧骨骼驱动 (Speech Viseme + Unity/WebGL) · 直播弹幕抢答 · 展厅防串音
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowAvatar)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">唇音同步误差 (ITU-R)</text>
+    <text x="81" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">&lt;= 35ms (零双簧)</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">Viseme 端侧渲染省钱</text>
+    <text x="251" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">-85% 云GPU账单</text>
+  </g>
+
+  <!-- Row 1: 3 Digital Human Rendering & Interaction Paradigms -->
+  <g transform="translate(32, 114)" filter="url(#shadowAvatar)">
+    <!-- Route A: Cloud WebRTC Photorealistic Avatar -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardAvatar)" stroke="#10b981" stroke-width="2"/>
+    <rect x="14" y="14" width="212" height="22" rx="6" fill="#064e3b"/>
+    <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">路线 A · 云端 WebRTC 超写实流 (推荐 🏆)</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Azure Live Avatar / HeyGen</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">场景：银行网点 VTM、政务导办屏、医院分诊机</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构优势：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 终端零显卡要求：安卓瘦终端/H5网页直接播 1080p</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 真人模特形象定制 + Custom Neural Voice 品牌声线</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 云端音画合成同源打包，天然锁定 &lt;=35ms 唇音同步</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+    <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">首帧延迟: 480~680ms | ~$950~$1,500/万分钟</text>
+
+    <!-- Route B: Cloud Audio+Viseme + Client 3D/2D Rendering -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardAvatar)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">路线 B · 云端 Viseme + 端侧引擎渲染</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Speech Viseme + Unity / WebGL</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">场景：百万日活手机 App 助手、展厅独显 3D 大屏</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构优势：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 云端仅下发音频 + 55维 ARKit 面部骨骼权重 (2KB/s)</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 借用用户手机/展厅主机 GPU 渲染，省掉云端渲染费</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 支持 3D 走动、指认展品与自由切换镜头视角</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">首帧延迟: 320~490ms | 仅 ~$240/万分钟！</text>
+    </g>
+
+    <!-- Route C: 24x7 E-Commerce Livestream Dual-Queue -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardAvatar)" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">路线 C · 7×24 电商直播双队列抢答</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">主讲剧本轨 + 弹幕/连麦插播轨</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">场景：抖音/TikTok/Shopee/视频号日不落品牌直播</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构优势：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 平时循环播放预渲染高清讲品视频（0 实时渲染费）</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 高意向弹幕提问在句子边界无缝切入实时回答 + 弹商品卡</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 广告法极限词（“最顶级/第一/包治”）100% 过滤防封号</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+      <text x="22" y="210" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11" font-weight="700">综合成本: ~$180/万分钟 (80%缓存+20%实时)</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Showroom Multimodal Gaze Lock & Livestream Anti-Ban Architecture -->
+  <g transform="translate(32, 372)" filter="url(#shadowAvatar)">
+    <!-- Left Box: Solving Showroom Noise & "Mouth-Moving-After-Barge-In" Bug -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardAvatar)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🛡️ 展厅/网点大屏两大翻车急救：如何防路人串音与“音停嘴不停”双簧？
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      商场/展厅环境高达 75dB 背景人声，单纯靠麦克风 VAD 会让数字人对着空气胡言乱语：
+    </text>
+
+    <rect x="20" y="64" width="535" height="90" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+    <text x="32" y="84" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      1. 视觉注视 + 1.5米波束双门禁 (Gaze-Locked Beamforming)：不看屏幕绝不误触发！
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 大屏摄像头端侧轻量检测：只有当访客走入 `1.5 米` 甜区且正脸注视屏幕（Gaze Angle &lt;= ±20°），才激活拾音；
+    </text>
+    <text x="32" y="124" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 配合定向波束麦克风锁定正前方主访客，哪怕身后 2 米处有导游拿喇叭讲解，误触发率从 `42%` 降至 `&lt;0.5%`！
+    </text>
+    <text x="32" y="143" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      • 访客转身离开超过 3 秒，自动礼貌道别并清空上一位访客的个人隐私屏显卡片。
+    </text>
+
+    <rect x="20" y="164" width="535" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      2. 音画同源纪元锁 (AV-Sync Epoch Fence)：打断瞬间“声音与口型 160ms 内同步归零”
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 传统做法把语音和数字人视频分两条独立通道传，客户打断时声音停了，视频缓冲池里还有 1.5 秒张嘴动画；
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 正确架构：当 `turnEpoch` 递增触发打断时，同时清空音频缓冲与 Viseme/视频帧缓冲，立即切入微点头倾听态 (Idle Listening)！
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 弱网保底 (`P744`)：当商场 Wi-Fi 抖动带宽 &lt;600kbps 时，平滑冻结高清视频为静态呼吸头像，100% 保住语音不断！
+    </text>
+
+    <!-- Right Box: Livestream Priority Queue & Cost Comparison -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardAvatar)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        🛒 24×7 电商数字人直播间：弹幕意图优先级调度与防封号引擎
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        面对每秒几十条刷屏弹幕，严禁按时间顺序逐条傻念！采用“三级价值优先队列 + 广告法门禁”：
+      </text>
+
+      <rect x="20" y="64" width="501" height="112" rx="8" fill="#181236" stroke="#a855f7" stroke-width="1"/>
+      <text x="32" y="85" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+        直播间弹幕与连麦实时调度策略 (Livestream Danmaku Scheduler)：
+      </text>
+      <text x="32" y="106" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • P0 最高优（已加购/高客单尺码与库存追问）：在当前分句结束点 (`&lt;800ms`) 立即插播点名回答 + 弹窗 3号链接；
+      </text>
+      <text x="32" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • P1 聚合答（10人同时问“什么时候发货”）：合并为 1 次口播，避免主播变成复读机；
+      </text>
+      <text x="32" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • P2 黑粉/极限词拦截（诱导主播说违禁词或竞品拉踩）：在进入 LLM 前 `0ms` 静默丢弃，保护直播间零违规封禁！
+      </text>
+      <text x="32" y="163" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        📈 实测 ROI：填补凌晨 00:00~08:00 真人主播空档，直播间全天 GMV 净增 +24%~38%！
+      </text>
+
+      <rect x="20" y="186" width="501" height="72" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="207" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        💰 三大数字人渲染路线每 10,000 分钟（166 小时）成本速查：
+      </text>
+      <text x="32" y="227" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 第三方全实时云端视频数字人 SaaS (HeyGen / Tavus)：`$1,800 ~ $3,200 / 万分钟`
+      </text>
+      <text x="32" y="245" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        • Azure Live Avatar：`~$980/万分钟` | Azure Speech Viseme + 端侧渲染：仅 `$240/万分钟`！
+      </text>
+    </g>
+  </g>
+</svg>
