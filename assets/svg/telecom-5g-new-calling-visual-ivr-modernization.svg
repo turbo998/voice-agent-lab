@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg29" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#111F38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="zeroMenuGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="visualGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="dcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg29)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Telecom 5G New Calling, Visual IVR Sync &amp; Legacy DTMF Modernization</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">运营商 5G 新通话（Data Channel）、音画同振 Visual IVR 与传统按键 IVR 现代化改造选型全景图</text>
+  <rect x="916" y="42" width="236" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1034" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">5G-VISUAL-IVR-01 · 6.5s</text>
+
+  <!-- Pillar 1: Zero-Menu Conversational IVR vs 5-Level DTMF Labyrinth -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#zeroMenuGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 零层级自然语言入口 vs 传统按键迷宫</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 为什么传统 5 层按键 IVR 弃呼率高达 38%？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• “查账单请按1，改套餐请按2...重听请按0”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 耗费 68秒听废话，按错一个键就要挂机重拨！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">首句开放式意图直达 (Zero-Menu Intent Routing)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 接通首句：“您好，请直接用一句话告诉我您要办什么业务”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 6.5秒直接命中 400+ 细粒度业务节点，无需听菜单</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">高龄客户“说与按双兼容”平滑兜底</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 若客户沉默 3.5s 未开口，自动播报精简 3 项按键提示</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 随时按“0”或说“找人工”带前文摘要直通坐席</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">入口分流平均耗时从 68秒 暴降至 6.5秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">排队弃呼率降低 71% · 节省海量无效 800/400 话费</text>
+  </g>
+
+  <!-- Pillar 2: Universal Voice + H5/Mini-Program Visual IVR Sync -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#visualGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 100% 机型通用的“音画同振 Visual IVR”</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">为什么纯语音搞不定“选座、传照片、看账单”？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 在电话里念 15 条账单明细或飞机座位图效率极低</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 必须“耳朵听 AI 讲重点 + 手指在屏幕点选可视化卡片”！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">通话不断线 + 短信/企微/WhatsApp 瞬推画布</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 兼容 100% 苹果 iOS 与安卓存量手机（零 App 安装）</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• WebSocket 双向状态绑定：屏幕点选 120ms 触发语音回应</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">复杂表单/地址/受损照片一屏秒交</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 语音报不清的生僻字地址，直接在同步地图上拖拽定位</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 挂机自动销毁一次性 Session Token，严防越权访问</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">复杂选座/改签/理赔办理时长缩短 64%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">跨 iOS / Android 终端 100% 覆盖，今天即可上线</text>
+  </g>
+
+  <!-- Pillar 3: Carrier 5G New Calling (IMS Data Channel + Native Dialer) -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dcGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 运营商 5G 新通话 (IMS Data Channel)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#3B0764" stroke="#A855F7"/>
+    <text x="30" y="82" fill="#F3E8FF" font-size="13" font-weight="700">原生拨号盘直出交互卡片 (无需点短信链接)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 基于 3GPP Rel-16/18 IMS Data Channel (SCTP over DTLS)</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 拨通瞬间系统原生通话界面直接渲染可视化小程序菜单</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#E9D5FF" font-size="13" font-weight="700">三大高价值 5G 新通话杀手级场景</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 1. 听障/老年无障碍：通话界面实时叠加双向大字字幕/手语</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 2. 跨国商务直拨：运营商网元级实时双语字幕与同传</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">终端能力自适应探测 (Capability Negotiation)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 支持 5G DC 的安卓旗舰机 ➔ 原生拨号盘直出卡片</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 苹果 iPhone / 4G 手机 ➔ 0ms 自动回退短信/企微 H5 画布</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">“5G 原生 DC + 全机型 H5 回退”双轨全覆盖</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">兼顾前沿运营商新通话体验与 100% 存量客户触达</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">传统按键 IVR 现代化三步演进路线图（IVR Modernization &amp; Multimodal Convergence Roadmap）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">阶段 1：砍掉 5层按键树，换上首句自然语言意图直达 (68s ➔ 6.5s) ➔ 阶段 2：挂载 WebSocket 音画同振 H5/小程序画布 (选座/传图/签字)</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 阶段 3：对接运营商 5G 新通话 IMS Data Channel，实现支持终端原生拨号盘直出可视菜单、实时字幕与远程AR圈画指导</text>
+  </g>
+</svg>
