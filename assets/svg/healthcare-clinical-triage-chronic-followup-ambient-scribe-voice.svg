@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Healthcare &amp; Pharma Voice AI Architecture &amp; Selection Guide: Clinical Pre-Triage, Ambient Clinical Scribe &amp; Chronic Follow-Up">
+  <defs>
+    <linearGradient id="bgMed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#081c2e"/>
+      <stop offset="100%" stop-color="#041322"/>
+    </linearGradient>
+    <linearGradient id="barMed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <linearGradient id="cardMed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowMed" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgMed)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barMed)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="18" fill="#6ee7b7" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      HEALTHCARE &amp; LIFE SCIENCES VOICE AI ARCHITECTURE &amp; SELECTION
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="24" font-weight="800">
+      医疗与药企实时语音应用：智能导诊、诊室语音病历与慢病随访选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      诊前红旗急症 0ms 熔断 · 诊中无感语音生成 SOAP 病历 (Ambient Scribe) · 诊后慢病/药物警戒随访 · 三甲医院内网容器
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowMed)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">医生写病历耗时降幅</text>
+    <text x="81" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">-76% (6m ➔ 45s)</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#3b0a1e" stroke="#f43f5e" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#fda4af" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">高危胸痛/卒中红旗拦截</text>
+    <text x="251" y="49" text-anchor="middle" fill="#fb7185" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">100% (0ms转急诊)</text>
+  </g>
+
+  <!-- Row 1: 3 Core Healthcare Voice Scenarios -->
+  <g transform="translate(32, 114)" filter="url(#shadowMed)">
+    <!-- Scenario 1: Pre-Visit Triage & Red-Flag Gate -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardMed)" stroke="#f43f5e" stroke-width="1.5"/>
+    <rect x="14" y="14" width="196" height="22" rx="6" fill="#4c0519"/>
+    <text x="24" y="29" fill="#fda4af" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 A · 诊前智能分诊与挂号</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Clinical Triage &amp; Red-Flag Gate</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：患者挂错科室、老年患者方言口述症状</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#fb7185" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 临床红旗词库 (胸痛放射左臂/口角歪斜/自伤) 0ms 熔断</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">  严禁给心梗/卒中患者挂普通门诊，立即桥接急诊护士</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 老年人长停顿自适应判停 (&gt;=1,800ms) + 方言混说识别</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#2a0815" stroke="#e11d48" stroke-width="1"/>
+    <text x="22" y="210" fill="#fda4af" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: Voice Live 双轨 + P33 急症熔断锁</text>
+
+    <!-- Scenario 2: Ambient Clinical Scribe (In-Clinic SOAP Note) -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardMed)" stroke="#10b981" stroke-width="2"/>
+      <rect x="14" y="14" width="212" height="22" rx="6" fill="#064e3b"/>
+      <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 B · 诊室无感语音病历 (推荐 🏆)</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Ambient Clinical Scribe (SOAP)</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：医生看病 3 分钟、敲键盘写病历 6 分钟</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 桌面麦无感监听 + 说话人分离 (区分医生/患者/家属)</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 注入上万条药品/检验/手术热词 (Custom Speech)</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 问诊结束 5秒生成主诉/现病史/体征/医嘱 + 原声溯源</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+      <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: Speech 本地容器/云 + Foundry SOAP</text>
+
+    </g>
+
+    <!-- Scenario 3: Post-Discharge Follow-up & Pharmacovigilance -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardMed)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 C · 院后慢病随访与药物警戒</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Chronic Follow-up &amp; Pharma PV</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：15mg vs 50mg 剂量听错、不良反应漏报</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 100% 级联受控 TTS (DragonHD)：严禁模型擅自给处方建议</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 剂量数字双向拆解复诵 (“一五，十五毫克，对吗？”)</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 触发严重不良事件 (SAE) 强制采集 MedWatch 四要素</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: ACS + 级联受控管道 + P89/P111 护栏</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Hospital On-Premises Sovereignty & Dosage/Caregiver Safety Gates -->
+  <g transform="translate(32, 372)" filter="url(#shadowMed)">
+    <!-- Left Box: Solving the "15mg vs 50mg" & Caregiver Privacy Risks -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardMed)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🛡️ 医疗语音三大生死红线：防乱开药、防剂量听错 (`15 vs 50`)、防隐私泄露
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      医疗场景容错率为 0！任何医疗语音系统上线前必须硬编码以下三道确定性安全闸门：
+    </text>
+
+    <rect x="20" y="64" width="535" height="90" rx="8" fill="#1f121b" stroke="#f43f5e" stroke-width="1"/>
+    <text x="32" y="84" fill="#fda4af" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      1. 易混剂量拆解复诵锁 (`15mg vs 50mg` / `P16 &amp; P729`) + 零自由诊断锁
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 电话窄带下 `Fifteen (15)` 与 `Fifty (50)`、中文“十四”与“四十”极易混淆，胰岛素或华法林差3倍即致命；
+    </text>
+    <text x="32" y="124" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 强制 SSML 逐位拆读复诵：“您目前服用华法林每次【五、零，五十毫克】——剂量偏高，请确认是五毫克还是五十毫克？”
+    </text>
+    <text x="32" y="143" fill="#fda4af" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      • 严禁 AI 擅自建议患者增减药量，所有调整诉求自动生成待办推送主治医生审核！
+    </text>
+
+    <rect x="20" y="164" width="535" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      2. 家属代接 HIPAA/个人信息保护锁 (`P63`) 与诊室第三人插话剥离
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 随访外呼接通后，在未核实接听人为患者本人或已备案医疗代理人 (POA) 前，**严禁在开场白透露具体病名**
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      （例如严禁上来就说“张先生您好，关于您的乙肝/肿瘤随访…”，只能说“这里是瑞金医院随访中心，请问是张先生本人吗？”）；
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 诊室语音病历开启 `Diarization`，自动将陪同家属的闲聊标记为 `Companion` 防止污染患者主诉记录！
+    </text>
+
+    <!-- Right Box: Hospital Deployment Options & TCO -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardMed)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        🏥 三甲医院/医疗集团部署选型：采购垂直 SaaS vs Azure 混合底座
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        按一家拥有 1,000 名门诊医生的三甲医院（日均 30,000 门诊人次 + 10,000 通出院随访）对比：
+      </text>
+
+      <!-- Bar 1 -->
+      <text x="20" y="84" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">1. 海外垂直医疗病历 SaaS ($350/医生/月)</text>
+      <rect x="275" y="70" width="180" height="20" rx="4" fill="#ef4444"/>
+      <text x="463" y="85" fill="#fca5a5" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$4.20M / 年</text>
+
+      <!-- Bar 2 -->
+      <text x="20" y="120" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">2. 医院自购算力跑开源 Whisper (含运维)</text>
+      <rect x="275" y="106" width="95" height="20" rx="4" fill="#f59e0b"/>
+      <text x="378" y="121" fill="#fcd34d" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$680k / 年</text>
+
+      <!-- Bar 3 -->
+      <text x="20" y="156" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">3. Azure Speech 容器 + Foundry 底座 🏆</text>
+      <rect x="275" y="142" width="48" height="20" rx="4" fill="#10b981"/>
+      <text x="331" y="157" fill="#34d399" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$290k / 年 (-93%)</text>
+
+      <rect x="20" y="178" width="501" height="80" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="199" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        🏛️ 为什么公立三甲医院与跨国药企首选 Azure Speech 本地容器 + Foundry？
+      </text>
+      <text x="32" y="218" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 满足“患者原始录音绝不出医院内网机房”红线：部署 `Azure Speech Docker 容器` 在院内脱敏转写；
+      </text>
+      <text x="32" y="236" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 一套底座同时干三件事：门诊语音写病历 (Ambient Scribe) + 电话导诊挂号 + 出院慢病自动随访！
+      </text>
+    </g>
+  </g>
+</svg>
