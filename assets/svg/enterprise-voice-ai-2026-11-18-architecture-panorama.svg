@@ -24,9 +24,9 @@
   <!-- Header Banner -->
   <rect x="32" y="22" width="1216" height="90" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
   <rect x="48" y="38" width="248" height="26" rx="13" fill="url(#accentBlue48)"/>
-  <text x="172" y="55" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">ARCHITECT PANORAMA · 46 SELECTION FAQS</text>
+  <text x="172" y="55" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">ARCHITECT PANORAMA · 50 SELECTION FAQS</text>
   <text x="312" y="55" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="19" font-weight="700">Enterprise Real-Time Voice &amp; Multimodal AI Solution Architect Decision Matrix (2026-11-18)</text>
-  <text x="48" y="88" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="13">46 Bilingual Selection FAQs · 3 Core Architect Pillars (Industry Applications · End-to-End Orchestration · Model/Platform Comparisons) · Zero Low-Level Telecom RFC Noise</text>
+  <text x="48" y="88" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="13">50 Bilingual Selection FAQs · 3 Core Architect Pillars (Industry Applications · End-to-End Orchestration · Model/Platform Comparisons) · Zero Low-Level Telecom RFC Noise</text>
 
   <!-- Pillar 1: Mainstream Platform, Model & Framework Selection Comparisons -->
   <rect x="32" y="128" width="388" height="515" rx="14" fill="#0F172A" stroke="#3B82F6" stroke-width="1.8"/>
