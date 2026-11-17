@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg33" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#111F38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="intakeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="courtGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="notaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg33)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Legal Intake Conflict-Check, Courtroom Transcription &amp; Remote Notary Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">律所 24×7 案源初筛与利益冲突检索、司法庭审多声道实时笔录与远程视频公证（RON）语音架构全景图</text>
+  <rect x="916" y="42" width="236" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1034" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">LEGAL-VOICE-01 · Zero-UPL</text>
+
+  <!-- Pillar 1: 24x7 Law Firm Client Intake & Conflict-of-Interest Firewall -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#intakeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 律所 24×7 案源初筛与利益冲突防火墙</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 律所头号禁忌：“未查利益冲突先听案情机密”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 若对方当事人已经是本所客户，一旦听取来电者机密</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 将触发律协道德红线（Conflict Taint），导致全所被取消代理资格</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">第 1 步强制利益冲突检索 (Conflict-Check First)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 开场前60秒仅采集：来电者姓名 + 相对方(被告/公司)名称</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 毫秒级查 Clio/利冲库：若命中冲突立即礼貌中止，绝不听案情</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">严禁非法执业 (UPL Guard) + 诉讼时效自动核算</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 绝不口头承诺胜诉率或给出实质法律意见（仅做事实采集）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 案发日距诉讼时效 &lt;30天自动拉响合伙人极速跟进红灯</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">夜间/周末高价值案源捕获率提升 2.4 倍</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 阻断利益冲突污染与 UPL 非法提供法律意见风险</text>
+  </g>
+
+  <!-- Pillar 2: Courtroom & International Arbitration Multi-Track Transcription -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#courtGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 庭审/仲裁多声道实时笔录与证据锚定</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">物理多麦声道 + 法言法语热词强约束</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 审判长/原告/被告/证人独立 Dante/SIP 音轨 100% 零串音</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 挂载《民法典/刑法/拉丁法律术语》自定义声学模型</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">交叉质证“前词矛盾”1.5秒实时高亮预警</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 证人当庭陈述与卷宗笔录/第15页合同原件发生时间冲突</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 1.5s 在律师/法官屏幕静默弹出《前后陈述矛盾比对卡》</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">字级时间戳哈希封存 (Tamper-Evident Transcript)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 笔录每一句话点击即可回放对应毫秒原始庭审录音</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 本地私有化 Speech 容器部署，案件卷宗绝不离境/出院</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">法言法语与人名案号转写准确率达 98.7%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">庭审笔录核对签字耗时从 45分钟 缩短至 4分钟</text>
+  </g>
+
+  <!-- Pillar 3: Remote Online Notarization (RON) Anti-Coercion & Will Readback -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#notaryGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 远程视频公证 (RON) 旁人教唆检测</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#3B0764" stroke="#A855F7"/>
+    <text x="30" y="82" fill="#F3E8FF" font-size="13" font-weight="700">镜头外“旁人小声教唆/胁迫”声学探针</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 老年人办房产委托/遗嘱公证时，镜头外常有亲属小声教唆</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 高增益远场分离探针检出第 2 个人耳语声 ➔ 立即熔断公证！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#E9D5FF" font-size="13" font-weight="700">意思表示真实性与认知清醒度结构化问答</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁只问“是不是自愿的”（当事人只答“是”无效）</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 强制引导当事人用自己语言复述处分财产地址与受托人权限</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">S08 防 AI 换脸/换声公证欺诈 + 区块链存证</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 音画唇形同步率校验 + S08 声道活体 + 身份证 NFC 核验</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 音视频与逐字誓词比对报告实时写入司法联盟链</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">100% 拦截镜头外教唆胁迫与 AI 伪造公证</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">公证文书事后被诉撤销率压降至 0%</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">法律与司法领域零风险实时语音架构（Legal &amp; Judicial Zero-Risk Voice Architecture）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 律所接案：前60秒先查相对方利益冲突 (Conflict Gate) ➔ 2. 案情采集：UPL 禁给法律意见锁 + 诉讼时效预警 ➔ 3. 远程公证：远场耳语教唆熔断</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 4. 庭审与仲裁：私有化 Azure Speech 容器多声道隔离转写 + 1.5s 卷宗矛盾实时比对 + 哈希防篡改音字同步归档</text>
+  </g>
+</svg>
