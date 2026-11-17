@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg25" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="50%" stop-color="#121E3A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="eouGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="bargeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="aecGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg25)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Enterprise Voice Barge-In, Semantic Turn Detection (EOU) &amp; Speakerphone AEC</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业实时语音“打断处理（Barge-in）、语义级判停（Semantic EOU）与免提回声消除（AEC）”体验调优与选型全景图</text>
+  <rect x="932" y="42" width="220" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1042" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">TURN-BARGE-01 · &lt;=140ms</text>
+
+  <!-- Pillar 1: Semantic End-of-Utterance (EOU) vs Naive Silence VAD -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#eouGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 语义级判停 (Semantic EOU) 防抢话</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 为什么客户报卡号/地址时总被 AI 抢话？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户念“6222... [低头看卡停顿900ms] ...8819”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 传统固定 500ms 能量 VAD 立刻误判说完并抢先插嘴</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">声学基频 (Pitch) + 语法完整性双模 EOU</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 句末完整疑问（“余额多少？”）➔ 320ms 极速触发</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 未完连词/报数字串（“卡号是622...”）➔ 自动延展至 2.2s</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">思考犹豫词智能包容 (Hesitation Shield)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 识别拖长音“呃——”、“那个——”与吸气声</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 保持倾听缓冲，不因客户思考停顿而提前截断</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">报号/思考半途误截断率降低 89.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">完整短句响应比固定 800ms VAD 快 420ms！</text>
+  </g>
+
+  <!-- Pillar 2: Two-Gear Barge-In Classifier & T07 Epoch Fence -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#bargeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 双档打断分级器与 T07 纪元安全栅栏</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">一档 (&lt;350ms 附和词)：嗯嗯 / 好的 / 咳嗽</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户说“嗯嗯”、“对”或轻咳时，绝不切断 AI 播报！</text>
+    <text x="30" y="122" fill="#94A3B8" font-size="12">• 仅作为正向反馈注入上下文，AI 继续流畅讲完</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#A7F3D0" font-size="13" font-weight="700">二档 (&gt;=2词 实质打断)：等一下 / 不对 / 换个</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 检出明确打断意图 ➔ &lt;=140ms 排空网关 RTP 发送缓冲</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 同步按已播放毫秒数截断历史 (item.truncate)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">T07 单调递增纪元栅栏 (turn_epoch Fence)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 打断瞬间递增 turn_epoch 并向在途工具发 AbortSignal</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 100% 拦截旧轮次异步回调脏写（如改口前旧航班锁座）</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">附和词误打断率从 41% 压降至 1.2%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">真实打断刹车延迟 &lt;= 140ms · 零旧工具脏写</text>
+  </g>
+
+  <!-- Pillar 3: Speakerphone AEC, Far-Field Noise & Playback Alignment -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#aecGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 免提外放回声消除 (AEC) 与已播对齐</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="82" fill="#E9D5FF" font-size="13" font-weight="700">消灭“AI 听见自己的外放声音自己打断自己”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户开手机免提或车载蓝牙时，扬声器声音漏入麦克风</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 无参考帧对齐时，AI 把自己播报的后半句当成客户插话</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#3B0764" stroke="#A855F7"/>
+    <text x="30" y="174" fill="#F3E8FF" font-size="13" font-weight="700">端云双层 AEC + 下行文本指纹自回声过滤</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• WebRTC 硬件 AEC3 + 服务端参考信号自适应延时对齐</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• PSTN 固话免提：上行 STT 与下行播报窗口重叠度 &gt;85% 瞬滤</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">精确到毫秒的“客户实际听见位置”对齐</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 云端已生成 10秒音频，但客户在第 3.2秒打断</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 必须按网关实际发送字节数汇报 audio_end_ms=3200</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">免提外放自激打断率从 34% 降至 0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打断后 AI 100% 知道哪句话客户还没听见</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">企业实时语音丝滑话轮转换与打断全链路（Full-Duplex Turn-Taking &amp; Barge-In Pipeline）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 上行回声消除：WebRTC AEC3 + 下行播报指纹比对 ➔ 2. 双档打断识别：&lt;350ms 附和词忽略 vs &gt;=2词实质打断 140ms 急刹</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 3. 历史精准截断：按实际已播放字节对齐 audio_end_ms + T07 纪元拦截旧工具 ➔ 4. 语义判停：完整句 320ms 快响应 vs 报号停顿延展 2.2s</text>
+  </g>
+</svg>
