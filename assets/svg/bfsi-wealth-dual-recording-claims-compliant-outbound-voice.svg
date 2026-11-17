@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="BFSI Banking, Wealth Dual-Recording, Insurance FNOL Claims &amp; Compliant Outbound Voice Architecture &amp; Selection Guide">
+  <defs>
+    <linearGradient id="bgBfsi" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="barBfsi" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="cardBfsi" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowBfsi" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgBfsi)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barBfsi)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#451a03" stroke="#f59e0b" stroke-width="1"/>
+    <text x="16" y="18" fill="#fcd34d" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      BFSI FINANCIAL VOICE AI · WEALTH DUAL-RECORDING · INSURANCE FNOL · COLLECTIONS
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="23.5" font-weight="800">
+      金融银行与保险实时语音：财富双录、车险报案定损与合规提醒选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      财富双录 (WM-DUAL-01 适当性+逐字锁 99.4%合格率) · 车险 FNOL 语音+拍照查勘 · 消保合规外呼 (7-in-7 频控与停催锁)
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowBfsi)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">财富双录一次合格率</text>
+    <text x="81" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">68% ➔ 99.4%</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">车险报案定损结案提速</text>
+    <text x="251" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">45min ➔ 6min</text>
+  </g>
+
+  <!-- Row 1: 3 High-ROI Financial Voice Scenarios -->
+  <g transform="translate(32, 114)" filter="url(#shadowBfsi)">
+    <!-- Scenario 1: Wealth Management Dual-Recording -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardBfsi)" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="14" y="14" width="212" height="22" rx="6" fill="#78350f"/>
+    <text x="24" y="29" fill="#fcd34d" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 A · 银行/券商财富智能双录 🏆</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Wealth Dual-Recording (WM-DUAL)</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：理财经理念漏字重录 3 遍、C2 客户越级买 R5</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 风险等级硬拦截：C2 稳健型试图买 R5 产品 0ms 阻断</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 法定风险揭示切入 100% 级联 DragonHD TTS (&lt;=1.15x)</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 客户肯定答复实时质检：含糊说“大概知道吧”立即重读</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#2a1608" stroke="#d97706" stroke-width="1"/>
+    <text x="22" y="210" fill="#fcd34d" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: 双轨架构 + P60 逐字锁 + 7年WORM</text>
+
+    <!-- Scenario 2: Auto & Property Insurance FNOL Claims -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardBfsi)" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#064e3b"/>
+      <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 B · 车险/财险一键报案定损</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Insurance FNOL + Visual Claim</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：追尾现场车主惊慌失措、暴雨夜万通电话排队</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 开场 10秒先核查人伤与双闪撤离，人伤 0ms 强转急救</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 边打电话边推微信小程序卡片：语音引导拍车损/车架号</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 时间轴与车载 EDR 交叉对账 (P81)，禁口头越权认赔 (P105)</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+      <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: Voice Live S2S + 小程序视觉定损</text>
+    </g>
+
+    <!-- Scenario 3: Compliant Outbound Banking Reminders -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardBfsi)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 C · 金融消保合规账单提醒</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Compliant Outbound &amp; Reg E/F</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：暴力催收投诉罚单、答录机抢话泄露欠款隐私</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 拨号前双时区宵禁与 7天7次频控硬门禁 (P25 / P71)</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 客户说出“这笔不是我刷的/停止联系我” 0ms 停催转争议</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 语音还款采集强制切入 RFC 4733 按键旁路 (PCI SAQ-A)</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: ACS + 混合语义VAD + P25/P71/P91</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Dual-Lane Financial Architecture & Compliance Redlines -->
+  <g transform="translate(32, 372)" filter="url(#shadowBfsi)">
+    <!-- Left Box: Why Pure S2S Is Forbidden on Financial Disclaimers -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardBfsi)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      ⚖️ 金融监管红线解构：为什么银行财富双录必须采用“快/稳双轨热切换”？
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      金融消保与银保监双录抽检要求法定风险揭示语必须 100% 逐字不差、语速不得过快含糊：
+    </text>
+
+    <rect x="20" y="64" width="535" height="88" rx="8" fill="#1f121b" stroke="#ef4444" stroke-width="1"/>
+    <text x="32" y="84" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ❌ 纯端到端 S2S 裸跑风险：概率性跳字改词 + 被客户反问诱导承诺“差不多保本”
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 客户打岔问：“你们这个 R3 债券基金虽然写着不保本，但实际上从来没亏过本对吧？”
+    </text>
+    <text x="32" y="124" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 无护栏大模型极易顺着客户说“是的，历史基本上都是稳赚的”——直接触发刚性兑付违规巨额罚单！
+    </text>
+
+    <rect x="20" y="164" width="535" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ✅ 架构师双轨方案 (`WM-DUAL-01` + `P60/P715`)：S2S 负责解答疑问 + 级联 TTS 锁定法定条款
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 条款宣读阶段：自动切入 `DragonHDFlash` 级联稳车道，语速硬钳制 `&lt;=1.15x`，逐字哈希签名；
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 客户回答核验：客户必须清晰回答“清楚/明白/本人确认”，若回答“嗯/应该吧”自动重读确认；
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 双录一次合格率从人工录制的 68% 跃升至 99.4%，单笔理财双录时长从 18 分钟缩至 4.5 分钟！
+    </text>
+
+    <!-- Right Box: BFSI Security & ROI Matrix -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardBfsi)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        🏦 银行/保险四大核心语音防线与百万分钟 TCO 账本
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        内置金融行业全套合规护栏，可直接写进银行/保险总行招标技术规范书：
+      </text>
+
+      <rect x="20" y="64" width="501" height="112" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+      <text x="32" y="85" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">
+        四大金融级确定性安全护栏 (BFSI Guardrail Suite)：
+      </text>
+      <text x="32" y="106" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        1. **防深伪克隆核身 (`S08/P739`)**：AASIST 声码器伪影检测 + 72h 换卡锁，拦截 AI 拟声盗刷；
+      </text>
+      <text x="32" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        2. **对公大额四眼复核 (`P43`)**：对公财资转账强制主叫经办人 + 复核主管双声纹 + FIDO2 签名；
+      </text>
+      <text x="32" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        3. **非授权盗刷争议垫付 (`P91 Reg E`)**：客户口头申报盗刷即刻冻卡并启动 10 工作日临时垫付流；
+      </text>
+      <text x="32" y="163" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        4. **PCI-DSS 零接触卡号 (`P11/P68`)**：输卡号/CVV 切入边缘 RFC 4733 按键音消音，大模型 0 明文！
+      </text>
+
+      <rect x="20" y="186" width="501" height="72" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="207" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        💰 大型银行/险企月均 200 万分钟综合成本对比：
+      </text>
+      <text x="32" y="227" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 传统外包人工双录质检 + 车险人工报案坐席：`$480,000 / 月`
+      </text>
+      <text x="32" y="245" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        • Azure Voice Live + Speech 容器双轨底座：仅 `$96,000 / 月`（每万分钟 `$480`，省 80%！）
+      </text>
+    </g>
+  </g>
+</svg>
