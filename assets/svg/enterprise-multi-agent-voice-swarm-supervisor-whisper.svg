@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg23" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="50%" stop-color="#111C38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="swarmGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="stateGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="whisperGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg23)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Enterprise Multi-Agent Voice Swarm, &lt;=15ms State Handoff &amp; Supervisor Whisper</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业多智能体语音协同（Multi-Agent Voice Swarm）、零延迟专员转接与主管实时耳语指导（Supervisor Whisper）选型全景图</text>
+  <rect x="942" y="42" width="210" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1047" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">SWARM-VOICE-01 · &lt;=15ms</text>
+
+  <!-- Pillar 1: Why Mega-Prompt Fails vs Scoped Specialist Swarm -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#swarmGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 专精智能体蜂群 vs 单体巨型 Prompt</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 单体 12k-Token + 40工具巨型 Agent 崩溃</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 工具调错率高达 38.8% + 每轮首字延迟暴增 480ms</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 权限混杂：查物流客户可诱导触发高管挽留免单工具</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">模式 A：单音色无感热切 (Unified-Voice)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 客户全程听同一音色，后台按意图秒切专精 Agent</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 每次仅挂载 &lt;=1,200 Token 提示词与 &lt;=5 个最小权限工具</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">模式 B：显式双音色专家会诊 (Multi-Persona)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 接待坐席（亲和女声）➔ 技术/挽留总监（沉稳男声）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 升级仪式感拉满，投诉安抚与挽留成功率提升 34%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">工具调用准确率从 61.2% 拉升至 98.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">每轮推理 Token 消耗降低 74% · 最小权限物理隔离</text>
+  </g>
+
+  <!-- Pillar 2: <=15ms Zero-Copy Blackboard Handoff -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#stateGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. &lt;=15ms 共享黑板与零停顿状态交接</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">严禁转接时临时跑 LLM 全文摘要 (慢 1.8s!)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统多 Agent 交接靠串行生成总结，导致通话卡顿</text>
+    <text x="30" y="122" fill="#94A3B8" font-size="12">• 改用内存结构化共享黑板 (CallSessionBlackboard)</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#A7F3D0" font-size="13" font-weight="700">WebSocket 不断连 session.update 热切 (&lt;=15ms)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 保持底层 RTP 与 Voice Live 会话不断开</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 仅原子替换 instructions、tools 与 voice 参数</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">防乒乓死循环锁 (Anti-Ping-Pong DAG Guard)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 限制单通电话最多 3 次 Agent 间跳转（Handoff TTL=3）</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 发生 A-&gt;B-&gt;A 振荡时自动降级至全能专家或真人坐席</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">智能体间切换耗时 &lt;= 15ms · 零重复提问</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">已核身状态与订单槽位 100% 跨 Agent 自动继承</text>
+  </g>
+
+  <!-- Pillar 3: Supervisor Live Monitoring, Whisper & Barge-In -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#whisperGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 主管大屏监听、实时耳语与夺权接管</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="82" fill="#E9D5FF" font-size="13" font-weight="700">1名班组长同时监看 25 路 AI 实时通话</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 情绪红灯预警（客户连说“投诉/工商局/找经理”）</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 一键静音监听（Silent Listen）实时双轨音频与字幕</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#3B0764" stroke="#A855F7"/>
+    <text x="30" y="174" fill="#F3E8FF" font-size="13" font-weight="700">Human-to-AI 实时耳语注入 (Supervisor Whisper)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 主管无需亲自接听！直接打字/语音下发特批指令：</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• “特批免除该 VIP 客户 200元违约金” ➔ AI 下句立刻执行</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">0.5s 强插三方通话 / 一键夺权 (Barge-In Takeover)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 极端危机下主管点击“接管”，0.5s 切入麦克风</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 原 AI 自动退居后台转为实时填单与话术助手</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">1名主管可协同兜底 25 路并发 AI 坐席</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">82% 升级危机通过“主管耳语 AI”化解，无需转人工</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">企业多智能体语音协同与人机指挥链（Multi-Agent Voice Swarm &amp; Supervisor Command Loop）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 前台分流 Agent (&lt;=3工具) 完成核身与意图识别 ➔ 2. 写入内存共享黑板 (&lt;=15ms) ➔ 3. session.update 热切至账单/技术/挽留专精 Agent</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 4. 遇特批诉求触发班组长告警 ➔ 5. 班组长下发 Supervisor Whisper 耳语指令由 AI 替身执行，或 0.5s 一键夺权接管</text>
+  </g>
+</svg>
