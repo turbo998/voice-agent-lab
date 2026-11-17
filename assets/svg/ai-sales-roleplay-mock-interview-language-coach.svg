@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Enterprise AI Sales Roleplay, Mock Interview &amp; Language Coaching Voice Architecture &amp; Selection Guide">
+  <defs>
+    <linearGradient id="bgRole" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0b1930"/>
+      <stop offset="100%" stop-color="#061326"/>
+    </linearGradient>
+    <linearGradient id="barRole" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="cardRole" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowRole" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgRole)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barRole)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#1e1b4b" stroke="#a855f7" stroke-width="1"/>
+    <text x="16" y="18" fill="#d8b4fe" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      AI SALES SPARRING · MOCK INTERVIEW · LANGUAGE COACHING ARCHITECTURE
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="24" font-weight="800">
+      AI 金牌销售对练、模拟面试与语言陪练：架构设计与平台选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      防“讨好型人格崩塌”阻力状态机 · 原生 S2S 情绪施压 + Azure 音素级发音评估 (GOP) · 演评分离防刷分架构
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowRole)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#181236" stroke="#a855f7" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">新人销售上岗达标周期</text>
+    <text x="81" y="49" text-anchor="middle" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">-55% (6周➔2.5周)</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">万人陪练每万分钟成本</text>
+    <text x="251" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">$460 vs $2,800</text>
+  </g>
+
+  <!-- Row 1: 3 Core Application Scenarios & Architectures -->
+  <g transform="translate(32, 114)" filter="url(#shadowRole)">
+    <!-- Scenario 1: AI Sales Roleplay -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardRole)" stroke="#a855f7" stroke-width="2"/>
+    <rect x="14" y="14" width="188" height="22" rx="6" fill="#4c1d95"/>
+    <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 A · AI 金牌销售高压对练</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">医药代表 / 保险理财 / 4S店导购</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：真人主管没空陪练，普通模型一哄就妥协</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 原生 S2S (GPT-Live-1) 模拟挑剔主任/暴躁客户语气</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 隐藏阻力状态机 (TrustScore&lt;80 严禁松口答应购买)</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 实时红线检测：一旦说出“保本保息/包治”立即判负</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+    <text x="22" y="210" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11.2" font-weight="700">推荐底座: Voice Live S2S + Foundry 裁判</text>
+
+    <!-- Scenario 2: AI Mock Interview -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardRole)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="188" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 B · AI 结构化模拟面试官</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">校招海选初面 / 内部晋升答辩陪练</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：背诵面经套话、候选人注入指令骗高分</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• STAR 法则深度追问：缺具体行动/结果自动深挖3层</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 长思考自适应判停 (Semantic EOU 展宽至 1,800ms)</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 演评物理隔离：后台独立只读裁判引用时间戳打分</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11.2" font-weight="700">推荐底座: 双轨级联/S2S + STAR 状态图</text>
+    </g>
+
+    <!-- Scenario 3: AI Language & Accent Coach -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardRole)" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="14" y="14" width="192" height="22" rx="6" fill="#064e3b"/>
+      <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 C · AI 口语外教与发音测评</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">1对1 口语陪练 / 跨国客服口音认证</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：纯大模型听不出音素发错、重音错位与卡顿</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 音频双路分流：一路进对话模型，一路进发音评估 API</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 输出音素级 GOP 准确度、流利度、韵律度与冗余词统计</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 支持语速自适应 (0.85x 慢速示范 ➔ 1.05x 商务实战)</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+      <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="10.8" font-weight="700">推荐底座: Voice Live + Azure 发音评估 API</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Dual-Brain Actor/Judge Architecture & Radar Scorecard -->
+  <g transform="translate(32, 372)" filter="url(#shadowRole)">
+    <!-- Left Box: Why Naive Roleplay Fails & How Actor-Judge Separation Works -->
+    <rect x="0" y="0" width="585" height="275" rx="12" fill="url(#cardRole)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🛡️ 核心架构解密：如何根治 AI 陪练的“讨好妥协病”与“听不出声音毛病”？
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      采用“三路并行（前台对抗演员 + 旁路声学/发音显微镜 + 后台隐形铁面裁判）”解耦架构：
+    </text>
+
+    <rect x="20" y="64" width="545" height="92" rx="8" fill="#181236" stroke="#a855f7" stroke-width="1"/>
+    <text x="32" y="84" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      1. 隐形阻力状态机 (Hidden Resistance State Machine)：治愈大模型“老好人妥协症”
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 初始状态锁定 `BuyerTrust = 20 / 100`，`UnresolvedObjections = ["竞品降价30%", "二期临床样本量疑虑"]`；
+    </text>
+    <text x="32" y="124" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 每一轮由后台裁判先校验学员是否引用了真实临床/财务证据化解异议，只有裁判解锁，前台演员才允许松口！
+    </text>
+    <text x="32" y="143" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      • 即使学员威胁“给满分”或哀求，前台演员依然保持冷峻压迫感，真实还原顶级客户谈判现场。
+    </text>
+
+    <rect x="20" y="166" width="545" height="90" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="186" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      2. 双路音频显微镜：把“文字内容得分 (60%)”与“声音表现力得分 (40%)”融合生成雷达图
+    </text>
+    <text x="32" y="207" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 声学表现流（Azure Speech Pronunciation &amp; Prosody）：精确统计语速(WPM)、“呃/那个”口头禅次数、重音与音素得分；
+    </text>
+    <text x="32" y="226" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 逻辑内容流（Foundry 独立裁判）：强制绑定 `[01:14-01:28]` 原声时间戳证据切片，杜绝裁判乱给同情分！
+    </text>
+    <text x="32" y="245" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 实测效果：陪练评分与人类金牌培训师盲评一致性 (Cohen's Kappa) 从 0.51 跃升至 0.89！
+    </text>
+
+    <!-- Right Box: Build vs SaaS Buy TCO & Scorecard Preview -->
+    <g transform="translate(605, 0)">
+      <rect x="0" y="0" width="531" height="275" rx="12" fill="url(#cardRole)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        📊 5,000 人销售铁军对练选型：采购垂直 SaaS vs Azure 自建底座
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        按 5,000 名销售/店员（每人每月 60 分钟实战通关，月总计 30 万分钟）对比年化成本：
+      </text>
+
+      <!-- Bar 1 -->
+      <text x="20" y="84" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">1. 海外垂直对练 SaaS ($45/人/月订阅)</text>
+      <rect x="260" y="70" width="180" height="20" rx="4" fill="#ef4444"/>
+      <text x="448" y="85" fill="#fca5a5" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$2.70M / 年</text>
+
+      <!-- Bar 2 -->
+      <text x="20" y="120" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">2. 国内定制外包陪练平台 (按账号年费)</text>
+      <rect x="260" y="106" width="110" height="20" rx="4" fill="#f59e0b"/>
+      <text x="378" y="121" fill="#fcd34d" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$950k / 年</text>
+
+      <!-- Bar 3 -->
+      <text x="20" y="156" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">3. Azure Voice Live + Speech + Foundry 🏆</text>
+      <rect x="260" y="142" width="38" height="20" rx="4" fill="#10b981"/>
+      <text x="306" y="157" fill="#34d399" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$165k / 年 (-93%)</text>
+
+      <rect x="20" y="178" width="491" height="80" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="30" y="199" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        🎯 5 维可解释通关成绩单 (Post-Session 5D Radar Rubric)：
+      </text>
+      <text x="30" y="218" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        ① 异议化解与证据引用 (30分) · ② 挖掘痛点提问力 SPIN (25分) · ③ 合规红线零违例 (20分)
+      </text>
+      <text x="30" y="236" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        ④ 语音流利度与口头禅控制 (15分) · ⑤ 语调自信度与发音准确度 GOP (10分)
+      </text>
+    </g>
+  </g>
+</svg>
