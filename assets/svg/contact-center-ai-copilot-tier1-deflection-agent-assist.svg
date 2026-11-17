@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Enterprise Contact Center AI Copilot Architecture &amp; Selection Guide: Tier-1 Voice Deflection, Warm Context Handoff &amp; Real-Time Agent Assist">
+  <defs>
+    <linearGradient id="bgCC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="52%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051328"/>
+    </linearGradient>
+    <linearGradient id="barCC" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0078d4"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="cardCC" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowCC" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgCC)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barCC)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="540" height="28" rx="14" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+    <text x="16" y="18" fill="#7dd3fc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      CONTACT CENTER COPILOT ARCHITECTURE &amp; CCaaS SELECTION GUIDE
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="24" font-weight="800">
+      智能联络中心升级：AI 首线接待 + 无缝转人工 + 坐席实时话术推荐
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      Tier-1 Autonomous Voice Deflection (70%) · Context-Preserving Warm Transfer · Real-Time Whisper Agent Assist &amp; Auto-Wrap-Up
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(840, 22)" filter="url(#shadowCC)">
+    <rect x="0" y="0" width="160" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="80" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">单通平均处理时长 (AHT)</text>
+    <text x="80" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">-42% (省 90s 小结)</text>
+
+    <rect x="170" y="0" width="158" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="249" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">首线 AI 自主闭环率</text>
+    <text x="249" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">68% ~ 78%</text>
+  </g>
+
+  <!-- Row 1: 3-Stage Contact Center Upgrade Pipeline -->
+  <g transform="translate(32, 114)" filter="url(#shadowCC)">
+    <!-- Stage 1: Tier-1 AI Voice Reception -->
+    <rect x="0" y="0" width="366" height="240" rx="12" fill="#112240" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="14" y="14" width="175" height="22" rx="6" fill="#0c4a6e"/>
+    <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">第 1 环 · AI 首线全双工接待</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Tier-1 Autonomous Voice Bot</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">淘汰按键迷宫 ("按1按2")，开口即办业务</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构能力：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 零等待接听 100% 呼入，完成身份核验与意图分诊</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 自动闭环 70% 高频标准诉求（查单/改约/挂失/FAQ）</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 实时情绪探针：识别客户连续2次暴怒立即触发转人工</text>
+    <rect x="14" y="186" width="338" height="38" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+    <text x="24" y="209" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11.2" font-weight="700">引擎: Voice Live (GPT-Live-1 / 混合语义 VAD)</text>
+
+    <!-- Stage 2: Context-Preserving Warm Transfer -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="240" rx="12" fill="#112240" stroke="#10b981" stroke-width="2"/>
+      <rect x="14" y="14" width="195" height="22" rx="6" fill="#064e3b"/>
+      <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">第 2 环 · 带上下文无缝热转接 🏆</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Zero-Repeat Warm Handoff</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">彻底根除“转人工后客户再把委屈重讲一遍”</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构能力：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 1.5秒生成结构化交接卡（已核实卡号+诉求+情绪标签）</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 通过 SIP Header (UUI) + CTI WebSocket 同步弹屏</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 私密单向耳语 (Whisper)：AI 5秒向坐席口播前情提要</text>
+      <rect x="14" y="186" width="338" height="38" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+      <text x="24" y="209" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11.2" font-weight="700">体验: 客户复述率 0% | 坐席接单阅读 &lt;3秒</text>
+    </g>
+
+    <!-- Stage 3: Real-Time Agent Assist & Auto-Wrap-Up -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="240" rx="12" fill="#112240" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="188" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">第 3 环 · 坐席实时副驾与秒级小结</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Real-Time Agent Assist Copilot</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">把刚入职 1 周的新人秒变 5 年工龄金牌专家</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构能力：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• SIPREC/媒体分流旁路监听立体声（Ch0客户/Ch1坐席）</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 仅在“客户提问/异议”时秒弹 ≤3 行话术卡（防刷屏）</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 合规漏读实时亮灯提醒 + 挂机 3秒自动填好 CRM 工单</text>
+      <rect x="14" y="186" width="338" height="38" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+      <text x="24" y="209" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11.2" font-weight="700">卡片延迟: &lt;750ms | 话后小结: 95s ➔ 8s</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Media Forking Architecture & Build-vs-Buy TCO -->
+  <g transform="translate(32, 372)" filter="url(#shadowCC)">
+    <!-- Left Box: Zero-Latency Audio Forking & Anti-Fatigue Design -->
+    <rect x="0" y="0" width="560" height="275" rx="12" fill="#112240" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🏗️ 架构解构：如何在不改动原有呼叫中心通话质量的前提下接入实时副驾？
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      严禁将坐席副驾串联在主通话语音链路上！采用“旁路双声道镜像分流 (Out-of-Band Forking)”：
+    </text>
+
+    <rect x="20" y="64" width="520" height="88" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+    <text x="32" y="84" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      1. 旁路双声道镜像分流 (SIPREC / Media Streams Forking)：对主通话增加 0.0ms 延迟
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • SBC/交换机（Cisco/Genesys/ACS）保持客户与坐席主通话直连；同时复制一份只读双声道流发给 AI；
+    </text>
+    <text x="32" y="124" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 左声道 (Ch0 = 客户) 触发“意图识别 + 知识库秒弹”；右声道 (Ch1 = 坐席) 触发“合规条款勾选 + 承诺核对”；
+    </text>
+    <text x="32" y="142" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11">
+      • 即便后台 AI 服务重启，客户与人工坐席的正常通话 100% 不受任何影响！
+    </text>
+
+    <rect x="20" y="164" width="520" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      2. 解决“坐席嫌烦关掉助手”的三大反疲劳设计 (Anti-Cognitive-Overload)
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 事件驱动静默原则：日常寒暄绝不弹窗；仅当检测到【客户提出新问题/价格异议/监管必读项】才推送卡片；
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 极简“三行提词器”格式：第1行【结论数字】+ 第2行【可直接照念的安抚话术】+ 第3行【一键发短信/改单按钮】；
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      • 已读自动折叠：一旦右声道识别到坐席已经念出推荐要点，屏幕卡片在 400ms 内自动打勾收起！
+    </text>
+
+    <!-- Right Box: 500-Seat Contact Center TCO Comparison -->
+    <g transform="translate(580, 0)">
+      <rect x="0" y="0" width="556" height="275" rx="12" fill="#112240" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        💰 500 坐席呼叫中心升级选型：买 CCaaS 按坐席插件 vs Azure 云原生底座
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        按 500 名人工坐席 + 月呼入 100 万分钟（70% AI 首线分流 + 30% 转人工实时副驾）测算月度总成本：
+      </text>
+
+      <!-- Option 1 -->
+      <text x="20" y="84" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">1. 传统 CCaaS 原生 AI 插件 ($150/坐席 + 按单费)</text>
+      <rect x="285" y="70" width="185" height="20" rx="4" fill="#ef4444"/>
+      <text x="478" y="85" fill="#fca5a5" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$92,000 / 月</text>
+
+      <!-- Option 2 -->
+      <text x="20" y="120" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">2. 独立垂直 SaaS 坐席助手 (Cresta / Observe)</text>
+      <rect x="285" y="106" width="150" height="20" rx="4" fill="#f59e0b"/>
+      <text x="443" y="121" fill="#fcd34d" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$74,000 / 月</text>
+
+      <!-- Option 3 -->
+      <text x="20" y="156" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">3. Azure Voice Live + Foundry 统一底座 🏆</text>
+      <rect x="285" y="142" width="62" height="20" rx="4" fill="#10b981"/>
+      <text x="355" y="157" fill="#34d399" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$28,500 / 月 (-69%)</text>
+
+      <rect x="20" y="178" width="516" height="80" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="199" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        📈 为什么 Azure 统一底座拥有压倒性 ROI？
+      </text>
+      <text x="32" y="218" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 告别“按坐席人头包月税”：倒班坐席不打电话时 0 费用，完全按实际分流与辅助分钟数弹性计费；
+      </text>
+      <text x="32" y="236" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 知识库与工具 100% 复用：首线 AI 语音机器人与人工坐席副驾共用同一套 Azure AI Search 政策库与工单接口！
+      </text>
+    </g>
+  </g>
+</svg>
