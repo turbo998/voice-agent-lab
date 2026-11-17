@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg24" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="50%" stop-color="#111C38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="pruneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="tierGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="ptuGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg24)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Enterprise Voice AI TCO Modeling, Audio Pruning &amp; Azure PTU FinOps Guide</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业实时语音 AI 容量规划（Azure PTU vs PAYGO）、Token/音频计费拆解与千万分钟级 FinOps 降本选型全景图</text>
+  <rect x="942" y="42" width="210" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1047" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">VOICE-FINOPS-01 · -68%</text>
+
+  <!-- Pillar 1: S2S Audio Context Accumulation Trap & Sliding-Window Pruning -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pruneGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 破解 S2S 音频上下文二次方计费陷阱</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 为什么 PoC 算 $0.08/分，上线变 $0.31/分？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• S2S 第 12 轮对话会重发前 11 轮全部历史音频帧！</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 加上持续上传静音帧，单通 Token 呈 N*(N+1)/2 爆炸</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">刀法 1：滑窗音频裁剪 (Keep Last-2 Audio Turns)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 仅保留最近 2 轮原始音频（保留当前情绪与韵律）</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 第 1..N-2 轮调用 item.delete 替换为紧凑文本摘要</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">刀法 2：边缘 VAD 静音门控 + 冻结前缀缓存</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 客户听播报/思考时不上传静音帧，省 48% 输入音频</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 静态 System Prompt 100% 命中缓存（享 1折计费！）</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">单通 S2S 语音模型账单直接砍掉 62.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">而且长通话第 15 轮首字延迟不再退化！</text>
+  </g>
+
+  <!-- Pillar 2: Hybrid Tiered Model Routing & Semantic Audio Cache -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#tierGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 大小模型混合分级路由与高频音频缓存</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">刀法 3：Top-200 欢迎语/过渡语 PCM 零算力缓存</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 开场白、合规披露、300ms 慢接口垫话预合成存 CDN</text>
+    <text x="30" y="122" fill="#94A3B8" font-size="12">• 占整通电话 22% 的播报时长完全不耗 TTS/S2S 算力</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#A7F3D0" font-size="13" font-weight="700">刀法 4：75% 常规轮次走轻量模型 ($0.028-$0.048)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 核身、查快递、改地址、点餐走 Phi4-mm-realtime</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 或级联 DragonHDFlash + GPT-4o-mini ($0.028/分)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">25% 复杂安抚/谈判轮次升舱旗舰 S2S</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 仅当触发情绪红灯或复杂异议时热切 GPT-Live-1</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 达成“98% 旗舰级拟人体验 + 45% 综合算力成本”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">全栈加权成本从 $0.24/分 压降至 $0.058/分</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">仅为真人坐席每分钟成本 ($0.85/分) 的 1/14！</text>
+  </g>
+
+  <!-- Pillar 3: Azure PTU Base-Load + Spillover PAYGO Capacity Planning -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ptuGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. Azure PTU 基荷 + PAYGO 削峰溢出架构</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">严禁按“周一早 10 点峰值”100% 购买 PTU！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 呼叫中心夜间与周末流量跌至 10%，满配 PTU 闲置 62%</text>
+    <text x="30" y="122" fill="#94A3B8" font-size="12">• 纯 PAYGO 又面临早高峰 429 限流与延迟抖动</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="30" y="174" fill="#FDE68A" font-size="13" font-weight="700">刀法 5：按日间 P55 水位采购 PTU 年包基荷</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• PTU 承载 78% 稳态流量（利用率拉满至 89%+）</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 锁定 100% 确定性首字延迟（P99 &lt;= 480ms）</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">APIM 智能网关 0ms 溢出至多区域 PAYGO</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 当 PTU 利用率 &gt;92% 或返回 429 时，毫秒级无感分流</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 兼顾 PTU 折扣单价与无限弹性抗突发洪峰能力</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">比满配 PTU 省 41% · 比纯 PAYGO 省 28%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">千万分钟级语音中心年省 $1,420,000+ 云账单</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">企业实时语音 AI 五步 FinOps 降本公式（68.4% Total Cost Reduction Formula）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 边缘 VAD 拦截 60% 静音上传 (-48% 输入音频) ➔ 2. 滑窗保留最近 2 轮音频、旧轮次转文本 (-62% 累积 Token) ➔ 3. 冻结前缀享 1折缓存</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 4. 75% 常规轮次路由至 Phi4-mm-realtime ($0.048/分) ➔ 5. APIM 网关按 P55 基荷 PTU + 峰值溢出 PAYGO 混合调度 (-41% 预留成本)</text>
+  </g>
+</svg>
