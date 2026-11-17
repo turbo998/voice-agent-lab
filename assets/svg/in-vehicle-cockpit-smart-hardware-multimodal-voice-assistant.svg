@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="In-Vehicle Cockpit &amp; Smart Hardware Multimodal Voice + Vision Assistant Architecture &amp; Selection Guide">
+  <defs>
+    <linearGradient id="bgCar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="barCar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="cardCar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowCar" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgCar)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barCar)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+    <text x="16" y="18" fill="#7dd3fc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      IN-VEHICLE COCKPIT &amp; SMART HARDWARE MULTIMODAL VOICE ASSISTANT
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="24" font-weight="800">
+      车载智能座舱与智能硬件多模态助手：架构设计与选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      端侧 NPU (Phi-4-mini 离线车控 &lt;80ms) + 云端全双工视觉语音 (GPT-Live-1) · 按需关键帧抽样省 92% · 四音区童锁隔离
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowCar)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">端侧车控 / 云端多模态</text>
+    <text x="81" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="19.5" font-weight="800">75ms / 340ms</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">视觉按需抽帧省成本</text>
+    <text x="251" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="19.5" font-weight="800">-92% 流量&amp;Token</text>
+  </g>
+
+  <!-- Row 1: 3 Architecture Layers of Edge-Cloud Cockpit & Smart Hardware -->
+  <g transform="translate(32, 114)" filter="url(#shadowCar)">
+    <!-- Card 1: On-Device Edge NPU Layer -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardCar)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="14" y="14" width="196" height="22" rx="6" fill="#0c4a6e"/>
+    <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">第 1 层 · 端侧 NPU 极速确定层</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">高通 8295 / 端侧 Phi-4-mini</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">场景：地库/隧道断网车控、免唤醒高频指令</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心职责（占总指令量 65%）：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 空调/车窗/座椅/音量/切歌等 200+ 本地 CAN 指令</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 四音区独立波束 (主驾/副驾/左后/右后) 声源定位</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 400ms 云端弱网超时瞬间自动接管，100% 永不失联</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+    <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11.2" font-weight="700">响应延迟: 55~85ms | 云端算力成本: $0.00</text>
+
+    <!-- Card 2: Cloud Multimodal S2S ("See-and-Speak") -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardCar)" stroke="#10b981" stroke-width="2"/>
+      <rect x="14" y="14" width="212" height="22" rx="6" fill="#064e3b"/>
+      <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">第 2 层 · 云端视觉+语音全双工 🏆</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Azure Voice Live (GPT-Live-1)</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">场景：所见即所说 (路牌/菜单识别)、多站行程规划</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心职责（占总指令量 35%）：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 指着窗外建筑/AI眼镜看外文菜单：“这能停车吗？”</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 复杂条件推理：“顺路找一家有快充桩且评分&gt;4.7的粤菜”</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 长途夜驾犯困时高情商陪聊与提神音乐主动推荐</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+      <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11.2" font-weight="700">首字延迟: 310~480ms | 混合TCO: ~$190/万分钟</text>
+    </g>
+
+    <!-- Card 3: Automotive & Hardware Safety Interlocks -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardCar)" stroke="#f59e0b" stroke-width="1.5"/>
+      <rect x="14" y="14" width="196" height="22" rx="6" fill="#78350f"/>
+      <text x="24" y="29" fill="#fcd34d" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">第 3 层 · 车规与硬件安全互锁</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">四音区权限锁 + 蓝牙防死锁</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">标准：ISO 26262 / UNECE R155 / EN 15722 eCall</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心安全红线：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 行驶中 (&gt;5km/h) 100% 物理阻断后排打开后备箱/主驾窗</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 车载音乐/导航回声参考绑定，杜绝自己把自己唤醒</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 气囊弹出 (eCall) 0ms 抢占一切娱乐对话直连救援中心</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#2a1608" stroke="#d97706" stroke-width="1"/>
+      <text x="22" y="210" fill="#fcd34d" font-family="Consolas, monospace" font-size="11" font-weight="700">越权车控拦截率: 100% | eCall 抢占: 0ms</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Event-Triggered Vision Sampling & 4-Zone Seat Matrix -->
+  <g transform="translate(32, 372)" filter="url(#shadowCar)">
+    <!-- Left Box: How to Save 92% on Multimodal "See-and-Speak" -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardCar)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      👁️ 多模态“所见即所说”降本秘籍：按需关键帧抽样 vs 30fps 视频流长传
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      AI 眼镜与车载前视摄像头如果 24 小时往云端推视频流，不仅电池 25 分钟耗尽，Token 账单更会破产：
+    </text>
+
+    <rect x="20" y="64" width="535" height="86" rx="8" fill="#1f121b" stroke="#ef4444" stroke-width="1"/>
+    <text x="32" y="84" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ❌ 错误做法：持续推流 1080p 30fps 视频进入多模态大模型
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 95% 的时间用户只是在纯语音聊天或听歌，上传的数万张视频帧全是无用马路画面；
+    </text>
+    <text x="32" y="124" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 导致智能眼镜芯片严重发热降频、蜂窝流量暴增，且每万分钟多模态算力账单高达 `$2,400+`！
+    </text>
+
+    <rect x="20" y="162" width="535" height="94" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="182" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ✅ 架构师标准解法：语义指代触发 + 端侧防抖关键帧抽样 (Intent-Triggered 1~2 Keyframes)
+    </text>
+    <text x="32" y="203" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 端侧环形缓存最近 3 秒画面；平时仅上传纯音频流（32kbps Opus）；
+    </text>
+    <text x="32" y="222" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 一旦检测到视觉指代词（“你看前面那个路牌”、“帮我看下手里这个药盒”）或头部指向动作，
+    </text>
+    <text x="32" y="242" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 端侧立刻抽取最清晰的 1~2 张 ROI 裁剪图 (`~80KB WebP`) 随语音并发上云，立省 92% 功耗与成本！
+    </text>
+
+    <!-- Right Box: 4-Zone Cockpit Privilege & Handover Matrix -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardCar)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        🚗 智能座舱四音区权限隔离矩阵与蓝牙/隧道无感切换
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        基于阵列麦到达时间差 (TDOA) 绑定座位 ID (`SeatZone`)，在工具调用层强制物理鉴权：
+      </text>
+
+      <rect x="20" y="64" width="501" height="114" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+      <text x="32" y="85" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">
+        音区角色 (SeatZone) vs 允许调用的车控/支付工具集：
+      </text>
+      <text x="32" y="106" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • `Zone 1 (主驾 Driver)`：全权限（导航改道、驾驶模式、全车车窗、免密洗车/充电支付）；
+      </text>
+      <text x="32" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • `Zone 2 (副驾 Front-Right)`：允许副驾娱乐屏、空调与添加导航途经点；禁改驾驶模式；
+      </text>
+      <text x="32" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • `Zone 3/4 (后排儿童锁开启时)`：仅允许点播儿歌/故事与本侧阅读灯；**严禁控制车窗、天窗、后备箱与支付**！
+      </text>
+      <text x="32" y="164" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        🛡️ 即使后排小孩模仿大人声音喊“打开全部车窗”，TDOA 波束定位为 Zone 3 即在 0ms 策略层直接拦截！
+      </text>
+
+      <rect x="20" y="188" width="501" height="70" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="209" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        💰 10 万台智能车 / AI 眼镜车队每 10,000 分钟云端成本对比：
+      </text>
+      <text x="32" y="229" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">
+        • 100% 指令全走云端多模态 S2S + 持续视频流：`$1,680 / 万分钟`
+      </text>
+      <text x="32" y="247" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        • 65% 端侧 NPU 分流 + 35% 云端 Voice Live + 按需抽帧：仅 `$190 / 万分钟` (-88.7%！)
+      </text>
+    </g>
+  </g>
+</svg>
