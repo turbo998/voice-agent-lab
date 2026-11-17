@@ -22,7 +22,7 @@
 
 ## 2. Bilingual Documentation Pairings (`main` Branch)
 
-### 2.0 Enterprise Real-Time Voice & Multimodal Application, Architecture & Platform Selection Matrix (48 Flagship Bilingual Guides · [2026-11-18 Panorama Digest](./daily/2026-11-18.en.md))
+### 2.0 Enterprise Real-Time Voice & Multimodal Application, Architecture & Platform Selection Matrix (49 Flagship Bilingual Guides · [2026-11-18 Panorama Digest](./daily/2026-11-18.en.md))
 
 | Category & ID | Guide Topic | English Guide (`English`) | Chinese Guide (`中文`) | Key Architectural Verdict & ROI |
 | :--- | :--- | :--- | :--- | :--- |
@@ -74,6 +74,7 @@
 | **Scenario 46** | **Telecom ISP Outage Deflection, `ONT` LED Vision (`TR-069`) & Anti-SIM-Swap (`P97`)** | [`telecom-isp-broadband-...-faq.en.md`](./telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.en.md) | [`.md`](./telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.md) | 91.5% 12s storm deflection + -64.2% avoidable truck rolls + 100% SIM-Swap & verbal CDR block |
 | **Scenario 47** | **Insurance Tele-Underwriting (`P88`), Pension Proof-of-Life (`S08`) & Catastrophe Claims Copilot** | [`insurance-underwriting-pension-...-faq.en.md`](./insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.en.md) | [`.md`](./insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.md) | 3.1x pre-existing disclosure lift & 0% estoppel waivers + 99.7% replay fraud block + 45s `Xactimate` scope |
 | **Scenario 48** | **Aviation In-Flight Cabin & `MedLink`, Cruise Ship `0-bps` Concierge & High-Speed Rail Assistant** | [`aviation-inflight-cabin-cruise-...-faq.en.md`](./aviation-inflight-cabin-cruise-ship-highspeed-rail-voice-selection-faq.en.md) | [`.md`](./aviation-inflight-cabin-cruise-ship-highspeed-rail-voice-selection-faq.md) | -42% avoidable medical diversions ($180k saved) + +$64/cabin cruise upsell + -71.5% missed rail transfers |
+| **Scenario 49** | **FMCG Route Sales (`DSD`), B2B Kitchen Dialect Reordering & Smart Cooler `8s` Dispute (`FMCG-B2B-01`)** | [`fmcg-dsd-route-sales-b2b-...-faq.en.md`](./fmcg-dsd-route-sales-b2b-wholesale-vending-voice-selection-faq.en.md) | [`.md`](./fmcg-dsd-route-sales-b2b-wholesale-vending-voice-selection-faq.md) | +28% daily DSD visits & 0% promo leakage + 38s 35-item B2B checkout (99.6% UOM) + $0.015/call cooler refund |
 
 ### 2.1 Core Whitepapers & Playbooks (`docs/`)
 

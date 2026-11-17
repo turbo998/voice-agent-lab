@@ -24,7 +24,7 @@
 
 ## 2. 本仓库 (`turbo998/voice-agent-lab`) 核心技术资产清单
 
-### 2.0 企业实时语音与多模态应用场景、端到端架构与平台选型指南矩阵（48 篇旗舰双语单专题 FAQ · [2026-11-18 全景简报](daily/2026-11-18.md)）
+### 2.0 企业实时语音与多模态应用场景、端到端架构与平台选型指南矩阵（49 篇旗舰双语单专题 FAQ · [2026-11-18 全景简报](daily/2026-11-18.md)）
 
 | 分类与编号 | 专题名称 | 中文指南 (`中文`) | 英文指南 (`English`) | 核心选型结论与量化收益 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -76,6 +76,7 @@
 | **行业场景 46** | **电信运营商万户断网 12秒拦截、光猫看灯 (`TR-069`) 与防 SIM-Swap (`P97`)** | [`telecom-isp-broadband-...-faq.md`](telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.md) | [`.en.md`](telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.en.md) | 群障 91.5% 送流量 12秒挂机 + 80KB 看灯省 64.2% 装维白跑 + 100% 阻断 eSIM 劫持与详单泄露 |
 | **行业场景 47** | **寿险重疾智能核保回访 (`P88`)、养老金生存认证 (`S08`) 与巨灾查勘定损 Copilot** | [`insurance-underwriting-pension-...-faq.md`](insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.md) | [`.en.md`](insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.en.md) | 既往症披露率提升 3.1x 且 0% 越权豁免 + 99.7% 拦截养老金录音冒领 + 45s 生成 Xactimate 定损单 |
 | **行业场景 48** | **民航万米高空客舱与 `MedLink` 急救、邮轮 `0-bps` 断网礼宾与高铁静音车厢/换乘** | [`aviation-inflight-cabin-cruise-...-faq.md`](aviation-inflight-cabin-cruise-ship-highspeed-rail-voice-selection-faq.md) | [`.en.md`](aviation-inflight-cabin-cruise-ship-highspeed-rail-voice-selection-faq.en.md) | 砍掉 42% 非必要备降省 $18万/次 + 邮轮 0卫星流量增销 +$64/舱房 + 高铁极限换乘漏乘率降 71.5% |
+| **行业场景 49** | **快消巡店车销 (`DSD`)、餐饮 B2B 方言补货与智能冰柜 `8秒` 争议秒退 (`FMCG-B2B-01`)** | [`fmcg-dsd-route-sales-b2b-...-faq.md`](fmcg-dsd-route-sales-b2b-wholesale-vending-voice-selection-faq.md) | [`.en.md`](fmcg-dsd-route-sales-b2b-wholesale-vending-voice-selection-faq.en.md) | 日均巡店 +28% 且 0% 违规搭赠 + 38s 下完 35项批发单 (99.6% 包规准确) + $0.015/通冰柜秒退 |
 
 ### 2.1 售前咨询、架构设计与竞对白皮书 (`docs/`)
 
