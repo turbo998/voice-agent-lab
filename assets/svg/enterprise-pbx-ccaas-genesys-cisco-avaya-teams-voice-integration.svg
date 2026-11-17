@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Enterprise PBX &amp; CCaaS Integration Guide: Genesys Cloud, Cisco UCCE, Avaya Aura, Amazon Connect &amp; Microsoft Teams Phone with Azure Voice Live">
+  <defs>
+    <linearGradient id="bgPbx" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="barPbx" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="cardPbx" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowPbx" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgPbx)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barPbx)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+    <text x="16" y="18" fill="#7dd3fc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      ENTERPRISE PBX &amp; CCaaS INTEGRATION · GENESYS · CISCO · AVAYA · TEAMS
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="23.5" font-weight="800">
+      企业存量呼叫中心对接指南：Genesys / Cisco / Avaya / Teams 接入选型
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      SIP Direct Routing 虚拟技能组 vs AudioHook/WebSocket 音频连接器 vs SIPREC 旁路分流 · 免收 CCaaS 双重按分钟过路费
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowPbx)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">存量交换机改造周期</text>
+    <text x="81" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">2~3 天 (零换机)</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">省去 CCaaS 流媒体税</text>
+    <text x="251" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">-$0.03 / 分钟</text>
+  </g>
+
+  <!-- Row 1: 3 Enterprise Telephony Integration Patterns -->
+  <g transform="translate(32, 114)" filter="url(#shadowPbx)">
+    <!-- Pattern A: SBC Front-Door SIP Direct Routing -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardPbx)" stroke="#10b981" stroke-width="2"/>
+    <rect x="14" y="14" width="212" height="22" rx="6" fill="#064e3b"/>
+    <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">模式 A · SBC 前置 SIP 分流 (最省钱 🏆)</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Front-Door SBC Direct Routing</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">适配：Cisco CUBE / Avaya / AudioCodes / Oracle</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构与成本优势：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 运营商来电进企业 SBC 后，先直通 Azure ACS / Voice Live</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 70% 由 AI 闭环的电话**根本不进下游 CCaaS 计费队列**！</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 仅 30% 需转人工电话通过 SIP REFER + UUI 送回原交换机</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+    <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">额外过路费: $0.00/min | 延迟: +5ms</text>
+
+    <!-- Pattern B: CCaaS Audio Connector / WebSocket Stream -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardPbx)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="212" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">模式 B · CCaaS 原生 WebSocket 连接器</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">AudioHook / Voice Stream API</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">适配：纯云端 Genesys Cloud / Amazon Connect</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心优势与隐藏税：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 无需配置底层 SIP 中继，在 Architect 画布拖入组件即通</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 天然继承 CCaaS 内部的排队状态与报表</text>
+      <text x="14" y="164" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11.2">❌ 隐藏过路税：CCaaS 常收 $0.02~$0.04/min 流媒体导出费</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+    <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">额外过路费: $200~$400/万分钟 | 延迟: +65ms</text>
+    </g>
+
+    <!-- Pattern C: Out-of-Band SIPREC Stereo Forking -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardPbx)" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="212" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">模式 C · 旁路 SIPREC 双声道镜像</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Out-of-Band SIPREC Forking</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">适配：人工坐席实时副驾 (Agent Assist) 与全量质检</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构优势：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 复用交换机现有的合规录音接口 (SIPREC RFC 7866)</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 左声道客户 + 右声道坐席物理分轨，对主通话 0ms 影响</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 坐席桌面通过轻量 Chrome 插件或内嵌 Iframe 弹提词卡</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+      <text x="22" y="210" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11" font-weight="700">主路延迟: +0.0ms | 适用: 100% 存量呼叫中心</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Avoiding the "CCaaS Double-Metering Tax" & Context Handoff Header -->
+  <g transform="translate(32, 372)" filter="url(#shadowPbx)">
+    <!-- Left Box: The CCaaS "Double-Metering Tax" Trap -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardPbx)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      💸 避开百万美元冤枉钱：警惕 CCaaS 厂商的“流媒体导出过路税”！
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      当月通话量达 200 万分钟时，“电话从哪一层分流给 AI”直接决定每年多花还是少花 60 万美元：
+    </text>
+
+    <rect x="20" y="64" width="535" height="86" rx="8" fill="#1f121b" stroke="#ef4444" stroke-width="1"/>
+    <text x="32" y="84" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ❌ 昂贵路径：电话先进公有云 CCaaS ➔ 再通过专有连接器导出音频给外部 AI
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 许多商业 CCaaS 对开启第三方实时音频流导出（BYO-Bot Streaming）按分钟收取 `$0.02 ~ $0.04/min` 附加费；
+    </text>
+    <text x="32" y="124" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 200 万分钟每月凭空多交 `$50,000/月 ($60万/年)` 的“纯管道过路费”，且增加了跨云 WebSocket 转发延迟！
+    </text>
+
+    <rect x="20" y="162" width="535" height="94" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="182" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ✅ 架构师推荐路径：企业边缘 SBC / BYOC Trunk 前置直连 Azure ACS + Voice Live
+    </text>
+    <text x="32" y="203" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 在企业自己的边缘 SBC（AudioCodes / Ribbon / Cisco CUBE）或 BYOC 云中继层先将呼入路由给 Azure；
+    </text>
+    <text x="32" y="222" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 70% 由 AI 解决的通话在 SBC 层直接挂机闭环，**0 分钟进入下游 CCaaS 计费漏斗**；
+    </text>
+    <text x="32" y="242" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 仅 30% 需人工接管的电话通过 SIP 内部中继送入 CCaaS 队列，每年直接为企业省下 $600,000 过路税！
+    </text>
+
+    <!-- Right Box: 5 Major PBX/CCaaS Quick Integration Recipe -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardPbx)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        🔌 五大主流企业交换机 / CCaaS 无缝对接速查表
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        无论客户现场是什么存量设备，均可按以下标准配方在 3 天内完成联调：
+      </text>
+
+      <rect x="20" y="64" width="501" height="36" rx="6" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+      <text x="30" y="86" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.2" font-weight="700">
+        1. Genesys Cloud CX ➔ <tspan fill="#7dd3fc">BYOC Cloud SIP Trunk (首线) + AudioHook (坐席副驾)</tspan>
+      </text>
+
+      <rect x="20" y="106" width="501" height="36" rx="6" fill="#0b2e27" stroke="#10b981" stroke-width="1"/>
+      <text x="30" y="128" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.2" font-weight="700">
+        2. Cisco UCCE / Webex Calling ➔ <tspan fill="#6ee7b7">Cisco CUBE SIP Direct Routing + SIPREC 分流</tspan>
+      </text>
+
+      <rect x="20" y="148" width="501" height="36" rx="6" fill="#181236" stroke="#a855f7" stroke-width="1"/>
+      <text x="30" y="170" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.2" font-weight="700">
+        3. Avaya Aura / Elite ➔ <tspan fill="#d8b4fe">Avaya SBCE SIP Trunk + AES CTI 弹屏 + DMCC/SIPREC</tspan>
+      </text>
+
+      <rect x="20" y="190" width="501" height="36" rx="6" fill="#2a1608" stroke="#f59e0b" stroke-width="1"/>
+      <text x="30" y="212" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.2" font-weight="700">
+        4. Amazon Connect ➔ <tspan fill="#fcd34d">前端 ACS/SBC 分流 + Connect Step-by-Step 嵌入副驾</tspan>
+      </text>
+
+      <rect x="20" y="232" width="501" height="32" rx="6" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+      <text x="30" y="252" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.2" font-weight="700">
+        5. Microsoft Teams Phone / D365 ➔ <tspan fill="#38bdf8">原生共享同一 ACS 租户底座，0 配置直通！</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
