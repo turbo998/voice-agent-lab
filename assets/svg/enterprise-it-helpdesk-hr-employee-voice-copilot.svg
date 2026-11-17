@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg26" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#111E38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="itGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="authGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="storeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg26)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Enterprise Internal IT Helpdesk, HR Hotline &amp; Store Ops Voice Copilot</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业内部 IT 服务台（BitLocker / MFA 语音解锁 / ServiceNow）、HR 员工热线与连锁门店运营语音助手架构全景图</text>
+  <rect x="926" y="42" width="226" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1039" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">ENT-HELPDESK-01 · 78% FCR</text>
+
+  <!-- Pillar 1: Why Locked-Out Employees Need Voice + Zero-Trust MFA Defense -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#itGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 破解“电脑锁死无法用 Chatbot”死循环</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="82" fill="#93C5FD" font-size="13" font-weight="700">为什么 48% 的 L1 IT 工单必须靠语音解决？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 电脑蓝屏 / BitLocker 锁死 / AD 密码过期 / 手机丢失</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 员工根本进不去 Teams/网页 Chatbot，只能打电话！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 防御“社会工程学骗取 IT 重置 MFA”攻击</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 黑客冒充员工打电话报工号生日骗取 MFA 重置权限</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 严禁仅凭口头问答（工号+生日）发放密码或 TAP！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">三重零信任核身 (SIM + FaceID / 直属主管联签)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 正常：Authenticator 数字匹配推送 / Verified ID 人脸</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 手机丢失换绑 MFA：自动触发直属主管 Teams 联签审批</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">周一早高峰 IT 热线排队从 18分钟 降至 0秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 免疫黑客冒充员工骗取密码的社会工程学攻击</text>
+  </g>
+
+  <!-- Pillar 2: Automated Intune / Entra / ServiceNow Self-Healing -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#authGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. Intune / Entra / ServiceNow 自动自愈</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">BitLocker 48位恢复密钥“双通道”秒发</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 调 Microsoft Graph 查出设备 48位恢复密钥</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 短信下发 8×6 分组卡片 + 语音按 6位一组步进领读</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">AD/Entra 账号解锁与 1小时临时通行证 (TAP)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 通话内实时调用 Graph API 解锁被锁定的域账号</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动签发单次有效 Temporary Access Pass 助员工登录</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">VPN / 虚拟桌面 (AVD/Citrix) 远程脚本自愈</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 语音引导员工排障，后台触发 Intune 远程重置网卡/会话</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动创建并关单 ServiceNow / Jira 工单，零人工介入</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">L1 内部 IT 语音工单一次解决率达 78.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单张 IT 工单处理成本从 $28.50 压降至 $1.40</text>
+  </g>
+
+  <!-- Pillar 3: HR Employee Hotline & Retail Store Manager Voice Ops -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#storeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. HR 员工热线与连锁门店店长语音助手</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="30" y="82" fill="#FDE68A" font-size="13" font-weight="700">连锁门店/商超无线耳麦免手运营 (Store Ops)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 店员边理货边问：“帮我查下 SKU 8821 后仓还有几件？”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 收银机死机语音一键远程重启 POS 服务 + 报修派单</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">HR 薪资假勤与急诊病假语音代填 (Workday)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 工厂蓝领/外勤司机发烧不便开电脑：一通电话请病假</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 自动核减 Workday 年假/病假额度并通知排班主管替班</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Teams Phone 原生集成与在职状态硬校验</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 实时校验 Entra `accountEnabled == true` 拦截离职人员</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 薪资社保隐私字段仅点对点播报或推送到个人企微/Teams</text>
+
+    <rect x="18" y="334" width="320" height="50" fill="#064E3B" stroke="#10B981" rx="8"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">门店与一线员工问题平均解决耗时缩短 84%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">覆盖无电脑办公桌的一线门店、仓库、司机与车间员工</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">企业内部零信任语音服务台黄金闭环（Zero-Trust Internal Helpdesk &amp; Store Ops Loop）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 员工来电 (Teams Phone / 手机) ➔ 2. Entra ナンバー匹配 / Verified ID 人脸 / 直属主管联签核身 ➔ 3. Graph API 自动解锁账号 / 下发 BitLocker 密钥</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 4. Intune 远程自愈脚本 / Workday 自动请假调班 / ERP 实时查库存 ➔ 5. ServiceNow / Jira 工单全自动记录与闭环归档</text>
+  </g>
+</svg>
