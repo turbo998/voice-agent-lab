@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Travel, Airline IRROPS Disruption &amp; Global Hotel PMS Multilingual Voice Concierge Architecture &amp; Selection Guide">
+  <defs>
+    <linearGradient id="bgTravel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="barTravel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="cardTravel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowTravel" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgTravel)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barTravel)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+    <text x="16" y="18" fill="#7dd3fc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      AIRLINE IRROPS DISRUPTION · HOTEL PMS CONCIERGE · TRAVEL PCI VOICE PAY
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="23.5" font-weight="800">
+      航旅大面积航延退改签与连锁酒店多语种礼宾：架构设计与选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      AIR-IRROPS-01 台风万路洪峰弹性溢出 · EU261/DOT 赔偿计算锁 · HOSP-PMS-01 跨房隐私防社工与房间挂账 PIN 锁
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowTravel)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">航延高峰自助改签分流</text>
+    <text x="81" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">86% (0秒接听)</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">跨房隐私泄露 / 越权赔偿</text>
+    <text x="251" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">0.0% (硬护栏锁)</text>
+  </g>
+
+  <!-- Row 1: 3 High-ROI Travel & Hospitality Scenarios -->
+  <g transform="translate(32, 114)" filter="url(#shadowTravel)">
+    <!-- Scenario 1: Airline IRROPS Surge Rebooking -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardTravel)" stroke="#38bdf8" stroke-width="2"/>
+    <rect x="14" y="14" width="212" height="22" rx="6" fill="#0c4a6e"/>
+    <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 A · 航司台风/暴雪大面积航延 🏆</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">AIR-IRROPS-01 万路洪峰改签</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：30架航班取消瞬间涌入 2万通电话排队 2小时</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• PTU 基座 + PAYGO 弹性溢出 (P07)：瞬时接起 5,000 路</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 联程航段保护锁：严禁只改前半段丢弃后半段国际联程</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 确定性赔偿引擎：EU261 / DOT 24h 规则代码计算防幻觉</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+    <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: ACS + Voice Live + 手机选座卡片</text>
+
+    <!-- Scenario 2: Global Hotel Multilingual Concierge -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardTravel)" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 B · 连锁酒店多语种总机/客房</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">HOSP-PMS-01 礼宾与客房服务</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：夜班前台不懂日/韩/阿语、社工刺探住客房间号</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 客房分机号 (Room Ext) 硬件绑定：802分机绝不可查805</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 付费挂账 PIN 码锁：点香槟/SPA 挂房账强制核对姓氏+PIN</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 直连 Opera PMS 与送物机器人：要毛巾/延迟退房 10秒闭环</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+      <text x="22" y="210" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: 60+语种自动识别 + Opera PMS 锁</text>
+    </g>
+
+    <!-- Scenario 3: Ticket & Hotel PCI Voice Payment -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardTravel)" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#064e3b"/>
+      <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 C · 机酒预订与 PCI 授信支付</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">PNR 拼读消歧 + 零接触收银</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：6位 PNR 字母 `B/D/P` 听错、口述信用卡号违例</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 北约航空字母复诵 (`Bravo-8-Delta`) 消除 6位 PNR 误识</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 补差价/押金担保：边缘 RFC 4733 按键直通 Adyen/Stripe</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 轮椅/无障碍旅客 (DOT ACAA P87) 0ms 升级专员保障</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+      <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: P16 北约复诵 + P11/P68 PCI SAQ-A</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Preventing Air Canada Chatbot Hallucination & Hotel Stalker Social Engineering -->
+  <g transform="translate(32, 372)" filter="url(#shadowTravel)">
+    <!-- Left Box: Preventing the Famous Airline Refund Policy Hallucination -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardTravel)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      ✈️ 航司血泪教训：如何彻底杜绝“AI 乱答应全额退票/越权赔偿”法律败诉？
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      某国际航司曾因 AI 客服自由编造“事后申请丧亲折扣退差价”被法院判赔，架构上必须实施“算播分离”：
+    </text>
+
+    <rect x="20" y="64" width="535" height="88" rx="8" fill="#1f121b" stroke="#ef4444" stroke-width="1"/>
+    <text x="32" y="84" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ❌ 错误做法：让大模型自己读 PDF 退改签政策并心算赔偿金额与差价
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 航司退改签涉及舱位代码 (Y/B/M/Q)、起飞前小时数、不可抗力天气豁免与联程航段耦合；
+    </text>
+    <text x="32" y="124" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 大模型心算极易把“台风天气免改签费但不赔现金”错说成“赔偿 600 欧元（EU261）”，引发群体索赔！
+    </text>
+
+    <rect x="20" y="164" width="535" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ✅ 架构师标准解法 (`AIR-IRROPS-01` + `P87`)：确定性规则引擎算数字，大模型只负责温情传达
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 赔偿金额、退票手续费与联程保护（严禁单拆前半段致后半段作废）100% 由后端 TypeScript/Java 规则函数算出；
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 凡涉及商务舱被降级经济舱（VIP Downgrade）或超额行李破损索赔，自动锁定上限并无缝热转接贵宾专员！
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 台风夜 5,000 路并发下：54% 基础流量走预留 PTU，突发洪峰自动溢出至 PAYGO，零排队崩溃！
+    </text>
+
+    <!-- Right Box: Hotel Room Privacy & Multilingual ROI -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardTravel)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        🏨 酒店安全铁律 (`HOSP-PMS-01`)：防跨房查人刺探与乱挂房账
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        高星级酒店最怕外部狗仔/诈骗犯打电话套取住客房间号，或小孩乱打客房电话点万元香槟：
+      </text>
+
+      <rect x="20" y="64" width="501" height="112" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+      <text x="32" y="85" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">
+        两大酒店礼宾硬核护栏 (Hospitality Security Guards)：
+      </text>
+      <text x="32" y="106" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        1. **分机物理绑定与外线零透露锁**：外线呼入询问“请问刘德华/王总住哪个房间？帮我转过去”，AI 严格保密房间号，仅在核实双要素后代转或留言；客房内线 802 分机严禁查询或修改 805 房间账单！
+      </text>
+      <text x="32" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        2. **免费送物 vs 付费挂账分级门禁**：送牙刷/矿泉水/加枕头直接派发机器人；点客房送餐/红酒挂房账 (`Folio Charge &gt; $0`) 强制核验住客登记姓氏 + 4位房账 PIN 码！
+      </text>
+      <text x="32" y="164" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        🌍 支持英/日/韩/阿/法/西 60+ 语种零按键自动识别，入境游外宾满意度提升 +34%！
+      </text>
+
+      <rect x="20" y="186" width="501" height="72" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="207" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        💰 连锁酒店集团 (200 家门店) 夜间总机与礼宾 TCO 对比：
+      </text>
+      <text x="32" y="227" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 每店配 2 名多语种夜班总机接线员：`$1,200,000 / 月`（且小语种根本招不到人）
+      </text>
+      <text x="32" y="245" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        • Azure Voice Live + Speech 集中式多语种AI礼宾台：仅 `$28,000 / 月`（立省 97%！）
+      </text>
+    </g>
+  </g>
+</svg>
