@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg34" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#121F3B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="isoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg34)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Short-Drama &amp; Film AI Dubbing, Isochrony Lip-Sync &amp; Multi-Role Audiobook</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">短剧/影视出海多语种 AI 译制配音（等时唇形对齐）、多角色有声书演播与企业播客（Podcast）平台选型全景图</text>
+  <rect x="916" y="42" width="236" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1034" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">MEDIA-DUB-01 · &lt;=45ms</text>
+
+  <!-- Pillar 1: Stem Separation & Isochronous Lip-Sync Translation -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#stemGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 伴奏轨无损剥离与等时音节对齐 (Isochrony)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 为什么普通机翻配音像“劣质译制片”？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 中文 6个字 (1.8s) 翻成西语变 16个音节 (3.4s)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 演员嘴早闭上了声音还在念，且把背景BGM/刀剑声全抹没了！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">Demucs / MDX-Net 人声与 BGM/音效无损分离</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 即使成片无独立伴奏轨 (M&amp;E)，也能剥离纯净对白轨</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 100% 保留原片雨声、爆炸声与情绪背景音乐 (SDR &gt;11dB)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">等时音节预算翻译 + 0.90x-1.12x 韵律对齐</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 翻译 Prompt 强约束目标语发音时长落在原句 ±8% 内</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 声码器微调语速，实现 &lt;=45ms 帧级嘴型起止点严丝合缝</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">100集出海短剧译制周期从 3周 缩至 4小时</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单部百集短剧多语种配音成本从 $12,000 降至 $180</text>
+  </g>
+
+  <!-- Pillar 2: Cross-Lingual Emotion Cloning & Visual Lip Re-Rendering -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#isoGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 跨语种哭笑怒情绪迁移与面部重绘</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">保留原演员音色与副语言情绪 (Paralinguistics)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 提取原片对白中的哭腔、冷笑、喘息与愤怒咆哮特征</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 零样本克隆演员本嗓说流利英语/西语/印尼语/阿语</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">四大主流平台与开源底座精准分工</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 企业级批量本地化：Azure AI Video Translation ($)</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 影视高张力情绪：ElevenLabs Studio / 自建 CosyVoice2</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">特写镜头视觉唇形重绘 (MuseTalk / Wav2Lip-HD)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 中远景靠等时音频对齐即可（省 90% GPU 渲染费）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 仅对正脸大特写镜头运行视觉嘴型重绘，逼真度拉满</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">海外 TikTok / ReelShort 完播率提升 48%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">支持 35+ 语种与本土俚语文化改写 (Transcreation)</text>
+  </g>
+
+  <!-- Pillar 3: Multi-Role Audiobook, AI Podcast & C2PA Rights Governance -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#bookGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 多角色广播剧有声书与 C2PA 版权水印</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#3B0764" stroke="#A855F7"/>
+    <text x="30" y="82" fill="#F3E8FF" font-size="13" font-weight="700">百万字网文自动拆分“旁白 + 20个角色音色”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• LLM 自动做引号台词说话人归属 (Speaker Attribution)</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 绑定角色音色库 + SSML 情緒标签，全自动合成多人广播剧</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#E9D5FF" font-size="13" font-weight="700">企业高管内刊 / 研报转双人黄金播客 (Podcast)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 输入 50页 PDF 财报或产品文档，生成双主持人对谈</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 含自然抢话、笑声、换气与通俗比喻，通勤收听率达 72%</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">SAG-AFTRA 演员声权合约与 C2PA 暗水印</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 强制校验配音演员口头授权书 (Consent Token)</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 嵌入不可听频域抗剪辑暗水印 + C2PA 溯源元数据</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">百万字有声书制作成本从 ¥8万 降至 ¥600</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合好莱坞演员工会与欧盟 AI 法案合成标识规范</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">工业级 AI 影视译制与多角色音频生产流水线（Industrial AI Dubbing &amp; Audio Production Pipeline）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 音轨分离：Demucs 剥离纯净人声与 BGM/音效轨 ➔ 2. 等时翻译：按原句毫秒时长预算生成本土化台词 (±8% 音节长度锁)</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 3. 情绪克隆：跨语种克隆原演员音色与哭笑情绪 + 特写镜头视觉唇形重绘 ➔ 4. 混音母带：叠加原片 BGM + 嵌入 C2PA 版权水印导出</text>
+  </g>
+</svg>
