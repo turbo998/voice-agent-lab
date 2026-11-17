@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Enterprise Voice Agent Orchestration Frameworks Selection Guide: LiveKit Agents vs Pipecat vs Azure ACS Call Automation vs Retell AI / Vapi">
+  <defs>
+    <linearGradient id="bgOrch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#06152d"/>
+    </linearGradient>
+    <linearGradient id="accentBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0078d4"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="cardPanel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgOrch)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#accentBar)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="520" height="28" rx="14" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+    <text x="16" y="18" fill="#7dd3fc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      ENTERPRISE VOICE AI ARCHITECTURE &amp; PLATFORM SELECTION GUIDE
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="24" font-weight="800">
+      实时语音编排框架选型：LiveKit vs Pipecat vs Azure ACS vs Retell / Vapi
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      开源自建编排 (LiveKit Agents / Pipecat) · 云原生通信底座 (ACS + Voice Live) · 全托管商业平台 (Retell / Vapi) 架构、延迟与每万分钟 TCO 账本
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(850, 22)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="154" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="77" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">同区域云原生首字延迟</text>
+    <text x="77" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">310 ~ 580ms</text>
+
+    <rect x="164" y="0" width="154" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="241" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">每万分钟 TCO 降幅</text>
+    <text x="241" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">-58% ~ -72%</text>
+  </g>
+
+  <!-- Row 1: 4 Platform Archetype Cards -->
+  <g transform="translate(32, 114)" filter="url(#dropShadow)">
+    <!-- Card 1: LiveKit Agents -->
+    <rect x="0" y="0" width="274" height="242" rx="12" fill="url(#cardPanel)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="14" y="14" width="152" height="22" rx="6" fill="#0c4a6e"/>
+    <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">流派 A1 · 开源 WebRTC 原生</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16" font-weight="800">LiveKit Agents (AKS/Cloud)</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">定位：房间级多模态 SFU + 生产级 Worker</text>
+    <line x1="14" y1="86" x2="260" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="106" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构优势：</text>
+    <text x="14" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• WebRTC SFU 全球低延迟抗弱网 (Opus RED)</text>
+    <text x="14" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 内置 Semantic EOU 判停模型与 SIP 网关</text>
+    <text x="14" y="163" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 天然支持多人会议同传、屏幕共享与数字人</text>
+    <text x="14" y="182" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11">⚠️ 自建需维护 Redis/K8s 有状态 Worker 缩容</text>
+    <rect x="14" y="195" width="246" height="34" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+    <text x="22" y="216" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">TTFA: 340~590ms | $420~$680/万分钟</text>
+
+    <!-- Card 2: Pipecat -->
+    <g transform="translate(287, 0)">
+      <rect x="0" y="0" width="274" height="242" rx="12" fill="url(#cardPanel)" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="156" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">流派 A2 · 开源 Python 帧管道</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16" font-weight="800">Pipecat + Pipecat Flows</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">定位：40+ AI 服务乐高式帧级流水线</text>
+      <line x1="14" y1="86" x2="260" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="106" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构优势：</text>
+      <text x="14" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• FrameProcessor 抽象极简，秒换 STT/TTS</text>
+      <text x="14" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• Smart Turn 语义判停 + Flows 状态机编排</text>
+      <text x="14" y="163" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 适合算法团队魔改自定义 VAD/RAG 处理器</text>
+      <text x="14" y="182" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11">⚠️ Python GIL 单进程并发受限，需容器池化</text>
+      <rect x="14" y="195" width="246" height="34" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+      <text x="22" y="216" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11" font-weight="700">TTFA: 380~640ms | $440~$710/万分钟</text>
+    </g>
+
+    <!-- Card 3: Azure ACS + Voice Live -->
+    <g transform="translate(574, 0)">
+      <rect x="0" y="0" width="286" height="242" rx="12" fill="url(#cardPanel)" stroke="#10b981" stroke-width="2"/>
+      <rect x="14" y="14" width="190" height="22" rx="6" fill="#064e3b"/>
+      <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">流派 B · 企业云原生底座 (推荐 🏆)</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16" font-weight="800">ACS Call Automation + Voice Live</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">定位：PSTN/SIP/WebRTC + S2S/级联同区闭环</text>
+      <line x1="14" y1="86" x2="272" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="106" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构优势：</text>
+      <text x="14" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 零跨云网络跳数，媒体流与大模型同区域内网</text>
+      <text x="14" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 原生支持 Direct Routing 对接 Cisco/Genesys</text>
+      <text x="14" y="163" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• VNet Private Link + 本地断网容器 + MACC 抵扣</text>
+      <text x="14" y="182" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11">🛡️ 金融/医疗/大型呼叫中心合规与 TCO 最优解</text>
+      <rect x="14" y="195" width="258" height="34" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+      <text x="22" y="216" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">TTFA: 310~550ms | $480~$620/万分钟</text>
+    </g>
+
+    <!-- Card 4: Retell AI / Vapi -->
+    <g transform="translate(873, 0)">
+      <rect x="0" y="0" width="263" height="242" rx="12" fill="url(#cardPanel)" stroke="#f59e0b" stroke-width="1.5"/>
+      <rect x="14" y="14" width="166" height="22" rx="6" fill="#78350f"/>
+      <text x="24" y="29" fill="#fcd34d" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">流派 C · 全托管商业平台</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16" font-weight="800">Retell AI / Vapi / Bland</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">定位：开箱即用电话封装 + 可视化节点流</text>
+      <line x1="14" y1="86" x2="249" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="106" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 适用边界与成本痛点：</text>
+      <text x="14" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 半天上线 MVP，内置海外号码池与 AMD</text>
+      <text x="14" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• Conversation Flow 画布降低初期提示词调优</text>
+      <text x="14" y="163" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">❌ 平台抽成 +0.05~$0.07/min，量产成本翻 3 倍</text>
+      <text x="14" y="182" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">❌ 跨云公网回调增加 180~320ms 延迟与合规风险</text>
+      <rect x="14" y="195" width="235" height="34" rx="8" fill="#2a1608" stroke="#d97706" stroke-width="1"/>
+      <text x="20" y="216" fill="#fcd34d" font-family="Consolas, monospace" font-size="10.8" font-weight="700">TTFA: 650~1,150ms | $1,350~$1,850/万</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Latency Hop Anatomy & Per-10k-Minute TCO Comparison -->
+  <g transform="translate(32, 372)" filter="url(#dropShadow)">
+    <!-- Left Box: Why Cross-Cloud Wrapper Adds Latency -->
+    <rect x="0" y="0" width="560" height="275" rx="12" fill="url(#cardPanel)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🔍 为什么全托管 SaaS 在跨国企业生产环境容易“变慢”？（网络跳数拆解）
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      当企业核心 CRM/知识库部署在亚太/欧洲私有云，而语音编排托管在北美公网 SaaS 时的往返开销：
+    </text>
+
+    <!-- Bad Path -->
+    <rect x="20" y="64" width="520" height="86" rx="8" fill="#1f121b" stroke="#ef4444" stroke-width="1"/>
+    <text x="32" y="84" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ❌ 跨云公网串联路径 (托管 SaaS + 外部 STT/TTS + 跨洲 Webhook 查库)：P50 = 820ms ~ 1,280ms
+    </text>
+    <text x="32" y="106" fill="#e2e8f0" font-family="Consolas, monospace" font-size="11">
+      [用户电话] ➔ (+90ms) [美西 SaaS 网关] ➔ (+45ms) [三方 STT] ➔ (+160ms) [回调亚太企业 CRM]
+    </text>
+    <text x="32" y="126" fill="#e2e8f0" font-family="Consolas, monospace" font-size="11">
+      ➔ (+380ms) [LLM 推理] ➔ (+65ms) [三方 TTS] ➔ (+90ms) [回传用户] = 累计公网跳数损耗 &gt;350ms
+    </text>
+
+    <!-- Good Path -->
+    <rect x="20" y="162" width="520" height="94" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="182" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ✅ 同区域云原生闭环路径 (ACS / AKS LiveKit + Azure Voice Live + VNet AI Search)：P50 = 310ms ~ 540ms
+    </text>
+    <text x="32" y="204" fill="#e2e8f0" font-family="Consolas, monospace" font-size="11">
+      [用户电话/App] ➔ (&lt;25ms) [就近区域边缘 ACS / LiveKit SFU] ➔ (&lt;2ms 同可用区光纤) [Voice Live API]
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Consolas, monospace" font-size="11">
+      ➔ (&lt;8ms VNet Private Link) [企业内网 RAG/ERP] = 零公网绕行，支持快/稳双轨秒级热切换
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 架构师铁律：媒体锚点 (Media Anchor)、语音编排器与大模型/知识库必须物理同区域 (Co-located) 部署！
+    </text>
+
+    <!-- Right Box: Per-10k-Minute TCO & Selection Matrix -->
+    <g transform="translate(580, 0)">
+      <rect x="0" y="0" width="556" height="275" rx="12" fill="url(#cardPanel)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        📊 每 10,000 分钟（1万分钟）生产通话成本拆解与选型速查
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        按企业月均 50 万分钟呼叫中心规模折算每万分钟直接账单（含通信接入 + 编排平台 + 语音/大模型算力）：
+      </text>
+
+      <!-- Bar 1 -->
+      <text x="20" y="82" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">1. 全托管商业平台 (Retell / Vapi)</text>
+      <rect x="235" y="68" width="220" height="20" rx="4" fill="#ef4444"/>
+      <text x="463" y="83" fill="#fca5a5" font-family="Consolas, monospace" font-size="12" font-weight="700">$1,450 / 万分钟</text>
+
+      <!-- Bar 2 -->
+      <text x="20" y="114" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">2. Twilio Voice + 外部三方串联</text>
+      <rect x="235" y="100" width="168" height="20" rx="4" fill="#f59e0b"/>
+      <text x="411" y="115" fill="#fcd34d" font-family="Consolas, monospace" font-size="12" font-weight="700">$1,120 / 万分钟</text>
+
+      <!-- Bar 3 -->
+      <text x="20" y="146" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">3. AKS 自建 Pipecat + 云 API</text>
+      <rect x="235" y="132" width="92" height="20" rx="4" fill="#a855f7"/>
+      <text x="335" y="147" fill="#e9d5ff" font-family="Consolas, monospace" font-size="12" font-weight="700">$610 / 万分钟</text>
+
+      <!-- Bar 4 -->
+      <text x="20" y="178" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">4. AKS 自建 LiveKit Agents + 云 API</text>
+      <rect x="235" y="164" width="84" height="20" rx="4" fill="#38bdf8"/>
+      <text x="327" y="179" fill="#7dd3fc" font-family="Consolas, monospace" font-size="12" font-weight="700">$560 / 万分钟</text>
+
+      <!-- Bar 5 -->
+      <text x="20" y="210" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">5. ACS + Azure Voice Live 双轨 🏆</text>
+      <rect x="235" y="196" width="74" height="20" rx="4" fill="#10b981"/>
+      <text x="317" y="211" fill="#34d399" font-family="Consolas, monospace" font-size="12" font-weight="700">$485 / 万分钟 (直抵 MACC)</text>
+
+      <rect x="20" y="226" width="516" height="34" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="30" y="247" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11">
+        📌 结论：月通话 &lt;2万分钟选 Retell/Vapi 快速验证；Web/App 多模态选 LiveKit；企业电话客服与合规选 ACS+Voice Live
+      </text>
+    </g>
+  </g>
+</svg>
