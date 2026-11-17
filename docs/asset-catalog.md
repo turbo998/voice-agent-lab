@@ -24,7 +24,7 @@
 
 ## 2. 本仓库 (`turbo998/voice-agent-lab`) 核心技术资产清单
 
-### 2.0 企业实时语音与多模态应用场景、端到端架构与平台选型指南矩阵（46 篇旗舰双语单专题 FAQ · [2026-11-18 全景简报](daily/2026-11-18.md)）
+### 2.0 企业实时语音与多模态应用场景、端到端架构与平台选型指南矩阵（47 篇旗舰双语单专题 FAQ · [2026-11-18 全景简报](daily/2026-11-18.md)）
 
 | 分类与编号 | 专题名称 | 中文指南 (`中文`) | 英文指南 (`English`) | 核心选型结论与量化收益 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -74,6 +74,7 @@
 | **行业场景 44** | **对公银行财资四眼原则 (`P43`)、防 CEO 电诈与交易台切口 (`P60`/`P35`)** | [`corporate-banking-treasury-...-faq.md`](corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.md) | [`.en.md`](corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.en.md) | 异机硬件私钥四眼联签 + 交易员 Yard/Mine 切口 98.9% 准确率 + Pre-LLM 反洗钱零通风报信 |
 | **行业场景 45** | **K12 苏格拉底启发式语音家教、高校 `P117` FERPA 与 `P14` 无障碍** | [`education-socratic-voice-tutor-...-faq.md`](education-socratic-voice-tutor-campus-ferpa-accessibility-selection-faq.md) | [`.en.md`](education-socratic-voice-tutor-campus-ferpa-accessibility-selection-faq.en.md) | 隐藏黑板 + SymPy 零泄题零幻觉 + 同类题正确率升至 83% + 口吃 3.2s 耐心窗与 FERPA 隐私锁 |
 | **行业场景 46** | **电信运营商万户断网 12秒拦截、光猫看灯 (`TR-069`) 与防 SIM-Swap (`P97`)** | [`telecom-isp-broadband-...-faq.md`](telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.md) | [`.en.md`](telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.en.md) | 群障 91.5% 送流量 12秒挂机 + 80KB 看灯省 64.2% 装维白跑 + 100% 阻断 eSIM 劫持与详单泄露 |
+| **行业场景 47** | **寿险重疾智能核保回访 (`P88`)、养老金生存认证 (`S08`) 与巨灾查勘定损 Copilot** | [`insurance-underwriting-pension-...-faq.md`](insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.md) | [`.en.md`](insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.en.md) | 既往症披露率提升 3.1x 且 0% 越权豁免 + 99.7% 拦截养老金录音冒领 + 45s 生成 Xactimate 定损单 |
 
 ### 2.1 售前咨询、架构设计与竞对白皮书 (`docs/`)
 

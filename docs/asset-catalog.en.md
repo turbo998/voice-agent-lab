@@ -22,7 +22,7 @@
 
 ## 2. Bilingual Documentation Pairings (`main` Branch)
 
-### 2.0 Enterprise Real-Time Voice & Multimodal Application, Architecture & Platform Selection Matrix (46 Flagship Bilingual Guides · [2026-11-18 Panorama Digest](./daily/2026-11-18.en.md))
+### 2.0 Enterprise Real-Time Voice & Multimodal Application, Architecture & Platform Selection Matrix (47 Flagship Bilingual Guides · [2026-11-18 Panorama Digest](./daily/2026-11-18.en.md))
 
 | Category & ID | Guide Topic | English Guide (`English`) | Chinese Guide (`中文`) | Key Architectural Verdict & ROI |
 | :--- | :--- | :--- | :--- | :--- |
@@ -72,6 +72,7 @@
 | **Scenario 44** | **Corporate Treasury Maker-Checker (`P43`), Anti-CEO Deepfake & Trading Turret (`P60`/`P35`)** | [`corporate-banking-treasury-...-faq.en.md`](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.en.md) | [`.md`](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.md) | Out-of-band hardware HSM co-sign + 98.9% dealer slang FIX blotter + pre-LLM AML anti-tipping-off |
 | **Scenario 45** | **Socratic AI Voice Tutor (`Anti-Spoiler`), Campus `FERPA` (`P117`) & Accessibility (`P14`)** | [`education-socratic-voice-tutor-...-faq.en.md`](./education-socratic-voice-tutor-campus-ferpa-accessibility-selection-faq.en.md) | [`.md`](./education-socratic-voice-tutor-campus-ferpa-accessibility-selection-faq.md) | Hidden-blackboard `SymPy` truth lock (`0%` spoilers) + +44.6 pts mastery lift + `P117` FERPA & `P14` stutter window |
 | **Scenario 46** | **Telecom ISP Outage Deflection, `ONT` LED Vision (`TR-069`) & Anti-SIM-Swap (`P97`)** | [`telecom-isp-broadband-...-faq.en.md`](./telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.en.md) | [`.md`](./telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.md) | 91.5% 12s storm deflection + -64.2% avoidable truck rolls + 100% SIM-Swap & verbal CDR block |
+| **Scenario 47** | **Insurance Tele-Underwriting (`P88`), Pension Proof-of-Life (`S08`) & Catastrophe Claims Copilot** | [`insurance-underwriting-pension-...-faq.en.md`](./insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.en.md) | [`.md`](./insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.md) | 3.1x pre-existing disclosure lift & 0% estoppel waivers + 99.7% replay fraud block + 45s `Xactimate` scope |
 
 ### 2.1 Core Whitepapers & Playbooks (`docs/`)
 
