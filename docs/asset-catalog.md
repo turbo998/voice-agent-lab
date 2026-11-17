@@ -73,6 +73,7 @@
 | **行业场景 43** | **超充场站锁枪 15秒自愈 (OCPP 2.0.1)、虚拟电厂 (VPP) 与光储安全** | [`energy-virtual-power-plant-...-faq.md`](energy-virtual-power-plant-ev-charging-station-voice-selection-faq.md) | [`.en.md`](energy-virtual-power-plant-ev-charging-station-voice-selection-faq.en.md) | 零电流防拉弧锁 + 充电故障 82.4% 远程自愈 + VPP 削峰邀约响应率从 18% 跃升至 79.4% |
 | **行业场景 44** | **对公银行财资四眼原则 (`P43`)、防 CEO 电诈与交易台切口 (`P60`/`P35`)** | [`corporate-banking-treasury-...-faq.md`](corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.md) | [`.en.md`](corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.en.md) | 异机硬件私钥四眼联签 + 交易员 Yard/Mine 切口 98.9% 准确率 + Pre-LLM 反洗钱零通风报信 |
 | **行业场景 45** | **K12 苏格拉底启发式语音家教、高校 `P117` FERPA 与 `P14` 无障碍** | [`education-socratic-voice-tutor-...-faq.md`](education-socratic-voice-tutor-campus-ferpa-accessibility-selection-faq.md) | [`.en.md`](education-socratic-voice-tutor-campus-ferpa-accessibility-selection-faq.en.md) | 隐藏黑板 + SymPy 零泄题零幻觉 + 同类题正确率升至 83% + 口吃 3.2s 耐心窗与 FERPA 隐私锁 |
+| **行业场景 46** | **电信运营商万户断网 12秒拦截、光猫看灯 (`TR-069`) 与防 SIM-Swap (`P97`)** | [`telecom-isp-broadband-...-faq.md`](telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.md) | [`.en.md`](telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.en.md) | 群障 91.5% 送流量 12秒挂机 + 80KB 看灯省 64.2% 装维白跑 + 100% 阻断 eSIM 劫持与详单泄露 |
 
 ### 2.1 售前咨询、架构设计与竞对白皮书 (`docs/`)
 

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg47" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#111F38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="ponGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="ontGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="simGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg47)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Telecom ISP Fiber-Outage Deflection, ONT LED Vision &amp; Anti-SIM-Swap (P97)</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">电信运营商与宽带 ISP：万户断网风暴 12秒拦截、光猫指示灯（LOS/PON）多模态看图自愈与防 SIM-Swap 劫持全景图</text>
+  <rect x="906" y="42" width="246" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1029" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">TELCO-ISP-01 · P97 CPNI</text>
+
+  <!-- Pillar 1: 15,000-Home Fiber-Cut Outage Storm 12s Deflection -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ponGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 挖掘机挖断光缆：万户呼入 12秒风暴拦截</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="82" fill="#93C5FD" font-size="13" font-weight="700">振铃期 0秒绑定 OLT / PON 口群障拓扑</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 市政施工挖断主干光缆，15,000 户家庭宽带同时断网</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 来电第 0ms 通过宽带账号匹配局端 OLT 群障告警单</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">首句主动报出小区抢修进度 + 免费赠送应急流量包</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• “查到您所在的阳光花园片区因市政施工光缆受损正在熔接，</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 预计 19:30 恢复；已向您手机免费下发 20GB 5G 应急热点流量！”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">彻底避免“明知外线断了还让用户重启光猫”</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 传统傻瓜机器人不分青红皂白让群障用户拔电源重启</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 精准拦截 91.5% 群障电话，并自动订阅恢复短信通知</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">断网洪峰 91.5% 通话在 12秒内满意挂机</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">人工坐席零排队爆仓 · 应急流量补贴使工信部申诉降 74%</text>
+  </g>
+
+  <!-- Pillar 2: 80KB Optical Modem (ONT) LED Vision + TR-069 Self-Healing -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ontGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 光猫指示灯 (LOS/PON) 看图与 TR-069 自愈</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">老人分不清“光信号(LOS)闪红灯”与“WiFi灯灭”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 用户只会说“家里上不了网，盒子上有个灯在一闪一闪”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 引导打开视频/拍一张 80KB 光猫面板图秒判物理根因！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">视觉 + 局端光功率 (-27dBm) 双模态确诊</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 情况 A：LOS 红灯快闪 + 局端收无光 ➔ 尾纤折断，直接派装维师</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 情况 B：PON 绿灯常亮但连不上网 ➔ TR-069 远程软重启下发配置</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Wi-Fi 信道拥塞一键自动调优 (TR-181 / USP)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 识别晚高峰 2.4GHz 邻居家路由器同频干扰</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 语音通话内远程切换至 5GHz 空闲信道并测速达标</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">减少 64.2% 装维师傅“上门只为按一下重启键”白跑</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单次宽带故障解决时长从 4.5小时 缩至 55秒</text>
+  </g>
+
+  <!-- Pillar 3: P97 FCC CPNI & Anti-SIM-Swap / eSIM Port-Out Fraud Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F97316" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#simGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 防 eSIM 补换卡劫持与通话详单锁 (P97)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严防黑客社工客服“补办 eSIM 盗空加密货币/网银”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 黑客报出受害者身份证号，要求将号码转移到新手机 eSIM</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或吃醋配偶打电话套取对方上月通话详单 (违反 FCC CPNI！)</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#FDBA74" font-size="13" font-weight="700">P97 原物理 SIM 卡在网活体挑战 + 活体人脸双锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 申请换绑 eSIM / 携号转网码 (Port-Out PIN) 时：</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 强制向原物理 SIM 卡发高危阻断弹窗 + 公安库活体人脸核验</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">CPNI 通话详单 (CDR) 零口头播报红线</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 绝不在语音通道口头念出任何主被叫号码与基站位置！</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 仅支持本人服务密码+人脸过检后下发加密账单至官方 App</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">100% 拦截 SIM-Swap 盗号与 CPNI 详单泄露</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">符合 FCC 47 CFR §64.2010 与工信部电话实名制要求</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">电信运营商 10086/10000/ISP 全栈语音自愈与防劫持闭环（Telecom &amp; ISP Voice Operations Loop）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 振铃预判：0ms 比对局端 OLT 群障拓扑，群障用户 12秒主动播报抢修进度并赠 20GB 应急流量</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 2. 单户排障：80KB 看光猫 LOS/PON 灯 + TR-069 远程重启改信道 ➔ 3. 账户安全 (P97)：拦截 eSIM 盗补卡与通话详单刺探</text>
+  </g>
+</svg>
