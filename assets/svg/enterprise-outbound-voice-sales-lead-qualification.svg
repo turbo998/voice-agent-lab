@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg22" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A"/>
+      <stop offset="50%" stop-color="#131E3A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="pickupGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="closerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg22)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Enterprise Outbound Voice Sales, B2B AI SDR &amp; Branded Calling Architecture</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业智能外呼营销、B2B 线索孵化（AI SDR / 续保回访 / 沉睡会员激活）与高接通率合规架构全景图</text>
+  <rect x="942" y="42" width="210" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1047" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">OUT-SDR-01 · &lt;=240ms</text>
+
+  <!-- Pillar 1: Omnichannel Warm-Up & STIR/SHAKEN Branded Calling -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#brandGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 全渠道预热与企业名片认证 (防拦截)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="82" fill="#93C5FD" font-size="13" font-weight="700">Speed-to-Lead 90秒黄金外呼触发</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户留资/下载白皮书/算保费后 90秒内自动呼出</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 转化率比 24小时后人工回访高出 4.8 倍！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">拨前 2分钟 短信/企微/WhatsApp 预热</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 提前告知来电号码与专属顾问事由，消除陌生感</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 配合 STIR/SHAKEN Level-A 签名与企业挂机名片</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#FBBF24" font-size="13" font-weight="700">号码池健康度轮询与合规频控门禁</text>
+    <text x="30" y="290" fill="#E2E8F0" font-size="12">• 单 DID 日呼上限阈值保护 + 运营商标记实时监测</text>
+    <text x="30" y="308" fill="#94A3B8" font-size="12">• DNC 黑名单 / 属地静默期 / 每日最多 2 次硬锁</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">外呼有效接通率从 11.2% 飙升至 46.8%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">运营商骚扰标记率压降至 &lt; 0.4%</text>
+  </g>
+
+  <!-- Pillar 2: Zero-Pause Greeting (<=240ms) & Parallel AMD -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pickupGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 零停顿首句破冰 (&lt;=240ms) 与并行 AMD</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 消灭外呼头号杀手：“接听后 1.8秒死寂”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户说“喂？”后若等待 1.8s 才出声，64% 秒挂机！</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 原因：传统架构接通后才临时跑 STT+LLM+TTS</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#A7F3D0" font-size="13" font-weight="700">振铃期首句个性化 PCM 预渲染缓存</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 拨号振铃时已将“张总您好，刚看您下载了...”合成入内存</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 客户“喂”声落音 240ms 瞬时接话，3秒挂机率降至 11%</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">并行双流 AMD (真假人声/语音信箱秒判)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 连续独白 &gt;850ms 自动判定为彩铃/秘书台并静默挂起</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 捕获 1kHz 哔声后精准投递 18秒高转化语音留言</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">接听首句响应 &lt;= 240ms · 宛如真人金牌顾问</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">开场前 5 秒留存率从 36% 提升至 88.8%</text>
+  </g>
+
+  <!-- Pillar 3: BANT Qualification, Whisper Transfer & Calendar Close -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#closerGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. BANT 实时孵化与 1.5s 金牌销售热转接</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="82" fill="#E9D5FF" font-size="13" font-weight="700">动态 BANT / MEDDIC 意向评分状态机</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 自然对话摸底预算(B)、决策权(A)、痛点(N)、周期(T)</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 实时异议化解（价格贵/在用竞品/没时间）</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#3B0764" stroke="#A855F7"/>
+    <text x="30" y="174" fill="#F3E8FF" font-size="13" font-weight="700">高意向线索 (&gt;=75分)：1.5s Whisper 暖转</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 当场桥接在线真人销售专家（AE），无需挂机重拨</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 接通前向真人销售播报 3秒 AI 耳语摘要 + CRM 弹屏</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">中意向/忙线：通话内日历锁号 + 资料秒发</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 语音实时查询 AE 空闲日历，当场写入 Teams/飞书会议</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 挂机 1秒内推送定制报价单与专属客户经理企微名片</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">单个合格商机 (SQL) 获取成本降低 68%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">真人销售只接高意向热线索 · 彻底告别无效冷呼</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">企业高转化智能外呼黄金闭环（High-Converting Outbound Voice Revenue Loop）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 留资 90s 极速触发 + 短信预热 ➔ 2. STIR/SHAKEN 企业名片振铃 + 首句 PCM 预渲染 ➔ 3. 客户“喂”后 &lt;=240ms 零停顿破冰 + 并行 AMD</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 4. Voice Live 自然对话 BANT 摸底与异议处理 ➔ 5. 高意向 (&gt;=75分) 1.5s 耳语热转真人专家 / 中意向当场锁定 Teams 日历邀约</text>
+  </g>
+</svg>
