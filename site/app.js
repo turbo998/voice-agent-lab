@@ -2055,6 +2055,13 @@ async function handleSizeExchangeMcp(orderId, newSize, session) {
 const RESOURCES_DATA = {
   "zh-CN": [
     {
+      badge: "39 Flagship Selection FAQs",
+      title: "39 篇企业实时语音与多模态应用场景、架构设计与平台选型全景指南",
+      desc: "覆盖联络中心 Copilot、销售陪练、多语种同传、数字人导购、车载座舱、医疗问诊、银行双录、餐饮得来速、航延改签、政务12345、跨境物流、工业巡检、游戏NPC、智能外呼、IT服务台、理财陪访、矿山卫星、智慧物业、AI面试官、车企eCall、司法庭审、影视译制、智慧养老、智慧农业、文旅博物馆、仓储拣选与机坪调度，以及 LiveKit/Pipecat/ACS、STT/TTS、S2S 大模型、PBX集成、Voice RAG、FinOps PTU 与可观测性选型。",
+      btnText: "浏览 39 篇中英双语选型矩阵 ↗",
+      url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
+    },
+    {
       badge: "Flagship Case Study",
       title: "智能硬件出海 6 语种 AI 语音客服深度案例研究",
       desc: "涵盖 25万→75万只智能戒指业务痛点转化、Voice Live 四模式、两阶段幂等写入、MS-Decision-1 路由评测、$0.08/分钟成本拆解与 Azure/GCP 对标。",
@@ -2099,6 +2106,13 @@ const RESOURCES_DATA = {
   ],
   "zh-TW": [
     {
+      badge: "39 Flagship Selection FAQs",
+      title: "39 篇企業即時語音與多模態應用場景、架構設計與平台選型全景指南",
+      desc: "涵蓋聯絡中心 Copilot、銷售陪練、多語種同傳、數字人導購、車載座艙、醫療問診、銀行雙錄、餐飲得來速、航延改簽、政務12345、跨境物流、工業巡檢、遊戲NPC、智能外呼、IT服務台、理財陪訪、礦山衛星、智慧物業、AI面試官、車企eCall、司法庭審、影視譯製、智慧養老、智慧農業、文旅博物館、倉儲揀選與機坪調度，以及 LiveKit/Pipecat/ACS、STT/TTS、S2S 大模型、PBX集成、Voice RAG、FinOps PTU 與可觀測性選型。",
+      btnText: "瀏覽 39 篇中英雙語選型矩陣 ↗",
+      url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
+    },
+    {
       badge: "Flagship Case Study",
       title: "智能硬體出海 6 語種 AI 語音客服深度案例研究",
       desc: "涵蓋 25萬→75萬隻智能戒指業務痛點轉化、Voice Live 四模式、兩階段冪等寫入、MS-Decision-1 路由評測、$0.08/分鐘成本拆解與 Azure/GCP 對標。",
@@ -2142,6 +2156,13 @@ const RESOURCES_DATA = {
     }
   ],
   en: [
+    {
+      badge: "39 Flagship Selection FAQs",
+      title: "39 Enterprise Real-Time Voice & Multimodal Application, Architecture & Platform Selection Guides",
+      desc: "Comprehensive Cloud & AI Solution Architect decision guides covering Contact Center Copilot, Sales Roleplay, Simultaneous Interpretation, Livestream Avatars, In-Cabin Voice, Healthcare Scribe, Wealth Dual-Recording, QSR Drive-Thru, Airline IRROPS, 311/12345 Hotlines, Logistics, Field Service, Gaming NPCs, Outbound AI SDR, Internal IT Helpdesk, Field Advisors, Satellite/Mining Edge, Elevator SOS, AI Voice Interviewers, Auto NG-eCall, Legal Intake, Film Dubbing, Elderly Fall Guardians, Smart Agriculture, Museum UWB Docents, Warehouse Voice Picking & Airport A-CDM, plus LiveKit/Pipecat/ACS, STT/TTS, S2S Models, PBX, Voice RAG, FinOps PTU & Observability.",
+      btnText: "Browse 39 Bilingual Selection FAQs ↗",
+      url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.en.md"
+    },
     {
       badge: "Flagship Case Study",
       title: "Smart-Ring Go-Global 6-Language AI Voice CS Case Study",
