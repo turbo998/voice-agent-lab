@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Enterprise Voice Agent Slow Backend ERP/CRM Integration, 3-Tier Zero-Dead-Air Pacing &amp; Voice-to-Mobile Card Synergy Guide">
+  <defs>
+    <linearGradient id="bgErp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="barErp" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="cardErp" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowErp" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgErp)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barErp)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+    <text x="16" y="18" fill="#7dd3fc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      SLOW ERP / CRM / GDS INTEGRATION &amp; DUAL-CHANNEL VOICE+CARD SYNERGY
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="23.5" font-weight="800">
+      实时语音对接慢速业务系统 (ERP/CRM/HIS)：零死寂安抚话术与跨端卡片指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      三级零死寂节奏机 (“请稍等我帮您查一下”) · “喂喂”催促防误撤单 · 语音+短信/小程序卡片联动 · 两阶段预占提交
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowErp)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">慢接口电话死寂冷场率</text>
+    <text x="81" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">64% ➔ &lt;0.5%</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">重复扣款/脏写事故率</text>
+    <text x="251" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">0.0% (两阶段锁)</text>
+  </g>
+
+  <!-- Row 1: 3-Tier Zero-Dead-Air Pacing Timeline -->
+  <g transform="translate(32, 114)" filter="url(#shadowErp)">
+    <!-- Tier 1: 300ms ~ 2,200ms Contextual Preamble Filler -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardErp)" stroke="#10b981" stroke-width="2"/>
+    <rect x="14" y="14" width="206" height="22" rx="6" fill="#064e3b"/>
+    <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">第 1 级 (300ms~2.2s) · 语境安抚话术 🏆</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Contextual Preamble Filler</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">针对耗时 1~2 秒的常规 CRM / 订单查询接口</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心运作机制：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 调接口满 300ms 未返回，立即开口说定制安抚话术：</text>
+    <text x="14" y="145" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11.2">  “好的，正在帮您核实尾号 8821 的顺丰物流轨迹…”</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 安抚话术自然播完约需 1.6s，恰好无缝接上返回数据！</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+    <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">铁律: 安抚话术严禁提前编造未返回的金额/状态</text>
+
+    <!-- Tier 2: 2,200ms ~ 6,500ms Earcon + Progress Heartbeat -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardErp)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="212" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">第 2 级 (2.2s~6.5s) · 轻柔音效 + 进度播报</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Keyboard Earcon + Progress Beat</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">针对耗时 3~6 秒的航司 GDS / 银行核心老主机</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心运作机制：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 垫底播放 -24dBFS 轻柔键盘敲击声/水滴等待音效</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 满 3.5 秒插播进度：“正在为您同步跨航司余票，马上好”</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 识别客户“喂？在吗？”催促词：仅安抚，绝不取消在途查询！</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">痛点根除: 杜绝客户喊“喂”导致在途 API 被掐断重发</text>
+    </g>
+
+    <!-- Tier 3: >6,500ms Async Queue + SMS/Mini-Program Push -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardErp)" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="212" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">第 3 级 (&gt;6.5s) · 异步挂起 + 短信卡片通知</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">Async Callback &amp; Dual-Channel Push</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">针对超慢批处理接口、退货地址下发与支付链接</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心运作机制：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 超过 6.5s 自动转后台异步队列，不让客户在电话里干等</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 话术：“出票系统正在最终确认，1分钟内发短信到您手机”</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 长地址/多航班对比表同步推送到短信/微信小程序卡片</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+      <text x="22" y="210" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11" font-weight="700">体验跃升: 节省 45秒干等计费 + 客户无需找纸笔抄写</text>
+    </g>
+  </g>
+
+  <!-- Row 2: The "Hello?" False-Cancel Trap & Two-Phase Saga Commit -->
+  <g transform="translate(32, 372)" filter="url(#shadowErp)">
+    <!-- Left Box: Solving the "Are You Still There?" Tool Cancellation Loop -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardErp)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🔍 经典生产事故解密：为什么客户问一句“喂？还在吗？”会导致后台死循环或双倍扣款？
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      当 ERP 接口需要 3.5 秒，而开发者把所有用户声音都粗暴绑定为“取消上一轮工具调用”时的灾难链条：
+    </text>
+
+    <rect x="20" y="64" width="535" height="86" rx="8" fill="#1f121b" stroke="#ef4444" stroke-width="1"/>
+    <text x="32" y="84" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ❌ 错误架构：把客户的“催促确认词 (Status Probe)”当成“改主意打断 (Intent Change)”
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • t=0s 发起退票 API (需 3.5s) ➔ 电话静音 2.5s ➔ 客户焦虑喊：“喂？查到了吗？”
+    </text>
+    <text x="32" y="124" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 粗暴 Barge-in 把正在跑第 2.5s 的 API 强行 Abort 并重新发起第 2 次请求，陷入永远查不完的死循环！
+    </text>
+
+    <rect x="20" y="162" width="535" height="94" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="182" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ✅ 架构师标准解法：区分“催促安抚 (Keep-Alive)”与“意图变更 (Cancel)” + 幂等键锁
+    </text>
+    <text x="32" y="203" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 当后台有在途工具 (`InFlightTool`) 时，若客户说“喂/在吗/好慢”，状态机保持原 `InFlightTool` 继续运行，
+    </text>
+    <text x="32" y="222" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 仅由前台语音立刻安抚：“在的王先生，系统正在出结果请稍候”；
+    </text>
+    <text x="32" y="242" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 只有当客户明确说出否定/改签词（“算了别退了/改成明天”），才递增 `turnEpoch` 触发 Saga 补偿撤销！
+    </text>
+
+    <!-- Right Box: Two-Phase Prepare-then-Commit & Voice+SMS Synergy -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardErp)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        🔒 两阶段事务锁 (Prepare-then-Commit) 与“耳听+眼看”跨端协同
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        严禁让大模型一个工具函数直接扣款改库！所有企业写操作拆解为“预占草稿 + 复诵提交”两步：
+      </text>
+
+      <rect x="20" y="64" width="501" height="112" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+      <text x="32" y="85" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">
+        1. 两阶段写操作安全范式 (Two-Phase Voice Transaction)：
+      </text>
+      <text x="32" y="106" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • 第一步 `stage_order_change()`：仅在 ERP 生成带 5 分钟有效期的锁定草稿 (`DraftId`) 并算出差价；
+      </text>
+      <text x="32" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • 第二步 向客户口头播报或推送小程序卡片确认：“改签至明早 8 点需补差价 120 元，确认办理吗？”；
+      </text>
+      <text x="32" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • 第三步 `commit_order_change(DraftId, IdempotencyKey)`：客户明确确认或点击卡片后才真正扣款落库！
+      </text>
+      <text x="32" y="163" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        🛡️ 即使客户在第二步中途挂断电话，草稿 5 分钟自动释放，数据库 0 脏写、0 客诉赔偿！
+      </text>
+
+      <rect x="20" y="186" width="501" height="72" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="207" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        📲 什么时候必须启动“语音 + 短信/小程序卡片”双通道？
+      </text>
+      <text x="32" y="227" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 退货寄件长地址与收件人电话 · 3 个以上航班/门店对比选择 · 支付收银台链接 · 复杂理赔材料清单
+      </text>
+      <text x="32" y="245" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        💡 效果：单通电话时长缩短 38%（省话费与 Token），客户信息抄写错误率从 29% 降至 0%！
+      </text>
+    </g>
+  </g>
+</svg>
