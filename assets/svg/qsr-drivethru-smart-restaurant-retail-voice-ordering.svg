@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="QSR Drive-Thru, Smart Coffee/Tea &amp; Omnichannel Retail Voice Ordering Architecture &amp; Selection Guide">
+  <defs>
+    <linearGradient id="bgQsr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="barQsr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="cardQsr" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowQsr" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgQsr)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barQsr)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#451a03" stroke="#f59e0b" stroke-width="1"/>
+    <text x="16" y="18" fill="#fcd34d" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      QSR DRIVE-THRU · COFFEE &amp; TEA CHAINS · RETAIL VOICE ORDERING GUIDE
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="23.5" font-weight="800">
+      连锁餐饮 Drive-Thru、茶饮咖啡与零售语音点单：架构设计与选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      Phi4-mm-realtime 混合语义 VAD (&lt;$0.025/单) · 85dB 柴油抗噪波束 · 复杂加料改单状态树 (Modifier DAG) · 店员耳麦秒级接管
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowQsr)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">单笔订单语音 AI 成本</text>
+    <text x="81" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">$0.022 / 单 (¥0.16)</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">车道吞吐量 / 加购率</text>
+    <text x="251" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">+19% / +26%</text>
+  </g>
+
+  <!-- Row 1: 3 Core Retail & QSR Voice Scenarios -->
+  <g transform="translate(32, 114)" filter="url(#shadowQsr)">
+    <!-- Scenario 1: QSR Drive-Thru -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardQsr)" stroke="#10b981" stroke-width="2"/>
+    <rect x="14" y="14" width="212" height="22" rx="6" fill="#064e3b"/>
+    <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 A · 快餐免下车点餐 (Drive-Thru) 🏆</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">85dB 柴油抗噪 + 全家改单</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：皮卡引擎声盖过人声、副驾/后排中途改口</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• ±25° MVDR 空间波束锥锁定主驾车窗，过滤邻道噪音</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 菜品属性状态树 (Modifier DAG)：严禁“水里加冰淇淋”</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 店员无线耳麦旁听：遇极端方言 0.5秒无感接麦代点</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+    <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: 通道 ③ Phi4-mm-realtime ($0.048/m)</text>
+
+    <!-- Scenario 2: Coffee & Bubble Tea Custom Voice Ordering -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardQsr)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 B · 新茶饮/咖啡复杂客制化</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">造词新品热词 + 甜度冰量槽位</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：“霸气玉油柑/鸭屎香”同音误识、漏问冰度甜度</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• POS 菜单同步网关：门店沽清(售罄)商品 0ms 实时下架</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 同音饮品词库归一化（12组高频同音词 100% 精准映射）</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 必选规格追问锁：未指定温度/甜度时一句话合并追问</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: Custom Speech 热词 + 规格槽位锁</text>
+    </g>
+
+    <!-- Scenario 3: Retail After-Sales & Anti-Promo-Abuse -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardQsr)" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="206" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 C · 商超外卖售后与防薅羊毛</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">极速退换货 + 防叠券骗退锁</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：黑产语音套话叠加满减券、高频谎称未收到货</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 优惠券互斥校验 (P85)：物理阻断口头诱导折上折叠券</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 异常仅退款风控：历史 DNR (未收到货) &gt;2次强制要照片</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 跨端购物车 CAS 锁 (P58)：边打电话边点小程序防重扣</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+      <text x="22" y="210" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: Foundry 状态机 + P58/P85 防欺诈锁</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Preventing "200 Bacon Bits" & Crew Whisper Takeover -->
+  <g transform="translate(32, 372)" filter="url(#shadowQsr)">
+    <!-- Left Box: How to Prevent the Famous "200 Bacon Bits" & Mid-Order Edits -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardQsr)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🍔 终结行业名场面：如何防止“水里加冰淇淋、点 200 份培根”与改单错乱？
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      不要让大模型自由拼装 JSON 购物车！采用“POS 菜品属性有向无环图 (Modifier DAG) + 增量 Patch”：
+    </text>
+
+    <rect x="20" y="64" width="535" height="90" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+    <text x="32" y="84" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      1. 菜品合法属性图谱锁 (POS Schema Constraint) + 单品数量上限门禁 (`MaxQty &lt;= 10`)
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 每个 SKU 严格绑定合法的配料子集（如 `矿泉水` 的 `AllowedModifiers = [冰镇, 常温]`，物理不存在“加冰淇淋/加培根”）；
+    </text>
+    <text x="32" y="124" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 任何单品数量 `&gt; 10` 或加料份数 `&gt; 3` 自动触发口头确认拦截，彻底杜绝噪音误识刷出“200份培根”！
+    </text>
+    <text x="32" y="143" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      • 车牌/车窗外数字屏 (Digital Order Board) `<150ms` 实时高亮当前修改项，顾客眼见为实！
+    </text>
+
+    <rect x="20" y="164" width="535" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      2. 店员耳麦“0.5秒无感接管 (Crew Whisper Takeover)”：守住 100% 车道通行率
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 真实 Drive-Thru 最怕 AI 卡壳导致整条汽车长龙堵死！当某单同一槽位连续 **2 次** 追问未果（或信噪比 &lt;6dB），
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 店员佩戴的无线耳麦立即响起轻柔提示音并显示已点半截菜单，店员按住耳麦直接开口接话完成最后一步，
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 1 名店员可轻松同时看管 4~6 条 AI 车道，门店人力立省 65%，车道小时吞吐量反升 +19%！
+    </text>
+
+    <!-- Right Box: Unit Economics per Order & Upsell ROI -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardQsr)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        💰 餐饮高频低毛利算账：为什么必须选 `Phi4-mm-realtime` 混合通道？
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        一杯咖啡/一份快餐毛利仅 $1.50~$3.00，平均点单时长 28 秒（0.47 分钟），对比单笔 AI 成本：
+      </text>
+
+      <!-- Bar 1 -->
+      <text x="20" y="84" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">1. 全尺寸原生 S2S + 托管平台抽成</text>
+      <rect x="260" y="70" width="190" height="20" rx="4" fill="#ef4444"/>
+      <text x="458" y="85" fill="#fca5a5" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$0.110 / 单</text>
+
+      <!-- Bar 2 -->
+      <text x="20" y="120" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">2. 标准云端级联 (STT + 通用大模型 + TTS)</text>
+      <rect x="260" y="106" width="82" height="20" rx="4" fill="#f59e0b"/>
+      <text x="350" y="121" fill="#fcd34d" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$0.045 / 单</text>
+
+      <!-- Bar 3 -->
+      <text x="20" y="156" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">3. Azure 通道 ③ Phi4-mm-realtime 🏆</text>
+      <rect x="260" y="142" width="40" height="20" rx="4" fill="#10b981"/>
+      <text x="308" y="157" fill="#34d399" font-family="Consolas, monospace" font-size="11.5" font-weight="700">$0.022 / 单 (省 80%)</text>
+
+      <rect x="20" y="178" width="501" height="80" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="199" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        📈 比省人力更赚钱的秘密：AI 100% 永不害羞的“黄金顺手加购 (Smart Upsell)”！
+      </text>
+      <text x="32" y="218" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 真人店员忙起来 60% 的时候忘了问“加 3 块钱升级大薯条或加个蛋挞吗？”；
+      </text>
+      <text x="32" y="236" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        • AI 结合天气与购物车（天热推冰饮、单汉堡推套餐）100% 执行一句话加购，客单价净增 +$0.65/单（29倍回报）！
+      </text>
+    </g>
+  </g>
+</svg>
