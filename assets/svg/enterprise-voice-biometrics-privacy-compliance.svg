@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg21" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="50%" stop-color="#111C38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="livenessGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="fidoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="privacyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg21)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Enterprise Voice Biometrics Anti-Spoofing, Zero-Trust Auth &amp; Privacy Compliance</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业语音声纹反欺诈、零信任身份核验与全球隐私合规（GDPR / PIPL / BIPA / EU AI Act）架构选型全景图</text>
+  <rect x="942" y="42" width="210" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1047" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">S08 Liveness &amp; Zero-PII</text>
+
+  <!-- Pillar 1: S08 Anti-Deepfake Liveness vs Legacy Voiceprint -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#livenessGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. S08 活体防伪 vs 传统声纹识别</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 为什么传统“静默声纹识别”正在被弃用？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 3秒零样本克隆（ElevenLabs/CosyVoice）攻破率 78%</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• BIPA ($5,000/次) 与 PIPL 敏感生物特征违规重罚</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">S08 频谱子带相位与声道活体检测 (&lt;45ms)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 不存任何个人声纹！仅检测是否为“真人声带发声”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 99.6% 拦截 TTS 合成流、AI 变声器与二次翻录重放</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">高危场景：动态随机数字挑战 (Challenge)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 若必须用声纹（如高龄客户专线），强制要求实时朗读</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 4位随机动态码 + HSM 硬件盐值模板加密</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">零声纹存储 = 零 BIPA / GDPR 生物特征诉讼风险</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">防克隆拦截率 99.6% · 活体检测耗时 &lt; 45ms</text>
+  </g>
+
+  <!-- Pillar 2: Zero-Trust Out-of-Band Auth (FIDO2 + RFC 4733 DTMF) -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#fidoGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 零信任带外鉴权与 DTMF 双流隔离</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">Tier-1 低风险查询：SIM Number Verify</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 运营商 CAMARA Number Verification 静默核验主叫</text>
+    <text x="30" y="122" fill="#94A3B8" font-size="12">• 结合 CRM 最近订单非敏感问题，0秒无感过检</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#A7F3D0" font-size="13" font-weight="700">Tier-2 中高风险交易：App / 企微 FIDO2 推送</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 语音不下发口头验证码！通话保持不断线</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 手机弹出 FaceID / 指纹签名卡片，4秒完成强授权</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Tier-3 固话/纯语音：RFC 4733 带外 DTMF</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 身份证后4位/交易PIN码由 SBC 在网关层剥离按键</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• RTP 音轨打入静音帧，LLM 仅收 [PIN_VERIFIED]</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">身份核验平均耗时从 48秒 降至 4.2秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 满足 PCI-DSS v4.0 与金融强认证规范</text>
+  </g>
+
+  <!-- Pillar 3: Global Privacy Compliance (GDPR / PIPL / EU AI Act) -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#privacyGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 全球隐私合规 (GDPR / PIPL / AI Act)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">EU AI Act Art. 50 强制 AI 身份披露门禁</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 首句强制播报 AI 助手身份与录音双轨授权同意</text>
+    <text x="30" y="122" fill="#94A3B8" font-size="12">• 禁用未经授权的情绪操纵（Emotion Recognition）</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="30" y="174" fill="#FDE68A" font-size="13" font-weight="700">双轨实时音频消音 + 文本 PII 脱敏落盘</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 基于词级时间戳对原始 WAV 敏感段注入 1kHz 哔声</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 文本流同步掩码姓名/身份证/卡号后才写入存储</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">数据主权与被遗忘权 (Right to Erasure)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• Azure OpenAI Abuse Monitoring Opt-Out (零留存)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 按 Caller_ID 加密信封，一键销毁录音/转写/记忆</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">原始敏感音频零落盘 · 100% 跨境数据驻留合规</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">支持欧盟法兰克福 / 中国本地容器 / 专有云隔离</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">企业语音安全与隐私治理黄金流水线（Zero-Trust Voice Security &amp; Privacy Pipeline）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 首句披露：EU AI Act 身份告知 + 录音授权 ➔ 2. 活体防伪：S08 频谱相位检测 (&lt;45ms) 拦截克隆音 ➔ 3. 分级鉴权：FIDO2 推送 / RFC 4733 带外按键</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 4. 双轨脱敏：WAV 词级时间戳静音掩码 + 文本正则/NER 脱敏 ➔ 5. 零留存推理：Azure 零数据留存 + 客户自管密钥 (CMK) 加密归档</text>
+  </g>
+</svg>
