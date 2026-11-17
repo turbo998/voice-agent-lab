@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Enterprise Speech STT, TTS, Voice Cloning &amp; Avatar Selection Guide: Azure AI Speech vs ElevenLabs vs Deepgram vs Cartesia vs Open-Source Whisper &amp; CosyVoice">
+  <defs>
+    <linearGradient id="bgSpeech" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0b1a33"/>
+      <stop offset="100%" stop-color="#051328"/>
+    </linearGradient>
+    <linearGradient id="topAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowSpeech" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgSpeech)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#topAccent)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+    <text x="16" y="18" fill="#7dd3fc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      ENTERPRISE STT / TTS / VOICE CLONING &amp; AVATAR PLATFORM SELECTION
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="23.5" font-weight="800">
+      语音识别/合成与克隆选型：Azure Speech vs ElevenLabs vs Deepgram vs 开源自建
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      Azure (DragonHD / CNV / Live Interpreter / Avatar) · ElevenLabs (Flash v2.5 / v4) · Deepgram (Nova-3 / Aura-2) · Whisper / CosyVoice 2 / Fish Speech
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(850, 22)" filter="url(#shadowSpeech)">
+    <rect x="0" y="0" width="154" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="77" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">中文客服盲测自然度</text>
+    <text x="77" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="19.5" font-weight="800">4.34 MOS (HD)</text>
+
+    <rect x="164" y="0" width="154" height="64" rx="10" fill="#0d2847" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="241" y="24" text-anchor="middle" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">流式 TTS 首包延迟</text>
+    <text x="241" y="49" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="19.5" font-weight="800">75 ~ 155ms</text>
+  </g>
+
+  <!-- Row 1: 4 Platform Camp Cards -->
+  <g transform="translate(32, 114)" filter="url(#shadowSpeech)">
+    <!-- Card 1: Azure AI Speech -->
+    <rect x="0" y="0" width="286" height="242" rx="12" fill="url(#panelGrad)" stroke="#10b981" stroke-width="2"/>
+    <rect x="14" y="14" width="196" height="22" rx="6" fill="#064e3b"/>
+    <text x="24" y="29" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">阵营 A · 企业全栈底座 (推荐 🏆)</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16" font-weight="800">Azure AI Speech 全家桶</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">DragonHDFlash + CNV + Live Interpreter</text>
+    <line x1="14" y1="86" x2="272" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="106" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心制胜长板：</text>
+    <text x="14" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 140+ 语种/方言 + 自定义热词偏置 (Custom Speech)</text>
+    <text x="14" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• DragonHDFlash 客服盲测 4.34 MOS (超真人 4.08)</text>
+    <text x="14" y="163" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 唯一支持本地断网 Docker 容器 + 原声同传 + 数字人</text>
+    <text x="14" y="182" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11">🛡️ 内置隐藏声学水印 + 严格发音人活体授权防伪</text>
+    <rect x="14" y="195" width="258" height="34" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
+    <text x="20" y="216" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">TTS 首包: 155ms | STT+TTS: ~$240/万分钟</text>
+
+    <!-- Card 2: ElevenLabs & Cartesia -->
+    <g transform="translate(299, 0)">
+      <rect x="0" y="0" width="274" height="242" rx="12" fill="url(#panelGrad)" stroke="#a855f7" stroke-width="1.5"/>
+      <rect x="14" y="14" width="166" height="22" rx="6" fill="#4c1d95"/>
+      <text x="24" y="29" fill="#d8b4fe" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">阵营 B · 情感克隆与表现力派</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16" font-weight="800">ElevenLabs / Cartesia Sonic</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">Flash v2.5 (75ms) / Eleven v4 / Sonic-2</text>
+      <line x1="14" y1="86" x2="260" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="106" fill="#c084fc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心长板与边界：</text>
+      <text x="14" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 欧美语系呼吸感、戏剧化情绪起伏表现力顶尖</text>
+      <text x="14" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 10秒极速零样本声音克隆 (Instant Voice Clone)</text>
+      <text x="14" y="163" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">❌ 缺乏离线容器，难进银行/政务本地专网机房</text>
+      <text x="14" y="182" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">❌ 高并发字符计费较贵，中文多音字 SSML 控制弱</text>
+      <rect x="14" y="195" width="246" height="34" rx="8" fill="#180d2c" stroke="#7e22ce" stroke-width="1"/>
+      <text x="20" y="216" fill="#e9d5ff" font-family="Consolas, monospace" font-size="11" font-weight="700">TTS 首包: 75~90ms | 约 $450~$780/万分钟</text>
+    </g>
+
+    <!-- Card 3: Deepgram -->
+    <g transform="translate(586, 0)">
+      <rect x="0" y="0" width="268" height="242" rx="12" fill="url(#panelGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="160" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">阵营 C · 极速开发者流式派</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16" font-weight="800">Deepgram Nova-3 + Aura-2</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">主打英文低延迟高性价比流式管道</text>
+      <line x1="14" y1="86" x2="254" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="106" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心长板与边界：</text>
+      <text x="14" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• Nova-3 英文流式转写极快 (&lt;180ms)，支持 Keyterm</text>
+      <text x="14" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• Aura-2 针对高吞吐电话机器人做了极速优化</text>
+      <text x="14" y="163" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11">⚠️ 亚太小语种、中文方言及粤语混说弱于 Azure</text>
+      <text x="14" y="182" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11">⚠️ 无原生数字人 (Avatar) 与原声同传全家桶</text>
+      <rect x="14" y="195" width="240" height="34" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="20" y="216" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">TTS 首包: 110ms | 约 $210~$320/万分钟</text>
+    </g>
+
+    <!-- Card 4: Open-Source GPU Self-Hosted -->
+    <g transform="translate(867, 0)">
+      <rect x="0" y="0" width="269" height="242" rx="12" fill="url(#panelGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+      <rect x="14" y="14" width="166" height="22" rx="6" fill="#78350f"/>
+      <text x="24" y="29" fill="#fcd34d" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">阵营 D · 开源 GPU 自托管派</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16" font-weight="800">Whisper + CosyVoice / Fish</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">Whisper-v3-turbo · CosyVoice 2 · Fish 1.5</text>
+      <line x1="14" y1="86" x2="255" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="106" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 适用边界与隐性成本陷阱：</text>
+      <text x="14" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">• 权重开源可微调，适合已有闲置 GPU 池的团队</text>
+      <text x="14" y="144" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">❌ Whisper 原生按 30s 切片，改流式易吞尾字/幻觉</text>
+      <text x="14" y="163" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">❌ 话务波峰波谷差 8 倍，GPU 夜间空转拉高单价</text>
+      <text x="14" y="182" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">❌ 零样本克隆缺乏内置版权锁，易惹法律侵权纠纷</text>
+      <rect x="14" y="195" width="241" height="34" rx="8" fill="#2a1608" stroke="#d97706" stroke-width="1"/>
+      <text x="18" y="216" fill="#fcd34d" font-family="Consolas, monospace" font-size="10.6" font-weight="700">首包: 220~480ms | 实摊 $310~$690/万分钟</text>
+    </g>
+  </g>
+
+  <!-- Row 2: The GPU Utilization Illusion & Enterprise Capability Matrix -->
+  <g transform="translate(32, 372)" filter="url(#shadowSpeech)">
+    <!-- Left Box: Why Open-Source GPU Self-Hosting Is Often More Expensive -->
+    <rect x="0" y="0" width="560" height="275" rx="12" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      🧮 算清隐性账：为什么“开源语音模型自建 GPU”在呼叫中心往往比云 API 更贵？
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      企业电话呼入呈典型“双驼峰分布”（上午 10 点、下午 3 点峰值是凌晨的 10~15 倍），GPU 必须按峰值冗余配置：
+    </text>
+
+    <rect x="20" y="64" width="520" height="88" rx="8" fill="#1f121b" stroke="#ef4444" stroke-width="1"/>
+    <text x="32" y="84" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ❌ 误区算账：按 GPU 24 小时 100% 满载理想折算（仅存在于离线批处理，实时对话不可能发生）
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 真实情况：为扛住白天 200 路并发峰值（要求首包 &lt;250ms 不排队），需常驻 8 张 L40S/A10G GPU 卡 + 双活容灾；
+    </text>
+    <text x="32" y="124" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 加上全天平均算力利用率仅 18%~22%，以及 1 名专职推理加速工程师人力分摊，每万分钟真实成本高达 $520+！
+    </text>
+    <text x="32" y="142" fill="#fca5a5" font-family="Segoe UI, sans-serif" font-size="11">
+      • 更痛的是：原生 Whisper 遇到电话静音段极易循环输出“字幕由某某提供”幻觉词，需大量精力手搓 VAD 与热词偏置。
+    </text>
+
+    <rect x="20" y="164" width="520" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      ✅ 架构师最优解：公有云弹性 API / 混合本地 CPU+GPU 量化容器（按实际说话秒数精准计费）
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 常规商业场景直接调用 Azure AI Speech / Deepgram 流式 API：零空转浪费，开箱自带上万条热词偏置与 SSML；
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 金融/政企机房内网要求：直接部署官方 Azure Speech Docker 容器（仅按实际处理音频秒数上报计费，闲置 0 费用）！
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      💡 仅当客户“日均稳定满载 &gt;150 万分钟且有专职 vLLM/TensorRT-LLM 音频团队”时，开源自建才跨过盈亏平衡线。
+    </text>
+
+    <!-- Right Box: Scenario-to-Model Quick Mapping -->
+    <g transform="translate(580, 0)">
+      <rect x="0" y="0" width="556" height="275" rx="12" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        🎯 五大高价值企业语音场景 vs 最佳识别/合成/数字人拍板指南
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        不再盲目追求单一跑分，按业务场景的“合规度、语种、情绪表现力与成本”精准选型：
+      </text>
+
+      <rect x="20" y="64" width="516" height="36" rx="6" fill="#0d2847" stroke="#38bdf8" stroke-width="1"/>
+      <text x="30" y="86" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        1. 亚太/跨国银行与全渠道客服热线 ➔ <tspan fill="#34d399">Azure Fast/Realtime STT + DragonHDFlash TTS</tspan>
+      </text>
+
+      <rect x="20" y="106" width="516" height="36" rx="6" fill="#181236" stroke="#a855f7" stroke-width="1"/>
+      <text x="30" y="128" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        2. 欧美情感营销/游戏 NPC/有声剧 ➔ <tspan fill="#d8b4fe">ElevenLabs Flash v2.5 / Cartesia Sonic-2</tspan>
+      </text>
+
+      <rect x="20" y="148" width="516" height="36" rx="6" fill="#0b2e27" stroke="#10b981" stroke-width="1"/>
+      <text x="30" y="170" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        3. 跨国会议实时原声同传 (保留高管自己音色) ➔ <tspan fill="#6ee7b7">Azure AI Speech Live Interpreter</tspan>
+      </text>
+
+      <rect x="20" y="190" width="516" height="36" rx="6" fill="#0c2d48" stroke="#38bdf8" stroke-width="1"/>
+      <text x="30" y="212" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        4. 展厅导购/网点大屏 2D/3D 数字人交互 ➔ <tspan fill="#7dd3fc">Azure Live Avatar + Custom Neural Voice</tspan>
+      </text>
+
+      <rect x="20" y="232" width="516" height="32" rx="6" fill="#2a1608" stroke="#f59e0b" stroke-width="1"/>
+      <text x="30" y="252" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        5. 离线录音海量批处理归档转写 (非实时) ➔ <tspan fill="#fcd34d">Azure Batch Transcription / Whisper-v3-turbo</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
