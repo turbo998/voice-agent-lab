@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg41" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#111F38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="lowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="proGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="hybGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg41)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Microsoft Copilot Studio / D365 (Low-Code) vs. Azure Foundry + ACS (Pro-Code)</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">微软企业语音双剑合璧：Copilot Studio + D365 Contact Center 低代码全托管 vs Azure AI Foundry + ACS 专业自建选型全景图</text>
+  <rect x="906" y="42" width="246" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1029" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">LOWCODE-VS-PROCODE</text>
+
+  <!-- Pillar 1: Low-Code Managed SaaS (Copilot Studio Voice + D365 CC) -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#lowGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 低代码全托管 (Copilot Studio + D365)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#3B0764" stroke="#A855F7"/>
+    <text x="30" y="82" fill="#F3E8FF" font-size="13" font-weight="700">2周极速上线 · 业务分析师可拖拽编排</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 开箱即用 1,400+ Power Platform 连接器 (SAP/ServiceNow)</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 原生集成 Dynamics 365 坐席工作台与 Omnichannel 路由</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#E9D5FF" font-size="13" font-weight="700">统一治理 (Entra Agent ID + Purview DLP)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• Power Platform 管理中心一键设置数据防泄漏策略</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 与 Microsoft Teams Phone 企业语音总机原生打通</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#FBBF24" font-size="13" font-weight="700">架构边界与适用上限</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 级联模式首字延迟约 750-1,050ms，无裸 PCM 帧控制</text>
+    <text x="30" y="308" fill="#E2E8F0" font-size="12">• 适合月通话 &lt;8.5万分钟的 IT/HR 热线与标准企业客服</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">交付周期从 3个月 缩短至 2周 · 零运维负担</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">M365 / Dynamics 365 存量企业最快 ROI 落地路径</text>
+  </g>
+
+  <!-- Pillar 2: Pro-Code Custom PaaS (Azure AI Foundry Voice Live + ACS) -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#proGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 专业代码自建 (Foundry Voice Live + ACS)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="82" fill="#93C5FD" font-size="13" font-weight="700">&lt;=420ms 极致低延迟与 20ms 原始音频帧掌控</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 原生接入 GPT-Live-1 / gpt-realtime-1.5 / Phi4-mm</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 支持 S08 相位活体探针、双档打断与 item.truncate 裁剪</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">千万分钟级极致边际成本 ($0.038-$0.058/分)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 支持 Azure PTU P55 基荷预留 + APIM 多区域 PAYGO 溢出</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 支持本地断开连接 Azure Speech 容器 (矿山/医院/军工)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">存量异构 PBX / 车载硬件 / 游戏引擎全兼容</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• Direct Routing 直连 Genesys/Cisco/Avaya (免收坐席税)</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 支持车载 C++/嵌入式 SDK、Unity 数字人与多模态视频流</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">月通话 &gt;8.5万分钟时 TCO 比 SaaS 低 58%+</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 掌控全双工打断、声学护栏与混合云主权架构</text>
+  </g>
+
+  <!-- Pillar 3: The Golden Hybrid Pattern (Copilot Studio + Foundry Skill) -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hybGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 混合王牌架构 (Better Together 双层联动)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">模式一：Foundry 语音大门 + Copilot Studio 连接器</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 前台用 ACS + Voice Live 抗噪接听 70% 高并发语音</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 后台通过 MCP 调用 Copilot Studio 现成 SAP/Workday 动作</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">模式二：Copilot Studio 主流程 + Foundry 专家技能</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 业务部门在 Copilot Studio 维护 80% 常规 FAQ 与表单</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 遇复杂排障/双录核验时挂载 Azure AI Foundry 自定义 Agent</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">D365 坐席工作台 1.5s 无缝接管兜底</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 无论前台走低代码还是自建，转人工统一汇入 D365 / Teams</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动附带全套通话摘要、情绪评分与 Copilot 坐席话术推荐</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">兼顾“业务部门 2周敏捷改流程”与“核心性能”</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">财富 500 强大型企业标准参考架构</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">微软企业语音技术栈黄金选型分水岭（Microsoft Voice AI Decision Boundary）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">• 选 Copilot Studio + D365：月话务 &lt;8.5万分钟 · 内部 IT/HR 或标准售后 · 需复用 1,400+ 连接器由业务人员 2周拖拽上线</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">• 选 Azure AI Foundry (Voice Live) + ACS：月话务 &gt;8.5万分钟 · 要求 &lt;=420ms 全双工/多模态看图/声学防伪/本地容器 · 或对接存量思科/Genesys</text>
+  </g>
+</svg>
