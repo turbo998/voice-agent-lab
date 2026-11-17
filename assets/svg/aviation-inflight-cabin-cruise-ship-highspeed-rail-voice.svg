@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg50" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="blueGrad50" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="tealGrad50" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad50" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg50)"/>
+
+  <!-- Header -->
+  <rect x="30" y="22" width="1140" height="84" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <rect x="46" y="38" width="242" height="26" rx="13" fill="url(#blueGrad50)"/>
+  <text x="167" y="55" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">INFLIGHT-CABIN-01 · CRUISE · HSR</text>
+  <text x="304" y="55" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="18.5" font-weight="700">In-Flight Cabin Crew &amp; MedLink, Cruise Ship Edge Concierge &amp; High-Speed Rail Voice AI</text>
+  <text x="46" y="86" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="13">-42% Unnecessary Medical Flight Diversions ($180k Saved/Event) · 0-bps Satellite Cruise Stateroom Concierge (+$64/Cabin Upsell) · -71.5% Missed Rail Transfers</text>
+
+  <!-- Column 1: Aviation In-Flight Cabin Crew & MedLink -->
+  <rect x="30" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.6"/>
+  <rect x="46" y="140" width="334" height="34" rx="8" fill="url(#blueGrad50)"/>
+  <text x="213" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">1. 35,000-Ft Cabin Crew &amp; MedLink</text>
+
+  <rect x="46" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="210" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Onboard Cabin Edge Server (78dB Cabin Noise)</text>
+  <text x="60" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Runs inside non-safety IFE cabin server (polar offline)</text>
+  <text x="60" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Deterministic PIL allergen &amp; SPML seat cross-check</text>
+  <text x="60" y="268" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11">• 0.0% Severe Nut/Shellfish Allergen Serving Errors</text>
+
+  <rect x="46" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="312" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">In-Flight Medical Emergency &amp; 4.8kbps MedLink</text>
+  <text x="60" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Instant 6-lang PA broadcast for onboard volunteer MD</text>
+  <text x="60" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Guides crew to exact EMK pouch &amp; streams vitals JSON</text>
+  <text x="60" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• Cuts Avoidable Flight Diversions by 42% ($180k/event)</text>
+
+  <rect x="46" y="398" width="334" height="164" rx="8" fill="#172554" stroke="#3B82F6"/>
+  <text x="60" y="420" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Turbulence &amp; Cabin Service Efficiency</text>
+  <text x="60" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Instant multilingual seatbelt PA on turbulence alert</text>
+  <text x="60" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Galley voice inventory &amp; duty-free stock lock</text>
+  <text x="60" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Zero avionics bus write access (ARINC 429 read-only)</text>
+  <text x="60" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Auto-drafts post-flight cabin log &amp; maintenance defects</text>
+  <text x="60" y="542" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Saves 35 Mins/Flight in Purser Paperwork</text>
+
+  <!-- Column 2: Luxury Cruise Ship Onboard Edge Concierge -->
+  <rect x="417" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.6"/>
+  <rect x="433" y="140" width="334" height="34" rx="8" fill="url(#tealGrad50)"/>
+  <text x="600" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">2. Cruise Ship 0-bps Satellite Edge</text>
+
+  <rect x="433" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="210" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">5,000-Stateroom Onboard GPU Cluster (2x L40S)</text>
+  <text x="447" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• 100% local SIP/RTP + Speech/LLM on ship LAN (0-bps WAN)</text>
+  <text x="447" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Absorbs 1,200-call rainy-day shore excursion rebooks</text>
+  <text x="447" y="268" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11">• &lt;=260ms response even during ocean satellite blackouts</text>
+
+  <rect x="433" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="312" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Fidelio SPMS Integration &amp; Minor Folio Lock</text>
+  <text x="447" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Real-time specialty dining, tender boat &amp; spa booking</text>
+  <text x="447" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Hard-blocks minor stateroom cards from alcohol/casino</text>
+  <text x="447" y="371" fill="#FBBF24" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• SOLAS Muster-Drill Emergency PA Preemption (0ms)</text>
+
+  <rect x="433" y="398" width="334" height="164" rx="8" fill="#064E3B" stroke="#10B981"/>
+  <text x="447" y="420" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Cruise Onboard Revenue &amp; Ops Impact</text>
+  <text x="447" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Guest Services phone deflection: 84.6%</text>
+  <text x="447" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Onboard dining/spa/excursion upsell: +$64 / cabin</text>
+  <text x="447" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Satellite voice WAN cost saved: $45,000 / voyage</text>
+  <text x="447" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• 16-language crew &amp; guest stateroom support</text>
+  <text x="447" y="542" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Hardware Payback Period: &lt; 1.5 Voyages</text>
+
+  <!-- Column 3: High-Speed Rail Quiet-Car & Transfer Navigation -->
+  <rect x="804" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.6"/>
+  <rect x="820" y="140" width="334" height="34" rx="8" fill="url(#purpleGrad50)"/>
+  <text x="987" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">3. 350km/h High-Speed Rail Assistant</text>
+
+  <rect x="820" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="210" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Quiet-Car (&lt;=42dB Whisper) Seat-Tap Service</text>
+  <text x="834" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Passenger taps seat-armrest NFC &amp; whispers order</text>
+  <text x="834" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Silent on-screen reply + vibration (0dB car noise)</text>
+  <text x="834" y="268" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="11">• &gt;=28dB adjacent-seat crosstalk rejection</text>
+
+  <rect x="820" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="312" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">9-Minute Tight-Transfer Car-Door Navigation</text>
+  <text x="834" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Computes exact stopping offset of Car 06 vs. escalator</text>
+  <text x="834" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Pre-caches platform topology before mountain tunnels</text>
+  <text x="834" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• Cuts Missed Tight Rail Connections by 71.5%</text>
+
+  <rect x="820" y="398" width="334" height="164" rx="8" fill="#3B0764" stroke="#A855F7"/>
+  <text x="834" y="420" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">350km/h Tunnel Handover &amp; Safety Impact</text>
+  <text x="834" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Zero session drops across 9s 5G cell handovers</text>
+  <text x="834" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Instant wheelchair ramp pre-staging at destination</text>
+  <text x="834" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Unaccompanied minor &amp; senior seat-check alerts</text>
+  <text x="834" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Freeing conductors from 68% repetitive transfer Qs</text>
+  <text x="834" y="542" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">In-Seat F&amp;B Order Conversion: +38.4%</text>
+
+  <!-- Bottom Bar -->
+  <rect x="30" y="598" width="1140" height="96" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="50" y="625" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">Architect Selection Verdict &amp; 10,000-Minute TCO Summary:</text>
+  <text x="50" y="649" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• In-Flight Cabin &amp; MedLink: Onboard IFE Edge + Phi4-mm-realtime + 4.8kbps Satellite Vitals Sync ($0.028/min · $280/10k mins · -42% diversions)</text>
+  <text x="50" y="670" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• Cruise Ship Concierge: Shipboard 2x L40S Container + Fidelio SPMS Gate ($0.019/min · $190/10k mins · 0-bps satellite voice cost)</text>
+  <text x="760" y="658" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="700">ROI: +$64/Cabin Cruise Upsell</text>
+  <text x="760" y="678" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">$180k Saved per Avoided Flight Diversion</text>
+</svg>
