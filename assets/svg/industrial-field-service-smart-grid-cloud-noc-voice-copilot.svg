@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Industrial Field Service Hands-Free Copilot, OSHA LOTO Safety Interlock &amp; Cloud NOC Sev-1 War-Room Voice AI Guide">
+  <defs>
+    <linearGradient id="bgInd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b16"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#051329"/>
+    </linearGradient>
+    <linearGradient id="barInd" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="cardInd" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#112240" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.98"/>
+    </linearGradient>
+    <filter id="shadowInd" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgInd)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#barInd)"/>
+
+  <!-- Header -->
+  <g transform="translate(32, 22)">
+    <rect x="0" y="0" width="560" height="28" rx="14" fill="#451a03" stroke="#f59e0b" stroke-width="1"/>
+    <text x="16" y="18" fill="#fcd34d" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      INDUSTRIAL FIELD SERVICE · OSHA LOTO INTERLOCK · CLOUD NOC SEV-1 COPILOT
+    </text>
+    <text x="0" y="56" fill="#f8fafc" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="23.5" font-weight="800">
+      工业制造免提排障、电网安全互锁与金融云 NOC 战情室：语音选型指南
+    </text>
+    <text x="0" y="80" fill="#94a3b8" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500">
+      IND-FIELD-01 骨传导免提 PLC 排障 · IND-LOTO-01 挂牌上锁 4位物理挑战码 · CLOUD-NOC-01 Sev-1 战情室与变更冻结锁
+    </text>
+  </g>
+
+  <!-- Top KPI Pills -->
+  <g transform="translate(838, 22)" filter="url(#shadowInd)">
+    <rect x="0" y="0" width="162" height="64" rx="10" fill="#0b2e27" stroke="#10b981" stroke-width="1.2"/>
+    <text x="81" y="24" text-anchor="middle" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">产线平均修复时间 (MTTR)</text>
+    <text x="81" y="49" text-anchor="middle" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">-48% (免摘手套)</text>
+
+    <rect x="172" y="0" width="158" height="64" rx="10" fill="#3b0a1e" stroke="#f43f5e" stroke-width="1.2"/>
+    <text x="251" y="24" text-anchor="middle" fill="#fda4af" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">越权合闸 / 误删库拦截</text>
+    <text x="251" y="49" text-anchor="middle" fill="#fb7185" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800">100% (物理互锁)</text>
+  </g>
+
+  <!-- Row 1: 3 Core Industrial & Enterprise IT Operations Scenarios -->
+  <g transform="translate(32, 114)" filter="url(#shadowInd)">
+    <!-- Scenario 1: Industrial Hands-Free PLC Field Service -->
+    <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardInd)" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="14" y="14" width="212" height="22" rx="6" fill="#78350f"/>
+    <text x="24" y="29" fill="#fcd34d" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 A · 车间免提排障与备件调拨 🏆</text>
+    <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">IND-FIELD-01 骨传导 + 离线容器</text>
+    <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：满手油污没法翻百页图纸、冲压车间 90dB 轰鸣</text>
+    <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+    <text x="14" y="107" fill="#fbbf24" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+    <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 安全帽骨传导麦 + 咽喉振动拾音：90dB 噪音下清晰识音</text>
+    <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 报错码 (如 Siemens F07900) 秒查维修步骤并分步语音领读</text>
+    <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 高价备件 (&gt;$2,000) 调拨强制锁死待厂长审批</text>
+    <rect x="14" y="186" width="338" height="40" rx="8" fill="#2a1608" stroke="#d97706" stroke-width="1"/>
+    <text x="22" y="210" fill="#fcd34d" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: 厂区边缘容器 + Foundry 维修图谱</text>
+
+    <!-- Scenario 2: OSHA LOTO & Smart Grid Three-Part Readback -->
+    <g transform="translate(385, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardInd)" stroke="#f43f5e" stroke-width="1.5"/>
+      <rect x="14" y="14" width="212" height="22" rx="6" fill="#4c0519"/>
+      <text x="24" y="29" fill="#fda4af" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 B · 工业/电网高压安全互锁</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">IND-LOTO-01 &amp; NERC 三段式复诵</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：检修员还在机舱内，外部语音误触发送电合闸致命</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#fb7185" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• OSHA 1910.147 挂牌上锁 (LOTO) 未清零前 0ms 物理禁合闸</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 必须口述挂锁上的 4位物理压印挑战码 + 双人声纹复核</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 电网调度强制 NERC COM-002 三段式复诵/听诵闭环 (P125)</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#2a0815" stroke="#e11d48" stroke-width="1"/>
+      <text x="22" y="210" fill="#fda4af" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: 级联确定性管道 + LOTO 硬件网关</text>
+    </g>
+
+    <!-- Scenario 3: Cloud NOC Sev-1 War-Room Copilot -->
+    <g transform="translate(770, 0)">
+      <rect x="0" y="0" width="366" height="242" rx="12" fill="url(#cardInd)" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="14" y="14" width="212" height="22" rx="6" fill="#0c4a6e"/>
+      <text x="24" y="29" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">场景 C · 金融云 NOC 故障战情室</text>
+      <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">CLOUD-NOC-01 应急桥与自动复盘</text>
+      <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：凌晨3点 20人乱吵一团、慌乱中在封网期误回滚主库</text>
+      <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="107" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
+      <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 实时说话人分离 (Diarization) 自动梳理毫秒级故障时间轴</text>
+      <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 关联最近 2 小时 Git 发布变更与 Prometheus 告警指标</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 变更冻结期 (Change Freeze) 严禁单人语音执行生产写操作</text>
+      <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: Speech Diarization + SRE Agent</text>
+    </g>
+  </g>
+
+  <!-- Row 2: Three-Way Readback Protocol & Bone-Conduction Acoustic Stack -->
+  <g transform="translate(32, 372)" filter="url(#shadowInd)">
+    <!-- Left Box: Three-Part Communication & LOTO Hardware Interlock -->
+    <rect x="0" y="0" width="575" height="275" rx="12" fill="url(#cardInd)" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+      ⚡ 关键基础设施黄金法则：三段式复诵（Three-Part Readback）与 LOTO 互锁
+    </text>
+    <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+      在电网、核电、半导体晶圆厂与重工产线，任何控制指令绝不允许“说一句就立即执行”：
+    </text>
+
+    <rect x="20" y="64" width="535" height="90" rx="8" fill="#1f121b" stroke="#f43f5e" stroke-width="1"/>
+    <text x="32" y="84" fill="#fda4af" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      1. 挂牌上锁物理互锁 (`OSHA 1910.147 LOTO` · `IND-LOTO-01` / `P752`)
+    </text>
+    <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 只要 PLC 寄存器显示 `ActivePadlockCount &gt; 0`（检修员的挂锁还在电闸上），任何语音或越狱指令要求“强行送电”
+    </text>
+    <text x="32" y="124" fill="#fda4af" font-family="Segoe UI, sans-serif" font-size="11.2">
+        均在 **`0ms` 策略层物理阻断**，并触发车间声光警报！
+    </text>
+    <text x="32" y="143" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">
+      • 解锁送电必须由原持锁人本尊声纹 + 口述锁体表面压印的 4 位随机物理码 + 安全员双签确认。
+    </text>
+
+    <rect x="20" y="164" width="535" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
+    <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
+      2. 电网/工业标准“三段式复诵听诵闭环 (`NERC COM-002` / `ICAO` · `P75 / P125`)”
+    </text>
+    <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 第 1 步（下令）：工程师说“将 3 号母线断路器 CB-302 切换至分闸检修态”；
+    </text>
+    <text x="32" y="224" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+      • 第 2 步（AI 逐字复诵 Readback）：AI 仅生成预览锁并清晰复诵：“复诵指令：将 3 号母线断路器 Charlie-Bravo-3-0-2 切换至分闸检修态，请确认”；
+    </text>
+    <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+      • 第 3 步（工程师听诵确认 Hearback）：工程师明确说出“复诵正确，确认执行”后，SCADA 才解锁执行！
+    </text>
+
+    <!-- Right Box: Sev-1 NOC War Room & Industrial ROI -->
+    <g transform="translate(595, 0)">
+      <rect x="0" y="0" width="541" height="275" rx="12" fill="url(#cardInd)" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="30" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="800">
+        🖥️ 金融云 NOC Sev-1 故障战情室副驾 (`CLOUD-NOC-01`)
+      </text>
+      <text x="20" y="50" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">
+        当生产系统宕机拉起 25 人紧急语音桥时，AI 副驾静默参会干三件大事：
+      </text>
+
+      <rect x="20" y="64" width="501" height="112" rx="8" fill="#091526" stroke="#38bdf8" stroke-width="1"/>
+      <text x="32" y="85" fill="#7dd3fc" font-family="Segoe UI, sans-serif" font-size="11.8" font-weight="700">
+        1. 新进会领导“3秒前情提要” + 实时根因关联：
+      </text>
+      <text x="32" y="106" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        • CTO 中途入会无需打断工程师重讲一遍，私密卡片直接展示：【02:14 支付网关 502 暴增 ➔ 02:18 DBA 排查发现连接池满 ➔ 疑似 02:10 PR#492 变更引入】；
+      </text>
+      <text x="32" y="144" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
+        2. **高危生产操作四眼门禁**：语音要求执行 `rollback` 或 `drop/flush` 时，强制要求 Incident Commander + 值班 SRE 双人授权；
+      </text>
+      <text x="32" y="164" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        3. **故障恢复瞬间 5秒生成 Postmortem 复盘初稿**（含精确到秒的发言与操作时间轴）！
+      </text>
+
+      <rect x="20" y="186" width="501" height="72" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="32" y="207" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+        💰 制造业车间与云运维中心 ROI 实证：
+      </text>
+      <text x="32" y="227" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">
+        • 产线技工免摘手套语音查 PLC 图纸与步骤：设备停机修复时间 (MTTR) 缩短 **48%**；
+      </text>
+      <text x="32" y="245" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
+        • Sev-1 故障战情室 MTTR 缩短 **35%**，事后编写事故复盘报告耗时从 6 小时缩至 **10 分钟**！
+      </text>
+    </g>
+  </g>
+</svg>
