@@ -72,6 +72,7 @@
 | **行业场景 42** | **连锁药房智能续方、听似药名消歧 (LASA/`P73`) 与特药事先授权 (`P95`)** | [`retail-pharmacy-rx-refill-...-faq.md`](retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.md) | [`.en.md`](retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.en.md) | 听似药名错配率降至 0.0% + 800ms 跨店移单挽回 64% 断货处方 + 特药 30s 秒批与禁 AI 拒保 |
 | **行业场景 43** | **超充场站锁枪 15秒自愈 (OCPP 2.0.1)、虚拟电厂 (VPP) 与光储安全** | [`energy-virtual-power-plant-...-faq.md`](energy-virtual-power-plant-ev-charging-station-voice-selection-faq.md) | [`.en.md`](energy-virtual-power-plant-ev-charging-station-voice-selection-faq.en.md) | 零电流防拉弧锁 + 充电故障 82.4% 远程自愈 + VPP 削峰邀约响应率从 18% 跃升至 79.4% |
 | **行业场景 44** | **对公银行财资四眼原则 (`P43`)、防 CEO 电诈与交易台切口 (`P60`/`P35`)** | [`corporate-banking-treasury-...-faq.md`](corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.md) | [`.en.md`](corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.en.md) | 异机硬件私钥四眼联签 + 交易员 Yard/Mine 切口 98.9% 准确率 + Pre-LLM 反洗钱零通风报信 |
+| **行业场景 45** | **K12 苏格拉底启发式语音家教、高校 `P117` FERPA 与 `P14` 无障碍** | [`education-socratic-voice-tutor-...-faq.md`](education-socratic-voice-tutor-campus-ferpa-accessibility-selection-faq.md) | [`.en.md`](education-socratic-voice-tutor-campus-ferpa-accessibility-selection-faq.en.md) | 隐藏黑板 + SymPy 零泄题零幻觉 + 同类题正确率升至 83% + 口吃 3.2s 耐心窗与 FERPA 隐私锁 |
 
 ### 2.1 售前咨询、架构设计与竞对白皮书 (`docs/`)
 

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg46" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#111F38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="socGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="ferpaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="accGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg46)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Socratic AI Voice Tutor, Campus FERPA Guard (P117) &amp; Accessibility (P14)</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">智慧高校与 K12 教育：1对1 苏格拉底启发式口语家教（防直接报答案）、校园隐私（P117 FERPA）与无障碍（P14）全景图</text>
+  <rect x="906" y="42" width="246" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1029" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">EDU-SOCRATIC-01 · P117/P14</text>
+
+  <!-- Pillar 1: 3-Step Socratic Scaffolding Voice + Vision Tutor -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#socGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 苏格拉底启发式指题伴学 (严禁直接给答案)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 为什么家长痛恨普通“拍照搜题/通用大模型”？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 孩子问“第4题选啥”，通用模型1秒直接报出“选C，答案是42”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 孩子沦为无脑抄答案机器，一到考场彻底不会做！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">三级脚手架启发状态机 (3-Tier Socratic Gate)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 物理屏蔽最终答案输出！80KB 拍草稿纸看孩子卡在哪一步</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 第1步问已知条件 ➔ 第2步点拨公式 ➔ 引导孩子亲口算出结果</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">SymPy 数学符号引擎防大模型算术幻觉</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 后台先调确定性 SymPy 算出每一步精确中间值作为裁判基准</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 100% 杜绝大模型自己解错方程误导学生</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">同类题型后续独立解题正确率提升 +44.6%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 拦截“直接告诉我答案”套话越狱</text>
+  </g>
+
+  <!-- Pillar 2: University Campus FERPA Privacy (P117) & Mental Crisis -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ferpaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 高校教务热线 FERPA 隐私锁 (P117)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#3B0764" stroke="#A855F7"/>
+    <text x="30" y="82" fill="#F3E8FF" font-size="13" font-weight="700">P117 未授权家长/外人严禁查成年学生成绩与宿舍！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 根据美国 FERPA (34 CFR Part 99) 及高校隐私保护规定：</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 即使自称学生父母，未签署 FERPA 授权书严禁透露成绩/处分/行踪</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#E9D5FF" font-size="13" font-weight="700">Directory Opt-Out 名录保密锁 + 学生 SSO 核验</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 查询课表、GPA、助学贷款强制通过校园 App FIDO2 核身</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 已勾选 Directory Opt-Out 的学生对外部查询 100% 隐身</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">校园霸凌/心理危机 0秒直通心理中心与保卫处</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 深夜学生倾诉极端绝望或安全威胁 ➔ 触发 P101/P117 危机桥接</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 迎新季 5万新生选课/宿管/财务热线 82% 零排队自助闭环</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">100% 阻断未授权成绩/宿舍泄露 · 零 FERPA 违规</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">开学迎新周教务与财务电话接通率从 34% 升至 99.8%</text>
+  </g>
+
+  <!-- Pillar 3: Special-Needs Speech Accessibility (P14 Stutter / Dysarthria / Deaf) -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#accGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 特殊教育与言语障碍无障碍引擎 (P14)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">口吃/构音障碍学生 3.2s 自适应耐心倾听窗</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 口语考试或课堂问答中，口吃学生遇到首音节卡顿阻塞</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• P14 自适应拉长判停至 3,200ms，绝不中途打断或扣流利度分！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">听障学生大讲堂 AR 眼镜实时双语学术字幕</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 教授讲台无线麦直推本地语音容器 (&lt;=300ms 实时字幕)</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动挂载本学期微积分/生物化学专属课件术语词表</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">视障考生全语音读图与公式无障碍播报 (MathML)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 将复杂分式、积分号与几何图形转化为结构化自然口语描述</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 支持视障学生按步骤回退重听：“再念一遍分子括号里的项”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">100% 满足 ADA Title II / Section 508 / EAA 规范</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">让每一位特殊需求学子享受平等的 AI 语音教育赋能</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">智慧教育与高校无障碍语音全链路（Socratic Pedagogy &amp; Campus Compliance Loop）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 伴学辅导：80KB 拍手写草稿 + SymPy 符号求解基准 + 三级苏格拉底反问启发 (物理屏蔽直接给答案)</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 2. 校园热线：P117 FERPA 授权核验防成绩/行踪外泄 ➔ 3. 公平无障碍 (P14)：口吃 3.2s 耐心窗 + 视障 MathML 公式分步精读</text>
+  </g>
+</svg>
