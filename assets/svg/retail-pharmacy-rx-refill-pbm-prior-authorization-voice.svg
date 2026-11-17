@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg43" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#111F38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="rxGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="lasaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+    <linearGradient id="pbmGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg43)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Retail Pharmacy Rx Refill, LASA Drug Disambiguation &amp; PBM Prior Auth Voice</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">连锁药房智能续方（Rx Refill）、听似看似易混淆药品消歧（LASA / P73 管制药）与商保/医保事先授权（P95）全景图</text>
+  <rect x="906" y="42" width="246" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1029" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">PHARMACY-PBM-01 · P73/P95</text>
+
+  <!-- Pillar 1: LASA Phonetic Drug Disambiguation & Controlled Substance Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F97316" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#lasaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 听似药品 (LASA) 消歧与管制药硬锁 (P73)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 药房头号致命事故：“听音相似药名张冠李戴”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 患者含糊报药名：Hydroxyzine(抗过敏) vs Hydralazine(降压)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或他达拉非 vs 西地那非、消炎痛 vs 消心痛，错发直接危及生命！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#FDBA74" font-size="13" font-weight="700">ISMP 高危听似药名库 (LASA) + 适应症反查锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁仅凭口头药名直接续方！强制锚定患者历史电子处方</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 追问核对：“您要续的是降血压那粒 25mg 的，对吗？”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">P73 精麻管制药 (Schedule II) 零自动续方红线</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 羟考酮/阿普唑仑/哌甲酯等精麻药物理屏蔽 AI 自动续方</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动核查跨院防滥用库 (PDMP) 并强制转接执业药师审核</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">听似药品 (LASA) 错配率从 3.8% 降至 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 DEA EPCS / 国家精麻药品处方管理规范</text>
+  </g>
+
+  <!-- Pillar 2: Retail Pharmacy 24x7 Rx Refill, Stock Transfer & DDI Check -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rxGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 连锁药房慢病续方、调货与执业药师减负</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="82" fill="#93C5FD" font-size="13" font-weight="700">解放门店药师每天接 120 通“我的药配好了吗”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 门店药师被查进度、问医保报销电话打断，耽误柜台发药核对</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• AI 接管 76% 常规续方、配药状态查询与同城冷链闪送</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">单店缺货 1秒跨店查库存锁定 (Zero Lost Rx)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 司美格鲁肽/特药本店断货 ➔ 自动查周边 2公里兄弟门店</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 当场将电子处方一键平移至有货门店并锁死冷链预留</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">药物相互作用 (DDI) 与新发不良反应筛查</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 患者买布洛芬时，自动比对其在服华法林抗凝药 ➔ 触发出血预警</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 首剂用药 72小时自动外呼随访耐受度，断药率下降 38%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">门店药师电话打扰减少 76% · 处方流失率降 64%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单通续方成本从 $3.80 压降至 $0.14</text>
+  </g>
+
+  <!-- Pillar 3: Payer / PBM Prior Authorization (P95 CMS 24h/72h SLA) -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pbmGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 商保/医保特药事先授权 (P95 Prior Auth)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">终结诊所护士打商保 PBM 电话排队 45分钟</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 肿瘤靶向药/罕见病特药需向保险公司申请事先授权 (PA)</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• AI 秒接医院来电，自动核验基因检测报告与阶梯疗法记录</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">CMS 42 CFR §423 加急 24h / 标准 72h 刚性分流</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 识别临床危急指征 ➔ 自动升入 24小时加急审批绿色通道</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 续方患者自动继承历史豁免权，免除重复尝试无效一线药</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">严禁 AI 全自动拒保 (No Autonomous Denial Lock)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 符合指南的申请：AI 30秒当场自动秒批 (Auto-Approve)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 存疑/拟拒付申请：100% 强制打包送交人类医学总监亲审！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">合规特药申请 68% 当场 30秒自动秒批</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 遵守“AI 只做秒批与初筛、拒保必经真人医师”法规</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">医药零售与商保 PBM 零差错语音闭环（Pharmacy &amp; PBM Zero-Error Voice Pipeline）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 患者续方：处方号/生日绑定 + LASA 听似药名适应症反查 ➔ 2. 安全门禁：P73 精麻药禁自动续方 + DDI 相互作用拦截</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 3. 履约调剂：缺货跨店秒移单 + 慢病 72h 依从性随访 ➔ 4. 医保/商保 PA (P95)：合规秒批放行，拟拒付 100% 转人类医师复核</text>
+  </g>
+</svg>
