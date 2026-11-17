@@ -22,7 +22,7 @@
 
 ## 2. Bilingual Documentation Pairings (`main` Branch)
 
-### 2.0 Enterprise Real-Time Voice & Multimodal Application, Architecture & Platform Selection Matrix (39 Flagship Bilingual Guides)
+### 2.0 Enterprise Real-Time Voice & Multimodal Application, Architecture & Platform Selection Matrix (46 Flagship Bilingual Guides · [2026-11-18 Panorama Digest](./daily/2026-11-18.en.md))
 
 | Category & ID | Guide Topic | English Guide (`English`) | Chinese Guide (`中文`) | Key Architectural Verdict & ROI |
 | :--- | :--- | :--- | :--- | :--- |

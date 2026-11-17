@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg48" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentBlue48" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="accentEmerald48" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="accentPurple48" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="780" fill="url(#bg48)"/>
+
+  <!-- Header Banner -->
+  <rect x="32" y="22" width="1216" height="90" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <rect x="48" y="38" width="248" height="26" rx="13" fill="url(#accentBlue48)"/>
+  <text x="172" y="55" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">ARCHITECT PANORAMA · 46 SELECTION FAQS</text>
+  <text x="312" y="55" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="19" font-weight="700">Enterprise Real-Time Voice &amp; Multimodal AI Solution Architect Decision Matrix (2026-11-18)</text>
+  <text x="48" y="88" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="13">46 Bilingual Selection FAQs · 3 Core Architect Pillars (Industry Applications · End-to-End Orchestration · Model/Platform Comparisons) · Zero Low-Level Telecom RFC Noise</text>
+
+  <!-- Pillar 1: Mainstream Platform, Model & Framework Selection Comparisons -->
+  <rect x="32" y="128" width="388" height="515" rx="14" fill="#0F172A" stroke="#3B82F6" stroke-width="1.8"/>
+  <rect x="48" y="144" width="356" height="34" rx="8" fill="url(#accentBlue48)"/>
+  <text x="226" y="166" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" text-anchor="middle">1. Model, Framework &amp; Cloud Platform Selection</text>
+
+  <rect x="48" y="192" width="356" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="62" y="212" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Native S2S vs. Cascaded vs. Hybrid Dual-Track</text>
+  <text x="62" y="232" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Azure GPT-Live-1 (95.2% noise resilience) &amp; gpt-realtime-1.5</text>
+  <text x="62" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Phi4-mm-realtime ($0.048/min high-volume structured edge)</text>
+  <text x="62" y="266" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11">• vs Gemini Live / Nova Sonic / Cascaded STT+LLM+TTS</text>
+
+  <rect x="48" y="284" width="356" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="62" y="304" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Voice Orchestration Frameworks Head-to-Head</text>
+  <text x="62" y="324" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• LiveKit Agents (WebRTC Mobile/Web/3D Avatar rooms)</text>
+  <text x="62" y="342" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Azure ACS Call Automation + Voice Live (Enterprise PSTN/SIP)</text>
+  <text x="62" y="358" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11">• vs Pipecat (Custom AI DAGs) &amp; Vapi / Retell AI (Rapid MVP)</text>
+
+  <rect x="48" y="376" width="356" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="62" y="396" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Speech STT/TTS, Brand Voice Cloning &amp; Avatar</text>
+  <text x="62" y="416" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Azure DragonHDFlash / CNV / Live Interpreter / Containers</text>
+  <text x="62" y="434" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• vs ElevenLabs Flash v2.5 / Deepgram Nova-3 / Cartesia Sonic</text>
+  <text x="62" y="450" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11">• vs Self-Hosted CosyVoice 2 / Fish Speech 1.5</text>
+
+  <rect x="48" y="468" width="356" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="62" y="488" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Low-Code SaaS vs. Pro-Code PaaS &amp; FinOps PTU</text>
+  <text x="62" y="508" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Copilot Studio + D365 vs Azure AI Foundry + ACS (85k-min/mo)</text>
+  <text x="62" y="526" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Hybrid Front-Door saves 61.9% 3-Yr TCO (920ms -&gt; 380ms)</text>
+  <text x="62" y="542" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Keep-Last-2-Audio Pruning (-62.5%) &amp; P55 PTU Spillover (-68.4%)</text>
+
+  <rect x="48" y="560" width="356" height="68" rx="8" fill="#172554" stroke="#3B82F6"/>
+  <text x="62" y="582" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700">Benchmark &amp; Selection Takeaway</text>
+  <text x="62" y="601" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11">100% grounded in business TCO ($/min), TTFT latency (ms),</text>
+  <text x="62" y="617" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11">compliance boundaries, and 7-Card reproducible scorecards.</text>
+
+  <!-- Pillar 2: End-to-End Voice Application Reference Architecture -->
+  <rect x="438" y="128" width="396" height="515" rx="14" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+  <rect x="454" y="144" width="364" height="34" rx="8" fill="url(#accentEmerald48)"/>
+  <text x="636" y="166" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" text-anchor="middle">2. End-to-End Voice Orchestration &amp; Guardrails</text>
+
+  <rect x="454" y="192" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="468" y="212" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Full-Duplex Barge-In, Semantic EOU &amp; AEC</text>
+  <text x="468" y="232" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Semantic EOU cuts mid-number cut-offs by 89.4%</text>
+  <text x="468" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Backchannel classifier reduces "uh-huh" stops 41% -&gt; 1.2%</text>
+  <text x="468" y="266" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Byte-aligned item.truncate eliminates post-barge-in drift</text>
+
+  <rect x="454" y="284" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="468" y="304" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Slow ERP/CRM Integration &amp; Multi-Agent Swarm</text>
+  <text x="468" y="324" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• 1.5s Ring-Time Pre-Hydration + 300ms/2.5s/6s Zero-Dead-Air Pacer</text>
+  <text x="468" y="342" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Domain-Scoped Swarm (&lt;=5 tools) lifts accuracy 61.2% -&gt; 98.4%</text>
+  <text x="468" y="358" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11">• 12ms session.update handoff + 1:25 Supervisor Whisper</text>
+
+  <rect x="454" y="376" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="468" y="396" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Voice-Native RAG, MCP Security &amp; Enterprise PBX</text>
+  <text x="468" y="416" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• 120-token spoken_digest cuts RAG latency 3.5x &amp; cost 88.4%</text>
+  <text x="468" y="434" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• P40 MCP Schema Lock + Front-Door SBC saves $540k/yr PBX tax</text>
+  <text x="468" y="450" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11">• 36B UUI 65ms CTI Screen-Pop (Genesys / Cisco / Avaya / Connect)</text>
+
+  <rect x="454" y="468" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="468" y="488" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Anti-Deepfake Biometrics, Privacy &amp; Observability</text>
+  <text x="468" y="508" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• S08 Acoustic Liveness (99.6% clone block) + Zero Voiceprint DB</text>
+  <text x="468" y="526" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Word-Timestamp WAV Bleeping (GDPR / PIPL / BIPA / HIPAA)</text>
+  <text x="468" y="542" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11">• 500-Call Audio Eval in 8 Mins + OTel 6-Segment Waterfall</text>
+
+  <rect x="454" y="560" width="364" height="68" rx="8" fill="#064E3B" stroke="#10B981"/>
+  <text x="468" y="582" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700">Deterministic Execution Principle</text>
+  <text x="468" y="601" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11">All financial, clinical, safety, and identity mutations are gated by</text>
+  <text x="468" y="617" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11">deterministic rule engines outside generative LLM weights.</text>
+
+  <!-- Pillar 3: 36 Industry Voice & Multimodal Application Scenarios -->
+  <rect x="852" y="128" width="396" height="515" rx="14" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+  <rect x="868" y="144" width="364" height="34" rx="8" fill="url(#accentPurple48)"/>
+  <text x="1050" y="166" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" text-anchor="middle">3. 36 High-Value Industry Scenarios &amp; ROI</text>
+
+  <rect x="868" y="192" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="882" y="212" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Customer Service, BFSI, Treasury &amp; Outbound</text>
+  <text x="882" y="232" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Contact Center Copilot (70% L1 deflection + 3s Auto-Wrap-Up)</text>
+  <text x="882" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Wealth Dual-Recording (99.4% QA) &amp; Corporate Treasury P43</text>
+  <text x="882" y="266" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Outbound AI SDR (-93.4% Cost/SQL) &amp; Advisor Field Copilot</text>
+
+  <rect x="868" y="284" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="882" y="304" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Healthcare, Pharmacy, Elderly Care &amp; Education</text>
+  <text x="882" y="324" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Pre-Triage Red-Flag ER + On-Prem 5s SOAP Scribe + PV P89</text>
+  <text x="882" y="342" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Bedside Nurse Call (62% deflection) + OR P155 + Pharmacy P73/P95</text>
+  <text x="882" y="358" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Elderly Fall Guardian (98.6%) + Socratic Tutor (83% Mastery)</text>
+
+  <rect x="868" y="376" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="882" y="396" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Retail, QSR, Livestream, Travel, Media &amp; Tourism</text>
+  <text x="882" y="416" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• QSR Drive-Thru ($0.022/order, 85dB) &amp; Livestream 3D Avatar (-87%)</text>
+  <text x="882" y="434" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Airline IRROPS (86% deflection) &amp; 60-Lang Hotel Concierge</text>
+  <text x="882" y="450" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Short-Drama Dubbing (-99.7% cost) &amp; Museum UWB Docent</text>
+
+  <rect x="868" y="468" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="882" y="488" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Auto, Industrial, Energy, Logistics, Gov &amp; Telecom</text>
+  <text x="882" y="508" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• In-Cabin Voice (65% Edge NPU) + NG-eCall Crash + EV OCPP/VPP</text>
+  <text x="882" y="526" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Warehouse Picking (99.97%) + Aviation A-CDM + Offshore Edge</text>
+  <text x="882" y="542" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Telecom ISP 12s Outage Deflection (91.5%) + 12345/311 + Legal</text>
+
+  <rect x="868" y="560" width="364" height="68" rx="8" fill="#3B0764" stroke="#A855F7"/>
+  <text x="882" y="582" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700">Gold-Standard Structure Across All 46 Guides</text>
+  <text x="882" y="601" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11">Executive Summary · Q1-Q3 Deep-Dive · 3 Mermaid Diagrams ·</text>
+  <text x="882" y="617" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11">Decision Matrix · 10k-Min TCO &amp; 7-Card Summary · Checklist</text>
+
+  <!-- Bottom Executive Bar -->
+  <rect x="32" y="658" width="1216" height="98" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="52" y="685" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">2026-11-18 Nightly Research Highlight · 7 New Flagship Guides Added Tonight (Rounds 41–47):</text>
+  <text x="52" y="709" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• [R41] Copilot Studio + D365 vs. Azure AI Foundry + ACS (85k-min breakeven, -61.9% hybrid TCO)   • [R42] Smart Hospital Bedside Nurse Call (62% deflection) &amp; Sterile OR P155</text>
+  <text x="52" y="728" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• [R43] Retail Pharmacy LASA P73 (0% mix-ups) &amp; PBM Prior Auth P95 (30s green-light)   • [R44] EV Supercharging 15s OCPP Self-Healing (82.4%) &amp; Residential VPP P151 (79.4% opt-in)</text>
+  <text x="52" y="746" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12">• [R45] Corporate Treasury Maker-Checker P43 (100% deepfake wire block) &amp; Trading Turret   • [R46] Socratic Voice Tutor (0% spoilers, 83% mastery) &amp; FERPA P117   • [R47] Telecom ISP Outage (91.5% 12s deflection) &amp; P97</text>
+</svg>

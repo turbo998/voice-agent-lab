@@ -2055,10 +2055,10 @@ async function handleSizeExchangeMcp(orderId, newSize, session) {
 const RESOURCES_DATA = {
   "zh-CN": [
     {
-      badge: "39 Flagship Selection FAQs",
-      title: "39 篇企业实时语音与多模态应用场景、架构设计与平台选型全景指南",
-      desc: "覆盖联络中心 Copilot、销售陪练、多语种同传、数字人导购、车载座舱、医疗问诊、银行双录、餐饮得来速、航延改签、政务12345、跨境物流、工业巡检、游戏NPC、智能外呼、IT服务台、理财陪访、矿山卫星、智慧物业、AI面试官、车企eCall、司法庭审、影视译制、智慧养老、智慧农业、文旅博物馆、仓储拣选与机坪调度，以及 LiveKit/Pipecat/ACS、STT/TTS、S2S 大模型、PBX集成、Voice RAG、FinOps PTU 与可观测性选型。",
-      btnText: "浏览 39 篇中英双语选型矩阵 ↗",
+      badge: "46 Flagship Selection FAQs",
+      title: "46 篇企业实时语音与多模态应用场景、架构设计与平台选型全景指南",
+      desc: "覆盖联络中心 Copilot、销售陪练、多语种同传、数字人导购、车载座舱、医疗问诊、住院床旁/手术室P155、连锁药房LASA/PBM、银行双录、企业网银财资P43/交易台、餐饮得来速、航延改签、政务12345、跨境物流、工业巡检、游戏NPC、智能外呼、IT服务台、理财陪访、矿山卫星、智慧物业、AI面试官、车企eCall、超充OCPP/虚拟电厂VPP、司法庭审、影视译制、智慧养老、智慧农业、文旅博物馆、仓储拣选、机坪调度、苏格拉底语音家教/FERPA与电信宽带群障/防SIM-Swap，以及 Copilot Studio vs Foundry+ACS、LiveKit/Pipecat/ACS、STT/TTS、S2S 大模型、PBX集成、Voice RAG、FinOps PTU 与可观测性选型。",
+      btnText: "浏览 46 篇中英双语选型矩阵 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
     {
@@ -2106,10 +2106,10 @@ const RESOURCES_DATA = {
   ],
   "zh-TW": [
     {
-      badge: "39 Flagship Selection FAQs",
-      title: "39 篇企業即時語音與多模態應用場景、架構設計與平台選型全景指南",
-      desc: "涵蓋聯絡中心 Copilot、銷售陪練、多語種同傳、數字人導購、車載座艙、醫療問診、銀行雙錄、餐飲得來速、航延改簽、政務12345、跨境物流、工業巡檢、遊戲NPC、智能外呼、IT服務台、理財陪訪、礦山衛星、智慧物業、AI面試官、車企eCall、司法庭審、影視譯製、智慧養老、智慧農業、文旅博物館、倉儲揀選與機坪調度，以及 LiveKit/Pipecat/ACS、STT/TTS、S2S 大模型、PBX集成、Voice RAG、FinOps PTU 與可觀測性選型。",
-      btnText: "瀏覽 39 篇中英雙語選型矩陣 ↗",
+      badge: "46 Flagship Selection FAQs",
+      title: "46 篇企業即時語音與多模態應用場景、架構設計與平台選型全景指南",
+      desc: "涵蓋聯絡中心 Copilot、銷售陪練、多語種同傳、數字人導購、車載座艙、醫療問診、住院床旁/手術室P155、連鎖藥房LASA/PBM、銀行雙錄、企業網銀財資P43/交易台、餐飲得來速、航延改簽、政務12345、跨境物流、工業巡檢、遊戲NPC、智能外呼、IT服務台、理財陪訪、礦山衛星、智慧物業、AI面試官、車企eCall、超充OCPP/虛擬電廠VPP、司法庭審、影視譯製、智慧養老、智慧農業、文旅博物館、倉儲揀選、機坪調度、蘇格拉底語音家教/FERPA與電信寬頻群障/防SIM-Swap，以及 Copilot Studio vs Foundry+ACS、LiveKit/Pipecat/ACS、STT/TTS、S2S 大模型、PBX集成、Voice RAG、FinOps PTU 與可觀測性選型。",
+      btnText: "瀏覽 46 篇中英雙語選型矩陣 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
     {
@@ -2157,10 +2157,10 @@ const RESOURCES_DATA = {
   ],
   en: [
     {
-      badge: "39 Flagship Selection FAQs",
-      title: "39 Enterprise Real-Time Voice & Multimodal Application, Architecture & Platform Selection Guides",
-      desc: "Comprehensive Cloud & AI Solution Architect decision guides covering Contact Center Copilot, Sales Roleplay, Simultaneous Interpretation, Livestream Avatars, In-Cabin Voice, Healthcare Scribe, Wealth Dual-Recording, QSR Drive-Thru, Airline IRROPS, 311/12345 Hotlines, Logistics, Field Service, Gaming NPCs, Outbound AI SDR, Internal IT Helpdesk, Field Advisors, Satellite/Mining Edge, Elevator SOS, AI Voice Interviewers, Auto NG-eCall, Legal Intake, Film Dubbing, Elderly Fall Guardians, Smart Agriculture, Museum UWB Docents, Warehouse Voice Picking & Airport A-CDM, plus LiveKit/Pipecat/ACS, STT/TTS, S2S Models, PBX, Voice RAG, FinOps PTU & Observability.",
-      btnText: "Browse 39 Bilingual Selection FAQs ↗",
+      badge: "46 Flagship Selection FAQs",
+      title: "46 Enterprise Real-Time Voice & Multimodal Application, Architecture & Platform Selection Guides",
+      desc: "Comprehensive Cloud & AI Solution Architect decision guides covering Contact Center Copilot, Sales Roleplay, Simultaneous Interpretation, Livestream Avatars, In-Cabin Voice, Healthcare Scribe, Hospital Bedside/OR P155, Retail Pharmacy LASA/PBM, Wealth Dual-Recording, Corporate Treasury P43/Turret, QSR Drive-Thru, Airline IRROPS, 311/12345 Hotlines, Logistics, Field Service, Gaming NPCs, Outbound AI SDR, Internal IT Helpdesk, Field Advisors, Satellite/Mining Edge, Elevator SOS, AI Voice Interviewers, Auto NG-eCall, EV OCPP/VPP, Legal Intake, Film Dubbing, Elderly Fall Guardians, Smart Agriculture, Museum UWB Docents, Warehouse Voice Picking, Airport A-CDM, Socratic Voice Tutor/FERPA & Telecom ISP Outage/P97, plus Copilot Studio vs. Foundry+ACS, LiveKit/Pipecat/ACS, STT/TTS, S2S Models, PBX, Voice RAG, FinOps PTU & Observability.",
+      btnText: "Browse 46 Bilingual Selection FAQs ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.en.md"
     },
     {
