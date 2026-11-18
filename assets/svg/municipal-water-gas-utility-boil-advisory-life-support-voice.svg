@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgUtil" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05101F"/>
+      <stop offset="50%" stop-color="#0B2239"/>
+      <stop offset="100%" stop-color="#061222"/>
+    </linearGradient>
+    <linearGradient id="gasGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="boilGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="medGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgUtil)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Municipal Water &amp; Gas Utility Voice AI: Gas-Odor Evacuation, Boil-Water Alert &amp; Medical Shutoff Lock</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">城市水务与燃气热线：燃气四氢噻吩臭味 0ms 撤离锁、管网爆管煮沸令 (Boil-Water) 广播与居家血液透析禁停水电锁全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">UTILITY-WATER-01 · Public</text>
+
+  <!-- Pillar 1: Gas Mercaptan Odor 0ms Evacuation & Main Break Triage -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#gasGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 燃气臭味 0ms 撤离抢占与市政爆管定位</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 闻到燃气臭鸡蛋味严禁在室内继续核对户号查表！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 市民来电：“家里厨房闻到浓烈煤气/臭鸡蛋味 (四氢噻吩)”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 0ms 跳过户号验证！指令：“勿碰任何电灯开关/排风扇，立即到户外！”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">供水主干管爆管 vs 户内马桶漏水秒级分流</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 马路消火栓被撞断或柏油路拱起涌水：0ms 直通水务调度关断 DMA 阀门</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 智能远传水表 (AMI) 夜间 2–4点恒定流量 &gt;15L/h：主动语音提醒暗漏</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">开挖施工前地下管线核查 (Call 811 Before You Dig)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 市政/装修队动土前语音报备坐标：自动比对 GIS 高压燃气管与光缆走线</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 派发探管员现场画线标注，杜绝挖掘机一铲子挖断全区主燃气管道</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">燃气泄漏抢修车派单响应从 4分钟缩至 12秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">室内开关电器电火花诱发闪爆风险 = 0.0%</text>
+  </g>
+
+  <!-- Pillar 2: Boil-Water Advisory & Water-Quality Surge Triage -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#boilGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 煮沸饮水令 (Boil-Water) 广播与水质突变分诊</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">主管道抢修失压后 EPA 法定 24h 煮沸饮水通知</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 管网水压跌破 20 psi 存在地下水倒灌污染风险：必须发布 Boil-Water Notice</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 按 GIS DMA 分区在 15分钟内向受影响 5万户拨出多语种沸腾1分钟指引</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将化学异味/农药味/油味水当普通铁锈水安抚！</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 管道施工后放水发黄/微白气泡：指导打开冷水龙头放水 5分钟观察</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 自来水有汽油/苦杏仁/化工异味或蓝色？0ms 指令禁饮禁洗澡并报水质科！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">医院血液透析中心与食品饮料厂一级优先预警</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 水厂切换水源或加氯量调整：提前 2小时语音强呼辖区医院血透室</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 提醒血透室反渗透水处理间加密监测总氯/氯胺，防止透析患者溶血！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">管网爆管停水/复水 10万户并发通知 15分钟触达</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">医院透析室与危化异味水质报警漏报率 = 0.0%</text>
+  </g>
+
+  <!-- Pillar 3: Medical Baseline / Dialysis & Winter Moratorium Shutoff Protection -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#medGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 居家透析/维生设备与寒冬严禁停水电燃气锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁对居家腹透/血透或呼吸机家庭执行欠费远程关阀！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 户内有居家血液透析机、制氧机或新生儿暖箱 (Medical Baseline)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 一旦因欠 ¥150 水电费被智能表远程关阀断电，30分钟内即危及生命！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">严寒冰冻期 (&lt;=0°C) 与酷暑期法定禁停保护 (Moratorium)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 北方冬季零下 10度欠费停燃气供暖不仅冻死独居老人，还会冻裂全楼管道</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 0ms 冻结远程关阀指令，自动开启 30天医疗宽限期与低保阶梯减免</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">燃气表地震/过流自锁后复气“灶具全关”安全双核</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 用户充值后申请远程开阀复气：严禁直接后台把阀门顶开！</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 必须语音核实“人在家中且燃气灶与热水器旋钮已全部关闭”后才解锁</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">维生医疗家庭违规停水停电气事故 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">无人看管状态下燃气表盲目远程复气泄漏率 = 0.0%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (UTILITY-WATER-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 公用事业热线检出“燃气异味”必须 0ms 跳过户号验证并指令立即撤至户外；检出“自来水化工/燃油异味”必须 0ms 指令禁止饮用洗浴并告警水质中心；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 严禁对登记有维生医疗设备 (透析/呼吸机) 或处于法定严寒/酷暑禁停期的家庭下发欠费远程关阀指令，且燃气远程复气必须确认户内有人且灶具全关。</text>
+</svg>

@@ -162,6 +162,7 @@ flowchart LR
 88. **血液中心献血健康征询（GB 18467/AABB 暂缓锁）、Rh阴性熊猫血应急招募、献血后回告 0ms 血袋冻结与器官移植冷缺血（CIT）协同方案**：[中文](./docs/blood-center-donor-screening-organ-transplant-voice-selection-faq.md) | [EN](./docs/blood-center-donor-screening-organ-transplant-voice-selection-faq.en.md)
 89. **民航机务维修（MRO）按机尾号（Tail/MSN）精准查 AMM/MEL、必检项（RII）双人独立声纹互检与关舱前工具零遗留（FOD）方案**：[中文](./docs/aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.md) | [EN](./docs/aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.en.md)
 90. **幼儿园与 K-12 校车防遗忘空车巡检（车尾物理按钮+雷达四重锁）、放学接送抚养权限制令拦截与校医传染病聚类预警方案**：[中文](./docs/k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.md) | [EN](./docs/k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.en.md)
+91. **城市水务与燃气公用事业（燃气臭味 0ms 零鉴权撤离锁、煮沸饮水令广播、维生医疗家庭禁停锁与燃气人在表前安全复气）方案**：[中文](./docs/municipal-water-gas-utility-boil-advisory-life-support-voice-selection-faq.md) | [EN](./docs/municipal-water-gas-utility-boil-advisory-life-support-voice-selection-faq.en.md)
 
 ---
 

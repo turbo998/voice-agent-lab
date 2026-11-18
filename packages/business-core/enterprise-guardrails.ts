@@ -1818,6 +1818,30 @@ export function evaluateCampusBusPickupSafetyGuard(input: {
   };
 }
 
+export interface UtilityWaterGasSafetyEvaluation {
+  policyCode: "UTILITY-WATER-01";
+  immediateOutdoorEvacuationOrdered: boolean;
+  remoteShutoffBlocked: boolean;
+  unattendedRemoteGasReopenBlocked: boolean;
+}
+
+/**
+ * Deterministic Municipal Water & Gas Utility Gas-Odor Evacuation, Medical Baseline Shutoff Immunity & Safe Gas Reopen Guard (`UTILITY-WATER-01`).
+ */
+export function evaluateUtilityWaterGasSafetyGuard(input: {
+  gasMercaptanOdorReported: boolean;
+  hasMedicalLifeSupportOrFreezingMoratorium: boolean;
+  customerPhysicallyAtGasMeterWithBurnersOff: boolean;
+}): UtilityWaterGasSafetyEvaluation {
+  return {
+    policyCode: "UTILITY-WATER-01",
+    immediateOutdoorEvacuationOrdered: input.gasMercaptanOdorReported,
+    remoteShutoffBlocked: input.hasMedicalLifeSupportOrFreezingMoratorium,
+    unattendedRemoteGasReopenBlocked: !input.customerPhysicallyAtGasMeterWithBurnersOff,
+  };
+}
+
+
 
 
 
