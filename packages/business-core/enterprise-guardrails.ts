@@ -1053,6 +1053,41 @@ export function evaluateS2sEmotionalContagionLufsGuard(input: {
   };
 }
 
+export interface InterpreterPolarityHotwordEvaluation {
+  policyCode: "INTERP-POLARITY-01";
+  targetTtsReleaseAllowed: boolean;
+  bilingualReadbackRequired: boolean;
+  clampedHotwordBoostScore: number;
+  crossTenantLexiconBlocked: boolean;
+}
+
+/**
+ * Deterministic Simultaneous Interpreter Negation/Dosage Polarity Lock & Tenant WFST Hotword Guard (`INTERP-POLARITY-01`).
+ * Blocks target TTS emission and requires bilingual readback when source/target negation polarity or dosage entities drift,
+ * clamps shallow-fusion hotword boost to [1.0, 4.5], and blocks cross-tenant WFST trie reuse.
+ */
+export function evaluateInterpreterPolarityHotwordGuard(input: {
+  sourceHasNegation: boolean;
+  targetHasNegation: boolean;
+  sourceDosageMg: number;
+  targetDosageMg: number;
+  requestedHotwordBoost: number;
+  sessionTenantId: string;
+  trieOwnerTenantId: string;
+}): InterpreterPolarityHotwordEvaluation {
+  const polarityAndDosageMatch =
+    input.sourceHasNegation === input.targetHasNegation &&
+    input.sourceDosageMg === input.targetDosageMg;
+  const tenantMatch = input.sessionTenantId === input.trieOwnerTenantId;
+  return {
+    policyCode: "INTERP-POLARITY-01",
+    targetTtsReleaseAllowed: polarityAndDosageMatch && tenantMatch,
+    bilingualReadbackRequired: !polarityAndDosageMatch,
+    clampedHotwordBoostScore: Math.max(1.0, Math.min(4.5, input.requestedHotwordBoost)),
+    crossTenantLexiconBlocked: !tenantMatch,
+  };
+}
+
 
 
 

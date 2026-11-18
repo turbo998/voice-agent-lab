@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **63 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **64 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (63 Bilingual Guides)
+## 3. Solution Architect Selection Guides (64 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -63,7 +63,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (40 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (41 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -104,3 +104,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 61. **EAA/ADA Speech Accessibility (2200ms Disfluency EOU & RTT Fallback) & E911/112 PIDF-LO Zero-Auth Preemption**: [EN](./voice-accessibility-disfluency-e911-pidflo-bridge-faq.en.md) | [中文](./voice-accessibility-disfluency-e911-pidflo-bridge-faq.md)
 62. **Omnichannel Voice + Mobile App CAS Optimistic Concurrency Lock, 8kHz Ultrasonic Filter & $2.50 Wallet Guard**: [EN](./voice-omnichannel-cas-concurrency-ultrasonic-wallet-guard-faq.en.md) | [中文](./voice-omnichannel-cas-concurrency-ultrasonic-wallet-guard-faq.md)
 63. **Native S2S Emotional Contagion Clamp (-18 LUFS), Syntactic Incomplete-Clause Hold (1350ms) & C2PA Watermark**: [EN](./voice-s2s-emotional-contagion-lufs-syntactic-incomplete-hold-faq.en.md) | [中文](./voice-s2s-emotional-contagion-lufs-syntactic-incomplete-hold-faq.md)
+64. **Live Simultaneous Interpretation Polarity/Dosage AST Lock (Wait-k) & Multi-Tenant Hotword WFST Isolation**: [EN](./voice-realtime-interpreter-polarity-hotword-isolation-faq.en.md) | [中文](./voice-realtime-interpreter-polarity-hotword-isolation-faq.md)
