@@ -1388,6 +1388,37 @@ export function evaluateVeterinaryPoisonTriageGuard(input: {
   };
 }
 
+export interface HvacApplianceGasSafetyEvaluation {
+  policyCode: "HVAC-APPLIANCE-01";
+  gasOrSmokeEmergencyShutoffAlert: boolean;
+  diyCasingOrCapacitorInstructionBlocked: boolean;
+  preReservedBomPartSku: string | null;
+  heatwaveSeniorPriority4h: boolean;
+}
+
+/**
+ * Deterministic Smart Home Appliance & HVAC After-Sales Safety & First-Time-Fix Guard (`HVAC-APPLIANCE-01`).
+ * Triggers 0ms valve/breaker shutoff alert on gas smell or smoke, blocks consumer DIY instructions involving tools,
+ * casing removal, 220V/310V capacitors or gas valves, locks BOM spare-part SKU from photo, and prioritizes seniors in heatwaves.
+ */
+export function evaluateHvacApplianceGasSafetyGuard(input: {
+  gasSmellOrSmokeDetected: boolean;
+  draftInstructsToolsOrCasingRemoval: boolean;
+  resolvedBomPartSku: string | null;
+  outdoorTempCelsius: number;
+  householdHasSeniorOrInfant: boolean;
+}): HvacApplianceGasSafetyEvaluation {
+  return {
+    policyCode: "HVAC-APPLIANCE-01",
+    gasOrSmokeEmergencyShutoffAlert: input.gasSmellOrSmokeDetected,
+    diyCasingOrCapacitorInstructionBlocked: input.draftInstructsToolsOrCasingRemoval,
+    preReservedBomPartSku: input.resolvedBomPartSku,
+    heatwaveSeniorPriority4h:
+      (input.outdoorTempCelsius >= 38 || input.outdoorTempCelsius <= -5) &&
+      input.householdHasSeniorOrInfant,
+  };
+}
+
 
 
 

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgHvac" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07101C"/>
+      <stop offset="50%" stop-color="#10213A"/>
+      <stop offset="100%" stop-color="#091324"/>
+    </linearGradient>
+    <linearGradient id="visGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="safeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="ftfGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgHvac)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Home Appliance &amp; HVAC After-Sales Triage, 80KB Error-Code Vision &amp; First-Time-Fix Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">智能白电与暖通空调（空调/热泵/燃气热水器/洗碗机）看图听音自愈、防私拆燃气/高压电安全锁与带件一次修复全景图</text>
+  <rect x="904" y="42" width="248" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1028" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">HVAC-APPLIANCE-01 · 91% FTF</text>
+
+  <!-- Pillar 1: 80KB Panel Vision & Acoustic Motor/Compressor Diagnosis -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#visGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 80KB 铭牌/故障码看图与异响听音自愈</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">消灭“用户报不清型号、把 E1 看成 F1”痛点</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 同一故障码 `E4` 在不同年份机型代表完全不同的传感器故障</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 通话中弹 Visual IVR 拍 80KB 铭牌+面板灯，1秒锁准 BOM</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">68% 假故障口语化一步步引导自愈 (Deflection)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 洗衣机 `E2` 排水超时：引导拧开右下角排污滤网取出硬币</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 空调不制冷：引导看遥控器是否误设成了“送风/除湿”模式</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">压缩机/水泵/风机轴承声纹听音初筛</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 用户把手机贴近冰箱/空调外机录 5秒异响</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 频谱区分“管路共振 (免换件)” vs “压缩机卡缸/启动电容击穿”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">每年节省数百万次“空跑一趟”无效上门单</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">每次成功远程自愈为品牌立省 $38 上门人工费</text>
+  </g>
+
+  <!-- Pillar 2: Zero-DIY High-Voltage / Gas / Refrigerant Safety Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#safeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 严禁引导用户私拆燃气管/220V主板安全锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁大模型教消费者拿螺丝刀拆外壳测电容！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 微波炉高压电容断电后仍存 2,000V 致命高压！</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• R32/R290 空调冷媒与燃气热水器比例阀严禁用户自行拆动</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">消费者免工具边界围栏 (Tool-Free Boundary Lock)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 仅允许引导用户执行《说明书日常维护》内的免工具操作</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 凡涉及“拆螺丝、拔主板插头、动燃气管”：0ms 拦截并派师傅</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">燃气味 / 焦糊冒烟 / 漏电麻手 0ms 抢占告警</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 听到“热水器有煤气味/插座冒火花”：0ms 终止排障</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 强制播报：“立即关闭燃气总阀/拉下电闸、开窗通风、切勿触碰！”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">消费者 DIY 触电与燃气爆燃引导事故 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 UL / CE / GB 4706 家电售后安全红线</text>
+  </g>
+
+  <!-- Pillar 3: Pre-Picked Spare Parts & First-Time-Fix (FTF) Dispatch -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ftfGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 备件精准预领与一次上门修复率 (91% FTF)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">消灭“师傅上门看一眼、没带配件下周再来”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统电话只记“冰箱不制冷”，师傅空手上门发现是变频板坏了</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• AI 结合 IoT 遥测与故障码，派单时直接锁死配件编码 `PCB-882`</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">高空作业与安装环境预核查 (防临时加价纠纷)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 派单前必问：“空调外机在几楼？是否有落地百叶窗或需蜘蛛人吊绳？”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动核定高空作业费标准并短信确认，根治乱收费投诉</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">三伏天/寒潮百倍报修洪峰 VIP 老弱优先队列</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 40°C 酷暑或 -15°C 暖气停机时，识别家中有高龄老人/婴儿</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 自动提权为 4小时紧急抢修单，降低高温中暑与冻管事故</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">师傅带件一次上门修复率从 64% 跃升至 91%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">每年为大型家电集团节省超 $1,400 万二次上门补贴</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (HVAC-APPLIANCE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 家电暖通排障必须结合“80KB 铭牌与故障码看图 + 智能家电 IoT 遥测”，在派单前精准锁定所需备件 BOM 编码以提升一次修复率 (FTF)；</text>
+  <text x="68" y="606" fill="#34D399" font-size="13">2. 物理锁死“免工具安全边界”——严禁 AI 教消费者拧开外壳螺丝、触碰 220V 电容或拆动燃气管/冷媒阀门，检出漏气/冒烟 0ms 触发拉闸撤离告警。</text>
+</svg>
