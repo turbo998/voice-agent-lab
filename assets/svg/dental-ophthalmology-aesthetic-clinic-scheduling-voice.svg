@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgDent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06141F"/>
+      <stop offset="50%" stop-color="#0B2235"/>
+      <stop offset="100%" stop-color="#07121E"/>
+    </linearGradient>
+    <linearGradient id="chairGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="perioGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="preopGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgDent)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Dental (DSO), Ophthalmology &amp; Specialty Clinic Multi-Chair Scheduling &amp; Perio Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">连锁口腔/眼科多椅位协同排班、无菌语音牙周探诊录入 (168点位)、术前抗凝药/停戴镜核查与术后急症分诊全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#6EE7B7" font-size="13" font-weight="600" text-anchor="middle">DENTAL-EYE-CLINIC-01</text>
+
+  <!-- Pillar 1: Multi-Chair Resource Scheduling & Pre-Op Medication Gate -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#chairGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 多椅位协同排班与术前禁忌红线核查</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">种牙/全飞秒不是约1个医生，而是“四资源联锁”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 同时锁定：[主诊医生] + [无菌种植牙椅/激光室] + [CBCT机]</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• Open Dental / Dentrix / Nextech 阶梯式交错排班 (Staggered)</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 术前抗凝药 &amp; 隐形眼镜停戴期漏查=当天白跑退台！</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 拔智齿/种牙前正服阿司匹林/华法林/双膦酸盐？必须提前评估！</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 近视全飞秒/白内障术前软镜停戴 &lt;7天 / 硬镜/OK镜 &lt;21天自动改期</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">空档候补秒级填坑 (Waitlist Auto-Backfill)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 某患者临时取消周六上午 90分钟种植手术台，单椅损失 ¥8,000</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• AI 10秒内语音外呼候补池前 5 名患者，15分钟内把空牙椅填满</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">牙椅与手术间空置率 (No-Show) 下降 64%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">术前因抗凝药/未停戴隐形眼镜导致的当天退台率降至 0%</text>
+  </g>
+
+  <!-- Pillar 2: Hands-Free Sterile Periodontal Charting (168 Sites) -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="#047857"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 诊室无菌语音牙周探诊录入 (168点位)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">解决“1个医生报数 + 1个护士专职敲键盘”的人力浪费</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 全口 28–32 颗牙 × 每颗 6 个探诊位点 = 168 个毫米级深度数字！</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 医生戴血污手套不能摸鼠标：领夹麦口述“右上6 颊侧 3-2-4 出血”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">抗强吸引器抽吸噪声 + FDI/Universal 牙位语法树</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 诊室超声洁牙机与强唾液吸引器噪声高达 78dB</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 受限语法 WFST 锁定 [牙位 11–48] + [探诊深度 PD] + [BOP 出血]</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">骨传导耳返微秒级确认与异常深袋 (&gt;=6mm) 复核</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 实时点亮屏幕 3D 牙周图谱，不打扰患者情绪（防听到“骨吸收”恐慌）</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 单人即可在 4分钟内完成全口牙周建档，释放配台护士生产力</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">全口 168 点位牙周图表建档提速 3.2 倍</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">实现 100% 零交叉感染无菌操作，牙周治疗转化率提升 42%</text>
+  </g>
+
+  <!-- Pillar 3: Post-Op Emergency Red-Flag Triage -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#preopGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 术后夜间出血/干槽症与眼科急症红旗分诊</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁把“白内障术后眼痛视力骤降”当普通干眼安抚！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 白内障/玻璃体注药术后出现剧烈眼痛+视物遮挡=急性眼内炎/网脱！</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 拔牙后大口吐血块+吞咽呼吸困难=口底血肿压迫气道危及生命！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">术后正常渗血 vs 活动性出血/干槽症精准鉴别</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 拔牙当天唾液带淡红血丝：指导紧咬无菌纱布卷 40分钟、禁漱口吐口水</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 术后第 3–4天放射性剧痛+腐臭味：标记干槽症并约次日早 8点清创</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">医保/商保牙科额度预检 (CDT Codes Eligibility)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 术前实时查询商保年度牙科剩余免赔额与牙冠等待期 (D2740)</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 透明播报自付预估金额，消除结账台账单惊吓</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">夜间非急症焦虑电话分流率达 86.5%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">急性眼内炎 / 视网膜脱离 / 术后大出血 100% 0秒唤醒值班医生</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#10B981" font-size="14" font-weight="700">架构师核心选型法则 (DENTAL-EYE-CLINIC-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 口腔与眼科预约必须执行“术前抗凝药/双膦酸盐 &amp; 隐形眼镜停戴天数（软镜7天/硬镜21天）”强制红线预检，杜绝患者到院后因禁忌退台；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 术后随访一旦检出“眼痛伴视力骤降/黑影遮挡”或“拔牙后大口血块/呼吸吞咽困难”，必须 0ms 熔断居家观察话术并直连急诊值班主刀医生。</text>
+</svg>

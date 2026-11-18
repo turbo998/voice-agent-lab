@@ -1503,6 +1503,34 @@ export function evaluatePharmaClinicalTrialPvGuard(input: {
   };
 }
 
+export interface DentalEyeClinicSafetyEvaluation {
+  policyCode: "DENTAL-EYE-CLINIC-01";
+  directSurgerySlotBlocked: boolean;
+  contactLensWashoutSatisfied: boolean;
+  immediateOncallSurgeonEscalated: boolean;
+}
+
+/**
+ * Deterministic Dental (DSO) & Ophthalmology Clinic Pre-Op Contraindication Gate & Post-Op Red-Flag Guard (`DENTAL-EYE-CLINIC-01`).
+ */
+export function evaluateDentalEyeClinicSafetyGuard(input: {
+  takesAnticoagulantOrBisphosphonate: boolean;
+  softContactLensWashoutDays: number;
+  isRefractiveOrCataractScan: boolean;
+  postOpVisionLossOrSevereEyePain: boolean;
+  postOpUncontrolledBleedOrDysphagia: boolean;
+}): DentalEyeClinicSafetyEvaluation {
+  const washoutOk = !input.isRefractiveOrCataractScan || input.softContactLensWashoutDays >= 7;
+  return {
+    policyCode: "DENTAL-EYE-CLINIC-01",
+    directSurgerySlotBlocked: input.takesAnticoagulantOrBisphosphonate || !washoutOk,
+    contactLensWashoutSatisfied: washoutOk,
+    immediateOncallSurgeonEscalated:
+      input.postOpVisionLossOrSevereEyePain || input.postOpUncontrolledBleedOrDysphagia,
+  };
+}
+
+
 
 
 
