@@ -1922,6 +1922,34 @@ export function evaluateVoiceCicdReleaseGateGuard(input: {
   };
 }
 
+export interface RetailPharmacyPbmSafetyEvaluation {
+  policyCode: "PHARMACY-PBM-01";
+  autoRefillAllowed: boolean;
+  pharmacistMajorDdiTransferRequired: boolean;
+  pediatricDoseReadbackAllowed: boolean;
+}
+
+/**
+ * Deterministic Retail Pharmacy & PBM ISMP Sound-Alike (LASA) Lock, DEA Schedule-II & Pediatric Dose Guard (`PHARMACY-PBM-01`).
+ */
+export function evaluateRetailPharmacyPbmSafetyGuard(input: {
+  isIsmpLasaDrug: boolean;
+  indicationAndRxNumberVerified: boolean;
+  isDeaScheduleIIOrEarlyControlled: boolean;
+  majorDrugInteractionDetected: boolean;
+  pediatricWeightKgAndMgPerMlVerified: boolean;
+}): RetailPharmacyPbmSafetyEvaluation {
+  const lasaOk = !input.isIsmpLasaDrug || input.indicationAndRxNumberVerified;
+  return {
+    policyCode: "PHARMACY-PBM-01",
+    autoRefillAllowed:
+      lasaOk && !input.isDeaScheduleIIOrEarlyControlled && !input.majorDrugInteractionDetected,
+    pharmacistMajorDdiTransferRequired: input.majorDrugInteractionDetected,
+    pediatricDoseReadbackAllowed: input.pediatricWeightKgAndMgPerMlVerified,
+  };
+}
+
+
 
 
 

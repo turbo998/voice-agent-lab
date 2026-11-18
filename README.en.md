@@ -166,6 +166,7 @@ flowchart LR
 92. **R&D Wet-Lab ELN/LIMS Voice Assistant, GHS SDS Chemical Incompatibility Lock & Patent Disclosure (Novelty Bar) Voice AI**: [EN](./docs/rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.en.md) | [中文](./docs/rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.md)
 93. **Integrated Resort (IR) VIP Concierge, Responsible Gaming (Self-Exclusion) 0ms Lock & Title-31 AML Structuring Guard Voice AI**: [EN](./docs/integrated-resort-vip-concierge-responsible-gaming-aml-voice-selection-faq.en.md) | [中文](./docs/integrated-resort-vip-concierge-responsible-gaming-aml-voice-selection-faq.md)
 94. **Enterprise Voice Agent CI/CD Automated Evaluation Pipeline: Synthetic Callers, Round-Trip TTS-to-ASR Verification & Release Gates**: [EN](./docs/enterprise-voice-agent-cicd-automated-regression-testing-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-cicd-automated-regression-testing-selection-faq.md)
+95. **Retail Pharmacy & PBM Voice AI: ISMP Sound-Alike (LASA) Disambiguation, DEA Schedule-II Lock & Pediatric mg/kg Dose Guard**: [EN](./docs/retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.en.md) | [中文](./docs/retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.md)
 
 ---
 

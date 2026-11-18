@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgPharm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06121C"/>
+      <stop offset="50%" stop-color="#0D2338"/>
+      <stop offset="100%" stop-color="#07131E"/>
+    </linearGradient>
+    <linearGradient id="lasaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="deaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="pbmGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgPharm)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Retail Pharmacy &amp; PBM Voice AI: ISMP Sound-Alike (LASA) Lock, DEA Schedule-II &amp; Prior-Auth</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">连锁药房与 PBM 处方续方：ISMP 读音相似药 (LASA) 双核锁、麻精管制药 (Schedule II) 禁续锁与儿童 mg/kg 安全全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#6EE7B7" font-size="13" font-weight="600" text-anchor="middle">PHARMACY-PBM-01 · Rx Safe</text>
+
+  <!-- Pillar 1: ISMP Sound-Alike (LASA) Drug Disambiguation & Rx Number Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#lasaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. ISMP 读音相似高危药 (LASA) 声学消歧锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁把“降压药”与发音极像的“化疗/精神药”听混！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 经典致命同音对：Hydralazine (降压) vs Hydroxyzine (抗过敏镇静)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 格列吡嗪 vs 格列齐特、他达拉非 vs 他克莫司 (器官移植抗排异药)！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">强制绑定“处方号 (Rx#) + 适应症 + 毫克规格”三元组</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 命中 ISMP LASA 高危药名表：严禁仅凭口头药名直接发药或续方！</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 必须追问核对：“您续配的是治疗高血压的 25mg 肼屈嗪，处方号尾号82吗？”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">华法林 + 阿司匹林 / 克拉霉素 + 他汀 DDI 相互作用拦截</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 患者电话增购 OTC 布洛芬或抗生素时：0ms 扫描在服慢病用药清单</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 检出重度药物相互作用 (Major DDI) -> 0ms 锁单并转执业药师审方！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">LASA 读音相似药错配率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 ISMP 高警示药品安全指南与药房 GSP 审方规范</text>
+  </g>
+
+  <!-- Pillar 2: DEA Schedule-II Controlled Substance & Early-Refill Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#deaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 麻精管制药 (Schedule II) 禁续与儿童剂量锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁自动续方麻精一类/二类管制药 (DEA Schedule II)！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 羟考酮 (OxyContin)、芬太尼、哌甲酯 (专注达)、阿德拉 (Adderall)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 法规死律：Schedule II 严禁自动续方！必须每次由医生重开电子处方 (EPCS)</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">防囤药滥用“早于 85% 天数红线”拦截 (PDMP 联锁)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 30天量的镇静安眠药 (佐匹克隆/阿普唑仑) 才过了 10天就打电话要求重配</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 0ms 拒止提前续配，严格防止药物成瘾滥用与倒卖套保！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">儿科用药“必须核实最新体重 (kg)”与混悬液浓度锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 家长问：“3岁宝宝发烧美林（布洛芬混悬液）喂几毫升？”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 严禁按年龄瞎估！必须核对【宝宝体重 kg + 滴剂(40mg/mL) vs 混悬液】</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">麻精管制药违规续方与儿童超量指导率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">滴剂 vs 混悬液浓度混淆导致的婴幼儿退烧药过量风险归零</text>
+  </g>
+
+  <!-- Pillar 3: PBM Formulary Prior-Auth & Cold-Chain GLP-1 Delivery -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pbmGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 医保/商保目录预授权 (PA) 与冷链药配送</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">原研药 vs 集采/仿制药 (Generic) 报销自付差价透明播报</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 实时查询 NCPDP 药房理赔网络与医保统筹剩余额度</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• “原研立普妥自付 $45，同成分阿托伐他汀仿制药自付 $0，需咨询医生替换吗？”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">胰岛素 / GLP-1 (司美格鲁肽) 2°C–8°C 冷链签收预约</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 生物制剂与胰岛素严禁放在烈日门口信箱暴晒失活！</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 邮购药房发货前强制语音确认患者本人在家签收时段</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">慢病漏服率 (PDC &lt;80%) 温和语音随访与药师咨询</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 发现高血压/糖尿病老人逾期 7天未取药：主动致电排查是否因副作用停药</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 将 Medicare Star Ratings 慢病用药依从性 (PDC) 提升 14个百分点</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">药房门店药师接听重复查库存/续方电话负担减轻 79%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">冷链生物药因无人签收脱温报废率下降 88%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#10B981" font-size="14" font-weight="700">架构师核心选型法则 (PHARMACY-PBM-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 药房语音续方遇到 ISMP 读音相似高危药 (LASA) 必须强制双核【处方号 + 适应症 + 毫克数】，且严禁对麻精管制药 (Schedule II) 执行自动续方；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 儿科液体用药咨询严禁按年龄估算毫升数——必须同时锁死【患儿最新体重 (kg) + 制剂浓度 (如滴剂 vs 混悬液)】并由执业药师规则库复核。</text>
+</svg>

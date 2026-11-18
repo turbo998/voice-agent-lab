@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（94 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（95 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -135,3 +135,4 @@
 92. **研发实验室免摘手套电子实验记录（ELN/LIMS）、危化品 SDS 禁忌混配防爆锁与专利交底书（Patent Novelty Bar 抢注）方案**：[中文](./rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.md) | [EN](./rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.en.md)
 93. **大型综合度假村（Integrated Resort）多语种 VIP 礼宾、责任关怀自我隔离（Self-Exclusion）0ms 冻结锁与反洗钱（Title-31 AML 静默 SAR）方案**：[中文](./integrated-resort-vip-concierge-responsible-gaming-aml-voice-selection-faq.md) | [EN](./integrated-resort-vip-concierge-responsible-gaming-aml-voice-selection-faq.en.md)
 94. **企业实时语音智能体 CI/CD 自动化回归测试（Coval/Hamming vs 自建合成呼叫器、Round-Trip TTS 逆向校验与硬发版门禁）方案**：[中文](./enterprise-voice-agent-cicd-automated-regression-testing-selection-faq.md) | [EN](./enterprise-voice-agent-cicd-automated-regression-testing-selection-faq.en.md)
+95. **连锁药房与 PBM 处方续方（ISMP LASA 同音高危药三元消歧锁、麻精管制药 Schedule II 禁续锁与儿科液体药体重浓度双核）方案**：[中文](./retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.md) | [EN](./retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.en.md)
