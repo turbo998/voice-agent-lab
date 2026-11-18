@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgCicd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#10213A"/>
+      <stop offset="100%" stop-color="#071120"/>
+    </linearGradient>
+    <linearGradient id="simGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="rtGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="gateGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgCicd)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Enterprise Voice Agent CI/CD Automated Evaluation: Synthetic Callers, Round-Trip TTS &amp; Release Gates</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业语音智能体 CI/CD 自动化回归测试：多画像合成呼叫、TTS 逆向重转写校验 (Round-Trip ASR) 与发版门禁全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#6EE7B7" font-size="13" font-weight="600" text-anchor="middle">VOICE-CICD-EVAL-01 · LLMOps</text>
+
+  <!-- Pillar 1: Why Text-Only LLM Evals Miss 70% of Production Voice Bugs -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#simGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 为什么纯文本评测漏掉 70% 的线上语音故障？</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁仅跑纯文本 Prompt 测试就直接发布语音生产版！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 文本评测 100分，上到电话线却因 8kHz G.711 压缩听错数字</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或因改了一行提示词导致首句变长，P95 TTFA 暴涨至 1,800ms！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">100路并发多画像对抗仿真呼叫器 (Synthetic Callers)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 模拟：暴躁打断型客户、犹豫口吃老太、地铁站 78dB 广播背景噪</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 走真实 WebRTC / SIP 音频流 (Audio-in to Audio-out) 全栈端到端压测</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">毫秒级确定性打断注入 (Deterministic Barge-In Replay)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 在 AI 播报到第 1,200ms 正在调工具写库瞬间，精确注入“等等别订了”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动化断言：TTS 截断耗时 &lt;=200ms 且 Mock 数据库零脏写！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">每次 Git PR 在 8 分钟内跑完 500 通全真语音回归</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">对标 Coval / Hamming AI / Roark 与自建 Pipecat 评测矩阵</text>
+  </g>
+
+  <!-- Pillar 2: Round-Trip TTS-to-ASR Verification & Prosody Audit -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rtGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. TTS 逆向转写校验 (Round-Trip) 与发音审计</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">为什么 LLM 文本写对了，TTS 读出来却是灾难？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• LLM 输出 `¥1,200.50` 或 `Dr. St. John` 或多音字“中国银行(xíng)”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• TTS 竟读成“圣约翰医生=街约翰博士”或吞字破音、漏读小数点！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="174" fill="#E9D5FF" font-size="13" font-weight="700">Round-Trip ASR 闭环校验 (TTS 音频 -&gt; 独立验证 ASR)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 将待测智能体输出的 TTS 音频流送入独立裁判 ASR 逆向转写为文本</text>
+    <text x="30" y="214" fill="#C084FC" font-size="12">• 校验金额、日期、药品名与品牌词的逆向字错率 (Entity WER == 0%)！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">声学卡顿/断流 (Buffer Underrun) 与语速畸变检测</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 自动扫描输出音频波形：句中非标点空白停顿 &gt;250ms 记为断流故障</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 校验 NISQA 语音自然度得分 &gt;=4.2 且响度严格符合 -18 LUFS</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">TTS 多音字读错、吞数字与播放断流上线漏检率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底打通 Text -&gt; Audio -&gt; Ear 物理声学检验闭环</text>
+  </g>
+
+  <!-- Pillar 3: Hard CI/CD Release Gate & Production Incident Replay -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#gateGrad2)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. GitHub Actions 硬发版门禁与线上坏例回放</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 任一安全红线探针失败 = 0ms 阻断生产部署 (Block PR)！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 四大发版铁门槛：① 业务红线合规率 = 100.0% (零妥协)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• ② P95 TTFA &lt;= 750ms · ③ 工具调用准确率 &gt;= 99% · ④ 零音频断流</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">线上坏例 1键脱敏转回归黄金用例 (Incident-to-Eval)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 生产通话发生客户挂机或转人工投诉：自动剥离 PII 生成脱敏音频包</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 1键入库成为 Golden Eval 永久回归集，确保同一个坑绝不踩第二次！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">供应商模型微版本漂移预警 (Vendor Drift Watchdog)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 每晚定时对 Azure / OpenAI / ElevenLabs / Deepgram 跑基准探针</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 一旦云厂商静默升级模型导致延迟飙升或礼貌度下降，早 8点前告警</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">生产环境提示词/模型升级引发的回归故障下降 96%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">版本迭代发布周期从“人工测 1周”缩短至“30分钟自动通关”</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#10B981" font-size="14" font-weight="700">架构师核心选型法则 (VOICE-CICD-EVAL-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 企业语音智能体严禁仅凭纯文本单元测试上线，必须在 CI/CD 中执行“真实音频流注入 + 确定性打断重放 + TTS 逆向转写校验 (Round-Trip Entity WER = 0%)”；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 任何安全红线探针失败、P95 TTFA 超预算或句中出现 >250ms 音频断流卡壳，必须在 GitHub Actions / GitLab CI 中 0ms 物理阻断合并与生产发布。</text>
+</svg>

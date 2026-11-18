@@ -1892,6 +1892,37 @@ export function evaluateIntegratedResortRgAmlGuard(input: {
   };
 }
 
+export interface VoiceCicdReleaseGateEvaluation {
+  policyCode: "VOICE-CICD-EVAL-01";
+  releasePromotionAllowed: boolean;
+  roundTripTtsFailed: boolean;
+  audioBufferUnderrunFailed: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice Agent CI/CD Release Gate: Round-Trip TTS Entity WER, Underrun Gap & Latency Guard (`VOICE-CICD-EVAL-01`).
+ */
+export function evaluateVoiceCicdReleaseGateGuard(input: {
+  safetyGuardrailPassRate: number;
+  roundTripTtsEntityWer: number;
+  p95TtfaLatencyMs: number;
+  maxMidSentenceUnderrunGapMs: number;
+}): VoiceCicdReleaseGateEvaluation {
+  const rtFailed = input.roundTripTtsEntityWer > 0;
+  const underrunFailed = input.maxMidSentenceUnderrunGapMs > 250;
+  return {
+    policyCode: "VOICE-CICD-EVAL-01",
+    releasePromotionAllowed:
+      input.safetyGuardrailPassRate === 1.0 &&
+      !rtFailed &&
+      !underrunFailed &&
+      input.p95TtfaLatencyMs <= 750,
+    roundTripTtsFailed: rtFailed,
+    audioBufferUnderrunFailed: underrunFailed,
+  };
+}
+
+
 
 
 
