@@ -665,6 +665,34 @@ export function evaluateSmartPropertyElevatorGuard(input: {
   };
 }
 
+export interface LegalIntakeConflictNotaryEvaluation {
+  policyCode: "LEGAL-VOICE-01";
+  factIntakeUnlocked: boolean;
+  conflictTaintBufferPurged: boolean;
+  uplOpinionBlocked: boolean;
+  ronCoercionHaltTriggered: boolean;
+}
+
+/**
+ * Deterministic Legal Intake Conflict Firewall (ABA Rule 1.18), Zero-UPL & Remote Notary Anti-Coercion Guard (`LEGAL-VOICE-01`).
+ * Blocks confidential fact intake and purges buffer on adverse-party conflict hits, strips UPL win/settlement promises,
+ * and halts remote notarization when the +24dB far-field sidecar detects an off-camera secondary whisper.
+ */
+export function evaluateLegalIntakeConflictNotaryGuard(input: {
+  conflictCheckCompleted: boolean;
+  adversePartyMatchesExistingClient: boolean;
+  draftReplyPromisesWinOrSettlementAmount: boolean;
+  ronFarFieldSecondaryWhisperDetected: boolean;
+}): LegalIntakeConflictNotaryEvaluation {
+  return {
+    policyCode: "LEGAL-VOICE-01",
+    factIntakeUnlocked: input.conflictCheckCompleted && !input.adversePartyMatchesExistingClient,
+    conflictTaintBufferPurged: input.adversePartyMatchesExistingClient,
+    uplOpinionBlocked: input.draftReplyPromisesWinOrSettlementAmount,
+    ronCoercionHaltTriggered: input.ronFarFieldSecondaryWhisperDetected,
+  };
+}
+
 
 
 
