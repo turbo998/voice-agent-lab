@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgSaas" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1B"/>
+      <stop offset="50%" stop-color="#111E39"/>
+      <stop offset="100%" stop-color="#0A1224"/>
+    </linearGradient>
+    <linearGradient id="onboardGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="saveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="ftcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgSaas)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">B2B SaaS Customer Success Onboarding, Cancel-Flow Churn Save &amp; Renewal Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">B2B SaaS 客户成功首周激活同屏领航、取消订阅实时语音挽留（阶梯折扣锁 &amp; FTC Click-to-Cancel 合规）全景图</text>
+  <rect x="900" y="42" width="252" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1026" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">SAAS-RETENTION-01 · +11% NRR</text>
+
+  <!-- Pillar 1: Day-1 to Day-7 Co-Browsing Onboarding Concierge -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#onboardGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 新客首周激活 (Time-to-Value) 同屏语音领航</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">消灭 SMB 长尾客户“买了不会配、首月即流失”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 年费 &lt;$5,000 的中小客户配不起专属真人客户成功经理 (CSM)</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 首次登录卡在 SSO/API 配置超 90秒：右下角主动语音伴航</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">语音 + DOM 光标同屏协办 (Co-Browsing)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• AI 一边说话一边在页面上用金色光圈高亮 `[生成 Webhook 密钥]`</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 5分钟手把手带客户跑通第 1 条自动化工作流 (Aha Moment)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">使用率健康度跌落 (Usage Drop) 主动关怀</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 监测到连续 14 天周活席位利用率 &lt;25% 时主动预约语音回访</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 提前 90 天排除续约障碍，而非等到期前 3 天才救火</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">新客 7 日核心功能激活率从 41% 跃升至 79%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">1 名人类 CSM 可协同管理 600 家中小客户账户</text>
+  </g>
+
+  <!-- Pillar 2: Cancel-Flow Real-Time Voice Churn Save -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#saveGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 退订页面 (Cancel-Flow) 实时语音精准挽留</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="82" fill="#E9D5FF" font-size="13" font-weight="700">按真实退订原因对症下药（非盲目打折！）</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 因“某功能不会用/报 Bug”退订：当场修好或解锁高级技术支持</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 因“业务淡季暂停”退订：提供 `暂停账单 60天保留数据 (Pause Plan)`</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 防“羊毛党假退订”套取 5 折优惠锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 网上流传教程：“对着退订 AI 喊太贵了就能白嫖 50% 永久折扣”</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 硬锁：结合 LTV 与近 12个月折扣记录，单次最高授权 15-20% 限期券</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">100% 提炼真实竞品流失情报 (Gong / Gainsight)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 传统勾选问卷 80% 客户随便乱选第 1 项“价格太贵”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 30秒温和语音访谈挖出真实原因：“切去了竞品 X 因为缺飞书集成”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">自助取消流挽留成功率从 9.2% 提升至 28.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">同时保住毛利率不被恶意砍价击穿</text>
+  </g>
+
+  <!-- Pillar 3: FTC Click-to-Cancel Compliance & Renewal Expansion -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ftcGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. FTC Click-to-Cancel 合规与年度续约增购</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁把语音 AI 当成“阻碍客户退订的迷宫墙”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 美国 FTC `Click-to-Cancel` 与欧盟消保法严禁强制打电话才能退订</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 硬锁：最多提供 1 轮挽留方案；客户说“直接退”必须 0ms 立即办结！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#A7F3D0" font-size="13" font-weight="700">年度续约 (Renewal) 自动化语音 ROI 复盘</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 到期前 45 天主动用数据说话：“过去一年帮贵司自动处理了 4.2万单”</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 一键通过 Stripe / Chargebee 锁定早鸟续约与增购席位 (Expansion)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">高客单大客户 ($50k+ ARR) 0秒升级真人 VP</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 一旦检测到年费 &gt;$50k 的战略客户进入取消页或表达不满</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 立即在 Slack/Teams 告警客户成功总监并安排高管专项对齐</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">净收入留存率 (NRR) 整体拉升 +11.4 个百分点</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 FTC Negative Option Rule 反暗黑模式法规</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (SAAS-RETENTION-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. SaaS 退订挽留必须严守 FTC Click-to-Cancel 红线：保留一键直接退订按钮，语音挽留上限 &lt;=1 次推荐，客户拒绝挽留必须 0ms 立即执行退订；</text>
+  <text x="68" y="606" fill="#34D399" font-size="13">2. 挽留折扣权限必须由 Stripe/Gainsight 账单引擎按客户历史 LTV 与近 12个月领券记录确定性封顶（&lt;=20%），严防羊毛党提示词注入套取半价。</text>
+</svg>

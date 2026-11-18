@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **76 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **77 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（76 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（77 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -63,7 +63,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（53 篇）
+### 3.3 高价值企业行业解决方案蓝图（54 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -117,3 +117,4 @@
 74. **连锁宠物医院 24×7 夜间中毒急诊分诊（mg/kg 毒理精算与催吐禁忌锁）、抗犬吠诊室病历与彩虹桥随访方案**：[中文](./veterinary-clinic-pet-hospital-triage-agro-livestock-voice-selection-faq.md) | [EN](./veterinary-clinic-pet-hospital-triage-agro-livestock-voice-selection-faq.en.md)
 75. **智能白电与暖通空调（HVAC/热泵/燃气热水器）80KB 看图听音自愈、免工具防拆安全锁与带件一次修复（91% FTF）方案**：[中文](./home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.md) | [EN](./home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.en.md)
 76. **国际大型展会与峰会（进博会/广交会/CES/MWC）80KB 胸卡名片拍照 + 20秒语音 BANT 速记、断网缓存与 2h 跟进方案**：[中文](./conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.md) | [EN](./conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.en.md)
+77. **B2B SaaS 客户成功首周激活同屏领航、退订实时语音挽留（防羊毛党折扣锁 & FTC Click-to-Cancel 合规）方案**：[中文](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.md) | [EN](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.en.md)

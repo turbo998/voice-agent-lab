@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **76 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **77 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (76 Bilingual Guides)
+## 3. Solution Architect Selection Guides (77 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -63,7 +63,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (53 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (54 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -117,3 +117,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 74. **24×7 Veterinary Emergency Poison Triage (mg/kg Toxicology & Anti-Emesis Lock), Vet Ambient Scribe & Pet Care Voice AI**: [EN](./veterinary-clinic-pet-hospital-triage-agro-livestock-voice-selection-faq.en.md) | [中文](./veterinary-clinic-pet-hospital-triage-agro-livestock-voice-selection-faq.md)
 75. **Home Appliance & HVAC After-Sales Triage (80KB Vision & Acoustic Diagnosis), Tool-Free Safety Lock & 91% First-Time-Fix Voice AI**: [EN](./home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.en.md) | [中文](./home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.md)
 76. **Trade Show & Exhibition Badge-Scan 20s Voice BANT Lead Capture, Offline Queue & 2-Hour CRM Follow-Up**: [EN](./conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.en.md) | [中文](./conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.md)
+77. **B2B SaaS Customer Success Onboarding, Cancel-Flow Voice Churn Save & FTC Click-to-Cancel Compliance**: [EN](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.en.md) | [中文](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.md)

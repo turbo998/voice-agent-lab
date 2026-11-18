@@ -1449,6 +1449,33 @@ export function evaluateTradeshowLeadCaptureGuard(input: {
   };
 }
 
+export interface SaasChurnSaveDiscountEvaluation {
+  policyCode: "SAAS-RETENTION-01";
+  clampedDiscountPct: number;
+  immediateCancelExecuted: boolean;
+  enterpriseVpAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic B2B SaaS Cancel-Flow Churn Save, Anti-Gaming Coupon Cap & FTC Click-to-Cancel Guard (`SAAS-RETENTION-01`).
+ * Clamps retention discounts to 0% when a discount was already claimed in the past 12 months (or <=20% max otherwise),
+ * executes immediate cancellation in 0ms when the user declines 1 save offer (FTC compliance), and alerts VP of CS on >=$50k ARR.
+ */
+export function evaluateSaasChurnSaveDiscountGuard(input: {
+  accountArrUsd: number;
+  discountsClaimedLast12m: number;
+  requestedDiscountPct: number;
+  saveOffersDeclinedCount: number;
+}): SaasChurnSaveDiscountEvaluation {
+  const maxAllowed = input.discountsClaimedLast12m > 0 ? 0 : 20;
+  return {
+    policyCode: "SAAS-RETENTION-01",
+    clampedDiscountPct: Math.max(0, Math.min(maxAllowed, input.requestedDiscountPct)),
+    immediateCancelExecuted: input.saveOffersDeclinedCount >= 1,
+    enterpriseVpAlertTriggered: input.accountArrUsd >= 50000,
+  };
+}
+
 
 
 
