@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgExpo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1C"/>
+      <stop offset="50%" stop-color="#111F3B"/>
+      <stop offset="100%" stop-color="#091224"/>
+    </linearGradient>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="bantGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="followGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgExpo)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Trade Show &amp; Exhibition Badge-Scan 20s Voice Lead Capture &amp; Instant CRM Follow-Up</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">国际大型展会（进博会 / 广交会 / CES / MWC）80KB 胸卡名片看图 + 20秒语音 BANT 速记、断网缓存与 2h 跟进全景图</text>
+  <rect x="904" y="42" width="248" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1028" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">TRADESHOW-LEAD-01 · 20s</text>
+
+  <!-- Pillar 1: 80KB Badge/Card OCR + 20s Voice BANT Memo -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#badgeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 80KB 胸卡/名片拍照 + 20秒语音 BANT 速记</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 为什么展会收了 800 张名片最后 90% 成了废纸？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 销售一天接待 80 波客商，晚上回酒店早忘了谁是谁！</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 一周后发千篇一律群发邮件，客户早已跟竞品签完保密协议</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">送走客商转身 20 秒：“一拍一说”黄金工作流</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 1秒拍客商胸卡/名片 (80KB) + 按住说话 20秒口述需求</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动抽取 BANT 槽位：预算/决策人/意向型号/要求寄样日期</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">85dB 嘈杂展馆近讲抗噪 + 16国语言名片解析</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 过滤隔壁展台高音喇叭与舞台音乐 (-22dB 远场抑制)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 阿语/日文/西语/德语名片 + 中英混杂语音速记一步对齐</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">单条高价值展台线索录入耗时从 4分钟 降至 20秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">销售可多接待 45% 的现场高意向海内外买家</text>
+  </g>
+
+  <!-- Pillar 2: Offline Expo-Hall Store-and-Forward & Booth Kiosk -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#bantGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 万人展馆基站拥塞离线缓存与展台多语导览</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="82" fill="#E9D5FF" font-size="13" font-weight="700">展馆断网/弱网 IndexedDB 本地加密持久队列</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 国家会展中心/CES 展馆 10万人同场，4G/5G/Wi-Fi 必瘫痪</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 端侧 Whisper/SenseVoice 离线转写 + 照片/录音本地零丢失排队</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">展台无人接待空档：扫码多语种 AI 产品解说官</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 现场销售全在忙时，外商扫展品立牌二维码直接戴耳机听</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 支持英语/阿语/西语/俄语询问 FOB 最小起订量 (MOQ) 与交期</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="270" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁向未核身访客泄露底价与未公开路线图</text>
+    <text x="30" y="290" fill="#E2E8F0" font-size="12">• 竞争对手常派人混进展台套问“大客户底价与下一代芯片参数”</text>
+    <text x="30" y="308" fill="#FBBF24" font-size="12">• 硬锁：展台公共语音仅报公开目录价 (MSRP)，底价需销售授权</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">展馆完全断网下线索丢失率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 拦截竞品展台卧底套取大客户协议底价</text>
+  </g>
+
+  <!-- Pillar 3: <2h Personalized Follow-Up & GDPR Consent Gate -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#followGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 黄金 2 小时个性化跟进与 GDPR 授权合规</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">客商还没走出展馆，定制跟进函已发到手机/邮箱！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 引用刚刚聊到的细节：“很高兴刚在 B2 展台聊到贵司墨西哥工厂”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 自动挂载刚才口头答应的 PDF 选型手册、CE 证书与下周会议链接</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">CRM 撞单查重与老客归属合并 (Salesforce/D365)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 按名片邮箱域名自动匹配存量 Account 与负责的客户经理</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 若为 P0 级大买家：0秒在区域销售 VP 企微/Teams 群拉响战报</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">欧盟展会 GDPR 显式勾选/扫码营销同意锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 在德国汉诺威/巴塞罗那 MWC 参展时，严禁无授权群发营销邮件</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 扫胸卡同时记录 `gdpr_consent_timestamp`，100% 合规建档</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">展会线索转商机 (SQL) 转化率翻 3.1 倍！</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底终结百万级参展费“展中热热闹闹、展后颗粒无收”</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (TRADESHOW-LEAD-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 展会留资必须采用“80KB 胸卡/名片拍照 + 20秒语音 BANT 口述 + 端侧离线持久队列”，确保在展馆断网与 85dB 噪音下 100% 不丢单；</text>
+  <text x="68" y="606" fill="#34D399" font-size="13">2. 展台公共语音导览必须物理屏蔽非公开大客户底价与未发布产品路线图，且海外展会外发跟进函前强制核验 GDPR 联络授权。</text>
+</svg>

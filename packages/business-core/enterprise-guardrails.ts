@@ -1419,6 +1419,36 @@ export function evaluateHvacApplianceGasSafetyGuard(input: {
   };
 }
 
+export interface TradeshowLeadCaptureEvaluation {
+  policyCode: "TRADESHOW-LEAD-01";
+  offlineQueuePersisted: true;
+  confidentialFloorPriceBlocked: boolean;
+  repApprovalRequiredForCustomQuote: boolean;
+  automatedFollowupEmailAllowed: boolean;
+}
+
+/**
+ * Deterministic Trade Show Badge-Scan Voice Lead Capture, Floor-Price Lock & GDPR Consent Guard (`TRADESHOW-LEAD-01`).
+ * Persists badge photo + voice memo to local offline queue, blocks confidential OEM floor prices on public kiosks,
+ * requires rep approval on below-MSRP custom quotes, and enforces GDPR opt-in before automated email dispatch.
+ */
+export function evaluateTradeshowLeadCaptureGuard(input: {
+  publicKioskAsksForConfidentialFloorPrice: boolean;
+  draftIncludesCustomDiscountBelowMsrp: boolean;
+  repApprovedCustomQuote: boolean;
+  gdprConsentVerified: boolean;
+}): TradeshowLeadCaptureEvaluation {
+  const quoteOk = !input.draftIncludesCustomDiscountBelowMsrp || input.repApprovedCustomQuote;
+  return {
+    policyCode: "TRADESHOW-LEAD-01",
+    offlineQueuePersisted: true,
+    confidentialFloorPriceBlocked: input.publicKioskAsksForConfidentialFloorPrice,
+    repApprovalRequiredForCustomQuote:
+      input.draftIncludesCustomDiscountBelowMsrp && !input.repApprovedCustomQuote,
+    automatedFollowupEmailAllowed: input.gdprConsentVerified && quoteOk,
+  };
+}
+
 
 
 

@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 75 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 75 Guides](#-2-75-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 76 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 76 Guides](#-2-76-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 75 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 76 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -94,7 +94,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (52 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (53 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -147,6 +147,7 @@ flowchart LR
 73. **Retail Banking Mortgage Origination (LOS), Compliant Early Collections (FDCPA Reg F 7-in-7 / RPC Lock) & Hardship Voice AI**: [EN](./docs/retail-banking-mortgage-loan-origination-collections-fdCPA-voice-selection-faq.en.md) | [中文](./docs/retail-banking-mortgage-loan-origination-collections-fdCPA-voice-selection-faq.md)
 74. **24×7 Veterinary Emergency Poison Triage (mg/kg Toxicology & Anti-Emesis Lock), Vet Ambient Scribe & Pet Care Voice AI**: [EN](./docs/veterinary-clinic-pet-hospital-triage-agro-livestock-voice-selection-faq.en.md) | [中文](./docs/veterinary-clinic-pet-hospital-triage-agro-livestock-voice-selection-faq.md)
 75. **Home Appliance & HVAC After-Sales Triage (80KB Vision & Acoustic Diagnosis), Tool-Free Safety Lock & 91% First-Time-Fix Voice AI**: [EN](./docs/home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.en.md) | [中文](./docs/home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.md)
+76. **Trade Show & Exhibition Badge-Scan 20s Voice BANT Lead Capture, Offline Queue & 2-Hour CRM Follow-Up**: [EN](./docs/conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.en.md) | [中文](./docs/conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.md)
 
 ---
 
