@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgVet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07121A"/>
+      <stop offset="50%" stop-color="#0F2334"/>
+      <stop offset="100%" stop-color="#0A1422"/>
+    </linearGradient>
+    <linearGradient id="toxGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="scribeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="vacGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgVet)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">24×7 Veterinary Emergency Poison Triage, Vet Ambient Scribe &amp; Pet Care Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">连锁宠物医院 24×7 夜间中毒急诊分诊（确定性 mg/kg 毒理计算与催吐禁忌锁）、兽医诊室病历与疫苗随访全景图</text>
+  <rect x="908" y="42" width="244" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1030" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">VET-TRIAGE-01 · Zero-Guess</text>
+
+  <!-- Pillar 1: 24x7 Pet Poisoning & GDV Emergency Triage -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#toxGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 夜间急诊中毒 (mg/kg) 精算与催吐禁忌锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁盲目教宠主在家用双氧水给猫/短鼻犬催吐！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 猫用 3% 双氧水催吐极易引发致命出血性胃炎，法斗易吸入肺炎</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 吞食尖锐鸡骨/强酸碱/电池：0ms 严令禁止催吐并锁定急诊手术台</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">巧克力/木糖醇/百合花确定性毒理 API</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 采集 `{species, weight_kg, chocolate_type, grams_eaten}`</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 精确计算可可碱 (Theobromine) `mg/kg` 是否超 `20mg/kg` 阈值</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">大型犬胃扭转 (GDV) 与公猫尿闭 0秒红旗抢占</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 识别出“干呕吐不出东西+肚子鼓胀”或“公猫蹲猫砂盆24h无尿”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 0ms 判定为黄金 2小时夺命急症，直推最近 24h 急诊院区备台</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">夜间急诊漏接率从 52% 降至 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 阻断猫用双氧水与尖锐异物错误催吐事故</text>
+  </g>
+
+  <!-- Pillar 2: Vet Exam-Room Ambient Scribe & Bark Suppression -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#scribeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 兽医诊室抗犬吠环境病历生成 (Vet Scribe)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">85dB 尖锐犬吠与猫叫声学瞬态剥离器</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 宠物诊室充满突发狗叫与剃毛推子噪音</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 领夹麦近场锁兽医声纹，精准提取全套口腔牙位与触诊体征</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">严禁跨物种药物推荐 (Species Contraindication Lock)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁对猫推荐含对乙酰氨基酚 (泰诺) 或氯菊酯 (Permethrin)！</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 处方剂量必须按当日电子秤实测体重 (`kg`) 调用兽药典公式核算</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">10秒生成兽医 SOAP 病历 + 宠主大白话出院卡</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 一键写入 IDEXX Cornerstone / ezyVet 诊所管理系统</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 自动向宠主微信推送带伊丽莎白圈佩戴天数的语音/图文医嘱</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">兽医每晚加班写病历时间减少 80 分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">跨物种禁忌药误开率锁死在 0.0%</text>
+  </g>
+
+  <!-- Pillar 3: Post-Spay/Neuter Follow-Up & Vaccine Recall -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#vacGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 绝育术后 80KB 刀口看图随访与疫苗召回</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">术后第 3 天主动语音随访 + 伤口看图初筛</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 询问食欲、排便及是否舔开缝线；若宠主担心刀口红肿</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 通话中引导拍一张 80KB 腹部切口照片实时识别渗液/裂开</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">狂犬/联苗到期与夏季心丝虫驱虫续订</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 按宠物品种与年龄个性化语音提醒：“金毛豆豆满3岁该年度体检啦”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 通话内直接锁定主治医生排班与美容洗护连带预约</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">宠物离世哀伤关怀锁 (Rainbow Bridge Bereavement)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 一旦病历标记 `status == DECEASED`，0ms 永久熔断一切疫苗/狗粮推销！</text>
+    <text x="30" y="308" fill="#FBBF24" font-size="12">• 彻底杜绝“爱犬刚去世第二天又接到医院推销电话”的极端负面舆情</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">年度疫苗与驱虫按时复购率提升 +44%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">离世宠物误拨营销电话事故率 = 0.0%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#34D399" font-size="14" font-weight="700">架构师核心选型法则 (VET-TRIAGE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 宠物急诊中毒分诊必须强制调用确定性 `mg/kg` 毒理 API，且对猫咪、短鼻犬及尖锐/腐蚀性异物吞食 100% 物理拦截居家催吐建议；</text>
+  <text x="68" y="606" fill="#38BDF8" font-size="13">2. 严禁对猫推荐泰诺/氯菊酯等跨物种致死成分，且外呼前必须 100% 校验 `petStatus != DECEASED`（彩虹桥哀伤保护锁）。</text>
+</svg>

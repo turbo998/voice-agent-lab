@@ -1352,6 +1352,42 @@ export function evaluateMortgageCollectionsFdcpaGuard(input: {
   };
 }
 
+export interface VeterinaryPoisonTriageEvaluation {
+  policyCode: "VET-TRIAGE-01";
+  homeEmesisAllowed: boolean;
+  emergencyErDispatchRequired: boolean;
+  outboundMarketingCallAllowed: boolean;
+}
+
+/**
+ * Deterministic 24x7 Veterinary Emergency Poison Triage & Rainbow Bridge Bereavement Guard (`VET-TRIAGE-01`).
+ * Blocks home hydrogen-peroxide emesis for cats, brachycephalic breeds, or sharp/caustic ingestions,
+ * triggers immediate 24h ER dispatch when theobromine dose >=20 mg/kg or GDV/Blocked-Tom symptoms appear,
+ * and blocks outbound wellness/vaccine calls when petStatus === "DECEASED".
+ */
+export function evaluateVeterinaryPoisonTriageGuard(input: {
+  species: "feline" | "canine";
+  isBrachycephalicBreed: boolean;
+  ingestedSharpOrCausticItem: boolean;
+  calculatedTheobromineMgPerKg: number;
+  hasGdvOrUrinaryObstructionSigns: boolean;
+  petStatus: "ACTIVE" | "DECEASED";
+}): VeterinaryPoisonTriageEvaluation {
+  const forbidEmesis =
+    input.species === "feline" ||
+    input.isBrachycephalicBreed ||
+    input.ingestedSharpOrCausticItem;
+  return {
+    policyCode: "VET-TRIAGE-01",
+    homeEmesisAllowed: !forbidEmesis,
+    emergencyErDispatchRequired:
+      input.calculatedTheobromineMgPerKg >= 20 ||
+      input.hasGdvOrUrinaryObstructionSigns ||
+      input.ingestedSharpOrCausticItem,
+    outboundMarketingCallAllowed: input.petStatus !== "DECEASED",
+  };
+}
+
 
 
 
