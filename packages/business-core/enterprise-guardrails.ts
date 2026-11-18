@@ -575,6 +575,39 @@ export function evaluateSmartMallParkingCodeAdamGuard(input: {
   };
 }
 
+export interface MediaDubbingIsochronyEvaluation {
+  policyCode: "MEDIA-DUB-01";
+  stretchRatio: number;
+  isochronyRewriteRequired: boolean;
+  visualLipRedrawRequired: boolean;
+  voiceCloneAllowed: boolean;
+}
+
+/**
+ * Deterministic Short-Drama & Film Isochronous AI Dubbing & Voice Consent Guard (`MEDIA-DUB-01`).
+ * Rejects translations whose spoken duration ratio falls outside `[0.88, 1.12]` (preventing chipmunk speed-up),
+ * triggers selective visual lip re-rendering only on frontal close-ups >2000ms, and enforces verbal actor consent.
+ */
+export function evaluateMediaDubbingIsochronyGuard(input: {
+  sourceWindowMs: number;
+  predictedTargetDurationMs: number;
+  isFrontalCloseUp: boolean;
+  shotDurationMs: number;
+  verbalConsentSimilarityScore: number;
+}): MediaDubbingIsochronyEvaluation {
+  const ratio =
+    input.sourceWindowMs > 0
+      ? Number((input.predictedTargetDurationMs / input.sourceWindowMs).toFixed(2))
+      : 1;
+  return {
+    policyCode: "MEDIA-DUB-01",
+    stretchRatio: ratio,
+    isochronyRewriteRequired: ratio < 0.88 || ratio > 1.12,
+    visualLipRedrawRequired: input.isFrontalCloseUp && input.shotDurationMs >= 2000,
+    voiceCloneAllowed: input.verbalConsentSimilarityScore >= 0.99,
+  };
+}
+
 
 
 
