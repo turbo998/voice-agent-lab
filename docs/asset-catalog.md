@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（87 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（88 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -128,3 +128,4 @@
 85. **万人体育场馆与大型演唱会（VIP 包厢语音点餐、比赛记分牌断酒令硬锁、105dB 主扩抵消与 8 万人散场防踩踏分流）方案**：[中文](./sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.md) | [EN](./sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.en.md)
 86. **智慧农业农艺师田间语音问诊、农药安全间隔期（PHI 采收红线锁）、禁限用农药拦截与粮库收粮水分扣重透明播报方案**：[中文](./smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.md) | [EN](./smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.en.md)
 87. **智慧工地与大型工程总包（EPC）智能安全帽语音巡检、受限空间/动火作业许可（PTW/LOTO）硬锁与 Procore/BIM 质量整改方案**：[中文](./smart-construction-jobsite-bim-osha-safety-voice-selection-faq.md) | [EN](./smart-construction-jobsite-bim-osha-safety-voice-selection-faq.en.md)
+88. **血液中心献血健康征询（GB 18467/AABB 暂缓锁）、Rh阴性熊猫血应急招募、献血后回告 0ms 血袋冻结与器官移植冷缺血（CIT）协同方案**：[中文](./blood-center-donor-screening-organ-transplant-voice-selection-faq.md) | [EN](./blood-center-donor-screening-organ-transplant-voice-selection-faq.en.md)

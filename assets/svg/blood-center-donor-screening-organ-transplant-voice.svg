@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgBlood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D18"/>
+      <stop offset="50%" stop-color="#19162B"/>
+      <stop offset="100%" stop-color="#0A0E1A"/>
+    </linearGradient>
+    <linearGradient id="deferGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="rareGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="organGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgBlood)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Blood Center Donor Deferral Screening, Rh-Negative Recall &amp; Organ Transplant CIT Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">血液中心献血健康征询 (GB 18467 / AABB 暂缓锁)、Rh阴性稀有血型与血小板应急招募、及器官移植冷缺血 (CIT) 协同全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#4C0519" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FDA4AF" font-size="13" font-weight="600" text-anchor="middle">BLOOD-ORGAN-01 · LifeLine</text>
+
+  <!-- Pillar 1: Blood Donor Health Questionnaire (DHQ) & Deferral Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#deferGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 献血者健康征询 (DHQ) 与法定暂缓献血锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁向未满献血间隔期或服致畸药者开放预约！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• GB 18467 / FDA AABB：全血间隔 &gt;=6个月(国内)/56天(美)，血小板 &gt;=14天</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 正服异维A酸 (战痘药，停药&lt;1个月) 或阿维A酸 (停药&lt;3年) 严禁献血！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">拔牙/胃肠镜/文身/疟疾疫区旅行史精准暂缓计算</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• “我上礼拜刚拔了智齿 / 做了胃镜活检，明天能去献血车吗？”</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 自动计算解禁日（拔牙满 7–14天 / 内镜满 6–12个月），避免白跑淘汰</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">献血后头晕/穿刺点淤青护理与回告保密通道</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 献血后发生血管迷走神经反应（冷汗头晕）：0ms 指导立即平躺抬高双腿</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 献血后发现发烧感冒：一键语音回告拦截该袋血浆进入临床（Lookback）</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">献血屋现场因健康暂缓导致的白跑淘汰率下降 69%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">致畸禁忌药物 (异维A酸/非那雄胺) 漏筛率 = 0.0%</text>
+  </g>
+
+  <!-- Pillar 2: Rare Rh-Negative & Apheresis Platelet Emergency Recall -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rareGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 熊猫血 (Rh-) 与机采血小板 5天保质期调度</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">机采血小板保存期仅 5天！按医院手术需量精准约采</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 血小板采多了 5天即报废，采少了白血病/产后大出血患者无血可用</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 根据明日三甲医院 ABO 血型申请单，精准语音邀约对应血型机采志愿者</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">产妇羊水栓塞 Rh阴性“熊猫血”10分钟百人并发急召</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 急诊抢救需 AB型 Rh阴性红细胞 8U：自动过滤已满献血间隔且距血站&lt;15km库</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 10秒内并发语音外呼稀有血型之家志愿者，锁定 4名合格献血者即停呼</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">三代直系亲属优先用血/免费用血报销语音一件事</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 献血者父母住院用血：语音核对献血证编号与出院发票金额</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动对接全省用血直免平台，免去家属带材料去血站报销奔波</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">稀有血型急诊应急响应集结时间从 3小时缩至 22分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">机采血小板 5天过期报废率下降 74%</text>
+  </g>
+
+  <!-- Pillar 3: Organ Transplant Offer & Cold Ischemia Time (CIT) Clock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#organGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 器官移植分配 (COTRS/UNOS) 与冷缺血倒计时</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 心脏冷缺血极限仅 4小时！每一分钟延误都关乎生死！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 心脏冷缺血 (CIT) &lt;=4h、肺 &lt;=6h、肝 &lt;=8-12h：凌晨匹配出供体器官</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 移植协调员 (OPO) 必须在 30–60分钟内确认顺位第1受者能否立即手术！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">顺位受者+备选受者并发状态初筛 (Zero-Infection Check)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 凌晨 2点自动拨通顺位受者：核实当前无发热感染、未出差且 2h内能到院</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 若顺位第1受者正在发烧肺炎无法手术：0ms 唤醒移植主任顺延第2受者！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">供体阻断钳夹时间 (Cross-Clamp) 与民航/高铁绿通联锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 实时播报主动脉阻断时间 (Cross-Clamp Time) 与剩余冷缺血预算</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 一键语音触发机场/高铁站人体捐献器官转运绿色通道与手术室麻醉准备</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">供体器官因顺位联系超时导致的弃用率下降 62%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">平均为每台心/肺/肝移植手术抢回 48 分钟黄金冷缺血时间</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#F43F5E" font-size="14" font-weight="700">架构师核心选型法则 (BLOOD-ORGAN-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 献血预约与稀有血型召回必须 100% 强制校核法定献血间隔期与致畸药物禁忌（如异维A酸/非那雄胺/阿维A酸），严禁向暂缓期内志愿者发起急召；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 器官移植受者凌晨急召一旦检出受者存在活动性发热感染或无法在冷缺血窗口 (CIT) 内抵院，必须 0ms 唤醒 OPO 与移植主刀启动顺位递补。</text>
+</svg>

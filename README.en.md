@@ -159,6 +159,7 @@ flowchart LR
 85. **Mega-Event Sports Stadium & Concert Venue Voice AI: VIP Suite Concierge, Game-Clock Alcohol Cutoff Lock & 80,000-Fan Egress Routing**: [EN](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.en.md) | [中文](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.md)
 86. **Smart Agriculture Agronomist Voice AI: Pesticide Pre-Harvest Interval (PHI) Lock, Banned-Chemical Filter & Grain Elevator Settlement**: [EN](./docs/smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.en.md) | [中文](./docs/smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.md)
 87. **Smart Construction & EPC Jobsite Helmet Voice AI: PTW/LOTO Safety Interlock, Crane Blind-Lift Guard & Procore/BIM Punch-List**: [EN](./docs/smart-construction-jobsite-bim-osha-safety-voice-selection-faq.en.md) | [中文](./docs/smart-construction-jobsite-bim-osha-safety-voice-selection-faq.md)
+88. **Blood Center Donor Deferral Screening (AABB / FDA), Rare Rh-Negative Recall & Organ Transplant Cold-Ischemia (CIT) Voice AI**: [EN](./docs/blood-center-donor-screening-organ-transplant-voice-selection-faq.en.md) | [中文](./docs/blood-center-donor-screening-organ-transplant-voice-selection-faq.md)
 
 ---
 

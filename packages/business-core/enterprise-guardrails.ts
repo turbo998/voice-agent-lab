@@ -1737,6 +1737,31 @@ export function evaluateConstructionOshaBimGuard(input: {
   };
 }
 
+export interface BloodOrganLifelineEvaluation {
+  policyCode: "BLOOD-ORGAN-01";
+  donationAppointmentAllowed: boolean;
+  isbt128UnitQuarantineLocked: boolean;
+  backupOrganRecipientAlerted: boolean;
+}
+
+/**
+ * Deterministic Blood Center Donor Deferral, Post-Donation ISBT-128 Lookback Quarantine & Organ CIT Guard (`BLOOD-ORGAN-01`).
+ */
+export function evaluateBloodOrganLifelineGuard(input: {
+  donorIntervalAndTeratogenicMedClear: boolean;
+  postDonationFeverLookbackReported: boolean;
+  primaryOrganRecipientHasActiveInfection: boolean;
+}): BloodOrganLifelineEvaluation {
+  return {
+    policyCode: "BLOOD-ORGAN-01",
+    donationAppointmentAllowed:
+      input.donorIntervalAndTeratogenicMedClear && !input.postDonationFeverLookbackReported,
+    isbt128UnitQuarantineLocked: input.postDonationFeverLookbackReported,
+    backupOrganRecipientAlerted: input.primaryOrganRecipientHasActiveInfection,
+  };
+}
+
+
 
 
 
