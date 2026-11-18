@@ -93,7 +93,7 @@
       <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 剂量数字双向拆解复诵 (“一五，十五毫克，对吗？”)</text>
       <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 触发严重不良事件 (SAE) 强制采集 MedWatch 四要素</text>
       <rect x="14" y="186" width="338" height="40" rx="8" fill="#091526" stroke="#0284c7" stroke-width="1"/>
-      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: ACS + 级联受控管道 + P89/P111 护栏</text>
+      <text x="22" y="210" fill="#7dd3fc" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: ACS + 级联受控管道 + P89/ 护栏</text>
     </g>
   </g>
 
@@ -110,7 +110,7 @@
 
     <rect x="20" y="64" width="535" height="90" rx="8" fill="#1f121b" stroke="#f43f5e" stroke-width="1"/>
     <text x="32" y="84" fill="#fda4af" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
-      1. 易混剂量拆解复诵锁 (`15mg vs 50mg` / `P16 &amp; P729`) + 零自由诊断锁
+      1. 易混剂量拆解复诵锁 (`15mg vs 50mg` / `P16 &amp; `) + 零自由诊断锁
     </text>
     <text x="32" y="105" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
       • 电话窄带下 `Fifteen (15)` 与 `Fifty (50)`、中文“十四”与“四十”极易混淆，胰岛素或华法林差3倍即致命；

@@ -152,7 +152,7 @@
       2. **开放音色解耦**：既可用原生 S2S 声线，也可一键绑定 **Azure 140+ 语种 DragonHD (4.34 MOS) 与专属 CNV 克隆音色**；
     </text>
     <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
-      3. **内置 80% 提示词缓存 + 4轮音频滑窗裁剪 (`P741`)**：长通话成本直降 74%，彻底拉平 S2S 生产账单！
+      3. **内置 80% 提示词缓存 + 4轮音频滑窗裁剪 (``)**：长通话成本直降 74%，彻底拉平 S2S 生产账单！
     </text>
 
     <!-- Right Box: 3-Model Enterprise Routing Matrix -->

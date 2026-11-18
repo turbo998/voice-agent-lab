@@ -1,7 +1,7 @@
 # 企业实时语音对接慢速业务系统（ERP/CRM/HIS/航司 GDS）架构设计与选型 FAQ：三级零死寂安抚话术（“请稍等我帮您查一下”）、防“喂喂”误撤单与声信卡片双通道协同指南
 
-> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.en.md`)](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.en.md)**  
-> 🔗 **关联专题 (Related Deep Dives)**: [写状态异步工具取消与纪元栅栏 (`voice-tool-epoch-fence-faq.md`)](./voice-tool-epoch-fence-faq.md) · [只读知识库投机式语音 RAG (`speculative-voice-rag-faq.md`)](./speculative-voice-rag-faq.md) · [全渠道语音+App CAS 并发防重扣 (`voice-omnichannel-cas-concurrency-ultrasonic-wallet-guard-faq.md`)](./voice-omnichannel-cas-concurrency-ultrasonic-wallet-guard-faq.md) · [实时语音编排框架选型 (`voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md`)](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md) · [返回首页 (`README.md`)](../README.md)
+> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.en.md`)](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.en.md)** 
+> 🔗 **关联专题 (Related Deep Dives)**: [写状态异步工具取消与纪元栅栏 (`enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.md`)](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.md) · [只读知识库投机式语音 RAG (`enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.md`)](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.md) · [全渠道语音+App CAS 并发防重扣 (`enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.md`)](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.md) · [实时语音编排框架选型 (`voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md`)](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md) · [返回首页 (`README.md`)](../README.md)
 
 ![Enterprise Voice Agent Slow Backend ERP/CRM Integration & Zero-Dead-Air Pacing Visual Summary](../assets/svg/enterprise-voice-async-erp-crm-integration-zero-dead-air.svg)
 
@@ -12,14 +12,14 @@
 为什么很多实时语音智能体在实验室里调 `20ms` 的假数据（Mock JSON）时对答如流，一旦真正连上企业生产的 **SAP ERP、Salesforce CRM、银行核心主机（AS/400）、航司全球分销系统（Amadeus / Sabre / 中航信 GDS）或医院 HIS 挂号系统**，客户体验就瞬间崩盘？因为企业真实老旧业务接口的响应耗时普遍在 **`1,800ms ~ 8,500ms`** 之间！**Cloud & AI 解决方案架构师** 在设计业务系统集成层时，必须废除“同步阻塞调接口”的玩具写法，全面落地以下 **三大企业级生产机制**：
 
 1. **机制一：三级自适应零死寂安抚节奏机（3-Tier Zero-Dead-Air Async Pacing Engine）—— 彻底消灭查单时的电话“死亡静音”**：
-   - **第 1 级（`300ms ~ 2,200ms` · 语境安抚话术 `Contextual Preamble Filler`）**：当业务接口超过 `300ms` 仍未返回，编排器绝不傻等，立即让语音模型自然说出一句贴合上下文的过渡语（如：*“好嘞，请稍等，我马上帮您查一下尾号 8821 的顺丰退货进度…”*）。这句话自然播完刚好需要 `1.6 秒`，话音刚落，后端 1.8 秒的接口数据正好到达，实现 **0.0 秒感知冷场**！
-   - **第 2 级（`2,200ms ~ 6,500ms` · `-24dBFS` 轻柔键盘音效 + 进度心跳播报）**：针对耗时 3～6 秒的航司跨航段改签或保单核保接口，在安抚话术播完后自动垫入 `-24 dBFS` 的轻柔电脑键盘敲击声/水滴等待音（证明电话没断、系统正在干活），并在满 `3.5 秒` 时补一句简短进度播报（*“正在为您同步南航主机的实时余票，马上好…”*）。
-   - **第 3 级（`> 6,500ms` · 异步队列挂起 + 短信/微信卡片主动回推）**：一旦老旧接口超过 `6.5 秒` 仍未返回（或遇到日终批处理锁表），立即触发熔断降级，把任务转入后台异步消息队列（Azure Service Bus），并向客户播报：*“出票主机正在做最终确认，为节省您的通话时间，结果将在 1 分钟内直接发短信到您手机上，请问还有其他可以帮您吗？”*
+ - **第 1 级（`300ms ~ 2,200ms` · 语境安抚话术 `Contextual Preamble Filler`）**：当业务接口超过 `300ms` 仍未返回，编排器绝不傻等，立即让语音模型自然说出一句贴合上下文的过渡语（如：*“好嘞，请稍等，我马上帮您查一下尾号 8821 的顺丰退货进度…”*）。这句话自然播完刚好需要 `1.6 秒`，话音刚落，后端 1.8 秒的接口数据正好到达，实现 **0.0 秒感知冷场**！
+ - **第 2 级（`2,200ms ~ 6,500ms` · `-24dBFS` 轻柔键盘音效 + 进度心跳播报）**：针对耗时 3～6 秒的航司跨航段改签或保单核保接口，在安抚话术播完后自动垫入 `-24 dBFS` 的轻柔电脑键盘敲击声/水滴等待音（证明电话没断、系统正在干活），并在满 `3.5 秒` 时补一句简短进度播报（*“正在为您同步南航主机的实时余票，马上好…”*）。
+ - **第 3 级（`> 6,500ms` · 异步队列挂起 + 短信/微信卡片主动回推）**：一旦老旧接口超过 `6.5 秒` 仍未返回（或遇到日终批处理锁表），立即触发熔断降级，把任务转入后台异步消息队列（Azure Service Bus），并向客户播报：*“出票主机正在做最终确认，为节省您的通话时间，结果将在 1 分钟内直接发短信到您手机上，请问还有其他可以帮您吗？”*
 2. **机制二：区分“客户焦虑催促（Status Probe）”与“真正改主意打断（Intent Cancellation）”—— 根除“客户问一句‘喂？’就掐断重查”的死循环**：
-   - 传统粗暴的 Barge-in 一听到电话里有声音就执行 `AbortController.abort()` 取消正在运行的工具调用。结果客户在等待的第 2.5 秒随口问了一句*“喂？还在查吗？”*，系统竟然把已经跑了 90% 的慢接口强行掐断重头再查一遍！正确架构必须对打断意图做二分类：**催促类话语保持后台在途工具继续运行，仅前台口头安抚；只有明确改主意（“算了别退了”）才递增 `turnEpoch` 并执行逆向补偿撤销**。
+ - 传统粗暴的 Barge-in 一听到电话里有声音就执行 `AbortController.abort` 取消正在运行的工具调用。结果客户在等待的第 2.5 秒随口问了一句*“喂？还在查吗？”*，系统竟然把已经跑了 90% 的慢接口强行掐断重头再查一遍！正确架构必须对打断意图做二分类：**催促类话语保持后台在途工具继续运行，仅前台口头安抚；只有明确改主意（“算了别退了”）才递增 `turnEpoch` 并执行逆向补偿撤销**。
 3. **机制三：“两阶段预占提交（Prepare-then-Commit）” + “耳听概要、眼看卡片（Voice + SMS/小程序卡片）”双通道协同**：
-   - **写操作铁律**：严禁让大模型一个工具函数直接扣款或改掉数据库！拆分为 `① stage_draft（生成 5 分钟有效期预占草稿并算清金额） ➔ ② 向客户口头复诵或推送卡片确认 ➔ ③ commit_transaction（带 SHA-256 幂等键正式提交）`。
-   - **长信息输出铁律**：遇到退货寄件长地址、3 个以上改签航班对比、复杂理赔材料清单或支付链接时，**嘴上只念 10 秒核心结论，同步在 `< 400ms` 内通过短信/微信小程序/App 推送图文卡片**，将单通电话时长缩短 **38%**，客户抄写错误率从 **29% 降至 0%**！
+ - **写操作铁律**：严禁让大模型一个工具函数直接扣款或改掉数据库！拆分为 `① stage_draft（生成 5 分钟有效期预占草稿并算清金额） ➔ ② 向客户口头复诵或推送卡片确认 ➔ ③ commit_transaction（带 SHA-256 幂等键正式提交）`。
+ - **长信息输出铁律**：遇到退货寄件长地址、3 个以上改签航班对比、复杂理赔材料清单或支付链接时，**嘴上只念 10 秒核心结论，同步在 `< 400ms` 内通过短信/微信小程序/App 推送图文卡片**，将单通电话时长缩短 **38%**，客户抄写错误率从 **29% 降至 0%**！
 
 ---
 
@@ -30,18 +30,18 @@
 #### 1. 剖析两大常见翻车现场
 
 - **翻车现场 A：固定播放同一句死板的预录 MP3（“正在查询请稍候。正在查询请稍候。”）**
-  - 无论客户是焦急地挂失银行卡，还是开心地查询积分兑换，机器人每次调接口前都用完全一模一样的机械语调放一段固定录音，客户一听就知道是低端机器人在拖延时间。
+ - 无论客户是焦急地挂失银行卡，还是开心地查询积分兑换，机器人每次调接口前都用完全一模一样的机械语调放一段固定录音，客户一听就知道是低端机器人在拖延时间。
 - **翻车现场 B：让大模型自由生成过渡语，结果大模型“顺嘴抢答编造了假结果（Premature Hallucination）”**
-  - 你在 Prompt 里告诉大模型：“调工具前先跟客户说句话安抚一下”。结果客户问“帮我查下昨天那笔退款到账没”，大模型在调工具的同一毫秒顺嘴说出了：*“好的，我帮您查一下，您的退款其实已经差不多到账了…”*——等 2 秒后 ERP 接口返回 `状态：审核驳回`，大模型前后自相矛盾，直接引发客户暴怒投诉！
+ - 你在 Prompt 里告诉大模型：“调工具前先跟客户说句话安抚一下”。结果客户问“帮我查下昨天那笔退款到账没”，大模型在调工具的同一毫秒顺嘴说出了：*“好的，我帮您查一下，您的退款其实已经差不多到账了…”*——等 2 秒后 ERP 接口返回 `状态：审核驳回`，大模型前后自相矛盾，直接引发客户暴怒投诉！
 
 #### 2. 架构师标准解法：“槽位参数化动态安抚模板 + 零事实断言红线（Zero-Fact-Assertion Filler Gate）”
 
 1. **内容约束（只复述动作与已知入参，绝不预测结果）**：
-   - 安抚话术生成器（可由主模型受控生成或由 `< 50ms` 的轻量小模型渲染）严格遵循公式：`[共情/确认词] + [正在核实的客户已知参数] + [请稍候]`。
-   - 例如：客户说“帮我查下明早去深圳的机票”，安抚话术自动生成：*“明白，正在帮您查询明早飞往深圳的实时航班余票，请稍等…”*——既有“明早、深圳”的专属上下文温度，又**绝不包含任何未验证的票价或余票结论**！
+ - 安抚话术生成器（可由主模型受控生成或由 `< 50ms` 的轻量小模型渲染）严格遵循公式：`[共情/确认词] + [正在核实的客户已知参数] + [请稍候]`。
+ - 例如：客户说“帮我查下明早去深圳的机票”，安抚话术自动生成：*“明白，正在帮您查询明早飞往深圳的实时航班余票，请稍等…”*——既有“明早、深圳”的专属上下文温度，又**绝不包含任何未验证的票价或余票结论**！
 2. **听感防打架：当接口比安抚话术更快返回时，怎么办？（Clause-Completion Grace Lock）**：
-   - 假设安抚话术“好的，正在帮您查询明早飞深圳的航班”需要播 `1,400ms`，而后端接口在 `600ms` 时就已经返回了结果。
-   - **千万不要在 `600ms` 时粗暴腰斩安抚话术**（否则客户会听到*“好的，正在帮您查——找到了！明早八点有票”*的刺耳跳帧）！编排器必须让当前这句简短的安抚话术平稳播完最后一个字，再在后面无缝拼接正式答案，听感如丝般顺滑。
+ - 假设安抚话术“好的，正在帮您查询明早飞深圳的航班”需要播 `1,400ms`，而后端接口在 `600ms` 时就已经返回了结果。
+ - **千万不要在 `600ms` 时粗暴腰斩安抚话术**（否则客户会听到*“好的，正在帮您查——找到了！明早八点有票”*的刺耳跳帧）！编排器必须让当前这句简短的安抚话术平稳播完最后一个字，再在后面无缝拼接正式答案，听感如丝般顺滑。
 
 ---
 
@@ -49,14 +49,14 @@
 
 在现代全渠道企业（如瑞幸/星巴克点单、航司 App、银行手机银行、电商售后）中，**“边打电话边看手机屏幕”** 已经是常态。如果语音 Agent 后端和手机 App 后端没有并发锁保护，极易发生 **跨通道竞态条件（Cross-Channel Race Condition）**。
 
-#### 架构师“全渠道 CAS 乐观并发锁 + 150ms 双向事件总线”设计（参见本仓护栏 `P58 / P759`）：
+#### 架构师“全渠道 CAS 乐观并发锁 + 150ms 双向事件总线”设计（参见本仓护栏 `P58 / `）：
 
 1. **统一订单版本号（`ETag / stateVersion`）与 `If-Match` 原子更新**：
-   - 无论是手机 App 还是语音 Agent，每次读取订单或购物车状态时，都会拿到当前版本号（如 `stateVersion = 12`）。
-   - 当语音 Agent 准备提交改签或扣款工具时，请求头必须携带 `If-Match: 12` + 确定性幂等键 `Idempotency-Key: sha256(callId + turnEpoch + actionType + targetId)`。
-   - 如果客户在 0.5 秒前刚刚在手机小程序上自己点击了“取消订单”（使数据库版本号变成了 `13`），语音 Agent 的写入请求在数据库网关层会立即收到 `409 Conflict` 阻断，绝不会发生重复扣款或状态覆盖！
+ - 无论是手机 App 还是语音 Agent，每次读取订单或购物车状态时，都会拿到当前版本号（如 `stateVersion = 12`）。
+ - 当语音 Agent 准备提交改签或扣款工具时，请求头必须携带 `If-Match: 12` + 确定性幂等键 `Idempotency-Key: sha256(callId + turnEpoch + actionType + targetId)`。
+ - 如果客户在 0.5 秒前刚刚在手机小程序上自己点击了“取消订单”（使数据库版本号变成了 `13`），语音 Agent 的写入请求在数据库网关层会立即收到 `409 Conflict` 阻断，绝不会发生重复扣款或状态覆盖！
 2. **`<= 150ms` 跨通道实时状态同步（Cross-Channel Event Push）**：
-   - 一旦手机小程序发生状态变更（`stateVersion: 12 ➔ 13`），事件总线在 `150ms` 内实时推送给正在通话的语音编排器。语音 Agent 会立刻惊喜地对客户说：*“王先生，我看到您刚刚已经在手机小程序上点选了靠窗的 12A 座位，那我就直接帮您锁定这个座位啦！”*——这种“耳眼合一”的默契感，会让客户惊叹于企业的数字化水平！
+ - 一旦手机小程序发生状态变更（`stateVersion: 12 ➔ 13`），事件总线在 `150ms` 内实时推送给正在通话的语音编排器。语音 Agent 会立刻惊喜地对客户说：*“王先生，我看到您刚刚已经在手机小程序上点选了靠窗的 12A 座位，那我就直接帮您锁定这个座位啦！”*——这种“耳眼合一”的默契感，会让客户惊叹于企业的数字化水平！
 
 ---
 
@@ -65,13 +65,13 @@
 在传统大型制造、保险、医院和政务项目中，很多核心系统是 15 年前建的，没有现代 REST/GraphQL 毫秒级接口。架构师可通过以下 **“三层读写加速与异步解耦网关”** 化腐朽为神奇：
 
 1. **读加速层（Read-Through Hot Cache + 来电振铃预取 `Ring-Time Pre-Hydration`）**：
-   - **绝不在客户开口问了之后才去查古董系统！**
-   - 当客户电话刚刚拨入、正在响第一声彩铃（`SIP 180 Ringing` 到 `200 OK` 之间的黄金 **1.5 秒**）时，网关就已经根据来电手机号（`ANI`）在后台并发调用古董 CRM/ERP，把该客户最近 3 笔订单、会员等级、在途工单全部拉取到 **Redis 内存热缓存** 中！
-   - 等客户开口问“我昨天买的东西到哪了”，语音 Agent 直接从 Redis 内存读取，响应耗时从 `4,500ms` 骤降至 **`8ms`**！
+ - **绝不在客户开口问了之后才去查古董系统！**
+ - 当客户电话刚刚拨入、正在响第一声彩铃（`SIP 180 Ringing` 到 `200 OK` 之间的黄金 **1.5 秒**）时，网关就已经根据来电手机号（`ANI`）在后台并发调用古董 CRM/ERP，把该客户最近 3 笔订单、会员等级、在途工单全部拉取到 **Redis 内存热缓存** 中！
+ - 等客户开口问“我昨天买的东西到哪了”，语音 Agent 直接从 Redis 内存读取，响应耗时从 `4,500ms` 骤降至 **`8ms`**！
 2. **写缓冲层（Two-Phase Saga + 消息队列削峰填谷）**：
-   - 当客户在电话里要求办理一项需要古董系统耗时 12 秒才能写完的复杂变更（如“修改保单受益人地址”或“触发 RPA 退税申报”）时：
-     - 语音网关在本地通过 Schema 规则与前置资格校验后，立即生成带有唯一流水号的**已受理事务凭证**，并在电话里秒回客户：*“您的地址变更申请已通过核验并正式受理，流水号是 8902，系统后台正在同步归档，完成后会给您发确认短信。”*
-     - 后台 Worker 从容不迫地通过消息队列调用慢速 SOAP/RPA 接口，若遇到瞬时网络抖动则自动指数退避重试；若极小概率最终失败，自动生成高优人工坐席回呼工单兜底。
+ - 当客户在电话里要求办理一项需要古董系统耗时 12 秒才能写完的复杂变更（如“修改保单受益人地址”或“触发 RPA 退税申报”）时：
+ - 语音网关在本地通过 Schema 规则与前置资格校验后，立即生成带有唯一流水号的**已受理事务凭证**，并在电话里秒回客户：*“您的地址变更申请已通过核验并正式受理，流水号是 8902，系统后台正在同步归档，完成后会给您发确认短信。”*
+ - 后台 Worker 从容不迫地通过消息队列调用慢速 SOAP/RPA 接口，若遇到瞬时网络抖动则自动指数退避重试；若极小概率最终失败，自动生成高优人工坐席回呼工单兜底。
 
 ---
 
@@ -81,19 +81,19 @@
 
 ```mermaid
 flowchart TD
-    Start(["🎯 语音智能体需调用企业后端业务 API / 数据库"]) --> Q1{"1. 该业务接口是【只读查询】还是【写状态/扣款变更】?"}
-    
-    Q1 -- "只读查询 (查订单/查余票/查排班)" --> Q2{"2. 接口能否在来电振铃期按手机号预取?<br/>或真实 P95 响应耗时是多少?"}
-    
-    Q2 -- "可按来电号码预取 或 P95 <= 300ms" --> PathFast["⚡ 模式 A：来电振铃预取 (Ring-Time Pre-Hydration) + Redis 热缓存<br/>效果：客户开口即从内存读取 (<15ms)，零等待直答"]
-    
-    Q2 -- "必须等客户报单号才能查<br/>且耗时在 300ms ~ 2,200ms" --> PathTier1["💬 模式 B1：第 1 级语境安抚话术 (Contextual Preamble Filler)<br/>加上说话途中 Partial ASR 投机只读预取，自然掩盖 1.8s 耗时"]
-    
-    Q2 -- "老旧主机/GDS 耗时 2.2s ~ 6.5s" --> PathTier2["🎧 模式 B2：第 2 级安抚话术 + -24dBFS 键盘音效 + 3.5s 进度心跳<br/>并开启‘喂喂’催促词保护锁，严禁误取消在途查询"]
-    
-    Q2 -- "超慢批处理/RPA (> 6.5s) 或<br/>返回结果含长地址/多表格" --> PathTier3["📲 模式 B3：第 3 级异步队列 + 短信/微信小程序卡片推送<br/>口头播报 10s 概要，详情与操作下发手机卡片"]
-    
-    Q1 -- "写状态 / 扣款 / 改签 / 退订" --> PathWrite["🔒 模式 C：两阶段事务锁 (Prepare Draft ➔ 口头/卡片复诵确认 ➔ Idempotent Commit)<br/>绑定 turnEpoch 与 If-Match CAS 版本锁，确保 0 脏写、0 双倍扣款"]
+ Start(["🎯 语音智能体需调用企业后端业务 API / 数据库"]) --> Q1{"1. 该业务接口是【只读查询】还是【写状态/扣款变更】?"}
+ 
+ Q1 -- "只读查询 (查订单/查余票/查排班)" --> Q2{"2. 接口能否在来电振铃期按手机号预取?<br/>或真实 P95 响应耗时是多少?"}
+ 
+ Q2 -- "可按来电号码预取 或 P95 <= 300ms" --> PathFast["⚡ 模式 A：来电振铃预取 (Ring-Time Pre-Hydration) + Redis 热缓存<br/>效果：客户开口即从内存读取 (<15ms)，零等待直答"]
+ 
+ Q2 -- "必须等客户报单号才能查<br/>且耗时在 300ms ~ 2,200ms" --> PathTier1["💬 模式 B1：第 1 级语境安抚话术 (Contextual Preamble Filler)<br/>加上说话途中 Partial ASR 投机只读预取，自然掩盖 1.8s 耗时"]
+ 
+ Q2 -- "老旧主机/GDS 耗时 2.2s ~ 6.5s" --> PathTier2["🎧 模式 B2：第 2 级安抚话术 + -24dBFS 键盘音效 + 3.5s 进度心跳<br/>并开启‘喂喂’催促词保护锁，严禁误取消在途查询"]
+ 
+ Q2 -- "超慢批处理/RPA (> 6.5s) 或<br/>返回结果含长地址/多表格" --> PathTier3["📲 模式 B3：第 3 级异步队列 + 短信/微信小程序卡片推送<br/>口头播报 10s 概要，详情与操作下发手机卡片"]
+ 
+ Q1 -- "写状态 / 扣款 / 改签 / 退订" --> PathWrite["🔒 模式 C：两阶段事务锁 (Prepare Draft ➔ 口头/卡片复诵确认 ➔ Idempotent Commit)<br/>绑定 turnEpoch 与 If-Match CAS 版本锁，确保 0 脏写、0 双倍扣款"]
 ```
 
 ---
@@ -102,32 +102,32 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph CallerSide["📱 1. 客户全渠道终端 (语音 + 手机屏幕)"]
-        direction TB
-        VoiceIn["🗣️ 实时语音通话<br/>(PSTN 电话 / App WebRTC)"]
-        CardOut["📲 手机短信 / 微信小程序卡片<br/>(长地址 / 航班表 / 支付链接)"]
-    end
+ subgraph CallerSide["📱 1. 客户全渠道终端 (语音 + 手机屏幕)"]
+ direction TB
+ VoiceIn["🗣️ 实时语音通话<br/>(PSTN 电话 / App WebRTC)"]
+ CardOut["📲 手机短信 / 微信小程序卡片<br/>(长地址 / 航班表 / 支付链接)"]
+ end
 
-    subgraph PacingLayer["🎛️ 2. 实时语音编排与三级零死寂节奏层"]
-        direction TB
-        PreHydrate["⚡ 振铃期 1.5s 预取器<br/>(按手机号提前拉取最近3单进 Redis)"]
-        Pacer["⏱️ 三级零死寂安抚状态机<br/>• >300ms: 动态语境安抚话术<br/>• >2.2s: -24dBFS 键盘音 + 进度心跳<br/>• >6.5s: 转异步队列 + 短信通知"]
-        ProbeGuard["🛡️ '喂喂' 催促词防撤单锁<br/>(催促仅安抚，改主意才递增 turnEpoch)"]
-    end
+ subgraph PacingLayer["🎛️ 2. 实时语音编排与三级零死寂节奏层"]
+ direction TB
+ PreHydrate["⚡ 振铃期 1.5s 预取器<br/>(按手机号提前拉取最近3单进 Redis)"]
+ Pacer["⏱️ 三级零死寂安抚状态机<br/>• >300ms: 动态语境安抚话术<br/>• >2.2s: -24dBFS 键盘音 + 进度心跳<br/>• >6.5s: 转异步队列 + 短信通知"]
+ ProbeGuard["🛡️ '喂喂' 催促词防撤单锁<br/>(催促仅安抚，改主意才递增 turnEpoch)"]
+ end
 
-    subgraph TxLayer["🔒 3. 两阶段事务网关与老旧 ERP 适配层"]
-        direction TB
-        TwoPhase["📝 两阶段 Saga 事务锁<br/>1. stage_draft (5min 锁定)<br/>2. commit (SHA-256 幂等 + CAS)"]
-        LegacyERP["🏢 企业核心业务系统<br/>(SAP ERP / 航司 GDS / 银行主机 / HIS)"]
-        TwoPhase <--> LegacyERP
-    end
+ subgraph TxLayer["🔒 3. 两阶段事务网关与老旧 ERP 适配层"]
+ direction TB
+ TwoPhase["📝 两阶段 Saga 事务锁<br/>1. stage_draft (5min 锁定)<br/>2. commit (SHA-256 幂等 + CAS)"]
+ LegacyERP["🏢 企业核心业务系统<br/>(SAP ERP / 航司 GDS / 银行主机 / HIS)"]
+ TwoPhase <--> LegacyERP
+ end
 
-    VoiceIn -->|"来电 ANI 振铃触发"| PreHydrate
-    PreHydrate -.->|"预热客户画像"| LegacyERP
-    VoiceIn <-->|"全双工语音 + 音效"| Pacer
-    Pacer --> ProbeGuard --> TwoPhase
-    TwoPhase ==>|"<400ms 推送图文卡片"| CardOut
-    CardOut -.->|"If-Match CAS 实时回传点击事件"| TwoPhase
+ VoiceIn -->|"来电 ANI 振铃触发"| PreHydrate
+ PreHydrate -.->|"预热客户画像"| LegacyERP
+ VoiceIn <-->|"全双工语音 + 音效"| Pacer
+ Pacer --> ProbeGuard --> TwoPhase
+ TwoPhase ==>|"<400ms 推送图文卡片"| CardOut
+ CardOut -.->|"If-Match CAS 实时回传点击事件"| TwoPhase
 ```
 
 ---
@@ -136,33 +136,33 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Passenger as 👤 旅客 (陈女士)
-    participant Orch as 🎛️ 语音编排与三级节奏机<br/>(Voice Live + Pacer)
-    participant GDS as ✈️ 航司老旧 GDS 主机<br/>(平均耗时 4.2 秒)
-    participant MiniApp as 📲 手机短信 / 微信小程序<br/>(CAS 并发同步锁)
+ autonumber
+ actor Passenger as 👤 旅客 (陈女士)
+ participant Orch as 🎛️ 语音编排与三级节奏机<br/>(Voice Live + Pacer)
+ participant GDS as ✈️ 航司老旧 GDS 主机<br/>(平均耗时 4.2 秒)
+ participant MiniApp as 📲 手机短信 / 微信小程序<br/>(CAS 并发同步锁)
 
-    Note over Passenger,GDS: 阶段 1：来电振铃期 (0s~1.2s) 已按手机号预取陈女士在途航班 CA1832 至 Redis
-    Passenger->>Orch: 拨通电话："帮我把今天下午那班飞北京的机票改到明天上午，有哪几班？"
-    Orch->>GDS: 发起跨日可改签余票与差价计算 query_rebook_options(CA1832) [预计耗时 4,200ms]
+ Note over Passenger,GDS: 阶段 1：来电振铃期 (0s~1.2s) 已按手机号预取陈女士在途航班 CA1832 至 Redis
+ Passenger->>Orch: 拨通电话："帮我把今天下午那班飞北京的机票改到明天上午，有哪几班？"
+ Orch->>GDS: 发起跨日可改签余票与差价计算 query_rebook_options(CA1832) [预计耗时 4,200ms]
 
-    Note over Passenger,GDS: 阶段 2：触发第 1 级 (300ms) 语境安抚 + 第 2 级 (2.2s) 键盘音效与客户“喂”催促保护
-    Orch->>Passenger: 💬 (t=300ms 自动注入安抚话术) "好的陈女士，正在帮您查询今天 CA1832 改签至明天上午北京的实时余票和差价，请稍等..."
-    Orch->>Passenger: 🎧 (t=1,900ms 话术播完，自动垫入 -24dBFS 轻柔键盘敲击音效)
-    Passenger->>Orch: 🗣️ (t=2,800ms 旅客着急追问) "喂？查到了吗？"
-    Note right of Orch: 催促词识别锁触发！判定为 Status Probe 而非取消指令 ➔ 保持 GDS 请求继续运行，绝不掐断重查！
-    Orch->>Passenger: 💬 (t=3,050ms 即刻安抚) "在的陈女士，中航信主机正在返回明天上午的 3 个航班舱位，马上好！"
+ Note over Passenger,GDS: 阶段 2：触发第 1 级 (300ms) 语境安抚 + 第 2 级 (2.2s) 键盘音效与客户“喂”催促保护
+ Orch->>Passenger: 💬 (t=300ms 自动注入安抚话术) "好的陈女士，正在帮您查询今天 CA1832 改签至明天上午北京的实时余票和差价，请稍等..."
+ Orch->>Passenger: 🎧 (t=1,900ms 话术播完，自动垫入 -24dBFS 轻柔键盘敲击音效)
+ Passenger->>Orch: 🗣️ (t=2,800ms 旅客着急追问) "喂？查到了吗？"
+ Note right of Orch: 催促词识别锁触发！判定为 Status Probe 而非取消指令 ➔ 保持 GDS 请求继续运行，绝不掐断重查！
+ Orch->>Passenger: 💬 (t=3,050ms 即刻安抚) "在的陈女士，中航信主机正在返回明天上午的 3 个航班舱位，马上好！"
 
-    Note over Orch,MiniApp: 阶段 3：4.2 秒 GDS 返回 3 个复杂航班选项 -> “耳听概要 + 眼看卡片”双通道联动
-    GDS-->>Orch: (t=4,200ms) 返回 3 个航班 (08:30 补 ¥200 / 10:15 免差价 / 11:45 补 ¥100) 并生成预占草稿 Draft#991 (stateVersion=1)
-    Orch->>MiniApp: 📲 (<350ms 推送微信小程序卡片/短信链接)：展示 3 个航班对比表、座位图与一键确认按钮
-    Orch->>Passenger: 🔊 "查到了！明天上午有 8点半、10点15 和 11点45 三班，其中 10点15 分那班是免收改签差价的。我刚把这三班的对比卡发到了您手机微信上，您可以直接口头告诉我选哪班，或者直接在手机上点确认。"
+ Note over Orch,MiniApp: 阶段 3：4.2 秒 GDS 返回 3 个复杂航班选项 -> “耳听概要 + 眼看卡片”双通道联动
+ GDS-->>Orch: (t=4,200ms) 返回 3 个航班 (08:30 补 ¥200 / 10:15 免差价 / 11:45 补 ¥100) 并生成预占草稿 Draft#991 (stateVersion=1)
+ Orch->>MiniApp: 📲 (<350ms 推送微信小程序卡片/短信链接)：展示 3 个航班对比表、座位图与一键确认按钮
+ Orch->>Passenger: 🔊 "查到了！明天上午有 8点半、10点15 和 11点45 三班，其中 10点15 分那班是免收改签差价的。我刚把这三班的对比卡发到了您手机微信上，您可以直接口头告诉我选哪班，或者直接在手机上点确认。"
 
-    Note over Passenger,MiniApp: 阶段 4：旅客在手机卡片点击选座或口头确认 -> CAS 版本锁原子提交
-    Passenger->>MiniApp: 👆 在手机卡片上点击【选择 10:15 航班 + 靠窗 16A 座位】
-    MiniApp->>GDS: commit_rebook(Draft#991, If-Match: v1) ➔ 落库成功 (stateVersion=2)
-    MiniApp-->>Orch: 120ms 事件总线通知：旅客已在手机端完成确认
-    Orch->>Passenger: 🔊 "看到您已经在手机上选好了 10点15 分的 16A 靠窗座位，电子客票已出票成功！祝您明天旅途愉快！"
+ Note over Passenger,MiniApp: 阶段 4：旅客在手机卡片点击选座或口头确认 -> CAS 版本锁原子提交
+ Passenger->>MiniApp: 👆 在手机卡片上点击【选择 10:15 航班 + 靠窗 16A 座位】
+ MiniApp->>GDS: commit_rebook(Draft#991, If-Match: v1) ➔ 落库成功 (stateVersion=2)
+ MiniApp-->>Orch: 120ms 事件总线通知：旅客已在手机端完成确认
+ Orch->>Passenger: 🔊 "看到您已经在手机上选好了 10点15 分的 16A 靠窗座位，电子客票已出票成功！祝您明天旅途愉快！"
 ```
 
 ---
@@ -186,7 +186,7 @@ Cloud & AI 解决方案架构师在评审企业语音智能体的后端工具调
 
 ### 5.1 为什么“来电预取 + 三级节奏机 + 短信卡片协同”能帮企业省下 38% 的语音算力账单？
 
-很多架构师没意识到：**慢接口和冗长的地址/列表播报，不仅毁掉客户体验，还在白白燃烧按分钟计费的语音大模型算力与电话线路费！**  
+很多架构师没意识到：**慢接口和冗长的地址/列表播报，不仅毁掉客户体验，还在白白燃烧按分钟计费的语音大模型算力与电话线路费！** 
 以月呼入 **100,000 通退换货/改签电话** 为例，对比优化前后的每万分钟与单通账本：
 
 | 运营与成本指标 (以 10 万通涉及 ERP/GDS 查改的电话为例) | 传统架构：开口才查慢接口 + 死寂重查 + 语音干念长地址/多选项 | 推荐架构 🏆：振铃预取 + 三级节奏机 + 语音10s概要/手机卡片协同 | 架构优化净收益 |
@@ -204,14 +204,14 @@ Cloud & AI 解决方案架构师在评审企业语音智能体的后端工具调
 
 遵循 `benchmark-harness-engineering` 7-Card 4:5 视觉报告规范，我们将慢速业务系统集成、三级零死寂节奏机与全渠道 CAS 并发锁的评测数据总结如下（完整交互式卡片见 [`site/benchmark-cards.html`](../site/benchmark-cards.html)）：
 
-> 📊 **数据溯源与口径声明（Provenance Disclosure）**：表中 `turnEpoch` 僵尸写操作拦截率（`100%` 合成探针命中）、跨通道 `If-Match CAS` 并发锁（`P58/P759`）与三级安抚话术冷场消除率综合了本仓库 `tests/business.test.ts` / `tests/presales-portal.test.ts` 自动化回归实测与行业报告基线（`measured` / `anonymized_reported` / `synthetic`）。离线策略状态机判定耗时标记为 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`。
+> 📊 **数据溯源与口径声明（Provenance Disclosure）**：表中 `turnEpoch` 僵尸写操作拦截率（`100%` 合成探针命中）、跨通道 `If-Match CAS` 并发锁（`P58/`）与三级安抚话术冷场消除率综合了本仓库 `tests/business.test.ts` / `tests/presales-portal.test.ts` 自动化回归实测与行业报告基线（`measured` / `anonymized_reported` / `synthetic`）。离线策略状态机判定耗时标记为 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`。
 
 | 卡片编号与视角 (7-Card Deck) | 核心量化标题 (Headline-as-Finding) | 关键实测/基线数据与架构师决策证据 |
 | :--- | :--- | :--- |
 | **Card 1 (`1/7` · `HANDS-ON · ERP & ASYNC TOOLS`)**<br/>全景工作台与核心发现 | **“振铃预取 + 三级零死寂节奏机 + 声信卡片协同”将慢接口冷场率从 `64%` 压至 `<0.5%`，单通时长缩短 `38.6%`** | 彻底解决企业老旧 ERP/GDS 接口（`2s~6s`）拖垮实时语音体验的头号工程难题，同时实现 `0` 脏写提交。 |
 | **Card 2 (`2/7` · `SCENARIO: 4.2S AIRLINE GDS REBOOK`)**<br/>单案例深潜：4.2 秒航司主机查询 + 手机选座 | **300ms 注入语境安抚话术 + 拦截 2.8s 处旅客“喂？”催促防重查，4.2s 同步弹出微信选座卡并完成 CAS 原子出票** | 旅客在手机点击 16A 座位后 `120ms` 语音即刻感知播报；`choice` 动作置信度 `0.99`（`Act automatically`）。 |
 | **Card 3 (`3/7` · `WHAT I TESTED`)**<br/>全场景评测矩阵 | **横跨 3 类集成模式 × 6 项核心关卡（300ms安抚防剧透/喂喂催促防撤单/两阶段防脏写/跨端CAS防重扣/长地址卡片下发/>6.5s异步熔断）** | 同步阻塞与简单打断取消模式在“客户喊喂防重查”与“说话中途挂机零脏写”上全部失败（`✕`）；三级异步架构全项通过。 |
-| **Card 4 (`4/7` · `UNDER THE HOOD`)**<br/>底层协议与事务契约 | **`AsyncToolEpochFence` (`P720`) + `OmnichannelCasLock` (`P759`) + `TwoPhaseDraftCommitSchema`** | 展示 `stage_draft` ➔ `confirm` ➔ `commit(IdempotencyKey, If-Match)` 的确定性状态流转与 `turnEpoch` 过期回调静默丢弃逻辑。 |
+| **Card 4 (`4/7` · `UNDER THE HOOD`)**<br/>底层协议与事务契约 | **`AsyncToolEpochFence` + `OmnichannelCasLock` + `TwoPhaseDraftCommitSchema`** | 展示 `stage_draft` ➔ `confirm` ➔ `commit(IdempotencyKey, If-Match)` 的确定性状态流转与 `turnEpoch` 过期回调静默丢弃逻辑。 |
 | **Card 5 (`5/7` · `ROBUSTNESS CHECK`)**<br/>高并发竞态与中途打断压测 | **在 100 组“语音确认与手机按钮相隔 `<50ms` 同时点击”并发冲击下，`If-Match CAS` 锁实现 `100%` 单次扣款（`0` 双倍扣费）** | 当客户在 `commit` 前突然改口说“算了别改了”，`turnEpoch` 递增并在 `0ms` 策略层吊销旧草稿授权。 |
 | **Card 6 (`6/7` · `LATENCY`)**<br/>客户感知等待与总通话时长对比 | **来电振铃预取将首轮查单从 `3,800ms` 压至 `12ms`，声信双通道将复杂改签/退货总通话时长从 `215s` 缩至 `132s`** | 蓝色主路径（振铃预取 + 三级安抚 + 手机卡片）：感知等待 `<300ms`；灰色基线（串行阻塞查库 + 语音干念长文）：感知死寂 `3,800ms`。 |
 | **Card 7 (`7/7` · `MY TAKE`)**<br/>适用边界与选型拍板 | **✅ 必配来电振铃预取与三级安抚话术；✅ 所有写操作强制拆分为两阶段草稿提交；⛔ 严禁在电话里干念超过 25 字的地址或网址** | 企业实时语音连接 SAP、Salesforce、银行核心与医疗 HIS 的标准架构规范。 |

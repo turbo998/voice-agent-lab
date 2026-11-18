@@ -9,45 +9,45 @@
 
 ```mermaid
 flowchart TB
-    browser["Browser: Chinese operations / English voice"]
-    retell["Retell native flow: NOT configured"]
-    subgraph existing["Partially deployed foundation: NO runtime"]
-        currentaca["ACA: NO custom VNet"]
-        mi["Managed identity"]
-        storage[("Blob / Queue: public DISABLED")]
-        vault["Key Vault: public DISABLED"]
-        foundry["SEA Foundry: NO models"]
-        live["South India OpenAI: NO Live model"]
-        logs[("Log Analytics")]
-    end
-    subgraph candidate["Approved private foundation; runtime NOT deployed"]
-        subgraph vnet["New VNet + delegated Consumption environment: deployed"]
-            ops["Retell operations app: NOT deployed"]
-            liveapp["Independent GPT Live app: NOT deployed"]
-            worker["Finite post-call job: NOT deployed"]
-            pes["Blob + Queue + KV PE: Approved"]
-            dns["Three private DNS zones: A records + linked"]
-        end
-        search[("Free Search: NOT created")]
-    end
-    browser -. authorized HTTPS .-> ops
-    browser -. independent HTTPS .-> liveapp
-    browser -. consented audio .-> retell
-    retell -. signed functions/events .-> ops
-    ops -. MI .-> mi
-    liveapp -. MI .-> mi
-    worker -. MI .-> mi
-    ops -. normal hostnames .-> dns
-    liveapp -. normal hostnames .-> dns
-    worker -. normal hostnames .-> dns
-    dns --> pes
-    pes --> storage
-    pes --> vault
-    ops -. bounded Responses .-> foundry
-    liveapp -. live/sessions .-> live
-    liveapp -. bounded reasoning .-> foundry
-    foundry -. tool UNVERIFIED .-> search
-    currentaca --> logs
+ browser["Browser: Chinese operations / English voice"]
+ retell["Retell native flow: NOT configured"]
+ subgraph existing["Partially deployed foundation: NO runtime"]
+ currentaca["ACA: NO custom VNet"]
+ mi["Managed identity"]
+ storage[("Blob / Queue: public DISABLED")]
+ vault["Key Vault: public DISABLED"]
+ foundry["SEA Foundry: NO models"]
+ live["South India OpenAI: NO Live model"]
+ logs[("Log Analytics")]
+ end
+ subgraph candidate["Approved private foundation; runtime NOT deployed"]
+ subgraph vnet["New VNet + delegated Consumption environment: deployed"]
+ ops["Retell operations app: NOT deployed"]
+ liveapp["Independent GPT Live app: NOT deployed"]
+ worker["Finite post-call job: NOT deployed"]
+ pes["Blob + Queue + KV PE: Approved"]
+ dns["Three private DNS zones: A records + linked"]
+ end
+ search[("Free Search: NOT created")]
+ end
+ browser -. authorized HTTPS .-> ops
+ browser -. independent HTTPS .-> liveapp
+ browser -. consented audio .-> retell
+ retell -. signed functions/events .-> ops
+ ops -. MI .-> mi
+ liveapp -. MI .-> mi
+ worker -. MI .-> mi
+ ops -. normal hostnames .-> dns
+ liveapp -. normal hostnames .-> dns
+ worker -. normal hostnames .-> dns
+ dns --> pes
+ pes --> storage
+ pes --> vault
+ ops -. bounded Responses .-> foundry
+ liveapp -. live/sessions .-> live
+ liveapp -. bounded reasoning .-> foundry
+ foundry -. tool UNVERIFIED .-> search
+ currentaca --> logs
 ```
 
 ### Legend

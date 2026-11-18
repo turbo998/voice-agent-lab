@@ -110,7 +110,7 @@
   <rect x="868" y="284" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
   <text x="882" y="304" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Healthcare, Pharmacy, Elderly Care &amp; Education</text>
   <text x="882" y="324" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Pre-Triage Red-Flag ER + On-Prem 5s SOAP Scribe + PV P89</text>
-  <text x="882" y="342" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Bedside Nurse Call (62% deflection) + OR P155 + Pharmacy P73/P95</text>
+  <text x="882" y="342" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Bedside Nurse Call (62% deflection) + OR  + Pharmacy P73/P95</text>
   <text x="882" y="358" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Elderly Fall Guardian (98.6%) + Socratic Tutor (83% Mastery)</text>
 
   <rect x="868" y="376" width="364" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
@@ -133,7 +133,7 @@
   <!-- Bottom Executive Bar -->
   <rect x="32" y="658" width="1216" height="98" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
   <text x="52" y="685" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">2026-11-18 Nightly Research Highlight · 7 New Flagship Guides Added Tonight (Rounds 41–47):</text>
-  <text x="52" y="709" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• [R41] Copilot Studio + D365 vs. Azure AI Foundry + ACS (85k-min breakeven, -61.9% hybrid TCO)   • [R42] Smart Hospital Bedside Nurse Call (62% deflection) &amp; Sterile OR P155</text>
-  <text x="52" y="728" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• [R43] Retail Pharmacy LASA P73 (0% mix-ups) &amp; PBM Prior Auth P95 (30s green-light)   • [R44] EV Supercharging 15s OCPP Self-Healing (82.4%) &amp; Residential VPP P151 (79.4% opt-in)</text>
-  <text x="52" y="746" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12">• [R45] Corporate Treasury Maker-Checker P43 (100% deepfake wire block) &amp; Trading Turret   • [R46] Socratic Voice Tutor (0% spoilers, 83% mastery) &amp; FERPA P117   • [R47] Telecom ISP Outage (91.5% 12s deflection) &amp; P97</text>
+  <text x="52" y="709" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• [R41] Copilot Studio + D365 vs. Azure AI Foundry + ACS (85k-min breakeven, -61.9% hybrid TCO)   • [R42] Smart Hospital Bedside Nurse Call (62% deflection) &amp; Sterile OR </text>
+  <text x="52" y="728" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• [R43] Retail Pharmacy LASA P73 (0% mix-ups) &amp; PBM Prior Auth P95 (30s green-light)   • [R44] EV Supercharging 15s OCPP Self-Healing (82.4%) &amp; Residential VPP  (79.4% opt-in)</text>
+  <text x="52" y="746" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12">• [R45] Corporate Treasury Maker-Checker P43 (100% deepfake wire block) &amp; Trading Turret   • [R46] Socratic Voice Tutor (0% spoilers, 83% mastery) &amp; FERPA    • [R47] Telecom ISP Outage (91.5% 12s deflection) &amp; P97</text>
 </svg>

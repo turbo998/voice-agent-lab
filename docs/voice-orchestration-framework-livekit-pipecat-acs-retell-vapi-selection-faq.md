@@ -1,6 +1,6 @@
 # 企业实时语音开发与编排框架选型 FAQ：LiveKit Agents vs Pipecat vs Azure ACS Call Automation vs Twilio / Retell AI / Vapi 全景架构与 TCO 指南
 
-> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.en.md`)](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.en.md)**  
+> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.en.md`)](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.en.md)** 
 > 🔗 **关联专题 (Related Deep Dives)**: [级联 vs 原生 S2S 大脑选型 (`cascaded-vs-s2s-semantic-turn-faq.md`)](./cascaded-vs-s2s-semantic-turn-faq.md) · [WebRTC vs WebSocket vs SIP 接入网选型 (`webrtc-vs-websocket-vs-sip-ingress-selection-faq.md`)](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.md) · [AI 转人工热转接与耳语简报 (`warm-transfer-whisper-handoff-faq.md`)](./warm-transfer-whisper-handoff-faq.md) · [企业竞对攻防手册 (`competitive-analysis.md`)](./competitive-analysis.md) · [返回首页 (`README.md`)](../README.md)
 
 ![Enterprise Voice Agent Orchestration Frameworks Selection Visual Summary](../assets/svg/voice-orchestration-frameworks-livekit-pipecat-acs-retell-vapi.svg)
@@ -12,14 +12,14 @@
 当企业决定落地智能客服、AI 销售外呼、跨国会议同传或 App 内置多模态语音助手时，Cloud & AI 解决方案架构师（Solution Architect）面临的第一个工程分水岭就是：**实时语音编排层（Voice Orchestration Layer）到底该用开源框架在 Kubernetes 上自建（LiveKit Agents / Pipecat），还是直接用企业云原生通信底座（Azure Communication Services Call Automation + Azure Voice Live API），亦或是采购开箱即用的商业托管平台（Retell AI / Vapi）？**
 
 1. **何时首选“企业云原生通信与语音一体化底座”（Azure ACS Call Automation + Azure Voice Live API + AI Foundry）**：
-   - **适用场景**：**银行/保险/证券呼叫中心升级、医疗随访热线、政企 12345 热线、航司退改签中心，以及已有 Cisco / Genesys / Avaya 电话交换机需通过 SIP Direct Routing 对接的大型企业**。
-   - **核心理由**：唯一将 **PSTN/SIP 电话网接入、WebRTC 媒体网关、原生端到端语音大模型（`gpt-live-1` / `gpt-realtime`）与工业级级联管道（`Azure Fast STT + LLM + DragonHD TTS`）** 部署在**同一个云区域私有内网（VNet + Private Endpoint）**的方案。彻底消除跨云公网往返的 `180ms ~ 320ms` 额外延迟，天然支持金融双录分流（SIPREC）、本地断网容器逃生，且全部算力直接抵扣企业 **Azure MACC 承诺消费额度**，每万分钟综合成本低至 **`$485 / 万分钟`**。
+ - **适用场景**：**银行/保险/证券呼叫中心升级、医疗随访热线、政企 12345 热线、航司退改签中心，以及已有 Cisco / Genesys / Avaya 电话交换机需通过 SIP Direct Routing 对接的大型企业**。
+ - **核心理由**：唯一将 **PSTN/SIP 电话网接入、WebRTC 媒体网关、原生端到端语音大模型（`gpt-live-1` / `gpt-realtime`）与工业级级联管道（`Azure Fast STT + LLM + DragonHD TTS`）** 部署在**同一个云区域私有内网（VNet + Private Endpoint）**的方案。彻底消除跨云公网往返的 `180ms ~ 320ms` 额外延迟，天然支持金融双录分流（SIPREC）、本地断网容器逃生，且全部算力直接抵扣企业 **Azure MACC 承诺消费额度**，每万分钟综合成本低至 **`$485 / 万分钟`**。
 2. **何时首选“开源实时语音编排框架自建或云托管”（LiveKit Agents vs Pipecat）**：
-   - **选 `LiveKit Agents`（WebRTC SFU 原生派）**：当你的核心入口是 **手机 App、网页端、智能硬件（AI 眼镜/车载座舱）或多人实时会议室**，需要极致的 **全球弱网抗丢包（WebRTC Opus RED）、屏幕画面共享（多模态视觉“所见即所说”）、3D/2D 数字人视频流同传或多人会议同声传译** 时，LiveKit 基于 Go/Rust 的高性能 SFU 媒体服务器与内置的 `EOU Semantic Turn Detector` 是行业天花板。
-   - **选 `Pipecat`（Python 帧级流水线派）**：当你的核心团队以 **Python AI 算法与数据科学工程师** 为主，希望像拼乐高一样在 **40+ 家第三方 STT / LLM / TTS / 视觉服务** 之间做快速 A/B 评测，或者需要深度魔改自定义的帧级处理器（`FrameProcessor`，例如自定义声纹活体拦截器、投机式 RAG 预取器）与确定性对话节点图（`Pipecat Flows`）时，Pipecat 的代码抽象最轻量灵活。
+ - **选 `LiveKit Agents`（WebRTC SFU 原生派）**：当你的核心入口是 **手机 App、网页端、智能硬件（AI 眼镜/车载座舱）或多人实时会议室**，需要极致的 **全球弱网抗丢包（WebRTC Opus RED）、屏幕画面共享（多模态视觉“所见即所说”）、3D/2D 数字人视频流同传或多人会议同声传译** 时，LiveKit 基于 Go/Rust 的高性能 SFU 媒体服务器与内置的 `EOU Semantic Turn Detector` 是行业天花板。
+ - **选 `Pipecat`（Python 帧级流水线派）**：当你的核心团队以 **Python AI 算法与数据科学工程师** 为主，希望像拼乐高一样在 **40+ 家第三方 STT / LLM / TTS / 视觉服务** 之间做快速 A/B 评测，或者需要深度魔改自定义的帧级处理器（`FrameProcessor`，例如自定义声纹活体拦截器、投机式 RAG 预取器）与确定性对话节点图（`Pipecat Flows`）时，Pipecat 的代码抽象最轻量灵活。
 3. **何时首选“全托管开发者商业包装平台”（Retell AI / Vapi / Bland AI）——以及何时必须迁出**：
-   - **适用场景**：**初创公司 MVP 验证、月通话量 `< 20,000 分钟` 的海外独立业务线、缺乏专职音视频/SIP 工程师且要求 48 小时内上线北美/欧洲电话外呼 Demo**。
-   - **必须警惕的量产拐点**：全托管平台本质是“租房装修”——它在底层串联了 Twilio/Telnyx（电话）+ Deepgram/ElevenLabs（语音）+ OpenAI/Anthropic（大模型），再加收 **`$0.05 ~ $0.07 / 分钟` 的平台编排抽成**。一旦企业月通话量突破 **10 万～50 万分钟**，每万分钟账单高达 **`$1,350 ~ $1,850`**（是云原生方案的 **2.8～3.5 倍**），且当你的核心 CRM/订单库部署在亚太或欧洲内网时，每次工具调用都要跨越太平洋公网回调，引发严重的延迟抖动与数据出境合规阻断。
+ - **适用场景**：**初创公司 MVP 验证、月通话量 `< 20,000 分钟` 的海外独立业务线、缺乏专职音视频/SIP 工程师且要求 48 小时内上线北美/欧洲电话外呼 Demo**。
+ - **必须警惕的量产拐点**：全托管平台本质是“租房装修”——它在底层串联了 Twilio/Telnyx（电话）+ Deepgram/ElevenLabs（语音）+ OpenAI/Anthropic（大模型），再加收 **`$0.05 ~ $0.07 / 分钟` 的平台编排抽成**。一旦企业月通话量突破 **10 万～50 万分钟**，每万分钟账单高达 **`$1,350 ~ $1,850`**（是云原生方案的 **2.8～3.5 倍**），且当你的核心 CRM/订单库部署在亚太或欧洲内网时，每次工具调用都要跨越太平洋公网回调，引发严重的延迟抖动与数据出境合规阻断。
 
 ---
 
@@ -32,14 +32,14 @@
 如果把搭建一套企业级实时语音智能体比作**开一家连锁高端餐厅**：
 
 - **流派 C：全托管商业包装平台（Retell AI / Vapi / Bland AI）—— 相当于“精装修共享厨房 / 外卖代运营平台”**
-  - **怎么工作**：你不需要懂电话交换机（SIP Trunk）、不需要自己写回声消除和打断逻辑。你在它的网页画布上拖几个节点（Conversation Flow）、填上你的业务 Prompt 和 Webhook 网址、绑一张信用卡买个虚拟电话号码，半天就能打电话了。
-  - **代价是什么**：平台按每一分钟向你收“管理抽成费 + 语音转写费 + 大模型费 + 合成音色费 + 电话线路费”。刚开始一天打 100 通电话觉得便宜省事；等一天打 5 万通电话时，你会发现平台抽成比你自己雇两个工程师还贵，而且菜品秘方（通话轨迹与客户语音）全在别人厨房里，银行与政企安全部门直接一票否决。
+ - **怎么工作**：你不需要懂电话交换机（SIP Trunk）、不需要自己写回声消除和打断逻辑。你在它的网页画布上拖几个节点（Conversation Flow）、填上你的业务 Prompt 和 Webhook 网址、绑一张信用卡买个虚拟电话号码，半天就能打电话了。
+ - **代价是什么**：平台按每一分钟向你收“管理抽成费 + 语音转写费 + 大模型费 + 合成音色费 + 电话线路费”。刚开始一天打 100 通电话觉得便宜省事；等一天打 5 万通电话时，你会发现平台抽成比你自己雇两个工程师还贵，而且菜品秘方（通话轨迹与客户语音）全在别人厨房里，银行与政企安全部门直接一票否决。
 - **流派 A：开源实时语音编排框架（LiveKit Agents / Pipecat）—— 相当于“开源专业中央厨房设备图纸（可自己租厂房装，也可买官方托管云）”**
-  - **怎么工作**：它们把实时语音里最难啃的硬骨头——**20ms 音频帧缓冲、VAD 静音检测、语义级判停（Semantic Turn Detection）、用户插话时瞬间清空播放队列（Barge-in Interruption）、对接不同厂商的 STT/LLM/TTS 插件**——封装成了开源的 Python / Node.js 开发框架。你可以把它们部署在企业自己的 **Azure Kubernetes Service (AKS)** 集群里。
-  - **代价是什么**：框架本身免费，但你需要自己的云架构师管理 K8s 有状态长连接容器（Stateful Pods）的优雅缩容（不能因为缩容把正在打了 10 分钟的客户电话掐断）、维护 Redis 会话状态，并自己配置与运营商 SIP 中继的对接。
+ - **怎么工作**：它们把实时语音里最难啃的硬骨头——**20ms 音频帧缓冲、VAD 静音检测、语义级判停（Semantic Turn Detection）、用户插话时瞬间清空播放队列（Barge-in Interruption）、对接不同厂商的 STT/LLM/TTS 插件**——封装成了开源的 Python / Node.js 开发框架。你可以把它们部署在企业自己的 **Azure Kubernetes Service (AKS)** 集群里。
+ - **代价是什么**：框架本身免费，但你需要自己的云架构师管理 K8s 有状态长连接容器（Stateful Pods）的优雅缩容（不能因为缩容把正在打了 10 分钟的客户电话掐断）、维护 Redis 会话状态，并自己配置与运营商 SIP 中继的对接。
 - **流派 B：企业云原生通信与语音底座（Azure ACS Call Automation + Azure Voice Live API / Twilio Voice）—— 相当于“自带全球电信牌照与自研主厨的五星级自有产业园”**
-  - **怎么工作**：由微软 Azure 原生提供从 **全球运营商电话网接入（ACS PSTN / Direct Routing）、企业级呼叫控制（Call Automation：拨号、按键采集、录音、坐席耳语热转接）到同区域实时语音大模型（Azure Voice Live API）** 的端到端闭环。
-  - **核心优势**：电话语音流进入 Azure 机房后，通过数据中心内部高速光纤（`< 2ms`）直通旁边的 `GPT-Live-1` 或 `Azure AI Speech` 容器，再到同虚拟网络（VNet）内的 `Azure AI Search` 查知识库，**全程不出企业内网、零跨云公网跳转、零第三方平台抽成**。
+ - **怎么工作**：由微软 Azure 原生提供从 **全球运营商电话网接入（ACS PSTN / Direct Routing）、企业级呼叫控制（Call Automation：拨号、按键采集、录音、坐席耳语热转接）到同区域实时语音大模型（Azure Voice Live API）** 的端到端闭环。
+ - **核心优势**：电话语音流进入 Azure 机房后，通过数据中心内部高速光纤（`< 2ms`）直通旁边的 `GPT-Live-1` 或 `Azure AI Speech` 容器，再到同虚拟网络（VNet）内的 `Azure AI Search` 查知识库，**全程不出企业内网、零跨云公网跳转、零第三方平台抽成**。
 
 #### 2. 架构师 5 秒快速拍板口诀
 
@@ -57,16 +57,16 @@
 #### 1. 核心抽象模型对比：“多模态房间参与者（Room Participant）” vs “单向帧处理流水线（Frame Pipeline）”
 
 - **`LiveKit Agents` 的核心哲学是“AI 是实时房间里的一个虚拟参会人”**：
-  - LiveKit 的底座是全球顶尖的开源 **WebRTC SFU（Selective Forwarding Unit，选择性转发媒体服务器）**。在 LiveKit 的世界里，每一次通话或对话都是一个 `Room（房间）`。客户从手机 App、网页或 SIP 电话拨进来是一个参会人，你的 Voice Agent Worker 则是自动加入这个房间的另一个参会人。
-  - **这带来了什么巨大优势？**
-    1. **天然支持多人协同与热转接**：当 AI 聊到一半需要拉入人工坐席、主管旁听（Supervisor Barge/Whisper）或者同时拉入一位翻译 Agent 时，只需要让人工坐席加入同一个 `Room` 并调整音轨订阅权限即可，无需重构底层媒体管道！
-    2. **生产级进程隔离与负载均衡**：`LiveKit Agents` 原生内置了作业调度器（Job Dispatcher）——主进程负责监听房间事件，每进来一通新电话，自动派生独立子进程/协程处理，且内置了针对 Kubernetes 的 `SIGTERM` 优雅排水（Graceful Drain，等待当前通话结束再销毁 Pod）。
+ - LiveKit 的底座是全球顶尖的开源 **WebRTC SFU（Selective Forwarding Unit，选择性转发媒体服务器）**。在 LiveKit 的世界里，每一次通话或对话都是一个 `Room（房间）`。客户从手机 App、网页或 SIP 电话拨进来是一个参会人，你的 Voice Agent Worker 则是自动加入这个房间的另一个参会人。
+ - **这带来了什么巨大优势？**
+ 1. **天然支持多人协同与热转接**：当 AI 聊到一半需要拉入人工坐席、主管旁听（Supervisor Barge/Whisper）或者同时拉入一位翻译 Agent 时，只需要让人工坐席加入同一个 `Room` 并调整音轨订阅权限即可，无需重构底层媒体管道！
+ 2. **生产级进程隔离与负载均衡**：`LiveKit Agents` 原生内置了作业调度器（Job Dispatcher）——主进程负责监听房间事件，每进来一通新电话，自动派生独立子进程/协程处理，且内置了针对 Kubernetes 的 `SIGTERM` 优雅排水（Graceful Drain，等待当前通话结束再销毁 Pod）。
 - **`Pipecat` 的核心哲学是“万物皆数据帧（Everything is a Frame）的单向流水线”**：
-  - Pipecat 将音频片段（`AudioRawFrame`）、识别出的半截文字（`InterimTranscriptionFrame`）、大模型输出的词（`TextFrame`）、打断信号（`StartInterruptionFrame`）全部抽象为标准化的 `Frame（帧）`，像工厂传送带一样依次流过一串 `FrameProcessor`：
-    `[Transport.input()] ➔ [SileroVAD] ➔ [SmartTurnEOU] ➔ [STTProcessor] ➔ [RAGContextProcessor] ➔ [LLMProcessor] ➔ [TTSProcessor] ➔ [Transport.output()]`
-  - **这带来了什么巨大优势？**
-    1. **极致的插件丰富度与魔改自由度**：支持超过 40+ 种 STT、LLM、TTS、视觉与数字人服务（Azure、OpenAI、Deepgram、ElevenLabs、Cartesia、HeyGen、Tavus 等）。如果你是一名 Python 算法工程师，想在 STT 和 LLM 之间插一个 20 行代码的“自定义黑话纠错器”或“声学情绪打分器”，只需继承 `FrameProcessor` 即可在 10 分钟内写完。
-    2. **`Pipecat Flows` 确定性状态机**：针对金融核身、医疗问诊等严格按步骤走的场景，提供声明式的 JSON/Python 节点图，确保每个节点只暴露当前步骤允许的工具函数（Function Calling），防止大模型越权乱调工具。
+ - Pipecat 将音频片段（`AudioRawFrame`）、识别出的半截文字（`InterimTranscriptionFrame`）、大模型输出的词（`TextFrame`）、打断信号（`StartInterruptionFrame`）全部抽象为标准化的 `Frame（帧）`，像工厂传送带一样依次流过一串 `FrameProcessor`：
+ `[Transport.input] ➔ [SileroVAD] ➔ [SmartTurnEOU] ➔ [STTProcessor] ➔ [RAGContextProcessor] ➔ [LLMProcessor] ➔ [TTSProcessor] ➔ [Transport.output]`
+ - **这带来了什么巨大优势？**
+ 1. **极致的插件丰富度与魔改自由度**：支持超过 40+ 种 STT、LLM、TTS、视觉与数字人服务（Azure、OpenAI、Deepgram、ElevenLabs、Cartesia、HeyGen、Tavus 等）。如果你是一名 Python 算法工程师，想在 STT 和 LLM 之间插一个 20 行代码的“自定义黑话纠错器”或“声学情绪打分器”，只需继承 `FrameProcessor` 即可在 10 分钟内写完。
+ 2. **`Pipecat Flows` 确定性状态机**：针对金融核身、医疗问诊等严格按步骤走的场景，提供声明式的 JSON/Python 节点图，确保每个节点只暴露当前步骤允许的工具函数（Function Calling），防止大模型越权乱调工具。
 
 #### 2. `LiveKit Agents` vs `Pipecat` 关键工程能力正面对比
 
@@ -85,19 +85,19 @@
 
 #### 痛点 1：“跨云公网折返跑（Cross-Cloud Tromboning）”导致真实对话延迟突破 1.2 秒
 - **真相剖析**：当一家位于上海、新加坡或法兰克福的跨国企业使用某款仅在北美（如 `us-west`）部署编排核心的托管语音 SaaS 时，客户说的每一句话都要经历一场环球旅行：
-  1. 客户在亚太拨打电话 ➔ 媒体流跨海传到美西 SaaS 中心（`+90ms ~ +130ms`）；
-  2. 美西 SaaS 调用外部 STT 转出文字（`+150ms`），触发 `Custom Function / Webhook` 回调企业位于新加坡 Azure VNet 内的订单系统查物流状态（跨太平洋公网 HTTPS 握手与往返 `+180ms ~ +260ms`）；
-  3. 企业接口返回 JSON 给美西 SaaS ➔ 调用大模型与外部 TTS（`+450ms`）➔ 音频流再跨海传回亚太客户耳中（`+90ms ~ +130ms`）。
+ 1. 客户在亚太拨打电话 ➔ 媒体流跨海传到美西 SaaS 中心（`+90ms ~ +130ms`）；
+ 2. 美西 SaaS 调用外部 STT 转出文字（`+150ms`），触发 `Custom Function / Webhook` 回调企业位于新加坡 Azure VNet 内的订单系统查物流状态（跨太平洋公网 HTTPS 握手与往返 `+180ms ~ +260ms`）；
+ 3. 企业接口返回 JSON 给美西 SaaS ➔ 调用大模型与外部 TTS（`+450ms`）➔ 音频流再跨海传回亚太客户耳中（`+90ms ~ +130ms`）。
 - **后果**：明明单独测 TTS 只要 75ms，但合在一起客户每次问完订单都要等 **1.2 秒～1.8 秒**！
 - **云原生破局**：采用 **Azure ACS / AKS LiveKit + Azure Voice Live API**，将媒体边缘节点（Media Anchor）、语音大模型与企业核心业务库全部部署在**同一个 Azure 区域（如 `Southeast Asia` 或 `East US 2`）**。内部调用通过 Azure 骨干网与 VNet Private Link 在 `< 5ms` 内完成，端到端首字发声延迟（TTFA）直接从 `1,250ms` 腰斩至 **`380ms ~ 540ms`**！
 
 #### 痛点 2：“按分钟叠加税（Per-Minute Stacking Tax）”吞噬业务毛利
 - **真相剖析**：全托管平台表面宣传“平台费仅 `$0.05 ~ $0.07 / 分钟`”，但企业生产真实账单是**五项叠加**：
-  `总成本/分钟 = 平台编排费 ($0.055) + 大模型推理费 ($0.050) + 高拟真 TTS 费 ($0.025) + 流式 STT 费 ($0.012) + 电话线路/并发包月分摊 ($0.018) ≈ $0.160 / 分钟`。
-  如果企业呼叫中心每月有 **200 万分钟** 通话，仅语音 AI 账单就高达 **$320,000 / 月（年化近 384 万美元）**！
+ `总成本/分钟 = 平台编排费 ($0.055) + 大模型推理费 ($0.050) + 高拟真 TTS 费 ($0.025) + 流式 STT 费 ($0.012) + 电话线路/并发包月分摊 ($0.018) ≈ $0.160 / 分钟`。
+ 如果企业呼叫中心每月有 **200 万分钟** 通话，仅语音 AI 账单就高达 **$320,000 / 月（年化近 384 万美元）**！
 - **云原生破局**：迁回 **Azure ACS + Azure Voice Live（混合语义 VAD 通道 + 级联通道双轨路由）** 或 **AKS 自建 LiveKit/Pipecat**：
-  1. 省去 `$0.055/分钟` 的第三方平台中间商差价；
-  2. 利用 Azure Voice Live 80% 提示词缓存（Prompt Caching）与 4 轮音频滑窗裁剪，将单位分钟综合成本压降至 **`$0.048 ~ $0.056 / 分钟`**，每年直接为企业节省 **超过 240 万美元（降幅达 66%）**！
+ 1. 省去 `$0.055/分钟` 的第三方平台中间商差价；
+ 2. 利用 Azure Voice Live 80% 提示词缓存（Prompt Caching）与 4 轮音频滑窗裁剪，将单位分钟综合成本压降至 **`$0.048 ~ $0.056 / 分钟`**，每年直接为企业节省 **超过 240 万美元（降幅达 66%）**！
 
 #### 痛点 3：“两步走”零风险混合演进架构（Co-sell 过渡 ➔ 云原生终局）
 - **阶段一（海外业务敏捷试水期，月通话 `< 5 万分钟`）**：保留客户现有的 Retell / Vapi 前端电话流程，但将其后端的 `Custom LLM / Custom Function Webhook` 通过 HMAC 签名网关指向企业 **Azure AI Foundry + Azure AI Search**（即本仓库 `apps/retell-demo` 演示的混合架构），确保核心知识库与客户订单数据留在 Azure 私网内。
@@ -113,20 +113,20 @@
 
 ```mermaid
 flowchart TD
-    Start(["🎯 企业实时语音应用立项：选择编排框架与平台底座"]) --> Q1{"1. 是否存在金融/政企/医疗红线：<br/>要求全链路私有网络 (VNet) 或本地容器部署?"}
-    
-    Q1 -- "是 (严禁核心语音/数据经由三方公网 SaaS)" --> Q1_Sub{"主要接入渠道是传统电话网 (PSTN/SIP)<br/>还是自研 App/Web 多模态?"}
-    Q1_Sub -- "电话客服热线 / 对接 Cisco/Genesys" --> ChoiceACS["🏆 首选：Azure ACS Call Automation + Voice Live API<br/>优势：同区域内网直连、原生 SIP Direct Routing、MACC 抵扣"]
-    Q1_Sub -- "App/Web 语音 + 屏幕共享 / 数字人 / 会议" --> ChoiceLK_Self["✅ 首选：AKS 自托管 LiveKit Agents + Azure Voice Live<br/>优势：开源 WebRTC SFU 抗弱网、多模态房间协同、100% 私网可控"]
-    
-    Q1 -- "否 (公有云/混合云灵活部署)" --> Q2{"2. 月均语音通话量级与所处阶段?"}
-    
-    Q2 -- "MVP 概念验证期 (< 2万分钟/月)<br/>且无专职音视频/SIP 工程师" --> ChoiceManaged["⚡ 过渡首选：Retell AI / Vapi 前端 + Azure Foundry 后端<br/>优势：48小时极速上线海外电话 Demo，验证业务转化率"]
-    
-    Q2 -- "规模化生产期 (>= 5万~1000万分钟/月)<br/>追求低延迟与极致 FinOps 成本" --> Q3{"3. 研发团队技术栈偏好与核心场景特性?"}
-    
-    Q3 -- "Python 算法团队主导 + 需频繁切换<br/>40+ 模型或自定义帧级信号处理" --> ChoicePipecat["🧩 首选：AKS 部署 Pipecat + Pipecat Flows<br/>优势：FrameProcessor 乐高式流水线，算法魔改最敏捷"]
-    Q3 -- "TypeScript/Python 工程团队 + 需全球<br/>WebRTC + SIP 双栈高并发弹性扩展" --> ChoiceLK_Cloud["🌐 首选：LiveKit Agents (AKS 或 LiveKit Cloud) + Azure Foundry<br/>优势：生产级 Worker 调度、内置 Semantic EOU 判停与高可靠 SFU"]
+ Start(["🎯 企业实时语音应用立项：选择编排框架与平台底座"]) --> Q1{"1. 是否存在金融/政企/医疗红线：<br/>要求全链路私有网络 (VNet) 或本地容器部署?"}
+ 
+ Q1 -- "是 (严禁核心语音/数据经由三方公网 SaaS)" --> Q1_Sub{"主要接入渠道是传统电话网 (PSTN/SIP)<br/>还是自研 App/Web 多模态?"}
+ Q1_Sub -- "电话客服热线 / 对接 Cisco/Genesys" --> ChoiceACS["🏆 首选：Azure ACS Call Automation + Voice Live API<br/>优势：同区域内网直连、原生 SIP Direct Routing、MACC 抵扣"]
+ Q1_Sub -- "App/Web 语音 + 屏幕共享 / 数字人 / 会议" --> ChoiceLK_Self["✅ 首选：AKS 自托管 LiveKit Agents + Azure Voice Live<br/>优势：开源 WebRTC SFU 抗弱网、多模态房间协同、100% 私网可控"]
+ 
+ Q1 -- "否 (公有云/混合云灵活部署)" --> Q2{"2. 月均语音通话量级与所处阶段?"}
+ 
+ Q2 -- "MVP 概念验证期 (< 2万分钟/月)<br/>且无专职音视频/SIP 工程师" --> ChoiceManaged["⚡ 过渡首选：Retell AI / Vapi 前端 + Azure Foundry 后端<br/>优势：48小时极速上线海外电话 Demo，验证业务转化率"]
+ 
+ Q2 -- "规模化生产期 (>= 5万~1000万分钟/月)<br/>追求低延迟与极致 FinOps 成本" --> Q3{"3. 研发团队技术栈偏好与核心场景特性?"}
+ 
+ Q3 -- "Python 算法团队主导 + 需频繁切换<br/>40+ 模型或自定义帧级信号处理" --> ChoicePipecat["🧩 首选：AKS 部署 Pipecat + Pipecat Flows<br/>优势：FrameProcessor 乐高式流水线，算法魔改最敏捷"]
+ Q3 -- "TypeScript/Python 工程团队 + 需全球<br/>WebRTC + SIP 双栈高并发弹性扩展" --> ChoiceLK_Cloud["🌐 首选：LiveKit Agents (AKS 或 LiveKit Cloud) + Azure Foundry<br/>优势：生产级 Worker 调度、内置 Semantic EOU 判停与高可靠 SFU"]
 ```
 
 ---
@@ -137,26 +137,26 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph Arch1["⚠️ 方案一：全托管商业平台 (Retell / Vapi 跨云串联 · P50 延迟 750ms~1,150ms)"]
-        direction LR
-        A1_User["📞 客户电话/Web"] -->|"公网 SIP/WebRTC (+90ms)"| A1_SaaS["☁️ 托管平台公网网关<br/>(Retell / Vapi 美区)"]
-        A1_SaaS -->|"跨网调用 (+180ms)"| A1_STT["📝 三方 STT / TTS<br/>(Deepgram / ElevenLabs)"]
-        A1_SaaS -->|"跨洲公网 Webhook (+220ms)"| A1_Biz["🏢 企业自有云内网<br/>(CRM / ERP / 知识库)"]
-    end
+ subgraph Arch1["⚠️ 方案一：全托管商业平台 (Retell / Vapi 跨云串联 · P50 延迟 750ms~1,150ms)"]
+ direction LR
+ A1_User["📞 客户电话/Web"] -->|"公网 SIP/WebRTC (+90ms)"| A1_SaaS["☁️ 托管平台公网网关<br/>(Retell / Vapi 美区)"]
+ A1_SaaS -->|"跨网调用 (+180ms)"| A1_STT["📝 三方 STT / TTS<br/>(Deepgram / ElevenLabs)"]
+ A1_SaaS -->|"跨洲公网 Webhook (+220ms)"| A1_Biz["🏢 企业自有云内网<br/>(CRM / ERP / 知识库)"]
+ end
 
-    subgraph Arch2["✅ 方案二：开源编排框架自建 (AKS LiveKit Agents / Pipecat · P50 延迟 360ms~610ms)"]
-        direction LR
-        A2_User["📱 App / Web / SIP"] -->|"就近边缘接入 (<30ms)"| A2_Media["🌐 AKS 媒体与编排集群<br/>(LiveKit SFU / Pipecat Pod)"]
-        A2_Media -->|"同区域内网 (<5ms)"| A2_Model["🧠 Azure Voice Live /<br/>AI Speech + Foundry LLM"]
-        A2_Media -->|"VNet Private Link (<8ms)"| A2_Biz["🔒 企业私网数据库与<br/>Azure AI Search RAG"]
-    end
+ subgraph Arch2["✅ 方案二：开源编排框架自建 (AKS LiveKit Agents / Pipecat · P50 延迟 360ms~610ms)"]
+ direction LR
+ A2_User["📱 App / Web / SIP"] -->|"就近边缘接入 (<30ms)"| A2_Media["🌐 AKS 媒体与编排集群<br/>(LiveKit SFU / Pipecat Pod)"]
+ A2_Media -->|"同区域内网 (<5ms)"| A2_Model["🧠 Azure Voice Live /<br/>AI Speech + Foundry LLM"]
+ A2_Media -->|"VNet Private Link (<8ms)"| A2_Biz["🔒 企业私网数据库与<br/>Azure AI Search RAG"]
+ end
 
-    subgraph Arch3["🏆 方案三：企业云原生一体化底座 (ACS Call Automation + Voice Live · P50 延迟 310ms~540ms)"]
-        direction LR
-        A3_User["☎️ 全球 PSTN / 企业 SBC<br/>(Cisco / Genesys)"] -->|"运营商直连 / Direct Routing"| A3_ACS["🛡️ Azure Communication Services<br/>(Call Automation + Media Streaming)"]
-        A3_ACS -->|"同可用区高速背板 (<2ms)"| A3_VL["⚡ Azure Voice Live API<br/>(GPT-Live-1 全双工 / 级联双轨)"]
-        A3_VL -->|"托管标识零密钥内网直连"| A3_Biz["🏦 核心银行/医疗系统 +<br/>SIPREC 合规双录归档"]
-    end
+ subgraph Arch3["🏆 方案三：企业云原生一体化底座 (ACS Call Automation + Voice Live · P50 延迟 310ms~540ms)"]
+ direction LR
+ A3_User["☎️ 全球 PSTN / 企业 SBC<br/>(Cisco / Genesys)"] -->|"运营商直连 / Direct Routing"| A3_ACS["🛡️ Azure Communication Services<br/>(Call Automation + Media Streaming)"]
+ A3_ACS -->|"同可用区高速背板 (<2ms)"| A3_VL["⚡ Azure Voice Live API<br/>(GPT-Live-1 全双工 / 级联双轨)"]
+ A3_VL -->|"托管标识零密钥内网直连"| A3_Biz["🏦 核心银行/医疗系统 +<br/>SIPREC 合规双录归档"]
+ end
 ```
 
 ---
@@ -167,35 +167,35 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor User as 👤 客户 (电话 / App 呼入)
-    participant Ingress as 🌐 接入与媒体层<br/>(ACS / LiveKit SFU)
-    participant Orch as 🎛️ 实时语音编排器<br/>(Voice Live / LiveKit / Pipecat)
-    participant Backend as 🏢 企业业务系统 & RAG<br/>(VNet ERP / AI Search)
-    actor Agent as 👨‍💼 人工专家坐席<br/>(带上下文热转接)
+ autonumber
+ actor User as 👤 客户 (电话 / App 呼入)
+ participant Ingress as 🌐 接入与媒体层<br/>(ACS / LiveKit SFU)
+ participant Orch as 🎛️ 实时语音编排器<br/>(Voice Live / LiveKit / Pipecat)
+ participant Backend as 🏢 企业业务系统 & RAG<br/>(VNet ERP / AI Search)
+ actor Agent as 👨‍💼 人工专家坐席<br/>(带上下文热转接)
 
-    Note over User,Orch: 阶段 1：就近媒体锚定 + 开场毫秒级欢迎与句中语义判停 (Semantic EOU)
-    User->>Ingress: 拨入热线 / 发起 WebRTC 语音通话
-    Ingress->>Orch: 建立双向 20ms PCM/Opus 音频流 (同区域内网延迟 < 5ms)
-    Orch->>User: 🔊 首包问候："您好，这里是星海航空贵宾专线，请问有什么可以帮您？"
-    User->>Orch: 🗣️ "我刚才航班延误了，帮我查下明早八点那班还有没有公务舱..." (句中找证件停顿 700ms)
-    Note right of Orch: Semantic EOU 识别句法未完结，动态展宽等待窗口至 1,100ms，绝不抢话
-    User->>Orch: 🗣️ "...订单号是 SH-99281。" (降调闭环，190ms 触发响应)
+ Note over User,Orch: 阶段 1：就近媒体锚定 + 开场毫秒级欢迎与句中语义判停 (Semantic EOU)
+ User->>Ingress: 拨入热线 / 发起 WebRTC 语音通话
+ Ingress->>Orch: 建立双向 20ms PCM/Opus 音频流 (同区域内网延迟 < 5ms)
+ Orch->>User: 🔊 首包问候："您好，这里是星海航空贵宾专线，请问有什么可以帮您？"
+ User->>Orch: 🗣️ "我刚才航班延误了，帮我查下明早八点那班还有没有公务舱..." (句中找证件停顿 700ms)
+ Note right of Orch: Semantic EOU 识别句法未完结，动态展宽等待窗口至 1,100ms，绝不抢话
+ User->>Orch: 🗣️ "...订单号是 SH-99281。" (降调闭环，190ms 触发响应)
 
-    Note over Orch,Backend: 阶段 2：慢速外部 API 异步播报安抚话术 ("请稍等我帮您查一下") 消除死寂
-    Orch->>Backend: 发起异步查单与航延改签规则检索 (预计耗时 1,400ms)
-    Orch->>User: 💬 超过 300ms 自动注入自然安抚话术："好嘞，正在帮您核实 SH-99281 的航延免费改签舱位，请稍等..."
-    Backend-->>Orch: 返回余票与免改签费规则 (耗时 1,150ms，恰好在安抚话术尾音刚落时到达)
-    Orch->>User: 🔊 无缝播报结果："查到了，明早 08:00 的 MU5101 还有 2 个公务舱座位，您符合免费改签条件..."
+ Note over Orch,Backend: 阶段 2：慢速外部 API 异步播报安抚话术 ("请稍等我帮您查一下") 消除死寂
+ Orch->>Backend: 发起异步查单与航延改签规则检索 (预计耗时 1,400ms)
+ Orch->>User: 💬 超过 300ms 自动注入自然安抚话术："好嘞，正在帮您核实 SH-99281 的航延免费改签舱位，请稍等..."
+ Backend-->>Orch: 返回余票与免改签费规则 (耗时 1,150ms，恰好在安抚话术尾音刚落时到达)
+ Orch->>User: 🔊 无缝播报结果："查到了，明早 08:00 的 MU5101 还有 2 个公务舱座位，您符合免费改签条件..."
 
-    Note over User,Orch: 阶段 3：客户突然插话打断 (Barge-in) + 轮次纪元锁 (turnEpoch) 瞬间静音
-    User->>Orch: 🗣️ 插话："等一下！我还带了一只托运宠物狗，能一起改过去吗？"
-    Orch->>Ingress: ⚡ 160ms 内触发 ClearAudioBuffer 排空残留语音队列，递增 turnEpoch 防止误改签
+ Note over User,Orch: 阶段 3：客户突然插话打断 (Barge-in) + 轮次纪元锁 (turnEpoch) 瞬间静音
+ User->>Orch: 🗣️ 插话："等一下！我还带了一只托运宠物狗，能一起改过去吗？"
+ Orch->>Ingress: ⚡ 160ms 内触发 ClearAudioBuffer 排空残留语音队列，递增 turnEpoch 防止误改签
 
-    Note over Orch,Agent: 阶段 4：识别高复杂度特批诉求，带结构化上下文摘要无缝热转接人工 (Warm Transfer)
-    Orch->>User: 🔊 "活体宠物跨航班改签需要特种有氧舱核验，我马上为您转接专员，已同步您的订单号，无需重复说明。"
-    Orch->>Agent: 🖥️ 弹屏推送结构化摘要卡片 (订单 SH-99281 + 诉求：MU5101 公务舱含活体宠物箱) + 耳语简报
-    Ingress->>Agent: 桥接三方/双腿通话，人工坐席直接开口："王先生您好，您的订单和金毛犬有氧舱申请我已经看到了..."
+ Note over Orch,Agent: 阶段 4：识别高复杂度特批诉求，带结构化上下文摘要无缝热转接人工 (Warm Transfer)
+ Orch->>User: 🔊 "活体宠物跨航班改签需要特种有氧舱核验，我马上为您转接专员，已同步您的订单号，无需重复说明。"
+ Orch->>Agent: 🖥️ 弹屏推送结构化摘要卡片 (订单 SH-99281 + 诉求：MU5101 公务舱含活体宠物箱) + 耳语简报
+ Ingress->>Agent: 桥接三方/双腿通话，人工坐席直接开口："王先生您好，您的订单和金毛犬有氧舱申请我已经看到了..."
 ```
 
 ---

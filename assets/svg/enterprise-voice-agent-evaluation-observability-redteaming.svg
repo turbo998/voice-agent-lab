@@ -87,7 +87,7 @@
       <text x="14" y="56" fill="#f8fafc" font-family="Segoe UI, sans-serif" font-size="16.5" font-weight="800">P12 Shadow Dry-Run &amp; Canary</text>
       <text x="14" y="75" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11.5">痛点：改了一句 Prompt 直接全量上线，导致万通电话挂死</text>
       <line x1="14" y1="86" x2="352" y2="86" stroke="#1e293b" stroke-width="1"/>
-      <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心发布机制 (`P12 / P753`)：</text>
+      <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心发布机制 (`P12 / `)：</text>
       <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 影子模式 (Shadow Fork)：新模型旁路静默听真实电话并生成</text>
       <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">  Dry-Run 工具调用（静音不发声、不改库），与主模型比对</text>
       <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 5% 金丝雀放量：若 P95 延迟漂移 &gt;150ms 则 500ms 自动回滚</text>

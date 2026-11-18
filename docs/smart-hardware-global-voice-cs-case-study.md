@@ -49,18 +49,18 @@ Every architectural decision is anchored in measurable PoC exit gates and produc
 3. **Talk and Act in Parallel**: `GPT-Live-1` responds immediately and maintains conversational flow (using natural filler lines during complex lookups) while the **Decision Layer** classifies streaming transcripts (`session.input_transcript.delta`) in parallel.
 4. **Specialist Agents + Grounded Knowledge**: Requests route to domain agents grounded in **Foundry IQ** (Azure AI Search).
 5. **Tiered MCP Tool Execution (Normal vs. Complicated)**:
-   - **Normal (Read-only lookups)**: Shopify order status, device cloud telemetry, or Stripe read APIs exposed directly via **Foundry AI Gateway (APIM)** with token limits, throttling, and audit logs.
-   - **Complicated (State-mutating writes)**: Size exchanges (RMA creation + Shopify order update + return label), refunds, and subscription changes run inside a **custom MCP Server on Azure Functions behind a Private Endpoint in VNet**.
+ - **Normal (Read-only lookups)**: Shopify order status, device cloud telemetry, or Stripe read APIs exposed directly via **Foundry AI Gateway (APIM)** with token limits, throttling, and audit logs.
+ - **Complicated (State-mutating writes)**: Size exchanges (RMA creation + Shopify order update + return label), refunds, and subscription changes run inside a **custom MCP Server on Azure Functions behind a Private Endpoint in VNet**.
 6. **Human-in-the-Loop Escalation (<30s)**: Battery safety or low-confidence turns transfer warmly to **Dynamics 365** with translated summaries.
 7. **Zero-Trust & Observability**: Managed Identity, Private Endpoints, Key Vault, and OpenTelemetry traces per call into **Application Insights**.
 
 ### 4.2 Two-Phase Writes & Barge-In Compensation Rollback
 Spoken numbers and sizes can be misheard ("size 8" vs. "ship"), and callers frequently change their minds mid-sentence:
 - **Phase 1 — Preview, Verbal Confirm, Execute with Idempotency Key**:
-  - The specialist agent first invokes the tool in `preview` mode (no DB mutation) and states: *"I will exchange your size 7 ring for a size 9 and ship the replacement within 3 days of return scan at no cost. Would you like me to confirm this?"*
-  - Only after explicit verbal confirmation does the MCP server execute the write using a unique **idempotency key** (preventing duplicate RMAs or double refunds on network retries).
+ - The specialist agent first invokes the tool in `preview` mode (no DB mutation) and states: *"I will exchange your size 7 ring for a size 9 and ship the replacement within 3 days of return scan at no cost. Would you like me to confirm this?"*
+ - Only after explicit verbal confirmation does the MCP server execute the write using a unique **idempotency key** (preventing duplicate RMAs or double refunds on network retries).
 - **Phase 2 — Barge-In Cancels & Rolls Back Pending Steps**:
-  - If the caller interrupts mid-execution (*"Wait, actually just cancel and refund me"*), Voice Live fires a barge-in cancellation event and the VNet MCP Server executes compensating transactions (e.g., voiding the newly created draft RMA before touching Shopify).
+ - If the caller interrupts mid-execution (*"Wait, actually just cancel and refund me"*), Voice Live fires a barge-in cancellation event and the VNet MCP Server executes compensating transactions (e.g., voiding the newly created draft RMA before touching Shopify).
 
 ---
 
@@ -78,17 +78,17 @@ Spoken numbers and sizes can be misheard ("size 8" vs. "ship"), and callers freq
 
 ### 5.2 Four Production Routing Flows
 1. **Order & Exchange Agent (`Size exchange · low risk · score 0.93`)**:
-   - *Caller*: “My ring is too tight. Can I swap for a size 9?”
-   - *Handling*: Full duplex; checks order, previews RMA, confirms verbally, then writes with idempotency key.
+ - *Caller*: “My ring is too tight. Can I swap for a size 9?”
+ - *Handling*: Full duplex; checks order, previews RMA, confirms verbally, then writes with idempotency key.
 2. **Device Support Agent (`Sync issue · low risk · score 0.88`)**:
-   - *Caller*: “Sleep data stopped syncing after the update.”
-   - *Handling*: `GPT-6.1 Sol` + `Foundry IQ` filtered by ring model and firmware version; automatically logs defect tag for R&D.
+ - *Caller*: “Sleep data stopped syncing after the update.”
+ - *Handling*: `GPT-6.1 Sol` + `Foundry IQ` filtered by ring model and firmware version; automatically logs defect tag for R&D.
 3. **Billing Agent — Cascaded (`Cancellation · medium risk · score 0.81`)**:
-   - *Caller*: “Cancel my plan and refund this month.”
-   - *Handling*: Switches to **Cascaded mode** for line-by-line output verification; refunds `> $50` trigger human approval in Copilot Studio.
+ - *Caller*: “Cancel my plan and refund this month.”
+ - *Handling*: Switches to **Cascaded mode** for line-by-line output verification; refunds `> $50` trigger human approval in Copilot Studio.
 4. **Human-in-the-Loop — D365 (`Battery safety · high risk · deterministic rule hit or score < 0.60`)**:
-   - *Caller*: “The ring got hot and swollen while charging.”
-   - *Handling*: Deterministic config rule intercepts immediately → speaks safety instructions now → warm transfer to D365 human agent in **<30 s** with translated summary.
+ - *Caller*: “The ring got hot and swollen while charging.”
+ - *Handling*: Deterministic config rule intercepts immediately → speaks safety instructions now → warm transfer to D365 human agent in **<30 s** with translated summary.
 
 ---
 
@@ -96,11 +96,11 @@ Spoken numbers and sizes can be misheard ("size 8" vs. "ship"), and callers freq
 
 - **Foundry IQ Multi-Source Grounding**: Ingests Blob (Manuals), SQL (Regional Policies), SharePoint (SOPs), OneLake (Historical Tickets), and Web FAQs. Auto-chunks and embeds with metadata (`market`, `ring_model`, `firmware_version`, `date`), enforcing source-permission inheritance and mandatory citations. Optional integration with **Work IQ** (M365 mail/Teams), **Fabric IQ** (order/return semantic layer), and **Web IQ**.
 - **5-Layer Guardrail Pipeline**:
-  1. **Prompt Shields (Input)**: Blocks jailbreaks and indirect prompt injection.
-  2. **Content Filter (In/Out)**: Multi-category severity thresholds.
-  3. **PII & Health Data Redaction (Input/Logs)**: Redacts utterances like *"Email anna@..., heart rate hits 120"* into `[EMAIL]`, `[HEALTH]` prior to logging, paired with **Microsoft Purview** sensitivity labels.
-  4. **Groundedness Check (Output)**: Verifies every claim against policy sources—e.g., if the model hallucinates a *"50% refund"* not backed by SQL policy, it flags and replaces the response before synthesis.
-  5. **Blocklists (In/Out)**: Exact match and regex blocking on unauthorized promises.
+ 1. **Prompt Shields (Input)**: Blocks jailbreaks and indirect prompt injection.
+ 2. **Content Filter (In/Out)**: Multi-category severity thresholds.
+ 3. **PII & Health Data Redaction (Input/Logs)**: Redacts utterances like *"Email anna@..., heart rate hits 120"* into `[EMAIL]`, `[HEALTH]` prior to logging, paired with **Microsoft Purview** sensitivity labels.
+ 4. **Groundedness Check (Output)**: Verifies every claim against policy sources—e.g., if the model hallucinates a *"50% refund"* not backed by SQL policy, it flags and replaces the response before synthesis.
+ 5. **Blocklists (In/Out)**: Exact match and regex blocking on unauthorized promises.
 
 ---
 
@@ -136,9 +136,9 @@ Spoken numbers and sizes can be misheard ("size 8" vs. "ship"), and callers freq
 - **Human Cost per Call = `$5.00 / call`**: `$2,300 / seat / mo` (`$1,500` pay [65%] + `$350` QA/mgmt [15%] + `$300` site/systems [13%] + `$150` training/attrition [7%]) ÷ `460 calls/mo` ≈ **`$5.00`**.
 - **AI Voice Cost per Minute = `$0.08 / min` (`≈ $0.40 / call`)**: `$0.050` Voice Live model (62%) + `$0.012` reasoning & guardrails (15%) + `$0.009` inbound phone (12%) + `$0.009` silence/retry buffer (11%).
 - **Annual Total Cost & Savings**:
-  - **Year 1 (100K calls)**: All-Human **`$500K`** vs. AI Voice Hybrid **`$295K`** (`40K human calls × $5` + `440K AI min × $0.08` + `$60K platform & ops`) → **`$205K` saved (−41%)**.
-  - **Year 2 (300K calls · 3× scale)**: All-Human **`$1.5M`** vs. AI Voice Hybrid **`$786K`** → **`$714K` saved (−48%)**.
-  - **Payback Period**: `$80K` total one-time build (`$15K` PoC + `$65K` prod) ÷ `$17.1K/mo` savings ≈ **5 months**.
+ - **Year 1 (100K calls)**: All-Human **`$500K`** vs. AI Voice Hybrid **`$295K`** (`40K human calls × $5` + `440K AI min × $0.08` + `$60K platform & ops`) → **`$205K` saved (−41%)**.
+ - **Year 2 (300K calls · 3× scale)**: All-Human **`$1.5M`** vs. AI Voice Hybrid **`$786K`** → **`$714K` saved (−48%)**.
+ - **Payback Period**: `$80K` total one-time build (`$15K` PoC + `$65K` prod) ÷ `$17.1K/mo` savings ≈ **5 months**.
 
 ---
 

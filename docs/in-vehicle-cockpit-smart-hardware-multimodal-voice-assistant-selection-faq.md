@@ -1,7 +1,7 @@
 # 车载智能座舱与智能硬件（AI 眼镜/耳机/陪伴机器人）多模态语音助手架构设计与选型 FAQ：端侧 NPU 小模型 + 云端全双工视觉语音（GPT-Live-1）协同、按需关键帧抽样与四音区权限隔离指南
 
-> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.en.md`)](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.en.md)**  
-> 🔗 **关联专题 (Related Deep Dives)**: [智能硬件出海 6 语种语音客服标杆案例 (`smart-hardware-global-voice-cs-case-study.zh-CN.md`)](./smart-hardware-global-voice-cs-case-study.zh-CN.md) · [车载蓝牙切换爆音与 Opus DTX 防死锁 (`voice-bluetooth-hfp-handover-opus-dtx-vad-deadlock-faq.md`)](./voice-bluetooth-hfp-handover-opus-dtx-vad-deadlock-faq.md) · [85dB 强噪远场波束成形 (`voice-farfield-industrial-drivethru-noise-beamforming-faq.md`)](./voice-farfield-industrial-drivethru-noise-beamforming-faq.md) · [端云量化容器与断网逃生 (`voice-edge-cloud-quantized-container-failover-faq.md`)](./voice-edge-cloud-quantized-container-failover-faq.md) · [返回首页 (`README.md`)](../README.md)
+> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.en.md`)](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.en.md)** 
+> 🔗 **关联专题 (Related Deep Dives)**: [智能硬件出海 6 语种语音客服标杆案例 (`smart-hardware-global-voice-cs-case-study.zh-CN.md`)](./smart-hardware-global-voice-cs-case-study.zh-CN.md) · [车载蓝牙切换爆音与 Opus DTX 防死锁 (`webrtc-vs-websocket-vs-sip-ingress-selection-faq.md`)](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.md) · [85dB 强噪远场波束成形 (`enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.md`)](./enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.md) · [端云量化容器与断网逃生 (`voice-edge-cloud-quantized-container-failover-faq.md`)](./voice-edge-cloud-quantized-container-failover-faq.md) · [返回首页 (`README.md`)](../README.md)
 
 ![In-Vehicle Cockpit & Smart Hardware Multimodal Voice Assistant Visual Summary](../assets/svg/in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant.svg)
 
@@ -12,14 +12,14 @@
 当智能汽车主机厂（OEM）、AI 智能眼镜厂商、TWS 耳机品牌、家庭陪伴机器人或跨国智能家居企业设计下一代 **“能听、能看、能控车/控设备”的多模态语音助手（Multimodal Voice + Vision Assistant）** 时，**Cloud & AI 解决方案架构师** 面临的核心矛盾是：**既要像钢铁侠贾维斯一样`< 350ms` 听懂言外之意、看懂摄像头眼前的世界，又不能让车开进地下车库断网时连空调都打不开，更不能因为持续上传视频流把智能眼镜电池在 20 分钟内烧光、把云端 Token 账单烧穿！**
 
 1. **终局参考架构：“65% 端侧 NPU 极速车控 + 35% 云端多模态全双工大脑 + 车规安全互锁”三层协同（Edge-Cloud Hybrid Routing）**：
-   - **第一层（端侧 NPU 确定性快反层，`<= 80ms` 响应，占日常指令 65%）：高通骁龙 8295 / 英伟达 Orin / 瑞芯微 NPU 运行量化版 `Phi-4-mini (3.8B INT4)` + 本地唤醒/声纹/命令词引擎**。
-     - **核心职责**：100% 本地闭环处理所有高频确定性设备控制（“打开主驾座椅通风”、“空调调到 22 度”、“声音小一点”、“下一首歌”）。不仅实现 **`55ms ~ 85ms` 零网络延迟秒开秒关**，而且在地下三层车库、荒野高原无 4G/5G 信号时 **100% 永不失联**，同时为车企省下 **65% 的云端大模型调用费**！
-   - **第二层（云端多模态全双工层，`310ms ~ 480ms` 首包，占复杂交互 35%）：`Azure Voice Live API (GPT-Live-1 原生 S2S)` + `Azure AI Search / 地图 POI 实时联网`**：
-     - **核心职责**：负责需要跨领域知识、复杂条件推理、情绪共情以及 **“所见即所说（See-and-Speak 视觉+语音多模态）”** 的场景（例如：车主指着窗外陌生的黄黑相间路牙标线问*“这儿现在能临时停车 10 分钟吗？”*，或戴着 AI 眼镜在东京居酒屋看着手写日文菜单问*“帮我点两个不吃生冷海鲜的招牌菜”*）。
-   - **第三层（车规与硬件确定性安全互锁层，`ISO 26262 / UNECE R155 / P31 & P32 & P99`）**：
-     - **核心职责**：通过 **四音区声源定位（TDOA Seat Zone Lock）** 物理阻断后排儿童在高速行驶时语音误开后备箱或主驾车窗；并在检测到气囊弹出/碰撞传感器信号（`EN 15722 eCall`）瞬间，以 **`0ms` 最高优先级强制掐断一切娱乐语音对话**，直连紧急救援中心并上报 GPS 坐标。
+ - **第一层（端侧 NPU 确定性快反层，`<= 80ms` 响应，占日常指令 65%）：高通骁龙 8295 / 英伟达 Orin / 瑞芯微 NPU 运行量化版 `Phi-4-mini (3.8B INT4)` + 本地唤醒/声纹/命令词引擎**。
+ - **核心职责**：100% 本地闭环处理所有高频确定性设备控制（“打开主驾座椅通风”、“空调调到 22 度”、“声音小一点”、“下一首歌”）。不仅实现 **`55ms ~ 85ms` 零网络延迟秒开秒关**，而且在地下三层车库、荒野高原无 4G/5G 信号时 **100% 永不失联**，同时为车企省下 **65% 的云端大模型调用费**！
+ - **第二层（云端多模态全双工层，`310ms ~ 480ms` 首包，占复杂交互 35%）：`Azure Voice Live API (GPT-Live-1 原生 S2S)` + `Azure AI Search / 地图 POI 实时联网`**：
+ - **核心职责**：负责需要跨领域知识、复杂条件推理、情绪共情以及 **“所见即所说（See-and-Speak 视觉+语音多模态）”** 的场景（例如：车主指着窗外陌生的黄黑相间路牙标线问*“这儿现在能临时停车 10 分钟吗？”*，或戴着 AI 眼镜在东京居酒屋看着手写日文菜单问*“帮我点两个不吃生冷海鲜的招牌菜”*）。
+ - **第三层（车规与硬件确定性安全互锁层，`ISO 26262 / UNECE R155 / P31 & P32 & P99`）**：
+ - **核心职责**：通过 **四音区声源定位（TDOA Seat Zone Lock）** 物理阻断后排儿童在高速行驶时语音误开后备箱或主驾车窗；并在检测到气囊弹出/碰撞传感器信号（`EN 15722 eCall`）瞬间，以 **`0ms` 最高优先级强制掐断一切娱乐语音对话**，直连紧急救援中心并上报 GPS 坐标。
 2. **多模态“所见即所说”降本 92% 黄金法则：严禁 30fps 视频流长传，采用“语义指代触发 + 端侧防抖关键帧抽样（Intent-Triggered 1–2 Keyframes）”**：
-   - 千万不要让智能眼镜或车载前视摄像头每秒钟往云端推 30 张高清图片！平时只传 `32kbps` 纯音频流；只有当端侧识别到用户话语中带有**视觉指代意图**（如“你看前面那个…”、“这是什么建筑”、“帮我翻译手里这个”）时，才从端侧环形缓存中抽出 **1～2 张最清晰、经 ROI 裁剪压缩（`~80 KB WebP`）的关键帧** 随语音一起发给 `GPT-Live-1`，直接将功耗、5G 流量与多模态 Token 成本砍掉 **92%**！
+ - 千万不要让智能眼镜或车载前视摄像头每秒钟往云端推 30 张高清图片！平时只传 `32kbps` 纯音频流；只有当端侧识别到用户话语中带有**视觉指代意图**（如“你看前面那个…”、“这是什么建筑”、“帮我翻译手里这个”）时，才从端侧环形缓存中抽出 **1～2 张最清晰、经 ROI 裁剪压缩（`~80 KB WebP`）的关键帧** 随语音一起发给 `GPT-Live-1`，直接将功耗、5G 流量与多模态 Token 成本砍掉 **92%**！
 
 ---
 
@@ -30,18 +30,18 @@
 #### 1. 先用大白话讲透：为什么“纯端侧”和“纯云端”都是死胡同？
 
 - **为什么“100% 纯端侧（All-On-Device）”走不通？**
-  1. **车机显存与散热预算天花板**：车规级座舱芯片（如 8295 算力约 30~60 TOPS，还要分一大半给 3D 仪表盘渲染、环视泊车和 DMS 疲劳监测），留给语音大模型的内存通常只有 `3GB ~ 6GB`，只能跑 **3B～7B 的 INT4 量化小模型**。
-  2. **小模型干不了“复杂跨界推理与实时联网”**：3B 小模型做“把空调调低两度”稳如泰山，但当车主问：*“帮我顺路找一家离高速出口不超过 2 公里、带超充桩、而且现在不用排队的江浙菜馆，顺便看下我仪表盘刚亮起这个黄色乌龟灯还能不能继续开？”*——端侧小模型既没有全量实时互联网 POI 数据，也缺乏千亿参数多模态模型的深度视觉推理与高情商对话能力。
+ 1. **车机显存与散热预算天花板**：车规级座舱芯片（如 8295 算力约 30~60 TOPS，还要分一大半给 3D 仪表盘渲染、环视泊车和 DMS 疲劳监测），留给语音大模型的内存通常只有 `3GB ~ 6GB`，只能跑 **3B～7B 的 INT4 量化小模型**。
+ 2. **小模型干不了“复杂跨界推理与实时联网”**：3B 小模型做“把空调调低两度”稳如泰山，但当车主问：*“帮我顺路找一家离高速出口不超过 2 公里、带超充桩、而且现在不用排队的江浙菜馆，顺便看下我仪表盘刚亮起这个黄色乌龟灯还能不能继续开？”*——端侧小模型既没有全量实时互联网 POI 数据，也缺乏千亿参数多模态模型的深度视觉推理与高情商对话能力。
 - **为什么“100% 纯云端（All-In-Cloud）”更危险？**
-  1. **隧道与地下车库“智障盲区”**：车主每天早晚都要进出地下车库（往往没有手机信号或正在从地库 Wi-Fi 切换 5G 基站）。如果连“打开车库门、打开座椅加热、导航回家”都要去云端绕一圈，车开出地库的那 30 秒语音助手完全瘫痪，用户体验极其糟糕！
-  2. **海量并发账单浪费**：一辆保有量 50 万台的车队，每天产生 1,000 万次“调温度、切歌、开窗”等简单指令。如果每次都调云端全双工 S2S 大模型，车企每年要白白多烧掉数百万美元算力费！
+ 1. **隧道与地下车库“智障盲区”**：车主每天早晚都要进出地下车库（往往没有手机信号或正在从地库 Wi-Fi 切换 5G 基站）。如果连“打开车库门、打开座椅加热、导航回家”都要去云端绕一圈，车开出地库的那 30 秒语音助手完全瘫痪，用户体验极其糟糕！
+ 2. **海量并发账单浪费**：一辆保有量 50 万台的车队，每天产生 1,000 万次“调温度、切歌、开窗”等简单指令。如果每次都调云端全双工 S2S 大模型，车企每年要白白多烧掉数百万美元算力费！
 
 #### 2. 架构师黄金设计：“端云投机并发 + 400ms 弱网超时本地接管（Speculative Edge-Cloud Router）”
 
 在座舱语音网关层部署一个耗时仅 **`< 15ms` 的端侧意图分流器（On-Device Fast Router）**：
 - **纯本地车控/媒体指令（65% 流量）**：端侧 NPU 在 `60ms` 内直接生成 CAN 总线控制指令并由本地轻量 TTS 播报“好的，已调至 22 度”，**0 字节上云**；
 - **复杂问答 / 多模态视觉 / 闲聊陪伴（35% 流量）**：立即通过 WebRTC 流式发往云端 **Azure Voice Live (`GPT-Live-1`)**；
-- **弱网/隧道逃生护栏（`P53 / P737`）**：当发起云端请求后，若车辆正驶入隧道导致云端在 **`400ms` 内未返回首包确认**，端侧 NPU 自动无缝接管，用本地小模型给出保底回复或离线导航操控，彻底消灭“网络不好请稍后再试”的机械报错！
+- **弱网/隧道逃生护栏（`P53 / `）**：当发起云端请求后，若车辆正驶入隧道导致云端在 **`400ms` 内未返回首包确认**，端侧 NPU 自动无缝接管，用本地小模型给出保底回复或离线导航操控，彻底消灭“网络不好请稍后再试”的机械报错！
 
 ---
 
@@ -52,25 +52,25 @@
 #### 架构师“三级低功耗多模态感知流水线（Zero-Waste Multimodal Vision Pipeline）”：
 
 1. **第一级：平时 100% 关闭视频上行，仅维持 `16kHz / 32kbps Opus` 窄带音频或端侧低功耗唤醒（`< 5mW`）**
-   - 当用户只是在走路听歌、打电话或问“今天天气怎么样”时，摄像头完全不启动编码上传。
+ - 当用户只是在走路听歌、打电话或问“今天天气怎么样”时，摄像头完全不启动编码上传。
 2. **第二级：端侧“视觉指代词 + 姿态”双触发环形抓拍（Ring-Buffer Keyframe Capture）**
-   - 一旦用户开口说话，端侧轻量 ASR 在前 `200ms` 实时扫描是否包含**视觉指代触发词**（如：*“这个、那个、前面、左边、手里、看下、翻译、是什么、多少钱、能吃吗、怎么修”*）或用户按下了镜腿拍照键；
-   - 触发瞬间，调用摄像头连续抓取 3 帧，由端侧 ISP 芯片通过 **拉普拉斯方差（Laplacian Variance）自动剔除转头运动模糊帧**，选出最清晰的 **1 张主图 + 1 张中心注视点高分辨率局部裁剪图（Foveated ROI Crop，确保能看清远处路牌小字或药盒说明书）**，压缩为总共不到 **`80 KB` 的 WebP 图像**。
+ - 一旦用户开口说话，端侧轻量 ASR 在前 `200ms` 实时扫描是否包含**视觉指代触发词**（如：*“这个、那个、前面、左边、手里、看下、翻译、是什么、多少钱、能吃吗、怎么修”*）或用户按下了镜腿拍照键；
+ - 触发瞬间，调用摄像头连续抓取 3 帧，由端侧 ISP 芯片通过 **拉普拉斯方差（Laplacian Variance）自动剔除转头运动模糊帧**，选出最清晰的 **1 张主图 + 1 张中心注视点高分辨率局部裁剪图（Foveated ROI Crop，确保能看清远处路牌小字或药盒说明书）**，压缩为总共不到 **`80 KB` 的 WebP 图像**。
 3. **第三级：图文音同帧并发送入 `Azure Voice Live (GPT-Live-1)`**
-   - 在用户说出后半句话（“……上面写的日文是什么意思？”）的同时，这 `80 KB` 的清晰关键帧已经通过同一个 WebRTC 数据/媒体通道抵达云端大模型内存。用户话音刚落，大模型在 **`340ms ~ 480ms`** 内直接开口报出精准翻译与点菜建议！
+ - 在用户说出后半句话（“……上面写的日文是什么意思？”）的同时，这 `80 KB` 的清晰关键帧已经通过同一个 WebRTC 数据/媒体通道抵达云端大模型内存。用户话音刚落，大模型在 **`340ms ~ 480ms`** 内直接开口报出精准翻译与点菜建议！
 
 ---
 
 ### Q3：在高速行驶的车内（75dB 风噪胎噪 + 车载音响正在放歌 + 四个座位同时有人说话），如何解决“音响自己唤醒自己”、“后排小孩乱开主驾车窗”以及“上车连蓝牙爆音死锁”三大车载顽疾？
 
 1. **四音区声源定位与工具级物理权限矩阵（Four-Zone TDOA Privilege Matrix，`P32` & `P99`）**：
-   - 利用车顶 4 麦/6 麦阵列的到达时间差（TDOA）与 MVDR 波束成形（`P27`），为每一句识别出的语音打上不可篡改的硬件座位签名：`seatZone ∈ {DRIVER, FRONT_PASSENGER, REAR_LEFT, REAR_RIGHT}`。
-   - 在大模型 Function Calling 工具网关层执行**硬编码权限矩阵校验**（绝不靠 Prompt 祈祷大模型听话！）：
-     - 若 `seatZone == REAR_LEFT`（后排儿童位）且 `vehicleSpeedKmh > 5.0`，任何试图调用 `open_trunk()`、`open_driver_window()`、`change_driving_mode()` 或 `authorize_payment()` 的工具请求在 **`0ms` 内直接被策略引擎物理拦截**，并温和回复后排：*“为了行车安全，行驶中后排不能打开主驾车窗哦，已为您打开儿歌频道。”*
+ - 利用车顶 4 麦/6 麦阵列的到达时间差（TDOA）与 MVDR 波束成形（`P27`），为每一句识别出的语音打上不可篡改的硬件座位签名：`seatZone ∈ {DRIVER, FRONT_PASSENGER, REAR_LEFT, REAR_RIGHT}`。
+ - 在大模型 Function Calling 工具网关层执行**硬编码权限矩阵校验**（绝不靠 Prompt 祈祷大模型听话！）：
+ - 若 `seatZone == REAR_LEFT`（后排儿童位）且 `vehicleSpeedKmh > 5.0`，任何试图调用 `open_trunk`、`open_driver_window`、`change_driving_mode` 或 `authorize_payment` 的工具请求在 **`0ms` 内直接被策略引擎物理拦截**，并温和回复后排：*“为了行车安全，行驶中后排不能打开主驾车窗哦，已为您打开儿歌频道。”*
 2. **多声道车载音响硬参考回声消除（7.1 Channel Hardware Reference AEC，`P44` & `P98`）**：
-   - 当车载音响正在以大音量播放音乐或导航播报时，必须将功放芯片（DSP Amp）的数字输出信号直接作为 **硬件级远端参考信号（Far-End Reference）** 接入端侧 AEC3 引擎，将音响自身发出的歌声消除 `> 25dB`，确保车主不用扯着嗓子喊就能随时打断音乐说话。
+ - 当车载音响正在以大音量播放音乐或导航播报时，必须将功放芯片（DSP Amp）的数字输出信号直接作为 **硬件级远端参考信号（Far-End Reference）** 接入端侧 AEC3 引擎，将音响自身发出的歌声消除 `> 25dB`，确保车主不用扯着嗓子喊就能随时打断音乐说话。
 3. **车主上车手机切车载蓝牙（HFP/SCO Handover）防爆音与防 VAD 死锁（`P86` & `P88`）**：
-   - 当车主一边跟手机上的语音助手聊天、一边拉开车门打火连上车载蓝牙时，蓝牙协议从高清 `A2DP` 切换到窄带通话 `HFP/SCO (8kHz/16kHz)` 常伴随一次 `-1 dBFS` 的电流切换爆音与 `600ms` 静音断流。架构上必须配置 **`600ms ~ 900ms` 蓝牙切换窗口 VAD 冻结锁与 `>=-3 dBFS` 瞬态削峰（`P763–P764`）**，防止上车连蓝牙瞬间把正在说话的语音助手误打断或卡死！
+ - 当车主一边跟手机上的语音助手聊天、一边拉开车门打火连上车载蓝牙时，蓝牙协议从高清 `A2DP` 切换到窄带通话 `HFP/SCO (8kHz/16kHz)` 常伴随一次 `-1 dBFS` 的电流切换爆音与 `600ms` 静音断流。架构上必须配置 **`600ms ~ 900ms` 蓝牙切换窗口 VAD 冻结锁与 `>=-3 dBFS` 瞬态削峰**，防止上车连蓝牙瞬间把正在说话的语音助手误打断或卡死！
 
 ---
 
@@ -80,17 +80,17 @@
 
 ```mermaid
 flowchart TD
-    Start(["🎯 车载智能座舱 / AI 智能硬件语音助手架构选型"]) --> Q1{"1. 终端硬件算力与供电形态是什么?"}
-    
-    Q1 -- "超轻量穿戴设备 (AI 眼镜 / TWS 耳机 / 智能戒指)<br/>(本地无大算力 NPU，电池 < 200mAh)" --> Q1_Sub{"是否包含第一视角摄像头 (所见即所说)?"}
-    Q1_Sub -- "纯音频穿戴 (TWS 耳机 / 智能音箱)" --> ChoiceWearAudio["⚡ 选型 A1：端侧超低功耗唤醒芯片 + 云端 Voice Live (GPT-Live-1)<br/>优势：<310ms 极速伴侣对话 + Opus DTX 省电传输"]
-    Q1_Sub -- "带摄像头穿戴 (AI 智能眼镜 / 胸牌)" --> ChoiceWearVision["👁️ 选型 A2：端侧指代词触发抽帧 (1~2张 80KB WebP) + 云端 GPT-Live-1<br/>优势：避免 30fps 视频流烧干电池，省 92% 流量与多模态 Token"]
-    
-    Q1 -- "智能汽车座舱 / 具身陪伴机器人 / 家庭中枢<br/>(具备高通 8295 / Orin 等端侧 NPU 算力)" --> Q2{"2. 用户当前指令属于哪一类业务域?"}
-    
-    Q2 -- "高频确定性设备/车身控制 (占 65%)<br/>(空调/车窗/座椅/音量/地库断网导航)" --> ChoiceEdgeNPU["🛡️ 选型 B1：端侧 NPU 量化小模型 (Phi-4-mini INT4) 本地闭环<br/>优势：55~85ms 瞬时响应、地下车库零信号 100% 可用、$0 云端成本"]
-    
-    Q2 -- "复杂推理 / 路牌菜单视觉识别 / 情感陪聊 (占 35%)" --> ChoiceCloudHybrid["🏆 选型 B2：端云投机协同路由 (Voice Live S2S + 400ms 隧道断网本地逃生)<br/>配合四音区 TDOA 座位权限锁与 eCall 0ms 碰撞抢占"]
+ Start(["🎯 车载智能座舱 / AI 智能硬件语音助手架构选型"]) --> Q1{"1. 终端硬件算力与供电形态是什么?"}
+ 
+ Q1 -- "超轻量穿戴设备 (AI 眼镜 / TWS 耳机 / 智能戒指)<br/>(本地无大算力 NPU，电池 < 200mAh)" --> Q1_Sub{"是否包含第一视角摄像头 (所见即所说)?"}
+ Q1_Sub -- "纯音频穿戴 (TWS 耳机 / 智能音箱)" --> ChoiceWearAudio["⚡ 选型 A1：端侧超低功耗唤醒芯片 + 云端 Voice Live (GPT-Live-1)<br/>优势：<310ms 极速伴侣对话 + Opus DTX 省电传输"]
+ Q1_Sub -- "带摄像头穿戴 (AI 智能眼镜 / 胸牌)" --> ChoiceWearVision["👁️ 选型 A2：端侧指代词触发抽帧 (1~2张 80KB WebP) + 云端 GPT-Live-1<br/>优势：避免 30fps 视频流烧干电池，省 92% 流量与多模态 Token"]
+ 
+ Q1 -- "智能汽车座舱 / 具身陪伴机器人 / 家庭中枢<br/>(具备高通 8295 / Orin 等端侧 NPU 算力)" --> Q2{"2. 用户当前指令属于哪一类业务域?"}
+ 
+ Q2 -- "高频确定性设备/车身控制 (占 65%)<br/>(空调/车窗/座椅/音量/地库断网导航)" --> ChoiceEdgeNPU["🛡️ 选型 B1：端侧 NPU 量化小模型 (Phi-4-mini INT4) 本地闭环<br/>优势：55~85ms 瞬时响应、地下车库零信号 100% 可用、$0 云端成本"]
+ 
+ Q2 -- "复杂推理 / 路牌菜单视觉识别 / 情感陪聊 (占 35%)" --> ChoiceCloudHybrid["🏆 选型 B2：端云投机协同路由 (Voice Live S2S + 400ms 隧道断网本地逃生)<br/>配合四音区 TDOA 座位权限锁与 eCall 0ms 碰撞抢占"]
 ```
 
 ---
@@ -99,31 +99,31 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph Hardware["🚗 1. 车载四音区阵列与第一视角视觉感知层"]
-        direction TB
-        Mics["🎙️ 四音区麦克风阵列 (TDOA)<br/>+ 功放 7.1 声道硬参考 AEC3"]
-        Cam["📷 舱外前视 / AI眼镜摄像头<br/>(拉普拉斯防抖 + ROI 局部高清裁剪)"]
-    end
+ subgraph Hardware["🚗 1. 车载四音区阵列与第一视角视觉感知层"]
+ direction TB
+ Mics["🎙️ 四音区麦克风阵列 (TDOA)<br/>+ 功放 7.1 声道硬参考 AEC3"]
+ Cam["📷 舱外前视 / AI眼镜摄像头<br/>(拉普拉斯防抖 + ROI 局部高清裁剪)"]
+ end
 
-    subgraph Edge["⚡ 2. 端侧 NPU 快反与安全互锁层 (8295 / Orin · <=80ms)"]
-        direction TB
-        Router["🔀 15ms 端云意图分流器<br/>+ 400ms 隧道弱网超时看门狗"]
-        LocalSLM["🧠 端侧 Phi-4-mini (INT4)<br/>• 本地 200+ 车控/家电指令<br/>• 地下车库无网 100% 保底"]
-        SafetyGate["🛡️ 车规安全门禁 (ISO 26262)<br/>• 四音区童锁 (禁后排开窗/后备箱)<br/>• eCall 碰撞信号 0ms 最高抢占"]
-        Router -->|"65% 车控/断网"| LocalSLM --> SafetyGate
-    end
+ subgraph Edge["⚡ 2. 端侧 NPU 快反与安全互锁层 (8295 / Orin · <=80ms)"]
+ direction TB
+ Router["🔀 15ms 端云意图分流器<br/>+ 400ms 隧道弱网超时看门狗"]
+ LocalSLM["🧠 端侧 Phi-4-mini (INT4)<br/>• 本地 200+ 车控/家电指令<br/>• 地下车库无网 100% 保底"]
+ SafetyGate["🛡️ 车规安全门禁 (ISO 26262)<br/>• 四音区童锁 (禁后排开窗/后备箱)<br/>• eCall 碰撞信号 0ms 最高抢占"]
+ Router -->|"65% 车控/断网"| LocalSLM --> SafetyGate
+ end
 
-    subgraph Cloud["☁️ 3. 云端多模态全双工大脑层 (35% 复杂与视觉交互)"]
-        direction TB
-        Keyframe["🖼️ 视觉指代按需抽帧器<br/>(仅在 '看那个/这是啥' 时上传 80KB 图)"]
-        VL["🌟 Azure Voice Live (GPT-Live-1)<br/>• 原生音频+视觉多模态理解<br/>• 地图 POI / 充电桩 / 餐厅实时检索"]
-        Keyframe --> VL
-    end
+ subgraph Cloud["☁️ 3. 云端多模态全双工大脑层 (35% 复杂与视觉交互)"]
+ direction TB
+ Keyframe["🖼️ 视觉指代按需抽帧器<br/>(仅在 '看那个/这是啥' 时上传 80KB 图)"]
+ VL["🌟 Azure Voice Live (GPT-Live-1)<br/>• 原生音频+视觉多模态理解<br/>• 地图 POI / 充电桩 / 餐厅实时检索"]
+ Keyframe --> VL
+ end
 
-    Mics --> Router
-    Router -->|"35% 开放问答/视觉指代"| Keyframe
-    Cam -.->|"环形缓存按需抽 1~2 帧"| Keyframe
-    VL -->|"工具回调"| SafetyGate
+ Mics --> Router
+ Router -->|"35% 开放问答/视觉指代"| Keyframe
+ Cam -.->|"环形缓存按需抽 1~2 帧"| Keyframe
+ VL -->|"工具回调"| SafetyGate
 ```
 
 ---
@@ -132,28 +132,28 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Kid as 🧒 后排左座儿童 (Zone 3)
-    actor Driver as 👤 主驾车主 (Zone 1)
-    participant Edge as ⚡ 车机端侧 NPU 与安全网关<br/>(TDOA 音区锁 + Phi-4-mini)
-    participant Cloud as ☁️ 云端多模态全双工引擎<br/>(Azure Voice Live GPT-Live-1)
+ autonumber
+ actor Kid as 🧒 后排左座儿童 (Zone 3)
+ actor Driver as 👤 主驾车主 (Zone 1)
+ participant Edge as ⚡ 车机端侧 NPU 与安全网关<br/>(TDOA 音区锁 + Phi-4-mini)
+ participant Cloud as ☁️ 云端多模态全双工引擎<br/>(Azure Voice Live GPT-Live-1)
 
-    Note over Kid,Edge: 阶段 1：车速 80 km/h 行驶中，后排儿童大喊危险指令 -> 四音区权限锁 0ms 物理拦截
-    Kid->>Edge: 🗣️ (来自后排左音区 Zone 3) "打开后备箱！顺便把主驾车窗全打开！"
-    Note right of Edge: TDOA 定位 speaker=REAR_LEFT 且 speed=80km/h -> 触发 P32/P99 四音区童锁！
-    Edge->>Kid: 🔊 (端侧 65ms 直接拦截回复，0字节上云) "行驶中后排不能操作后备箱和主驾车窗哦，需要我帮你放首儿歌吗？"
+ Note over Kid,Edge: 阶段 1：车速 80 km/h 行驶中，后排儿童大喊危险指令 -> 四音区权限锁 0ms 物理拦截
+ Kid->>Edge: 🗣️ (来自后排左音区 Zone 3) "打开后备箱！顺便把主驾车窗全打开！"
+ Note right of Edge: TDOA 定位 speaker=REAR_LEFT 且 speed=80km/h -> 触发 P32/P99 四音区童锁！
+ Edge->>Kid: 🔊 (端侧 65ms 直接拦截回复，0字节上云) "行驶中后排不能操作后备箱和主驾车窗哦，需要我帮你放首儿歌吗？"
 
-    Note over Driver,Cloud: 阶段 2：主驾车主指着窗外复杂限时停车牌提问 ("所见即所说" 按需抽帧)
-    Driver->>Edge: 🗣️ (来自主驾 Zone 1) "你看右前方那个蓝底红叉的日文路牌，我现在能靠边停五分钟买杯咖啡吗？"
-    Note right of Edge: 检测到视觉指代词 "你看右前方那个...路牌" -> 从前视相机抽取 1 张清晰 ROI 裁剪图 (72KB WebP)
-    Edge->>Cloud: 并发流式上传 [主驾语音流 + 72KB 路牌高清局部图 + GPS 时间戳 14:20]
-    Cloud-->>Driver: 🔊 (380ms 首包语音回复) "不能停哦！那个路牌写着 8 点到 20 点禁止驻车，连临时停五分钟都会被拍照贴条。前边 150 米右转有个全家便利店专属免费车位，要帮您导过去吗？"
+ Note over Driver,Cloud: 阶段 2：主驾车主指着窗外复杂限时停车牌提问 ("所见即所说" 按需抽帧)
+ Driver->>Edge: 🗣️ (来自主驾 Zone 1) "你看右前方那个蓝底红叉的日文路牌，我现在能靠边停五分钟买杯咖啡吗？"
+ Note right of Edge: 检测到视觉指代词 "你看右前方那个...路牌" -> 从前视相机抽取 1 张清晰 ROI 裁剪图 (72KB WebP)
+ Edge->>Cloud: 并发流式上传 [主驾语音流 + 72KB 路牌高清局部图 + GPS 时间戳 14:20]
+ Cloud-->>Driver: 🔊 (380ms 首包语音回复) "不能停哦！那个路牌写着 8 点到 20 点禁止驻车，连临时停五分钟都会被拍照贴条。前边 150 米右转有个全家便利店专属免费车位，要帮您导过去吗？"
 
-    Note over Driver,Edge: 阶段 3：车辆驶入长隧道 5G 信号瞬间中断 -> 400ms 端侧 NPU 无感接管
-    Driver->>Edge: 🗣️ "好，导过去吧，顺便把空调调到 21 度、打开内循环。"
-    Edge->>Cloud: 尝试同步云端 (隧道内 5G 丢包，400ms 超时未响应)
-    Note right of Edge: 400ms 弱网看门狗触发！端侧 Phi-4-mini 立即本地接管执行 CAN 车控与离线路径重算
-    Edge->>Driver: 🔊 (端侧无感接管) "已为您切换至全家便利店车位，空调已调至 21 度并开启隧道内循环。"
+ Note over Driver,Edge: 阶段 3：车辆驶入长隧道 5G 信号瞬间中断 -> 400ms 端侧 NPU 无感接管
+ Driver->>Edge: 🗣️ "好，导过去吧，顺便把空调调到 21 度、打开内循环。"
+ Edge->>Cloud: 尝试同步云端 (隧道内 5G 丢包，400ms 超时未响应)
+ Note right of Edge: 400ms 弱网看门狗触发！端侧 Phi-4-mini 立即本地接管执行 CAN 车控与离线路径重算
+ Edge->>Driver: 🔊 (端侧无感接管) "已为您切换至全家便利店车位，空调已调至 21 度并开启隧道内循环。"
 ```
 
 ---
@@ -195,14 +195,14 @@ Cloud & AI 解决方案架构师在为车企座舱研发部或智能硬件团队
 
 遵循 `benchmark-harness-engineering` 7-Card 4:5 视觉报告规范，我们将端云协同座舱/智能硬件架构的核心评测数据总结如下（完整交互式卡片见 [`site/benchmark-cards.html`](../site/benchmark-cards.html) 与 [`site/case-study.html`](../site/case-study.html)）：
 
-> 📊 **数据溯源与口径声明（Provenance Disclosure）**：四音区波束隔离、蓝牙切换防爆音（`P763–P764`）、端云容器 `<= 400ms` 断网逃生（`P737–P738`）及车规 eCall 抢占（`P31/P99`）综合了本仓库评测基线、智能硬件出海标杆案例（`docs/smart-hardware-global-voice-cs-case-study.zh-CN.md`）与行业报告数据（`anonymized_reported` / `synthetic`, `independently_reproduced=false`）。离线策略状态机判定耗时标记为 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`。
+> 📊 **数据溯源与口径声明（Provenance Disclosure）**：四音区波束隔离、蓝牙切换防爆音、端云容器 `<= 400ms` 断网逃生及车规 eCall 抢占（`P31/P99`）综合了本仓库评测基线、智能硬件出海标杆案例（`docs/smart-hardware-global-voice-cs-case-study.zh-CN.md`）与行业报告数据（`anonymized_reported` / `synthetic`, `independently_reproduced=false`）。离线策略状态机判定耗时标记为 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`。
 
 | 卡片编号与视角 (7-Card Deck) | 核心量化标题 (Headline-as-Finding) | 关键实测/基线数据与架构师决策证据 |
 | :--- | :--- | :--- |
 | **Card 1 (`1/7` · `HANDS-ON · COCKPIT & HARDWARE`)**<br/>全景工作台与核心发现 | **“65% 端侧 NPU + 35% 云端 Voice Live + 按需抽帧”将车控延迟压至 `65ms`，单车年均云成本从 `$60.5` 降至 `$6.84`** | 在保持 `<380ms` 云端多模态“所见即所说”体验的同时，实现地下车库 `100%` 断网可用与 `-88.7%` 云端账单削减。 |
 | **Card 2 (`2/7` · `SCENARIO: SEE-AND-SPEAK & 4-ZONE LOCK`)**<br/>单案例深潜：后排童锁拦截 + 路牌视觉问答 | **后排儿童 `80km/h` 喊开后备箱被 `0ms` 策略拦截；主驾指路牌提问抽 `72KB` 关键帧在 `380ms` 内精准解答** | TDOA 座位绑定 `REAR_LEFT` 触发 `P32/P99` 车规锁；视觉指代触发器置信度 `0.98`（`Act automatically`）。 |
 | **Card 3 (`3/7` · `WHAT I TESTED`)**<br/>全场景评测矩阵 | **横跨 4 类硬件架构 × 6 项严苛车规关卡（地库断网车控/后排童锁隔离/75dB高速风噪/所见即所说续航/蓝牙切换防死锁/eCall 0ms抢占）** | 纯云端方案在“地下车库断网车控”与“AI眼镜续航(>2h)”上失败（`✕`）；纯端侧小模型在“复杂外文路牌+实时车位检索”上失败（`✕`）。 |
-| **Card 4 (`4/7` · `UNDER THE HOOD`)**<br/>底层协议与安全契约 | **`CabinMultizonePrivilegeGuard` (`P32/P99`) + `BluetoothHfpOpusDtxGuard` (`P763–P764`) + `EdgeCloudFailover` (`P737`)** | 展示如何将麦克风阵列 TDOA 音区标签、车速 CAN 信号与 `400ms` 隧道弱网熔断器编码为确定性状态机。 |
+| **Card 4 (`4/7` · `UNDER THE HOOD`)**<br/>底层协议与安全契约 | **`CabinMultizonePrivilegeGuard` (`P32/P99`) + `BluetoothHfpOpusDtxGuard` + `EdgeCloudFailover` ** | 展示如何将麦克风阵列 TDOA 音区标签、车速 CAN 信号与 `400ms` 隧道弱网熔断器编码为确定性状态机。 |
 | **Card 5 (`5/7` · `ROBUSTNESS CHECK`)**<br/>高速强噪与蓝牙切换稳定性 | **在 `75dB` 高速开窗风噪与上车蓝牙 `HFP` 切换 `-1dBFS` 冲击下，波束成形与 `800ms` 冻结锁保持 `0.0%` 误打断与死锁** | 消除 `Opus DTX` 静音停包导致的云端 VAD 挂死，并通过 `80ms` 环形预卷缓冲区确保唤醒词后首字零吞音。 |
 | **Card 6 (`6/7` · `LATENCY`)**<br/>端侧车控 vs 云端多模态延迟柱状图 | **端侧 NPU 分流将高频车控响应从 `620ms` 压缩至 `65ms`（提速 `9.5×`），按需单帧上传将多模态视觉问答从 `1,840ms` 压至 `380ms`** | 蓝色主路径（端侧 NPU `65ms` / 按需 80KB ROI 关键帧 `380ms`）；灰色基线（全云端车控 `620ms` / 未裁剪 4K 原图上传 `1,840ms`）。 |
 | **Card 7 (`7/7` · `MY TAKE`)**<br/>适用边界与选型拍板 | **✅ 选端云双路由+按需抽帧攻克量产车与 AI 眼镜；✅ 必配四音区硬件权限锁与 400ms 断网逃生；⛔ 严禁将 CAN 车控裸露给无锁云端大模型** | 为车企座舱、智能眼镜与出海硬件团队提供可量产、可过车规审计的架构蓝图。 |

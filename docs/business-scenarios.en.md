@@ -1,32 +1,52 @@
-# Enterprise Voice Agent 20 High-ROI Vertical Scenarios & Value Whitepaper (Bilingual Edition)
+# Enterprise Voice Agent Business Scenarios & ROI Whitepaper
 
-> 🌐 **Language / 语言切换**: **[中文版 (`docs/business-scenarios.md`)](./business-scenarios.md)** | **English (Current)** · **[Back to Home (`README.en.md`)](../README.en.md)** · **[中文首页 (`README.md`)](../README.md)**
->
-> **Core Thesis**: The business value of an Enterprise Voice Agent is not "a chatbot that speaks," but a **sub-600ms full-duplex conversational entrypoint governed by deterministic state machines, Constellation multi-model routing, and zero-trust action guardrails that turn unstructured speech into auditable, idempotent, human-supervised transactions**.
+> **Language / 语言**: [中文](./business-scenarios.md) | **English** · **Navigation**: [README](../README.en.md) | [Asset Catalog](./asset-catalog.en.md)
+
+## 1. Why Enterprise Voice AI Reached an Inflection Point
+
+Legacy DTMF IVR menus (*"Press 1 for billing, press 2 for support"*) suffer from **45%+ abandonment rates**, while offshore human contact centers face **60%–80% annual agent attrition** and `$3.50–$6.00` cost per 4-minute call. Modern full-duplex Speech-to-Speech and low-latency cascaded architectures reduce P50 response latency below **550 ms** at **$0.04–$0.08/min**, enabling enterprise Solution Architects to automate Tier-1 call resolution while elevating human agents with real-time guidance.
 
 ---
 
-## Twenty High-Value Vertical Scenarios (`S1–S20`)
+## 2. Twelve High-Value Enterprise Scenarios
 
-| ID | Vertical Scenario | Recommended Azure Paradigm | Deterministic Guardrail Anchor | Quantified ROI / Business Impact |
+| ID | Industry Scenario | Recommended Stack | Core Architectural Guardrail | Target Business Impact |
 | :--- | :--- | :--- | :--- | :--- |
-| **S1** | **Cross-Border Smart Hardware Technical Support (`LumaNest`)** | Paradigm C / B | `S01` Sparking Hazard `K05` Lock + `S02` IDOR Guard + `T02` Approval Lock | FCR jumps from **32% to 78%**, saving **$420k/yr** per 50-seat team. |
-| **S2** | **Global QSR Drive-Thru & Café Real-Time Voice Ordering** | Paradigm A (`gpt-live-1`) | `L01` 12-Item Beverage Homophone Normalization + `preview_service_order` | Order throughput **+28%**, average unit value (AUV) **+$1.45/order**. |
-| **S3** | **Auto Insurance First Notice of Loss (`FNOL`) & Claims** | Paradigm B (Cascaded) | `P30` Promise-vs-Ticket Audit + `P42` SIPREC Compliance Fork | Peak storm FNOL hold time drops from **18 min to <15 sec**, saving **64%**. |
-| **S4** | **Healthcare Patient Triage & Enterprise IT Service Desk** | Paradigm B / D | `P33` Clinical Red-Flag `0ms` ER Escalation + `P63` HIPAA Caregiver POA Gate | **0.0%** missed acute red-flag escalations; IT L1 ticket deflection **71%**. |
-| **S5** | **Automotive In-Cabin Assistant & Emergency eCall** | Paradigm A + Edge | `P31` eCall `>=4.5G` `0ms` Preemption + `P32` 4-Zone Cabin Privilege Isolation | **100%** EU eCall / GB 34658 compliance; **0.0%** child/passenger unauthorized control. |
-| **S6** | **Travel Booking Modification & PCI-DSS Voice Payment** | Paradigm B / C | `P11` RFC 4733 DTMF Media Bypass + `P68` PCI `SAQ-A` LLM Scope Isolation | Keeps GPU/LLM cluster **100% out of PCI CDE (`SAQ-A`)**; AHT **-48s**. |
-| **S7** | **Municipal 12345 Hotline & Gas/Utility Emergency Dispatch** | Paradigm B / D | `P46` E911/112 `PIDF-LO` Bridge + `P14` EAA/ADA Disfluency Adaptive VAD | **0ms** hazard bypass to PSAP with floor-level `PIDF-LO` coordinates. |
-| **S8** | **Cross-Border Logistics Customs Exception & Outbound AMD** | Paradigm C / B | `P25` Outbound TCPA/DNC/AMD Voicemail PII Guard | Eliminates voicemail PII leaks and TCPA curfew violations (**100% compliant**). |
-| **S9** | **Gaming Real-Time Voice NPC & Minor Purchase Protection** | Paradigm A (`gpt-live-1`) | `P69` COPPA / GDPR-K Minor Voiceprint Zero-Retention & VPC Purchase Gate | **0.0%** unconsented minor voiceprint retention or unauthorized in-game charges. |
-| **S10** | **Industrial Energy 85dB Hands-Free Inspection & LOTO** | Paradigm D (Container) | `A04` 85dB Noise Lock + `S06` OSHA High-Voltage LOTO Interlock | **100%** physical interlock before high-voltage busbar instructions. |
-| **S11** | **Private Wealth Management Dual-Recording QA (`WM-DUAL-01`)** | Paradigm D + B | `S07` C2->R5 Suitability Lock + `P60` MiFID II `<=1.15x` Disclaimer Cadence | First-pass dual-recording QA rises from **68% to 99.1%**, saving **$928k/yr**. |
-| **S12** | **Luxury Hospitality Multilingual Concierge & PMS (`HOSP-PMS-01`)** | Paradigm A (`gpt-live-1`) | `A07` ZH/EN/YUE/JA Code-Switch + Cross-Room Privacy & Folio PIN Gate | Missed front-desk calls drop to **<1.5%**, generating **$1.65M/yr** ancillary rev. |
-| **S13** | **Airline IRROPS Mass Disruption & EU261 Claims (`AIR-IRROPS-01`)** | Paradigm A + B | EU261 €600 Statutory Cap + Interline PNR Lock + `P16` NATO Readback | Handles **10,000+ concurrent storm rebookings**, cutting hotel/claim leakage **72%**. |
-| **S14** | **High-Tech Manufacturing PLC/Modbus Field Triage (`IND-FIELD-01`)** | Paradigm D + B | LOTO Dual-Lock + OPC-UA/Modbus Diagnostic Tree + >$5k Spare Parts Gate | Mean time to repair (MTTR) reduced by **41%**, zero safety violations. |
-| **S15** | **Telecom Carrier eSIM Provisioning & Storm Triage (`TELCO-ESIM-01`)** | Paradigm B + ACS | `S10` Anti-SIM-Swap Device Push MFA + 24h Cooling Lock + `P41` STIR/SHAKEN | **100%** blocks social-engineered eSIM hijacking; offloads **82%** outage calls. |
-| **S16** | **Cold-Chain Maritime Customs & Telex Release (`LOG-COLD-01`)** | Paradigm B + C | `S09` Multi-Speaker Role Auth + Escrow Verified Telex Release Pin Gate | Prevents **$250k+** fraudulent cargo release and reefers temperature excursions. |
-| **S17** | **Smart Grid Extreme Weather Outage & Reclosing (`GRID-STORM-01`)** | Paradigm D + B | Field Crew-Clear Lockout Tag Verification before Feeder Reclosing | **0.0%** energized reclosing accidents; storm call deflection **88%**. |
-| **S18** | **Phase-III Clinical Trial ePRO & Pharmacovigilance (`PHARMA-PV-01`)** | Paradigm B / D | `S12` Double-Blind Anti-Unblinding Lock + 15s ICH E2B(R3) SAE Escalation + `P73` EPCS | **100%** trial blinding integrity; **<15s** serious adverse event escalation. |
-| **S19** | **Cloud & Core Banking NOC Sev-1 War Room Copilot (`CLOUD-NOC-01`)** | Paradigm B (Private) | `S13` Change-Freeze Dual-Commander Hardware Token Lock + >$5k SLA Credit Gate | Prevents panic-driven destructive production commands during Sev-1 incidents. |
-| **S20** | **L4 Autonomous Trucking Remote Tele-Operations (`AUTO-TELEOP-01`)** | Paradigm A + Edge NPU | `S14` `<150ms` Edge NPU Reflex Failover + Mandatory AEB Safety Interlock | **100%** blocks remote AEB disablement; `<150ms` tunnel packet-loss fallback. |
+| **S1** | **Global Smart Hardware Multilingual Support** (Repo Reference) | Hybrid / Voice Live + Foundry RAG | Tenant isolation + Safety hazard escalation + Preview-commit RMA | **68%+** Tier-1 self-service containment across 6 languages |
+| **S2** | **Retail & QSR Drive-Thru Voice Ordering** | Native S2S + Edge Noise Suppression | Menu SKU constraint lock + POS modifier pricing check | **-40%** drive-thru lane queue time; **+14%** upsell attach |
+| **S3** | **BFSI Insurance FNOL Claims & Policy Triage** | Enterprise Cascaded + Dual-Track SIPREC | Zero coverage-promise gate + Voice anti-deepfake liveness | **3.5x** storm-surge intake capacity; **0** unauthorized payouts |
+| **S4** | **Healthcare Pre-Triage & Ambient Clinical Scribe** | Cascaded + Streaming Diarization | Acute red-flag `0s` nurse transfer + EHR structured SOAP review | **-60%** clinician charting time; **+32%** appointment fill rate |
+| **S5** | **Automotive In-Cabin Multimodal Assistant & eCall** | Native S2S + Edge Speech Container | Multi-zone speaker isolation + Crash eCall preemption | **< 500 ms** in-cabin command response; offline tunnel continuity |
+| **S6** | **Airline IRROPS Rebooking & PCI Voice Payment** | Voice Live + GDS Async Pacing + DTMF Bypass | PCI-DSS v4.0 DTMF media bypass + Fare-difference confirmation | **-72%** storm hold time; **100%** PCI scope isolation |
+| **S7** | **Citizen 311/12345 Hotline & Utility Outage Triage** | Cascaded + Elastic PTU/PAYGO Spillover | Gas/fire crisis `0s` emergency bridge + Geo-clustered dispatch | Absorbs **10x** outage call spikes without trunk busy signals |
+| **S8** | **Cross-Border Logistics Exception & Compliant Outbound** | Managed SIP + AMD Detection + TCPA Gate | Time-zone curfew lock + `< 200 ms` opt-out DNC enforcement | **+28%** first-attempt redelivery success; **-42%** wasted AMD minutes |
+| **S9** | **Interactive Gaming Voice NPC & Companion Safety** | Native S2S Emotional Audio + Lore Anchor | Minor purchase preview lock + Community safety circuit breaker | **+34%** narrative session engagement; **0** unauthorized minor charges |
+| **S10** | **Enterprise Contact Center Copilot & AI Sales Coach** | Voice Live Roleplay + SIPREC Agent Assist | Real-time battlecard grounding + Post-call promise-vs-CRM audit | **-58%** new-hire ramp time; **-85%** post-call ACW wrap-up time |
+| **S11** | **Wealth Management Dual-Recording & Suitability** | Cascaded HD TTS + Deterministic KYC Gate | `C1–C5` vs `R1–R5` suitability check + Zero yield-guarantee lock | **99.1%** first-pass compliance QA rate (up from 68%) |
+| **S12** | **Global Hospitality Multilingual Concierge & PMS** | Native S2S Code-Switching + PMS Gateway | Live room-inventory hold + Room-charge PIN verification | **84%** direct-booking call capture; **+24%** room/dining upsell |
+
+---
+
+## 3. Enterprise SLA Targets & FinOps TCO Benchmark
+
+### 3.1 Production SLA / SLO Acceptance Targets
+
+| Category | Metric | Baseline | Best-in-Class Target | Measurement Definition |
+| :--- | :--- | :--- | :--- | :--- |
+| **Latency** | **Time-to-First-Audio (TTFA P50)** | `< 850 ms` | **380 ms – 590 ms** | Caller end-of-speech → first synthesized audio frame at client |
+| **Latency** | **Peak Tail Latency (TTFA P90)** | `< 1,500 ms` | **`< 850 ms`** | Measured under peak production concurrency |
+| **Turn Control** | **Barge-In Cut-Off Latency** | `< 350 ms` | **`< 150 ms`** | Caller interruption onset → stale TTS buffer flushed |
+| **Turn Control** | **Backchannel False-Interrupt Rate** | `< 15%` | **`< 5%`** | Caller saying *"uh-huh"* / *"right"* does not abort agent turn |
+| **Accuracy** | **Tool Schema & Parameter Accuracy** | `> 95%` | **`> 99.2%`** | Strict Zod / JSON Schema validation with zero invented IDs |
+| **Governance** | **Red-Line Escalation & Write-Fence Pass Rate** | `100%` | **`100%`** | Zero unconfirmed mutations or missed safety/compliance escalations |
+
+### 3.2 Monthly TCO Benchmark (100,000 Calls/Month × 4 Min = 400,000 Min/Month)
+
+| Deployment Option | Blended $/Min | Cost per 4-Min Call | Monthly Total (400k Min) | Savings vs. Human BPO | Architectural Fit |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Human Contact Center (BPO)** | `$0.85 – $1.40` | `$3.40 – $5.60` | `$340,000 – $560,000` | Baseline | Retain for Top 15%–20% complex/emotional escalations |
+| **Sierra AI (Outcome-Based Managed)** | `~$0.25 – $0.60*` | `$1.00 – $2.50 / res` | `$120,000 – $250,000+` | `55% – 70%` | Large retail enterprises seeking turnkey outcome contracts |
+| **Retell / Vapi + Commercial LLM/TTS** | `$0.13 – $0.18` | `$0.52 – $0.72` | `$52,000 – $72,000` | `82% – 87%` | Fast telephony MVP; per-minute platform markup at scale |
+| **ElevenLabs Conversational AI** | `$0.09 – $0.15` | `$0.36 – $0.60` | `$36,000 – $60,000` | `85% – 90%` | Expressive brand voice & media/concierge experiences |
+| **Azure Voice Live (`gpt-live` + `gpt-4.1-mini`)** | **`$0.055 – $0.075`** | **`$0.22 – $0.30`** | **`$22,000 – $30,000`** | **`92% – 95%`** | **Full-duplex low latency + Private VNet + PTU economics** |
+| **Azure Cascaded (Speech + `gpt-4.1-mini` + HD TTS)** | **`$0.035 – $0.052`** | **`$0.14 – $0.21`** | **`$14,000 – $21,000`** | **`95% – 97%`** | **High-volume regulated CX, strict pre-TTS audit & edge containers** |

@@ -9,8 +9,8 @@
 **GPT-Live (`gpt-live-1`)** 是跑在 **Azure App Service** 与 **Azure AI Foundry** 上的浏览器实时语音助手参考架构：让客户在同一网页中直观体验 **自然语音问答、毫秒级开口打断（Barge-in）、时间/算术快速响应与带来源的联网问答**，且所有云端凭据保留在服务端（零前端密钥暴露）。
 
 - 🎥 **4 分 20 秒 Azure 实录演示视频 (`GPT-Live-Azure-demo.mp4`)**：
-  - **个人主页在线播放**：[**`https://turbo998.github.io/voice/`**](https://turbo998.github.io/voice/)（视频直链：[`https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4`](https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4)）
-  - **GitHub Release (`v0.4.0`) 高清下载**：[`https://github.com/turbo998/gpt-live-1-demo/releases/download/v0.4.0/GPT-Live-Azure-demo.mp4`](https://github.com/turbo998/gpt-live-1-demo/releases/download/v0.4.0/GPT-Live-Azure-demo.mp4)
+ - **个人主页在线播放**：[**`https://turbo998.github.io/voice/`**](https://turbo998.github.io/voice/)（视频直链：[`https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4`](https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4)）
+ - **GitHub Release (`v0.4.0`) 高清下载**：[`https://github.com/turbo998/gpt-live-1-demo/releases/download/v0.4.0/GPT-Live-Azure-demo.mp4`](https://github.com/turbo998/gpt-live-1-demo/releases/download/v0.4.0/GPT-Live-Azure-demo.mp4)
 - 🎓 **合作伙伴工程师交互培训门户**：[`https://turbo998.github.io/gpt-live-1-demo/training.html`](https://turbo998.github.io/gpt-live-1-demo/training.html)
 - 📊 **GPT-Live-1 7-Card (4:5) 视觉基准报告**：[`https://turbo998.github.io/gpt-live-1-demo/benchmark-cards.html`](https://turbo998.github.io/gpt-live-1-demo/benchmark-cards.html)
 
@@ -20,22 +20,22 @@
 
 ```mermaid
 flowchart LR
-  User["客户 / 演示人<br/>Chrome / Edge 浏览器<br/>麦克风输入 · 扬声器播放 · 实时转写"]
-  App["Azure App Service (Linux B1 · Node.js 24)<br/>同源访问门禁 · 会话策略 · 本地时钟/算术工具"]
-  Store["持久化配置挂载<br/>/home/gpt-live-demo/settings.json"]
-  MI["System-Assigned Managed Identity<br/>Cognitive Services OpenAI User"]
-  Live["Azure AI Foundry<br/>gpt-live-1 (GlobalStandard)<br/>/live/sessions 实时语音双向流"]
-  Reason["Azure AI Foundry Responses API<br/>gpt-4.1-mini + 原生 web_search"]
-  Web["公开网页来源<br/>天气 Open-Meteo / 联网搜索标题与链接"]
+ User["客户 / 演示人<br/>Chrome / Edge 浏览器<br/>麦克风输入 · 扬声器播放 · 实时转写"]
+ App["Azure App Service (Linux B1 · Node.js 24)<br/>同源访问门禁 · 会话策略 · 本地时钟/算术工具"]
+ Store["持久化配置挂载<br/>/home/gpt-live-demo/settings.json"]
+ MI["System-Assigned Managed Identity<br/>Cognitive Services OpenAI User"]
+ Live["Azure AI Foundry<br/>gpt-live-1 (GlobalStandard)<br/>/live/sessions 实时语音双向流"]
+ Reason["Azure AI Foundry Responses API<br/>gpt-4.1-mini + 原生 web_search"]
+ Web["公开网页来源<br/>天气 Open-Meteo / 联网搜索标题与链接"]
 
-  User <-->|"HTTPS + WebSocket (/ws)<br/>音频块 · 打断信号 · 时间戳字幕"| App
-  App <-->|"读写运行配置（脱敏回显）"| Store
-  App -->|"Entra ID 无密钥认证"| MI
-  MI -->|"Bearer Token"| Live
-  MI -->|"Bearer Token"| Reason
-  App <-->|"实时语音会话 (/live/sessions)"| Live
-  App <-->|"复杂推理 · 算术 · 联网检索"| Reason
-  Reason <-->|"检索公开信息并返回引用"| Web
+ User <-->|"HTTPS + WebSocket (/ws)<br/>音频块 · 打断信号 · 时间戳字幕"| App
+ App <-->|"读写运行配置（脱敏回显）"| Store
+ App -->|"Entra ID 无密钥认证"| MI
+ MI -->|"Bearer Token"| Live
+ MI -->|"Bearer Token"| Reason
+ App <-->|"实时语音会话 (/live/sessions)"| Live
+ App <-->|"复杂推理 · 算术 · 联网检索"| Reason
+ Reason <-->|"检索公开信息并返回引用"| Web
 ```
 
 ### 核心职责与安全边界
@@ -43,8 +43,8 @@ flowchart LR
 1. **浏览器前端（展示与采集层）**：负责麦克风采集、扬声器播放、带时间戳字幕显示、音色与中英界面切换，**绝不保存 Azure 密钥或直连模型端点**。
 2. **Node.js 服务端（安全代理与策略层）**：强制同源 WebSocket 校验、远端会话单次上限（默认 15 分钟）与每分钟请求节流；对独立时间/日期/星期问题直接走服务端时钟零延迟返回。
 3. **Azure AI Foundry 双模型协同层**：
-   - **`gpt-live-1`**：负责低延迟听说、自然打断（Barge-in）、音色与实时转写。
-   - **`gpt-4.1-mini`（Responses API）**：负责精确计算（`calculate`）、天气查询（`get_weather`）与带来源的联网搜索（`web_search`）。
+ - **`gpt-live-1`**：负责低延迟听说、自然打断（Barge-in）、音色与实时转写。
+ - **`gpt-4.1-mini`（Responses API）**：负责精确计算（`calculate`）、天气查询（`get_weather`）与带来源的联网搜索（`web_search`）。
 
 ---
 
@@ -81,6 +81,6 @@ flowchart LR
 - **视频技术规格**：MP4（H.264 `1600×1000` 画面 + 48 kHz 双声道 AAC 音轨），时长 **`4 分 20.66 秒`**（`12,443,395` 字节）。
 - **录制来源说明**：视频中模型回答与音频来自真实 Azure `gpt-live-1` 部署，提问与架构旁白使用离线合成音频驱动，仅录制浏览器应用窗口，不包含任何个人桌面或私有凭据。
 - **客观边界提示**：
-  1. 视频完整展示了自然语音问候、中途打断、服务端时钟、`10 + 20 = 30` 算术及带来源的语音联网搜索。
-  2. 视频中段英文口语请求发出时模型仍在播报上一条搜索结果，因此英文口语应作为配置项重连后单独演示，不以该视频片段作为英文口语独立验收依据。
-  3. 断开连接后的架构解说为离线合成旁白，视频总时长（4m20s）不等于云端语音会话计费时长。
+ 1. 视频完整展示了自然语音问候、中途打断、服务端时钟、`10 + 20 = 30` 算术及带来源的语音联网搜索。
+ 2. 视频中段英文口语请求发出时模型仍在播报上一条搜索结果，因此英文口语应作为配置项重连后单独演示，不以该视频片段作为英文口语独立验收依据。
+ 3. 断开连接后的架构解说为离线合成旁白，视频总时长（4m20s）不等于云端语音会话计费时长。

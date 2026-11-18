@@ -1,6 +1,6 @@
 # 企业语音识别（STT）、语音合成（TTS）、品牌音色克隆与数字人平台横向选型 FAQ：Azure AI Speech vs ElevenLabs vs Deepgram vs Cartesia vs 开源 Whisper / CosyVoice / Fish Speech
 
-> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md`)](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md)**  
+> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md`)](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md)** 
 > 🔗 **关联专题 (Related Deep Dives)**: [级联 vs 原生 S2S 大脑选型 (`cascaded-vs-s2s-semantic-turn-faq.md`)](./cascaded-vs-s2s-semantic-turn-faq.md) · [实时语音编排框架选型 (`voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md`)](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md) · [多语种混说与方言合成 (`voice-multilingual-codeswitch-dialect-faq.md`)](./voice-multilingual-codeswitch-dialect-faq.md) · [本地语音容器指南 (`speech-container-guide.md`)](./speech-container-guide.md) · [返回首页 (`README.md`)](../README.md)
 
 ![Enterprise Speech STT, TTS, Voice Cloning & Avatar Platform Selection Visual Summary](../assets/svg/voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource.svg)
@@ -12,14 +12,14 @@
 在所有需要**100% 话术受控、文本级合规脱敏、自定义行业生僻热词或品牌专属代言人音色**的企业级语音智能体（占金融、医疗、政务、零售与航旅客服生产流量的 **70% 以上**）中，**流式语音识别（STT）+ 语音合成（TTS）/ 声音克隆 / 数字人**的选型直接决定了机器人的“耳聪目明程度”与每万分钟运营成本：
 
 1. **何时首选“企业全栈多语种与合规语音底座”（Azure AI Speech 全家桶：`MAI-Transcribe-1` / `Fast & Realtime STT` + `DragonHDFlash` TTS 3.0 + `Custom Neural Voice (CNV)` + `Live Interpreter` + `Live Avatar`）**：
-   - **适用场景**：**亚太与全球多语种（140+ 语言及粤语/四川话/台语等方言）呼叫中心、中英粤句内混说客服、需要注入数千条药品/SKU/网点专属热词（Custom Speech）、企业品牌代言人音色定制、跨国高管会议原声同传（Live Interpreter）、展厅/网点 2D/3D 数字人（Live Avatar），以及必须部署在本地机房的金融/政企专网项目**。
-   - **核心理由**：微软最新一代 **`DragonHDFlash`（TTS HD 3.0）** 在中文与多语种商务客服盲测中取得 **4.34 MOS**（超越真人坐席录音的 4.08 MOS），流式首包延迟仅 **155ms**；同时它是业内**唯一提供官方本地断网/联网 Docker 容器（Disconnected Containers）**、并在同一个服务内集成**原声保留同传（Live Interpreter）与实时 WebRTC 数字人（Live Avatar）**的云平台，每万分钟 STT+TTS 综合成本仅 **`$210 ~ $260`**（且 100% 抵扣企业 Azure MACC 额度）。
+ - **适用场景**：**亚太与全球多语种（140+ 语言及粤语/四川话/台语等方言）呼叫中心、中英粤句内混说客服、需要注入数千条药品/SKU/网点专属热词（Custom Speech）、企业品牌代言人音色定制、跨国高管会议原声同传（Live Interpreter）、展厅/网点 2D/3D 数字人（Live Avatar），以及必须部署在本地机房的金融/政企专网项目**。
+ - **核心理由**：微软最新一代 **`DragonHDFlash`（TTS HD 3.0）** 在中文与多语种商务客服盲测中取得 **4.34 MOS**（超越真人坐席录音的 4.08 MOS），流式首包延迟仅 **155ms**；同时它是业内**唯一提供官方本地断网/联网 Docker 容器（Disconnected Containers）**、并在同一个服务内集成**原声保留同传（Live Interpreter）与实时 WebRTC 数字人（Live Avatar）**的云平台，每万分钟 STT+TTS 综合成本仅 **`$210 ~ $260`**（且 100% 抵扣企业 Azure MACC 额度）。
 2. **何时首选“极致情感表现力与极速开发者语音平台”（ElevenLabs vs Cartesia Sonic vs Deepgram）**：
-   - **选 `ElevenLabs (Flash v2.5 / Eleven v4 + Scribe)` 或 `Cartesia Sonic-2`**：当你的核心场景是 **欧美市场英语/西语情感陪伴、游戏动态 NPC、有声互动故事、或者需要 10 秒音频快速克隆富有戏剧张力的营销音色** 时，ElevenLabs `Flash v2.5`（75ms 模型推理延迟）与 Cartesia `Sonic-2`（基于 SSM 状态空间模型，首包 ~90ms）在呼吸声、叹气与情绪起伏上极具感染力。但需注意其在高并发长通话下的字符/分钟账单较高（每万分钟约 **`$450 ~ $780`**），且缺乏本地私有化离线容器。
-   - **选 `Deepgram (Nova-3 STT + Aura-2 TTS)`**：当你的业务是 **纯北美/英语系高吞吐电话机器人（如物流调度、美区门店预约）**，追求 `< 180ms` 的极速英文流式转写、简单的在线关键词提权（Keyterm Prompting）与低廉的英文 API 成本（每万分钟 STT+TTS 约 **`$210 ~ $320`**）时，Deepgram 是非常优秀的轻量级选择。
+ - **选 `ElevenLabs (Flash v2.5 / Eleven v4 + Scribe)` 或 `Cartesia Sonic-2`**：当你的核心场景是 **欧美市场英语/西语情感陪伴、游戏动态 NPC、有声互动故事、或者需要 10 秒音频快速克隆富有戏剧张力的营销音色** 时，ElevenLabs `Flash v2.5`（75ms 模型推理延迟）与 Cartesia `Sonic-2`（基于 SSM 状态空间模型，首包 ~90ms）在呼吸声、叹气与情绪起伏上极具感染力。但需注意其在高并发长通话下的字符/分钟账单较高（每万分钟约 **`$450 ~ $780`**），且缺乏本地私有化离线容器。
+ - **选 `Deepgram (Nova-3 STT + Aura-2 TTS)`**：当你的业务是 **纯北美/英语系高吞吐电话机器人（如物流调度、美区门店预约）**，追求 `< 180ms` 的极速英文流式转写、简单的在线关键词提权（Keyterm Prompting）与低廉的英文 API 成本（每万分钟 STT+TTS 约 **`$210 ~ $320`**）时，Deepgram 是非常优秀的轻量级选择。
 3. **何时才应该考虑“开源语音模型 GPU 自建”（`Whisper-large-v3-turbo` / `SenseVoice` + `CosyVoice 2` / `Fish Speech 1.5`）**：
-   - **适用边界**：**离线批量录音质检归档（非实时电话，可把 GPU 24 小时塞满跑批处理）、高校/科研机构算法实验，或者企业日均稳定实时语音量 `> 150 万分钟` 且拥有专职 C++/TensorRT-LLM 音频推理优化团队**。
-   - **架构师防坑警示**：千万不要被“开源免费”四个字误导！在实时客服对话中，由于白天话务洪峰是夜间的 **10～15 倍**，自建 GPU 集群为了保证白天高峰不排队（首包 `< 250ms`），全天平均 GPU 利用率往往不足 **20%**；算上闲置 GPU 租金与运维人力，每万分钟真实摊销成本高达 **`$380 ~ $690`**（反而比直接调 Azure/Deepgram 弹性云 API 更贵！），且原生 Whisper 在电话静音段极易产生“谢谢观看/字幕制作”等致命幻觉。
+ - **适用边界**：**离线批量录音质检归档（非实时电话，可把 GPU 24 小时塞满跑批处理）、高校/科研机构算法实验，或者企业日均稳定实时语音量 `> 150 万分钟` 且拥有专职 C++/TensorRT-LLM 音频推理优化团队**。
+ - **架构师防坑警示**：千万不要被“开源免费”四个字误导！在实时客服对话中，由于白天话务洪峰是夜间的 **10～15 倍**，自建 GPU 集群为了保证白天高峰不排队（首包 `< 250ms`），全天平均 GPU 利用率往往不足 **20%**；算上闲置 GPU 租金与运维人力，每万分钟真实摊销成本高达 **`$380 ~ $690`**（反而比直接调 Azure/Deepgram 弹性云 API 更贵！），且原生 Whisper 在电话静音段极易产生“谢谢观看/字幕制作”等致命幻觉。
 
 ---
 
@@ -32,13 +32,13 @@
 很多客户技术团队在选型 STT（耳朵）和 TTS（嘴巴）时，习惯去网上下一段 10 秒钟的新闻联播或英文播客试听，哪个声音最像好莱坞配音演员就选哪个。但一上真实企业电话线就翻车，原因在于企业生产有**四个隐形考场**：
 
 - **考场一：真实电话网的“8kHz 窄带噪音 + 方言口音 + 句内中英混说”**
-  - 客户在地铁里、开着免提、带着广东或江浙口音说：“帮我查下昨天买嘅那台 Surface Pro 11 顺丰单号 SF1092 发货没？”
-  - **Deepgram Nova-3** 在纯正美式英语上快如闪电，但遇到中国出海企业或亚太跨国业务中的“中英粤句内无缝混说（Code-Switching）”及东南亚英语口音（Singlish / 印式英语）时，词错率（WER）会明显上升；
-  - **Azure AI Speech (`Fast/Realtime STT` + `MAI-Transcribe-1`)** 依托覆盖 **140+ 语种与方言** 的工业级声学底座，原生支持句内多语种混说识别，并允许企业通过 **Custom Speech（自定义语音）** 上传几千条内部专有名词（如生僻药名、楼盘名、SKU 编号）构建专属声学/语言偏置模型。
+ - 客户在地铁里、开着免提、带着广东或江浙口音说：“帮我查下昨天买嘅那台 Surface Pro 11 顺丰单号 SF1092 发货没？”
+ - **Deepgram Nova-3** 在纯正美式英语上快如闪电，但遇到中国出海企业或亚太跨国业务中的“中英粤句内无缝混说（Code-Switching）”及东南亚英语口音（Singlish / 印式英语）时，词错率（WER）会明显上升；
+ - **Azure AI Speech (`Fast/Realtime STT` + `MAI-Transcribe-1`)** 依托覆盖 **140+ 语种与方言** 的工业级声学底座，原生支持句内多语种混说识别，并允许企业通过 **Custom Speech（自定义语音）** 上传几千条内部专有名词（如生僻药名、楼盘名、SKU 编号）构建专属声学/语言偏置模型。
 - **考场二：严肃商业场景的“专业得体度、多音字与数字金额零差错（SSML 精细控制）”**
-  - **ElevenLabs (`Eleven v4 / Flash v2.5`)** 的优势在于“富有戏剧感的情绪起伏和气声”，非常适合讲故事、播客或情感陪聊；但在银行账单播报、医疗随访或航司改签场景中，过度丰富的气声有时会让客户觉得不够庄重，且当遇到中文复杂多音字（如“银行 `yín háng` vs 行业 `háng yè`”、“重 `chóng` 新复核 vs 重 `zhòng` 量”）或需要精确控制每个工单号字符间的停顿毫秒数时，**Azure `DragonHDFlash` + 完整 W3C SSML 标记语言（`<phoneme>` 音标强制注音、`<say-as>` 币种/日期/字符拼读、`<prosody>` 局部语速控制）** 提供了 100% 确定性的工业级控制力。
+ - **ElevenLabs (`Eleven v4 / Flash v2.5`)** 的优势在于“富有戏剧感的情绪起伏和气声”，非常适合讲故事、播客或情感陪聊；但在银行账单播报、医疗随访或航司改签场景中，过度丰富的气声有时会让客户觉得不够庄重，且当遇到中文复杂多音字（如“银行 `yín háng` vs 行业 `háng yè`”、“重 `chóng` 新复核 vs 重 `zhòng` 量”）或需要精确控制每个工单号字符间的停顿毫秒数时，**Azure `DragonHDFlash` + 完整 W3C SSML 标记语言（`<phoneme>` 音标强制注音、`<say-as>` 币种/日期/字符拼读、`<prosody>` 局部语速控制）** 提供了 100% 确定性的工业级控制力。
 - **考场三：跨国同传与数字人多模态的“一站式协同”**
-  - 如果企业除了电话客服，还需要做 **跨国视频会议实时同声传译** 或 **线下营业厅/电商直播数字人导购**，用 Deepgram + ElevenLabs + 第三方数字人（如 HeyGen）意味着你要对接 3 家不同供应商的 API、签 3 份合同、处理跨云音画同步；而 **Azure AI Speech** 原生内置了 **`Live Interpreter`（实时翻译并保留说话人自己原本的音色与语调）** 以及 **`Live Avatar`（1080p 2D/3D 实时 WebRTC 数字人，唇音同步误差 `< 40ms`）**。
+ - 如果企业除了电话客服，还需要做 **跨国视频会议实时同声传译** 或 **线下营业厅/电商直播数字人导购**，用 Deepgram + ElevenLabs + 第三方数字人（如 HeyGen）意味着你要对接 3 家不同供应商的 API、签 3 份合同、处理跨云音画同步；而 **Azure AI Speech** 原生内置了 **`Live Interpreter`（实时翻译并保留说话人自己原本的音色与语调）** 以及 **`Live Avatar`（1080p 2D/3D 实时 WebRTC 数字人，唇音同步误差 `< 40ms`）**。
 
 ---
 
@@ -48,20 +48,20 @@
 
 #### 1. 算清第一笔账：实时语音的“峰谷闲置税（Peak-to-Trough GPU Idleness Tax）”
 - **离线批处理 vs 实时对话的本质区别**：
-  - 如果你是把昨天的 10 万条录音文件转成文字做离线质检，你可以把任务塞进消息队列，让 2 张 GPU 卡 24 小时 100% 满负荷运转——这种场景用开源 `Whisper-large-v3-turbo` 或 `Azure Batch Transcription` 确实极其便宜。
-  - **但实时语音客服是“人等机器，零排队容忍”**！企业呼叫中心的话务量呈现极端的“双驼峰曲线”：上午 9:30–11:30、下午 14:00–16:30 是全天最高峰（比如同时有 150 路电话在说），而晚上 22:00 到次日早上 8:00 几乎只有零星几路电话。
-  - 为了保证白天 150 路并发客户说话时，TTS 首包延迟不超过 `250ms`、STT 不丢帧，你**必须按照全天最高峰（再加 30% 安全水位与跨可用区双活冗余）来常驻租用 GPU 服务器**！这意味着你的 GPU 集群在全天 **75%～80% 的时间里处于空转烧钱状态**。
-  - **定量对比**：200 路并发自建 `Whisper + CosyVoice 2` 至少需要 6～8 张 `NVIDIA L40S / A10G` GPU 实例常驻（月租约 `$6,500 ~ $9,000`）+ 至少半个专职推理加速工程师维护（月均 `$6,000`），每月固定开销超 **`$13,000`**；如果企业月通话量是 25 万分钟，折合每万分钟成本高达 **`$520 / 万分钟`**——而直接按秒按需调用 **Azure AI Speech / Deepgram 云 API**，25 万分钟仅需 **`$5,500 ~ $6,200 / 月`（约 `$230 / 万分钟`，立省 55% 以上，且无惧十倍突发流量洪峰）**！
+ - 如果你是把昨天的 10 万条录音文件转成文字做离线质检，你可以把任务塞进消息队列，让 2 张 GPU 卡 24 小时 100% 满负荷运转——这种场景用开源 `Whisper-large-v3-turbo` 或 `Azure Batch Transcription` 确实极其便宜。
+ - **但实时语音客服是“人等机器，零排队容忍”**！企业呼叫中心的话务量呈现极端的“双驼峰曲线”：上午 9:30–11:30、下午 14:00–16:30 是全天最高峰（比如同时有 150 路电话在说），而晚上 22:00 到次日早上 8:00 几乎只有零星几路电话。
+ - 为了保证白天 150 路并发客户说话时，TTS 首包延迟不超过 `250ms`、STT 不丢帧，你**必须按照全天最高峰（再加 30% 安全水位与跨可用区双活冗余）来常驻租用 GPU 服务器**！这意味着你的 GPU 集群在全天 **75%～80% 的时间里处于空转烧钱状态**。
+ - **定量对比**：200 路并发自建 `Whisper + CosyVoice 2` 至少需要 6～8 张 `NVIDIA L40S / A10G` GPU 实例常驻（月租约 `$6,500 ~ $9,000`）+ 至少半个专职推理加速工程师维护（月均 `$6,000`），每月固定开销超 **`$13,000`**；如果企业月通话量是 25 万分钟，折合每万分钟成本高达 **`$520 / 万分钟`**——而直接按秒按需调用 **Azure AI Speech / Deepgram 云 API**，25 万分钟仅需 **`$5,500 ~ $6,200 / 月`（约 `$230 / 万分钟`，立省 55% 以上，且无惧十倍突发流量洪峰）**！
 
 #### 2. 算清第二笔账：开源语音模型上生产的“四大工程暗礁”
 1. **原生 Whisper 的“30 秒切片架构缺陷”与静音幻觉**：
-   - OpenAI 开源的 Whisper 本质是为**30 秒定长音频块**设计的编码器-解码器（Encoder-Decoder）架构，并非原生流式（Streaming）架构。强行用滑动窗口（如 `Whisper-Streaming`）改成实时流式时，不仅计算存在大量重复编码浪费，而且一旦电话里出现背景空调底噪或停顿，Whisper 极易因为训练语料污染而脑补出**“谢谢大家收看”、“字幕由 Amara.org 社区提供”**等莫名其妙的幻觉文本，导致下游大模型逻辑彻底错乱！
+ - OpenAI 开源的 Whisper 本质是为**30 秒定长音频块**设计的编码器-解码器（Encoder-Decoder）架构，并非原生流式（Streaming）架构。强行用滑动窗口（如 `Whisper-Streaming`）改成实时流式时，不仅计算存在大量重复编码浪费，而且一旦电话里出现背景空调底噪或停顿，Whisper 极易因为训练语料污染而脑补出**“谢谢大家收看”、“字幕由 Amara.org 社区提供”**等莫名其妙的幻觉文本，导致下游大模型逻辑彻底错乱！
 2. **开源零样本 TTS（CosyVoice 2 / Fish Speech / ChatTTS）的“长句吞字与情绪抽风”**：
-   - 基于自回归语言模型（AR Token）的开源 TTS 虽然音色自然，但在生成超过 60 字的复杂业务回复或连续朗读 18 位订单号时，存在一定概率的**跳字、重复结巴（Repeating Loop）或句末突然冒出奇怪笑声/电流喘息声**，在严肃金融/政务热线中属于严重生产事故。
+ - 基于自回归语言模型（AR Token）的开源 TTS 虽然音色自然，但在生成超过 60 字的复杂业务回复或连续朗读 18 位订单号时，存在一定概率的**跳字、重复结巴（Repeating Loop）或句末突然冒出奇怪笑声/电流喘息声**，在严肃金融/政务热线中属于严重生产事故。
 3. **缺乏工业级动态热词偏置（WFST / Custom Lexicon）**：
-   - 当企业新增 500 个新款商品名称或医生人名时，商业 STT（如 Azure Custom Speech / Phrase List）只需通过 API 传入短语列表即可在 **0ms 内生效提升识别率**；而开源模型往往需要重新构建解码图或做 LoRA 微调，迭代周期长。
+ - 当企业新增 500 个新款商品名称或医生人名时，商业 STT（如 Azure Custom Speech / Phrase List）只需通过 API 传入短语列表即可在 **0ms 内生效提升识别率**；而开源模型往往需要重新构建解码图或做 LoRA 微调，迭代周期长。
 4. **“如果客户因为内网合规要求，真的不能上公有云怎么办？”**
-   - **标准答案**：即便必须部署在客户自己的本地机房，也**首选官方预编译、经过工业级 INT8/FP16 量化与确定性防幻觉加固的 `Azure AI Speech Docker 容器`**（支持 STT、Neural TTS 与语言识别），而不是让业务团队从零手搓维护脆弱的开源 PyTorch 推理脚本！
+ - **标准答案**：即便必须部署在客户自己的本地机房，也**首选官方预编译、经过工业级 INT8/FP16 量化与确定性防幻觉加固的 `Azure AI Speech Docker 容器`**（支持 STT、Neural TTS 与语言识别），而不是让业务团队从零手搓维护脆弱的开源 PyTorch 推理脚本！
 
 ---
 
@@ -70,12 +70,12 @@
 越来越多零售品牌、银行财富中心与车企希望语音助手拥有**企业专属的品牌代言人声音（而非千篇一律的公版音色）**。架构师在设计声音克隆与数字人方案时，应遵循以下三大设计准则：
 
 1. **按业务场景选择“轻克隆（Instant Zero-Shot）”还是“精调克隆（Professional / CNV）”**：
-   - **快速营销活动 / 游戏角色 / 个人创作者（选 ElevenLabs Instant Clone / Azure Personal Voice）**：仅需 **10 秒～60 秒** 干净录音即可零样本克隆出音色，跨语种说十几国语言，上线仅需几分钟；
-   - **企业 7×24 主力客服热线 / 车载主语音助手（选 Azure Custom Neural Voice Pro / ElevenLabs PVC）**：录制发音人 **300～2,000 句** 覆盖疑问、安抚、数字播报等多情绪语料进行专属声学微调，确保在百万次高并发播报中**发音吐字 100% 稳定、零电音破音**。
+ - **快速营销活动 / 游戏角色 / 个人创作者（选 ElevenLabs Instant Clone / Azure Personal Voice）**：仅需 **10 秒～60 秒** 干净录音即可零样本克隆出音色，跨语种说十几国语言，上线仅需几分钟；
+ - **企业 7×24 主力客服热线 / 车载主语音助手（选 Azure Custom Neural Voice Pro / ElevenLabs PVC）**：录制发音人 **300～2,000 句** 覆盖疑问、安抚、数字播报等多情绪语料进行专属声学微调，确保在百万次高并发播报中**发音吐字 100% 稳定、零电音破音**。
 2. **强制开启“发音人活体授权录音 + 隐式声学水印（C2PA / Audio Watermarking）”**：
-   - 严禁使用未获明确书面与活体录音授权的公众人物或员工声音（防范肖像/声音权诉讼及欧盟 AI 法案合规风险）。**Azure Custom Neural Voice** 在模型训练前强制校验发音人现场朗读指定授权声明口令（Recorded Consent Statement），并在合成的每一帧音频中自动嵌入人耳不可闻的**高鲁棒性加密声学水印**，任何时候均可溯源鉴定该音频由企业官方 AI 生成。
+ - 严禁使用未获明确书面与活体录音授权的公众人物或员工声音（防范肖像/声音权诉讼及欧盟 AI 法案合规风险）。**Azure Custom Neural Voice** 在模型训练前强制校验发音人现场朗读指定授权声明口令（Recorded Consent Statement），并在合成的每一帧音频中自动嵌入人耳不可闻的**高鲁棒性加密声学水印**，任何时候均可溯源鉴定该音频由企业官方 AI 生成。
 3. **建立“主克隆音色 + 同声线标准底座音色”毫秒级熔断降级机制**：
-   - 定制克隆音色模型通常运行在专属计算端点上。在生产架构中，务必配置 **300ms 首包超时降级策略**：一旦专属克隆端点遇到网络抖动或突发过载，网关自动无缝切回音色相近的内置高并发底座音色（如 `DragonHDFlash`），确保客户电话永不掉链子。
+ - 定制克隆音色模型通常运行在专属计算端点上。在生产架构中，务必配置 **300ms 首包超时降级策略**：一旦专属克隆端点遇到网络抖动或突发过载，网关自动无缝切回音色相近的内置高并发底座音色（如 `DragonHDFlash`），确保客户电话永不掉链子。
 
 ---
 
@@ -85,20 +85,20 @@
 
 ```mermaid
 flowchart TD
-    Start(["🎯 企业语音识别 (STT) / 合成 (TTS) / 克隆选型启动"]) --> Q1{"1. 部署环境是否存在严格内网隔离:<br/>要求语音不出本地机房或断网运行?"}
-    
-    Q1 -- "是 (本地专网 / 气隙隔离机房)" --> Q1_Sub{"团队是否有专职语音推理研发<br/>且仅做非实时离线批处理?"}
-    Q1_Sub -- "是 (离线录音批处理 + 自有空闲 GPU)" --> ChoiceOS_Batch["📦 选型 D1：开源 Whisper-v3-turbo 离线批处理集群<br/>优势：24小时跑满空闲 GPU，批量转写零 API 账单"]
-    Q1_Sub -- "否 (实时电话/坐席交互，要求工业级稳定)" --> ChoiceAz_Cont["🏆 选型 A1：Azure AI Speech 本地 Docker 容器<br/>(支持联网计量或 Disconnected 完全离线容器)<br/>优势：CPU/GPU 混合量化、零静音幻觉、官方 SLA 保障"]
-    
-    Q1 -- "否 (公有云 / VNet 私网专线接入)" --> Q2{"2. 业务核心诉求是“多语种/方言+高确定性客服”<br/>还是“欧美戏剧化情感配音”?"}
-    
-    Q2 -- "欧美英语情感陪伴 / 游戏 NPC / 互动故事<br/>追求极致气声与 10秒极速克隆" --> ChoiceEleven["🎭 选型 B：ElevenLabs (Flash v2.5 / v4) 或 Cartesia Sonic-2<br/>搭配 Deepgram Nova-3 / Scribe STT<br/>优势：75~90ms 合成首包，戏剧化情绪表现力极强"]
-    
-    Q2 -- "企业级严肃客服 / 亚太与全球多语种 /<br/>中英粤混说 / 原声同传 / 数字人" --> Q3{"3. 是否需要同传或数字人多模态扩展?"}
-    
-    Q3 -- "纯北美英语高吞吐低成本电话外呼" --> ChoiceDG["⚡ 选型 C：Deepgram Nova-3 STT + Aura-2 TTS<br/>优势：美式英语流式极快，在线 Keyterm 热词简便"]
-    Q3 -- "全渠道客服 + 品牌定制音色 (CNV) +<br/>跨国原声同传 / 2D&3D 数字人" --> ChoiceAz_Cloud["🏆 选型 A2：Azure AI Speech 全家桶<br/>(MAI-Transcribe / Fast STT + DragonHDFlash 4.34 MOS + Live Avatar)<br/>优势：140+ 语种、上万热词偏置、完整 SSML、直抵 MACC"]
+ Start(["🎯 企业语音识别 (STT) / 合成 (TTS) / 克隆选型启动"]) --> Q1{"1. 部署环境是否存在严格内网隔离:<br/>要求语音不出本地机房或断网运行?"}
+ 
+ Q1 -- "是 (本地专网 / 气隙隔离机房)" --> Q1_Sub{"团队是否有专职语音推理研发<br/>且仅做非实时离线批处理?"}
+ Q1_Sub -- "是 (离线录音批处理 + 自有空闲 GPU)" --> ChoiceOS_Batch["📦 选型 D1：开源 Whisper-v3-turbo 离线批处理集群<br/>优势：24小时跑满空闲 GPU，批量转写零 API 账单"]
+ Q1_Sub -- "否 (实时电话/坐席交互，要求工业级稳定)" --> ChoiceAz_Cont["🏆 选型 A1：Azure AI Speech 本地 Docker 容器<br/>(支持联网计量或 Disconnected 完全离线容器)<br/>优势：CPU/GPU 混合量化、零静音幻觉、官方 SLA 保障"]
+ 
+ Q1 -- "否 (公有云 / VNet 私网专线接入)" --> Q2{"2. 业务核心诉求是“多语种/方言+高确定性客服”<br/>还是“欧美戏剧化情感配音”?"}
+ 
+ Q2 -- "欧美英语情感陪伴 / 游戏 NPC / 互动故事<br/>追求极致气声与 10秒极速克隆" --> ChoiceEleven["🎭 选型 B：ElevenLabs (Flash v2.5 / v4) 或 Cartesia Sonic-2<br/>搭配 Deepgram Nova-3 / Scribe STT<br/>优势：75~90ms 合成首包，戏剧化情绪表现力极强"]
+ 
+ Q2 -- "企业级严肃客服 / 亚太与全球多语种 /<br/>中英粤混说 / 原声同传 / 数字人" --> Q3{"3. 是否需要同传或数字人多模态扩展?"}
+ 
+ Q3 -- "纯北美英语高吞吐低成本电话外呼" --> ChoiceDG["⚡ 选型 C：Deepgram Nova-3 STT + Aura-2 TTS<br/>优势：美式英语流式极快，在线 Keyterm 热词简便"]
+ Q3 -- "全渠道客服 + 品牌定制音色 (CNV) +<br/>跨国原声同传 / 2D&3D 数字人" --> ChoiceAz_Cloud["🏆 选型 A2：Azure AI Speech 全家桶<br/>(MAI-Transcribe / Fast STT + DragonHDFlash 4.34 MOS + Live Avatar)<br/>优势：140+ 语种、上万热词偏置、完整 SSML、直抵 MACC"]
 ```
 
 ---
@@ -107,29 +107,29 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph CampA["🏆 阵营 A：Azure AI Speech 企业全栈底座 (全语种 + 合规容器 + 同传数字人)"]
-        direction TB
-        A_STT["🎤 识别层：Realtime / Fast STT + MAI-Transcribe-1<br/>• 140+ 语种与方言 · 句内中英粤混说<br/>• Custom Speech 万级专属热词与声学定制"]
-        A_TTS["🔊 合成与克隆：DragonHDFlash (4.34 MOS) + CNV<br/>• 155ms 流式首包 · 完整 W3C SSML 多音字/币种锁<br/>• 发音人活体授权核验 + 内置 C2PA 隐藏声学水印"]
-        A_Multi["🌐 特色扩展：Live Interpreter (原声保留同传)<br/>+ Live Avatar (WebRTC 实时数字人) + 本地断网容器"]
-        A_STT --> A_TTS --> A_Multi
-    end
+ subgraph CampA["🏆 阵营 A：Azure AI Speech 企业全栈底座 (全语种 + 合规容器 + 同传数字人)"]
+ direction TB
+ A_STT["🎤 识别层：Realtime / Fast STT + MAI-Transcribe-1<br/>• 140+ 语种与方言 · 句内中英粤混说<br/>• Custom Speech 万级专属热词与声学定制"]
+ A_TTS["🔊 合成与克隆：DragonHDFlash (4.34 MOS) + CNV<br/>• 155ms 流式首包 · 完整 W3C SSML 多音字/币种锁<br/>• 发音人活体授权核验 + 内置 C2PA 隐藏声学水印"]
+ A_Multi["🌐 特色扩展：Live Interpreter (原声保留同传)<br/>+ Live Avatar (WebRTC 实时数字人) + 本地断网容器"]
+ A_STT --> A_TTS --> A_Multi
+ end
 
-    subgraph CampBC["🎭 阵营 B & C：ElevenLabs / Cartesia / Deepgram (专项极致体验派)"]
-        direction TB
-        B_STT["🎤 识别层：Deepgram Nova-3 / ElevenLabs Scribe<br/>• 英文 <180ms 极速流式转写<br/>• 在线 Keyterm 关键词提权 (上限约 100 词)"]
-        B_TTS["🔊 合成与克隆：ElevenLabs Flash v2.5 / Cartesia Sonic-2<br/>• 75ms~90ms 模型首包推理<br/>• 呼吸感、笑声与欧美戏剧化情感克隆标杆"]
-        B_Limit["⚠️ 企业边界：纯公有云 SaaS 无离线容器；<br/>高并发长通话账单较高；中文多音字细粒度控制较弱"]
-        B_STT --> B_TTS --> B_Limit
-    end
+ subgraph CampBC["🎭 阵营 B & C：ElevenLabs / Cartesia / Deepgram (专项极致体验派)"]
+ direction TB
+ B_STT["🎤 识别层：Deepgram Nova-3 / ElevenLabs Scribe<br/>• 英文 <180ms 极速流式转写<br/>• 在线 Keyterm 关键词提权 (上限约 100 词)"]
+ B_TTS["🔊 合成与克隆：ElevenLabs Flash v2.5 / Cartesia Sonic-2<br/>• 75ms~90ms 模型首包推理<br/>• 呼吸感、笑声与欧美戏剧化情感克隆标杆"]
+ B_Limit["⚠️ 企业边界：纯公有云 SaaS 无离线容器；<br/>高并发长通话账单较高；中文多音字细粒度控制较弱"]
+ B_STT --> B_TTS --> B_Limit
+ end
 
-    subgraph CampD["🔧 阵营 D：开源 GPU 自托管 (Whisper-v3-turbo + CosyVoice 2 / Fish Speech)"]
-        direction TB
-        D_STT["🎤 识别层：Faster-Whisper / SenseVoice<br/>• 权重开源免费，适合填满闲置 GPU 跑离线批处理<br/>• ⚠️ 实时流式改造易吞尾字或产生静音幻觉"]
-        D_TTS["🔊 合成层：CosyVoice 2 / Fish Speech 1.5<br/>• 零样本跨语种克隆效果好<br/>• ⚠️ AR 自回归长句偶发跳字/结巴，需自建版权防伪"]
-        D_Cost["💰 隐性成本：话务峰谷差 10 倍导致 GPU 80% 时间空转，<br/>加上专职推理运维人力，中小规模反比云 API 贵 2 倍"]
-        D_STT --> D_TTS --> D_Cost
-    end
+ subgraph CampD["🔧 阵营 D：开源 GPU 自托管 (Whisper-v3-turbo + CosyVoice 2 / Fish Speech)"]
+ direction TB
+ D_STT["🎤 识别层：Faster-Whisper / SenseVoice<br/>• 权重开源免费，适合填满闲置 GPU 跑离线批处理<br/>• ⚠️ 实时流式改造易吞尾字或产生静音幻觉"]
+ D_TTS["🔊 合成层：CosyVoice 2 / Fish Speech 1.5<br/>• 零样本跨语种克隆效果好<br/>• ⚠️ AR 自回归长句偶发跳字/结巴，需自建版权防伪"]
+ D_Cost["💰 隐性成本：话务峰谷差 10 倍导致 GPU 80% 时间空转，<br/>加上专职推理运维人力，中小规模反比云 API 贵 2 倍"]
+ D_STT --> D_TTS --> D_Cost
+ end
 ```
 
 ---
@@ -140,27 +140,27 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Caller as 👤 客户 (粤普英混说)
-    participant STT as 🎤 流式 STT 引擎<br/>(Azure Realtime STT + 热词表)
-    participant LLM as 🧠 业务大模型与护栏<br/>(Foundry LLM + SSML 格式化器)
-    participant TTS as 🔊 流式品牌音色 TTS<br/>(DragonHDFlash / CNV 专属音色)
+ autonumber
+ actor Caller as 👤 客户 (粤普英混说)
+ participant STT as 🎤 流式 STT 引擎<br/>(Azure Realtime STT + 热词表)
+ participant LLM as 🧠 业务大模型与护栏<br/>(Foundry LLM + SSML 格式化器)
+ participant TTS as 🔊 流式品牌音色 TTS<br/>(DragonHDFlash / CNV 专属音色)
 
-    Note over Caller,STT: 阶段 1：会话初始化时动态挂载租户专属热词表 (Custom Phrase List)
-    LLM->>STT: 注入当前业务热词偏置：["达格列净片", "阿托伐他汀", "瑞金卢湾分院", "SF-8829"]
-    Caller->>STT: 🗣️ 边说边传 20ms 音频帧："医生你好，我食紧嗰个达格列净片，想约瑞金卢湾分院复诊..."
-    STT-->>LLM: ⚡ 流式吐出 Partial Transcript (120ms 级增量更新，生僻药名与分院名 100% 精准命中)
+ Note over Caller,STT: 阶段 1：会话初始化时动态挂载租户专属热词表 (Custom Phrase List)
+ LLM->>STT: 注入当前业务热词偏置：["达格列净片", "阿托伐他汀", "瑞金卢湾分院", "SF-8829"]
+ Caller->>STT: 🗣️ 边说边传 20ms 音频帧："医生你好，我食紧嗰个达格列净片，想约瑞金卢湾分院复诊..."
+ STT-->>LLM: ⚡ 流式吐出 Partial Transcript (120ms 级增量更新，生僻药名与分院名 100% 精准命中)
 
-    Note over Caller,LLM: 阶段 2：句末语义判停触发 + 首句微切块流式生成 (First-Clause Chunking)
-    Caller->>STT: 🗣️ "...请问周四上午有号吗？" (句末降调，Semantic EOU 在 180ms 判定说完)
-    STT->>LLM: 提交 Final Transcript (耗时 180ms)
-    LLM->>LLM: 检索排班表 (耗时 160ms)，流式生成前 8 个词即切出第 1 个标点分句
+ Note over Caller,LLM: 阶段 2：句末语义判停触发 + 首句微切块流式生成 (First-Clause Chunking)
+ Caller->>STT: 🗣️ "...请问周四上午有号吗？" (句末降调，Semantic EOU 在 180ms 判定说完)
+ STT->>LLM: 提交 Final Transcript (耗时 180ms)
+ LLM->>LLM: 检索排班表 (耗时 160ms)，流式生成前 8 个词即切出第 1 个标点分句
 
-    Note over LLM,TTS: 阶段 3：SSML 多音字/数字锁定 + WebSocket 长连接首包流式合成 (155ms)
-    LLM->>TTS: 发送首分句 SSML："<speak><prosody rate='1.02'>有的，瑞金卢湾分院周四上午</prosody>..."
-    TTS-->>Caller: 🔊 155ms 内吐出首包 PCM 音频帧并注入隐藏声学水印 (总 TTFA = 180+160+155 = 495ms！)
-    LLM->>TTS: 持续流式推送后半句 SSML（含挂号费 <say-as interpret-as='currency'>¥50</say-as> 精确读音）
-    TTS-->>Caller: 🔊 音频帧无缝拼接播放，全程零卡顿、零多音字误读
+ Note over LLM,TTS: 阶段 3：SSML 多音字/数字锁定 + WebSocket 长连接首包流式合成 (155ms)
+ LLM->>TTS: 发送首分句 SSML："<speak><prosody rate='1.02'>有的，瑞金卢湾分院周四上午</prosody>..."
+ TTS-->>Caller: 🔊 155ms 内吐出首包 PCM 音频帧并注入隐藏声学水印 (总 TTFA = 180+160+155 = 495ms！)
+ LLM->>TTS: 持续流式推送后半句 SSML（含挂号费 <say-as interpret-as='currency'>¥50</say-as> 精确读音）
+ TTS-->>Caller: 🔊 音频帧无缝拼接播放，全程零卡顿、零多音字误读
 ```
 
 ---

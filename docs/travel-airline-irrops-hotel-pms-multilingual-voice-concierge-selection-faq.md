@@ -1,7 +1,7 @@
 # 航旅大面积航延退改签（AIR-IRROPS-01）与连锁酒店多语种礼宾（HOSP-PMS-01）实时语音架构设计与选型 FAQ：台风万路洪峰弹性溢出、EU261/DOT 确定性算费锁与跨房隐私防刺探指南
 
-> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.en.md`)](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.en.md)**  
-> 🔗 **关联专题 (Related Deep Dives)**: [高危字母数字串（PNR/票号）复诵消歧 (`voice-alphanumeric-disambiguation-faq.md`)](./voice-alphanumeric-disambiguation-faq.md) · [长通话裁剪与 PTU/PAYGO 弹性容量 FinOps (`voice-finops-audio-context-pruning-ptu-faq.md`)](./voice-finops-audio-context-pruning-ptu-faq.md) · [PCI 支付采集旁路与范围界定 (`voice-pci-dtmf-scope-faq.md`)](./voice-pci-dtmf-scope-faq.md) · [20 大高价值业务场景 (`business-scenarios.md`)](./business-scenarios.md) · [返回首页 (`README.md`)](../README.md)
+> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.en.md`)](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.en.md)** 
+> 🔗 **关联专题 (Related Deep Dives)**: [高危字母数字串（PNR/票号）复诵消歧 (`enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.md`)](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.md) · [长通话裁剪与 PTU/PAYGO 弹性容量 FinOps (`enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.md`)](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.md) · [PCI 支付采集旁路与范围界定 (`voice-pci-dtmf-scope-faq.md`)](./voice-pci-dtmf-scope-faq.md) · [20 大高价值业务场景 (`business-scenarios.md`)](./business-scenarios.md) · [返回首页 (`README.md`)](../README.md)
 
 ![Travel Airline IRROPS Disruption & Hotel PMS Multilingual Voice Concierge Visual Summary](../assets/svg/travel-airline-irrops-hotel-pms-multilingual-voice-concierge.svg)
 
@@ -12,13 +12,13 @@
 在跨国航空公司、在线旅游平台（OTA）、全球连锁酒店集团与邮轮度假村的客户服务体系中，实时语音智能体正解决两个长期让行业CIO和运营副总裁彻夜难眠的痛点：一是 **“台风/暴雪大面积航班延误（IRROPS）时，10 分钟内涌入 30,000 通改签电话把人工呼叫中心彻底打崩”**；二是 **“高星级酒店面对日、韩、阿、俄、法等 60+ 国入境外宾时，夜班前台根本招不到小语种礼宾员，且电话里极易发生住客隐私泄露或乱挂房账纠纷”**。**Cloud & AI 解决方案架构师** 应围绕以下 **三大行业架构铁律** 进行方案选型：
 
 1. **场景 A：航司大面积不正常航班退改签（`AIR-IRROPS-01`）—— 首选 `Azure ACS + Voice Live 双轨 + Erlang-C (54% PTU + 46% PAYGO 洪峰溢出) + 确定性赔偿/联程保护锁` 🏆**
-   - **为什么不能让大模型自己算退改签费用（某国际航司败诉血泪教训）**：曾有著名国际航司因为聊天机器人自己根据政策文本“瞎编”了一条事后丧亲退差价规则，被法院判令航司必须按机器人说的话全额赔付！因此，在航司语音架构中必须严格执行 **“算播物理分离（Compute-Speak Separation）”**——所有 **欧盟 `EU261` 延误赔偿（`€250/€400/€600`）、美国 `DOT` 24 小时现金退票（`P87`）、舱位差价以及国际联程航段（Interline Segment）耦合保护**，100% 由后端确定性代码函数算出精确数字，大模型只负责用共情温和的语气播报并同步推送手机选座卡片，实现 **台风夜 `86%` 旅客零等待自助改签**！
+ - **为什么不能让大模型自己算退改签费用（某国际航司败诉血泪教训）**：曾有著名国际航司因为聊天机器人自己根据政策文本“瞎编”了一条事后丧亲退差价规则，被法院判令航司必须按机器人说的话全额赔付！因此，在航司语音架构中必须严格执行 **“算播物理分离（Compute-Speak Separation）”**——所有 **欧盟 `EU261` 延误赔偿（`€250/€400/€600`）、美国 `DOT` 24 小时现金退票（`P87`）、舱位差价以及国际联程航段（Interline Segment）耦合保护**，100% 由后端确定性代码函数算出精确数字，大模型只负责用共情温和的语气播报并同步推送手机选座卡片，实现 **台风夜 `86%` 旅客零等待自助改签**！
 2. **场景 B：全球连锁酒店 60+ 语种总机与客房分机礼宾（`HOSP-PMS-01`）—— 首选 `SIP PBX 分机绑定 + Azure Voice Live / Speech Continuous LID + Opera PMS 隐私与挂账 PIN 码锁`**
-   - **核心痛点破局**：
-     - **跨房隐私防社工刺探锁**：当外线电话（如狗仔队、商业间谍或愤怒前任）打进酒店总机问“请问张伟先生住几号房？帮我接过去”，或者 `802` 房间住客用内线分机试图查询/修改 `805` 房间的账单时，策略引擎在 **`0ms` 内基于主叫分机号（`CallerExtension`）物理阻断跨房查询**，严格保护住客行踪隐私；
-     - **免费送物 vs 付费挂账分级门禁**：客房内线叫“送两瓶免费矿泉水、两条浴巾”直接自动下发工单派送物机器人上楼；一旦涉及“点一瓶 1,800 元红酒或预约 SPA 挂入房账（Folio Charge）”，强制核验 **住客登记姓氏 + 入住设定 4 位 PIN 码**，杜绝同房访客或儿童乱点高价商品拒付扯皮！
+ - **核心痛点破局**：
+ - **跨房隐私防社工刺探锁**：当外线电话（如狗仔队、商业间谍或愤怒前任）打进酒店总机问“请问张伟先生住几号房？帮我接过去”，或者 `802` 房间住客用内线分机试图查询/修改 `805` 房间的账单时，策略引擎在 **`0ms` 内基于主叫分机号（`CallerExtension`）物理阻断跨房查询**，严格保护住客行踪隐私；
+ - **免费送物 vs 付费挂账分级门禁**：客房内线叫“送两瓶免费矿泉水、两条浴巾”直接自动下发工单派送物机器人上楼；一旦涉及“点一瓶 1,800 元红酒或预约 SPA 挂入房账（Folio Charge）”，强制核验 **住客登记姓氏 + 入住设定 4 位 PIN 码**，杜绝同房访客或儿童乱点高价商品拒付扯皮！
 3. **场景 C：机票/酒店电话授信担保与补差价支付 —— 强制选 `P16 北约航空字母复诵锁 + P11/P68 边缘 RFC 4733 按键 PCI 零接触旁路`**
-   - 针对航空 6 位订座记录编号（PNR，如 `B8N9DP`）在电话窄带下极易把 `B/D/P`、`M/N` 听错的顽疾，自动启用 **北约航空字母复诵（`Bravo - Eight - November...`）**；在收取改签差价或酒店预订担保信用卡时，自动切入边缘按键旁路直通支付网关（Adyen / Stripe / 银联），确保大模型 `0 字节` 接触持卡人敏感数据。
+ - 针对航空 6 位订座记录编号（PNR，如 `B8N9DP`）在电话窄带下极易把 `B/D/P`、`M/N` 听错的顽疾，自动启用 **北约航空字母复诵（`Bravo - Eight - November...`）**；在收取改签差价或酒店预订担保信用卡时，自动切入边缘按键旁路直通支付网关（Adyen / Stripe / 银联），确保大模型 `0 字节` 接触持卡人敏感数据。
 
 ---
 
@@ -26,7 +26,7 @@
 
 ### Q1：航司平时呼叫中心只有 150 路并发，但一旦夏天遇到超强台风或冬天大暴雪，15 分钟内会有 5,000 名滞留机场的旅客同时拨打客服热线！如果平时按 5,000 路并发买预留算力太浪费，按需买又怕台风天被限流（429 Too Many Requests），架构师怎么设计弹性容量？
 
-#### 1. 算清航司“平时静如水、台风猛如虎”的 Erlang-C 容量经济学（`P07 / P742`）
+#### 1. 算清航司“平时静如水、台风猛如虎”的 Erlang-C 容量经济学（`P07 / `）
 
 航空、铁路与电网行业的话务曲线与普通零售完全不同——它具有极端的 **突发灾害脉冲特性（10倍～30倍瞬时洪峰）**。
 - 如果你为全年只有 15 天的台风/雷暴天气常年购买 5,000 路 **PTU（Provisioned Throughput Units，包月预留吞吐量）**，平时 350 天算力全部闲置，财务总监绝对不会批；
@@ -35,31 +35,31 @@
 #### 2. 架构师“三明治弹性溢出与降级架构（3-Tier Elastic Surge Architecture）”
 
 1. **第一层（日常基荷 `54%` 黄金分割线 ➔ 部署包月 PTU）**：
-   - 根据本仓库 `P742` Erlang-C 精算模型，将日常稳态峰值（如 150 路并发）配置在同区域 **Azure AI Foundry PTU 预留算力** 上，保障日常贵宾热线 `< 310ms` 的极致低延迟与可预测折扣成本。
+ - 根据本仓库 确定性护栏 Erlang-C 精算模型，将日常稳态峰值（如 150 路并发）配置在同区域 **Azure AI Foundry PTU 预留算力** 上，保障日常贵宾热线 `< 310ms` 的极致低延迟与可预测折扣成本。
 2. **第二层（台风突发 `1x ~ 15x` 洪峰 ➔ 跨区域 PAYGO 负载均衡溢出池）**：
-   - 当监控到机场大面积航延预警或 PTU 利用率超过 **`85%`** 时，语音编排网关在 `0ms` 内自动开启跨区域溢出路由（例如：主用 `East Asia / Southeast Asia`，自动按权重溢出至 `Japan East / Australia East / East US 2` 的 PAYGO 资源池）。
+ - 当监控到机场大面积航延预警或 PTU 利用率超过 **`85%`** 时，语音编排网关在 `0ms` 内自动开启跨区域溢出路由（例如：主用 `East Asia / Southeast Asia`，自动按权重溢出至 `Japan East / Australia East / East US 2` 的 PAYGO 资源池）。
 3. **第三层（极端 `> 15x` 超级洪峰 ➔ 自动切入“混合语义 VAD + 手机自助改签卡片”极速分流模式）**：
-   - 在万路并发最高峰期，自动将非白金卡普通旅客的语音通道从重度 `GPT-Live-1` 切换为极速轻量的 **通道 ③ `Phi4-mm-realtime` / 级联通道**，并在接通前 **15 秒内** 直接识别旅客诉求，一键向其手机发送带签名的 **自助改签/电子餐券/延误证明微信小程序卡片**（将单通电话占线时长从 4 分钟压缩至 **35 秒**，使单路通道每小时服务旅客人数翻 **6 倍**！）。
+ - 在万路并发最高峰期，自动将非白金卡普通旅客的语音通道从重度 `GPT-Live-1` 切换为极速轻量的 **通道 ③ `Phi4-mm-realtime` / 级联通道**，并在接通前 **15 秒内** 直接识别旅客诉求，一键向其手机发送带签名的 **自助改签/电子餐券/延误证明微信小程序卡片**（将单通电话占线时长从 4 分钟压缩至 **35 秒**，使单路通道每小时服务旅客人数翻 **6 倍**！）。
 
 ---
 
 ### Q2：为什么航司改签机器人千万不能“只改单程”或“把头等舱旅客悄悄降级到经济舱”？架构师如何在工具层锁死《航空退改签四大业务铁律（`AIR-IRROPS-01`）》？
 
-如果不懂航空业务规则的程序员直接把 GDS 的 `rebook_segment()` 接口暴露给大模型，上线第一天就会酿成四大运营灾难。我们在 `packages/business-core/enterprise-guardrails.ts` 的 `AIR-IRROPS-01` 护栏中将以下 **四条航空铁律** 固化为了不可绕过的确定性代码：
+如果不懂航空业务规则的程序员直接把 GDS 的 `rebook_segment` 接口暴露给大模型，上线第一天就会酿成四大运营灾难。我们在 `packages/business-core/enterprise-guardrails.ts` 的 `AIR-IRROPS-01` 护栏中将以下 **四条航空铁律** 固化为了不可绕过的确定性代码：
 
 1. **铁律一：联程航段完整性保护锁（Interline & Connecting Flight Integrity Lock）**
-   - **痛点**：旅客买的是“上海 ➔ 东京转机 ➔ 旧金山”的联程机票。第一段上海飞东京延误了 4 小时，如果大模型只调用接口把第一段改到了明天，却没同步改第二段东京飞旧金山，会导致旅客到了东京发现后半程机票已经因 `No-Show（未登机）` 作废！
-   - **代码锁**：当检测到客票包含 `>= 2` 个关联航段（Conjunction Ticket / Interline PNR）时，严禁单航段独立改签提交！工具函数强制要求传入全链路连贯航段组合并校验中转最短衔接时间（**MCT, Minimum Connecting Time `>= 90 mins`**）。
+ - **痛点**：旅客买的是“上海 ➔ 东京转机 ➔ 旧金山”的联程机票。第一段上海飞东京延误了 4 小时，如果大模型只调用接口把第一段改到了明天，却没同步改第二段东京飞旧金山，会导致旅客到了东京发现后半程机票已经因 `No-Show（未登机）` 作废！
+ - **代码锁**：当检测到客票包含 `>= 2` 个关联航段（Conjunction Ticket / Interline PNR）时，严禁单航段独立改签提交！工具函数强制要求传入全链路连贯航段组合并校验中转最短衔接时间（**MCT, Minimum Connecting Time `>= 90 mins`**）。
 2. **铁律二：两舱/贵宾旅客隐性降舱拦截锁（VIP Cabin Downgrade Block）**
-   - **痛点**：公务舱（Business Class）旅客要求改签下一班，下一班公务舱满了只剩经济舱。如果 AI 未明确告知降舱退差价规则就直接把公务舱旅客改到了经济舱中间座位，旅客到登机口当场大闹！
-   - **代码锁**：一旦目标航班同等级舱位余票为 `0`（触发 `CabinDowngrade`），策略层 **`0ms` 阻断自动出票**，必须明确口头告知差价补偿标准或直接热转接两舱贵宾专席人工处理。
+ - **痛点**：公务舱（Business Class）旅客要求改签下一班，下一班公务舱满了只剩经济舱。如果 AI 未明确告知降舱退差价规则就直接把公务舱旅客改到了经济舱中间座位，旅客到登机口当场大闹！
+ - **代码锁**：一旦目标航班同等级舱位余票为 `0`（触发 `CabinDowngrade`），策略层 **`0ms` 阻断自动出票**，必须明确口头告知差价补偿标准或直接热转接两舱贵宾专席人工处理。
 3. **铁律三：`EU261 / US DOT` 法定赔偿确定性计算器（Zero-Hallucination Compensation Calculator，`P87`）**
-   - **代码锁**：大模型严禁自己口算延误赔偿！必须调用确定性函数 `calculateStatutoryCompensation(origin, dest, delayHours, cause)`：
-     - 若原因为 `台风/空管（Extraordinary Circumstances）` ➔ 返回 `现金赔偿: €0，免费改签+餐饮住宿保障: 是`；
-     - 若原因为 `航司机械故障/机组调配` 且欧盟航线延误 `>= 4h (>3500km)` ➔ 精确返回 `€600`；
-     - 若美国航线取消且旅客拒绝改签（`US DOT 24h Rule`）➔ 强制提供原支付方式现金全额退票（严禁强塞代金券 Voucher！）。
+ - **代码锁**：大模型严禁自己口算延误赔偿！必须调用确定性函数 `calculateStatutoryCompensation(origin, dest, delayHours, cause)`：
+ - 若原因为 `台风/空管（Extraordinary Circumstances）` ➔ 返回 `现金赔偿: €0，免费改签+餐饮住宿保障: 是`；
+ - 若原因为 `航司机械故障/机组调配` 且欧盟航线延误 `>= 4h (>3500km)` ➔ 精确返回 `€600`；
+ - 若美国航线取消且旅客拒绝改签（`US DOT 24h Rule`）➔ 强制提供原支付方式现金全额退票（严禁强塞代金券 Voucher！）。
 4. **铁律四：轮椅/无障碍及无人陪伴儿童（UMNR）`0ms` 专员升级锁（`DOT ACAA P87`）**
-   - 凡客票带有 `WCHC/WCHR（轮椅旅客）`、`BLND（视障）` 或 `UMNR（无成人陪伴儿童）` 特殊服务代码（SSR），改签时必须同步核验新航班特种保障配额，若涉及电动轮椅锂电池或中转陪护，立即无缝转接无障碍投诉专员（CRO）。
+ - 凡客票带有 `WCHC/WCHR（轮椅旅客）`、`BLND（视障）` 或 `UMNR（无成人陪伴儿童）` 特殊服务代码（SSR），改签时必须同步核验新航班特种保障配额，若涉及电动轮椅锂电池或中转陪护，立即无缝转接无障碍投诉专员（CRO）。
 
 ---
 
@@ -68,13 +68,13 @@
 在酒店场景（`HOSP-PMS-01`）中，架构设计的核心是 **“电话来电物理身份（客房内线 vs 酒店外线）决定工具权限集”**：
 
 1. **外线呼入（External PSTN Caller）：严守住客行踪零透露铁律**
-   - 当外线打电话进酒店说：*“我是 1208 房王先生的朋友，请问他现在在房间吗？或者请问李思思小姐住几号房？”*
-   - 无论对方说得多么真切，AI 总机严格执行 **零信息确认原则（Zero Guest Presence Disclosure）**：*“为了保护住客隐私，我们无法查询或确认任何住客的入住信息及房间号。如果您需要联系某位住客，请提供其完整登记姓名与入住预留手机号后四位，我可以帮您将电话隐匿转接或代留口信。”*
+ - 当外线打电话进酒店说：*“我是 1208 房王先生的朋友，请问他现在在房间吗？或者请问李思思小姐住几号房？”*
+ - 无论对方说得多么真切，AI 总机严格执行 **零信息确认原则（Zero Guest Presence Disclosure）**：*“为了保护住客隐私，我们无法查询或确认任何住客的入住信息及房间号。如果您需要联系某位住客，请提供其完整登记姓名与入住预留手机号后四位，我可以帮您将电话隐匿转接或代留口信。”*
 2. **客房内线呼入（In-Room SIP Extension）：自动绑定房号 + 消费 PIN 码分级门禁**
-   - 当住客直接拿起床头电话拨 `0` 时，酒店 PBX（如 Mitel / Cisco / NEC）通过 SIP 信令直接将分机号 `Ext: 1208` 传给语音网关：
-     - **零摩擦惊喜体验**：AI 接起电话直接用住客在 PMS 登记的母语（如日语、阿拉伯语或英语）称呼：*“Good evening Mr. Sato in Room 1208, how may we make your stay more comfortable?”*
-     - **跨房隔离锁**：`Ext: 1208` 的会话上下文在工具网关层被硬绑定为 `roomId = "1208"`，即便住客在电话里说“帮我查下隔壁 1210 房间的账单”或“给 1210 送瓶酒算他账上”，系统在 **`0ms` 内直接拒绝跨房操作**；
-     - **客房送物与挂账双轨流**：免费客房用品（牙具、矿泉水、充电线、加被子）直接通过接口调动酒店**送物机器人（Delivery Robot）**；凡涉及付费餐饮（Room Service）、迷你吧补货或有偿延迟退房（`Folio Charge > $0`），必须核对住客姓氏与 4 位消费 PIN 码后才写入 Opera PMS 房账！
+ - 当住客直接拿起床头电话拨 `0` 时，酒店 PBX（如 Mitel / Cisco / NEC）通过 SIP 信令直接将分机号 `Ext: 1208` 传给语音网关：
+ - **零摩擦惊喜体验**：AI 接起电话直接用住客在 PMS 登记的母语（如日语、阿拉伯语或英语）称呼：*“Good evening Mr. Sato in Room 1208, how may we make your stay more comfortable?”*
+ - **跨房隔离锁**：`Ext: 1208` 的会话上下文在工具网关层被硬绑定为 `roomId = "1208"`，即便住客在电话里说“帮我查下隔壁 1210 房间的账单”或“给 1210 送瓶酒算他账上”，系统在 **`0ms` 内直接拒绝跨房操作**；
+ - **客房送物与挂账双轨流**：免费客房用品（牙具、矿泉水、充电线、加被子）直接通过接口调动酒店**送物机器人（Delivery Robot）**；凡涉及付费餐饮（Room Service）、迷你吧补货或有偿延迟退房（`Folio Charge > $0`），必须核对住客姓氏与 4 位消费 PIN 码后才写入 Opera PMS 房账！
 
 ---
 
@@ -84,16 +84,16 @@
 
 ```mermaid
 flowchart TD
-    Start(["🎯 航空 / 酒店 / OTA 实时语音项目立项"]) --> Q1{"1. 核心业务域是航空不正常航班 (IRROPS)<br/>还是酒店总机与客房礼宾 (PMS)?"}
-    
-    Q1 -- "跨国航司 / OTA 机票退改签热线<br/>(应对台风/暴雪 10~30倍突发话务洪峰)" --> Q1_Sub{"旅客客票是否包含联程航段、两舱降级<br/>或轮椅/无陪儿童 (SSR)?"}
-    Q1_Sub -- "标准单程/往返改签 (占 80%+)" --> ChoiceAirAuto["🏆 路线 A1：ACS + Voice Live + 54% PTU/PAYGO 弹性池 + 手机选座卡片<br/>配合确定性 EU261/DOT 算费函数，35秒完成零等待自助改签"]
-    Q1_Sub -- "跨航司联程断裂 / 两舱降级 / 轮椅旅客" --> ChoiceAirVIP["🛡️ 路线 A2：AIR-IRROPS-01 保护锁 0ms 拦截自动拆段/降舱<br/>生成完整替代方案草稿后 1.5s 带上下文热转接贵宾/CRO 专席"]
-    
-    Q1 -- "全球连锁酒店集团总机与客房内线礼宾<br/>(HOSP-PMS-01 · 60+ 语种入境游接待)" --> Q2{"2. 电话是从【酒店外线】打入还是【客房内线分机】拨出?"}
-    
-    Q2 -- "外线呼入 (订房 / 询问住客 / 宴会咨询)" --> ChoiceHotelExt["🔒 路线 B1：Continuous LID 60+语种接待 + 住客行踪零透露隐私锁<br/>订房担保采集自动切入 P11/P68 边缘 RFC 4733 按键 PCI 零接触通道"]
-    Q2 -- "客房内线分机 (送物 / 客房送餐 / 查账退房)" --> ChoiceHotelRoom["🛎️ 路线 B2：SIP 分机号硬绑定本房 ID + 免费送物直通机器人<br/>+ 付费挂房账 (Folio > $0) 强制姓氏与 4位 PIN 码核验锁"]
+ Start(["🎯 航空 / 酒店 / OTA 实时语音项目立项"]) --> Q1{"1. 核心业务域是航空不正常航班 (IRROPS)<br/>还是酒店总机与客房礼宾 (PMS)?"}
+ 
+ Q1 -- "跨国航司 / OTA 机票退改签热线<br/>(应对台风/暴雪 10~30倍突发话务洪峰)" --> Q1_Sub{"旅客客票是否包含联程航段、两舱降级<br/>或轮椅/无陪儿童 (SSR)?"}
+ Q1_Sub -- "标准单程/往返改签 (占 80%+)" --> ChoiceAirAuto["🏆 路线 A1：ACS + Voice Live + 54% PTU/PAYGO 弹性池 + 手机选座卡片<br/>配合确定性 EU261/DOT 算费函数，35秒完成零等待自助改签"]
+ Q1_Sub -- "跨航司联程断裂 / 两舱降级 / 轮椅旅客" --> ChoiceAirVIP["🛡️ 路线 A2：AIR-IRROPS-01 保护锁 0ms 拦截自动拆段/降舱<br/>生成完整替代方案草稿后 1.5s 带上下文热转接贵宾/CRO 专席"]
+ 
+ Q1 -- "全球连锁酒店集团总机与客房内线礼宾<br/>(HOSP-PMS-01 · 60+ 语种入境游接待)" --> Q2{"2. 电话是从【酒店外线】打入还是【客房内线分机】拨出?"}
+ 
+ Q2 -- "外线呼入 (订房 / 询问住客 / 宴会咨询)" --> ChoiceHotelExt["🔒 路线 B1：Continuous LID 60+语种接待 + 住客行踪零透露隐私锁<br/>订房担保采集自动切入 P11/P68 边缘 RFC 4733 按键 PCI 零接触通道"]
+ Q2 -- "客房内线分机 (送物 / 客房送餐 / 查账退房)" --> ChoiceHotelRoom["🛎️ 路线 B2：SIP 分机号硬绑定本房 ID + 免费送物直通机器人<br/>+ 付费挂房账 (Folio > $0) 强制姓氏与 4位 PIN 码核验锁"]
 ```
 
 ---
@@ -102,29 +102,29 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph Ingress["🌐 1. 全球全渠道与分机识别接入层"]
-        direction TB
-        AirCall["✈️ 航延旅客呼入<br/>(PSTN / 航司 App)"]
-        HotelExt["🏨 酒店外线 & 客房 SIP 分机<br/>(自动提取 Room Ext + 60语种 LID)"]
-    end
+ subgraph Ingress["🌐 1. 全球全渠道与分机识别接入层"]
+ direction TB
+ AirCall["✈️ 航延旅客呼入<br/>(PSTN / 航司 App)"]
+ HotelExt["🏨 酒店外线 & 客房 SIP 分机<br/>(自动提取 Room Ext + 60语种 LID)"]
+ end
 
-    subgraph ElasticCore["⚡ 2. PTU+PAYGO 洪峰弹性与双轨语音编排层"]
-        direction TB
-        Autoscaler["📈 Erlang-C 弹性路由器 (P07)<br/>• 日常 54% 跑预留 PTU<br/>• 台风 >85% 溢出跨区 PAYGO"]
-        VoiceEngine["🎙️ Azure Voice Live + Speech<br/>• P16 北约航空字母 PNR 复诵<br/>• P11/P68 PCI 按键差价支付旁路"]
-        Autoscaler --> VoiceEngine
-    end
+ subgraph ElasticCore["⚡ 2. PTU+PAYGO 洪峰弹性与双轨语音编排层"]
+ direction TB
+ Autoscaler["📈 Erlang-C 弹性路由器 (P07)<br/>• 日常 54% 跑预留 PTU<br/>• 台风 >85% 溢出跨区 PAYGO"]
+ VoiceEngine["🎙️ Azure Voice Live + Speech<br/>• P16 北约航空字母 PNR 复诵<br/>• P11/P68 PCI 按键差价支付旁路"]
+ Autoscaler --> VoiceEngine
+ end
 
-    subgraph DomainGuard["🛡️ 3. 航旅与酒店确定性业务护栏层"]
-        direction TB
-        IrropsGuard["✈️ AIR-IRROPS-01 航司护栏<br/>• EU261/DOT 确定性代码算费<br/>• 联程 MCT>=90m 锁 & 禁擅自降舱"]
-        PmsGuard["🛎️ HOSP-PMS-01 酒店护栏<br/>• 跨房查单 0ms 物理阻断<br/>• 付费挂账 PIN 码锁 + 机器人派单"]
-    end
+ subgraph DomainGuard["🛡️ 3. 航旅与酒店确定性业务护栏层"]
+ direction TB
+ IrropsGuard["✈️ AIR-IRROPS-01 航司护栏<br/>• EU261/DOT 确定性代码算费<br/>• 联程 MCT>=90m 锁 & 禁擅自降舱"]
+ PmsGuard["🛎️ HOSP-PMS-01 酒店护栏<br/>• 跨房查单 0ms 物理阻断<br/>• 付费挂账 PIN 码锁 + 机器人派单"]
+ end
 
-    AirCall --> Autoscaler
-    HotelExt --> Autoscaler
-    VoiceEngine --> IrropsGuard
-    VoiceEngine --> PmsGuard
+ AirCall --> Autoscaler
+ HotelExt --> Autoscaler
+ VoiceEngine --> IrropsGuard
+ VoiceEngine --> PmsGuard
 ```
 
 ---
@@ -133,29 +133,29 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Traveler as 👤 旅客 / 酒店住客
-    participant Bot as 🎛️ Azure Voice Live 编排器<br/>(60+语种 + 北约复诵)
-    participant Guard as 🛡️ 航旅/酒店确定性护栏引擎<br/>(AIR-IRROPS-01 / HOSP-PMS-01)
-    participant System as 🏢 航司 GDS / 酒店 Opera PMS
+ autonumber
+ actor Traveler as 👤 旅客 / 酒店住客
+ participant Bot as 🎛️ Azure Voice Live 编排器<br/>(60+语种 + 北约复诵)
+ participant Guard as 🛡️ 航旅/酒店确定性护栏引擎<br/>(AIR-IRROPS-01 / HOSP-PMS-01)
+ participant System as 🏢 航司 GDS / 酒店 Opera PMS
 
-    Note over Traveler,System: 场景一 (航司航延 AIR-IRROPS-01)：台风取消航班 -> 确定性算费 + 联程航段完整性保护
-    Traveler->>Bot: 📞 拨入航司热线："我的航班 MU501 因台风取消了，订座编号是 B8D92X，你们得赔我 600 欧元并改到明天！"
-    Bot->>Traveler: 🔊 (北约字母消歧核对) "跟您确认一下订座编号：Bravo-8-Delta-9-2-X-Ray。正在为您核查联程航段与补偿规则..."
-    Bot->>Guard: 调用 evaluateAirlineIrrops(pnr="B8D92X", cause="TYPHOON", segments=2)
-    Note right of Guard: 1. 确定性算费：台风属不可抗力，EU261 现金赔偿=€0，但免收改签费并提供免费食宿券<br/>2. 联程保护：检测到后段衔接东京-旧金山，自动捆绑重排两段确保中转 MCT >= 120分钟！
-    Guard-->>Bot: 返回合法联程改签包 (明早 09:00 全程公务舱连贯方案 + 机场协议酒店电子券)
-    Bot->>Traveler: 🔊 "由于台风属于不可抗力天气原因，按法规无现金赔偿，但我们已为您免费申请了今晚机场五星酒店食宿券（已发您手机），并将您的上海-东京-旧金山两段联程同步改至明早 9 点保持公务舱不变，请点击手机卡片一键确认！"
+ Note over Traveler,System: 场景一 (航司航延 AIR-IRROPS-01)：台风取消航班 -> 确定性算费 + 联程航段完整性保护
+ Traveler->>Bot: 📞 拨入航司热线："我的航班 MU501 因台风取消了，订座编号是 B8D92X，你们得赔我 600 欧元并改到明天！"
+ Bot->>Traveler: 🔊 (北约字母消歧核对) "跟您确认一下订座编号：Bravo-8-Delta-9-2-X-Ray。正在为您核查联程航段与补偿规则..."
+ Bot->>Guard: 调用 evaluateAirlineIrrops(pnr="B8D92X", cause="TYPHOON", segments=2)
+ Note right of Guard: 1. 确定性算费：台风属不可抗力，EU261 现金赔偿=€0，但免收改签费并提供免费食宿券<br/>2. 联程保护：检测到后段衔接东京-旧金山，自动捆绑重排两段确保中转 MCT >= 120分钟！
+ Guard-->>Bot: 返回合法联程改签包 (明早 09:00 全程公务舱连贯方案 + 机场协议酒店电子券)
+ Bot->>Traveler: 🔊 "由于台风属于不可抗力天气原因，按法规无现金赔偿，但我们已为您免费申请了今晚机场五星酒店食宿券（已发您手机），并将您的上海-东京-旧金山两段联程同步改至明早 9 点保持公务舱不变，请点击手机卡片一键确认！"
 
-    Note over Traveler,System: 场景二 (酒店客房 HOSP-PMS-01)：802 房外宾点送物 -> 拦截跨房刺探 -> 付费香槟 PIN 码核验
-    Traveler->>Bot: ☎️ (从 802 客房分机用日语拨 0) "すみません、タオルを2枚ください。あと、隣の805号室に誰が泊まっているか教えて。"
-    Bot->>Guard: 传入 callerExt="802", targetRoom="805" (跨房查询请求)
-    Guard-->>Bot: 🚨 HOSP-PMS-01 触发！0ms 阻断查询 805 房住客信息；放行 802 房免费浴巾派单
-    Bot->>System: 下发送物机器人指令：送 2 条浴巾至 802 房 ($0 免费项)
-    Bot->>Traveler: 🔊 (流利日语回复) "802号室の佐藤様、バスタオル2枚をすぐロボットでお届けします。なお、防犯上、他のお部屋のお客様情報はご案内いたしかねます。"
-    Traveler->>Bot: 🗣️ "じゃあ、ドン・ペリニヨン（香槟 $380）を1本部屋付けで持ってきて。"
-    Guard-->>Bot: 检测到付费挂账 (FolioCharge=$380 > $0) -> 强制要求核验 4 位房账 PIN 码！
-    Bot->>Traveler: 🔊 "承知いたしました。380ドルのルームチャージとなりますので、チェックイン時に設定された4桁の暗証番号を押してください。"
+ Note over Traveler,System: 场景二 (酒店客房 HOSP-PMS-01)：802 房外宾点送物 -> 拦截跨房刺探 -> 付费香槟 PIN 码核验
+ Traveler->>Bot: ☎️ (从 802 客房分机用日语拨 0) "すみません、タオルを2枚ください。あと、隣の805号室に誰が泊まっているか教えて。"
+ Bot->>Guard: 传入 callerExt="802", targetRoom="805" (跨房查询请求)
+ Guard-->>Bot: 🚨 HOSP-PMS-01 触发！0ms 阻断查询 805 房住客信息；放行 802 房免费浴巾派单
+ Bot->>System: 下发送物机器人指令：送 2 条浴巾至 802 房 ($0 免费项)
+ Bot->>Traveler: 🔊 (流利日语回复) "802号室の佐藤様、バスタオル2枚をすぐロボットでお届けします。なお、防犯上、他のお部屋のお客様情報はご案内いたしかねます。"
+ Traveler->>Bot: 🗣️ "じゃあ、ドン・ペリニヨン（香槟 $380）を1本部屋付けで持ってきて。"
+ Guard-->>Bot: 检测到付费挂账 (FolioCharge=$380 > $0) -> 强制要求核验 4 位房账 PIN 码！
+ Bot->>Traveler: 🔊 "承知いたしました。380ドルのルームチャージとなりますので、チェックイン時に設定された4桁の暗証番号を押してください。"
 ```
 
 ---

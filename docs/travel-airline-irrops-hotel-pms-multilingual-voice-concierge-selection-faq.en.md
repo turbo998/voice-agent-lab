@@ -1,7 +1,7 @@
 # Travel, Airline IRROPS Disruption (`AIR-IRROPS-01`) & Global Hotel Multilingual Voice Concierge (`HOSP-PMS-01`) Architecture & Selection FAQ: Typhoon Surge Elasticity, Deterministic EU261/DOT Calculators & Cross-Room Privacy Gates
 
-> 🌐 **Language / 语言**: **[中文 (`travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.md`)](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.md)** | **English (Current)**  
-> 🔗 **Related Deep Dives**: [Alphanumeric PNR/Ticket Phonetic Readback (`voice-alphanumeric-disambiguation-faq.en.md`)](./voice-alphanumeric-disambiguation-faq.en.md) · [Audio Context Pruning & PTU/PAYGO Elastic FinOps (`voice-finops-audio-context-pruning-ptu-faq.en.md`)](./voice-finops-audio-context-pruning-ptu-faq.en.md) · [PCI Payment Capture Bypass & Scope Reduction (`voice-pci-dtmf-scope-faq.en.md`)](./voice-pci-dtmf-scope-faq.en.md) · [20 High-ROI Business Scenarios (`business-scenarios.en.md`)](./business-scenarios.en.md) · [Back to Home (`README.en.md`)](../README.en.md)
+> 🌐 **Language / 语言**: **[中文 (`travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.md`)](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.md)** | **English (Current)** 
+> 🔗 **Related Deep Dives**: [Alphanumeric PNR/Ticket Phonetic Readback (`enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.en.md`)](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.en.md) · [Audio Context Pruning & PTU/PAYGO Elastic FinOps (`enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.en.md`)](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.en.md) · [PCI Payment Capture Bypass & Scope Reduction (`voice-pci-dtmf-scope-faq.en.md`)](./voice-pci-dtmf-scope-faq.en.md) · [20 High-ROI Business Scenarios (`business-scenarios.en.md`)](./business-scenarios.en.md) · [Back to Home (`README.en.md`)](../README.en.md)
 
 ![Travel Airline IRROPS Disruption & Hotel PMS Multilingual Voice Concierge Visual Summary](../assets/svg/travel-airline-irrops-hotel-pms-multilingual-voice-concierge.svg)
 
@@ -12,14 +12,14 @@
 Across global airlines, Online Travel Agencies (OTAs), luxury hotel chains, and cruise lines, real-time voice AI addresses two operational nightmares: **1) Severe Weather / Typhoon Irregular Operations (`AIR-IRROPS-01`)**, where 30 canceled flights trigger 20,000 simultaneous rebooking calls that overwhelm human call centers with 2-hour hold times; and **2) 24/7 Multilingual Hotel Front-Desk & In-Room Concierge (`HOSP-PMS-01`)**, where properties struggle to staff night shifts fluent in 60+ international guest languages while preventing social-engineering room-number leaks and unauthorized folio charges. **Cloud & AI Solution Architects** should anchor travel and hospitality designs on **three deterministic pillars**:
 
 1. **Scenario A: Airline Mass Disruption Rebooking (`AIR-IRROPS-01`) — Choose `Azure ACS + Voice Live + Erlang-C (54% PTU Base + Cross-Region PAYGO Burst) + Deterministic EU261/DOT & Interline Guards` 🏆**:
-   - **Why LLMs Must Never Calculate Refund/Compensation Rules in Their Head**: After a high-profile legal tribunal held an airline financially liable because its chatbot invented a non-existent post-travel bereavement discount policy, the golden rule for airline AI is **Strict Compute-Speak Separation**:
-     - All **EU261 delay compensation (`€250/€400/€600`), US DOT 24-hour cash refund rules (`P87`), fare differences, and interline connecting-flight protection (`MCT >= 90 mins`)** are calculated 100% by deterministic backend functions (`evaluateAirlineIrropsGuard`);
-     - The Voice AI speaks the verified options empathetically while pushing a **mobile seat-map & hotel-voucher card in `< 400ms`**, deflecting **`86%` of typhoon surge calls** with **zero hold time**!
+ - **Why LLMs Must Never Calculate Refund/Compensation Rules in Their Head**: After a high-profile legal tribunal held an airline financially liable because its chatbot invented a non-existent post-travel bereavement discount policy, the golden rule for airline AI is **Strict Compute-Speak Separation**:
+ - All **EU261 delay compensation (`€250/€400/€600`), US DOT 24-hour cash refund rules (`P87`), fare differences, and interline connecting-flight protection (`MCT >= 90 mins`)** are calculated 100% by deterministic backend functions (`evaluateAirlineIrropsGuard`);
+ - The Voice AI speaks the verified options empathetically while pushing a **mobile seat-map & hotel-voucher card in `< 400ms`**, deflecting **`86%` of typhoon surge calls** with **zero hold time**!
 2. **Scenario B: Global Hotel 60+ Language Switchboard & In-Room Concierge (`HOSP-PMS-01`) — Choose `SIP Extension Binding + Azure Voice Live / Continuous LID + Opera PMS Cross-Room Privacy & Folio PIN Guards`**:
-   - **Cross-Room Privacy & Anti-Stalking Lock**: If an external caller (paparazzi, stalker, or scammer) asks *"What room is Mr. Zhang in?"* or if in-room extension `802` attempts to query or charge room `805`, the policy engine **blocks cross-room disclosure in `0ms`** based on hardware SIP extension binding;
-   - **Free Amenity vs. Paid Folio PIN Gate**: Requests for free towels, water, or pillows dispatch a delivery robot immediately; any paid room-service or spa charge (`Folio Charge > $0`) requires verifying the **registered guest's last name + 4-digit room PIN**.
+ - **Cross-Room Privacy & Anti-Stalking Lock**: If an external caller (paparazzi, stalker, or scammer) asks *"What room is Mr. Zhang in?"* or if in-room extension `802` attempts to query or charge room `805`, the policy engine **blocks cross-room disclosure in `0ms`** based on hardware SIP extension binding;
+ - **Free Amenity vs. Paid Folio PIN Gate**: Requests for free towels, water, or pillows dispatch a delivery robot immediately; any paid room-service or spa charge (`Folio Charge > $0`) requires verifying the **registered guest's last name + 4-digit room PIN**.
 3. **Scenario C: Air/Hotel Booking & Fare-Difference Payment — Mandate `P16 NATO Phonetic PNR Readback + P11/P68 Edge RFC 4733 DTMF PCI Bypass`**:
-   - Resolves 6-character alphanumeric PNR codes (`B8D92X`) over noisy phone lines via **NATO phonetic readback (`Bravo-8-Delta...`)** and routes credit card deposits/upcharges through edge `RFC 4733` DTMF tokenization so `0 bytes` of cardholder data ever touch the LLM.
+ - Resolves 6-character alphanumeric PNR codes (`B8D92X`) over noisy phone lines via **NATO phonetic readback (`Bravo-8-Delta...`)** and routes credit card deposits/upcharges through edge `RFC 4733` DTMF tokenization so `0 bytes` of cardholder data ever touch the LLM.
 
 ---
 
@@ -27,29 +27,29 @@ Across global airlines, Online Travel Agencies (OTAs), luxury hotel chains, and 
 
 ### Q1: An airline averages 150 concurrent calls on a normal Tuesday, but a summer typhoon or winter blizzard spikes volume 20x to 3,000+ concurrent calls within 10 minutes. How do we architect elastic capacity without paying for 3,000 idle channels 350 days a year or hitting HTTP 429 rate limits during the storm?
 
-#### 1. The Three-Tier Erlang-C Weather-Surge Architecture (`P07 / P742`)
+#### 1. The Three-Tier Erlang-C Weather-Surge Architecture (`P07 / `)
 
 1. **Tier 1 (`54%` Steady-State Base on Reserved PTU)**:
-   - Provision daily baseline concurrency (e.g., 150–200 channels) on **Azure AI Foundry Provisioned Throughput Units (PTU)** for guaranteed `< 310ms` VIP responsiveness and deep commitment discounts.
+ - Provision daily baseline concurrency (e.g., 150–200 channels) on **Azure AI Foundry Provisioned Throughput Units (PTU)** for guaranteed `< 310ms` VIP responsiveness and deep commitment discounts.
 2. **Tier 2 (`1x–15x` Storm Surge Spillover Across Multi-Region PAYGO Pools)**:
-   - When PTU utilization crosses **`85%`** during an airport disruption, the voice gateway automatically spills overflow sessions across multi-region **PAYGO** endpoints (e.g., spilling from `East Asia` to `Southeast Asia`, `Japan East`, and `East US 2`) with zero 429 drops.
+ - When PTU utilization crosses **`85%`** during an airport disruption, the voice gateway automatically spills overflow sessions across multi-region **PAYGO** endpoints (e.g., spilling from `East Asia` to `Southeast Asia`, `Japan East`, and `East US 2`) with zero 429 drops.
 3. **Tier 3 (`> 15x` Super-Storm Fast-Deflection Mode via `Phi4-mm-realtime` + Mobile Rebooking Cards)**:
-   - During extreme surges, standard-tier callers are routed to frugal **Lane 3 (`Phi4-mm-realtime`)** paired with an instant **SMS / Mini-Program Self-Rebooking & Meal/Hotel Voucher Card**. Instead of spending 4 minutes reciting flight numbers over voice, callers complete rebooking on their phone screen while on a **35-second guided call**—multiplying per-channel hourly passenger throughput by **6x**!
+ - During extreme surges, standard-tier callers are routed to frugal **Lane 3 (`Phi4-mm-realtime`)** paired with an instant **SMS / Mini-Program Self-Rebooking & Meal/Hotel Voucher Card**. Instead of spending 4 minutes reciting flight numbers over voice, callers complete rebooking on their phone screen while on a **35-second guided call**—multiplying per-channel hourly passenger throughput by **6x**!
 
 ---
 
 ### Q2: Why do naive airline rebooking bots cause operational disasters on "Connecting Flights (Interline)" and "Business-Class Downgrades," and how does `AIR-IRROPS-01` prevent them?
 
-Exposing a raw `rebook_flight()` GDS API to an LLM without deterministic航空 guardrails leads to four costly failures, all blocked by `AIR-IRROPS-01` and `P87`:
+Exposing a raw `rebook_flight` GDS API to an LLM without deterministic航空 guardrails leads to four costly failures, all blocked by `AIR-IRROPS-01` and `P87`:
 
 1. **Interline & Connecting Segment Integrity Lock**:
-   - If Leg 1 (`Shanghai -> Tokyo`) of a connecting ticket (`Shanghai -> Tokyo -> San Francisco`) is delayed by 4 hours, rebooking only Leg 1 to tomorrow strands the passenger in Tokyo with a canceled Leg 2! The guardrail forces atomic multi-leg re-accommodation with a verified **Minimum Connecting Time (`MCT >= 90–120 mins`)**.
+ - If Leg 1 (`Shanghai -> Tokyo`) of a connecting ticket (`Shanghai -> Tokyo -> San Francisco`) is delayed by 4 hours, rebooking only Leg 1 to tomorrow strands the passenger in Tokyo with a canceled Leg 2! The guardrail forces atomic multi-leg re-accommodation with a verified **Minimum Connecting Time (`MCT >= 90–120 mins`)**.
 2. **VIP / Business-Class Downgrade Protection**:
-   - If the next available flight only has Economy seats left, the bot is **blocked in `0ms` from silently downgrading a Business-Class passenger**; it must either book the next flight with Business availability or warm-transfer to a VIP desk with calculated fare-refund entitlements.
+ - If the next available flight only has Economy seats left, the bot is **blocked in `0ms` from silently downgrading a Business-Class passenger**; it must either book the next flight with Business availability or warm-transfer to a VIP desk with calculated fare-refund entitlements.
 3. **Deterministic `EU261 / US DOT 24-Hour` Compensation Engine (`P87`)**:
-   - A deterministic rule engine—never the LLM—computes whether a disruption qualifies for cash compensation (`€250–€600` for controllable carrier faults vs. `€0` + duty-of-care hotel/meal vouchers for extraordinary weather) and enforces US DOT mandatory cash refunds (never forcing travel vouchers when a flight is canceled).
+ - A deterministic rule engine—never the LLM—computes whether a disruption qualifies for cash compensation (`€250–€600` for controllable carrier faults vs. `€0` + duty-of-care hotel/meal vouchers for extraordinary weather) and enforces US DOT mandatory cash refunds (never forcing travel vouchers when a flight is canceled).
 4. **Wheelchair (`WCHC/WCHR`) & Unaccompanied Minor (`UMNR`) CRO Escalation (`P87`)**:
-   - Automatically detects Special Service Request (SSR) codes on the PNR and ensures wheelchair battery handling or Complaint Resolution Official (CRO) warm transfer.
+ - Automatically detects Special Service Request (SSR) codes on the PNR and ensures wheelchair battery handling or Complaint Resolution Official (CRO) warm transfer.
 
 ---
 
@@ -58,12 +58,12 @@ Exposing a raw `rebook_flight()` GDS API to an LLM without deterministic航空 g
 Enforce **Hardware Extension Binding + Two-Tier Folio Authorization**:
 
 1. **External Inbound Calls (`PSTN Trunk`): Zero Guest Presence Disclosure**:
-   - If an outside caller asks *"Is Mr. Wang in Room 1208?"* or *"Which room is Celebrity X staying in?"*, the AI enforces a strict privacy wall: *"For guest privacy and security, we never confirm guest registration or room numbers. If you provide the guest's full registered name and mobile number last 4 digits, I can take a message or request their permission to connect you."*
+ - If an outside caller asks *"Is Mr. Wang in Room 1208?"* or *"Which room is Celebrity X staying in?"*, the AI enforces a strict privacy wall: *"For guest privacy and security, we never confirm guest registration or room numbers. If you provide the guest's full registered name and mobile number last 4 digits, I can take a message or request their permission to connect you."*
 2. **In-Room Calls (`SIP Room Extension`): Automatic Room Binding + Folio PIN Gate**:
-   - When the guest picks up the nightstand phone in Room `802`, the hotel PBX passes `callerExtension = "802"` in the SIP header:
-     - **60+ Language Continuous LID**: The AI greets the guest in their preferred language from Opera PMS (or auto-detects Japanese, Arabic, French, Korean, Mandarin, or English on the first spoken sentence);
-     - **Cross-Room Isolation (`0ms` Block)**: Session tools are physically scoped to `roomId = "802"`—any attempt to query or bill Room `805` is rejected;
-     - **Free Delivery Robot vs. Paid Folio PIN Gate**: Free housekeeping items (towels, water, toothbrush) trigger the hotel delivery robot immediately; any paid room-service order (`Folio Charge > $0`) requires the guest's last name + 4-digit check-in PIN!
+ - When the guest picks up the nightstand phone in Room `802`, the hotel PBX passes `callerExtension = "802"` in the SIP header:
+ - **60+ Language Continuous LID**: The AI greets the guest in their preferred language from Opera PMS (or auto-detects Japanese, Arabic, French, Korean, Mandarin, or English on the first spoken sentence);
+ - **Cross-Room Isolation (`0ms` Block)**: Session tools are physically scoped to `roomId = "802"`—any attempt to query or bill Room `805` is rejected;
+ - **Free Delivery Robot vs. Paid Folio PIN Gate**: Free housekeeping items (towels, water, toothbrush) trigger the hotel delivery robot immediately; any paid room-service order (`Folio Charge > $0`) requires the guest's last name + 4-digit check-in PIN!
 
 ---
 
@@ -73,16 +73,16 @@ Enforce **Hardware Extension Binding + Two-Tier Folio Authorization**:
 
 ```mermaid
 flowchart TD
-    Start(["🎯 Travel, Airline & Hospitality Voice AI Project"]) --> Q1{"1. Primary Domain: Airline Mass Disruption (IRROPS)<br/>vs. Hotel Switchboard & In-Room Concierge (PMS)?"}
-    
-    Q1 -- "Airline / OTA Disruption & Rebooking Hotline<br/>(10x–30x Weather Surge Traffic)" --> Q1_Sub{"Ticket Complexity: Single-Leg Standard<br/>vs. Interline / VIP Downgrade / Wheelchair SSR?"}
-    Q1_Sub -- "Standard Rebooking & Hotel/Meal Vouchers (80%+)" --> ChoiceAirAuto["🏆 Route A1: ACS + Voice Live + PTU/PAYGO Surge Pool + Mobile Seat Card<br/>Paired with deterministic EU261/DOT calculator -> 48s zero-hold resolution"]
-    Q1_Sub -- "Broken Interline / VIP Cabin Downgrade / Wheelchair SSR" --> ChoiceAirVIP["🛡️ Route A2: AIR-IRROPS-01 Guard Blocks Silent Segment Drop / Downgrade<br/>Stages valid multi-leg options & warm-transfers to VIP / CRO specialist in 1.5s"]
-    
-    Q1 -- "Global Hotel Chain Switchboard & In-Room Concierge<br/>(HOSP-PMS-01 · 60+ International Guest Languages)" --> Q2{"2. Call Origin: External PSTN Trunk vs. In-Room SIP Extension?"}
-    
-    Q2 -- "External PSTN Call (Reservations / Guest Inquiry)" --> ChoiceHotelExt["🔒 Route B1: 60+ Language Continuous LID + Zero Guest-Room Disclosure Lock<br/>Booking card deposits routed via P11/P68 Edge RFC 4733 DTMF PCI Bypass"]
-    Q2 -- "In-Room SIP Extension (Housekeeping / Room Service / Folio)" --> ChoiceHotelRoom["🛎️ Route B2: Hardware Extension-to-Room Binding + Free Amenity Robot Dispatch<br/>+ Paid Folio Charge (> $0) Guest Last-Name & 4-Digit PIN Gate"]
+ Start(["🎯 Travel, Airline & Hospitality Voice AI Project"]) --> Q1{"1. Primary Domain: Airline Mass Disruption (IRROPS)<br/>vs. Hotel Switchboard & In-Room Concierge (PMS)?"}
+ 
+ Q1 -- "Airline / OTA Disruption & Rebooking Hotline<br/>(10x–30x Weather Surge Traffic)" --> Q1_Sub{"Ticket Complexity: Single-Leg Standard<br/>vs. Interline / VIP Downgrade / Wheelchair SSR?"}
+ Q1_Sub -- "Standard Rebooking & Hotel/Meal Vouchers (80%+)" --> ChoiceAirAuto["🏆 Route A1: ACS + Voice Live + PTU/PAYGO Surge Pool + Mobile Seat Card<br/>Paired with deterministic EU261/DOT calculator -> 48s zero-hold resolution"]
+ Q1_Sub -- "Broken Interline / VIP Cabin Downgrade / Wheelchair SSR" --> ChoiceAirVIP["🛡️ Route A2: AIR-IRROPS-01 Guard Blocks Silent Segment Drop / Downgrade<br/>Stages valid multi-leg options & warm-transfers to VIP / CRO specialist in 1.5s"]
+ 
+ Q1 -- "Global Hotel Chain Switchboard & In-Room Concierge<br/>(HOSP-PMS-01 · 60+ International Guest Languages)" --> Q2{"2. Call Origin: External PSTN Trunk vs. In-Room SIP Extension?"}
+ 
+ Q2 -- "External PSTN Call (Reservations / Guest Inquiry)" --> ChoiceHotelExt["🔒 Route B1: 60+ Language Continuous LID + Zero Guest-Room Disclosure Lock<br/>Booking card deposits routed via P11/P68 Edge RFC 4733 DTMF PCI Bypass"]
+ Q2 -- "In-Room SIP Extension (Housekeeping / Room Service / Folio)" --> ChoiceHotelRoom["🛎️ Route B2: Hardware Extension-to-Room Binding + Free Amenity Robot Dispatch<br/>+ Paid Folio Charge (> $0) Guest Last-Name & 4-Digit PIN Gate"]
 ```
 
 ---
@@ -91,29 +91,29 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph Ingress["🌐 1. Global PSTN & Hotel PBX Ingress"]
-        direction TB
-        AirCall["✈️ Disrupted Passenger Call<br/>(PSTN / Airline App)"]
-        HotelExt["🏨 Hotel Trunk & Room SIP Ext<br/>(Extracts Room ID + 60-Lang LID)"]
-    end
+ subgraph Ingress["🌐 1. Global PSTN & Hotel PBX Ingress"]
+ direction TB
+ AirCall["✈️ Disrupted Passenger Call<br/>(PSTN / Airline App)"]
+ HotelExt["🏨 Hotel Trunk & Room SIP Ext<br/>(Extracts Room ID + 60-Lang LID)"]
+ end
 
-    subgraph ElasticCore["⚡ 2. Erlang-C Elastic Pool & Voice Live Core"]
-        direction TB
-        Autoscaler["📈 PTU + PAYGO Surge Router (P07)<br/>• 54% Base on Reserved PTU<br/>• >85% Typhoon Spillover to PAYGO"]
-        VoiceEngine["🎙️ Azure Voice Live + Speech<br/>• P16 NATO Phonetic PNR Readback<br/>• P11/P68 PCI DTMF Payment Bypass"]
-        Autoscaler --> VoiceEngine
-    end
+ subgraph ElasticCore["⚡ 2. Erlang-C Elastic Pool & Voice Live Core"]
+ direction TB
+ Autoscaler["📈 PTU + PAYGO Surge Router (P07)<br/>• 54% Base on Reserved PTU<br/>• >85% Typhoon Spillover to PAYGO"]
+ VoiceEngine["🎙️ Azure Voice Live + Speech<br/>• P16 NATO Phonetic PNR Readback<br/>• P11/P68 PCI DTMF Payment Bypass"]
+ Autoscaler --> VoiceEngine
+ end
 
-    subgraph DomainGuard["🛡️ 3. Deterministic Travel & Hospitality Guards"]
-        direction TB
-        IrropsGuard["✈️ AIR-IRROPS-01 Airline Guard<br/>• Deterministic EU261/DOT Calculator<br/>• Interline MCT>=90m & VIP Cabin Lock"]
-        PmsGuard["🛎️ HOSP-PMS-01 Hotel PMS Guard<br/>• 0ms Cross-Room Lookup Block<br/>• Folio PIN Gate + Robot Dispatch"]
-    end
+ subgraph DomainGuard["🛡️ 3. Deterministic Travel & Hospitality Guards"]
+ direction TB
+ IrropsGuard["✈️ AIR-IRROPS-01 Airline Guard<br/>• Deterministic EU261/DOT Calculator<br/>• Interline MCT>=90m & VIP Cabin Lock"]
+ PmsGuard["🛎️ HOSP-PMS-01 Hotel PMS Guard<br/>• 0ms Cross-Room Lookup Block<br/>• Folio PIN Gate + Robot Dispatch"]
+ end
 
-    AirCall --> Autoscaler
-    HotelExt --> Autoscaler
-    VoiceEngine --> IrropsGuard
-    VoiceEngine --> PmsGuard
+ AirCall --> Autoscaler
+ HotelExt --> Autoscaler
+ VoiceEngine --> IrropsGuard
+ VoiceEngine --> PmsGuard
 ```
 
 ---
@@ -122,29 +122,29 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Traveler as 👤 Passenger / Hotel Guest
-    participant Bot as 🎛️ Azure Voice Live Orchestrator<br/>(60+ Lang LID + NATO Readback)
-    participant Guard as 🛡️ Deterministic Domain Guards<br/>(AIR-IRROPS-01 / HOSP-PMS-01)
-    participant System as 🏢 Airline GDS / Hotel Opera PMS
+ autonumber
+ actor Traveler as 👤 Passenger / Hotel Guest
+ participant Bot as 🎛️ Azure Voice Live Orchestrator<br/>(60+ Lang LID + NATO Readback)
+ participant Guard as 🛡️ Deterministic Domain Guards<br/>(AIR-IRROPS-01 / HOSP-PMS-01)
+ participant System as 🏢 Airline GDS / Hotel Opera PMS
 
-    Note over Traveler,System: Workflow 1 (Airline AIR-IRROPS-01): Typhoon Cancellation -> Deterministic EU261 Check + Interline Protection
-    Traveler->>Bot: 📞 Calls Airline: "My flight MU501 was canceled by the typhoon, PNR is B8D92X—I want €600 compensation and rebooking to tomorrow!"
-    Bot->>Traveler: 🔊 (NATO phonetic confirmation) "Confirming PNR Bravo-8-Delta-9-2-X-Ray. Checking your connecting itinerary and entitlements now..."
-    Bot->>Guard: Calls evaluateAirlineIrropsGuard(pnr="B8D92X", cause="TYPHOON", segments=2)
-    Note right of Guard: 1. Deterministic Rule: Typhoon = Extraordinary Weather (€0 cash comp, but free rebook + hotel/meal voucher)<br/>2. Interline Lock: Preserves Tokyo->SFO connection with MCT >= 120 mins!
-    Guard-->>Bot: Returns protected 2-segment Business Class rebook package + Digital Hotel Voucher
-    Bot->>Traveler: 🔊 "Because the typhoon is extraordinary weather, statutory cash compensation is €0, but we've issued a complimentary 5-star airport hotel & meal voucher to your phone and protected both legs of your Shanghai–Tokyo–San Francisco Business Class itinerary for 9:00 AM tomorrow. Tap your phone card to confirm!"
+ Note over Traveler,System: Workflow 1 (Airline AIR-IRROPS-01): Typhoon Cancellation -> Deterministic EU261 Check + Interline Protection
+ Traveler->>Bot: 📞 Calls Airline: "My flight MU501 was canceled by the typhoon, PNR is B8D92X—I want €600 compensation and rebooking to tomorrow!"
+ Bot->>Traveler: 🔊 (NATO phonetic confirmation) "Confirming PNR Bravo-8-Delta-9-2-X-Ray. Checking your connecting itinerary and entitlements now..."
+ Bot->>Guard: Calls evaluateAirlineIrropsGuard(pnr="B8D92X", cause="TYPHOON", segments=2)
+ Note right of Guard: 1. Deterministic Rule: Typhoon = Extraordinary Weather (€0 cash comp, but free rebook + hotel/meal voucher)<br/>2. Interline Lock: Preserves Tokyo->SFO connection with MCT >= 120 mins!
+ Guard-->>Bot: Returns protected 2-segment Business Class rebook package + Digital Hotel Voucher
+ Bot->>Traveler: 🔊 "Because the typhoon is extraordinary weather, statutory cash compensation is €0, but we've issued a complimentary 5-star airport hotel & meal voucher to your phone and protected both legs of your Shanghai–Tokyo–San Francisco Business Class itinerary for 9:00 AM tomorrow. Tap your phone card to confirm!"
 
-    Note over Traveler,System: Workflow 2 (Hotel HOSP-PMS-01): Room 802 Japanese Guest -> Blocks Room 805 Snooping -> Folio PIN Gate
-    Traveler->>Bot: ☎️ (Dials 0 from Room 802 in Japanese) "Please send 2 bath towels. Also, tell me who is staying in Room 805 next door."
-    Bot->>Guard: Evaluates callerExt="802", targetRoom="805"
-    Guard-->>Bot: 🚨 HOSP-PMS-01 trips! Blocks Room 805 lookup in 0ms; approves free towel request for Room 802
-    Bot->>System: Dispatches delivery robot with 2 bath towels to Room 802 ($0 charge)
-    Bot->>Traveler: 🔊 (Fluent Japanese) "Mr. Sato in Room 802, our robot is bringing two bath towels right up. For guest privacy, we cannot share information about other rooms."
-    Traveler->>Bot: 🗣️ "Okay, also send up a bottle of Dom Pérignon ($380) charged to my room."
-    Guard-->>Bot: Paid Folio Charge ($380 > $0) detected -> Requires 4-digit Room PIN verification!
-    Bot->>Traveler: 🔊 "Certainly! For a $380 room charge, please enter your 4-digit check-in PIN on the keypad."
+ Note over Traveler,System: Workflow 2 (Hotel HOSP-PMS-01): Room 802 Japanese Guest -> Blocks Room 805 Snooping -> Folio PIN Gate
+ Traveler->>Bot: ☎️ (Dials 0 from Room 802 in Japanese) "Please send 2 bath towels. Also, tell me who is staying in Room 805 next door."
+ Bot->>Guard: Evaluates callerExt="802", targetRoom="805"
+ Guard-->>Bot: 🚨 HOSP-PMS-01 trips! Blocks Room 805 lookup in 0ms; approves free towel request for Room 802
+ Bot->>System: Dispatches delivery robot with 2 bath towels to Room 802 ($0 charge)
+ Bot->>Traveler: 🔊 (Fluent Japanese) "Mr. Sato in Room 802, our robot is bringing two bath towels right up. For guest privacy, we cannot share information about other rooms."
+ Traveler->>Bot: 🗣️ "Okay, also send up a bottle of Dom Pérignon ($380) charged to my room."
+ Guard-->>Bot: Paid Folio Charge ($380 > $0) detected -> Requires 4-digit Room PIN verification!
+ Bot->>Traveler: 🔊 "Certainly! For a $380 room charge, please enter your 4-digit check-in PIN on the keypad."
 ```
 
 ---

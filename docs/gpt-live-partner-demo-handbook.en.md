@@ -9,8 +9,8 @@
 **GPT-Live (`gpt-live-1`)** is a self-hosted browser real-time voice assistant reference application running on **Azure App Service** and **Azure AI Foundry**. In a single web page, customers experience **natural full-duplex voice Q&A, mid-sentence barge-in, deterministic time/math tools, and source-grounded web search**, while keeping all cloud credentials and Managed Identity tokens strictly on the server.
 
 - 🎥 **4m20s Azure Live Demo Recording (`GPT-Live-Azure-demo.mp4`)**:
-  - **Online Web Playback (Homepage Voice Hub)**: [**`https://turbo998.github.io/voice/`**](https://turbo998.github.io/voice/) (direct stream: [`https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4`](https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4))
-  - **GitHub Release (`v0.4.0`) Download**: [`https://github.com/turbo998/gpt-live-1-demo/releases/download/v0.4.0/GPT-Live-Azure-demo.mp4`](https://github.com/turbo998/gpt-live-1-demo/releases/download/v0.4.0/GPT-Live-Azure-demo.mp4)
+ - **Online Web Playback (Homepage Voice Hub)**: [**`https://turbo998.github.io/voice/`**](https://turbo998.github.io/voice/) (direct stream: [`https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4`](https://turbo998.github.io/voice/GPT-Live-Azure-demo.mp4))
+ - **GitHub Release (`v0.4.0`) Download**: [`https://github.com/turbo998/gpt-live-1-demo/releases/download/v0.4.0/GPT-Live-Azure-demo.mp4`](https://github.com/turbo998/gpt-live-1-demo/releases/download/v0.4.0/GPT-Live-Azure-demo.mp4)
 - 🎓 **Partner Engineer Interactive Training Portal**: [`https://turbo998.github.io/gpt-live-1-demo/training.html`](https://turbo998.github.io/gpt-live-1-demo/training.html)
 - 📊 **GPT-Live-1 7-Card (4:5) Visual Benchmark Report**: [`https://turbo998.github.io/gpt-live-1-demo/benchmark-cards.html`](https://turbo998.github.io/gpt-live-1-demo/benchmark-cards.html)
 
@@ -20,22 +20,22 @@
 
 ```mermaid
 flowchart LR
-  User["Customer / Presenter<br/>Chrome / Edge Browser<br/>Mic Input · Audio Playback · Timestamped Captions"]
-  App["Azure App Service (Linux B1 · Node.js 24)<br/>Same-Origin Gate · Session Policy · Local Clock/Math Tools"]
-  Store["Persistent Config Mount<br/>/home/gpt-live-demo/settings.json"]
-  MI["System-Assigned Managed Identity<br/>Cognitive Services OpenAI User"]
-  Live["Azure AI Foundry<br/>gpt-live-1 (GlobalStandard)<br/>/live/sessions Bi-directional Voice Stream"]
-  Reason["Azure AI Foundry Responses API<br/>gpt-4.1-mini + Native web_search"]
-  Web["Public Web Sources<br/>Open-Meteo Weather / Search Citations"]
+ User["Customer / Presenter<br/>Chrome / Edge Browser<br/>Mic Input · Audio Playback · Timestamped Captions"]
+ App["Azure App Service (Linux B1 · Node.js 24)<br/>Same-Origin Gate · Session Policy · Local Clock/Math Tools"]
+ Store["Persistent Config Mount<br/>/home/gpt-live-demo/settings.json"]
+ MI["System-Assigned Managed Identity<br/>Cognitive Services OpenAI User"]
+ Live["Azure AI Foundry<br/>gpt-live-1 (GlobalStandard)<br/>/live/sessions Bi-directional Voice Stream"]
+ Reason["Azure AI Foundry Responses API<br/>gpt-4.1-mini + Native web_search"]
+ Web["Public Web Sources<br/>Open-Meteo Weather / Search Citations"]
 
-  User <-->|"HTTPS + WebSocket (/ws)<br/>Audio Chunks · Barge-in · Transcripts"| App
-  App <-->|"Read/Write Masked Settings"| Store
-  App -->|"Keyless Entra ID Auth"| MI
-  MI -->|"Bearer Token"| Live
-  MI -->|"Bearer Token"| Reason
-  App <-->|"Real-Time Voice Session (/live/sessions)"| Live
-  App <-->|"Reasoning · Math · Web Search"| Reason
-  Reason <-->|"Retrieve Public Sources & Links"| Web
+ User <-->|"HTTPS + WebSocket (/ws)<br/>Audio Chunks · Barge-in · Transcripts"| App
+ App <-->|"Read/Write Masked Settings"| Store
+ App -->|"Keyless Entra ID Auth"| MI
+ MI -->|"Bearer Token"| Live
+ MI -->|"Bearer Token"| Reason
+ App <-->|"Real-Time Voice Session (/live/sessions)"| Live
+ App <-->|"Reasoning · Math · Web Search"| Reason
+ Reason <-->|"Retrieve Public Sources & Links"| Web
 ```
 
 ---
@@ -72,6 +72,6 @@ Prices below are queried from the public **Azure Retail Prices API** (USD, exclu
 - **Media Spec**: MP4 (`1600×1000` H.264 video + 48 kHz stereo AAC audio), duration **`4m20.66s`** (`12,443,395` bytes).
 - **Provenance**: Assistant voice and answers come from a live Azure `gpt-live-1` deployment; prompts and closing narration use offline synthesized speech; only the browser viewport is captured.
 - **Explicit Technical Boundaries**:
-  1. Demonstrates natural greeting, mid-sentence barge-in, server clock, `10 + 20 = 30` calculation, and voice-triggered web search with citations.
-  2. The spoken English request during the recording overlapped with an ongoing search explanation; test English spoken conversation as a dedicated session after reconnecting.
-  3. Post-disconnect narration is offline voiceover, and total video duration is not equal to billed live-session duration.
+ 1. Demonstrates natural greeting, mid-sentence barge-in, server clock, `10 + 20 = 30` calculation, and voice-triggered web search with citations.
+ 2. The spoken English request during the recording overlapped with an ongoing search explanation; test English spoken conversation as a dedicated session after reconnecting.
+ 3. Post-disconnect narration is offline voiceover, and total video duration is not equal to billed live-session duration.

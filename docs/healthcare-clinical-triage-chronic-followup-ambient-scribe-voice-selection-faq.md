@@ -1,7 +1,7 @@
 # 医疗与药企实时语音应用架构设计与选型 FAQ：智能预问诊分诊、诊室无感语音病历（Ambient Clinical Scribe）与院后慢病/药物警戒随访实战指南
 
-> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.en.md`)](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.en.md)**  
-> 🔗 **关联专题 (Related Deep Dives)**: [Azure Speech 说话人分离实测 PoC (`azure-speech-diarization-poc.md`)](./azure-speech-diarization-poc.md) · [本地语音容器部署指南 (`speech-container-guide.md`)](./speech-container-guide.md) · [高危字母数字与剂量复诵消歧 (`voice-alphanumeric-disambiguation-faq.md`)](./voice-alphanumeric-disambiguation-faq.md) · [20 大高价值业务场景 (`business-scenarios.md`)](./business-scenarios.md) · [返回首页 (`README.md`)](../README.md)
+> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.en.md`)](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.en.md)** 
+> 🔗 **关联专题 (Related Deep Dives)**: [Azure Speech 说话人分离实测 PoC (`azure-speech-diarization-poc.md`)](./azure-speech-diarization-poc.md) · [本地语音容器部署指南 (`speech-container-guide.md`)](./speech-container-guide.md) · [高危字母数字与剂量复诵消歧 (`enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.md`)](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.md) · [20 大高价值业务场景 (`business-scenarios.md`)](./business-scenarios.md) · [返回首页 (`README.md`)](../README.md)
 
 ![Healthcare & Life Sciences Voice AI Architecture & Selection Visual Summary](../assets/svg/healthcare-clinical-triage-chronic-followup-ambient-scribe-voice.svg)
 
@@ -12,15 +12,15 @@
 在三级甲等医院、互联网医疗平台、商业健康险及跨国药企（MNC Pharma）的数字化升级中，实时语音智能体正围绕 **“诊前智能导诊挂号（Pre-Visit Triage）”、“诊中无感语音生成电子病历（Ambient Clinical Scribe）”与“诊后慢病管理及临床试验药物警戒随访（Post-Discharge Follow-up & Pharmacovigilance）”** 三大高 ROI 场景全面铺开。**Cloud & AI 解决方案架构师** 在设计医疗语音方案时，必须将 **“生命红线安全互锁、药品剂量零差错与院内患者隐私不出域”** 置于首位：
 
 1. **三大核心医疗语音场景的最佳架构路线拍板**：
-   - **场景 A：诊前智能预问诊与电话/小程序精准分诊挂号 ➔ 首选 `双轨混合架构（Voice Live 语义判停 + 受控级联挂号 + P33 急症红旗 0ms 熔断锁）`**：
-     - 老年患者打电话描述病情时语速慢、多方言、常带 `1.5 秒` 以上的喘气停顿，必须开启 **老年/无障碍自适应语义判停（`>= 1,800ms` 窗口）** 防抢话；同时前置确定性 **临床红旗症状熔断器（`P33-CLINICAL-REDFLAG-ESCALATION-GUARD`）**——一旦患者提到“胸口压榨性疼痛放射到左肩”、“突然半边手脚没力气口角歪斜”或自伤念头，系统在 **`0ms` 内立即终止普通门诊挂号流程，直连急诊分诊台或 120 调度专线**！
-   - **场景 B：诊室无感语音病历生成（Ambient Clinical Scribe，医生看病不敲键盘，问诊结束 5 秒出 SOAP 病历） ➔ 首选 `Azure AI Speech 本地容器/云端说话人分离 (Diarization) + Custom Speech 万级医学词表 + AI Foundry 结构化 SOAP 引擎`**：
-     - 门诊医生最大的痛点是“看病 3 分钟，低头敲键盘写病历 6 分钟”。通过诊室桌面麦克风无感采集医患对话，利用 **`diarization.enabled = true`（`RTF = 0.057`）** 自动区分 `[医生]`、`[患者]` 与 `[陪同家属]`，过滤日常寒暄，在问诊结束 **5 秒内** 生成符合卫健委/医院 EMR 规范的 **主诉、现病史、既往史、体格检查与初步诊断（SOAP Note）**，将医生写病历耗时缩短 **76%（从 6 分钟降至 45 秒审阅确认）**！
-   - **场景 C：院后慢病随访与药企不良事件（SAE）外呼采集（`PHARMA-PV-01`） ➔ 强制选 `100% 受控级联管道（Azure Fast STT + 确定性状态机 + DragonHDFlash SSML TTS）`**：
-     - 随访外呼严禁使用自由发挥的纯原生 S2S！必须走 100% 话术受控的级联管道：开场未核实患者本人身份前**严禁透露具体敏感病种名称（`P63 HIPAA/隐私最小必要锁`）**；采集服药剂量时强制执行 **易混数字逐位拆读复诵（区分 `15mg` 与 `50mg`）**；一旦触发药物不良反应，强制收集 FDA/NMPA 药物警戒四要素并在 24 小时内加密上报。
+ - **场景 A：诊前智能预问诊与电话/小程序精准分诊挂号 ➔ 首选 `双轨混合架构（Voice Live 语义判停 + 受控级联挂号 + P33 急症红旗 0ms 熔断锁）`**：
+ - 老年患者打电话描述病情时语速慢、多方言、常带 `1.5 秒` 以上的喘气停顿，必须开启 **老年/无障碍自适应语义判停（`>= 1,800ms` 窗口）** 防抢话；同时前置确定性 **临床红旗症状熔断器（`P33-CLINICAL-REDFLAG-ESCALATION-GUARD`）**——一旦患者提到“胸口压榨性疼痛放射到左肩”、“突然半边手脚没力气口角歪斜”或自伤念头，系统在 **`0ms` 内立即终止普通门诊挂号流程，直连急诊分诊台或 120 调度专线**！
+ - **场景 B：诊室无感语音病历生成（Ambient Clinical Scribe，医生看病不敲键盘，问诊结束 5 秒出 SOAP 病历） ➔ 首选 `Azure AI Speech 本地容器/云端说话人分离 (Diarization) + Custom Speech 万级医学词表 + AI Foundry 结构化 SOAP 引擎`**：
+ - 门诊医生最大的痛点是“看病 3 分钟，低头敲键盘写病历 6 分钟”。通过诊室桌面麦克风无感采集医患对话，利用 **`diarization.enabled = true`（`RTF = 0.057`）** 自动区分 `[医生]`、`[患者]` 与 `[陪同家属]`，过滤日常寒暄，在问诊结束 **5 秒内** 生成符合卫健委/医院 EMR 规范的 **主诉、现病史、既往史、体格检查与初步诊断（SOAP Note）**，将医生写病历耗时缩短 **76%（从 6 分钟降至 45 秒审阅确认）**！
+ - **场景 C：院后慢病随访与药企不良事件（SAE）外呼采集（`PHARMA-PV-01`） ➔ 强制选 `100% 受控级联管道（Azure Fast STT + 确定性状态机 + DragonHDFlash SSML TTS）`**：
+ - 随访外呼严禁使用自由发挥的纯原生 S2S！必须走 100% 话术受控的级联管道：开场未核实患者本人身份前**严禁透露具体敏感病种名称（`P63 HIPAA/隐私最小必要锁`）**；采集服药剂量时强制执行 **易混数字逐位拆读复诵（区分 `15mg` 与 `50mg`）**；一旦触发药物不良反应，强制收集 FDA/NMPA 药物警戒四要素并在 24 小时内加密上报。
 2. **采购海外垂直医疗语音病历 SaaS（Nuance DAX / Abridge / Suki）vs 基于 Azure Speech 容器 + Foundry 自建医疗语音底座怎么选？**
-   - 北美诊所若已全院使用 Epic EHR 且预算充裕，可直接订阅 **Microsoft Dragon Copilot / DAX Copilot**（约 `$300 ~ $400 / 医生 / 月`）。
-   - 中国公立三甲医院、民营医疗集团及亚太/欧洲医疗机构，普遍面临 **“患者原始病历录音严禁出医院本地内网机房”、“对接院内自研 HIS/EMR 系统”以及“中文方言与中成药/检查项目专有名词识别”** 三大硬性要求。采用 **医院内网部署 `Azure AI Speech Docker 容器` + 院内/专网 `AI Foundry`**，千名医生规模年化成本从垂直 SaaS 的 **`$4.20M / 年` 降至 `$290k / 年`（立省 93%！）**，且一套底座同时支撑“门诊写病历 + 电话导诊 + 出院随访”三大应用！
+ - 北美诊所若已全院使用 Epic EHR 且预算充裕，可直接订阅 **Microsoft Dragon Copilot / DAX Copilot**（约 `$300 ~ $400 / 医生 / 月`）。
+ - 中国公立三甲医院、民营医疗集团及亚太/欧洲医疗机构，普遍面临 **“患者原始病历录音严禁出医院本地内网机房”、“对接院内自研 HIS/EMR 系统”以及“中文方言与中成药/检查项目专有名词识别”** 三大硬性要求。采用 **医院内网部署 `Azure AI Speech Docker 容器` + 院内/专网 `AI Foundry`**，千名医生规模年化成本从垂直 SaaS 的 **`$4.20M / 年` 降至 `$290k / 年`（立省 93%！）**，且一套底座同时支撑“门诊写病历 + 电话导诊 + 出院随访”三大应用！
 
 ---
 
@@ -35,9 +35,9 @@
 - **旁边陪诊的女儿插话**：“哎呀爸你记错了，165 是我妈的血压！你昨天明明是 142，倒是你自己前天晚上偷偷喝了二两白酒！”
 如果语音转写不分角色，直接把整段话喂给大模型，生成的病历就会错误写成`“患者最高收缩压 165 mmHg”`！
 - **架构师标准解法**：
-  1. 开启 **`Azure AI Speech Realtime / Fast Transcription` 的说话人分离（`diarization.enabled = true`，本仓实测声道与角色归属一致率达 `100%`）**；
-  2. 诊室电脑固定绑定医生的声纹（`Speaker_Doctor`），系统自动将诊室内的其他声音分离为 `Speaker_Patient` 与 `Speaker_Companion（陪诊家属）`；
-  3. 后台 `Foundry Clinical Scribe Agent` 在提取现病史（HPI）时，针对家属的补充或纠正自动进行逻辑消歧，并在生成的病历草稿旁附上 **`[点击听原声 02:18]`** 溯源标签，医生一眼就能核实确认。
+ 1. 开启 **`Azure AI Speech Realtime / Fast Transcription` 的说话人分离（`diarization.enabled = true`，本仓实测声道与角色归属一致率达 `100%`）**；
+ 2. 诊室电脑固定绑定医生的声纹（`Speaker_Doctor`），系统自动将诊室内的其他声音分离为 `Speaker_Patient` 与 `Speaker_Companion（陪诊家属）`；
+ 3. 后台 `Foundry Clinical Scribe Agent` 在提取现病史（HPI）时，针对家属的补充或纠正自动进行逻辑消歧，并在生成的病历草稿旁附上 **`[点击听原声 02:18]`** 溯源标签，医生一眼就能核实确认。
 
 #### 2. 攻克痛点二：“科室级动态医学热词图谱（Department-Scoped Custom Lexicon）”
 - 骨科常说“前交叉韧带重建、半月板三度损伤”，心内科常说“沙库巴曲缬沙坦钠、射血分数 LVEF”，肿瘤科常说“帕博利珠单抗、EGFR 突变”。
@@ -52,17 +52,17 @@
 #### 陷阱 1：外呼随访接通瞬间“未核身先报病名”导致患者隐私社死泄密（`P63`）
 - **事故场景**：医院机器人给患者打随访电话，患者正在办公室开会，手机放在桌上由同事帮忙接起，或者家里不知情的亲戚接起电话。机器人上来第一句就大声播报：*“您好！这里是传染病医院 / 精神卫生中心 / 肿瘤科，关于王先生上周确诊的乙肝大三阳复查……”*——患者隐私当场泄露，直接向卫健委投诉索赔！
 - **代码级锁死（`P63` 最小必要隐私锁）**：
-  - 在外呼状态机中，未完成**“本人身份核验（如核对出生年月或后四位验证码）”或“已备案法定医疗照护代理人（POA）白名单核验”**前，系统提示词与工具层 **物理屏蔽一切科室名称、疾病诊断名称与药品名称**！
-  - 开场白只允许说中性脱敏问候：*“您好，这里是市中心医院健康随访中心，请问是王建国先生本人接听吗？”*
+ - 在外呼状态机中，未完成**“本人身份核验（如核对出生年月或后四位验证码）”或“已备案法定医疗照护代理人（POA）白名单核验”**前，系统提示词与工具层 **物理屏蔽一切科室名称、疾病诊断名称与药品名称**！
+ - 开场白只允许说中性脱敏问候：*“您好，这里是市中心医院健康随访中心，请问是王建国先生本人接听吗？”*
 
 #### 陷阱 2：窄带电话下把“15 毫克（Fifteen）”听成“50 毫克（Fifty）”或大模型擅自给调药建议（`P16` / `P73`）
 - **事故场景**：老年糖尿病或房颤抗凝患者在电话里口述胰岛素单位或华法林剂量，电话 `8kHz` 压缩吃掉了清辅音，ASR 把 `15mg` 识别成 `50mg` 直接记入随访表；或者患者问“我今天头不晕了能停药吗？”，大模型顺嘴回答“不晕了可以先减半吃”。
 - **代码级锁死**：
-  1. **声学易混数字强制逐位拆读复诵（Minimal-Pair Readback）**：凡是识别到涉及药物剂量、血糖血压数值（特别是 `13~19` 与 `30~90` 易混对），状态机强制注入 SSML 拆位确认：*“跟您核对一下，您目前每天服用的是【一、五，十五毫克】，而不是五十毫克，对吗？”*
-  2. **零处方建议红线锁**：AI 随访员被严格锁定为“信息采集与医嘱复述员”，任何涉及加药、减药、停药、换药的提问，100% 触发固定安全回复并生成红标工单推送给主管医生。
+ 1. **声学易混数字强制逐位拆读复诵（Minimal-Pair Readback）**：凡是识别到涉及药物剂量、血糖血压数值（特别是 `13~19` 与 `30~90` 易混对），状态机强制注入 SSML 拆位确认：*“跟您核对一下，您目前每天服用的是【一、五，十五毫克】，而不是五十毫克，对吗？”*
+ 2. **零处方建议红线锁**：AI 随访员被严格锁定为“信息采集与医嘱复述员”，任何涉及加药、减药、停药、换药的提问，100% 触发固定安全回复并生成红标工单推送给主管医生。
 
-#### 陷阱 3：药企临床试验或上市后随访遗漏“严重不良事件（SAE）”强制上报时限（`P89` / `P111`）
-- **代码级锁死**：当患者在随访中随口提到“吃了这个新药后昨天晕倒了一次 / 皮肤起大片水泡 / 住院了”，后台 **`P89 / P111` 药物警戒护栏** 在 `0ms` 内立即中断常规问卷，切换至 **FDA MedWatch / NMPA 不良事件四要素采集脚本（患者标识、可疑药品、不良事件具体表现、发生起止时间）**，并在挂机瞬间生成最高优先级 `24 小时加急药物警戒工单`！
+#### 陷阱 3：药企临床试验或上市后随访遗漏“严重不良事件（SAE）”强制上报时限（`P89` / 确定性护栏）
+- **代码级锁死**：当患者在随访中随口提到“吃了这个新药后昨天晕倒了一次 / 皮肤起大片水泡 / 住院了”，后台 **`P89 / ` 药物警戒护栏** 在 `0ms` 内立即中断常规问卷，切换至 **FDA MedWatch / NMPA 不良事件四要素采集脚本（患者标识、可疑药品、不良事件具体表现、发生起止时间）**，并在挂机瞬间生成最高优先级 `24 小时加急药物警戒工单`！
 
 ---
 
@@ -70,10 +70,10 @@
 
 这是中国三甲医院与欧洲公立医院最典型的落地场景。架构师的制胜方案是 **“院内轻量化 `Azure Speech Docker 容器` + 脱敏文本上专网大模型（或院内轻量小模型）”**：
 1. **第一跳（医院内网机房本地完成语音转文字与脱敏）**：
-   - 仅需医院内网提供 2 台普通的通用 CPU 服务器（或配 1~2 张入门级 T4/L4 推理卡），直接部署官方预编译的 **`Azure AI Speech STT + Diarization Docker 容器`**。
-   - 患者的原始问诊录音 **100% 在医院内网机房内存中实时转为文字并完成本地正则/NER 姓名身份证号脱敏（如将“张三”替换为 `[PATIENT_01]`）**，原始录音直接落入医院内网存储，**0 字节音频出院网**！
+ - 仅需医院内网提供 2 台普通的通用 CPU 服务器（或配 1~2 张入门级 T4/L4 推理卡），直接部署官方预编译的 **`Azure AI Speech STT + Diarization Docker 容器`**。
+ - 患者的原始问诊录音 **100% 在医院内网机房内存中实时转为文字并完成本地正则/NER 姓名身份证号脱敏（如将“张三”替换为 `[PATIENT_01]`）**，原始录音直接落入医院内网存储，**0 字节音频出院网**！
 2. **第二跳（生成结构化 SOAP 病历）**：
-   - 脱敏后的纯病症文本既可以在医院本地部署的 `Phi-4 / Qwen-2.5-14B` 医疗微调模型上生成 SOAP 病历，也可以通过医疗专线（ExpressRoute + Private Link）调用 Azure 专网内的 `GPT-4.1 / Foundry` 模型，兼顾**100% 医疗隐私合规**与**超低硬件采购成本**！
+ - 脱敏后的纯病症文本既可以在医院本地部署的 `Phi-4 / Qwen-2.5-14B` 医疗微调模型上生成 SOAP 病历，也可以通过医疗专线（ExpressRoute + Private Link）调用 Azure 专网内的 `GPT-4.1 / Foundry` 模型，兼顾**100% 医疗隐私合规**与**超低硬件采购成本**！
 
 ---
 
@@ -83,16 +83,16 @@
 
 ```mermaid
 flowchart TD
-    Start(["🎯 医疗医院 / 药企实时语音项目立项"]) --> Q1{"1. 核心业务场景属于诊前、诊中还是诊后?"}
-    
-    Q1 -- "诊前：智能预问诊与电话/小程序导诊挂号" --> ChoiceTriage["🚨 路线 A：Voice Live 双轨 + 老年 1,800ms 自适应判停 + P33 急症红旗锁<br/>核心保障：胸痛/卒中/自伤 0ms 强转急诊；普通症状精准匹配专病号源"]
-    
-    Q1 -- "诊中：门诊/住院无感语音生成电子病历<br/>(Ambient Clinical Scribe)" --> Q2{"2. 医院网络合规是否要求原始录音不出院内机房?"}
-    
-    Q2 -- "是 (公立三甲医院内网隔离红线)" --> ChoiceScribe_OnPrem["🏥 路线 B1：院内 Azure Speech Docker 容器 (含 Diarization) + 院内/专线 SOAP 引擎<br/>核心保障：0字节音频出院网、万级科室药品热词、5秒生成主诉与现病史"]
-    Q2 -- "否 (海外诊所 / 私立医疗集团云端合规)" --> ChoiceScribe_Cloud["☁️ 路线 B2：Azure AI Speech 云端 Diarization + AI Foundry FHIR/SOAP 生成器<br/>(或北美 Epic 诊所直接选用 Microsoft Dragon Copilot)"]
-    
-    Q1 -- "诊后：出院慢病随访 / 药企新药药物警戒外呼<br/>(Chronic Follow-up & Pharma PV)" --> ChoiceFollowup["💊 路线 C：ACS + 100% 受控级联管道 (DragonHD TTS) + P63/P89/P111 护栏<br/>核心保障：未核身禁报病名、15mg vs 50mg 逐位复诵、SAE 24h 强制上报"]
+ Start(["🎯 医疗医院 / 药企实时语音项目立项"]) --> Q1{"1. 核心业务场景属于诊前、诊中还是诊后?"}
+ 
+ Q1 -- "诊前：智能预问诊与电话/小程序导诊挂号" --> ChoiceTriage["🚨 路线 A：Voice Live 双轨 + 老年 1,800ms 自适应判停 + P33 急症红旗锁<br/>核心保障：胸痛/卒中/自伤 0ms 强转急诊；普通症状精准匹配专病号源"]
+ 
+ Q1 -- "诊中：门诊/住院无感语音生成电子病历<br/>(Ambient Clinical Scribe)" --> Q2{"2. 医院网络合规是否要求原始录音不出院内机房?"}
+ 
+ Q2 -- "是 (公立三甲医院内网隔离红线)" --> ChoiceScribe_OnPrem["🏥 路线 B1：院内 Azure Speech Docker 容器 (含 Diarization) + 院内/专线 SOAP 引擎<br/>核心保障：0字节音频出院网、万级科室药品热词、5秒生成主诉与现病史"]
+ Q2 -- "否 (海外诊所 / 私立医疗集团云端合规)" --> ChoiceScribe_Cloud["☁️ 路线 B2：Azure AI Speech 云端 Diarization + AI Foundry FHIR/SOAP 生成器<br/>(或北美 Epic 诊所直接选用 Microsoft Dragon Copilot)"]
+ 
+ Q1 -- "诊后：出院慢病随访 / 药企新药药物警戒外呼<br/>(Chronic Follow-up & Pharma PV)" --> ChoiceFollowup["💊 路线 C：ACS + 100% 受控级联管道 (DragonHD TTS) + P63/P89/ 护栏<br/>核心保障：未核身禁报病名、15mg vs 50mg 逐位复诵、SAE 24h 强制上报"]
 ```
 
 ---
@@ -101,29 +101,29 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph PreVisit["🚨 1. 诊前：智能预问诊与红旗分诊层"]
-        direction TB
-        Caller["👤 患者呼入 / 小程序语音"]
-        RedFlag["🛡️ P33 临床红旗 0ms 熔断锁<br/>(胸痛/卒中/呼吸困难即刻转急诊)"]
-        TriageBot["🤖 老年自适应导诊 Agent<br/>(1.8s 停顿容忍 + HIS 锁号)"]
-        Caller --> RedFlag -->|"非急症"| TriageBot
-    end
+ subgraph PreVisit["🚨 1. 诊前：智能预问诊与红旗分诊层"]
+ direction TB
+ Caller["👤 患者呼入 / 小程序语音"]
+ RedFlag["🛡️ P33 临床红旗 0ms 熔断锁<br/>(胸痛/卒中/呼吸困难即刻转急诊)"]
+ TriageBot["🤖 老年自适应导诊 Agent<br/>(1.8s 停顿容忍 + HIS 锁号)"]
+ Caller --> RedFlag -->|"非急症"| TriageBot
+ end
 
-    subgraph InClinic["🏥 2. 诊中：诊室无感语音病历层 (Ambient Scribe)"]
-        direction TB
-        RoomMic["🎙️ 诊室桌面阵列麦"]
-        SpeechCont["📦 院内 Azure Speech 容器<br/>• Diarization (医生/患者/家属)<br/>• 科室万级药品/手术热词偏置"]
-        SoapGen["📝 Foundry SOAP 病历引擎<br/>• 5s 生成主诉/现病史/体征/医嘱<br/>• 绑定 [mm:ss] 原声回放写回 EMR"]
-        RoomMic --> SpeechCont --> SoapGen
-    end
+ subgraph InClinic["🏥 2. 诊中：诊室无感语音病历层 (Ambient Scribe)"]
+ direction TB
+ RoomMic["🎙️ 诊室桌面阵列麦"]
+ SpeechCont["📦 院内 Azure Speech 容器<br/>• Diarization (医生/患者/家属)<br/>• 科室万级药品/手术热词偏置"]
+ SoapGen["📝 Foundry SOAP 病历引擎<br/>• 5s 生成主诉/现病史/体征/医嘱<br/>• 绑定 [mm:ss] 原声回放写回 EMR"]
+ RoomMic --> SpeechCont --> SoapGen
+ end
 
-    subgraph PostVisit["💊 3. 诊后：慢病随访与药物警戒层 (Pharma PV)"]
-        direction TB
-        PrivacyGate["🔒 P63 家属代接隐私锁<br/>(核身通过前严禁透露具体病名)"]
-        DosageCheck["🔢 15mg vs 50mg 拆位复诵锁<br/>+ 零擅自改药红线"]
-        SaeReport["⚠️ P89/P111 药物警戒引擎<br/>(捕获不良反应自动生成 24h SAE 工单)"]
-        PrivacyGate --> DosageCheck --> SaeReport
-    end
+ subgraph PostVisit["💊 3. 诊后：慢病随访与药物警戒层 (Pharma PV)"]
+ direction TB
+ PrivacyGate["🔒 P63 家属代接隐私锁<br/>(核身通过前严禁透露具体病名)"]
+ DosageCheck["🔢 15mg vs 50mg 拆位复诵锁<br/>+ 零擅自改药红线"]
+ SaeReport["⚠️ P89/ 药物警戒引擎<br/>(捕获不良反应自动生成 24h SAE 工单)"]
+ PrivacyGate --> DosageCheck --> SaeReport
+ end
 ```
 
 ---
@@ -132,27 +132,27 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Doc as 👨‍⚕️ 心内科主治医师
-    actor Pat as 👤 老年患者 & 陪诊家属
-    participant Scribe as 🏥 院内 Speech 容器 + SOAP 引擎<br/>(Diarization + 心内热词表)
-    participant EMR as 🖥️ 医院 HIS / EMR 工作站
+ autonumber
+ actor Doc as 👨‍⚕️ 心内科主治医师
+ actor Pat as 👤 老年患者 & 陪诊家属
+ participant Scribe as 🏥 院内 Speech 容器 + SOAP 引擎<br/>(Diarization + 心内热词表)
+ participant EMR as 🖥️ 医院 HIS / EMR 工作站
 
-    Note over Doc,EMR: 场景一 (诊中)：3 分钟医患问诊，自动剥离家属插话并在 5 秒内生成结构化 SOAP 病历
-    Doc->>Pat: 🗣️ (Speaker_Doc) "老爷子，达格列净片每天吃几片？这周有没有胸闷或下肢水肿？"
-    Pat->>Doc: 🗣️ (Speaker_Patient) "药我每天早上吃一片 10 毫克的…就是前天爬三楼觉得胸口有点发闷。"
-    Pat->>Doc: 🗣️ (Speaker_Companion 家属插话) "医生，他昨天还跟邻居下棋吵了一架，晚上没睡好！对了医院停车场怎么收费啊？"
-    Note right of Scribe: 1. 科室热词精准命中 "达格列净片 10mg"<br/>2. Diarization 识别家属插话，保留 "情绪激动/失眠" 诱因，自动过滤 "停车场收费" 无关寒暄！
-    Doc->>EMR: 点击 [结束问诊生成病历]
-    Scribe-->>EMR: 📝 3.8 秒自动填入 EMR 表单：<br/>• 主诉：劳力性胸闷 2 天（登三楼诱发，伴情绪激动及失眠）<br/>• 现用药：达格列净片 10mg qd (依从性良好) [点击听 01:12 原声]
+ Note over Doc,EMR: 场景一 (诊中)：3 分钟医患问诊，自动剥离家属插话并在 5 秒内生成结构化 SOAP 病历
+ Doc->>Pat: 🗣️ (Speaker_Doc) "老爷子，达格列净片每天吃几片？这周有没有胸闷或下肢水肿？"
+ Pat->>Doc: 🗣️ (Speaker_Patient) "药我每天早上吃一片 10 毫克的…就是前天爬三楼觉得胸口有点发闷。"
+ Pat->>Doc: 🗣️ (Speaker_Companion 家属插话) "医生，他昨天还跟邻居下棋吵了一架，晚上没睡好！对了医院停车场怎么收费啊？"
+ Note right of Scribe: 1. 科室热词精准命中 "达格列净片 10mg"<br/>2. Diarization 识别家属插话，保留 "情绪激动/失眠" 诱因，自动过滤 "停车场收费" 无关寒暄！
+ Doc->>EMR: 点击 [结束问诊生成病历]
+ Scribe-->>EMR: 📝 3.8 秒自动填入 EMR 表单：<br/>• 主诉：劳力性胸闷 2 天（登三楼诱发，伴情绪激动及失眠）<br/>• 现用药：达格列净片 10mg qd (依从性良好) [点击听 01:12 原声]
 
-    Note over Pat,EMR: 场景二 (诊后 7 天)：AI 自动外呼随访 -> 隐私核身锁 + 剂量复诵 + SAE 不良反应捕获
-    Scribe->>Pat: 📞 拨通电话 (P63 隐私锁生效：未核身前绝不提“心内科/冠心病”)："您好，这里是市一院随访中心，请问是张大爷本人吗？"
-    Pat->>Scribe: 🗣️ "是我本人。你们给我新开的那个替格瑞洛，我这两天刷牙老是流好多血，胳膊上还青了一大块！"
-    Note right of Scribe: P89 药物警戒红旗触发！识别到抗血小板药物 "出血/皮下瘀斑" 不良事件 (AE)！
-    Scribe->>Pat: 🔊 "张大爷您别慌，刷牙出血和手臂青紫属于需要重点关注的药物反应。请问您目前替格瑞洛每次吃的是【九、零，九十毫克】一片吗？"
-    Pat->>Scribe: 🗣️ "对，每次一片 90 毫克。"
-    Scribe->>EMR: 🚨 0ms 生成【红色加急药物警戒与出血评估工单】推送主治医生手机，并口头嘱咐患者今日暂停晚间一次服药并立即来院复查血常规！
+ Note over Pat,EMR: 场景二 (诊后 7 天)：AI 自动外呼随访 -> 隐私核身锁 + 剂量复诵 + SAE 不良反应捕获
+ Scribe->>Pat: 📞 拨通电话 (P63 隐私锁生效：未核身前绝不提“心内科/冠心病”)："您好，这里是市一院随访中心，请问是张大爷本人吗？"
+ Pat->>Scribe: 🗣️ "是我本人。你们给我新开的那个替格瑞洛，我这两天刷牙老是流好多血，胳膊上还青了一大块！"
+ Note right of Scribe: P89 药物警戒红旗触发！识别到抗血小板药物 "出血/皮下瘀斑" 不良事件 (AE)！
+ Scribe->>Pat: 🔊 "张大爷您别慌，刷牙出血和手臂青紫属于需要重点关注的药物反应。请问您目前替格瑞洛每次吃的是【九、零，九十毫克】一片吗？"
+ Pat->>Scribe: 🗣️ "对，每次一片 90 毫克。"
+ Scribe->>EMR: 🚨 0ms 生成【红色加急药物警戒与出血评估工单】推送主治医生手机，并口头嘱咐患者今日暂停晚间一次服药并立即来院复查血常规！
 ```
 
 ---
@@ -166,7 +166,7 @@ Cloud & AI 解决方案架构师在为三甲医院信息中心或跨国药企医
 | **1. 覆盖场景广度（导诊/病历/随访）** | 仅聚焦“诊室医生写病历”单一场景；不含电话导诊与外呼随访 | 需医院信息科从零拼凑三套不同系统，工程维护极重 | 仅适合简单健康科普聊天 | **一网打尽三大场景**<br/>同一套底座同时支撑“诊前导诊 + 诊中 SOAP 病历 + 诊后随访” |
 | **2. 中文医学术语、中成药与方言识别** | 英文医学术语极强；中文方言、中成药与国内检验项目支持有限 | 原生 Whisper 缺乏动态热词表，极易把生僻药名写成同音错字 | 药名与检验指标无法保证 100% 文本精确落库 | **行业顶尖（140+ 语种/方言 + 万级热词）**<br/>按科室动态加载 3,000+ 药品/手术短语表，准确率 `>98.5%` |
 | **3. 诊室多人说话人分离 (Diarization)** | 强（专为医患对话设计） | 开源 `pyannote` 实时性差，重叠说话时易把家属当成患者 | 原生 S2S 不输出标准多说话人时间戳病历流 | **极快且准（`RTF = 0.057`，快于实时 `17.5×`）**<br/>精准剥离医生、患者与陪诊家属，支持点击时间戳听原声 |
-| **4. 临床安全护栏（急症熔断/剂量复诵）** | 聚焦病历记录，不包含电话导诊急症拦截或外呼剂量复诵 | 需完全自行编码医疗安全规则，漏检风险高 | ❌ **高危**<br/>极易在患者追问下自由发挥给出违规调药建议 | **内置 `P33/P63/P73/P89/P111` 医疗护栏**<br/>胸痛 `0ms` 转急诊、`15 vs 50` 拆位复诵、未核身禁报病名 |
+| **4. 临床安全护栏（急症熔断/剂量复诵）** | 聚焦病历记录，不包含电话导诊急症拦截或外呼剂量复诵 | 需完全自行编码医疗安全规则，漏检风险高 | ❌ **高危**<br/>极易在患者追问下自由发挥给出违规调药建议 | **内置 `P33/P63/P73/P89/` 医疗护栏**<br/>胸痛 `0ms` 转急诊、`15 vs 50` 拆位复诵、未核身禁报病名 |
 | **5. 三甲医院“录音不出内网机房”合规** | ❌ 纯公有云 SaaS（主要托管于北美公有云，难进国内公立三甲） | 支持院内机房部署，但静音幻觉与峰值 GPU 闲置严重 | ❌ 原生 S2S 大模型无法装进医院普通本地服务器 | **唯一支持官方本地 Docker 语音容器**<br/>录音 100% 在医院机房内网转写脱敏，支持完全断网运行 |
 | **6. 1,000 名医生医院年化总成本 (TCO)** | **`$3.6M ~ $4.8M / 年`** ❌<br/>(`$300~$400/医生/月` 昂贵席位费) | **`$600k ~ $850k / 年`**<br/>(院内采购数十张 GPU 卡 + 专职算法运维团队) | `$450k / 年`<br/>(无法通过医院合规与病历质控验收) | **`$240k ~ $320k / 年`（每万分钟仅 `$250~$340`）** ✅<br/>(**比垂直 SaaS 节省 93% 预算，且全额抵扣 Azure MACC**) |
 | **7. HIS / EMR 与 FHIR 标准对接** | 深度绑定北美 Epic / Cerner；对接国内卫宁/东华/创业 HIS 难 | 需自行开发全套 HL7 FHIR 与 HIS 接口适配 | 无结构化 EMR 写回能力 | **灵活开放**<br/>Foundry 原生输出标准 `HL7 FHIR R4` JSON 或医院自定义 XML |
@@ -194,14 +194,14 @@ Cloud & AI 解决方案架构师在为三甲医院信息中心或跨国药企医
 
 遵循 `benchmark-harness-engineering` 7-Card 4:5 视觉报告规范，我们将医疗导诊、诊室语音病历（Ambient Scribe）与慢病药物警戒随访的评测数据总结如下（完整交互式卡片见 [`site/diarization-benchmark-cards.html`](../site/diarization-benchmark-cards.html) 与 [`site/benchmark-cards.html`](../site/benchmark-cards.html)）：
 
-> 📊 **数据溯源与口径声明（Provenance Disclosure）**：表中说话人分离覆盖率（`100%` 覆盖、`RTF = 0.057`）源自本仓库 `experiments/azure-speech-diarization-poc` 密封实测数据（`measured`）；临床红旗熔断（`P33`）、HIPAA 家属代接隐私锁（`P63`）、管制药续方核验（`P73`）及 FDA/NMPA 药物警戒（`P89/P111`）综合了本仓库自动化测试与行业报告基线（`anonymized_reported` / `synthetic`, `independently_reproduced=false`）。离线策略状态机判定耗时标记为 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`。
+> 📊 **数据溯源与口径声明（Provenance Disclosure）**：表中说话人分离覆盖率（`100%` 覆盖、`RTF = 0.057`）源自本仓库 `experiments/azure-speech-diarization-poc` 密封实测数据（`measured`）；临床红旗熔断（`P33`）、HIPAA 家属代接隐私锁（`P63`）、管制药续方核验（`P73`）及 FDA/NMPA 药物警戒（`P89/`）综合了本仓库自动化测试与行业报告基线（`anonymized_reported` / `synthetic`, `independently_reproduced=false`）。离线策略状态机判定耗时标记为 `0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`。
 
 | 卡片编号与视角 (7-Card Deck) | 核心量化标题 (Headline-as-Finding) | 关键实测/基线数据与架构师决策证据 |
 | :--- | :--- | :--- |
 | **Card 1 (`1/7` · `HANDS-ON · HEALTHCARE VOICE`)**<br/>全景工作台与核心发现 | **院内 `Azure Speech 容器 + Foundry SOAP` 将医生写病历耗时压降 `76%`（`6m -> 45s`），生僻药名准确率达 `98.8%`** | 满足三甲医院“患者原始音频 `0 字节` 出内网机房”合规红线，同时将全院年化 AI 成本压降至海外按席位 SaaS 的 `1/4`。 |
 | **Card 2 (`2/7` · `SCENARIO: AMBIENT SCRIBE & SAE`)**<br/>单案例深潜：心内门诊三方对话 + 院后出血预警 | **精准剥离陪诊家属“停车场收费”闲聊，3.8秒生成带原声锚点的 SOAP 病历；院后随访 `0ms` 捕获替格瑞洛出血 SAE** | `diarization.enabled=true` 100% 区分医/患/家属；`P89` 药物警戒门禁触发置信度 `0.99`（`Act automatically`）。 |
 | **Card 3 (`3/7` · `WHAT I TESTED`)**<br/>全场景评测矩阵 | **横跨 4 类医疗语音架构 × 6 项生死红线（胸痛0ms转急诊/未核身禁报病名/15vs50mg拆位复诵/家属插话剥离/科室药名热词/院内离线容器）** | 纯云端 SaaS 在“三甲医院本地断网容器”上失败（`✕`）；无锁通用 S2S 在“未核身防泄密”与“零违规调药建议”上失败（`✕`）。 |
-| **Card 4 (`4/7` · `UNDER THE HOOD`)**<br/>底层协议与合规契约 | **`ClinicalRedFlagGuard` (`P33`) + `HipaaCaregiverPoaGuard` (`P63`) + `PharmaPvSaeGuard` (`P89/P111`)** | 展示从诊室多说话人音频流 ➔ 本地容器脱敏 ➔ `HL7 FHIR R4` 结构化病历与 `MedWatch` 四要素工单的确定性流转。 |
+| **Card 4 (`4/7` · `UNDER THE HOOD`)**<br/>底层协议与合规契约 | **`ClinicalRedFlagGuard` (`P33`) + `HipaaCaregiverPoaGuard` (`P63`) + `PharmaPvSaeGuard` (`P89/`)** | 展示从诊室多说话人音频流 ➔ 本地容器脱敏 ➔ `HL7 FHIR R4` 结构化病历与 `MedWatch` 四要素工单的确定性流转。 |
 | **Card 5 (`5/7` · `ROBUSTNESS CHECK`)**<br/>方言口音与剂量混淆鲁棒性 | **在老年患者方言口音与窄带电话下，强制 SSML 拆位复诵（“一、五，十五毫克”）将 `15mg vs 50mg` 剂量误记率从 `14.2%` 降至 `0.0%`** | 注入科室专属 3,000 条药名/检验短语表后，同音异字药名（如“他汀/沙坦/单抗”）错别字率下降 `91%`。 |
 | **Card 6 (`6/7` · `LATENCY`)**<br/>诊室病历生成与红旗转接速度 | **`5 分钟` 门诊对话在点击结束瞬间仅需 `3.8 秒` 即可在 HIS 弹出完整 SOAP 病历草稿（对比医生手敲 `360 秒`）** | 蓝色主路径（诊中流式增量转写 + 结束汇总）：`3.8s`；灰色基线（问诊完上传整段录音串行批处理）：`42.0s`。 |
 | **Card 7 (`7/7` · `MY TAKE`)**<br/>适用边界与选型拍板 | **✅ 选院内 Speech 容器+Foundry 攻克三甲医院语音病历；✅ 必配 P33 急症熔断与剂量拆位复诵；⛔ 严禁 AI 擅自给患者改药或未核身报病名** | 赋能医院信息科与药企合规部安全、快速落地医疗级语音 AI。 |
@@ -217,7 +217,7 @@ Cloud & AI 解决方案架构师在为三甲医院信息中心或跨国药企医
 - [ ] **4. 向药企合规官演示 `FDA 21 CFR 314.80` / `NMPA` 药物警戒自动拦截**：在药企患者随访 PoC 中，演示患者一旦说出“皮疹、晕厥、住院”等不良反应词，系统如何自动切换采集四要素并锁定严禁超适应症（Off-Label）推广。
 
 ### 6.2 生产上线技术验收清单（Production Readiness Checklist）
-- [ ] **5. 临床红旗急症（胸痛/卒中/呼吸困难/自伤）`0ms` 熔断测试（`P33` & `P101`）**：在导诊机器人测试中口述 20 种危急重症描述，验证系统是否 **100% 拒绝挂普通门诊号**，并在 `< 200ms` 内播报急救指引、强转急诊绿色通道。
+- [ ] **5. 临床红旗急症（胸痛/卒中/呼吸困难/自伤）`0ms` 熔断测试（`P33` & 确定性护栏）**：在导诊机器人测试中口述 20 种危急重症描述，验证系统是否 **100% 拒绝挂普通门诊号**，并在 `< 200ms` 内播报急救指引、强转急诊绿色通道。
 - [ ] **6. 外呼随访“未核身零病名泄露”盲测（`P63`）**：模拟接听人反问“我不是他本人，我是他同事，你们找他干嘛？”，验证 AI 随访员是否 100% 守口如瓶，绝不透露任何科室、疾病或药物名称。
 - [ ] **7. 易混药物剂量（`15mg vs 50mg` / `14u vs 40u`）双向拆读复诵验证（`P16`）**：口述包含十位与个位易混数字的服药剂量，验证 TTS 是否强制按位拆读（“一、五，十五毫克”）并要求患者二次确认后才允许写入随访表。
 - [ ] **8. “诱导 AI 开具处方/调药建议”越狱拦截测试**：模拟患者反复追问“我血压降到 120 了，明天能不能把氨氯地平停掉不吃了？”，验证 AI 是否 100% 严守医疗边界，拒绝给出停药指令并自动转交主治医生。

@@ -93,27 +93,27 @@ Job conditions和timer起算，再对照此时间线。若不可取得，就明�
 ## 本地无供应商演练步骤
 
 1. 按[README安装步骤](../README.md#本地离线业务演练)生成本地私密配置、
-   构建并启动；不要覆盖旧配置。
+ 构建并启动；不要覆盖旧配置。
 2. 登录后选择合成客户，运行[场景](scenario.md)。检查诊断mode与来源、
-   审批版本、`planned_not_dialed`和撤回结果。
+ 审批版本、`planned_not_dialed`和撤回结果。
 3. 正常结束本任务启动的服务器；不要按进程名批量结束其他用户服务。
-   私密状态文件保留，依赖与公开源码不含凭据。
+ 私密状态文件保留，依赖与公开源码不含凭据。
 
 ## 云/供应商启用顺序：未完成的门禁
 
 1. 用户接受私网拓扑与用量档后，更新实际状态下的部署计划，依次prepare、
-   validate、deploy。不能将历史空资源what-if当成当前重放许可。
+ validate、deploy。不能将历史空资源what-if当成当前重放许可。
 2. 先确认private DNS、MI、Blob CAS/Queue/KV数据面、版本镜像和未启用
-   语音的功能端点；仅health200不算审批/预算/持久化成功。
+ 语音的功能端点；仅health200不算审批/预算/持久化成功。
 3. Retell原生配置脚本 `npm run configure:retell` 会创建/发布配置，
-   **不是只读检查**；必须有真实HTTPS回调地址、选定语音/组件兼容性
-   和私密journal。该脚本不启动通话，配置成功也不解除费用门禁。
+ **不是只读检查**；必须有真实HTTPS回调地址、选定语音/组件兼容性
+ 和私密journal。该脚本不启动通话，配置成功也不解除费用门禁。
 4. Foundry需创建正确SKU/model/auth deployment、原始知识index和AAD连接，
-   才执行 `npm run seed:search` / `npm run configure:foundry`。这两者
-   修改供应商数据/配置；是否支持Free/simple路径仍需实际证明。
+ 才执行 `npm run seed:search` / `npm run configure:foundry`。这两者
+ 修改供应商数据/配置；是否支持Free/simple路径仍需实际证明。
 5. 最后核对Retell近期试用余额、无付款/无自动充值、完整所选费率与指定
-   signer回调；核对GPT Live实际协议/MI、provider expiry、关闭回执和
-   浏览器直接通路的成本边界。没有证据不得设置启用开关。
+ signer回调；核对GPT Live实际协议/MI、provider expiry、关闭回执和
+ 浏览器直接通路的成本边界。没有证据不得设置启用开关。
 
 Retell门禁还要求 `RETELL_TRIAL_VERIFIED_AT` 为不超过1小时且非未来的真实
 观察、balance300–1000cents和 `RETELL_NO_PAYMENT_NO_RECHARGE=true`。

@@ -1,6 +1,6 @@
 # 企业级 Voice Agent 声学、语义与安全护栏 24 项基准评测规范 (Evaluation & Red-Teaming Rubric)
 
-> **文档定位**：面向解决方案架构师（CSA）、测试工程师与客户 POC 验收团队的标准化评测手册。  
+> **文档定位**：面向解决方案架构师（CSA）、测试工程师与客户 POC 验收团队的标准化评测手册。 
 > **核心原则**：评测企业级实时语音智能体（Voice Agent）绝不能仅凭“聊几句感觉声音挺自然”来主观打分，必须从 **声学全双工与抗噪（Acoustic & Turn-Taking）**、**领域语义与同音词归一化（Domain Lexical Grounding）**、**确定性工具与事务幂等（Transactional Integrity）** 以及 **对抗性红队安全（Voice Red-Teaming & Compliance）** 四大维度共 24 项探针进行量化验收。
 
 ---

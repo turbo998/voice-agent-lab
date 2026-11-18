@@ -9,16 +9,16 @@
 ## 1. 📌 Executive Summary
 
 - **Three Architectural Laws for Retail Pharmacy & PBM Voice AI (`PHARMACY-PBM-01`)**:
-  1. **Law 1: Prescription Refills Must Enforce "Active Patient Profile Anchoring + ISMP `LASA` Indication Readback + `P73` Controlled-Substance Hard Lock"!**
-     - **Never Order a Prescription Refill From an Unanchored Open-Vocabulary STT Drug String!**
-     - **Active Medication Profile Anchoring**: Authenticate the caller via `Caller_ID + Date_of_Birth` first to load their **Active 12-Month Medication Profile** (typically 2–6 active prescriptions), shrinking the search space from 20,000 FDA drugs down to the caller's exact active prescriptions;
-     - **ISMP LASA (Look-Alike Sound-Alike) Three-Point Indication Confirmation**: Whenever a spoken drug falls on the **ISMP High-Alert / Confused Drug Names List** (`Hydroxyzine / Hydralazine`, `Metoprolol / Metolazone`, `Glimepiride / Glyburide`), the state machine requires an explicit **Name + Strength + Clinical Indication** verbal readback: *"Mrs. Miller, just to be 100% sure, you'd like to refill your **25mg Hydralazine tablet for high blood pressure**, correct?"*—driving LASA mis-selection from `3.8%` to **`0.0%`!**
-     - **`P73` DEA Schedule II–V Controlled Substance Hard Lock**: Requests for opioids, benzodiazepines, or stimulants (`Oxycodone`, `Alprazolam`, `Adderall`) are physically blocked from autonomous AI refill, automatically querying the state **PDMP (Prescription Drug Monitoring Program)** and routing 100% to a licensed pharmacist!
-  2. **Law 2: Out-of-Stock GLP-1 / Specialty Drugs Trigger an "`800ms` Sister-Store Inventory Transfer + Drug-Drug Interaction (`DDI`) Shield"!**
-     - When a caller asks for a high-demand cold-chain medication (`Ozempic / Mounjaro / Insulin`) that is out of stock at their home store, legacy IVRs simply say *"Out of stock"*, losing 45% of prescriptions to competitors;
-     - Our orchestrator queries real-time cold-chain inventory across sister stores within a 2-mile radius in **`800ms`** and offers: *"Our Main Street store is out of 1mg Ozempic today, but our Oak Avenue location 0.5 miles away has 4 pens in the fridge—would you like me to transfer your prescription there now or schedule same-day cold-chain home delivery?"*—**slashing stockout prescription churn by 64%!**
-  3. **Law 3: Payer / PBM Prior Authorization (`P95` `CMS 42 CFR § 423`) Enforces "30-Second Green-Light Auto-Approval + 100% Human MD Review on Potential Denials"!**
-     - Under **CMS Medicare Advantage & Part D (`42 CFR § 423.568`)** and state AI laws, AI can **auto-approve** requests that meet clinical criteria in **30 seconds**, expediting urgent cases to the **24-hour statutory track**, while **100% of potential adverse determinations (denials) MUST be routed to a licensed human Physician / Medical Director**!
+ 1. **Law 1: Prescription Refills Must Enforce "Active Patient Profile Anchoring + ISMP `LASA` Indication Readback + `P73` Controlled-Substance Hard Lock"!**
+ - **Never Order a Prescription Refill From an Unanchored Open-Vocabulary STT Drug String!**
+ - **Active Medication Profile Anchoring**: Authenticate the caller via `Caller_ID + Date_of_Birth` first to load their **Active 12-Month Medication Profile** (typically 2–6 active prescriptions), shrinking the search space from 20,000 FDA drugs down to the caller's exact active prescriptions;
+ - **ISMP LASA (Look-Alike Sound-Alike) Three-Point Indication Confirmation**: Whenever a spoken drug falls on the **ISMP High-Alert / Confused Drug Names List** (`Hydroxyzine / Hydralazine`, `Metoprolol / Metolazone`, `Glimepiride / Glyburide`), the state machine requires an explicit **Name + Strength + Clinical Indication** verbal readback: *"Mrs. Miller, just to be 100% sure, you'd like to refill your **25mg Hydralazine tablet for high blood pressure**, correct?"*—driving LASA mis-selection from `3.8%` to **`0.0%`!**
+ - **`P73` DEA Schedule II–V Controlled Substance Hard Lock**: Requests for opioids, benzodiazepines, or stimulants (`Oxycodone`, `Alprazolam`, `Adderall`) are physically blocked from autonomous AI refill, automatically querying the state **PDMP (Prescription Drug Monitoring Program)** and routing 100% to a licensed pharmacist!
+ 2. **Law 2: Out-of-Stock GLP-1 / Specialty Drugs Trigger an "`800ms` Sister-Store Inventory Transfer + Drug-Drug Interaction (`DDI`) Shield"!**
+ - When a caller asks for a high-demand cold-chain medication (`Ozempic / Mounjaro / Insulin`) that is out of stock at their home store, legacy IVRs simply say *"Out of stock"*, losing 45% of prescriptions to competitors;
+ - Our orchestrator queries real-time cold-chain inventory across sister stores within a 2-mile radius in **`800ms`** and offers: *"Our Main Street store is out of 1mg Ozempic today, but our Oak Avenue location 0.5 miles away has 4 pens in the fridge—would you like me to transfer your prescription there now or schedule same-day cold-chain home delivery?"*—**slashing stockout prescription churn by 64%!**
+ 3. **Law 3: Payer / PBM Prior Authorization (`P95` `CMS 42 CFR § 423`) Enforces "30-Second Green-Light Auto-Approval + 100% Human MD Review on Potential Denials"!**
+ - Under **CMS Medicare Advantage & Part D (`42 CFR § 423.568`)** and state AI laws, AI can **auto-approve** requests that meet clinical criteria in **30 seconds**, expediting urgent cases to the **24-hour statutory track**, while **100% of potential adverse determinations (denials) MUST be routed to a licensed human Physician / Medical Director**!
 
 ---
 
@@ -26,21 +26,21 @@
 
 ### Q1: When a senior caller cannot find their 12-digit prescription bottle number and asks for *"my little white blood-pressure pill"* or mispronounces a complex generic name, how does the AI refill the exact right medication safely?
 - **Indication-to-Profile Reverse Resolution + Tall-Man Phonetic Verification**:
-  1. **69% of Seniors Abandon Legacy "Enter Your 12-Digit Rx Number" Keypad IVRs**: When a patient doesn't have their pill bottle in hand, our AI looks up their active profile by `DOB + ZIP/Phone` and maps spoken descriptions (*"my blood pressure pill"* or *"the cholesterol one"*) to the exact NDC (National Drug Code) on file.
-  2. **Brand-to-Generic Bidirectional Synonym Graph**: Maps brand and generic names seamlessly (`"Lipitor" <-> "Atorvastatin"`, `"Norvasc" <-> "Amlodipine"`) while confirming strength and daily dosing before queuing the fill.
+ 1. **69% of Seniors Abandon Legacy "Enter Your 12-Digit Rx Number" Keypad IVRs**: When a patient doesn't have their pill bottle in hand, our AI looks up their active profile by `DOB + ZIP/Phone` and maps spoken descriptions (*"my blood pressure pill"* or *"the cholesterol one"*) to the exact NDC (National Drug Code) on file.
+ 2. **Brand-to-Generic Bidirectional Synonym Graph**: Maps brand and generic names seamlessly (`"Lipitor" <-> "Atorvastatin"`, `"Norvasc" <-> "Amlodipine"`) while confirming strength and daily dosing before queuing the fill.
 
 ### Q2: How do we prevent a patient on blood thinners (`Warfarin` or `Eliquis`) from ordering a contraindicated OTC painkiller (`Ibuprofen / NSAIDs`) or antibiotic over the voice channel?
 - **Enterprise-Wide Patient Medication Profile + Deterministic `DDI` Interlock**:
-  - Before confirming any refill or OTC home-delivery cart, the orchestrator invokes `verify_patient_ddi_and_allergy(patient_id, candidate_ndc)` against a deterministic clinical pharmacology engine (`First Databank / Medi-Span`):
-    - If a **Severe Grade-1 Drug-Drug Interaction (`DDI`)** or documented allergy (`Penicillin / Sulfa`) hits, the AI halts checkout in **`120ms`**, warns the patient of the bleeding/allergy risk, and warm-transfers to the on-duty pharmacist with the conflict highlighted on screen!
+ - Before confirming any refill or OTC home-delivery cart, the orchestrator invokes `verify_patient_ddi_and_allergy(patient_id, candidate_ndc)` against a deterministic clinical pharmacology engine (`First Databank / Medi-Span`):
+ - If a **Severe Grade-1 Drug-Drug Interaction (`DDI`)** or documented allergy (`Penicillin / Sulfa`) hits, the AI halts checkout in **`120ms`**, warns the patient of the bleeding/allergy risk, and warm-transfers to the on-duty pharmacist with the conflict highlighted on screen!
 
 ### Q3: How does a PBM or Health Plan automate Prior Authorization (`PA` `P95`) phone calls from physician offices while staying 100% compliant with CMS and state "No AI Denial" mandates?
 - **The Asymmetric "AI Green-Lights in 30s, Humans Decide All Gray/Red Cases" Pipeline**:
-  1. **Zero-Hold Provider Intake**: When a clinic nurse calls the PBM PA hotline, the AI answers in `0s`, verifies the prescriber's `NPI`, and loads the patient's EHR/claim history.
-  2. **Real-Time Missing-Criteria Elicitation & Step-Therapy Continuity Override**:
-     - If a PA form is missing one lab value (e.g., `HbA1c = 8.4%` or `EGFR mutation positive`), the AI asks the nurse verbally, verifies step-therapy history (automatically granting **Continuity-of-Care overrides** for patients already stable on therapy), and **auto-approves 68% of compliant requests in 30 seconds**!
-  3. **Hard Statutory Lock Against Autonomous AI Denials**:
-     - The tool `issue_pa_denial()` **does not exist in the AI agent's tool schema**! Any case that fails automated clinical-guideline matching is packaged into a structured clinical brief and routed to a human Medical Director (`MD`) queue with a **24-hour (expedited) / 72-hour (standard)** SLA countdown timer.
+ 1. **Zero-Hold Provider Intake**: When a clinic nurse calls the PBM PA hotline, the AI answers in `0s`, verifies the prescriber's `NPI`, and loads the patient's EHR/claim history.
+ 2. **Real-Time Missing-Criteria Elicitation & Step-Therapy Continuity Override**:
+ - If a PA form is missing one lab value (e.g., `HbA1c = 8.4%` or `EGFR mutation positive`), the AI asks the nurse verbally, verifies step-therapy history (automatically granting **Continuity-of-Care overrides** for patients already stable on therapy), and **auto-approves 68% of compliant requests in 30 seconds**!
+ 3. **Hard Statutory Lock Against Autonomous AI Denials**:
+ - The tool `issue_pa_denial` **does not exist in the AI agent's tool schema**! Any case that fails automated clinical-guideline matching is packaged into a structured clinical brief and routed to a human Medical Director (`MD`) queue with a **24-hour (expedited) / 72-hour (standard)** SLA countdown timer.
 
 ---
 
@@ -50,59 +50,59 @@
 
 ```mermaid
 flowchart TD
-    A["Retail Pharmacy / Mail-Order / PBM Deploys Voice AI"] --> B{"Primary Caller Workflow?"}
-    B -->|"1. Patient Prescription Refill (Rx Refill) & OTC Order<br/>(Mandate: Zero LASA Mix-Up & Zero DDI Harm)"| C{"Is Requested Medication a P73 DEA Controlled Substance (Sch II-V)?"}
-    C -->|"Yes (Oxycodone / Alprazolam / Adderall)"| D["P73 Controlled-Substance Hard Lock: Block Auto-Refill<br/>Auto-Query State PDMP + 100% Escalate to Licensed Pharmacist"]
-    C -->|"No (Maintenance Rx: BP / Diabetes / Statin)"| E["Anchor to Patient Active Rx Profile + ISMP LASA Indication Readback<br/>+ Cross-Store DDI & Allergy Check<br/>• In Stock: Queue Fill / Delivery<br/>• Out of Stock: 800ms Transfer to Sister Store (<2 Miles)"]
-    B -->|"2. Provider / Member Prior Authorization Call (P95 PA)<br/>(CMS 42 CFR §423 · Zero Autonomous AI Denial)"| F["Verify NPI + Lab Biomarkers + Step-Therapy Continuity Override<br/>• Meets Clinical Criteria: 30s Instant Auto-Approval!<br/>• Urgent / Expedited: Route to 24h Priority Track<br/>• Unmet Criteria / Potential Denial: 100% Route to Human MD!"]
+ A["Retail Pharmacy / Mail-Order / PBM Deploys Voice AI"] --> B{"Primary Caller Workflow?"}
+ B -->|"1. Patient Prescription Refill (Rx Refill) & OTC Order<br/>(Mandate: Zero LASA Mix-Up & Zero DDI Harm)"| C{"Is Requested Medication a P73 DEA Controlled Substance (Sch II-V)?"}
+ C -->|"Yes (Oxycodone / Alprazolam / Adderall)"| D["P73 Controlled-Substance Hard Lock: Block Auto-Refill<br/>Auto-Query State PDMP + 100% Escalate to Licensed Pharmacist"]
+ C -->|"No (Maintenance Rx: BP / Diabetes / Statin)"| E["Anchor to Patient Active Rx Profile + ISMP LASA Indication Readback<br/>+ Cross-Store DDI & Allergy Check<br/>• In Stock: Queue Fill / Delivery<br/>• Out of Stock: 800ms Transfer to Sister Store (<2 Miles)"]
+ B -->|"2. Provider / Member Prior Authorization Call (P95 PA)<br/>(CMS 42 CFR §423 · Zero Autonomous AI Denial)"| F["Verify NPI + Lab Biomarkers + Step-Therapy Continuity Override<br/>• Meets Clinical Criteria: 30s Instant Auto-Approval!<br/>• Urgent / Expedited: Route to 24h Priority Track<br/>• Unmet Criteria / Potential Denial: 100% Route to Human MD!"]
 ```
 
 ### 3.2 LASA Disambiguation, Cross-Store Inventory Bridge & `P95` Prior Auth Architecture (`PHARMACY-PBM-01`)
 
 ```mermaid
 flowchart LR
-    subgraph Caller["1. Patient & Provider Ingress"]
-        Patient["Patient Call (PSTN / App)<br/>(Rx Number or Spoken Drug Name)"]
-        Clinic["Physician Office / Clinic Nurse<br/>(Specialty Drug Prior Auth Request)"]
-    end
+ subgraph Caller["1. Patient & Provider Ingress"]
+ Patient["Patient Call (PSTN / App)<br/>(Rx Number or Spoken Drug Name)"]
+ Clinic["Physician Office / Clinic Nurse<br/>(Specialty Drug Prior Auth Request)"]
+ end
 
-    subgraph SafetyBrain["2. Clinical Safety & Regulatory Engine"]
-        Profile["Active Rx Profile Anchor<br/>& ISMP 400-Pair LASA Disambiguator<br/>(Enforces Name + Dose + Indication Readback)"]
-        DDIGate["Deterministic DDI & Allergy Engine<br/>& P73 DEA Controlled-Substance Lock"]
-        PABrain["P95 Prior Authorization (PA) Engine<br/>• 30s Green-Light Auto-Approve<br/>• Hard Ban on Autonomous AI Denials"]
-        Patient <--> Profile --> DDIGate
-        Clinic <--> PABrain
-    end
+ subgraph SafetyBrain["2. Clinical Safety & Regulatory Engine"]
+ Profile["Active Rx Profile Anchor<br/>& ISMP 400-Pair LASA Disambiguator<br/>(Enforces Name + Dose + Indication Readback)"]
+ DDIGate["Deterministic DDI & Allergy Engine<br/>& P73 DEA Controlled-Substance Lock"]
+ PABrain["P95 Prior Authorization (PA) Engine<br/>• 30s Green-Light Auto-Approve<br/>• Hard Ban on Autonomous AI Denials"]
+ Patient <--> Profile --> DDIGate
+ Clinic <--> PABrain
+ end
 
-    subgraph Fulfill["3. Pharmacy ERP & Pharmacist / MD Loop"]
-        Inv["Multi-Store Cold-Chain Inventory Mesh<br/>(800ms Sister-Store Rx Transfer)"]
-        Pharm["Pharmacist (RPh) & Payer MD Console<br/>(PDMP Review / DDI Consult / PA Adjudication)"]
-        DDIGate -->|"Safety Cleared"| Inv
-        DDIGate -->|"DDI / Schedule II Hit"| Pharm
-        PABrain -->|"Unmet Criteria -> MD Review"| Pharm
-    end
+ subgraph Fulfill["3. Pharmacy ERP & Pharmacist / MD Loop"]
+ Inv["Multi-Store Cold-Chain Inventory Mesh<br/>(800ms Sister-Store Rx Transfer)"]
+ Pharm["Pharmacist (RPh) & Payer MD Console<br/>(PDMP Review / DDI Consult / PA Adjudication)"]
+ DDIGate -->|"Safety Cleared"| Inv
+ DDIGate -->|"DDI / Schedule II Hit"| Pharm
+ PABrain -->|"Unmet Criteria -> MD Review"| Pharm
+ end
 ```
 
 ### 3.3 LASA Drug Confusion Save (`Hydralazine vs. Hydroxyzine`) & `800ms` Sister-Store GLP-1 Transfer Sequence
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant Pt as Senior Patient (74yo Mr. Zhao)
-    participant AI as Pharmacy Voice Concierge (PHARMACY-PBM-01)
-    participant Safe as LASA Disambiguator & DDI Engine
-    participant ERP as Chain Inventory & Cold-Chain Mesh
-    participant RPh as On-Duty Pharmacist Desk
+ autonumber
+ participant Pt as Senior Patient (74yo Mr. Zhao)
+ participant AI as Pharmacy Voice Concierge (PHARMACY-PBM-01)
+ participant Safe as LASA Disambiguator & DDI Engine
+ participant ERP as Chain Inventory & Cold-Chain Mesh
+ participant RPh as On-Duty Pharmacist Desk
 
-    Pt->>AI: Calls store (slurred pronunciation): "Hi, I need to refill my 'Hydroxyzine' tablets and pick up my Ozempic pen this afternoon!"
-    AI->>Safe: Authenticates DOB + loads Active Rx Profile: [Active Rx 1: Hydralazine 25mg (Blood Pressure); Active Rx 2: Ozempic 1mg; Active Rx 3: Warfarin]
-    Safe->>Safe: Triggers ISMP High-Alert LASA Warning! [Spoken 'Hydroxyzine (Antihistamine)' sounds like active Rx 'Hydralazine (Blood Pressure)'!]
-    AI-->>Pt: "Mr. Zhao, let me double-check for your safety: your active prescription on file is **25mg Hydralazine for high blood pressure**—is that the blood pressure medication you'd like to refill today?"
-    Pt->>AI: "Oh yes! Hydralazine for my blood pressure—I always mix up those long names!"
-    AI->>ERP: Locks [Hydralazine 25mg + Ozempic 1mg] -> Queries Home Store (#104 Main St) inventory
-    ERP-->>AI: Returns: [Hydralazine: In Stock; Ozempic 1mg: 0 pens at #104, 6 pens in cold storage at #108 Oak Ave (0.4 miles away)]
-    AI-->>Pt: "Your Hydralazine is ready to fill! Our Main Street fridge is out of 1mg Ozempic today, but I just locked a pen for you from our Oak Avenue store 500 meters away—we can have both delivered to your door at 3 PM in a cold-chain bag. Would you like that?"
-    Pt->>AI: "Yes please, 3 PM home delivery is wonderful!"
+ Pt->>AI: Calls store (slurred pronunciation): "Hi, I need to refill my 'Hydroxyzine' tablets and pick up my Ozempic pen this afternoon!"
+ AI->>Safe: Authenticates DOB + loads Active Rx Profile: [Active Rx 1: Hydralazine 25mg (Blood Pressure); Active Rx 2: Ozempic 1mg; Active Rx 3: Warfarin]
+ Safe->>Safe: Triggers ISMP High-Alert LASA Warning! [Spoken 'Hydroxyzine (Antihistamine)' sounds like active Rx 'Hydralazine (Blood Pressure)'!]
+ AI-->>Pt: "Mr. Zhao, let me double-check for your safety: your active prescription on file is **25mg Hydralazine for high blood pressure**—is that the blood pressure medication you'd like to refill today?"
+ Pt->>AI: "Oh yes! Hydralazine for my blood pressure—I always mix up those long names!"
+ AI->>ERP: Locks [Hydralazine 25mg + Ozempic 1mg] -> Queries Home Store (#104 Main St) inventory
+ ERP-->>AI: Returns: [Hydralazine: In Stock; Ozempic 1mg: 0 pens at #104, 6 pens in cold storage at #108 Oak Ave (0.4 miles away)]
+ AI-->>Pt: "Your Hydralazine is ready to fill! Our Main Street fridge is out of 1mg Ozempic today, but I just locked a pen for you from our Oak Avenue store 500 meters away—we can have both delivered to your door at 3 PM in a cold-chain bag. Would you like that?"
+ Pt->>AI: "Yes please, 3 PM home delivery is wonderful!"
 ```
 
 ---
@@ -137,29 +137,29 @@ sequenceDiagram
 1. **Card 1 (`1 / 7` · `HANDS-ON · PHARMACY-PBM-VOICE`) — Headline Finding**: Across 2,500 simulated pharmacy refill and PBM Prior Authorization calls spanning 400 ISMP LASA sound-alike drug pairs, **`PHARMACY-PBM-01` reduced LASA drug mis-selection from `3.8%` to `0.0%`, enforced `100%` `P73` controlled-substance & severe DDI interception, and cut green-light Prior Authorization turnaround from `3 days` to `28 seconds`**.
 2. **Card 2 (`2 / 7` · `SCENARIO: LASA-DRUG-SAVE-AND-CROSS-STORE-RX`) — Single-Case Deep Dive**: A 74-year-old mispronounces *Hydralazine* as *Hydroxyzine*; the AI anchors to his hypertension profile, verifies the blood-pressure indication aloud, and automatically bridges an out-of-stock `Ozempic 1mg` pen from a sister store 500m away in **`780ms`** (`Confirm` -> `Act automatically`).
 3. **Card 3 (`3 / 7` · `WHAT I TESTED`) — 4-Scenario Pharmacy & PBM Red-Line Matrix**:
-   - `ISMP-LASA-SOUND-ALIKE-CONFUSION` (*Hydroxyzine vs. Hydralazine* / *Metoprolol vs. Metolazone*): Unanchored STT `✕ 3.8% wrong drug queued` vs. Active profile anchor + indication readback **`0` wrong-drug orders**;
-   - `P73-DEA-SCHEDULE-II-CONTROLLED` (requesting autonomous refill of *Oxycodone / Adderall*): Unchecked refill bot `✕ queues controlled substance` vs. `P73` DEA Gate **100% blocked & routed to pharmacist with PDMP check**;
-   - `WARFARIN-NSAID-SEVERE-DDI` (patient on *Warfarin* ordering OTC *Ibuprofen*): Standard order bot `✕ 0% interaction warning` vs. Cross-store DDI engine **100% Grade-1 bleeding alert & RPh transfer**;
-   - `P95-PRIOR-AUTH-AUTONOMOUS-DENIAL-BAN` (PA request with incomplete lab criteria): Non-compliant AI `✕ issues automated denial` vs. `P95` CMS Gate **green-light cases approved in `28s`; unmet cases `100%` routed to human MD**.
+ - `ISMP-LASA-SOUND-ALIKE-CONFUSION` (*Hydroxyzine vs. Hydralazine* / *Metoprolol vs. Metolazone*): Unanchored STT `✕ 3.8% wrong drug queued` vs. Active profile anchor + indication readback **`0` wrong-drug orders**;
+ - `P73-DEA-SCHEDULE-II-CONTROLLED` (requesting autonomous refill of *Oxycodone / Adderall*): Unchecked refill bot `✕ queues controlled substance` vs. `P73` DEA Gate **100% blocked & routed to pharmacist with PDMP check**;
+ - `WARFARIN-NSAID-SEVERE-DDI` (patient on *Warfarin* ordering OTC *Ibuprofen*): Standard order bot `✕ 0% interaction warning` vs. Cross-store DDI engine **100% Grade-1 bleeding alert & RPh transfer**;
+ - `P95-PRIOR-AUTH-AUTONOMOUS-DENIAL-BAN` (PA request with incomplete lab criteria): Non-compliant AI `✕ issues automated denial` vs. `P95` CMS Gate **green-light cases approved in `28s`; unmet cases `100%` routed to human MD**.
 4. **Card 4 (`4 / 7` · `UNDER THE HOOD`) — LASA Indication Readback & `P95` Prior Auth Contract**:
-   ```json
-   {
-     "rx_session_id": "pharm_refill_77301",
-     "lasa_safety_check": {
-       "spoken_drug": "Hydroxyzine",
-       "profile_anchored_drug": "Hydralazine_25mg_Tablet",
-       "indication_readback_confirmed": "HYPERTENSION",
-       "ddi_warfarin_nsaid_blocked": true
-     },
-     "inventory_bridge": { "home_store_stock": 0, "transfer_store_id": "STORE_108_OAK_AVE", "cold_chain_locked": true },
-     "p95_prior_auth": { "expedited_24h_flag": true, "auto_approved": true, "autonomous_ai_denial_permitted": false }
-   }
-   ```
+ ```json
+ {
+ "rx_session_id": "pharm_refill_77301",
+ "lasa_safety_check": {
+ "spoken_drug": "Hydroxyzine",
+ "profile_anchored_drug": "Hydralazine_25mg_Tablet",
+ "indication_readback_confirmed": "HYPERTENSION",
+ "ddi_warfarin_nsaid_blocked": true
+ },
+ "inventory_bridge": { "home_store_stock": 0, "transfer_store_id": "STORE_108_OAK_AVE", "cold_chain_locked": true },
+ "p95_prior_auth": { "expedited_24h_flag": true, "auto_approved": true, "autonomous_ai_denial_permitted": false }
+ }
+ ```
 5. **Card 5 (`5 / 7` · `ROBUSTNESS CHECK`) — No-Bottle Senior Callers & Brand-vs-Generic Synonym Perturbation**: Profile anchoring by `DOB + Indication` lifts no-bottle refill completion from `18.0%` (legacy keypad IVR) to **`94.2%`**, with **`99.8%` brand-to-generic normalization accuracy**.
 6. **Card 6 (`6 / 7` · `LATENCY`) — Sister-Store Inventory Lock & Green-Light PA Latency**: Multi-store inventory lookup and prescription transfer completes in **`780ms` P50**; compliant Prior Authorization auto-approval completes in **`28,000ms` (28s)**.
 7. **Card 7 (`7 / 7` · `MY TAKE`) — Good Fit vs. Not For**:
-   - ✅ **Good fit**: Retail & mail-order pharmacy refill hotlines, specialty GLP-1/biologic inventory routing, Day-3 medication adherence outreach, PBM Prior Authorization (`PA`) intake;
-   - ⛔ **Not for**: Never queue a high-alert prescription from raw open-vocabulary speech recognition without anchoring to the patient's active profile and confirming the clinical indication; never allow AI to issue an autonomous insurance denial!
+ - ✅ **Good fit**: Retail & mail-order pharmacy refill hotlines, specialty GLP-1/biologic inventory routing, Day-3 medication adherence outreach, PBM Prior Authorization (`PA`) intake;
+ - ⛔ **Not for**: Never queue a high-alert prescription from raw open-vocabulary speech recognition without anchoring to the patient's active profile and confirming the clinical indication; never allow AI to issue an autonomous insurance denial!
 
 ---
 

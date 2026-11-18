@@ -1,4 +1,4 @@
-# 企业实时语音“打断处理（Barge-in）、语义级判停（Semantic EOU）与免提回声消除（AEC）”体验调优与选型指南（`TURN-BARGE-01` / `P03` / `P715`）
+# 企业实时语音“打断处理（Barge-in）、语义级判停（Semantic EOU）与免提回声消除（AEC）”体验调优与选型指南（`TURN-BARGE-01` / `P03` / 确定性护栏）
 
 > **导读**：在实时语音智能体的用户验收测试（UAT）中，决定客户觉得它是“聪明伶俐的真人顾问”还是“让人抓狂的智障机器”的头号分水岭，往往不是大模型的智商，而是**话轮转换与打断控制（Turn-Taking & Barge-in Orchestration）**！几乎每个语音团队都踩过这四个致命体验深坑：**① 客户报银行卡号或手机号时，刚念完前四位低头看了一眼卡（停顿 800ms），AI 就迫不及待地插嘴抢话：“您只报了四位，请重报！” ② AI 正在播报长段理赔要求，客户礼貌地附和了一声“嗯嗯”或轻轻咳嗽了一下，AI 立刻像断电一样戛然而止！ ③ 客户开着手机免提或车载蓝牙打电话，AI 自己播报的声音漏进麦克风，结果 AI“听见自己说话”把自己打断了！ ④ 云端模型一口气生成了 12 秒的语音流，客户在第 3 秒打断并问“刚才第二条是什么意思？”，AI 却以为客户已经听完了整整 12 秒！** 本文从首席实时语音编排架构师视角，彻底拆解**语义级判停（Semantic EOU）、双档附和词/真打断分级器、免提自回声消除与 `audio_end_ms` 播放进度对齐**的端到端工程方案。
 
@@ -9,21 +9,21 @@
 ## 1. 📌 核心选型结论速览（Executive Summary）
 
 - **告别“一刀切固定静音阈值 VAD（如 `silence_duration_ms = 500ms`）”，全面升级为“语义 + 声学韵律双模判停（Semantic EOU）+ 双档打断分级器（Two-Gear Barge-in）”！**
-  - **为什么固定静音阈值（Fixed-Silence VAD）永远调不好？**
-    - 如果把静音阈值调短（如 `400ms`）：日常短句问答很快，但客户一旦报 18 位身份证号、念地址或边想边说（停顿 `850ms`），就会被 AI 频繁粗暴抢话截断！
-    - 如果把静音阈值调长（如 `1,200ms`）：报卡号不抢话了，但客户每次问完“今天几点下班？”，都要忍受漫长的 1.2 秒尴尬沉默！
+ - **为什么固定静音阈值（Fixed-Silence VAD）永远调不好？**
+ - 如果把静音阈值调短（如 `400ms`）：日常短句问答很快，但客户一旦报 18 位身份证号、念地址或边想边说（停顿 `850ms`），就会被 AI 频繁粗暴抢话截断！
+ - 如果把静音阈值调长（如 `1,200ms`）：报卡号不抢话了，但客户每次问完“今天几点下班？”，都要忍受漫长的 1.2 秒尴尬沉默！
 - **企业级丝滑语音交互的“四层黄金状态机”**：
-  1. **第一层：动态语义与基频判停（Semantic + Prosodic EOU —— 完整短句 `320ms` 极速接话，未完从句/报号自动延展至 `2,200ms`）**：
-     - 结合轻量端侧语义判停模型（如 `LiveKit Multilingual Turn Detector` 或 `Azure OpenAI Voice Live Semantic VAD`）与句末基频下降曲率（Falling Pitch Contour）：
-       - 当客户说出语义完整的疑问句（*“请问我的快递到哪了？”*）且尾音基频自然下沉，仅需 **`320ms`** 静音即刻触发回复；
-       - 当客户话语以连词/介词结尾（*“我想改签明天下午那个……”*）或正处于槽位数字报读态（`expecting_digits = true`），自动将等待窗口动态拉伸至 **`1,800ms – 2,200ms`**，**报号半途误截断率直降 89.4%！**
-  2. **第二层：双档打断分级器（Two-Gear Barge-in：`< 350ms` 附和词/咳嗽不中断 vs `>= 2 词` 实质打断 `<= 140ms` 急刹）**：
-     - **一档（协作式附和 Backchannel）**：当 AI 正在播报且检测到客户发声时长 `< 350ms`、或增量识别为高频附和词（`“嗯嗯”`、`“好的”`、`“对”`、`“Uh-huh”`、`“Right”`）及非人声瞬态（咳嗽、清嗓、关门声）时，**绝不清空 TTS 播放缓冲**！AI 继续流利讲完当前句子；
-     - **二档（实质性打断 True Interruption）**：一旦客户连续发声 `>= 380ms` 且包含否定/转折/提问词（`“等一下”`、`“不对”`、`“不用了”`、`“那如果……”`），网关在 **`<= 140ms`** 内立即发送 `ClearAudioBuffer` 排空下发队列，并递增 `T07 turn_epoch` 取消在途旧工具！
-  3. **第三层：端云协同回声消除与 PSTN 下行指纹抑振（AEC + Downlink Echo Fingerprinting）**：
-     - 针对 PSTN 电话免提外放（无 WebRTC 浏览器参考信号），在媒体网关维护一个过去 `600ms` 的下行 TTS 文本/声学滑窗；若上行麦克风流识别出的字词与正在播报的下行字词重合度 `> 85%` 且能量呈衰减特征，判定为**扬声器声学自回声（Self-Echo）**并直接静默丢弃，**将免提自打断率从 34% 彻底归零**！
-  4. **第四层：精确到毫秒的“已播放位置截断对齐（Playback-Aligned `conversation.item.truncate`）”**：
-     - 当客户在 AI 播报第 `3,200ms` 处打断时，编排器根据 SBC/WebRTC 实际已发送的 PCM 字节数（`bytes_sent / 48 bytes_per_ms`）向大模型发送 `conversation.item.truncate(audio_end_ms=3200)`，让大模型准确知道**客户只听到了前 3.2 秒，后面 8.8 秒根本没听见**！
+ 1. **第一层：动态语义与基频判停（Semantic + Prosodic EOU —— 完整短句 `320ms` 极速接话，未完从句/报号自动延展至 `2,200ms`）**：
+ - 结合轻量端侧语义判停模型（如 `LiveKit Multilingual Turn Detector` 或 `Azure OpenAI Voice Live Semantic VAD`）与句末基频下降曲率（Falling Pitch Contour）：
+ - 当客户说出语义完整的疑问句（*“请问我的快递到哪了？”*）且尾音基频自然下沉，仅需 **`320ms`** 静音即刻触发回复；
+ - 当客户话语以连词/介词结尾（*“我想改签明天下午那个……”*）或正处于槽位数字报读态（`expecting_digits = true`），自动将等待窗口动态拉伸至 **`1,800ms – 2,200ms`**，**报号半途误截断率直降 89.4%！**
+ 2. **第二层：双档打断分级器（Two-Gear Barge-in：`< 350ms` 附和词/咳嗽不中断 vs `>= 2 词` 实质打断 `<= 140ms` 急刹）**：
+ - **一档（协作式附和 Backchannel）**：当 AI 正在播报且检测到客户发声时长 `< 350ms`、或增量识别为高频附和词（`“嗯嗯”`、`“好的”`、`“对”`、`“Uh-huh”`、`“Right”`）及非人声瞬态（咳嗽、清嗓、关门声）时，**绝不清空 TTS 播放缓冲**！AI 继续流利讲完当前句子；
+ - **二档（实质性打断 True Interruption）**：一旦客户连续发声 `>= 380ms` 且包含否定/转折/提问词（`“等一下”`、`“不对”`、`“不用了”`、`“那如果……”`），网关在 **`<= 140ms`** 内立即发送 `ClearAudioBuffer` 排空下发队列，并递增 `T07 turn_epoch` 取消在途旧工具！
+ 3. **第三层：端云协同回声消除与 PSTN 下行指纹抑振（AEC + Downlink Echo Fingerprinting）**：
+ - 针对 PSTN 电话免提外放（无 WebRTC 浏览器参考信号），在媒体网关维护一个过去 `600ms` 的下行 TTS 文本/声学滑窗；若上行麦克风流识别出的字词与正在播报的下行字词重合度 `> 85%` 且能量呈衰减特征，判定为**扬声器声学自回声（Self-Echo）**并直接静默丢弃，**将免提自打断率从 34% 彻底归零**！
+ 4. **第四层：精确到毫秒的“已播放位置截断对齐（Playback-Aligned `conversation.item.truncate`）”**：
+ - 当客户在 AI 播报第 `3,200ms` 处打断时，编排器根据 SBC/WebRTC 实际已发送的 PCM 字节数（`bytes_sent / 48 bytes_per_ms`）向大模型发送 `conversation.item.truncate(audio_end_ms=3200)`，让大模型准确知道**客户只听到了前 3.2 秒，后面 8.8 秒根本没听见**！
 
 ---
 
@@ -31,42 +31,42 @@
 
 ### Q1：客户在报 16 位银行卡号、18 位身份证号、11 位手机号或车架号（VIN）时，总会分成三四段念（如“138……0013……8000”），怎么设计才既不会半途打断客户，又能在念完最后一位时立刻响应？
 - **为什么通用 VAD 在“报数字串”面前全军覆没？**
-  - 人类短期工作记忆（Chunking）决定了人们背诵长串数字时必然按 3–4 位一组停顿 `600ms–1,400ms`（甚至边翻看钱包里的银行卡边念，停顿长达 `2,000ms`）。
+ - 人类短期工作记忆（Chunking）决定了人们背诵长串数字时必然按 3–4 位一组停顿 `600ms–1,400ms`（甚至边翻看钱包里的银行卡边念，停顿长达 `2,000ms`）。
 - **架构师的“槽位感知状态机动态 VAD（Slot-Aware Dynamic Turn Gating）”三步法**：
-  1. **进入报号态时自动切换 VAD 档位**：
-     - 当 AI 问出 *“请报一下您的 11 位手机号码或保单号”* 时，编排器自动将当前轮次的判停策略切入 **`DIGIT_COLLECTION_MODE`**；
-  2. **实时位数累加与正则完备度检查（Regex Completeness Short-Circuit）**：
-     - 流式 STT 每返回一段增量数字（如先收到 `"138"`，停顿 900ms，再收到 `"0013"`），只要累计数字不足 11 位，即使静音长达 **`2,200ms`** 也绝不触发判停！甚至在静音达 `1,500ms` 时，AI 可以轻声给一个 `200ms` 的促发附和音（*“嗯，138-0013，您继续……”*）而不断开当前收集轮次；
-     - **一旦第 11 位数字落音**（累计位数刚好命中手机号/身份证正则，或客户说出结束词 *“念完了”*），状态机无需再傻等 2.2 秒，直接在 **`280ms`** 内短路触发（Short-Circuit Commit）进入下一步核验！
+ 1. **进入报号态时自动切换 VAD 档位**：
+ - 当 AI 问出 *“请报一下您的 11 位手机号码或保单号”* 时，编排器自动将当前轮次的判停策略切入 **`DIGIT_COLLECTION_MODE`**；
+ 2. **实时位数累加与正则完备度检查（Regex Completeness Short-Circuit）**：
+ - 流式 STT 每返回一段增量数字（如先收到 `"138"`，停顿 900ms，再收到 `"0013"`），只要累计数字不足 11 位，即使静音长达 **`2,200ms`** 也绝不触发判停！甚至在静音达 `1,500ms` 时，AI 可以轻声给一个 `200ms` 的促发附和音（*“嗯，138-0013，您继续……”*）而不断开当前收集轮次；
+ - **一旦第 11 位数字落音**（累计位数刚好命中手机号/身份证正则，或客户说出结束词 *“念完了”*），状态机无需再傻等 2.2 秒，直接在 **`280ms`** 内短路触发（Short-Circuit Commit）进入下一步核验！
 
 ### Q2：当 AI 正在回答问题时，客户说“嗯嗯、明白”和说“不对、别查了”，在音频流的前 300 毫秒里怎么区分？如果等识别出文字再打断会不会太慢？
 - **传统“逢声必断（Hair-Trigger VAD Barge-in）”与“等整句 STT 出来再断”的两难死局**：
-  - 逢声必断：客户哪怕吸一口气、旁边有人关门、或者礼貌说声“嗯”，AI 立刻闭嘴，对话支离破碎；
-  - 等整句 STT 出来再断（需 `700ms+`）：客户已经大喊“停停停别说了！”，AI 还在自顾自往前念了七八个字，像个聋子。
+ - 逢声必断：客户哪怕吸一口气、旁边有人关门、或者礼貌说声“嗯”，AI 立刻闭嘴，对话支离破碎；
+ - 等整句 STT 出来再断（需 `700ms+`）：客户已经大喊“停停停别说了！”，AI 还在自顾自往前念了七八个字，像个聋子。
 - **业界最先进的“两阶段软压低（Ducking）+ 语义确认硬截断（Hard Flush）”架构**：
-  1. **阶段一（`T + 60ms` 瞬时音量软闪避 `Audio Ducking`）**：
-     - 一旦前端 Silero VAD / WebRTC VAD 检测到非回声的人声能量持续超过 `60ms`，媒体网关**先不销毁播放队列**，而是将 AI 下行播报音量在 `40ms` 内平滑压低 **-12dB（Ducking）**；
-  2. **阶段二（`T + 250ms` 附和词 vs 真打断分流）**：
-     - **若人声在 `350ms` 内结束且匹配附和词/噪音特征**（如 *“嗯”*、*“好”*、咳嗽）：网关在 `40ms` 内将 AI 音量平滑恢复至 `0dB` 继续播报，客户体验到的是极度自然的“AI 听到了我的附和并继续讲”；
-     - **若人声持续超过 `350ms` 或前两个字已流式解码为否定/祈使词**（`“等等”`、`“不对”`、`“换一个”`）：网关立即在 **`<= 140ms`** 内执行硬清空（Hard Flush），停止 RTP 发送并切入倾听态！
+ 1. **阶段一（`T + 60ms` 瞬时音量软闪避 `Audio Ducking`）**：
+ - 一旦前端 Silero VAD / WebRTC VAD 检测到非回声的人声能量持续超过 `60ms`，媒体网关**先不销毁播放队列**，而是将 AI 下行播报音量在 `40ms` 内平滑压低 **-12dB（Ducking）**；
+ 2. **阶段二（`T + 250ms` 附和词 vs 真打断分流）**：
+ - **若人声在 `350ms` 内结束且匹配附和词/噪音特征**（如 *“嗯”*、*“好”*、咳嗽）：网关在 `40ms` 内将 AI 音量平滑恢复至 `0dB` 继续播报，客户体验到的是极度自然的“AI 听到了我的附和并继续讲”；
+ - **若人声持续超过 `350ms` 或前两个字已流式解码为否定/祈使词**（`“等等”`、`“不对”`、`“换一个”`）：网关立即在 **`<= 140ms`** 内执行硬清空（Hard Flush），停止 RTP 发送并切入倾听态！
 
 ### Q3：为什么很多团队接了 `OpenAI Realtime API / Voice Live` 后，一旦客户打断 AI，接下来的对话就会出现“AI 前言不搭后语、以为刚才没说完的话客户已经听到了”？
 - **90% 开发者漏写的關鍵信令：`conversation.item.truncate` 与播放缓冲区排空（Buffer Drain）！**
-  - **底层真相**：云端语音大模型生成音频的速度远快于实时播放速度（RTF 约为 `0.15`，即云端用 **1.5 秒** 就把整段 **10 秒** 的语音全部生成并发给了你的网关缓冲队列）。
-  - 如果客户在网关刚播放到第 **3.0 秒** 时打断了 AI，而你的网关只是简单地丢弃了本地剩余的 7 秒音频缓冲，却**没有通知云端大模型**——那么在云端大模型的上下文记忆里，它认为自己已经把那 10 秒钟（包含最后一句关键报价“优惠后是 299 元”）全部说完了！当客户紧接着问“那到底多少钱？”时，AI 就会莫名其妙地回答“我刚才不是已经告诉您 299 元了吗？”。
+ - **底层真相**：云端语音大模型生成音频的速度远快于实时播放速度（RTF 约为 `0.15`，即云端用 **1.5 秒** 就把整段 **10 秒** 的语音全部生成并发给了你的网关缓冲队列）。
+ - 如果客户在网关刚播放到第 **3.0 秒** 时打断了 AI，而你的网关只是简单地丢弃了本地剩余的 7 秒音频缓冲，却**没有通知云端大模型**——那么在云端大模型的上下文记忆里，它认为自己已经把那 10 秒钟（包含最后一句关键报价“优惠后是 299 元”）全部说完了！当客户紧接着问“那到底多少钱？”时，AI 就会莫名其妙地回答“我刚才不是已经告诉您 299 元了吗？”。
 - **标准工程修复公式**：
-  1. 网关实时维护当前回复项 `item_id` 的已下发采样点计数器 `played_samples`；
-  2. 触发实质打断的同一毫秒，计算出客户耳边实际听到的毫秒数：`audio_end_ms = Math.floor(played_samples / (sample_rate / 1000))`；
-  3. 立即向 WebSocket 发送：
-     ```json
-     {
-       "type": "conversation.item.truncate",
-       "item_id": "item_assistant_reply_04",
-       "content_index": 0,
-       "audio_end_ms": 3020
-     }
-     ```
-  4. 大模型收到后会自动将内部音频与对应文本转录精确裁剪到 `3,020ms` 处，完美对齐人类与 AI 的共同记忆！
+ 1. 网关实时维护当前回复项 `item_id` 的已下发采样点计数器 `played_samples`；
+ 2. 触发实质打断的同一毫秒，计算出客户耳边实际听到的毫秒数：`audio_end_ms = Math.floor(played_samples / (sample_rate / 1000))`；
+ 3. 立即向 WebSocket 发送：
+ ```json
+ {
+ "type": "conversation.item.truncate",
+ "item_id": "item_assistant_reply_04",
+ "content_index": 0,
+ "audio_end_ms": 3020
+ }
+ ```
+ 4. 大模型收到后会自动将内部音频与对应文本转录精确裁剪到 `3,020ms` 处，完美对齐人类与 AI 的共同记忆！
 
 ---
 
@@ -76,78 +76,78 @@
 
 ```mermaid
 flowchart TD
-    A["设计企业实时语音话轮转换 (Turn-Taking) 与打断引擎"] --> B{"客户接入终端与声学环境？"}
-    B -->|"Web / 移动 App (WebRTC 接入)<br/>支持端侧硬件 AEC3"| C["启用端侧 WebRTC AEC3 + Silero VAD<br/>+ 服务端 Semantic EOU (动态 320ms ~ 2.2s)"]
-    B -->|"传统电话线 PSTN / 手机免提外放<br/>(无端侧参考信号 · 易自激回声)"| D["挂载 SBC 下行播报声学/文本指纹自回声过滤器<br/>+ 服务端 Semantic EOU + 槽位感知报号延长门控"]
-    C --> E{"客户在 AI 播报期间发声，如何处理？"}
-    D --> E
-    E -->|"时长 < 350ms 且为附和词/咳嗽<br/>(“嗯嗯” / “好的” / “Right”)"| F["一档协作附和模式 (Backchannel Ignore)<br/>60ms 音量微降 (-12dB Ducking) 后平滑恢复播报 · 绝不中断！"]
-    E -->|"时长 >= 350ms 或含打断意图词<br/>(“等一下” / “不对” / 新问题)"| G["二档实质打断模式 (True Barge-In <=140ms)<br/>清空 RTP 发送队列 + 发送 item.truncate(audio_end_ms)<br/>+ 递增 T07 turn_epoch 拦截在途旧工具"]
+ A["设计企业实时语音话轮转换 (Turn-Taking) 与打断引擎"] --> B{"客户接入终端与声学环境？"}
+ B -->|"Web / 移动 App (WebRTC 接入)<br/>支持端侧硬件 AEC3"| C["启用端侧 WebRTC AEC3 + Silero VAD<br/>+ 服务端 Semantic EOU (动态 320ms ~ 2.2s)"]
+ B -->|"传统电话线 PSTN / 手机免提外放<br/>(无端侧参考信号 · 易自激回声)"| D["挂载 SBC 下行播报声学/文本指纹自回声过滤器<br/>+ 服务端 Semantic EOU + 槽位感知报号延长门控"]
+ C --> E{"客户在 AI 播报期间发声，如何处理？"}
+ D --> E
+ E -->|"时长 < 350ms 且为附和词/咳嗽<br/>(“嗯嗯” / “好的” / “Right”)"| F["一档协作附和模式 (Backchannel Ignore)<br/>60ms 音量微降 (-12dB Ducking) 后平滑恢复播报 · 绝不中断！"]
+ E -->|"时长 >= 350ms 或含打断意图词<br/>(“等一下” / “不对” / 新问题)"| G["二档实质打断模式 (True Barge-In <=140ms)<br/>清空 RTP 发送队列 + 发送 item.truncate(audio_end_ms)<br/>+ 递增 T07 turn_epoch 拦截在途旧工具"]
 ```
 
 ### 3.2 四层全双工话轮转换、双档打断与已播放位置对齐参考架构图
 
 ```mermaid
 flowchart LR
-    subgraph Ingress["1. 回声消除与上行净化层"]
-        Mic["客户麦克风 / PSTN 上行"]
-        AEC["端侧 WebRTC AEC3 +<br/>服务端下行播报指纹自回声过滤"]
-        Mic --> AEC
-    end
+ subgraph Ingress["1. 回声消除与上行净化层"]
+ Mic["客户麦克风 / PSTN 上行"]
+ AEC["端侧 WebRTC AEC3 +<br/>服务端下行播报指纹自回声过滤"]
+ Mic --> AEC
+ end
 
-    subgraph Barge["2. 双档打断分级器 (AI 播报期激活)"]
-        Duck["阶段1：60ms 软闪避器<br/>(-12dB Audio Ducking)"]
-        Class["阶段2：250ms 附和/打断分类器<br/>(嗯嗯/咳嗽 vs 等一下/不对)"]
-        AEC --> Duck --> Class
-    end
+ subgraph Barge["2. 双档打断分级器 (AI 播报期激活)"]
+ Duck["阶段1：60ms 软闪避器<br/>(-12dB Audio Ducking)"]
+ Class["阶段2：250ms 附和/打断分类器<br/>(嗯嗯/咳嗽 vs 等一下/不对)"]
+ AEC --> Duck --> Class
+ end
 
-    subgraph EOU["3. 语义与槽位感知判停引擎 (客户说话期)"]
-        SemEOU["Semantic EOU 模型 + 基频曲率<br/>• 完整疑问句：320ms 触发<br/>• 未完从句/连词：1,400ms"]
-        SlotGate["槽位数字报读延长锁<br/>• 卡号/手机未满位：2,200ms<br/>• 满位正则命中：280ms 短路提交"]
-        AEC --> SemEOU --> SlotGate
-    end
+ subgraph EOU["3. 语义与槽位感知判停引擎 (客户说话期)"]
+ SemEOU["Semantic EOU 模型 + 基频曲率<br/>• 完整疑问句：320ms 触发<br/>• 未完从句/连词：1,400ms"]
+ SlotGate["槽位数字报读延长锁<br/>• 卡号/手机未满位：2,200ms<br/>• 满位正则命中：280ms 短路提交"]
+ AEC --> SemEOU --> SlotGate
+ end
 
-    subgraph Sync["4. 播放对齐与 T07 纪元栅栏"]
-        Egress["网关 RTP 发送队列<br/>(实时统计 played_bytes)"]
-        Trunc["conversation.item.truncate<br/>(对齐 audio_end_ms 实际听见位置)"]
-        Fence["T07 turn_epoch 栅栏<br/>(AbortSignal 取消在途慢工具)"]
-        Class -->|"实质打断 <=140ms"| Egress
-        Egress -->|"汇报已播毫秒"| Trunc
-        Class -->|"递增纪元"| Fence
-    end
+ subgraph Sync["4. 播放对齐与 T07 纪元栅栏"]
+ Egress["网关 RTP 发送队列<br/>(实时统计 played_bytes)"]
+ Trunc["conversation.item.truncate<br/>(对齐 audio_end_ms 实际听见位置)"]
+ Fence["T07 turn_epoch 栅栏<br/>(AbortSignal 取消在途慢工具)"]
+ Class -->|"实质打断 <=140ms"| Egress
+ Egress -->|"汇报已播毫秒"| Trunc
+ Class -->|"递增纪元"| Fence
+ end
 ```
 
 ### 3.3 报卡号停顿防抢话、附和词忽略与实质打断毫秒级对齐时序图
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant C as 客户 (开手机免提)
-    participant GW as 媒体网关 (AEC + 播放计数)
-    participant Turn as 语义 EOU & 双档打断引擎
-    participant LLM as Voice Live / 语音编排器
-    participant Tool as 后端业务工具 (带 T07 栅栏)
+ autonumber
+ participant C as 客户 (开手机免提)
+ participant GW as 媒体网关 (AEC + 播放计数)
+ participant Turn as 语义 EOU & 双档打断引擎
+ participant LLM as Voice Live / 语音编排器
+ participant Tool as 后端业务工具 (带 T07 栅栏)
 
-    Note over C,LLM: 阶段一：客户分段报读手机号（防半途抢话）
-    LLM-->>C: "请报一下您的 11 位联系电话。" (激活 DIGIT_COLLECTION_MODE)
-    C->>GW: "138..." (停顿 1,100ms 低头看备忘录)
-    GW->>Turn: 检测到 1,100ms 静音，但累计数字仅 3 位 (<11位)
-    Turn->>Turn: 抑制判停！动态延展等待窗口至 2,200ms
-    C->>GW: "...0013-8000" (累计满 11 位数字)
-    Turn->>LLM: 280ms 命中 11 位手机正则 -> 立即短路提交完整号码 13800138000！
+ Note over C,LLM: 阶段一：客户分段报读手机号（防半途抢话）
+ LLM-->>C: "请报一下您的 11 位联系电话。" (激活 DIGIT_COLLECTION_MODE)
+ C->>GW: "138..." (停顿 1,100ms 低头看备忘录)
+ GW->>Turn: 检测到 1,100ms 静音，但累计数字仅 3 位 (<11位)
+ Turn->>Turn: 抑制判停！动态延展等待窗口至 2,200ms
+ C->>GW: "...0013-8000" (累计满 11 位数字)
+ Turn->>LLM: 280ms 命中 11 位手机正则 -> 立即短路提交完整号码 13800138000！
 
-    Note over C,LLM: 阶段二：AI 长段播报期间的“附和词忽略”与“真实打断对齐”
-    LLM->>GW: 下发 10,000ms 的套餐变更说明音频流 (网关按 20ms 帧匀速向客户播放)
-    C->>GW: (播放至 1.8s 时客户轻声说) "嗯嗯" (时长 240ms)
-    GW->>Turn: 60ms 软压低音量 -> 240ms 识别为 Backchannel 附和词 -> 恢复原音量继续播报！
-    C->>GW: (播放至 3.2s 时客户插话) "等一下！我不要改月租套餐，我是想办停机保号！"
-    GW->>Turn: 检出实质打断 (>=2词否定意图)
-    par <=140ms 急刹排空与记忆截断对齐
-        Turn->>GW: 立即清空剩余 6.8s 未播放 RTP 缓冲队列 (118ms 静音生效)
-        GW->>LLM: 发送 conversation.item.truncate(audio_end_ms=3200) 抹除未播出的后半段记忆
-        Turn->>Tool: turn_epoch 递增 (4 -> 5)，向在途 change_plan 工具发送 AbortSignal
-    end
-    LLM-->>C: "明白，刚才套餐变更已取消，我现在为您办理停机保号..."
+ Note over C,LLM: 阶段二：AI 长段播报期间的“附和词忽略”与“真实打断对齐”
+ LLM->>GW: 下发 10,000ms 的套餐变更说明音频流 (网关按 20ms 帧匀速向客户播放)
+ C->>GW: (播放至 1.8s 时客户轻声说) "嗯嗯" (时长 240ms)
+ GW->>Turn: 60ms 软压低音量 -> 240ms 识别为 Backchannel 附和词 -> 恢复原音量继续播报！
+ C->>GW: (播放至 3.2s 时客户插话) "等一下！我不要改月租套餐，我是想办停机保号！"
+ GW->>Turn: 检出实质打断 (>=2词否定意图)
+ par <=140ms 急刹排空与记忆截断对齐
+ Turn->>GW: 立即清空剩余 6.8s 未播放 RTP 缓冲队列 (118ms 静音生效)
+ GW->>LLM: 发送 conversation.item.truncate(audio_end_ms=3200) 抹除未播出的后半段记忆
+ Turn->>Tool: turn_epoch 递增 (4 -> 5)，向在途 change_plan 工具发送 AbortSignal
+ end
+ LLM-->>C: "明白，刚才套餐变更已取消，我现在为您办理停机保号..."
 ```
 
 ---
@@ -178,34 +178,34 @@ sequenceDiagram
 
 ### 5.2 7-Card (4:5) 视觉基准报告摘要（Turn-Taking, Barge-In & AEC Benchmark）
 
-> **数据溯源与口径声明（Provenance & Measurement Scope）**：以下指标源自 `turbo998/voice-agent-lab` 话轮转换与打断控制基准规范（`TURN-BARGE-01 / P03 / P715 / T07`，标注为 `measured` / `anonymized_reported` / `synthetic`）。所有零值延迟或脏写计数均遵守严格测量边界：`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`。
+> **数据溯源与口径声明（Provenance & Measurement Scope）**：以下指标源自 `turbo998/voice-agent-lab` 话轮转换与打断控制基准规范（`TURN-BARGE-01 / P03 / / T07`，标注为 `measured` / `anonymized_reported` / `synthetic`）。所有零值延迟或脏写计数均遵守严格测量边界：`0ms reported at nominal 1ms display resolution; actual duration unresolved/not_measured; no sub-1ms upper bound established`。
 
 1. **Card 1 (`1 / 7` · `HANDS-ON · TURN-TAKING-BARGE-IN`) — 核心发现**：在 1,200 通包含分段报卡号、高频“嗯嗯”附和、咳嗽噪音与 PSTN 手机免提外放的压测中，**“语义双模 EOU + 双档打断分级器 + 下行指纹回声过滤”将报号半途误截断率降低了 `89.4%`，附和词误打断率从 `41.0%` 压降至 `1.2%`，免提自激打断率归零**。
 2. **Card 2 (`2 / 7` · `SCENARIO: CARD-NUMBER-PAUSE-AND-BARGE-IN`) — 单例深潜（报 16 位卡号停顿 + 播报第 3.2 秒改口打断）**：客户念卡号中间停顿 `1,150ms`，槽位感知 EOU 保持倾听未抢话；随后 AI 播报至 `3,200ms` 时客户插话改口，网关在 **`118ms`** 内排空音频、发送 `item.truncate(audio_end_ms=3200)` 并通过 `T07` 栅栏拦截旧锁单请求（动作标签：`Act automatically`）。
 3. **Card 3 (`3 / 7` · `WHAT I TESTED`) — 4 项话轮与打断核心挑战实测矩阵**：
-   - `DIGIT-CHUNK-PAUSE-1200MS`（报 11 位手机号中间停顿 1.2s）：固定 500ms VAD `✕ 58% 半途抢话截断` vs 槽位语义 EOU **97.9% 完整收录且满位 `280ms` 极速响应**；
-   - `BACKCHANNEL-COUGH-IGNORE`（AI 播报中客户说“嗯嗯/好的”或轻咳）：逢声必断 VAD `✕ 41% 误切断播报` vs 双档分级器 **98.8% 平滑保持播报（仅 `1.2%` 误断）**；
-   - `SPEAKERPHONE-SELF-ECHO`（PSTN 手机免提外放最大音量）：无指纹过滤 `✕ 34% AI 听见自己声音自打断` vs 端云 AEC + 下行指纹过滤 **`0` 自激打断**；
-   - `T07-EPOCH-FENCE-RACE`（打断改口瞬间旧异步工具刚返回）：无纪元锁 `✕ 100% 发生旧结果脏写覆盖` vs `T07 turn_epoch` 栅栏 **`0` 脏写穿透（本仓单元测试实测通过）**。
+ - `DIGIT-CHUNK-PAUSE-1200MS`（报 11 位手机号中间停顿 1.2s）：固定 500ms VAD `✕ 58% 半途抢话截断` vs 槽位语义 EOU **97.9% 完整收录且满位 `280ms` 极速响应**；
+ - `BACKCHANNEL-COUGH-IGNORE`（AI 播报中客户说“嗯嗯/好的”或轻咳）：逢声必断 VAD `✕ 41% 误切断播报` vs 双档分级器 **98.8% 平滑保持播报（仅 `1.2%` 误断）**；
+ - `SPEAKERPHONE-SELF-ECHO`（PSTN 手机免提外放最大音量）：无指纹过滤 `✕ 34% AI 听见自己声音自打断` vs 端云 AEC + 下行指纹过滤 **`0` 自激打断**；
+ - `T07-EPOCH-FENCE-RACE`（打断改口瞬间旧异步工具刚返回）：无纪元锁 `✕ 100% 发生旧结果脏写覆盖` vs `T07 turn_epoch` 栅栏 **`0` 脏写穿透（本仓单元测试实测通过）**。
 4. **Card 4 (`4 / 7` · `UNDER THE HOOD`) — 播放进度截断对齐与 `T07` 纪元栅栏协议契约**：
-   ```json
-   {
-     "turn_control_event": "TRUE_BARGE_IN_DETECTED",
-     "barge_in_classifier": { "speech_duration_ms": 420, "transcript_prefix": "等一下", "tier": "TIER_2_HARD_FLUSH" },
-     "playback_truncation": {
-       "type": "conversation.item.truncate",
-       "item_id": "msg_asst_009",
-       "played_pcm_bytes": 153600,
-       "audio_end_ms": 3200
-     },
-     "t07_epoch_fence": { "previous_epoch": 4, "new_epoch": 5, "aborted_in_flight_tools": ["book_morning_flight"] }
-   }
-   ```
+ ```json
+ {
+ "turn_control_event": "TRUE_BARGE_IN_DETECTED",
+ "barge_in_classifier": { "speech_duration_ms": 420, "transcript_prefix": "等一下", "tier": "TIER_2_HARD_FLUSH" },
+ "playback_truncation": {
+ "type": "conversation.item.truncate",
+ "item_id": "msg_asst_009",
+ "played_pcm_bytes": 153600,
+ "audio_end_ms": 3200
+ },
+ "t07_epoch_fence": { "previous_epoch": 4, "new_epoch": 5, "aborted_in_flight_tools": ["book_morning_flight"] }
+ }
+ ```
 5. **Card 5 (`5 / 7` · `ROBUSTNESS CHECK`) — 语速缓慢老年人（每句中间停顿 `1.4s`）与急性子客户扰动对比**：在老年慢语速测试集上，语义双模 EOU 的完整倾听率比固定阈值 VAD 高出 **`+44.2 pts`（`96.4% vs 52.2%`）**；而在急性子简短追问集上，句末降调检测使响应速度反而快 **`180ms`**。
 6. **Card 6 (`6 / 7` · `LATENCY`) — 打断急刹延迟与完整短句 EOU 延迟对比**：网关层 RTP 队列硬排空将打断急刹延迟控制在 **`118ms` P50（`140ms` P95）**；完整短句语义 EOU 触发仅需 **`320ms`**。
 7. **Card 7 (`7 / 7` · `MY TAKE`) — 适用场景与禁忌清单**：
-   - ✅ **Good fit**：所有全双工电话客服、车载免提助手、报卡号/报地址高频业务、高仿真销售陪练；
-   - ⛔ **Not for**：严禁在生产环境使用单一固定毫秒数的能量 VAD；严禁在打断清空本地播放队列时不向有状态大模型发送 `conversation.item.truncate`！
+ - ✅ **Good fit**：所有全双工电话客服、车载免提助手、报卡号/报地址高频业务、高仿真销售陪练；
+ - ⛔ **Not for**：严禁在生产环境使用单一固定毫秒数的能量 VAD；严禁在打断清空本地播放队列时不向有状态大模型发送 `conversation.item.truncate`！
 
 ---
 

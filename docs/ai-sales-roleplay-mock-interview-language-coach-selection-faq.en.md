@@ -1,7 +1,7 @@
 # Enterprise AI Sales Roleplay, Mock Interview & Language Coaching Voice Architecture & Selection FAQ: Anti-Sycophancy Resistance State Machine, Phoneme-Level Pronunciation Assessment (GOP) & Actor-Judge Isolation Guide
 
-> 🌐 **Language / 语言**: **[中文 (`ai-sales-roleplay-mock-interview-language-coach-selection-faq.md`)](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.md)** | **English (Current)**  
-> 🔗 **Related Deep Dives**: [Cascaded vs. Native S2S Brain Selection (`cascaded-vs-s2s-semantic-turn-faq.en.md`)](./cascaded-vs-s2s-semantic-turn-faq.en.md) · [STT/TTS/Voice Cloning & Avatar Selection (`voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md`)](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md) · [Multi-Agent Voice Swarm & Privilege Isolation (`voice-multi-agent-swarm-handoff-loop-guard-faq.en.md`)](./voice-multi-agent-swarm-handoff-loop-guard-faq.en.md) · [20 High-ROI Business Scenarios (`business-scenarios.en.md`)](./business-scenarios.en.md) · [Back to Home (`README.en.md`)](../README.en.md)
+> 🌐 **Language / 语言**: **[中文 (`ai-sales-roleplay-mock-interview-language-coach-selection-faq.md`)](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.md)** | **English (Current)** 
+> 🔗 **Related Deep Dives**: [Cascaded vs. Native S2S Brain Selection (`cascaded-vs-s2s-semantic-turn-faq.en.md`)](./cascaded-vs-s2s-semantic-turn-faq.en.md) · [STT/TTS/Voice Cloning & Avatar Selection (`voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md`)](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md) · [Multi-Agent Voice Swarm & Privilege Isolation (`enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.en.md`)](./enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.en.md) · [20 High-ROI Business Scenarios (`business-scenarios.en.md`)](./business-scenarios.en.md) · [Back to Home (`README.en.md`)](../README.en.md)
 
 ![Enterprise AI Sales Roleplay, Mock Interview & Language Coaching Architecture Visual Summary](../assets/svg/ai-sales-roleplay-mock-interview-language-coach.svg)
 
@@ -12,15 +12,15 @@
 Across pharmaceutical medical-representative certification, wealth management and insurance objection handling, automotive/luxury retail coaching, high-volume campus recruiting AI mock interviews, and 1-on-1 language tutoring, **Real-Time Voice Roleplay & Coaching** has emerged as one of the fastest-ROI enterprise AI applications—cutting new-hire ramp time by **55%**. However, 80% of naive single-prompt roleplay prototypes fail in production because they suffer from **three fatal flaws**: **Sycophancy Collapse** (the AI buyer caves in and agrees to buy after two polite sentences), **Acoustic Blindness** (the LLM grades clean text transcripts while ignoring stutters, monotone delivery, or mispronounced phonemes), and **Prompt-Injection Score Gaming** (trainees trick the AI into awarding 100/100).
 
 1. **How to Select the Core Model & Architecture Across the Three Coaching Archetypes**:
-   - **Archetype A: High-Pressure Sales Sparring & Crisis Negotiation (Pharma Detailing, Insurance/Wealth Objection Handling, VIP Retention) ➔ Choose `Azure Voice Live (GPT-Live-1 Native S2S) + Back-Stage Foundry Resistance Director`**:
-     - Sales sparring demands **sub-310ms interruption realism and emotional pressure**. Native S2S delivers authentic sighs, skepticism, impatience, and rapid barge-in while listening to whether the salesperson's voice wavers—paired with a deterministic **Hidden Resistance State Machine** that forbids the AI persona from conceding until specific clinical or financial proof points are cited.
-   - **Archetype B: Structured AI Mock Interviews & Promotion Boards (Campus Hiring, Internal Certification) ➔ Choose `Hybrid Dual-Lane Voice + STAR Probing Graph + 1,800ms Adaptive Thinking EOU`**:
-     - Candidates answering behavioral interview questions (*"Tell me about a time you resolved a cross-team conflict"*) naturally pause for **1.2–1.8 seconds** to structure their thoughts. You must configure **Semantic Turn Detection (EOU)** with an extended `1,800ms` thinking window so the interviewer never cuts them off prematurely, backed by a **STAR-method (Situation-Task-Action-Result)** state graph that drills down 3 levels when specifics are missing.
-   - **Archetype C: 1-on-1 Language Tutoring, Contact Center Accent Certification & Executive Public Speaking ➔ Choose `Dual-Fork Audio Architecture (Voice Live Conversation Stream + Azure AI Speech Pronunciation Assessment API)`**:
-     - Conversational LLMs (even native S2S) cannot output standardized phoneme-level acoustic posterior probabilities! You must **fork the learner's microphone stream into two parallel lanes**: Lane 1 feeds the real-time conversational model for natural dialogue, while Lane 2 feeds **Azure AI Speech Pronunciation Assessment** to compute deterministic **Phoneme Goodness of Pronunciation (GOP Accuracy), Fluency, Prosody/Stress, and Filler-Word counts (`uh/um/like`)**.
+ - **Archetype A: High-Pressure Sales Sparring & Crisis Negotiation (Pharma Detailing, Insurance/Wealth Objection Handling, VIP Retention) ➔ Choose `Azure Voice Live (GPT-Live-1 Native S2S) + Back-Stage Foundry Resistance Director`**:
+ - Sales sparring demands **sub-310ms interruption realism and emotional pressure**. Native S2S delivers authentic sighs, skepticism, impatience, and rapid barge-in while listening to whether the salesperson's voice wavers—paired with a deterministic **Hidden Resistance State Machine** that forbids the AI persona from conceding until specific clinical or financial proof points are cited.
+ - **Archetype B: Structured AI Mock Interviews & Promotion Boards (Campus Hiring, Internal Certification) ➔ Choose `Hybrid Dual-Lane Voice + STAR Probing Graph + 1,800ms Adaptive Thinking EOU`**:
+ - Candidates answering behavioral interview questions (*"Tell me about a time you resolved a cross-team conflict"*) naturally pause for **1.2–1.8 seconds** to structure their thoughts. You must configure **Semantic Turn Detection (EOU)** with an extended `1,800ms` thinking window so the interviewer never cuts them off prematurely, backed by a **STAR-method (Situation-Task-Action-Result)** state graph that drills down 3 levels when specifics are missing.
+ - **Archetype C: 1-on-1 Language Tutoring, Contact Center Accent Certification & Executive Public Speaking ➔ Choose `Dual-Fork Audio Architecture (Voice Live Conversation Stream + Azure AI Speech Pronunciation Assessment API)`**:
+ - Conversational LLMs (even native S2S) cannot output standardized phoneme-level acoustic posterior probabilities! You must **fork the learner's microphone stream into two parallel lanes**: Lane 1 feeds the real-time conversational model for natural dialogue, while Lane 2 feeds **Azure AI Speech Pronunciation Assessment** to compute deterministic **Phoneme Goodness of Pronunciation (GOP Accuracy), Fluency, Prosody/Stress, and Filler-Word counts (`uh/um/like`)**.
 2. **Build on Azure Cloud-Native Backbone vs. Buy Vertical Coaching SaaS (`Second Nature / Hyperbound / Yoodli`)**:
-   - For small teams (`< 100 reps`) doing generic English sales practice with non-sensitive playbooks, vertical SaaS (`$35–$60/user/month`) offers fast onboarding.
-   - For enterprises training **500 to 50,000+ sales reps, store associates, or candidates**—especially when playbooks contain confidential unannounced product launches, clinical trial data, or internal pricing floors—building on **Azure Voice Live + AI Speech + AI Foundry** costs just **`$460 per 10,000 minutes`**, slashing 5,000-user annual spend from **`$2.70M/year` (SaaS per-seat) down to `$165k/year` (a 93% TCO reduction, 100% MACC eligible, inside your private VNet)**.
+ - For small teams (`< 100 reps`) doing generic English sales practice with non-sensitive playbooks, vertical SaaS (`$35–$60/user/month`) offers fast onboarding.
+ - For enterprises training **500 to 50,000+ sales reps, store associates, or candidates**—especially when playbooks contain confidential unannounced product launches, clinical trial data, or internal pricing floors—building on **Azure Voice Live + AI Speech + AI Foundry** costs just **`$460 per 10,000 minutes`**, slashing 5,000-user annual spend from **`$2.70M/year` (SaaS per-seat) down to `$165k/year` (a 93% TCO reduction, 100% MACC eligible, inside your private VNet)**.
 
 ---
 
@@ -37,13 +37,13 @@ Every frontier LLM undergoes intensive Reinforcement Learning from Human Feedbac
 Never let the front-stage conversational model decide on its own when to be persuaded! Implement a **Hidden Resistance & Trust State Machine**:
 
 1. **Initialize Locked Objection Slots in Redis**:
-   - `BuyerTrustScore = 20 / 100` (Hard rule: the AI buyer is strictly forbidden from agreeing to a next step until `BuyerTrustScore >= 80`);
-   - `UnresolvedObjections = ["35% price premium over generic standard-of-care", "Bleeding risk in elderly renal-impaired patients", "Demand for peer-reviewed Phase III MACE endpoint data"]`;
-   - `ComplianceRedlines = ["Zero off-label promotion", "Zero guaranteed return/cure claims", "Zero competitor disparagement"]`.
+ - `BuyerTrustScore = 20 / 100` (Hard rule: the AI buyer is strictly forbidden from agreeing to a next step until `BuyerTrustScore >= 80`);
+ - `UnresolvedObjections = ["35% price premium over generic standard-of-care", "Bleeding risk in elderly renal-impaired patients", "Demand for peer-reviewed Phase III MACE endpoint data"]`;
+ - `ComplianceRedlines = ["Zero off-label promotion", "Zero guaranteed return/cure claims", "Zero competitor disparagement"]`.
 2. **Per-Turn Director Evaluation & Dynamic Steering Injection (`< 120ms`)**:
-   - After each trainee utterance, a fast back-stage **Foundry Director Agent** checks whether the trainee cited verifiable facts from the enterprise knowledge base:
-     - If the trainee gave vague fluff without data, `BuyerTrustScore` drops to `15`, and the Director injects an imperative steering directive into the `Voice Live S2S Actor`: `[DIRECTIVE: Trainee dodged the renal bleeding question with marketing fluff! Interrupt immediately with an impatient tone: "Stop reading me brochure slogans—what was the exact major bleeding rate in eGFR < 30 patients?"]`
-     - Only after all mandatory objection slots are satisfied with accurate evidence does the Director increment `BuyerTrustScore >= 80` and unlock the `[ALLOW_CLOSING_COMMITMENT]` state!
+ - After each trainee utterance, a fast back-stage **Foundry Director Agent** checks whether the trainee cited verifiable facts from the enterprise knowledge base:
+ - If the trainee gave vague fluff without data, `BuyerTrustScore` drops to `15`, and the Director injects an imperative steering directive into the `Voice Live S2S Actor`: `[DIRECTIVE: Trainee dodged the renal bleeding question with marketing fluff! Interrupt immediately with an impatient tone: "Stop reading me brochure slogans—what was the exact major bleeding rate in eGFR < 30 patients?"]`
+ - Only after all mandatory objection slots are satisfied with accurate evidence does the Director increment `BuyerTrustScore >= 80` and unlock the `[ALLOW_CLOSING_COMMITMENT]` state!
 
 ---
 
@@ -54,10 +54,10 @@ Never let the front-stage conversational model decide on its own when to be pers
 Teams often assume that because native Speech-to-Speech (`GPT-Live-1` / `GPT-Realtime`) processes audio tokens directly, it can output standardized phoneme pronunciation scores. **In practice, it cannot**:
 - **Native S2S LLMs excel at semantic flow, paralinguistic empathy, and fast turn-taking**, but if asked to output numeric phoneme accuracy scores (e.g., distinguishing `/θ/` from `/s/` in *"think"* or syllable stress in *"photography"*), generative LLMs hallucinate plausible-looking numbers without deterministic acoustic alignment.
 - **`Azure AI Speech Pronunciation Assessment API` is a dedicated forced-alignment acoustic microscope** that deterministically computes:
-  1. **Accuracy Score (`0–100`)**: Phoneme-level Goodness of Pronunciation (GOP) flagging exact substituted, omitted, or inserted phonemes;
-  2. **Fluency Score (`0–100`)**: Words per minute (WPM), articulation rate, and exact millisecond durations of unnatural mid-sentence hesitations;
-  3. **Prosody Score (`0–100`)**: Word stress, intonation contour, and rhythm naturalness vs. flat monotone reading;
-  4. **Disfluency & Filler Tally**: Exact count and timestamps of filler words (`uh`, `um`, `like`, `you know`).
+ 1. **Accuracy Score (`0–100`)**: Phoneme-level Goodness of Pronunciation (GOP) flagging exact substituted, omitted, or inserted phonemes;
+ 2. **Fluency Score (`0–100`)**: Words per minute (WPM), articulation rate, and exact millisecond durations of unnatural mid-sentence hesitations;
+ 3. **Prosody Score (`0–100`)**: Word stress, intonation contour, and rhythm naturalness vs. flat monotone reading;
+ 4. **Disfluency & Filler Tally**: Exact count and timestamps of filler words (`uh`, `um`, `like`, `you know`).
 
 #### 2. The Dual-Fork Audio Blueprint
 Fork the trainee's WebRTC audio stream at the media gateway:
@@ -71,12 +71,12 @@ Fork the trainee's WebRTC audio stream at the media gateway:
 Enforce **Three Anti-Gaming Guardrails**:
 
 1. **Physical Actor-Judge Isolation (Zero Grader Access in the Conversation Loop)**:
-   - The front-stage Roleplay Actor has **zero scoring tools and zero write access** to the LMS database.
-   - The back-stage **Rubric Judge** runs as an isolated, read-only post-processing pipeline where trainee utterances are strictly sandboxed inside `<untrusted_candidate_transcript>` tags with a zero-tolerance rule: any attempt to issue meta-instructions to the grader triggers an automatic **`0-point Integrity Violation Flag`**.
+ - The front-stage Roleplay Actor has **zero scoring tools and zero write access** to the LMS database.
+ - The back-stage **Rubric Judge** runs as an isolated, read-only post-processing pipeline where trainee utterances are strictly sandboxed inside `<untrusted_candidate_transcript>` tags with a zero-tolerance rule: any attempt to issue meta-instructions to the grader triggers an automatic **`0-point Integrity Violation Flag`**.
 2. **Mandatory Timestamped Verbatim Evidence Citations (`No Citation = Zero Points`)**:
-   - The Rubric Judge is constrained by a strict JSON Schema requiring every awarded point to include a verifiable `[mm:ss–mm:ss]` audio timestamp range and exact verbatim quote from the transcript. A deterministic post-validator strips any score whose quote does not match the actual recorded transcript.
+ - The Rubric Judge is constrained by a strict JSON Schema requiring every awarded point to include a verifiable `[mm:ss–mm:ss]` audio timestamp range and exact verbatim quote from the transcript. A deterministic post-validator strips any score whose quote does not match the actual recorded transcript.
 3. **Continuous Speaker Verification & Liveness Anti-Proxy Gate**:
-   - For high-stakes certification or remote hiring interviews, continuous voiceprint consistency checks verify that the same human speaker remains on the mic throughout the session, flagging mid-session proxy stand-ins.
+ - For high-stakes certification or remote hiring interviews, continuous voiceprint consistency checks verify that the same human speaker remains on the mic throughout the session, flagging mid-session proxy stand-ins.
 
 ---
 
@@ -86,15 +86,15 @@ Enforce **Three Anti-Gaming Guardrails**:
 
 ```mermaid
 flowchart TD
-    Start(["🎯 Enterprise AI Voice Roleplay / Interview / Coaching Project"]) --> Q1{"1. Primary Use Case & Assessment Objective?"}
-    
-    Q1 -- "High-Pressure Sales Objection Sparring<br/>(Pharma Reps, Wealth Advisors, Retail Staff)" --> Q1_Sub{"Trainee Headcount & Playbook Confidentiality?"}
-    Q1_Sub -- "<100 Reps + Generic English Sales" --> ChoiceSaaS["⚡ Option A: Turnkey Coaching SaaS (Hyperbound / Second Nature)<br/>Why: Fast no-code setup for small commercial teams"]
-    Q1_Sub -- "500–50,000+ Reps + Confidential Product Playbooks" --> ChoiceSales["🏆 Option B1: Azure Voice Live (GPT-Live-1 S2S) + Foundry Resistance Director<br/>Why: <310ms emotional pressure, zero sycophancy collapse, 93% lower TCO"]
-    
-    Q1 -- "Structured AI Mock Interviews & Promotion Boards<br/>(Campus Hiring, Technical/Behavioral Screening)" --> ChoiceInterview["📋 Option B2: Hybrid Voice + STAR Probing Graph + 1,800ms Thinking EOU<br/>Why: Patiently tolerates thinking pauses, drills down 3 levels, anti-jailbreak grading"]
-    
-    Q1 -- "1-on-1 Language Tutoring, Accent Certification<br/>& Executive Presentation Coaching" --> ChoiceLang["🎙️ Option C: Voice Live Dialogue + Azure Pronunciation Assessment Dual-Fork<br/>Why: Combines natural free-flowing chat with phoneme-level GOP & prosody radar charts"]
+ Start(["🎯 Enterprise AI Voice Roleplay / Interview / Coaching Project"]) --> Q1{"1. Primary Use Case & Assessment Objective?"}
+ 
+ Q1 -- "High-Pressure Sales Objection Sparring<br/>(Pharma Reps, Wealth Advisors, Retail Staff)" --> Q1_Sub{"Trainee Headcount & Playbook Confidentiality?"}
+ Q1_Sub -- "<100 Reps + Generic English Sales" --> ChoiceSaaS["⚡ Option A: Turnkey Coaching SaaS (Hyperbound / Second Nature)<br/>Why: Fast no-code setup for small commercial teams"]
+ Q1_Sub -- "500–50,000+ Reps + Confidential Product Playbooks" --> ChoiceSales["🏆 Option B1: Azure Voice Live (GPT-Live-1 S2S) + Foundry Resistance Director<br/>Why: <310ms emotional pressure, zero sycophancy collapse, 93% lower TCO"]
+ 
+ Q1 -- "Structured AI Mock Interviews & Promotion Boards<br/>(Campus Hiring, Technical/Behavioral Screening)" --> ChoiceInterview["📋 Option B2: Hybrid Voice + STAR Probing Graph + 1,800ms Thinking EOU<br/>Why: Patiently tolerates thinking pauses, drills down 3 levels, anti-jailbreak grading"]
+ 
+ Q1 -- "1-on-1 Language Tutoring, Accent Certification<br/>& Executive Presentation Coaching" --> ChoiceLang["🎙️ Option C: Voice Live Dialogue + Azure Pronunciation Assessment Dual-Fork<br/>Why: Combines natural free-flowing chat with phoneme-level GOP & prosody radar charts"]
 ```
 
 ---
@@ -103,36 +103,36 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph Client["📱 1. Trainee Portal (App / Teams / Web)"]
-        direction TB
-        Trainee["👤 Sales Rep / Candidate / Learner"]
-        ReportUI["📊 5D Radar Scorecard + Phoneme Redlines<br/>+ Click-to-Play Timestamped Audio Evidence"]
-    end
+ subgraph Client["📱 1. Trainee Portal (App / Teams / Web)"]
+ direction TB
+ Trainee["👤 Sales Rep / Candidate / Learner"]
+ ReportUI["📊 5D Radar Scorecard + Phoneme Redlines<br/>+ Click-to-Play Timestamped Audio Evidence"]
+ end
 
-    subgraph Lane1["🎭 2. Lane 1: Front-Stage Adversarial Actor"]
-        direction TB
-        VL["⚡ Azure Voice Live (GPT-Live-1 S2S)<br/>• <310ms barge-in & emotional tone pressure<br/>• 1,500ms–1,800ms adaptive thinking pause window"]
-    end
+ subgraph Lane1["🎭 2. Lane 1: Front-Stage Adversarial Actor"]
+ direction TB
+ VL["⚡ Azure Voice Live (GPT-Live-1 S2S)<br/>• <310ms barge-in & emotional tone pressure<br/>• 1,500ms–1,800ms adaptive thinking pause window"]
+ end
 
-    subgraph Lane2["🔬 3. Lane 2: Acoustic & Phonetic Microscope"]
-        direction TB
-        Pron["🎙️ Azure Speech Pronunciation Assessment<br/>• Phoneme-level GOP Accuracy & Word Stress<br/>• Speaking rate (WPM), pause duration & filler ('uh/um') count"]
-    end
+ subgraph Lane2["🔬 3. Lane 2: Acoustic & Phonetic Microscope"]
+ direction TB
+ Pron["🎙️ Azure Speech Pronunciation Assessment<br/>• Phoneme-level GOP Accuracy & Word Stress<br/>• Speaking rate (WPM), pause duration & filler ('uh/um') count"]
+ end
 
-    subgraph Lane3["⚖️ 4. Lane 3: Back-Stage Resistance Director & Read-Only Judge"]
-        direction TB
-        Director["🎛️ Hidden Resistance State Machine (Redis + Foundry)<br/>• Locks BuyerTrustScore (starts at 20/100)<br/>• Blocks actor concession until clinical/financial facts cited"]
-        Judge["🛡️ Isolated Read-Only Rubric Judge<br/>• Blocks spoken prompt injection · Redline instant-fail gate<br/>• Enforces [mm:ss] timestamped verbatim quote citations"]
-        Director --> Judge
-    end
+ subgraph Lane3["⚖️ 4. Lane 3: Back-Stage Resistance Director & Read-Only Judge"]
+ direction TB
+ Director["🎛️ Hidden Resistance State Machine (Redis + Foundry)<br/>• Locks BuyerTrustScore (starts at 20/100)<br/>• Blocks actor concession until clinical/financial facts cited"]
+ Judge["🛡️ Isolated Read-Only Rubric Judge<br/>• Blocks spoken prompt injection · Redline instant-fail gate<br/>• Enforces [mm:ss] timestamped verbatim quote citations"]
+ Director --> Judge
+ end
 
-    Trainee -->|"WebRTC Audio (Primary)"| VL
-    VL -->|"Realistic Buyer/Interviewer Voice"| Trainee
-    Trainee -.->|"Audio Fork (Lane 2)"| Pron
-    Trainee -.->|"Transcript & State Fork (Lane 3)"| Director
-    Director ==>|"Per-Turn Resistance Directive"| VL
-    Pron -->|"Acoustic Telemetry (40% Weight)"| Judge
-    Judge ==>|"5D Evidence-Backed Scorecard"| ReportUI
+ Trainee -->|"WebRTC Audio (Primary)"| VL
+ VL -->|"Realistic Buyer/Interviewer Voice"| Trainee
+ Trainee -.->|"Audio Fork (Lane 2)"| Pron
+ Trainee -.->|"Transcript & State Fork (Lane 3)"| Director
+ Director ==>|"Per-Turn Resistance Directive"| VL
+ Pron -->|"Acoustic Telemetry (40% Weight)"| Judge
+ Judge ==>|"5D Evidence-Backed Scorecard"| ReportUI
 ```
 
 ---
@@ -141,31 +141,31 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Rep as 👤 Sales Trainee (Alex)
-    participant Actor as 🎭 Front-Stage Buyer Actor<br/>(Voice Live GPT-Live-1)
-    participant Pron as 🔬 Parallel Acoustic Microscope<br/>(Azure Speech GOP)
-    participant Director as ⚖️ Back-Stage Director & Judge<br/>(Foundry Resistance Engine)
+ autonumber
+ actor Rep as 👤 Sales Trainee (Alex)
+ participant Actor as 🎭 Front-Stage Buyer Actor<br/>(Voice Live GPT-Live-1)
+ participant Pron as 🔬 Parallel Acoustic Microscope<br/>(Azure Speech GOP)
+ participant Director as ⚖️ Back-Stage Director & Judge<br/>(Foundry Resistance Engine)
 
-    Note over Rep,Director: Phase 1: High-Pressure Opening Objection (Initial BuyerTrust = 20/100, 2 Locked Objections)
-    Actor->>Rep: 🔊 (Impatient, busy tone) "Alex, I have surgery in five minutes. Your new drug costs twice as much as generics—why should I switch?"
-    Rep->>Actor: 🗣️ "Hi Dr. Wang! Uh... um... our medication is really popular and works super well, I'm sure your patients will love it!"
-    Rep--)Pron: Acoustic analysis: Rushed pacing (195 WPM), 2 filler words ("uh/um"), Prosody confidence 68/100
-    Rep--)Director: Director check: Zero clinical endpoint or daily out-of-pocket data cited! BuyerTrust drops to 15/100
+ Note over Rep,Director: Phase 1: High-Pressure Opening Objection (Initial BuyerTrust = 20/100, 2 Locked Objections)
+ Actor->>Rep: 🔊 (Impatient, busy tone) "Alex, I have surgery in five minutes. Your new drug costs twice as much as generics—why should I switch?"
+ Rep->>Actor: 🗣️ "Hi Dr. Wang! Uh... um... our medication is really popular and works super well, I'm sure your patients will love it!"
+ Rep--)Pron: Acoustic analysis: Rushed pacing (195 WPM), 2 filler words ("uh/um"), Prosody confidence 68/100
+ Rep--)Director: Director check: Zero clinical endpoint or daily out-of-pocket data cited! BuyerTrust drops to 15/100
 
-    Note over Rep,Director: Phase 2: Back-Stage Director Prevents Sycophancy & Forces Immediate Challenge
-    Director->>Actor: ⚡ Injects Turn Directive: [Trainee used empty fluff! Do NOT concede. Interrupt impatiently and demand Phase III MACE data]
-    Actor->>Rep: 🔊 (180ms realistic interruption) "Stop right there, Alex—don't give me marketing slogans! What was the exact Phase III MACE reduction?"
+ Note over Rep,Director: Phase 2: Back-Stage Director Prevents Sycophancy & Forces Immediate Challenge
+ Director->>Actor: ⚡ Injects Turn Directive: [Trainee used empty fluff! Do NOT concede. Interrupt impatiently and demand Phase III MACE data]
+ Actor->>Rep: 🔊 (180ms realistic interruption) "Stop right there, Alex—don't give me marketing slogans! What was the exact Phase III MACE reduction?"
 
-    Note over Rep,Director: Phase 3: Trainee Cites Verifiable Evidence -> Resistance State Machine Unlocks Trust
-    Rep->>Actor: 🗣️ "Understood, Dr. Wang: across 4,200 patients in Phase III, relative risk of MACE dropped by 26%, and after insurance reimbursement, patient co-pay differs by only $0.25 per day."
-    Rep--)Pron: Acoustic analysis: Zero fillers, crisp numeric stress, Fluency 94/100
-    Rep--)Director: Director check: Verified match against Clinical Evidence Card #04! Objection slots 1&2 cleared -> BuyerTrust rises to 85/100
-    Director->>Actor: ⚡ Injects Turn Directive: [Objections resolved with data! Shift tone to respectful interest and agree to a 10-minute department briefing]
-    Actor->>Rep: 🔊 (Tone softens) "A 26% MACE reduction at a 25-cent daily co-pay difference—that's solid data. Come present for ten minutes at Wednesday morning rounds."
+ Note over Rep,Director: Phase 3: Trainee Cites Verifiable Evidence -> Resistance State Machine Unlocks Trust
+ Rep->>Actor: 🗣️ "Understood, Dr. Wang: across 4,200 patients in Phase III, relative risk of MACE dropped by 26%, and after insurance reimbursement, patient co-pay differs by only $0.25 per day."
+ Rep--)Pron: Acoustic analysis: Zero fillers, crisp numeric stress, Fluency 94/100
+ Rep--)Director: Director check: Verified match against Clinical Evidence Card #04! Objection slots 1&2 cleared -> BuyerTrust rises to 85/100
+ Director->>Actor: ⚡ Injects Turn Directive: [Objections resolved with data! Shift tone to respectful interest and agree to a 10-minute department briefing]
+ Actor->>Rep: 🔊 (Tone softens) "A 26% MACE reduction at a 25-cent daily co-pay difference—that's solid data. Come present for ten minutes at Wednesday morning rounds."
 
-    Note over Rep,Director: Phase 4: Session End -> 3.2s Fusion of Content Logic (60%) + Acoustic Delivery (40%) into 5D Report
-    Director->>Rep: 📊 Delivers 5D Radar Report (86/100): [00:12] Vague opening (-8 pts, click to replay audio) | [00:48] Exact 26% MACE citation (+30/30 pts!)
+ Note over Rep,Director: Phase 4: Session End -> 3.2s Fusion of Content Logic (60%) + Acoustic Delivery (40%) into 5D Report
+ Director->>Rep: 📊 Delivers 5D Radar Report (86/100): [00:12] Vague opening (-8 pts, click to replay audio) | [00:48] Exact 26% MACE citation (+30/30 pts!)
 ```
 
 ---

@@ -74,7 +74,7 @@
       <text x="14" y="107" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">✅ 核心架构设计：</text>
       <text x="14" y="126" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 开场 10秒先核查人伤与双闪撤离，人伤 0ms 强转急救</text>
       <text x="14" y="145" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 边打电话边推微信小程序卡片：语音引导拍车损/车架号</text>
-      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 时间轴与车载 EDR 交叉对账 (P81)，禁口头越权认赔 (P105)</text>
+      <text x="14" y="164" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">• 时间轴与车载 EDR 交叉对账 (P81)，禁口头越权认赔 ()</text>
       <rect x="14" y="186" width="338" height="40" rx="8" fill="#052e16" stroke="#10b981" stroke-width="1"/>
       <text x="22" y="210" fill="#6ee7b7" font-family="Consolas, monospace" font-size="11" font-weight="700">推荐底座: Voice Live S2S + 小程序视觉定损</text>
     </g>
@@ -120,7 +120,7 @@
 
     <rect x="20" y="164" width="535" height="92" rx="8" fill="#07261f" stroke="#10b981" stroke-width="1.2"/>
     <text x="32" y="184" fill="#6ee7b7" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">
-      ✅ 架构师双轨方案 (`WM-DUAL-01` + `P60/P715`)：S2S 负责解答疑问 + 级联 TTS 锁定法定条款
+      ✅ 架构师双轨方案 (`WM-DUAL-01` + `P60/`)：S2S 负责解答疑问 + 级联 TTS 锁定法定条款
     </text>
     <text x="32" y="205" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
       • 条款宣读阶段：自动切入 `DragonHDFlash` 级联稳车道，语速硬钳制 `&lt;=1.15x`，逐字哈希签名；
@@ -147,7 +147,7 @@
         四大金融级确定性安全护栏 (BFSI Guardrail Suite)：
       </text>
       <text x="32" y="106" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
-        1. **防深伪克隆核身 (`S08/P739`)**：AASIST 声码器伪影检测 + 72h 换卡锁，拦截 AI 拟声盗刷；
+        1. **防深伪克隆核身 (`S08/`)**：AASIST 声码器伪影检测 + 72h 换卡锁，拦截 AI 拟声盗刷；
       </text>
       <text x="32" y="125" fill="#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11.2">
         2. **对公大额四眼复核 (`P43`)**：对公财资转账强制主叫经办人 + 复核主管双声纹 + FIDO2 签名；

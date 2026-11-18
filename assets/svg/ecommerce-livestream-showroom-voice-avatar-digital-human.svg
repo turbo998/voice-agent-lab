@@ -132,7 +132,7 @@
       • 正确架构：当 `turnEpoch` 递增触发打断时，同时清空音频缓冲与 Viseme/视频帧缓冲，立即切入微点头倾听态 (Idle Listening)！
     </text>
     <text x="32" y="244" fill="#34d399" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">
-      💡 弱网保底 (`P744`)：当商场 Wi-Fi 抖动带宽 &lt;600kbps 时，平滑冻结高清视频为静态呼吸头像，100% 保住语音不断！
+      💡 弱网保底 (``)：当商场 Wi-Fi 抖动带宽 &lt;600kbps 时，平滑冻结高清视频为静态呼吸头像，100% 保住语音不断！
     </text>
 
     <!-- Right Box: Livestream Priority Queue & Cost Comparison -->

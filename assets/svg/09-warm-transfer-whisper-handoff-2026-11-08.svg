@@ -22,11 +22,11 @@
   <!-- Header -->
   <g transform="translate(40, 26)">
     <rect x="0" y="0" width="350" height="28" rx="14" fill="#1E1B4B" stroke="#818CF8" stroke-width="1.2"/>
-    <text x="175" y="19" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 365 · ROUND 5 SINGLE-TOPIC FAQ · P723–P724</text>
+    <text x="175" y="19" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" text-anchor="middle">STAGE 365 · ROUND 5 SINGLE-TOPIC FAQ · </text>
     <text x="368" y="20" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="12">Provenance: synthetic (0ms reported @ nominal 1ms res.; actual duration unresolved/not_measured; no sub-1ms bound) | Live PBX leg setup: not_measured</text>
 
     <text x="0" y="58" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="25" font-weight="800">企业语音转人工选型：盲转 (SIP REFER)、CTI 弹屏 vs 双腿咨询温转 + Whisper 耳语</text>
-    <text x="0" y="84" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="600">AI-to-Human Escalation: Cold Blind Transfer vs. P723 Signed Context Screen-Pop vs. P724 Dual-Leg Whisper Briefing</text>
+    <text x="0" y="84" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="600">AI-to-Human Escalation: Cold Blind Transfer vs.  Signed Context Screen-Pop vs.  Dual-Leg Whisper Briefing</text>
   </g>
 
   <!-- 3 Architecture Selection Columns -->
@@ -45,14 +45,14 @@
     <text x="28" y="208" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• 开场 0 上下文客户直接要求“转总机”</text>
   </g>
 
-  <!-- Column 2: Single-Leg + P723 Signed Screen-Pop -->
+  <!-- Column 2: Single-Leg +  Signed Screen-Pop -->
   <g transform="translate(422, 128)">
     <rect width="355" height="238" rx="14" fill="url(#cardDark9)" stroke="#10B981" stroke-width="1.8"/>
     <rect x="16" y="14" width="196" height="24" rx="6" fill="#064E3B"/>
-    <text x="114" y="30" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" text-anchor="middle">架构 B · 单腿转接 + P723 弹屏 (主力)</text>
+    <text x="114" y="30" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" text-anchor="middle">架构 B · 单腿转接 +  弹屏 (主力)</text>
     <text x="16" y="60" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="16" font-weight="700">85% 标准桌面客服中心最优解</text>
     <text x="16" y="83" fill="#CBD5E1" font-family="Segoe UI, Inter, sans-serif" font-size="12">• 机制：SIP UUI 头携带 callCorrelationId</text>
-    <text x="16" y="105" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="12">• P723 护栏：强制校验 KYC 签名 + 已确认槽位</text>
+    <text x="16" y="105" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="12">•  护栏：强制校验 KYC 签名 + 已确认槽位</text>
     <text x="16" y="127" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="12">• 收益：45词4行红绿卡片，坐席 1.5s 读完免重问</text>
     <rect x="16" y="146" width="323" height="76" rx="8" fill="#06281E" stroke="#10B981"/>
     <text x="28" y="168" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">💰 成本与排队优势 (Queue &amp; TCO Advantage):</text>
@@ -60,30 +60,30 @@
     <text x="28" y="208" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• 2万通/日约省 63s/通 ≈ 350 坐席工时/天 (reported)</text>
   </g>
 
-  <!-- Column 3: Dual-Leg Consultative Warm Transfer + P724 Whisper -->
+  <!-- Column 3: Dual-Leg Consultative Warm Transfer +  Whisper -->
   <g transform="translate(805, 128)">
     <rect width="355" height="238" rx="14" fill="url(#cardDark9)" stroke="#818CF8" stroke-width="1.8"/>
     <rect x="16" y="14" width="218" height="24" rx="6" fill="#312E81"/>
-    <text x="125" y="30" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" text-anchor="middle">架构 C · 双腿温转 + P724 耳语播报</text>
+    <text x="125" y="30" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700" text-anchor="middle">架构 C · 双腿温转 +  耳语播报</text>
     <text x="16" y="60" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="16" font-weight="700">VIP 专属坐席与无屏幕外勤专家必选</text>
     <text x="16" y="83" fill="#CBD5E1" font-family="Segoe UI, Inter, sans-serif" font-size="12">• A-Leg (客户)：保持舒适等待音 (On-Hold)</text>
     <text x="16" y="105" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="12">• B-Leg (专家)：AI 1.3x 倍速 6秒单向耳语交底</text>
-    <text x="16" y="127" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="12">• P724 护栏：客户侧耳语泄漏 &lt;= -70 dBFS 强隔离</text>
+    <text x="16" y="127" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="12">•  护栏：客户侧耳语泄漏 &lt;= -70 dBFS 强隔离</text>
     <rect x="16" y="146" width="323" height="76" rx="8" fill="#1E1B4B" stroke="#6366F1"/>
     <text x="28" y="168" fill="#A5B4FC" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">🛡️ 超时优雅回切 (Graceful Hold Fallback):</text>
     <text x="28" y="188" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• B-Leg 振铃 &gt;12s 未接时自动取消 B-Leg</text>
     <text x="28" y="208" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12">• AI 切回 A-Leg 安抚客户并锁高优回呼排号</text>
   </g>
 
-  <!-- Bottom Mechanism Panel: P723 + P724 Dual-Leg Mixer & Zero-Repeat Pipeline -->
+  <!-- Bottom Mechanism Panel:  +  Dual-Leg Mixer & Zero-Repeat Pipeline -->
   <g transform="translate(40, 386)">
     <rect width="1120" height="248" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
-    <text x="24" y="32" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="800">底层核心原理：P723 零重复状态包契约 + P724 B2BUA 单向耳语混音隔离矩阵 (0ms reported @ nominal 1ms res. synthetic gate)</text>
+    <text x="24" y="32" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="800">底层核心原理： 零重复状态包契约 +  B2BUA 单向耳语混音隔离矩阵 (0ms reported @ nominal 1ms res. synthetic gate)</text>
 
-    <!-- Step 1: P723 Context Packet -->
+    <!-- Step 1:  Context Packet -->
     <g transform="translate(24, 50)">
       <rect width="335" height="176" rx="10" fill="#1E293B" stroke="#10B981" stroke-width="1.3"/>
-      <text x="16" y="26" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700">① P723 结构化状态包契约 (Zero-Repeat Guard)</text>
+      <text x="16" y="26" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700">①  结构化状态包契约 (Zero-Repeat Guard)</text>
       <text x="16" y="50" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11">{ callCorrelationId: "corr_8841",</text>
       <text x="16" y="69" fill="#6EE7B7" font-family="Consolas, monospace" font-size="11">  verifiedIdentity: "verified_otp (HMAC)",</text>
       <text x="16" y="88" fill="#E2E8F0" font-family="Consolas, monospace" font-size="11">  confirmedSlots: { orderId: "#8841" },</text>
@@ -96,10 +96,10 @@
     <!-- Arrow 1 -->
     <text x="373" y="142" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="22" font-weight="800">➔</text>
 
-    <!-- Step 2: P724 One-Way Whisper Mixer Matrix -->
+    <!-- Step 2:  One-Way Whisper Mixer Matrix -->
     <g transform="translate(402, 50)">
       <rect width="355" height="176" rx="10" fill="#1E293B" stroke="#818CF8" stroke-width="1.3"/>
-      <text x="16" y="26" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700">② P724 B2BUA 单向耳语声道隔离矩阵</text>
+      <text x="16" y="26" fill="#C7D2FE" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700">②  B2BUA 单向耳语声道隔离矩阵</text>
       <rect x="16" y="40" width="323" height="40" rx="6" fill="#0F172A" stroke="#38BDF8"/>
       <text x="26" y="58" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">客户腿 A-Leg (Caller)：锁定 On-Hold 舒适等待音</text>
       <text x="26" y="73" fill="#34D399" font-family="Consolas, monospace" font-size="10">callerWhisperGainDb: -85 dBFS &lt;= -70 dBFS (0% 漏音)</text>

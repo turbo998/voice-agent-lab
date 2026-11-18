@@ -51,18 +51,18 @@
 3. **对话与决策并行（Talk and Act in Parallel）**：`GPT-Live-1` 在前台立即应答并维持对话（复杂任务处理期间自然播报过渡语 Filler lines）；后端 **Decision Layer** 并行接收流式转写文本（`session.input_transcript.delta`）进行意图与风险分类，不给来电者增加额外等待。
 4. **专业 Agent + 知识库检索**：按路由结果交由专业 Agent（订单换货、设备支持、账单订阅）结合 **Foundry IQ** 知识库生成有依据回答。
 5. **分级工具调用（Normal vs. Complicated MCP）**：
-   - **Normal（普通只读查询）**：如查询 Shopify 订单物流、查询戒指云端固件状态 → 直接通过 **Foundry AI Gateway (基于 APIM)** 将 REST API 暴露为 MCP 工具，统一认证、限流与审计。
-   - **Complicated（复杂写操作）**：如创建 RMA 换货单、修改订单尺码、执行退款或取消订阅 → 部署在 **VNet 私有终结点内的自建精简 MCP Server（Azure Functions）** 中。
+ - **Normal（普通只读查询）**：如查询 Shopify 订单物流、查询戒指云端固件状态 → 直接通过 **Foundry AI Gateway (基于 APIM)** 将 REST API 暴露为 MCP 工具，统一认证、限流与审计。
+ - **Complicated（复杂写操作）**：如创建 RMA 换货单、修改订单尺码、执行退款或取消订阅 → 部署在 **VNet 私有终结点内的自建精简 MCP Server（Azure Functions）** 中。
 6. **高危红线转人工（Human-in-the-Loop）**：命中安全红线（如电池发热/鼓包）在 **30 秒内**附带翻译好的结构化摘要热转接至 **Dynamics 365** 坐席。
 7. **全链路可观测**：通过 OpenTelemetry 将每通电话的延时、Token/分钟成本、护栏拦截明细写入 **Application Insights**。
 
 ### 4.2 为什么要做“两阶段写入（Two-Phase Writes）”与打断回滚？
 语音通话容易出现同音误识别（如把“8号”听成“发货”）或用户临时变卦（“等一下，我还是不换货了，直接退款吧”）：
 - **阶段一：预览 → 口头确认 → 带幂等键执行（Preview, Verbal Confirm, Idempotent Execute）**
-  - Agent 先调用工具的 `preview` 模式（只计算不落库），向用户清晰播报：*“我将为您把 7 号戒指更换为 9 号，旧戒指寄回后 3 天内免费发出新戒指，请确认是否执行？”*
-  - 只有客户明确回答“确认/可以”后，才携带唯一幂等键（Idempotency Key）调用写接口，防止网络重试导致重复生成 RMA 或重复退款。
+ - Agent 先调用工具的 `preview` 模式（只计算不落库），向用户清晰播报：*“我将为您把 7 号戒指更换为 9 号，旧戒指寄回后 3 天内免费发出新戒指，请确认是否执行？”*
+ - 只有客户明确回答“确认/可以”后，才携带唯一幂等键（Idempotency Key）调用写接口，防止网络重试导致重复生成 RMA 或重复退款。
 - **阶段二：打断即取消并执行补偿回滚（Barge-in Cancels & Rolls Back）**
-  - 一次换货涉及「建 RMA 单 → 改 Shopify 订单 → 生成退货物流面单」多步操作；若客户在执行中途打断，Voice Live 触发打断事件，MCP Server 立即终止后续步骤并调用补偿事务（如作废刚创建的半成品 RMA 单），确保业务数据绝对一致。
+ - 一次换货涉及「建 RMA 单 → 改 Shopify 订单 → 生成退货物流面单」多步操作；若客户在执行中途打断，Voice Live 触发打断事件，MCP Server 立即终止后续步骤并调用补偿事务（如作废刚创建的半成品 RMA 单），确保业务数据绝对一致。
 
 ---
 
@@ -84,10 +84,10 @@
 2. **Decision-1 仅打分（Scores Only）**：未命中硬规则时，在 ~0.6s 内输出意图、风险等级、语种与置信度分数。
 3. **策略代码做决定（Policy Code）**：结合客户等级、订单金额、置信度阈值决策——置信度 `< 0.6` 时让 `GPT-Live-1` 追问一句澄清问题；退款 `> $50` 强制走人工审批。
 4. **四类典型话术路由实例**：
-   - **尺码换货（低风险 · 置信度 `0.93`）**：*“My ring is too tight. Can I swap for a size 9?”* → 路由至 **Order & Exchange Agent**（Full Duplex 全双工，预览 RMA + 口头确认后写入）。
-   - **固件同步故障（低风险 · 置信度 `0.88`）**：*“Sleep data stopped syncing after the update.”* → 路由至 **Device Support Agent**（`GPT-6.1 Sol` + `Foundry IQ` 按固件版本检索排障，并自动写入研发缺陷工单）。
-   - **取消订阅与退款（中风险 · 置信度 `0.81`）**：*“Cancel my plan and refund this month.”* → 切换至 **Billing Agent（Cascaded 级联模式）**，逐句审核输出话术；退款超 `$50` 触发人工审批流。
-   - **电池发热安全（高风险 · 规则直接命中）**：*“The ring got hot and swollen while charging.”* → 立即播报安全处置指引（停止充电并远离可燃物），**30 秒内**附带中文/英文双语摘要热转接 **D365 人工坐席**。
+ - **尺码换货（低风险 · 置信度 `0.93`）**：*“My ring is too tight. Can I swap for a size 9?”* → 路由至 **Order & Exchange Agent**（Full Duplex 全双工，预览 RMA + 口头确认后写入）。
+ - **固件同步故障（低风险 · 置信度 `0.88`）**：*“Sleep data stopped syncing after the update.”* → 路由至 **Device Support Agent**（`GPT-6.1 Sol` + `Foundry IQ` 按固件版本检索排障，并自动写入研发缺陷工单）。
+ - **取消订阅与退款（中风险 · 置信度 `0.81`）**：*“Cancel my plan and refund this month.”* → 切换至 **Billing Agent（Cascaded 级联模式）**，逐句审核输出话术；退款超 `$50` 触发人工审批流。
+ - **电池发热安全（高风险 · 规则直接命中）**：*“The ring got hot and swollen while charging.”* → 立即播报安全处置指引（停止充电并远离可燃物），**30 秒内**附带中文/英文双语摘要热转接 **D365 人工坐席**。
 
 ---
 
@@ -95,11 +95,11 @@
 
 - **Foundry IQ 多源知识底座**：汇聚 Blob（多语种产品手册）、SQL（各国退换货政策表）、SharePoint（客服 SOP）、OneLake（历史工单）与 Web FAQ；自动按**国家市场、戒指型号、固件版本**打标分块，检索时继承数据源权限并强制附上引用链接（无依据不作答）。可选联动 **Work IQ**（Teams 协同上下文）、**Fabric IQ**（订单退货率统一语义层）与 **Web IQ**。
 - **五重输入/输出护栏（Guardrails）**：
-  1. **Prompt Shields（输入层）**：拦截越狱攻击与间接提示词注入。
-  2. **Content Filter（输入/输出层）**：多类别有害内容分级过滤。
-  3. **PII & Health Data Redaction（输入与日志层）**：如客户说出 *“Email anna@..., heart rate hits 120”*，在落盘日志与工单前自动脱敏为 `[EMAIL]`、`[HEALTH]`，并配合 **Microsoft Purview** 敏感度标签实现 **100% 健康数据零泄露**。
-  4. **Groundedness Detection（输出层）**：逐句比对政策源——若模型口误承诺 *“给您退款 50%”* 但政策库无此条款，立即拦截并替换为合规政策话术。
-  5. **Blocklists（输入/输出层）**：针对禁用承诺词与竞品词做精确/正则阻断。
+ 1. **Prompt Shields（输入层）**：拦截越狱攻击与间接提示词注入。
+ 2. **Content Filter（输入/输出层）**：多类别有害内容分级过滤。
+ 3. **PII & Health Data Redaction（输入与日志层）**：如客户说出 *“Email anna@..., heart rate hits 120”*，在落盘日志与工单前自动脱敏为 `[EMAIL]`、`[HEALTH]`，并配合 **Microsoft Purview** 敏感度标签实现 **100% 健康数据零泄露**。
+ 4. **Groundedness Detection（输出层）**：逐句比对政策源——若模型口误承诺 *“给您退款 50%”* 但政策库无此条款，立即拦截并替换为合规政策话术。
+ 5. **Blocklists（输入/输出层）**：针对禁用承诺词与竞品词做精确/正则阻断。
 
 ---
 
@@ -135,9 +135,9 @@
 - **纯人工单通成本 = `$5.00 / 通`**：单坐席综合月成本 `$2,300`（薪资 `$1,500` [65%] + 管理质检 `$350` [15%] + 场地系统电话 `$300` [13%] + 培训流失 `$150` [7%]）÷ 月均 `460 通` ≈ **`$5.00 / 通`**。
 - **AI 语音单分钟成本 = `$0.08 / 分钟`（约 `$0.40 / 通`）**：语音模型 `$0.050` (62%) + 推理路由与护栏 `$0.012` (15%) + ACS 电话 `$0.009` (12%) + 静音与重试余量 `$0.009` (11%)。
 - **年度总成本对比（60% AI 自助解决率）**：
-  - **今年（10 万通来电）**：纯人工 `$500K` vs. AI 混合方案 **`$295K`**（4 万通人工 `$200K` + 44 万 AI 分钟 `$35K` + 平台与运营人力 `$60K`）→ **首年净省 `$205K`（成本下降 41%）**。
-  - **明年（30 万通来电 · 销量翻 3 倍）**：纯人工 `$1,500K` vs. AI 混合方案 **`$786K`** → **次年净省 `$714K`（成本下降 48%）**。
-  - **投资回本周期（Payback Period）**：一次性总投入 `$80K`（`$15K` PoC + `$65K` 生产建设）÷ 首年月均净省 `$17.1K` ≈ **5 个月回本**。
+ - **今年（10 万通来电）**：纯人工 `$500K` vs. AI 混合方案 **`$295K`**（4 万通人工 `$200K` + 44 万 AI 分钟 `$35K` + 平台与运营人力 `$60K`）→ **首年净省 `$205K`（成本下降 41%）**。
+ - **明年（30 万通来电 · 销量翻 3 倍）**：纯人工 `$1,500K` vs. AI 混合方案 **`$786K`** → **次年净省 `$714K`（成本下降 48%）**。
+ - **投资回本周期（Payback Period）**：一次性总投入 `$80K`（`$15K` PoC + `$65K` 生产建设）÷ 首年月均净省 `$17.1K` ≈ **5 个月回本**。
 
 ---
 

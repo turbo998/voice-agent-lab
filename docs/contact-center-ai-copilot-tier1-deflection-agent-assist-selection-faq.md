@@ -1,6 +1,6 @@
 # 智能联络中心全栈升级与方案选型 FAQ：AI 首线语音接待（Tier-1 Deflection）+ 带上下文无缝转人工（Warm Handoff）+ 坐席实时话术推荐（Agent Assist Copilot）架构指南
 
-> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md`)](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)**  
+> 🌐 **Language / 语言**: **中文 (Chinese)** | **[English (`contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md`)](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)** 
 > 🔗 **关联专题 (Related Deep Dives)**: [AI 转人工热转接与耳语简报 (`warm-transfer-whisper-handoff-faq.md`)](./warm-transfer-whisper-handoff-faq.md) · [实时语音编排框架选型 (`voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md`)](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md) · [话后口头承诺对账与全量质检 (`voice-postcall-promise-ticket-reconciliation-qa-faq.md`)](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) · [20 大高价值业务场景 (`business-scenarios.md`)](./business-scenarios.md) · [返回首页 (`README.md`)](../README.md)
 
 ![Enterprise Contact Center AI Copilot Architecture & Selection Visual Summary](../assets/svg/contact-center-ai-copilot-tier1-deflection-agent-assist.svg)
@@ -12,12 +12,12 @@
 在银行、保险、航司、电信、零售及跨国制造企业的呼叫中心升级项目中，**Cloud & AI 解决方案架构师** 最常看到的失败教训就是“非黑即白”——要么试图用 AI 一夜之间 100% 替代所有人工坐席（遇到复杂投诉立刻翻车），要么只给人工坐席装一个弹窗慢半拍的聊天框（坐席嫌烦直接关掉）。真正能拿到高管预算并跑出确定性 ROI 的生产架构，是 **“AI 首线接待（70% 自动分流）+ 1.5 秒带上下文无缝转人工（零复述交接）+ 人工坐席实时话术推荐与自动小结（30% 疑难通话提效）”的三位一体协同架构（Contact Center Copilot）**：
 
 1. **为什么“70% AI 首线接待 + 30% 人工坐席实时副驾”是联络中心 ROI 的黄金分割点？**
-   - **第一环（Tier-1 AI 首线全双工接待）**：用 `Azure Voice Live (GPT-Live-1 / 混合语义 VAD)` 替代传统令人抓狂的“普通话请按 1、查账单请按 2”按键迷宫（IVR）。客户开口即办业务，自动闭环 **65%～78%** 的标准化高频诉求（查物流、改地址、重置密码、常规挂失、政策 FAQ），实现 **0 秒排队接通**。
-   - **第二环（Zero-Repeat 带上下文无缝热转接）**：一旦识别到高价值挽留、复杂多程改签、非授权盗刷争议或客户连续 2 次语气暴怒，系统在 **1.5 秒内** 将前序对话浓缩为结构化交接卡（含已核验身份、核心诉求、情绪预警与已尝试操作），通过 CTI 桌面弹屏 + 5 秒坐席私密耳语（Whisper）移交人工，彻底消灭客户最痛恨的**“转人工后还得把事情从头再讲一遍”**。
-   - **第三环（Real-Time Agent Assist 坐席实时副驾 + 秒级话后小结）**：在人工坐席通话期间，通过旁路双声道镜像分流（SIPREC / Media Forking）实时听懂客户刁钻提问，在 **`< 750ms` 内** 弹出“三行极简提词卡 + 一键改单按钮”并监控合规必读项；挂机瞬间 **3 秒内自动生成结构化 CRM 工单摘要**，将坐席单通平均处理时长（AHT）缩短 **42%**，话后小结时间（ACW）从 **95 秒压降至 8 秒**！
+ - **第一环（Tier-1 AI 首线全双工接待）**：用 `Azure Voice Live (GPT-Live-1 / 混合语义 VAD)` 替代传统令人抓狂的“普通话请按 1、查账单请按 2”按键迷宫（IVR）。客户开口即办业务，自动闭环 **65%～78%** 的标准化高频诉求（查物流、改地址、重置密码、常规挂失、政策 FAQ），实现 **0 秒排队接通**。
+ - **第二环（Zero-Repeat 带上下文无缝热转接）**：一旦识别到高价值挽留、复杂多程改签、非授权盗刷争议或客户连续 2 次语气暴怒，系统在 **1.5 秒内** 将前序对话浓缩为结构化交接卡（含已核验身份、核心诉求、情绪预警与已尝试操作），通过 CTI 桌面弹屏 + 5 秒坐席私密耳语（Whisper）移交人工，彻底消灭客户最痛恨的**“转人工后还得把事情从头再讲一遍”**。
+ - **第三环（Real-Time Agent Assist 坐席实时副驾 + 秒级话后小结）**：在人工坐席通话期间，通过旁路双声道镜像分流（SIPREC / Media Forking）实时听懂客户刁钻提问，在 **`< 750ms` 内** 弹出“三行极简提词卡 + 一键改单按钮”并监控合规必读项；挂机瞬间 **3 秒内自动生成结构化 CRM 工单摘要**，将坐席单通平均处理时长（AHT）缩短 **42%**，话后小结时间（ACW）从 **95 秒压降至 8 秒**！
 2. **平台选型铁律：买 CCaaS 厂商自带的“按坐席人头插件”还是建“Azure 云原生统一智能底座”？**
-   - **何时买 CCaaS 原生插件（Genesys Cloud AI / NICE CXone Enlighten / Amazon Connect Q / Dynamics 365 Contact Center）**：当坐席规模较小（`< 80 坐席`）、全部业务均在该单一 CCaaS 闭环内、且无专职 AI 工程团队时，原生插件开箱即用最快。
-   - **何时首选“Azure Voice Live + AI Foundry + AI Speech 旁路赋能底座”（对接现有 Cisco / Genesys / Avaya / 华为或自研呼叫中心）**：当企业坐席规模 `>= 100～5,000 人`、存在多品牌交换机并存、或希望**“首线 AI 语音机器人、微信/App 在线文本客服、人工坐席实时副驾”100% 共用同一套企业知识库（Azure AI Search）与业务工具接口**时，按实际消耗算力计费的 Azure 云原生底座比按人头收 `$120 ~ $200 / 坐席 / 月` 的 CCaaS 插件 **节省 60%～72% 的年化 TCO**（500 坐席每年立省超 **$750,000**，且全额抵扣 Azure MACC）。
+ - **何时买 CCaaS 原生插件（Genesys Cloud AI / NICE CXone Enlighten / Amazon Connect Q / Dynamics 365 Contact Center）**：当坐席规模较小（`< 80 坐席`）、全部业务均在该单一 CCaaS 闭环内、且无专职 AI 工程团队时，原生插件开箱即用最快。
+ - **何时首选“Azure Voice Live + AI Foundry + AI Speech 旁路赋能底座”（对接现有 Cisco / Genesys / Avaya / 华为或自研呼叫中心）**：当企业坐席规模 `>= 100～5,000 人`、存在多品牌交换机并存、或希望**“首线 AI 语音机器人、微信/App 在线文本客服、人工坐席实时副驾”100% 共用同一套企业知识库（Azure AI Search）与业务工具接口**时，按实际消耗算力计费的 Azure 云原生底座比按人头收 `$120 ~ $200 / 坐席 / 月` 的 CCaaS 插件 **节省 60%～72% 的年化 TCO**（500 坐席每年立省超 **$750,000**，且全额抵扣 Azure MACC）。
 
 ---
 
@@ -27,19 +27,19 @@
 
 #### 1. 先用大白话讲透：绝对不需要推翻重来（“外科手术式旁路嫁接”）
 
-很多呼叫中心总监一听“上大模型语音和坐席副驾”，第一反应是：“我们刚花了上千万买了 Cisco UCCE 或 Genesys 交换机，坐席每天都在用现有的 CRM 工作台，全换掉是不可能的！”  
+很多呼叫中心总监一听“上大模型语音和坐席副驾”，第一反应是：“我们刚花了上千万买了 Cisco UCCE 或 Genesys 交换机，坐席每天都在用现有的 CRM 工作台，全换掉是不可能的！” 
 作为解决方案架构师，你要明确告诉客户：**原有交换机一分钱都不用扔，我们采用电信级标准的“双模式无缝嫁接”**：
 
 - **针对第 1 环（AI 首线接待）：把 AI 当作一个“永不疲倦的虚拟 VIP 技能组（Virtual SIP Trunk / Skill Group）”**
-  - 原有的运营商公网电话线（PSTN）依然先进企业自己的语音网关（SBC，如 AudioCodes / Oracle / Cisco CUBE）。
-  - SBC 通过标准 **SIP Direct Routing** 将呼入电话先路由给 **Azure Communication Services (ACS) / Azure Voice Live** 虚拟坐席池。
-  - 如果 AI 在前 60 秒直接帮客户办完了业务，电话直接结束；如果遇到疑难问题需要转人工，AI 只需向企业原有的 Cisco/Genesys 交换机发起一个带 `User-to-User Information (UUI)` 上下文编号的 **SIP 转接指令**，电话立刻回到原有的人工坐席队列！
+ - 原有的运营商公网电话线（PSTN）依然先进企业自己的语音网关（SBC，如 AudioCodes / Oracle / Cisco CUBE）。
+ - SBC 通过标准 **SIP Direct Routing** 将呼入电话先路由给 **Azure Communication Services (ACS) / Azure Voice Live** 虚拟坐席池。
+ - 如果 AI 在前 60 秒直接帮客户办完了业务，电话直接结束；如果遇到疑难问题需要转人工，AI 只需向企业原有的 Cisco/Genesys 交换机发起一个带 `User-to-User Information (UUI)` 上下文编号的 **SIP 转接指令**，电话立刻回到原有的人工坐席队列！
 - **针对第 3 环（人工坐席实时话术副驾）：采用“零侵入旁路双声道分流（Out-of-Band SIPREC / Media Forking）”**
-  - **核心设计原则：绝不把坐席副驾串联在客户与人工坐席的实时通话主干道上！**
-  - 当客户与人工坐席正在通话时，企业边缘 SBC 交换机利用内置的 **SIPREC（标准录音分流协议）或 WebSocket Media Forking**，在硬件层自动把声音“复印”一份只读流发给 Azure 实时转写与副驾引擎：
-    - **左声道（Channel 0 = 客户声音）** ➔ 实时识别客户意图、捕捉价格/理赔异议、触发知识库检索；
-    - **右声道（Channel 1 = 坐席声音）** ➔ 实时核对坐席是否漏读了法定风险揭示语、是否说出了违禁承诺词。
-  - **最大好处**：对原有电话通话增加 **0.0ms 延迟**！哪怕后台 AI 副驾正在升级重启，客户和人工坐席的电话也 100% 正常畅通，安全感拉满！
+ - **核心设计原则：绝不把坐席副驾串联在客户与人工坐席的实时通话主干道上！**
+ - 当客户与人工坐席正在通话时，企业边缘 SBC 交换机利用内置的 **SIPREC（标准录音分流协议）或 WebSocket Media Forking**，在硬件层自动把声音“复印”一份只读流发给 Azure 实时转写与副驾引擎：
+ - **左声道（Channel 0 = 客户声音）** ➔ 实时识别客户意图、捕捉价格/理赔异议、触发知识库检索；
+ - **右声道（Channel 1 = 坐席声音）** ➔ 实时核对坐席是否漏读了法定风险揭示语、是否说出了违禁承诺词。
+ - **最大好处**：对原有电话通话增加 **0.0ms 延迟**！哪怕后台 AI 副驾正在升级重启，客户和人工坐席的电话也 100% 正常畅通，安全感拉满！
 
 ---
 
@@ -52,16 +52,16 @@
 #### 1. 触发时机：“平时保持安静，关键时刻秒弹”（Event-Driven Silence by Default）
 - **不要**：客户每说一句“你好”、“我是王先生”，屏幕就弹出一堆废话提示。
 - **要**：在流式转写层后置一个耗时仅 `60ms` 的轻量级意图/异议分类器（如 `gpt-4.1-nano / Phi-4-mini`）。只有当检测到以下 **4 类高价值时刻** 时，才主动点亮坐席屏幕卡片：
-  1. **业务政策/参数追问**（如：“你们这个尊享版医疗险，质子重离子医院报销比例到底是多少？”）；
-  2. **竞争对手/价格异议**（如：“隔壁友商才收我年费 200 块，你们凭什么收 500？我要销户！”）；
-  3. **合规必读项漏读预警**（如：客户已同意购买理财，但坐席还未念出风险等级匹配声明）；
-  4. **后台系统数据自动预填就绪**（如：客户刚报完运单号，AI 已自动在后台把物流轨迹查出来摆在桌面上）。
+ 1. **业务政策/参数追问**（如：“你们这个尊享版医疗险，质子重离子医院报销比例到底是多少？”）；
+ 2. **竞争对手/价格异议**（如：“隔壁友商才收我年费 200 块，你们凭什么收 500？我要销户！”）；
+ 3. **合规必读项漏读预警**（如：客户已同意购买理财，但坐席还未念出风险等级匹配声明）；
+ 4. **后台系统数据自动预填就绪**（如：客户刚报完运单号，AI 已自动在后台把物流轨迹查出来摆在桌面上）。
 
 #### 2. 卡片排版：“三行提词器法则（3-Line Teleprompter Rule）”
 - **严禁生成超过 60 字的段落！** 每一张实时推荐卡片必须严格遵循以下三行结构，让坐席 **用眼角余光扫 0.5 秒就能直接照着念**：
-  - **第 1 行（核心结论/数字高亮）**：`📌 质子重离子：100% 报销（年度限额 400 万，含上海质子重离子医院）`
-  - **第 2 行（可直接脱口而出的金句）**：`💬 推荐话术：“王先生您放心，咱们这款计划对上海质子重离子医院是 100% 全额报销的，床位费也包含在内。”`
-  - **第 3 行（一键执行动作按钮）**：`[📲 一键发送医院清单短信给客户]` `[📄 插入理赔流程条款]`
+ - **第 1 行（核心结论/数字高亮）**：`📌 质子重离子：100% 报销（年度限额 400 万，含上海质子重离子医院）`
+ - **第 2 行（可直接脱口而出的金句）**：`💬 推荐话术：“王先生您放心，咱们这款计划对上海质子重离子医院是 100% 全额报销的，床位费也包含在内。”`
+ - **第 3 行（一键执行动作按钮）**：`[📲 一键发送医院清单短信给客户]` `[📄 插入理赔流程条款]`
 
 #### 3. 闭环感知：“坐席念完自动打勾折叠（Auto-Checkoff via Right-Channel Listening）”
 - 既然我们通过双声道分流同时听着 **右声道（坐席自己的声音）**，一旦识别到坐席已经把卡片上的推荐要点或合规条款念出来了，UI 界面在 **`400ms` 内自动将该卡片打上绿色对勾 `✅` 并折叠收起**，无需坐席分心去点鼠标关闭！
@@ -73,12 +73,12 @@
 架构师在面对客户采购部门和 IT 部门时，可以用下面这套清晰的商业与技术对比帮客户做决策：
 
 1. **为什么大型呼叫中心买“按坐席人头收费（Per-Seat Licensing）”的插件最亏？**
-   - 传统 CCaaS 厂商（如 Genesys / NICE / Salesforce）或垂直 SaaS（如 Cresta）通常按 **`$100 ~ $200 / 坐席 / 月`** 收取 AI Copilot 授权费。
-   - 但在真实的 500 人呼叫中心里，坐席是分早班、中班、晚班轮休的（同一时刻真正在线接电话的往往只有 180～220 人），而且随着第 1 环 **AI 首线语音接待（Tier-1 Voice Bot）分流了 70% 的简单电话**，人工坐席接听的电话总量是大幅下降的！
-   - 如果按坐席人头包月付费，意味着你一边花钱买 AI 首线机器人分流电话，一边还要为轮休和不接电话的人工坐席交全额月租！
+ - 传统 CCaaS 厂商（如 Genesys / NICE / Salesforce）或垂直 SaaS（如 Cresta）通常按 **`$100 ~ $200 / 坐席 / 月`** 收取 AI Copilot 授权费。
+ - 但在真实的 500 人呼叫中心里，坐席是分早班、中班、晚班轮休的（同一时刻真正在线接电话的往往只有 180～220 人），而且随着第 1 环 **AI 首线语音接待（Tier-1 Voice Bot）分流了 70% 的简单电话**，人工坐席接听的电话总量是大幅下降的！
+ - 如果按坐席人头包月付费，意味着你一边花钱买 AI 首线机器人分流电话，一边还要为轮休和不接电话的人工坐席交全额月租！
 2. **为什么“Azure Voice Live + AI Foundry + AI Speech 按量消费底座”是终局架构？**
-   - **第一，算力按实际通话分钟计费**：无论是首线 AI 语音接待（约 `$0.048 ~ $0.062 / 分钟`）还是人工坐席旁路实时辅助（双声道 Fast/Realtime STT + 轻量 LLM 提词，每分钟仅 **`$0.018 ~ $0.025 / 分钟`**），不打电话一分钱不花！
-   - **第二，消滅“两套大脑”精神分裂**：如果首线语音机器人买 A 厂商，人工坐席助手买 B 厂商，每当公司发一个新产品促销政策，运营人员要分别去两个平台上传知识库、调两套 Prompt，经常出现“AI 机器人跟客户说可以退，转到人工坐席后助手提示不能退”的尴尬事故。在 Azure AI Foundry 统一底座下，**首线 AI 接待与人工坐席副驾 100% 共享同一个 `Azure AI Search` 知识库、同一套业务 API 与同一套合规护栏**！
+ - **第一，算力按实际通话分钟计费**：无论是首线 AI 语音接待（约 `$0.048 ~ $0.062 / 分钟`）还是人工坐席旁路实时辅助（双声道 Fast/Realtime STT + 轻量 LLM 提词，每分钟仅 **`$0.018 ~ $0.025 / 分钟`**），不打电话一分钱不花！
+ - **第二，消滅“两套大脑”精神分裂**：如果首线语音机器人买 A 厂商，人工坐席助手买 B 厂商，每当公司发一个新产品促销政策，运营人员要分别去两个平台上传知识库、调两套 Prompt，经常出现“AI 机器人跟客户说可以退，转到人工坐席后助手提示不能退”的尴尬事故。在 Azure AI Foundry 统一底座下，**首线 AI 接待与人工坐席副驾 100% 共享同一个 `Azure AI Search` 知识库、同一套业务 API 与同一套合规护栏**！
 
 ---
 
@@ -88,17 +88,17 @@
 
 ```mermaid
 flowchart TD
-    Start(["🎯 企业智能联络中心 (Contact Center) 升级选型启动"]) --> Q1{"1. 现有联络中心坐席规模与技术栈现状?"}
-    
-    Q1 -- "小型团队 (< 80 坐席)<br/>且 100% 使用单一云客服 (如 D365 / Amazon Connect)" --> ChoiceNative["⚡ 选型 A：直接启用云客服原生 AI 插件<br/>(Dynamics 365 Contact Center Copilot / Connect Q)<br/>优势：零代码开箱即用，与原生工单界面无缝嵌合"]
-    
-    Q1 -- "中大型联络中心 (100 ~ 10,000+ 坐席)<br/>或存量 Cisco / Genesys / Avaya / 自研工作台" --> Q2{"2. 本期升级的核心业务目标是单一环节还是全链路?"}
-    
-    Q2 -- "仅做纯人工坐席话术教练与事后质检<br/>(暂不建设首线 AI 语音自动接待)" --> Q2_Sub{"是否允许通话音频出境至三方公网 SaaS?"}
-    Q2_Sub -- "允许 (北美零售/互联网团队)" --> ChoicePoint["🧩 选型 B：垂直坐席辅助 SaaS (Cresta / Observe.AI)<br/>优势：自带现成销售话术分析面板，上线快但按人头费高"]
-    Q2_Sub -- "不允许 (银行/保险/政企要求私网 VNet)" --> ChoiceAz_Assist["🛡️ 选型 C1：SIPREC 双声道分流 + Azure Speech & Foundry 副驾<br/>优势：零延迟旁路监听、三行提词卡、挂机 3秒自动填工单"]
-    
-    Q2 -- "全链路升级：70% AI 首线语音自动接待 +<br/>带上下文无缝转人工 + 30% 坐席实时副驾" --> ChoiceAz_Full["🏆 选型 C2：Azure Voice Live + ACS + AI Foundry 统一联络中心底座<br/>优势：首线机器人与人工副驾共用同一知识库，综合 TCO 节省 69%"]
+ Start(["🎯 企业智能联络中心 (Contact Center) 升级选型启动"]) --> Q1{"1. 现有联络中心坐席规模与技术栈现状?"}
+ 
+ Q1 -- "小型团队 (< 80 坐席)<br/>且 100% 使用单一云客服 (如 D365 / Amazon Connect)" --> ChoiceNative["⚡ 选型 A：直接启用云客服原生 AI 插件<br/>(Dynamics 365 Contact Center Copilot / Connect Q)<br/>优势：零代码开箱即用，与原生工单界面无缝嵌合"]
+ 
+ Q1 -- "中大型联络中心 (100 ~ 10,000+ 坐席)<br/>或存量 Cisco / Genesys / Avaya / 自研工作台" --> Q2{"2. 本期升级的核心业务目标是单一环节还是全链路?"}
+ 
+ Q2 -- "仅做纯人工坐席话术教练与事后质检<br/>(暂不建设首线 AI 语音自动接待)" --> Q2_Sub{"是否允许通话音频出境至三方公网 SaaS?"}
+ Q2_Sub -- "允许 (北美零售/互联网团队)" --> ChoicePoint["🧩 选型 B：垂直坐席辅助 SaaS (Cresta / Observe.AI)<br/>优势：自带现成销售话术分析面板，上线快但按人头费高"]
+ Q2_Sub -- "不允许 (银行/保险/政企要求私网 VNet)" --> ChoiceAz_Assist["🛡️ 选型 C1：SIPREC 双声道分流 + Azure Speech & Foundry 副驾<br/>优势：零延迟旁路监听、三行提词卡、挂机 3秒自动填工单"]
+ 
+ Q2 -- "全链路升级：70% AI 首线语音自动接待 +<br/>带上下文无缝转人工 + 30% 坐席实时副驾" --> ChoiceAz_Full["🏆 选型 C2：Azure Voice Live + ACS + AI Foundry 统一联络中心底座<br/>优势：首线机器人与人工副驾共用同一知识库，综合 TCO 节省 69%"]
 ```
 
 ---
@@ -109,38 +109,38 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph Ingress["☎️ 1. 企业全渠道接入与 SBC 边缘层"]
-        direction TB
-        Caller["👤 客户呼入<br/>(400热线 / 手机 App)"] --> SBC["🛡️ 企业边缘 SBC / 交换机<br/>(Cisco / Genesys / AudioCodes)"]
-    end
+ subgraph Ingress["☎️ 1. 企业全渠道接入与 SBC 边缘层"]
+ direction TB
+ Caller["👤 客户呼入<br/>(400热线 / 手机 App)"] --> SBC["🛡️ 企业边缘 SBC / 交换机<br/>(Cisco / Genesys / AudioCodes)"]
+ end
 
-    subgraph Stage1["🤖 2. 第一环：AI 首线全双工接待 (分流 70% 通话)"]
-        direction TB
-        ACS["🌐 Azure ACS / LiveKit 媒体网关"]
-        VL["⚡ Azure Voice Live API<br/>(GPT-Live-1 / 混合语义 VAD)"]
-        ACS <-->|"20ms 全双工音频"| VL
-    end
+ subgraph Stage1["🤖 2. 第一环：AI 首线全双工接待 (分流 70% 通话)"]
+ direction TB
+ ACS["🌐 Azure ACS / LiveKit 媒体网关"]
+ VL["⚡ Azure Voice Live API<br/>(GPT-Live-1 / 混合语义 VAD)"]
+ ACS <-->|"20ms 全双工音频"| VL
+ end
 
-    subgraph Stage2["🤝 3. 第二环：零复述热转接引擎"]
-        direction TB
-        Handoff["📋 1.5s 实时交接摘要生成器<br/>(提取已核验身份+诉求+情绪)"]
-        Whisper["🎧 坐席 5s 私密单向耳语<br/>+ CTI 桌面卡片同步弹屏"]
-        Handoff --> Whisper
-    end
+ subgraph Stage2["🤝 3. 第二环：零复述热转接引擎"]
+ direction TB
+ Handoff["📋 1.5s 实时交接摘要生成器<br/>(提取已核验身份+诉求+情绪)"]
+ Whisper["🎧 坐席 5s 私密单向耳语<br/>+ CTI 桌面卡片同步弹屏"]
+ Handoff --> Whisper
+ end
 
-    subgraph Stage3["👨‍💼 4. 第三环：人工坐席实时副驾与话后小结 (赋能 30% 疑难通话)"]
-        direction TB
-        AgentDesk["🖥️ 人工坐席 CRM 工作台<br/>(三行提词卡 + 合规亮灯 + 3s自动工单)"]
-        Fork["🔀 SIPREC 双声道旁路分流<br/>(Ch0 客户 / Ch1 坐席 · 0ms 主路延迟)"]
-        Copilot["🧠 Azure Fast STT + Foundry 实时副驾<br/>(共享同一套 AI Search 知识库与 ERP 工具)"]
-        Fork --> Copilot --> AgentDesk
-    end
+ subgraph Stage3["👨‍💼 4. 第三环：人工坐席实时副驾与话后小结 (赋能 30% 疑难通话)"]
+ direction TB
+ AgentDesk["🖥️ 人工坐席 CRM 工作台<br/>(三行提词卡 + 合规亮灯 + 3s自动工单)"]
+ Fork["🔀 SIPREC 双声道旁路分流<br/>(Ch0 客户 / Ch1 坐席 · 0ms 主路延迟)"]
+ Copilot["🧠 Azure Fast STT + Foundry 实时副驾<br/>(共享同一套 AI Search 知识库与 ERP 工具)"]
+ Fork --> Copilot --> AgentDesk
+ end
 
-    SBC -->|"1. 100% 首线优先路由"| ACS
-    VL -->|"2. 复杂/暴怒触发转人工"| Handoff
-    Whisper -->|"3. SIP 转接回坐席队列"| SBC
-    SBC -->|"4a. 桥接人工主通话"| AgentDesk
-    SBC -.->|"4b. 旁路只读复制双声道"| Fork
+ SBC -->|"1. 100% 首线优先路由"| ACS
+ VL -->|"2. 复杂/暴怒触发转人工"| Handoff
+ Whisper -->|"3. SIP 转接回坐席队列"| SBC
+ SBC -->|"4a. 桥接人工主通话"| AgentDesk
+ SBC -.->|"4b. 旁路只读复制双声道"| Fork
 ```
 
 ---
@@ -149,35 +149,35 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Customer as 👤 客户 (王先生)
-    participant Bot as 🤖 第1环：AI 首线语音接待<br/>(Azure Voice Live API)
-    participant Copilot as 🧠 第2&3环：交接与坐席副驾<br/>(Foundry + AI Search + Speech)
-    actor Agent as 👨‍💼 人工资深坐席 (李工)<br/>(CRM 桌面工作台)
+ autonumber
+ actor Customer as 👤 客户 (王先生)
+ participant Bot as 🤖 第1环：AI 首线语音接待<br/>(Azure Voice Live API)
+ participant Copilot as 🧠 第2&3环：交接与坐席副驾<br/>(Foundry + AI Search + Speech)
+ actor Agent as 👨‍💼 人工资深坐席 (李工)<br/>(CRM 桌面工作台)
 
-    Note over Customer,Bot: 阶段 1：AI 首线零等待接听，自动完成核身与常规查询 (0s ~ 45s)
-    Customer->>Bot: 拨入银行财富热线："帮我查下昨天那笔 5 万美金跨境汇款到账没？"
-    Bot->>Customer: 🔊 核验声纹/动态口令通过，查询核心系统："王先生，该笔汇款目前卡在境外中转行补充材料环节..."
-    Customer->>Bot: 🗣️ 语气焦急："什么？！我今晚就要付海外学费，再不到账就违约了！你们必须马上帮我加急处理！"
+ Note over Customer,Bot: 阶段 1：AI 首线零等待接听，自动完成核身与常规查询 (0s ~ 45s)
+ Customer->>Bot: 拨入银行财富热线："帮我查下昨天那笔 5 万美金跨境汇款到账没？"
+ Bot->>Customer: 🔊 核验声纹/动态口令通过，查询核心系统："王先生，该笔汇款目前卡在境外中转行补充材料环节..."
+ Customer->>Bot: 🗣️ 语气焦急："什么？！我今晚就要付海外学费，再不到账就违约了！你们必须马上帮我加急处理！"
 
-    Note over Bot,Agent: 阶段 2：识别高优紧急诉求 + 情绪升级，1.5 秒带完整上下文无缝热转接 (45s ~ 52s)
-    Bot->>Customer: 🔊 "非常理解您的着急，境外电汇加急需要国际结算专员直接发加急报文，我马上为您转接专员，您的汇款单号已同步，不用重说。"
-    Bot->>Copilot: 触发 Warm Transfer，推送前 45 秒对话结构化槽位 (客户: 王先生 | 单号: FX-9021 | 痛点: 今晚学费违约需发 SWIFT MT199 加急)
-    Copilot->>Agent: 🖥️ CTI 桌面秒弹【橙色加急交接卡】+ 耳机播放 4 秒私密耳语："王先生 5 万美金学费卡中转行，需办 MT199 加急"
-    Agent->>Customer: 🗣️ 接起电话直接切入正题："王先生您好，我是国际结算专员李明，您那笔 5 万美金学费汇款 FX-9021 我已经调出来了..."
+ Note over Bot,Agent: 阶段 2：识别高优紧急诉求 + 情绪升级，1.5 秒带完整上下文无缝热转接 (45s ~ 52s)
+ Bot->>Customer: 🔊 "非常理解您的着急，境外电汇加急需要国际结算专员直接发加急报文，我马上为您转接专员，您的汇款单号已同步，不用重说。"
+ Bot->>Copilot: 触发 Warm Transfer，推送前 45 秒对话结构化槽位 (客户: 王先生 | 单号: FX-9021 | 痛点: 今晚学费违约需发 SWIFT MT199 加急)
+ Copilot->>Agent: 🖥️ CTI 桌面秒弹【橙色加急交接卡】+ 耳机播放 4 秒私密耳语："王先生 5 万美金学费卡中转行，需办 MT199 加急"
+ Agent->>Customer: 🗣️ 接起电话直接切入正题："王先生您好，我是国际结算专员李明，您那笔 5 万美金学费汇款 FX-9021 我已经调出来了..."
 
-    Note over Customer,Agent: 阶段 3：双声道旁路监听 + 坐席实时话术推荐 + 合规必读项自动打勾 (52s ~ 140s)
-    Customer->>Agent: 🗣️ (左声道 Ch0) "发这个加急报文要收我多少钱？多久能有回执？"
-    Note right of Copilot: 检测到客户费用与时效提问，620ms 内检索知识库推送【三行提词卡】
-    Copilot-->>Agent: 💡 弹出提词卡：[1] 白金卡免 $25 报文费 [2] 话术："您是白金客户本次加急费全免，2小时内推短信回执" [3] [一键免除手续费并拟定MT199]
-    Agent->>Customer: 🗣️ (右声道 Ch1) "因为您是咱们的白金卡客户，这 25 美金加急报文费我直接帮您全免了..."
-    Note right of Copilot: 右声道听见坐席已念出优惠与时效条款，自动将卡片打勾 ✅ 收起，并高亮提示“请口头确认汇款用途未变更”
-    Agent->>Customer: 🗣️ "最后跟您确认一下，这笔款项依然是用于缴纳本人海外高校学费对吗？"
-    Customer->>Agent: 🗣️ "对的，太感谢了！"
+ Note over Customer,Agent: 阶段 3：双声道旁路监听 + 坐席实时话术推荐 + 合规必读项自动打勾 (52s ~ 140s)
+ Customer->>Agent: 🗣️ (左声道 Ch0) "发这个加急报文要收我多少钱？多久能有回执？"
+ Note right of Copilot: 检测到客户费用与时效提问，620ms 内检索知识库推送【三行提词卡】
+ Copilot-->>Agent: 💡 弹出提词卡：[1] 白金卡免 $25 报文费 [2] 话术："您是白金客户本次加急费全免，2小时内推短信回执" [3] [一键免除手续费并拟定MT199]
+ Agent->>Customer: 🗣️ (右声道 Ch1) "因为您是咱们的白金卡客户，这 25 美金加急报文费我直接帮您全免了..."
+ Note right of Copilot: 右声道听见坐席已念出优惠与时效条款，自动将卡片打勾 ✅ 收起，并高亮提示“请口头确认汇款用途未变更”
+ Agent->>Customer: 🗣️ "最后跟您确认一下，这笔款项依然是用于缴纳本人海外高校学费对吗？"
+ Customer->>Agent: 🗣️ "对的，太感谢了！"
 
-    Note over Copilot,Agent: 阶段 4：挂机 3 秒内自动生成结构化 CRM 工单与承诺对账 (140s ~ 143s)
-    Customer->>Agent: 挂断电话
-    Copilot-->>Agent: 📝 2.8 秒自动填好 CRM 结单表单 (分类: 跨境汇款加急 | 承诺项: 免除 $25 手续费 + 2h 短信回执 | 坐席仅需点击 [确认提交])
+ Note over Copilot,Agent: 阶段 4：挂机 3 秒内自动生成结构化 CRM 工单与承诺对账 (140s ~ 143s)
+ Customer->>Agent: 挂断电话
+ Copilot-->>Agent: 📝 2.8 秒自动填好 CRM 结单表单 (分类: 跨境汇款加急 | 承诺项: 免除 $25 手续费 + 2h 短信回执 | 坐席仅需点击 [确认提交])
 ```
 
 ---
@@ -192,7 +192,7 @@ sequenceDiagram
 | **2. 坐席提词卡弹出延迟 (P50)** | `900ms ~ 1,600ms` | **`650ms ~ 1,100ms`**<br/>(针对销售/客服话术做了专门流式优化) | `1,800ms ~ 3,500ms` ❌<br/>(未做句中投机检索，客户问完3秒才弹窗，坐席已自己答完) | **`520ms ~ 750ms`** ✅<br/>(基于 Partial ASR 句中投机检索 + 同区域小模型极速卡片渲染) |
 | **3. 现有交换机 (Cisco/Avaya/Genesys) 兼容性** | **强绑定单一品牌**<br/>若想用某云原生 AI，常被迫要求整体替换现有电话交换机 | 良好（支持桌面客户端抓音或 SIPREC 接入） | 需自行开发复杂的 SIPREC / RTP 双声道解包与 CTI 对接服务 | **零改造无感嫁接**<br/>通过标准 `SIP Direct Routing` + `SIPREC` 适配任何存量 PBX |
 | **4. 防刷屏反疲劳与自动打勾能力** | 中规中矩（常以右侧侧边栏聊天流形式不断滚动） | **强**<br/>具备成熟的话术 Checklist 自动勾选与实时情绪槽 | **极弱**<br/>通常直接吐出大段 Markdown 文字，一线坐席体验极差 | **极强（三行提词器 + 双声道自动闭环）**<br/>左声道触发问题卡、右声道听见坐席念完自动打勾收起 |
-| **5. 话后小结 (ACW) 与承诺对账质检** | 支持自动生成通话摘要，但缺乏口头承诺 vs ERP 落库工单对账 | 支持自动小结与 100% 文本质检评分 | 仅能生成粗略文本摘要，容易遗漏关键金额或产生幻觉 | **内置 `P747` 承诺对账护栏**<br/>3秒填好结构化工单，并自动核对“坐席口头答应的退款是否真实落库” |
+| **5. 话后小结 (ACW) 与承诺对账质检** | 支持自动生成通话摘要，但缺乏口头承诺 vs ERP 落库工单对账 | 支持自动小结与 100% 文本质检评分 | 仅能生成粗略文本摘要，容易遗漏关键金额或产生幻觉 | **内置 确定性护栏 承诺对账护栏**<br/>3秒填好结构化工单，并自动核对“坐席口头答应的退款是否真实落库” |
 | **6. 500 坐席规模月度综合成本 (TCO)** | **`$85,000 ~ $110,000 / 月`** ❌<br/>(`$150+/坐席/月` 人头费 + 首线按单/按分钟附加费) | **`$65,000 ~ $85,000 / 月`**<br/>(高昂按坐席订阅年框，不含首线语音电话通道) | `$35,000 ~ $55,000 / 月`<br/>(含常驻 GPU 集群与 3~5 人专职研发维护成本) | **`$24,000 ~ $32,000 / 月`** ✅<br/>(**按实际通话分钟弹性计费，立省 65%+ 且直抵 Azure MACC**) |
 | **7. 私网数据主权与本地容器支持** | ❌ 多租户公有云 SaaS，不支持本地断网容器 | ❌ 公有云 SaaS（主要托管于北美 AWS/GCP） | 支持本地部署，但开源模型在窄带电话下幻觉与维护成本极高 | **最高金融/政企合规**<br/>支持 VNet Private Link 及 **Azure Speech 本地 Docker 容器** |
 
@@ -213,7 +213,7 @@ sequenceDiagram
 | **⑤ 话后全量合规质检与承诺对账覆盖率** | `1% ~ 2%` (人工随机抽听录音) | `100%` (仅做关键词打分) | **`100%`** (含口头承诺金额 vs CRM 落库工单 `$0` 漂移对账) |
 | **💰 每年净释放坐席产能与综合财务收益 (Annual Net ROI)** | 基准线 (`$0`) | 约 `$1.45M / 年` | **`$2.68M / 年`（释放超 55% 重复人力投入高价值外呼/挽留）** |
 
-> 💡 **每万分钟 `$285` 综合成本是怎么算出来的？**  
+> 💡 **每万分钟 `$285` 综合成本是怎么算出来的？** 
 > 在 100 万分钟总呼入中：**70%（70 万分钟）** 由第 1 环首线 AI 语音自动接待闭环（采用混合语义 VAD + 级联/S2S 双轨，单价约 `$350 / 万分钟`，小计 `$24,500`）；剩余 **30%（30 万分钟）** 转入第 3 环人工坐席，由旁路双声道实时转写 + 轻量级提词与自动小结模型辅助（单价仅 **`$133 / 万分钟`**，小计 `$4,000`）。两者加权合计仅 **`$28,500 / 月`（即 `$285 / 万分钟`）**！
 
 ---

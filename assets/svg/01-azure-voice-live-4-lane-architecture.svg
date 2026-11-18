@@ -141,7 +141,7 @@
   <text x="42" y="457" class="box-body">Monotonic epoch fencing cancels stale</text>
   <text x="42" y="470" class="box-body">audio frames &amp; in-flight tool side effects</text>
   <text x="42" y="483" class="box-body">immediately on user barge-in.</text>
-  <text x="42" y="501" class="mono" fill="#34D399">0 Zombie Tool Commits (P01–P90)</text>
+  <text x="42" y="501" class="mono" fill="#34D399">0 Zombie Tool Commits </text>
 
   <rect x="258" y="424" width="218" height="88" class="box" stroke="#059669"/>
   <text x="268" y="442" class="box-title">Strict JSON Schema &amp; Idempotency</text>

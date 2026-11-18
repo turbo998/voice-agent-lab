@@ -1,6 +1,6 @@
 # Enterprise Real-Time Voice Orchestration Framework Selection FAQ: LiveKit Agents vs. Pipecat vs. Azure ACS Call Automation vs. Twilio / Retell AI / Vapi
 
-> 🌐 **Language / 语言**: **[中文 (`voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md`)](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md)** | **English (Current)**  
+> 🌐 **Language / 语言**: **[中文 (`voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md`)](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md)** | **English (Current)** 
 > 🔗 **Related Deep Dives**: [Cascaded vs. Native S2S Brain Selection (`cascaded-vs-s2s-semantic-turn-faq.en.md`)](./cascaded-vs-s2s-semantic-turn-faq.en.md) · [WebRTC vs. WebSocket vs. SIP Ingress Selection (`webrtc-vs-websocket-vs-sip-ingress-selection-faq.en.md`)](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.en.md) · [AI-to-Human Warm Transfer & Whisper Handoff (`warm-transfer-whisper-handoff-faq.en.md`)](./warm-transfer-whisper-handoff-faq.en.md) · [Enterprise Competitive Battlecards (`competitive-analysis.en.md`)](./competitive-analysis.en.md) · [Back to Home (`README.en.md`)](../README.en.md)
 
 ![Enterprise Voice Agent Orchestration Frameworks Selection Visual Summary](../assets/svg/voice-orchestration-frameworks-livekit-pipecat-acs-retell-vapi.svg)
@@ -12,14 +12,14 @@
 When an enterprise sets out to build an AI contact center, outbound sales voice bot, real-time multilingual meeting interpreter, or multimodal in-app voice assistant, the first architectural crossroads for a **Cloud & AI Solution Architect** is choosing the **Real-Time Voice Orchestration Layer**: should you self-host an open-source orchestration framework on Kubernetes (**LiveKit Agents** or **Pipecat**), build on a cloud-native enterprise communications and voice backbone (**Azure Communication Services Call Automation + Azure Voice Live API**), or buy a turnkey developer wrapper SaaS (**Retell AI / Vapi**)?
 
 1. **When to Choose the Cloud-Native Enterprise Voice Backbone (`Azure ACS Call Automation + Azure Voice Live API + AI Foundry`)**:
-   - **Best-Fit Scenarios**: **Banking, insurance, and financial contact centers, healthcare patient follow-up hotlines, government 311/12345 citizen services, airline disruption desks, and enterprises integrating with existing Cisco / Genesys / Avaya PBXs via SIP Direct Routing**.
-   - **Why It Wins**: It is the only architecture that co-locates **PSTN/SIP telephony ingress, WebRTC media gateways, native Speech-to-Speech (`gpt-live-1` / `gpt-realtime`), and deterministic cascaded pipelines (`Azure Fast STT + LLM + DragonHD TTS`)** inside the **same cloud region and private virtual network (VNet + Private Endpoint)**. It eliminates `180ms–320ms` of cross-cloud public internet tromboning, natively supports SIPREC compliance recording and disconnected on-premises containers, and burns down existing **Azure MACC commitments** at an industry-low **`$485 per 10,000 minutes`**.
+ - **Best-Fit Scenarios**: **Banking, insurance, and financial contact centers, healthcare patient follow-up hotlines, government 311/12345 citizen services, airline disruption desks, and enterprises integrating with existing Cisco / Genesys / Avaya PBXs via SIP Direct Routing**.
+ - **Why It Wins**: It is the only architecture that co-locates **PSTN/SIP telephony ingress, WebRTC media gateways, native Speech-to-Speech (`gpt-live-1` / `gpt-realtime`), and deterministic cascaded pipelines (`Azure Fast STT + LLM + DragonHD TTS`)** inside the **same cloud region and private virtual network (VNet + Private Endpoint)**. It eliminates `180ms–320ms` of cross-cloud public internet tromboning, natively supports SIPREC compliance recording and disconnected on-premises containers, and burns down existing **Azure MACC commitments** at an industry-low **`$485 per 10,000 minutes`**.
 2. **When to Choose Open-Source Real-Time Voice Orchestration (`LiveKit Agents` vs. `Pipecat`)**:
-   - **Choose `LiveKit Agents` (WebRTC SFU-Native Room Model)**: When your primary channels are **mobile apps, web browsers, smart hardware (AI glasses, in-vehicle cockpits), or multi-party conference rooms** requiring world-class **weak-network packet-loss resilience (WebRTC Opus RED), live camera/screen sharing ("see-and-speak" multimodal vision), 2D/3D digital human avatars, or multi-participant simultaneous interpretation**. LiveKit's Go/Rust SFU media server and built-in `EOU Semantic Turn Detector` set the industry standard.
-   - **Choose `Pipecat` (Python Frame-Pipeline Model)**: When your engineering team is primarily **Python AI/ML engineers** who want Lego-like agility across **40+ STT, LLM, TTS, and avatar providers**, or need to write custom frame-level processors (`FrameProcessor` for custom voiceprint liveness gates or speculative RAG prefetchers) paired with declarative state machines (`Pipecat Flows`).
+ - **Choose `LiveKit Agents` (WebRTC SFU-Native Room Model)**: When your primary channels are **mobile apps, web browsers, smart hardware (AI glasses, in-vehicle cockpits), or multi-party conference rooms** requiring world-class **weak-network packet-loss resilience (WebRTC Opus RED), live camera/screen sharing ("see-and-speak" multimodal vision), 2D/3D digital human avatars, or multi-participant simultaneous interpretation**. LiveKit's Go/Rust SFU media server and built-in `EOU Semantic Turn Detector` set the industry standard.
+ - **Choose `Pipecat` (Python Frame-Pipeline Model)**: When your engineering team is primarily **Python AI/ML engineers** who want Lego-like agility across **40+ STT, LLM, TTS, and avatar providers**, or need to write custom frame-level processors (`FrameProcessor` for custom voiceprint liveness gates or speculative RAG prefetchers) paired with declarative state machines (`Pipecat Flows`).
 3. **When to Choose Turnkey Commercial Voice Wrapper Platforms (`Retell AI / Vapi / Bland AI`)—and When to Migrate Off**:
-   - **Best-Fit Scenarios**: **Startup MVPs, standalone regional business units with `< 20,000 minutes/month`, or teams without telephony engineers needing a working US/EU outbound phone demo within 48 hours**.
-   - **The Production Scaling Wall**: Turnkey wrappers bundle third-party telephony (Twilio/Telnyx) + speech (Deepgram/ElevenLabs) + LLMs and charge a **`$0.05–$0.07/min` platform orchestration tax** on top. Once monthly volume reaches **100k–500k+ minutes**, your effective bill balloons to **`$1,350–$1,850 per 10,000 minutes`** (**2.8x–3.5x higher** than cloud-native architectures). Worse, if your enterprise CRM/ERP resides in Asia-Pacific or Europe while the wrapper's orchestration core sits in US public cloud regions, every tool call incurs transoceanic webhook latency and blocks strict private-network security audits.
+ - **Best-Fit Scenarios**: **Startup MVPs, standalone regional business units with `< 20,000 minutes/month`, or teams without telephony engineers needing a working US/EU outbound phone demo within 48 hours**.
+ - **The Production Scaling Wall**: Turnkey wrappers bundle third-party telephony (Twilio/Telnyx) + speech (Deepgram/ElevenLabs) + LLMs and charge a **`$0.05–$0.07/min` platform orchestration tax** on top. Once monthly volume reaches **100k–500k+ minutes**, your effective bill balloons to **`$1,350–$1,850 per 10,000 minutes`** (**2.8x–3.5x higher** than cloud-native architectures). Worse, if your enterprise CRM/ERP resides in Asia-Pacific or Europe while the wrapper's orchestration core sits in US public cloud regions, every tool call incurs transoceanic webhook latency and blocks strict private-network security audits.
 
 ---
 
@@ -32,14 +32,14 @@ When an enterprise sets out to build an AI contact center, outbound sales voice 
 Think of building an enterprise real-time voice agent like **operating a high-end restaurant chain**:
 
 - **Paradigm C: Turnkey Commercial Voice Wrappers (`Retell AI / Vapi / Bland AI`) — "Renting a Ghost Kitchen / Delivery Aggregator"**
-  - **How it works**: You don't need to know anything about SIP trunks, acoustic echo cancellation, or audio frame buffers. You drag and drop nodes on a visual canvas (`Conversation Flow`), paste your system prompt and webhook URLs, rent a phone number with a credit card, and start taking calls in half a day.
-  - **The trade-off**: You pay a stacked per-minute toll (`Platform Fee + STT Fee + LLM Fee + TTS Fee + Telephony Fee`). For 100 calls a day, it's wonderfully convenient; for 50,000 calls a day, the platform markup costs more than hiring a full engineering team, and your sensitive customer audio and call state live inside a third-party multi-tenant SaaS—an immediate blocker for banking, healthcare, and public-sector security reviews.
+ - **How it works**: You don't need to know anything about SIP trunks, acoustic echo cancellation, or audio frame buffers. You drag and drop nodes on a visual canvas (`Conversation Flow`), paste your system prompt and webhook URLs, rent a phone number with a credit card, and start taking calls in half a day.
+ - **The trade-off**: You pay a stacked per-minute toll (`Platform Fee + STT Fee + LLM Fee + TTS Fee + Telephony Fee`). For 100 calls a day, it's wonderfully convenient; for 50,000 calls a day, the platform markup costs more than hiring a full engineering team, and your sensitive customer audio and call state live inside a third-party multi-tenant SaaS—an immediate blocker for banking, healthcare, and public-sector security reviews.
 - **Paradigm A: Open-Source Voice Orchestration Frameworks (`LiveKit Agents / Pipecat`) — "Open-Source Professional Kitchen Blueprints (Self-Hosted on AKS or Managed Cloud)"**
-  - **How it works**: These frameworks solve the hardest real-time audio plumbing—**20ms audio frame pacing, voice activity detection (VAD), semantic end-of-utterance (EOU) turn detection, sub-200ms barge-in queue flushing, and unified plugin adapters for STT/LLM/TTS**—in open-source Python or Node.js code. You deploy the workers inside your own **Azure Kubernetes Service (AKS)** cluster.
-  - **The trade-off**: The software is free (Apache 2.0 / BSD), giving you 100% code ownership and VNet privacy. However, your DevOps team must manage stateful Kubernetes pods (including graceful `SIGTERM` draining so active 10-minute phone calls aren't dropped during autoscaling), Redis state stores, and SIP trunk gateways.
+ - **How it works**: These frameworks solve the hardest real-time audio plumbing—**20ms audio frame pacing, voice activity detection (VAD), semantic end-of-utterance (EOU) turn detection, sub-200ms barge-in queue flushing, and unified plugin adapters for STT/LLM/TTS**—in open-source Python or Node.js code. You deploy the workers inside your own **Azure Kubernetes Service (AKS)** cluster.
+ - **The trade-off**: The software is free (Apache 2.0 / BSD), giving you 100% code ownership and VNet privacy. However, your DevOps team must manage stateful Kubernetes pods (including graceful `SIGTERM` draining so active 10-minute phone calls aren't dropped during autoscaling), Redis state stores, and SIP trunk gateways.
 - **Paradigm B: Cloud-Native Communications & Voice Backbone (`Azure ACS Call Automation + Azure Voice Live API / Twilio Voice`) — "Owning an Enterprise Campus with Built-in Carrier Trunks & Co-Located AI Engines"**
-  - **How it works**: Microsoft Azure natively provides the end-to-end stack from **global carrier PSTN/SIP Direct Routing and programmable Call Automation (dialing, DTMF capture, compliance recording, warm transfer with whisper)** directly to **co-located Azure Voice Live API (`GPT-Live-1` S2S and `DragonHD` Cascaded lanes)** in the same datacenter.
-  - **Why enterprise architects love it**: Audio enters Azure's regional edge, travels over `< 2ms` datacenter fiber to `Azure Voice Live`, and queries `Azure AI Search` and internal ERPs over VNet Private Link—**zero public internet hops, zero third-party platform markup, and 100% MACC eligible**.
+ - **How it works**: Microsoft Azure natively provides the end-to-end stack from **global carrier PSTN/SIP Direct Routing and programmable Call Automation (dialing, DTMF capture, compliance recording, warm transfer with whisper)** directly to **co-located Azure Voice Live API (`GPT-Live-1` S2S and `DragonHD` Cascaded lanes)** in the same datacenter.
+ - **Why enterprise architects love it**: Audio enters Azure's regional edge, travels over `< 2ms` datacenter fiber to `Azure Voice Live`, and queries `Azure AI Search` and internal ERPs over VNet Private Link—**zero public internet hops, zero third-party platform markup, and 100% MACC eligible**.
 
 #### 2. The 5-Second Architect Rule of Thumb
 
@@ -57,16 +57,16 @@ When an enterprise decides to build on open-source orchestration, architects alm
 #### 1. Core Abstraction Comparison: "Multi-Party Room Participant" vs. "Unidirectional Frame Pipeline"
 
 - **`LiveKit Agents`: The AI is a Virtual Participant in a Real-Time WebRTC Room**
-  - Built on top of LiveKit's battle-tested Go/Rust **WebRTC SFU (Selective Forwarding Unit)**, every conversation is a `Room`. The human caller joins the room via mobile SDK, browser, or `livekit-sip`, and the LiveKit Agent Dispatcher automatically spawns an isolated worker process to join that same room as a virtual participant.
-  - **Key Architectural Advantages**:
-    1. **Effortless Multi-Party & Human-in-the-Loop Workflows**: Need a human supervisor to silently monitor a call, whisper coaching advice to the AI/agent, or perform a warm handoff? Or need a specialized Translation Agent to join a 5-person global meeting? You simply add participants to the existing `Room` and adjust audio track subscriptions—no media pipeline rewiring required.
-    2. **Production-Grade Worker Dispatch & Process Isolation**: `LiveKit Agents` includes a built-in job scheduler that isolates each call into its own process/task and handles Kubernetes graceful termination out of the box.
+ - Built on top of LiveKit's battle-tested Go/Rust **WebRTC SFU (Selective Forwarding Unit)**, every conversation is a `Room`. The human caller joins the room via mobile SDK, browser, or `livekit-sip`, and the LiveKit Agent Dispatcher automatically spawns an isolated worker process to join that same room as a virtual participant.
+ - **Key Architectural Advantages**:
+ 1. **Effortless Multi-Party & Human-in-the-Loop Workflows**: Need a human supervisor to silently monitor a call, whisper coaching advice to the AI/agent, or perform a warm handoff? Or need a specialized Translation Agent to join a 5-person global meeting? You simply add participants to the existing `Room` and adjust audio track subscriptions—no media pipeline rewiring required.
+ 2. **Production-Grade Worker Dispatch & Process Isolation**: `LiveKit Agents` includes a built-in job scheduler that isolates each call into its own process/task and handles Kubernetes graceful termination out of the box.
 - **`Pipecat`: Everything is a Typed Frame Flowing Through a Modular Conveyor Belt**
-  - Pipecat models real-time multimodal interaction as a directed pipeline of `FrameProcessor` stages passing typed frames (`AudioRawFrame`, `InterimTranscriptionFrame`, `TextFrame`, `BotInterruptionFrame`, `ImageRawFrame`):
-    `[Transport.input()] ➔ [SileroVAD] ➔ [SmartTurnEOU] ➔ [STTProcessor] ➔ [SpeculativeRAG] ➔ [LLMProcessor] ➔ [TTSProcessor] ➔ [Transport.output()]`
-  - **Key Architectural Advantages**:
-    1. **Unmatched Python Hacking Velocity & 40+ Provider Plugins**: Swapping Deepgram for Azure Speech or ElevenLabs for Cartesia takes a one-line change. Writing a custom Python interceptor (e.g., blocking acoustic prompt injection or prefetching vector search on partial transcripts) is as simple as subclassing `FrameProcessor`.
-    2. **`Pipecat Flows` for Deterministic State Machines**: Provides structured node-by-node conversation graphs that dynamically scope which tools (`Function Declarations`) the LLM can see at each step of a regulated workflow.
+ - Pipecat models real-time multimodal interaction as a directed pipeline of `FrameProcessor` stages passing typed frames (`AudioRawFrame`, `InterimTranscriptionFrame`, `TextFrame`, `BotInterruptionFrame`, `ImageRawFrame`):
+ `[Transport.input] ➔ [SileroVAD] ➔ [SmartTurnEOU] ➔ [STTProcessor] ➔ [SpeculativeRAG] ➔ [LLMProcessor] ➔ [TTSProcessor] ➔ [Transport.output]`
+ - **Key Architectural Advantages**:
+ 1. **Unmatched Python Hacking Velocity & 40+ Provider Plugins**: Swapping Deepgram for Azure Speech or ElevenLabs for Cartesia takes a one-line change. Writing a custom Python interceptor (e.g., blocking acoustic prompt injection or prefetching vector search on partial transcripts) is as simple as subclassing `FrameProcessor`.
+ 2. **`Pipecat Flows` for Deterministic State Machines**: Provides structured node-by-node conversation graphs that dynamically scope which tools (`Function Declarations`) the LLM can see at each step of a regulated workflow.
 
 #### 2. Head-to-Head Engineering Comparison: `LiveKit Agents` vs. `Pipecat`
 
@@ -85,15 +85,15 @@ In enterprise presales engagements, we frequently help customers who built a pro
 
 #### Wall 1: "Cross-Cloud Public Internet Tromboning"Pushes Turn Latency Past 1.2 Seconds
 - **Root Cause**: When an enterprise with customers and backend systems in Asia-Pacific or Europe routes calls through a US-hosted voice wrapper SaaS:
-  1. Caller dials in ➔ audio traverses transoceanic links to US-West SaaS gateway (`+90ms to +130ms`);
-  2. SaaS streams audio to external STT (`+150ms`), then triggers a `Custom Function Webhook` over the public internet back to the enterprise's APAC/EU Azure VNet to check order status (`+180ms to +260ms` TLS handshake + round-trip);
-  3. Enterprise webhook returns JSON to US-West SaaS ➔ LLM + external TTS (`+450ms`) ➔ synthesized audio travels back across the ocean to the caller (`+90ms to +130ms`).
+ 1. Caller dials in ➔ audio traverses transoceanic links to US-West SaaS gateway (`+90ms to +130ms`);
+ 2. SaaS streams audio to external STT (`+150ms`), then triggers a `Custom Function Webhook` over the public internet back to the enterprise's APAC/EU Azure VNet to check order status (`+180ms to +260ms` TLS handshake + round-trip);
+ 3. Enterprise webhook returns JSON to US-West SaaS ➔ LLM + external TTS (`+450ms`) ➔ synthesized audio travels back across the ocean to the caller (`+90ms to +130ms`).
 - **The Fix (Regional Co-Location)**: By deploying **Azure ACS / AKS LiveKit + Azure Voice Live API** in the **exact same Azure region** as the enterprise's VNet database and `Azure AI Search`, every internal hop happens over `< 5ms` private fiber, cutting median Time-To-First-Audio (TTFA) from `1,250ms` down to **`380ms–540ms`**.
 
 #### Wall 2: The "Per-Minute Stacking Tax" Destroys Unit Economics at Scale
 - **Root Cause**: While a managed wrapper advertises a `$0.05–$0.07/min` base fee, production calls stack five separate charges:
-  `Total Cost/min = Platform Fee ($0.055) + LLM Tokens ($0.050) + Premium TTS ($0.025) + Streaming STT ($0.012) + Telephony/Concurrency ($0.018) ≈ $0.160/min`.
-  At **2,000,000 minutes/month**, that equals **$320,000/month ($3.84M/year)**!
+ `Total Cost/min = Platform Fee ($0.055) + LLM Tokens ($0.050) + Premium TTS ($0.025) + Streaming STT ($0.012) + Telephony/Concurrency ($0.018) ≈ $0.160/min`.
+ At **2,000,000 minutes/month**, that equals **$320,000/month ($3.84M/year)**!
 - **The Fix**: Moving to **Azure ACS + Azure Voice Live (Hybrid S2S + Semantic VAD / Cascaded routing)** eliminates the `$0.055/min` middleman fee and leverages 80% prompt caching + 4-turn sliding audio window pruning, dropping total cost to **`$0.048–$0.056/min`**—saving **$2.4M+ per year (a 66% TCO reduction)**.
 
 #### Wall 3: The Two-Phase Zero-Risk Migration Architecture
@@ -108,20 +108,20 @@ In enterprise presales engagements, we frequently help customers who built a pro
 
 ```mermaid
 flowchart TD
-    Start(["🎯 Enterprise Voice AI Project Kickoff: Select Orchestration Stack"]) --> Q1{"1. Strict Financial / Healthcare / Gov Compliance:<br/>Require 100% Private VNet or On-Prem Containers?"}
-    
-    Q1 -- "Yes (Zero Third-Party Public SaaS Media/Data)" --> Q1_Sub{"Primary Ingress Channel:<br/>PSTN/SIP Telephony vs. App/Web Multimodal?"}
-    Q1_Sub -- "PSTN Contact Center / Cisco & Genesys PBX" --> ChoiceACS["🏆 Primary Choice: Azure ACS Call Automation + Voice Live API<br/>Why: Co-located private backbone, SIP Direct Routing, MACC burn-down"]
-    Q1_Sub -- "Mobile/Web App + Screen Share / Avatar / Meetings" --> ChoiceLK_Self["✅ Primary Choice: Self-Hosted LiveKit Agents on AKS + Azure Voice Live<br/>Why: Open-source WebRTC SFU resilience, multimodal rooms, 100% VNet control"]
-    
-    Q1 -- "No (Public / Hybrid Cloud Acceptable)" --> Q2{"2. Monthly Call Volume & Project Maturity?"}
-    
-    Q2 -- "MVP Validation (< 20k mins/month)<br/>& No Dedicated Telephony Engineers" --> ChoiceManaged["⚡ Fast-Start Choice: Retell AI / Vapi Front-End + Azure Foundry Back-End<br/>Why: Launch outbound/inbound phone POC in 48 hours"]
-    
-    Q2 -- "Production Scale (>= 50k–10M mins/month)<br/>Optimize for Low Latency & FinOps TCO" --> Q3{"3. Engineering Team Stack & Workload Profile?"}
-    
-    Q3 -- "Python AI Team + Rapid Swapping Across<br/>40+ Models or Custom Frame Processors" --> ChoicePipecat["🧩 Primary Choice: Pipecat + Pipecat Flows on AKS<br/>Why: Modular FrameProcessor pipeline & declarative state graphs"]
-    Q3 -- "TypeScript/Python Team + Global WebRTC<br/>& SIP High-Concurrency Autoscaling" --> ChoiceLK_Cloud["🌐 Primary Choice: LiveKit Agents (AKS or LiveKit Cloud) + Azure Foundry<br/>Why: Production worker dispatch, Semantic EOU & carrier-grade SFU"]
+ Start(["🎯 Enterprise Voice AI Project Kickoff: Select Orchestration Stack"]) --> Q1{"1. Strict Financial / Healthcare / Gov Compliance:<br/>Require 100% Private VNet or On-Prem Containers?"}
+ 
+ Q1 -- "Yes (Zero Third-Party Public SaaS Media/Data)" --> Q1_Sub{"Primary Ingress Channel:<br/>PSTN/SIP Telephony vs. App/Web Multimodal?"}
+ Q1_Sub -- "PSTN Contact Center / Cisco & Genesys PBX" --> ChoiceACS["🏆 Primary Choice: Azure ACS Call Automation + Voice Live API<br/>Why: Co-located private backbone, SIP Direct Routing, MACC burn-down"]
+ Q1_Sub -- "Mobile/Web App + Screen Share / Avatar / Meetings" --> ChoiceLK_Self["✅ Primary Choice: Self-Hosted LiveKit Agents on AKS + Azure Voice Live<br/>Why: Open-source WebRTC SFU resilience, multimodal rooms, 100% VNet control"]
+ 
+ Q1 -- "No (Public / Hybrid Cloud Acceptable)" --> Q2{"2. Monthly Call Volume & Project Maturity?"}
+ 
+ Q2 -- "MVP Validation (< 20k mins/month)<br/>& No Dedicated Telephony Engineers" --> ChoiceManaged["⚡ Fast-Start Choice: Retell AI / Vapi Front-End + Azure Foundry Back-End<br/>Why: Launch outbound/inbound phone POC in 48 hours"]
+ 
+ Q2 -- "Production Scale (>= 50k–10M mins/month)<br/>Optimize for Low Latency & FinOps TCO" --> Q3{"3. Engineering Team Stack & Workload Profile?"}
+ 
+ Q3 -- "Python AI Team + Rapid Swapping Across<br/>40+ Models or Custom Frame Processors" --> ChoicePipecat["🧩 Primary Choice: Pipecat + Pipecat Flows on AKS<br/>Why: Modular FrameProcessor pipeline & declarative state graphs"]
+ Q3 -- "TypeScript/Python Team + Global WebRTC<br/>& SIP High-Concurrency Autoscaling" --> ChoiceLK_Cloud["🌐 Primary Choice: LiveKit Agents (AKS or LiveKit Cloud) + Azure Foundry<br/>Why: Production worker dispatch, Semantic EOU & carrier-grade SFU"]
 ```
 
 ---
@@ -130,26 +130,26 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph Arch1["⚠️ Option 1: Turnkey Commercial Wrapper (Retell / Vapi Cross-Cloud · P50 Latency 750ms–1,150ms)"]
-        direction LR
-        A1_User["📞 Caller (PSTN/Web)"] -->|"Public SIP/WebRTC (+90ms)"| A1_SaaS["☁️ Wrapper SaaS Core<br/>(Retell / Vapi US Region)"]
-        A1_SaaS -->|"Cross-Cloud API (+180ms)"| A1_STT["📝 External STT / TTS<br/>(Deepgram / ElevenLabs)"]
-        A1_SaaS -->|"Transoceanic Webhook (+220ms)"| A1_Biz["🏢 Enterprise Private Cloud<br/>(CRM / ERP / Knowledge Base)"]
-    end
+ subgraph Arch1["⚠️ Option 1: Turnkey Commercial Wrapper (Retell / Vapi Cross-Cloud · P50 Latency 750ms–1,150ms)"]
+ direction LR
+ A1_User["📞 Caller (PSTN/Web)"] -->|"Public SIP/WebRTC (+90ms)"| A1_SaaS["☁️ Wrapper SaaS Core<br/>(Retell / Vapi US Region)"]
+ A1_SaaS -->|"Cross-Cloud API (+180ms)"| A1_STT["📝 External STT / TTS<br/>(Deepgram / ElevenLabs)"]
+ A1_SaaS -->|"Transoceanic Webhook (+220ms)"| A1_Biz["🏢 Enterprise Private Cloud<br/>(CRM / ERP / Knowledge Base)"]
+ end
 
-    subgraph Arch2["✅ Option 2: Open-Source Orchestration on AKS (LiveKit Agents / Pipecat · P50 Latency 360ms–610ms)"]
-        direction LR
-        A2_User["📱 App / Web / SIP"] -->|"Regional Edge (<30ms)"| A2_Media["🌐 AKS Media & Agent Cluster<br/>(LiveKit SFU / Pipecat Pods)"]
-        A2_Media -->|"In-Region VNet (<5ms)"| A2_Model["🧠 Azure Voice Live /<br/>AI Speech + Foundry LLM"]
-        A2_Media -->|"VNet Private Link (<8ms)"| A2_Biz["🔒 Internal ERP &<br/>Azure AI Search RAG"]
-    end
+ subgraph Arch2["✅ Option 2: Open-Source Orchestration on AKS (LiveKit Agents / Pipecat · P50 Latency 360ms–610ms)"]
+ direction LR
+ A2_User["📱 App / Web / SIP"] -->|"Regional Edge (<30ms)"| A2_Media["🌐 AKS Media & Agent Cluster<br/>(LiveKit SFU / Pipecat Pods)"]
+ A2_Media -->|"In-Region VNet (<5ms)"| A2_Model["🧠 Azure Voice Live /<br/>AI Speech + Foundry LLM"]
+ A2_Media -->|"VNet Private Link (<8ms)"| A2_Biz["🔒 Internal ERP &<br/>Azure AI Search RAG"]
+ end
 
-    subgraph Arch3["🏆 Option 3: Cloud-Native Enterprise Backbone (ACS Call Automation + Voice Live · P50 Latency 310ms–540ms)"]
-        direction LR
-        A3_User["☎️ Global PSTN / Enterprise SBC<br/>(Cisco / Genesys)"] -->|"Carrier Direct Routing"| A3_ACS["🛡️ Azure Communication Services<br/>(Call Automation + Media Streaming)"]
-        A3_ACS -->|"Same-AZ Fiber (<2ms)"| A3_VL["⚡ Azure Voice Live API<br/>(GPT-Live-1 Full-Duplex / Cascaded)"]
-        A3_VL -->|"Managed Identity Private Link"| A3_Biz["🏦 Core Banking/Healthcare Systems<br/>+ SIPREC Compliance Archive"]
-    end
+ subgraph Arch3["🏆 Option 3: Cloud-Native Enterprise Backbone (ACS Call Automation + Voice Live · P50 Latency 310ms–540ms)"]
+ direction LR
+ A3_User["☎️ Global PSTN / Enterprise SBC<br/>(Cisco / Genesys)"] -->|"Carrier Direct Routing"| A3_ACS["🛡️ Azure Communication Services<br/>(Call Automation + Media Streaming)"]
+ A3_ACS -->|"Same-AZ Fiber (<2ms)"| A3_VL["⚡ Azure Voice Live API<br/>(GPT-Live-1 Full-Duplex / Cascaded)"]
+ A3_VL -->|"Managed Identity Private Link"| A3_Biz["🏦 Core Banking/Healthcare Systems<br/>+ SIPREC Compliance Archive"]
+ end
 ```
 
 ---
@@ -158,35 +158,35 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor User as 👤 Caller (Phone / App)
-    participant Ingress as 🌐 Media Ingress<br/>(ACS / LiveKit SFU)
-    participant Orch as 🎛️ Voice Orchestrator<br/>(Voice Live / LiveKit / Pipecat)
-    participant Backend as 🏢 Enterprise ERP & RAG<br/>(VNet API / AI Search)
-    actor Agent as 👨‍💼 Human Specialist<br/>(Context-Aware Warm Handoff)
+ autonumber
+ actor User as 👤 Caller (Phone / App)
+ participant Ingress as 🌐 Media Ingress<br/>(ACS / LiveKit SFU)
+ participant Orch as 🎛️ Voice Orchestrator<br/>(Voice Live / LiveKit / Pipecat)
+ participant Backend as 🏢 Enterprise ERP & RAG<br/>(VNet API / AI Search)
+ actor Agent as 👨‍💼 Human Specialist<br/>(Context-Aware Warm Handoff)
 
-    Note over User,Orch: Phase 1: Regional Media Anchoring + Sub-Second Greeting & Mid-Sentence Semantic EOU
-    User->>Ingress: Places Inbound Call / Starts WebRTC Session
-    Ingress->>Orch: Streams bidirectional 20ms PCM/Opus frames (In-region latency < 5ms)
-    Orch->>User: 🔊 Greeting: "Welcome to StarAir VIP Desk. How can I help you today?"
-    User->>Orch: 🗣️ "My flight was delayed, can you check if the 8 AM flight has business class..." (700ms pause while checking ticket)
-    Note right of Orch: Semantic EOU detects incomplete clause, dynamically extends wait window to 1,100ms (zero premature cutoff)
-    User->>Orch: 🗣️ "...my booking reference is SH-99281." (Falling intonation + complete syntax -> triggers in 190ms)
+ Note over User,Orch: Phase 1: Regional Media Anchoring + Sub-Second Greeting & Mid-Sentence Semantic EOU
+ User->>Ingress: Places Inbound Call / Starts WebRTC Session
+ Ingress->>Orch: Streams bidirectional 20ms PCM/Opus frames (In-region latency < 5ms)
+ Orch->>User: 🔊 Greeting: "Welcome to StarAir VIP Desk. How can I help you today?"
+ User->>Orch: 🗣️ "My flight was delayed, can you check if the 8 AM flight has business class..." (700ms pause while checking ticket)
+ Note right of Orch: Semantic EOU detects incomplete clause, dynamically extends wait window to 1,100ms (zero premature cutoff)
+ User->>Orch: 🗣️ "...my booking reference is SH-99281." (Falling intonation + complete syntax -> triggers in 190ms)
 
-    Note over Orch,Backend: Phase 2: Slow External ERP Lookup + Automatic 300ms Contextual Filler ("Let me check that for you...")
-    Orch->>Backend: Invokes async booking lookup & IRROPS waiver policy search (expected latency: 1,400ms)
-    Orch->>User: 💬 At 300ms threshold, injects natural filler: "Got it, let me check seat availability and waiver rules for SH-99281..."
-    Backend-->>Orch: Returns seat inventory & zero-fee waiver eligibility (arrives at 1,150ms just as filler finishes)
-    Orch->>User: 🔊 Seamless response: "Good news—flight MU5101 at 8:00 AM has 2 business class seats open, and your change fee is waived..."
+ Note over Orch,Backend: Phase 2: Slow External ERP Lookup + Automatic 300ms Contextual Filler ("Let me check that for you...")
+ Orch->>Backend: Invokes async booking lookup & IRROPS waiver policy search (expected latency: 1,400ms)
+ Orch->>User: 💬 At 300ms threshold, injects natural filler: "Got it, let me check seat availability and waiver rules for SH-99281..."
+ Backend-->>Orch: Returns seat inventory & zero-fee waiver eligibility (arrives at 1,150ms just as filler finishes)
+ Orch->>User: 🔊 Seamless response: "Good news—flight MU5101 at 8:00 AM has 2 business class seats open, and your change fee is waived..."
 
-    Note over User,Orch: Phase 3: Mid-Sentence Caller Barge-in + Monotonic turnEpoch Buffer Flush
-    User->>Orch: 🗣️ Interrupts: "Wait! I'm also traveling with a checked pet crate, can my dog be moved too?"
-    Orch->>Ingress: ⚡ Flushes playback buffer in <160ms and increments turnEpoch to fence off stale tool writes
+ Note over User,Orch: Phase 3: Mid-Sentence Caller Barge-in + Monotonic turnEpoch Buffer Flush
+ User->>Orch: 🗣️ Interrupts: "Wait! I'm also traveling with a checked pet crate, can my dog be moved too?"
+ Orch->>Ingress: ⚡ Flushes playback buffer in <160ms and increments turnEpoch to fence off stale tool writes
 
-    Note over Orch,Agent: Phase 4: Complex Exception Detected -> Context-Preserving Warm Transfer to Human Specialist
-    Orch->>User: 🔊 "Live pet cargo transfers require oxygen-hold verification. I'm connecting you to our specialist now with your booking details."
-    Orch->>Agent: 🖥️ Pushes signed CTI screen-pop card (Booking SH-99281 + MU5101 Business Class + Pet Oxygen Hold) & whisper briefing
-    Ingress->>Agent: Bridges consultative warm transfer; human agent greets caller with full context
+ Note over Orch,Agent: Phase 4: Complex Exception Detected -> Context-Preserving Warm Transfer to Human Specialist
+ Orch->>User: 🔊 "Live pet cargo transfers require oxygen-hold verification. I'm connecting you to our specialist now with your booking details."
+ Orch->>Agent: 🖥️ Pushes signed CTI screen-pop card (Booking SH-99281 + MU5101 Business Class + Pet Oxygen Hold) & whisper briefing
+ Ingress->>Agent: Bridges consultative warm transfer; human agent greets caller with full context
 ```
 
 ---
