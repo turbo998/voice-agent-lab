@@ -545,6 +545,37 @@ export function evaluateFmcgB2bSmartCoolerGuard(input: {
   };
 }
 
+export interface SmartMallParkingCodeAdamEvaluation {
+  policyCode: "MALL-CONCIERGE-01";
+  gateBarrierLiftApproved: boolean;
+  deferredSmsInvoiceSent: boolean;
+  codeAdamSilentGuardRadioTriggered: boolean;
+  publicLoudspeakerBroadcastAllowed: boolean;
+}
+
+/**
+ * Deterministic Smart Mall Parking Exit-Gate & Code-Adam Missing-Child Guard (`MALL-CONCIERGE-01`).
+ * Approves 10s exit-gate lift when plate edit-distance <=1 or overstay balance <=$3.00 (without tailgating),
+ * and enforces silent DMR guard-radio perimeter lockdown (0% public PA tip-off) on missing-child reports.
+ */
+export function evaluateSmartMallParkingCodeAdamGuard(input: {
+  plateEditDistance: number;
+  unpaidBalanceUsd: number;
+  tailgatingDetected: boolean;
+  missingChildReported?: boolean;
+}): SmartMallParkingCodeAdamEvaluation {
+  const canLift =
+    !input.tailgatingDetected && (input.plateEditDistance <= 1 || input.unpaidBalanceUsd <= 3.0);
+  return {
+    policyCode: "MALL-CONCIERGE-01",
+    gateBarrierLiftApproved: canLift,
+    deferredSmsInvoiceSent: canLift && input.unpaidBalanceUsd > 0 && input.unpaidBalanceUsd <= 3.0,
+    codeAdamSilentGuardRadioTriggered: Boolean(input.missingChildReported),
+    publicLoudspeakerBroadcastAllowed: false,
+  };
+}
+
+
 
 
 

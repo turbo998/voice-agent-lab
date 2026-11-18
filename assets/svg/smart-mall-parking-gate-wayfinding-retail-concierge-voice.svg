@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg52" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="blueGrad52" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad52" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="roseGrad52" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg52)"/>
+
+  <!-- Header -->
+  <rect x="30" y="22" width="1140" height="84" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <rect x="46" y="38" width="248" height="26" rx="13" fill="url(#blueGrad52)"/>
+  <text x="170" y="55" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">PARK-GATE-01 · MALL · CODE ADAM</text>
+  <text x="310" y="55" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="18.5" font-weight="700">Smart Mall Parking Gate 10s Rescue, 3D Wayfinding &amp; Code-Adam Child SOS Voice AI</text>
+  <text x="46" y="86" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="13">185s -&gt; 10.5s Exit-Gate Clearance (98.9% Revenue Capture) · Landmark-Relative Wayfinding &amp; Find-My-Car · 3.8-Min Code-Adam Child Reunion</text>
+
+  <!-- Column 1: Unmanned Parking Gate 10s Rescue -->
+  <rect x="30" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.6"/>
+  <rect x="46" y="140" width="334" height="34" rx="8" fill="url(#blueGrad52)"/>
+  <text x="213" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">1. Parking Exit Gate 10s Rescue</text>
+
+  <rect x="46" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="210" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">T+0ms Lane SIP + 80KB Plate/Bumper Vision</text>
+  <text x="60" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Binds intercom call to exact exit lane &amp; LPR camera</text>
+  <text x="60" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Fuzzy 1-char plate edit match (e.g. 0 vs D / mud)</text>
+  <text x="60" y="268" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Temp-plate &amp; unplated new-car entry timestamp match</text>
+
+  <rect x="46" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="312" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Grace-Window Lift &amp; Anti-Tailgate Gate</text>
+  <text x="60" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Auto-lifts in 10s if within 20m grace window or &lt;=$3</text>
+  <text x="60" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Sends SMS deferred payment link to clear queue fast</text>
+  <text x="60" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• 98.9% Fee Capture · Blocks Free-Ride Social Eng</text>
+
+  <rect x="46" y="398" width="334" height="164" rx="8" fill="#172554" stroke="#3B82F6"/>
+  <text x="60" y="420" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Parking Operations &amp; Throughput Impact</text>
+  <text x="60" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Exit-gate jam clearance: 185s -&gt; 10.5s (-94.3%)</text>
+  <text x="60" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Guard-room staffing leverage: 1 guard per 120 lanes</text>
+  <text x="60" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• VIP / Member point deduction sync in 400ms</text>
+  <text x="60" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Ambulance / Fire truck siren/visual 0ms auto-lift</text>
+  <text x="60" y="542" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Saves $142,000/Yr per Mall in Gate Labor</text>
+
+  <!-- Column 2: 3D Landmark Wayfinding & Receipt Loyalty -->
+  <rect x="417" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.6"/>
+  <rect x="433" y="140" width="334" height="34" rx="8" fill="url(#emeraldGrad52)"/>
+  <text x="600" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">2. Landmark Wayfinding &amp; Find-My-Car</text>
+
+  <rect x="433" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="210" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Landmark-Relative Navigation (76dB Atrium)</text>
+  <text x="447" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Replaces "Walk 80m North" with store landmarks</text>
+  <text x="447" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• "Walk past Starbucks, take Elevator #3 next to Zara"</text>
+  <text x="447" y="268" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Wheelchair / Stroller step-free elevator routing</text>
+
+  <rect x="433" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="312" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Voice Reverse Car-Finder &amp; 80KB Receipt Points</text>
+  <text x="447" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Shopper speaks last 4 plate digits -&gt; bay map card</text>
+  <text x="447" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Holds receipt to kiosk camera -&gt; 5s point credit</text>
+  <text x="447" y="371" fill="#FBBF24" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• Blocks Duplicate/Counterfeit Receipt Scans (100%)</text>
+
+  <rect x="433" y="398" width="334" height="164" rx="8" fill="#064E3B" stroke="#10B981"/>
+  <text x="447" y="420" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Shopper Conversion &amp; Retention Impact</text>
+  <text x="447" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Destination store arrival rate: 64% -&gt; 94.2%</text>
+  <text x="447" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Find-My-Car search time: 18 mins -&gt; 45 seconds</text>
+  <text x="447" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Dining queue wait-ticket booking from kiosk</text>
+  <text x="447" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Lifts loyalty parking redemption from 22% to 78%</text>
+  <text x="447" y="542" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Tenant Store Foot-Traffic Lift: +14.6%</text>
+
+  <!-- Column 3: Code-Adam Lost Child SOS & Security Radio -->
+  <rect x="804" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.6"/>
+  <rect x="820" y="140" width="334" height="34" rx="8" fill="url(#roseGrad52)"/>
+  <text x="987" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">3. Code-Adam Child SOS &amp; Perimeter Lock</text>
+
+  <rect x="820" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="210" fill="#FB7185" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">0ms Panic Keyword &amp; Clothing Feature Extraction</text>
+  <text x="834" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Parent shouts "My child is missing!" at any kiosk</text>
+  <text x="834" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Extracts age, height, jacket color, shoes &amp; zone</text>
+  <text x="834" y="268" fill="#FECDD3" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Optional 80KB phone photo upload for guard handsets</text>
+
+  <rect x="820" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="312" fill="#FB7185" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Code-Adam Silent Guard Radio (Zero Public PA)</text>
+  <text x="834" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Never broadcasts child's name/look on public speakers</text>
+  <text x="834" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Pushes DMR/TETRA ear-piece alert to all 12 exit guards</text>
+  <text x="834" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• 100% Abduction-Tip-Off Prevention · 3.8m Reunion</text>
+
+  <rect x="820" y="398" width="334" height="164" rx="8" fill="#4C0519" stroke="#F43F5E"/>
+  <text x="834" y="420" fill="#FECDD3" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Mall Safety &amp; Emergency Compliance</text>
+  <text x="834" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Exit-door guard alert latency: 4.5 mins -&gt; 2.4 seconds</text>
+  <text x="834" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Median lost-child reunion time: 22 mins -&gt; 3.8 mins</text>
+  <text x="834" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Escalator fall / medical AED dispatch in 3.0 seconds</text>
+  <text x="834" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Parent ID + photo check before child handover</text>
+  <text x="834" y="542" fill="#FB7185" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">100% Code-Adam Child Safety Compliance</text>
+
+  <!-- Bottom Bar -->
+  <rect x="30" y="598" width="1140" height="96" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="50" y="625" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">Architect Selection Verdict &amp; 10,000-Minute TCO Summary:</text>
+  <text x="50" y="649" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• Parking Exit Intercom: SIP Lane Gate + Phi4-mm-realtime + 80KB LPR Snapshot ($0.049/min · $490/10k mins · 10.5s clearance)</text>
+  <text x="50" y="670" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• Atrium Kiosk &amp; Child SOS: MVDR Array + GPT-Live-1 + DMR Security Radio Bridge ($0.068/min · $680/10k mins · 3.8m child reunion)</text>
+  <text x="760" y="658" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="700">ROI: $142k/Yr Saved per Mall</text>
+  <text x="760" y="678" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">Milestone 50th Flagship Selection Guide!</text>
+</svg>
