@@ -732,6 +732,36 @@ export function evaluateAutomotiveEcallRoadsideGuard(input: {
   };
 }
 
+export interface ElderlyCareFallGuardianEvaluation {
+  policyCode: "ELDER-CARE-01";
+  fallEmergencyDispatched: boolean;
+  matterDoorParamPinIssued: boolean;
+  doubleDosingInterventionTriggered: boolean;
+  impatientPhraseStripped: boolean;
+}
+
+/**
+ * Deterministic Smart Elderly Care Bathroom Fall Guardian, Presbycusis & Dementia Care Guard (`ELDER-CARE-01`).
+ * Dispatches emergency rescue + temporary Matter door PIN when torsoHeightMeters<0.45 and unansweredCheckInMs>=10000,
+ * intervenes on pillbox re-opening within 240 min of prior dose, and strips impatient phrases for MCI/Alzheimer's care.
+ */
+export function evaluateElderlyCareFallGuardianGuard(input: {
+  torsoHeightMeters: number;
+  unansweredCheckInMs: number;
+  minutesSinceLastDoseTaken: number;
+  pillboxReopened: boolean;
+  draftReplyMentionsAlreadyToldYou: boolean;
+}): ElderlyCareFallGuardianEvaluation {
+  const fallConfirmed = input.torsoHeightMeters < 0.45 && input.unansweredCheckInMs >= 10000;
+  return {
+    policyCode: "ELDER-CARE-01",
+    fallEmergencyDispatched: fallConfirmed,
+    matterDoorParamPinIssued: fallConfirmed,
+    doubleDosingInterventionTriggered: input.pillboxReopened && input.minutesSinceLastDoseTaken < 240,
+    impatientPhraseStripped: input.draftReplyMentionsAlreadyToldYou,
+  };
+}
+
 
 
 
