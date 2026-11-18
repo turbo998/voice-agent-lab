@@ -1841,6 +1841,32 @@ export function evaluateUtilityWaterGasSafetyGuard(input: {
   };
 }
 
+export interface RdWetLabPatentEvaluation {
+  policyCode: "RD-PATENT-ELN-01";
+  chemicalPourOrMixBlocked: boolean;
+  emergencyProvisionalPatentAlertTriggered: boolean;
+  elnEntryCommitAllowed: boolean;
+}
+
+/**
+ * Deterministic R&D Wet-Lab GHS SDS Chemical Incompatibility, Stoichiometry & Patent Novelty-Bar Guard (`RD-PATENT-ELN-01`).
+ */
+export function evaluateRdWetLabPatentGuard(input: {
+  chemicalIncompatibilityOrRunawayDetected: boolean;
+  stoichiometryUnitJump1000xDetected: boolean;
+  publicDisclosurePlannedBeforeFilingDate: boolean;
+}): RdWetLabPatentEvaluation {
+  return {
+    policyCode: "RD-PATENT-ELN-01",
+    chemicalPourOrMixBlocked: input.chemicalIncompatibilityOrRunawayDetected,
+    emergencyProvisionalPatentAlertTriggered: input.publicDisclosurePlannedBeforeFilingDate,
+    elnEntryCommitAllowed:
+      !input.chemicalIncompatibilityOrRunawayDetected &&
+      !input.stoichiometryUnitJump1000xDetected,
+  };
+}
+
+
 
 
 

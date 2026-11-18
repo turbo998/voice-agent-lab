@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (91 Bilingual Guides)
+## 3. Solution Architect Selection Guides (92 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -132,3 +132,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 89. **Aviation MRO & Line Maintenance Voice AI: Tail-Effectivity AMM/MEL Lock, RII Dual-Inspector Voiceprint & Zero-FOD Tool Accountability**: [EN](./aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.en.md) | [中文](./aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.md)
 90. **K-12 School Bus Sleeping-Child Sweep, Custody-Safe Dismissal (Restraining Order Lock) & Campus Outbreak Triage Voice AI**: [EN](./k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.en.md) | [中文](./k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.md)
 91. **Municipal Water & Gas Utility Voice AI: Gas-Odor 0ms Evacuation, Boil-Water Advisory Broadcast & Medical Life-Support Shutoff Lock**: [EN](./municipal-water-gas-utility-boil-advisory-life-support-voice-selection-faq.en.md) | [中文](./municipal-water-gas-utility-boil-advisory-life-support-voice-selection-faq.md)
+92. **R&D Wet-Lab ELN/LIMS Voice Assistant, GHS SDS Chemical Incompatibility Lock & Patent Disclosure (Novelty Bar) Voice AI**: [EN](./rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.en.md) | [中文](./rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.md)

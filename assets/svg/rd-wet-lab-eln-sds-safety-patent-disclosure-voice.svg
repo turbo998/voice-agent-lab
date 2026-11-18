@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgLab" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060E1C"/>
+      <stop offset="50%" stop-color="#10203A"/>
+      <stop offset="100%" stop-color="#071020"/>
+    </linearGradient>
+    <linearGradient id="elnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="sdsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="patGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgLab)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">R&amp;D Wet-Lab ELN/LIMS Voice Assistant, GHS SDS Incompatibility Lock &amp; Patent Disclosure AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">研发实验室通风橱免摘手套 ELN 记录、危化品 SDS 禁忌混配防爆锁、及专利交底书新颖性 (Novelty Bar) 保护全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#2E1065" stroke="#A855F7" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#E9D5FF" font-size="13" font-weight="600" text-anchor="middle">RD-PATENT-ELN-01 · R&amp;D IP</text>
+
+  <!-- Pillar 1: Fume-Hood Sterile / Glove-On ELN & LIMS Voice Logging -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#elnGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 通风橱/生物安全柜免摘手套 ELN 录入</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">解决“戴丁腈手套做滴定无法摸笔记本电脑”痛点</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 研究员双手在通风橱内滴加丁基锂或移液操作，手套沾有有机溶剂</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 实时口述：“反应釜温度升至 -72.4°C，溶液由无色转淡黄，滴加 2.5mL”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">IUPAC 化学命名与微摩尔 (μmol / μL / mg) 精度锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严防把“微升 (μL)”听成“毫升 (mL)”相差 1,000 倍！</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动对齐化学计量摩尔比 (Stoichiometry Table)，超 10x 量级偏差 0ms 追问</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Benchling / Revvity Signals / LabWare LIMS 直连</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 蓝牙联锁梅特勒 (Mettler Toledo) 电子分析天平与 pH 计实时读数</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 生成带 ALCOA+ 时间戳与声纹签名的 GLP/GMP 审计记录</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">实验过程关键现象与投料数据实时完整率达 99.6%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底消灭“做完实验回工位凭记忆补写 ELN 导致实验无法复现”</text>
+  </g>
+
+  <!-- Pillar 2: GHS SDS Chemical Incompatibility & Runaway Exotherm Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#sdsGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 危化品 SDS 禁忌混配与废液爆炸拦截锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将强氧化剂 (浓硝酸) 倒入含丙酮/乙醇有机废液桶！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 实验室最频发爆炸事故：硝酸+有机溶剂、次氯酸钠+酸产生剧毒氯气</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 钠氢 (NaH) + DMF 超过 50°C 发生失控分解爆炸 (Runaway Exotherm)！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">CAS 号化学反应活性矩阵 (NOAA CAMEO) 0ms 校验</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 研究员口述投料或倾倒废液前：0ms 核对 GHS SDS 第 10 节稳定性与禁忌物</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 命中剧烈放热/产气/自燃组合：0ms 语音红牌叫停并告警实验室安全官 (EHS)！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">氢氟酸 (HF) / 氰化物溅洒 0秒专属解毒剂定位</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 晶圆/蚀刻实验室喊出“氢氟酸溅到手上了”：普通冲水不够，会蚀骨致死！</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 0ms 播报六氟灵 (Diphoterine) 与葡萄糖酸钙凝胶存放柜位并呼急救！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">危化废液混倒与失控放热反应事故 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 OSHA 1910.1450 实验室危险化学品标准</text>
+  </g>
+
+  <!-- Pillar 3: Patent Invention Disclosure & Public-Disclosure Novelty Bar Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#patGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 专利交底书语音访谈与防破坏新颖性锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 专利申请日前公开发论文/GitHub = 全球新颖性归零！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 研发工程师说：“我们下周去顶会贴 Poster / 今晚先把代码开源发出来”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 欧洲 EPC Art.54 与中国《专利法》第22条：公开即丧失绝对新颖性！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="174" fill="#E9D5FF" font-size="13" font-weight="700">20分钟语音苏格拉底访谈 -> 生成标准专利交底书</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 研发人员最烦写八股文交底书：AI 扮演资深专利代理人语音追问</text>
+    <text x="30" y="214" fill="#C084FC" font-size="12">• 自动提炼【现有技术缺陷、核心技术方案、有益效果、替代实施例】</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">零公有云训练留存 (Zero-Retention VPC) 防泄密铁闸</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 未公开分子式/芯片架构若发给允许模型训练的外部 SaaS = 构成公开披露！</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 100% 锁定企业私有 VPC 零数据留存端点并触发 IP 法务紧急临时申请</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">研发人员撰写专利交底书耗时从 2天缩至 25分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">因论文/会议提前公开导致丧失专利新颖性事故 = 0.0%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#A855F7" font-size="14" font-weight="700">架构师核心选型法则 (RD-PATENT-ELN-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 湿实验室 ELN 语音助手必须实时核对 GHS SDS 化学品混配禁忌矩阵（如强氧化剂+有机废液、NaH+DMF高温失控），并对 μL/mL 量级跃变强制复诵；</text>
+  <text x="68" y="606" fill="#E9D5FF" font-size="13">2. 专利交底书语音系统必须运行于 Zero-Retention 私有隔离环境，且一旦检出即将发表论文/参会演讲而尚未取得专利申请日，必须 0ms 急呼 IP 专利律师抢注。</text>
+</svg>

@@ -163,6 +163,7 @@ flowchart LR
 89. **Aviation MRO & Line Maintenance Voice AI: Tail-Effectivity AMM/MEL Lock, RII Dual-Inspector Voiceprint & Zero-FOD Tool Accountability**: [EN](./docs/aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.en.md) | [中文](./docs/aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.md)
 90. **K-12 School Bus Sleeping-Child Sweep, Custody-Safe Dismissal (Restraining Order Lock) & Campus Outbreak Triage Voice AI**: [EN](./docs/k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.en.md) | [中文](./docs/k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.md)
 91. **Municipal Water & Gas Utility Voice AI: Gas-Odor 0ms Evacuation, Boil-Water Advisory Broadcast & Medical Life-Support Shutoff Lock**: [EN](./docs/municipal-water-gas-utility-boil-advisory-life-support-voice-selection-faq.en.md) | [中文](./docs/municipal-water-gas-utility-boil-advisory-life-support-voice-selection-faq.md)
+92. **R&D Wet-Lab ELN/LIMS Voice Assistant, GHS SDS Chemical Incompatibility Lock & Patent Disclosure (Novelty Bar) Voice AI**: [EN](./docs/rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.en.md) | [中文](./docs/rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.md)
 
 ---
 
