@@ -1605,6 +1605,33 @@ export function evaluateSmartPortCustomsGuard(input: {
   };
 }
 
+export interface StoreHaccpFoodSafetyEvaluation {
+  policyCode: "STORE-HACCP-01";
+  logSubmissionAllowed: boolean;
+  correctiveDiscardOrReheatRequired: boolean;
+  omnichannel86StockoutSynced: boolean;
+}
+
+/**
+ * Deterministic Chain QSR & Retail Store HACCP Danger-Zone Corrective Lock, BLE Probe & 86 Stockout Guard (`STORE-HACCP-01`).
+ */
+export function evaluateStoreHaccpFoodSafetyGuard(input: {
+  measuredColdFoodTempCelsius: number;
+  bleProbeHardwarePulseVerified: boolean;
+  correctiveDiscardOrReheatCompleted: boolean;
+  shiftManagerConfirmed86Outage: boolean;
+}): StoreHaccpFoodSafetyEvaluation {
+  const inDangerZone = input.measuredColdFoodTempCelsius > 4.4;
+  const correctiveOk = !inDangerZone || input.correctiveDiscardOrReheatCompleted;
+  return {
+    policyCode: "STORE-HACCP-01",
+    logSubmissionAllowed: input.bleProbeHardwarePulseVerified && correctiveOk,
+    correctiveDiscardOrReheatRequired: inDangerZone && !input.correctiveDiscardOrReheatCompleted,
+    omnichannel86StockoutSynced: input.shiftManagerConfirmed86Outage,
+  };
+}
+
+
 
 
 

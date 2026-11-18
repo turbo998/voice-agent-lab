@@ -154,6 +154,7 @@ flowchart LR
 80. **企业实时语音全链路延迟极限优化（P50 TTFA 从 1,450ms 压降至 320ms：180ms 语义 EOU、只读推测预取与首 4 词微切块 TTS）方案**：[中文](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.md) | [EN](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.en.md)
 81. **公益慈善基金会、高校校友募捐（Phonathon）、脆弱长者 0ms 止捐伦理保护锁与企业 1:1 雇主配捐翻倍方案**：[中文](./docs/nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.md) | [EN](./docs/nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.en.md)
 82. **智慧港口集装箱码头闸口（ISO 6346 第11位校验码）、危化箱（IMDG）专用堆场隔离与跨境报关行 HS 税则归类方案**：[中文](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.md) | [EN](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.en.md)
+83. **全球连锁餐饮（QSR）、现制茶饮咖啡与商超门店后厨 HACCP 食安测温强制报废锁、-20°C 冷库离线语音盘点与交接班方案**：[中文](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.md) | [EN](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.en.md)
 
 ---
 

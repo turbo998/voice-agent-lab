@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgStore" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07121E"/>
+      <stop offset="50%" stop-color="#0E2238"/>
+      <stop offset="100%" stop-color="#081322"/>
+    </linearGradient>
+    <linearGradient id="haccpGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+    <linearGradient id="invGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="shiftGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgStore)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Chain QSR, Coffee &amp; Supermarket Store Ops: HACCP Food-Safety &amp; Walk-In Cooler Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">万店连锁餐饮/茶饮咖啡后厨蓝牙耳麦巡检、HACCP 危险温区 (4.4°C–60°C) 强制报废锁、冷库离线盘点与交接班全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#450A0A" stroke="#F97316" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FDBA74" font-size="13" font-weight="600" text-anchor="middle">STORE-HACCP-01 · Food Safety</text>
+
+  <!-- Pillar 1: HACCP Critical Control Point Temperature & Corrective Action Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F97316" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#haccpGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. HACCP 食安测温红线与防假表锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁超温食材仅记个数字却不触发报废纠偏！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• FDA Food Code / 餐饮服务通用卫生规范：4.4°C–60°C 为细菌繁殖危险区</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 鲜奶/肉饼探针测出 9.5°C 超 2小时？0ms 锁死纠偏并强制报废拍照！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">杜绝“下班前一口气编造全天 4.0°C 假台账”</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 蓝牙中心探针 (BLE Probe) 实时回传硬件温度 + 店员耳麦语音报品名</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 若连续 10 次人工口报分毫不差 4.0°C 且无探针脉冲 -> 触发防造假核查</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">开封效期语音秒打标签 (Shelf-Life Printer)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 店员双手揉面/切配时对耳麦说：“打印芝士片和厚椰乳开封效期贴”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 蓝牙热敏打印机 2秒吐出精确到分钟的废弃时间标签 (严禁手写涂改)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F97316"/>
+    <text x="178" y="356" fill="#FDBA74" font-size="13" font-weight="700" text-anchor="middle">食安飞检 (Health Inspection) 一次合格率达 99.8%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底消灭因过期食材或冷链脱温引发的群体性食安危机</text>
+  </g>
+
+  <!-- Pillar 2: -20°C Walk-In Freezer Offline Voice Inventory -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#invGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. -20°C 步入式冷库免摘手套离线语音盘点</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">解决冷库四大痛点：冻手、屏幕结霜、无信号、双单位</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 店员穿防寒服戴厚棉手套进 -20°C 不锈钢冷库，根本点不动电容屏</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 法拉第笼金属夹芯板屏蔽 5G/Wi-Fi -> 本地端侧离线 ASR 零掉线</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">箱/袋/克三级包装规格自动换算 (UOM Conversion)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 店员边走边报：“冷冻薯条 4整箱加 3袋，阿拉比卡咖啡豆 2箱零 5包”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动按物料主数据 (1箱=6袋×2kg) 换算为标准库存单位并比对理论账面</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">账实差异 &gt;10% 当场耳返追问复盘</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• “注意：牛排账面应余 12箱，您刚报了 2箱，是否漏看里侧货架？”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 走出冷库连上 Wi-Fi 瞬间自动同步 SAP / Oracle NetSuite / 哗啦啦</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">打烊后全店冷库+常温库盘点从 75分钟缩至 18分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">叫货补货准确率提升至 98.6%，门店食材损耗率下降 22%</text>
+  </g>
+
+  <!-- Pillar 3: Shift Handover & 86-Item POS Sync -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#shiftGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 店长早晚班语音交接与断货 (86'd) 停售</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">60秒语音早会简报 (Morning Huddle Briefing)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 店长戴上耳麦问：“播一下今天早班重点和备料目标”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 结合今日降雨天气+周边演唱会，自动播报高峰期备料量与排班缺口</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">后厨一句话全渠道沽清停售 (“86 Item” Sync)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 晚高峰某款季节限定生椰拿铁原料用光，店员满手冰块没法去前台点POS</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 对耳麦说“生椰拿铁沽清”-> 店长耳麦确认后 3秒同步小程序/美团/饿了么</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">制冰机/咖啡机故障报修与交接班待办强闭环</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 早班店长口述：“2号蒸汽奶泡嘴堵了已报修，晚班接货记得验草莓”</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 晚班值班经理打卡上岗戴上耳麦第一秒，强制逐条播报未完交接项</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">外卖平台超卖已断货商品退单率下降 91%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">每位店长每天从填表与抄数字中解放 55 分钟回归现场服务</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#F97316" font-size="14" font-weight="700">架构师核心选型法则 (STORE-HACCP-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 连锁餐饮 HACCP 语音测温严禁“只记超温数字不锁纠偏动作”——一旦探针或口报温度落入 4.4°C–60°C 危险温区，必须 0ms 强制触发丢弃报废或急速复热复测；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. -20°C 金属冷库盘点必须支持本地端侧离线 ASR 与箱/袋/克三级单位自动换算，且全渠道下架停售 (86'd) 必须经值班店长耳麦口令二次确认防误关店。</text>
+</svg>

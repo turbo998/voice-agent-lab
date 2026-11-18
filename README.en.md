@@ -154,6 +154,7 @@ flowchart LR
 80. **Enterprise Voice Agent Latency Engineering (Cutting P50 TTFA from 1,450ms to 320ms via Semantic EOU, Speculative Prefetch & Micro-Chunk TTS)**: [EN](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.en.md) | [中文](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.md)
 81. **Non-Profit Charity, Emergency Disaster Relief & University Alumni Voice Fundraising (Phonathon), Vulnerable-Donor Ethics Lock & Matching Gifts**: [EN](./docs/nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.en.md) | [中文](./docs/nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.md)
 82. **Smart Maritime Port Container Terminal Gate (ISO 6346 Check-Digit), IMDG Hazmat Isolation & Customs HS-Code Brokerage Voice AI**: [EN](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.en.md) | [中文](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.md)
+83. **Chain QSR, Coffee & Supermarket Store Operations: HACCP Food-Safety Lock (4.4°C–60°C), -20°C Walk-In Freezer Offline Inventory & Shift Handover Voice AI**: [EN](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.en.md) | [中文](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.md)
 
 ---
 
