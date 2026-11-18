@@ -1168,6 +1168,36 @@ export function evaluateCrmCtiScreenPopSyncGuard(input: {
   };
 }
 
+export interface OpenSourceVoiceGpuSizingEvaluation {
+  policyCode: "OSS-VOICE-GPU-01";
+  silenceChunkDroppedBeforeWhisper: boolean;
+  commercialWeightsApproved: boolean;
+  cloudBurstOverflowTriggered: boolean;
+  recommendedDeploymentMode: "CLOUD_PAYGO" | "HYBRID_BASE_GPU_PLUS_CLOUD_BURST";
+}
+
+/**
+ * Deterministic Self-Hosted Open-Weight STT/TTS (Whisper/SenseVoice + CosyVoice 2/Kokoro) & GPU TCO Guard (`OSS-VOICE-GPU-01`).
+ * Drops silent frames (speechProb < 0.5) before Whisper to eliminate YouTube subtitle hallucinations, blocks non-commercial
+ * CC-BY-NC weights, overflows to cloud when GPU queue wait >120ms, and recommends hybrid GPU only at >=350k mins/month.
+ */
+export function evaluateOpenSourceVoiceGpuSizingGuard(input: {
+  sileroVadSpeechProb: number;
+  modelWeightLicense: "Apache-2.0" | "MIT" | "CC-BY-NC-4.0";
+  localGpuQueueWaitMs: number;
+  monthlyVoiceMinutes: number;
+}): OpenSourceVoiceGpuSizingEvaluation {
+  return {
+    policyCode: "OSS-VOICE-GPU-01",
+    silenceChunkDroppedBeforeWhisper: input.sileroVadSpeechProb < 0.5,
+    commercialWeightsApproved:
+      input.modelWeightLicense === "Apache-2.0" || input.modelWeightLicense === "MIT",
+    cloudBurstOverflowTriggered: input.localGpuQueueWaitMs > 120,
+    recommendedDeploymentMode:
+      input.monthlyVoiceMinutes >= 350000 ? "HYBRID_BASE_GPU_PLUS_CLOUD_BURST" : "CLOUD_PAYGO",
+  };
+}
+
 
 
 

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgOss" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070D19"/>
+      <stop offset="50%" stop-color="#111E36"/>
+      <stop offset="100%" stop-color="#0A1224"/>
+    </linearGradient>
+    <linearGradient id="sttGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="ttsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="tcoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgOss)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Self-Hosted Open-Weight STT/TTS (Whisper-Turbo / SenseVoice / CosyVoice 2 / Kokoro) vs. Cloud TCO</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业自建开源语音模型（Faster-Whisper / SenseVoice / CosyVoice 2 / Fish Speech / Kokoro）GPU 并发与云端 TCO 临界点全景图</text>
+  <rect x="912" y="42" width="240" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1032" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">OSS-VOICE-GPU-01 · 350k Min</text>
+
+  <!-- Pillar 1: Open-Weight STT Selection & Whisper Hallucination Guard -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#sttGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 开源语音识别 (STT) 选型与幻觉治理</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">三大主力开源 STT 模型精准定位</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• Faster-Whisper Large-v3-Turbo：99语种通用 (RTF 0.03)</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• SenseVoice-Small / Paraformer：中文/粤语极速 + 情绪事件</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 根治 Whisper 静音段“字幕组幻觉”</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁把未过 VAD 的静音/底噪直接喂给 Whisper！</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 必配 Silero VAD 切分 + condition_on_previous_text=False</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">单卡 NVIDIA L40S (48GB) 并发吞吐</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• CTranslate2 Int8 动态批处理：单卡稳定支撑 65-85 路流式</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• SenseVoice-Small ONNX：单卡可跑 180+ 路极低延迟并发</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">非流式架构转流式：LocalAgreement-2 滑动窗</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">将 Whisper 流式首字确认延迟压进 280ms</text>
+  </g>
+
+  <!-- Pillar 2: Open-Weight TTS Selection & vLLM Audio Serving -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ttsGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 开源语音合成 (TTS) 四小龙横向对比</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="82" fill="#E9D5FF" font-size="13" font-weight="700">CosyVoice 2.0 (0.5B) · 企业级流式首选</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 原生双向流式 (Bidirectional Streaming) 首包 &lt;=150ms</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 支持跨语种零样本克隆、细粒度笑声/叹气与粤/川方言</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">Fish Speech 1.5 vs. F5-TTS vs. Kokoro-82M</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• Fish Speech 1.5：无音素依赖 (Zero-G2P)，多语种混读极强</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• Kokoro-82M (Apache 2.0)：超轻量级，CPU/边缘端即可飞速跑</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">TensorRT-LLM / vLLM 音频 Token 连续批处理</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁原生 PyTorch 单线程裸跑 (单卡仅 3 路并发)！</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 启用 vLLM KV-Cache 批处理后单卡 L40S 跃升至 32-45 路</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">注意开源商用许可证红线 (CC-BY-NC 陷阱)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">商业闭源生产务必核验 Apache 2.0 / MIT 权重许可</text>
+  </g>
+
+  <!-- Pillar 3: GPU Sizing & Cloud vs. Self-Hosted Break-Even -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#tcoGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 云端 API vs. 自建 GPU 成本盈亏平衡点</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">35 万分钟/月 是自建与云端的黄金分水岭</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 月话务量 &lt;35万分钟：无脑选云端 PayGo (省掉闲置GPU电费)</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 月话务量 &gt;50万分钟且昼夜平稳：自建/容器省 62%-78%</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">为什么白天突发流量只靠自建 GPU 会亏钱？</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 呼叫中心白天 10点并发是凌晨 3点的 15 倍！</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 按峰值买 GPU 导致全天平均利用率仅 24%，空转浪费严重</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">最佳架构：基荷自建 GPU + 尖峰溢出 Azure 云端</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 2-4 张 L40S 承载 70% 日常稳态基荷 ($0.006/分钟)</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 促销/航延洪峰自动溢出至 Azure Speech PayGo 弹性兜底</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">涉密不出域首选 Azure Speech Containers</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">兼具本地私有化部署与微软官方企业级 SLA 免运维保障</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#34D399" font-size="14" font-weight="700">架构师核心选型法则 (OSS-VOICE-GPU-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 自建 Whisper 必须前置 Silero VAD 并关闭 condition_on_previous_text 防静音幻觉；自建流式 TTS 首选 CosyVoice 2 (vLLM 加速) 或轻量 Kokoro-82M；</text>
+  <text x="68" y="606" fill="#38BDF8" font-size="13">2. 严禁在月话务量 &lt;35万分钟或缺少 MLOps 团队时盲目自建 GPU 集群；涉密内网优先评估 Azure AI Speech Containers 本地容器。</text>
+</svg>
