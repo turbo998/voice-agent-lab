@@ -822,6 +822,34 @@ export function evaluateAviationCruiseRailVoiceGuard(input: {
   };
 }
 
+export interface GamingNpcMinorSafetyEvaluation {
+  policyCode: "GAME-SAFE-01";
+  minorVoiceprintStorageAllowed: boolean;
+  parentalFido2ApprovalRequired: boolean;
+  clampedDiscountPct: number;
+  combatMaxReplyWords: number;
+}
+
+/**
+ * Deterministic Gaming Real-Time Voice NPC, EdTech Companion & COPPA Minor Safety Guard (`GAME-SAFE-01`).
+ * Blocks voiceprint persistence for minor accounts, requires parental FIDO2 approval for spoken in-app purchases,
+ * clamps NPC shop discounts to <=15% (blocking prompt-injected 0-gold loot exploits), and enforces <=8 words under fire.
+ */
+export function evaluateGamingNpcMinorSafetyGuard(input: {
+  isMinorAccount: boolean;
+  requestsInAppPurchase: boolean;
+  llmProposedDiscountPct: number;
+  underHeavyFire: boolean;
+}): GamingNpcMinorSafetyEvaluation {
+  return {
+    policyCode: "GAME-SAFE-01",
+    minorVoiceprintStorageAllowed: !input.isMinorAccount,
+    parentalFido2ApprovalRequired: input.isMinorAccount && input.requestsInAppPurchase,
+    clampedDiscountPct: Math.max(0, Math.min(15, input.llmProposedDiscountPct)),
+    combatMaxReplyWords: input.underHeavyFire ? 8 : 60,
+  };
+}
+
 
 
 
