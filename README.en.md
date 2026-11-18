@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 43 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 43 Guides](#-2-43-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 44 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 44 Guides](#-2-44-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 43 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 44 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -94,7 +94,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (20 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (21 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -105,7 +105,7 @@ flowchart LR
 31. **E-Commerce Showroom Concierge & Interactive Voice + Digital Human Avatar**: [EN](./docs/ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.en.md) | [中文](./docs/ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.md)
 32. **Airline IRROPS Rebooking & Global Hospitality Multilingual Voice Concierge**: [EN](./docs/travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.en.md) | [中文](./docs/travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.md)
 33. **Automotive In-Cabin Multimodal Voice Assistant & Smart Hardware Support**: [EN](./docs/in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.en.md) | [中文](./docs/in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.md)
-34. **AI Sales Coach, Pitch Roleplay & Interactive Enablement Copilot**: [EN](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.en.md) | [中文](./docs/ai-sales-roleplay-mock-interview-language-coach-selection-faq.md)
+34. **AI Sales Coach, Pitch Roleplay & Interactive Enablement Copilot**: [EN](./docs/ai-sales-roleplay-mock-interview-language-coach-selection-faq.en.md) | [中文](./docs/ai-sales-roleplay-mock-interview-language-coach-selection-faq.md)
 35. **Compliant Outbound Voice SDR, AMD Voicemail Detection & TCPA Governance**: [EN](./docs/enterprise-outbound-voice-sales-lead-qualification-selection-faq.en.md) | [中文](./docs/enterprise-outbound-voice-sales-lead-qualification-selection-faq.md)
 36. **Enterprise Multilingual Simultaneous Interpretation & Meeting Intelligence**: [EN](./docs/enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.en.md) | [中文](./docs/enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.md)
 37. **Enterprise Internal IT Service Desk & HR Employee Voice Copilot**: [EN](./docs/enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.en.md) | [中文](./docs/enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.md)
@@ -115,6 +115,7 @@ flowchart LR
 41. **Cross-Border E-Commerce 20-Lang After-Sales, Last-Mile Delivery & Customs / Telex Release**: [EN](./docs/cross-border-ecommerce-global-logistics-delivery-customs-voice-selection-faq.en.md) | [中文](./docs/cross-border-ecommerce-global-logistics-delivery-customs-voice-selection-faq.md)
 42. **K12 & Higher-Ed Socratic AI Voice Tutor, Campus FERPA Privacy & Speech Accessibility**: [EN](./docs/education-socratic-voice-tutor-campus-privacy-accessibility-selection-faq.en.md) | [中文](./docs/education-socratic-voice-tutor-campus-privacy-accessibility-selection-faq.md)
 43. **Telecom Carrier & Broadband ISP Outage Deflection, ONT Vision (TR-069) & Anti-SIM-Swap**: [EN](./docs/telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.en.md) | [中文](./docs/telecom-isp-broadband-outage-router-vision-simswap-voice-selection-faq.md)
+44. **Insurance Tele-Underwriting (Anti-Estoppel), Pension Proof-of-Life & Catastrophe Adjuster Copilot**: [EN](./docs/insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.en.md) | [中文](./docs/insurance-underwriting-pension-annuity-adjuster-voice-selection-faq.md)
 
 ---
 

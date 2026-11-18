@@ -457,6 +457,32 @@ export function evaluateTelecomIspOutageSimSwapGuard(input: {
   };
 }
 
+export interface InsuranceUnderwritingEstoppelEvaluation {
+  policyCode: "INS-UNDERWRITE-01";
+  icd10FollowUpTriggered: boolean;
+  estoppelCoveragePromiseBlocked: boolean;
+  pensionAutoSuspensionAllowed: boolean;
+}
+
+/**
+ * Deterministic Life/Health Tele-Underwriting Anti-Estoppel & Pension Proof-of-Life Guard (`INS-UNDERWRITE-01`).
+ * Triggers ICD-10 follow-ups on >1,400ms applicant hesitation pauses, hard-blocks oral insurability/coverage
+ * promises (Waiver & Estoppel), and forbids automatic pension suspension on low-confidence senior voice checks.
+ */
+export function evaluateInsuranceUnderwritingEstoppelGuard(input: {
+  applicantHesitationPauseMs: number;
+  draftReplyPromisesCoverageForPreExisting?: boolean;
+  pensionVerificationLowConfidence?: boolean;
+}): InsuranceUnderwritingEstoppelEvaluation {
+  return {
+    policyCode: "INS-UNDERWRITE-01",
+    icd10FollowUpTriggered: input.applicantHesitationPauseMs > 1400,
+    estoppelCoveragePromiseBlocked: Boolean(input.draftReplyPromisesCoverageForPreExisting),
+    pensionAutoSuspensionAllowed: false,
+  };
+}
+
+
 
 
 
