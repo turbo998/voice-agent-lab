@@ -850,6 +850,39 @@ export function evaluateGamingNpcMinorSafetyGuard(input: {
   };
 }
 
+export interface AffectiveDeescalationEvaluation {
+  policyCode: "AFFECTIVE-DEESC-01";
+  clampedSpeakingRate: number;
+  empathyPrePauseMs: number;
+  upsellPromptsSuppressed: boolean;
+  workplaceAgentEmotionBlocked: boolean;
+  expandedEouSilenceMs: number;
+}
+
+/**
+ * Deterministic Affective Prosody De-Escalation, EU AI Act Art. 5(1)(f) Workplace Lock & Crisis Silence Guard (`AFFECTIVE-DEESC-01`).
+ * Clamps TTS rate to <=0.94x with >=350ms empathy pause and mutes upsells when customer arousal >=0.72,
+ * blocks workplace biometric emotion scoring on agent channels, and widens EOU silence to >=1800ms on sobbing/distress.
+ */
+export function evaluateAffectiveDeescalationGuard(input: {
+  customerArousalScore: number;
+  requestedSpeakingRate: number;
+  sobbingOrDysarthriaDetected: boolean;
+  agentChannelEmotionRequested: boolean;
+}): AffectiveDeescalationEvaluation {
+  const highArousal = input.customerArousalScore >= 0.72;
+  return {
+    policyCode: "AFFECTIVE-DEESC-01",
+    clampedSpeakingRate: highArousal
+      ? Math.max(0.88, Math.min(0.94, input.requestedSpeakingRate))
+      : input.requestedSpeakingRate,
+    empathyPrePauseMs: highArousal ? 350 : 0,
+    upsellPromptsSuppressed: highArousal || input.sobbingOrDysarthriaDetected,
+    workplaceAgentEmotionBlocked: input.agentChannelEmotionRequested,
+    expandedEouSilenceMs: input.sobbingOrDysarthriaDetected ? 1800 : 600,
+  };
+}
+
 
 
 
