@@ -395,6 +395,41 @@ export function evaluateCrossBorderLogisticsGuard(input: {
   };
 }
 
+export interface SocraticTutorFerpaEvaluation {
+  policyCode: "EDU-SOCRATIC-01";
+  spoilerAnswerStripped: boolean;
+  ferpaRecordAccessAllowed: boolean;
+  dormLocationBlocked: boolean;
+  effectiveSilencePatienceMs: number;
+}
+
+/**
+ * Deterministic Socratic Anti-Spoiler, Campus FERPA & Stutter Patience Guard (`EDU-SOCRATIC-01`).
+ * Strips final answers before TTS until the student solves prior steps, enforces FERPA proxy waivers,
+ * permanently blocks verbal dorm-room disclosures, and widens EOU patience to 3,200ms on stutter accommodations.
+ */
+export function evaluateSocraticTutorFerpaGuard(input: {
+  draftTutorReply: string;
+  secretFinalAnswerToken: string;
+  studentSolvedPriorSteps: boolean;
+  callerIsParentWithoutFerpaWaiver?: boolean;
+  requestsDormRoomLocation?: boolean;
+  stutterAccommodationEnabled?: boolean;
+}): SocraticTutorFerpaEvaluation {
+  const containsSecret =
+    input.secretFinalAnswerToken.trim().length > 0 &&
+    input.draftTutorReply.includes(input.secretFinalAnswerToken.trim());
+
+  return {
+    policyCode: "EDU-SOCRATIC-01",
+    spoilerAnswerStripped: !input.studentSolvedPriorSteps && containsSecret,
+    ferpaRecordAccessAllowed: !input.callerIsParentWithoutFerpaWaiver,
+    dormLocationBlocked: Boolean(input.requestsDormRoomLocation),
+    effectiveSilencePatienceMs: input.stutterAccommodationEnabled ? 3200 : 1100,
+  };
+}
+
+
 
 
 
