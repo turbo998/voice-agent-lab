@@ -168,6 +168,7 @@ flowchart LR
 94. **企业实时语音智能体 CI/CD 自动化回归测试（Coval/Hamming vs 自建合成呼叫器、Round-Trip TTS 逆向校验与硬发版门禁）方案**：[中文](./docs/enterprise-voice-agent-cicd-automated-regression-testing-selection-faq.md) | [EN](./docs/enterprise-voice-agent-cicd-automated-regression-testing-selection-faq.en.md)
 95. **连锁药房与 PBM 处方续方（ISMP LASA 同音高危药三元消歧锁、麻精管制药 Schedule II 禁续锁与儿科液体药体重浓度双核）方案**：[中文](./docs/retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.md) | [EN](./docs/retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.en.md)
 96. **地下矿山、油气钻井与石化防爆区（ATEX/MA 本安离线语音、爆破警戒区 UWB 清零+瓦斯三人锁与 H2S 逆风高处逃生）方案**：[中文](./docs/mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.md) | [EN](./docs/mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.en.md)
+97. **五星级酒店婚宴与万人会展宴会（二级配方隐性过敏原紫标专餐锁、BEO 72小时保底桌数硬锁与现场起菜联锁）方案**：[中文](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.md) | [EN](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.en.md)
 
 ---
 

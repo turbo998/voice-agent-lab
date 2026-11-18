@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgBanq" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D1A"/>
+      <stop offset="50%" stop-color="#1A1832"/>
+      <stop offset="100%" stop-color="#0A0E1C"/>
+    </linearGradient>
+    <linearGradient id="beoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="algGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="rsvpGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgBanq)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Luxury Hotel Wedding &amp; MICE Banquet Voice AI: BEO Cutoff Lock &amp; Anaphylaxis Allergen Guard</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">五星级酒店婚宴与万人会展宴会：BEO 72小时保底桌数硬锁、宾客致死性食物过敏紫标专厨锁与宗教饮食合规全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#4C0519" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FDA4AF" font-size="13" font-weight="600" text-anchor="middle">BANQUET-ALLERGEN-01</text>
+
+  <!-- Pillar 1: Severe Food Allergen (Anaphylaxis) & Halal/Kosher Kitchen Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#algGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 致死性过敏原 (花生/海鲜) 与宗教饮食锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁把“重度花生过敏休克”当普通“不吃香菜”备注！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 80桌婚宴同时出菜：含花生油高汤或虾籽酱汁极易发生隐性交叉污染</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 检出重度过敏：0ms 拆解整套菜单隐性配料并派发总厨【紫色专锅单】！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">桌号-座位号 (Table-Seat) 紫牌绑定与传菜员耳麦复核</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 宾客语音 RSVP 确认坐 12号桌 3号位：自动生成防误端专人密封罩餐盘</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 传菜员上菜前耳麦强制语音双核：“12桌3号位无坚果过敏专餐”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">清真 (Halal) / 犹太洁食 (Kosher) 独立餐具与零酒精锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 国际外交/跨国峰会晚宴：自动剔除料酒、猪油起酥与明胶甜品</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 强制关联认证独立厨房或整盒密封加热餐具</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">千人宴会隐性过敏原误食与禁忌出错率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合欧盟 14大法定致敏原披露与五星酒店食安标准</text>
+  </g>
+
+  <!-- Pillar 2: BEO 72-Hour Guaranteed Headcount Cutoff & Margin Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#beoGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. BEO 72小时保底人数硬锁与临时加桌调配</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁在婚宴前夜口头答应客户“退掉 10桌不收钱”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 帝王蟹/东星斑活鲜已在开宴前 72小时按保底桌数 (Guaranteed) 采购下锅</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 已过 72h 截止线：只增不减！严禁 AI 口头豁免保底桌数引发十万亏损！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">Delphi.fdc / Opera S&amp;C 宴会厅档期与搭建冲突锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 婚庆公司要求提前 6小时进场搭桁架：自动核对前一场会议撤场翻台时间</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 翻台间隙 &lt;3小时自动拦截并推荐包夜搭建方案</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">开席现场临时开启备用桌 (Backup Tables) 语音签批</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 婚礼当晚宾客超员需立即开 3桌备桌：新郎母亲对宴会经理耳麦口头确认</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 声纹+短信双签留痕，厨房 3分钟内启动备桌热菜出餐</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">BEO 保底人数违约减桌导致的食材报废亏损 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">宴会销售经理每周核对菜单与桌位变更电话耗时减少 74%</text>
+  </g>
+
+  <!-- Pillar 3: Automated Guest Voice RSVP & Live Event Floor Command -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rsvpGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 宾客语音 RSVP 出席确认与现场上菜节奏协同</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">500位婚宴/峰会宾客 48小时温情语音 RSVP 收集</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 自动致电未回复请柬的长辈与贵宾：确认出席人数、儿童椅需求与车牌号</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 同步采集食物过敏与素食偏好，自动排定无冲突座位表</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">主舞台司仪致辞/敬酒环节 <-> 后厨热菜起菜毫秒联锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 新人致辞延长了 12分钟：宴会厅主管耳麦说“热菜推迟 10分钟起蒸”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 防止清蒸石斑鱼蒸老或热汤变凉，保障 80桌同时滚烫上桌</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">散席代驾预约与贵重自带茅台/红酒空瓶清点锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 宴席每开 1瓶客户自带名酒：服务员语音报编码并在散席时与主家双核空瓶数</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 彻底杜绝婚宴散场时“自带名酒少算或被掉包”纠纷</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">宾客到场率预测准确度从 78% 跃升至 98.2%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">自带名酒账实纠纷与上菜冷菜率降至 0%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#F43F5E" font-size="14" font-weight="700">架构师核心选型法则 (BANQUET-ALLERGEN-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 宴会语音 RSVP 检出花生/坚果/海鲜重度过敏时，必须 0ms 穿透核查整套宴会菜单隐性辅料（如花生油、虾酱）并向总厨下发独立紫标专餐工单；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 过了 BEO 法定保底人数截止期 (如开席前 72小时)，语音助手必须 100% 物理锁定“只增不减”原则，严禁口头豁免保底桌数。</text>
+</svg>

@@ -1977,6 +1977,32 @@ export function evaluateMiningOilfieldAtexGuard(input: {
   };
 }
 
+export interface BanquetAllergenCutoffEvaluation {
+  policyCode: "BANQUET-ALLERGEN-01";
+  purpleTicketIsolatedMealDispatched: boolean;
+  guaranteedHeadcountReductionBlocked: boolean;
+  backupTableOpeningAuthorized: boolean;
+}
+
+/**
+ * Deterministic Luxury Hotel Banquet Sub-Recipe Allergen Purple-Ticket Lock, 72h BEO Cutoff & Backup-Table Guard (`BANQUET-ALLERGEN-01`).
+ */
+export function evaluateBanquetAllergenCutoffGuard(input: {
+  severeAnaphylaxisAllergenReported: boolean;
+  hoursUntilEventStart: number;
+  hostRequestsGuaranteedTableReduction: boolean;
+  hostVoiceprintVerifiedForBackupTables: boolean;
+}): BanquetAllergenCutoffEvaluation {
+  return {
+    policyCode: "BANQUET-ALLERGEN-01",
+    purpleTicketIsolatedMealDispatched: input.severeAnaphylaxisAllergenReported,
+    guaranteedHeadcountReductionBlocked:
+      input.hostRequestsGuaranteedTableReduction && input.hoursUntilEventStart < 72,
+    backupTableOpeningAuthorized: input.hostVoiceprintVerifiedForBackupTables,
+  };
+}
+
+
 
 
 
