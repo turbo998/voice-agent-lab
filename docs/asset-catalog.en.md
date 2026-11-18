@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **37 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **38 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (37 Bilingual Guides)
+## 3. Solution Architect Selection Guides (38 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -50,31 +50,32 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 11. **Intra-Sentence Code-Switching (`zh-EN-Yue`) & Enterprise Dialect Routing**: [EN](./voice-multilingual-codeswitch-dialect-faq.en.md) | [中文](./voice-multilingual-codeswitch-dialect-faq.md)
 
 ### 3.2 Production Engineering, Compliance, High Availability & FinOps (12 Guides)
-11. **Voice-Native RAG, Phonetic Homophone Recall & Zero-Trust MCP Tool Guardrails**: [EN](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.en.md) | [中文](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.md)
-12. **Slow ERP/CRM Async Tool Integration, Zero-Dead-Air Pacing & Turn-Epoch Fencing**: [EN](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.en.md) | [中文](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.md)
-13. **Voice AI FinOps: Azure PTU vs. PayGo Capacity Sizing & Audio Context Pruning**: [EN](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.en.md) | [中文](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.md)
-14. **Mid-Call High Availability, Cross-Region S2S Failover & Session Recovery**: [EN](./voice-midcall-failover-session-recovery-faq.en.md) | [中文](./voice-midcall-failover-session-recovery-faq.md)
-15. **Disconnected Edge Speech Containers & Sovereign Hybrid Cloud Failover**: [EN](./voice-edge-cloud-quantized-container-failover-faq.en.md) | [中文](./voice-edge-cloud-quantized-container-failover-faq.md)
-16. **Warm Transfer, Supervisor Whisper & Human-in-the-Loop Escalation**: [EN](./warm-transfer-whisper-handoff-faq.en.md) | [中文](./warm-transfer-whisper-handoff-faq.md)
-17. **Multi-Agent Voice Swarm Orchestration & Low-Latency Context Handoff**: [EN](./enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.en.md) | [中文](./enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.md)
-18. **PCI-DSS v4.0 Dual-Stream DTMF Redaction & Payment Scope Isolation**: [EN](./voice-pci-dtmf-scope-faq.en.md) | [中文](./voice-pci-dtmf-scope-faq.md)
-19. **Dual-Track SIPREC Compliance Recording & Real-Time PII Audio Redaction**: [EN](./siprec-pii-audio-redaction-faq.en.md) | [中文](./siprec-pii-audio-redaction-faq.md)
-20. **Voice Biometrics Anti-Deepfake Liveness & Global Privacy Compliance (GDPR / BIPA / PIPL)**: [EN](./enterprise-voice-biometrics-privacy-compliance-selection-faq.en.md) | [中文](./enterprise-voice-biometrics-privacy-compliance-selection-faq.md)
-21. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
-22. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
+12. **Voice-Native RAG, Phonetic Homophone Recall & Zero-Trust MCP Tool Guardrails**: [EN](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.en.md) | [中文](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.md)
+13. **Slow ERP/CRM Async Tool Integration, Zero-Dead-Air Pacing & Turn-Epoch Fencing**: [EN](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.en.md) | [中文](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.md)
+14. **Voice AI FinOps: Azure PTU vs. PayGo Capacity Sizing & Audio Context Pruning**: [EN](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.en.md) | [中文](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.md)
+15. **Mid-Call High Availability, Cross-Region S2S Failover & Session Recovery**: [EN](./voice-midcall-failover-session-recovery-faq.en.md) | [中文](./voice-midcall-failover-session-recovery-faq.md)
+16. **Disconnected Edge Speech Containers & Sovereign Hybrid Cloud Failover**: [EN](./voice-edge-cloud-quantized-container-failover-faq.en.md) | [中文](./voice-edge-cloud-quantized-container-failover-faq.md)
+17. **Warm Transfer, Supervisor Whisper & Human-in-the-Loop Escalation**: [EN](./warm-transfer-whisper-handoff-faq.en.md) | [中文](./warm-transfer-whisper-handoff-faq.md)
+18. **Multi-Agent Voice Swarm Orchestration & Low-Latency Context Handoff**: [EN](./enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.en.md) | [中文](./enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.md)
+19. **PCI-DSS v4.0 Dual-Stream DTMF Redaction & Payment Scope Isolation**: [EN](./voice-pci-dtmf-scope-faq.en.md) | [中文](./voice-pci-dtmf-scope-faq.md)
+20. **Dual-Track SIPREC Compliance Recording & Real-Time PII Audio Redaction**: [EN](./siprec-pii-audio-redaction-faq.en.md) | [中文](./siprec-pii-audio-redaction-faq.md)
+21. **Voice Biometrics Anti-Deepfake Liveness & Global Privacy Compliance (GDPR / BIPA / PIPL)**: [EN](./enterprise-voice-biometrics-privacy-compliance-selection-faq.en.md) | [中文](./enterprise-voice-biometrics-privacy-compliance-selection-faq.md)
+22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
+23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (14 Guides)
-23. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
-24. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
-25. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
-26. **Corporate Banking Treasury Maker-Checker & Anti-Deepfake Voice Compliance**: [EN](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.en.md) | [中文](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.md)
-27. **Healthcare Pre-Triage, Ambient Clinical Scribe & Chronic Care Follow-Up**: [EN](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.en.md) | [中文](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.md)
-28. **Retail Pharmacy Rx Refill, Drug Safety Disambiguation & Prior Authorization**: [EN](./retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.en.md) | [中文](./retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.md)
-29. **Retail & QSR Drive-Thru Noise-Robust Voice Ordering**: [EN](./qsr-drivethru-smart-restaurant-retail-voice-ordering-selection-faq.en.md) | [中文](./qsr-drivethru-smart-restaurant-retail-voice-ordering-selection-faq.md)
-30. **E-Commerce Showroom Concierge & Interactive Voice + Digital Human Avatar**: [EN](./ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.en.md) | [中文](./ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.md)
-31. **Airline IRROPS Rebooking & Global Hospitality Multilingual Voice Concierge**: [EN](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.en.md) | [中文](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.md)
-32. **Automotive In-Cabin Multimodal Voice Assistant & Smart Hardware Support**: [EN](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.en.md) | [中文](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.md)
-33. **AI Sales Coach, Pitch Roleplay & Interactive Enablement Copilot**: [EN](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.en.md) | [中文](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.md)
-34. **Compliant Outbound Voice SDR, AMD Voicemail Detection & TCPA Governance**: [EN](./enterprise-outbound-voice-sales-lead-qualification-selection-faq.en.md) | [中文](./enterprise-outbound-voice-sales-lead-qualification-selection-faq.md)
-35. **Enterprise Multilingual Simultaneous Interpretation & Meeting Intelligence**: [EN](./enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.en.md) | [中文](./enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.md)
-36. **Enterprise Internal IT Service Desk & HR Employee Voice Copilot**: [EN](./enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.en.md) | [中文](./enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.md)
+### 3.3 Enterprise Industry Solution Playbooks (15 Guides)
+24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
+25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
+26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
+27. **Corporate Banking Treasury Maker-Checker & Anti-Deepfake Voice Compliance**: [EN](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.en.md) | [中文](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.md)
+28. **Healthcare Pre-Triage, Ambient Clinical Scribe & Chronic Care Follow-Up**: [EN](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.en.md) | [中文](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.md)
+29. **Retail Pharmacy Rx Refill, Drug Safety Disambiguation & Prior Authorization**: [EN](./retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.en.md) | [中文](./retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.md)
+30. **Retail & QSR Drive-Thru Noise-Robust Voice Ordering**: [EN](./qsr-drivethru-smart-restaurant-retail-voice-ordering-selection-faq.en.md) | [中文](./qsr-drivethru-smart-restaurant-retail-voice-ordering-selection-faq.md)
+31. **E-Commerce Showroom Concierge & Interactive Voice + Digital Human Avatar**: [EN](./ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.en.md) | [中文](./ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.md)
+32. **Airline IRROPS Rebooking & Global Hospitality Multilingual Voice Concierge**: [EN](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.en.md) | [中文](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.md)
+33. **Automotive In-Cabin Multimodal Voice Assistant & Smart Hardware Support**: [EN](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.en.md) | [中文](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.md)
+34. **AI Sales Coach, Pitch Roleplay & Interactive Enablement Copilot**: [EN](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.en.md) | [中文](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.md)
+35. **Compliant Outbound Voice SDR, AMD Voicemail Detection & TCPA Governance**: [EN](./enterprise-outbound-voice-sales-lead-qualification-selection-faq.en.md) | [中文](./enterprise-outbound-voice-sales-lead-qualification-selection-faq.md)
+36. **Enterprise Multilingual Simultaneous Interpretation & Meeting Intelligence**: [EN](./enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.en.md) | [中文](./enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.md)
+37. **Enterprise Internal IT Service Desk & HR Employee Voice Copilot**: [EN](./enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.en.md) | [中文](./enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.md)
+38. **Government Citizen Hotline (12345 / 311), Utility Outage Storm Deflection & 0ms Gas-Leak Preemption**: [EN](./government-12345-hotline-utility-outage-emergency-dispatch-voice-selection-faq.en.md) | [中文](./government-12345-hotline-utility-outage-emergency-dispatch-voice-selection-faq.md)

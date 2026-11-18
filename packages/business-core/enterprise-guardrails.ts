@@ -221,3 +221,57 @@ export function evaluateCloudCcaasMigrationDecision(
   };
 }
 
+const gasOrElectricalHazardPattern =
+  /(煤气味|天然气漏|臭鸡蛋味|管道嘶嘶|电线冒火花|一氧化碳|smell\s+gas|rotten\s+egg|gas\s+leak|sparking\s+wire|carbon\s+monoxide)/i;
+
+export interface GovUtilityEmergencyEvaluation {
+  policyCode: "GOV-HOTLINE-01";
+  hazardPreemptionTriggered: boolean;
+  antiSparkWarningRequired: boolean;
+  shutoffBlockedByMedicalBaseline: boolean;
+  action:
+    | "preempt_0ms_anti_spark_warning_and_bridge_emergency_desk"
+    | "block_shutoff_and_dispatch_mobile_battery"
+    | "route_standard_311_or_scada_outage_flow";
+}
+
+/**
+ * Deterministic Municipal 12345/311 & Utility Life-Safety Guard (`GOV-HOTLINE-01`).
+ * Preempts in 0ms on gas-leak / downed-wire hazards with an anti-spark warning and hard-blocks
+ * automated utility shutoffs for households with life-support medical equipment.
+ */
+export function evaluateGovUtilityEmergencyGuard(input: {
+  utterance: string;
+  medicalBaselineHousehold?: boolean;
+  requestedAutomatedShutoff?: boolean;
+}): GovUtilityEmergencyEvaluation {
+  if (gasOrElectricalHazardPattern.test(input.utterance)) {
+    return {
+      policyCode: "GOV-HOTLINE-01",
+      hazardPreemptionTriggered: true,
+      antiSparkWarningRequired: true,
+      shutoffBlockedByMedicalBaseline: Boolean(input.medicalBaselineHousehold),
+      action: "preempt_0ms_anti_spark_warning_and_bridge_emergency_desk",
+    };
+  }
+
+  if (input.medicalBaselineHousehold && input.requestedAutomatedShutoff) {
+    return {
+      policyCode: "GOV-HOTLINE-01",
+      hazardPreemptionTriggered: false,
+      antiSparkWarningRequired: false,
+      shutoffBlockedByMedicalBaseline: true,
+      action: "block_shutoff_and_dispatch_mobile_battery",
+    };
+  }
+
+  return {
+    policyCode: "GOV-HOTLINE-01",
+    hazardPreemptionTriggered: false,
+    antiSparkWarningRequired: false,
+    shutoffBlockedByMedicalBaseline: false,
+    action: "route_standard_311_or_scada_outage_flow",
+  };
+}
+
+

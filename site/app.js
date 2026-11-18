@@ -2055,9 +2055,9 @@ async function handleSizeExchangeMcp(orderId, newSize, session) {
 const RESOURCES_DATA = {
   "zh-CN": [
     {
-      badge: "37 Bilingual SA Guides",
-      title: "37 篇企业级实时语音与多模态架构选型指南（中英双语）",
-      desc: "系统覆盖级联 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大云联络中心横评、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/医疗/零售/航旅/车载行业方案。",
+      badge: "38 Bilingual SA Guides",
+      title: "38 篇企业级实时语音与多模态架构选型指南（中英双语）",
+      desc: "系统覆盖级联 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大云联络中心横评、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/医疗/零售/航旅/车载/政务12345行业方案。",
       btnText: "浏览完整架构师资产目录 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
@@ -2099,9 +2099,9 @@ const RESOURCES_DATA = {
   ],
   "zh-TW": [
     {
-      badge: "37 Bilingual SA Guides",
-      title: "37 篇企業級即時語音與多模態架構選型指南（中英雙語）",
-      desc: "系統覆蓋級聯 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大雲聯絡中心橫評、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/醫療/零售/航旅/車載行業方案。",
+      badge: "38 Bilingual SA Guides",
+      title: "38 篇企業級即時語音與多模態架構選型指南（中英雙語）",
+      desc: "系統覆蓋級聯 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大雲聯絡中心橫評、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/醫療/零售/航旅/車載/政務12345行業方案。",
       btnText: "瀏覽完整架構師資產目錄 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
@@ -2143,9 +2143,9 @@ const RESOURCES_DATA = {
   ],
   en: [
     {
-      badge: "37 Bilingual SA Guides",
-      title: "37 Enterprise Voice & Multimodal AI Architecture Selection Guides",
-      desc: "Decision-ready guides covering Cascaded vs. Native S2S, D365/Amazon Connect/Genesys/Google CES/Sierra CCaaS head-to-head, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Healthcare/Retail/Travel/Auto playbooks.",
+      badge: "38 Bilingual SA Guides",
+      title: "38 Enterprise Voice & Multimodal AI Architecture Selection Guides",
+      desc: "Decision-ready guides covering Cascaded vs. Native S2S, D365/Amazon Connect/Genesys/Google CES/Sierra CCaaS head-to-head, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Healthcare/Retail/Travel/Auto/Gov-311 playbooks.",
       btnText: "Browse Full Asset Catalog ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.en.md"
     },
@@ -2429,6 +2429,32 @@ const DUPLEX_SIM_PROBES = [
       annualAudioHookTaxAvoidedUsd: 432000,
       estimatedAnnualAiVoiceCostUsd: 399840,
       signedSipUuiScreenPopRequired: true
+    }, null, 2)
+  },
+  {
+    id: "guard_gov_gas_leak_preemption",
+    label: {
+      "zh-CN": "10. 燃气泄漏 0ms 防电火花抢占与保电锁 (GOV-HOTLINE-01)",
+      "zh-TW": "10. 燃氣洩漏 0ms 防電火花搶佔與保電鎖 (GOV-HOTLINE-01)",
+      en: "10. 0ms Gas-Leak Anti-Spark & Medical-Baseline Gate"
+    },
+    summary: {
+      "zh-CN": "✅ 0ms 抢占救命广播：市民提及“厨房有煤气臭鸡蛋味”瞬间中止常规查户号流程，前 3 秒强制警告“严禁触碰电灯与排风扇开关、立即撤往室外”，远程关闭 NB-IoT 燃气表阀并 1.5s 强插抢险台。",
+      "zh-TW": "✅ 0ms 搶佔救命廣播：市民提及「廚房有煤氣臭雞蛋味」瞬間中止常規查戶號流程，前 3 秒強制警告「嚴禁觸碰電燈與排風扇開關、立即撤往室外」，遠程關閉 NB-IoT 燃氣表閥並 1.5s 強插搶險台。",
+      en: "✅ 0ms Life-Safety Preemption: Detects 'rotten-egg gas smell', aborts routine account lookup, warns caller not to touch light switches/fans within 3 seconds, closes the smart gas valve remotely, and bridges emergency dispatch in 1.5s."
+    },
+    inputJson: JSON.stringify({
+      probe: "utility_gas_leak_and_medical_baseline",
+      utterance: "你好，我刚进家门感觉厨房有股很浓的煤气臭鸡蛋味",
+      medicalBaselineHousehold: true,
+      requestedAutomatedShutoff: false
+    }, null, 2),
+    outputJson: JSON.stringify({
+      policyCode: "GOV-HOTLINE-01",
+      hazardPreemptionTriggered: true,
+      antiSparkWarningRequired: true,
+      shutoffBlockedByMedicalBaseline: true,
+      action: "preempt_0ms_anti_spark_warning_and_bridge_emergency_desk"
     }, null, 2)
   }
 ];

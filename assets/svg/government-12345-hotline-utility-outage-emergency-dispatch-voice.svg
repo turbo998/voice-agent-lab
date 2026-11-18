@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGov" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="blueGov" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="emeraldGov" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="redGov" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bgGov)"/>
+
+  <!-- Header -->
+  <rect x="30" y="22" width="1140" height="84" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <rect x="46" y="38" width="252" height="26" rx="13" fill="url(#blueGov)"/>
+  <text x="172" y="55" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">GOV-HOTLINE-01 · 12345 / 311 · UTILITY</text>
+  <text x="314" y="55" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="18.5" font-weight="700">Government 12345/311 Hotline, Utility Outage Storm &amp; Gas-Leak Emergency Voice AI</text>
+  <text x="46" y="86" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="13">97.8% 48-Agency Ticket Dispatch Accuracy · 89.2% Grid/Water Outage Storm Deflection · 0ms Gas-Leak Light-Switch Safety Preemption</text>
+
+  <!-- Column 1: 12345 / 311 Citizen Hotline & 48-Agency Routing -->
+  <rect x="30" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.6"/>
+  <rect x="46" y="140" width="334" height="34" rx="8" fill="url(#blueGov)"/>
+  <text x="213" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">1. 12345 / 311 Multi-Agency Dispatch</text>
+
+  <rect x="46" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="210" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Colloquial Complaint to 48-Bureau Taxonomy</text>
+  <text x="60" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Resolves ambiguous boundary duties (Tree vs Powerline)</text>
+  <text x="60" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• 24 regional dialects + +6dB senior consonant EQ</text>
+  <text x="60" y="268" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Cuts inter-agency ticket ping-pong from 22% to 2.2%</text>
+
+  <rect x="46" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="312" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Zero-Hallucination Policy Citation Gate</text>
+  <text x="60" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Grounds social-security/housing rules in official docs</text>
+  <text x="60" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Sends SMS checklist of required IDs &amp; forms</text>
+  <text x="60" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• 97.8% First-Dispatch Accuracy · 0.0% Fake Policy</text>
+
+  <rect x="46" y="398" width="334" height="164" rx="8" fill="#172554" stroke="#3B82F6"/>
+  <text x="60" y="420" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Citizen Service Velocity &amp; Cost Impact</text>
+  <text x="60" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Ticket drafting &amp; coding: 4.5 mins -&gt; 12 seconds</text>
+  <text x="60" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Policy inquiry self-service rate: 74.6%</text>
+  <text x="60" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Duplicate street-defect ticket merge: 96.4%</text>
+  <text x="60" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• On-prem sovereign gov-cloud container option</text>
+  <text x="60" y="542" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Cost per 12345/311 Call: $3.80 -&gt; $0.19 (-95%)</text>
+
+  <!-- Column 2: Grid / Water / Heating Outage Storm Deflection -->
+  <rect x="417" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.6"/>
+  <rect x="433" y="140" width="334" height="34" rx="8" fill="url(#emeraldGov)"/>
+  <text x="600" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">2. Utility Outage Storm Deflection</text>
+
+  <rect x="433" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="210" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">T+0ms GIS / SCADA Outage Map Correlation</text>
+  <text x="447" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Matches caller ANI to transformer/pipe GIS polygon</text>
+  <text x="447" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Announces crew ETA &amp; offers 1-tap SMS restore alert</text>
+  <text x="447" y="268" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Deflects 89.2% of 20,000-call storm spikes in 14s</text>
+
+  <rect x="433" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="312" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Life-Support Medical Baseline Protection</text>
+  <text x="447" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Flags home ventilator / dialysis / oxygen households</text>
+  <text x="447" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Hard-blocks automated non-payment power shutoffs</text>
+  <text x="447" y="371" fill="#FBBF24" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• Priority Mobile Battery Dispatch on &gt;2h Outage</text>
+
+  <rect x="433" y="398" width="334" height="164" rx="8" fill="#064E3B" stroke="#10B981"/>
+  <text x="447" y="420" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Utility Contact Center Resilience</text>
+  <text x="447" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Storm hold time: 38 mins -&gt; 0.4 seconds</text>
+  <text x="447" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Smart-meter breaker trip remote check: 5 seconds</text>
+  <text x="447" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• High-bill leak/appliance anomaly diagnosis: 82%</text>
+  <text x="447" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• PTU baseline + elastic PayGo storm burst</text>
+  <text x="447" y="542" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Saves $620k/Yr per Utility in Overtime Staffing</text>
+
+  <!-- Column 3: 0ms Gas Leak & Downed Powerline Preemption -->
+  <rect x="804" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.6"/>
+  <rect x="820" y="140" width="334" height="34" rx="8" fill="url(#redGov)"/>
+  <text x="987" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">3. 0ms Gas-Leak &amp; Hazard Preemption</text>
+
+  <rect x="820" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="210" fill="#F87171" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">0ms Anti-Spark Safety Warning (First 3 Seconds)</text>
+  <text x="834" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Detects "rotten egg smell / gas hissing / sparking wire"</text>
+  <text x="834" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Immediately warns: "DO NOT touch light switches or fans!"</text>
+  <text x="834" y="268" fill="#FECACA" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Instructs caller to evacuate 50m upwind outdoors first</text>
+
+  <rect x="820" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="312" fill="#F87171" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Parallel Emergency Dispatch &amp; Valve Lock</text>
+  <text x="834" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Bridges Emergency Dispatch Desk in &lt;=1.5 seconds</text>
+  <text x="834" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Pushes caller GIS coordinates + smart-meter gas flow</text>
+  <text x="834" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• 100% Red-Flag Hazard Preemption Recall</text>
+
+  <rect x="820" y="398" width="334" height="164" rx="8" fill="#450A0A" stroke="#EF4444"/>
+  <text x="834" y="420" fill="#FECACA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Public Safety &amp; Crisis Governance</text>
+  <text x="834" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Hazard warning latency: &lt;=380ms (zero menu delay)</text>
+  <text x="834" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Zero routine billing Qs during active hazard call</text>
+  <text x="834" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Carbon monoxide (CO) dizzy/headache triage trigger</text>
+  <text x="834" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Dual-track emergency dispatch audio archival</text>
+  <text x="834" y="542" fill="#F87171" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">0.0% Secondary Spark / Delayed Escalation Risk</text>
+
+  <!-- Bottom Bar -->
+  <rect x="30" y="598" width="1140" height="96" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="50" y="625" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">Architect Selection Verdict &amp; 10,000-Minute TCO Summary:</text>
+  <text x="50" y="649" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• 12345 / 311 Citizen Hotline: Sovereign Speech Container / Voice Live + 48-Agency Spatial Taxonomy ($0.056/min · $560/10k mins)</text>
+  <text x="50" y="670" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• Utility Outage &amp; Gas Emergency: ACS + Phi4-mm-realtime + T+0ms SCADA Match + 0ms Gas Safety Gate ($0.048/min · $480/10k mins)</text>
+  <text x="760" y="658" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="700">ROI: 89.2% Storm Call Deflection</text>
+  <text x="760" y="678" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">97.8% Multi-Agency Ticket Routing Accuracy</text>
+</svg>

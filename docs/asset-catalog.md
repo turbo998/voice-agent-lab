@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **37 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **38 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（37 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（38 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -50,31 +50,32 @@
 11. **句内跨语种混说（中英粤 Code-Switching）与方言路由架构**：[中文](./voice-multilingual-codeswitch-dialect-faq.md) | [EN](./voice-multilingual-codeswitch-dialect-faq.en.md)
 
 ### 3.2 生产工程、安全合规、高可用与 FinOps 容量规划（12 篇）
-11. **语音原生 RAG、同音字纠偏检索与 MCP 工具零信任安全边界**：[中文](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.md) | [EN](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.en.md)
-12. **慢速 ERP/CRM 异步工具集成、零冷场垫音节拍器与 Turn-Epoch 事务隔离**：[中文](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.md) | [EN](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.en.md)
-13. **企业语音 AI 成本建模：Azure PTU vs PayGo 容量精算与音频上下文裁剪 FinOps**：[中文](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.md) | [EN](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.en.md)
-14. **通话中途跨区域容灾切换（Mid-Call Failover）与无感会话恢复架构**：[中文](./voice-midcall-failover-session-recovery-faq.md) | [EN](./voice-midcall-failover-session-recovery-faq.en.md)
-15. **离线边缘 Speech Container 容器部署与端云协同降级逃生架构**：[中文](./voice-edge-cloud-quantized-container-failover-faq.md) | [EN](./voice-edge-cloud-quantized-container-failover-faq.en.md)
-16. **人工坐席热转接（Warm Transfer）与主管耳语（Whisper）无感交接架构**：[中文](./warm-transfer-whisper-handoff-faq.md) | [EN](./warm-transfer-whisper-handoff-faq.en.md)
-17. **多智能体语音协同（Multi-Agent Voice Swarm）与防死循环路由架构**：[中文](./enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.md) | [EN](./enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.en.md)
-18. **PCI-DSS v4.0 双流 DTMF 支付按键旁路与收单合规隔离**：[中文](./voice-pci-dtmf-scope-faq.md) | [EN](./voice-pci-dtmf-scope-faq.en.md)
-19. **双轨 SIPREC 合规录音与实时敏感信息（PII）声学脱敏架构**：[中文](./siprec-pii-audio-redaction-faq.md) | [EN](./siprec-pii-audio-redaction-faq.en.md)
-20. **声纹反深伪活体检测（Anti-Deepfake）与全球语音隐私合规（GDPR / BIPA / PIPL）**：[中文](./enterprise-voice-biometrics-privacy-compliance-selection-faq.md) | [EN](./enterprise-voice-biometrics-privacy-compliance-selection-faq.en.md)
-21. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
-22. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
+12. **语音原生 RAG、同音字纠偏检索与 MCP 工具零信任安全边界**：[中文](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.md) | [EN](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.en.md)
+13. **慢速 ERP/CRM 异步工具集成、零冷场垫音节拍器与 Turn-Epoch 事务隔离**：[中文](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.md) | [EN](./enterprise-voice-async-erp-crm-integration-zero-dead-air-selection-faq.en.md)
+14. **企业语音 AI 成本建模：Azure PTU vs PayGo 容量精算与音频上下文裁剪 FinOps**：[中文](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.md) | [EN](./enterprise-voice-ai-tco-ptu-capacity-finops-selection-faq.en.md)
+15. **通话中途跨区域容灾切换（Mid-Call Failover）与无感会话恢复架构**：[中文](./voice-midcall-failover-session-recovery-faq.md) | [EN](./voice-midcall-failover-session-recovery-faq.en.md)
+16. **离线边缘 Speech Container 容器部署与端云协同降级逃生架构**：[中文](./voice-edge-cloud-quantized-container-failover-faq.md) | [EN](./voice-edge-cloud-quantized-container-failover-faq.en.md)
+17. **人工坐席热转接（Warm Transfer）与主管耳语（Whisper）无感交接架构**：[中文](./warm-transfer-whisper-handoff-faq.md) | [EN](./warm-transfer-whisper-handoff-faq.en.md)
+18. **多智能体语音协同（Multi-Agent Voice Swarm）与防死循环路由架构**：[中文](./enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.md) | [EN](./enterprise-multi-agent-voice-swarm-supervisor-whisper-selection-faq.en.md)
+19. **PCI-DSS v4.0 双流 DTMF 支付按键旁路与收单合规隔离**：[中文](./voice-pci-dtmf-scope-faq.md) | [EN](./voice-pci-dtmf-scope-faq.en.md)
+20. **双轨 SIPREC 合规录音与实时敏感信息（PII）声学脱敏架构**：[中文](./siprec-pii-audio-redaction-faq.md) | [EN](./siprec-pii-audio-redaction-faq.en.md)
+21. **声纹反深伪活体检测（Anti-Deepfake）与全球语音隐私合规（GDPR / BIPA / PIPL）**：[中文](./enterprise-voice-biometrics-privacy-compliance-selection-faq.md) | [EN](./enterprise-voice-biometrics-privacy-compliance-selection-faq.en.md)
+22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
+23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（14 篇）
-23. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
-24. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
-25. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
-26. **对公银行财资双人复核（Maker-Checker）、防 CEO 深伪电诈与交易台合规语音**：[中文](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.md) | [EN](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.en.md)
-27. **医疗院前智能分诊、诊室环境病历生成（Ambient Scribe）与慢病随访方案**：[中文](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.md) | [EN](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.en.md)
-28. **连锁药房处方续配、相似药名防混淆与医保事前授权（Prior Auth）语音方案**：[中文](./retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.md) | [EN](./retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.en.md)
-29. **连锁餐饮得来速（QSR Drive-Thru）与智慧零售门店抗噪语音点单方案**：[中文](./qsr-drivethru-smart-restaurant-retail-voice-ordering-selection-faq.md) | [EN](./qsr-drivethru-smart-restaurant-retail-voice-ordering-selection-faq.en.md)
-30. **品牌电商展厅导购与实时语音数字人（Voice + Avatar）交互方案**：[中文](./ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.md) | [EN](./ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.en.md)
-31. **航司大面积航延改签（IRROPS）与连锁酒店多语种 AI 礼宾直连 PMS 方案**：[中文](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.md) | [EN](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.en.md)
-32. **智能汽车座舱多音区多模态语音助手与车载智能硬件服务方案**：[中文](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.md) | [EN](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.en.md)
-33. **AI 销售实战对练（Sales Roleplay）、模拟面试与企业话术教练方案**：[中文](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.md) | [EN](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.en.md)
-34. **企业合规智能外呼（Outbound SDR）、答录机检测（AMD）与防骚扰治理方案**：[中文](./enterprise-outbound-voice-sales-lead-qualification-selection-faq.md) | [EN](./enterprise-outbound-voice-sales-lead-qualification-selection-faq.en.md)
-35. **跨国会议实时多语种同声传译与结构化纪要行动项提取方案**：[中文](./enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.md) | [EN](./enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.en.md)
-36. **企业内部 IT 服务台（ITSM）与 HR 员工自助语音 Copilot 方案**：[中文](./enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.md) | [EN](./enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.en.md)
+### 3.3 高价值企业行业解决方案蓝图（15 篇）
+24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
+25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
+26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
+27. **对公银行财资双人复核（Maker-Checker）、防 CEO 深伪电诈与交易台合规语音**：[中文](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.md) | [EN](./corporate-banking-treasury-maker-checker-trading-desk-voice-selection-faq.en.md)
+28. **医疗院前智能分诊、诊室环境病历生成（Ambient Scribe）与慢病随访方案**：[中文](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.md) | [EN](./healthcare-clinical-triage-chronic-followup-ambient-scribe-voice-selection-faq.en.md)
+29. **连锁药房处方续配、相似药名防混淆与医保事前授权（Prior Auth）语音方案**：[中文](./retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.md) | [EN](./retail-pharmacy-rx-refill-pbm-prior-authorization-voice-selection-faq.en.md)
+30. **连锁餐饮得来速（QSR Drive-Thru）与智慧零售门店抗噪语音点单方案**：[中文](./qsr-drivethru-smart-restaurant-retail-voice-ordering-selection-faq.md) | [EN](./qsr-drivethru-smart-restaurant-retail-voice-ordering-selection-faq.en.md)
+31. **品牌电商展厅导购与实时语音数字人（Voice + Avatar）交互方案**：[中文](./ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.md) | [EN](./ecommerce-livestream-showroom-voice-avatar-digital-human-selection-faq.en.md)
+32. **航司大面积航延改签（IRROPS）与连锁酒店多语种 AI 礼宾直连 PMS 方案**：[中文](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.md) | [EN](./travel-airline-irrops-hotel-pms-multilingual-voice-concierge-selection-faq.en.md)
+33. **智能汽车座舱多音区多模态语音助手与车载智能硬件服务方案**：[中文](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.md) | [EN](./in-vehicle-cockpit-smart-hardware-multimodal-voice-assistant-selection-faq.en.md)
+34. **AI 销售实战对练（Sales Roleplay）、模拟面试与企业话术教练方案**：[中文](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.md) | [EN](./ai-sales-roleplay-mock-interview-language-coach-selection-faq.en.md)
+35. **企业合规智能外呼（Outbound SDR）、答录机检测（AMD）与防骚扰治理方案**：[中文](./enterprise-outbound-voice-sales-lead-qualification-selection-faq.md) | [EN](./enterprise-outbound-voice-sales-lead-qualification-selection-faq.en.md)
+36. **跨国会议实时多语种同声传译与结构化纪要行动项提取方案**：[中文](./enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.md) | [EN](./enterprise-multilingual-simultaneous-interpretation-meeting-minutes-selection-faq.en.md)
+37. **企业内部 IT 服务台（ITSM）与 HR 员工自助语音 Copilot 方案**：[中文](./enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.md) | [EN](./enterprise-it-helpdesk-hr-employee-voice-copilot-selection-faq.en.md)
+38. **政务服务便民热线（12345 / 311）、公用事业停水停电风暴分流与燃气泄漏 0ms 抢占方案**：[中文](./government-12345-hotline-utility-outage-emergency-dispatch-voice-selection-faq.md) | [EN](./government-12345-hotline-utility-outage-emergency-dispatch-voice-selection-faq.en.md)
