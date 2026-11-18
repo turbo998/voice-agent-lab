@@ -511,6 +511,41 @@ export function evaluateEnergyEvChargingVppGuard(input: {
   };
 }
 
+export interface FmcgB2bSmartCoolerEvaluation {
+  policyCode: "FMCG-B2B-01";
+  uomReadbackRequired: boolean;
+  instantMicroRefundApproved: boolean;
+  dairyPerishableLocked: boolean;
+}
+
+/**
+ * Deterministic FMCG B2B Par-Level UOM & Smart-Cooler Micro-Refund Guard (`FMCG-B2B-01`).
+ * Requires voice readback when ordered quantity exceeds 3x the 30-day par-level mean, gates <=$5.00
+ * instant cooler refunds on load-cell weight delta + vision confidence <0.88, and locks dairy above 8C.
+ */
+export function evaluateFmcgB2bSmartCoolerGuard(input: {
+  orderedQtyCases: number;
+  rolling30dMeanCases: number;
+  disputeAmountUsd: number;
+  visionConfidence: number;
+  loadCellMatchesSingleUnit: boolean;
+  userClaims90d: number;
+  coolerInternalTempCelsius: number;
+}): FmcgB2bSmartCoolerEvaluation {
+  return {
+    policyCode: "FMCG-B2B-01",
+    uomReadbackRequired:
+      input.rolling30dMeanCases > 0 && input.orderedQtyCases > input.rolling30dMeanCases * 3,
+    instantMicroRefundApproved:
+      input.disputeAmountUsd <= 5.0 &&
+      input.visionConfidence < 0.88 &&
+      input.loadCellMatchesSingleUnit &&
+      input.userClaims90d < 2,
+    dairyPerishableLocked: input.coolerInternalTempCelsius > 8.0,
+  };
+}
+
+
 
 
 
