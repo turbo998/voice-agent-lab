@@ -1949,6 +1949,35 @@ export function evaluateRetailPharmacyPbmSafetyGuard(input: {
   };
 }
 
+export interface MiningOilfieldAtexEvaluation {
+  policyCode: "MINING-OIL-ATEX-01";
+  detonatorUnlockAllowed: boolean;
+  upwindHighGroundEvacuationRouted: boolean;
+  offlineRefugeChamberGuideActive: boolean;
+}
+
+/**
+ * Deterministic Underground Mining & Oilfield ATEX Blasting UWB Zero-Headcount, CH4 Lock & H2S Upwind Guard (`MINING-OIL-ATEX-01`).
+ */
+export function evaluateMiningOilfieldAtexGuard(input: {
+  blastZoneUwbPersonnelCount: number;
+  methaneCh4Pct: number;
+  threeManDistinctVoiceprintsVerified: boolean;
+  h2sLeakPpm: number;
+  networkConnectivityBps: number;
+}): MiningOilfieldAtexEvaluation {
+  return {
+    policyCode: "MINING-OIL-ATEX-01",
+    detonatorUnlockAllowed:
+      input.blastZoneUwbPersonnelCount === 0 &&
+      input.methaneCh4Pct < 1.0 &&
+      input.threeManDistinctVoiceprintsVerified,
+    upwindHighGroundEvacuationRouted: input.h2sLeakPpm >= 10,
+    offlineRefugeChamberGuideActive: input.networkConnectivityBps === 0,
+  };
+}
+
+
 
 
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (95 Bilingual Guides)
+## 3. Solution Architect Selection Guides (96 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -136,3 +136,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 93. **Integrated Resort (IR) VIP Concierge, Responsible Gaming (Self-Exclusion) 0ms Lock & Title-31 AML Structuring Guard Voice AI**: [EN](./integrated-resort-vip-concierge-responsible-gaming-aml-voice-selection-faq.en.md) | [中文](./integrated-resort-vip-concierge-responsible-gaming-aml-voice-selection-faq.md)
 94. **Enterprise Voice Agent CI/CD Automated Evaluation Pipeline: Synthetic Callers, Round-Trip TTS-to-ASR Verification & Release Gates**: [EN](./enterprise-voice-agent-cicd-automated-regression-testing-selection-faq.en.md) | [中文](./enterprise-voice-agent-cicd-automated-regression-testing-selection-faq.md)
 95. **Retail Pharmacy & PBM Voice AI: ISMP Sound-Alike (LASA) Disambiguation, DEA Schedule-II Lock & Pediatric mg/kg Dose Guard**: [EN](./retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.en.md) | [中文](./retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.md)
+96. **Underground Mining, Oilfield & Petrochemical ATEX/IECEx Voice AI: Blast-Zone UWB Zero-Headcount Lock & H2S Upwind Evacuation**: [EN](./mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.en.md) | [中文](./mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.md)

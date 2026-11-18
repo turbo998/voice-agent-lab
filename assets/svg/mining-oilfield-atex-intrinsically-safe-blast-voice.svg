@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgMine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C16"/>
+      <stop offset="50%" stop-color="#152033"/>
+      <stop offset="100%" stop-color="#090E1A"/>
+    </linearGradient>
+    <linearGradient id="atexGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="blastGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="refugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgMine)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Mining, Oilfield &amp; Petrochemical ATEX/IECEx Voice AI: Blast-Zone Zero-Headcount &amp; Refuge Guide</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">地下矿山与油气平台本安防爆 (ATEX Zone 1) 离线语音、爆破警戒区 UWB 人员清零联锁与瓦斯/H2S 避难硐室逃生全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#451A03" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FCD34D" font-size="13" font-weight="600" text-anchor="middle">MINING-OIL-ATEX-01 · ATEX</text>
+
+  <!-- Pillar 1: ATEX Zone 0/1 Intrinsically Safe & Underground 0-bps Offline Voice -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#atexGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 本安防爆 (ATEX/MA) 与千米井下离线语音</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将普通消费级手机/蓝牙耳机带入防爆 1区！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 煤矿井下瓦斯与炼油厂氢气区必须采用 Ex ib/ia 本安型矿灯头盔终端</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 戴厚重防割手套与防毒面具无法触屏：100% 骨传导咽喉麦免手触交互</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">地下 -800米巷道漏泄电缆中断 100% 端侧离线运行</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 掘进工作面无公网且 Wi-Fi 6 易被岩体遮挡</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 头盔内置 NPU 运行离线设备巡检与瓦斯/液压支架压力口令识别</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">102dB 采煤机/泥浆泵强噪与防化面具闷音补偿</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 针对正压式空气呼吸器 (SCBA) 面罩内低频共振失真做声学逆滤波</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 综采面液压支架号 (1#–150# 架) 与阀门指令识别率达 99.1%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">100% 满足煤安 (MA) / ATEX Zone 1 防爆标准</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">井下机电巡检与钻井司钻台班报免手写率达 100%</text>
+  </g>
+
+  <!-- Pillar 2: Underground Blasting UWB Zero-Headcount & Methane Interlock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#blastGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 井下爆破 UWB 清零锁与“一炮三检”瓦斯锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 爆破警戒区内哪怕还有 1个 UWB 人员信标，严禁解锁发爆器！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统靠对讲机口头喊“人都撤出来了”极易漏掉盲巷维修工</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 强制联锁 UWB 精确定位基站：警戒半径 300米内人数必须 == 0！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">“一炮三检”瓦斯浓度 (&gt;=1.0% CH4) 0ms 锁死起爆</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 装药前、放炮前、放炮后三次检查甲烷 (CH4) 浓度</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 光学/激光甲烷传感器实测 CH4 &gt;=1.0%？0ms 物理锁死电子雷管起爆器！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">爆破员 + 班组长 + 瓦检员“三人连锁放炮”声纹核验</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严格执行《煤矿安全规程》三人连锁制度：缺任何一人声纹签署不予解锁</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 语音倒计时 30秒全巷道扩音广播预警</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">爆破误伤滞留人员与高瓦斯违章放炮率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合国家矿山安监局《煤矿安全规程》与 MSHA 标准</text>
+  </g>
+
+  <!-- Pillar 3: H2S / Methane Blowout Evacuation & Refuge Chamber Guide -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#refugeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 井喷 H2S 逆风撤离与井下避难硐室骨传导导航</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁在 H2S 泄漏时引导人员往顺风或低洼处撤离！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 硫化氢 (H2S) 比空气重 (比重 1.19)，极易积聚在低洼处让人瞬间电击样死亡</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 0ms 读取平台风向标：强制播报“佩戴正压呼吸器，向【上风向高处】撤离”！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">浓烟零能见度下“自救器盲戴口令 + 避难硐室米级导航”</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 井下透水/冒顶/浓烟看不见路：头盔端侧离线语音结合 UWB 测距</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• “30秒盲戴化学氧自救器口令 + 沿右侧压风管前行 85米进入 2号避难硐室”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">海上平台弃船救生艇集结站 (Muster Station) 语音点名</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 120名平台海工人员在 3分钟内刷防爆手环+语音复核 POB (在平台人数)</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 精确锁定未到场人员最后所在甲板模块供搜救队突击</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">零能见度浓烟巷道进入避难硐室耗时缩短 54%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">H2S 逆风向高处撤离指令准确率 = 100.0%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#F59E0B" font-size="14" font-weight="700">架构师核心选型法则 (MINING-OIL-ATEX-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 井下爆破语音授权必须同时满足“UWB 警戒区人数 == 0 + 甲烷浓度 CH4 &lt; 1.0% + 爆破员/班组长/瓦检员三人独立声纹连锁”，缺一即 0ms 锁死起爆器；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 油气井场检出硫化氢 (H2S) 泄漏时，语音疏散指令必须实时联锁风向标传感器，强制导引人员向【上风向/侧风向高处】撤离，严禁导引向顺风或低洼处。</text>
+</svg>
