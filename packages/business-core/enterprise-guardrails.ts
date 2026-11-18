@@ -1530,6 +1530,31 @@ export function evaluateDentalEyeClinicSafetyGuard(input: {
   };
 }
 
+export interface VoiceLatencySpeculativeEvaluation {
+  policyCode: "LATENCY-BUDGET-01";
+  speculativePrefetchAllowed: boolean;
+  staleSpeculativeCacheEvicted: boolean;
+  ttsFirstChunkUnderrunSafe: boolean;
+}
+
+/**
+ * Deterministic Voice Latency Speculative Read-Only Prefetch, Stale Cache Eviction & First-Chunk Underrun Guard (`LATENCY-BUDGET-01`).
+ */
+export function evaluateVoiceLatencySpeculativeGuard(input: {
+  toolIsMutatingWrite: boolean;
+  asrPartialStability: number;
+  finalSlotsMatchSpeculativePartial: boolean;
+  firstTtsChunkWordCount: number;
+}): VoiceLatencySpeculativeEvaluation {
+  return {
+    policyCode: "LATENCY-BUDGET-01",
+    speculativePrefetchAllowed: !input.toolIsMutatingWrite && input.asrPartialStability >= 0.88,
+    staleSpeculativeCacheEvicted: !input.finalSlotsMatchSpeculativePartial,
+    ttsFirstChunkUnderrunSafe: input.firstTtsChunkWordCount >= 4,
+  };
+}
+
+
 
 
 

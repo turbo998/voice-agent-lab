@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（79 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（80 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -120,3 +120,4 @@
 77. **B2B SaaS 客户成功首周激活同屏领航、退订实时语音挽留（防羊毛党折扣锁 & FTC Click-to-Cancel 合规）方案**：[中文](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.md) | [EN](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.en.md)
 78. **创新药企临床试验受试者入排初筛（I/E Criteria）、eCOA/ePRO 量表零改写逐字锁（21 CFR Part 11）与药物警戒 SAE 24h 直报方案**：[中文](./clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.md) | [EN](./clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.en.md)
 79. **连锁口腔（DSO）与眼科门诊多椅位联锁排班、无菌语音牙周探诊录入（168点位）及术前抗凝药/停戴镜与术后急症分诊方案**：[中文](./dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.md) | [EN](./dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.en.md)
+80. **企业实时语音全链路延迟极限优化（P50 TTFA 从 1,450ms 压降至 320ms：180ms 语义 EOU、只读推测预取与首 4 词微切块 TTS）方案**：[中文](./voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.md) | [EN](./voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.en.md)

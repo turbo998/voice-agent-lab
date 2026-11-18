@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (79 Bilingual Guides)
+## 3. Solution Architect Selection Guides (80 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -120,3 +120,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 77. **B2B SaaS Customer Success Onboarding, Cancel-Flow Voice Churn Save & FTC Click-to-Cancel Compliance**: [EN](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.en.md) | [中文](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.md)
 78. **Pharma Clinical Trial Patient Pre-Screening (I/E Criteria), eCOA/ePRO Verbatim Lock (21 CFR Part 11) & Pharmacovigilance (PV SAE 24h) Voice AI**: [EN](./clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.en.md) | [中文](./clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.md)
 79. **Dental (DSO), Ophthalmology & Specialty Clinic Multi-Chair Scheduling, Hands-Free Perio Charting & Post-Op Triage Voice AI**: [EN](./dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.en.md) | [中文](./dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.md)
+80. **Enterprise Voice Agent Latency Engineering (Cutting P50 TTFA from 1,450ms to 320ms via Semantic EOU, Speculative Prefetch & Micro-Chunk TTS)**: [EN](./voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.en.md) | [中文](./voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.md)

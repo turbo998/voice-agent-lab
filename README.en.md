@@ -151,6 +151,7 @@ flowchart LR
 77. **B2B SaaS Customer Success Onboarding, Cancel-Flow Voice Churn Save & FTC Click-to-Cancel Compliance**: [EN](./docs/saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.en.md) | [中文](./docs/saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.md)
 78. **Pharma Clinical Trial Patient Pre-Screening (I/E Criteria), eCOA/ePRO Verbatim Lock (21 CFR Part 11) & Pharmacovigilance (PV SAE 24h) Voice AI**: [EN](./docs/clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.en.md) | [中文](./docs/clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.md)
 79. **Dental (DSO), Ophthalmology & Specialty Clinic Multi-Chair Scheduling, Hands-Free Perio Charting & Post-Op Triage Voice AI**: [EN](./docs/dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.en.md) | [中文](./docs/dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.md)
+80. **Enterprise Voice Agent Latency Engineering (Cutting P50 TTFA from 1,450ms to 320ms via Semantic EOU, Speculative Prefetch & Micro-Chunk TTS)**: [EN](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.en.md) | [中文](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.md)
 
 ---
 
