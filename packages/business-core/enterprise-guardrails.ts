@@ -636,6 +636,35 @@ export function evaluateThemeParkMuseumConciergeGuard(input: {
   };
 }
 
+export interface SmartPropertyElevatorEvaluation {
+  policyCode: "PROP-VOICE-01";
+  sev1EntrapmentRescueTriggered: boolean;
+  antiPryDoorWarningIssued: boolean;
+  continuousLineHoldRequired: boolean;
+  bmsSolenoidValveShutoffTriggered: boolean;
+}
+
+/**
+ * Deterministic Smart Property Concierge & Elevator SOS Entrapment Rescue Guard (`PROP-VOICE-01`).
+ * Triggers Sev-1 entrapment rescue + continuous line-hold + anti-pry-door warning when elevator PLC doorZone=false
+ * and cabinPersons>=1, and triggers 0ms BMS solenoid valve shutoff on burst-pipe or gas-smell reports.
+ */
+export function evaluateSmartPropertyElevatorGuard(input: {
+  elevatorInDoorZone: boolean;
+  cabinPersonCount: number;
+  passengerAttemptsToPryDoor: boolean;
+  residentReportsBurstPipeOrGas: boolean;
+}): SmartPropertyElevatorEvaluation {
+  const trapped = !input.elevatorInDoorZone && input.cabinPersonCount >= 1;
+  return {
+    policyCode: "PROP-VOICE-01",
+    sev1EntrapmentRescueTriggered: trapped,
+    antiPryDoorWarningIssued: trapped || input.passengerAttemptsToPryDoor,
+    continuousLineHoldRequired: trapped,
+    bmsSolenoidValveShutoffTriggered: input.residentReportsBurstPipeOrGas,
+  };
+}
+
 
 
 
