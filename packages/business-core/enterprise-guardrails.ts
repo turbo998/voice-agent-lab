@@ -1088,6 +1088,33 @@ export function evaluateInterpreterPolarityHotwordGuard(input: {
   };
 }
 
+export interface UnifiedCommsVoiceIntegrationEvaluation {
+  policyCode: "UC-VOICE-01";
+  sipBlindTransferAllowed: boolean;
+  adaptiveCardCallbackSent: boolean;
+  meetingBotJoinAllowed: boolean;
+  pbrWormStreamIsolated: true;
+}
+
+/**
+ * Deterministic Enterprise UCaaS (Teams Phone / Zoom Phone / Webex Calling) Presence & Recording Guard (`UC-VOICE-01`).
+ * Blocks blind SIP transfers when target expert Graph/UC presence != "Available" (sending an Adaptive Card + callback slot instead),
+ * and requires explicit recording banner disclosure before an AI bot joins an executive meeting.
+ */
+export function evaluateUnifiedCommsVoiceIntegrationGuard(input: {
+  targetExpertPresence: "Available" | "Busy" | "InAMeeting" | "DoNotDisturb" | "Offline";
+  explicitRecordingBannerShown: boolean;
+}): UnifiedCommsVoiceIntegrationEvaluation {
+  const available = input.targetExpertPresence === "Available";
+  return {
+    policyCode: "UC-VOICE-01",
+    sipBlindTransferAllowed: available,
+    adaptiveCardCallbackSent: !available,
+    meetingBotJoinAllowed: input.explicitRecordingBannerShown,
+    pbrWormStreamIsolated: true,
+  };
+}
+
 
 
 

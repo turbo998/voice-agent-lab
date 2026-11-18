@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgUc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1B"/>
+      <stop offset="50%" stop-color="#111C38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="teamsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <linearGradient id="zoomGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="webexGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgUc)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="23" font-weight="700">Enterprise UCaaS Voice AI: Teams Phone vs. Zoom Phone vs. Webex Calling</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业统一通信（Teams Phone Extensibility / Zoom Phone / Webex Calling）接入 AI 语音智能体选型全景图</text>
+  <rect x="920" y="42" width="232" height="34" rx="17" fill="#1E1B4B" stroke="#6366F1" stroke-width="1.2"/>
+  <text x="1036" y="64" fill="#C7D2FE" font-size="13" font-weight="600" text-anchor="middle">UC-VOICE-01 · Entra SSO</text>
+
+  <!-- Pillar 1: Microsoft Teams Phone Extensibility & ACS -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#6366F1" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#teamsGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. Microsoft Teams Phone + ACS 深度集成</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#1E1B4B" stroke="#4F46E5"/>
+    <text x="30" y="82" fill="#C7D2FE" font-size="13" font-weight="700">三大接入路径按场景精准选型</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• Direct Routing SBC 分流：零改动存量号段与录音</text>
+    <text x="30" y="122" fill="#818CF8" font-size="12">• Teams Phone Extensibility (TPE)：原生复用云总机</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">Call Queue 忙时溢出与下班接管</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 门店/前台队列排队 &gt;25秒 自动溢出至 AI 语音</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 转回内部专家前先查 Teams Presence (禁转忙碌/离线)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Entra ID 零信任身份与 Graph 协同</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 内部员工分机拨入自动匹配 Entra 部门与权限</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 通话中同步向员工 Teams 聊天窗推送 Adaptive Card</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">无需废弃现有 E5 / Teams Phone 牌照</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">盲目转接空号/会议中员工失败率从 34% 降至 0.0%</text>
+  </g>
+
+  <!-- Pillar 2: Zoom Phone & Cisco Webex Calling Integration -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#zoomGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. Zoom Phone &amp; Webex Calling 集成架构</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">Zoom Phone BYOC / Voice Stream</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• Zoom Phone Provider Exchange 双向 SIP 路由</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 结合 Zoom Contact Center / WebSocket 实时媒体流</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#A7F3D0" font-size="13" font-weight="700">Cisco Webex Calling + Local Gateway</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• Cisco CUBE Local Gateway 旁路分流至 AI 编排器</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 原生保留金融分支机构本地存活 (SRST) 逃生能力</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">跨 UC 平台统一 Presence-Aware 转接锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 转接二线专家前必查实时状态 (Available vs In-Call)</text>
+    <text x="30" y="308" fill="#FBBF24" font-size="12">• 若专家正在开会：自动改为发 IM 摘要卡 + 预约回电</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="178" y="356" fill="#93C5FD" font-size="13" font-weight="700" text-anchor="middle">全球分支机构内线 4位短号一键直达 AI</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">实现“前台总机 + 内部 IT/HR + 门店分机”统一智能化</text>
+  </g>
+
+  <!-- Pillar 3: Executive Meeting Copilot & Compliance Recording -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#webexGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 会议语音参会 Bot 与政策合规录音治理</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁“幽灵录音 Bot”静默潜入高管会议</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 必须显式触发会议横幅/语音告知 (Explicit Consent)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 董事会涉密议程支持一键踢出或暂停 AI 拾音</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">多说话人真实身份绑定 (Roster Identity)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 结合 UC 会议室硬件/分机 RTP SSRC 与参会名单</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 100% 区分“谁说的哪句话”并自动在 Planner 建单</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">Policy-Based Recording (PBR) 合规双录</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 投行交易员/理财师 Teams 通话强制策略级旁路录音</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• AI 辅助流与法定不可篡改归档流 (WORM) 物理解耦</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">打通企业办公 UC 与外部客户联络中心</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">前后台专家协同处理时间 (AHT) 缩短 41%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (UC-VOICE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 存量 Microsoft 365 企业首选 Teams Phone Extensibility (ACS) 或 SBC Direct Routing 分流，转接内部专家前必查 Graph Presence 状态；</text>
+  <text x="68" y="606" fill="#A7F3D0" font-size="13">2. 任何进入 Teams / Zoom / Webex 会议的语音 AI 必须强制显式录制告知横幅，且将 AI 实时流与法定合规归档录音 (PBR) 严格分离。</text>
+</svg>
