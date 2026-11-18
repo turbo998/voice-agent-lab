@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgVp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D1A"/>
+      <stop offset="50%" stop-color="#131E3A"/>
+      <stop offset="100%" stop-color="#0B1326"/>
+    </linearGradient>
+    <linearGradient id="mdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="spokenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="ssmlGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgVp)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="23" font-weight="700">Voice-Native Prompt Engineering, Anti-Markdown Sanitizer, Backchanneling &amp; SSML</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">实时语音大模型口语化提示词工程、防朗读星号/表格/URL 清洗器、35词短句律与 SSML 韵律控制全景图</text>
+  <rect x="912" y="42" width="240" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1032" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">VOICE-PROMPT-01 · &lt;=35 Words</text>
+
+  <!-- Pillar 1: Anti-Markdown & Text Normalization Sanitizer -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#mdGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 严禁把文字 Chatbot Prompt 直接搬上语音！</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 语音客服最尴尬的三大“书面语车祸”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• TTS 大声朗读：“星号星号 重要提示 星号星号 井号井号”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 一口气念完 8 条编号长列表 (55秒)，或逐字母念 https://...</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">流式输出前置 Markdown &amp; URL 剥离网</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 实时剥离 `**`、`###`、`| 表格 |` 与代码块符号</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 检测到长链接 URL 自动改口：“链接已发到您手机短信/屏幕”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">逆文本正则化 (ITN) 与数字/日期读法锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 区分金额 “¥1,200 (一千二百元)” vs 房间号 “1200 (一二洞洞)”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 区分范围符号 “10-15天 (十到十五天，严禁读成十减十五)”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">100% 根除“星号/斜杠/代码块”机械朗读事故</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">让 AI 说话像金牌真人顾问，而不是在念 Markdown 源码</text>
+  </g>
+
+  <!-- Pillar 2: Spoken Brevity (<=35 Words) & Chunk-First Streaming -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#spokenGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 耳朵记忆法则：单轮 &lt;=35词 + 首句 6字定音</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">首句 6–10 个字触发 TTS 流式首包 (&lt;180ms)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• Prompt 强制要求首句先给简短回应：“明白，帮您查到了，”</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 第 6 个字遇到逗号立即送 TTS 发声，首字延迟直降 320ms！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">二选一渐进式收敛 (Progressive Disclosure)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁一次罗列超过 2 个选项！单轮回复硬锁 &lt;=35词 (12秒)</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 结尾必带轻巧反问钩子：“您看选上午 9 点还是下午 2 点？”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">长段叙述的自动附和音 (Active Backchanneling)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 当客户连续倾诉事故经过 &gt;8秒 在句间短暂停顿 (400ms) 时</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 轻声注入 -12dB “嗯嗯 / 我在听 / 明白” 而非粗暴抢话！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">客户中途烦躁打断率从 38% 压降至 6.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">完美契合人类听觉工作记忆 (4±1 个信息块)</text>
+  </g>
+
+  <!-- Pillar 3: Dynamic SSML Prosody & Polyphone Disambiguation -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ssmlGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. SSML 动态韵律编排与多音字/行话锁死</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">多音字与行业专有名词 `&lt;phoneme&gt;` 铁锁</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 锁定“工商银行 (háng) vs 一行代码 (háng) vs 行业 (háng)”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 锁定“重庆 (Chóngqìng)”、“六安 (Lù'ān)”、“冠心病 (guān)”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">关键数字与金额自动慢读重音 (`&lt;prosody&gt;`)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 播报验证码、航班号、理赔金额时自动切 `rate="0.88"`</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 前后自动插入 `&lt;break time="220ms"/&gt;` 留出客户记笔记时间</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">SSML XML 注入防护与闭合校验器</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁将大模型生成的残缺 XML 直接塞给 TTS 引擎崩溃报错</text>
+    <text x="30" y="308" fill="#FBBF24" font-size="12">• 确定性 AST 模板拼接 SSML，转义用户输入中的 `&lt; &amp; &gt;`</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">品牌名与多音字读错率从 8.7% 降至 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">主观语音自然度评分 (MOS) 提升 +0.62 分</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (VOICE-PROMPT-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 语音 Prompt 必须与文字 Chatbot Prompt 彻底分家：单轮强制 &lt;=35词 (3句话内)、首句 6字即打标点触发流式 TTS、严禁输出 Markdown 列表；</text>
+  <text x="68" y="606" fill="#A7F3D0" font-size="13">2. 在 LLM 与 TTS 之间必须部署确定性流式清洗器（剥离星号/井号/URL、替换长链接为短信提示、锁定多音字 `&lt;phoneme&gt;` 与安全转义 SSML）。</text>
+</svg>

@@ -1198,6 +1198,36 @@ export function evaluateOpenSourceVoiceGpuSizingGuard(input: {
   };
 }
 
+export interface VoicePromptMarkdownSanitizerEvaluation {
+  policyCode: "VOICE-PROMPT-01";
+  sanitizedSpokenText: string;
+  urlDivertedToSmsOrCard: boolean;
+  xmlEntitiesEscaped: boolean;
+}
+
+/**
+ * Deterministic Voice-Native Output Sanitizer, URL-to-SMS Diverter & SSML Entity Escaper (`VOICE-PROMPT-01`).
+ * Strips Markdown formatting (`**`, `###`), expands numeric hyphen ranges (`3-5` -> `3 to 5`),
+ * diverts `https://` URLs out of the spoken stream into SMS/chat cards, and escapes XML `&`.
+ */
+export function evaluateVoicePromptMarkdownSanitizerGuard(input: {
+  rawLlmOutput: string;
+}): VoicePromptMarkdownSanitizerEvaluation {
+  const hasUrl = /https?:\/\/\S+/i.test(input.rawLlmOutput);
+  const cleaned = input.rawLlmOutput
+    .replace(/[*#_`~|]+/g, "")
+    .replace(/(\d+)\s*-\s*(\d+)/g, "$1 to $2")
+    .replace(/https?:\/\/\S+/gi, "[LINK_SENT_TO_PHONE]")
+    .replace(/&/g, "&amp;")
+    .trim();
+  return {
+    policyCode: "VOICE-PROMPT-01",
+    sanitizedSpokenText: cleaned,
+    urlDivertedToSmsOrCard: hasUrl,
+    xmlEntitiesEscaped: cleaned.includes("&amp;") || !input.rawLlmOutput.includes("&"),
+  };
+}
+
 
 
 
