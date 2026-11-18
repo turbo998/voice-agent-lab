@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgBus" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07101E"/>
+      <stop offset="50%" stop-color="#12213A"/>
+      <stop offset="100%" stop-color="#081220"/>
+    </linearGradient>
+    <linearGradient id="busGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="pickGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="nurseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgBus)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">K-12 School Bus Sleeping-Child Sweep, Custody-Safe Dismissal &amp; Campus Health Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">幼儿园与K-12校车防遗忘熟睡幼儿车尾巡检锁、放学接送抚养权限制令 (Custody Lock) 拦截与校医传染病集群预警全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#451A03" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FCD34D" font-size="13" font-weight="600" text-anchor="middle">CAMPUS-PICKUP-01 · Child Safe</text>
+
+  <!-- Pillar 1: School Bus Sleeping-Child Zero-Left-Behind Interlock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#busGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 校车熄火防遗忘熟睡幼儿三重硬联锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 彻底根绝“幼童在后排睡着被锁车内高温闷死”惨剧！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 仅靠司机在驾驶座喊一句“没人了”绝不允许拔钥匙锁车门！</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 上车刷卡 28人 vs 下车刷卡 27人？0ms 锁死熄火闭锁并拉响警报！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">走到最后一排按车尾防遗忘按钮 + 声纹清点复诵</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 司机与随车照管员必须亲自走到车厢最尾端按下物理确认钮</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 并口述：“全车 1至9排座位及座椅下方已巡检，实存 0人”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">车顶毫米波生命体征雷达 + 哭声/拍窗声学监听</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 锁车后持续监测微弱胸腔呼吸起伏与车内哭喊声</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 一旦检出活体：0ms 自动降下车窗通风、双闪鸣笛并强呼校长/司机！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">校车遗留幼儿事故率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">晨间未上车且未请假学生 5分钟内自动语音核实家长去向</text>
+  </g>
+
+  <!-- Pillar 2: Authorized Guardian Dismissal & Custody Order Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pickGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 放学接送授权核验与抚养权限制令硬锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁仅凭一通陌生来电就更改放学接送人名单！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 有人打电话给学校：“我是朵朵叔叔，她妈让我今天下午接她放学”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 零口头临时加人！必须由主监护人 App 端人脸+动态口令双重授权！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">法院人身安全保护令 / 剥夺探视权 (Custody Flag) 拦截</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 离异家庭存在法院限制令：严禁向被限制方透露孩子所在班级或放学时间</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 被限制人到校门口刷卡或语音呼叫：0ms 静默拦截并通知校园安保主任！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">校门口家长车道 (Carline) 车牌+声纹分班播报</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 授权家长驶入接送区：教室大屏静音高亮+班主任耳机温柔提醒</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 不再用高音喇叭在校门口大喊学生全名（防止陌生人听名字冒领）</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">非授权冒领与违反抚养权限制令放行率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">放学高峰期校门口接送排队拥堵耗时缩短 52%</text>
+  </g>
+
+  <!-- Pillar 3: School Nurse Allergy & Infectious Outbreak Cluster Guard -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#nurseGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 校医室过敏急救 (EpiPen) 与传染病集群锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 花生/坚果严重过敏休克 (Anaphylaxis) 0秒指导肾上腺素笔</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 食堂老师语音急呼：“大二班乐乐误食花生酱后全身起红疹喘不上气！”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 0ms 播报乐乐专属 EpiPen 存放柜号与大腿外侧注射口令，同步呼 120！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">请假电话实时聚合：诺如病毒/手足口病同班集群预警</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 早上 7点至 8点家长集中打请假热线：AI 自动结构化提取症状</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 若同一班级当天出现 &gt;=3例呕吐腹泻或手足疱疹 -> 0ms 触发疾控停课消杀预警！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">学生在校委托喂药 (Medication Administration) 双核</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁老师凭家长口头电话喂处方药！必须核对家长电子签字委托单</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 校医喂药前语音双核【班级+学生姓名+药名+毫升数】留痕</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">班级聚集性传染病 (诺如/甲流) 发现时间提前 36小时</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">晨间缺勤未请假学生 100% 在上课后 10分钟内完成安全核实</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#F59E0B" font-size="14" font-weight="700">架构师核心选型法则 (CAMPUS-PICKUP-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 校车熄火锁门前必须满足“上下车人数清零 + 车尾物理防遗忘按钮触发 + 照管员全排巡检语音签署”，少一不可；</text>
+  <text x="68" y="606" fill="#FDA4AF" font-size="13">2. 严禁通过纯电话语音临时新增非白名单接送人，且一旦命中法院抚养权限制令 (Custody Restriction) 必须 0ms 拦截学生位置播报并静默告警安保。</text>
+</svg>

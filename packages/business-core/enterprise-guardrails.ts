@@ -1790,6 +1790,35 @@ export function evaluateAviationMroAirworthinessGuard(input: {
   };
 }
 
+export interface CampusBusPickupSafetyEvaluation {
+  policyCode: "CAMPUS-PICKUP-01";
+  busLockdownAllowed: boolean;
+  phonePickupModificationBlocked: boolean;
+  custodyAlertTriggered: boolean;
+  schoolNurseOutbreakAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic K-12 School Bus Empty-Sweep Lock, Custody-Safe Dismissal & Outbreak Cluster Guard (`CAMPUS-PICKUP-01`).
+ */
+export function evaluateCampusBusPickupSafetyGuard(input: {
+  busRemainingChildrenCount: number;
+  rearPhysicalCheckButtonPressed: boolean;
+  callerRequestsPhonePickupChange: boolean;
+  callerMatchesCustodyRestriction: boolean;
+  sameClassAcuteGiOrRashAbsenceCount: number;
+}): CampusBusPickupSafetyEvaluation {
+  return {
+    policyCode: "CAMPUS-PICKUP-01",
+    busLockdownAllowed:
+      input.busRemainingChildrenCount === 0 && input.rearPhysicalCheckButtonPressed,
+    phonePickupModificationBlocked: input.callerRequestsPhonePickupChange,
+    custodyAlertTriggered: input.callerMatchesCustodyRestriction,
+    schoolNurseOutbreakAlertTriggered: input.sameClassAcuteGiOrRashAbsenceCount >= 3,
+  };
+}
+
+
 
 
 

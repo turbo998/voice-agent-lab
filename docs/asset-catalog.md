@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（89 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（90 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -130,3 +130,4 @@
 87. **智慧工地与大型工程总包（EPC）智能安全帽语音巡检、受限空间/动火作业许可（PTW/LOTO）硬锁与 Procore/BIM 质量整改方案**：[中文](./smart-construction-jobsite-bim-osha-safety-voice-selection-faq.md) | [EN](./smart-construction-jobsite-bim-osha-safety-voice-selection-faq.en.md)
 88. **血液中心献血健康征询（GB 18467/AABB 暂缓锁）、Rh阴性熊猫血应急招募、献血后回告 0ms 血袋冻结与器官移植冷缺血（CIT）协同方案**：[中文](./blood-center-donor-screening-organ-transplant-voice-selection-faq.md) | [EN](./blood-center-donor-screening-organ-transplant-voice-selection-faq.en.md)
 89. **民航机务维修（MRO）按机尾号（Tail/MSN）精准查 AMM/MEL、必检项（RII）双人独立声纹互检与关舱前工具零遗留（FOD）方案**：[中文](./aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.md) | [EN](./aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.en.md)
+90. **幼儿园与 K-12 校车防遗忘空车巡检（车尾物理按钮+雷达四重锁）、放学接送抚养权限制令拦截与校医传染病聚类预警方案**：[中文](./k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.md) | [EN](./k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.en.md)

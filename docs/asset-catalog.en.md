@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (89 Bilingual Guides)
+## 3. Solution Architect Selection Guides (90 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -130,3 +130,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 87. **Smart Construction & EPC Jobsite Helmet Voice AI: PTW/LOTO Safety Interlock, Crane Blind-Lift Guard & Procore/BIM Punch-List**: [EN](./smart-construction-jobsite-bim-osha-safety-voice-selection-faq.en.md) | [中文](./smart-construction-jobsite-bim-osha-safety-voice-selection-faq.md)
 88. **Blood Center Donor Deferral Screening (AABB / FDA), Rare Rh-Negative Recall & Organ Transplant Cold-Ischemia (CIT) Voice AI**: [EN](./blood-center-donor-screening-organ-transplant-voice-selection-faq.en.md) | [中文](./blood-center-donor-screening-organ-transplant-voice-selection-faq.md)
 89. **Aviation MRO & Line Maintenance Voice AI: Tail-Effectivity AMM/MEL Lock, RII Dual-Inspector Voiceprint & Zero-FOD Tool Accountability**: [EN](./aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.en.md) | [中文](./aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.md)
+90. **K-12 School Bus Sleeping-Child Sweep, Custody-Safe Dismissal (Restraining Order Lock) & Campus Outbreak Triage Voice AI**: [EN](./k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.en.md) | [中文](./k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.md)
