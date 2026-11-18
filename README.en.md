@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 58 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 58 Guides](#-2-58-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 59 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 59 Guides](#-2-59-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 58 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 59 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -94,7 +94,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (35 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (36 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -130,6 +130,7 @@ flowchart LR
 56. **Gaming Real-Time Voice NPC (85/15 Tactical Bark Cache), EdTech Companion Toys & COPPA Minor Safety**: [EN](./docs/gaming-voice-npc-edtech-companion-minor-safety-selection-faq.en.md) | [中文](./docs/gaming-voice-npc-edtech-companion-minor-safety-selection-faq.md)
 57. **Affective Prosody De-Escalation (0.88x–0.94x Rate), EU AI Act Workplace Emotion Lock & 1800ms Distress EOU**: [EN](./docs/voice-affective-prosody-emotion-deescalation-faq.en.md) | [中文](./docs/voice-affective-prosody-emotion-deescalation-faq.md)
 58. **High-Risk Alphanumeric ID Disambiguation (Airline PNR / 17-Char VIN / Policy IDs) & NATO Phonetic Readback**: [EN](./docs/voice-alphanumeric-disambiguation-faq.en.md) | [中文](./docs/voice-alphanumeric-disambiguation-faq.md)
+59. **Multimodal Avatar Lip-Sync (<=45ms Skew) & Visual Co-Browsing (DOM PII Masking & Viewport Epoch Lock)**: [EN](./docs/voice-multimodal-avatar-cobrowsing-sync-faq.en.md) | [中文](./docs/voice-multimodal-avatar-cobrowsing-sync-faq.md)
 
 ---
 

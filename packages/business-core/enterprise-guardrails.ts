@@ -912,6 +912,37 @@ export function evaluateAlphanumericSlotDisambiguationGuard(input: {
   };
 }
 
+export interface MultimodalCobrowsingSyncEvaluation {
+  policyCode: "COBROWSE-SAFE-02";
+  videoAvatarDroppedForAudio: boolean;
+  lipSyncWithinBroadcastBounds: boolean;
+  uiClickAllowed: boolean;
+  invisiblePromptInjectionStripped: boolean;
+}
+
+/**
+ * Deterministic Multimodal Avatar Lip-Sync (ITU-R BT.1359 <=45ms) & Co-Browsing Viewport Epoch Guard (`COBROWSE-SAFE-02`).
+ * Drops avatar video below 600kbps to preserve Opus voice, enforces |avSkewMs|<=45ms, blocks UI clicks when
+ * viewportEpoch mismatches or scroll drift >16px, and strips opacity<0.05 visual prompt injections.
+ */
+export function evaluateMultimodalCobrowsingSyncGuard(input: {
+  availableBandwidthKbps: number;
+  avSkewMs: number;
+  actionViewportEpoch: number;
+  currentViewportEpoch: number;
+  scrollDriftPx: number;
+  domContainsZeroOpacityText: boolean;
+}): MultimodalCobrowsingSyncEvaluation {
+  return {
+    policyCode: "COBROWSE-SAFE-02",
+    videoAvatarDroppedForAudio: input.availableBandwidthKbps < 600,
+    lipSyncWithinBroadcastBounds: Math.abs(input.avSkewMs) <= 45,
+    uiClickAllowed:
+      input.actionViewportEpoch === input.currentViewportEpoch && input.scrollDriftPx <= 16,
+    invisiblePromptInjectionStripped: input.domContainsZeroOpacityText,
+  };
+}
+
 
 
 

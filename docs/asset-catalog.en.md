@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **58 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **59 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (58 Bilingual Guides)
+## 3. Solution Architect Selection Guides (59 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -63,7 +63,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (35 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (36 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -99,3 +99,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 56. **Gaming Real-Time Voice NPC (85/15 Tactical Bark Cache), EdTech Companion Toys & COPPA Minor Safety**: [EN](./gaming-voice-npc-edtech-companion-minor-safety-selection-faq.en.md) | [中文](./gaming-voice-npc-edtech-companion-minor-safety-selection-faq.md)
 57. **Affective Prosody De-Escalation (0.88x–0.94x Rate), EU AI Act Workplace Emotion Lock & 1800ms Distress EOU**: [EN](./voice-affective-prosody-emotion-deescalation-faq.en.md) | [中文](./voice-affective-prosody-emotion-deescalation-faq.md)
 58. **High-Risk Alphanumeric ID Disambiguation (Airline PNR / 17-Char VIN / Policy IDs) & NATO Phonetic Readback**: [EN](./voice-alphanumeric-disambiguation-faq.en.md) | [中文](./voice-alphanumeric-disambiguation-faq.md)
+59. **Multimodal Avatar Lip-Sync (<=45ms Skew) & Visual Co-Browsing (DOM PII Masking & Viewport Epoch Lock)**: [EN](./voice-multimodal-avatar-cobrowsing-sync-faq.en.md) | [中文](./voice-multimodal-avatar-cobrowsing-sync-faq.md)
