@@ -970,6 +970,33 @@ export function evaluateCanaryMemoryPoisoningGuard(input: {
   };
 }
 
+export interface SpeechAccessibilityDisfluencyEvaluation {
+  policyCode: "ACCESS-DISFLUENCY-01";
+  disfluencyEouWindowMs: number;
+  threeStrikeHangupAllowed: false;
+  rttOrKeypadFallbackOffered: boolean;
+  zeroAuthEmergencyPreempted: boolean;
+}
+
+/**
+ * Deterministic EAA/ADA Speech Accessibility (Stutter/Disfluency EOU) & E911/112 Zero-Auth Preemption Guard (`ACCESS-DISFLUENCY-01`).
+ * Widens EOU window to >=2200ms on stutter glottal blocks, bans 3-strike auto-hangup, offers RTT/keypad fallback
+ * after <=2 voice reprompts, and preempts KYC in <=200ms on life-safety emergencies.
+ */
+export function evaluateSpeechAccessibilityDisfluencyGuard(input: {
+  stutterGlottalBlockDetected: boolean;
+  consecutiveVoiceReprompts: number;
+  lifeSafetyEmergencyDetected: boolean;
+}): SpeechAccessibilityDisfluencyEvaluation {
+  return {
+    policyCode: "ACCESS-DISFLUENCY-01",
+    disfluencyEouWindowMs: input.stutterGlottalBlockDetected ? 2200 : 600,
+    threeStrikeHangupAllowed: false,
+    rttOrKeypadFallbackOffered: input.consecutiveVoiceReprompts >= 2,
+    zeroAuthEmergencyPreempted: input.lifeSafetyEmergencyDetected,
+  };
+}
+
 
 
 
