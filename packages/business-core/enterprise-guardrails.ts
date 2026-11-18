@@ -157,3 +157,67 @@ export function assertActiveTurnEpoch(currentTurnEpoch: number, requestTurnEpoch
     throw new LabError("STALE_TURN_EPOCH", 409, verdict.reason);
   }
 }
+
+export interface CloudCcaasMigrationInput {
+  monthlyVoiceMinutes: number;
+  existingLegacySeats: number;
+  legacyAudioHookExportFeePerMinUsd: number;
+  deflectionRatePct: number;
+  requiresDisconnectedContainers?: boolean;
+}
+
+export interface CloudCcaasMigrationDecision {
+  policyCode: "CCAAS-SELECT-01";
+  recommendedArchitecture:
+    | "front_door_sbc_azure_voice_live_overlay"
+    | "d365_contact_center_plus_azure_voice_live"
+    | "copilot_studio_low_code_voice";
+  annualAudioHookTaxAvoidedUsd: number;
+  estimatedAnnualAiVoiceCostUsd: number;
+  signedSipUuiScreenPopRequired: boolean;
+}
+
+/**
+ * Deterministic Cloud CCaaS Migration & Double-Taxation Avoidance Evaluator (`CCAAS-SELECT-01`).
+ * Calculates annual AudioHook/media-forking export fees avoided by terminating SIP at a Front-Door SBC
+ * and selects between Front-Door Overlay, Full D365 Contact Center, or Low-Code Copilot Studio.
+ */
+export function evaluateCloudCcaasMigrationDecision(
+  input: CloudCcaasMigrationInput,
+): CloudCcaasMigrationDecision {
+  const deflectedRatio = Math.min(Math.max(input.deflectionRatePct, 0), 100) / 100;
+  const annualMinutes = Math.max(input.monthlyVoiceMinutes, 0) * 12;
+  const annualAudioHookTaxAvoidedUsd = Math.round(
+    annualMinutes * Math.max(input.legacyAudioHookExportFeePerMinUsd, 0),
+  );
+  const estimatedAnnualAiVoiceCostUsd = Math.round(annualMinutes * deflectedRatio * 0.049);
+
+  if (input.existingLegacySeats >= 300 && input.legacyAudioHookExportFeePerMinUsd > 0) {
+    return {
+      policyCode: "CCAAS-SELECT-01",
+      recommendedArchitecture: "front_door_sbc_azure_voice_live_overlay",
+      annualAudioHookTaxAvoidedUsd,
+      estimatedAnnualAiVoiceCostUsd,
+      signedSipUuiScreenPopRequired: true,
+    };
+  }
+
+  if (input.monthlyVoiceMinutes < 85000 && !input.requiresDisconnectedContainers) {
+    return {
+      policyCode: "CCAAS-SELECT-01",
+      recommendedArchitecture: "copilot_studio_low_code_voice",
+      annualAudioHookTaxAvoidedUsd,
+      estimatedAnnualAiVoiceCostUsd,
+      signedSipUuiScreenPopRequired: false,
+    };
+  }
+
+  return {
+    policyCode: "CCAAS-SELECT-01",
+    recommendedArchitecture: "d365_contact_center_plus_azure_voice_live",
+    annualAudioHookTaxAvoidedUsd,
+    estimatedAnnualAiVoiceCostUsd,
+    signedSipUuiScreenPopRequired: true,
+  };
+}
+

@@ -2055,9 +2055,9 @@ async function handleSizeExchangeMcp(orderId, newSize, session) {
 const RESOURCES_DATA = {
   "zh-CN": [
     {
-      badge: "36 Bilingual SA Guides",
-      title: "36 篇企业级实时语音与多模态架构选型指南（中英双语）",
-      desc: "系统覆盖级联 vs 原生 S2S、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 呼叫中心集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/医疗/零售/航旅/车载行业方案。",
+      badge: "37 Bilingual SA Guides",
+      title: "37 篇企业级实时语音与多模态架构选型指南（中英双语）",
+      desc: "系统覆盖级联 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大云联络中心横评、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/医疗/零售/航旅/车载行业方案。",
       btnText: "浏览完整架构师资产目录 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
@@ -2099,9 +2099,9 @@ const RESOURCES_DATA = {
   ],
   "zh-TW": [
     {
-      badge: "36 Bilingual SA Guides",
-      title: "36 篇企業級即時語音與多模態架構選型指南（中英雙語）",
-      desc: "系統覆蓋級聯 vs 原生 S2S、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 聯絡中心整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/醫療/零售/航旅/車載行業方案。",
+      badge: "37 Bilingual SA Guides",
+      title: "37 篇企業級即時語音與多模態架構選型指南（中英雙語）",
+      desc: "系統覆蓋級聯 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大雲聯絡中心橫評、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/醫療/零售/航旅/車載行業方案。",
       btnText: "瀏覽完整架構師資產目錄 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
@@ -2143,9 +2143,9 @@ const RESOURCES_DATA = {
   ],
   en: [
     {
-      badge: "36 Bilingual SA Guides",
-      title: "36 Enterprise Voice & Multimodal AI Architecture Selection Guides",
-      desc: "Decision-ready guides covering Cascaded vs. Native S2S, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Healthcare/Retail/Travel/Auto playbooks.",
+      badge: "37 Bilingual SA Guides",
+      title: "37 Enterprise Voice & Multimodal AI Architecture Selection Guides",
+      desc: "Decision-ready guides covering Cascaded vs. Native S2S, D365/Amazon Connect/Genesys/Google CES/Sierra CCaaS head-to-head, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Healthcare/Retail/Travel/Auto playbooks.",
       btnText: "Browse Full Asset Catalog ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.en.md"
     },
@@ -2402,6 +2402,33 @@ const DUPLEX_SIM_PROBES = [
       prunedPromptTokensAfterSummary: 8900,
       routingPool: "overflow_paygo_secondary_deployment",
       estimatedCostReductionPct: 68.7
+    }, null, 2)
+  },
+  {
+    id: "guard_ccaas_frontdoor_sbc_overlay",
+    label: {
+      "zh-CN": "9. 存量 CCaaS 前门 SBC 零税率分流 (CCAAS-SELECT-01)",
+      "zh-TW": "9. 存量 CCaaS 前門 SBC 零稅率分流 (CCAAS-SELECT-01)",
+      en: "9. Front-Door SBC CCaaS Export-Tax Bypass"
+    },
+    summary: {
+      "zh-CN": "✅ 规避每年 $432k AudioHook 媒体导出税：在 1,000 席存量 Genesys/NICE 前门挂载 ACS + Azure Voice Live，68% 来电前门闭环免交 CCaaS 过路费，32% 复杂来电携带 36B SIP UUI 票据 65ms 弹屏回原坐席。",
+      "zh-TW": "✅ 規避每年 $432k AudioHook 媒體導出稅：在 1,000 席存量 Genesys/NICE 前門掛載 ACS + Azure Voice Live，68% 來電前門閉環免交 CCaaS 過路費，32% 複雜來電攜帶 36B SIP UUI 票據 65ms 彈屏回原坐席。",
+      en: "✅ Saves $432k/Yr in CCaaS Media-Export Taxes: Terminates SIP at a Front-Door SBC + Azure Voice Live ahead of 1,000 legacy Genesys/NICE seats, deflecting 68% pre-meter and warm-transferring 32% with a 65ms 36B SIP UUI screen-pop."
+    },
+    inputJson: JSON.stringify({
+      probe: "ccaas_migration_tco_guard",
+      monthlyVoiceMinutes: 1000000,
+      existingLegacySeats: 1000,
+      legacyAudioHookExportFeePerMinUsd: 0.036,
+      deflectionRatePct: 68
+    }, null, 2),
+    outputJson: JSON.stringify({
+      policyCode: "CCAAS-SELECT-01",
+      recommendedArchitecture: "front_door_sbc_azure_voice_live_overlay",
+      annualAudioHookTaxAvoidedUsd: 432000,
+      estimatedAnnualAiVoiceCostUsd: 399840,
+      signedSipUuiScreenPopRequired: true
     }, null, 2)
   }
 ];

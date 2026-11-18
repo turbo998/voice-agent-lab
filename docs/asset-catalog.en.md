@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **36 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **37 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,19 +34,20 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (36 Bilingual Guides)
+## 3. Solution Architect Selection Guides (37 Bilingual Guides)
 
-### 3.1 Foundation Architecture, Models & Telephony Ingress (10 Guides)
+### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
 2. **Native S2S Foundation Models Head-to-Head (GPT-Realtime / Azure Voice Live / Gemini Live / Nova Sonic)**: [EN](./voice-native-s2s-models-gpt-live-realtime-gemini-live-nova-sonic-selection-faq.en.md) | [中文](./voice-native-s2s-models-gpt-live-realtime-gemini-live-nova-sonic-selection-faq.md)
 3. **Voice Orchestration Frameworks (LiveKit Agents vs. Pipecat vs. ACS vs. Retell / Vapi)**: [EN](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.en.md) | [中文](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md)
 4. **Microsoft Copilot Studio & D365 Contact Center vs. Azure AI Foundry + ACS**: [EN](./microsoft-copilot-studio-d365-vs-azure-foundry-voice-selection-faq.en.md) | [中文](./microsoft-copilot-studio-d365-vs-azure-foundry-voice-selection-faq.md)
-5. **Streaming STT, Low-Latency TTS, Brand Voice Cloning & Avatar Selection**: [EN](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md) | [中文](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.md)
-6. **WebRTC vs. WebSocket vs. SIP Trunking / ACS Ingress Selection**: [EN](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.en.md) | [中文](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.md)
-7. **Enterprise PBX & CCaaS Integration (Genesys / Cisco / Avaya / Connect / Teams Phone)**: [EN](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.en.md) | [中文](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.md)
-8. **Full-Duplex Barge-In, Semantic Turn Detection (EOU) & Echo/Crosstalk Architecture**: [EN](./enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.en.md) | [中文](./enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.md)
-9. **Multi-Party Streaming Speaker Diarization & Voice-Bound Tool Authorization**: [EN](./voice-multiparty-diarization-role-isolation-faq.en.md) | [中文](./voice-multiparty-diarization-role-isolation-faq.md)
-10. **Intra-Sentence Code-Switching (`zh-EN-Yue`) & Enterprise Dialect Routing**: [EN](./voice-multilingual-codeswitch-dialect-faq.en.md) | [中文](./voice-multilingual-codeswitch-dialect-faq.md)
+5. **Global Cloud CCaaS & AI Contact Center Platforms (D365 Contact Center vs. Amazon Connect vs. Genesys vs. Google CES vs. Sierra)**: [EN](./cloud-ccaas-d365-amazon-connect-genesys-google-sierra-selection-faq.en.md) | [中文](./cloud-ccaas-d365-amazon-connect-genesys-google-sierra-selection-faq.md)
+6. **Streaming STT, Low-Latency TTS, Brand Voice Cloning & Avatar Selection**: [EN](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md) | [中文](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.md)
+7. **WebRTC vs. WebSocket vs. SIP Trunking / ACS Ingress Selection**: [EN](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.en.md) | [中文](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.md)
+8. **Enterprise PBX & CCaaS Integration (Genesys / Cisco / Avaya / Connect / Teams Phone)**: [EN](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.en.md) | [中文](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.md)
+9. **Full-Duplex Barge-In, Semantic Turn Detection (EOU) & Echo/Crosstalk Architecture**: [EN](./enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.en.md) | [中文](./enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.md)
+10. **Multi-Party Streaming Speaker Diarization & Voice-Bound Tool Authorization**: [EN](./voice-multiparty-diarization-role-isolation-faq.en.md) | [中文](./voice-multiparty-diarization-role-isolation-faq.md)
+11. **Intra-Sentence Code-Switching (`zh-EN-Yue`) & Enterprise Dialect Routing**: [EN](./voice-multilingual-codeswitch-dialect-faq.en.md) | [中文](./voice-multilingual-codeswitch-dialect-faq.md)
 
 ### 3.2 Production Engineering, Compliance, High Availability & FinOps (12 Guides)
 11. **Voice-Native RAG, Phonetic Homophone Recall & Zero-Trust MCP Tool Guardrails**: [EN](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.en.md) | [中文](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.md)

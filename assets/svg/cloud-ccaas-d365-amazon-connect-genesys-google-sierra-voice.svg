@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgCcaas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="blueCcaas" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="emeraldCcaas" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="amberCcaas" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bgCcaas)"/>
+
+  <!-- Header -->
+  <rect x="30" y="22" width="1140" height="84" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <rect x="46" y="38" width="252" height="26" rx="13" fill="url(#blueCcaas)"/>
+  <text x="172" y="55" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">CCAAS-SELECT-01 · PLATFORM MATRIX</text>
+  <text x="314" y="55" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="18.5" font-weight="700">Global Cloud CCaaS &amp; AI Contact Center Platforms Head-to-Head Selection</text>
+  <text x="46" y="86" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="13">D365 Contact Center + Azure Voice Live vs. Amazon Connect + Nova Sonic vs. Genesys Cloud CX vs. Google CES vs. Sierra AI</text>
+
+  <!-- Column 1: Hyperscaler Native CCaaS (Azure/D365 vs AWS Connect vs Google CES) -->
+  <rect x="30" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.6"/>
+  <rect x="46" y="140" width="334" height="34" rx="8" fill="url(#blueCcaas)"/>
+  <text x="213" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">1. Hyperscaler Cloud CCaaS Stacks</text>
+
+  <rect x="46" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="210" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">D365 Contact Center + Azure Voice Live</text>
+  <text x="60" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Native S2S (GPT-Live-1 95.2% noise pass, &lt;=420ms)</text>
+  <text x="60" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Native Teams Phone, Entra Agent ID &amp; 1,400+ connectors</text>
+  <text x="60" y="268" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Works with Salesforce, ServiceNow &amp; D365 CRM</text>
+
+  <rect x="46" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="312" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Amazon Connect + Nova Sonic vs. Google CES</text>
+  <text x="60" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Connect: $0.038/min pure usage, strong AWS Lambda tie-in</text>
+  <text x="60" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Google CES: Gemini Live multimodal + Vertex Search</text>
+  <text x="60" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• Gap: Requires custom glue for M365/Teams &amp; on-prem</text>
+
+  <rect x="46" y="398" width="334" height="164" rx="8" fill="#172554" stroke="#3B82F6"/>
+  <text x="60" y="420" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Hyperscaler TCO &amp; Latency Benchmarks</text>
+  <text x="60" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Azure Voice Live + ACS: $0.048-$0.072/min (380ms)</text>
+  <text x="60" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Amazon Connect + Lex/Q: $0.056-$0.088/min (520ms)</text>
+  <text x="60" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Google CES + Telephony: $0.065-$0.095/min (490ms)</text>
+  <text x="60" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Disconnected container option: Azure Speech Only</text>
+  <text x="60" y="542" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Winner for M365 &amp; Hybrid Regulated Enterprises</text>
+
+  <!-- Column 2: Legacy/Pure-Play CCaaS vs AI-Native Agent SaaS -->
+  <rect x="417" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.6"/>
+  <rect x="433" y="140" width="334" height="34" rx="8" fill="url(#emeraldCcaas)"/>
+  <text x="600" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">2. Genesys / NICE vs. Sierra / Parloa</text>
+
+  <rect x="433" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="210" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Genesys Cloud CX &amp; NICE CXone</text>
+  <text x="447" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Mature WFM, skill routing &amp; global carrier footprint</text>
+  <text x="447" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Trap: $115-$240/seat/mo + AudioHook media export tax</text>
+  <text x="447" y="268" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11">• AI token markups add 2.2x-3.5x at 1M+ mins/mo</text>
+
+  <rect x="433" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="312" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Sierra AI / Parloa / Decagon (Outcome SaaS)</text>
+  <text x="447" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Polished retail brand guardrails &amp; managed services</text>
+  <text x="447" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Trap: $0.95-$1.80 per resolved call ($0.24-$0.45/min)</text>
+  <text x="447" y="371" fill="#FBBF24" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• Black-box multi-hop adds +260ms cross-cloud latency</text>
+
+  <rect x="433" y="398" width="334" height="164" rx="8" fill="#064E3B" stroke="#10B981"/>
+  <text x="447" y="420" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">1,000,000-Min/Mo (250k Calls) Annual Bill</text>
+  <text x="447" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Sierra / Outcome SaaS ($1.20/call): $2,160,000 / yr</text>
+  <text x="447" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Genesys Cloud Native AI + Export Tax: $1,480,000 / yr</text>
+  <text x="447" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Amazon Connect + Bedrock: $820,000 / yr</text>
+  <text x="447" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Azure Front-Door SBC + Voice Live PTU: $588,000 / yr</text>
+  <text x="447" y="542" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Saves $892k-$1.57M/Yr vs. SaaS Markups (-72.8%)</text>
+
+  <!-- Column 3: Front-Door Overlay vs. Rip-and-Replace Migration -->
+  <rect x="804" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.6"/>
+  <rect x="820" y="140" width="334" height="34" rx="8" fill="url(#amberCcaas)"/>
+  <text x="987" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">3. Zero-Downtime Migration Pattern</text>
+
+  <rect x="820" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="210" fill="#FBBF24" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Phase 1: Front-Door SBC AI Deflection (2 Wks)</text>
+  <text x="834" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Keep existing Genesys/Cisco/Avaya agent desktops</text>
+  <text x="834" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Route SIP trunk to ACS + Voice Live first (68% deflected)</text>
+  <text x="834" y="268" fill="#FDE68A" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Bypasses CCaaS per-minute media-forking surcharges</text>
+
+  <rect x="820" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="312" fill="#FBBF24" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Phase 2: Signed UUI Screen-Pop + Whisper (4 Wks)</text>
+  <text x="834" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• 32% escalated calls carry 36-byte SIP UUI claim token</text>
+  <text x="834" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Hydrates CRM screen-pop in 65ms + real-time assist</text>
+  <text x="834" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• Cuts Average Handle Time (AHT) by 34%</text>
+
+  <rect x="820" y="398" width="334" height="164" rx="8" fill="#451A03" stroke="#F59E0B"/>
+  <text x="834" y="420" fill="#FDE68A" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Phase 3: Seat Consolidation &amp; License Trim</text>
+  <text x="834" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Shrink legacy CCaaS named seats by 45%-60% at renewal</text>
+  <text x="834" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Or migrate remaining Tier-2 seats to D365 / Teams</text>
+  <text x="834" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Zero "Rip-and-Replace" outage risk during peak season</text>
+  <text x="834" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Full BYOC (Bring Your Own Carrier) number portability</text>
+  <text x="834" y="542" fill="#FBBF24" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Go-Live Time: 14 Days (Overlay) vs. 14 Mos (Rip)</text>
+
+  <!-- Bottom Bar -->
+  <rect x="30" y="598" width="1140" height="96" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="50" y="625" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">Architect Selection Verdict &amp; 10,000-Minute TCO Summary:</text>
+  <text x="50" y="649" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• Brownfield Genesys/Cisco/Avaya (&gt;300 seats): Front-Door SBC + ACS + Azure Voice Live Overlay ($490/10k mins · saves $540k/yr export tax)</text>
+  <text x="50" y="670" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• Greenfield Cloud CCaaS: D365 Contact Center + Voice Live for M365/CRM shops; Amazon Connect for pure AWS Lambda shops</text>
+  <text x="760" y="658" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="700">ROI: -72.8% vs. Outcome SaaS</text>
+  <text x="760" y="678" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">14-Day Non-Disruptive SBC Overlay</text>
+</svg>

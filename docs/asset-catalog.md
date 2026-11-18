@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **36 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **37 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,19 +34,20 @@
 
 ---
 
-## 三、架构师核心选型指南（36 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（37 篇中英双语专题 FAQ）
 
-### 3.1 基础架构、模型与语音通道接入（10 篇）
+### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
 2. **主流原生 S2S 多模态语音模型横评（GPT-Realtime / Azure Voice Live / Gemini Live / Nova Sonic）**：[中文](./voice-native-s2s-models-gpt-live-realtime-gemini-live-nova-sonic-selection-faq.md) | [EN](./voice-native-s2s-models-gpt-live-realtime-gemini-live-nova-sonic-selection-faq.en.md)
 3. **实时语音编排框架对比（LiveKit Agents vs Pipecat vs ACS vs Retell / Vapi）**：[中文](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.md) | [EN](./voice-orchestration-framework-livekit-pipecat-acs-retell-vapi-selection-faq.en.md)
 4. **Microsoft Copilot Studio / D365 Contact Center vs Azure AI Foundry + ACS 选型**：[中文](./microsoft-copilot-studio-d365-vs-azure-foundry-voice-selection-faq.md) | [EN](./microsoft-copilot-studio-d365-vs-azure-foundry-voice-selection-faq.en.md)
-5. **流式语音识别（STT）、低延迟合成（TTS）、声音克隆与数字人选型**：[中文](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.md) | [EN](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md)
-6. **WebRTC vs WebSocket vs SIP Trunking / ACS 语音接入架构选型**：[中文](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.md) | [EN](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.en.md)
-7. **企业存量呼叫中心 PBX & CCaaS 集成（Genesys / Cisco / Avaya / Connect / Teams Phone）**：[中文](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.md) | [EN](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.en.md)
-8. **全双工打断（Barge-In）、语义句末检测（Semantic EOU）与回声串音抑制架构**：[中文](./enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.md) | [EN](./enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.en.md)
-9. **多人同场流式说话人分离（Speaker Diarization）与声纹绑定工具鉴权**：[中文](./voice-multiparty-diarization-role-isolation-faq.md) | [EN](./voice-multiparty-diarization-role-isolation-faq.en.md)
-10. **句内跨语种混说（中英粤 Code-Switching）与方言路由架构**：[中文](./voice-multilingual-codeswitch-dialect-faq.md) | [EN](./voice-multilingual-codeswitch-dialect-faq.en.md)
+5. **全球主流云联络中心与 AI 语音平台选型（D365 Contact Center vs Amazon Connect vs Genesys vs Google CES vs Sierra）**：[中文](./cloud-ccaas-d365-amazon-connect-genesys-google-sierra-selection-faq.md) | [EN](./cloud-ccaas-d365-amazon-connect-genesys-google-sierra-selection-faq.en.md)
+6. **流式语音识别（STT）、低延迟合成（TTS）、声音克隆与数字人选型**：[中文](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.md) | [EN](./voice-stt-tts-cloning-avatar-azure-elevenlabs-deepgram-opensource-selection-faq.en.md)
+7. **WebRTC vs WebSocket vs SIP Trunking / ACS 语音接入架构选型**：[中文](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.md) | [EN](./webrtc-vs-websocket-vs-sip-ingress-selection-faq.en.md)
+8. **企业存量呼叫中心 PBX & CCaaS 集成（Genesys / Cisco / Avaya / Connect / Teams Phone）**：[中文](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.md) | [EN](./enterprise-pbx-ccaas-genesys-cisco-avaya-teams-voice-integration-selection-faq.en.md)
+9. **全双工打断（Barge-In）、语义句末检测（Semantic EOU）与回声串音抑制架构**：[中文](./enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.md) | [EN](./enterprise-voice-barge-in-semantic-turn-detection-aec-selection-faq.en.md)
+10. **多人同场流式说话人分离（Speaker Diarization）与声纹绑定工具鉴权**：[中文](./voice-multiparty-diarization-role-isolation-faq.md) | [EN](./voice-multiparty-diarization-role-isolation-faq.en.md)
+11. **句内跨语种混说（中英粤 Code-Switching）与方言路由架构**：[中文](./voice-multilingual-codeswitch-dialect-faq.md) | [EN](./voice-multilingual-codeswitch-dialect-faq.en.md)
 
 ### 3.2 生产工程、安全合规、高可用与 FinOps 容量规划（12 篇）
 11. **语音原生 RAG、同音字纠偏检索与 MCP 工具零信任安全边界**：[中文](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.md) | [EN](./enterprise-voice-rag-knowledge-graph-mcp-tool-security-selection-faq.en.md)
