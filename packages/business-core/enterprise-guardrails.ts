@@ -608,6 +608,34 @@ export function evaluateMediaDubbingIsochronyGuard(input: {
   };
 }
 
+export interface ThemeParkMuseumConciergeEvaluation {
+  policyCode: "TOUR-VOICE-01";
+  exhibitSwitchApproved: boolean;
+  queueLoadBalanceIncentiveOffered: boolean;
+  inCharacterDeflectionTriggered: boolean;
+}
+
+/**
+ * Deterministic Cultural Tourism, Theme Park Queue Load-Balancer & Museum UWB Docent Guard (`TOUR-VOICE-01`).
+ * Locks museum exhibit audio switching to UWB distance <=1.2m + frontal dwell >=2000ms (preventing cabinet crosstalk),
+ * offers dynamic show/F&B incentives when ride wait >=90 min, and enforces in-universe IP character deflection on adult/political bait.
+ */
+export function evaluateThemeParkMuseumConciergeGuard(input: {
+  uwbDistanceMeters: number;
+  frontalGazeDwellMs: number;
+  approachingRideWaitMinutes: number;
+  nearbyShowEmptySeats: number;
+  visitorPromptContainsOutOfCharacterBait: boolean;
+}): ThemeParkMuseumConciergeEvaluation {
+  return {
+    policyCode: "TOUR-VOICE-01",
+    exhibitSwitchApproved: input.uwbDistanceMeters <= 1.2 && input.frontalGazeDwellMs >= 2000,
+    queueLoadBalanceIncentiveOffered:
+      input.approachingRideWaitMinutes >= 90 && input.nearbyShowEmptySeats >= 20,
+    inCharacterDeflectionTriggered: input.visitorPromptContainsOutOfCharacterBait,
+  };
+}
+
 
 
 
