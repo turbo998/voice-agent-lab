@@ -153,6 +153,7 @@ flowchart LR
 79. **Dental (DSO), Ophthalmology & Specialty Clinic Multi-Chair Scheduling, Hands-Free Perio Charting & Post-Op Triage Voice AI**: [EN](./docs/dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.en.md) | [中文](./docs/dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.md)
 80. **Enterprise Voice Agent Latency Engineering (Cutting P50 TTFA from 1,450ms to 320ms via Semantic EOU, Speculative Prefetch & Micro-Chunk TTS)**: [EN](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.en.md) | [中文](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.md)
 81. **Non-Profit Charity, Emergency Disaster Relief & University Alumni Voice Fundraising (Phonathon), Vulnerable-Donor Ethics Lock & Matching Gifts**: [EN](./docs/nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.en.md) | [中文](./docs/nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.md)
+82. **Smart Maritime Port Container Terminal Gate (ISO 6346 Check-Digit), IMDG Hazmat Isolation & Customs HS-Code Brokerage Voice AI**: [EN](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.en.md) | [中文](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.md)
 
 ---
 

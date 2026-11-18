@@ -153,6 +153,7 @@ flowchart LR
 79. **连锁口腔（DSO）与眼科门诊多椅位联锁排班、无菌语音牙周探诊录入（168点位）及术前抗凝药/停戴镜与术后急症分诊方案**：[中文](./docs/dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.md) | [EN](./docs/dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.en.md)
 80. **企业实时语音全链路延迟极限优化（P50 TTFA 从 1,450ms 压降至 320ms：180ms 语义 EOU、只读推测预取与首 4 词微切块 TTS）方案**：[中文](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.md) | [EN](./docs/voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.en.md)
 81. **公益慈善基金会、高校校友募捐（Phonathon）、脆弱长者 0ms 止捐伦理保护锁与企业 1:1 雇主配捐翻倍方案**：[中文](./docs/nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.md) | [EN](./docs/nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.en.md)
+82. **智慧港口集装箱码头闸口（ISO 6346 第11位校验码）、危化箱（IMDG）专用堆场隔离与跨境报关行 HS 税则归类方案**：[中文](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.md) | [EN](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.en.md)
 
 ---
 

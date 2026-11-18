@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgPort" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05101F"/>
+      <stop offset="50%" stop-color="#0C213B"/>
+      <stop offset="100%" stop-color="#061224"/>
+    </linearGradient>
+    <linearGradient id="gateGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="imdgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="hsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgPort)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Smart Maritime Port Terminal Gate, IMDG Hazmat Lock &amp; Customs HS-Code Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">智慧港口集装箱码头闸口脱困 (ISO 6346 校验)、IMDG 危化箱堆场隔离与跨境报关行 HS 税则归类语音全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">PORT-CUSTOMS-01 · TOS</text>
+
+  <!-- Pillar 1: Container Terminal Gate OCR Rescue & ISO 6346 Check Digit -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#gateGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 集装箱码头闸口 15秒语音脱困 (TOS)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">集卡进港闸口锈蚀箱号 OCR 拒识与封志核对</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 海运集装箱箱体掉漆锈蚀，龙门架 OCR 识别失败卡死车道</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 集卡司机按立柱对讲：“箱号 MSKU 907032-3，铅封号 CN8812”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">ISO 6346 第11位模11校验码 0ms 声学防听错</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 4位箱主代码 (如 MSKU) + 6位顺序号 + 1位校验码 (Mod-11)</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 校验不通过自动结合 Navis N4 TOS 今日预约池做编辑距离纠错</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">海关放行条 (Customs Release) 与提箱贝位小票打印</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 实时联锁海关单一窗口放行状态与船公司设备交接单 (EIR)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 15秒内吐出堆场吊装指令小票 (如“去 C区 14街 08贝 3层”) 并抬杆</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">集卡进出闸口异常滞留时间从 8分钟降至 15秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">1个人工远控坐席可同时托管 48 条自动化集装箱进出港车道</text>
+  </g>
+
+  <!-- Pillar 2: IMDG Hazmat & Reefer Container Safety Interlock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#imdgGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 危化箱 (IMDG) 隔离锁与冷链插电核验</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将危化品集装箱 (DG) 误导引至普通重箱区！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 国际海运危规 (IMDG Code)：有机过氧化物 (5.2类) / 锂电池 (9类)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若未核验 UN 编号与危标直接进普通堆场，极易酿成港口爆炸惨剧！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">冷藏箱 (Reefer) 设定温度与通风口语音双核</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 智利车厘子/医药冷链箱进港：如果把 -18℃ 冻肉设成 +2℃ 冰鲜</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 整柜货损超 ¥200万！强制语音复诵提单设定温度与插电桩位</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">多语种外籍船长/大副引航与靠泊语音协同</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 依据 IMO 标准海事通信用语 (SMCP) 规范数字与方位读法</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 实时同步岸桥 (STS) 作业计划、淡水补给与联检登轮时间</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">危化箱错堆与冷藏箱设错温度事故率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合港口危险货物安全管理规定与 IMO SMCP 标准</text>
+  </g>
+
+  <!-- Pillar 3: Customs Brokerage HS-Code & Dual-Use Export Control -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hsGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 跨境报关行 HS 税则归类与两用物项锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁为省关税诱导虚报低税率 HS 编码 (走私红线)！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 货主问：“能不能把这批带芯片的控制器按普通塑料外壳报关省税？”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 0ms 物理阻断伪报/瞒报建议，强制校验《海关规范申报目录》要素</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">10位 HS 编码申报要素追问与原产地证 (RCEP) 试算</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 自动追问材质、加工工艺、品牌类型、型号等必填报关要素</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 实时核算最惠国税率 vs RCEP / 东盟协定优惠原产地税率</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">两用物项出口管制 (Dual-Use) 与海关查验急件协同</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 检出无人机部件/高纯石墨/特种化学品 -> 强制提示两用物项许可证</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 命中海关机检/人工开箱查验：秒级语音通知货主与场站移箱</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">报关单申报要素一次退单率下降 74%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">伪报税号与漏办两用物项许可证合规风险 = 0.0%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (PORT-CUSTOMS-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 港口闸口箱号语音识别必须内置 ISO 6346 第11位模11校验码验证，并对危化品集装箱 (IMDG) 实施 100% 专用危库隔离锁；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 跨境报关语音助手必须物理封锁任何“改报低税率品名规避关税/许可证”的违规请求，并对命中两用物项管制清单的商品强制转接持证关务专家。</text>
+</svg>

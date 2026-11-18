@@ -1579,6 +1579,33 @@ export function evaluateNonprofitDonorEthicsGuard(input: {
   };
 }
 
+export interface SmartPortCustomsEvaluation {
+  policyCode: "PORT-CUSTOMS-01";
+  gateBarrierOpenAllowed: boolean;
+  dedicatedDgYardAssigned: boolean;
+  tariffEvasionOrDualUseBlocked: boolean;
+}
+
+/**
+ * Deterministic Smart Maritime Port ISO 6346 Check-Digit, IMDG Hazmat Segregation & Customs Anti-Misdeclaration Guard (`PORT-CUSTOMS-01`).
+ */
+export function evaluateSmartPortCustomsGuard(input: {
+  iso6346CheckDigitValid: boolean;
+  isImdgHazmatContainer: boolean;
+  portDgPermitApproved: boolean;
+  tariffEvasionOrDualUseBypassRequested: boolean;
+}): SmartPortCustomsEvaluation {
+  const dgOk = !input.isImdgHazmatContainer || input.portDgPermitApproved;
+  return {
+    policyCode: "PORT-CUSTOMS-01",
+    gateBarrierOpenAllowed:
+      input.iso6346CheckDigitValid && dgOk && !input.tariffEvasionOrDualUseBypassRequested,
+    dedicatedDgYardAssigned: input.isImdgHazmatContainer && input.portDgPermitApproved,
+    tariffEvasionOrDualUseBlocked: input.tariffEvasionOrDualUseBypassRequested,
+  };
+}
+
+
 
 
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (81 Bilingual Guides)
+## 3. Solution Architect Selection Guides (82 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -122,3 +122,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 79. **Dental (DSO), Ophthalmology & Specialty Clinic Multi-Chair Scheduling, Hands-Free Perio Charting & Post-Op Triage Voice AI**: [EN](./dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.en.md) | [中文](./dental-ophthalmology-aesthetic-clinic-scheduling-voice-selection-faq.md)
 80. **Enterprise Voice Agent Latency Engineering (Cutting P50 TTFA from 1,450ms to 320ms via Semantic EOU, Speculative Prefetch & Micro-Chunk TTS)**: [EN](./voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.en.md) | [中文](./voice-agent-latency-optimization-ttfa-300ms-engineering-selection-faq.md)
 81. **Non-Profit Charity, Emergency Disaster Relief & University Alumni Voice Fundraising (Phonathon), Vulnerable-Donor Ethics Lock & Matching Gifts**: [EN](./nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.en.md) | [中文](./nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.md)
+82. **Smart Maritime Port Container Terminal Gate (ISO 6346 Check-Digit), IMDG Hazmat Isolation & Customs HS-Code Brokerage Voice AI**: [EN](./smart-port-container-terminal-customs-clearance-voice-selection-faq.en.md) | [中文](./smart-port-container-terminal-customs-clearance-voice-selection-faq.md)
