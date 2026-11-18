@@ -791,6 +791,37 @@ export function evaluateSmartHospitalSurgicalOrGuard(input: {
   };
 }
 
+export interface AviationCruiseRailVoiceEvaluation {
+  policyCode: "INFLIGHT-CABIN-01";
+  allergenMealBlocked: boolean;
+  cruiseMinorAlcoholOrderBlocked: boolean;
+  solasEmergencyPreempted: boolean;
+  hsrQuietCarSpeakerMuted: boolean;
+}
+
+/**
+ * Deterministic In-Flight Cabin Allergen Lock, Cruise Ship Minor Folio & High-Speed Rail Quiet-Car Guard (`INFLIGHT-CABIN-01`).
+ * Blocks meal serving on PIL allergen conflicts, blocks minor stateroom alcohol/casino orders without adult PIN,
+ * preempts all shipboard calls on SOLAS muster alarms, and forces silent screen reply in HSR Quiet Cars.
+ */
+export function evaluateAviationCruiseRailVoiceGuard(input: {
+  passengerHasSevereNutAllergy: boolean;
+  mealBatchContainsPeanutOil: boolean;
+  cruiseCallerIsMinorWithoutAdultPin: boolean;
+  ordersAlcoholOrCasinoChips: boolean;
+  solasGeneralAlarmActive: boolean;
+  inHsrQuietCar: boolean;
+}): AviationCruiseRailVoiceEvaluation {
+  return {
+    policyCode: "INFLIGHT-CABIN-01",
+    allergenMealBlocked: input.passengerHasSevereNutAllergy && input.mealBatchContainsPeanutOil,
+    cruiseMinorAlcoholOrderBlocked:
+      input.cruiseCallerIsMinorWithoutAdultPin && input.ordersAlcoholOrCasinoChips,
+    solasEmergencyPreempted: input.solasGeneralAlarmActive,
+    hsrQuietCarSpeakerMuted: input.inHsrQuietCar,
+  };
+}
+
 
 
 
