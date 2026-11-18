@@ -693,6 +693,45 @@ export function evaluateLegalIntakeConflictNotaryGuard(input: {
   };
 }
 
+export interface AutomotiveEcallRoadsideEvaluation {
+  policyCode: "AUTO-RESCUE-01";
+  emsAutoDispatched: boolean;
+  thermalRunawayDoorUnlockTriggered: boolean;
+  highwayGuardrailEvacRequiredFirst: boolean;
+  requiredTowEquipment: "FLATBED_WITH_4_WHEEL_DOLLIES" | "12V_JUMP_START_BIKE" | "STANDARD_FLATBED";
+}
+
+/**
+ * Deterministic Automotive NG-eCall Crash Triage & EV Roadside Assistance Guard (`AUTO-RESCUE-01`).
+ * Auto-dispatches EMS when airbagDeployed=true and occupantSilenceMs>=8000, unlocks doors on HV thermal runaway,
+ * enforces highway guardrail evacuation before intake, and selects 4-wheel dollies for locked AWD EVs.
+ */
+export function evaluateAutomotiveEcallRoadsideGuard(input: {
+  airbagDeployed: boolean;
+  occupantSilenceMs: number;
+  hvBatteryThermalRunaway: boolean;
+  onHighwayShoulder: boolean;
+  occupantsBehindGuardrail: boolean;
+  awdEpbLocked: boolean;
+  lv12vVoltageVolts: number;
+  hvSocPct: number;
+}): AutomotiveEcallRoadsideEvaluation {
+  const equipment =
+    input.lv12vVoltageVolts < 9.5 && input.hvSocPct > 15 && !input.awdEpbLocked
+      ? "12V_JUMP_START_BIKE"
+      : input.awdEpbLocked
+        ? "FLATBED_WITH_4_WHEEL_DOLLIES"
+        : "STANDARD_FLATBED";
+  return {
+    policyCode: "AUTO-RESCUE-01",
+    emsAutoDispatched:
+      (input.airbagDeployed && input.occupantSilenceMs >= 8000) || input.hvBatteryThermalRunaway,
+    thermalRunawayDoorUnlockTriggered: input.hvBatteryThermalRunaway,
+    highwayGuardrailEvacRequiredFirst: input.onHighwayShoulder && !input.occupantsBehindGuardrail,
+    requiredTowEquipment: equipment,
+  };
+}
+
 
 
 

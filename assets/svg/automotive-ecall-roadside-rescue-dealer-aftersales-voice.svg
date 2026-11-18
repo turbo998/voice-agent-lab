@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg32" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#121F3B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="ecallGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="dmsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg32)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">Automotive NG-eCall Crash Triage, EV Roadside Rescue &amp; Dealer DMS Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">车企紧急呼叫救援（eCall / AECS 碰撞自动触发）、新能源道路救援与 4S 店售后维保语音架构选型全景图</text>
+  <rect x="916" y="42" width="236" height="34" rx="17" fill="#450A0A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="1034" y="64" fill="#FCA5A5" font-size="13" font-weight="600" text-anchor="middle">AUTO-RESCUE-01 · 8s EMS</text>
+
+  <!-- Pillar 1: NG-eCall / AECS Crash Triage & 8-Second Unconscious Rule -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F97316" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ecallGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. NG-eCall 碰撞自动呼救与 8秒昏迷铁律</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⚡ 气囊爆开 / 电池热失控 + 乘员昏迷不语</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• T-Box 自动上报 140字节 MSD (经纬度/碰撞Delta-V/人数)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若呼喊 8秒车内无应答或呻吟，0秒自动直通 120/119！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#FDBA74" font-size="13" font-weight="700">过滤 76% 车顶 SOS 按键误触 (MSD 传感器交叉核验)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 熊孩子或擦车误按天窗旁红色 SOS 键</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 校验 G值=0 且气囊未爆 ➔ 15秒语音确认后礼貌销警</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">高压电池热失控 (BMS Thermal) 0秒弃车强提醒</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 检测到电芯温升告警，车载喇叭最高音量强制循环播报：</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• “高压电池异常！车门已自动解锁，请立即撤离至50米外！”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">重伤碰撞黄金救援派单从 4.5分 缩至 8秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 满足欧盟 EN 17240 NG-eCall 与国标 GB 45672</text>
+  </g>
+
+  <!-- Pillar 2: Highway Breakdown Safety Gate & EV Roadside Dispatch -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#roadGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 高速抛锚护栏撤离锁与新能源救援调度</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="82" fill="#93C5FD" font-size="13" font-weight="700">高速公路抛锚“先撤离护栏外、再办业务”铁律</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• GPS 识别车辆停在高速公路主线/应急车道</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 强制要求车主先开双闪、立150米三角牌并撤至护栏外</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">结合 T-Box 故障码精准派车 (告别拖车白跑)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 12V 小电瓶亏电 ➔ 派快修摩托车搭电 (20分钟达)</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 四驱电车 EPB 抱死 / 地库限高 2米 ➔ 派带小轮全落地平板车</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">高速节假日电量耗尽：移动补能车 (Charging Van)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 读取 BMS 剩余电量 SoC &lt; 2% 无法撑到服务区</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 语音一键调度最近蔚来/第三方移动加电车上门快充</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">错派救援车型导致的二次返工率从 24% 降至 0.8%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底杜绝车主坐在高速抛锚车内打电话被追尾悲剧</text>
+  </g>
+
+  <!-- Pillar 3: Dealership DMS Proactive Maintenance & Service Bay Booking -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dmsGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 4S 店 DMS 预测性维保预约与代步车锁号</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">车况遥测主动关怀外呼 (Proactive Service Call)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• T-Box 上报刹车片磨损 &gt;85% 或即将满 30,000 公里</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 趁车主下班驻车 P 挡时，车机/电话主动发起 45秒预约</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">DMS 工位举升机 + 配件库存 + 代步车三联锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 实时联查门店 DMS：确保周六 10点既有空余快保工位、</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 又有原厂刹车片现货，并同步锁定取送车司机或代步车</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">维保进度透明查询与增项语音授权</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 车间技师发现轮胎鼓包需更换 ➔ AI 语音+车间实拍图通知车主</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 车主语音/触屏一键确认报价，车间免等待立即施工</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">过保老车主回厂保养转化率提升 42%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">4S 店售后车间工位周转率提升 28% · 零到店缺件投诉</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">车企车联网 (TSP) 与售后服务全生命周期语音架构（Connected Vehicle Rescue &amp; Aftersales Loop）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 碰撞 eCall：解析 140B MSD 遥测 + 8秒无应答自动派 120/119 ➔ 2. 道路救援：高速护栏撤离安全锁 + 按 EPB/限高精准派全落地平板车</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 3. 主动维保：驻车 P挡触发里程/磨损提醒 ➔ 4. DMS 三联锁：同时校验门店举升机工位、备件现货与代步车，45秒闭环锁单</text>
+  </g>
+</svg>
