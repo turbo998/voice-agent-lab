@@ -943,6 +943,33 @@ export function evaluateMultimodalCobrowsingSyncGuard(input: {
   };
 }
 
+export interface CanaryMemoryPoisoningEvaluation {
+  policyCode: "CANARY-SHADOW-01";
+  shadowWriteToolsMuted: boolean;
+  canaryAutoRollbackTriggered: boolean;
+  allowedPrivilegeFieldsInMemory: 0;
+  clampedMemoryRetentionDays: number;
+}
+
+/**
+ * Deterministic Canary Shadow Dry-Run Rollout & Cross-Call Memory Poisoning Guard (`CANARY-SHADOW-01`).
+ * Mutes external write tools on shadow instances, auto-rolls back canary rings when P95 TTFA regression >150ms,
+ * clamps privilege fields in long-term memory to 0, and bounds memory retention to <=90 days.
+ */
+export function evaluateCanaryMemoryPoisoningGuard(input: {
+  isShadowInstance: boolean;
+  canaryP95TtfaRegressionMs: number;
+  requestedMemoryRetentionDays: number;
+}): CanaryMemoryPoisoningEvaluation {
+  return {
+    policyCode: "CANARY-SHADOW-01",
+    shadowWriteToolsMuted: input.isShadowInstance,
+    canaryAutoRollbackTriggered: input.canaryP95TtfaRegressionMs > 150,
+    allowedPrivilegeFieldsInMemory: 0,
+    clampedMemoryRetentionDays: Math.min(90, Math.max(1, input.requestedMemoryRetentionDays)),
+  };
+}
+
 
 
 
