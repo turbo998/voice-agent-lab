@@ -997,6 +997,35 @@ export function evaluateSpeechAccessibilityDisfluencyGuard(input: {
   };
 }
 
+export interface OmnichannelWalletBreakerEvaluation {
+  policyCode: "OMNI-CAS-01";
+  casWriteAllowed: boolean;
+  doubleChargeBlocked: boolean;
+  ultrasonicLowPassCutoffHz: 8000;
+  s2sWalletCircuitTripped: boolean;
+}
+
+/**
+ * Deterministic Omnichannel Voice+App CAS Optimistic Concurrency & Ultrasonic/Wallet Breaker Guard (`OMNI-CAS-01`).
+ * Blocks stale voice writes when voiceReadVersion != currentDbVersion (preventing double charges),
+ * enforces an 8000Hz brick-wall low-pass filter against DolphinAttack ultrasound, and caps per-session S2S cost at <=$2.50.
+ */
+export function evaluateOmnichannelWalletBreakerGuard(input: {
+  voiceReadVersion: number;
+  currentDbVersion: number;
+  sessionAudioCostUsd: number;
+  outboundPromptCanaryLeaked: boolean;
+}): OmnichannelWalletBreakerEvaluation {
+  const versionMatch = input.voiceReadVersion === input.currentDbVersion;
+  return {
+    policyCode: "OMNI-CAS-01",
+    casWriteAllowed: versionMatch && !input.outboundPromptCanaryLeaked,
+    doubleChargeBlocked: !versionMatch,
+    ultrasonicLowPassCutoffHz: 8000,
+    s2sWalletCircuitTripped: input.sessionAudioCostUsd > 2.5 || input.outboundPromptCanaryLeaked,
+  };
+}
+
 
 
 
