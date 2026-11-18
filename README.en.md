@@ -149,6 +149,7 @@ flowchart LR
 75. **Home Appliance & HVAC After-Sales Triage (80KB Vision & Acoustic Diagnosis), Tool-Free Safety Lock & 91% First-Time-Fix Voice AI**: [EN](./docs/home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.en.md) | [中文](./docs/home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.md)
 76. **Trade Show & Exhibition Badge-Scan 20s Voice BANT Lead Capture, Offline Queue & 2-Hour CRM Follow-Up**: [EN](./docs/conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.en.md) | [中文](./docs/conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.md)
 77. **B2B SaaS Customer Success Onboarding, Cancel-Flow Voice Churn Save & FTC Click-to-Cancel Compliance**: [EN](./docs/saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.en.md) | [中文](./docs/saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.md)
+78. **Pharma Clinical Trial Patient Pre-Screening (I/E Criteria), eCOA/ePRO Verbatim Lock (21 CFR Part 11) & Pharmacovigilance (PV SAE 24h) Voice AI**: [EN](./docs/clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.en.md) | [中文](./docs/clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.md)
 
 ---
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (77 Bilingual Guides)
+## 3. Solution Architect Selection Guides (78 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -118,3 +118,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 75. **Home Appliance & HVAC After-Sales Triage (80KB Vision & Acoustic Diagnosis), Tool-Free Safety Lock & 91% First-Time-Fix Voice AI**: [EN](./home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.en.md) | [中文](./home-appliance-hvac-water-heater-aftersales-vision-repair-voice-selection-faq.md)
 76. **Trade Show & Exhibition Badge-Scan 20s Voice BANT Lead Capture, Offline Queue & 2-Hour CRM Follow-Up**: [EN](./conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.en.md) | [中文](./conference-exhibition-trade-show-lead-capture-badge-scan-voice-selection-faq.md)
 77. **B2B SaaS Customer Success Onboarding, Cancel-Flow Voice Churn Save & FTC Click-to-Cancel Compliance**: [EN](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.en.md) | [中文](./saas-customer-success-onboarding-churn-save-renewal-voice-selection-faq.md)
+78. **Pharma Clinical Trial Patient Pre-Screening (I/E Criteria), eCOA/ePRO Verbatim Lock (21 CFR Part 11) & Pharmacovigilance (PV SAE 24h) Voice AI**: [EN](./clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.en.md) | [中文](./clinical-trial-patient-recruitment-ecoa-pharmacovigilance-voice-selection-faq.md)

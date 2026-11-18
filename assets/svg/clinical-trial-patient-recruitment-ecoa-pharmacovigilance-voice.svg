@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgPharma" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07101E"/>
+      <stop offset="50%" stop-color="#10213B"/>
+      <stop offset="100%" stop-color="#091324"/>
+    </linearGradient>
+    <linearGradient id="ieGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="ecoaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="pvGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </Gradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgPharma)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Clinical Trial Patient Recruitment, eCOA/ePRO Verbatim Lock &amp; Pharmacovigilance Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">创新药企临床试验受试者入排初筛、eCOA/ePRO 量表零改写逐字锁 (21 CFR Part 11) 与药物警戒 SAE 24h 强制上报全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#450A0A" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FDA4AF" font-size="13" font-weight="600" text-anchor="middle">PHARMA-TRIAL-PV-01 · GxP</text>
+
+  <!-- Pillar 1: Clinical Trial I/E Pre-Screening & IRB Script Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ieGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 临床试验受试者入排初筛 (I/E Criteria)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">解决 80% 临床试验因招募慢而延期的行业痛点</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 肿瘤/代谢病患者夜里看到招募广告，24×7 立即语音初筛</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 结构化核对入组/排除标准 (年龄、既往靶向药史、HbA1c 区间)</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 伦理委员会 (IRB) 批准话术禁自由发挥锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁对受试者做出任何“这药能治好你的病”疗效暗示 (Coercion)</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 招募开场白与知情同意预告知 100% 锁定 IRB 审定逐字稿</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">CRC 临床协调员排班直连与研究中心就近分配</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 初筛合格当场匹配距离患者最近的 3 家三甲医院研究中心 (Site)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 一键预约临床研究协调员 (CRC) 线下知情同意书签署时段</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">受试者初筛到中心面访转化率提升 2.8 倍</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">为每个三期临床试验平均缩短 6.5 周患者入组周期</text>
+  </g>
+
+  <!-- Pillar 2: eCOA / ePRO Validated Scale Verbatim Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="#6D28D9"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. eCOA / ePRO 量表零改写锁与 Part 11 合规</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁大模型擅自改写临床量表问题或诱导打分！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 在 PHQ-9 / EQ-5D 等法定验证量表中，改一个词即导致数据作废！</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 硬锁：量表提问走 100% 确定性预审 SSML，严禁 LLM 自由复述</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="174" fill="#E9D5FF" font-size="13" font-weight="700">双盲试验防破盲围栏 (Anti-Unblinding Lock)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 患者问：“我有皮疹副作用，说明我吃的是真药不是安慰剂吧？”</text>
+    <text x="30" y="214" fill="#C084FC" font-size="12">• 0ms 拦截任何猜测分组话术，严格保持双盲中立并记录症状</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">FDA 21 CFR Part 11 声纹电子签名与 ALCOA+ 审计</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 防止家属代答！每次随访校验受试者本人声纹 (Liveness &amp; Speaker ID)</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 原始音频哈希 + UTC 时间戳 + 模型版本写入 WORM 不可篡改日志</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">高龄/视障患者居家 ePRO 日记依从性达 94.2%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 通过 FDA / EMA / NMPA 临床数据完整性核查</text>
+  </g>
+
+  <!-- Pillar 3: Pharmacovigilance (PV) SAE 24-Hour Mandatory Reporting -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="#BE123C"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 药物警戒 (PV) 严重不良事件 (SAE) 24h 锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 漏报 1 例严重不良事件 (SAE) 即可导致新药叫停！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 患者在常规买药/报销电话里随口提了一句：“吃了这药昨晚晕倒住院了”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 根据 ICH E2A / FDA 法规：药企知悉后必须在 24小时内启动报告！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">全渠道语音流实时 MedDRA 不良事件探针</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 在患者援助项目 (PAP) 与学术热线上 100% 并行监听 AE 关键词</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动编码为 MedDRA 首选术语 (PT) 并采集 ICH E2B 四要素</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Veeva Vault Safety / Oracle Argus 0秒直报</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 检出住院/危及生命/致畸等 SAE 红旗：0ms 生成 E2B(R3) XML 草案</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 立即唤醒持证药物警戒专员 (PV Officer) 与主要研究者 (PI)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">SAE 漏报率与超 24 小时迟报率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单份 E2B 不良事件报告结构化建档耗时缩短 76%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (PHARMA-TRIAL-PV-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 临床试验 eCOA/ePRO 量表提问必须 100% 锁死 IRB/量表版权方审定的逐字 SSML（严禁大模型自由改写题干或诱导评分），并绑定 Part 11 声纹审计；</text>
+  <text x="68" y="606" fill="#FDA4AF" font-size="13">2. 药企所有患者热线必须强制挂载实时药物警戒 (PV) 探针，一旦检出严重不良事件 (SAE) 必须在 0ms 内触发 E2B 四要素采集并直推 Veeva/Argus。</text>
+</svg>

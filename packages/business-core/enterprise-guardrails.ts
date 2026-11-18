@@ -1476,6 +1476,34 @@ export function evaluateSaasChurnSaveDiscountGuard(input: {
   };
 }
 
+export interface PharmaClinicalTrialPvEvaluation {
+  policyCode: "PHARMA-TRIAL-PV-01";
+  ecoaParaphrasingBlocked: boolean;
+  caregiverProxyBlocked: boolean;
+  unblindingSpeculationBlocked: boolean;
+  sae24hE2bReportDispatched: boolean;
+}
+
+/**
+ * Deterministic Pharma Clinical Trial eCOA Verbatim Lock, Part 11 Voiceprint & PV SAE 24h Guard (`PHARMA-TRIAL-PV-01`).
+ */
+export function evaluatePharmaClinicalTrialPvGuard(input: {
+  isEcoaScaleQuestion: boolean;
+  llmParaphrasingAttempted: boolean;
+  participantVoiceprintVerified: boolean;
+  unblindingSpeculationAttempted: boolean;
+  saeHospitalizationOrSyncopeDetected: boolean;
+}): PharmaClinicalTrialPvEvaluation {
+  return {
+    policyCode: "PHARMA-TRIAL-PV-01",
+    ecoaParaphrasingBlocked: input.isEcoaScaleQuestion && input.llmParaphrasingAttempted,
+    caregiverProxyBlocked: input.isEcoaScaleQuestion && !input.participantVoiceprintVerified,
+    unblindingSpeculationBlocked: input.unblindingSpeculationAttempted,
+    sae24hE2bReportDispatched: input.saeHospitalizationOrSyncopeDetected,
+  };
+}
+
+
 
 
 
