@@ -1761,6 +1761,36 @@ export function evaluateBloodOrganLifelineGuard(input: {
   };
 }
 
+export interface AviationMroAirworthinessEvaluation {
+  policyCode: "AVIATION-MRO-01";
+  ammTorqueReadbackAllowed: boolean;
+  riiSignoffAuthorized: boolean;
+  panelClosureAndCrsReleaseAllowed: boolean;
+}
+
+/**
+ * Deterministic Aviation MRO Tail-Effectivity AMM Lock, RII Dual-Inspector Voiceprint & Zero-FOD Tool Guard (`AVIATION-MRO-01`).
+ */
+export function evaluateAviationMroAirworthinessGuard(input: {
+  tailNumberMsnEffectivityLocked: boolean;
+  mechanicVoiceprintId: string;
+  riiInspectorVoiceprintId: string;
+  unreturnedFodToolsCount: number;
+}): AviationMroAirworthinessEvaluation {
+  const riiDistinct =
+    input.mechanicVoiceprintId.trim() !== "" &&
+    input.riiInspectorVoiceprintId.trim() !== "" &&
+    input.mechanicVoiceprintId !== input.riiInspectorVoiceprintId;
+  return {
+    policyCode: "AVIATION-MRO-01",
+    ammTorqueReadbackAllowed: input.tailNumberMsnEffectivityLocked,
+    riiSignoffAuthorized: riiDistinct,
+    panelClosureAndCrsReleaseAllowed:
+      input.tailNumberMsnEffectivityLocked && riiDistinct && input.unreturnedFodToolsCount === 0,
+  };
+}
+
+
 
 
 

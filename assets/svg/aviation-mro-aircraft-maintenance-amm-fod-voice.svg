@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgMro" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050D1A"/>
+      <stop offset="50%" stop-color="#0E1E38"/>
+      <stop offset="100%" stop-color="#071022"/>
+    </linearGradient>
+    <linearGradient id="ammGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="riiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="fodGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgMro)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Aviation MRO Aircraft Maintenance Voice AI: Tail-Effectivity AMM, RII Dual-Signoff &amp; FOD Tool Lock</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">民航机务维修 (MRO) 按机尾号 (Tail/MSN) 精准查 AMM/MEL、必检项 (RII) 双人独立声纹签字与关舱前工具零遗留全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">AVIATION-MRO-01 · FAA/CAAC</text>
+
+  <!-- Pillar 1: Tail-Number Effectivity AMM / MEL Hands-Free Lookup -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ammGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 机尾号有效性 (Effectivity) AMM/MEL 锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁混用不同构型/发动机的力矩与手册参数！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 同一机型 A320neo 有 LEAP-1A 与 PW1100G 两种截然不同的发动机</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 未锁定机尾号 (Tail/MSN) 与手册有效版次，0ms 禁止播报任何力矩值！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">轮舱/发动机舱满手航煤液压油免触屏查工卡</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 机械师钻在起落架舱戴防化手套：“查 B-3099 号机 ATA 32-42 刹车放气力矩”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 95dB 机坪 APU 辅助动力轰鸣下，航空抗噪耳麦精准逐字播报工卡步骤</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">过站 45分钟极限排故 MEL (最低设备清单) 保留判据</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 登机口突发 ECAM/EICAS 故障码：秒级比对 MEL B类/C类放行条件</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动核实是否涉 ETOPS 延程运行航线限制并生成 DD 保留故障单</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">航线过站突发排故翻查手册时间缩短 71%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">因看错飞机 MSN 适用性 (Effectivity) 导致的错装率 = 0.0%</text>
+  </g>
+
+  <!-- Pillar 2: Required Inspection Item (RII) Dual-Inspector Voiceprint Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#riiGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 必检项 (RII) 双人独立声纹签署与力矩锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁同一名机械师既施工又自签必检项目 (RII)！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• FAA 14 CFR § 121.371 / CCAR-145 “One Pair of Eyes” 死律：</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 飞行操纵舵面/发动机吊挂等 RII 项，施工者与检验员绝不能是同一个人！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">施工者 vs 授权必检员 (RII Inspector) 声纹正交锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 语音签完工卡时强制比对两人声纹 ID：`Mechanic_ID != Inspector_ID`</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 若施工员试图替检验员口述签字，0ms 阻断并上报维修质量部 (QA)！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">蓝牙数字力矩扳手 (Smart Torque Wrench) 实测联锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 要求打力矩 450 Lb-in 并打保险丝：蓝牙力矩扳手自动回传 451 Lb-in 峰值</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 杜绝“凭手感拧紧却口报已按标准打力矩”的致命飞安隐患</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">RII 必检项代签/漏检与力矩未达标率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 满足 FAA / EASA / CAAC 适航电子签名审计</text>
+  </g>
+
+  <!-- Pillar 3: Zero-FOD Tool Accountability & Airworthiness Release -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#fodGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 关舱前工具零遗留 (FOD) 清点与适航放行锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 哪怕少 1把套筒或 1把手电筒，严禁关闭发动机包皮放行！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 工具遗留在发动机进气道或副翼舵面舱内 (FOD) = 空中发动机停车或卡阻！</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 严格执行“三清点”：工作前清点、关舱盖前清点、完工撤离后清点</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">RFID 智能工具车 + 语音三清点 0ms 放行联锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 机务说：“申请签署整流罩关闭工步并打印 CRS 放行单”</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 系统检测到工具车还差 1把 10mm 棘轮扳手未归位 -> 0ms 锁死放行签字！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">AMOS / Maintenix / TRAX 电子飞行记录本 (e-TLB) 同步</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 自动将拆下件序号 (P/N &amp; S/N OFF) 与装上件航材合格证 (FAA 8130-3) 绑定</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 驾驶舱机长 EFB 平板秒级收到机务电子放行签派 (CRS)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">工具遗留飞机舱内 (FOD) 放行事件 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">航班因机务签署文书导致的过站延误率下降 58%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (AVIATION-MRO-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 民航机务手册 (AMM/MEL) 语音检索必须 100% 强制锁死当班飞机注册号 (Tail/MSN Effectivity)，且必检项 (RII) 必须强制校验双人不同声纹签署；</text>
+  <text x="68" y="606" fill="#FCA5A5" font-size="13">2. 在 RFID 工具车与人工语音“三清点”达到 100% 归位匹配前，必须 0ms 物理锁死关闭舱盖工步与适航放行证书 (CRS) 的签发权限。</text>
+</svg>

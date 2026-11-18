@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (88 Bilingual Guides)
+## 3. Solution Architect Selection Guides (89 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -129,3 +129,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 86. **Smart Agriculture Agronomist Voice AI: Pesticide Pre-Harvest Interval (PHI) Lock, Banned-Chemical Filter & Grain Elevator Settlement**: [EN](./smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.en.md) | [中文](./smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.md)
 87. **Smart Construction & EPC Jobsite Helmet Voice AI: PTW/LOTO Safety Interlock, Crane Blind-Lift Guard & Procore/BIM Punch-List**: [EN](./smart-construction-jobsite-bim-osha-safety-voice-selection-faq.en.md) | [中文](./smart-construction-jobsite-bim-osha-safety-voice-selection-faq.md)
 88. **Blood Center Donor Deferral Screening (AABB / FDA), Rare Rh-Negative Recall & Organ Transplant Cold-Ischemia (CIT) Voice AI**: [EN](./blood-center-donor-screening-organ-transplant-voice-selection-faq.en.md) | [中文](./blood-center-donor-screening-organ-transplant-voice-selection-faq.md)
+89. **Aviation MRO & Line Maintenance Voice AI: Tail-Effectivity AMM/MEL Lock, RII Dual-Inspector Voiceprint & Zero-FOD Tool Accountability**: [EN](./aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.en.md) | [中文](./aviation-mro-aircraft-maintenance-amm-fod-voice-selection-faq.md)
