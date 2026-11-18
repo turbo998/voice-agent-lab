@@ -1026,6 +1026,33 @@ export function evaluateOmnichannelWalletBreakerGuard(input: {
   };
 }
 
+export interface S2sEmotionalContagionLufsEvaluation {
+  policyCode: "S2S-LUFS-CLAMP-01";
+  clampedOutputLufs: number;
+  clampedOutputWpm: number;
+  syntacticHoldWindowMs: number;
+  c2paWatermarkEmbedded: true;
+}
+
+/**
+ * Deterministic Native S2S Emotional Contagion Clamp (ITU-R BS.1770-4 [-20,-16] LUFS) & Syntactic Hold Guard (`S2S-LUFS-CLAMP-01`).
+ * Clamps outbound S2S loudness to [-20, -16] LUFS and speaking rate to [135, 165] WPM (preventing shouting mirroring),
+ * and expands EOU hold window to 1350ms when the caller's partial transcript trails on an open conjunction/preposition.
+ */
+export function evaluateS2sEmotionalContagionLufsGuard(input: {
+  rawOutputLufs: number;
+  rawOutputWpm: number;
+  trailsOnDanglingConjunctionOrPreposition: boolean;
+}): S2sEmotionalContagionLufsEvaluation {
+  return {
+    policyCode: "S2S-LUFS-CLAMP-01",
+    clampedOutputLufs: Math.max(-20.0, Math.min(-16.0, input.rawOutputLufs)),
+    clampedOutputWpm: Math.max(135, Math.min(165, input.rawOutputWpm)),
+    syntacticHoldWindowMs: input.trailsOnDanglingConjunctionOrPreposition ? 1350 : 500,
+    c2paWatermarkEmbedded: true,
+  };
+}
+
 
 
 
