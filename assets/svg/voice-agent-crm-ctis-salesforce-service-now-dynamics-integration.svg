@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgCrm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080F1E"/>
+      <stop offset="50%" stop-color="#111F3A"/>
+      <stop offset="100%" stop-color="#0B1325"/>
+    </linearGradient>
+    <linearGradient id="d365Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="sfdcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="snowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgCrm)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="23" font-weight="700">Enterprise CRM &amp; CTI Voice Integration: D365 CIF v2 vs. Salesforce SCV vs. ServiceNow</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">主流企业 CRM 与工单桌面（Dynamics 365 / Salesforce / ServiceNow / Zendesk）语音 CTI 弹屏与实时写回选型全景图</text>
+  <rect x="912" y="42" width="240" height="34" rx="17" fill="#172554" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="1032" y="64" fill="#93C5FD" font-size="13" font-weight="600" text-anchor="middle">CRM-CTI-01 · &lt;=250ms Pop</text>
+
+  <!-- Pillar 1: Dynamics 365 CIF v2 & Dataverse -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#d365Grad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. Dynamics 365 (CIF v2) &amp; Dataverse 集成</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="82" fill="#93C5FD" font-size="13" font-weight="700">Channel Integration Framework v2 (CIF v2)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 支持多会话标签页 (Multi-Session Customer Service)</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 振铃前 &lt;=250ms 自动弹出匹配客户 360 视图与关联工单</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">防家庭/总机同号错弹屏 (Multi-Match Gate)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 1个来电号码匹配到多个联系人时严禁盲绑第1条记录</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 强制结合 AI 首轮采集的订单号/姓名做精确二次消歧</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="270" fill="#A7F3D0" font-size="13" font-weight="700">通话中实时预填工单字段 (Live Form Auto-Fill)</text>
+    <text x="30" y="290" fill="#E2E8F0" font-size="12">• 无需等挂机！客户边说，表单里的故障码/诉求边自动填入</text>
+    <text x="30" y="308" fill="#6EE7B7" font-size="12">• 坐席仅需核对并点击 [保存提交]，话后 ACW 缩短 78%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="178" y="356" fill="#93C5FD" font-size="13" font-weight="700" text-anchor="middle">原生打通 Copilot in D365 知识库推荐</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">坐席无需在 5 个浏览器窗口间来回切换复制粘贴</text>
+  </g>
+
+  <!-- Pillar 2: Salesforce Service Cloud Voice & OpenCTI -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#sfdcGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. Salesforce Service Cloud Voice (BYOT)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">SCV Partner Telephony vs. OpenCTI 选型</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• OpenCTI 仅嵌入软电话拨号盘，无法原生流式灌入字幕</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 首选 SCV BYOT Telephony Integration API 原生写入 VoiceCall</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">保护 Salesforce API 日配额防打爆 (Bulk/Debounced)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁每 200ms 语音识别出一个词就调一次 REST API！</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 采用“句末聚合推送 + 挂机一次性结构化落盘”，省 94% 配额</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">Omni-Channel 坐席状态双向强同步</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 坐席正在处理高优邮件/工单时自动挂起语音派单</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 杜绝“坐席刚接起电话，屏幕又弹进 3 个在线聊天”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">完美兼容 Amazon Connect / Genesys / ACS BYOT</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">保留全套 Salesforce 报表与 Einstein 工作流触发器</text>
+  </g>
+
+  <!-- Pillar 3: ServiceNow CSM/ITSM & Zendesk Talk -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#snowGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. ServiceNow CSM/ITSM &amp; Zendesk 集成</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">ServiceNow OpenFrame + Interaction 表直连</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• AI 首线排障未解决时自动创建 `interaction` 与 `incident`</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 自动绑定 CMDB 受影响资产 CI 与已执行排障步骤清单</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">Zendesk Talk Partner Edition (TPE) API</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 电商/SaaS 客服秒级创建带语音录音播放器的 Ticket</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动打上意图分类 Tag 与情绪紧急度 Priority</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="270" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将未脱敏信用卡/身份证写入 CRM 备注</text>
+    <text x="30" y="290" fill="#E2E8F0" font-size="12">• 写入 CRM `VoiceCall / Case` 表前必过确定性 PII 脱敏器</text>
+    <text x="30" y="308" fill="#FBBF24" font-size="12">• 防止普通客服坐席从历史通话纪要中批量导出客户敏感信息</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">话后小结 (ACW) 从 95秒 压降至 12秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">CRM 工单字段完整率从 61% 提升至 99.6%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (CRM-CTI-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. D365 必选 CIF v2，Salesforce 必选 Service Cloud Voice (BYOT API)，ServiceNow 必选 OpenFrame + Interaction 表，实现 &lt;=250ms 弹屏；</text>
+  <text x="68" y="606" fill="#A7F3D0" font-size="13">2. 严禁每识别一个词就调一次 CRM REST API（须按句聚合防打爆配额），且写入 CRM 工单前必须 100% 掩码 PAN/SSN/CVV 敏感字段。</text>
+</svg>

@@ -1140,6 +1140,34 @@ export function evaluateSocialInAppVoiceCallingGuard(input: {
   };
 }
 
+export interface CrmCtiScreenPopSyncEvaluation {
+  policyCode: "CRM-CTI-01";
+  autoBindSingleContactAllowed: boolean;
+  clampedCrmDbWritesPerCall: number;
+  sanitizedCaseSummary: string;
+}
+
+/**
+ * Deterministic Enterprise CRM & CTI Screen-Pop Disambiguation, API Quota & PII Redaction Guard (`CRM-CTI-01`).
+ * Blocks blind single-contact binding when an ANI matches >=2 contacts without secondary verification,
+ * caps CRM DB writes at <=2 milestone calls per session, and masks raw PANs in case summaries.
+ */
+export function evaluateCrmCtiScreenPopSyncGuard(input: {
+  aniMatchedContactsCount: number;
+  secondarySlotVerified: boolean;
+  requestedCrmDbWritesPerCall: number;
+  rawCaseSummary: string;
+}): CrmCtiScreenPopSyncEvaluation {
+  return {
+    policyCode: "CRM-CTI-01",
+    autoBindSingleContactAllowed:
+      input.aniMatchedContactsCount === 1 ||
+      (input.aniMatchedContactsCount > 1 && input.secondarySlotVerified),
+    clampedCrmDbWritesPerCall: Math.min(2, Math.max(1, input.requestedCrmDbWritesPerCall)),
+    sanitizedCaseSummary: input.rawCaseSummary.replace(/\b(?:\d[ -]*?){13,19}\b/g, "[REDACTED_PAN]"),
+  };
+}
+
 
 
 
