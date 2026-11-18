@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **71 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **72 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (71 Bilingual Guides)
+## 3. Solution Architect Selection Guides (72 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -63,7 +63,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (48 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (49 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -112,3 +112,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 69. **Voice-Native Prompt Engineering, Streaming Anti-Markdown/URL Sanitizer, Active Backchanneling & SSML Prosody**: [EN](./enterprise-voice-prompt-engineering-persona-spoken-style-ssml-selection-faq.en.md) | [中文](./enterprise-voice-prompt-engineering-persona-spoken-style-ssml-selection-faq.md)
 70. **Luxury Retail & Black-Card VIP (VIC) Clienteling Voice Concierge, Anti-Scalper Lock & Private Salon Booking**: [EN](./retail-loyalty-vip-concierge-luxury-clienteling-voice-selection-faq.en.md) | [中文](./retail-loyalty-vip-concierge-luxury-clienteling-voice-selection-faq.md)
 71. **Enterprise Payroll, Financial Shared Services (FSSC Expense/AP) & CPA Tax Advisory Voice AI**: [EN](./wealth-tax-cpa-accounting-payroll-audit-voice-copilot-selection-faq.en.md) | [中文](./wealth-tax-cpa-accounting-payroll-audit-voice-copilot-selection-faq.md)
+72. **Smart Wearable AI Fitness Coach (Bone-Conduction/Watch), Heart-Rate Zone-5 Safety & Post-Op Rehab Voice AI**: [EN](./sports-fitness-wearable-coach-rehab-pt-voice-selection-faq.en.md) | [中文](./sports-fitness-wearable-coach-rehab-pt-voice-selection-faq.md)

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgFit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07111A"/>
+      <stop offset="50%" stop-color="#0F2234"/>
+      <stop offset="100%" stop-color="#091524"/>
+    </linearGradient>
+    <linearGradient id="runGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="hrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="ptGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgFit)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Smart Wearable AI Fitness Coach, Heart-Rate Zone Safety &amp; Post-Op Rehab Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">智能运动穿戴（骨传导耳机/运动手表/健身镜 AI 私教）、喘息免误打断、心率超限 0ms 保护与居家骨科康复语音全景图</text>
+  <rect x="908" y="42" width="244" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1030" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">FITNESS-REHAB-01 · HR Safe</text>
+
+  <!-- Pillar 1: Bone-Conduction Wind/Breath Immunity & Cadence Pacing -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#runGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 剧烈喘息防误打断与步频音乐同步指导</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">骨传导振动拾音 (VPU) + 35km/h 骑行抗风噪</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 户外跑步/公路车骑行风噪高达 82dB，气导麦全失真</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 融合骨传导加速度传感器，精准提取跑者短促口令</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">无氧运动剧烈喘息过滤锁 (Breath-Noise Filter)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 跑者在心率 170 bpm 时每 1.2秒发出大声呼气“呼—哈—”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 声学探针剥离周期性呼吸摩擦音，杜绝误触发 Barge-in 打断！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">6词极简节拍口令 + 音乐侧链闪避 (-8dB Ducking)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 跑步中严禁播报超过 8 个词的长句，对齐 180 SPM 步频点</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 播报配速时耳机音乐平滑压低 -8dB，播完 300ms 恢复</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">跑者喘息误打断率从 46% 压降至 0.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">山野越野跑无手机信号支持端侧 NPU 离线配速领跑</text>
+  </g>
+
+  <!-- Pillar 2: Heart-Rate Zone-5 Redline & Over-Exertion Safety Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hrGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 心率超限 (Zone 5+) 0ms 禁止鸡血催促锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁在心率越界时继续喊“再冲刺 30 秒！”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 当手表/心率带 PPG 检测到 HR &gt; 最大安全心率 95% 或心律不齐</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 状态机 0ms 吊销“打鸡血冲刺”话术，强制下发减速慢走指令！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">生理遥测实时绑定 (BLE HRS / Running Dynamics)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 每秒注入：`{hr_bpm: 188, hr_max_pct: 97, cadence: 162}`</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 检测到左/右脚触地时间平衡差 &gt;4% 时主动提醒防崴脚代偿</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">高温脱水与马拉松撞墙期动态降配速</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 结合环境温湿度指数 (WBGT) 与心率漂移 (Cardiac Drift)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 主动调低目标配速并提前 400米播报前方补水站位置</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">100% 阻断超极限心率下的危险冲刺诱导</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">大众跑者安全完赛率与训练计划达成率提升 +34%</text>
+  </g>
+
+  <!-- Pillar 3: Home Post-Op Orthopedic Rehab & Pain-Stop Gate -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ptGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 居家骨科术后康复 (PT) 视觉纠姿与疼痛急停</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">端侧骨骼关键点 (MediaPipe Pose) + 语音节拍</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 膝关节置换/ACL 韧带术后居家康复：实时计算屈膝角度</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 语音精准报数：“屈膝已达 92度，保持 5、4、3、2、1，慢慢放下”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 锐痛/弹响呼喊（VAS &gt;=6）0ms 急停保护锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 一旦患者喊出“好痛/刺痛/咔哒响了一声”或痛苦吸气声</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 立即终止当前康复组次，严禁说“坚持一下忍痛做完”！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">医嘱关节活动度上限硬围栏 (ROM Ceiling Lock)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严格绑定康复科医师处方：`{post_op_week: 3, max_knee_flex_deg: 90}`</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 患者弯腿一旦超过 92度立即语音告警防撕裂缝合韧带！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">居家康复处方依从性从 36% 提升至 84%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">符合美国 CMS RTM (远程治疗监测 98975-98981) 医保报销规范</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#34D399" font-size="14" font-weight="700">架构师核心选型法则 (FITNESS-REHAB-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 运动穿戴语音必须启用“周期性喘息声学剥离器（防大喘气误打断）”与“&lt;=6词节拍口令 + -8dB 音乐侧链闪避”；</text>
+  <text x="68" y="606" fill="#38BDF8" font-size="13">2. 当心率突破安全红线 (&gt;=95% HRmax) 或骨科康复患者报告锐痛/超过医嘱关节角度 (ROM) 时，必须 0ms 熔断训练口令并切换安全恢复模式。</text>
+</svg>

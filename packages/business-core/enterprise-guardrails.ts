@@ -1292,6 +1292,37 @@ export function evaluatePayrollTaxAdvisoryGuard(input: {
   };
 }
 
+export interface WearableFitnessHeartRateEvaluation {
+  policyCode: "FITNESS-REHAB-01";
+  pantingFalseBargeInIgnored: boolean;
+  sprintPromptRevokedForCooldown: boolean;
+  postOpRomStopTriggered: boolean;
+  sharpPainEmergencyHalt: boolean;
+}
+
+/**
+ * Deterministic Smart Wearable Fitness Coach (Heart-Rate Zone-5 Safety) & Post-Op Rehab ROM Guard (`FITNESS-REHAB-01`).
+ * Ignores unvoiced anaerobic panting from triggering barge-in, revokes sprint prompts when HR >= 95% HRmax,
+ * and halts post-op rehab sets immediately when joint flexion exceeds prescribed ROM ceiling or sharp pain is reported.
+ */
+export function evaluateWearableFitnessHeartRateGuard(input: {
+  unvoicedPantingDetectedWithoutF0: boolean;
+  currentHrBpm: number;
+  maxSafeHrBpm: number;
+  measuredJointRomDeg: number;
+  prescribedMaxRomDeg: number;
+  sharpPainOrPopReported: boolean;
+}): WearableFitnessHeartRateEvaluation {
+  return {
+    policyCode: "FITNESS-REHAB-01",
+    pantingFalseBargeInIgnored: input.unvoicedPantingDetectedWithoutF0,
+    sprintPromptRevokedForCooldown:
+      input.maxSafeHrBpm > 0 && input.currentHrBpm >= input.maxSafeHrBpm * 0.95,
+    postOpRomStopTriggered: input.measuredJointRomDeg > input.prescribedMaxRomDeg,
+    sharpPainEmergencyHalt: input.sharpPainOrPopReported,
+  };
+}
+
 
 
 
