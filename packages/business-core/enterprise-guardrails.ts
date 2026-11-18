@@ -1866,6 +1866,33 @@ export function evaluateRdWetLabPatentGuard(input: {
   };
 }
 
+export interface IntegratedResortRgAmlEvaluation {
+  policyCode: "RESORT-RG-AML-01";
+  marketingAndCompsFrozen: boolean;
+  silentSarFiledWithoutTippingOff: boolean;
+  autoCompApproved: boolean;
+}
+
+/**
+ * Deterministic Integrated Resort Responsible Gaming Self-Exclusion Lock, Title-31 Anti-Structuring Silent SAR & ADT Comp Guard (`RESORT-RG-AML-01`).
+ */
+export function evaluateIntegratedResortRgAmlGuard(input: {
+  patronOnSelfExclusionOrDistress: boolean;
+  cashStructuringEvasionAttempted: boolean;
+  compRequestWithinAdtAllowance: boolean;
+}): IntegratedResortRgAmlEvaluation {
+  return {
+    policyCode: "RESORT-RG-AML-01",
+    marketingAndCompsFrozen: input.patronOnSelfExclusionOrDistress,
+    silentSarFiledWithoutTippingOff: input.cashStructuringEvasionAttempted,
+    autoCompApproved:
+      !input.patronOnSelfExclusionOrDistress &&
+      !input.cashStructuringEvasionAttempted &&
+      input.compRequestWithinAdtAllowance,
+  };
+}
+
+
 
 
 

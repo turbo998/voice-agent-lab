@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgRes" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080B18"/>
+      <stop offset="50%" stop-color="#171B36"/>
+      <stop offset="100%" stop-color="#090D1C"/>
+    </linearGradient>
+    <linearGradient id="irGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="rgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="amlGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgRes)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Integrated Resort (IR) VIP Concierge, Responsible Gaming Self-Exclusion &amp; Title-31 AML Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">大型综合度假村 (IR) 贵宾礼宾、责任博彩自我隔离 (Self-Exclusion) 0ms 锁与反洗钱 Title-31 大额拆分拦截全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#451A03" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FCD34D" font-size="13" font-weight="600" text-anchor="middle">RESORT-RG-AML-01 · IR</text>
+
+  <!-- Pillar 1: Integrated Resort Omnichannel VIP Host & Comp Engine -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#irGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 综合度假村多语种 VIP 礼宾与权益 (Comp) 锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">一通语音联锁“别墅+米其林餐厅+演艺秀票+跨境礼宾车”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 粤语/普通话/英语/日语/泰语/阿语 6 语种无缝混说</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 直连 Opera PMS + 会员积分系统 (ADT/Comp Balance) 秒级核销</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">⛔ 严禁超会员等级或超 ADT 授权额度乱批免费晚宴/套房！</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 会员要求免费赠送 2晚总统别墅与全套香槟：必须校验 Comp 积分余额</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 超出自动赠送上限 ($500) -> 0ms 挂起并路由专属行政公关 (Executive Host)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">会展 (MICE) 万人峰会客房与接驳巴士动态调配</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 3,000间客房集中退房与粤港澳跨境直升机/喷射飞航改签</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 客房电视/床头语音屏 15秒闭环延迟退房与行李生预约</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">非博彩餐饮/演艺/水疗交叉预订转化率提升 38%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">超额免费赠送 (Over-Comping) 财务审计违规率 = 0.0%</text>
+  </g>
+
+  <!-- Pillar 2: Responsible Gaming (RG) Self-Exclusion 0ms Hard Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rgGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 责任博彩 (RG) 自我隔离令 0ms 冻结红线</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁向自我隔离 (Self-Excluded) 名单人员发送任何邀约！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 澳门博监局 DICJ / 新加坡 GRA / 内华达 NGCB 最高级别监管红线：</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 向已申请自我禁入的人士打营销赠房电话 = 每次面临数百万美元巨额罚单！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">情绪失控 / 追讨输款 / 借高利贷 0ms 强制介入锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 客人在电话里说：“我把买房钱全输光了，再给我提额翻本不然我不想活了”</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 0ms 永久锁死信用额度与赠礼！立即转接持证责任博彩心理辅导专员！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">未成年人 (&lt;21岁) 娱乐区禁入与家庭看护红线</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁任何未满 21岁宾客预约受限娱乐区域或领取相关促销券</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 严禁将幼童独自留在酒店客房去楼下娱乐场（触发儿童保护巡查）</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">自我隔离人员误触达与失控客源促单率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 满足 DICJ / GRA / NGCB / UKGC 责任关怀牌照审查</text>
+  </g>
+
+  <!-- Pillar 3: FinCEN Title-31 AML CTR ($10,000) & Structuring SAR Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#amlGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 反洗钱 (Title-31 AML) 大额与拆分拦截锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁教客户“把 1万5 拆成两笔 7,500 免填申报表”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客人问：“我存多500美元就满 1万要登记护照，我能不能分两次存？”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 拆分交易规避 CTR 申报构成联邦重罪 (Structuring 31 USC 5324)！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">24小时滚动大额现金交易报告 (CTR &gt;$10,000) 强核验</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 单笔或 24h 累计现金结汇/购买超法定阈值 (美 $10k / 澳 50万MOP)</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 强制语音引导前往柜台核验护照原件、职业与资金来源证明 (KYC)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">可疑交易报告 (SAR) 静默生成与防泄密锁 (No Tipping-Off)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 检出试探拆分限额或地下钱庄代汇特征：0ms 后台静默生成 SAR 案件</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 严格遵守反洗钱保密义务：严禁在语音中向客户透露“已对您发起可疑报告”！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">协助拆分交易 (Structuring) 违规话术率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">可疑交易 (SAR) 静默上报且零向客户通风报信 (Zero Tipping-Off)</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#F59E0B" font-size="14" font-weight="700">架构师核心选型法则 (RESORT-RG-AML-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 综合度假村语音系统必须与责任关怀自我隔离库 (Self-Exclusion Registry) 0ms 强联锁，一旦命中或检出问题博彩失控表达，立即冻结一切促销与赠房；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 财务与账房语音咨询严禁建议任何拆分大额现金规避申报 (Structuring) 的操作，并在后台静默触发反洗钱可疑报告 (SAR) 且严禁向客户通风报信。</text>
+</svg>

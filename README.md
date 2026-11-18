@@ -164,6 +164,7 @@ flowchart LR
 90. **幼儿园与 K-12 校车防遗忘空车巡检（车尾物理按钮+雷达四重锁）、放学接送抚养权限制令拦截与校医传染病聚类预警方案**：[中文](./docs/k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.md) | [EN](./docs/k12-school-bus-child-safety-authorized-pickup-voice-selection-faq.en.md)
 91. **城市水务与燃气公用事业（燃气臭味 0ms 零鉴权撤离锁、煮沸饮水令广播、维生医疗家庭禁停锁与燃气人在表前安全复气）方案**：[中文](./docs/municipal-water-gas-utility-boil-advisory-life-support-voice-selection-faq.md) | [EN](./docs/municipal-water-gas-utility-boil-advisory-life-support-voice-selection-faq.en.md)
 92. **研发实验室免摘手套电子实验记录（ELN/LIMS）、危化品 SDS 禁忌混配防爆锁与专利交底书（Patent Novelty Bar 抢注）方案**：[中文](./docs/rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.md) | [EN](./docs/rd-wet-lab-eln-sds-safety-patent-disclosure-voice-selection-faq.en.md)
+93. **大型综合度假村（Integrated Resort）多语种 VIP 礼宾、责任关怀自我隔离（Self-Exclusion）0ms 冻结锁与反洗钱（Title-31 AML 静默 SAR）方案**：[中文](./docs/integrated-resort-vip-concierge-responsible-gaming-aml-voice-selection-faq.md) | [EN](./docs/integrated-resort-vip-concierge-responsible-gaming-aml-voice-selection-faq.en.md)
 
 ---
 
