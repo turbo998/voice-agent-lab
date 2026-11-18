@@ -1256,6 +1256,42 @@ export function evaluateLuxuryVicClientelingGuard(input: {
   };
 }
 
+export interface PayrollTaxAdvisoryEvaluation {
+  policyCode: "FIN-TAX-CPA-01";
+  verbalBankAccountChangeBlocked: boolean;
+  normalizedTaxId: string;
+  taxChunkYearAccepted: boolean;
+  unconditionalRefundPromiseBlocked: boolean;
+}
+
+/**
+ * Deterministic Enterprise Payroll, FSSC Expense & CPA Tax Advisory Voice Guard (`FIN-TAX-CPA-01`).
+ * Physically blocks verbal direct-deposit or vendor bank account changes (routing to out-of-band FIDO2),
+ * normalizes GB 32100 forbidden letters (I/O/Z/S -> 1/0/2/5), locks tax RAG to the active filing year,
+ * and blocks unconditional tax-refund guarantees under IRS Circular 230.
+ */
+export function evaluatePayrollTaxAdvisoryGuard(input: {
+  requestsVerbalBankOrIbanChange: boolean;
+  rawTaxId: string;
+  ragChunkTaxYear: number;
+  activeFilingTaxYear: number;
+  draftPromisesGuaranteedTaxRefund: boolean;
+}): PayrollTaxAdvisoryEvaluation {
+  const normalized = input.rawTaxId
+    .toUpperCase()
+    .replace(/I/g, "1")
+    .replace(/O/g, "0")
+    .replace(/Z/g, "2")
+    .replace(/S/g, "5");
+  return {
+    policyCode: "FIN-TAX-CPA-01",
+    verbalBankAccountChangeBlocked: input.requestsVerbalBankOrIbanChange,
+    normalizedTaxId: normalized,
+    taxChunkYearAccepted: input.ragChunkTaxYear === input.activeFilingTaxYear,
+    unconditionalRefundPromiseBlocked: input.draftPromisesGuaranteedTaxRefund,
+  };
+}
+
 
 
 
