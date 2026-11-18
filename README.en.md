@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 53 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 53 Guides](#-2-53-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 54 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 54 Guides](#-2-54-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 53 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 54 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -94,7 +94,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (30 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (31 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -125,6 +125,7 @@ flowchart LR
 51. **Legal Intake Conflict-Check (ABA Rule 1.18), Courtroom Multi-Track & Remote Notary (RON) Voice AI**: [EN](./docs/legal-court-transcription-law-firm-intake-notary-voice-selection-faq.en.md) | [中文](./docs/legal-court-transcription-law-firm-intake-notary-voice-selection-faq.md)
 52. **Automotive NG-eCall Crash Triage (GB 45672 / EN 17240), EV Roadside Rescue & Dealer DMS Voice AI**: [EN](./docs/automotive-ecall-roadside-rescue-dealer-aftersales-voice-selection-faq.en.md) | [中文](./docs/automotive-ecall-roadside-rescue-dealer-aftersales-voice-selection-faq.md)
 53. **Smart Elderly Care Bathroom Fall Guardian (mmWave/SED), Presbycusis EQ & Matter Smart Home Voice**: [EN](./docs/smart-home-elderly-care-ambient-acoustic-guardian-selection-faq.en.md) | [中文](./docs/smart-home-elderly-care-ambient-acoustic-guardian-selection-faq.md)
+54. **Smart Hospital Inpatient Bedside Nurse Call, Sterile OR PACS Control & WHO Surgical Safety Timeout**: [EN](./docs/smart-hospital-inpatient-nurse-call-surgical-or-voice-selection-faq.en.md) | [中文](./docs/smart-hospital-inpatient-nurse-call-surgical-or-voice-selection-faq.md)
 
 ---
 

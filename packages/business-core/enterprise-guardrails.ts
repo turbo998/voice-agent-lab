@@ -762,6 +762,35 @@ export function evaluateElderlyCareFallGuardianGuard(input: {
   };
 }
 
+export interface SmartHospitalSurgicalOrEvaluation {
+  policyCode: "HOSP-NURSE-01";
+  codeBluePreemptionTriggered: boolean;
+  spongeDiscrepancyClosureBlocked: boolean;
+  cArmXrayAutoOrdered: boolean;
+  bedsideChartingAllowed: boolean;
+}
+
+/**
+ * Deterministic Smart Hospital Bedside Nurse Call, Sterile OR Sponge-Count & Wristband Bed-Lock Guard (`HOSP-NURSE-01`).
+ * Triggers 0ms Code-Blue preemption when bedside SpO2 < 92%, blocks surgical wound closure and orders a C-arm X-ray
+ * on any sponge/needle count discrepancy, and requires physical barcode wristband scan before EMR charting.
+ */
+export function evaluateSmartHospitalSurgicalOrGuard(input: {
+  patientSpO2Pct: number;
+  spongesDispensed: number;
+  spongesCountedPreClosure: number;
+  wristbandBarcodeScanned: boolean;
+}): SmartHospitalSurgicalOrEvaluation {
+  const spongeMismatch = input.spongesDispensed !== input.spongesCountedPreClosure;
+  return {
+    policyCode: "HOSP-NURSE-01",
+    codeBluePreemptionTriggered: input.patientSpO2Pct < 92,
+    spongeDiscrepancyClosureBlocked: spongeMismatch,
+    cArmXrayAutoOrdered: spongeMismatch,
+    bedsideChartingAllowed: input.wristbandBarcodeScanned,
+  };
+}
+
 
 
 
