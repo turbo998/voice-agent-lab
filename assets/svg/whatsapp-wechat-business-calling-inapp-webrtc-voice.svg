@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgSoc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07111E"/>
+      <stop offset="50%" stop-color="#0F2138"/>
+      <stop offset="100%" stop-color="#0B1528"/>
+    </linearGradient>
+    <linearGradient id="waGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="wxGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="appGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgSoc)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="23" font-weight="700">WhatsApp Business Calling vs. WeChat Mini-Program VoIP vs. Native In-App WebRTC</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">社交与超级 App 嵌入式语音通话（WhatsApp Calling API / 微信小程序实时语音 / 品牌 App WebRTC）选型全景图</text>
+  <rect x="916" y="42" width="236" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1034" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">SOCIAL-CALL-01 · 48kHz Opus</text>
+
+  <!-- Pillar 1: WhatsApp Business Calling API -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#waGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. WhatsApp Business Calling API (出海首选)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">消灭 $0.25/分钟 跨国 0800 免费电话账单</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 拉美/中东/欧洲/东南亚用户直接在 WhatsApp 内拨号</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 走 VoIP (WebRTC/SIP) 零国际漫游费，音质提升至 48kHz</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">外呼强制“预先文字授权卡”门禁 (Opt-In Gate)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• Meta 严禁商家无预警直接拨打用户 WhatsApp 语音</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 必先发 Call Permission 互动消息，用户点同意后 24h 内可呼</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">边讲电话边在 WhatsApp 气泡发图文/付款链接</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 语音聊清楚方案后，0秒往同一聊天窗推选座/支付按钮</text>
+    <text x="30" y="308" fill="#FBBF24" font-size="12">• 彻底告别传统电话里拼写长邮箱和银行卡号！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">外呼品牌绿标认证接通率从 16% 跃升至 68%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">跨国客服通信成本直降 78%</text>
+  </g>
+
+  <!-- Pillar 2: WeChat Mini-Program & WeCom Voice -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#wxGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 微信小程序实时语音与企微协同 (国内首选)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">扫码免下载即刻开启全双工语音导购/客服</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 线下商场/景区/医院展牌扫码 -> 小程序一键语音通话</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 基于 WebRTC / 微信实时音视频插件实现 &lt;380ms 对话</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">iOS 微信内 WebRTC 音频中断恢复防线</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 应对系统电话插播或锁屏导致的 AudioContext 挂起</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 断流 3秒自动保存会话快照并在小程序弹出恢复按钮</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">天然携带 OpenID/UnionID 订单上下文</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 客户从哪个订单详情页点进语音，AI 0秒即知该订单号</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 免去“请报一下您的手机号和18位订单号”的繁琐盘问</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">语音内直接调起微信支付 / 卡券核销</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">通话平均处理时长 (AHT) 缩短 52%</text>
+  </g>
+
+  <!-- Pillar 3: Brand Native In-App WebRTC & Context Continuity -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#appGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 品牌 App 原生 WebRTC 与 PSTN 双模逃生</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="82" fill="#E9D5FF" font-size="13" font-weight="700">JWT 零重复核身锁 (Zero Re-Auth Context)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• App 内已通过 FaceID/指纹登录的客户发起语音通话</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 严禁 AI 再次盘问姓名与短信验证码 (高危转账除外)</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">文字聊天一键无损升维语音 (Chat-to-Voice)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 客户跟文字客服打字聊了 5 句觉得太累点“转语音通话”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 语音 Agent 100% 继承前 5 句文字上下文接着聊！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="270" fill="#FCA5A5" font-size="13" font-weight="700">弱网丢包 &gt;12% 自动 PSTN 回拨逃生</text>
+    <text x="30" y="290" fill="#E2E8F0" font-size="12">• 当检测到车主在高速/电梯移动数据丢包率 &gt;12%</text>
+    <text x="30" y="308" fill="#FBBF24" font-size="12">• 2秒内通过蜂窝 PSTN 自动回拨手机并续接当前对话！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">48kHz 全频带高清音质 + 同屏 UI 实时联动</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底打通“文字 · 语音 · 屏幕卡片”三位一体体验</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#34D399" font-size="14" font-weight="700">架构师核心选型法则 (SOCIAL-CALL-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 海外拉美/中东/欧洲市场首选 WhatsApp Business Calling API（必须遵守商家外呼 Call Permission 预授权门禁）；国内生态首选微信小程序实时音视频；</text>
+  <text x="68" y="606" fill="#38BDF8" font-size="13">2. 任何从 App/小程序/WhatsApp 发起的语音通话必须 100% 继承当前页面订单与文字聊天上下文，严禁让已登录用户从头重报手机号与订单号！</text>
+</svg>

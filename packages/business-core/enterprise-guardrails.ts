@@ -1115,6 +1115,31 @@ export function evaluateUnifiedCommsVoiceIntegrationGuard(input: {
   };
 }
 
+export interface SocialInAppVoiceCallingEvaluation {
+  policyCode: "SOCIAL-CALL-01";
+  whatsappOutboundCallAllowed: boolean;
+  redundantIdPromptSuppressed: boolean;
+  pstnCallbackEscapeTriggered: boolean;
+}
+
+/**
+ * Deterministic WhatsApp Business Calling, WeChat Mini-Program & In-App WebRTC Voice Guard (`SOCIAL-CALL-01`).
+ * Blocks outbound WhatsApp Business voice calls without active user Call Permission opt-in, suppresses redundant
+ * phone/order-ID prompts when JWT/OpenID context is present, and triggers PSTN callback when WebRTC loss >12%.
+ */
+export function evaluateSocialInAppVoiceCallingGuard(input: {
+  whatsappCallPermissionGranted: boolean;
+  hasVerifiedJwtAndOrderId: boolean;
+  webrtcPacketLossPct: number;
+}): SocialInAppVoiceCallingEvaluation {
+  return {
+    policyCode: "SOCIAL-CALL-01",
+    whatsappOutboundCallAllowed: input.whatsappCallPermissionGranted,
+    redundantIdPromptSuppressed: input.hasVerifiedJwtAndOrderId,
+    pstnCallbackEscapeTriggered: input.webrtcPacketLossPct > 12.0,
+  };
+}
+
 
 
 
