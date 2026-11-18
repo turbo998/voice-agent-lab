@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgDis" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1A"/>
+      <stop offset="50%" stop-color="#132238"/>
+      <stop offset="100%" stop-color="#08101E"/>
+    </linearGradient>
+    <linearGradient id="evacGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="bedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="shelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgDis)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Municipal Typhoon, Flood &amp; Wildfire Emergency Evacuation Voice AI: Shelter Balance &amp; Rescue</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">城市防汛抗台/山火应急疏散：地下车库挪车禁令锁、失能卧床老人上门背负救援派单与避难所容量负载均衡全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#450A0A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FCA5A5" font-size="13" font-weight="600" text-anchor="middle">DISASTER-EVAC-01 · Emergency</text>
+
+  <!-- Pillar 1: Flash-Flood Basement Ban & Vertical Evacuation Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#evacGrad2)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 暴雨内涝“严禁下地库挪车”与垂直避险锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 暴雨倒灌期严禁通知或放行业主下地下车库挪车！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 城市特大暴雨痛点：多起溺亡均因业主在倒灌时冲进地库抢救私家车</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 集水坑液位超红线：0ms 语音强呼全楼“弃车保命，严禁进入地下室与电梯”！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">水平撤离来不及时的“垂直向上避险 (Vertical Evacuation)”</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 山洪/溃坝水头 10分钟将至或街道水深已没过膝盖 (&gt;=50cm 涉水致死线)</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 0ms 切换指令：“严禁外出涉水走马路！立即走楼梯上本楼 3层以上避险！”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">下穿立交桥与隧道积水 (&gt;=25cm) 语音道闸联动</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 积水传感器超 25cm 自动落下防汛栏杆并开启高音号角</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 车主被困水淹车内求助：0ms 指导拔头枕破侧窗逃生并定位派蛙人</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">暴雨期间违规下地库挪车与涉水误导率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">水淹车破窗自救黄金 60秒口令播报响应 &lt; 200ms</text>
+  </g>
+
+  <!-- Pillar 2: Bedridden / Dialysis Vulnerable Citizen Door-to-Door Rescue -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#bedGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 失能卧床/轮椅老人“敲门背负转移”强闭环</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">解决“发了撤离短信，但瘫痪老人根本走不下 5楼”死结</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 台风登陆前 12小时：自动对低洼危房区 10万户并发拨打语音摸排</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 老人回复：“我老伴中风瘫痪在床，电梯停了我们下不去！”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">0ms 生成“双人担架上门背负工单”直派社区民兵/消防</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁对失能老人只播一句“请自行前往安置点”就挂断电话！</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动锁定楼栋门牌与失能等级，派发网格救援队入户背人转移并扫码签收</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">2轮未接听电话 (No-Answer) 自动转“入户拍门核查”</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 针对听力下降或手机没电的独居高龄老人：连续 2通未接</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 立即列入《红牌未联上必须上门敲门清单》下发片区网格员</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">脆弱失能群体 100% 建档追踪，零遗漏在危房</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">10万户防台风转移摸排时间从 18小时缩短至 25分钟</text>
+  </g>
+
+  <!-- Pillar 3: Emergency Shelter Capacity Load-Balancing & Pet/Medical Routing -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#shelGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 应急避难所容量负载均衡与发电机医疗配对</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁把撤离市民继续导引向已满员的学校体育馆！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 第一中学体育馆额定容纳 800人已满，后续市民顶着狂风暴雨赶到被拒门外</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 避难所入住率 &gt;=90% 时 0ms 自动熔断指路并切换次近空余安置点！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">呼吸机/制氧机患者专属“应急柴油发电医疗安置点”</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 普通小学教室避难所停电后无法插呼吸机</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 识别出携带维生医疗设备或孕晚期孕妇 -> 100% 路由至带双路电源医疗安置点</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">山火烟羽 (Wildfire Plume) 实时封路与可携宠安置点</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 叠加气象局火线蔓延图与交警封路数据，避开被山火切断的国道</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 为携带导盲犬/宠物的家庭精准匹配允许宠物入内的专属避难所</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">避难所爆满吃闭门羹与跑错被淹道路率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合国家应急管理部防汛抗旱响应与 FEMA 疏散规范</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#EF4444" font-size="14" font-weight="700">架构师核心选型法则 (DISASTER-EVAC-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 暴雨内涝倒灌期必须 0ms 物理封杀任何“通知下地库挪车”或“外出涉水水平撤离（水深>=50cm）”话术，强制指令弃车并走楼梯向高层垂直避险；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 摸排电话检出失能卧床/无法行走老人或连续 2通未接听，必须 0ms 派发救援队上门背负/敲门工单，且避难所指路必须实时过滤入住率 >=90% 的满员场馆。</text>
+</svg>

@@ -2027,6 +2027,30 @@ export function evaluateBiopharmaColdChainCartGuard(input: {
   };
 }
 
+export interface MunicipalDisasterEvacEvaluation {
+  policyCode: "DISASTER-EVAC-01";
+  basementCarRetrievalBlockedAndVerticalEvacOrdered: boolean;
+  doorToDoorStretcherRescueDispatched: boolean;
+  overflowShelterRerouted: boolean;
+}
+
+/**
+ * Deterministic Municipal Disaster Evacuation Basement Ban, Bedridden Stretcher Rescue & Shelter Capacity Guard (`DISASTER-EVAC-01`).
+ */
+export function evaluateMunicipalDisasterEvacGuard(input: {
+  streetFloodWaterDepthCm: number;
+  citizenBedriddenOrTwoCallsUnanswered: boolean;
+  nearestShelterOccupancyPct: number;
+}): MunicipalDisasterEvacEvaluation {
+  return {
+    policyCode: "DISASTER-EVAC-01",
+    basementCarRetrievalBlockedAndVerticalEvacOrdered: input.streetFloodWaterDepthCm >= 50,
+    doorToDoorStretcherRescueDispatched: input.citizenBedriddenOrTwoCallsUnanswered,
+    overflowShelterRerouted: input.nearestShelterOccupancyPct >= 90,
+  };
+}
+
+
 
 
 

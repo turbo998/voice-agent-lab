@@ -170,6 +170,7 @@ flowchart LR
 96. **Underground Mining, Oilfield & Petrochemical ATEX/IECEx Voice AI: Blast-Zone UWB Zero-Headcount Lock & H2S Upwind Evacuation**: [EN](./docs/mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.en.md) | [中文](./docs/mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.md)
 97. **Luxury Hotel Wedding & MICE Banquet Voice AI: BEO 72-Hour Cutoff Lock, Anaphylaxis Allergen Purple-Ticket & Floor Command**: [EN](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.en.md) | [中文](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.md)
 98. **Biopharma Cold-Chain & CAR-T Cell Therapy Logistics Voice AI: Vein-to-Vein COI/COC Lock, -196°C Cryo-Shipper Guard & TOR Excursion Triage**: [EN](./docs/biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.en.md) | [中文](./docs/biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.md)
+99. **Municipal Typhoon, Flood & Wildfire Emergency Evacuation Voice AI: Basement Ban, Bedridden Door-to-Door Rescue & Shelter Load-Balancing**: [EN](./docs/municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.en.md) | [中文](./docs/municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.md)
 
 ---
 
