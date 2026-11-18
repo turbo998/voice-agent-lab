@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg44" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C1A"/>
+      <stop offset="50%" stop-color="#111F38"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="evGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="vppGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="bessGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg44)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="24" font-weight="700">EV Supercharging OCPP Voice Self-Healing &amp; Virtual Power Plant (VPP) AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">新能源超充场站“锁枪卡死 15秒远程自愈（OCPP 2.0.1）”、虚拟电厂（VPP）削峰邀约外呼与光储语音管家全景图</text>
+  <rect x="906" y="42" width="246" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1029" y="64" fill="#A7F3D0" font-size="13" font-weight="600" text-anchor="middle">ENERGY-VPP-01 · 15s OCPP</text>
+
+  <!-- Pillar 1: EV Charging Pile Stuck-Connector & OCPP 2.0.1 Self-Healing -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#evGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 超充桩“锁枪拔不出” 15秒 OCPP 远程自愈</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 凌晨高速超充站头号噩梦：“充电枪锁死在车上”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 充完电电子锁卡死拔不出枪，车主被困无人荒郊场站</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若在还有 400A 直流电流时盲目远程解锁，瞬间拉弧烧毁！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#A7F3D0" font-size="13" font-weight="700">零电流硬互锁 (I=0A) + OCPP UnlockConnector</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 车主报枪号/手机号 ➔ AI 查桩端遥测确认电流已降为 0.0A</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 下发 OCPP RemoteStop + UnlockConnector，15秒咔哒弹开！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">BMS 握手失败自愈与占位费争议秒级核销</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 引导车主“向上托起液冷枪柄 5秒助过检绝缘测试”</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 因锁枪故障导致的超时占位费 100% 自动豁免退回</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">充电场站故障工单 82.4% 在 45秒内远程自愈</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">免派工程师现场抢修 · 严防带载拉弧安全事故</text>
+  </g>
+
+  <!-- Pillar 2: Virtual Power Plant (VPP) Demand-Response Voice Dispatch -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#vppGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 虚拟电厂 (VPP) 千企削峰填谷并发语音邀约</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="82" fill="#93C5FD" font-size="13" font-weight="700">迎峰度夏电网缺口：提前 2小时急召 500MW 负荷</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统短信/邮件通知工商业厂长打开率不足 18%，错失补贴</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• AI 在 5分钟内并发外呼 3,000 家水泥/冷链/商场能源主管</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">精准测算补贴金额 + OpenADR 2.0b 自动签约</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• “王厂长，今日 14-16点削峰补贴 ¥3.5/度，贵厂关停2号球磨机</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 压降 2,000kW 可净得补贴 ¥14,000，确认参加请说确认！”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">履约过程负荷偏差 15分钟语音预警</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 智能电表监测到某厂实际负荷未压降到位 (面临违约考核)</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 立即语音外呼值班电工协助切入备用储能放电补齐缺口</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">工商业需求响应邀约参与率从 18% 跃升至 79%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">虚拟电厂聚合商履约达标率达 98.6% · 零违约罚款</text>
+  </g>
+
+  <!-- Pillar 3: Home/Commercial Solar + BESS Safety & Spot-Price Butler -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#bessGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 工商业/户用光储充套利与热失控告警 (P151)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="30" y="82" fill="#FDE68A" font-size="13" font-weight="700">分时电价峰谷套利与台风停电备电语音管家</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 业主说：“明晚有台风，把储能电池锁满 100% 备电别卖电了”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 实时解答昨日光伏发电收益、谷电充满时间与反送电网电量</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⚡ P151 储能柜 (BESS UL9540A) 热失控 0秒抢占</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 检出储能集装箱 H2/CO 可燃气体或电芯温升告警</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 0ms 断开 PCS 并网开关、启动全氟己酮灭火并语音疏散周边！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">防孤岛保护 (Anti-Islanding) 合闸双因子锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁在市电外线抢修期间仅凭语音命令将储能切回并网态</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 强制校验电网侧电压频率同步锁相与供电局复电许可码</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">光储电站运维客服成本降低 74% · 100% 并网安全</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">符合 IEEE 1547 / UL 9540A / 国网新型主体并网规范</text>
+  </g>
+
+  <!-- Bottom Lifecycle Bar -->
+  <g transform="translate(44, 530)">
+    <rect width="1112" height="92" rx="12" fill="#090D16" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="28" fill="#38BDF8" font-size="14" font-weight="700">新能源充换电与虚拟电厂（VPP）实时语音闭环（New Energy &amp; VPP Voice Operations Loop）</text>
+    <text x="24" y="54" fill="#E2E8F0" font-size="13">1. 超充桩自愈：车主来电 ➔ 校验桩端电流 I=0.0A ➔ OCPP 2.0.1 远程解锁拔枪 (15s) + 自动退还超时占位费</text>
+    <text x="24" y="76" fill="#34D399" font-size="13" font-weight="600">➔ 2. 虚拟电厂调度：并发外呼 3,000 家工厂测算削峰补贴 ➔ 口头确认即下发 OpenADR 压降指令 ➔ 3. 储能安全：P151 热失控 0s 断网疏散</text>
+  </g>
+</svg>

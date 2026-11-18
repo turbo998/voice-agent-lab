@@ -482,6 +482,36 @@ export function evaluateInsuranceUnderwritingEstoppelGuard(input: {
   };
 }
 
+export interface EnergyEvChargingVppEvaluation {
+  policyCode: "ENERGY-VPP-01";
+  remoteConnectorUnlockAllowed: boolean;
+  arcFlashInterlockTriggered: boolean;
+  vppDischargeAuthorized: boolean;
+  socReserveFloorPreservedPct: number;
+}
+
+/**
+ * Deterministic EV Supercharging Zero-Current Arc Interlock & VPP Reserve Guard (`ENERGY-VPP-01`).
+ * Blocks remote OCPP UnlockConnector pulses unless output current I == 0A (preventing DC arc flash)
+ * and enforces a minimum 20% home battery SOC reserve floor during VPP peak-shaving dispatch.
+ */
+export function evaluateEnergyEvChargingVppGuard(input: {
+  chargerOutputCurrentAmps: number;
+  requestsConnectorUnlock: boolean;
+  homeBatterySocPct: number;
+  vppTargetDischargeFloorPct: number;
+}): EnergyEvChargingVppEvaluation {
+  const zeroCurrentSafe = Math.abs(input.chargerOutputCurrentAmps) < 0.1;
+  return {
+    policyCode: "ENERGY-VPP-01",
+    remoteConnectorUnlockAllowed: input.requestsConnectorUnlock && zeroCurrentSafe,
+    arcFlashInterlockTriggered: input.requestsConnectorUnlock && !zeroCurrentSafe,
+    vppDischargeAuthorized: input.homeBatterySocPct > 20,
+    socReserveFloorPreservedPct: Math.max(input.vppTargetDischargeFloorPct, 20),
+  };
+}
+
+
 
 
 
