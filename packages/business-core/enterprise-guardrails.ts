@@ -356,6 +356,46 @@ export function evaluateFieldAdvisorInPersonGuard(input: {
   };
 }
 
+export interface CrossBorderLogisticsEvaluation {
+  policyCode: "CROSS-BORDER-LOG-01";
+  rmaResolutionMode: "returnless_keep_it_replacement" | "standard_prepaid_return_label";
+  netReverseShippingSavedUsd: number;
+  verbalTelexReleaseBlocked: boolean;
+  reeferEmergencyDispatchTriggered: boolean;
+}
+
+/**
+ * Deterministic Cross-Border E-Commerce RMA & Ocean Telex-Release Guard (`CROSS-BORDER-LOG-01`).
+ * Selects returnless Keep-It replacement when reverse shipping exceeds item COGS (with verified serial photo),
+ * hard-blocks verbal Telex Release cargo requests, and triggers port mechanic dispatch on >2C reefer drift.
+ */
+export function evaluateCrossBorderLogisticsGuard(input: {
+  itemCogsUsd: number;
+  reverseShippingPlusRestockUsd: number;
+  serialPhotoVerified: boolean;
+  priorReturns180d: number;
+  requestsVerbalTelexRelease?: boolean;
+  reeferTempExcursionCelsius?: number;
+}): CrossBorderLogisticsEvaluation {
+  const qualifyKeepIt =
+    input.reverseShippingPlusRestockUsd > input.itemCogsUsd &&
+    input.serialPhotoVerified &&
+    input.priorReturns180d === 0;
+
+  return {
+    policyCode: "CROSS-BORDER-LOG-01",
+    rmaResolutionMode: qualifyKeepIt
+      ? "returnless_keep_it_replacement"
+      : "standard_prepaid_return_label",
+    netReverseShippingSavedUsd: qualifyKeepIt
+      ? Number((input.reverseShippingPlusRestockUsd - input.itemCogsUsd).toFixed(2))
+      : 0,
+    verbalTelexReleaseBlocked: Boolean(input.requestsVerbalTelexRelease),
+    reeferEmergencyDispatchTriggered: (input.reeferTempExcursionCelsius ?? 0) > 2.0,
+  };
+}
+
+
 
 
 
