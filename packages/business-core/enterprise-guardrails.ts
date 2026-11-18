@@ -1323,6 +1323,35 @@ export function evaluateWearableFitnessHeartRateGuard(input: {
   };
 }
 
+export interface MortgageCollectionsFdcpaEvaluation {
+  policyCode: "BANK-LOAN-FDCPA-01";
+  outboundDialAllowed: boolean;
+  debtDetailsUnlocked: boolean;
+  hardshipForbearancePivotTriggered: boolean;
+}
+
+/**
+ * Deterministic Retail Banking Mortgage Origination & FDCPA Reg F Early Collections Guard (`BANK-LOAN-FDCPA-01`).
+ * Enforces FDCPA 7-in-7 call caps, 08:00-21:00 local time windows, and Cease & Desist locks;
+ * hides debt details until Right-Party Contact (RPC) is verified; and pivots to hardship forbearance on job loss/illness.
+ */
+export function evaluateMortgageCollectionsFdcpaGuard(input: {
+  callsInRolling7Days: number;
+  borrowerLocalHour24: number;
+  ceaseAndDesistActive: boolean;
+  rightPartyContactVerified: boolean;
+  borrowerReportsHardshipOrIllness: boolean;
+}): MortgageCollectionsFdcpaEvaluation {
+  const withinWindow = input.borrowerLocalHour24 >= 8 && input.borrowerLocalHour24 < 21;
+  return {
+    policyCode: "BANK-LOAN-FDCPA-01",
+    outboundDialAllowed:
+      input.callsInRolling7Days < 7 && withinWindow && !input.ceaseAndDesistActive,
+    debtDetailsUnlocked: input.rightPartyContactVerified,
+    hardshipForbearancePivotTriggered: input.borrowerReportsHardshipOrIllness,
+  };
+}
+
 
 
 

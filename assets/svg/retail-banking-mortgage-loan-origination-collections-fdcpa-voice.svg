@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgLoan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1B"/>
+      <stop offset="50%" stop-color="#111F3A"/>
+      <stop offset="100%" stop-color="#0A1224"/>
+    </linearGradient>
+    <linearGradient id="origGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="fdcpaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="hardGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgLoan)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Retail Banking Mortgage Origination, Early Collections (FDCPA Reg F) &amp; Hardship Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">零售银行按揭/消贷面签预审 (LOS)、M1 逾期合规提醒 (FDCPA 7-in-7 / Mini-Miranda) 与困难重组语音架构全景图</text>
+  <rect x="908" y="42" width="244" height="34" rx="17" fill="#450A0A" stroke="#F43F5E" stroke-width="1.2"/>
+  <text x="1030" y="64" fill="#FDA4AF" font-size="13" font-weight="600" text-anchor="middle">BANK-LOAN-FDCPA-01 · 0 Breach</text>
+
+  <!-- Pillar 1: Mortgage & Consumer Loan Origination (LOS & ECOA) -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#origGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 按揭/经营贷语音预审与 LOS 缺件追缴</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">DTI (负债收入比) &amp; LTV 确定性预审计算器</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 严禁大模型心算月供与最高可贷额度 (防虚报利率)</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 实时对接 Encompass / 信贷核心 API 播报 APR 与月供</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ ECOA 公平信贷红线与零过审承诺锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁询问婚姻计划、生育状况、宗教或种族敏感问题</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 严禁口头说“您的贷款 100% 包批”，必带终审免责声明</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">面签缺件 (Stips) 语音催补与 OCR 实时预检</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 告知借款人：“您的近6个月银行流水还缺第4页末页公章”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 通话中推送安全上传卡，3秒校验清晰度并流入信贷审贷池</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">按揭资料齐套周期从 6.5天 缩短至 1.4天</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">信贷客户经理 (Loan Officer) 释放 55% 催资料时间</text>
+  </g>
+
+  <!-- Pillar 2: Compliant Early Collections (FDCPA Reg F & Mini-Miranda) -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#fdcpaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. M1 早期逾期合规提醒 (FDCPA / 催收自律)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 先核实“是否本人 (Right-Party Contact)”再谈欠款！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 严禁电话一接通就说“王建国您信用卡逾期 8,000 元了”！</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 万一接电话的是同事/父母，将触发第三方逾期信息泄露重罚！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">FDCPA Reg F “7-in-7” 频次锁与法定禁呼时段</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 7天内对单一账户拨打上限 &lt;=7次；接通过 1次后 7天内禁再呼</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 借款人所在地当地时间 21:00–次日 08:00 网关 0ms 锁死禁呼</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Mini-Miranda 法定告知与零施压威胁词围栏</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 确认本人后强制逐字播报法定催收身份告知</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 100% 物理拦截恐吓、羞辱或虚构刑事后果的违规话术</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">监管暴力催收与第三方泄密投诉率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">M1 (逾期 1-30天) 善意忘还客户自助回款率达 71.4%</text>
+  </g>
+
+  <!-- Pillar 3: Promise-to-Pay (PTP) & Hardship Restructuring -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hardGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 承诺还款 (PTP) 闭环与失业/重疾困难分流</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#A7F3D0" font-size="13" font-weight="700">同理心困难探针 (Hardship &amp; Vulnerability Gate)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 当借款人提及“刚失业/住院化疗/遭遇洪灾/无力全额偿还”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 0ms 停止催款施压，切换温和分期重组 (Forbearance Plan) 通道</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">阶梯式息费减免策略树 (Rule-Bound Concession)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁被客户“嘴炮讨价还价”突破银行减免权限上限！</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 仅在风控引擎授权的 [3天宽限免违约金 / 12期分期] 内锁单</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">承诺还款 (PTP) 精确日期锁 + PCI 安全还款卡</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 锁定具体还款日：“本周五 11月20日 18:00 前划扣 3,200 元”</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 通话中一键触发银行 App / 银联加密代扣链接，当场结清</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">承诺还款履约率 (PTP Kept Rate) 提升 +26%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单账户早期逾期回收成本从 $14.50 压降至 $0.85</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (BANK-LOAN-FDCPA-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 逾期提醒外呼必须在确认“接听人为借款人本人 (Right-Party Contact)”且完成核身后，才允许播报 Mini-Miranda 与逾期金额（严防第三方泄密）；</text>
+  <text x="68" y="606" fill="#34D399" font-size="13">2. 网关层强制锁死 FDCPA 7-in-7 拨打频次与 21:00-08:00 禁呼窗，并在识别出失业/重疾困难时 0ms 切换至受控分期重组方案。</text>
+</svg>

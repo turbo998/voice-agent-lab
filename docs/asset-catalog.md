@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **72 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **73 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（72 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（73 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -63,7 +63,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（49 篇）
+### 3.3 高价值企业行业解决方案蓝图（50 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -113,3 +113,4 @@
 70. **顶奢品牌与高端百货黑卡 VIP（VIC）私享语音礼宾、稀缺配额防黄牛锁与私人沙龙四联预约方案**：[中文](./retail-loyalty-vip-concierge-luxury-clienteling-voice-selection-faq.md) | [EN](./retail-loyalty-vip-concierge-luxury-clienteling-voice-selection-faq.en.md)
 71. **企业财务共享中心（FSSC 报销审单/应付对账）、全球发薪（Payroll 防改卡锁）与财税事务所（CPA）语音方案**：[中文](./wealth-tax-cpa-accounting-payroll-audit-voice-copilot-selection-faq.md) | [EN](./wealth-tax-cpa-accounting-payroll-audit-voice-copilot-selection-faq.en.md)
 72. **智能运动穿戴（骨传导耳机/手表 AI 私教）、喘息防误打断、心率超限 0ms 保护与居家骨科术后康复方案**：[中文](./sports-fitness-wearable-coach-rehab-pt-voice-selection-faq.md) | [EN](./sports-fitness-wearable-coach-rehab-pt-voice-selection-faq.en.md)
+73. **零售银行按揭/消贷面签预审（LOS）与早期逾期合规提醒（FDCPA 7-in-7 / RPC 本人核身锁 / 困难重组）方案**：[中文](./retail-banking-mortgage-loan-origination-collections-fdCPA-voice-selection-faq.md) | [EN](./retail-banking-mortgage-loan-origination-collections-fdCPA-voice-selection-faq.en.md)
