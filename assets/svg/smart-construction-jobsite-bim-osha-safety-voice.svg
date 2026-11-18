@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgConst" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A0F1A"/>
+      <stop offset="50%" stop-color="#172235"/>
+      <stop offset="100%" stop-color="#090E18"/>
+    </linearGradient>
+    <linearGradient id="ptwGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="craneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="bimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgConst)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Smart Construction Jobsite Helmet Voice AI: PTW/LOTO Safety Lock &amp; Procore BIM Punch-List</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">智慧工地智能安全帽/对讲语音巡检、动火/受限空间许可 (PTW/LOTO) 气体核验锁、塔吊盲吊与 BIM 质量整改全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#451A03" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FCD34D" font-size="13" font-weight="600" text-anchor="middle">CONSTRUCT-OSHA-01 · EPC</text>
+
+  <!-- Pillar 1: Confined Space & Hot-Work Permit-to-Work (PTW) & LOTO Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ptwGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 受限空间/动火作业 (PTW) 与上锁挂牌锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁未经四合一气体实测合格签发受限空间许可！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 地下管廊/污水井作业：必须核实 O2 (19.5%–23.5%)、H2S &amp; CO = 0</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 可燃气体 LEL &gt;=10% 或缺氧？0ms 锁死电子作业票并拉响头盔声光警报！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">高压配电室 LOTO (上锁挂牌) 双人声纹复诵闭环</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁凭对讲机一句“电关了”就合闸送电（OSHA 1910.147 红线）</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 必须校验挂锁人本人声纹 + 挂锁编号图片 + 验电零电压三次复诵！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">班前安全交底 (Toolbox Talk) 多语种/方言抽检</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 面向钢筋工/架子工/外籍劳工：30秒语音互动问答核实高空安全带挂点</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 杜绝“代签字走过场”，自动生成带声纹时间戳的法定安全台账</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">违规动火与受限空间窒息中毒事故 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">危险作业电子许可证 (e-PTW) 现场签发耗时缩短 68%</text>
+  </g>
+
+  <!-- Pillar 2: Crane Blind-Lift Command & 95dB Pile-Driver Noise -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#craneGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 塔吊盲吊指令防误听锁与 95dB 强噪抑制</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将地面闲聊或模糊方位传给塔吊司机！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 信号工 (Rigger) 隔着大楼盲吊 15吨钢梁：对讲机串频或听反“起钩/落钩”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 极易引发碰撞坍塌！且风速 &gt;=6级 (10.8m/s) 必须 0ms 强制停吊！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">持证司索信号工专属声纹绑定 + 急停 0ms 透传</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 塔吊驾驶室仅接收已绑定持证信号工 (Certified Rigger) 的指令通道</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 任何人喊出“停 / STOP / 急停”：0ms 绕过一切队列直触发驾驶室红灯警报</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">95dB 电锤/切割机/打桩机骨传导咽喉麦抗噪</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 智能安全帽集成耳道骨传导 + 双麦风噪抵消，消除冲击钻高频尖啸</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 地下三层地下室無公网信号时自动切换 Mesh 自组网离线语音</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">起重吊装串频误指令事故率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">6级大风超限与塔臂防碰撞盲区语音预警响应 &lt; 100ms</text>
+  </g>
+
+  <!-- Pillar 3: Hands-Free BIM RFI & Procore Punch-List -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#bimGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 免摘手套 BIM 图纸问答与 Procore 整改单</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">边走边说 15秒生成带轴网坐标的质量整改单 (Punch List)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 监理工程师巡检：“B2层 K-14轴交界处消防喷淋管穿梁未加套管，拍张照”</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 自动对齐 BIM 构件 ID，生成 Procore / Autodesk Build 整改单派给机电班组</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">⛔ 严禁引用作废旧版施工图 (Superseded Blueprint Lock)！</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 施工员问：“3层核心筒剪力墙暗柱箍筋间距是多少？”</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 强制锁定最新受控有效版设计变更单 (ASI/RFC Rev.4)，严禁读旧版图纸！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">混凝土浇筑坍落度与隐蔽工程旁站语音留痕</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 商混罐车进场：语音核对配合比单号、C50 标号、出厂时间与实测坍落度</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 每日施工日志 (Daily Construction Log) 下班前自动汇总无需熬夜补写</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">工程监理与施工员每日现场填表时间减少 76%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">因看错作废旧版图纸导致的砸墙返工损失降至 0%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#F59E0B" font-size="14" font-weight="700">架构师核心选型法则 (CONSTRUCT-OSHA-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 智慧工地危险作业许可 (受限空间/动火/LOTO送电) 严禁仅靠口头承诺放行，必须联锁气体检测仪合格读数与挂锁人本人声纹；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 施工现场 BIM 图纸参数问答必须 100% 强制校核最新受控有效图纸版本号 (Latest Approved Revision)，严禁引用已作废 (Superseded) 的历史图纸。</text>
+</svg>

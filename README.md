@@ -158,6 +158,7 @@ flowchart LR
 84. **居家安宁疗护（Hospice 24×7 爆发痛分诊）、生命礼仪（FTC 透明报价与零加售锁）及政务银行“身后一件事”免本人核身方案**：[中文](./docs/hospice-palliative-care-bereavement-estate-voice-selection-faq.md) | [EN](./docs/hospice-palliative-care-bereavement-estate-voice-selection-faq.en.md)
 85. **万人体育场馆与大型演唱会（VIP 包厢语音点餐、比赛记分牌断酒令硬锁、105dB 主扩抵消与 8 万人散场防踩踏分流）方案**：[中文](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.md) | [EN](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.en.md)
 86. **智慧农业农艺师田间语音问诊、农药安全间隔期（PHI 采收红线锁）、禁限用农药拦截与粮库收粮水分扣重透明播报方案**：[中文](./docs/smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.md) | [EN](./docs/smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.en.md)
+87. **智慧工地与大型工程总包（EPC）智能安全帽语音巡检、受限空间/动火作业许可（PTW/LOTO）硬锁与 Procore/BIM 质量整改方案**：[中文](./docs/smart-construction-jobsite-bim-osha-safety-voice-selection-faq.md) | [EN](./docs/smart-construction-jobsite-bim-osha-safety-voice-selection-faq.en.md)
 
 ---
 

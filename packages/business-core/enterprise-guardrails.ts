@@ -1710,6 +1710,34 @@ export function evaluateSmartAgriPhiBiosecurityGuard(input: {
   };
 }
 
+export interface ConstructionOshaBimEvaluation {
+  policyCode: "CONSTRUCT-OSHA-01";
+  workPermitOrLiftAllowed: boolean;
+  supersededBlueprintBlocked: boolean;
+  lotoUnlockAuthorized: boolean;
+}
+
+/**
+ * Deterministic Smart Construction Confined-Space Gas Interlock, LOTO Owner Voiceprint & CDE Latest-Revision Guard (`CONSTRUCT-OSHA-01`).
+ */
+export function evaluateConstructionOshaBimGuard(input: {
+  oxygenPct: number;
+  h2sPpm: number;
+  craneWindSpeedMps: number;
+  lotoOwnerVoiceprintVerified: boolean;
+  blueprintRevisionIsSuperseded: boolean;
+}): ConstructionOshaBimEvaluation {
+  const gasSafe = input.oxygenPct >= 19.5 && input.oxygenPct <= 23.5 && input.h2sPpm === 0;
+  const windSafe = input.craneWindSpeedMps < 10.8;
+  return {
+    policyCode: "CONSTRUCT-OSHA-01",
+    workPermitOrLiftAllowed: gasSafe && windSafe && !input.blueprintRevisionIsSuperseded,
+    supersededBlueprintBlocked: input.blueprintRevisionIsSuperseded,
+    lotoUnlockAuthorized: input.lotoOwnerVoiceprintVerified,
+  };
+}
+
+
 
 
 
