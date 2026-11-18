@@ -1554,6 +1554,32 @@ export function evaluateVoiceLatencySpeculativeGuard(input: {
   };
 }
 
+export interface NonprofitDonorEthicsEvaluation {
+  policyCode: "NONPROFIT-DONOR-01";
+  solicitationImmediatelyHalted: boolean;
+  recurringMonthlyEnrollmentAllowed: boolean;
+  corporateMatchingGiftPrompted: boolean;
+}
+
+/**
+ * Deterministic Non-Profit & University Alumni Vulnerable-Donor Protection, One-No Rule & Recurring Consent Guard (`NONPROFIT-DONOR-01`).
+ */
+export function evaluateNonprofitDonorEthicsGuard(input: {
+  cognitiveConfusionOrHardshipDetected: boolean;
+  donorDeclinedCount: number;
+  explicitMonthlyRecurringConsentGiven: boolean;
+  employerOffersMatchingGift: boolean;
+}): NonprofitDonorEthicsEvaluation {
+  const haltAsk = input.cognitiveConfusionOrHardshipDetected || input.donorDeclinedCount >= 1;
+  return {
+    policyCode: "NONPROFIT-DONOR-01",
+    solicitationImmediatelyHalted: haltAsk,
+    recurringMonthlyEnrollmentAllowed: !haltAsk && input.explicitMonthlyRecurringConsentGiven,
+    corporateMatchingGiftPrompted: !haltAsk && input.employerOffersMatchingGift,
+  };
+}
+
+
 
 
 

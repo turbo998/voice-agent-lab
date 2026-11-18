@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgNgo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A101D"/>
+      <stop offset="50%" stop-color="#141F36"/>
+      <stop offset="100%" stop-color="#090F1B"/>
+    </linearGradient>
+    <linearGradient id="alumniGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="vulnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="matchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgNgo)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Non-Profit Charity, Emergency Disaster Relief &amp; University Alumni Voice Fundraising AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">公益慈善基金会、高校校友募捐 (Phonathon)、脆弱长者反诱导保护锁、雇主配捐翻倍与免税电子票据全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#6EE7B7" font-size="13" font-weight="600" text-anchor="middle">NONPROFIT-DONOR-01</text>
+
+  <!-- Pillar 1: University Alumni Phonathon & Disaster Relief Surge -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#alumniGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 高校校友情感联络与突发救灾万线扩容</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">高校年度捐赠日 (Giving Day) 专属记忆唤醒</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 直连 Blackbaud Raiser's Edge / Salesforce Nonprofit Cloud</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 精准唤起毕业年份、院系导师与曾资助奖学金项目进展</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">地震/洪涝突发救灾 5分钟万线并发募捐与物资登记</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 灾难发生后黄金 48小时爱心来电暴增 50倍，人工坐席全忙</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动分流：个人善款秒级支付 vs 企业大宗救灾物资物流对接</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">善款透明流向播报 (Project Impact Transparency)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 捐赠人随时致电查询：“我去年捐的 ¥2,000 助学金发给谁了？”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 实时播报受助地区、项目审计报告编号与执行进度</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">校友联络覆盖率从 12% 跃升至 100%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单次筹款活动人工外呼成本降低 78%</text>
+  </g>
+
+  <!-- Pillar 2: Vulnerable Donor Protection & Anti-Pressure Ethics Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#vulnGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 脆弱捐赠人保护锁与零施压伦理红线</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁向认知障碍老人或经济困难者施压募捐！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 历史上外包电话募捐曾因向阿尔茨海默症老人强行扣款引爆丑闻</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 遵守 AFP 募捐伦理守则与英国 Fundraising Regulator 规范</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">认知困惑 / 失业疾病 / 养老金拮据 0ms 止捐锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 一旦检测到受访者言语混乱、忘记刚才说过的话、或提及“刚失业/看病缺钱”</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 0ms 永久熔断募捐请求，温和致谢祝福并标记免打扰保护！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">月捐 (Recurring Gift) 双重显式确认防误扣</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁默认勾选“每月自动扣款”！必须逐字复诵单次 vs 月度代扣</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 拒绝 1次即礼貌结束筹款询问，0% 道德绑架或二次纠缠</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">脆弱长者误捐/被诱导投诉率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 守护公益组织与百年名校社会声誉</text>
+  </g>
+
+  <!-- Pillar 3: Corporate Matching Gift & Tax-Deductible Receipting -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#matchGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 雇主配捐 1:1 翻倍与免税电子票据直发</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">实时唤醒每年被遗忘的 $40亿+ 企业雇主配捐！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 校友承诺捐 $200 后，AI 实时匹配其就职公司 (Double the Donation)</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• “您所在的微软提供 1:1 公益配捐，您的 $200 将自动翻倍为 $400！”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">PCI-DSS 零卡号落盘 + 多渠道认捐兑现</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 通话中实时推送 Apple Pay / 微信支付 / DAF 慈善基金认捐链接</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 大额捐赠 (&gt;=$10,000) 0秒热转接基金会大客户主任 (Major Gifts)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">财政部公益事业捐赠票据 / IRS 501(c)(3) 秒级开具</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 自动核对纳税人识别号/抬头与法定“无商品服务回报”声明</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 支付成功后 5秒内将免税电子收据发送至捐赠人邮箱/手机</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">雇主配捐 (Matching Gift) 捕获率提升 3.4 倍</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">口头认捐到实际到账转化率 (Pledge Fulfillment) 达 91.5%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (NONPROFIT-DONOR-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 公益与校友语音联络必须挂载“脆弱受访者保护锁（检出高龄认知混乱、住院失业或经济拮据 0ms 永久停止募捐请求）”，严禁任何施压或道德绑架；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 严禁将单次捐款诱导为默认按月自动扣款（Recurring Gift 必须双重显式确认），并实时联动 Double the Donation 释放企业 1:1 雇主配捐潜能。</text>
+</svg>
