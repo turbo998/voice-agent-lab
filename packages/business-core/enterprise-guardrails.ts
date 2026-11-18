@@ -1657,6 +1657,34 @@ export function evaluateHospiceBereavementCareGuard(input: {
   };
 }
 
+export interface StadiumEventVenueEvaluation {
+  policyCode: "STADIUM-EVENT-01";
+  alcoholOrderBlocked: boolean;
+  suiteHostApprovalRequired: boolean;
+  congestedExitRerouted: boolean;
+}
+
+/**
+ * Deterministic Mega-Event Stadium Game-Clock Alcohol Cutoff, VIP Suite Tab Cap & Crowd-Density Egress Guard (`STADIUM-EVENT-01`).
+ */
+export function evaluateStadiumEventVenueGuard(input: {
+  pastGameClockAlcoholCutoff: boolean;
+  alcoholicDrinksInOrderCount: number;
+  orderExceedsSuiteHostSingleItemCap: boolean;
+  suiteHostApprovedHighTicketItem: boolean;
+  requestedExitDensityPersonsPerSqm: number;
+}): StadiumEventVenueEvaluation {
+  return {
+    policyCode: "STADIUM-EVENT-01",
+    alcoholOrderBlocked:
+      input.pastGameClockAlcoholCutoff || input.alcoholicDrinksInOrderCount > 2,
+    suiteHostApprovalRequired:
+      input.orderExceedsSuiteHostSingleItemCap && !input.suiteHostApprovedHighTicketItem,
+    congestedExitRerouted: input.requestedExitDensityPersonsPerSqm >= 3.5,
+  };
+}
+
+
 
 
 

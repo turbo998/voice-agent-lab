@@ -156,6 +156,7 @@ flowchart LR
 82. **智慧港口集装箱码头闸口（ISO 6346 第11位校验码）、危化箱（IMDG）专用堆场隔离与跨境报关行 HS 税则归类方案**：[中文](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.md) | [EN](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.en.md)
 83. **全球连锁餐饮（QSR）、现制茶饮咖啡与商超门店后厨 HACCP 食安测温强制报废锁、-20°C 冷库离线语音盘点与交接班方案**：[中文](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.md) | [EN](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.en.md)
 84. **居家安宁疗护（Hospice 24×7 爆发痛分诊）、生命礼仪（FTC 透明报价与零加售锁）及政务银行“身后一件事”免本人核身方案**：[中文](./docs/hospice-palliative-care-bereavement-estate-voice-selection-faq.md) | [EN](./docs/hospice-palliative-care-bereavement-estate-voice-selection-faq.en.md)
+85. **万人体育场馆与大型演唱会（VIP 包厢语音点餐、比赛记分牌断酒令硬锁、105dB 主扩抵消与 8 万人散场防踩踏分流）方案**：[中文](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.md) | [EN](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.en.md)
 
 ---
 

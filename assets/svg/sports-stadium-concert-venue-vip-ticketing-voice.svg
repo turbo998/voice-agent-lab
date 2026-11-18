@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgStad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1E"/>
+      <stop offset="50%" stop-color="#111E3A"/>
+      <stop offset="100%" stop-color="#071022"/>
+    </linearGradient>
+    <linearGradient id="vipGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="alcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="evacGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgStad)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Mega-Event Sports Stadium &amp; Concert Venue: VIP Suite Concierge, Alcohol Cutoff &amp; Evacuation Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">8万人体育场馆/演唱会 VIP 包厢平板点餐、第75分钟/第3节断酒令硬锁、105dB 看台抗噪与散场分流全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#451A03" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#FCD34D" font-size="13" font-weight="600" text-anchor="middle">STADIUM-EVENT-01 · 80k Arena</text>
+
+  <!-- Pillar 1: Luxury VIP Suite Concierge & Halftime Rush -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#vipGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. VIP 商务包厢语音礼宾与中场洪峰调度</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">解决“15分钟中场休息 200间包厢同时催单”瘫痪</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 200间企业包厢在半场哨响瞬间同时按铃加单，服务员根本跑不过来</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 包厢墙面定向阵列麦：“给 308 包厢加一打冰镇精酿和两份和牛拼盘”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">105dB 全场进球欢呼与音响重低音回声消除</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 玻璃门打开时场内欢呼声与演唱会 PA 音响高达 105dB</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 场馆 PA 主扩音轨实时参考信号 AEC 抵消 + 1.2米波束成形</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">包厢主客挂账权限锁 (Suite Host Credit Cap)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 防止访客未经包厢主人同意私自点 $3,000 路易十三名酒挂账</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 超单品阈值自动向包厢管理员 (Suite Admin) 手机推送一键授权</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">VIP 包厢场均酒水餐饮客单价提升 31%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">中场 15分钟黄金窗口订单履约准时率达 96.4%</text>
+  </g>
+
+  <!-- Pillar 2: Statutory Alcohol Cutoff & Age/ID Verification Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#alcGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 赛事断酒令硬锁与防酒驾合规 (TEAM)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁在法定停售节点后继续接单售酒！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• NFL/NBA 第四节开始、棒球第7局、足球第75分钟或演唱会结束前1h</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 违规超时售酒将导致场馆被吊销酒牌 (Liquor License) 并担酒驾连带责任！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">赛事计时器毫秒级联锁 + 单次限购 2杯锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 直连现场记分牌时钟 (Game Clock)：停售哨响 0ms 全场锁死含酒精 SKU</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 自动切换推荐无酒精精酿/能量饮，单笔订单严格限制 &lt;=2杯酒精饮品</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">醉酒闹事识别与送酒员现场 ID 核龄联锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 语音下单仅生成预授权单，送酒员手持 POS 必须扫身份证核满法定年龄</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 检出看台球迷冲突/投掷杂物语音求助 -> 0ms 派最近看台安保员</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">超时违规售酒与未成年人漏核 ID 率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合体育场馆酒类管理规范与 Dram Shop 合规要求</text>
+  </g>
+
+  <!-- Pillar 3: 80,000-Fan Egress Load-Balancing & Emergency Evacuation -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#evacGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 8万人散场动态分流与紧急疏散防踩踏</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将散场人流全部导引向已封控/拥堵地铁口！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 演唱会散场 8万人同时涌向 A口，若 AI 仍按静态地图推荐去 A口</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 极易造成通道超饱和与人群挤压踩踏风险 (&gt;4人/m² 红线)！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">座位区号 (Section/Row) 绑定专属疏散门与网约车上车点</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 观众问：“我坐北看台 118区，散场去哪坐接驳大巴/打网约车？”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 实时联动交警与地铁客流热力图：将北看台定向分流至 P3 接驳区</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">雷暴暂停 (Lightning Delay) 与无障碍轮椅席专车护送</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 露天球场遭遇雷电预警：多语种同步播报看台下避险环廊位置</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 轮椅观众散场一键语音呼叫无障碍电梯专员护送出馆</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">8万人场馆散场清场时间从 65分钟缩至 38分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">地铁单一入口拥堵峰值下降 44%，散场观众满意度大幅跃升</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#F59E0B" font-size="14" font-weight="700">架构师核心选型法则 (STADIUM-EVENT-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 体育场馆餐饮语音点单必须与赛事实时记分牌时钟 (Game Clock) 强联锁，到达法定断酒令时刻 (如第75分钟/第4节) 0ms 物理封锁一切含酒精饮品下单；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 散场寻路与紧急疏散指引必须实时读取各通道人流密度与交警地铁封控状态，严禁将观众导引向人员密度 >=3.5人/m² 的拥堵出口。</text>
+</svg>

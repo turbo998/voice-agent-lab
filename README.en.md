@@ -156,6 +156,7 @@ flowchart LR
 82. **Smart Maritime Port Container Terminal Gate (ISO 6346 Check-Digit), IMDG Hazmat Isolation & Customs HS-Code Brokerage Voice AI**: [EN](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.en.md) | [中文](./docs/smart-port-container-terminal-customs-clearance-voice-selection-faq.md)
 83. **Chain QSR, Coffee & Supermarket Store Operations: HACCP Food-Safety Lock (4.4°C–60°C), -20°C Walk-In Freezer Offline Inventory & Shift Handover Voice AI**: [EN](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.en.md) | [中文](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.md)
 84. **Hospice & Palliative Care 24×7 Triage (DNR / Breakthrough Pain), FTC Funeral Rule Zero-Upsell Ethics & Bereavement Estate Voice AI**: [EN](./docs/hospice-palliative-care-bereavement-estate-voice-selection-faq.en.md) | [中文](./docs/hospice-palliative-care-bereavement-estate-voice-selection-faq.md)
+85. **Mega-Event Sports Stadium & Concert Venue Voice AI: VIP Suite Concierge, Game-Clock Alcohol Cutoff Lock & 80,000-Fan Egress Routing**: [EN](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.en.md) | [中文](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.md)
 
 ---
 
