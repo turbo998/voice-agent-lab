@@ -883,6 +883,35 @@ export function evaluateAffectiveDeescalationGuard(input: {
   };
 }
 
+export interface AlphanumericSlotDisambiguationEvaluation {
+  policyCode: "ALPHANUM-CHECKSUM-01";
+  vinContainsForbiddenChars: boolean;
+  natoPhoneticReadbackRequired: boolean;
+  partialSlotRepairOnly: boolean;
+  pivotToOutOfBandSms: boolean;
+}
+
+/**
+ * Deterministic Alphanumeric Entity Disambiguation (PNR/VIN/Policy ID) & NATO Phonetic Readback Guard (`ALPHANUM-CHECKSUM-01`).
+ * Rejects ISO 3779 forbidden VIN characters (I/O/Q), enforces NATO phonetic chunked readback when fricative/nasal
+ * slot confidence <0.82, repairs only the ambiguous chunk, and pivots to SMS/WhatsApp card after >=2 failed repairs.
+ */
+export function evaluateAlphanumericSlotDisambiguationGuard(input: {
+  candidateVinOrCode: string;
+  lowestSlotConfidence: number;
+  failedVoiceRepairAttempts: number;
+}): AlphanumericSlotDisambiguationEvaluation {
+  const forbidden = /[IOQ]/i.test(input.candidateVinOrCode);
+  const lowConf = input.lowestSlotConfidence < 0.82;
+  return {
+    policyCode: "ALPHANUM-CHECKSUM-01",
+    vinContainsForbiddenChars: forbidden,
+    natoPhoneticReadbackRequired: lowConf || forbidden,
+    partialSlotRepairOnly: lowConf && input.failedVoiceRepairAttempts < 2,
+    pivotToOutOfBandSms: input.failedVoiceRepairAttempts >= 2,
+  };
+}
+
 
 
 
