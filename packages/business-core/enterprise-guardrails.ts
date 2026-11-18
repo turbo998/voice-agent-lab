@@ -274,4 +274,46 @@ export function evaluateGovUtilityEmergencyGuard(input: {
   };
 }
 
+export interface AiVoiceInterviewerFairnessInput {
+  onsetDelayMs: number;
+  pitchVarianceHz: number;
+  usesCollectiveWeOnly: boolean;
+  rawAudioPassedToJudge: boolean;
+  lowestGroupSelectionRate: number;
+  highestGroupSelectionRate: number;
+}
+
+export interface AiVoiceInterviewerFairnessEvaluation {
+  policyCode: "HR-INTERVIEW-01";
+  teleprompterPivotTriggered: boolean;
+  starIndividualActionProbeRequired: boolean;
+  blindScoringCompliant: boolean;
+  disparateImpactRatio: number;
+  eeocFourFifthsPassed: boolean;
+}
+
+/**
+ * Deterministic AI Voice Interviewer Integrity & Algorithmic Fairness Gate (`HR-INTERVIEW-01`).
+ * Triggers contextual micro-pivots on teleprompter reading cadence (`onsetDelayMs >= 1600 && pitchVarianceHz <= 8`),
+ * enforces blind transcript-only scoring (`rawAudioPassedToJudge === false`), and verifies EEOC 4/5ths (`>=0.80`) parity.
+ */
+export function evaluateAiVoiceInterviewerFairnessGuard(
+  input: AiVoiceInterviewerFairnessInput,
+): AiVoiceInterviewerFairnessEvaluation {
+  const teleprompterPivotTriggered = input.onsetDelayMs >= 1600 && input.pitchVarianceHz <= 8;
+  const disparateImpactRatio =
+    input.highestGroupSelectionRate > 0
+      ? Number((input.lowestGroupSelectionRate / input.highestGroupSelectionRate).toFixed(2))
+      : 1;
+  return {
+    policyCode: "HR-INTERVIEW-01",
+    teleprompterPivotTriggered,
+    starIndividualActionProbeRequired: input.usesCollectiveWeOnly || teleprompterPivotTriggered,
+    blindScoringCompliant: !input.rawAudioPassedToJudge,
+    disparateImpactRatio,
+    eeocFourFifthsPassed: disparateImpactRatio >= 0.8 && !input.rawAudioPassedToJudge,
+  };
+}
+
+
 

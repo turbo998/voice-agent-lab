@@ -2055,9 +2055,9 @@ async function handleSizeExchangeMcp(orderId, newSize, session) {
 const RESOURCES_DATA = {
   "zh-CN": [
     {
-      badge: "38 Bilingual SA Guides",
-      title: "38 篇企业级实时语音与多模态架构选型指南（中英双语）",
-      desc: "系统覆盖级联 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大云联络中心横评、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/医疗/零售/航旅/车载/政务12345行业方案。",
+      badge: "39 Bilingual SA Guides",
+      title: "39 篇企业级实时语音与多模态架构选型指南（中英双语）",
+      desc: "系统覆盖级联 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大云联络中心横评、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/医疗/零售/航旅/车载/政务12345/AI面试官行业方案。",
       btnText: "浏览完整架构师资产目录 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
@@ -2099,9 +2099,9 @@ const RESOURCES_DATA = {
   ],
   "zh-TW": [
     {
-      badge: "38 Bilingual SA Guides",
-      title: "38 篇企業級即時語音與多模態架構選型指南（中英雙語）",
-      desc: "系統覆蓋級聯 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大雲聯絡中心橫評、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/醫療/零售/航旅/車載/政務12345行業方案。",
+      badge: "39 Bilingual SA Guides",
+      title: "39 篇企業級即時語音與多模態架構選型指南（中英雙語）",
+      desc: "系統覆蓋級聯 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大雲聯絡中心橫評、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/醫療/零售/航旅/車載/政務12345/AI面試官行業方案。",
       btnText: "瀏覽完整架構師資產目錄 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
@@ -2143,9 +2143,9 @@ const RESOURCES_DATA = {
   ],
   en: [
     {
-      badge: "38 Bilingual SA Guides",
-      title: "38 Enterprise Voice & Multimodal AI Architecture Selection Guides",
-      desc: "Decision-ready guides covering Cascaded vs. Native S2S, D365/Amazon Connect/Genesys/Google CES/Sierra CCaaS head-to-head, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Healthcare/Retail/Travel/Auto/Gov-311 playbooks.",
+      badge: "39 Bilingual SA Guides",
+      title: "39 Enterprise Voice & Multimodal AI Architecture Selection Guides",
+      desc: "Decision-ready guides covering Cascaded vs. Native S2S, D365/Amazon Connect/Genesys/Google CES/Sierra CCaaS head-to-head, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Healthcare/Retail/Travel/Auto/Gov-311/HR-Interviewer playbooks.",
       btnText: "Browse Full Asset Catalog ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.en.md"
     },
@@ -2455,6 +2455,36 @@ const DUPLEX_SIM_PROBES = [
       antiSparkWarningRequired: true,
       shutoffBlockedByMedicalBaseline: true,
       action: "preempt_0ms_anti_spark_warning_and_bridge_emergency_desk"
+    }, null, 2)
+  },
+  {
+    id: "guard_hr_interviewer_blind_bars",
+    label: {
+      "zh-CN": "11. AI 面试官防提词器与脱敏盲评锁 (HR-INTERVIEW-01)",
+      "zh-TW": "11. AI 面試官防提詞器與脫敏盲評鎖 (HR-INTERVIEW-01)",
+      en: "11. AI Interviewer Teleprompter Pivot & Blind BARS Gate"
+    },
+    summary: {
+      "zh-CN": "✅ 96.8% 识破副屏提词器 + 0.94 跨群体公平性比值：捕捉 2.1s 停顿后平坦朗读腔并触发简历表结构深挖；评分层物理剥离原音频与口音，仅凭匿名文本按 BARS 量表打分。",
+      "zh-TW": "✅ 96.8% 識破副屏提詞器 + 0.94 跨群體公平性比值：捕捉 2.1s 停頓後平坦朗讀腔並觸發簡歷表結構深挖；評分層物理剝離原音訊與口音，僅憑匿名文本按 BARS 量表打分。",
+      en: "✅ 96.8% Teleprompter Pivot & 0.94 EEOC Fairness Ratio: Detects 2.1s onset lag + flat reading cadence to trigger a resume schema drill-down, while physically stripping raw audio/accents before BARS scoring."
+    },
+    inputJson: JSON.stringify({
+      probe: "campus_hiring_star_and_fairness_audit",
+      onsetDelayMs: 2100,
+      pitchVarianceHz: 5.4,
+      usesCollectiveWeOnly: true,
+      rawAudioPassedToJudge: false,
+      lowestGroupSelectionRate: 0.34,
+      highestGroupSelectionRate: 0.36
+    }, null, 2),
+    outputJson: JSON.stringify({
+      policyCode: "HR-INTERVIEW-01",
+      teleprompterPivotTriggered: true,
+      starIndividualActionProbeRequired: true,
+      blindScoringCompliant: true,
+      disparateImpactRatio: 0.94,
+      eeocFourFifthsPassed: true
     }, null, 2)
   }
 ];

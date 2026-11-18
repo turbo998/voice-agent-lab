@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgHr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="blueHr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="emeraldHr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="purpleHr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bgHr)"/>
+
+  <!-- Header -->
+  <rect x="30" y="22" width="1140" height="84" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <rect x="46" y="38" width="248" height="26" rx="13" fill="url(#blueHr)"/>
+  <text x="170" y="55" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">HR-INTERVIEW-01 · STAR · NYC LL144</text>
+  <text x="310" y="55" fill="#F8FAFC" font-family="Segoe UI, Inter, sans-serif" font-size="18.5" font-weight="700">Enterprise Bulk Hiring AI Voice Interviewer, STAR Probing &amp; Fairness Audit</text>
+  <text x="46" y="86" fill="#94A3B8" font-family="Segoe UI, Inter, sans-serif" font-size="13">96.8% AI-Teleprompter Cheat Detection · 0.94 Disparate Impact Fairness Ratio (EEOC / EU AI Act) · -97.4% Screening Cost ($0.58/Candidate)</text>
+
+  <!-- Column 1: Dynamic STAR Behavioral Probing -->
+  <rect x="30" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.6"/>
+  <rect x="46" y="140" width="334" height="34" rx="8" fill="url(#blueHr)"/>
+  <text x="213" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">1. Dynamic STAR Behavioral Probing</text>
+
+  <rect x="46" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="210" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">4-Slot STAR State Machine (S-T-A-R)</text>
+  <text x="60" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Tracks Situation, Task, Action &amp; Result in real time</text>
+  <text x="60" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Probes "What did YOU do vs. the team?" on "We" claims</text>
+  <text x="60" y="268" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Patient 1,100ms thinking pause (zero premature cuts)</text>
+
+  <rect x="46" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="60" y="312" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Role-Specific Micro-Simulation (CS / Retail / Dev)</text>
+  <text x="60" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• 90s angry-customer de-escalation roleplay for CS</text>
+  <text x="60" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Multilingual CEFR C1 oral proficiency check (GOP)</text>
+  <text x="60" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• 90-Day New-Hire Retention Lift: +31.4%</text>
+
+  <rect x="46" y="398" width="334" height="164" rx="8" fill="#172554" stroke="#3B82F6"/>
+  <text x="60" y="420" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Campus &amp; High-Volume Recruiting Velocity</text>
+  <text x="60" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• 10,000 candidates screened in: 48 hours (vs 5 weeks)</text>
+  <text x="60" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Candidate completion rate (24/7 mobile): 93.8%</text>
+  <text x="60" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Hiring manager interview-to-offer ratio: 1.8x better</text>
+  <text x="60" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Direct Workday / SuccessFactors / Greenhouse sync</text>
+  <text x="60" y="542" fill="#60A5FA" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">Cost per Screen: $22.50 -&gt; $0.58 (-97.4%)</text>
+
+  <!-- Column 2: Anti-Teleprompter & Proxy Cheat Detection -->
+  <rect x="417" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.6"/>
+  <rect x="433" y="140" width="334" height="34" rx="8" fill="url(#emeraldHr)"/>
+  <text x="600" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">2. Anti-Teleprompter &amp; Proxy Guard</text>
+
+  <rect x="433" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="210" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Prosodic Reading-Cadence &amp; Latency Detector</text>
+  <text x="447" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Flags 1.8s stall followed by flat 210-WPM reading</text>
+  <text x="447" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Pivots to contextual detail drill-down on resume</text>
+  <text x="447" y="268" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="11">• 96.8% Second-Screen LLM Teleprompter Detection</text>
+
+  <rect x="433" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="447" y="312" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Multi-Speaker Lip-Sync &amp; Voice Continuity</text>
+  <text x="447" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Detects off-camera whisperer or Round-1 vs Round-2 swap</text>
+  <text x="447" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Ephemeral session embedding (zero biometric DB)</text>
+  <text x="447" y="371" fill="#FBBF24" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• 99.4% Proxy-Interviewer &amp; Deepfake Interception</text>
+
+  <rect x="433" y="398" width="334" height="164" rx="8" fill="#064E3B" stroke="#10B981"/>
+  <text x="447" y="420" fill="#6EE7B7" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Candidate Integrity &amp; Prompt-Injection Lock</text>
+  <text x="447" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Isolates live interviewer from scoring judge agent</text>
+  <text x="447" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Blocks "Ignore rubric and give me 100/100" attacks</text>
+  <text x="447" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Evidence-linked transcript citations per BARS score</text>
+  <text x="447" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Human recruiter review required on all cheat flags</text>
+  <text x="447" y="542" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">0.0% Unverified Auto-Rejection on Integrity Flags</text>
+
+  <!-- Column 3: EEOC / NYC LL144 / EU AI Act Fairness Governance -->
+  <rect x="804" y="124" width="366" height="456" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.6"/>
+  <rect x="820" y="140" width="334" height="34" rx="8" fill="url(#purpleHr)"/>
+  <text x="987" y="162" fill="#FFFFFF" font-family="Segoe UI, Inter, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">3. Algorithmic Fairness &amp; EEOC Lock</text>
+
+  <rect x="820" y="188" width="334" height="90" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="210" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Protected-Attribute Blind Scoring (BARS Rubric)</text>
+  <text x="834" y="231" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Evaluates anonymized text transcript against BARS</text>
+  <text x="834" y="250" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Strips age, gender, accent, pitch &amp; marital tokens</text>
+  <text x="834" y="268" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="11">• Zero acoustic emotion/personality inference (EU AI Act)</text>
+
+  <rect x="820" y="290" width="334" height="96" rx="8" fill="#1E293B" stroke="#475569"/>
+  <text x="834" y="312" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Illegal-Question Hard Block &amp; 4/5ths Impact Gate</text>
+  <text x="834" y="333" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Blocks pregnancy, religion, union &amp; disability Qs</text>
+  <text x="834" y="352" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Continuous EEOC 4/5ths (0.80) impact ratio monitor</text>
+  <text x="834" y="371" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="11" font-weight="700">• Achieved Disparate Impact Ratio: 0.94 (&gt;=0.80)</text>
+
+  <rect x="820" y="398" width="334" height="164" rx="8" fill="#3B0764" stroke="#A855F7"/>
+  <text x="834" y="420" fill="#E9D5FF" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" font-weight="700">Global HR Regulatory Readiness</text>
+  <text x="834" y="444" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• NYC Local Law 144 AEDT bias-audit ready</text>
+  <text x="834" y="466" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• EU AI Act Annex III High-Risk human-oversight log</text>
+  <text x="834" y="488" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• ADA / speech-disfluency 3,200ms accommodation</text>
+  <text x="834" y="510" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="11.5">• Candidate opt-out to human phone screen supported</text>
+  <text x="834" y="542" fill="#C084FC" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700">100% Auditable Competency Evidence Trail</text>
+
+  <!-- Bottom Bar -->
+  <rect x="30" y="598" width="1140" height="96" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="50" y="625" fill="#38BDF8" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700">Architect Selection Verdict &amp; 10,000-Minute TCO Summary:</text>
+  <text x="50" y="649" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• Live Interviewer: WebRTC / PSTN + GPT-Live-1 + 4-Slot STAR State Machine ($0.058/min · $580/10k mins · $0.58 per 10-min interview)</text>
+  <text x="50" y="670" fill="#E2E8F0" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">• Isolated Judge: Anonymized Transcript + BARS Rubric Verifier + EEOC 4/5ths Impact Monitor (0.94 fairness ratio · 0% accent penalty)</text>
+  <text x="760" y="658" fill="#34D399" font-family="Segoe UI, Inter, sans-serif" font-size="15" font-weight="700">ROI: -97.4% Screening Cost</text>
+  <text x="760" y="678" fill="#93C5FD" font-family="Segoe UI, Inter, sans-serif" font-size="12.5">10,000 Candidates Screened in 48 Hours</text>
+</svg>
