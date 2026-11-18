@@ -429,6 +429,35 @@ export function evaluateSocraticTutorFerpaGuard(input: {
   };
 }
 
+export interface TelecomIspOutageSimSwapEvaluation {
+  policyCode: "TELCO-ISP-01";
+  backupHotspotDataGrantedGb: number;
+  resetPinholeInstructionBlocked: boolean;
+  verbalSimSwapBlocked: boolean;
+  cpniCallLogReadoutBlocked: boolean;
+}
+
+/**
+ * Deterministic Telecom Carrier & Broadband ISP Outage, ONT & Anti-SIM-Swap Guard (`TELCO-ISP-01`).
+ * Auto-grants 20GB 5G backup data on active PON OLT fiber cuts, blocks LOID-wiping ONT Reset pinhole
+ * instructions, and hard-blocks verbal SIM/eSIM swaps and FCC CPNI call-detail readouts.
+ */
+export function evaluateTelecomIspOutageSimSwapGuard(input: {
+  activePonOltOutage: boolean;
+  draftReplyMentionsResetPinhole?: boolean;
+  requestsVerbalSimOrEsimSwap?: boolean;
+  requestsCpniCallDetailReadout?: boolean;
+}): TelecomIspOutageSimSwapEvaluation {
+  return {
+    policyCode: "TELCO-ISP-01",
+    backupHotspotDataGrantedGb: input.activePonOltOutage ? 20 : 0,
+    resetPinholeInstructionBlocked: Boolean(input.draftReplyMentionsResetPinhole),
+    verbalSimSwapBlocked: Boolean(input.requestsVerbalSimOrEsimSwap),
+    cpniCallLogReadoutBlocked: Boolean(input.requestsCpniCallDetailReadout),
+  };
+}
+
+
 
 
 
