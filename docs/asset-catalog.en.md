@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (83 Bilingual Guides)
+## 3. Solution Architect Selection Guides (84 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -124,3 +124,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 81. **Non-Profit Charity, Emergency Disaster Relief & University Alumni Voice Fundraising (Phonathon), Vulnerable-Donor Ethics Lock & Matching Gifts**: [EN](./nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.en.md) | [中文](./nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.md)
 82. **Smart Maritime Port Container Terminal Gate (ISO 6346 Check-Digit), IMDG Hazmat Isolation & Customs HS-Code Brokerage Voice AI**: [EN](./smart-port-container-terminal-customs-clearance-voice-selection-faq.en.md) | [中文](./smart-port-container-terminal-customs-clearance-voice-selection-faq.md)
 83. **Chain QSR, Coffee & Supermarket Store Operations: HACCP Food-Safety Lock (4.4°C–60°C), -20°C Walk-In Freezer Offline Inventory & Shift Handover Voice AI**: [EN](./retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.en.md) | [中文](./retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.md)
+84. **Hospice & Palliative Care 24×7 Triage (DNR / Breakthrough Pain), FTC Funeral Rule Zero-Upsell Ethics & Bereavement Estate Voice AI**: [EN](./hospice-palliative-care-bereavement-estate-voice-selection-faq.en.md) | [中文](./hospice-palliative-care-bereavement-estate-voice-selection-faq.md)

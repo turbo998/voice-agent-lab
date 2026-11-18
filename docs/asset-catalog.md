@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（83 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（84 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -124,3 +124,4 @@
 81. **公益慈善基金会、高校校友募捐（Phonathon）、脆弱长者 0ms 止捐伦理保护锁与企业 1:1 雇主配捐翻倍方案**：[中文](./nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.md) | [EN](./nonprofit-charity-alumni-fundraising-donor-voice-selection-faq.en.md)
 82. **智慧港口集装箱码头闸口（ISO 6346 第11位校验码）、危化箱（IMDG）专用堆场隔离与跨境报关行 HS 税则归类方案**：[中文](./smart-port-container-terminal-customs-clearance-voice-selection-faq.md) | [EN](./smart-port-container-terminal-customs-clearance-voice-selection-faq.en.md)
 83. **全球连锁餐饮（QSR）、现制茶饮咖啡与商超门店后厨 HACCP 食安测温强制报废锁、-20°C 冷库离线语音盘点与交接班方案**：[中文](./retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.md) | [EN](./retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.en.md)
+84. **居家安宁疗护（Hospice 24×7 爆发痛分诊）、生命礼仪（FTC 透明报价与零加售锁）及政务银行“身后一件事”免本人核身方案**：[中文](./hospice-palliative-care-bereavement-estate-voice-selection-faq.md) | [EN](./hospice-palliative-care-bereavement-estate-voice-selection-faq.en.md)

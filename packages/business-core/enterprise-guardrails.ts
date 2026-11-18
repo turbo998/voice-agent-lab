@@ -1631,6 +1631,33 @@ export function evaluateStoreHaccpFoodSafetyGuard(input: {
   };
 }
 
+export interface HospiceBereavementCareEvaluation {
+  policyCode: "HOSPICE-CARE-01";
+  opioidDosageAdviceBlocked: boolean;
+  deceasedHolderSelfAuthBypassed: boolean;
+  commercialUpsellBlocked: boolean;
+  oncallHospiceRnBridged: boolean;
+}
+
+/**
+ * Deterministic Hospice Palliative RN Triage, FTC Funeral Rule Zero-Upsell & Bereavement Auth-Bypass Guard (`HOSPICE-CARE-01`).
+ */
+export function evaluateHospiceBereavementCareGuard(input: {
+  breakthroughPainOrDyspneaReported: boolean;
+  draftSuggestsOpioidDoseChange: boolean;
+  accountHolderReportedDeceased: boolean;
+  draftIncludesCommercialUpsell: boolean;
+}): HospiceBereavementCareEvaluation {
+  return {
+    policyCode: "HOSPICE-CARE-01",
+    opioidDosageAdviceBlocked: input.draftSuggestsOpioidDoseChange,
+    deceasedHolderSelfAuthBypassed: input.accountHolderReportedDeceased,
+    commercialUpsellBlocked: input.draftIncludesCommercialUpsell,
+    oncallHospiceRnBridged: input.breakthroughPainOrDyspneaReported,
+  };
+}
+
+
 
 
 
