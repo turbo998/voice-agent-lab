@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgBio" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050F1E"/>
+      <stop offset="50%" stop-color="#0C213D"/>
+      <stop offset="100%" stop-color="#061224"/>
+    </linearGradient>
+    <linearGradient id="coiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="cryoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="torGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgBio)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Biopharma Cold-Chain &amp; CAR-T Cell Therapy Logistics Voice AI: COI/COC &amp; -196°C Cryo Guard</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">细胞与基因治疗 (CAR-T) 特种物流：Vein-to-Vein 唯一身份链 (COI) 双人声纹锁、-196°C 液氮罐防开箱及超温 TOR 救援全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">BIOPHARMA-COLD-01 · GDP</text>
+
+  <!-- Pillar 1: Autologous CAR-T Vein-to-Vein Chain of Identity (COI) Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#coiGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 自体 CAR-T 唯一身份链 (COI) 双人声纹锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 自体细胞药一旦输错患者 = 100% 致命急性排异！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• CAR-T 全球仅此 1 袋（单针 ¥120万/$450k），专为该患者 T细胞定制</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 从单采血 (Apheresis) 到回输床旁：COI 编码错 1位即刻 0ms 熔断交接！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">医院细胞库 &lt;-&gt; 特种押运员双人北约音标复诵锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 交接时戴防冻手套无法敲键盘：语音逐位复诵 COI + SEC 编码</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 强制核验交接双方独立声纹签名，实时写入 TrakCel / Vineti 区块链台账</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">患者清淋化疗 (Lymphodepletion) 前到货确定性锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁在 CAR-T 液氮罐未安全运抵医院前提前给患者清淋摧毁免疫系统！</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 押运签收且罐内温度 &lt;=-150°C 达标后，0ms 语音通知主治医生解锁清淋</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">Vein-to-Vein 身份链 (COI/COC) 交接差错率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 FACT-JACIE 细胞治疗认证与 FDA 监管链标准</text>
+  </g>
+
+  <!-- Pillar 2: -196°C Cryo-Shipper Anti-Tilt & Airport X-Ray/Open-Lid Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#cryoGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. -196°C 液氮干式罐防倾倒与安检禁开盖锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁机场安检/海关开盖检查或强光照射活体细胞！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• -196°C 气相液氮罐 (Dry Vapor Shipper) 一旦在常温下开盖暴晒 3分钟</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或罐体横放倾倒 &gt;60度导致液氮急速挥发 = 百万美元救命药当场失活报废！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="174" fill="#E9D5FF" font-size="13" font-weight="700">陀螺仪倾倒 (&gt;45°) 与罐温 (&gt;-150°C) 0ms 强呼押运员</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 货舱装卸工把液氮蘑菇罐横着放：Smart Monitor 0ms 触发语音急呼</text>
+    <text x="30" y="214" fill="#C084FC" font-size="12">• 15秒内直接打通机坪押运专员与航司特种货站经理立即扶正罐体！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">海关/机场安检“免 X光免开箱批文”多语种语音直通</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 押运员在口岸遇阻：一键语音播报 IATA 活体生物制品免检编码与海关批文</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 0ms 桥接药企全球控制塔 (Control Tower) 与口岸关务专员</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">液氮罐违规开盖与横放失温报废事故 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">跨国细胞治疗冷链通关放行时间从 4小时缩至 20分钟</text>
+  </g>
+
+  <!-- Pillar 3: Time-Out-of-Refrigeration (TOR) Budget & Dry-Ice Re-Icing -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F43F5E" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#torGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 剩余热稳定预算 (TOR) 精算与干冰补给救援</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁把短暂超温但未超 TOR 预算的昂贵新药盲目销毁！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 机坪装卸暴露在 12°C 达 40分钟：若总允许脱冷时间 (TOR) 为 6小时</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 严禁随意报废或盲目继续派送！必须核算累计 MKT (平均动力学温度)！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">航班备降/延误 -> 最近 GMP 液氮/干冰补给站秒级调度</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 跨洋航班备降法兰克福，液氮罐静态保持期仅剩 14小时</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• AI 10秒内语音调度机场周边 World Courier / Markaen 认证补液站救急</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">药企质量受权人 (QP) 24×7 温度偏移放行语音签批</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 医院药房收货发现温度计黄灯：语音上报批次号与 Temptime 曲线</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动计算剩余有效期并桥接 QP 质量受权人 5分钟内下达可用/隔离指令</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#F43F5E"/>
+    <text x="178" y="356" fill="#FDA4AF" font-size="13" font-weight="700" text-anchor="middle">在途超温偏移 (Excursion) 应急抢救成功率达 99.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 满足 EU GDP / USP &lt;1079&gt; 医药良好分销规范</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (BIOPHARMA-COLD-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 自体 CAR-T 细胞治疗物流交接必须 100% 强制双人语音复诵唯一身份链 (COI) 与监管链 (COC)，且在液氮罐安全抵院达标前严禁解锁患者清淋化疗；</text>
+  <text x="68" y="606" fill="#FDA4AF" font-size="13">2. -196°C 液氮罐一旦检出倾倒 (>45°) 或未经授权开盖必须 0ms 强呼机坪押运员扶正，任何超温偏移必须经 QP 受权人核算 TOR 预算后方可放行使用。</text>
+</svg>

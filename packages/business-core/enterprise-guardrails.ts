@@ -2002,6 +2002,32 @@ export function evaluateBanquetAllergenCutoffGuard(input: {
   };
 }
 
+export interface BiopharmaColdChainCartEvaluation {
+  policyCode: "BIOPHARMA-COLD-01";
+  lymphodepletionChemoReleaseAllowed: boolean;
+  immediateTarmacUprightCallTriggered: boolean;
+  tempExcursionQuarantinedPendingQp: boolean;
+}
+
+/**
+ * Deterministic Biopharma Cold-Chain & CAR-T Cell Therapy COI Dual-Voiceprint, -196°C Tilt Rescue & QP Excursion Guard (`BIOPHARMA-COLD-01`).
+ */
+export function evaluateBiopharmaColdChainCartGuard(input: {
+  coiDualVoiceprintVerified: boolean;
+  cryoShipperArrivedAtHospitalBelowMinus150C: boolean;
+  cryoShipperTiltDegrees: number;
+  temperatureExcursionDetected: boolean;
+}): BiopharmaColdChainCartEvaluation {
+  return {
+    policyCode: "BIOPHARMA-COLD-01",
+    lymphodepletionChemoReleaseAllowed:
+      input.coiDualVoiceprintVerified && input.cryoShipperArrivedAtHospitalBelowMinus150C,
+    immediateTarmacUprightCallTriggered: input.cryoShipperTiltDegrees > 45,
+    tempExcursionQuarantinedPendingQp: input.temperatureExcursionDetected,
+  };
+}
+
+
 
 
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (97 Bilingual Guides)
+## 3. Solution Architect Selection Guides (98 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -138,3 +138,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 95. **Retail Pharmacy & PBM Voice AI: ISMP Sound-Alike (LASA) Disambiguation, DEA Schedule-II Lock & Pediatric mg/kg Dose Guard**: [EN](./retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.en.md) | [中文](./retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.md)
 96. **Underground Mining, Oilfield & Petrochemical ATEX/IECEx Voice AI: Blast-Zone UWB Zero-Headcount Lock & H2S Upwind Evacuation**: [EN](./mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.en.md) | [中文](./mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.md)
 97. **Luxury Hotel Wedding & MICE Banquet Voice AI: BEO 72-Hour Cutoff Lock, Anaphylaxis Allergen Purple-Ticket & Floor Command**: [EN](./luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.en.md) | [中文](./luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.md)
+98. **Biopharma Cold-Chain & CAR-T Cell Therapy Logistics Voice AI: Vein-to-Vein COI/COC Lock, -196°C Cryo-Shipper Guard & TOR Excursion Triage**: [EN](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.en.md) | [中文](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.md)

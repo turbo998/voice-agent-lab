@@ -169,6 +169,7 @@ flowchart LR
 95. **连锁药房与 PBM 处方续方（ISMP LASA 同音高危药三元消歧锁、麻精管制药 Schedule II 禁续锁与儿科液体药体重浓度双核）方案**：[中文](./docs/retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.md) | [EN](./docs/retail-pharmacy-pbm-prescription-refill-lasa-voice-selection-faq.en.md)
 96. **地下矿山、油气钻井与石化防爆区（ATEX/MA 本安离线语音、爆破警戒区 UWB 清零+瓦斯三人锁与 H2S 逆风高处逃生）方案**：[中文](./docs/mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.md) | [EN](./docs/mining-oilfield-atex-intrinsically-safe-blast-voice-selection-faq.en.md)
 97. **五星级酒店婚宴与万人会展宴会（二级配方隐性过敏原紫标专餐锁、BEO 72小时保底桌数硬锁与现场起菜联锁）方案**：[中文](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.md) | [EN](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.en.md)
+98. **生物医药冷链与 CAR-T 细胞基因治疗特种物流（唯一身份链 COI 双人声纹锁、-196°C 液氮罐防倾倒强呼与超温 TOR/QP 隔离）方案**：[中文](./docs/biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.md) | [EN](./docs/biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.en.md)
 
 ---
 
