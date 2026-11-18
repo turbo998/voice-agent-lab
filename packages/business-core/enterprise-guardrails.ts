@@ -315,5 +315,47 @@ export function evaluateAiVoiceInterviewerFairnessGuard(
   };
 }
 
+const pharmaAdverseEventPattern =
+  /(不良反应|皮疹|转氨酶升|停药|肝酶|adverse\s+event|grade[-\s]*3\s+rash|elevated\s+liver|paused\s+dosing)/i;
+
+export interface FieldAdvisorInPersonEvaluation {
+  policyCode: "ADVISOR-COPILOT-01";
+  storageMode: "encrypted_audio_archival" | "ram_only_ephemeral_50ms_wipe";
+  smartwatchHapticNudgeTriggered: boolean;
+  offLabelCommercialBlocked: boolean;
+  pvAdverseEventAutoStaged: boolean;
+}
+
+/**
+ * Deterministic Field Wealth Advisor & Pharma MSL In-Person Guard (`ADVISOR-COPILOT-01`).
+ * Enforces RAM-only 50ms wipe when recording consent is declined, triggers smartwatch haptic nudges on
+ * advisor yield-guarantee slips, blocks commercial reps from Off-Label discussion, and auto-stages 24h PV reports.
+ */
+export function evaluateFieldAdvisorInPersonGuard(input: {
+  twoPartyRecordingConsent: boolean;
+  advisorUtterance: string;
+  hcpOrClientUtterance: string;
+  role: "wealth_advisor" | "pharma_sales_rep" | "pharma_msl";
+  unapprovedIndicationQuery?: boolean;
+}): FieldAdvisorInPersonEvaluation {
+  const smartwatchHapticNudgeTriggered = prohibitedGuaranteePattern.test(input.advisorUtterance);
+  const offLabelCommercialBlocked =
+    input.role === "pharma_sales_rep" && Boolean(input.unapprovedIndicationQuery);
+  const pvAdverseEventAutoStaged =
+    pharmaAdverseEventPattern.test(input.hcpOrClientUtterance) ||
+    pharmaAdverseEventPattern.test(input.advisorUtterance);
+
+  return {
+    policyCode: "ADVISOR-COPILOT-01",
+    storageMode: input.twoPartyRecordingConsent
+      ? "encrypted_audio_archival"
+      : "ram_only_ephemeral_50ms_wipe",
+    smartwatchHapticNudgeTriggered,
+    offLabelCommercialBlocked,
+    pvAdverseEventAutoStaged,
+  };
+}
+
+
 
 

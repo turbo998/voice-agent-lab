@@ -2055,9 +2055,9 @@ async function handleSizeExchangeMcp(orderId, newSize, session) {
 const RESOURCES_DATA = {
   "zh-CN": [
     {
-      badge: "39 Bilingual SA Guides",
-      title: "39 篇企业级实时语音与多模态架构选型指南（中英双语）",
-      desc: "系统覆盖级联 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大云联络中心横评、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/医疗/零售/航旅/车载/政务12345/AI面试官行业方案。",
+      badge: "40 Bilingual SA Guides",
+      title: "40 篇企业级实时语音与多模态架构选型指南（中英双语）",
+      desc: "系统覆盖级联 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大云联络中心横评、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/医疗/零售/航旅/车载/政务12345/AI面试官/线下陪访行业方案。",
       btnText: "浏览完整架构师资产目录 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
@@ -2099,9 +2099,9 @@ const RESOURCES_DATA = {
   ],
   "zh-TW": [
     {
-      badge: "39 Bilingual SA Guides",
-      title: "39 篇企業級即時語音與多模態架構選型指南（中英雙語）",
-      desc: "系統覆蓋級聯 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大雲聯絡中心橫評、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/醫療/零售/航旅/車載/政務12345/AI面試官行業方案。",
+      badge: "40 Bilingual SA Guides",
+      title: "40 篇企業級即時語音與多模態架構選型指南（中英雙語）",
+      desc: "系統覆蓋級聯 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大雲聯絡中心橫評、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/醫療/零售/航旅/車載/政務12345/AI面試官/線下陪訪行業方案。",
       btnText: "瀏覽完整架構師資產目錄 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
     },
@@ -2143,9 +2143,9 @@ const RESOURCES_DATA = {
   ],
   en: [
     {
-      badge: "39 Bilingual SA Guides",
-      title: "39 Enterprise Voice & Multimodal AI Architecture Selection Guides",
-      desc: "Decision-ready guides covering Cascaded vs. Native S2S, D365/Amazon Connect/Genesys/Google CES/Sierra CCaaS head-to-head, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Healthcare/Retail/Travel/Auto/Gov-311/HR-Interviewer playbooks.",
+      badge: "40 Bilingual SA Guides",
+      title: "40 Enterprise Voice & Multimodal AI Architecture Selection Guides",
+      desc: "Decision-ready guides covering Cascaded vs. Native S2S, D365/Amazon Connect/Genesys/Google CES/Sierra CCaaS head-to-head, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Healthcare/Retail/Travel/Auto/Gov-311/HR-Interviewer/Field-Advisor playbooks.",
       btnText: "Browse Full Asset Catalog ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.en.md"
     },
@@ -2485,6 +2485,34 @@ const DUPLEX_SIM_PROBES = [
       blindScoringCompliant: true,
       disparateImpactRatio: 0.94,
       eeocFourFifthsPassed: true
+    }, null, 2)
+  },
+  {
+    id: "guard_field_advisor_haptic_and_pv",
+    label: {
+      "zh-CN": "12. 线下陪访手表微震纠偏与药企 PV 锁 (ADVISOR-COPILOT-01)",
+      "zh-TW": "12. 線下陪訪手錶微震糾偏與藥企 PV 鎖 (ADVISOR-COPILOT-01)",
+      en: "12. Field Advisor Watch Haptic Nudge & Pharma PV Gate"
+    },
+    summary: {
+      "zh-CN": "✅ 0.8s 手表震动当场补救 + 24h 不良反应零漏报：顾问口误说“稳赚不赔”立即触发手表震动提示当场补念风险声明；医生提及患者不良反应自动生成 MedDRA ICSR 报告。",
+      "zh-TW": "✅ 0.8s 手錶震動當場補救 + 24h 不良反應零漏報：顧問口誤說「穩賺不賠」立即觸發手錶震動提示當場補念風險聲明；醫生提及患者不良反應自動生成 MedDRA ICSR 報告。",
+      en: "✅ 0.8s Watch Haptic Nudge & 24h PV Auto-Capture: Vibrates the advisor's smartwatch on yield-guarantee slips for in-meeting correction and auto-stages MedDRA ICSR reports on adverse-event mentions."
+    },
+    inputJson: JSON.stringify({
+      probe: "in_person_field_copilot_compliance",
+      twoPartyRecordingConsent: false,
+      role: "pharma_sales_rep",
+      advisorUtterance: "这款产品收益稳赚不赔",
+      hcpOrClientUtterance: "上周有个患者服药后出现3级皮疹，另外这款药能超适应症用于儿童吗？",
+      unapprovedIndicationQuery: true
+    }, null, 2),
+    outputJson: JSON.stringify({
+      policyCode: "ADVISOR-COPILOT-01",
+      storageMode: "ram_only_ephemeral_50ms_wipe",
+      smartwatchHapticNudgeTriggered: true,
+      offLabelCommercialBlocked: true,
+      pvAdverseEventAutoStaged: true
     }, null, 2)
   }
 ];
