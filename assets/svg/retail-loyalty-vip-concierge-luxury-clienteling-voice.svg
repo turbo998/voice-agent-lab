@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgLux" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0914"/>
+      <stop offset="50%" stop-color="#1A142D"/>
+      <stop offset="100%" stop-color="#0F0C1D"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="vicGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="careGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgLux)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#475569" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="23" font-weight="700">Luxury Retail VIC Clienteling Concierge, Private Salon Booking &amp; Brand Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">顶奢品牌与高端百货黑卡 VIP (VIC) 私享语音礼宾、稀缺配额防黄牛锁与法/意专有名词高定音色选型全景图</text>
+  <rect x="912" y="42" width="240" height="34" rx="17" fill="#451A03" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="1032" y="64" fill="#FDE68A" font-size="13" font-weight="600" text-anchor="middle">LUXURY-VIP-01 · Zero-IVR</text>
+
+  <!-- Pillar 1: Zero-IVR White-Glove Greeting & French/Italian Heritage Pronunciation -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#goldGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 零按键白手套迎宾与法/意品牌名发音锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FDE68A" font-size="13" font-weight="700">⛔ 严禁对年消费百万的 VIC 播报“按键 1/2/3”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 黑卡/VIC 手机号呼入 150ms 内识别身份等级與专属 SA</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 直接以温润高定音色尊称姓氏：“下午好，陈女士”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">法语/意大利语/瑞士制表专有名词 IPA 音标锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 杜绝把 Haute Joaillerie、陀飞轮 (Tourbillon) 读成中式英语</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• Azure CNV Pro 训练中/英/法/意母语级优雅混读品牌专属声线</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">严禁使用促销叫卖词 (Anti-Discount Tone Lock)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 物理屏蔽“亲、划算、性价比、打折、秒杀”等廉价电商词汇</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 强制使用高奢字典：“甄选、私享预览、工坊臻品、为您留存”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FDE68A" font-size="13" font-weight="700" text-anchor="middle">品牌调性契合度盲测评分达 4.82 / 5.0</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">消除传统呼叫中心外包坐席口音与话术参差不齐</text>
+  </g>
+
+  <!-- Pillar 2: Private VIC Salon Booking & Dedicated SA Handoff -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#vicGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 私人沙龙 (VIC Room) 预约与专属导购协同</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="82" fill="#E9D5FF" font-size="13" font-weight="700">专属销售顾问 (Dedicated SA) 优先路由</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 优先检测该 VIC 绑定的恒隆/国贸旗舰店专属 SA 是否空闲</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 若专属 SA 正在接待其他贵宾，由 AI 礼宾无缝代订沙龙</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">VIC 鉴赏室 + 饮品偏好 + 车位免排队四联锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 一句话锁定：周六 15:00 独立 VIP 室 + 调配指定尺码成衣</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动读取客户档案备注：“备巴黎水与无糖杏仁曲奇 + 锁地库 VIP 车位”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="270" fill="#93C5FD" font-size="13" font-weight="700">企微 / WhatsApp 极简烫金数字邀请函</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 通话结束 2秒内向客户发送含私密电梯口指引的数字邀请卡</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 同步向门店店长与专属 SA 推送《贵宾到店接待备忘录》</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">高定私享预览邀约到店率从 28% 提升至 64%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单次预约到店平均连带客单价提升 +$4,200</text>
+  </g>
+
+  <!-- Pillar 3: Anti-Scalper Scarcity Protection & High-Watch Care -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#careGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 稀缺配额防黄牛套话锁与名表珠宝养护</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁向非授权来电透露门店限量包/表库存！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 代购/黄牛高频用机器人扫街问：“国贸店今天有几只金表现货？”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 硬锁：电话内绝不报稀缺款精确库存数，仅邀约到店登记心愿单</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#A7F3D0" font-size="13" font-weight="700">瑞士高级制表 / 传世珠宝保养进度与数字证书</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 结合区块链数字保卡 (Aura / NFC) 实时播报返厂洗油保养阶段</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 更换鳄鱼皮表带或改戒圈尺寸一键预约同城装甲专车取送</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">VIC 离任导购防飞单保护 (Clienteling Continuity)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 即使原 SA 离职，客户尺码、忌口、纪念日 100% 沉淀在品牌大脑</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 新接手 SA 在接听前 3 秒自动获得完整历史喜好耳语简报</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#A7F3D0" font-size="13" font-weight="700" text-anchor="middle">100% 阻断黄牛库存扫街套话</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">核心 VIC 年复购留存率提升 +14.6%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#FBBF24" font-size="14" font-weight="700">架构师核心选型法则 (LUXURY-VIP-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 高奢与黑卡礼宾严禁使用按键式 IVR 或廉价促销词汇，必选 Azure CNV Pro 定制中/英/法/意多语优雅声线 + 150ms 白手套识客；</text>
+  <text x="68" y="606" fill="#A7F3D0" font-size="13">2. 电话内执行“稀缺配额零库存披露锁（100% 防黄牛扫货套话）”，并将 VIC 沙龙预约与专属 SA 企微/WhatsApp 备忘录原子打通。</text>
+</svg>

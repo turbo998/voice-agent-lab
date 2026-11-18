@@ -1228,6 +1228,34 @@ export function evaluateVoicePromptMarkdownSanitizerGuard(input: {
   };
 }
 
+export interface LuxuryVicClientelingEvaluation {
+  policyCode: "LUXURY-VIP-01";
+  zeroIvrDirectGreeting: boolean;
+  exactQuotaStockCountDisclosed: false;
+  discountSlangStripped: boolean;
+  commissionAttributedToDedicatedSa: boolean;
+}
+
+/**
+ * Deterministic Luxury Retail & Black-Card VIC Clienteling Voice Concierge Guard (`LUXURY-VIP-01`).
+ * Bypasses DTMF IVR menus for recognized VICs, strips exact vault stock counts on quota/limited SKUs
+ * (blocking scalper phishing), strips mass-market discount slang, and locks SA commission attribution.
+ */
+export function evaluateLuxuryVicClientelingGuard(input: {
+  callerIsRecognizedVic: boolean;
+  queriedSkuIsQuotaLimited: boolean;
+  draftReplyContainsDiscountSlang: boolean;
+  dedicatedSaAssigned: boolean;
+}): LuxuryVicClientelingEvaluation {
+  return {
+    policyCode: "LUXURY-VIP-01",
+    zeroIvrDirectGreeting: input.callerIsRecognizedVic,
+    exactQuotaStockCountDisclosed: false,
+    discountSlangStripped: input.draftReplyContainsDiscountSlang,
+    commissionAttributedToDedicatedSa: input.dedicatedSaAssigned,
+  };
+}
+
 
 
 

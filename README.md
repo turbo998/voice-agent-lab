@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 标准评测报告（双份）** | 《实时语音与多模型路由 7-Card 报告》与《Azure Speech 说话人分离实证 7-Card 报告》 | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 69 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 69 篇选型指南](#-二69-篇企业级语音架构选型指南中英双语) |
+| **🧭 70 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 70 篇选型指南](#-二70-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、69 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、70 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -94,7 +94,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（46 篇）
+### 3.3 高价值企业行业解决方案蓝图（47 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -141,6 +141,7 @@ flowchart LR
 67. **主流企业 CRM 与工单桌面（Dynamics 365 CIF v2 vs Salesforce SCV vs ServiceNow vs Zendesk）语音弹屏与写回方案**：[中文](./docs/voice-agent-crm-ctis-salesforce-service-now-dynamics-integration-selection-faq.md) | [EN](./docs/voice-agent-crm-ctis-salesforce-service-now-dynamics-integration-selection-faq.en.md)
 68. **企业自建开源语音模型（Faster-Whisper / SenseVoice + CosyVoice 2 / Fish Speech / Kokoro）GPU 并发与云端 TCO 临界点方案**：[中文](./docs/open-source-local-tts-stt-cosyvoice-fishspeech-kokoro-whisper-vllm-selection-faq.md) | [EN](./docs/open-source-local-tts-stt-cosyvoice-fishspeech-kokoro-whisper-vllm-selection-faq.en.md)
 69. **实时语音大模型口语化提示词工程（Voice Prompt）、防朗读 Markdown/URL 清洗器与确定性 SSML 韵律控制方案**：[中文](./docs/enterprise-voice-prompt-engineering-persona-spoken-style-ssml-selection-faq.md) | [EN](./docs/enterprise-voice-prompt-engineering-persona-spoken-style-ssml-selection-faq.en.md)
+70. **顶奢品牌与高端百货黑卡 VIP（VIC）私享语音礼宾、稀缺配额防黄牛锁与私人沙龙四联预约方案**：[中文](./docs/retail-loyalty-vip-concierge-luxury-clienteling-voice-selection-faq.md) | [EN](./docs/retail-loyalty-vip-concierge-luxury-clienteling-voice-selection-faq.en.md)
 
 ---
 
