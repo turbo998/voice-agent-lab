@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (99 Bilingual Guides)
+## 3. Solution Architect Selection Guides (100 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -63,7 +63,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (54 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (77 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -140,3 +140,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 97. **Luxury Hotel Wedding & MICE Banquet Voice AI: BEO 72-Hour Cutoff Lock, Anaphylaxis Allergen Purple-Ticket & Floor Command**: [EN](./luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.en.md) | [中文](./luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.md)
 98. **Biopharma Cold-Chain & CAR-T Cell Therapy Logistics Voice AI: Vein-to-Vein COI/COC Lock, -196°C Cryo-Shipper Guard & TOR Excursion Triage**: [EN](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.en.md) | [中文](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.md)
 99. **Municipal Typhoon, Flood & Wildfire Emergency Evacuation Voice AI: Basement Ban, Bedridden Door-to-Door Rescue & Shelter Load-Balancing**: [EN](./municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.en.md) | [中文](./municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.md)
+100. **Enterprise Real-Time Voice & Multimodal AI Solution Architect 100-Scenario Master Playbook (SA-MASTER-100)**: [EN](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.en.md) | [中文](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.md)

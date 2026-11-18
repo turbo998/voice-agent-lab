@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（99 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（100 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -63,7 +63,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（54 篇）
+### 3.3 高价值企业行业解决方案蓝图（77 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -140,3 +140,4 @@
 97. **五星级酒店婚宴与万人会展宴会（二级配方隐性过敏原紫标专餐锁、BEO 72小时保底桌数硬锁与现场起菜联锁）方案**：[中文](./luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.md) | [EN](./luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.en.md)
 98. **生物医药冷链与 CAR-T 细胞基因治疗特种物流（唯一身份链 COI 双人声纹锁、-196°C 液氮罐防倾倒强呼与超温 TOR/QP 隔离）方案**：[中文](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.md) | [EN](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.en.md)
 99. **城市防汛抗台、山火与地震应急疏散（暴雨严禁下地库挪车与垂直避险锁、失能老人上门背负派单与避难所容量负载均衡）方案**：[中文](./municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.md) | [EN](./municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.en.md)
+100. **企业实时语音与多模态 AI 架构师百景决策总纲（SA-MASTER-100：100大场景全景导航、三大范式分水岭与生产上线十道生死门禁）**：[中文](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.md) | [EN](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.en.md)

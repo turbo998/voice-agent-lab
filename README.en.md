@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 77 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 77 Guides](#-2-77-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 100 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 100 Guides](#-2-100-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 77 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 100 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -94,7 +94,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (54 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (77 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -171,6 +171,7 @@ flowchart LR
 97. **Luxury Hotel Wedding & MICE Banquet Voice AI: BEO 72-Hour Cutoff Lock, Anaphylaxis Allergen Purple-Ticket & Floor Command**: [EN](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.en.md) | [中文](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.md)
 98. **Biopharma Cold-Chain & CAR-T Cell Therapy Logistics Voice AI: Vein-to-Vein COI/COC Lock, -196°C Cryo-Shipper Guard & TOR Excursion Triage**: [EN](./docs/biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.en.md) | [中文](./docs/biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.md)
 99. **Municipal Typhoon, Flood & Wildfire Emergency Evacuation Voice AI: Basement Ban, Bedridden Door-to-Door Rescue & Shelter Load-Balancing**: [EN](./docs/municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.en.md) | [中文](./docs/municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.md)
+100. **Enterprise Real-Time Voice & Multimodal AI Solution Architect 100-Scenario Master Playbook (SA-MASTER-100)**: [EN](./docs/enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.en.md) | [中文](./docs/enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.md)
 
 ---
 
@@ -184,7 +185,7 @@ voice-agent-lab/
 │   ├── benchmark-cards.html              # Realtime Voice & Router 7-Card 4:5 visual benchmark report
 │   ├── diarization-benchmark-cards.html  # Azure Speech Diarization 7-Card benchmark report
 │   └── case-study.html                   # Global 6-language smart-hardware voice CS case study
-├── docs/                                 # Bilingual architecture whitepapers, asset catalog & 36 SA selection guides
+├── docs/                                 # Bilingual architecture whitepapers, asset catalog & 100 SA selection guides
 ├── assets/svg/                           # Clean visual architecture summary infographics (SVG)
 ├── experiments/                          # Reproducible PoCs (Azure Speech Diarization PoC & GPT-Live prototype)
 ├── packages/                             # Zero-dependency TypeScript production guardrail modules

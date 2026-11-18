@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg100" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B16"/>
+      <stop offset="50%" stop-color="#0F1F3A"/>
+      <stop offset="100%" stop-color="#060D1A"/>
+    </linearGradient>
+    <linearGradient id="p1Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="p2Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="p3Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bg100)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Enterprise Voice &amp; Multimodal AI Solution Architect: 100-Guide Master Decision Playbook</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业实时语音与多模态 AI 架构师百景决策总纲：三大技术路线分水岭、TCO 临界算术与十大生产生死红线全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#6EE7B7" font-size="13" font-weight="600" text-anchor="middle">SA-MASTER-100 · Milestone</text>
+
+  <!-- Pillar 1: Paradigm Selection (Native S2S vs Cascaded vs Hybrid) -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#p1Grad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 三大核心范式选型分水岭 (S2S vs 级联 vs 混合)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">路线 A：原生端到端语音 (Native S2S · 280ms)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 适用：高情绪共情导购、语言陪练、VIP 礼宾、金牌销售对练</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 优势：原生感知语调叹气；代价：$0.08–$0.24/分，需外挂护栏锁</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">路线 B：极速流式级联 (Cascaded · 320ms–480ms)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 适用：银行理财双录、药企 eCOA 量表、政务12345、海量客服</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 优势：100% 文本层合规审计、支持专属热词 WFST、$0.035/分</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">路线 C：双轨混合状态机 (Hybrid Dual-Track ★)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 闲聊破冰与意图倾听走 S2S/自然流，高危确认与免责声明 0ms 切锁定 SSML</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 兼得“真人级丝滑温度”与“100% 法定零幻觉合规”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">85% 的生产级大型企业最终收敛至“双轨混合架构”</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">按轮次风险等级 (Risk Tier 1–3) 动态切换自由生成与确定性播报</text>
+  </g>
+
+  <!-- Pillar 2: Orchestration & FinOps TCO Break-Even Laws -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#p2Grad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 编排栈与 FinOps 容量精算黄金临界点</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#2E1065" stroke="#7C3AED"/>
+    <text x="30" y="82" fill="#E9D5FF" font-size="13" font-weight="700">编排选型：ACS Call Automation vs LiveKit vs Pipecat</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 电话网 PSTN/Teams/D365 优先选 ACS + Azure Voice Live</text>
+    <text x="30" y="122" fill="#C084FC" font-size="12">• 跨端 WebRTC 数字人选 LiveKit Agents；多模型自由拼装选 Pipecat</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">三大 TCO 省钱临界线 (FinOps Break-Even Thresholds)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• ① PAYG 转 PTU 预留吞吐：稳态基荷达 58% 利用率即立省 36%</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• ② 云 API 转自建 L40S 开源语音：月均话务 &gt;=35万分钟跨过盈亏线</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Prompt KV Cache 静态前缀 + 小模型分级路由</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 75% 常规查单走轻量级模型 ($0.03/分)，25% 复杂争议走旗舰推理</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 单通设置 $2.50 算力钱包熔断锁，彻底免疫长通话刷爆账单攻击</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A855F7"/>
+    <text x="178" y="356" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">综合单通对话成本从人工 $4.20 压降至 $0.18</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">百万分钟级联络中心年化净省 TCO 超 $1,800,000</text>
+  </g>
+
+  <!-- Pillar 3: The 10 Non-Negotiable Production Guardrails -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#p3Grad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 生产上线十大确定性生死护栏 (10 Golden Locks)</text>
+
+    <rect x="18" y="60" width="320" height="162" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="28" y="82" fill="#6EE7B7" font-size="12" font-weight="700">① Turn-Epoch 打断纪元写栅栏 (0ms 废弃被抢话工具调用)</text>
+    <text x="28" y="102" fill="#E2E8F0" font-size="12">② 180ms 语义 EOU + 1350ms 未完从句/口吃防抢话展宽</text>
+    <text x="28" y="122" fill="#E2E8F0" font-size="12">③ 慢速 API (&gt;800ms) 双阶梯零冷场安抚垫音 (防喊“喂？”)</text>
+    <text x="28" y="142" fill="#E2E8F0" font-size="12">④ 高危写操作 (转账/退订/开阀) 强制复诵确认锁 (Readback)</text>
+    <text x="28" y="162" fill="#E2E8F0" font-size="12">⑤ PCI-DSS DTMF 旁路掩码与 PII 零落盘脱敏</text>
+    <text x="28" y="182" fill="#34D399" font-size="12">⑥ 编号校验位 (Luhn / Mod-11 / ISO 6346) 数学防听错</text>
+    <text x="28" y="202" fill="#34D399" font-size="12">⑦ 流式反 Markdown/URL 清洗器 + 首包 &gt;=4词防断流</text>
+
+    <rect x="18" y="234" width="320" height="86" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="28" y="256" fill="#F8FAFC" font-size="12" font-weight="700">⑧ 危机红旗 (胸痛/燃气味/自伤/SAE) 0ms 零鉴权抢占</text>
+    <text x="28" y="276" fill="#94A3B8" font-size="12">⑨ 带结构化 Whisper 摘要的零重复问询热转接 (Warm Transfer)</text>
+    <text x="28" y="296" fill="#A7F3D0" font-size="12">⑩ CI/CD 真音频仿真 + Round-Trip TTS 逆向转写零错门禁</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">100 篇中英双语企业选型指南 + 68 项确定性护栏函数</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">一站式赋能 Cloud &amp; AI Solution Architect 从售前打单到生产交付</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#10B981" font-size="14" font-weight="700">架构师百景总纲铁律 (SA-MASTER-100)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 永远不要让自由生成的大模型直接驱动具有物理/财务/医疗不可逆后果的写操作——“大模型负责自然倾听与槽位提取，确定性状态机负责红线裁决”；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 任何生产级企业语音智能体上线前，必须全部通过【打断写栅栏、高危复诵确认、危机0ms抢占、带上下文热转接、Round-Trip声学CI门禁】五大黄金验收。</text>
+</svg>

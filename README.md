@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 标准评测报告（双份）** | 《实时语音与多模型路由 7-Card 报告》与《Azure Speech 说话人分离实证 7-Card 报告》 | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 77 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 77 篇选型指南](#-二77-篇企业级语音架构选型指南中英双语) |
+| **🧭 100 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 100 篇选型指南](#-二100-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、77 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、100 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -94,7 +94,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（54 篇）
+### 3.3 高价值企业行业解决方案蓝图（77 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -171,6 +171,7 @@ flowchart LR
 97. **五星级酒店婚宴与万人会展宴会（二级配方隐性过敏原紫标专餐锁、BEO 72小时保底桌数硬锁与现场起菜联锁）方案**：[中文](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.md) | [EN](./docs/luxury-hotel-wedding-mice-banquet-allergen-voice-selection-faq.en.md)
 98. **生物医药冷链与 CAR-T 细胞基因治疗特种物流（唯一身份链 COI 双人声纹锁、-196°C 液氮罐防倾倒强呼与超温 TOR/QP 隔离）方案**：[中文](./docs/biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.md) | [EN](./docs/biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.en.md)
 99. **城市防汛抗台、山火与地震应急疏散（暴雨严禁下地库挪车与垂直避险锁、失能老人上门背负派单与避难所容量负载均衡）方案**：[中文](./docs/municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.md) | [EN](./docs/municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.en.md)
+100. **企业实时语音与多模态 AI 架构师百景决策总纲（SA-MASTER-100：100大场景全景导航、三大范式分水岭与生产上线十道生死门禁）**：[中文](./docs/enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.md) | [EN](./docs/enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.en.md)
 
 ---
 
@@ -184,7 +185,7 @@ voice-agent-lab/
 │   ├── benchmark-cards.html              # 实时语音与多模型路由 7-Card 4:5 视觉评测报告
 │   ├── diarization-benchmark-cards.html  # Azure Speech 说话人分离 7-Card 实测报告
 │   └── case-study.html                   # 智能硬件出海 6 语种 AI 语音客服深度案例
-├── docs/                                 # 中英双语核心架构白皮书、资产目录与 36 篇企业级选型指南
+├── docs/                                 # 中英双语核心架构白皮书、资产目录与 100 篇企业级选型指南
 ├── assets/svg/                           # 配套架构全景与专题可视化信息图 (SVG)
 ├── experiments/                          # 可复现工程原型（Azure Speech 说话人分离 PoC & GPT-Live 原型）
 ├── packages/                             # 零外部依赖确定性生产护栏 TypeScript 模块

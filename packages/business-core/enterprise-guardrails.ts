@@ -2050,6 +2050,38 @@ export function evaluateMunicipalDisasterEvacGuard(input: {
   };
 }
 
+export interface SaMaster100ProductionGateEvaluation {
+  policyCode: "SA-MASTER-100";
+  productionGoLiveApproved: boolean;
+  missingCoreGuardrailsCount: number;
+}
+
+/**
+ * Deterministic 100-Guide Master Production Readiness Gate (`SA-MASTER-100`).
+ */
+export function evaluateSaMaster100ProductionGate(input: {
+  turnEpochBargeInFenceActive: boolean;
+  highRiskWriteReadbackVerified: boolean;
+  crisisZeroAuthPreemptionActive: boolean;
+  warmHandoffContextPacketAttached: boolean;
+  voiceCicdRoundTripGatePassed: boolean;
+}): SaMaster100ProductionGateEvaluation {
+  const checks = [
+    input.turnEpochBargeInFenceActive,
+    input.highRiskWriteReadbackVerified,
+    input.crisisZeroAuthPreemptionActive,
+    input.warmHandoffContextPacketAttached,
+    input.voiceCicdRoundTripGatePassed,
+  ];
+  const missing = checks.filter((ok) => !ok).length;
+  return {
+    policyCode: "SA-MASTER-100",
+    productionGoLiveApproved: missing === 0,
+    missingCoreGuardrailsCount: missing,
+  };
+}
+
+
 
 
 
