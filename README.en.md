@@ -157,6 +157,7 @@ flowchart LR
 83. **Chain QSR, Coffee & Supermarket Store Operations: HACCP Food-Safety Lock (4.4°C–60°C), -20°C Walk-In Freezer Offline Inventory & Shift Handover Voice AI**: [EN](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.en.md) | [中文](./docs/retail-qsr-store-manager-haccp-food-safety-voice-selection-faq.md)
 84. **Hospice & Palliative Care 24×7 Triage (DNR / Breakthrough Pain), FTC Funeral Rule Zero-Upsell Ethics & Bereavement Estate Voice AI**: [EN](./docs/hospice-palliative-care-bereavement-estate-voice-selection-faq.en.md) | [中文](./docs/hospice-palliative-care-bereavement-estate-voice-selection-faq.md)
 85. **Mega-Event Sports Stadium & Concert Venue Voice AI: VIP Suite Concierge, Game-Clock Alcohol Cutoff Lock & 80,000-Fan Egress Routing**: [EN](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.en.md) | [中文](./docs/sports-stadium-concert-venue-vip-ticketing-voice-selection-faq.md)
+86. **Smart Agriculture Agronomist Voice AI: Pesticide Pre-Harvest Interval (PHI) Lock, Banned-Chemical Filter & Grain Elevator Settlement**: [EN](./docs/smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.en.md) | [中文](./docs/smart-agriculture-agronomist-pesticide-phi-grain-voice-selection-faq.md)
 
 ---
 

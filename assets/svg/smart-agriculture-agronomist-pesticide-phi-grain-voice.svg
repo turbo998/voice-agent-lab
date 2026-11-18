@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgAgri" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05130E"/>
+      <stop offset="50%" stop-color="#0C241B"/>
+      <stop offset="100%" stop-color="#06140F"/>
+    </linearGradient>
+    <linearGradient id="phiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="banGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="grainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgAgri)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="22" font-weight="700">Smart Agriculture Agronomist Voice AI: Pesticide Pre-Harvest Interval (PHI) &amp; Grain Elevator</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">智慧农业农艺师田间语音问诊、农药安全间隔期 (PHI) 采收红线锁、禁限用农药拦截与粮库收购结算全景图</text>
+  <rect x="896" y="42" width="256" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="1024" y="64" fill="#6EE7B7" font-size="13" font-weight="600" text-anchor="middle">AGRI-PHI-01 · Food Safety</text>
+
+  <!-- Pillar 1: Field Crop Disease 80KB Photo + Dialect Voice Triage -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#phiGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 田间弱网病虫害看图+方言语音农艺问诊</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#059669"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">解决果园/大棚 2G/弱4G 信号与老农不会打字痛点</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 农户在田埂拍一张叶片背面照片 (端侧压缩至 80KB) + 方言语音描述</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 支持川渝/河南/山东/东北/两广等农村重口音与农药俗称理解</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">农药登记证 (PD证) 靶标作物与植保无人机飞防配比</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严格核对中国农药信息网 / EPA 登记作物与防治对象（禁超范围用药）</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动换算植保无人机 (大疆/极飞) 飞防高浓度母液稀释与防药害助剂</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">盛花期蜜蜂保护与高温大风停喷气象联锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 实时拉取田块级气象：风速 &gt;=3级或气温 &gt;=32°C 自动提醒防飘移药害</text>
+    <text x="30" y="308" fill="#A7F3D0" font-size="12">• 果树花期强制屏蔽对蜜蜂高毒的新烟碱类/拟除虫菊酯类药剂</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">1名农艺专家可服务农户数量从 300户跃升至 8,000户</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">错配药剂导致的烧苗/绝收药害事故率下降 94%</text>
+  </g>
+
+  <!-- Pillar 2: Pesticide Pre-Harvest Interval (PHI) & Banned Chemical Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#banGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 农药安全间隔期 (PHI) 与禁限用农药硬锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁向即将采收的果蔬推荐安全间隔期 (PHI) 超标药！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 农户说：“草莓后天就要摘了上市，今天红蜘蛛多，打点阿维菌素行吗？”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 阿维菌素 PHI 需 7天！若后天摘将导致农残超标被商超整车销毁并入刑！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">蔬菜/果树/茶树“禁限用高毒农药”0ms 物理封杀</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 农业农村部禁限用名录：百草枯、毒死蜱、克百威、甲拌磷、水胺硫磷</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 严禁在蔬菜瓜果上推荐任何限用有机磷农药，100% 切换生物/天敌防治</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">除草剂跨作物漂移与混配酸碱沉淀防爆锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁将灭生性除草剂 (草甘膦/草铵膦) 误当选择性苗后除草剂推荐</text>
+    <text x="30" y="308" fill="#38BDF8" font-size="12">• 拦截铜制剂/石硫合剂强碱性药剂与酸性农药违规桶混</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">采收期农残超标 (MRL Violation) 风险 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合《农产品质量安全法》与 GlobalG.A.P. 出口溯源标准</text>
+  </g>
+
+  <!-- Pillar 3: Grain Elevator Moisture/Dockage & Livestock Biosecurity -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#grainGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 粮库收粮水分扣重透明播报与畜牧防疫</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">中储粮/合作社秋粮收购：预约排队与检斤透明播报</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 种粮大户拉 30吨玉米进库：地磅称重 + 扦样测水分 (18.5%) 与杂质</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 语音逐项透明播报国标水分扣量公式与最终结算粮款，消除压级压价疑虑</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">规模化猪场/牛场重大动物疫病 (非洲猪瘟) 0ms 封锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 养殖户来电：“母猪高烧不退、耳朵发紫、大面积突然死亡”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 严禁当普通感冒开退烧针！0ms 启动生物安全静默封场并直报官方兽医！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">农业保险 (灾害绝收) 卫星遥感+田间语音闪赔</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 冰雹/内涝倒伏后：农户田头语音报案 + 拍摄带北斗 RTK 坐标倒伏照</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动叠加卫星多光谱 NDVI 灾损面积完成农险定损公示</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">秋粮售粮农民排队耗时从 9小时缩短至 45分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">重大动物疫病与休药期 (Withdrawal Period) 违规率 = 0.0%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#10B981" font-size="14" font-weight="700">架构师核心选型法则 (AGRI-PHI-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 农技植保语音处方必须强制校验“距离预计采收天数 &gt;= 农药法定安全间隔期 (PHI)”且 100% 物理拦截农业部禁限用高毒农药（如毒死蜱/克百威用于果蔬）；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 畜牧兽药与饲料咨询必须强制校验肉蛋奶上市前“休药期 (Withdrawal Time)”，且一旦检出群发性高热紫绀猝死必须 0ms 启动生物安全封场告警。</text>
+</svg>

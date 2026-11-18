@@ -1684,6 +1684,33 @@ export function evaluateStadiumEventVenueGuard(input: {
   };
 }
 
+export interface SmartAgriPhiBiosecurityEvaluation {
+  policyCode: "AGRI-PHI-01";
+  chemicalSprayBlockedByPhiOrBan: boolean;
+  biologicalControlRecommended: boolean;
+  livestockEpidemicQuarantineTriggered: boolean;
+}
+
+/**
+ * Deterministic Smart Agriculture Pesticide Pre-Harvest Interval (PHI), Banned-Chemical & Livestock Epidemic Guard (`AGRI-PHI-01`).
+ */
+export function evaluateSmartAgriPhiBiosecurityGuard(input: {
+  daysToHarvest: number;
+  pesticideRequiredPhiDays: number;
+  isBannedOrRestrictedOnFoodCrop: boolean;
+  livestockClusterFeverMassDeathDetected: boolean;
+}): SmartAgriPhiBiosecurityEvaluation {
+  const phiOrBanHit =
+    input.daysToHarvest < input.pesticideRequiredPhiDays || input.isBannedOrRestrictedOnFoodCrop;
+  return {
+    policyCode: "AGRI-PHI-01",
+    chemicalSprayBlockedByPhiOrBan: phiOrBanHit,
+    biologicalControlRecommended: phiOrBanHit,
+    livestockEpidemicQuarantineTriggered: input.livestockClusterFeverMassDeathDetected,
+  };
+}
+
+
 
 
 
