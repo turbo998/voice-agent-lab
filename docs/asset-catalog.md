@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（102 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（103 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -143,3 +143,4 @@
 100. **企业实时语音与多模态 AI 架构师百景决策总纲（SA-MASTER-100：100大场景全景导航、三大范式分水岭与生产上线十道生死门禁）**：[中文](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.md) | [EN](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.en.md)
 101. **2026 实时语音与多模态前沿突破（System-1/System-2 快慢双脑语音推理、端侧 NPU <=3B 协同与实时视频流关键帧门控）方案**：[中文](./voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.md) | [EN](./voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.en.md)
 102. **半导体晶圆厂（ISO 无尘室 FOUP 批次防报废锁）与汽车总装线（Voice Andon 0ms 暗灯升级 & IATF 16949 扭矩硬锁）方案**：[中文](./smart-manufacturing-semiconductor-fab-automotive-jit-andon-voice-selection-faq.md) | [EN](./smart-manufacturing-semiconductor-fab-automotive-jit-andon-voice-selection-faq.en.md)
+103. **商业银行国际结算、信用证（UCP 600）与跨境汇款（SWIFT gpi 追踪、OFAC 反通风报信锁与防 BEC 变造 IBAN 独立回拨）方案**：[中文](./cross-border-trade-finance-swift-gpi-sanctions-lc-voice-selection-faq.md) | [EN](./cross-border-trade-finance-swift-gpi-sanctions-lc-voice-selection-faq.en.md)

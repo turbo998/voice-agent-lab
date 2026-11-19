@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgTf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07101E"/>
+    </linearGradient>
+    <linearGradient id="ofacGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="becGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="fxGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgTf)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Cross-Border Trade Finance, L/C &amp; SWIFT gpi Voice AI: OFAC Anti-Tipping-Off &amp; BEC IBAN Lock</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">国际结算、信用证 (UCP 600) 与跨境汇款语音 AI：OFAC 制裁反通风报信锁、防 BEC 变造 IBAN 独立回拨与 15s 锁汇全景图</text>
+  <rect x="854" y="42" width="298" height="34" rx="17" fill="#450A0A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="1003" y="64" fill="#FCA5A5" font-size="13" font-weight="600" text-anchor="middle">TRADE-FINANCE-SWIFT-01 · Trade</text>
+
+  <!-- Pillar 1: SWIFT gpi Tracking & OFAC/Sanctions Anti-Tipping-Off Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ofacGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. SWIFT gpi 查汇与 OFAC 制裁反通风报信锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁向客户透漏汇款卡在“OFAC 制裁/反洗钱名单命中”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 进出口财务总监来电追问：“为什么我们 $380万美金货款在中转行卡了两天？”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若 AI 照念后台队列原因“命中 SDN 制裁船东”，即构成违法通风报信罪</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">0ms 制裁原因脱敏 (Anti-Tipping-Off) 与合规专席转接</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 正常汇款：通过 UETR 实时播报 SWIFT gpi 所在代理行节点与预计到账</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 命中制裁/AML 拦截：0ms 统一改口为“例行中转行单证核验”并静默转合规官</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">提单船名 (Vessel IMO) 与两用物项 HS 编码实时筛查</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 客户口述海运提单船名或最终目的地时，实时比对 OFAC 影子船队库</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 防止不法分子利用语音咨询试探银行制裁过滤规则阈值</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">制裁/AML 调查原因违规通风报信率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">正常 SWIFT gpi UETR 跨境查汇自助解决率达 91%</text>
+  </g>
+
+  <!-- Pillar 2: Anti-BEC Supplier IBAN Change Out-of-Band Callback Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#becGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 防 BEC 邮件诈骗：变更供应商 IBAN 独立回拨锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">⛔ 严禁仅凭买方来电口头申请即变更境外收款人 IBAN！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 跨国贸易头号骗局 (BEC)：黑客入侵海外供应商邮箱发假通知要求改收款行</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 企业出纳信以为真致电银行要求将货款改汇至某陌生的离岸新 IBAN</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">历史备案电话独立外呼回拨 (Out-of-Band Callback) 锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 检出收款人国家/IBAN 突变：0ms 冻结线上改单并提示 BEC 诈骗高风险</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 强制拨打银行主数据预留的【历史已验证电话】（严禁拨打邮件里的新号码）</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">UCP 600 信用证不符点 (Discrepancy) 放弃权双签锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 进口商来电接受“迟装船/提单不清洁”等重大信用证不符点付款时</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 强制要求企业网银 U-Key 双人复核签章 + 逐条复诵不符点金额</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">BEC 变造境外供应商 IBAN 汇款欺诈拦截率 = 100%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">信用证审单不符点沟通周期从 2.5天缩短至 2小时</text>
+  </g>
+
+  <!-- Pillar 3: 15-Second FX Quote TTL Fence & ISO 20022 Structured Readback -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#fxGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 对公即远期结售汇 15秒报价锁与北约回读</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁允许客户拿 2分钟前的口头汇率做无风险套利！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 外汇市场每秒剧烈波动（尤其非农/美联储议息夜波动达 50-100 pips）</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 客户听完报价后故意拖延 40秒看彭博终端走势再喊“成交”将致银行巨亏</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">15秒刚性锁汇倒计时栅栏 (FX Quote 15s TTL Fence)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 每笔实时询价绑定唯一 Quote ID 与 15,000ms 硬件单调时钟有效期</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 超过 15秒客户才说“确认锁汇” -> 0ms 作废旧价并强制重刷实时牌价</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">SWIFT BIC (8/11位) 与 IBAN (Mod-97) 数学校验锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 自动执行 ISO 13616 IBAN Mod-97 校验码运算，听错 1位立即拦截</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 成交瞬间双轨录音打上 RFC 3161 纳秒级时间戳直送 Murex/Kondor+</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">过期口头汇率延迟套利损失 = $0</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 SWIFT ISO 20022、UCP 600 与 OFAC 合规规范</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#EF4444" font-size="14" font-weight="700">架构师核心选型法则 (TRADE-FINANCE-SWIFT-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 跨境汇款/信用证命中 OFAC 或反洗钱制裁队列时，必须 0ms 屏蔽后台真实拦截原因（严禁通风报信 Tipping-Off），统一播报中性标准审查话术并静默转合规官；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 变更境外供应商收款 IBAN 必须强制通过历史备案号码独立外呼核实（防 BEC 诈骗），且实时询价锁汇必须执行 15秒 TTL 超时作废重报锁。</text>
+</svg>

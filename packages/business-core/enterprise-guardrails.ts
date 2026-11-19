@@ -2145,6 +2145,39 @@ export function evaluateManufacturingFabJitAndonGuard(input: {
   };
 }
 
+export interface TradeFinanceSwiftSanctionsEvaluation {
+  policyCode: "TRADE-FINANCE-SWIFT-01";
+  sanctionsReasonDisclosureBlocked: boolean;
+  silentComplianceEscalationTriggered: boolean;
+  ibanChangeOrLcWaiverAuthorized: boolean;
+  becFraudLockTriggered: boolean;
+  fxQuoteExpiredRequoteRequired: boolean;
+}
+
+/**
+ * Deterministic Cross-Border Trade Finance & SWIFT gpi Compliance Guard (`TRADE-FINANCE-SWIFT-01`).
+ */
+export function evaluateTradeFinanceSwiftSanctionsGuard(input: {
+  ofacOrSanctionsHitDetected: boolean;
+  beneficiaryIbanChangeOrLcWaiverRequested: boolean;
+  outOfBandKnownContactCallbackVerified: boolean;
+  fxQuoteAgeSeconds: number;
+}): TradeFinanceSwiftSanctionsEvaluation {
+  const ibanAuthorized =
+    !input.beneficiaryIbanChangeOrLcWaiverRequested ||
+    input.outOfBandKnownContactCallbackVerified;
+  return {
+    policyCode: "TRADE-FINANCE-SWIFT-01",
+    sanctionsReasonDisclosureBlocked: input.ofacOrSanctionsHitDetected,
+    silentComplianceEscalationTriggered: input.ofacOrSanctionsHitDetected,
+    ibanChangeOrLcWaiverAuthorized: ibanAuthorized,
+    becFraudLockTriggered:
+      input.beneficiaryIbanChangeOrLcWaiverRequested &&
+      !input.outOfBandKnownContactCallbackVerified,
+    fxQuoteExpiredRequoteRequired: input.fxQuoteAgeSeconds > 15,
+  };
+}
+
 
 
 
