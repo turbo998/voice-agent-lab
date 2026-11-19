@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 104 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 104 Guides](#-2-104-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 105 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 105 Guides](#-2-105-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 104 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 105 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -176,6 +176,7 @@ flowchart LR
 102. **Semiconductor Fab Cleanroom & Automotive JIT/JIS Assembly Voice AI: FOUP Lot Scrap Lock, Andon 0ms Escalation & IATF 16949 Torque Traceability**: [EN](./docs/smart-manufacturing-semiconductor-fab-automotive-jit-andon-voice-selection-faq.en.md) | [中文](./docs/smart-manufacturing-semiconductor-fab-automotive-jit-andon-voice-selection-faq.md)
 103. **Cross-Border Trade Finance, Letters of Credit (UCP 600) & SWIFT gpi Voice AI: OFAC Anti-Tipping-Off Lock, Anti-BEC IBAN Callback & 15s FX Fence**: [EN](./docs/cross-border-trade-finance-swift-gpi-sanctions-lc-voice-selection-faq.en.md) | [中文](./docs/cross-border-trade-finance-swift-gpi-sanctions-lc-voice-selection-faq.md)
 104. **Air Cargo (IATA DGR Lithium Hazmat Lock) & Heavy-Truck Fleet (FMCSA HOS / GB 7258 Fatigue Guard) Voice AI**: [EN](./docs/air-cargo-iata-dgr-lithium-hazmat-heavy-truck-fleet-voice-selection-faq.en.md) | [中文](./docs/air-cargo-iata-dgr-lithium-hazmat-heavy-truck-fleet-voice-selection-faq.md)
+105. **Medical Aesthetics & Dermatology Voice AI: 0ms Vascular Occlusion Blindness Rescue, Class-III UDI Anti-Counterfeit & Ad-Law Compliance**: [EN](./docs/medical-aesthetic-dermatology-anti-counterfeit-vascular-occlusion-voice-selection-faq.en.md) | [中文](./docs/medical-aesthetic-dermatology-anti-counterfeit-vascular-occlusion-voice-selection-faq.md)
 
 ---
 

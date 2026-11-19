@@ -2210,6 +2210,30 @@ export function evaluateAirCargoHazmatTruckFleetGuard(input: {
   };
 }
 
+export interface MedicalAestheticSafetyEvaluation {
+  policyCode: "AESTHETIC-MEDICINE-SAFETY-01";
+  vascularOcclusionEmergency90mRescueTriggered: boolean;
+  injectableAdministrationUnlocked: boolean;
+  medicalAdLawViolationBlocked: boolean;
+}
+
+/**
+ * Deterministic Medical Aesthetics & Dermatology Safety Guard (`AESTHETIC-MEDICINE-SAFETY-01`).
+ */
+export function evaluateMedicalAestheticSafetyGuard(input: {
+  postFillerBlanchingSeverePainOrVisionBlur: boolean;
+  udiBatchAndPhysicianLicenseVerified: boolean;
+  draftPromisesGuaranteedYouthOrZeroRisk: boolean;
+}): MedicalAestheticSafetyEvaluation {
+  return {
+    policyCode: "AESTHETIC-MEDICINE-SAFETY-01",
+    vascularOcclusionEmergency90mRescueTriggered:
+      input.postFillerBlanchingSeverePainOrVisionBlur,
+    injectableAdministrationUnlocked: input.udiBatchAndPhysicianLicenseVerified,
+    medicalAdLawViolationBlocked: input.draftPromisesGuaranteedYouthOrZeroRisk,
+  };
+}
+
 
 
 
