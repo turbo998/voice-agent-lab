@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgSoc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#141B35"/>
+      <stop offset="100%" stop-color="#070E1A"/>
+    </linearGradient>
+    <linearGradient id="vishGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="soarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="cisoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgSoc)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Enterprise SOC, SecOps &amp; Incident Response Voice AI: Anti-Vishing MFA Lock &amp; Ransomware SOAR</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业安全运营中心 (SOC/SecOps) 语音 AI：防 Scattered Spider 语音社工重置 MFA 死锁、勒索软件主机隔离与危机通报全景图</text>
+  <rect x="844" y="42" width="308" height="34" rx="17" fill="#450A0A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="998" y="64" fill="#FCA5A5" font-size="13" font-weight="600" text-anchor="middle">SOC-SECOPS-VISHING-01 · SecOps</text>
+
+  <!-- Pillar 1: Anti-Vishing (Scattered Spider) 0ms Verbal MFA Reset Prohibition -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#vishGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 防黑客语音钓鱼 (Vishing)：严禁口头重置 MFA 锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁仅凭电话报出工号/生日即重置 Okta / Entra ID MFA！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• MGM/Caesars 数亿美元勒索案元凶：黑客 (Scattered Spider) 冒充员工打给服务台</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 报出从领英/社工库查到的工号与身份证，诱骗语音客服把 MFA 绑定到黑客新手机！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">0ms 物理废除语音重置 MFA API + 强制视频活体与直属主管双签</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 语音 Agent 100% 物理剥夺 `reset_mfa_device` 与 `elevate_ad_group` 写权限</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 手机丢失重绑 MFA：强制转入带外视频工牌核验 + 直属经理 Teams FIDO2 审批</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Deepfake 实时声纹反欺诈 + SIEM 蜜罐静默告警</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 检出合成语音伪影或海外 VoIP 虚拟号段冒充高管请求紧急开权限</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 表面引导其进入沙盒验证页拖延时间，后台 0ms 向 Microsoft Sentinel 发一级警报</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">语音社工钓鱼 (Vishing) 骗取 MFA 重置成功率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">高危特权账号异常语音请求 100% 实时联动 XDR 锁定会话</text>
+  </g>
+
+  <!-- Pillar 2: Ransomware Lateral-Movement Containment & Dual-Analyst Voice Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#soarGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 勒索软件横向移动遏制与核心网段双声纹锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">分秒必争的黄金 3分钟：既要秒断感染终端，又防误断核心域控</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 凌晨 3点 EDR 检出勒索软件开始通过 SMB 批量加密文件</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 但若黑客伪造告警诱骗 AI 拔掉核心生产数据库或 AD 域控制器网线，全司即刻瘫痪</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">分级 SOAR 隔离锁：普通终端 0ms 自动断网 vs 核心域控双人声纹</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 普通办公 PC 感染：0ms 自动调用 Defender/CrowdStrike 隔离主机并电话叫醒值班员</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 生产数据库 / AD 域控 / 核心网段断网：必须由 SOC 指挥官 + 架构总监双声纹复诵解锁</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">带外 (Out-of-Band) 抗窃听应急语音桥 (当 Teams/内网已沦陷)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 当企业 AD 域与内部通信已被 APT 渗透监听时，严禁在原内网频道讨论抢修</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 0ms 自动拉起独立隔离的带外加密应急语音桥召集蓝军响应专家</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">勒索软件横向移动平均遏制时间 (MTTC) 从 42m 缩至 55s</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">核心生产域控误隔离引发的自残式宕机率 = 0.0%</text>
+  </g>
+
+  <!-- Pillar 3: Attorney-Client Privilege & SEC 4-Day / GDPR 72-Hour Breach Clock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#cisoGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 律师-客户特权保护锁与 SEC/GDPR 披露倒计时</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁在未定性前让 AI 在工单里乱写“重大数据泄露已确认”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 在取证调查尚未明确前，若 AI 自动总结写入“黑客已窃取百万用户隐私且我方配置失误”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 集体诉讼原告律师可通过司法证据开示 (Discovery) 直接调取该 AI 总结作为呈堂证供</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">客观事实纪要锁 (Facts-Only Scribe) &amp; 法律特权通道隔离</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 应急桥纪要 100% 仅记录客观指标（时间戳、IOC 哈希、受影响 IP 与已执行动作）</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 0ms 剥离一切主观归责与法律定性词汇，标注 Attorney-Client Privileged</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">GDPR 72小时 / SEC Form 8-K 4个工作日披露闹钟</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 实时追踪网信办（1小时/24小时）、GDPR（72小时）与 SEC 监管上报时限</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动对齐外部公关稿与内部取证口径，杜绝对外虚假陈述</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">应急桥纪要法律证据污染率 = 0.0% · 监管上报 100% 准点</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 NIST SP 800-61r3、SEC Cybersecurity Rule 与网信办应急预案</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#EF4444" font-size="14" font-weight="700">架构师核心选型法则 (SOC-SECOPS-VISHING-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 企业语音服务台必须 0ms 物理剥夺“仅凭口头问答重置 MFA 或提权”的 API 能力，所有 MFA 重绑强制走带外视频核身+直属主管 FIDO2 硬件审批；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 勒索软件应急响应中，单台非核心终端可 0ms 自动断网隔离，但核心生产数据库与 AD 域控制器网段隔离必须经 SOC 指挥官与架构总监双人声纹复诵授权。</text>
+</svg>

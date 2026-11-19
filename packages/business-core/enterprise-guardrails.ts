@@ -2422,6 +2422,32 @@ export function evaluatePrivateBankingFamilyOfficeGuard(input: {
   };
 }
 
+export interface EnterpriseSocSecopsVoiceEvaluation {
+  policyCode: "SOC-SECOPS-VISHING-01";
+  verbalMfaResetBlocked: boolean;
+  outOfBandVideoIdAndFido2ChallengeRequired: boolean;
+  subnetIsolationAuthorized: boolean;
+}
+
+/**
+ * Deterministic Enterprise SOC, SecOps & Anti-Vishing Voice Guard (`SOC-SECOPS-VISHING-01`).
+ */
+export function evaluateEnterpriseSocSecopsVoiceGuard(input: {
+  verbalMfaResetOrPrivilegeElevationRequested: boolean;
+  productionSubnetOrDcIsolationRequested: boolean;
+  dualSocLeadVoiceprintAndIncidentIdVerified: boolean;
+}): EnterpriseSocSecopsVoiceEvaluation {
+  return {
+    policyCode: "SOC-SECOPS-VISHING-01",
+    verbalMfaResetBlocked: input.verbalMfaResetOrPrivilegeElevationRequested,
+    outOfBandVideoIdAndFido2ChallengeRequired:
+      input.verbalMfaResetOrPrivilegeElevationRequested,
+    subnetIsolationAuthorized:
+      !input.productionSubnetOrDcIsolationRequested ||
+      input.dualSocLeadVoiceprintAndIncidentIdVerified,
+  };
+}
+
 
 
 
