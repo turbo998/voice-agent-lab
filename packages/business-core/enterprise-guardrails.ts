@@ -2941,6 +2941,39 @@ export function evaluateVoiceRagLowLatencyPhoneticGuard(input: {
   };
 }
 
+export interface OutboundVoiceSalesTcpaEvaluation {
+  policyCode: "OUTBOUND-SALES-TCPA-01";
+  outboundDialAuthorized: boolean;
+  instantDncSuppressionCommitted0ms: boolean;
+  voicemailDropOrHangupTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Outbound Voice Sales, TCPA/PIPL Quiet-Hours, <180ms AMD & 0ms DNC Opt-Out Guard (`OUTBOUND-SALES-TCPA-01`).
+ */
+export function evaluateOutboundVoiceSalesTcpaGuard(input: {
+  priorExpressWrittenConsentVerified: boolean;
+  onNationalOrInternalDncList: boolean;
+  recipientLocalHour24: number;
+  prospectUtteredStopCallingOrUnsubscribe: boolean;
+  isVoicemailOrCarrierScreenerBot: boolean;
+}): OutboundVoiceSalesTcpaEvaluation {
+  const withinLocalWindow =
+    input.recipientLocalHour24 >= 9 && input.recipientLocalHour24 < 20;
+  return {
+    policyCode: "OUTBOUND-SALES-TCPA-01",
+    outboundDialAuthorized:
+      input.priorExpressWrittenConsentVerified &&
+      !input.onNationalOrInternalDncList &&
+      withinLocalWindow &&
+      !input.prospectUtteredStopCallingOrUnsubscribe,
+    instantDncSuppressionCommitted0ms:
+      input.prospectUtteredStopCallingOrUnsubscribe,
+    voicemailDropOrHangupTriggered: input.isVoicemailOrCarrierScreenerBot,
+  };
+}
+
+
 
 
 

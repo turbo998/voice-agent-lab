@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgOut" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1A"/>
+      <stop offset="50%" stop-color="#13223B"/>
+      <stop offset="100%" stop-color="#08121F"/>
+    </linearGradient>
+    <linearGradient id="tcpaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="amdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="sdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgOut)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Enterprise Outbound Voice Sales &amp; SDR AI: TCPA/PIPL Compliance, &lt;180ms AMD &amp; Warm Closer Handoff</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业智能外呼营销与线索孵化架构：拨号前 DNC/时区静默期硬门禁、&lt;180ms 语音信箱识别 (AMD)、“别再打了” 0ms 退订锁与高意向转真人</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#450A0A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#FCA5A5" font-size="13" font-weight="600" text-anchor="middle">OUTBOUND-SALES-TCPA-01</text>
+
+  <!-- Pillar 1: Pre-Dial TCPA / PIPL / DNC & Local Time-Zone Gate -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#tcpaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 拨号前 TCPA / 工信部合规与 0ms 退订锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 法律红线：FCC TCPA 单次违规 AI 外呼最高罚 $1,500！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 美国 FCC 已明确将 AI 生成语音纳入 TCPA 管制（必须具备书面/留资 Opt-In）</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 国内工信部与 12321 严查盲呼骚扰、休息时段外呼与退订后重复拨打</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">拨号器前置三重合规闸门 (Pre-Dial Compliance Gate)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• ① 校验留资授权凭证 (Consent ID) + ② 过滤国家与企业内部 DNC 黑名单</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• ③ 按受访者号码归属地时区硬锁仅允许在当地时间 09:00-20:00 拨出</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">“不要再打了” 0ms 全局永久退订锁 (Instant DNC)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 一旦客户说出“别再打了 / 不需要 / Stop calling”，严禁 AI 继续纠缠挽留！</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 0ms 写入全局 DNC 抑制表，礼貌道别并在 2 秒内挂机</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">合规投诉与天价罚单率 0% · 号码信誉受保护</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">配合 STIR/SHAKEN A级签名与品牌来电名片将接通率提升 2.4 倍</text>
+  </g>
+
+  <!-- Pillar 2: <180ms Answering Machine Detection (AMD) & Anti-Dead-Air -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#amdGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. &lt;180ms 语音信箱/彩铃识别 (AMD) 与零冷场</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">痛点 1：传统 AMD 要听 2.5 秒才判断是不是真人，客户早挂了</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户接起电话说“喂？”，如果外呼系统为了测语音信箱沉默 2 秒不吭声</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 客户立刻断定是诈骗/骚扰机器电话，直接秒挂（挂断率高达 65%）</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">痛点 2：没开 AMD，AI 跟苹果“智能留言秘书/移动秘书”聊了3分钟</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• iOS Live Voicemail 或运营商秘书台接起后，AI 把机器提示音当成真人对答</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 浪费 55% 的大模型语音费用，还在客户留言信箱里留下一堆半截废话</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">架构师解法：声学节奏 + 首词长度双模 &lt;180ms 极速分流</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 真人接听通常是短促“喂/Hello?”(&lt;600ms)；信箱则是连续长句与固定频谱</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 真人接起 350ms 内立即热情称呼姓名；命中信箱则等 Beep 声后投递 15s 精简留言</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">前 3 秒秒挂率下降 62% · 信箱误聊费归零</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">完美识别 iOS 实时留言、运营商秘书台与视频彩铃伪接通</text>
+  </g>
+
+  <!-- Pillar 3: Inbound Lead 60-Second Speed-to-Lead & Warm Closer Transfer -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#sdrGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 留资线索黄金 60秒回拨与高意向转金牌销售</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">哈佛商学院铁律：留资后 60 秒内回拨，转化率比 30 分钟后高 391%</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户在官网填完“申请企业版试用/预约试驾”表单的那一刻意向最高</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 人工 SDR 平均要 4 小时才回电话，此时客户早已忘记或选了竞品</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">Webhook 触发 15 秒极速外呼 + BANT 资格清洗</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 表单提交 15 秒内 AI SDR 拨通电话：“刚看到您下载了我们的私有化白皮书...”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自然对话摸清 3 要素：团队规模 (Size)、上线时间表 (Timeline)、核心痛点</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">高意向 A 类线索秒级带摘要桥接真人 AE (Warm Handoff)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 若判定为高价值 A 类客户，当场说“我这就帮您拉行业架构师进线”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 若真人不在线，直接在通话中调用日历 API 锁死明早 10 点腾讯会议/Teams</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">商机预约转化率提升 3.1 倍 · 单条清洗成本 $0.14</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">让年薪 50 万的真人销售只接听已被 AI 筛选成熟的 20% 黄金商机</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#FCA5A5" font-size="14" font-weight="700">企业语音外呼架构师三大生死准则 (OUTBOUND-SALES-TCPA-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 严禁无授权盲呼：聚焦“客户主动留资后 15秒极速回访 (Speed-to-Lead)”与老客关怀；拨号前强制过 DNC 黑名单与当地 09:00-20:00 时区锁；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 180ms 极速区分真人与语音信箱/AI秘书，杜绝前 2 秒死寂导致客户秒挂；客户一旦说出“别再打了”，0ms 写入全局退订库并礼貌挂机。</text>
+</svg>

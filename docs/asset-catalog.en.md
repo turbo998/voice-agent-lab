@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (130 Bilingual Guides)
+## 3. Solution Architect Selection Guides (131 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -171,3 +171,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 128. **2026 Enterprise Streaming STT Head-to-Head: Azure AI Speech vs. Deepgram Nova-3 vs. OpenAI GPT-4o-Transcribe (Whisper) vs. FunASR / Paraformer**: [EN](./streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.en.md) | [中文](./streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.md)
 129. **2026 Enterprise Streaming TTS & Brand Voice Cloning Head-to-Head: Azure Neural HD / CNV vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. CosyVoice 2**: [EN](./streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.en.md) | [中文](./streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.md)
 130. **Enterprise Voice RAG Low-Latency & Phonetic Optimization: <120ms Speculative Prefetch, Homophone Phonetic Indexing & Spoken Answer Cards**: [EN](./enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.en.md) | [中文](./enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.md)
+131. **Enterprise Outbound Voice Sales, AI SDR Lead Qualification & Global Compliance (TCPA / GDPR / MIIT): <180ms AMD, 0ms DNC Opt-Out Lock & Warm Closer Transfer**: [EN](./enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.en.md) | [中文](./enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.md)
