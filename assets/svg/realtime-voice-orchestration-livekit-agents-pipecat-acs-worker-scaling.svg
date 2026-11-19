@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgFw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="lkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="pcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="k8sGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgFw)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Voice AI Orchestration Deep-Dive: LiveKit Agents vs. Pipecat vs. Azure ACS Worker Scaling</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">实时语音编排框架工程实战：LiveKit Agents vs. Pipecat vs. ACS 架构横评、Python GIL 阻塞防抖、进程级隔离与 K8s 零掉线缩容</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">VOICE-FRAMEWORK-BENCHMARK-01</text>
+
+  <!-- Pillar 1: LiveKit Agents vs. Pipecat vs. ACS Call Automation -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#lkGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 三大开源/云原生编排底座能力分野</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">LiveKit Agents (Python / Node.js)：多模态房间与分发之王</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 原生内置 Go 语言高性能 WebRTC SFU + Job Dispatcher 任务分发器</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 最适合：App/网页端 WebRTC 语音+视频共享、多人同场、进程级隔离</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#2E1065" stroke="#8B5CF6"/>
+    <text x="30" y="174" fill="#DDD6FE" font-size="13" font-weight="700">Pipecat (Daily 开源 Python 框架)：帧级流水线积木王</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 万物皆 `Frame`（AudioRawFrame / TextFrame / EndFrame）单向/双向管道</text>
+    <text x="30" y="214" fill="#C4B5FD" font-size="12">• 最适合：深度定制声学滤镜、多模型串联实验与灵活替换 40+ AI 插件</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Azure ACS Call Automation：企业 PSTN/SBC 电话网主力</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 微软云全托管媒体网关，原生支持 Direct Routing 企业 SBC 电话线</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 无需自运维 TURN/SFU 集群，开箱即享金融级 SLA 与 SIP REFER 转接</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">电话热线首选 ACS · App/视频协同首选 LiveKit</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">两者可组合：ACS 接运营商 SIP 电话 + Pipecat/LiveKit 跑编排状态机</text>
+  </g>
+
+  <!-- Pillar 2: Python GIL Audio Starvation & Process-per-Call Isolation -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pcGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 破解 Python GIL 卡顿：单通独立子进程隔离</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 生产惨案：1 个 Python 进程塞 50 路电话，声音全成电音卡顿！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• Python 存在全局解释器锁 (GIL)；当第 1 路电话跑 Silero VAD 或 JSON 解析耗 CPU</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 其余 49 路电话的 20ms 音频发包定时器被阻塞 &gt;40ms，引发全员爆音断续！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">✅ 黄金准则：Process-per-Call 进程级隔离 + 预派生进程池</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 每通活跃电话独享 1 个轻量 OS 子进程（预加载好 ONNX VAD 模型权重）</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 某通电话内存泄漏或异常崩溃，0% 影响同机器其他通话</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">8 核 16GB 生产节点容量定标公式 (Capacity Sizing)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 若端侧跑本地 VAD + 重采样：每 vCPU 稳定承载 3~4 路全双工通话 (8核=28路)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 若将 VAD 卸载至云端 (Server VAD / ACS)：单节点可承载 120+ 路 WebSocket</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">20ms 音频帧抖动率从 18.4% 降至 0.02%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底根治高并发下“机器人说话像卡带”的工程顽疾</text>
+  </g>
+
+  <!-- Pillar 3: Kubernetes Stateful Call Drain & Zero-Drop Autoscaling -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#k8sGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. K8s 发版与缩容“零掐断电话”优雅排空</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：K8s 默认 30秒 SIGKILL 直接掐断正在通话的 500 个客户</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 语音通话是有状态的 5~20 分钟长连接，绝不是 50ms 的无状态 HTTP 请求！</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 若用普通 HPA 缩容或滚动发版，30 秒后 Pod 强杀导致所有在线通话断线</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">三步零掉线排空法 (Zero-Drop Graceful Drain)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• ① `terminationGracePeriodSeconds: 1800` (给足 30 分钟自然挂机窗口)</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• ② 收到 `SIGTERM` 立即停止接新单 (Cordon)，等存量电话最后一通挂断即刻退出</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">基于自定义指标 `active_voice_calls` 的 KEDA 扩缩容</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁仅靠 CPU 百分比触发扩容（等 CPU 飙高时新电话早已排队拒接）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 按集群空闲预热槽位 (`idle_warm_workers &lt; 50`) 秒级提前拉起备用 Pod</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">白班滚动发版 10次 · 在线通话掉线率 0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">让有状态实时语音集群具备无状态微服务般的丝滑持续交付能力</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">实时语音编排框架工程落地三大铁律 (VOICE-FRAMEWORK-BENCHMARK-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 选型黄金组合：企业 PSTN/SBC 电话接入首选 Azure ACS Call Automation；移动端 WebRTC 多模态与开源编排选 LiveKit Agents 或 Pipecat；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 生产防抖与零掉线：Python 编排器必须采用 Process-per-Call 进程隔离防 GIL 卡音，K8s 必须配置 &gt;=1800s SIGTERM 优雅排空窗。</text>
+</svg>

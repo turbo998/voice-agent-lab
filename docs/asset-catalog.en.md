@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (138 Bilingual Guides)
+## 3. Solution Architect Selection Guides (139 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -179,3 +179,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 136. **Enterprise AI Sales Roleplay, Pharma Detailing & Customer Service Sparring Simulator: GPT-Realtime Stress-Testing, Anti-Sycophancy Lock & Auto-Fail Rubric**: [EN](./enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.en.md) | [中文](./enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.md)
 137. **Airline Flight Disruption (IRROPS) Mass Rebooking & Hotel Loyalty Concierge Voice AI: Amadeus/TravelSky Atomic PNR Lock, EU261 Waiver & 50x Weather Surge**: [EN](./airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.en.md) | [中文](./airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.md)
 138. **Native Speech-to-Speech (GPT-Realtime / Gemini Live) vs. Cascaded (STT+LLM+TTS) vs. 80/20 Hybrid: Per-Minute TCO Inflection Calculator & Audio Pruning**: [EN](./native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.en.md) | [中文](./native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.md)
+139. **Real-Time Voice AI Orchestration Frameworks & High-Concurrency Engineering: LiveKit Agents vs. Pipecat vs. Azure ACS, GIL Isolation & K8s Drain**: [EN](./realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.en.md) | [中文](./realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.md)

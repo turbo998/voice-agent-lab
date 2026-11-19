@@ -3181,6 +3181,37 @@ export function evaluateNativeS2sVsCascadedTcoInflectionGuard(input: {
   };
 }
 
+export interface VoiceFrameworkWorkerScalingEvaluation {
+  policyCode: "VOICE-FRAMEWORK-BENCHMARK-01";
+  pythonGilAudioStarvationPrevented: boolean;
+  zeroDropPodScaleDownAuthorized: boolean;
+  productionClusterConfigApproved: boolean;
+}
+
+/**
+ * Deterministic Real-Time Voice Orchestration Framework (LiveKit Agents / Pipecat / ACS) Worker Scaling & Drain Guard (`VOICE-FRAMEWORK-BENCHMARK-01`).
+ */
+export function evaluateVoiceFrameworkWorkerScalingGuard(input: {
+  processPerCallSubprocessIsolationEnabled: boolean;
+  k8sTerminationGracePeriodSeconds: number;
+  activeCallsOnDrainingPodCount: number;
+  idleWarmWorkerSlotHeadroom: number;
+}): VoiceFrameworkWorkerScalingEvaluation {
+  const graceOk = input.k8sTerminationGracePeriodSeconds >= 1800;
+  return {
+    policyCode: "VOICE-FRAMEWORK-BENCHMARK-01",
+    pythonGilAudioStarvationPrevented:
+      input.processPerCallSubprocessIsolationEnabled,
+    zeroDropPodScaleDownAuthorized:
+      graceOk && input.activeCallsOnDrainingPodCount === 0,
+    productionClusterConfigApproved:
+      input.processPerCallSubprocessIsolationEnabled &&
+      graceOk &&
+      input.idleWarmWorkerSlotHeadroom >= 50,
+  };
+}
+
+
 
 
 

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（138 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（139 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -179,3 +179,4 @@
 136. **企业 AI 金牌销售对练、医药代表合规拜访与客服上岗模拟陪练平台（GPT-Realtime 刁钻客户压测、防“讨好放水”异议锁与一票否决评分卡）方案**：[中文](./enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.md) | [EN](./enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.en.md)
 137. **民航航司大面积航班延误取消（IRROPS）极速改签与连锁酒店高卡礼宾语音客服（GDS/中航信先锁新座再退旧票原子锁、非自愿免差价与 `50x` 台风洪峰）方案**：[中文](./airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.md) | [EN](./airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.en.md)
 138. **原生端到端语音大模型（Native S2S）vs. 级联架构（STT+LLM+TTS）vs. 80/20 混合双轨：分钟级 TCO 拐点精算器、长通话平方级计费陷阱与选型总表**：[中文](./native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.md) | [EN](./native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.en.md)
+139. **实时语音智能体编排框架深度横评与高并发工程实战（LiveKit Agents vs. Pipecat vs. Azure ACS、Python GIL 独立子进程防卡顿与 K8s 零掉线缩容）方案**：[中文](./realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.md) | [EN](./realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.en.md)
