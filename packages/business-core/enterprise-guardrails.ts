@@ -2395,6 +2395,33 @@ export function evaluateAutoPropertyFnolClaimsGuard(input: {
   };
 }
 
+export interface PrivateBankingFamilyOfficeEvaluation {
+  policyCode: "WEALTH-PRIVATE-BANK-FO-01";
+  mnpiChineseWallBlockTriggered: boolean;
+  realNameRedactedToCodeNameOnly: boolean;
+  nightDeskOrderExecutionAuthorized: boolean;
+}
+
+/**
+ * Deterministic Private Banking & UHNW Family Office Compliance Guard (`WEALTH-PRIVATE-BANK-FO-01`).
+ */
+export function evaluatePrivateBankingFamilyOfficeGuard(input: {
+  tickerOnMnpiRestrictedOrWatchList: boolean;
+  numberedAccountRealNameSpokenInPrompt: boolean;
+  blockTradeOrLombardPledgeRequested: boolean;
+  fiveElementOrderReadbackAndVoiceprintVerified: boolean;
+}): PrivateBankingFamilyOfficeEvaluation {
+  return {
+    policyCode: "WEALTH-PRIVATE-BANK-FO-01",
+    mnpiChineseWallBlockTriggered: input.tickerOnMnpiRestrictedOrWatchList,
+    realNameRedactedToCodeNameOnly: input.numberedAccountRealNameSpokenInPrompt,
+    nightDeskOrderExecutionAuthorized:
+      !input.tickerOnMnpiRestrictedOrWatchList &&
+      (!input.blockTradeOrLombardPledgeRequested ||
+        input.fiveElementOrderReadbackAndVoiceprintVerified),
+  };
+}
+
 
 
 

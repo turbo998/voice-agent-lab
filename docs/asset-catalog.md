@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（111 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（112 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -152,3 +152,4 @@
 109. **跨国企业主权云与数据跨境合规（PIPL/GDPR 境内媒体硬锚定、跨境伪名化脱敏协同与零数据留存 ZDR）方案**：[中文](./sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.md) | [EN](./sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.en.md)
 110. **城市轨道交通（地铁 OCC 调度中心与 GoA4 全自动无人驾驶：屏蔽门 PSD 防夹 0ms 扣车锁、行调命令逐字复诵与三级大客流限流）方案**：[中文](./urban-rail-metro-occ-dispatch-platform-screen-door-voice-selection-faq.md) | [EN](./urban-rail-metro-occ-dispatch-platform-screen-door-voice-selection-faq.en.md)
 111. **车险与企业财产险第一现场报案（FNOL 高速撤离与涉水禁打火 0ms 抢占、WebRTC 四角+VIN 一镜到底防扩损与代位求偿锁）方案**：[中文](./auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.md) | [EN](./auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.en.md)
+112. **私人银行与超高净值家族办公室（UHNW MNPI 限制名单 0ms 中国墙隔离、瑞士/新加坡保密代号核身与夜间大宗交易五要素复诵）方案**：[中文](./private-banking-family-office-uhnw-mnpi-codename-voice-selection-faq.md) | [EN](./private-banking-family-office-uhnw-mnpi-codename-voice-selection-faq.en.md)
