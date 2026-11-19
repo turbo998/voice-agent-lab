@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (128 Bilingual Guides)
+## 3. Solution Architect Selection Guides (129 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -169,3 +169,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 126. **Retail & E-Commerce Omnichannel Voice AI: 0-Second Caller-ID Order Preload (WISMO), Anti-Abuse RMA Return Locks & 10x Promo Surge Architecture**: [EN](./retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.en.md) | [中文](./retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.md)
 127. **Retail Banking & Credit Card Voice AI: 0ms Protective Fraud Freeze, Reg E / Visa CE 3.0 Chargeback Dispute Intake & Mandatory APR Installment Readback**: [EN](./retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.en.md) | [中文](./retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.md)
 128. **2026 Enterprise Streaming STT Head-to-Head: Azure AI Speech vs. Deepgram Nova-3 vs. OpenAI GPT-4o-Transcribe (Whisper) vs. FunASR / Paraformer**: [EN](./streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.en.md) | [中文](./streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.md)
+129. **2026 Enterprise Streaming TTS & Brand Voice Cloning Head-to-Head: Azure Neural HD / CNV vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. CosyVoice 2**: [EN](./streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.en.md) | [中文](./streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.md)

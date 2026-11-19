@@ -200,6 +200,7 @@ flowchart LR
 126. **Retail & E-Commerce Omnichannel Voice AI: 0-Second Caller-ID Order Preload (WISMO), Anti-Abuse RMA Return Locks & 10x Promo Surge Architecture**: [EN](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.en.md) | [中文](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.md)
 127. **Retail Banking & Credit Card Voice AI: 0ms Protective Fraud Freeze, Reg E / Visa CE 3.0 Chargeback Dispute Intake & Mandatory APR Installment Readback**: [EN](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.en.md) | [中文](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.md)
 128. **2026 Enterprise Streaming STT Head-to-Head: Azure AI Speech vs. Deepgram Nova-3 vs. OpenAI GPT-4o-Transcribe (Whisper) vs. FunASR / Paraformer**: [EN](./docs/streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.en.md) | [中文](./docs/streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.md)
+129. **2026 Enterprise Streaming TTS & Brand Voice Cloning Head-to-Head: Azure Neural HD / CNV vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. CosyVoice 2**: [EN](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.en.md) | [中文](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.md)
 
 ---
 

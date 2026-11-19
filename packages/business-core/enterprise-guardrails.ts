@@ -2881,6 +2881,38 @@ export function evaluateStreamingSttEngineSelectionGuard(input: {
   };
 }
 
+export interface StreamingTtsVoiceCloningEvaluation {
+  policyCode: "STREAMING-TTS-BENCHMARK-01";
+  voiceCloneDeploymentAuthorized: boolean;
+  zeroMispronunciationGuaranteed: boolean;
+  sub150msTtfbStreamingActive: boolean;
+}
+
+/**
+ * Deterministic 2026 Enterprise Streaming TTS, SSML Phoneme Lock & Voice Cloning Consent Guard (`STREAMING-TTS-BENCHMARK-01`).
+ */
+export function evaluateStreamingTtsVoiceCloningGuard(input: {
+  isCustomVoiceClone: boolean;
+  speakerVerbalConsentStatementVerified: boolean;
+  synthWatermarkEnabled: boolean;
+  containsPolyphonicOrFinancialAcronym: boolean;
+  ssmlPhonemeLexiconApplied: boolean;
+  llmTokenStreamChunkedAtFirstClause: boolean;
+}): StreamingTtsVoiceCloningEvaluation {
+  return {
+    policyCode: "STREAMING-TTS-BENCHMARK-01",
+    voiceCloneDeploymentAuthorized:
+      !input.isCustomVoiceClone ||
+      (input.speakerVerbalConsentStatementVerified &&
+        input.synthWatermarkEnabled),
+    zeroMispronunciationGuaranteed:
+      !input.containsPolyphonicOrFinancialAcronym ||
+      input.ssmlPhonemeLexiconApplied,
+    sub150msTtfbStreamingActive: input.llmTokenStreamChunkedAtFirstClause,
+  };
+}
+
+
 
 
 

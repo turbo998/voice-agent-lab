@@ -200,6 +200,7 @@ flowchart LR
 126. **零售与电商全渠道智能语音客服（来电 `0 秒` 免报单号预加载 WISMO、退货转免费上门换码留存 `38%` GMV、防羊毛党闪退锁与大促 `10x` 洪峰弹性）方案**：[中文](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.md) | [EN](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.en.md)
 127. **零售银行与信用卡中心实时语音客服（盗刷丢卡 `0ms` 保护性锁卡、Ethoca/Visa CE 3.0 商户穿透化解 `48.5%` 乌龙拒付、Reg E 采证与账单分期 APR 强披露）方案**：[中文](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.md) | [EN](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.en.md)
 128. **2026 企业级流式语音识别（Streaming STT）深度横评（Azure AI Speech vs. Deepgram Nova-3 vs. GPT-4o-Transcribe / Whisper vs. 开源 FunASR Paraformer）方案**：[中文](./docs/streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.md) | [EN](./docs/streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.en.md)
+129. **2026 企业级流式语音合成与声音克隆（Streaming TTS）深度横评（Azure Neural HD / CNV vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. CosyVoice 2）方案**：[中文](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.md) | [EN](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.en.md)
 
 ---
 
