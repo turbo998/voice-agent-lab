@@ -2560,6 +2560,35 @@ export function evaluateAerospaceSatelliteVoiceGuard(input: {
   };
 }
 
+export interface MaritimeBridgeVtsShipyardEvaluation {
+  policyCode: "MARITIME-BRIDGE-VTS-01";
+  wrongWayRudderAlarmTriggered0ms: boolean;
+  colregsCollisionPreemptionTriggered: boolean;
+  drydockValveOrTankEntryAuthorized: boolean;
+}
+
+/**
+ * Deterministic Maritime Vessel Bridge (IMO SMCP), Port VTS & Shipyard Voice Guard (`MARITIME-BRIDGE-VTS-01`).
+ */
+export function evaluateMaritimeBridgeVtsShipyardGuard(input: {
+  portOrStarboardHelmDirectionAndDegreesMatched: boolean;
+  actualRudderAngleFollowsOrder: boolean;
+  imminentCollisionCpaTcpaAlert: boolean;
+  drydockFloodingOrBallastEntryRequested: boolean;
+  tankAtmosphereO2AndDockFloorZeroHeadcountVerified: boolean;
+}): MaritimeBridgeVtsShipyardEvaluation {
+  return {
+    policyCode: "MARITIME-BRIDGE-VTS-01",
+    wrongWayRudderAlarmTriggered0ms:
+      !input.portOrStarboardHelmDirectionAndDegreesMatched ||
+      !input.actualRudderAngleFollowsOrder,
+    colregsCollisionPreemptionTriggered: input.imminentCollisionCpaTcpaAlert,
+    drydockValveOrTankEntryAuthorized:
+      !input.drydockFloodingOrBallastEntryRequested ||
+      input.tankAtmosphereO2AndDockFloorZeroHeadcountVerified,
+  };
+}
+
 
 
 

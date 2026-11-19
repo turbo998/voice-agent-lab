@@ -33,6 +33,7 @@ import {
   evaluateLegalIntakeConflictNotaryGuard,
   evaluateLuxuryVicClientelingGuard,
   evaluateManufacturingFabJitAndonGuard,
+  evaluateMaritimeBridgeVtsShipyardGuard,
   evaluateMediaDubbingIsochronyGuard,
   evaluateMedicalAestheticSafetyGuard,
   evaluateMiningOilfieldAtexGuard,
@@ -106,11 +107,11 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
     },
     {
       relPath: "docs/asset-catalog.md",
-      mustContain: ["117 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
+      mustContain: ["118 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/asset-catalog.en.md",
-      mustContain: ["117 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
+      mustContain: ["118 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/solution-architecture.md",
@@ -162,13 +163,13 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
   }
 });
 
-test("117 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
+test("118 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
   const docEntries = await readdir(resolve(repoRoot, "docs"));
   const zhFaqFiles = docEntries.filter((f) => f.endsWith("-faq.md")).sort();
   const enFaqFiles = docEntries.filter((f) => f.endsWith("-faq.en.md")).sort();
 
-  assert.equal(zhFaqFiles.length, 117, `Expected 117 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
-  assert.equal(enFaqFiles.length, 117, `Expected 117 curated English selection guides, found ${enFaqFiles.length}`);
+  assert.equal(zhFaqFiles.length, 118, `Expected 118 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
+  assert.equal(enFaqFiles.length, 118, `Expected 118 curated English selection guides, found ${enFaqFiles.length}`);
 
   for (const zhFile of zhFaqFiles) {
     const expectedEn = zhFile.replace(/-faq\.md$/, "-faq.en.md");
@@ -1150,4 +1151,15 @@ test("deterministic enterprise guardrails enforce barge-in epoch fencing, wealth
   assert.equal(aeroSatGuard.launchCommitAuthorized, false);
   assert.equal(aeroSatGuard.countdownHoldPreempted0ms, true);
   assert.equal(aeroSatGuard.hpaRfTransmitAndCriticalTcAuthorized, false);
+
+  const maritimeGuard = evaluateMaritimeBridgeVtsShipyardGuard({
+    portOrStarboardHelmDirectionAndDegreesMatched: true,
+    actualRudderAngleFollowsOrder: false,
+    imminentCollisionCpaTcpaAlert: true,
+    drydockFloodingOrBallastEntryRequested: true,
+    tankAtmosphereO2AndDockFloorZeroHeadcountVerified: false,
+  });
+  assert.equal(maritimeGuard.wrongWayRudderAlarmTriggered0ms, true);
+  assert.equal(maritimeGuard.colregsCollisionPreemptionTriggered, true);
+  assert.equal(maritimeGuard.drydockValveOrTankEntryAuthorized, false);
 });
