@@ -2852,6 +2852,36 @@ export function evaluateRetailBankingCardDisputeGuard(input: {
   };
 }
 
+export interface StreamingSttEngineSelectionEvaluation {
+  policyCode: "STREAMING-STT-BENCHMARK-01";
+  silenceHallucinationBlockedByVadGate: boolean;
+  domainEntityRecognitionApproved: boolean;
+  airGappedContainerEngineSelected: boolean;
+}
+
+/**
+ * Deterministic 2026 Enterprise Streaming STT Selection & Whisper Hallucination Guard (`STREAMING-STT-BENCHMARK-01`).
+ */
+export function evaluateStreamingSttEngineSelectionGuard(input: {
+  isChunkedWhisperOrBatchAsrOnSilence: boolean;
+  vadSpeechProbabilityPct: number;
+  hasCustomBrandSkuOrMedicalTerms: boolean;
+  dynamicPhraseListInjectedAtCallStart: boolean;
+  requiresOnPremOrAirGappedDeployment: boolean;
+}): StreamingSttEngineSelectionEvaluation {
+  return {
+    policyCode: "STREAMING-STT-BENCHMARK-01",
+    silenceHallucinationBlockedByVadGate:
+      input.isChunkedWhisperOrBatchAsrOnSilence &&
+      input.vadSpeechProbabilityPct < 35,
+    domainEntityRecognitionApproved:
+      !input.hasCustomBrandSkuOrMedicalTerms ||
+      input.dynamicPhraseListInjectedAtCallStart,
+    airGappedContainerEngineSelected: input.requiresOnPremOrAirGappedDeployment,
+  };
+}
+
+
 
 
 

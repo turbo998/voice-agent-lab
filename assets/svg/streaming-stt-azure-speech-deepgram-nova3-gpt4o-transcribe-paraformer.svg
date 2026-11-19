@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgStt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="azSttGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="dgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="whGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgStt)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">2026 Enterprise Streaming STT Head-to-Head: Azure Speech vs. Deepgram Nova-3 vs. GPT-4o-Transcribe vs. Paraformer</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业级流式语音识别 (STT) 四大底座横评：8kHz 电话信道实体精确率、PhraseList 热词动态注入、Whisper 静音幻觉防御与边缘容器选型</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">STREAMING-STT-BENCHMARK-01</text>
+
+  <!-- Pillar 1: Azure AI Speech vs. Deepgram Nova-3 -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#azSttGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. Azure AI Speech vs. Deepgram Nova-3</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">Azure AI Speech：多语种混说、动态热词与私有化全能冠军</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 覆盖 140+ 语种/方言，支持句内中英粤无缝 Code-Switching</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 支持会话级 PhraseListGrammar 0秒动态注入客户专属商品 SKU 与人名</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#2E1065" stroke="#8B5CF6"/>
+    <text x="30" y="174" fill="#DDD6FE" font-size="13" font-weight="700">Deepgram Nova-3：北美纯英语极速流式标杆</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 优势：英语流式首字延迟极低 (~150ms)，单价极具竞争力 ($0.0043/min)</text>
+    <text x="30" y="214" fill="#C4B5FD" font-size="12">• 局限：中文、粤语、东南亚小语种及中英夹杂准确率明显弱于 Azure Speech</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">8kHz 电话窄带信道 (G.711 μ-law) 实测分野</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 电话网 8kHz 高频截断下，s/f/th 极易混淆，必须选针对 8kHz 专项训练底座</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• Azure Custom Speech 支持上传企业真实客服录音微调声学与语言模型</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">跨国多语种/亚太首选 Azure · 北美纯英可选 Nova-3</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">动态热词注入将生僻药名与企业内部代号识别率从 78% 提至 99.1%</text>
+  </g>
+
+  <!-- Pillar 2: Whisper / GPT-4o-Transcribe Hallucination Trap -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dgGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. Whisper / GPT-4o-Transcribe 静音幻觉防线</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 生产事故：Whisper 在电话背景底噪下疯狂输出字幕幻觉！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户思考停顿 3 秒只有空调声，Whisper 却转出“请订阅点赞 / 字幕由Amara提供”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 下游 LLM 信以为真开始莫名其妙回答，导致整通客服电话彻底跑偏</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">为什么 Whisper 架构不适合直接裸跑双向流式电话？</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• Whisper 原生为 30 秒 Encoder-Decoder 切片设计，非原生帧级流式 CTC/RNN-T</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 虽上下文语义纠错极强，但句末确认延迟偏高 (~420ms) 且怕纯静音切片</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">强制工程护栏：Silero VAD 语音概率 &gt;=35% 门控 + 幻觉黑名单</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁将 VAD 语音概率 &lt;35% 的底噪帧送入 Whisper / GPT-4o-Transcribe</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 最适合：挂机后长录音高精转写、会议纪要、以及带强语义上下文的语音输入</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">VAD 能量门控拦截 100% 静音字幕幻觉</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">电话实时全双工首选 RNN-T/Conformer 流式架构 (Azure / Nova-3)</text>
+  </g>
+
+  <!-- Pillar 3: FunASR / Paraformer & Disconnected Edge Containers -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#whGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 开源 Paraformer / SenseVoice 与离线容器</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">FunASR (Paraformer / SenseVoice)：中文内网自建高性价比之选</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 非自回归架构推理极快，单张 L4 / A10 GPU 可承载 120+ 路中文流式并发</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• SenseVoice 附带情绪/笑声/叹息事件标签，适合纯中文私有化机房</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">Azure Speech Disconnected Containers：金融/军工断网黄金标准</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 当跨国银行或涉密政企既要求物理断网 (Air-Gapped) 又要求 140 国语言与 SLA</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 直接在本地 K8s 部署 Azure Speech 官方容器，API 与公有云 100% 兼容</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">ITN 逆文本规整 (Inverse Text Normalization) 生产必测项</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 把口语“幺三八零零幺三八”准确规整为“13800138”，把“两千零五十块五”转“¥2050.5”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 开源模型常在金额/日期/邮箱符号 ITN 上翻车，需挂载确定性正则后处理</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">公有云与断网容器一套 SDK 无缝双活切换</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">按语种、延迟、热词与内网要求一键匹配最佳 STT 引擎</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">企业级流式 STT 选型三大黄金铁律 (STREAMING-STT-BENCHMARK-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 跨国多语种、中英粤混说与电话 8kHz 客服首选 Azure AI Speech（配合会话级 PhraseList 动态注入专属商品名与工单号前缀）；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 严禁将未过 VAD 门控的电话底噪直接喂给 Whisper 类模型（防字幕幻觉）；内网断网场景首选 Azure Speech 容器或 FunASR Paraformer。</text>
+</svg>

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（127 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（128 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -168,3 +168,4 @@
 125. **医疗健康患者智能预约挂号、诊前症状导诊与出院随访语音助手（HL7 FHIR 号源锁、红旗急症 `0ms` 护士抢占与爽约率压降 `42%`）方案**：[中文](./healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.md) | [EN](./healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.en.md)
 126. **零售与电商全渠道智能语音客服（来电 `0 秒` 免报单号预加载 WISMO、退货转免费上门换码留存 `38%` GMV、防羊毛党闪退锁与大促 `10x` 洪峰弹性）方案**：[中文](./retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.md) | [EN](./retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.en.md)
 127. **零售银行与信用卡中心实时语音客服（盗刷丢卡 `0ms` 保护性锁卡、Ethoca/Visa CE 3.0 商户穿透化解 `48.5%` 乌龙拒付、Reg E 采证与账单分期 APR 强披露）方案**：[中文](./retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.md) | [EN](./retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.en.md)
+128. **2026 企业级流式语音识别（Streaming STT）深度横评（Azure AI Speech vs. Deepgram Nova-3 vs. GPT-4o-Transcribe / Whisper vs. 开源 FunASR Paraformer）方案**：[中文](./streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.md) | [EN](./streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.en.md)

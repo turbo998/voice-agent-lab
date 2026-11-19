@@ -199,6 +199,7 @@ flowchart LR
 125. **Healthcare Patient Appointment Scheduling, Pre-Visit Symptom Triage & Post-Discharge Follow-Up Voice AI: HL7 FHIR Slot Locking, 0ms Red-Flag Nurse Preemption & HIPAA**: [EN](./docs/healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.en.md) | [中文](./docs/healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.md)
 126. **Retail & E-Commerce Omnichannel Voice AI: 0-Second Caller-ID Order Preload (WISMO), Anti-Abuse RMA Return Locks & 10x Promo Surge Architecture**: [EN](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.en.md) | [中文](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.md)
 127. **Retail Banking & Credit Card Voice AI: 0ms Protective Fraud Freeze, Reg E / Visa CE 3.0 Chargeback Dispute Intake & Mandatory APR Installment Readback**: [EN](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.en.md) | [中文](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.md)
+128. **2026 Enterprise Streaming STT Head-to-Head: Azure AI Speech vs. Deepgram Nova-3 vs. OpenAI GPT-4o-Transcribe (Whisper) vs. FunASR / Paraformer**: [EN](./docs/streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.en.md) | [中文](./docs/streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.md)
 
 ---
 
