@@ -2672,6 +2672,40 @@ export function evaluatePublicProcurementBidEvalGuard(input: {
   };
 }
 
+export interface VoiceMcpTwoPhaseSagaEvaluation {
+  policyCode: "VOICE-MCP-SAGA-01";
+  commitExecutionAuthorized: boolean;
+  sagaCompensationTriggered: boolean;
+  duplicateRequestIdempotentlyDeduped: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice MCP Tool Two-Phase Commit & Barge-In Saga Guard (`VOICE-MCP-SAGA-01`).
+ */
+export function evaluateVoiceMcpTwoPhaseSagaGuard(input: {
+  isMutatingWriteTool: boolean;
+  draftStagedAndReadbackCompleted: boolean;
+  userExplicitlyConfirmedDraft: boolean;
+  turnEpochMatchesCurrent: boolean;
+  isDuplicateIdempotencyKey: boolean;
+}): VoiceMcpTwoPhaseSagaEvaluation {
+  const canCommit =
+    !input.isMutatingWriteTool ||
+    (input.draftStagedAndReadbackCompleted &&
+      input.userExplicitlyConfirmedDraft &&
+      input.turnEpochMatchesCurrent &&
+      !input.isDuplicateIdempotencyKey);
+  return {
+    policyCode: "VOICE-MCP-SAGA-01",
+    commitExecutionAuthorized: canCommit,
+    sagaCompensationTriggered:
+      input.isMutatingWriteTool &&
+      input.draftStagedAndReadbackCompleted &&
+      !input.turnEpochMatchesCurrent,
+    duplicateRequestIdempotentlyDeduped: input.isDuplicateIdempotencyKey,
+  };
+}
+
 
 
 
