@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (108 Bilingual Guides)
+## 3. Solution Architect Selection Guides (109 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -149,3 +149,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 106. **Pharma Medical Information (MedInfo / MIRF) & Off-Label Compliance Voice AI: Commercial Firewall, Licensed-HCP Gate & PQC Lot Lock**: [EN](./pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.en.md) | [中文](./pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.md)
 107. **Hyperscale AI Data Center (AIDC) & NOC Voice Copilot: 0ms Liquid-Cooling Leak Interlock, HV Switchgear Two-Person Readback & Alarm-Storm Triage**: [EN](./aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.en.md) | [中文](./aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.md)
 108. **Next-Gen Warehouse Pick-by-Voice & Cold-Chain Dock Receiving Voice AI: Bin Check-Digit Lock, >-12°C Dock Rejection & Allergen-Safe Substitution**: [EN](./warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.en.md) | [中文](./warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.md)
+109. **Sovereign Cloud & Cross-Border Data Residency Voice AI (GDPR / PIPL / KSA PDPL): In-Country Media Pinning, Pseudonymized Follow-the-Sun & ZDR**: [EN](./sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.en.md) | [中文](./sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.md)

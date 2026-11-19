@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（108 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（109 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -149,3 +149,4 @@
 106. **跨国药企医学信息问询（MedInfo / MIRF 超说明书提问商业 CRM 0ms 防火墙、执业医师 HCP 核身锁与药品质检 PQC 批号捕获）方案**：[中文](./pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.md) | [EN](./pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.en.md)
 107. **超大规模智算中心（AIDC 万卡液冷 CDU 漏液 0ms 关阀保训练锁、10kV 高压配电双人唱票复诵五防互锁与 NOC 告警风暴收敛）方案**：[中文](./aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.md) | [EN](./aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.en.md)
 108. **大型仓储物流与生鲜前置仓（Pick-by-Voice 储位 2位校验码防错拣锁、收货月台冷链 >-12°C 拒收硬锁与缺货零过敏原替代）方案**：[中文](./warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.md) | [EN](./warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.en.md)
+109. **跨国企业主权云与数据跨境合规（PIPL/GDPR 境内媒体硬锚定、跨境伪名化脱敏协同与零数据留存 ZDR）方案**：[中文](./sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.md) | [EN](./sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.en.md)

@@ -2314,6 +2314,33 @@ export function evaluateWarehousePickByVoiceColdChainGuard(input: {
   };
 }
 
+export interface SovereignCloudVoiceEvaluation {
+  policyCode: "SOVEREIGN-CLOUD-VOICE-01";
+  crossBorderRawAudioTransferAllowed: boolean;
+  crossBorderTicketExportAllowed: boolean;
+}
+
+/**
+ * Deterministic Sovereign Cloud & Cross-Border Data Residency Voice Guard (`SOVEREIGN-CLOUD-VOICE-01`).
+ */
+export function evaluateSovereignCloudVoiceGuard(input: {
+  callerJurisdiction: string;
+  targetEndpointJurisdiction: string;
+  rawAudioAndPiiStrippedBeforeExport: boolean;
+  zdrAndCmkVerified: boolean;
+}): SovereignCloudVoiceEvaluation {
+  const sameJurisdiction =
+    input.callerJurisdiction === input.targetEndpointJurisdiction;
+  return {
+    policyCode: "SOVEREIGN-CLOUD-VOICE-01",
+    crossBorderRawAudioTransferAllowed:
+      sameJurisdiction && input.zdrAndCmkVerified,
+    crossBorderTicketExportAllowed:
+      (sameJurisdiction || input.rawAudioAndPiiStrippedBeforeExport) &&
+      input.zdrAndCmkVerified,
+  };
+}
+
 
 
 
