@@ -2503,6 +2503,35 @@ export function evaluateGlobalMobilityEorVisaGuard(input: {
   };
 }
 
+export interface VoiceBenchmarkHarnessSelectionEvaluation {
+  policyCode: "VOICE-BENCHMARK-HARNESS-01";
+  duplexLatencySlaPassed: boolean;
+  entitySlotSafetyPassed: boolean;
+  contextWindowPruningRequired: boolean;
+  pocArchitectureApproved: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI Benchmark Harness & Selection Gate (`VOICE-BENCHMARK-HARNESS-01`).
+ */
+export function evaluateVoiceBenchmarkHarnessSelectionGate(input: {
+  p95TtfaLatencyMs: number;
+  bargeInAudioStopLatencyMs: number;
+  highRiskEntitySlotExactMatchRate: number;
+  unpruned15MinCallCostUsd: number;
+}): VoiceBenchmarkHarnessSelectionEvaluation {
+  const latencyOk =
+    input.p95TtfaLatencyMs <= 750 && input.bargeInAudioStopLatencyMs <= 200;
+  const slotOk = input.highRiskEntitySlotExactMatchRate >= 0.995;
+  return {
+    policyCode: "VOICE-BENCHMARK-HARNESS-01",
+    duplexLatencySlaPassed: latencyOk,
+    entitySlotSafetyPassed: slotOk,
+    contextWindowPruningRequired: input.unpruned15MinCallCostUsd > 1.2,
+    pocArchitectureApproved: latencyOk && slotOk,
+  };
+}
+
 
 
 

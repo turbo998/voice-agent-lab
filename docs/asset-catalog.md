@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（115 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（116 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -156,3 +156,4 @@
 113. **企业安全运营中心（SOC / SecOps 防黑客语音社工钓鱼 Vishing 0ms 禁口头重置 MFA 锁、勒索软件分级隔离与纯客观纪要）方案**：[中文](./enterprise-soc-secops-ransomware-containment-anti-vishing-voice-selection-faq.md) | [EN](./enterprise-soc-secops-ransomware-containment-anti-vishing-voice-selection-faq.en.md)
 114. **海上风电（120米机舱主轴锁销互锁与 <12m/s 进轮毂锁）、特高压换流站与电网调度（设备双重名称逐字复诵与黑启动）方案**：[中文](./offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.md) | [EN](./offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.en.md)
 115. **跨国企业全球人才流动（Global Mobility）、名义雇主（EOR）与签证税务合规（旅游签办公禁令、H-1B 跨州 LCA 前置锁与常设机构 PE 税险）方案**：[中文](./global-mobility-eor-visa-compliance-permanent-establishment-voice-selection-faq.md) | [EN](./global-mobility-eor-visa-compliance-permanent-establishment-voice-selection-faq.en.md)
+116. **企业实时语音大模型选型基准评测工程（告别静态 WER：8kHz 高危槽位精确率、全双工打断停音 <=200ms、15分钟长通话裁剪成本与 7-Card 报告）方案**：[中文](./enterprise-voice-benchmark-harness-duplex-wer-tool-eval-selection-faq.md) | [EN](./enterprise-voice-benchmark-harness-duplex-wer-tool-eval-selection-faq.en.md)
