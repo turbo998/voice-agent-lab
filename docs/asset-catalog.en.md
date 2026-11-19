@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (100 Bilingual Guides)
+## 3. Solution Architect Selection Guides (101 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -141,3 +141,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 98. **Biopharma Cold-Chain & CAR-T Cell Therapy Logistics Voice AI: Vein-to-Vein COI/COC Lock, -196°C Cryo-Shipper Guard & TOR Excursion Triage**: [EN](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.en.md) | [中文](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.md)
 99. **Municipal Typhoon, Flood & Wildfire Emergency Evacuation Voice AI: Basement Ban, Bedridden Door-to-Door Rescue & Shelter Load-Balancing**: [EN](./municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.en.md) | [中文](./municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.md)
 100. **Enterprise Real-Time Voice & Multimodal AI Solution Architect 100-Scenario Master Playbook (SA-MASTER-100)**: [EN](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.en.md) | [中文](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.md)
+101. **2026 Real-Time Voice & Multimodal Frontier Breakthroughs: System-1/2 Dual-Brain Audio Reasoning, On-Device NPU S2S & Live Video Keyframe Gating**: [EN](./voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.en.md) | [中文](./voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.md)

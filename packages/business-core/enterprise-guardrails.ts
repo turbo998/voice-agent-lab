@@ -2081,6 +2081,41 @@ export function evaluateSaMaster100ProductionGate(input: {
   };
 }
 
+export interface VoiceFrontier2026DualBrainVisionEvaluation {
+  policyCode: "VOICE-FRONTIER-2026-01";
+  system1DirectFinalAnswerAllowed: boolean;
+  system2AsyncReasoningVerifierDispatched: boolean;
+  continuousRawVideoFramesBlocked: boolean;
+  keyframeInjectedToVlm: boolean;
+  onDeviceNpuS2sFailoverActive: boolean;
+}
+
+/**
+ * Deterministic 2026 Voice & Multimodal Frontier Guard (`VOICE-FRONTIER-2026-01`):
+ * Enforces System-1/System-2 Dual-Brain math fencing, deictic + SSIM>=15% video keyframe gating,
+ * and RTT>450ms on-device NPU failover.
+ */
+export function evaluateVoiceFrontier2026DualBrainVisionGuard(input: {
+  requiresMultiStepMathOrPolicyReasoning: boolean;
+  visualSceneDeltaPct: number;
+  userPointingOrDeicticGestureDetected: boolean;
+  cloudRttMs: number;
+  offlinePrivacyZoneActive?: boolean;
+}): VoiceFrontier2026DualBrainVisionEvaluation {
+  const keyframeInjected =
+    input.userPointingOrDeicticGestureDetected || input.visualSceneDeltaPct >= 15;
+  const npuFailover =
+    input.cloudRttMs > 450 || Boolean(input.offlinePrivacyZoneActive);
+  return {
+    policyCode: "VOICE-FRONTIER-2026-01",
+    system1DirectFinalAnswerAllowed: !input.requiresMultiStepMathOrPolicyReasoning,
+    system2AsyncReasoningVerifierDispatched: input.requiresMultiStepMathOrPolicyReasoning,
+    continuousRawVideoFramesBlocked: true,
+    keyframeInjectedToVlm: keyframeInjected,
+    onDeviceNpuS2sFailoverActive: npuFailover,
+  };
+}
+
 
 
 

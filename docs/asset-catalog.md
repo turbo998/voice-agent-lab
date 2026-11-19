@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（100 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（101 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -141,3 +141,4 @@
 98. **生物医药冷链与 CAR-T 细胞基因治疗特种物流（唯一身份链 COI 双人声纹锁、-196°C 液氮罐防倾倒强呼与超温 TOR/QP 隔离）方案**：[中文](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.md) | [EN](./biopharma-cold-chain-cart-cell-therapy-logistics-voice-selection-faq.en.md)
 99. **城市防汛抗台、山火与地震应急疏散（暴雨严禁下地库挪车与垂直避险锁、失能老人上门背负派单与避难所容量负载均衡）方案**：[中文](./municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.md) | [EN](./municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.en.md)
 100. **企业实时语音与多模态 AI 架构师百景决策总纲（SA-MASTER-100：100大场景全景导航、三大范式分水岭与生产上线十道生死门禁）**：[中文](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.md) | [EN](./enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.en.md)
+101. **2026 实时语音与多模态前沿突破（System-1/System-2 快慢双脑语音推理、端侧 NPU <=3B 协同与实时视频流关键帧门控）方案**：[中文](./voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.md) | [EN](./voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.en.md)
