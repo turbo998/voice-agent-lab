@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgFab" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1A"/>
+      <stop offset="50%" stop-color="#112236"/>
+      <stop offset="100%" stop-color="#08111F"/>
+    </linearGradient>
+    <linearGradient id="waferGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="andonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="iatfGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgFab)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Semiconductor Fab Cleanroom &amp; Automotive JIT Voice AI: FOUP Lot Lock, Andon 0ms &amp; IATF 16949</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">半导体晶圆厂与汽车总装线工业语音 AI：十级无尘室 FOUP 批次防报废锁、Andon 暗灯 0ms 升级与 IATF 16949 扭矩追溯全景图</text>
+  <rect x="854" y="42" width="298" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1003" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">MANUFACTURING-FAB-JIT-01 · Fab</text>
+
+  <!-- Pillar 1: ISO Class 1-5 Semiconductor Fab Cleanroom FOUP Lot Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#waferGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 半导体无尘室 FOUP 晶圆批次防报废锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁未核对 FOUP Lot ID 与 Recipe 即下发机台开跑！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 12英寸光刻/刻蚀机台内一盒 25片晶圆价值高达 $250,000+</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 工程师穿全套无尘服戴双层手套不便敲键盘，口误调错 Recipe 将整盒报废</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">SECS/GEM E84 载具 RFID + 语音北约音标双向互锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 工程师通过无尘室骨传导耳麦口述 Lot ID 后四位与工艺配方号</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 必须与机台 Load Port RFID 读取的 MES 派工单 100% 吻合才允许 Start</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">特气腔室吹扫 (N2 Purge) 硬件联锁与 PM 语音领读</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 刻蚀腔体开盖保养 (PM) 前：强制校核残余有毒特气浓度 == 0 ppm</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 免手持逐项领读 42 步换件扭矩 SOP 并由 AR 眼镜拍照存档</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">错配 Recipe 导致整盒晶圆报废 (Scrap) 率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">机台 PM 保养工时缩短 29%，无尘室微粒零污染</text>
+  </g>
+
+  <!-- Pillar 2: Automotive JIT/JIS Assembly Line Andon 0ms Escalation -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#andonGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 汽车总装线 Andon 暗灯 0ms 升级与节拍锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁把“拧紧枪滑牙/缺料”当普通问答慢吞吞查手册！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 汽车总装线节拍 (Takt Time) 仅 52秒/台，整线停产损失高达 $22,000/分钟</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 工人双手托举底盘件无法去拉 5米外的物理 Andon 暗灯拉绳</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">语音暗灯 (Voice Andon) 0ms 触发黄色/红色支援广播</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 工人喊出“安灯！右前转向节螺栓滑牙”或工位剩余节拍 &lt;=15秒未完工</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 0ms 点亮工位黄灯并向班组长 (Team Leader) 对讲机直派工位号+备件号</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">JIS 准时化顺序配送“错装配置防呆 (Poka-Yoke)”锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 按当前车架号 VIN 自动播报差异件（如“本车为欧版右舵+碳陶刹车”）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 92dB 冲压/焊装车间抗噪骨传导麦克风 + 端侧工业词表识别率 99.4%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">班组长到场支援平均响应时间从 42秒降至 6秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">非计划整线停线 (Line Stop) 时长减少 64%</text>
+  </g>
+
+  <!-- Pillar 3: IATF 16949 Safety-Critical Torque & Lot Traceability Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#iatfGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. IATF 16949 安全件扭矩与批次放行硬锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁凭工人一句“我已经拧紧了”放行 A类安全关键特性！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 转向柱、制动卡钳、安全气囊与高压电池包螺栓属于 A类致命安全件</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若允许语音口头越权放行 NOK 扭矩，将触发十万辆级汽车召回事故</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">智能电批 (Atlas Copco Open Protocol) 曲线 + 语音双签</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 必须同时满足：电批回传扭矩/转角曲线 OK + 关键件批次码绑定 VIN</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 任何一颗螺栓 NOK 时，0ms 锁死工位放行板链直至质量工程师复检销号</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">厂区封闭专网 (Private 5G + 本地边缘 GPU) 零出厂区</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 晶圆良率参数与未上市新车型 BOM 严禁连接公网云 API</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 100% 部署在厂内机房 vLLM + Speech Container，断外网永久可用</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">A类安全件漏拧/错装流出工位率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 满足 IATF 16949 与 SEMI S2/E84 工业合规审计</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (MANUFACTURING-FAB-JIT-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 半导体无尘室机台开跑前必须执行“FOUP Lot ID 口述复核 + SECS/GEM RFID + 腔室吹扫清零”三重硬互锁，严禁单凭语音指令启动光刻/刻蚀配方；</text>
+  <text x="68" y="606" fill="#FCA5A5" font-size="13">2. 汽车总装线检出 A类安全件扭矩 NOK 或工位剩余节拍 &lt;=15秒未完工时，必须 0ms 触发 Andon 班组长支援并物理锁死工位放行板链（严禁口头放行）。</text>
+</svg>

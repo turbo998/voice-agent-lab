@@ -2116,6 +2116,35 @@ export function evaluateVoiceFrontier2026DualBrainVisionGuard(input: {
   };
 }
 
+export interface ManufacturingFabJitAndonEvaluation {
+  policyCode: "MANUFACTURING-FAB-JIT-01";
+  mesRecipeStartAuthorized: boolean;
+  waferScrapPreventionLockTriggered: boolean;
+  andonTeamLeaderDispatched0ms: boolean;
+  stationConveyorReleaseAllowed: boolean;
+}
+
+/**
+ * Deterministic Semiconductor Fab Cleanroom & Automotive JIT Andon Guard (`MANUFACTURING-FAB-JIT-01`).
+ */
+export function evaluateManufacturingFabJitAndonGuard(input: {
+  foupLotIdMatchesMesRecipe: boolean;
+  chamberPurgeInterlockCleared: boolean;
+  safetyCriticalTorqueFaultOrAndonCord: boolean;
+  stationCycleTimeRemainingSec: number;
+}): ManufacturingFabJitAndonEvaluation {
+  const recipeAllowed = input.foupLotIdMatchesMesRecipe && input.chamberPurgeInterlockCleared;
+  const andonDispatch =
+    input.safetyCriticalTorqueFaultOrAndonCord || input.stationCycleTimeRemainingSec <= 15;
+  return {
+    policyCode: "MANUFACTURING-FAB-JIT-01",
+    mesRecipeStartAuthorized: recipeAllowed,
+    waferScrapPreventionLockTriggered: !recipeAllowed,
+    andonTeamLeaderDispatched0ms: andonDispatch,
+    stationConveyorReleaseAllowed: !input.safetyCriticalTorqueFaultOrAndonCord,
+  };
+}
+
 
 
 

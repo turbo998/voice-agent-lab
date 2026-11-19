@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 101 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 101 Guides](#-2-101-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 102 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 102 Guides](#-2-102-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 101 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 102 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -173,6 +173,7 @@ flowchart LR
 99. **Municipal Typhoon, Flood & Wildfire Emergency Evacuation Voice AI: Basement Ban, Bedridden Door-to-Door Rescue & Shelter Load-Balancing**: [EN](./docs/municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.en.md) | [中文](./docs/municipal-disaster-typhoon-wildfire-evacuation-voice-selection-faq.md)
 100. **Enterprise Real-Time Voice & Multimodal AI Solution Architect 100-Scenario Master Playbook (SA-MASTER-100)**: [EN](./docs/enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.en.md) | [中文](./docs/enterprise-voice-ai-100-scenario-architect-master-playbook-selection-faq.md)
 101. **2026 Real-Time Voice & Multimodal Frontier Breakthroughs: System-1/2 Dual-Brain Audio Reasoning, On-Device NPU S2S & Live Video Keyframe Gating**: [EN](./docs/voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.en.md) | [中文](./docs/voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.md)
+102. **Semiconductor Fab Cleanroom & Automotive JIT/JIS Assembly Voice AI: FOUP Lot Scrap Lock, Andon 0ms Escalation & IATF 16949 Torque Traceability**: [EN](./docs/smart-manufacturing-semiconductor-fab-automotive-jit-andon-voice-selection-faq.en.md) | [中文](./docs/smart-manufacturing-semiconductor-fab-automotive-jit-andon-voice-selection-faq.md)
 
 ---
 
