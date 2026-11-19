@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 标准评测报告（双份）** | 《实时语音与多模型路由 7-Card 报告》与《Azure Speech 说话人分离实证 7-Card 报告》 | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 120 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 120 篇选型指南](#-二120-篇企业级语音架构选型指南中英双语) |
+| **🧭 121 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 121 篇选型指南](#-二121-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、120 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、121 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -192,6 +192,7 @@ flowchart LR
 118. **远洋商船驾驶台（IMO SMCP 舵令复诵与 NMEA 实测舵角防打反舵锁）、港口交管（VTS 碰撞抢占）与修造船厂（压载舱测氧与干船坞注水锁）方案**：[中文](./docs/maritime-vessel-bridge-smcp-helm-readback-vts-shipyard-voice-selection-faq.md) | [EN](./docs/maritime-vessel-bridge-smcp-helm-readback-vts-shipyard-voice-selection-faq.en.md)
 119. **顶级艺术品拍卖行（电话委托竞拍保证金授信上限 0ms 熔断锁、看台 Active Lot 防串单互锁与阶梯买家佣金精算）方案**：[中文](./docs/fine-art-auction-telephone-bidding-paddle-ceiling-lock-voice-selection-faq.md) | [EN](./docs/fine-art-auction-telephone-bidding-paddle-ceiling-lock-voice-selection-faq.en.md)
 120. **乳制品、精酿啤酒与无菌饮料工厂（CIP 火碱防混罐与防吸瘪死锁、回流电导率 <=15 μS/cm 零残留核验与 UHT 失温回流）方案**：[中文](./docs/food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.md) | [EN](./docs/food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.en.md)
+121. **公共资源交易中心与央国企招投标评标室（评委倾向性拉票 0ms 声光告警、双盲暗标 250ms 变声消音与畸高畸低分强制说理锁）方案**：[中文](./docs/public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.md) | [EN](./docs/public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.en.md)
 
 ---
 

@@ -2645,6 +2645,33 @@ export function evaluateFoodDairyCipAsepticGuard(input: {
   };
 }
 
+export interface PublicProcurementBidEvalEvaluation {
+  policyCode: "PROCUREMENT-BID-EVAL-01";
+  supervisionRoomAlertAndScoringFreezeTriggered0ms: boolean;
+  finalBidScoreSubmissionAuthorized: boolean;
+}
+
+/**
+ * Deterministic Public Procurement & Tender Bid-Evaluation Anti-Collusion Guard (`PROCUREMENT-BID-EVAL-01`).
+ */
+export function evaluatePublicProcurementBidEvalGuard(input: {
+  jurorUtteredBiasSteeringOrVendorNameInBlindEval: boolean;
+  expertScoreDeviationFromMedianPct: number;
+  clauseCitedJustificationRecorded: boolean;
+}): PublicProcurementBidEvalEvaluation {
+  const outlierUnjustified =
+    input.expertScoreDeviationFromMedianPct > 30 &&
+    !input.clauseCitedJustificationRecorded;
+  return {
+    policyCode: "PROCUREMENT-BID-EVAL-01",
+    supervisionRoomAlertAndScoringFreezeTriggered0ms:
+      input.jurorUtteredBiasSteeringOrVendorNameInBlindEval,
+    finalBidScoreSubmissionAuthorized:
+      !input.jurorUtteredBiasSteeringOrVendorNameInBlindEval &&
+      !outlierUnjustified,
+  };
+}
+
 
 
 

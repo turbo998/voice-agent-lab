@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (120 Bilingual Guides)
+## 3. Solution Architect Selection Guides (121 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -161,3 +161,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 118. **Maritime Vessel Bridge (IMO SMCP Helm Readback), Port VTS & Shipyard Voice AI: Wrong-Way Rudder Lock, CPA/TCPA Preemption & Drydock Safety**: [EN](./maritime-vessel-bridge-smcp-helm-readback-vts-shipyard-voice-selection-faq.en.md) | [中文](./maritime-vessel-bridge-smcp-helm-readback-vts-shipyard-voice-selection-faq.md)
 119. **Fine-Art Auction Telephone Bidding & Bespoke Luxury Voice AI: Paddle Credit-Ceiling Lock, Anti-Cross-Lot Gate & Buyer's Premium Readback**: [EN](./fine-art-auction-telephone-bidding-paddle-ceiling-lock-voice-selection-faq.en.md) | [中文](./fine-art-auction-telephone-bidding-paddle-ceiling-lock-voice-selection-faq.md)
 120. **Dairy, Brewery & Aseptic Beverage Factory Voice AI: CIP Caustic Mix-Proof Interlock, <=15 uS/cm Conductivity Gate & UHT Sterile Diversion**: [EN](./food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.en.md) | [中文](./food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.md)
+121. **Public Procurement & Enterprise Tender Bid-Evaluation Voice AI: 0ms Anti-Collusion Alert, Blind-Bid Voice Anonymization & Outlier-Score Lock**: [EN](./public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.en.md) | [中文](./public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.md)

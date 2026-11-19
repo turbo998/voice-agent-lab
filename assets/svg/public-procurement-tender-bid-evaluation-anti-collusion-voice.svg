@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgBid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07101E"/>
+    </linearGradient>
+    <linearGradient id="steerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="blindGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="outGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgBid)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Public Procurement &amp; Tender Bid-Evaluation Voice AI: Anti-Collusion, Blind-Bid &amp; Outlier Lock</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">公共资源交易中心与央国企招投标评标室语音 AI：评委倾向性拉票 0ms 声光告警、暗标商号消音与畸高畸低分强制说理全景图</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#450A0A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#FCA5A5" font-size="13" font-weight="600" text-anchor="middle">PROCUREMENT-BID-EVAL-01 · Tender</text>
+
+  <!-- Pillar 1: Closed Bid-Evaluation Room Anti-Steering / Anti-Collusion 0ms Alert -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#steerGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 封闭评标室“倾向性拉票/串联”0ms 声光纠偏锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁招标人代表或专家组长在独立评审期暗示“照顾某家”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 招投标法核心痛点：某专家在评标室说“2号投标人是我们老合作单位，大家打高点”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 传统监控只录视频没人实时听，等几个月后审计巡视翻出录像时项目早已木已成舟</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">席位定向麦克风说话人分离 + 倾向性话术 0ms 现场喝止</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 每个评委席位配置独立定向阵列麦，精准锁定发言专家编号 (如 3号专家)</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 检出串联打分、打探他人分数或诱导废标 -&gt; 0ms 评标室红灯播报警告并直报监督席！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">封闭评标区非法手机/蓝牙偷拍传话声学与电磁双监测</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 识别评委在卫生间走廊或桌下低声对外报标底/报排序的异常私语特征</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 100% 物理断外网本地边缘服务器运行，严防标书商业机密外泄</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">评标现场倾向性诱导话术 0ms 实时拦截率 = 100%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">将“事后半年秋后算账”彻底升级为“事中 0ms 实时阻断”</text>
+  </g>
+
+  <!-- Pillar 2: Remote Cross-Province Blind-Bid (Dark-Bid) Anonymization & Voice Masking -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#blindGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 远程异地“双盲暗标”变声核清与商号消音锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">破解“投标人远程语音述标/答疑暴露身份与熟人声纹”难题</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 在“双盲”评标中，投标人技术答疑若用原声说话或不小心说出“我们中建X局”</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 评委一听熟人声音或公司简称即破坏暗标盲评公正性，导致整场评标作废重评！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">实时中性音色重合成 (Voice Anonymizer) + 商号/人名 0ms 消音</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 投标人述标答疑通道：强制经过 250ms 实时声纹抹除，统一用标准合成中性音向评委播报</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 一旦投标人脱口而出企业名称/法人姓名 -&gt; 0ms 蜂鸣消音替换为“本投标单位”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">跨省远程异地评标（主客场）多方言无障碍对齐</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 5位评委分别随机抽取自广东、四川、江苏、陕西、山东五省公共资源交易中心</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 合议阶段实时生成带专家数字代号的结构化字幕，彻底消除跨省方言沟通障碍</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">双盲暗标答疑环节身份与声纹泄露率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">因暗标泄密导致的流标重评损失下降 100%</text>
+  </g>
+
+  <!-- Pillar 3: Outlier Scoring (>30% Deviation) Mandatory Clause-Cited Justification Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#outGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 畸高畸低打分 (&gt;30%偏离) 强制援引条款说理锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁评委对同一技术方案恶意打“0分”或“满分”却不写理由！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 操纵评标常见手段：4名专家给 A公司打 88分，唯独 1名被公关的专家恶意打 45分拉低均分</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或随便应付写一句“方案不够完善”就签字交表</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">偏离中位数 &gt;30% 或擅自否决投标 -&gt; 0ms 锁死交表并强制语音说理</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 检出单项得分偏离评标委员会中位数 &gt;= 30%：0ms 冻结该专家电子签章提交</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 专家必须口述明确对应的《招标文件评标办法第 X.X 条》及投标文件具体页码方可解锁！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">终身追责音视频双录封存（15年 WORM 纪检审计归档）</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 自动将每位专家的口头说理录音、席位视频与打分表绑定生成哈希防伪包</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 辅助纪检监察与巡视组 10秒钟穿透检索历年数万场评标异常语音片段</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">无依据恶意压分/抬分与随意废标发生率下降 96%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合《招标投标法》、《政府采购法》与发改委远程异地评标规范</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#EF4444" font-size="14" font-weight="700">架构师核心选型法则 (PROCUREMENT-BID-EVAL-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 封闭评标室必须按席位定向拾音并实时监测：一旦检出倾向性拉票暗示、打探他人打分或在暗标评审中泄露投标人商号，必须 0ms 触发声光警告并直报监督室；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 当任一评委主观打分偏离中位数 &gt;30% 或提议否决投标时，必须 0ms 锁死汇总签章，强制要求其语音录引招标文件具体条款与标书页码完成合法说理。</text>
+</svg>

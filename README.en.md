@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 120 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 120 Guides](#-2-120-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 121 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 121 Guides](#-2-121-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 120 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 121 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -192,6 +192,7 @@ flowchart LR
 118. **Maritime Vessel Bridge (IMO SMCP Helm Readback), Port VTS & Shipyard Voice AI: Wrong-Way Rudder Lock, CPA/TCPA Preemption & Drydock Safety**: [EN](./docs/maritime-vessel-bridge-smcp-helm-readback-vts-shipyard-voice-selection-faq.en.md) | [中文](./docs/maritime-vessel-bridge-smcp-helm-readback-vts-shipyard-voice-selection-faq.md)
 119. **Fine-Art Auction Telephone Bidding & Bespoke Luxury Voice AI: Paddle Credit-Ceiling Lock, Anti-Cross-Lot Gate & Buyer's Premium Readback**: [EN](./docs/fine-art-auction-telephone-bidding-paddle-ceiling-lock-voice-selection-faq.en.md) | [中文](./docs/fine-art-auction-telephone-bidding-paddle-ceiling-lock-voice-selection-faq.md)
 120. **Dairy, Brewery & Aseptic Beverage Factory Voice AI: CIP Caustic Mix-Proof Interlock, <=15 uS/cm Conductivity Gate & UHT Sterile Diversion**: [EN](./docs/food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.en.md) | [中文](./docs/food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.md)
+121. **Public Procurement & Enterprise Tender Bid-Evaluation Voice AI: 0ms Anti-Collusion Alert, Blind-Bid Voice Anonymization & Outlier-Score Lock**: [EN](./docs/public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.en.md) | [中文](./docs/public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.md)
 
 ---
 
