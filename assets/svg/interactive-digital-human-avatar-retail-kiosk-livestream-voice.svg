@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgAva" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070D19"/>
+      <stop offset="50%" stop-color="#131F3A"/>
+      <stop offset="100%" stop-color="#08111E"/>
+    </linearGradient>
+    <linearGradient id="cloudAvaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="visGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="kioskGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgAva)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Interactive Digital Human Avatar &amp; Retail/Banking Kiosk Voice AI: Cloud Video vs. Edge Viseme</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">实时语音数字人导购与网点大屏架构：Azure Speech Avatar vs. HeyGen vs. 端侧 3D Viseme 选型、1.5米视线唤醒锁与成本降 88%</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">DIGITAL-AVATAR-KIOSK-01</text>
+
+  <!-- Pillar 1: Cloud Video Avatar vs. Edge 3D Viseme TCO -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#cloudAvaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 云端视频流数字人 vs. 端侧 Viseme 渲染</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">路线 A：云端实时渲染 WebRTC 视频流 (2D 超写实真人)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 代表：Azure AI Speech Avatar / HeyGen Interactive / Tavus</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 优势：端侧零显卡要求（老旧 iPad 也能跑 1080p 真人画质）</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 警惕“24小时空转渲染巨额账单”！</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 云端 GPU 实时编码视频流每分钟高达 $0.10-$0.60/min</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 若全国 500 台门店大屏全天挂着云端视频流，一年光待机费就要烧掉 $1,500万！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">✅ 路线 B：云端只下发音频 + Viseme 嘴型系数 ($0.015/min)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 订阅 Azure Speech TTS 的 `VisemeReceived` (55维 ARKit Blendshapes)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 由大屏本地迷你主机 (WebGL / Unity / UE5) 驱动口型，成本暴降 88%！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">有人交互开云端流 / 无人待机播本地循环视频</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">千台规模优先选“端侧 Viseme 驱动”或“按视线唤醒按需建连”</text>
+  </g>
+
+  <!-- Pillar 2: <40ms Lip-Sync & Smooth Barge-In Animation -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#visGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. &lt;40ms 音画口型同步与打断平滑过渡</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#2E1065" stroke="#8B5CF6"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">ITU-R BT.1359 铁律：音画错位超过 +45ms/-125ms 即穿帮</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 如果声音已经停了，数字人的嘴巴还在张合，会产生强烈恐怖谷效应</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• 必须将音频帧与 Viseme/视频帧绑定同一 RTP 时间戳或 audio_offset 播放</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">用户中途打断 (Barge-In) 时的“150ms 闭嘴点头过渡”</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 当客户开口打断数字人时，不仅要在 150ms 内清空音频播放队列</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 画面必须在 4 帧内通过 Cross-Fade 平滑切回【微笑倾听点头】状态</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">SSML 手势与表情标签联动 (Gesture &amp; Bookmark Tags)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 说到“请看右侧二维码”时，通过 `&lt;mstts:viseme&gt;` 与 `&lt;bookmark&gt;` 同步触发</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 数字人伸手指向屏幕右侧动作 + UI 同步弹出预约挂号/领券二维码</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">音画同步偏差 &lt;= 18ms · 打断零画面跳帧</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">语音、口型、手势与屏幕商品卡片四轨严格对齐</text>
+  </g>
+
+  <!-- Pillar 3: 1.5m Gaze + Directional Beamforming Anti-Passerby Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#kioskGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 嘈杂展厅 1.5米视线+波束成形防误唤醒锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：商场/机场展厅人来人往，路人聊天把数字人吵醒胡乱搭话</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 两个路人在大屏旁 3 米外边走边聊，普通 VAD 误以为在对数字人说话</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 数字人对着空气不停自言自语，既尴尬又烧掉大量无谓云端计费</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">双模态联合门控：ToF 测距 &lt;=1.5米 + 人脸正视屏幕 (Gaze Lock)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 大屏端侧轻量视觉模型实时检测：1) 站立距离 &lt;=1.5m；2) 面部朝向正对屏幕</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 加上麦克风阵列 ±25° 窄波束成形 (Beamforming)，彻底屏蔽侧面路人噪音</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">离开 5 秒自动销毁会话并清空屏幕个人隐私 (Auto-Wipe)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 一旦检测到当前客户转身离开 &gt;5 秒，立即断开云端计费流</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 同步擦除大屏上刚才展示的登机牌/银行回单信息，防后一位顾客窥屏</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">路人误唤醒率从 38% 降至 0.3%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单台线下大屏每日有效云端计费时长从 12小时 压至 1.8小时</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">交互式语音数字人架构师三大铁律 (DIGITAL-AVATAR-KIOSK-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 严禁 24 小时常开云端视频流：无人驻足时播放本地 0 成本待机循环视频；仅当“距离 &lt;=1.5m 且正视屏幕 (Gaze Lock)”时才建立云端连接；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 移动端/弱网/超写实真人选 Azure Speech Avatar 云渲染；千台门店大屏规模降本首选“云端 TTS 下发 Viseme + 端侧 3D/Live2D 渲染 ($0.015/min)”。</text>
+</svg>

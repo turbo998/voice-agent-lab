@@ -3066,6 +3066,34 @@ export function evaluateLiveMeetingSimultaneousInterpreterGuard(input: {
   };
 }
 
+export interface DigitalAvatarKioskVoiceEvaluation {
+  policyCode: "DIGITAL-AVATAR-KIOSK-01";
+  gazeAndZoneWakeupAuthorized: boolean;
+  edgeVisemeFallbackActivated: boolean;
+  smoothVisualBargeInPassed: boolean;
+}
+
+/**
+ * Deterministic Interactive Digital Human Avatar Kiosk Gaze-Wakeup, Edge Viseme Fallback & Barge-In Guard (`DIGITAL-AVATAR-KIOSK-01`).
+ */
+export function evaluateDigitalAvatarKioskVoiceGuard(input: {
+  userDistanceMeters: number;
+  cameraGazeEngagementVerified: boolean;
+  cloudVideoBandwidthMbps: number;
+  bargeInDetected: boolean;
+  avatarSwitchedToListeningNodWithin150ms: boolean;
+}): DigitalAvatarKioskVoiceEvaluation {
+  return {
+    policyCode: "DIGITAL-AVATAR-KIOSK-01",
+    gazeAndZoneWakeupAuthorized:
+      input.userDistanceMeters <= 1.5 && input.cameraGazeEngagementVerified,
+    edgeVisemeFallbackActivated: input.cloudVideoBandwidthMbps < 2.5,
+    smoothVisualBargeInPassed:
+      !input.bargeInDetected || input.avatarSwitchedToListeningNodWithin150ms,
+  };
+}
+
+
 
 
 
