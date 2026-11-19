@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（137 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（138 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -178,3 +178,4 @@
 135. **线下展厅、银行 VTM、机场问询与电商直播实时语音数字人（Azure Speech Avatar vs. HeyGen vs. 端侧 3D Viseme、`<=1.5m` 视线唤醒锁与成本降 `88%`）方案**：[中文](./interactive-digital-human-avatar-retail-kiosk-livestream-voice-selection-faq.md) | [EN](./interactive-digital-human-avatar-retail-kiosk-livestream-voice-selection-faq.en.md)
 136. **企业 AI 金牌销售对练、医药代表合规拜访与客服上岗模拟陪练平台（GPT-Realtime 刁钻客户压测、防“讨好放水”异议锁与一票否决评分卡）方案**：[中文](./enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.md) | [EN](./enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.en.md)
 137. **民航航司大面积航班延误取消（IRROPS）极速改签与连锁酒店高卡礼宾语音客服（GDS/中航信先锁新座再退旧票原子锁、非自愿免差价与 `50x` 台风洪峰）方案**：[中文](./airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.md) | [EN](./airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.en.md)
+138. **原生端到端语音大模型（Native S2S）vs. 级联架构（STT+LLM+TTS）vs. 80/20 混合双轨：分钟级 TCO 拐点精算器、长通话平方级计费陷阱与选型总表**：[中文](./native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.md) | [EN](./native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.en.md)

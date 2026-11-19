@@ -3155,6 +3155,33 @@ export function evaluateAirlineIrropsFlightRebookingGuard(input: {
   };
 }
 
+export interface NativeS2sVsCascadedTcoInflectionEvaluation {
+  policyCode: "S2S-CASCADED-TCO-INFLECTION-01";
+  slidingWindowAudioPruningRequired: boolean;
+  cascadedOrHybridTrackSelected: boolean;
+  azurePtuReservationRecommended: boolean;
+}
+
+/**
+ * Deterministic Native S2S vs. Cascaded vs. 80/20 Hybrid Per-Minute TCO Inflection & Audio Pruning Guard (`S2S-CASCADED-TCO-INFLECTION-01`).
+ */
+export function evaluateNativeS2sVsCascadedTcoInflectionGuard(input: {
+  averageCallDurationMinutes: number;
+  requires100PctDeterministicTextComplianceGate: boolean;
+  sustainedDailyConcurrencyDutyCyclePct: number;
+}): NativeS2sVsCascadedTcoInflectionEvaluation {
+  return {
+    policyCode: "S2S-CASCADED-TCO-INFLECTION-01",
+    slidingWindowAudioPruningRequired: input.averageCallDurationMinutes > 3,
+    cascadedOrHybridTrackSelected:
+      input.requires100PctDeterministicTextComplianceGate ||
+      input.averageCallDurationMinutes > 5,
+    azurePtuReservationRecommended:
+      input.sustainedDailyConcurrencyDutyCyclePct >= 55,
+  };
+}
+
+
 
 
 

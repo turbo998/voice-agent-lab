@@ -209,6 +209,7 @@ flowchart LR
 135. **Interactive Digital Human Avatar & Retail/Banking Kiosk Voice AI: Azure Speech Avatar vs. HeyGen vs. Edge 3D Viseme Architecture & TCO**: [EN](./docs/interactive-digital-human-avatar-retail-kiosk-livestream-voice-selection-faq.en.md) | [中文](./docs/interactive-digital-human-avatar-retail-kiosk-livestream-voice-selection-faq.md)
 136. **Enterprise AI Sales Roleplay, Pharma Detailing & Customer Service Sparring Simulator: GPT-Realtime Stress-Testing, Anti-Sycophancy Lock & Auto-Fail Rubric**: [EN](./docs/enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.en.md) | [中文](./docs/enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.md)
 137. **Airline Flight Disruption (IRROPS) Mass Rebooking & Hotel Loyalty Concierge Voice AI: Amadeus/TravelSky Atomic PNR Lock, EU261 Waiver & 50x Weather Surge**: [EN](./docs/airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.en.md) | [中文](./docs/airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.md)
+138. **Native Speech-to-Speech (GPT-Realtime / Gemini Live) vs. Cascaded (STT+LLM+TTS) vs. 80/20 Hybrid: Per-Minute TCO Inflection Calculator & Audio Pruning**: [EN](./docs/native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.en.md) | [中文](./docs/native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.md)
 
 ---
 

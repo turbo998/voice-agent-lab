@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgTco" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="quadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="cascGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="hybGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgTco)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Native S2S vs. Cascaded vs. 80/20 Hybrid Per-Minute TCO Inflection &amp; Audio Pruning Calculator</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">原生端到端语音 (S2S) vs 级联架构分钟级 TCO 拐点精算：为什么第 12 分钟 S2S 成本暴涨 4 倍？滑动窗口裁剪与 80/20 混合路由账本</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">S2S-CASCADED-TCO-INFLECTION-01</text>
+
+  <!-- Pillar 1: The Quadratic Audio Token Accumulation Trap in Native S2S -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#quadGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 原生 S2S 的“长通话平方级计费陷阱”</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 为什么宣称 $0.06/min 的 S2S 到了第 15分钟变成了 $0.38/min？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 原生 S2S 每轮对话会把“前序所有历史音频 Token”重新作为输入计费</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 第 15 分钟说一句话，要为前面 14 分钟历史音频再交一遍钱 (O(N²) 增长)！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">✅ 救命手术：3分钟滑动窗口裁剪 (Audio Context Pruning)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 仅保留最近 3 轮 (约 90秒) 的原始高保真 Audio Tokens</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 将 3 轮以前的旧音频 `conversation.item.delete` 替换为 50字文本摘要</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">叠加 Prompt Caching 与 Azure PTU 预留折扣</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 裁剪后 15 分钟长通话单通总成本从 $2.85 暴降至 $0.92 (-67.7%)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 同时彻底消除长上下文引发的尾段延迟变慢与工具遗忘</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">超过 3 分钟的 S2S 通话必配音频滑动裁剪</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">把 O(N²) 平方级失控账单拉回稳定的 O(N) 线性可控成本</text>
+  </g>
+
+  <!-- Pillar 2: Cascaded Flat-Rate Economics & Determinism -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#cascGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 级联架构 (STT+LLM+TTS) 的线性白菜价优势</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">为什么 80% 的标准化交易客服仍应首选级联架构？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 流式 STT ($0.012/m) + GPT-4o-mini ($0.004/m) + Neural TTS ($0.012/m)</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 叠加 L1 音频缓存与 ACS 通道后，综合成本恒定在 $0.038-$0.048/分钟！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">第 1 分钟和第 30 分钟单价完全一样（零历史音频税）</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 级联架构中间流转的是极其便宜的纯文本 Token (比音频 Token 便宜 25 倍)</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 无论电话打 3 分钟还是 25 分钟，每分钟边际成本恒定不变</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">100% 文本层正则审计与 SSML 发音锁死</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 在 LLM 输出文本进入 TTS 前的那 5ms，可执行 100% 确定性合规拦截</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 金融双录、医疗禁忌核查、订单核对等零容错场景的定海神针</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">级联稳态成本 $0.045/min · 比纯 S2S 省 72%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">配合首逗号流式切分可将级联首声延迟压进 620ms</text>
+  </g>
+
+  <!-- Pillar 3: The 80/20 Hybrid Routing Inflection Calculator -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hybGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 架构师终极答案：80/20 混合双轨与拐点公式</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">如何在同一通电话里兼得“白菜价”与“顶级共情”？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 默认 80% 标准化流程（核身、查单、改期、FAQ）走 $0.045/min 级联轨</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 仅当检测到客户哭泣/咆哮/VIP挽留/陪练压测 (20%) 时热切入 GPT-Realtime</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">三大黄金 TCO 决策拐点 (Inflection Thresholds)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 拐点 1 (通话时长 &gt;3分钟)：纯 S2S 必须开启滑动窗口音频转文本裁剪</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 拐点 2 (月量 &gt;=25万分钟)：弃用 +$0.055/m 包装平台，切入 ACS 自建</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">拐点 3 (并发稳定度 &gt;=55% 占空比)：PayGo 切入 Azure PTU</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 当日均高负载时段超过 10 小时，采购月度 PTU 比按量 PayGo 再省 38%</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 80/20 混合双轨加权均价定格在 $0.064/min（完美平衡成本与体验）</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">全中心加权 TCO $0.064/min · 省下 61% 预算</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">给 CFO 与 CTO 一张精确到美分的架构选型速查表</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">语音架构选型与分钟级 TCO 终极铁律 (S2S-CASCADED-TCO-INFLECTION-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 何时选原生 S2S？销售/医药对练、高情绪投诉挽留、跨语种同传等强副语言场景（且通话 &gt;3 分钟时必须开启滑动窗口音频裁剪防平方级爆表）；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 何时选级联或 80/20 混合？查单、预约、核身、金融双录等受控事务场景（$0.045/min 线性成本 + 100% 文本合规锁），混合双轨年省百万美金。</text>
+</svg>
