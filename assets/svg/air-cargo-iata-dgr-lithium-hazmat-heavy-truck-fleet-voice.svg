@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgCargo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1A"/>
+      <stop offset="50%" stop-color="#12233C"/>
+      <stop offset="100%" stop-color="#08101E"/>
+    </linearGradient>
+    <linearGradient id="dgrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="hosGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="uldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgCargo)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Air Cargo IATA DGR Lithium Hazmat &amp; Heavy Truck Fleet Voice AI: UN3480 Lock &amp; HOS Fatigue Guard</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">航空货运 (IATA DGR) 与干线重卡车队语音 AI：UN3480 锂电池客机腹舱禁运锁、干冰限额与 4小时防疲劳强制休整全景图</text>
+  <rect x="844" y="42" width="308" height="34" rx="17" fill="#450A0A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="998" y="64" fill="#FCA5A5" font-size="13" font-weight="600" text-anchor="middle">AIR-CARGO-HAZMAT-FLEET-01 · Cargo</text>
+
+  <!-- Pillar 1: IATA DGR UN3480 Lithium Battery & Undeclared Hazmat Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dgrGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 航空货运 IATA DGR 锂电池与隐报危险品锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将独立锂电池 (UN3480) 订入客机腹舱或超 30% 电量！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 货代订舱口述“200箱充电宝/平衡车配件”，企图按普通电子配件走客机腹舱</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• ICAO/IATA DGR 铁律：UN3480 严禁上客机 (PAX Forbidden)，且荷电 SOC &lt;=30%</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">隐含危险品同义词图谱 0ms 拦截 + 强制转全货机 (CAO)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 口语检出充电宝/储能电源/气雾剂/香水/磁钢/干冰 -> 0ms 锁死普货提单</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 强制核验 UN38.3 测试报告与 SOC &lt;=30% 证明，并改订全货机 (CAO) 舱位</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">干冰 (UN1845) 升华窒息限额与活体动物 (AVI) 互锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 自动校核同货舱干冰总重上限，严禁将干冰集装器与活体动物同舱混装</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动生成机长特种载荷通知单 (NOTOC) 待双人签字</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">锂电池与隐含危险品违规排入客机腹舱率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 IATA DGR 第 67版与民航局危险品航空运输规章</text>
+  </g>
+
+  <!-- Pillar 2: Heavy Truck Driver HOS / GB 7258 Anti-Fatigue Voice Copilot -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hosGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 干线重卡司机防疲劳 (4h HOS) 强制休整锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">⛔ 严禁向连续驾驶已满 4小时或打瞌睡司机派发新加急单！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 凌晨 3点重卡司机已连续开了 3小时55分，DMS 摄像头检出频繁闭眼点头</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若调度机器人此时还打电话催促“再赶 80公里准时交仓”，极易酿成追尾惨剧</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">GB 7258 (4h休20min) / FMCSA ELD 硬件联锁与唤醒陪聊</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 检出 PERCLOS 闭眼疲劳或连续驾驶 &gt;=240分钟：0ms 冻结新派单与催单</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 联动座舱吹 18°C 冷风+安全带震动，语音领航进前方最近服务区强制停满 20分钟</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">危化品罐车/大件重卡限高限重桥梁禁行语音护航</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 绑定挂车总高 (4.2m) 与总重 (49吨)，严禁调用普通乘用车导航路线</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 接近 3.8m 限高涵洞或危险品禁行隧道前 2公里高音语音抢占预警</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">超时疲劳驾驶违规率 = 0.0% · 凌晨追尾事故下降 79%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合交通部动态监控规范与美国 FMCSA HOS 法规</text>
+  </g>
+
+  <!-- Pillar 3: ULD Weight & Balance Verification & Drop-and-Hook Yard Voice -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#uldGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 航空集装器 (ULD) 配载平衡与甩挂场站协同</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">货站打板 (ULD Build-Up) 重心与实测过磅重量互锁</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 货站操作员通过耳麦上报集装板号 (PMC/AKE) 与装载仓位</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 若地磅实测重量与舱单申报偏差 &gt;= ±50kg -> 0ms 锁死机坪拖车放行重算配平</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">干线物流园“甩挂运输 (Drop-and-Hook)”免下车语音调度</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 牵引车驶入园区闸口：语音直接播报“重挂卸 18号月台，空挂接 B区09号挂车”</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 强制语音确认第五轮鞍座锁止销 (Kingpin Lock) 与制动气管挂接完毕</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">11位航空主运单号 (MAWB Mod-7) 数学除以7余数校验</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 航空主运单号第 11位等于前 7位序列号除以 7 的余数 (IATA 标准)</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 口述运单号听错任意 1位数字即 0ms 检出并要求重报</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">园区甩挂周转耗时从 48分钟缩短至 14分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">航空主运单号 MAWB 录入与 ULD 配载差错率 = 0.0%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#EF4444" font-size="14" font-weight="700">架构师核心选型法则 (AIR-CARGO-HAZMAT-FLEET-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 航空货运订舱一旦检出独立锂离子电池 (UN3480/充电宝) 或荷电状态 SOC &gt; 30%，必须 0ms 物理封锁客机腹舱 (PAX) 收运并强制转全货机 (CAO) 危险品审核；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 干线重卡车载语音一旦检测到连续驾驶 &gt;= 240分钟或 DMS 闭眼打瞌睡，必须 0ms 冻结新派单/催单，启动座舱冷风震动唤醒并强制导航进入最近服务区休息。</text>
+</svg>

@@ -2178,6 +2178,38 @@ export function evaluateTradeFinanceSwiftSanctionsGuard(input: {
   };
 }
 
+export interface AirCargoHazmatTruckFleetEvaluation {
+  policyCode: "AIR-CARGO-HAZMAT-FLEET-01";
+  airWaybillAcceptanceAllowed: boolean;
+  iataDgrHazmatInterceptionTriggered: boolean;
+  newLoadDispatchAllowed: boolean;
+  mandatoryRestStopInterventionTriggered: boolean;
+}
+
+/**
+ * Deterministic Air Cargo IATA DGR Lithium Hazmat & Heavy-Truck HOS Fatigue Guard (`AIR-CARGO-HAZMAT-FLEET-01`).
+ */
+export function evaluateAirCargoHazmatTruckFleetGuard(input: {
+  containsStandaloneLithiumUn3480OrDryIce: boolean;
+  bookedOnPassengerAircraftBelly: boolean;
+  lithiumStateOfChargePct: number;
+  continuousDrivingMinutes: number;
+  eyelidPerclosDrowsinessHigh: boolean;
+}): AirCargoHazmatTruckFleetEvaluation {
+  const hazmatViolation =
+    input.containsStandaloneLithiumUn3480OrDryIce &&
+    (input.bookedOnPassengerAircraftBelly || input.lithiumStateOfChargePct > 30);
+  const fatigueViolation =
+    input.continuousDrivingMinutes >= 240 || input.eyelidPerclosDrowsinessHigh;
+  return {
+    policyCode: "AIR-CARGO-HAZMAT-FLEET-01",
+    airWaybillAcceptanceAllowed: !hazmatViolation,
+    iataDgrHazmatInterceptionTriggered: hazmatViolation,
+    newLoadDispatchAllowed: !fatigueViolation,
+    mandatoryRestStopInterventionTriggered: fatigueViolation,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (103 Bilingual Guides)
+## 3. Solution Architect Selection Guides (104 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -144,3 +144,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 101. **2026 Real-Time Voice & Multimodal Frontier Breakthroughs: System-1/2 Dual-Brain Audio Reasoning, On-Device NPU S2S & Live Video Keyframe Gating**: [EN](./voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.en.md) | [中文](./voice-multimodal-2026-frontier-audio-reasoning-ondevice-npu-live-vision-selection-faq.md)
 102. **Semiconductor Fab Cleanroom & Automotive JIT/JIS Assembly Voice AI: FOUP Lot Scrap Lock, Andon 0ms Escalation & IATF 16949 Torque Traceability**: [EN](./smart-manufacturing-semiconductor-fab-automotive-jit-andon-voice-selection-faq.en.md) | [中文](./smart-manufacturing-semiconductor-fab-automotive-jit-andon-voice-selection-faq.md)
 103. **Cross-Border Trade Finance, Letters of Credit (UCP 600) & SWIFT gpi Voice AI: OFAC Anti-Tipping-Off Lock, Anti-BEC IBAN Callback & 15s FX Fence**: [EN](./cross-border-trade-finance-swift-gpi-sanctions-lc-voice-selection-faq.en.md) | [中文](./cross-border-trade-finance-swift-gpi-sanctions-lc-voice-selection-faq.md)
+104. **Air Cargo (IATA DGR Lithium Hazmat Lock) & Heavy-Truck Fleet (FMCSA HOS / GB 7258 Fatigue Guard) Voice AI**: [EN](./air-cargo-iata-dgr-lithium-hazmat-heavy-truck-fleet-voice-selection-faq.en.md) | [中文](./air-cargo-iata-dgr-lithium-hazmat-heavy-truck-fleet-voice-selection-faq.md)
