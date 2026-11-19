@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgMirf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11243E"/>
+      <stop offset="100%" stop-color="#07101E"/>
+    </linearGradient>
+    <linearGradient id="fwGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="hcpGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="pqcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgMirf)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Pharma Medical Information (MIRF) &amp; Off-Label Compliance Voice AI: Commercial Firewall &amp; SRL</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">跨国药企医学信息问询 (MedInfo/MIRF) 语音 AI：超说明书 (Off-Label) 商业物理隔离墙、HCP 核身锁与药品质检 PQC 全景图</text>
+  <rect x="846" y="42" width="306" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="999" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">PHARMA-MEDINFO-MIRF-01 · MedInfo</text>
+
+  <!-- Pillar 1: Commercial vs. Medical Affairs Firewall for Off-Label Queries -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#fwGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 超说明书 (Off-Label) 与商业销售 0ms 防火墙</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将医生的超适应症提问同步给医药代表 CRM！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 肿瘤科主任来电询问：“某 PD-1 单抗能否用于说明书外的胆管癌三线联合？”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若将该记录推送给销售代表去跟进推销，药企将面临 FDA/司法部数亿美元重罚</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">0ms 商业 CRM 断路器 (Commercial Sync Block) 与 MIRF 隔离</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 检出超说明书适应症、超剂量或特殊人群提问 -> 0ms 物理阻断向 Veeva Sales 写入</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 100% 路由至独立加密的 Veeva Vault MedComms 医学事务部专属通道</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">强制录音存证“非诱导主动问询 (Unsolicited Request)”</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 科学解答前必须由医生语音确认：“该问题系本人基于临床需要独立主动提出”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 滿足 FDA Guidance on Unsolicited Requests 完整法务抗辩证据链</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">超说明书推广 (Off-Label Promotion) 违规率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">商业销售 CRM 与医学信息 MIRF 账套 100% 物理隔离</text>
+  </g>
+
+  <!-- Pillar 2: HCP License Gate & Locked Standard Response Letter (SRL) Readout -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hcpGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 执业医药师 (HCP) 核身与 SRL 标准文献锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁向普通患者播报超说明书文献或让 LLM 自由总结！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 若普通患者来电问未获批适应症，严禁向其宣读二期探索性临床数据</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 即便面对执业医师，也严禁让大模型自由发挥“推荐您尝试减半剂量”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">NPI / 医师执业证核身门禁 + 获批标准回函 (SRL) 逐字播报</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 患者来电：仅限播报国家药监局/FDA 核准说明书 (PI) 内容并建议遵医嘱</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 已核身 HCP 来电：0ms 切换经医学总监签批的《标准医学回函 SRL》锁定音轨</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">配伍稳定性 (IV Stability) 与肝肾功能不全剂量精确查表</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 住院药师急查：“注射液溶入 0.9% 生理盐水避光室温可放几小时？”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 100% 绑定结构化药学理化参数表，严禁大模型近似插值估算</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">医学文献引用与药代动力学参数差错率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">电话挂断后 5秒内将 PDF 标准医学回函与原文发送至医师邮箱</text>
+  </g>
+
+  <!-- Pillar 3: Product Quality Complaint (PQC) + Adverse Event (AE) Dual Capture -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pqcGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 药品质量投诉 (PQC) 与不良事件 (AE) 双捕获</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">识别“药液浑浊/预充针卡死/包装破损” 0ms 触发 GMP 质检锁</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 护士长来电：“今天拆开批号 LOT-2026A 的西林瓶发现里面有白色悬浮物”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 0ms 启动药品质量投诉 (PQC) 工单，指令封存原样并派遣冷链专员取回留样</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">PQC × PV (药物警戒) 联合发生时 24h 双轨并报</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 若问题批次药液已注入患者体内并引发寒战发热 -> 同时触发 PQC 与 PV SAE</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动关联同一生产批号 (Lot Number) 全球发货流向预警 QA 总监</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">21 CFR Part 11 电子签名与 10年医学问询审计留存</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 每通 MIRF 问询自动生成带时间戳录音、转写文本与所引用 SRL 版本号</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 随时迎接 FDA / EMA / NMPA 飞行检查 (GMP / GVP Audit)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">PQC 质量缺陷与 AE 不良事件漏报率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">临床药师与医师紧急配伍问询响应时间从 24小时缩短至 35秒</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (PHARMA-MEDINFO-MIRF-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 面对任何超说明书适应症/剂量 (Off-Label) 提问，必须 0ms 切断向商业销售 CRM 同步，且仅在核验来电者为执业医务人员 (HCP) 并确认非诱导提问后方可播报锁定版 SRL；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 通话中一旦检出药液浑浊、注射笔故障或包装破损等药品质量投诉 (PQC)，必须 0ms 锁定批次号 (Lot ID) 并触发 GMP 质量与药物警戒 (PV) 双轨直报。</text>
+</svg>

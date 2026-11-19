@@ -2234,6 +2234,30 @@ export function evaluateMedicalAestheticSafetyGuard(input: {
   };
 }
 
+export interface PharmaMedInfoMirfEvaluation {
+  policyCode: "PHARMA-MEDINFO-MIRF-01";
+  commercialCrmSyncBlocked: boolean;
+  offLabelScientificSrlReadoutAllowed: boolean;
+  productQualityComplaintLotAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Pharma Medical Information (MIRF) & Off-Label Compliance Guard (`PHARMA-MEDINFO-MIRF-01`).
+ */
+export function evaluatePharmaMedInfoMirfGuard(input: {
+  unsolicitedOffLabelQueryDetected: boolean;
+  callerVerifiedAsLicensedHcp: boolean;
+  productQualityComplaintReported: boolean;
+}): PharmaMedInfoMirfEvaluation {
+  return {
+    policyCode: "PHARMA-MEDINFO-MIRF-01",
+    commercialCrmSyncBlocked: input.unsolicitedOffLabelQueryDetected,
+    offLabelScientificSrlReadoutAllowed:
+      input.unsolicitedOffLabelQueryDetected && input.callerVerifiedAsLicensedHcp,
+    productQualityComplaintLotAlertTriggered: input.productQualityComplaintReported,
+  };
+}
+
 
 
 
