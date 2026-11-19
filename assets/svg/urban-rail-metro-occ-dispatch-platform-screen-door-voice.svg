@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgMetro" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1A"/>
+      <stop offset="50%" stop-color="#112238"/>
+      <stop offset="100%" stop-color="#08101E"/>
+    </linearGradient>
+    <linearGradient id="psdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="occGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="crowdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgMetro)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Urban Rail, Metro OCC &amp; GoA4 Driverless Train Voice AI: PSD Gap Lock &amp; Dispatch Readback</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">城市轨道交通 (地铁 OCC 调度与 GoA4 全自动无人驾驶) 语音 AI：屏蔽门 (PSD) 防夹死锁、行调命令逐字复诵与三级限流全景图</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#450A0A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#FCA5A5" font-size="13" font-weight="600" text-anchor="middle">RAILWAY-METRO-DISPATCH-01 · Rail</text>
+
+  <!-- Pillar 1: Platform Screen Door (PSD) Gap Entrapment 0ms Train Hold Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#psdGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 站台屏蔽门 (PSD) 间隙防夹人 0ms 扣车硬锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁在屏蔽门与车门缝隙有异物/人员时放行列车发车！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 地铁致命痛点：GoA4 全自动无人驾驶列车关门后，乘客或轮椅被困在两道门之间</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若站务员通过对讲机误判口头喊“站台正常可以发车”，将酿成拖拽致死惨剧</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">激光间隙探测器 (LiDAR) + 紧急对讲 (PECU) 0ms 扣车联锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 只要激光间隙传感器报错或乘客按下车厢紧急对讲喊“门夹住人/包了”</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 0ms 向 CBTC 信号系统下发紧急扣车指令并弹开对应屏蔽门（严禁口头旁路）</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">GoA4 无人驾驶车厢乘客紧急通话 (PECU) 多模态安抚</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 乘客拉下紧急通话器瞬间：自动联动对应车厢 CCTV 画面弹屏至 OCC 调度台</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 区分“乘客晕倒求救（下一站不停靠越站改为站台急救）”与“误触按键”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">屏蔽门与车门间隙夹人冒险发车率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">紧急对讲 PECU 唤醒至 CBTC 扣车联动延迟 &lt; 120ms</text>
+  </g>
+
+  <!-- Pillar 2: OCC Train Dispatcher TETRA/FRMCS Verbatim Command Readback -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#occGrad2)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 行车调度 (OCC) 无线调度命令“逐字复诵”硬锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">⛔ 严禁司机或车站值班员以“收到/明白”代替调度命令复诵！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 铁道与地铁行车死律：发布临时限速、越过红灯、接触网停电或反方向行车令时</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若把“0214次列车在 S1204 信号机前停车”听成“0241次”，将引发列车追尾</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">TETRA / GSM-R 调度命令五要素 100% 逐字复诵校验锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 强制核对五要素：【命令号码 + 受令车次/车站 + 区间信号机号 + 限速值 + 受令人】</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 受令人复诵漏读或读错任意 1位车次/信号机号 -> 0ms 锁定电子调度命令签收</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">夜间天窗施工“接触网停电挂地线 &amp; 销点清场”声纹双锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 凌晨 4点恢复接触网 1500V/25kV 送电前：强制核验全部作业组长销点声纹</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 只要还有 1把接地线未拆或 1个施工班组未语音销点，0ms 锁死电调送电合闸</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">行车调度命令车次/信号机听错误执行率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">夜间轨行区天窗作业未清场误送电事故率 = 0.0%</text>
+  </g>
+
+  <!-- Pillar 3: Station Crowd Density (>=3.5 p/sqm) Level-3 Gate Throttling & Escalator Safety -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#crowdGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 换乘站大客流三级限流与电扶梯防踩踏广播</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">站台密度 &gt;= 3.5人/㎡ 0ms 触发三级客流控制联动</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 早高峰或跨年散场时，若站厅闸机继续全开往已挤满的站台放人，极易挤落轨道</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 站台密度 &gt;=3.5人/㎡ -> 0ms 自动关闭半数进站闸机、停运下行至站台的电扶梯</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">电扶梯大件行李/婴儿车倾倒 0ms 语音预警与急停导引</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 视觉检出老人推轮椅/婴儿车欲上电扶梯 -> 定向音箱 0ms 提醒改乘垂直无障碍电梯</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 检出扶梯乘客摔倒 -> 0ms 语音广播“请抓紧扶手！”并通知值班员按急停</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">多语种智能票务客服机 (TVM) 15秒极限换乘与寻物</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 乘客遗失物品在刚开走的列车上：报出车厢号，10秒内直接语音联动前方下一站拦截</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 支持粤/沪/川方言与英日韩阿语免触控购票及首末班车精确换乘规划</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">站台超载拥挤踩踏风险 = 0.0% · 遗失物下一站找回率 89%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合城市轨道交通行车组织规则與 EN 50126 (SIL-4 辅助隔离) 规范</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#EF4444" font-size="14" font-weight="700">架构师核心选型法则 (RAILWAY-METRO-DISPATCH-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 站台屏蔽门 (PSD) 与列车门间隙一旦检出人员/异物或乘客紧急对讲报警，必须 0ms 联锁 CBTC 扣车并重开门，严禁任何口头语音指令旁路发车；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. OCC 行车调度无线命令必须强制校验“命令号+车次+信号机”100% 逐字复诵，且站台人群密度 &gt;=3.5人/㎡ 时自动启动进站闸机三级限流与扶梯保护。</text>
+</svg>

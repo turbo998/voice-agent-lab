@@ -2341,6 +2341,33 @@ export function evaluateSovereignCloudVoiceGuard(input: {
   };
 }
 
+export interface UrbanRailMetroDispatchEvaluation {
+  policyCode: "RAILWAY-METRO-DISPATCH-01";
+  trainDepartureInterlockCleared: boolean;
+  psdEmergencyHoldAndReopenTriggered: boolean;
+  dispatchCommandExecutionAuthorized: boolean;
+  level3StationEntryThrottleTriggered: boolean;
+}
+
+/**
+ * Deterministic Urban Rail & Metro OCC Dispatch Safety Guard (`RAILWAY-METRO-DISPATCH-01`).
+ */
+export function evaluateUrbanRailMetroDispatchGuard(input: {
+  psdGapObstacleOrPassengerTrapped: boolean;
+  dispatchCommandNumberAndTrainIdVerbatimMatched: boolean;
+  platformDensityPersonsPerSqm: number;
+}): UrbanRailMetroDispatchEvaluation {
+  return {
+    policyCode: "RAILWAY-METRO-DISPATCH-01",
+    trainDepartureInterlockCleared: !input.psdGapObstacleOrPassengerTrapped,
+    psdEmergencyHoldAndReopenTriggered: input.psdGapObstacleOrPassengerTrapped,
+    dispatchCommandExecutionAuthorized:
+      input.dispatchCommandNumberAndTrainIdVerbatimMatched,
+    level3StationEntryThrottleTriggered:
+      input.platformDensityPersonsPerSqm >= 3.5,
+  };
+}
+
 
 
 
