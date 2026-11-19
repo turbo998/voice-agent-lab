@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgMob" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#12223D"/>
+      <stop offset="100%" stop-color="#07101E"/>
+    </linearGradient>
+    <linearGradient id="visaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="lcaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="peGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgMob)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Global Mobility, EOR &amp; Visa Compliance Voice AI: Tourist-Work Ban, H-1B LCA Lock &amp; PE Tax Guard</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">全球人才流动 (Global Mobility)、名义雇主 (EOR) 与签证合规语音 AI：旅游签远程办公禁令、H-1B 跨州 LCA 锁与常设机构税险全景图</text>
+  <rect x="844" y="42" width="308" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="998" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">GLOBAL-MOBILITY-EOR-01 · Mobility</text>
+
+  <!-- Pillar 1: Tourist Visa / Visa-Waiver Cross-Border Workcation Prohibition Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#visaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 持旅游签/免签境外远程办公 (Workcation) 死锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁批准员工持 B1/B2/申根旅游签在海外写代码办公！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 跨国科技企常见雷区：员工打给 HR 语音助手“我去日本/英国旅游顺便带电脑干活1个月”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 绝大多数国家严禁持旅游免签从事生产性劳动，一旦入境被查将遭遣返并拉黑雇主保荐资质</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">目的地工作权 (Right-to-Work) 0ms 核验与 VPN 围栏联动</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 检出目的地国家 != 员工国籍/工作签签发国且无数字游民/工作许可</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 0ms 拦截跨境办公申请，明确告知非法务工法律风险并联动企业 VPN 地域策</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">短期商务差旅 (Business Visitor) 活动红线语音边界卡</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 精确区分合法商务活动（开会/听培训/谈合同）与非法工作（驻场敲代码/直接管当地团队）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动生成符合目的地移民局要求的中英文海关入境邀请函 (Invitation Letter)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">持旅游签违规批准境外办公与海关遣返率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">守护跨国雇主 Sponsor License 零吊销记录</text>
+  </g>
+
+  <!-- Pillar 2: US H-1B / L-1 / EU Blue Card Work-Site Change LCA Pre-Filing Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#lcaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. H-1B / 欧盟蓝卡跨城搬家“先交 LCA 后搬迁”硬锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">⛔ 严禁 H-1B 员工在未提交 LCA / I-129 修正案前跨统计区搬家！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 员工从西雅图搬去德州奥斯汀居家办公，打电话给 HR 语音改家庭住址和税率</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• Matter of Simeio 判例铁律：跨 MSA 统计区变更工作地点必须【先递交新 LCA】否则身份即刻失效！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">Workday 地址变更 × 移民签证库 (Fragomen/Envoy) 0ms 互锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 只要员工持有 H-1B / E-3 / EU Blue Card 且新地址跨越原 LCA 大都市统计区 (MSA)</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 0ms 冻结 Workday 工作地址生效，自动向移民律师楼派发加急 LCA 与 Prevailing Wage 核验单</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">名义雇主 (EOR：Deel/Remote) 假独立承包商 (Misclassification) 锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 用人部门要求把全职坐班员工按海外 Contractor 签合同省社保</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 0ms 识别全职排他性与固定工时特征，强制转全合规 EOR 或本地实体劳动合同</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">H-1B 跨州搬家引发的签证身份失效率 (Out-of-Status) = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 USCIS Matter of Simeio 与欧盟 Posted Workers 指令</text>
+  </g>
+
+  <!-- Pillar 3: Corporate Tax Permanent Establishment (PE Risk) & 183-Day Tracker -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#peGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 跨国税务“常设机构 (PE Risk)”与 183天预警锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严防销售高管在海外远程办公让母公司被认定为当地“常设机构”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 税务核弹：拥有合同签署权的高管或销售总监在法国/德国/新加坡滞留并谈业务</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 当地税务局可将母公司认定为构成常设机构 (PE)，对全球利润追缴巨额企业所得税与罚金</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">销售/高管角色 × 累计停留天数 (&gt;=90天) 0ms 税务总监联锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 实时汇总差旅机票与门禁数据：一旦外派或跨国停留累计逼近 90天/183天税收协定线</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 或申请人岗位具有对外签约权 (Signatory Authority) -> 0ms 锁定并移交集团国际税务部</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">跨国双向个税均衡 (Tax Equalization) 与社保互免协定播报</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 外派员工问询：“外派德国3年我的国内五险一金和德国养老金怎么交？”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动匹配中德/中美双边社保互免协定 (Certificate of Coverage)，免除双重缴费</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">跨国常设机构 (PE) 意外税务触发率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 OECD 税收协定范本第5条、USCIS 与全球 EOR 劳动法规</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (GLOBAL-MOBILITY-EOR-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 跨国 HR/Mobility 语音助手一旦检出员工拟持旅游/免签签证境外办公，或持 H-1B 未办妥新 LCA 即跨统计区搬迁，必须 0ms 拦截申请并冻结地址变更；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 具有商务谈判或合同签署权的员工申请境外长期停留 (&gt;=90天) 时，必须 0ms 触发 OECD 常设机构 (PE) 企业所得税风险锁并移交国际税务部审批。</text>
+</svg>

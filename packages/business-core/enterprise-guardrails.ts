@@ -2475,6 +2475,34 @@ export function evaluateOffshoreWindGridDispatchGuard(input: {
   };
 }
 
+export interface GlobalMobilityEorVisaEvaluation {
+  policyCode: "GLOBAL-MOBILITY-EOR-01";
+  crossBorderWorkOrRelocationApproved: boolean;
+  illegalEmploymentOrVisaRevocationLockTriggered: boolean;
+  corporateTaxPeRiskEscalated: boolean;
+}
+
+/**
+ * Deterministic Global Mobility, EOR & Visa/Tax Compliance Guard (`GLOBAL-MOBILITY-EOR-01`).
+ */
+export function evaluateGlobalMobilityEorVisaGuard(input: {
+  employeeOnTouristOrVisaWaiverOnly: boolean;
+  h1bOutOfMsaMoveWithoutAmendedLca: boolean;
+  foreignStayDaysOrContractSigningCreatesPeRisk: boolean;
+}): GlobalMobilityEorVisaEvaluation {
+  const visaViolation =
+    input.employeeOnTouristOrVisaWaiverOnly ||
+    input.h1bOutOfMsaMoveWithoutAmendedLca;
+  return {
+    policyCode: "GLOBAL-MOBILITY-EOR-01",
+    crossBorderWorkOrRelocationApproved:
+      !visaViolation && !input.foreignStayDaysOrContractSigningCreatesPeRisk,
+    illegalEmploymentOrVisaRevocationLockTriggered: visaViolation,
+    corporateTaxPeRiskEscalated:
+      input.foreignStayDaysOrContractSigningCreatesPeRisk,
+  };
+}
+
 
 
 
