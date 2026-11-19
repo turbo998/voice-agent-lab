@@ -2368,6 +2368,33 @@ export function evaluateUrbanRailMetroDispatchGuard(input: {
   };
 }
 
+export interface AutoPropertyFnolClaimsEvaluation {
+  policyCode: "COMMERCIAL-INSURANCE-FNOL-01";
+  lifeSafetyAnd120PolicePreempted0ms: boolean;
+  prematureLiabilityOrCoveragePromiseBlocked: boolean;
+  instantFastTrackPayoutAuthorized: boolean;
+}
+
+/**
+ * Deterministic Auto & Property Insurance FNOL Video Claims Guard (`COMMERCIAL-INSURANCE-FNOL-01`).
+ */
+export function evaluateAutoPropertyFnolClaimsGuard(input: {
+  bodilyInjuryOrHighwayLaneHazardDetected: boolean;
+  draftAdmitsLiabilityOrGuaranteesPayoutBeforeInvestigation: boolean;
+  fourCornerAndVinContinuousVideoVerified: boolean;
+}): AutoPropertyFnolClaimsEvaluation {
+  return {
+    policyCode: "COMMERCIAL-INSURANCE-FNOL-01",
+    lifeSafetyAnd120PolicePreempted0ms:
+      input.bodilyInjuryOrHighwayLaneHazardDetected,
+    prematureLiabilityOrCoveragePromiseBlocked:
+      input.draftAdmitsLiabilityOrGuaranteesPayoutBeforeInvestigation,
+    instantFastTrackPayoutAuthorized:
+      !input.bodilyInjuryOrHighwayLaneHazardDetected &&
+      input.fourCornerAndVinContinuousVideoVerified,
+  };
+}
+
 
 
 

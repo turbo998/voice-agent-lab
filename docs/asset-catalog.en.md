@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (110 Bilingual Guides)
+## 3. Solution Architect Selection Guides (111 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -151,3 +151,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 108. **Next-Gen Warehouse Pick-by-Voice & Cold-Chain Dock Receiving Voice AI: Bin Check-Digit Lock, >-12°C Dock Rejection & Allergen-Safe Substitution**: [EN](./warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.en.md) | [中文](./warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.md)
 109. **Sovereign Cloud & Cross-Border Data Residency Voice AI (GDPR / PIPL / KSA PDPL): In-Country Media Pinning, Pseudonymized Follow-the-Sun & ZDR**: [EN](./sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.en.md) | [中文](./sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.md)
 110. **Urban Rail, Metro OCC Dispatch & GoA4 Driverless Train Voice AI: PSD Gap Entrapment Lock, Verbatim Command Readback & Crowd Throttling**: [EN](./urban-rail-metro-occ-dispatch-platform-screen-door-voice-selection-faq.en.md) | [中文](./urban-rail-metro-occ-dispatch-platform-screen-door-voice-selection-faq.md)
+111. **Auto & Commercial Property Insurance FNOL Video Claims Voice AI: Highway Safety Preemption, Unbroken Video Anti-Fraud & Subrogation Lock**: [EN](./auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.en.md) | [中文](./auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.md)

@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 110 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 110 Guides](#-2-110-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 111 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 111 Guides](#-2-111-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 110 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 111 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -182,6 +182,7 @@ flowchart LR
 108. **Next-Gen Warehouse Pick-by-Voice & Cold-Chain Dock Receiving Voice AI: Bin Check-Digit Lock, >-12°C Dock Rejection & Allergen-Safe Substitution**: [EN](./docs/warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.en.md) | [中文](./docs/warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.md)
 109. **Sovereign Cloud & Cross-Border Data Residency Voice AI (GDPR / PIPL / KSA PDPL): In-Country Media Pinning, Pseudonymized Follow-the-Sun & ZDR**: [EN](./docs/sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.en.md) | [中文](./docs/sovereign-cloud-cross-border-data-residency-gdpr-pipl-voice-selection-faq.md)
 110. **Urban Rail, Metro OCC Dispatch & GoA4 Driverless Train Voice AI: PSD Gap Entrapment Lock, Verbatim Command Readback & Crowd Throttling**: [EN](./docs/urban-rail-metro-occ-dispatch-platform-screen-door-voice-selection-faq.en.md) | [中文](./docs/urban-rail-metro-occ-dispatch-platform-screen-door-voice-selection-faq.md)
+111. **Auto & Commercial Property Insurance FNOL Video Claims Voice AI: Highway Safety Preemption, Unbroken Video Anti-Fraud & Subrogation Lock**: [EN](./docs/auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.en.md) | [中文](./docs/auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.md)
 
 ---
 

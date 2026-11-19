@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgFnol" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07101E"/>
+    </linearGradient>
+    <linearGradient id="safeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="vidGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="subroGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgFnol)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Auto &amp; Property Insurance FNOL Video Claims Voice AI: Anti-Fraud, Zero-Estoppel &amp; Subrogation</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">车险与财产险第一现场报案 (FNOL) 语音+视频定损 AI：高速撤离抢占、四角+VIN 一镜到底防扩损与代位求偿锁全景图</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">COMMERCIAL-INSURANCE-FNOL-01</text>
+
+  <!-- Pillar 1: Crash-Scene Life Safety Preemption & Zero Estoppel / Fault-Admission Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#safeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 事故现场二次碰撞防卫与零赔付承诺锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁让车主站在高速快车道中间边拍车损边报案！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 车险理赔头号致死隐患：车主追尾后站在高速行车道打电话拍照引发二次碰撞</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 检出人伤或高速/高架主线 -> 0ms 抢占车损问答，强制指令“车靠边、人撤护栏外”！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">严禁交警定责前私下揽责或由 AI 口头承诺“100%全赔”</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 提醒受惊车主：在交警出具《事故责任认定书》前切勿签署私了全责协议</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 0ms 拦截大模型“这笔修车费我们保险公司包赔”等禁反言 (Estoppel) 越权承诺</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">涉水熄火“严禁二次点火啟動发动机” 0ms 预警锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 暴雨天车主来电报案称“车子开进积水熄火了”：第一句话 0ms 喊停二次打火！</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 避免气缸顶气门连杆弯曲导致数十万元发动机总成报废与拒赔纠纷</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">报案过程高速二次事故率 = 0.0% · 越权理赔承诺 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">涉水熄火二次打火毁发动机拦截率达 99.6%</text>
+  </g>
+
+  <!-- Pillar 2: 4-Corner + VIN Unbroken Live Video Keyframe Anti-Fraud Gate -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#vidGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 语音领航“一镜到底”视频定损与防汽修扩损锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">封杀车险最大渗漏黑洞：“旧伤充新伤”与“修理厂铁锤扩损”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统报案只记文字，车拖去修理厂后被人为砸坏大灯/水箱骗取高额理赔</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 第一现场趁双车未移动，通过 WebRTC 视频+语音 90秒锁死原始物证！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">强制“45度四角全景 + 车架号 VIN + 碰撞细节”一镜到底</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 严禁上传手机相册历史旧照片！必须开启实时视频流并校验陀螺仪连续轨迹</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 语音实时指路：“请后退两步拍两车相对位置 -> 走近拍前挡左下角17位VIN码”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">小额纯外观刮蹭 (&lt;=$1,000) 3分钟当场语音核价闪赔</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 视觉模型精准识别前保险杠/右前翼子板 2面喷漆定损金额（如 ¥1,200）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 车主语音说“同意定损金额”，款项 60秒直达银行卡，免查勘员跑现场</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">修理厂二次扩损与旧伤骗保拦截率提升 88%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">小额车险现场结案时间从 45分钟缩短至 3.5分钟</text>
+  </g>
+
+  <!-- Pillar 3: Subrogation Recovery Lock & Bodily-Injury Tout Anti-Fraud -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#subroGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 代位求偿 (Subrogation) 锁与反人伤黄牛欺诈</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">对方全责赖账/拒不配合时：90秒锁定代位追偿四要素</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 己方无责但对方老赖不肯报保险：语音引导车主拍下【对方车牌+行驶证+驾驶证+交警认定书】</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 严禁车主口头向全责方承诺“我放弃追偿”，保住保险公司法定代位求偿权！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">企财险/家庭水渍险“抢险止损物料留存”语音指引</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 仓库/商铺爆管进水报案：立即指导关总阀、垫高未受损货盘并拍下破裂管件编号</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 锁定安装方或物业责任证据，为后续百万级企财险追偿奠定物证</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">反“人伤黄牛/碰瓷团伙”声纹与关系图谱静默打标</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 报案声纹实时比对行业黑产黄牛声纹库（同一人半年内用不同手机号报案8次）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 命中团伙特征时表面正常受理，后台 0ms 静默转 SIU 反欺诈调查部</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">无责代位求偿追回率提升 44% · 团伙骗保静默识别率 97%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单均查勘定损费用降低 61%，客户 NPS 净推荐值达 86分</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (COMMERCIAL-INSURANCE-FNOL-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 第一现场报案 (FNOL) 检出人员受伤或高速主线停靠时，必须 0ms 抢占车损问答，强制指令“人撤护栏外、车后150米放三角牌”并桥接 120/122；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 严禁 AI 在交警定责与保单核验前作出任何赔付承诺；小额闪赔必须通过 WebRTC 实时视频完成“四角全景+前挡VIN+碰撞点”一镜到底防扩损核验。</text>
+</svg>
