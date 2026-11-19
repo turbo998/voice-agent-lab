@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (125 Bilingual Guides)
+## 3. Solution Architect Selection Guides (126 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -166,3 +166,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 123. **Enterprise Contact Center (CCaaS) Modernization Deep-Dive: Azure ACS + GPT-Realtime vs. Amazon Connect + Nova Sonic vs. Genesys Cloud + Twilio Architecture & TCO**: [EN](./ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.en.md) | [中文](./ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.md)
 124. **Contact Center Real-Time Agent Assist Copilot: Stereo Dual-Channel Split, <300ms Next-Best-Action Micro-Cards & 3-Second Auto-ACW Summarization**: [EN](./contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.en.md) | [中文](./contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.md)
 125. **Healthcare Patient Appointment Scheduling, Pre-Visit Symptom Triage & Post-Discharge Follow-Up Voice AI: HL7 FHIR Slot Locking, 0ms Red-Flag Nurse Preemption & HIPAA**: [EN](./healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.en.md) | [中文](./healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.md)
+126. **Retail & E-Commerce Omnichannel Voice AI: 0-Second Caller-ID Order Preload (WISMO), Anti-Abuse RMA Return Locks & 10x Promo Surge Architecture**: [EN](./retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.en.md) | [中文](./retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.md)

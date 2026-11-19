@@ -2794,6 +2794,37 @@ export function evaluateHealthcarePatientSchedulingTriageGuard(input: {
   };
 }
 
+export interface RetailEcommerceWismoReturnsEvaluation {
+  policyCode: "RETAIL-WISMO-RETURNS-01";
+  instantRefundWithoutReturnScanAuthorized: boolean;
+  inTransitAddressRerouteAuthorized: boolean;
+  promoSurgeCascadedBurstActive: boolean;
+}
+
+/**
+ * Deterministic Retail & E-Commerce WISMO, Anti-Abuse RMA & 10x Promo Surge Guard (`RETAIL-WISMO-RETURNS-01`).
+ */
+export function evaluateRetailEcommerceWismoReturnsGuard(input: {
+  refundAmountUsd: number;
+  autoInstantRefundCeilingUsd: number;
+  customerHasHighReturnAbuseRiskScore: boolean;
+  packageAlreadyOutForDelivery: boolean;
+  callerAniMatchesOrderPhoneAndOtpVerified: boolean;
+  isPeakPromoSurge10x: boolean;
+}): RetailEcommerceWismoReturnsEvaluation {
+  return {
+    policyCode: "RETAIL-WISMO-RETURNS-01",
+    instantRefundWithoutReturnScanAuthorized:
+      input.refundAmountUsd <= input.autoInstantRefundCeilingUsd &&
+      !input.customerHasHighReturnAbuseRiskScore,
+    inTransitAddressRerouteAuthorized:
+      !input.packageAlreadyOutForDelivery &&
+      input.callerAniMatchesOrderPhoneAndOtpVerified,
+    promoSurgeCascadedBurstActive: input.isPeakPromoSurge10x,
+  };
+}
+
+
 
 
 

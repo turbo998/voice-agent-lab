@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgRetail" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1A"/>
+      <stop offset="50%" stop-color="#141F36"/>
+      <stop offset="100%" stop-color="#08111E"/>
+    </linearGradient>
+    <linearGradient id="wismoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="rmaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="surgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgRetail)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Retail &amp; E-Commerce Voice AI: 0s ANI WISMO Preload, Anti-Abuse RMA &amp; 10x Promo Surge</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">零售与电商全渠道语音客服架构：来电免报单号 0秒预加载 WISMO、退换货防欺诈阈值锁、在途防劫持改址与大促 10倍弹性扩容</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">RETAIL-WISMO-RETURNS-01</text>
+
+  <!-- Pillar 1: 0s Caller-ID (ANI) WISMO Preload -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#wismoGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 来电 0秒免报单号预加载 (ANI WISMO)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 最差体验：让客户对着电话念 18 位订单号！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统语音客服一接通就问“请说出您的18位订单号”，识别错一位就重来</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 55% 的客户在第 2 次报错后直接狂按 0 转人工并给差评</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">✅ 黄金设计：SIP INVITE 振铃瞬间按主叫号码 (ANI) 预查单</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 电话振铃前 200ms 并发查询 Shopify / OMS 活跃在途包裹</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 接通首句直接主动播报：“张女士您好，您问的是今天派送的羽绒服吗？”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">平均通话时长从 165 秒压降至 38 秒 (-77%)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 免除繁琐报号与核对，客户 38 秒内听完快递员电话与预计送达时间即挂机</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• WISMO 查单类来电 AI 零转人工独立闭环率高达 86.4%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">单通 WISMO 成本仅 $0.031 · 闭环率 86.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底消灭“报18位长串数字”这一语音交互最大反人类痛点</text>
+  </g>
+
+  <!-- Pillar 2: Anti-Abuse RMA Returns & In-Transit Address Hijack Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rmaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 退换货防羊毛党阈值锁与在途防劫持改址</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">痛点：AI 被恶意话术诱导“仅退款不退货”导致巨额资损</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 黑产羊毛党用 Prompt 注入或苦肉计诱导语音机器人直接调用极速退款 API</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或冒充买家致电要求把在途的 iPhone 改派送到另一个陌生地址</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">确定性风控护栏 1：金额上限 + 信用分双锁 (Instant Refund Gate)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 仅当生鲜/低值商品 &lt;=$25 且客户无高频退货黑名单记录时允许免寄回闪退</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 超过 $25 强制走“顺丰/UPS 上门取件揽收扫码 -&gt; 验货入库后退款”状态机</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">确定性风控护栏 2：在途改址防包裹劫持锁 (Anti-Hijack Lock)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 包裹一旦进入“末端派送中 (Out for Delivery)”严禁语音直接改跨区地址</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 干线在途改址必须强制校验“下单原手机号主叫 + 6位短信验证码 OTP”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">恶意骗退资损率 0% · 换尺码留存率 +38%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">退货时优先实时查库存推荐“免费上门换大一码”，将退货变换货保住 GMV</text>
+  </g>
+
+  <!-- Pillar 3: Black Friday / Singles' Day 10x Surge FinOps -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#surgeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 双11/黑五 10倍洪峰弹性扩容与弃单挽回</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：大促 48 小时话务暴涨 10 倍，临时招短期工既贵又慢</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统外包客服需要提前 1 个月培训，大促过后又大量闲置浪费</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 若按 10 倍峰值购买全年大模型 PTU 预留算力，平时 90% 算力空转亏本</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">基线 PTU + 洪峰 PayGo 级联溢出池 (Burst Spillover)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 按日常均值采购基础 PTU；大促洪峰溢出的 80% 查快递流量自动切入</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• $0.038/min 的极速级联池 (Azure Speech + GPT-4o-mini)，支持 5,000 路并发</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">高客单价弃单黄金 15 分钟外呼挽回 (Cart Recovery)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 对 &gt;$300 支付失败或犹豫弃单的已授权会员，15 分钟内由语音导购回访</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 实时解答尺码/分期免息疑问并下发专属结算链接，转化率高达 14.8%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">大促 5,000 并发零排队 · 洪峰成本省 68%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">无需临时雇佣上千名短期外包坐席即可平稳度过双11/黑五</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">零售电商语音架构师核心法则 (RETAIL-WISMO-RETURNS-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 振铃即查单：利用主叫号码 (ANI) 在 SIP 振铃阶段预加载最近在途订单，接通首句直接核对商品名，彻底取消“让客户背诵18位订单号”；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 退货必锁阈值与改址必验 OTP：免退回闪退严格锁死在 &lt;=$25 且高信用账户；退尺码优先引导“一键上门免费换码”保住 38% 原本流失的 GMV。</text>
+</svg>
