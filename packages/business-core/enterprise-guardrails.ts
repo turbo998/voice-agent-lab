@@ -3271,6 +3271,38 @@ export function evaluateLifeHealthInsuranceUnderwritingRenewalGuard(input: {
   };
 }
 
+export interface AutomotiveInCabinMultimodalVoiceEvaluation {
+  policyCode: "AUTOMOTIVE-INCABIN-COCKPIT-01";
+  canBusVehicleActuationAuthorized: boolean;
+  rearChildOverrideBlocked: boolean;
+  onDeviceNpuTunnelFallbackActivated: boolean;
+}
+
+/**
+ * Deterministic Automotive In-Cabin 6-Zone RBAC, Driving-Speed CAN Safety Interlock & Tunnel NPU Fallback Guard (`AUTOMOTIVE-INCABIN-COCKPIT-01`).
+ */
+export function evaluateAutomotiveInCabinMultimodalVoiceGuard(input: {
+  vehicleSpeedKmh: number;
+  isSafetyCriticalHeadlightOffOrTrunkOpenCommand: boolean;
+  speakerZoneIsRearOrChildSeat: boolean;
+  isDriverOnlyNavigationOrLockCommand: boolean;
+  cloudFirstPacketLatencyMs: number;
+}): AutomotiveInCabinMultimodalVoiceEvaluation {
+  const blockedByMotion =
+    input.vehicleSpeedKmh > 0 &&
+    input.isSafetyCriticalHeadlightOffOrTrunkOpenCommand;
+  const blockedByZone =
+    input.speakerZoneIsRearOrChildSeat &&
+    input.isDriverOnlyNavigationOrLockCommand;
+  return {
+    policyCode: "AUTOMOTIVE-INCABIN-COCKPIT-01",
+    canBusVehicleActuationAuthorized: !blockedByMotion && !blockedByZone,
+    rearChildOverrideBlocked: blockedByZone,
+    onDeviceNpuTunnelFallbackActivated: input.cloudFirstPacketLatencyMs > 800,
+  };
+}
+
+
 
 
 

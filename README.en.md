@@ -213,6 +213,7 @@ flowchart LR
 139. **Real-Time Voice AI Orchestration Frameworks & High-Concurrency Engineering: LiveKit Agents vs. Pipecat vs. Azure ACS, GIL Isolation & K8s Drain**: [EN](./docs/realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.en.md) | [中文](./docs/realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.md)
 140. **Chain QSR Drive-Thru, Coffee Kiosk & Phone Voice Ordering AI: 85dB Engine Noise Gate, Real-Time POS 86 Out-of-Stock Lock & Nested Modifier DAG**: [EN](./docs/qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.en.md) | [中文](./docs/qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.md)
 141. **Life & Health Insurance Tele-Underwriting, Anti-Lapse Renewal & Claims Concierge Voice AI: Reflexive ICD-10 Drill-Down, Verbatim Exclusion Lock & Conservation**: [EN](./docs/life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.en.md) | [中文](./docs/life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.md)
+142. **Automotive In-Cabin Multimodal Voice Assistant: 6-Zone Seat Permission Isolation, Driving-State CAN Safety Interlocks & Edge NPU + Cloud Hybrid**: [EN](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.en.md) | [中文](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.md)
 
 ---
 
