@@ -2618,6 +2618,33 @@ export function evaluateFineArtAuctionBiddingGuard(input: {
   };
 }
 
+export interface FoodDairyCipAsepticEvaluation {
+  policyCode: "FOOD-CIP-ASEPTIC-VOICE-01";
+  cipCausticValveOpenAuthorized: boolean;
+  chemicalAdulterationLockTriggered: boolean;
+  asepticFillingReleaseAuthorized: boolean;
+}
+
+/**
+ * Deterministic Dairy, Brewery & Aseptic Beverage CIP Caustic & UHT Guard (`FOOD-CIP-ASEPTIC-VOICE-01`).
+ */
+export function evaluateFoodDairyCipAsepticGuard(input: {
+  targetTankContainsProductOrSwingBendUnverified: boolean;
+  returnConductivityMicroSiemensPerCm: number;
+  uhtSterilizationTempBelow137C: boolean;
+}): FoodDairyCipAsepticEvaluation {
+  return {
+    policyCode: "FOOD-CIP-ASEPTIC-VOICE-01",
+    cipCausticValveOpenAuthorized:
+      !input.targetTankContainsProductOrSwingBendUnverified,
+    chemicalAdulterationLockTriggered:
+      input.targetTankContainsProductOrSwingBendUnverified,
+    asepticFillingReleaseAuthorized:
+      input.returnConductivityMicroSiemensPerCm <= 15 &&
+      !input.uhtSterilizationTempBelow137C,
+  };
+}
+
 
 
 

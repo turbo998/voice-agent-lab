@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgCip" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#0F243C"/>
+      <stop offset="100%" stop-color="#07101E"/>
+    </linearGradient>
+    <linearGradient id="naohGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="condGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="uhtGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgCip)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Dairy, Brewery &amp; Aseptic Beverage Voice AI: CIP Caustic Interlock, Conductivity &amp; UHT Diversion</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">乳制品、精酿啤酒与无菌饮料工厂工业语音 AI：CIP 火碱防混罐死锁、回流电导率零残留核验与 UHT 灭菌失温回流全景图</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#450A0A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#FCA5A5" font-size="13" font-weight="600" text-anchor="middle">FOOD-CIP-ASEPTIC-VOICE-01 · Food</text>
+
+  <!-- Pillar 1: CIP (Clean-in-Place) Caustic / Acid Mix-Proof Valve & Empty-Tank Interlock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#naohGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. CIP 原位清洗火碱/硝酸“防混入鲜奶罐”死锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁向存有鲜奶/啤酒的储罐打入 80°C 氢氧化钠火碱液！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 乳品饮料厂头号恶性食安事故：操作工把“清洗 3号空罐”听错报成“清洗 2号满罐”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或跳线弯头 (Swing-Bend) 接错管路，导致强腐蚀火碱混入出厂牛奶引发灼伤召回</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">储罐零液位 + 防混双座阀 (Mix-Proof Valve) 接近开关互锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 语音请求启动 CIP 碱洗/酸洗前：0ms 校验目标罐液位计 == 0.0% 空罐状态</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 强制核验摇摆弯头 NFC/接近开关已物理切至 CIP 回路，否则 0ms 锁死火碱泵</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">啤酒发酵罐高浓度 CO2 置换排空防窒息锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 发酵罐内残余高浓度 CO2 遇火碱会剧烈吸热产生负压瞬间吸瘪 100吨不锈钢大罐！</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 强制校核 CO2 已排空且罐顶防真空呼吸阀畅通后，才允许打入热碱水</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">CIP 酸碱清洗剂串入成品储罐率 = 0.0% · 零吸瘪罐事故</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 EHEDG 欧洲卫生工程设计与 3-A 乳品卫生标准</text>
+  </g>
+
+  <!-- Pillar 2: Final Rinse Conductivity (<=15 uS/cm) & pH Zero-Residue Gate -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#condGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 终水冲回流电导率 (&lt;=15 μS/cm) 零碱残留放行锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁在 CIP 回流电导率未回落至清水基线前放行进料！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 夜班赶产量痛点：碱洗后终水冲洗时间不够，管壁仍残留微量氢氧化钠</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若凭工人一句“冲干净了，开进奶阀吧”直接进奶，首批百箱牛奶 pH 超标变苦毒奶</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">在线电导率仪 (&lt;=15 μS/cm) + 酚酞试纸阴性双签锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 实时读取 CIP 回流管在线电导率传感器与 pH 计</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 电导率 &gt; 15 μS/cm 或 pH &gt; 7.5 时 -&gt; 0ms 物理锁死物料进罐阀并自动延长无菌水冲洗</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">不同风味/含敏饮料换产（含乳饮料 -&gt; 纯茶饮料）ATP 荧光锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 从含牛奶蛋白产线切换至无敏纯茶产线时：强制要求品控员语音录入乳蛋白快检阴性</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 未录入 ATP 生物荧光值 &lt; 10 RLU 严禁开启无菌冷灌装机</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">化学清洗剂残留检出率 = 0.0% · 换产交叉致敏 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">根据电导率精准判停水冲，单次 CIP 节水 24%</text>
+  </g>
+
+  <!-- Pillar 3: UHT Sterilization (137°C / 4s) Flow-Diversion Valve & Sensory Panel Voice -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#uhtGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. UHT 瞬时灭菌 (&gt;=137°C) 失温 0ms 回流与品评</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将灭菌温度跌破 137°C 的失温料液放行进无菌灌装机！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 常温纯牛奶/植物蛋白饮料无菌线：UHT 保温管温度哪怕短暂跌至 134.5°C 持续 2秒</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若未切回流阀而流入利乐无菌包，将导致整批十万盒牛奶胀包变质</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">UHT 失温 (&lt;137°C) 0ms 强制切换分流阀 (FDV) + 重新 SIP 灭菌</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 温度低于 137.0°C -&gt; 0ms 动作回流分流阀 (Flow Diversion Valve) 排向回收罐</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 物理锁死无菌灌装放行，强制要求下游管路重新执行 30分钟 121°C 蒸汽灭菌 (SIP)！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">精酿酿酒师/乳品感官品评师 (Sensory Panel) 免手持盲测速记</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 品酒师端杯口述麦汁比重 (Plato)、苦度 (IBU)、双乙酰异味与风味轮评分</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动结构化写入 LIMS 系统，发现氧化/酸败异味 0ms 冻结该罐清酒放行</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">无菌灌装微生物失温污染率 = 0.0% · 零坏包召回</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 FDA 21 CFR Part 113 低酸罐头食品与 FSSC 22000 规范</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#EF4444" font-size="14" font-weight="700">架构师核心选型法则 (FOOD-CIP-ASEPTIC-VOICE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 启动任何 CIP 强酸强碱清洗前，必须 0ms 校验目标储罐零液位、防混双座阀与摇摆弯头接近开关状态，严禁向存有鲜奶/酒液的储罐开启碱洗阀；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 切换进料前必须强制校验 CIP 回流电导率 &lt;=15 μS/cm 零残留，且 UHT 灭菌温度一旦跌破 137°C 必须 0ms 切回流阀并锁死无菌灌装直至完成重灭菌。</text>
+</svg>

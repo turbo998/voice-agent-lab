@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（119 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（120 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -160,3 +160,4 @@
 117. **商业航天火箭发射场（24路指显语音网 <80ms Hold 抢占锁）、低轨卫星星座测控（高危遥控双签）与地面站高功放净空互锁方案**：[中文](./aerospace-launch-range-satellite-ttc-ground-station-voice-selection-faq.md) | [EN](./aerospace-launch-range-satellite-ttc-ground-station-voice-selection-faq.en.md)
 118. **远洋商船驾驶台（IMO SMCP 舵令复诵与 NMEA 实测舵角防打反舵锁）、港口交管（VTS 碰撞抢占）与修造船厂（压载舱测氧与干船坞注水锁）方案**：[中文](./maritime-vessel-bridge-smcp-helm-readback-vts-shipyard-voice-selection-faq.md) | [EN](./maritime-vessel-bridge-smcp-helm-readback-vts-shipyard-voice-selection-faq.en.md)
 119. **顶级艺术品拍卖行（电话委托竞拍保证金授信上限 0ms 熔断锁、看台 Active Lot 防串单互锁与阶梯买家佣金精算）方案**：[中文](./fine-art-auction-telephone-bidding-paddle-ceiling-lock-voice-selection-faq.md) | [EN](./fine-art-auction-telephone-bidding-paddle-ceiling-lock-voice-selection-faq.en.md)
+120. **乳制品、精酿啤酒与无菌饮料工厂（CIP 火碱防混罐与防吸瘪死锁、回流电导率 <=15 μS/cm 零残留核验与 UHT 失温回流）方案**：[中文](./food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.md) | [EN](./food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.en.md)
