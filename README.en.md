@@ -212,6 +212,7 @@ flowchart LR
 138. **Native Speech-to-Speech (GPT-Realtime / Gemini Live) vs. Cascaded (STT+LLM+TTS) vs. 80/20 Hybrid: Per-Minute TCO Inflection Calculator & Audio Pruning**: [EN](./docs/native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.en.md) | [中文](./docs/native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.md)
 139. **Real-Time Voice AI Orchestration Frameworks & High-Concurrency Engineering: LiveKit Agents vs. Pipecat vs. Azure ACS, GIL Isolation & K8s Drain**: [EN](./docs/realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.en.md) | [中文](./docs/realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.md)
 140. **Chain QSR Drive-Thru, Coffee Kiosk & Phone Voice Ordering AI: 85dB Engine Noise Gate, Real-Time POS 86 Out-of-Stock Lock & Nested Modifier DAG**: [EN](./docs/qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.en.md) | [中文](./docs/qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.md)
+141. **Life & Health Insurance Tele-Underwriting, Anti-Lapse Renewal & Claims Concierge Voice AI: Reflexive ICD-10 Drill-Down, Verbatim Exclusion Lock & Conservation**: [EN](./docs/life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.en.md) | [中文](./docs/life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.md)
 
 ---
 

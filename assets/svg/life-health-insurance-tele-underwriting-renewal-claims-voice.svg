@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgIns" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="uwGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="lapseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="claimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgIns)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Life &amp; Health Insurance Voice AI: Tele-Underwriting Drill-Down, Anti-Lapse &amp; Claims Concierge</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">寿险与健康险智能语音架构：智能核保既往症动态追问树、免责与等待期 100% 双录锁、宽限期 60天防断保挽回与住院垫付直连</text>
+  <rect x="824" y="42" width="328" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="988" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">INSURANCE-UNDERWRITING-RENEWAL-01</text>
+
+  <!-- Pillar 1: Tele-Underwriting Reflexive Medical Drill-Down -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#uwGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 寿险电话核保既往症动态追问与双录锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 核保与理赔纠纷根源：健康告知含糊跳过、免责未读清</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 投保人说“体检好像有个小结节”，若 AI 未追问 TI-RADS 分级就草率承保</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 2年后出险拒赔引发恶性诉讼；或漏读 90天等待期条款触发银保监重罚</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">✅ 慕尼黑再保险/瑞士再保险标准动态追问树 (Reflexive Tree)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 提及“甲状腺结节”自动展开 3 问：① 发现时间 ② 超声分级(&lt;=3级?) ③ 是否穿刺</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 实时输出确定性核保结论：【标准体承保】/【甲状腺除外承保】/【转人工核保师】</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">等待期 + 免责条款 + 犹豫期逐字播报与肯定答复锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁接受投保人含糊的“嗯/好吧”，必须捕获清晰的“听清楚了，我同意”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 全程生成带哈希防伪时间戳的双录质检归档包，一次质检通过率 99.8%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">电话核保周期从 3天 压至 6分钟 · 质检率 99.8%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">支持手机拍照上传体检报告 OCR + 语音核实双通道联动</text>
+  </g>
+
+  <!-- Pillar 2: 60-Day Grace Period Anti-Lapse & Policy Conservation -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#lapseGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 续期宽限期 60天防断保挽回 (Anti-Lapse)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">痛点：第 13 个月保单继续率每跌 1%，险企损失数千万利润</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 65% 的断保并非客户故意退保，而是绑定的银行卡余额不足或换了新卡</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 一旦超过 60 天宽限期保单失效，客户重新投保不仅涨价还要重算等待期！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">批扣失败次日智能关怀外呼 + 权益损失透明算账</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• “张先生您好，您的重疾险昨天批扣未成功，可能是尾号 8812 储蓄卡余额不足”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 清晰说明仍在 60 天宽限期内保障有效，并一键下发微信/银联免密换卡链接</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">资金周转困难客户的“年缴改月缴 / 保单减额交清”降级挽留</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 若客户表示今年手头紧不想交了，AI 自动提供【年缴改月缴】或【保费垫交】方案</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 将濒临失效保单的挽回继续率从 52% 大幅拉升至 84.6%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">13个月保单继续率提升 +6.8 个百分点</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">中型寿险公司每年直接保住 >$18M 续期保费现金流</text>
+  </g>
+
+  <!-- Pillar 3: Inpatient Direct-Billing Pre-Auth & Empathetic Claims Concierge -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#claimGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 住院医疗押金垫付申请与温情理赔管家</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：患者刚确诊肿瘤住院急需 5 万押金，打理赔热线问不清材料</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 家属在医院走廊极度焦虑，传统按键 IVR 冰冷繁琐，经常因漏盖章跑三趟医院</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 理赔审核期间每天打 3 次电话问“我的钱到底批下来没有”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">住院押金直付/垫付 60秒语音立案 + 驻院专员派单</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 语音核实所住三甲医院名称与入院诊断后，自动匹配全国直付网络医院</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 秒级调度当地押金垫付专员，并将【专属理赔材料拍照清单】发至家属微信</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">身故/重疾报案 0秒切入“零促销温情专线 (Bereavement Mode)”</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 一旦识别为家属报身故或重疾险，0ms 物理屏蔽一切续期推销与欢快背景音</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 切换沉稳共情音色并优先桥接资深理赔管家一对一包干跟进</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">小额医疗理赔一次交齐率 94% · 零二次补件</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">兼顾核保双录的“铁面严谨”与重疾理赔的“人性温度”</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">寿险与健康险语音架构三大核心铁律 (INSURANCE-UNDERWRITING-RENEWAL-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 核保追问树与双录硬锁：提及结节/三高等既往症必须走完慕再/瑞再标准追问分支；免责条款、等待期与犹豫期未获明确肯定答复严禁承保；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 宽限期挽回与重疾零推销：60天宽限期内提供一键换卡/年改月挽留；一旦识别重疾或身故报案，0ms 冻结一切营销话术并直转温情理赔专席。</text>
+</svg>

@@ -3243,6 +3243,35 @@ export function evaluateQsrDriveThruVoiceOrderingGuard(input: {
   };
 }
 
+export interface LifeHealthInsuranceUnderwritingRenewalEvaluation {
+  policyCode: "INSURANCE-UNDERWRITING-RENEWAL-01";
+  policyBindingAuthorized: boolean;
+  gracePeriodMonthlyModeConservationOffered: boolean;
+  zeroUpsellBereavementCareModeActivated0ms: boolean;
+}
+
+/**
+ * Deterministic Life & Health Insurance Tele-Underwriting Drill-Down, Verbatim Exclusion Lock & Anti-Lapse Guard (`INSURANCE-UNDERWRITING-RENEWAL-01`).
+ */
+export function evaluateLifeHealthInsuranceUnderwritingRenewalGuard(input: {
+  disclosedPreExistingConditionCompletedDrilldown: boolean;
+  waitingPeriodAndExclusionsVerbatimConfirmedByApplicant: boolean;
+  in60DayRenewalGracePeriodWithCashflowHardship: boolean;
+  callerReportingCriticalIllnessOrBereavementClaim: boolean;
+}): LifeHealthInsuranceUnderwritingRenewalEvaluation {
+  return {
+    policyCode: "INSURANCE-UNDERWRITING-RENEWAL-01",
+    policyBindingAuthorized:
+      input.disclosedPreExistingConditionCompletedDrilldown &&
+      input.waitingPeriodAndExclusionsVerbatimConfirmedByApplicant,
+    gracePeriodMonthlyModeConservationOffered:
+      input.in60DayRenewalGracePeriodWithCashflowHardship,
+    zeroUpsellBereavementCareModeActivated0ms:
+      input.callerReportingCriticalIllnessOrBereavementClaim,
+  };
+}
+
+
 
 
 
