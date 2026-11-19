@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 标准评测报告（双份）** | 《实时语音与多模型路由 7-Card 报告》与《Azure Speech 说话人分离实证 7-Card 报告》 | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 107 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 107 篇选型指南](#-二107-篇企业级语音架构选型指南中英双语) |
+| **🧭 108 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 108 篇选型指南](#-二108-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、107 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、108 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -179,6 +179,7 @@ flowchart LR
 105. **医疗美容与皮肤科（玻尿酸血管栓塞黄金 90分钟防失明 0ms 抢占锁、三类药械 UDI 扫码当面验真与医疗广告法合规）方案**：[中文](./docs/medical-aesthetic-dermatology-anti-counterfeit-vascular-occlusion-voice-selection-faq.md) | [EN](./docs/medical-aesthetic-dermatology-anti-counterfeit-vascular-occlusion-voice-selection-faq.en.md)
 106. **跨国药企医学信息问询（MedInfo / MIRF 超说明书提问商业 CRM 0ms 防火墙、执业医师 HCP 核身锁与药品质检 PQC 批号捕获）方案**：[中文](./docs/pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.md) | [EN](./docs/pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.en.md)
 107. **超大规模智算中心（AIDC 万卡液冷 CDU 漏液 0ms 关阀保训练锁、10kV 高压配电双人唱票复诵五防互锁与 NOC 告警风暴收敛）方案**：[中文](./docs/aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.md) | [EN](./docs/aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.en.md)
+108. **大型仓储物流与生鲜前置仓（Pick-by-Voice 储位 2位校验码防错拣锁、收货月台冷链 >-12°C 拒收硬锁与缺货零过敏原替代）方案**：[中文](./docs/warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.md) | [EN](./docs/warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.en.md)
 
 ---
 

@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 107 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 107 Guides](#-2-107-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 108 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 108 Guides](#-2-108-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 107 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 108 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -179,6 +179,7 @@ flowchart LR
 105. **Medical Aesthetics & Dermatology Voice AI: 0ms Vascular Occlusion Blindness Rescue, Class-III UDI Anti-Counterfeit & Ad-Law Compliance**: [EN](./docs/medical-aesthetic-dermatology-anti-counterfeit-vascular-occlusion-voice-selection-faq.en.md) | [中文](./docs/medical-aesthetic-dermatology-anti-counterfeit-vascular-occlusion-voice-selection-faq.md)
 106. **Pharma Medical Information (MedInfo / MIRF) & Off-Label Compliance Voice AI: Commercial Firewall, Licensed-HCP Gate & PQC Lot Lock**: [EN](./docs/pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.en.md) | [中文](./docs/pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.md)
 107. **Hyperscale AI Data Center (AIDC) & NOC Voice Copilot: 0ms Liquid-Cooling Leak Interlock, HV Switchgear Two-Person Readback & Alarm-Storm Triage**: [EN](./docs/aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.en.md) | [中文](./docs/aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.md)
+108. **Next-Gen Warehouse Pick-by-Voice & Cold-Chain Dock Receiving Voice AI: Bin Check-Digit Lock, >-12°C Dock Rejection & Allergen-Safe Substitution**: [EN](./docs/warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.en.md) | [中文](./docs/warehouse-fulfillment-pick-by-voice-cold-chain-receiving-selection-faq.md)
 
 ---
 

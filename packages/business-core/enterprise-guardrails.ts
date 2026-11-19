@@ -2285,6 +2285,35 @@ export function evaluateAidcDatacenterNocVoiceGuard(input: {
   };
 }
 
+export interface WarehousePickByVoiceColdChainEvaluation {
+  policyCode: "WAREHOUSE-VOICE-PICKING-01";
+  pickConfirmationAccepted: boolean;
+  inboundPutawayAllowed: boolean;
+  coldChainDockRejectionTriggered: boolean;
+  autoSubstitutionApproved: boolean;
+}
+
+/**
+ * Deterministic Warehouse Pick-by-Voice & Cold-Chain Dock Receiving Guard (`WAREHOUSE-VOICE-PICKING-01`).
+ */
+export function evaluateWarehousePickByVoiceColdChainGuard(input: {
+  spokenBinCheckDigitMatchesWms: boolean;
+  dockFrozenFoodCoreTempCelsius: number;
+  shortPickReported: boolean;
+  substituteContainsCustomerAllergenOrPriceIncrease: boolean;
+}): WarehousePickByVoiceColdChainEvaluation {
+  const tempExcursion = input.dockFrozenFoodCoreTempCelsius > -12.0;
+  return {
+    policyCode: "WAREHOUSE-VOICE-PICKING-01",
+    pickConfirmationAccepted: input.spokenBinCheckDigitMatchesWms,
+    inboundPutawayAllowed: !tempExcursion,
+    coldChainDockRejectionTriggered: tempExcursion,
+    autoSubstitutionApproved:
+      !input.shortPickReported ||
+      !input.substituteContainsCustomerAllergenOrPriceIncrease,
+  };
+}
+
 
 
 

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgWh" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1A"/>
+      <stop offset="50%" stop-color="#11243A"/>
+      <stop offset="100%" stop-color="#08101E"/>
+    </linearGradient>
+    <linearGradient id="pickGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="dockGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="subGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgWh)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Next-Gen Warehouse Pick-by-Voice &amp; Cold-Chain Dock Receiving Voice AI: Check-Digit &amp; Temp Lock</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">大型仓储物流与生鲜前置仓语音 AI：储位校验码防错拣锁、收货月台冷链断链 (>-12°C) 0ms 拒收锁与缺货智能替代全景图</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">WAREHOUSE-VOICE-PICKING-01</text>
+
+  <!-- Pillar 1: Next-Gen Multimodal Pick-by-Voice & Bin Check-Digit Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pickGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 新一代免手持语音拣选与储位校验码硬锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">取代传统死板 Vocollect：自然口语处理缺货与破损异常</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统语音拣选只能听懂 10个死口令（“就绪/短缺”），新工培训需 2天录制声纹</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 新一代端侧语音：零训练上岗，听懂方言汇报“这箱牛奶破包漏了只剩 3盒完好”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁未报对储位随机 2位校验码即允许确认拣货数量！</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 拣货员在货架通道走神极易从隔壁 B-12-03 错拿成 B-12-04 的商品</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 必须口述货架标签上的 2位动态校验码与 WMS 吻合后，才解锁数量确认</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">-25°C 深冷库指环扫码 + 骨传导耳麦 &lt;150ms 极速闭环</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 穿防寒服戴厚棉手套无需掏 PDA，双眼 100% 盯着货位与叉车安全通道</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 本地端侧模型在冷库重度金属屏蔽盲区保持 100% 离线毫秒级响应</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">拣货准确率高达 99.98% · 单人拣选效率提升 28%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">双十一/黑五临时工培训上岗时间从 4小时缩短至 5分钟</text>
+  </g>
+
+  <!-- Pillar 2: Cold-Chain Receiving Dock Core Temperature Rejection Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dockGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 收货月台冷链断链 (&gt;-12°C) 0ms 拒收硬锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将中心温度 &gt;-12°C 的解冻复冻生鲜收入 WMS 库位！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 冷藏车司机途中关冷机省油，到月台前 1小时才重新开冷机吹凉表面</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 收货员测出冻虾中心温度已升至 -8.5°C，若口头通融收货将引发群体食源性中毒</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">蓝牙穿刺探针 + 语音报数 0ms 锁死 WMS 上架入库单</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 冻品中心温度 &gt; -12°C（或冰鲜肉 &gt; +4°C）-> 0ms 物理封锁 WMS 收货上架权限</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 自动打印红色《冷链断链拒收退货单》并抓拍车厢温度记录仪小票存证</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">FEFO (先到期先出) 效期允收红线锁（剩余效期 &lt;2/3 拒收）</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 收货员语音报出生产日期与保质期 -> 自动计算剩余效期占比</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 低于商超允收标准（如保质期过半）0ms 拦截入库，杜绝临期品积压损耗</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">失温解冻生鲜违规混入前置仓率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">月台单车收货检验时间从 25分钟压缩至 9分钟</text>
+  </g>
+
+  <!-- Pillar 3: Dark-Store Short-Pick Allergen-Safe Substitution & Heavy-Under-Light -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#subGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 前置仓缺货安全替代锁与“重货沉底”路径</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁将缺货的“燕麦奶”自动替换为含坚果的“巴旦木奶”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 即时零售痛点：前置仓某款植物奶缺货，拣货员随手拿了旁边的坚果奶替代</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若下单客户为坚果过敏体质或清真/纯素饮食，错替将引发严重过敏与退单</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="174" fill="#6EE7B7" font-size="13" font-weight="700">零新增过敏原 + 同品牌平价替代锁 (Allergen-Free Sub)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 拣货员口述“A-04位有机纯牛奶缺货” -> AI 在 200ms 内过滤含过敏原/涨价品</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 语音推荐唯一安全替代品并同步向顾客手机发起 60秒一键确认/免差价升级</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">“先重后轻、先硬后软”防压碎拣货动线语音编排</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁先拣草莓/鸡蛋/吐司再拣 5L 桶装水与西瓜放上面压烂</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 语音导航强制先走米油水重货区沉底，最后走烘焙鲜果区置顶</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">生鲜鸡蛋/浆果压损客诉下降 83% · 缺货挽回率达 74%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">前置仓 3分钟极速打包出库达标率提升至 99.2%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (WAREHOUSE-VOICE-PICKING-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 语音拣选 (Pick-by-Voice) 必须强制拣货员先口述货架标签上的动态 2位校验码 (Check Digit) 并与 WMS 核对无误后，才解锁数量确认与箱码绑定；</text>
+  <text x="68" y="606" fill="#FCA5A5" font-size="13">2. 收货月台一旦测出冻品中心温度 &gt; -12°C 或冰鲜品 &gt; +4°C，必须 0ms 物理锁死 WMS 入库上架权限；缺货替代严禁引入新过敏原或向客户加收差价。</text>
+</svg>
