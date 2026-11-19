@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgQsr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="dspGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="posGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="upGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgQsr)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Chain QSR Drive-Thru &amp; Coffee Voice Ordering AI: 85dB Noise Gate, 86 Stock Lock &amp; Combo DAG</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">连锁快餐得来速 (Drive-Thru) 与茶饮咖啡语音点单架构：85dB 柴油引擎降噪、POS 实时估清 (86) 硬拦截、嵌套加料修改树与耳机无感接管</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">QSR-DRIVETHRU-POS-01</text>
+
+  <!-- Pillar 1: 85dB Diesel Engine &的后排孩童串音隔离 -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dspGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 85dB 户外车道引擎降噪与驾驶位波束锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 网红翻车现场：把隔壁车道引擎声听成“加18000杯水”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 户外点餐桩面临皮卡柴油机轰鸣 (85dB)、雨声与后排小孩哭闹要冰淇淋</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 全向麦克风+无上限数量槽位导致屏幕狂加 200 份培根，沦为全网笑柄</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">✅ 硬件地感线圈 + 窄波束指向驾驶座车窗 (Driver Window Cone)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 仅当车道地感线圈 (Inductive Loop) 检测到车辆停稳时才开启拾音</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 端侧 DeepFilterNet 滤除低频引擎轰鸣 + 波束锁定主驾车窗 1.2米扇区</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">单品数量硬上限熔断锁 (Max Item Cap &lt;= 15)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 确定性状态机硬锁：单次语音指令点同一单品数量 &gt;15 份时</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 100% 强制触发二次复诵确认或店员耳机接管，彻底杜绝“1万杯水”闹剧</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">85dB 噪下点单准确率 97.8% · 荒谬订单 0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">语音说的每一项在户外高亮确认屏 (OCB) 200ms 实时高亮跳动</text>
+  </g>
+
+  <!-- Pillar 2: Nested Modifier DAG & Real-Time POS "86" Out-of-Stock Sync -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#posGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 复杂加料修改树 (DAG) 与 POS 估清 (86) 锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">痛点 1：顾客一句话连改 4 处，普通状态机彻底乱套</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• “要超大杯生椰拿铁少冰三分糖换燕麦奶——算了把燕麦奶改成厚乳，再加份浓缩”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 必须用有向无环图 (Modifier DAG) 实时做槽位覆写互斥（燕麦奶与厚乳互斥替换）</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">痛点 2：后厨甜筒机坏了/香菜卖光了，AI 还在照卖不误！</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 顾客付完钱开到取餐窗口才被告知没货，引发车道大堵车与退款纠纷</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 实时订阅门店 POS (NCR Aloha / Oracle Simphony) `86 List` 估清事件流</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">估清 0ms 拦截 + 同价位平替秒推 + 必选槽位补齐</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 顾客点甜筒瞬间：“抱歉甜筒刚售罄，帮您换成冰激凌华夫筒或买一送一派好吗？”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 套餐漏选饮料或冰度甜度未齐前，严禁下发厨房显示系统 (KDS)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">估清错卖率 0% · 复杂改单一次成单率 96.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">完美支持茶饮咖啡 5 级定制参数与美式快餐家庭桶自由拼配</text>
+  </g>
+
+  <!-- Pillar 3: Contextual Single-Shot Upsell & Silent Crew Headset Takeover -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#upGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 100% 顺口加购提客单与店员耳机无感接管</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">人类店员最容易忘的事：高峰期只有 18% 店员记得推加购</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 早餐忙乱时店员只想快点结账，漏问“加 3 元配个脆薯饼吗？”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• AI 100% 结合当前天气、时段与购物车缺口做“仅限1次”的不烦人顺口推荐</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">客单价 (Average Check) 净提升 +14.2%</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 单点汉堡自动问“加 6 元升套餐带中薯可乐吗？”；单点咖啡问“搭个半价牛角包吗？”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 严守“每单最多追问 1 次加购”红线，顾客说“不用”立即报总价指引去前窗</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">店员无线腰包耳机 (HME / Panasonic) 0.5秒无感插话接管</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 当顾客连续 2 轮含糊不清或提出特殊客制要求时，店员耳机叮咚响起</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 店员按住耳机 PTT 键直接无缝接话，无需说“我是机器人转人工”，顾客零察觉！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">车道通行速度提速 24秒/车 · 客单价 +14.2%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单店释放 1.5 名点单人力专心做餐打包，门店月均净增利 $4,800</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">连锁餐饮与咖啡茶饮语音点单三大铁律 (QSR-DRIVETHRU-POS-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 防网红闹剧三道锁：地感线圈+主驾窄波束拾音 + 单品数量 &lt;=15 份硬上限锁 + 门店 POS 实时估清 (`86 List`) 0ms 拦截；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 混合边缘+云端架构：套餐必填项 (冰度/甜度/配饮) 齐备才允许推 KDS 厨房屏；连续 2 轮消歧失败 0.5 秒静默切入店员无线耳机接管。</text>
+</svg>

@@ -3211,6 +3211,39 @@ export function evaluateVoiceFrameworkWorkerScalingGuard(input: {
   };
 }
 
+export interface QsrDriveThruVoiceOrderingEvaluation {
+  policyCode: "QSR-DRIVETHRU-POS-01";
+  posKitchenOrderFireAuthorized: boolean;
+  outOfStockSubstitutePrompted: boolean;
+  silentCrewHeadsetTakeoverTriggered: boolean;
+}
+
+/**
+ * Deterministic Chain QSR Drive-Thru & Coffee Voice Ordering POS 86 Lock, Quantity Cap & Crew Headset Guard (`QSR-DRIVETHRU-POS-01`).
+ */
+export function evaluateQsrDriveThruVoiceOrderingGuard(input: {
+  orderedItemCurrently86dOutOfStock: boolean;
+  mandatoryComboModifiersComplete: boolean;
+  singleItemQuantityRequested: number;
+  unresolvedDisambiguationTurnsCount: number;
+}): QsrDriveThruVoiceOrderingEvaluation {
+  const sanityQtyOk =
+    input.singleItemQuantityRequested > 0 &&
+    input.singleItemQuantityRequested <= 15;
+  return {
+    policyCode: "QSR-DRIVETHRU-POS-01",
+    posKitchenOrderFireAuthorized:
+      !input.orderedItemCurrently86dOutOfStock &&
+      input.mandatoryComboModifiersComplete &&
+      sanityQtyOk &&
+      input.unresolvedDisambiguationTurnsCount < 2,
+    outOfStockSubstitutePrompted: input.orderedItemCurrently86dOutOfStock,
+    silentCrewHeadsetTakeoverTriggered:
+      input.unresolvedDisambiguationTurnsCount >= 2 || !sanityQtyOk,
+  };
+}
+
+
 
 
 

@@ -211,6 +211,7 @@ flowchart LR
 137. **Airline Flight Disruption (IRROPS) Mass Rebooking & Hotel Loyalty Concierge Voice AI: Amadeus/TravelSky Atomic PNR Lock, EU261 Waiver & 50x Weather Surge**: [EN](./docs/airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.en.md) | [中文](./docs/airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.md)
 138. **Native Speech-to-Speech (GPT-Realtime / Gemini Live) vs. Cascaded (STT+LLM+TTS) vs. 80/20 Hybrid: Per-Minute TCO Inflection Calculator & Audio Pruning**: [EN](./docs/native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.en.md) | [中文](./docs/native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.md)
 139. **Real-Time Voice AI Orchestration Frameworks & High-Concurrency Engineering: LiveKit Agents vs. Pipecat vs. Azure ACS, GIL Isolation & K8s Drain**: [EN](./docs/realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.en.md) | [中文](./docs/realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.md)
+140. **Chain QSR Drive-Thru, Coffee Kiosk & Phone Voice Ordering AI: 85dB Engine Noise Gate, Real-Time POS 86 Out-of-Stock Lock & Nested Modifier DAG**: [EN](./docs/qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.en.md) | [中文](./docs/qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.md)
 
 ---
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (139 Bilingual Guides)
+## 3. Solution Architect Selection Guides (140 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -180,3 +180,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 137. **Airline Flight Disruption (IRROPS) Mass Rebooking & Hotel Loyalty Concierge Voice AI: Amadeus/TravelSky Atomic PNR Lock, EU261 Waiver & 50x Weather Surge**: [EN](./airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.en.md) | [中文](./airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.md)
 138. **Native Speech-to-Speech (GPT-Realtime / Gemini Live) vs. Cascaded (STT+LLM+TTS) vs. 80/20 Hybrid: Per-Minute TCO Inflection Calculator & Audio Pruning**: [EN](./native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.en.md) | [中文](./native-s2s-vs-cascaded-hybrid-per-minute-tco-inflection-calculator-selection-faq.md)
 139. **Real-Time Voice AI Orchestration Frameworks & High-Concurrency Engineering: LiveKit Agents vs. Pipecat vs. Azure ACS, GIL Isolation & K8s Drain**: [EN](./realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.en.md) | [中文](./realtime-voice-orchestration-livekit-agents-pipecat-acs-worker-scaling-selection-faq.md)
+140. **Chain QSR Drive-Thru, Coffee Kiosk & Phone Voice Ordering AI: 85dB Engine Noise Gate, Real-Time POS 86 Out-of-Stock Lock & Nested Modifier DAG**: [EN](./qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.en.md) | [中文](./qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.md)
