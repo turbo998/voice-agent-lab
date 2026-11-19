@@ -201,6 +201,7 @@ flowchart LR
 127. **Retail Banking & Credit Card Voice AI: 0ms Protective Fraud Freeze, Reg E / Visa CE 3.0 Chargeback Dispute Intake & Mandatory APR Installment Readback**: [EN](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.en.md) | [中文](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.md)
 128. **2026 Enterprise Streaming STT Head-to-Head: Azure AI Speech vs. Deepgram Nova-3 vs. OpenAI GPT-4o-Transcribe (Whisper) vs. FunASR / Paraformer**: [EN](./docs/streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.en.md) | [中文](./docs/streaming-stt-azure-speech-deepgram-nova3-gpt4o-transcribe-paraformer-selection-faq.md)
 129. **2026 Enterprise Streaming TTS & Brand Voice Cloning Head-to-Head: Azure Neural HD / CNV vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. CosyVoice 2**: [EN](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.en.md) | [中文](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.md)
+130. **Enterprise Voice RAG Low-Latency & Phonetic Optimization: <120ms Speculative Prefetch, Homophone Phonetic Indexing & Spoken Answer Cards**: [EN](./docs/enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.en.md) | [中文](./docs/enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.md)
 
 ---
 

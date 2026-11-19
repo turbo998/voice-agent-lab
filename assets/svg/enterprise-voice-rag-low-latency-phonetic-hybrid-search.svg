@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgVrag" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#10213A"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="specGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="phonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgVrag)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Enterprise Voice RAG Low-Latency Optimization: &lt;120ms Speculative Prefetch, Phonetic Index &amp; Spoken Cards</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">为什么文本 Chatbot 的 RAG 搬到语音上会慢 2 秒且查不到同音词？揭秘流式预检索、拼音/音标混合索引与“口语摘要卡”架构</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">VOICE-RAG-LATENCY-01</text>
+
+  <!-- Pillar 1: Why Text RAG Fails in Voice & Speculative Partial Prefetch -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#specGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 告别 2秒慢检索：流式 Partial 投机预检索</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 文本 RAG 照搬之痛：Query 改写 + 重排耗掉 1,800ms！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 网页聊天机器人在后台做 LLM Query Rewrite (600ms) + Reranker (500ms)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 放到实时电话里，客户说完话要干等 2.5 秒才有声音，以为电话断了</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">✅ 语音黄金法则：边听边查 (Speculative Partial Prefetch)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 当客户说到前半句“请问你们那个黄金会员的年费...”(Partial ASR)</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 后台已并发在 Redis / Azure AI Search 中预拉取【黄金会员年费】Top-3 卡片</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">客户话音落下一刻，检索耗时表观趋近于 15ms！</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严禁在语音主链路跑串行 LLM Query Rewrite，检索总预算硬锁 &lt;=120ms</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 82% 的提问在句末 VAD 触发前已命中预热缓存，直通 LLM 首句生成</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">句末表观检索延迟从 1,450ms 压至 &lt;45ms</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">利用人类说话尾音的 300ms 提前完成 80% 的向量与关键词召回</text>
+  </g>
+
+  <!-- Pillar 2: Phonetic Pinyin / IPA Hybrid Search for ASR Homophones -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#phonGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 专治同音错别字：拼音/音标混合向量检索</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#2E1065" stroke="#8B5CF6"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">痛点：STT 听出同音错别字，纯向量/BM25 检索全军覆没</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户问“玻色因面霜”，STT 转成“波色音面霜”；问“安联臻爱”转成“安联真爱”</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• 传统文本 Embedding 和关键词 BM25 因字形完全不同导致召回率为 0！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">三路混合索引：Dense Vector + BM25 + 拼音/Soundex 音素索引</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 入库时为专有商品名/药名/条款名同步建立无声调拼音 (`bo se yin`) 与音标字段</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 查询时将 STT 文本同步转拼音做 N-gram 模糊召回，通过 RRF 融合排序</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">同音错别字 Top-3 召回率从 41.2% 跃升至 98.7%</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 即使客户带有浓重南方口音（平翘舌 z/zh、前后鼻音 in/ing 不分）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 模糊音素索引依然能在 65ms 内精准定位唯一正确的产品知识卡片</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">同音字召回率 41.2% -&gt; 98.7% (+57.5 pts)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">无需增加额外 LLM 纠错延迟即可天然免疫 ASR 同音错字</text>
+  </g>
+
+  <!-- Pillar 3: Spoken Knowledge Cards vs. Raw PDF Chunks -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#cardGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 索引“口语摘要卡”而非生啃 PDF 原文块</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：把 3,000 Token 的 PDF 表格塞给语音模型既慢又拗口</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统 RAG 召回 5 个各 600 字的书面语块，LLM 首字 Prefill 变慢 350ms</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 且模型照念书面公文“依据本合同第三章第四条之规定...”，客户听得一头雾水</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">入库阶段离线预编译“口语问答卡 (Spoken Answer Card)”</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 在知识文档入库构建索引时，离线将每段复杂条款提炼为 &lt;=120 字的口语卡</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 运行时只向语音 LLM 注入 Top-3 极简口语卡（总计 &lt;=450 Tokens）</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">“2句话 45字”口语播报契约 + 详细图文转短信/微信下发</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 语音回答严格限制在 2 句话内讲清核心结论与数字</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 复杂材料清单或长表格顺口说一句“详细清单刚已发到您手机短信”闭环</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">Prompt Token 消耗降 72% · 首声提速 410ms</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">让语音客服像金牌老员工一样张口就是干脆利落的大白话结论</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">企业级 Voice RAG 架构设计三大铁律 (VOICE-RAG-LATENCY-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 严禁串行 LLM Query Rewrite：利用流式 ASR Partial Token 边听边做投机预检索，将句末检索时间预算硬锁在 &lt;=120ms 以内；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 必配拼音/音素混合索引与离线“口语摘要卡”：免疫 ASR 同音错别字，并将注入语音大模型的上下文严格压在 &lt;=600 Tokens、播报 &lt;=2 句话。</text>
+</svg>

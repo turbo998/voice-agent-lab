@@ -2912,6 +2912,36 @@ export function evaluateStreamingTtsVoiceCloningGuard(input: {
   };
 }
 
+export interface VoiceRagLowLatencyPhoneticEvaluation {
+  policyCode: "VOICE-RAG-LATENCY-01";
+  sub120msVoiceRagBudgetMet: boolean;
+  homophoneRecallProtected: boolean;
+  spokenBrevityContractPassed: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice RAG <120ms Speculative Prefetch, Phonetic Index & Spoken Brevity Guard (`VOICE-RAG-LATENCY-01`).
+ */
+export function evaluateVoiceRagLowLatencyPhoneticGuard(input: {
+  retrievalLatencyMs: number;
+  speculativePartialAsrPrefetchEnabled: boolean;
+  phoneticPinyinOrSoundexIndexEnabled: boolean;
+  retrievedContextTokens: number;
+  spokenOutputSentencesCount: number;
+}): VoiceRagLowLatencyPhoneticEvaluation {
+  return {
+    policyCode: "VOICE-RAG-LATENCY-01",
+    sub120msVoiceRagBudgetMet:
+      input.retrievalLatencyMs <= 120 &&
+      input.speculativePartialAsrPrefetchEnabled,
+    homophoneRecallProtected: input.phoneticPinyinOrSoundexIndexEnabled,
+    spokenBrevityContractPassed:
+      input.retrievedContextTokens <= 600 &&
+      input.spokenOutputSentencesCount <= 2,
+  };
+}
+
+
 
 
 
