@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgAuto" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223A"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="vinGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="dmsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgAuto)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Automotive Dealership Service, VIN Recall &amp; Roadside Assistance Voice AI (CDK / Tekion DMS)</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">车企与 4S 经销商集团售后语音架构：高速抛锚/电池热失控 0ms 救援抢占、VIN 召回配件联动锁与 DMS 高压技师工位/代步车原子预约</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">AUTO-DEALERSHIP-DMS-01</text>
+
+  <!-- Pillar 1: Highway Breakdown & EV Thermal Runaway 0ms Preemption -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#roadGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 高速抛锚与新能源热失控 0ms 救援抢占</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 致命痛点：车停在高速行车道上，客服还在问挂哪家4S店</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 车主来电：“仪表盘报动力电池故障失去动力，我现在停在高速快车道上！”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 高速二次追尾平均发生在抛锚后 5 分钟内，绝对不能走常规预约流程！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">0ms 生命安全抢占 + 车联网 T-Box 经纬度秒级定位</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 首句强制指令：“请立即打开双闪，全车人撤离到高速护栏外安全地带！”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 自动拉取车辆 T-Box 实时 GPS 坐标与电池包最高单体温度，秒派平板拖车</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">新能源车专属拖运禁忌锁 (Flatbed-Only Tow Lock)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 纯电/四驱车型严禁使用传统前轮抬起着地拖车（会烧毁永磁电机反电动势）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 救援派单 API 自动硬锁“全落地平板救援车 (Flatbed)”资质</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">道路救援派单耗时 6分钟 -&gt; 35秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">免除车主在高速路边惊慌失措描述“我在哪个高速路牌附近”</text>
+  </g>
+
+  <!-- Pillar 2: VIN Open Recall Auto-Bundling & Parts Stock Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#vinGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. VIN 召回自动顺带排期与配件现货锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">痛点：车主打电话约普通保养，4S 店漏查未完成的厂家召回</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 或者把召回维修约到了明天，车主到店后才发现门店根本没有召回配件现货</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 车主白跑两趟极为恼火，主机厂召回完成率考核也严重不达标</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">来电 0秒按手机号绑定 VIN 码 + 穿透厂家 Recall 库</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 车主约保养时，AI 自动提示：“查到您的车有一项厂家免费安全气囊升级召回”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 实时核验门店配件库 (Parts Inventory)：有现货则一键合并工单，无货则先调拨再约</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">单店每年新增 $28万+ 原厂保修与召回工时产值</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 厂家全额补贴 4S 店召回维修工时费，顺带完成率从 24% 飙升至 82%</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 配件预占软锁彻底消灭“人到了店里却没零件修”的客诉</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">召回顺带完成率 24% -&gt; 82% · 零缺件白跑</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">把每一通普通换机油电话都变成主机厂合规与门店产值双赢机会</text>
+  </g>
+
+  <!-- Pillar 3: CDK / Tekion / Reynolds DMS Skill-Bay & Loaner Car Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dmsGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. DMS 高压技师工位与代步车原子联动锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：把三电高压故障车约进了只能换机油的“快保工位”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 800V 高压电驱拆检必须由持证高压技师 (HV Master Tech) 在专用绝缘工位操作</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 普通外包客服乱排工位，导致周六快保通道大排长龙、疑难车却没人能修</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">CDK / Tekion / 车商悦 DMS 技师技能矩阵 + 代步车联锁</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 按维修标准工时 (Labor Hours) 与技师等级 (A级高压/B级机电/C级快保) 精准锁工位</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 若预计留店 &gt;4 小时且车主需代步车 (Loaner)，原子级同时锁定【工位+代步车】</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">按里程智能推荐保养套餐 (30,000km / 60,000km)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 读取车机实时里程（如 39,200 公里），自动报出 4万公里标准大保养透明价</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 车间工位周转率提升 +27%，售后电话漏接率从 32% 归零</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">售后进厂台次 +24% · 错排工位率 0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">工位、配件、持证技师与代步车四维合一确定性预约</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">车企与 4S 经销商集团售后语音三大铁律 (AUTO-DEALERSHIP-DMS-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 高速抛锚/电池冒烟 0ms 抢占：立即阻断常规维保排期，强制提示全员撤至护栏外并同步拉取 T-Box 经纬度调派平板救援车；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 四维原子锁单：每次预约自动穿透 VIN 召回库与门店配件库存，并按【维修技能等级工位 + 配件现货 + 代步车】原子级锁入 DMS。</text>
+</svg>

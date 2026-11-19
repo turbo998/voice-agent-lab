@@ -203,6 +203,7 @@ flowchart LR
 129. **2026 Enterprise Streaming TTS & Brand Voice Cloning Head-to-Head: Azure Neural HD / CNV vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. CosyVoice 2**: [EN](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.en.md) | [中文](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.md)
 130. **Enterprise Voice RAG Low-Latency & Phonetic Optimization: <120ms Speculative Prefetch, Homophone Phonetic Indexing & Spoken Answer Cards**: [EN](./docs/enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.en.md) | [中文](./docs/enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.md)
 131. **Enterprise Outbound Voice Sales, AI SDR Lead Qualification & Global Compliance (TCPA / GDPR / MIIT): <180ms AMD, 0ms DNC Opt-Out Lock & Warm Closer Transfer**: [EN](./docs/enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.en.md) | [中文](./docs/enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.md)
+132. **Automotive OEM & Dealership Service Scheduling, VIN Recall Bundling & Roadside Assistance Voice AI: CDK / Tekion DMS Atomic Lock & 0ms Highway Safety**: [EN](./docs/automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.en.md) | [中文](./docs/automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.md)
 
 ---
 

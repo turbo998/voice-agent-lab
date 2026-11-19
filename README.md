@@ -203,6 +203,7 @@ flowchart LR
 129. **2026 企业级流式语音合成与声音克隆（Streaming TTS）深度横评（Azure Neural HD / CNV vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. CosyVoice 2）方案**：[中文](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.md) | [EN](./docs/streaming-tts-voice-cloning-azure-neural-hd-elevenlabs-cartesia-cosyvoice-selection-faq.en.md)
 130. **企业级语音知识库检索（Voice RAG）超低延迟与高准确度优化实战（`<120ms` 流式 Partial 投机预检索、同音错字拼音混合索引与口语摘要卡）方案**：[中文](./docs/enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.md) | [EN](./docs/enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.en.md)
 131. **企业智能语音外呼营销、留资 15 秒极速回访（AI SDR）与全球外呼合规（TCPA/工信部防骚扰、`<180ms` AMD 信箱识别与 `0ms` 退订锁）方案**：[中文](./docs/enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.md) | [EN](./docs/enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.en.md)
+132. **汽车主机厂（OEM）与 4S 经销商集团售后维保预约、VIN 召回联动与道路救援语音客服（DMS 工位/配件/代步车四维原子锁与高速抛锚 `0ms` 抢占）方案**：[中文](./docs/automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.md) | [EN](./docs/automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.en.md)
 
 ---
 

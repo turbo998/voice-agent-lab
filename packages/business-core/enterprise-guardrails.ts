@@ -2973,6 +2973,42 @@ export function evaluateOutboundVoiceSalesTcpaGuard(input: {
   };
 }
 
+export interface AutomotiveDealershipDmsServiceEvaluation {
+  policyCode: "AUTO-DEALERSHIP-DMS-01";
+  highwaySafetyAndRoadsidePreempted0ms: boolean;
+  recallRepairBundledAndPartLocked: boolean;
+  dmsServiceOrderCommitAuthorized: boolean;
+}
+
+/**
+ * Deterministic Automotive Dealership Service, VIN Recall Parts Lock & 0ms Highway Roadside Guard (`AUTO-DEALERSHIP-DMS-01`).
+ */
+export function evaluateAutomotiveDealershipDmsServiceGuard(input: {
+  vehicleDisabledOnHighwayOrEvSmokeAlert: boolean;
+  hasOpenOemSafetyRecallOnVin: boolean;
+  recallReplacementPartInDealerStock: boolean;
+  requiresHighVoltageEvMasterTech: boolean;
+  evMasterTechBayAndLoanerLockedInDms: boolean;
+}): AutomotiveDealershipDmsServiceEvaluation {
+  const recallReady =
+    !input.hasOpenOemSafetyRecallOnVin ||
+    input.recallReplacementPartInDealerStock;
+  const bayReady =
+    !input.requiresHighVoltageEvMasterTech ||
+    input.evMasterTechBayAndLoanerLockedInDms;
+  return {
+    policyCode: "AUTO-DEALERSHIP-DMS-01",
+    highwaySafetyAndRoadsidePreempted0ms:
+      input.vehicleDisabledOnHighwayOrEvSmokeAlert,
+    recallRepairBundledAndPartLocked:
+      input.hasOpenOemSafetyRecallOnVin &&
+      input.recallReplacementPartInDealerStock,
+    dmsServiceOrderCommitAuthorized:
+      !input.vehicleDisabledOnHighwayOrEvSmokeAlert && recallReady && bayReady,
+  };
+}
+
+
 
 
 
