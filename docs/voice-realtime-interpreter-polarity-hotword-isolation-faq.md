@@ -26,7 +26,7 @@
   - **非关键跨语种闲聊 / 泛娱乐游戏语音翻译**：可选用低延迟流式 S2S（`Wait-1`），追求极速语流体验。
   - **跨国医疗问诊（医嘱剂量/过敏史）、跨境金融双录（金额/费率/免责否定项）、跨国工业排障**：**严禁无校验直接播报目标语音！** 必须启用 **`INTERP-POLARITY-01` 子句级 `Wait-k`（`k <= 3` tokens，子句等待上限 `<= 650ms`）+ 双语极性/数值 AST 门禁**，若 `polarityMatch === false` 或 `numericEntityMatch === false`，立即拦截目标 TTS 并播报双语核实提示。
 
-### Q2：客户有很多生僻药名、芯片型号（如 `"Qichen-700X"`）和客户人名，为什么直接往 Prompt 里塞几千个热词或者把 ASR 热词权重调到 10 会导致系统崩溃或机密泄露？什么场景下租户瞬态 WFST + 音素距离护栏（`TENANT-WFST-02`）严格更优？
+### Q2：客户有很多生僻药名、芯片型号（如 `"Contoso-700X"`）和客户人名，为什么直接往 Prompt 里塞几千个热词或者把 ASR 热词权重调到 10 会导致系统崩溃或机密泄露？什么场景下租户瞬态 WFST + 音素距离护栏（`TENANT-WFST-02`）严格更优？
 
 - **通俗大白话与第一性原理**：
   - **什么是 WFST 浅层融合（Shallow-Fusion Contextual Biasing）？** 在流式 ASR 将声学特征转换为文字的束搜索（Beam Search）过程中，挂载一棵轻量级加权有限状态转换器（WFST / Prefix Trie）。当解码路径匹配到前缀树中的专有名词时，给该路径额外加上一个对数概率奖励值（`boostScore`），从而把生僻专有名词“托举”上来。
@@ -74,14 +74,14 @@ flowchart TD
 flowchart LR
     subgraph Bad["❌ 传统管线：全局共享热词 + 零等待贪婪 S2S 直译"]
       direction LR
-      B1["客户语音输入<br/>'Do NOT take 50mg Qichen-X'"] --> B2["全局共享热词池 (boost=8.0)<br/>串入其他租户机密词 / 日常词误触发"]
+      B1["客户语音输入<br/>'Do NOT take 50mg Contoso-X'"] --> B2["全局共享热词池 (boost=8.0)<br/>串入其他租户机密词 / 日常词误触发"]
       B2 --> B3["贪婪 S2S 抢跑合成 (Wait-0)<br/>漏掉 NOT 或将 15/50 混淆"]
       B3 --> B4["严重生产事故<br/>剂量/极性翻车 + 跨租户词表泄密"]
     end
 
     subgraph Good["✅ 生产级管线：TENANT-WFST-02 租户瞬态 WFST + INTERP-POLARITY-01 子句 Wait-k 极性/数值 AST 门禁"]
       direction LR
-      G1["客户语音输入<br/>'Do NOT take 50mg Qichen-X'"] --> G2["TENANT-WFST-02 租户隔离瞬态 WFST<br/>boost=3.2 ∈ [1.0,4.5], 音素距离=3"]
+      G1["客户语音输入<br/>'Do NOT take 50mg Contoso-X'"] --> G2["TENANT-WFST-02 租户隔离瞬态 WFST<br/>boost=3.2 ∈ [1.0,4.5], 音素距离=3"]
       G2 --> G3["INTERP-POLARITY-01 子句 Wait-k (k=2, 420ms)<br/>源/译 AST 极性 & 50mg 哈希校验 100% 匹配"]
       G3 --> G4["零漂移高保真同传输出<br/>若失配则 fail-closed 触发双语回读确认"]
     end

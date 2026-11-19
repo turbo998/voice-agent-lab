@@ -26,7 +26,7 @@
   - **Casual Cross-Lingual Chat / Gaming Voice Translation**: Greedy low-latency streaming S2S (`Wait-1`) is acceptable.
   - **Cross-Border Telemedicine (Dosages/Contraindications), Financial Compliance Recording, Industrial Field Support**: **Never emit unverified streaming translation directly to TTS!** Enforce **`INTERP-POLARITY-01` Clause-Boundary `Wait-k` (`k <= 3` tokens, `clauseLagMs <= 650ms`) + Dual-AST Polarity & Numeric Verifier**. Any mismatch (`polarityMatch === false` or `numericEntityMatch === false`) immediately blocks target TTS emission (`interpreter_polarity_or_dosage_drift_blocked`) and triggers a deterministic bilingual clarification readback.
 
-### Q2: Our enterprise customers have thousands of proprietary drug names, chip SKUs (e.g., `"Qichen-700X"`), and employee names. Why does stuffing them into the global LLM prompt or cranking ASR hotword boost to 10 cause hallucinations and data leaks? When is Ephemeral Tenant WFST + Phonetic Distance Guard (`TENANT-WFST-02`) strictly superior?
+### Q2: Our enterprise customers have thousands of proprietary drug names, chip SKUs (e.g., `"Contoso-700X"`), and employee names. Why does stuffing them into the global LLM prompt or cranking ASR hotword boost to 10 cause hallucinations and data leaks? When is Ephemeral Tenant WFST + Phonetic Distance Guard (`TENANT-WFST-02`) strictly superior?
 
 - **Plain-English First Principles**:
   - **What is WFST Shallow-Fusion Contextual Biasing?** During streaming ASR beam search, a lightweight Weighted Finite-State Transducer (WFST / Prefix Trie) awards an extra log-probability score (`boostScore`) whenever an acoustic path matches a registered domain term.
@@ -73,14 +73,14 @@ flowchart TD
 flowchart LR
     subgraph Bad["❌ Legacy Pipeline: Shared Global Hotword Pool + Zero-Wait Greedy S2S"]
       direction LR
-      B1["Caller Audio<br/>'Do NOT take 50mg Qichen-X'"] --> B2["Shared Hotword Pool (boost=8.0)<br/>Cross-tenant bleed & stop-word hallucination"]
+      B1["Caller Audio<br/>'Do NOT take 50mg Contoso-X'"] --> B2["Shared Hotword Pool (boost=8.0)<br/>Cross-tenant bleed & stop-word hallucination"]
       B2 --> B3["Greedy S2S Early Emission (Wait-0)<br/>Drops NOT or confuses 15mg vs 50mg"]
       B3 --> B4["Severe Production Failure<br/>Clinical/financial inversion + IP leak"]
     end
 
     subgraph Good["✅ Production Pipeline: TENANT-WFST-02 Ephemeral Tenant WFST + INTERP-POLARITY-01 Wait-k Dual-AST Gate"]
       direction LR
-      G1["Caller Audio<br/>'Do NOT take 50mg Qichen-X'"] --> G2["TENANT-WFST-02 Tenant-Isolated WFST<br/>boost=3.2 in [1.0,4.5], phoneticDist=3"]
+      G1["Caller Audio<br/>'Do NOT take 50mg Contoso-X'"] --> G2["TENANT-WFST-02 Tenant-Isolated WFST<br/>boost=3.2 in [1.0,4.5], phoneticDist=3"]
       G2 --> G3["INTERP-POLARITY-01 Clause Wait-k (k=2, 420ms)<br/>100% AST Polarity & 50mg Hash Parity"]
       G3 --> G4["Zero-Drift Simultaneous Interpretation<br/>Fails closed to bilingual readback on mismatch"]
     end
