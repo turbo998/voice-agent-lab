@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（124 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（125 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -165,3 +165,4 @@
 122. **企业实时语音智能体接入 MCP 与核心业务系统（CRM/ERP 两阶段 Draft-Commit 预提交、防重扣幂等键与打断 Saga 事务回滚）方案**：[中文](./enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.md) | [EN](./enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.en.md)
 123. **企业智能客服联络中心（CCaaS）现代化升级深度横评（Azure ACS + GPT-Realtime vs. Amazon Connect + Nova Sonic vs. Genesys/Twilio、规避 AudioHook 过路税与阶梯 TCO）方案**：[中文](./ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.md) | [EN](./ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.en.md)
 124. **联络中心人工坐席实时辅助 Copilot（Real-Time Agent Assist：双声道物理分轨零串音、`<300ms` 三行微卡片与挂机 `3 秒` 自动工单小结缩短 `80%` ACW）方案**：[中文](./contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.md) | [EN](./contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.en.md)
+125. **医疗健康患者智能预约挂号、诊前症状导诊与出院随访语音助手（HL7 FHIR 号源锁、红旗急症 `0ms` 护士抢占与爽约率压降 `42%`）方案**：[中文](./healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.md) | [EN](./healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.en.md)

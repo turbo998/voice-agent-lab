@@ -2765,6 +2765,36 @@ export function evaluateContactCenterAgentAssistCopilotGuard(input: {
   };
 }
 
+export interface HealthcarePatientSchedulingTriageEvaluation {
+  policyCode: "HEALTHCARE-SCHEDULING-EHR-01";
+  routineSchedulingBlockedAndNursePreempted0ms: boolean;
+  phiDisclosureAuthorized: boolean;
+  fhirAppointmentCommitAuthorized: boolean;
+}
+
+/**
+ * Deterministic Healthcare Patient Scheduling, Red-Flag Triage & Post-Discharge Follow-Up Guard (`HEALTHCARE-SCHEDULING-EHR-01`).
+ */
+export function evaluateHealthcarePatientSchedulingTriageGuard(input: {
+  redFlagSymptomChestPainStrokeOrDyspnea: boolean;
+  dobAndZipOrMrnVerified: boolean;
+  fhirSlotHoldVerified: boolean;
+  procedurePrepRequirementsConfirmed: boolean;
+}): HealthcarePatientSchedulingTriageEvaluation {
+  return {
+    policyCode: "HEALTHCARE-SCHEDULING-EHR-01",
+    routineSchedulingBlockedAndNursePreempted0ms:
+      input.redFlagSymptomChestPainStrokeOrDyspnea,
+    phiDisclosureAuthorized: input.dobAndZipOrMrnVerified,
+    fhirAppointmentCommitAuthorized:
+      !input.redFlagSymptomChestPainStrokeOrDyspnea &&
+      input.dobAndZipOrMrnVerified &&
+      input.fhirSlotHoldVerified &&
+      input.procedurePrepRequirementsConfirmed,
+  };
+}
+
+
 
 
 

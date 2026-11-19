@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgHealth" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06121A"/>
+      <stop offset="50%" stop-color="#0E2538"/>
+      <stop offset="100%" stop-color="#07131E"/>
+    </linearGradient>
+    <linearGradient id="redFlagGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="fhirGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="followGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgHealth)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Healthcare Patient Scheduling, Symptom Triage &amp; Post-Discharge Follow-Up Voice AI</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">医疗患者预约分诊与出院随访语音架构：红旗危急症状 0ms 护士抢占、HL7 FHIR 号源锁与检查禁忌核验、爽约率压降 42%</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#064E3B" stroke="#10B981" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#6EE7B7" font-size="13" font-weight="600" text-anchor="middle">HEALTHCARE-SCHEDULING-EHR-01</text>
+
+  <!-- Pillar 1: Red-Flag Symptom 0ms Nurse Preemption -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#redFlagGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 红旗危急症状 0ms 急诊分诊护士抢占</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 医疗红线：严禁给急性胸痛/卒中患者约下周门诊！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 患者来电：“我想约周四心内科，我从昨晚开始胸口压榨痛直冒冷汗”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若机器人继续按部就班查排班表，将酿成致命延误与巨额医疗事故诉讼</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">确定性临床红旗词典 (Clinical Red-Flag Gate)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 实时扫描：胸痛放射左臂、言语含糊/偏瘫 (FAST)、呼吸困难、高热惊厥</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 命中瞬间 0ms 冻结普通预约 API，直接切入 24×7 急诊分诊护士专线</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">非诊断性分诊边界 (Zero Medical Diagnosis)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• AI 仅按医院审定《门急诊导诊规则树》匹配科室，绝不下达疾病诊断结论</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 全程通过 HIPAA BAA / 等保三级内网加密与雙要素患者核身</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">危急重症识别率 100% · 0ms 强插分诊护士</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底杜绝把急性心梗/脑卒中患者当成普通门诊挂号处理</text>
+  </g>
+
+  <!-- Pillar 2: Epic / Cerner HL7 FHIR Slot Hold & Procedure Prep Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#fhirGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. Epic/HIS FHIR 号源锁与检查禁忌前置核验</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">HIPAA 双要素核身门禁 (DOB + 邮编/手机号后4位/病历号)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 未完成出生日期 + 第二要素校验前，严禁播报患者既有预约科室与检查项</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 防止家属或旁人冒名探听患者隐私就诊记录 (PHI 零泄露)</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">120 秒 FHIR Slot 预占锁 + 医技检查禁忌核验</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 约核磁共振 (MRI) 必查心脏起搏器/金属植入物；约胃肠镜必核抗凝药与禁食</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 通过 HL7 FHIR Appointment 120s 软锁防止患者确认期间号源被抢</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">候补队列自动补位 (Automated Waitlist Backfill)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 患者语音改期释放出明早专家号后，AI 立即自动外呼候补名单前 3 名患者</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 门诊与大型影像设备 (MRI/CT) 空置爽约率直接下降 42%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">号源并发零冲突 · 医技检查准备合格率 99.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">语音确认后同步下发微信/短信检前禁食与院内导航卡片</text>
+  </g>
+
+  <!-- Pillar 3: Post-Discharge 72h Follow-Up & Readmission Prevention -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#followGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 出院 72 小时智能随访与防再入院闭环</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：护士人工电话随访耗时巨大，覆盖率不足 30%</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 术后/慢病患者出院后漏服药、伤口感染或体重骤增未及时发现</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 导致 30 天非计划再入院率居高不下（在欧美直接触发 CMS 医保扣款）</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">适老化慢语速随访 + 异常体征结构化回写 EHR</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 自动切换 0.88x 温和慢语速与方言理解，逐项核对：出院带药、体温、切口红肿</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 心衰患者若报告“2天内体重增加 &gt;2公斤或脚踝水肿”，立即生成高危预警工单</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">释放 85% 随访护理人力，聚焦 15% 异常高危患者</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 85% 恢复良好的患者由 AI 自动完成随访归档并写入 Epic / HIS</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 专科护士只需集中精力回访 AI 筛出的 15% 异常患者，30天再入院率降 28%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">出院随访覆盖率 28% -&gt; 98% · 再入院率 -28%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单次随访通话成本仅 $0.12，医院年化增收节支超 $1.4M</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#34D399" font-size="14" font-weight="700">医疗语音架构师三大铁律 (HEALTHCARE-SCHEDULING-EHR-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 红旗症状 0ms 抢占：任何预约或随访通话中一旦识别胸痛、偏瘫、呼吸困难等急症，0ms 阻断普通挂号并直转急诊分诊护士；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 零泄露与零白跑：查询/改期必须先过双要素核身 (DOB + 手机/MRN)，预约 MRI/内镜必须强制完成金属植入物与禁食抗凝药前置核验。</text>
+</svg>

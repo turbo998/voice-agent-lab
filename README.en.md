@@ -196,6 +196,7 @@ flowchart LR
 122. **Enterprise Voice AI MCP Tool Orchestration & Transaction Architecture: Two-Phase Draft-Commit, Idempotency Keys & Barge-In Saga Rollback**: [EN](./docs/enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.en.md) | [中文](./docs/enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.md)
 123. **Enterprise Contact Center (CCaaS) Modernization Deep-Dive: Azure ACS + GPT-Realtime vs. Amazon Connect + Nova Sonic vs. Genesys Cloud + Twilio Architecture & TCO**: [EN](./docs/ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.en.md) | [中文](./docs/ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.md)
 124. **Contact Center Real-Time Agent Assist Copilot: Stereo Dual-Channel Split, <300ms Next-Best-Action Micro-Cards & 3-Second Auto-ACW Summarization**: [EN](./docs/contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.en.md) | [中文](./docs/contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.md)
+125. **Healthcare Patient Appointment Scheduling, Pre-Visit Symptom Triage & Post-Discharge Follow-Up Voice AI: HL7 FHIR Slot Locking, 0ms Red-Flag Nurse Preemption & HIPAA**: [EN](./docs/healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.en.md) | [中文](./docs/healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.md)
 
 ---
 
