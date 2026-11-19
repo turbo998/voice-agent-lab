@@ -194,6 +194,7 @@ flowchart LR
 120. **Dairy, Brewery & Aseptic Beverage Factory Voice AI: CIP Caustic Mix-Proof Interlock, <=15 uS/cm Conductivity Gate & UHT Sterile Diversion**: [EN](./docs/food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.en.md) | [中文](./docs/food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.md)
 121. **Public Procurement & Enterprise Tender Bid-Evaluation Voice AI: 0ms Anti-Collusion Alert, Blind-Bid Voice Anonymization & Outlier-Score Lock**: [EN](./docs/public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.en.md) | [中文](./docs/public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.md)
 122. **Enterprise Voice AI MCP Tool Orchestration & Transaction Architecture: Two-Phase Draft-Commit, Idempotency Keys & Barge-In Saga Rollback**: [EN](./docs/enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.en.md) | [中文](./docs/enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.md)
+123. **Enterprise Contact Center (CCaaS) Modernization Deep-Dive: Azure ACS + GPT-Realtime vs. Amazon Connect + Nova Sonic vs. Genesys Cloud + Twilio Architecture & TCO**: [EN](./docs/ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.en.md) | [中文](./docs/ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.md)
 
 ---
 

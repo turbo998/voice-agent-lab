@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（122 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（123 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -163,3 +163,4 @@
 120. **乳制品、精酿啤酒与无菌饮料工厂（CIP 火碱防混罐与防吸瘪死锁、回流电导率 <=15 μS/cm 零残留核验与 UHT 失温回流）方案**：[中文](./food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.md) | [EN](./food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.en.md)
 121. **公共资源交易中心与央国企招投标评标室（评委倾向性拉票 0ms 声光告警、双盲暗标 250ms 变声消音与畸高畸低分强制说理锁）方案**：[中文](./public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.md) | [EN](./public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.en.md)
 122. **企业实时语音智能体接入 MCP 与核心业务系统（CRM/ERP 两阶段 Draft-Commit 预提交、防重扣幂等键与打断 Saga 事务回滚）方案**：[中文](./enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.md) | [EN](./enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.en.md)
+123. **企业智能客服联络中心（CCaaS）现代化升级深度横评（Azure ACS + GPT-Realtime vs. Amazon Connect + Nova Sonic vs. Genesys/Twilio、规避 AudioHook 过路税与阶梯 TCO）方案**：[中文](./ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.md) | [EN](./ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.en.md)

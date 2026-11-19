@@ -2706,6 +2706,37 @@ export function evaluateVoiceMcpTwoPhaseSagaGuard(input: {
   };
 }
 
+export interface CcaasAcsConnectGenesysTwilioTcoEvaluation {
+  policyCode: "CCAAS-ACS-CONNECT-GENESYS-01";
+  monthlyLegacyAudioHookTaxSavedUsd: number;
+  selfHostedAcsOverWrapperRecommended: boolean;
+  warmTransferWithSignedUuiApproved: boolean;
+}
+
+/**
+ * Deterministic CCaaS Modernization (Azure ACS + GPT-Realtime vs. Amazon Connect vs. Genesys/Twilio) TCO & Routing Guard (`CCAAS-ACS-CONNECT-GENESYS-01`).
+ */
+export function evaluateCcaasAcsConnectGenesysTwilioTcoGuard(input: {
+  monthlyCallMinutes: number;
+  tier1AiDeflectionRatePct: number;
+  legacyCcaasAudioHookFeePerMinUsd: number;
+  usesFrontDoorSbcAcsIntercept: boolean;
+  signedSipUuiContextPacketAttached: boolean;
+}): CcaasAcsConnectGenesysTwilioTcoEvaluation {
+  const deflectedMinutes =
+    input.monthlyCallMinutes * (input.tier1AiDeflectionRatePct / 100);
+  const monthlySaved = input.usesFrontDoorSbcAcsIntercept
+    ? Math.round(deflectedMinutes * input.legacyCcaasAudioHookFeePerMinUsd)
+    : 0;
+  return {
+    policyCode: "CCAAS-ACS-CONNECT-GENESYS-01",
+    monthlyLegacyAudioHookTaxSavedUsd: monthlySaved,
+    selfHostedAcsOverWrapperRecommended: input.monthlyCallMinutes >= 250_000,
+    warmTransferWithSignedUuiApproved: input.signedSipUuiContextPacketAttached,
+  };
+}
+
+
 
 
 

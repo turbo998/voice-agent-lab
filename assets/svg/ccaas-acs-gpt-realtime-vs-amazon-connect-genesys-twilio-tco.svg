@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgCcaas" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#112240"/>
+      <stop offset="100%" stop-color="#07101E"/>
+    </linearGradient>
+    <linearGradient id="acsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="awsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="genGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgCcaas)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">CCaaS Voice AI Head-to-Head: Azure ACS + GPT-Realtime vs. Amazon Connect vs. Genesys/Twilio</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业智能联络中心 (CCaaS) 架构横评与 TCO 精算：ACS 前置分流、Amazon Connect 对比、Genesys 媒体流抽成税规避全景图</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">CCAAS-ACS-CONNECT-GENESYS-01</text>
+
+  <!-- Pillar 1: Azure ACS + Voice Live (GPT-Realtime) Front-Door Architecture -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#acsGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. Azure ACS + Voice Live (GPT-Realtime) 栈</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">核心优势：原生多模态推理深度 + BYOC 存量 SBC 直连</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 支持企业复用已有运营商 SIP 线路 (Direct Routing)，免换号平滑切入</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 原生集成 Azure OpenAI GPT-Realtime 与 140+ 语种 Custom Neural HD TTS</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">前置 SBC 分流 (Front-Door Intercept) 省下 70% 传统平台税</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 来电先入 ACS Call Automation 由 Voice AI 拦截解决 70% 一线常见问题</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 仅将 30% 需人工的电话通过 SIP REFER (带 UUI 摘要) 转给存量 Genesys/Cisco</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">适用企业画像与 PTU 规模化成本水位</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 最适合：已重度使用 Microsoft 365 / Teams / Dynamics 或需保留存量坐席的企业</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 综合每分钟 TCO：级联 $0.048/min · 混合双轨 (含PTU) $0.078/min</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">无需推翻存量呼叫中心，两周上线 AI 首线分流</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">工具调用推理准确率与多语种混合表现在横评中居首</text>
+  </g>
+
+  <!-- Pillar 2: Amazon Connect + Bedrock Nova Sonic vs. Genesys Cloud AudioHook -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#awsGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. Amazon Connect + Nova Sonic vs. Genesys</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">Amazon Connect + Nova Sonic：纯按量计费的公有云原生派</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 优势：无强制坐席月租费，AWS 生态内与 Lambda / S3 / Lex 集成顺畅</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 局限：Kinesis Video Streams (KVS) 外部双向低延迟导流较重，企业搬迁坐席周期长</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="174" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 警惕 Genesys / 传统 CCaaS “AudioHook 媒体流抽成税”！</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 若让来电先进 Genesys Cloud 再通过 AudioHook 导出音频给外部 AI 大模型</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 平台会额外加收 $0.03-$0.04/分钟流导出税 + AI Token 计点，100万分钟年多花 $43万！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">架构师破局之道：“把 AI 放在 CCaaS 大门外（SBC 层）”</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 存量 Genesys/Avaya 客户绝不要在平台内部接外部大模型流</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 用 AudioCodes/Oracle SBC + ACS 在前端先拦截 70%，每年立省 $40万+ 过路费</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">百万分钟/月规模下规避 $432,000/年 媒体流导出税</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">保留人工坐席既有 WFM 排班与质检习惯零震荡</text>
+  </g>
+
+  <!-- Pillar 3: Twilio Voice + Retell / Vapi / LiveKit Build-vs-Buy TCO Inflection -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#genGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. Twilio / Retell / Vapi vs. 自建编排 TCO 拐点</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">Retell AI / Vapi 全托管编排层：PoC 极快但存在“包装加价税”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 优势：开箱即用调好打断与延迟，1天就能搭出惊艳售前 Demo</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 成本账：除底层 STT/LLM/TTS 成本外，额外收 $0.05-$0.07/min 平台编排费</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">企业自建拐点：月通话量 &gt;= 25万分钟必选 ACS / LiveKit 直连</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• &lt; 10万分钟/月（初创/快速验证）：用 Retell / Vapi 省研发人力更划算</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• &gt;= 25万分钟/月（中大型企业）：基于 ACS + LiveKit/Pipecat 直连模型，立省 48% 成本</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">企业安全合规一票否决项（数据不出私网 Private Link）</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 银行/医疗/政企严禁音频流经过第三方初创 SaaS 多租户中转服务器</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• ACS + Azure AI Foundry 支持全程 ExpressRoute / Private Endpoint 内网闭环</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">100万分钟/月规模下自建比二道贩子平台年省 $66万</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">提供清晰可量化的 10万 / 50万 / 200万分钟阶梯 TCO 精算表</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">架构师核心选型法则 (CCAAS-ACS-CONNECT-GENESYS-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 拥有存量 Genesys/Avaya/Cisco 坐席的企业，最佳落地架构是“SBC 前置分流（ACS + Voice AI 在大门外先拦截 70%）”，彻底免除 $0.036/min 媒体流导出税；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 月通话量 &lt;10万分钟可用 Retell/Vapi 快速验证；一旦月通话量 &gt;=25万分钟或涉及金融/医疗强合规，必须采用 ACS / Connect + 企业级模型直连架构。</text>
+</svg>

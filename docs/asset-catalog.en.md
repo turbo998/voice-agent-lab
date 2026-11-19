@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (122 Bilingual Guides)
+## 3. Solution Architect Selection Guides (123 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -163,3 +163,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 120. **Dairy, Brewery & Aseptic Beverage Factory Voice AI: CIP Caustic Mix-Proof Interlock, <=15 uS/cm Conductivity Gate & UHT Sterile Diversion**: [EN](./food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.en.md) | [中文](./food-beverage-dairy-brewery-cip-caustic-interlock-voice-selection-faq.md)
 121. **Public Procurement & Enterprise Tender Bid-Evaluation Voice AI: 0ms Anti-Collusion Alert, Blind-Bid Voice Anonymization & Outlier-Score Lock**: [EN](./public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.en.md) | [中文](./public-procurement-tender-bid-evaluation-anti-collusion-voice-selection-faq.md)
 122. **Enterprise Voice AI MCP Tool Orchestration & Transaction Architecture: Two-Phase Draft-Commit, Idempotency Keys & Barge-In Saga Rollback**: [EN](./enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.en.md) | [中文](./enterprise-voice-mcp-tool-two-phase-commit-saga-idempotency-selection-faq.md)
+123. **Enterprise Contact Center (CCaaS) Modernization Deep-Dive: Azure ACS + GPT-Realtime vs. Amazon Connect + Nova Sonic vs. Genesys Cloud + Twilio Architecture & TCO**: [EN](./ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.en.md) | [中文](./ccaas-acs-gpt-realtime-vs-amazon-connect-genesys-twilio-tco-selection-faq.md)
