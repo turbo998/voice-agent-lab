@@ -2736,6 +2736,36 @@ export function evaluateCcaasAcsConnectGenesysTwilioTcoGuard(input: {
   };
 }
 
+export interface ContactCenterAgentAssistCopilotEvaluation {
+  policyCode: "AGENT-ASSIST-COPILOT-01";
+  zeroCrosstalkAttributionGuaranteed: boolean;
+  supervisorAlertAndCorrectiveCardTriggered0ms: boolean;
+  crmAutoWrapUpCommitAuthorized: boolean;
+}
+
+/**
+ * Deterministic Contact Center Real-Time Agent Assist Copilot (Stereo Split, <300ms Cards & 3s Auto-ACW) Guard (`AGENT-ASSIST-COPILOT-01`).
+ */
+export function evaluateContactCenterAgentAssistCopilotGuard(input: {
+  stereoLeftRightChannelSplitActive: boolean;
+  agentSpokeProhibitedPromiseOrSkippedDisclosure: boolean;
+  customerFrustrationScorePct: number;
+  structuredAcwSummaryGeneratedIn3s: boolean;
+  agentReviewedOrOneClickApprovedAcw: boolean;
+}): ContactCenterAgentAssistCopilotEvaluation {
+  return {
+    policyCode: "AGENT-ASSIST-COPILOT-01",
+    zeroCrosstalkAttributionGuaranteed: input.stereoLeftRightChannelSplitActive,
+    supervisorAlertAndCorrectiveCardTriggered0ms:
+      input.agentSpokeProhibitedPromiseOrSkippedDisclosure ||
+      input.customerFrustrationScorePct >= 85,
+    crmAutoWrapUpCommitAuthorized:
+      input.structuredAcwSummaryGeneratedIn3s &&
+      input.agentReviewedOrOneClickApprovedAcw,
+  };
+}
+
+
 
 
 
