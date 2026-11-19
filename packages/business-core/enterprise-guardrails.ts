@@ -2589,6 +2589,35 @@ export function evaluateMaritimeBridgeVtsShipyardGuard(input: {
   };
 }
 
+export interface FineArtAuctionBiddingEvaluation {
+  policyCode: "FINE-ART-AUCTION-VOICE-01";
+  rostrumBidRelayAuthorized: boolean;
+  ceilingExceededOrWrongLotBlocked: boolean;
+}
+
+/**
+ * Deterministic Fine-Art Auction Telephone Bidding & Paddle Ceiling Guard (`FINE-ART-AUCTION-VOICE-01`).
+ */
+export function evaluateFineArtAuctionBiddingGuard(input: {
+  proposedHammerBidUsd: number;
+  verifiedPaddleFinancialCeilingUsd: number;
+  activeRoomLotMatchesClientRegisteredLot: boolean;
+  buyersPremiumAndIrrevocableHammerDisclosed: boolean;
+}): FineArtAuctionBiddingEvaluation {
+  const withinCeiling =
+    input.proposedHammerBidUsd <= input.verifiedPaddleFinancialCeilingUsd;
+  const authorized =
+    withinCeiling &&
+    input.activeRoomLotMatchesClientRegisteredLot &&
+    input.buyersPremiumAndIrrevocableHammerDisclosed;
+  return {
+    policyCode: "FINE-ART-AUCTION-VOICE-01",
+    rostrumBidRelayAuthorized: authorized,
+    ceilingExceededOrWrongLotBlocked:
+      !withinCeiling || !input.activeRoomLotMatchesClientRegisteredLot,
+  };
+}
+
 
 
 

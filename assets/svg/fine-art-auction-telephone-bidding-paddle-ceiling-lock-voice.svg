@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgAuc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C18"/>
+      <stop offset="50%" stop-color="#1A1730"/>
+      <stop offset="100%" stop-color="#090D1A"/>
+    </linearGradient>
+    <linearGradient id="padGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="lotGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="bpGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgAuc)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Fine-Art Auction Telephone Bidding &amp; Bespoke Luxury Voice AI: Paddle Ceiling &amp; Lot Lock</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">顶级艺术品拍卖行电话委托竞拍 (Telephone Bidding) 语音 AI：保证金授信上限 0ms 熔断、拍品防串单锁与买家佣金精算全景图</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#451A03" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#FCD34D" font-size="13" font-weight="600" text-anchor="middle">FINE-ART-AUCTION-VOICE-01 · Auction</text>
+
+  <!-- Pillar 1: Bidder Deposit / Credit Ceiling 0ms Hard Stop & Anti-Default Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#padGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 竞买号牌 (Paddle) 保证金授信上限 0ms 熔断锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁允许仅交 50万保证金的号牌举牌竞拍 5,000万天价拍品！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 拍卖行头号坏账灾难：电话委托客人在肾上腺素飙升下超出自身资信上限盲目喊价</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 落槌后买家无力付款违约 (Default)，导致国宝拍品流拍污名化与卖家天价索赔</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="174" fill="#FCD34D" font-size="13" font-weight="700">号牌保证金杠杆倍数 × 银行保函 (LoC) 实时最高叫价锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 每个电话竞买号牌 (如 #8088) 绑定经财务部核准的最高落槌额度 (如 $1,200万)</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 一旦下一阶梯叫价超出授信上限 -&gt; 0ms 锁死向拍卖师看台 (Rostrum) 举牌报数！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">客户预设“最高心理底价 (Client Stop-Bid Ceiling)”保护锁</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 藏家委托 AI 代接电话竞拍并设定最高出价上限 $500万</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 价格到达 $500万时自动礼貌向拍卖师示意“No further bid (不加了)”，绝不越权多加一刀</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">超授信额度违规举牌与拍后违约拒付率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单场夜场拍卖可并发承接 500+ 路多语种跨国电话委托席</text>
+  </g>
+
+  <!-- Pillar 2: Lot-to-Paddle Anti-Cross-Lot Binding & Rostrum Sync -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#lotGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 拍品号 (Lot ID) 防串单锁与拍卖师落槌同步</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严防“客人本来要买 Lot 108 乾隆瓷瓶，却报错买成 Lot 107”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 拍卖行业经典乌龙：电话专员提前3件拍品拨通客户电话，客户听到报数就喊“出价！”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 结果此时台上正在拍的是前一件 Lot 107，落槌后具有不可撤销法律效力引发诉讼</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">拍卖师控制台 (Rostrum Console) Active Lot ID 硬件互锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 当场上正拍 Lot 107 而客户预约登记的是 Lot 108 时：客户电话处于【只听静默锁】</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 仅当拍卖师切入 Lot 108 且双语宣读拍品全称核对无误后，才解锁该线出价权限！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">“Fair Warning (最后一次警告)” 180ms 极速传声与双口令确认</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 拍卖师举槌喊“最后机会 850万”：200ms 内实时同传给东京/日内瓦/香港买家</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 严禁将藏家清嗓子或跟配偶商量“八百八十万有点贵”误判为正式出价指令！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">错拍相邻拍品 (Wrong-Lot Bid) 与误判闲聊举牌率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">跨洋电话委托席到拍卖师看台屏显延迟 &lt; 220ms</text>
+  </g>
+
+  <!-- Pillar 3: Tiered Buyer's Premium (15-26%), Artist Resale Royalty & CITES Ivory Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#bpGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 阶梯买家佣金 (Buyer's Premium) 与文物出境锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">实时播报“落槌价 + 阶梯佣金 (26%/20%/13.9%)”含税到手总价</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 很多新晋藏家只算落槌价 (Hammer Price)，结账时发现要多交 25% 买家佣金拒付</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 每次加价前 AI 实时口算播报：“落槌价 1,000万，连同阶梯佣金实付总计 1,215万”</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">国家限制出境文物 (★号拍品) 与 CITES 濒危材质 (红木/玳瑁) 告知锁</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 海外藏家竞拍带 ★ 号古代书画或含黄花梨/象牙古董家具时</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 竞拍前强制逐字宣读《国家文物局禁止出境提示》与 CITES 公约许可证限制</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">超跑/游艇高定 (Bespoke Atelier) 不可退定金与排产锁单</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 法拉利 Tailor Made / 劳斯莱斯 Bespoke 专属定制颜色与内饰语音锁单</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 逐项复诵选配清单并录音确认“进入排产冻结期后 30% 定制金不可退还”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">买家佣金误解纠纷与文物出境合规投诉率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合《拍卖法》、英国拍卖行条例与 CITES 国际公约</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#F59E0B" font-size="14" font-weight="700">架构师核心选型法则 (FINE-ART-AUCTION-VOICE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 电话委托竞拍语音系统必须实时联锁拍卖师控制台当前拍品号 (Active Lot ID) 与竞买人保证金授信上限，非预约拍品或超额度叫价必须 0ms 物理锁死；</text>
+  <text x="68" y="606" fill="#7DD3FC" font-size="13">2. 每次报出竞价阶梯时必须同步播报含阶梯买家佣金 (Buyer's Premium) 的实际总价及落槌不可撤销法律效力，并对限制出境文物强制完成前置合规宣读。</text>
+</svg>
