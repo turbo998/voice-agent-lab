@@ -198,6 +198,7 @@ flowchart LR
 124. **Contact Center Real-Time Agent Assist Copilot: Stereo Dual-Channel Split, <300ms Next-Best-Action Micro-Cards & 3-Second Auto-ACW Summarization**: [EN](./docs/contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.en.md) | [中文](./docs/contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.md)
 125. **Healthcare Patient Appointment Scheduling, Pre-Visit Symptom Triage & Post-Discharge Follow-Up Voice AI: HL7 FHIR Slot Locking, 0ms Red-Flag Nurse Preemption & HIPAA**: [EN](./docs/healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.en.md) | [中文](./docs/healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.md)
 126. **Retail & E-Commerce Omnichannel Voice AI: 0-Second Caller-ID Order Preload (WISMO), Anti-Abuse RMA Return Locks & 10x Promo Surge Architecture**: [EN](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.en.md) | [中文](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.md)
+127. **Retail Banking & Credit Card Voice AI: 0ms Protective Fraud Freeze, Reg E / Visa CE 3.0 Chargeback Dispute Intake & Mandatory APR Installment Readback**: [EN](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.en.md) | [中文](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.md)
 
 ---
 

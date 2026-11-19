@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgBank" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#10213A"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="freezeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="regEGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="aprGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgBank)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Retail Banking &amp; Credit Card Voice AI: 0ms Fraud Freeze, Reg E Disputes &amp; APR Readback</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">零售银行与信用卡中心语音客服架构：盗刷丢卡 0ms 保护性锁卡、Reg E / Visa CE 3.0 拒付采证与账单分期 APR 年化利率强披露</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">BANKING-CARD-DISPUTE-01</text>
+
+  <!-- Pillar 1: 0ms Protective Card Freeze Before Full MFA -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#freezeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 盗刷/丢卡 0ms 保护性临时锁卡 (Zero-Delay Freeze)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 致命痛点：客户正被连环盗刷，IVR 却花了 3 分钟核身</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户半夜收到境外 $3,000 盗刷短信惊慌致电：“快帮我锁卡！”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若先问卡号、密码、发短信验证码耗时 180 秒，骗子已刷走第 2 笔 $5,000</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">✅ 黄金两步法：先按主叫手机号 0ms 保护性冻卡，再核身换卡</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 第 1 秒：凭来电绑定手机号 (ANI) 立即下发 15 分钟保护性临时止付锁</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 第 2 步：播报“您的卡片已临时锁死止付”，随后从容完成 OTP 核身与补寄新卡</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">误触出访风控秒级解封 (Travel Decline Unblock)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 持卡人在东京商场刷卡被风控拒付后，银行 3 秒内自动外呼或接听</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 通过 App Push / 声纹 + OTP 确认本人消费后，1 秒解除风控让您重刷成功</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">二次盗刷拦截率 100% · 锁卡耗时 &lt;1.2 秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">补寄实体新卡与修改账单地址仍严格强制 FIDO2 / 短信 OTP 强核身</text>
+  </g>
+
+  <!-- Pillar 2: Regulation E / Visa CE 3.0 Chargeback Dispute Intake -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#regEGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. Reg E 拒付争议采证与善意欺诈识别</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">痛点：80% 的“我不认识这笔扣款”其实是商户名缩写或家人消费</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 账单显示“SQ *BLUE BOTTLE”或“APPLE.COM/BILL”，客户误以为被盗刷</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 若盲目发起正式银联/Visa 拒付 (Chargeback)，每笔产生 $25-$50 处理成本</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">Ethoca / Verifi + Visa CE 3.0 实时商户穿透还原</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• AI 自动播报商户真实招牌、门店地理位置、购买商品明细与设备 IP</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• “这笔 $14.99 是您 iPhone 尾号 8812 续费的 iCloud 2TB 空间，您有印象吗？”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">化解 48% 乌龙争议 + 严格遵守 Reg E 10工作日常规垫付</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 确认属真盗刷或货不对板后，结构化采集 Reg E 必问 6 要素</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动创建争议工单并启动 10 个工作日临时信用垫付 (Provisional Credit) 计时</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">乌龙拒付撤回率 48.5% · 单笔省 $35 调单费</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">把原本 12 分钟的人工拒付登记缩短至 95 秒全自动结构化采证</text>
+  </g>
+
+  <!-- Pillar 3: Installment APR Readback & Anti-Vishing Guard -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#aprGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 账单分期 APR 强披露复诵与反电诈护栏</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">监管红线：严禁只报“每期手续费率”而隐瞒真实年化利率 (APR)！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 中国人民银行 (PBOC) 与美国 CFPB Reg Z 严禁模糊宣传“月息仅 0.6%”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 未清晰播报折算后的近似折算年化利率 (APR) 及总息费前，严禁落库分期</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">确定性分期状态机：APR + 总手续费逐字播报 + 肯定确认锁</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 强制播报：“分 12 期每期本息 ¥893，总手续费 ¥716，折算年化利率 13.08%”</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 必须捕获持卡人明确说出“确认办理”后才解锁核心账务系统分期接口</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">防老年人遭遇电信诈骗大额提现/转出劝阻 (Scam Interdiction)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 当老年持卡人要求临时提额或大额预借现金且背景音有第 3 人教唆话术时</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 立即触发反诈保护锁并转接银行反电诈专员协同劝阻</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">分期息费披露合规率 100% · 监管零罚单</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">语音分期自助办理转化率提升 +29%，全程生成不可篡改双录存证</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">零售银行信用卡语音架构师三大铁律 (BANKING-CARD-DISPUTE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 先锁卡后核身：遇持卡人报告丢卡或正在被盗刷，凭来电绑定手机号 0ms 先下发保护性临时锁卡止付，再走强核身办理补换新卡；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 商户穿透消歧与 APR 硬披露：拒付前先用 Ethoca/Visa CE 3.0 还原真实商户名化解 48% 乌龙争议；办理账单分期必须 100% 播报折算年化利率 (APR)。</text>
+</svg>

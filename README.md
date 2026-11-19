@@ -198,6 +198,7 @@ flowchart LR
 124. **联络中心人工坐席实时辅助 Copilot（Real-Time Agent Assist：双声道物理分轨零串音、`<300ms` 三行微卡片与挂机 `3 秒` 自动工单小结缩短 `80%` ACW）方案**：[中文](./docs/contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.md) | [EN](./docs/contact-center-realtime-agent-assist-copilot-acw-summarization-selection-faq.en.md)
 125. **医疗健康患者智能预约挂号、诊前症状导诊与出院随访语音助手（HL7 FHIR 号源锁、红旗急症 `0ms` 护士抢占与爽约率压降 `42%`）方案**：[中文](./docs/healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.md) | [EN](./docs/healthcare-patient-appointment-scheduling-triage-discharge-followup-voice-selection-faq.en.md)
 126. **零售与电商全渠道智能语音客服（来电 `0 秒` 免报单号预加载 WISMO、退货转免费上门换码留存 `38%` GMV、防羊毛党闪退锁与大促 `10x` 洪峰弹性）方案**：[中文](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.md) | [EN](./docs/retail-ecommerce-wismo-order-tracking-returns-rma-voice-selection-faq.en.md)
+127. **零售银行与信用卡中心实时语音客服（盗刷丢卡 `0ms` 保护性锁卡、Ethoca/Visa CE 3.0 商户穿透化解 `48.5%` 乌龙拒付、Reg E 采证与账单分期 APR 强披露）方案**：[中文](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.md) | [EN](./docs/retail-banking-credit-card-fraud-lock-dispute-chargeback-voice-selection-faq.en.md)
 
 ---
 

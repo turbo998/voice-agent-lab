@@ -2824,6 +2824,35 @@ export function evaluateRetailEcommerceWismoReturnsGuard(input: {
   };
 }
 
+export interface RetailBankingCardDisputeEvaluation {
+  policyCode: "BANKING-CARD-DISPUTE-01";
+  temporaryProtectiveCardFreezeTriggered0ms: boolean;
+  regEProvisionalCreditWorkflowTriggered: boolean;
+  installmentPlanBookingAuthorized: boolean;
+}
+
+/**
+ * Deterministic Retail Banking & Credit Card 0ms Fraud Freeze, Reg E Dispute & APR Disclosure Guard (`BANKING-CARD-DISPUTE-01`).
+ */
+export function evaluateRetailBankingCardDisputeGuard(input: {
+  customerReportedCardLostStolenOrUnauthorizedSwipe: boolean;
+  unrecognizedChargeConfirmedUnauthorizedAfterCe30: boolean;
+  aprAndTotalFeeVerbatimDisclosed: boolean;
+  cardholderExplicitlyConfirmedInstallmentPlan: boolean;
+}): RetailBankingCardDisputeEvaluation {
+  return {
+    policyCode: "BANKING-CARD-DISPUTE-01",
+    temporaryProtectiveCardFreezeTriggered0ms:
+      input.customerReportedCardLostStolenOrUnauthorizedSwipe,
+    regEProvisionalCreditWorkflowTriggered:
+      input.unrecognizedChargeConfirmedUnauthorizedAfterCe30,
+    installmentPlanBookingAuthorized:
+      input.aprAndTotalFeeVerbatimDisclosed &&
+      input.cardholderExplicitlyConfirmedInstallmentPlan,
+  };
+}
+
+
 
 
 
