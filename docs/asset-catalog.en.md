@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (106 Bilingual Guides)
+## 3. Solution Architect Selection Guides (107 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -147,3 +147,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 104. **Air Cargo (IATA DGR Lithium Hazmat Lock) & Heavy-Truck Fleet (FMCSA HOS / GB 7258 Fatigue Guard) Voice AI**: [EN](./air-cargo-iata-dgr-lithium-hazmat-heavy-truck-fleet-voice-selection-faq.en.md) | [中文](./air-cargo-iata-dgr-lithium-hazmat-heavy-truck-fleet-voice-selection-faq.md)
 105. **Medical Aesthetics & Dermatology Voice AI: 0ms Vascular Occlusion Blindness Rescue, Class-III UDI Anti-Counterfeit & Ad-Law Compliance**: [EN](./medical-aesthetic-dermatology-anti-counterfeit-vascular-occlusion-voice-selection-faq.en.md) | [中文](./medical-aesthetic-dermatology-anti-counterfeit-vascular-occlusion-voice-selection-faq.md)
 106. **Pharma Medical Information (MedInfo / MIRF) & Off-Label Compliance Voice AI: Commercial Firewall, Licensed-HCP Gate & PQC Lot Lock**: [EN](./pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.en.md) | [中文](./pharma-medical-information-mirf-offlabel-compliance-voice-selection-faq.md)
+107. **Hyperscale AI Data Center (AIDC) & NOC Voice Copilot: 0ms Liquid-Cooling Leak Interlock, HV Switchgear Two-Person Readback & Alarm-Storm Triage**: [EN](./aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.en.md) | [中文](./aidc-datacenter-noc-liquid-cooling-switchgear-voice-copilot-selection-faq.md)

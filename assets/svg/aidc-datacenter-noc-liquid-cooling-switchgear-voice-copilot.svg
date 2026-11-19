@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgAidc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#0F243C"/>
+      <stop offset="100%" stop-color="#07101E"/>
+    </linearGradient>
+    <linearGradient id="cduGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="hvGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="nocGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgAidc)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">AIDC Hyperscale Data Center &amp; NOC Voice Copilot: CDU Leak 0ms Interlock &amp; HV Switchgear Readback</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">智算中心 (AIDC 万卡液冷集群) 与数据中心运维语音 AI：CDU 漏液 0ms 关阀保 Checkpoint 锁与高压倒闸双人唱票复诵全景图</text>
+  <rect x="842" y="42" width="310" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="997" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">AIDC-NOC-DCIM-VOICE-01 · AIDC</text>
+
+  <!-- Pillar 1: Direct-to-Chip Liquid Cooling CDU Leak 0ms Valve & Checkpoint Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#cduGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 液冷机柜 CDU 漏液 0ms 关阀与训练抢救锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁液冷喷漏时慢吞吞查工单或直接粗暴拉断全排电源！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 单台 NVL72 液冷机柜价值超 $300万，冷却液滴落母排将引发短路起火</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 但若未触发内存级快速 Checkpoint 就直接切电，将丢掉万卡集群数天训练进度</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">漏液传感器触发 -> 0ms 关断分水歧管电磁阀 + 异步转储</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 0ms 自动关闭故障机柜进回水电动球阀，阻断冷却液继续喷涌</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 同步向 Slurm/K8s 下发节点排空 (Drain) 与 8秒内存级 Checkpoint 快照指令</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">机房 88dB 风墙噪声下驻场工程师耳麦精准导引</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 通过骨传导耳麦直报：“M3机房 B列08柜盲插快接头漏液，进水阀已自动关闭”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 工程师免手持口述确认盲插接头更换与保压测试达标后才允许重新开阀</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">液冷漏液短路烧毁 GPU 节点数 = 0 · 训练进度零丢失</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">从漏液绳告警到关断机柜电磁阀响应时间 &lt; 150ms</text>
+  </g>
+
+  <!-- Pillar 2: High-Voltage (10kV/35kV) & UPS Switchgear Two-Person Readback Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hvGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 高压配电与柴发倒闸“双人唱票复诵”硬互锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">⛔ 严禁单人操作或跳步执行 10kV 开关柜/UPS 维修旁路倒闸！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 数据中心 78% 的全站断电事故源于配电倒闸走错间隔或合闸顺序颠倒</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 电气工程师穿 40 cal/cm² 防电弧服戴厚绝缘手套，无法手持平板翻看操作票</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">操作人 + 监护人独立声纹核身 + 逐字唱票复诵 (Readback) 锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 监护人语音领读操作票第 N 步 -> 操作人必须一字不差复诵开关编号与目标状态</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 声纹确认两人不同且开关柜二维码/UWB 位置吻合后，五防锁才释放电磁钥匙</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">带电合接地刀闸 / 非同期并网 0ms 物理死锁拦截</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 实时读取 SCADA 母线电压与相位角：若母线有电而口述“合上接地刀闸”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 0ms 发出最高分贝电弧爆炸警告并锁死微机五防闭锁装置</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">高压配电走错间隔与误拉合开关事故率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 GB 26860 电力安全工作规程与 Uptime Tier IV MOP 规范</text>
+  </g>
+
+  <!-- Pillar 3: Sev-1 NOC War-Room Alarm Storm Triage & Root-Cause Copilot -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#nocGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 万卡集群 NOC 告警风暴降噪与 War-Room 副驾</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">解决“一条光模块闪断触发 4,000条连带告警淹没值班员”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统 BMS/DCIM 语音报警器按时间顺序狂念 500条次生温度/Ping 告警</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 拓扑因果树收敛：将 4,000条告警收敛为 1条根因语音简报（如 CDU-04 变频器跳闸）</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">GPU Xid 硬件故障 (Xid 79/119) 免停机热迁移语音确认</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 检出某节点 NVLink/HBM ECC 双比特不可纠错误或光模块高温</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 语音通报值班 SRE：“已自动 Cordon 隔离 Node-142 并启用热备节点续跑”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Sev-1 应急电话桥 (Incident Bridge) 实时时间线纪要</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 多部门抢修语音桥自动说话人分离（暖通/强电/网络/AI框架组）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 实时生成精确到秒的 Post-Mortem 故障复盘时间轴与 SLA 影响评估</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">Sev-1 重大基础设施故障平均定位时间 (MTTD) 缩短 76%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">万卡集群有效训练时间占比 (Goodput) 提升至 98.4%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#EF4444" font-size="14" font-weight="700">架构师核心选型法则 (AIDC-NOC-DCIM-VOICE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 智算中心液冷机柜一旦检出漏液或压差骤降，必须 0ms 自动关闭机柜进回水电磁阀、同步触发集群内存级紧急 Checkpoint 转储并语音呼叫驻场工程师；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 10kV/UPS 高压配电倒闸操作必须强制通过“操作人+监护人双人独立声纹 + 操作票逐字唱票复诵 + SCADA 微机五防联锁”，缺一严禁释放开关钥匙。</text>
+</svg>

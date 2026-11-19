@@ -2258,6 +2258,33 @@ export function evaluatePharmaMedInfoMirfGuard(input: {
   };
 }
 
+export interface AidcDatacenterNocVoiceEvaluation {
+  policyCode: "AIDC-NOC-DCIM-VOICE-01";
+  cduIsolationValveClosedAndCheckpointTriggered0ms: boolean;
+  hvBreakerActuationAuthorized: boolean;
+}
+
+/**
+ * Deterministic Hyperscale AIDC & Data Center NOC Voice Guard (`AIDC-NOC-DCIM-VOICE-01`).
+ */
+export function evaluateAidcDatacenterNocVoiceGuard(input: {
+  cduLiquidLeakOrPressureDropDetected: boolean;
+  hvBreakerSwitchingRequested: boolean;
+  operatorAndVerifierDistinctVoiceprintsVerified: boolean;
+  verbatimSwitchingTicketReadbackMatched: boolean;
+}): AidcDatacenterNocVoiceEvaluation {
+  const hvAuthorized =
+    !input.hvBreakerSwitchingRequested ||
+    (input.operatorAndVerifierDistinctVoiceprintsVerified &&
+      input.verbatimSwitchingTicketReadbackMatched);
+  return {
+    policyCode: "AIDC-NOC-DCIM-VOICE-01",
+    cduIsolationValveClosedAndCheckpointTriggered0ms:
+      input.cduLiquidLeakOrPressureDropDetected,
+    hvBreakerActuationAuthorized: hvAuthorized,
+  };
+}
+
 
 
 
