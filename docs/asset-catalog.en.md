@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (113 Bilingual Guides)
+## 3. Solution Architect Selection Guides (114 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -154,3 +154,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 111. **Auto & Commercial Property Insurance FNOL Video Claims Voice AI: Highway Safety Preemption, Unbroken Video Anti-Fraud & Subrogation Lock**: [EN](./auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.en.md) | [中文](./auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.md)
 112. **Private Banking & UHNW Family Office Voice AI: MNPI Chinese Wall Lock, Swiss/MAS Code-Name Privacy & Night-Desk 5-Element Order Readback**: [EN](./private-banking-family-office-uhnw-mnpi-codename-voice-selection-faq.en.md) | [中文](./private-banking-family-office-uhnw-mnpi-codename-voice-selection-faq.md)
 113. **Enterprise SOC, SecOps & Incident Response Voice AI: 0ms Anti-Vishing MFA Lock, Ransomware Dual-Voiceprint SOAR & Privileged Scribe**: [EN](./enterprise-soc-secops-ransomware-containment-anti-vishing-voice-selection-faq.en.md) | [中文](./enterprise-soc-secops-ransomware-containment-anti-vishing-voice-selection-faq.md)
+114. **Offshore Wind Turbine (120m Nacelle Rotor-Lock), UHVDC Substation & Grid Dispatch Voice AI: Hub Entry Lock, Dual-Title Readback & Black-Start**: [EN](./offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.en.md) | [中文](./offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.md)

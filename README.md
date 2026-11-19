@@ -18,7 +18,7 @@
 | **📊 7-Card 4:5 标准评测报告（双份）** | 《实时语音与多模型路由 7-Card 报告》与《Azure Speech 说话人分离实证 7-Card 报告》 | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 113 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 113 篇选型指南](#-二113-篇企业级语音架构选型指南中英双语) |
+| **🧭 114 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 114 篇选型指南](#-二114-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -63,7 +63,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、113 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、114 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -185,6 +185,7 @@ flowchart LR
 111. **车险与企业财产险第一现场报案（FNOL 高速撤离与涉水禁打火 0ms 抢占、WebRTC 四角+VIN 一镜到底防扩损与代位求偿锁）方案**：[中文](./docs/auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.md) | [EN](./docs/auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.en.md)
 112. **私人银行与超高净值家族办公室（UHNW MNPI 限制名单 0ms 中国墙隔离、瑞士/新加坡保密代号核身与夜间大宗交易五要素复诵）方案**：[中文](./docs/private-banking-family-office-uhnw-mnpi-codename-voice-selection-faq.md) | [EN](./docs/private-banking-family-office-uhnw-mnpi-codename-voice-selection-faq.en.md)
 113. **企业安全运营中心（SOC / SecOps 防黑客语音社工钓鱼 Vishing 0ms 禁口头重置 MFA 锁、勒索软件分级隔离与纯客观纪要）方案**：[中文](./docs/enterprise-soc-secops-ransomware-containment-anti-vishing-voice-selection-faq.md) | [EN](./docs/enterprise-soc-secops-ransomware-containment-anti-vishing-voice-selection-faq.en.md)
+114. **海上风电（120米机舱主轴锁销互锁与 <12m/s 进轮毂锁）、特高压换流站与电网调度（设备双重名称逐字复诵与黑启动）方案**：[中文](./docs/offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.md) | [EN](./docs/offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.en.md)
 
 ---
 

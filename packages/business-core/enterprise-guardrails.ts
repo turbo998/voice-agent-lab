@@ -2448,6 +2448,33 @@ export function evaluateEnterpriseSocSecopsVoiceGuard(input: {
   };
 }
 
+export interface OffshoreWindGridDispatchEvaluation {
+  policyCode: "OFFSHORE-WIND-GRID-01";
+  hubHatchEntryAuthorized: boolean;
+  rotorCrushHazardLockTriggered: boolean;
+  gridBreakerCloseAuthorized: boolean;
+}
+
+/**
+ * Deterministic Offshore Wind Turbine Hub Lock & Grid Dispatch Voice Guard (`OFFSHORE-WIND-GRID-01`).
+ */
+export function evaluateOffshoreWindGridDispatchGuard(input: {
+  hydraulicRotorLockPinEngaged: boolean;
+  nacelleAnemometerWindSpeedMps: number;
+  gridDispatchCommandVerbatimReadbackAndSyncPhaseVerified: boolean;
+}): OffshoreWindGridDispatchEvaluation {
+  const hubSafe =
+    input.hydraulicRotorLockPinEngaged &&
+    input.nacelleAnemometerWindSpeedMps < 12.0;
+  return {
+    policyCode: "OFFSHORE-WIND-GRID-01",
+    hubHatchEntryAuthorized: hubSafe,
+    rotorCrushHazardLockTriggered: !hubSafe,
+    gridBreakerCloseAuthorized:
+      input.gridDispatchCommandVerbatimReadbackAndSyncPhaseVerified,
+  };
+}
+
 
 
 

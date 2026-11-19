@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（113 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（114 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -154,3 +154,4 @@
 111. **车险与企业财产险第一现场报案（FNOL 高速撤离与涉水禁打火 0ms 抢占、WebRTC 四角+VIN 一镜到底防扩损与代位求偿锁）方案**：[中文](./auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.md) | [EN](./auto-property-insurance-fnol-video-claims-subrogation-fraud-voice-selection-faq.en.md)
 112. **私人银行与超高净值家族办公室（UHNW MNPI 限制名单 0ms 中国墙隔离、瑞士/新加坡保密代号核身与夜间大宗交易五要素复诵）方案**：[中文](./private-banking-family-office-uhnw-mnpi-codename-voice-selection-faq.md) | [EN](./private-banking-family-office-uhnw-mnpi-codename-voice-selection-faq.en.md)
 113. **企业安全运营中心（SOC / SecOps 防黑客语音社工钓鱼 Vishing 0ms 禁口头重置 MFA 锁、勒索软件分级隔离与纯客观纪要）方案**：[中文](./enterprise-soc-secops-ransomware-containment-anti-vishing-voice-selection-faq.md) | [EN](./enterprise-soc-secops-ransomware-containment-anti-vishing-voice-selection-faq.en.md)
+114. **海上风电（120米机舱主轴锁销互锁与 <12m/s 进轮毂锁）、特高压换流站与电网调度（设备双重名称逐字复诵与黑启动）方案**：[中文](./offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.md) | [EN](./offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.en.md)

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgWind" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#0E253D"/>
+      <stop offset="100%" stop-color="#07101E"/>
+    </linearGradient>
+    <linearGradient id="rotGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="uhvGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="blkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgWind)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Offshore Wind Turbine, UHV Substation &amp; Grid Dispatch Voice AI: Rotor-Pin Lock &amp; Black-Start</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">海上风电 (120米机舱轮毂锁)、特高压换流站与电网调度语音 AI：液压主轴锁销互锁、风速 &gt;=12m/s 禁进轮毂与黑启动全景图</text>
+  <rect x="844" y="42" width="308" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="998" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">OFFSHORE-WIND-GRID-01 · Energy</text>
+
+  <!-- Pillar 1: 120m Offshore Wind Turbine Nacelle & Hub Rotor-Pin Interlock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rotGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 海上风电 120米机舱进轮毂“主轴锁销”硬互锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 严禁在液压锁销未插到底或风速 &gt;=12m/s 时进入轮毂！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 16MW 海上风机叶轮重达 200吨，仅靠刹车盘制动在海上阵风下极易打滑微转</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若未插入物理液压主轴锁销 (Rotor Lock Pin) 就钻进轮毂，叶轮微转即致人员挤压身亡</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#4C0519" stroke="#E11D48"/>
+    <text x="30" y="174" fill="#FDA4AF" font-size="13" font-weight="700">主轴锁销行程开关 + 顺桨 90° + 风速 &lt;12m/s 三联锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 运维员语音请求开启轮毂舱门前：实时读取风机主控 PLC 传感器状态</text>
+    <text x="30" y="214" fill="#FBBF24" font-size="12">• 必须同时满足：三支叶片 90° 顺桨 + 液压插销到位信号 == 1 + 机舱风速 &lt;12m/s</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">远海 50公里零公网信号“塔筒本地边缘语音 + 船浪落水 SOS”</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 机舱内部署本地工业边缘语音盒，免手持逐项领读变桨轴承力矩与油脂加注</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 顶靠运维船换乘触发救生衣落水信标 (MOB) 时，0ms 语音联动海事 VHF 与直升机</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">未锁主轴销/超风速违规钻入风机轮毂率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 GWO 全球风能组织高空海事安全与 GB/T 37424 规程</text>
+  </g>
+
+  <!-- Pillar 2: Provincial Grid Dispatch Command Verbatim Readback & UHVDC Switching -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#uhvGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 电网省调/地调与特高压换流站“双称号”逐字复诵</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">⛔ 严禁在未核对设备“双重名称”或非同期状态下合环并网！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 电网调度铁律：所有开关刀闸必须同时报出【设备中文名称 + 唯一调度编号】</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若把“500kV 兰亭变 5021 开关”听成“5012 开关”，将导致重要输电断面解列</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#172554" stroke="#3B82F6"/>
+    <text x="30" y="174" fill="#93C5FD" font-size="13" font-weight="700">发令人 + 受令人声纹核验 + 双重名称 100% 逐字复诵锁</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 实时比对 EMS/OMS 电子调度操作票：漏报厂站名、双重名称或数字倒置 0ms 报警</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 并网合闸前强制联锁同期装置（压差、频差、相角差 &lt;= 允许值）才放行遥控执行</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">±800kV 特高压换流站阀厅巡检红外/局放多模态语音速记</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 巡检员对着耳麦报出“极I高端阀厅 C相第3层晶闸管散热器温升 68.4度”</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 自动比对历史温升曲线，超差 &gt;=5K 立即语音预警并生成缺陷消缺票</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">电网调度令误下达与厂站误受令执行率 = 0.0%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单张复杂电网方式倒闸操作票下令核对时间缩短 46%</text>
+  </g>
+
+  <!-- Pillar 3: Typhoon Islanded Grid Black-Start & Pumped-Storage / BESS Voice Copilot -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#blkGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 极端灾害全黑电网“黑启动 (Black-Start)”语音领航</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#0C4A6E" stroke="#0284C7"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">解决全黑停电后“光纤中断 + 卫星电话口令恢复电网”极限挑战</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 超强台风/冰灾导致区域电网全黑，必须由抽水蓄能/构网型储能黑启动火电机组</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 充电空载长线路若未投高抗或负荷一次性加太大，将引发工频过电压或频率崩溃</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">黑启动路径分步电压/频率稳定边界语音护栏</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 每一轮送电前自动核算单次冲击负荷（严禁超黑启动电源容量 15%）</text>
+    <text x="30" y="214" fill="#34D399" font-size="12">• 语音逐步领航：“第1步起抽蓄1号机 -> 第2步零起升压充 220kV 甲线 -> 第3步供火电厂用电”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">电力监控系统安全防护（安全 I区/II区/III区正反向隔离装置）</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 严格遵守《电力监控系统安全防护规定》（发改委14号令：网络专用、横向隔离）</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 语音模型 100% 部署于调度主站安全区内部，仅通过硬件正向隔离器只读采集</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">全黑孤网黑启动演练与复电恢复时长缩短 54%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合国家能源局电力监控安全区隔离与电网调度管理条例</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#EF4444" font-size="14" font-weight="700">架构师核心选型法则 (OFFSHORE-WIND-GRID-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 海上风电 120米机舱进入轮毂作业前，必须强制校验“液压主轴锁销到位信号 == 1 + 三叶 90° 顺桨 + 风速 &lt;12m/s”，缺一 0ms 锁死轮毂舱门；</text>
+  <text x="68" y="606" fill="#FCD34D" font-size="13">2. 电网省调/地调语音下令必须 100% 校验“厂站名 + 设备双重名称 + 状态”逐字复诵与同期装置相角差闭锁，且模型必须满足电力安全分区横向物理隔离。</text>
+</svg>
