@@ -3123,6 +3123,39 @@ export function evaluateAiSalesRoleplayCoachingSimulatorGuard(input: {
   };
 }
 
+export interface AirlineIrropsFlightRebookingEvaluation {
+  policyCode: "AIRLINE-IRROPS-GDS-01";
+  oldSeatDropAndReissueAuthorized: boolean;
+  involuntaryZeroFeeWaiverEnforced: boolean;
+  digitalHotelAndMealVoucherDispatched: boolean;
+}
+
+/**
+ * Deterministic Airline IRROPS Flight Disruption Atomic PNR Hold-Before-Drop & EU261 Waiver Guard (`AIRLINE-IRROPS-GDS-01`).
+ */
+export function evaluateAirlineIrropsFlightRebookingGuard(input: {
+  isInvoluntaryAirlineOrWeatherDisruption: boolean;
+  newProtectionSeatHeldConfirmedInGds: boolean;
+  fareDifferenceAndChangeFeeWaived: boolean;
+  overnightDelayRequiresHotelVoucher: boolean;
+}): AirlineIrropsFlightRebookingEvaluation {
+  const waiverOk =
+    !input.isInvoluntaryAirlineOrWeatherDisruption ||
+    input.fareDifferenceAndChangeFeeWaived;
+  return {
+    policyCode: "AIRLINE-IRROPS-GDS-01",
+    oldSeatDropAndReissueAuthorized:
+      input.newProtectionSeatHeldConfirmedInGds && waiverOk,
+    involuntaryZeroFeeWaiverEnforced:
+      input.isInvoluntaryAirlineOrWeatherDisruption &&
+      input.fareDifferenceAndChangeFeeWaived,
+    digitalHotelAndMealVoucherDispatched:
+      input.isInvoluntaryAirlineOrWeatherDisruption &&
+      input.overnightDelayRequiresHotelVoucher,
+  };
+}
+
+
 
 
 

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgAir" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="pnrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="euGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="vipAirGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgAir)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Airline IRROPS Mass Rebooking &amp; Hotel Concierge Voice AI: Atomic PNR Lock &amp; 50x Weather Surge</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">民航大面积延误取消 (IRROPS) 极速改签与酒店礼宾语音架构：中航信/Amadeus 先锁新座再退旧票原子事务、非自愿免差价锁与 50倍台风洪峰</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">AIRLINE-IRROPS-GDS-01</text>
+
+  <!-- Pillar 1: Hold-New-Before-Drop-Old PNR Atomic Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pnrGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 先锁新座再放旧座 (Atomic PNR Swap Lock)</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 航旅头号灾难：先把原座位退了，新航班最后1张票被抢光！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 台风天全飞机 300 人同时抢下一班仅剩的 5 个空座</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若 AI 先执行 cancel_old_segment 再订新票，新票秒光导致旅客两头无票滞留机场！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">✅ 黄金铁律：Amadeus / Sabre / 中航信两阶段先占后换</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• Step 1: 先在目标保护航班执行 `SS / Hold Segment (HK)` 锁定新座位库存</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• Step 2: 确认新座位状态为 Confirmed 后，在同一 PNR 事务内释放旧航段并重开客票</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">托运行李联程自动追踪改挂 (Baggage Tag Re-Sync)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 改签成功后同步向机场离港系统 (DCS / BHS) 下发李牌改挂指令</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 并通过短信推送新登机牌二维码与航站楼登机口变更指引</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">两头落空掉座率 0% · 改签耗时 48 秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">比柜台排长队 2 小时或人工热线等待 90 分钟快 110 倍</text>
+  </g>
+
+  <!-- Pillar 2: EU261 / US DOT / CAAC Involuntary Fee Waiver & Hotel Voucher -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#euGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 非自愿退改免差价锁与食宿电子券自动发放</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#451A03" stroke="#D97706"/>
+    <text x="30" y="82" fill="#FCD34D" font-size="13" font-weight="700">痛点：航司原因取消航班，系统却误向旅客收 ¥1,500 舱位差价</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 普通自愿改签规则会计算退改手续费与子舱位差价 (Y舱 vs B舱)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 在航班延误 >3h 或取消 (IRROPS) 时若误收差价，直接违反民航局/EU261/DOT 法规！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">确定性非自愿改签豁免锁 (Involuntary Waiver Code)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 检测到航班状态为 `CANCELLED` 或 `DELAY &gt;= 180m` 时，自动激活 `INVOL_WAIVER`</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 物理屏蔽差价与手续费计算模块，100% 免费改签同物理舱等或外航签转 (FIM)</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">过夜延误协议酒店与餐食电子券一键推送</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 当保护航班跨夜且属航司机械/运力原因时，语音中主动询问是否需安排住宿</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 10秒内直接将机场周边协议酒店入住码与打车券发至旅客手机</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#451A03" stroke="#F59E0B"/>
+    <text x="178" y="356" fill="#FCD34D" font-size="13" font-weight="700" text-anchor="middle">非自愿误收费率 0% · 机场柜台拥堵降 74%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">旅客在候机厅座位上打 45 秒电话即可办妥改签与过夜酒店</text>
+  </g>
+
+  <!-- Pillar 3: 50x Weather Surge &的白金/终身会员礼宾优先 -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#vipAirGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 暴雪/台风 50倍洪峰弹性与高卡礼宾协同</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：一场暴风雪取消 400 架航班，10万旅客在 15分钟内打爆热线</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统航司呼叫中心排队时长飙升至 3 小时，白金卡商务客也打不进来</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 同步引发目的地连锁酒店“晚到保房 / 无损改期”连环电话风暴</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">主动语音外呼抢跑 (Proactive IRROPS Outbound) + 50x 级联池</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 航班取消决定下达后 30 秒，不等旅客打进来，AI 主动并发外呼受影响旅客</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• “您的 MU5102 因台风取消，已为您预留明早 08:30 座位，说【确认】即刻出票”</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">航司×酒店高卡会员延误联动保房 (Late Check-In Hold)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 旅客改签到凌晨 2 点抵达后，一键通知目的地万豪/希尔顿/华住 PMS 系统</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 标记 `Guaranteed Late Arrival` 严防夜审将房间误判为 No-Show 取消！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">10万滞留旅客 18分钟全部安置完毕</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底终结极端天气下机场值机柜台通宵大排长龙与高卡会员流失</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">民航航司与连锁酒店 IRROPS 语音架构三大铁律 (AIRLINE-IRROPS-GDS-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 先占新座再退旧座：GDS/PSS 改签必须在确认新保护航班座位已锁定 (`HK`) 后才允许释放原座位，100% 杜绝抢票洪峰下旅客两头无票；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 非自愿豁免硬锁：延误 &gt;=3h 或取消自动激活 `INVOL_WAIVER` 屏蔽差价与退改费，并在过夜延误时自动推送协议酒店电子房券与晚到保房。</text>
+</svg>

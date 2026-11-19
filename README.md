@@ -208,6 +208,7 @@ flowchart LR
 134. **跨国企业实时多语种会议同传、个人原声保留（Personal Voice）与结构化纪要（日/德语 SOV 防翻反窗口、万/亿数字量级锁与待办自动派单）方案**：[中文](./docs/multinational-live-meeting-simultaneous-interpretation-action-items-selection-faq.md) | [EN](./docs/multinational-live-meeting-simultaneous-interpretation-action-items-selection-faq.en.md)
 135. **线下展厅、银行 VTM、机场问询与电商直播实时语音数字人（Azure Speech Avatar vs. HeyGen vs. 端侧 3D Viseme、`<=1.5m` 视线唤醒锁与成本降 `88%`）方案**：[中文](./docs/interactive-digital-human-avatar-retail-kiosk-livestream-voice-selection-faq.md) | [EN](./docs/interactive-digital-human-avatar-retail-kiosk-livestream-voice-selection-faq.en.md)
 136. **企业 AI 金牌销售对练、医药代表合规拜访与客服上岗模拟陪练平台（GPT-Realtime 刁钻客户压测、防“讨好放水”异议锁与一票否决评分卡）方案**：[中文](./docs/enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.md) | [EN](./docs/enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.en.md)
+137. **民航航司大面积航班延误取消（IRROPS）极速改签与连锁酒店高卡礼宾语音客服（GDS/中航信先锁新座再退旧票原子锁、非自愿免差价与 `50x` 台风洪峰）方案**：[中文](./docs/airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.md) | [EN](./docs/airline-irrops-flight-disruption-rebooking-hotel-concierge-voice-selection-faq.en.md)
 
 ---
 
