@@ -3093,6 +3093,37 @@ export function evaluateDigitalAvatarKioskVoiceGuard(input: {
   };
 }
 
+export interface AiSalesRoleplayCoachingSimulatorEvaluation {
+  policyCode: "AI-SALES-ROLEPLAY-COACH-01";
+  antiSycophancyObjectionHoldActive: boolean;
+  autoFailComplianceRedlineTriggered: boolean;
+  certificationPassApproved: boolean;
+}
+
+/**
+ * Deterministic Enterprise AI Sales Roleplay, Pharma Detailing & CS Sparring Simulator Guard (`AI-SALES-ROLEPLAY-COACH-01`).
+ */
+export function evaluateAiSalesRoleplayCoachingSimulatorGuard(input: {
+  mandatoryObjectionsResolvedCount: number;
+  requiredObjectionsTotal: number;
+  repViolatedOffLabelOrGuaranteedReturnRedline: boolean;
+  traineeTalkToListenRatioPct: number;
+}): AiSalesRoleplayCoachingSimulatorEvaluation {
+  const allObjectionsResolved =
+    input.mandatoryObjectionsResolvedCount >= input.requiredObjectionsTotal;
+  return {
+    policyCode: "AI-SALES-ROLEPLAY-COACH-01",
+    antiSycophancyObjectionHoldActive: !allObjectionsResolved,
+    autoFailComplianceRedlineTriggered:
+      input.repViolatedOffLabelOrGuaranteedReturnRedline,
+    certificationPassApproved:
+      allObjectionsResolved &&
+      !input.repViolatedOffLabelOrGuaranteedReturnRedline &&
+      input.traineeTalkToListenRatioPct <= 65,
+  };
+}
+
+
 
 
 

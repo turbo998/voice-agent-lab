@@ -207,6 +207,7 @@ flowchart LR
 133. **Enterprise IT Helpdesk & Employee Service Desk Voice Copilot: ServiceNow P1 Storm Deflection, Entra ID Anti-Vishing SSPR & Intune Endpoint Self-Healing**: [EN](./docs/enterprise-it-helpdesk-servicenow-password-reset-voice-copilot-selection-faq.en.md) | [中文](./docs/enterprise-it-helpdesk-servicenow-password-reset-voice-copilot-selection-faq.md)
 134. **Multinational Live Meeting Simultaneous Interpretation, Personal Voice Retention & Action-Item Copilot: SOV Clause Buffering & Numeric Lock**: [EN](./docs/multinational-live-meeting-simultaneous-interpretation-action-items-selection-faq.en.md) | [中文](./docs/multinational-live-meeting-simultaneous-interpretation-action-items-selection-faq.md)
 135. **Interactive Digital Human Avatar & Retail/Banking Kiosk Voice AI: Azure Speech Avatar vs. HeyGen vs. Edge 3D Viseme Architecture & TCO**: [EN](./docs/interactive-digital-human-avatar-retail-kiosk-livestream-voice-selection-faq.en.md) | [中文](./docs/interactive-digital-human-avatar-retail-kiosk-livestream-voice-selection-faq.md)
+136. **Enterprise AI Sales Roleplay, Pharma Detailing & Customer Service Sparring Simulator: GPT-Realtime Stress-Testing, Anti-Sycophancy Lock & Auto-Fail Rubric**: [EN](./docs/enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.en.md) | [中文](./docs/enterprise-ai-sales-roleplay-coaching-pharma-compliance-simulator-selection-faq.md)
 
 ---
 

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgRole" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070E1A"/>
+      <stop offset="50%" stop-color="#13203A"/>
+      <stop offset="100%" stop-color="#08111F"/>
+    </linearGradient>
+    <linearGradient id="sycGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="compGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgRole)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Enterprise AI Sales Roleplay, Pharma Detailing &amp; CS Sparring Simulator Architecture</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">企业 AI 金牌销售对练与医药学术拜访陪练架构：GPT-Realtime 刁钻客户压测、防“讨好放水”异议锁与违规话术一票否决评分卡</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">AI-SALES-ROLEPLAY-COACH-01</text>
+
+  <!-- Pillar 1: Anti-Sycophancy Objection State Machine -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#sycGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 防大模型“老好人放水”确定性异议锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 通用大模型的致命通病：讨好型人格 (Sycophancy)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 让普通 LLM 扮演挑剔采购总监，结果销售刚随便敷衍两句</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• AI 就立刻妥协说“你说得太有道理了，我们签合同吧！”，完全失去压测价值</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">✅ 架构师解法：异议关卡状态机 (Objection Checklist Gate)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 每场对练内置 3 道必考异议关卡：① 竞品比你便宜 30% ② 迁移停机风险 ③ 付款账期</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 后台裁判模型未判定当前异议被有效拆解前，状态机硬锁禁止 AI 客户松口同意！</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">原生端到端 GPT-Realtime 拟真打断与压迫感</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 当学员背诵超长套话超过 35 秒时，AI 客户会像真实主任医师/采购总监一样</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 不耐烦地叹气并直接中途打断：“我只有两分钟，别念PPT，直接说副作用数据！”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">异议压测真实度提升 4.2 倍 · 杜绝敷衍通关</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">完美复刻冷漠型、价格敏感型、技术挑刺型与暴躁投诉型四大客户人格</text>
+  </g>
+
+  <!-- Pillar 2: Pharma Off-Label & Financial Red-Line Auto-Fail Trap -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#compGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 医药超说明书/金融保本钓鱼测试与一票否决</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">行业痛点：医药代表与理财经理在客户诱导下说出违规承诺</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 主任医师故意问：“这药虽然没批儿童适应症，但减半给小孩用效果也不错吧？”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若医药代表顺着说“是的很多医院都在偷偷这么用”，直接触犯 FDA/药监局红线！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">主动合规诱饵注入 (Compliance Baiting Probe)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 在对练第 3 轮，AI 客户会自动抛出高危诱导提问（要回扣、问超适应症、要保本承诺）</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 检验学员是否能严格执行标准合规转接话术（如转交医学事务部 MSL）</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">红线一票否决锁 (Zero-Tolerance Auto-Fail)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 即使学员沟通技巧拿了 95 分，只要命中 1 条超说明书推广或贬低竞品红线</text>
+    <text x="30" y="308" fill="#EF4444" font-size="12">• 总分立即强制归零 (0分不通过)，并标红违规录音时间戳要求重考</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">上岗后现场合规违纪率下降 91%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">把所有可能引发监管巨额罚单的口误消灭在内部 AI 模拟沙盒里</text>
+  </g>
+
+  <!-- Pillar 3: Dual-Engine Scoring Rubric & Talk-to-Listen Ratio -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#scoreGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 声学节奏 + SPIN 证据链双维评分报告</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">告别培训经理主观打分：10秒生成量化五维雷达图</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 以往 1 名培训经理考核 200 名新人需要花 2 周一对一对练</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 现在 200 人同时在手机/电脑上与 AI 对练，挂机 10 秒出逐句复盘报告</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">声学副语言指标 + 销售方法论 (SPIN / MEDDIC) 证据锚定</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 量化检测：说听比 (Talk Ratio &lt;=65%)、语速波动、口头禅 (“嗯/啊/那个” 频次)</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 每一项扣分必须引用学员原话时间戳，并给出金牌销售示范重音语音对比</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">新人首单开单周期缩短 42% (Ramp-to-Quota)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 新销售与新客服在接触真实高价值客户前，先在 AI 沙盒通关 30 场实战</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 首月大客户拜访转化率提升 +29%，培训讲师工时节省 85%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">单次 10分钟对练成本仅 $0.45 · 评分一致性 98%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">完美覆盖 B2B 销售、医药学术代表、银行理财经理与高危投诉客服培训</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">企业 AI 陪练平台架构师三大设计准则 (AI-SALES-ROLEPLAY-COACH-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 为什么陪练是原生 S2S (GPT-Realtime) 的最佳主场？因为这里需要 AI 演活“不耐烦叹气、中途打断与情绪施压”，而非机械播报模板；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 必须用外部状态机锁死“防放水异议关卡（未拆解完3个核心异议绝不松口）”与“合规钓鱼红线一票否决（超说明书/保本承诺直接判0分）”。</text>
+</svg>
