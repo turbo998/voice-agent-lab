@@ -3038,6 +3038,35 @@ export function evaluateItHelpdeskServiceNowVoiceGuard(input: {
   };
 }
 
+export interface LiveMeetingSimultaneousInterpreterEvaluation {
+  policyCode: "LIVE-MEETING-INTERPRETER-01";
+  prematureVerbMistranslationPrevented: boolean;
+  glossaryAndNumericFidelityPassed: boolean;
+  actionItemCommitAuthorized: boolean;
+}
+
+/**
+ * Deterministic Multinational Live Meeting Simultaneous Interpretation SOV Clause Buffer & Numeric Fidelity Guard (`LIVE-MEETING-INTERPRETER-01`).
+ */
+export function evaluateLiveMeetingSimultaneousInterpreterGuard(input: {
+  sourceLanguageIsVerbFinalDeOrJa: boolean;
+  semanticClauseWaitWindowMs: number;
+  corporateGlossaryInjected: boolean;
+  numericFiguresMatchSource100Pct: boolean;
+  diarizationSpeakerIdBound: boolean;
+}): LiveMeetingSimultaneousInterpreterEvaluation {
+  return {
+    policyCode: "LIVE-MEETING-INTERPRETER-01",
+    prematureVerbMistranslationPrevented:
+      !input.sourceLanguageIsVerbFinalDeOrJa ||
+      input.semanticClauseWaitWindowMs >= 1200,
+    glossaryAndNumericFidelityPassed:
+      input.corporateGlossaryInjected && input.numericFiguresMatchSource100Pct,
+    actionItemCommitAuthorized: input.diarizationSpeakerIdBound,
+  };
+}
+
+
 
 
 

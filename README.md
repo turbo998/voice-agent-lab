@@ -205,6 +205,7 @@ flowchart LR
 131. **企业智能语音外呼营销、留资 15 秒极速回访（AI SDR）与全球外呼合规（TCPA/工信部防骚扰、`<180ms` AMD 信箱识别与 `0ms` 退订锁）方案**：[中文](./docs/enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.md) | [EN](./docs/enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.en.md)
 132. **汽车主机厂（OEM）与 4S 经销商集团售后维保预约、VIN 召回联动与道路救援语音客服（DMS 工位/配件/代步车四维原子锁与高速抛锚 `0ms` 抢占）方案**：[中文](./docs/automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.md) | [EN](./docs/automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.en.md)
 133. **企业内部 IT 服务台（IT Helpdesk）智能语音 Copilot（ServiceNow P1 全局故障 `0 秒` 广播拦截、Entra ID 防钓鱼数字匹配解锁与 Intune 终端自愈）方案**：[中文](./docs/enterprise-it-helpdesk-servicenow-password-reset-voice-copilot-selection-faq.md) | [EN](./docs/enterprise-it-helpdesk-servicenow-password-reset-voice-copilot-selection-faq.en.md)
+134. **跨国企业实时多语种会议同传、个人原声保留（Personal Voice）与结构化纪要（日/德语 SOV 防翻反窗口、万/亿数字量级锁与待办自动派单）方案**：[中文](./docs/multinational-live-meeting-simultaneous-interpretation-action-items-selection-faq.md) | [EN](./docs/multinational-live-meeting-simultaneous-interpretation-action-items-selection-faq.en.md)
 
 ---
 

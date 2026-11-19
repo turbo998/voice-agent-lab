@@ -205,6 +205,7 @@ flowchart LR
 131. **Enterprise Outbound Voice Sales, AI SDR Lead Qualification & Global Compliance (TCPA / GDPR / MIIT): <180ms AMD, 0ms DNC Opt-Out Lock & Warm Closer Transfer**: [EN](./docs/enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.en.md) | [中文](./docs/enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.md)
 132. **Automotive OEM & Dealership Service Scheduling, VIN Recall Bundling & Roadside Assistance Voice AI: CDK / Tekion DMS Atomic Lock & 0ms Highway Safety**: [EN](./docs/automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.en.md) | [中文](./docs/automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.md)
 133. **Enterprise IT Helpdesk & Employee Service Desk Voice Copilot: ServiceNow P1 Storm Deflection, Entra ID Anti-Vishing SSPR & Intune Endpoint Self-Healing**: [EN](./docs/enterprise-it-helpdesk-servicenow-password-reset-voice-copilot-selection-faq.en.md) | [中文](./docs/enterprise-it-helpdesk-servicenow-password-reset-voice-copilot-selection-faq.md)
+134. **Multinational Live Meeting Simultaneous Interpretation, Personal Voice Retention & Action-Item Copilot: SOV Clause Buffering & Numeric Lock**: [EN](./docs/multinational-live-meeting-simultaneous-interpretation-action-items-selection-faq.en.md) | [中文](./docs/multinational-live-meeting-simultaneous-interpretation-action-items-selection-faq.md)
 
 ---
 

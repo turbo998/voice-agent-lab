@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgMeet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="sovGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="pvGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="actGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgMeet)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Multinational Live Simultaneous Interpretation &amp; Meeting Copilot: Azure Live Interpreter vs. S2S</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">跨国会议实时同传与纪要架构：日语/德语谓语后置 (SOV) 防翻反窗口、Personal Voice 原声保留、企业黑话词表锁与待办提取</text>
+  <rect x="850" y="42" width="302" height="34" rx="17" fill="#1E1B4B" stroke="#A78BFA" stroke-width="1.2"/>
+  <text x="1001" y="64" fill="#C4B5FD" font-size="13" font-weight="600" text-anchor="middle">LIVE-MEETING-INTERPRETER-01</text>
+
+  <!-- Pillar 1: SOV-to-SVO Ear-Voice Span & Anti-Flip Window -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#sovGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 日/德语谓语后置 (SOV) 防翻反等待窗</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 同传致命灾难：把“绝不批准”提前猜成了“批准”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 日语/德语/韩语动词与否定词在句尾（如“この予算は...承認しません”）</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若追求 300ms 盲目抢译，AI 先播报了“我批准该预算”，句尾才发现是否定！</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="174" fill="#7DD3FC" font-size="13" font-weight="700">✅ 动态意群耳语距 (Dynamic Ear-Voice Span 1.2s-1.8s)</text>
+    <text x="30" y="194" fill="#E2E8F0" font-size="12">• 中英互译 (SVO-&gt;SVO)：采用 800ms 短意群流式切分，极速跟读</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 日/德/韩译中英 (SOV-&gt;SVO)：强制等待谓语动词落定 (1.2s-1.8s) 再开播</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">原声压低混音 (Audio Ducking -18dB)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 发言人开口时保留 -18dB 原声背景，1.2 秒后叠加同传音轨</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 既让听众感知发言人情绪重音，又保证同传清晰度 100%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">肯定/否定极性翻反率 0% · 意群延迟 1.4s</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底解决日企/德企跨国高管会议“抢译导致意思完全相反”顽疾</text>
+  </g>
+
+  <!-- Pillar 2: Azure Live Interpreter Personal Voice & Corporate Glossary -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pvGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. Personal Voice 原声保留与黑话词表锁</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#2E1065" stroke="#8B5CF6"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">Azure Speech Live Interpreter：用发言人自己的声音说外语</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 5人讨论时若全部用同一个机械女声同传，听众根本分不清是谁在说话！</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• Live Interpreter 零样本提取当前发言人音色，用王总自己的声音流利说英文/日文</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">企业项目代号与财务数字 100% 防乱译锁</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 痛点：把公司内部代号“鸿鹄项目”硬翻成“Swan Project”导致外方听不懂</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 挂载双语强制对照表 (Glossary) + 中英“万/亿 vs Million/Billion”换算校验器</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">一发多收多语种独立订阅轨 (Multi-Track WebRTC Pub/Sub)</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 1次源语音转写并发生成 EN / JA / DE / FR 四路译文音轨</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 各国参会者按需订阅母语声道，互不干扰</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">千万元级财务量级换算准确率 100%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">彻底消灭“1.2亿翻成 12 Million (差10倍)”的跨国财报同传事故</text>
+  </g>
+
+  <!-- Pillar 3: Speaker-Attributed Action Items & Jira/Planner Sync -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#actGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 说话人绑定会议纪要与待办自动派单</text>
+
+    <rect x="18" y="60" width="320" height="78" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：大型会议室 8 个人共用 1 个全向麦，纪要不知道谁说了啥</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 线上参会者有独立 RTP 声道，但线下会议室 8 人混在同一个房间麦克风里</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 必须结合 Teams Intelligent Speaker 阵列声纹注册实现线下参会人精准点名</text>
+
+    <rect x="18" y="152" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="174" fill="#F8FAFC" font-size="13" font-weight="700">跨语种统一决策纪要 (Bilingual Executive Minutes)</text>
+    <text x="30" y="194" fill="#94A3B8" font-size="12">• 无论会上说的是中文、日语还是德语，会后 10 秒自动输出中英双语对照纪要</text>
+    <text x="30" y="214" fill="#38BDF8" font-size="12">• 严格区分【已达成决议 (Decisions)】、【争议未决项】与【待办任务 (Actions)】</text>
+
+    <rect x="18" y="248" width="320" height="72" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="270" fill="#F8FAFC" font-size="13" font-weight="700">Jira / Planner / 飞书任务一键确认派发</text>
+    <text x="30" y="290" fill="#94A3B8" font-size="12">• 每条待办强制绑定：{负责人 Owner, 交付物 Deliverable, 截止日期 DueDate}</text>
+    <text x="30" y="308" fill="#34D399" font-size="12">• 会议主持人点击确认后直接写入 Jira / Microsoft Planner 跟进闭环</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">人工同传费用省 96% · 会后 10秒出双语纪要</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">从每场 ¥8,000 人工同传降至每小时 $3.60 云服务随时随地开跨国会</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#A78BFA" font-size="14" font-weight="700">跨国会议实时同传架构师三大铁律 (LIVE-MEETING-INTERPRETER-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 语序自适应缓冲：中英 SVO 互译用 800ms 快窗口；日语/德语/韩语等谓语后置 (SOV) 语种强制等待 1.2s-1.8s 谓语落定，严防肯定/否定翻反；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 选用 Azure Live Interpreter Personal Voice 保留不同发言人各自音色辨识度，并强制挂载“企业专有黑话词表 + 万/亿与 Million/Billion 数字校验锁”。</text>
+</svg>
