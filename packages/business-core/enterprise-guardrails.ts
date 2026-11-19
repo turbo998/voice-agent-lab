@@ -3008,6 +3008,37 @@ export function evaluateAutomotiveDealershipDmsServiceGuard(input: {
   };
 }
 
+export interface ItHelpdeskServiceNowVoiceEvaluation {
+  policyCode: "IT-HELPDESK-SERVICENOW-01";
+  deflectedByMasterIncidentBannerAndLinked: boolean;
+  ssprAccountUnlockAuthorized: boolean;
+  automatedSelfHealingExecuted: boolean;
+}
+
+/**
+ * Deterministic Enterprise IT Helpdesk P1 Storm Shield, Anti-Vishing SSPR & Intune Self-Heal Guard (`IT-HELPDESK-SERVICENOW-01`).
+ */
+export function evaluateItHelpdeskServiceNowVoiceGuard(input: {
+  activeP1MajorIncidentOnCallerSystem: boolean;
+  ssprOrAccountUnlockRequested: boolean;
+  authenticatorNumberMatchOrManagerVideoVerified: boolean;
+  isStandardVpnOrLicenseProvisioningRequest: boolean;
+  intuneEndpointHealthCheckPassed: boolean;
+}): ItHelpdeskServiceNowVoiceEvaluation {
+  return {
+    policyCode: "IT-HELPDESK-SERVICENOW-01",
+    deflectedByMasterIncidentBannerAndLinked:
+      input.activeP1MajorIncidentOnCallerSystem,
+    ssprAccountUnlockAuthorized:
+      !input.ssprOrAccountUnlockRequested ||
+      input.authenticatorNumberMatchOrManagerVideoVerified,
+    automatedSelfHealingExecuted:
+      input.isStandardVpnOrLicenseProvisioningRequest &&
+      input.intuneEndpointHealthCheckPassed,
+  };
+}
+
+
 
 
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (132 Bilingual Guides)
+## 3. Solution Architect Selection Guides (133 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -173,3 +173,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 130. **Enterprise Voice RAG Low-Latency & Phonetic Optimization: <120ms Speculative Prefetch, Homophone Phonetic Indexing & Spoken Answer Cards**: [EN](./enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.en.md) | [中文](./enterprise-voice-rag-low-latency-phonetic-hybrid-search-selection-faq.md)
 131. **Enterprise Outbound Voice Sales, AI SDR Lead Qualification & Global Compliance (TCPA / GDPR / MIIT): <180ms AMD, 0ms DNC Opt-Out Lock & Warm Closer Transfer**: [EN](./enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.en.md) | [中文](./enterprise-outbound-voice-sales-sdr-amd-tcpa-compliance-selection-faq.md)
 132. **Automotive OEM & Dealership Service Scheduling, VIN Recall Bundling & Roadside Assistance Voice AI: CDK / Tekion DMS Atomic Lock & 0ms Highway Safety**: [EN](./automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.en.md) | [中文](./automotive-dealership-service-scheduling-vin-recall-roadside-voice-selection-faq.md)
+133. **Enterprise IT Helpdesk & Employee Service Desk Voice Copilot: ServiceNow P1 Storm Deflection, Entra ID Anti-Vishing SSPR & Intune Endpoint Self-Healing**: [EN](./enterprise-it-helpdesk-servicenow-password-reset-voice-copilot-selection-faq.en.md) | [中文](./enterprise-it-helpdesk-servicenow-password-reset-voice-copilot-selection-faq.md)
