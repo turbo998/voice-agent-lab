@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (116 Bilingual Guides)
+## 3. Solution Architect Selection Guides (117 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -157,3 +157,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 114. **Offshore Wind Turbine (120m Nacelle Rotor-Lock), UHVDC Substation & Grid Dispatch Voice AI: Hub Entry Lock, Dual-Title Readback & Black-Start**: [EN](./offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.en.md) | [中文](./offshore-wind-uhv-substation-grid-dispatch-blackstart-voice-selection-faq.md)
 115. **Global Mobility, EOR & Visa/Tax Compliance Voice AI: Tourist-Work Ban, H-1B LCA Relocation Lock & Permanent Establishment (PE) Tax Guard**: [EN](./global-mobility-eor-visa-compliance-permanent-establishment-voice-selection-faq.en.md) | [中文](./global-mobility-eor-visa-compliance-permanent-establishment-voice-selection-faq.md)
 116. **Enterprise Voice AI Benchmark Harness & Selection Methodology: Beyond Static WER to Full-Duplex Latency, Entity Slot Precision & Long-Call FinOps**: [EN](./enterprise-voice-benchmark-harness-duplex-wer-tool-eval-selection-faq.en.md) | [中文](./enterprise-voice-benchmark-harness-duplex-wer-tool-eval-selection-faq.md)
+117. **Aerospace Launch Range, LEO Satellite TT&C & Ground Station Voice AI: <80ms Countdown Hold Preemption, Critical Telecommand Lock & HPA RF Safety**: [EN](./aerospace-launch-range-satellite-ttc-ground-station-voice-selection-faq.en.md) | [中文](./aerospace-launch-range-satellite-ttc-ground-station-voice-selection-faq.md)

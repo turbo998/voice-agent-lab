@@ -2532,6 +2532,34 @@ export function evaluateVoiceBenchmarkHarnessSelectionGate(input: {
   };
 }
 
+export interface AerospaceSatelliteVoiceEvaluation {
+  policyCode: "AEROSPACE-SATELLITE-VOICE-01";
+  launchCommitAuthorized: boolean;
+  countdownHoldPreempted0ms: boolean;
+  hpaRfTransmitAndCriticalTcAuthorized: boolean;
+}
+
+/**
+ * Deterministic Aerospace Launch Range, LEO Satellite TT&C & Ground Station Voice Guard (`AEROSPACE-SATELLITE-VOICE-01`).
+ */
+export function evaluateAerospaceSatelliteVoiceGuard(input: {
+  allSubsystemsPolledGo: boolean;
+  anyLoopCalledHoldOrAbort: boolean;
+  criticalTelecommandDualVoiceprintAndCrcVerified: boolean;
+  radomePersonnelClearAndElevationSafe: boolean;
+}): AerospaceSatelliteVoiceEvaluation {
+  const holdTriggered =
+    input.anyLoopCalledHoldOrAbort || !input.allSubsystemsPolledGo;
+  return {
+    policyCode: "AEROSPACE-SATELLITE-VOICE-01",
+    launchCommitAuthorized: !holdTriggered,
+    countdownHoldPreempted0ms: holdTriggered,
+    hpaRfTransmitAndCriticalTcAuthorized:
+      input.criticalTelecommandDualVoiceprintAndCrcVerified &&
+      input.radomePersonnelClearAndElevationSafe,
+  };
+}
+
 
 
 
