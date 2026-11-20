@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgJet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="apisGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="fboGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="legGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgJet)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Private Aviation Charter (Part 135 / NetJets) &amp; FBO 24x7 Voice Concierge Architecture</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">公务机包机、FBO 贵宾航站楼与豪华游艇 24×7 语音礼宾架构：APIS 乘客名单硬锁、停机坪车牌核验与机尾号隐私盾</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">PRIVATE-AVIATION-CHARTER-FBO-01</text>
+
+  <!-- Pillar 1: FAA Part 135 / CBP eAPIS Manifest & No-Fly Vetting Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#apisGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 临时加随行乘客 APIS 海关名单与配载硬锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 扣机重罚：起飞前 1小时老板电话说“我临时多带 2个合伙人和 1只狗上飞机”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 公务机包机 (FAA Part 135 / EASA / 民航局) 严禁未录入主乘客名单 (Manifest) 登机</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 跨境飞行在起飞前 60m 修改名单必须重报海关 eAPIS，且多带人可能超出最大起飞重量 (MTOW)！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">护照 OCR 秒传 + TSA/CBP eAPIS 重报 + 签派配载核验</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 严禁 AI 口头直接答应“没问题直接带他们来机场就行”！</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 强制下发加密链接收集新增乘客护照/身份证 + 体重行李，待签派重算重心与海关获批后解锁登机</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">严禁向外部泄露机尾号 (Tail Number) 与起降时刻</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 针对上市公司 CEO 并购谈判与名流出行，严格遵循 FAA LADD / PIA 隐私保护协议</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 未通过主包机人加密口令核身前，0ms 拒绝向任何记者、司机或助理透露机尾号 (如 N889QS)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">海关 eAPIS 违规与黑名单漏检率：0.00%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">携带宠物跨境自动核查目的国狂犬病血清抗体效价与检疫入境许可</text>
+  </g>
+
+  <!-- Pillar 2: FBO Ramp-Side Tarmac Vehicle Access & VIP Catering -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#fboGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. FBO 停机坪礼宾车直达机舱门 (Ramp Access) 协同</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">🛩️ 痛点：专车司机到了机场 FBO 保安亭被拦在门外，贵宾在后座干等 20分钟！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 公务机最大特权是“迈巴赫直接开进机坪停在湾流 G650 舷梯旁 (Plane-Side Ramp Access)”</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 若未提前向机场空防安保报备车牌号、司机驾照与保险，车辆绝不允许驶入停机坪控制区！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">起飞前 3 小时自动外呼专车司机锁定【车牌 + 驾照 + ETA】</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• AI 礼宾自动联系地面迈巴赫车队，收集车牌与司机证件直送 Signature / 首都公务机 FBO</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• 当专车距 FBO 3 公里时，自动通知机长启动 APU 预冷客舱并降下舷梯无缝迎宾！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">万米高空客舱餐饮尺寸与微波/烤箱限制核验</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 轻型公务机 (如 Phenom 300) 无高温烤箱且餐盘尺寸受限；大机舱 (Global 7500) 配全套厨房</text>
+    <text x="30" y="310" fill="#38BDF8" font-size="12">• 点餐时自动按执飞具体机型厨房设备 (Galley Spec) 与高空味觉钝化调整米其林配餐</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">抵达 FBO 至关舱滑行耗时：22m ➔ 6m</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">实现真正“车门到舱门 90秒零等待”顶奢出行体验</text>
+  </g>
+
+  <!-- Pillar 3: Empty-Leg Dynamic Matching & Weather/Slot Diversion -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#legGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 调机空腿 (Empty Leg) 秒配与流控备降改航</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：35% 公务机回程都在空飞烧油 (每小时白烧 $6,500)，人工销售来不及撮合！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 当一架湾流送客去三亚后需空机调回上海，窗口期往往只有 18 小时</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 实时检索常飞三亚-上海航线的黑卡会员心愿单，语音尊享邀约 4 折包下调机航班</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">空腿调机免退改特殊条款强制口头确认</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 空腿航班受前序正班主包机人行程支配（若前序取消，空腿可能随时调整）</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 锁单前强制向客户透明披露空腿从属风险条款并录音留存</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">突发雷雨/军事流控 30秒切换邻近公务机机场</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 如上海虹桥时刻受限，秒算改飞无锡硕放/杭州萧山 FBO + 迈巴赫地面接驳总耗时</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 同步平移海关申报、地面豪车与酒店礼宾车队</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">空腿调机变现率提升 +44% · 时刻响应 15s</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 Schedaero / Leon / FL3XX 公务机运控核心系统</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">公务机包机、FBO 与超级游艇 24×7 语音礼宾三大铁律 (PRIVATE-AVIATION-CHARTER-FBO-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 名单与配载硬互锁：起飞前临时增加随行乘客或宠物，未完成护照 eAPIS 海关重报与签派重量重心核准前 100% 禁止口头放行登机；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 机尾号保密与机坪安防：严禁向未获主包机人加密授权的第三方透露机尾号与航迹；礼宾车进机坪必须提前核验车牌与司机证件。</text>
+</svg>

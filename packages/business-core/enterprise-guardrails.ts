@@ -3877,6 +3877,32 @@ export function evaluateHeavyEquipmentRentalBreakdownVoiceGuard(input: {
   };
 }
 
+export interface PrivateAviationCharterFboVoiceEvaluation {
+  policyCode: "PRIVATE-AVIATION-CHARTER-FBO-01";
+  tailNumberAndItineraryDisclosed: boolean;
+  additionalPassengerBoardingAuthorized: boolean;
+  fboTarmacRampGatePassIssued: boolean;
+}
+
+/**
+ * Deterministic Private Aviation Charter & FBO Tail-Number LADD Privacy Shield, CBP eAPIS/MTOW Manifest Lock & Ramp Gate Guard (`PRIVATE-AVIATION-CHARTER-FBO-01`).
+ */
+export function evaluatePrivateAviationCharterFboVoiceGuard(input: {
+  callerVerifiedWithPrincipalPasscode: boolean;
+  newPassengerApisAndMtowWeightBalanceCleared: boolean;
+  chauffeurPlateAndDriverIdPreClearedWithFbo: boolean;
+}): PrivateAviationCharterFboVoiceEvaluation {
+  return {
+    policyCode: "PRIVATE-AVIATION-CHARTER-FBO-01",
+    tailNumberAndItineraryDisclosed: input.callerVerifiedWithPrincipalPasscode,
+    additionalPassengerBoardingAuthorized:
+      input.callerVerifiedWithPrincipalPasscode &&
+      input.newPassengerApisAndMtowWeightBalanceCleared,
+    fboTarmacRampGatePassIssued:
+      input.chauffeurPlateAndDriverIdPreClearedWithFbo,
+  };
+}
+
 
 
 

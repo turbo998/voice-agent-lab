@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（163 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（164 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -204,3 +204,4 @@
 161. **家用医疗器械（动态血糖仪 CGM / 呼吸机 CPAP / 助听器）患者首月激活与依从性语音教练（前14天弃用压降 48%、危急血糖 `0ms` 临床抢占、禁改剂量锁与 FDA MDR 捕获）方案**：[中文](./medical-device-cgm-cpap-hearing-aid-patient-onboarding-adherence-voice-coach-selection-faq.md) | [EN](./medical-device-cgm-cpap-hearing-aid-patient-onboarding-adherence-voice-coach-selection-faq.en.md)
 162. **连锁美发沙龙、高端 SPA 水疗与普拉提工作室（Zenoti / Mindbody）24×7 语音预约管家（技师+房间双资源联锁、染烫 45m 空档穿插排班、48h 过敏皮试锁与防爽约定金）方案**：[中文](./beauty-hair-salon-spa-fitness-studio-membership-booking-noshow-voice-concierge-selection-faq.md) | [EN](./beauty-hair-salon-spa-fitness-studio-membership-booking-noshow-voice-concierge-selection-faq.en.md)
 163. **工程机械租赁、高空作业车与叉车机队（United Rentals / Sunbelt / 宏信建发）24×7 语音报修与停租（Off-Rent）调度台（高空困人 0ms 降篮与液压禁拆锁、J1939 假故障 60秒自愈与停租远程锁车）方案**：[中文](./heavy-equipment-construction-rental-united-sunbelt-telematics-breakdown-voice-desk-selection-faq.md) | [EN](./heavy-equipment-construction-rental-united-sunbelt-telematics-breakdown-voice-desk-selection-faq.en.md)
+164. **公务机包机（Private Jet / NetJets / VistaJet）、FBO 贵宾航站楼与游艇 24×7 语音礼宾（临时加客海关 eAPIS 与 MTOW 配载硬锁、机尾号防追踪保密盾与机坪礼宾车牌照核验）方案**：[中文](./private-aviation-fbo-yacht-charter-uhnw-concierge-catering-manifest-voice-selection-faq.md) | [EN](./private-aviation-fbo-yacht-charter-uhnw-concierge-catering-manifest-voice-selection-faq.en.md)

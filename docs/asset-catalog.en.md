@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (163 Bilingual Guides)
+## 3. Solution Architect Selection Guides (164 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -204,3 +204,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 161. **Home Medical Device (CGM, CPAP & Hearing Aids) Patient Onboarding & Adherence Voice Coach: 0ms Hypoglycemia Escalation, Zero Dose-Titration Lock & FDA MDR Capture**: [EN](./medical-device-cgm-cpap-hearing-aid-patient-onboarding-adherence-voice-coach-selection-faq.en.md) | [中文](./medical-device-cgm-cpap-hearing-aid-patient-onboarding-adherence-voice-coach-selection-faq.md)
 162. **Multi-Location Hair Salon, Luxury Med-Spa & Boutique Fitness Studio (Zenoti / Mindbody) 24×7 Voice Concierge: Dual-Resource Lock, Split-Gap Scheduling & 48h Patch-Test Gate**: [EN](./beauty-hair-salon-spa-fitness-studio-membership-booking-noshow-voice-concierge-selection-faq.en.md) | [中文](./beauty-hair-salon-spa-fitness-studio-membership-booking-noshow-voice-concierge-selection-faq.md)
 163. **Heavy Equipment, Aerial Lift & Construction Rental (United Rentals / Sunbelt / Wynne) 24×7 Voice Dispatch: 300-Bar Hydraulic Lock, J1939 60s Self-Heal & Off-Rent Immobilizer**: [EN](./heavy-equipment-construction-rental-united-sunbelt-telematics-breakdown-voice-desk-selection-faq.en.md) | [中文](./heavy-equipment-construction-rental-united-sunbelt-telematics-breakdown-voice-desk-selection-faq.md)
+164. **Private Aviation Charter (Part 135 / NetJets / VistaJet), FBO & Superyacht 24×7 Voice Concierge: eAPIS Manifest Lock, Tail-Number Privacy Shield & Tarmac Gate**: [EN](./private-aviation-fbo-yacht-charter-uhnw-concierge-catering-manifest-voice-selection-faq.en.md) | [中文](./private-aviation-fbo-yacht-charter-uhnw-concierge-catering-manifest-voice-selection-faq.md)
