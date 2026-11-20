@@ -4792,6 +4792,34 @@ export function evaluateBiopharmaCarTChainOfIdentityVoiceGuard(input: {
   };
 }
 
+export interface CorporateTreasuryFxWireVoiceEvaluation {
+  policyCode: "CORPORATE-TREASURY-FX-WIRE-01";
+  wireOrLiquiditySweepReleaseAuthorized: boolean;
+  fxHedgeExecutionAuthorized: boolean;
+  becFraudLockoutAndAuditAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Corporate Treasury Pre-Approved SSI + Four-Eyes HSM Lock, ERP-Backed FX Fat-Finger Gate & Anti-BEC Fraud Guard (`CORPORATE-TREASURY-FX-WIRE-01`).
+ */
+export function evaluateCorporateTreasuryFxWireVoiceGuard(input: {
+  preApprovedSsiAndFourEyesHardwareTokenVerified: boolean;
+  fxNotionalWithinLimitAndBackedByErpExposure: boolean;
+  callerRequestsSecretMnaBypassOrAdHocIban: boolean;
+}): CorporateTreasuryFxWireVoiceEvaluation {
+  return {
+    policyCode: "CORPORATE-TREASURY-FX-WIRE-01",
+    wireOrLiquiditySweepReleaseAuthorized:
+      input.preApprovedSsiAndFourEyesHardwareTokenVerified &&
+      !input.callerRequestsSecretMnaBypassOrAdHocIban,
+    fxHedgeExecutionAuthorized:
+      input.fxNotionalWithinLimitAndBackedByErpExposure &&
+      !input.callerRequestsSecretMnaBypassOrAdHocIban,
+    becFraudLockoutAndAuditAlertTriggered:
+      input.callerRequestsSecretMnaBypassOrAdHocIban,
+  };
+}
+
 
 
 
