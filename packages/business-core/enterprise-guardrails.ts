@@ -3551,6 +3551,34 @@ export function evaluateVoiceAgentSecurityPrivilegeFirewallGuard(input: {
   };
 }
 
+export interface CommercialFleetTruckingDispatchVoiceEvaluation {
+  policyCode: "COMMERCIAL-FLEET-DISPATCH-ELD-01";
+  newLoadDispatchAuthorized: boolean;
+  hosFatigueSafetyLockTriggered: boolean;
+  fuelCardUnlockAuthorized: boolean;
+}
+
+/**
+ * Deterministic Commercial Fleet & Trucking ELD Hours-of-Service (HOS) Fatigue Interlock & <=300m GPS Fuel-Card Anti-Skimming Guard (`COMMERCIAL-FLEET-DISPATCH-ELD-01`).
+ */
+export function evaluateCommercialFleetTruckingDispatchVoiceGuard(input: {
+  remainingLegalHosDriveMin: number;
+  estimatedRouteDriveMin: number;
+  truckGpsDistanceToFuelStationMeters: number;
+  fuelTankLevelPercent: number;
+}): CommercialFleetTruckingDispatchVoiceEvaluation {
+  const insufficientHos =
+    input.remainingLegalHosDriveMin < input.estimatedRouteDriveMin + 30;
+  return {
+    policyCode: "COMMERCIAL-FLEET-DISPATCH-ELD-01",
+    newLoadDispatchAuthorized: !insufficientHos,
+    hosFatigueSafetyLockTriggered: insufficientHos,
+    fuelCardUnlockAuthorized:
+      input.truckGpsDistanceToFuelStationMeters <= 300 &&
+      input.fuelTankLevelPercent < 60,
+  };
+}
+
 
 
 

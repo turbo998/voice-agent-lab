@@ -223,6 +223,7 @@ flowchart LR
 149. **大型企业全球 HR 员工共享中心（HRSSC）、年度商业医保选计划（Open Enrollment）与入职发薪语音 Copilot（工资条 Diff 15秒释疑、家庭医保精算零病史留存与敏感举报 0ms 隔离）方案**：[中文](./docs/enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.md) | [EN](./docs/enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.en.md)
 150. **消费电子、PC 电脑与智能家居（IoT）全球 25 语种售后技术支持语音智能体（看图查接线压降 54% 假故障返修 NFF、锂电池鼓包 `0ms` 禁寄普通快递锁与防骗保 RMA）方案**：[中文](./docs/consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.md) | [EN](./docs/consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.en.md)
 151. **企业实时语音智能体安全防御与权限治理架构（OWASP Agentic：防声学/备注间接提示词注入、单通 `<=$50` 退款确定性防火墙与防 +882 国际高价号盗打）方案**：[中文](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.md) | [EN](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.en.md)
+152. **干线物流车队、冷链重卡与同城货运智能语音调度官（ELD/北斗疲劳驾驶工时硬互锁、油卡 GPS `<=300m` 防盗刷解封与收货月台压车追偿）方案**：[中文](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.md) | [EN](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.en.md)
 
 ---
 

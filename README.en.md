@@ -223,6 +223,7 @@ flowchart LR
 149. **Enterprise HR Shared Services (HRSSC), Benefits Open Enrollment & Payroll Voice Copilot: Payslip Delta Engine, Household TCO Calculator & 0ms Confidential ER Shield**: [EN](./docs/enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.en.md) | [中文](./docs/enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.md)
 150. **Consumer Electronics, PC & Smart Home (IoT) Technical Support Voice AI: Multimodal Cable/LED Triage Cutting NFF Returns by 54% & 0ms Swollen Battery Lock**: [EN](./docs/consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.en.md) | [中文](./docs/consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.md)
 151. **Enterprise Voice Agent Security, Prompt-Injection Defense & Tool Privilege Governance (OWASP Agentic Top 10): Acoustic Jailbreak Shield, <=$50 Refund Cap & Toll-Fraud Lock**: [EN](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.md)
+152. **Commercial Trucking Fleet, Cold-Chain Logistics & Freight Dispatch Voice AI: ELD Hours-of-Service Interlocks, <=300m GPS Fuel-Card Unlock & Dock Detention**: [EN](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.en.md) | [中文](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.md)
 
 ---
 
