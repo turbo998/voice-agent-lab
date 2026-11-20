@@ -4100,6 +4100,35 @@ export function evaluateStaffingRpoEeocRecruitingVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseProcurementAribaExpeditingVoiceEvaluation {
+  policyCode: "PROCUREMENT-ARIBA-EXPEDITING-01";
+  spotPurchaseOrderIssuanceAuthorized: boolean;
+  kickbackOrCompetitorPriceLeakBlocked: boolean;
+  phoneBankAccountChangeBlocked: boolean;
+}
+
+/**
+ * Deterministic Enterprise Procurement AVL/OFAC Gate, DOA Limit Lock, FCPA Anti-Kickback & Zero-Voice Bank Change Guard (`PROCUREMENT-ARIBA-EXPEDITING-01`).
+ */
+export function evaluateEnterpriseProcurementAribaExpeditingVoiceGuard(input: {
+  vendorClearedOnAvlAndSanctionsList: boolean;
+  totalOrderAmountUsd: number;
+  approvedDelegationOfAuthorityLimitUsd: number;
+  vendorOffersKickbackOrAsksCompetitorBid: boolean;
+  requestsPhoneBankAccountOrIbanChange: boolean;
+}): EnterpriseProcurementAribaExpeditingVoiceEvaluation {
+  return {
+    policyCode: "PROCUREMENT-ARIBA-EXPEDITING-01",
+    spotPurchaseOrderIssuanceAuthorized:
+      input.vendorClearedOnAvlAndSanctionsList &&
+      input.totalOrderAmountUsd <= input.approvedDelegationOfAuthorityLimitUsd &&
+      !input.vendorOffersKickbackOrAsksCompetitorBid,
+    kickbackOrCompetitorPriceLeakBlocked:
+      input.vendorOffersKickbackOrAsksCompetitorBid,
+    phoneBankAccountChangeBlocked: input.requestsPhoneBankAccountOrIbanChange,
+  };
+}
+
 
 
 

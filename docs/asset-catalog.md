@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（171 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（172 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -212,3 +212,4 @@
 169. **律所客户接案（Legal Intake / Clio / Lawmatics）、人身伤害与劳动仲裁 24×7 语音初筛（利益冲突 ABA Rule 1.18 0ms 前置阻断、UPL 零法律意见/禁止承诺胜诉围栏与诉讼时效紧急预审）方案**：[中文](./legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.md) | [EN](./legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.en.md)
 170. **会计师事务所、财税代账与报税季（CPA Firm / CCH Axcess / Intuit ProConnect / 金蝶代账）24×7 语音顾问（IRS 7216 纳税申报保密硬锁、延期申报不免滞纳金复诵与缺件催收）方案**：[中文](./accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.md) | [EN](./accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.en.md)
 171. **人力资源外包（RPO / 猎头 / 灵活用工 Randstad / Manpower / Bullhorn）24×7 语音初筛与排班调度（EEOC 薪资历史与婚育禁问硬锁、执业证照与 40小时加班费防穿仓锁及凌晨爽约 90秒替补）方案**：[中文](./talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.md) | [EN](./talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.en.md)
+172. **企业采购寻源、MRO 工业备件急采与供应商催交（SAP Ariba / Coupa / 震坤行 / 京东工业）24×7 语音工作台（AVL/OFAC 合格供应商硬锁、FCPA 反商业贿赂与密封标底防泄密及电话改收款账户 0ms 熔断）方案**：[中文](./enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.md) | [EN](./enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.en.md)
