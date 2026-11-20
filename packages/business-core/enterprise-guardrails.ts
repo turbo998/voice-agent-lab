@@ -3522,6 +3522,35 @@ export function evaluateConsumerElectronicsDiagnosticRmaVoiceGuard(input: {
   };
 }
 
+export interface VoiceAgentSecurityPrivilegeFirewallEvaluation {
+  policyCode: "VOICE-SECURITY-GUARDRAIL-FIREWALL-01";
+  autonomousWriteActionAuthorized: boolean;
+  promptInjectionOrOverCapBlocked: boolean;
+  irsfTollFraudCallbackBlocked: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice Agent Security Firewall: Prompt-Injection Block, <=$50 Single-Write Ceiling & IRSF Toll-Fraud Guard (`VOICE-SECURITY-GUARDRAIL-FIREWALL-01`).
+ */
+export function evaluateVoiceAgentSecurityPrivilegeFirewallGuard(input: {
+  audioOrIndirectPromptInjectionDetected: boolean;
+  requestedRefundAmountUsd: number;
+  priorWriteToolCallsInSession: number;
+  targetsInternationalPremiumIrsfPrefix: boolean;
+}): VoiceAgentSecurityPrivilegeFirewallEvaluation {
+  const overCapOrInjection =
+    input.audioOrIndirectPromptInjectionDetected ||
+    input.requestedRefundAmountUsd > 50 ||
+    input.priorWriteToolCallsInSession >= 1;
+  return {
+    policyCode: "VOICE-SECURITY-GUARDRAIL-FIREWALL-01",
+    autonomousWriteActionAuthorized:
+      !overCapOrInjection && !input.targetsInternationalPremiumIrsfPrefix,
+    promptInjectionOrOverCapBlocked: overCapOrInjection,
+    irsfTollFraudCallbackBlocked: input.targetsInternationalPremiumIrsfPrefix,
+  };
+}
+
 
 
 

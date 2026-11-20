@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (150 Bilingual Guides)
+## 3. Solution Architect Selection Guides (151 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -191,3 +191,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 148. **AI Smart Glasses, AR Headsets & Wearable Multimodal Voice Assistants: Deictic <50KB POV Keyframe Gating, Privacy LED Lock & <45dB Whisper Mode**: [EN](./smart-glasses-ar-headset-wearable-multimodal-voice-assistant-selection-faq.en.md) | [中文](./smart-glasses-ar-headset-wearable-multimodal-voice-assistant-selection-faq.md)
 149. **Enterprise HR Shared Services (HRSSC), Benefits Open Enrollment & Payroll Voice Copilot: Payslip Delta Engine, Household TCO Calculator & 0ms Confidential ER Shield**: [EN](./enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.en.md) | [中文](./enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.md)
 150. **Consumer Electronics, PC & Smart Home (IoT) Technical Support Voice AI: Multimodal Cable/LED Triage Cutting NFF Returns by 54% & 0ms Swollen Battery Lock**: [EN](./consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.en.md) | [中文](./consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.md)
+151. **Enterprise Voice Agent Security, Prompt-Injection Defense & Tool Privilege Governance (OWASP Agentic Top 10): Acoustic Jailbreak Shield, <=$50 Refund Cap & Toll-Fraud Lock**: [EN](./enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.en.md) | [中文](./enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.md)
