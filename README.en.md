@@ -218,6 +218,7 @@ flowchart LR
 144. **Contact Center AI-to-Human Warm Transfer & Context Handoff Architecture: 4-Slot Screen-Pop Cards, 6-Second Agent Whisper & >180s Virtual Hold Callback**: [EN](./docs/contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.en.md) | [中文](./docs/contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.md)
 145. **Wealth Management, Brokerage & Mutual Fund Voice Robo-Advisor: 80ms Portfolio Attribution, C1–C5 Suitability Interlock & Zero Promissory Return Guardrail**: [EN](./docs/wealth-management-robo-advisor-portfolio-rebalance-sec-mifid-suitability-voice-selection-faq.en.md) | [中文](./docs/wealth-management-robo-advisor-portfolio-rebalance-sec-mifid-suitability-voice-selection-faq.md)
 146. **Enterprise Corporate Travel (TMC / SAP Concur / Navan) & Expense Voice Copilot: Airport Instant Rebooking, Policy Cap Interlocks & Multimodal Folio Split**: [EN](./docs/corporate-travel-tmc-concur-expense-audit-policy-exception-voice-copilot-selection-faq.en.md) | [中文](./docs/corporate-travel-tmc-concur-expense-audit-policy-exception-voice-copilot-selection-faq.md)
+147. **24×7 Interactive Livestream E-Commerce & Digital Human Shopping Anchor (Voice + Avatar): <600ms Bullet-Chat Preemption, 0ms Ad-Law Filter & Sold-Out SKU Lock**: [EN](./docs/ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.en.md) | [中文](./docs/ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.md)
 
 ---
 

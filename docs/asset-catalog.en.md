@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (146 Bilingual Guides)
+## 3. Solution Architect Selection Guides (147 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -187,3 +187,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 144. **Contact Center AI-to-Human Warm Transfer & Context Handoff Architecture: 4-Slot Screen-Pop Cards, 6-Second Agent Whisper & >180s Virtual Hold Callback**: [EN](./contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.en.md) | [中文](./contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.md)
 145. **Wealth Management, Brokerage & Mutual Fund Voice Robo-Advisor: 80ms Portfolio Attribution, C1–C5 Suitability Interlock & Zero Promissory Return Guardrail**: [EN](./wealth-management-robo-advisor-portfolio-rebalance-sec-mifid-suitability-voice-selection-faq.en.md) | [中文](./wealth-management-robo-advisor-portfolio-rebalance-sec-mifid-suitability-voice-selection-faq.md)
 146. **Enterprise Corporate Travel (TMC / SAP Concur / Navan) & Expense Voice Copilot: Airport Instant Rebooking, Policy Cap Interlocks & Multimodal Folio Split**: [EN](./corporate-travel-tmc-concur-expense-audit-policy-exception-voice-copilot-selection-faq.en.md) | [中文](./corporate-travel-tmc-concur-expense-audit-policy-exception-voice-copilot-selection-faq.md)
+147. **24×7 Interactive Livestream E-Commerce & Digital Human Shopping Anchor (Voice + Avatar): <600ms Bullet-Chat Preemption, 0ms Ad-Law Filter & Sold-Out SKU Lock**: [EN](./ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.en.md) | [中文](./ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.md)

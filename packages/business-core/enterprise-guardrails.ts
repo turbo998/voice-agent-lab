@@ -3415,6 +3415,33 @@ export function evaluateCorporateTravelTmcConcurExpenseVoiceGuard(input: {
   };
 }
 
+export interface EcommerceLivestreamAvatarAnchorEvaluation {
+  policyCode: "ECOMMERCE-LIVESTREAM-AVATAR-ANCHOR-01";
+  ttsBroadcastAuthorized: boolean;
+  adLawSuperlativeOrMedicalClaimBlocked: boolean;
+  soldOutSkuAutoSwitched0ms: boolean;
+}
+
+/**
+ * Deterministic 24x7 Interactive Livestream Voice + Avatar Anchor Ad-Law Filter, Bullet-Chat Preemption & Sold-Out SKU Switch Guard (`ECOMMERCE-LIVESTREAM-AVATAR-ANCHOR-01`).
+ */
+export function evaluateEcommerceLivestreamAvatarAnchorGuard(input: {
+  containsAdLawProhibitedSuperlativeOrMedicalCureClaim: boolean;
+  activeSkuRemainingStockCount: number;
+  highIntentBuyerBulletChatPending: boolean;
+}): EcommerceLivestreamAvatarAnchorEvaluation {
+  const soldOut = input.activeSkuRemainingStockCount <= 0;
+  return {
+    policyCode: "ECOMMERCE-LIVESTREAM-AVATAR-ANCHOR-01",
+    ttsBroadcastAuthorized:
+      !input.containsAdLawProhibitedSuperlativeOrMedicalCureClaim &&
+      (!soldOut || input.highIntentBuyerBulletChatPending),
+    adLawSuperlativeOrMedicalClaimBlocked:
+      input.containsAdLawProhibitedSuperlativeOrMedicalCureClaim,
+    soldOutSkuAutoSwitched0ms: soldOut,
+  };
+}
+
 
 
 
