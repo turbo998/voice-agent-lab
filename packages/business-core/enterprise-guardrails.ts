@@ -3791,6 +3791,33 @@ export function evaluateHotelInRoomVoiceConciergePmsPrivacyGuard(input: {
   };
 }
 
+export interface MedicalDevicePatientOnboardingAdherenceVoiceEvaluation {
+  policyCode: "MEDICAL-DEVICE-CGM-CPAP-COACH-01";
+  criticalClinicalNurseEscalation0ms: boolean;
+  insulinOrCpapDoseTitrationBlocked: boolean;
+  fdaMdrAdverseEventLotCaptureRequired: boolean;
+}
+
+/**
+ * Deterministic Home Medical Device (CGM/CPAP) 0ms Critical Glucose Escalation, Zero Dose-Titration & FDA MDR Lot Capture Guard (`MEDICAL-DEVICE-CGM-CPAP-COACH-01`).
+ */
+export function evaluateMedicalDevicePatientOnboardingAdherenceVoiceGuard(input: {
+  bloodGlucoseMgDl: number;
+  patientRequestsInsulinOrCpapPrescriptionDoseChange: boolean;
+  reportsBrokenFilamentOrSevereSkinBlistering: boolean;
+}): MedicalDevicePatientOnboardingAdherenceVoiceEvaluation {
+  const criticalGlucose =
+    input.bloodGlucoseMgDl < 54 || input.bloodGlucoseMgDl > 250;
+  return {
+    policyCode: "MEDICAL-DEVICE-CGM-CPAP-COACH-01",
+    criticalClinicalNurseEscalation0ms: criticalGlucose,
+    insulinOrCpapDoseTitrationBlocked:
+      input.patientRequestsInsulinOrCpapPrescriptionDoseChange,
+    fdaMdrAdverseEventLotCaptureRequired:
+      input.reportsBrokenFilamentOrSevereSkinBlistering,
+  };
+}
+
 
 
 

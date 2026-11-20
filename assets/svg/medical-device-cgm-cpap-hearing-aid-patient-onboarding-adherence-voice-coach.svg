@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgMed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="critGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="onbGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="mdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgMed)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Home Medical Device (CGM, CPAP, Hearing Aid) Patient Onboarding &amp; Adherence Voice Coach</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">家用医疗器械患者首月激活与依从性语音教练架构：危急血糖/窒息 0ms 抢占、严禁擅改处方剂量锁与首月弃用率压降 48%</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">MEDICAL-DEVICE-CGM-CPAP-COACH-01</text>
+
+  <!-- Pillar 1: Critical Hypoglycemia (<54 mg/dL) & Zero Dose-Titration Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#critGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 危急血糖 (&lt;54mg/dL) 0ms 抢占与禁改剂量锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 致命医疗越界：患者问“血糖仪显示 320，我该多打几个单位胰岛素？”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 家用器械客服机器人仅限于“设备使用指导 (Device Tech Support)”，非软件医疗器械 (SaMD)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若 AI 擅自建议增加胰岛素剂量或更改呼吸机处方正压值 (cmH2O)，将酿成低血糖昏迷惨剧！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">100% 物理锁死处方参数与药物剂量建议 (Zero-Titration)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 严禁 AI 输出任何胰岛素追加单位数或呼吸机压力调整建议！</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 当检测到血糖 `&lt;54 mg/dL (3.0 mmol/L)` 或 `&gt;250 mg/dL` 伴头晕呕吐，0ms 冻结设备排障！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">指尖血复核指引 + 24×7 糖尿病值班护士 0ms 热转接</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 播报官方急救原则：“若感觉手抖心慌，请立即用传统指尖血糖仪复核并补充 15克快糖”</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 同步将患者 CGM 实时曲线热转接至值班临床教育护士 (CDE Nurse Desk)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">非法越界处方调整建议：0 起 (100% FDA 合规)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">严格区分“设备配对与穿戴排障”与“临床医嘱调整”边界</text>
+  </g>
+
+  <!-- Pillar 2: First-90-Day CPAP / CGM Adherence & CMS Reimbursement Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#onbGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 首月手把手穿戴教练与医保 90天依从性达标</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">😷 痛点：35% 睡眠呼吸机 (CPAP) 患者前两周因面罩漏气/口干直接弃用退货！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 美国 CMS 医保规定：患者前 90 天必须有 &gt;=21 天每晚佩戴 &gt;=4 小时，否则拒付设备款！</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 老年糖尿病患者第一次往手臂扎 CGM 动态血糖探头时极度紧张，常因撕胶布把探头拔歪</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">开箱首夜陪伴 + 第 3/7/14 天遥测主动语音回访</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 监测到昨晚 CPAP 面罩漏气量 `&gt;24 L/min` 或佩戴不足 2 小时，次日温和外呼：</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• “张大爷，看您昨晚面罩有点漏风且鼻子干，我教您把加湿器调到 4 档并微调头带松紧好吗？”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">压力性假性低血糖 (Compression Low) 科普安抚</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 半夜侧睡压迫手臂探头导致 CGM 误报低血糖报警，患者惊醒以为机器坏了</text>
+    <text x="30" y="310" fill="#38BDF8" font-size="12">• 语音清晰解释侧睡组织液受压原理与穿戴位置微调技巧，避免无故撕毁价值 $80 的传感器</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">90天医保依从性达标率：61% ➔ 86% (+25 pts)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">前 14 天新手无故障弃用与传感器误撕损耗压降 -48.5%</text>
+  </g>
+
+  <!-- Pillar 3: FDA 21 CFR Part 803 MDR Adverse Event & Lot Capture -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#mdrGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. FDA MDR 器械不良事件与 LOT 批号强制捕获</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：患者说“探头断在肉里了/贴片处皮肤严重红肿溃烂”，客服只给寄新件漏报 FDA！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 根据 FDA 21 CFR Part 803 与 NMPA 医疗器械不良事件法规，漏报器械致伤将遭警告信封杀</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 传统客服为了快点结单，直接免费补发一个新传感器，未按法规创建质量投诉单 (PQC/MDR)</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">不良事件声学触发器 + 包装盒 UDI/LOT 批号拍照锁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 命中“探头折断/出血感染/严重过敏水泡/读数偏离 &gt;50% 致急诊”时，强制锁死普通换货流</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 自动创建 TrackWise / Veeva 质量调查单，并引导拍照上传外盒 LOT 批号与故障件留样回收</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">耗材到期自动续订 (CGM 传感器 / CPAP 滤棉面罩)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 每 14 天或每季度耗材即将用尽前，主动核对医保报销额度并一键语音确认续寄</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 患者断耗材率下降 64%，器械厂商长期耗材复购 LTV 增长 +39%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">FDA / NMPA 不良事件 24h 捕获率：100%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">完美兼顾老年患者适老化慢语速陪伴与二类/三类医疗器械严苛合规</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">家用医疗器械患者激活与依从性语音教练三大铁律 (MEDICAL-DEVICE-CGM-CPAP-COACH-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 危急值 0ms 抢占与禁改剂量锁：血糖 &lt;54 或 &gt;250 mg/dL 伴症状时 0ms 转临床急救；100% 物理禁止 AI 擅自调整胰岛素或呼吸机处方参数；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 器械不良事件强制留痕：凡报告探头折断、严重皮肤溃烂或致伤，强制捕获 UDI/LOT 批号并创建 FDA MDR 质量报告后才可补发。</text>
+</svg>
