@@ -4668,6 +4668,31 @@ export function evaluatePrivacyDsarCrossBorderBreachVoiceGuard(input: {
   };
 }
 
+export interface RenewableWindSolarScadaVppVoiceEvaluation {
+  policyCode: "RENEWABLE-WIND-SOLAR-SCADA-VPP-01";
+  remoteScadaResetOrHubEntryAuthorized: boolean;
+  bessContainerDoorLockoutAnd100mEvacuationTriggered: boolean;
+}
+
+/**
+ * Deterministic Renewable Wind/Solar Occupied-Tower Reset Lock, 12m/s Rotor-Pin Gate & BESS Hydrogen Deflagration Guard (`RENEWABLE-WIND-SOLAR-SCADA-VPP-01`).
+ */
+export function evaluateRenewableWindSolarScadaVppVoiceGuard(input: {
+  hubWindUnder12MsAndRotorLockPinEngaged: boolean;
+  technicianCheckedInsideTowerOrNacelle: boolean;
+  bessThermalRunawayOrHydrogenOffGasDetected: boolean;
+}): RenewableWindSolarScadaVppVoiceEvaluation {
+  return {
+    policyCode: "RENEWABLE-WIND-SOLAR-SCADA-VPP-01",
+    remoteScadaResetOrHubEntryAuthorized:
+      input.hubWindUnder12MsAndRotorLockPinEngaged &&
+      !input.technicianCheckedInsideTowerOrNacelle &&
+      !input.bessThermalRunawayOrHydrogenOffGasDetected,
+    bessContainerDoorLockoutAnd100mEvacuationTriggered:
+      input.bessThermalRunawayOrHydrogenOffGasDetected,
+  };
+}
+
 
 
 

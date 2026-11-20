@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="620" fill="url(#bg)" rx="16"/>
+  <text x="40" y="48" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Renewable Wind/Solar SCADA, Virtual Power Plant (VPP) &amp; Climb Safety 24x7 Voice Desk (NERC CIP)</text>
+  <text x="40" y="76" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="14">12m/s Nacelle Wind &amp; Lightning Climb-Permit Lock · Rotor Pin Before Hub Entry Gate · Three-Part Grid Curtailment Readback</text>
+
+  <!-- Left Column: Turbine Tech & ISO Dispatch Channels -->
+  <rect x="40" y="105" width="260" height="475" rx="12" fill="url(#card)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="60" y="138" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. Turbine &amp; Grid Channels</text>
+  <rect x="60" y="158" width="220" height="90" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">120m Wind Nacelle Tech</text>
+  <text x="75" y="207" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Tower climb permit &amp; check-in</text>
+  <text x="75" y="227" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Rotor lock-pin &amp; pitch LOTO</text>
+
+  <rect x="60" y="265" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">ISO / TSO Curtailment Desk</text>
+  <text x="75" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• ERCOT / CAISO / State Grid</text>
+  <text x="75" y="334" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Active power MW cap order</text>
+
+  <rect x="60" y="378" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="405" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Solar + BESS Inverter Yard</text>
+  <text x="75" y="427" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 1500V DC arc-fault isolation</text>
+  <text x="75" y="447" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• BESS off-gas H2/CO alarm</text>
+
+  <rect x="60" y="490" width="220" height="68" rx="8" fill="#172554" stroke="#3b82f6"/>
+  <text x="75" y="518" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">Target First Response: 500ms</text>
+  <text x="75" y="540" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12">100% GWO &amp; NERC CIP Safe</text>
+
+  <!-- Middle Column: Deterministic Wind/Solar Safety Guardrails -->
+  <rect x="340" y="105" width="490" height="475" rx="12" fill="url(#card)" stroke="#10b981" stroke-width="2"/>
+  <text x="365" y="138" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. Deterministic GWO &amp; Grid Safety Engine (RENEWABLE-WIND-SOLAR-SCADA-VPP-01)</text>
+
+  <rect x="365" y="158" width="440" height="118" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="385" y="185" fill="#ecfdf5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate A: Hub-Height Anemometer &amp; Rotor Lock-Pin Entry Interlock</text>
+  <text x="385" y="208" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks issuing a turbine tower climb / hub entry permit if hub-height</text>
+  <text x="385" y="228" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">  wind speed &gt; 12 m/s (or 15 m/s nacelle limit), lightning is within 30 km,</text>
+  <text x="385" y="248" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  OR mechanical rotor lock-pin is not physically engaged (0 rpm verified)</text>
+
+  <rect x="365" y="292" width="440" height="122" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="385" y="319" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate B: Zero-Personnel-Inside-Tower Before Remote SCADA Reset Lock</text>
+  <text x="385" y="342" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Strictly blocks remote ROC operators from clearing a turbine fault,</text>
+  <text x="385" y="362" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">  releasing yaw brakes, or pitching blades while any technician badge is</text>
+  <text x="385" y="382" fill="#fef08a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  checked into the tower/nacelle (Tag-In / Tag-Out digital interlock)</text>
+
+  <rect x="365" y="430" width="440" height="128" rx="8" fill="#1e1b4b" stroke="#8b5cf6"/>
+  <text x="385" y="457" fill="#ddd6fe" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate C: BESS Thermal Runaway Off-Gas &amp; NERC Three-Part Readback</text>
+  <text x="385" y="480" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">• If Battery Energy Storage System (BESS) container H2/CO off-gas triggers:</text>
+  <text x="385" y="500" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">  0ms blocks opening container doors (prevents oxygen deflagration explosion)</text>
+  <text x="385" y="520" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Requires NERC COM-002 Three-Part Readback on MW curtailment orders</text>
+
+  <!-- Right Column: SCADA & VPP Ecosystem -->
+  <rect x="870" y="105" width="290" height="475" rx="12" fill="url(#card)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="890" y="138" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">3. Renewable SCADA Stack</text>
+
+  <rect x="890" y="158" width="250" height="115" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Bazefield / Greenbyte / EnOS</text>
+  <text x="905" y="208" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• IEC 61400-25 turbine states</text>
+  <text x="905" y="228" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Digital Tower Tag-In/Out</text>
+  <text x="905" y="248" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Lone-worker 30m check-in</text>
+
+  <rect x="890" y="290" width="250" height="125" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="317" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">AutoGrid VPP &amp; Power Plant</text>
+  <text x="905" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• PPC active/reactive MVar</text>
+  <text x="905" y="360" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Negative-price curtailment</text>
+  <text x="905" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Offshore CTV transfer check</text>
+
+  <rect x="890" y="432" width="250" height="126" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="905" y="459" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Renewable Fleet KPIs</text>
+  <text x="905" y="482" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Climb-permit turnaround: 15s</text>
+  <text x="905" y="502" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Occupied-tower resets: 0.00%</text>
+  <text x="905" y="522" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• BESS door-open blasts: 0</text>
+  <text x="905" y="542" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Cost: $0.052/min vs $3.90 ROC</text>
+</svg>
