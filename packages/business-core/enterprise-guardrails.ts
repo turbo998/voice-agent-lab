@@ -4070,6 +4070,36 @@ export function evaluateCpaTaxPreparationIrs7216VoiceGuard(input: {
   };
 }
 
+export interface StaffingRpoEeocRecruitingVoiceEvaluation {
+  policyCode: "STAFFING-RPO-EEOC-RECRUITING-01";
+  eeocAndSalaryBanCompliancePassed: boolean;
+  shiftDispatchAuthorized: boolean;
+  humanRecruiterHandoffTriggered: boolean;
+}
+
+/**
+ * Deterministic Staffing & RPO EEOC Salary-History Ban Lock, Credential/Overtime Cap Gate & NYC Local Law 144 Opt-Out Guard (`STAFFING-RPO-EEOC-RECRUITING-01`).
+ */
+export function evaluateStaffingRpoEeocRecruitingVoiceGuard(input: {
+  asksPriorSalaryHistoryOrProtectedClassQuestion: boolean;
+  requiredLicenseOrCertificationActive: boolean;
+  projectedWeeklyHoursWithShift: number;
+  clientApprovedOvertimeBillRate: boolean;
+  candidateRequestedHumanRecruiterOrAccommodation: boolean;
+}): StaffingRpoEeocRecruitingVoiceEvaluation {
+  return {
+    policyCode: "STAFFING-RPO-EEOC-RECRUITING-01",
+    eeocAndSalaryBanCompliancePassed:
+      !input.asksPriorSalaryHistoryOrProtectedClassQuestion,
+    shiftDispatchAuthorized:
+      input.requiredLicenseOrCertificationActive &&
+      (input.projectedWeeklyHoursWithShift <= 40 ||
+        input.clientApprovedOvertimeBillRate),
+    humanRecruiterHandoffTriggered:
+      input.candidateRequestedHumanRecruiterOrAccommodation,
+  };
+}
+
 
 
 

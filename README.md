@@ -242,6 +242,7 @@ flowchart LR
 168. **连锁自助仓储（Self-Storage / Public Storage / 万物仓）与搬家货车租赁（U-Haul / Penske）24×7 语音管家（深夜欠费锁门 25秒补缴秒开闸、危化禁存锁与 3.8米箱货限高复诵）方案**：[中文](./docs/self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.md) | [EN](./docs/self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.en.md)
 169. **律所客户接案（Legal Intake / Clio / Lawmatics）、人身伤害与劳动仲裁 24×7 语音初筛（利益冲突 ABA Rule 1.18 0ms 前置阻断、UPL 零法律意见/禁止承诺胜诉围栏与诉讼时效紧急预审）方案**：[中文](./docs/legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.md) | [EN](./docs/legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.en.md)
 170. **会计师事务所、财税代账与报税季（CPA Firm / CCH Axcess / Intuit ProConnect / 金蝶代账）24×7 语音顾问（IRS 7216 纳税申报保密硬锁、延期申报不免滞纳金复诵与缺件催收）方案**：[中文](./docs/accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.md) | [EN](./docs/accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.en.md)
+171. **人力资源外包（RPO / 猎头 / 灵活用工 Randstad / Manpower / Bullhorn）24×7 语音初筛与排班调度（EEOC 薪资历史与婚育禁问硬锁、执业证照与 40小时加班费防穿仓锁及凌晨爽约 90秒替补）方案**：[中文](./docs/talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.md) | [EN](./docs/talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.en.md)
 
 ---
 
