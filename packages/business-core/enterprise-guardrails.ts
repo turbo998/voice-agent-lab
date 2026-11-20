@@ -4408,6 +4408,36 @@ export function evaluateFineArtAuctionBiddingAmlVoiceGuard(input: {
   };
 }
 
+export interface SemiconductorCleanroomFabVoiceEvaluation {
+  policyCode: "SEMICONDUCTOR-FAB-CLEANROOM-01";
+  chamberLidOpenStepAuthorized: boolean;
+  waferLotReleaseOrScrapAuthorized: boolean;
+  emergencyBayEvacuationAndHfGelProtocolTriggered: boolean;
+}
+
+/**
+ * Deterministic Semiconductor Cleanroom Fab SECS/GEM Chamber Purge & LOTO Gate, FOUP Lot Dual-Sign & TGMS/HF Emergency Guard (`SEMICONDUCTOR-FAB-CLEANROOM-01`).
+ */
+export function evaluateSemiconductorCleanroomFabVoiceGuard(input: {
+  chamberN2PurgeZeroPpmVerified: boolean;
+  lotoPadlockAndRfPowerZeroVerified: boolean;
+  processAndYieldEngineerDualSignVerified: boolean;
+  tgmsToxicGasLeakOrHfSplashDetected: boolean;
+}): SemiconductorCleanroomFabVoiceEvaluation {
+  return {
+    policyCode: "SEMICONDUCTOR-FAB-CLEANROOM-01",
+    chamberLidOpenStepAuthorized:
+      input.chamberN2PurgeZeroPpmVerified &&
+      input.lotoPadlockAndRfPowerZeroVerified &&
+      !input.tgmsToxicGasLeakOrHfSplashDetected,
+    waferLotReleaseOrScrapAuthorized:
+      input.processAndYieldEngineerDualSignVerified &&
+      !input.tgmsToxicGasLeakOrHfSplashDetected,
+    emergencyBayEvacuationAndHfGelProtocolTriggered:
+      input.tgmsToxicGasLeakOrHfSplashDetected,
+  };
+}
+
 
 
 

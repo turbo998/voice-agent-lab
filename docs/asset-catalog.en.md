@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (182 Bilingual Guides)
+## 3. Solution Architect Selection Guides (183 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -223,3 +223,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 180. **Investor Relations (IR), Pre-Earnings Quiet Period & M&A Virtual Data Room (Datasite / Intralinks / SEC Reg FD) 24×7 Voice Concierge: Selective MNPI Block, Quiet-Period Lock & Clean-Room Gate**: [EN](./investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.en.md) | [中文](./investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.md)
 181. **IT Asset Disposition (ITAD), Data Center Decommissioning & NIST SP 800-88 (ServiceNow HAM / Blancco) 24×7 Voice Desk: Zero-Escape Dock Lock, Legal-Hold Freeze & Battery Gate**: [EN](./it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.en.md) | [中文](./it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.md)
 182. **Fine Art Auction House, Luxury Watch Bidding & Collector AML (Sotheby's / Christie's) 24×7 Voice Concierge: UBO & Buyer's-Premium Credit Lock, Reserve Air-Gap & Bid Readback**: [EN](./fine-art-auction-house-luxury-watch-bidding-kyc-aml-reserve-voice-concierge-selection-faq.en.md) | [中文](./fine-art-auction-house-luxury-watch-bidding-kyc-aml-reserve-voice-concierge-selection-faq.md)
+183. **Semiconductor Cleanroom Fab, FOUP Wafer-Lot Hold & TGMS Safety (IBM SiView / Applied SmartFactory / SEMI S2) 24×7 Voice Copilot: $500k FOUP Dual-Sign Lock, Chamber Purge/LOTO Gate & Toxic Gas Triage**: [EN](./semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.en.md) | [中文](./semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.md)

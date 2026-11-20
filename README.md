@@ -254,6 +254,7 @@ flowchart LR
 180. **上市公司投资者关系（IR / 董秘办）、财报静默期与并购虚拟数据室（Datasite / Intralinks / SEC Reg FD）24×7 语音顾问（未公开内幕信息 MNPI 0ms 强阻断、静默期禁评锁与并购 Clean-Team 反垄断门禁）方案**：[中文](./docs/investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.md) | [EN](./docs/investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.en.md)
 181. **数据中心服务器退役、IT 资产处置（ITAD / Iron Mountain / Sims）与涉密硬盘消磁粉碎（NIST SP 800-88 / ServiceNow HAM）24×7 语音调度（未消磁粉碎禁出机房硬锁、诉讼保全 Legal-Hold 防误毁与鼓包锂电池隔离）方案**：[中文](./docs/it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.md) | [EN](./docs/it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.en.md)
 182. **高定艺术品拍卖行、名表珠宝竞投与藏家礼宾（苏富比 Sotheby's / 佳士得 Christie's / 富艺斯 / 嘉德保利）24×7 语音顾问（反洗钱 UBO 与保证金先验硬锁、委托方保留底价物理隔离与含 26% 买家佣金总价强复诵）方案**：[中文](./docs/fine-art-auction-house-luxury-watch-bidding-kyc-aml-reserve-voice-concierge-selection-faq.md) | [EN](./docs/fine-art-auction-house-luxury-watch-bidding-kyc-aml-reserve-voice-concierge-selection-faq.en.md)
+183. **半导体晶圆厂洁净室（Cleanroom Fab）、机台 PM 维保与特种气体安全（IBM SiView / Applied SmartFactory / SEMI S2）24×7 免提语音副驾（50万美元 FOUP 晶圆批次误报废双签锁、硅烷/氢氟酸泄漏 0ms 撤离与腔体氮气吹扫 LOTO 互锁）方案**：[中文](./docs/semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.md) | [EN](./docs/semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.en.md)
 
 ---
 
