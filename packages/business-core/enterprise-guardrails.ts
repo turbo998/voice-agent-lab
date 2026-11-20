@@ -3959,6 +3959,35 @@ export function evaluateFacilityManagementJanitorialSlaVoiceGuard(input: {
   };
 }
 
+export interface WeddingEventVenueBridalConciergeVoiceEvaluation {
+  policyCode: "WEDDING-EVENT-VENUE-CONCIERGE-01";
+  outdoorCeremonyBookingAuthorized: boolean;
+  rainBackupHallDoubleSaleBlocked: boolean;
+  madeToOrderCoutureGownBlockedByShortLeadTime: boolean;
+}
+
+/**
+ * Deterministic Luxury Wedding Venue 1:1 Indoor Rain-Backup Interlock & Bridal Couture Lead-Time Guard (`WEDDING-EVENT-VENUE-CONCIERGE-01`).
+ */
+export function evaluateWeddingEventVenueBridalConciergeVoiceGuard(input: {
+  isOutdoorLawnOrTerraceCeremony: boolean;
+  indoorRainBackupHallAvailableAndLocked: boolean;
+  remainingDaysToWedding: number;
+  requiredCoutureProductionPlusAlterationDays: number;
+}): WeddingEventVenueBridalConciergeVoiceEvaluation {
+  const rainReady =
+    !input.isOutdoorLawnOrTerraceCeremony ||
+    input.indoorRainBackupHallAvailableAndLocked;
+  return {
+    policyCode: "WEDDING-EVENT-VENUE-CONCIERGE-01",
+    outdoorCeremonyBookingAuthorized: rainReady,
+    rainBackupHallDoubleSaleBlocked: !rainReady,
+    madeToOrderCoutureGownBlockedByShortLeadTime:
+      input.remainingDaysToWedding <
+      input.requiredCoutureProductionPlusAlterationDays,
+  };
+}
+
 
 
 

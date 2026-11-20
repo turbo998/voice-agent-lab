@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgWed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="rainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="gownGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="dateGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgWed)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Luxury Wedding Venue, Bridal Couture Salon &amp; Event 24x7 Voice Concierge</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">高端婚礼堂、目的地草坪婚礼与高定婚纱馆 24×7 语音礼宾架构：户外婚礼室内备厅 (Rain Plan B) 死锁、黄金吉日定金锁与高定档期计算</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">WEDDING-EVENT-VENUE-CONCIERGE-01</text>
+
+  <!-- Pillar 1: Outdoor Lawn Wedding Mandatory Indoor Rain Plan-B Interlock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rainGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 户外草坪/海景婚礼室内备厅 (Plan B) 硬互锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 毁灭性婚礼事故：既卖了户外草坪婚礼，又把室内备厅单卖给另一家办寿宴！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 婚礼当天突发大暴雨，结果原本作为防雨 Plan B 的室内玻璃厅已被销售员重复卖掉</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 200 位宾客在暴雨中无处落座，新娘当场崩溃索赔精神损失费并引爆全网热搜差评！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">1:1 防雨备厅硬绑定锁 (Mandatory Indoor Rain-Hold Lock)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 凡预订户外草坪/露台/海滩仪式，系统强制在同一时段 100% 物理锁死对应室内备厅 (Plan B)</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 严禁 AI 将已被锁定为户外防雨备份的室内宴会厅向任何其他客户报价或出租！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">婚礼前 24h 降雨概率 &gt;=40% 自动语音启动转场决断</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 仪式前 24 小时气象雷达预警降雨，AI 主动联系新人与策划师确认是否切换室内备厅</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 一键同步花艺搭建、灯光音响与宴会传菜动线平移</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">户外婚礼暴雨无厅可退撞单事故：0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">同时核验新娘专属独立化妆间 (Bridal Suite) 不与同日午/晚宴冲突</text>
+  </g>
+
+  <!-- Pillar 2: Bridal Couture Lead-Time & Alteration Window Gate -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#gownGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 高定婚纱海外工期硬锁与私密试纱预约</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">👗 痛点：婚期只剩 6周的新娘想订 Vera Wang 欧洲定制款，AI 竟满口答应来得及！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 进口高定婚纱生产周期需 16~24 周 + 到店后 3 次量体改衣 (Alterations) 需 4 周</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• 若不按婚期倒推工期就把定制款卖给急婚新娘，婚礼当天拿不到婚纱将引发十倍违约赔偿！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">婚期倒推工期硬门禁：`Days_To_Wedding &gt;= Lead_Time + 28d`</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 电话预约试纱时先锁准婚期：若距婚礼 `&lt;120天`，自动屏蔽无现货的海外期单定制款</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 精准匹配店内该档期未撞单的高定租赁现货 (Ready-to-Wear / Sample Sale) 或加急工坊款！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">黄金吉日婚纱租赁档期清洗消毒缓冲期 (+5天硬锁)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 同一件高定主纱在 10月1日出租后，必须锁定前后共 5 天手工精洗与珠绣修复缓冲期</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 严禁 10月1日刚穿完、10月2日又租给下一位新娘</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">婚纱误期交付与租赁撞衫事故：0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">试纱前自动采集新娘尺码、婚礼场地风格与 3张心仪款式图直推礼服师</text>
+  </g>
+
+  <!-- Pillar 3: Auspicious Peak-Date Deposit Lock & Late-Night Couple Capture -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dateGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 夜间备婚情侣 15秒响应与吉日定金硬锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：75% 备婚情侣都在晚上 10 点后下班一起刷小红书打电话，门店早下班了！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 婚庆单笔客单价高达 ¥80,000~¥300,000 ($15k~$50k)，晚间线索慢回即被竞品抢走</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 且全年 70% 婚礼集中在五一、十一及 40 个黄道吉日，一旦口头乱留档期不收定金就废了全年营收！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">15秒秒查吉日空档 + 保底桌数/最低消费 (Minimum Spend) 匹配</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 实时核对目标吉日（如 5月20日 / 10月2日）桌数容积（18桌 vs 35桌无柱大殿）</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 若首选吉日已满，当场推荐同月次优吉日或晚宴转午宴特惠（送全套四大金刚首席团队）</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">吉日档期严禁无定金超 24 小时软占锁</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 口头看场预约仅提供 24 小时优先权；正式锁死黄金吉日强制签署定金合同</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 到店看场赠送双人免费主厨婚宴试菜体验，看场转签单率提升 +41%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">夜间备婚线索转到店看场率：22% ➔ 54%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 Tripleseat / Amadeus Delphi / 婚礼堂档期核心系统</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">高端婚礼堂、目的地婚礼与高定婚纱语音礼宾三大铁律 (WEDDING-EVENT-VENUE-CONCIERGE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 防雨备厅硬互锁：预订户外草坪/海滩婚礼必须 1:1 物理锁死同档期室内防雨备厅 (Plan B)，严禁将备厅重复出售给其他宴会；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 婚纱工期与清洗缓冲锁：距婚期不足定制工期+28天改衣窗口时严禁承诺海外定制款；租赁高定礼服强制锁定 5天精洗缓冲期。</text>
+</svg>

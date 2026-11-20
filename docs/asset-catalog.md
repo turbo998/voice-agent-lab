@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（166 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（167 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -207,3 +207,4 @@
 164. **公务机包机（Private Jet / NetJets / VistaJet）、FBO 贵宾航站楼与游艇 24×7 语音礼宾（临时加客海关 eAPIS 与 MTOW 配载硬锁、机尾号防追踪保密盾与机坪礼宾车牌照核验）方案**：[中文](./private-aviation-fbo-yacht-charter-uhnw-concierge-catering-manifest-voice-selection-faq.md) | [EN](./private-aviation-fbo-yacht-charter-uhnw-concierge-catering-manifest-voice-selection-faq.en.md)
 165. **医学检验中心（Quest / Labcorp / 金域迪安）与高端体检机构 24×7 语音预约与报告解读助手（检验危急值 0ms 防信箱强呼闭环、胃肠镜清肠伴喝、孕期防辐射锁与恶性病理保密盾）方案**：[中文](./diagnostic-lab-pathology-health-checkup-fasting-panic-value-voice-concierge-selection-faq.md) | [EN](./diagnostic-lab-pathology-health-checkup-fasting-panic-value-voice-concierge-selection-faq.en.md)
 166. **大型商业地产设施管理（IFM / CBRE / JLL / 万物云）与连锁商超保洁安防 24×7 语音报事与派单（地面湿滑 0ms 立牌防摔伤理赔锁、血液呕吐物 PPE 专派与外包 SLA 强呼）方案**：[中文](./commercial-cleaning-janitorial-facility-management-cbre-jll-sla-voice-dispatch-selection-faq.md) | [EN](./commercial-cleaning-janitorial-facility-management-cbre-jll-sla-voice-dispatch-selection-faq.en.md)
+167. **高端婚礼堂、高定婚纱馆与目的地草坪婚礼 24×7 语音礼宾（户外婚礼 1:1 室内防雨备厅 Plan B 硬互锁、高定婚纱定制工期与 5天精洗缓冲锁及满档吉日平替）方案**：[中文](./wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.md) | [EN](./wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.en.md)
