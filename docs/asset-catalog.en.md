@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (195 Bilingual Guides)
+## 3. Solution Architect Selection Guides (196 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -236,3 +236,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 193. **Renewable Wind/Solar SCADA, Virtual Power Plant (VPP) & Turbine Climb Safety (NERC CIP / GWO / EnOS) 24×7 Voice Desk: Occupied-Tower Reset Lock, 12m/s Rotor-Pin Gate & BESS Hydrogen Shield**: [EN](./renewable-wind-solar-scada-vpp-curtailment-climb-safety-voice-desk-selection-faq.en.md) | [中文](./renewable-wind-solar-scada-vpp-curtailment-climb-safety-voice-desk-selection-faq.md)
 194. **Film/TV Studio Production, Live Concert Touring & Sports Broadcast (Movie Magic / SAG-AFTRA / IATSE) 24×7 Voice Call-Sheet & Safety Desk: 12h Turnaround Lock, Armorer Hot-Set Gate & AI Digital-Replica Shield**: [EN](./film-tv-production-live-sports-broadcast-call-sheet-stunt-safety-voice-desk-selection-faq.en.md) | [中文](./film-tv-production-live-sports-broadcast-call-sheet-stunt-safety-voice-desk-selection-faq.md)
 195. **Aviation MRO, AOG Desk & FAA Part 145 Airworthiness (Swiss-AS AMOS / TRAX / EASA) 24×7 Voice Copilot: Form 8130-3 SUP Block, RII Two-Person Inspection Lock & Zero-FOD Tool-Crib Gate**: [EN](./aviation-mro-aog-part-145-airworthiness-rii-8130-voice-desk-selection-faq.en.md) | [中文](./aviation-mro-aog-part-145-airworthiness-rii-8130-voice-desk-selection-faq.md)
+196. **AgriTech Precision Farming, Grain Fumigation & Livestock Biosecurity (John Deere / Cargill / OSHA 1910.272) 24×7 Voice Desk: Silo Phosphine/Auger Lock, EPA PHI Gate & 0ms Outbreak Lockdown**: [EN](./agritech-precision-farming-grain-fumigation-livestock-biosecurity-voice-advisor-selection-faq.en.md) | [中文](./agritech-precision-farming-grain-fumigation-livestock-biosecurity-voice-advisor-selection-faq.md)

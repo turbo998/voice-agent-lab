@@ -4741,6 +4741,32 @@ export function evaluateAviationMroPart145AirworthinessVoiceGuard(input: {
   };
 }
 
+export interface AgritechGrainFumigationBiosecurityVoiceEvaluation {
+  policyCode: "AGRITECH-GRAIN-FUMIGATION-BIOSECURITY-01";
+  grainSiloEntryAuthorized: boolean;
+  cropSprayOrHarvestReleaseAuthorized: boolean;
+  farmBiosecurityGateLockdownAndVetAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic AgriTech OSHA 1910.272 Silo Phosphine/Auger Lock, EPA PHI/Withholding Gate & 0ms Livestock Outbreak Lockdown Guard (`AGRITECH-GRAIN-FUMIGATION-BIOSECURITY-01`).
+ */
+export function evaluateAgritechGrainFumigationBiosecurityVoiceGuard(input: {
+  siloPhosphineUnder0Dot3PpmAndAugerLotoVerified: boolean;
+  outsidePreHarvestOrDrugWithdrawalIntervalAndWindSafe: boolean;
+  reportsSuddenFlockOrHerdMortalitySpike: boolean;
+}): AgritechGrainFumigationBiosecurityVoiceEvaluation {
+  return {
+    policyCode: "AGRITECH-GRAIN-FUMIGATION-BIOSECURITY-01",
+    grainSiloEntryAuthorized:
+      input.siloPhosphineUnder0Dot3PpmAndAugerLotoVerified,
+    cropSprayOrHarvestReleaseAuthorized:
+      input.outsidePreHarvestOrDrugWithdrawalIntervalAndWindSafe,
+    farmBiosecurityGateLockdownAndVetAlertTriggered:
+      input.reportsSuddenFlockOrHerdMortalitySpike,
+  };
+}
+
 
 
 

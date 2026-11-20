@@ -267,6 +267,7 @@ flowchart LR
 193. **风电光伏集控中心（SCADA）、虚拟电厂（VPP）与风机高空登塔安全（金风 / 远景 EnOS / 阳光电源 / NERC CIP）24×7 语音调度（塔内有人严禁远程复位偏航/变桨硬锁、12m/s 强风与叶轮机械插销互锁及储能舱氢气防爆燃严禁开门护栏）方案**：[中文](./docs/renewable-wind-solar-scada-vpp-curtailment-climb-safety-voice-desk-selection-faq.md) | [EN](./docs/renewable-wind-solar-scada-vpp-curtailment-climb-safety-voice-desk-selection-faq.en.md)
 194. **影视剧组制片（Movie Magic / SAG-AFTRA）、大型演唱会与体育赛事转播（Live Nation / IATSE）24×7 语音通告单与安全调度（演员 12小时连轴转工会违约金硬锁、枪械爆破特技双签清场门禁与 AI 声音/数字分身专项授权锁）方案**：[中文](./docs/film-tv-production-live-sports-broadcast-call-sheet-stunt-safety-voice-desk-selection-faq.md) | [EN](./docs/film-tv-production-live-sports-broadcast-call-sheet-stunt-safety-voice-desk-selection-faq.en.md)
 195. **民航机务维修（MRO / FAA Part 145 / CCAR-145）、AOG 飞机停场抢修与适航放行（Swiss-AS AMOS / TRAX）24×7 语音副驾（无适航挂签假航材 8130-3 零装机硬锁、必检项目 RII 异体双人检验锁与工具清点 FOD 防遗留闭锁）方案**：[中文](./docs/aviation-mro-aog-part-145-airworthiness-rii-8130-voice-desk-selection-faq.md) | [EN](./docs/aviation-mro-aog-part-145-airworthiness-rii-8130-voice-desk-selection-faq.en.md)
+196. **智慧农业植保、大宗粮库熏蒸（Cargill / 中储粮）与规模化牧场生物安全（牧原 / 温氏 / John Deere / USDA APHIS）24×7 语音调度与农技顾问（粮仓磷化氢 0.3ppm 与绞龙断电进仓硬锁、农药安全间隔期 PHI 拒收锁与非洲猪瘟/高致病性禽流感 0ms 封场强报）方案**：[中文](./docs/agritech-precision-farming-grain-fumigation-livestock-biosecurity-voice-advisor-selection-faq.md) | [EN](./docs/agritech-precision-farming-grain-fumigation-livestock-biosecurity-voice-advisor-selection-faq.en.md)
 
 ---
 
