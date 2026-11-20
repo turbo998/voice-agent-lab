@@ -4156,6 +4156,35 @@ export function evaluateCybersecuritySocIncidentBridgeVoiceGuard(input: {
   };
 }
 
+export interface HospitalityMiceGroupAttritionVoiceEvaluation {
+  policyCode: "HOSPITALITY-MICE-GROUP-ATTRITION-01";
+  penaltyFreeGroupBlockReductionAuthorized: boolean;
+  corporateLraRateBookingAuthorized: boolean;
+  overbookingWalkRelocationBlocked: boolean;
+}
+
+/**
+ * Deterministic Hospitality MICE Group Attrition Cutoff Lock, Corporate LRA Rate Gate & Elite Zero-Walk Shield (`HOSPITALITY-MICE-GROUP-ATTRITION-01`).
+ */
+export function evaluateHospitalityMiceGroupAttritionVoiceGuard(input: {
+  daysBeforeArrival: number;
+  contractAttritionCutoffDays: number;
+  requestedDropPercent: number;
+  allowedAttritionPercent: number;
+  corporateTravelerDomainOrGdsVerified: boolean;
+  isTopTierEliteLoyaltyMember: boolean;
+}): HospitalityMiceGroupAttritionVoiceEvaluation {
+  return {
+    policyCode: "HOSPITALITY-MICE-GROUP-ATTRITION-01",
+    penaltyFreeGroupBlockReductionAuthorized:
+      input.daysBeforeArrival >= input.contractAttritionCutoffDays &&
+      input.requestedDropPercent <= input.allowedAttritionPercent,
+    corporateLraRateBookingAuthorized:
+      input.corporateTravelerDomainOrGdsVerified,
+    overbookingWalkRelocationBlocked: input.isTopTierEliteLoyaltyMember,
+  };
+}
+
 
 
 

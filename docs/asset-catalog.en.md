@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (173 Bilingual Guides)
+## 3. Solution Architect Selection Guides (174 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -214,3 +214,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 171. **Staffing Agency, RPO & High-Volume Shift Recruiting (Bullhorn / Workday) 24×7 Voice AI: EEOC Salary-History Ban Lock, Credential & Overtime Cap Gate & 90s Shift Backfill**: [EN](./talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.en.md) | [中文](./talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.md)
 172. **Enterprise Procurement, MRO Sourcing & PO Expediting (SAP Ariba / Coupa) 24×7 Voice Desk: AVL/OFAC Sanctions Lock, FCPA Anti-Kickback Gate & Zero-Voice Bank Change Rule**: [EN](./enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.en.md) | [中文](./enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.md)
 173. **Cybersecurity SOC, PagerDuty On-Call & Sev-1 War-Room (CrowdStrike / Sentinel) 24×7 Voice Bridge: Anti-Deepfake FIDO2 Lock, Tier-0 Dual-Control Containment & Wake-Up Challenge**: [EN](./cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.en.md) | [中文](./cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.md)
+174. **Hospitality MICE Group Sales (Cvent / Amadeus Delphi), Corporate LRA Rate & VIP Loyalty 24×7 Voice Desk: Group Attrition Cutoff Lock, LRA Anti-Scalping Gate & Elite Zero-Walk Shield**: [EN](./hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.en.md) | [中文](./hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.md)

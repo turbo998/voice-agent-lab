@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（173 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（174 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -214,3 +214,4 @@
 171. **人力资源外包（RPO / 猎头 / 灵活用工 Randstad / Manpower / Bullhorn）24×7 语音初筛与排班调度（EEOC 薪资历史与婚育禁问硬锁、执业证照与 40小时加班费防穿仓锁及凌晨爽约 90秒替补）方案**：[中文](./talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.md) | [EN](./talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.en.md)
 172. **企业采购寻源、MRO 工业备件急采与供应商催交（SAP Ariba / Coupa / 震坤行 / 京东工业）24×7 语音工作台（AVL/OFAC 合格供应商硬锁、FCPA 反商业贿赂与密封标底防泄密及电话改收款账户 0ms 熔断）方案**：[中文](./enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.md) | [EN](./enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.en.md)
 173. **网络安全运营中心（SOC / CrowdStrike / Microsoft Sentinel）与 PagerDuty 24×7 语音战情指挥与值班叫醒（防 Deepfake/Scattered Spider 社工重置 MFA 硬锁、生产核心域控双人隔离审批与防梦游叫醒挑战）方案**：[中文](./cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.md) | [EN](./cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.en.md)
+174. **酒店集团 MICE 会展团房销售（Cvent / Amadeus Delphi）、企业协议价与高卡会员礼宾 24×7 语音工作台（团房减房免责期 Attrition 硬锁、大客户 LRA 底价防盗用与顶级会员满房禁拒住）方案**：[中文](./hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.md) | [EN](./hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.en.md)
