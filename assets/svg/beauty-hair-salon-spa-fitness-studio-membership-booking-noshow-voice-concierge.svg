@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgSpa" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="slotGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="patchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="depGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgSpa)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Salon, Luxury Spa &amp; Boutique Fitness Studio (Zenoti / Mindbody) 24x7 Voice Concierge</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">连锁美发沙龙、高端 SPA 与普拉提工作室 24×7 语音预约架构：双资源联锁、染烫加热空档穿插排班与 48h 染发过敏皮试硬锁</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">SALON-SPA-WELLNESS-BOOKING-01</text>
+
+  <!-- Pillar 1: Dual-Resource Lock & Split-Gap Color Processing Scheduling -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#slotGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 技师+房间双资源锁与染发空档穿插排班</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 排班灾难：约了双人精油 SPA，到店发现理疗师有空但双人 VIP 房满了！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 美业与 SPA 预约绝不是单一日历：必须同时锁住【指定技师 + 专用仪器/双人套房】</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 且染烫长项目耗时 3.5 小时，若把总监发型师整块锁死，中间加热等上色的 45分钟全白白闲置！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ Zenoti / Boulevard 双资源联锁 + 三段式穿插排班</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 原子校验：`Stylist_Available &amp;&amp; Suite_Machine_Available == true`</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 染发自动拆为【涂抹45m ➔ 加热空档45m (开放插单男发快剪!) ➔ 洗吹45m】</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">发长/卸甲附加时长动态追问 (Duration Modifier)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 预约美甲自动追问：“请问目前指甲上有需要卸除的旧甲油胶或延长甲吗？(+30分钟)”</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 避免漏算卸甲或及腰长发时间导致后面整天排班连环晚点</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">王牌总监发型师日均产能提升 +28%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">完美利用染烫等待空档穿插短项目，房间与仪器冲突率 0%</text>
+  </g>
+
+  <!-- Pillar 2: 48h Hair-Dye Allergy Patch Test & Pregnancy Contraindication Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#patchGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 染发/嫁接睫毛 48h 过敏皮试与孕期禁忌锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 巨额赔偿：新客未做 48h 耳后皮试直接染发，引发急性苯二胺 (PPD) 过敏头面部肿胀！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 英国/欧盟/澳洲美业保险强制规定：新客或超 6个月未染发客户必须提前 48小时做皮肤过敏测试</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 高温桑拿、深层精油推拿、光电射频对孕早期 (First Trimester) 孕妇存在明确禁忌！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">48小时皮试前置锁 (48h Allergy Patch-Test Interlock)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 新客电话要求“明天上午来漂染全头/种睫毛” ➔ 0ms 校验档案 `Patch_Test_Valid == false`</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 物理阻断 48h 内正装染膏预约，自动引导今天先顺路到店 2分钟点涂耳后皮试！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">SPA 孕期与高血压禁忌筛查 (Prenatal Safety Gate)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 预约全身热石/精油按摩时温和核实是否处于孕期；孕 12周内禁约深层按压</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 孕中晚期自动切换为无香精甜杏仁油 + 持孕妇按摩资质技师 + 侧卧孕妇枕套房</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">染发/光电过敏与孕期禁忌事故：0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 满足美业商业责任险 (Salon Liability Insurance) 承保红线</text>
+  </g>
+
+  <!-- Pillar 3: High-Ticket No-Show Deposit Lock & Waitlist Backfill -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#depGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 高客单项目防爽约定金锁与退改候补秒补</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：客户约了周六下午 3小时 $400 巴黎画染，结果临时不来，总监白坐一下午！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 美业周末黄金档爽约率 (No-Show) 高达 18%~24%，单个空置时段直接损失数百美元</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 且技师双手正在洗头剪发，店里根本没人腾得出手接听新客预约电话（漏接率 45%）</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">长耗时 (&gt;=90m) 项目强制绑定储值卡扣除或 $50 定金锁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 会员直接锁定储值卡/次卡额度；散客预约 &gt;=90分钟染烫/SPA 短信推送 Apple Pay 定金链</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 15 分钟内完成定金预授权后正式锁位，提前 24h 改期全额无损顺延</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">临时退约 30 秒外呼候补名单 (Waitlist Auto-Backfill)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 一旦有客人临时取消周六下午黄金档，AI 立即按顺序致电候补名单前 3 位客人</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 3 分钟内将退出的空档重新填满，黄金时段满座率达 97.5%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">周末高客单爽约率：21% ➔ 1.9% (-91%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 Zenoti / Mindbody / Boulevard / 有赞美业全链路</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">连锁美发沙龙、高端 SPA 与健身工作室语音管家三大铁律 (SALON-SPA-WELLNESS-BOOKING-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 双资源与定金硬锁：预约必须同时锁定【技师 + 专用房间/仪器】，且 &gt;=90分钟高客单项目未付定金或绑卡前禁止锁死周末黄金档；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 皮试与孕期安全门禁：新客染发/种睫毛未满 48h 过敏皮试严禁直接预约正装施工；孕早期客户自动拦截深层热石/光电禁忌项目。</text>
+</svg>

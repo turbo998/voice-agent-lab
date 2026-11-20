@@ -3818,6 +3818,38 @@ export function evaluateMedicalDevicePatientOnboardingAdherenceVoiceGuard(input:
   };
 }
 
+export interface SalonSpaWellnessStudioBookingVoiceEvaluation {
+  policyCode: "SALON-SPA-WELLNESS-BOOKING-01";
+  appointmentConfirmationAuthorized: boolean;
+  patchTest48HourAllergyGateBlocked: boolean;
+  processingGapReleasedForShortCutInsert: boolean;
+}
+
+/**
+ * Deterministic Salon, Med-Spa & Wellness Studio Dual-Resource Lock, 48h Allergy Patch-Test Gate & Split-Gap Scheduling Guard (`SALON-SPA-WELLNESS-BOOKING-01`).
+ */
+export function evaluateSalonSpaWellnessStudioBookingVoiceGuard(input: {
+  stylistAndTreatmentRoomBothAvailable: boolean;
+  chemicalColorOrLashRequires48hPatchTest: boolean;
+  valid48hPatchTestOnFile: boolean;
+  highTicketDepositOrMembershipVerified: boolean;
+}): SalonSpaWellnessStudioBookingVoiceEvaluation {
+  const patchBlocked =
+    input.chemicalColorOrLashRequires48hPatchTest &&
+    !input.valid48hPatchTestOnFile;
+  const authorized =
+    input.stylistAndTreatmentRoomBothAvailable &&
+    !patchBlocked &&
+    input.highTicketDepositOrMembershipVerified;
+  return {
+    policyCode: "SALON-SPA-WELLNESS-BOOKING-01",
+    appointmentConfirmationAuthorized: authorized,
+    patchTest48HourAllergyGateBlocked: patchBlocked,
+    processingGapReleasedForShortCutInsert:
+      input.chemicalColorOrLashRequires48hPatchTest,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（161 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（162 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -202,3 +202,4 @@
 159. **流媒体视频（OTT）、宽带运营商与订阅制消费品退订挽留（Save Desk）语音智能体（FTC Click-to-Cancel 最多 1轮挽留锁、暂停订阅 Pause 替代销户与 365天防薅羊毛锁）方案**：[中文](./subscription-media-ott-broadband-retention-save-desk-ftc-click-to-cancel-voice-selection-faq.md) | [EN](./subscription-media-ott-broadband-retention-save-desk-ftc-click-to-cancel-voice-selection-faq.en.md)
 160. **高星级酒店与度假村客房内 AI 语音管家（Opera PMS `Stay_ID` 退房 0ms 清空隐私记忆锁、送物机器人直派、客房送餐挂账核身与防外线套取房号）方案**：[中文](./hotel-resort-inroom-concierge-housekeeping-room-service-pms-voice-assistant-selection-faq.md) | [EN](./hotel-resort-inroom-concierge-housekeeping-room-service-pms-voice-assistant-selection-faq.en.md)
 161. **家用医疗器械（动态血糖仪 CGM / 呼吸机 CPAP / 助听器）患者首月激活与依从性语音教练（前14天弃用压降 48%、危急血糖 `0ms` 临床抢占、禁改剂量锁与 FDA MDR 捕获）方案**：[中文](./medical-device-cgm-cpap-hearing-aid-patient-onboarding-adherence-voice-coach-selection-faq.md) | [EN](./medical-device-cgm-cpap-hearing-aid-patient-onboarding-adherence-voice-coach-selection-faq.en.md)
+162. **连锁美发沙龙、高端 SPA 水疗与普拉提工作室（Zenoti / Mindbody）24×7 语音预约管家（技师+房间双资源联锁、染烫 45m 空档穿插排班、48h 过敏皮试锁与防爽约定金）方案**：[中文](./beauty-hair-salon-spa-fitness-studio-membership-booking-noshow-voice-concierge-selection-faq.md) | [EN](./beauty-hair-salon-spa-fitness-studio-membership-booking-noshow-voice-concierge-selection-faq.en.md)
