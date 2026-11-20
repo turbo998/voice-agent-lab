@@ -3442,6 +3442,34 @@ export function evaluateEcommerceLivestreamAvatarAnchorGuard(input: {
   };
 }
 
+export interface SmartGlassesWearableMultimodalVoiceEvaluation {
+  policyCode: "SMART-GLASSES-POV-MULTIMODAL-01";
+  povCameraCaptureAuthorized: boolean;
+  privacyLedTamperLockTriggered: boolean;
+  whisperOrHudPrivacyModeActivated: boolean;
+}
+
+/**
+ * Deterministic AI Smart Glasses & Wearable Multimodal <50KB Deictic Keyframe, Privacy LED Interlock & <45dB Whisper Guard (`SMART-GLASSES-POV-MULTIMODAL-01`).
+ */
+export function evaluateSmartGlassesWearableMultimodalVoiceGuard(input: {
+  hasDeicticVisualReferenceCue: boolean;
+  frontPrivacyLedOccludedOrFaulted: boolean;
+  ambientNoiseDb: number;
+  responseContainsSensitivePersonalOrFinancialData: boolean;
+}): SmartGlassesWearableMultimodalVoiceEvaluation {
+  return {
+    policyCode: "SMART-GLASSES-POV-MULTIMODAL-01",
+    povCameraCaptureAuthorized:
+      input.hasDeicticVisualReferenceCue &&
+      !input.frontPrivacyLedOccludedOrFaulted,
+    privacyLedTamperLockTriggered: input.frontPrivacyLedOccludedOrFaulted,
+    whisperOrHudPrivacyModeActivated:
+      input.ambientNoiseDb < 45 &&
+      input.responseContainsSensitivePersonalOrFinancialData,
+  };
+}
+
 
 
 
