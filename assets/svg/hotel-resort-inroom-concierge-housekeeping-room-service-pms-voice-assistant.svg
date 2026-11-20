@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgHotel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="wipeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="botGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="irdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgHotel)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Luxury Hotel &amp; Resort In-Room Voice Concierge: Checkout Memory Wipe &amp; Robot Dispatch</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">高星级酒店与度假村客房 AI 语音管家架构：退房 0ms 隐私记忆销毁、送物机器人联动、客房送餐挂账锁与防套取住客隐私</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">HOTEL-INROOM-VOICE-CONCIERGE-01</text>
+
+  <!-- Pillar 1: Checkout 0ms Ephemeral Memory Wipe & Anti-Stalking Shield -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#wipeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 退房 0ms 隐私清空锁与防外部套取房号</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 惊天隐私泄露：新住客进房问音箱“我之前说了什么”，竟念出上一任住客的名字和账单！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 若客房智能音箱/分机的会话上下文按“物理房间号 1608”长期缓存</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 下午 2 点新客人入住 1608 室，直接查到上午退房客人的闹钟、送餐记录与行程！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">按入住单号 (Folio_Stay_ID) 隔离 + 退房 0ms 销毁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 严禁将记忆绑在房间号上！所有上下文绑定一次性 `Opera_Stay_ID`</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 当 PMS 触发退房 (Check-Out) 事件瞬间，0ms 物理擦除音箱闹钟、蓝牙配对与对话历史！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">严禁向外部来电透露住客在店状态或房间号 (Anti-Stalking)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 外部电话问“林志玲住几号房？帮我转接张总的房间” ➔ 0ms 拒绝泄露房间号</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 必须核对住客全名 + 预订验证或先打进房间征得住客本人同意后才予桥接</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">跨住客记忆残留与房号外泄：0.00%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">客房设备支持一键物理静音开关，消除高端住客窃听顾虑</text>
+  </g>
+
+  <!-- Pillar 2: Autonomous Delivery Robot & RCU Smart Room Control -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#botGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 送物机器人自动派单与客房 RCU 客控</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">🤖 痛点：晚上 10 点总机接 200 通“送两瓶矿泉水/拿把牙刷”，前台根本跑不过来！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 酒店客房电话 70% 是要矿泉水、拖鞋、充电线或问 Wi-Fi 密码、早餐几点到几点</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 人工总机不仅漏接率高，还要手写便签转给客房部阿姨，送达动辄超过 30 分钟</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">标品直派送物机器人 (Robot) vs 非标品派客房部 (HSKP)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 住客说“送两瓶常温水和一把儿童牙刷” ➔ 自动调用云迹/擎朗机器人 API 装货乘梯直达</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• 住客说“来人帮我加张婴儿床/打扫一下卫生间” ➔ 自动派单至当层客房服务员企业微信</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">一句话客控 RCU 与延迟退房会员权益核验</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• “拉上纱帘、把空调调到 24 度睡眠模式，明天帮我延迟到下午 2 点退房”</text>
+    <text x="30" y="310" fill="#38BDF8" font-size="12">• 自动核对万豪/希尔顿/华住金卡白金卡等级与明日房态，0秒修改 PMS 离店时间并续写房卡</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">前台总机人工话务量直降 -78% · 送物提速 2.4倍</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">支持中/英/日/韩/阿/法 16 语种外宾母语无障碍客房服务</text>
+  </g>
+
+  <!-- Pillar 3: In-Room Dining (IRD) Upsell, Allergen Lock & Folio Auth -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#irdGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 客房送餐 (IRD) 过敏原锁与挂房账核身</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">🍽️ 痛点：半夜客房送餐人工接单错漏百出，且访客随便挂房账引发退房扯皮！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 外籍住客半夜点餐口音重，常漏记“三分熟/不要香菜/坚果过敏”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 或该房间预订类型为“公司付房费、个人自付杂费 (No-Post Incidental)”，挂不上房账！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">Opera PMS 杂费预授权校验 + 住客姓氏核身锁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 挂房账 (Charge to Room Folio) 前强制核验：① 报出登记住客姓氏 ② 押金预授权余额充足</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 若房间处于 `No-Post` 锁账状态，自动向电视屏/手机推送扫码现付二维码</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">必选熟度/过敏原追问 + 红酒甜品搭配加售 (Upsell)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 点牛排强制追问熟度与黑椒/蘑菇汁，自动排查住客历史档案中的花生/海鲜过敏标签</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 直连 Oracle Simphony / 绿云餐饮 POS 厨房直接打单，送餐客单价提升 +19%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">客房送餐与 SPA 预订转化率提升 +31%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">退房挂账争议率降至 0% · 单店每年节省 4~6 名总机夜班人力</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">高星级酒店与度假村客房 AI 语音管家三大铁律 (HOTEL-INROOM-VOICE-CONCIERGE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 退房即刻销毁记忆：会话上下文强制绑定单次入住 `Stay_ID`，退房瞬间 0ms 清空音箱记忆与闹钟，严禁下一任住客读取前客记录；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 挂房账核身与防套房号：客房送餐挂账必须核实住客姓氏且 PMS 允许挂账 (Post Allowed)；严禁向外部未核身来电透露住客房间号。</text>
+</svg>

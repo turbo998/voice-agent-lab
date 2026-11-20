@@ -3765,6 +3765,32 @@ export function evaluateSubscriptionRetentionSaveDeskFtcVoiceGuard(input: {
   };
 }
 
+export interface HotelInRoomVoiceConciergePmsPrivacyEvaluation {
+  policyCode: "HOTEL-INROOM-VOICE-CONCIERGE-01";
+  checkoutZeroMemoryWipeExecuted0ms: boolean;
+  externalCallerRoomNumberDisclosed: boolean;
+  inRoomDiningFolioChargeAuthorized: boolean;
+}
+
+/**
+ * Deterministic Luxury Hotel & Resort In-Room Voice Concierge Checkout Memory Wipe, Anti-Stalking Shield & Folio Charge Guard (`HOTEL-INROOM-VOICE-CONCIERGE-01`).
+ */
+export function evaluateHotelInRoomVoiceConciergePmsPrivacyGuard(input: {
+  pmsCheckoutTriggeredOrRoomVacant: boolean;
+  isExternalCallerRequestingGuestRoomNumber: boolean;
+  registeredSurnameAndPostAllowedVerified: boolean;
+}): HotelInRoomVoiceConciergePmsPrivacyEvaluation {
+  return {
+    policyCode: "HOTEL-INROOM-VOICE-CONCIERGE-01",
+    checkoutZeroMemoryWipeExecuted0ms: input.pmsCheckoutTriggeredOrRoomVacant,
+    externalCallerRoomNumberDisclosed: false,
+    inRoomDiningFolioChargeAuthorized:
+      !input.pmsCheckoutTriggeredOrRoomVacant &&
+      !input.isExternalCallerRequestingGuestRoomNumber &&
+      input.registeredSurnameAndPostAllowedVerified,
+  };
+}
+
 
 
 

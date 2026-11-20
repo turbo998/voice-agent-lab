@@ -231,6 +231,7 @@ flowchart LR
 157. **Merchant Acquiring, Payment Terminal & Restaurant/Retail POS (Toast / Square / Adyen) 24×7 Voice Support: 30s Offline Store-and-Forward Failover, T+1 Recon & Payout Lock**: [EN](./docs/pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.en.md) | [中文](./docs/pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.md)
 158. **Enterprise B2B Accounts Receivable (AR), Order-to-Cash & Invoice Dispute Voice Copilot (SAP / HighRadius): 5s PO/POD Resend, Short-Pay Split & Credit-Hold Shield**: [EN](./docs/enterprise-b2b-collections-ar-invoice-dispute-promise-to-pay-voice-selection-faq.en.md) | [中文](./docs/enterprise-b2b-collections-ar-invoice-dispute-promise-to-pay-voice-selection-faq.md)
 159. **Subscription Media (OTT), Broadband & DTC Retention Save-Desk Voice AI: FTC Click-to-Cancel 1-Offer Lock, Pause-Plan Deflection & 365-Day Promo Cooldown**: [EN](./docs/subscription-media-ott-broadband-retention-save-desk-ftc-click-to-cancel-voice-selection-faq.en.md) | [中文](./docs/subscription-media-ott-broadband-retention-save-desk-ftc-click-to-cancel-voice-selection-faq.md)
+160. **Luxury Hotel & Resort In-Room Voice Concierge (Opera PMS): Checkout 0ms Memory Wipe, Autonomous Delivery-Robot Dispatch & Folio/Anti-Stalking Lock**: [EN](./docs/hotel-resort-inroom-concierge-housekeeping-room-service-pms-voice-assistant-selection-faq.en.md) | [中文](./docs/hotel-resort-inroom-concierge-housekeeping-room-service-pms-voice-assistant-selection-faq.md)
 
 ---
 
