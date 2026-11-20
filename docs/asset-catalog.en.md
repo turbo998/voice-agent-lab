@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (190 Bilingual Guides)
+## 3. Solution Architect Selection Guides (191 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -231,3 +231,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 188. **ESG Carbon Credit Registry (Verra / Gold Standard / I-REC), EU CBAM & Scope-3 Supplier 24×7 Voice Advisor: Irreversible Retirement Lock, Anti-Double-Counting Gate & EU Green Claims Shield**: [EN](./esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.en.md) | [中文](./esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.md)
 189. **Maritime Chartering, Port Agency & Laytime Demurrage (Veson IMOS / BIMCO) 24×7 Voice Desk: AIS-Verified NOR Lock, JWC War-Risk Transit Gate & Original Bill-of-Lading P&I Shield**: [EN](./maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.en.md) | [中文](./maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.md)
 190. **Blood Bank, Plasma Apheresis & Hospital Transfusion (AABB / FDA CBER / WellSky) 24×7 Voice Desk: Irradiated/ABO Crossmatch Lock, Teratogenic Medication Deferral Gate & 4s PDI Quarantine**: [EN](./blood-bank-plasma-apheresis-donor-deferral-crossmatch-aabb-voice-desk-selection-faq.en.md) | [中文](./blood-bank-plasma-apheresis-donor-deferral-crossmatch-aabb-voice-desk-selection-faq.md)
+191. **eVTOL Vertiport, Commercial Drone BVLOS & UTM Airspace (FAA LAANC / DJI FlightHub 2) 24×7 Voice Dispatch: Active TFR & 20% SOC Reserve Lock, MedEvac Auto-Yield Gate & Weight/CG Interlock**: [EN](./evtol-vertiport-commercial-drone-bvlos-utm-airspace-voice-dispatch-selection-faq.en.md) | [中文](./evtol-vertiport-commercial-drone-bvlos-utm-airspace-voice-dispatch-selection-faq.md)

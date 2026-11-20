@@ -4617,6 +4617,33 @@ export function evaluateBloodBankPlasmaCrossmatchVoiceGuard(input: {
   };
 }
 
+export interface EvtolDroneUtmBvlosVoiceEvaluation {
+  policyCode: "EVTOL-DRONE-UTM-BVLOS-01";
+  bvlosOrEvtolTakeoffCleared: boolean;
+  immediateYieldDescendOrRtlTriggered: boolean;
+}
+
+/**
+ * Deterministic eVTOL Vertiport & Commercial Drone BVLOS LAANC/TFR Lock, 20% Reserve SOC & MedEvac Right-of-Way Guard (`EVTOL-DRONE-UTM-BVLOS-01`).
+ */
+export function evaluateEvtolDroneUtmBvlosVoiceGuard(input: {
+  airspaceLaancClearedAndZeroActiveTfr: boolean;
+  projectedLandingBatterySocPercent: number;
+  actualScaleWeightAndCgWithinEnvelopeVerified: boolean;
+  mannedAircraftOrMedevacIntrusionDetected: boolean;
+}): EvtolDroneUtmBvlosVoiceEvaluation {
+  return {
+    policyCode: "EVTOL-DRONE-UTM-BVLOS-01",
+    bvlosOrEvtolTakeoffCleared:
+      input.airspaceLaancClearedAndZeroActiveTfr &&
+      input.projectedLandingBatterySocPercent >= 20 &&
+      input.actualScaleWeightAndCgWithinEnvelopeVerified &&
+      !input.mannedAircraftOrMedevacIntrusionDetected,
+    immediateYieldDescendOrRtlTriggered:
+      input.mannedAircraftOrMedevacIntrusionDetected,
+  };
+}
+
 
 
 

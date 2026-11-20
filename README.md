@@ -262,6 +262,7 @@ flowchart LR
 188. **企业 ESG 碳交易登记簿（Verra / Gold Standard / I-REC）、欧盟碳关税（CBAM）与供应链范围三催报 24×7 语音顾问（碳信用注销防重复计算硬锁、不可逆注销受益人全称复诵与欧盟反漂绿指令围栏）方案**：[中文](./docs/esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.md) | [EN](./docs/esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.en.md)
 189. **远洋航运租船（BIMCO Charterparty）、船舶代理（Port Agency）与装卸滞期费（Veson IMOS）24×7 语音运营台（准备就绪通知书 NOR 锚地检疫生效硬锁、JWC 战争险航区越权拦截与无正本提单放货 P&I 脱保熔断）方案**：[中文](./docs/maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.md) | [EN](./docs/maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.en.md)
 190. **血液中心、单采血浆站（CSL / Octapharma）与医院输血科（AABB / FDA CBER / WellSky）24×7 语音招募与紧急配血（ABO/RhD 与辐照特殊血双核对硬锁、致畸药物献血暂缓门禁与献血后发热 PDI 4秒锁定血液制品）方案**：[中文](./docs/blood-bank-plasma-apheresis-donor-deferral-crossmatch-aabb-voice-desk-selection-faq.md) | [EN](./docs/blood-bank-plasma-apheresis-donor-deferral-crossmatch-aabb-voice-desk-selection-faq.en.md)
+191. **低空经济 eVTOL 垂直起降港、工业无人机超视距巡检（BVLOS）与 UTM 空域（Joby / 亿航智能 / 大疆司空 2 / FAA LAANC）24×7 语音调度（临时禁飞区 TFR 与救护直升机 0ms 避让锁、20% 备降电量红线与乘客实称配平硬锁）方案**：[中文](./docs/evtol-vertiport-commercial-drone-bvlos-utm-airspace-voice-dispatch-selection-faq.md) | [EN](./docs/evtol-vertiport-commercial-drone-bvlos-utm-airspace-voice-dispatch-selection-faq.en.md)
 
 ---
 
