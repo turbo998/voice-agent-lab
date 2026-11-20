@@ -246,6 +246,7 @@ flowchart LR
 172. **企业采购寻源、MRO 工业备件急采与供应商催交（SAP Ariba / Coupa / 震坤行 / 京东工业）24×7 语音工作台（AVL/OFAC 合格供应商硬锁、FCPA 反商业贿赂与密封标底防泄密及电话改收款账户 0ms 熔断）方案**：[中文](./docs/enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.md) | [EN](./docs/enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.en.md)
 173. **网络安全运营中心（SOC / CrowdStrike / Microsoft Sentinel）与 PagerDuty 24×7 语音战情指挥与值班叫醒（防 Deepfake/Scattered Spider 社工重置 MFA 硬锁、生产核心域控双人隔离审批与防梦游叫醒挑战）方案**：[中文](./docs/cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.md) | [EN](./docs/cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.en.md)
 174. **酒店集团 MICE 会展团房销售（Cvent / Amadeus Delphi）、企业协议价与高卡会员礼宾 24×7 语音工作台（团房减房免责期 Attrition 硬锁、大客户 LRA 底价防盗用与顶级会员满房禁拒住）方案**：[中文](./docs/hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.md) | [EN](./docs/hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.en.md)
+175. **商业保险经纪、ACORD 25 保单凭证（COI）与工伤理赔报案（Applied Epic / Vertafore / Guidewire）24×7 语音工作台（已知事故倒签批改 0ms 反欺诈锁、COI 超保额拒签护栏与 OSHA 重伤 24小时强报）方案**：[中文](./docs/commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.md) | [EN](./docs/commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.en.md)
 
 ---
 

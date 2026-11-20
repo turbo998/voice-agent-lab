@@ -4185,6 +4185,35 @@ export function evaluateHospitalityMiceGroupAttritionVoiceGuard(input: {
   };
 }
 
+export interface CommercialInsuranceBrokerageCoiFnolVoiceEvaluation {
+  policyCode: "COMMERCIAL-INSURANCE-COI-FNOL-01";
+  instantAcord25CoiIssuanceAuthorized: boolean;
+  midTermPolicyEndorsementBindAuthorized: boolean;
+  oshaSevereInjury24hEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Commercial Insurance Brokerage ACORD 25 COI Limit Lock, Known-Loss Bind Block & OSHA 24h Severe Injury Triage Guard (`COMMERCIAL-INSURANCE-COI-FNOL-01`).
+ */
+export function evaluateCommercialInsuranceBrokerageCoiFnolVoiceGuard(input: {
+  requestedCoiLimitUsd: number;
+  activePolicyLimitUsd: number;
+  blanketAdditionalInsuredEndorsementActive: boolean;
+  callerDisclosedExistingOrRecentLoss: boolean;
+  involvesInpatientHospitalizationAmputationOrFatality: boolean;
+}): CommercialInsuranceBrokerageCoiFnolVoiceEvaluation {
+  return {
+    policyCode: "COMMERCIAL-INSURANCE-COI-FNOL-01",
+    instantAcord25CoiIssuanceAuthorized:
+      input.requestedCoiLimitUsd <= input.activePolicyLimitUsd &&
+      input.blanketAdditionalInsuredEndorsementActive,
+    midTermPolicyEndorsementBindAuthorized:
+      !input.callerDisclosedExistingOrRecentLoss,
+    oshaSevereInjury24hEscalationTriggered:
+      input.involvesInpatientHospitalizationAmputationOrFatality,
+  };
+}
+
 
 
 
