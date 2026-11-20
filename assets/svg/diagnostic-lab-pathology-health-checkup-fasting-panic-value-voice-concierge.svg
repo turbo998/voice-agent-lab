@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgLab" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="panicGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="prepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="oncGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgLab)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Diagnostic Lab (Quest / Labcorp) &amp; Executive Health Checkup 24x7 Voice Concierge</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">医学检验中心与高端体检机构 24×7 语音预约与报告解读架构：检验危急值 0ms 强呼、胃肠镜/增强CT 术前准备锁与肿瘤保密盾</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">DIAGNOSTIC-LAB-SCREENING-VOICE-01</text>
+
+  <!-- Pillar 1: CLIA / CAP Critical Lab Panic-Value 0ms Closed-Loop Readback -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#panicGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 检验危急值 (Panic Value) 0ms 强呼与复诵闭环</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 医疗事故红线：体检化验出高血钾 (K+ 6.8) 或肌钙蛋白暴增，无人接电话！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 根据 CLIA / CAP 与卫健委《医疗质量安全核心制度》，检验危急值必须在 15~30m 内通知到位</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若仅发一条静音短信或打进语音信箱未获确认，患者在家突发心脏骤停将酿成巨额医疗诉讼！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">三级夺命连环强呼 + 逐字复诵 (Read-Back) 存证</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• LIS 系统触发危急值瞬间，0ms 并发强呼开单主治医生与受检者本人/紧急联系人</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 严禁把危急值只留在语音信箱！必须获得真人接听复诵确认并 0ms 桥接总值班急诊医师</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">溶血/凝血不合格标本 (Hemolyzed Sample) 秒级重采邀约</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 标本因溶血或脂血无法检测时，主动温言致电解释并免费派护士上门或优先绿通重抽</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 报告延误投诉率下降 74%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">危急值 15 分钟真人通知闭环率：100%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 满足 CAP / ISO 15189 医学实验室认证与三甲飞检要求</text>
+  </g>
+
+  <!-- Pillar 2: Endoscopy Bowel Prep, Fasting & Metformin/Anticoagulant Gate -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#prepGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 胃肠镜/增强CT 术前停药与清肠准备硬门禁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">🏥 痛点：22% 无痛胃肠镜客户到院才发现没停阿司匹林或肠道没排空，当场白跑退号！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 肠镜切息肉若未提前 5~7天经医嘱停用抗凝药 (阿司匹林/华法林/氯吡格雷) 将引发大出血</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 碘造影剂增强 CT 若未排查肾功能 (eGFR) 与二甲双胍，或 MRI 未排查心脏起搏器将致重伤！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">T-7天用药筛查 + T-1天泻药服用分步语音领航</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 预约无痛胃肠镜时强制核查：① 抗凝药与降糖药史 ② 麻醉需 1名成年家属签字陪同离院</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• 检查前夜 19:00 主动致电指导如何分次兑服复方聚乙二醇电解质散，确认排出清水样便！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">孕期/备孕 X光与 CT 辐射项目 0ms 替换硬锁</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 企业团检女性员工选套餐时，强制语音核实是否处于怀孕或备孕期</text>
+    <text x="30" y="310" fill="#38BDF8" font-size="12">• 一旦命中，0ms 物理屏蔽胸片/低剂量肺 CT/骨密度及碳14呼气，替换为无辐射彩超与碳13！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">胃肠镜/增强CT 当日因准备不合格取消率：22% ➔ 2.1%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">高价值内镜室与核磁共振机房空置浪费减少 90%</text>
+  </g>
+
+  <!-- Pillar 3: Benign Lab Explain vs Oncology/HIV Physician-Only Disclosure Shield -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#oncGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 常规指标慢病解读与重大恶性诊断保密盾</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">⛔ 伦理与心理红线：AI 在电话里冷冰冰对患者念出“活检病理证实为低分化腺癌”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 90% 的体检报告咨询是问“尿酸 460/轻度脂肪肝/甘油三酯偏高怎么调理”</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• 但对于病理恶性肿瘤 (Biopsy Malignancy)、HIV 初筛阳性或重大遗传病，严禁 AI 直接口头宣判！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">分级报告解读门禁：常规亚健康 AI 解读 vs 高敏结果主检医师专访</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 血脂/尿酸/甲状腺 TI-RADS 2~3类良性结节：AI 结合近 3 年历史体检趋势图做通俗饮食运动指导</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 肺部高危磨玻璃结节 (Lung-RADS 4) / 病理恶性 / 传染病阳性：0ms 锁定由高年资主检医师1对1沟通！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">体检异常项专科绿通复查一键挂号</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 解读完幽门螺杆菌 C13 阳性或糖化血红蛋白超标后，顺手帮客户预约消化科/内分泌科门诊</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 实现“检后管理 + 专科复诊转化率”提升 +46%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">检后报告咨询人工分流率：83% · 恶性误读 0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 LIS 检验系统、PACS 影像与三甲医院检后绿通</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">医学检验中心与高端体检 24×7 语音礼宾三大铁律 (DIAGNOSTIC-LAB-SCREENING-VOICE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 危急值闭环与肿瘤保密盾：检验危急值 0ms 强呼直到真人复诵确认 (严禁仅留语音信箱)；病理恶性/HIV 阳性 100% 锁定主检医师沟通；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 术前禁忌硬拦截：预约无痛胃肠镜/增强CT/MRI 强制核查抗凝药、二甲双胍与金属植入物；孕期/备孕女性 0ms 屏蔽电离辐射项目。</text>
+</svg>

@@ -3903,6 +3903,34 @@ export function evaluatePrivateAviationCharterFboVoiceGuard(input: {
   };
 }
 
+export interface DiagnosticLabHealthScreeningVoiceEvaluation {
+  policyCode: "DIAGNOSTIC-LAB-SCREENING-VOICE-01";
+  panicValueNotificationClosed: boolean;
+  ionizingRadiationAndC14SwappedForPregnancy: boolean;
+  aiVerbalMalignancyOrHivReadoutBlocked: boolean;
+}
+
+/**
+ * Deterministic Diagnostic Lab & Health Checkup Panic-Value Live Readback, Pregnancy Radiation Lock & Oncology Disclosure Shield (`DIAGNOSTIC-LAB-SCREENING-VOICE-01`).
+ */
+export function evaluateDiagnosticLabHealthScreeningVoiceGuard(input: {
+  isCriticalLabPanicValueAlert: boolean;
+  answeredByLiveHumanWithVerbatimReadback: boolean;
+  patientPregnantOrTryingToConceive: boolean;
+  reportContainsMalignantPathologyOrReactiveHiv: boolean;
+}): DiagnosticLabHealthScreeningVoiceEvaluation {
+  return {
+    policyCode: "DIAGNOSTIC-LAB-SCREENING-VOICE-01",
+    panicValueNotificationClosed:
+      !input.isCriticalLabPanicValueAlert ||
+      input.answeredByLiveHumanWithVerbatimReadback,
+    ionizingRadiationAndC14SwappedForPregnancy:
+      input.patientPregnantOrTryingToConceive,
+    aiVerbalMalignancyOrHivReadoutBlocked:
+      input.reportContainsMalignantPathologyOrReactiveHiv,
+  };
+}
+
 
 
 
