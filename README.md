@@ -249,6 +249,7 @@ flowchart LR
 175. **商业保险经纪、ACORD 25 保单凭证（COI）与工伤理赔报案（Applied Epic / Vertafore / Guidewire）24×7 语音工作台（已知事故倒签批改 0ms 反欺诈锁、COI 超保额拒签护栏与 OSHA 重伤 24小时强报）方案**：[中文](./docs/commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.md) | [EN](./docs/commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.en.md)
 176. **新能源充电桩运营网（ChargePoint / 星星充电 / 特来电 / OCPP 2.0.1）与商用车队加油卡（WEX / 路歌）24×7 语音救援（高压零电流断电后拔枪铁律、枪头冒烟 0ms 永久封桩与车队油卡 GPS 防盗刷）方案**：[中文](./docs/ev-charging-station-network-ocpp-connector-unlock-fleet-fuel-card-voice-desk-selection-faq.md) | [EN](./docs/ev-charging-station-network-ocpp-connector-unlock-fleet-fuel-card-voice-desk-selection-faq.en.md)
 177. **知识产权代理、专利商标年费托管（Anaqua / Clarivate CPA Global）与跨境电商 TRO 侵权应诉 24×7 语音顾问（绝对新颖性公开日 0ms 强升级、专利弃权双签硬锁与 FTO 不侵权意见禁区）方案**：[中文](./docs/intellectual-property-patent-trademark-renewal-tro-takedown-voice-advisor-selection-faq.md) | [EN](./docs/intellectual-property-patent-trademark-renewal-tro-takedown-voice-advisor-selection-faq.en.md)
+178. **连锁商超生鲜冷链、中央厨房 HACCP 与食品召回（FDA FSMA 204 / SafetyChain / SAP EWM）24×7 语音品控（收货中心温超 5°C/41°F 拒收硬锁、一级过敏原/李斯特菌 12分钟全门店强呼下架与留样封存）方案**：[中文](./docs/food-safety-cold-chain-fsma-204-haccp-allergen-recall-voice-desk-selection-faq.md) | [EN](./docs/food-safety-cold-chain-fsma-204-haccp-allergen-recall-voice-desk-selection-faq.en.md)
 
 ---
 

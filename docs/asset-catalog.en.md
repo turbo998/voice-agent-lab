@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (177 Bilingual Guides)
+## 3. Solution Architect Selection Guides (178 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -218,3 +218,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 175. **Commercial Insurance Brokerage, ACORD 25 COI & Workers' Comp FNOL (Applied Epic / Guidewire) 24×7 Voice Desk: Known-Loss Bind Block, COI Policy-Limit Lock & OSHA 24h Triage**: [EN](./commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.en.md) | [中文](./commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.md)
 176. **EV Charging Station Network (OCPP 2.0.1 / ChargePoint) & Commercial Fleet Fuel Card (WEX) 24×7 Voice Rescue: Zero-Current Unlock Lock, Thermal Lockout & Telematics Fuel Gate**: [EN](./ev-charging-station-network-ocpp-connector-unlock-fleet-fuel-card-voice-desk-selection-faq.en.md) | [中文](./ev-charging-station-network-ocpp-connector-unlock-fleet-fuel-card-voice-desk-selection-faq.md)
 177. **IP Law, Patent/Trademark Docketing (Anaqua / Clarivate) & E-Commerce TRO Defense 24×7 Voice Advisor: Novelty Bar-Date Lock, Written Abandonment Gate & USPTO UPL Block**: [EN](./intellectual-property-patent-trademark-renewal-tro-takedown-voice-advisor-selection-faq.en.md) | [中文](./intellectual-property-patent-trademark-renewal-tro-takedown-voice-advisor-selection-faq.md)
+178. **Food Safety, Cold-Chain Receiving & FDA FSMA 204 Recall (SafetyChain / SAP EWM) 24×7 Voice Desk: 41°F/5°C Receiving Lock, 12-Min Class I Store Blast & Retention-Sample Gate**: [EN](./food-safety-cold-chain-fsma-204-haccp-allergen-recall-voice-desk-selection-faq.en.md) | [中文](./food-safety-cold-chain-fsma-204-haccp-allergen-recall-voice-desk-selection-faq.md)

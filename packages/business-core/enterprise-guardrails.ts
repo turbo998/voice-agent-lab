@@ -4266,6 +4266,35 @@ export function evaluateIntellectualPropertyPatentDocketVoiceGuard(input: {
   };
 }
 
+export interface FoodSafetyColdChainFsmaRecallVoiceEvaluation {
+  policyCode: "FOOD-SAFETY-FSMA-RECALL-01";
+  coldDockGoodsReceiptAuthorized: boolean;
+  posCheckoutLockoutAndStoreRecallBlastTriggered: boolean;
+  retentionSampleFreezeAndQaEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Food Safety Cold-Chain 5°C/41°F & FSMA 204 Receiving Lock, Class I Recall POS Blast & Retention-Sample Guard (`FOOD-SAFETY-FSMA-RECALL-01`).
+ */
+export function evaluateFoodSafetyColdChainFsmaRecallVoiceGuard(input: {
+  productCoreTemperatureCelsius: number;
+  fsma204TraceabilityLotCodePresent: boolean;
+  classOnePathogenOrAllergenRecallActive: boolean;
+  reportsFoodborneIllnessOrAllergicReaction: boolean;
+}): FoodSafetyColdChainFsmaRecallVoiceEvaluation {
+  return {
+    policyCode: "FOOD-SAFETY-FSMA-RECALL-01",
+    coldDockGoodsReceiptAuthorized:
+      input.productCoreTemperatureCelsius <= 5.0 &&
+      input.fsma204TraceabilityLotCodePresent &&
+      !input.classOnePathogenOrAllergenRecallActive,
+    posCheckoutLockoutAndStoreRecallBlastTriggered:
+      input.classOnePathogenOrAllergenRecallActive,
+    retentionSampleFreezeAndQaEscalationTriggered:
+      input.reportsFoodborneIllnessOrAllergicReaction,
+  };
+}
+
 
 
 
