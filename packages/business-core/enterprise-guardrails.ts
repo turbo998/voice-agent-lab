@@ -3334,6 +3334,33 @@ export function evaluateManagedVsSelfHostedVoicePlatformTcoGuard(input: {
   };
 }
 
+export interface ContactCenterWarmTransferContextHandoffEvaluation {
+  policyCode: "CONTACT-CENTER-WARM-HANDOFF-01";
+  directWarmTransferAuthorized: boolean;
+  virtualHoldCallbackOffered: boolean;
+  verifiedAuthBadgeInherited: boolean;
+}
+
+/**
+ * Deterministic Contact Center AI-to-Human Warm Transfer 4-Slot Context Card, Auth Inheritance & >180s EWT Virtual Hold Guard (`CONTACT-CENTER-WARM-HANDOFF-01`).
+ */
+export function evaluateContactCenterWarmTransferContextHandoffGuard(input: {
+  structuredFourSlotSummaryPersisted: boolean;
+  aiLegOtpOrVoiceprintVerified: boolean;
+  targetSkillQueueEstimatedWaitSec: number;
+}): ContactCenterWarmTransferContextHandoffEvaluation {
+  const queueOverloaded = input.targetSkillQueueEstimatedWaitSec > 180;
+  return {
+    policyCode: "CONTACT-CENTER-WARM-HANDOFF-01",
+    directWarmTransferAuthorized:
+      input.structuredFourSlotSummaryPersisted && !queueOverloaded,
+    virtualHoldCallbackOffered: queueOverloaded,
+    verifiedAuthBadgeInherited:
+      input.structuredFourSlotSummaryPersisted &&
+      input.aiLegOtpOrVoiceprintVerified,
+  };
+}
+
 
 
 

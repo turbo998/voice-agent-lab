@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (143 Bilingual Guides)
+## 3. Solution Architect Selection Guides (144 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -184,3 +184,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 141. **Life & Health Insurance Tele-Underwriting, Anti-Lapse Renewal & Claims Concierge Voice AI: Reflexive ICD-10 Drill-Down, Verbatim Exclusion Lock & Conservation**: [EN](./life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.en.md) | [中文](./life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.md)
 142. **Automotive In-Cabin Multimodal Voice Assistant: 6-Zone Seat Permission Isolation, Driving-State CAN Safety Interlocks & Edge NPU + Cloud Hybrid**: [EN](./automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.en.md) | [中文](./automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.md)
 143. **Managed Commercial Voice Platforms (Vapi vs. Retell AI vs. Bland AI vs. ElevenLabs) vs. Self-Hosted Azure ACS + LiveKit / Pipecat: 5-Layer Markup Breakdown & 80k-Min TCO Crossover**: [EN](./managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.en.md) | [中文](./managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.md)
+144. **Contact Center AI-to-Human Warm Transfer & Context Handoff Architecture: 4-Slot Screen-Pop Cards, 6-Second Agent Whisper & >180s Virtual Hold Callback**: [EN](./contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.en.md) | [中文](./contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.md)

@@ -215,6 +215,7 @@ flowchart LR
 141. **Life & Health Insurance Tele-Underwriting, Anti-Lapse Renewal & Claims Concierge Voice AI: Reflexive ICD-10 Drill-Down, Verbatim Exclusion Lock & Conservation**: [EN](./docs/life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.en.md) | [中文](./docs/life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.md)
 142. **Automotive In-Cabin Multimodal Voice Assistant: 6-Zone Seat Permission Isolation, Driving-State CAN Safety Interlocks & Edge NPU + Cloud Hybrid**: [EN](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.en.md) | [中文](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.md)
 143. **Managed Commercial Voice Platforms (Vapi vs. Retell AI vs. Bland AI vs. ElevenLabs) vs. Self-Hosted Azure ACS + LiveKit / Pipecat: 5-Layer Markup Breakdown & 80k-Min TCO Crossover**: [EN](./docs/managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.en.md) | [中文](./docs/managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.md)
+144. **Contact Center AI-to-Human Warm Transfer & Context Handoff Architecture: 4-Slot Screen-Pop Cards, 6-Second Agent Whisper & >180s Virtual Hold Callback**: [EN](./docs/contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.en.md) | [中文](./docs/contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.md)
 
 ---
 

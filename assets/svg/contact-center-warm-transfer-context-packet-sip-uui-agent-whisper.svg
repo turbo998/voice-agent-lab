@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgWarm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#10213D"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="whisperGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="holdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgWarm)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Contact Center AI-to-Human Warm Transfer: Context Packet, 3s Screen-Pop &amp; Agent Whisper</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">智能客服“AI 一线接待 ➔ 带上下文无缝转人工”端到端架构：终结客户重复叙述、3秒结构化交接卡与排队溢出虚拟回呼</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">CONTACT-CENTER-WARM-HANDOFF-01</text>
+
+  <!-- Pillar 1: Zero-Repeat Out-of-Band Context Handoff Card -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#cardGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 终结“跟人工再复述一遍”：3秒结构化交接卡</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 客户头号怒点：跟 AI 说了 3 分钟，转人工后坐席第一句问“您贵姓？”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统盲转 (Cold Transfer) 只把电话音频切过去，丢弃了 AI 已核验的身份与诉求</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或者把 2000 字原始对话流水账直接拍在坐席脸上，坐席根本来不及看！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ 3秒一眼看懂的 4 槽位交接卡片 (Structured Screen-Pop)</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 旁路写入 Redis/CTI，仅携 `Handoff_ID` 触发坐席工作台 (D365/Salesforce) 弹屏</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 严格提炼：①已核验身份/订单 ②核心诉求 ③AI已尝试动作 ④建议坐席下一步</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">免二次核身令牌继承 (Verified Auth Token Carryover)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• AI 阶段已完成的短信 OTP / 声纹核身状态直接同步点亮坐席屏绿标</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 坐席接起第一句话：“王先生您好，看到您尾号8821订单申请破损补发，我马上办”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">客户重复叙述率：78% ➔ 0% · AHT 缩短 95 秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">严禁在转接未写妥结构化交接包前盲目将客户切入人工队列</text>
+  </g>
+
+  <!-- Pillar 2: 6-Second Agent Whisper Briefing & Skill-Based Routing -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#whisperGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 6秒坐席耳语简报 (Whisper) 与精准技能路由</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">🎧 接通前 6 秒单向耳语 (6s AI-to-Agent Whisper)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 坐席摘机瞬间，客户侧听到轻柔过渡提示音，AI 向坐席耳机极速播报 6 秒摘要：</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• “黑卡客户李女士，情绪焦急，航班延误需免差价改签明早京沪高铁，已锁余票”</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">基于意图与情绪的技能组直达 (Intent &amp; Sentiment ACD)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 告别传统按键 IVR 选错部门导致人工内部二转三转 (Transfer Ping-Pong)</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• AI 根据对话诊断出的真实问题代码与怒气值，直派对应二线专家或投诉主管席</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">人机三方同场协办模式 (3-Way Copilot Bridge)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 坐席接管语音后，AI 退居静音旁听轨 (Silent Listener)，实时在屏幕推送话术与表单</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 需要收卡号付款时，坐席一键把客户切回 AI 安全收银流程，收完再切回人工</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">人工二次转接率：24% ➔ 3.1% (-87%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">一次转对人、接起即知情，转接后 CSAT 满意度飙升 +34 pts</text>
+  </g>
+
+  <!-- Pillar 3: Queue Wait > 180s Virtual Hold & Scheduled Callback Escape -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#holdGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 排队拥堵 &gt;180秒虚拟占位与自动回呼</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：AI 答应“马上为您转人工”，结果客户听着等待音乐干等 15 分钟！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 如果轉接前不先查人工队列实时预计等待时间 (EWT)，客户在等待音乐中怒挂电话</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 既浪费了运营商长途占线通道费，又直接引爆黑猫投诉与社交媒体差评</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">转前实时预检 ACD 队列 (Pre-Transfer EWT Check)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• AI 在说“为您转接”前，先用 40ms 查询目标技能组空闲坐席数与 EWT</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 当 `EWT &gt; 180 秒` 或夜间无坐席在线时，主动触发“虚拟排队保位回呼 (Virtual Hold)”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">免挂机听音乐：保留排队顺位 + 坐席空闲自动回拨</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• “当前人工专席需等待约 6 分钟，我帮您保留第 4 位顺位，排到时立即给您回电好吗？”</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 同时 AI 先通过语音收集齐理赔单号/故障照片，让稍后回拨的坐席 1 分钟办结</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">转人工排队呼损率 (Abandon Rate)：18.5% ➔ 2.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">每年省下数百万分钟无效排队等待音乐 (Hold Music) 电话费</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">智能客服人机无缝热转接架构三大铁律 (CONTACT-CENTER-WARM-HANDOFF-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 严禁无上下文盲转：转接前必须将“已核身令牌 + 4槽位结构化摘要”写入 CTI 弹屏，确保坐席免问客户姓名与单号；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 严守排队等待阈值：转接前实时查询技能组 EWT，若预计等待 &gt;180秒，必须主动提供保留顺位的虚拟排队自动回呼 (Virtual Hold)。</text>
+</svg>
