@@ -4352,6 +4352,35 @@ export function evaluateInvestorRelationsRegFdMnpiVoiceGuard(input: {
   };
 }
 
+export interface ItAssetDispositionNist80088VoiceEvaluation {
+  policyCode: "ITAD-NIST80088-SANITIZATION-01";
+  dataCenterDockReleaseAuthorized: boolean;
+  mediaWipeOrShreddingAuthorized: boolean;
+  hazmatFireproofRecoveryBoxRequired: boolean;
+}
+
+/**
+ * Deterministic IT Asset Disposition (ITAD) 100% Serial & NIST 800-88 Dock Lock, Legal-Hold Freeze & Lithium-Battery Guard (`ITAD-NIST80088-SANITIZATION-01`).
+ */
+export function evaluateItAssetDispositionNist80088VoiceGuard(input: {
+  allCmdbDriveSerialsAccountedFor: boolean;
+  nist80088OnSitePurgeOrShredVerified: boolean;
+  assetUnderActiveLitigationLegalHold: boolean;
+  containsSwollenOrUnremovedLithiumBattery: boolean;
+}): ItAssetDispositionNist80088VoiceEvaluation {
+  return {
+    policyCode: "ITAD-NIST80088-SANITIZATION-01",
+    dataCenterDockReleaseAuthorized:
+      input.allCmdbDriveSerialsAccountedFor &&
+      input.nist80088OnSitePurgeOrShredVerified,
+    mediaWipeOrShreddingAuthorized:
+      !input.assetUnderActiveLitigationLegalHold &&
+      !input.containsSwollenOrUnremovedLithiumBattery,
+    hazmatFireproofRecoveryBoxRequired:
+      input.containsSwollenOrUnremovedLithiumBattery,
+  };
+}
+
 
 
 

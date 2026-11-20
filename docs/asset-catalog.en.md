@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (180 Bilingual Guides)
+## 3. Solution Architect Selection Guides (181 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -221,3 +221,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 178. **Food Safety, Cold-Chain Receiving & FDA FSMA 204 Recall (SafetyChain / SAP EWM) 24×7 Voice Desk: 41°F/5°C Receiving Lock, 12-Min Class I Store Blast & Retention-Sample Gate**: [EN](./food-safety-cold-chain-fsma-204-haccp-allergen-recall-voice-desk-selection-faq.en.md) | [中文](./food-safety-cold-chain-fsma-204-haccp-allergen-recall-voice-desk-selection-faq.md)
 179. **Hazmat Chemical Logistics, EPA RCRA e-Manifest & Spill Emergency (CHEMTREC / SAP EHS / 49 CFR) 24×7 Voice Dispatch: Segregation Lock, Class 4.3 No-Water Gate & NRC Triage**: [EN](./hazmat-chemical-logistics-chemtrec-epa-rcra-erg-spill-voice-dispatch-selection-faq.en.md) | [中文](./hazmat-chemical-logistics-chemtrec-epa-rcra-erg-spill-voice-dispatch-selection-faq.md)
 180. **Investor Relations (IR), Pre-Earnings Quiet Period & M&A Virtual Data Room (Datasite / Intralinks / SEC Reg FD) 24×7 Voice Concierge: Selective MNPI Block, Quiet-Period Lock & Clean-Room Gate**: [EN](./investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.en.md) | [中文](./investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.md)
+181. **IT Asset Disposition (ITAD), Data Center Decommissioning & NIST SP 800-88 (ServiceNow HAM / Blancco) 24×7 Voice Desk: Zero-Escape Dock Lock, Legal-Hold Freeze & Battery Gate**: [EN](./it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.en.md) | [中文](./it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.md)
