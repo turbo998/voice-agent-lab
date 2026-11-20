@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="620" fill="url(#bg)" rx="16"/>
+  <text x="40" y="48" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Privacy DSAR, Cross-Border Data Transfer &amp; Breach 72h 24x7 Voice Desk (OneTrust / BigID / GDPR / PIPL)</text>
+  <text x="40" y="76" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="14">GDPR Art. 17 Erasure vs AML/Tax Retention Exemption Lock · Identity-Verified DSAR Export Gate · 72h DPO Breach Clock</text>
+
+  <!-- Left Column: Consumer & Vendor Channels -->
+  <rect x="40" y="105" width="260" height="475" rx="12" fill="url(#card)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="60" y="138" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. Privacy &amp; DPO Channels</text>
+  <rect x="60" y="158" width="220" height="90" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">CCPA / GDPR Toll-Free Line</text>
+  <text x="75" y="207" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Statutory 1-800 DSAR intake</text>
+  <text x="75" y="227" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Right to Know / Delete / Opt-Out</text>
+
+  <rect x="60" y="265" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Cross-Border Transfer Check</text>
+  <text x="75" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• EU SCCs / TIA / PIPL CAC</text>
+  <text x="75" y="334" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Subprocessor onboarding</text>
+
+  <rect x="60" y="378" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="405" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Vendor PII Leak Hotline</text>
+  <text x="75" y="427" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• GDPR Art. 33 72-hour clock</text>
+  <text x="75" y="447" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• DORA ICT incident report</text>
+
+  <rect x="60" y="490" width="220" height="68" rx="8" fill="#172554" stroke="#3b82f6"/>
+  <text x="75" y="518" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">Target First Response: 540ms</text>
+  <text x="75" y="540" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12">Zero Pretext DSAR Data Leak</text>
+
+  <!-- Middle Column: Deterministic Privacy & DPO Guardrails -->
+  <rect x="340" y="105" width="490" height="475" rx="12" fill="url(#card)" stroke="#10b981" stroke-width="2"/>
+  <text x="365" y="138" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. Deterministic Privacy &amp; DPO Engine (PRIVACY-DSAR-GDPR-PIPL-BREACH-01)</text>
+
+  <rect x="365" y="158" width="440" height="118" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="385" y="185" fill="#ecfdf5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate A: Anti-Pretexting DSAR Identity &amp; Authorized-Agent Lock</text>
+  <text x="385" y="208" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Never reads out or emails a Right-to-Access (DSAR) personal data archive</text>
+  <text x="385" y="228" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">  based on phone KBA alone (prevents stalkers/hackers weaponizing DSARs)</text>
+  <text x="385" y="248" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Requires passkey/IDV + GDPR Art. 17(3) AML/Tax/Loan retention check</text>
+
+  <rect x="365" y="292" width="440" height="122" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="385" y="319" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate B: GDPR Art. 17(3) Statutory Retention &amp; Anti-Fraud Purge Block</text>
+  <text x="385" y="342" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks hard-deleting records when a debtor or fraudster invokes &quot;Right to</text>
+  <text x="385" y="362" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">  Be Forgotten&quot; to wipe an unpaid loan, chargeback history, or 5yr AML log</text>
+  <text x="385" y="382" fill="#fef08a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Suppresses marketing only while preserving statutory financial records</text>
+
+  <rect x="365" y="430" width="440" height="128" rx="8" fill="#1e1b4b" stroke="#8b5cf6"/>
+  <text x="385" y="457" fill="#ddd6fe" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate C: Cross-Border Data Residency &amp; 72-Hour Breach DPO Escalation</text>
+  <text x="385" y="480" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks cross-border PII export unless SCCs/DPF or CAC Security Assessment</text>
+  <text x="385" y="500" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">  is active; if caller reports a PII data breach, 0ms starts the GDPR 72h /</text>
+  <text x="385" y="520" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  DORA 4h / PIPL statutory DPO notification countdown</text>
+
+  <!-- Right Column: Privacy Ops Stack -->
+  <rect x="870" y="105" width="290" height="475" rx="12" fill="url(#card)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="890" y="138" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">3. Privacy Ops Ecosystem</text>
+
+  <rect x="890" y="158" width="250" height="115" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">OneTrust / BigID / Transcend</text>
+  <text x="905" y="208" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Automated 30/45-day DSAR SLA</text>
+  <text x="905" y="228" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Marketing suppression sync</text>
+  <text x="905" y="248" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Record of Processing (RoPA)</text>
+
+  <rect x="890" y="290" width="250" height="125" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="317" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">DPO &amp; Regulatory Reporting</text>
+  <text x="905" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• CNIL / ICO / CAC breach form</text>
+  <text x="905" y="360" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Authorized agent PoA verify</text>
+  <text x="905" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Regional TTS/STT residency</text>
+
+  <rect x="890" y="432" width="250" height="126" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="905" y="459" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Privacy Desk KPIs</text>
+  <text x="905" y="482" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Toll-free DSAR automation: 89%</text>
+  <text x="905" y="502" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pretext DSAR leaks: 0.00%</text>
+  <text x="905" y="522" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Illegal AML/debt wipes: 0.00%</text>
+  <text x="905" y="542" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Cost: $0.052/min vs $3.65 desk</text>
+</svg>

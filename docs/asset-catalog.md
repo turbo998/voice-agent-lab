@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（191 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（192 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -232,3 +232,4 @@
 189. **远洋航运租船（BIMCO Charterparty）、船舶代理（Port Agency）与装卸滞期费（Veson IMOS）24×7 语音运营台（准备就绪通知书 NOR 锚地检疫生效硬锁、JWC 战争险航区越权拦截与无正本提单放货 P&I 脱保熔断）方案**：[中文](./maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.md) | [EN](./maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.en.md)
 190. **血液中心、单采血浆站（CSL / Octapharma）与医院输血科（AABB / FDA CBER / WellSky）24×7 语音招募与紧急配血（ABO/RhD 与辐照特殊血双核对硬锁、致畸药物献血暂缓门禁与献血后发热 PDI 4秒锁定血液制品）方案**：[中文](./blood-bank-plasma-apheresis-donor-deferral-crossmatch-aabb-voice-desk-selection-faq.md) | [EN](./blood-bank-plasma-apheresis-donor-deferral-crossmatch-aabb-voice-desk-selection-faq.en.md)
 191. **低空经济 eVTOL 垂直起降港、工业无人机超视距巡检（BVLOS）与 UTM 空域（Joby / 亿航智能 / 大疆司空 2 / FAA LAANC）24×7 语音调度（临时禁飞区 TFR 与救护直升机 0ms 避让锁、20% 备降电量红线与乘客实称配平硬锁）方案**：[中文](./evtol-vertiport-commercial-drone-bvlos-utm-airspace-voice-dispatch-selection-faq.md) | [EN](./evtol-vertiport-commercial-drone-bvlos-utm-airspace-voice-dispatch-selection-faq.en.md)
+192. **企业数据隐私权利中心（DSAR / OneTrust / BigID）、跨境数据出境合规（GDPR / PIPL）与 72 小时数据泄露通报 24×7 语音工作台（防黑客借 DSAR 窃取个人全量档案、防老赖借“被遗忘权”抹除欠款/反洗钱记录与 72 小时 DPO 强报）方案**：[中文](./privacy-dsar-cross-border-data-transfer-gdpr-pipl-breach-voice-desk-selection-faq.md) | [EN](./privacy-dsar-cross-border-data-transfer-gdpr-pipl-breach-voice-desk-selection-faq.en.md)

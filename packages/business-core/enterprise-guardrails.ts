@@ -4644,6 +4644,30 @@ export function evaluateEvtolDroneUtmBvlosVoiceGuard(input: {
   };
 }
 
+export interface PrivacyDsarCrossBorderBreachVoiceEvaluation {
+  policyCode: "PRIVACY-DSAR-GDPR-PIPL-BREACH-01";
+  hardDatabaseErasureAuthorized: boolean;
+  dpo72HourBreachClockEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Privacy DSAR Out-of-Band IDV Lock, GDPR Art. 17(3) AML/Debt Retention Exemption & 72h Breach Clock Guard (`PRIVACY-DSAR-GDPR-PIPL-BREACH-01`).
+ */
+export function evaluatePrivacyDsarCrossBorderBreachVoiceGuard(input: {
+  outOfBandIdentityAndAuthorizedAgentVerified: boolean;
+  subjectToStatutoryAmlTaxOrActiveDebtRetention: boolean;
+  reportsPersonalDataBreachOrLeak: boolean;
+}): PrivacyDsarCrossBorderBreachVoiceEvaluation {
+  return {
+    policyCode: "PRIVACY-DSAR-GDPR-PIPL-BREACH-01",
+    hardDatabaseErasureAuthorized:
+      input.outOfBandIdentityAndAuthorizedAgentVerified &&
+      !input.subjectToStatutoryAmlTaxOrActiveDebtRetention,
+    dpo72HourBreachClockEscalationTriggered:
+      input.reportsPersonalDataBreachOrLeak,
+  };
+}
+
 
 
 
