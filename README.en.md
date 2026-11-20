@@ -225,6 +225,7 @@ flowchart LR
 151. **Enterprise Voice Agent Security, Prompt-Injection Defense & Tool Privilege Governance (OWASP Agentic Top 10): Acoustic Jailbreak Shield, <=$50 Refund Cap & Toll-Fraud Lock**: [EN](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.md)
 152. **Commercial Trucking Fleet, Cold-Chain Logistics & Freight Dispatch Voice AI: ELD Hours-of-Service Interlocks, <=300m GPS Fuel-Card Unlock & Dock Detention**: [EN](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.en.md) | [中文](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.md)
 153. **Multifamily Residential & Commercial Leasing 24×7 Voice Concierge: Fair Housing Act (FHA) Anti-Steering Lock, Self-Guided Tour ID/GPS Gate & Yardi Pricing**: [EN](./docs/commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.en.md) | [中文](./docs/commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.md)
+154. **Automotive OEM & Dealership Test-Drive Booking, Trade-In Valuation & Auto Finance (F&I) Voice Concierge: 15s Callback, Conditional Appraisal Band & True APR Lock**: [EN](./docs/luxury-automotive-test-drive-financing-fni-tradein-appraisal-voice-concierge-selection-faq.en.md) | [中文](./docs/luxury-automotive-test-drive-financing-fni-tradein-appraisal-voice-concierge-selection-faq.md)
 
 ---
 

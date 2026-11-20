@@ -225,6 +225,7 @@ flowchart LR
 151. **企业实时语音智能体安全防御与权限治理架构（OWASP Agentic：防声学/备注间接提示词注入、单通 `<=$50` 退款确定性防火墙与防 +882 国际高价号盗打）方案**：[中文](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.md) | [EN](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.en.md)
 152. **干线物流车队、冷链重卡与同城货运智能语音调度官（ELD/北斗疲劳驾驶工时硬互锁、油卡 GPS `<=300m` 防盗刷解封与收货月台压车追偿）方案**：[中文](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.md) | [EN](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.en.md)
 153. **连锁长租公寓、住宅物业招租（Multifamily Leasing）与写字楼招商 24×7 语音礼宾（公平住房法 FHA 反歧视锁、自助看房证件活体+150m 门禁核身与 Yardi 净月租）方案**：[中文](./docs/commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.md) | [EN](./docs/commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.en.md)
+154. **新能源汽车与豪华车品牌“线上留资 → 上门试驾预约 → 置换估价与汽车金融（F&I）”全链路语音智能体（15秒配置器上下文首呼、旧车条件区间估价锁与真实年化 APR 强披露）方案**：[中文](./docs/luxury-automotive-test-drive-financing-fni-tradein-appraisal-voice-concierge-selection-faq.md) | [EN](./docs/luxury-automotive-test-drive-financing-fni-tradein-appraisal-voice-concierge-selection-faq.en.md)
 
 ---
 

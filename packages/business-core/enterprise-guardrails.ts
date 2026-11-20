@@ -3606,6 +3606,32 @@ export function evaluateRealEstateLeasingFairHousingVoiceGuard(input: {
   };
 }
 
+export interface AutomotiveTestDriveFinancingTradeInVoiceEvaluation {
+  policyCode: "AUTOMOTIVE-TEST-DRIVE-FNI-01";
+  doorstepTestDriveDispatchAuthorized: boolean;
+  sightUnseenSinglePriceBlocked: boolean;
+  financeQuoteCompliantWithTrueApr: boolean;
+}
+
+/**
+ * Deterministic Automotive Test-Drive License Gate, Sight-Unseen Conditional Trade-In Band & Truth-in-Lending True APR Guard (`AUTOMOTIVE-TEST-DRIVE-FNI-01`).
+ */
+export function evaluateAutomotiveTestDriveFinancingTradeInVoiceGuard(input: {
+  driverLicenseOver1YrAndWaiverVerified: boolean;
+  attemptedSightUnseenSingleGuaranteedTradeInPrice: boolean;
+  disclosedTrueAnnualPercentageRateApr: boolean;
+}): AutomotiveTestDriveFinancingTradeInVoiceEvaluation {
+  return {
+    policyCode: "AUTOMOTIVE-TEST-DRIVE-FNI-01",
+    doorstepTestDriveDispatchAuthorized:
+      input.driverLicenseOver1YrAndWaiverVerified,
+    sightUnseenSinglePriceBlocked:
+      input.attemptedSightUnseenSingleGuaranteedTradeInPrice,
+    financeQuoteCompliantWithTrueApr:
+      input.disclosedTrueAnnualPercentageRateApr,
+  };
+}
+
 
 
 

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgAutoSale" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="tdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="tradeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="fniGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgAutoSale)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Automotive Test-Drive Booking, Trade-In Valuation &amp; Auto Finance (F&amp;I) Voice Concierge</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">新能源汽车与豪华车品牌“上门试驾预约 + 旧车置换估价 + 汽车金融”全链路语音智能体：驾照预审、VIN 区间估价与真实 APR 披露</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">AUTOMOTIVE-TEST-DRIVE-FNI-01</text>
+
+  <!-- Pillar 1: 15-Second Lead-to-Test-Drive & Driver License Pre-Verification -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#tdGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 留资 15秒极速邀约与上门试驾双锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 车企获客痛点：单条懂车帝/抖音线索贵达 ¥500，慢回 30分钟废一半！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 门店销售顾问忙于接待展厅客户，线上留资平均 2小时才回电，客户已去试驾竞品</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或者约好了周末到店试驾，客户临时到了才发现试驾车被别人开走了或驾照未满 1年！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ 试驾车 + 试驾专员 + 驾照资格三元原子锁</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 留资后 15秒内 AI 外呼，实时锁定最近门店对应配置试驾车 (如智驾版) 与专员排班</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 预约上门试驾前强制完成驾照满 1 年有效核验与电子试驾免责协议签署！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">个性化试驾路线与车载偏好预热 (Pre-Warm)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 语音询问：“您平时更关注城区自动泊车、高速智驾领航，还是后排二胎家庭舒适度？”</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 上车前试驾专员平板已收到客户关注点卡片，试驾车空调提前调至 23°C</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">留资转到店试驾率：18.5% ➔ 31.2% (+68%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">未完成有效驾照核验与试驾免责签署前，严禁派出上门试驾车</text>
+  </g>
+
+  <!-- Pillar 2: Sight-Unseen Trade-In VIN Valuation Band (Anti-Bait-and-Switch) -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#tradeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 旧车置换 VIN 区间估价与国补叠加试算</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">🚗 痛点：电话里随口报高价骗客户到店，到店检测狂砍 3 万直接吵翻！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 60% 购车客户有旧车置换 (Trade-In) 需求；若 AI 在未见实车时承诺单一死价格</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• 到店后二手车评估师发现钣金喷漆扣减车价，客户会控告品牌价格欺诈 (Bait &amp; Switch)！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">强制播报“车况三档条件区间价” (Conditional Valuation Band)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 直连 Carfax / 精真估 / 查博士：根据行驶证 VIN、里程与出险记录算三档区间：</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• “精品车况约 11.2万~11.8万，若有局部补漆约 10.5万，最终以到店 30分钟举升检测为准”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">政府报废/置换更新补贴 + 厂端置换权益一键统算</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 自动核对旧车排放标准与持有时间是否符合当地省市以旧换新补贴（如 ¥15,000~¥20,000）</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 预约试驾同时同步锁定店内二手车评估师工位，试驾完回来旧车报告同步出炉！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">同场置换评估率 +52% · 估价争议投诉 0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">严禁在未完成线下实车漆面与底盘检测前口头承诺单一包收购价</text>
+  </g>
+
+  <!-- Pillar 3: Auto Finance (F&I) Truth-in-Lending APR vs Flat-Rate Guard -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#fniGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 汽车金融 (F&amp;I) 真实年化利率 (APR) 强披露</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 金融合规重灾区：只说“年费率 2.5%”，隐瞒真实年化利率 (APR) 实为 4.68%！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 中国央行 2021 第 3 号公告与美国 Reg Z (TILA) / FTC CARS Rule 严禁只报“表面分期费率”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 或未经客户明确同意，在月供报价里偷偷捆绑高价延保、轮胎险与 GPS 服务费！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">确定性金融计算器：强制同报单利 APR 与总利息额</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 严禁大模型口算车贷月供！调用官方金融贴息接口精算首付、月供与尾款 (Balloon)</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 播报任何分期方案时，100% 强制报出折算后的真实年化利率 (APR) 与利息总额！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">零强制捆绑销售锁 (Anti-Packing / FTC CARS Rule)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 裸车金融月供与可选增值服务（无忧服务包/智驾买断包）分列展示</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 支持在线软征信预审 (Soft Pull Pre-Qualification)，不伤客户征信查询次数</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">汽车金融费率误导投诉：0 起 · 大定转化 +26%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通车企直营 App、DCC 线索中心与经销商 DMS 全闭环</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">汽车试驾预约、置换估价与金融 (F&amp;I) 语音智能体三大铁律 (AUTOMOTIVE-TEST-DRIVE-FNI-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 试驾核身与区间估价：派出试驾车前强制核验有效驾照与免责协议；未见实车严禁报单一死价，必须播报条件车况估值区间；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 汽车金融透明红线：播报车贷月供或分期费率时，100% 强制同步披露真实年化利率 (APR) 与总利息，严禁隐形捆绑附加增值包。</text>
+</svg>
