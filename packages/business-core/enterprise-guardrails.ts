@@ -4767,6 +4767,31 @@ export function evaluateAgritechGrainFumigationBiosecurityVoiceGuard(input: {
   };
 }
 
+export interface BiopharmaCarTChainOfIdentityVoiceEvaluation {
+  policyCode: "BIOPHARMA-CART-COI-ASEPTIC-01";
+  batchReleaseAndHospitalInfusionAuthorized: boolean;
+  cryoExcursionHoldAndQpEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Biopharma CAR-T Autologous Chain-of-Identity (COI) Lock, EU GMP Annex 1 Gate & -150°C Cryo / REMS Tocilizumab Guard (`BIOPHARMA-CART-COI-ASEPTIC-01`).
+ */
+export function evaluateBiopharmaCarTChainOfIdentityVoiceGuard(input: {
+  autologousChainOfIdentityDualVerified: boolean;
+  gradeAIsolatorAndSterilityAssayPassed: boolean;
+  cryoShipperTempAboveMinus150COrMissingTocilizumab: boolean;
+}): BiopharmaCarTChainOfIdentityVoiceEvaluation {
+  return {
+    policyCode: "BIOPHARMA-CART-COI-ASEPTIC-01",
+    batchReleaseAndHospitalInfusionAuthorized:
+      input.autologousChainOfIdentityDualVerified &&
+      input.gradeAIsolatorAndSterilityAssayPassed &&
+      !input.cryoShipperTempAboveMinus150COrMissingTocilizumab,
+    cryoExcursionHoldAndQpEscalationTriggered:
+      input.cryoShipperTempAboveMinus150COrMissingTocilizumab,
+  };
+}
+
 
 
 
