@@ -4129,6 +4129,33 @@ export function evaluateEnterpriseProcurementAribaExpeditingVoiceGuard(input: {
   };
 }
 
+export interface CybersecuritySocIncidentBridgeVoiceEvaluation {
+  policyCode: "CYBER-SOC-INCIDENT-BRIDGE-01";
+  incidentAckAuthorized: boolean;
+  hostNetworkContainmentAuthorized: boolean;
+  privilegedMfaResetAuthorized: boolean;
+}
+
+/**
+ * Deterministic Cybersecurity SOC Sleep-Inertia Challenge, Tier-0 Dual-Control Containment & Anti-Deepfake FIDO2 Guard (`CYBER-SOC-INCIDENT-BRIDGE-01`).
+ */
+export function evaluateCybersecuritySocIncidentBridgeVoiceGuard(input: {
+  cognitiveWakeupChallengePassed: boolean;
+  isTierZeroDomainControllerOrProdCluster: boolean;
+  dualControlCisoAndInfraApprovalVerified: boolean;
+  outOfBandFido2OrVerifiedIdApproved: boolean;
+}): CybersecuritySocIncidentBridgeVoiceEvaluation {
+  return {
+    policyCode: "CYBER-SOC-INCIDENT-BRIDGE-01",
+    incidentAckAuthorized: input.cognitiveWakeupChallengePassed,
+    hostNetworkContainmentAuthorized:
+      input.cognitiveWakeupChallengePassed &&
+      (!input.isTierZeroDomainControllerOrProdCluster ||
+        input.dualControlCisoAndInfraApprovalVerified),
+    privilegedMfaResetAuthorized: input.outOfBandFido2OrVerifiedIdApproved,
+  };
+}
+
 
 
 

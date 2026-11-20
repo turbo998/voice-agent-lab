@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (172 Bilingual Guides)
+## 3. Solution Architect Selection Guides (173 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -213,3 +213,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 170. **CPA Firm, Bookkeeping & Tax Season (CCH Axcess / Intuit ProConnect) 24×7 Voice Advisor: IRC Section 7216 Disclosure Gate, Extension Penalty Lock & K-1/1099 Chaser**: [EN](./accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.en.md) | [中文](./accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.md)
 171. **Staffing Agency, RPO & High-Volume Shift Recruiting (Bullhorn / Workday) 24×7 Voice AI: EEOC Salary-History Ban Lock, Credential & Overtime Cap Gate & 90s Shift Backfill**: [EN](./talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.en.md) | [中文](./talent-staffing-agency-rpo-recruiting-eeoc-salary-history-ban-shift-fill-voice-selection-faq.md)
 172. **Enterprise Procurement, MRO Sourcing & PO Expediting (SAP Ariba / Coupa) 24×7 Voice Desk: AVL/OFAC Sanctions Lock, FCPA Anti-Kickback Gate & Zero-Voice Bank Change Rule**: [EN](./enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.en.md) | [中文](./enterprise-procurement-sourcing-ariba-coupa-vendor-expediting-mro-voice-desk-selection-faq.md)
+173. **Cybersecurity SOC, PagerDuty On-Call & Sev-1 War-Room (CrowdStrike / Sentinel) 24×7 Voice Bridge: Anti-Deepfake FIDO2 Lock, Tier-0 Dual-Control Containment & Wake-Up Challenge**: [EN](./cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.en.md) | [中文](./cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.md)
