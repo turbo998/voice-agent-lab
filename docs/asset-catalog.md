@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（165 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（166 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -206,3 +206,4 @@
 163. **工程机械租赁、高空作业车与叉车机队（United Rentals / Sunbelt / 宏信建发）24×7 语音报修与停租（Off-Rent）调度台（高空困人 0ms 降篮与液压禁拆锁、J1939 假故障 60秒自愈与停租远程锁车）方案**：[中文](./heavy-equipment-construction-rental-united-sunbelt-telematics-breakdown-voice-desk-selection-faq.md) | [EN](./heavy-equipment-construction-rental-united-sunbelt-telematics-breakdown-voice-desk-selection-faq.en.md)
 164. **公务机包机（Private Jet / NetJets / VistaJet）、FBO 贵宾航站楼与游艇 24×7 语音礼宾（临时加客海关 eAPIS 与 MTOW 配载硬锁、机尾号防追踪保密盾与机坪礼宾车牌照核验）方案**：[中文](./private-aviation-fbo-yacht-charter-uhnw-concierge-catering-manifest-voice-selection-faq.md) | [EN](./private-aviation-fbo-yacht-charter-uhnw-concierge-catering-manifest-voice-selection-faq.en.md)
 165. **医学检验中心（Quest / Labcorp / 金域迪安）与高端体检机构 24×7 语音预约与报告解读助手（检验危急值 0ms 防信箱强呼闭环、胃肠镜清肠伴喝、孕期防辐射锁与恶性病理保密盾）方案**：[中文](./diagnostic-lab-pathology-health-checkup-fasting-panic-value-voice-concierge-selection-faq.md) | [EN](./diagnostic-lab-pathology-health-checkup-fasting-panic-value-voice-concierge-selection-faq.en.md)
+166. **大型商业地产设施管理（IFM / CBRE / JLL / 万物云）与连锁商超保洁安防 24×7 语音报事与派单（地面湿滑 0ms 立牌防摔伤理赔锁、血液呕吐物 PPE 专派与外包 SLA 强呼）方案**：[中文](./commercial-cleaning-janitorial-facility-management-cbre-jll-sla-voice-dispatch-selection-faq.md) | [EN](./commercial-cleaning-janitorial-facility-management-cbre-jll-sla-voice-dispatch-selection-faq.en.md)

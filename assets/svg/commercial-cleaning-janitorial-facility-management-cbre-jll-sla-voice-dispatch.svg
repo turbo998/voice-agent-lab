@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgIfm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="slipGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="bioGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="slaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgIfm)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Commercial Facility Management (IFM / CBRE / JLL) &amp; Janitorial 24x7 Voice Dispatch</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">大型商业地产设施管理 (IFM) 与商超保洁安防 24×7 语音派单架构：地面湿滑 0ms 立牌防摔伤理赔锁、生物体液 PPE 锁与 SLA 审计</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">FACILITY-MANAGEMENT-IFM-SLA-01</text>
+
+  <!-- Pillar 1: 0ms Slip-and-Fall Wet-Floor Cone & Liability Evidence Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#slipGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 大堂洒水/油渍 0ms 防滑跌倒 (Slip-and-Fall) 锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 商超头号天价索赔：奶茶洒在大理石地面 15分钟没人放黄牌，顾客摔骨折赔 $80,000！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 商业综合体与写字楼公众责任险理赔中，72% 是地面湿滑/碎玻璃滑倒 (Slip-and-Fall)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若按普通保洁工单慢慢排队，或者保洁员拖完地没放小黄牌就拍照结单，法庭必判物业全责！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">0ms 对讲机广播抢占 + 3分钟立黄色警示牌拍照锁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 租户或顾客扫码语音报“2楼扶梯口地上洒了一地油/奶茶”，0ms 切最高优先级 P0</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 直接强插最近安保与保洁员蓝牙耳麦：3分钟内必须先立“小心地滑”黄牌并上传带时间戳照片！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">视觉 AI 核验“地面已干 + 警示牌在位”才准结单</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 保洁员语音报完工并拍完工照，GPT-4o Vision 确认地面无反光水渍且黄牌已立妥</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 自动生成不可篡改的《公众责任险防滑巡检证据链》</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">滑倒摔伤理赔诉讼下降 -81% · 响应 &lt;=3分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">未上传含防滑警示牌的现场照片前，100% 物理锁死湿滑工单关单权限</text>
+  </g>
+
+  <!-- Pillar 2: Biohazard / Bloodborne Pathogen & Chemical Mixing Safety Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#bioGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 血液/呕吐物生物污染 (Biohazard) 与防混药锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">☣️ 痛点：洗手间发现大量血液/针头或诺如呕吐物，竟派普通保洁阿姨拿普通拖把去拖！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 用普通拖把直接拖诺如病毒呕吐物或血迹，会把病原体涂满整个楼层引发大规模院感/食安爆发</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• 或保洁员为洗马桶把 84消毒液 (次氯酸钠) 与洁厕灵 (盐酸) 混倒，当场产生剧毒氯气中毒！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">OSHA 血液病原体 (BBP) 专派锁 + 严禁混配氯气警告</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 命中“血迹/呕吐物/废弃注射器”时，0ms 拦截普通保洁派单！</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 强制派发持有生物危害处置证且携带【凝固粉 + 5000mg/L 含氯消杀包 + 医疗黄袋】专员</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">洗手间门贴二维码“住客/白领一句话免注册报事”</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 写字楼白领扫码按住说 3秒：“男卫第 2 个隔间没厕纸了，洗手液也空了”</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 自动绑定该二维码精确空间坐标 (B座12层东侧男卫)，5分钟极速补给</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">洁厕化学品混配中毒与交叉感染：0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">支持保洁/保安老员工方言与外籍劳工 (西语/印地语/越语) 母语语音交互</text>
+  </g>
+
+  <!-- Pillar 3: Subcontractor HVAC/Elevator SLA Clock & Ghost-Patrol Prevention -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#slaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 外包维保商 SLA 倒计时与防假巡检打卡</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：写字楼中央空调罢工 4小时，外包维保商谎称“半小时就到场了”逃避违约金！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 大型商办物业 (CBRE/JLL) 管着几十家电梯、冷机、消防外包商，合同规定 P1 故障 60m 到场</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 传统靠微信群吼一嗓子，月底外包商全员篡改纸质签到时间，SLA 罚款一分扣不下来</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">15m 未接单自动语音连环强呼外包商值班长 + 机房 NFC 签到</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 工单派发 15m 未响应，AI 自动夺命连环呼外包商项目经理；到场必须扫机房动态码语音报修</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 超时未到场自动在 ServiceNow / Maximo 生成不可抵赖的 SLA 违约扣款单！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">夜间安保巡更“现场动态读数口述”防代刷卡</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 杜绝保安把巡更棒绑在狗身上或拍照代打卡：走到配电房需对着语音助手报出当前气压表读数</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 声纹确认本人 + 表计读数合理，10秒完成真巡检</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">设施报修一次及时完修率：71% ➔ 96.4%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 IBM Maximo / Corrigo / ServiceNow IWMS 企业不动产系统</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">商业地产设施管理 (IFM) 与商超保洁安防语音派单三大铁律 (FACILITY-MANAGEMENT-IFM-SLA-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 防滑理赔闭环锁：地面湿滑/油污/碎玻璃 0ms 抢占强插最近人员耳麦，未上传含“小心地滑”警示牌的现场照片前严禁关闭工单；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 生物污染与混药防护：遇血液/呕吐物/针头 100% 拦截普通保洁派单，强制派发持证 PPE 消杀组并严禁次氯酸钠与酸性清洁剂混用。</text>
+</svg>

@@ -3931,6 +3931,34 @@ export function evaluateDiagnosticLabHealthScreeningVoiceGuard(input: {
   };
 }
 
+export interface FacilityManagementJanitorialSlaVoiceEvaluation {
+  policyCode: "FACILITY-MANAGEMENT-IFM-SLA-01";
+  slipAndFallTicketClosureAuthorized: boolean;
+  standardJanitorBlockedForBiohazardPpe: boolean;
+  subcontractorLiveGaugeArrivalVerified: boolean;
+}
+
+/**
+ * Deterministic Commercial IFM & Janitorial Slip-and-Fall Caution Cone Vision Lock, Biohazard PPE Gate & Live-Gauge SLA Guard (`FACILITY-MANAGEMENT-IFM-SLA-01`).
+ */
+export function evaluateFacilityManagementJanitorialSlaVoiceGuard(input: {
+  isSlipAndFallWetFloorHazard: boolean;
+  wetFloorCautionConePhotoVerifiedByVision: boolean;
+  involvesBloodVomitOrSharpsBiohazard: boolean;
+  mechanicalRoomLiveGaugeReadbackMatched: boolean;
+}): FacilityManagementJanitorialSlaVoiceEvaluation {
+  return {
+    policyCode: "FACILITY-MANAGEMENT-IFM-SLA-01",
+    slipAndFallTicketClosureAuthorized:
+      !input.isSlipAndFallWetFloorHazard ||
+      input.wetFloorCautionConePhotoVerifiedByVision,
+    standardJanitorBlockedForBiohazardPpe:
+      input.involvesBloodVomitOrSharpsBiohazard,
+    subcontractorLiveGaugeArrivalVerified:
+      input.mechanicalRoomLiveGaugeReadbackMatched,
+  };
+}
+
 
 
 
