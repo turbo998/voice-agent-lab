@@ -214,6 +214,7 @@ flowchart LR
 140. **全球连锁快餐（QSR）得来速车道、现制咖啡茶饮与电话语音点单（85dB 引擎降噪、POS 实时估清 `86 List` 硬锁、复杂加料修改树与客单价提升 `+14.2%`）方案**：[中文](./docs/qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.md) | [EN](./docs/qsr-drive-thru-coffee-voice-ordering-pos-modifier-upsell-selection-faq.en.md)
 141. **寿险与健康险智能电话核保（Tele-Underwriting）、续期 60 天宽限期挽回与温情理赔语音助手（慕再/瑞再动态追问树、双录免责锁与 `13` 个月继续率提升 `+6.8%`）方案**：[中文](./docs/life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.md) | [EN](./docs/life-health-insurance-tele-underwriting-renewal-claims-voice-selection-faq.en.md)
 142. **智能汽车座舱（In-Cabin Cockpit）多模态语音助手（四/六音区声源权限隔离、行车 `Speed>0` CAN 总线禁关大灯安全锁与高通 8295 隧道断网端云协同）方案**：[中文](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.md) | [EN](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.en.md)
+143. **全托管商业语音智能体平台（Vapi vs. Retell AI vs. Bland AI vs. ElevenLabs）vs. 企业自建编排（Azure ACS + LiveKit / Pipecat：五层叠加平台税拆解、BYOC 破局与月呼 8万分钟 TCO 拐点）方案**：[中文](./docs/managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.md) | [EN](./docs/managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.en.md)
 
 ---
 

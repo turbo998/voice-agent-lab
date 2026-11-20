@@ -3302,6 +3302,38 @@ export function evaluateAutomotiveInCabinMultimodalVoiceGuard(input: {
   };
 }
 
+export interface ManagedVsSelfHostedVoicePlatformTcoEvaluation {
+  policyCode: "VOICE-PLATFORM-TCO-BYOC-01";
+  fiveLayerLandedCostPerMinUsd: number;
+  selfHostedMigrationTriggered: boolean;
+  recommendedDeploymentMode: "managed_with_byoc_custom_llm" | "self_hosted_azure_acs_livekit";
+}
+
+/**
+ * Deterministic Managed Wrapper Platform (Vapi/Retell/Bland/11Labs) vs. Self-Hosted Azure ACS + LiveKit TCO & Sovereignty Guard (`VOICE-PLATFORM-TCO-BYOC-01`).
+ */
+export function evaluateManagedVsSelfHostedVoicePlatformTcoGuard(input: {
+  monthlyVoiceMinutes: number;
+  requiresStrictDataResidencyOrPrivateVnet: boolean;
+  platformWrapperFeePerMinUsd: number;
+  telephonyAndSttLlmTtsStackPerMinUsd: number;
+}): ManagedVsSelfHostedVoicePlatformTcoEvaluation {
+  const landedCost = Number(
+    (input.platformWrapperFeePerMinUsd + input.telephonyAndSttLlmTtsStackPerMinUsd).toFixed(4)
+  );
+  const migrate =
+    input.monthlyVoiceMinutes >= 80000 ||
+    input.requiresStrictDataResidencyOrPrivateVnet;
+  return {
+    policyCode: "VOICE-PLATFORM-TCO-BYOC-01",
+    fiveLayerLandedCostPerMinUsd: landedCost,
+    selfHostedMigrationTriggered: migrate,
+    recommendedDeploymentMode: migrate
+      ? "self_hosted_azure_acs_livekit"
+      : "managed_with_byoc_custom_llm",
+  };
+}
+
 
 
 

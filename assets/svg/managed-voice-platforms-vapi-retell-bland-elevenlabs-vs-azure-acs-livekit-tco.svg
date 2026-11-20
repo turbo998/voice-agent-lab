@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgPlat" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B19"/>
+      <stop offset="50%" stop-color="#111C38"/>
+      <stop offset="100%" stop-color="#081020"/>
+    </linearGradient>
+    <linearGradient id="taxGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="byocGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="selfGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgPlat)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Managed Voice Platforms (Vapi / Retell / Bland / ElevenLabs) vs. Azure ACS + LiveKit TCO</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">商业托管平台 vs. 企业自建编排选型：五层叠加计费陷阱拆解、BYOC 自带密钥过渡与月呼 8 万分钟 TCO 拐点架构</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">VOICE-PLATFORM-TCO-BYOC-01</text>
+
+  <!-- Pillar 1: 5-Layer Stacked Billing Trap in Managed Wrapper Platforms -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#taxGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 商业托管平台“五层叠加过路税”真相</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 账单暴雷：官网宣传 $0.05/分钟，实付却高达 $0.18~$0.26/分钟！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 许多 SaaS 封装平台宣称基础费仅 $0.05~$0.07/min，但那只是空壳编排费</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 实际每分钟账单 = 平台费 + 电话费 + STT + LLM + TTS 五层累加！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">主流全托管平台定位对比 (Vapi / Retell / Bland / 11Labs)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• Vapi / Retell AI：开发者友好，支持换各家模型，但平台抽成 $0.05~$0.07/min</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• ElevenLabs Conversational AI：音色天花板，但高并发与私有化受限</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">数据驻留与金融/政务合规硬伤 (Data Sovereignty)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 音频与通话文本必须流经美东/美西第三方 SaaS 多租户控制面</text>
+    <text x="30" y="310" fill="#EF4444" font-size="12">• 难以通过国内金融等保四级、跨境 PIPL 零出境或严苛私有 VNet 审计</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">全托管适用区间：月呼 &lt; 80,000 分钟 (POC 期)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">优势是 2 天极速上线验证 PMF，免雇专职实时音视频工程师</text>
+  </g>
+
+  <!-- Pillar 2: 80,000 Min/Month TCO Inflection & BYOC Transition -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#byocGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 月呼 8 万分钟 TCO 拐点与 BYOC 破局</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">✅ 第一步止血：启用 BYOC (自带云端密钥与 SIP 线路)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 拒绝托管平台对 LLM/TTS 的二次加价，填入企业自己的 Azure OpenAI 密钥</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 通过 BYO SIP Trunk 直连企业自有运营商中继，立砍 35% 溢价</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">黄金 TCO 生命线：80,000 分钟/月 (约合日呼 880 通)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 当月通话量突破 8 万分钟时，纯平台包装费已超 $4,800/月 ($5.7万/年)</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• 在 50 万分钟/月规模下，自建 Azure ACS + LiveKit 每年净省 $528,000！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">并发通道墙 (Concurrency Cap Wall) 与企业 PTU</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 商业平台默认限制 10~50 路并发，每加 1 路并发额外收 $10~$20/月租金</text>
+    <text x="30" y="310" fill="#38BDF8" font-size="12">• 企业自建直连 Azure PTU 预留算力，天然承载千路洪峰无并发人头税</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">50万分钟/月单价：$0.185 ➔ $0.058 / 分钟 (-68.6%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">既消除中间商平台抽成，又将跨洋音频一跳延迟缩短 110ms</text>
+  </g>
+
+  <!-- Pillar 3: Self-Hosted Enterprise Architecture (Azure ACS + LiveKit / Pipecat) -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#selfGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 企业自建目标态 (ACS + LiveKit / Pipecat)</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">开源编排双雄：LiveKit Agents vs. Pipecat (AKS 部署)</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• LiveKit Agents：内置 WebRTC SFU 与 SIP 网关，K8s 工业级状态管理首选</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• Pipecat：轻量 Frame 流水线，适合快速对接 Azure ACS Media Streaming</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">100% 私有网络闭环 (Azure Private Link &amp; VNet)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 语音流从企业 SBC 进 Azure ACS，经内网直达 Azure Speech 与 GPT-4o</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 零第三方 SaaS 落盘，天然继承微软 BAA (HIPAA)、PCI-DSS 与主权云认证</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">三阶段平滑演进路线 (Zero-Downtime Migration)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• Wk 1-4 用 Retell/Vapi 跑通 MVP ➔ Wk 5-8 切 BYOC ➔ Wk 9+ 迁入 AKS</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 抽象统一 Prompt 与 MCP 工具层，底层换编排引擎业务代码零重写</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">全链路延迟 P50 410ms · 100% 自主可控</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">省去外部 SaaS 代理转发跳数，兼具最低分钟成本与最高安全合规</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">商业托管平台 vs. 企业自建语音编排选型三大铁律 (VOICE-PLATFORM-TCO-BYOC-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 算清五层叠加总账：评估 Vapi/Retell/Bland 时必须将“平台费 + 电话费 + STT + LLM + TTS + 并发槽位费”合并折算为真实每分钟 TCO；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 严守 8万分钟/月与合规分水岭：月呼 &gt;=8万分钟或涉及金融/医疗/政务数据不出境红线时，强制迁移至 Azure ACS + LiveKit/Pipecat 自建架构。</text>
+</svg>
