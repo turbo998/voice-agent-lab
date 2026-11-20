@@ -3632,6 +3632,33 @@ export function evaluateAutomotiveTestDriveFinancingTradeInVoiceGuard(input: {
   };
 }
 
+export interface HomeServicesFieldDispatchServiceTitanVoiceEvaluation {
+  policyCode: "HOME-SERVICES-FIELD-DISPATCH-01";
+  mainShutoffPreemptionTriggered0ms: boolean;
+  technicianDispatchAuthorized: boolean;
+  unlicensedOrUnsafePestDispatchBlocked: boolean;
+}
+
+/**
+ * Deterministic Franchise Home Services 0ms Burst-Pipe/Breaker Shutoff Preemption, Trade License Match & Pest Safety Guard (`HOME-SERVICES-FIELD-DISPATCH-01`).
+ */
+export function evaluateHomeServicesFieldDispatchServiceTitanVoiceGuard(input: {
+  activeBurstPipeFloodingOrElectricalSpark: boolean;
+  techHoldsRequiredTradeLicenseAndVanPart: boolean;
+  pestJobPregnancyPetAquariumPrecautionsVerified: boolean;
+}): HomeServicesFieldDispatchServiceTitanVoiceEvaluation {
+  const qualified =
+    input.techHoldsRequiredTradeLicenseAndVanPart &&
+    input.pestJobPregnancyPetAquariumPrecautionsVerified;
+  return {
+    policyCode: "HOME-SERVICES-FIELD-DISPATCH-01",
+    mainShutoffPreemptionTriggered0ms:
+      input.activeBurstPipeFloodingOrElectricalSpark,
+    technicianDispatchAuthorized: qualified,
+    unlicensedOrUnsafePestDispatchBlocked: !qualified,
+  };
+}
+
 
 
 

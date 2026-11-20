@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (154 Bilingual Guides)
+## 3. Solution Architect Selection Guides (155 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -195,3 +195,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 152. **Commercial Trucking Fleet, Cold-Chain Logistics & Freight Dispatch Voice AI: ELD Hours-of-Service Interlocks, <=300m GPS Fuel-Card Unlock & Dock Detention**: [EN](./commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.en.md) | [中文](./commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.md)
 153. **Multifamily Residential & Commercial Leasing 24×7 Voice Concierge: Fair Housing Act (FHA) Anti-Steering Lock, Self-Guided Tour ID/GPS Gate & Yardi Pricing**: [EN](./commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.en.md) | [中文](./commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.md)
 154. **Automotive OEM & Dealership Test-Drive Booking, Trade-In Valuation & Auto Finance (F&I) Voice Concierge: 15s Callback, Conditional Appraisal Band & True APR Lock**: [EN](./luxury-automotive-test-drive-financing-fni-tradein-appraisal-voice-concierge-selection-faq.en.md) | [中文](./luxury-automotive-test-drive-financing-fni-tradein-appraisal-voice-concierge-selection-faq.md)
+155. **Franchise Home Services (Plumbing, Electrical, Pest Control & Roofing / ServiceTitan) 24×7 Voice Dispatch: 0ms Main-Shutoff Preemption, Photo Pricebook Bands & Geo-Clustering**: [EN](./franchise-home-services-plumbing-pest-roofing-field-dispatch-estimate-voice-selection-faq.en.md) | [中文](./franchise-home-services-plumbing-pest-roofing-field-dispatch-estimate-voice-selection-faq.md)

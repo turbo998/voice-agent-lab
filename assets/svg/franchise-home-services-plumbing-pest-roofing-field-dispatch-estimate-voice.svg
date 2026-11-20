@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgHome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="shutGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="estGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgHome)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Franchise Home Services (Plumbing, Pest, Roofing / ServiceTitan) 24x7 Voice Dispatch</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">连锁家庭上门服务 (水电管道抢修/虫害消杀/屋顶修缮) 24×7 语音派工架构：爆管 0ms 关总阀自救、拍图透明估价与顺路排线</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">HOME-SERVICES-FIELD-DISPATCH-01</text>
+
+  <!-- Pillar 1: Burst Pipe / Live Electrical 0ms Shutoff Preemption -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#shutGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 爆管淹水/配电箱打火 0ms 关总阀自救抢占</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 灾难扩损：家里水管爆裂正在狂喷水，AI 还在慢吞吞问“请问您的邮编和邮箱？”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 凌晨 2 点厨房角阀断裂或地下室爆管，每耽误 1 分钟就会泡毁数万美元实木地板与家具</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若积水已漫过插座，贸然让业主蹚水去关地下室阀门更会导致触电身亡！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">0ms 跳过常规登记：先教关总水阀 / 切总电闸！</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 命中“爆管/喷水/淹了/电箱冒火花”时，0ms 冻结常规问卷，首先排查触电风险：</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• “若积水未接触电源插座，请立即顺时针拧紧水表间红色总水阀！同时我已在派急修车”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">燃气泄漏 / 屋顶坍塌 0ms 撤离与 911/119 联动</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 闻到臭鸡蛋煤气味或暴风雨树木砸穿屋顶漏雨触及吊顶线路时，强制指令全员撤出室外</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 同步唤醒距离最近的 24h 值班急修工程车 (On-Call Emergency Van) 15分钟出车</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">夜间急修第一现场止损时间：25m ➔ 45s</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">为业主与房屋保险公司减少 75% 水淹二次财产损失</text>
+  </g>
+
+  <!-- Pillar 2: Anti-Gouging Transparent Price-Book Range & Photo Triage -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#estGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 手机拍现场 &lt;80KB 透明价目表 (防坐地起价)</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">📸 行业信任危机：“30元上门疏通，修完结账变 2,800元”天价刺客！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 消费者最怕上门维修工看人下菜碟坐地起价；但若电话里不看现场盲报一口死价</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 师傅上门发现是主管道铸铁管塌陷而非普通堵塞，又会引发预算扯皮空跑一趟！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">ServiceTitan 标准价目表 (Flat-Rate Pricebook) 区间锁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 短信下发拍图链接：业主拍一张水槽下方漏水弯头、马蜂窝大小或屋顶漏水面积</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• AI 识别配件规格后报出官方标准区间：“更换标准铜质角阀含人工材料包干价 ¥180~¥240”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">上门检测费抵扣维修费透明承诺 (Diagnostic Fee Waiver)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 明确告知：“基础上门检测费 $69（若同意按标准价目表施工，检测费 100% 全额免除）”</text>
+    <text x="30" y="310" fill="#38BDF8" font-size="12">• 随车自动备齐对应口径管件/专用消杀药剂，一次上门完修率 (FTF) 达 92%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">电话询价转正式派工率：41% ➔ 76% (+85%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">严禁在未看现场照片时承诺复杂隐蔽工程单一死价，杜绝价格纠纷</text>
+  </g>
+
+  <!-- Pillar 3: ServiceTitan / FieldService Skill & Geo-Cluster Dispatch -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#routeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. ServiceTitan 技能资质与顺路拼单智能排线</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：把普通学徒派去修高压电箱，或者让师傅跨城空跑 40 公里只接一单！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 家政工程涉及严格特种作业证（高压电工证、白蚁持证熏蒸、高空屋顶作业险）</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 传统人工派单不看技师实时 GPS 顺路度，导致技师一天一半时间堵在路上</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">特种作业持证硬校验 + 社区顺路折扣 (Cluster Discount)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 网关硬校验：`Tech_Certification &gt;= Job_Hazard_Level`（无电工/登高证禁派）</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• “周四下午我们的高级技师正好在您隔壁碧桂园小区施工，选周四下午可免 $49 上门费！”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">白蚁消杀 / 喷药作业宠物与孕妇安全清场锁</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 针对虫害消杀 (Pest Control)，预约时强制核实家中是否有孕妇、婴儿、猫狗或观赏鱼缸</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 自动切换母婴级菊酯/饵剂配方并下发施工前 4 小时鱼缸遮盖与通风安全清单</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">技师日均有效完单数：3.2 单 ➔ 4.8 单 (+50%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">路途空驶油耗降低 34% · 夜间急修高毛利订单 100% 零漏接</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">连锁家政与上门工程服务 24×7 语音派工三大铁律 (HOME-SERVICES-FIELD-DISPATCH-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 险情 0ms 止损优先：遇爆管淹水、配电箱打火或煤气味，0ms 跳过常规登记，先语音指导关闭总水阀/总电闸或安全撤离；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 持证派工与透明估价：高危电工/登高/熏蒸作业 100% 锁定持证技师；结合现场照片按官方价目表报条件区间价，杜绝坐地起价。</text>
+</svg>
