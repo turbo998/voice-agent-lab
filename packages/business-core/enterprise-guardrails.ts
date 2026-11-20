@@ -4515,6 +4515,32 @@ export function evaluateSeniorLivingMemoryCareFallVoiceGuard(input: {
   };
 }
 
+export interface CorporateImmigrationMobilityVoiceEvaluation {
+  policyCode: "CORPORATE-IMMIGRATION-H1B-LCA-01";
+  h1bOutOfMsaWorksiteMoveAuthorized: boolean;
+  internationalTravelDepartureCleared: boolean;
+  urgentImmigrationAttorneyEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Corporate Immigration Matter-of-Simeio H-1B LCA Move Lock, Pending I-485 Travel Gate & CBP I-94 Bar Guard (`CORPORATE-IMMIGRATION-H1B-LCA-01`).
+ */
+export function evaluateCorporateImmigrationMobilityVoiceGuard(input: {
+  amendedLcaAndI129PetitionFiledWithUscis: boolean;
+  holdsApprovedAdvanceParoleOrValidDualIntentVisa: boolean;
+  atPortOfEntryCbpSecondaryOrI94ExpiresWithin14Days: boolean;
+}): CorporateImmigrationMobilityVoiceEvaluation {
+  return {
+    policyCode: "CORPORATE-IMMIGRATION-H1B-LCA-01",
+    h1bOutOfMsaWorksiteMoveAuthorized:
+      input.amendedLcaAndI129PetitionFiledWithUscis,
+    internationalTravelDepartureCleared:
+      input.holdsApprovedAdvanceParoleOrValidDualIntentVisa,
+    urgentImmigrationAttorneyEscalationTriggered:
+      input.atPortOfEntryCbpSecondaryOrI94ExpiresWithin14Days,
+  };
+}
+
 
 
 
