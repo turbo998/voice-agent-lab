@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (198 Bilingual Guides)
+## 3. Solution Architect Selection Guides (199 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -239,3 +239,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 196. **AgriTech Precision Farming, Grain Fumigation & Livestock Biosecurity (John Deere / Cargill / OSHA 1910.272) 24×7 Voice Desk: Silo Phosphine/Auger Lock, EPA PHI Gate & 0ms Outbreak Lockdown**: [EN](./agritech-precision-farming-grain-fumigation-livestock-biosecurity-voice-advisor-selection-faq.en.md) | [中文](./agritech-precision-farming-grain-fumigation-livestock-biosecurity-voice-advisor-selection-faq.md)
 197. **Biopharma CAR-T Cell Therapy Chain of Identity (COI), Grade A Aseptic eBR & Vein-to-Vein Logistics (Körber PAS-X / Vineti / 21 CFR Part 11) 24×7 Voice Copilot: Autologous COI Lock, -150°C Cryo Gate & REMS Shield**: [EN](./biopharma-car-t-cell-therapy-chain-of-identity-aseptic-ebr-voice-copilot-selection-faq.en.md) | [中文](./biopharma-car-t-cell-therapy-chain-of-identity-aseptic-ebr-voice-copilot-selection-faq.md)
 198. **Corporate Treasury, FX Hedging & High-Value SWIFT gpi Wire (Kyriba / SAP TRM / 360T) 24×7 Voice Desk: Pre-Approved SSI & Four-Eyes HSM Lock, FX Fat-Finger Exposure Gate & Deepfake CEO Fraud Shield**: [EN](./corporate-treasury-fx-hedging-wire-transfer-swift-gpi-voice-desk-selection-faq.en.md) | [中文](./corporate-treasury-fx-hedging-wire-transfer-swift-gpi-voice-desk-selection-faq.md)
+199. **Commercial Real Estate (CRE), Hyperscale Colocation Data Center & Industrial REIT (Yardi Voyager / MRI / ServiceNow IWMS) 24×7 Voice Concierge: NFPA 51B Hot-Work & MOP Cage Lock, Lease Surrender Legal Gate & 0ms Elevator/Thermal Dispatch**: [EN](./commercial-real-estate-reit-colocation-yardi-mri-cam-fitout-voice-concierge-selection-faq.en.md) | [中文](./commercial-real-estate-reit-colocation-yardi-mri-cam-fitout-voice-concierge-selection-faq.md)

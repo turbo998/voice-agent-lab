@@ -4820,6 +4820,34 @@ export function evaluateCorporateTreasuryFxWireVoiceGuard(input: {
   };
 }
 
+export interface CommercialRealEstateColocationYardiVoiceEvaluation {
+  policyCode: "CRE-REIT-COLOCATION-YARDI-01";
+  hotWorkOrCageAccessPermitAuthorized: boolean;
+  leaseEstoppelOrRentAbatementAuthorized: boolean;
+  bmsCriticalThermalOrEntrapmentDispatchTriggered: boolean;
+}
+
+/**
+ * Deterministic Commercial Real Estate (CRE), Colocation Data Center & REIT MOP Hot-Work Lock, Yardi Lease Gate & BMS Emergency Guard (`CRE-REIT-COLOCATION-YARDI-01`).
+ */
+export function evaluateCommercialRealEstateColocationYardiVoiceGuard(input: {
+  approvedMopAndFireWatchVerifiedInIwms: boolean;
+  assetManagerAndLegalSignedInYardi: boolean;
+  elevatorEntrapmentOrDataHallThermalRunaway: boolean;
+}): CommercialRealEstateColocationYardiVoiceEvaluation {
+  return {
+    policyCode: "CRE-REIT-COLOCATION-YARDI-01",
+    hotWorkOrCageAccessPermitAuthorized:
+      input.approvedMopAndFireWatchVerifiedInIwms &&
+      !input.elevatorEntrapmentOrDataHallThermalRunaway,
+    leaseEstoppelOrRentAbatementAuthorized:
+      input.assetManagerAndLegalSignedInYardi &&
+      !input.elevatorEntrapmentOrDataHallThermalRunaway,
+    bmsCriticalThermalOrEntrapmentDispatchTriggered:
+      input.elevatorEntrapmentOrDataHallThermalRunaway,
+  };
+}
+
 
 
 
