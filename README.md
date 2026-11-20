@@ -240,6 +240,7 @@ flowchart LR
 166. **大型商业地产设施管理（IFM / CBRE / JLL / 万物云）与连锁商超保洁安防 24×7 语音报事与派单（地面湿滑 0ms 立牌防摔伤理赔锁、血液呕吐物 PPE 专派与外包 SLA 强呼）方案**：[中文](./docs/commercial-cleaning-janitorial-facility-management-cbre-jll-sla-voice-dispatch-selection-faq.md) | [EN](./docs/commercial-cleaning-janitorial-facility-management-cbre-jll-sla-voice-dispatch-selection-faq.en.md)
 167. **高端婚礼堂、高定婚纱馆与目的地草坪婚礼 24×7 语音礼宾（户外婚礼 1:1 室内防雨备厅 Plan B 硬互锁、高定婚纱定制工期与 5天精洗缓冲锁及满档吉日平替）方案**：[中文](./docs/wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.md) | [EN](./docs/wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.en.md)
 168. **连锁自助仓储（Self-Storage / Public Storage / 万物仓）与搬家货车租赁（U-Haul / Penske）24×7 语音管家（深夜欠费锁门 25秒补缴秒开闸、危化禁存锁与 3.8米箱货限高复诵）方案**：[中文](./docs/self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.md) | [EN](./docs/self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.en.md)
+169. **律所客户接案（Legal Intake / Clio / Lawmatics）、人身伤害与劳动仲裁 24×7 语音初筛（利益冲突 ABA Rule 1.18 0ms 前置阻断、UPL 零法律意见/禁止承诺胜诉围栏与诉讼时效紧急预审）方案**：[中文](./docs/legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.md) | [EN](./docs/legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.en.md)
 
 ---
 

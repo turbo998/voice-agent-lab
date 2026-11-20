@@ -4015,6 +4015,33 @@ export function evaluateSelfStorageMovingTruckRentalVoiceGuard(input: {
   };
 }
 
+export interface LegalIntakeConflictAndUplVoiceEvaluation {
+  policyCode: "LEGAL-INTAKE-CONFLICT-CHECK-01";
+  caseFactCollectionAuthorized: boolean;
+  legalOpinionAndWinPromiseBlocked: boolean;
+  urgentStatuteOfLimitationsEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Law Firm Intake ABA Rule 1.18 Conflict Pre-Gate, UPL Zero-Advice Lock & Statute of Limitations Triage Guard (`LEGAL-INTAKE-CONFLICT-CHECK-01`).
+ */
+export function evaluateLegalIntakeConflictAndUplVoiceGuard(input: {
+  adversePartyConflictCheckCompleted: boolean;
+  adversePartyConflictDetected: boolean;
+  requestsLegalOpinionOrWinPromise: boolean;
+  daysUntilStatuteOfLimitationsExpires: number;
+}): LegalIntakeConflictAndUplVoiceEvaluation {
+  return {
+    policyCode: "LEGAL-INTAKE-CONFLICT-CHECK-01",
+    caseFactCollectionAuthorized:
+      input.adversePartyConflictCheckCompleted &&
+      !input.adversePartyConflictDetected,
+    legalOpinionAndWinPromiseBlocked: input.requestsLegalOpinionOrWinPromise,
+    urgentStatuteOfLimitationsEscalationTriggered:
+      input.daysUntilStatuteOfLimitationsExpires <= 14,
+  };
+}
+
 
 
 
