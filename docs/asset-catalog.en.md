@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (158 Bilingual Guides)
+## 3. Solution Architect Selection Guides (159 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -199,3 +199,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 156. **Global Freight Forwarding, Ocean FCL/LCL & Air Cargo 24×7 Voice Desk (CargoWise): 72h Port Demurrage Shield, 3-Greenlight Drayage Gate & Hazmat MSDS Lock**: [EN](./global-freight-forwarding-air-ocean-charter-demurrage-customs-voice-desk-selection-faq.en.md) | [中文](./global-freight-forwarding-air-ocean-charter-demurrage-customs-voice-desk-selection-faq.md)
 157. **Merchant Acquiring, Payment Terminal & Restaurant/Retail POS (Toast / Square / Adyen) 24×7 Voice Support: 30s Offline Store-and-Forward Failover, T+1 Recon & Payout Lock**: [EN](./pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.en.md) | [中文](./pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.md)
 158. **Enterprise B2B Accounts Receivable (AR), Order-to-Cash & Invoice Dispute Voice Copilot (SAP / HighRadius): 5s PO/POD Resend, Short-Pay Split & Credit-Hold Shield**: [EN](./enterprise-b2b-collections-ar-invoice-dispute-promise-to-pay-voice-selection-faq.en.md) | [中文](./enterprise-b2b-collections-ar-invoice-dispute-promise-to-pay-voice-selection-faq.md)
+159. **Subscription Media (OTT), Broadband & DTC Retention Save-Desk Voice AI: FTC Click-to-Cancel 1-Offer Lock, Pause-Plan Deflection & 365-Day Promo Cooldown**: [EN](./subscription-media-ott-broadband-retention-save-desk-ftc-click-to-cancel-voice-selection-faq.en.md) | [中文](./subscription-media-ott-broadband-retention-save-desk-ftc-click-to-cancel-voice-selection-faq.md)

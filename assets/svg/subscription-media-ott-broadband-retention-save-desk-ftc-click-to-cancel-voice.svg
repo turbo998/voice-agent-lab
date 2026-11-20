@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgSub" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="ftcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="pauseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="abuseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgSub)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Subscription Media (OTT), Broadband &amp; DTC Retention Save-Desk Voice AI: FTC Click-to-Cancel</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">流媒体、宽带与订阅制消费品退订挽留语音智能体架构：FTC 最多 1轮挽留红线、暂停订阅 (Pause) 替代销户与防羊毛党骗券锁</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">SUBSCRIPTION-RETENTION-FTC-SAVE-01</text>
+
+  <!-- Pillar 1: FTC Click-to-Cancel / Negative Option Rule Hard Compliance -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ftcGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. FTC Click-to-Cancel 最多 1轮挽留红线锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 监管天价罚单：故意把退订电话绕圈子 20分钟、连抛 5轮挽留死活不给退！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 美国 FTC Negative Option Rule、欧盟 DSA 与国内自动续费新规严打“退订迷宫 (Dark Patterns)”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若客户已明确拒绝第 1 个挽留方案，AI 还继续纠缠不执行退订，将面临每单 $51,744 罚款！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">确定性计数锁：`Max_Save_Pitch_Count == 1`</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 先征询：“在立即为您办结退订前，能否允许我用 10秒为您提供一个专属挽留方案？”</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 一旦客户直接说“不用了马上退”或拒绝第 1 个方案，0ms 立即执行退订并下发确认短信！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">误扣费冷静期全额退 vs 已深度使用按比例折算</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 自动续费扣款后 72小时内且 `Usage == 0` (未观看/未使用)：0秒自动全额原路退回</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 消除因忘记关自动续费引发的信用卡拒付 (Chargeback) 与黑猫投诉</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">FTC / 消协恶意阻挠退订违规：0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">退订通话平均时长控制在 75 秒内，兼顾高挽留率与零监管风险</text>
+  </g>
+
+  <!-- Pillar 2: Root-Cause Matched Save Offer (Pause / Downgrade / Fix) -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#pauseGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 对症下药：暂停订阅 (Pause) 替代直接销户</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">🎯 痛点：客户是因为“最近出差没空看/家里咖啡豆还没喝完”想退，给打折也没用！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 既然 FTC 只允许提 1 次挽留方案，这唯一的一发子弹必须 100% 精准命中真实退订原因</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 乱发半价券不仅救不回囤货过剩的客户，还会白白损失毛利！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">三大退订原因精准处方矩阵 (Precision Save Matrix)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• ①“最近太忙没空用/囤货没用完” ➔ 推荐 **免费暂停 1~3个月 (Pause Plan，保住老客原价权)**</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• ②“价格太贵” ➔ 推荐 **轻享含广告版 / 双月配送降档 (Tier Downgrade)**</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">③“家里 Wi-Fi 老断网 / 机顶盒卡顿” ➔ 0秒转技术自愈</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 因服务故障想销户的宽带客户，AI 当场免费寄送 Wi-Fi 6 子母路由并减免当月网费</text>
+    <text x="30" y="310" fill="#38BDF8" font-size="12">• 解决故障即留住生命周期价值 (LTV) $1,800 的家庭宽带用户</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">单轮合规挽留成功率：34.8% (其中 60% 为零折扣暂停!)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">暂停期满自动恢复订阅留存率高达 79%，无需重新花 CAC 获客</text>
+  </g>
+
+  <!-- Pillar 3: Serial Retention-Offer Abuse Cooldown Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#abuseGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 防羊毛党每季度假退订骗半价券冷却锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：小红书/Reddit 攻略教大家“每 3 个月打一次客服假装退订，白拿半价折扣”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 如果 AI 不查历史挽留账本，只要客户说“我要退订”就无脑给 3个月 5折</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 全网存量付费用户会集体来薅半价羊毛，导致公司 ARPU 值暴跌 40%！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">365 天挽留折扣冷却锁 (12-Month Promo Cooldown)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 网关硬校验：`Days_Since_Last_Retention_Discount &gt;= 365` 且 `LTV_Months &gt;= 3`</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 若过去 12 个月内已领过挽留折扣，100% 物理屏蔽现金打折池，仅提供暂停或降档选项！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">家庭搬家宽带移机无缝留存 (Mover Address Transfer)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 客户因搬家来电销户时，5秒查新地址光纤覆盖，一键办理免费移机保号</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 若新地址无覆盖，自动豁免合约期内提前解约违约金 (Early Termination Fee)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">恶意刷挽留折扣漏损降低 -94% · ARPU 稳中有升</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 Stripe Billing / Zuora / Recurly 订阅计费核心</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">流媒体、宽带与订阅消费品退订挽留语音智能体三大铁律 (SUBSCRIPTION-RETENTION-FTC-SAVE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. FTC 合规不纠缠：每次退订会话最多提供 1 轮挽留方案，一旦客户拒绝或要求立即退订，0ms 无条件执行销户并下发回执；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 暂停优先与防薅锁：优先推荐暂停订阅 (Pause Plan) 替代打折；12个月内已领过挽留优惠的账号 100% 物理屏蔽重复现金折扣。</text>
+</svg>

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（158 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（159 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -199,3 +199,4 @@
 156. **国际货代（Freight Forwarding）、海运整柜/拼箱（FCL/LCL）与空运订舱 24×7 语音询价与跟单台（目的港滞港滞箱费 D&D 72h 催提、带电危品 MSDS 订舱硬锁与甩柜 15秒改配）方案**：[中文](./global-freight-forwarding-air-ocean-charter-demurrage-customs-voice-desk-selection-faq.md) | [EN](./global-freight-forwarding-air-ocean-charter-demurrage-customs-voice-desk-selection-faq.en.md)
 157. **商业收单机构（Merchant Acquiring / Toast / Square / 银联商务）与餐饮零售 POS 收银机 24×7 商户语音支持（晚高峰断网 30秒切 4G/离线收单、T+1 日切差额 15秒拆解与禁改结算卡锁）方案**：[中文](./pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.md) | [EN](./pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.en.md)
 158. **大型企业 B2B 应收账款管理（AR / Order-to-Cash）、对公发票争议剥离与付款承诺（PTP）语音智能体（通话内 5秒补发 PO/POD 签收单、争议发票免停供锁与 DSO 缩短 8.5天）方案**：[中文](./enterprise-b2b-collections-ar-invoice-dispute-promise-to-pay-voice-selection-faq.md) | [EN](./enterprise-b2b-collections-ar-invoice-dispute-promise-to-pay-voice-selection-faq.en.md)
+159. **流媒体视频（OTT）、宽带运营商与订阅制消费品退订挽留（Save Desk）语音智能体（FTC Click-to-Cancel 最多 1轮挽留锁、暂停订阅 Pause 替代销户与 365天防薅羊毛锁）方案**：[中文](./subscription-media-ott-broadband-retention-save-desk-ftc-click-to-cancel-voice-selection-faq.md) | [EN](./subscription-media-ott-broadband-retention-save-desk-ftc-click-to-cancel-voice-selection-faq.en.md)

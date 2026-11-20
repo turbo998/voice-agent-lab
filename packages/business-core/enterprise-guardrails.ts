@@ -3738,6 +3738,33 @@ export function evaluateEnterpriseB2bAccountsReceivableVoiceGuard(input: {
   };
 }
 
+export interface SubscriptionRetentionSaveDeskFtcVoiceEvaluation {
+  policyCode: "SUBSCRIPTION-RETENTION-FTC-SAVE-01";
+  immediateUnconditionalCancelExecuted0ms: boolean;
+  cashDiscountOfferBlockedBy365DayCooldown: boolean;
+  zeroDiscountPausePlanRecommended: boolean;
+}
+
+/**
+ * Deterministic Subscription Retention Save-Desk FTC Click-to-Cancel Max-1-Offer Lock, Pause-Plan Routing & 365-Day Promo Cooldown Guard (`SUBSCRIPTION-RETENTION-FTC-SAVE-01`).
+ */
+export function evaluateSubscriptionRetentionSaveDeskFtcVoiceGuard(input: {
+  callerDemandsImmediateCancelOrDeclinedFirstOffer: boolean;
+  daysSinceLastRetentionPromoDiscount: number;
+  churnReasonIsStockpileOrTemporaryTravel: boolean;
+}): SubscriptionRetentionSaveDeskFtcVoiceEvaluation {
+  return {
+    policyCode: "SUBSCRIPTION-RETENTION-FTC-SAVE-01",
+    immediateUnconditionalCancelExecuted0ms:
+      input.callerDemandsImmediateCancelOrDeclinedFirstOffer,
+    cashDiscountOfferBlockedBy365DayCooldown:
+      input.daysSinceLastRetentionPromoDiscount < 365,
+    zeroDiscountPausePlanRecommended:
+      !input.callerDemandsImmediateCancelOrDeclinedFirstOffer &&
+      input.churnReasonIsStockpileOrTemporaryTravel,
+  };
+}
+
 
 
 
