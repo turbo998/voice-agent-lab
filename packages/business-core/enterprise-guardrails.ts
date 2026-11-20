@@ -4590,6 +4590,33 @@ export function evaluateMaritimeCharteringNorWarRiskVoiceGuard(input: {
   };
 }
 
+export interface BloodBankPlasmaCrossmatchVoiceEvaluation {
+  policyCode: "BLOOD-BANK-PLASMA-AABB-CROSSMATCH-01";
+  bloodUnitReleaseToHospitalAuthorized: boolean;
+  donorAppointmentBookingAuthorized: boolean;
+  immediateIsbt128UnitQuarantineAndRecallTriggered: boolean;
+}
+
+/**
+ * Deterministic Blood Bank & Plasma Apheresis ABO/Irradiated Release Lock, FDA CBER Teratogenic Deferral & 4s PDI Quarantine Guard (`BLOOD-BANK-PLASMA-AABB-CROSSMATCH-01`).
+ */
+export function evaluateBloodBankPlasmaCrossmatchVoiceGuard(input: {
+  aboRhCompatibleAndIrradiatedSpecialReqMatched: boolean;
+  donorOnTeratogenicOrAnticoagulantDeferralList: boolean;
+  postDonationFeverOrInfectionReported: boolean;
+}): BloodBankPlasmaCrossmatchVoiceEvaluation {
+  return {
+    policyCode: "BLOOD-BANK-PLASMA-AABB-CROSSMATCH-01",
+    bloodUnitReleaseToHospitalAuthorized:
+      input.aboRhCompatibleAndIrradiatedSpecialReqMatched &&
+      !input.postDonationFeverOrInfectionReported,
+    donorAppointmentBookingAuthorized:
+      !input.donorOnTeratogenicOrAnticoagulantDeferralList,
+    immediateIsbt128UnitQuarantineAndRecallTriggered:
+      input.postDonationFeverOrInfectionReported,
+  };
+}
+
 
 
 
