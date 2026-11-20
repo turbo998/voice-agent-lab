@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgLease" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="fhaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="tourGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="yardiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgLease)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Multifamily Residential &amp; Commercial Leasing Voice AI: Fair Housing Lock &amp; Self-Guided Tour</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">连锁长租公寓、住宅招租与写字楼招商 24×7 语音礼宾架构：公平住房法 (FHA) 零歧视锁、自助看房门禁核身与 Yardi 直连</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">REAL-ESTATE-LEASING-FAIR-HOUSING-01</text>
+
+  <!-- Pillar 1: Fair Housing Act (FHA) Anti-Steering & Zero-Discrimination Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#fhaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 公平住房法 (FHA) 反诱导与反歧视硬锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 联邦重罚：租客问“这小区适合单身年轻人还是带娃家庭？周围安全吗？”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 美国 HUD《公平住房法》(Fair Housing Act) 严禁评价社区种族、宗教、家庭状况或治安好坏</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若 AI 顺口答“这栋楼年轻人多、没有吵闹小孩”或拒收导盲犬押金豁免，将遭千万级诉讼！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">确定性 FHA 敏感词拦截 + 官方警局/学区客观外链</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 严禁 AI 主观评价社区人群构成或治安等级 (Anti-Steering Guardrail)</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 自动回复：“出于公平住房政策，我们欢迎所有住户，已将市政公立学区与治安统计官网发您短信”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">服务犬 / 情感支持动物 (ESA) 免宠物费合规锁</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 普通宠物按规收取 Pet Rent；一旦租客声明系残障服务犬 (Service Animal / ESA)</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 0ms 豁免宠物禁令与宠物押金，转入标准合理便利 (Reasonable Accommodation) 审核</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">HUD 钓鱼执法测试通过率：100% (零歧视违规)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">对所有来电租客提供 100% 一致的准入收入倍数与租金报价</text>
+  </g>
+
+  <!-- Pillar 2: Self-Guided Tour (SGT) ID Verification & Smart Lock Pin -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#tourGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 夜间/周末自助看房 (SGT) 核身与智能门锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">🔑 痛点：62% 租房来电发生在下班后与周末，无人接听直接流失给隔壁竞品！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 白领租客只有晚上 7 点或周日有空看房，但传统物业招商办下午 5 点就关门下班</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 但若不核实身份就把空置样板间智能门锁密码发给陌生人，极易发生样板间被霸占或盗窃！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">三重安全门禁：驾照/身份证活体核验 + 信用卡担保 + GPS 到场</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 严禁在预约电话里直接念出房间门锁密码！</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• 仅当租客完成：①证件活体自拍比对 ②抵达公寓大门 GPS 围栏内，才下发 30分钟一次性密码</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">看房途中 AI 语音伴游讲解 (In-Unit Voice Tour Guide)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 租客走进 1204 样板间随时问：“这间朝南两居室包暖气费吗？地下车位多少钱一个月？”</text>
+    <text x="30" y="310" fill="#38BDF8" font-size="12">• 走出房门 10 分钟后智能门锁自动失效并检查门磁闭合状态</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">来电转实地看房率：24% ➔ 51% (+112%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">未完成证件活体核验与到场定位前，100% 物理阻断下发门锁密码</text>
+  </g>
+
+  <!-- Pillar 3: Yardi / RealPage Live Unit Pricing & Lease Renewal -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#yardiGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. Yardi / RealPage 实时一房一价与续租挽留</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：公寓租金按租期 (12/15个月) 与入住日动态浮动，静态报价单天天出错</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 同一户型 11月15日入住与 12月1日入住月租差 $180，且含“签13个月免1个月”折算</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 实时直连 Yardi Voyager / RealPage / Entrata 接口算清净有效月租 (Net Effective Rent)</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">透明披露全部必缴杂费 (FTC Junk-Fee Transparency)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 播报月租时强制同步报出：物业垃圾费 (Valet Trash)、宽带包与行政申请费</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 杜绝租客签约时发现隐形收费引发退租投诉</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">租约到期前 60 天主动语音续租挽留 (Lease Renewal)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 空置换租一次平均损失 $3,800 (空置期+翻新保洁+中介佣金)</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 针对优质老租客授权自动提供“免深度保洁/车位费半价”续签礼包</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">整体出租率 (Occupancy) 提升 +4.2%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">5万套长租公寓组合每年净增租金与续租收益 $6.8M+</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">长租公寓与商业地产招租语音礼宾三大铁律 (REAL-ESTATE-LEASING-FAIR-HOUSING-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 公平住房零歧视锁：严禁主观评价社区人口统计/治安好坏 (FHA Anti-Steering)，且对合法服务犬 (Service Animal) 0ms 豁免宠物费；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 自助看房门禁硬核身：未完成政府证件活体自拍与现场 GPS 围栏签到前，100% 物理阻断下发空置房源智能门锁密码。</text>
+</svg>

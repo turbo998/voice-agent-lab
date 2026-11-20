@@ -3579,6 +3579,33 @@ export function evaluateCommercialFleetTruckingDispatchVoiceGuard(input: {
   };
 }
 
+export interface RealEstateLeasingFairHousingVoiceEvaluation {
+  policyCode: "REAL-ESTATE-LEASING-FAIR-HOUSING-01";
+  smartLockTourPinReleaseAuthorized: boolean;
+  fairHousingNeutralRedirectTriggered: boolean;
+  serviceAnimalPetFeeWaived0ms: boolean;
+}
+
+/**
+ * Deterministic Multifamily & Commercial Leasing Fair Housing Anti-Steering, Service Animal Waiver & Self-Guided Tour Smart-Lock Guard (`REAL-ESTATE-LEASING-FAIR-HOUSING-01`).
+ */
+export function evaluateRealEstateLeasingFairHousingVoiceGuard(input: {
+  asksSubjectiveNeighborhoodSafetyOrDemographics: boolean;
+  declaresAssistanceOrServiceAnimal: boolean;
+  governmentIdLivenessVerified: boolean;
+  prospectGpsDistanceToLobbyMeters: number;
+}): RealEstateLeasingFairHousingVoiceEvaluation {
+  return {
+    policyCode: "REAL-ESTATE-LEASING-FAIR-HOUSING-01",
+    smartLockTourPinReleaseAuthorized:
+      input.governmentIdLivenessVerified &&
+      input.prospectGpsDistanceToLobbyMeters <= 150,
+    fairHousingNeutralRedirectTriggered:
+      input.asksSubjectiveNeighborhoodSafetyOrDemographics,
+    serviceAnimalPetFeeWaived0ms: input.declaresAssistanceOrServiceAnimal,
+  };
+}
+
 
 
 

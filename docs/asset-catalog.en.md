@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (152 Bilingual Guides)
+## 3. Solution Architect Selection Guides (153 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -193,3 +193,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 150. **Consumer Electronics, PC & Smart Home (IoT) Technical Support Voice AI: Multimodal Cable/LED Triage Cutting NFF Returns by 54% & 0ms Swollen Battery Lock**: [EN](./consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.en.md) | [中文](./consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.md)
 151. **Enterprise Voice Agent Security, Prompt-Injection Defense & Tool Privilege Governance (OWASP Agentic Top 10): Acoustic Jailbreak Shield, <=$50 Refund Cap & Toll-Fraud Lock**: [EN](./enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.en.md) | [中文](./enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.md)
 152. **Commercial Trucking Fleet, Cold-Chain Logistics & Freight Dispatch Voice AI: ELD Hours-of-Service Interlocks, <=300m GPS Fuel-Card Unlock & Dock Detention**: [EN](./commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.en.md) | [中文](./commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.md)
+153. **Multifamily Residential & Commercial Leasing 24×7 Voice Concierge: Fair Housing Act (FHA) Anti-Steering Lock, Self-Guided Tour ID/GPS Gate & Yardi Pricing**: [EN](./commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.en.md) | [中文](./commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.md)

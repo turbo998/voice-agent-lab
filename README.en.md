@@ -224,6 +224,7 @@ flowchart LR
 150. **Consumer Electronics, PC & Smart Home (IoT) Technical Support Voice AI: Multimodal Cable/LED Triage Cutting NFF Returns by 54% & 0ms Swollen Battery Lock**: [EN](./docs/consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.en.md) | [中文](./docs/consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.md)
 151. **Enterprise Voice Agent Security, Prompt-Injection Defense & Tool Privilege Governance (OWASP Agentic Top 10): Acoustic Jailbreak Shield, <=$50 Refund Cap & Toll-Fraud Lock**: [EN](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-security-prompt-injection-jailbreak-tool-privilege-selection-faq.md)
 152. **Commercial Trucking Fleet, Cold-Chain Logistics & Freight Dispatch Voice AI: ELD Hours-of-Service Interlocks, <=300m GPS Fuel-Card Unlock & Dock Detention**: [EN](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.en.md) | [中文](./docs/commercial-fleet-trucking-eld-hos-dispatch-cold-chain-fuel-fraud-voice-selection-faq.md)
+153. **Multifamily Residential & Commercial Leasing 24×7 Voice Concierge: Fair Housing Act (FHA) Anti-Steering Lock, Self-Guided Tour ID/GPS Gate & Yardi Pricing**: [EN](./docs/commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.en.md) | [中文](./docs/commercial-real-estate-residential-leasing-showing-fair-housing-voice-concierge-selection-faq.md)
 
 ---
 
