@@ -4323,6 +4323,35 @@ export function evaluateHazmatChemicalSpillDispatchVoiceGuard(input: {
   };
 }
 
+export interface InvestorRelationsRegFdMnpiVoiceEvaluation {
+  policyCode: "INVESTOR-RELATIONS-REGFD-MNPI-01";
+  financialCommentaryOrGuidanceAuthorized: boolean;
+  vdrCleanRoomFolderAccessGranted: boolean;
+  urgent24hForm8kCureAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Investor Relations SEC Reg FD / Quiet-Period Lock, M&A VDR Clean-Team Gate & 24h Form 8-K Cure Sentinel (`INVESTOR-RELATIONS-REGFD-MNPI-01`).
+ */
+export function evaluateInvestorRelationsRegFdMnpiVoiceGuard(input: {
+  inPreEarningsQuietPeriod: boolean;
+  requestsUnreleasedFinancialsOrMidQuarterGuidance: boolean;
+  standardNdaExecuted: boolean;
+  cleanTeamAntitrustClearanceVerified: boolean;
+  accidentalUnannouncedMaterialFactSpoken: boolean;
+}): InvestorRelationsRegFdMnpiVoiceEvaluation {
+  return {
+    policyCode: "INVESTOR-RELATIONS-REGFD-MNPI-01",
+    financialCommentaryOrGuidanceAuthorized:
+      !input.inPreEarningsQuietPeriod &&
+      !input.requestsUnreleasedFinancialsOrMidQuarterGuidance,
+    vdrCleanRoomFolderAccessGranted:
+      input.standardNdaExecuted && input.cleanTeamAntitrustClearanceVerified,
+    urgent24hForm8kCureAlertTriggered:
+      input.accidentalUnannouncedMaterialFactSpoken,
+  };
+}
+
 
 
 

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="620" fill="url(#bg)" rx="16"/>
+  <text x="40" y="48" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Investor Relations (IR), M&amp;A Virtual Data Room &amp; SEC Reg FD 24x7 Voice Desk (Datasite / Intralinks)</text>
+  <text x="40" y="76" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="14">SEC Regulation FD Selective MNPI Block · Pre-Earnings Quiet-Period Lock · M&amp;A Clean-Room HSR Gun-Jumping Gate</text>
+
+  <!-- Left Column: Analyst, Shareholder & Bidder Channels -->
+  <rect x="40" y="105" width="260" height="475" rx="12" fill="url(#card)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="60" y="138" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. Street &amp; Deal Channels</text>
+  <rect x="60" y="158" width="220" height="90" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Buy/Sell-Side Analysts</text>
+  <text x="75" y="207" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 10-K / 10-Q GAAP bridge Q&amp;A</text>
+  <text x="75" y="227" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Earnings call queue triage</text>
+
+  <rect x="60" y="265" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">M&amp;A VDR Bidder Support</text>
+  <text x="75" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Datasite / Intralinks folder auth</text>
+  <text x="75" y="334" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Clean-Team customer pricing</text>
+
+  <rect x="60" y="378" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="405" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Retail Shareholder / DRIP</text>
+  <text x="75" y="427" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dividend record/ex-date check</text>
+  <text x="75" y="447" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Proxy vote &amp; Computershare</text>
+
+  <rect x="60" y="490" width="220" height="68" rx="8" fill="#172554" stroke="#3b82f6"/>
+  <text x="75" y="518" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">Target First Response: 550ms</text>
+  <text x="75" y="540" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12">Zero Selective MNPI Disclosure</text>
+
+  <!-- Middle Column: Deterministic SEC Reg FD & HSR Guardrails -->
+  <rect x="340" y="105" width="490" height="475" rx="12" fill="url(#card)" stroke="#10b981" stroke-width="2"/>
+  <text x="365" y="138" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. Deterministic Reg FD &amp; M&amp;A Engine (INVESTOR-RELATIONS-REGFD-MNPI-01)</text>
+
+  <rect x="365" y="158" width="440" height="118" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="385" y="185" fill="#ecfdf5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate A: SEC Regulation FD &amp; Pre-Earnings Quiet-Period Hard Lock</text>
+  <text x="385" y="208" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Strictly restricts answers to already-filed SEC 10-K / 10-Q / 8-K &amp; public</text>
+  <text x="385" y="228" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">  earnings transcripts; 0ms blocks unannounced quarter revenue or guidance</text>
+  <text x="385" y="248" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• During Quiet Period, blocks all forward-looking commentary &amp; books post-call</text>
+
+  <rect x="365" y="292" width="440" height="122" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="385" y="319" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate B: M&amp;A VDR Clean-Team &amp; HSR Antitrust Gun-Jumping Lock</text>
+  <text x="385" y="342" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks granting Virtual Data Room (VDR) access to unredacted customer</text>
+  <text x="385" y="362" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">  contracts or SKU pricing unless NDA + Clean-Team Agreement are executed</text>
+  <text x="385" y="382" fill="#fef08a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Prevents FTC/DOJ HSR Act gun-jumping fines ($51,744/day) between competitors</text>
+
+  <rect x="365" y="430" width="440" height="128" rx="8" fill="#1e1b4b" stroke="#8b5cf6"/>
+  <text x="385" y="457" fill="#ddd6fe" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate C: Accidental MNPI Spill 24h Form 8-K Alert &amp; PSLRA Safe Harbor</text>
+  <text x="385" y="480" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Plays mandatory PSLRA Safe Harbor forward-looking disclaimer at call start</text>
+  <text x="385" y="500" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Real-time co-pilot monitors live executive 1-on-1 calls: if potential</text>
+  <text x="385" y="520" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  unreleased KPI is spoken, 0ms alerts Securities Counsel for 24h Form 8-K</text>
+
+  <!-- Right Column: IR & VDR Ecosystem -->
+  <rect x="870" y="105" width="290" height="475" rx="12" fill="url(#card)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="890" y="138" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">3. Capital Markets Stack</text>
+
+  <rect x="890" y="158" width="250" height="115" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Datasite / Intralinks / Ansarada</text>
+  <text x="905" y="208" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Granular VDR role watermark</text>
+  <text x="905" y="228" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Bidder Q&amp;A limit routing</text>
+  <text x="905" y="248" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Clean-Room NDA verification</text>
+
+  <rect x="890" y="290" width="250" height="125" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="317" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Q4 Inc / Irwin / Computershare</text>
+  <text x="905" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• EDGAR 10-K/10-Q exact citation</text>
+  <text x="905" y="360" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Non-Deal Roadshow (NDR) book</text>
+  <text x="905" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 1099-DIV / DRS transfer route</text>
+
+  <rect x="890" y="432" width="250" height="126" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="905" y="459" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">IR &amp; Deal Desk KPIs</text>
+  <text x="905" y="482" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Retail/VDR call deflection: 83%</text>
+  <text x="905" y="502" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Reg FD selective leaks: 0.00%</text>
+  <text x="905" y="522" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• HSR Clean-Room violations: 0</text>
+  <text x="905" y="542" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Cost: $0.056/min vs $4.80 IR</text>
+</svg>

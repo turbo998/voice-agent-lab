@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（179 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（180 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -220,3 +220,4 @@
 177. **知识产权代理、专利商标年费托管（Anaqua / Clarivate CPA Global）与跨境电商 TRO 侵权应诉 24×7 语音顾问（绝对新颖性公开日 0ms 强升级、专利弃权双签硬锁与 FTO 不侵权意见禁区）方案**：[中文](./intellectual-property-patent-trademark-renewal-tro-takedown-voice-advisor-selection-faq.md) | [EN](./intellectual-property-patent-trademark-renewal-tro-takedown-voice-advisor-selection-faq.en.md)
 178. **连锁商超生鲜冷链、中央厨房 HACCP 与食品召回（FDA FSMA 204 / SafetyChain / SAP EWM）24×7 语音品控（收货中心温超 5°C/41°F 拒收硬锁、一级过敏原/李斯特菌 12分钟全门店强呼下架与留样封存）方案**：[中文](./food-safety-cold-chain-fsma-204-haccp-allergen-recall-voice-desk-selection-faq.md) | [EN](./food-safety-cold-chain-fsma-204-haccp-allergen-recall-voice-desk-selection-faq.en.md)
 179. **危化品物流、环保危废联单（EPA RCRA e-Manifest）与泄漏应急（CHEMTREC / 49 CFR / 万华巴斯夫物流）24×7 语音调度（不相容危化品同车混装 0ms 阻断、遇水反应禁水灭火硬锁与 NRC 法定强报）方案**：[中文](./hazmat-chemical-logistics-chemtrec-epa-rcra-erg-spill-voice-dispatch-selection-faq.md) | [EN](./hazmat-chemical-logistics-chemtrec-epa-rcra-erg-spill-voice-dispatch-selection-faq.en.md)
+180. **上市公司投资者关系（IR / 董秘办）、财报静默期与并购虚拟数据室（Datasite / Intralinks / SEC Reg FD）24×7 语音顾问（未公开内幕信息 MNPI 0ms 强阻断、静默期禁评锁与并购 Clean-Team 反垄断门禁）方案**：[中文](./investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.md) | [EN](./investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.en.md)
