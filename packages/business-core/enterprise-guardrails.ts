@@ -4565,6 +4565,31 @@ export function evaluateEsgCarbonRegistryRetirementVoiceGuard(input: {
   };
 }
 
+export interface MaritimeCharteringNorWarRiskVoiceEvaluation {
+  policyCode: "MARITIME-CHARTERING-NOR-WARRISK-01";
+  validNoticeOfReadinessAccepted: boolean;
+  warRiskZoneTransitAuthorized: boolean;
+  cargoDischargeWithoutOriginalBlBlocked: boolean;
+}
+
+/**
+ * Deterministic Maritime Chartering AIS-Geofenced NOR Lock, JWC War-Risk Transit Gate & Original B/L P&I Shield (`MARITIME-CHARTERING-NOR-WARRISK-01`).
+ */
+export function evaluateMaritimeCharteringNorWarRiskVoiceGuard(input: {
+  vesselInsidePortLimitsAndHoldsReady: boolean;
+  warRiskUnderwriterCoverAndMasterConsentVerified: boolean;
+  requestsCargoDischargeWithoutOriginalBl: boolean;
+}): MaritimeCharteringNorWarRiskVoiceEvaluation {
+  return {
+    policyCode: "MARITIME-CHARTERING-NOR-WARRISK-01",
+    validNoticeOfReadinessAccepted: input.vesselInsidePortLimitsAndHoldsReady,
+    warRiskZoneTransitAuthorized:
+      input.warRiskUnderwriterCoverAndMasterConsentVerified,
+    cargoDischargeWithoutOriginalBlBlocked:
+      input.requestsCargoDischargeWithoutOriginalBl,
+  };
+}
+
 
 
 

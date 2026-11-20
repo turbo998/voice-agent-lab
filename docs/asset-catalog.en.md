@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (188 Bilingual Guides)
+## 3. Solution Architect Selection Guides (189 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -229,3 +229,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 186. **Senior Living (CCRC), Assisted Living & Memory Care (PointClickCare / Brookdale) 24×7 Voice Concierge & Care Dispatch: Anticoagulant Zero-Lift Fall Lock, WanderGuard Elopement Gate & POA Shield**: [EN](./senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.en.md) | [中文](./senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.md)
 187. **Corporate Immigration, Global Mobility & H-1B/L-1 Compliance (Fragomen / Envoy Global / INSZoom) 24×7 Voice Concierge: Matter of Simeio LCA Move Lock, Pending I-485 Travel Gate & I-94 Bar Triage**: [EN](./corporate-immigration-global-mobility-h1b-lca-unlawful-presence-voice-concierge-selection-faq.en.md) | [中文](./corporate-immigration-global-mobility-h1b-lca-unlawful-presence-voice-concierge-selection-faq.md)
 188. **ESG Carbon Credit Registry (Verra / Gold Standard / I-REC), EU CBAM & Scope-3 Supplier 24×7 Voice Advisor: Irreversible Retirement Lock, Anti-Double-Counting Gate & EU Green Claims Shield**: [EN](./esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.en.md) | [中文](./esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.md)
+189. **Maritime Chartering, Port Agency & Laytime Demurrage (Veson IMOS / BIMCO) 24×7 Voice Desk: AIS-Verified NOR Lock, JWC War-Risk Transit Gate & Original Bill-of-Lading P&I Shield**: [EN](./maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.en.md) | [中文](./maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.md)

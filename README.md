@@ -260,6 +260,7 @@ flowchart LR
 186. **高端养老社区（CCRC）、护理院与阿尔茨海默记忆照护（Brookdale / Sunrise / 泰康之家 / PointClickCare）24×7 语音礼宾与护理调度（无目击跌倒+抗凝血药禁盲目扶起硬锁、防走失 WanderGuard 0ms 封门与医疗授权书 POA 隐私门禁）方案**：[中文](./docs/senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.md) | [EN](./docs/senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.en.md)
 187. **跨国企业外派全球流动（Global Mobility）、H-1B/L-1 工作签证与移民合规（Fragomen / Envoy Global / INSZoom）24×7 语音顾问（H-1B 跨城远程搬家先交 LCA/I-129 修正案硬锁、I-485 绿卡等待期无回美证离境作废拦截与 I-94 逾期禁令预警）方案**：[中文](./docs/corporate-immigration-global-mobility-h1b-lca-unlawful-presence-voice-concierge-selection-faq.md) | [EN](./docs/corporate-immigration-global-mobility-h1b-lca-unlawful-presence-voice-concierge-selection-faq.en.md)
 188. **企业 ESG 碳交易登记簿（Verra / Gold Standard / I-REC）、欧盟碳关税（CBAM）与供应链范围三催报 24×7 语音顾问（碳信用注销防重复计算硬锁、不可逆注销受益人全称复诵与欧盟反漂绿指令围栏）方案**：[中文](./docs/esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.md) | [EN](./docs/esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.en.md)
+189. **远洋航运租船（BIMCO Charterparty）、船舶代理（Port Agency）与装卸滞期费（Veson IMOS）24×7 语音运营台（准备就绪通知书 NOR 锚地检疫生效硬锁、JWC 战争险航区越权拦截与无正本提单放货 P&I 脱保熔断）方案**：[中文](./docs/maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.md) | [EN](./docs/maritime-chartering-port-agency-laytime-nor-war-risk-voice-desk-selection-faq.en.md)
 
 ---
 
