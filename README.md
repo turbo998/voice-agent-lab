@@ -221,6 +221,7 @@ flowchart LR
 147. **品牌电商 24×7 实时互动直播间与私域导购数字人（弹幕高意向提问 `<600ms` 句末插播、《广告法》极限词 `0ms` 截断、售罄秒切品与每小时 $1.80 本地驱动）方案**：[中文](./docs/ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.md) | [EN](./docs/ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.en.md)
 148. **AI 智能眼镜（Smart Glasses / AR 头显）与随身穿戴多模态语音助手（指代触发 `<50KB` 第一视角抽帧省电、正面隐私灯防遮挡锁与 `<45dB` 电梯防漏音）方案**：[中文](./docs/smart-glasses-ar-headset-wearable-multimodal-voice-assistant-selection-faq.md) | [EN](./docs/smart-glasses-ar-headset-wearable-multimodal-voice-assistant-selection-faq.en.md)
 149. **大型企业全球 HR 员工共享中心（HRSSC）、年度商业医保选计划（Open Enrollment）与入职发薪语音 Copilot（工资条 Diff 15秒释疑、家庭医保精算零病史留存与敏感举报 0ms 隔离）方案**：[中文](./docs/enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.md) | [EN](./docs/enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.en.md)
+150. **消费电子、PC 电脑与智能家居（IoT）全球 25 语种售后技术支持语音智能体（看图查接线压降 54% 假故障返修 NFF、锂电池鼓包 `0ms` 禁寄普通快递锁与防骗保 RMA）方案**：[中文](./docs/consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.md) | [EN](./docs/consumer-electronics-pc-smartphone-iot-diagnostic-warranty-rma-voice-selection-faq.en.md)
 
 ---
 

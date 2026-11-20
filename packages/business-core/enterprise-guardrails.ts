@@ -3495,6 +3495,33 @@ export function evaluateEnterpriseHrsscBenefitsPayrollVoiceGuard(input: {
   };
 }
 
+export interface ConsumerElectronicsDiagnosticRmaVoiceEvaluation {
+  policyCode: "CONSUMER-ELECTRONICS-DIAGNOSTIC-RMA-01";
+  standardParcelReturnLabelAuthorized: boolean;
+  thermalRunawayHazmatSafetyLock0ms: boolean;
+  nffDiagnosticOrBackupConsentGateBlocked: boolean;
+}
+
+/**
+ * Deterministic Consumer Electronics & Smart Home 0ms Swollen Battery Hazmat Lock, NFF Diagnostic Gate & Data-Backup Consent Guard (`CONSUMER-ELECTRONICS-DIAGNOSTIC-RMA-01`).
+ */
+export function evaluateConsumerElectronicsDiagnosticRmaVoiceGuard(input: {
+  reportsSwollenBatterySmokeOrSparks: boolean;
+  completedMandatoryCableAndResetDiagnostics: boolean;
+  verbalDataWipeConsentAndFindMyUnlocked: boolean;
+}): ConsumerElectronicsDiagnosticRmaVoiceEvaluation {
+  const missingDiagOrConsent =
+    !input.completedMandatoryCableAndResetDiagnostics ||
+    !input.verbalDataWipeConsentAndFindMyUnlocked;
+  return {
+    policyCode: "CONSUMER-ELECTRONICS-DIAGNOSTIC-RMA-01",
+    standardParcelReturnLabelAuthorized:
+      !input.reportsSwollenBatterySmokeOrSparks && !missingDiagOrConsent,
+    thermalRunawayHazmatSafetyLock0ms: input.reportsSwollenBatterySmokeOrSparks,
+    nffDiagnosticOrBackupConsentGateBlocked: missingDiagOrConsent,
+  };
+}
+
 
 
 

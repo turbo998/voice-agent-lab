@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgCe" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="nffGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="safeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="rmaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgCe)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Consumer Electronics, PC &amp; Smart Home Technical Support Voice AI: NFF Reduction &amp; RMA</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">消费电子、PC 与智能硬件全球售后语音架构：指示灯/报错码看图诊断、无故障退货 (NFF) 压降 54% 与锂电池鼓包 0ms 熔断</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">CONSUMER-ELECTRONICS-DIAGNOSTIC-RMA-01</text>
+
+  <!-- Pillar 1: Multimodal LED/Port Troubleshooting to Cut 54% NFF Returns -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#nffGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 看图听音步进排障：砍掉 54% 假故障返修</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 硬件厂商利润黑洞：38% 寄回工厂返修的设备其实根本没坏 (NFF)！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 客户把显示器 DP 线插在主板集显口而非独显口、或路由器开了 5GHz 导致扫地机连不上</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 传统电话客服看不见现场，一听“黑屏/连不上”就盲开 RMA 退换单，单次白亏 $55！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ 强制 3 步确定性排障树 + 手机拍照看线序</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 来电下发短信 WebRTC 拍图链接：拍一张机箱背面接线图或主板 Debug 闪烁灯</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• GPT-4o Vision 1秒识别：“您的 HDMI 线插在上方竖置主板口了，请挪到下方横置显卡口”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">设备 IoT 云端遥测日志 0秒预拉取 (Telemetry Preload)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 扫地机/NAS/智能戒指来电时，0秒拉取设备最后一次上报的传感器错误码 (如 E04 主刷卡死)</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 语音精准指导客户清理缠绕毛发，无需寄回工厂，3分钟当场自愈！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">无故障退回率 (NFF)：38% ➔ 17.4% (-54.2%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">未完成必做软件复位与接线排查前，网关硬锁定禁止直接开具 RMA</text>
+  </g>
+
+  <!-- Pillar 2: Thermal Runaway / Swollen Battery 0ms Safety Preemption -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#safeGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 锂电池鼓包/冒烟/漏电 0ms 安全熔断锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 致命事故：客户说“充电宝/笔记本触控板鼓起来还发烫”，AI 竟让重启试试！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 锂离子电池鼓包 (Swollen Battery)、焦糊味、充电口打火属于最高级别热失控前兆</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若继续让客户插电测试，或者让客户用普通快递把鼓包电池寄回，将引发爆燃火灾！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">0ms 热失控红旗抢占 + 严禁普通快递寄回锁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 命中“鼓包/冒烟/焦味/火花/烫手”时，0ms 终止一切常规排障，播报断电隔离指令</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 100% 物理阻断生成普通顺丰/UPS 退货面单（严禁将缺陷锂电池交由普通航空/陆运）！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">危化防爆回收箱专派与 Product Safety 升级</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 自动转接产品安全高级专员 (EHS Safety Desk)，安排特种防爆阻燃回收袋上门回收</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 客户拍照确认序列号后直接免寄回先行赔付换新</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">热失控二次伤害与违规寄递锂电池：0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 CPSC、欧盟 CE 安全指令与 IATA/DOT 危险品运输法规</text>
+  </g>
+
+  <!-- Pillar 3: SN/IMEI Entitlement & Anti-Fraud Advance RMA -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rmaGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. SN/IMEI 保修核验与防骗保先行换新 (RMA)</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：黑产团伙虚报故障骗取“先行发新机 (Advance RMA)”后寄回一块砖头！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 海外电子品牌普遍提供“先寄新机给客户、客户再寄回旧机”的高端服务</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 若不校验信用卡预授权冻结与设备真实在网所有权，每年被黑产骗走数千台旗舰硬件</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">SN/IMEI 保修权益核验 + 预授权担保硬锁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 实时查询 ERP 保修到期日、AppleCare/延保状态及该 SN 是否已被挂失或黑名单锁定</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 普通标准换修 (先收旧机再发新) 免押金；先行换新 (Advance RMA) 强制绑定信用卡预授权</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">出海硬件全球 25 语种 24×7 零时差售后底座</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 欧美黑五/圣诞激活洪峰期，1套多语种语音+视觉架构替代昂贵的海外外包呼叫中心</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 自动把排障前先备份个人数据 (BitLocker/iCloud) 写入 RMA 必读清单</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">单次售后排障成本：$14.5 ➔ $1.10 (-92%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">一次电话在线解决率 (FCR) 从 41% 跃升至 74%</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">消费电子与智能硬件全球售后语音智能体三大铁律 (CONSUMER-ELECTRONICS-DIAGNOSTIC-RMA-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 热失控 0ms 熔断锁：检测到电池鼓包、冒烟或打火时，0ms 停止插电排障并物理阻断签发普通快递退货面单；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 防假故障退回 (NFF) 与防骗保：开具 RMA 前强制完成确定性诊断步骤；先行发新机 (Advance RMA) 必须核验保修与信用卡预授权。</text>
+</svg>
