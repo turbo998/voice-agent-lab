@@ -259,6 +259,7 @@ flowchart LR
 185. **肿瘤液体活检、临床基因检测与遗传咨询（Guardant / Foundation Medicine / 华大基因 / CLIA / GINA）24×7 语音顾问（致病突变与 VUS 零自主解读硬锁、Streck 游离核酸管严禁冷冻重采锁与 GINA 基因反歧视护栏）方案**：[中文](./docs/genomic-testing-oncology-liquid-biopsy-genetic-counselor-clia-voice-concierge-selection-faq.md) | [EN](./docs/genomic-testing-oncology-liquid-biopsy-genetic-counselor-clia-voice-concierge-selection-faq.en.md)
 186. **高端养老社区（CCRC）、护理院与阿尔茨海默记忆照护（Brookdale / Sunrise / 泰康之家 / PointClickCare）24×7 语音礼宾与护理调度（无目击跌倒+抗凝血药禁盲目扶起硬锁、防走失 WanderGuard 0ms 封门与医疗授权书 POA 隐私门禁）方案**：[中文](./docs/senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.md) | [EN](./docs/senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.en.md)
 187. **跨国企业外派全球流动（Global Mobility）、H-1B/L-1 工作签证与移民合规（Fragomen / Envoy Global / INSZoom）24×7 语音顾问（H-1B 跨城远程搬家先交 LCA/I-129 修正案硬锁、I-485 绿卡等待期无回美证离境作废拦截与 I-94 逾期禁令预警）方案**：[中文](./docs/corporate-immigration-global-mobility-h1b-lca-unlawful-presence-voice-concierge-selection-faq.md) | [EN](./docs/corporate-immigration-global-mobility-h1b-lca-unlawful-presence-voice-concierge-selection-faq.en.md)
+188. **企业 ESG 碳交易登记簿（Verra / Gold Standard / I-REC）、欧盟碳关税（CBAM）与供应链范围三催报 24×7 语音顾问（碳信用注销防重复计算硬锁、不可逆注销受益人全称复诵与欧盟反漂绿指令围栏）方案**：[中文](./docs/esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.md) | [EN](./docs/esg-carbon-credit-registry-verra-cbam-retirement-audit-voice-advisor-selection-faq.en.md)
 
 ---
 

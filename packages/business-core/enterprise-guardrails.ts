@@ -4541,6 +4541,30 @@ export function evaluateCorporateImmigrationMobilityVoiceGuard(input: {
   };
 }
 
+export interface EsgCarbonRegistryRetirementVoiceEvaluation {
+  policyCode: "ESG-CARBON-REGISTRY-RETIREMENT-01";
+  executeIrreversibleCreditRetirementAuthorized: boolean;
+  unsubstantiatedCarbonNeutralClaimBlocked: boolean;
+}
+
+/**
+ * Deterministic ESG Carbon Registry Irreversible Retirement Readback Lock, VVB Verification & EU Green Claims Guard (`ESG-CARBON-REGISTRY-RETIREMENT-01`).
+ */
+export function evaluateEsgCarbonRegistryRetirementVoiceGuard(input: {
+  accreditedVvbVerificationAndSerialActive: boolean;
+  beneficiaryEntityAndVintageVerballyConfirmed: boolean;
+  requestsOffsetBasedProductCarbonNeutralMarketingClaim: boolean;
+}): EsgCarbonRegistryRetirementVoiceEvaluation {
+  return {
+    policyCode: "ESG-CARBON-REGISTRY-RETIREMENT-01",
+    executeIrreversibleCreditRetirementAuthorized:
+      input.accreditedVvbVerificationAndSerialActive &&
+      input.beneficiaryEntityAndVintageVerballyConfirmed,
+    unsubstantiatedCarbonNeutralClaimBlocked:
+      input.requestsOffsetBasedProductCarbonNeutralMarketingClaim,
+  };
+}
+
 
 
 
