@@ -4693,6 +4693,32 @@ export function evaluateRenewableWindSolarScadaVppVoiceGuard(input: {
   };
 }
 
+export interface FilmTvProductionSagStuntVoiceEvaluation {
+  policyCode: "FILM-TV-PRODUCTION-SAG-STUNT-01";
+  callSheetDispatchAuthorized: boolean;
+  stuntOrPyroHotSetRollAuthorized: boolean;
+  aiVoiceCloneOr3dScanSessionAuthorized: boolean;
+}
+
+/**
+ * Deterministic Film/TV Production SAG-AFTRA/IATSE 12h Turnaround Lock, Armorer/Pyro Stunt Briefing Gate & AI Digital-Replica Consent Guard (`FILM-TV-PRODUCTION-SAG-STUNT-01`).
+ */
+export function evaluateFilmTvProductionSagStuntVoiceGuard(input: {
+  meetsUnion12HourTurnaroundOrForcedCallApproved: boolean;
+  armorerAndFirstAdStuntSafetyBriefingVerified: boolean;
+  signedSagAftraAiDigitalReplicaConsentOnFile: boolean;
+}): FilmTvProductionSagStuntVoiceEvaluation {
+  return {
+    policyCode: "FILM-TV-PRODUCTION-SAG-STUNT-01",
+    callSheetDispatchAuthorized:
+      input.meetsUnion12HourTurnaroundOrForcedCallApproved,
+    stuntOrPyroHotSetRollAuthorized:
+      input.armorerAndFirstAdStuntSafetyBriefingVerified,
+    aiVoiceCloneOr3dScanSessionAuthorized:
+      input.signedSagAftraAiDigitalReplicaConsentOnFile,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (193 Bilingual Guides)
+## 3. Solution Architect Selection Guides (194 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -234,3 +234,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 191. **eVTOL Vertiport, Commercial Drone BVLOS & UTM Airspace (FAA LAANC / DJI FlightHub 2) 24×7 Voice Dispatch: Active TFR & 20% SOC Reserve Lock, MedEvac Auto-Yield Gate & Weight/CG Interlock**: [EN](./evtol-vertiport-commercial-drone-bvlos-utm-airspace-voice-dispatch-selection-faq.en.md) | [中文](./evtol-vertiport-commercial-drone-bvlos-utm-airspace-voice-dispatch-selection-faq.md)
 192. **Enterprise Privacy DSAR, Cross-Border Data Transfer & 72h Breach Notification (OneTrust / BigID / GDPR / PIPL) 24×7 Voice Desk: Anti-Pretexting IDV Lock, Art. 17(3) Retention Gate & DPO Clock**: [EN](./privacy-dsar-cross-border-data-transfer-gdpr-pipl-breach-voice-desk-selection-faq.en.md) | [中文](./privacy-dsar-cross-border-data-transfer-gdpr-pipl-breach-voice-desk-selection-faq.md)
 193. **Renewable Wind/Solar SCADA, Virtual Power Plant (VPP) & Turbine Climb Safety (NERC CIP / GWO / EnOS) 24×7 Voice Desk: Occupied-Tower Reset Lock, 12m/s Rotor-Pin Gate & BESS Hydrogen Shield**: [EN](./renewable-wind-solar-scada-vpp-curtailment-climb-safety-voice-desk-selection-faq.en.md) | [中文](./renewable-wind-solar-scada-vpp-curtailment-climb-safety-voice-desk-selection-faq.md)
+194. **Film/TV Studio Production, Live Concert Touring & Sports Broadcast (Movie Magic / SAG-AFTRA / IATSE) 24×7 Voice Call-Sheet & Safety Desk: 12h Turnaround Lock, Armorer Hot-Set Gate & AI Digital-Replica Shield**: [EN](./film-tv-production-live-sports-broadcast-call-sheet-stunt-safety-voice-desk-selection-faq.en.md) | [中文](./film-tv-production-live-sports-broadcast-call-sheet-stunt-safety-voice-desk-selection-faq.md)
