@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgTmc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="polGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="expGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="dutyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgTmc)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Enterprise Corporate Travel (TMC / Concur) &amp; Expense Voice Copilot Architecture</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">跨国企业商旅预订与差旅报销语音智能体：机场 20秒极速改签、职级差标硬门禁、协议价优先锁与多模态拍票报销</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">CORPORATE-TRAVEL-TMC-CONCUR-01</text>
+
+  <!-- Pillar 1: Airport Instant Rebooking & Travel Policy Tier Gate -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#polGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 机场 20秒语音改签与职级差标硬门禁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 痛点：TMC 人工商旅电话每通收 $25 服务费，且高管在出租车里难填表</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统商旅公司 (BCD/CWT/Amex GBT) 每次人工电话改签额外收取 $20~$35 手续费</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若 AI 不校对职级差标直接出公务舱或超标五星酒店，财务审计将拒绝报销！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ 职级/城市等级差标矩阵硬互锁 (Policy Tier Interlock)</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 自动对齐 Entra ID 职级 (如 L7 总监) 与目的地城市级别 (如上海一类 $150/晚)</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 差标内 0秒免批月结直出；超标/飞行 &lt;6h 申公务舱自动挂起并推 VP 审批单</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">企业协议价与退改签低损优先锁 (Corporate Rate Lock)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 检索 GDS (Amadeus/Sabre/中航信) 时强制注入企业大客户协议码与未使用票号</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 优先抵扣历史退票代金券 (Unused Ticket Credit)，避免过期作废</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">语音改签耗时：12 分钟 ➔ 22 秒 · 省 $25/单手续费</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">协议酒店与低价合规航班采纳率从 64% 提升至 96.5%</text>
+  </g>
+
+  <!-- Pillar 2: Multimodal Receipt Photo + 15s Voice Expense Filing -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#expGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 拍发票 + 15秒语音速记极速报销 (Concur)</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">📸 痛点：销售出差回来贴发票填 Concur 要花整个周末，且常因漏填同行人被退单</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统 OCR 只能识金额，不知道这顿饭“请了哪个客户、聊了什么项目、怎么分摊成本中心”</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• 财务审单发现酒店水单含迷你吧酒水或个人按摩，来回退单沟通极其低效</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">多模态水单行项目拆解 + 15秒语音补充事由</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 拍一张酒店结账水单 (&lt;80KB)，按住说话：“昨晚陪华东某车企王总等 3 人商务晚餐，</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">  挂在智驾 POC 商机号下” ➔ 自动关联 CRM 客户名单并填入 Concur 招待人明细</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">个人消费与禁报项自动剥离锁 (Non-Reimbursable Split)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 自动识别水单中的酒水/Mini-bar/洗衣超标/家属加床，当场语音提示剥离为个人自付</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 对齐国税电子发票真伪查验与防重复报销哈希锁 (Duplicate Receipt Hash)</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">单次出差报销填单耗时：45 分钟 ➔ 3 分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">财务退单重审率下降 79% · 杜绝 FCPA/反商业贿赂超标招待</text>
+  </g>
+
+  <!-- Pillar 3: Global Duty of Care & Emergency Evacuation Voice Check-In -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dutyGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 全球差旅安全关怀 (Duty of Care) 应急强呼</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">🌍 突发危机：海外出差地突发地震/罢工/政局动荡，如何 5分钟确认全员平安？</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 跨国企业负有法定员工安全保障义务 (Duty of Care)，发邮件/App 推送往往无人看</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 根据机票/酒店 PNR 实时锁定身处事发城市的 42 名出差员工，0秒发起并发语音外呼</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">一键语音报平安与撤离机票抢锁 (Evacuation Lock)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 员工接起说“我目前在酒店很安全，但回程航班停飞了” ➔ 实时更新全球安保大屏绿标</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 紧急危机态下自动豁免普通差标上限，0秒抢订周边邻国最近可用撤离航班或高铁</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">失联员工 0ms 升级 International SOS 安保救援</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 若员工口述受伤受困或连续 2 通未接听，立即将最后入住酒店与紧急联系人推给安保中心</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 支持全球 40+ 语种与当地紧急医疗口译直连</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">危机状态全员平安核实时间：4 小时 ➔ 4.5 分钟</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 SAP Concur + Amadeus/中航信 + Microsoft Teams 全链路闭环</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">企业商旅预订与差旅报销语音智能体三大铁律 (CORPORATE-TRAVEL-TMC-CONCUR-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 职级差标与协议价硬锁：预订/改签时强制校验员工职级与城市差标上限，超标订单禁止免批月结直出，且优先抵扣企业历史退票余额；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 招待合规与危机豁免：报销必须核查人均招待标准并剥离个人消费；仅在突发安全危机 (Duty of Care) 时授权一键抢锁紧急撤离席位。</text>
+</svg>

@@ -3389,6 +3389,32 @@ export function evaluateWealthRoboAdvisorPortfolioSuitabilityGuard(input: {
   };
 }
 
+export interface CorporateTravelTmcConcurExpenseVoiceEvaluation {
+  policyCode: "CORPORATE-TRAVEL-TMC-CONCUR-01";
+  instantCorporateCardTicketingAuthorized: boolean;
+  managerPreTripApprovalRequired: boolean;
+  personalMiniBarSplitFromConcurDraft: boolean;
+}
+
+/**
+ * Deterministic Corporate Travel Policy Cap Interlock, Duty-of-Care Override & Hotel Folio Personal Item Split Guard (`CORPORATE-TRAVEL-TMC-CONCUR-01`).
+ */
+export function evaluateCorporateTravelTmcConcurExpenseVoiceGuard(input: {
+  withinEmployeeGradeTravelCap: boolean;
+  isDutyOfCareEmergencyEvacuation: boolean;
+  hotelFolioContainsPersonalMiniBarOrSpa: boolean;
+}): CorporateTravelTmcConcurExpenseVoiceEvaluation {
+  const allowedInstant =
+    input.withinEmployeeGradeTravelCap || input.isDutyOfCareEmergencyEvacuation;
+  return {
+    policyCode: "CORPORATE-TRAVEL-TMC-CONCUR-01",
+    instantCorporateCardTicketingAuthorized: allowedInstant,
+    managerPreTripApprovalRequired: !allowedInstant,
+    personalMiniBarSplitFromConcurDraft:
+      input.hotelFolioContainsPersonalMiniBarOrSpa,
+  };
+}
+
 
 
 
