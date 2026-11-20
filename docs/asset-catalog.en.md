@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (169 Bilingual Guides)
+## 3. Solution Architect Selection Guides (170 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -210,3 +210,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 167. **Luxury Wedding Venue, Bridal Couture Salon & Destination Event 24×7 Voice Concierge: 1:1 Indoor Rain-Backup Lock, Couture Lead-Time Gate & Peak-Date Pivot**: [EN](./wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.en.md) | [中文](./wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.md)
 168. **Self-Storage (Public Storage / Extra Space) & Moving Truck Rental (U-Haul / Penske) 24×7 Voice Concierge: Gate Overlock Pay-to-Open, Hazmat Block & 12.5ft Clearance Lock**: [EN](./self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.en.md) | [中文](./self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.md)
 169. **Law Firm Client Intake (Clio / Lawmatics), Personal Injury & Employment Law 24×7 Voice Concierge: 0ms Conflict Pre-Gate, UPL Zero-Advice Lock & Statute of Limitations Triage**: [EN](./legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.en.md) | [中文](./legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.md)
+170. **CPA Firm, Bookkeeping & Tax Season (CCH Axcess / Intuit ProConnect) 24×7 Voice Advisor: IRC Section 7216 Disclosure Gate, Extension Penalty Lock & K-1/1099 Chaser**: [EN](./accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.en.md) | [中文](./accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.md)

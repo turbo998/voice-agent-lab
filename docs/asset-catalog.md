@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（169 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（170 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -210,3 +210,4 @@
 167. **高端婚礼堂、高定婚纱馆与目的地草坪婚礼 24×7 语音礼宾（户外婚礼 1:1 室内防雨备厅 Plan B 硬互锁、高定婚纱定制工期与 5天精洗缓冲锁及满档吉日平替）方案**：[中文](./wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.md) | [EN](./wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.en.md)
 168. **连锁自助仓储（Self-Storage / Public Storage / 万物仓）与搬家货车租赁（U-Haul / Penske）24×7 语音管家（深夜欠费锁门 25秒补缴秒开闸、危化禁存锁与 3.8米箱货限高复诵）方案**：[中文](./self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.md) | [EN](./self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.en.md)
 169. **律所客户接案（Legal Intake / Clio / Lawmatics）、人身伤害与劳动仲裁 24×7 语音初筛（利益冲突 ABA Rule 1.18 0ms 前置阻断、UPL 零法律意见/禁止承诺胜诉围栏与诉讼时效紧急预审）方案**：[中文](./legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.md) | [EN](./legal-firm-client-intake-conflict-check-statute-of-limitations-voice-concierge-selection-faq.en.md)
+170. **会计师事务所、财税代账与报税季（CPA Firm / CCH Axcess / Intuit ProConnect / 金蝶代账）24×7 语音顾问（IRS 7216 纳税申报保密硬锁、延期申报不免滞纳金复诵与缺件催收）方案**：[中文](./accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.md) | [EN](./accounting-cpa-tax-preparation-intuit-irs-7216-extension-penalty-voice-advisor-selection-faq.en.md)

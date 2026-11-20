@@ -4042,6 +4042,34 @@ export function evaluateLegalIntakeConflictAndUplVoiceGuard(input: {
   };
 }
 
+export interface CpaTaxPreparationIrs7216VoiceEvaluation {
+  policyCode: "CPA-TAX-PREP-IRS7216-01";
+  taxReturnDataDisclosureAuthorized: boolean;
+  taxFilingExtensionSubmissionAuthorized: boolean;
+  urgentCpaControversyEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic CPA Firm IRC Section 7216 Disclosure Gate, Form 4868 Penalty Readback Lock & IRS Levy Escalation Guard (`CPA-TAX-PREP-IRS7216-01`).
+ */
+export function evaluateCpaTaxPreparationIrs7216VoiceGuard(input: {
+  verifiedTaxpayerMfaPassed: boolean;
+  signedIrs7216ThirdPartyConsentOnFile: boolean;
+  clientAcknowledgedExtensionDoesNotExtendPaymentDeadline: boolean;
+  receivedIrsLevyOrAuditNotice: boolean;
+}): CpaTaxPreparationIrs7216VoiceEvaluation {
+  return {
+    policyCode: "CPA-TAX-PREP-IRS7216-01",
+    taxReturnDataDisclosureAuthorized:
+      input.verifiedTaxpayerMfaPassed ||
+      input.signedIrs7216ThirdPartyConsentOnFile,
+    taxFilingExtensionSubmissionAuthorized:
+      input.clientAcknowledgedExtensionDoesNotExtendPaymentDeadline,
+    urgentCpaControversyEscalationTriggered:
+      input.receivedIrsLevyOrAuditNotice,
+  };
+}
+
 
 
 
