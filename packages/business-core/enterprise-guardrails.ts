@@ -3659,6 +3659,32 @@ export function evaluateHomeServicesFieldDispatchServiceTitanVoiceGuard(input: {
   };
 }
 
+export interface GlobalFreightForwardingDemurrageVoiceEvaluation {
+  policyCode: "GLOBAL-FREIGHT-FORWARDING-DEMURRAGE-01";
+  generalCargoBookingAuthorized: boolean;
+  hazmatMsdsMissingBlocked: boolean;
+  portDrayageDispatchAuthorized: boolean;
+}
+
+/**
+ * Deterministic Global Freight Forwarding Hazmat/Battery MSDS Booking Interlock & 3-Greenlight Port Drayage Guard (`GLOBAL-FREIGHT-FORWARDING-DEMURRAGE-01`).
+ */
+export function evaluateGlobalFreightForwardingDemurrageVoiceGuard(input: {
+  commodityContainsBatteryLiquidOrChemical: boolean;
+  valid16SectionMsdsAndUn383Verified: boolean;
+  customsAndCarrierTelexReleaseCleared: boolean;
+}): GlobalFreightForwardingDemurrageVoiceEvaluation {
+  const hazmatBlocked =
+    input.commodityContainsBatteryLiquidOrChemical &&
+    !input.valid16SectionMsdsAndUn383Verified;
+  return {
+    policyCode: "GLOBAL-FREIGHT-FORWARDING-DEMURRAGE-01",
+    generalCargoBookingAuthorized: !hazmatBlocked,
+    hazmatMsdsMissingBlocked: hazmatBlocked,
+    portDrayageDispatchAuthorized: input.customsAndCarrierTelexReleaseCleared,
+  };
+}
+
 
 
 

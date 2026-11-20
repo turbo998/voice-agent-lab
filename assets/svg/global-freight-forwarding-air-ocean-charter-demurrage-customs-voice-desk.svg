@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgFwd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="ddGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="dgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="rollGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgFwd)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Global Freight Forwarding &amp; Ocean/Air Cargo Voice Desk (CargoWise): D&amp;D &amp; Hazmat Lock</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">国际货代、海运整柜/拼箱与空运订舱 24×7 语音跟单架构：目的港滞箱滞港费 (D&amp;D) 72h 预警、甩柜秒改配与危险品 MSDS 硬锁</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">GLOBAL-FREIGHT-FORWARDING-DEMURRAGE-01</text>
+
+  <!-- Pillar 1: 72-Hour Last Free Day (LFD) Demurrage & Detention Shield -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ddGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 目的港免堆期 (LFD) 72小时语音催提锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 外贸货主血泪：邮件漏看导致集装箱在洛杉矶港超期 8天，罚 $3,600！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 集装箱卸船后仅有 4~7 天免费堆存期 (Last Free Day, LFD)，逾期每天罚 $250~$500/柜</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 传统货代操作员只发英文邮件提醒，收货人或拖车行漏看邮件直接引爆天价滞港费 (D&amp;D)</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ 距 LFD 倒计时 72h / 24h 双重主动语音强呼</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 直连 CargoWise / Project44 船期表：在免堆期截止前 72 小时自动致电收货人与车队</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 逐项核实：①海关放行状态 ②船司海运费结清与电放提单 (Telex Release) ③提柜预约号</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">正本/电放提单未核实严禁派拖车空跑锁</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 许多拖车司机到了码头闸口才发现提单未电放 (Freight Hold)，白交 $350 放空费 (Dry Run)</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 网关强制核实 `Customs_Cleared &amp;&amp; Carrier_DO_Released` 后才放行派车指令</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">目的港滞港滞箱费 (D&amp;D) 压降 -76.5%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">拖车码头空跑率 (Dry-Run Rate) 从 14% 降至 0.4%</text>
+  </g>
+
+  <!-- Pillar 2: Undeclared Hazmat / Lithium Battery MSDS Hard Booking Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#dgGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 危险品 / 锂电池瞒报漏报 (MSDS) 0ms 订舱锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 船司重罚 $30,000/柜：把含锂电池/气雾剂货物当普通百货订舱！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 货主电话询价说“发一批电动滑板车/美甲胶/蓝牙耳机去欧洲，按普货订最便宜的船”</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若 AI 按普货 (General Cargo) 锁舱，一旦海关/船司查出含 UN3481 锂电或易燃液体即遭巨额罚款！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">品名敏感词声学雷达 + 16项 MSDS + UN38.3 硬互锁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 识别到带电、磁检、粉末、液体、化工、喷雾等敏感品名时，0ms 冻结普货订舱通道</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 强制要求上传有效期内 16项 MSDS、UN38.3 测试报告与海事危包证后才解锁 DG 舱位！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">全包 All-In 运价透明播报 (BAF/PSS/THC 附加费零隐瞒)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 报价强制拆解：海运基价 + 燃油附加费 (BAF) + 旺季附加费 (PSS) + 起运港/目的港本地费</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 明确告知运价有效期 (Validity Date) 与免用箱天数，杜绝高收低报纠纷</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">危险品违规瞒报订舱事故：0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 IMO IMDG 海运危规与 IATA DGR 空运安全审计</text>
+  </g>
+
+  <!-- Pillar 3: Rolled-Cargo / Blank-Sailing Instant Rebooking -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rollGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 船司甩柜 (Rolled Cargo) 与空运改配极速救援</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：旺季船司超售突然“甩柜”，等周一操作员上班早没替补舱位了！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 船公司常在周五半夜发 EDI 通知某批集装箱被顺延至下一水船 (延误 7~14 天)</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 跨境电商与汽车零部件客户若断货将面临亚马逊 Listing 降权或停线罚款</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">收到甩柜 EDI 15秒内自动锁替补船 + 语音外呼货主拍板</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 货代语音台自动检索同联盟 48 小时内其他快船或海空联运 (Sea-Air) 替补方案</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 立即致电外贸物流经理：“原定周日马士基甩柜，已为您预锁周一美森快船仅加 $220，确认改配吗？”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">跨 12 时区 20 语种收发货人 24×7 零时差协同</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 中国工厂白天发货、欧美清关行夜间清关、拉美买家下午提货全天候无缝跟单</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 询价响应时间从平均 4 小时缩短至 18 秒</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">现货询价转订舱成交率提升 +39%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单名国际货代操作员 (Operator) 月均处理票数提升 3.4 倍</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">国际货代与海空运 24×7 语音跟单台三大铁律 (GLOBAL-FREIGHT-FORWARDING-DEMURRAGE-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 危险品 MSDS 硬门禁：凡品名含电池/液体/粉末/磁性，未集齐有效 MSDS 与 UN38.3 报告前 100% 物理锁死普货订舱通道；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 防滞港与防放空：目的港免堆期 (LFD) 前 72h 主动语音催提；未确认海关放行与提单电放 (DO) 前严禁通知拖车去码头提柜。</text>
+</svg>
