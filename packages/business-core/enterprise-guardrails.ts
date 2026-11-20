@@ -4214,6 +4214,32 @@ export function evaluateCommercialInsuranceBrokerageCoiFnolVoiceGuard(input: {
   };
 }
 
+export interface EvChargingOcppConnectorVoiceEvaluation {
+  policyCode: "EV-CHARGING-OCPP-CONNECTOR-01";
+  remoteConnectorUnlockAuthorized: boolean;
+  emergencyStallLockoutTriggered: boolean;
+  fleetCardLimitOverrideAuthorized: boolean;
+}
+
+/**
+ * Deterministic EV Charging OCPP Zero-Current Unlock Lock, Thermal Emergency Lockout & Fleet Fuel Card GPS Guard (`EV-CHARGING-OCPP-CONNECTOR-01`).
+ */
+export function evaluateEvChargingOcppConnectorVoiceGuard(input: {
+  dcOutputCurrentAmps: number;
+  reportsSmokeSparksOrDamagedCable: boolean;
+  vehicleTelematicsMatchesStationLocation: boolean;
+}): EvChargingOcppConnectorVoiceEvaluation {
+  return {
+    policyCode: "EV-CHARGING-OCPP-CONNECTOR-01",
+    remoteConnectorUnlockAuthorized:
+      input.dcOutputCurrentAmps <= 0.5 &&
+      !input.reportsSmokeSparksOrDamagedCable,
+    emergencyStallLockoutTriggered: input.reportsSmokeSparksOrDamagedCable,
+    fleetCardLimitOverrideAuthorized:
+      input.vehicleTelematicsMatchesStationLocation,
+  };
+}
+
 
 
 

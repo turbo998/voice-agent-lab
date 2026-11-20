@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (175 Bilingual Guides)
+## 3. Solution Architect Selection Guides (176 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -216,3 +216,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 173. **Cybersecurity SOC, PagerDuty On-Call & Sev-1 War-Room (CrowdStrike / Sentinel) 24×7 Voice Bridge: Anti-Deepfake FIDO2 Lock, Tier-0 Dual-Control Containment & Wake-Up Challenge**: [EN](./cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.en.md) | [中文](./cybersecurity-soc-pagerduty-incident-response-ransomware-deepfake-voice-bridge-selection-faq.md)
 174. **Hospitality MICE Group Sales (Cvent / Amadeus Delphi), Corporate LRA Rate & VIP Loyalty 24×7 Voice Desk: Group Attrition Cutoff Lock, LRA Anti-Scalping Gate & Elite Zero-Walk Shield**: [EN](./hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.en.md) | [中文](./hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.md)
 175. **Commercial Insurance Brokerage, ACORD 25 COI & Workers' Comp FNOL (Applied Epic / Guidewire) 24×7 Voice Desk: Known-Loss Bind Block, COI Policy-Limit Lock & OSHA 24h Triage**: [EN](./commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.en.md) | [中文](./commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.md)
+176. **EV Charging Station Network (OCPP 2.0.1 / ChargePoint) & Commercial Fleet Fuel Card (WEX) 24×7 Voice Rescue: Zero-Current Unlock Lock, Thermal Lockout & Telematics Fuel Gate**: [EN](./ev-charging-station-network-ocpp-connector-unlock-fleet-fuel-card-voice-desk-selection-faq.en.md) | [中文](./ev-charging-station-network-ocpp-connector-unlock-fleet-fuel-card-voice-desk-selection-faq.md)
