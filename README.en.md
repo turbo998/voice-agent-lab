@@ -229,6 +229,7 @@ flowchart LR
 155. **Franchise Home Services (Plumbing, Electrical, Pest Control & Roofing / ServiceTitan) 24×7 Voice Dispatch: 0ms Main-Shutoff Preemption, Photo Pricebook Bands & Geo-Clustering**: [EN](./docs/franchise-home-services-plumbing-pest-roofing-field-dispatch-estimate-voice-selection-faq.en.md) | [中文](./docs/franchise-home-services-plumbing-pest-roofing-field-dispatch-estimate-voice-selection-faq.md)
 156. **Global Freight Forwarding, Ocean FCL/LCL & Air Cargo 24×7 Voice Desk (CargoWise): 72h Port Demurrage Shield, 3-Greenlight Drayage Gate & Hazmat MSDS Lock**: [EN](./docs/global-freight-forwarding-air-ocean-charter-demurrage-customs-voice-desk-selection-faq.en.md) | [中文](./docs/global-freight-forwarding-air-ocean-charter-demurrage-customs-voice-desk-selection-faq.md)
 157. **Merchant Acquiring, Payment Terminal & Restaurant/Retail POS (Toast / Square / Adyen) 24×7 Voice Support: 30s Offline Store-and-Forward Failover, T+1 Recon & Payout Lock**: [EN](./docs/pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.en.md) | [中文](./docs/pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.md)
+158. **Enterprise B2B Accounts Receivable (AR), Order-to-Cash & Invoice Dispute Voice Copilot (SAP / HighRadius): 5s PO/POD Resend, Short-Pay Split & Credit-Hold Shield**: [EN](./docs/enterprise-b2b-collections-ar-invoice-dispute-promise-to-pay-voice-selection-faq.en.md) | [中文](./docs/enterprise-b2b-collections-ar-invoice-dispute-promise-to-pay-voice-selection-faq.md)
 
 ---
 

@@ -3710,6 +3710,34 @@ export function evaluateMerchantPosAcquiringSettlementVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseB2bAccountsReceivableVoiceEvaluation {
+  policyCode: "ENTERPRISE-B2B-AR-COLLECTIONS-01";
+  creditHoldShipmentFreezeBlocked: boolean;
+  undisputedBalanceScheduledUsd: number;
+  pivotedToUnappliedCashMatching: boolean;
+}
+
+/**
+ * Deterministic Enterprise B2B Accounts Receivable Unapplied-Cash Pre-Check, Disputed Short-Pay Split & Credit-Hold Shield (`ENTERPRISE-B2B-AR-COLLECTIONS-01`).
+ */
+export function evaluateEnterpriseB2bAccountsReceivableVoiceGuard(input: {
+  totalInvoiceAmountUsd: number;
+  disputedDamagedLineItemUsd: number;
+  hasUnmatchedWireInUnappliedCash: boolean;
+}): EnterpriseB2bAccountsReceivableVoiceEvaluation {
+  const hasDispute = input.disputedDamagedLineItemUsd > 0;
+  return {
+    policyCode: "ENTERPRISE-B2B-AR-COLLECTIONS-01",
+    creditHoldShipmentFreezeBlocked:
+      hasDispute || input.hasUnmatchedWireInUnappliedCash,
+    undisputedBalanceScheduledUsd: Math.max(
+      0,
+      input.totalInvoiceAmountUsd - input.disputedDamagedLineItemUsd
+    ),
+    pivotedToUnappliedCashMatching: input.hasUnmatchedWireInUnappliedCash,
+  };
+}
+
 
 
 

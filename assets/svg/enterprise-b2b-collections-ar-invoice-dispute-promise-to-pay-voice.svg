@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgAr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="matchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="holdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="ptpGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgAr)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Enterprise B2B Accounts Receivable (AR) &amp; Order-to-Cash Voice Copilot (SAP / HighRadius)</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">大型企业 B2B 应收账款对账与回款跟进语音智能体架构：三单匹配争议秒查、争议发票免锁单保护与 DSO 回款周期缩短 8.5 天</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">ENTERPRISE-B2B-AR-COLLECTIONS-01</text>
+
+  <!-- Pillar 1: 3-Way Match (PO / POD / Invoice) Dispute Resolution -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#matchGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. B2B 逾期第一原因：发票/签收单缺失秒补</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 误区：B2B 企业客户逾期 75% 不是没钱，而是应付会计缺采购单号或签收单！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 如果拿消费贷讨债语气去催企业采购财务，直接惹怒大客户采购总监导致丢掉明年合同</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 买方 AP 会计常说：“这张发票没写我们的 PO 采购号，或者缺仓库签收单 POD，系统退回了”</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ 通话中 5秒重发带 PO 号发票 + 物流签收单 PDF</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 买方会计电话里口报缺失的 PO 编号，AI 当场在 SAP/HighRadius 补齐关联并重开发票</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 5秒内将【增值税发票 + 带仓库鲜章的 POD 签收单合并包】直推买方 AP 邮箱！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">无头汇款水单认领 (Unapplied Cash Remittance Match)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 买方说“我们上周五已经电汇了 48万，你们怎么还催？” ➔ 语音核对银行流水号/水单照片</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 立即将公司账上的“待认领无头款”匹配核销对应 6 张发票，0秒解除催收打扰</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">单证缺失导致的拖延回款减少 -68%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">定位是礼貌专业的“对账协同专员”，绝非咄咄逼人的催收员</text>
+  </g>
+
+  <!-- Pillar 2: Disputed Invoice Credit-Hold Shield & Partial Payment -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#holdGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 货损争议部分拒付剥离与严禁乱停供硬锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 业务灾难：因 $800 货损争议未结清，系统竟把战略客户 $50万新订单锁死停供！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 买方收货发现 100箱货里有 2箱破损 ($800)，因此扣留了整张 $50,000 发票不付</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若 ERP 因逾期直接触发自动停供锁单 (Credit Hold)，将导致客户产线停工索赔！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">无争议金额先行排款 + 争议部分独立挂起 (Short-Pay Split)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• AI 引导买方会计：“我已帮您将破损的 $800 标记为质量争议单 (Dispute Code Q1) 暂停催收”</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• “请问剩余无争议的 $49,200 能否排入贵司本周五的付款批次？” ➔ 盘活 98% 现金流！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">争议发票免触发停供硬互锁 (Dispute Credit-Hold Shield)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 只要发票处于有效质量/价格争议复核期，或客户属于战略白名单 (Strategic Tier-1)</text>
+    <text x="30" y="310" fill="#EF4444" font-size="12">• 网关 100% 物理阻断自动冻结客户信用额度与停发新货指令！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">因小额争议导致的整单压款减少 -74%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">战略客户误停供事故 0 起 · 销售团队与财务团队彻底告别内耗</text>
+  </g>
+
+  <!-- Pillar 3: Promise-to-Pay (PTP) Calendar Lock & Early-Payment Discount -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#ptpGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 付款承诺日 (PTP) 锁定与动态早付折扣</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：财务团队月底预测现金流全靠猜，长尾 3,000 家经销商根本打不过来电话</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 传统催收员只能顾得上前 50 家大客户，几千家中小型分销商长期拖欠 60~90 天</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 账期到期前 5 天礼貌语音对账，锁定精确到日的付款承诺 (Promise-to-Pay Date)</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">动态早付现金折扣测算 (Dynamic Early-Pay Discount)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 季末冲刺现金流时，按 CFO 设定底线自动向现金充裕买方提供早付折扣（如 1.5%/10 Net 60）</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• “若贵司能在本月 28日前结清这笔 20万货款，系统可为您自动签发 ¥3,000 早付红字抵扣单”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">防 BEC 伪造收款账户声明 (Anti-Fraud IBAN Attestation)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 每次对账通话强制声明：“我司唯一收款对公账户尾号始终为 8809，绝不会通过邮件临时改户”</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 保护下游经销商免受黑客商业邮件篡改 (BEC) 假冒供应商骗款</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">整体应收账款周转天数 (DSO) 缩短 -8.5 天</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">10亿美元营收企业释放 $2,300万+ 自由现金流</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">企业 B2B 应收账款 (AR) 对账与回款语音智能体三大铁律 (ENTERPRISE-B2B-AR-COLLECTIONS-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 争议剥离与免停供锁：存在有效货损/价格争议的金额独立挂起并严禁触发整户停供锁单 (Credit Hold)，引导无争议部分先行排款；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 单证秒补与防改户声明：通话中 5秒补发缺失 PO/POD 签收单；严禁语音变更我方收款对公账号以防范 BEC 商业汇款诈骗。</text>
+</svg>
