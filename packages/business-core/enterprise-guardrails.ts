@@ -4463,6 +4463,32 @@ export function evaluateThemeParkRideSafetyCodeAdamVoiceGuard(input: {
   };
 }
 
+export interface GenomicOncologyLiquidBiopsyVoiceEvaluation {
+  policyCode: "GENOMIC-ONCOLOGY-CLIA-COUNSELOR-01";
+  autonomousGeneticResultInterpretationAuthorized: boolean;
+  urgentMobilePhlebotomyRedrawTriggered: boolean;
+  ginaEmployerOrInsurerDisclosureBlocked: boolean;
+}
+
+/**
+ * Deterministic Genomic Testing & Liquid Biopsy Variant/VUS Readout Lock, Streck cfDNA Freeze Redraw & GINA Privacy Guard (`GENOMIC-ONCOLOGY-CLIA-COUNSELOR-01`).
+ */
+export function evaluateGenomicOncologyLiquidBiopsyVoiceGuard(input: {
+  callerRequestsVariantOrVusClinicalInterpretation: boolean;
+  streckCfDnaTubeFrozenOrHemolyzed: boolean;
+  callerIsEmployerOrLifeDisabilityUnderwriter: boolean;
+}): GenomicOncologyLiquidBiopsyVoiceEvaluation {
+  return {
+    policyCode: "GENOMIC-ONCOLOGY-CLIA-COUNSELOR-01",
+    autonomousGeneticResultInterpretationAuthorized:
+      !input.callerRequestsVariantOrVusClinicalInterpretation,
+    urgentMobilePhlebotomyRedrawTriggered:
+      input.streckCfDnaTubeFrozenOrHemolyzed,
+    ginaEmployerOrInsurerDisclosureBlocked:
+      input.callerIsEmployerOrLifeDisabilityUnderwriter,
+  };
+}
+
 
 
 
