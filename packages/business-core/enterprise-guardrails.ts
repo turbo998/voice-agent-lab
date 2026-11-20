@@ -3470,6 +3470,31 @@ export function evaluateSmartGlassesWearableMultimodalVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseHrsscBenefitsPayrollVoiceEvaluation {
+  policyCode: "ENTERPRISE-HRSSC-BENEFITS-PAYROLL-01";
+  payslipDollarDisclosureAuthorized: boolean;
+  directDepositVoiceChangeBlocked: boolean;
+  confidentialManagerShieldedErEscalation0ms: boolean;
+}
+
+/**
+ * Deterministic Enterprise HRSSC Step-Up MFA Payslip Gate, Direct-Deposit Voice Edit Lock & 0ms Confidential ER Escalation Guard (`ENTERPRISE-HRSSC-BENEFITS-PAYROLL-01`).
+ */
+export function evaluateEnterpriseHrsscBenefitsPayrollVoiceGuard(input: {
+  sessionStepUpMfaVerified: boolean;
+  requestsDirectDepositBankAccountEdit: boolean;
+  reportsHarassmentRetaliationOrCrisis: boolean;
+}): EnterpriseHrsscBenefitsPayrollVoiceEvaluation {
+  return {
+    policyCode: "ENTERPRISE-HRSSC-BENEFITS-PAYROLL-01",
+    payslipDollarDisclosureAuthorized:
+      input.sessionStepUpMfaVerified && !input.reportsHarassmentRetaliationOrCrisis,
+    directDepositVoiceChangeBlocked: input.requestsDirectDepositBankAccountEdit,
+    confidentialManagerShieldedErEscalation0ms:
+      input.reportsHarassmentRetaliationOrCrisis,
+  };
+}
+
 
 
 

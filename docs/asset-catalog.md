@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（148 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（149 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -189,3 +189,4 @@
 146. **大型跨国企业商旅预订（TMC / SAP Concur / 携程商旅）与差旅报销语音助手（机场 22秒改签、职级差标硬锁、历史退票余额优先抵扣与水单拍票剥离报销）方案**：[中文](./corporate-travel-tmc-concur-expense-audit-policy-exception-voice-copilot-selection-faq.md) | [EN](./corporate-travel-tmc-concur-expense-audit-policy-exception-voice-copilot-selection-faq.en.md)
 147. **品牌电商 24×7 实时互动直播间与私域导购数字人（弹幕高意向提问 `<600ms` 句末插播、《广告法》极限词 `0ms` 截断、售罄秒切品与每小时 $1.80 本地驱动）方案**：[中文](./ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.md) | [EN](./ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.en.md)
 148. **AI 智能眼镜（Smart Glasses / AR 头显）与随身穿戴多模态语音助手（指代触发 `<50KB` 第一视角抽帧省电、正面隐私灯防遮挡锁与 `<45dB` 电梯防漏音）方案**：[中文](./smart-glasses-ar-headset-wearable-multimodal-voice-assistant-selection-faq.md) | [EN](./smart-glasses-ar-headset-wearable-multimodal-voice-assistant-selection-faq.en.md)
+149. **大型企业全球 HR 员工共享中心（HRSSC）、年度商业医保选计划（Open Enrollment）与入职发薪语音 Copilot（工资条 Diff 15秒释疑、家庭医保精算零病史留存与敏感举报 0ms 隔离）方案**：[中文](./enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.md) | [EN](./enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.en.md)

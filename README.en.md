@@ -220,6 +220,7 @@ flowchart LR
 146. **Enterprise Corporate Travel (TMC / SAP Concur / Navan) & Expense Voice Copilot: Airport Instant Rebooking, Policy Cap Interlocks & Multimodal Folio Split**: [EN](./docs/corporate-travel-tmc-concur-expense-audit-policy-exception-voice-copilot-selection-faq.en.md) | [中文](./docs/corporate-travel-tmc-concur-expense-audit-policy-exception-voice-copilot-selection-faq.md)
 147. **24×7 Interactive Livestream E-Commerce & Digital Human Shopping Anchor (Voice + Avatar): <600ms Bullet-Chat Preemption, 0ms Ad-Law Filter & Sold-Out SKU Lock**: [EN](./docs/ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.en.md) | [中文](./docs/ecommerce-livestream-24x7-ai-anchor-tiktok-douyin-ads-compliance-voice-selection-faq.md)
 148. **AI Smart Glasses, AR Headsets & Wearable Multimodal Voice Assistants: Deictic <50KB POV Keyframe Gating, Privacy LED Lock & <45dB Whisper Mode**: [EN](./docs/smart-glasses-ar-headset-wearable-multimodal-voice-assistant-selection-faq.en.md) | [中文](./docs/smart-glasses-ar-headset-wearable-multimodal-voice-assistant-selection-faq.md)
+149. **Enterprise HR Shared Services (HRSSC), Benefits Open Enrollment & Payroll Voice Copilot: Payslip Delta Engine, Household TCO Calculator & 0ms Confidential ER Shield**: [EN](./docs/enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.en.md) | [中文](./docs/enterprise-hr-payroll-benefits-open-enrollment-onboarding-voice-copilot-selection-faq.md)
 
 ---
 

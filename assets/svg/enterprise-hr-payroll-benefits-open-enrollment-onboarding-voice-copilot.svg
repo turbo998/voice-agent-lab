@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgHr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="benGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="payGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="erGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgHr)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Enterprise HR Shared Services (HRSSC), Benefits Enrollment &amp; Payroll Voice Copilot</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">大型企业全球 HR 员工共享中心语音助手架构：商业医保计划家庭总成本精算、发薪明细 Step-Up MFA 锁与劳动关系 0ms 保护</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">ENTERPRISE-HRSSC-BENEFITS-PAYROLL-01</text>
+
+  <!-- Pillar 1: Annual Open Enrollment Medical Plan TCO Calculator -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#benGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 年度福利医保 (Open Enrollment) 精算导购</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 痛点：每年 11 月选商业医保/补充医疗，5万员工把 HR 热线打爆！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 80 页的医保福利手册充斥免赔额 (Deductible)、共付比例 (Co-insurance)、封顶线</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 员工算不清“今年准备生二胎/孩子箍牙，选高免赔 HSA 还是低免赔 PPO 更划算？”</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ 家庭医疗支出确定性精算器 (Household TCO Sim)</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 语音收集家庭就诊预期，调用确定性数学函数精算：全年保费 + 预估自付 - 公司 HSA 补贴</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• “若明年有分娩住院，选 PPO 金牌计划全年总支出比基础版净省 $1,420！”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">严禁医疗诊断与核保承诺边界 (Non-Clinical Boundary)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 仅依据公司福利精算表对比财务成本，绝不收集员工具体病史写入 HR Workday</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 选定后推送 Workday 福利确认卡至 Teams / 企微一键签署</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">福利选计划热线分流率 84% · 员工选错率 -76%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">支持工厂蓝领/门店店员下班回家与家属开免提多语种共同咨询</text>
+  </g>
+
+  <!-- Pillar 2: Payday Payslip Variance Explain & Step-Up MFA Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#A78BFA" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#payGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 发薪日工资条拆解与 Step-Up MFA 隐私锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="30" y="82" fill="#DDD6FE" font-size="13" font-weight="700">💰 发薪日洪峰：每月 10 号发工资，成千上万员工追问“怎么比上月少发了 800 块？”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 绝大多数是因为年度累进个税跳档、社保基数每年 7 月调整或餐补扣税规则变化</text>
+    <text x="30" y="122" fill="#C4B5FD" font-size="12">• 但薪资属于企业最高机密，若别人拿员工手机一问就念出年薪，将引发职场大地震！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">强制二次强核身门禁 (Step-Up Biometric / Authenticator MFA)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 查通用考勤/年假免二次验证；一旦触及“具体薪资金额、奖金、个税扣款、改工资卡”</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 强制触发手机 FaceID / Microsoft Authenticator 确认后才解锁当月与上月环比差额</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">上月 vs 本月工资条逐项 Diff 口语化解读</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• “您本月应发工资不变，实发少 780 元是因为全年累计应纳税所得额刚跨过 14.4万</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">  阶梯，个税预扣率从 10% 升至 20%（属于正常年度累进，并非漏发工资）”</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#2E1065" stroke="#A78BFA"/>
+    <text x="178" y="356" fill="#DDD6FE" font-size="13" font-weight="700" text-anchor="middle">发薪日人工工单量直降 -81.5% · 薪资泄露 0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">修改发薪银行卡号 100% 锁定需 Workday 后台人工二次复核</text>
+  </g>
+
+  <!-- Pillar 3: 0ms Employee Relations / Harassment Confidential Escalation -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#erGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 职场骚扰/劳动争议与心理危机 0ms 保密直通</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 伦理与法律红线：员工举报上级职场霸凌/性骚扰，AI 竟让员工“多沟通忍让”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 涉及职场歧视、性骚扰 (Title VII)、合规吹哨举报、工伤赔偿或重度抑郁轻生</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 严禁 AI 机械背诵考勤制度或将举报记录抄送给员工的直线主管！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">0ms 独立合规/员工关系 (ER) 与 EAP 心理专线抢占</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 命中骚扰/霸凌/吹哨/轻生语义时，0ms 终止常规 HR 机器人，切换最高保密隔离轨</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 案件访问权限 100% 物理屏蔽其所在部门各级领导，直通集团独立道德合规办/EAP</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">全球多国劳动法库隔离 (Multi-Country Labor Law RAG)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 按员工签署劳动合同主体所在国（中国劳动合同法 vs 德国工委会 vs 加州法）检索</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 严禁把美国 At-Will 制度张冠李戴回答给欧洲或中国员工</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">敏感举报防打击报复隔离率：100%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 Workday / SAP SuccessFactors + ServiceNow HRSD 全流程</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">大型企业 HRSSC 与薪酬福利语音智能体三大铁律 (ENTERPRISE-HRSSC-BENEFITS-PAYROLL-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 薪资隐私强核身：播报具体薪资明细、个税环比差额或扣款前，必须通过 Step-Up MFA 二次认证，且严禁纯语音修改工资卡号；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 举报保密隔离与精算导购：职场骚扰/吹哨举报 0ms 物理隔离直线经理并转独立合规席；医保选计划用确定性精算器且不留存员工病史。</text>
+</svg>
