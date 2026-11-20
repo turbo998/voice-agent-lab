@@ -4295,6 +4295,34 @@ export function evaluateFoodSafetyColdChainFsmaRecallVoiceGuard(input: {
   };
 }
 
+export interface HazmatChemicalSpillDispatchVoiceEvaluation {
+  policyCode: "HAZMAT-CHEMTREC-SPILL-DISPATCH-01";
+  hazmatLoadDispatchAuthorized: boolean;
+  waterBasedExtinguishingAdviceBlocked: boolean;
+  epaNrcImmediateStatutoryReportTriggered: boolean;
+}
+
+/**
+ * Deterministic Hazmat 49 CFR 177.848 Segregation Lock, PHMSA ERG Class 4.3 No-Water Gate & EPA NRC Reporting Guard (`HAZMAT-CHEMTREC-SPILL-DISPATCH-01`).
+ */
+export function evaluateHazmatChemicalSpillDispatchVoiceGuard(input: {
+  incompatibleHazmatClassesCoLoaded: boolean;
+  driverHoldsValidHazmatEndorsement: boolean;
+  isClass4Dot3WaterReactiveMaterial: boolean;
+  spillExceedsEpaReportableQuantityOrHitsWaterway: boolean;
+}): HazmatChemicalSpillDispatchVoiceEvaluation {
+  return {
+    policyCode: "HAZMAT-CHEMTREC-SPILL-DISPATCH-01",
+    hazmatLoadDispatchAuthorized:
+      !input.incompatibleHazmatClassesCoLoaded &&
+      input.driverHoldsValidHazmatEndorsement,
+    waterBasedExtinguishingAdviceBlocked:
+      input.isClass4Dot3WaterReactiveMaterial,
+    epaNrcImmediateStatutoryReportTriggered:
+      input.spillExceedsEpaReportableQuantityOrHitsWaterway,
+  };
+}
+
 
 
 
