@@ -4719,6 +4719,28 @@ export function evaluateFilmTvProductionSagStuntVoiceGuard(input: {
   };
 }
 
+export interface AviationMroPart145AirworthinessVoiceEvaluation {
+  policyCode: "AVIATION-MRO-PART145-RII-8130-01";
+  componentInstallationAndCrsReleaseAuthorized: boolean;
+}
+
+/**
+ * Deterministic Aviation MRO FAA Form 8130-3 / EASA Form 1 Lock, RII Independent Inspector Gate & 100% Tool-Crib Zero-FOD Guard (`AVIATION-MRO-PART145-RII-8130-01`).
+ */
+export function evaluateAviationMroPart145AirworthinessVoiceGuard(input: {
+  certified8130OrForm1AndLlpTraceVerified: boolean;
+  independentRiiInspectorDualSignVerified: boolean;
+  allCheckedOutToolsAccountedForZeroFod: boolean;
+}): AviationMroPart145AirworthinessVoiceEvaluation {
+  return {
+    policyCode: "AVIATION-MRO-PART145-RII-8130-01",
+    componentInstallationAndCrsReleaseAuthorized:
+      input.certified8130OrForm1AndLlpTraceVerified &&
+      input.independentRiiInspectorDualSignVerified &&
+      input.allCheckedOutToolsAccountedForZeroFod,
+  };
+}
+
 
 
 
