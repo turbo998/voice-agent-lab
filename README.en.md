@@ -216,6 +216,7 @@ flowchart LR
 142. **Automotive In-Cabin Multimodal Voice Assistant: 6-Zone Seat Permission Isolation, Driving-State CAN Safety Interlocks & Edge NPU + Cloud Hybrid**: [EN](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.en.md) | [中文](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.md)
 143. **Managed Commercial Voice Platforms (Vapi vs. Retell AI vs. Bland AI vs. ElevenLabs) vs. Self-Hosted Azure ACS + LiveKit / Pipecat: 5-Layer Markup Breakdown & 80k-Min TCO Crossover**: [EN](./docs/managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.en.md) | [中文](./docs/managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.md)
 144. **Contact Center AI-to-Human Warm Transfer & Context Handoff Architecture: 4-Slot Screen-Pop Cards, 6-Second Agent Whisper & >180s Virtual Hold Callback**: [EN](./docs/contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.en.md) | [中文](./docs/contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.md)
+145. **Wealth Management, Brokerage & Mutual Fund Voice Robo-Advisor: 80ms Portfolio Attribution, C1–C5 Suitability Interlock & Zero Promissory Return Guardrail**: [EN](./docs/wealth-management-robo-advisor-portfolio-rebalance-sec-mifid-suitability-voice-selection-faq.en.md) | [中文](./docs/wealth-management-robo-advisor-portfolio-rebalance-sec-mifid-suitability-voice-selection-faq.md)
 
 ---
 

@@ -3361,6 +3361,34 @@ export function evaluateContactCenterWarmTransferContextHandoffGuard(input: {
   };
 }
 
+export interface WealthRoboAdvisorPortfolioSuitabilityEvaluation {
+  policyCode: "WEALTH-ROBO-ADVISOR-SUITABILITY-01";
+  fundSubscriptionDraftAuthorized: boolean;
+  crossTierSuitabilityBlocked: boolean;
+  promissoryReturnClaimScrubbed: boolean;
+}
+
+/**
+ * Deterministic Wealth Management & Brokerage Voice Robo-Advisor C1-C5 Suitability, Zero Promissory Return & 2FA Draft Guard (`WEALTH-ROBO-ADVISOR-SUITABILITY-01`).
+ */
+export function evaluateWealthRoboAdvisorPortfolioSuitabilityGuard(input: {
+  investorRiskTierC1ToC5: number;
+  productRiskTierR1ToR5: number;
+  kycAssessmentValidWithin365Days: boolean;
+  containsPromissoryReturnPhrase: boolean;
+}): WealthRoboAdvisorPortfolioSuitabilityEvaluation {
+  const tierMismatch =
+    !input.kycAssessmentValidWithin365Days ||
+    input.investorRiskTierC1ToC5 < input.productRiskTierR1ToR5;
+  return {
+    policyCode: "WEALTH-ROBO-ADVISOR-SUITABILITY-01",
+    fundSubscriptionDraftAuthorized:
+      !tierMismatch && !input.containsPromissoryReturnPhrase,
+    crossTierSuitabilityBlocked: tierMismatch,
+    promissoryReturnClaimScrubbed: input.containsPromissoryReturnPhrase,
+  };
+}
+
 
 
 

@@ -216,6 +216,7 @@ flowchart LR
 142. **智能汽车座舱（In-Cabin Cockpit）多模态语音助手（四/六音区声源权限隔离、行车 `Speed>0` CAN 总线禁关大灯安全锁与高通 8295 隧道断网端云协同）方案**：[中文](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.md) | [EN](./docs/automotive-incabin-multimodal-cockpit-edge-cloud-voice-selection-faq.en.md)
 143. **全托管商业语音智能体平台（Vapi vs. Retell AI vs. Bland AI vs. ElevenLabs）vs. 企业自建编排（Azure ACS + LiveKit / Pipecat：五层叠加平台税拆解、BYOC 破局与月呼 8万分钟 TCO 拐点）方案**：[中文](./docs/managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.md) | [EN](./docs/managed-voice-platforms-vapi-retell-bland-elevenlabs-vs-azure-acs-livekit-tco-selection-faq.en.md)
 144. **智能联络中心“AI 一线接待 → 复杂问题带上下文无缝转人工”端到端架构（终结客户重复叙述、3秒 4槽位结构化弹屏卡、6秒坐席耳语与 >180s 虚拟排队回呼）方案**：[中文](./docs/contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.md) | [EN](./docs/contact-center-warm-transfer-context-packet-sip-uui-agent-whisper-selection-faq.en.md)
+145. **证券券商、公募基金与财富管理 AI 语音投顾（持仓异动 80ms 归因、C1-C5 适当性越级认购硬拦截、严禁承诺保本保收益锁与开盘 25x 洪峰）方案**：[中文](./docs/wealth-management-robo-advisor-portfolio-rebalance-sec-mifid-suitability-voice-selection-faq.md) | [EN](./docs/wealth-management-robo-advisor-portfolio-rebalance-sec-mifid-suitability-voice-selection-faq.en.md)
 
 ---
 
