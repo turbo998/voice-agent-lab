@@ -4848,6 +4848,34 @@ export function evaluateCommercialRealEstateColocationYardiVoiceGuard(input: {
   };
 }
 
+export interface DistrictHeatingChpSteamVoiceEvaluation {
+  policyCode: "DISTRICT-HEATING-CHP-STEAM-01";
+  steamValveOpeningAuthorized: boolean;
+  chpElectricPeakCurtailmentAuthorized: boolean;
+  ruptureIsolationAndBoilerMftTriggered: boolean;
+}
+
+/**
+ * Deterministic District Heating, CHP Cogeneration & Industrial Steam Anti-Water-Hammer Lock, Freeze-Floor Gate & Boiler MFT Guard (`DISTRICT-HEATING-CHP-STEAM-01`).
+ */
+export function evaluateDistrictHeatingChpSteamVoiceGuard(input: {
+  condensateDrainedAndWarmupRampVerified: boolean;
+  municipalFreezeProtectionFloorMaintained: boolean;
+  pipeRuptureMakeUpSurgeOrBoilerLowWater: boolean;
+}): DistrictHeatingChpSteamVoiceEvaluation {
+  return {
+    policyCode: "DISTRICT-HEATING-CHP-STEAM-01",
+    steamValveOpeningAuthorized:
+      input.condensateDrainedAndWarmupRampVerified &&
+      !input.pipeRuptureMakeUpSurgeOrBoilerLowWater,
+    chpElectricPeakCurtailmentAuthorized:
+      input.municipalFreezeProtectionFloorMaintained &&
+      !input.pipeRuptureMakeUpSurgeOrBoilerLowWater,
+    ruptureIsolationAndBoilerMftTriggered:
+      input.pipeRuptureMakeUpSurgeOrBoilerLowWater,
+  };
+}
+
 
 
 
