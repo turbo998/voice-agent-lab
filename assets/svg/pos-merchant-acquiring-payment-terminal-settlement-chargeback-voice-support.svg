@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgPos" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="rushGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="bankGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="settleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgPos)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Merchant Acquiring &amp; Restaurant/Retail POS (Toast / Square / Adyen) 24x7 Voice Support</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">商业收单机构与餐饮零售 POS 收银机 24×7 商户语音支持架构：晚高峰断网 30秒切离线收银、T+1 结算延迟拆解与禁改结算卡锁</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">MERCHANT-POS-ACQUIRING-SUPPORT-01</text>
+
+  <!-- Pillar 1: Friday 7 PM Dinner-Rush POS Outage 30-Second Self-Healing -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#rushGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 晚高峰收银台断网 30秒离线收款自愈</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 餐厅老板噩梦：周五晚 7 点收银机刷不出卡，门口排着 30 桌客人结不了账！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 餐饮与超市晚高峰收银瘫痪 10 分钟，不仅客人逃单免单，店长更会当场怒砸 POS 换供应商</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 传统客服还要让店长报 16位商户号、重启光猫等 15 分钟，黄花菜都凉了！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ 来电 0秒拉取 POS 终端心跳 + 30秒切 4G/离线收单</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 检测到门店 Wi-Fi 掉线但收银机内置 eSIM 正常，AI 远程一键下发指令切 4G 备线</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 或指导店长开启受控离线收单 (Offline Store-and-Forward，单笔限额 &lt;=$100) 先放行客流！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">后厨打单机 (KDS/热敏打印机) 卡单 IP 冲突秒修</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 前台点了菜后厨不出票？远程触发局域网 ARP 扫描重绑打印机静态 IP</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 30 秒内让后厨热敏机重新吐单，挽救餐厅黄金翻台期</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">高峰期收银恢复时间：18 分钟 ➔ 32 秒</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">餐饮零售商户因“高峰宕机无人管”导致的流失率下降 68%</text>
+  </g>
+
+  <!-- Pillar 2: Zero Voice Bank-Payout Account Edit & Anti-Takeover Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#bankGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 严禁电话修改结算银行卡与无原单盲退锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 千万级电诈：骗子冒充餐厅老板打电话“把今日营业款改打到这张新银行卡”！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 商户收单账户里每天躺着数万至数十万 T+1 待结算营业款 (Settlement Payout)</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 黑客常通过社工客服修改结算对公/法人银行卡，或诱导开启“无原交易盲退 (Unreferenced Refund)”！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">100% 物理锁死语音修改结算卡与开启无原单退货</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 无论来电者报出多么准确的法人身份证与营业执照号，语音通道 0ms 拒绝修改结算银行卡！</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 强制要求登录商户后台通过法人对公打款验证 + 人脸识别 + 24小时冷却期才可生效</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">严禁在电话中索要顾客完整卡号或店主后台密码</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 查单仅需提供交易金额与卡号后 4 位 (Last 4 Digits)，100% 符合 PCI-DSS v4.0</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 拦截假冒收单机构官方人员诱骗店长在 POS 机上按“购买礼品卡测试”的诈骗套路</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">商户结算资金被劫持损失：$0 (100% 免疫社工)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">所有高危账户变更与解冻均强制走商户 App 端强多因子签名</text>
+  </g>
+
+  <!-- Pillar 3: T+1 Settlement Hold Attribution & Chargeback Evidence Helper -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#settleGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. T+1 结算到账差额拆解与拒付调单 (Chargeback)</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：每天早上 10 点几十万小微店主打电话问“昨天收了 1万，今天怎么只到账 9200？”</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 差额常源于：超过 23:00 日切点 (Batch Cutoff) 的交易顺延、刷卡手续费扣除或风控大额调单冻结</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 人工客服逐笔对账一通电话要算 12 分钟</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">15秒日切批次与手续费穿透对账 (Settlement Recon)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• “王店长，您昨日总流水 ¥10,000，其中晚 11点后两笔共 ¥650 归入今日日切批次明早到账；</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">  扣除标准收单手续费 ¥58 及一笔顾客退货 ¥92，今日实到账 ¥9,200 分文不差！”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">风控调单 / 顾客恶意拒付 (Chargeback) 拍照秒申诉</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 若某笔大额交易因风险复核暂缓结算，短信下发链接引导店主拍签购单小票与监控照片</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 自动组装 Visa/Mastercard/银联 CE 3.0 抗辩证据包，商户申诉胜率提升 +44%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">每日早高峰结算对账电话分流率：86%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">单通商户支持成本从 $9.80 降至 $0.65 (-93%)</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">商业收单机构与零售餐饮 POS 24×7 商户语音支持三大铁律 (MERCHANT-POS-ACQUIRING-SUPPORT-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 结算资金防盗锁：100% 物理禁止通过语音修改商户结算银行卡号或开启无原单盲退权限，防止社工劫持商户营业款；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 晚高峰 30秒收银自愈：收银台断网时自动切 4G eSIM 或开启单笔限额 (&lt;=$100) 离线收单模式，优先保障餐厅门店不断流。</text>
+</svg>

@@ -3685,6 +3685,31 @@ export function evaluateGlobalFreightForwardingDemurrageVoiceGuard(input: {
   };
 }
 
+export interface MerchantPosAcquiringSettlementVoiceEvaluation {
+  policyCode: "MERCHANT-POS-ACQUIRING-SUPPORT-01";
+  payoutBankAccountVoiceEditBlocked: boolean;
+  cappedOfflineStoreAndForwardActivated: boolean;
+  perTransactionOfflineCapUsd: number;
+}
+
+/**
+ * Deterministic Merchant Acquiring & POS 0ms Voice Payout-Bank Edit Block & Dinner-Rush Capped Offline Store-and-Forward Guard (`MERCHANT-POS-ACQUIRING-SUPPORT-01`).
+ */
+export function evaluateMerchantPosAcquiringSettlementVoiceGuard(input: {
+  requestsPayoutBankAccountOrBlindRefundChange: boolean;
+  storeWanOutageDuringService: boolean;
+  merchantRiskStandingGood: boolean;
+}): MerchantPosAcquiringSettlementVoiceEvaluation {
+  return {
+    policyCode: "MERCHANT-POS-ACQUIRING-SUPPORT-01",
+    payoutBankAccountVoiceEditBlocked:
+      input.requestsPayoutBankAccountOrBlindRefundChange,
+    cappedOfflineStoreAndForwardActivated:
+      input.storeWanOutageDuringService && input.merchantRiskStandingGood,
+    perTransactionOfflineCapUsd: 100,
+  };
+}
+
 
 
 

@@ -228,6 +228,7 @@ flowchart LR
 154. **新能源汽车与豪华车品牌“线上留资 → 上门试驾预约 → 置换估价与汽车金融（F&I）”全链路语音智能体（15秒配置器上下文首呼、旧车条件区间估价锁与真实年化 APR 强披露）方案**：[中文](./docs/luxury-automotive-test-drive-financing-fni-tradein-appraisal-voice-concierge-selection-faq.md) | [EN](./docs/luxury-automotive-test-drive-financing-fni-tradein-appraisal-voice-concierge-selection-faq.en.md)
 155. **连锁家政与家庭上门工程服务（水电管道抢修 / 白蚁消杀 / 屋顶修缮 / ServiceTitan）24×7 语音派工（爆管 `0ms` 关总阀自救、拍图透明价目表防坐地起价与社区顺路拼单）方案**：[中文](./docs/franchise-home-services-plumbing-pest-roofing-field-dispatch-estimate-voice-selection-faq.md) | [EN](./docs/franchise-home-services-plumbing-pest-roofing-field-dispatch-estimate-voice-selection-faq.en.md)
 156. **国际货代（Freight Forwarding）、海运整柜/拼箱（FCL/LCL）与空运订舱 24×7 语音询价与跟单台（目的港滞港滞箱费 D&D 72h 催提、带电危品 MSDS 订舱硬锁与甩柜 15秒改配）方案**：[中文](./docs/global-freight-forwarding-air-ocean-charter-demurrage-customs-voice-desk-selection-faq.md) | [EN](./docs/global-freight-forwarding-air-ocean-charter-demurrage-customs-voice-desk-selection-faq.en.md)
+157. **商业收单机构（Merchant Acquiring / Toast / Square / 银联商务）与餐饮零售 POS 收银机 24×7 商户语音支持（晚高峰断网 30秒切 4G/离线收单、T+1 日切差额 15秒拆解与禁改结算卡锁）方案**：[中文](./docs/pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.md) | [EN](./docs/pos-merchant-acquiring-payment-terminal-settlement-chargeback-voice-support-selection-faq.en.md)
 
 ---
 
