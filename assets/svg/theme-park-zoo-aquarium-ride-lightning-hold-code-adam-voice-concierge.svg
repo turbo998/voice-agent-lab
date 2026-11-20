@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="620" fill="url(#bg)" rx="16"/>
+  <text x="40" y="48" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Theme Park, Zoo/Aquarium &amp; Resort Operations 24x7 Voice Concierge &amp; Safety Desk (ASTM F2291 / AZA)</text>
+  <text x="40" y="76" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="14">8-Mile Lightning Coaster Hold Lock · Code Adam Missing Child Gate Perimeter Seal · ADA Ride Harness &amp; IBCCES Triage</text>
+
+  <!-- Left Column: Guest & Park Ops Channels -->
+  <rect x="40" y="105" width="260" height="475" rx="12" fill="url(#card)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="60" y="138" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. Guest &amp; Park Channels</text>
+  <rect x="60" y="158" width="220" height="90" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">VIP Tour &amp; Express Pass</text>
+  <text x="75" y="207" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Rain-check recovery voucher</text>
+  <text x="75" y="227" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dining allergy &amp; DAS booking</text>
+
+  <rect x="60" y="265" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Ride Ops &amp; Weather Desk</text>
+  <text x="75" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Lightning within 8 miles</text>
+  <text x="75" y="334" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 30-min clear restart rule</text>
+
+  <rect x="60" y="378" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="405" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Code Adam &amp; Zoo Safety</text>
+  <text x="75" y="427" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Lost child description blast</text>
+  <text x="75" y="447" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dropped item in habitat</text>
+
+  <rect x="60" y="490" width="220" height="68" rx="8" fill="#172554" stroke="#3b82f6"/>
+  <text x="75" y="518" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">Target First Response: 520ms</text>
+  <text x="75" y="540" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12">100% ASTM &amp; AZA Safety Lock</text>
+
+  <!-- Middle Column: Deterministic Park Safety Guardrails -->
+  <rect x="340" y="105" width="490" height="475" rx="12" fill="url(#card)" stroke="#10b981" stroke-width="2"/>
+  <text x="365" y="138" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. Deterministic Park Safety &amp; Guest Engine (THEME-PARK-RIDE-SAFETY-CODE-ADAM-01)</text>
+
+  <rect x="365" y="158" width="440" height="118" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="385" y="185" fill="#ecfdf5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate A: 8-Mile Lightning Radius &amp; 30-Min Clear Outdoor Ride Lock</text>
+  <text x="385" y="208" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks clearing outdoor coasters/water rides to reopen while lightning</text>
+  <text x="385" y="228" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">  is within 8 miles OR &lt; 30 minutes have elapsed since last strike</text>
+  <text x="385" y="248" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Auto-pushes Digital Return Time Pass (Multi-Experience Pass) to app</text>
+
+  <rect x="365" y="292" width="440" height="122" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="385" y="319" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate B: Code Adam Missing Child 0ms Turnstile Perimeter Alert</text>
+  <text x="385" y="342" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Upon parent reporting a missing child: 0ms triggers park-wide Code Adam</text>
+  <text x="385" y="362" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">  radio broadcast (age, height, shoe color—attackers rarely change shoes)</text>
+  <text x="385" y="382" fill="#fef08a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Alerts all exit turnstiles &amp; parking trams within 8 seconds</text>
+
+  <rect x="365" y="430" width="440" height="128" rx="8" fill="#1e1b4b" stroke="#8b5cf6"/>
+  <text x="385" y="457" fill="#ddd6fe" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate C: Ride Track / Animal Enclosure Zero-Entry Lock</text>
+  <text x="385" y="480" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Strictly forbids guests or general staff from entering ride fence zones</text>
+  <text x="385" y="500" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">  or animal habitats to retrieve dropped phones/hats (fatal coaster/predator risk)</text>
+  <text x="385" y="520" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Logs post-park-close LOTO / Zoological Keeper retrieval ticket</text>
+
+  <!-- Right Column: Park Ticketing & Dispatch Stack -->
+  <rect x="870" y="105" width="290" height="475" rx="12" fill="url(#card)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="890" y="138" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">3. Resort Operations Stack</text>
+
+  <rect x="890" y="158" width="250" height="115" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Gateway Ticketing / Centaman</text>
+  <text x="905" y="208" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Instant Lightning Lane credit</text>
+  <text x="905" y="228" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• ADA / IBCCES accessibility pass</text>
+  <text x="905" y="248" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Annual Passholder VIP desk</text>
+
+  <rect x="890" y="290" width="250" height="125" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="317" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">DTN WeatherSentry &amp; TETRA</text>
+  <text x="905" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Live 8mi/15mi lightning ring</text>
+  <text x="905" y="360" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Exit gate Code Adam screen</text>
+  <text x="905" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Zoological keeper radio bridge</text>
+
+  <rect x="890" y="432" width="250" height="126" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="905" y="459" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Theme Park Guest KPIs</text>
+  <text x="905" y="482" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Storm queue recovery: 94%</text>
+  <text x="905" y="502" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Code Adam gate alert: 6 sec</text>
+  <text x="905" y="522" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Restricted-zone breaches: 0</text>
+  <text x="905" y="542" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Cost: $0.052/min vs $3.10 desk</text>
+</svg>

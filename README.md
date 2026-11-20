@@ -255,6 +255,7 @@ flowchart LR
 181. **数据中心服务器退役、IT 资产处置（ITAD / Iron Mountain / Sims）与涉密硬盘消磁粉碎（NIST SP 800-88 / ServiceNow HAM）24×7 语音调度（未消磁粉碎禁出机房硬锁、诉讼保全 Legal-Hold 防误毁与鼓包锂电池隔离）方案**：[中文](./docs/it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.md) | [EN](./docs/it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.en.md)
 182. **高定艺术品拍卖行、名表珠宝竞投与藏家礼宾（苏富比 Sotheby's / 佳士得 Christie's / 富艺斯 / 嘉德保利）24×7 语音顾问（反洗钱 UBO 与保证金先验硬锁、委托方保留底价物理隔离与含 26% 买家佣金总价强复诵）方案**：[中文](./docs/fine-art-auction-house-luxury-watch-bidding-kyc-aml-reserve-voice-concierge-selection-faq.md) | [EN](./docs/fine-art-auction-house-luxury-watch-bidding-kyc-aml-reserve-voice-concierge-selection-faq.en.md)
 183. **半导体晶圆厂洁净室（Cleanroom Fab）、机台 PM 维保与特种气体安全（IBM SiView / Applied SmartFactory / SEMI S2）24×7 免提语音副驾（50万美元 FOUP 晶圆批次误报废双签锁、硅烷/氢氟酸泄漏 0ms 撤离与腔体氮气吹扫 LOTO 互锁）方案**：[中文](./docs/semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.md) | [EN](./docs/semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.en.md)
+184. **主题乐园、野生动物园与大型海洋馆（Disney / Universal / 长隆 / AZA / ASTM F2291）24×7 语音礼宾与安全调度（雷暴半径 8英里户外过山车 0ms 停运锁、走失儿童 Code Adam 6秒锁大门与猛兽/轨道禁入护栏）方案**：[中文](./docs/theme-park-zoo-aquarium-ride-lightning-hold-code-adam-voice-concierge-selection-faq.md) | [EN](./docs/theme-park-zoo-aquarium-ride-lightning-hold-code-adam-voice-concierge-selection-faq.en.md)
 
 ---
 

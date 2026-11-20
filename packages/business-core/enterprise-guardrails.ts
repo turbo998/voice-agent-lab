@@ -4438,6 +4438,31 @@ export function evaluateSemiconductorCleanroomFabVoiceGuard(input: {
   };
 }
 
+export interface ThemeParkRideSafetyCodeAdamVoiceEvaluation {
+  policyCode: "THEME-PARK-RIDE-SAFETY-CODE-ADAM-01";
+  outdoorRideRestartAuthorized: boolean;
+  codeAdamExitGatePerimeterLockTriggered: boolean;
+  immediateTrackOrHabitatRetrievalBlocked: boolean;
+}
+
+/**
+ * Deterministic Theme Park & Zoo 8-Mile Lightning Hold Lock, Code Adam 6s Gate Seal & Track/Habitat Zero-Entry Guard (`THEME-PARK-RIDE-SAFETY-CODE-ADAM-01`).
+ */
+export function evaluateThemeParkRideSafetyCodeAdamVoiceGuard(input: {
+  lightningWithin8MilesOrUnder30MinClear: boolean;
+  reportsMissingChildInPark: boolean;
+  itemDroppedInRideEnvelopeOrAnimalHabitat: boolean;
+}): ThemeParkRideSafetyCodeAdamVoiceEvaluation {
+  return {
+    policyCode: "THEME-PARK-RIDE-SAFETY-CODE-ADAM-01",
+    outdoorRideRestartAuthorized:
+      !input.lightningWithin8MilesOrUnder30MinClear,
+    codeAdamExitGatePerimeterLockTriggered: input.reportsMissingChildInPark,
+    immediateTrackOrHabitatRetrievalBlocked:
+      input.itemDroppedInRideEnvelopeOrAnimalHabitat,
+  };
+}
+
 
 
 
