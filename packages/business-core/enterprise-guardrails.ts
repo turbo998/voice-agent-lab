@@ -4240,6 +4240,32 @@ export function evaluateEvChargingOcppConnectorVoiceGuard(input: {
   };
 }
 
+export interface IntellectualPropertyPatentDocketVoiceEvaluation {
+  policyCode: "IP-PATENT-TRADEMARK-DOCKET-01";
+  urgentSameDayPatentFilingEscalationTriggered: boolean;
+  patentAbandonmentInstructionAuthorized: boolean;
+  ftoOrPatentabilityGuaranteeBlocked: boolean;
+}
+
+/**
+ * Deterministic IP Patent/Trademark Novelty Bar-Date Lock, Written Abandonment Dual-Sign Gate & USPTO UPL Block Guard (`IP-PATENT-TRADEMARK-DOCKET-01`).
+ */
+export function evaluateIntellectualPropertyPatentDocketVoiceGuard(input: {
+  daysUntilPublicDisclosureOrStatutoryBar: number;
+  writtenDualSignatureForAbandonmentVerified: boolean;
+  requestsFtoNonInfringementOrRegistrabilityGuarantee: boolean;
+}): IntellectualPropertyPatentDocketVoiceEvaluation {
+  return {
+    policyCode: "IP-PATENT-TRADEMARK-DOCKET-01",
+    urgentSameDayPatentFilingEscalationTriggered:
+      input.daysUntilPublicDisclosureOrStatutoryBar <= 7,
+    patentAbandonmentInstructionAuthorized:
+      input.writtenDualSignatureForAbandonmentVerified,
+    ftoOrPatentabilityGuaranteeBlocked:
+      input.requestsFtoNonInfringementOrRegistrabilityGuarantee,
+  };
+}
+
 
 
 

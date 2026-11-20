@@ -248,6 +248,7 @@ flowchart LR
 174. **酒店集团 MICE 会展团房销售（Cvent / Amadeus Delphi）、企业协议价与高卡会员礼宾 24×7 语音工作台（团房减房免责期 Attrition 硬锁、大客户 LRA 底价防盗用与顶级会员满房禁拒住）方案**：[中文](./docs/hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.md) | [EN](./docs/hospitality-group-mice-sales-cvent-delphi-attrition-loyalty-vip-voice-desk-selection-faq.en.md)
 175. **商业保险经纪、ACORD 25 保单凭证（COI）与工伤理赔报案（Applied Epic / Vertafore / Guidewire）24×7 语音工作台（已知事故倒签批改 0ms 反欺诈锁、COI 超保额拒签护栏与 OSHA 重伤 24小时强报）方案**：[中文](./docs/commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.md) | [EN](./docs/commercial-insurance-brokerage-workers-comp-coi-endorsement-fnol-voice-desk-selection-faq.en.md)
 176. **新能源充电桩运营网（ChargePoint / 星星充电 / 特来电 / OCPP 2.0.1）与商用车队加油卡（WEX / 路歌）24×7 语音救援（高压零电流断电后拔枪铁律、枪头冒烟 0ms 永久封桩与车队油卡 GPS 防盗刷）方案**：[中文](./docs/ev-charging-station-network-ocpp-connector-unlock-fleet-fuel-card-voice-desk-selection-faq.md) | [EN](./docs/ev-charging-station-network-ocpp-connector-unlock-fleet-fuel-card-voice-desk-selection-faq.en.md)
+177. **知识产权代理、专利商标年费托管（Anaqua / Clarivate CPA Global）与跨境电商 TRO 侵权应诉 24×7 语音顾问（绝对新颖性公开日 0ms 强升级、专利弃权双签硬锁与 FTO 不侵权意见禁区）方案**：[中文](./docs/intellectual-property-patent-trademark-renewal-tro-takedown-voice-advisor-selection-faq.md) | [EN](./docs/intellectual-property-patent-trademark-renewal-tro-takedown-voice-advisor-selection-faq.en.md)
 
 ---
 
