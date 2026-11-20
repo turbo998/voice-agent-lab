@@ -3850,6 +3850,33 @@ export function evaluateSalonSpaWellnessStudioBookingVoiceGuard(input: {
   };
 }
 
+export interface HeavyEquipmentRentalBreakdownVoiceEvaluation {
+  policyCode: "HEAVY-EQUIPMENT-RENTAL-DISPATCH-01";
+  safetyInterlockBypassOrHydraulicDisassemblyBlocked: boolean;
+  mechanicTruckRollDeflectedByTelematicsReset: boolean;
+  offRentRemoteImmobilizerEngaged: boolean;
+}
+
+/**
+ * Deterministic Heavy Equipment & Aerial Lift Rental Hydraulic/Tilt Safety Lock, J1939 Self-Heal & Off-Rent Immobilizer Guard (`HEAVY-EQUIPMENT-RENTAL-DISPATCH-01`).
+ */
+export function evaluateHeavyEquipmentRentalBreakdownVoiceGuard(input: {
+  requestsSafetyInterlockBypassOrHydraulicDisassembly: boolean;
+  j1939ShowsOperatorResettableTiltEstopOrDpf: boolean;
+  offRentConfirmedWithHaulAccessAndPhotos: boolean;
+}): HeavyEquipmentRentalBreakdownVoiceEvaluation {
+  return {
+    policyCode: "HEAVY-EQUIPMENT-RENTAL-DISPATCH-01",
+    safetyInterlockBypassOrHydraulicDisassemblyBlocked:
+      input.requestsSafetyInterlockBypassOrHydraulicDisassembly,
+    mechanicTruckRollDeflectedByTelematicsReset:
+      !input.requestsSafetyInterlockBypassOrHydraulicDisassembly &&
+      input.j1939ShowsOperatorResettableTiltEstopOrDpf,
+    offRentRemoteImmobilizerEngaged:
+      input.offRentConfirmedWithHaulAccessAndPhotos,
+  };
+}
+
 
 
 

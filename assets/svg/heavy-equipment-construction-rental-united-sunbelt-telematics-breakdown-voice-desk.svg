@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgEq" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="hydGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="obdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="offGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgEq)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Heavy Equipment &amp; Construction Rental (United Rentals / Sunbelt) 24x7 Voice Dispatch</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">工程机械与高空作业车租赁 24×7 语音报修与停租架构：高压液压禁拆安全锁、DPF/倾角远程自愈与停租 (Off-Rent) 精准取机</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">HEAVY-EQUIPMENT-RENTAL-DISPATCH-01</text>
+
+  <!-- Pillar 1: High-Pressure Hydraulic / Aerial Lift Basket Rescue Safety Lock -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hydGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 300Bar 液压爆管与高空车困人 0ms 安全锁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 致命工伤：高空车升到 20米降不下来，或挖掘机液压管漏油操作员想去拧！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 工程机械液压系统高达 250~350 Bar，高压油射流可瞬间击穿人体皮肤导致截肢</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 严禁 AI 指导工地操作工带压拆卸液压阀或短接高空车倾角安全传感器！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">高空平台困人 0ms 地面应急下降阀指引 + 禁拆液压锁</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 工人被困高空吊篮时：0ms 指导地面安全员拉动底座红色应急泄压阀 (Auxiliary Descent)</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 遇液压渗漏/结构裂纹：100% 物理阻断自助拆修指引，强制熄火降臂并派持证抢修车！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">故障停机期间免扣台班租金锁 (Downtime Billing Pause)</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 报修确认非人为损坏停机那一刻，自动在租赁 ERP 暂停计费时钟 (Standby Credit)</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 若 4 小时内移动维修车无法修好，自动触发同吨位替用机平板车换机流程</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">带压误拆工伤与越过安全限位：0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">100% 符合 OSHA 1926 与工程机械特种设备安全规程</text>
+  </g>
+
+  <!-- Pillar 2: J1939 CAN Fault Code & DPF/Tilt Lockout 60s Self-Heal -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#obdGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. J1939 遥测故障码与假故障 60秒远程自愈</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="82" fill="#7DD3FC" font-size="13" font-weight="700">🚜 痛点：技师开皮卡跑 80 公里去工地，结果只是急停按钮没旋开或 DPF 再生！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 租赁公司 45% 的工地出车报修其实是操作员不熟悉新机型：</text>
+    <text x="30" y="122" fill="#38BDF8" font-size="12">• 常见乌龙：① 底座与吊篮双急停开关未拔出 ② 地面坡度 &gt;5° 触发倾角锁升 ③ 柴油颗粒捕捉器再生</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">扫码报设备号 0秒拉取 CAN 总线 J1939 故障码 + 拍仪表盘</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 操作工扫机身二维码通话，AI 0秒读取车载 T-Box：发现 `Tilt_Angle = 6.2° (超限锁升)`</text>
+    <text x="30" y="218" fill="#34D399" font-size="12">• “师傅，机器没坏！是因为当前停放坡度超过 5 度安全保护锁住了，请先降到底移到平地即可升起”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">国四/Tier-4 柴油机 DPF 驻车再生语音手把手引导</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 仪表盘亮排温灯限扭时，拍一张按键面板图 (&lt;80KB)</text>
+    <text x="30" y="310" fill="#38BDF8" font-size="12">• 语音指导拉手刹、降怠速、长按再生键 3 秒，省去技师往返 3 小时白跑一趟！</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">无效现场抢修出车 (False Truck Roll) 减少 -52%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">工地停机恢复时间从平均 3.8 小时缩短至 4 分钟</text>
+  </g>
+
+  <!-- Pillar 3: Off-Rent Pickup Verification & Ghost-Rental Dispute Lock -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#offGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 报停退租 (Off-Rent) 取机定位与防超期计费</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">痛点：包工头打电话说“机器不用了退租”，拖车去拉时发现机器被锁在围挡里拉不走！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 或者客户口头给业务员打了个电话说停租，业务员忘录系统，月底多扣 10天租金引发拒付</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 又或者停租产生 `Off-Rent Confirmation #` 后，工地工人又偷偷点火把机器开去干活！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">停租三要素采集 + 立即生成唯一停租凭证号 (Off-Rent #)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 语音核实：① 机器已移至平板拖车可进出的硬化路边 ② 钥匙存放位置 ③ 工地门卫放行条</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 当场短信下发带时间戳的 `Off-Rent #OR-9921` 并远程锁死设备电子点火授权！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">机身绕车一圈 4 张退租照片免战损扯皮</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 报停时引导工地人员拍 4 张外观与仪表小时数照片上传</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 区分“工地使用期间撞坏”与“拖车拉回途中刮擦”，退租战损定责争议下降 82%</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">平板拖车取机放空率：19% ➔ 1.2% (-94%)</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 Wynne RentalMan / Point of Rental / 车载 T-Box 物联网</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">工程机械与高空车租赁 24×7 语音调度台三大铁律 (HEAVY-EQUIPMENT-RENTAL-DISPATCH-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 高危禁拆与困人救援：高空车困人 0ms 指导地面应急泄压降篮；严禁指导非持证工人带压拆解液压管路或旁路安全倾角传感器；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 遥测自愈与停租锁机：优先读取 J1939 遥测排查急停/坡度/DPF 假故障；办理停租 (Off-Rent) 强制核实拖车通道并远程锁死点火。</text>
+</svg>
