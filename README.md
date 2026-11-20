@@ -239,6 +239,7 @@ flowchart LR
 165. **医学检验中心（Quest / Labcorp / 金域迪安）与高端体检机构 24×7 语音预约与报告解读助手（检验危急值 0ms 防信箱强呼闭环、胃肠镜清肠伴喝、孕期防辐射锁与恶性病理保密盾）方案**：[中文](./docs/diagnostic-lab-pathology-health-checkup-fasting-panic-value-voice-concierge-selection-faq.md) | [EN](./docs/diagnostic-lab-pathology-health-checkup-fasting-panic-value-voice-concierge-selection-faq.en.md)
 166. **大型商业地产设施管理（IFM / CBRE / JLL / 万物云）与连锁商超保洁安防 24×7 语音报事与派单（地面湿滑 0ms 立牌防摔伤理赔锁、血液呕吐物 PPE 专派与外包 SLA 强呼）方案**：[中文](./docs/commercial-cleaning-janitorial-facility-management-cbre-jll-sla-voice-dispatch-selection-faq.md) | [EN](./docs/commercial-cleaning-janitorial-facility-management-cbre-jll-sla-voice-dispatch-selection-faq.en.md)
 167. **高端婚礼堂、高定婚纱馆与目的地草坪婚礼 24×7 语音礼宾（户外婚礼 1:1 室内防雨备厅 Plan B 硬互锁、高定婚纱定制工期与 5天精洗缓冲锁及满档吉日平替）方案**：[中文](./docs/wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.md) | [EN](./docs/wedding-bridal-photography-luxury-event-venue-deposit-rain-contingency-voice-selection-faq.en.md)
+168. **连锁自助仓储（Self-Storage / Public Storage / 万物仓）与搬家货车租赁（U-Haul / Penske）24×7 语音管家（深夜欠费锁门 25秒补缴秒开闸、危化禁存锁与 3.8米箱货限高复诵）方案**：[中文](./docs/self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.md) | [EN](./docs/self-storage-moving-van-rental-public-storage-uhaul-gate-pin-lien-auction-voice-selection-faq.en.md)
 
 ---
 

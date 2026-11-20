@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bgStor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060D1A"/>
+      <stop offset="50%" stop-color="#11223E"/>
+      <stop offset="100%" stop-color="#07111E"/>
+    </linearGradient>
+    <linearGradient id="gateGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="hazGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="truckGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="url(#bgStor)"/>
+  <rect x="20" y="20" width="1160" height="620" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="48" y="62" fill="#F8FAFC" font-size="21" font-weight="700">Self-Storage (Public Storage / Extra Space) &amp; Moving Truck Rental 24x7 Voice Concierge</text>
+  <text x="48" y="90" fill="#94A3B8" font-size="14">连锁自助仓储与搬家货车租赁 24×7 语音管家架构：深夜欠费锁门秒缴秒开、危化/活体禁入仓硬锁与厢式货车 3.8米限高防撞顶</text>
+  <rect x="836" y="42" width="316" height="34" rx="17" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="994" y="64" fill="#7DD3FC" font-size="13" font-weight="600" text-anchor="middle">SELF-STORAGE-MOVING-RENTAL-01</text>
+
+  <!-- Pillar 1: Gate PIN Delinquency Lockout & Instant Pay-to-Open -->
+  <g transform="translate(44, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#gateGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">1. 仓门欠费锁死 (Overlock) 秒缴秒开与留置合规</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 痛点：租户周日晚上开着搬家货车到仓库门口，按密码提示“逾期锁死”进不去！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 现代自助仓 (Self-Storage) 普遍采用无人值守运营，信用卡过期扣款失败即自动锁死道闸 PIN</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 若无人接电话收款解封，租户雇的搬家工人按小时计费在门外干等，直接引爆砸门报警！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="30" y="178" fill="#7DD3FC" font-size="13" font-weight="700">✅ 电话 DTMF/Apple Pay 15秒清缴欠费 + 0ms 远程开闸</text>
+    <text x="30" y="198" fill="#E2E8F0" font-size="12">• 严禁在欠费未结清 (Delinquent Lien Hold) 状态下由 AI 口头破例放行开闸！</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• 引导租户在电话里 15秒完成补缴，收款成功瞬间 0ms 远程解锁 Nokē 智能蓝牙仓锁与大门！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">逾期留置拍卖 (Lien Auction) 军人 SCRA 豁免硬锁</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 逾期 60 天进入法定拍卖清仓流程前，强制核查租户是否为现役军人 (US SCRA 法案保护)</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 若命中现役军人身份，0ms 冻结拍卖程序，避免联邦重罚</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#0C4A6E" stroke="#38BDF8"/>
+    <text x="178" y="356" fill="#7DD3FC" font-size="13" font-weight="700" text-anchor="middle">大门受阻 30秒自助解困率：96.8%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">逾期 30 天租金自动催缴回款率从 52% 跃升至 84%</text>
+  </g>
+
+  <!-- Pillar 2: Prohibited Hazmat / Live Animal / Perishable Storage Lock -->
+  <g transform="translate(422, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#hazGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">2. 禁存危化品/汽油/电瓶与严禁住人硬门禁</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="30" y="82" fill="#FCA5A5" font-size="13" font-weight="700">⛔ 火烧连营：租户把装满汽油的割草机、烟花爆竹或锂电池堆进密闭迷你仓！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• 自助仓无独立排风，一旦存放汽油桶、丙烷气罐、生鲜腐烂食品或有人偷偷在仓内过夜住宿</text>
+    <text x="30" y="122" fill="#FBBF24" font-size="12">• 将引发整栋 800 个仓位连环火灾、鼠患爆发或二氧化碳窒息死亡！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">签约必读禁存清单 + 汽油排空硬要求 (Drain-Fuel Lock)</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 当客户询问存放摩托车、割草机、发电机时，强制播报：“必须 100% 抽干油箱汽油并断开电瓶”</text>
+    <text x="30" y="218" fill="#EF4444" font-size="12">• 命中易燃易爆/化学品/轮胎批量堆放/仓内居住意图时，0ms 物理阻断自助签约！</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">红酒/古董字画/实木家具强制匹配【恒温恒湿仓】</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 识别到客户存放真皮沙发、钢琴、红酒或电子服务器时，禁止推荐普通非温控铁皮仓</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 自动升级推荐 18-24°C / 湿度 55% 恒温恒湿仓 (Climate-Controlled Unit)，防霉变索赔</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#450A0A" stroke="#EF4444"/>
+    <text x="178" y="356" fill="#FCA5A5" font-size="13" font-weight="700" text-anchor="middle">违禁危险品入仓与发霉索赔：0 起</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">按家具件数 (一居室 5x10 vs 三居室 10x20) 10秒精准推荐仓位尺寸</text>
+  </g>
+
+  <!-- Pillar 3: Moving Box-Truck 12ft Clearance & 24/7 Self-Return -->
+  <g transform="translate(800, 114)">
+    <rect width="356" height="400" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1.8"/>
+    <rect width="356" height="44" rx="12" fill="url(#truckGrad)"/>
+    <text x="178" y="28" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">3. 搬家厢式货车 3.8米限高防削顶与自助还车</text>
+
+    <rect x="18" y="60" width="320" height="82" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="30" y="82" fill="#6EE7B7" font-size="13" font-weight="700">🚚 痛点：平时开小轿车的租客第一次开 26尺大箱货，直接撞爆 3米限高桥洞/地库！</text>
+    <text x="30" y="102" fill="#E2E8F0" font-size="12">• U-Haul / Penske 搬家货车头号毁车事故是“车厢顶部撞击高架桥、快餐得来速雨棚或地下车库”</text>
+    <text x="30" y="122" fill="#34D399" font-size="12">• 且几乎所有车损免责险 (CDW/Safemove) 条款均明确：**车顶撞击 (Overhead Damage) 不赔**！</text>
+
+    <rect x="18" y="156" width="320" height="82" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="178" fill="#F8FAFC" font-size="13" font-weight="700">取车解锁前强制口头复诵【车高 3.8米 / 12.5英尺】红线</text>
+    <text x="30" y="198" fill="#94A3B8" font-size="12">• 扫码自助取车钥匙前，AI 强制播报并要求租客口头确认：</text>
+    <text x="30" y="218" fill="#38BDF8" font-size="12">• “本车高度 3.8米 (12英尺6英寸)，严禁驶入任何地下车库、限高杆与得来速车道，确认知晓吗？”</text>
+
+    <rect x="18" y="252" width="320" height="68" rx="8" fill="#1E293B" stroke="#475569"/>
+    <text x="30" y="274" fill="#F8FAFC" font-size="13" font-weight="700">夜间无人自助还车：拍油表里程 + 货厢扫空照片秒结单</text>
+    <text x="30" y="294" fill="#94A3B8" font-size="12">• 凌晨还车无需找店员：拍仪表盘油表、里程数与空货厢照片，密码盒锁好钥匙</text>
+    <text x="30" y="310" fill="#34D399" font-size="12">• 10秒自动核算里程费与燃油差额，杜绝次日被多扣一天租金</text>
+
+    <rect x="18" y="334" width="320" height="50" rx="8" fill="#064E3B" stroke="#10B981"/>
+    <text x="178" y="356" fill="#6EE7B7" font-size="13" font-weight="700" text-anchor="middle">搬家货车撞限高杆削顶事故率下降 -64%</text>
+    <text x="178" y="374" fill="#E2E8F0" font-size="11" text-anchor="middle">打通 SiteLink / storEDGE / Nokē 智能门禁与车队管理系统</text>
+  </g>
+
+  <!-- Bottom Bar -->
+  <rect x="44" y="532" width="1112" height="88" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="560" fill="#38BDF8" font-size="14" font-weight="700">自助仓储与搬家货车租赁 24×7 语音管家三大铁律 (SELF-STORAGE-MOVING-RENTAL-01)：</text>
+  <text x="68" y="584" fill="#E2E8F0" font-size="13">1. 欠费门禁与军人保护：欠费锁仓状态严禁口头免费开闸（支持 15s 电话补缴秒开）；留置拍卖前 100% 核查现役军人 SCRA 保护；</text>
+  <text x="68" y="606" fill="#6EE7B7" font-size="13">2. 禁存危化与限高复诵：严禁易燃品/未排空油箱入仓；解锁搬家厢式货车钥匙前强制要求租客复诵确认车顶限高 (3.8m / 12.5ft)。</text>
+</svg>

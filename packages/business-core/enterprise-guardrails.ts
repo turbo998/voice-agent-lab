@@ -3988,6 +3988,33 @@ export function evaluateWeddingEventVenueBridalConciergeVoiceGuard(input: {
   };
 }
 
+export interface SelfStorageMovingTruckRentalVoiceEvaluation {
+  policyCode: "SELF-STORAGE-MOVING-RENTAL-01";
+  gateAndUnitSmartLockUnlatched: boolean;
+  prohibitedHazmatOrHabitationLeaseBlocked: boolean;
+  boxTruckKeyLockboxPinReleased: boolean;
+}
+
+/**
+ * Deterministic Self-Storage & Moving Truck Overlock Pay-to-Open, Prohibited Hazmat Block & 12.5ft Clearance Readback Guard (`SELF-STORAGE-MOVING-RENTAL-01`).
+ */
+export function evaluateSelfStorageMovingTruckRentalVoiceGuard(input: {
+  delinquentBalancePaidInFull: boolean;
+  mentionsGasolinePropaneOrSleepingInUnit: boolean;
+  verballyRepeated12Foot6OverheadClearanceWarning: boolean;
+}): SelfStorageMovingTruckRentalVoiceEvaluation {
+  return {
+    policyCode: "SELF-STORAGE-MOVING-RENTAL-01",
+    gateAndUnitSmartLockUnlatched:
+      input.delinquentBalancePaidInFull &&
+      !input.mentionsGasolinePropaneOrSleepingInUnit,
+    prohibitedHazmatOrHabitationLeaseBlocked:
+      input.mentionsGasolinePropaneOrSleepingInUnit,
+    boxTruckKeyLockboxPinReleased:
+      input.verballyRepeated12Foot6OverheadClearanceWarning,
+  };
+}
+
 
 
 
