@@ -257,6 +257,7 @@ flowchart LR
 183. **半导体晶圆厂洁净室（Cleanroom Fab）、机台 PM 维保与特种气体安全（IBM SiView / Applied SmartFactory / SEMI S2）24×7 免提语音副驾（50万美元 FOUP 晶圆批次误报废双签锁、硅烷/氢氟酸泄漏 0ms 撤离与腔体氮气吹扫 LOTO 互锁）方案**：[中文](./docs/semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.md) | [EN](./docs/semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.en.md)
 184. **主题乐园、野生动物园与大型海洋馆（Disney / Universal / 长隆 / AZA / ASTM F2291）24×7 语音礼宾与安全调度（雷暴半径 8英里户外过山车 0ms 停运锁、走失儿童 Code Adam 6秒锁大门与猛兽/轨道禁入护栏）方案**：[中文](./docs/theme-park-zoo-aquarium-ride-lightning-hold-code-adam-voice-concierge-selection-faq.md) | [EN](./docs/theme-park-zoo-aquarium-ride-lightning-hold-code-adam-voice-concierge-selection-faq.en.md)
 185. **肿瘤液体活检、临床基因检测与遗传咨询（Guardant / Foundation Medicine / 华大基因 / CLIA / GINA）24×7 语音顾问（致病突变与 VUS 零自主解读硬锁、Streck 游离核酸管严禁冷冻重采锁与 GINA 基因反歧视护栏）方案**：[中文](./docs/genomic-testing-oncology-liquid-biopsy-genetic-counselor-clia-voice-concierge-selection-faq.md) | [EN](./docs/genomic-testing-oncology-liquid-biopsy-genetic-counselor-clia-voice-concierge-selection-faq.en.md)
+186. **高端养老社区（CCRC）、护理院与阿尔茨海默记忆照护（Brookdale / Sunrise / 泰康之家 / PointClickCare）24×7 语音礼宾与护理调度（无目击跌倒+抗凝血药禁盲目扶起硬锁、防走失 WanderGuard 0ms 封门与医疗授权书 POA 隐私门禁）方案**：[中文](./docs/senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.md) | [EN](./docs/senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.en.md)
 
 ---
 

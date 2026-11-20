@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="620" fill="url(#bg)" rx="16"/>
+  <text x="40" y="48" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Senior Living, Assisted Living &amp; Memory Care 24x7 Voice Concierge (PointClickCare / Yardi Senior)</text>
+  <text x="40" y="76" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="14">Unwitnessed Fall + Anticoagulant Zero-Lift Lock · WanderGuard Elopement Gate Seal · Healthcare POA Privacy Gate</text>
+
+  <!-- Left Column: Family, Resident & Caregiver Channels -->
+  <rect x="40" y="105" width="260" height="475" rx="12" fill="url(#card)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="60" y="138" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">1. Resident &amp; Family Channels</text>
+  <rect x="60" y="158" width="220" height="90" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">02:00 AM Fall Pull-Cord</text>
+  <text x="75" y="207" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Bathroom / bedside radar alert</text>
+  <text x="75" y="227" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Eliquis / Warfarin bleed check</text>
+
+  <rect x="60" y="265" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Adult Child / Family Calls</text>
+  <text x="75" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Daily wellness &amp; meal check</text>
+  <text x="75" y="334" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Tour &amp; respite bed inquiry</text>
+
+  <rect x="60" y="378" width="220" height="95" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="405" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Memory Care WanderGuard</text>
+  <text x="75" y="427" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dementia exit-door RFID alarm</text>
+  <text x="75" y="447" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Sundowning calm redirection</text>
+
+  <rect x="60" y="490" width="220" height="68" rx="8" fill="#172554" stroke="#3b82f6"/>
+  <text x="75" y="518" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">Target First Response: 510ms</text>
+  <text x="75" y="540" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12">100% HIPAA &amp; Elder-Safety Lock</text>
+
+  <!-- Middle Column: Deterministic Senior Care Guardrails -->
+  <rect x="340" y="105" width="490" height="475" rx="12" fill="url(#card)" stroke="#10b981" stroke-width="2"/>
+  <text x="365" y="138" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">2. Deterministic Fall, Elopement &amp; POA Engine (SENIOR-LIVING-MEMORY-CARE-FALL-01)</text>
+
+  <rect x="365" y="158" width="440" height="118" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="385" y="185" fill="#ecfdf5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate A: Unwitnessed Fall / Head Impact / Anticoagulant Zero-Lift Lock</text>
+  <text x="385" y="208" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">• If fall is unwitnessed, involves head impact/hip pain, OR resident is on</text>
+  <text x="385" y="228" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12">  blood thinners (Eliquis/Xarelto/Warfarin) without DNR/Comfort-Only override:</text>
+  <text x="385" y="248" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• 0ms blocks caregiver lifting resident off floor; requires RN + EMS 911</text>
+
+  <rect x="365" y="292" width="440" height="122" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="385" y="319" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate B: Healthcare Power of Attorney (POA) &amp; Family Dispute Shield</text>
+  <text x="385" y="342" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks disclosing clinical chart updates, medication changes, or DNR/POLST</text>
+  <text x="385" y="362" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">  status to non-authorized relatives unless listed on verified Healthcare POA</text>
+  <text x="385" y="382" fill="#fef08a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Protects communities during estranged sibling inheritance/care disputes</text>
+
+  <rect x="365" y="430" width="440" height="128" rx="8" fill="#1e1b4b" stroke="#8b5cf6"/>
+  <text x="385" y="457" fill="#ddd6fe" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Gate C: Memory Care WanderGuard Elopement 0ms Perimeter Lock</text>
+  <text x="385" y="480" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">• When a dementia resident triggers an exit-door WanderGuard ankle/wrist</text>
+  <text x="385" y="500" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">  tag or requests a gate code over intercom: 0ms locks magnetic perimeter</text>
+  <text x="385" y="520" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  doors, alerts Care Team radios, and plays calm validation voice therapy</text>
+
+  <!-- Right Column: Senior EHR & Nurse Call Stack -->
+  <rect x="870" y="105" width="290" height="475" rx="12" fill="url(#card)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="890" y="138" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">3. Senior Care Ecosystem</text>
+
+  <rect x="890" y="158" width="250" height="115" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="185" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">PointClickCare / MatrixCare</text>
+  <text x="905" y="208" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• eMAR anticoagulant lookup</text>
+  <text x="905" y="228" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• POLST / DNR code status read</text>
+  <text x="905" y="248" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Q15m neuro-check schedule</text>
+
+  <rect x="890" y="290" width="250" height="125" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="905" y="317" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Stanley WanderGuard / Vocera</text>
+  <text x="905" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Instant caregiver badge blast</text>
+  <text x="905" y="360" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Automated POA post-fall call</text>
+  <text x="905" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Move-in tour CRM qualification</text>
+
+  <rect x="890" y="432" width="250" height="126" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="905" y="459" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Community Care KPIs</text>
+  <text x="905" y="482" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Nurse desk call relief: 77%</text>
+  <text x="905" y="502" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Unsafe post-fall lifts: 0.00%</text>
+  <text x="905" y="522" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dementia elopements: 0.00%</text>
+  <text x="905" y="542" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Cost: $0.054/min vs $3.40 desk</text>
+</svg>

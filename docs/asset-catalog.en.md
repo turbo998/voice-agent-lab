@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (185 Bilingual Guides)
+## 3. Solution Architect Selection Guides (186 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -226,3 +226,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 183. **Semiconductor Cleanroom Fab, FOUP Wafer-Lot Hold & TGMS Safety (IBM SiView / Applied SmartFactory / SEMI S2) 24×7 Voice Copilot: $500k FOUP Dual-Sign Lock, Chamber Purge/LOTO Gate & Toxic Gas Triage**: [EN](./semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.en.md) | [中文](./semiconductor-cleanroom-fab-wafer-lot-hold-tgms-gas-leak-voice-copilot-selection-faq.md)
 184. **Theme Park, Zoo/Aquarium & Resort Operations (ASTM F2291 / AZA) 24×7 Voice Concierge & Safety Desk: 8-Mile Lightning Hold Lock, 6s Code Adam Gate Seal & Restricted-Track Lock**: [EN](./theme-park-zoo-aquarium-ride-lightning-hold-code-adam-voice-concierge-selection-faq.en.md) | [中文](./theme-park-zoo-aquarium-ride-lightning-hold-code-adam-voice-concierge-selection-faq.md)
 185. **Genomic Testing, Oncology Liquid Biopsy & Genetic Counseling (Guardant / Foundation Medicine / CLIA / GINA) 24×7 Voice Concierge: Variant/VUS Readout Lock, Streck cfDNA Freeze Gate & GINA Shield**: [EN](./genomic-testing-oncology-liquid-biopsy-genetic-counselor-clia-voice-concierge-selection-faq.en.md) | [中文](./genomic-testing-oncology-liquid-biopsy-genetic-counselor-clia-voice-concierge-selection-faq.md)
+186. **Senior Living (CCRC), Assisted Living & Memory Care (PointClickCare / Brookdale) 24×7 Voice Concierge & Care Dispatch: Anticoagulant Zero-Lift Fall Lock, WanderGuard Elopement Gate & POA Shield**: [EN](./senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.en.md) | [中文](./senior-living-assisted-memory-care-wanderguard-fall-triage-poa-voice-concierge-selection-faq.md)

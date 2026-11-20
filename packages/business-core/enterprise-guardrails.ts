@@ -4489,6 +4489,32 @@ export function evaluateGenomicOncologyLiquidBiopsyVoiceGuard(input: {
   };
 }
 
+export interface SeniorLivingMemoryCareFallVoiceEvaluation {
+  policyCode: "SENIOR-LIVING-MEMORY-CARE-FALL-01";
+  caregiverManualFloorLiftAuthorized: boolean;
+  exitDoorKeepLockedAndCareTeamDispatched: boolean;
+  clinicalHealthRecordDisclosureAuthorized: boolean;
+}
+
+/**
+ * Deterministic Senior Living & Memory Care Anticoagulant Zero-Lift Fall Lock, WanderGuard Elopement Gate & POA Privacy Guard (`SENIOR-LIVING-MEMORY-CARE-FALL-01`).
+ */
+export function evaluateSeniorLivingMemoryCareFallVoiceGuard(input: {
+  unwitnessedFallOrHeadImpactOrOnAnticoagulants: boolean;
+  memoryCareResidentAtExitOrWanderGuardAlarm: boolean;
+  callerIsVerifiedHealthcarePoaOrAuthorizedContact: boolean;
+}): SeniorLivingMemoryCareFallVoiceEvaluation {
+  return {
+    policyCode: "SENIOR-LIVING-MEMORY-CARE-FALL-01",
+    caregiverManualFloorLiftAuthorized:
+      !input.unwitnessedFallOrHeadImpactOrOnAnticoagulants,
+    exitDoorKeepLockedAndCareTeamDispatched:
+      input.memoryCareResidentAtExitOrWanderGuardAlarm,
+    clinicalHealthRecordDisclosureAuthorized:
+      input.callerIsVerifiedHealthcarePoaOrAuthorizedContact,
+  };
+}
+
 
 
 
