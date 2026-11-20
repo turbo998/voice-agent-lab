@@ -4381,6 +4381,33 @@ export function evaluateItAssetDispositionNist80088VoiceGuard(input: {
   };
 }
 
+export interface FineArtAuctionBiddingAmlVoiceEvaluation {
+  policyCode: "FINE-ART-AUCTION-BIDDING-AML-01";
+  absenteeOrPhonePaddleRegistrationAuthorized: boolean;
+  reservePriceDisclosureBlocked: boolean;
+}
+
+/**
+ * Deterministic Fine Art Auction UBO AML & Buyer's-Premium Credit Lock + Confidential Reserve-Price Air-Gap Guard (`FINE-ART-AUCTION-BIDDING-AML-01`).
+ */
+export function evaluateFineArtAuctionBiddingAmlVoiceGuard(input: {
+  uboKycAndSanctionsScreeningCleared: boolean;
+  verifiedDepositAndCreditLimitUsd: number;
+  totalObligationWithBuyersPremiumUsd: number;
+  collectorVerballyConfirmedIrrevocableBidAndBuyersPremium: boolean;
+  callerProbesConfidentialReservePrice: boolean;
+}): FineArtAuctionBiddingAmlVoiceEvaluation {
+  return {
+    policyCode: "FINE-ART-AUCTION-BIDDING-AML-01",
+    absenteeOrPhonePaddleRegistrationAuthorized:
+      input.uboKycAndSanctionsScreeningCleared &&
+      input.verifiedDepositAndCreditLimitUsd >=
+        input.totalObligationWithBuyersPremiumUsd &&
+      input.collectorVerballyConfirmedIrrevocableBidAndBuyersPremium,
+    reservePriceDisclosureBlocked: input.callerProbesConfidentialReservePrice,
+  };
+}
+
 
 
 

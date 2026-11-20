@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（181 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（182 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -222,3 +222,4 @@
 179. **危化品物流、环保危废联单（EPA RCRA e-Manifest）与泄漏应急（CHEMTREC / 49 CFR / 万华巴斯夫物流）24×7 语音调度（不相容危化品同车混装 0ms 阻断、遇水反应禁水灭火硬锁与 NRC 法定强报）方案**：[中文](./hazmat-chemical-logistics-chemtrec-epa-rcra-erg-spill-voice-dispatch-selection-faq.md) | [EN](./hazmat-chemical-logistics-chemtrec-epa-rcra-erg-spill-voice-dispatch-selection-faq.en.md)
 180. **上市公司投资者关系（IR / 董秘办）、财报静默期与并购虚拟数据室（Datasite / Intralinks / SEC Reg FD）24×7 语音顾问（未公开内幕信息 MNPI 0ms 强阻断、静默期禁评锁与并购 Clean-Team 反垄断门禁）方案**：[中文](./investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.md) | [EN](./investor-relations-earnings-call-mna-vdr-reg-fd-mnpi-voice-concierge-selection-faq.en.md)
 181. **数据中心服务器退役、IT 资产处置（ITAD / Iron Mountain / Sims）与涉密硬盘消磁粉碎（NIST SP 800-88 / ServiceNow HAM）24×7 语音调度（未消磁粉碎禁出机房硬锁、诉讼保全 Legal-Hold 防误毁与鼓包锂电池隔离）方案**：[中文](./it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.md) | [EN](./it-asset-disposition-itad-data-center-decommissioning-nist-800-88-voice-desk-selection-faq.en.md)
+182. **高定艺术品拍卖行、名表珠宝竞投与藏家礼宾（苏富比 Sotheby's / 佳士得 Christie's / 富艺斯 / 嘉德保利）24×7 语音顾问（反洗钱 UBO 与保证金先验硬锁、委托方保留底价物理隔离与含 26% 买家佣金总价强复诵）方案**：[中文](./fine-art-auction-house-luxury-watch-bidding-kyc-aml-reserve-voice-concierge-selection-faq.md) | [EN](./fine-art-auction-house-luxury-watch-bidding-kyc-aml-reserve-voice-concierge-selection-faq.en.md)
