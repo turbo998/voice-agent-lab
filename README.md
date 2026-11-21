@@ -298,6 +298,7 @@ flowchart LR
 224. **城市水务集团、自来水厂加药消毒（SCADA）与防汛排涝抢修（威立雅 Veolia / 苏伊士 / 智慧水务 GIS / EPA SDWA）24×7 语音调度与客服热线（防 Oldsmar 氢氧化钠/液氯百倍误投加硬锁、管网水压 <20 PSI 沸水令与大肠杆菌阴性复水硬锁、主干管爆裂与血液透析中心保供 0ms 强切）方案**：[中文](./docs/water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.md) | [EN](./docs/water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.en.md)
 225. **上市公司财报电话会（Earnings Call）、投资者关系（IR）与高管路演对练 AI 语音方案（美股 SEC EDGAR / 港股 / A 股业绩会：SEC Reg FD 零内幕信息 MNPI 越界硬锁、iXBRL GAAP/Non-GAAP 调节表同报硬锁与激进做空/并购传闻 0ms 强切）**：[中文](./docs/earnings-call-investor-relations-reg-fd-mnpi-sec-filing-voice-briefing-selection-faq.md) | [EN](./docs/earnings-call-investor-relations-reg-fd-mnpi-sec-filing-voice-briefing-selection-faq.en.md)
 226. **精准医学肿瘤分子病理（NGS 基因测序）与遗传咨询（Genetic Counseling：Illumina / Foundation Medicine / 华大基因 / Epic Beaker Genomics）多模态语音方案（ACMG/AMP Class 3 VUS 意义未明变异非临床干预硬锁、CLIA/CAP 病理医师终审签字门禁与高危 BRCA/林奇综合征 0ms 强切执业遗传咨询师）**：[中文](./docs/genomic-molecular-pathology-acmg-variant-counseling-clia-cap-voice-selection-faq.md) | [EN](./docs/genomic-molecular-pathology-acmg-variant-counseling-clia-cap-voice-selection-faq.en.md)
+227. **电动重卡兆瓦级超充（MCS / OCPP 2.0.1）、V2G 车网互动与新能源车队场站（特来电 / 宁德时代换电 / ChargePoint / ABB）24×7 语音调度方案（零电流与 <60V DC 退电拔枪防电弧硬锁、早班发车保底 SOC 防趴窝硬锁与 BMS 电池热失控 0ms 脱扣强切）**：[中文](./docs/ev-megawatt-charging-ocpp-v2g-fleet-depot-thermal-runaway-voice-dispatch-selection-faq.md) | [EN](./docs/ev-megawatt-charging-ocpp-v2g-fleet-depot-thermal-runaway-voice-dispatch-selection-faq.en.md)
 
 ---
 

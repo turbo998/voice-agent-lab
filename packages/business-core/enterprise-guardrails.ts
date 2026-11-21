@@ -5607,6 +5607,36 @@ export function evaluateGenomicPathologyAcmgVusVoiceGuard(input: {
   };
 }
 
+export interface EvMcsOcppV2gSafetyVoiceEvaluation {
+  policyCode: "EV-MCS-OCPP-V2G-SAFETY-01";
+  connectorUnlockAndV2gAuthorized: boolean;
+  v2gDischargeOrUnlockBlocked: boolean;
+  feederShuntTripAndFireHazmatTriggered: boolean;
+}
+
+/**
+ * Deterministic EV Megawatt Charging (MCS / OCPP 2.0.1) Zero-Current Unlock, Morning-Route SOC Floor & 0ms BMS Thermal Runaway Guard (`EV-MCS-OCPP-V2G-SAFETY-01`).
+ */
+export function evaluateEvMcsOcppV2gSafetyVoiceGuard(input: {
+  dcCurrentZeroAndVoltageDecayedBelow60V: boolean;
+  morningDepartureTargetSocGuaranteed: boolean;
+  bmsThermalRunawayOrGroundFaultOrSmoke: boolean;
+}): EvMcsOcppV2gSafetyVoiceEvaluation {
+  return {
+    policyCode: "EV-MCS-OCPP-V2G-SAFETY-01",
+    connectorUnlockAndV2gAuthorized:
+      input.dcCurrentZeroAndVoltageDecayedBelow60V &&
+      input.morningDepartureTargetSocGuaranteed &&
+      !input.bmsThermalRunawayOrGroundFaultOrSmoke,
+    v2gDischargeOrUnlockBlocked:
+      !input.dcCurrentZeroAndVoltageDecayedBelow60V ||
+      !input.morningDepartureTargetSocGuaranteed ||
+      input.bmsThermalRunawayOrGroundFaultOrSmoke,
+    feederShuntTripAndFireHazmatTriggered:
+      input.bmsThermalRunawayOrGroundFaultOrSmoke,
+  };
+}
+
 
 
 
