@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（269 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（270 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -310,3 +310,4 @@
 267. **轮胎与橡胶制造工厂（米其林 Michelin / 普利司通 Bridgestone / 中策橡胶 / 赛轮轮胎）24×7 免提语音副驾方案（180°C 硫化机胶囊 0.00 MPa 双表零残压开模与换模机械安全销硬锁、生胎 RFID 规格匹配模具与跨周 DOT 周号锡牌防错门禁及双辊开炼机碰杆 0ms 动态反转退辊松缝强切）**：[中文](./tire-rubber-manufacturing-banbury-mixer-curing-press-steam-bladder-dot-tin-voice-copilot-selection-faq.md) | [EN](./tire-rubber-manufacturing-banbury-mixer-curing-press-steam-bladder-dot-tin-voice-copilot-selection-faq.en.md)
 268. **纺织印染、面料后整理与成衣制造工厂（申洲国际 / 鲁泰纺织 / 盛虹 / 东丽 Toray / 优衣库与 Inditex 供应链）24×7 免提语音副驾方案（135°C 高温高压染缸 <80°C 与 0.00 MPa 开盖防暴沸硬锁、保险粉防潮禁水与硫化碱混酸防 H2S 门禁、童装断针 100% 残片视觉拼合锁及定型机起火 0ms 关风门蒸汽窒息强切）**：[中文](./textile-dyeing-finishing-garment-jet-dyer-hydrosulfite-zdhc-broken-needle-voice-copilot-selection-faq.md) | [EN](./textile-dyeing-finishing-garment-jet-dyer-hydrosulfite-zdhc-broken-needle-voice-copilot-selection-faq.en.md)
 269. **涂料、油漆、工业树脂与胶粘剂工厂（宣伟 Sherwin-Williams / PPG / 阿克苏诺贝尔 / 立邦 / 三棵树 / 东方雨虹）24×7 免提语音副驾方案（分散拉缸 Earth-Rite <10Ω 防爆接地与氮封液下吸粉防气粉静电闪爆硬锁、合成树脂反应釜釜顶重力阻聚剂 Shortstop 热备与 TDI/硝化棉门禁及热失控暴聚 0ms 重力注药/AR-AFFF 抗溶泡沫强切）**：[中文](./paint-coatings-resin-reactor-thermal-runaway-disperser-static-ground-tdi-isocyanate-voice-copilot-selection-faq.md) | [EN](./paint-coatings-resin-reactor-thermal-runaway-disperser-static-ground-tdi-isocyanate-voice-copilot-selection-faq.en.md)
+270. **定制家居、人造板材（MDF/刨花板）与现代木工家具工厂（欧派家居 / 索菲亚 / 顾家 / 宜家供应链 / 豪迈 Homag / 迪芬巴赫）24×7 免提语音副驾方案（NFPA 664 木粉尘吸尘风速 ≥20m/s 与 GreCon 火花水压硬锁、多片纵剖锯防反弹止逆爪与 ENF/CARB 无醛板扫码防错门禁及砂光火花 0ms 300毫秒水雾熄灭强切）**：[中文](./furniture-woodworking-mdf-hot-press-nfpa-664-wood-dust-carb-formaldehyde-voice-copilot-selection-faq.md) | [EN](./furniture-woodworking-mdf-hot-press-nfpa-664-wood-dust-carb-formaldehyde-voice-copilot-selection-faq.en.md)

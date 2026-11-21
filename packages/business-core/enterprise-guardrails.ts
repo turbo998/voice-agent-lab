@@ -6895,6 +6895,36 @@ export function evaluatePaintCoatingResinStaticIsocyanateVoiceGuard(input: {
   };
 }
 
+export interface WoodworkingFurnitureNfpa664CarbVoiceEvaluation {
+  policyCode: "WOODWORKING-FURNITURE-NFPA664-CARB-01";
+  sanderSpindleAndRipSawFeedAuthorized: boolean;
+  lowDustVelocityOrWiredKickbackBlocked: boolean;
+  greconSparkMistAbortGateAndTraumaBridged: boolean;
+}
+
+/**
+ * Deterministic Woodworking & Custom Furniture NFPA 664 (>=20 m/s) Dust/Spark Lock, Rip-Saw Anti-Kickback & TSCA/ENF Board Guard (`WOODWORKING-FURNITURE-NFPA664-CARB-01`).
+ */
+export function evaluateWoodworkingFurnitureNfpa664CarbVoiceGuard(input: {
+  nfpa664DustVelocityAndSparkWaterArmed: boolean;
+  ripSawAntiKickbackAndBoardFormaldehydeMatched: boolean;
+  ductSparkHotPressFireOrSawKickbackInjury: boolean;
+}): WoodworkingFurnitureNfpa664CarbVoiceEvaluation {
+  return {
+    policyCode: "WOODWORKING-FURNITURE-NFPA664-CARB-01",
+    sanderSpindleAndRipSawFeedAuthorized:
+      input.nfpa664DustVelocityAndSparkWaterArmed &&
+      input.ripSawAntiKickbackAndBoardFormaldehydeMatched &&
+      !input.ductSparkHotPressFireOrSawKickbackInjury,
+    lowDustVelocityOrWiredKickbackBlocked:
+      !input.nfpa664DustVelocityAndSparkWaterArmed ||
+      !input.ripSawAntiKickbackAndBoardFormaldehydeMatched ||
+      input.ductSparkHotPressFireOrSawKickbackInjury,
+    greconSparkMistAbortGateAndTraumaBridged:
+      input.ductSparkHotPressFireOrSawKickbackInjury,
+  };
+}
+
 
 
 

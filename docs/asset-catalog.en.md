@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (269 Bilingual Guides)
+## 3. Solution Architect Selection Guides (270 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -310,3 +310,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 267. **Tire & Rubber Manufacturing Curing Press (0.0 MPa), Banbury & DOT TIN Voice Copilot: 180°C Bladder Zero-Pressure Lock, ANSI B28.1 Mill Gate & 0ms Reverse-Roll Bridge**: [EN](./tire-rubber-manufacturing-banbury-mixer-curing-press-steam-bladder-dot-tin-voice-copilot-selection-faq.en.md) | [中文](./tire-rubber-manufacturing-banbury-mixer-curing-press-steam-bladder-dot-tin-voice-copilot-selection-faq.md)
 268. **Textile Dyeing HTHP Jet Vessel, Hydrosulfite/H2S & Garment Broken-Needle Voice Copilot: <80°C Boil-Over Lock, Broken-Needle Puzzle Gate & 0ms Stenter Fire Bridge**: [EN](./textile-dyeing-finishing-garment-jet-dyer-hydrosulfite-zdhc-broken-needle-voice-copilot-selection-faq.en.md) | [中文](./textile-dyeing-finishing-garment-jet-dyer-hydrosulfite-zdhc-broken-needle-voice-copilot-selection-faq.md)
 269. **Paint, Coatings & Resin Reactor Runaway, Disperser Static & Isocyanate Voice Copilot: Earth-Rite <10Ω & Closed Powder Lock, Shortstop Kill-Inhibitor Gate & 0ms AR-AFFF Bridge**: [EN](./paint-coatings-resin-reactor-thermal-runaway-disperser-static-ground-tdi-isocyanate-voice-copilot-selection-faq.en.md) | [中文](./paint-coatings-resin-reactor-thermal-runaway-disperser-static-ground-tdi-isocyanate-voice-copilot-selection-faq.md)
+270. **Woodworking, Custom Furniture & MDF Hot-Press NFPA 664 & CARB/ENF Voice Copilot: ≥20 m/s Dust-Duct & GreCon Spark Lock, Rip-Saw Anti-Kickback Gate & 0ms Hot-Press Deluge Bridge**: [EN](./furniture-woodworking-mdf-hot-press-nfpa-664-wood-dust-carb-formaldehyde-voice-copilot-selection-faq.en.md) | [中文](./furniture-woodworking-mdf-hot-press-nfpa-664-wood-dust-carb-formaldehyde-voice-copilot-selection-faq.md)
