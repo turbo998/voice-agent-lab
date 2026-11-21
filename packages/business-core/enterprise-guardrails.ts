@@ -5846,6 +5846,36 @@ export function evaluateTaxCpaCircular230Section7216VoiceGuard(input: {
   };
 }
 
+export interface TruckingEldHosHazmatVoiceEvaluation {
+  policyCode: "TRUCKING-ELD-HOS-HAZMAT-01";
+  commercialRouteAndEldLogAuthorized: boolean;
+  hosTamperOrLowBridgeHazmatTunnelBlocked: boolean;
+  runawayRampAndChemtrecEmergencyBridged: boolean;
+}
+
+/**
+ * Deterministic Commercial Trucking FMCSA ELD Hours-of-Service, 13'6" Bridge/HazMat Tunnel & 0ms Air-Brake Guard (`TRUCKING-ELD-HOS-HAZMAT-01`).
+ */
+export function evaluateTruckingEldHosHazmatVoiceGuard(input: {
+  hosRemainingAndEldImmutableVerified: boolean;
+  bridgeClearanceHazmatTunnelAndDvirSafe: boolean;
+  airBrakeLossHazmatSpillOrRollover: boolean;
+}): TruckingEldHosHazmatVoiceEvaluation {
+  return {
+    policyCode: "TRUCKING-ELD-HOS-HAZMAT-01",
+    commercialRouteAndEldLogAuthorized:
+      input.hosRemainingAndEldImmutableVerified &&
+      input.bridgeClearanceHazmatTunnelAndDvirSafe &&
+      !input.airBrakeLossHazmatSpillOrRollover,
+    hosTamperOrLowBridgeHazmatTunnelBlocked:
+      !input.hosRemainingAndEldImmutableVerified ||
+      !input.bridgeClearanceHazmatTunnelAndDvirSafe ||
+      input.airBrakeLossHazmatSpillOrRollover,
+    runawayRampAndChemtrecEmergencyBridged:
+      input.airBrakeLossHazmatSpillOrRollover,
+  };
+}
+
 
 
 

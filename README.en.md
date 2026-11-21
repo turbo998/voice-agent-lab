@@ -306,6 +306,7 @@ flowchart LR
 232. **Tele-Optometry, Optical Retail & Contact Lens Rx Multimodal Voice Concierge: Diopter Sign & PD Lock, FTC Contact Lens Gate & 0ms Ocular ER Bridge**: [EN](./docs/tele-optometry-eyewear-prescription-pupillary-distance-red-eye-voice-concierge-selection-faq.en.md) | [中文](./docs/tele-optometry-eyewear-prescription-pupillary-distance-red-eye-voice-concierge-selection-faq.md)
 233. **Biopharma Grade A/B Cleanroom, CAR-T & GMP Electronic Batch Record (MES / eBR) Voice AI: FDA 21 CFR Part 11 ALCOA+ Lock, Four-Eyes Verification Gate & 0ms Sterility Breach Hold**: [EN](./docs/biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.en.md) | [中文](./docs/biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.md)
 234. **Tax Preparation, CPA Advisory & IRS Circular 230 Multimodal Voice AI: IRC § 7216 Privacy Lock, Substantiation Gate & 0ms CPA Audit Bridge**: [EN](./docs/tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.en.md) | [中文](./docs/tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.md)
+235. **Commercial Trucking FMCSA ELD Hours-of-Service, HazMat Tunnel & In-Cab Voice Copilot: 49 CFR Part 395 Anti-Tamper Lock, 13'6" Bridge Gate & 0ms Runaway-Ramp Bridge**: [EN](./docs/commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.en.md) | [中文](./docs/commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.md)
 
 ---
 
