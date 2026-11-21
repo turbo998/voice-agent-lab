@@ -8185,6 +8185,36 @@ export function evaluateMultiAgentVoiceSwarmHandoffGuard(input: {
   };
 }
 
+export interface FinancialPciRedactionPostcallQaEvaluation {
+  policyCode: "FINANCIAL-PCI-REDACTION-POSTCALL-QA-01";
+  wormArchiveAndQaSignoffAuthorized: boolean;
+  unredactedPciDiskWriteOrUnreconciledPromiseBlocked: boolean;
+  sixtySecondAutoCureAndSupervisorAlertBridged: boolean;
+}
+
+/**
+ * Deterministic Financial PCI-DSS v4.0 Pre-Disk RAM Audio Redaction Lock, Dual-Track WORM Promise-vs-CRM Reconciliation Gate & 60s Auto-Cure Guard (`FINANCIAL-PCI-REDACTION-POSTCALL-QA-01`).
+ */
+export function evaluateFinancialPciRedactionPostcallQaGuard(input: {
+  preDiskInMemoryPanCvvAudioBleepedAndDtmfMasked: boolean;
+  dualTrackWormImmutableHashAndSpokenVsCrmReconciled: boolean;
+  mandatoryRegulatoryDisclosureMissedOrPromiseMismatch: boolean;
+}): FinancialPciRedactionPostcallQaEvaluation {
+  return {
+    policyCode: "FINANCIAL-PCI-REDACTION-POSTCALL-QA-01",
+    wormArchiveAndQaSignoffAuthorized:
+      input.preDiskInMemoryPanCvvAudioBleepedAndDtmfMasked &&
+      input.dualTrackWormImmutableHashAndSpokenVsCrmReconciled &&
+      !input.mandatoryRegulatoryDisclosureMissedOrPromiseMismatch,
+    unredactedPciDiskWriteOrUnreconciledPromiseBlocked:
+      !input.preDiskInMemoryPanCvvAudioBleepedAndDtmfMasked ||
+      !input.dualTrackWormImmutableHashAndSpokenVsCrmReconciled ||
+      input.mandatoryRegulatoryDisclosureMissedOrPromiseMismatch,
+    sixtySecondAutoCureAndSupervisorAlertBridged:
+      input.mandatoryRegulatoryDisclosureMissedOrPromiseMismatch,
+  };
+}
+
 
 
 

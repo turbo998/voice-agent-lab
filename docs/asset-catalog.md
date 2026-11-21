@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（312 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（313 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -353,3 +353,4 @@
 310. **电商大促与零售全渠道语音客服（来电 `0 秒` 预加载订单 WISMO、退货改免费上门换码留存 `38.2%` GMV、防羊毛党“仅退款”反欺诈风控分 `<0.70` 与 `<=$35` 秒退上限硬锁、双十一/黑五 `10x` 洪峰 PTU 满载 `0ms` 跨区域 PayGo 弹性溢出）方案**：[中文](./ecommerce-retail-wismo-returns-exchange-retention-10x-surge-voice-architecture-selection-faq.md) | [EN](./ecommerce-retail-wismo-returns-exchange-retention-10x-surge-voice-architecture-selection-faq.en.md)
 311. **企业级语音智能体生产可观测性（OpenTelemetry 6-Span 延迟瀑布）、合成呼叫 CI/CD 回归测试（Coval / Hamming vs. 自建无头仿真器）与金丝雀影子灰度发布（发版前 200 路 `8kHz` 带噪音频回归与 Round-Trip TTS→STT 逆向校验硬锁、影子双跑写工具 `100% Dry-Run` 隔离门禁、金丝雀 `P95 TTFA > 800ms` `0ms` 自动回滚）方案**：[中文](./enterprise-voice-agent-otel-observability-synthetic-cicd-canary-rollout-selection-faq.md) | [EN](./enterprise-voice-agent-otel-observability-synthetic-cicd-canary-rollout-selection-faq.en.md)
 312. **企业级多智能体实时语音编排与子智能体无缝移交（Multi-Agent Voice Swarm：LiveKit Agents vs. Pipecat Flows vs. LangGraph：移交前置 KYC 契约与单节点 `<=6` 工具最小沙箱硬锁、复用同一音色 `<15ms` 静默无感交接与 `<=150 Token` 状态压缩门禁、跨部门踢皮球 `>2跳` `0ms` 熔断并省 `50.9%` 成本）方案**：[中文](./multi-agent-voice-swarm-triage-specialist-handoff-livekit-pipecat-langgraph-selection-faq.md) | [EN](./multi-agent-voice-swarm-triage-specialist-handoff-livekit-pipecat-langgraph-selection-faq.en.md)
+313. **金融银行与保险电话服务合规双录、PCI-DSS v4.0 落盘前敏感音频消音与 100% 话后自动化质检（Automated Post-Call QA：3 秒内存环形缓冲落盘前卡号/CVV 蜂鸣消音与 DTMF 物理旁路硬锁、双声道 WORM 不可篡改归档与挂机 4 秒“口头承诺 vs. CRM 账务流水”1:1 对账门禁、漏播法定条款 `60 秒` 自动外呼/短信补救闭环）方案**：[中文](./financial-pci-redaction-compliance-recording-automated-postcall-qa-reconciliation-selection-faq.md) | [EN](./financial-pci-redaction-compliance-recording-automated-postcall-qa-reconciliation-selection-faq.en.md)
