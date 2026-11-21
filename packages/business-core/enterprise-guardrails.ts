@@ -8395,6 +8395,36 @@ export function evaluateOmnichannelIngressSpeakerIsolationGuard(input: {
   };
 }
 
+export interface WealthSuitabilityTeleUnderwritingEvaluation {
+  policyCode: "WEALTH-SUITABILITY-TELE-UNDERWRITING-01";
+  suitabilityAndDualRecordingSealAuthorized: boolean;
+  misSellingOrIncompleteDisclosureBlocked: boolean;
+  reflexiveUnderwritingOrSeniorCoolingOffBridged: boolean;
+}
+
+/**
+ * Deterministic Banking Wealth C1-C5 Suitability Lock, Locked-SSML Dual-Recording Consent Gate & 0ms Reflexive Tele-Underwriting Guard (`WEALTH-SUITABILITY-TELE-UNDERWRITING-01`).
+ */
+export function evaluateWealthSuitabilityTeleUnderwritingGuard(input: {
+  investorRiskTierMatchesProductLevelAndZeroYieldGuarantee: boolean;
+  statutoryDisclosureReadVerbatimSsmlAndAffirmativeConsentLogged: boolean;
+  medicalImpairmentDisclosedOrElderlyCoolingOffTriggered: boolean;
+}): WealthSuitabilityTeleUnderwritingEvaluation {
+  return {
+    policyCode: "WEALTH-SUITABILITY-TELE-UNDERWRITING-01",
+    suitabilityAndDualRecordingSealAuthorized:
+      input.investorRiskTierMatchesProductLevelAndZeroYieldGuarantee &&
+      input.statutoryDisclosureReadVerbatimSsmlAndAffirmativeConsentLogged &&
+      !input.medicalImpairmentDisclosedOrElderlyCoolingOffTriggered,
+    misSellingOrIncompleteDisclosureBlocked:
+      !input.investorRiskTierMatchesProductLevelAndZeroYieldGuarantee ||
+      !input.statutoryDisclosureReadVerbatimSsmlAndAffirmativeConsentLogged ||
+      input.medicalImpairmentDisclosedOrElderlyCoolingOffTriggered,
+    reflexiveUnderwritingOrSeniorCoolingOffBridged:
+      input.medicalImpairmentDisclosedOrElderlyCoolingOffTriggered,
+  };
+}
+
 
 
 

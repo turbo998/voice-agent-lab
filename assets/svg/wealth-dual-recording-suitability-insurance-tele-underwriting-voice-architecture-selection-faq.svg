@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg320" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card320" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg320)"/>
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1224" height="78" rx="14" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+  <text x="48" y="54" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">
+    Wealth Dual-Recording, Suitability &amp; Insurance Tele-Underwriting (WEALTH-SUITABILITY-TELE-UNDERWRITING-01)
+  </text>
+  <text x="48" y="81" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">
+    C1–C5 Suitability &amp; Zero Yield-Guarantee Lock · Locked-SSML Verbatim Disclosure · Reflexive Medical Underwriting &amp; Senior Guard
+  </text>
+
+  <!-- Left Column: Wealth & Insurance Scenarios -->
+  <rect x="28" y="118" width="290" height="465" rx="12" fill="url(#card320)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="46" y="148" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="15.5" font-weight="700">
+    1. Regulated BFSI Voice Flows
+  </text>
+
+  <rect x="46" y="166" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="190" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Wealth AI Dual-Recording</text>
+  <text x="60" y="211" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Automated audio/video KYC &amp; risk</text>
+  <text x="60" y="230" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cuts 1st-pass QA rejection 38%-&gt;1.2%</text>
+
+  <rect x="46" y="266" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="290" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">C1–C5 Suitability Enforcement</text>
+  <text x="60" y="311" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• MiFID II / SEC Reg BI / NFRA rules</text>
+  <text x="60" y="330" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks R4/R5 pitch to C1/C2 clients</text>
+
+  <rect x="46" y="366" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="390" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Life &amp; Health Tele-Underwriting</text>
+  <text x="60" y="411" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 20-min reflexive health interview</text>
+  <text x="60" y="430" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• ICD-10 / Munich Re decision tree</text>
+
+  <rect x="46" y="466" width="254" height="98" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="60" y="490" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Compliance &amp; Efficiency KPIs</text>
+  <text x="60" y="511" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Mis-Selling Violations: 0.0%</text>
+  <text x="60" y="530" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dual-Record Re-Take: -96.8%</text>
+  <text x="60" y="549" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Underwriting Cycle: 5d -&gt; 18m</text>
+
+  <!-- Center Column: 3 Deterministic Suitability & Underwriting Gates -->
+  <rect x="338" y="118" width="584" height="465" rx="12" fill="url(#card320)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="358" y="148" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">
+    2. Deterministic Suitability, Dual-Recording &amp; Underwriting Engine
+  </text>
+
+  <!-- Gate 1 -->
+  <rect x="358" y="166" width="544" height="122" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="376" y="191" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate A · C1–C5 Suitability Lock &amp; Zero-Yield-Guarantee Interceptor
+  </text>
+  <text x="376" y="214" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Hard Rule: Never pitch higher-risk products or promise guaranteed returns!
+  </text>
+  <text x="376" y="235" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Enforces Product_Risk_Rating &lt;= Investor_KYC_Tier at tool &amp; prompt layers
+  </text>
+  <text x="376" y="256" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Blocks promissory phrases ("principal guaranteed", "zero loss") pre-TTS
+  </text>
+  <text x="376" y="275" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Eliminates regulatory mis-selling fines &amp; suitability audit failures
+  </text>
+
+  <!-- Gate 2 -->
+  <rect x="358" y="302" width="544" height="122" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="376" y="327" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate B · Verbatim Locked-SSML Disclosure &amp; Dual-Recording Seal
+  </text>
+  <text x="376" y="350" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Renders statutory risk warnings via SHA-256 hash-locked SSML (0 LLM edits)
+  </text>
+  <text x="376" y="371" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Verifies face-in-frame + explicit non-coerced affirmative customer reply
+  </text>
+  <text x="376" y="392" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Re-reads only the interrupted clause if customer barges in during disclosure
+  </text>
+  <text x="376" y="411" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Lifts dual-recording first-time compliance pass rate from 62% to 98.8%
+  </text>
+
+  <!-- Gate 3 -->
+  <rect x="358" y="438" width="544" height="126" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.8"/>
+  <text x="376" y="463" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate C · 0ms Reflexive Medical Drill-Down &amp; Senior Cooling-Off Bridge
+  </text>
+  <text x="376" y="486" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Triggers when applicant mentions medical conditions or Investor_Age &gt;= 65
+  </text>
+  <text x="376" y="507" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Executes Munich Re / Swiss Re reflexive follow-ups (BP reading, TI-RADS grade)
+  </text>
+  <text x="376" y="528" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Enforces 24h cooling-off + licensed human specialist review for seniors
+  </text>
+  <text x="376" y="549" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Produces structured ICD-10 underwriting packet &amp; protects vulnerable elders
+  </text>
+
+  <!-- Right Column: Core Wealth & Insurance Backends -->
+  <rect x="942" y="118" width="310" height="465" rx="12" fill="url(#card320)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="962" y="148" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="15.5" font-weight="700">
+    3. Core Wealth &amp; Underwriting
+  </text>
+
+  <rect x="962" y="168" width="270" height="92" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="978" y="193" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">KYC &amp; Suitability Engine</text>
+  <text x="978" y="214" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Real-time C1–C5 investor profile</text>
+  <text x="978" y="234" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Concentration &amp; liquidity checks</text>
+
+  <rect x="962" y="276" width="270" height="92" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="978" y="301" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Reinsurance Rule Engine</text>
+  <text x="978" y="322" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Munich Re Magnum / Swiss Re</text>
+  <text x="978" y="342" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Deterministic reflexive tree</text>
+
+  <rect x="962" y="384" width="270" height="92" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="978" y="409" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">WORM Dual-Recording Vault</text>
+  <text x="978" y="430" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Synced AV + transcript hash</text>
+  <text x="978" y="450" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 10-year regulatory retention</text>
+
+  <rect x="962" y="492" width="270" height="72" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="978" y="517" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Licensed Advisor Escalation</text>
+  <text x="978" y="538" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">• Warm transfer with KYC dossier</text>
+
+  <!-- Bottom Sequence Strip -->
+  <rect x="28" y="600" width="1224" height="136" rx="12" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="628" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    End-to-End Wealth Dual-Recording &amp; Insurance Tele-Underwriting Sequence (98.8% 1st-Pass QA / 0% Mis-Selling)
+  </text>
+
+  <rect x="48" y="644" width="275" height="74" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="62" y="666" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">1. Suitability Matrix Lock</text>
+  <text x="62" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Matches C2 investor to R1/R2 only</text>
+  <text x="62" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Blocks any promissory return words</text>
+
+  <rect x="343" y="644" width="285" height="74" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="357" y="666" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">2. Locked-SSML Disclosure</text>
+  <text x="357" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Reads verbatim statutory risk text</text>
+  <text x="357" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Logs explicit affirmative consent</text>
+
+  <rect x="648" y="644" width="285" height="74" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="662" y="666" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">3. Reflexive Underwriting</text>
+  <text x="662" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">"Thyroid nodule" -&gt; asks TI-RADS</text>
+  <text x="662" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Generates structured ICD-10 summary</text>
+
+  <rect x="953" y="644" width="279" height="74" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="967" y="666" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">4. Hybrid Guard vs Manual</text>
+  <text x="967" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">370ms P95 · $610 vs $3,400 / 10k min</text>
+  <text x="967" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Cuts dual-record retake rate by -96%</text>
+</svg>
