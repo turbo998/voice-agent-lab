@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（279 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（280 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -320,3 +320,4 @@
 277. **注塑成型、高分子挤出与汽车/医疗塑件工厂（海天国际 Haitian / 恩格尔 Engel / 阿博格 Arburg / 克劳斯玛菲 / 金发科技）24×7 免提语音副驾方案（POM 赛钢与 PVC 严禁同筒混熔防甲醛解聚炸炮筒与射嘴防溅罩硬锁、ANSI B151.1 合模区机/电/液三重棘爪杆与机械手归位门禁及滞留冒烟 0ms 断电自动退射台泄压排风强切）**：[中文](./plastics-injection-molding-extrusion-pom-pvc-barrel-explosion-ansi-b151-drop-bar-voice-copilot-selection-faq.md) | [EN](./plastics-injection-molding-extrusion-pom-pvc-barrel-explosion-ansi-b151-drop-bar-voice-copilot-selection-faq.en.md)
 278. **工业热处理、渗碳淬火多用炉与真空炉车间（易普森 Ipsen / 爱协林 Aichelin / 世科 SECO/WARWICK / 丰东热技术）24×7 免提语音副驾方案（NFPA 86 吸热式 Rx 气 760°C 自燃底线与火帘门点亮硬锁、淬火油槽微水 <=0.05% 防沸溢喷火门禁及失压/油火/水套漏水 0ms 紧急液氮洪流吹扫强切）**：[中文](./heat-treating-carburizing-furnace-endothermic-rx-burnoff-oil-quench-boilover-vacuum-voice-copilot-selection-faq.md) | [EN](./heat-treating-carburizing-furnace-endothermic-rx-burnoff-oil-quench-boilover-vacuum-voice-copilot-selection-faq.en.md)
 279. **铸造车间、中频感应电炉熔炼与铁水/铝水浇注基地（应达 Inductotherm / ABP / 迪砂 DISA / 乔治费歇尔 GF / 共享装备）24×7 免提语音副驾方案（潮湿废钢与密闭容器 >=350°C 烘干防蒸汽炸炉硬锁、铁水包 >=850°C 红热烘烤与应急事故坑绝对干燥门禁及炉衬穿炉漏电 0ms 断中频电强制保水冷却线圈强切）**：[中文](./foundry-metal-casting-induction-furnace-wet-scrap-explosion-coil-water-leak-ladle-voice-copilot-selection-faq.md) | [EN](./foundry-metal-casting-induction-furnace-wet-scrap-explosion-coil-water-leak-ladle-voice-copilot-selection-faq.en.md)
+280. **汽车冲压车间、重型锻压机与高速开卷落料线（舒勒 Schuler / 小松 Komatsu / 会田 AIDA / 济南二机床 / 麦格纳 Magna）24×7 免提语音副驾方案（OSHA 1910.217 模具安全垫块拔插头与飞轮 0 RPM 硬锁及禁语音寸动、双料检测/光电出件与四角吨位防砸模门禁及双联安全阀异动/光幕遮挡 0ms 排空离合器泄过载垫强切）**：[中文](./metal-stamping-forging-press-die-safety-block-flywheel-zero-speed-tonnage-overload-voice-copilot-selection-faq.md) | [EN](./metal-stamping-forging-press-die-safety-block-flywheel-zero-speed-tonnage-overload-voice-copilot-selection-faq.en.md)

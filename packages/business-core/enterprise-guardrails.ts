@@ -7195,6 +7195,36 @@ export function evaluateFoundryCastingInductionWetscrapVoiceGuard(input: {
   };
 }
 
+export interface MetalStampingPressDieblockB11VoiceEvaluation {
+  policyCode: "METAL-STAMPING-PRESS-DIEBLOCK-B11-01";
+  dieSpaceEntryAndFeederRunAuthorized: boolean;
+  unblockedDieOrDoubleBlankOverloadBlocked: boolean;
+  clutchExhaustBrakeLockAndOverloadReliefBridged: boolean;
+}
+
+/**
+ * Deterministic Heavy Metal Stamping & Forging Press OSHA 1910.217 Die-Safety Block Lock, Double-Blank Tonnage Gate & 0ms Dual-Valve Clutch-Brake Guard (`METAL-STAMPING-PRESS-DIEBLOCK-B11-01`).
+ */
+export function evaluateMetalStampingPressDieblockB11VoiceGuard(input: {
+  dieSafetyBlockPlugPulledAndFlywheelZeroRpmSafe: boolean;
+  doubleBlankPartEjectAndTonnageLimitSafe: boolean;
+  lightCurtainBreachClutchSplitOrOverloadTrip: boolean;
+}): MetalStampingPressDieblockB11VoiceEvaluation {
+  return {
+    policyCode: "METAL-STAMPING-PRESS-DIEBLOCK-B11-01",
+    dieSpaceEntryAndFeederRunAuthorized:
+      input.dieSafetyBlockPlugPulledAndFlywheelZeroRpmSafe &&
+      input.doubleBlankPartEjectAndTonnageLimitSafe &&
+      !input.lightCurtainBreachClutchSplitOrOverloadTrip,
+    unblockedDieOrDoubleBlankOverloadBlocked:
+      !input.dieSafetyBlockPlugPulledAndFlywheelZeroRpmSafe ||
+      !input.doubleBlankPartEjectAndTonnageLimitSafe ||
+      input.lightCurtainBreachClutchSplitOrOverloadTrip,
+    clutchExhaustBrakeLockAndOverloadReliefBridged:
+      input.lightCurtainBreachClutchSplitOrOverloadTrip,
+  };
+}
+
 
 
 
