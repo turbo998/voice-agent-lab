@@ -7915,6 +7915,36 @@ export function evaluateRealtimeSalesCopilotCrmWritebackVoiceGuard(input: {
   };
 }
 
+export interface BrandVoiceCloningAvatarComplianceEvaluation {
+  policyCode: "BRAND-VOICE-CLONING-AVATAR-COMPLIANCE-01";
+  clonedVoiceAndAvatarStreamAuthorized: boolean;
+  consentOrLipSyncDesyncBlocked: boolean;
+  deepfakeSpoofCutAndSafeFallbackVoiceBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise Brand Voice Cloning Talent-Consent/C2PA Lock, W3C PLS Polyphone/<=45ms Lip-Sync Gate & 0ms Deepfake/Ad-Law Cutoff Guard (`BRAND-VOICE-CLONING-AVATAR-COMPLIANCE-01`).
+ */
+export function evaluateBrandVoiceCloningAvatarComplianceGuard(input: {
+  voiceTalentChallengePhraseConsentAndWatermarkValid: boolean;
+  customLexiconIpaPolyphoneAndLipSyncDriftUnder45ms: boolean;
+  prohibitedPoliticalMedicalClaimOrDeepfakeSpoofAttempt: boolean;
+}): BrandVoiceCloningAvatarComplianceEvaluation {
+  return {
+    policyCode: "BRAND-VOICE-CLONING-AVATAR-COMPLIANCE-01",
+    clonedVoiceAndAvatarStreamAuthorized:
+      input.voiceTalentChallengePhraseConsentAndWatermarkValid &&
+      input.customLexiconIpaPolyphoneAndLipSyncDriftUnder45ms &&
+      !input.prohibitedPoliticalMedicalClaimOrDeepfakeSpoofAttempt,
+    consentOrLipSyncDesyncBlocked:
+      !input.voiceTalentChallengePhraseConsentAndWatermarkValid ||
+      !input.customLexiconIpaPolyphoneAndLipSyncDriftUnder45ms ||
+      input.prohibitedPoliticalMedicalClaimOrDeepfakeSpoofAttempt,
+    deepfakeSpoofCutAndSafeFallbackVoiceBridged:
+      input.prohibitedPoliticalMedicalClaimOrDeepfakeSpoofAttempt,
+  };
+}
+
 
 
 

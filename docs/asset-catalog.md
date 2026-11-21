@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（303 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（304 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -344,3 +344,4 @@
 301. **原生全双工端到端语音大模型（GPT-4o Realtime / Gemini Live）vs. 受控级联流水线（Azure AI Speech Custom Neural STT/TTS + DeepSeek-V3 / GPT-4o-mini）金融合规、热词注入与长通话 FinOps 定量选型（5,000+ 专有热词 WFST 增强与校验位硬锁、3 轮滑动窗口历史音频帧裁剪省 `64.3%` 成本、金融 APR/医疗剂量 `0ms` 切换锁定 SSML 逐字播报）方案**：[中文](./s2s-gpt4o-realtime-gemini-live-vs-cascaded-custom-stt-deepseek-gpt4omini-finops-selection-faq.md) | [EN](./s2s-gpt4o-realtime-gemini-live-vs-cascaded-custom-stt-deepseek-gpt4omini-finops-selection-faq.en.md)
 302. **跨国企业全球多语种 IT/HR 员工服务台（ServiceNow / Workday / Teams Phone）语音工单自动化与企业知识库低延迟 Voice RAG 架构设计（Entra ID 防社工语音钓鱼带外 MFA 硬锁与国别/职级 RBAC 隔离、`<140ms` 流式 Partial 投机预检索与 `<=40字` 零 Markdown 口语卡 + Teams 伴随推卡、P1 全局故障 `0秒` 广播分流与 Intune 终端远程自愈）方案**：[中文](./global-multilingual-it-hr-helpdesk-servicenow-workday-low-latency-voice-rag-selection-faq.md) | [EN](./global-multilingual-it-hr-helpdesk-servicenow-workday-low-latency-voice-rag-selection-faq.en.md)
 303. **B2B 大客户销售与客户成功团队实时通话赋能（Real-Time Sales Call Assist & Auto-CRM 总结回写：Gong / 微软 Copilot for Sales vs. 自建双声道流式 STT + Battlecard 引擎：Ch0 客户与 Ch1 销售双声道物理分轨防自嗨污染硬锁、`<350ms` 三要点 `<=25字` 竞品微卡片与客户原话时间戳证据锚定 CRM 草稿门禁、口头越权打折 `0ms` 红条纠偏并省 `74%` 成本）方案**：[中文](./realtime-sales-call-assist-battlecard-auto-crm-sync-salesforce-dynamics-selection-faq.md) | [EN](./realtime-sales-call-assist-battlecard-auto-crm-sync-salesforce-dynamics-selection-faq.en.md)
+304. **企业品牌专属音色克隆（Custom Neural Voice）、超低延迟 TTS 与实时交互数字人（Voice + Avatar）平台选型（Azure AI Speech CNV/Avatar vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. HeyGen vs. 端侧 Viseme 驱动：配音员活体同意短语与 C2PA 水印硬锁、W3C PLS 多音字词典与 `<=45ms` 唇音同步降级门禁、端侧 Viseme 驱动省 `83.2%` 渲染成本）方案**：[中文](./enterprise-brand-voice-cloning-interactive-avatar-azure-elevenlabs-cartesia-heygen-selection-faq.md) | [EN](./enterprise-brand-voice-cloning-interactive-avatar-azure-elevenlabs-cartesia-heygen-selection-faq.en.md)
