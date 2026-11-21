@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (339 Bilingual Guides)
+## 3. Solution Architect Selection Guides (340 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -380,3 +380,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 337. **Home Services, HVAC & Plumbing Dispatch (ServiceTitan / Salesforce Field Service) 24/7 Voice Booking, Nameplate Vision & ETA Confirmation Architecture: EPA-608 License & >=12-Yr Unit Turnover Lock (+28.4% Ticket), Nameplate OCR & $89 Diagnostic-Fee Gate (92.8% FTFR) & T-30m At-Home Call (-62.4% Wasted Truck Rolls)**: [EN](./home-services-hvac-plumbing-servicetitan-dispatch-eta-confirmation-voice-selection-faq.en.md) | [中文](./home-services-hvac-plumbing-servicetitan-dispatch-eta-confirmation-voice-selection-faq.md)
 338. **Higher Education Admissions, FAFSA Financial Aid & FERPA Campus Voice Desk (Ellucian Banner / Workday Student / Slate) Architecture: Federal FERPA Parent Proxy-Waiver Lock, Zero Admission/Scholarship Guarantee & FAFSA Hold Resolution Gate (-29.4% Summer Melt) & 0ms 988/CAPS Mental-Health Crisis Preemption**: [EN](./higher-education-admissions-fafsa-financial-aid-ferpa-crisis-voice-selection-faq.en.md) | [中文](./higher-education-admissions-fafsa-financial-aid-ferpa-crisis-voice-selection-faq.md)
 339. **Enterprise Active Meeting Voice Participant (Teams / Zoom / Webex), Multi-Talker Overlap Diarization & Evidence-Anchored Jira Automation Architecture: Name-Addressed Wake & Room-Intersection ACL Lock, 97.9% Overlap Speaker Separation & Verbatim Timestamp Jira Gate + 0ms External-Guest Down-Scoping**: [EN](./enterprise-meeting-voice-participant-overlap-diarization-action-item-jira-selection-faq.en.md) | [中文](./enterprise-meeting-voice-participant-overlap-diarization-action-item-jira-selection-faq.md)
+340. **Corporate Treasury Wire Transfer (SWIFT / Fedwire), Anti-Deepfake Voice Defense & Dual-Control Maker-Checker Architecture: ASVspoof 5 Vocoder Liveness & Out-of-Band KYC Directory Callback Lock, Transaction-Bound FIDO2 & 4-Eyes Maker-Checker Gate (90s SLA) + 0ms Deepfake/OFAC Freeze**: [EN](./corporate-treasury-wire-transfer-deepfake-voice-defense-maker-checker-selection-faq.en.md) | [中文](./corporate-treasury-wire-transfer-deepfake-voice-defense-maker-checker-selection-faq.md)

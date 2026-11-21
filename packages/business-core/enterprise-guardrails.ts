@@ -8995,6 +8995,36 @@ export function evaluateMeetingVoiceParticipantDiarizationJiraGuard(input: {
   };
 }
 
+export interface CorporateTreasuryDeepfakeMakerCheckerEvaluation {
+  policyCode: "CORPORATE-TREASURY-DEEPFAKE-MAKER-CHECKER-01";
+  wireReleaseAndBeneficiaryUpdateAuthorized: boolean;
+  deepfakeSpoofOrSingleControlBlocked: boolean;
+  treasuryFreezeAndSocForensicsBridged: boolean;
+}
+
+/**
+ * Deterministic Corporate Treasury Anti-Deepfake Vocoder Liveness & Out-of-Band KYC Callback Lock, FIDO2 Dual-Control Maker-Checker Gate & 0ms SOC Freeze Guard (`CORPORATE-TREASURY-DEEPFAKE-MAKER-CHECKER-01`).
+ */
+export function evaluateCorporateTreasuryDeepfakeMakerCheckerGuard(input: {
+  acousticDeepfakeLivenessPassedAndOutOfBandCallbackVerified: boolean;
+  fido2CryptographicChallengeAndDualControlMakerCheckerSigned: boolean;
+  syntheticAudioDetectedOrSanctionsOfacHitTriggersSocFreeze: boolean;
+}): CorporateTreasuryDeepfakeMakerCheckerEvaluation {
+  return {
+    policyCode: "CORPORATE-TREASURY-DEEPFAKE-MAKER-CHECKER-01",
+    wireReleaseAndBeneficiaryUpdateAuthorized:
+      input.acousticDeepfakeLivenessPassedAndOutOfBandCallbackVerified &&
+      input.fido2CryptographicChallengeAndDualControlMakerCheckerSigned &&
+      !input.syntheticAudioDetectedOrSanctionsOfacHitTriggersSocFreeze,
+    deepfakeSpoofOrSingleControlBlocked:
+      !input.acousticDeepfakeLivenessPassedAndOutOfBandCallbackVerified ||
+      !input.fido2CryptographicChallengeAndDualControlMakerCheckerSigned ||
+      input.syntheticAudioDetectedOrSanctionsOfacHitTriggersSocFreeze,
+    treasuryFreezeAndSocForensicsBridged:
+      input.syntheticAudioDetectedOrSanctionsOfacHitTriggersSocFreeze,
+  };
+}
+
 
 
 
