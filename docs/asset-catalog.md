@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（297 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（298 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -338,3 +338,4 @@
 295. **动力电池与储能电芯超级工厂（Gigafactory：宁德时代 CATL / 比亚迪 BYD / LG 新能源 / 松下 Panasonic / 特斯拉 Megapack）、NMP 涂布烘箱与露点 -45°C 干燥房注液化成 24×7 免提语音副驾方案（80 米正极涂布烘箱 NMP 蒸汽 LEL <=20% 与浆料电磁除铁 <=30 ppb 防枝晶刺穿隔膜硬锁、注液干燥房露点 <=-45.0°C 防六氟磷酸锂水解生成剧毒氢氟酸 HF 与 X-Ray 阴阳极 Overhang 门禁、化成万托盘立库电芯 >60°C 或析氢 0ms 断电闭氮气罩并由堆垛机抽盘投入盐水消防池强切）**：[中文](./lithium-battery-gigafactory-electrode-coating-nmp-lel-dry-room-dewpoint-formation-voice-copilot-selection-faq.md) | [EN](./lithium-battery-gigafactory-electrode-coating-nmp-lel-dry-room-dewpoint-formation-voice-copilot-selection-faq.en.md)
 296. **现代化钢铁冶金基地（中国宝武 Baowu / 鞍钢 / 河钢 / 安赛乐米塔尔 ArcelorMittal / 浦项 POSCO / 普锐特 Primetals）、高炉出铁场、300吨转炉炼钢（BOF）与板坯连铸平台 24×7 免提语音副驾方案（300 吨转炉水冷氧枪进回水流量差 ==0.0 L/min 与废钢槽/钢包 >=1,000°C 干燥防蒸汽炸炉硬锁、OG 煤气回收烟道含氧 <=1.0% 防电除尘爆炸与出铁场 CO <=24 ppm 及 450 吨铁水天车净空门禁、氧枪漏水 0ms 自动提枪死锁转炉零位禁摇炉与连铸粘结漏钢 0ms 瞬关中包滑板强切）**：[中文](./steel-mill-blast-furnace-bof-converter-molten-slag-water-explosion-co-gas-voice-copilot-selection-faq.md) | [EN](./steel-mill-blast-furnace-bof-converter-molten-slag-water-explosion-co-gas-voice-copilot-selection-faq.en.md)
 297. **石油炼化一体化基地（中国石化 Sinopec / 中国石油 CNPC / 埃克森美孚 ExxonMobil / 壳牌 Shell / 沙特阿美 Aramco / 霍尼韦尔 UOP）、常减压/催化裂化（FCC）装置大修吹扫、盲板抽堵与硫化亚铁防自燃 24×7 免提语音副驾方案（2,400+ 块界区盲板 100% RFID 加装/抽除闭环与管线 0.00 bar 零残压硬锁、分馏塔规整填料硫化亚铁 FeS 高锰酸钾钝化保湿与 H2S ==0.0 ppm 进塔门禁、填料床层 >55°C 或 H2S >=10 ppm 0ms 全开塔顶水喷淋吊销全区动火票并播报横风撤离强切）**：[中文](./petrochemical-refinery-fcc-turnaround-blind-flange-pyrophoric-fes-h2s-voice-copilot-selection-faq.md) | [EN](./petrochemical-refinery-fcc-turnaround-blind-flange-pyrophoric-fes-h2s-voice-copilot-selection-faq.en.md)
+298. **铜铝有色金属冶炼、闪速熔炼炉（Flash Smelting）、500kA 万安培电解铝槽与深井立式铸造（江西铜业 / 紫金矿业 / 中国铝业 Chalco / 魏桥创业 / 自由港麦克莫兰 Freeport / 美卓奥图泰 Metso Outotec）24×7 免提语音副驾方案（铝深井铸造冷却水满流/井壁防锈涂层与流槽 >=350°C 烘干防铝热氢爆硬锁、500kA 电解系列 1,200V DC 等电位绝缘与铜净液车间剧毒砷化氢 AsH3 ==0.00 ppm 门禁、结晶器漏铝或闪速炉水套漏水 0ms 静置炉回倾堵眼并切入干式应急事故箱强切）**：[中文](./nonferrous-copper-aluminum-smelting-electrolytic-potline-launder-water-explosion-so2-voice-copilot-selection-faq.md) | [EN](./nonferrous-copper-aluminum-smelting-electrolytic-potline-launder-water-explosion-so2-voice-copilot-selection-faq.en.md)

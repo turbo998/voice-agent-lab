@@ -7735,6 +7735,36 @@ export function evaluatePetrochemicalRefineryTurnaroundApi2217VoiceGuard(input: 
   };
 }
 
+export interface NonferrousSmeltingPotlineNfpa484VoiceEvaluation {
+  policyCode: "NONFERROUS-SMELTING-POTLINE-NFPA484-01";
+  dcCastingAndSmeltingTapAuthorized: boolean;
+  moltenMetalWaterOrPotlineGasHazardBlocked: boolean;
+  furnaceTiltBackEmergencyDumpTroughAndPlatenStopBridged: boolean;
+}
+
+/**
+ * Deterministic Non-Ferrous Copper/Aluminum Smelting, 500kA Potline Equipotential & Vertical DC Casting Pit Safety Guard (`NONFERROUS-SMELTING-POTLINE-NFPA484-01`).
+ */
+export function evaluateNonferrousSmeltingPotlineNfpa484VoiceGuard(input: {
+  dcCastingPitWaterLevelAndDryLaunderPreheatSafe: boolean;
+  potline500kaSeriesEquipotentialAndSo2ArsineSafe: boolean;
+  castingPitBleedOutPotlineBusbarShortOrWaterLeak: boolean;
+}): NonferrousSmeltingPotlineNfpa484VoiceEvaluation {
+  return {
+    policyCode: "NONFERROUS-SMELTING-POTLINE-NFPA484-01",
+    dcCastingAndSmeltingTapAuthorized:
+      input.dcCastingPitWaterLevelAndDryLaunderPreheatSafe &&
+      input.potline500kaSeriesEquipotentialAndSo2ArsineSafe &&
+      !input.castingPitBleedOutPotlineBusbarShortOrWaterLeak,
+    moltenMetalWaterOrPotlineGasHazardBlocked:
+      !input.dcCastingPitWaterLevelAndDryLaunderPreheatSafe ||
+      !input.potline500kaSeriesEquipotentialAndSo2ArsineSafe ||
+      input.castingPitBleedOutPotlineBusbarShortOrWaterLeak,
+    furnaceTiltBackEmergencyDumpTroughAndPlatenStopBridged:
+      input.castingPitBleedOutPotlineBusbarShortOrWaterLeak,
+  };
+}
+
 
 
 
