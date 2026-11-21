@@ -9655,6 +9655,36 @@ export function evaluateAccountingTaxPayrollIrs7216Guard(input: {
   };
 }
 
+export interface FitnessGymMindbodyFtcCancelEvaluation {
+  policyCode: "FITNESS-GYM-MINDBODY-FTC-CANCEL-01";
+  classBookingAndMembershipActionAuthorized: boolean;
+  unwaiveredHiitOrDarkPatternCancelBlocked: boolean;
+  gymFloorAedOrRhabdo911Bridged: boolean;
+}
+
+/**
+ * Deterministic Fitness, Gym & Wellness (Mindbody / ClubReady) ACSM PAR-Q+ Waiver Lock, FTC Click-to-Cancel Gate & 0ms Gym-Floor AED / Rhabdomyolysis Guard (`FITNESS-GYM-MINDBODY-FTC-CANCEL-01`).
+ */
+export function evaluateFitnessGymMindbodyFtcCancelGuard(input: {
+  parQHealthClearanceAndLiabilityWaiverSignedBeforeHiitBooking: boolean;
+  ftcClickToCancelZeroDarkPatternAndWaitlistFairnessEnforced: boolean;
+  exertionalSyncopeCardiacArrestAedOrRhabdomyolysisEscalation: boolean;
+}): FitnessGymMindbodyFtcCancelEvaluation {
+  return {
+    policyCode: "FITNESS-GYM-MINDBODY-FTC-CANCEL-01",
+    classBookingAndMembershipActionAuthorized:
+      input.parQHealthClearanceAndLiabilityWaiverSignedBeforeHiitBooking &&
+      input.ftcClickToCancelZeroDarkPatternAndWaitlistFairnessEnforced &&
+      !input.exertionalSyncopeCardiacArrestAedOrRhabdomyolysisEscalation,
+    unwaiveredHiitOrDarkPatternCancelBlocked:
+      !input.parQHealthClearanceAndLiabilityWaiverSignedBeforeHiitBooking ||
+      !input.ftcClickToCancelZeroDarkPatternAndWaitlistFairnessEnforced ||
+      input.exertionalSyncopeCardiacArrestAedOrRhabdomyolysisEscalation,
+    gymFloorAedOrRhabdo911Bridged:
+      input.exertionalSyncopeCardiacArrestAedOrRhabdomyolysisEscalation,
+  };
+}
+
 
 
 
