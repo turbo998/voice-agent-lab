@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（288 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（289 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -329,3 +329,4 @@
 286. **显示面板（OLED/TFT-LCD）与高效光伏电池工厂（京东方 BOE / TCL 华星 / 三星显示 / 隆基绿能 LONGi / 通威太阳能）24×7 免提语音副驾方案（SEMI S2 自燃硅烷 SiH4 与剧毒磷烷 PH3 30 次循环氮吹破空硬锁、49% 氢氟酸玻璃减薄/制绒拉门高度与葡萄糖酸钙凝胶 RFID 在位门禁、下夹层尾气塔 POU 跳机 0ms 关闭气瓶根部阀防屋顶总管爆炸强切）**：[中文](./display-panel-oled-photovoltaic-solar-fab-silane-pecvd-hf-etch-subfab-voice-copilot-selection-faq.md) | [EN](./display-panel-oled-photovoltaic-solar-fab-silane-pecvd-hf-etch-subfab-voice-copilot-selection-faq.en.md)
 287. **光纤预制棒（MCVD/OVD/VAD）、2,200°C 高速拉丝塔与海底光缆制造基地（长飞光纤 YOFC / 康宁 Corning / 亨通光电 / 烽火通信 / 普睿司曼 Prysmian）24×7 免提语音副驾方案（SiCl4/GeCl4 卤化物露点 <=-70°C 防盐酸毒雾与烧结氯气 NaOH 碱洗塔 pH >=10.5 硬锁、25 米塔顶 2,200°C 石墨炉氩气密封与 3,000 m/min 紫外灯罩门禁、氯气泄漏/高速断纤 0ms 切特气阀激发气动吸丝捕集强切）**：[中文](./optical-fiber-preform-drawing-tower-sicl4-chlorine-2200c-furnace-submarine-cable-voice-copilot-selection-faq.md) | [EN](./optical-fiber-preform-drawing-tower-sicl4-chlorine-2200c-furnace-submarine-cable-voice-copilot-selection-faq.en.md)
 288. **特高压电力电缆、150 米立塔交联聚乙烯（XLPE VCV）挤出与 800kV 局放屏蔽大厅（中天科技 ZTT / 东方电缆 / 亨通高压 / 普睿司曼 Prysmian / 耐克森 Nexans）24×7 免提语音副驾方案（14 bar / 400°C 交联硫化管道 0.00 bar 泄压与过氧化物裂解副产物甲烷 CH4 <=20% LEL 硬锁、IEEE 510 800kV 法拉第厅 20km 长海缆电容残压 0.00 kV 阻尼泄放与接地刀死合门禁、屏蔽厅闯入/绞机断线 0ms 瞬落重力接地铜排抱闸强切）**：[中文](./high-voltage-power-cable-xlpe-cv-vulcanization-faraday-cage-rod-drawing-voice-copilot-selection-faq.md) | [EN](./high-voltage-power-cable-xlpe-cv-vulcanization-faraday-cage-rod-drawing-voice-copilot-selection-faq.en.md)
+289. **特高压电力变压器、煤油气相干燥（VPD）真空罐与 2,400kV 冲击耐压试验大厅（特变电工 TBEA / 中国西电 XD / 保变电气 / 日立能源 Hitachi Energy / 西门子能源）24×7 免提语音副驾方案（130°C 煤油气相干燥 VPD 罐溶剂分压 <=1.0 mbar 与纯氮先行破空防闪爆硬锁、2,400kV 马克思发生器全 12 级短路接地带闭合与铁芯单点接地 >=1,000 MΩ 门禁、煤油段漏气失真空 0ms 切蒸发器启动紧急充氮淹没强切）**：[中文](./power-transformer-manufacturing-vapor-phase-drying-kerosene-marx-impulse-test-voice-copilot-selection-faq.md) | [EN](./power-transformer-manufacturing-vapor-phase-drying-kerosene-marx-impulse-test-voice-copilot-selection-faq.en.md)

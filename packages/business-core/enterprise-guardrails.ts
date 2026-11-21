@@ -7465,6 +7465,36 @@ export function evaluateHvCableXlpeCvFaradayIeee510VoiceGuard(input: {
   };
 }
 
+export interface PowerTransformerVpdMarxIeee510VoiceEvaluation {
+  policyCode: "POWER-TRANSFORMER-VPD-MARX-IEEE510-01";
+  vpdBreakAndTestBayEntryAuthorized: boolean;
+  keroseneAirMixOrUnshortedMarxStageBlocked: boolean;
+  evaporatorCutoffNitrogenBlanketAndMarxCrowbarBridged: boolean;
+}
+
+/**
+ * Deterministic UHV Power Transformer Kerosene VPD Nitrogen-First Vacuum-Break Lock, 2,400kV 12-Stage Marx Earth Gate & 0ms Air-Inleak N2 Flood Guard (`POWER-TRANSFORMER-VPD-MARX-IEEE510-01`).
+ */
+export function evaluatePowerTransformerVpdMarxIeee510VoiceGuard(input: {
+  vpdVacuumLeakRateAndNitrogenBreakSafe: boolean;
+  marxAllStagesShortedAndCoreSingleGroundSafe: boolean;
+  vpdVacuumLossAirIngressOrMarxBreach: boolean;
+}): PowerTransformerVpdMarxIeee510VoiceEvaluation {
+  return {
+    policyCode: "POWER-TRANSFORMER-VPD-MARX-IEEE510-01",
+    vpdBreakAndTestBayEntryAuthorized:
+      input.vpdVacuumLeakRateAndNitrogenBreakSafe &&
+      input.marxAllStagesShortedAndCoreSingleGroundSafe &&
+      !input.vpdVacuumLossAirIngressOrMarxBreach,
+    keroseneAirMixOrUnshortedMarxStageBlocked:
+      !input.vpdVacuumLeakRateAndNitrogenBreakSafe ||
+      !input.marxAllStagesShortedAndCoreSingleGroundSafe ||
+      input.vpdVacuumLossAirIngressOrMarxBreach,
+    evaporatorCutoffNitrogenBlanketAndMarxCrowbarBridged:
+      input.vpdVacuumLossAirIngressOrMarxBreach,
+  };
+}
+
 
 
 
