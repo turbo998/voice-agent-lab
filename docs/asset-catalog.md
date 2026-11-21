@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（299 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（300 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -340,3 +340,4 @@
 297. **石油炼化一体化基地（中国石化 Sinopec / 中国石油 CNPC / 埃克森美孚 ExxonMobil / 壳牌 Shell / 沙特阿美 Aramco / 霍尼韦尔 UOP）、常减压/催化裂化（FCC）装置大修吹扫、盲板抽堵与硫化亚铁防自燃 24×7 免提语音副驾方案（2,400+ 块界区盲板 100% RFID 加装/抽除闭环与管线 0.00 bar 零残压硬锁、分馏塔规整填料硫化亚铁 FeS 高锰酸钾钝化保湿与 H2S ==0.0 ppm 进塔门禁、填料床层 >55°C 或 H2S >=10 ppm 0ms 全开塔顶水喷淋吊销全区动火票并播报横风撤离强切）**：[中文](./petrochemical-refinery-fcc-turnaround-blind-flange-pyrophoric-fes-h2s-voice-copilot-selection-faq.md) | [EN](./petrochemical-refinery-fcc-turnaround-blind-flange-pyrophoric-fes-h2s-voice-copilot-selection-faq.en.md)
 298. **铜铝有色金属冶炼、闪速熔炼炉（Flash Smelting）、500kA 万安培电解铝槽与深井立式铸造（江西铜业 / 紫金矿业 / 中国铝业 Chalco / 魏桥创业 / 自由港麦克莫兰 Freeport / 美卓奥图泰 Metso Outotec）24×7 免提语音副驾方案（铝深井铸造冷却水满流/井壁防锈涂层与流槽 >=350°C 烘干防铝热氢爆硬锁、500kA 电解系列 1,200V DC 等电位绝缘与铜净液车间剧毒砷化氢 AsH3 ==0.00 ppm 门禁、结晶器漏铝或闪速炉水套漏水 0ms 静置炉回倾堵眼并切入干式应急事故箱强切）**：[中文](./nonferrous-copper-aluminum-smelting-electrolytic-potline-launder-water-explosion-so2-voice-copilot-selection-faq.md) | [EN](./nonferrous-copper-aluminum-smelting-electrolytic-potline-launder-water-explosion-so2-voice-copilot-selection-faq.en.md)
 299. **企业全渠道智能客服中心（CCaaS）传统 IVR 现代化替代与人工坐席零重复移交全栈选型（Azure Communication Services + GPT-Realtime vs. Amazon Connect + Bedrock Nova Sonic vs. Genesys Cloud CX AI：前置 SIP 分流规避 AudioHook 过路税、4 槽位 CTI 弹屏卡 + 5 秒坐席耳语零重复交接硬锁、`<=$50` 自动退赔防火墙与 2 次未听清 0ms 跳出转专席）方案**：[中文](./ccaas-ivr-modernization-warm-agent-handoff-azure-acs-amazon-connect-genesys-selection-faq.md) | [EN](./ccaas-ivr-modernization-warm-agent-handoff-azure-acs-amazon-connect-genesys-selection-faq.en.md)
+300. **高并发 B2C/B2B 智能外呼、留资 15 秒极速回访与预约确认语音 Agent 编排选型（自建开源 LiveKit Agents / Pipecat vs. 全托管商业平台 Retell AI / Vapi / Bland AI：五层叠加平台溢价拆解与月呼 6.5 万分钟 TCO 拐点、拨号前 Opt-In 与被叫当地时区 `08:00–21:00` 硬锁、`<400ms` 投机式 AMD 零停顿问候与日历 90 秒原子锁及“别再打给我”`0ms` 全局 DNC 退订熔断）方案**：[中文](./high-concurrency-outbound-appointment-agent-livekit-pipecat-vs-retell-vapi-bland-tco-selection-faq.md) | [EN](./high-concurrency-outbound-appointment-agent-livekit-pipecat-vs-retell-vapi-bland-tco-selection-faq.en.md)

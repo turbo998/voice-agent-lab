@@ -7795,6 +7795,36 @@ export function evaluateCcaasIvrModernizationHandoffVoiceGuard(input: {
   };
 }
 
+export interface OutboundOrchestrationLivekitRetellTcoVoiceEvaluation {
+  policyCode: "OUTBOUND-ORCHESTRATION-LIVEKIT-RETELL-TCO-01";
+  outboundDialAndAppointmentCommitAuthorized: boolean;
+  complianceOrCalendarDoubleBookingBlocked: boolean;
+  immediateDncOptOutOrWarmCloserHandoffBridged: boolean;
+}
+
+/**
+ * Deterministic High-Concurrency Outbound Pre-Dial Consent/Timezone Lock, <400ms Speculative AMD Calendar Gate & 0ms Global DNC Opt-Out Guard (`OUTBOUND-ORCHESTRATION-LIVEKIT-RETELL-TCO-01`).
+ */
+export function evaluateOutboundOrchestrationLivekitRetellTcoVoiceGuard(input: {
+  priorExpressConsentAndCallingWindowCompliant: boolean;
+  speculativeAmdHumanGreetingAndCalendarSlotLocked: boolean;
+  explicitOptOutRequestOrHighIntentCloserReady: boolean;
+}): OutboundOrchestrationLivekitRetellTcoVoiceEvaluation {
+  return {
+    policyCode: "OUTBOUND-ORCHESTRATION-LIVEKIT-RETELL-TCO-01",
+    outboundDialAndAppointmentCommitAuthorized:
+      input.priorExpressConsentAndCallingWindowCompliant &&
+      input.speculativeAmdHumanGreetingAndCalendarSlotLocked &&
+      !input.explicitOptOutRequestOrHighIntentCloserReady,
+    complianceOrCalendarDoubleBookingBlocked:
+      !input.priorExpressConsentAndCallingWindowCompliant ||
+      !input.speculativeAmdHumanGreetingAndCalendarSlotLocked ||
+      input.explicitOptOutRequestOrHighIntentCloserReady,
+    immediateDncOptOutOrWarmCloserHandoffBridged:
+      input.explicitOptOutRequestOrHighIntentCloserReady,
+  };
+}
+
 
 
 
