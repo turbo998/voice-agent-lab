@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (346 Bilingual Guides)
+## 3. Solution Architect Selection Guides (347 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -387,3 +387,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 344. **EV Charging Network (OCPP 2.0.1 / ChargePoint / EVgo / NIO / Teld) 24/7 Driver Voice Rescue, Zero-Amp Connector Unlock & Thermal Preemption Architecture: 0.0-Amp Interlock Before OCPP UnlockConnector (94.6% Release in 18s), Fault Idle-Fee Waiver & <=1.5km ReserveNow Gate (-58.4% Truck Rolls) & 0ms Thermal Contactor Trip + 15m Evacuation**: [EN](./ev-charging-network-ocpp-connector-unlock-thermal-preemption-voice-selection-faq.en.md) | [中文](./ev-charging-network-ocpp-connector-unlock-thermal-preemption-voice-selection-faq.md)
 345. **Consumer Electronics, Smart Home & Robotics (AppleCare / Dyson / DJI / Lenovo / Roborock) Multimodal Visual Triage, OTA Self-Healing & RMA Voice Architecture: Cloud IoT + Camera Triage Lock (-49.2% NTF Returns), Advance-Exchange Activation-Lock OFF Gate & 0ms Swollen-Battery (UN3480) Courier Block + DOT Fire-Safe Box Bridge**: [EN](./consumer-electronics-smart-home-visual-troubleshooting-ota-rma-voice-selection-faq.en.md) | [中文](./consumer-electronics-smart-home-visual-troubleshooting-ota-rma-voice-selection-faq.md)
 346. **Live Events, Stadium & Ticketing (Ticketmaster / Live Nation / Damai) ADA Accessible Seating, FTC All-In Pricing & Anti-Scalper Voice Architecture: ADA 1W+3C Contiguous Seat & Price-Parity Lock, FTC Upfront All-In Total Price & Anti-Scalper Liveness Gate + 0ms Weather-Delay Deflection (92.4% Contained) & Stadium EMS Bridge**: [EN](./live-events-ticketing-stadium-ada-seating-scalper-defense-voice-selection-faq.en.md) | [中文](./live-events-ticketing-stadium-ada-seating-scalper-defense-voice-selection-faq.md)
+347. **Freight Brokerage & TMS (McLeod / MercuryGate / C.H. Robinson) Carrier Vetting, Anti-Double-Brokering & Check-Call Voice Architecture: FMCSA MC/DOT + Highway Directory Anti-Theft Lock ($0 Cargo Loss), Context-Isolated Max-Buy Cap (+2.1pt Margin) & ELD Pickup Gate + 0ms Reefer Temp Excursion & >90m Detention Proof**: [EN](./freight-brokerage-tms-carrier-vetting-anti-double-brokering-checkcall-voice-selection-faq.en.md) | [中文](./freight-brokerage-tms-carrier-vetting-anti-double-brokering-checkcall-voice-selection-faq.md)

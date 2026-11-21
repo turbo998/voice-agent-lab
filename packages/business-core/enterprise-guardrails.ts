@@ -9205,6 +9205,36 @@ export function evaluateLiveEventsTicketingAdaScalperGuard(input: {
   };
 }
 
+export interface FreightBrokerageTmsDoubleBrokeringEvaluation {
+  policyCode: "FREIGHT-BROKERAGE-TMS-DOUBLE-BROKERING-01";
+  rateConAndPickupReleaseAuthorized: boolean;
+  doubleBrokeringOrAboveCapRateBlocked: boolean;
+  reeferExcursionOrDetentionProofBridged: boolean;
+}
+
+/**
+ * Deterministic Freight Brokerage & TMS FMCSA/Highway Anti-Double-Brokering Lock, Context-Isolated Max-Buy / ELD Gate & 0ms Reefer / Detention Guard (`FREIGHT-BROKERAGE-TMS-DOUBLE-BROKERING-01`).
+ */
+export function evaluateFreightBrokerageTmsDoubleBrokeringGuard(input: {
+  fmcsaMcDotActiveAndCallerAniMatchesHighwayDirectory: boolean;
+  negotiatedCarrierRateWithinLaneMaxBuyCapAndEldTracked: boolean;
+  reeferTempExcursionOrDockDetentionOver90MinEscalation: boolean;
+}): FreightBrokerageTmsDoubleBrokeringEvaluation {
+  return {
+    policyCode: "FREIGHT-BROKERAGE-TMS-DOUBLE-BROKERING-01",
+    rateConAndPickupReleaseAuthorized:
+      input.fmcsaMcDotActiveAndCallerAniMatchesHighwayDirectory &&
+      input.negotiatedCarrierRateWithinLaneMaxBuyCapAndEldTracked &&
+      !input.reeferTempExcursionOrDockDetentionOver90MinEscalation,
+    doubleBrokeringOrAboveCapRateBlocked:
+      !input.fmcsaMcDotActiveAndCallerAniMatchesHighwayDirectory ||
+      !input.negotiatedCarrierRateWithinLaneMaxBuyCapAndEldTracked ||
+      input.reeferTempExcursionOrDockDetentionOver90MinEscalation,
+    reeferExcursionOrDetentionProofBridged:
+      input.reeferTempExcursionOrDockDetentionOver90MinEscalation,
+  };
+}
+
 
 
 
