@@ -5211,6 +5211,34 @@ export function evaluateOmnichannelIngressVoiceIsolationGuard(input: {
   };
 }
 
+export interface SmartWearableGlassesEarbudsVoiceEvaluation {
+  policyCode: "SMART-WEARABLE-GLASSES-EARBUDS-01";
+  multimodalCameraBurstAndCloudStreamAuthorized: boolean;
+  audioOnlyLowPowerFallbackRequired: boolean;
+  childSafeRedirectAndParentAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Smart Wearables (AI Glasses, Earbuds & Companion Hardware) Bone-VPU, Privacy LED, Thermal & COPPA Guard (`SMART-WEARABLE-GLASSES-EARBUDS-01`).
+ */
+export function evaluateSmartWearableGlassesEarbudsVoiceGuard(input: {
+  privacyCaptureLedActiveAndBoneVpuVerified: boolean;
+  templeTempUnder41cAndBatteryAbove15Pct: boolean;
+  minorDistressOrUnsafeContentDetected: boolean;
+}): SmartWearableGlassesEarbudsVoiceEvaluation {
+  return {
+    policyCode: "SMART-WEARABLE-GLASSES-EARBUDS-01",
+    multimodalCameraBurstAndCloudStreamAuthorized:
+      input.privacyCaptureLedActiveAndBoneVpuVerified &&
+      input.templeTempUnder41cAndBatteryAbove15Pct &&
+      !input.minorDistressOrUnsafeContentDetected,
+    audioOnlyLowPowerFallbackRequired:
+      !input.templeTempUnder41cAndBatteryAbove15Pct,
+    childSafeRedirectAndParentAlertTriggered:
+      input.minorDistressOrUnsafeContentDetected,
+  };
+}
+
 
 
 

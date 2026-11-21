@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg71" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1f"/>
+      <stop offset="50%" stop-color="#131e3a"/>
+      <stop offset="100%" stop-color="#081224"/>
+    </linearGradient>
+    <linearGradient id="card71" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#182749" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0d162b" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg71)" rx="16"/>
+  <text x="600" y="42" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">Smart Wearables (AI Glasses, Open-Ear Earbuds &amp; Kids Companion Hardware) Multimodal Voice Architecture</text>
+  <text x="600" y="66" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">Bone-Conduction VAD · On-Demand Keyframe Burst (-84% Battery Drain) · Bystander Privacy LED &amp; COPPA Child Lock (SMART-WEARABLE-GLASSES-EARBUDS-01)</text>
+
+  <!-- Left Column -->
+  <rect x="30" y="92" width="290" height="548" rx="12" fill="url(#card71)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="175" y="122" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1. Wearable Hardware Form Factors</text>
+
+  <rect x="48" y="142" width="254" height="105" rx="8" fill="#0f172a" stroke="#60a5fa" stroke-width="1.2"/>
+  <text x="175" y="166" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">AI Smart Glasses (45g Frame)</text>
+  <text x="175" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 12MP POV Camera + 5-Mic Temple Array</text>
+  <text x="175" y="206" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 150mAh Battery &amp; 41°C Skin Thermal Cap</text>
+  <text x="175" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• "Translate this menu / What plant is this?"</text>
+
+  <rect x="48" y="264" width="254" height="105" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="175" y="288" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">TWS AI Earbuds &amp; Smart Pendant</text>
+  <text x="175" y="310" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Bone-Conduction VPU Accelerometer</text>
+  <text x="175" y="328" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• BLE Audio LC3 vs Legacy HFP 8kHz</text>
+  <text x="175" y="346" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Whisper-Mode Sub-Vocal Query Support</text>
+
+  <rect x="48" y="386" width="254" height="105" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="175" y="410" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Kids AI Toy &amp; Study Companion</text>
+  <text x="175" y="432" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Wi-Fi MCU (ESP32-S3 / BK7258 Opus)</text>
+  <text x="175" y="450" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• COPPA / Minor Safety Content Redline</text>
+  <text x="175" y="468" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Incomplete Child Utterance Pauses</text>
+
+  <rect x="48" y="508" width="254" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="175" y="532" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Hardware-to-Cloud Link</text>
+  <text x="175" y="554" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Glasses → BLE/Wi-Fi Direct → Phone Relay</text>
+  <text x="175" y="572" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• MCU → Lightweight UDP/WebRTC Opus</text>
+  <text x="175" y="590" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 150uW Always-On DSP Wake-Word</text>
+
+  <!-- Center Column -->
+  <rect x="350" y="92" width="500" height="548" rx="12" fill="url(#card71)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="600" y="122" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">2. Deterministic Wearable Gate (SMART-WEARABLE-GLASSES-EARBUDS-01)</text>
+
+  <rect x="372" y="142" width="456" height="136" rx="10" fill="#2a1215" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE A: Bystander Privacy Capture LED &amp; Bone-Conduction Lock</text>
+  <text x="600" y="188" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: privacyCaptureLedActiveAndBoneVpuVerified === true</text>
+  <text x="600" y="208" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blocks POV camera frame capture if the outward-facing privacy LED</text>
+  <text x="600" y="226" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  is covered/faulty, and requires bone-conduction VPU vibration for commands</text>
+  <text x="600" y="246" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Prevents covert recording &amp; blocks bystander voices in crowded subways</text>
+
+  <rect x="372" y="294" width="456" height="145" rx="10" fill="#172554" stroke="#60a5fa" stroke-width="1.8"/>
+  <text x="600" y="318" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE B: Thermal (&lt;41°C) &amp; Battery (&gt;15%) Keyframe Burst Gate</text>
+  <text x="600" y="340" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: templeTempUnder41cAndBatteryAbove15Pct === true</text>
+  <text x="600" y="360" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Never streams continuous 30fps video! Uploads a single 80KB WebP keyframe</text>
+  <text x="600" y="378" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  only when visual intent ("look at this") is detected; throttles to audio-only</text>
+  <text x="600" y="398" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">  if temple skin temp approaches 41°C (IEC 62368-1 wearable burn limit)</text>
+
+  <rect x="372" y="455" width="456" height="165" rx="10" fill="#062e22" stroke="#10b981" stroke-width="1.8"/>
+  <text x="600" y="479" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE C: COPPA Minor Safety &amp; Self-Harm 0ms Parent Escalation</text>
+  <text x="600" y="501" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trigger: minorDistressOrUnsafeContentDetected === true</text>
+  <text x="600" y="521" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 0ms sets childSafeRedirectAndParentAlertTriggered = true</text>
+  <text x="600" y="541" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blocks adult/unsafe topics on kids companion hardware in 0ms and</text>
+  <text x="600" y="559" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">  pushes an immediate guardian alert to the parent companion app</text>
+  <text x="600" y="582" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Extends smart-glasses battery life from 24 min to 6.5 hours (+1,525%)</text>
+
+  <!-- Right Column -->
+  <rect x="880" y="92" width="290" height="548" rx="12" fill="url(#card71)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1025" y="122" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3. Wearable Edge-Cloud Stack</text>
+
+  <rect x="898" y="142" width="254" height="110" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="1025" y="166" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Snapdragon AR1 / BES2700 / ESP32-S3</text>
+  <text x="1025" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 150μW Always-On Keyword Spotter</text>
+  <text x="1025" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Bone-Conduction + Air-Mic Fusion</text>
+  <text x="1025" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Hardware Opus 16kHz/24kHz Encoder</text>
+
+  <rect x="898" y="268" width="254" height="110" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="1025" y="292" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Intent-Gated Vision Snapshot</text>
+  <text x="1025" y="314" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Deictic Trigger ("What's this / Read that")</text>
+  <text x="1025" y="332" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 1024×768 ROI Crop + Gyro De-Blur</text>
+  <text x="1025" y="350" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 85% Queries Answered Audio-Only</text>
+
+  <rect x="898" y="394" width="254" height="110" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="1025" y="418" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Whisper-Quiet Bone/Open-Ear Output</text>
+  <text x="1025" y="440" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Phase-Inverted Anti-Leakage Dipole</text>
+  <text x="1025" y="458" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Ambient-Noise Adaptive Volume</text>
+  <text x="1025" y="476" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Sub-350ms First-Word Earbud Playback</text>
+
+  <rect x="898" y="520" width="254" height="100" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2"/>
+  <text x="1025" y="544" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Sealed Wearable Metrics</text>
+  <text x="1025" y="566" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Battery Life: 6.5h (vs 24m Continuous)</text>
+  <text x="1025" y="584" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Subway Bystander False Wake: 0.00%</text>
+  <text x="1025" y="602" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Cloud Cost per Device/Mo: $0.38</text>
+</svg>

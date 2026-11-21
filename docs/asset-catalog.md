@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（212 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（213 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -253,3 +253,4 @@
 210. **实时语音开发与编排框架全景横向选型（LiveKit Agents vs Pipecat vs Azure Communication Services Call Automation vs Twilio Voice / Vapi / Retell AI：自建开源 vs 云原生 CPaaS vs 全托管商业平台 4 万分钟/月 TCO 拐点与 K8s 零掉线缩容硬锁）方案**：[中文](./voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.md) | [EN](./voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.en.md)
 211. **企业级流式语音识别（STT）、语音合成（TTS）与品牌音色克隆全景选型（Azure AI Speech CNV/HD vs ElevenLabs Flash v2.5 vs Deepgram Nova-3/Aura-2 vs Cartesia Sonic-2 vs 开源 Whisper/CosyVoice 2/Fish Speech：配音员声纹挑战短语授权硬锁、多音字与专有名词 IPA 音标字典锁、>350ms 抖动热备切流）方案**：[中文](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.md) | [EN](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.en.md)
 212. **浏览器 WebRTC、移动 App、固话 SIP 与 WhatsApp 多渠道接入网关及主说话人背景人声隔离（Target-Speaker Extraction：防旁人/电视串音误打断硬锁、免提扬声器回声自激 0ms 破环锁与 Wi-Fi 切 5G 15 秒不断线恢复）方案**：[中文](./omnichannel-voice-ingress-webrtc-sip-whatsapp-background-voice-isolation-selection-faq.md) | [EN](./omnichannel-voice-ingress-webrtc-sip-whatsapp-background-voice-isolation-selection-faq.en.md)
+213. **智能穿戴与 AI 硬件（AI 智能眼镜 / 开放式蓝牙耳机 / 儿童陪伴机器人）多模态语音助手架构（骨传导 VPU 锁死佩戴者本人发声、按需指代词触发单帧抓拍省电 84% 硬锁、防偷拍隐私 LED 联锁与儿童内容安全护栏）方案**：[中文](./smart-wearables-ai-glasses-earbuds-companion-hardware-multimodal-voice-selection-faq.md) | [EN](./smart-wearables-ai-glasses-earbuds-companion-hardware-multimodal-voice-selection-faq.en.md)
