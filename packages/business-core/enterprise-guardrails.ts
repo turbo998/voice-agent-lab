@@ -6505,6 +6505,36 @@ export function evaluateColdStorageReeferFsmaAmmoniaVoiceGuard(input: {
   };
 }
 
+export interface SpecialtyPharmacyRemsBiologicsVoiceEvaluation {
+  policyCode: "SPECIALTY-PHARMACY-REMS-BIOLOGICS-01";
+  remsDispenseAndColdChainPackoutAuthorized: boolean;
+  expiredRemsOrBlindColdShipBlocked: boolean;
+  clinicalPharmacistAndMedwatchBridged: boolean;
+}
+
+/**
+ * Deterministic Specialty Pharmacy FDA REMS (iPLEDGE 7-Day / Clozapine ANC) Lock, Zero Blind-Ship Cold-Chain Gate & 0ms Febrile Neutropenia Guard (`SPECIALTY-PHARMACY-REMS-BIOLOGICS-01`).
+ */
+export function evaluateSpecialtyPharmacyRemsBiologicsVoiceGuard(input: {
+  fdaRemsRmaPregnancyAndAncVerified: boolean;
+  coldChainLiveRecipientAndOnHandAudited: boolean;
+  febrileNeutropeniaPregnancyOrBleedEmergency: boolean;
+}): SpecialtyPharmacyRemsBiologicsVoiceEvaluation {
+  return {
+    policyCode: "SPECIALTY-PHARMACY-REMS-BIOLOGICS-01",
+    remsDispenseAndColdChainPackoutAuthorized:
+      input.fdaRemsRmaPregnancyAndAncVerified &&
+      input.coldChainLiveRecipientAndOnHandAudited &&
+      !input.febrileNeutropeniaPregnancyOrBleedEmergency,
+    expiredRemsOrBlindColdShipBlocked:
+      !input.fdaRemsRmaPregnancyAndAncVerified ||
+      !input.coldChainLiveRecipientAndOnHandAudited ||
+      input.febrileNeutropeniaPregnancyOrBleedEmergency,
+    clinicalPharmacistAndMedwatchBridged:
+      input.febrileNeutropeniaPregnancyOrBleedEmergency,
+  };
+}
+
 
 
 
