@@ -7885,6 +7885,36 @@ export function evaluateGlobalItHrHelpdeskVoiceRagGuard(input: {
   };
 }
 
+export interface RealtimeSalesCopilotCrmWritebackVoiceEvaluation {
+  policyCode: "REALTIME-SALES-COPILOT-CRM-WRITEBACK-01";
+  liveBattlecardAndCrmDraftAuthorized: boolean;
+  speakerConfusionOrUnanchoredCrmWriteBlocked: boolean;
+  complianceWarningBannerAndManagerWhisperBridged: boolean;
+}
+
+/**
+ * Deterministic Real-Time Sales Call Assist Stereo Speaker Isolation Lock, <350ms 3-Bullet Micro-Battlecard/Evidence CRM Gate & 0ms Unauthorized CPQ Discount Guard (`REALTIME-SALES-COPILOT-CRM-WRITEBACK-01`).
+ */
+export function evaluateRealtimeSalesCopilotCrmWritebackVoiceGuard(input: {
+  dualChannelSpeakerSeparationAndRecordingConsentSafe: boolean;
+  microBattlecardUnder3BulletsAndCrmEvidenceAnchored: boolean;
+  unauthorizedDiscountPromiseOrCompetitorDefamationDetected: boolean;
+}): RealtimeSalesCopilotCrmWritebackVoiceEvaluation {
+  return {
+    policyCode: "REALTIME-SALES-COPILOT-CRM-WRITEBACK-01",
+    liveBattlecardAndCrmDraftAuthorized:
+      input.dualChannelSpeakerSeparationAndRecordingConsentSafe &&
+      input.microBattlecardUnder3BulletsAndCrmEvidenceAnchored &&
+      !input.unauthorizedDiscountPromiseOrCompetitorDefamationDetected,
+    speakerConfusionOrUnanchoredCrmWriteBlocked:
+      !input.dualChannelSpeakerSeparationAndRecordingConsentSafe ||
+      !input.microBattlecardUnder3BulletsAndCrmEvidenceAnchored ||
+      input.unauthorizedDiscountPromiseOrCompetitorDefamationDetected,
+    complianceWarningBannerAndManagerWhisperBridged:
+      input.unauthorizedDiscountPromiseOrCompetitorDefamationDetected,
+  };
+}
+
 
 
 

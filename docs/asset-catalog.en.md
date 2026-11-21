@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (302 Bilingual Guides)
+## 3. Solution Architect Selection Guides (303 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -343,3 +343,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 300. **High-Concurrency Outbound & Appointment Confirmation Voice Agent Orchestration (Self-Hosted LiveKit Agents / Pipecat vs. Managed Retell AI / Vapi / Bland AI): 65k-Min TCO Crossover, Pre-Dial Opt-In/Timezone Lock, <400ms Speculative AMD & 0ms Global DNC Circuit Breaker**: [EN](./high-concurrency-outbound-appointment-agent-livekit-pipecat-vs-retell-vapi-bland-tco-selection-faq.en.md) | [中文](./high-concurrency-outbound-appointment-agent-livekit-pipecat-vs-retell-vapi-bland-tco-selection-faq.md)
 301. **Native Full-Duplex Speech-to-Speech (GPT-4o Realtime / Gemini Live) vs. Controlled Cascaded Pipeline (Azure Custom Speech + DeepSeek-V3 / GPT-4o-mini) Quantitative Selection & FinOps Guide: WFST Hotword & Checksum Lock, 3-Turn Audio Pruning (-64.3% TCO) & 0ms Verbatim SSML Switch**: [EN](./s2s-gpt4o-realtime-gemini-live-vs-cascaded-custom-stt-deepseek-gpt4omini-finops-selection-faq.en.md) | [中文](./s2s-gpt4o-realtime-gemini-live-vs-cascaded-custom-stt-deepseek-gpt4omini-finops-selection-faq.md)
 302. **Global Multilingual IT/HR Helpdesk Automation & Low-Latency Voice RAG Architecture (ServiceNow / Workday / Teams Phone): Anti-Vishing Entra Push MFA & RBAC Lock, <140ms Speculative Partial-ASR Voice RAG & 0ms P1 Outage Deflection / Intune Self-Heal Bridge**: [EN](./global-multilingual-it-hr-helpdesk-servicenow-workday-low-latency-voice-rag-selection-faq.en.md) | [中文](./global-multilingual-it-hr-helpdesk-servicenow-workday-low-latency-voice-rag-selection-faq.md)
+303. **Real-Time Sales Call Assist, Live Battlecard Coaching & Auto-CRM Writeback Architecture (Gong / Microsoft Copilot for Sales vs. Custom Stereo STT + LLM): Ch0/Ch1 Stereo Isolation Lock, <350ms 3-Bullet Micro-Battlecards, Evidence-Anchored MEDDIC CRM Drafts & 0ms CPQ Discount Guard**: [EN](./realtime-sales-call-assist-battlecard-auto-crm-sync-salesforce-dynamics-selection-faq.en.md) | [中文](./realtime-sales-call-assist-battlecard-auto-crm-sync-salesforce-dynamics-selection-faq.md)
