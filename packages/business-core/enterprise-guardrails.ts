@@ -6925,6 +6925,36 @@ export function evaluateWoodworkingFurnitureNfpa664CarbVoiceGuard(input: {
   };
 }
 
+export interface ElectroplatingAnodizingCyanideHcnVoiceEvaluation {
+  policyCode: "ELECTROPLATING-ANODIZING-CYANIDE-HCN-01";
+  chemicalDoseAndHoistLiftAuthorized: boolean;
+  acidCyanideMixOrLiveHoistArcBlocked: boolean;
+  causticSumpDumpAndCyanokitProtocolBridged: boolean;
+}
+
+/**
+ * Deterministic Electroplating, Anodizing & Galvanizing Anti-HCN (pH >=11.5) Segregation Lock, 0-Amp Hoist/Heater Gate & 0ms Cyanokit Guard (`ELECTROPLATING-ANODIZING-CYANIDE-HCN-01`).
+ */
+export function evaluateElectroplatingAnodizingCyanideHcnVoiceGuard(input: {
+  cyanideAcidSegregatedAndGalvanizingVented: boolean;
+  rectifierZeroCurrentLiftAndHeaterFloatSafe: boolean;
+  hcnGasLeakTankHeaterFireOrCyanideSplash: boolean;
+}): ElectroplatingAnodizingCyanideHcnVoiceEvaluation {
+  return {
+    policyCode: "ELECTROPLATING-ANODIZING-CYANIDE-HCN-01",
+    chemicalDoseAndHoistLiftAuthorized:
+      input.cyanideAcidSegregatedAndGalvanizingVented &&
+      input.rectifierZeroCurrentLiftAndHeaterFloatSafe &&
+      !input.hcnGasLeakTankHeaterFireOrCyanideSplash,
+    acidCyanideMixOrLiveHoistArcBlocked:
+      !input.cyanideAcidSegregatedAndGalvanizingVented ||
+      !input.rectifierZeroCurrentLiftAndHeaterFloatSafe ||
+      input.hcnGasLeakTankHeaterFireOrCyanideSplash,
+    causticSumpDumpAndCyanokitProtocolBridged:
+      input.hcnGasLeakTankHeaterFireOrCyanideSplash,
+  };
+}
+
 
 
 
