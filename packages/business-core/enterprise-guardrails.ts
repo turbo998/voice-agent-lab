@@ -9595,6 +9595,36 @@ export function evaluateVoiceChaosPacketLossResilienceGuard(input: {
   };
 }
 
+export interface AgritechLivestockPesticidePhiEvaluation {
+  policyCode: "AGRITECH-LIVESTOCK-PESTICIDE-PHI-01";
+  sprayerDispatchAndPartsOrderAuthorized: boolean;
+  phiResidueViolationOrOffLabelSprayBlocked: boolean;
+  herdEpidemicLockdownOrRollover911Bridged: boolean;
+}
+
+/**
+ * Deterministic AgriTech, Smart Machinery & Livestock EPA Crop-Label PHI/Wind-Drift Lock, Offline Edge ISOBUS DTC & 0ms Herd Biosecurity Guard (`AGRITECH-LIVESTOCK-PESTICIDE-PHI-01`).
+ */
+export function evaluateAgritechLivestockPesticidePhiGuard(input: {
+  epaCropLabelPhiDaysAndWindSpeedDriftLimitVerified: boolean;
+  offlineEdgeIsobusDtcMatchedAndHarvesterPartReserved: boolean;
+  notifiableLivestockEpidemicOrGrainBinRolloverEmergencyEscalation: boolean;
+}): AgritechLivestockPesticidePhiEvaluation {
+  return {
+    policyCode: "AGRITECH-LIVESTOCK-PESTICIDE-PHI-01",
+    sprayerDispatchAndPartsOrderAuthorized:
+      input.epaCropLabelPhiDaysAndWindSpeedDriftLimitVerified &&
+      input.offlineEdgeIsobusDtcMatchedAndHarvesterPartReserved &&
+      !input.notifiableLivestockEpidemicOrGrainBinRolloverEmergencyEscalation,
+    phiResidueViolationOrOffLabelSprayBlocked:
+      !input.epaCropLabelPhiDaysAndWindSpeedDriftLimitVerified ||
+      !input.offlineEdgeIsobusDtcMatchedAndHarvesterPartReserved ||
+      input.notifiableLivestockEpidemicOrGrainBinRolloverEmergencyEscalation,
+    herdEpidemicLockdownOrRollover911Bridged:
+      input.notifiableLivestockEpidemicOrGrainBinRolloverEmergencyEscalation,
+  };
+}
+
 
 
 

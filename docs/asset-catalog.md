@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（359 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（360 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -400,3 +400,4 @@
 357. **退休养老金、企业年金与公积金管理（Fidelity / Vanguard / Empower / 养老金中心模式）`RMD` 最低提领、离职滚存（Rollover）、提前支取税罚披露与防高龄老人金融剥削语音架构（`ERISA` 配偶公证同意书硬锁与改银行卡 7 天提现冷却锁、确定性 `IRS Pub 590-B RMD` 寿命表计算与未满 `59.5岁` `10%罚金+20%预扣税` 锁定 `SSML` 告知门禁、高龄老人背景音耳语教唆清仓 `0ms` 触发 `FINRA Rule 2165` 临时止付冻结并桥接老年保护专员）方案**：[中文](./retirement-401k-pension-rmd-rollover-elder-fraud-guardrail-voice-selection-faq.md) | [EN](./retirement-401k-pension-rmd-rollover-elder-fraud-guardrail-voice-selection-faq.en.md)
 358. **国际海运集装箱、航空货运与货代（WiseTech CargoWise / 马士基 / 中远海运 / 德迅模式）海运提单（B/L）放货核验、滞港滞箱费（D&D）预警与冷链集装箱（Reefer）语音架构（`CargoWise` 正本海运提单 `OBL` 收回/加密 `EDI` 电放与到付运费结清前 100% 锁死提柜单 `DO` 硬锁、码头免堆期 `LFD` 提前 48 小时主动外呼车队约号削减 `58.4%` 滞港滞箱费门禁、冷藏箱断电失温 `>±2℃` 与 `IMDG/IATA` 危险品瞒报 `0ms` 抢占）方案**：[中文](./ocean-air-freight-forwarding-cargowise-bol-demurrage-reefer-voice-selection-faq.md) | [EN](./ocean-air-freight-forwarding-cargowise-bol-demurrage-reefer-voice-selection-faq.en.md)
 359. **企业实时语音 Agent 端到端混沌工程与移动端弱网韧性（电梯/高铁/地库 25% 突发丢包自适应 `EoT`、吞字金额防错锁与掉线无损续接）架构（网络抖动感知动态将 `EoT` 从 `350ms` 延展至 `1,100ms` 压降 `89.2%` 弱网误抢话硬锁、丢包插值帧 `PLC` 数字置信度 `<0.92` 强制复述与幂等键防重扣门禁、进电梯断流 `>3.5s` `0ms` 冻结快照并秒发短信一键续接挽回 `96.4%` 掉线任务）方案**：[中文](./enterprise-voice-chaos-engineering-packet-loss-fec-resilience-selection-faq.md) | [EN](./enterprise-voice-chaos-engineering-packet-loss-fec-resilience-selection-faq.en.md)
+360. **智慧农业、现代农机与规模化牧场（John Deere Operations Center / Climate FieldView / 植保无人机与万头牧场模式）田间免手农机排障、农药安全间隔期（`PHI`）合规锁与重大动物疫病语音架构（`EPA/农药登记` 靶标作物匹配与采收安全间隔期 `PHI` 及 `<=15mph` 防漂移硬锁、无信号农田车载离线 `ISOBUS` 故障码诊断压降 `62%` 抢收停机门禁、规模化牧场群发疫病 `0ms` 锁死场区大门隔离与粮仓埋人/农机侧翻救援抢占）方案**：[中文](./agritech-livestock-john-deere-pesticide-phi-biosecurity-voice-selection-faq.md) | [EN](./agritech-livestock-john-deere-pesticide-phi-biosecurity-voice-selection-faq.en.md)
