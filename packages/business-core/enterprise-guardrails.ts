@@ -5727,6 +5727,35 @@ export function evaluateVetLivestockBiosecurityVcprVoiceGuard(input: {
   };
 }
 
+export interface ExamProctorOralAdaVoiceEvaluation {
+  policyCode: "EXAM-PROCTOR-ORAL-ADA-01";
+  readAloudAndExamContinuationAuthorized: boolean;
+  itemHintOrPrematureSubmitBlocked: boolean;
+  humanChiefProctorEscalated: boolean;
+}
+
+/**
+ * Deterministic High-Stakes Exam Proctoring, Oral Viva & Section 508 Read-Aloud Guard (`EXAM-PROCTOR-ORAL-ADA-01`).
+ */
+export function evaluateExamProctorOralAdaVoiceGuard(input: {
+  verbatimStemOnlyAndZeroHintEnforced: boolean;
+  adaExtendedTimeAndStopClockRespected: boolean;
+  acousticCollusionOrCandidateDistress: boolean;
+}): ExamProctorOralAdaVoiceEvaluation {
+  return {
+    policyCode: "EXAM-PROCTOR-ORAL-ADA-01",
+    readAloudAndExamContinuationAuthorized:
+      input.verbatimStemOnlyAndZeroHintEnforced &&
+      input.adaExtendedTimeAndStopClockRespected &&
+      !input.acousticCollusionOrCandidateDistress,
+    itemHintOrPrematureSubmitBlocked:
+      !input.verbatimStemOnlyAndZeroHintEnforced ||
+      !input.adaExtendedTimeAndStopClockRespected ||
+      input.acousticCollusionOrCandidateDistress,
+    humanChiefProctorEscalated: input.acousticCollusionOrCandidateDistress,
+  };
+}
+
 
 
 

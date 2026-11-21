@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（230 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（231 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -271,3 +271,4 @@
 228. **超高层智慧楼宇自控（BMS / BACnet）与电梯困人应急对讲（奥的斯 Otis ONE / 通力 KONE / 迅达 / ASME A17.1）24×7 多模态语音方案（非平层禁开门与严禁私扒轿门防坠井硬锁、BACnet Priority 1–8 消防正压排烟风阀隔离锁与 0ms 消防控制室 FCC 强切）**：[中文](./smart-building-bms-elevator-entrapment-asme-a17-smoke-damper-voice-dispatch-selection-faq.md) | [EN](./smart-building-bms-elevator-entrapment-asme-a17-smoke-damper-voice-dispatch-selection-faq.en.md)
 229. **汽车道路救援、高速抛锚与新能源车拖车（AAA / 安盛救援 / 平安好车主 / 车企 SOS bCall）24×7 语音调度方案（高速护栏外安全撤离首问硬锁、纯电/四驱全落地平板拖车防反电动势烧毁电机硬锁与主线行车道趴窝 0ms 122 交警强切）**：[中文](./roadside-assistance-auto-breakdown-highway-gore-zone-ev-flatbed-tow-voice-dispatch-selection-faq.md) | [EN](./roadside-assistance-auto-breakdown-highway-gore-zone-ev-flatbed-tow-voice-dispatch-selection-faq.en.md)
 230. **规模化畜牧养殖生物安全、兽药停药期（FARAD）与宠物医院 24×7 急诊语音分诊方案（牧原 / 温氏 / 现代牧业 / Banfield / VCA：肉奶法定休药期与弃奶期出栏硬锁、VCPR 跨物种药物毒性拦截如猫禁泰诺/双氧水催吐与一类动物疫病 ASF/HPAI 0ms 封场强切）**：[中文](./veterinary-livestock-biosecurity-woah-vcpr-withdrawal-period-voice-triage-selection-faq.md) | [EN](./veterinary-livestock-biosecurity-woah-vcpr-withdrawal-period-voice-triage-selection-faq.en.md)
+231. **国家级高利害资格考试监考（Pearson VUE / ETS / 医师与法考机考）、口语测评与无障碍读屏（Section 508 / ADA）多模态语音方案（IMS QTI 3.0 题干逐字朗读零答案提示硬锁、残障考生 1.5x/2.0x 加时防误收卷硬锁与场外串通声纹 0ms 人工主考官复核强切）**：[中文](./high-stakes-exam-proctoring-oral-assessment-section-508-ferpa-voice-selection-faq.md) | [EN](./high-stakes-exam-proctoring-oral-assessment-section-508-ferpa-voice-selection-faq.en.md)
