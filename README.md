@@ -309,6 +309,7 @@ flowchart LR
 235. **干线重卡物流车队、危化品道路运输与车载行车记录仪（FMCSA ELD / Samsara / Motive / G7 易流）24×7 免提语音副驾方案（49 CFR Part 395 疲劳驾驶时限禁篡改硬锁、4.15m 桥涵限高与 UN 危化品禁行隧道硬锁及气压制动失压 <60 PSI 0ms 避险车道领航强切）**：[中文](./docs/commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.md) | [EN](./docs/commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.en.md)
 236. **大型建筑工程总包（EPC）、工地 BIM 巡检（Procore / Autodesk ACC）与塔吊/深基坑作业 24×7 语音安全副驾方案（最新有效 IFC 图纸与注册结构师 PE 签章变更硬锁、塔吊大风 <20 mph 与 >1.5m 深基坑支护箱硬锁及基坑坍塌 0ms 全区停工强切）**：[中文](./docs/construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.md) | [EN](./docs/construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.en.md)
 237. **个人征信异议申诉、信贷拒贷解释（ECOA / FCRA）与反身份盗用冻结（Experian / Equifax / TransUnion / 央行征信 / 零售银行信贷中心）24×7 AI 语音客服方案（ECOA Reg B 官方拒贷原因代码只读零偏见硬锁、反非法“征信洗白”拦截与冒名贷款 0ms 全局征信安全冻结强切）**：[中文](./docs/consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.md) | [EN](./docs/consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.en.md)
+238. **睡眠呼吸暂停（OSA）、家用双水平呼吸机（CPAP / BiPAP）与慢阻肺居家无创通气（瑞思迈 ResMed AirView / 飞利浦伟康）24×7 语音随访方案（处方气道压力 cmH2O 禁擅调与隐藏临床菜单防破解硬锁、CMS 90 天依从性漏气辅导与 COPD 二氧化碳潴留 0ms 强切）**：[中文](./docs/sleep-apnea-cpap-bipap-home-ventilator-cms-compliance-voice-coach-selection-faq.md) | [EN](./docs/sleep-apnea-cpap-bipap-home-ventilator-cms-compliance-voice-coach-selection-faq.en.md)
 
 ---
 

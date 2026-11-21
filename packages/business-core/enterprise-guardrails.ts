@@ -5936,6 +5936,35 @@ export function evaluateCreditFcraEcoaAdverseVoiceGuard(input: {
   };
 }
 
+export interface SleepCpapNivRespiratoryVoiceEvaluation {
+  policyCode: "SLEEP-CPAP-NIV-RESPIRATORY-01";
+  comfortCoachingAndResupplyAuthorized: boolean;
+  clinicalMenuPressureOverrideOrAsvBlocked: boolean;
+  emergencyRrtAndEmsBridged: boolean;
+}
+
+/**
+ * Deterministic Sleep Apnea CPAP/BiPAP & Home NIV Rx Pressure Lock, CMS Adherence & 0ms COPD Hypercapnia Guard (`SLEEP-CPAP-NIV-RESPIRATORY-01`).
+ */
+export function evaluateSleepCpapNivRespiratoryVoiceGuard(input: {
+  rxPressureLockedAndComfortOnlyAdjusted: boolean;
+  cmsComplianceTrackedAndAsvContraindicationSafe: boolean;
+  acuteHypercapniaHypoxiaOrVentilatorAlarm: boolean;
+}): SleepCpapNivRespiratoryVoiceEvaluation {
+  return {
+    policyCode: "SLEEP-CPAP-NIV-RESPIRATORY-01",
+    comfortCoachingAndResupplyAuthorized:
+      input.rxPressureLockedAndComfortOnlyAdjusted &&
+      input.cmsComplianceTrackedAndAsvContraindicationSafe &&
+      !input.acuteHypercapniaHypoxiaOrVentilatorAlarm,
+    clinicalMenuPressureOverrideOrAsvBlocked:
+      !input.rxPressureLockedAndComfortOnlyAdjusted ||
+      !input.cmsComplianceTrackedAndAsvContraindicationSafe ||
+      input.acuteHypercapniaHypoxiaOrVentilatorAlarm,
+    emergencyRrtAndEmsBridged: input.acuteHypercapniaHypoxiaOrVentilatorAlarm,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (237 Bilingual Guides)
+## 3. Solution Architect Selection Guides (238 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -278,3 +278,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 235. **Commercial Trucking FMCSA ELD Hours-of-Service, HazMat Tunnel & In-Cab Voice Copilot: 49 CFR Part 395 Anti-Tamper Lock, 13'6" Bridge Gate & 0ms Runaway-Ramp Bridge**: [EN](./commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.en.md) | [中文](./commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.md)
 236. **Construction Jobsite BIM/Procore, Tower Crane Wind & OSHA Trench Safety Voice Copilot: PE-Stamped RFI Lock, <20 mph Crane & >5ft Trench Shoring Gate & 0ms Collapse Bridge**: [EN](./construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.en.md) | [中文](./construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.md)
 237. **Consumer Credit Bureau Dispute, ECOA Adverse Action & FCRA Voice Concierge: Reg B Exact Reason-Code Lock, Anti-"Credit Washing" Gate & 0ms Identity-Theft Freeze**: [EN](./consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.en.md) | [中文](./consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.md)
+238. **Sleep Apnea CPAP/BiPAP, Home NIV Ventilator & CMS 90-Day Adherence Voice Coach: Rx Pressure Lock, Mask-Leak Coach & 0ms Hypercapnic COPD Bridge**: [EN](./sleep-apnea-cpap-bipap-home-ventilator-cms-compliance-voice-coach-selection-faq.en.md) | [中文](./sleep-apnea-cpap-bipap-home-ventilator-cms-compliance-voice-coach-selection-faq.md)
