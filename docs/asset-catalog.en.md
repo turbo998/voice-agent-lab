@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (215 Bilingual Guides)
+## 3. Solution Architect Selection Guides (216 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -256,3 +256,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 213. **Smart Wearables (AI Smart Glasses, Open-Ear Earbuds & Kids Companion Hardware) Multimodal Voice Assistant: Bone-Conduction VPU Lock, Deictic 80KB Keyframe Burst (-84% Battery Drain), Privacy LED Interlock & COPPA Gate**: [EN](./smart-wearables-ai-glasses-earbuds-companion-hardware-multimodal-voice-selection-faq.en.md) | [中文](./smart-wearables-ai-glasses-earbuds-companion-hardware-multimodal-voice-selection-faq.md)
 214. **2026–2027 Frontier Duplex Audio LLMs (Qwen2.5-Omni / Kimi-Audio / Step-Audio vs. GPT-Realtime / Gemini Live) & Semantic End-of-Turn (EoT) Architecture Selection Guide**: [EN](./frontier-2026-duplex-audio-llms-qwen-omni-step-audio-semantic-eot-selection-faq.en.md) | [中文](./frontier-2026-duplex-audio-llms-qwen-omni-step-audio-semantic-eot-selection-faq.md)
 215. **Luxury Watch, High Jewelry & VIC Private Clienteling (LVMH / Richemont / Salesforce Luxury) 24×7 Voice Concierge: Zero Vault-Stock Disclosure Lock, Anti-Flipper Allocation Gate & Brinks / CITES Dispatch Shield**: [EN](./luxury-retail-watch-jewelry-vic-clienteling-brinks-concierge-voice-selection-faq.en.md) | [中文](./luxury-retail-watch-jewelry-vic-clienteling-brinks-concierge-voice-selection-faq.md)
+216. **Operating Room (OR) WHO Surgical Time-Out, Anesthesia & Sterile-Field Hands-Free Voice Copilot (Epic OpTime / Karl Storz / Da Vinci): 3-Party Laterality Lock, RFID Sponge Count Gate & 0ms MTP Crisis Bridge**: [EN](./operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.en.md) | [中文](./operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.md)

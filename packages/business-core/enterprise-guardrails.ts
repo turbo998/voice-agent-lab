@@ -5295,6 +5295,34 @@ export function evaluateLuxuryVicClientelingBrinksVoiceGuard(input: {
   };
 }
 
+export interface OperatingRoomSurgicalTimeoutVoiceEvaluation {
+  policyCode: "OPERATING-ROOM-TIMEOUT-ANESTHESIA-01";
+  incisionStartAndTimeOutSignOffAuthorized: boolean;
+  woundClosureSignOutAuthorized: boolean;
+  emergencyBloodBankMtpAndCodeCartTriggered: boolean;
+}
+
+/**
+ * Deterministic Operating Room (OR) WHO 3-Party Time-Out Laterality Lock, RFID Sponge Count Gate & 0ms MTP Crisis Guard (`OPERATING-ROOM-TIMEOUT-ANESTHESIA-01`).
+ */
+export function evaluateOperatingRoomSurgicalTimeoutVoiceGuard(input: {
+  whoThreePartyTimeOutAndLateralityMatched: boolean;
+  rfidSpongeAndSharpsCountReconciled: boolean;
+  intraoperativeHemorrhageMtpOrMalignantHyperthermia: boolean;
+}): OperatingRoomSurgicalTimeoutVoiceEvaluation {
+  return {
+    policyCode: "OPERATING-ROOM-TIMEOUT-ANESTHESIA-01",
+    incisionStartAndTimeOutSignOffAuthorized:
+      input.whoThreePartyTimeOutAndLateralityMatched &&
+      !input.intraoperativeHemorrhageMtpOrMalignantHyperthermia,
+    woundClosureSignOutAuthorized:
+      input.rfidSpongeAndSharpsCountReconciled &&
+      input.whoThreePartyTimeOutAndLateralityMatched,
+    emergencyBloodBankMtpAndCodeCartTriggered:
+      input.intraoperativeHemorrhageMtpOrMalignantHyperthermia,
+  };
+}
+
 
 
 
