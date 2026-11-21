@@ -6355,6 +6355,36 @@ export function evaluateNdtRadiographyIr192SurveyVoiceGuard(input: {
   };
 }
 
+export interface WarehouseAmrAsrsIso3691VoiceEvaluation {
+  policyCode: "WAREHOUSE-AMR-ASRS-ISO3691-01";
+  zoneMaintenanceAndAsrsPutawayAuthorized: boolean;
+  softPauseEntryOrOverhangingPalletBlocked: boolean;
+  safetyPlcZoneEstopAndFlowControlBridged: boolean;
+}
+
+/**
+ * Deterministic Autonomous Warehouse AMR & ASRS ISO 3691-4 Trapped-Key LOTO, Pallet Profile & 0ms Safety-PLC Guard (`WAREHOUSE-AMR-ASRS-ISO3691-01`).
+ */
+export function evaluateWarehouseAmrAsrsIso3691VoiceGuard(input: {
+  trappedKeyLotoAndNoSoftPauseEntryVerified: boolean;
+  palletContourWeightAndColdChainSafe: boolean;
+  zoneIntrusionHazmatSpillOrBatterySmoke: boolean;
+}): WarehouseAmrAsrsIso3691VoiceEvaluation {
+  return {
+    policyCode: "WAREHOUSE-AMR-ASRS-ISO3691-01",
+    zoneMaintenanceAndAsrsPutawayAuthorized:
+      input.trappedKeyLotoAndNoSoftPauseEntryVerified &&
+      input.palletContourWeightAndColdChainSafe &&
+      !input.zoneIntrusionHazmatSpillOrBatterySmoke,
+    softPauseEntryOrOverhangingPalletBlocked:
+      !input.trappedKeyLotoAndNoSoftPauseEntryVerified ||
+      !input.palletContourWeightAndColdChainSafe ||
+      input.zoneIntrusionHazmatSpillOrBatterySmoke,
+    safetyPlcZoneEstopAndFlowControlBridged:
+      input.zoneIntrusionHazmatSpillOrBatterySmoke,
+  };
+}
+
 
 
 
