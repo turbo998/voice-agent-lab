@@ -5408,6 +5408,35 @@ export function evaluateLanguageTutorExecCoachingVoiceGuard(input: {
   };
 }
 
+export interface VoiceSecurityOwaspAgenticFirewallEvaluation {
+  policyCode: "VOICE-SECURITY-OWASP-AGENTIC-01";
+  toolInvocationAuthorized: boolean;
+  crossCustomerIdorPhysicallyBlocked: boolean;
+  securityWafLockoutAndSiemAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Voice AI Security Firewall: Zero-LLM-Identity Tool Binding, Acoustic Bandpass/Dual-Track Alignment & Debug-Override Guard (`VOICE-SECURITY-OWASP-AGENTIC-01`).
+ */
+export function evaluateVoiceSecurityOwaspAgenticFirewallGuard(input: {
+  toolIdentityBoundFromSessionAndRbacVerified: boolean;
+  acousticBandpassCleanAndSttS2sAligned: boolean;
+  callerAttemptsDebugOverrideOrPromptExtraction: boolean;
+}): VoiceSecurityOwaspAgenticFirewallEvaluation {
+  return {
+    policyCode: "VOICE-SECURITY-OWASP-AGENTIC-01",
+    toolInvocationAuthorized:
+      input.toolIdentityBoundFromSessionAndRbacVerified &&
+      input.acousticBandpassCleanAndSttS2sAligned &&
+      !input.callerAttemptsDebugOverrideOrPromptExtraction,
+    crossCustomerIdorPhysicallyBlocked:
+      input.toolIdentityBoundFromSessionAndRbacVerified,
+    securityWafLockoutAndSiemAlertTriggered:
+      input.callerAttemptsDebugOverrideOrPromptExtraction ||
+      !input.acousticBandpassCleanAndSttS2sAligned,
+  };
+}
+
 
 
 

@@ -291,6 +291,7 @@ flowchart LR
 217. **企业级实时语音原生 RAG（Voice-Native Agentic RAG）架构（入库预编译口语摘要、拼音/音素同音词混合检索与零 Markdown 播报护栏：过期失效政策 0ms 拦截硬锁、≤45 字两句话首答锁与低置信度诚实拒答）方案**：[中文](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.md) | [EN](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.en.md)
 218. **连锁快餐双车道得来速（QSR Dual-Lane Drive-Thru）、过敏原防交叉污染与后厨 KDS 实时联动（麦当劳 / 星巴克 / 肯德基 / NCR Aloha / Toast POS）24×7 语音点餐（FDA 9 大致敏原零绝对安全承诺硬锁、“18,000 杯水”恶搞订单与售罄 86'd 拦截锁、Y 型并道车辆视觉绑定防串单）方案**：[中文](./docs/qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.md) | [EN](./docs/qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.en.md)
 219. **AI 语言外教陪练、雅思/托福口语模考与高管领导力教练（Business English / IELTS / ICF Executive Coaching）全双工语音平台架构（外语初学者 1,600ms 找词停顿防抢话硬锁、声学音素级 GOP 发音评测防文本幻觉锁与高管私密倾诉 HR 物理隔离护栏）方案**：[中文](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.md) | [EN](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.en.md)
+220. **实时语音智能体安全防御、防声学越狱（Acoustic Jailbreak）与 OWASP Agentic 工具调用防火墙架构（工具 Schema 物理剥离客户 ID 防越权 IDOR 硬锁、声学带通滤波与双轨一致性校验锁、假冒研发测试管理员 0ms 熔断）方案**：[中文](./docs/voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.md) | [EN](./docs/voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.en.md)
 
 ---
 

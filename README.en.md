@@ -291,6 +291,7 @@ flowchart LR
 217. **Voice-Native Agentic RAG Architecture: Ingestion-Time Spoken Summaries, Phonetic Homophone Hybrid Search & Zero-Markdown TTS Gate**: [EN](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.en.md) | [中文](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.md)
 218. **QSR Drive-Thru Dual-Lane, Allergen Cross-Contact Safety & Kitchen KDS Sync (NCR Aloha / Toast / Oracle Micros) Voice Ordering: FDA FALCPA Allergen Lock, Anti-Prank Quantity Cap & Y-Merge Vehicle Sync**: [EN](./docs/qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.en.md) | [中文](./docs/qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.md)
 219. **AI Language Tutor, IELTS/TOEFL Speaking Examiner & Executive Leadership Coach: L2 1,600ms Hesitation Patience Lock, Acoustic Phoneme GOP Grader & ICF Privacy Boundary Gate**: [EN](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.en.md) | [中文](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.md)
+220. **Voice AI Security, Acoustic Jailbreak Defense & OWASP Agentic Tool Firewall: Zero-LLM-Identity Tool Binding (Anti-IDOR), Dual-Track S2S/STT Alignment & 0ms Debug-Override Lockout**: [EN](./docs/voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.en.md) | [中文](./docs/voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.md)
 
 ---
 

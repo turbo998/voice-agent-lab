@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (219 Bilingual Guides)
+## 3. Solution Architect Selection Guides (220 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -260,3 +260,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 217. **Voice-Native Agentic RAG Architecture: Ingestion-Time Spoken Summaries, Phonetic Homophone Hybrid Search & Zero-Markdown TTS Gate**: [EN](./voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.en.md) | [中文](./voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.md)
 218. **QSR Drive-Thru Dual-Lane, Allergen Cross-Contact Safety & Kitchen KDS Sync (NCR Aloha / Toast / Oracle Micros) Voice Ordering: FDA FALCPA Allergen Lock, Anti-Prank Quantity Cap & Y-Merge Vehicle Sync**: [EN](./qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.en.md) | [中文](./qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.md)
 219. **AI Language Tutor, IELTS/TOEFL Speaking Examiner & Executive Leadership Coach: L2 1,600ms Hesitation Patience Lock, Acoustic Phoneme GOP Grader & ICF Privacy Boundary Gate**: [EN](./ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.en.md) | [中文](./ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.md)
+220. **Voice AI Security, Acoustic Jailbreak Defense & OWASP Agentic Tool Firewall: Zero-LLM-Identity Tool Binding (Anti-IDOR), Dual-Track S2S/STT Alignment & 0ms Debug-Override Lockout**: [EN](./voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.en.md) | [中文](./voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.md)
