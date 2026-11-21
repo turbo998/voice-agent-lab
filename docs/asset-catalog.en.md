@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (244 Bilingual Guides)
+## 3. Solution Architect Selection Guides (245 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -285,3 +285,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 242. **Commercial P&C Insurance ACORD 25 COI, Binding Authority & CAT Moratorium Voice AI: Policy-Truth COI Lock, Named-Storm Moratorium Gate & 0ms Major-Loss Bridge**: [EN](./commercial-insurance-acord-25-certificate-binding-authority-cat-moratorium-voice-selection-faq.en.md) | [中文](./commercial-insurance-acord-25-certificate-binding-authority-cat-moratorium-voice-selection-faq.md)
 243. **R&D Wet-Lab Fume Hood ELN, GHS SDS & Chemical Hazard Voice Copilot: Pyrophoric & Waste Incompatibility Lock, Fume-Hood Velocity Gate & 0ms Hydrofluoric Acid (HF) Calcium Gluconate Bridge**: [EN](./university-wet-lab-chemical-fume-hood-sds-hydrofluoric-acid-pyrophoric-voice-copilot-selection-faq.en.md) | [中文](./university-wet-lab-chemical-fume-hood-sds-hydrofluoric-acid-pyrophoric-voice-copilot-selection-faq.md)
 244. **80,000-Seat Stadium, Mega-Concert & Crowd-Safety Multimodal Voice Architecture: Anti-Crowd-Crush (<4.0 pax/m²) Gate, 8-Mile Lightning & Concussion HIA Lock & 0ms Bowl AED Bridge**: [EN](./stadium-mega-event-crowd-crush-turnstile-concussion-lightning-shelter-voice-concierge-selection-faq.en.md) | [中文](./stadium-mega-event-crowd-crush-turnstile-concussion-lightning-shelter-voice-concierge-selection-faq.md)
+245. **Fertility IVF Clinic, Embryology Witnessing & Cryobank LN2 Voice Architecture: 36-Hr Trigger-Shot Minute Lock, Dual-Embryologist RFID Gate & 0ms OHSS / LN2 Alarm Bridge**: [EN](./fertility-ivf-embryology-cryobank-liquid-nitrogen-witness-hcg-trigger-voice-concierge-selection-faq.en.md) | [中文](./fertility-ivf-embryology-cryobank-liquid-nitrogen-witness-hcg-trigger-voice-concierge-selection-faq.md)

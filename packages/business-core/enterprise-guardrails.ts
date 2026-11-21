@@ -6145,6 +6145,36 @@ export function evaluateStadiumEventCrowdAedVoiceGuard(input: {
   };
 }
 
+export interface FertilityIvfCryobankWitnessVoiceEvaluation {
+  policyCode: "FERTILITY-IVF-CRYOBANK-WITNESS-01";
+  embryoStepAndTriggerLogAuthorized: boolean;
+  gameteMismatchOrTriggerDriftBlocked: boolean;
+  reiPhysicianAndLabDirectorBridged: boolean;
+}
+
+/**
+ * Deterministic Fertility IVF RI Witness RFID + Dual-Embryologist Lock, 36-Hr Trigger-Shot & 0ms OHSS/LN2 Guard (`FERTILITY-IVF-CRYOBANK-WITNESS-01`).
+ */
+export function evaluateFertilityIvfCryobankWitnessVoiceGuard(input: {
+  rfidWitnessAndDualEmbryologistPgtVerified: boolean;
+  triggerShotMinuteWindowAndIuDoseVerified: boolean;
+  severeOhssOvarianTorsionOrLn2CryoAlarm: boolean;
+}): FertilityIvfCryobankWitnessVoiceEvaluation {
+  return {
+    policyCode: "FERTILITY-IVF-CRYOBANK-WITNESS-01",
+    embryoStepAndTriggerLogAuthorized:
+      input.rfidWitnessAndDualEmbryologistPgtVerified &&
+      input.triggerShotMinuteWindowAndIuDoseVerified &&
+      !input.severeOhssOvarianTorsionOrLn2CryoAlarm,
+    gameteMismatchOrTriggerDriftBlocked:
+      !input.rfidWitnessAndDualEmbryologistPgtVerified ||
+      !input.triggerShotMinuteWindowAndIuDoseVerified ||
+      input.severeOhssOvarianTorsionOrLn2CryoAlarm,
+    reiPhysicianAndLabDirectorBridged:
+      input.severeOhssOvarianTorsionOrLn2CryoAlarm,
+  };
+}
+
 
 
 
