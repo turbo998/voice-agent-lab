@@ -5016,6 +5016,35 @@ export function evaluateWarmHandoffWhisperContextBridgeVoiceGuard(input: {
   };
 }
 
+export interface SalesRoleplayMedrepCoachingVoiceEvaluation {
+  policyCode: "SALES-ROLEPLAY-MEDREP-COACHING-01";
+  certificationPassAuthorized: boolean;
+  instantComplianceRedCardTriggered: boolean;
+  scorecardAuditValid: boolean;
+}
+
+/**
+ * Deterministic AI Sales Roleplay, Pharma Med-Rep Detailing & Mock Interview Actor-Judge Separation & Off-Label Red-Card Guard (`SALES-ROLEPLAY-MEDREP-COACHING-01`).
+ */
+export function evaluateSalesRoleplayMedrepCoachingVoiceGuard(input: {
+  traineeMakesOffLabelOrKickbackPromise: boolean;
+  personaStayedInCharacterZeroJailbreak: boolean;
+  allMandatoryDisclosuresAndRubricEvidenceVerified: boolean;
+}): SalesRoleplayMedrepCoachingVoiceEvaluation {
+  return {
+    policyCode: "SALES-ROLEPLAY-MEDREP-COACHING-01",
+    certificationPassAuthorized:
+      !input.traineeMakesOffLabelOrKickbackPromise &&
+      input.personaStayedInCharacterZeroJailbreak &&
+      input.allMandatoryDisclosuresAndRubricEvidenceVerified,
+    instantComplianceRedCardTriggered:
+      input.traineeMakesOffLabelOrKickbackPromise,
+    scorecardAuditValid:
+      input.personaStayedInCharacterZeroJailbreak &&
+      input.allMandatoryDisclosuresAndRubricEvidenceVerified,
+  };
+}
+
 
 
 

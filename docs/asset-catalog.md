@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（205 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（206 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -246,3 +246,4 @@
 203. **跨国企业实时多语种同传与高管董事会纪要平台横向选型（Azure AI Speech Live Interpreter vs 级联精校同传管道 vs 本地私有化同传容器：SOV/SVO 谓语后置否定极性硬锁、亿/万与 Million/Billion 量级双校验、零数据留存与原声克隆授权锁）方案**：[中文](./multilingual-simultaneous-interpretation-azure-live-interpreter-board-meeting-selection-faq.md) | [EN](./multilingual-simultaneous-interpretation-azure-live-interpreter-board-meeting-selection-faq.en.md)
 204. **慢速外部 API 与遗留 ERP（3s–12s）场景下实时语音异步安抚播报（Async Filler）、进度心跳与防重复提交架构（700ms 非承诺性安抚话术硬锁、工具执行中用户改口 Epoch 吊销锁与 >9s 超时转异步通知闭环）方案**：[中文](./slow-api-rag-async-filler-progress-heartbeat-idempotent-voice-orchestration-selection-faq.md) | [EN](./slow-api-rag-async-filler-progress-heartbeat-idempotent-voice-orchestration-selection-faq.en.md)
 205. **智能联络中心 AI 首线接待与“带上下文零重复无缝转人工（Warm Handoff + Whisper Briefing + 坐席实时辅助 Copilot）”架构（严禁客户重复自述硬锁、6 秒坐席耳语简报、身份核验继承与转后旁路话术推荐）方案**：[中文](./contact-center-warm-handoff-whisper-briefing-zero-repeat-context-bridge-selection-faq.md) | [EN](./contact-center-warm-handoff-whisper-briefing-zero-repeat-context-bridge-selection-faq.en.md)
+206. **AI 金牌销售对练、医药代表合规学术拜访（Med-Rep Detailing）与模拟面试陪练平台架构（演评分离防讨好/防越狱硬锁、超说明书 Off-Label 与商业贿赂 0ms 红牌一票否决锁、带录音时间戳证据链的 Rubric 评分引擎）方案**：[中文](./ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.md) | [EN](./ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.en.md)
