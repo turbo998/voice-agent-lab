@@ -7285,6 +7285,36 @@ export function evaluateCncMachiningTitaniumMagnesiumB11VoiceGuard(input: {
   };
 }
 
+export interface AdditiveMfgLpbfPowderNfpa484VoiceEvaluation {
+  policyCode: "ADDITIVE-MFG-LPBF-POWDER-NFPA484-01";
+  laserFusionAndPowderTransferAuthorized: boolean;
+  reactivePowderOrAlloyContaminationBlocked: boolean;
+  laserStoFilterIsolationAndArgonFloodBridged: boolean;
+}
+
+/**
+ * Deterministic Additive Manufacturing & Metal LPBF NFPA 484 Powder Argon/ESD/Passivation Lock, Cross-Alloy RFID Gate & 0ms Argon Flood Guard (`ADDITIVE-MFG-LPBF-POWDER-NFPA484-01`).
+ */
+export function evaluateAdditiveMfgLpbfPowderNfpa484VoiceGuard(input: {
+  argonInertO2EsdGroundAndFilterPassivatedSafe: boolean;
+  alloyGenealogySieveCountAndRecoaterClearSafe: boolean;
+  pyrophoricFilterExothermChamberFireOrArgonLeak: boolean;
+}): AdditiveMfgLpbfPowderNfpa484VoiceEvaluation {
+  return {
+    policyCode: "ADDITIVE-MFG-LPBF-POWDER-NFPA484-01",
+    laserFusionAndPowderTransferAuthorized:
+      input.argonInertO2EsdGroundAndFilterPassivatedSafe &&
+      input.alloyGenealogySieveCountAndRecoaterClearSafe &&
+      !input.pyrophoricFilterExothermChamberFireOrArgonLeak,
+    reactivePowderOrAlloyContaminationBlocked:
+      !input.argonInertO2EsdGroundAndFilterPassivatedSafe ||
+      !input.alloyGenealogySieveCountAndRecoaterClearSafe ||
+      input.pyrophoricFilterExothermChamberFireOrArgonLeak,
+    laserStoFilterIsolationAndArgonFloodBridged:
+      input.pyrophoricFilterExothermChamberFireOrArgonLeak,
+  };
+}
+
 
 
 

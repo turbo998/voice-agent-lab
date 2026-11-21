@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（282 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（283 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -323,3 +323,4 @@
 280. **汽车冲压车间、重型锻压机与高速开卷落料线（舒勒 Schuler / 小松 Komatsu / 会田 AIDA / 济南二机床 / 麦格纳 Magna）24×7 免提语音副驾方案（OSHA 1910.217 模具安全垫块拔插头与飞轮 0 RPM 硬锁及禁语音寸动、双料检测/光电出件与四角吨位防砸模门禁及双联安全阀异动/光幕遮挡 0ms 排空离合器泄过载垫强切）**：[中文](./metal-stamping-forging-press-die-safety-block-flywheel-zero-speed-tonnage-overload-voice-copilot-selection-faq.md) | [EN](./metal-stamping-forging-press-die-safety-block-flywheel-zero-speed-tonnage-overload-voice-copilot-selection-faq.en.md)
 281. **重工焊接、激光/弧焊机器人工作站与压力容器制造基地（发那科 FANUC / 安川 Yaskawa / 伏能士 Fronius / 林肯电气 / 通快 TRUMPF）24×7 免提语音副驾方案（含氯除油剂遇电弧紫外线生成剧毒光气 COCl2 与不锈钢六价铬排风硬锁、受限空间充氩双点测氧防窒息与 4 类激光光闸/ASME WPS 门禁及区域闯入/乙炔回火 0ms 机器人 STO 落光闸强切）**：[中文](./welding-fabrication-robotic-laser-cell-chlorinated-phosgene-argon-asphyxiation-wps-voice-copilot-selection-faq.md) | [EN](./welding-fabrication-robotic-laser-cell-chlorinated-phosgene-argon-asphyxiation-wps-voice-copilot-selection-faq.en.md)
 282. **数控机加工、五轴航空结构件铣削与钛/镁合金切削车间（德马吉森精机 DMG MORI / 马扎克 Mazak / 牧野 Makino / 大隈 Okuma / 北京精雕）24×7 免提语音副驾方案（NFPA 484 镁合金禁水基切削液防氢爆与钛合金 70bar 中心内冷硬锁、ISO 23125 卡盘拉刀压力与主轴 0 RPM 门锁及语音刀补 ±0.05mm 防撞限幅、内腔火情 0ms 锁死水/CO2 释放氩气/D 类金属灭火强切）**：[中文](./cnc-machining-aerospace-milling-titanium-magnesium-swarf-fire-chuck-clamping-voice-copilot-selection-faq.md) | [EN](./cnc-machining-aerospace-milling-titanium-magnesium-swarf-fire-chuck-clamping-voice-copilot-selection-faq.en.md)
+283. **金属增材制造、激光选区熔化（LPBF/SLM）与钛/铝合金粉末筛分车间（铂力特 BLT / EOS / 尼康 SLM Solutions / 雷尼绍 Renishaw / 华曙高科）24×7 免提语音副驾方案（NFPA 484 活性钛/铝微粉充氩残氧 <=100 ppm 与 ESD 接地及纳米黑烟滤桶湿法钝化硬锁、ASTM F2924 专机专粉 RFID 防混料与刮刀翘曲门禁及滤桶 >65°C 放热自燃 0ms 关激光闭球阀注氩/注油强切）**：[中文](./additive-manufacturing-metal-3d-printing-lpbf-titanium-aluminum-powder-argon-nfpa-484-voice-copilot-selection-faq.md) | [EN](./additive-manufacturing-metal-3d-printing-lpbf-titanium-aluminum-powder-argon-nfpa-484-voice-copilot-selection-faq.en.md)
