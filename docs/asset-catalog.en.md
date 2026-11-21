@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (233 Bilingual Guides)
+## 3. Solution Architect Selection Guides (234 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -274,3 +274,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 231. **High-Stakes Exam Proctoring, Oral Viva & Section 508 Read-Aloud Multimodal Voice AI: Verbatim Item-Stem Zero-Hint Lock, ADA Extended-Time Gate & 0ms Human Chief Proctor Bridge**: [EN](./high-stakes-exam-proctoring-oral-assessment-section-508-ferpa-voice-selection-faq.en.md) | [中文](./high-stakes-exam-proctoring-oral-assessment-section-508-ferpa-voice-selection-faq.md)
 232. **Tele-Optometry, Optical Retail & Contact Lens Rx Multimodal Voice Concierge: Diopter Sign & PD Lock, FTC Contact Lens Gate & 0ms Ocular ER Bridge**: [EN](./tele-optometry-eyewear-prescription-pupillary-distance-red-eye-voice-concierge-selection-faq.en.md) | [中文](./tele-optometry-eyewear-prescription-pupillary-distance-red-eye-voice-concierge-selection-faq.md)
 233. **Biopharma Grade A/B Cleanroom, CAR-T & GMP Electronic Batch Record (MES / eBR) Voice AI: FDA 21 CFR Part 11 ALCOA+ Lock, Four-Eyes Verification Gate & 0ms Sterility Breach Hold**: [EN](./biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.en.md) | [中文](./biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.md)
+234. **Tax Preparation, CPA Advisory & IRS Circular 230 Multimodal Voice AI: IRC § 7216 Privacy Lock, Substantiation Gate & 0ms CPA Audit Bridge**: [EN](./tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.en.md) | [中文](./tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.md)

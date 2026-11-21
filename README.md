@@ -305,6 +305,7 @@ flowchart LR
 231. **国家级高利害资格考试监考（Pearson VUE / ETS / 医师与法考机考）、口语测评与无障碍读屏（Section 508 / ADA）多模态语音方案（IMS QTI 3.0 题干逐字朗读零答案提示硬锁、残障考生 1.5x/2.0x 加时防误收卷硬锁与场外串通声纹 0ms 人工主考官复核强切）**：[中文](./docs/high-stakes-exam-proctoring-oral-assessment-section-508-ferpa-voice-selection-faq.md) | [EN](./docs/high-stakes-exam-proctoring-oral-assessment-section-508-ferpa-voice-selection-faq.en.md)
 232. **连锁视光中心、配镜电商与远程验光（EssilorLuxottica 依视路陆逊梯卡 / Warby Parker / 宝岛眼镜 / 眼科视光）AI 语音与多模态导购方案（屈光度正负号与实测瞳距 PD 硬锁、FTC 隐形眼镜基弧 BC 门禁与视网膜脱离/角膜溃疡红眼 0ms 眼科急诊强切）**：[中文](./docs/tele-optometry-eyewear-prescription-pupillary-distance-red-eye-voice-concierge-selection-faq.md) | [EN](./docs/tele-optometry-eyewear-prescription-pupillary-distance-red-eye-voice-concierge-selection-faq.en.md)
 233. **生物制药无菌洁净室（Grade A/B Cleanroom）、CAR-T 细胞治疗与 GMP 电子批记录（Werum PAS-X / PharmaSuite / Veeva QMS）免提语音方案（FDA 21 CFR Part 11 ALCOA+ 禁无痕覆盖硬锁、关键工艺双人声纹四眼复核锁与隔离器压差失锁/OOS 0ms 批次冻结强切）**：[中文](./docs/biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.md) | [EN](./docs/biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.en.md)
+234. **财税申报、会计师事务所与智能报税（Intuit TurboTax Live / 四大税务 / 金税四期企业办税）AI 语音与多模态方案（IRC § 7216 纳税人税表隐私与禁营销硬锁、IRS Circular 230 真实凭据与确定性算税内核锁及税务稽查通知 CP2000 0ms 强切执业注册会计师 CPA）**：[中文](./docs/tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.md) | [EN](./docs/tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.en.md)
 
 ---
 

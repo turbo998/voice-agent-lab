@@ -5816,6 +5816,36 @@ export function evaluateBiopharmaCleanroomEbrGmpVoiceGuard(input: {
   };
 }
 
+export interface TaxCpaCircular230Section7216VoiceEvaluation {
+  policyCode: "TAX-CPA-CIRCULAR230-7216-01";
+  taxFilingCalculationAndSummaryAuthorized: boolean;
+  unsubstantiatedDeductionOrSection7216LeakBlocked: boolean;
+  licensedCpaOrEnrolledAgentBridged: boolean;
+}
+
+/**
+ * Deterministic Tax Preparation & CPA IRC Section 7216 Privacy, Circular 230 Substantiation & 0ms Audit Guard (`TAX-CPA-CIRCULAR230-7216-01`).
+ */
+export function evaluateTaxCpaCircular230Section7216VoiceGuard(input: {
+  section7216ConsentAndPiiIsolationVerified: boolean;
+  circular230SubstantiationAndTaxEngineVerified: boolean;
+  taxAuditNoticeFraudAttemptOrComplexInternational: boolean;
+}): TaxCpaCircular230Section7216VoiceEvaluation {
+  return {
+    policyCode: "TAX-CPA-CIRCULAR230-7216-01",
+    taxFilingCalculationAndSummaryAuthorized:
+      input.section7216ConsentAndPiiIsolationVerified &&
+      input.circular230SubstantiationAndTaxEngineVerified &&
+      !input.taxAuditNoticeFraudAttemptOrComplexInternational,
+    unsubstantiatedDeductionOrSection7216LeakBlocked:
+      !input.section7216ConsentAndPiiIsolationVerified ||
+      !input.circular230SubstantiationAndTaxEngineVerified ||
+      input.taxAuditNoticeFraudAttemptOrComplexInternational,
+    licensedCpaOrEnrolledAgentBridged:
+      input.taxAuditNoticeFraudAttemptOrComplexInternational,
+  };
+}
+
 
 
 
