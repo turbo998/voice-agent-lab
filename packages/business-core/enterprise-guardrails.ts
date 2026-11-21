@@ -6385,6 +6385,36 @@ export function evaluateWarehouseAmrAsrsIso3691VoiceGuard(input: {
   };
 }
 
+export interface PediatricVaccineAcipColdchainVoiceEvaluation {
+  policyCode: "PEDIATRIC-VACCINE-ACIP-COLDCHAIN-01";
+  vaccineAdministrationAndSlotAuthorized: boolean;
+  invalidIntervalOrFrozenVialOrLiveContraindicationBlocked: boolean;
+  weightBasedEpinephrineAndPediatricErBridged: boolean;
+}
+
+/**
+ * Deterministic Pediatric Immunization CDC ACIP 28-Day Live-Vaccine Interval & SCID Lock, 2–8°C Freeze Gate & 0ms Anaphylaxis Guard (`PEDIATRIC-VACCINE-ACIP-COLDCHAIN-01`).
+ */
+export function evaluatePediatricVaccineAcipColdchainVoiceGuard(input: {
+  acipIntervalAndLiveVaccineContraindicationSafe: boolean;
+  coldChainUnfrozenAndDiluentMatched: boolean;
+  anaphylaxisStridorOrIntussusceptionRedFlag: boolean;
+}): PediatricVaccineAcipColdchainVoiceEvaluation {
+  return {
+    policyCode: "PEDIATRIC-VACCINE-ACIP-COLDCHAIN-01",
+    vaccineAdministrationAndSlotAuthorized:
+      input.acipIntervalAndLiveVaccineContraindicationSafe &&
+      input.coldChainUnfrozenAndDiluentMatched &&
+      !input.anaphylaxisStridorOrIntussusceptionRedFlag,
+    invalidIntervalOrFrozenVialOrLiveContraindicationBlocked:
+      !input.acipIntervalAndLiveVaccineContraindicationSafe ||
+      !input.coldChainUnfrozenAndDiluentMatched ||
+      input.anaphylaxisStridorOrIntussusceptionRedFlag,
+    weightBasedEpinephrineAndPediatricErBridged:
+      input.anaphylaxisStridorOrIntussusceptionRedFlag,
+  };
+}
+
 
 
 

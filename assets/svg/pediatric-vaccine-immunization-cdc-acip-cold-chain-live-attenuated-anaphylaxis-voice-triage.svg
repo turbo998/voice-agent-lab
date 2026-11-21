@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg253" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071318"/>
+      <stop offset="50%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="card253" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg253)" rx="16"/>
+  <text x="600" y="40" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Pediatric Immunization Clinic, CDC ACIP Schedule &amp; Cold-Chain Voice Triage</text>
+  <text x="600" y="66" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">ACIP 28-Day Live-Vaccine Interval &amp; Immunocompromised Lock · 2–8°C Cold-Chain Freeze Gate · 0ms Anaphylaxis &amp; Intussusception ER Bridge (PEDIATRIC-VACCINE-ACIP-COLDCHAIN-01)</text>
+
+  <!-- Left Column: Parent Pre-Screening, Nurse Pod & Cold Chain -->
+  <rect x="36" y="92" width="260" height="545" rx="12" fill="url(#card253)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="166" y="122" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. Parent &amp; Clinic Channels</text>
+
+  <rect x="56" y="142" width="220" height="110" rx="8" fill="#0f172a" stroke="#34d399"/>
+  <text x="166" y="166" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Catch-Up Schedule &amp; Pre-Screen</text>
+  <text x="166" y="188" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• CDC ACIP / NIP catch-up calculator</text>
+  <text x="166" y="206" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• VIS (Vaccine Info Statement) voice</text>
+  <text x="166" y="224" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 30-min post-shot lobby wait check</text>
+
+  <rect x="56" y="268" width="220" height="110" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="166" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Immunization Nurse Barcode</text>
+  <text x="166" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 2D GS1 vial lot &amp; expiry scan</text>
+  <text x="166" y="332" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Pediatric vs Adult formulation</text>
+  <text x="166" y="350" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Route lock (IM vastus lateralis vs SC)</text>
+
+  <rect x="56" y="394" width="220" height="222" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="166" y="420" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">AEFI &amp; Cold-Chain Red Flags</text>
+  <text x="166" y="444" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Stridor / wheeze / hives (Anaphylaxis)</text>
+  <text x="166" y="464" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Currant-jelly stool (Intussusception)</text>
+  <text x="166" y="484" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Adjuvant vaccine frozen &lt;0°C</text>
+  <text x="166" y="504" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Live vaccine in SCID / Kawasaki IVIG</text>
+  <text x="166" y="532" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">0ms IM Epinephrine &amp; Pediatric ER</text>
+
+  <!-- Center Column: PEDIATRIC-VACCINE-ACIP-COLDCHAIN-01 Guardrail Engine -->
+  <rect x="326" y="92" width="548" height="545" rx="12" fill="url(#card253)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="600" y="122" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. Deterministic CDC ACIP &amp; Cold-Chain Engine (PEDIATRIC-VACCINE-ACIP-COLDCHAIN-01)</text>
+
+  <!-- Gate 1 -->
+  <rect x="350" y="142" width="500" height="145" rx="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate A: ACIP Minimum Age/Interval &amp; Live-Vaccine Contraindication Lock</text>
+  <text x="600" y="190" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Enforces ≥28-day spacing between non-simultaneous parenteral live vaccines (MMR/Varicella)</text>
+  <text x="600" y="210" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• 100% blocks live-attenuated vaccines in SCID, chemo, high-dose steroids, or pregnancy</text>
+  <text x="600" y="230" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Enforces Rotavirus strict maximum age cutoffs (Dose 1 &lt;15 wks; Final &lt;8 mos)</text>
+  <text x="600" y="252" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Checks recent IVIG / blood transfusion (3–11 month deferral for MMR/Varicella)</text>
+
+  <!-- Gate 2 -->
+  <rect x="350" y="302" width="500" height="150" rx="10" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="600" y="326" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate B: 2–8°C Digital Data-Logger (DDL) &amp; Diluent-Pairing Hard Lock</text>
+  <text x="600" y="350" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Verifies continuous 2.0°C–8.0°C fridge telemetry &amp; blocks frozen alum-adjuvant vials</text>
+  <text x="600" y="370" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Requires scanning BOTH lyophilized powder vial + manufacturer-specific diluent</text>
+  <text x="600" y="390" y="#fde047" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Enforces beyond-use timer after reconstitution (e.g., Varicella 30m / MMR 8h)</text>
+  <text x="600" y="412" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Prevents fatal neuromuscular-blocker or insulin diluent swaps in busy clinics</text>
+
+  <!-- Gate 3 -->
+  <rect x="350" y="468" width="500" height="148" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="600" y="492" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate C: 0ms Anaphylaxis Epinephrine (0.01 mg/kg) &amp; Intussusception Bridge</text>
+  <text x="600" y="516" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Detects post-vaccine stridor, lip swelling, wheezing, hypotonia, or currant-jelly stool</text>
+  <text x="600" y="536" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Speaks weight-based IM Epinephrine (1:1000, 0.01 mg/kg anterolateral thigh) in 0ms</text>
+  <text x="600" y="556" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Bridges Pediatric Resuscitation Team &amp; logs VAERS / AEFI regulatory report</text>
+  <text x="600" y="580" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Full CDC Pink Book, ACIP CDSi Logic, VFC Cold-Chain &amp; HL7 IIS WORM audit log</text>
+
+  <!-- Right Column: IIS Registry, VFC Fridge IoT & Pediatric ER -->
+  <rect x="904" y="92" width="260" height="545" rx="12" fill="url(#card253)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="1034" y="122" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">3. IIS Registry &amp; Cold Chain</text>
+
+  <rect x="924" y="142" width="220" height="145" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="1034" y="166" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">HL7 IIS &amp; CDC CDSi Engine</text>
+  <text x="1034" y="190" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• State Immunization Registry (IIS)</text>
+  <text x="1034" y="210" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• CDC CDSi deterministic rules</text>
+  <text x="1034" y="230" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 4-day grace period validator</text>
+  <text x="1034" y="250" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Zero invalid early-dose credit</text>
+
+  <rect x="924" y="302" width="220" height="150" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="1034" y="326" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">NIST-Traceable DDL Fridge</text>
+  <text x="1034" y="350" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Glycol-buffered probe (2–8°C)</text>
+  <text x="1034" y="370" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• -50°C to -15°C MMRV freezer</text>
+  <text x="1034" y="390" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Excursion quarantine lock</text>
+  <text x="1034" y="410" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Manufacturer stability lookup</text>
+
+  <rect x="924" y="468" width="220" height="148" rx="8" fill="#0f172a" stroke="#a855f7"/>
+  <text x="1034" y="492" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Pediatric Resuscitation &amp; AEFI</text>
+  <text x="1034" y="516" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Broselow weight-based Epi card</text>
+  <text x="1034" y="536" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Intussusception air-enema ER</text>
+  <text x="1034" y="556" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• CDC/FDA VAERS auto-filing</text>
+  <text x="1034" y="576" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">• 100% CDC ACIP &amp; VFC Compliant</text>
+</svg>

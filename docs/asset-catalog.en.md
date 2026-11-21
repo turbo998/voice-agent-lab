@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (252 Bilingual Guides)
+## 3. Solution Architect Selection Guides (253 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -293,3 +293,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 250. **Precision Agriculture ISOBUS Tractor, UAV Spray Drift & Grain-Bin Safety Voice Copilot: EPA Wind-Drift (<10 mph) & Pollinator Lock, OSHA 1910.272 Grain-Bin Auger LOTO Gate & 0ms Entrapment Bridge**: [EN](./precision-ag-autonomous-tractor-isobus-grain-bin-entrapment-drift-wind-voice-copilot-selection-faq.en.md) | [中文](./precision-ag-autonomous-tractor-isobus-grain-bin-entrapment-drift-wind-voice-copilot-selection-faq.md)
 251. **Industrial NDT Radiography (Ir-192 / Co-60), ASME Section V & Radiation Safety Voice Copilot: Survey-Meter Physical Source-Retraction Lock, NRC 10 CFR 34 Boundary Gate & 0ms Jammed-Source RSO Bridge**: [EN](./industrial-ndt-radiography-iridium-192-cobalt-60-source-retraction-asme-section-v-voice-copilot-selection-faq.en.md) | [中文](./industrial-ndt-radiography-iridium-192-cobalt-60-source-retraction-asme-section-v-voice-copilot-selection-faq.md)
 252. **Autonomous Warehouse AMR Fleet, ASRS Crane & ISO 3691-4 Safety Voice Dispatch: Trapped-Key Fence LOTO Lock, Zero "Soft-Pause" Entry Gate & 0ms Safety-PLC E-Stop Bridge**: [EN](./warehouse-robotics-amr-asrs-goods-to-person-iso-3691-4-trapped-key-loto-voice-dispatch-selection-faq.en.md) | [中文](./warehouse-robotics-amr-asrs-goods-to-person-iso-3691-4-trapped-key-loto-voice-dispatch-selection-faq.md)
+253. **Pediatric Immunization Clinic, CDC ACIP Schedule & Cold-Chain Voice Triage: 28-Day Live-Vaccine Interval & SCID Lock, 2–8°C Freeze Gate & 0ms Anaphylaxis / Intussusception Bridge**: [EN](./pediatric-vaccine-immunization-cdc-acip-cold-chain-live-attenuated-anaphylaxis-voice-triage-selection-faq.en.md) | [中文](./pediatric-vaccine-immunization-cdc-acip-cold-chain-live-attenuated-anaphylaxis-voice-triage-selection-faq.md)
