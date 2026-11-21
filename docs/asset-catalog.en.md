@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (317 Bilingual Guides)
+## 3. Solution Architect Selection Guides (318 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -358,3 +358,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 315. **Enterprise Voice Agent Security, Prompt-Injection Defense & OWASP Agentic Tool Firewall (Zero-LLM-Identity Anti-IDOR Schema Lock, Indirect CRM-Note Injection Quarantine & Two-Phase Verbal Commit Gate & 0ms SIP Toll-Fraud Breaker)**: [EN](./voice-agent-owasp-security-prompt-injection-idor-two-phase-commit-firewall-selection-faq.en.md) | [中文](./voice-agent-owasp-security-prompt-injection-idor-two-phase-commit-firewall-selection-faq.md)
 316. **Airline IRROPS Mass Rebooking & Luxury Hotel Opera PMS Multilingual Voice Concierge (Amadeus/Sabre/TravelSky Atomic Hold-Before-Cancel Lock & $0 Waiver, Opera Stay_ID Checkout 0ms Privacy Wipe & 0ms UMNR / 50x Storm Surge Bridge)**: [EN](./airline-irrops-mass-rebooking-hotel-opera-pms-multilingual-voice-concierge-selection-faq.en.md) | [中文](./airline-irrops-mass-rebooking-hotel-opera-pms-multilingual-voice-concierge-selection-faq.md)
 317. **Self-Hosted Open-Source Voice Stack (Faster-Whisper / SenseVoice + vLLM + CosyVoice 2 / Kokoro) vs. Cloud Managed APIs: 1.2M-Min/Mo TCO Breakeven, Whisper VAD Anti-Hallucination & Apache-2.0 Lock, GPU KV-Cache <=80% SLA Gate & 0ms Cloud Burst Spillover**: [EN](./self-hosted-open-source-whisper-vllm-cosyvoice-gpu-vs-cloud-voice-api-tco-selection-faq.en.md) | [中文](./self-hosted-open-source-whisper-vllm-cosyvoice-gpu-vs-cloud-voice-api-tco-selection-faq.md)
+318. **Enterprise Voice AI Capacity Planning & FinOps Governance (Azure PTU vs. PayGo Spillover, Byte-Exact Prompt Prefix Caching 88.4% Hit Lock, 72% Edge TTS Audio Cache, $1.20/Call Wallet Cap & 0ms APIM Multi-Region Spillover Cutting TCO by 66.4%)**: [EN](./enterprise-voice-ai-capacity-planning-ptu-paygo-prompt-tts-caching-finops-selection-faq.en.md) | [中文](./enterprise-voice-ai-capacity-planning-ptu-paygo-prompt-tts-caching-finops-selection-faq.md)

@@ -8335,6 +8335,36 @@ export function evaluateSelfHostedOpensourceGpuVsCloudTcoGuard(input: {
   };
 }
 
+export interface VoiceCapacityPtuCachingFinopsEvaluation {
+  policyCode: "VOICE-CAPACITY-PTU-CACHING-FINOPS-01";
+  primaryPtuAndCachedExecutionAuthorized: boolean;
+  cacheBustingOrWalletOverrunBlocked: boolean;
+  apimMultiRegionPaygoSpilloverBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI Capacity Planning Static Prompt Prefix/TTS Cache Lock, Base PTU <=85%/$1.20 Wallet Cap Gate & 0ms APIM PayGo Spillover Guard (`VOICE-CAPACITY-PTU-CACHING-FINOPS-01`).
+ */
+export function evaluateVoiceCapacityPtuCachingFinopsGuard(input: {
+  staticPromptPrefixAlignedAndTtsPhraseCacheHit: boolean;
+  basePtuUtilizationUnder85PctAndPerCallBudgetSafe: boolean;
+  ptuSaturationOrHttp429SpilloverToPaygoCascade: boolean;
+}): VoiceCapacityPtuCachingFinopsEvaluation {
+  return {
+    policyCode: "VOICE-CAPACITY-PTU-CACHING-FINOPS-01",
+    primaryPtuAndCachedExecutionAuthorized:
+      input.staticPromptPrefixAlignedAndTtsPhraseCacheHit &&
+      input.basePtuUtilizationUnder85PctAndPerCallBudgetSafe &&
+      !input.ptuSaturationOrHttp429SpilloverToPaygoCascade,
+    cacheBustingOrWalletOverrunBlocked:
+      !input.staticPromptPrefixAlignedAndTtsPhraseCacheHit ||
+      !input.basePtuUtilizationUnder85PctAndPerCallBudgetSafe ||
+      input.ptuSaturationOrHttp429SpilloverToPaygoCascade,
+    apimMultiRegionPaygoSpilloverBridged:
+      input.ptuSaturationOrHttp429SpilloverToPaygoCascade,
+  };
+}
+
 
 
 
