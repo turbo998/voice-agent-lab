@@ -6445,6 +6445,36 @@ export function evaluateTitleEscrowClosingWireTridVoiceGuard(input: {
   };
 }
 
+export interface RadiologyMriFerromagneticContrastVoiceEvaluation {
+  policyCode: "RADIOLOGY-MRI-FERROMAGNETIC-CONTRAST-01";
+  mriZone4EntryAndContrastBolusAuthorized: boolean;
+  ferromagneticImplantOrRenalMetforminRiskBlocked: boolean;
+  powerInjectorHaltedAndZone3RescueOrQuenchBridged: boolean;
+}
+
+/**
+ * Deterministic Radiology ACR Zone IV Ferromagnetic Implant Lock, Contrast eGFR/Metformin Gate & 0ms Injector/Zone III Rescue Guard (`RADIOLOGY-MRI-FERROMAGNETIC-CONTRAST-01`).
+ */
+export function evaluateRadiologyMriFerromagneticContrastVoiceGuard(input: {
+  acrZone4FerromagneticAndImplantCleared: boolean;
+  contrastEgfrMetforminAndPremedSafe: boolean;
+  contrastExtravasationAnaphylaxisOrQuenchAlarm: boolean;
+}): RadiologyMriFerromagneticContrastVoiceEvaluation {
+  return {
+    policyCode: "RADIOLOGY-MRI-FERROMAGNETIC-CONTRAST-01",
+    mriZone4EntryAndContrastBolusAuthorized:
+      input.acrZone4FerromagneticAndImplantCleared &&
+      input.contrastEgfrMetforminAndPremedSafe &&
+      !input.contrastExtravasationAnaphylaxisOrQuenchAlarm,
+    ferromagneticImplantOrRenalMetforminRiskBlocked:
+      !input.acrZone4FerromagneticAndImplantCleared ||
+      !input.contrastEgfrMetforminAndPremedSafe ||
+      input.contrastExtravasationAnaphylaxisOrQuenchAlarm,
+    powerInjectorHaltedAndZone3RescueOrQuenchBridged:
+      input.contrastExtravasationAnaphylaxisOrQuenchAlarm,
+  };
+}
+
 
 
 
