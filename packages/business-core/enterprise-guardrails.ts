@@ -4988,6 +4988,34 @@ export function evaluateSlowApiAsyncFillerHeartbeatVoiceGuard(input: {
   };
 }
 
+export interface WarmHandoffWhisperContextBridgeVoiceEvaluation {
+  policyCode: "WARM-HANDOFF-WHISPER-CONTEXT-01";
+  warmTransferBridgeAuthorized: boolean;
+  scheduledCallbackFallbackRequired: boolean;
+  immediateSupervisorWarmHandoffTriggered: boolean;
+}
+
+/**
+ * Deterministic Contact Center AI-to-Human Warm Handoff, 6-Second Whisper Briefing & Zero-Repeat Context Bridge Guard (`WARM-HANDOFF-WHISPER-CONTEXT-01`).
+ */
+export function evaluateWarmHandoffWhisperContextBridgeVoiceGuard(input: {
+  verifiedAuthTokenAndRedactedSlotsAttached: boolean;
+  targetSkillQueueStaffedAndWhisperAcked: boolean;
+  callerSentimentCriticalOrRegulatedDispute: boolean;
+}): WarmHandoffWhisperContextBridgeVoiceEvaluation {
+  return {
+    policyCode: "WARM-HANDOFF-WHISPER-CONTEXT-01",
+    warmTransferBridgeAuthorized:
+      input.verifiedAuthTokenAndRedactedSlotsAttached &&
+      input.targetSkillQueueStaffedAndWhisperAcked,
+    scheduledCallbackFallbackRequired:
+      !input.targetSkillQueueStaffedAndWhisperAcked &&
+      !input.callerSentimentCriticalOrRegulatedDispute,
+    immediateSupervisorWarmHandoffTriggered:
+      input.callerSentimentCriticalOrRegulatedDispute,
+  };
+}
+
 
 
 

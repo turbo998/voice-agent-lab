@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg63" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081420"/>
+      <stop offset="50%" stop-color="#0e2438"/>
+      <stop offset="100%" stop-color="#07121e"/>
+    </linearGradient>
+    <linearGradient id="card63" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#132e48" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0a1929" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg63)" rx="16"/>
+  <text x="600" y="42" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">Contact Center AI-to-Human Warm Handoff, Whisper Briefing &amp; Zero-Repeat Context Bridge</text>
+  <text x="600" y="66" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">Zero-Repeat Auth &amp; Slot Handoff Lock · 6-Second Agent Whisper Briefing · Live Agent Assist Copilot (WARM-HANDOFF-WHISPER-CONTEXT-01)</text>
+
+  <!-- Left Column -->
+  <rect x="30" y="92" width="290" height="548" rx="12" fill="url(#card63)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="175" y="122" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1. Escalation Triggers &amp; Risks</text>
+
+  <rect x="48" y="142" width="254" height="105" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="175" y="166" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Tier-1 AI Triage &amp; Auth</text>
+  <text x="175" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• OTP / Knowledge-Based Auth Verified</text>
+  <text x="175" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Order / Policy / Symptom Slots Captured</text>
+  <text x="175" y="224" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 72% Resolved Without Escalation</text>
+
+  <rect x="48" y="264" width="254" height="105" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="175" y="288" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">The "Cold-Transfer" CSAT Killer</text>
+  <text x="175" y="310" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blind Transfer Drops CRM Context</text>
+  <text x="175" y="328" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Agent Re-Asks Name, ID &amp; Problem</text>
+  <text x="175" y="346" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• +95 Seconds Wasted Handle Time (AHT)</text>
+
+  <rect x="48" y="386" width="254" height="105" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="175" y="410" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Queue Abandonment &amp; PII Leak</text>
+  <text x="175" y="432" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Transferring to Empty / Closed Queue</text>
+  <text x="175" y="450" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Raw Credit-Card PAN in Screen-Pop</text>
+  <text x="175" y="468" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Unannounced Escalation on VIP Crisis</text>
+
+  <rect x="48" y="508" width="254" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="175" y="532" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">3-Stage Warm Handoff Flow</text>
+  <text x="175" y="554" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 1. Pre-Pop Signed JSON Card to CTI</text>
+  <text x="175" y="572" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 2. 6-Sec Whisper Briefing to Agent Ear</text>
+  <text x="175" y="590" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 3. 3-Way Bridge + Shadow Copilot</text>
+
+  <!-- Center Column -->
+  <rect x="350" y="92" width="500" height="548" rx="12" fill="url(#card63)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="600" y="122" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">2. Deterministic Handoff Gate (WARM-HANDOFF-WHISPER-CONTEXT-01)</text>
+
+  <rect x="372" y="142" width="456" height="136" rx="10" fill="#2a1215" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE A: Zero-Repeat Auth &amp; Redacted Context Packet Lock</text>
+  <text x="600" y="188" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: verifiedAuthTokenAndRedactedSlotsAttached === true</text>
+  <text x="600" y="208" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blocks blind/cold call transfer! Requires attaching verified KYC/OTP badge,</text>
+  <text x="600" y="226" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  structured slots, and PCI-redacted 3-bullet summary to CRM screen-pop</text>
+  <text x="600" y="246" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Agent greets caller with: "Hi Ms. Li, I see your flight LH729 rebooking..."</text>
+
+  <rect x="372" y="294" width="456" height="145" rx="10" fill="#172554" stroke="#38bdf8" stroke-width="1.8"/>
+  <text x="600" y="318" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE B: Live Skill-Queue Agent Availability &amp; Whisper Gate</text>
+  <text x="600" y="340" fill="#bae6fd" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: targetSkillQueueStaffedAndWhisperAcked === true</text>
+  <text x="600" y="360" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Never dumps caller into an unstaffed queue! Dials specialist leg first,</text>
+  <text x="600" y="378" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  plays 6-sec whisper briefing to agent, and bridges caller only on agent ack</text>
+  <text x="600" y="398" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Offers scheduled callback if queue wait exceeds 120 seconds</text>
+
+  <rect x="372" y="455" width="456" height="165" rx="10" fill="#062e22" stroke="#10b981" stroke-width="1.8"/>
+  <text x="600" y="479" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE C: 0ms High-Risk Sentiment / Regulatory Escalation Bridge</text>
+  <text x="600" y="501" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trigger: callerSentimentCriticalOrRegulatedDispute === true</text>
+  <text x="600" y="521" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 0ms sets immediateSupervisorWarmHandoffTriggered = true</text>
+  <text x="600" y="541" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Transitions AI from active speaker to silent real-time Agent Assist</text>
+  <text x="600" y="559" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">  Copilot (surfacing live KB cards &amp; post-call ACW disposition summary)</text>
+  <text x="600" y="582" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Cuts Human Agent Handle Time (AHT) by -41% (-98 seconds per transfer)</text>
+
+  <!-- Right Column -->
+  <rect x="880" y="92" width="290" height="548" rx="12" fill="url(#card63)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1025" y="122" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3. CCaaS &amp; CRM Desktop Stack</text>
+
+  <rect x="898" y="142" width="254" height="110" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="1025" y="166" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Genesys / Amazon Connect / ACS</text>
+  <text x="1025" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Consultation Call Leg + Whisper Coach</text>
+  <text x="1025" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Skill-Based Routing &amp; Queue Telemetry</text>
+  <text x="1025" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Dual-Channel Forked Audio Stream</text>
+
+  <rect x="898" y="268" width="254" height="110" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="1025" y="292" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Salesforce / Dynamics 365 / ServiceNow</text>
+  <text x="1025" y="314" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Green KYC-Verified Badge Injection</text>
+  <text x="1025" y="332" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Pre-Populated Case &amp; Slot Fields</text>
+  <text x="1025" y="350" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 1-Click Next-Best-Action Scripts</text>
+
+  <rect x="898" y="394" width="254" height="110" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="1025" y="418" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Automated ACW Wrap-Up Engine</text>
+  <text x="1025" y="440" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Combined AI + Human Call Summary</text>
+  <text x="1025" y="458" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Auto-Tagged Disposition Codes</text>
+  <text x="1025" y="476" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Saves 45s After-Call Work per Ticket</text>
+
+  <rect x="898" y="520" width="254" height="100" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2"/>
+  <text x="1025" y="544" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Sealed Handoff Metrics</text>
+  <text x="1025" y="566" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Customer Repeat-Yourself Rate: 0.00%</text>
+  <text x="1025" y="584" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Human AHT Reduction: -41.2%</text>
+  <text x="1025" y="602" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Post-Transfer CSAT: 4.89 / 5.0</text>
+</svg>
