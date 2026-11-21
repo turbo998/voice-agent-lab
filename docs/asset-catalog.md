@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（307 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（308 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -348,3 +348,4 @@
 305. **全双工实时语音打断处理（Barge-In）、语义句末判停（Semantic Turn Detection）与慢速企业 API（ERP/RAG 3–8 秒）零冷场异步安抚话术编排（Silero VAD + `18ms` 语义 EoT 报卡号停顿防抢话与“嗯/好的”附庸词过滤硬锁、`700ms` 非承诺性安抚垫音与 `Turn-Epoch` 过期回调写栅栏、手机免提回声自激 `0ms` 破环与 `>8s` 超时转异步短信）方案**：[中文](./duplex-barge-in-semantic-turn-detection-slow-api-async-filler-orchestration-selection-faq.md) | [EN](./duplex-barge-in-semantic-turn-detection-slow-api-async-filler-orchestration-selection-faq.en.md)
 306. **跨国企业实时多语种会议同传、个人原声保留（Personal Voice）与结构化纪要行动项自动派单选型（Azure AI Speech Live Interpreter vs. Microsoft Teams Interpreter vs. 自建流式同传管道：日/德语 SOV 句尾否定极性缓冲与“万/亿 ↔ Million/Billion”算术硬锁、参会人单次会议原声同传明示授权与会后 `0ms` 声纹销毁门禁、董事会零数据留存 ZDR 与主持人一键审批派发 Jira/Planner）方案**：[中文](./enterprise-live-meeting-interpreter-personal-voice-glossary-action-item-sync-selection-faq.md) | [EN](./enterprise-live-meeting-interpreter-personal-voice-glossary-action-item-sync-selection-faq.en.md)
 307. **AI 金牌销售实战对练（Sales Roleplay）、客服上岗通关陪练与结构化模拟面试平台选型（GPT-4o Realtime 全双工刁钻客户 Actor + 独立 BARS 考官 Grader：演评物理分离与防讨好放水 3 阶异议状态机硬锁、评分 100% 绑定录音时间戳原话引用与 EEOC 口音公平性门禁、医药超适应症/保本承诺与提示词越狱骗分 `0ms` 红牌一票否决）方案**：[中文](./ai-sales-roleplay-customer-service-sparring-structured-interview-rubric-platform-selection-faq.md) | [EN](./ai-sales-roleplay-customer-service-sparring-structured-interview-rubric-platform-selection-faq.en.md)
+308. **汽车智能座舱与智能穿戴硬件（AI 眼镜 / 移动 App / IoT 终端）端云协同多模态语音架构选型（端侧高通/穿戴 NPU 65% 本地控车卸载 + 云端 GPT-4o Realtime / Gemini Live：四音区声源权限与车速 `Speed>0` 限答 `<=35字` 硬锁、指代词按需触发 `<60KB` 单帧 WebP 抓拍省电 `85.4%` 与隐私灯联锁、隧道/地库断网 `0ms` 切端侧 3B 模型 `180ms` 兜底）方案**：[中文](./in-vehicle-cockpit-smart-hardware-edge-cloud-webrtc-multimodal-voice-architecture-selection-faq.md) | [EN](./in-vehicle-cockpit-smart-hardware-edge-cloud-webrtc-multimodal-voice-architecture-selection-faq.en.md)

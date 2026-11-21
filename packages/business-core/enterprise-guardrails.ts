@@ -8035,6 +8035,36 @@ export function evaluateAiRoleplaySparringRubricEvalGuard(input: {
   };
 }
 
+export interface EdgeCloudMultimodalWebrtcFallbackEvaluation {
+  policyCode: "EDGE-CLOUD-MULTIMODAL-WEBRTC-FALLBACK-01";
+  multimodalCloudOrDeviceActionAuthorized: boolean;
+  seatZoneOrPrivacyLedViolationBlocked: boolean;
+  onDeviceNpuOfflineFallbackBridged: boolean;
+}
+
+/**
+ * Deterministic In-Vehicle Cockpit & Smart Hardware 4-Zone Seat/Speed Lock, Deictic <60KB Keyframe/Privacy-LED Gate & 0ms Tunnel NPU Fallback Guard (`EDGE-CLOUD-MULTIMODAL-WEBRTC-FALLBACK-01`).
+ */
+export function evaluateEdgeCloudMultimodalWebrtcFallbackGuard(input: {
+  seatZoneDriverPermissionAndDrivingSafetyLocked: boolean;
+  deicticKeyframeBurstUnder60kbAndPrivacyLedActive: boolean;
+  tunnelNetworkDropOrCloudRttOver600ms: boolean;
+}): EdgeCloudMultimodalWebrtcFallbackEvaluation {
+  return {
+    policyCode: "EDGE-CLOUD-MULTIMODAL-WEBRTC-FALLBACK-01",
+    multimodalCloudOrDeviceActionAuthorized:
+      input.seatZoneDriverPermissionAndDrivingSafetyLocked &&
+      input.deicticKeyframeBurstUnder60kbAndPrivacyLedActive &&
+      !input.tunnelNetworkDropOrCloudRttOver600ms,
+    seatZoneOrPrivacyLedViolationBlocked:
+      !input.seatZoneDriverPermissionAndDrivingSafetyLocked ||
+      !input.deicticKeyframeBurstUnder60kbAndPrivacyLedActive ||
+      input.tunnelNetworkDropOrCloudRttOver600ms,
+    onDeviceNpuOfflineFallbackBridged:
+      input.tunnelNetworkDropOrCloudRttOver600ms,
+  };
+}
+
 
 
 
