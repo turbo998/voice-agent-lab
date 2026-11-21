@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（338 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（339 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -379,3 +379,4 @@
 336. **全球多语种与句内语码转换（Code-Switching：中英混说 / 粤英混说 / Spanglish / Hinglish）实时语音识别与合成选型基准（联合多字符集解码保护句内英文 SKU/API 零汉字谐音污染将混合错误率 `MER` 压至 `4.6%` 硬锁、单一多语种共享声纹 TTS 禁句内换人门禁、`<300ms` 区分借词与整句语种切换动态跟随）方案**：[中文](./multilingual-code-switching-zh-en-spanglish-hinglish-asr-tts-benchmark-selection-faq.md) | [EN](./multilingual-code-switching-zh-en-spanglish-hinglish-asr-tts-benchmark-selection-faq.en.md)
 337. **连锁家政、暖通空调（HVAC）、水电抢修与上门安装（ServiceTitan / Salesforce Field Service）24/7 语音接单与技师排班架构（技师特种操作证照 `EPA 608`、设备役龄 `>=12年` 换新路由与 `<=25m` 车程硬锁、严禁未检报一口价与手机拍设备铭牌 `Nameplate OCR` 预带配件提首次修复率至 `92.8%` 门禁、出发前 `T-30m` 自动外呼核实在家压降 `62.4%` 放鸽子空跑）方案**：[中文](./home-services-hvac-plumbing-servicetitan-dispatch-eta-confirmation-voice-selection-faq.md) | [EN](./home-services-hvac-plumbing-servicetitan-dispatch-eta-confirmation-voice-selection-faq.en.md)
 338. **高校招生办、助学金辅导（FAFSA / Financial Aid）与全天候智慧校园服务台（Ellucian Banner / Workday Student）语音架构（联邦 `FERPA` 成年学生隐私与家长分项代理授权 `Proxy Waiver` 防越权查分硬锁、零口头保录取/保奖学金承诺与 `FAFSA` 缺件清障压降 `29.4%` 暑期新生流失门禁、深夜校园心理危机 `988 / CAPS` `0ms` 温暖抢占热转接）方案**：[中文](./higher-education-admissions-fafsa-financial-aid-ferpa-crisis-voice-selection-faq.md) | [EN](./higher-education-admissions-fafsa-financial-aid-ferpa-crisis-voice-selection-faq.en.md)
+339. **企业级主动参会语音智能体（Teams / Zoom / Webex Active Voice Bot）、多人叠话声纹分离与 Jira/Planner 任务自动化架构（显式按名点呼唤醒与全场参会人 `RBAC` 权限交集 `ACL_Room = ∩ ACL_i` 防当众泄密硬锁、会议室多人叠话声纹分离 `97.9%` 归属率与原话时间戳证据锚定建单门禁、外部访客入会 `0ms` 降级与口头“这段别录”即时清缓存）方案**：[中文](./enterprise-meeting-voice-participant-overlap-diarization-action-item-jira-selection-faq.md) | [EN](./enterprise-meeting-voice-participant-overlap-diarization-action-item-jira-selection-faq.en.md)

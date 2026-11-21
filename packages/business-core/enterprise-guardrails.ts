@@ -8965,6 +8965,36 @@ export function evaluateHigherEdFerpaFafsaCrisisGuard(input: {
   };
 }
 
+export interface MeetingVoiceParticipantDiarizationJiraEvaluation {
+  policyCode: "MEETING-VOICE-PARTICIPANT-DIARIZATION-JIRA-01";
+  meetingVoiceResponseAndTaskSyncAuthorized: boolean;
+  uninvitedInterruptionOrRoomAclLeakBlocked: boolean;
+  externalGuestDownscopeOrOffRecordPauseBridged: boolean;
+}
+
+/**
+ * Deterministic Active Meeting Voice Participant Name-Addressed Wake & Room-Intersection ACL Lock, Overlap Diarization / Timestamp Jira Gate & External-Guest Down-Scoping Guard (`MEETING-VOICE-PARTICIPANT-DIARIZATION-JIRA-01`).
+ */
+export function evaluateMeetingVoiceParticipantDiarizationJiraGuard(input: {
+  botSpeaksOnlyOnExplicitNameAddressAndRoomAclIntersected: boolean;
+  conferenceRoomOverlapDiarizationAndEvidenceAnchoredActionItems: boolean;
+  externalGuestJoinedOrOffTheRecordPauseTriggered: boolean;
+}): MeetingVoiceParticipantDiarizationJiraEvaluation {
+  return {
+    policyCode: "MEETING-VOICE-PARTICIPANT-DIARIZATION-JIRA-01",
+    meetingVoiceResponseAndTaskSyncAuthorized:
+      input.botSpeaksOnlyOnExplicitNameAddressAndRoomAclIntersected &&
+      input.conferenceRoomOverlapDiarizationAndEvidenceAnchoredActionItems &&
+      !input.externalGuestJoinedOrOffTheRecordPauseTriggered,
+    uninvitedInterruptionOrRoomAclLeakBlocked:
+      !input.botSpeaksOnlyOnExplicitNameAddressAndRoomAclIntersected ||
+      !input.conferenceRoomOverlapDiarizationAndEvidenceAnchoredActionItems ||
+      input.externalGuestJoinedOrOffTheRecordPauseTriggered,
+    externalGuestDownscopeOrOffRecordPauseBridged:
+      input.externalGuestJoinedOrOffTheRecordPauseTriggered,
+  };
+}
+
 
 
 
