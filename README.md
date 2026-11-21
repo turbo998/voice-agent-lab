@@ -288,6 +288,7 @@ flowchart LR
 214. **2026–2027 实时语音与多模态最新能力突破选型（Thinker-Talker 双流原生音频模型 Qwen2.5-Omni / Kimi-Audio / Step-Audio vs 闭源 S2S GPT-Realtime / Gemini Live 与 18ms 语义断句 Semantic EoT 架构落地）方案**：[中文](./docs/frontier-2026-duplex-audio-llms-qwen-omni-step-audio-semantic-eot-selection-faq.md) | [EN](./docs/frontier-2026-duplex-audio-llms-qwen-omni-step-audio-semantic-eot-selection-faq.en.md)
 215. **顶奢腕表、高级珠宝与高净值 VIC 私人导购（LVMH / 历峰集团 Richemont / 劳力士 / Salesforce Luxury Clienteling）24×7 语音私享管家（门店金库现货零披露防抢劫硬锁、限量表款反黄牛配额与严禁口头强制搭售锁、Brinks 装甲押运与 CITES 濒危皮表带通关锁）方案**：[中文](./docs/luxury-retail-watch-jewelry-vic-clienteling-brinks-concierge-voice-selection-faq.md) | [EN](./docs/luxury-retail-watch-jewelry-vic-clienteling-brinks-concierge-voice-selection-faq.en.md)
 216. **数字化手术室（Digital OR）WHO 手术安全核查（Time-Out）、无菌台免提阅片与器械纱布清点（Epic OpTime / 卡尔史托斯 Karl Storz / 达芬奇手术室）24×7 语音副驾（划刀前主刀/麻醉/巡回三方左右侧别核对硬锁、关腹前 RFID 纱布缝针零差错闭锁与术中大出血 MTP / 恶性高热 0ms 强切）方案**：[中文](./docs/operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.md) | [EN](./docs/operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.en.md)
+217. **企业级实时语音原生 RAG（Voice-Native Agentic RAG）架构（入库预编译口语摘要、拼音/音素同音词混合检索与零 Markdown 播报护栏：过期失效政策 0ms 拦截硬锁、≤45 字两句话首答锁与低置信度诚实拒答）方案**：[中文](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.md) | [EN](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.en.md)
 
 ---
 

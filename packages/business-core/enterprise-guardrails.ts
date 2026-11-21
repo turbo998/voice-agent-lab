@@ -5323,6 +5323,35 @@ export function evaluateOperatingRoomSurgicalTimeoutVoiceGuard(input: {
   };
 }
 
+export interface VoiceNativeAgenticRagEvaluation {
+  policyCode: "VOICE-NATIVE-AGENTIC-RAG-01";
+  ragSpokenResponseAuthorized: boolean;
+  companionSmsDeepLinkDispatched: boolean;
+  abstainFromGuessingAndEscalateTriggered: boolean;
+}
+
+/**
+ * Deterministic Voice-Native Agentic RAG Effective-Date TTL Lock, Zero-Markdown Brevity Gate & Low-Confidence Abstention Guard (`VOICE-NATIVE-AGENTIC-RAG-01`).
+ */
+export function evaluateVoiceNativeAgenticRagGuard(input: {
+  retrievedChunkEffectiveDateAndJurisdictionValid: boolean;
+  spokenOutputStrippedOfMarkdownUrlsAndUnder45Words: boolean;
+  hybridRetrievalConfidenceBelowThreshold: boolean;
+}): VoiceNativeAgenticRagEvaluation {
+  return {
+    policyCode: "VOICE-NATIVE-AGENTIC-RAG-01",
+    ragSpokenResponseAuthorized:
+      input.retrievedChunkEffectiveDateAndJurisdictionValid &&
+      input.spokenOutputStrippedOfMarkdownUrlsAndUnder45Words &&
+      !input.hybridRetrievalConfidenceBelowThreshold,
+    companionSmsDeepLinkDispatched:
+      input.retrievedChunkEffectiveDateAndJurisdictionValid &&
+      !input.hybridRetrievalConfidenceBelowThreshold,
+    abstainFromGuessingAndEscalateTriggered:
+      input.hybridRetrievalConfidenceBelowThreshold,
+  };
+}
+
 
 
 

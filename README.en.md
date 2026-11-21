@@ -288,6 +288,7 @@ flowchart LR
 214. **2026–2027 Frontier Duplex Audio LLMs (Qwen2.5-Omni / Kimi-Audio / Step-Audio vs. GPT-Realtime / Gemini Live) & Semantic End-of-Turn (EoT) Architecture Selection Guide**: [EN](./docs/frontier-2026-duplex-audio-llms-qwen-omni-step-audio-semantic-eot-selection-faq.en.md) | [中文](./docs/frontier-2026-duplex-audio-llms-qwen-omni-step-audio-semantic-eot-selection-faq.md)
 215. **Luxury Watch, High Jewelry & VIC Private Clienteling (LVMH / Richemont / Salesforce Luxury) 24×7 Voice Concierge: Zero Vault-Stock Disclosure Lock, Anti-Flipper Allocation Gate & Brinks / CITES Dispatch Shield**: [EN](./docs/luxury-retail-watch-jewelry-vic-clienteling-brinks-concierge-voice-selection-faq.en.md) | [中文](./docs/luxury-retail-watch-jewelry-vic-clienteling-brinks-concierge-voice-selection-faq.md)
 216. **Operating Room (OR) WHO Surgical Time-Out, Anesthesia & Sterile-Field Hands-Free Voice Copilot (Epic OpTime / Karl Storz / Da Vinci): 3-Party Laterality Lock, RFID Sponge Count Gate & 0ms MTP Crisis Bridge**: [EN](./docs/operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.en.md) | [中文](./docs/operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.md)
+217. **Voice-Native Agentic RAG Architecture: Ingestion-Time Spoken Summaries, Phonetic Homophone Hybrid Search & Zero-Markdown TTS Gate**: [EN](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.en.md) | [中文](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.md)
 
 ---
 
