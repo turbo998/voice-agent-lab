@@ -5697,6 +5697,36 @@ export function evaluateRoadsideAssistEvFlatbedVoiceGuard(input: {
   };
 }
 
+export interface VetLivestockBiosecurityVcprVoiceEvaluation {
+  policyCode: "VET-LIVESTOCK-BIOSECURITY-VCPR-01";
+  shipmentAndTreatmentReleaseAuthorized: boolean;
+  residueWithdrawalOrSpeciesToxicityBlocked: boolean;
+  epizooticQuarantineAndEmergencyVetBridged: boolean;
+}
+
+/**
+ * Deterministic Veterinary Emergency Triage, Livestock Biosecurity & FARAD Drug-Withdrawal Guard (`VET-LIVESTOCK-BIOSECURITY-VCPR-01`).
+ */
+export function evaluateVetLivestockBiosecurityVcprVoiceGuard(input: {
+  drugWithdrawalPeriodExpiredAndResidueSafe: boolean;
+  vcprVerifiedAndSpeciesSafeDosing: boolean;
+  notifiableEpizooticOrAcuteToxinEmergency: boolean;
+}): VetLivestockBiosecurityVcprVoiceEvaluation {
+  return {
+    policyCode: "VET-LIVESTOCK-BIOSECURITY-VCPR-01",
+    shipmentAndTreatmentReleaseAuthorized:
+      input.drugWithdrawalPeriodExpiredAndResidueSafe &&
+      input.vcprVerifiedAndSpeciesSafeDosing &&
+      !input.notifiableEpizooticOrAcuteToxinEmergency,
+    residueWithdrawalOrSpeciesToxicityBlocked:
+      !input.drugWithdrawalPeriodExpiredAndResidueSafe ||
+      !input.vcprVerifiedAndSpeciesSafeDosing ||
+      input.notifiableEpizooticOrAcuteToxinEmergency,
+    epizooticQuarantineAndEmergencyVetBridged:
+      input.notifiableEpizooticOrAcuteToxinEmergency,
+  };
+}
+
 
 
 

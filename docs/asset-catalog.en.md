@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (229 Bilingual Guides)
+## 3. Solution Architect Selection Guides (230 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -270,3 +270,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 227. **EV Megawatt Charging (MCS / OCPP 2.0.1), V2G Grid Arbitrage & Heavy-Truck Depot 24×7 Voice Dispatch: Zero-Current Connector Unlock Lock, Morning-Route SOC Floor & 0ms BMS Thermal Runaway**: [EN](./ev-megawatt-charging-ocpp-v2g-fleet-depot-thermal-runaway-voice-dispatch-selection-faq.en.md) | [中文](./ev-megawatt-charging-ocpp-v2g-fleet-depot-thermal-runaway-voice-dispatch-selection-faq.md)
 228. **High-Rise Smart Building BMS (BACnet) & ASME A17.1 Elevator Entrapment 24×7 Multimodal Voice AI: Anti-Door-Prying Hoistway Lock, NFPA 92 Smoke-Damper Isolation & 0ms Rescue Bridge**: [EN](./smart-building-bms-elevator-entrapment-asme-a17-smoke-damper-voice-dispatch-selection-faq.en.md) | [中文](./smart-building-bms-elevator-entrapment-asme-a17-smoke-damper-voice-dispatch-selection-faq.md)
 229. **24×7 Roadside Assistance, Highway Breakdown & EV Flatbed Tow Voice Dispatch: Highway Guardrail Safety-First Lock, EV/AWD Flatbed-Only Gate & 0ms Live-Lane Police Bridge**: [EN](./roadside-assistance-auto-breakdown-highway-gore-zone-ev-flatbed-tow-voice-dispatch-selection-faq.en.md) | [中文](./roadside-assistance-auto-breakdown-highway-gore-zone-ev-flatbed-tow-voice-dispatch-selection-faq.md)
+230. **Veterinary Emergency Triage, Livestock Biosecurity & FARAD Drug-Withdrawal Voice AI: Meat/Milk Residue Lock, Cross-Species Toxicity Gate & 0ms WOAH Epizootic Quarantine**: [EN](./veterinary-livestock-biosecurity-woah-vcpr-withdrawal-period-voice-triage-selection-faq.en.md) | [中文](./veterinary-livestock-biosecurity-woah-vcpr-withdrawal-period-voice-triage-selection-faq.md)
