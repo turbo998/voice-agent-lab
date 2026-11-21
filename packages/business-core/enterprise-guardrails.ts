@@ -5494,6 +5494,34 @@ export function evaluateOutboundAmdTcpaOrchestrationVoiceGuard(input: {
   };
 }
 
+export interface MuseumDocentUwbFactLockVoiceEvaluation {
+  policyCode: "MUSEUM-DOCENT-UWB-FACT-LOCK-01";
+  docentSpokenExplanationAuthorized: boolean;
+  folkloreHallucinationBlocked: boolean;
+  conservationFlashLockAndSecurityAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Museum & Cultural Heritage Multimodal Docent Curatorial CIDOC-CRM Fact Lock, UWB/Visual Alignment & Conservation Flash Guard (`MUSEUM-DOCENT-UWB-FACT-LOCK-01`).
+ */
+export function evaluateMuseumDocentUwbFactLockVoiceGuard(input: {
+  curatorialKnowledgeGraphCitationVerified: boolean;
+  uwbPositionAndVisualArtifactIdAligned: boolean;
+  cameraFlashEnabledInLightSensitiveZoneOrBarrierBreach: boolean;
+}): MuseumDocentUwbFactLockVoiceEvaluation {
+  return {
+    policyCode: "MUSEUM-DOCENT-UWB-FACT-LOCK-01",
+    docentSpokenExplanationAuthorized:
+      input.curatorialKnowledgeGraphCitationVerified &&
+      input.uwbPositionAndVisualArtifactIdAligned &&
+      !input.cameraFlashEnabledInLightSensitiveZoneOrBarrierBreach,
+    folkloreHallucinationBlocked:
+      !input.curatorialKnowledgeGraphCitationVerified,
+    conservationFlashLockAndSecurityAlertTriggered:
+      input.cameraFlashEnabledInLightSensitiveZoneOrBarrierBreach,
+  };
+}
+
 
 
 

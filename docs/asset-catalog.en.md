@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (222 Bilingual Guides)
+## 3. Solution Architect Selection Guides (223 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -263,3 +263,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 220. **Voice AI Security, Acoustic Jailbreak Defense & OWASP Agentic Tool Firewall: Zero-LLM-Identity Tool Binding (Anti-IDOR), Dual-Track S2S/STT Alignment & 0ms Debug-Override Lockout**: [EN](./voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.en.md) | [中文](./voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.md)
 221. **Industrial Field Service, ATEX Zone-1 Hands-Free Inspection & SAP PM / Maximo LOTO Voice Copilot: Dual-Vocal Call-and-Response Lock, Zero-Energy Try-Start Gate & 0ms H2S/Man-Down Bridge**: [EN](./industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.en.md) | [中文](./industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.md)
 222. **Enterprise Outbound Voice Campaigns, Speculative Sub-450ms AMD, Voicemail Beep Detection & TCPA/DNC Governance: Eliminating the 2.5s Telemarketer Pause & 0ms Opt-Out Lock**: [EN](./outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.en.md) | [中文](./outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.md)
+223. **Museum, Cultural Heritage & Science Center Multimodal AI Voice Docent: Curatorial CIDOC-CRM Fact Lock, UWB/Visual 30cm Vitrine Alignment & 0ms Conservation Flash Shield**: [EN](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.en.md) | [中文](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.md)
