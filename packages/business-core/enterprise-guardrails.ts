@@ -8875,6 +8875,36 @@ export function evaluateB2bProcurementAribaCoupaAsnGuard(input: {
   };
 }
 
+export interface MultilingualCodeswitchingAsrTtsEvaluation {
+  policyCode: "MULTILINGUAL-CODESWITCHING-ASR-TTS-01";
+  codeSwitchedTurnAndSynthesisAuthorized: boolean;
+  phoneticCorruptionOrVoicePersonaBreakBlocked: boolean;
+  dominantLanguageMirroringBridged: boolean;
+}
+
+/**
+ * Deterministic Multilingual Intra-Sentential Code-Switching Latin Entity Preservation Lock, Single-Persona Multilingual TTS Gate & <300ms Continuous LID Mirror Guard (`MULTILINGUAL-CODESWITCHING-ASR-TTS-01`).
+ */
+export function evaluateMultilingualCodeswitchingAsrTtsGuard(input: {
+  intraSentenceCodeSwitchingPreservesLatinTechEntitiesNoPhoneticCorruption: boolean;
+  singleMultilingualVoicePersonaMaintainedAcrossLanguageSwitch: boolean;
+  callerDominantLanguageShiftDetectedUnder300ms: boolean;
+}): MultilingualCodeswitchingAsrTtsEvaluation {
+  return {
+    policyCode: "MULTILINGUAL-CODESWITCHING-ASR-TTS-01",
+    codeSwitchedTurnAndSynthesisAuthorized:
+      input.intraSentenceCodeSwitchingPreservesLatinTechEntitiesNoPhoneticCorruption &&
+      input.singleMultilingualVoicePersonaMaintainedAcrossLanguageSwitch &&
+      !input.callerDominantLanguageShiftDetectedUnder300ms,
+    phoneticCorruptionOrVoicePersonaBreakBlocked:
+      !input.intraSentenceCodeSwitchingPreservesLatinTechEntitiesNoPhoneticCorruption ||
+      !input.singleMultilingualVoicePersonaMaintainedAcrossLanguageSwitch ||
+      input.callerDominantLanguageShiftDetectedUnder300ms,
+    dominantLanguageMirroringBridged:
+      input.callerDominantLanguageShiftDetectedUnder300ms,
+  };
+}
+
 
 
 
