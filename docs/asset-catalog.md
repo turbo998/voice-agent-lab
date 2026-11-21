@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（267 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（268 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -308,3 +308,4 @@
 265. **制浆造纸基地（玖龙纸业 / 太阳纸业 / 国际纸业 IP / 维美德 Valmet / 福伊特 Voith）、碱回收炉（BLRBAC）与高速纸机 24×7 免提语音副驾方案（入炉黑液干固形物 ≥58% 双折光仪防熔融物-水物理大爆炸硬锁、1,800m/min 压光/卷取咬口与损纸碎浆机 H2S/LOTO 门禁及炉管漏水 0ms 严禁现场看火孔窥视/防爆室远程 ESP 快速排空强切）**：[中文](./pulp-paper-mill-kraft-recovery-boiler-black-liquor-smelt-water-clo2-bleach-reel-nip-voice-copilot-selection-faq.md) | [EN](./pulp-paper-mill-kraft-recovery-boiler-black-liquor-smelt-water-clo2-bleach-reel-nip-voice-copilot-selection-faq.en.md)
 266. **浮法玻璃、汽车安全玻璃深加工与日用制瓶厂（福耀玻璃 / 信义玻璃 / 圣戈班 Saint-Gobain / 康宁 Corning）24×7 免提语音副驾方案（冷端 3 吨大板玻璃 A 字架防倾倒压杆与正面坠落区净空硬锁、1,100°C 锡槽氮氢正压与 IS 制瓶机截料涂模 LOTO 门禁及 1,600°C 熔窑穿孔漏液 0ms 底坑撤离与外部水枪凝固堵漏强切）**：[中文](./glass-manufacturing-float-furnace-tin-bath-h2-stillage-a-frame-is-machine-voice-copilot-selection-faq.md) | [EN](./glass-manufacturing-float-furnace-tin-bath-h2-stillage-a-frame-is-machine-voice-copilot-selection-faq.en.md)
 267. **轮胎与橡胶制造工厂（米其林 Michelin / 普利司通 Bridgestone / 中策橡胶 / 赛轮轮胎）24×7 免提语音副驾方案（180°C 硫化机胶囊 0.00 MPa 双表零残压开模与换模机械安全销硬锁、生胎 RFID 规格匹配模具与跨周 DOT 周号锡牌防错门禁及双辊开炼机碰杆 0ms 动态反转退辊松缝强切）**：[中文](./tire-rubber-manufacturing-banbury-mixer-curing-press-steam-bladder-dot-tin-voice-copilot-selection-faq.md) | [EN](./tire-rubber-manufacturing-banbury-mixer-curing-press-steam-bladder-dot-tin-voice-copilot-selection-faq.en.md)
+268. **纺织印染、面料后整理与成衣制造工厂（申洲国际 / 鲁泰纺织 / 盛虹 / 东丽 Toray / 优衣库与 Inditex 供应链）24×7 免提语音副驾方案（135°C 高温高压染缸 <80°C 与 0.00 MPa 开盖防暴沸硬锁、保险粉防潮禁水与硫化碱混酸防 H2S 门禁、童装断针 100% 残片视觉拼合锁及定型机起火 0ms 关风门蒸汽窒息强切）**：[中文](./textile-dyeing-finishing-garment-jet-dyer-hydrosulfite-zdhc-broken-needle-voice-copilot-selection-faq.md) | [EN](./textile-dyeing-finishing-garment-jet-dyer-hydrosulfite-zdhc-broken-needle-voice-copilot-selection-faq.en.md)

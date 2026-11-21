@@ -6835,6 +6835,36 @@ export function evaluateTireRubberCuringBanburyDotVoiceGuard(input: {
   };
 }
 
+export interface TextileDyeingHthpHydrosulfiteNeedleVoiceEvaluation {
+  policyCode: "TEXTILE-DYEING-HTHP-HYDROSULFITE-NEEDLE-01";
+  dyerHatchAndNeedleDispenseAuthorized: boolean;
+  boilOverRiskOrMissingNeedleFragmentBlocked: boolean;
+  stenterSteamQuenchAndBundleQuarantineBridged: boolean;
+}
+
+/**
+ * Deterministic Textile HTHP Jet Dyer (<80°C & 0.00 MPa) Anti-Boil-Over Lock, Hydrosulfite/Sulfide Gate & 100% Broken-Needle Fragment Guard (`TEXTILE-DYEING-HTHP-HYDROSULFITE-NEEDLE-01`).
+ */
+export function evaluateTextileDyeingHthpHydrosulfiteNeedleVoiceGuard(input: {
+  hthpDyerUnder80cZeroPressureAndChemicalSafe: boolean;
+  brokenNeedleCompleteAndZdhcMrslVerified: boolean;
+  stenterFireSingeingStallOrEtpH2sAlarm: boolean;
+}): TextileDyeingHthpHydrosulfiteNeedleVoiceEvaluation {
+  return {
+    policyCode: "TEXTILE-DYEING-HTHP-HYDROSULFITE-NEEDLE-01",
+    dyerHatchAndNeedleDispenseAuthorized:
+      input.hthpDyerUnder80cZeroPressureAndChemicalSafe &&
+      input.brokenNeedleCompleteAndZdhcMrslVerified &&
+      !input.stenterFireSingeingStallOrEtpH2sAlarm,
+    boilOverRiskOrMissingNeedleFragmentBlocked:
+      !input.hthpDyerUnder80cZeroPressureAndChemicalSafe ||
+      !input.brokenNeedleCompleteAndZdhcMrslVerified ||
+      input.stenterFireSingeingStallOrEtpH2sAlarm,
+    stenterSteamQuenchAndBundleQuarantineBridged:
+      input.stenterFireSingeingStallOrEtpH2sAlarm,
+  };
+}
+
 
 
 
