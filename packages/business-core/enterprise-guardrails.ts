@@ -7705,6 +7705,36 @@ export function evaluateSteelMillBofCasterOsha1910VoiceGuard(input: {
   };
 }
 
+export interface PetrochemicalRefineryTurnaroundApi2217VoiceEvaluation {
+  policyCode: "PETROCHEMICAL-REFINERY-TURNAROUND-API2217-01";
+  turnaroundEntryAndStartupAuthorized: boolean;
+  pyrophoricFeSOrSourGasExposureBlocked: boolean;
+  sisEmergencyDepressuringWaterSprayAndCrossWindEvacBridged: boolean;
+}
+
+/**
+ * Deterministic Petrochemical Refinery Turnaround 100% RFID Blind-Flange Ledger Lock, Pyrophoric FeS Wet-Passivation Gate & 0ms SIS Water-Drench Guard (`PETROCHEMICAL-REFINERY-TURNAROUND-API2217-01`).
+ */
+export function evaluatePetrochemicalRefineryTurnaroundApi2217VoiceGuard(input: {
+  blindFlangeMasterLedger100PctAndZeroPressureSafe: boolean;
+  pyrophoricIronSulfideKmnO4WetPassivationAndH2sSafe: boolean;
+  h2sSourGasReleaseTowerExothermOrFlareHighLiquid: boolean;
+}): PetrochemicalRefineryTurnaroundApi2217VoiceEvaluation {
+  return {
+    policyCode: "PETROCHEMICAL-REFINERY-TURNAROUND-API2217-01",
+    turnaroundEntryAndStartupAuthorized:
+      input.blindFlangeMasterLedger100PctAndZeroPressureSafe &&
+      input.pyrophoricIronSulfideKmnO4WetPassivationAndH2sSafe &&
+      !input.h2sSourGasReleaseTowerExothermOrFlareHighLiquid,
+    pyrophoricFeSOrSourGasExposureBlocked:
+      !input.blindFlangeMasterLedger100PctAndZeroPressureSafe ||
+      !input.pyrophoricIronSulfideKmnO4WetPassivationAndH2sSafe ||
+      input.h2sSourGasReleaseTowerExothermOrFlareHighLiquid,
+    sisEmergencyDepressuringWaterSprayAndCrossWindEvacBridged:
+      input.h2sSourGasReleaseTowerExothermOrFlareHighLiquid,
+  };
+}
+
 
 
 
