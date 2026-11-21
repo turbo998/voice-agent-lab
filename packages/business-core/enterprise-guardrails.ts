@@ -9265,6 +9265,36 @@ export function evaluateMulticloudVoiceActiveFailoverGuard(input: {
   };
 }
 
+export interface RidehailingRentalSafetyHandsfreeEvaluation {
+  policyCode: "RIDEHAILING-RENTAL-SAFETY-HANDSFREE-01";
+  mobilityDispatchAndRentalCheckoutAuthorized: boolean;
+  realPhoneLeakOrDistractedDrivingUiBlocked: boolean;
+  rideCheckAndSilentDuress911Bridged: boolean;
+}
+
+/**
+ * Deterministic Ride-Hailing & Car Rental Ephemeral Number-Masking / Pre-Trip Baseline Lock, >5km/h Eyes-Free Dispatch Gate & 0ms Silent-Duress 911 Guard (`RIDEHAILING-RENTAL-SAFETY-HANDSFREE-01`).
+ */
+export function evaluateRidehailingRentalSafetyHandsfreeGuard(input: {
+  driverAndRiderRealPhoneMaskedAndRentalPreInspectionLogged: boolean;
+  vehicleMovingOver5KmhEnforcesHandsFree6WordEyesFreeMode: boolean;
+  routeDeviationAnomalyOrSilentDuressCodewordTriggers911Bridge: boolean;
+}): RidehailingRentalSafetyHandsfreeEvaluation {
+  return {
+    policyCode: "RIDEHAILING-RENTAL-SAFETY-HANDSFREE-01",
+    mobilityDispatchAndRentalCheckoutAuthorized:
+      input.driverAndRiderRealPhoneMaskedAndRentalPreInspectionLogged &&
+      input.vehicleMovingOver5KmhEnforcesHandsFree6WordEyesFreeMode &&
+      !input.routeDeviationAnomalyOrSilentDuressCodewordTriggers911Bridge,
+    realPhoneLeakOrDistractedDrivingUiBlocked:
+      !input.driverAndRiderRealPhoneMaskedAndRentalPreInspectionLogged ||
+      !input.vehicleMovingOver5KmhEnforcesHandsFree6WordEyesFreeMode ||
+      input.routeDeviationAnomalyOrSilentDuressCodewordTriggers911Bridge,
+    rideCheckAndSilentDuress911Bridged:
+      input.routeDeviationAnomalyOrSilentDuressCodewordTriggers911Bridge,
+  };
+}
+
 
 
 
