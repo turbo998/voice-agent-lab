@@ -8665,6 +8665,36 @@ export function evaluateCrossBorderParcelCustomsLastmileGuard(input: {
   };
 }
 
+export interface InsuranceFnolVideoAppraisalGuidewireEvaluation {
+  policyCode: "INSURANCE-FNOL-VIDEO-APPRAISAL-GUIDEWIRE-01";
+  straightThroughFnolAndFastPayAuthorized: boolean;
+  gallerySpoofOrCoveragePromiseBlocked: boolean;
+  emergencyEmsTowAndBiAdjusterBridged: boolean;
+}
+
+/**
+ * Deterministic Auto/Property Insurance FNOL Live WebRTC VIN/Damage Anti-Spoof Lock, <=$800 Fast-Pay Gate & 0ms Highway/Airbag Safety Preemption Guard (`INSURANCE-FNOL-VIDEO-APPRAISAL-GUIDEWIRE-01`).
+ */
+export function evaluateInsuranceFnolVideoAppraisalGuidewireGuard(input: {
+  liveCameraVinAndDamageKeyframesVerifiedNoGalleryUpload: boolean;
+  zeroVerbalCoverageLiabilityPromiseAndSmallClaimUnder800Cap: boolean;
+  bodilyInjuryAirbagDeploymentOrUnivableVehicleEmergencyPreemption: boolean;
+}): InsuranceFnolVideoAppraisalGuidewireEvaluation {
+  return {
+    policyCode: "INSURANCE-FNOL-VIDEO-APPRAISAL-GUIDEWIRE-01",
+    straightThroughFnolAndFastPayAuthorized:
+      input.liveCameraVinAndDamageKeyframesVerifiedNoGalleryUpload &&
+      input.zeroVerbalCoverageLiabilityPromiseAndSmallClaimUnder800Cap &&
+      !input.bodilyInjuryAirbagDeploymentOrUnivableVehicleEmergencyPreemption,
+    gallerySpoofOrCoveragePromiseBlocked:
+      !input.liveCameraVinAndDamageKeyframesVerifiedNoGalleryUpload ||
+      !input.zeroVerbalCoverageLiabilityPromiseAndSmallClaimUnder800Cap ||
+      input.bodilyInjuryAirbagDeploymentOrUnivableVehicleEmergencyPreemption,
+    emergencyEmsTowAndBiAdjusterBridged:
+      input.bodilyInjuryAirbagDeploymentOrUnivableVehicleEmergencyPreemption,
+  };
+}
+
 
 
 
