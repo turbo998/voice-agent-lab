@@ -5182,6 +5182,35 @@ export function evaluateSttTtsVoiceCloningMatrixGuard(input: {
   };
 }
 
+export interface OmnichannelIngressVoiceIsolationEvaluation {
+  policyCode: "OMNICHANNEL-INGRESS-VOICE-ISOLATION-01";
+  bargeInAndTurnCommitAuthorized: boolean;
+  bystanderSpeechFiltered: boolean;
+  halfDuplexFallbackOrSessionHoldTriggered: boolean;
+}
+
+/**
+ * Deterministic Omnichannel Voice Ingress Primary-Speaker Isolation, Self-Echo Loop Breaker & 15s Network Continuity Guard (`OMNICHANNEL-INGRESS-VOICE-ISOLATION-01`).
+ */
+export function evaluateOmnichannelIngressVoiceIsolationGuard(input: {
+  primaryCallerVoiceprintAndNearFieldSnrVerified: boolean;
+  hardwareAecActiveAndZeroSelfEchoLoopDetected: boolean;
+  networkHandoverOrEchoFeedbackLoopDetected: boolean;
+}): OmnichannelIngressVoiceIsolationEvaluation {
+  return {
+    policyCode: "OMNICHANNEL-INGRESS-VOICE-ISOLATION-01",
+    bargeInAndTurnCommitAuthorized:
+      input.primaryCallerVoiceprintAndNearFieldSnrVerified &&
+      input.hardwareAecActiveAndZeroSelfEchoLoopDetected &&
+      !input.networkHandoverOrEchoFeedbackLoopDetected,
+    bystanderSpeechFiltered:
+      !input.primaryCallerVoiceprintAndNearFieldSnrVerified,
+    halfDuplexFallbackOrSessionHoldTriggered:
+      input.networkHandoverOrEchoFeedbackLoopDetected ||
+      !input.hardwareAecActiveAndZeroSelfEchoLoopDetected,
+  };
+}
+
 
 
 

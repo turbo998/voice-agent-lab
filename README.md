@@ -283,6 +283,7 @@ flowchart LR
 209. **企业级实时语音合规录音、PCI-DSS 4.0 落盘前敏感音频消音与 100% 自动化全量质检（Automated QA）架构（双声道分轨 WORM 防篡改归档硬锁、落盘前内存态卡号 CVV 消音锁与话后 60 秒漏播条款自动补救闭环）方案**：[中文](./docs/enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.md) | [EN](./docs/enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.en.md)
 210. **实时语音开发与编排框架全景横向选型（LiveKit Agents vs Pipecat vs Azure Communication Services Call Automation vs Twilio Voice / Vapi / Retell AI：自建开源 vs 云原生 CPaaS vs 全托管商业平台 4 万分钟/月 TCO 拐点与 K8s 零掉线缩容硬锁）方案**：[中文](./docs/voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.md) | [EN](./docs/voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.en.md)
 211. **企业级流式语音识别（STT）、语音合成（TTS）与品牌音色克隆全景选型（Azure AI Speech CNV/HD vs ElevenLabs Flash v2.5 vs Deepgram Nova-3/Aura-2 vs Cartesia Sonic-2 vs 开源 Whisper/CosyVoice 2/Fish Speech：配音员声纹挑战短语授权硬锁、多音字与专有名词 IPA 音标字典锁、>350ms 抖动热备切流）方案**：[中文](./docs/stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.md) | [EN](./docs/stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.en.md)
+212. **浏览器 WebRTC、移动 App、固话 SIP 与 WhatsApp 多渠道接入网关及主说话人背景人声隔离（Target-Speaker Extraction：防旁人/电视串音误打断硬锁、免提扬声器回声自激 0ms 破环锁与 Wi-Fi 切 5G 15 秒不断线恢复）方案**：[中文](./docs/omnichannel-voice-ingress-webrtc-sip-whatsapp-background-voice-isolation-selection-faq.md) | [EN](./docs/omnichannel-voice-ingress-webrtc-sip-whatsapp-background-voice-isolation-selection-faq.en.md)
 
 ---
 

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (211 Bilingual Guides)
+## 3. Solution Architect Selection Guides (212 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -252,3 +252,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 209. **Enterprise Compliance Recording, Pre-Disk PCI-DSS v4.0 Audio Redaction & 100% Automated Post-Call QA (SEC 17a-4 Dual-Track WORM & 60s Auto-Cure Loop)**: [EN](./enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.en.md) | [中文](./enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.md)
 210. **Real-Time Voice Orchestration Framework Benchmark (LiveKit Agents vs. Pipecat vs. Azure ACS Call Automation vs. Twilio / Vapi / Retell AI): 40k Min/Mo TCO Inflection & K8s Zero-Drop Call Drain**: [EN](./voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.en.md) | [中文](./voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.md)
 211. **Enterprise Streaming STT, Neural TTS & Brand Voice Cloning Benchmark (Azure AI Speech vs. ElevenLabs Flash v2.5 vs. Deepgram Nova-3/Aura-2 vs. Cartesia Sonic-2 vs. Open-Source CosyVoice 2/Fish Speech): Consent Lock, IPA Lexicon Gate & 350ms Failover**: [EN](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.en.md) | [中文](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.md)
+212. **Omnichannel Voice Ingress (WebRTC / Mobile / SIP / WhatsApp) & Primary-Speaker Voice Isolation: Bystander Speech Shield, Self-Echo Loop Breaker & 15s Wi-Fi↔5G Session Continuity**: [EN](./omnichannel-voice-ingress-webrtc-sip-whatsapp-background-voice-isolation-selection-faq.en.md) | [中文](./omnichannel-voice-ingress-webrtc-sip-whatsapp-background-voice-isolation-selection-faq.md)
