@@ -6175,6 +6175,36 @@ export function evaluateFertilityIvfCryobankWitnessVoiceGuard(input: {
   };
 }
 
+export interface WasteMrfLithiumHotloadVoiceEvaluation {
+  policyCode: "WASTE-MRF-LITHIUM-HOTLOAD-01";
+  curbsidePickupAndBalerAccessAuthorized: boolean;
+  lithiumPropaneInCartOrUnlockedBalerBlocked: boolean;
+  hotLoadAsphaltPadAndFireDispatchBridged: boolean;
+}
+
+/**
+ * Deterministic Municipal Waste & MRF Lithium-Ion Compactor Ban, Baler LOTO & 0ms Hot-Load Dump Guard (`WASTE-MRF-LITHIUM-HOTLOAD-01`).
+ */
+export function evaluateWasteMrfLithiumHotloadVoiceGuard(input: {
+  lithiumBatteryAndPressurizedTankExcludedFromCompactor: boolean;
+  hazmatAsbestosFreonAndBalerLotoVerified: boolean;
+  smokingHotLoadBalerJamOrRadiationAlarm: boolean;
+}): WasteMrfLithiumHotloadVoiceEvaluation {
+  return {
+    policyCode: "WASTE-MRF-LITHIUM-HOTLOAD-01",
+    curbsidePickupAndBalerAccessAuthorized:
+      input.lithiumBatteryAndPressurizedTankExcludedFromCompactor &&
+      input.hazmatAsbestosFreonAndBalerLotoVerified &&
+      !input.smokingHotLoadBalerJamOrRadiationAlarm,
+    lithiumPropaneInCartOrUnlockedBalerBlocked:
+      !input.lithiumBatteryAndPressurizedTankExcludedFromCompactor ||
+      !input.hazmatAsbestosFreonAndBalerLotoVerified ||
+      input.smokingHotLoadBalerJamOrRadiationAlarm,
+    hotLoadAsphaltPadAndFireDispatchBridged:
+      input.smokingHotLoadBalerJamOrRadiationAlarm,
+  };
+}
+
 
 
 

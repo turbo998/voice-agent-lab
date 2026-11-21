@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（245 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（246 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -286,3 +286,4 @@
 243. **高校与医药研发化学湿实验室（Wet Lab）、通风橱免提实验记录（Benchling ELN）与危化品 SDS 24×7 语音副驾方案（NOAA CAMEO 废液混配爆炸与水敏自燃试剂硬锁、通风橱面风速与超期醚类过氧化物门禁及氢氟酸 HF 溅射 0ms 葡萄糖酸钙急救强切）**：[中文](./university-wet-lab-chemical-fume-hood-sds-hydrofluoric-acid-pyrophoric-voice-copilot-selection-faq.md) | [EN](./university-wet-lab-chemical-fume-hood-sds-hydrofluoric-acid-pyrophoric-voice-copilot-selection-faq.en.md)
 244. **万人大型体育场馆、超级演唱会与赛事运营（FIFA 世界杯 / 鸟巢 / 梅奔中心 / Ticketmaster）24×7 多模态语音方案（防踩踏人群密度 <4.0 人/㎡ 动态分流硬锁、8 英里雷暴避险与球员脑震荡 SCAT6 禁当日返场硬锁及看台心脏骤停 0ms 球票排座反查与 AED 强切）**：[中文](./stadium-mega-event-crowd-crush-turnstile-concussion-lightning-shelter-voice-concierge-selection-faq.md) | [EN](./stadium-mega-event-crowd-crush-turnstile-concussion-lightning-shelter-voice-concierge-selection-faq.en.md)
 245. **生殖医学中心（IVF 试管婴儿：北医三院 / 锦欣生殖 / Kindbody）、胚胎实验室双人电子核对（RI Witness）与液氮罐守护 24×7 语音方案（36 小时破卵针 Trigger Shot 分钟级与手术室重排硬锁、配子/胚胎 RFID 与双胚胎师声纹防错配硬锁及重度 OHSS/液氮失温 0ms 强切）**：[中文](./fertility-ivf-embryology-cryobank-liquid-nitrogen-witness-hcg-trigger-voice-concierge-selection-faq.md) | [EN](./fertility-ivf-embryology-cryobank-liquid-nitrogen-witness-hcg-trigger-voice-concierge-selection-faq.en.md)
+246. **城市环卫垃圾清运、再生资源分拣中心（MRF：Waste Management / 威立雅 / 光大环境）与垃圾压缩车防火 24×7 语音方案（锂电池/电子烟/丙烷气罐严禁入压缩桶硬锁、石棉/医疗针头分流与打包机 LOTO 锁及车厢冒烟 Hot Load 0ms 空旷安全卸料坪领航强切）**：[中文](./municipal-waste-recycling-mrf-lithium-battery-compactor-fire-hazmat-voice-dispatch-selection-faq.md) | [EN](./municipal-waste-recycling-mrf-lithium-battery-compactor-fire-hazmat-voice-dispatch-selection-faq.en.md)
