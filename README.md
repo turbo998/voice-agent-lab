@@ -300,6 +300,7 @@ flowchart LR
 226. **精准医学肿瘤分子病理（NGS 基因测序）与遗传咨询（Genetic Counseling：Illumina / Foundation Medicine / 华大基因 / Epic Beaker Genomics）多模态语音方案（ACMG/AMP Class 3 VUS 意义未明变异非临床干预硬锁、CLIA/CAP 病理医师终审签字门禁与高危 BRCA/林奇综合征 0ms 强切执业遗传咨询师）**：[中文](./docs/genomic-molecular-pathology-acmg-variant-counseling-clia-cap-voice-selection-faq.md) | [EN](./docs/genomic-molecular-pathology-acmg-variant-counseling-clia-cap-voice-selection-faq.en.md)
 227. **电动重卡兆瓦级超充（MCS / OCPP 2.0.1）、V2G 车网互动与新能源车队场站（特来电 / 宁德时代换电 / ChargePoint / ABB）24×7 语音调度方案（零电流与 <60V DC 退电拔枪防电弧硬锁、早班发车保底 SOC 防趴窝硬锁与 BMS 电池热失控 0ms 脱扣强切）**：[中文](./docs/ev-megawatt-charging-ocpp-v2g-fleet-depot-thermal-runaway-voice-dispatch-selection-faq.md) | [EN](./docs/ev-megawatt-charging-ocpp-v2g-fleet-depot-thermal-runaway-voice-dispatch-selection-faq.en.md)
 228. **超高层智慧楼宇自控（BMS / BACnet）与电梯困人应急对讲（奥的斯 Otis ONE / 通力 KONE / 迅达 / ASME A17.1）24×7 多模态语音方案（非平层禁开门与严禁私扒轿门防坠井硬锁、BACnet Priority 1–8 消防正压排烟风阀隔离锁与 0ms 消防控制室 FCC 强切）**：[中文](./docs/smart-building-bms-elevator-entrapment-asme-a17-smoke-damper-voice-dispatch-selection-faq.md) | [EN](./docs/smart-building-bms-elevator-entrapment-asme-a17-smoke-damper-voice-dispatch-selection-faq.en.md)
+229. **汽车道路救援、高速抛锚与新能源车拖车（AAA / 安盛救援 / 平安好车主 / 车企 SOS bCall）24×7 语音调度方案（高速护栏外安全撤离首问硬锁、纯电/四驱全落地平板拖车防反电动势烧毁电机硬锁与主线行车道趴窝 0ms 122 交警强切）**：[中文](./docs/roadside-assistance-auto-breakdown-highway-gore-zone-ev-flatbed-tow-voice-dispatch-selection-faq.md) | [EN](./docs/roadside-assistance-auto-breakdown-highway-gore-zone-ev-flatbed-tow-voice-dispatch-selection-faq.en.md)
 
 ---
 

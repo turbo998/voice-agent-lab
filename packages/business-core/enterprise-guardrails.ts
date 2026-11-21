@@ -5667,6 +5667,36 @@ export function evaluateSmartBuildingElevatorBmsVoiceGuard(input: {
   };
 }
 
+export interface RoadsideAssistEvFlatbedVoiceEvaluation {
+  policyCode: "ROADSIDE-ASSIST-EV-FLATBED-01";
+  towDispatchAuthorized: boolean;
+  commercialIntakeSuspendedOrWheelLiftBlocked: boolean;
+  highwayPatrolAndCrashAttenuatorBridged: boolean;
+}
+
+/**
+ * Deterministic 24x7 Roadside Assistance Highway Guardrail Safety-First, EV/AWD Flatbed-Only & 0ms Live-Lane Police Guard (`ROADSIDE-ASSIST-EV-FLATBED-01`).
+ */
+export function evaluateRoadsideAssistEvFlatbedVoiceGuard(input: {
+  driverAndPassengersEvacuatedBehindGuardrail: boolean;
+  evOrAwdFlatbedAndSkatesMatched: boolean;
+  activeHighwayLaneStallOrAirbagEcallOrFire: boolean;
+}): RoadsideAssistEvFlatbedVoiceEvaluation {
+  return {
+    policyCode: "ROADSIDE-ASSIST-EV-FLATBED-01",
+    towDispatchAuthorized:
+      input.driverAndPassengersEvacuatedBehindGuardrail &&
+      input.evOrAwdFlatbedAndSkatesMatched &&
+      !input.activeHighwayLaneStallOrAirbagEcallOrFire,
+    commercialIntakeSuspendedOrWheelLiftBlocked:
+      !input.driverAndPassengersEvacuatedBehindGuardrail ||
+      !input.evOrAwdFlatbedAndSkatesMatched ||
+      input.activeHighwayLaneStallOrAirbagEcallOrFire,
+    highwayPatrolAndCrashAttenuatorBridged:
+      input.activeHighwayLaneStallOrAirbagEcallOrFire,
+  };
+}
+
 
 
 
