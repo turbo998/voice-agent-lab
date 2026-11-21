@@ -7165,6 +7165,36 @@ export function evaluateHeatTreatingFurnaceNfpa86QuenchVoiceGuard(input: {
   };
 }
 
+export interface FoundryCastingInductionWetscrapVoiceEvaluation {
+  policyCode: "FOUNDRY-CASTING-INDUCTION-WETSCRAP-01";
+  scrapChargeAndFurnaceTiltAuthorized: boolean;
+  wetScrapOrColdLadlePitBlocked: boolean;
+  inverterTripAndEmergencyCoilWaterBridged: boolean;
+}
+
+/**
+ * Deterministic Foundry Metal Casting & Induction Furnace Wet-Scrap >=350°C Lock, Ladle Preheat & Dry Run-Out Pit Gate & 0ms Crucible Earth-Fault Coil Guard (`FOUNDRY-CASTING-INDUCTION-WETSCRAP-01`).
+ */
+export function evaluateFoundryCastingInductionWetscrapVoiceGuard(input: {
+  scrapPreheat350cAndHollowContainerClearSafe: boolean;
+  ladlePreheat850cAndEmergencyPitDrySafe: boolean;
+  crucibleGroundFaultCoilLeakOrRunoutEmergency: boolean;
+}): FoundryCastingInductionWetscrapVoiceEvaluation {
+  return {
+    policyCode: "FOUNDRY-CASTING-INDUCTION-WETSCRAP-01",
+    scrapChargeAndFurnaceTiltAuthorized:
+      input.scrapPreheat350cAndHollowContainerClearSafe &&
+      input.ladlePreheat850cAndEmergencyPitDrySafe &&
+      !input.crucibleGroundFaultCoilLeakOrRunoutEmergency,
+    wetScrapOrColdLadlePitBlocked:
+      !input.scrapPreheat350cAndHollowContainerClearSafe ||
+      !input.ladlePreheat850cAndEmergencyPitDrySafe ||
+      input.crucibleGroundFaultCoilLeakOrRunoutEmergency,
+    inverterTripAndEmergencyCoilWaterBridged:
+      input.crucibleGroundFaultCoilLeakOrRunoutEmergency,
+  };
+}
+
 
 
 
