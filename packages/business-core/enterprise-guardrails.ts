@@ -5155,6 +5155,33 @@ export function evaluateVoiceOrchestrationFrameworkMatrixGuard(input: {
   };
 }
 
+export interface SttTtsVoiceCloningMatrixEvaluation {
+  policyCode: "STT-TTS-VOICE-CLONING-MATRIX-01";
+  clonedBrandVoiceDeploymentAuthorized: boolean;
+  domainSpeechSessionReady: boolean;
+  hotSwapBackupTtsEngineTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise STT, TTS & Brand Voice Cloning Consent Lock, IPA Lexicon Gate & 350ms Failover Guard (`STT-TTS-VOICE-CLONING-MATRIX-01`).
+ */
+export function evaluateSttTtsVoiceCloningMatrixGuard(input: {
+  voiceTalentVerbalConsentAndLicenseActive: boolean;
+  customPhraseListAndPhonemeLexiconLoaded: boolean;
+  primaryTtsTtfbAbove350msOrHttp5xx: boolean;
+}): SttTtsVoiceCloningMatrixEvaluation {
+  return {
+    policyCode: "STT-TTS-VOICE-CLONING-MATRIX-01",
+    clonedBrandVoiceDeploymentAuthorized:
+      input.voiceTalentVerbalConsentAndLicenseActive &&
+      input.customPhraseListAndPhonemeLexiconLoaded,
+    domainSpeechSessionReady:
+      input.customPhraseListAndPhonemeLexiconLoaded,
+    hotSwapBackupTtsEngineTriggered:
+      input.primaryTtsTtfbAbove350msOrHttp5xx,
+  };
+}
+
 
 
 

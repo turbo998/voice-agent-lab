@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (210 Bilingual Guides)
+## 3. Solution Architect Selection Guides (211 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -251,3 +251,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 208. **Enterprise Multi-Agent Voice Orchestration & Sub-Agent Handoff Graph (LiveKit Agents vs. Pipecat Flows vs. LangGraph): Prerequisite Auth Contract Lock, Silent Single-Persona Handoff & Anti-Ping-Pong Loop Breaker**: [EN](./multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.en.md) | [中文](./multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.md)
 209. **Enterprise Compliance Recording, Pre-Disk PCI-DSS v4.0 Audio Redaction & 100% Automated Post-Call QA (SEC 17a-4 Dual-Track WORM & 60s Auto-Cure Loop)**: [EN](./enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.en.md) | [中文](./enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.md)
 210. **Real-Time Voice Orchestration Framework Benchmark (LiveKit Agents vs. Pipecat vs. Azure ACS Call Automation vs. Twilio / Vapi / Retell AI): 40k Min/Mo TCO Inflection & K8s Zero-Drop Call Drain**: [EN](./voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.en.md) | [中文](./voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.md)
+211. **Enterprise Streaming STT, Neural TTS & Brand Voice Cloning Benchmark (Azure AI Speech vs. ElevenLabs Flash v2.5 vs. Deepgram Nova-3/Aura-2 vs. Cartesia Sonic-2 vs. Open-Source CosyVoice 2/Fish Speech): Consent Lock, IPA Lexicon Gate & 350ms Failover**: [EN](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.en.md) | [中文](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.md)

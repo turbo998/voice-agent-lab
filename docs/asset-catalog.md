@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（210 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（211 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -251,3 +251,4 @@
 208. **企业级多智能体实时语音编排与子智能体无缝移交（Multi-Agent Handoff Graph：LiveKit Agents vs Pipecat Flows vs LangGraph：前置核身与最小工具沙箱硬锁、零感知静默交接锁与防互相踢皮球死循环熔断）方案**：[中文](./multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.md) | [EN](./multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.en.md)
 209. **企业级实时语音合规录音、PCI-DSS 4.0 落盘前敏感音频消音与 100% 自动化全量质检（Automated QA）架构（双声道分轨 WORM 防篡改归档硬锁、落盘前内存态卡号 CVV 消音锁与话后 60 秒漏播条款自动补救闭环）方案**：[中文](./enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.md) | [EN](./enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.en.md)
 210. **实时语音开发与编排框架全景横向选型（LiveKit Agents vs Pipecat vs Azure Communication Services Call Automation vs Twilio Voice / Vapi / Retell AI：自建开源 vs 云原生 CPaaS vs 全托管商业平台 4 万分钟/月 TCO 拐点与 K8s 零掉线缩容硬锁）方案**：[中文](./voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.md) | [EN](./voice-orchestration-frameworks-livekit-pipecat-acs-twilio-vapi-retell-selection-faq.en.md)
+211. **企业级流式语音识别（STT）、语音合成（TTS）与品牌音色克隆全景选型（Azure AI Speech CNV/HD vs ElevenLabs Flash v2.5 vs Deepgram Nova-3/Aura-2 vs Cartesia Sonic-2 vs 开源 Whisper/CosyVoice 2/Fish Speech：配音员声纹挑战短语授权硬锁、多音字与专有名词 IPA 音标字典锁、>350ms 抖动热备切流）方案**：[中文](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.md) | [EN](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.en.md)
