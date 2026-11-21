@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (324 Bilingual Guides)
+## 3. Solution Architect Selection Guides (325 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -365,3 +365,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 322. **Telecom Carrier & Broadband ISP Customer Care Voice + Multimodal Router Triage Architecture: Anti-SIM-Swap Biometric Lock, TR-069 + Smartphone Router Vision Cutting False Truck Rolls by 54.2%, 0ms Fiber-Outage Surge Deflection & FTC 1-Offer Cancel Symmetry**: [EN](./telecom-isp-outage-deflection-router-vision-triage-anti-simswap-voice-selection-faq.en.md) | [中文](./telecom-isp-outage-deflection-router-vision-triage-anti-simswap-voice-selection-faq.md)
 323. **Sovereign Cloud Data Residency (GDPR / PIPL / HIPAA / BIPA), Local Media Pinning & Zero Data Retention (ZDR) Voice Architecture: In-Region Media/STT & 0-Day ZDR Lock, Explicit BIPA Voiceprint Consent Gate & Cross-Border PII Token Vault with <60s Crypto-Shredding**: [EN](./sovereign-cloud-data-residency-gdpr-pipl-zdr-biometric-voice-architecture-selection-faq.en.md) | [中文](./sovereign-cloud-data-residency-gdpr-pipl-zdr-biometric-voice-architecture-selection-faq.md)
 324. **Enterprise CRM & Agent Desktop (Salesforce SCV vs. Dynamics 365 CIF v2 vs. ServiceNow vs. Zendesk) Real-Time Voice CTI, Co-Browsing & 3-Sec Auto-ACW Architecture: <300ms Idempotent Screen-Pop Lock, Client-Side DOM-Masked Co-Browsing & <3s Picklist Auto-ACW (-92% Wrap-Up Time)**: [EN](./crm-cti-salesforce-scv-dynamics-cif-servicenow-cobrowsing-auto-acw-selection-faq.en.md) | [中文](./crm-cti-salesforce-scv-dynamics-cif-servicenow-cobrowsing-auto-acw-selection-faq.md)
+325. **2026–2027 Frontier Audio & Omni LLM Architecture (System-1/System-2 Async Reasoning & Thinker-Talker Models): Pre-Vocoder Zero-CoT Audio Lock, 255ms System-1 + Async System-2 Proof Gate (98.9% Policy Accuracy) & 0ms Barge-In Reasoning Abort**: [EN](./frontier-2026-system1-system2-thinker-talker-omni-audio-llm-enterprise-selection-faq.en.md) | [中文](./frontier-2026-system1-system2-thinker-talker-omni-audio-llm-enterprise-selection-faq.md)

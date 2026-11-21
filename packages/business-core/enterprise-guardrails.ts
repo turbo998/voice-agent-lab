@@ -8545,6 +8545,36 @@ export function evaluateCrmCtiCobrowsingAutoAcwGuard(input: {
   };
 }
 
+export interface FrontierSystem1System2ThinkerTalkerEvaluation {
+  policyCode: "FRONTIER-SYSTEM1-SYSTEM2-THINKER-TALKER-01";
+  dualBrainVoiceTurnAuthorized: boolean;
+  rawCotVocalizationOrUnverifiedCommitmentBlocked: boolean;
+  bargeInSystem2AbortAndReanchorBridged: boolean;
+}
+
+/**
+ * Deterministic 2026-2027 Frontier Thinker-Talker Zero-CoT Audio Lock, System-1/System-2 Async Verifier Gate & 0ms Barge-In Reasoning Abort Guard (`FRONTIER-SYSTEM1-SYSTEM2-THINKER-TALKER-01`).
+ */
+export function evaluateFrontierSystem1System2ThinkerTalkerGuard(input: {
+  talkerStreamNeverVocalizesRawChainOfThoughtOrToolJson: boolean;
+  system1FastAckBridgesSystem2VerifierBeforeFinalCommitment: boolean;
+  userBargeInCancelsInFlightSystem2ReasoningTask: boolean;
+}): FrontierSystem1System2ThinkerTalkerEvaluation {
+  return {
+    policyCode: "FRONTIER-SYSTEM1-SYSTEM2-THINKER-TALKER-01",
+    dualBrainVoiceTurnAuthorized:
+      input.talkerStreamNeverVocalizesRawChainOfThoughtOrToolJson &&
+      input.system1FastAckBridgesSystem2VerifierBeforeFinalCommitment &&
+      !input.userBargeInCancelsInFlightSystem2ReasoningTask,
+    rawCotVocalizationOrUnverifiedCommitmentBlocked:
+      !input.talkerStreamNeverVocalizesRawChainOfThoughtOrToolJson ||
+      !input.system1FastAckBridgesSystem2VerifierBeforeFinalCommitment ||
+      input.userBargeInCancelsInFlightSystem2ReasoningTask,
+    bargeInSystem2AbortAndReanchorBridged:
+      input.userBargeInCancelsInFlightSystem2ReasoningTask,
+  };
+}
+
 
 
 
