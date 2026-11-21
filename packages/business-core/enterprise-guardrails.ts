@@ -9085,6 +9085,36 @@ export function evaluateRecruitingWorkdayEeocVoiceScreeningGuard(input: {
   };
 }
 
+export interface DentalClinicDentrixEdi270ChairEvaluation {
+  policyCode: "DENTAL-CLINIC-DENTRIX-EDI270-CHAIR-01";
+  chairSlotAndTreatmentPlanAuthorized: boolean;
+  providerDoubleBookOrFrequencyDenialBlocked: boolean;
+  airwayEmergencyOrWaitlistBackfillBridged: boolean;
+}
+
+/**
+ * Deterministic Dental DSO & Specialty Clinic (Dentrix / Open Dental) Double-Column Chair & Prophylaxis Lock, Live EDI 270/271 Gate & 0ms Airway / Waitlist Backfill Guard (`DENTAL-CLINIC-DENTRIX-EDI270-CHAIR-01`).
+ */
+export function evaluateDentalClinicDentrixEdi270ChairGuard(input: {
+  hygienistAndDoctorDoubleColumnChairSyncAndProphylaxisChecked: boolean;
+  edi270DentalEligibilityAndAnnualMaximumVerified: boolean;
+  ludwigsAnginaAirwaySwellingOr48hCancellationWaitlistBackfill: boolean;
+}): DentalClinicDentrixEdi270ChairEvaluation {
+  return {
+    policyCode: "DENTAL-CLINIC-DENTRIX-EDI270-CHAIR-01",
+    chairSlotAndTreatmentPlanAuthorized:
+      input.hygienistAndDoctorDoubleColumnChairSyncAndProphylaxisChecked &&
+      input.edi270DentalEligibilityAndAnnualMaximumVerified &&
+      !input.ludwigsAnginaAirwaySwellingOr48hCancellationWaitlistBackfill,
+    providerDoubleBookOrFrequencyDenialBlocked:
+      !input.hygienistAndDoctorDoubleColumnChairSyncAndProphylaxisChecked ||
+      !input.edi270DentalEligibilityAndAnnualMaximumVerified ||
+      input.ludwigsAnginaAirwaySwellingOr48hCancellationWaitlistBackfill,
+    airwayEmergencyOrWaitlistBackfillBridged:
+      input.ludwigsAnginaAirwaySwellingOr48hCancellationWaitlistBackfill,
+  };
+}
+
 
 
 
