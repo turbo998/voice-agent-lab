@@ -7495,6 +7495,36 @@ export function evaluatePowerTransformerVpdMarxIeee510VoiceGuard(input: {
   };
 }
 
+export interface WindBladeVartmTurnoverNacelleVoiceEvaluation {
+  policyCode: "WIND-BLADE-VARTM-TURNOVER-NACELLE-01";
+  resinInfusionAndMoldEntryAuthorized: boolean;
+  offRatioInfusionOrUnpinnedMoldRootBlocked: boolean;
+  counterbalanceHoldResinQuenchAndRootPurgeBridged: boolean;
+}
+
+/**
+ * Deterministic 130m Offshore Wind Blade VARTM Infusion Ratio/Exotherm Lock, 16-Pin Mold Turnover & Styrene Gate & 0ms Skew Load-Hold Guard (`WIND-BLADE-VARTM-TURNOVER-NACELLE-01`).
+ */
+export function evaluateWindBladeVartmTurnoverNacelleVoiceGuard(input: {
+  vartmMixRatioVacuumDropAndRootExothermSafe: boolean;
+  moldTurnover16PinsStyreneAndCarbonDustSafe: boolean;
+  turnoverSkewExceededResinDrumRunawayOrRootEmergency: boolean;
+}): WindBladeVartmTurnoverNacelleVoiceEvaluation {
+  return {
+    policyCode: "WIND-BLADE-VARTM-TURNOVER-NACELLE-01",
+    resinInfusionAndMoldEntryAuthorized:
+      input.vartmMixRatioVacuumDropAndRootExothermSafe &&
+      input.moldTurnover16PinsStyreneAndCarbonDustSafe &&
+      !input.turnoverSkewExceededResinDrumRunawayOrRootEmergency,
+    offRatioInfusionOrUnpinnedMoldRootBlocked:
+      !input.vartmMixRatioVacuumDropAndRootExothermSafe ||
+      !input.moldTurnover16PinsStyreneAndCarbonDustSafe ||
+      input.turnoverSkewExceededResinDrumRunawayOrRootEmergency,
+    counterbalanceHoldResinQuenchAndRootPurgeBridged:
+      input.turnoverSkewExceededResinDrumRunawayOrRootEmergency,
+  };
+}
+
 
 
 

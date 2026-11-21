@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (289 Bilingual Guides)
+## 3. Solution Architect Selection Guides (290 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -330,3 +330,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 287. **Optical Fiber Preform MCVD/OVD, 2,200°C Drawing Tower & Submarine Cable Voice Copilot: SiCl4/Cl2 Caustic Scrubber pH >=10.5 Lock, 2,200°C Graphite Furnace Seal Gate & 0ms 3,000 m/min Fiber-Break Aspirator Bridge**: [EN](./optical-fiber-preform-drawing-tower-sicl4-chlorine-2200c-furnace-submarine-cable-voice-copilot-selection-faq.en.md) | [中文](./optical-fiber-preform-drawing-tower-sicl4-chlorine-2200c-furnace-submarine-cable-voice-copilot-selection-faq.md)
 288. **High-Voltage Power Cable, 150m XLPE CV-Tower & 800kV Faraday Test Hall Voice Copilot: 14-Bar CV-Tube 0.00 bar & Methane LEL Lock, IEEE 510 Capacitive-Bleed Earth Gate & 0ms Gravity Crowbar Bridge**: [EN](./high-voltage-power-cable-xlpe-cv-vulcanization-faraday-cage-rod-drawing-voice-copilot-selection-faq.en.md) | [中文](./high-voltage-power-cable-xlpe-cv-vulcanization-faraday-cage-rod-drawing-voice-copilot-selection-faq.md)
 289. **UHV Power Transformer, Kerosene Vapor-Phase Drying (VPD) & 2,400kV Marx Impulse Voice Copilot: 130°C Kerosene VPD Nitrogen-First Vacuum-Break Lock, 12-Stage Marx Earth Gate & 0ms Air-Inleak N2 Flood Bridge**: [EN](./power-transformer-manufacturing-vapor-phase-drying-kerosene-marx-impulse-test-voice-copilot-selection-faq.en.md) | [中文](./power-transformer-manufacturing-vapor-phase-drying-kerosene-marx-impulse-test-voice-copilot-selection-faq.md)
+290. **Offshore Wind Turbine Blade Manufacturing, VARTM Infusion & 130m Mold Turnover Voice Copilot: Coriolis Ratio & Root Exotherm Lock, 16-Pin Mold Turnover & Styrene Gate & 0ms Skew Load-Hold Bridge**: [EN](./wind-turbine-blade-manufacturing-vartm-resin-infusion-mold-turnover-nacelle-voice-copilot-selection-faq.en.md) | [中文](./wind-turbine-blade-manufacturing-vartm-resin-infusion-mold-turnover-nacelle-voice-copilot-selection-faq.md)
