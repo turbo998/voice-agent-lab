@@ -5876,6 +5876,36 @@ export function evaluateTruckingEldHosHazmatVoiceGuard(input: {
   };
 }
 
+export interface ConstructionBimOshaCraneVoiceEvaluation {
+  policyCode: "CONSTRUCTION-BIM-OSHA-CRANE-01";
+  fieldConstructionAndCranePickAuthorized: boolean;
+  unapprovedStructuralModOrUnsafeLiftBlocked: boolean;
+  stopWorkSirenAndTechnicalRescueBridged: boolean;
+}
+
+/**
+ * Deterministic Construction Jobsite Procore/BIM Latest-IFC, Tower Crane Wind & OSHA Trench Shoring Guard (`CONSTRUCTION-BIM-OSHA-CRANE-01`).
+ */
+export function evaluateConstructionBimOshaCraneVoiceGuard(input: {
+  peStampedRfiAndLatestIfcDrawingVerified: boolean;
+  craneWindLmiAndTrenchShoringSafe: boolean;
+  trenchCollapseFallArrestOrUtilityStrike: boolean;
+}): ConstructionBimOshaCraneVoiceEvaluation {
+  return {
+    policyCode: "CONSTRUCTION-BIM-OSHA-CRANE-01",
+    fieldConstructionAndCranePickAuthorized:
+      input.peStampedRfiAndLatestIfcDrawingVerified &&
+      input.craneWindLmiAndTrenchShoringSafe &&
+      !input.trenchCollapseFallArrestOrUtilityStrike,
+    unapprovedStructuralModOrUnsafeLiftBlocked:
+      !input.peStampedRfiAndLatestIfcDrawingVerified ||
+      !input.craneWindLmiAndTrenchShoringSafe ||
+      input.trenchCollapseFallArrestOrUtilityStrike,
+    stopWorkSirenAndTechnicalRescueBridged:
+      input.trenchCollapseFallArrestOrUtilityStrike,
+  };
+}
+
 
 
 

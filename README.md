@@ -307,6 +307,7 @@ flowchart LR
 233. **生物制药无菌洁净室（Grade A/B Cleanroom）、CAR-T 细胞治疗与 GMP 电子批记录（Werum PAS-X / PharmaSuite / Veeva QMS）免提语音方案（FDA 21 CFR Part 11 ALCOA+ 禁无痕覆盖硬锁、关键工艺双人声纹四眼复核锁与隔离器压差失锁/OOS 0ms 批次冻结强切）**：[中文](./docs/biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.md) | [EN](./docs/biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.en.md)
 234. **财税申报、会计师事务所与智能报税（Intuit TurboTax Live / 四大税务 / 金税四期企业办税）AI 语音与多模态方案（IRC § 7216 纳税人税表隐私与禁营销硬锁、IRS Circular 230 真实凭据与确定性算税内核锁及税务稽查通知 CP2000 0ms 强切执业注册会计师 CPA）**：[中文](./docs/tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.md) | [EN](./docs/tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.en.md)
 235. **干线重卡物流车队、危化品道路运输与车载行车记录仪（FMCSA ELD / Samsara / Motive / G7 易流）24×7 免提语音副驾方案（49 CFR Part 395 疲劳驾驶时限禁篡改硬锁、4.15m 桥涵限高与 UN 危化品禁行隧道硬锁及气压制动失压 <60 PSI 0ms 避险车道领航强切）**：[中文](./docs/commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.md) | [EN](./docs/commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.en.md)
+236. **大型建筑工程总包（EPC）、工地 BIM 巡检（Procore / Autodesk ACC）与塔吊/深基坑作业 24×7 语音安全副驾方案（最新有效 IFC 图纸与注册结构师 PE 签章变更硬锁、塔吊大风 <20 mph 与 >1.5m 深基坑支护箱硬锁及基坑坍塌 0ms 全区停工强切）**：[中文](./docs/construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.md) | [EN](./docs/construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.en.md)
 
 ---
 
