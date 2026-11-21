@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (326 Bilingual Guides)
+## 3. Solution Architect Selection Guides (327 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -367,3 +367,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 324. **Enterprise CRM & Agent Desktop (Salesforce SCV vs. Dynamics 365 CIF v2 vs. ServiceNow vs. Zendesk) Real-Time Voice CTI, Co-Browsing & 3-Sec Auto-ACW Architecture: <300ms Idempotent Screen-Pop Lock, Client-Side DOM-Masked Co-Browsing & <3s Picklist Auto-ACW (-92% Wrap-Up Time)**: [EN](./crm-cti-salesforce-scv-dynamics-cif-servicenow-cobrowsing-auto-acw-selection-faq.en.md) | [中文](./crm-cti-salesforce-scv-dynamics-cif-servicenow-cobrowsing-auto-acw-selection-faq.md)
 325. **2026–2027 Frontier Audio & Omni LLM Architecture (System-1/System-2 Async Reasoning & Thinker-Talker Models): Pre-Vocoder Zero-CoT Audio Lock, 255ms System-1 + Async System-2 Proof Gate (98.9% Policy Accuracy) & 0ms Barge-In Reasoning Abort**: [EN](./frontier-2026-system1-system2-thinker-talker-omni-audio-llm-enterprise-selection-faq.en.md) | [中文](./frontier-2026-system1-system2-thinker-talker-omni-audio-llm-enterprise-selection-faq.md)
 326. **B2B Accounts Receivable (Order-to-Cash AR) & Retail Early-Delinquency (M0/M1) Compliant Voice AI & Restructuring Architecture: FDCPA Reg F 7-in-7 & 8am–9pm Lock, Right-Party Contact (RPC) Zero-3rd-Party Leak Gate & <5s Live ERP Invoice/POD Resend (-8.5d DSO / +22.4% Cure Rate)**: [EN](./b2b-ar-collections-retail-early-delinquency-fdcpa-rpc-restructuring-voice-selection-faq.en.md) | [中文](./b2b-ar-collections-retail-early-delinquency-fdcpa-rpc-restructuring-voice-selection-faq.md)
+327. **Government 12345/311 Citizen Hotline & Public Utility (Electric / Gas / Water) Emergency Outage Voice Architecture: Medical Life-Support Shutoff Hard Lock, 150m GeoHash Ticket Deduplication (-88.4% Duplicate Orders) & 0.85x Senior Mode + 0ms Gas-Leak Zero-Auth Evacuation Preemption**: [EN](./government-12345-311-utility-outage-storm-gas-leak-preemption-accessibility-voice-selection-faq.en.md) | [中文](./government-12345-311-utility-outage-storm-gas-leak-preemption-accessibility-voice-selection-faq.md)

@@ -8605,6 +8605,36 @@ export function evaluateB2bArCollectionsFdcpaRpcGuard(input: {
   };
 }
 
+export interface Gov12345UtilityOutageGasPreemptionEvaluation {
+  policyCode: "GOV-12345-UTILITY-OUTAGE-GAS-PREEMPTION-01";
+  civicTicketAndUtilityActionAuthorized: boolean;
+  lifeSupportDisconnectOrDuplicateTicketBlocked: boolean;
+  gasLeakOrDownedLinePreemptionBridged: boolean;
+}
+
+/**
+ * Deterministic Government 12345/311 & Utility Medical Life-Support Shutoff Lock, 150m GeoHash Deduplication / Senior Mode Gate & 0ms Gas-Leak Safety Preemption Guard (`GOV-12345-UTILITY-OUTAGE-GAS-PREEMPTION-01`).
+ */
+export function evaluateGov12345UtilityOutageGasPreemptionGuard(input: {
+  medicalBaselineLifeSupportFlagBlocksRemotePowerDisconnect: boolean;
+  spatialGridDeduplicationAndSeniorAccessibility085xEnforced: boolean;
+  gasOdorOrDownedPowerLineZeroAuthEmergencyPreemption: boolean;
+}): Gov12345UtilityOutageGasPreemptionEvaluation {
+  return {
+    policyCode: "GOV-12345-UTILITY-OUTAGE-GAS-PREEMPTION-01",
+    civicTicketAndUtilityActionAuthorized:
+      input.medicalBaselineLifeSupportFlagBlocksRemotePowerDisconnect &&
+      input.spatialGridDeduplicationAndSeniorAccessibility085xEnforced &&
+      !input.gasOdorOrDownedPowerLineZeroAuthEmergencyPreemption,
+    lifeSupportDisconnectOrDuplicateTicketBlocked:
+      !input.medicalBaselineLifeSupportFlagBlocksRemotePowerDisconnect ||
+      !input.spatialGridDeduplicationAndSeniorAccessibility085xEnforced ||
+      input.gasOdorOrDownedPowerLineZeroAuthEmergencyPreemption,
+    gasLeakOrDownedLinePreemptionBridged:
+      input.gasOdorOrDownedPowerLineZeroAuthEmergencyPreemption,
+  };
+}
+
 
 
 
