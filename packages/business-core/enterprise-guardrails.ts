@@ -9415,6 +9415,36 @@ export function evaluateMortgageEncompassTridRatelockGuard(input: {
   };
 }
 
+export interface VoiceModelRouterSemanticCacheEvaluation {
+  policyCode: "VOICE-MODEL-ROUTER-SEMANTIC-CACHE-01";
+  slmAndSemanticCacheTurnAuthorized: boolean;
+  piiCacheLeakOrUnderpoweredModelBlocked: boolean;
+  frontierModelSeamlessEscalated: boolean;
+}
+
+/**
+ * Deterministic Enterprise Per-Turn Voice Model Complexity Router, Zero-PII Semantic Audio Cache & 0ms Frontier Escalation Guard (`VOICE-MODEL-ROUTER-SEMANTIC-CACHE-01`).
+ */
+export function evaluateVoiceModelRouterSemanticCacheGuard(input: {
+  semanticAudioCacheZeroPiiAndTenantPolicyEpochVerified: boolean;
+  perTurnComplexityClassifierRoutesRoutineTurnsToFastSlm: boolean;
+  frustrationSpikeHighLtvChurnOrMultiStepToolEscalatesToFrontier: boolean;
+}): VoiceModelRouterSemanticCacheEvaluation {
+  return {
+    policyCode: "VOICE-MODEL-ROUTER-SEMANTIC-CACHE-01",
+    slmAndSemanticCacheTurnAuthorized:
+      input.semanticAudioCacheZeroPiiAndTenantPolicyEpochVerified &&
+      input.perTurnComplexityClassifierRoutesRoutineTurnsToFastSlm &&
+      !input.frustrationSpikeHighLtvChurnOrMultiStepToolEscalatesToFrontier,
+    piiCacheLeakOrUnderpoweredModelBlocked:
+      !input.semanticAudioCacheZeroPiiAndTenantPolicyEpochVerified ||
+      !input.perTurnComplexityClassifierRoutesRoutineTurnsToFastSlm ||
+      input.frustrationSpikeHighLtvChurnOrMultiStepToolEscalatesToFrontier,
+    frontierModelSeamlessEscalated:
+      input.frustrationSpikeHighLtvChurnOrMultiStepToolEscalatesToFrontier,
+  };
+}
+
 
 
 
