@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（284 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（285 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -325,3 +325,4 @@
 282. **数控机加工、五轴航空结构件铣削与钛/镁合金切削车间（德马吉森精机 DMG MORI / 马扎克 Mazak / 牧野 Makino / 大隈 Okuma / 北京精雕）24×7 免提语音副驾方案（NFPA 484 镁合金禁水基切削液防氢爆与钛合金 70bar 中心内冷硬锁、ISO 23125 卡盘拉刀压力与主轴 0 RPM 门锁及语音刀补 ±0.05mm 防撞限幅、内腔火情 0ms 锁死水/CO2 释放氩气/D 类金属灭火强切）**：[中文](./cnc-machining-aerospace-milling-titanium-magnesium-swarf-fire-chuck-clamping-voice-copilot-selection-faq.md) | [EN](./cnc-machining-aerospace-milling-titanium-magnesium-swarf-fire-chuck-clamping-voice-copilot-selection-faq.en.md)
 283. **金属增材制造、激光选区熔化（LPBF/SLM）与钛/铝合金粉末筛分车间（铂力特 BLT / EOS / 尼康 SLM Solutions / 雷尼绍 Renishaw / 华曙高科）24×7 免提语音副驾方案（NFPA 484 活性钛/铝微粉充氩残氧 <=100 ppm 与 ESD 接地及纳米黑烟滤桶湿法钝化硬锁、ASTM F2924 专机专粉 RFID 防混料与刮刀翘曲门禁及滤桶 >65°C 放热自燃 0ms 关激光闭球阀注氩/注油强切）**：[中文](./additive-manufacturing-metal-3d-printing-lpbf-titanium-aluminum-powder-argon-nfpa-484-voice-copilot-selection-faq.md) | [EN](./additive-manufacturing-metal-3d-printing-lpbf-titanium-aluminum-powder-argon-nfpa-484-voice-copilot-selection-faq.en.md)
 284. **航空碳纤维复合材料、无尘铺丝铺叠车间与大型热压罐固化基地（中国商飞 COMAC / 中航复材 / 东丽 Toray / 赫氏 Hexcel / 肖尔茨 Scholz）24×7 免提语音副驾方案（Nadcap AC7118 领先/滞后热电偶温差 <=14°C 防环氧放热烧焦与真空袋检漏硬锁、0.00 bar 齿啮罐门与充氮罐体 >=19.5% O2 防窒息及背衬膜 FOD 门禁、芯部 >205°C 放热失控 0ms 断加热 100% 全开冷水急冷强切）**：[中文](./aerospace-composites-autoclave-curing-epoxy-exotherm-nitrogen-purge-cleanroom-voice-copilot-selection-faq.md) | [EN](./aerospace-composites-autoclave-curing-epoxy-exotherm-nitrogen-purge-cleanroom-voice-copilot-selection-faq.en.md)
+285. **电子制造 PCBA、SMT 高速贴片回流焊与选择性波峰焊工厂（西门子 ASMPT / 富士 Fuji / 松下 Panasonic / 贺利氏 Heller / 锐德 Rehm / 工业富联）24×7 免提语音副驾方案（IPC J-STD-033 湿敏元件 MSL 暴露防爆米花分层与锡膏 4h 回温硬锁、充氮回流焊开盖 >=19.5% O2 防窒息与波峰焊醇基助焊剂 LEL <=25% 门禁、助焊剂闪燃/卡板 0ms 落锡锅喷 CO2 与全氮急冷强切）**：[中文](./pcb-smt-electronics-assembly-reflow-oven-nitrogen-msd-j-std-033-flux-fire-voice-copilot-selection-faq.md) | [EN](./pcb-smt-electronics-assembly-reflow-oven-nitrogen-msd-j-std-033-flux-fire-voice-copilot-selection-faq.en.md)

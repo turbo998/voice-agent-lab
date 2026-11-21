@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (284 Bilingual Guides)
+## 3. Solution Architect Selection Guides (285 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -325,3 +325,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 282. **CNC Machining, 5-Axis Aerospace Milling & Titanium/Magnesium Swarf Voice Copilot: NFPA 484 Magnesium/Titanium Coolant Lock, ISO 23125 Chuck & ±0.05mm Offset Gate & 0ms Argon/Class-D Fire Bridge**: [EN](./cnc-machining-aerospace-milling-titanium-magnesium-swarf-fire-chuck-clamping-voice-copilot-selection-faq.en.md) | [中文](./cnc-machining-aerospace-milling-titanium-magnesium-swarf-fire-chuck-clamping-voice-copilot-selection-faq.md)
 283. **Additive Manufacturing & Metal LPBF 3D Printing Voice Copilot: NFPA 484 Ti-6Al-4V / AlSi10Mg Powder Argon & Pyrophoric Soot-Filter Passivation Lock, Cross-Alloy RFID Gate & 0ms Argon Flood Bridge**: [EN](./additive-manufacturing-metal-3d-printing-lpbf-titanium-aluminum-powder-argon-nfpa-484-voice-copilot-selection-faq.en.md) | [中文](./additive-manufacturing-metal-3d-printing-lpbf-titanium-aluminum-powder-argon-nfpa-484-voice-copilot-selection-faq.md)
 284. **Aerospace Composites, Prepreg Layup & Autoclave Curing Voice Copilot: Nadcap AC7118 Epoxy Exotherm & Vacuum-Bag Lock, Nitrogen Autoclave >=19.5% O2 & Poly-Film FOD Gate & 0ms Full-Chill Quench Bridge**: [EN](./aerospace-composites-autoclave-curing-epoxy-exotherm-nitrogen-purge-cleanroom-voice-copilot-selection-faq.en.md) | [中文](./aerospace-composites-autoclave-curing-epoxy-exotherm-nitrogen-purge-cleanroom-voice-copilot-selection-faq.md)
+285. **PCB SMT Assembly, Nitrogen Reflow & Selective Wave Soldering Voice Copilot: IPC J-STD-033 MSL Popcorning Lock, N2 Reflow Hood O2 & Wave Flux LEL Gate & 0ms CO2 Quench Bridge**: [EN](./pcb-smt-electronics-assembly-reflow-oven-nitrogen-msd-j-std-033-flux-fire-voice-copilot-selection-faq.en.md) | [中文](./pcb-smt-electronics-assembly-reflow-oven-nitrogen-msd-j-std-033-flux-fire-voice-copilot-selection-faq.md)

@@ -7345,6 +7345,36 @@ export function evaluateAerospaceCompositeAutoclaveExothermVoiceGuard(input: {
   };
 }
 
+export interface PcbSmtAssemblyReflowJstd033VoiceEvaluation {
+  policyCode: "PCB-SMT-ASSEMBLY-REFLOW-JSTD033-01";
+  feederSpliceAndOvenHoodAuthorized: boolean;
+  msdExpiredOrNitrogenFluxXrayHazardBlocked: boolean;
+  wavePotDropCo2QuenchAndReflowEmergencyCoolBridged: boolean;
+}
+
+/**
+ * Deterministic PCB SMT Assembly & Reflow IPC J-STD-033 MSL Floor-Life Lock, N2 Hood O2 & Wave Flux LEL Gate & 0ms CO2 Quench Guard (`PCB-SMT-ASSEMBLY-REFLOW-JSTD033-01`).
+ */
+export function evaluatePcbSmtAssemblyReflowJstd033VoiceGuard(input: {
+  msdFloorLifePasteWarmupAndEsdSafe: boolean;
+  reflowHoodO2WaveFluxLelAndXrayZeroKvSafe: boolean;
+  waveFluxFireReflowBoardJamOrXrayBreach: boolean;
+}): PcbSmtAssemblyReflowJstd033VoiceEvaluation {
+  return {
+    policyCode: "PCB-SMT-ASSEMBLY-REFLOW-JSTD033-01",
+    feederSpliceAndOvenHoodAuthorized:
+      input.msdFloorLifePasteWarmupAndEsdSafe &&
+      input.reflowHoodO2WaveFluxLelAndXrayZeroKvSafe &&
+      !input.waveFluxFireReflowBoardJamOrXrayBreach,
+    msdExpiredOrNitrogenFluxXrayHazardBlocked:
+      !input.msdFloorLifePasteWarmupAndEsdSafe ||
+      !input.reflowHoodO2WaveFluxLelAndXrayZeroKvSafe ||
+      input.waveFluxFireReflowBoardJamOrXrayBreach,
+    wavePotDropCo2QuenchAndReflowEmergencyCoolBridged:
+      input.waveFluxFireReflowBoardJamOrXrayBreach,
+  };
+}
+
 
 
 
