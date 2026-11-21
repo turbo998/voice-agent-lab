@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (242 Bilingual Guides)
+## 3. Solution Architect Selection Guides (243 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -283,3 +283,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 240. **L4 Autonomous Robotaxi In-Cabin Rider Support & External First-Responder Voice Architecture: SAE J3016 MRC Pull-Over Lock, Zero Direct-Actuation Gate & 0ms Police/Fire Intercom**: [EN](./autonomous-robotaxi-av-in-cabin-pull-over-first-responder-law-enforcement-voice-selection-faq.en.md) | [中文](./autonomous-robotaxi-av-in-cabin-pull-over-first-responder-law-enforcement-voice-selection-faq.md)
 241. **Bespoke Tailoring, Bridal Couture & 3D Body-Scan Alteration Voice Concierge: Irreversible-Cut & Surgeon-Cuff Lock, Wedding Wear-Date Gate & 0ms Master Tailor Bridge**: [EN](./bespoke-tailoring-bridal-couture-3d-body-scan-alteration-seam-allowance-voice-concierge-selection-faq.en.md) | [中文](./bespoke-tailoring-bridal-couture-3d-body-scan-alteration-seam-allowance-voice-concierge-selection-faq.md)
 242. **Commercial P&C Insurance ACORD 25 COI, Binding Authority & CAT Moratorium Voice AI: Policy-Truth COI Lock, Named-Storm Moratorium Gate & 0ms Major-Loss Bridge**: [EN](./commercial-insurance-acord-25-certificate-binding-authority-cat-moratorium-voice-selection-faq.en.md) | [中文](./commercial-insurance-acord-25-certificate-binding-authority-cat-moratorium-voice-selection-faq.md)
+243. **R&D Wet-Lab Fume Hood ELN, GHS SDS & Chemical Hazard Voice Copilot: Pyrophoric & Waste Incompatibility Lock, Fume-Hood Velocity Gate & 0ms Hydrofluoric Acid (HF) Calcium Gluconate Bridge**: [EN](./university-wet-lab-chemical-fume-hood-sds-hydrofluoric-acid-pyrophoric-voice-copilot-selection-faq.en.md) | [中文](./university-wet-lab-chemical-fume-hood-sds-hydrofluoric-acid-pyrophoric-voice-copilot-selection-faq.md)

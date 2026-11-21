@@ -6085,6 +6085,36 @@ export function evaluateCommercialInsuranceAcord25MoratoriumVoiceGuard(input: {
   };
 }
 
+export interface WetLabSdsPyrophoricHfVoiceEvaluation {
+  policyCode: "WET-LAB-SDS-PYROPHORIC-HF-01";
+  elnStepAndWasteDisposalAuthorized: boolean;
+  incompatibleMixOrLowFumeHoodVelocityBlocked: boolean;
+  hfCalciumGluconateAndEhsHazmatBridged: boolean;
+}
+
+/**
+ * Deterministic R&D Wet-Lab Fume Hood ELN, NOAA CAMEO Chemical Reactivity & 0ms Hydrofluoric Acid (HF) Guard (`WET-LAB-SDS-PYROPHORIC-HF-01`).
+ */
+export function evaluateWetLabSdsPyrophoricHfVoiceGuard(input: {
+  chemicalCompatibilityAndPyrophoricQuenchSafe: boolean;
+  fumeHoodVelocitySashAndPeroxideSafe: boolean;
+  hfAcidExposurePyrophoricFireOrShowerPull: boolean;
+}): WetLabSdsPyrophoricHfVoiceEvaluation {
+  return {
+    policyCode: "WET-LAB-SDS-PYROPHORIC-HF-01",
+    elnStepAndWasteDisposalAuthorized:
+      input.chemicalCompatibilityAndPyrophoricQuenchSafe &&
+      input.fumeHoodVelocitySashAndPeroxideSafe &&
+      !input.hfAcidExposurePyrophoricFireOrShowerPull,
+    incompatibleMixOrLowFumeHoodVelocityBlocked:
+      !input.chemicalCompatibilityAndPyrophoricQuenchSafe ||
+      !input.fumeHoodVelocitySashAndPeroxideSafe ||
+      input.hfAcidExposurePyrophoricFireOrShowerPull,
+    hfCalciumGluconateAndEhsHazmatBridged:
+      input.hfAcidExposurePyrophoricFireOrShowerPull,
+  };
+}
+
 
 
 
