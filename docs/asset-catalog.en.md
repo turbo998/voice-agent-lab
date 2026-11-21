@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (329 Bilingual Guides)
+## 3. Solution Architect Selection Guides (330 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -370,3 +370,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 327. **Government 12345/311 Citizen Hotline & Public Utility (Electric / Gas / Water) Emergency Outage Voice Architecture: Medical Life-Support Shutoff Hard Lock, 150m GeoHash Ticket Deduplication (-88.4% Duplicate Orders) & 0.85x Senior Mode + 0ms Gas-Leak Zero-Auth Evacuation Preemption**: [EN](./government-12345-311-utility-outage-storm-gas-leak-preemption-accessibility-voice-selection-faq.en.md) | [中文](./government-12345-311-utility-outage-storm-gas-leak-preemption-accessibility-voice-selection-faq.md)
 328. **Cross-Border E-Commerce & Global Parcel Logistics (DHL / FedEx / UPS / SF / Cainiao) 25-Language Voice, Customs Clearance & Last-Mile Architecture: <=15km Anti-Hijack Reroute Lock, Encrypted Customs Tax-ID/Duty Portal Gate & 30s Courier-at-Door Smart-Locker Redirect (-48.5% Re-Delivery)**: [EN](./cross-border-ecommerce-global-parcel-delivery-customs-clearance-25lang-voice-selection-faq.en.md) | [中文](./cross-border-ecommerce-global-parcel-delivery-customs-clearance-25lang-voice-selection-faq.md)
 329. **Auto & Property Insurance FNOL Claims, Live WebRTC Video Damage Appraisal & Anti-Fraud Voice Architecture: Unbroken Live VIN->Damage Video Anti-Spoof Lock, Zero Coverage-Promise & <=$800 10-Min Guidewire Fast-Pay Gate + 0ms Highway/Airbag Safety Preemption (-61.5% Field Visits)**: [EN](./insurance-fnol-claims-video-damage-appraisal-guidewire-fraud-voice-selection-faq.en.md) | [中文](./insurance-fnol-claims-video-damage-appraisal-guidewire-fraud-voice-selection-faq.md)
+330. **Retail Pharmacy & PBM Prescription Refill, Prior Authorization (ePA) & LASA Medication Safety Voice Architecture: ISMP Sound-Alike (LASA) Triple-Match & Schedule-II Lock, Zero Unlicensed Dosage-Advice & 2–8°C Cold-Chain Window Gate (-84% Spoilage) + 0ms ADR Pharmacist & NCPDP ePA Bridge**: [EN](./retail-pharmacy-pbm-prescription-refill-prior-auth-lasa-pharmacist-voice-selection-faq.en.md) | [中文](./retail-pharmacy-pbm-prescription-refill-prior-auth-lasa-pharmacist-voice-selection-faq.md)

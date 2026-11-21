@@ -8695,6 +8695,36 @@ export function evaluateInsuranceFnolVideoAppraisalGuidewireGuard(input: {
   };
 }
 
+export interface PharmacyPbmRefillPriorAuthLasaEvaluation {
+  policyCode: "PHARMACY-PBM-REFILL-PRIOR-AUTH-LASA-01";
+  refillOrderAndColdChainDispatchAuthorized: boolean;
+  lasaMismatchOrUnlicensedDosageAdviceBlocked: boolean;
+  pharmacistAdrCounselingOrEpaBridged: boolean;
+}
+
+/**
+ * Deterministic Retail Pharmacy & PBM ISMP LASA Triple-Match Lock, Zero Unlicensed Dosage-Advice / Cold-Chain Gate & 0ms ADR Pharmacist / NCPDP ePA Guard (`PHARMACY-PBM-REFILL-PRIOR-AUTH-LASA-01`).
+ */
+export function evaluatePharmacyPbmRefillPriorAuthLasaGuard(input: {
+  rxNumberAndLasaDrugStrengthIndicationTripleMatched: boolean;
+  zeroUnlicensedDosageChangeAdviceAndColdChainWindowConfirmed: boolean;
+  adverseDrugReactionOrPriorAuthDenialPharmacistEscalation: boolean;
+}): PharmacyPbmRefillPriorAuthLasaEvaluation {
+  return {
+    policyCode: "PHARMACY-PBM-REFILL-PRIOR-AUTH-LASA-01",
+    refillOrderAndColdChainDispatchAuthorized:
+      input.rxNumberAndLasaDrugStrengthIndicationTripleMatched &&
+      input.zeroUnlicensedDosageChangeAdviceAndColdChainWindowConfirmed &&
+      !input.adverseDrugReactionOrPriorAuthDenialPharmacistEscalation,
+    lasaMismatchOrUnlicensedDosageAdviceBlocked:
+      !input.rxNumberAndLasaDrugStrengthIndicationTripleMatched ||
+      !input.zeroUnlicensedDosageChangeAdviceAndColdChainWindowConfirmed ||
+      input.adverseDrugReactionOrPriorAuthDenialPharmacistEscalation,
+    pharmacistAdrCounselingOrEpaBridged:
+      input.adverseDrugReactionOrPriorAuthDenialPharmacistEscalation,
+  };
+}
+
 
 
 

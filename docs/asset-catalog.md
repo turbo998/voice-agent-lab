@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（329 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（330 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -370,3 +370,4 @@
 327. **政务便民服务热线（12345 / 311）与城市公用事业（供电 95598 / 供水 / 燃气）应急语音调度中心架构（居家维生医疗设备 `Life-Support` 禁远程拉闸断电与 `P0` 优先复电硬锁、`150m GeoHash` 空间网格自动合单消减 `88.4%` 重复派工与多方言 `0.85x` 适老化门禁、燃气异味/坠线触电 `0ms` 零鉴权警告禁碰开关撤离抢占）方案**：[中文](./government-12345-311-utility-outage-storm-gas-leak-preemption-accessibility-voice-selection-faq.md) | [EN](./government-12345-311-utility-outage-storm-gas-leak-preemption-accessibility-voice-selection-faq.en.md)
 328. **跨境电商与国际物流快递（DHL / FedEx / 顺丰国际 / 菜鸟全球）25 语种语音客服、清关补件与末端派送协同架构（在途改址校验发件人 `Direct_Delivery_Only` 禁改标志与 `<=15km` 同站半径防截胡硬锁、海关清关 `HS Code` 税号/身份证加密门户免明文录音门禁、末端上门未果巴枪触发 `<30s` 母语外呼改派智能快递柜压降 `48.5%` 二次派送）方案**：[中文](./cross-border-ecommerce-global-parcel-delivery-customs-clearance-25lang-voice-selection-faq.md) | [EN](./cross-border-ecommerce-global-parcel-delivery-customs-clearance-25lang-voice-selection-faq.en.md)
 329. **车险与财险报案定损（FNOL）、手机实时视频查勘（WebRTC Video Appraisal）与防骗保语音架构（禁用本地相册上传强制一镜到底 `17位 VIN -> 车损` 实时视频与 3D 视差防伪硬锁、零口头承诺全赔与 `<=$800` 小额车损 10 分钟 Guidewire 闪赔门禁、人伤/气囊弹出/高速占道 `0ms` 熔断拍照避险与拖车救援抢占省 `61.5%` 外勤出车）方案**：[中文](./insurance-fnol-claims-video-damage-appraisal-guidewire-fraud-voice-selection-faq.md) | [EN](./insurance-fnol-claims-video-damage-appraisal-guidewire-fraud-voice-selection-faq.en.md)
+330. **连锁药房与医疗处方福利管理（PBM）慢病续方（Refill）、医保事先授权（Prior Auth）与用药安全语音架构（ISMP `LASA` 易混药名“处方号+毫克剂量+适应症”三重匹配与二类精麻药禁自动续方硬锁、零非持牌改量建议与 `2–8°C` 冷链特药在家签收窗门禁、药物不良反应 `ADR` `0ms` 执业药师抢占与 `NCPDP ePA` 自动申诉省 `84%` 冷链报废）方案**：[中文](./retail-pharmacy-pbm-prescription-refill-prior-auth-lasa-pharmacist-voice-selection-faq.md) | [EN](./retail-pharmacy-pbm-prescription-refill-prior-auth-lasa-pharmacist-voice-selection-faq.en.md)
