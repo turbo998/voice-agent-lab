@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (305 Bilingual Guides)
+## 3. Solution Architect Selection Guides (306 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -346,3 +346,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 303. **Real-Time Sales Call Assist, Live Battlecard Coaching & Auto-CRM Writeback Architecture (Gong / Microsoft Copilot for Sales vs. Custom Stereo STT + LLM): Ch0/Ch1 Stereo Isolation Lock, <350ms 3-Bullet Micro-Battlecards, Evidence-Anchored MEDDIC CRM Drafts & 0ms CPQ Discount Guard**: [EN](./realtime-sales-call-assist-battlecard-auto-crm-sync-salesforce-dynamics-selection-faq.en.md) | [中文](./realtime-sales-call-assist-battlecard-auto-crm-sync-salesforce-dynamics-selection-faq.md)
 304. **Enterprise Brand Voice Cloning, Ultra-Low-Latency TTS & Interactive Digital-Human Avatar Selection (Azure CNV/Avatar vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. HeyGen vs. Edge Viseme): Talent Consent & C2PA Lock, W3C PLS Polyphone & <=45ms Lip-Sync Gate & -83.2% Edge Viseme TCO**: [EN](./enterprise-brand-voice-cloning-interactive-avatar-azure-elevenlabs-cartesia-heygen-selection-faq.en.md) | [中文](./enterprise-brand-voice-cloning-interactive-avatar-azure-elevenlabs-cartesia-heygen-selection-faq.md)
 305. **Full-Duplex Barge-In, Semantic Turn Detection (EoT) & Slow-API Async Filler Orchestration (Silero VAD + 18ms Semantic EoT vs. Server VAD): Incomplete-Clause Hold & Backchannel Filter Lock, 700ms Non-Promissory Filler & Turn-Epoch Write Fence & 0ms Echo Loop Breaker**: [EN](./duplex-barge-in-semantic-turn-detection-slow-api-async-filler-orchestration-selection-faq.en.md) | [中文](./duplex-barge-in-semantic-turn-detection-slow-api-async-filler-orchestration-selection-faq.md)
+306. **Multinational Live Meeting Simultaneous Interpretation, Ephemeral Personal Voice & Action-Item Automation Selection (Azure AI Speech Live Interpreter vs. Microsoft Teams Interpreter vs. Custom Pipeline): SOV Negation Buffer & 10^4/10^3 Numeric Lock, Per-Session Personal Voice Opt-In & 0ms Boardroom ZDR / Host-Approved Jira Sync**: [EN](./enterprise-live-meeting-interpreter-personal-voice-glossary-action-item-sync-selection-faq.en.md) | [中文](./enterprise-live-meeting-interpreter-personal-voice-glossary-action-item-sync-selection-faq.md)

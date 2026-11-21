@@ -7975,6 +7975,36 @@ export function evaluateDuplexBargeinSemanticEotAsyncFillerGuard(input: {
   };
 }
 
+export interface EnterpriseMeetingInterpreterGlossaryEvaluation {
+  policyCode: "ENTERPRISE-MEETING-INTERPRETER-GLOSSARY-01";
+  liveInterpretationAndActionSyncAuthorized: boolean;
+  polarityNumericErrorOrUnconsentedVoiceBlocked: boolean;
+  boardroomZeroRetentionAndHostReviewBridged: boolean;
+}
+
+/**
+ * Deterministic Multinational Live Meeting Interpreter SOV Polarity/Numeric Lock, Ephemeral Personal-Voice Consent Gate & Boardroom ZDR/Action-Item Guard (`ENTERPRISE-MEETING-INTERPRETER-GLOSSARY-01`).
+ */
+export function evaluateEnterpriseMeetingInterpreterGlossaryGuard(input: {
+  sovVerbBufferPolarityAndNumericMagnitudeVerified: boolean;
+  personalVoiceExplicitSpeakerOptInAndGlossaryInjected: boolean;
+  unconfirmedActionItemCommitOrConfidentialBoardMode: boolean;
+}): EnterpriseMeetingInterpreterGlossaryEvaluation {
+  return {
+    policyCode: "ENTERPRISE-MEETING-INTERPRETER-GLOSSARY-01",
+    liveInterpretationAndActionSyncAuthorized:
+      input.sovVerbBufferPolarityAndNumericMagnitudeVerified &&
+      input.personalVoiceExplicitSpeakerOptInAndGlossaryInjected &&
+      !input.unconfirmedActionItemCommitOrConfidentialBoardMode,
+    polarityNumericErrorOrUnconsentedVoiceBlocked:
+      !input.sovVerbBufferPolarityAndNumericMagnitudeVerified ||
+      !input.personalVoiceExplicitSpeakerOptInAndGlossaryInjected ||
+      input.unconfirmedActionItemCommitOrConfidentialBoardMode,
+    boardroomZeroRetentionAndHostReviewBridged:
+      input.unconfirmedActionItemCommitOrConfidentialBoardMode,
+  };
+}
+
 
 
 
