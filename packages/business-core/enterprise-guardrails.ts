@@ -6055,6 +6055,36 @@ export function evaluateBespokeCoutureAlterationVoiceGuard(input: {
   };
 }
 
+export interface CommercialInsuranceAcord25MoratoriumVoiceEvaluation {
+  policyCode: "COMMERCIAL-INSURANCE-ACORD25-MORATORIUM-01";
+  acord25IssuanceAndEndorsementBindAuthorized: boolean;
+  unendorsedCoiOrCatMoratoriumBindBlocked: boolean;
+  executiveAdjusterAndCyberBreachCoachBridged: boolean;
+}
+
+/**
+ * Deterministic Commercial P&C Insurance ACORD 25 Policy-Truth, Named-Storm Moratorium & 0ms Major-Loss Guard (`COMMERCIAL-INSURANCE-ACORD25-MORATORIUM-01`).
+ */
+export function evaluateCommercialInsuranceAcord25MoratoriumVoiceGuard(input: {
+  acord25MatchesEndorsedPolicyTruth: boolean;
+  outsideCatMoratoriumAndWithinBindingLimit: boolean;
+  catastrophicLossCyberBreachOrDnoSubpoena: boolean;
+}): CommercialInsuranceAcord25MoratoriumVoiceEvaluation {
+  return {
+    policyCode: "COMMERCIAL-INSURANCE-ACORD25-MORATORIUM-01",
+    acord25IssuanceAndEndorsementBindAuthorized:
+      input.acord25MatchesEndorsedPolicyTruth &&
+      input.outsideCatMoratoriumAndWithinBindingLimit &&
+      !input.catastrophicLossCyberBreachOrDnoSubpoena,
+    unendorsedCoiOrCatMoratoriumBindBlocked:
+      !input.acord25MatchesEndorsedPolicyTruth ||
+      !input.outsideCatMoratoriumAndWithinBindingLimit ||
+      input.catastrophicLossCyberBreachOrDnoSubpoena,
+    executiveAdjusterAndCyberBreachCoachBridged:
+      input.catastrophicLossCyberBreachOrDnoSubpoena,
+  };
+}
+
 
 
 

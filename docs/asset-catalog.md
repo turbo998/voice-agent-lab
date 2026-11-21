@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（241 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（242 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -282,3 +282,4 @@
 239. **大型国际邮轮、舱房智能穿戴（嘉年华 OceanMedallion / 皇家加勒比 / 爱达邮轮）与远洋船载边缘 24×7 多语种语音管家方案（船上时间 Ship Time vs 港口当地时间防漏船硬锁、CDC VSP 诺如病毒胃肠隔离门禁与人员落水 Code Oscar 0ms 驾驶台海图标点强切）**：[中文](./cruise-line-shipboard-medallion-gangway-all-aboard-man-overboard-voice-concierge-selection-faq.md) | [EN](./cruise-line-shipboard-medallion-gangway-all-aboard-man-overboard-voice-concierge-selection-faq.en.md)
 240. **L4 自动驾驶无人出租车（Robotaxi：Waymo / 百度萝卜快跑 / 小马智行 / Zoox）座舱乘客与车外警察/消防员 24×7 多模态语音方案（SAE J3016 安全靠边最小风险策略 MRC 与防“开门杀”雷达硬锁、ASIL-D 底盘线控物理隔离与车外 B 柱警消对讲 0ms 强切）**：[中文](./autonomous-robotaxi-av-in-cabin-pull-over-first-responder-law-enforcement-voice-selection-faq.md) | [EN](./autonomous-robotaxi-av-in-cabin-pull-over-first-responder-law-enforcement-voice-selection-faq.en.md)
 241. **高定西装（Savile Row / Zegna MTM）、奢华婚纱礼服（Vera Wang / Pronovias）与 3D 量体改衣 24×7 AI 语音与多模态方案（不可逆剪裁与真袖扣眼 Surgeon's Cuffs 试穿硬锁、婚礼正日子倒排工期门禁与真丝污渍/婚礼前夜拉链崩裂 0ms 首席裁缝强切）**：[中文](./bespoke-tailoring-bridal-couture-3d-body-scan-alteration-seam-allowance-voice-concierge-selection-faq.md) | [EN](./bespoke-tailoring-bridal-couture-3d-body-scan-alteration-seam-allowance-voice-concierge-selection-faq.en.md)
+242. **商业财产与责任保险（Chubb 安达 / AIG / 达信 Marsh / 平安政企）、ACORD 25 保险凭证（COI）与承保授权 24×7 AI 语音方案（无批单严禁篡改 ACORD 25 凭证保单真相硬锁、台风/山火巨灾禁保期 Binding Moratorium 地域锁与工厂爆炸/勒索软件 0ms 首席公估师强切）**：[中文](./commercial-insurance-acord-25-certificate-binding-authority-cat-moratorium-voice-selection-faq.md) | [EN](./commercial-insurance-acord-25-certificate-binding-authority-cat-moratorium-voice-selection-faq.en.md)
