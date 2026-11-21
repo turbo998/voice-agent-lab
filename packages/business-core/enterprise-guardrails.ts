@@ -9025,6 +9025,36 @@ export function evaluateCorporateTreasuryDeepfakeMakerCheckerGuard(input: {
   };
 }
 
+export interface ThemeparkCruiseConciergeCodeAdamEvaluation {
+  policyCode: "THEMEPARK-CRUISE-CONCIERGE-CODE-ADAM-01";
+  itineraryAndVirtualQueueAuthorized: boolean;
+  unsafeRideBookingOrSplitFamilyPartyBlocked: boolean;
+  codeAdamSecurityOrShipMedicalPreemptionBridged: boolean;
+}
+
+/**
+ * Deterministic Theme Park & Cruise Ride Height/Medical Lock & Rider Switch, Whole-Party Atomic Virtual Queue Gate & 0ms Code Adam BLE Security Guard (`THEMEPARK-CRUISE-CONCIERGE-CODE-ADAM-01`).
+ */
+export function evaluateThemeparkCruiseConciergeCodeAdamGuard(input: {
+  rideHeightAndMedicalSafetyRestrictionsEnforcedWithRiderSwitch: boolean;
+  virtualQueueAndShoreExcursionAtomicPartyQuotaLocked: boolean;
+  missingChildCodeAdamOrCruiseMedicalEmergencyPreemption: boolean;
+}): ThemeparkCruiseConciergeCodeAdamEvaluation {
+  return {
+    policyCode: "THEMEPARK-CRUISE-CONCIERGE-CODE-ADAM-01",
+    itineraryAndVirtualQueueAuthorized:
+      input.rideHeightAndMedicalSafetyRestrictionsEnforcedWithRiderSwitch &&
+      input.virtualQueueAndShoreExcursionAtomicPartyQuotaLocked &&
+      !input.missingChildCodeAdamOrCruiseMedicalEmergencyPreemption,
+    unsafeRideBookingOrSplitFamilyPartyBlocked:
+      !input.rideHeightAndMedicalSafetyRestrictionsEnforcedWithRiderSwitch ||
+      !input.virtualQueueAndShoreExcursionAtomicPartyQuotaLocked ||
+      input.missingChildCodeAdamOrCruiseMedicalEmergencyPreemption,
+    codeAdamSecurityOrShipMedicalPreemptionBridged:
+      input.missingChildCodeAdamOrCruiseMedicalEmergencyPreemption,
+  };
+}
+
 
 
 
