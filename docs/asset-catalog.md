@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（323 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（324 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -364,3 +364,4 @@
 321. **全球连锁快餐得来速（QSR Dual-Lane Drive-Thru）、现制茶饮咖啡点单与门店 POS 实时联动语音架构（本地 POS 实时估清 `86-Stock` 防超卖与 4 层修饰词 `PLU DAG` 校验硬锁、FDA 9 大致敏原零绝对安全承诺与后厨 `KDS` 告警门禁、85 dBA 车道定向降噪与店员耳麦 `PTT` `<250ms` 无感接管提客单价 `+14.2%`）方案**：[中文](./qsr-drive-thru-coffee-pos-86-stock-lock-allergen-upsell-voice-ordering-selection-faq.md) | [EN](./qsr-drive-thru-coffee-pos-86-stock-lock-allergen-upsell-voice-ordering-selection-faq.en.md)
 322. **电信运营商与宽带 ISP 智能客服热线（防 `SIM-Swap` 补换 eSIM 卡与携号转网活体证照硬锁、`TR-069` 光衰遥测 + 手机拍光猫 `LOS` 灯/背板网口多模态看图自愈压降 `54.2%` 假故障装维上门、区域光缆挖断 `0ms` 队列前分流与 FTC 单次挽留秒退）方案**：[中文](./telecom-isp-outage-deflection-router-vision-triage-anti-simswap-voice-selection-faq.md) | [EN](./telecom-isp-outage-deflection-router-vision-triage-anti-simswap-voice-selection-faq.en.md)
 323. **跨国企业数据主权（GDPR / PIPL / HIPAA / BIPA）、主权云媒体流本地锚定与零数据留存（ZDR）语音架构（原始音频/STT 境内主权节点锁死与大模型 `ZDR` `0天` 留存硬锁、声纹生物识别 `BIPA/PIPL` 单独同意与自持 `CMK HSM` 门禁、跨境工单 `PII Token Vault` 伪名化与 `GDPR Art. 17` `<60s` 密钥粉碎）方案**：[中文](./sovereign-cloud-data-residency-gdpr-pipl-zdr-biometric-voice-architecture-selection-faq.md) | [EN](./sovereign-cloud-data-residency-gdpr-pipl-zdr-biometric-voice-architecture-selection-faq.en.md)
+324. **企业 CRM 与工单桌面（Salesforce SCV vs. Microsoft Dynamics 365 CIF v2 vs. ServiceNow vs. Zendesk）实时语音 CTI 弹屏、同屏协办与自动话后小结（`<300ms` 振铃前预水合弹屏与幂等 `Call_UUID` 防重复工单硬锁、客户端 DOM 掩码同屏协办与禁坐席代点提交门禁、挂机 `<3s` 三级枚举自动结案 `Auto-ACW` 压降 `92%` 话后工时与 `429` 限流发件箱）方案**：[中文](./crm-cti-salesforce-scv-dynamics-cif-servicenow-cobrowsing-auto-acw-selection-faq.md) | [EN](./crm-cti-salesforce-scv-dynamics-cif-servicenow-cobrowsing-auto-acw-selection-faq.en.md)

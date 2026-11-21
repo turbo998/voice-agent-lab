@@ -8515,6 +8515,36 @@ export function evaluateSovereignCloudGdprPiplZdrGuard(input: {
   };
 }
 
+export interface CrmCtiCobrowsingAutoAcwEvaluation {
+  policyCode: "CRM-CTI-COBROWSING-AUTO-ACW-01";
+  crmDesktopSyncAndWrapUpAuthorized: boolean;
+  duplicateCaseOrUnmaskedCobrowseBlocked: boolean;
+  autoAcwAndRateLimitOutboxBridged: boolean;
+}
+
+/**
+ * Deterministic CRM CTI <300ms Idempotent Screen-Pop Lock, Client-Side DOM-Masked Co-Browsing Gate & <3s Picklist Auto-ACW / Rate-Limit Outbox Guard (`CRM-CTI-COBROWSING-AUTO-ACW-01`).
+ */
+export function evaluateCrmCtiCobrowsingAutoAcwGuard(input: {
+  ctiScreenPopHydratedUnder300msWithIdempotentCallUuid: boolean;
+  coBrowsingDomMasksPasswordAndPaymentFieldsClientSide: boolean;
+  callDisconnectedAutoAcwDispositionUnder3SecOrBulkApiFallback: boolean;
+}): CrmCtiCobrowsingAutoAcwEvaluation {
+  return {
+    policyCode: "CRM-CTI-COBROWSING-AUTO-ACW-01",
+    crmDesktopSyncAndWrapUpAuthorized:
+      input.ctiScreenPopHydratedUnder300msWithIdempotentCallUuid &&
+      input.coBrowsingDomMasksPasswordAndPaymentFieldsClientSide &&
+      !input.callDisconnectedAutoAcwDispositionUnder3SecOrBulkApiFallback,
+    duplicateCaseOrUnmaskedCobrowseBlocked:
+      !input.ctiScreenPopHydratedUnder300msWithIdempotentCallUuid ||
+      !input.coBrowsingDomMasksPasswordAndPaymentFieldsClientSide ||
+      input.callDisconnectedAutoAcwDispositionUnder3SecOrBulkApiFallback,
+    autoAcwAndRateLimitOutboxBridged:
+      input.callDisconnectedAutoAcwDispositionUnder3SecOrBulkApiFallback,
+  };
+}
+
 
 
 
