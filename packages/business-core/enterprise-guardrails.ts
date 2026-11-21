@@ -6685,6 +6685,36 @@ export function evaluateSkiResortAvalancheGondolaB77VoiceGuard(input: {
   };
 }
 
+export interface CommercialLaundryHlacSpontaneousFireVoiceEvaluation {
+  policyCode: "COMMERCIAL-LAUNDRY-HLAC-SPONTANEOUS-FIRE-01";
+  cleanSideReleaseAndCartDumpAuthorized: boolean;
+  subSpecSporeWashOrHotOilCartDumpBlocked: boolean;
+  sharpsRfidPepAndDryerTumblingDelugeBridged: boolean;
+}
+
+/**
+ * Deterministic Healthcare & Hospitality Commercial Laundry HLAC Spore-Kill Lock, <=40°C Oil Cool-Down Auto-Ignition Gate & 0ms Sharps PEP Guard (`COMMERCIAL-LAUNDRY-HLAC-SPONTANEOUS-FIRE-01`).
+ */
+export function evaluateCommercialLaundryHlacSpontaneousFireVoiceGuard(input: {
+  hlacSporeKillAndCleanBarrierVerified: boolean;
+  oilLinenCooldownUnder40cAndPressLotoSafe: boolean;
+  bloodborneSharpsStickDryerFireOrPressJam: boolean;
+}): CommercialLaundryHlacSpontaneousFireVoiceEvaluation {
+  return {
+    policyCode: "COMMERCIAL-LAUNDRY-HLAC-SPONTANEOUS-FIRE-01",
+    cleanSideReleaseAndCartDumpAuthorized:
+      input.hlacSporeKillAndCleanBarrierVerified &&
+      input.oilLinenCooldownUnder40cAndPressLotoSafe &&
+      !input.bloodborneSharpsStickDryerFireOrPressJam,
+    subSpecSporeWashOrHotOilCartDumpBlocked:
+      !input.hlacSporeKillAndCleanBarrierVerified ||
+      !input.oilLinenCooldownUnder40cAndPressLotoSafe ||
+      input.bloodborneSharpsStickDryerFireOrPressJam,
+    sharpsRfidPepAndDryerTumblingDelugeBridged:
+      input.bloodborneSharpsStickDryerFireOrPressJam,
+  };
+}
+
 
 
 

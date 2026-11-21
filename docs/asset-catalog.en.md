@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (262 Bilingual Guides)
+## 3. Solution Architect Selection Guides (263 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -303,3 +303,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 260. **Commercial Printing & Flexible Packaging Low-Migration Ink, Nip LOTO & LEL Voice Copilot: Food-Ink Migration Lock, ANSI B65 Nip Gate & 0ms NFPA 86 Solvent >25% LEL Bridge**: [EN](./commercial-printing-flexible-packaging-flexo-gravure-solvent-lel-low-migration-ink-nip-loto-voice-copilot-selection-faq.en.md) | [中文](./commercial-printing-flexible-packaging-flexo-gravure-solvent-lel-low-migration-ink-nip-loto-voice-copilot-selection-faq.md)
 261. **Commercial Pest Control, Structural Tent Fumigation (Vikane) & EPA FIFRA Voice Dispatch: Chloropicrin & Secondary-Lock Gate, ≤1.0 ppm Clearance Lock & 0ms Poison Control Bridge**: [EN](./pest-control-structural-fumigation-sulfuryl-fluoride-chloropicrin-clearance-fifra-voice-dispatch-selection-faq.en.md) | [中文](./pest-control-structural-fumigation-sulfuryl-fluoride-chloropicrin-clearance-fifra-voice-dispatch-selection-faq.md)
 262. **Alpine Ski Resort, Gondola ANSI B77.1 & Avalanche Gazex Patrol Voice Dispatch: Blast-Zone Sweep & Winch-Cat Lock, Deropement/Crosswind Gate & 0ms Avalanche / Rollback Bridge**: [EN](./ski-resort-gondola-chairlift-avalanche-gazex-hypothermia-patrol-voice-dispatch-selection-faq.en.md) | [中文](./ski-resort-gondola-chairlift-avalanche-gazex-hypothermia-patrol-voice-dispatch-selection-faq.md)
+263. **Healthcare & Hospitality Commercial Laundry HLAC, C. diff & Oil Auto-Ignition Voice AI: 71°C/PAA Spore-Kill Lock, ≤40°C Oil Cool-Down Gate & 0ms Sharps PEP Bridge**: [EN](./healthcare-hospitality-commercial-laundry-hlac-cdiff-spores-sharps-linen-voice-dispatch-selection-faq.en.md) | [中文](./healthcare-hospitality-commercial-laundry-hlac-cdiff-spores-sharps-linen-voice-dispatch-selection-faq.md)
