@@ -6955,6 +6955,36 @@ export function evaluateElectroplatingAnodizingCyanideHcnVoiceGuard(input: {
   };
 }
 
+export interface IndustrialGasAsuLoxCgaVoiceEvaluation {
+  policyCode: "INDUSTRIAL-GAS-ASU-LOX-CGA-01";
+  o2MainValveAndCylinderFillAuthorized: boolean;
+  adiabaticHighDeltaPOrCgaAdapterBlocked: boolean;
+  loxAsphaltCordonAndGarmentAirOutBridged: boolean;
+}
+
+/**
+ * Deterministic Industrial Gases & Cryogenic ASU O2 Slow-Equalize (dP <0.5 MPa) & UV Oil-Free Lock, CGA Anti-Adapter Gate & 0ms LOX-on-Asphalt Guard (`INDUSTRIAL-GAS-ASU-LOX-CGA-01`).
+ */
+export function evaluateIndustrialGasAsuLoxCgaVoiceGuard(input: {
+  oxygenSlowEqualizeOilFreeAndConcretePadSafe: boolean;
+  cgaNoAdapterHydrotestAndMedicalUspVerified: boolean;
+  loxOnAsphaltO2EnrichmentOrCryoAsphyxiation: boolean;
+}): IndustrialGasAsuLoxCgaVoiceEvaluation {
+  return {
+    policyCode: "INDUSTRIAL-GAS-ASU-LOX-CGA-01",
+    o2MainValveAndCylinderFillAuthorized:
+      input.oxygenSlowEqualizeOilFreeAndConcretePadSafe &&
+      input.cgaNoAdapterHydrotestAndMedicalUspVerified &&
+      !input.loxOnAsphaltO2EnrichmentOrCryoAsphyxiation,
+    adiabaticHighDeltaPOrCgaAdapterBlocked:
+      !input.oxygenSlowEqualizeOilFreeAndConcretePadSafe ||
+      !input.cgaNoAdapterHydrotestAndMedicalUspVerified ||
+      input.loxOnAsphaltO2EnrichmentOrCryoAsphyxiation,
+    loxAsphaltCordonAndGarmentAirOutBridged:
+      input.loxOnAsphaltO2EnrichmentOrCryoAsphyxiation,
+  };
+}
+
 
 
 
