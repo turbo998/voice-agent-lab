@@ -8575,6 +8575,36 @@ export function evaluateFrontierSystem1System2ThinkerTalkerGuard(input: {
   };
 }
 
+export interface B2bArCollectionsFdcpaRpcEvaluation {
+  policyCode: "B2B-AR-COLLECTIONS-FDCPA-RPC-01";
+  compliantDebtResolutionAndPtpAuthorized: boolean;
+  fdcpaOverdialOrThirdPartyDisclosureBlocked: boolean;
+  invoicePodResendOrHardshipRestructuringBridged: boolean;
+}
+
+/**
+ * Deterministic B2B AR & Early-Delinquency FDCPA 7-in-7 Pre-Dial Lock, Right-Party Contact (RPC) Privacy Gate & Live Invoice/POD / Hardship Guard (`B2B-AR-COLLECTIONS-FDCPA-RPC-01`).
+ */
+export function evaluateB2bArCollectionsFdcpaRpcGuard(input: {
+  fdcpa7In7CallCapAndLocalTimeWindow8amTo9pmValid: boolean;
+  rightPartyContactVerifiedBeforeDebtDisclosureAndMiniMirandaRead: boolean;
+  b2bInvoicePodDisputeOrHardshipRestructuringTriggered: boolean;
+}): B2bArCollectionsFdcpaRpcEvaluation {
+  return {
+    policyCode: "B2B-AR-COLLECTIONS-FDCPA-RPC-01",
+    compliantDebtResolutionAndPtpAuthorized:
+      input.fdcpa7In7CallCapAndLocalTimeWindow8amTo9pmValid &&
+      input.rightPartyContactVerifiedBeforeDebtDisclosureAndMiniMirandaRead &&
+      !input.b2bInvoicePodDisputeOrHardshipRestructuringTriggered,
+    fdcpaOverdialOrThirdPartyDisclosureBlocked:
+      !input.fdcpa7In7CallCapAndLocalTimeWindow8amTo9pmValid ||
+      !input.rightPartyContactVerifiedBeforeDebtDisclosureAndMiniMirandaRead ||
+      input.b2bInvoicePodDisputeOrHardshipRestructuringTriggered,
+    invoicePodResendOrHardshipRestructuringBridged:
+      input.b2bInvoicePodDisputeOrHardshipRestructuringTriggered,
+  };
+}
+
 
 
 
