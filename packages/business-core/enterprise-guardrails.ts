@@ -4905,6 +4905,34 @@ export function evaluateHybridS2sCascadeIntentRouterVoiceGuard(input: {
   };
 }
 
+export interface AvatarLivestreamRetailKioskVoiceEvaluation {
+  policyCode: "AVATAR-LIVESTREAM-RETAIL-KIOSK-01";
+  avatarSpeechAndVideoBroadcastAuthorized: boolean;
+  flashSaleCouponOrCheckoutQrAuthorized: boolean;
+  fallbackTo2dCardAndAudioModeTriggered: boolean;
+}
+
+/**
+ * Deterministic Interactive Avatar Livestream & Retail Kiosk Ad-Law Claim Lock, MAP Promo Gate & Lip-Sync Degrade Guard (`AVATAR-LIVESTREAM-RETAIL-KIOSK-01`).
+ */
+export function evaluateAvatarLivestreamRetailKioskVoiceGuard(input: {
+  productClaimApprovedInPimAndAdLawCompliant: boolean;
+  flashSaleInventoryAndPromoFloorVerified: boolean;
+  avatarLipSyncDriftAbove80msOrGpuOverload: boolean;
+}): AvatarLivestreamRetailKioskVoiceEvaluation {
+  return {
+    policyCode: "AVATAR-LIVESTREAM-RETAIL-KIOSK-01",
+    avatarSpeechAndVideoBroadcastAuthorized:
+      input.productClaimApprovedInPimAndAdLawCompliant &&
+      !input.avatarLipSyncDriftAbove80msOrGpuOverload,
+    flashSaleCouponOrCheckoutQrAuthorized:
+      input.flashSaleInventoryAndPromoFloorVerified &&
+      input.productClaimApprovedInPimAndAdLawCompliant,
+    fallbackTo2dCardAndAudioModeTriggered:
+      input.avatarLipSyncDriftAbove80msOrGpuOverload,
+  };
+}
+
 
 
 

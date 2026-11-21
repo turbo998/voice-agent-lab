@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (201 Bilingual Guides)
+## 3. Solution Architect Selection Guides (202 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -242,3 +242,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 199. **Commercial Real Estate (CRE), Hyperscale Colocation Data Center & Industrial REIT (Yardi Voyager / MRI / ServiceNow IWMS) 24×7 Voice Concierge: NFPA 51B Hot-Work & MOP Cage Lock, Lease Surrender Legal Gate & 0ms Elevator/Thermal Dispatch**: [EN](./commercial-real-estate-reit-colocation-yardi-mri-cam-fitout-voice-concierge-selection-faq.en.md) | [中文](./commercial-real-estate-reit-colocation-yardi-mri-cam-fitout-voice-concierge-selection-faq.md)
 200. **District Heating, Combined Heat & Power (CHP) Cogeneration & Industrial Steam Network (Siemens SPPA-T3000 / Danfoss Leanheat / ASME BPVC) 24×7 Voice Dispatch: Anti-Water-Hammer Condensate Lock, Polar-Vortex Freeze Floor Gate & 0ms Steam Rupture / Boiler MFT Bridge**: [EN](./district-heating-chp-cogeneration-steam-network-water-hammer-voice-dispatch-selection-faq.en.md) | [中文](./district-heating-chp-cogeneration-steam-network-water-hammer-voice-dispatch-selection-faq.md)
 201. **Native Speech-to-Speech (GPT-Realtime / Gemini Live) vs. Cascaded (STT+LLM+TTS) In-Call Dynamic Dual-Engine Router: Regulated Transaction Cascade Lock, Unified Voice Timbre Sync & Audio-Token Budget Circuit Breaker**: [EN](./hybrid-s2s-realtime-vs-cascaded-stt-llm-tts-dynamic-intent-router-selection-faq.en.md) | [中文](./hybrid-s2s-realtime-vs-cascaded-stt-llm-tts-dynamic-intent-router-selection-faq.md)
+202. **Interactive Voice + Video Avatar Platform Benchmark (Azure AI Speech Avatar vs. HeyGen Interactive Avatar vs. Tavus Phoenix-3 vs. Self-Hosted GPU): FTC/Ad-Law Claim Lock, Flash-Sale MAP Floor Gate & <45ms Lip-Sync Auto-Degrade**: [EN](./ecommerce-livestream-retail-kiosk-interactive-avatar-heygen-azure-tavus-selection-faq.en.md) | [中文](./ecommerce-livestream-retail-kiosk-interactive-avatar-heygen-azure-tavus-selection-faq.md)

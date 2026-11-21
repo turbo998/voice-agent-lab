@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg60" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0a1e"/>
+      <stop offset="50%" stop-color="#1a1235"/>
+      <stop offset="100%" stop-color="#0d1326"/>
+    </linearGradient>
+    <linearGradient id="card60" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#221842" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#110d24" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg60)" rx="16"/>
+  <text x="600" y="42" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">Interactive Voice + Video Avatar Platform Benchmark (Azure Avatar vs HeyGen vs Tavus vs Self-Hosted)</text>
+  <text x="600" y="66" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">FTC/Advertising Medical Claim Lock · Flash-Sale SKU &amp; Coupon Guard · &lt;45ms Lip-Sync Drift Auto-Degrade (AVATAR-LIVESTREAM-RETAIL-KIOSK-01)</text>
+
+  <!-- Left Column -->
+  <rect x="30" y="92" width="290" height="548" rx="12" fill="url(#card60)" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="175" y="122" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1. Omnichannel Avatar Touchpoints</text>
+
+  <rect x="48" y="142" width="254" height="105" rx="8" fill="#0f172a" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="175" y="166" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">24×7 Livestream Shopping Host</text>
+  <text x="175" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• TikTok Shop / Douyin / YouTube Live</text>
+  <text x="175" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Real-Time Bullet-Chat Q&amp;A Barge-In</text>
+  <text x="175" y="224" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Adversarial Comment Prompt Injection</text>
+
+  <rect x="48" y="264" width="254" height="105" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="175" y="288" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Flagship Store 4K Kiosk Promoter</text>
+  <text x="175" y="310" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Luxury Cosmetics &amp; Duty-Free Advisor</text>
+  <text x="175" y="328" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Barcode Scan + Visual Skin/Fit Consult</text>
+  <text x="175" y="346" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Unapproved "Cures Eczema" Claim Risk</text>
+
+  <rect x="48" y="386" width="254" height="105" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="175" y="410" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">VIP Private Client Video Concierge</text>
+  <text x="175" y="432" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 1-on-1 WebRTC Mobile App Video Call</text>
+  <text x="175" y="450" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Flash-Sale Coupon &amp; Bundle Locking</text>
+  <text x="175" y="468" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• GPU Render Queue Starvation (&gt;120ms)</text>
+
+  <rect x="48" y="508" width="254" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="175" y="532" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Avatar Rendering Engines</text>
+  <text x="175" y="554" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Azure AI Speech Avatar (WebRTC 1080p)</text>
+  <text x="175" y="572" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• HeyGen Streaming / Tavus Phoenix-3</text>
+  <text x="175" y="590" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Self-Hosted MuseTalk / LivePortrait GPU</text>
+
+  <!-- Center Column -->
+  <rect x="350" y="92" width="500" height="548" rx="12" fill="url(#card60)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="600" y="122" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">2. Deterministic Avatar Commerce Gate (AVATAR-LIVESTREAM-RETAIL-KIOSK-01)</text>
+
+  <rect x="372" y="142" width="456" height="136" rx="10" fill="#2a1215" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE A: FTC / Ad-Law Superlative &amp; Medical Efficacy Claim Lock</text>
+  <text x="600" y="188" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: productClaimApprovedInPimAndAdLawCompliant === true</text>
+  <text x="600" y="208" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blocks avatar viseme/audio synthesis in 0ms if draft response contains</text>
+  <text x="600" y="226" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  banned superlatives ("#1 Cure", "100% FDA guaranteed") or troll injections</text>
+  <text x="600" y="246" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Prevents platform livestream ban &amp; FTC deceptive-advertising fines</text>
+
+  <rect x="372" y="294" width="456" height="145" rx="10" fill="#172554" stroke="#60a5fa" stroke-width="1.8"/>
+  <text x="600" y="318" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE B: Flash-Sale Inventory Reserve &amp; Price-Floor Promo Lock</text>
+  <text x="600" y="340" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: flashSaleInventoryAndPromoFloorVerified === true</text>
+  <text x="600" y="360" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blocks verbal "99% off / $1 iPhone" prompt-injection exploits and verifies</text>
+  <text x="600" y="378" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  Redis atomic stock reservation before displaying checkout QR on kiosk</text>
+  <text x="600" y="398" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Eliminates livestream overselling &amp; unauthorized margin erosion</text>
+
+  <rect x="372" y="455" width="456" height="165" rx="10" fill="#062e22" stroke="#10b981" stroke-width="1.8"/>
+  <text x="600" y="479" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE C: &lt;45ms Lip-Sync Drift &amp; GPU Saturation Auto-Degrade</text>
+  <text x="600" y="501" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trigger: avatarLipSyncDriftAbove80msOrGpuOverload === true</text>
+  <text x="600" y="521" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 0ms sets fallbackTo2dCardAndAudioModeTriggered = true</text>
+  <text x="600" y="541" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Smoothly crossfades to high-res product B-roll + ultra-low-latency voice</text>
+  <text x="600" y="559" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">  instead of showing uncanny-valley frozen lips or desynced video</text>
+  <text x="600" y="582" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Cost: $0.095/min (Self-Hosted L40S) vs $0.55/min (Azure) vs $0.90/min (SaaS)</text>
+
+  <!-- Right Column -->
+  <rect x="880" y="92" width="290" height="548" rx="12" fill="url(#card60)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1025" y="122" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3. PIM, OMS &amp; GPU Cluster</text>
+
+  <rect x="898" y="142" width="254" height="110" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="1025" y="166" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Shopify Plus / SAP Commerce / PIM</text>
+  <text x="1025" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Legal-Approved Product Claims &amp; INCI</text>
+  <text x="1025" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Minimum Advertised Price (MAP) Floor</text>
+  <text x="1025" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Redis Flash-Sale Stock Token Bucket</text>
+
+  <rect x="898" y="268" width="254" height="110" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="1025" y="292" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">WebRTC Viseme &amp; Video Pipeline</text>
+  <text x="1025" y="314" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Phoneme-to-Viseme Timestamp Alignment</text>
+  <text x="1025" y="332" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 1080p 30fps H.264/AV1 Hardware Encode</text>
+  <text x="1025" y="350" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Barge-In Idle Listening Gesture Loop</text>
+
+  <rect x="898" y="394" width="254" height="110" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="1025" y="418" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Rights &amp; Likeness Governance</text>
+  <text x="1025" y="440" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Talent Likeness Licensing Window Lock</text>
+  <text x="1025" y="458" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• C2PA Content Credentials Watermark</text>
+  <text x="1025" y="476" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• EU AI Act Art. 50 Synthetic Disclosure</text>
+
+  <rect x="898" y="520" width="254" height="100" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2"/>
+  <text x="1025" y="544" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Sealed Avatar Metrics</text>
+  <text x="1025" y="566" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Unlawful Ad-Claim Broadcast: 0.00%</text>
+  <text x="1025" y="584" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Audio-Visual Sync Skew: &lt; 32ms P95</text>
+  <text x="1025" y="602" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Kiosk Add-to-Cart Conversion: +38%</text>
+</svg>

@@ -169,6 +169,7 @@ import {
   evaluateCommercialRealEstateColocationYardiVoiceGuard,
   evaluateDistrictHeatingChpSteamVoiceGuard,
   evaluateHybridS2sCascadeIntentRouterVoiceGuard,
+  evaluateAvatarLivestreamRetailKioskVoiceGuard,
   evaluateVoicePromptMarkdownSanitizerGuard,
   evaluateWarehousePickByVoiceColdChainGuard,
   evaluateWealthDualRecordingGuard,
@@ -190,11 +191,11 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
     },
     {
       relPath: "docs/asset-catalog.md",
-      mustContain: ["201 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
+      mustContain: ["202 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/asset-catalog.en.md",
-      mustContain: ["201 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
+      mustContain: ["202 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/solution-architecture.md",
@@ -246,13 +247,13 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
   }
 });
 
-test("201 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
+test("202 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
   const docEntries = await readdir(resolve(repoRoot, "docs"));
   const zhFaqFiles = docEntries.filter((f) => f.endsWith("-faq.md")).sort();
   const enFaqFiles = docEntries.filter((f) => f.endsWith("-faq.en.md")).sort();
 
-  assert.equal(zhFaqFiles.length, 201, `Expected 201 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
-  assert.equal(enFaqFiles.length, 201, `Expected 201 curated English selection guides, found ${enFaqFiles.length}`);
+  assert.equal(zhFaqFiles.length, 202, `Expected 202 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
+  assert.equal(enFaqFiles.length, 202, `Expected 202 curated English selection guides, found ${enFaqFiles.length}`);
 
   for (const zhFile of zhFaqFiles) {
     const expectedEn = zhFile.replace(/-faq\.md$/, "-faq.en.md");
@@ -1224,7 +1225,9 @@ test("deterministic enterprise guardrails enforce barge-in epoch fencing, wealth
   assert.equal(benchHarnessGuard.entitySlotSafetyPassed, true);
   assert.equal(benchHarnessGuard.contextWindowPruningRequired, true);
   assert.equal(benchHarnessGuard.pocArchitectureApproved, true);
+});
 
+test("deterministic enterprise guardrails enforce vertical industry safety (cohort 2)", () => {
   const aeroSatGuard = evaluateAerospaceSatelliteVoiceGuard({
     allSubsystemsPolledGo: true,
     anyLoopCalledHoldOrAbort: true,
@@ -1627,6 +1630,9 @@ test("deterministic enterprise guardrails enforce barge-in epoch fencing, wealth
   assert.equal(freightForwardingGuard.generalCargoBookingAuthorized, false);
   assert.equal(freightForwardingGuard.hazmatMsdsMissingBlocked, true);
   assert.equal(freightForwardingGuard.portDrayageDispatchAuthorized, false);
+});
+
+test("deterministic enterprise guardrails enforce vertical industry safety (cohort 3)", () => {
 
   const merchantPosGuard = evaluateMerchantPosAcquiringSettlementVoiceGuard({
     requestsPayoutBankAccountOrBlindRefundChange: true,
@@ -1946,7 +1952,9 @@ test("deterministic enterprise guardrails enforce barge-in epoch fencing, wealth
   assert.equal(maritimeNorGuard.validNoticeOfReadinessAccepted, false);
   assert.equal(maritimeNorGuard.warRiskZoneTransitAuthorized, false);
   assert.equal(maritimeNorGuard.cargoDischargeWithoutOriginalBlBlocked, true);
+});
 
+test("deterministic enterprise guardrails enforce vertical industry safety (cohort 4)", () => {
   const bloodBankGuard = evaluateBloodBankPlasmaCrossmatchVoiceGuard({
     aboRhCompatibleAndIrradiatedSpecialReqMatched: false,
     donorOnTeratogenicOrAnticoagulantDeferralList: true,
@@ -2049,4 +2057,13 @@ test("deterministic enterprise guardrails enforce barge-in epoch fencing, wealth
   assert.equal(hybridRouterGuard.nativeS2sDirectAudioPermitted, false);
   assert.equal(hybridRouterGuard.midCallLaneSwitchAuthorized, false);
   assert.equal(hybridRouterGuard.forceCascadeFallbackAndBudgetClampTriggered, true);
+
+  const avatarLivestreamKioskGuard = evaluateAvatarLivestreamRetailKioskVoiceGuard({
+    productClaimApprovedInPimAndAdLawCompliant: false,
+    flashSaleInventoryAndPromoFloorVerified: false,
+    avatarLipSyncDriftAbove80msOrGpuOverload: true,
+  });
+  assert.equal(avatarLivestreamKioskGuard.avatarSpeechAndVideoBroadcastAuthorized, false);
+  assert.equal(avatarLivestreamKioskGuard.flashSaleCouponOrCheckoutQrAuthorized, false);
+  assert.equal(avatarLivestreamKioskGuard.fallbackTo2dCardAndAudioModeTriggered, true);
 });
