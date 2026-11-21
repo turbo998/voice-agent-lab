@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（253 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（254 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -294,3 +294,4 @@
 251. **工业无损检测（NDT：SGS / 必维 / 油气管线探伤）、伽马射线探伤机（铱-192 / 钴-60）与 ASME Section V 免提语音方案（蓝牙辐射巡测仪 Survey Meter 贴机物理验源收回硬锁、NRC 10 CFR 34 双人三表警戒边界锁与放射源卡壳脱落 0ms 撤离强切 RSO）**：[中文](./industrial-ndt-radiography-iridium-192-cobalt-60-source-retraction-asme-section-v-voice-copilot-selection-faq.md) | [EN](./industrial-ndt-radiography-iridium-192-cobalt-60-source-retraction-asme-section-v-voice-copilot-selection-faq.en.md)
 252. **智能无人仓（Amazon Robotics / 极智嘉 Geek+ / 海柔创新 / AutoStore）、AMR 机器人集群与自动化立库（ASRS）24×7 语音调度方案（ISO 3691-4 机械联锁钥匙 Trapped-Key LOTO 与禁软暂停进场硬锁、超高超宽托盘防高空坠落锁及危化品掉落 0ms 全区安全 PLC 急停防车轮碾压扩散强切）**：[中文](./warehouse-robotics-amr-asrs-goods-to-person-iso-3691-4-trapped-key-loto-voice-dispatch-selection-faq.md) | [EN](./warehouse-robotics-amr-asrs-goods-to-person-iso-3691-4-trapped-key-loto-voice-dispatch-selection-faq.en.md)
 253. **儿童预防接种门诊、国家免疫规划（CDC ACIP / 疾控免疫规划）与疫苗冷链（2–8°C）24×7 AI 语音预检与随访方案（活疫苗 28 天间隔与 SCID/川崎病 IVIG 禁忌硬锁、铝佐剂疫苗零冻结与专用稀释液双码配对门禁及过敏性休克 0.01mg/kg 肾上腺素/肠套叠 0ms 强切）**：[中文](./pediatric-vaccine-immunization-cdc-acip-cold-chain-live-attenuated-anaphylaxis-voice-triage-selection-faq.md) | [EN](./pediatric-vaccine-immunization-cdc-acip-cold-chain-live-attenuated-anaphylaxis-voice-triage-selection-faq.en.md)
+254. **房产交易产权代管（Title & Escrow：First American / Fidelity National FNF / 贝壳签约中心资金监管）与按揭交割 24×7 AI 语音管家方案（防电汇诈骗 Anti-BEC 零口头改号与 CertifID 加密门户硬锁、CFPB TRID 3 天披露冷静期门禁及首付款误汇 Fedwire Recall / 冒名卖房 0ms 强切）**：[中文](./title-escrow-real-estate-closing-trid-wire-instruction-callback-mechanic-lien-voice-concierge-selection-faq.md) | [EN](./title-escrow-real-estate-closing-trid-wire-instruction-callback-mechanic-lien-voice-concierge-selection-faq.en.md)

@@ -6415,6 +6415,36 @@ export function evaluatePediatricVaccineAcipColdchainVoiceGuard(input: {
   };
 }
 
+export interface TitleEscrowClosingWireTridVoiceEvaluation {
+  policyCode: "TITLE-ESCROW-CLOSING-WIRE-TRID-01";
+  closingSigningAndDisbursementAuthorized: boolean;
+  verbalWireChangeOrPrematureTridBlocked: boolean;
+  fedwireRecallFbiRatAndUnderwriterBridged: boolean;
+}
+
+/**
+ * Deterministic Title & Escrow Real Estate Closing Anti-BEC Wire Lock, CFPB TRID 3-Day CD Gate & 0ms Fedwire Recall Guard (`TITLE-ESCROW-CLOSING-WIRE-TRID-01`).
+ */
+export function evaluateTitleEscrowClosingWireTridVoiceGuard(input: {
+  wireInstructionPortalVerifiedAndZeroVerbalChange: boolean;
+  tridThreeDayWaitAndTitleClearVerified: boolean;
+  wireFraudAttemptDeedForgeryOrLienDefect: boolean;
+}): TitleEscrowClosingWireTridVoiceEvaluation {
+  return {
+    policyCode: "TITLE-ESCROW-CLOSING-WIRE-TRID-01",
+    closingSigningAndDisbursementAuthorized:
+      input.wireInstructionPortalVerifiedAndZeroVerbalChange &&
+      input.tridThreeDayWaitAndTitleClearVerified &&
+      !input.wireFraudAttemptDeedForgeryOrLienDefect,
+    verbalWireChangeOrPrematureTridBlocked:
+      !input.wireInstructionPortalVerifiedAndZeroVerbalChange ||
+      !input.tridThreeDayWaitAndTitleClearVerified ||
+      input.wireFraudAttemptDeedForgeryOrLienDefect,
+    fedwireRecallFbiRatAndUnderwriterBridged:
+      input.wireFraudAttemptDeedForgeryOrLienDefect,
+  };
+}
+
 
 
 
