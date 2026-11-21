@@ -8935,6 +8935,36 @@ export function evaluateHomeServicesHvacServicetitanDispatchGuard(input: {
   };
 }
 
+export interface HigherEdFerpaFafsaCrisisEvaluation {
+  policyCode: "HIGHER-ED-FERPA-FAFSA-CRISIS-01";
+  studentRecordAndAidGuidanceAuthorized: boolean;
+  ferpaLeakOrAdmissionGuaranteeBlocked: boolean;
+  crisis988OrTitleIxPreemptionBridged: boolean;
+}
+
+/**
+ * Deterministic Higher-Education Federal FERPA Parent Proxy-Waiver Lock, Zero Admission/Scholarship Guarantee Gate & 0ms 988/CAPS Crisis Preemption Guard (`HIGHER-ED-FERPA-FAFSA-CRISIS-01`).
+ */
+export function evaluateHigherEdFerpaFafsaCrisisGuard(input: {
+  ferpaProxyWaiverVerifiedBeforeDisclosingGradesOrTuitionToParent: boolean;
+  zeroVerbalAdmissionOrAidAwardGuaranteeEnforced: boolean;
+  campusMentalHealthCrisis988OrTitleIxSafetyPreemption: boolean;
+}): HigherEdFerpaFafsaCrisisEvaluation {
+  return {
+    policyCode: "HIGHER-ED-FERPA-FAFSA-CRISIS-01",
+    studentRecordAndAidGuidanceAuthorized:
+      input.ferpaProxyWaiverVerifiedBeforeDisclosingGradesOrTuitionToParent &&
+      input.zeroVerbalAdmissionOrAidAwardGuaranteeEnforced &&
+      !input.campusMentalHealthCrisis988OrTitleIxSafetyPreemption,
+    ferpaLeakOrAdmissionGuaranteeBlocked:
+      !input.ferpaProxyWaiverVerifiedBeforeDisclosingGradesOrTuitionToParent ||
+      !input.zeroVerbalAdmissionOrAidAwardGuaranteeEnforced ||
+      input.campusMentalHealthCrisis988OrTitleIxSafetyPreemption,
+    crisis988OrTitleIxPreemptionBridged:
+      input.campusMentalHealthCrisis988OrTitleIxSafetyPreemption,
+  };
+}
+
 
 
 

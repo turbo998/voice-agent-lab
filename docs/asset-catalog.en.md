@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (337 Bilingual Guides)
+## 3. Solution Architect Selection Guides (338 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -378,3 +378,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 335. **B2B Procurement & Supplier PO Expediting (SAP Ariba / Coupa) Voice-to-ASN & Shortage Recovery Architecture: PO Unit-Price & +-5% Tolerance Lock, Spoken-to-EDI 856 ASN & Dock-Slot Gate (96.4% ASN Coverage) & 0ms Line-Down Parallel Backup AVL Spot-Buy Swarm**: [EN](./b2b-procurement-sap-ariba-coupa-po-expediting-asn-supplier-voice-selection-faq.en.md) | [中文](./b2b-procurement-sap-ariba-coupa-po-expediting-asn-supplier-voice-selection-faq.md)
 336. **Global Multilingual & Intra-Sentential Code-Switching (Zh-En / Cantonese-En / Spanglish / Hinglish) Real-Time ASR & TTS Benchmark Architecture: Joint Multi-Script Latin Entity Lock (4.6% MER / 99.1% SKU Fidelity), Single-Persona Multilingual TTS Gate & <300ms Continuous LID Mirroring**: [EN](./multilingual-code-switching-zh-en-spanglish-hinglish-asr-tts-benchmark-selection-faq.en.md) | [中文](./multilingual-code-switching-zh-en-spanglish-hinglish-asr-tts-benchmark-selection-faq.md)
 337. **Home Services, HVAC & Plumbing Dispatch (ServiceTitan / Salesforce Field Service) 24/7 Voice Booking, Nameplate Vision & ETA Confirmation Architecture: EPA-608 License & >=12-Yr Unit Turnover Lock (+28.4% Ticket), Nameplate OCR & $89 Diagnostic-Fee Gate (92.8% FTFR) & T-30m At-Home Call (-62.4% Wasted Truck Rolls)**: [EN](./home-services-hvac-plumbing-servicetitan-dispatch-eta-confirmation-voice-selection-faq.en.md) | [中文](./home-services-hvac-plumbing-servicetitan-dispatch-eta-confirmation-voice-selection-faq.md)
+338. **Higher Education Admissions, FAFSA Financial Aid & FERPA Campus Voice Desk (Ellucian Banner / Workday Student / Slate) Architecture: Federal FERPA Parent Proxy-Waiver Lock, Zero Admission/Scholarship Guarantee & FAFSA Hold Resolution Gate (-29.4% Summer Melt) & 0ms 988/CAPS Mental-Health Crisis Preemption**: [EN](./higher-education-admissions-fafsa-financial-aid-ferpa-crisis-voice-selection-faq.en.md) | [中文](./higher-education-admissions-fafsa-financial-aid-ferpa-crisis-voice-selection-faq.md)

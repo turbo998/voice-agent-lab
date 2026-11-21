@@ -305,6 +305,7 @@ import {
   evaluateB2bProcurementAribaCoupaAsnGuard,
   evaluateMultilingualCodeswitchingAsrTtsGuard,
   evaluateHomeServicesHvacServicetitanDispatchGuard,
+  evaluateHigherEdFerpaFafsaCrisisGuard,
   evaluateVoicePromptMarkdownSanitizerGuard,
   evaluateWarehousePickByVoiceColdChainGuard,
   evaluateWealthDualRecordingGuard,
@@ -326,11 +327,11 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
     },
     {
       relPath: "docs/asset-catalog.md",
-      mustContain: ["337 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
+      mustContain: ["338 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/asset-catalog.en.md",
-      mustContain: ["337 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
+      mustContain: ["338 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/solution-architecture.md",
@@ -382,13 +383,13 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
   }
 });
 
-test("337 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
+test("338 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
   const docEntries = await readdir(resolve(repoRoot, "docs"));
   const zhFaqFiles = docEntries.filter((f) => f.endsWith("-faq.md")).sort();
   const enFaqFiles = docEntries.filter((f) => f.endsWith("-faq.en.md")).sort();
 
-  assert.equal(zhFaqFiles.length, 337, `Expected 337 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
-  assert.equal(enFaqFiles.length, 337, `Expected 337 curated English selection guides, found ${enFaqFiles.length}`);
+  assert.equal(zhFaqFiles.length, 338, `Expected 338 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
+  assert.equal(enFaqFiles.length, 338, `Expected 338 curated English selection guides, found ${enFaqFiles.length}`);
 
   for (const zhFile of zhFaqFiles) {
     const expectedEn = zhFile.replace(/-faq\.md$/, "-faq.en.md");
@@ -3426,4 +3427,13 @@ test("deterministic enterprise guardrails enforce vertical industry safety (coho
   assert.equal(homeServicesGuard.dispatchSlotAndVanStockAuthorized, false);
   assert.equal(homeServicesGuard.unlicensedTechOrSightUnseenPriceQuoteBlocked, true);
   assert.equal(homeServicesGuard.tMinus30PresenceAndEmergencyPreemptionBridged, true);
+
+  const higherEdGuard = evaluateHigherEdFerpaFafsaCrisisGuard({
+    ferpaProxyWaiverVerifiedBeforeDisclosingGradesOrTuitionToParent: false,
+    zeroVerbalAdmissionOrAidAwardGuaranteeEnforced: false,
+    campusMentalHealthCrisis988OrTitleIxSafetyPreemption: true,
+  });
+  assert.equal(higherEdGuard.studentRecordAndAidGuidanceAuthorized, false);
+  assert.equal(higherEdGuard.ferpaLeakOrAdmissionGuaranteeBlocked, true);
+  assert.equal(higherEdGuard.crisis988OrTitleIxPreemptionBridged, true);
 });
