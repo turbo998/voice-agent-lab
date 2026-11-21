@@ -8815,6 +8815,36 @@ export function evaluateInteractiveKioskAvatarPresenceGuard(input: {
   };
 }
 
+export interface PropertyYardiFairhousingMaintenanceEvaluation {
+  policyCode: "PROPERTY-YARDI-FAIRHOUSING-MAINTENANCE-01";
+  leasingTourAndRoutineWorkOrderAuthorized: boolean;
+  fairHousingSteeringOrUnverifiedSmartLockBlocked: boolean;
+  emergencyShutoffCoachingAndOnCallTechBridged: boolean;
+}
+
+/**
+ * Deterministic Property Management HUD Fair Housing Zero-Steering Lock, Geofenced Smart-Lock Tour Gate & 0ms Pipe-Burst Shutoff / On-Call Tech Guard (`PROPERTY-YARDI-FAIRHOUSING-MAINTENANCE-01`).
+ */
+export function evaluatePropertyYardiFairhousingMaintenanceGuard(input: {
+  fairHousingZeroDemographicCrimeOrSchoolSteeringEnforced: boolean;
+  selfGuidedTourSmartLockPinRequiresIdLivenessAndGeofence: boolean;
+  pipeBurstNoHeatBelow40FOrElevatorEntrapmentEmergencyDispatch: boolean;
+}): PropertyYardiFairhousingMaintenanceEvaluation {
+  return {
+    policyCode: "PROPERTY-YARDI-FAIRHOUSING-MAINTENANCE-01",
+    leasingTourAndRoutineWorkOrderAuthorized:
+      input.fairHousingZeroDemographicCrimeOrSchoolSteeringEnforced &&
+      input.selfGuidedTourSmartLockPinRequiresIdLivenessAndGeofence &&
+      !input.pipeBurstNoHeatBelow40FOrElevatorEntrapmentEmergencyDispatch,
+    fairHousingSteeringOrUnverifiedSmartLockBlocked:
+      !input.fairHousingZeroDemographicCrimeOrSchoolSteeringEnforced ||
+      !input.selfGuidedTourSmartLockPinRequiresIdLivenessAndGeofence ||
+      input.pipeBurstNoHeatBelow40FOrElevatorEntrapmentEmergencyDispatch,
+    emergencyShutoffCoachingAndOnCallTechBridged:
+      input.pipeBurstNoHeatBelow40FOrElevatorEntrapmentEmergencyDispatch,
+  };
+}
+
 
 
 
