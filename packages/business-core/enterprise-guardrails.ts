@@ -6865,6 +6865,36 @@ export function evaluateTextileDyeingHthpHydrosulfiteNeedleVoiceGuard(input: {
   };
 }
 
+export interface PaintCoatingResinStaticIsocyanateVoiceEvaluation {
+  policyCode: "PAINT-COATING-RESIN-STATIC-ISOCYANATE-01";
+  disperserRunAndPolymerizationAuthorized: boolean;
+  ungroundedPowderDumpOrUnarmedShortstopBlocked: boolean;
+  gravityShortstopDumpAndArAfffFoamBridged: boolean;
+}
+
+/**
+ * Deterministic Paint, Coatings & Resin Earth-Rite (<10 ohm) Static/Powder Lock, Gravity Shortstop Kill-Inhibitor Gate & 0ms AR-AFFF Guard (`PAINT-COATING-RESIN-STATIC-ISOCYANATE-01`).
+ */
+export function evaluatePaintCoatingResinStaticIsocyanateVoiceGuard(input: {
+  disperserStaticGroundAndClosedPowderSafe: boolean;
+  resinShortstopArmedAndIsocyanateDrySafe: boolean;
+  reactorThermalRunawayDisperserFireOrTdiLeak: boolean;
+}): PaintCoatingResinStaticIsocyanateVoiceEvaluation {
+  return {
+    policyCode: "PAINT-COATING-RESIN-STATIC-ISOCYANATE-01",
+    disperserRunAndPolymerizationAuthorized:
+      input.disperserStaticGroundAndClosedPowderSafe &&
+      input.resinShortstopArmedAndIsocyanateDrySafe &&
+      !input.reactorThermalRunawayDisperserFireOrTdiLeak,
+    ungroundedPowderDumpOrUnarmedShortstopBlocked:
+      !input.disperserStaticGroundAndClosedPowderSafe ||
+      !input.resinShortstopArmedAndIsocyanateDrySafe ||
+      input.reactorThermalRunawayDisperserFireOrTdiLeak,
+    gravityShortstopDumpAndArAfffFoamBridged:
+      input.reactorThermalRunawayDisperserFireOrTdiLeak,
+  };
+}
+
 
 
 
