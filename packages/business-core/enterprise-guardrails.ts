@@ -9715,6 +9715,36 @@ export function evaluatePackagingPrintProofLabelRecallGuard(input: {
   };
 }
 
+export interface VoiceScreenShareDomRedactionEvaluation {
+  policyCode: "VOICE-SCREEN-SHARE-DOM-REDACTION-01";
+  multimodalCoPilotGuidanceAuthorized: boolean;
+  unredactedPiiFrameOrContinuousVideoBurnBlocked: boolean;
+  visualInjectionOrDestructiveClickManualGated: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice + Live Screen-Sharing Co-Pilot Client-Side DOM Redaction, Delta-Frame Throttling & 0ms Visual Prompt-Injection / Destructive-Click Guard (`VOICE-SCREEN-SHARE-DOM-REDACTION-01`).
+ */
+export function evaluateVoiceScreenShareDomRedactionGuard(input: {
+  clientSideDomPiiAndPasswordFieldsRedactedBeforeVisionUpload: boolean;
+  eventDrivenDeltaFrameSamplingCutsContinuousVideoTokens: boolean;
+  visualPromptInjectionOrDestructiveClickRequiresManualUserAction: boolean;
+}): VoiceScreenShareDomRedactionEvaluation {
+  return {
+    policyCode: "VOICE-SCREEN-SHARE-DOM-REDACTION-01",
+    multimodalCoPilotGuidanceAuthorized:
+      input.clientSideDomPiiAndPasswordFieldsRedactedBeforeVisionUpload &&
+      input.eventDrivenDeltaFrameSamplingCutsContinuousVideoTokens &&
+      !input.visualPromptInjectionOrDestructiveClickRequiresManualUserAction,
+    unredactedPiiFrameOrContinuousVideoBurnBlocked:
+      !input.clientSideDomPiiAndPasswordFieldsRedactedBeforeVisionUpload ||
+      !input.eventDrivenDeltaFrameSamplingCutsContinuousVideoTokens ||
+      input.visualPromptInjectionOrDestructiveClickRequiresManualUserAction,
+    visualInjectionOrDestructiveClickManualGated:
+      input.visualPromptInjectionOrDestructiveClickRequiresManualUserAction,
+  };
+}
+
 
 
 
