@@ -8455,6 +8455,36 @@ export function evaluateQsrDriveThruPos86AllergenGuard(input: {
   };
 }
 
+export interface TelecomIspOutageVisionSimswapEvaluation {
+  policyCode: "TELECOM-ISP-OUTAGE-VISION-SIMSWAP-01";
+  accountActionAndResolutionAuthorized: boolean;
+  simSwapFraudOrUnverifiedTruckRollBlocked: boolean;
+  outageDeflectionOrFtcCancelSymmetryBridged: boolean;
+}
+
+/**
+ * Deterministic Telecom & ISP Anti-SIM-Swap Biometric Lock, TR-069 + Router Vision Pre-Dispatch Gate & 0ms Outage/Cancel Symmetry Guard (`TELECOM-ISP-OUTAGE-VISION-SIMSWAP-01`).
+ */
+export function evaluateTelecomIspOutageVisionSimswapGuard(input: {
+  simSwapOrPortOutBlockedWithoutBiometricLivenessAndPin: boolean;
+  truckRollDispatchedOnlyAfterTr069AndRouterVisionTriage: boolean;
+  regionalFiberCutSurgeOrFtcCancelSymmetryTriggered: boolean;
+}): TelecomIspOutageVisionSimswapEvaluation {
+  return {
+    policyCode: "TELECOM-ISP-OUTAGE-VISION-SIMSWAP-01",
+    accountActionAndResolutionAuthorized:
+      input.simSwapOrPortOutBlockedWithoutBiometricLivenessAndPin &&
+      input.truckRollDispatchedOnlyAfterTr069AndRouterVisionTriage &&
+      !input.regionalFiberCutSurgeOrFtcCancelSymmetryTriggered,
+    simSwapFraudOrUnverifiedTruckRollBlocked:
+      !input.simSwapOrPortOutBlockedWithoutBiometricLivenessAndPin ||
+      !input.truckRollDispatchedOnlyAfterTr069AndRouterVisionTriage ||
+      input.regionalFiberCutSurgeOrFtcCancelSymmetryTriggered,
+    outageDeflectionOrFtcCancelSymmetryBridged:
+      input.regionalFiberCutSurgeOrFtcCancelSymmetryTriggered,
+  };
+}
+
 
 
 
