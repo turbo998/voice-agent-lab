@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（306 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（307 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -347,3 +347,4 @@
 304. **企业品牌专属音色克隆（Custom Neural Voice）、超低延迟 TTS 与实时交互数字人（Voice + Avatar）平台选型（Azure AI Speech CNV/Avatar vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. HeyGen vs. 端侧 Viseme 驱动：配音员活体同意短语与 C2PA 水印硬锁、W3C PLS 多音字词典与 `<=45ms` 唇音同步降级门禁、端侧 Viseme 驱动省 `83.2%` 渲染成本）方案**：[中文](./enterprise-brand-voice-cloning-interactive-avatar-azure-elevenlabs-cartesia-heygen-selection-faq.md) | [EN](./enterprise-brand-voice-cloning-interactive-avatar-azure-elevenlabs-cartesia-heygen-selection-faq.en.md)
 305. **全双工实时语音打断处理（Barge-In）、语义句末判停（Semantic Turn Detection）与慢速企业 API（ERP/RAG 3–8 秒）零冷场异步安抚话术编排（Silero VAD + `18ms` 语义 EoT 报卡号停顿防抢话与“嗯/好的”附庸词过滤硬锁、`700ms` 非承诺性安抚垫音与 `Turn-Epoch` 过期回调写栅栏、手机免提回声自激 `0ms` 破环与 `>8s` 超时转异步短信）方案**：[中文](./duplex-barge-in-semantic-turn-detection-slow-api-async-filler-orchestration-selection-faq.md) | [EN](./duplex-barge-in-semantic-turn-detection-slow-api-async-filler-orchestration-selection-faq.en.md)
 306. **跨国企业实时多语种会议同传、个人原声保留（Personal Voice）与结构化纪要行动项自动派单选型（Azure AI Speech Live Interpreter vs. Microsoft Teams Interpreter vs. 自建流式同传管道：日/德语 SOV 句尾否定极性缓冲与“万/亿 ↔ Million/Billion”算术硬锁、参会人单次会议原声同传明示授权与会后 `0ms` 声纹销毁门禁、董事会零数据留存 ZDR 与主持人一键审批派发 Jira/Planner）方案**：[中文](./enterprise-live-meeting-interpreter-personal-voice-glossary-action-item-sync-selection-faq.md) | [EN](./enterprise-live-meeting-interpreter-personal-voice-glossary-action-item-sync-selection-faq.en.md)
+307. **AI 金牌销售实战对练（Sales Roleplay）、客服上岗通关陪练与结构化模拟面试平台选型（GPT-4o Realtime 全双工刁钻客户 Actor + 独立 BARS 考官 Grader：演评物理分离与防讨好放水 3 阶异议状态机硬锁、评分 100% 绑定录音时间戳原话引用与 EEOC 口音公平性门禁、医药超适应症/保本承诺与提示词越狱骗分 `0ms` 红牌一票否决）方案**：[中文](./ai-sales-roleplay-customer-service-sparring-structured-interview-rubric-platform-selection-faq.md) | [EN](./ai-sales-roleplay-customer-service-sparring-structured-interview-rubric-platform-selection-faq.en.md)

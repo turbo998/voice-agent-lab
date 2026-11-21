@@ -8005,6 +8005,36 @@ export function evaluateEnterpriseMeetingInterpreterGlossaryGuard(input: {
   };
 }
 
+export interface AiRoleplaySparringRubricEvalEvaluation {
+  policyCode: "AI-ROLEPLAY-SPARRING-RUBRIC-EVAL-01";
+  sparringSessionAndCertificationAuthorized: boolean;
+  sycophancyOrUnanchoredScoreBlocked: boolean;
+  autoFailRedCardAndCoachingReplayBridged: boolean;
+}
+
+/**
+ * Deterministic AI Sales Roleplay & Mock Interview Actor-Grader Separation Lock, Timestamp-Anchored BARS Rubric Gate & 0ms Red-Card Auto-Fail Guard (`AI-ROLEPLAY-SPARRING-RUBRIC-EVAL-01`).
+ */
+export function evaluateAiRoleplaySparringRubricEvalGuard(input: {
+  actorGraderSeparationAndObjectionStateMachineLocked: boolean;
+  rubricScoreAnchoredToAudioTimestampAndAcousticNormalized: boolean;
+  autoFailComplianceRedlineOrPromptJailbreakAttempt: boolean;
+}): AiRoleplaySparringRubricEvalEvaluation {
+  return {
+    policyCode: "AI-ROLEPLAY-SPARRING-RUBRIC-EVAL-01",
+    sparringSessionAndCertificationAuthorized:
+      input.actorGraderSeparationAndObjectionStateMachineLocked &&
+      input.rubricScoreAnchoredToAudioTimestampAndAcousticNormalized &&
+      !input.autoFailComplianceRedlineOrPromptJailbreakAttempt,
+    sycophancyOrUnanchoredScoreBlocked:
+      !input.actorGraderSeparationAndObjectionStateMachineLocked ||
+      !input.rubricScoreAnchoredToAudioTimestampAndAcousticNormalized ||
+      input.autoFailComplianceRedlineOrPromptJailbreakAttempt,
+    autoFailRedCardAndCoachingReplayBridged:
+      input.autoFailComplianceRedlineOrPromptJailbreakAttempt,
+  };
+}
+
 
 
 
