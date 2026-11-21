@@ -7945,6 +7945,36 @@ export function evaluateBrandVoiceCloningAvatarComplianceGuard(input: {
   };
 }
 
+export interface DuplexBargeinSemanticEotAsyncFillerEvaluation {
+  policyCode: "DUPLEX-BARGEIN-SEMANTIC-EOT-ASYNC-FILLER-01";
+  turnResponseAndToolCommitAuthorized: boolean;
+  prematureCutInOrStaleEpochWriteBlocked: boolean;
+  echoLoopBrokenAndAsyncSmsFallbackBridged: boolean;
+}
+
+/**
+ * Deterministic Full-Duplex Barge-In, 18ms Semantic EoT Clause Hold, 700ms Non-Promissory Async Filler & Turn-Epoch Write Fence Guard (`DUPLEX-BARGEIN-SEMANTIC-EOT-ASYNC-FILLER-01`).
+ */
+export function evaluateDuplexBargeinSemanticEotAsyncFillerGuard(input: {
+  semanticClauseCompleteAndBackchannelIgnored: boolean;
+  nonPromissoryAsyncFillerAt700msAndTurnEpochMatched: boolean;
+  echoFeedbackLoopOrToolTimeoutOver8Seconds: boolean;
+}): DuplexBargeinSemanticEotAsyncFillerEvaluation {
+  return {
+    policyCode: "DUPLEX-BARGEIN-SEMANTIC-EOT-ASYNC-FILLER-01",
+    turnResponseAndToolCommitAuthorized:
+      input.semanticClauseCompleteAndBackchannelIgnored &&
+      input.nonPromissoryAsyncFillerAt700msAndTurnEpochMatched &&
+      !input.echoFeedbackLoopOrToolTimeoutOver8Seconds,
+    prematureCutInOrStaleEpochWriteBlocked:
+      !input.semanticClauseCompleteAndBackchannelIgnored ||
+      !input.nonPromissoryAsyncFillerAt700msAndTurnEpochMatched ||
+      input.echoFeedbackLoopOrToolTimeoutOver8Seconds,
+    echoLoopBrokenAndAsyncSmsFallbackBridged:
+      input.echoFeedbackLoopOrToolTimeoutOver8Seconds,
+  };
+}
+
 
 
 
