@@ -280,6 +280,7 @@ flowchart LR
 206. **AI 金牌销售对练、医药代表合规学术拜访（Med-Rep Detailing）与模拟面试陪练平台架构（演评分离防讨好/防越狱硬锁、超说明书 Off-Label 与商业贿赂 0ms 红牌一票否决锁、带录音时间戳证据链的 Rubric 评分引擎）方案**：[中文](./docs/ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.md) | [EN](./docs/ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.en.md)
 207. **智能汽车座舱（高通骁龙 8295/8797 端侧 NPU + 云端多模态大模型）端云协同语音助手架构（四音区声源权限与车速 P 挡硬锁、隧道断网 0ms 端侧 190ms 控车兜底锁、视线手势多模态融合与驾驶分心长度管控）方案**：[中文](./docs/in-cabin-automotive-cockpit-edge-npu-cloud-hybrid-multimodal-voice-selection-faq.md) | [EN](./docs/in-cabin-automotive-cockpit-edge-npu-cloud-hybrid-multimodal-voice-selection-faq.en.md)
 208. **企业级多智能体实时语音编排与子智能体无缝移交（Multi-Agent Handoff Graph：LiveKit Agents vs Pipecat Flows vs LangGraph：前置核身与最小工具沙箱硬锁、零感知静默交接锁与防互相踢皮球死循环熔断）方案**：[中文](./docs/multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.md) | [EN](./docs/multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.en.md)
+209. **企业级实时语音合规录音、PCI-DSS 4.0 落盘前敏感音频消音与 100% 自动化全量质检（Automated QA）架构（双声道分轨 WORM 防篡改归档硬锁、落盘前内存态卡号 CVV 消音锁与话后 60 秒漏播条款自动补救闭环）方案**：[中文](./docs/enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.md) | [EN](./docs/enterprise-compliance-recording-automated-qa-pci-redaction-worm-audit-selection-faq.en.md)
 
 ---
 

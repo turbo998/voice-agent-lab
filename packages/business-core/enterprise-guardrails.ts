@@ -5100,6 +5100,33 @@ export function evaluateMultiAgentVoiceHandoffGraphGuard(input: {
   };
 }
 
+export interface ComplianceRecordingAutomatedQaVoiceEvaluation {
+  policyCode: "COMPLIANCE-RECORDING-AUTO-QA-01";
+  wormStorageArchivalAuthorized: boolean;
+  cdeScopeExemptionMaintained: boolean;
+  complianceRemediationTicketAndCallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Compliance Recording Pre-Disk PCI Scrubbing, Dual-Track WORM & 60s Automated QA Guard (`COMPLIANCE-RECORDING-AUTO-QA-01`).
+ */
+export function evaluateComplianceRecordingAutomatedQaVoiceGuard(input: {
+  pciSadScrubbedFromAudioAndTranscript: boolean;
+  recordingConsentAndDualTrackHashVerified: boolean;
+  postCallQaDetectsPolicyDriftOrMissedDisclosure: boolean;
+}): ComplianceRecordingAutomatedQaVoiceEvaluation {
+  return {
+    policyCode: "COMPLIANCE-RECORDING-AUTO-QA-01",
+    wormStorageArchivalAuthorized:
+      input.pciSadScrubbedFromAudioAndTranscript &&
+      input.recordingConsentAndDualTrackHashVerified,
+    cdeScopeExemptionMaintained:
+      input.pciSadScrubbedFromAudioAndTranscript,
+    complianceRemediationTicketAndCallbackTriggered:
+      input.postCallQaDetectsPolicyDriftOrMissedDisclosure,
+  };
+}
+
 
 
 
