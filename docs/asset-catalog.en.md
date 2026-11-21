@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (250 Bilingual Guides)
+## 3. Solution Architect Selection Guides (251 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -291,3 +291,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 248. **Orthopedic Post-Op Rehab, Physical Therapy & Pose-Guided Voice Coach Architecture: NWB/TTWB Weight-Bearing & Hip >90° Lock, Anti-"No Pain No Gain" Gate & 0ms DVT/PE Bridge**: [EN](./physical-therapy-orthopedic-post-op-rehab-weight-bearing-dvt-pe-voice-coach-selection-faq.en.md) | [中文](./physical-therapy-orthopedic-post-op-rehab-weight-bearing-dvt-pe-voice-coach-selection-faq.md)
 249. **Estate Planning, Family Trust & Probate Fiduciary Voice Intake Architecture: Alone-in-Room Anti-Undue-Influence Lock, Testamentary Capacity Gate & 0ms Elder-Abuse Bridge**: [EN](./estate-planning-probate-trust-fiduciary-undue-influence-capacity-voice-intake-selection-faq.en.md) | [中文](./estate-planning-probate-trust-fiduciary-undue-influence-capacity-voice-intake-selection-faq.md)
 250. **Precision Agriculture ISOBUS Tractor, UAV Spray Drift & Grain-Bin Safety Voice Copilot: EPA Wind-Drift (<10 mph) & Pollinator Lock, OSHA 1910.272 Grain-Bin Auger LOTO Gate & 0ms Entrapment Bridge**: [EN](./precision-ag-autonomous-tractor-isobus-grain-bin-entrapment-drift-wind-voice-copilot-selection-faq.en.md) | [中文](./precision-ag-autonomous-tractor-isobus-grain-bin-entrapment-drift-wind-voice-copilot-selection-faq.md)
+251. **Industrial NDT Radiography (Ir-192 / Co-60), ASME Section V & Radiation Safety Voice Copilot: Survey-Meter Physical Source-Retraction Lock, NRC 10 CFR 34 Boundary Gate & 0ms Jammed-Source RSO Bridge**: [EN](./industrial-ndt-radiography-iridium-192-cobalt-60-source-retraction-asme-section-v-voice-copilot-selection-faq.en.md) | [中文](./industrial-ndt-radiography-iridium-192-cobalt-60-source-retraction-asme-section-v-voice-copilot-selection-faq.md)

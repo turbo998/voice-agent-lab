@@ -6325,6 +6325,36 @@ export function evaluatePrecisionAgGrainBinDriftVoiceGuard(input: {
   };
 }
 
+export interface NdtRadiographyIr192SurveyVoiceEvaluation {
+  policyCode: "NDT-RADIOGRAPHY-IR192-SURVEY-01";
+  filmSwapAndWeldReportReleaseAuthorized: boolean;
+  unsurveyedRetractionOrUnqualifiedSignoffBlocked: boolean;
+  perimeterRetreatAndRsoEmergencyBridged: boolean;
+}
+
+/**
+ * Deterministic Industrial NDT Radiography (Ir-192 / Co-60) Survey-Meter Source-Retraction, 10 CFR 34 & 0ms RSO Guard (`NDT-RADIOGRAPHY-IR192-SURVEY-01`).
+ */
+export function evaluateNdtRadiographyIr192SurveyVoiceGuard(input: {
+  surveyMeterVerifiedSourceShieldedAndLocked: boolean;
+  twoPersonCrewBoundaryAndLevel2SignoffVerified: boolean;
+  jammedDisconnectedSourceOrHighRateAlarm: boolean;
+}): NdtRadiographyIr192SurveyVoiceEvaluation {
+  return {
+    policyCode: "NDT-RADIOGRAPHY-IR192-SURVEY-01",
+    filmSwapAndWeldReportReleaseAuthorized:
+      input.surveyMeterVerifiedSourceShieldedAndLocked &&
+      input.twoPersonCrewBoundaryAndLevel2SignoffVerified &&
+      !input.jammedDisconnectedSourceOrHighRateAlarm,
+    unsurveyedRetractionOrUnqualifiedSignoffBlocked:
+      !input.surveyMeterVerifiedSourceShieldedAndLocked ||
+      !input.twoPersonCrewBoundaryAndLevel2SignoffVerified ||
+      input.jammedDisconnectedSourceOrHighRateAlarm,
+    perimeterRetreatAndRsoEmergencyBridged:
+      input.jammedDisconnectedSourceOrHighRateAlarm,
+  };
+}
+
 
 
 
