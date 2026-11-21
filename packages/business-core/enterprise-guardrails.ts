@@ -7825,6 +7825,36 @@ export function evaluateOutboundOrchestrationLivekitRetellTcoVoiceGuard(input: {
   };
 }
 
+export interface S2sVsCascadedDeepseekFinopsRouterVoiceEvaluation {
+  policyCode: "S2S-VS-CASCADED-DEEPSEEK-FINOPS-ROUTER-01";
+  s2sOrCascadedTurnExecutionAuthorized: boolean;
+  unverifiedEntityOrUnprunedAudioCostBlocked: boolean;
+  deterministicSsmlVerbatimSwitchAndDualRecordBridged: boolean;
+}
+
+/**
+ * Deterministic Native S2S vs. Cascaded Custom-Speech WFST Hotword Lock, 3-Turn Audio Pruning FinOps Gate & 0ms Verbatim SSML Disclosure Guard (`S2S-VS-CASCADED-DEEPSEEK-FINOPS-ROUTER-01`).
+ */
+export function evaluateS2sVsCascadedDeepseekFinopsRouterVoiceGuard(input: {
+  customLexiconPhraseListAndAlphanumericChecksumValid: boolean;
+  slidingWindowAudioHistoryPrunedUnder3Turns: boolean;
+  regulatedFinancialMedicalVerbatimDisclosureTriggered: boolean;
+}): S2sVsCascadedDeepseekFinopsRouterVoiceEvaluation {
+  return {
+    policyCode: "S2S-VS-CASCADED-DEEPSEEK-FINOPS-ROUTER-01",
+    s2sOrCascadedTurnExecutionAuthorized:
+      input.customLexiconPhraseListAndAlphanumericChecksumValid &&
+      input.slidingWindowAudioHistoryPrunedUnder3Turns &&
+      !input.regulatedFinancialMedicalVerbatimDisclosureTriggered,
+    unverifiedEntityOrUnprunedAudioCostBlocked:
+      !input.customLexiconPhraseListAndAlphanumericChecksumValid ||
+      !input.slidingWindowAudioHistoryPrunedUnder3Turns ||
+      input.regulatedFinancialMedicalVerbatimDisclosureTriggered,
+    deterministicSsmlVerbatimSwitchAndDualRecordBridged:
+      input.regulatedFinancialMedicalVerbatimDisclosureTriggered,
+  };
+}
+
 
 
 
