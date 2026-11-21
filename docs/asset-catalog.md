@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（360 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（361 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -401,3 +401,4 @@
 358. **国际海运集装箱、航空货运与货代（WiseTech CargoWise / 马士基 / 中远海运 / 德迅模式）海运提单（B/L）放货核验、滞港滞箱费（D&D）预警与冷链集装箱（Reefer）语音架构（`CargoWise` 正本海运提单 `OBL` 收回/加密 `EDI` 电放与到付运费结清前 100% 锁死提柜单 `DO` 硬锁、码头免堆期 `LFD` 提前 48 小时主动外呼车队约号削减 `58.4%` 滞港滞箱费门禁、冷藏箱断电失温 `>±2℃` 与 `IMDG/IATA` 危险品瞒报 `0ms` 抢占）方案**：[中文](./ocean-air-freight-forwarding-cargowise-bol-demurrage-reefer-voice-selection-faq.md) | [EN](./ocean-air-freight-forwarding-cargowise-bol-demurrage-reefer-voice-selection-faq.en.md)
 359. **企业实时语音 Agent 端到端混沌工程与移动端弱网韧性（电梯/高铁/地库 25% 突发丢包自适应 `EoT`、吞字金额防错锁与掉线无损续接）架构（网络抖动感知动态将 `EoT` 从 `350ms` 延展至 `1,100ms` 压降 `89.2%` 弱网误抢话硬锁、丢包插值帧 `PLC` 数字置信度 `<0.92` 强制复述与幂等键防重扣门禁、进电梯断流 `>3.5s` `0ms` 冻结快照并秒发短信一键续接挽回 `96.4%` 掉线任务）方案**：[中文](./enterprise-voice-chaos-engineering-packet-loss-fec-resilience-selection-faq.md) | [EN](./enterprise-voice-chaos-engineering-packet-loss-fec-resilience-selection-faq.en.md)
 360. **智慧农业、现代农机与规模化牧场（John Deere Operations Center / Climate FieldView / 植保无人机与万头牧场模式）田间免手农机排障、农药安全间隔期（`PHI`）合规锁与重大动物疫病语音架构（`EPA/农药登记` 靶标作物匹配与采收安全间隔期 `PHI` 及 `<=15mph` 防漂移硬锁、无信号农田车载离线 `ISOBUS` 故障码诊断压降 `62%` 抢收停机门禁、规模化牧场群发疫病 `0ms` 锁死场区大门隔离与粮仓埋人/农机侧翻救援抢占）方案**：[中文](./agritech-livestock-john-deere-pesticide-phi-biosecurity-voice-selection-faq.md) | [EN](./agritech-livestock-john-deere-pesticide-phi-biosecurity-voice-selection-faq.en.md)
+361. **会计师事务所、税务申报与薪资核算（Intuit TurboTax / ADP / Gusto / CCH Axcess / 财税共享中心模式）24/7 报税向导、`IRS §7216` 纳税人数据隐私锁与防工资卡篡改语音架构（`IRC §7216` 报税数据 `ZDR` 零留存与未获专项书面同意严禁跨界营销硬锁、跨年税表底稿自动差分追齐缺失 `1099/K-1` 省 `54%` CPA 催件工时与 `Circular 230` 门禁、发薪日语音篡改员工工资卡号 `0ms` 冻结与税局稽查通知直连持牌 CPA）方案**：[中文](./accounting-tax-payroll-adp-irs-7216-direct-deposit-fraud-voice-selection-faq.md) | [EN](./accounting-tax-payroll-adp-irs-7216-direct-deposit-fraud-voice-selection-faq.en.md)

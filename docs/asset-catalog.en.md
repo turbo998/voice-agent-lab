@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (360 Bilingual Guides)
+## 3. Solution Architect Selection Guides (361 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -401,3 +401,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 358. **Ocean & Air Freight Forwarding (WiseTech CargoWise / Maersk / Kuehne+Nagel) Bill-of-Lading Release, Port Demurrage & Reefer/DG Voice Architecture: Original B/L Surrender & Freight-Paid DO Lock (0% Wrongful Releases), 48h Pre-LFD Drayage Booking Gate (-58.4% D&D Fees) & 0ms Reefer Temp / IMDG Dangerous Goods Bridge**: [EN](./ocean-air-freight-forwarding-cargowise-bol-demurrage-reefer-voice-selection-faq.en.md) | [中文](./ocean-air-freight-forwarding-cargowise-bol-demurrage-reefer-voice-selection-faq.md)
 359. **Enterprise Real-Time Voice Agent Chaos Engineering & Weak-Network Resilience (Jitter-Aware EoT, Clipped-Digit Lock & Blackout Continuity) Architecture: Dynamic Jitter-Aware EoT Hold-Off (-89.2% False Cutoffs), PLC Numeric Confidence & Idempotency Gate (0% Clipped-Digit Errors) & 0ms Blackout Redis Snapshot + 1-Tap SMS Resume (96.4% Recovery)**: [EN](./enterprise-voice-chaos-engineering-packet-loss-fec-resilience-selection-faq.en.md) | [中文](./enterprise-voice-chaos-engineering-packet-loss-fec-resilience-selection-faq.md)
 360. **AgriTech, Smart Machinery & Livestock (John Deere Operations Center / Climate FieldView) In-Cab Diagnostics, Pesticide PHI Lock & Biosecurity Voice Architecture: EPA Crop-Label PHI & <=15mph Wind-Drift Lock (0% Residue Recalls), Offline In-Cab Edge ISOBUS DTC & Parts Gate (-62% Harvest Downtime) & 0ms Herd Biosecurity Lockdown / Rollover 911 Bridge**: [EN](./agritech-livestock-john-deere-pesticide-phi-biosecurity-voice-selection-faq.en.md) | [中文](./agritech-livestock-john-deere-pesticide-phi-biosecurity-voice-selection-faq.md)
+361. **Accounting, Tax & Payroll (ADP / Gusto / CCH Axcess / TurboTax) 24/7 Tax Intake, IRC §7216 Privacy Lock & Anti-Payroll-Hijack Voice Architecture: IRC §7216 Criminal Tax-Data ZDR Lock (0% Violations), Prior-Year Organizer Diff & Deterministic Tax Math Gate (-54% CPA Chasing) & 0ms Payroll Direct-Deposit Hijack Freeze**: [EN](./accounting-tax-payroll-adp-irs-7216-direct-deposit-fraud-voice-selection-faq.en.md) | [中文](./accounting-tax-payroll-adp-irs-7216-direct-deposit-fraud-voice-selection-faq.md)

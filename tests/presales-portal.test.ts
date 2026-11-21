@@ -328,6 +328,7 @@ import {
   evaluateFreightForwardingCargowiseBolReeferGuard,
   evaluateVoiceChaosPacketLossResilienceGuard,
   evaluateAgritechLivestockPesticidePhiGuard,
+  evaluateAccountingTaxPayrollIrs7216Guard,
   evaluateVoicePromptMarkdownSanitizerGuard,
   evaluateWarehousePickByVoiceColdChainGuard,
   evaluateWealthDualRecordingGuard,
@@ -349,11 +350,11 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
     },
     {
       relPath: "docs/asset-catalog.md",
-      mustContain: ["360 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
+      mustContain: ["361 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/asset-catalog.en.md",
-      mustContain: ["360 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
+      mustContain: ["361 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/solution-architecture.md",
@@ -405,13 +406,13 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
   }
 });
 
-test("360 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
+test("361 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
   const docEntries = await readdir(resolve(repoRoot, "docs"));
   const zhFaqFiles = docEntries.filter((f) => f.endsWith("-faq.md")).sort();
   const enFaqFiles = docEntries.filter((f) => f.endsWith("-faq.en.md")).sort();
 
-  assert.equal(zhFaqFiles.length, 360, `Expected 360 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
-  assert.equal(enFaqFiles.length, 360, `Expected 360 curated English selection guides, found ${enFaqFiles.length}`);
+  assert.equal(zhFaqFiles.length, 361, `Expected 361 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
+  assert.equal(enFaqFiles.length, 361, `Expected 361 curated English selection guides, found ${enFaqFiles.length}`);
 
   for (const zhFile of zhFaqFiles) {
     const expectedEn = zhFile.replace(/-faq\.md$/, "-faq.en.md");
@@ -3656,4 +3657,13 @@ test("deterministic enterprise guardrails enforce vertical industry safety (coho
   assert.equal(agritechGuard.sprayerDispatchAndPartsOrderAuthorized, false);
   assert.equal(agritechGuard.phiResidueViolationOrOffLabelSprayBlocked, true);
   assert.equal(agritechGuard.herdEpidemicLockdownOrRollover911Bridged, true);
+
+  const taxPayrollGuard = evaluateAccountingTaxPayrollIrs7216Guard({
+    irsSection7216ConsentAndZeroDataTrainingVerified: false,
+    deterministicTaxTableMathAndCircular230CpaBoundaryVerified: false,
+    payrollDirectDepositBankHijackOrIrsLevyAuditNoticeEscalation: true,
+  });
+  assert.equal(taxPayrollGuard.taxOrganizerAndPayrollQueryAuthorized, false);
+  assert.equal(taxPayrollGuard.section7216BreachOrHallucinatedTaxMathBlocked, true);
+  assert.equal(taxPayrollGuard.payrollHijackOrIrsLevyCpaBridged, true);
 });

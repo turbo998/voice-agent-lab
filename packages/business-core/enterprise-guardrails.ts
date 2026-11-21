@@ -9625,6 +9625,36 @@ export function evaluateAgritechLivestockPesticidePhiGuard(input: {
   };
 }
 
+export interface AccountingTaxPayrollIrs7216Evaluation {
+  policyCode: "ACCOUNTING-TAX-PAYROLL-IRS7216-01";
+  taxOrganizerAndPayrollQueryAuthorized: boolean;
+  section7216BreachOrHallucinatedTaxMathBlocked: boolean;
+  payrollHijackOrIrsLevyCpaBridged: boolean;
+}
+
+/**
+ * Deterministic Accounting, Tax & Payroll (ADP / CCH) IRC §7216 Privacy Lock, Deterministic Tax-Table Math & 0ms Payroll Direct-Deposit Hijack Guard (`ACCOUNTING-TAX-PAYROLL-IRS7216-01`).
+ */
+export function evaluateAccountingTaxPayrollIrs7216Guard(input: {
+  irsSection7216ConsentAndZeroDataTrainingVerified: boolean;
+  deterministicTaxTableMathAndCircular230CpaBoundaryVerified: boolean;
+  payrollDirectDepositBankHijackOrIrsLevyAuditNoticeEscalation: boolean;
+}): AccountingTaxPayrollIrs7216Evaluation {
+  return {
+    policyCode: "ACCOUNTING-TAX-PAYROLL-IRS7216-01",
+    taxOrganizerAndPayrollQueryAuthorized:
+      input.irsSection7216ConsentAndZeroDataTrainingVerified &&
+      input.deterministicTaxTableMathAndCircular230CpaBoundaryVerified &&
+      !input.payrollDirectDepositBankHijackOrIrsLevyAuditNoticeEscalation,
+    section7216BreachOrHallucinatedTaxMathBlocked:
+      !input.irsSection7216ConsentAndZeroDataTrainingVerified ||
+      !input.deterministicTaxTableMathAndCircular230CpaBoundaryVerified ||
+      input.payrollDirectDepositBankHijackOrIrsLevyAuditNoticeEscalation,
+    payrollHijackOrIrsLevyCpaBridged:
+      input.payrollDirectDepositBankHijackOrIrsLevyAuditNoticeEscalation,
+  };
+}
+
 
 
 
