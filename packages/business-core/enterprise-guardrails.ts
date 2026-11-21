@@ -6775,6 +6775,36 @@ export function evaluatePulpPaperBlrbacSmeltClo2VoiceGuard(input: {
   };
 }
 
+export interface GlassMfgFloatTinbathStillageVoiceEvaluation {
+  policyCode: "GLASS-MFG-FLOAT-TINBATH-STILLAGE-01";
+  stillageUnstrapAndTinBathH2Authorized: boolean;
+  frontalFallZoneUnstrapOrNegativeTinBathBlocked: boolean;
+  pitEvacWaterFreezeLanceAndTraumaBridged: boolean;
+}
+
+/**
+ * Deterministic Float Glass Furnace, Tin-Bath H2/N2 Positive-Pressure, 3-Ton Jumbo A-Frame Restraint & IS-Machine LOTO Guard (`GLASS-MFG-FLOAT-TINBATH-STILLAGE-01`).
+ */
+export function evaluateGlassMfgFloatTinbathStillageVoiceGuard(input: {
+  jumboStillageRestraintAndVacuumSafe: boolean;
+  tinBathH2PositivePressureAndIsSwabSafe: boolean;
+  furnaceRunoutTinBathH2LeakOrGlassCrush: boolean;
+}): GlassMfgFloatTinbathStillageVoiceEvaluation {
+  return {
+    policyCode: "GLASS-MFG-FLOAT-TINBATH-STILLAGE-01",
+    stillageUnstrapAndTinBathH2Authorized:
+      input.jumboStillageRestraintAndVacuumSafe &&
+      input.tinBathH2PositivePressureAndIsSwabSafe &&
+      !input.furnaceRunoutTinBathH2LeakOrGlassCrush,
+    frontalFallZoneUnstrapOrNegativeTinBathBlocked:
+      !input.jumboStillageRestraintAndVacuumSafe ||
+      !input.tinBathH2PositivePressureAndIsSwabSafe ||
+      input.furnaceRunoutTinBathH2LeakOrGlassCrush,
+    pitEvacWaterFreezeLanceAndTraumaBridged:
+      input.furnaceRunoutTinBathH2LeakOrGlassCrush,
+  };
+}
+
 
 
 
