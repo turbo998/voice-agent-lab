@@ -5906,6 +5906,36 @@ export function evaluateConstructionBimOshaCraneVoiceGuard(input: {
   };
 }
 
+export interface CreditFcraEcoaAdverseVoiceEvaluation {
+  policyCode: "CREDIT-FCRA-ECOA-ADVERSE-01";
+  adverseActionReadoutAndDisputeIntakeAuthorized: boolean;
+  speculativeReasonOrCreditWashingBlocked: boolean;
+  securityFreezeAndFraudScraSpecialistBridged: boolean;
+}
+
+/**
+ * Deterministic Consumer Credit Bureau Dispute, ECOA Reg B Adverse Action & FCRA Security Freeze Guard (`CREDIT-FCRA-ECOA-ADVERSE-01`).
+ */
+export function evaluateCreditFcraEcoaAdverseVoiceGuard(input: {
+  officialAdverseActionReasonCodesAndZeroBiasVerified: boolean;
+  legitimateDisputeAndZeroCreditWashingVerified: boolean;
+  identityTheftFraudOrMilitaryScraProtection: boolean;
+}): CreditFcraEcoaAdverseVoiceEvaluation {
+  return {
+    policyCode: "CREDIT-FCRA-ECOA-ADVERSE-01",
+    adverseActionReadoutAndDisputeIntakeAuthorized:
+      input.officialAdverseActionReasonCodesAndZeroBiasVerified &&
+      input.legitimateDisputeAndZeroCreditWashingVerified &&
+      !input.identityTheftFraudOrMilitaryScraProtection,
+    speculativeReasonOrCreditWashingBlocked:
+      !input.officialAdverseActionReasonCodesAndZeroBiasVerified ||
+      !input.legitimateDisputeAndZeroCreditWashingVerified ||
+      input.identityTheftFraudOrMilitaryScraProtection,
+    securityFreezeAndFraudScraSpecialistBridged:
+      input.identityTheftFraudOrMilitaryScraProtection,
+  };
+}
+
 
 
 

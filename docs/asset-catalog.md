@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（236 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（237 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -277,3 +277,4 @@
 234. **财税申报、会计师事务所与智能报税（Intuit TurboTax Live / 四大税务 / 金税四期企业办税）AI 语音与多模态方案（IRC § 7216 纳税人税表隐私与禁营销硬锁、IRS Circular 230 真实凭据与确定性算税内核锁及税务稽查通知 CP2000 0ms 强切执业注册会计师 CPA）**：[中文](./tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.md) | [EN](./tax-preparation-cpa-irs-circular-230-section-7216-voice-intake-selection-faq.en.md)
 235. **干线重卡物流车队、危化品道路运输与车载行车记录仪（FMCSA ELD / Samsara / Motive / G7 易流）24×7 免提语音副驾方案（49 CFR Part 395 疲劳驾驶时限禁篡改硬锁、4.15m 桥涵限高与 UN 危化品禁行隧道硬锁及气压制动失压 <60 PSI 0ms 避险车道领航强切）**：[中文](./commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.md) | [EN](./commercial-trucking-fmcsa-eld-hos-hazmat-placard-tunnel-voice-copilot-selection-faq.en.md)
 236. **大型建筑工程总包（EPC）、工地 BIM 巡检（Procore / Autodesk ACC）与塔吊/深基坑作业 24×7 语音安全副驾方案（最新有效 IFC 图纸与注册结构师 PE 签章变更硬锁、塔吊大风 <20 mph 与 >1.5m 深基坑支护箱硬锁及基坑坍塌 0ms 全区停工强切）**：[中文](./construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.md) | [EN](./construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.en.md)
+237. **个人征信异议申诉、信贷拒贷解释（ECOA / FCRA）与反身份盗用冻结（Experian / Equifax / TransUnion / 央行征信 / 零售银行信贷中心）24×7 AI 语音客服方案（ECOA Reg B 官方拒贷原因代码只读零偏见硬锁、反非法“征信洗白”拦截与冒名贷款 0ms 全局征信安全冻结强切）**：[中文](./consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.md) | [EN](./consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.en.md)
