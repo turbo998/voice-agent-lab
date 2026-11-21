@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（225 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（226 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -266,3 +266,4 @@
 223. **国家级博物馆、文化遗产石窟与科技馆 AI 多模态实时语音导览官（Museum Multimodal Voice Docent：故宫 / 国家博物馆 / 卢浮宫 / 敦煌研究院：策展知识图谱 CIDOC-CRM 史实零野史幻觉硬锁、UWB+视觉双模 30cm 防邻柜串讲锁与丝绸古画展厅禁闪光灯 0ms 硬件闭锁）方案**：[中文](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.md) | [EN](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.en.md)
 224. **城市水务集团、自来水厂加药消毒（SCADA）与防汛排涝抢修（威立雅 Veolia / 苏伊士 / 智慧水务 GIS / EPA SDWA）24×7 语音调度与客服热线（防 Oldsmar 氢氧化钠/液氯百倍误投加硬锁、管网水压 <20 PSI 沸水令与大肠杆菌阴性复水硬锁、主干管爆裂与血液透析中心保供 0ms 强切）方案**：[中文](./water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.md) | [EN](./water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.en.md)
 225. **上市公司财报电话会（Earnings Call）、投资者关系（IR）与高管路演对练 AI 语音方案（美股 SEC EDGAR / 港股 / A 股业绩会：SEC Reg FD 零内幕信息 MNPI 越界硬锁、iXBRL GAAP/Non-GAAP 调节表同报硬锁与激进做空/并购传闻 0ms 强切）**：[中文](./earnings-call-investor-relations-reg-fd-mnpi-sec-filing-voice-briefing-selection-faq.md) | [EN](./earnings-call-investor-relations-reg-fd-mnpi-sec-filing-voice-briefing-selection-faq.en.md)
+226. **精准医学肿瘤分子病理（NGS 基因测序）与遗传咨询（Genetic Counseling：Illumina / Foundation Medicine / 华大基因 / Epic Beaker Genomics）多模态语音方案（ACMG/AMP Class 3 VUS 意义未明变异非临床干预硬锁、CLIA/CAP 病理医师终审签字门禁与高危 BRCA/林奇综合征 0ms 强切执业遗传咨询师）**：[中文](./genomic-molecular-pathology-acmg-variant-counseling-clia-cap-voice-selection-faq.md) | [EN](./genomic-molecular-pathology-acmg-variant-counseling-clia-cap-voice-selection-faq.en.md)

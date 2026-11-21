@@ -5580,6 +5580,33 @@ export function evaluateEarningsIrRegFdMnpiVoiceGuard(input: {
   };
 }
 
+export interface GenomicPathologyAcmgVusVoiceEvaluation {
+  policyCode: "GENOMIC-PATHOLOGY-ACMG-VUS-01";
+  clinicalVariantActionabilityAuthorized: boolean;
+  vusNonActionableGuardEnforced: boolean;
+  certifiedGeneticCounselorEscalated: boolean;
+}
+
+/**
+ * Deterministic Precision Oncology NGS & Genetic Counseling ACMG VUS Lock, CLIA/CAP Sign-Off & 0ms Counselor Bridge Guard (`GENOMIC-PATHOLOGY-ACMG-VUS-01`).
+ */
+export function evaluateGenomicPathologyAcmgVusVoiceGuard(input: {
+  cliaCapPathologistSignedOff: boolean;
+  variantIsActionableClass4Or5NotVus: boolean;
+  highRiskGermlinePathogenicOrPatientDistress: boolean;
+}): GenomicPathologyAcmgVusVoiceEvaluation {
+  return {
+    policyCode: "GENOMIC-PATHOLOGY-ACMG-VUS-01",
+    clinicalVariantActionabilityAuthorized:
+      input.cliaCapPathologistSignedOff &&
+      input.variantIsActionableClass4Or5NotVus &&
+      !input.highRiskGermlinePathogenicOrPatientDistress,
+    vusNonActionableGuardEnforced: !input.variantIsActionableClass4Or5NotVus,
+    certifiedGeneticCounselorEscalated:
+      input.highRiskGermlinePathogenicOrPatientDistress,
+  };
+}
+
 
 
 

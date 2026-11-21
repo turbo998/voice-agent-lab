@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (225 Bilingual Guides)
+## 3. Solution Architect Selection Guides (226 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -266,3 +266,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 223. **Museum, Cultural Heritage & Science Center Multimodal AI Voice Docent: Curatorial CIDOC-CRM Fact Lock, UWB/Visual 30cm Vitrine Alignment & 0ms Conservation Flash Shield**: [EN](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.en.md) | [中文](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.md)
 224. **Water Utility, Treatment Plant SCADA & Stormwater Flood Control (Veolia / Suez / EPA SDWA) 24×7 Voice Dispatch: Anti-Oldsmar Chemical Dosing Lock, <20 PSI Boil-Water Lab Gate & 0ms Main-Break Bridge**: [EN](./water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.en.md) | [中文](./water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.md)
 225. **Public Company Earnings Call, Investor Relations (IR) & Executive Murder-Board Voice AI: SEC Reg FD Zero-MNPI Lock, GAAP/Non-GAAP Reconciliation & 0ms Activist Escalation**: [EN](./earnings-call-investor-relations-reg-fd-mnpi-sec-filing-voice-briefing-selection-faq.en.md) | [中文](./earnings-call-investor-relations-reg-fd-mnpi-sec-filing-voice-briefing-selection-faq.md)
+226. **Precision Oncology NGS, Molecular Pathology & Genetic Counseling Multimodal Voice AI: ACMG/AMP VUS Non-Actionability Lock, CLIA/CAP Sign-Off Gate & 0ms Counselor Bridge**: [EN](./genomic-molecular-pathology-acmg-variant-counseling-clia-cap-voice-selection-faq.en.md) | [中文](./genomic-molecular-pathology-acmg-variant-counseling-clia-cap-voice-selection-faq.md)
