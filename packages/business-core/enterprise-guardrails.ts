@@ -7135,6 +7135,36 @@ export function evaluatePlasticsMoldingBarrelAnsiB151VoiceGuard(input: {
   };
 }
 
+export interface HeatTreatingFurnaceNfpa86QuenchVoiceEvaluation {
+  policyCode: "HEAT-TREATING-FURNACE-NFPA86-QUENCH-01";
+  rxGasAndQuenchElevatorAuthorized: boolean;
+  lowTempRxGasOrWaterInQuenchOilBlocked: boolean;
+  emergencyNitrogenFloodAndFuelCutoffBridged: boolean;
+}
+
+/**
+ * Deterministic Industrial Heat Treating & Carburizing Furnace NFPA 86 760°C Rx-Gas Lock, Oil Quench <=0.05% Water Boilover Gate & 0ms N2 Flood Guard (`HEAT-TREATING-FURNACE-NFPA86-QUENCH-01`).
+ */
+export function evaluateHeatTreatingFurnaceNfpa86QuenchVoiceGuard(input: {
+  nfpa86Temp760cPurgeAndFlameCurtainSafe: boolean;
+  oilQuenchWaterLimitAgitatorAndPyrometrySafe: boolean;
+  oilQuenchFireVacuumWaterLeakOrCoEmergency: boolean;
+}): HeatTreatingFurnaceNfpa86QuenchVoiceEvaluation {
+  return {
+    policyCode: "HEAT-TREATING-FURNACE-NFPA86-QUENCH-01",
+    rxGasAndQuenchElevatorAuthorized:
+      input.nfpa86Temp760cPurgeAndFlameCurtainSafe &&
+      input.oilQuenchWaterLimitAgitatorAndPyrometrySafe &&
+      !input.oilQuenchFireVacuumWaterLeakOrCoEmergency,
+    lowTempRxGasOrWaterInQuenchOilBlocked:
+      !input.nfpa86Temp760cPurgeAndFlameCurtainSafe ||
+      !input.oilQuenchWaterLimitAgitatorAndPyrometrySafe ||
+      input.oilQuenchFireVacuumWaterLeakOrCoEmergency,
+    emergencyNitrogenFloodAndFuelCutoffBridged:
+      input.oilQuenchFireVacuumWaterLeakOrCoEmergency,
+  };
+}
+
 
 
 

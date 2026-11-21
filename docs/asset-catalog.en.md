@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (277 Bilingual Guides)
+## 3. Solution Architect Selection Guides (278 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -318,3 +318,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 275. **Hot-Mix Asphalt (HMA) Plant, 175°C Bitumen Boilover, H2S/FeS & Paving Voice Copilot: Anti-Boilover Water/Emulsion Lock, API 2023 FeS Coil Gate & 0ms Bitumen-Burn Bridge**: [EN](./asphalt-hot-mix-plant-bitumen-boilover-h2s-pyrophoric-iron-sulfide-paver-voice-copilot-selection-faq.en.md) | [中文](./asphalt-hot-mix-plant-bitumen-boilover-h2s-pyrophoric-iron-sulfide-paver-voice-copilot-selection-faq.md)
 276. **Ceramics, Porcelain Slab & Sanitaryware Roller Kiln, Ball-Mill & Silica Voice Copilot: Ball-Mill 0.00 MPa Bleed & Silica Wet-Clean Lock, 10,000t Press Block & 0ms Kiln-Wreck Bridge**: [EN](./ceramics-porcelain-sanitaryware-roller-kiln-silica-slurry-spray-dryer-loto-voice-copilot-selection-faq.en.md) | [中文](./ceramics-porcelain-sanitaryware-roller-kiln-silica-slurry-spray-dryer-loto-voice-copilot-selection-faq.md)
 277. **Plastics Injection Molding & Extrusion POM+PVC Barrel, ANSI B151.1 & Nozzle Voice Copilot: Acetal+PVC Barrel Explosion & Purge-Shield Lock, Platen Ratchet Gate & 0ms Melt-Pressure Bridge**: [EN](./plastics-injection-molding-extrusion-pom-pvc-barrel-explosion-ansi-b151-drop-bar-voice-copilot-selection-faq.en.md) | [中文](./plastics-injection-molding-extrusion-pom-pvc-barrel-explosion-ansi-b151-drop-bar-voice-copilot-selection-faq.md)
+278. **Industrial Heat Treating, Carburizing & Vacuum Furnace Voice Copilot: NFPA 86 760°C Rx-Gas & Flame-Curtain Lock, Oil Quench <=0.05% Water Boilover Gate & 0ms N2 Flood Bridge**: [EN](./heat-treating-carburizing-furnace-endothermic-rx-burnoff-oil-quench-boilover-vacuum-voice-copilot-selection-faq.en.md) | [中文](./heat-treating-carburizing-furnace-endothermic-rx-burnoff-oil-quench-boilover-vacuum-voice-copilot-selection-faq.md)
