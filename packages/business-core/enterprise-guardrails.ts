@@ -6205,6 +6205,36 @@ export function evaluateWasteMrfLithiumHotloadVoiceGuard(input: {
   };
 }
 
+export interface BizavFboJetMisfuelDefVoiceEvaluation {
+  policyCode: "BIZAV-FBO-JET-MISFUEL-DEF-01";
+  fuelUpliftAndCharterDispatchAuthorized: boolean;
+  misfuelDefOrShortWetRunwayBlocked: boolean;
+  hangarEvacuationArffAndMedaireBridged: boolean;
+}
+
+/**
+ * Deterministic Business Aviation FBO Anti-Misfueling (Jet-A/100LL & Anti-DEF), Part 135 Runway BFL & 0ms Hangar Foam Guard (`BIZAV-FBO-JET-MISFUEL-DEF-01`).
+ */
+export function evaluateBizavFboJetMisfuelDefVoiceGuard(input: {
+  fuelGradeFsiiNotDefAndUnitVerified: boolean;
+  runwayBalancedFieldAndNotamCurfewSafe: boolean;
+  hangarFoamDischargeFuelSpillOrInflightMedical: boolean;
+}): BizavFboJetMisfuelDefVoiceEvaluation {
+  return {
+    policyCode: "BIZAV-FBO-JET-MISFUEL-DEF-01",
+    fuelUpliftAndCharterDispatchAuthorized:
+      input.fuelGradeFsiiNotDefAndUnitVerified &&
+      input.runwayBalancedFieldAndNotamCurfewSafe &&
+      !input.hangarFoamDischargeFuelSpillOrInflightMedical,
+    misfuelDefOrShortWetRunwayBlocked:
+      !input.fuelGradeFsiiNotDefAndUnitVerified ||
+      !input.runwayBalancedFieldAndNotamCurfewSafe ||
+      input.hangarFoamDischargeFuelSpillOrInflightMedical,
+    hangarEvacuationArffAndMedaireBridged:
+      input.hangarFoamDischargeFuelSpillOrInflightMedical,
+  };
+}
+
 
 
 

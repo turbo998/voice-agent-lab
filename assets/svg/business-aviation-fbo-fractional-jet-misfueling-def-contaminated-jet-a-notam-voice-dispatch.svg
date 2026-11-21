@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg247" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#060d1a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="card247" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg247)" rx="16"/>
+  <text x="600" y="40" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Business Aviation FBO, Fractional Jet Dispatch &amp; Anti-Misfueling Voice Architecture</text>
+  <text x="600" y="66" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">Jet-A vs 100LL &amp; Anti-DEF/FSII Fuel Lock · Part 135 Balanced Field Length &amp; Curfew Gate · 0ms Hangar Foam &amp; MedAire Bridge (BIZAV-FBO-JET-MISFUEL-DEF-01)</text>
+
+  <!-- Left Column: FBO Line Tech, Flight Crew & Charter Concierge -->
+  <rect x="36" y="92" width="260" height="545" rx="12" fill="url(#card247)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="166" y="122" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. Ramp, Crew &amp; VIP Channels</text>
+
+  <rect x="56" y="142" width="220" height="110" rx="8" fill="#0f172a" stroke="#60a5fa"/>
+  <text x="166" y="166" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">FBO Line Service Fueling</text>
+  <text x="166" y="188" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 95 dB APU turbine noise headset</text>
+  <text x="166" y="206" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Jet-A single-point vs 100LL truck</text>
+  <text x="166" y="224" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• FSII (Prist) vs Diesel DEF lock</text>
+
+  <rect x="56" y="268" width="220" height="110" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="166" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Part 135 / 91K Charter Desk</text>
+  <text x="166" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• NetJets / VistaJet / Signature FBO</text>
+  <text x="166" y="332" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Runway wet/contaminated BFL calc</text>
+  <text x="166" y="350" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• TFR &amp; noise curfew slot check</text>
+
+  <rect x="56" y="394" width="220" height="222" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="166" y="420" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Ramp &amp; In-Flight Hazards</text>
+  <text x="166" y="444" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• DEF urea poured into FSII tank</text>
+  <text x="166" y="464" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Jet-A pumped into piston twin</text>
+  <text x="166" y="484" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Hangar deluge foam discharge</text>
+  <text x="166" y="504" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• FL450 cabin depressurization / med</text>
+  <text x="166" y="532" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">0ms Flight Following &amp; MedAire</text>
+
+  <!-- Center Column: BIZAV-FBO-JET-MISFUEL-DEF-01 Guardrail Engine -->
+  <rect x="326" y="92" width="548" height="545" rx="12" fill="url(#card247)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="600" y="122" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. Deterministic NATA Safety 1st &amp; Part 135 Engine (BIZAV-FBO-JET-MISFUEL-DEF-01)</text>
+
+  <!-- Gate 1 -->
+  <rect x="350" y="142" width="500" height="145" rx="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate A: Tail-Number Fuel-Grade (Jet-A vs 100LL) &amp; Anti-DEF Hard Lock</text>
+  <text x="600" y="190" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Cross-checks FAA N-Number engine type against fuel truck meter grade</text>
+  <text x="600" y="210" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• 100% blocks fueling until FSII (Prist) drum barcode != Diesel Exhaust Fluid (DEF)</text>
+  <text x="600" y="230" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Prevents crystal-forming DEF contamination &amp; dual-engine flameout</text>
+  <text x="600" y="252" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Requires pilot + line-tech positive vocal readback of Gallons vs Pounds &amp; Prist status</text>
+
+  <!-- Gate 2 -->
+  <rect x="350" y="302" width="500" height="150" rx="10" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="600" y="326" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate B: Part 135 Balanced Field Length (60%/80% Rule) &amp; NOTAM Lock</text>
+  <text x="600" y="350" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Validates destination runway length, elevation, temp &amp; wet/contaminated braking</text>
+  <text x="600" y="370" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Blocks VIP charter promise into short mountain strips (e.g., Aspen/Teterboro NOTAMs)</text>
+  <text x="600" y="390" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Checks Presidential TFRs, customs APIS manifest &amp; noise curfew cutoffs</text>
+  <text x="600" y="412" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Ensures towbar torque-link pin &amp; nose-wheel turn-limit check before tug pushback</text>
+
+  <!-- Gate 3 -->
+  <rect x="350" y="468" width="500" height="148" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="600" y="492" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate C: 0ms Hangar Foam Evacuation, Fuel Spill &amp; MedAire Bridge</text>
+  <text x="600" y="516" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Detects hangar high-expansion foam deluge alarm, ramp fuel fire, or VIP SOS</text>
+  <text x="600" y="536" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Broadcasts 0ms hangar evacuation siren (prevents engulfment suffocation in foam)</text>
+  <text x="600" y="556" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Bridges Airport ARFF Fire Crash Rescue or MedAire Aviation MD in 0ms</text>
+  <text x="600" y="580" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Full FAA 14 CFR Part 135 / 91K, NATA Safety 1st, IS-BAH &amp; WORM audit log</text>
+
+  <!-- Right Column: FBO ERP, Flight Planning & ARFF/MedAire -->
+  <rect x="904" y="92" width="260" height="545" rx="12" fill="url(#card247)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="1034" y="122" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">3. FBO ERP &amp; Flight Ops</text>
+
+  <rect x="924" y="142" width="220" height="145" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="1034" y="166" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">FBO &amp; Fuel Truck Telemetry</text>
+  <text x="1034" y="190" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• X-1FBO / TotalFBO / MyFBO ERP</text>
+  <text x="1034" y="210" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Veeder-Root / Liquid Controls meter</text>
+  <text x="1034" y="230" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Millipore &amp; Karl Fischer water test</text>
+  <text x="1034" y="250" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Zero Gallons-vs-Pounds error</text>
+
+  <rect x="924" y="302" width="220" height="150" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="1034" y="326" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">ForeFlight / APG Runway Calc</text>
+  <text x="1034" y="350" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Aircraft Performance Group (APG)</text>
+  <text x="1034" y="370" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Wet/Slush RCAM braking action</text>
+  <text x="1034" y="390" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• CBP eAPIS international manifest</text>
+  <text x="1034" y="410" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Crew Part 135 duty/rest clock</text>
+
+  <rect x="924" y="468" width="220" height="148" rx="8" fill="#0f172a" stroke="#a855f7"/>
+  <text x="1034" y="492" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">ARFF Fire &amp; MedAire Desk</text>
+  <text x="1034" y="516" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Airport Crash Fire Rescue (ARFF)</text>
+  <text x="1034" y="536" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Hangar foam abort &amp; egress</text>
+  <text x="1034" y="556" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• MedAire / STAT-MD Satcom Link</text>
+  <text x="1034" y="576" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">• 100% IS-BAH &amp; NATA Safety 1st</text>
+</svg>
