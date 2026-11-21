@@ -6535,6 +6535,36 @@ export function evaluateSpecialtyPharmacyRemsBiologicsVoiceGuard(input: {
   };
 }
 
+export interface FoodMfgAllergenChangeoverNfpa61VoiceEvaluation {
+  policyCode: "FOOD-MFG-ALLERGEN-CHANGEOVER-NFPA61-01";
+  lineStartupAndPalletReleaseAuthorized: boolean;
+  unswabbedAllergenOrCompressedAirDustBlocked: boolean;
+  linePlcTrippedAndRetroactivePalletHoldBridged: boolean;
+}
+
+/**
+ * Deterministic Food & Bakery Manufacturing ELISA Allergen Swab & Packaging-Film Lock, CCP Metal-Detector Gate & 0ms NFPA 61 Dust/Batch-Hold Guard (`FOOD-MFG-ALLERGEN-CHANGEOVER-NFPA61-01`).
+ */
+export function evaluateFoodMfgAllergenChangeoverNfpa61VoiceGuard(input: {
+  allergenElisaSwabAndPackagingFilmMatched: boolean;
+  ccpMetalTestPassedAndNfpa61VacuumSafe: boolean;
+  ccpFailureSieveBreakOrDustSparkAlarm: boolean;
+}): FoodMfgAllergenChangeoverNfpa61VoiceEvaluation {
+  return {
+    policyCode: "FOOD-MFG-ALLERGEN-CHANGEOVER-NFPA61-01",
+    lineStartupAndPalletReleaseAuthorized:
+      input.allergenElisaSwabAndPackagingFilmMatched &&
+      input.ccpMetalTestPassedAndNfpa61VacuumSafe &&
+      !input.ccpFailureSieveBreakOrDustSparkAlarm,
+    unswabbedAllergenOrCompressedAirDustBlocked:
+      !input.allergenElisaSwabAndPackagingFilmMatched ||
+      !input.ccpMetalTestPassedAndNfpa61VacuumSafe ||
+      input.ccpFailureSieveBreakOrDustSparkAlarm,
+    linePlcTrippedAndRetroactivePalletHoldBridged:
+      input.ccpFailureSieveBreakOrDustSparkAlarm,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（257 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（258 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -298,3 +298,4 @@
 255. **医学影像中心（MRI 核磁共振 / 增强 CT：Siemens Healthineers / GE HealthCare / Epic Radiant）24×7 AI 语音预检与舱内对讲方案（ACR Zone IV 铁磁性植入物/焊工眼片与防导弹效应硬锁、对比剂 eGFR≥30 与二甲双胍 48h 停药门禁及高压注射器外渗 0ms 停泵/撤床回 Zone III 抢救强切）**：[中文](./radiology-mri-ferromagnetic-implant-pacemaker-gadolinium-egfr-contrast-voice-triage-selection-faq.md) | [EN](./radiology-mri-ferromagnetic-implant-pacemaker-gadolinium-egfr-contrast-voice-triage-selection-faq.en.md)
 256. **大型冷链物流中心、-25°C 超低温冷库（Lineage / Americold / 万纬冷链 / 顺丰冷运）与冷藏集装箱（Reefer）24×7 AI 语音调度方案（FDA FSMA 204 蓝牙中心果肉温度与禁隐瞒二次复冻硬锁、-25°C 极寒 45 分钟防失温强制复温门禁及无水液氨 NH3 泄漏实时风向标逆风撤离/冷库困人 0ms 破冰开门强切）**：[中文](./cold-storage-reefer-fsma-204-ammonia-nh3-leak-man-down-freezer-voice-dispatch-selection-faq.md) | [EN](./cold-storage-reefer-fsma-204-ammonia-nh3-leak-man-down-freezer-voice-dispatch-selection-faq.en.md)
 257. **特药药房（Specialty Pharmacy：CVS Specialty / Accredo / 圆心大药房 / 思派健康）、FDA REMS 高危药物管控与生物制剂冷链直达患者（DTP）24×7 AI 语音方案（iPLEDGE/来那度胺 7 天阴性验孕死线与氯氮平 ANC≥1500 硬锁、万元单抗活体确认在家零盲发与冰箱余药盘点门禁及粒缺发热 0ms 停药强切肿瘤临床药师）**：[中文](./specialty-pharmacy-rems-ipledge-clozapine-anc-biologics-cold-chain-voice-concierge-selection-faq.md) | [EN](./specialty-pharmacy-rems-ipledge-clozapine-anc-biologics-cold-chain-voice-concierge-selection-faq.en.md)
+258. **食品饮料与烘焙工业产线（雀巢 Nestlé / 亿滋 Mondelēz / 宾堡 Bimbo / 伊利 / 桃李面包）、致敏原换线洗消（CIP）与面粉粉尘防爆（NFPA 61）24×7 免提语音副驾方案（ELISA 致敏原蛋白试纸 <5ppm 与包装卷膜条码防错硬锁、每小时 CCP 金检三球测试块门禁及严禁压缩空气吹扫面粉粉尘/金检漏踢 0ms 回溯冻结托盘强切）**：[中文](./food-manufacturing-bakery-nfpa-61-flour-dust-allergen-changeover-swab-voice-copilot-selection-faq.md) | [EN](./food-manufacturing-bakery-nfpa-61-flour-dust-allergen-changeover-swab-voice-copilot-selection-faq.en.md)

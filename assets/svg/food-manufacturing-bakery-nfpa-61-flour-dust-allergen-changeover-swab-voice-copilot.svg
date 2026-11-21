@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg258" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141008"/>
+      <stop offset="50%" stop-color="#78350f"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="card258" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg258)" rx="16"/>
+  <text x="600" y="40" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Food &amp; Bakery Manufacturing Allergen Changeover, Packaging &amp; NFPA 61 Dust Voice Copilot</text>
+  <text x="600" y="66" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">ELISA Allergen Swab (&lt;5 ppm) &amp; Packaging-Film Barcode Lock · CCP Metal/X-Ray Test-Piece Gate · 0ms NFPA 61 Dust &amp; Mixer LOTO Bridge (FOOD-MFG-ALLERGEN-CHANGEOVER-NFPA61-01)</text>
+
+  <!-- Left Column: Washdown Floor Headsets, Packaging & Silo -->
+  <rect x="36" y="92" width="260" height="545" rx="12" fill="url(#card258)" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="166" y="122" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. Plant Floor &amp; CIP Channels</text>
+
+  <rect x="56" y="142" width="220" height="110" rx="8" fill="#0f172a" stroke="#fbbf24"/>
+  <text x="166" y="166" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Allergen CIP &amp; Swab Crew</text>
+  <text x="166" y="188" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• IP69K washdown bone-conduction</text>
+  <text x="166" y="206" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Peanut/Milk/Egg ELISA swab (&lt;5ppm)</text>
+  <text x="166" y="224" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Old packaging roll purge check</text>
+
+  <rect x="56" y="268" width="220" height="110" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="166" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">HACCP CCP Metal &amp; X-Ray Pod</text>
+  <text x="166" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Hourly Fe / Non-Fe / SUS316 Wand</text>
+  <text x="166" y="332" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Air-blast reject bin lock verify</text>
+  <text x="166" y="350" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Oven/Pasteurizer CCP lethality</text>
+
+  <rect x="56" y="394" width="220" height="222" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="166" y="420" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">NFPA 61 Dust &amp; Mixer Hazards</text>
+  <text x="166" y="444" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Compressed-air blowdown of flour</text>
+  <text x="166" y="464" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Horizontal dough mixer un-locked</text>
+  <text x="166" y="484" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Wrong allergen film on wrapper</text>
+  <text x="166" y="504" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Broken sieve mesh / glass breakage</text>
+  <text x="166" y="532" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">0ms Line PLC Trip &amp; Batch Quarantine</text>
+
+  <!-- Center Column: FOOD-MFG-ALLERGEN-CHANGEOVER-NFPA61-01 Guardrail Engine -->
+  <rect x="326" y="92" width="548" height="545" rx="12" fill="url(#card258)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="600" y="122" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. Deterministic Allergen, CCP &amp; NFPA 61 Engine (FOOD-MFG-ALLERGEN-CHANGEOVER-NFPA61-01)</text>
+
+  <!-- Gate 1 -->
+  <rect x="350" y="142" width="500" height="145" rx="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate A: ELISA Allergen Swab (&lt;5 ppm) &amp; Packaging-Film Barcode Lock</text>
+  <text x="600" y="190" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Blocks line restart after Peanut/Tree-Nut/Milk/Egg run until ELISA swab is Negative</text>
+  <text x="600" y="210" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Requires physical clearance of prior packaging rolls + optical barcode match to BOM</text>
+  <text x="600" y="230" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Prevents #1 cause of FDA Class I Recalls (undeclared allergen in wrong wrapper)</text>
+  <text x="600" y="252" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Dual QA + Line Lead vocal &amp; barcode sign-off required in SAP Digital Manufacturing</text>
+
+  <!-- Gate 2 -->
+  <rect x="350" y="302" width="500" height="150" rx="10" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="600" y="326" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate B: HACCP CCP Metal/X-Ray Test-Piece &amp;NFPA 61 Vacuum-Only Gate</text>
+  <text x="600" y="350" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Enforces hourly Fe, Non-Fe &amp; SUS316 test-wand rejection verification at CCP detector</text>
+  <text x="600" y="370" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• 100% forbids compressed-air blowdown of flour/sugar/milk-powder dust (NFPA 61 explosion)</text>
+  <text x="600" y="390" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Requires Class II Div 1 grounded explosion-proof vacuum &amp; mixer LOTO verification</text>
+  <text x="600" y="412" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Quarantines all pallets back to last passed CCP check if a metal test wand fails to kick</text>
+
+  <!-- Gate 3 -->
+  <rect x="350" y="468" width="500" height="148" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="600" y="492" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate C: 0ms Silo Dust-Collector Spark / Mixer Entrapment &amp; Foreign-Body Trip</text>
+  <text x="600" y="516" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trips wrapper/conveyor PLC in 0ms upon broken sifter screen, glass break, or CCP fail</text>
+  <text x="600" y="536" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Triggers high-speed explosion-isolation chemical suppression on baghouse spark alarm</text>
+  <text x="600" y="556" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Bridges Plant Food-Safety QA Director &amp; EHS Rescue Team in 0ms</text>
+  <text x="600" y="580" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Full FDA 21 CFR Part 117 (FSMA PC), GFSI (SQF / BRCGS), NFPA 61 &amp; OSHA 1910.147 WORM</text>
+
+  <!-- Right Column: SAP MES, Mettler-Toledo CCP & Baghouse PLC -->
+  <rect x="904" y="92" width="260" height="545" rx="12" fill="url(#card258)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="1034" y="122" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">3. Food MES &amp; Safety PLC</text>
+
+  <rect x="924" y="142" width="220" height="145" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="1034" y="166" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">SAP DM / Rockwell FactoryTalk</text>
+  <text x="1034" y="190" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Active recipe BOM allergen matrix</text>
+  <text x="1034" y="210" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Cognex packaging film UPC scanner</text>
+  <text x="1034" y="230" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Neogen/Hygiena ELISA reader</text>
+  <text x="1034" y="250" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Line-clearance digital twin</text>
+
+  <rect x="924" y="302" width="220" height="150" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="1034" y="326" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Mettler-Toledo CCP &amp; NFPA 61</text>
+  <text x="1034" y="350" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Metal/X-Ray positive-reject sensor</text>
+  <text x="1034" y="370" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• GreCon baghouse spark detector</text>
+  <text x="1034" y="390" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Dough-mixer trapped-key LOTO</text>
+  <text x="1034" y="410" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• CIP conductivity &amp; caustic timer</text>
+
+  <rect x="924" y="468" width="220" height="148" rx="8" fill="#0f172a" stroke="#a855f7"/>
+  <text x="1034" y="492" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">GFSI QA &amp; EHS Emergency</text>
+  <text x="1034" y="516" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Automated pallet hold back-trace</text>
+  <text x="1034" y="536" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Combustible dust blast isolation</text>
+  <text x="1034" y="556" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• SQF / BRCGS audit-ready dossier</text>
+  <text x="1034" y="576" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">• 100% FDA 21 CFR 117 &amp; NFPA 61</text>
+</svg>
