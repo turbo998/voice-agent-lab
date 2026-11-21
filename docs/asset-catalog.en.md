@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (349 Bilingual Guides)
+## 3. Solution Architect Selection Guides (350 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -390,3 +390,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 347. **Freight Brokerage & TMS (McLeod / MercuryGate / C.H. Robinson) Carrier Vetting, Anti-Double-Brokering & Check-Call Voice Architecture: FMCSA MC/DOT + Highway Directory Anti-Theft Lock ($0 Cargo Loss), Context-Isolated Max-Buy Cap (+2.1pt Margin) & ELD Pickup Gate + 0ms Reefer Temp Excursion & >90m Detention Proof**: [EN](./freight-brokerage-tms-carrier-vetting-anti-double-brokering-checkcall-voice-selection-faq.en.md) | [中文](./freight-brokerage-tms-carrier-vetting-anti-double-brokering-checkcall-voice-selection-faq.md)
 348. **Enterprise Multi-Cloud Voice AI Active-Active Failover (Azure <-> AWS <-> GCP) & Mid-Call Zero-Drop Session Continuity Architecture: Decoupled Media Anchor & <3ms Redis State Replication Lock (0% Dropped Calls), Unified Cross-Cloud Brand TTS Persona Gate & 900ms Hedged Hot-Swap (<220ms Cutover / 99.99% SLA)**: [EN](./multi-cloud-voice-ai-active-active-failover-zero-drop-session-state-selection-faq.en.md) | [中文](./multi-cloud-voice-ai-active-active-failover-zero-drop-session-state-selection-faq.md)
 349. **Ride-Hailing & Car Rental Fleet (Uber / Lyft / DiDi / Enterprise) In-Trip Safety, Driver Eyes-Free Dispatch & Return Inspection Voice Architecture: Ephemeral Proxy Masking & Pre-Trip Video Baseline Lock (-88.2% Disputes), >5km/h <=6-Word Eyes-Free Dispatch Gate (-64% Tap Accidents) & 0ms Silent-Speaker Duress NG911 Bridge**: [EN](./ride-hailing-car-rental-fleet-in-trip-safety-driver-handsfree-voice-selection-faq.en.md) | [中文](./ride-hailing-car-rental-fleet-in-trip-safety-driver-handsfree-voice-selection-faq.md)
+350. **Law Firm & Legal Intake (Clio / Filevine / Litify) 24/7 Voice Triage, ABA Rule 1.18 Conflict-Check & Anti-UPL Architecture: Stage-1 Pre-Fact Adverse-Party Conflict Firewall (0% Firm Taint), Zero-UPL Legal-Opinion & Non-Engagement Disclaimer Gate (+48% Signed Retainers) & 0ms Statute-of-Limitations (<=30d) / Police-Custody Partner Bridge**: [EN](./legal-intake-law-firm-clio-conflict-check-upl-guardrail-voice-selection-faq.en.md) | [中文](./legal-intake-law-firm-clio-conflict-check-upl-guardrail-voice-selection-faq.md)

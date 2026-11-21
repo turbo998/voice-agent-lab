@@ -9295,6 +9295,36 @@ export function evaluateRidehailingRentalSafetyHandsfreeGuard(input: {
   };
 }
 
+export interface LegalIntakeClioConflictUplEvaluation {
+  policyCode: "LEGAL-INTAKE-CLIO-CONFLICT-UPL-01";
+  factIntakeAndRetainerDispatchAuthorized: boolean;
+  adversePartyConflictOrUplAdviceBlocked: boolean;
+  urgentStatuteOrCustodyAttorneyBridged: boolean;
+}
+
+/**
+ * Deterministic Law Firm & Legal Intake (Clio / Filevine) ABA Rule 1.18 Pre-Fact Conflict Firewall, Zero-UPL Opinion Gate & 0ms Statute / Custody Partner Guard (`LEGAL-INTAKE-CLIO-CONFLICT-UPL-01`).
+ */
+export function evaluateLegalIntakeClioConflictUplGuard(input: {
+  adversePartyConflictCheckClearedBeforeConfidentialFactIntake: boolean;
+  zeroUnauthorizedPracticeOfLawAdviceAndNoEngagementDisclaimerRead: boolean;
+  statuteOfLimitationsUnder30DaysOrCustodyArrestEmergencyEscalation: boolean;
+}): LegalIntakeClioConflictUplEvaluation {
+  return {
+    policyCode: "LEGAL-INTAKE-CLIO-CONFLICT-UPL-01",
+    factIntakeAndRetainerDispatchAuthorized:
+      input.adversePartyConflictCheckClearedBeforeConfidentialFactIntake &&
+      input.zeroUnauthorizedPracticeOfLawAdviceAndNoEngagementDisclaimerRead &&
+      !input.statuteOfLimitationsUnder30DaysOrCustodyArrestEmergencyEscalation,
+    adversePartyConflictOrUplAdviceBlocked:
+      !input.adversePartyConflictCheckClearedBeforeConfidentialFactIntake ||
+      !input.zeroUnauthorizedPracticeOfLawAdviceAndNoEngagementDisclaimerRead ||
+      input.statuteOfLimitationsUnder30DaysOrCustodyArrestEmergencyEscalation,
+    urgentStatuteOrCustodyAttorneyBridged:
+      input.statuteOfLimitationsUnder30DaysOrCustodyArrestEmergencyEscalation,
+  };
+}
+
 
 
 
