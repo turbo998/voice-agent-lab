@@ -8155,6 +8155,36 @@ export function evaluateVoiceOtelSyntheticCicdCanaryGuard(input: {
   };
 }
 
+export interface MultiAgentVoiceSwarmHandoffEvaluation {
+  policyCode: "MULTI-AGENT-VOICE-SWARM-HANDOFF-01";
+  specialistHandoffAndToolExecutionAuthorized: boolean;
+  unauthenticatedHandoffOrContextBloatBlocked: boolean;
+  pingPongBreakerAndSupervisorEscalationBridged: boolean;
+}
+
+/**
+ * Deterministic Multi-Agent Voice Swarm Pre-Handoff KYC/<=6-Tool Sandbox Lock, <15ms Silent Single-Persona Swap Gate & 0ms >2-Hop Anti-Ping-Pong Guard (`MULTI-AGENT-VOICE-SWARM-HANDOFF-01`).
+ */
+export function evaluateMultiAgentVoiceSwarmHandoffGuard(input: {
+  prerequisiteAuthContractMetAndMinimalToolScopeLocked: boolean;
+  silentSinglePersonaHandoffAndCompactedContextUnder150Tokens: boolean;
+  agentPingPongLoopOver2HopsOrSupervisorEscalation: boolean;
+}): MultiAgentVoiceSwarmHandoffEvaluation {
+  return {
+    policyCode: "MULTI-AGENT-VOICE-SWARM-HANDOFF-01",
+    specialistHandoffAndToolExecutionAuthorized:
+      input.prerequisiteAuthContractMetAndMinimalToolScopeLocked &&
+      input.silentSinglePersonaHandoffAndCompactedContextUnder150Tokens &&
+      !input.agentPingPongLoopOver2HopsOrSupervisorEscalation,
+    unauthenticatedHandoffOrContextBloatBlocked:
+      !input.prerequisiteAuthContractMetAndMinimalToolScopeLocked ||
+      !input.silentSinglePersonaHandoffAndCompactedContextUnder150Tokens ||
+      input.agentPingPongLoopOver2HopsOrSupervisorEscalation,
+    pingPongBreakerAndSupervisorEscalationBridged:
+      input.agentPingPongLoopOver2HopsOrSupervisorEscalation,
+  };
+}
+
 
 
 
