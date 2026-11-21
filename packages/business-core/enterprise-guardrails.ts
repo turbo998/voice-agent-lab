@@ -8245,6 +8245,36 @@ export function evaluateHealthcareTriageAmbientScribeFhirGuard(input: {
   };
 }
 
+export interface VoiceOwaspSecurityIdorFirewallEvaluation {
+  policyCode: "VOICE-OWASP-SECURITY-IDOR-FIREWALL-01";
+  toolExecutionAndTransferAuthorized: boolean;
+  idorOrIndirectInjectionBlocked: boolean;
+  jailbreakTerminatedAndSocAlertBridged: boolean;
+}
+
+/**
+ * Deterministic Voice AI OWASP Agentic Zero-LLM-Identity Anti-IDOR Lock, Indirect CRM-Note Injection Two-Phase Commit Gate & 0ms SIP Toll-Fraud Guard (`VOICE-OWASP-SECURITY-IDOR-FIREWALL-01`).
+ */
+export function evaluateVoiceOwaspSecurityIdorFirewallGuard(input: {
+  toolCustomerIdBoundToSessionTokenAndSchemaStripped: boolean;
+  untrustedCrmNotesIsolatedAndTwoPhaseCommitConfirmed: boolean;
+  acousticJailbreakDebugModeOrInternationalTollFraud: boolean;
+}): VoiceOwaspSecurityIdorFirewallEvaluation {
+  return {
+    policyCode: "VOICE-OWASP-SECURITY-IDOR-FIREWALL-01",
+    toolExecutionAndTransferAuthorized:
+      input.toolCustomerIdBoundToSessionTokenAndSchemaStripped &&
+      input.untrustedCrmNotesIsolatedAndTwoPhaseCommitConfirmed &&
+      !input.acousticJailbreakDebugModeOrInternationalTollFraud,
+    idorOrIndirectInjectionBlocked:
+      !input.toolCustomerIdBoundToSessionTokenAndSchemaStripped ||
+      !input.untrustedCrmNotesIsolatedAndTwoPhaseCommitConfirmed ||
+      input.acousticJailbreakDebugModeOrInternationalTollFraud,
+    jailbreakTerminatedAndSocAlertBridged:
+      input.acousticJailbreakDebugModeOrInternationalTollFraud,
+  };
+}
+
 
 
 
