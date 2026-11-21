@@ -5637,6 +5637,36 @@ export function evaluateEvMcsOcppV2gSafetyVoiceGuard(input: {
   };
 }
 
+export interface SmartBuildingElevatorBmsVoiceEvaluation {
+  policyCode: "SMART-BUILDING-ELEVATOR-BMS-01";
+  elevatorDoorAndComfortBmsActionAuthorized: boolean;
+  selfExtractionAndLifeSafetyOverrideBlocked: boolean;
+  fireCommandCenterAndElevatorMechanicBridged: boolean;
+}
+
+/**
+ * Deterministic High-Rise Smart Building BMS & ASME A17.1 Elevator Entrapment Door-Zone, Smoke-Damper & 0ms Rescue Guard (`SMART-BUILDING-ELEVATOR-BMS-01`).
+ */
+export function evaluateSmartBuildingElevatorBmsVoiceGuard(input: {
+  carInDoorZoneVerifiedWithin25mm: boolean;
+  lifeSafetySmokeDamperAndFireRecallUntouched: boolean;
+  elevatorEntrapmentOrDoorPryingOrFireAlarm: boolean;
+}): SmartBuildingElevatorBmsVoiceEvaluation {
+  return {
+    policyCode: "SMART-BUILDING-ELEVATOR-BMS-01",
+    elevatorDoorAndComfortBmsActionAuthorized:
+      input.carInDoorZoneVerifiedWithin25mm &&
+      input.lifeSafetySmokeDamperAndFireRecallUntouched &&
+      !input.elevatorEntrapmentOrDoorPryingOrFireAlarm,
+    selfExtractionAndLifeSafetyOverrideBlocked:
+      !input.carInDoorZoneVerifiedWithin25mm ||
+      !input.lifeSafetySmokeDamperAndFireRecallUntouched ||
+      input.elevatorEntrapmentOrDoorPryingOrFireAlarm,
+    fireCommandCenterAndElevatorMechanicBridged:
+      input.elevatorEntrapmentOrDoorPryingOrFireAlarm,
+  };
+}
+
 
 
 
