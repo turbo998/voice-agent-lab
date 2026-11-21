@@ -8275,6 +8275,36 @@ export function evaluateVoiceOwaspSecurityIdorFirewallGuard(input: {
   };
 }
 
+export interface AirlineIrropsHotelPmsConciergeEvaluation {
+  policyCode: "AIRLINE-IRROPS-HOTEL-PMS-CONCIERGE-01";
+  rebookingAndRoomServiceAuthorized: boolean;
+  seatLossOrGuestPrivacyLeakBlocked: boolean;
+  surgeElasticSpilloverAndSpecialAssistanceBridged: boolean;
+}
+
+/**
+ * Deterministic Airline IRROPS Atomic Hold-Before-Cancel PNR Lock, Hotel Opera PMS Stay_ID Checkout 0ms Wipe Gate & 0ms UMNR/50x Surge Guard (`AIRLINE-IRROPS-HOTEL-PMS-CONCIERGE-01`).
+ */
+export function evaluateAirlineIrropsHotelPmsConciergeGuard(input: {
+  newFlightSeatHeldBeforeOldTicketReleasedAndWaiverValid: boolean;
+  hotelStayIdCheckoutMemoryWipedAndCallerRoomVerified: boolean;
+  typhoonIrrops50xSurgeOrUnaccompaniedMinorMedicalAlert: boolean;
+}): AirlineIrropsHotelPmsConciergeEvaluation {
+  return {
+    policyCode: "AIRLINE-IRROPS-HOTEL-PMS-CONCIERGE-01",
+    rebookingAndRoomServiceAuthorized:
+      input.newFlightSeatHeldBeforeOldTicketReleasedAndWaiverValid &&
+      input.hotelStayIdCheckoutMemoryWipedAndCallerRoomVerified &&
+      !input.typhoonIrrops50xSurgeOrUnaccompaniedMinorMedicalAlert,
+    seatLossOrGuestPrivacyLeakBlocked:
+      !input.newFlightSeatHeldBeforeOldTicketReleasedAndWaiverValid ||
+      !input.hotelStayIdCheckoutMemoryWipedAndCallerRoomVerified ||
+      input.typhoonIrrops50xSurgeOrUnaccompaniedMinorMedicalAlert,
+    surgeElasticSpilloverAndSpecialAssistanceBridged:
+      input.typhoonIrrops50xSurgeOrUnaccompaniedMinorMedicalAlert,
+  };
+}
+
 
 
 

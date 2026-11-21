@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg316" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card316" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg316)"/>
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1224" height="78" rx="14" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+  <text x="48" y="54" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">
+    Airline IRROPS Mass Rebooking &amp; Hotel Opera PMS Voice Concierge (AIRLINE-IRROPS-HOTEL-PMS-CONCIERGE-01)
+  </text>
+  <text x="48" y="81" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">
+    Amadeus / Sabre / TravelSky Atomic PNR Lock · EU261/CAAC Involuntary Waiver · Opera PMS Checkout 0ms Memory Wipe · 50x Weather Surge
+  </text>
+
+  <!-- Left Column: Travel & Hospitality Ingress -->
+  <rect x="28" y="118" width="290" height="465" rx="12" fill="url(#card316)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="46" y="148" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="15.5" font-weight="700">
+    1. Travel &amp; Hospitality Ingress
+  </text>
+
+  <rect x="46" y="166" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="190" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Airline IRROPS Storm Hotline</text>
+  <text x="60" y="211" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 50x call spike on hub cancellation</text>
+  <text x="60" y="230" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 6-char alphanumeric PNR NATO check</text>
+
+  <rect x="46" y="266" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="290" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Hotel In-Room &amp; VIP PBX</text>
+  <text x="60" y="311" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 20-language guest room concierge</text>
+  <text x="60" y="330" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Room service, late checkout &amp; robot</text>
+
+  <rect x="46" y="366" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="390" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Loyalty Tier Priority Routing</text>
+  <text x="60" y="411" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Million-Miler / Ambassador VIP ID</text>
+  <text x="60" y="430" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Instant hotel + meal voucher SMS</text>
+
+  <rect x="46" y="466" width="254" height="98" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="60" y="490" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Travel CX &amp; Cost Impact</text>
+  <text x="60" y="511" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• IRROPS Rebook Time: 45m -&gt; 52s</text>
+  <text x="60" y="530" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Stranded Seat-Loss Bugs: 0.00%</text>
+  <text x="60" y="549" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blended TCO: $590 / 10k min</text>
+
+  <!-- Center Column: 3 Deterministic Travel & Hospitality Gates -->
+  <rect x="338" y="118" width="584" height="465" rx="12" fill="url(#card316)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="358" y="148" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">
+    2. Deterministic GDS Rebooking &amp; Hospitality Privacy Engine
+  </text>
+
+  <!-- Gate 1 -->
+  <rect x="358" y="166" width="544" height="122" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="376" y="191" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate A · Atomic PNR Swap (Hold New Seat First) &amp; Involuntary Waiver Lock
+  </text>
+  <text x="376" y="214" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Hard Rule: Never cancel an existing flight segment before holding the new seat!
+  </text>
+  <text x="376" y="235" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Executes two-phase GDS commit: `SS (Sell/Hold New)` -&gt; Verify HK -&gt; `XE (Cancel Old)`
+  </text>
+  <text x="376" y="256" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Auto-applies involuntary weather waiver ($0 fare/change fee) on airline-canceled flights
+  </text>
+  <text x="376" y="275" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Eliminates "both seats lost" race conditions &amp; illegal fare-difference overcharges
+  </text>
+
+  <!-- Gate 2 -->
+  <rect x="358" y="302" width="544" height="122" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="376" y="327" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate B · Opera PMS Stay_ID Checkout 0ms Memory Wipe &amp; Anti-Stalking Gate
+  </text>
+  <text x="376" y="350" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Scopes in-room voice memory strictly to ephemeral `Opera_Stay_ID` (not static Room #)
+  </text>
+  <text x="376" y="371" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Wipes room voice history &amp; folio cache in 0ms upon PMS Checkout webhook event
+  </text>
+  <text x="376" y="392" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Blocks external PSTN callers from querying guest room numbers or folio charges
+  </text>
+  <text x="376" y="411" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Prevents next guest in Room 1208 from hearing prior guest's private requests
+  </text>
+
+  <!-- Gate 3 -->
+  <rect x="358" y="438" width="544" height="126" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.8"/>
+  <text x="376" y="463" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate C · 0ms 50x Weather Surge Burst &amp; UMNR / Medical Priority Bridge
+  </text>
+  <text x="376" y="486" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Triggers on Unaccompanied Minor (UMNR), medical oxygen SSR, or 50x typhoon call spike
+  </text>
+  <text x="376" y="507" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • 0ms priority routing: Bridges UMNR/WCHC passengers directly to Special Assistance Desk
+  </text>
+  <text x="376" y="528" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Auto-scales cloud voice pool 50x to rebook 10,000 stranded flyers in &lt;15 minutes
+  </text>
+  <text x="376" y="549" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Zero 3-hour airport hold queues during mass flight cancellations
+  </text>
+
+  <!-- Right Column: GDS & Hospitality Backend Stack -->
+  <rect x="942" y="118" width="310" height="465" rx="12" fill="url(#card316)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="962" y="148" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="15.5" font-weight="700">
+    3. GDS &amp; Hospitality Bus
+  </text>
+
+  <rect x="962" y="168" width="270" height="92" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="978" y="193" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Amadeus / Sabre / TravelSky</text>
+  <text x="978" y="214" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• NDC / EDIFACT atomic PNR commit</text>
+  <text x="978" y="234" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Baggage WorldTracer PIR lookup</text>
+
+  <rect x="962" y="276" width="270" height="92" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="978" y="301" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Oracle Opera Cloud PMS</text>
+  <text x="978" y="322" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Stay_ID lifecycle &amp; folio posting</text>
+  <text x="978" y="342" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Housekeeping &amp; delivery robot API</text>
+
+  <rect x="962" y="384" width="270" height="92" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="978" y="409" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">20-Language Code-Switch STT</text>
+  <text x="978" y="430" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• IATA 3-letter airport &amp; flight codes</text>
+  <text x="978" y="450" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Airport PA background noise filter</text>
+
+  <rect x="962" y="492" width="270" height="72" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="978" y="517" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">EU261 / DOT / CAAC Vault</text>
+  <text x="978" y="538" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">• Automated meal/hotel voucher ledger</text>
+
+  <!-- Bottom Sequence Strip -->
+  <rect x="28" y="600" width="1224" height="136" rx="12" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="628" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    End-to-End IRROPS Rebooking &amp; Hotel Concierge Sequence (52s Atomic Flight Rebook / 0ms Checkout Privacy Wipe)
+  </text>
+
+  <rect x="48" y="644" width="275" height="74" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="62" y="666" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">1. Atomic Hold-Before-Cancel</text>
+  <text x="62" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Holds new seat #14A (`HK`) first</text>
+  <text x="62" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Releases old flight only after new seat locks</text>
+
+  <rect x="343" y="644" width="285" height="74" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="357" y="666" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">2. Checkout 0ms Memory Wipe</text>
+  <text x="357" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Opera PMS fires Checkout on Rm 1208</text>
+  <text x="357" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Purges Stay_ID context in 0ms</text>
+
+  <rect x="648" y="644" width="285" height="74" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="662" y="666" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">3. UMNR / 50x Storm Bridge</text>
+  <text x="662" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">PNR contains SSR=UMNR (child alone)</text>
+  <text x="662" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">0ms bridge to Special Assistance Desk</text>
+
+  <rect x="953" y="644" width="279" height="74" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="967" y="666" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">4. Travel &amp; Hotel Economics</text>
+  <text x="967" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">410ms P95 · $590 / 10k min (52s rebook)</text>
+  <text x="967" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Eliminates 45-min airport hold queues</text>
+</svg>
