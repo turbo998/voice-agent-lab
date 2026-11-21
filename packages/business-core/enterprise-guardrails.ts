@@ -5127,6 +5127,34 @@ export function evaluateComplianceRecordingAutomatedQaVoiceGuard(input: {
   };
 }
 
+export interface VoiceOrchestrationFrameworkMatrixEvaluation {
+  policyCode: "VOICE-ORCHESTRATION-FRAMEWORK-MATRIX-01";
+  managedSaasWrapperPermitted: boolean;
+  selfHostedOrCloudNativeMigrationRecommended: boolean;
+  productionRolloutAuthorized: boolean;
+}
+
+/**
+ * Deterministic Voice Orchestration Framework Selection, 40k Min/Mo TCO Inflection & K8s Graceful Call-Drain Guard (`VOICE-ORCHESTRATION-FRAMEWORK-MATRIX-01`).
+ */
+export function evaluateVoiceOrchestrationFrameworkMatrixGuard(input: {
+  requiresStrictVpcDataResidencyOrCustomMediaFrame: boolean;
+  monthlyCallMinutesExceeds40kInflection: boolean;
+  gracefulCallDrainAndPreStopHookVerified: boolean;
+}): VoiceOrchestrationFrameworkMatrixEvaluation {
+  return {
+    policyCode: "VOICE-ORCHESTRATION-FRAMEWORK-MATRIX-01",
+    managedSaasWrapperPermitted:
+      !input.requiresStrictVpcDataResidencyOrCustomMediaFrame &&
+      !input.monthlyCallMinutesExceeds40kInflection,
+    selfHostedOrCloudNativeMigrationRecommended:
+      input.requiresStrictVpcDataResidencyOrCustomMediaFrame ||
+      input.monthlyCallMinutesExceeds40kInflection,
+    productionRolloutAuthorized:
+      input.gracefulCallDrainAndPreStopHookVerified,
+  };
+}
+
 
 
 
