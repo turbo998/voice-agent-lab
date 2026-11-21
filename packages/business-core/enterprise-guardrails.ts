@@ -9115,6 +9115,36 @@ export function evaluateDentalClinicDentrixEdi270ChairGuard(input: {
   };
 }
 
+export interface EvChargingOcppUnlockThermalEvaluation {
+  policyCode: "EV-CHARGING-OCPP-UNLOCK-THERMAL-01";
+  connectorUnlockAndSessionResolutionAuthorized: boolean;
+  liveLoadUnlockOrUnwaivedFaultFeeBlocked: boolean;
+  thermalContactorTripAndEvacuationBridged: boolean;
+}
+
+/**
+ * Deterministic EV Charging Network (OCPP 2.0.1) 0-Amp Connector Unlock Interlock, Fault Idle-Fee Waiver / Stall Reservation Gate & 0ms Thermal Contactor Trip Guard (`EV-CHARGING-OCPP-UNLOCK-THERMAL-01`).
+ */
+export function evaluateEvChargingOcppUnlockThermalGuard(input: {
+  dcCurrentZeroVerifiedBeforeOcppUnlockConnector: boolean;
+  faultInducedIdleFeeWaivedAndNearbyWorkingChargerReserved: boolean;
+  batterySmokeOrCableMeltingZeroAuthContactorTripAndEvacuate: boolean;
+}): EvChargingOcppUnlockThermalEvaluation {
+  return {
+    policyCode: "EV-CHARGING-OCPP-UNLOCK-THERMAL-01",
+    connectorUnlockAndSessionResolutionAuthorized:
+      input.dcCurrentZeroVerifiedBeforeOcppUnlockConnector &&
+      input.faultInducedIdleFeeWaivedAndNearbyWorkingChargerReserved &&
+      !input.batterySmokeOrCableMeltingZeroAuthContactorTripAndEvacuate,
+    liveLoadUnlockOrUnwaivedFaultFeeBlocked:
+      !input.dcCurrentZeroVerifiedBeforeOcppUnlockConnector ||
+      !input.faultInducedIdleFeeWaivedAndNearbyWorkingChargerReserved ||
+      input.batterySmokeOrCableMeltingZeroAuthContactorTripAndEvacuate,
+    thermalContactorTripAndEvacuationBridged:
+      input.batterySmokeOrCableMeltingZeroAuthContactorTripAndEvacuate,
+  };
+}
+
 
 
 
