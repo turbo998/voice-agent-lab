@@ -5437,6 +5437,35 @@ export function evaluateVoiceSecurityOwaspAgenticFirewallGuard(input: {
   };
 }
 
+export interface IndustrialSapPmLotoAtexVoiceEvaluation {
+  policyCode: "INDUSTRIAL-SAP-PM-LOTO-ATEX-01";
+  nextSwitchingOrMaintenanceStepAuthorized: boolean;
+  soloOrUnbledLotoViolationBlocked: boolean;
+  plantEmergencyEvacuationAndRescueTriggered: boolean;
+}
+
+/**
+ * Deterministic Industrial Field Service ATEX Hands-Free Inspection, Dual-Vocal Call-and-Response & OSHA 1910.147 LOTO Guard (`INDUSTRIAL-SAP-PM-LOTO-ATEX-01`).
+ */
+export function evaluateIndustrialSapPmLotoAtexVoiceGuard(input: {
+  operatorAndGuardianDualVoiceReadbackVerified: boolean;
+  lotoPadlockZeroEnergyAndTryStartVerified: boolean;
+  personalGasDetectorAlarmOrManDownTriggered: boolean;
+}): IndustrialSapPmLotoAtexVoiceEvaluation {
+  return {
+    policyCode: "INDUSTRIAL-SAP-PM-LOTO-ATEX-01",
+    nextSwitchingOrMaintenanceStepAuthorized:
+      input.operatorAndGuardianDualVoiceReadbackVerified &&
+      input.lotoPadlockZeroEnergyAndTryStartVerified &&
+      !input.personalGasDetectorAlarmOrManDownTriggered,
+    soloOrUnbledLotoViolationBlocked:
+      !input.operatorAndGuardianDualVoiceReadbackVerified ||
+      !input.lotoPadlockZeroEnergyAndTryStartVerified,
+    plantEmergencyEvacuationAndRescueTriggered:
+      input.personalGasDetectorAlarmOrManDownTriggered,
+  };
+}
+
 
 
 

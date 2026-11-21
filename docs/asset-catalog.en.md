@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (220 Bilingual Guides)
+## 3. Solution Architect Selection Guides (221 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -261,3 +261,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 218. **QSR Drive-Thru Dual-Lane, Allergen Cross-Contact Safety & Kitchen KDS Sync (NCR Aloha / Toast / Oracle Micros) Voice Ordering: FDA FALCPA Allergen Lock, Anti-Prank Quantity Cap & Y-Merge Vehicle Sync**: [EN](./qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.en.md) | [中文](./qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.md)
 219. **AI Language Tutor, IELTS/TOEFL Speaking Examiner & Executive Leadership Coach: L2 1,600ms Hesitation Patience Lock, Acoustic Phoneme GOP Grader & ICF Privacy Boundary Gate**: [EN](./ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.en.md) | [中文](./ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.md)
 220. **Voice AI Security, Acoustic Jailbreak Defense & OWASP Agentic Tool Firewall: Zero-LLM-Identity Tool Binding (Anti-IDOR), Dual-Track S2S/STT Alignment & 0ms Debug-Override Lockout**: [EN](./voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.en.md) | [中文](./voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.md)
+221. **Industrial Field Service, ATEX Zone-1 Hands-Free Inspection & SAP PM / Maximo LOTO Voice Copilot: Dual-Vocal Call-and-Response Lock, Zero-Energy Try-Start Gate & 0ms H2S/Man-Down Bridge**: [EN](./industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.en.md) | [中文](./industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.md)
