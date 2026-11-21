@@ -7405,6 +7405,36 @@ export function evaluateDisplaySolarFabSilaneHfSemiVoiceGuard(input: {
   };
 }
 
+export interface OpticalFiberPreformDrawingSicl4VoiceEvaluation {
+  policyCode: "OPTICAL-FIBER-PREFORM-DRAWING-SICL4-01";
+  halideFlowAndDrawRampAuthorized: boolean;
+  sicl4HydrolysisOrHotFurnaceIrisBlocked: boolean;
+  halideShutoffArgonHoldAndFiberAspiratorBridged: boolean;
+}
+
+/**
+ * Deterministic Optical Fiber Preform MCVD/OVD & 2,200°C Drawing Tower SiCl4/Cl2 Scrubber pH Lock, Graphite Furnace Seal Gate & 0ms Fiber-Break Aspirator Guard (`OPTICAL-FIBER-PREFORM-DRAWING-SICL4-01`).
+ */
+export function evaluateOpticalFiberPreformDrawingSicl4VoiceGuard(input: {
+  halideDewPointAndCausticScrubberPhSafe: boolean;
+  graphiteFurnaceInertAndUvCapstanGuardSafe: boolean;
+  cl2HclLeakFurnaceWaterLossOrHighSpeedFiberBreak: boolean;
+}): OpticalFiberPreformDrawingSicl4VoiceEvaluation {
+  return {
+    policyCode: "OPTICAL-FIBER-PREFORM-DRAWING-SICL4-01",
+    halideFlowAndDrawRampAuthorized:
+      input.halideDewPointAndCausticScrubberPhSafe &&
+      input.graphiteFurnaceInertAndUvCapstanGuardSafe &&
+      !input.cl2HclLeakFurnaceWaterLossOrHighSpeedFiberBreak,
+    sicl4HydrolysisOrHotFurnaceIrisBlocked:
+      !input.halideDewPointAndCausticScrubberPhSafe ||
+      !input.graphiteFurnaceInertAndUvCapstanGuardSafe ||
+      input.cl2HclLeakFurnaceWaterLossOrHighSpeedFiberBreak,
+    halideShutoffArgonHoldAndFiberAspiratorBridged:
+      input.cl2HclLeakFurnaceWaterLossOrHighSpeedFiberBreak,
+  };
+}
+
 
 
 

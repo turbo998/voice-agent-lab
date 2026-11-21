@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg287" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card287" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg287)"/>
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1224" height="78" rx="14" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+  <text x="48" y="54" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">
+    Optical Fiber Preform MCVD/OVD &amp; 2,200°C Drawing Tower Voice Copilot (OPTICAL-FIBER-PREFORM-DRAWING-SICL4-01)
+  </text>
+  <text x="48" y="81" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">
+    SiCl4/GeCl4 Halide &amp; Cl2 Scrubber (pH &ge;10.5) Lock · 2,200°C Graphite Furnace Argon/He Gate · 0ms Cl2/HCl &amp; Fiber-Break Bridge
+  </text>
+
+  <!-- Left Column: Preform & Draw Tower Endpoints -->
+  <rect x="28" y="118" width="290" height="465" rx="12" fill="url(#card287)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="46" y="148" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="15.5" font-weight="700">
+    1. Preform Lathe &amp; 25m Tower
+  </text>
+
+  <rect x="46" y="166" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="190" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Tower Top &amp; Capstan Headset</text>
+  <text x="60" y="211" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 25m vertical intercom &amp; burner DSP</text>
+  <text x="60" y="230" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Clip-on Cl2 / HCl electrochemical badge</text>
+
+  <rect x="46" y="266" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="290" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">SiCl4 / GeCl4 / Cl2 Bubbler PLC</text>
+  <text x="60" y="311" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Carrier gas dew-point (&le;-70°C) lock</text>
+  <text x="60" y="330" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• NaOH wet scrubber pH (&ge;10.5) &amp; ΔP</text>
+
+  <rect x="46" y="366" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="390" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">2,200°C Graphite Draw Furnace</text>
+  <text x="60" y="411" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Top iris Ar/He seal (O2 &lt; 10 ppm)</text>
+  <text x="60" y="430" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 3,000 m/min capstan &amp; UV lamp shield</text>
+
+  <rect x="46" y="466" width="254" height="98" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="60" y="490" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">ITU-T G.652.D / G.654.E OTDR</text>
+  <text x="60" y="511" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 125.0 &plusmn; 0.5 &mu;m laser diameter loop</text>
+  <text x="60" y="530" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 100 kpsi proof-test &amp; 1383nm OH- peak</text>
+  <text x="60" y="549" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dual-track cascade (&lt;500ms P95)</text>
+
+  <!-- Center Column: 3 Deterministic Safety Gates -->
+  <rect x="338" y="118" width="584" height="465" rx="12" fill="url(#card287)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="358" y="148" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">
+    2. Deterministic Preform Synthesis &amp; Draw-Tower Safety Engine
+  </text>
+
+  <!-- Gate 1 -->
+  <rect x="358" y="166" width="544" height="122" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="376" y="191" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate A · SiCl4/GeCl4 Halide Hydrolysis &amp; Cl2 Sintering Scrubber Lock
+  </text>
+  <text x="376" y="214" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Hard Rule: Never flow SiCl4/GeCl4 or Cl2 without dry carrier (&le;-70°C) &amp; caustic scrubber!
+  </text>
+  <text x="376" y="235" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Blocks halide/Cl2 valves unless NaOH_Scrubber_pH &ge; 10.5 &amp; Exhaust_Draft_Pa &le; -150 Pa
+  </text>
+  <text x="376" y="256" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Requires OVD/VAD H2/O2 burner UV flame-proving &amp; dry-N2 line purge before cabinet open
+  </text>
+  <text x="376" y="275" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Prevents SiCl4+H2O violent HCl acid-fume eruption &amp; lethal Cl2 dehydration leak
+  </text>
+
+  <!-- Gate 2 -->
+  <rect x="358" y="302" width="544" height="122" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="376" y="327" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate B · 2,200°C Graphite Furnace Inert Curtain &amp; 3,000 m/min Capstan Gate
+  </text>
+  <text x="376" y="350" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Blocks top iris open if Graphite_Furnace_Temp &gt; 450°C (prevents graphite burn &amp; CO flash)
+  </text>
+  <text x="376" y="371" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Requires Furnace_Ar_He_O2 &lt; 10 ppm &amp; Cooling_Jacket_Flow &ge; 65 L/min before RF heat-up
+  </text>
+  <text x="376" y="392" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Blocks draw speed ramp (&gt;100 m/min) unless UV_Cure_Shield == CLOSED &amp; Capstan_Guard == LOCKED
+  </text>
+  <text x="376" y="411" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Eliminates 2,200°C muffle oxidation, UV-C/ozone exposure &amp; high-speed glass whip injury
+  </text>
+
+  <!-- Gate 3 -->
+  <rect x="358" y="438" width="544" height="126" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.8"/>
+  <text x="376" y="463" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate C · 0ms Cl2/HCl Leak Shutoff, Furnace Water-Loss &amp; Fiber-Catcher Bridge
+  </text>
+  <text x="376" y="486" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Triggers on Cl2 &gt; 0.5 ppm, HCl &gt; 5.0 ppm, Furnace_Water_Loss, or Fiber_Break at 3,000 m/min
+  </text>
+  <text x="376" y="507" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • 0ms PLC hardware trip: Shut SiCl4/GeCl4/Cl2 bubbler EMO valves -&gt; Max NaOH scrubber boost
+  </text>
+  <text x="376" y="528" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Fiber break / water loss: Fire pneumatic fiber cutter/catcher, trip 2,200°C RF &amp; hold Ar purge
+  </text>
+  <text x="376" y="549" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Zero LLM latency in the Cl2/HCl chemical containment &amp; 50 m/s fiber-break arrest loop
+  </text>
+
+  <!-- Right Column: Optical Fiber DCS & Quality Bus -->
+  <rect x="942" y="118" width="310" height="465" rx="12" fill="url(#card287)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="962" y="148" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="15.5" font-weight="700">
+    3. Tower DCS &amp; OTDR Quality Bus
+  </text>
+
+  <rect x="962" y="168" width="270" height="92" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="978" y="193" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">MCVD / OVD / Sintering PLC</text>
+  <text x="978" y="214" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Halide mass-flow &amp; Cl2 shutoff</text>
+  <text x="978" y="234" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Packed-tower NaOH scrubber link</text>
+
+  <rect x="962" y="276" width="270" height="92" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="978" y="301" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">25m Draw Tower Motion PLC</text>
+  <text x="978" y="322" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 2,200°C RF induction &amp; Ar/He seal</text>
+  <text x="978" y="342" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pneumatic fiber-break aspirator</text>
+
+  <rect x="962" y="384" width="270" height="92" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="978" y="409" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">ITU-T G.654.E Submarine QMS</text>
+  <text x="978" y="430" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 1550nm attenuation (&le;0.158 dB/km)</text>
+  <text x="978" y="450" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Coating concentricity &amp; PMD log</text>
+
+  <rect x="962" y="492" width="270" height="72" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="978" y="517" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Immutable Submarine Fiber Vault</text>
+  <text x="978" y="538" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">• 25-year undersea preform ledger</text>
+
+  <!-- Bottom Sequence Strip -->
+  <rect x="28" y="600" width="1224" height="136" rx="12" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="628" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    End-to-End Deterministic Execution Sequence (490ms Normal Gate / 0ms Cl2 Shutoff &amp; Fiber-Catcher Bridge)
+  </text>
+
+  <rect x="48" y="644" width="275" height="74" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="62" y="666" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">1. Scrubber pH = 6.8 Blocked</text>
+  <text x="62" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">NaOH depleted (&lt;10.5) on Cl2 sinter</text>
+  <text x="62" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Hard-locks SiCl4 &amp; Cl2 supply valves</text>
+
+  <rect x="343" y="644" width="285" height="74" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="357" y="666" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">2. 1,950°C Furnace Iris Lock</text>
+  <text x="357" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Graphite muffle hot (&gt;450°C)</text>
+  <text x="357" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Blocks top iris open; preserves Ar seal</text>
+
+  <rect x="648" y="644" width="285" height="74" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="662" y="666" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">3. 0ms Cl2 Leak / Fiber Break</text>
+  <text x="662" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Cl2 = 1.2 ppm or break at 3,000 m/min</text>
+  <text x="662" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">0ms shut halides -&gt; fire fiber aspirator</text>
+
+  <rect x="953" y="644" width="279" height="74" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="967" y="666" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">4. Dual-Track Cost &amp; Latency</text>
+  <text x="967" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">490ms P95 · $137 / 10k min (-82.4%)</text>
+  <text x="967" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">100% deterministic G.654.E / OSHA gate</text>
+</svg>
