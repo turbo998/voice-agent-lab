@@ -7225,6 +7225,36 @@ export function evaluateMetalStampingPressDieblockB11VoiceGuard(input: {
   };
 }
 
+export interface WeldingRoboticLaserPhosgeneArgonVoiceEvaluation {
+  policyCode: "WELDING-ROBOTIC-LASER-PHOSGENE-ARGON-01";
+  arcIgnitionAndCellEntryAuthorized: boolean;
+  chlorinatedPhosgeneOrArgonLaserHazardBlocked: boolean;
+  robotStoLaserShutterAndGasShutoffBridged: boolean;
+}
+
+/**
+ * Deterministic Industrial Welding & Robotic Laser Cell Chlorinated UV-Phosgene Lock, Argon Confined-Space O2 & Class-4 Laser Gate & 0ms Robot STO Guard (`WELDING-ROBOTIC-LASER-PHOSGENE-ARGON-01`).
+ */
+export function evaluateWeldingRoboticLaserPhosgeneArgonVoiceGuard(input: {
+  zeroChlorinatedSolventAndCrViLevAirflowSafe: boolean;
+  confinedSpaceO2LaserShutterAndWpsPreheatSafe: boolean;
+  robotZoneBreachAcetyleneFlashbackOrO2Drop: boolean;
+}): WeldingRoboticLaserPhosgeneArgonVoiceEvaluation {
+  return {
+    policyCode: "WELDING-ROBOTIC-LASER-PHOSGENE-ARGON-01",
+    arcIgnitionAndCellEntryAuthorized:
+      input.zeroChlorinatedSolventAndCrViLevAirflowSafe &&
+      input.confinedSpaceO2LaserShutterAndWpsPreheatSafe &&
+      !input.robotZoneBreachAcetyleneFlashbackOrO2Drop,
+    chlorinatedPhosgeneOrArgonLaserHazardBlocked:
+      !input.zeroChlorinatedSolventAndCrViLevAirflowSafe ||
+      !input.confinedSpaceO2LaserShutterAndWpsPreheatSafe ||
+      input.robotZoneBreachAcetyleneFlashbackOrO2Drop,
+    robotStoLaserShutterAndGasShutoffBridged:
+      input.robotZoneBreachAcetyleneFlashbackOrO2Drop,
+  };
+}
+
 
 
 
