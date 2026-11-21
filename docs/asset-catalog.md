@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（301 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（302 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -342,3 +342,4 @@
 299. **企业全渠道智能客服中心（CCaaS）传统 IVR 现代化替代与人工坐席零重复移交全栈选型（Azure Communication Services + GPT-Realtime vs. Amazon Connect + Bedrock Nova Sonic vs. Genesys Cloud CX AI：前置 SIP 分流规避 AudioHook 过路税、4 槽位 CTI 弹屏卡 + 5 秒坐席耳语零重复交接硬锁、`<=$50` 自动退赔防火墙与 2 次未听清 0ms 跳出转专席）方案**：[中文](./ccaas-ivr-modernization-warm-agent-handoff-azure-acs-amazon-connect-genesys-selection-faq.md) | [EN](./ccaas-ivr-modernization-warm-agent-handoff-azure-acs-amazon-connect-genesys-selection-faq.en.md)
 300. **高并发 B2C/B2B 智能外呼、留资 15 秒极速回访与预约确认语音 Agent 编排选型（自建开源 LiveKit Agents / Pipecat vs. 全托管商业平台 Retell AI / Vapi / Bland AI：五层叠加平台溢价拆解与月呼 6.5 万分钟 TCO 拐点、拨号前 Opt-In 与被叫当地时区 `08:00–21:00` 硬锁、`<400ms` 投机式 AMD 零停顿问候与日历 90 秒原子锁及“别再打给我”`0ms` 全局 DNC 退订熔断）方案**：[中文](./high-concurrency-outbound-appointment-agent-livekit-pipecat-vs-retell-vapi-bland-tco-selection-faq.md) | [EN](./high-concurrency-outbound-appointment-agent-livekit-pipecat-vs-retell-vapi-bland-tco-selection-faq.en.md)
 301. **原生全双工端到端语音大模型（GPT-4o Realtime / Gemini Live）vs. 受控级联流水线（Azure AI Speech Custom Neural STT/TTS + DeepSeek-V3 / GPT-4o-mini）金融合规、热词注入与长通话 FinOps 定量选型（5,000+ 专有热词 WFST 增强与校验位硬锁、3 轮滑动窗口历史音频帧裁剪省 `64.3%` 成本、金融 APR/医疗剂量 `0ms` 切换锁定 SSML 逐字播报）方案**：[中文](./s2s-gpt4o-realtime-gemini-live-vs-cascaded-custom-stt-deepseek-gpt4omini-finops-selection-faq.md) | [EN](./s2s-gpt4o-realtime-gemini-live-vs-cascaded-custom-stt-deepseek-gpt4omini-finops-selection-faq.en.md)
+302. **跨国企业全球多语种 IT/HR 员工服务台（ServiceNow / Workday / Teams Phone）语音工单自动化与企业知识库低延迟 Voice RAG 架构设计（Entra ID 防社工语音钓鱼带外 MFA 硬锁与国别/职级 RBAC 隔离、`<140ms` 流式 Partial 投机预检索与 `<=40字` 零 Markdown 口语卡 + Teams 伴随推卡、P1 全局故障 `0秒` 广播分流与 Intune 终端远程自愈）方案**：[中文](./global-multilingual-it-hr-helpdesk-servicenow-workday-low-latency-voice-rag-selection-faq.md) | [EN](./global-multilingual-it-hr-helpdesk-servicenow-workday-low-latency-voice-rag-selection-faq.en.md)

@@ -7855,6 +7855,36 @@ export function evaluateS2sVsCascadedDeepseekFinopsRouterVoiceGuard(input: {
   };
 }
 
+export interface GlobalItHrHelpdeskVoiceRagEvaluation {
+  policyCode: "GLOBAL-IT-HR-HELPDESK-VOICE-RAG-2026-01";
+  helpdeskActionAndSpokenRagAuthorized: boolean;
+  vishingOrCrossRegionPolicyLeakBlocked: boolean;
+  p1OutageDeflectionOrZeroRetentionHrBridgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Global Multilingual IT/HR Helpdesk Anti-Vishing Entra MFA Lock, <140ms Speculative Voice RAG Gate & 0ms P1 Outage Deflection Guard (`GLOBAL-IT-HR-HELPDESK-VOICE-RAG-2026-01`).
+ */
+export function evaluateGlobalItHrHelpdeskVoiceRagGuard(input: {
+  entraAuthenticatorPushVerifiedAndRbacScoped: boolean;
+  speculativePartialRagHitAndZeroMarkdownSpokenCard: boolean;
+  majorP1OutageStormOrConfidentialHrEthicsReport: boolean;
+}): GlobalItHrHelpdeskVoiceRagEvaluation {
+  return {
+    policyCode: "GLOBAL-IT-HR-HELPDESK-VOICE-RAG-2026-01",
+    helpdeskActionAndSpokenRagAuthorized:
+      input.entraAuthenticatorPushVerifiedAndRbacScoped &&
+      input.speculativePartialRagHitAndZeroMarkdownSpokenCard &&
+      !input.majorP1OutageStormOrConfidentialHrEthicsReport,
+    vishingOrCrossRegionPolicyLeakBlocked:
+      !input.entraAuthenticatorPushVerifiedAndRbacScoped ||
+      !input.speculativePartialRagHitAndZeroMarkdownSpokenCard ||
+      input.majorP1OutageStormOrConfidentialHrEthicsReport,
+    p1OutageDeflectionOrZeroRetentionHrBridgeTriggered:
+      input.majorP1OutageStormOrConfidentialHrEthicsReport,
+  };
+}
+
 
 
 
