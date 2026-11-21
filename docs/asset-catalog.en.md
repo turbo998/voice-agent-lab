@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (291 Bilingual Guides)
+## 3. Solution Architect Selection Guides (292 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -332,3 +332,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 289. **UHV Power Transformer, Kerosene Vapor-Phase Drying (VPD) & 2,400kV Marx Impulse Voice Copilot: 130°C Kerosene VPD Nitrogen-First Vacuum-Break Lock, 12-Stage Marx Earth Gate & 0ms Air-Inleak N2 Flood Bridge**: [EN](./power-transformer-manufacturing-vapor-phase-drying-kerosene-marx-impulse-test-voice-copilot-selection-faq.en.md) | [中文](./power-transformer-manufacturing-vapor-phase-drying-kerosene-marx-impulse-test-voice-copilot-selection-faq.md)
 290. **Offshore Wind Turbine Blade Manufacturing, VARTM Infusion & 130m Mold Turnover Voice Copilot: Coriolis Ratio & Root Exotherm Lock, 16-Pin Mold Turnover & Styrene Gate & 0ms Skew Load-Hold Bridge**: [EN](./wind-turbine-blade-manufacturing-vartm-resin-infusion-mold-turnover-nacelle-voice-copilot-selection-faq.en.md) | [中文](./wind-turbine-blade-manufacturing-vartm-resin-infusion-mold-turnover-nacelle-voice-copilot-selection-faq.md)
 291. **Commercial Shipbuilding, Dry-Dock Goliath Crane & Ballast-Tank Coating Voice Copilot: OSHA 1915 Tank LEL <=10% & 6-Adjacent Hot-Work Lock, 1,200t Dual-Goliath CoG Gate & 0ms Paint/Weld Cutoff Bridge**: [EN](./shipbuilding-drydock-goliath-crane-block-erection-ballast-tank-coating-lel-voice-copilot-selection-faq.en.md) | [中文](./shipbuilding-drydock-goliath-crane-block-erection-ballast-tank-coating-lel-voice-copilot-selection-faq.md)
+292. **High-Speed Rail Rolling Stock, Bogie Wheel-Set Press-Fit & 25kV Depot Voice Copilot: EN 50122 25kV Catenary Earthing & Castell Key Lock, EN 13260 Wheel Press Curve Gate & 0ms 32-Jack Skew Bridge**: [EN](./rail-rolling-stock-bogie-wheelset-press-depot-25kv-catenary-earthing-voice-copilot-selection-faq.en.md) | [中文](./rail-rolling-stock-bogie-wheelset-press-depot-25kv-catenary-earthing-voice-copilot-selection-faq.md)

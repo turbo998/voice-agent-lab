@@ -7555,6 +7555,36 @@ export function evaluateShipbuildingDrydockGoliathCoatingVoiceGuard(input: {
   };
 }
 
+export interface RailRollingStockBogie25kvDepotVoiceEvaluation {
+  policyCode: "RAIL-ROLLING-STOCK-BOGIE-25KV-DEPOT-01";
+  roofGateAndBogieReleaseAuthorized: boolean;
+  unearthedCatenaryOrWheelPressPitBlocked: boolean;
+  jackSafetyNutsLockedAnd25kvFeederTrippedBridged: boolean;
+}
+
+/**
+ * Deterministic High-Speed Rail Rolling Stock & 25kV Depot EN 50122 Earthing/Castell Key Lock, EN 13260 Wheel Press Gate & 0ms 32-Jack Skew Guard (`RAIL-ROLLING-STOCK-BOGIE-25KV-DEPOT-01`).
+ */
+export function evaluateRailRollingStockBogie25kvDepotVoiceGuard(input: {
+  catenaryEarthedZeroKvAndCastellKeySafe: boolean;
+  wheelsetPressCurveUltrasonicAndPitClearSafe: boolean;
+  jackSyncSkewExceededOrCatenaryBreach: boolean;
+}): RailRollingStockBogie25kvDepotVoiceEvaluation {
+  return {
+    policyCode: "RAIL-ROLLING-STOCK-BOGIE-25KV-DEPOT-01",
+    roofGateAndBogieReleaseAuthorized:
+      input.catenaryEarthedZeroKvAndCastellKeySafe &&
+      input.wheelsetPressCurveUltrasonicAndPitClearSafe &&
+      !input.jackSyncSkewExceededOrCatenaryBreach,
+    unearthedCatenaryOrWheelPressPitBlocked:
+      !input.catenaryEarthedZeroKvAndCastellKeySafe ||
+      !input.wheelsetPressCurveUltrasonicAndPitClearSafe ||
+      input.jackSyncSkewExceededOrCatenaryBreach,
+    jackSafetyNutsLockedAnd25kvFeederTrippedBridged:
+      input.jackSyncSkewExceededOrCatenaryBreach,
+  };
+}
+
 
 
 
