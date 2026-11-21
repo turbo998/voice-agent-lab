@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（249 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（250 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -290,3 +290,4 @@
 247. **公务航空（NetJets / VistaJet / 湾流 Gulfstream）、FBO 地面保障与包机签派 24×7 AI 语音方案（防加错航油 Jet-A/100LL 与防车用尿素 DEF 混入防冰剂硬锁、Part 135 湿跑道平衡场长门禁与机库泡沫误喷 0ms 疏散/MedAire 强切）**：[中文](./business-aviation-fbo-fractional-jet-misfueling-def-contaminated-jet-a-notam-voice-dispatch-selection-faq.md) | [EN](./business-aviation-fbo-fractional-jet-misfueling-def-contaminated-jet-a-notam-voice-dispatch-selection-faq.en.md)
 248. **骨科术后康复（全膝/全髋关节置换 TKA/THA / ACL 重建 / 脊柱术后）与居家物理治疗（Sword / Hinge Health）24×7 多模态语音教练方案（主刀负重分级 NWB/TTWB 与后入路全髋屈髋 >90° 防脱位硬锁、禁强忍锐痛折断内固定锁与下肢深静脉血栓 DVT 0ms 禁揉制动急诊强切）**：[中文](./physical-therapy-orthopedic-post-op-rehab-weight-bearing-dvt-pe-voice-coach-selection-faq.md) | [EN](./physical-therapy-orthopedic-post-op-rehab-weight-bearing-dvt-pe-voice-coach-selection-faq.en.md)
 249. **家族信托（Family Trust）、遗嘱认证（Probate）与财富传承家事律所（私人银行家办 / 北方信托）24×7 AI 语音访谈方案（委托人独处防旁听教唆 Anti-Undue Influence 声纹硬锁、特殊需要信托 SNT 与法定见证形式门禁及长者金融剥削/ICU 病危立遗嘱 0ms 合伙人律师强切）**：[中文](./estate-planning-probate-trust-fiduciary-undue-influence-capacity-voice-intake-selection-faq.md) | [EN](./estate-planning-probate-trust-fiduciary-undue-influence-capacity-voice-intake-selection-faq.en.md)
+250. **智慧农业无人农机（John Deere / 大疆农业植保机）、防药害飘移与大型粮仓（中储粮 / ADM / Bunge）24×7 语音副驾方案（EPA 3–10 mph 植保风速与清晨逆温层禁喷硬锁、OSHA 1910.272 粮仓出粮绞龙 LOTO 防流沙掩埋硬锁及陷人 0ms 停绞龙开通风机围堰救援强切）**：[中文](./precision-ag-autonomous-tractor-isobus-grain-bin-entrapment-drift-wind-voice-copilot-selection-faq.md) | [EN](./precision-ag-autonomous-tractor-isobus-grain-bin-entrapment-drift-wind-voice-copilot-selection-faq.en.md)

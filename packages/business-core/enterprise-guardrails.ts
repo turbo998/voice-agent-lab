@@ -6295,6 +6295,36 @@ export function evaluateEstateTrustUndueInfluenceVoiceGuard(input: {
   };
 }
 
+export interface PrecisionAgGrainBinDriftVoiceEvaluation {
+  policyCode: "PRECISION-AG-GRAIN-BIN-DRIFT-01";
+  sprayApplicationAndBinEntryAuthorized: boolean;
+  windDriftInversionOrEnergizedAugerBlocked: boolean;
+  augerTripAerationFanAndCofferdamRescueBridged: boolean;
+}
+
+/**
+ * Deterministic Precision Agriculture EPA Spray-Drift/Inversion Lock, OSHA 1910.272 Grain-Bin Auger LOTO & 0ms Cofferdam Guard (`PRECISION-AG-GRAIN-BIN-DRIFT-01`).
+ */
+export function evaluatePrecisionAgGrainBinDriftVoiceGuard(input: {
+  sprayWindInversionAndPollinatorBufferSafe: boolean;
+  grainBinAugerLotoAndGasClearVerified: boolean;
+  grainEntrapmentTractorRolloverOrPesticidePoisoning: boolean;
+}): PrecisionAgGrainBinDriftVoiceEvaluation {
+  return {
+    policyCode: "PRECISION-AG-GRAIN-BIN-DRIFT-01",
+    sprayApplicationAndBinEntryAuthorized:
+      input.sprayWindInversionAndPollinatorBufferSafe &&
+      input.grainBinAugerLotoAndGasClearVerified &&
+      !input.grainEntrapmentTractorRolloverOrPesticidePoisoning,
+    windDriftInversionOrEnergizedAugerBlocked:
+      !input.sprayWindInversionAndPollinatorBufferSafe ||
+      !input.grainBinAugerLotoAndGasClearVerified ||
+      input.grainEntrapmentTractorRolloverOrPesticidePoisoning,
+    augerTripAerationFanAndCofferdamRescueBridged:
+      input.grainEntrapmentTractorRolloverOrPesticidePoisoning,
+  };
+}
+
 
 
 
