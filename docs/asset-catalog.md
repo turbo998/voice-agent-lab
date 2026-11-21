@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（260 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（261 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -301,3 +301,4 @@
 258. **食品饮料与烘焙工业产线（雀巢 Nestlé / 亿滋 Mondelēz / 宾堡 Bimbo / 伊利 / 桃李面包）、致敏原换线洗消（CIP）与面粉粉尘防爆（NFPA 61）24×7 免提语音副驾方案（ELISA 致敏原蛋白试纸 <5ppm 与包装卷膜条码防错硬锁、每小时 CCP 金检三球测试块门禁及严禁压缩空气吹扫面粉粉尘/金检漏踢 0ms 回溯冻结托盘强切）**：[中文](./food-manufacturing-bakery-nfpa-61-flour-dust-allergen-changeover-swab-voice-copilot-selection-faq.md) | [EN](./food-manufacturing-bakery-nfpa-61-flour-dust-allergen-changeover-swab-voice-copilot-selection-faq.en.md)
 259. **大型水上乐园、度假村泳池与城市游泳馆（长隆水上乐园 / 三亚亚特兰蒂斯 / 迪士尼水世界 / 市政游泳馆）24×7 AI 语音巡检与救生调度方案（防次氯酸钠混盐酸产生剧毒氯气 Cl2 与停水断药硬锁、CDC MAHC 水样腹泻隐孢子虫 CT=15,300 闭池消杀门禁及池底排水口负压吸人 VGB 0ms 停主泵破真空强切）**：[中文](./aquatic-waterpark-swimming-pool-hypochlorite-acid-mix-vgb-drain-entrapment-cryptosporidium-voice-dispatch-selection-faq.md) | [EN](./aquatic-waterpark-swimming-pool-hypochlorite-acid-mix-vgb-drain-entrapment-cryptosporidium-voice-dispatch-selection-faq.en.md)
 260. **商业印刷与软包装/医药包材工厂（Amcor 安姆科 / 裕同科技 / 紫江企业 / 海德堡 Heidelberg / 博斯特 Bobst）24×7 免提语音副驾方案（食品级低迁移无苯油墨与医药印稿 PDF 防混版硬锁、压印滚筒咬口 ANSI B65 安全点动/LOTO 门禁及凹印烘道溶剂 >25% LEL 0ms 断墨/RTO 旁通抑爆强切）**：[中文](./commercial-printing-flexible-packaging-flexo-gravure-solvent-lel-low-migration-ink-nip-loto-voice-copilot-selection-faq.md) | [EN](./commercial-printing-flexible-packaging-flexo-gravure-solvent-lel-low-migration-ink-nip-loto-voice-copilot-selection-faq.en.md)
+261. **商业有害生物防制（Pest Control：Rentokil 能多洁 / Terminix / Orkin / 艺康 Ecolab）与建筑帐篷熏蒸（硫酰氟 Vikane）24×7 AI 语音调度方案（放毒前清场/氯化苦催泪警示剂与二次蛤壳门锁硬锁、Interscan 逐屋实测 ≤1.0 ppm 散气返屋门禁及误闯熏蒸帐篷/幼儿误食鼠药 0ms 强切 SCBA 消防与中毒控制中心）**：[中文](./pest-control-structural-fumigation-sulfuryl-fluoride-chloropicrin-clearance-fifra-voice-dispatch-selection-faq.md) | [EN](./pest-control-structural-fumigation-sulfuryl-fluoride-chloropicrin-clearance-fifra-voice-dispatch-selection-faq.en.md)

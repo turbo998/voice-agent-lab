@@ -6625,6 +6625,36 @@ export function evaluatePrintingPackagingLowmigrationLelVoiceGuard(input: {
   };
 }
 
+export interface PestControlFumigationVikaneFifraVoiceEvaluation {
+  policyCode: "PEST-CONTROL-FUMIGATION-VIKANE-FIFRA-01";
+  fumigantReleaseAndReentryAuthorized: boolean;
+  untestedReentryOrMissingChloropicrinBlocked: boolean;
+  scbaHazmatAndPoisonControlBridged: boolean;
+}
+
+/**
+ * Deterministic Commercial Pest Control & Structural Tent Fumigation (Vikane) Chloropicrin/Secondary-Lock Gate, <=1.0 ppm Clearance Lock & 0ms Poison Control Guard (`PEST-CONTROL-FUMIGATION-VIKANE-FIFRA-01`).
+ */
+export function evaluatePestControlFumigationVikaneFifraVoiceGuard(input: {
+  preFumigationSweepChloropicrinAndSecondaryLockVerified: boolean;
+  instrumentClearanceUnder1PpmAndFifraLabelSafe: boolean;
+  tentIntrusionFumigantSymptomOrRodenticideIngestion: boolean;
+}): PestControlFumigationVikaneFifraVoiceEvaluation {
+  return {
+    policyCode: "PEST-CONTROL-FUMIGATION-VIKANE-FIFRA-01",
+    fumigantReleaseAndReentryAuthorized:
+      input.preFumigationSweepChloropicrinAndSecondaryLockVerified &&
+      input.instrumentClearanceUnder1PpmAndFifraLabelSafe &&
+      !input.tentIntrusionFumigantSymptomOrRodenticideIngestion,
+    untestedReentryOrMissingChloropicrinBlocked:
+      !input.preFumigationSweepChloropicrinAndSecondaryLockVerified ||
+      !input.instrumentClearanceUnder1PpmAndFifraLabelSafe ||
+      input.tentIntrusionFumigantSymptomOrRodenticideIngestion,
+    scbaHazmatAndPoisonControlBridged:
+      input.tentIntrusionFumigantSymptomOrRodenticideIngestion,
+  };
+}
+
 
 
 
