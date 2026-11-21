@@ -9235,6 +9235,36 @@ export function evaluateFreightBrokerageTmsDoubleBrokeringGuard(input: {
   };
 }
 
+export interface MulticloudVoiceActiveFailoverEvaluation {
+  policyCode: "MULTICLOUD-VOICE-ACTIVE-FAILOVER-01";
+  activeVoiceCallAndContinuityAuthorized: boolean;
+  callDropOrMidCallVoicePersonaShiftBlocked: boolean;
+  zeroDropHotSwapAndCircuitBreakerBridged: boolean;
+}
+
+/**
+ * Deterministic Multi-Cloud Voice AI Decoupled Media Anchor & <3ms Redis State Replication Lock, Unified Brand TTS Persona Gate & 900ms Hedged Hot-Swap Guard (`MULTICLOUD-VOICE-ACTIVE-FAILOVER-01`).
+ */
+export function evaluateMulticloudVoiceActiveFailoverGuard(input: {
+  mediaAnchorDecoupledFromInferenceAndSessionStateReplicated: boolean;
+  unifiedBrandTtsVoicePreservedAcrossMultiCloudFailover: boolean;
+  primaryCloudTtftOver900msOr5xxTriggersZeroDropFailover: boolean;
+}): MulticloudVoiceActiveFailoverEvaluation {
+  return {
+    policyCode: "MULTICLOUD-VOICE-ACTIVE-FAILOVER-01",
+    activeVoiceCallAndContinuityAuthorized:
+      input.mediaAnchorDecoupledFromInferenceAndSessionStateReplicated &&
+      input.unifiedBrandTtsVoicePreservedAcrossMultiCloudFailover &&
+      !input.primaryCloudTtftOver900msOr5xxTriggersZeroDropFailover,
+    callDropOrMidCallVoicePersonaShiftBlocked:
+      !input.mediaAnchorDecoupledFromInferenceAndSessionStateReplicated ||
+      !input.unifiedBrandTtsVoicePreservedAcrossMultiCloudFailover ||
+      input.primaryCloudTtftOver900msOr5xxTriggersZeroDropFailover,
+    zeroDropHotSwapAndCircuitBreakerBridged:
+      input.primaryCloudTtftOver900msOr5xxTriggersZeroDropFailover,
+  };
+}
+
 
 
 

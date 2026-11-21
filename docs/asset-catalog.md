@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（347 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（348 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -388,3 +388,4 @@
 345. **消费电子、智能家居与商用硬件（AppleCare / 戴森 / 大疆 / 联想 / 石头模式）多模态视频排障、远程 OTA 自愈与寄修（RMA）语音架构（生成 `$65` 返厂面单前强制云端 `IoT` 遥测与手机看图重置削减 `49.2%` 假故障 `NTF` 返厂硬锁、先行换机校验云端 `Find My` 激活锁关闭与担保预授权门禁、锂电池鼓包 `UN3480` `0ms` 物理封锁普通快递面单并改派防火防爆箱）方案**：[中文](./consumer-electronics-smart-home-visual-troubleshooting-ota-rma-voice-selection-faq.md) | [EN](./consumer-electronics-smart-home-visual-troubleshooting-ota-rma-voice-selection-faq.en.md)
 346. **大型演唱会、体育场馆与票务平台（Ticketmaster / 大麦 / 场馆 VIP 礼宾模式）高并发语音选座、无障碍连座原子锁与防黄牛刷票架构（`ADA` 轮椅位+最多 3 张紧邻陪同席 `1W+3C` 原子连座与跨层最低档票价平权硬锁、FTC 全包到手总价首句透明播报与 `ASVspoof` 防黄牛声学活体及限购门禁、雷暴延期万通呼入 `0ms` 边缘分流 `92.4%` 与看台急诊秒级抢占）方案**：[中文](./live-events-ticketing-stadium-ada-seating-scalper-defense-voice-selection-faq.md) | [EN](./live-events-ticketing-stadium-ada-seating-scalper-defense-voice-selection-faq.en.md)
 347. **长途干线货运经纪与数字车队调度（Freight Brokerage & TMS：McLeod / MercuryGate / 满帮模式）承运商核验、防非法转包骗货（Double-Brokering）与在途查车语音架构（`FMCSA MC/DOT` 资质与 `Highway / RMIS` 官方备案电话一致性防冒名骗货硬锁、最高买价 `Max_Buy_Cap` 上下文隔离议价提 `+2.1pt` 毛利与车载 `ELD` 定位激活前锁死提货码门禁、冷链车厢超温 `0ms` 叫醒司机与 `>90m` 压车滞期费自动采证）方案**：[中文](./freight-brokerage-tms-carrier-vetting-anti-double-brokering-checkcall-voice-selection-faq.md) | [EN](./freight-brokerage-tms-carrier-vetting-anti-double-brokering-checkcall-voice-selection-faq.en.md)
+348. **企业级实时语音 AI 多云双活高可用容灾（Active-Active Multi-Cloud Failover：Azure <-> AWS <-> GCP）与通话中途零掉线热切架构（边缘独立媒体锚定与子轮次 `<3ms` `Redis` 状态快照复制保障主云崩溃 `0` 掉线硬锁、跨云共享统一品牌 TTS 声纹防中途换人说话门禁、首包超时 `TTFT >900ms` 或 `503` `<220ms` 无感热切达 `99.99%` 四九可用性）方案**：[中文](./multi-cloud-voice-ai-active-active-failover-zero-drop-session-state-selection-faq.md) | [EN](./multi-cloud-voice-ai-active-active-failover-zero-drop-session-state-selection-faq.en.md)
