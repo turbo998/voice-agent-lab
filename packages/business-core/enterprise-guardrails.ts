@@ -7105,6 +7105,36 @@ export function evaluateCeramicsKilnBallmillSilicaVoiceGuard(input: {
   };
 }
 
+export interface PlasticsMoldingBarrelAnsiB151VoiceEvaluation {
+  policyCode: "PLASTICS-MOLDING-BARREL-ANSI-B151-01";
+  resinLoadPurgeAndPlatenEntryAuthorized: boolean;
+  pomPvcBarrelMixOrOpenShieldPurgeBlocked: boolean;
+  carriageRetractFumeExhaustAndBurnProtocolBridged: boolean;
+}
+
+/**
+ * Deterministic Plastics Injection Molding & Extrusion POM+PVC Barrel-Explosion Lock, ANSI B151.1 Triple Platen Gate & 0ms Carriage-Retract Guard (`PLASTICS-MOLDING-BARREL-ANSI-B151-01`).
+ */
+export function evaluatePlasticsMoldingBarrelAnsiB151VoiceGuard(input: {
+  resinCompatibilityNozzleShieldAndSoakSafe: boolean;
+  platenTripleInterlockRobotHomeAndEyeboltSafe: boolean;
+  barrelDecompositionFumeExtruderOverpressureOrMeltBurn: boolean;
+}): PlasticsMoldingBarrelAnsiB151VoiceEvaluation {
+  return {
+    policyCode: "PLASTICS-MOLDING-BARREL-ANSI-B151-01",
+    resinLoadPurgeAndPlatenEntryAuthorized:
+      input.resinCompatibilityNozzleShieldAndSoakSafe &&
+      input.platenTripleInterlockRobotHomeAndEyeboltSafe &&
+      !input.barrelDecompositionFumeExtruderOverpressureOrMeltBurn,
+    pomPvcBarrelMixOrOpenShieldPurgeBlocked:
+      !input.resinCompatibilityNozzleShieldAndSoakSafe ||
+      !input.platenTripleInterlockRobotHomeAndEyeboltSafe ||
+      input.barrelDecompositionFumeExtruderOverpressureOrMeltBurn,
+    carriageRetractFumeExhaustAndBurnProtocolBridged:
+      input.barrelDecompositionFumeExtruderOverpressureOrMeltBurn,
+  };
+}
+
 
 
 
