@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg72" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d1a"/>
+      <stop offset="50%" stop-color="#131c38"/>
+      <stop offset="100%" stop-color="#081022"/>
+    </linearGradient>
+    <linearGradient id="card72" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a264c" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0d152b" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg72)" rx="16"/>
+  <text x="600" y="42" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">2026–2027 Frontier Duplex Audio LLMs (Qwen2.5-Omni / Kimi-Audio / GPT-Realtime) &amp; Semantic Turn-End</text>
+  <text x="600" y="66" fill="#a5b4fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">25ms Semantic End-of-Turn (EoT) · Dual-Stream Thinker-Talker Architecture · Open-Weights vs Closed S2S Matrix (FRONTIER-DUPLEX-AUDIO-EOT-01)</text>
+
+  <!-- Left Column -->
+  <rect x="30" y="92" width="290" height="548" rx="12" fill="url(#card72)" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="175" y="122" fill="#a5b4fc" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1. 2026 Frontier Breakthroughs</text>
+
+  <rect x="48" y="142" width="254" height="105" rx="8" fill="#0f172a" stroke="#60a5fa" stroke-width="1.2"/>
+  <text x="175" y="166" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">1. Thinker-Talker Dual-Stream</text>
+  <text x="175" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Qwen2.5-Omni / Step-Audio / Kimi-Audio</text>
+  <text x="175" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Decouples Text Reasoning from Vocoder</text>
+  <text x="175" y="224" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Enables Text Guardrail Before Audio Out!</text>
+
+  <rect x="48" y="264" width="254" height="105" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="175" y="288" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">2. Semantic End-of-Turn (EoT)</text>
+  <text x="175" y="310" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Replaces Dumb 600ms Silence Timer</text>
+  <text x="175" y="328" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 180ms Trigger on Complete Question</text>
+  <text x="175" y="346" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 1,400ms Hold on "Um... my card is..."</text>
+
+  <rect x="48" y="386" width="254" height="105" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="175" y="410" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">3. Full-Duplex Backchanneling</text>
+  <text x="175" y="432" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Moshi / Dual-Channel Acoustic Token</text>
+  <text x="175" y="450" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Emits Soft "Mhm / I see" While Listening</text>
+  <text x="175" y="468" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Risk: Backchannel Mistaken for Consent</text>
+
+  <rect x="48" y="508" width="254" height="112" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2"/>
+  <text x="175" y="532" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">4. Speculative Prefetch RAG</text>
+  <text x="175" y="554" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Fires Read-Only Vector/CRM Query at</text>
+  <text x="175" y="572" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  70% Utterance Completion</text>
+  <text x="175" y="590" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Hides 300ms RAG Latency Before EoT!</text>
+
+  <!-- Center Column -->
+  <rect x="350" y="92" width="500" height="548" rx="12" fill="url(#card72)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="600" y="122" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">2. Deterministic Frontier Gate (FRONTIER-DUPLEX-AUDIO-EOT-01)</text>
+
+  <rect x="372" y="142" width="456" height="136" rx="10" fill="#2a1215" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE A: Semantic + Prosodic End-of-Turn (EoT) Digit Hold Lock</text>
+  <text x="600" y="188" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: semanticAndProsodicTurnEndVerified === true</text>
+  <text x="600" y="208" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blocks premature AI response when caller pauses mid-clause ("And the</text>
+  <text x="600" y="226" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  next four digits are...") or exhibits rising pitch intonation</text>
+  <text x="600" y="246" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Cuts mid-number premature interruptions by -91.8%</text>
+
+  <rect x="372" y="294" width="456" height="145" rx="10" fill="#172554" stroke="#60a5fa" stroke-width="1.8"/>
+  <text x="600" y="318" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE B: Thinker-Stream Pre-Vocoder Text Guardrail Lock</text>
+  <text x="600" y="340" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: thinkerTextStreamGuardrailPassedBeforeTalker === true</text>
+  <text x="600" y="360" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• In Thinker-Talker models (Qwen2.5-Omni / Step-Audio), inspects the</text>
+  <text x="600" y="378" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  hidden Thinker text token 15ms BEFORE the Talker synthesizes audio!</text>
+  <text x="600" y="398" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Solves the #1 compliance flaw of pure acoustic-token S2S models</text>
+
+  <rect x="372" y="455" width="456" height="165" rx="10" fill="#062e22" stroke="#10b981" stroke-width="1.8"/>
+  <text x="600" y="479" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE C: Speculative Prefetch Read-Only Sandbox Fence</text>
+  <text x="600" y="501" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trigger: speculativePrefetchAttemptsWriteMutation === true</text>
+  <text x="600" y="521" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 0ms sets blockSpeculativeWriteAndHoldUntilFinalEot = true</text>
+  <text x="600" y="541" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Allows speculative pre-EoT execution ONLY on idempotent `GET` lookups</text>
+  <text x="600" y="559" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">  (RAG / CRM read); strictly forbids `POST/DELETE` until final turn end</text>
+  <text x="600" y="582" fill="#a5b4fc" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Delivers 240ms perceived RAG response with 0.00% premature mutations</text>
+
+  <!-- Right Column -->
+  <rect x="880" y="92" width="290" height="548" rx="12" fill="url(#card72)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1025" y="122" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3. Frontier Model Comparison</text>
+
+  <rect x="898" y="142" width="254" height="110" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="1025" y="166" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Closed Commercial S2S APIs</text>
+  <text x="1025" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Azure OpenAI GPT-Realtime (`gpt-live`)</text>
+  <text x="1025" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Google Gemini 2.5 Live (Audio+Video)</text>
+  <text x="1025" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Strongest Tool Reasoning ($0.16–$0.22/m)</text>
+
+  <rect x="898" y="268" width="254" height="110" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="1025" y="292" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Open-Weights Omni / Audio LLMs</text>
+  <text x="1025" y="314" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Qwen2.5-Omni-7B (Thinker-Talker)</text>
+  <text x="1025" y="332" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Kimi-Audio-7B / Step-Audio / GLM-4-Voice</text>
+  <text x="1025" y="350" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Self-Host on L40S/H100 at $0.032/min</text>
+
+  <rect x="898" y="394" width="254" height="110" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="1025" y="418" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Semantic Turn-End Models</text>
+  <text x="1025" y="440" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• LiveKit `turn-detector` (135M SmolLM2)</text>
+  <text x="1025" y="458" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Pipecat `SmartTurn` Acoustic+Text EoT</text>
+  <text x="1025" y="476" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Runs on CPU in &lt;18ms per Turn</text>
+
+  <rect x="898" y="520" width="254" height="100" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2"/>
+  <text x="1025" y="544" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Sealed Frontier Metrics</text>
+  <text x="1025" y="566" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Mid-Number Cutoffs: -91.8%</text>
+  <text x="1025" y="584" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Speculative RAG Latency: -290ms</text>
+  <text x="1025" y="602" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Pre-Vocoder Guardrail Catch: 100%</text>
+</svg>

@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (213 Bilingual Guides)
+## 3. Solution Architect Selection Guides (214 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -254,3 +254,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 211. **Enterprise Streaming STT, Neural TTS & Brand Voice Cloning Benchmark (Azure AI Speech vs. ElevenLabs Flash v2.5 vs. Deepgram Nova-3/Aura-2 vs. Cartesia Sonic-2 vs. Open-Source CosyVoice 2/Fish Speech): Consent Lock, IPA Lexicon Gate & 350ms Failover**: [EN](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.en.md) | [中文](./stt-tts-voice-cloning-azure-elevenlabs-deepgram-cartesia-cosyvoice-selection-faq.md)
 212. **Omnichannel Voice Ingress (WebRTC / Mobile / SIP / WhatsApp) & Primary-Speaker Voice Isolation: Bystander Speech Shield, Self-Echo Loop Breaker & 15s Wi-Fi↔5G Session Continuity**: [EN](./omnichannel-voice-ingress-webrtc-sip-whatsapp-background-voice-isolation-selection-faq.en.md) | [中文](./omnichannel-voice-ingress-webrtc-sip-whatsapp-background-voice-isolation-selection-faq.md)
 213. **Smart Wearables (AI Smart Glasses, Open-Ear Earbuds & Kids Companion Hardware) Multimodal Voice Assistant: Bone-Conduction VPU Lock, Deictic 80KB Keyframe Burst (-84% Battery Drain), Privacy LED Interlock & COPPA Gate**: [EN](./smart-wearables-ai-glasses-earbuds-companion-hardware-multimodal-voice-selection-faq.en.md) | [中文](./smart-wearables-ai-glasses-earbuds-companion-hardware-multimodal-voice-selection-faq.md)
+214. **2026–2027 Frontier Duplex Audio LLMs (Qwen2.5-Omni / Kimi-Audio / Step-Audio vs. GPT-Realtime / Gemini Live) & Semantic End-of-Turn (EoT) Architecture Selection Guide**: [EN](./frontier-2026-duplex-audio-llms-qwen-omni-step-audio-semantic-eot-selection-faq.en.md) | [中文](./frontier-2026-duplex-audio-llms-qwen-omni-step-audio-semantic-eot-selection-faq.md)

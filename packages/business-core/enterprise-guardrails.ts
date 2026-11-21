@@ -5239,6 +5239,34 @@ export function evaluateSmartWearableGlassesEarbudsVoiceGuard(input: {
   };
 }
 
+export interface FrontierDuplexAudioEotVoiceEvaluation {
+  policyCode: "FRONTIER-DUPLEX-AUDIO-EOT-01";
+  aiTurnResponseAndAudioSynthesisAuthorized: boolean;
+  extendSilencePatienceWindowRequired: boolean;
+  blockSpeculativeWriteAndHoldUntilFinalEot: boolean;
+}
+
+/**
+ * Deterministic 2026-2027 Frontier Duplex Audio LLM Thinker-Talker Pre-Vocoder Gate, Semantic EoT & Speculative Read-Only Guard (`FRONTIER-DUPLEX-AUDIO-EOT-01`).
+ */
+export function evaluateFrontierDuplexAudioEotVoiceGuard(input: {
+  semanticAndProsodicTurnEndVerified: boolean;
+  thinkerTextStreamGuardrailPassedBeforeTalker: boolean;
+  speculativePrefetchAttemptsWriteMutation: boolean;
+}): FrontierDuplexAudioEotVoiceEvaluation {
+  return {
+    policyCode: "FRONTIER-DUPLEX-AUDIO-EOT-01",
+    aiTurnResponseAndAudioSynthesisAuthorized:
+      input.semanticAndProsodicTurnEndVerified &&
+      input.thinkerTextStreamGuardrailPassedBeforeTalker &&
+      !input.speculativePrefetchAttemptsWriteMutation,
+    extendSilencePatienceWindowRequired:
+      !input.semanticAndProsodicTurnEndVerified,
+    blockSpeculativeWriteAndHoldUntilFinalEot:
+      input.speculativePrefetchAttemptsWriteMutation,
+  };
+}
+
 
 
 
