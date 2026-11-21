@@ -7585,6 +7585,36 @@ export function evaluateRailRollingStockBogie25kvDepotVoiceGuard(input: {
   };
 }
 
+export interface AircraftFalWingtankRiggingJackVoiceEvaluation {
+  policyCode: "AIRCRAFT-FAL-WINGTANK-RIGGING-JACK-01";
+  tankEntryAndHydraulicPressurizationAuthorized: boolean;
+  tankVaporOrUnclearFlightControlFodBlocked: boolean;
+  hydraulicZeroPsiDumpJackLockAndGpuTripBridged: boolean;
+}
+
+/**
+ * Deterministic Commercial Aircraft Final Assembly Line (FAL) NFPA 410 Wing-Tank LEL/Static Lock, 5,000 psi Wheel-Well Clear-Zone & Zero-FOD Gate & 0ms Hydraulic Dump Guard (`AIRCRAFT-FAL-WINGTANK-RIGGING-JACK-01`).
+ */
+export function evaluateAircraftFalWingtankRiggingJackVoiceGuard(input: {
+  wingTankLel10PctVenturiAndStaticGroundSafe: boolean;
+  hydraulicClearZoneHornAndRiiZeroFodSafe: boolean;
+  clearZoneBreachJackSkewExceededOrTankVaporSpike: boolean;
+}): AircraftFalWingtankRiggingJackVoiceEvaluation {
+  return {
+    policyCode: "AIRCRAFT-FAL-WINGTANK-RIGGING-JACK-01",
+    tankEntryAndHydraulicPressurizationAuthorized:
+      input.wingTankLel10PctVenturiAndStaticGroundSafe &&
+      input.hydraulicClearZoneHornAndRiiZeroFodSafe &&
+      !input.clearZoneBreachJackSkewExceededOrTankVaporSpike,
+    tankVaporOrUnclearFlightControlFodBlocked:
+      !input.wingTankLel10PctVenturiAndStaticGroundSafe ||
+      !input.hydraulicClearZoneHornAndRiiZeroFodSafe ||
+      input.clearZoneBreachJackSkewExceededOrTankVaporSpike,
+    hydraulicZeroPsiDumpJackLockAndGpuTripBridged:
+      input.clearZoneBreachJackSkewExceededOrTankVaporSpike,
+  };
+}
+
 
 
 
