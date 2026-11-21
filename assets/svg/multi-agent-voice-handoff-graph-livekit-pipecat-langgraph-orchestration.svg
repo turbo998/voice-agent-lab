@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg66" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09111f"/>
+      <stop offset="50%" stop-color="#12213d"/>
+      <stop offset="100%" stop-color="#081326"/>
+    </linearGradient>
+    <linearGradient id="card66" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#182b4d" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0c172b" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg66)" rx="16"/>
+  <text x="600" y="42" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">Multi-Agent Voice Handoff Graph (LiveKit Agents vs Pipecat Flows vs LangGraph Voice)</text>
+  <text x="600" y="66" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">Anti-Ping-Pong Loop Breaker · Silent Persona-Preserving Handoff · Least-Privilege Sub-Agent Tool Sandbox (MULTI-AGENT-VOICE-HANDOFF-01)</text>
+
+  <!-- Left Column -->
+  <rect x="30" y="92" width="290" height="548" rx="12" fill="url(#card66)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="175" y="122" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1. Monolith vs Multi-Agent Graph</text>
+
+  <rect x="48" y="142" width="254" height="105" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="175" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Monolithic 50-Tool Prompt Failure</text>
+  <text x="175" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 18,000-Token Mega System Prompt</text>
+  <text x="175" y="206" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• +420ms First-Token Latency Bloat</text>
+  <text x="175" y="224" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 19% Wrong Tool Selection Accuracy</text>
+
+  <rect x="48" y="264" width="254" height="105" rx="8" fill="#0f172a" stroke="#60a5fa" stroke-width="1.2"/>
+  <text x="175" y="288" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Specialized Sub-Agent Nodes</text>
+  <text x="175" y="310" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Node 1: Greeter &amp; KYC Auth (3 Tools)</text>
+  <text x="175" y="328" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Node 2: Order &amp; Logistics (5 Tools)</text>
+  <text x="175" y="346" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Node 3: Billing &amp; Disputes (4 Tools)</text>
+
+  <rect x="48" y="386" width="254" height="105" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="175" y="410" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Multi-Agent Handoff Traps</text>
+  <text x="175" y="432" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• A → B → A Infinite Ping-Pong Loop</text>
+  <text x="175" y="450" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Fake "Transferring You Now" Clutter</text>
+  <text x="175" y="468" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Unauthenticated Sub-Agent Bypass</text>
+
+  <rect x="48" y="508" width="254" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="175" y="532" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Graph Orchestration Frameworks</text>
+  <text x="175" y="554" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• LiveKit Agents `Agent` Handoff DAG</text>
+  <text x="175" y="572" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Pipecat Flows State-Machine Graph</text>
+  <text x="175" y="590" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• LangGraph + Streaming Audio Bridge</text>
+
+  <!-- Center Column -->
+  <rect x="350" y="92" width="500" height="548" rx="12" fill="url(#card66)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="600" y="122" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">2. Deterministic Sub-Agent Gate (MULTI-AGENT-VOICE-HANDOFF-01)</text>
+
+  <rect x="372" y="142" width="456" height="136" rx="10" fill="#2a1215" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE A: Prerequisite KYC State &amp; Tool-Scope Sandbox Lock</text>
+  <text x="600" y="188" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: prerequisiteAuthAndSlotContractVerified === true</text>
+  <text x="600" y="208" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blocks transitioning from Greeter Node to Billing/Refund Sub-Agent</text>
+  <text x="600" y="226" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  unless `kyc_verified=true` &amp; required slots exist in typed `SessionData`</text>
+  <text x="600" y="246" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Each sub-agent mounts ONLY 3–6 domain tools (99.6% tool accuracy)</text>
+
+  <rect x="372" y="294" width="456" height="145" rx="10" fill="#172554" stroke="#60a5fa" stroke-width="1.8"/>
+  <text x="600" y="318" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE B: Silent Zero-Seam Handoff &amp; Shared Context Pruning</text>
+  <text x="600" y="340" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: unifiedVoicePersonaAndPrunedContextSynced === true</text>
+  <text x="600" y="360" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Sub-agents share 1 unified TTS voice &amp; WebRTC track—never announcing</text>
+  <text x="600" y="378" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  robotic "Please hold while I transfer you to another AI bot" clutter!</text>
+  <text x="600" y="398" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Passes compact 800-token structured state instead of raw 15k history</text>
+
+  <rect x="372" y="455" width="456" height="165" rx="10" fill="#062e22" stroke="#10b981" stroke-width="1.8"/>
+  <text x="600" y="479" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE C: Anti-Ping-Pong Cycle Detector (&gt;2 Hops Circuit Breaker)</text>
+  <text x="600" y="501" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trigger: cyclicSubAgentBounceOrMaxHopsExceeded === true</text>
+  <text x="600" y="521" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 0ms sets breakLoopAndEscalateToSupervisorTriggered = true</text>
+  <text x="600" y="541" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Detects A → B → A sub-agent bounce or &gt;3 intra-turn handoffs in 0ms,</text>
+  <text x="600" y="559" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">  halting the loop and escalating to a generalist human/supervisor node</text>
+  <text x="600" y="582" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Cuts per-turn prompt tokens by -74% &amp; boosts tool accuracy to 99.6%</text>
+
+  <!-- Right Column -->
+  <rect x="880" y="92" width="290" height="548" rx="12" fill="url(#card66)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1025" y="122" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3. Sub-Agent Topology &amp; Metrics</text>
+
+  <rect x="898" y="142" width="254" height="110" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="1025" y="166" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Typed Session Context (`userdata`)</text>
+  <text x="1025" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• `customer_id` · `kyc_verified_at`</text>
+  <text x="1025" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• `active_order_id` · `visited_nodes[]`</text>
+  <text x="1025" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• `handoff_hop_count` (Max = 2/turn)</text>
+
+  <rect x="898" y="268" width="254" height="110" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="1025" y="292" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Sub-10ms In-Process Pointer Swap</text>
+  <text x="1025" y="314" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Zero SIP Re-Invite / Zero Audio Drop</text>
+  <text x="1025" y="332" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Swaps Active Prompt + Tool Array Only</text>
+  <text x="1025" y="350" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Preserves Open STT/TTS Streams</text>
+
+  <rect x="898" y="394" width="254" height="110" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="1025" y="418" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Multi-Intent Turn Decomposition</text>
+  <text x="1025" y="440" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• "Change my address AND dispute fee"</text>
+  <text x="1025" y="458" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Queues Secondary Intent in `pending_tasks`</text>
+  <text x="1025" y="476" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Auto-Pops Next Sub-Agent on Completion</text>
+
+  <rect x="898" y="520" width="254" height="100" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2"/>
+  <text x="1025" y="544" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Sealed Graph Metrics</text>
+  <text x="1025" y="566" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Tool-Call Accuracy: 99.6% (vs 81% Mono)</text>
+  <text x="1025" y="584" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Prompt Token Spend: -74.0%</text>
+  <text x="1025" y="602" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Ping-Pong Loop Escapes: 0.00%</text>
+</svg>

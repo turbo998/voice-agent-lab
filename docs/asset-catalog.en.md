@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (207 Bilingual Guides)
+## 3. Solution Architect Selection Guides (208 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -248,3 +248,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 205. **Contact Center AI-to-Human Warm Handoff, 6-Second Whisper Briefing & Zero-Repeat Context Bridge (Genesys / Amazon Connect / Azure ACS): Signed KYC Inheritance, Skill-Queue Probe & Shadow Agent Copilot**: [EN](./contact-center-warm-handoff-whisper-briefing-zero-repeat-context-bridge-selection-faq.en.md) | [中文](./contact-center-warm-handoff-whisper-briefing-zero-repeat-context-bridge-selection-faq.md)
 206. **AI Sales Roleplay, Pharma Med-Rep Detailing & Mock Interview Coaching Platform: Actor-vs-Judge Separation Lock, 0ms Off-Label/Kickback Red-Card & Timestamped Rubric Grader**: [EN](./ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.en.md) | [中文](./ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.md)
 207. **In-Cabin Automotive Cockpit Edge-NPU + Cloud Multimodal Voice Assistant (Snapdragon 8295/8797 + GPT-Realtime / Gemini Live): 4-Zone Seat/Speed Interlock, 0ms Tunnel Edge Fallback & ISO 15007 Distraction Gate**: [EN](./in-cabin-automotive-cockpit-edge-npu-cloud-hybrid-multimodal-voice-selection-faq.en.md) | [中文](./in-cabin-automotive-cockpit-edge-npu-cloud-hybrid-multimodal-voice-selection-faq.md)
+208. **Enterprise Multi-Agent Voice Orchestration & Sub-Agent Handoff Graph (LiveKit Agents vs. Pipecat Flows vs. LangGraph): Prerequisite Auth Contract Lock, Silent Single-Persona Handoff & Anti-Ping-Pong Loop Breaker**: [EN](./multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.en.md) | [中文](./multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.md)

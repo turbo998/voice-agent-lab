@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（207 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（208 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -248,3 +248,4 @@
 205. **智能联络中心 AI 首线接待与“带上下文零重复无缝转人工（Warm Handoff + Whisper Briefing + 坐席实时辅助 Copilot）”架构（严禁客户重复自述硬锁、6 秒坐席耳语简报、身份核验继承与转后旁路话术推荐）方案**：[中文](./contact-center-warm-handoff-whisper-briefing-zero-repeat-context-bridge-selection-faq.md) | [EN](./contact-center-warm-handoff-whisper-briefing-zero-repeat-context-bridge-selection-faq.en.md)
 206. **AI 金牌销售对练、医药代表合规学术拜访（Med-Rep Detailing）与模拟面试陪练平台架构（演评分离防讨好/防越狱硬锁、超说明书 Off-Label 与商业贿赂 0ms 红牌一票否决锁、带录音时间戳证据链的 Rubric 评分引擎）方案**：[中文](./ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.md) | [EN](./ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.en.md)
 207. **智能汽车座舱（高通骁龙 8295/8797 端侧 NPU + 云端多模态大模型）端云协同语音助手架构（四音区声源权限与车速 P 挡硬锁、隧道断网 0ms 端侧 190ms 控车兜底锁、视线手势多模态融合与驾驶分心长度管控）方案**：[中文](./in-cabin-automotive-cockpit-edge-npu-cloud-hybrid-multimodal-voice-selection-faq.md) | [EN](./in-cabin-automotive-cockpit-edge-npu-cloud-hybrid-multimodal-voice-selection-faq.en.md)
+208. **企业级多智能体实时语音编排与子智能体无缝移交（Multi-Agent Handoff Graph：LiveKit Agents vs Pipecat Flows vs LangGraph：前置核身与最小工具沙箱硬锁、零感知静默交接锁与防互相踢皮球死循环熔断）方案**：[中文](./multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.md) | [EN](./multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-orchestration-selection-faq.en.md)

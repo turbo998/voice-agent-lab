@@ -5072,6 +5072,34 @@ export function evaluateAutomotiveCockpitEdgeCloudVoiceGuard(input: {
   };
 }
 
+export interface MultiAgentVoiceHandoffGraphEvaluation {
+  policyCode: "MULTI-AGENT-VOICE-HANDOFF-01";
+  subAgentTransitionAuthorized: boolean;
+  silentSinglePersonaPreserved: boolean;
+  breakLoopAndEscalateToSupervisorTriggered: boolean;
+}
+
+/**
+ * Deterministic Multi-Agent Voice Handoff Graph Prerequisite Auth Contract, Silent Persona & Anti-Ping-Pong Loop Guard (`MULTI-AGENT-VOICE-HANDOFF-01`).
+ */
+export function evaluateMultiAgentVoiceHandoffGraphGuard(input: {
+  prerequisiteAuthAndSlotContractVerified: boolean;
+  unifiedVoicePersonaAndPrunedContextSynced: boolean;
+  cyclicSubAgentBounceOrMaxHopsExceeded: boolean;
+}): MultiAgentVoiceHandoffGraphEvaluation {
+  return {
+    policyCode: "MULTI-AGENT-VOICE-HANDOFF-01",
+    subAgentTransitionAuthorized:
+      input.prerequisiteAuthAndSlotContractVerified &&
+      input.unifiedVoicePersonaAndPrunedContextSynced &&
+      !input.cyclicSubAgentBounceOrMaxHopsExceeded,
+    silentSinglePersonaPreserved:
+      input.unifiedVoicePersonaAndPrunedContextSynced,
+    breakLoopAndEscalateToSupervisorTriggered:
+      input.cyclicSubAgentBounceOrMaxHopsExceeded,
+  };
+}
+
 
 
 
