@@ -8305,6 +8305,36 @@ export function evaluateAirlineIrropsHotelPmsConciergeGuard(input: {
   };
 }
 
+export interface SelfHostedOpensourceGpuVsCloudTcoEvaluation {
+  policyCode: "SELF-HOSTED-OPENSOURCE-GPU-VS-CLOUD-TCO-01";
+  localGpuInferenceAuthorized: boolean;
+  hallucinationLicenseOrVramOverloadBlocked: boolean;
+  cloudApiBurstSpilloverBridged: boolean;
+}
+
+/**
+ * Deterministic Self-Hosted Open-Source GPU Voice Stack VAD Anti-Hallucination/Apache-2.0 Lock, GPU KV-Cache <=80% Gate & 0ms Cloud Burst Spillover Guard (`SELF-HOSTED-OPENSOURCE-GPU-VS-CLOUD-TCO-01`).
+ */
+export function evaluateSelfHostedOpensourceGpuVsCloudTcoGuard(input: {
+  whisperSilenceHallucinationGatedByVadAndApache2LicenseValid: boolean;
+  gpuKvCacheUtilizationUnder80PctAndDynamicBatchingEnabled: boolean;
+  gpuPoolSaturatedOrP95TtfaOver650msCloudSpillover: boolean;
+}): SelfHostedOpensourceGpuVsCloudTcoEvaluation {
+  return {
+    policyCode: "SELF-HOSTED-OPENSOURCE-GPU-VS-CLOUD-TCO-01",
+    localGpuInferenceAuthorized:
+      input.whisperSilenceHallucinationGatedByVadAndApache2LicenseValid &&
+      input.gpuKvCacheUtilizationUnder80PctAndDynamicBatchingEnabled &&
+      !input.gpuPoolSaturatedOrP95TtfaOver650msCloudSpillover,
+    hallucinationLicenseOrVramOverloadBlocked:
+      !input.whisperSilenceHallucinationGatedByVadAndApache2LicenseValid ||
+      !input.gpuKvCacheUtilizationUnder80PctAndDynamicBatchingEnabled ||
+      input.gpuPoolSaturatedOrP95TtfaOver650msCloudSpillover,
+    cloudApiBurstSpilloverBridged:
+      input.gpuPoolSaturatedOrP95TtfaOver650msCloudSpillover,
+  };
+}
+
 
 
 
