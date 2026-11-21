@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（341 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（342 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -382,3 +382,4 @@
 339. **企业级主动参会语音智能体（Teams / Zoom / Webex Active Voice Bot）、多人叠话声纹分离与 Jira/Planner 任务自动化架构（显式按名点呼唤醒与全场参会人 `RBAC` 权限交集 `ACL_Room = ∩ ACL_i` 防当众泄密硬锁、会议室多人叠话声纹分离 `97.9%` 归属率与原话时间戳证据锚定建单门禁、外部访客入会 `0ms` 降级与口头“这段别录”即时清缓存）方案**：[中文](./enterprise-meeting-voice-participant-overlap-diarization-action-item-jira-selection-faq.md) | [EN](./enterprise-meeting-voice-participant-overlap-diarization-action-item-jira-selection-faq.en.md)
 340. **商业银行对公财资（Corporate Treasury）、大额电汇（SWIFT / Fedwire）防 CEO 深度伪造语音诈骗与双人复核（Maker-Checker）语音架构（`ASVspoof 5` 声码器伪影活体检测与严禁呼入直办强制向 KYC 预留号码带外回拨硬锁、绑定交易哈希的 `FIDO2` 硬件签名与双人四眼 `Maker-Checker` 90秒放行门禁、合成语音/OFAC 命中 `0ms` 冻结与 RTP 司法取证封存）方案**：[中文](./corporate-treasury-wire-transfer-deepfake-voice-defense-maker-checker-selection-faq.md) | [EN](./corporate-treasury-wire-transfer-deepfake-voice-defense-maker-checker-selection-faq.en.md)
 341. **大型主题公园、综合度假村与豪华邮轮（Disney / Universal / Royal Caribbean / 长隆模式）多语种语音礼宾、动态排队错峰与儿童防走失（Code Adam）架构（游乐设施法定身高/孕妇禁忌硬锁与家庭交替乘骑 `Rider Switch` 自动签发、整组家庭虚拟排队 `Virtual Queue` 原子库存防拆散与错峰激励提二消 `+16.8%` 门禁、儿童走失 `Code Adam` `0ms` 锁定手环 `BLE` 坐标与出口闸机联防缩找回时间至 `<4.5m`）方案**：[中文](./theme-park-cruise-resort-multilingual-voice-concierge-queue-code-adam-selection-faq.md) | [EN](./theme-park-cruise-resort-multilingual-voice-concierge-queue-code-adam-selection-faq.en.md)
+342. **全球人力资源大批量招聘（Workday Recruiting / Greenhouse / iCIMS）24/7 AI 语音电话初筛与反就业歧视（EEOC / EU AI Act）架构（`EEOC / 劳动法` 受保护属性零追问、主动披露自动脱敏与物理禁用声学口音/情绪打分硬锁、客观硬性资格 `Knockout` 核验与法定薪资区间透明披露提 `+44.2%` 到面率门禁、`NYC LL144` 事前告知与 `ADA` 口吃 `2,000ms` 耐心等待/人工切换）方案**：[中文](./high-volume-recruiting-workday-greenhouse-eeoc-bias-free-voice-screening-selection-faq.md) | [EN](./high-volume-recruiting-workday-greenhouse-eeoc-bias-free-voice-screening-selection-faq.en.md)

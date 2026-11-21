@@ -9055,6 +9055,36 @@ export function evaluateThemeparkCruiseConciergeCodeAdamGuard(input: {
   };
 }
 
+export interface RecruitingWorkdayEeocVoiceScreeningEvaluation {
+  policyCode: "RECRUITING-WORKDAY-EEOC-VOICE-SCREENING-01";
+  candidateScreenAndInterviewSlotAuthorized: boolean;
+  protectedClassBiasOrAcousticScoringBlocked: boolean;
+  adaAccommodationOrHumanRecruiterOptOutBridged: boolean;
+}
+
+/**
+ * Deterministic High-Volume Recruiting (Workday / Greenhouse) EEOC Protected-Class & Zero-Accent-Scoring Lock, Objective Knockout Gate & 0ms ADA / NYC LL144 Opt-Out Guard (`RECRUITING-WORKDAY-EEOC-VOICE-SCREENING-01`).
+ */
+export function evaluateRecruitingWorkdayEeocVoiceScreeningGuard(input: {
+  eeocZeroProtectedClassQuestionsAndZeroAcousticEmotionScoring: boolean;
+  objectiveKnockoutCriteriaVerifiedAndPayRangeDisclosed: boolean;
+  candidateRequestsAdaAccommodationOrHumanRecruiterOptOut: boolean;
+}): RecruitingWorkdayEeocVoiceScreeningEvaluation {
+  return {
+    policyCode: "RECRUITING-WORKDAY-EEOC-VOICE-SCREENING-01",
+    candidateScreenAndInterviewSlotAuthorized:
+      input.eeocZeroProtectedClassQuestionsAndZeroAcousticEmotionScoring &&
+      input.objectiveKnockoutCriteriaVerifiedAndPayRangeDisclosed &&
+      !input.candidateRequestsAdaAccommodationOrHumanRecruiterOptOut,
+    protectedClassBiasOrAcousticScoringBlocked:
+      !input.eeocZeroProtectedClassQuestionsAndZeroAcousticEmotionScoring ||
+      !input.objectiveKnockoutCriteriaVerifiedAndPayRangeDisclosed ||
+      input.candidateRequestsAdaAccommodationOrHumanRecruiterOptOut,
+    adaAccommodationOrHumanRecruiterOptOutBridged:
+      input.candidateRequestsAdaAccommodationOrHumanRecruiterOptOut,
+  };
+}
+
 
 
 
