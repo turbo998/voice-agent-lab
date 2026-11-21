@@ -9475,6 +9475,36 @@ export function evaluatePharmaMedinfoFaersVeevaVoiceGuard(input: {
   };
 }
 
+export interface SmartBuildingVisitorElevatorBmsEvaluation {
+  policyCode: "SMART-BUILDING-VISITOR-ELEVATOR-BMS-01";
+  turnstileAndBmsAdjustmentAuthorized: boolean;
+  unauthorizedFloorOrCrossZoneBmsBlocked: boolean;
+  elevatorEntrapmentOrFireLifeSafetyBridged: boolean;
+}
+
+/**
+ * Deterministic Smart Building & Commercial Office Host-Confirmed Single-Floor Turnstile/Elevator Lock, Room-Scoped BACnet BMS & 0ms ASME A17.1 Elevator Entrapment Guard (`SMART-BUILDING-VISITOR-ELEVATOR-BMS-01`).
+ */
+export function evaluateSmartBuildingVisitorElevatorBmsGuard(input: {
+  visitorTurnstileQrRequiresHostConfirmationAndSingleFloorScope: boolean;
+  meetingRoomBmsVoiceScopedToLocalZoneAndComfortBand: boolean;
+  elevatorCabEntrapmentAlarmOrFireLifeSafetyEscalation: boolean;
+}): SmartBuildingVisitorElevatorBmsEvaluation {
+  return {
+    policyCode: "SMART-BUILDING-VISITOR-ELEVATOR-BMS-01",
+    turnstileAndBmsAdjustmentAuthorized:
+      input.visitorTurnstileQrRequiresHostConfirmationAndSingleFloorScope &&
+      input.meetingRoomBmsVoiceScopedToLocalZoneAndComfortBand &&
+      !input.elevatorCabEntrapmentAlarmOrFireLifeSafetyEscalation,
+    unauthorizedFloorOrCrossZoneBmsBlocked:
+      !input.visitorTurnstileQrRequiresHostConfirmationAndSingleFloorScope ||
+      !input.meetingRoomBmsVoiceScopedToLocalZoneAndComfortBand ||
+      input.elevatorCabEntrapmentAlarmOrFireLifeSafetyEscalation,
+    elevatorEntrapmentOrFireLifeSafetyBridged:
+      input.elevatorCabEntrapmentAlarmOrFireLifeSafetyEscalation,
+  };
+}
+
 
 
 

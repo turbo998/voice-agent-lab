@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (355 Bilingual Guides)
+## 3. Solution Architect Selection Guides (356 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -396,3 +396,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 353. **Mortgage Origination & Servicing (ICE Encompass / Blend / MSP) 24/7 Pre-Qualification, TRID 6-Piece Clock, Underwriting Stipulations & Anti-Wire-Fraud Architecture: SAFE Act NMLS & ECOA Reg B Lock, TRID 6-Piece 3-Day LE Clock & Stip Sync (-4.2d to Close) & 0ms Closing Wire-Fraud Freeze / Reg X SPOC Bridge**: [EN](./mortgage-origination-servicing-encompass-trid-ratelock-wire-fraud-voice-selection-faq.en.md) | [中文](./mortgage-origination-servicing-encompass-trid-ratelock-wire-fraud-voice-selection-faq.md)
 354. **Enterprise Real-Time Voice Model Complexity Router & Semantic Audio Cache FinOps (Per-Turn SLM/Mini vs. Frontier Orchestration) Architecture: Zero-PII & Policy-Epoch Semantic Audio Cache Lock (0% PII Bleed), 12ms Per-Turn Router to 25ms Opus Cache & Fast SLM (-66.8% Cost) & 0ms Frustration/Multi-Tool Upgrade to Frontier Model**: [EN](./enterprise-voice-model-router-slm-frontier-semantic-audio-cache-finops-selection-faq.en.md) | [中文](./enterprise-voice-model-router-slm-frontier-semantic-audio-cache-finops-selection-faq.md)
 355. **Pharma & Life Sciences (Veeva Vault MedComms / Argus Safety / FDA FAERS) Medical Information, Adverse Event (PV) 24/7 Voice Reporting & Field Rep Architecture: FDA Approved PI & Zero Off-Label Lock (0% Violations), Parallel MedDRA E2B(R3) 4-Element AE Capture Gate (100% 24h SLA) & 0ms Serious Adverse Event (SAE) Physician Bridge**: [EN](./pharma-life-sciences-medinfo-adverse-event-faers-veeva-voice-selection-faq.en.md) | [中文](./pharma-life-sciences-medinfo-adverse-event-faers-veeva-voice-selection-faq.md)
+356. **Smart Building & Commercial Office (Envoy / Honeywell Forge / Johnson Controls / Otis Compass) Visitor Access, Elevator Dispatch & BMS Voice Architecture: Host-Confirmed Single-Floor Turnstile/Elevator Lock (0% Floor Breaches), Room-Scoped BACnet BMS Comfort Gate & 0ms ASME A17.1 Elevator Entrapment SOC Bridge**: [EN](./smart-building-commercial-office-visitor-access-elevator-bms-voice-selection-faq.en.md) | [中文](./smart-building-commercial-office-visitor-access-elevator-bms-voice-selection-faq.md)
