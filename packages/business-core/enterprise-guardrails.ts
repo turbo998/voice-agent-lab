@@ -6715,6 +6715,36 @@ export function evaluateCommercialLaundryHlacSpontaneousFireVoiceGuard(input: {
   };
 }
 
+export interface WineryDistilleryCellarCo2StillVoiceEvaluation {
+  policyCode: "WINERY-DISTILLERY-CELLAR-CO2-STILL-01";
+  tankManwayAndHeartsSwitchAuthorized: boolean;
+  highCo2TankEntryOrMethanolHeadsBlocked: boolean;
+  floorExhaustStillCutoffAndTripodScbaBridged: boolean;
+}
+
+/**
+ * Deterministic Winery & Distillery Floor NDIR CO2 (<=5,000 ppm) Confined-Space Lock, Foreshots Methanol/Condenser Gate & 0ms SCBA Rescue Guard (`WINERY-DISTILLERY-CELLAR-CO2-STILL-01`).
+ */
+export function evaluateWineryDistilleryCellarCo2StillVoiceGuard(input: {
+  cellarFloorCo2AndConfinedSpaceSafe: boolean;
+  foreshotsMethanolCutAndStillLelSafe: boolean;
+  co2AsphyxiationStillVaporOrSo2Leak: boolean;
+}): WineryDistilleryCellarCo2StillVoiceEvaluation {
+  return {
+    policyCode: "WINERY-DISTILLERY-CELLAR-CO2-STILL-01",
+    tankManwayAndHeartsSwitchAuthorized:
+      input.cellarFloorCo2AndConfinedSpaceSafe &&
+      input.foreshotsMethanolCutAndStillLelSafe &&
+      !input.co2AsphyxiationStillVaporOrSo2Leak,
+    highCo2TankEntryOrMethanolHeadsBlocked:
+      !input.cellarFloorCo2AndConfinedSpaceSafe ||
+      !input.foreshotsMethanolCutAndStillLelSafe ||
+      input.co2AsphyxiationStillVaporOrSo2Leak,
+    floorExhaustStillCutoffAndTripodScbaBridged:
+      input.co2AsphyxiationStillVaporOrSo2Leak,
+  };
+}
+
 
 
 
