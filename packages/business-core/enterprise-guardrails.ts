@@ -8095,6 +8095,36 @@ export function evaluateLegacyPbxCcaasAiVoiceMigrationGuard(input: {
   };
 }
 
+export interface EcommerceWismoRmaSurgeVoiceEvaluation {
+  policyCode: "ECOMMERCE-WISMO-RMA-SURGE-VOICE-01";
+  wismoAndExchangeOrderAuthorized: boolean;
+  fraudOrStockUnavailableBlocked: boolean;
+  multiRegionPaygoSpilloverAndDelayBroadcastBridged: boolean;
+}
+
+/**
+ * Deterministic E-Commerce 0-Sec ANI Preload/Exchange Stock Lock, Anti-Abuse RMA Fraud Gate & 0ms 10x Promo Surge Spillover Guard (`ECOMMERCE-WISMO-RMA-SURGE-VOICE-01`).
+ */
+export function evaluateEcommerceWismoRmaSurgeVoiceGuard(input: {
+  aniOrderPreloadedAndExchangeInventoryReserved: boolean;
+  returnFraudRiskScoreSafeAndRefundUnderAutoCap: boolean;
+  promoSurge10xTrafficOrCarrierHubDelayDetected: boolean;
+}): EcommerceWismoRmaSurgeVoiceEvaluation {
+  return {
+    policyCode: "ECOMMERCE-WISMO-RMA-SURGE-VOICE-01",
+    wismoAndExchangeOrderAuthorized:
+      input.aniOrderPreloadedAndExchangeInventoryReserved &&
+      input.returnFraudRiskScoreSafeAndRefundUnderAutoCap &&
+      !input.promoSurge10xTrafficOrCarrierHubDelayDetected,
+    fraudOrStockUnavailableBlocked:
+      !input.aniOrderPreloadedAndExchangeInventoryReserved ||
+      !input.returnFraudRiskScoreSafeAndRefundUnderAutoCap ||
+      input.promoSurge10xTrafficOrCarrierHubDelayDetected,
+    multiRegionPaygoSpilloverAndDelayBroadcastBridged:
+      input.promoSurge10xTrafficOrCarrierHubDelayDetected,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（309 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（310 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -350,3 +350,4 @@
 307. **AI 金牌销售实战对练（Sales Roleplay）、客服上岗通关陪练与结构化模拟面试平台选型（GPT-4o Realtime 全双工刁钻客户 Actor + 独立 BARS 考官 Grader：演评物理分离与防讨好放水 3 阶异议状态机硬锁、评分 100% 绑定录音时间戳原话引用与 EEOC 口音公平性门禁、医药超适应症/保本承诺与提示词越狱骗分 `0ms` 红牌一票否决）方案**：[中文](./ai-sales-roleplay-customer-service-sparring-structured-interview-rubric-platform-selection-faq.md) | [EN](./ai-sales-roleplay-customer-service-sparring-structured-interview-rubric-platform-selection-faq.en.md)
 308. **汽车智能座舱与智能穿戴硬件（AI 眼镜 / 移动 App / IoT 终端）端云协同多模态语音架构选型（端侧高通/穿戴 NPU 65% 本地控车卸载 + 云端 GPT-4o Realtime / Gemini Live：四音区声源权限与车速 `Speed>0` 限答 `<=35字` 硬锁、指代词按需触发 `<60KB` 单帧 WebP 抓拍省电 `85.4%` 与隐私灯联锁、隧道/地库断网 `0ms` 切端侧 3B 模型 `180ms` 兜底）方案**：[中文](./in-vehicle-cockpit-smart-hardware-edge-cloud-webrtc-multimodal-voice-architecture-selection-faq.md) | [EN](./in-vehicle-cockpit-smart-hardware-edge-cloud-webrtc-multimodal-voice-architecture-selection-faq.en.md)
 309. **企业存量呼叫中心（Genesys Cloud / Avaya Aura / Cisco Webex CC / Microsoft Teams Phone）零停机渐进式接入 AI 语音 Agent 选型（企业 SBC 前置 SIP 分流规避 62% 旧端口与 AudioHook 过路税硬锁、转接前 ACD 队列与 Teams Graph Presence 在位预检及 Finesse 旧桌面微件同步门禁、AI 网关异常 `0ms` SBC Fail-Open 自动回退原传统 IVR）方案**：[中文](./legacy-pbx-ccaas-genesys-avaya-cisco-teams-ai-voice-migration-selection-faq.md) | [EN](./legacy-pbx-ccaas-genesys-avaya-cisco-teams-ai-voice-migration-selection-faq.en.md)
+310. **电商大促与零售全渠道语音客服（来电 `0 秒` 预加载订单 WISMO、退货改免费上门换码留存 `38.2%` GMV、防羊毛党“仅退款”反欺诈风控分 `<0.70` 与 `<=$35` 秒退上限硬锁、双十一/黑五 `10x` 洪峰 PTU 满载 `0ms` 跨区域 PayGo 弹性溢出）方案**：[中文](./ecommerce-retail-wismo-returns-exchange-retention-10x-surge-voice-architecture-selection-faq.md) | [EN](./ecommerce-retail-wismo-returns-exchange-retention-10x-surge-voice-architecture-selection-faq.en.md)
