@@ -7315,6 +7315,36 @@ export function evaluateAdditiveMfgLpbfPowderNfpa484VoiceGuard(input: {
   };
 }
 
+export interface AerospaceCompositeAutoclaveExothermVoiceEvaluation {
+  policyCode: "AEROSPACE-COMPOSITE-AUTOCLAVE-EXOTHERM-01";
+  cureRampDoorOpenAndPlyAdvanceAuthorized: boolean;
+  exothermVacuumLeakOrN2EntryHazardBlocked: boolean;
+  heaterCutoffFullChilledWaterAndBagVentBridged: boolean;
+}
+
+/**
+ * Deterministic Aerospace Composites & Autoclave Curing Nadcap AC7118 Exotherm/Vacuum Lock, N2 Vessel O2/FOD Gate & 0ms Full-Chill Quench Guard (`AEROSPACE-COMPOSITE-AUTOCLAVE-EXOTHERM-01`).
+ */
+export function evaluateAerospaceCompositeAutoclaveExothermVoiceGuard(input: {
+  exothermDeltaTVacuumBagAndN2InertSafe: boolean;
+  zeroBarDoorVesselO2AndPrepregFodSafe: boolean;
+  exothermicRunawayBagRuptureOrVesselSmoke: boolean;
+}): AerospaceCompositeAutoclaveExothermVoiceEvaluation {
+  return {
+    policyCode: "AEROSPACE-COMPOSITE-AUTOCLAVE-EXOTHERM-01",
+    cureRampDoorOpenAndPlyAdvanceAuthorized:
+      input.exothermDeltaTVacuumBagAndN2InertSafe &&
+      input.zeroBarDoorVesselO2AndPrepregFodSafe &&
+      !input.exothermicRunawayBagRuptureOrVesselSmoke,
+    exothermVacuumLeakOrN2EntryHazardBlocked:
+      !input.exothermDeltaTVacuumBagAndN2InertSafe ||
+      !input.zeroBarDoorVesselO2AndPrepregFodSafe ||
+      input.exothermicRunawayBagRuptureOrVesselSmoke,
+    heaterCutoffFullChilledWaterAndBagVentBridged:
+      input.exothermicRunawayBagRuptureOrVesselSmoke,
+  };
+}
+
 
 
 
