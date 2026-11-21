@@ -8215,6 +8215,36 @@ export function evaluateFinancialPciRedactionPostcallQaGuard(input: {
   };
 }
 
+export interface HealthcareTriageAmbientScribeFhirEvaluation {
+  policyCode: "HEALTHCARE-TRIAGE-AMBIENT-SCRIBE-FHIR-01";
+  clinicalChartDraftAndFollowupAuthorized: boolean;
+  roleConfusionOrUnauthorizedDoseAdviceBlocked: boolean;
+  redFlagNursePreemptionAndErBridgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Healthcare 3-Party Speaker Diarization/Draft Sign-Off Lock, ISMP LASA Drug/Zero-Titration Gate & 0ms Red-Flag Nurse Preemption Guard (`HEALTHCARE-TRIAGE-AMBIENT-SCRIBE-FHIR-01`).
+ */
+export function evaluateHealthcareTriageAmbientScribeFhirGuard(input: {
+  multiSpeakerDoctorPatientRoleSeparatedAndPhysicianSignoffLocked: boolean;
+  ismpLasaDrugIndicationDisambiguatedAndZeroDoseAdjustment: boolean;
+  clinicalRedFlagChestPainStrokeOrSuicidalIdeationDetected: boolean;
+}): HealthcareTriageAmbientScribeFhirEvaluation {
+  return {
+    policyCode: "HEALTHCARE-TRIAGE-AMBIENT-SCRIBE-FHIR-01",
+    clinicalChartDraftAndFollowupAuthorized:
+      input.multiSpeakerDoctorPatientRoleSeparatedAndPhysicianSignoffLocked &&
+      input.ismpLasaDrugIndicationDisambiguatedAndZeroDoseAdjustment &&
+      !input.clinicalRedFlagChestPainStrokeOrSuicidalIdeationDetected,
+    roleConfusionOrUnauthorizedDoseAdviceBlocked:
+      !input.multiSpeakerDoctorPatientRoleSeparatedAndPhysicianSignoffLocked ||
+      !input.ismpLasaDrugIndicationDisambiguatedAndZeroDoseAdjustment ||
+      input.clinicalRedFlagChestPainStrokeOrSuicidalIdeationDetected,
+    redFlagNursePreemptionAndErBridgeTriggered:
+      input.clinicalRedFlagChestPainStrokeOrSuicidalIdeationDetected,
+  };
+}
+
 
 
 

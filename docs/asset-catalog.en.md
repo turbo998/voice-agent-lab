@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (313 Bilingual Guides)
+## 3. Solution Architect Selection Guides (314 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -354,3 +354,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 311. **Enterprise Voice Agent OpenTelemetry Observability, Synthetic Audio CI/CD Regression (Coval / Hamming vs. Custom) & Shadow/Canary Rollout Guide: 8kHz Round-Trip TTS->STT Lock, 6-Span OTel & Shadow Dry-Run Fence & 0ms Canary Auto-Rollback Bridge**: [EN](./enterprise-voice-agent-otel-observability-synthetic-cicd-canary-rollout-selection-faq.en.md) | [中文](./enterprise-voice-agent-otel-observability-synthetic-cicd-canary-rollout-selection-faq.md)
 312. **Enterprise Multi-Agent Voice Orchestration & Specialist Sub-Agent Handoff Graph (LiveKit Agents vs. Pipecat Flows vs. LangGraph): Pre-Handoff KYC & <=6-Tool Sandbox Lock (99.1% Accuracy), <15ms Silent Single-Persona Swap & 0ms >2-Hop Anti-Ping-Pong Breaker**: [EN](./multi-agent-voice-swarm-triage-specialist-handoff-livekit-pipecat-langgraph-selection-faq.en.md) | [中文](./multi-agent-voice-swarm-triage-specialist-handoff-livekit-pipecat-langgraph-selection-faq.md)
 313. **Financial PCI-DSS v4.0 Pre-Disk Audio Redaction, Dual-Track WORM Recording & 100% Automated Post-Call QA Architecture: 3s RAM Ring-Buffer PAN/CVV Bleep Lock, Spoken-Promise vs. CRM Ledger Reconciliation Gate & 60s Automated Cure Loop**: [EN](./financial-pci-redaction-compliance-recording-automated-postcall-qa-reconciliation-selection-faq.en.md) | [中文](./financial-pci-redaction-compliance-recording-automated-postcall-qa-reconciliation-selection-faq.md)
+314. **Healthcare Patient Triage, Ambient Clinical Scribe & Post-Discharge Follow-Up Voice Architecture (HL7 FHIR R4 / Epic / Multi-Speaker Diarization): 3-Party MD/Patient/Family Isolation & Draft Sign-Off Lock, ISMP LASA Drug & Zero-Titration Gate & 0ms Red-Flag Nurse Preemption**: [EN](./healthcare-patient-triage-ambient-clinical-scribe-discharge-followup-fhir-voice-selection-faq.en.md) | [中文](./healthcare-patient-triage-ambient-clinical-scribe-discharge-followup-fhir-voice-selection-faq.md)

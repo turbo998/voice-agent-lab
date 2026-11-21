@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（313 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（314 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -354,3 +354,4 @@
 311. **企业级语音智能体生产可观测性（OpenTelemetry 6-Span 延迟瀑布）、合成呼叫 CI/CD 回归测试（Coval / Hamming vs. 自建无头仿真器）与金丝雀影子灰度发布（发版前 200 路 `8kHz` 带噪音频回归与 Round-Trip TTS→STT 逆向校验硬锁、影子双跑写工具 `100% Dry-Run` 隔离门禁、金丝雀 `P95 TTFA > 800ms` `0ms` 自动回滚）方案**：[中文](./enterprise-voice-agent-otel-observability-synthetic-cicd-canary-rollout-selection-faq.md) | [EN](./enterprise-voice-agent-otel-observability-synthetic-cicd-canary-rollout-selection-faq.en.md)
 312. **企业级多智能体实时语音编排与子智能体无缝移交（Multi-Agent Voice Swarm：LiveKit Agents vs. Pipecat Flows vs. LangGraph：移交前置 KYC 契约与单节点 `<=6` 工具最小沙箱硬锁、复用同一音色 `<15ms` 静默无感交接与 `<=150 Token` 状态压缩门禁、跨部门踢皮球 `>2跳` `0ms` 熔断并省 `50.9%` 成本）方案**：[中文](./multi-agent-voice-swarm-triage-specialist-handoff-livekit-pipecat-langgraph-selection-faq.md) | [EN](./multi-agent-voice-swarm-triage-specialist-handoff-livekit-pipecat-langgraph-selection-faq.en.md)
 313. **金融银行与保险电话服务合规双录、PCI-DSS v4.0 落盘前敏感音频消音与 100% 话后自动化质检（Automated Post-Call QA：3 秒内存环形缓冲落盘前卡号/CVV 蜂鸣消音与 DTMF 物理旁路硬锁、双声道 WORM 不可篡改归档与挂机 4 秒“口头承诺 vs. CRM 账务流水”1:1 对账门禁、漏播法定条款 `60 秒` 自动外呼/短信补救闭环）方案**：[中文](./financial-pci-redaction-compliance-recording-automated-postcall-qa-reconciliation-selection-faq.md) | [EN](./financial-pci-redaction-compliance-recording-automated-postcall-qa-reconciliation-selection-faq.en.md)
+314. **医疗健康患者全周期语音智能体（门诊智能分诊挂号 HL7 FHIR、诊室多说话人环境病历生成 Ambient Scribe 与院后 72h 随访：主诊医师注册声纹与患者/家属三方分离及医师电子签章前禁写正式 EHR 硬锁、ISMP 同音药名 LASA 三元消歧与严禁 AI 自主调剂量门禁、胸痛/卒中红旗急症 `0ms` 抢占直转急诊护士台）方案**：[中文](./healthcare-patient-triage-ambient-clinical-scribe-discharge-followup-fhir-voice-selection-faq.md) | [EN](./healthcare-patient-triage-ambient-clinical-scribe-discharge-followup-fhir-voice-selection-faq.en.md)
