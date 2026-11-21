@@ -5756,6 +5756,36 @@ export function evaluateExamProctorOralAdaVoiceGuard(input: {
   };
 }
 
+export interface TeleOptometryRxSafetyVoiceEvaluation {
+  policyCode: "TELE-OPTOMETRY-RX-SAFETY-01";
+  opticalLabAndContactLensOrderAuthorized: boolean;
+  incompleteRxOrSpectacleToContactSwapBlocked: boolean;
+  ophthalmologyEmergencyTriageBridged: boolean;
+}
+
+/**
+ * Deterministic Tele-Optometry & Optical Retail Diopter Sign/PD Lock, FTC Contact Lens Gate & 0ms Ocular ER Guard (`TELE-OPTOMETRY-RX-SAFETY-01`).
+ */
+export function evaluateTeleOptometryRxSafetyVoiceGuard(input: {
+  diopterSignAxisAndPdVerified: boolean;
+  contactLensBrandAndBaseCurveRxValid: boolean;
+  acuteRetinalDetachmentGlaucomaOrRedEyeAlarm: boolean;
+}): TeleOptometryRxSafetyVoiceEvaluation {
+  return {
+    policyCode: "TELE-OPTOMETRY-RX-SAFETY-01",
+    opticalLabAndContactLensOrderAuthorized:
+      input.diopterSignAxisAndPdVerified &&
+      input.contactLensBrandAndBaseCurveRxValid &&
+      !input.acuteRetinalDetachmentGlaucomaOrRedEyeAlarm,
+    incompleteRxOrSpectacleToContactSwapBlocked:
+      !input.diopterSignAxisAndPdVerified ||
+      !input.contactLensBrandAndBaseCurveRxValid ||
+      input.acuteRetinalDetachmentGlaucomaOrRedEyeAlarm,
+    ophthalmologyEmergencyTriageBridged:
+      input.acuteRetinalDetachmentGlaucomaOrRedEyeAlarm,
+  };
+}
+
 
 
 
