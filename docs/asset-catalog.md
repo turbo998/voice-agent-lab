@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（202 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（203 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -243,3 +243,4 @@
 200. **城市集中供热管网、热电联产（CHP）机组与工业蒸汽管网（西门子 SPPA-T3000 / 丹佛斯 Leanheat / ASME BPVC）24×7 语音调度台（蒸汽冷凝水排空与暖管防汽水锤硬锁、极寒以热定电防冻保底锁与爆管补水激增/锅炉缺水 MFT 0ms 强切）方案**：[中文](./district-heating-chp-cogeneration-steam-network-water-hammer-voice-dispatch-selection-faq.md) | [EN](./district-heating-chp-cogeneration-steam-network-water-hammer-voice-dispatch-selection-faq.en.md)
 201. **原生端到端语音大模型（GPT-Realtime / Gemini Live）vs 级联流式架构（STT+LLM+TTS）通话内按意图动态双轨切换路由器（受监管交易强制切回级联硬锁、跨引擎统一品牌音色与上下文同步锁、S2S 音频 Token 预算超限自动降级）方案**：[中文](./hybrid-s2s-realtime-vs-cascaded-stt-llm-tts-dynamic-intent-router-selection-faq.md) | [EN](./hybrid-s2s-realtime-vs-cascaded-stt-llm-tts-dynamic-intent-router-selection-faq.en.md)
 202. **实时语音数字人导购与 24×7 品牌直播平台横向选型（Azure AI Speech Avatar vs HeyGen Interactive Avatar vs Tavus Phoenix-3 vs 自建 GPU 集群：广告法极限词与医疗功效 0ms 拦截锁、大促秒杀防超卖/防低价注入锁与音画不同步 <45ms 自动切流护栏）方案**：[中文](./ecommerce-livestream-retail-kiosk-interactive-avatar-heygen-azure-tavus-selection-faq.md) | [EN](./ecommerce-livestream-retail-kiosk-interactive-avatar-heygen-azure-tavus-selection-faq.en.md)
+203. **跨国企业实时多语种同传与高管董事会纪要平台横向选型（Azure AI Speech Live Interpreter vs 级联精校同传管道 vs 本地私有化同传容器：SOV/SVO 谓语后置否定极性硬锁、亿/万与 Million/Billion 量级双校验、零数据留存与原声克隆授权锁）方案**：[中文](./multilingual-simultaneous-interpretation-azure-live-interpreter-board-meeting-selection-faq.md) | [EN](./multilingual-simultaneous-interpretation-azure-live-interpreter-board-meeting-selection-faq.en.md)
