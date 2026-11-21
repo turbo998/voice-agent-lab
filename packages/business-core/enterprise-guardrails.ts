@@ -6235,6 +6235,36 @@ export function evaluateBizavFboJetMisfuelDefVoiceGuard(input: {
   };
 }
 
+export interface OrthoRehabWeightbearingDvtVoiceEvaluation {
+  policyCode: "ORTHO-REHAB-WEIGHTBEARING-DVT-01";
+  rehabExerciseSetContinuationAuthorized: boolean;
+  nwbRomViolationOrSharpPainHalted: boolean;
+  immobilizationAndOrthoVascularErBridged: boolean;
+}
+
+/**
+ * Deterministic Orthopedic Post-Op Rehab Weight-Bearing (NWB/TTWB), Hip >90° Lock & 0ms DVT/PE Guard (`ORTHO-REHAB-WEIGHTBEARING-DVT-01`).
+ */
+export function evaluateOrthoRehabWeightbearingDvtVoiceGuard(input: {
+  weightBearingAndRomPrecautionRespected: boolean;
+  sharpPainAndGraftOverloadBlocked: boolean;
+  dvtPulmonaryEmbolismOrCaudaEquinaRedFlag: boolean;
+}): OrthoRehabWeightbearingDvtVoiceEvaluation {
+  return {
+    policyCode: "ORTHO-REHAB-WEIGHTBEARING-DVT-01",
+    rehabExerciseSetContinuationAuthorized:
+      input.weightBearingAndRomPrecautionRespected &&
+      input.sharpPainAndGraftOverloadBlocked &&
+      !input.dvtPulmonaryEmbolismOrCaudaEquinaRedFlag,
+    nwbRomViolationOrSharpPainHalted:
+      !input.weightBearingAndRomPrecautionRespected ||
+      !input.sharpPainAndGraftOverloadBlocked ||
+      input.dvtPulmonaryEmbolismOrCaudaEquinaRedFlag,
+    immobilizationAndOrthoVascularErBridged:
+      input.dvtPulmonaryEmbolismOrCaudaEquinaRedFlag,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（247 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（248 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -288,3 +288,4 @@
 245. **生殖医学中心（IVF 试管婴儿：北医三院 / 锦欣生殖 / Kindbody）、胚胎实验室双人电子核对（RI Witness）与液氮罐守护 24×7 语音方案（36 小时破卵针 Trigger Shot 分钟级与手术室重排硬锁、配子/胚胎 RFID 与双胚胎师声纹防错配硬锁及重度 OHSS/液氮失温 0ms 强切）**：[中文](./fertility-ivf-embryology-cryobank-liquid-nitrogen-witness-hcg-trigger-voice-concierge-selection-faq.md) | [EN](./fertility-ivf-embryology-cryobank-liquid-nitrogen-witness-hcg-trigger-voice-concierge-selection-faq.en.md)
 246. **城市环卫垃圾清运、再生资源分拣中心（MRF：Waste Management / 威立雅 / 光大环境）与垃圾压缩车防火 24×7 语音方案（锂电池/电子烟/丙烷气罐严禁入压缩桶硬锁、石棉/医疗针头分流与打包机 LOTO 锁及车厢冒烟 Hot Load 0ms 空旷安全卸料坪领航强切）**：[中文](./municipal-waste-recycling-mrf-lithium-battery-compactor-fire-hazmat-voice-dispatch-selection-faq.md) | [EN](./municipal-waste-recycling-mrf-lithium-battery-compactor-fire-hazmat-voice-dispatch-selection-faq.en.md)
 247. **公务航空（NetJets / VistaJet / 湾流 Gulfstream）、FBO 地面保障与包机签派 24×7 AI 语音方案（防加错航油 Jet-A/100LL 与防车用尿素 DEF 混入防冰剂硬锁、Part 135 湿跑道平衡场长门禁与机库泡沫误喷 0ms 疏散/MedAire 强切）**：[中文](./business-aviation-fbo-fractional-jet-misfueling-def-contaminated-jet-a-notam-voice-dispatch-selection-faq.md) | [EN](./business-aviation-fbo-fractional-jet-misfueling-def-contaminated-jet-a-notam-voice-dispatch-selection-faq.en.md)
+248. **骨科术后康复（全膝/全髋关节置换 TKA/THA / ACL 重建 / 脊柱术后）与居家物理治疗（Sword / Hinge Health）24×7 多模态语音教练方案（主刀负重分级 NWB/TTWB 与后入路全髋屈髋 >90° 防脱位硬锁、禁强忍锐痛折断内固定锁与下肢深静脉血栓 DVT 0ms 禁揉制动急诊强切）**：[中文](./physical-therapy-orthopedic-post-op-rehab-weight-bearing-dvt-pe-voice-coach-selection-faq.md) | [EN](./physical-therapy-orthopedic-post-op-rehab-weight-bearing-dvt-pe-voice-coach-selection-faq.en.md)
