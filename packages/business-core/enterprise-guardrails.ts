@@ -9325,6 +9325,36 @@ export function evaluateLegalIntakeClioConflictUplGuard(input: {
   };
 }
 
+export interface GrocerySubstitutionVoicePickingEvaluation {
+  policyCode: "GROCERY-SUBSTITUTION-VOICE-PICKING-01";
+  substitutionAndPickCommitAuthorized: boolean;
+  allergenMismatchOrWrongSlotPickBlocked: boolean;
+  foodSafetyOrUnderageAlcoholEscalated: boolean;
+}
+
+/**
+ * Deterministic Grocery & Instant Retail Out-of-Stock Allergen Substitution Lock, Dark-Store Check-Digit Voice Picking & 0ms Food-Safety / 21+ Alcohol Guard (`GROCERY-SUBSTITUTION-VOICE-PICKING-01`).
+ */
+export function evaluateGrocerySubstitutionVoicePickingGuard(input: {
+  outOfStockSubstitutionAllergenDietaryAndPriceCapVerified: boolean;
+  darkStoreVoicePickingAisleCheckDigitConfirmed: boolean;
+  foodborneIllnessForeignObjectOrAgeRestrictedAlcoholEscalation: boolean;
+}): GrocerySubstitutionVoicePickingEvaluation {
+  return {
+    policyCode: "GROCERY-SUBSTITUTION-VOICE-PICKING-01",
+    substitutionAndPickCommitAuthorized:
+      input.outOfStockSubstitutionAllergenDietaryAndPriceCapVerified &&
+      input.darkStoreVoicePickingAisleCheckDigitConfirmed &&
+      !input.foodborneIllnessForeignObjectOrAgeRestrictedAlcoholEscalation,
+    allergenMismatchOrWrongSlotPickBlocked:
+      !input.outOfStockSubstitutionAllergenDietaryAndPriceCapVerified ||
+      !input.darkStoreVoicePickingAisleCheckDigitConfirmed ||
+      input.foodborneIllnessForeignObjectOrAgeRestrictedAlcoholEscalation,
+    foodSafetyOrUnderageAlcoholEscalated:
+      input.foodborneIllnessForeignObjectOrAgeRestrictedAlcoholEscalation,
+  };
+}
+
 
 
 

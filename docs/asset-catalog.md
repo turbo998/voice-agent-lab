@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（350 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（351 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -391,3 +391,4 @@
 348. **企业级实时语音 AI 多云双活高可用容灾（Active-Active Multi-Cloud Failover：Azure <-> AWS <-> GCP）与通话中途零掉线热切架构（边缘独立媒体锚定与子轮次 `<3ms` `Redis` 状态快照复制保障主云崩溃 `0` 掉线硬锁、跨云共享统一品牌 TTS 声纹防中途换人说话门禁、首包超时 `TTFT >900ms` 或 `503` `<220ms` 无感热切达 `99.99%` 四九可用性）方案**：[中文](./multi-cloud-voice-ai-active-active-failover-zero-drop-session-state-selection-faq.md) | [EN](./multi-cloud-voice-ai-active-active-failover-zero-drop-session-state-selection-faq.en.md)
 349. **网约车出行与汽车租赁车队（Uber / Lyft / 滴滴 / 神州租车 / Enterprise 模式）司乘安全守护、司机免视盲操与自助取还车语音架构（司乘真实手机号 100% 虚拟中间号隐匿与租车取还车时间戳视频基线差分硬锁、行驶中车速 `>5km/h` 强制 `<=6词` 免视盲操接单压降 `64%` 分心事故门禁、夜间偏航 `RideCheck` 与胁迫暗语 `0ms` 静音喇叭单向直连 `110/911` 抢占）方案**：[中文](./ride-hailing-car-rental-fleet-in-trip-safety-driver-handsfree-voice-selection-faq.md) | [EN](./ride-hailing-car-rental-fleet-in-trip-safety-driver-handsfree-voice-selection-faq.en.md)
 350. **律师事务所与企业法务（Clio / Filevine / Litify）24/7 智能语音接案、利益冲突检索（Conflict Check）与防非法执业（UPL）架构（`ABA Rule 1.18` 前置对方当事人利益冲突核查通过前严禁采集保密案情防律所代理失格硬锁、零非律师定性法律建议 `UPL` 与未签委托书前锁定 `SSML` 免责声明门禁、诉讼时效 `<=30天` 或刑事拘留/家暴保护令 `0ms` 值班合伙人抢占提夜间签约率 `+48%`）方案**：[中文](./legal-intake-law-firm-clio-conflict-check-upl-guardrail-voice-selection-faq.md) | [EN](./legal-intake-law-firm-clio-conflict-check-upl-guardrail-voice-selection-faq.en.md)
+351. **生鲜商超与即时零售前置仓（Walmart / Instacart / 盒马 / 山姆 / 小象超市模式）缺货替换语音确认、免手语音拣货（Voice Picking）与食安架构（缺货替换 PIM 过敏原/清真/素食禁忌 100% 交叉核验与价差上限硬锁挽回 `81.4%` 缺货 GMV、前置仓冷库耳麦 2 位货架校验码 `Check-Digit` 压降 `76%` 错拣门禁、食安异物全城批次秒冻与酒水未成年人禁投 `0ms` 抢占）方案**：[中文](./grocery-instant-retail-out-of-stock-substitution-voice-picking-selection-faq.md) | [EN](./grocery-instant-retail-out-of-stock-substitution-voice-picking-selection-faq.en.md)
