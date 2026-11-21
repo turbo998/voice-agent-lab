@@ -5380,6 +5380,34 @@ export function evaluateQsrDriveThruAllergenPosVoiceGuard(input: {
   };
 }
 
+export interface LanguageTutorExecCoachingVoiceEvaluation {
+  policyCode: "LANGUAGE-TUTOR-EXEC-COACHING-01";
+  tutorReplyAndScorecardCommitAuthorized: boolean;
+  holdForLearnerWordSearchPause: boolean;
+  boundaryRedirectToLegalOrEapTriggered: boolean;
+}
+
+/**
+ * Deterministic AI Language Tutor & Executive Coach L2 Hesitation Patience, Acoustic Phoneme GOP & ICF Boundary Guard (`LANGUAGE-TUTOR-EXEC-COACHING-01`).
+ */
+export function evaluateLanguageTutorExecCoachingVoiceGuard(input: {
+  learnerTurnCompleteAfterL2PatienceWindow: boolean;
+  acousticPhonemeGopAndOriginalityVerified: boolean;
+  sessionTouchesEmploymentLawOrPsychiatricCrisis: boolean;
+}): LanguageTutorExecCoachingVoiceEvaluation {
+  return {
+    policyCode: "LANGUAGE-TUTOR-EXEC-COACHING-01",
+    tutorReplyAndScorecardCommitAuthorized:
+      input.learnerTurnCompleteAfterL2PatienceWindow &&
+      input.acousticPhonemeGopAndOriginalityVerified &&
+      !input.sessionTouchesEmploymentLawOrPsychiatricCrisis,
+    holdForLearnerWordSearchPause:
+      !input.learnerTurnCompleteAfterL2PatienceWindow,
+    boundaryRedirectToLegalOrEapTriggered:
+      input.sessionTouchesEmploymentLawOrPsychiatricCrisis,
+  };
+}
+
 
 
 

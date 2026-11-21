@@ -290,6 +290,7 @@ flowchart LR
 216. **Operating Room (OR) WHO Surgical Time-Out, Anesthesia & Sterile-Field Hands-Free Voice Copilot (Epic OpTime / Karl Storz / Da Vinci): 3-Party Laterality Lock, RFID Sponge Count Gate & 0ms MTP Crisis Bridge**: [EN](./docs/operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.en.md) | [中文](./docs/operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.md)
 217. **Voice-Native Agentic RAG Architecture: Ingestion-Time Spoken Summaries, Phonetic Homophone Hybrid Search & Zero-Markdown TTS Gate**: [EN](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.en.md) | [中文](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.md)
 218. **QSR Drive-Thru Dual-Lane, Allergen Cross-Contact Safety & Kitchen KDS Sync (NCR Aloha / Toast / Oracle Micros) Voice Ordering: FDA FALCPA Allergen Lock, Anti-Prank Quantity Cap & Y-Merge Vehicle Sync**: [EN](./docs/qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.en.md) | [中文](./docs/qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.md)
+219. **AI Language Tutor, IELTS/TOEFL Speaking Examiner & Executive Leadership Coach: L2 1,600ms Hesitation Patience Lock, Acoustic Phoneme GOP Grader & ICF Privacy Boundary Gate**: [EN](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.en.md) | [中文](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.md)
 
 ---
 

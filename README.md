@@ -290,6 +290,7 @@ flowchart LR
 216. **数字化手术室（Digital OR）WHO 手术安全核查（Time-Out）、无菌台免提阅片与器械纱布清点（Epic OpTime / 卡尔史托斯 Karl Storz / 达芬奇手术室）24×7 语音副驾（划刀前主刀/麻醉/巡回三方左右侧别核对硬锁、关腹前 RFID 纱布缝针零差错闭锁与术中大出血 MTP / 恶性高热 0ms 强切）方案**：[中文](./docs/operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.md) | [EN](./docs/operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.en.md)
 217. **企业级实时语音原生 RAG（Voice-Native Agentic RAG）架构（入库预编译口语摘要、拼音/音素同音词混合检索与零 Markdown 播报护栏：过期失效政策 0ms 拦截硬锁、≤45 字两句话首答锁与低置信度诚实拒答）方案**：[中文](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.md) | [EN](./docs/voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.en.md)
 218. **连锁快餐双车道得来速（QSR Dual-Lane Drive-Thru）、过敏原防交叉污染与后厨 KDS 实时联动（麦当劳 / 星巴克 / 肯德基 / NCR Aloha / Toast POS）24×7 语音点餐（FDA 9 大致敏原零绝对安全承诺硬锁、“18,000 杯水”恶搞订单与售罄 86'd 拦截锁、Y 型并道车辆视觉绑定防串单）方案**：[中文](./docs/qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.md) | [EN](./docs/qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.en.md)
+219. **AI 语言外教陪练、雅思/托福口语模考与高管领导力教练（Business English / IELTS / ICF Executive Coaching）全双工语音平台架构（外语初学者 1,600ms 找词停顿防抢话硬锁、声学音素级 GOP 发音评测防文本幻觉锁与高管私密倾诉 HR 物理隔离护栏）方案**：[中文](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.md) | [EN](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.en.md)
 
 ---
 
