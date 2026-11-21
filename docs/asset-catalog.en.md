@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (266 Bilingual Guides)
+## 3. Solution Architect Selection Guides (267 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -307,3 +307,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 264. **Winery & Distillery Fermentation Cellar CO2, Pot-Still LEL & Methanol Cut Voice Copilot: Floor CO2 (≤5,000 ppm) & Confined-Space Lock, Foreshots/Condenser Gate & 0ms SCBA Rescue Bridge**: [EN](./winery-distillery-fermentation-cellar-co2-asphyxiation-pot-still-ethanol-lel-ttb-voice-copilot-selection-faq.en.md) | [中文](./winery-distillery-fermentation-cellar-co2-asphyxiation-pot-still-ethanol-lel-ttb-voice-copilot-selection-faq.md)
 265. **Pulp & Paper Mill Kraft Recovery Boiler (BLRBAC), ClO2 Bleach & Reel Nip Voice Copilot: ≥58% Black-Liquor Solids Lock, 1,800m/min Nip Gate & 0ms ESP Rapid-Drain Bridge**: [EN](./pulp-paper-mill-kraft-recovery-boiler-black-liquor-smelt-water-clo2-bleach-reel-nip-voice-copilot-selection-faq.en.md) | [中文](./pulp-paper-mill-kraft-recovery-boiler-black-liquor-smelt-water-clo2-bleach-reel-nip-voice-copilot-selection-faq.md)
 266. **Float Glass Furnace, Tin-Bath H2/N2, Jumbo A-Frame Stillage & IS-Machine Voice Copilot: 3-Ton A-Frame Restraint & Vacuum Lock, Tin-Bath H2 Gate & 0ms Furnace Runout Bridge**: [EN](./glass-manufacturing-float-furnace-tin-bath-h2-stillage-a-frame-is-machine-voice-copilot-selection-faq.en.md) | [中文](./glass-manufacturing-float-furnace-tin-bath-h2-stillage-a-frame-is-machine-voice-copilot-selection-faq.md)
+267. **Tire & Rubber Manufacturing Curing Press (0.0 MPa), Banbury & DOT TIN Voice Copilot: 180°C Bladder Zero-Pressure Lock, ANSI B28.1 Mill Gate & 0ms Reverse-Roll Bridge**: [EN](./tire-rubber-manufacturing-banbury-mixer-curing-press-steam-bladder-dot-tin-voice-copilot-selection-faq.en.md) | [中文](./tire-rubber-manufacturing-banbury-mixer-curing-press-steam-bladder-dot-tin-voice-copilot-selection-faq.md)

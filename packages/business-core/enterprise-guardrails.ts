@@ -6805,6 +6805,36 @@ export function evaluateGlassMfgFloatTinbathStillageVoiceGuard(input: {
   };
 }
 
+export interface TireRubberCuringBanburyDotVoiceEvaluation {
+  policyCode: "TIRE-RUBBER-CURING-BANBURY-DOT-01";
+  pressOpenAndGreenTireLoadAuthorized: boolean;
+  residualBladderPressureOrDotMismatchBlocked: boolean;
+  millReverseRollAndSteamHeaderIsolationBridged: boolean;
+}
+
+/**
+ * Deterministic Tire & Rubber Curing Bladder 0.00 MPa Dual-Sensor Lock, Green-Tire RFID/DOT Week-Slug Gate & 0ms Mill Reverse-Roll Guard (`TIRE-RUBBER-CURING-BANBURY-DOT-01`).
+ */
+export function evaluateTireRubberCuringBanburyDotVoiceGuard(input: {
+  curingBladderZeroPressureAndDomePinSafe: boolean;
+  millTripBarCompoundMdrAndDotTinMatched: boolean;
+  millNipEntrapmentSteamBurstOrSulfurFire: boolean;
+}): TireRubberCuringBanburyDotVoiceEvaluation {
+  return {
+    policyCode: "TIRE-RUBBER-CURING-BANBURY-DOT-01",
+    pressOpenAndGreenTireLoadAuthorized:
+      input.curingBladderZeroPressureAndDomePinSafe &&
+      input.millTripBarCompoundMdrAndDotTinMatched &&
+      !input.millNipEntrapmentSteamBurstOrSulfurFire,
+    residualBladderPressureOrDotMismatchBlocked:
+      !input.curingBladderZeroPressureAndDomePinSafe ||
+      !input.millTripBarCompoundMdrAndDotTinMatched ||
+      input.millNipEntrapmentSteamBurstOrSulfurFire,
+    millReverseRollAndSteamHeaderIsolationBridged:
+      input.millNipEntrapmentSteamBurstOrSulfurFire,
+  };
+}
+
 
 
 
