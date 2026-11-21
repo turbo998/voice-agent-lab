@@ -278,6 +278,7 @@ flowchart LR
 204. **慢速外部 API 与遗留 ERP（3s–12s）场景下实时语音异步安抚播报（Async Filler）、进度心跳与防重复提交架构（700ms 非承诺性安抚话术硬锁、工具执行中用户改口 Epoch 吊销锁与 >9s 超时转异步通知闭环）方案**：[中文](./docs/slow-api-rag-async-filler-progress-heartbeat-idempotent-voice-orchestration-selection-faq.md) | [EN](./docs/slow-api-rag-async-filler-progress-heartbeat-idempotent-voice-orchestration-selection-faq.en.md)
 205. **智能联络中心 AI 首线接待与“带上下文零重复无缝转人工（Warm Handoff + Whisper Briefing + 坐席实时辅助 Copilot）”架构（严禁客户重复自述硬锁、6 秒坐席耳语简报、身份核验继承与转后旁路话术推荐）方案**：[中文](./docs/contact-center-warm-handoff-whisper-briefing-zero-repeat-context-bridge-selection-faq.md) | [EN](./docs/contact-center-warm-handoff-whisper-briefing-zero-repeat-context-bridge-selection-faq.en.md)
 206. **AI 金牌销售对练、医药代表合规学术拜访（Med-Rep Detailing）与模拟面试陪练平台架构（演评分离防讨好/防越狱硬锁、超说明书 Off-Label 与商业贿赂 0ms 红牌一票否决锁、带录音时间戳证据链的 Rubric 评分引擎）方案**：[中文](./docs/ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.md) | [EN](./docs/ai-sales-roleplay-medrep-detailing-mock-interview-coaching-platform-selection-faq.en.md)
+207. **智能汽车座舱（高通骁龙 8295/8797 端侧 NPU + 云端多模态大模型）端云协同语音助手架构（四音区声源权限与车速 P 挡硬锁、隧道断网 0ms 端侧 190ms 控车兜底锁、视线手势多模态融合与驾驶分心长度管控）方案**：[中文](./docs/in-cabin-automotive-cockpit-edge-npu-cloud-hybrid-multimodal-voice-selection-faq.md) | [EN](./docs/in-cabin-automotive-cockpit-edge-npu-cloud-hybrid-multimodal-voice-selection-faq.en.md)
 
 ---
 

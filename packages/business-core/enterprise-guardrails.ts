@@ -5045,6 +5045,33 @@ export function evaluateSalesRoleplayMedrepCoachingVoiceGuard(input: {
   };
 }
 
+export interface AutomotiveCockpitEdgeCloudVoiceEvaluation {
+  policyCode: "AUTOMOTIVE-COCKPIT-EDGE-CLOUD-01";
+  safetyCriticalVehicleCommandAuthorized: boolean;
+  cloudMultimodalVisionAndRichUiAuthorized: boolean;
+  edgeNpuOfflineControlFallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic In-Cabin Automotive Cockpit 4-Zone Seat/Speed Interlock, ISO 15007 Distraction Gate & Edge-NPU Tunnel Fallback Guard (`AUTOMOTIVE-COCKPIT-EDGE-CLOUD-01`).
+ */
+export function evaluateAutomotiveCockpitEdgeCloudVoiceGuard(input: {
+  driverZoneAndParkGearInterlockVerified: boolean;
+  driverEyesOnRoadAndConciseVoiceModeVerified: boolean;
+  cellularRttAbove400msOrOfflineTunnel: boolean;
+}): AutomotiveCockpitEdgeCloudVoiceEvaluation {
+  return {
+    policyCode: "AUTOMOTIVE-COCKPIT-EDGE-CLOUD-01",
+    safetyCriticalVehicleCommandAuthorized:
+      input.driverZoneAndParkGearInterlockVerified,
+    cloudMultimodalVisionAndRichUiAuthorized:
+      input.driverEyesOnRoadAndConciseVoiceModeVerified &&
+      !input.cellularRttAbove400msOrOfflineTunnel,
+    edgeNpuOfflineControlFallbackTriggered:
+      input.cellularRttAbove400msOrOfflineTunnel,
+  };
+}
+
 
 
 
