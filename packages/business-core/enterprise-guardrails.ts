@@ -6025,6 +6025,36 @@ export function evaluateRobotaxiAvMrcResponderVoiceGuard(input: {
   };
 }
 
+export interface BespokeCoutureAlterationVoiceEvaluation {
+  policyCode: "BESPOKE-COUTURE-ALTERATION-01";
+  atelierCutAndCommissionAuthorized: boolean;
+  irreversibleCutOrTightWearDateBlocked: boolean;
+  masterTailorAndBridalSosBridged: boolean;
+}
+
+/**
+ * Deterministic Bespoke Tailoring & Bridal Couture Irreversible-Cut, Wedding Wear-Date & 0ms Master Tailor Guard (`BESPOKE-COUTURE-ALTERATION-01`).
+ */
+export function evaluateBespokeCoutureAlterationVoiceGuard(input: {
+  seamAllowanceAndShoeHeightVerifiedBeforeIrreversibleCut: boolean;
+  weddingWearDateBufferAndDyeLotLocked: boolean;
+  silkLaceStainOrEveOfWeddingAlterationCrisis: boolean;
+}): BespokeCoutureAlterationVoiceEvaluation {
+  return {
+    policyCode: "BESPOKE-COUTURE-ALTERATION-01",
+    atelierCutAndCommissionAuthorized:
+      input.seamAllowanceAndShoeHeightVerifiedBeforeIrreversibleCut &&
+      input.weddingWearDateBufferAndDyeLotLocked &&
+      !input.silkLaceStainOrEveOfWeddingAlterationCrisis,
+    irreversibleCutOrTightWearDateBlocked:
+      !input.seamAllowanceAndShoeHeightVerifiedBeforeIrreversibleCut ||
+      !input.weddingWearDateBufferAndDyeLotLocked ||
+      input.silkLaceStainOrEveOfWeddingAlterationCrisis,
+    masterTailorAndBridalSosBridged:
+      input.silkLaceStainOrEveOfWeddingAlterationCrisis,
+  };
+}
+
 
 
 
