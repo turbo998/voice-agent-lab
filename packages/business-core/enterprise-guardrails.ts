@@ -6985,6 +6985,36 @@ export function evaluateIndustrialGasAsuLoxCgaVoiceGuard(input: {
   };
 }
 
+export interface CementKilnCycloneCoalmillCoVoiceEvaluation {
+  policyCode: "CEMENT-KILN-CYCLONE-COALMILL-CO-01";
+  cycloneClearingAndKilnEntryAuthorized: boolean;
+  belowJamPokeOrCoalDoorOpenBlocked: boolean;
+  towerEvacSirenEspTripAndCo2FloodBridged: boolean;
+}
+
+/**
+ * Deterministic Cement Plant 850°C Preheater Cyclone Above-Jam-Only & Lower-Tower Evac Lock, Coal-Mill CO/O2 Gate & 0ms ESP Trip Guard (`CEMENT-KILN-CYCLONE-COALMILL-CO-01`).
+ */
+export function evaluateCementKilnCycloneCoalmillCoVoiceGuard(input: {
+  cycloneJamAboveOnlyAndLowerTowerEvacuated: boolean;
+  coalMillInertedKilnPinnedAndCoolerDrySafe: boolean;
+  hotMealFlushEspCoSpikeOrCoalSmolder: boolean;
+}): CementKilnCycloneCoalmillCoVoiceEvaluation {
+  return {
+    policyCode: "CEMENT-KILN-CYCLONE-COALMILL-CO-01",
+    cycloneClearingAndKilnEntryAuthorized:
+      input.cycloneJamAboveOnlyAndLowerTowerEvacuated &&
+      input.coalMillInertedKilnPinnedAndCoolerDrySafe &&
+      !input.hotMealFlushEspCoSpikeOrCoalSmolder,
+    belowJamPokeOrCoalDoorOpenBlocked:
+      !input.cycloneJamAboveOnlyAndLowerTowerEvacuated ||
+      !input.coalMillInertedKilnPinnedAndCoolerDrySafe ||
+      input.hotMealFlushEspCoSpikeOrCoalSmolder,
+    towerEvacSirenEspTripAndCo2FloodBridged:
+      input.hotMealFlushEspCoSpikeOrCoalSmolder,
+  };
+}
+
 
 
 

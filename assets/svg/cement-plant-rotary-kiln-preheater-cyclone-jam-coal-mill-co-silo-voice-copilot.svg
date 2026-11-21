@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg273" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14110b"/>
+      <stop offset="50%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="card273" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg273)" rx="16"/>
+  <text x="600" y="40" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Cement Plant 850°C Preheater Cyclone Jam, Rotary Kiln &amp; Coal-Mill CO Voice Copilot</text>
+  <text x="600" y="66" fill="#fdba74" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">850°C Cyclone Above-Jam-Only &amp; Lower-Floor Evac Lock · Coal-Mill CO/O2 Inerting &amp; Kiln Roll LOTO Gate · 0ms Hot-Meal Blowout &amp; CO2 Flood Bridge (CEMENT-KILN-CYCLONE-COALMILL-CO-01)</text>
+
+  <!-- Left Column: Preheater Tower, Rotary Kiln & Coal Mill -->
+  <rect x="36" y="92" width="260" height="545" rx="12" fill="url(#card273)" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="166" y="122" fill="#fdba74" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. Preheater, Kiln &amp; Coal Mill</text>
+
+  <rect x="56" y="142" width="220" height="110" rx="8" fill="#0f172a" stroke="#fb923c"/>
+  <text x="166" y="166" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">850°C 5-Stage Preheater Tower</text>
+  <text x="166" y="188" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Above-the-jam poke-hole lock</text>
+  <text x="166" y="206" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Lower-platform turnstile evac</text>
+  <text x="166" y="224" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• ID fan negative-draft verify</text>
+
+  <rect x="56" y="268" width="220" height="110" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="166" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">1,450°C Kiln &amp; Coal Mill</text>
+  <text x="166" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Coal baghouse CO &amp; O2 (&lt;12%)</text>
+  <text x="166" y="332" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Kiln shell anti-rollback pin</text>
+  <text x="166" y="350" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Grate-cooler clinker hammer LOTO</text>
+
+  <rect x="56" y="394" width="220" height="222" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="166" y="420" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Hot-Meal Flush &amp; CO Flags</text>
+  <text x="166" y="444" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Opening poke hole below plug</text>
+  <text x="166" y="464" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 850°C hot-meal surge blowout</text>
+  <text x="166" y="484" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Coal dust bin CO &gt;500 ppm</text>
+  <text x="166" y="504" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Water hosed on red clinker</text>
+  <text x="166" y="532" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">0ms Tower Evac &amp; CO2 Inerting</text>
+
+  <!-- Center Column: CEMENT-KILN-CYCLONE-COALMILL-CO-01 Guardrail Engine -->
+  <rect x="326" y="92" width="548" height="545" rx="12" fill="url(#card273)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="600" y="122" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. Deterministic Cement &amp; Kiln Engine (CEMENT-KILN-CYCLONE-COALMILL-CO-01)</text>
+
+  <!-- Gate 1 -->
+  <rect x="350" y="142" width="500" height="145" rx="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate A: 850°C Cyclone "Above-Jam Only", Negative-Draft &amp; Lower-Evac Lock</text>
+  <text x="600" y="190" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• 100% locks all poke-hole doors BELOW a plugged cyclone cone (prevents 850°C gush)</text>
+  <text x="600" y="210" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Requires evacuating all lower preheater floors &amp; verifying negative draft before rodding</text>
+  <text x="600" y="230" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Enforces Cardox / air-cannon remote clearing &amp; full aluminized proximity suit</text>
+  <text x="600" y="252" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Eliminates #1 cause of multi-fatality hot-meal engulfments in global cement plants</text>
+
+  <!-- Gate 2 -->
+  <rect x="350" y="302" width="500" height="150" rx="10" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="600" y="326" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate B: Coal-Mill O2 (&lt;12%) / CO Gate, Kiln Roll-Lock &amp; Clinker No-Water</text>
+  <text x="600" y="350" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Enforces coal-mill hot-gas inerting O2 &lt;10–12% &amp; forbids opening smoldering coal bins</text>
+  <text x="600" y="370" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Requires mechanical bull-gear pin LOTO + overhead coating scaling before kiln bricking</text>
+  <text x="600" y="390" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• 100% forbids spraying water hoses onto red-hot clinker boulders inside grate cooler</text>
+  <text x="600" y="412" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Prevents unbalanced rotary-kiln roll crushes and grate-cooler steam explosions</text>
+
+  <!-- Gate 3 -->
+  <rect x="350" y="468" width="500" height="148" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="600" y="492" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate C: 0ms Hot-Meal Flush Siren, ESP CO Trip &amp; Coal-Bin CO2 Flood Bridge</text>
+  <text x="600" y="516" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trips raw-meal feed &amp; sounds tower evacuation siren in 0ms on cyclone pressure drop</text>
+  <text x="600" y="536" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trips Electrostatic Precipitator (ESP) HV rectifiers at CO ≥0.8% (prevents CO explosion)</text>
+  <text x="600" y="556" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Floods fine-coal bin / baghouse with inert CO2 / N2 on CO &gt;500 ppm smolder alarm</text>
+  <text x="600" y="580" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Full GCCA / CSI Cement Safety Guidelines, MSHA 30 CFR Part 56 &amp; NFPA 85 WORM audit</text>
+
+  <!-- Right Column: ABB Ability / FLSmidth ECS, Cardox & Burn EMS -->
+  <rect x="904" y="92" width="260" height="545" rx="12" fill="url(#card273)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="1034" y="122" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">3. Kiln ECS &amp; Inerting PLC</text>
+
+  <rect x="924" y="142" width="220" height="145" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="1034" y="166" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">FLSmidth ECS / ABB 800xA</text>
+  <text x="1034" y="190" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Cyclone cone ΔP &amp; tip-valve</text>
+  <text x="1034" y="210" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Kiln shell scanner (IR hotspot)</text>
+  <text x="1034" y="230" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Free-lime (f-CaO) &amp; Blaine</text>
+  <text x="1034" y="250" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• ESP / Kiln inlet CO analyzer</text>
+
+  <rect x="924" y="302" width="220" height="150" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="1034" y="326" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Poke-Hole &amp; Coal Inerting PLC</text>
+  <text x="1034" y="350" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Magnetic poke-hole door locks</text>
+  <text x="1034" y="370" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Tower floor UWB headcount</text>
+  <text x="1034" y="390" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Coal silo CO2/N2 purge bank</text>
+  <text x="1034" y="410" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Bull-gear mechanical lock pin</text>
+
+  <rect x="924" y="468" width="220" height="148" rx="8" fill="#0f172a" stroke="#a855f7"/>
+  <text x="1034" y="492" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Thermal Burn &amp; Silo Rescue</text>
+  <text x="1034" y="516" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Aluminized suit air-line cooling</text>
+  <text x="1034" y="536" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Dry-powder alkali burn station</text>
+  <text x="1034" y="556" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Silo whip-machine remote clear</text>
+  <text x="1034" y="576" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">• 100% GCCA &amp; MSHA Part 56</text>
+</svg>
