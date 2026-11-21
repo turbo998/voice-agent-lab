@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (217 Bilingual Guides)
+## 3. Solution Architect Selection Guides (218 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -258,3 +258,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 215. **Luxury Watch, High Jewelry & VIC Private Clienteling (LVMH / Richemont / Salesforce Luxury) 24×7 Voice Concierge: Zero Vault-Stock Disclosure Lock, Anti-Flipper Allocation Gate & Brinks / CITES Dispatch Shield**: [EN](./luxury-retail-watch-jewelry-vic-clienteling-brinks-concierge-voice-selection-faq.en.md) | [中文](./luxury-retail-watch-jewelry-vic-clienteling-brinks-concierge-voice-selection-faq.md)
 216. **Operating Room (OR) WHO Surgical Time-Out, Anesthesia & Sterile-Field Hands-Free Voice Copilot (Epic OpTime / Karl Storz / Da Vinci): 3-Party Laterality Lock, RFID Sponge Count Gate & 0ms MTP Crisis Bridge**: [EN](./operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.en.md) | [中文](./operating-room-surgical-time-out-anesthesia-aseptic-voice-copilot-selection-faq.md)
 217. **Voice-Native Agentic RAG Architecture: Ingestion-Time Spoken Summaries, Phonetic Homophone Hybrid Search & Zero-Markdown TTS Gate**: [EN](./voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.en.md) | [中文](./voice-native-agentic-rag-phonetic-hybrid-search-zero-markdown-tts-selection-faq.md)
+218. **QSR Drive-Thru Dual-Lane, Allergen Cross-Contact Safety & Kitchen KDS Sync (NCR Aloha / Toast / Oracle Micros) Voice Ordering: FDA FALCPA Allergen Lock, Anti-Prank Quantity Cap & Y-Merge Vehicle Sync**: [EN](./qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.en.md) | [中文](./qsr-drive-thru-lane-pos-allergen-cross-contact-upsell-voice-ordering-selection-faq.md)

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg76" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c111d"/>
+      <stop offset="50%" stop-color="#182238"/>
+      <stop offset="100%" stop-color="#0a1220"/>
+    </linearGradient>
+    <linearGradient id="card76" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e2b46" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#101829" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg76)" rx="16"/>
+  <text x="600" y="42" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">QSR Drive-Thru Dual-Lane, Allergen Safety &amp; Kitchen KDS Sync (NCR Aloha / Toast / Micros) Voice AI</text>
+  <text x="600" y="66" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">FDA FALCPA Allergen Cross-Contact Warning Lock · Dual-Lane Y-Merge Vehicle Sync · 0ms KDS 86'd Out-of-Stock Gate (QSR-DRIVETHRU-ALLERGEN-POS-01)</text>
+
+  <!-- Left Column -->
+  <rect x="30" y="92" width="290" height="548" rx="12" fill="url(#card76)" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="175" y="122" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1. Drive-Thru Lane Challenges</text>
+
+  <rect x="48" y="142" width="254" height="105" rx="8" fill="#0f172a" stroke="#60a5fa" stroke-width="1.2"/>
+  <text x="175" y="166" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">82dB Outdoor Drive-Thru Post</text>
+  <text x="175" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Diesel Pickup Idle + Rain + Sirens</text>
+  <text x="175" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Passenger-Seat Yelling Across Car</text>
+  <text x="175" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Nested Modifiers ("Half-Caff Oat...")</text>
+
+  <rect x="48" y="264" width="254" height="105" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="175" y="288" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Severe Food Allergy Liability</text>
+  <text x="175" y="310" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• "Is this 100% safe for peanut allergy?"</text>
+  <text x="175" y="328" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Shared Fryer Cross-Contact Risk</text>
+  <text x="175" y="346" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• FDA FALCPA 9 Major Allergens</text>
+
+  <rect x="48" y="386" width="254" height="105" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="175" y="410" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Dual-Lane Y-Merge Order Swap</text>
+  <text x="175" y="432" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Lane B Car Cuts Ahead of Lane A Car</text>
+  <text x="175" y="450" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Wrong Credit Card Charged at Window 1</text>
+  <text x="175" y="468" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• "15,000 Water Cups" Prank Order</text>
+
+  <rect x="48" y="508" width="254" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="175" y="532" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Store Edge Hardware</text>
+  <text x="175" y="554" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• HME / 3M Wireless Crew Headset Loop</text>
+  <text x="175" y="572" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Induction Loop + ALPR Camera Sync</text>
+  <text x="175" y="590" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Outdoor Digital Menu Board (ODMB)</text>
+
+  <!-- Center Column -->
+  <rect x="350" y="92" width="500" height="548" rx="12" fill="url(#card76)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="600" y="122" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">2. Deterministic Drive-Thru Gate (QSR-DRIVETHRU-ALLERGEN-POS-01)</text>
+
+  <rect x="372" y="142" width="456" height="136" rx="10" fill="#2a1215" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE A: Severe Food Allergen &amp; Shared-Fryer Cross-Contact Lock</text>
+  <text x="600" y="188" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trigger: callerDisclosesSevereFoodAllergyOrAnaphylaxis === true</text>
+  <text x="600" y="208" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Permanently blocks AI from guaranteeing any item is "100% allergen-free";</text>
+  <text x="600" y="226" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  reads mandatory shared-kitchen cross-contact warning &amp; tags KDS</text>
+  <text x="600" y="246" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">  `ALLERGY_CLEAN_GLOVES` + bridges store crew headset in 0ms</text>
+
+  <rect x="372" y="294" width="456" height="145" rx="10" fill="#172554" stroke="#60a5fa" stroke-width="1.8"/>
+  <text x="600" y="318" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE B: Live KDS 86'd Stock, Prank-Quantity Cap &amp; Modifier DAG</text>
+  <text x="600" y="340" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: allItemsInStockOnKdsAndUnderMaxQuantityCap === true</text>
+  <text x="600" y="360" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blocks ordering 86'd items (e.g., broken ice-cream machine) in 0ms and</text>
+  <text x="600" y="378" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  caps single drive-thru orders at &lt;25 items (blocks "18,000 water cups" prank)</text>
+  <text x="600" y="398" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Validates valid modifier tree before injecting ticket into NCR Aloha POS</text>
+
+  <rect x="372" y="455" width="456" height="165" rx="10" fill="#062e22" stroke="#10b981" stroke-width="1.8"/>
+  <text x="600" y="479" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE C: Dual-Lane Y-Merge Vehicle Vision Synchronization Lock</text>
+  <text x="600" y="501" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: vehicleLoopAndCameraMatchedToOrderTicket === true</text>
+  <text x="600" y="521" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Binds each speaker-post order to vehicle color/make/plate thumbnail so</text>
+  <text x="600" y="541" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  cashier Window 1 never charges Car B for Car A's order after Y-merge</text>
+  <text x="600" y="559" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Contextual 1-item upsell ("Add hash browns for $1.50?") lifts AOV +14.8%</text>
+  <text x="600" y="582" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Edge Box + Cloud Hybrid Cost: $0.032/order · Speed-of-Service -24s</text>
+
+  <!-- Right Column -->
+  <rect x="880" y="92" width="290" height="548" rx="12" fill="url(#card76)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1025" y="122" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3. QSR POS &amp; Kitchen Stack</text>
+
+  <rect x="898" y="142" width="254" height="110" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="1025" y="166" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">NCR Aloha / Oracle Micros / Toast</text>
+  <text x="1025" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Real-Time Item &amp; Combo Pricing</text>
+  <text x="1025" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Auto-Meal-Bundle Discount Conversion</text>
+  <text x="1025" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Loyalty App QR / 4-Digit Code Sync</text>
+
+  <rect x="898" y="268" width="254" height="110" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="1025" y="292" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Outdoor Digital Menu Board (ODMB)</text>
+  <text x="1025" y="314" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Sub-150ms Live Cart Visual Update</text>
+  <text x="1025" y="332" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Visual Strike-Through on Removed Onion</text>
+  <text x="1025" y="350" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Weather/Margin-Aware Upsell Banner</text>
+
+  <rect x="898" y="394" width="254" height="110" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="1025" y="418" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Silent Crew Headset Whisper</text>
+  <text x="1025" y="440" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• HME / Panasonic Wireless Beltpack</text>
+  <text x="1025" y="458" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Crew Can Take Over With 1 Button</text>
+  <text x="1025" y="476" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Zero Customer-Facing "Bot Failed" Msg</text>
+
+  <rect x="898" y="520" width="254" height="100" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2"/>
+  <text x="1025" y="544" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Sealed Drive-Thru Metrics</text>
+  <text x="1025" y="566" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• False Allergen Guarantees: 0.00%</text>
+  <text x="1025" y="584" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Prank/86'd Order Injections: 0.00%</text>
+  <text x="1025" y="602" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Average Order Value (AOV): +14.8%</text>
+</svg>

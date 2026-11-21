@@ -5352,6 +5352,34 @@ export function evaluateVoiceNativeAgenticRagGuard(input: {
   };
 }
 
+export interface QsrDriveThruAllergenPosVoiceEvaluation {
+  policyCode: "QSR-DRIVETHRU-ALLERGEN-POS-01";
+  posOrderCommitAndPaymentWindowReleaseAuthorized: boolean;
+  allergenCrossContactWarningAndCrewBridgeTriggered: boolean;
+  prankQuantityOr86dItemBlocked: boolean;
+}
+
+/**
+ * Deterministic QSR Drive-Thru Allergen Cross-Contact Warning Lock, KDS 86'd/Quantity Gate & Dual-Lane Vehicle Sync Guard (`QSR-DRIVETHRU-ALLERGEN-POS-01`).
+ */
+export function evaluateQsrDriveThruAllergenPosVoiceGuard(input: {
+  allItemsInStockOnKdsAndUnderMaxQuantityCap: boolean;
+  vehicleLoopAndCameraMatchedToOrderTicket: boolean;
+  callerDisclosesSevereFoodAllergyOrAnaphylaxis: boolean;
+}): QsrDriveThruAllergenPosVoiceEvaluation {
+  return {
+    policyCode: "QSR-DRIVETHRU-ALLERGEN-POS-01",
+    posOrderCommitAndPaymentWindowReleaseAuthorized:
+      input.allItemsInStockOnKdsAndUnderMaxQuantityCap &&
+      input.vehicleLoopAndCameraMatchedToOrderTicket &&
+      !input.callerDisclosesSevereFoodAllergyOrAnaphylaxis,
+    allergenCrossContactWarningAndCrewBridgeTriggered:
+      input.callerDisclosesSevereFoodAllergyOrAnaphylaxis,
+    prankQuantityOr86dItemBlocked:
+      !input.allItemsInStockOnKdsAndUnderMaxQuantityCap,
+  };
+}
+
 
 
 
