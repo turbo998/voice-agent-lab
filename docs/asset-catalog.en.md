@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (281 Bilingual Guides)
+## 3. Solution Architect Selection Guides (282 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -322,3 +322,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 279. **Foundry Metal Casting, Induction Furnace & Molten Pouring Voice Copilot: Wet-Scrap >=350°C Steam-Explosion Lock, Ladle Preheat & Dry Run-Out Pit Gate & 0ms Crucible Earth-Fault Coil Bridge**: [EN](./foundry-metal-casting-induction-furnace-wet-scrap-explosion-coil-water-leak-ladle-voice-copilot-selection-faq.en.md) | [中文](./foundry-metal-casting-induction-furnace-wet-scrap-explosion-coil-water-leak-ladle-voice-copilot-selection-faq.md)
 280. **Heavy Metal Stamping, Forging Press & Coil Blanking Voice Copilot: OSHA 1910.217 Die-Safety Block & Flywheel 0-RPM Lock, Double-Blank Tonnage Gate & 0ms Dual-Valve Clutch-Brake Bridge**: [EN](./metal-stamping-forging-press-die-safety-block-flywheel-zero-speed-tonnage-overload-voice-copilot-selection-faq.en.md) | [中文](./metal-stamping-forging-press-die-safety-block-flywheel-zero-speed-tonnage-overload-voice-copilot-selection-faq.md)
 281. **Industrial Welding, Robotic Arc/Laser Cell & Pressure-Vessel Voice Copilot: Chlorinated Cleaner UV-Phosgene & Cr(VI) LEV Lock, Argon Confined-Space O2 & Class-4 Laser Gate & 0ms Robot STO Bridge**: [EN](./welding-fabrication-robotic-laser-cell-chlorinated-phosgene-argon-asphyxiation-wps-voice-copilot-selection-faq.en.md) | [中文](./welding-fabrication-robotic-laser-cell-chlorinated-phosgene-argon-asphyxiation-wps-voice-copilot-selection-faq.md)
+282. **CNC Machining, 5-Axis Aerospace Milling & Titanium/Magnesium Swarf Voice Copilot: NFPA 484 Magnesium/Titanium Coolant Lock, ISO 23125 Chuck & ±0.05mm Offset Gate & 0ms Argon/Class-D Fire Bridge**: [EN](./cnc-machining-aerospace-milling-titanium-magnesium-swarf-fire-chuck-clamping-voice-copilot-selection-faq.en.md) | [中文](./cnc-machining-aerospace-milling-titanium-magnesium-swarf-fire-chuck-clamping-voice-copilot-selection-faq.md)

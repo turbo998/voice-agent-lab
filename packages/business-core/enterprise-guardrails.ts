@@ -7255,6 +7255,36 @@ export function evaluateWeldingRoboticLaserPhosgeneArgonVoiceGuard(input: {
   };
 }
 
+export interface CncMachiningTitaniumMagnesiumB11VoiceEvaluation {
+  policyCode: "CNC-MACHINING-TITANIUM-MAGNESIUM-B11-01";
+  spindleStartAndOffsetWriteAuthorized: boolean;
+  magnesiumWaterOrUnsafeChuckOffsetBlocked: boolean;
+  spindleStoMistDamperAndClassDArgonSuppressionBridged: boolean;
+}
+
+/**
+ * Deterministic CNC 5-Axis Milling & Titanium/Magnesium Swarf NFPA 484 Coolant Lock, ISO 23125 Chuck/Offset Gate & 0ms Argon/Class-D Fire Guard (`CNC-MACHINING-TITANIUM-MAGNESIUM-B11-01`).
+ */
+export function evaluateCncMachiningTitaniumMagnesiumB11VoiceGuard(input: {
+  nfpa484SwarfCoolantAndChipPanH2Safe: boolean;
+  chuckDrawbarHskClampAndOffsetCapSafe: boolean;
+  swarfFireOilMistOrSpindleCrashEmergency: boolean;
+}): CncMachiningTitaniumMagnesiumB11VoiceEvaluation {
+  return {
+    policyCode: "CNC-MACHINING-TITANIUM-MAGNESIUM-B11-01",
+    spindleStartAndOffsetWriteAuthorized:
+      input.nfpa484SwarfCoolantAndChipPanH2Safe &&
+      input.chuckDrawbarHskClampAndOffsetCapSafe &&
+      !input.swarfFireOilMistOrSpindleCrashEmergency,
+    magnesiumWaterOrUnsafeChuckOffsetBlocked:
+      !input.nfpa484SwarfCoolantAndChipPanH2Safe ||
+      !input.chuckDrawbarHskClampAndOffsetCapSafe ||
+      input.swarfFireOilMistOrSpindleCrashEmergency,
+    spindleStoMistDamperAndClassDArgonSuppressionBridged:
+      input.swarfFireOilMistOrSpindleCrashEmergency,
+  };
+}
+
 
 
 
