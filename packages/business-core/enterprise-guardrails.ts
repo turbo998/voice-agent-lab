@@ -8365,6 +8365,36 @@ export function evaluateVoiceCapacityPtuCachingFinopsGuard(input: {
   };
 }
 
+export interface OmnichannelIngressSpeakerIsolationEvaluation {
+  policyCode: "OMNICHANNEL-INGRESS-SPEAKER-ISOLATION-01";
+  cleanPrimaryAudioAndSessionAuthorized: boolean;
+  bystanderCrosstalkOrBackgroundKillBlocked: boolean;
+  iceRestartResumeAndOpusFecFallbackBridged: boolean;
+}
+
+/**
+ * Deterministic Omnichannel Voice Ingress Primary-Speaker TSE Lock, In-App WebRTC JWT/CallKit Keep-Alive Gate & 0ms Wi-Fi-to-5G ICE-Restart Resume Guard (`OMNICHANNEL-INGRESS-SPEAKER-ISOLATION-01`).
+ */
+export function evaluateOmnichannelIngressSpeakerIsolationGuard(input: {
+  primaryCallerTargetSpeakerLockedAndBystanderSpeechRejected: boolean;
+  inAppWebrtcAuthenticatedJwtAndCallKitBackgroundAlive: boolean;
+  networkHandoverWifiTo5gOrPacketLossOver12Pct: boolean;
+}): OmnichannelIngressSpeakerIsolationEvaluation {
+  return {
+    policyCode: "OMNICHANNEL-INGRESS-SPEAKER-ISOLATION-01",
+    cleanPrimaryAudioAndSessionAuthorized:
+      input.primaryCallerTargetSpeakerLockedAndBystanderSpeechRejected &&
+      input.inAppWebrtcAuthenticatedJwtAndCallKitBackgroundAlive &&
+      !input.networkHandoverWifiTo5gOrPacketLossOver12Pct,
+    bystanderCrosstalkOrBackgroundKillBlocked:
+      !input.primaryCallerTargetSpeakerLockedAndBystanderSpeechRejected ||
+      !input.inAppWebrtcAuthenticatedJwtAndCallKitBackgroundAlive ||
+      input.networkHandoverWifiTo5gOrPacketLossOver12Pct,
+    iceRestartResumeAndOpusFecFallbackBridged:
+      input.networkHandoverWifiTo5gOrPacketLossOver12Pct,
+  };
+}
+
 
 
 

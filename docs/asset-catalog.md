@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（318 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（319 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -359,3 +359,4 @@
 316. **民航大面积航班延误改签（IRROPS）与高星级酒店集团多语种 AI 语音礼宾（Amadeus/中航信“先占新座 HK、再退旧票 XE”原子锁与非自愿免差价硬锁、酒店 Opera PMS `Stay_ID` 退房 `0ms` 记忆擦除与防外线套取房号门禁、无陪儿童 `UMNR` 特服强切与台风 `50x` 洪峰弹性）方案**：[中文](./airline-irrops-mass-rebooking-hotel-opera-pms-multilingual-voice-concierge-selection-faq.md) | [EN](./airline-irrops-mass-rebooking-hotel-opera-pms-multilingual-voice-concierge-selection-faq.en.md)
 317. **企业自建开源语音栈（Faster-Whisper / SenseVoice + vLLM + CosyVoice 2 / Kokoro）vs. 云端托管 API（Azure AI Speech / OpenAI / Deepgram / ElevenLabs）GPU 并发与 120 万分钟/月 TCO 拐点精算（Silero VAD 静音切除防 Whisper 字幕幻觉与 Apache 2.0 商用许可硬锁、vLLM Prefix Caching 与显存 KV-Cache `<=80%` 水位门禁、本地 GPU 满载 `0ms` 溢出云端 API 省 `50%` 成本）方案**：[中文](./self-hosted-open-source-whisper-vllm-cosyvoice-gpu-vs-cloud-voice-api-tco-selection-faq.md) | [EN](./self-hosted-open-source-whisper-vllm-cosyvoice-gpu-vs-cloud-voice-api-tco-selection-faq.en.md)
 318. **企业语音 AI 容量规划与 FinOps 成本治理（Azure OpenAI PTU 预留吞吐 vs. PayGo 溢出水位、系统提示词前 `2,048 Token` 字节级静态前缀缓存命中 `88.4%` 硬锁、分句级边缘 TTS 音频缓存命中 `72%` 与单通 `$1.20` 算力钱包上限门禁、PTU `>85%` 时 Azure APIM `0ms` 跨区域溢出省 `66.4%` 账单）方案**：[中文](./enterprise-voice-ai-capacity-planning-ptu-paygo-prompt-tts-caching-finops-selection-faq.md) | [EN](./enterprise-voice-ai-capacity-planning-ptu-paygo-prompt-tts-caching-finops-selection-faq.en.md)
+319. **浏览器 WebRTC、移动 App（iOS CallKit）、固话 SIP 与 WhatsApp/微信多渠道语音接入及主说话人背景人声隔离（Target-Speaker Extraction：前 `2.5s` 主说话人声纹与近场能量锁定滤除电视/旁人串音降 `94.2%` 误打断硬锁、App 签名 `Session_JWT` 零验证码直通与 CallKit 防锁屏断麦门禁、Wi-Fi 切 5G `ICE-Restart` 与 15 秒会话冻结恢复）方案**：[中文](./omnichannel-webrtc-mobile-callkit-sip-whatsapp-speaker-isolation-selection-faq.md) | [EN](./omnichannel-webrtc-mobile-callkit-sip-whatsapp-speaker-isolation-selection-faq.en.md)
