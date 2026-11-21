@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (344 Bilingual Guides)
+## 3. Solution Architect Selection Guides (345 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -385,3 +385,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 342. **High-Volume Recruiting (Workday Recruiting / Greenhouse / iCIMS) 24/7 EEOC Bias-Free Voice Screening & Instant Scheduling Architecture: EEOC Protected-Class Scrubber & Zero-Accent-Scoring Lock, Objective Knockout & Pay-Transparency Gate (5d -> 8m Time-to-Interview / +44.2% Show Rate) & 0ms ADA / NYC LL144 Opt-Out Bridge**: [EN](./high-volume-recruiting-workday-greenhouse-eeoc-bias-free-voice-screening-selection-faq.en.md) | [中文](./high-volume-recruiting-workday-greenhouse-eeoc-bias-free-voice-screening-selection-faq.md)
 343. **Dental DSO & Specialty Clinic (Dentrix / Open Dental / Athenahealth) 24/7 Voice Front Desk, Double-Column Chair Slotting & Real-Time EDI 270/271 Architecture: Hygienist+Doctor X-Unit & Antibiotic Pre-Med Lock, 900ms EDI 270/271 6M+1D Frequency Gate & 0ms Ludwig's Angina Preemption / 58.6% Empty-Chair Waitlist Backfill**: [EN](./dental-specialty-clinic-dentrix-edi270-double-column-booking-voice-selection-faq.en.md) | [中文](./dental-specialty-clinic-dentrix-edi270-double-column-booking-voice-selection-faq.md)
 344. **EV Charging Network (OCPP 2.0.1 / ChargePoint / EVgo / NIO / Teld) 24/7 Driver Voice Rescue, Zero-Amp Connector Unlock & Thermal Preemption Architecture: 0.0-Amp Interlock Before OCPP UnlockConnector (94.6% Release in 18s), Fault Idle-Fee Waiver & <=1.5km ReserveNow Gate (-58.4% Truck Rolls) & 0ms Thermal Contactor Trip + 15m Evacuation**: [EN](./ev-charging-network-ocpp-connector-unlock-thermal-preemption-voice-selection-faq.en.md) | [中文](./ev-charging-network-ocpp-connector-unlock-thermal-preemption-voice-selection-faq.md)
+345. **Consumer Electronics, Smart Home & Robotics (AppleCare / Dyson / DJI / Lenovo / Roborock) Multimodal Visual Triage, OTA Self-Healing & RMA Voice Architecture: Cloud IoT + Camera Triage Lock (-49.2% NTF Returns), Advance-Exchange Activation-Lock OFF Gate & 0ms Swollen-Battery (UN3480) Courier Block + DOT Fire-Safe Box Bridge**: [EN](./consumer-electronics-smart-home-visual-troubleshooting-ota-rma-voice-selection-faq.en.md) | [中文](./consumer-electronics-smart-home-visual-troubleshooting-ota-rma-voice-selection-faq.md)

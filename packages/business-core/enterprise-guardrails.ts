@@ -9145,6 +9145,36 @@ export function evaluateEvChargingOcppUnlockThermalGuard(input: {
   };
 }
 
+export interface ConsumerElectronicsOtaRmaBatteryEvaluation {
+  policyCode: "CONSUMER-ELECTRONICS-OTA-RMA-BATTERY-01";
+  rmaAndAdvanceReplacementAuthorized: boolean;
+  prematureNtfRmaOrLockedDeviceBlocked: boolean;
+  swollenBatteryHazmatBoxAndStoreBridged: boolean;
+}
+
+/**
+ * Deterministic Consumer Electronics & Smart Home IoT/Visual Pre-RMA Lock, Advance-Exchange Activation-Lock OFF Gate & 0ms Swollen-Battery UN3480 Courier Block Guard (`CONSUMER-ELECTRONICS-OTA-RMA-BATTERY-01`).
+ */
+export function evaluateConsumerElectronicsOtaRmaBatteryGuard(input: {
+  iotDiagnosticAndVisualResetAttemptedBeforeRmaLabelIssued: boolean;
+  advanceExchangeSerialWarrantyAndCollateralHoldVerified: boolean;
+  swollenLithiumBatteryOrSmokeBlocksCourierMailAndDispatchesFireSafeBox: boolean;
+}): ConsumerElectronicsOtaRmaBatteryEvaluation {
+  return {
+    policyCode: "CONSUMER-ELECTRONICS-OTA-RMA-BATTERY-01",
+    rmaAndAdvanceReplacementAuthorized:
+      input.iotDiagnosticAndVisualResetAttemptedBeforeRmaLabelIssued &&
+      input.advanceExchangeSerialWarrantyAndCollateralHoldVerified &&
+      !input.swollenLithiumBatteryOrSmokeBlocksCourierMailAndDispatchesFireSafeBox,
+    prematureNtfRmaOrLockedDeviceBlocked:
+      !input.iotDiagnosticAndVisualResetAttemptedBeforeRmaLabelIssued ||
+      !input.advanceExchangeSerialWarrantyAndCollateralHoldVerified ||
+      input.swollenLithiumBatteryOrSmokeBlocksCourierMailAndDispatchesFireSafeBox,
+    swollenBatteryHazmatBoxAndStoreBridged:
+      input.swollenLithiumBatteryOrSmokeBlocksCourierMailAndDispatchesFireSafeBox,
+  };
+}
+
 
 
 
