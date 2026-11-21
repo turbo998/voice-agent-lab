@@ -6475,6 +6475,36 @@ export function evaluateRadiologyMriFerromagneticContrastVoiceGuard(input: {
   };
 }
 
+export interface ColdStorageReeferFsmaAmmoniaVoiceEvaluation {
+  policyCode: "COLD-STORAGE-REEFER-FSMA-AMMONIA-01";
+  coldStoragePutawayAndPickAuthorized: boolean;
+  thawedRefreezeOrCryoOvertimeBlocked: boolean;
+  ammoniaUpwindEvacAndFreezerDoorReleaseBridged: boolean;
+}
+
+/**
+ * Deterministic Cold-Storage (-25°C), FDA FSMA 204 Core Pulp-Temp & Anti-Refreeze Lock, 45-Min Cryo Gate & 0ms Ammonia Upwind Guard (`COLD-STORAGE-REEFER-FSMA-AMMONIA-01`).
+ */
+export function evaluateColdStorageReeferFsmaAmmoniaVoiceGuard(input: {
+  corePulpTempAndAntiRefreezeVerified: boolean;
+  deepFreezeExposureAndDockPrecoolSafe: boolean;
+  ammoniaLeakOrFreezerManDownEntrapment: boolean;
+}): ColdStorageReeferFsmaAmmoniaVoiceEvaluation {
+  return {
+    policyCode: "COLD-STORAGE-REEFER-FSMA-AMMONIA-01",
+    coldStoragePutawayAndPickAuthorized:
+      input.corePulpTempAndAntiRefreezeVerified &&
+      input.deepFreezeExposureAndDockPrecoolSafe &&
+      !input.ammoniaLeakOrFreezerManDownEntrapment,
+    thawedRefreezeOrCryoOvertimeBlocked:
+      !input.corePulpTempAndAntiRefreezeVerified ||
+      !input.deepFreezeExposureAndDockPrecoolSafe ||
+      input.ammoniaLeakOrFreezerManDownEntrapment,
+    ammoniaUpwindEvacAndFreezerDoorReleaseBridged:
+      input.ammoniaLeakOrFreezerManDownEntrapment,
+  };
+}
+
 
 
 
