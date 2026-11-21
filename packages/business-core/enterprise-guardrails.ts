@@ -7435,6 +7435,36 @@ export function evaluateOpticalFiberPreformDrawingSicl4VoiceGuard(input: {
   };
 }
 
+export interface HvCableXlpeCvFaradayIeee510VoiceEvaluation {
+  policyCode: "HV-CABLE-XLPE-CV-FARADAY-IEEE510-01";
+  cvSpliceAndFaradayEntryAuthorized: boolean;
+  pressurizedCvTubeOrUnbledHvCableBlocked: boolean;
+  gravityCrowbarEarthStranderBrakeAndMethaneExhaustBridged: boolean;
+}
+
+/**
+ * Deterministic High-Voltage Power Cable & 150m XLPE CV-Tower 0.00 bar/Methane Lock, IEEE 510 800kV Capacitive-Bleed Earth Gate & 0ms Gravity Crowbar Guard (`HV-CABLE-XLPE-CV-FARADAY-IEEE510-01`).
+ */
+export function evaluateHvCableXlpeCvFaradayIeee510VoiceGuard(input: {
+  cvTubeZeroPressureAndMethaneLelSafe: boolean;
+  faradayCageZeroKvEarthSwitchAndStranderPinSafe: boolean;
+  faradayBreachMethaneSpikeOrStranderWireBreak: boolean;
+}): HvCableXlpeCvFaradayIeee510VoiceEvaluation {
+  return {
+    policyCode: "HV-CABLE-XLPE-CV-FARADAY-IEEE510-01",
+    cvSpliceAndFaradayEntryAuthorized:
+      input.cvTubeZeroPressureAndMethaneLelSafe &&
+      input.faradayCageZeroKvEarthSwitchAndStranderPinSafe &&
+      !input.faradayBreachMethaneSpikeOrStranderWireBreak,
+    pressurizedCvTubeOrUnbledHvCableBlocked:
+      !input.cvTubeZeroPressureAndMethaneLelSafe ||
+      !input.faradayCageZeroKvEarthSwitchAndStranderPinSafe ||
+      input.faradayBreachMethaneSpikeOrStranderWireBreak,
+    gravityCrowbarEarthStranderBrakeAndMethaneExhaustBridged:
+      input.faradayBreachMethaneSpikeOrStranderWireBreak,
+  };
+}
+
 
 
 
