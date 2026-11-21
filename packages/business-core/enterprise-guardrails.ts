@@ -8125,6 +8125,36 @@ export function evaluateEcommerceWismoRmaSurgeVoiceGuard(input: {
   };
 }
 
+export interface VoiceOtelSyntheticCicdCanaryEvaluation {
+  policyCode: "VOICE-OTEL-SYNTHETIC-CICD-CANARY-01";
+  canaryPromotionAndLiveTrafficAuthorized: boolean;
+  untestedAudioOrShadowSideEffectBlocked: boolean;
+  canaryAutoRollbackAndMemoryQuarantineBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice Agent 8kHz Synthetic CI/CD Round-Trip Lock, 6-Span OTel Shadow Dry-Run Fence & 0ms Canary Auto-Rollback Guard (`VOICE-OTEL-SYNTHETIC-CICD-CANARY-01`).
+ */
+export function evaluateVoiceOtelSyntheticCicdCanaryGuard(input: {
+  syntheticAudioRegressionSuite100PctPassedAndRoundTripVerified: boolean;
+  otelTurnWaterfallSpansCompleteAndShadowDryRunIsolated: boolean;
+  canaryTtfaOver800msOrBargeInRegressionDetected: boolean;
+}): VoiceOtelSyntheticCicdCanaryEvaluation {
+  return {
+    policyCode: "VOICE-OTEL-SYNTHETIC-CICD-CANARY-01",
+    canaryPromotionAndLiveTrafficAuthorized:
+      input.syntheticAudioRegressionSuite100PctPassedAndRoundTripVerified &&
+      input.otelTurnWaterfallSpansCompleteAndShadowDryRunIsolated &&
+      !input.canaryTtfaOver800msOrBargeInRegressionDetected,
+    untestedAudioOrShadowSideEffectBlocked:
+      !input.syntheticAudioRegressionSuite100PctPassedAndRoundTripVerified ||
+      !input.otelTurnWaterfallSpansCompleteAndShadowDryRunIsolated ||
+      input.canaryTtfaOver800msOrBargeInRegressionDetected,
+    canaryAutoRollbackAndMemoryQuarantineBridged:
+      input.canaryTtfaOver800msOrBargeInRegressionDetected,
+  };
+}
+
 
 
 

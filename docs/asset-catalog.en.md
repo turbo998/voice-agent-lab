@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (310 Bilingual Guides)
+## 3. Solution Architect Selection Guides (311 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -351,3 +351,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 308. **In-Vehicle Cockpit & Smart Wearable Hardware Edge-Cloud Multimodal Voice Architecture Selection (On-Device NPU + Cloud GPT-4o Realtime / Gemini Live): 4-Zone Seat/Speed Safety Lock, Deictic <60KB Keyframe Burst (-85.4% Power) & Privacy LED Gate & 0ms Tunnel NPU Fallback Bridge**: [EN](./in-vehicle-cockpit-smart-hardware-edge-cloud-webrtc-multimodal-voice-architecture-selection-faq.en.md) | [中文](./in-vehicle-cockpit-smart-hardware-edge-cloud-webrtc-multimodal-voice-architecture-selection-faq.md)
 309. **Enterprise Legacy PBX & CCaaS (Genesys / Avaya / Cisco / Microsoft Teams Phone) Zero-Downtime AI Voice Migration Guide: Front-Door SBC SIP Deflection (-55.4% TCO), Pre-Transfer ACD/Graph Presence Gate & 0ms SBC Fail-Open Bypass**: [EN](./legacy-pbx-ccaas-genesys-avaya-cisco-teams-ai-voice-migration-selection-faq.en.md) | [中文](./legacy-pbx-ccaas-genesys-avaya-cisco-teams-ai-voice-migration-selection-faq.md)
 310. **E-Commerce & Retail Omnichannel Voice AI (0-Sec ANI Order Preload WISMO, Return-to-Exchange 38.2% GMV Retention Lock, Anti-Abuse RMA Fraud Gate & 0ms 10x Black Friday / 11.11 PTU+PayGo Surge Spillover)**: [EN](./ecommerce-retail-wismo-returns-exchange-retention-10x-surge-voice-architecture-selection-faq.en.md) | [中文](./ecommerce-retail-wismo-returns-exchange-retention-10x-surge-voice-architecture-selection-faq.md)
+311. **Enterprise Voice Agent OpenTelemetry Observability, Synthetic Audio CI/CD Regression (Coval / Hamming vs. Custom) & Shadow/Canary Rollout Guide: 8kHz Round-Trip TTS->STT Lock, 6-Span OTel & Shadow Dry-Run Fence & 0ms Canary Auto-Rollback Bridge**: [EN](./enterprise-voice-agent-otel-observability-synthetic-cicd-canary-rollout-selection-faq.en.md) | [中文](./enterprise-voice-agent-otel-observability-synthetic-cicd-canary-rollout-selection-faq.md)
