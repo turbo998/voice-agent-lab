@@ -6265,6 +6265,36 @@ export function evaluateOrthoRehabWeightbearingDvtVoiceGuard(input: {
   };
 }
 
+export interface EstateTrustUndueInfluenceVoiceEvaluation {
+  policyCode: "ESTATE-TRUST-UNDUE-INFLUENCE-01";
+  dispositiveIntakeAndTrustReviewAuthorized: boolean;
+  undueInfluencePrivilegeWaiverOrUplBlocked: boolean;
+  actecPartnerCounselAndFinra2165HoldBridged: boolean;
+}
+
+/**
+ * Deterministic Estate Planning & Family Trust Alone-in-Room Anti-Undue-Influence, SNT/UPL & 0ms Elder-Abuse Guard (`ESTATE-TRUST-UNDUE-INFLUENCE-01`).
+ */
+export function evaluateEstateTrustUndueInfluenceVoiceGuard(input: {
+  grantorAloneAndTestamentaryCapacityVerified: boolean;
+  attorneyReviewedAndFormalitiesMatched: boolean;
+  elderAbuseCoercionOrDeathbedEmergency: boolean;
+}): EstateTrustUndueInfluenceVoiceEvaluation {
+  return {
+    policyCode: "ESTATE-TRUST-UNDUE-INFLUENCE-01",
+    dispositiveIntakeAndTrustReviewAuthorized:
+      input.grantorAloneAndTestamentaryCapacityVerified &&
+      input.attorneyReviewedAndFormalitiesMatched &&
+      !input.elderAbuseCoercionOrDeathbedEmergency,
+    undueInfluencePrivilegeWaiverOrUplBlocked:
+      !input.grantorAloneAndTestamentaryCapacityVerified ||
+      !input.attorneyReviewedAndFormalitiesMatched ||
+      input.elderAbuseCoercionOrDeathbedEmergency,
+    actecPartnerCounselAndFinra2165HoldBridged:
+      input.elderAbuseCoercionOrDeathbedEmergency,
+  };
+}
+
 
 
 
