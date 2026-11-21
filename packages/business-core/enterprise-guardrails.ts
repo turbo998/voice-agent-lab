@@ -5551,6 +5551,35 @@ export function evaluateWaterUtilityScadaDosingVoiceGuard(input: {
   };
 }
 
+export interface EarningsIrRegFdMnpiVoiceEvaluation {
+  policyCode: "EARNINGS-IR-REG-FD-MNPI-01";
+  irFinancialMetricSpokenResponseAuthorized: boolean;
+  mnpiOrUnfiledGuidanceBlocked: boolean;
+  vpInvestorRelationsAndSecuritiesCounselEscalated: boolean;
+}
+
+/**
+ * Deterministic Public Company Earnings Call & IR SEC Reg FD Zero-MNPI Lock, Reg G GAAP/Non-GAAP Pairing & 0ms Activist Guard (`EARNINGS-IR-REG-FD-MNPI-01`).
+ */
+export function evaluateEarningsIrRegFdMnpiVoiceGuard(input: {
+  publicFilingVerifiedAndEmbargoReleased: boolean;
+  gaapReconciliationPairedWithNonGaap: boolean;
+  unfiledGuidanceOrMnaRumorOrActivistProbe: boolean;
+}): EarningsIrRegFdMnpiVoiceEvaluation {
+  return {
+    policyCode: "EARNINGS-IR-REG-FD-MNPI-01",
+    irFinancialMetricSpokenResponseAuthorized:
+      input.publicFilingVerifiedAndEmbargoReleased &&
+      input.gaapReconciliationPairedWithNonGaap &&
+      !input.unfiledGuidanceOrMnaRumorOrActivistProbe,
+    mnpiOrUnfiledGuidanceBlocked:
+      !input.publicFilingVerifiedAndEmbargoReleased ||
+      input.unfiledGuidanceOrMnaRumorOrActivistProbe,
+    vpInvestorRelationsAndSecuritiesCounselEscalated:
+      input.unfiledGuidanceOrMnaRumorOrActivistProbe,
+  };
+}
+
 
 
 

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg225" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="card225" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg225)" rx="16"/>
+  <text x="600" y="40" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Public Company Earnings Call, Investor Relations &amp; Buy-Side Voice Copilot</text>
+  <text x="600" y="66" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">SEC Reg FD Zero-MNPI Leakage Gate · Exact GAAP vs Non-GAAP Table Lock · 0ms Activist &amp; Guidance Escalation (EARNINGS-IR-REG-FD-MNPI-01)</text>
+
+  <!-- Left Column: IR Channels & Buy-Side Analysts -->
+  <rect x="36" y="92" width="260" height="545" rx="12" fill="url(#card225)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="166" y="122" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. IR &amp; Analyst Voice Channels</text>
+
+  <rect x="56" y="142" width="220" height="108" rx="8" fill="#0f172a" stroke="#60a5fa"/>
+  <text x="166" y="166" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Live Earnings Call &amp; Webcast</text>
+  <text x="166" y="188" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Q4 / 10-K / 10-Q / HKEX A-Share</text>
+  <text x="166" y="206" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Real-time multilingual IR simulcast</text>
+  <text x="166" y="224" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Sell-side Q&amp;A queue moderation</text>
+
+  <rect x="56" y="266" width="220" height="112" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="166" y="290" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">24×7 Investor &amp; Shareholder Line</text>
+  <text x="166" y="312" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Retail &amp; institutional IR voice FAQ</text>
+  <text x="166" y="330" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Dividend, buyback &amp; 8-K inquiries</text>
+  <text x="166" y="348" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Quiet-period blackout enforcement</text>
+
+  <rect x="56" y="394" width="220" height="222" rx="8" fill="#1e1b4b" stroke="#a78bfa"/>
+  <text x="166" y="420" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Executive Q&amp;A Murder-Board</text>
+  <text x="166" y="444" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• CEO/CFO pre-call hostile Q&amp;A drill</text>
+  <text x="166" y="464" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Gross margin compression grilling</text>
+  <text x="166" y="484" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Vocal hesitation &amp; hedge detection</text>
+  <text x="166" y="504" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Safe-harbor forward-looking check</text>
+  <text x="166" y="532" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Sub-500ms Analyst Sparring</text>
+
+  <!-- Center Column: EARNINGS-IR-REG-FD-MNPI-01 Guardrail Engine -->
+  <rect x="326" y="92" width="548" height="545" rx="12" fill="url(#card225)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="600" y="122" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. Deterministic Reg FD &amp; GAAP Fact Firewall (EARNINGS-IR-REG-FD-MNPI-01)</text>
+
+  <!-- Gate 1 -->
+  <rect x="350" y="142" width="500" height="145" rx="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate A: SEC Reg FD / MAR Zero-MNPI &amp; Quiet-Period Hard Lock</text>
+  <text x="600" y="190" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Corpus restricted 100% to timestamped public EDGAR / HKEX / RNS filings</text>
+  <text x="600" y="210" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Zero access to internal ERP, CRM pipeline, or unannounced M&amp;A / guidance</text>
+  <text x="600" y="230" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Blocks selective disclosure of mid-quarter run-rate or unfiled guidance</text>
+  <text x="600" y="252" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Auto-injects PSLRA Safe-Harbor disclaimer before any forward-looking guidance summary</text>
+
+  <!-- Gate 2 -->
+  <rect x="350" y="302" width="500" height="150" rx="10" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="600" y="326" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate B: Exact GAAP vs Non-GAAP &amp; Basis-Point Reconciliation Lock</text>
+  <text x="600" y="350" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• XBRL / iXBRL deterministic cell binding (Revenue, Diluted EPS, Free Cash Flow)</text>
+  <text x="600" y="370" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• SEC Regulation G compliance: Non-GAAP metric always paired with GAAP equivalent</text>
+  <text x="600" y="390" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Prevents LLM rounding errors ($1.42B vs $1.42M, bps vs percentage points)</text>
+  <text x="600" y="412" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Spoken citations include exact filing form, fiscal period, and exhibit table number</text>
+
+  <!-- Gate 3 -->
+  <rect x="350" y="468" width="500" height="148" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="600" y="492" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate C: 0ms Activist Investor, Rumor &amp; Unfiled Guidance Escalation</text>
+  <text x="600" y="516" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Detects M&amp;A rumors, short-seller reports, SEC subpoena or CFO change queries</text>
+  <text x="600" y="536" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Immediate 0ms hard-stop on speculative commentary ("We only reference filed disclosures")</text>
+  <text x="600" y="556" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Routes institutional analyst &amp; media inquiries to VP of Investor Relations + Legal</text>
+  <text x="600" y="580" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Immutable WORM audit trail of every IR question, XBRL citation, and Reg FD check</text>
+
+  <!-- Right Column: Enterprise Systems & Audit -->
+  <rect x="904" y="92" width="260" height="545" rx="12" fill="url(#card225)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="1034" y="122" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">3. Filings &amp; IR Governance</text>
+
+  <rect x="924" y="142" width="220" height="145" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="1034" y="166" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Verified Public Filing Vault</text>
+  <text x="1034" y="190" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• SEC EDGAR 10-K / 10-Q / 8-K</text>
+  <text x="1034" y="210" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• iXBRL Structured Metric Graph</text>
+  <text x="1034" y="230" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Earnings Release &amp; Slide Deck</text>
+  <text x="1034" y="250" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• SHA-256 Embargo Release Gate</text>
+
+  <rect x="924" y="302" width="220" height="150" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="1034" y="326" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">IR CRM &amp; Analyst Desk</text>
+  <text x="1034" y="350" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Q4 Inc. / Nasdaq IR Insight</text>
+  <text x="1034" y="370" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Institutional holder tiering</text>
+  <text x="1034" y="390" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 1x1 NDR callback scheduling</text>
+  <text x="1034" y="410" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Consensus vs reported delta card</text>
+
+  <rect x="924" y="468" width="220" height="148" rx="8" fill="#0f172a" stroke="#a855f7"/>
+  <text x="1034" y="492" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Securities Counsel &amp; WORM</text>
+  <text x="1034" y="516" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Reg FD / EU MAR audit ledger</text>
+  <text x="1034" y="536" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 8-K remediation alert within 24h</text>
+  <text x="1034" y="556" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Zero-MNPI training opt-out</text>
+  <text x="1034" y="576" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">• 100% SEC Reg FD Compliance</text>
+</svg>

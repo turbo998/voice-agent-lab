@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（224 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（225 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -265,3 +265,4 @@
 222. **企业级智能外呼（预约确认 / 客户续费 / 物流派前通知 / 贷后提醒）与投机式毫秒级答录机识别（Speculative AMD）、TCPA/防骚扰合规架构（消除 2.5 秒“推销电话死寂停顿”、语音信箱滴声后精准留言与“别再打给我”0ms 全局退订硬锁）方案**：[中文](./outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.md) | [EN](./outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.en.md)
 223. **国家级博物馆、文化遗产石窟与科技馆 AI 多模态实时语音导览官（Museum Multimodal Voice Docent：故宫 / 国家博物馆 / 卢浮宫 / 敦煌研究院：策展知识图谱 CIDOC-CRM 史实零野史幻觉硬锁、UWB+视觉双模 30cm 防邻柜串讲锁与丝绸古画展厅禁闪光灯 0ms 硬件闭锁）方案**：[中文](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.md) | [EN](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.en.md)
 224. **城市水务集团、自来水厂加药消毒（SCADA）与防汛排涝抢修（威立雅 Veolia / 苏伊士 / 智慧水务 GIS / EPA SDWA）24×7 语音调度与客服热线（防 Oldsmar 氢氧化钠/液氯百倍误投加硬锁、管网水压 <20 PSI 沸水令与大肠杆菌阴性复水硬锁、主干管爆裂与血液透析中心保供 0ms 强切）方案**：[中文](./water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.md) | [EN](./water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.en.md)
+225. **上市公司财报电话会（Earnings Call）、投资者关系（IR）与高管路演对练 AI 语音方案（美股 SEC EDGAR / 港股 / A 股业绩会：SEC Reg FD 零内幕信息 MNPI 越界硬锁、iXBRL GAAP/Non-GAAP 调节表同报硬锁与激进做空/并购传闻 0ms 强切）**：[中文](./earnings-call-investor-relations-reg-fd-mnpi-sec-filing-voice-briefing-selection-faq.md) | [EN](./earnings-call-investor-relations-reg-fd-mnpi-sec-filing-voice-briefing-selection-faq.en.md)
