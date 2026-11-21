@@ -6115,6 +6115,36 @@ export function evaluateWetLabSdsPyrophoricHfVoiceGuard(input: {
   };
 }
 
+export interface StadiumEventCrowdAedVoiceEvaluation {
+  policyCode: "STADIUM-EVENT-CROWD-AED-01";
+  wayfindingAndReturnToPlayAuthorized: boolean;
+  crushCorridorOrConcussionLightningBlocked: boolean;
+  nfcSeatPinAedAndVenueCommandBridged: boolean;
+}
+
+/**
+ * Deterministic 80,000-Seat Stadium Anti-Crowd-Crush (<4.0 pax/m²), 8-Mile Lightning/SCAT6 & 0ms Bowl AED Guard (`STADIUM-EVENT-CROWD-AED-01`).
+ */
+export function evaluateStadiumEventCrowdAedVoiceGuard(input: {
+  crowdDensityBelowCrushThresholdAndEgressBalanced: boolean;
+  lightningClearAndConcussionReturnToPlaySafe: boolean;
+  fanCardiacArrestCrowdCrushOrLostChild: boolean;
+}): StadiumEventCrowdAedVoiceEvaluation {
+  return {
+    policyCode: "STADIUM-EVENT-CROWD-AED-01",
+    wayfindingAndReturnToPlayAuthorized:
+      input.crowdDensityBelowCrushThresholdAndEgressBalanced &&
+      input.lightningClearAndConcussionReturnToPlaySafe &&
+      !input.fanCardiacArrestCrowdCrushOrLostChild,
+    crushCorridorOrConcussionLightningBlocked:
+      !input.crowdDensityBelowCrushThresholdAndEgressBalanced ||
+      !input.lightningClearAndConcussionReturnToPlaySafe ||
+      input.fanCardiacArrestCrowdCrushOrLostChild,
+    nfcSeatPinAedAndVenueCommandBridged:
+      input.fanCardiacArrestCrowdCrushOrLostChild,
+  };
+}
+
 
 
 
