@@ -8725,6 +8725,36 @@ export function evaluatePharmacyPbmRefillPriorAuthLasaGuard(input: {
   };
 }
 
+export interface AutoDealershipDmsRecallLoanerEvaluation {
+  policyCode: "AUTO-DEALERSHIP-DMS-RECALL-LOANER-01";
+  serviceAppointmentAndLoanerAuthorized: boolean;
+  missingRecallPartOrUnbookedLoanerPromiseBlocked: boolean;
+  openRoPreAnnounceOrDoNotDriveTowBridged: boolean;
+}
+
+/**
+ * Deterministic Automotive Dealership DMS Tech Skill-Bay & Recall Parts-in-Stock Lock, Atomic Loaner Fleet Gate & 0ms Open-RO / Do-Not-Drive Tow Guard (`AUTO-DEALERSHIP-DMS-RECALL-LOANER-01`).
+ */
+export function evaluateAutoDealershipDmsRecallLoanerGuard(input: {
+  technicianSkillBayAndRecallPartsInStockVerified: boolean;
+  courtesyLoanerVehicleReservedAtomicallyAndTradeInRangeBounded: boolean;
+  openRepairOrderStatusCheckOrSafetyDoNotDriveRecallTriggered: boolean;
+}): AutoDealershipDmsRecallLoanerEvaluation {
+  return {
+    policyCode: "AUTO-DEALERSHIP-DMS-RECALL-LOANER-01",
+    serviceAppointmentAndLoanerAuthorized:
+      input.technicianSkillBayAndRecallPartsInStockVerified &&
+      input.courtesyLoanerVehicleReservedAtomicallyAndTradeInRangeBounded &&
+      !input.openRepairOrderStatusCheckOrSafetyDoNotDriveRecallTriggered,
+    missingRecallPartOrUnbookedLoanerPromiseBlocked:
+      !input.technicianSkillBayAndRecallPartsInStockVerified ||
+      !input.courtesyLoanerVehicleReservedAtomicallyAndTradeInRangeBounded ||
+      input.openRepairOrderStatusCheckOrSafetyDoNotDriveRecallTriggered,
+    openRoPreAnnounceOrDoNotDriveTowBridged:
+      input.openRepairOrderStatusCheckOrSafetyDoNotDriveRecallTriggered,
+  };
+}
+
 
 
 
