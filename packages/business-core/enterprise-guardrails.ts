@@ -7075,6 +7075,36 @@ export function evaluateAsphaltHmaBitumenBoiloverH2sVoiceGuard(input: {
   };
 }
 
+export interface CeramicsKilnBallmillSilicaVoiceEvaluation {
+  policyCode: "CERAMICS-KILN-BALLMILL-SILICA-01";
+  ballMillUnboltAndPressDieWipeAuthorized: boolean;
+  pressurizedMillOrUnblockedPressBlocked: boolean;
+  kilnRollerOscillationAndSprayDryerDelugeBridged: boolean;
+}
+
+/**
+ * Deterministic Ceramics & Sanitaryware 40t Ball-Mill 0.00 MPa Bleed & Silica Wet-Clean Lock, 10,000t Press Scotch-Block Gate & 0ms Kiln-Wreck Guard (`CERAMICS-KILN-BALLMILL-SILICA-01`).
+ */
+export function evaluateCeramicsKilnBallmillSilicaVoiceGuard(input: {
+  ballMillZeroPressureAndSilicaWetCleanSafe: boolean;
+  pressMechanicalBlockAndKilnFourVolumePurgeSafe: boolean;
+  kilnRollerWreckSprayDryerFireOrPressBreach: boolean;
+}): CeramicsKilnBallmillSilicaVoiceEvaluation {
+  return {
+    policyCode: "CERAMICS-KILN-BALLMILL-SILICA-01",
+    ballMillUnboltAndPressDieWipeAuthorized:
+      input.ballMillZeroPressureAndSilicaWetCleanSafe &&
+      input.pressMechanicalBlockAndKilnFourVolumePurgeSafe &&
+      !input.kilnRollerWreckSprayDryerFireOrPressBreach,
+    pressurizedMillOrUnblockedPressBlocked:
+      !input.ballMillZeroPressureAndSilicaWetCleanSafe ||
+      !input.pressMechanicalBlockAndKilnFourVolumePurgeSafe ||
+      input.kilnRollerWreckSprayDryerFireOrPressBreach,
+    kilnRollerOscillationAndSprayDryerDelugeBridged:
+      input.kilnRollerWreckSprayDryerFireOrPressBreach,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（275 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（276 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -316,3 +316,4 @@
 273. **水泥熟料基地（海螺水泥 / 天山水泥 / 豪瑞 Holcim / 海德堡材料 / 中材国际 / 史密斯 FLSmidth）、850°C 五级旋风预热器清堵与回转窑/煤磨 24×7 免提语音副驾方案（旋风筒“严禁堵点下方开孔”与下层塔架 UWB 全员撤离硬锁、煤磨 CO 阴燃禁开门充氮与回转窑防偏重反转机械销门禁及窑尾电收尘 CO≥0.8% 0ms 高压跳闸强切）**：[中文](./cement-plant-rotary-kiln-preheater-cyclone-jam-coal-mill-co-silo-voice-copilot-selection-faq.md) | [EN](./cement-plant-rotary-kiln-preheater-cyclone-jam-coal-mill-co-silo-voice-copilot-selection-faq.en.md)
 274. **商品混凝土搅拌站（三一重工 SANY / 中联重科 / 华润混凝土 / CEMEX / Command Alkon）、搅拌车罐内清渣 LOTO 与 62m 臂架泵车 24×7 AI 语音调度方案（ACI 318 最大水胶比车载水表死锁防工地私自加水与 90 分钟初凝硬锁、进搅拌筒风镐打灰机械防转销与高压线 ≥6m 防触电门禁及 85-Bar 堵管 0ms 自动反泵退压归零/严禁压缩空气吹管强切）**：[中文](./ready-mix-concrete-batching-mixer-drum-loto-water-cement-ratio-pump-boom-powerline-voice-dispatch-selection-faq.md) | [EN](./ready-mix-concrete-batching-mixer-drum-loto-water-cement-ratio-pump-boom-powerline-voice-dispatch-selection-faq.en.md)
 275. **沥青混凝土搅拌站（HMA）、热沥青罐区与高等级公路摊铺（维特根 Wirtgen / 安迈 Ammann / 阿斯泰克 Astec / 中交路桥）24×7 免提语音副驾方案（175°C 热沥青与含水乳化沥青防混装突沸炸顶 Boilover 硬锁、API 2023 加热盘管浸没 ≥15cm 防硫化亚铁 FeS 自燃与罐顶 H2S 禁开孔门禁及热沥青粘肤 0ms 只冲冷水 20m 严禁硬撕或擦柴油强切）**：[中文](./asphalt-hot-mix-plant-bitumen-boilover-h2s-pyrophoric-iron-sulfide-paver-voice-copilot-selection-faq.md) | [EN](./asphalt-hot-mix-plant-bitumen-boilover-h2s-pyrophoric-iron-sulfide-paver-voice-copilot-selection-faq.en.md)
+276. **建筑陶瓷、岩板大板与卫浴洁具制造基地（科勒 Kohler / TOTO / 东鹏控股 / 马可波罗 / 蒙娜丽莎 / 萨克米 SACMI）24×7 免提语音副驾方案（40 吨球磨机 0.00 MPa 排气泄压开盖与石英粉尘 SiO2 严禁干扫硬锁、10,000 吨液压压砖机机械安全垫块与 1,220°C 辊道窑 4 倍容积吹扫门禁及叠坯断辊 0ms 关燃气切正反摆动护辊强切）**：[中文](./ceramics-porcelain-sanitaryware-roller-kiln-silica-slurry-spray-dryer-loto-voice-copilot-selection-faq.md) | [EN](./ceramics-porcelain-sanitaryware-roller-kiln-silica-slurry-spray-dryer-loto-voice-copilot-selection-faq.en.md)
