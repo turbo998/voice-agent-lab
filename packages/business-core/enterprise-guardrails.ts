@@ -9685,6 +9685,36 @@ export function evaluateFitnessGymMindbodyFtcCancelGuard(input: {
   };
 }
 
+export interface PackagingPrintProofLabelRecallEvaluation {
+  policyCode: "PACKAGING-PRINT-PROOF-LABEL-RECALL-01";
+  pressRunAndReorderAuthorized: boolean;
+  unproofedVerbalEditOrBarcodeFaultBlocked: boolean;
+  allergenOrPharmaMisprintPressHalted: boolean;
+}
+
+/**
+ * Deterministic Commercial Packaging, Print & Label (Esko / ePS Pace) Signed PDF Proof SHA-256 Press Lock, Preflight Gate & 0ms Allergen/Pharma Misprint Halt Guard (`PACKAGING-PRINT-PROOF-LABEL-RECALL-01`).
+ */
+export function evaluatePackagingPrintProofLabelRecallGuard(input: {
+  signedPdfArtworkProofHashVerifiedBeforePressRun: boolean;
+  preflightBleedDieLinePantoneAndGs1BarcodeVerified: boolean;
+  foodAllergenMisprintOrPharmaLabelMixupPressHaltEscalation: boolean;
+}): PackagingPrintProofLabelRecallEvaluation {
+  return {
+    policyCode: "PACKAGING-PRINT-PROOF-LABEL-RECALL-01",
+    pressRunAndReorderAuthorized:
+      input.signedPdfArtworkProofHashVerifiedBeforePressRun &&
+      input.preflightBleedDieLinePantoneAndGs1BarcodeVerified &&
+      !input.foodAllergenMisprintOrPharmaLabelMixupPressHaltEscalation,
+    unproofedVerbalEditOrBarcodeFaultBlocked:
+      !input.signedPdfArtworkProofHashVerifiedBeforePressRun ||
+      !input.preflightBleedDieLinePantoneAndGs1BarcodeVerified ||
+      input.foodAllergenMisprintOrPharmaLabelMixupPressHaltEscalation,
+    allergenOrPharmaMisprintPressHalted:
+      input.foodAllergenMisprintOrPharmaLabelMixupPressHaltEscalation,
+  };
+}
+
 
 
 

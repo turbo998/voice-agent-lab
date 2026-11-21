@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (362 Bilingual Guides)
+## 3. Solution Architect Selection Guides (363 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -403,3 +403,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 360. **AgriTech, Smart Machinery & Livestock (John Deere Operations Center / Climate FieldView) In-Cab Diagnostics, Pesticide PHI Lock & Biosecurity Voice Architecture: EPA Crop-Label PHI & <=15mph Wind-Drift Lock (0% Residue Recalls), Offline In-Cab Edge ISOBUS DTC & Parts Gate (-62% Harvest Downtime) & 0ms Herd Biosecurity Lockdown / Rollover 911 Bridge**: [EN](./agritech-livestock-john-deere-pesticide-phi-biosecurity-voice-selection-faq.en.md) | [中文](./agritech-livestock-john-deere-pesticide-phi-biosecurity-voice-selection-faq.md)
 361. **Accounting, Tax & Payroll (ADP / Gusto / CCH Axcess / TurboTax) 24/7 Tax Intake, IRC §7216 Privacy Lock & Anti-Payroll-Hijack Voice Architecture: IRC §7216 Criminal Tax-Data ZDR Lock (0% Violations), Prior-Year Organizer Diff & Deterministic Tax Math Gate (-54% CPA Chasing) & 0ms Payroll Direct-Deposit Hijack Freeze**: [EN](./accounting-tax-payroll-adp-irs-7216-direct-deposit-fraud-voice-selection-faq.en.md) | [中文](./accounting-tax-payroll-adp-irs-7216-direct-deposit-fraud-voice-selection-faq.md)
 362. **Fitness, Gym & Wellness Chains (Mindbody / ClubReady / 24h Clubs) Class Booking, PAR-Q+ Screening, FTC Click-to-Cancel & AED Emergency Voice Architecture: ACSM PAR-Q+ & Digital Waiver Lock, FTC Click-to-Cancel Zero-Dark-Pattern Gate (34.2% Freeze Saves / $0 Fines) & 0ms Gym-Floor AED Unlock / Rhabdomyolysis 911 Bridge**: [EN](./fitness-gym-wellness-mindbody-ftc-cancel-aed-emergency-voice-selection-faq.en.md) | [中文](./fitness-gym-wellness-mindbody-ftc-cancel-aed-emergency-voice-selection-faq.md)
+363. **Commercial Packaging, Print & Label Supply Chain (Esko WebCenter / ePS Pace) Artwork Proof Lock, Pre-Press Preflight & 0ms Recall Halt Voice Architecture: Signed PDF/X-4 Proof SHA-256 Press Lock ($0 Unproofed Scrap), Bleed/Die-Line/GS1 Preflight Gate (-61% Proof Delay) & 0ms Allergen/Pharma Misprint JDF Press Halt**: [EN](./packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.en.md) | [中文](./packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.md)
