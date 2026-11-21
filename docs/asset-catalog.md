@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（354 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（355 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -395,3 +395,4 @@
 352. **连锁宠物医院与伴侣动物急诊（ezyVet / Cornerstone / 瑞鹏/瑞派模式）24/7 宠物症状语音分诊、跨物种毒理剂量锁与诊室语音病历（Vet Ambient Scribe）架构（跨物种致命药物禁忌硬锁——严禁人用泰诺/犬用氯菊酯用于猫及 `ezyVet` 实测体重 `mg/kg` 核验、诊室兽医-宠主双说话人分离省 `1.8h/天` 写病历与 `VCPR` 零无证开方门禁、猫碰百合花/公猫尿闭/犬木糖醇中毒/胃扭转 `GDV` `0ms` 急诊抢占）方案**：[中文](./veterinary-hospital-pet-emergency-toxicology-triage-ambient-scribe-voice-selection-faq.md) | [EN](./veterinary-hospital-pet-emergency-toxicology-triage-ambient-scribe-voice-selection-faq.en.md)
 353. **住房按揭贷款与信贷审批（ICE Encompass / Blend / 银行个贷中心模式）24/7 贷款预审、`TRID` 披露时钟、补件催办与防过户电诈语音架构（`SAFE Act / NMLS` 严禁非持牌锁利率与 `ECOA Reg B` 公平信贷硬锁、`TRID` 6 要素状态机精准触发 `Encompass` 3 工作日 `LE` 时钟与审贷补件缩短放款 `4.2天` 门禁、过户首付款电汇账号变更防诈熔断与断供纾困 `CFPB Reg X SPOC` `0ms` 抢占）方案**：[中文](./mortgage-origination-servicing-encompass-trid-ratelock-wire-fraud-voice-selection-faq.md) | [EN](./mortgage-origination-servicing-encompass-trid-ratelock-wire-fraud-voice-selection-faq.en.md)
 354. **企业级实时语音大模型动态复杂度路由与语义音频缓存 FinOps（Per-Turn SLM/Mini vs. Frontier 混合编排 + Semantic Audio Cache）架构（零 PII 参数化语义音频缓存与租户 `Policy_Epoch` 秒级失效硬锁、单轮 `12ms` 复杂度分类器将 `74%` 常规话轮分流至 `25ms` Opus 缓存与极速 SLM 压降 `66.8%` 成本且保持统一品牌 TTS 音色门禁、声学情绪愤怒/高危流失/多步工具推理 `0ms` 无感提级旗舰模型）方案**：[中文](./enterprise-voice-model-router-slm-frontier-semantic-audio-cache-finops-selection-faq.md) | [EN](./enterprise-voice-model-router-slm-frontier-semantic-audio-cache-finops-selection-faq.en.md)
+355. **制药与生命科学（Veeva Vault MedComms / Argus Safety / FDA FAERS 模式）医学信息中心（MedInfo）、不良事件（AE / 药物警戒）24/7 语音上报与合规助手架构（`FDA/NMPA` 获批说明书 `PI` 字面绑定与非主动超说明书问询秒转 `MSL` 零违规推广硬锁、并行 `MedDRA` 哨兵 100% 捕获隐蔽不良事件 `ICH E2B(R3)` 四要素 24 小时自动建档门禁、严重不良事件 `SAE` 与生物制剂质量缺陷 `0ms` 药物警戒医师抢占）方案**：[中文](./pharma-life-sciences-medinfo-adverse-event-faers-veeva-voice-selection-faq.md) | [EN](./pharma-life-sciences-medinfo-adverse-event-faers-veeva-voice-selection-faq.en.md)

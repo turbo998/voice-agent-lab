@@ -9445,6 +9445,36 @@ export function evaluateVoiceModelRouterSemanticCacheGuard(input: {
   };
 }
 
+export interface PharmaMedinfoFaersVeevaVoiceEvaluation {
+  policyCode: "PHARMA-MEDINFO-FAERS-VEEVA-VOICE-01";
+  medInfoResponseAndCrmLogAuthorized: boolean;
+  offLabelPromotionOrMissedAeBlocked: boolean;
+  saeOrProductDefectPhysicianBridged: boolean;
+}
+
+/**
+ * Deterministic Pharma & Life Sciences (Veeva MedComms / Vault Safety) On-Label PI Lock, 24h E2B(R3) AE Capture & 0ms SAE Preemption Guard (`PHARMA-MEDINFO-FAERS-VEEVA-VOICE-01`).
+ */
+export function evaluatePharmaMedinfoFaersVeevaVoiceGuard(input: {
+  fdaApprovedLabelBoundAndZeroOffLabelPromotionLock: boolean;
+  adverseEventFourMinimumCriteriaCapturedWithin24hSla: boolean;
+  seriousAdverseEventAnaphylaxisOrProductQualityDefectEscalation: boolean;
+}): PharmaMedinfoFaersVeevaVoiceEvaluation {
+  return {
+    policyCode: "PHARMA-MEDINFO-FAERS-VEEVA-VOICE-01",
+    medInfoResponseAndCrmLogAuthorized:
+      input.fdaApprovedLabelBoundAndZeroOffLabelPromotionLock &&
+      input.adverseEventFourMinimumCriteriaCapturedWithin24hSla &&
+      !input.seriousAdverseEventAnaphylaxisOrProductQualityDefectEscalation,
+    offLabelPromotionOrMissedAeBlocked:
+      !input.fdaApprovedLabelBoundAndZeroOffLabelPromotionLock ||
+      !input.adverseEventFourMinimumCriteriaCapturedWithin24hSla ||
+      input.seriousAdverseEventAnaphylaxisOrProductQualityDefectEscalation,
+    saeOrProductDefectPhysicianBridged:
+      input.seriousAdverseEventAnaphylaxisOrProductQualityDefectEscalation,
+  };
+}
+
 
 
 
