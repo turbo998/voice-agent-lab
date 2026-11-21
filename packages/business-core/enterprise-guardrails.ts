@@ -5995,6 +5995,36 @@ export function evaluateCruiseShipboardSolasConciergeVoiceGuard(input: {
   };
 }
 
+export interface RobotaxiAvMrcResponderVoiceEvaluation {
+  policyCode: "ROBOTAXI-AV-MRC-RESPONDER-01";
+  curbsidePullOverAndDoorUnlockAuthorized: boolean;
+  midLaneStopOrMotionActuationBlocked: boolean;
+  bPillarFirstResponderAndFleetSpecialistBridged: boolean;
+}
+
+/**
+ * Deterministic L4 Autonomous Robotaxi SAE J3016 Curbside MRC, ASIL-D Air-Gap & 0ms B-Pillar First-Responder Guard (`ROBOTAXI-AV-MRC-RESPONDER-01`).
+ */
+export function evaluateRobotaxiAvMrcResponderVoiceGuard(input: {
+  safeCurbsideMrcAndDoorCyclistClearVerified: boolean;
+  asilDMotionIsolationAndZeroDirectActuation: boolean;
+  externalFirstResponderOrRiderMedicalEmergency: boolean;
+}): RobotaxiAvMrcResponderVoiceEvaluation {
+  return {
+    policyCode: "ROBOTAXI-AV-MRC-RESPONDER-01",
+    curbsidePullOverAndDoorUnlockAuthorized:
+      input.safeCurbsideMrcAndDoorCyclistClearVerified &&
+      input.asilDMotionIsolationAndZeroDirectActuation &&
+      !input.externalFirstResponderOrRiderMedicalEmergency,
+    midLaneStopOrMotionActuationBlocked:
+      !input.safeCurbsideMrcAndDoorCyclistClearVerified ||
+      !input.asilDMotionIsolationAndZeroDirectActuation ||
+      input.externalFirstResponderOrRiderMedicalEmergency,
+    bPillarFirstResponderAndFleetSpecialistBridged:
+      input.externalFirstResponderOrRiderMedicalEmergency,
+  };
+}
+
 
 
 

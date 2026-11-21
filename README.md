@@ -311,6 +311,7 @@ flowchart LR
 237. **个人征信异议申诉、信贷拒贷解释（ECOA / FCRA）与反身份盗用冻结（Experian / Equifax / TransUnion / 央行征信 / 零售银行信贷中心）24×7 AI 语音客服方案（ECOA Reg B 官方拒贷原因代码只读零偏见硬锁、反非法“征信洗白”拦截与冒名贷款 0ms 全局征信安全冻结强切）**：[中文](./docs/consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.md) | [EN](./docs/consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.en.md)
 238. **睡眠呼吸暂停（OSA）、家用双水平呼吸机（CPAP / BiPAP）与慢阻肺居家无创通气（瑞思迈 ResMed AirView / 飞利浦伟康）24×7 语音随访方案（处方气道压力 cmH2O 禁擅调与隐藏临床菜单防破解硬锁、CMS 90 天依从性漏气辅导与 COPD 二氧化碳潴留 0ms 强切）**：[中文](./docs/sleep-apnea-cpap-bipap-home-ventilator-cms-compliance-voice-coach-selection-faq.md) | [EN](./docs/sleep-apnea-cpap-bipap-home-ventilator-cms-compliance-voice-coach-selection-faq.en.md)
 239. **大型国际邮轮、舱房智能穿戴（嘉年华 OceanMedallion / 皇家加勒比 / 爱达邮轮）与远洋船载边缘 24×7 多语种语音管家方案（船上时间 Ship Time vs 港口当地时间防漏船硬锁、CDC VSP 诺如病毒胃肠隔离门禁与人员落水 Code Oscar 0ms 驾驶台海图标点强切）**：[中文](./docs/cruise-line-shipboard-medallion-gangway-all-aboard-man-overboard-voice-concierge-selection-faq.md) | [EN](./docs/cruise-line-shipboard-medallion-gangway-all-aboard-man-overboard-voice-concierge-selection-faq.en.md)
+240. **L4 自动驾驶无人出租车（Robotaxi：Waymo / 百度萝卜快跑 / 小马智行 / Zoox）座舱乘客与车外警察/消防员 24×7 多模态语音方案（SAE J3016 安全靠边最小风险策略 MRC 与防“开门杀”雷达硬锁、ASIL-D 底盘线控物理隔离与车外 B 柱警消对讲 0ms 强切）**：[中文](./docs/autonomous-robotaxi-av-in-cabin-pull-over-first-responder-law-enforcement-voice-selection-faq.md) | [EN](./docs/autonomous-robotaxi-av-in-cabin-pull-over-first-responder-law-enforcement-voice-selection-faq.en.md)
 
 ---
 
