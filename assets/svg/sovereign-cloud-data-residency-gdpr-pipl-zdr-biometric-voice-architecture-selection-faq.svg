@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bg323" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card323" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg323)"/>
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1224" height="78" rx="14" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+  <text x="48" y="54" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">
+    Sovereign Cloud Data Residency (GDPR / PIPL / HIPAA) &amp; ZDR Voice Architecture (SOVEREIGN-CLOUD-GDPR-PIPL-ZDR-01)
+  </text>
+  <text x="48" y="81" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="13.5">
+    In-Region Media &amp; ZDR Lock · BIPA/PIPL Biometric Voiceprint Consent Gate · Cross-Border PII Token Vault &amp; Crypto-Shredding
+  </text>
+
+  <!-- Left Column: Global Regulatory Regimes -->
+  <rect x="28" y="118" width="290" height="465" rx="12" fill="url(#card323)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="46" y="148" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="15.5" font-weight="700">
+    1. Global Voice Privacy Regimes
+  </text>
+
+  <rect x="46" y="166" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="190" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">EU GDPR &amp; AI Act</text>
+  <text x="60" y="211" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• EU Data Boundary (Frankfurt/Sweden)</text>
+  <text x="60" y="230" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Bans emotion-recognition inference</text>
+
+  <rect x="46" y="266" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="290" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">China PIPL &amp; DSL (Cross-Border)</text>
+  <text x="60" y="311" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Raw voice &amp; PII stay in Mainland</text>
+  <text x="60" y="330" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pseudonymized token sync to HQ</text>
+
+  <rect x="46" y="366" width="254" height="86" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="390" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">US HIPAA &amp; Illinois BIPA</text>
+  <text x="60" y="411" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• BAA + Zero Data Retention (ZDR)</text>
+  <text x="60" y="430" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• $5,000/violation voiceprint penalty</text>
+
+  <rect x="46" y="466" width="254" height="98" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="60" y="490" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Sovereign Assurance KPIs</text>
+  <text x="60" y="511" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cross-Border Raw Audio Leak: 0%</text>
+  <text x="60" y="530" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Provider Abuse-Log Retention: 0d</text>
+  <text x="60" y="549" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Art. 17 Crypto-Shred SLA: &lt;60s</text>
+
+  <!-- Center Column: 3 Deterministic Sovereign & ZDR Gates -->
+  <rect x="338" y="118" width="584" height="465" rx="12" fill="url(#card323)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="358" y="148" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">
+    2. Deterministic Sovereign Residency, ZDR &amp; Biometric Engine
+  </text>
+
+  <!-- Gate 1 -->
+  <rect x="358" y="166" width="544" height="122" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="376" y="191" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate A · Sovereign Media/STT Pinning &amp; Zero Data Retention (ZDR) Lock
+  </text>
+  <text x="376" y="214" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Hard Rule: Raw voice &amp; unredacted PII never leave the caller's sovereign zone!
+  </text>
+  <text x="376" y="235" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Routes EU callers to EU DataZone &amp; CN callers to Mainland edge POPs
+  </text>
+  <text x="376" y="256" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Enforces ZDR header + 0-day provider abuse-monitoring log retention
+  </text>
+  <text x="376" y="275" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Prevents GDPR/PIPL cross-border transfer violations &amp; 30-day cloud log leaks
+  </text>
+
+  <!-- Gate 2 -->
+  <rect x="358" y="302" width="544" height="122" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="376" y="327" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate B · Biometric Voiceprint (BIPA / Art. 9) Consent &amp; CMK HSM Gate
+  </text>
+  <text x="376" y="350" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Blocks passive background voiceprint extraction without explicit opt-in
+  </text>
+  <text x="376" y="371" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Disables Workplace/Call emotion scoring under EU AI Act Prohibited Practices
+  </text>
+  <text x="376" y="392" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Encrypts biometric vectors with tenant Customer-Managed Keys (CMK HSM)
+  </text>
+  <text x="376" y="411" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Eliminates Illinois BIPA class-action exposure ($1k–$5k per unconsented call)
+  </text>
+
+  <!-- Gate 3 -->
+  <rect x="358" y="438" width="544" height="126" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.8"/>
+  <text x="376" y="463" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    Gate C · 0ms Cross-Border PII Tokenization &amp; Crypto-Shredding Bridge
+  </text>
+  <text x="376" y="486" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5">
+    • Replaces PII with deterministic tokens (USR_9921) before global CRM sync
+  </text>
+  <text x="376" y="507" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Assigns per-customer DEK (Data Encryption Key) for recordings &amp; transcripts
+  </text>
+  <text x="376" y="528" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+    • Destroys per-subject key in &lt;60s on GDPR Art. 17 erasure request
+  </text>
+  <text x="376" y="549" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="600">
+    -&gt; Enables unified global CX analytics while keeping raw identity 100% local
+  </text>
+
+  <!-- Right Column: Sovereign Cloud & Key Management Stack -->
+  <rect x="942" y="118" width="310" height="465" rx="12" fill="url(#card323)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="962" y="148" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="15.5" font-weight="700">
+    3. Sovereign Cloud &amp; Vaults
+  </text>
+
+  <rect x="962" y="168" width="270" height="92" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="978" y="193" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Regional Sovereign Endpoints</text>
+  <text x="978" y="214" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Azure EU DataZone / CN 21Vianet</text>
+  <text x="978" y="234" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Local SBC &amp; WebRTC TURN pinning</text>
+
+  <rect x="962" y="276" width="270" height="92" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="978" y="301" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">In-Country PII Token Vault</text>
+  <text x="978" y="322" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Presidio + Regex de-identification</text>
+  <text x="978" y="342" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Re-hydrates PII only inside region</text>
+
+  <rect x="962" y="384" width="270" height="92" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="978" y="409" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700">Managed HSM &amp; Crypto-Shred</text>
+  <text x="978" y="430" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• FIPS 140-3 Level 3 Hardware HSM</text>
+  <text x="978" y="450" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Per-user envelope key rotation</text>
+
+  <rect x="962" y="492" width="270" height="72" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="978" y="517" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">DPIA &amp; RoPA Audit Ledger</text>
+  <text x="978" y="538" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">• Proves 0 cross-border raw audio</text>
+
+  <!-- Bottom Sequence Strip -->
+  <rect x="28" y="600" width="1224" height="136" rx="12" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="628" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700">
+    End-to-End Sovereign Voice Residency, ZDR &amp; Cross-Border Tokenization Sequence (0% Data Leak / &lt;60s Erasure)
+  </text>
+
+  <rect x="48" y="644" width="275" height="74" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="62" y="666" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">1. Sovereign Edge Pinning</text>
+  <text x="62" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Terminates RTP/STT inside EU/CN</text>
+  <text x="62" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Enforces ZDR (0d provider retention)</text>
+
+  <rect x="343" y="644" width="285" height="74" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="357" y="666" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">2. BIPA Biometric Consent</text>
+  <text x="357" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Checks explicit voiceprint opt-in</text>
+  <text x="357" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Bans unconsented biometric vectors</text>
+
+  <rect x="648" y="644" width="285" height="74" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="662" y="666" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">3. Tokenized Global Sync</text>
+  <text x="662" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">Strips PII inside sovereign border</text>
+  <text x="662" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Sends anonymized KPI telemetry to HQ</text>
+
+  <rect x="953" y="644" width="279" height="74" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="967" y="666" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700">4. Sovereign Cloud vs Silos</text>
+  <text x="967" y="686" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11.5">340ms P95 · $560 vs $1,580 / 10k min</text>
+  <text x="967" y="704" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11">Cuts regional RTT by -180ms vs US hub</text>
+</svg>

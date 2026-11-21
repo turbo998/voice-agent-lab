@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (322 Bilingual Guides)
+## 3. Solution Architect Selection Guides (323 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -363,3 +363,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 320. **Banking Wealth Dual-Recording, Investor Suitability (C1–C5) & Insurance Tele-Underwriting Voice Architecture: Suitability & Zero-Yield-Guarantee Lock, SHA-256 Locked-SSML Verbatim Disclosure (98.8% 1st-Pass QA) & 0ms Munich Re Reflexive Medical Underwriting DAG**: [EN](./wealth-dual-recording-suitability-insurance-tele-underwriting-voice-architecture-selection-faq.en.md) | [中文](./wealth-dual-recording-suitability-insurance-tele-underwriting-voice-architecture-selection-faq.md)
 321. **Global QSR Dual-Lane Drive-Thru, Coffee/Tea Ordering & Real-Time Store POS Integration Voice Architecture: Live POS 86-Stock & Modifier PLU DAG Lock, FDA Top-9 Allergen Cross-Contact Gate, 85dBA Lane Beamforming & <250ms Crew Headset PTT Override (+14.2% AOV)**: [EN](./qsr-drive-thru-coffee-pos-86-stock-lock-allergen-upsell-voice-ordering-selection-faq.en.md) | [中文](./qsr-drive-thru-coffee-pos-86-stock-lock-allergen-upsell-voice-ordering-selection-faq.md)
 322. **Telecom Carrier & Broadband ISP Customer Care Voice + Multimodal Router Triage Architecture: Anti-SIM-Swap Biometric Lock, TR-069 + Smartphone Router Vision Cutting False Truck Rolls by 54.2%, 0ms Fiber-Outage Surge Deflection & FTC 1-Offer Cancel Symmetry**: [EN](./telecom-isp-outage-deflection-router-vision-triage-anti-simswap-voice-selection-faq.en.md) | [中文](./telecom-isp-outage-deflection-router-vision-triage-anti-simswap-voice-selection-faq.md)
+323. **Sovereign Cloud Data Residency (GDPR / PIPL / HIPAA / BIPA), Local Media Pinning & Zero Data Retention (ZDR) Voice Architecture: In-Region Media/STT & 0-Day ZDR Lock, Explicit BIPA Voiceprint Consent Gate & Cross-Border PII Token Vault with <60s Crypto-Shredding**: [EN](./sovereign-cloud-data-residency-gdpr-pipl-zdr-biometric-voice-architecture-selection-faq.en.md) | [中文](./sovereign-cloud-data-residency-gdpr-pipl-zdr-biometric-voice-architecture-selection-faq.md)

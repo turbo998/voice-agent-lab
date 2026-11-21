@@ -8485,6 +8485,36 @@ export function evaluateTelecomIspOutageVisionSimswapGuard(input: {
   };
 }
 
+export interface SovereignCloudGdprPiplZdrEvaluation {
+  policyCode: "SOVEREIGN-CLOUD-GDPR-PIPL-ZDR-01";
+  sovereignVoiceProcessingAuthorized: boolean;
+  crossBorderPiiLeakOrUnconsentedBiometricBlocked: boolean;
+  crossBorderTokenizationAndCryptoShredBridged: boolean;
+}
+
+/**
+ * Deterministic Sovereign Cloud Media/STT Pinning, ZDR Lock, BIPA Biometric Consent Gate & Cross-Border PII Tokenization / Crypto-Shred Guard (`SOVEREIGN-CLOUD-GDPR-PIPL-ZDR-01`).
+ */
+export function evaluateSovereignCloudGdprPiplZdrGuard(input: {
+  audioMediaAndSttAnchoredInSovereignRegionAndZdrEnforced: boolean;
+  voiceprintBiometricEnrollmentHasExplicitBipaConsentAndCmk: boolean;
+  crossBorderAnalyticsOrRightToErasureTriggered: boolean;
+}): SovereignCloudGdprPiplZdrEvaluation {
+  return {
+    policyCode: "SOVEREIGN-CLOUD-GDPR-PIPL-ZDR-01",
+    sovereignVoiceProcessingAuthorized:
+      input.audioMediaAndSttAnchoredInSovereignRegionAndZdrEnforced &&
+      input.voiceprintBiometricEnrollmentHasExplicitBipaConsentAndCmk &&
+      !input.crossBorderAnalyticsOrRightToErasureTriggered,
+    crossBorderPiiLeakOrUnconsentedBiometricBlocked:
+      !input.audioMediaAndSttAnchoredInSovereignRegionAndZdrEnforced ||
+      !input.voiceprintBiometricEnrollmentHasExplicitBipaConsentAndCmk ||
+      input.crossBorderAnalyticsOrRightToErasureTriggered,
+    crossBorderTokenizationAndCryptoShredBridged:
+      input.crossBorderAnalyticsOrRightToErasureTriggered,
+  };
+}
+
 
 
 
