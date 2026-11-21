@@ -9385,6 +9385,36 @@ export function evaluateVetHospitalToxicologyAmbientScribeGuard(input: {
   };
 }
 
+export interface MortgageEncompassTridRatelockEvaluation {
+  policyCode: "MORTGAGE-ENCOMPASS-TRID-RATELOCK-01";
+  preQualAndStipulationSyncAuthorized: boolean;
+  unlicensedRateLockOrTridDriftBlocked: boolean;
+  closingWireFraudOrHardshipSpocBridged: boolean;
+}
+
+/**
+ * Deterministic Mortgage Origination & Servicing (ICE Encompass) SAFE Act Rate-Lock Boundary, TRID 6-Piece Clock & 0ms Closing Wire-Fraud / Reg X SPOC Guard (`MORTGAGE-ENCOMPASS-TRID-RATELOCK-01`).
+ */
+export function evaluateMortgageEncompassTridRatelockGuard(input: {
+  safeActUnlicensedRateLockAndEcoaProtectedClassBlocked: boolean;
+  tridSixPiecesLoanEstimateClockAndStipulationChecklistSynced: boolean;
+  closingEscrowWireChangeFraudOrForeclosureHardshipEscalation: boolean;
+}): MortgageEncompassTridRatelockEvaluation {
+  return {
+    policyCode: "MORTGAGE-ENCOMPASS-TRID-RATELOCK-01",
+    preQualAndStipulationSyncAuthorized:
+      input.safeActUnlicensedRateLockAndEcoaProtectedClassBlocked &&
+      input.tridSixPiecesLoanEstimateClockAndStipulationChecklistSynced &&
+      !input.closingEscrowWireChangeFraudOrForeclosureHardshipEscalation,
+    unlicensedRateLockOrTridDriftBlocked:
+      !input.safeActUnlicensedRateLockAndEcoaProtectedClassBlocked ||
+      !input.tridSixPiecesLoanEstimateClockAndStipulationChecklistSynced ||
+      input.closingEscrowWireChangeFraudOrForeclosureHardshipEscalation,
+    closingWireFraudOrHardshipSpocBridged:
+      input.closingEscrowWireChangeFraudOrForeclosureHardshipEscalation,
+  };
+}
+
 
 
 

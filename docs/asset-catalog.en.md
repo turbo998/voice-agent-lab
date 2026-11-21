@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (352 Bilingual Guides)
+## 3. Solution Architect Selection Guides (353 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -393,3 +393,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 350. **Law Firm & Legal Intake (Clio / Filevine / Litify) 24/7 Voice Triage, ABA Rule 1.18 Conflict-Check & Anti-UPL Architecture: Stage-1 Pre-Fact Adverse-Party Conflict Firewall (0% Firm Taint), Zero-UPL Legal-Opinion & Non-Engagement Disclaimer Gate (+48% Signed Retainers) & 0ms Statute-of-Limitations (<=30d) / Police-Custody Partner Bridge**: [EN](./legal-intake-law-firm-clio-conflict-check-upl-guardrail-voice-selection-faq.en.md) | [中文](./legal-intake-law-firm-clio-conflict-check-upl-guardrail-voice-selection-faq.md)
 351. **Grocery & Instant Retail (Walmart / Instacart / Hema / Sam's Club) Out-of-Stock Substitution, Dark-Store Voice Picking & Food-Safety Architecture: PIM Allergen/Dietary & Price-Cap Substitution Lock (81.4% OOS GMV Saved), 2-Digit Check-Digit Headset Voice Picking (-76% Wrong Picks) & 0ms Lot Quarantine / 21+ Alcohol Gate**: [EN](./grocery-instant-retail-out-of-stock-substitution-voice-picking-selection-faq.en.md) | [中文](./grocery-instant-retail-out-of-stock-substitution-voice-picking-selection-faq.md)
 352. **Veterinary Hospital & Pet Emergency (ezyVet / Cornerstone / Covetrus) 24/7 Toxicology Triage, Cross-Species Dosing Lock & Ambient Vet Scribe Architecture: Cross-Species Contraindication & mg/kg Weight Lock (0% Feline Drug Errors), DVM-vs-Owner Diarized SOAP Scribe (-1.8h/day Charting) & 0ms Lily/Xylitol/GDV Bloat ER Preemption**: [EN](./veterinary-hospital-pet-emergency-toxicology-triage-ambient-scribe-voice-selection-faq.en.md) | [中文](./veterinary-hospital-pet-emergency-toxicology-triage-ambient-scribe-voice-selection-faq.md)
+353. **Mortgage Origination & Servicing (ICE Encompass / Blend / MSP) 24/7 Pre-Qualification, TRID 6-Piece Clock, Underwriting Stipulations & Anti-Wire-Fraud Architecture: SAFE Act NMLS & ECOA Reg B Lock, TRID 6-Piece 3-Day LE Clock & Stip Sync (-4.2d to Close) & 0ms Closing Wire-Fraud Freeze / Reg X SPOC Bridge**: [EN](./mortgage-origination-servicing-encompass-trid-ratelock-wire-fraud-voice-selection-faq.en.md) | [中文](./mortgage-origination-servicing-encompass-trid-ratelock-wire-fraud-voice-selection-faq.md)

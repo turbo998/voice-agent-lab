@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（352 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（353 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -393,3 +393,4 @@
 350. **律师事务所与企业法务（Clio / Filevine / Litify）24/7 智能语音接案、利益冲突检索（Conflict Check）与防非法执业（UPL）架构（`ABA Rule 1.18` 前置对方当事人利益冲突核查通过前严禁采集保密案情防律所代理失格硬锁、零非律师定性法律建议 `UPL` 与未签委托书前锁定 `SSML` 免责声明门禁、诉讼时效 `<=30天` 或刑事拘留/家暴保护令 `0ms` 值班合伙人抢占提夜间签约率 `+48%`）方案**：[中文](./legal-intake-law-firm-clio-conflict-check-upl-guardrail-voice-selection-faq.md) | [EN](./legal-intake-law-firm-clio-conflict-check-upl-guardrail-voice-selection-faq.en.md)
 351. **生鲜商超与即时零售前置仓（Walmart / Instacart / 盒马 / 山姆 / 小象超市模式）缺货替换语音确认、免手语音拣货（Voice Picking）与食安架构（缺货替换 PIM 过敏原/清真/素食禁忌 100% 交叉核验与价差上限硬锁挽回 `81.4%` 缺货 GMV、前置仓冷库耳麦 2 位货架校验码 `Check-Digit` 压降 `76%` 错拣门禁、食安异物全城批次秒冻与酒水未成年人禁投 `0ms` 抢占）方案**：[中文](./grocery-instant-retail-out-of-stock-substitution-voice-picking-selection-faq.md) | [EN](./grocery-instant-retail-out-of-stock-substitution-voice-picking-selection-faq.en.md)
 352. **连锁宠物医院与伴侣动物急诊（ezyVet / Cornerstone / 瑞鹏/瑞派模式）24/7 宠物症状语音分诊、跨物种毒理剂量锁与诊室语音病历（Vet Ambient Scribe）架构（跨物种致命药物禁忌硬锁——严禁人用泰诺/犬用氯菊酯用于猫及 `ezyVet` 实测体重 `mg/kg` 核验、诊室兽医-宠主双说话人分离省 `1.8h/天` 写病历与 `VCPR` 零无证开方门禁、猫碰百合花/公猫尿闭/犬木糖醇中毒/胃扭转 `GDV` `0ms` 急诊抢占）方案**：[中文](./veterinary-hospital-pet-emergency-toxicology-triage-ambient-scribe-voice-selection-faq.md) | [EN](./veterinary-hospital-pet-emergency-toxicology-triage-ambient-scribe-voice-selection-faq.en.md)
+353. **住房按揭贷款与信贷审批（ICE Encompass / Blend / 银行个贷中心模式）24/7 贷款预审、`TRID` 披露时钟、补件催办与防过户电诈语音架构（`SAFE Act / NMLS` 严禁非持牌锁利率与 `ECOA Reg B` 公平信贷硬锁、`TRID` 6 要素状态机精准触发 `Encompass` 3 工作日 `LE` 时钟与审贷补件缩短放款 `4.2天` 门禁、过户首付款电汇账号变更防诈熔断与断供纾困 `CFPB Reg X SPOC` `0ms` 抢占）方案**：[中文](./mortgage-origination-servicing-encompass-trid-ratelock-wire-fraud-voice-selection-faq.md) | [EN](./mortgage-origination-servicing-encompass-trid-ratelock-wire-fraud-voice-selection-faq.en.md)
