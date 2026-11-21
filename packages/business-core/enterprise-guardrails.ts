@@ -8845,6 +8845,36 @@ export function evaluatePropertyYardiFairhousingMaintenanceGuard(input: {
   };
 }
 
+export interface B2bProcurementAribaCoupaAsnEvaluation {
+  policyCode: "B2B-PROCUREMENT-ARIBA-COUPA-ASN-01";
+  poScheduleAndAsnCommitAuthorized: boolean;
+  unauthorizedPriceChangeOrInvalidAsnBlocked: boolean;
+  lineDownEscalationAndBackupAvlRfqBridged: boolean;
+}
+
+/**
+ * Deterministic B2B Procurement (SAP Ariba / Coupa) PO Unit-Price & +-5% Tolerance Lock, Voice-to-EDI 856 ASN Gate & 0ms Line-Down Backup AVL Swarm Guard (`B2B-PROCUREMENT-ARIBA-COUPA-ASN-01`).
+ */
+export function evaluateB2bProcurementAribaCoupaAsnGuard(input: {
+  poUnitPriceImmutableAndQuantityVarianceWithin5Pct: boolean;
+  asnCreatedWithVerifiedCarrierTrackingAndDockSlot: boolean;
+  supplierDelayTriggersLineDownRiskAndBackupAvlRfq: boolean;
+}): B2bProcurementAribaCoupaAsnEvaluation {
+  return {
+    policyCode: "B2B-PROCUREMENT-ARIBA-COUPA-ASN-01",
+    poScheduleAndAsnCommitAuthorized:
+      input.poUnitPriceImmutableAndQuantityVarianceWithin5Pct &&
+      input.asnCreatedWithVerifiedCarrierTrackingAndDockSlot &&
+      !input.supplierDelayTriggersLineDownRiskAndBackupAvlRfq,
+    unauthorizedPriceChangeOrInvalidAsnBlocked:
+      !input.poUnitPriceImmutableAndQuantityVarianceWithin5Pct ||
+      !input.asnCreatedWithVerifiedCarrierTrackingAndDockSlot ||
+      input.supplierDelayTriggersLineDownRiskAndBackupAvlRfq,
+    lineDownEscalationAndBackupAvlRfqBridged:
+      input.supplierDelayTriggersLineDownRiskAndBackupAvlRfq,
+  };
+}
+
 
 
 

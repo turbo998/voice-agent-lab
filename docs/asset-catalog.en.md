@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (334 Bilingual Guides)
+## 3. Solution Architect Selection Guides (335 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -375,3 +375,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 332. **Enterprise Voice AI Model Context Protocol (MCP) Gateway, OAuth 2.1 On-Behalf-Of (OBO) Security & <=150-Token Voice Projection Architecture: Scoped OBO JWT & SHA-256 Manifest Lock, Gateway JMESPath Voice Projection (-1,520ms Latency / -88.5% Token Cost) & 0ms Barge-In notifications/cancelled Bridge**: [EN](./enterprise-voice-mcp-model-context-protocol-oauth-obo-gateway-selection-faq.en.md) | [中文](./enterprise-voice-mcp-model-context-protocol-oauth-obo-gateway-selection-faq.md)
 333. **Retail, Airport, Museum & Showroom Interactive Kiosk Voice + 3D Avatar Architecture: ToF <=1.5m Presence & Gaze Wake Lock (-98.6% False Wake-Ups), +-15° Acoustic Sound-Curtain & Public Zero-PII Gate, Local 60fps Viseme Rendering (-90.7% TCO) & 3-Sec Walk-Away Privacy Wipe**: [EN](./retail-airport-museum-interactive-kiosk-avatar-ultrasonic-presence-voice-selection-faq.en.md) | [中文](./retail-airport-museum-interactive-kiosk-avatar-ultrasonic-presence-voice-selection-faq.md)
 334. **Multifamily & Commercial Property Management (Yardi / RealPage / AppFolio) Maintenance Triage, Self-Guided Tour Smart-Lock & Fair Housing Voice Architecture: HUD FHA Zero-Steering & ESA Waiver Lock, Biometric ID + 100m Geofenced Smart-Lock PIN Gate & 0ms Pipe-Burst Shutoff Coaching (-68% Water Damage)**: [EN](./property-management-yardi-realpage-maintenance-fair-housing-showing-voice-selection-faq.en.md) | [中文](./property-management-yardi-realpage-maintenance-fair-housing-showing-voice-selection-faq.md)
+335. **B2B Procurement & Supplier PO Expediting (SAP Ariba / Coupa) Voice-to-ASN & Shortage Recovery Architecture: PO Unit-Price & +-5% Tolerance Lock, Spoken-to-EDI 856 ASN & Dock-Slot Gate (96.4% ASN Coverage) & 0ms Line-Down Parallel Backup AVL Spot-Buy Swarm**: [EN](./b2b-procurement-sap-ariba-coupa-po-expediting-asn-supplier-voice-selection-faq.en.md) | [中文](./b2b-procurement-sap-ariba-coupa-po-expediting-asn-supplier-voice-selection-faq.md)
