@@ -304,6 +304,7 @@ flowchart LR
 230. **规模化畜牧养殖生物安全、兽药停药期（FARAD）与宠物医院 24×7 急诊语音分诊方案（牧原 / 温氏 / 现代牧业 / Banfield / VCA：肉奶法定休药期与弃奶期出栏硬锁、VCPR 跨物种药物毒性拦截如猫禁泰诺/双氧水催吐与一类动物疫病 ASF/HPAI 0ms 封场强切）**：[中文](./docs/veterinary-livestock-biosecurity-woah-vcpr-withdrawal-period-voice-triage-selection-faq.md) | [EN](./docs/veterinary-livestock-biosecurity-woah-vcpr-withdrawal-period-voice-triage-selection-faq.en.md)
 231. **国家级高利害资格考试监考（Pearson VUE / ETS / 医师与法考机考）、口语测评与无障碍读屏（Section 508 / ADA）多模态语音方案（IMS QTI 3.0 题干逐字朗读零答案提示硬锁、残障考生 1.5x/2.0x 加时防误收卷硬锁与场外串通声纹 0ms 人工主考官复核强切）**：[中文](./docs/high-stakes-exam-proctoring-oral-assessment-section-508-ferpa-voice-selection-faq.md) | [EN](./docs/high-stakes-exam-proctoring-oral-assessment-section-508-ferpa-voice-selection-faq.en.md)
 232. **连锁视光中心、配镜电商与远程验光（EssilorLuxottica 依视路陆逊梯卡 / Warby Parker / 宝岛眼镜 / 眼科视光）AI 语音与多模态导购方案（屈光度正负号与实测瞳距 PD 硬锁、FTC 隐形眼镜基弧 BC 门禁与视网膜脱离/角膜溃疡红眼 0ms 眼科急诊强切）**：[中文](./docs/tele-optometry-eyewear-prescription-pupillary-distance-red-eye-voice-concierge-selection-faq.md) | [EN](./docs/tele-optometry-eyewear-prescription-pupillary-distance-red-eye-voice-concierge-selection-faq.en.md)
+233. **生物制药无菌洁净室（Grade A/B Cleanroom）、CAR-T 细胞治疗与 GMP 电子批记录（Werum PAS-X / PharmaSuite / Veeva QMS）免提语音方案（FDA 21 CFR Part 11 ALCOA+ 禁无痕覆盖硬锁、关键工艺双人声纹四眼复核锁与隔离器压差失锁/OOS 0ms 批次冻结强切）**：[中文](./docs/biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.md) | [EN](./docs/biopharma-cleanroom-gmp-ebr-21-cfr-part-11-alcoa-voice-execution-selection-faq.en.md)
 
 ---
 

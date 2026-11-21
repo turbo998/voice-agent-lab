@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg233" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06121c"/>
+      <stop offset="50%" stop-color="#0f3460"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="card233" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg233)" rx="16"/>
+  <text x="600" y="40" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Biopharma Grade A/B Cleanroom, CAR-T &amp; GMP eBR Voice Execution Architecture</text>
+  <text x="600" y="66" fill="#67e8f9" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">FDA 21 CFR Part 11 ALCOA+ Lock · Four-Eyes Second-Verifier Gate · 0ms Sterility Breach &amp; CAPA Hold (BIOPHARMA-CLEANROOM-EBR-GMP-01)</text>
+
+  <!-- Left Column: Grade A/B Isolator & Bioreactor Suite -->
+  <rect x="36" y="92" width="260" height="545" rx="12" fill="url(#card233)" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="166" y="122" fill="#67e8f9" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. Cleanroom Hands-Free</text>
+
+  <rect x="56" y="142" width="220" height="110" rx="8" fill="#0f172a" stroke="#22d3ee"/>
+  <text x="166" y="166" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Grade A/B Aseptic Isolator</text>
+  <text x="166" y="188" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Hands inside sterile glove ports</text>
+  <text x="166" y="206" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Autoclaved VHP-safe bone-conduction</text>
+  <text x="166" y="224" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Zero touchscreen shedding risk</text>
+
+  <rect x="56" y="268" width="220" height="110" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="166" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">CAR-T Vein-to-Vein &amp; Media</text>
+  <text x="166" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Autologous Chain of Identity (COI)</text>
+  <text x="166" y="332" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Mettler Toledo scale tare &amp; net weight</text>
+  <text x="166" y="350" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Viable cell density &amp; pH logging</text>
+
+  <rect x="56" y="394" width="220" height="222" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="166" y="420" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Sterility &amp; Critical Deviations</text>
+  <text x="166" y="444" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Isolator glove tear / pinhole alarm</text>
+  <text x="166" y="464" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Room cascade ΔP drop (&lt;10–15 Pa)</text>
+  <text x="166" y="484" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Viable particle count excursion</text>
+  <text x="166" y="504" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Out-of-Spec (OOS) buffer pH/temp</text>
+  <text x="166" y="532" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">0ms Batch Hold &amp; QA Bridge</text>
+
+  <!-- Center Column: BIOPHARMA-CLEANROOM-EBR-GMP-01 Guardrail Engine -->
+  <rect x="326" y="92" width="548" height="545" rx="12" fill="url(#card233)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="600" y="122" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. Deterministic 21 CFR Part 11 &amp; Annex 1 Engine (BIOPHARMA-CLEANROOM-EBR-GMP-01)</text>
+
+  <!-- Gate 1 -->
+  <rect x="350" y="142" width="500" height="145" rx="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate A: ALCOA+ Contemporaneous &amp; Non-Overwrite Hard Lock</text>
+  <text x="600" y="190" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Binds operator badge + live voiceprint + UTC timestamp to every eBR entry</text>
+  <text x="600" y="210" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• 100% prohibits deleting, backdating, or silently overwriting a logged value</text>
+  <text x="600" y="230" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Corrections require append-only new entry + spoken GMP reason for change</text>
+  <text x="600" y="252" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Eliminates "memorize 5 weights inside isolator and write them down 30 minutes later"</text>
+
+  <!-- Gate 2 -->
+  <rect x="350" y="302" width="500" height="150" rx="10" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="600" y="326" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate B: Four-Eyes Dual Operator &amp; CAR-T Chain-of-Identity Lock</text>
+  <text x="600" y="350" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Critical Process Parameters (CPP) &amp; material additions require 2nd verifier</text>
+  <text x="600" y="370" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Verifies Operator_A_ID != Verifier_B_ID + distinct biometric voiceprints</text>
+  <text x="600" y="390" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Hard-locks autologous CAR-T patient COI bag ID before viral transduction</text>
+  <text x="600" y="412" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Blocks advancing to next eBR phase until OPC-UA scale/pH telemetry matches spoken readback</text>
+
+  <!-- Gate 3 -->
+  <rect x="350" y="468" width="500" height="148" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="600" y="492" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate C: 0ms Annex 1 Sterility Breach, OOS &amp; QA Qualified Person Bridge</text>
+  <text x="600" y="516" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Detects glove-port breach, ΔP cascade loss, or Out-of-Specification (OOS) CPP</text>
+  <text x="600" y="536" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Places electronic Batch Record step on immediate QA Quarantine Hold in 0ms</text>
+  <text x="600" y="556" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Opens Veeva Vault QMS Deviation record &amp; bridges QA Qualified Person (QP)</text>
+  <text x="600" y="580" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Full FDA 21 CFR Part 11, EU GMP Annex 1/11 &amp; GAMP 5 Category 4 WORM audit trail</text>
+
+  <!-- Right Column: MES eBR, EMS & Quality Management -->
+  <rect x="904" y="92" width="260" height="545" rx="12" fill="url(#card233)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="1034" y="122" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">3. MES eBR &amp; Quality Systems</text>
+
+  <rect x="924" y="142" width="220" height="145" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="1034" y="166" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">MES / Electronic Batch Record</text>
+  <text x="1034" y="190" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Körber Werum PAS-X / PharmaSuite</text>
+  <text x="1034" y="210" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Emerson Syncade / Tulip GxP</text>
+  <text x="1034" y="230" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Review-by-Exception (RbE) flag</text>
+  <text x="1034" y="250" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• OPC-UA scale/bioreactor sync</text>
+
+  <rect x="924" y="302" width="220" height="150" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="1034" y="326" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Cleanroom EMS &amp; LIMS</text>
+  <text x="1034" y="350" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Non-viable / viable particle EMS</text>
+  <text x="1034" y="370" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• LabWare / StarLIMS In-Process QC</text>
+  <text x="1034" y="390" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Equipment calibration expiry gate</text>
+  <text x="1034" y="410" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• VHP sterilization cycle lock</text>
+
+  <rect x="924" y="468" width="220" height="148" rx="8" fill="#0f172a" stroke="#a855f7"/>
+  <text x="1034" y="492" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Veeva Vault QMS &amp; QA Desk</text>
+  <text x="1034" y="516" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Automated Deviation &amp; CAPA</text>
+  <text x="1034" y="536" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Qualified Person (QP) release</text>
+  <text x="1034" y="556" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 21 CFR Part 11 e-Signature log</text>
+  <text x="1034" y="576" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">• Zero FDA Form 483 Data Integrity</text>
+</svg>

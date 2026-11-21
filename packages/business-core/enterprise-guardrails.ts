@@ -5786,6 +5786,36 @@ export function evaluateTeleOptometryRxSafetyVoiceGuard(input: {
   };
 }
 
+export interface BiopharmaCleanroomEbrGmpVoiceEvaluation {
+  policyCode: "BIOPHARMA-CLEANROOM-EBR-GMP-01";
+  ebrStepCommitAndReleaseAuthorized: boolean;
+  alcoaOverwriteOrSingleVerifierBlocked: boolean;
+  batchQuarantineHoldAndQaQpBridged: boolean;
+}
+
+/**
+ * Deterministic Biopharma Grade A/B Cleanroom & GMP eBR 21 CFR Part 11 ALCOA+, Four-Eyes & Sterility Breach Guard (`BIOPHARMA-CLEANROOM-EBR-GMP-01`).
+ */
+export function evaluateBiopharmaCleanroomEbrGmpVoiceGuard(input: {
+  alcoaPlusContemporaneousAndAppendOnlyVerified: boolean;
+  fourEyesDualVerificationAndCoiMatched: boolean;
+  sterilityBreachDifferentialPressureDropOrOos: boolean;
+}): BiopharmaCleanroomEbrGmpVoiceEvaluation {
+  return {
+    policyCode: "BIOPHARMA-CLEANROOM-EBR-GMP-01",
+    ebrStepCommitAndReleaseAuthorized:
+      input.alcoaPlusContemporaneousAndAppendOnlyVerified &&
+      input.fourEyesDualVerificationAndCoiMatched &&
+      !input.sterilityBreachDifferentialPressureDropOrOos,
+    alcoaOverwriteOrSingleVerifierBlocked:
+      !input.alcoaPlusContemporaneousAndAppendOnlyVerified ||
+      !input.fourEyesDualVerificationAndCoiMatched ||
+      input.sterilityBreachDifferentialPressureDropOrOos,
+    batchQuarantineHoldAndQaQpBridged:
+      input.sterilityBreachDifferentialPressureDropOrOos,
+  };
+}
+
 
 
 
