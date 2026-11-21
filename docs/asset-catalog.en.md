@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (308 Bilingual Guides)
+## 3. Solution Architect Selection Guides (309 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -349,3 +349,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 306. **Multinational Live Meeting Simultaneous Interpretation, Ephemeral Personal Voice & Action-Item Automation Selection (Azure AI Speech Live Interpreter vs. Microsoft Teams Interpreter vs. Custom Pipeline): SOV Negation Buffer & 10^4/10^3 Numeric Lock, Per-Session Personal Voice Opt-In & 0ms Boardroom ZDR / Host-Approved Jira Sync**: [EN](./enterprise-live-meeting-interpreter-personal-voice-glossary-action-item-sync-selection-faq.en.md) | [中文](./enterprise-live-meeting-interpreter-personal-voice-glossary-action-item-sync-selection-faq.md)
 307. **AI Sales Roleplay, Customer-Service Sparring & Structured Mock Interview Platform Selection (GPT-4o Realtime Adversarial Actor + Isolated BARS Rubric Grader): Actor-Grader Separation & Anti-Sycophancy FSM Lock, Timestamp-Anchored Scoring & EEOC Fairness Gate & 0ms Red-Card Auto-Fail Bridge**: [EN](./ai-sales-roleplay-customer-service-sparring-structured-interview-rubric-platform-selection-faq.en.md) | [中文](./ai-sales-roleplay-customer-service-sparring-structured-interview-rubric-platform-selection-faq.md)
 308. **In-Vehicle Cockpit & Smart Wearable Hardware Edge-Cloud Multimodal Voice Architecture Selection (On-Device NPU + Cloud GPT-4o Realtime / Gemini Live): 4-Zone Seat/Speed Safety Lock, Deictic <60KB Keyframe Burst (-85.4% Power) & Privacy LED Gate & 0ms Tunnel NPU Fallback Bridge**: [EN](./in-vehicle-cockpit-smart-hardware-edge-cloud-webrtc-multimodal-voice-architecture-selection-faq.en.md) | [中文](./in-vehicle-cockpit-smart-hardware-edge-cloud-webrtc-multimodal-voice-architecture-selection-faq.md)
+309. **Enterprise Legacy PBX & CCaaS (Genesys / Avaya / Cisco / Microsoft Teams Phone) Zero-Downtime AI Voice Migration Guide: Front-Door SBC SIP Deflection (-55.4% TCO), Pre-Transfer ACD/Graph Presence Gate & 0ms SBC Fail-Open Bypass**: [EN](./legacy-pbx-ccaas-genesys-avaya-cisco-teams-ai-voice-migration-selection-faq.en.md) | [中文](./legacy-pbx-ccaas-genesys-avaya-cisco-teams-ai-voice-migration-selection-faq.md)

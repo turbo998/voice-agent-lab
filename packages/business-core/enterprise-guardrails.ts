@@ -8065,6 +8065,36 @@ export function evaluateEdgeCloudMultimodalWebrtcFallbackGuard(input: {
   };
 }
 
+export interface LegacyPbxCcaasAiVoiceMigrationEvaluation {
+  policyCode: "LEGACY-PBX-CCAAS-AI-VOICE-MIGRATION-01";
+  frontDoorAiOrWarmPbxTransferAuthorized: boolean;
+  hairpinSurchargeOrDeadExtensionTransferBlocked: boolean;
+  sbcFailOpenLegacyAcdBypassBridged: boolean;
+}
+
+/**
+ * Deterministic Legacy PBX/CCaaS Front-Door SBC SIP Deflection Lock, Pre-Transfer ACD/Graph Presence Gate & 0ms SBC Fail-Open Bypass Guard (`LEGACY-PBX-CCAAS-AI-VOICE-MIGRATION-01`).
+ */
+export function evaluateLegacyPbxCcaasAiVoiceMigrationGuard(input: {
+  frontDoorSipBypassAndZeroAudioHookSurchargeSafe: boolean;
+  agentPresenceVerifiedAndCtiScreenPopSynchronized: boolean;
+  aiGatewayHealthDegradedOrCanaryErrorRateExceeded: boolean;
+}): LegacyPbxCcaasAiVoiceMigrationEvaluation {
+  return {
+    policyCode: "LEGACY-PBX-CCAAS-AI-VOICE-MIGRATION-01",
+    frontDoorAiOrWarmPbxTransferAuthorized:
+      input.frontDoorSipBypassAndZeroAudioHookSurchargeSafe &&
+      input.agentPresenceVerifiedAndCtiScreenPopSynchronized &&
+      !input.aiGatewayHealthDegradedOrCanaryErrorRateExceeded,
+    hairpinSurchargeOrDeadExtensionTransferBlocked:
+      !input.frontDoorSipBypassAndZeroAudioHookSurchargeSafe ||
+      !input.agentPresenceVerifiedAndCtiScreenPopSynchronized ||
+      input.aiGatewayHealthDegradedOrCanaryErrorRateExceeded,
+    sbcFailOpenLegacyAcdBypassBridged:
+      input.aiGatewayHealthDegradedOrCanaryErrorRateExceeded,
+  };
+}
+
 
 
 
