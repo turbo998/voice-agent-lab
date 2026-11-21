@@ -8755,6 +8755,36 @@ export function evaluateAutoDealershipDmsRecallLoanerGuard(input: {
   };
 }
 
+export interface VoiceMcpOauthOboGatewayEvaluation {
+  policyCode: "VOICE-MCP-OAUTH-OBO-GATEWAY-01";
+  voiceMcpToolExecutionAuthorized: boolean;
+  unscopedTokenOrBloatedMcpPayloadBlocked: boolean;
+  mcpProgressAndBargeInCancelBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI Model Context Protocol (MCP) OAuth 2.1 OBO & Manifest Hash Lock, <=150-Token Voice Projection Gate & Barge-In Cancellation Guard (`VOICE-MCP-OAUTH-OBO-GATEWAY-01`).
+ */
+export function evaluateVoiceMcpOauthOboGatewayGuard(input: {
+  mcpCallUsesScopedOboJwtAndVerifiedServerManifestHash: boolean;
+  mcpResponseProjectedUnder150VoiceTokensAndPiiScrubbed: boolean;
+  slowMcpToolOver800msStreamsProgressNotificationAndCancelOnBargeIn: boolean;
+}): VoiceMcpOauthOboGatewayEvaluation {
+  return {
+    policyCode: "VOICE-MCP-OAUTH-OBO-GATEWAY-01",
+    voiceMcpToolExecutionAuthorized:
+      input.mcpCallUsesScopedOboJwtAndVerifiedServerManifestHash &&
+      input.mcpResponseProjectedUnder150VoiceTokensAndPiiScrubbed &&
+      !input.slowMcpToolOver800msStreamsProgressNotificationAndCancelOnBargeIn,
+    unscopedTokenOrBloatedMcpPayloadBlocked:
+      !input.mcpCallUsesScopedOboJwtAndVerifiedServerManifestHash ||
+      !input.mcpResponseProjectedUnder150VoiceTokensAndPiiScrubbed ||
+      input.slowMcpToolOver800msStreamsProgressNotificationAndCancelOnBargeIn,
+    mcpProgressAndBargeInCancelBridged:
+      input.slowMcpToolOver800msStreamsProgressNotificationAndCancelOnBargeIn,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（331 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（332 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -372,3 +372,4 @@
 329. **车险与财险报案定损（FNOL）、手机实时视频查勘（WebRTC Video Appraisal）与防骗保语音架构（禁用本地相册上传强制一镜到底 `17位 VIN -> 车损` 实时视频与 3D 视差防伪硬锁、零口头承诺全赔与 `<=$800` 小额车损 10 分钟 Guidewire 闪赔门禁、人伤/气囊弹出/高速占道 `0ms` 熔断拍照避险与拖车救援抢占省 `61.5%` 外勤出车）方案**：[中文](./insurance-fnol-claims-video-damage-appraisal-guidewire-fraud-voice-selection-faq.md) | [EN](./insurance-fnol-claims-video-damage-appraisal-guidewire-fraud-voice-selection-faq.en.md)
 330. **连锁药房与医疗处方福利管理（PBM）慢病续方（Refill）、医保事先授权（Prior Auth）与用药安全语音架构（ISMP `LASA` 易混药名“处方号+毫克剂量+适应症”三重匹配与二类精麻药禁自动续方硬锁、零非持牌改量建议与 `2–8°C` 冷链特药在家签收窗门禁、药物不良反应 `ADR` `0ms` 执业药师抢占与 `NCPDP ePA` 自动申诉省 `84%` 冷链报废）方案**：[中文](./retail-pharmacy-pbm-prescription-refill-prior-auth-lasa-pharmacist-voice-selection-faq.md) | [EN](./retail-pharmacy-pbm-prescription-refill-prior-auth-lasa-pharmacist-voice-selection-faq.en.md)
 331. **汽车 4S 经销商集团（CDK Global / Reynolds & Reynolds / Tekion DMS）售后维保预约、召回备件锁与代步车调度语音架构（技师技能等级工位 `A/B/C-Tech` 与召回专件在库 `Parts_Bin >= 1` 双重硬锁、代步车 `Dealerware` 原子预留与二手车条件估值区间门禁、在修工单 `Open RO` 进线 `0ms` 播报分流 `78.4%` 催单电话与禁驾召回免费拖车）方案**：[中文](./automotive-dealership-dms-service-scheduling-vin-recall-loaner-voice-selection-faq.md) | [EN](./automotive-dealership-dms-service-scheduling-vin-recall-loaner-voice-selection-faq.en.md)
+332. **企业语音 AI 模型上下文协议（MCP - Model Context Protocol）工具网关、OAuth 2.1 On-Behalf-Of 最小权限委托与 `<150 Token` 语音投影架构（强制 `OAuth 2.1 OBO` 呼叫人短期 JWT 与 `SHA-256` 签名工具清单防投毒硬锁、网关层 `JMESPath` 将万字 JSON 裁剪至 `<=150 Token` 提速 `1,520ms` 门禁、`>800ms` `notifications/progress` 播报与打断 `notifications/cancelled` 级联中止）方案**：[中文](./enterprise-voice-mcp-model-context-protocol-oauth-obo-gateway-selection-faq.md) | [EN](./enterprise-voice-mcp-model-context-protocol-oauth-obo-gateway-selection-faq.en.md)
