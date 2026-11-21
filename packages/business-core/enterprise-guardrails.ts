@@ -7615,6 +7615,36 @@ export function evaluateAircraftFalWingtankRiggingJackVoiceGuard(input: {
   };
 }
 
+export interface AeroEngineTestcellMroNfpa409VoiceEvaluation {
+  policyCode: "AERO-ENGINE-TESTCELL-MRO-NFPA409-01";
+  starterAndBlastDoorAuthorized: boolean;
+  inletHazardOrUnstowedBarringToolBlocked: boolean;
+  guillotineFuelShutoffIgnitionKillAndFireBottleBridged: boolean;
+}
+
+/**
+ * Deterministic Aero-Engine & Gas Turbine MRO Test Cell Zero-Occupancy/Blast-Door Lock, AGB Barring-Tool RFID Gate & 0ms Guillotine Fuel Shutoff Guard (`AERO-ENGINE-TESTCELL-MRO-NFPA409-01`).
+ */
+export function evaluateAeroEngineTestcellMroNfpa409VoiceGuard(input: {
+  cellZeroOccupancyBlastDoorsAndFodScreenSafe: boolean;
+  agbBarringToolStowedZeroRpmAndNozzleLelSafe: boolean;
+  engineSurgeVibrationRedlineOrTitaniumFire: boolean;
+}): AeroEngineTestcellMroNfpa409VoiceEvaluation {
+  return {
+    policyCode: "AERO-ENGINE-TESTCELL-MRO-NFPA409-01",
+    starterAndBlastDoorAuthorized:
+      input.cellZeroOccupancyBlastDoorsAndFodScreenSafe &&
+      input.agbBarringToolStowedZeroRpmAndNozzleLelSafe &&
+      !input.engineSurgeVibrationRedlineOrTitaniumFire,
+    inletHazardOrUnstowedBarringToolBlocked:
+      !input.cellZeroOccupancyBlastDoorsAndFodScreenSafe ||
+      !input.agbBarringToolStowedZeroRpmAndNozzleLelSafe ||
+      input.engineSurgeVibrationRedlineOrTitaniumFire,
+    guillotineFuelShutoffIgnitionKillAndFireBottleBridged:
+      input.engineSurgeVibrationRedlineOrTitaniumFire,
+  };
+}
+
 
 
 
