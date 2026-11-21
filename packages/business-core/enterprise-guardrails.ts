@@ -5267,6 +5267,34 @@ export function evaluateFrontierDuplexAudioEotVoiceGuard(input: {
   };
 }
 
+export interface LuxuryVicClientelingBrinksVoiceEvaluation {
+  policyCode: "LUXURY-VIC-CLIENTELING-BRINKS-01";
+  limitedAllocationReservationAuthorized: boolean;
+  armoredValuableDispatchAuthorized: boolean;
+  vaultSecurityAndAntiTyingLockTriggered: boolean;
+}
+
+/**
+ * Deterministic Luxury Watch, High Jewelry & VIC Clienteling Vault Security, Anti-Flipper Allocation & Brinks/CITES Guard (`LUXURY-VIC-CLIENTELING-BRINKS-01`).
+ */
+export function evaluateLuxuryVicClientelingBrinksVoiceGuard(input: {
+  vicTierVerifiedZeroGreyMarketFlipAndDirectorApproved: boolean;
+  armoredCarrierAndAmlKycCitesCleared: boolean;
+  callerProbesBoutiqueVaultStockOrRequestsTying: boolean;
+}): LuxuryVicClientelingBrinksVoiceEvaluation {
+  return {
+    policyCode: "LUXURY-VIC-CLIENTELING-BRINKS-01",
+    limitedAllocationReservationAuthorized:
+      input.vicTierVerifiedZeroGreyMarketFlipAndDirectorApproved &&
+      !input.callerProbesBoutiqueVaultStockOrRequestsTying,
+    armoredValuableDispatchAuthorized:
+      input.armoredCarrierAndAmlKycCitesCleared &&
+      !input.callerProbesBoutiqueVaultStockOrRequestsTying,
+    vaultSecurityAndAntiTyingLockTriggered:
+      input.callerProbesBoutiqueVaultStockOrRequestsTying,
+  };
+}
+
 
 
 
