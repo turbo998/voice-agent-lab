@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (295 Bilingual Guides)
+## 3. Solution Architect Selection Guides (296 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -336,3 +336,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 293. **Commercial Aircraft Final Assembly Line (FAL), Wing Fuel-Tank & Flight-Control Voice Copilot: NFPA 410 Wing-Tank LEL <=10% & <1.0 Ohm Static Lock, 5,000 psi Wheel-Well Clear-Zone & Zero-FOD Gate & 0ms Hydraulic Dump Bridge**: [EN](./aircraft-final-assembly-line-wing-fuel-tank-entry-flight-control-rigging-jacking-voice-copilot-selection-faq.en.md) | [中文](./aircraft-final-assembly-line-wing-fuel-tank-entry-flight-control-rigging-jacking-voice-copilot-selection-faq.md)
 294. **Aero-Engine & Gas Turbine MRO Test Cell, Borescope & Fuel-Nozzle Voice Copilot: Bellmouth Zero-Occupancy & Blast-Door Lock, AGB Barring-Tool RFID Gate & 0ms Guillotine Fuel Shutoff Bridge**: [EN](./aero-engine-gas-turbine-test-cell-mro-inlet-vortex-fod-titanium-fire-voice-copilot-selection-faq.en.md) | [中文](./aero-engine-gas-turbine-test-cell-mro-inlet-vortex-fod-titanium-fire-voice-copilot-selection-faq.md)
 295. **Lithium-Ion Battery & ESS Gigafactory, NMP Coating Oven, -45°C Dry-Room Filling & Formation Voice Copilot: Oven NMP LEL <=20% & <=30 ppb Iron Lock, -45°C Dew-Point Anti-HF & X-Ray Overhang Gate & 0ms ASRS Quench-Tank Bridge**: [EN](./lithium-battery-gigafactory-electrode-coating-nmp-lel-dry-room-dewpoint-formation-voice-copilot-selection-faq.en.md) | [中文](./lithium-battery-gigafactory-electrode-coating-nmp-lel-dry-room-dewpoint-formation-voice-copilot-selection-faq.md)
+296. **Integrated Steel Mill, Blast Furnace, 300t BOF Converter & Slab Caster Voice Copilot: Lance Water-Leak Zero-Tilt & Dry-Scrap Lock, OG Flue O2 <=1.0% & 450t Crane Gate & 0ms Caster Mold-Breakout Slide-Gate Bridge**: [EN](./steel-mill-blast-furnace-bof-converter-molten-slag-water-explosion-co-gas-voice-copilot-selection-faq.en.md) | [中文](./steel-mill-blast-furnace-bof-converter-molten-slag-water-explosion-co-gas-voice-copilot-selection-faq.md)

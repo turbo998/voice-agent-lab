@@ -7675,6 +7675,36 @@ export function evaluateLithiumBatteryGigafactoryNfpa855VoiceGuard(input: {
   };
 }
 
+export interface SteelMillBofCasterOsha1910VoiceEvaluation {
+  policyCode: "STEEL-MILL-BOF-CASTER-OSHA1910-01";
+  bofBlowAndCasterPourAuthorized: boolean;
+  moltenWaterExplosionOrCoGasHazardBlocked: boolean;
+  lanceAutoHoistVesselLockAndSlideGateShutoffBridged: boolean;
+}
+
+/**
+ * Deterministic Integrated Steel Mill BOF Lance Water-Leak/Dry-Scrap Lock, OG Gas O2/CO Gate & 0ms Caster Mold-Breakout Slide-Gate Guard (`STEEL-MILL-BOF-CASTER-OSHA1910-01`).
+ */
+export function evaluateSteelMillBofCasterOsha1910VoiceGuard(input: {
+  bofLanceCoolingWaterZeroDeltaAndScrapDrySafe: boolean;
+  blastFurnaceTrtCoGasAndHotMetalCranePathSafe: boolean;
+  casterMoldBreakoutLanceWaterLeakOrCoGasSpike: boolean;
+}): SteelMillBofCasterOsha1910VoiceEvaluation {
+  return {
+    policyCode: "STEEL-MILL-BOF-CASTER-OSHA1910-01",
+    bofBlowAndCasterPourAuthorized:
+      input.bofLanceCoolingWaterZeroDeltaAndScrapDrySafe &&
+      input.blastFurnaceTrtCoGasAndHotMetalCranePathSafe &&
+      !input.casterMoldBreakoutLanceWaterLeakOrCoGasSpike,
+    moltenWaterExplosionOrCoGasHazardBlocked:
+      !input.bofLanceCoolingWaterZeroDeltaAndScrapDrySafe ||
+      !input.blastFurnaceTrtCoGasAndHotMetalCranePathSafe ||
+      input.casterMoldBreakoutLanceWaterLeakOrCoGasSpike,
+    lanceAutoHoistVesselLockAndSlideGateShutoffBridged:
+      input.casterMoldBreakoutLanceWaterLeakOrCoGasSpike,
+  };
+}
+
 
 
 
