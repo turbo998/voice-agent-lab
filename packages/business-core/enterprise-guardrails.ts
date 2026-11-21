@@ -6595,6 +6595,36 @@ export function evaluateAquaticWaterparkHypochloriteVgbVoiceGuard(input: {
   };
 }
 
+export interface PrintingPackagingLowmigrationLelVoiceEvaluation {
+  policyCode: "PRINTING-PACKAGING-LOWMIGRATION-LEL-01";
+  pressRunAndSlitterReleaseAuthorized: boolean;
+  nonFoodInkOrLiveNipWipeBlocked: boolean;
+  pressTrippedRtoBypassedAndCo2Triggered: boolean;
+}
+
+/**
+ * Deterministic Commercial Printing & Flexible Packaging Low-Migration Food-Ink Lock, ANSI B65 Nip LOTO Gate & 0ms NFPA 86 >25% LEL Guard (`PRINTING-PACKAGING-LOWMIGRATION-LEL-01`).
+ */
+export function evaluatePrintingPackagingLowmigrationLelVoiceGuard(input: {
+  lowMigrationFoodInkAndPdfArtworkVerified: boolean;
+  nipPointLotoAndSolventLelUnder25Safe: boolean;
+  solventLelSpikeInkFireOrNipEntrapment: boolean;
+}): PrintingPackagingLowmigrationLelVoiceEvaluation {
+  return {
+    policyCode: "PRINTING-PACKAGING-LOWMIGRATION-LEL-01",
+    pressRunAndSlitterReleaseAuthorized:
+      input.lowMigrationFoodInkAndPdfArtworkVerified &&
+      input.nipPointLotoAndSolventLelUnder25Safe &&
+      !input.solventLelSpikeInkFireOrNipEntrapment,
+    nonFoodInkOrLiveNipWipeBlocked:
+      !input.lowMigrationFoodInkAndPdfArtworkVerified ||
+      !input.nipPointLotoAndSolventLelUnder25Safe ||
+      input.solventLelSpikeInkFireOrNipEntrapment,
+    pressTrippedRtoBypassedAndCo2Triggered:
+      input.solventLelSpikeInkFireOrNipEntrapment,
+  };
+}
+
 
 
 
