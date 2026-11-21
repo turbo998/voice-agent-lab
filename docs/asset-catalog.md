@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（274 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（275 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -315,3 +315,4 @@
 272. **工业气体、深冷空分基地（ASU）与 200-Bar 高压气瓶充装站（林德 Linde / 液化空气 Air Liquide / 空气产品 / 盈德气体 / 杭氧）24×7 免提语音副驾方案（高压氧气小旁通均压 ΔP<0.5 MPa 防绝热压缩燃爆与 UV 黑光禁油硬锁、CGA 气瓶汇流排严禁螺纹转接头防氢氧混充炸瓶门禁及 -183°C 液氧洒落柏油沥青路面 0ms 严禁踩踏动车防引爆强切）**：[中文](./industrial-gases-air-separation-cryogenic-lox-lin-oxygen-adiabatic-compression-cga-manifold-voice-copilot-selection-faq.md) | [EN](./industrial-gases-air-separation-cryogenic-lox-lin-oxygen-adiabatic-compression-cga-manifold-voice-copilot-selection-faq.en.md)
 273. **水泥熟料基地（海螺水泥 / 天山水泥 / 豪瑞 Holcim / 海德堡材料 / 中材国际 / 史密斯 FLSmidth）、850°C 五级旋风预热器清堵与回转窑/煤磨 24×7 免提语音副驾方案（旋风筒“严禁堵点下方开孔”与下层塔架 UWB 全员撤离硬锁、煤磨 CO 阴燃禁开门充氮与回转窑防偏重反转机械销门禁及窑尾电收尘 CO≥0.8% 0ms 高压跳闸强切）**：[中文](./cement-plant-rotary-kiln-preheater-cyclone-jam-coal-mill-co-silo-voice-copilot-selection-faq.md) | [EN](./cement-plant-rotary-kiln-preheater-cyclone-jam-coal-mill-co-silo-voice-copilot-selection-faq.en.md)
 274. **商品混凝土搅拌站（三一重工 SANY / 中联重科 / 华润混凝土 / CEMEX / Command Alkon）、搅拌车罐内清渣 LOTO 与 62m 臂架泵车 24×7 AI 语音调度方案（ACI 318 最大水胶比车载水表死锁防工地私自加水与 90 分钟初凝硬锁、进搅拌筒风镐打灰机械防转销与高压线 ≥6m 防触电门禁及 85-Bar 堵管 0ms 自动反泵退压归零/严禁压缩空气吹管强切）**：[中文](./ready-mix-concrete-batching-mixer-drum-loto-water-cement-ratio-pump-boom-powerline-voice-dispatch-selection-faq.md) | [EN](./ready-mix-concrete-batching-mixer-drum-loto-water-cement-ratio-pump-boom-powerline-voice-dispatch-selection-faq.en.md)
+275. **沥青混凝土搅拌站（HMA）、热沥青罐区与高等级公路摊铺（维特根 Wirtgen / 安迈 Ammann / 阿斯泰克 Astec / 中交路桥）24×7 免提语音副驾方案（175°C 热沥青与含水乳化沥青防混装突沸炸顶 Boilover 硬锁、API 2023 加热盘管浸没 ≥15cm 防硫化亚铁 FeS 自燃与罐顶 H2S 禁开孔门禁及热沥青粘肤 0ms 只冲冷水 20m 严禁硬撕或擦柴油强切）**：[中文](./asphalt-hot-mix-plant-bitumen-boilover-h2s-pyrophoric-iron-sulfide-paver-voice-copilot-selection-faq.md) | [EN](./asphalt-hot-mix-plant-bitumen-boilover-h2s-pyrophoric-iron-sulfide-paver-voice-copilot-selection-faq.en.md)

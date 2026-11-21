@@ -7045,6 +7045,36 @@ export function evaluateReadyMixConcreteDrumWaterBoomVoiceGuard(input: {
   };
 }
 
+export interface AsphaltHmaBitumenBoiloverH2sVoiceEvaluation {
+  policyCode: "ASPHALT-HMA-BITUMEN-BOILOVER-H2S-01";
+  bitumenTransferAndHmaProductionAuthorized: boolean;
+  emulsionBoiloverOrExposedHeaterCoilBlocked: boolean;
+  coldWaterTarBurnProtocolAndPumpCutoffBridged: boolean;
+}
+
+/**
+ * Deterministic Hot-Mix Asphalt (HMA) 175°C Bitumen vs Emulsion/Water Anti-Boilover Lock, API 2023 Heater-Coil/H2S Gate & 0ms Tar-Burn Guard (`ASPHALT-HMA-BITUMEN-BOILOVER-H2S-01`).
+ */
+export function evaluateAsphaltHmaBitumenBoiloverH2sVoiceGuard(input: {
+  hotBitumenZeroWaterEmulsionAndFlashSafe: boolean;
+  heaterCoilSubmergedH2sClosedAndPugmillLotoSafe: boolean;
+  bitumenBoiloverBaghouseFireOrSkinSplash: boolean;
+}): AsphaltHmaBitumenBoiloverH2sVoiceEvaluation {
+  return {
+    policyCode: "ASPHALT-HMA-BITUMEN-BOILOVER-H2S-01",
+    bitumenTransferAndHmaProductionAuthorized:
+      input.hotBitumenZeroWaterEmulsionAndFlashSafe &&
+      input.heaterCoilSubmergedH2sClosedAndPugmillLotoSafe &&
+      !input.bitumenBoiloverBaghouseFireOrSkinSplash,
+    emulsionBoiloverOrExposedHeaterCoilBlocked:
+      !input.hotBitumenZeroWaterEmulsionAndFlashSafe ||
+      !input.heaterCoilSubmergedH2sClosedAndPugmillLotoSafe ||
+      input.bitumenBoiloverBaghouseFireOrSkinSplash,
+    coldWaterTarBurnProtocolAndPumpCutoffBridged:
+      input.bitumenBoiloverBaghouseFireOrSkinSplash,
+  };
+}
+
 
 
 
