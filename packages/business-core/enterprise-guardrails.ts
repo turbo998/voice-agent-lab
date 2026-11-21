@@ -8905,6 +8905,36 @@ export function evaluateMultilingualCodeswitchingAsrTtsGuard(input: {
   };
 }
 
+export interface HomeServicesHvacServicetitanDispatchEvaluation {
+  policyCode: "HOMESERVICES-HVAC-SERVICETITAN-DISPATCH-01";
+  dispatchSlotAndVanStockAuthorized: boolean;
+  unlicensedTechOrSightUnseenPriceQuoteBlocked: boolean;
+  tMinus30PresenceAndEmergencyPreemptionBridged: boolean;
+}
+
+/**
+ * Deterministic Home Services & HVAC (ServiceTitan / Field Service) Trade-License & Unit-Age Lock, Nameplate OCR / Diagnostic-Fee Gate & T-30m Presence Guard (`HOMESERVICES-HVAC-SERVICETITAN-DISPATCH-01`).
+ */
+export function evaluateHomeServicesHvacServicetitanDispatchGuard(input: {
+  technicianTradeLicenseAndZipZoneCapacityMatched: boolean;
+  diagnosticFeeDisclosedAndNoBindingSightUnseenFlatQuote: boolean;
+  tMinus30MinHomeownerPresenceCallOrEmergencyFloodHeatPreemption: boolean;
+}): HomeServicesHvacServicetitanDispatchEvaluation {
+  return {
+    policyCode: "HOMESERVICES-HVAC-SERVICETITAN-DISPATCH-01",
+    dispatchSlotAndVanStockAuthorized:
+      input.technicianTradeLicenseAndZipZoneCapacityMatched &&
+      input.diagnosticFeeDisclosedAndNoBindingSightUnseenFlatQuote &&
+      !input.tMinus30MinHomeownerPresenceCallOrEmergencyFloodHeatPreemption,
+    unlicensedTechOrSightUnseenPriceQuoteBlocked:
+      !input.technicianTradeLicenseAndZipZoneCapacityMatched ||
+      !input.diagnosticFeeDisclosedAndNoBindingSightUnseenFlatQuote ||
+      input.tMinus30MinHomeownerPresenceCallOrEmergencyFloodHeatPreemption,
+    tMinus30PresenceAndEmergencyPreemptionBridged:
+      input.tMinus30MinHomeownerPresenceCallOrEmergencyFloodHeatPreemption,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（336 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（337 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -377,3 +377,4 @@
 334. **长租公寓与住宅/商业物业管理（Yardi / RealPage / AppFolio）租客报修、自助看房智能锁与《公平住房法》（Fair Housing）语音架构（HUD `FHA` 严禁族裔/治安/家庭倾向性引导与 `ESA` 辅助动物免押金硬锁、自助看房智能门锁身份证活体与 `100m` 地理围栏双因子门禁、凌晨爆管/冬夜 `<4°C` 停暖 `0ms` 顺时针关总阀指导压降 `68%` 水损）方案**：[中文](./property-management-yardi-realpage-maintenance-fair-housing-showing-voice-selection-faq.md) | [EN](./property-management-yardi-realpage-maintenance-fair-housing-showing-voice-selection-faq.en.md)
 335. **企业 B2B 供应链采购跟单（SAP Ariba / Coupa）与长尾供应商交期确认（PO Expediting & Voice-to-ASN）语音架构（`PO` 合同单价只读与 `+-5%` 数量容差硬锁、免登录口述车牌/运单自动合成 `cXML / EDI 856 ASN` 提覆盖率至 `96.4%` 与预约收货月台门禁、延期断供 `Line-Down` `0ms` 并发外呼二级备选供应商 `AVL` 12分钟锁现货）方案**：[中文](./b2b-procurement-sap-ariba-coupa-po-expediting-asn-supplier-voice-selection-faq.md) | [EN](./b2b-procurement-sap-ariba-coupa-po-expediting-asn-supplier-voice-selection-faq.en.md)
 336. **全球多语种与句内语码转换（Code-Switching：中英混说 / 粤英混说 / Spanglish / Hinglish）实时语音识别与合成选型基准（联合多字符集解码保护句内英文 SKU/API 零汉字谐音污染将混合错误率 `MER` 压至 `4.6%` 硬锁、单一多语种共享声纹 TTS 禁句内换人门禁、`<300ms` 区分借词与整句语种切换动态跟随）方案**：[中文](./multilingual-code-switching-zh-en-spanglish-hinglish-asr-tts-benchmark-selection-faq.md) | [EN](./multilingual-code-switching-zh-en-spanglish-hinglish-asr-tts-benchmark-selection-faq.en.md)
+337. **连锁家政、暖通空调（HVAC）、水电抢修与上门安装（ServiceTitan / Salesforce Field Service）24/7 语音接单与技师排班架构（技师特种操作证照 `EPA 608`、设备役龄 `>=12年` 换新路由与 `<=25m` 车程硬锁、严禁未检报一口价与手机拍设备铭牌 `Nameplate OCR` 预带配件提首次修复率至 `92.8%` 门禁、出发前 `T-30m` 自动外呼核实在家压降 `62.4%` 放鸽子空跑）方案**：[中文](./home-services-hvac-plumbing-servicetitan-dispatch-eta-confirmation-voice-selection-faq.md) | [EN](./home-services-hvac-plumbing-servicetitan-dispatch-eta-confirmation-voice-selection-faq.en.md)
