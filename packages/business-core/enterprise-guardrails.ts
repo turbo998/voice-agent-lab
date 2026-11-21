@@ -6745,6 +6745,36 @@ export function evaluateWineryDistilleryCellarCo2StillVoiceGuard(input: {
   };
 }
 
+export interface PulpPaperBlrbacSmeltClo2VoiceEvaluation {
+  policyCode: "PULP-PAPER-BLRBAC-SMELT-CLO2-01";
+  blackLiquorFiringAndPaperRunAuthorized: boolean;
+  diluteBlackLiquorOrLiveNipEntryBlocked: boolean;
+  boilerEvacBunkerEspAndClo2ScrubberBridged: boolean;
+}
+
+/**
+ * Deterministic Pulp & Paper Mill BLRBAC >=58% Black-Liquor Solids Smelt-Water Lock, 1,800m/min Nip/Pulper LOTO Gate & 0ms Remote ESP Guard (`PULP-PAPER-BLRBAC-SMELT-CLO2-01`).
+ */
+export function evaluatePulpPaperBlrbacSmeltClo2VoiceGuard(input: {
+  blrbacBlackLiquorSolidsAndNoWaterSafe: boolean;
+  paperMachineNipAndPulperLotoSafe: boolean;
+  boilerTubeLeakClo2GasOrReelNipEmergency: boolean;
+}): PulpPaperBlrbacSmeltClo2VoiceEvaluation {
+  return {
+    policyCode: "PULP-PAPER-BLRBAC-SMELT-CLO2-01",
+    blackLiquorFiringAndPaperRunAuthorized:
+      input.blrbacBlackLiquorSolidsAndNoWaterSafe &&
+      input.paperMachineNipAndPulperLotoSafe &&
+      !input.boilerTubeLeakClo2GasOrReelNipEmergency,
+    diluteBlackLiquorOrLiveNipEntryBlocked:
+      !input.blrbacBlackLiquorSolidsAndNoWaterSafe ||
+      !input.paperMachineNipAndPulperLotoSafe ||
+      input.boilerTubeLeakClo2GasOrReelNipEmergency,
+    boilerEvacBunkerEspAndClo2ScrubberBridged:
+      input.boilerTubeLeakClo2GasOrReelNipEmergency,
+  };
+}
+
 
 
 
