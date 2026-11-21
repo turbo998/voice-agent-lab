@@ -5965,6 +5965,36 @@ export function evaluateSleepCpapNivRespiratoryVoiceGuard(input: {
   };
 }
 
+export interface CruiseShipboardSolasConciergeVoiceEvaluation {
+  policyCode: "CRUISE-SHIPBOARD-SOLAS-CONCIERGE-01";
+  shipboardDiningAndExcursionBookingAuthorized: boolean;
+  timezoneMismatchOrGiNorovirusIsolationEnforced: boolean;
+  bridgeEcdisMobAndMedicalCenterBridged: boolean;
+}
+
+/**
+ * Deterministic Cruise Shipboard Edge Voice Concierge Ship-Time/Port-Time Lock, CDC VSP Norovirus & 0ms SOLAS Bridge Guard (`CRUISE-SHIPBOARD-SOLAS-CONCIERGE-01`).
+ */
+export function evaluateCruiseShipboardSolasConciergeVoiceGuard(input: {
+  shipTimeSyncedAndMusterDrillCompleted: boolean;
+  vspGastroenteritisContainmentVerified: boolean;
+  manOverboardFireOrAbandonShipAlarm: boolean;
+}): CruiseShipboardSolasConciergeVoiceEvaluation {
+  return {
+    policyCode: "CRUISE-SHIPBOARD-SOLAS-CONCIERGE-01",
+    shipboardDiningAndExcursionBookingAuthorized:
+      input.shipTimeSyncedAndMusterDrillCompleted &&
+      input.vspGastroenteritisContainmentVerified &&
+      !input.manOverboardFireOrAbandonShipAlarm,
+    timezoneMismatchOrGiNorovirusIsolationEnforced:
+      !input.shipTimeSyncedAndMusterDrillCompleted ||
+      !input.vspGastroenteritisContainmentVerified ||
+      input.manOverboardFireOrAbandonShipAlarm,
+    bridgeEcdisMobAndMedicalCenterBridged:
+      input.manOverboardFireOrAbandonShipAlarm,
+  };
+}
+
 
 
 

@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（238 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（239 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -279,3 +279,4 @@
 236. **大型建筑工程总包（EPC）、工地 BIM 巡检（Procore / Autodesk ACC）与塔吊/深基坑作业 24×7 语音安全副驾方案（最新有效 IFC 图纸与注册结构师 PE 签章变更硬锁、塔吊大风 <20 mph 与 >1.5m 深基坑支护箱硬锁及基坑坍塌 0ms 全区停工强切）**：[中文](./construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.md) | [EN](./construction-jobsite-procore-bim-crane-wind-trench-shoring-voice-copilot-selection-faq.en.md)
 237. **个人征信异议申诉、信贷拒贷解释（ECOA / FCRA）与反身份盗用冻结（Experian / Equifax / TransUnion / 央行征信 / 零售银行信贷中心）24×7 AI 语音客服方案（ECOA Reg B 官方拒贷原因代码只读零偏见硬锁、反非法“征信洗白”拦截与冒名贷款 0ms 全局征信安全冻结强切）**：[中文](./consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.md) | [EN](./consumer-credit-dispute-fcra-ecoa-adverse-action-debt-relief-voice-concierge-selection-faq.en.md)
 238. **睡眠呼吸暂停（OSA）、家用双水平呼吸机（CPAP / BiPAP）与慢阻肺居家无创通气（瑞思迈 ResMed AirView / 飞利浦伟康）24×7 语音随访方案（处方气道压力 cmH2O 禁擅调与隐藏临床菜单防破解硬锁、CMS 90 天依从性漏气辅导与 COPD 二氧化碳潴留 0ms 强切）**：[中文](./sleep-apnea-cpap-bipap-home-ventilator-cms-compliance-voice-coach-selection-faq.md) | [EN](./sleep-apnea-cpap-bipap-home-ventilator-cms-compliance-voice-coach-selection-faq.en.md)
+239. **大型国际邮轮、舱房智能穿戴（嘉年华 OceanMedallion / 皇家加勒比 / 爱达邮轮）与远洋船载边缘 24×7 多语种语音管家方案（船上时间 Ship Time vs 港口当地时间防漏船硬锁、CDC VSP 诺如病毒胃肠隔离门禁与人员落水 Code Oscar 0ms 驾驶台海图标点强切）**：[中文](./cruise-line-shipboard-medallion-gangway-all-aboard-man-overboard-voice-concierge-selection-faq.md) | [EN](./cruise-line-shipboard-medallion-gangway-all-aboard-man-overboard-voice-concierge-selection-faq.en.md)
