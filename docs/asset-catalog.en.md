@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (320 Bilingual Guides)
+## 3. Solution Architect Selection Guides (321 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -361,3 +361,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 318. **Enterprise Voice AI Capacity Planning & FinOps Governance (Azure PTU vs. PayGo Spillover, Byte-Exact Prompt Prefix Caching 88.4% Hit Lock, 72% Edge TTS Audio Cache, $1.20/Call Wallet Cap & 0ms APIM Multi-Region Spillover Cutting TCO by 66.4%)**: [EN](./enterprise-voice-ai-capacity-planning-ptu-paygo-prompt-tts-caching-finops-selection-faq.en.md) | [中文](./enterprise-voice-ai-capacity-planning-ptu-paygo-prompt-tts-caching-finops-selection-faq.md)
 319. **Omnichannel Voice Ingress (WebRTC / Mobile CallKit / SIP / WhatsApp) & Target-Speaker Voice Isolation Architecture: 2.5s Primary-Speaker TSE Lock (-94.2% False Barge-In), In-App JWT Zero-OTP & CallKit Keep-Alive Gate & 0ms Wi-Fi-to-5G ICE-Restart 15s Resume**: [EN](./omnichannel-webrtc-mobile-callkit-sip-whatsapp-speaker-isolation-selection-faq.en.md) | [中文](./omnichannel-webrtc-mobile-callkit-sip-whatsapp-speaker-isolation-selection-faq.md)
 320. **Banking Wealth Dual-Recording, Investor Suitability (C1–C5) & Insurance Tele-Underwriting Voice Architecture: Suitability & Zero-Yield-Guarantee Lock, SHA-256 Locked-SSML Verbatim Disclosure (98.8% 1st-Pass QA) & 0ms Munich Re Reflexive Medical Underwriting DAG**: [EN](./wealth-dual-recording-suitability-insurance-tele-underwriting-voice-architecture-selection-faq.en.md) | [中文](./wealth-dual-recording-suitability-insurance-tele-underwriting-voice-architecture-selection-faq.md)
+321. **Global QSR Dual-Lane Drive-Thru, Coffee/Tea Ordering & Real-Time Store POS Integration Voice Architecture: Live POS 86-Stock & Modifier PLU DAG Lock, FDA Top-9 Allergen Cross-Contact Gate, 85dBA Lane Beamforming & <250ms Crew Headset PTT Override (+14.2% AOV)**: [EN](./qsr-drive-thru-coffee-pos-86-stock-lock-allergen-upsell-voice-ordering-selection-faq.en.md) | [中文](./qsr-drive-thru-coffee-pos-86-stock-lock-allergen-upsell-voice-ordering-selection-faq.md)

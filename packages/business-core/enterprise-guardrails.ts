@@ -8425,6 +8425,36 @@ export function evaluateWealthSuitabilityTeleUnderwritingGuard(input: {
   };
 }
 
+export interface QsrDriveThruPos86AllergenEvaluation {
+  policyCode: "QSR-DRIVETHRU-POS-86-ALLERGEN-01";
+  posCartCommitAndKdsFireAuthorized: boolean;
+  outOfStock86OrAllergenGuaranteeBlocked: boolean;
+  beamformingAndCrewHeadsetTakeoverBridged: boolean;
+}
+
+/**
+ * Deterministic QSR Drive-Thru & Coffee POS Live 86-Stock Lock, FDA Top-9 Allergen Cross-Contact Gate & <250ms Crew Headset Takeover Guard (`QSR-DRIVETHRU-POS-86-ALLERGEN-01`).
+ */
+export function evaluateQsrDriveThruPos86AllergenGuard(input: {
+  posMenuSkuAvailableNot86edAndModifierDAGValid: boolean;
+  allergenQueryZeroCrossContaminationGuaranteeEnforced: boolean;
+  driveThruAmbientNoiseOver82DbaOrCrewHeadsetOverride: boolean;
+}): QsrDriveThruPos86AllergenEvaluation {
+  return {
+    policyCode: "QSR-DRIVETHRU-POS-86-ALLERGEN-01",
+    posCartCommitAndKdsFireAuthorized:
+      input.posMenuSkuAvailableNot86edAndModifierDAGValid &&
+      input.allergenQueryZeroCrossContaminationGuaranteeEnforced &&
+      !input.driveThruAmbientNoiseOver82DbaOrCrewHeadsetOverride,
+    outOfStock86OrAllergenGuaranteeBlocked:
+      !input.posMenuSkuAvailableNot86edAndModifierDAGValid ||
+      !input.allergenQueryZeroCrossContaminationGuaranteeEnforced ||
+      input.driveThruAmbientNoiseOver82DbaOrCrewHeadsetOverride,
+    beamformingAndCrewHeadsetTakeoverBridged:
+      input.driveThruAmbientNoiseOver82DbaOrCrewHeadsetOverride,
+  };
+}
+
 
 
 
