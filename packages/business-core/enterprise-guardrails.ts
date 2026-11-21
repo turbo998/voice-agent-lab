@@ -4961,6 +4961,33 @@ export function evaluateLiveInterpreterBoardMeetingVoiceGuard(input: {
   };
 }
 
+export interface SlowApiAsyncFillerHeartbeatVoiceEvaluation {
+  policyCode: "SLOW-API-ASYNC-FILLER-HEARTBEAT-01";
+  toolOutcomeSpeechAndCommitAuthorized: boolean;
+  asyncFillerPlaybackPermitted: boolean;
+  asyncSmsOrCallbackHandoffTriggered: boolean;
+}
+
+/**
+ * Deterministic Slow External API (3s-12s) Non-Committal Filler Lock, In-Flight Barge-In Epoch Fence & >9s Out-of-Band Pivot Guard (`SLOW-API-ASYNC-FILLER-HEARTBEAT-01`).
+ */
+export function evaluateSlowApiAsyncFillerHeartbeatVoiceGuard(input: {
+  fillerContainsZeroOutcomeCommitment: boolean;
+  toolResponseEpochMatchesCurrentSlotState: boolean;
+  apiLatencyExceeded9sOrDownstreamTimeout: boolean;
+}): SlowApiAsyncFillerHeartbeatVoiceEvaluation {
+  return {
+    policyCode: "SLOW-API-ASYNC-FILLER-HEARTBEAT-01",
+    toolOutcomeSpeechAndCommitAuthorized:
+      input.toolResponseEpochMatchesCurrentSlotState &&
+      !input.apiLatencyExceeded9sOrDownstreamTimeout,
+    asyncFillerPlaybackPermitted:
+      input.fillerContainsZeroOutcomeCommitment,
+    asyncSmsOrCallbackHandoffTriggered:
+      input.apiLatencyExceeded9sOrDownstreamTimeout,
+  };
+}
+
 
 
 

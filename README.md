@@ -275,6 +275,7 @@ flowchart LR
 201. **原生端到端语音大模型（GPT-Realtime / Gemini Live）vs 级联流式架构（STT+LLM+TTS）通话内按意图动态双轨切换路由器（受监管交易强制切回级联硬锁、跨引擎统一品牌音色与上下文同步锁、S2S 音频 Token 预算超限自动降级）方案**：[中文](./docs/hybrid-s2s-realtime-vs-cascaded-stt-llm-tts-dynamic-intent-router-selection-faq.md) | [EN](./docs/hybrid-s2s-realtime-vs-cascaded-stt-llm-tts-dynamic-intent-router-selection-faq.en.md)
 202. **实时语音数字人导购与 24×7 品牌直播平台横向选型（Azure AI Speech Avatar vs HeyGen Interactive Avatar vs Tavus Phoenix-3 vs 自建 GPU 集群：广告法极限词与医疗功效 0ms 拦截锁、大促秒杀防超卖/防低价注入锁与音画不同步 <45ms 自动切流护栏）方案**：[中文](./docs/ecommerce-livestream-retail-kiosk-interactive-avatar-heygen-azure-tavus-selection-faq.md) | [EN](./docs/ecommerce-livestream-retail-kiosk-interactive-avatar-heygen-azure-tavus-selection-faq.en.md)
 203. **跨国企业实时多语种同传与高管董事会纪要平台横向选型（Azure AI Speech Live Interpreter vs 级联精校同传管道 vs 本地私有化同传容器：SOV/SVO 谓语后置否定极性硬锁、亿/万与 Million/Billion 量级双校验、零数据留存与原声克隆授权锁）方案**：[中文](./docs/multilingual-simultaneous-interpretation-azure-live-interpreter-board-meeting-selection-faq.md) | [EN](./docs/multilingual-simultaneous-interpretation-azure-live-interpreter-board-meeting-selection-faq.en.md)
+204. **慢速外部 API 与遗留 ERP（3s–12s）场景下实时语音异步安抚播报（Async Filler）、进度心跳与防重复提交架构（700ms 非承诺性安抚话术硬锁、工具执行中用户改口 Epoch 吊销锁与 >9s 超时转异步通知闭环）方案**：[中文](./docs/slow-api-rag-async-filler-progress-heartbeat-idempotent-voice-orchestration-selection-faq.md) | [EN](./docs/slow-api-rag-async-filler-progress-heartbeat-idempotent-voice-orchestration-selection-faq.en.md)
 
 ---
 
