@@ -4876,6 +4876,35 @@ export function evaluateDistrictHeatingChpSteamVoiceGuard(input: {
   };
 }
 
+export interface HybridS2sCascadeIntentRouterVoiceEvaluation {
+  policyCode: "HYBRID-S2S-CASCADE-INTENT-ROUTER-01";
+  nativeS2sDirectAudioPermitted: boolean;
+  midCallLaneSwitchAuthorized: boolean;
+  forceCascadeFallbackAndBudgetClampTriggered: boolean;
+}
+
+/**
+ * Deterministic Hybrid S2S vs Cascaded In-Call Intent Router Guard (`HYBRID-S2S-CASCADE-INTENT-ROUTER-01`).
+ */
+export function evaluateHybridS2sCascadeIntentRouterVoiceGuard(input: {
+  turnRequiresRegulatedVerbatimOrDeterministicTool: boolean;
+  unifiedVoiceTimbreAndContextBufferSynced: boolean;
+  s2sAudioTokenCostExceedsCallBudgetCap: boolean;
+}): HybridS2sCascadeIntentRouterVoiceEvaluation {
+  return {
+    policyCode: "HYBRID-S2S-CASCADE-INTENT-ROUTER-01",
+    nativeS2sDirectAudioPermitted:
+      !input.turnRequiresRegulatedVerbatimOrDeterministicTool &&
+      input.unifiedVoiceTimbreAndContextBufferSynced &&
+      !input.s2sAudioTokenCostExceedsCallBudgetCap,
+    midCallLaneSwitchAuthorized:
+      input.unifiedVoiceTimbreAndContextBufferSynced,
+    forceCascadeFallbackAndBudgetClampTriggered:
+      input.turnRequiresRegulatedVerbatimOrDeterministicTool ||
+      input.s2sAudioTokenCostExceedsCallBudgetCap,
+  };
+}
+
 
 
 

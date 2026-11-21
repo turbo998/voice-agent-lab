@@ -272,6 +272,7 @@ flowchart LR
 198. **集团司库与财资管理（Corporate Treasury / Kyriba / SAP TRM）、外汇套保（360T / FX）与 SWIFT gpi 大额电汇 24×7 语音工作台（预备案标准清算指令 SSI 与四眼硬件签名硬锁、外汇十倍乌龙指 Fat-Finger 限额锁与假冒 CEO 秘密并购汇款 0ms 熔断）方案**：[中文](./docs/corporate-treasury-fx-hedging-wire-transfer-swift-gpi-voice-desk-selection-faq.md) | [EN](./docs/corporate-treasury-fx-hedging-wire-transfer-swift-gpi-voice-desk-selection-faq.en.md)
 199. **商业地产写字楼、超大规模数据中心托管（Colocation）与物流产业园 REITs 招商、租户装修审批及物业 CAM 结算（Yardi Voyager / MRI / ServiceNow）24×7 语音管家（动火与预应力楼板钻孔 MOP 硬锁、租约提前退租/租金减免法务锁与电梯困人/机房超温 0ms 强切）方案**：[中文](./docs/commercial-real-estate-reit-colocation-yardi-mri-cam-fitout-voice-concierge-selection-faq.md) | [EN](./docs/commercial-real-estate-reit-colocation-yardi-mri-cam-fitout-voice-concierge-selection-faq.en.md)
 200. **城市集中供热管网、热电联产（CHP）机组与工业蒸汽管网（西门子 SPPA-T3000 / 丹佛斯 Leanheat / ASME BPVC）24×7 语音调度台（蒸汽冷凝水排空与暖管防汽水锤硬锁、极寒以热定电防冻保底锁与爆管补水激增/锅炉缺水 MFT 0ms 强切）方案**：[中文](./docs/district-heating-chp-cogeneration-steam-network-water-hammer-voice-dispatch-selection-faq.md) | [EN](./docs/district-heating-chp-cogeneration-steam-network-water-hammer-voice-dispatch-selection-faq.en.md)
+201. **原生端到端语音大模型（GPT-Realtime / Gemini Live）vs 级联流式架构（STT+LLM+TTS）通话内按意图动态双轨切换路由器（受监管交易强制切回级联硬锁、跨引擎统一品牌音色与上下文同步锁、S2S 音频 Token 预算超限自动降级）方案**：[中文](./docs/hybrid-s2s-realtime-vs-cascaded-stt-llm-tts-dynamic-intent-router-selection-faq.md) | [EN](./docs/hybrid-s2s-realtime-vs-cascaded-stt-llm-tts-dynamic-intent-router-selection-faq.en.md)
 
 ---
 
