@@ -7525,6 +7525,36 @@ export function evaluateWindBladeVartmTurnoverNacelleVoiceGuard(input: {
   };
 }
 
+export interface ShipbuildingDrydockGoliathCoatingVoiceEvaluation {
+  policyCode: "SHIPBUILDING-DRYDOCK-GOLIATH-COATING-01";
+  paintPumpAndBlockHoistAuthorized: boolean;
+  adjacentHotWorkOrUnbalancedBlockLiftBlocked: boolean;
+  paintAirCutoffWeldRackTripAndGoliathBrakeBridged: boolean;
+}
+
+/**
+ * Deterministic Commercial Shipbuilding & Dry-Dock OSHA 1915 Tank LEL <=10% & 6-Adjacent Hot-Work Lock, 1,200t Dual-Goliath CoG Gate & 0ms Paint/Weld Cutoff Guard (`SHIPBUILDING-DRYDOCK-GOLIATH-COATING-01`).
+ */
+export function evaluateShipbuildingDrydockGoliathCoatingVoiceGuard(input: {
+  tankSolventLel10PctAndSixAdjacentHotWorkSafe: boolean;
+  goliathTandemCogWindAndSeaChestBlankedSafe: boolean;
+  tankLelExceedanceO2DropOrGoliathWindOverload: boolean;
+}): ShipbuildingDrydockGoliathCoatingVoiceEvaluation {
+  return {
+    policyCode: "SHIPBUILDING-DRYDOCK-GOLIATH-COATING-01",
+    paintPumpAndBlockHoistAuthorized:
+      input.tankSolventLel10PctAndSixAdjacentHotWorkSafe &&
+      input.goliathTandemCogWindAndSeaChestBlankedSafe &&
+      !input.tankLelExceedanceO2DropOrGoliathWindOverload,
+    adjacentHotWorkOrUnbalancedBlockLiftBlocked:
+      !input.tankSolventLel10PctAndSixAdjacentHotWorkSafe ||
+      !input.goliathTandemCogWindAndSeaChestBlankedSafe ||
+      input.tankLelExceedanceO2DropOrGoliathWindOverload,
+    paintAirCutoffWeldRackTripAndGoliathBrakeBridged:
+      input.tankLelExceedanceO2DropOrGoliathWindOverload,
+  };
+}
+
 
 
 
