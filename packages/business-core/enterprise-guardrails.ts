@@ -7375,6 +7375,36 @@ export function evaluatePcbSmtAssemblyReflowJstd033VoiceGuard(input: {
   };
 }
 
+export interface DisplaySolarFabSilaneHfSemiVoiceEvaluation {
+  policyCode: "DISPLAY-SOLAR-FAB-SILANE-HF-SEMI-01";
+  pecvdVentAndHfWetBenchAuthorized: boolean;
+  unpurgedSilaneOrHfWetBenchBlocked: boolean;
+  cylinderPigtailShutoffN2PurgeAndHfFirstAidBridged: boolean;
+}
+
+/**
+ * Deterministic Display Panel & Photovoltaic Solar Fab SEMI S2 Silane/PH3 30-Cycle Purge Lock, 49% HF Wet-Bench Gate & 0ms POU Scrubber Pigtail Guard (`DISPLAY-SOLAR-FAB-SILANE-HF-SEMI-01`).
+ */
+export function evaluateDisplaySolarFabSilaneHfSemiVoiceGuard(input: {
+  silanePh3CyclePurge30xAndPouScrubberSafe: boolean;
+  hfWetBenchSashExhaustAndCalciumGluconateSafe: boolean;
+  pouScrubberTripSilaneLeakOrHfSplashEmergency: boolean;
+}): DisplaySolarFabSilaneHfSemiVoiceEvaluation {
+  return {
+    policyCode: "DISPLAY-SOLAR-FAB-SILANE-HF-SEMI-01",
+    pecvdVentAndHfWetBenchAuthorized:
+      input.silanePh3CyclePurge30xAndPouScrubberSafe &&
+      input.hfWetBenchSashExhaustAndCalciumGluconateSafe &&
+      !input.pouScrubberTripSilaneLeakOrHfSplashEmergency,
+    unpurgedSilaneOrHfWetBenchBlocked:
+      !input.silanePh3CyclePurge30xAndPouScrubberSafe ||
+      !input.hfWetBenchSashExhaustAndCalciumGluconateSafe ||
+      input.pouScrubberTripSilaneLeakOrHfSplashEmergency,
+    cylinderPigtailShutoffN2PurgeAndHfFirstAidBridged:
+      input.pouScrubberTripSilaneLeakOrHfSplashEmergency,
+  };
+}
+
 
 
 
