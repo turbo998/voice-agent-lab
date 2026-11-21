@@ -8635,6 +8635,36 @@ export function evaluateGov12345UtilityOutageGasPreemptionGuard(input: {
   };
 }
 
+export interface CrossBorderParcelCustomsLastmileEvaluation {
+  policyCode: "CROSSBORDER-PARCEL-CUSTOMS-LASTMILE-01";
+  parcelActionAndClearanceAuthorized: boolean;
+  unauthorizedRerouteOrVerbalTaxIdBlocked: boolean;
+  doorstepSmartLockerRedirectBridged: boolean;
+}
+
+/**
+ * Deterministic Cross-Border Parcel Anti-Hijack Reroute Lock, Encrypted Customs Tax-ID Portal Gate & 30s Courier-at-Door Smart-Locker Redirect Guard (`CROSSBORDER-PARCEL-CUSTOMS-LASTMILE-01`).
+ */
+export function evaluateCrossBorderParcelCustomsLastmileGuard(input: {
+  addressRedirectPermittedByShipperFlagAndRadiusUnder15Km: boolean;
+  customsTaxIdAndDutyCollectedViaEncryptedPortalNotVerbal: boolean;
+  courierAtDoorNoAnswerTriggers30SecSmartLockerRedirect: boolean;
+}): CrossBorderParcelCustomsLastmileEvaluation {
+  return {
+    policyCode: "CROSSBORDER-PARCEL-CUSTOMS-LASTMILE-01",
+    parcelActionAndClearanceAuthorized:
+      input.addressRedirectPermittedByShipperFlagAndRadiusUnder15Km &&
+      input.customsTaxIdAndDutyCollectedViaEncryptedPortalNotVerbal &&
+      !input.courierAtDoorNoAnswerTriggers30SecSmartLockerRedirect,
+    unauthorizedRerouteOrVerbalTaxIdBlocked:
+      !input.addressRedirectPermittedByShipperFlagAndRadiusUnder15Km ||
+      !input.customsTaxIdAndDutyCollectedViaEncryptedPortalNotVerbal ||
+      input.courierAtDoorNoAnswerTriggers30SecSmartLockerRedirect,
+    doorstepSmartLockerRedirectBridged:
+      input.courierAtDoorNoAnswerTriggers30SecSmartLockerRedirect,
+  };
+}
+
 
 
 
