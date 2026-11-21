@@ -7765,6 +7765,36 @@ export function evaluateNonferrousSmeltingPotlineNfpa484VoiceGuard(input: {
   };
 }
 
+export interface CcaasIvrModernizationHandoffVoiceEvaluation {
+  policyCode: "CCAAS-IVR-MODERNIZATION-HANDOFF-2026-01";
+  selfServiceOrSeamlessWarmHandoffAuthorized: boolean;
+  blindTransferOrUnauthorizedRefundBlocked: boolean;
+  priorityHumanQueueAndWhisperBriefingBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise CCaaS IVR Modernization 4-Slot Context Handoff Lock, Policy-Cap Refund Firewall & 0ms Frustration Escalation Guard (`CCAAS-IVR-MODERNIZATION-HANDOFF-2026-01`).
+ */
+export function evaluateCcaasIvrModernizationHandoffVoiceGuard(input: {
+  callerIdentityVerifiedAndContextPacketHydrated: boolean;
+  regulatedDisclosureOrRefundWithinPolicyCap: boolean;
+  vipEscalationRepeatedFrustrationOrComplianceRedFlag: boolean;
+}): CcaasIvrModernizationHandoffVoiceEvaluation {
+  return {
+    policyCode: "CCAAS-IVR-MODERNIZATION-HANDOFF-2026-01",
+    selfServiceOrSeamlessWarmHandoffAuthorized:
+      input.callerIdentityVerifiedAndContextPacketHydrated &&
+      input.regulatedDisclosureOrRefundWithinPolicyCap &&
+      !input.vipEscalationRepeatedFrustrationOrComplianceRedFlag,
+    blindTransferOrUnauthorizedRefundBlocked:
+      !input.callerIdentityVerifiedAndContextPacketHydrated ||
+      !input.regulatedDisclosureOrRefundWithinPolicyCap ||
+      input.vipEscalationRepeatedFrustrationOrComplianceRedFlag,
+    priorityHumanQueueAndWhisperBriefingBridged:
+      input.vipEscalationRepeatedFrustrationOrComplianceRedFlag,
+  };
+}
+
 
 
 

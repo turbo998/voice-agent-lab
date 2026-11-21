@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (298 Bilingual Guides)
+## 3. Solution Architect Selection Guides (299 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -339,3 +339,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 296. **Integrated Steel Mill, Blast Furnace, 300t BOF Converter & Slab Caster Voice Copilot: Lance Water-Leak Zero-Tilt & Dry-Scrap Lock, OG Flue O2 <=1.0% & 450t Crane Gate & 0ms Caster Mold-Breakout Slide-Gate Bridge**: [EN](./steel-mill-blast-furnace-bof-converter-molten-slag-water-explosion-co-gas-voice-copilot-selection-faq.en.md) | [中文](./steel-mill-blast-furnace-bof-converter-molten-slag-water-explosion-co-gas-voice-copilot-selection-faq.md)
 297. **Petrochemical Refinery Turnaround (TAR), FCC/CDU Distillation, Blind-Flange Ledger & Pyrophoric FeS Voice Copilot: 100% RFID Blind-Spade Parity Lock, KMnO4 FeS Wet-Passivation & H2S Gate & 0ms SIS Water-Drench Bridge**: [EN](./petrochemical-refinery-fcc-turnaround-blind-flange-pyrophoric-fes-h2s-voice-copilot-selection-faq.en.md) | [中文](./petrochemical-refinery-fcc-turnaround-blind-flange-pyrophoric-fes-h2s-voice-copilot-selection-faq.md)
 298. **Non-Ferrous Copper & Aluminum Smelting, 500kA Potline & Vertical DC Casting Voice Copilot: DC Pit Water/Coating & >=350°C Dry-Launder Lock, 500kA Equipotential & AsH3 Gate & 0ms Bleed-Out Dry Dump-Pan Bridge**: [EN](./nonferrous-copper-aluminum-smelting-electrolytic-potline-launder-water-explosion-so2-voice-copilot-selection-faq.en.md) | [中文](./nonferrous-copper-aluminum-smelting-electrolytic-potline-launder-water-explosion-so2-voice-copilot-selection-faq.md)
+299. **Enterprise Omnichannel CCaaS IVR Modernization & Zero-Repeat Warm Agent Handoff (Azure ACS + GPT-Realtime vs. Amazon Connect + Nova Sonic vs. Genesys Cloud CX AI): 4-Slot CTI Context Lock, <=$50 Refund Firewall & 0ms 2-Strike Escalation Bridge**: [EN](./ccaas-ivr-modernization-warm-agent-handoff-azure-acs-amazon-connect-genesys-selection-faq.en.md) | [中文](./ccaas-ivr-modernization-warm-agent-handoff-azure-acs-amazon-connect-genesys-selection-faq.md)
