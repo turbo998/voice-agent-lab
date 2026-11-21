@@ -5522,6 +5522,35 @@ export function evaluateMuseumDocentUwbFactLockVoiceGuard(input: {
   };
 }
 
+export interface WaterUtilityScadaDosingVoiceEvaluation {
+  policyCode: "WATER-UTILITY-SCADA-DOSING-01";
+  chemicalDosingAdjustmentAndWaterClearanceAuthorized: boolean;
+  boilWaterAdvisoryMaintained: boolean;
+  emergencyValveCrewAndBoilWaterAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Water Utility SCADA Anti-Oldsmar Chemical Dosing Cap, <20 PSI Boil-Water Lab Gate & 0ms Main-Break Guard (`WATER-UTILITY-SCADA-DOSING-01`).
+ */
+export function evaluateWaterUtilityScadaDosingVoiceGuard(input: {
+  chemicalDosingWithinSafePpmEnvelopeAndDualSigned: boolean;
+  linePressureAbove20PsiAndColiformLabNegativeVerified: boolean;
+  transmissionMainRuptureOrChlorineGasLeakOrDropBelow20Psi: boolean;
+}): WaterUtilityScadaDosingVoiceEvaluation {
+  return {
+    policyCode: "WATER-UTILITY-SCADA-DOSING-01",
+    chemicalDosingAdjustmentAndWaterClearanceAuthorized:
+      input.chemicalDosingWithinSafePpmEnvelopeAndDualSigned &&
+      input.linePressureAbove20PsiAndColiformLabNegativeVerified &&
+      !input.transmissionMainRuptureOrChlorineGasLeakOrDropBelow20Psi,
+    boilWaterAdvisoryMaintained:
+      !input.linePressureAbove20PsiAndColiformLabNegativeVerified ||
+      input.transmissionMainRuptureOrChlorineGasLeakOrDropBelow20Psi,
+    emergencyValveCrewAndBoilWaterAlertTriggered:
+      input.transmissionMainRuptureOrChlorineGasLeakOrDropBelow20Psi,
+  };
+}
+
 
 
 

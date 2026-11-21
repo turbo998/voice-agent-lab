@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg82" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071524"/>
+      <stop offset="50%" stop-color="#0d2640"/>
+      <stop offset="100%" stop-color="#061320"/>
+    </linearGradient>
+    <linearGradient id="card82" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#123052" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#09192b" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg82)" rx="16"/>
+  <text x="600" y="42" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">Water Utility, Treatment SCADA &amp; Stormwater Flood Control (Veolia / EPA SDWA) 24×7 Voice Dispatch</text>
+  <text x="600" y="66" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">Anti-Oldsmar Chemical Dosing Cap (NaOH/Cl2) · &lt;20 PSI Boil-Water Advisory Lock · 0ms Main-Break &amp; CSO Flood Bridge (WATER-UTILITY-SCADA-DOSING-01)</text>
+
+  <!-- Left Column -->
+  <rect x="30" y="92" width="290" height="548" rx="12" fill="url(#card82)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="175" y="122" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1. Water Plant &amp; Citizen Channels</text>
+
+  <rect x="48" y="142" width="254" height="105" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="175" y="166" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Water Treatment Plant (WTP)</text>
+  <text x="175" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Free Chlorine (0.2–4.0 mg/L) &amp; NTU</text>
+  <text x="175" y="206" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• NaOH / Fluoride Dosing Pump Setpoint</text>
+  <text x="175" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Clearwell Level &amp; Backwash Sequence</text>
+
+  <rect x="48" y="264" width="254" height="105" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="175" y="288" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Distribution Grid &amp; Hydrant Crew</text>
+  <text x="175" y="310" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• DMA Pressure Drop (&lt; 20 PSI Backflow)</text>
+  <text x="175" y="328" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 36-Inch Transmission Main Geyser</text>
+  <text x="175" y="346" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Hospital / Dialysis Center Water Feed</text>
+
+  <rect x="48" y="386" width="254" height="105" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="175" y="410" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Stormwater &amp; Wastewater (WWTP)</text>
+  <text x="175" y="432" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Underpass Flash-Flood Pump Station</text>
+  <text x="175" y="450" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Combined Sewer Overflow (CSO) EPA Alert</text>
+  <text x="175" y="468" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Smart-Meter Leak &amp; High-Bill Triage</text>
+
+  <rect x="48" y="508" width="254" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="175" y="532" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Water &amp; Regulatory Standards</text>
+  <text x="175" y="554" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• EPA Safe Drinking Water Act (SDWA)</text>
+  <text x="175" y="572" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• AWWA C651 Disinfection &amp; Flushing</text>
+  <text x="175" y="590" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• America's Water Infrastructure Act</text>
+
+  <!-- Center Column -->
+  <rect x="350" y="92" width="500" height="548" rx="12" fill="url(#card82)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="600" y="122" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">2. Deterministic Water Utility Gate (WATER-UTILITY-SCADA-DOSING-01)</text>
+
+  <rect x="372" y="142" width="456" height="136" rx="10" fill="#2a1215" stroke="#ef4444" stroke-width="1.8"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE A: Anti-Oldsmar Chemical Dosing Envelope &amp; Dual-Op Lock</text>
+  <text x="600" y="188" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: chemicalDosingWithinSafePpmEnvelopeAndDualSigned === true</text>
+  <text x="600" y="208" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Permanently blocks voice SCADA from setting NaOH, Chlorine, or Fluoride</text>
+  <text x="600" y="226" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  dosing outside hard PLC mechanical/chemical limits (e.g. Cl2 &lt;= 4.0 mg/L)</text>
+  <text x="600" y="246" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Requires local Chief Operator console confirmation for any dosing change</text>
+
+  <rect x="372" y="294" width="456" height="145" rx="10" fill="#172554" stroke="#38bdf8" stroke-width="1.8"/>
+  <text x="600" y="318" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE B: &lt;20 PSI Backflow &amp; AWWA C651 Lab Clearance Gate</text>
+  <text x="600" y="340" fill="#bae6fd" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Checks: linePressureAbove20PsiAndColiformLabNegativeVerified === true</text>
+  <text x="600" y="360" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Blocks lifting a Boil-Water Advisory or reopening repaired potable mains</text>
+  <text x="600" y="378" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">  until line pressure &gt;= 20 PSI and two consecutive 24h coliform tests pass</text>
+  <text x="600" y="398" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• Priority-notifies renal dialysis centers &amp; hospitals on pressure drops</text>
+
+  <rect x="372" y="455" width="456" height="165" rx="10" fill="#062e22" stroke="#10b981" stroke-width="1.8"/>
+  <text x="600" y="479" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">GATE C: 0ms Transmission Main Rupture &amp; Flash-Flood Bridge</text>
+  <text x="600" y="501" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trigger: transmissionMainRuptureOrChlorineGasLeakOrDropBelow20Psi === true</text>
+  <text x="600" y="521" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 0ms sets emergencyValveCrewAndBoilWaterAlertTriggered = true</text>
+  <text x="600" y="541" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Dispatches valve-isolation crews with slow-close anti-surge cadence</text>
+  <text x="600" y="559" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">  and triggers automated DMA Boil-Water Advisory outbound alerts</text>
+  <text x="600" y="582" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Cost: $0.050/min · Storm/Main-Break Call Containment: 95.8%</text>
+
+  <!-- Right Column -->
+  <rect x="880" y="92" width="290" height="548" rx="12" fill="url(#card82)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1025" y="122" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3. SCADA, AMI &amp; GIS Stack</text>
+
+  <rect x="898" y="142" width="254" height="110" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+  <text x="1025" y="166" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">AVEVA Wonderware / Ignition SCADA</text>
+  <text x="1025" y="188" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Read-Only Water Quality Telemetry</text>
+  <text x="1025" y="206" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Hardware Over-Feed Mechanical Stop</text>
+  <text x="1025" y="224" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Chlorine Scrubber &amp; Leak Sensor</text>
+
+  <rect x="898" y="268" width="254" height="110" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="1025" y="292" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Esri ArcGIS Water &amp; Bentley OpenFlows</text>
+  <text x="1025" y="314" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• District Metered Area (DMA) Polygon</text>
+  <text x="1025" y="332" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Critical Dialysis/Hospital Customer Tag</text>
+  <text x="1025" y="350" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Slow-Close Hydraulic Surge Calculator</text>
+
+  <rect x="898" y="394" width="254" height="110" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="1025" y="418" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Itron / Badger AMI Smart Meters</text>
+  <text x="1025" y="440" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• 24h Continuous Flow Leak Detection</text>
+  <text x="1025" y="458" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Automated Running-Toilet Diagnosis</text>
+  <text x="1025" y="476" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• EPA Lead &amp; Copper Service Line Lookup</text>
+
+  <rect x="898" y="520" width="254" height="100" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2"/>
+  <text x="1025" y="544" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Sealed Water Metrics</text>
+  <text x="1025" y="566" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Chemical Over-Dosing Events: 0.00%</text>
+  <text x="1025" y="584" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Unverified Boil-Water Lifts: 0.00%</text>
+  <text x="1025" y="602" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">• AMI Leak Self-Resolution: 93.4%</text>
+</svg>

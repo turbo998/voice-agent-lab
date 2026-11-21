@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (223 Bilingual Guides)
+## 3. Solution Architect Selection Guides (224 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -264,3 +264,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 221. **Industrial Field Service, ATEX Zone-1 Hands-Free Inspection & SAP PM / Maximo LOTO Voice Copilot: Dual-Vocal Call-and-Response Lock, Zero-Energy Try-Start Gate & 0ms H2S/Man-Down Bridge**: [EN](./industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.en.md) | [中文](./industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.md)
 222. **Enterprise Outbound Voice Campaigns, Speculative Sub-450ms AMD, Voicemail Beep Detection & TCPA/DNC Governance: Eliminating the 2.5s Telemarketer Pause & 0ms Opt-Out Lock**: [EN](./outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.en.md) | [中文](./outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.md)
 223. **Museum, Cultural Heritage & Science Center Multimodal AI Voice Docent: Curatorial CIDOC-CRM Fact Lock, UWB/Visual 30cm Vitrine Alignment & 0ms Conservation Flash Shield**: [EN](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.en.md) | [中文](./museum-cultural-heritage-multimodal-audio-docent-uwb-hallucination-lock-selection-faq.md)
+224. **Water Utility, Treatment Plant SCADA & Stormwater Flood Control (Veolia / Suez / EPA SDWA) 24×7 Voice Dispatch: Anti-Oldsmar Chemical Dosing Lock, <20 PSI Boil-Water Lab Gate & 0ms Main-Break Bridge**: [EN](./water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.en.md) | [中文](./water-utility-scada-chemical-dosing-boil-water-advisory-voice-dispatch-selection-faq.md)
