@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (357 Bilingual Guides)
+## 3. Solution Architect Selection Guides (358 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -398,3 +398,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 355. **Pharma & Life Sciences (Veeva Vault MedComms / Argus Safety / FDA FAERS) Medical Information, Adverse Event (PV) 24/7 Voice Reporting & Field Rep Architecture: FDA Approved PI & Zero Off-Label Lock (0% Violations), Parallel MedDRA E2B(R3) 4-Element AE Capture Gate (100% 24h SLA) & 0ms Serious Adverse Event (SAE) Physician Bridge**: [EN](./pharma-life-sciences-medinfo-adverse-event-faers-veeva-voice-selection-faq.en.md) | [中文](./pharma-life-sciences-medinfo-adverse-event-faers-veeva-voice-selection-faq.md)
 356. **Smart Building & Commercial Office (Envoy / Honeywell Forge / Johnson Controls / Otis Compass) Visitor Access, Elevator Dispatch & BMS Voice Architecture: Host-Confirmed Single-Floor Turnstile/Elevator Lock (0% Floor Breaches), Room-Scoped BACnet BMS Comfort Gate & 0ms ASME A17.1 Elevator Entrapment SOC Bridge**: [EN](./smart-building-commercial-office-visitor-access-elevator-bms-voice-selection-faq.en.md) | [中文](./smart-building-commercial-office-visitor-access-elevator-bms-voice-selection-faq.md)
 357. **Retirement, 401(k) & Pension Recordkeeping (Fidelity / Vanguard / Empower) RMD, Rollover, Tax-Penalty Disclosure & Elder-Exploitation (FINRA Rule 2165) Voice Architecture: ERISA Spousal Consent & 7-Day ACH Lock, Deterministic IRS Pub 590-B RMD & §402(f) 10%+20% Tax Gate & 0ms FINRA Rule 2165 Elder-Scam Disbursement Hold**: [EN](./retirement-401k-pension-rmd-rollover-elder-fraud-guardrail-voice-selection-faq.en.md) | [中文](./retirement-401k-pension-rmd-rollover-elder-fraud-guardrail-voice-selection-faq.md)
+358. **Ocean & Air Freight Forwarding (WiseTech CargoWise / Maersk / Kuehne+Nagel) Bill-of-Lading Release, Port Demurrage & Reefer/DG Voice Architecture: Original B/L Surrender & Freight-Paid DO Lock (0% Wrongful Releases), 48h Pre-LFD Drayage Booking Gate (-58.4% D&D Fees) & 0ms Reefer Temp / IMDG Dangerous Goods Bridge**: [EN](./ocean-air-freight-forwarding-cargowise-bol-demurrage-reefer-voice-selection-faq.en.md) | [中文](./ocean-air-freight-forwarding-cargowise-bol-demurrage-reefer-voice-selection-faq.md)

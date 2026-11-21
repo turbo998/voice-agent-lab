@@ -9535,6 +9535,36 @@ export function evaluateRetirement401kPensionElderFraudGuard(input: {
   };
 }
 
+export interface FreightForwardingCargowiseBolReeferEvaluation {
+  policyCode: "FREIGHT-FORWARDING-CARGOWISE-BOL-REEFER-01";
+  deliveryOrderAndDrayageSlotAuthorized: boolean;
+  unverifiedBolReleaseOrMissedLfdBlocked: boolean;
+  reeferExcursionOrImdgHazardBridged: boolean;
+}
+
+/**
+ * Deterministic Ocean & Air Freight Forwarding (CargoWise) Original B/L Title Lock, Pre-LFD Drayage Gate & 0ms Reefer/IMDG Dangerous Goods Guard (`FREIGHT-FORWARDING-CARGOWISE-BOL-REEFER-01`).
+ */
+export function evaluateFreightForwardingCargowiseBolReeferGuard(input: {
+  originalBillOfLadingSurrenderedAndFreightPaidBeforeDeliveryOrder: boolean;
+  portLastFreeDayDrayageBookedToPreventDemurrageDetention: boolean;
+  reeferContainerTempExcursionOrImdgDangerousGoodsHoldEscalation: boolean;
+}): FreightForwardingCargowiseBolReeferEvaluation {
+  return {
+    policyCode: "FREIGHT-FORWARDING-CARGOWISE-BOL-REEFER-01",
+    deliveryOrderAndDrayageSlotAuthorized:
+      input.originalBillOfLadingSurrenderedAndFreightPaidBeforeDeliveryOrder &&
+      input.portLastFreeDayDrayageBookedToPreventDemurrageDetention &&
+      !input.reeferContainerTempExcursionOrImdgDangerousGoodsHoldEscalation,
+    unverifiedBolReleaseOrMissedLfdBlocked:
+      !input.originalBillOfLadingSurrenderedAndFreightPaidBeforeDeliveryOrder ||
+      !input.portLastFreeDayDrayageBookedToPreventDemurrageDetention ||
+      input.reeferContainerTempExcursionOrImdgDangerousGoodsHoldEscalation,
+    reeferExcursionOrImdgHazardBridged:
+      input.reeferContainerTempExcursionOrImdgDangerousGoodsHoldEscalation,
+  };
+}
+
 
 
 
