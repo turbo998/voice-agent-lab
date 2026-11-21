@@ -7015,6 +7015,36 @@ export function evaluateCementKilnCycloneCoalmillCoVoiceGuard(input: {
   };
 }
 
+export interface ReadyMixConcreteDrumWaterBoomVoiceEvaluation {
+  policyCode: "READY-MIX-CONCRETE-DRUM-WATER-BOOM-01";
+  structuralPourAndBoomUnfoldAuthorized: boolean;
+  unauthorizedWaterOrUnpinnedDrumBlocked: boolean;
+  reversePumpZeroBarAndBoomLockBridged: boolean;
+}
+
+/**
+ * Deterministic Ready-Mix Concrete ACI 318 Water-Cement Ratio & 90-Min Lock, Drum Chipping Mechanical-Pin LOTO Gate & 0ms 85-Bar Reverse-Pump Guard (`READY-MIX-CONCRETE-DRUM-WATER-BOOM-01`).
+ */
+export function evaluateReadyMixConcreteDrumWaterBoomVoiceGuard(input: {
+  aciWaterCementRatioAnd90MinSlumpValid: boolean;
+  drumChippingLotoAndBoomPowerlineOutriggerSafe: boolean;
+  pluggedPipeHighPressurePowerlineArcOrHopperBreach: boolean;
+}): ReadyMixConcreteDrumWaterBoomVoiceEvaluation {
+  return {
+    policyCode: "READY-MIX-CONCRETE-DRUM-WATER-BOOM-01",
+    structuralPourAndBoomUnfoldAuthorized:
+      input.aciWaterCementRatioAnd90MinSlumpValid &&
+      input.drumChippingLotoAndBoomPowerlineOutriggerSafe &&
+      !input.pluggedPipeHighPressurePowerlineArcOrHopperBreach,
+    unauthorizedWaterOrUnpinnedDrumBlocked:
+      !input.aciWaterCementRatioAnd90MinSlumpValid ||
+      !input.drumChippingLotoAndBoomPowerlineOutriggerSafe ||
+      input.pluggedPipeHighPressurePowerlineArcOrHopperBreach,
+    reversePumpZeroBarAndBoomLockBridged:
+      input.pluggedPipeHighPressurePowerlineArcOrHopperBreach,
+  };
+}
+
 
 
 
