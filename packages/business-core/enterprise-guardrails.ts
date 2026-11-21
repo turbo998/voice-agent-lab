@@ -8785,6 +8785,36 @@ export function evaluateVoiceMcpOauthOboGatewayGuard(input: {
   };
 }
 
+export interface InteractiveKioskAvatarPresenceEvaluation {
+  policyCode: "INTERACTIVE-KIOSK-AVATAR-PRESENCE-01";
+  kioskVoiceAndAvatarSessionAuthorized: boolean;
+  passerbyFalseWakeOrPublicPiiLeakBlocked: boolean;
+  walkAwayPrivacyWipeAndQrHandoffBridged: boolean;
+}
+
+/**
+ * Deterministic Interactive Kiosk ToF <=1.5m Presence & Gaze Wake Lock, +-15° Acoustic Curtain / Zero-PII Gate & 3-Sec Walk-Away Privacy Wipe Guard (`INTERACTIVE-KIOSK-AVATAR-PRESENCE-01`).
+ */
+export function evaluateInteractiveKioskAvatarPresenceGuard(input: {
+  tofPresenceUnder150cmAndGazeEngagedBeforeMicOpen: boolean;
+  narrowBeamCone30DegAndZeroPublicPiiReadoutEnforced: boolean;
+  visitorWalkAwayOver3SecTriggersInstantPrivacyWipeAndQrHandoff: boolean;
+}): InteractiveKioskAvatarPresenceEvaluation {
+  return {
+    policyCode: "INTERACTIVE-KIOSK-AVATAR-PRESENCE-01",
+    kioskVoiceAndAvatarSessionAuthorized:
+      input.tofPresenceUnder150cmAndGazeEngagedBeforeMicOpen &&
+      input.narrowBeamCone30DegAndZeroPublicPiiReadoutEnforced &&
+      !input.visitorWalkAwayOver3SecTriggersInstantPrivacyWipeAndQrHandoff,
+    passerbyFalseWakeOrPublicPiiLeakBlocked:
+      !input.tofPresenceUnder150cmAndGazeEngagedBeforeMicOpen ||
+      !input.narrowBeamCone30DegAndZeroPublicPiiReadoutEnforced ||
+      input.visitorWalkAwayOver3SecTriggersInstantPrivacyWipeAndQrHandoff,
+    walkAwayPrivacyWipeAndQrHandoffBridged:
+      input.visitorWalkAwayOver3SecTriggersInstantPrivacyWipeAndQrHandoff,
+  };
+}
+
 
 
 

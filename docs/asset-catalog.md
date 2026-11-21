@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（332 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（333 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -373,3 +373,4 @@
 330. **连锁药房与医疗处方福利管理（PBM）慢病续方（Refill）、医保事先授权（Prior Auth）与用药安全语音架构（ISMP `LASA` 易混药名“处方号+毫克剂量+适应症”三重匹配与二类精麻药禁自动续方硬锁、零非持牌改量建议与 `2–8°C` 冷链特药在家签收窗门禁、药物不良反应 `ADR` `0ms` 执业药师抢占与 `NCPDP ePA` 自动申诉省 `84%` 冷链报废）方案**：[中文](./retail-pharmacy-pbm-prescription-refill-prior-auth-lasa-pharmacist-voice-selection-faq.md) | [EN](./retail-pharmacy-pbm-prescription-refill-prior-auth-lasa-pharmacist-voice-selection-faq.en.md)
 331. **汽车 4S 经销商集团（CDK Global / Reynolds & Reynolds / Tekion DMS）售后维保预约、召回备件锁与代步车调度语音架构（技师技能等级工位 `A/B/C-Tech` 与召回专件在库 `Parts_Bin >= 1` 双重硬锁、代步车 `Dealerware` 原子预留与二手车条件估值区间门禁、在修工单 `Open RO` 进线 `0ms` 播报分流 `78.4%` 催单电话与禁驾召回免费拖车）方案**：[中文](./automotive-dealership-dms-service-scheduling-vin-recall-loaner-voice-selection-faq.md) | [EN](./automotive-dealership-dms-service-scheduling-vin-recall-loaner-voice-selection-faq.en.md)
 332. **企业语音 AI 模型上下文协议（MCP - Model Context Protocol）工具网关、OAuth 2.1 On-Behalf-Of 最小权限委托与 `<150 Token` 语音投影架构（强制 `OAuth 2.1 OBO` 呼叫人短期 JWT 与 `SHA-256` 签名工具清单防投毒硬锁、网关层 `JMESPath` 将万字 JSON 裁剪至 `<=150 Token` 提速 `1,520ms` 门禁、`>800ms` `notifications/progress` 播报与打断 `notifications/cancelled` 级联中止）方案**：[中文](./enterprise-voice-mcp-model-context-protocol-oauth-obo-gateway-selection-faq.md) | [EN](./enterprise-voice-mcp-model-context-protocol-oauth-obo-gateway-selection-faq.en.md)
+333. **线下智慧展厅、机场航站楼、博物馆与旗舰零售大屏数字人（Interactive Kiosk Voice + Avatar）架构（`ToF/毫米波 <=1.5m` 驻足与正面视线凝视免唤醒词开麦削减 `98.6%` 误唤醒硬锁、`+-15°` 窄波束声幕防邻机串音与公共外放零个人隐私朗读门禁、端侧 `60fps Viseme` 渲染省 `90.7%` 成本与离场 `3秒` 瞬时清屏销忆）方案**：[中文](./retail-airport-museum-interactive-kiosk-avatar-ultrasonic-presence-voice-selection-faq.md) | [EN](./retail-airport-museum-interactive-kiosk-avatar-ultrasonic-presence-voice-selection-faq.en.md)
