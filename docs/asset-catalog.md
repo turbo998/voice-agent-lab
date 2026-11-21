@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（356 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（357 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -397,3 +397,4 @@
 354. **企业级实时语音大模型动态复杂度路由与语义音频缓存 FinOps（Per-Turn SLM/Mini vs. Frontier 混合编排 + Semantic Audio Cache）架构（零 PII 参数化语义音频缓存与租户 `Policy_Epoch` 秒级失效硬锁、单轮 `12ms` 复杂度分类器将 `74%` 常规话轮分流至 `25ms` Opus 缓存与极速 SLM 压降 `66.8%` 成本且保持统一品牌 TTS 音色门禁、声学情绪愤怒/高危流失/多步工具推理 `0ms` 无感提级旗舰模型）方案**：[中文](./enterprise-voice-model-router-slm-frontier-semantic-audio-cache-finops-selection-faq.md) | [EN](./enterprise-voice-model-router-slm-frontier-semantic-audio-cache-finops-selection-faq.en.md)
 355. **制药与生命科学（Veeva Vault MedComms / Argus Safety / FDA FAERS 模式）医学信息中心（MedInfo）、不良事件（AE / 药物警戒）24/7 语音上报与合规助手架构（`FDA/NMPA` 获批说明书 `PI` 字面绑定与非主动超说明书问询秒转 `MSL` 零违规推广硬锁、并行 `MedDRA` 哨兵 100% 捕获隐蔽不良事件 `ICH E2B(R3)` 四要素 24 小时自动建档门禁、严重不良事件 `SAE` 与生物制剂质量缺陷 `0ms` 药物警戒医师抢占）方案**：[中文](./pharma-life-sciences-medinfo-adverse-event-faers-veeva-voice-selection-faq.md) | [EN](./pharma-life-sciences-medinfo-adverse-event-faers-veeva-voice-selection-faq.en.md)
 356. **商业地产、智慧园区与超甲级写字楼（Envoy / Honeywell Forge / Johnson Controls / 奥的斯/通力目的选层模式）大堂多语种访客语音接待、门禁梯控联动与电梯困人应急对讲架构（大堂访客闸机 100% 预约核验或受访人 `Teams` 实时确认并绑定唯一单楼层梯控硬锁、会议室 `BACnet BMS` 物理房间点位隔离与 `19℃-26℃` 舒适带门禁、电梯轿厢困人 `ASME A17.1` 多语种防扒门安抚与消防火警 `0ms` 消控中心抢占）方案**：[中文](./smart-building-commercial-office-visitor-access-elevator-bms-voice-selection-faq.md) | [EN](./smart-building-commercial-office-visitor-access-elevator-bms-voice-selection-faq.en.md)
+357. **退休养老金、企业年金与公积金管理（Fidelity / Vanguard / Empower / 养老金中心模式）`RMD` 最低提领、离职滚存（Rollover）、提前支取税罚披露与防高龄老人金融剥削语音架构（`ERISA` 配偶公证同意书硬锁与改银行卡 7 天提现冷却锁、确定性 `IRS Pub 590-B RMD` 寿命表计算与未满 `59.5岁` `10%罚金+20%预扣税` 锁定 `SSML` 告知门禁、高龄老人背景音耳语教唆清仓 `0ms` 触发 `FINRA Rule 2165` 临时止付冻结并桥接老年保护专员）方案**：[中文](./retirement-401k-pension-rmd-rollover-elder-fraud-guardrail-voice-selection-faq.md) | [EN](./retirement-401k-pension-rmd-rollover-elder-fraud-guardrail-voice-selection-faq.en.md)

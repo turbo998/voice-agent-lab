@@ -9505,6 +9505,36 @@ export function evaluateSmartBuildingVisitorElevatorBmsGuard(input: {
   };
 }
 
+export interface Retirement401kPensionElderFraudEvaluation {
+  policyCode: "RETIREMENT-401K-PENSION-ELDER-FRAUD-01";
+  distributionAndRolloverAuthorized: boolean;
+  spousalConsentOrTaxPenaltyOmissionBlocked: boolean;
+  elderExploitationRule2165HoldBridged: boolean;
+}
+
+/**
+ * Deterministic Retirement, 401(k) & Pension ERISA Spousal Consent Lock, IRS RMD/Tax-Penalty Gate & 0ms FINRA Rule 2165 Elder-Exploitation Guard (`RETIREMENT-401K-PENSION-ELDER-FRAUD-01`).
+ */
+export function evaluateRetirement401kPensionElderFraudGuard(input: {
+  erisaSpousalConsentVerifiedAndZeroUnlicensedFiduciaryAdvice: boolean;
+  earlyWithdrawalTaxPenaltyAndRmdCalculationDisclosed: boolean;
+  elderFinancialExploitationCoachingOrSuddenLiquidationEscalation: boolean;
+}): Retirement401kPensionElderFraudEvaluation {
+  return {
+    policyCode: "RETIREMENT-401K-PENSION-ELDER-FRAUD-01",
+    distributionAndRolloverAuthorized:
+      input.erisaSpousalConsentVerifiedAndZeroUnlicensedFiduciaryAdvice &&
+      input.earlyWithdrawalTaxPenaltyAndRmdCalculationDisclosed &&
+      !input.elderFinancialExploitationCoachingOrSuddenLiquidationEscalation,
+    spousalConsentOrTaxPenaltyOmissionBlocked:
+      !input.erisaSpousalConsentVerifiedAndZeroUnlicensedFiduciaryAdvice ||
+      !input.earlyWithdrawalTaxPenaltyAndRmdCalculationDisclosed ||
+      input.elderFinancialExploitationCoachingOrSuddenLiquidationEscalation,
+    elderExploitationRule2165HoldBridged:
+      input.elderFinancialExploitationCoachingOrSuddenLiquidationEscalation,
+  };
+}
+
 
 
 
