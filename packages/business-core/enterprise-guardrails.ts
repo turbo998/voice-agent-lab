@@ -6655,6 +6655,36 @@ export function evaluatePestControlFumigationVikaneFifraVoiceGuard(input: {
   };
 }
 
+export interface SkiResortAvalancheGondolaB77VoiceEvaluation {
+  policyCode: "SKI-RESORT-AVALANCHE-GONDOLA-B77-01";
+  gazexDetonationAndLiftLoadingAuthorized: boolean;
+  occupiedRunoutOrDeropementBypassBlocked: boolean;
+  bullwheelEmergencyBrakeAndAvalancheSarBridged: boolean;
+}
+
+/**
+ * Deterministic Alpine Ski Resort Avalanche Gazex Runout-Sweep & Winch-Cat Lock, ANSI B77.1 Deropement Gate & 0ms Bullwheel/SAR Guard (`SKI-RESORT-AVALANCHE-GONDOLA-B77-01`).
+ */
+export function evaluateSkiResortAvalancheGondolaB77VoiceGuard(input: {
+  avalancheBlastZoneSweptAndWinchCableLocked: boolean;
+  ansiB77DeropementAndCrosswindSafe: boolean;
+  avalancheBurialTreeWellOrLiftRollbackEmergency: boolean;
+}): SkiResortAvalancheGondolaB77VoiceEvaluation {
+  return {
+    policyCode: "SKI-RESORT-AVALANCHE-GONDOLA-B77-01",
+    gazexDetonationAndLiftLoadingAuthorized:
+      input.avalancheBlastZoneSweptAndWinchCableLocked &&
+      input.ansiB77DeropementAndCrosswindSafe &&
+      !input.avalancheBurialTreeWellOrLiftRollbackEmergency,
+    occupiedRunoutOrDeropementBypassBlocked:
+      !input.avalancheBlastZoneSweptAndWinchCableLocked ||
+      !input.ansiB77DeropementAndCrosswindSafe ||
+      input.avalancheBurialTreeWellOrLiftRollbackEmergency,
+    bullwheelEmergencyBrakeAndAvalancheSarBridged:
+      input.avalancheBurialTreeWellOrLiftRollbackEmergency,
+  };
+}
+
 
 
 
