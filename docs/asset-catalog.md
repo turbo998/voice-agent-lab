@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（221 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（222 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -262,3 +262,4 @@
 219. **AI 语言外教陪练、雅思/托福口语模考与高管领导力教练（Business English / IELTS / ICF Executive Coaching）全双工语音平台架构（外语初学者 1,600ms 找词停顿防抢话硬锁、声学音素级 GOP 发音评测防文本幻觉锁与高管私密倾诉 HR 物理隔离护栏）方案**：[中文](./ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.md) | [EN](./ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.en.md)
 220. **实时语音智能体安全防御、防声学越狱（Acoustic Jailbreak）与 OWASP Agentic 工具调用防火墙架构（工具 Schema 物理剥离客户 ID 防越权 IDOR 硬锁、声学带通滤波与双轨一致性校验锁、假冒研发测试管理员 0ms 熔断）方案**：[中文](./voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.md) | [EN](./voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.en.md)
 221. **工业现场免提巡检、电力/石化“两票三制”唱票复诵与防爆头戴设备（RealWear ATEX Zone-1 / SAP S/4HANA PM / IBM Maximo）24×7 语音副驾（操作人+监护人双声纹唱票硬锁、OSHA 1910.147 上锁挂牌零残压点动测试锁与硫化氢/倒地报警 0ms 强切）方案**：[中文](./industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.md) | [EN](./industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.en.md)
+222. **企业级智能外呼（预约确认 / 客户续费 / 物流派前通知 / 贷后提醒）与投机式毫秒级答录机识别（Speculative AMD）、TCPA/防骚扰合规架构（消除 2.5 秒“推销电话死寂停顿”、语音信箱滴声后精准留言与“别再打给我”0ms 全局退订硬锁）方案**：[中文](./outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.md) | [EN](./outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.en.md)

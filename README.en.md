@@ -293,6 +293,7 @@ flowchart LR
 219. **AI Language Tutor, IELTS/TOEFL Speaking Examiner & Executive Leadership Coach: L2 1,600ms Hesitation Patience Lock, Acoustic Phoneme GOP Grader & ICF Privacy Boundary Gate**: [EN](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.en.md) | [中文](./docs/ai-language-tutor-executive-leadership-coaching-cefr-phoneme-voice-selection-faq.md)
 220. **Voice AI Security, Acoustic Jailbreak Defense & OWASP Agentic Tool Firewall: Zero-LLM-Identity Tool Binding (Anti-IDOR), Dual-Track S2S/STT Alignment & 0ms Debug-Override Lockout**: [EN](./docs/voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.en.md) | [中文](./docs/voice-agent-security-acoustic-jailbreak-owasp-agentic-rbac-firewall-selection-faq.md)
 221. **Industrial Field Service, ATEX Zone-1 Hands-Free Inspection & SAP PM / Maximo LOTO Voice Copilot: Dual-Vocal Call-and-Response Lock, Zero-Energy Try-Start Gate & 0ms H2S/Man-Down Bridge**: [EN](./docs/industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.en.md) | [中文](./docs/industrial-field-service-sap-pm-two-ticket-loto-atex-voice-copilot-selection-faq.md)
+222. **Enterprise Outbound Voice Campaigns, Speculative Sub-450ms AMD, Voicemail Beep Detection & TCPA/DNC Governance: Eliminating the 2.5s Telemarketer Pause & 0ms Opt-Out Lock**: [EN](./docs/outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.en.md) | [中文](./docs/outbound-voice-campaign-amd-voicemail-tcpa-stir-shaken-orchestration-selection-faq.md)
 
 ---
 

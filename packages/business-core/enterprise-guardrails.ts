@@ -5466,6 +5466,34 @@ export function evaluateIndustrialSapPmLotoAtexVoiceGuard(input: {
   };
 }
 
+export interface OutboundAmdTcpaOrchestrationVoiceEvaluation {
+  policyCode: "OUTBOUND-AMD-TCPA-ORCHESTRATION-01";
+  outboundDialAndPitchAuthorized: boolean;
+  waitForVoicemailBeepBeforeReplay: boolean;
+  globalDncSuppressionAndImmediateHangupTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Outbound Voice Campaign Speculative AMD, Voicemail Beep & TCPA/DNC Governance Guard (`OUTBOUND-AMD-TCPA-ORCHESTRATION-01`).
+ */
+export function evaluateOutboundAmdTcpaOrchestrationVoiceGuard(input: {
+  priorExpressConsentAndQuietHoursVerified: boolean;
+  humanAnsweredOrVoicemailBeepCompleted: boolean;
+  recipientRequestsDoNotCallOptOut: boolean;
+}): OutboundAmdTcpaOrchestrationVoiceEvaluation {
+  return {
+    policyCode: "OUTBOUND-AMD-TCPA-ORCHESTRATION-01",
+    outboundDialAndPitchAuthorized:
+      input.priorExpressConsentAndQuietHoursVerified &&
+      input.humanAnsweredOrVoicemailBeepCompleted &&
+      !input.recipientRequestsDoNotCallOptOut,
+    waitForVoicemailBeepBeforeReplay:
+      !input.humanAnsweredOrVoicemailBeepCompleted,
+    globalDncSuppressionAndImmediateHangupTriggered:
+      input.recipientRequestsDoNotCallOptOut,
+  };
+}
+
 
 
 
