@@ -9175,6 +9175,36 @@ export function evaluateConsumerElectronicsOtaRmaBatteryGuard(input: {
   };
 }
 
+export interface LiveEventsTicketingAdaScalperEvaluation {
+  policyCode: "LIVE-EVENTS-TICKETING-ADA-SCALPER-01";
+  seatHoldAndCheckoutAuthorized: boolean;
+  splitAdaCompanionOrHiddenDripFeeBlocked: boolean;
+  postponementDeflectionOrVenueEmsBridged: boolean;
+}
+
+/**
+ * Deterministic Live Events & Stadium Ticketing ADA 1W+3C Contiguous Seat & Price-Parity Lock, FTC All-In Pricing / Anti-Scalper Gate & 0ms Postponement / Venue EMS Guard (`LIVE-EVENTS-TICKETING-ADA-SCALPER-01`).
+ */
+export function evaluateLiveEventsTicketingAdaScalperGuard(input: {
+  adaWheelchairAndCompanionContiguousSeatsAtomicallyLockedAtParityPrice: boolean;
+  ftcAllInTotalPriceDisclosedUpfrontAndAntiScalperHouseholdCapValid: boolean;
+  eventRainDelayPostponementSurgeOrVenueMedicalSecurityPreemption: boolean;
+}): LiveEventsTicketingAdaScalperEvaluation {
+  return {
+    policyCode: "LIVE-EVENTS-TICKETING-ADA-SCALPER-01",
+    seatHoldAndCheckoutAuthorized:
+      input.adaWheelchairAndCompanionContiguousSeatsAtomicallyLockedAtParityPrice &&
+      input.ftcAllInTotalPriceDisclosedUpfrontAndAntiScalperHouseholdCapValid &&
+      !input.eventRainDelayPostponementSurgeOrVenueMedicalSecurityPreemption,
+    splitAdaCompanionOrHiddenDripFeeBlocked:
+      !input.adaWheelchairAndCompanionContiguousSeatsAtomicallyLockedAtParityPrice ||
+      !input.ftcAllInTotalPriceDisclosedUpfrontAndAntiScalperHouseholdCapValid ||
+      input.eventRainDelayPostponementSurgeOrVenueMedicalSecurityPreemption,
+    postponementDeflectionOrVenueEmsBridged:
+      input.eventRainDelayPostponementSurgeOrVenueMedicalSecurityPreemption,
+  };
+}
+
 
 
 
