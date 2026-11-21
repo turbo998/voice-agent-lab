@@ -7645,6 +7645,36 @@ export function evaluateAeroEngineTestcellMroNfpa409VoiceGuard(input: {
   };
 }
 
+export interface LithiumBatteryGigafactoryNfpa855VoiceEvaluation {
+  policyCode: "LITHIUM-BATTERY-GIGAFACTORY-NFPA855-01";
+  coatingAndElectrolyteFillAuthorized: boolean;
+  dryRoomMoistureOrMetallicBurrBlocked: boolean;
+  formationPowerCutFireBoxAndQuenchTankBridged: boolean;
+}
+
+/**
+ * Deterministic Lithium-Ion Battery & ESS Gigafactory Coating NMP/Iron Lock, -45°C Dry-Room Dew-Point Gate & 0ms Formation Quench-Tank Guard (`LITHIUM-BATTERY-GIGAFACTORY-NFPA855-01`).
+ */
+export function evaluateLithiumBatteryGigafactoryNfpa855VoiceGuard(input: {
+  coatingOvenNmpLel20PctAndPpbIronFilterSafe: boolean;
+  dryRoomDewPointMinus45cAndXrayOverhangSafe: boolean;
+  formationCellThermalRunawayOrNmpOvenSpike: boolean;
+}): LithiumBatteryGigafactoryNfpa855VoiceEvaluation {
+  return {
+    policyCode: "LITHIUM-BATTERY-GIGAFACTORY-NFPA855-01",
+    coatingAndElectrolyteFillAuthorized:
+      input.coatingOvenNmpLel20PctAndPpbIronFilterSafe &&
+      input.dryRoomDewPointMinus45cAndXrayOverhangSafe &&
+      !input.formationCellThermalRunawayOrNmpOvenSpike,
+    dryRoomMoistureOrMetallicBurrBlocked:
+      !input.coatingOvenNmpLel20PctAndPpbIronFilterSafe ||
+      !input.dryRoomDewPointMinus45cAndXrayOverhangSafe ||
+      input.formationCellThermalRunawayOrNmpOvenSpike,
+    formationPowerCutFireBoxAndQuenchTankBridged:
+      input.formationCellThermalRunawayOrNmpOvenSpike,
+  };
+}
+
 
 
 

@@ -262,6 +262,7 @@ import {
   evaluateRailRollingStockBogie25kvDepotVoiceGuard,
   evaluateAircraftFalWingtankRiggingJackVoiceGuard,
   evaluateAeroEngineTestcellMroNfpa409VoiceGuard,
+  evaluateLithiumBatteryGigafactoryNfpa855VoiceGuard,
   evaluateVoicePromptMarkdownSanitizerGuard,
   evaluateWarehousePickByVoiceColdChainGuard,
   evaluateWealthDualRecordingGuard,
@@ -283,11 +284,11 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
     },
     {
       relPath: "docs/asset-catalog.md",
-      mustContain: ["294 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
+      mustContain: ["295 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/asset-catalog.en.md",
-      mustContain: ["294 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
+      mustContain: ["295 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
     },
     {
       relPath: "docs/solution-architecture.md",
@@ -339,13 +340,13 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
   }
 });
 
-test("294 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
+test("295 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
   const docEntries = await readdir(resolve(repoRoot, "docs"));
   const zhFaqFiles = docEntries.filter((f) => f.endsWith("-faq.md")).sort();
   const enFaqFiles = docEntries.filter((f) => f.endsWith("-faq.en.md")).sort();
 
-  assert.equal(zhFaqFiles.length, 294, `Expected 294 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
-  assert.equal(enFaqFiles.length, 294, `Expected 294 curated English selection guides, found ${enFaqFiles.length}`);
+  assert.equal(zhFaqFiles.length, 295, `Expected 295 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
+  assert.equal(enFaqFiles.length, 295, `Expected 295 curated English selection guides, found ${enFaqFiles.length}`);
 
   for (const zhFile of zhFaqFiles) {
     const expectedEn = zhFile.replace(/-faq\.md$/, "-faq.en.md");
@@ -2996,4 +2997,13 @@ test("deterministic enterprise guardrails enforce vertical industry safety (coho
   assert.equal(aeroEngineGuard.starterAndBlastDoorAuthorized, false);
   assert.equal(aeroEngineGuard.inletHazardOrUnstowedBarringToolBlocked, true);
   assert.equal(aeroEngineGuard.guillotineFuelShutoffIgnitionKillAndFireBottleBridged, true);
+
+  const lithiumBatteryGuard = evaluateLithiumBatteryGigafactoryNfpa855VoiceGuard({
+    coatingOvenNmpLel20PctAndPpbIronFilterSafe: false,
+    dryRoomDewPointMinus45cAndXrayOverhangSafe: false,
+    formationCellThermalRunawayOrNmpOvenSpike: true,
+  });
+  assert.equal(lithiumBatteryGuard.coatingAndElectrolyteFillAuthorized, false);
+  assert.equal(lithiumBatteryGuard.dryRoomMoistureOrMetallicBurrBlocked, true);
+  assert.equal(lithiumBatteryGuard.formationPowerCutFireBoxAndQuenchTankBridged, true);
 });

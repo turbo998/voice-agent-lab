@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（294 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（295 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -335,3 +335,4 @@
 292. **高铁动车组总装、转向架轮对压装与 25kV 动车段立体检修基地（中国中车 CRRC / 西门子交通 Siemens Mobility / 阿尔斯通 Alstom / 日立铁路）24×7 免提语音副驾方案（EN 50122 25kV 接触网三工位隔离开关 EARTHED 接地位与 Castell 机械钥匙登顶门硬锁、EN 13260 轮对过盈压装力-位移曲线包络与地沟人员在位防制动夹伤门禁、32 柱整列同步架车偏差 >5.0mm 0ms 抱死机械安全螺母强切）**：[中文](./rail-rolling-stock-bogie-wheelset-press-depot-25kv-catenary-earthing-voice-copilot-selection-faq.md) | [EN](./rail-rolling-stock-bogie-wheelset-press-depot-25kv-catenary-earthing-voice-copilot-selection-faq.en.md)
 293. **民用大飞机总装线（FAL）、机翼整体油箱密封作业与飞控舵面液压联调机库（中国商飞 COMAC / 空客 Airbus / 波音 Boeing / 中航西飞）24×7 免提语音副驾方案（NFPA 410 机翼油箱航煤/丁酮 LEL <=10% 与机体静电接地 <1.0Ω 硬锁、5,000 psi 液压地面泵车轮舱/襟翼/RAT 3D 净空雷达与 AS9100D RFID 工具零 FOD 封舱门禁、轮舱闯入或三点千斤顶倾斜 >3.0mm 0ms 液压车 0 psi 卸荷并锁死千斤顶安全环强切）**：[中文](./aircraft-final-assembly-line-wing-fuel-tank-entry-flight-control-rigging-jacking-voice-copilot-selection-faq.md) | [EN](./aircraft-final-assembly-line-wing-fuel-tank-entry-flight-control-rigging-jacking-voice-copilot-selection-faq.en.md)
 294. **航空发动机与燃气轮机大修（MRO）、工业试车台（Test Cell）与孔探检测基地（GE Aerospace / 普惠 Pratt & Whitney / 罗罗 Rolls-Royce / 中国航发 AECC / 摩天宇 MTU）24×7 免提语音副驾方案（试车大厅 1,500 kg/s 进气钟形口零人员热成像与液压防爆门插销硬锁、孔探后附件机匣 AGB 手动盘车扳手 RFID 归位与 N1/N2=0.0% 开门门禁、喘振超温或振动 >4.0 ips 0ms 双切发动机 HPSOV 与厂务断头台总燃油阀强切）**：[中文](./aero-engine-gas-turbine-test-cell-mro-inlet-vortex-fod-titanium-fire-voice-copilot-selection-faq.md) | [EN](./aero-engine-gas-turbine-test-cell-mro-inlet-vortex-fod-titanium-fire-voice-copilot-selection-faq.en.md)
+295. **动力电池与储能电芯超级工厂（Gigafactory：宁德时代 CATL / 比亚迪 BYD / LG 新能源 / 松下 Panasonic / 特斯拉 Megapack）、NMP 涂布烘箱与露点 -45°C 干燥房注液化成 24×7 免提语音副驾方案（80 米正极涂布烘箱 NMP 蒸汽 LEL <=20% 与浆料电磁除铁 <=30 ppb 防枝晶刺穿隔膜硬锁、注液干燥房露点 <=-45.0°C 防六氟磷酸锂水解生成剧毒氢氟酸 HF 与 X-Ray 阴阳极 Overhang 门禁、化成万托盘立库电芯 >60°C 或析氢 0ms 断电闭氮气罩并由堆垛机抽盘投入盐水消防池强切）**：[中文](./lithium-battery-gigafactory-electrode-coating-nmp-lel-dry-room-dewpoint-formation-voice-copilot-selection-faq.md) | [EN](./lithium-battery-gigafactory-electrode-coating-nmp-lel-dry-room-dewpoint-formation-voice-copilot-selection-faq.en.md)
