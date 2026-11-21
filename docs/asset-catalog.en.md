@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (258 Bilingual Guides)
+## 3. Solution Architect Selection Guides (259 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -299,3 +299,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 256. **Cold-Storage (-25°C), Reefer FSMA 204 & Ammonia (NH3) Safety Voice Dispatch: Core Pulp-Temp & Anti-Refreeze Lock, 45-Min Freezer Gate & 0ms NH3 Upwind Bridge**: [EN](./cold-storage-reefer-fsma-204-ammonia-nh3-leak-man-down-freezer-voice-dispatch-selection-faq.en.md) | [中文](./cold-storage-reefer-fsma-204-ammonia-nh3-leak-man-down-freezer-voice-dispatch-selection-faq.md)
 257. **Specialty Pharmacy FDA REMS, Clozapine ANC / iPLEDGE & Biologics Cold-Chain Voice Concierge: 7-Day Teratogen & ANC Lock, Zero Blind-Ship Cold Gate & 0ms Febrile Neutropenia Bridge**: [EN](./specialty-pharmacy-rems-ipledge-clozapine-anc-biologics-cold-chain-voice-concierge-selection-faq.en.md) | [中文](./specialty-pharmacy-rems-ipledge-clozapine-anc-biologics-cold-chain-voice-concierge-selection-faq.md)
 258. **Food & Bakery Manufacturing Allergen Changeover, Packaging & NFPA 61 Dust Voice Copilot: ELISA Swab & Packaging-Film Lock, CCP Metal-Detector Gate & 0ms Batch-Hold Bridge**: [EN](./food-manufacturing-bakery-nfpa-61-flour-dust-allergen-changeover-swab-voice-copilot-selection-faq.en.md) | [中文](./food-manufacturing-bakery-nfpa-61-flour-dust-allergen-changeover-swab-voice-copilot-selection-faq.md)
+259. **Waterpark & Aquatic Facility Anti-Cl2 Chemical Lock, CDC MAHC & VGB Drain Voice AI: Hypochlorite+Acid Lock, CT=15,300 Crypto Gate & 0ms VGB Suction Bridge**: [EN](./aquatic-waterpark-swimming-pool-hypochlorite-acid-mix-vgb-drain-entrapment-cryptosporidium-voice-dispatch-selection-faq.en.md) | [中文](./aquatic-waterpark-swimming-pool-hypochlorite-acid-mix-vgb-drain-entrapment-cryptosporidium-voice-dispatch-selection-faq.md)

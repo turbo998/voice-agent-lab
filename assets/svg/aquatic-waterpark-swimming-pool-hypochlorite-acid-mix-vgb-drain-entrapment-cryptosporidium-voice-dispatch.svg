@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg259" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#041824"/>
+      <stop offset="50%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="card259" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg259)" rx="16"/>
+  <text x="600" y="40" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Waterpark &amp; Aquatic Facility Anti-Cl2 Chemical Lock, CDC MAHC &amp; VGB Drain Voice AI</text>
+  <text x="600" y="66" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle">Hypochlorite + Acid Anti-Mix Cl2 Lock &amp; No-Flow Dosing Trip · CDC MAHC CT=15,300 Crypto Gate · 0ms VGB Suction &amp; Drowning Bridge (AQUATIC-WATERPARK-HYPOCHLORITE-VGB-01)</text>
+
+  <!-- Left Column: Pump Room, Lifeguard Deck & Slide Dispatch -->
+  <rect x="36" y="92" width="260" height="545" rx="12" fill="url(#card259)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="166" y="122" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. Pump Room &amp; Lifeguard Deck</text>
+
+  <rect x="56" y="142" width="220" height="110" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="166" y="166" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Chemical Delivery &amp; Pump Room</text>
+  <text x="166" y="188" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• NaOCl vs HCl camlock RFID verify</text>
+  <text x="166" y="206" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• ORP (≥650mV) &amp; pH (7.2–7.8) check</text>
+  <text x="166" y="224" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Flow-switch chemical feeder lock</text>
+
+  <rect x="56" y="268" width="220" height="110" rx="8" fill="#0f172a" stroke="#34d399"/>
+  <text x="166" y="292" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Lifeguard &amp; CPO Waterproof Pod</text>
+  <text x="166" y="314" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• IP68 submersible bone-conduction</text>
+  <text x="166" y="332" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• CDC MAHC fecal CT calculator</text>
+  <text x="166" y="350" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Combined chloramine (&lt;0.4 ppm)</text>
+
+  <rect x="56" y="394" width="220" height="222" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="166" y="420" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Cl2 Gas, VGB &amp; Drowning Flags</text>
+  <text x="166" y="444" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Bleach poured into Muriatic Acid</text>
+  <text x="166" y="464" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• VGB main-drain suction entrapment</text>
+  <text x="166" y="484" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Submerged passive drowning victim</text>
+  <text x="166" y="504" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Broken drain grate / wave-pool jam</text>
+  <text x="166" y="532" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">0ms SVRS Vacuum Break &amp; Cl2 Evac</text>
+
+  <!-- Center Column: AQUATIC-WATERPARK-HYPOCHLORITE-VGB-01 Guardrail Engine -->
+  <rect x="326" y="92" width="548" height="545" rx="12" fill="url(#card259)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="600" y="122" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. Deterministic Aquatic Safety Engine (AQUATIC-WATERPARK-HYPOCHLORITE-VGB-01)</text>
+
+  <!-- Gate 1 -->
+  <rect x="350" y="142" width="500" height="145" rx="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="600" y="166" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate A: Anti-Chlorine-Gas (NaOCl + HCl) Fill Lock &amp; No-Flow Dosing Interlock</text>
+  <text x="600" y="190" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Requires dual RFID/barcode match of tanker hose + fill port before unlocking valve</text>
+  <text x="600" y="210" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• 100% prevents pouring Sodium Hypochlorite into Muriatic/Sulfuric Acid (lethal Cl2 gas)</text>
+  <text x="600" y="230" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Interlocks chemical dosing pumps to main recirculation flow switch (zero static dosing)</text>
+  <text x="600" y="252" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Prevents concentrated acid/chlorine slug injection into bather inlets upon pump restart</text>
+
+  <!-- Gate 2 -->
+  <rect x="350" y="302" width="500" height="150" rx="10" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="600" y="326" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate B: CDC MAHC Cryptosporidium CT=15,300 &amp; VGB Grate Integrity Gate</text>
+  <text x="600" y="350" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Enforces CT=15,300 mg·min/L (e.g., 20 ppm Cl2 × 12.75 hrs at pH ≤7.5, CYA ≤15 ppm)</text>
+  <text x="600" y="370" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Blocks reopening pool after diarrheal contamination after only 30-min formed-stool shock</text>
+  <text x="600" y="390" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Requires daily VGB suction-drain cover torque &amp; bottom-clarity visibility check</text>
+  <text x="600" y="412" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Enforces sodium thiosulfate neutralization to ≤4.0 ppm free chlorine before bather re-entry</text>
+
+  <!-- Gate 3 -->
+  <rect x="350" y="468" width="500" height="148" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="600" y="492" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Gate C: 0ms VGB Suction SVRS Pump Cut, Wave-Pool E-Stop &amp; Cl2 Gas Bridge</text>
+  <text x="600" y="516" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Trips circulation pumps &amp; opens SVRS atmospheric vacuum-relief valve in 0ms on entrapment</text>
+  <text x="600" y="536" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="middle">• Halts wave-pool caissons &amp; flume conveyors on submerged bather / spinal backboard rescue</text>
+  <text x="600" y="556" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">• Isolates natatorium HVAC &amp; bridges HazMat on Cl2 gas ≥0.5 ppm sensor alarm</text>
+  <text x="600" y="580" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">Full CDC Model Aquatic Health Code (MAHC), Virginia Graeme Baker Act &amp; PHTA CPO WORM</text>
+
+  <!-- Right Column: BECS/Chemtrol PLC, SVRS & Lifeguard EMS -->
+  <rect x="904" y="92" width="260" height="545" rx="12" fill="url(#card259)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="1034" y="122" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">3. Aquatic PLC &amp; Rescue EMS</text>
+
+  <rect x="924" y="142" width="220" height="145" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="1034" y="166" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">BECS / Prominent / Chemtrol</text>
+  <text x="1034" y="190" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Free Cl2, pH, ORP &amp; CYA telemetry</text>
+  <text x="1034" y="210" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Magnetic fill-port solenoid lock</text>
+  <text x="1034" y="230" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Paddlewheel flow-switch relay</text>
+  <text x="1034" y="250" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• UV / Ozone secondary disinfection</text>
+
+  <rect x="924" y="302" width="220" height="150" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="1034" y="326" fill="#fcd34d" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">VGB SVRS &amp; Cl2 Gas Scrubber</text>
+  <text x="1034" y="350" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Safety Vacuum Release System</text>
+  <text x="1034" y="370" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Wave-pool pneumatic E-stop</text>
+  <text x="1034" y="390" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Cl2 ppm electrochemical alarm</text>
+  <text x="1034" y="410" fill="#86efac" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Caustic chlorine-gas scrubber</text>
+
+  <rect x="924" y="468" width="220" height="148" rx="8" fill="#0f172a" stroke="#a855f7"/>
+  <text x="1034" y="492" fill="#d8b4fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Aquatic Rescue &amp; Health Dept</text>
+  <text x="1034" y="516" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Ellis &amp; Associates / Red Cross EAP</text>
+  <text x="1034" y="536" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• BVM 100% O2 + AED deck runner</text>
+  <text x="1034" y="556" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle">• Public Health Crypto log export</text>
+  <text x="1034" y="576" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">• 100% CDC MAHC &amp; VGB Compliant</text>
+</svg>

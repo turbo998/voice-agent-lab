@@ -6565,6 +6565,36 @@ export function evaluateFoodMfgAllergenChangeoverNfpa61VoiceGuard(input: {
   };
 }
 
+export interface AquaticWaterparkHypochloriteVgbVoiceEvaluation {
+  policyCode: "AQUATIC-WATERPARK-HYPOCHLORITE-VGB-01";
+  chemicalFillAndPoolOpenAuthorized: boolean;
+  acidBleachMixOrPrematureCryptoReopenBlocked: boolean;
+  svrsPumpCutoffAndAquaticRescueBridged: boolean;
+}
+
+/**
+ * Deterministic Waterpark & Aquatic Anti-Chlorine-Gas (NaOCl+HCl) Fill Lock, CDC MAHC CT=15,300 Gate & 0ms VGB Suction Guard (`AQUATIC-WATERPARK-HYPOCHLORITE-VGB-01`).
+ */
+export function evaluateAquaticWaterparkHypochloriteVgbVoiceGuard(input: {
+  chemicalAntiMixAndFlowInterlockVerified: boolean;
+  mahcCryptoCtAndVgbGrateVerified: boolean;
+  vgbSuctionEntrapmentCl2GasOrDrowningAlarm: boolean;
+}): AquaticWaterparkHypochloriteVgbVoiceEvaluation {
+  return {
+    policyCode: "AQUATIC-WATERPARK-HYPOCHLORITE-VGB-01",
+    chemicalFillAndPoolOpenAuthorized:
+      input.chemicalAntiMixAndFlowInterlockVerified &&
+      input.mahcCryptoCtAndVgbGrateVerified &&
+      !input.vgbSuctionEntrapmentCl2GasOrDrowningAlarm,
+    acidBleachMixOrPrematureCryptoReopenBlocked:
+      !input.chemicalAntiMixAndFlowInterlockVerified ||
+      !input.mahcCryptoCtAndVgbGrateVerified ||
+      input.vgbSuctionEntrapmentCl2GasOrDrowningAlarm,
+    svrsPumpCutoffAndAquaticRescueBridged:
+      input.vgbSuctionEntrapmentCl2GasOrDrowningAlarm,
+  };
+}
+
 
 
 
