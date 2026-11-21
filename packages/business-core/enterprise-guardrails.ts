@@ -9355,6 +9355,36 @@ export function evaluateGrocerySubstitutionVoicePickingGuard(input: {
   };
 }
 
+export interface VetHospitalToxicologyAmbientScribeEvaluation {
+  policyCode: "VET-HOSPITAL-TOXICOLOGY-AMBIENT-SCRIBE-01";
+  vetAppointmentAndRefillAuthorized: boolean;
+  crossSpeciesDrugOrUnlicensedAdviceBlocked: boolean;
+  acuteToxicologyOrGdvEmergencyBridged: boolean;
+}
+
+/**
+ * Deterministic Veterinary Hospital & Pet ER Cross-Species Pharmacology Lock, Ambient SOAP Scribe & 0ms Lily/Xylitol/GDV Emergency Guard (`VET-HOSPITAL-TOXICOLOGY-AMBIENT-SCRIBE-01`).
+ */
+export function evaluateVetHospitalToxicologyAmbientScribeGuard(input: {
+  speciesSpecificContraindicationAndExactWeightMgPerKgVerified: boolean;
+  ambientVetScribeDiarizationAndZeroUnlicensedDiagnosisLock: boolean;
+  acutePetToxinLilyXylitolGdvBloatOrRespiratoryEmergencyEscalation: boolean;
+}): VetHospitalToxicologyAmbientScribeEvaluation {
+  return {
+    policyCode: "VET-HOSPITAL-TOXICOLOGY-AMBIENT-SCRIBE-01",
+    vetAppointmentAndRefillAuthorized:
+      input.speciesSpecificContraindicationAndExactWeightMgPerKgVerified &&
+      input.ambientVetScribeDiarizationAndZeroUnlicensedDiagnosisLock &&
+      !input.acutePetToxinLilyXylitolGdvBloatOrRespiratoryEmergencyEscalation,
+    crossSpeciesDrugOrUnlicensedAdviceBlocked:
+      !input.speciesSpecificContraindicationAndExactWeightMgPerKgVerified ||
+      !input.ambientVetScribeDiarizationAndZeroUnlicensedDiagnosisLock ||
+      input.acutePetToxinLilyXylitolGdvBloatOrRespiratoryEmergencyEscalation,
+    acuteToxicologyOrGdvEmergencyBridged:
+      input.acutePetToxinLilyXylitolGdvBloatOrRespiratoryEmergencyEscalation,
+  };
+}
+
 
 
 
