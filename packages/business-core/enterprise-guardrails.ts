@@ -10225,6 +10225,37 @@ export function evaluateBloodCenterOrganTransplantUnosVoiceGuard(input: {
   };
 }
 
+export interface SaasCustomerSuccessRenewalSaveVoiceEvaluation {
+  policyCode: "SAAS-RENEWAL-SAVE-DESK-01";
+  renewalAdjustmentAndSaveOfferAuthorized: boolean;
+  ftcDarkPatternOrDiscountAbuseBlocked: boolean;
+  highArrEnterpriseOrSlaVpBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise SaaS Customer Success & Save-Desk FTC 1-Offer Symmetry / 365d Cooldown Lock, Gainsight Telemetry Right-Sizing Gate & 0ms High-ARR VP Guard (`SAAS-RENEWAL-SAVE-DESK-01`).
+ */
+export function evaluateSaasCustomerSuccessRenewalSaveVoiceGuard(input: {
+  ftcOneOfferCapAnd365DayDiscountCooldownEnforced: boolean;
+  gainsightTelemetrySeatRightSizingAndExportDisclosed: boolean;
+  highArrEnterpriseOrSlaSecurityChurnVpEscalation: boolean;
+}): SaasCustomerSuccessRenewalSaveVoiceEvaluation {
+  return {
+    policyCode: "SAAS-RENEWAL-SAVE-DESK-01",
+    renewalAdjustmentAndSaveOfferAuthorized:
+      input.ftcOneOfferCapAnd365DayDiscountCooldownEnforced &&
+      input.gainsightTelemetrySeatRightSizingAndExportDisclosed &&
+      !input.highArrEnterpriseOrSlaSecurityChurnVpEscalation,
+    ftcDarkPatternOrDiscountAbuseBlocked:
+      !input.ftcOneOfferCapAnd365DayDiscountCooldownEnforced ||
+      !input.gainsightTelemetrySeatRightSizingAndExportDisclosed ||
+      input.highArrEnterpriseOrSlaSecurityChurnVpEscalation,
+    highArrEnterpriseOrSlaVpBridged:
+      input.highArrEnterpriseOrSlaSecurityChurnVpEscalation,
+  };
+}
+
+
 
 
 

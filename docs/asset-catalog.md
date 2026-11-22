@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（380 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（381 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -421,3 +421,4 @@
 378. **全球影视短剧出海、企业培训与高管演讲多语种 AI 视频译制配音（AI Video Dubbing：Azure Speech Video Translation vs. ElevenLabs Dubbing Studio vs. HeyGen 选型）等时音节对齐（Isochrony）、背景音效保留与 `C2PA` 声权合规架构（演员/高管声权加密授权令牌 `SAG-AFTRA` 与 `C2PA` 合成水印硬锁、合成前 `±6%` 等时音节重写消除 `1.4x` 花栗鼠倍速失真与 `Demucs` 背景音乐音效 `M&E` 分轨保留门禁、目标国宗教/文化禁忌与品牌词禁译 `0ms` 锁定审核并省 `97.4%` 译制成本）方案**：[中文](./global-video-localization-ai-dubbing-isochrony-lip-sync-c2pa-voice-selection-faq.md) | [EN](./global-video-localization-ai-dubbing-isochrony-lip-sync-c2pa-voice-selection-faq.en.md)
 379. **B2B 外勤大客户销售、国际展会扫码留资与语音报价（Trade-Show Badge Lead Capture & Voice-to-CPQ：Cvent / Salesforce CPQ / 汉诺威工博会与进博会模式）离线防丢单、底价保密硬锁与毛利底线语音副驾架构（双边录音同意检测无授权 `50ms` 内存清零与公共展台内部成本底价 `COGS` 物理剥离硬锁、展馆断网端侧加密 `SQLite` 暂存转发将线索跟进从 5 天缩至 `12分钟` 与 `Salesforce CPQ` 捆绑校验门禁、超权限特批折扣与非标法务条款 `0ms` 拦截外发并直推 `Deal Desk` 审批）方案**：[中文](./b2b-field-sales-tradeshow-lead-capture-cpq-margin-floor-voice-copilot-selection-faq.md) | [EN](./b2b-field-sales-tradeshow-lead-capture-cpq-margin-floor-voice-copilot-selection-faq.en.md)
 380. **血液中心、单采血浆站与器官移植网络（AABB / ISBT 128 / UNOS DonorNet / COTRS / 红十字血液中心模式）稀有血型应急征召、献血者健康延期筛查（Donor Deferral）、`ISBT 128` 交叉配血锁与器官冷缺血（Cold Ischemia Time）语音调度架构（`ISBT 128` 13位条码模37校验与双医护 `ABO/Rh/HLA` 复诵及供受双盲匿名硬锁、`FDA/AABB` 锁定 `SSML` 问卷与异维A酸/阿司匹林洗脱期计算压降 `64.2%` 现场淘汰门禁、凌晨供体器官冷缺血并发强呼省 `44分钟 CIT` 与献血后高热 `0ms` 冻结在库血袋）方案**：[中文](./blood-center-plasma-organ-transplant-unos-crossmatch-cold-ischemia-voice-selection-faq.md) | [EN](./blood-center-plasma-organ-transplant-unos-crossmatch-cold-ischemia-voice-selection-faq.en.md)
+381. **企业级 SaaS 客户成功（Customer Success / Gainsight / Stripe Billing / Zuora 模式）中长尾客户年度续费、席位弹性缩容（Right-Sizing）、`FTC Click-to-Cancel` 合规挽留（Save Desk）与高净值 ARR 预警语音架构（`FTC Click-to-Cancel` 最多 1 次挽留硬上限与 `<=20%` 折扣及 365 天防刷冷却锁、基于 `Gainsight` 真实活跃遥测推荐“裁减闲置席位/暂停/只读归档”挽回 `38.6%` 退订门禁、`ARR >= $50,000` 大客户或安全宕机退订 `0ms` 拦截销户并直通专属 CSM 与 VP）方案**：[中文](./saas-customer-success-renewal-usage-rightsizing-ftc-save-desk-voice-selection-faq.md) | [EN](./saas-customer-success-renewal-usage-rightsizing-ftc-save-desk-voice-selection-faq.en.md)
