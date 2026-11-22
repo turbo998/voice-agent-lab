@@ -11005,6 +11005,37 @@ export function evaluateAirlineHotelIrropsMassRebookingVoiceGuard(input: {
   };
 }
 
+export interface HealthcareOutpatientTriageRxFhirVoiceEvaluation {
+  policyCode: "HEALTHCARE-OUTPATIENT-RX-FHIR-01";
+  fhirAppointmentAndRxRefillAuthorized: boolean;
+  unverifiedPhiOrScheduleIiOrOverdueLabBlocked: boolean;
+  triageNurseAndEmergencyEmsBridged: boolean;
+}
+
+/**
+ * Deterministic Healthcare Outpatient Triage, Chronic-Care RPM & Epic FHIR Rx Refill (Epic / Cerner HL7 FHIR R4) HIPAA 2FA & DEA Schedule-II / Lab-Window Lock, Schmitt-Thompson Triage Gate & 0ms Red-Flag RN Guard (`HEALTHCARE-OUTPATIENT-RX-FHIR-01`).
+ */
+export function evaluateHealthcareOutpatientTriageRxFhirVoiceGuard(input: {
+  hipaaTwoFactorAndRxLabProtocolVerified: boolean;
+  schmittThompsonTriageAndSubSpecialtyMatched: boolean;
+  redFlagChestPainStrokeOrChfSpikePreemption: boolean;
+}): HealthcareOutpatientTriageRxFhirVoiceEvaluation {
+  return {
+    policyCode: "HEALTHCARE-OUTPATIENT-RX-FHIR-01",
+    fhirAppointmentAndRxRefillAuthorized:
+      input.hipaaTwoFactorAndRxLabProtocolVerified &&
+      input.schmittThompsonTriageAndSubSpecialtyMatched &&
+      !input.redFlagChestPainStrokeOrChfSpikePreemption,
+    unverifiedPhiOrScheduleIiOrOverdueLabBlocked:
+      !input.hipaaTwoFactorAndRxLabProtocolVerified ||
+      !input.schmittThompsonTriageAndSubSpecialtyMatched ||
+      input.redFlagChestPainStrokeOrChfSpikePreemption,
+    triageNurseAndEmergencyEmsBridged:
+      input.redFlagChestPainStrokeOrChfSpikePreemption,
+  };
+}
+
+
 
 
 
