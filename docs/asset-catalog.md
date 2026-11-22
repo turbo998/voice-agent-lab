@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（407 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（408 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -448,3 +448,4 @@
 405. **跨境电商与全球零售多语种退换货（RMA）、逆向物流免寄回即时退款（Returnless Instant Refund）与尺码换货挽单语音导购架构（Shopify Plus / Salesforce Commerce Cloud / Loop Returns / Stripe 模式：实付净额上限 `Refund <= Net_Paid` 与原支付 Token 幂等 `0%` 超额退款硬锁、28语种对话式尺码诊断将 `44.2%` 退货转化为换货留存并结合 `COGS < 逆向运费` 精算节省 `29%` 物流亏损、锂电池鼓包禁运与产品安全投诉 `0ms` 熔断转专席）方案**：[中文](./cross-border-ecommerce-multilingual-rma-returns-instant-refund-voice-selection-faq.md) | [EN](./cross-border-ecommerce-multilingual-rma-returns-instant-refund-voice-selection-faq.en.md)
 406. **航空公司与连锁酒店集团大面积航变（IRROPS）万路并发重订票、欧盟 EU261 / 美国 DOT 自动退赔核算与白金常旅客语音礼宾架构（Amadeus Altéa / Sabre / Oracle Opera Cloud PMS 模式：播报前 `120秒` 原子级预占座软锁与机场最短衔接时间 `MCT`/签证/行李 `0%` 误机硬锁、运控中心 `WX vs MX` 官方延误代码驱动 `EU261` 酒店房卡二维码秒发与目的地酒店 `Opera PMS` 自动延后保房、无陪儿童 `UMNR` 与轮椅 `WCHC` 旅客 `0ms` 专席接管）方案**：[中文](./airline-hotel-irrops-mass-rebooking-eu261-loyalty-concierge-voice-selection-faq.md) | [EN](./airline-hotel-irrops-mass-rebooking-eu261-loyalty-concierge-voice-selection-faq.en.md)
 407. **医疗门诊智能分诊预约（Patient Access Center）、慢病居家随访（RPM）与处方续配（Rx Refill）语音架构（Epic / Oracle Health HL7 FHIR R4 + Schmitt-Thompson 分诊协议模式：`HIPAA` 双因子核身与二类精麻药/逾期 `>180天` 未查血钾肾功 `0%` 越权续方硬锁、循证分诊树与 `FHIR PractitionerRole` 亚专科匹配将挂错科率从 `14%` 压至 `0.4%` 并实现 `86.5%` 退号极速回填、急性胸痛/卒中与心衰 `24h` 体重骤增 `>=1.5kg` `0ms` 急诊护士抢占降 `31%` 再入院）方案**：[中文](./healthcare-outpatient-triage-chronic-rpm-rx-refill-epic-fhir-voice-selection-faq.md) | [EN](./healthcare-outpatient-triage-chronic-rpm-rx-refill-epic-fhir-voice-selection-faq.en.md)
+408. **大型企业 IT 服务台（ITSM Helpdesk：ServiceNow / Jira Service Management / Microsoft Entra ID / Nexthink DEX 模式）全天候语音密码/MFA 重置、反社工（Scattered Spider）零信任核身硬锁与终端远程自愈（DEX Self-Healing）语音架构（废除口头工号生日 `KBA` 核身并强制 `Entra Verified ID` 活体人脸比对+主管 Teams 审批及特权账号 `100%` 禁重 `0%` 社工钓鱼沦陷、联动 `Intune/Nexthink` 遥测 `54秒` 远程执行签名自愈脚本达 `71.5%` L1 自动闭环、前置校验 `Defender/CrowdStrike EDR` 隔离主机与失窃电脑 `0ms` 吊销 Token 转 SOC）方案**：[中文](./enterprise-it-helpdesk-servicenow-mfa-reset-dex-self-healing-voice-selection-faq.md) | [EN](./enterprise-it-helpdesk-servicenow-mfa-reset-dex-self-healing-voice-selection-faq.en.md)

@@ -11035,6 +11035,37 @@ export function evaluateHealthcareOutpatientTriageRxFhirVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseItHelpdeskServiceNowVoiceEvaluation {
+  policyCode: "ENTERPRISE-IT-SERVICENOW-VOICE-01";
+  tapIssuanceAndDexSelfHealingAuthorized: boolean;
+  verbalKbaVishingOrPrivilegedResetBlocked: boolean;
+  socIncidentResponseAndTokenRevokeBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise IT Helpdesk (ServiceNow / Microsoft Entra ID / Intune & Nexthink DEX) Anti-Scattered-Spider Verified-ID MFA Lock, EDR/DEX Self-Healing Gate & 0ms SOC Guard (`ENTERPRISE-IT-SERVICENOW-VOICE-01`).
+ */
+export function evaluateEnterpriseItHelpdeskServiceNowVoiceGuard(input: {
+  biometricVerifiedIdAndNonPrivilegedRoleConfirmed: boolean;
+  edrHostCleanAndSignedDexScriptVerified: boolean;
+  edrRansomwareIsolatedOrStolenDevicePreemption: boolean;
+}): EnterpriseItHelpdeskServiceNowVoiceEvaluation {
+  return {
+    policyCode: "ENTERPRISE-IT-SERVICENOW-VOICE-01",
+    tapIssuanceAndDexSelfHealingAuthorized:
+      input.biometricVerifiedIdAndNonPrivilegedRoleConfirmed &&
+      input.edrHostCleanAndSignedDexScriptVerified &&
+      !input.edrRansomwareIsolatedOrStolenDevicePreemption,
+    verbalKbaVishingOrPrivilegedResetBlocked:
+      !input.biometricVerifiedIdAndNonPrivilegedRoleConfirmed ||
+      !input.edrHostCleanAndSignedDexScriptVerified ||
+      input.edrRansomwareIsolatedOrStolenDevicePreemption,
+    socIncidentResponseAndTokenRevokeBridged:
+      input.edrRansomwareIsolatedOrStolenDevicePreemption,
+  };
+}
+
+
 
 
 

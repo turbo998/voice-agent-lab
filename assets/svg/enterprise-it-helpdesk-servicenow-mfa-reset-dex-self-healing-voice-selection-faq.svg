@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad408" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad408" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0078D4"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #38BDF8; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad408)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad408)"/>
+  <text x="52" y="52" class="title">Enterprise IT Helpdesk (ServiceNow / Entra ID) Zero-Trust MFA Reset &amp; DEX Self-Healing Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">Anti-Scattered-Spider Verified-ID MFA Lock (0% Vishing Takeover) · Intune/Nexthink DEX Auto-Heal (71.5% L1 Deflection) · 0ms SOC Bridge</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#0078D4"/>
+  <text x="1000" y="59" class="badge">ENTERPRISE-IT-SERVICENOW-VOICE-01</text>
+
+  <!-- Left Column: Employee Voice Line, IAM & DEX Telemetry Bus -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Employee IT Hotline, IAM &amp; DEX Bus</text>
+  <text x="48" y="164" class="card-sub">ServiceNow ITSM · Microsoft Entra ID · Intune / Nexthink</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#0078D4" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">24/7 Global Employee IT Voice Desk</text>
+  <text x="64" y="224" class="body">• Locked-out employee calling from personal mobile</text>
+  <text x="64" y="242" class="body">• Deepfake synthetic voice &amp; SIM-swap risk detector</text>
+  <text x="64" y="260" class="mono">Caller_Device = Registered_Intune_Mobile_Verified</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Entra Verified ID &amp; Privileged Role Directory</text>
+  <text x="64" y="340" class="body">• Biometric live selfie vs HR badge photo (`Verified ID`)</text>
+  <text x="64" y="358" class="body">• Checks PIM Global Admin / Domain Admin / VIP status</text>
+  <text x="64" y="376" class="mono">Account_Tier = Standard_User | Privileged_Admin_Lock</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Intune / Nexthink Live Endpoint DEX Telemetry</text>
+  <text x="64" y="462" class="body">• Queries laptop CPU/RAM, Zscaler/VPN tunnel &amp; Wi-Fi</text>
+  <text x="64" y="480" class="body">• BitLocker 48-digit recovery key &amp; LAPS local admin</text>
+  <text x="64" y="498" class="mono">Endpoint_State = "VPN_Cert_Expired_On_WIN11-8841"</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Defender / CrowdStrike EDR &amp; ServiceNow CMDB</text>
+  <text x="64" y="584" class="body">• Checks if "account lockout" is actually an EDR containment</text>
+  <text x="64" y="602" class="body">• Correlates call with active P1 major outage tickets</text>
+  <text x="64" y="620" class="mono">EDR_Status = Clean | Ransomware_Host_Isolated</text>
+
+  <!-- Center Column: 3-Layer Deterministic Zero-Trust IT Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#0078D4" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Zero-Trust MFA &amp; DEX Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Vishing MFA Reset · Signed DEX Scripts · 0ms SOC Bridge</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: Anti-Scattered-Spider MFA Reset Hard Lock</text>
+  <text x="472" y="224" class="body">• Never resets MFA/password on verbal KBA (SSN/DOB)</text>
+  <text x="472" y="242" class="body">• Requires Entra Verified ID face liveness + manager</text>
+  <text x="472" y="260" class="body">  Teams approval; 100% blocks privileged admin resets</text>
+  <text x="472" y="280" class="mono">Social_Engineering_MFA_Bypass_Rate = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">Privileged_Admin_Voice_Reset = 0.0% (Forbidden)</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: DEX Automated Endpoint Self-Healing Gate</text>
+  <text x="472" y="374" class="body">• Triggers pre-signed Intune/Nexthink remediation script</text>
+  <text x="472" y="392" class="body">  (renew VPN cert, clear Teams cache, push printer)</text>
+  <text x="472" y="410" class="body">• Delivers BitLocker key via encrypted Temporary Access</text>
+  <text x="472" y="430" class="mono">L1_IT_Ticket_Autonomous_Resolution = 71.5%</text>
+  <text x="472" y="448" class="mono">MTTR_For_Password_And_VPN = 54s (vs 28m Ticket Queue)</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms EDR Containment &amp; Stolen-Device SOC Lock</text>
+  <text x="472" y="524" class="body">• Detects caller whose laptop was isolated by Defender/</text>
+  <text x="472" y="542" class="body">  CrowdStrike for ransomware, or lost/stolen device call</text>
+  <text x="472" y="560" class="body">• Blocks account unlock in 0ms; triggers Intune remote</text>
+  <text x="472" y="578" class="body">  lock/token revoke &amp; bridges Security Operations (SOC)</text>
+  <text x="472" y="600" class="mono">if (edrHostIsolatedOrStolenDevice) -&gt; 0ms SOC_Analyst</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 19ms | Token_Revoke_Speed = 0ms</text>
+
+  <!-- Right Column: ServiceNow Automation & CIO ROI -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. ServiceNow Closure &amp; CIO TCO Impact</text>
+  <text x="892" y="164" class="card-sub">Temporary Access Pass · Auto-INC Log · $22/Ticket Saved</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Time-Bound Temporary Access Pass (TAP) Issuance</text>
+  <text x="908" y="224" class="body">• Issues 15-minute single-use Entra TAP code after</text>
+  <text x="908" y="242" class="body">  Verified ID biometric liveness + manager approval</text>
+  <text x="908" y="260" class="body">• Logs full video/voice verification hash to ServiceNow</text>
+  <text x="908" y="282" class="mono">Zero_Trust_NIST_800_63B_IAL2_Compliance = 100.0%</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#0078D4" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">P1 Major Outage Deflection &amp; Auto-Subscription</text>
+  <text x="908" y="366" class="body">• When SAP or Exchange has a P1 outage, informs caller</text>
+  <text x="908" y="384" class="body">  in 5 seconds &amp; links them to Master Incident #INC0091</text>
+  <text x="908" y="402" class="body">• Sends automated Teams/SMS notice when service restores</text>
+  <text x="908" y="424" class="mono">Major_Outage_Call_Storm_Deflection = 94.0%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k IT Helpdesk Calls)</text>
+  <text x="908" y="520" class="body">• Manual L1 IT Service Desk: $220,000 / 10k calls ($22/ea)</text>
+  <text x="908" y="538" class="body">• Hybrid Zero-Trust+DEX Voice: $1,150 / 10k calls (Rec)</text>
+  <text x="908" y="556" class="body">• Naive KBA Reset Voice Bot: $1,800 + MGM-style breach</text>
+  <text x="908" y="578" class="mono">Cost_Per_L1_Ticket = $0.115 (vs $22.00 Gartner Avg)</text>
+  <text x="908" y="596" class="mono">Vishing_Breaches = 0 | Employee_Productivity = +27m/call</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateEnterpriseItHelpdeskServiceNowVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Enterprise IT Helpdesk &amp; DEX Self-Healing Voice Copilot</text>
+  <text x="52" y="718" class="body">Never reset MFA on verbal KBA questions: require Entra Verified ID biometric liveness, check EDR isolation before unlocking accounts, and auto-heal via DEX.</text>
+</svg>
