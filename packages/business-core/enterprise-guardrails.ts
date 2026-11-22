@@ -10705,6 +10705,37 @@ export function evaluateEcommerceLiveshoppingDigitalHumanVoiceGuard(input: {
   };
 }
 
+export interface WildfireIcsAirTacticalEvacVoiceEvaluation {
+  policyCode: "WILDFIRE-ICS-AIR-TACTICAL-01";
+  aerialDropClearanceAndWuiEvacRouteAuthorized: boolean;
+  occupiedDropZoneOrFireClosedRoadBlocked: boolean;
+  burnoverMaydayOrTfrAirspaceAbortBridged: boolean;
+}
+
+/**
+ * Deterministic Wildfire Incident Command (ICS: CAL FIRE / USFS / Genasys) 300m ATAK Drop-Zone GPS & Dual-Readback Lock, Live Fire-Perimeter WUI Route Gate & 0ms Burnover Mayday / TFR Drone Guard (`WILDFIRE-ICS-AIR-TACTICAL-01`).
+ */
+export function evaluateWildfireIcsAirTacticalEvacVoiceGuard(input: {
+  dropZoneGroundCrewGpsClearAndDualReadbackVerified: boolean;
+  wuiEvacRouteVerifiedOpenInLiveGis: boolean;
+  burnoverMaydayOrTfrDroneIntrusionPreemption: boolean;
+}): WildfireIcsAirTacticalEvacVoiceEvaluation {
+  return {
+    policyCode: "WILDFIRE-ICS-AIR-TACTICAL-01",
+    aerialDropClearanceAndWuiEvacRouteAuthorized:
+      input.dropZoneGroundCrewGpsClearAndDualReadbackVerified &&
+      input.wuiEvacRouteVerifiedOpenInLiveGis &&
+      !input.burnoverMaydayOrTfrDroneIntrusionPreemption,
+    occupiedDropZoneOrFireClosedRoadBlocked:
+      !input.dropZoneGroundCrewGpsClearAndDualReadbackVerified ||
+      !input.wuiEvacRouteVerifiedOpenInLiveGis ||
+      input.burnoverMaydayOrTfrDroneIntrusionPreemption,
+    burnoverMaydayOrTfrAirspaceAbortBridged:
+      input.burnoverMaydayOrTfrDroneIntrusionPreemption,
+  };
+}
+
+
 
 
 

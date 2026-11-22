@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad397" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#1C1917"/>
+      <stop offset="100%" stop-color="#431407"/>
+    </linearGradient>
+    <linearGradient id="accentGrad397" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="50%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #FB923C; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad397)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad397)"/>
+  <text x="52" y="52" class="title">Wildfire Incident Command (ICS), Aerial Retardant Drop Clearance &amp; WUI Evacuation Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">VLAT Drop-Zone Ground-Crew GPS Clearance Lock (0% Drop Injuries) · WUI Live Perimeter Route Gate · 0ms Burnover / TFR Drone Preemption</text>
+  <rect x="992" y="38" width="240" height="32" rx="16" fill="#F97316"/>
+  <text x="1012" y="59" class="badge">WILDFIRE-ICS-AIR-TACTICAL-01</text>
+
+  <!-- Left Column: Air-to-Ground Radio, WUI Hotline & GIS Bus -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. ICS Air-to-Ground, Crew GPS &amp; WUI Bus</text>
+  <text x="48" y="164" class="card-sub">CAL FIRE / USFS ICS · Tablet Command · Genasys Protect</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#F97316" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Air-Tactical (ATGS) &amp; Hotshot VHF/P25 Radio</text>
+  <text x="64" y="224" class="body">• Chainsaw, rotor-wash &amp; 50mph wind noise suppression</text>
+  <text x="64" y="242" class="body">• Parses ICS Division/Branch IDs ("Div Zulu, Tanker 910")</text>
+  <text x="64" y="260" class="mono">Tactical_Callsign_WER = 0.9% @ 88dB Rotor/Wind</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Automated Flight Following (AFF) &amp; Crew ATAK</text>
+  <text x="64" y="340" class="body">• Real-time VLAT / Helitanker drop-line trajectory</text>
+  <text x="64" y="358" class="body">• Ground hotshot crew ATAK/Garmin InReach GPS beacons</text>
+  <text x="64" y="376" class="mono">Drop_Corridor_Buffer = 300m_Radius_Clearance_Check</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">WUI Evacuation Zone &amp; Road Closure GIS</text>
+  <text x="64" y="462" class="body">• Genasys Protect / Zonehaven polygon status (Order/Warn)</text>
+  <text x="64" y="480" class="body">• Live CHP/DOT highway flame-over &amp; contraflow state</text>
+  <text x="64" y="498" class="mono">Route_Hwy89_Status = CLOSED_Crown_Fire_Crossing</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">RAWS Wind-Shift &amp; TFR Airspace Radar</text>
+  <text x="64" y="584" class="body">• Red-Flag gust shift detection &amp; spot-fire IR thermal</text>
+  <text x="64" y="602" class="body">• FAA Temporary Flight Restriction (TFR) drone detector</text>
+  <text x="64" y="620" class="mono">TFR_Airspace_Status = Clear | Unauthorized_UAS_Hit</text>
+
+  <!-- Center Column: 3-Layer Deterministic Wildfire ICS Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#F97316" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Drop-Clearance &amp; WUI Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Crew Drop Strike · Zero Blocked-Road Route · 0ms Mayday</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: VLAT Retardant Drop Ground-Clearance Lock</text>
+  <text x="472" y="224" class="body">• Blocks "Clear to Drop" relay if any crew GPS beacon</text>
+  <text x="472" y="242" class="body">  is inside the 300m drop corridor or lacks Div Boss ack</text>
+  <text x="472" y="260" class="body">• Prevents 11,600-gal retardant tree-topple crew injuries</text>
+  <text x="472" y="280" class="mono">Occupied_Drop_Zone_Clearance_Error = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">Dual_ATGS_Division_Boss_Readback = 100% Enforced</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: WUI Live-Perimeter Evacuation Route Gate</text>
+  <text x="472" y="374" class="body">• Prohibits static map routing; checks live fire-line</text>
+  <text x="472" y="392" class="body">  road closures before speaking evacuation directions</text>
+  <text x="472" y="410" class="body">• Prioritizes AFN mobility-impaired &amp; livestock trailers</text>
+  <text x="472" y="430" class="mono">Routing_Into_Fire_Blocked_Road = 0.0%</text>
+  <text x="472" y="448" class="mono">Multilingual_WUI_Evac_Reach_Speed = 4.2x Faster</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Burnover Mayday &amp; TFR Drone Preemption</text>
+  <text x="472" y="524" class="body">• Detects firefighter "MAYDAY / Deploying Fire Shelter",</text>
+  <text x="472" y="542" class="body">  sudden wind-reversal entrapment, or TFR civilian drone</text>
+  <text x="472" y="560" class="body">• Clears tactical channel in 0ms; vectors emergency</text>
+  <text x="472" y="578" class="body">  life-saving retardant drop &amp; bridges ICS Incident Cmdr</text>
+  <text x="472" y="600" class="mono">if (burnoverMaydayOrTfrDroneIntrusion) -&gt; 0ms ICS_Lock</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 27ms | Air_Abort_Signal = 0ms</text>
+
+  <!-- Right Column: ICS Execution & Public Safety KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. ICS Tactical Actuation &amp; WUI Life-Safety</text>
+  <text x="892" y="164" class="card-sub">ATAK Drop Polygon · Reverse-911 Voice · ICS-214 Log</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Verified Air-Drop &amp; Ground Crew Hold</text>
+  <text x="908" y="224" class="body">• Flashes red drop corridor on all ground ATAK tablets</text>
+  <text x="908" y="242" class="body">• Confirms "All Div Zulu crews clear 300m south of ridge"</text>
+  <text x="908" y="260" class="body">• Releases VLAT final run-in authorization to Lead Plane</text>
+  <text x="908" y="282" class="mono">Ground_Crew_Drop_Strike_Incidents = 0</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Hyper-Targeted Multilingual WUI Evacuation</text>
+  <text x="908" y="366" class="body">• Outbound EN/ES/Tagalog/Mandarin/Indigenous voice calls</text>
+  <text x="908" y="384" class="body">• Confirms resident "Evacuating Now" vs "Need Wheelchair"</text>
+  <text x="908" y="402" class="body">• Dispatches Sheriff evacuation deputies to trapped homes</text>
+  <text x="908" y="424" class="mono">AFN_Resident_Rescue_Pinpoint_Rate = 99.7%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F97316" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k WUI/ICS Calls)</text>
+  <text x="908" y="520" class="body">• Cascaded ICS+GIS Gate: $860 / 10k calls (100% safe)</text>
+  <text x="908" y="538" class="body">• Hybrid ATAK+WUI Voice: $1,340 / 10k calls (Recommended)</text>
+  <text x="908" y="556" class="body">• Unfiltered Voice LLM: $2,290 + blocked-road route risk</text>
+  <text x="908" y="578" class="mono">WUI_Surge_Call_Capacity = 10,000 Concurrent Evac Calls</text>
+  <text x="908" y="596" class="mono">Drop_Zone_Errors = 0 | ICS_214_Auto_Log = 100%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateWildfireIcsAirTacticalEvacVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Wildfire Incident Command (ICS) &amp; WUI Evacuation Voice Copilot</text>
+  <text x="52" y="718" class="body">Never clear an aerial retardant drop without ATAK ground-crew GPS verification, and never give WUI evacuation routes from static maps unlinked to live fire-perimeter closures.</text>
+</svg>
