@@ -10945,6 +10945,37 @@ export function evaluateMulticloudVoiceStack2026SelectionGuard(input: {
   };
 }
 
+export interface CrossBorderEcommerceRmaRefundVoiceEvaluation {
+  policyCode: "ECOMMERCE-MULTILINGUAL-RMA-VOICE-01";
+  rmaExchangeOrInstantRefundAuthorized: boolean;
+  overRefundOrCardSwapOrAbuseBlocked: boolean;
+  productSafetyHazmatOrVipDeskBridged: boolean;
+}
+
+/**
+ * Deterministic Cross-Border E-Commerce Multilingual RMA & Exchange (Shopify Plus / Loop Returns / Stripe) Net-Paid Refund Cap & Original-Tender Lock, COGS/Exchange Economic Gate & 0ms Hazmat/Safety Guard (`ECOMMERCE-MULTILINGUAL-RMA-VOICE-01`).
+ */
+export function evaluateCrossBorderEcommerceRmaRefundVoiceGuard(input: {
+  refundWithinNetPaidAndOriginalPaymentLocked: boolean;
+  returnlessOrExchangeEconomicsAndAbuseScoreVerified: boolean;
+  productSafetyHazardOrHighValueDisputePreemption: boolean;
+}): CrossBorderEcommerceRmaRefundVoiceEvaluation {
+  return {
+    policyCode: "ECOMMERCE-MULTILINGUAL-RMA-VOICE-01",
+    rmaExchangeOrInstantRefundAuthorized:
+      input.refundWithinNetPaidAndOriginalPaymentLocked &&
+      input.returnlessOrExchangeEconomicsAndAbuseScoreVerified &&
+      !input.productSafetyHazardOrHighValueDisputePreemption,
+    overRefundOrCardSwapOrAbuseBlocked:
+      !input.refundWithinNetPaidAndOriginalPaymentLocked ||
+      !input.returnlessOrExchangeEconomicsAndAbuseScoreVerified ||
+      input.productSafetyHazardOrHighValueDisputePreemption,
+    productSafetyHazmatOrVipDeskBridged:
+      input.productSafetyHazardOrHighValueDisputePreemption,
+  };
+}
+
+
 
 
 
