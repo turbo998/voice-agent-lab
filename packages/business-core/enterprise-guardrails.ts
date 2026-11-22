@@ -11215,6 +11215,37 @@ export function evaluateWealthManagementRoboAdvisorVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseHrWorkdayBenefitsVoiceEvaluation {
+  policyCode: "ENTERPRISE-HR-WORKDAY-BENEFITS-01";
+  benefitElectionAndLeaveRequestAuthorized: boolean;
+  payrollDiversionOrHipaaManagerLeakBlocked: boolean;
+  confidentialErEthicsVaultAndEapBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise HR Shared Services (Workday HCM / SAP SuccessFactors / ADP / ServiceNow HRSD) Anti-Payroll-Diversion & HIPAA/ADA Manager Firewall Lock, HDHP/HSA Math & QLE 30-Day Gate & 0ms Confidential ER/EAP Guard (`ENTERPRISE-HR-WORKDAY-BENEFITS-01`).
+ */
+export function evaluateEnterpriseHrWorkdayBenefitsVoiceGuard(input: {
+  payrollChangeMfaAndHipaaDiagnosisMasked: boolean;
+  deterministicBenefitMathAndQleWindowVerified: boolean;
+  workplaceHarassmentRetaliationOrEapCrisisPreemption: boolean;
+}): EnterpriseHrWorkdayBenefitsVoiceEvaluation {
+  return {
+    policyCode: "ENTERPRISE-HR-WORKDAY-BENEFITS-01",
+    benefitElectionAndLeaveRequestAuthorized:
+      input.payrollChangeMfaAndHipaaDiagnosisMasked &&
+      input.deterministicBenefitMathAndQleWindowVerified &&
+      !input.workplaceHarassmentRetaliationOrEapCrisisPreemption,
+    payrollDiversionOrHipaaManagerLeakBlocked:
+      !input.payrollChangeMfaAndHipaaDiagnosisMasked ||
+      !input.deterministicBenefitMathAndQleWindowVerified ||
+      input.workplaceHarassmentRetaliationOrEapCrisisPreemption,
+    confidentialErEthicsVaultAndEapBridged:
+      input.workplaceHarassmentRetaliationOrEapCrisisPreemption,
+  };
+}
+
+
 
 
 
