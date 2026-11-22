@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（402 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（403 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -443,3 +443,4 @@
 400. **城市供水厂、污水处理与市政水务调度（Municipal Water & Wastewater Treatment SCADA：AVEVA Wonderware / Ignition / Xylem / 威立雅 Veolia 模式）次氯酸钠/氟化物投加防过量硬锁、雨洪合流制溢流（CSO）调蓄门禁与有限空间硫化氢（$H_2S \ge 10\text{ ppm}$）`0ms` 逃生抢占语音架构（`Purdue Level 3.5` 单向只读隔离与 `0%` 加药计量泵 PLC 直写硬锁、免提 `LIMS` 滴定与在线探头 `>15%` 漂移交叉校验及暴雨 `CSO` 削减 `44%` 溢流、格栅湿井剧毒 $H_2S \ge 10\text{ ppm}$ 与漏氯 `0ms` 防爆骨传导耳麦撤离警报）方案**：[中文](./municipal-water-wastewater-scada-chlorine-dosing-cso-h2s-voice-selection-faq.md) | [EN](./municipal-water-wastewater-scada-chlorine-dosing-cso-h2s-voice-selection-faq.en.md)
 401. **殡仪馆、生命礼仪服务与火化场（Funeral Home, Mortuary & Crematorium：SCI Dignity Memorial / Gather / CRäKN / 民政智慧殡葬模式）遗体交接链（Chain-of-Custody）金属火化牌三方声纹复诵、心脏起搏器/放射性粒子防爆硬锁与 FTC 殡葬法规（16 CFR Part 453）透明报价语音架构（踝带码==不锈钢火化圆牌==签字火化证及胸部起搏器磁力清零与火化炉门电磁锁双声纹 `0%` 错火化/炸炉硬锁、美国 `FTC 16 CFR 453` 零留资门槛电话分项报价免 `$53,088` 罚单、无见证非预期居家死亡 `0ms` 法医管辖权留置并转持证殡仪主任）方案**：[中文](./funeral-mortuary-crematorium-chain-of-custody-pacemaker-ftc-rule-voice-selection-faq.md) | [EN](./funeral-mortuary-crematorium-chain-of-custody-pacemaker-ftc-rule-voice-selection-faq.en.md)
 402. **大型体育赛事转播车、电视台演播室（Live Broadcast OB Truck & Studio Intercom：RTS ODIN / Clear-Com Eclipse / EVS XT-VIA / NEP & 央视总控模式）7 秒延时安全播控（FCC 18 USC 1464 Safety Dump）、主持人耳返（IFB）防抢话提示与无障碍实时字幕（CEA-708）语音架构（`SMPTE ST 2110-30` 分轨 `T-5.8s` 精准切除场边违规单轨并补入干净欢呼声床 `0%` 脏话上星、主持人 Tally/VAD 与 `>350ms` 换气停顿闭锁 `0%` 耳返抢话嘴瓢、赛前首发名单动态注入 `99.6%` 专有字幕准确率与 `EAS` 应急广播 `0ms` 总控硬切）方案**：[中文](./live-broadcast-ob-truck-intercom-fcc-profanity-delay-ifb-voice-selection-faq.md) | [EN](./live-broadcast-ob-truck-intercom-fcc-profanity-delay-ifb-voice-selection-faq.en.md)
+403. **车险与健康险 7×24h 全天候智能报案定损（Insurance FNOL — First Notice of Loss：Guidewire ClaimCenter / Duck Creek + 语音多模态核损模式）免责条款硬锁、反欺诈/代位求偿与人伤急诊 `0ms` 升级语音架构（权利保留声明 `Reservation of Rights` 与 `0%` 越权承诺包赔硬锁、电话不断流联动 `WebRTC` 实拍 `17位 VIN` 与车损 `EXIF` 防伪将报案从 `18.5分钟` 压至 `3.2分钟` 并实现 `68.5%` 小额直赔 `STP`、人伤/气囊弹出与暴雨涉水防二次点火 `0ms` 抢占）方案**：[中文](./insurance-fnol-auto-health-claims-multimodal-triage-guidewire-voice-selection-faq.md) | [EN](./insurance-fnol-auto-health-claims-multimodal-triage-guidewire-voice-selection-faq.en.md)

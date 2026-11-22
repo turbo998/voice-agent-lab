@@ -10885,6 +10885,37 @@ export function evaluateLiveBroadcastObTruckFccIfbVoiceGuard(input: {
   };
 }
 
+export interface InsuranceFnolMultimodalClaimsVoiceEvaluation {
+  policyCode: "INSURANCE-FNOL-MULTIMODAL-CLAIMS-01";
+  stpClaimAndDrpRepairBookingAuthorized: boolean;
+  prematureCoverageEstoppelOrDoctoredPhotoBlocked: boolean;
+  bodilyInjuryAdjusterAndTowBridged: boolean;
+}
+
+/**
+ * Deterministic Auto & Health Insurance 24/7 FNOL Claims (Guidewire ClaimCenter / Duck Creek) Reservation-of-Rights & STP Limit Lock, Multimodal VIN/EXIF SIU Fraud Gate & 0ms Bodily-Injury Guard (`INSURANCE-FNOL-MULTIMODAL-CLAIMS-01`).
+ */
+export function evaluateInsuranceFnolMultimodalClaimsVoiceGuard(input: {
+  reservationOfRightsDisclosedAndWithinStpLimit: boolean;
+  multimodalVinExifAndSiuFraudCleared: boolean;
+  bodilyInjuryOrAirbagOrHighSiuPreemption: boolean;
+}): InsuranceFnolMultimodalClaimsVoiceEvaluation {
+  return {
+    policyCode: "INSURANCE-FNOL-MULTIMODAL-CLAIMS-01",
+    stpClaimAndDrpRepairBookingAuthorized:
+      input.reservationOfRightsDisclosedAndWithinStpLimit &&
+      input.multimodalVinExifAndSiuFraudCleared &&
+      !input.bodilyInjuryOrAirbagOrHighSiuPreemption,
+    prematureCoverageEstoppelOrDoctoredPhotoBlocked:
+      !input.reservationOfRightsDisclosedAndWithinStpLimit ||
+      !input.multimodalVinExifAndSiuFraudCleared ||
+      input.bodilyInjuryOrAirbagOrHighSiuPreemption,
+    bodilyInjuryAdjusterAndTowBridged:
+      input.bodilyInjuryOrAirbagOrHighSiuPreemption,
+  };
+}
+
+
 
 
 
