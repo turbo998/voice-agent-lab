@@ -10075,6 +10075,37 @@ export function evaluateChildcareK12CustodyPickupBusVoiceGuard(input: {
   };
 }
 
+export interface AirlineCrewSchedulingFar117VoiceEvaluation {
+  policyCode: "AIRLINE-CREW-FAR117-VOICE-01";
+  crewAssignmentAndHotelDispatchAuthorized: boolean;
+  illegalFdpRestViolationOrVoicemailAssignBlocked: boolean;
+  fatigueZeroCoercionReliefAndStandbyBridged: boolean;
+}
+
+/**
+ * Deterministic Airline Crew Scheduling (Jeppesen / Sabre) FAR 117 / EASA FTL Legality & Sleep-Window Lock, Union CBA Positive-Ack Gate & 0ms Fatigue Call-Off Guard (`AIRLINE-CREW-FAR117-VOICE-01`).
+ */
+export function evaluateAirlineCrewSchedulingFar117VoiceGuard(input: {
+  far117FdpRestLegalityAndSleepWindowProtected: boolean;
+  unionCbaWaterfallAndPositivePilotAckVerified: boolean;
+  pilotFatigueCallOffZeroCoercionOrMedicalPreemption: boolean;
+}): AirlineCrewSchedulingFar117VoiceEvaluation {
+  return {
+    policyCode: "AIRLINE-CREW-FAR117-VOICE-01",
+    crewAssignmentAndHotelDispatchAuthorized:
+      input.far117FdpRestLegalityAndSleepWindowProtected &&
+      input.unionCbaWaterfallAndPositivePilotAckVerified &&
+      !input.pilotFatigueCallOffZeroCoercionOrMedicalPreemption,
+    illegalFdpRestViolationOrVoicemailAssignBlocked:
+      !input.far117FdpRestLegalityAndSleepWindowProtected ||
+      !input.unionCbaWaterfallAndPositivePilotAckVerified ||
+      input.pilotFatigueCallOffZeroCoercionOrMedicalPreemption,
+    fatigueZeroCoercionReliefAndStandbyBridged:
+      input.pilotFatigueCallOffZeroCoercionOrMedicalPreemption,
+  };
+}
+
+
 
 
 
