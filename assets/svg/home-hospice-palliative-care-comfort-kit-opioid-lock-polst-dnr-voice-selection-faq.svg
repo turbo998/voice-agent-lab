@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad388" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad388" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#14B8A6"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #2DD4BF; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad388)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad388)"/>
+  <text x="52" y="52" class="title">Home Hospice &amp; Palliative Care Comfort-Kit Opioid Lock, POLST/DNR &amp; 24/7 RN Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">Roxanol 20mg/mL mL-vs-mg Hard Lock (0% 20x Overdose) · POLST/DNR Anti-Unwanted-911 Routing · 0ms Refractory Symptom &amp; Home Death RN Bridge</text>
+  <rect x="1000" y="38" width="232" height="32" rx="16" fill="#14B8A6"/>
+  <text x="1018" y="59" class="badge">HOSPICE-PALLIATIVE-CARE-VOICE-01</text>
+
+  <!-- Left Column: 02:00 AM Family Caregiver & Hospice EHR Bus -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. 24/7 Family Caregiver &amp; Hospice EHR Bus</text>
+  <text x="48" y="164" class="card-sub">WellSky / Netsmart / MatrixCare · Comfort Kit · POLST</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#14B8A6" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">2:00 AM Distressed Caregiver Voice Line</text>
+  <text x="64" y="224" class="body">• Crying/trembling caregiver acoustic stabilization</text>
+  <text x="64" y="242" class="body">• Smartphone camera check of oral syringe barrel line</text>
+  <text x="64" y="260" class="mono">Prosody_Pacing = 135 WPM Warm Calming Cadence</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#6366F1" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Hospice Comfort-Kit Standing Orders (MAR)</text>
+  <text x="64" y="340" class="body">• Liquid Morphine Sulfate 20mg/mL (0.25mL = 5mg order)</text>
+  <text x="64" y="358" class="body">• Lorazepam intensol, Haloperidol &amp; Atropine drops</text>
+  <text x="64" y="376" class="mono">Last_Dose_Timestamp = T-45m (Min Interval = 60m)</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Signed POLST / DNR / MOLST Registry</text>
+  <text x="64" y="462" class="body">• Verified Do-Not-Resuscitate &amp; Comfort-Measures-Only</text>
+  <text x="64" y="480" class="body">• Prevents unwanted 911 EMS intubation &amp; ICU transfer</text>
+  <text x="64" y="498" class="mono">Advance_Directive = DNR_Comfort_Measures_Active</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">CMS Hospice Conditions of Participation</text>
+  <text x="64" y="584" class="body">• 42 CFR 418 Continuous Home Care (CHC) eligibility log</text>
+  <text x="64" y="602" class="body">• Post-mortem controlled substance witness &amp; waste log</text>
+  <text x="64" y="620" class="mono">Compliance = CMS_42CFR418_And_HIPAA_BAA</text>
+
+  <!-- Center Column: 3-Layer Deterministic Hospice Safety Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#14B8A6" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Comfort-Kit &amp; POLST Gate</text>
+  <text x="456" y="164" class="card-sub">Zero mL-vs-mg Overdose · Zero Unwanted 911 · 0ms RN Bridge</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: Roxanol 20mg/mL mL-vs-mg &amp; Interval Lock</text>
+  <text x="472" y="224" class="body">• Blocks AI from ever altering physician PRN standing dose</text>
+  <text x="472" y="242" class="body">• Enforces exact syringe line readback ("0.25 mL mark = 5 mg")</text>
+  <text x="472" y="260" class="body">• Hard-locks repeat dosing before minimum PRN interval</text>
+  <text x="472" y="280" class="mono">Concentrated_Morphine_Unit_Error = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">Unauthorized_AI_Dose_Titration = 0.0%</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#14B8A6" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: POLST/DNR Goal-of-Care Routing Gate</text>
+  <text x="472" y="374" class="body">• Checks signed DNR/POLST before emergency escalation</text>
+  <text x="472" y="392" class="body">• Routes Cheyne-Stokes / rattle calls to Hospice Triage RN</text>
+  <text x="472" y="410" class="body">  instead of generic 911 EMS intubation dispatch</text>
+  <text x="472" y="430" class="mono">Unwanted_911_ED_Revocation_Drop = -89% Reduction</text>
+  <text x="472" y="448" class="mono">Hospice_RN_Connect_Time = 6.8s (vs 18m Hold Queue)</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Refractory Crisis &amp; Home Death RN Bridge</text>
+  <text x="472" y="524" class="body">• Detects refractory pain/delirium after PRN dose, acute</text>
+  <text x="472" y="542" class="body">  bleeding/seizure, caregiver collapse or expected passing</text>
+  <text x="472" y="560" class="body">• Preempts AI in 0ms; dispatches On-Call Field RN to home</text>
+  <text x="472" y="578" class="body">  &amp; keeps warm human nurse on line with grieving family</text>
+  <text x="472" y="600" class="mono">if (refractoryCrisisOrExpectedPassing) -&gt; 0ms Triage_RN</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 31ms | RN_Warm_Handoff = 0ms</text>
+
+  <!-- Right Column: Hospice RN Care & KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. 24/7 Hospice Triage RN &amp; Bereavement</text>
+  <text x="892" y="164" class="card-sub">Bedside RN Dispatch · Continuous Care · Chaplain Sync</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#14B8A6" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Verified Caregiver Comfort-Kit Administration</text>
+  <text x="908" y="224" class="body">• Logs caregiver PRN dose timestamp + syringe photo in EHR</text>
+  <text x="908" y="242" class="body">• Schedules automated 30-minute comfort reassessment callback</text>
+  <text x="908" y="260" class="body">• Updates remaining bottle volume in narcotic tracker</text>
+  <text x="908" y="282" class="mono">30m_Followup_Assessment_Rate = 100.0%</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#6366F1" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Expected Home Passing &amp; Field RN Dispatch</text>
+  <text x="908" y="366" class="body">• Comforts family gently: "There is no rush; you are not alone"</text>
+  <text x="908" y="384" class="body">• Dispatches mobile Hospice RN for pronouncement &amp; care</text>
+  <text x="908" y="402" class="body">• Coordinates funeral home &amp; bereavement social worker</text>
+  <text x="908" y="424" class="mono">CAHPS_Hospice_Family_Rating = 97.4% Top-Box</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Night Calls)</text>
+  <text x="908" y="520" class="body">• Cascaded EHR+POLST Gate: $790 / 10k calls (100% safe)</text>
+  <text x="908" y="538" class="body">• Hybrid Empathetic+Gate: $1,240 / 10k calls (Recommended)</text>
+  <text x="908" y="556" class="body">• Unfiltered E2E Voice: $2,180 + mL/mg &amp; 911 DNR breach risk</text>
+  <text x="908" y="578" class="mono">Unwanted_ED_Transfer_Savings = $14,200 / Avoided Trip</text>
+  <text x="908" y="596" class="mono">Morphine_Unit_Errors = 0 | RN_Connect = 6.8s</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateHomeHospicePalliativeComfortKitVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Home Hospice &amp; Palliative Care 24/7 Caregiver Voice Copilot</text>
+  <text x="52" y="718" class="body">Never allow an LLM to calculate concentrated liquid morphine volumes freely or trigger generic 911 EMS intubation dispatch for a patient with an active POLST/DNR.</text>
+</svg>

@@ -10435,6 +10435,37 @@ export function evaluateUrbanRailMetroOccPsdCrowdVoiceGuard(input: {
   };
 }
 
+export interface HomeHospicePalliativeComfortKitVoiceEvaluation {
+  policyCode: "HOSPICE-PALLIATIVE-CARE-VOICE-01";
+  comfortKitPrnAdministrationAndFollowupAuthorized: boolean;
+  opioidUnitConfusionOrUnwanted911DnrBreachBlocked: boolean;
+  onCallHospiceTriageRnAndFieldDispatchBridged: boolean;
+}
+
+/**
+ * Deterministic Home Hospice & Palliative Care (WellSky / Netsmart / VITAS) Roxanol 20mg/mL Syringe-Mark & PRN Interval Hard Lock, POLST/DNR Goal-of-Care Shield & 0ms Triage RN Guard (`HOSPICE-PALLIATIVE-CARE-VOICE-01`).
+ */
+export function evaluateHomeHospicePalliativeComfortKitVoiceGuard(input: {
+  comfortKitSyringeVolumeAndPrnIntervalVerified: boolean;
+  polstDnrGoalOfCareRespectedWithoutUnwanted911: boolean;
+  refractorySymptomOrExpectedHomePassingPreemption: boolean;
+}): HomeHospicePalliativeComfortKitVoiceEvaluation {
+  return {
+    policyCode: "HOSPICE-PALLIATIVE-CARE-VOICE-01",
+    comfortKitPrnAdministrationAndFollowupAuthorized:
+      input.comfortKitSyringeVolumeAndPrnIntervalVerified &&
+      input.polstDnrGoalOfCareRespectedWithoutUnwanted911 &&
+      !input.refractorySymptomOrExpectedHomePassingPreemption,
+    opioidUnitConfusionOrUnwanted911DnrBreachBlocked:
+      !input.comfortKitSyringeVolumeAndPrnIntervalVerified ||
+      !input.polstDnrGoalOfCareRespectedWithoutUnwanted911 ||
+      input.refractorySymptomOrExpectedHomePassingPreemption,
+    onCallHospiceTriageRnAndFieldDispatchBridged:
+      input.refractorySymptomOrExpectedHomePassingPreemption,
+  };
+}
+
+
 
 
 
