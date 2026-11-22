@@ -10135,6 +10135,37 @@ export function evaluateSeniorLivingMemoryCareWanderFallVoiceGuard(input: {
   };
 }
 
+export interface GlobalVideoDubbingIsochronyC2paVoiceEvaluation {
+  policyCode: "VIDEO-DUBBING-ISOCHRONY-C2PA-01";
+  dubbingRenderAndExportAuthorized: boolean;
+  unconsentedVoiceCloneOrChipmunkStretchBlocked: boolean;
+  culturalTabooOrBrandTermReviewBridged: boolean;
+}
+
+/**
+ * Deterministic Global Video Localization & AI Dubbing SAG-AFTRA/C2PA Voice-Right Lock, +-6% Syllable Isochrony / M&E Stem Gate & 0ms Cultural Taboo Guard (`VIDEO-DUBBING-ISOCHRONY-C2PA-01`).
+ */
+export function evaluateGlobalVideoDubbingIsochronyC2paVoiceGuard(input: {
+  actorVoiceCloneConsentAndC2paWatermarkVerified: boolean;
+  syllableIsochronyWithin6PctAndMeStemPreserved: boolean;
+  targetMarketCulturalTabooOrBrandMistranslationFlagged: boolean;
+}): GlobalVideoDubbingIsochronyC2paVoiceEvaluation {
+  return {
+    policyCode: "VIDEO-DUBBING-ISOCHRONY-C2PA-01",
+    dubbingRenderAndExportAuthorized:
+      input.actorVoiceCloneConsentAndC2paWatermarkVerified &&
+      input.syllableIsochronyWithin6PctAndMeStemPreserved &&
+      !input.targetMarketCulturalTabooOrBrandMistranslationFlagged,
+    unconsentedVoiceCloneOrChipmunkStretchBlocked:
+      !input.actorVoiceCloneConsentAndC2paWatermarkVerified ||
+      !input.syllableIsochronyWithin6PctAndMeStemPreserved ||
+      input.targetMarketCulturalTabooOrBrandMistranslationFlagged,
+    culturalTabooOrBrandTermReviewBridged:
+      input.targetMarketCulturalTabooOrBrandMistranslationFlagged,
+  };
+}
+
+
 
 
 

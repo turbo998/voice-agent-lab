@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（377 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（378 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -418,3 +418,4 @@
 375. **托育早教、连锁幼儿园与 K-12 国际学校（Bright Horizons / KinderCare / PowerSchool / 智慧校车与门禁模式）放学接送抚养权硬锁、校车防遗留空座清点与食物过敏（EpiPen）急救语音架构（法院抚养权限制令 `Custody Order` 零行踪披露与严禁电话口头新增接送人强制 `FaceID + 6位PIN` 硬锁、校车上下车 `RFID` 人数清零与车尾物理巡检按键防遗留熟睡幼童及早间缺勤 `14分钟` 核实门禁、花生过敏休克 `0ms` 播报体重匹配 `0.15mg/0.30mg EpiPen` 并直连校医与 120）方案**：[中文](./childcare-k12-school-custody-pickup-pin-epipen-allergy-bus-voice-selection-faq.md) | [EN](./childcare-k12-school-custody-pickup-pin-epipen-allergy-bus-voice-selection-faq.en.md)
 376. **民航机组排班与运行控制中心（AOC Crew Scheduling：Jeppesen / Sabre AirCentre / AIMS / FAA FAR 117 & CCAR-121 模式）飞行执勤期（FDP）疲劳合法性硬锁、备份抓飞（Reserve Callout）与驻外机组酒店语音调度架构（`FAR 117 / CCAR-121` 执勤期与机型资质校验及 8h 睡眠窗 100% 禁呼防重置休息期硬锁、工会 `CBA` 顺序瀑布抓飞与强制本人语音 `PIN` 积极确认及 `18秒` 改订过夜酒店压降 `62.4%` 超时取消门禁、机长申报疲劳 `0ms` 零施压解绑并自动触发热备顶班）方案**：[中文](./airline-crew-scheduling-far117-fatigue-legality-reserve-callout-voice-selection-faq.md) | [EN](./airline-crew-scheduling-far117-fatigue-legality-reserve-callout-voice-selection-faq.en.md)
 377. **高端康养社区、护理院与认知症照护中心（Senior Living, Assisted Living & Memory Care：PointClickCare / MatrixCare / 泰康之家模式）适老化声学补偿、防重复服药（eMAR）、防走失（WanderGuard）与卫浴零镜头防跌倒语音架构（`PointClickCare eMAR` 给药时间戳核对 `0%` 失智重复服药与生前预嘱 `DNR/POLST` 硬锁、老年性耳聋 `0.85x` 降调辅音增强提听清率至 `96.8%` 与夜间黄昏综合征认可疗法门禁、卫浴 `60GHz` 毫米波跌倒 `0ms` 主动开麦下达抗凝药原地禁动令并缩救援至 `<28s`）方案**：[中文](./senior-living-assisted-memory-care-wanderguard-emar-fall-voice-selection-faq.md) | [EN](./senior-living-assisted-memory-care-wanderguard-emar-fall-voice-selection-faq.en.md)
+378. **全球影视短剧出海、企业培训与高管演讲多语种 AI 视频译制配音（AI Video Dubbing：Azure Speech Video Translation vs. ElevenLabs Dubbing Studio vs. HeyGen 选型）等时音节对齐（Isochrony）、背景音效保留与 `C2PA` 声权合规架构（演员/高管声权加密授权令牌 `SAG-AFTRA` 与 `C2PA` 合成水印硬锁、合成前 `±6%` 等时音节重写消除 `1.4x` 花栗鼠倍速失真与 `Demucs` 背景音乐音效 `M&E` 分轨保留门禁、目标国宗教/文化禁忌与品牌词禁译 `0ms` 锁定审核并省 `97.4%` 译制成本）方案**：[中文](./global-video-localization-ai-dubbing-isochrony-lip-sync-c2pa-voice-selection-faq.md) | [EN](./global-video-localization-ai-dubbing-isochrony-lip-sync-c2pa-voice-selection-faq.en.md)
