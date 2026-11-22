@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad412" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad412" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #38BDF8; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad412)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad412)"/>
+  <text x="52" y="52" class="title">Enterprise Voice Agent Observability, OpenTelemetry Latency Tracing &amp; Audio Red-Teaming Architecture</text>
+  <text x="52" y="76" class="subtitle">7-Hop OTel Turn Waterfall &amp; PII-Redacted Spans · 1,000-Call CI/CD Audio Simulation Gate · 0ms Live Frustration/Loop Supervisor Rescue</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#06B6D4"/>
+  <text x="1002" y="59" class="badge">VOICE-OBSERVABILITY-EVAL-OTEL-01</text>
+
+  <!-- Left Column: 7-Hop OpenTelemetry Span Waterfall -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. 7-Hop OpenTelemetry Voice Turn Waterfall</text>
+  <text x="48" y="164" class="card-sub">Langfuse / Arize Phoenix / Datadog · W3C TraceContext</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Frame-Accurate Turn Latency Spans</text>
+  <text x="64" y="224" class="body">• `vad.speech_end` -&gt; `stt.final_transcript` (85ms)</text>
+  <text x="64" y="242" class="body">• `llm.ttft` (180ms) -&gt; `tts.ttfa` (110ms) -&gt; `rtp.out`</text>
+  <text x="64" y="260" class="mono">Total_Turn_Voice_To_Voice_P50 = 415ms | P99 = 690ms</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Acoustic &amp; Media Quality Telemetry</text>
+  <text x="64" y="340" class="body">• Per-turn SNR (dB), WebRTC/SIP packet loss &amp; jitter</text>
+  <text x="64" y="358" class="body">• Barge-in count, dead-air gaps (&gt;1.2s) &amp; WER confidence</text>
+  <text x="64" y="376" class="mono">Media_MOS_Score = 4.35 | Silence_Gap_Alerts = 0</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">CI/CD Synthetic Voice-to-Voice Harness</text>
+  <text x="64" y="462" class="body">• Coval / Hamming / Custom Pytest-Voice 1,000-call suite</text>
+  <text x="64" y="480" class="body">• Injects café noise, accents, fast digits &amp; barge-ins</text>
+  <text x="64" y="498" class="mono">Pre_Prod_Regression_Matrix = 1,000_Simulated_Calls</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">PII/PCI Redacted Observability Exporter</text>
+  <text x="64" y="584" class="body">• Strips PAN, SSN, DOB &amp; HIPAA PHI before OTel export</text>
+  <text x="64" y="602" class="body">• Links trace_id to encrypted WORM stereo audio vault</text>
+  <text x="64" y="620" class="mono">Unredacted_PII_In_Traces = 0.0% (Hard Scrubbed)</text>
+
+  <!-- Center Column: 3-Layer Deterministic Eval & Live Rescue Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#06B6D4" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic CI/CD Release &amp; Live Rescue Gate</text>
+  <text x="456" y="164" class="card-sub">Zero PII Trace Leak · 100% Red-Team Pass · 0ms Loop Rescue</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: OTel PII Scrubbing &amp; CI/CD Red-Team Lock</text>
+  <text x="472" y="224" class="body">• Blocks prod deploy if synthetic voice suite shows</text>
+  <text x="472" y="242" class="body">  &gt;0% policy breach, &gt;0% jailbreak or P95 &gt; 800ms</text>
+  <text x="472" y="260" class="body">• Enforces inline Presidio/regex redaction on OTel spans</text>
+  <text x="472" y="280" class="mono">Prod_Prompt_Regression_Escape_Rate = 0.0% (Hard Blocked)</text>
+  <text x="472" y="298" class="mono">OTel_Span_PII_Leakage = 0.0%</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: Groundedness &amp; Tool-Call Evaluators</text>
+  <text x="472" y="374" class="body">• Scores 100% of production turns asynchronously on</text>
+  <text x="472" y="392" class="body">  RAG Faithfulness, Tool-Argument Accuracy &amp; Tone</text>
+  <text x="472" y="410" class="body">• Flags TTS pronunciation / Markdown leak anomalies</text>
+  <text x="472" y="430" class="mono">Automated_Post_Call_Eval_Coverage = 100% (vs 1% Human)</text>
+  <text x="472" y="448" class="mono">MTTR_For_Latency_Spike_Diagnosis = 45s (vs 4 Hours)</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Live Repeat-Loop &amp; Frustration Rescue</text>
+  <text x="472" y="524" class="body">• Detects &gt;=2 consecutive "Sorry, I didn't catch that"</text>
+  <text x="472" y="542" class="body">  ASR/intent loops or acoustic pitch/volume anger spike</text>
+  <text x="472" y="560" class="body">• Preempts bot in 0ms; routes call to human supervisor</text>
+  <text x="472" y="578" class="body">  or triggers canary rollback on bad prompt deployment</text>
+  <text x="472" y="600" class="mono">if (twoTurnRepeatLoopOrAngerSpike) -&gt; 0ms Live_Rescue</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 14ms | Rage_Hangup_Drop = -76%</text>
+
+  <!-- Right Column: Observability Stack & Engineering ROI -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Tooling Selection &amp; SRE / QA Impact</text>
+  <text x="892" y="164" class="card-sub">Langfuse / Phoenix + Coval / Hamming + Datadog</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Recommended 3-Part Voice AI Ops Stack</text>
+  <text x="908" y="224" class="body">• Tracing &amp; Eval: Langfuse (Self-Hosted) / Arize Phoenix</text>
+  <text x="908" y="242" class="body">• Voice CI/CD Sim: Hamming AI / Coval / Roark</text>
+  <text x="908" y="260" class="body">• Infra &amp; WebRTC Metrics: Datadog / Prometheus + Grafana</text>
+  <text x="908" y="282" class="mono">Self_Hosted_Observability_Overhead = &lt; 2.5% of AI Cost</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Audio-Synchronized Trace Replay Player</text>
+  <text x="908" y="366" class="body">• Click any OTel span (`llm.tool_call`) to jump to the</text>
+  <text x="908" y="384" class="body">  exact millisecond on the stereo waveform timeline</text>
+  <text x="908" y="402" class="body">• Visualizes user barge-in overlap vs TTS buffer flush</text>
+  <text x="908" y="424" class="mono">Developer_Debug_Velocity = 6.5x Faster</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (1M Monitored Min)</text>
+  <text x="908" y="520" class="body">• Manual 2% Call Listening QA: $48,000 / 1M min</text>
+  <text x="908" y="538" class="body">• OTel + 100% Auto-Eval + Sim (Rec): $1,450 / 1M min</text>
+  <text x="908" y="556" class="body">• Text-Only LLM Tracing: Blind to VAD/TTS/audio bugs</text>
+  <text x="908" y="578" class="mono">QA_Audit_Coverage = 100% of Calls (vs 2% Manual)</text>
+  <text x="908" y="596" class="mono">Prod_Regressions_Caught_In_CI = 99.4% | PII_Leaks = 0</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateEnterpriseVoiceObservabilityOtelGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Enterprise Voice Agent Observability &amp; Audio Red-Teaming</text>
+  <text x="52" y="718" class="body">Text-only LLM tracing is blind to voice bugs: instrument all 7 audio hops in OpenTelemetry, run 1,000-call voice sims in CI, and break 2-turn repeat loops in 0ms.</text>
+</svg>

@@ -11155,6 +11155,37 @@ export function evaluateRetailBankingCardDisputeFdcpaVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseVoiceObservabilityOtelEvaluation {
+  policyCode: "VOICE-OBSERVABILITY-EVAL-OTEL-01";
+  releasePromoteAndTurnContinueAuthorized: boolean;
+  piiTraceLeakOrCicdRegressionBlocked: boolean;
+  liveSupervisorLoopRescueOrRollbackTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice Agent Observability & Audio Red-Teaming (Langfuse / Arize Phoenix / Hamming / Coval) 7-Hop OTel PII Scrubbing & CI/CD Audio-Sim Lock, 100% Auto-Eval Gate & 0ms 2-Turn Loop Rescue Guard (`VOICE-OBSERVABILITY-EVAL-OTEL-01`).
+ */
+export function evaluateEnterpriseVoiceObservabilityOtelGuard(input: {
+  otelTracePiiRedactedAndSevenHopInstrumented: boolean;
+  cicdAudioRedTeamAndLatencySlaPassed: boolean;
+  liveRepeatLoopOrFrustrationSpikePreemption: boolean;
+}): EnterpriseVoiceObservabilityOtelEvaluation {
+  return {
+    policyCode: "VOICE-OBSERVABILITY-EVAL-OTEL-01",
+    releasePromoteAndTurnContinueAuthorized:
+      input.otelTracePiiRedactedAndSevenHopInstrumented &&
+      input.cicdAudioRedTeamAndLatencySlaPassed &&
+      !input.liveRepeatLoopOrFrustrationSpikePreemption,
+    piiTraceLeakOrCicdRegressionBlocked:
+      !input.otelTracePiiRedactedAndSevenHopInstrumented ||
+      !input.cicdAudioRedTeamAndLatencySlaPassed ||
+      input.liveRepeatLoopOrFrustrationSpikePreemption,
+    liveSupervisorLoopRescueOrRollbackTriggered:
+      input.liveRepeatLoopOrFrustrationSpikePreemption,
+  };
+}
+
+
 
 
 
