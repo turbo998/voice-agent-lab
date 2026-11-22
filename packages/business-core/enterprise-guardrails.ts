@@ -11245,6 +11245,37 @@ export function evaluateEnterpriseHrWorkdayBenefitsVoiceGuard(input: {
   };
 }
 
+export interface TelecomIspOutageEsimSimSwapVoiceEvaluation {
+  policyCode: "TELECOM-ISP-ESIM-OUTAGE-01";
+  esimProvisionAndTruckRollAuthorized: boolean;
+  verbalSimSwapOrUncheckedTruckRollBlocked: boolean;
+  e911Medical5gFailoverAndNocBridged: boolean;
+}
+
+/**
+ * Deterministic Telecom & Fiber ISP (Verizon / T-Mobile / AT&T / Amdocs) FCC CPNI Zero-Trust Anti-SIM-Swap Lock, TR-069/PON Optical Pre-Check Gate & 0ms E911/Medical 5G Failover Guard (`TELECOM-ISP-ESIM-OUTAGE-01`).
+ */
+export function evaluateTelecomIspOutageEsimSimSwapVoiceGuard(input: {
+  cpniBiometricVerifiedAndZeroVerbalSimSwap: boolean;
+  tr069OpticalTelemetryCheckedAndBroadbandLabelRead: boolean;
+  e911FailureMedicalLifeSupportOrDownedCablePreemption: boolean;
+}): TelecomIspOutageEsimSimSwapVoiceEvaluation {
+  return {
+    policyCode: "TELECOM-ISP-ESIM-OUTAGE-01",
+    esimProvisionAndTruckRollAuthorized:
+      input.cpniBiometricVerifiedAndZeroVerbalSimSwap &&
+      input.tr069OpticalTelemetryCheckedAndBroadbandLabelRead &&
+      !input.e911FailureMedicalLifeSupportOrDownedCablePreemption,
+    verbalSimSwapOrUncheckedTruckRollBlocked:
+      !input.cpniBiometricVerifiedAndZeroVerbalSimSwap ||
+      !input.tr069OpticalTelemetryCheckedAndBroadbandLabelRead ||
+      input.e911FailureMedicalLifeSupportOrDownedCablePreemption,
+    e911Medical5gFailoverAndNocBridged:
+      input.e911FailureMedicalLifeSupportOrDownedCablePreemption,
+  };
+}
+
+
 
 
 

@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad415" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad415" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #F472B6; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad415)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad415)"/>
+  <text x="52" y="52" class="title">Telecom &amp; Fiber ISP Outage Triage (TR-069), eSIM Provisioning &amp; Anti-SIM-Swap Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">FCC CPNI Anti-SIM-Swap &amp; Port-Out Lock (0% Account Takeover) · 45s TR-069 ONT Self-Healing (-48% Truck Rolls) · 0ms E911/Medical Bridge</text>
+  <rect x="1000" y="38" width="232" height="32" rx="16" fill="#EC4899"/>
+  <text x="1018" y="59" class="badge">TELECOM-ISP-ESIM-OUTAGE-01</text>
+
+  <!-- Left Column: Subscriber Ingress & OSS/BSS Telemetry -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Subscriber Ingress &amp; OSS/BSS Telemetry</text>
+  <text x="48" y="164" class="card-sub">Verizon / T-Mobile / AT&amp;T · Amdocs / NetCracker / Nokia Corteca</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#EC4899" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Zero-Touch ANI Outage &amp; Line Pre-Fetch</text>
+  <text x="64" y="224" class="body">• Queries OLT/Cell-Tower alarm table before ring completes</text>
+  <text x="64" y="242" class="body">• Distinguishes area fiber cut vs home Wi-Fi channel interference</text>
+  <text x="64" y="260" class="mono">OLT_PON_Light = -19.2 dBm (Normal) | WiFi_5GHz = Congested</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">TR-069 /TR-369 USP Remote CPE Diagnostics</text>
+  <text x="64" y="340" class="body">• Remote ONT/Router reboot, DNS flush &amp; mesh channel hop</text>
+  <text x="64" y="358" class="body">• WebRTC camera check of LOS red blinking LED on fiber ONT</text>
+  <text x="64" y="376" class="mono">TR369_Action = "Auto_Channel_Optimize_Ch149 + DHCP_Renew"</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">GSMA SM-DP+ eSIM &amp; Number Porting Bus</text>
+  <text x="64" y="462" class="body">• Instant eSIM profile push to new iPhone/Android EID</text>
+  <text x="64" y="480" class="body">• FCC CPNI Number Transfer PIN &amp; Account SIM-Lock status</text>
+  <text x="64" y="498" class="mono">SIM_Protection_Lock = ACTIVE | Port_Freeze = ENABLED</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">FCC Broadband Consumer Label &amp; Retention Engine</text>
+  <text x="64" y="584" class="body">• Reads mandatory speed/latency/post-promo fee nutrition label</text>
+  <text x="64" y="602" class="body">• LTV-tiered loyalty credit &amp; speed-upgrade save offers</text>
+  <text x="64" y="620" class="mono">Compliance = FCC_CPNI_2024_SIM_Swap_And_Broadband_Label</text>
+
+  <!-- Center Column: 3-Layer Deterministic Telecom Guardrail Engine -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#EC4899" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic SIM-Swap, TR-069 &amp; E911 Gate</text>
+  <text x="456" y="164" class="card-sub">Zero SIM-Swap Fraud · 48% Truck-Roll Save · 0ms Life-Line</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: FCC CPNI Anti-SIM-Swap &amp; Port-Out Hard Lock</text>
+  <text x="472" y="224" class="body">• Blocks verbal SIM/eSIM swap or port-out PIN issuance</text>
+  <text x="472" y="242" class="body">  using SMS OTP or KBA; requires hardware passkey /</text>
+  <text x="472" y="260" class="body">  biometric app approval + 24h original-SIM alert</text>
+  <text x="472" y="280" class="mono">SIM_Swap_Crypto_Bank_Takeover_Rate = 0.0%</text>
+  <text x="472" y="298" class="mono">FCC_CPNI_Violation_Fine_Exposure = $0</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: TR-069/PON Optical Pre-Check Before Truck Roll</text>
+  <text x="472" y="374" class="body">• Mandates PON optical attenuation check (`-8 to -25 dBm`)</text>
+  <text x="472" y="392" class="body">  &amp; remote Wi-Fi healing before booking $165 field tech</text>
+  <text x="472" y="410" class="body">• Auto-applies outage SLA bill credit without agent transfer</text>
+  <text x="472" y="430" class="mono">Unnecessary_Field_Truck_Roll_Reduction = -48.4%</text>
+  <text x="472" y="448" class="mono">Remote_Broadband_Self_Heal_Rate = 69.5% in 45s</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Medical Life-Support &amp; Downed-Line Preemption</text>
+  <text x="472" y="524" class="body">• Detects E911 dialing failure, medical baseline life-</text>
+  <text x="472" y="542" class="body">  support telemetry offline, or downed utility pole wire</text>
+  <text x="472" y="560" class="body">• Activates backup 5G failover eSIM in 0ms &amp; bridges</text>
+  <text x="472" y="578" class="body">  NOC emergency dispatch desk immediately</text>
+  <text x="472" y="600" class="mono">if (e911FailureMedicalLifeSupportOrDownedCable) -&gt; 0ms NOC</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 13ms | Outage_Queue_Deflection = 83%</text>
+
+  <!-- Right Column: Telecom CX & Truck-Roll FinOps -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Subscriber Retention &amp; Field Dispatch ROI</text>
+  <text x="892" y="164" class="card-sub">Amdocs / ServiceNow TSM · Churn Save · Truck-Roll Savings</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">45-Second Fiber &amp; Wi-Fi Self-Healing Loop</text>
+  <text x="908" y="224" class="body">• Fixes 5GHz DFS channel congestion &amp; double-NAT while</text>
+  <text x="908" y="242" class="body">  the subscriber is still on the phone</text>
+  <text x="908" y="260" class="body">• Verifies speed recovery via live Ookla CPE probe</text>
+  <text x="908" y="282" class="mono">First_Contact_Resolution_FCR = 84.2% (vs 58% Human L1)</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Transparent Broadband Label &amp; Churn Retention</text>
+  <text x="908" y="366" class="body">• Eliminates bill-shock churn by proactively right-sizing</text>
+  <text x="908" y="384" class="body">  expiring promotional plans within LTV margin bands</text>
+  <text x="908" y="402" class="body">• Reads mandatory FCC post-promo rate &amp; speed terms</text>
+  <text x="908" y="424" class="mono">Subscriber_Port_Out_Churn_Save_Rate = 43.8%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#EC4899" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k ISP/Mobile Calls)</text>
+  <text x="908" y="520" class="body">• Legacy Telco L1 + Truck Rolls: $412,000 / 10k calls</text>
+  <text x="908" y="538" class="body">• TR-069 + CPNI Guarded Voice: $178,400 / 10k calls (Rec)</text>
+  <text x="908" y="556" class="body">• Unguarded Telco Bot: $310,000 + SIM-swap lawsuits</text>
+  <text x="908" y="578" class="mono">Net_Field_And_Contact_Savings = -$233,600 / 10k Calls</text>
+  <text x="908" y="596" class="mono">SIM_Swap_Breaches = 0 | FCC_Broadband_Compliance = 100%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateTelecomIspOutageEsimSimSwapVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Telecom &amp; Fiber ISP Voice AI</text>
+  <text x="52" y="718" class="body">Bind voice agents to TR-069/OLT optical telemetry before booking $165 truck rolls, and enforce hardware-backed anti-SIM-swap locks.</text>
+</svg>
