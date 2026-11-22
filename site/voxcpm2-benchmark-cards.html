@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'" />
+  <title>OpenBMB VoxCPM2 vs. Azure AI Speech · 7-Card 4:5 Benchmark Report</title>
+  <style>
+    :root {
+      --bg-page: #0B1120;
+      --bg-card: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --text-subtle: #64748B;
+      --border-light: #E2E8F0;
+      --blue-primary: #2563EB;
+      --blue-bar: #3B82F6;
+      --slate-bar: #CBD5E1;
+      --green-bg: #ECFDF5;
+      --green-border: #A7F3D0;
+      --green-text: #065F46;
+      --amber-bg: #FFFBEB;
+      --amber-border: #FDE68A;
+      --amber-text: #92400E;
+      --red-bg: #FEF2F2;
+      --red-border: #FECACA;
+      --red-text: #991B1B;
+      --dark-panel: #0F172A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg-page);
+      color: #F8FAFC;
+      min-height: 100vh;
+      padding: 20px 16px 64px;
+    }
+    .mode-radio {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .topbar {
+      max-width: 1920px;
+      margin: 0 auto 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 14px;
+      padding: 12px 18px;
+    }
+    .topbar-left, .topbar-right, .view-tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .nav-btn {
+      color: #93C5FD;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 12px;
+      padding: 6px 11px;
+      border-radius: 8px;
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      background: rgba(37, 99, 235, 0.14);
+    }
+    .nav-btn:hover { background: rgba(37, 99, 235, 0.28); color: #FFFFFF; }
+    .topbar-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #F8FAFC;
+      letter-spacing: -0.01em;
+    }
+    .tab-lbl {
+      background: #1E293B;
+      color: #CBD5E1;
+      border: 1px solid #334155;
+      padding: 5px 10px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+    }
+    .tab-lbl:hover { border-color: #60A5FA; color: #FFFFFF; }
+    #v-all:checked ~ .topbar label[for="v-all"],
+    #v-1:checked ~ .topbar label[for="v-1"],
+    #v-2:checked ~ .topbar label[for="v-2"],
+    #v-3:checked ~ .topbar label[for="v-3"],
+    #v-4:checked ~ .topbar label[for="v-4"],
+    #v-5:checked ~ .topbar label[for="v-5"],
+    #v-6:checked ~ .topbar label[for="v-6"],
+    #v-7:checked ~ .topbar label[for="v-7"] {
+      background: #2563EB;
+      border-color: #3B82F6;
+      color: #FFFFFF;
+    }
+    .deck {
+      max-width: 1920px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+      gap: 24px;
+      justify-items: center;
+    }
+    #v-1:checked ~ .deck,
+    #v-2:checked ~ .deck,
+    #v-3:checked ~ .deck,
+    #v-4:checked ~ .deck,
+    #v-5:checked ~ .deck,
+    #v-6:checked ~ .deck,
+    #v-7:checked ~ .deck {
+      display: flex;
+      justify-content: center;
+    }
+    #v-1:checked ~ .deck .b-card:not(.c1),
+    #v-2:checked ~ .deck .b-card:not(.c2),
+    #v-3:checked ~ .deck .b-card:not(.c3),
+    #v-4:checked ~ .deck .b-card:not(.c4),
+    #v-5:checked ~ .deck .b-card:not(.c5),
+    #v-6:checked ~ .deck .b-card:not(.c6),
+    #v-7:checked ~ .deck .b-card:not(.c7) {
+      display: none;
+    }
+    .b-card {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 4 / 5;
+      min-height: 1125px;
+      background: var(--bg-card);
+      color: var(--text-main);
+      border-radius: 20px;
+      padding: 34px 38px 30px;
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid #E2E8F0;
+    }
+    #v-all:checked ~ .deck .b-card {
+      min-height: 0;
+      aspect-ratio: auto;
+    }
+    @media (min-width: 960px) {
+      #v-all:checked ~ .deck {
+        grid-template-columns: repeat(auto-fit, minmax(620px, 1fr));
+      }
+      #v-all:checked ~ .deck .b-card {
+        aspect-ratio: 4 / 5;
+      }
+    }
+    .c-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--blue-primary);
+    }
+    .step-pill {
+      font-size: 12px;
+      font-weight: 800;
+      color: #334155;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .headline {
+      font-size: 27px;
+      line-height: 1.22;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+    .grad {
+      background: linear-gradient(90deg, #1D4ED8, #0284C7, #0F766E);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sub {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .wb-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .wb-col {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .wb-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #475569;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 6px;
+    }
+    .kv-item {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 9px;
+      padding: 8px 10px;
+      font-size: 12px;
+    }
+    .kv-item strong { display: block; color: #0F172A; margin-bottom: 2px; font-size: 12.5px; }
+    .kv-item span { color: #64748B; font-size: 11.5px; }
+    .code-mini {
+      background: #0F172A;
+      color: #E2E8F0;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 11px;
+      line-height: 1.48;
+      padding: 11px;
+      border-radius: 10px;
+      overflow-x: auto;
+      flex: 1;
+    }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+    .pill-blue { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
+    .pill-green { background: var(--green-bg); color: var(--green-text); border-color: var(--green-border); }
+    .pill-amber { background: var(--amber-bg); color: var(--amber-text); border-color: var(--amber-border); }
+    .pill-red { background: var(--red-bg); color: var(--red-text); border-color: var(--red-border); }
+    .pill-slate { background: #F1F5F9; color: #334155; border-color: #CBD5E1; }
+    .quote-box {
+      background: #F8FAFC;
+      border-left: 4px solid #2563EB;
+      border-top: 1px solid #E2E8F0;
+      border-right: 1px solid #E2E8F0;
+      border-bottom: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: #1E293B;
+    }
+    .stack-list { display: flex; flex-direction: column; gap: 12px; flex: 1; margin-bottom: 14px; }
+    .d-card {
+      border: 1px solid #E2E8F0;
+      border-radius: 13px;
+      padding: 13px 15px;
+      background: #FFFFFF;
+    }
+    .d-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 7px;
+      flex-wrap: wrap;
+    }
+    .d-name { font-size: 13.5px; font-weight: 800; color: #0F172A; }
+    .bar-track {
+      width: 100%;
+      height: 11px;
+      background: #F1F5F9;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 7px 0 6px;
+      border: 1px solid #E2E8F0;
+    }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, #2563EB, #0EA5E9); border-radius: 999px; }
+    .bar-fill.amber { background: linear-gradient(90deg, #D97706, #F59E0B); }
+    .d-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: #475569;
+    }
+    .m-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+    .m-table th {
+      text-align: left;
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #475569;
+      background: #F8FAFC;
+      padding: 9px 10px;
+      border-bottom: 2px solid #CBD5E1;
+    }
+    .m-table td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #E2E8F0;
+      vertical-align: top;
+      color: #1E293B;
+      line-height: 1.4;
+    }
+    .miss-row { background: #FFFBEB; }
+    .miss-x {
+      display: inline-block;
+      font-weight: 900;
+      color: #DC2626;
+      margin-right: 4px;
+    }
+    .dual-callout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .callout-box {
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 12px;
+      line-height: 1.48;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
+    }
+    .callout-box strong { display: block; margin-bottom: 4px; color: #0F172A; font-size: 12.5px; }
+    .dark-code {
+      background: #0F172A;
+      color: #E2E8F0;
+      border-radius: 13px;
+      padding: 14px 16px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 11.4px;
+      line-height: 1.5;
+      border: 1px solid #1E293B;
+      overflow-x: auto;
+    }
+    .code-hdr {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #93C5FD;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #1E293B;
+    }
+    .flow-arrow {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #2563EB;
+      padding: 6px 0;
+    }
+    .lat-group {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+    .lat-item {
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 10px 13px;
+      background: #F8FAFC;
+    }
+    .lat-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 7px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .lat-row {
+      display: grid;
+      grid-template-columns: 185px 1fr 78px;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 5px;
+      font-size: 11.5px;
+    }
+    .lat-bar-wrap {
+      background: #E2E8F0;
+      height: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .lat-bar-opt { height: 100%; background: var(--blue-bar); border-radius: 6px; }
+    .lat-bar-base { height: 100%; background: var(--slate-bar); border-radius: 6px; }
+    .lat-val { font-weight: 800; text-align: right; color: #0F172A; }
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .fit-card {
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .fit-good { background: var(--green-bg); border: 1.5px solid var(--green-border); color: var(--green-text); }
+    .fit-bad { background: var(--red-bg); border: 1.5px solid var(--red-border); color: var(--red-text); }
+    .fit-hdr {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 800;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+    }
+    .fit-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12.2px;
+      line-height: 1.45;
+      color: #1E293B;
+    }
+    .fit-list li strong { color: #0F172A; }
+    .prov-footer {
+      background: var(--dark-panel);
+      color: #E2E8F0;
+      border-radius: 13px;
+      padding: 13px 16px;
+      font-size: 11.5px;
+      line-height: 1.5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .prov-footer strong { color: #FFFFFF; }
+    @media (max-width: 760px) {
+      .wb-grid, .dual-callout, .fit-grid { grid-template-columns: 1fr; }
+      .b-card { padding: 22px 18px; min-height: 0; aspect-ratio: auto; }
+      .headline { font-size: 21px; }
+      .lat-row { grid-template-columns: 130px 1fr 68px; }
+    }
+  </style>
+</head>
+<body>
+  <input class="mode-radio" type="radio" name="deck-view" id="v-all" checked />
+  <input class="mode-radio" type="radio" name="deck-view" id="v-1" />
+  <input class="mode-radio" type="radio" name="deck-view" id="v-2" />
+  <input class="mode-radio" type="radio" name="deck-view" id="v-3" />
+  <input class="mode-radio" type="radio" name="deck-view" id="v-4" />
+  <input class="mode-radio" type="radio" name="deck-view" id="v-5" />
+  <input class="mode-radio" type="radio" name="deck-view" id="v-6" />
+  <input class="mode-radio" type="radio" name="deck-view" id="v-7" />
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="nav-btn" href="./index.html">Back to Presales Portal</a>
+      <a class="nav-btn" href="./voxcpm2-workbench.html">Interactive Hybrid Router &amp; TCO Workbench</a>
+      <a class="nav-btn" href="./voxcpm2-benchmark-cards.zh-CN.html">中文版 7-Card 报告</a>
+      <span class="topbar-title">OpenBMB VoxCPM2 (2B) vs. Azure AI Speech · 7-Card 4:5 Benchmark Deck</span>
+    </div>
+    <div class="view-tabs">
+      <label class="tab-lbl" for="v-all">All 7 Cards</label>
+      <label class="tab-lbl" for="v-1">1/7</label>
+      <label class="tab-lbl" for="v-2">2/7</label>
+      <label class="tab-lbl" for="v-3">3/7</label>
+      <label class="tab-lbl" for="v-4">4/7</label>
+      <label class="tab-lbl" for="v-5">5/7</label>
+      <label class="tab-lbl" for="v-6">6/7</label>
+      <label class="tab-lbl" for="v-7">7/7</label>
+    </div>
+  </header>
+
+  <main class="deck">
+    <!-- CARD 1 -->
+    <section class="b-card c1">
+      <div>
+        <div class="c-hdr">
+          <span class="eyebrow">HANDS-ON · SPEECH &amp; TTS</span>
+          <span class="step-pill">1 / 7</span>
+        </div>
+        <h1 class="headline">
+          <span class="grad">VoxCPM2 (2B)</span> delivers +44.4 dB super-wideband 48 kHz gain and #1 zero-shot SIM in 22/24 languages, while Azure AI Speech retains deterministic SSML, Viseme, and compliance superiority
+        </h1>
+        <p class="sub">
+          Empirical 1024-pt Welch FFT audit across 11 official WAVs + source audit of <code>voxcpm2.py</code> vs. Microsoft Azure AI Speech (<code>DragonHDOmni</code> / Standard Neural) and 2026 commercial TTS systems.
+        </p>
+      </div>
+
+      <div class="wb-grid">
+        <div class="wb-col">
+          <div class="wb-title">Scenarios &amp; Routing Bands</div>
+          <div class="kv-item">
+            <strong>Band A · Self-Hosted VoxCPM2</strong>
+            <span>&gt;25M chars/mo, 48kHz creative narration, 22/24-lang zero-shot cloning, SEA scripts</span>
+          </div>
+          <div class="kv-item">
+            <strong>Band B · Guarded Streaming</strong>
+            <span>vLLM-Omni (~135ms TTFA) + watchdog circuit breaker (retry_badcase disabled)</span>
+          </div>
+          <div class="kv-item">
+            <strong>Band C · Azure AI Speech</strong>
+            <span>Regulated BFSI/Health SSML, 0.1ms Avatar Visemes, AR/HI/Yue zero-shot, 99.9% SLA</span>
+          </div>
+          <div class="pill-row">
+            <span class="pill pill-green">Apache-2.0</span>
+            <span class="pill pill-blue">6.25 Hz Patch</span>
+          </div>
+        </div>
+
+        <div class="wb-col">
+          <div class="wb-title">Structured Architecture Contract</div>
+          <pre class="code-mini">{
+  "encoder_sr_hz": 16000,
+  "decoder_sr_hz": 48000,
+  "patch_step_s": 0.16,
+  "speaker_slot": "[103, ref_feats, 104]",
+  "bottleneck": "FSQ(dim=512, scale=9)",
+  "acoustic_head": "LocDiT 10-step CFM",
+  "upsampler": "AudioVAE V2 (3x Asymmetric)",
+  "streaming_retry": false
+}</pre>
+          <div class="pill-row">
+            <span class="pill pill-slate">voxcpm2.py:258,345,667</span>
+            <span class="pill pill-slate">arXiv:2606.06928</span>
+          </div>
+        </div>
+
+        <div class="wb-col">
+          <div class="wb-title">Latency, TCO &amp; Top Findings</div>
+          <div class="kv-item">
+            <strong>~135 ms TTFA · RTF 0.13</strong>
+            <span>RTX 4090 + vLLM-Omni (vs. 55ms Cartesia, 180ms Azure Neural, 260ms Azure HD)</span>
+          </div>
+          <div class="kv-item">
+            <strong>+34.76 dB Whisper SDR</strong>
+            <span>50.88 dB continuous FSQ+CFM vs. 16.12 dB discrete-only bottleneck</span>
+          </div>
+          <div class="kv-item">
+            <strong>~25M Chars/Mo Break-Even</strong>
+            <span>~$450/mo 1x GPU pool saves 68% at 50M chars vs. $1,400/mo Azure HD</span>
+          </div>
+          <div class="pill-row">
+            <span class="pill pill-green">9/9 Exact 160ms Grid</span>
+            <span class="pill pill-amber">GGUF Q8 RTF 1.76</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prov-footer">
+        <div><strong>Provenance:</strong> <code>measured</code> (11 official WAVs 1024-pt Hann Welch PSD + quantization SDR via <code>run_benchmark.py</code>) + <code>reported</code> (<code>arXiv:2606.06928</code> Tables 3–14).</div>
+        <span class="pill pill-blue">Hybrid Router Pattern</span>
+      </div>
+    </section>
+
+    <!-- CARD 2 -->
+    <section class="b-card c2">
+      <div>
+        <div class="c-hdr">
+          <span class="eyebrow">SCENARIO: 48KHZ ACOUSTIC &amp; WHISPER CLONING</span>
+          <span class="step-pill">2 / 7</span>
+        </div>
+        <h2 class="headline">
+          Single-case deep dive: 24 kHz reference upsampled to 48 kHz studio output with -47.64 dB air PSD and 50.88 dB whisper SDR
+        </h2>
+        <p class="sub">
+          Auditing <code>style_prompt1.wav</code> (24 kHz, 6.538s) into <code>style_result1_1.wav</code> (48 kHz, 2.880s = exact 18 &times; 160 ms patches) under decoupled Controllable Cloning.
+        </p>
+
+        <div class="quote-box">
+          <strong>Input Trace:</strong> Reference <code>style_prompt1.wav</code> (24 kHz &rarr; downsampled to 16 kHz / 8 kHz Nyquist inside AudioVAE V2 encoder, wrapped in isolated tokens <code>103..104</code>) + style instruction <code>[Soft urgent whisper, independent rhythm]</code> &rarr; 48 kHz PCM waveform output.
+        </div>
+      </div>
+
+      <div class="stack-list">
+        <div class="d-card">
+          <div class="d-top">
+            <span class="d-name">1. Generative Super-Wideband Extension (16–24 kHz PSD)</span>
+            <div class="pill-row">
+              <span class="pill pill-blue">score</span>
+              <span class="pill pill-green">Act automatically</span>
+            </div>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width: 89.2%;"></div></div>
+          <div class="d-meta">
+            <span>Measured: <strong>-47.64 dB</strong> (f_eff <strong>17,672 Hz</strong> at -52 dB floor)</span>
+            <span>+44.44 dB over VoxCPM1.5 (-92.08 dB)</span>
+          </div>
+        </div>
+
+        <div class="d-card">
+          <div class="d-top">
+            <span class="d-name">2. Unvoiced Whisper Fidelity (FSQ + Continuous CFM Residual)</span>
+            <div class="pill-row">
+              <span class="pill pill-blue">score</span>
+              <span class="pill pill-green">Act automatically</span>
+            </div>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width: 87.8%;"></div></div>
+          <div class="d-meta">
+            <span>Measured Whisper SDR: <strong>50.88 dB</strong> (vs. 16.12 dB discrete-only)</span>
+            <span>+34.76 dB quantization-free gain</span>
+          </div>
+        </div>
+
+        <div class="d-card">
+          <div class="d-top">
+            <span class="d-name">3. Live Streaming Safety &amp; Content Provenance Gate</span>
+            <div class="pill-row">
+              <span class="pill pill-slate">noul</span>
+              <span class="pill pill-amber">Confirm</span>
+            </div>
+          </div>
+          <div class="bar-track"><div class="bar-fill amber" style="width: 58.0%;"></div></div>
+          <div class="d-meta">
+            <span><code>streaming=True</code> disables <code>retry_badcase</code> (<code>voxcpm2.py:667</code>)</span>
+            <span>Add watchdog + watermarking before prod</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prov-footer">
+        <div><strong>Architectural Insight:</strong> AudioVAE V2 is asymmetric (16 kHz in &rarr; 48 kHz out); 8–24 kHz harmonics are synthesized generatively by LocDiT + Snake-activated ConvNeXt decoder, not copied from the reference file.</div>
+      </div>
+    </section>
+
+    <!-- CARD 3 -->
+    <section class="b-card c3">
+      <div>
+        <div class="c-hdr">
+          <span class="eyebrow">WHAT I TESTED</span>
+          <span class="step-pill">3 / 7</span>
+        </div>
+        <h2 class="headline">
+          4 of 7 enterprise tracks pass autonomously; tongue-twisters, under-covered zero-shot scripts, and SSML/Viseme tracks require Azure routing
+        </h2>
+        <p class="sub">
+          7-scenario evaluation scorecard combining measured 11-WAV spectral forensics, source-code boundaries, and published multi-benchmark results.
+        </p>
+
+        <table class="m-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">SCENARIO</th>
+              <th style="width: 31%;">QUESTION / TASK</th>
+              <th style="width: 29%;">MODEL ANSWER</th>
+              <th style="width: 18%;">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>S1 · 48kHz Studio Air</strong></td>
+              <td>16kHz encoder input &rarr; 48kHz super-wideband PSD</td>
+              <td>-47.64 dB PSD · f_eff 17,672 Hz (9/9 48kHz WAVs)</td>
+              <td><span class="pill pill-green">Act automatically</span></td>
+            </tr>
+            <tr>
+              <td><strong>S2 · Zero-Shot SIM</strong></td>
+              <td>MiniMax-MLS-Test 24-language speaker similarity</td>
+              <td>Rank #1 in 22/24 langs · EN 85.4% vs. 61.3% 11Labs</td>
+              <td><span class="pill pill-green">Act automatically</span></td>
+            </tr>
+            <tr>
+              <td><strong>S3 · Style &amp; Vocal</strong></td>
+              <td>Decoupled <code>[103..104]</code> style control &amp; singing</td>
+              <td>71.4% EN Role-Play (#1) · Whisper/Vocal verified</td>
+              <td><span class="pill pill-green">Act automatically</span></td>
+            </tr>
+            <tr>
+              <td><strong>S4 · SEA Scripts</strong></td>
+              <td>Burmese / Lao / Khmer script intelligibility</td>
+              <td>1.42% / 1.90% / 2.05% WER (vs. 75–87% Fish S2)</td>
+              <td><span class="pill pill-green">Act automatically</span></td>
+            </tr>
+            <tr class="miss-row">
+              <td><strong>S5 · Hard &amp; Stream</strong></td>
+              <td>Seed-TTS test-ZH-Hard CER &amp; live streaming retry</td>
+              <td><span class="miss-x">&#10005;</span>8.13% CER (Cosy3 5.83%) · retry_badcase off</td>
+              <td><span class="pill pill-amber">Confirm</span></td>
+            </tr>
+            <tr class="miss-row">
+              <td><strong>S6 · AR / HI / Yue</strong></td>
+              <td>Zero-shot Arabic, Hindi &amp; MLS Cantonese CER/WER</td>
+              <td><span class="miss-x">&#10005;</span>AR 13.05% · HI 19.70% · MLS Yue 38.58%</td>
+              <td><span class="pill pill-red">Send to a human</span></td>
+            </tr>
+            <tr class="miss-row">
+              <td><strong>S7 · SSML &amp; Viseme</strong></td>
+              <td>Regulated <code>&lt;say-as&gt;</code>, 0.1ms Visemes &amp; frame lock</td>
+              <td><span class="miss-x">&#10005;</span>160ms patch grid · No SSML/Viseme stream</td>
+              <td><span class="pill pill-red">Send to a human</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="dual-callout">
+        <div class="callout-box">
+          <strong>Threshold Gating Policy</strong>
+          Auto-route creative narration, game NPCs, and SEA scripts to VoxCPM2 when CER/WER &lt; 3% and SSML/Viseme flags are absent; enforce duration/ASR watchdog on streaming turns.
+        </div>
+        <div class="callout-box">
+          <strong>Root-Cause Failure Analysis</strong>
+          Zero-shot degradation on AR/HI/Yue stems from pretraining corpus skew; S7 misses are structural to pure end-to-end diffusion-AR without phoneme-level duration predictors.
+        </div>
+      </div>
+    </section>
+
+    <!-- CARD 4 -->
+    <section class="b-card c4">
+      <div>
+        <div class="c-hdr">
+          <span class="eyebrow">UNDER THE HOOD</span>
+          <span class="step-pill">4 / 7</span>
+        </div>
+        <h2 class="headline">
+          Isolated reference tokens [103..104] + semi-discrete FSQ(scale=9) prevent prompt leakage while preserving continuous breath residuals
+        </h2>
+        <p class="sub">
+          Source-verified execution contract in <code>src/voxcpm/model/voxcpm2.py</code> paired with deterministic 1024-pt Welch PSD &amp; Hybrid Router verification.
+        </p>
+      </div>
+
+      <div class="dark-code">
+        <div class="code-hdr">
+          <span>1. Input Contract &amp; Semi-Discrete Diffusion-AR Forward Path</span>
+          <span>voxcpm2.py:258,345,667</span>
+        </div>
+<pre>{
+  "routing_request": {
+    "text": "(Soft urgent whisper) Account OTP expires in 30 seconds.",
+    "reference_wav": "style_prompt1.wav (resampled -&gt; 16kHz encoder)",
+    "requires_ssml_lexicon": false,
+    "requires_viseme_blendshapes": false,
+    "streaming": true
+  },
+  "voxcpm2_internal_sequence": [
+    "[103 (ref_audio_start), ref_continuous_latents, 104 (ref_audio_end)]",
+    "LocEnc(P=4) -&gt; 24L Base LM (6.25 Hz / 160 ms patch step)",
+    "FSQ(dim=512, scale=9) -&gt; 8L Residual LM -&gt; LocDiT (10-step Euler CFG)",
+    "AudioVAE_V2.decode(strides=[5,3,2,2,2,2,2]=1920) -&gt; 48,000 Hz PCM"
+  ]
+}</pre>
+      </div>
+
+      <div class="flow-arrow">&darr; Deterministic DSP Verifier &amp; Hybrid Router Decision &darr;</div>
+
+      <div class="dark-code">
+        <div class="code-hdr">
+          <span>2. Empirical Spectral Verifier &amp; Production Gate Output</span>
+          <span>run_benchmark.py --verify-sealed</span>
+        </div>
+<pre>&lt;verifier_trace wav="style_result1_1.wav" sr="48000" duration_s="2.880"&gt;
+  patches_0p16s        = 18.0000   # Exact integer multiple (rem = 0.000s)
+  psd_16_24khz_mean_db = -47.64    # +44.44 dB vs. VoxCPM1.5 (-92.08 dB)
+  effective_bw_52db_hz = 17672.0   # True super-wideband acoustic energy
+  whisper_sdr_gain_db  = +34.76    # 50.88 dB (FSQ+CFM) vs. 16.12 dB (Discrete)
+  streaming_guardrail  = "WARN: retry_badcase forced False at voxcpm2.py:667"
+&lt;/verifier_trace&gt;
+&lt;answer&gt;ROUTE: voxcpm2-vllm-omni (primary) + duration_watchdog -&gt; azure-dragonhd-omni (fallback)&lt;/answer&gt;</pre>
+      </div>
+
+      <div class="prov-footer">
+        <div><strong>Key Source Invariant:</strong> Every generated VoxCPM2 WAV duration equals <code>N &times; 0.160s</code> (1,920 samples &times; 4 = 7,680 samples at 48 kHz).</div>
+      </div>
+    </section>
+
+    <!-- CARD 5 -->
+    <section class="b-card c5">
+      <div>
+        <div class="c-hdr">
+          <span class="eyebrow">ROBUSTNESS CHECK</span>
+          <span class="step-pill">5 / 7</span>
+        </div>
+        <h2 class="headline">
+          Continuous CFM residuals recover +34.76 dB SDR on whispers, whereas zero-shot script shifts spike CER by +37.61 pts without LoRA
+        </h2>
+        <p class="sub">
+          Perturbation testing across quantization bottlenecks, cloning prompt formulations, streaming flags, and cross-lingual script shifts.
+        </p>
+
+        <table class="m-table">
+          <thead>
+            <tr>
+              <th style="width: 34%;">QUESTION / PERTURBATION AXIS</th>
+              <th style="width: 22%;">ORIGINAL</th>
+              <th style="width: 24%;">REVERSED / PERTURBED</th>
+              <th style="width: 20%;">CHANGE (PTS / DB)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Discrete Grid on Voiced vs. Whisper</strong><br /><span>style_result1_1.wav 8-lvl quantization</span></td>
+              <td>23.25 dB SDR<br /><span>(Voiced frames)</span></td>
+              <td>16.12 dB SDR<br /><span>(Unvoiced whisper)</span></td>
+              <td><span class="pill pill-red">-7.13 dB</span></td>
+            </tr>
+            <tr>
+              <td><strong>Whisper Bottleneck Recovery</strong><br /><span>Discrete-only &rarr; FSQ + Continuous CFM</span></td>
+              <td>16.12 dB SDR<br /><span>(Discrete-only)</span></td>
+              <td>50.88 dB SDR<br /><span>(FSQ + CFM residual)</span></td>
+              <td><span class="pill pill-green">+34.76 dB</span></td>
+            </tr>
+            <tr>
+              <td><strong>Dialect Breath Frames (dongbei.wav)</strong><br /><span>Discrete-only &rarr; FSQ + Continuous CFM</span></td>
+              <td>5.20 dB SDR<br /><span>(Severe hiss loss)</span></td>
+              <td>39.95 dB SDR<br /><span>(Clean breath contour)</span></td>
+              <td><span class="pill pill-green">+34.75 dB</span></td>
+            </tr>
+            <tr>
+              <td><strong>Cloning Prompt Formulation</strong><br /><span>Audio-Text Cont. &rarr; Isolated [103..104]</span></td>
+              <td>8.16% CER<br /><span>(Seed-ZH-Hard Cont.)</span></td>
+              <td>6.85% CER<br /><span>(Decoupled Ref-Only)</span></td>
+              <td><span class="pill pill-green">-1.31 pts CER</span></td>
+            </tr>
+            <tr>
+              <td><strong>Zero-Shot Dialect Shift</strong><br /><span>Standard Mandarin &rarr; MLS Cantonese</span></td>
+              <td>0.97% CER<br /><span>(Seed-TTS test-ZH)</span></td>
+              <td>38.58% CER<br /><span>(Zero-shot MLS Yue)</span></td>
+              <td><span class="pill pill-red">+37.61 pts CER</span></td>
+            </tr>
+            <tr>
+              <td><strong>Inference Mode Toggle</strong><br /><span>Offline Batch &rarr; Live streaming=True</span></td>
+              <td>retry_badcase=On<br /><span>(Auto re-rolls loops)</span></td>
+              <td>retry_badcase=Off<br /><span>(voxcpm2.py:667)</span></td>
+              <td><span class="pill pill-amber">Watchdog Req.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prov-footer">
+        <div><strong>Engineering Takeaway:</strong> Never deploy zero-shot VoxCPM2 on Arabic, Hindi, or Cantonese without a 15–30 min LoRA SFT run (<code>scripts/train_voxcpm_finetune.py</code>) or Azure AI Speech routing.</div>
+      </div>
+    </section>
+
+    <!-- CARD 6 -->
+    <section class="b-card c6">
+      <div>
+        <div class="c-hdr">
+          <span class="eyebrow">LATENCY</span>
+          <span class="step-pill">6 / 7</span>
+        </div>
+        <h2 class="headline">
+          vLLM-Omni cuts VoxCPM2 TTFA to ~135 ms (0.13 RTF), beating Azure DragonHDOmni (~260 ms) while trailing Cartesia SSM (~55 ms)
+        </h2>
+        <p class="sub">
+          Paired comparison of optimized inference paths (<code>#3B82F6</code>) vs. eager/cloud/edge baselines (<code>#CBD5E1</code>) across serving tiers.
+        </p>
+
+        <div class="lat-group">
+          <div class="lat-item">
+            <div class="lat-title"><span>1. VoxCPM2 First-Chunk Streaming TTFA (RTX 4090)</span><span>-40% Latency</span></div>
+            <div class="lat-row">
+              <span>VoxCPM2 + vLLM-Omni</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-opt" style="width: 18%;"></div></div>
+              <span class="lat-val">135 ms</span>
+            </div>
+            <div class="lat-row">
+              <span>VoxCPM2 Eager PyTorch</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-base" style="width: 30%;"></div></div>
+              <span class="lat-val">225 ms</span>
+            </div>
+          </div>
+
+          <div class="lat-item">
+            <div class="lat-title"><span>2. 1-Second 48kHz Audio Compute Time (RTX 4090)</span><span>2.3&times; Faster</span></div>
+            <div class="lat-row">
+              <span>Nano-vLLM / vLLM-Omni (0.13 RTF)</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-opt" style="width: 17.3%;"></div></div>
+              <span class="lat-val">130 ms</span>
+            </div>
+            <div class="lat-row">
+              <span>Standard PyTorch (0.30 RTF)</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-base" style="width: 40%;"></div></div>
+              <span class="lat-val">300 ms</span>
+            </div>
+          </div>
+
+          <div class="lat-item">
+            <div class="lat-title"><span>3. Studio 48kHz Streaming TTFA vs. Managed HD Cloud</span><span>1.9&times; Faster</span></div>
+            <div class="lat-row">
+              <span>VoxCPM2 vLLM-Omni (48 kHz)</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-opt" style="width: 18%;"></div></div>
+              <span class="lat-val">135 ms</span>
+            </div>
+            <div class="lat-row">
+              <span>Azure DragonHDOmni (48 kHz)</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-base" style="width: 34.7%;"></div></div>
+              <span class="lat-val">260 ms</span>
+            </div>
+          </div>
+
+          <div class="lat-item">
+            <div class="lat-title"><span>4. Sub-100ms Duplex Voice Agent Cloud Comparison</span><span>SSM Leads</span></div>
+            <div class="lat-row">
+              <span>Cartesia Sonic 3.6 SSM</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-opt" style="width: 7.3%;"></div></div>
+              <span class="lat-val">55 ms</span>
+            </div>
+            <div class="lat-row">
+              <span>Azure Standard Neural TTS</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-base" style="width: 24%;"></div></div>
+              <span class="lat-val">180 ms</span>
+            </div>
+          </div>
+
+          <div class="lat-item">
+            <div class="lat-title"><span>5. Consumer Laptop CPU/Metal Edge (1s Audio Synthesis)</span><span>Non-Real-Time</span></div>
+            <div class="lat-row">
+              <span>RTX 4090 Server (0.13 RTF)</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-opt" style="width: 7.4%;"></div></div>
+              <span class="lat-val">130 ms</span>
+            </div>
+            <div class="lat-row">
+              <span>Apple M4 Pro GGUF Q8 (1.76 RTF)</span>
+              <div class="lat-bar-wrap"><div class="lat-bar-base" style="width: 100%;"></div></div>
+              <span class="lat-val">1,760 ms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prov-footer">
+        <div><strong>Scaling &amp; TCO Note:</strong> Single H100 (<code>vLLM-Omni</code>) sustains ~0.07 RTF; TCO crossover vs. Azure Speech occurs at <strong>~25M chars/mo</strong> ($450/mo GPU vs. $700/mo Azure HD).</div>
+      </div>
+    </section>
+
+    <!-- CARD 7 -->
+    <section class="b-card c7">
+      <div>
+        <div class="c-hdr">
+          <span class="eyebrow">MY TAKE</span>
+          <span class="step-pill">7 / 7</span>
+        </div>
+        <h2 class="headline">
+          Deploy VoxCPM2 + Azure AI Speech as a complementary Hybrid Router rather than a wholesale commercial TTS replacement
+        </h2>
+        <p class="sub">
+          Architectural fit boundaries, licensing readiness, and anti-spoofing governance checklist for enterprise production.
+        </p>
+      </div>
+
+      <div class="fit-grid">
+        <div class="fit-card fit-good">
+          <div class="fit-hdr">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="9" fill="#059669" />
+              <path d="M6 10.3L8.6 12.9L14.2 7.3" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>Good fit (VoxCPM2 Primary)</span>
+          </div>
+          <ul class="fit-list">
+            <li><strong>High-Volume 48kHz Content (&gt;25M chars/mo):</strong> Audiobooks, podcast synthesis, and game NPC voice pipelines saving 60%–85% over cloud HD APIs.</li>
+            <li><strong>Air-Gapped Timbre Sovereignty:</strong> Zero-shot / Controllable voice cloning where VIP reference audio cannot leave customer VPCs.</li>
+            <li><strong>Prompt-Driven Voice Design:</strong> Brand-new persona synthesis without reference recordings (71.4% EN Role-Play accuracy).</li>
+            <li><strong>SEA Regional Localization:</strong> Native Burmese (1.42% WER), Lao (1.90%), Khmer (2.05%), Thai, and Indonesian pipelines.</li>
+          </ul>
+        </div>
+
+        <div class="fit-card fit-bad">
+          <div class="fit-hdr">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="9" fill="#DC2626" />
+              <path d="M6.8 6.8L13.2 13.2M13.2 6.8L6.8 13.2" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+            <span>Not for (Keep Azure / Specialized Cloud)</span>
+          </div>
+          <ul class="fit-list">
+            <li><strong>Regulated BFSI / Healthcare IVR:</strong> Requires deterministic W3C SSML <code>&lt;say-as&gt;</code>, <code>&lt;phoneme&gt;</code>, custom lexicons, and 99.9% SLA.</li>
+            <li><strong>3D Digital Humans &amp; Frame-Locked Dubbing:</strong> Lacks 0.1ms Viseme blendshape streams and quantizes output to <code>N &times; 160ms</code> patches.</li>
+            <li><strong>Sub-80ms Duplex Barge-In Telephony:</strong> Cartesia Sonic 3.6 (~55ms) or ElevenLabs Flash v2.5 (~75ms) beat ~135ms TTFA.</li>
+            <li><strong>Low/Spiky Traffic (&lt;15M chars/mo) or Mobile CPU Edge:</strong> Idle GPU cost exceeds Azure PayGo; GGUF Q8 runs slower than real time (RTF 1.76).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prov-footer">
+        <div>
+          <strong>Readiness &amp; Governance:</strong> Weights &amp; code under <strong>Apache-2.0</strong> (<code>OpenBMB/VoxCPM2</code>, <code>arXiv:2606.06928</code>). Zero built-in watermarking or consent gating — enforce cryptographic enrollment challenges + acoustic watermarks (AudioSeal/WavMark) + streaming duration watchdogs before exposing cloning APIs.
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

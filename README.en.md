@@ -15,7 +15,8 @@
 | :--- | :--- | :--- |
 | **🌐 Interactive Architecture & Presales Portal** | Stack matcher, TCO/ROI calculator, 8-scenario deterministic guardrail sandbox, and trilingual UI | [Live Portal ↗](https://turbo998.github.io/voice-agent-lab/) · [`site/index.html`](./site/index.html) |
 | **📽️ 16:9 Executive Presales Slide Deck** | Self-contained 12-slide HTML presentation for CXO briefings and architecture workshops | [`site/deck.html`](./site/deck.html) |
-| **📊 7-Card 4:5 Benchmark Decks (2 Reports)** | *Realtime Voice & Multi-Model Router 7-Card Deck* and *Azure Speech Diarization PoC 7-Card Deck* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
+| **📊 7-Card 4:5 Benchmark Decks (3 Reports)** | *Realtime Voice Router 7-Card*, *Azure Speech Diarization 7-Card*, and *VoxCPM2 vs. Azure Speech 48kHz Acoustic 7-Card* | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) · [`voxcpm2-cards.html`](./site/voxcpm2-benchmark-cards.html) · [`voxcpm2-cards.zh-CN.html`](./site/voxcpm2-benchmark-cards.zh-CN.html) |
+| **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
 | **🧭 122 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 122 Guides](#-2-122-enterprise-voice-ai-architecture-selection-guides-bilingual) |
@@ -57,6 +58,7 @@ flowchart LR
 | **Competitive Battlecards** | Head-to-head comparison of Azure Voice Live vs. Sierra, Retell/Vapi, ElevenLabs, and AWS Nova Sonic | [EN](./docs/competitive-analysis.en.md) | [中文](./docs/competitive-analysis.md) |
 | **Presales Playbook & 2-Week PoC Guide** | 5-dimension discovery questionnaire, 15-min live demo script, and 2-week PoC validation probes | [EN](./docs/presales-playbook.en.md) | [中文](./docs/presales-playbook.md) |
 | **Azure Speech Diarization & Stereo Split PoC** | Empirical multi-speaker diarization benchmarks plus runnable pipeline in [`experiments/azure-speech-diarization-poc/`](./experiments/azure-speech-diarization-poc/) | [EN](./docs/azure-speech-diarization-poc.en.md) | [中文](./docs/azure-speech-diarization-poc.md) |
+| **Tsinghua OpenBMB VoxCPM2 vs. Azure Speech Benchmark & Guide** | Empirical 11-WAV 48kHz `1024-pt` Welch PSD & quantization ablation ([`experiments/voxcpm2-acoustic-benchmark/`](./experiments/voxcpm2-acoustic-benchmark/)), source verification, and hybrid TCO | [EN](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) | [中文](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **GPT-Live Partner Demo Handbook** | Full-duplex Speech-to-Speech web prototype ([`experiments/gpt-live/`](./experiments/gpt-live/)) setup and demo walkthrough | [EN](./docs/gpt-live-partner-demo-handbook.en.md) | [中文](./docs/gpt-live-partner-demo-handbook.md) |
 | **Global Smart Hardware 6-Language Voice CS Case Study** | End-to-end production architecture & FinOps review scaling 250k → 750k smart rings | [EN](./docs/smart-hardware-global-voice-cs-case-study.md) | [中文](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **Evaluation Rubric & Edge Speech Containers** | 24-probe red-teaming rubric and disconnected Azure Speech Container deployment guide | [Rubric](./docs/voice-agent-evaluation-rubric.md) | [Containers](./docs/speech-container-guide.md) |
@@ -436,6 +438,7 @@ flowchart LR
 362. **Fitness, Gym & Wellness Chains (Mindbody / ClubReady / 24h Clubs) Class Booking, PAR-Q+ Screening, FTC Click-to-Cancel & AED Emergency Voice Architecture: ACSM PAR-Q+ & Digital Waiver Lock, FTC Click-to-Cancel Zero-Dark-Pattern Gate (34.2% Freeze Saves / $0 Fines) & 0ms Gym-Floor AED Unlock / Rhabdomyolysis 911 Bridge**: [EN](./docs/fitness-gym-wellness-mindbody-ftc-cancel-aed-emergency-voice-selection-faq.en.md) | [中文](./docs/fitness-gym-wellness-mindbody-ftc-cancel-aed-emergency-voice-selection-faq.md)
 363. **Commercial Packaging, Print & Label Supply Chain (Esko WebCenter / ePS Pace) Artwork Proof Lock, Pre-Press Preflight & 0ms Recall Halt Voice Architecture: Signed PDF/X-4 Proof SHA-256 Press Lock ($0 Unproofed Scrap), Bleed/Die-Line/GS1 Preflight Gate (-61% Proof Delay) & 0ms Allergen/Pharma Misprint JDF Press Halt**: [EN](./docs/packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.en.md) | [中文](./docs/packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.md)
 364. **Enterprise Voice + Live Screen-Sharing Co-Pilot (Client-Side DOM Redaction, Delta-Frame Throttling & Anti-Visual-Injection) Architecture: Pre-Upload Browser DOM Password/PAN Blur Lock (0% Secret Leaks), Event-Driven SoM Delta-Frame Gate (-88.5% Vision Tokens) & 0ms Visual Prompt-Injection / Destructive-Click Manual Firewall**: [EN](./docs/enterprise-voice-multimodal-screen-sharing-dom-redaction-copilot-selection-faq.en.md) | [中文](./docs/enterprise-voice-multimodal-screen-sharing-dom-redaction-copilot-selection-faq.md)
+365. **Tsinghua OpenBMB VoxCPM2 (2B Diffusion-Autoregressive Continuous TTS) vs. Microsoft Azure AI Speech & 2026 TTS Benchmark & Enterprise Selection Architecture: Asymmetric 16kHz-In/48kHz-Out AudioVAE v2 & Dual-CFG LocDiT Verification, 11-WAV 1024-pt Welch PSD Super-Wideband (90.9%) & Whisper Cloning Retention + Regulated/SLA 99.9% Azure AI Speech Lock & -81% Batch GPU Hybrid Routing**: [EN](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) | [中文](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md)
 
 ---
 
@@ -448,10 +451,12 @@ voice-agent-lab/
 │   ├── deck.html                         # 12-slide 16:9 executive presales presentation
 │   ├── benchmark-cards.html              # Realtime Voice & Router 7-Card 4:5 visual benchmark report
 │   ├── diarization-benchmark-cards.html  # Azure Speech Diarization 7-Card benchmark report
+│   ├── voxcpm2-benchmark-cards*.html     # VoxCPM2 vs. Azure Speech 48kHz Acoustic 7-Card Decks (EN & zh-CN)
+│   ├── voxcpm2-workbench.html            # VoxCPM2 vs. Azure Speech Hybrid Router, TCO & PSD Workbench
 │   └── case-study.html                   # Global 6-language smart-hardware voice CS case study
-├── docs/                                 # Bilingual architecture whitepapers, asset catalog & 100 SA selection guides
+├── docs/                                 # Bilingual architecture whitepapers, asset catalog & 365 SA selection guides
 ├── assets/svg/                           # Clean visual architecture summary infographics (SVG)
-├── experiments/                          # Reproducible PoCs (Azure Speech Diarization PoC & GPT-Live prototype)
+├── experiments/                          # Reproducible PoCs (Azure Speech Diarization, VoxCPM2 DSP & GPT-Live)
 ├── packages/                             # Zero-dependency TypeScript production guardrail modules
 │   ├── duplex-core/                      # Turn-Epoch write fence & slow-API zero-dead-air filler state machine
 │   └── business-core/                    # High-risk slot readback, warm-handoff packet builder & wealth dual-recording gate

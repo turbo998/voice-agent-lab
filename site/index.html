@@ -97,9 +97,28 @@
           <div class="btn-row" style="margin-top:0;padding-top:0;">
             <a class="btn" href="./benchmark-cards.html" target="_blank" rel="noopener" data-i18n="btnVoiceCards">查看实时语音 7-Card 评测报告 ↗</a>
             <a class="btn" href="./diarization-benchmark-cards.html" target="_blank" rel="noopener" data-i18n="btnDiarCards">查看说话人分离 7-Card 评测报告 ↗</a>
+            <a class="btn" href="./voxcpm2-benchmark-cards.zh-CN.html" id="voxCardsTopLink" target="_blank" rel="noopener" data-i18n="btnVoxCards">查看 VoxCPM2 vs. Azure Speech 7-Card 报告 ↗</a>
           </div>
         </div>
         <div class="table-wrap" id="stackMatrixTableWrap"></div>
+      </div>
+
+      <!-- Featured Benchmark & Hybrid TCO Workbench Card: VoxCPM2 vs. Azure AI Speech -->
+      <div class="card" id="voxcpm2BenchmarkSpotlight" style="margin-top:1.15rem;border-color:rgba(56,189,248,0.4);">
+        <div class="card-title-row">
+          <div>
+            <div class="card-title" data-i18n="voxSpotTitle">清华 OpenBMB VoxCPM2 (2B) vs. Microsoft Azure AI Speech 声学基准与混合路由工作台</div>
+            <p style="font-size:0.86rem;color:var(--text-muted);margin-top:0.2rem;" data-i18n="voxSpotDesc">
+              基于 11 组官方 48 kHz 样音的零依赖 1024-pt Hann Welch 频谱实测（90.9% 超宽带高频激活、耳语零样本克隆保持、FP16/INT12/INT8 量化消融），结合 arXiv:2606.06928 与 Azure AI Speech 99.9% SLA 合规边界，提供交互式混合路由模拟器与月度 TCO / GPU 容量精算。
+            </p>
+          </div>
+          <span class="badge emerald">NEW · 48 kHz DSP + 7-Card + TCO Sizer</span>
+        </div>
+        <div class="btn-row" style="margin-top:0.5rem;padding-top:0;">
+          <a class="btn btn-primary" href="./voxcpm2-workbench.html" target="_blank" rel="noopener" data-i18n="btnVoxWorkbench">打开混合路由与 TCO 精算工作台 ↗</a>
+          <a class="btn" href="./voxcpm2-benchmark-cards.zh-CN.html" id="voxCardsSpotLink" target="_blank" rel="noopener" data-i18n="btnVoxCards">查看 VoxCPM2 vs. Azure Speech 7-Card 报告 ↗</a>
+          <a class="btn" href="https://github.com/turbo998/voice-agent-lab/blob/main/docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md" id="voxGuideSpotLink" target="_blank" rel="noopener" data-i18n="btnVoxGuide">阅读中英双语架构选型指南 ↗</a>
+        </div>
       </div>
     </section>
 
@@ -270,6 +289,10 @@ cd azure-speech-diarization-poc &amp;&amp; pytest -q  # 16 passed</pre>
         <a href="./benchmark-cards.html" target="_blank" rel="noopener">Voice 7-Card Report ↗</a>
         &nbsp;·&nbsp;
         <a href="./diarization-benchmark-cards.html" target="_blank" rel="noopener">Diarization 7-Card Report ↗</a>
+        &nbsp;·&nbsp;
+        <a href="./voxcpm2-benchmark-cards.html" target="_blank" rel="noopener">VoxCPM2 7-Card Report ↗</a>
+        &nbsp;·&nbsp;
+        <a href="./voxcpm2-workbench.html" target="_blank" rel="noopener">VoxCPM2 TCO Workbench ↗</a>
       </div>
     </footer>
   </main>

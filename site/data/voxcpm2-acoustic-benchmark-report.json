@@ -1,0 +1,314 @@
+{
+  "schema_version": "2026-11-voxcpm2-tts-benchmark-v1",
+  "report_id": "openbmb-voxcpm2-vs-azure-speech-2026",
+  "title": "OpenBMB VoxCPM2 (2B) vs. Microsoft Azure AI Speech & 2026 Mainstream TTS Benchmark",
+  "provenance": {
+    "status": "measured",
+    "independently_reproduced": true,
+    "measured_scope": "1024-pt Hann-windowed Welch PSD spectral forensics across all 11 official uncompressed WAVs (OpenBMB/voxcpm2-demopage) + frame-level quantization SDR ablation across 3 WAVs via experiments/voxcpm2-acoustic-benchmark/run_benchmark.py, plus line-by-line source audit of OpenBMB/VoxCPM (src/voxcpm/model/voxcpm2.py, audio_vae_v2.py).",
+    "reported_scope": {
+      "status": "reported",
+      "independently_reproduced": false,
+      "sources": [
+        "OpenBMB VoxCPM2 Technical Report (arXiv:2606.06928, Tables 3-14)",
+        "Microsoft Azure AI Speech Official Pricing & DragonHDOmni / Neural Documentation",
+        "TTS Arena Elo Leaderboard & Vendor Published Benchmarks (ElevenLabs, Cartesia, MiniMax, Qwen3-TTS, CosyVoice 3, Fish Audio S2, IndexTTS-2)"
+      ]
+    },
+    "note": "All personal file paths, credentials, and private identifiers excluded per public repository hygiene rules."
+  },
+  "models_evaluated": [
+    {
+      "id": "openbmb-voxcpm2-2b",
+      "params": "2B",
+      "license": "Apache-2.0",
+      "max_sample_rate_hz": 48000,
+      "architecture": "Hierarchical Continuous-Latent Diffusion-AR (6.25Hz Patch + FSQ scale=9 + 10-step LocDiT CFM + 3x AudioVAE V2)"
+    },
+    {
+      "id": "azure-ai-speech-dragonhd-omni",
+      "params": "Managed Cloud / Disconnected Edge Container",
+      "license": "Commercial SLA (99.9%) + Native Provenance Watermark",
+      "max_sample_rate_hz": 48000,
+      "architecture": "Context-Aware HD Neural TTS with W3C SSML, Custom Lexicon, and 0.1ms Viseme Blendshape Stream"
+    },
+    {
+      "id": "elevenlabs-v4-flash-v2.5",
+      "params": "Managed Cloud API",
+      "license": "Commercial API",
+      "max_sample_rate_hz": 48000,
+      "architecture": "Expressive Generative Audio Foundation Model"
+    },
+    {
+      "id": "cartesia-sonic-3.6",
+      "params": "Managed Cloud API",
+      "license": "Commercial API",
+      "max_sample_rate_hz": 44100,
+      "architecture": "State-Space Model (SSM) Low-Latency Streaming TTS"
+    },
+    {
+      "id": "cosyvoice3-qwen3-tts",
+      "params": "1.5B / 1.7B",
+      "license": "Apache-2.0",
+      "max_sample_rate_hz": 24000,
+      "architecture": "12Hz Discrete Multi-Codebook LM + Flow Matching"
+    }
+  ],
+  "headline_metrics": {
+    "github_stars_snapshot": 42802,
+    "official_wavs_audited": 11,
+    "voxcpm2_48khz_wavs_exact_160ms_multiple": "9/9",
+    "superwide_16_24khz_psd_gain_vs_v15_db": 44.44,
+    "max_measured_effective_bw_52db_hz": 17672,
+    "whisper_sdr_gain_fsq_continuous_vs_discrete_db": 34.76,
+    "minimax_mls_zero_shot_sim_rank1_languages": "22/24",
+    "minimax_mls_en_sim_pct": 85.4,
+    "elevenlabs_mls_en_sim_pct": 61.3,
+    "seed_tts_en_wer_pct": 1.84,
+    "seed_tts_zh_cer_pct": 0.97,
+    "seed_tts_zh_hard_cer_pct": 8.13,
+    "instruct_tts_en_rp_pct": 71.4,
+    "audiovae_v2_pesq_16k": 3.906,
+    "audiovae_v2_stoi_16k": 0.907,
+    "rtx4090_vllm_omni_rtf": 0.13,
+    "rtx4090_eager_pytorch_rtf": 0.30,
+    "apple_m4_pro_gguf_q8_rtf": 1.76,
+    "voxcpm2_vllm_streaming_ttfa_ms": 135,
+    "azure_standard_neural_ttfa_ms": 180,
+    "azure_dragonhd_omni_ttfa_ms": 260,
+    "cartesia_sonic_ttfa_ms": 55,
+    "elevenlabs_flash_ttfa_ms": 75,
+    "tco_breakeven_chars_per_month": 25000000
+  },
+  "card2_deep_dive": {
+    "case_id": "style_result1_1_whisper_superres",
+    "provenance": "measured",
+    "input_reference_wav": "style_prompt1.wav (24,000 Hz, 6.538s -> resampled to 16,000 Hz / 8 kHz Nyquist inside voxcpm2.py)",
+    "target_prompt": "[Soft urgent whisper, decoupled speaker slot 103..104] Synthesize 48 kHz studio output without reference speaking-rate leakage",
+    "output_wav": "style_result1_1.wav (48,000 Hz PCM, 2.880s = exact 18 x 160ms patches, TTFA ~135ms on vLLM-Omni)",
+    "decisions": [
+      {
+        "metric_name": "Super-Wideband 16-24 kHz Generative Air Reconstruction",
+        "task_type": "score",
+        "value_label": "-47.64 dB PSD (f_eff 17,672 Hz vs. -92.08 dB on v1.5)",
+        "bar_pct": 89.2,
+        "action": "Act automatically",
+        "provenance": "measured"
+      },
+      {
+        "metric_name": "Whisper Frame Signal-to-Distortion Ratio (FSQ + Continuous Residual)",
+        "task_type": "score",
+        "value_label": "50.88 dB SDR (+34.76 dB vs. 16.12 dB discrete-only)",
+        "bar_pct": 87.8,
+        "action": "Act automatically",
+        "provenance": "measured"
+      },
+      {
+        "metric_name": "Production Streaming Guardrail & Provenance Readiness",
+        "task_type": "choice",
+        "value_label": "retry_badcase=False on streaming (voxcpm2.py:667) · No native watermark",
+        "bar_pct": 58.0,
+        "action": "Confirm",
+        "provenance": "measured"
+      }
+    ]
+  },
+  "scenario_matrix": [
+    {
+      "id": "S1",
+      "scenario": "48kHz Studio Bandwidth Extension",
+      "question_task": "16kHz encoder input -> 48kHz generative output (16-24kHz PSD & f_eff)",
+      "model_answer": "-47.64 dB (+44.44 dB vs v1.5) · f_eff 17,672 Hz",
+      "action": "Act automatically",
+      "passed": true,
+      "provenance": "measured"
+    },
+    {
+      "id": "S2",
+      "scenario": "Multilingual Zero-Shot Timbre SIM",
+      "question_task": "MiniMax-MLS-Test 24-language speaker similarity vs. ElevenLabs",
+      "model_answer": "#1 in 22/24 langs · EN 85.4% vs. 61.3% · ZH 82.5%",
+      "action": "Act automatically",
+      "passed": true,
+      "provenance": "reported"
+    },
+    {
+      "id": "S3",
+      "scenario": "Controllable Style & Singing Synthesis",
+      "question_task": "Isolated [103, ref_feats, 104] timbre slot + InstructTTSEval EN Role-Play",
+      "model_answer": "71.4% RP (#1 overall) · Whisper/Dialect/Vocal verified",
+      "action": "Act automatically",
+      "passed": true,
+      "provenance": "reported"
+    },
+    {
+      "id": "S4",
+      "scenario": "SEA Low-Resource Script Accuracy",
+      "question_task": "Burmese / Lao / Khmer WER vs. Fish Audio S2 (4B)",
+      "model_answer": "1.42% / 1.90% / 2.05% WER (vs. 75.1%-87.4% on Fish S2)",
+      "action": "Act automatically",
+      "passed": true,
+      "provenance": "reported"
+    },
+    {
+      "id": "S5",
+      "scenario": "Dense Tongue-Twisters & Streaming Retry",
+      "question_task": "Seed-TTS test-ZH-Hard CER & streaming=True anti-babble retry",
+      "model_answer": "✕ 8.13% CER (trails Cosy3 5.83%) · retry_badcase disabled",
+      "action": "Confirm",
+      "passed": false,
+      "provenance": "measured+reported"
+    },
+    {
+      "id": "S6",
+      "scenario": "Zero-Shot Arabic, Hindi & MLS Cantonese",
+      "question_task": "Cross-lingual zero-shot intelligibility on under-covered scripts",
+      "model_answer": "✕ AR 13.05% · HI 19.70% WER · MLS Yue 38.58% CER",
+      "action": "Send to a human",
+      "passed": false,
+      "provenance": "reported"
+    },
+    {
+      "id": "S7",
+      "scenario": "Regulated BFSI SSML, 0.1ms Visemes & Frame Lock",
+      "question_task": "Verbatim <say-as>, 3D Avatar blendshapes, and sub-160ms dubbing lock",
+      "model_answer": "✕ Quantized to N x 160ms patches · No SSML/Viseme -> Route Azure",
+      "action": "Send to a human",
+      "passed": false,
+      "provenance": "measured"
+    }
+  ],
+  "robustness_perturbations": [
+    {
+      "dimension": "style_result1_1.wav Discrete Grid (Voiced -> Whisper Frames)",
+      "original": "23.25 dB SDR (Voiced)",
+      "perturbed": "16.12 dB SDR (Whisper)",
+      "delta_label": "-7.13 dB",
+      "provenance": "measured"
+    },
+    {
+      "dimension": "style_result1_1.wav Whisper Reconstruction (Discrete -> FSQ + CFM)",
+      "original": "16.12 dB SDR (Discrete)",
+      "perturbed": "50.88 dB SDR (FSQ+CFM)",
+      "delta_label": "+34.76 dB",
+      "provenance": "measured"
+    },
+    {
+      "dimension": "dongbei.wav Breath Frames (Discrete -> FSQ + CFM Residual)",
+      "original": "5.20 dB SDR (Discrete)",
+      "perturbed": "39.95 dB SDR (FSQ+CFM)",
+      "delta_label": "+34.75 dB",
+      "provenance": "measured"
+    },
+    {
+      "dimension": "Seed-TTS test-ZH-Hard Recipe (Continuation -> Isolated [103..104] Ref)",
+      "original": "8.16% CER (Cont-Only)",
+      "perturbed": "6.85% CER (Ref-Only)",
+      "delta_label": "-1.31 pts (Better)",
+      "provenance": "reported"
+    },
+    {
+      "dimension": "Mandarin Standard -> Zero-Shot MLS Cantonese Script Shift",
+      "original": "0.97% CER (Seed-ZH)",
+      "perturbed": "38.58% CER (MLS-Yue)",
+      "delta_label": "+37.61 pts (Degraded)",
+      "provenance": "reported"
+    },
+    {
+      "dimension": "Execution Mode (Offline Batch -> Live Streaming=True)",
+      "original": "retry_badcase = Enabled",
+      "perturbed": "retry_badcase = Forced Off",
+      "delta_label": "Circuit Breaker Req.",
+      "provenance": "measured"
+    }
+  ],
+  "latency_scaling_bars": [
+    {
+      "tier": "Streaming First-Audio TTFA (RTX 4090)",
+      "optimized_label": "VoxCPM2 + vLLM-Omni",
+      "optimized_ms": 135,
+      "baseline_label": "VoxCPM2 Eager PyTorch",
+      "baseline_ms": 225,
+      "provenance": "reported"
+    },
+    {
+      "tier": "1-Second Audio Synthesis Compute (RTX 4090)",
+      "optimized_label": "Nano-vLLM / vLLM-Omni (RTF 0.13)",
+      "optimized_ms": 130,
+      "baseline_label": "Standard PyTorch (RTF 0.30)",
+      "baseline_ms": 300,
+      "provenance": "reported"
+    },
+    {
+      "tier": "Enterprise 48kHz Streaming TTFA",
+      "optimized_label": "VoxCPM2 vLLM-Omni (48kHz)",
+      "optimized_ms": 135,
+      "baseline_label": "Azure DragonHDOmni (48kHz)",
+      "baseline_ms": 260,
+      "provenance": "reported"
+    },
+    {
+      "tier": "Sub-100ms Duplex Telephony Baseline",
+      "optimized_label": "Cartesia Sonic 3.6 SSM",
+      "optimized_ms": 55,
+      "baseline_label": "Azure Speech Standard Neural",
+      "baseline_ms": 180,
+      "provenance": "reported"
+    },
+    {
+      "tier": "Local Edge Laptop 1s Synthesis (GGUF Q8)",
+      "optimized_label": "RTX 4090 vLLM-Omni (RTF 0.13)",
+      "optimized_ms": 130,
+      "baseline_label": "Apple M4 Pro GGUF (RTF 1.76)",
+      "baseline_ms": 1760,
+      "provenance": "reported"
+    }
+  ],
+  "tco_crossover_tiers": [
+    {
+      "monthly_chars_m": 1,
+      "audio_hours": 55,
+      "azure_standard_usd": 7.5,
+      "azure_dragonhd_usd": 28,
+      "elevenlabs_usd": 65,
+      "voxcpm2_self_hosted_usd": 450,
+      "winner": "Azure AI Speech PayGo"
+    },
+    {
+      "monthly_chars_m": 10,
+      "audio_hours": 550,
+      "azure_standard_usd": 142.5,
+      "azure_dragonhd_usd": 280,
+      "elevenlabs_usd": 650,
+      "voxcpm2_self_hosted_usd": 450,
+      "winner": "Azure Standard / DragonHDOmni"
+    },
+    {
+      "monthly_chars_m": 25,
+      "audio_hours": 1375,
+      "azure_standard_usd": 367.5,
+      "azure_dragonhd_usd": 700,
+      "elevenlabs_usd": 1625,
+      "voxcpm2_self_hosted_usd": 450,
+      "winner": "Hybrid Break-Even Crossover"
+    },
+    {
+      "monthly_chars_m": 50,
+      "audio_hours": 2750,
+      "azure_standard_usd": 742.5,
+      "azure_dragonhd_usd": 1400,
+      "elevenlabs_usd": 3250,
+      "voxcpm2_self_hosted_usd": 450,
+      "winner": "VoxCPM2 Pool (-68% vs Azure HD)"
+    },
+    {
+      "monthly_chars_m": 200,
+      "audio_hours": 11000,
+      "azure_standard_usd": 2400,
+      "azure_dragonhd_usd": 4800,
+      "elevenlabs_usd": 10000,
+      "voxcpm2_self_hosted_usd": 900,
+      "winner": "2x GPU VoxCPM2 HA + Azure Failover"
+    }
+  ]
+}

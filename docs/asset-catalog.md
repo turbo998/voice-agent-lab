@@ -16,6 +16,8 @@
 | **16:9 架构师高管汇报胶片** | [`site/deck.html`](../site/deck.html) | 12 页客户 CXO / 架构评审标准演示幻灯片 |
 | **实时语音智能体 7-Card 评测报告** | [`site/benchmark-cards.html`](../site/benchmark-cards.html) | 4:5 视觉卡片：端到端延迟、打断控制、鲁棒性与适用边界 |
 | **说话人分离（Diarization）7-Card 评测报告** | [`site/diarization-benchmark-cards.html`](../site/diarization-benchmark-cards.html) | Azure AI Speech 多说话人角色分离实测对比（修复前后指标闭环） |
+| **VoxCPM2 vs. Azure Speech 7-Card 评测报告** | [`site/voxcpm2-benchmark-cards.zh-CN.html`](../site/voxcpm2-benchmark-cards.zh-CN.html) · [EN](../site/voxcpm2-benchmark-cards.html) | 4:5 视觉卡片：48kHz Welch 频谱实测、耳语零样本克隆、量化鲁棒性与企业选型边界 |
+| **VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | [`site/voxcpm2-workbench.html`](../site/voxcpm2-workbench.html) | 交互式企业语音合规路由模拟器、月度 TCO / GPU 容量精算与 11 组样音频谱查看器 |
 | **出海智能硬件 6 语种语音客服案例研究** | [`site/case-study.html`](../site/case-study.html) · [中文版](./smart-hardware-global-voice-cs-case-study.zh-CN.md) · [EN](./smart-hardware-global-voice-cs-case-study.md) | 25 万 → 75 万台智能戒指全球多语种 AI 语音客服架构与 ROI 复盘 |
 
 ---
@@ -29,12 +31,13 @@
 | **竞品对比 Battlecards** | [`competitive-analysis.md`](./competitive-analysis.md) | [`competitive-analysis.en.md`](./competitive-analysis.en.md) | Azure Voice Live 对标 Sierra、Retell/Vapi、ElevenLabs、Nova Sonic 攻防策略 |
 | **售前打单与两周 POC 手册** | [`presales-playbook.md`](./presales-playbook.md) | [`presales-playbook.en.md`](./presales-playbook.en.md) | 五维需求问卷、15 分钟现场演示剧本、两周 POC 里程碑与验收探针 |
 | **Azure Speech 说话人分离 PoC** | [`azure-speech-diarization-poc.md`](./azure-speech-diarization-poc.md) | [`azure-speech-diarization-poc.en.md`](./azure-speech-diarization-poc.en.md) | 配套 [`experiments/azure-speech-diarization-poc/`](../experiments/azure-speech-diarization-poc/) 可复现评测代码与 Bicep |
+| **VoxCPM2 vs. Azure Speech 声学基准 PoC** | [`voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md`](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) | [`voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md`](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) | 配套 [`experiments/voxcpm2-acoustic-benchmark/`](../experiments/voxcpm2-acoustic-benchmark/) 零依赖 1024-pt FFT 复现套件与[架构图](./assets/voxcpm2-vs-azure-speech-architecture.svg) |
 | **GPT-Live 全双工语音演示手册** | [`gpt-live-partner-demo-handbook.md`](./gpt-live-partner-demo-handbook.md) | [`gpt-live-partner-demo-handbook.en.md`](./gpt-live-partner-demo-handbook.en.md) | 配套 [`experiments/gpt-live/`](../experiments/gpt-live/) 实时语音对话 Web 应用原型 |
 | **24 项基准评测与本地容器指南** | [`voice-agent-evaluation-rubric.md`](./voice-agent-evaluation-rubric.md) | [`speech-container-guide.md`](./speech-container-guide.md) | 语音智能体红队评测规范与 Azure Speech 本地边缘容器部署指南 |
 
 ---
 
-## 三、架构师核心选型指南（364 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（365 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -405,3 +408,4 @@
 362. **连锁健身房、运动场馆与大健康会员中心（Mindbody / ClubReady / 24h 自助健身与普拉提馆模式）24/7 团课私教预约、`PAR-Q+` 运动健康筛查、`FTC Click-to-Cancel` 零阻碍退会与场馆 `AED` 急救抢占架构（`ACSM PAR-Q+` 禁忌筛查与 `Mindbody` 电子免责签署硬锁、严守 `FTC Click-to-Cancel` 法规 30 秒语音干脆退卡或单次免费停卡挽回 `34.2%` 流失会员门禁、凌晨自助馆晕厥 `0ms` 广播弹开 `AED` 除颤仪并解锁大门迎救护车与横纹肌溶解抢占）方案**：[中文](./fitness-gym-wellness-mindbody-ftc-cancel-aed-emergency-voice-selection-faq.md) | [EN](./fitness-gym-wellness-mindbody-ftc-cancel-aed-emergency-voice-selection-faq.en.md)
 363. **商业印刷、包装供应链与标签快印（Esko WebCenter / ePS Pace / 医药与食品包装印刷模式）24/7 印前校稿、签样哈希硬锁（Proof `SHA-256`）与错印 `0ms` 停机拦截语音架构（未匹配客户电签 `PDF Proof SHA-256` 哈希与最新版本号严禁口头改字开机硬锁杜绝 `$80k+` 印废、印前 `3mm` 出血/刀模/`GS1` 条码自动预检催办提速 `61%` 门禁、食品过敏原漏印与医药标签 `21 CFR 211.122` 混版 `0ms` `JDF` 急停机台并锁死 WMS 发货托盘）方案**：[中文](./packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.md) | [EN](./packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.en.md)
 364. **企业实时语音 AI 多模态屏幕共享与协同操作（Voice + Live Screen-Sharing Co-Pilot：客户端 DOM 密码打码、事件驱动关键帧抽帧与防视觉提示词注入）架构（浏览器本地 Canvas 上传前 100% 涂黑密码/卡号/密钥 DOM 区域硬锁、仅在 DOM 变动或指代词触发时按需上传 `<75KB Set-of-Mark` 帧削减 `88.5%` 视觉 Token 门禁、画面内间接视觉提示词注入 `OWASP ASI01` 熔断与高危按钮严禁代点强制真人点击）方案**：[中文](./enterprise-voice-multimodal-screen-sharing-dom-redaction-copilot-selection-faq.md) | [EN](./enterprise-voice-multimodal-screen-sharing-dom-redaction-copilot-selection-faq.en.md)
+365. **清华 OpenBMB VoxCPM2（2B 扩散自回归连续语音模型）vs. Microsoft Azure AI Speech 与 2026 主流 TTS 横向基准评测与企业选型架构（`16kHz→48kHz` 非对称 `AudioVAE v2` 与 `LocDiT` 双重 `CFG` 源码核查、11 段官方样音 `1024-pt` Welch 频谱 `90.9%` 超宽带激活与耳语零样本克隆保持、合规披露/PCI/SLA `99.9%` 锁定 Azure AI Speech + 离线高表现力批量合成降本 `81%` 混合路由）方案**：[中文](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) | [EN](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md)

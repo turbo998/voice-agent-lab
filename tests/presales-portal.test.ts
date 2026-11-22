@@ -353,11 +353,19 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
     },
     {
       relPath: "docs/asset-catalog.md",
-      mustContain: ["364 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html"],
+      mustContain: ["365 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.zh-CN.html", "voxcpm2-workbench.html"],
     },
     {
       relPath: "docs/asset-catalog.en.md",
-      mustContain: ["364 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html"],
+      mustContain: ["365 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.html", "voxcpm2-workbench.html"],
+    },
+    {
+      relPath: "docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md",
+      mustContain: ["arXiv:2606.06928", "AudioVAE V2", "Azure AI Speech", "1024 点", "voxcpm2-workbench.html"],
+    },
+    {
+      relPath: "docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md",
+      mustContain: ["arXiv:2606.06928", "AudioVAE V2", "Azure AI Speech", "1024-point", "voxcpm2-workbench.html"],
     },
     {
       relPath: "docs/solution-architecture.md",
@@ -409,13 +417,13 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
   }
 });
 
-test("364 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
+test("365 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
   const docEntries = await readdir(resolve(repoRoot, "docs"));
   const zhFaqFiles = docEntries.filter((f) => f.endsWith("-faq.md")).sort();
   const enFaqFiles = docEntries.filter((f) => f.endsWith("-faq.en.md")).sort();
 
-  assert.equal(zhFaqFiles.length, 364, `Expected 364 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
-  assert.equal(enFaqFiles.length, 364, `Expected 364 curated English selection guides, found ${enFaqFiles.length}`);
+  assert.equal(zhFaqFiles.length, 365, `Expected 365 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
+  assert.equal(enFaqFiles.length, 365, `Expected 365 curated English selection guides, found ${enFaqFiles.length}`);
 
   for (const zhFile of zhFaqFiles) {
     const expectedEn = zhFile.replace(/-faq\.md$/, "-faq.en.md");
@@ -471,9 +479,17 @@ test("interactive portal, 16:9 deck, and 7-card benchmark reports are self-conta
   const deckHtml = await readFile(resolve(repoRoot, "site/deck.html"), "utf8");
   const cardsHtml = await readFile(resolve(repoRoot, "site/benchmark-cards.html"), "utf8");
   const diarizationCardsHtml = await readFile(resolve(repoRoot, "site/diarization-benchmark-cards.html"), "utf8");
+  const voxCardsEnHtml = await readFile(resolve(repoRoot, "site/voxcpm2-benchmark-cards.html"), "utf8");
+  const voxCardsZhHtml = await readFile(resolve(repoRoot, "site/voxcpm2-benchmark-cards.zh-CN.html"), "utf8");
+  const voxWorkbenchHtml = await readFile(resolve(repoRoot, "site/voxcpm2-workbench.html"), "utf8");
   const reportJson = JSON.parse(await readFile(resolve(repoRoot, "site/data/voice-agent-benchmark-report.json"), "utf8"));
+  const voxReportJson = JSON.parse(await readFile(resolve(repoRoot, "site/data/voxcpm2-acoustic-benchmark-report.json"), "utf8"));
+  const voxRawMeasuredJson = JSON.parse(
+    await readFile(resolve(repoRoot, "experiments/voxcpm2-acoustic-benchmark/voxcpm2_acoustic_benchmark_results.json"), "utf8")
+  );
 
   assert.ok(indexHtml.includes('id="duplexGuardSimulatorCard"'));
+  assert.ok(indexHtml.includes('id="voxcpm2BenchmarkSpotlight"'));
   assert.ok(appJs.includes("const DUPLEX_SIM_PROBES = ["));
   assert.ok(appJs.includes("guard_barge_in_epoch_fence"));
   assert.ok(appJs.includes("inputJson:"));
@@ -481,7 +497,21 @@ test("interactive portal, 16:9 deck, and 7-card benchmark reports are self-conta
   assert.ok(deckHtml.includes("<html"));
   assert.ok(cardsHtml.includes("Content-Security-Policy"));
   assert.ok(diarizationCardsHtml.includes("Content-Security-Policy"));
+  assert.ok(voxCardsEnHtml.includes("default-src 'none'; style-src 'unsafe-inline'"));
+  assert.ok(voxCardsZhHtml.includes("default-src 'none'; style-src 'unsafe-inline'"));
+  for (let i = 1; i <= 7; i++) {
+    assert.ok(voxCardsEnHtml.includes(`${i} / 7`), `Expected voxcpm2-benchmark-cards.html to include "${i} / 7"`);
+    assert.ok(voxCardsZhHtml.includes(`${i} / 7`), `Expected voxcpm2-benchmark-cards.zh-CN.html to include "${i} / 7"`);
+  }
+  const bannedEmojiRegex = /[🔥💎🚀💰📊💡🔐🔓]/u;
+  assert.equal(bannedEmojiRegex.exec(voxCardsEnHtml), null, "voxcpm2-benchmark-cards.html must contain zero decorative emojis");
+  assert.equal(bannedEmojiRegex.exec(voxCardsZhHtml), null, "voxcpm2-benchmark-cards.zh-CN.html must contain zero decorative emojis");
+  assert.equal(bannedEmojiRegex.exec(voxWorkbenchHtml), null, "voxcpm2-workbench.html must contain zero decorative emojis");
   assert.ok(typeof reportJson === "object" && reportJson !== null);
+  assert.equal(Object.keys(voxRawMeasuredJson.audio_samples).length, 11);
+  assert.equal(Object.keys(voxRawMeasuredJson.ablation).length, 3);
+  assert.equal(voxReportJson.provenance.status, "measured");
+  assert.equal(voxReportJson.provenance.reported_scope.status, "reported");
 });
 
 test("deterministic enterprise guardrails enforce barge-in epoch fencing, wealth suitability, and hospitality PMS privacy", () => {
