@@ -11125,6 +11125,37 @@ export function evaluateAutomotiveSmartCockpitFourZoneVoiceGuard(input: {
   };
 }
 
+export interface RetailBankingCardDisputeFdcpaVoiceEvaluation {
+  policyCode: "RETAIL-BANKING-REG-E-FDCPA-01";
+  disputeWalletTokenAndInstallmentAuthorized: boolean;
+  hiddenAprOrRegFOvercallViolationBlocked: boolean;
+  bankruptcyStayHaltAndFraudLegalBridged: boolean;
+}
+
+/**
+ * Deterministic Retail Banking Card Dispute (Reg E), Installment APR (TILA Reg Z) & FDCPA Collections (FIS / Temenos / Visa Verifi) Verbatim APR & 7-in-7 Lock, Instant Wallet Token Gate & 0ms Bankruptcy Stay Guard (`RETAIL-BANKING-REG-E-FDCPA-01`).
+ */
+export function evaluateRetailBankingCardDisputeFdcpaVoiceGuard(input: {
+  tilaVerbatimAprAndFdcpaSevenInSevenVerified: boolean;
+  regEDisputeProvisionalCreditAndWalletTokenSynced: boolean;
+  bankruptcyStayOrElderScamAlertPreemption: boolean;
+}): RetailBankingCardDisputeFdcpaVoiceEvaluation {
+  return {
+    policyCode: "RETAIL-BANKING-REG-E-FDCPA-01",
+    disputeWalletTokenAndInstallmentAuthorized:
+      input.tilaVerbatimAprAndFdcpaSevenInSevenVerified &&
+      input.regEDisputeProvisionalCreditAndWalletTokenSynced &&
+      !input.bankruptcyStayOrElderScamAlertPreemption,
+    hiddenAprOrRegFOvercallViolationBlocked:
+      !input.tilaVerbatimAprAndFdcpaSevenInSevenVerified ||
+      !input.regEDisputeProvisionalCreditAndWalletTokenSynced ||
+      input.bankruptcyStayOrElderScamAlertPreemption,
+    bankruptcyStayHaltAndFraudLegalBridged:
+      input.bankruptcyStayOrElderScamAlertPreemption,
+  };
+}
+
+
 
 
 
