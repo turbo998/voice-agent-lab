@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad385" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad385" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #38BDF8; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad385)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad385)"/>
+  <text x="52" y="52" class="title">Hyperscale AIDC Data Center NOC, CDU Liquid-Cooling &amp; HV LOTO Switching Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">OSHA 1910.147 / NFPA 70E Dual-Voiceprint LOTO Lock (0% Single-Op Arc Flash) · CDU Leak 12s Valve Isolation · 0ms VESDA / FM-200 Egress Bridge</text>
+  <rect x="1010" y="38" width="222" height="32" rx="16" fill="#06B6D4"/>
+  <text x="1032" y="59" class="badge">AIDC-DATACENTER-NOC-LOTO-01</text>
+
+  <!-- Left Column: White-Space Bone-Conduction & DCIM / BMS Bus -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. 85dB White-Space &amp; DCIM / EPMS Telemetry</text>
+  <text x="48" y="164" class="card-sub">Bone-Conduction Headset · Schneider EcoStruxure · Vertiv</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">85dB White-Noise Acoustic Frontend</text>
+  <text x="64" y="224" class="body">• Dual-mic bone-conduction + ANC helmet in GPU halls</text>
+  <text x="64" y="242" class="body">• Custom Speech boosted for rack/breaker IDs (PDU-A2-CB04)</text>
+  <text x="64" y="260" class="mono">Breaker_ID_WER = 0.7% @ 85dBA Fan/Chiller Noise</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">CDU Liquid-Cooling &amp; Manifold Bus</text>
+  <text x="64" y="340" class="body">• Real-time BACnet/IP &amp; Modbus TCP from 120kW GB200 racks</text>
+  <text x="64" y="358" class="body">• Secondary loop dP drop, flow rate, dew-point &amp; leak rope</text>
+  <text x="64" y="376" class="mono">CDU_Loop_Status = Secondary_dP | Leak_Rope_Zone</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">EPMS Medium-Voltage &amp; UPS Switchgear</text>
+  <text x="64" y="462" class="body">• 35kV/10kV GIS breaker state, Kirk-Key &amp; LOTO e-Tag status</text>
+  <text x="64" y="480" class="body">• Method of Procedure (MOP) / Switching Order state machine</text>
+  <text x="64" y="498" class="mono">MOP_Step_Lock = Sequential_Interlock_Verified</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">NOC &amp; Incident Management Sync</text>
+  <text x="64" y="584" class="body">• ServiceNow Change Request (CHG) &amp; PagerDuty bridge</text>
+  <text x="64" y="602" class="body">• Uptime Institute Tier IV concurrent maintainability audit</text>
+  <text x="64" y="620" class="mono">Audit_Trail = WORM_Audio_And_SCADA_Event_Hash</text>
+
+  <!-- Center Column: 3-Layer Deterministic Safety Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#06B6D4" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic AIDC NOC &amp; LOTO Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Single-Person HV Switching · 12s CDU Leak Isolation</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: OSHA 1910.147 LOTO &amp; Dual-Voiceprint Lock</text>
+  <text x="472" y="224" class="body">• Enforces 3-way readback (Breaker ID + Present/Target State)</text>
+  <text x="472" y="242" class="body">• Requires dual live voiceprint: Field Operator + NOC Shift Lead</text>
+  <text x="472" y="260" class="body">• Verifies physical e-LOTO padlock &amp; zero-energy voltage test</text>
+  <text x="472" y="280" class="mono">Single_Person_HV_Switch = 0.0% (Hard Blocked)</text>
+  <text x="472" y="298" class="mono">MOP_Step_Skip_Rate = 0.0% (NFPA 70E Compliant)</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: CDU Liquid-Cooling Leak 12s Isolation Gate</text>
+  <text x="472" y="374" class="body">• Correlates leak-sense cable zone with CDU secondary dP drop</text>
+  <text x="472" y="392" class="body">• Triggers Slurm/K8s GPU workload drain before thermal throttling</text>
+  <text x="472" y="410" class="body">• Guides field tech to close manifold solenoid &amp; quick-disconnect</text>
+  <text x="472" y="430" class="mono">CDU_Leak_Isolation = 11.4s (vs 180s Manual Lookup)</text>
+  <text x="472" y="448" class="mono">GPU_Rack_Fluid_Damage = 0 Racks</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms VESDA / FM-200 &amp; Arc-Flash Preemption</text>
+  <text x="472" y="524" class="body">• VESDA Level-3 Smoke / FM-200 / Novec 1230 30s countdown</text>
+  <text x="472" y="542" class="body">• Differential relay trip (87B/87T) or Li-ion UPS off-gas alarm</text>
+  <text x="472" y="560" class="body">• Preempts routine MOP chat in 0ms; broadcasts oxygen-depletion</text>
+  <text x="472" y="578" class="body">  room evacuation route &amp; bridges Chief Critical-Facilities Eng.</text>
+  <text x="472" y="600" class="mono">if (vesdaGasReleaseOrArcFlashFault) -&gt; 0ms Egress_Alert</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 42ms | Egress_Delay = 0ms</text>
+
+  <!-- Right Column: Critical Facilities Output & KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Critical Facilities Execution &amp; Tier IV Audit</text>
+  <text x="892" y="164" class="card-sub">EPMS / BMS Actuation · Slurm Drain · Chief Eng Bridge</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">MOP Step-by-Step Verified Execution</text>
+  <text x="908" y="224" class="body">• Unlocks next MOP step only after SCADA state feedback matches</text>
+  <text x="908" y="242" class="body">• Coordinates A/B dual-bus load transfer under &lt;45% N+1 limit</text>
+  <text x="908" y="260" class="body">• Logs dual-operator voiceprint + timestamp to ServiceNow CHG</text>
+  <text x="908" y="282" class="mono">Human_Error_Outage_Rate = 0.0%</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Life-Safety &amp; Chief Engineer Hot-Transfer</text>
+  <text x="908" y="366" class="body">• Immediate headset override for FM-200 gas discharge countdown</text>
+  <text x="908" y="384" class="body">• Streams rack camera + thermal IR overlay to NOC video wall</text>
+  <text x="908" y="402" class="body">• Bridges Chief Engineer, Fire Marshal &amp; GPU Cluster SRE lead</text>
+  <text x="908" y="424" class="mono">Life_Safety_Egress_Notification = 100% Instant</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Calls)</text>
+  <text x="908" y="520" class="body">• Cascaded DCIM+LOTO Gate: $920 / 10k calls (100% LOTO safe)</text>
+  <text x="908" y="538" class="body">• Hybrid Noise-Hardened: $1,390 / 10k calls (Recommended)</text>
+  <text x="908" y="556" class="body">• Unfiltered E2E Voice: $2,400 + single-op switching risk</text>
+  <text x="908" y="578" class="mono">MOP_Completion_Speed = +48% Faster</text>
+  <text x="908" y="596" class="mono">CDU_Isolation = 11.4s | Unplanned_Downtime = 0m</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateHyperscaleAidcDatacenterNocLotoVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Hyperscale AIDC NOC &amp; Critical Facilities Voice Copilot</text>
+  <text x="52" y="718" class="body">Never allow a voice model to authorize medium-voltage switching or skip MOP steps without dual-voiceprint LOTO verification and live EPMS interlock state checks.</text>
+</svg>

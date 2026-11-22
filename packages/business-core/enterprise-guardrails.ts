@@ -10345,6 +10345,37 @@ export function evaluatePrivateBankingFamilyOfficeLombardVoiceGuard(input: {
   };
 }
 
+export interface HyperscaleAidcDatacenterNocLotoVoiceEvaluation {
+  policyCode: "AIDC-DATACENTER-NOC-LOTO-01";
+  mopSwitchingStepAndCduValveActuationAuthorized: boolean;
+  singlePersonSwitchingOrBusOverloadBlocked: boolean;
+  lifeSafetyGasDischargeOrChiefEngineerBridged: boolean;
+}
+
+/**
+ * Deterministic Hyperscale AIDC Data Center NOC (Schneider EcoStruxure / Vertiv CDU) OSHA 1910.147 / NFPA 70E Dual-Voiceprint LOTO Lock, 12s CDU Leak Isolation Gate & 0ms VESDA/FM-200 Preemption Guard (`AIDC-DATACENTER-NOC-LOTO-01`).
+ */
+export function evaluateHyperscaleAidcDatacenterNocLotoVoiceGuard(input: {
+  lotoThreeStepReadbackAndDualVoiceprintVerified: boolean;
+  cduPressureDropAndBusLoadWithinSafeLimit: boolean;
+  vesdaGasReleaseOrArcFlashFaultPreemption: boolean;
+}): HyperscaleAidcDatacenterNocLotoVoiceEvaluation {
+  return {
+    policyCode: "AIDC-DATACENTER-NOC-LOTO-01",
+    mopSwitchingStepAndCduValveActuationAuthorized:
+      input.lotoThreeStepReadbackAndDualVoiceprintVerified &&
+      input.cduPressureDropAndBusLoadWithinSafeLimit &&
+      !input.vesdaGasReleaseOrArcFlashFaultPreemption,
+    singlePersonSwitchingOrBusOverloadBlocked:
+      !input.lotoThreeStepReadbackAndDualVoiceprintVerified ||
+      !input.cduPressureDropAndBusLoadWithinSafeLimit ||
+      input.vesdaGasReleaseOrArcFlashFaultPreemption,
+    lifeSafetyGasDischargeOrChiefEngineerBridged:
+      input.vesdaGasReleaseOrArcFlashFaultPreemption,
+  };
+}
+
+
 
 
 

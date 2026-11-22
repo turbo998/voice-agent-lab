@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（384 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（385 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -425,3 +425,4 @@
 382. **互动游戏实时语音 NPC、电竞小队语音反毒化审查与儿童 AI 陪伴玩具（Inworld / Convai / 腾讯/网易/米哈游与儿童陪伴硬件模式）85/15 战术语音缓存、防刷金币越狱锁与 `COPPA` 未成年人保护架构（`<13岁` 未成年人 `50ms` 零声纹留存与游戏服务端经济/背包物理只读防刷金币硬锁、85% 战斗战术呼叫走本地 `15ms Opus` 预烘焙缓存省 `81.4%` 算力与角色世界观防破壁门禁、结合比赛遥测区分战术黑话与诱拐未成年人 `0ms` 硬件闭麦并降 `88%` 误封）方案**：[中文](./interactive-gaming-realtime-voice-npc-moderation-coppa-minor-safety-selection-faq.md) | [EN](./interactive-gaming-realtime-voice-npc-moderation-coppa-minor-safety-selection-faq.en.md)
 383. **国际报关行、进出口贸易合规与海关商品归类（Customs Brokerage, HTS/HS Code Classification & Export Control：SAP GTS / Descartes / CBP ACE / 中国海关单一窗口模式）反低报逃税硬锁、两用物项出口管制（BIS / OFAC）与清关语音工作台架构（`WCO GRI 1–6` 与 `CBP CROSS` 判例锚定、严禁逃税改码低报货值及持牌报关师 `LCB` 终审签章硬锁、装船前 `T-48h ISF 10+2` 外呼补齐工厂 `MID` 免 `$5,000` 罚金与 `BIS ECCN / OFAC 50%` 股权筛查门禁、海关 `Form 28/29` 质询与制裁命中 `0ms` 锁单转合规官）方案**：[中文](./customs-brokerage-hts-tariff-classification-export-control-bis-ofac-voice-selection-faq.md) | [EN](./customs-brokerage-hts-tariff-classification-export-control-bis-ofac-voice-selection-faq.en.md)
 384. **私人银行、超高净值家族办公室（UHNW Family Office：瑞银 UBS / 摩根大通私行 / 瑞士宝盛 / Avaloq & Temenos T24 模式）夜间跨市场交易台、质押信贷追保（Lombard Margin Call）、内幕信息墙（MNPI）与编号账户匿名硬锁语音架构（《瑞士银行法》第47条编号账户真实姓名物理剥离与 `MNPI` 董监高静默期拒单硬锁、伦巴第各资产折算率 `Haircut` 40秒跨子账户美债补仓提自愈率至 `96.0%` 与 `MiFID II` 五要素复诵门禁、`LTV >= 85%` 强平临界线与千万美元大宗委托 `0ms` 直通全球夜盘交易主管与私行 MD）方案**：[中文](./private-banking-family-office-lombard-margin-call-mnpi-numbered-account-voice-selection-faq.md) | [EN](./private-banking-family-office-lombard-margin-call-mnpi-numbered-account-voice-selection-faq.en.md)
+385. **超大规模智算中心（Hyperscale AIDC Data Center NOC：Schneider EcoStruxure / Vertiv / Siemens Desigo CC / PagerDuty 模式）液冷机柜（CDU）漏液应急、高压配电倒闸（HV Switching LOTO）双人声纹复诵与现场运维免提语音架构（`OSHA 1910.147 / NFPA 70E` 挂牌上锁与现场/NOC 双人活体声纹唱票复诵 `0%` 单人违章跳步硬锁、`120kW` GB200 液冷二次侧压差突变 `11.4秒` 电磁阀隔离与 Slurm 算力节点自动排空门禁、`VESDA` 极早期火警与 `FM-200` 气体灭火倒计时 `0ms` 骨传导防窒息撤离抢占）方案**：[中文](./hyperscale-aidc-datacenter-noc-liquid-cooling-cdu-loto-hv-switching-voice-selection-faq.md) | [EN](./hyperscale-aidc-datacenter-noc-liquid-cooling-cdu-loto-hv-switching-voice-selection-faq.en.md)
