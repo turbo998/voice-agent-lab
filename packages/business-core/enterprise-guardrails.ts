@@ -10405,6 +10405,37 @@ export function evaluateFineArtAuctionTelephoneBiddingAmlVoiceGuard(input: {
   };
 }
 
+export interface UrbanRailMetroOccPsdCrowdVoiceEvaluation {
+  policyCode: "URBAN-RAIL-METRO-OCC-VOICE-01";
+  dispatchOrderAndZonePaBroadcastAuthorized: boolean;
+  psdGapHazardOrPanicVocabularyBlocked: boolean;
+  cbtcHoldTrainAndOccChiefControllerBridged: boolean;
+}
+
+/**
+ * Deterministic Urban Rail & Metro OCC Dispatch (MTR / TfL / Siemens CBTC) EN 50126 PSD Gap-LiDAR & 4-Element Dispatch Lock, Fruin Level-F Zero-Panic PA Gate & 0ms Track-Intrusion/ETS Guard (`URBAN-RAIL-METRO-OCC-VOICE-01`).
+ */
+export function evaluateUrbanRailMetroOccPsdCrowdVoiceGuard(input: {
+  psdGapLaserClearAndFourElementDispatchReadbackVerified: boolean;
+  crowdBroadcastPanicFreeAndZoneSynced: boolean;
+  trackIntrusionOrTractionPowerTripOrPeiEmergencyPreemption: boolean;
+}): UrbanRailMetroOccPsdCrowdVoiceEvaluation {
+  return {
+    policyCode: "URBAN-RAIL-METRO-OCC-VOICE-01",
+    dispatchOrderAndZonePaBroadcastAuthorized:
+      input.psdGapLaserClearAndFourElementDispatchReadbackVerified &&
+      input.crowdBroadcastPanicFreeAndZoneSynced &&
+      !input.trackIntrusionOrTractionPowerTripOrPeiEmergencyPreemption,
+    psdGapHazardOrPanicVocabularyBlocked:
+      !input.psdGapLaserClearAndFourElementDispatchReadbackVerified ||
+      !input.crowdBroadcastPanicFreeAndZoneSynced ||
+      input.trackIntrusionOrTractionPowerTripOrPeiEmergencyPreemption,
+    cbtcHoldTrainAndOccChiefControllerBridged:
+      input.trackIntrusionOrTractionPowerTripOrPeiEmergencyPreemption,
+  };
+}
+
+
 
 
 

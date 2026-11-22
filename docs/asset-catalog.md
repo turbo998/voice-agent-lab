@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（386 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（387 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -427,3 +427,4 @@
 384. **私人银行、超高净值家族办公室（UHNW Family Office：瑞银 UBS / 摩根大通私行 / 瑞士宝盛 / Avaloq & Temenos T24 模式）夜间跨市场交易台、质押信贷追保（Lombard Margin Call）、内幕信息墙（MNPI）与编号账户匿名硬锁语音架构（《瑞士银行法》第47条编号账户真实姓名物理剥离与 `MNPI` 董监高静默期拒单硬锁、伦巴第各资产折算率 `Haircut` 40秒跨子账户美债补仓提自愈率至 `96.0%` 与 `MiFID II` 五要素复诵门禁、`LTV >= 85%` 强平临界线与千万美元大宗委托 `0ms` 直通全球夜盘交易主管与私行 MD）方案**：[中文](./private-banking-family-office-lombard-margin-call-mnpi-numbered-account-voice-selection-faq.md) | [EN](./private-banking-family-office-lombard-margin-call-mnpi-numbered-account-voice-selection-faq.en.md)
 385. **超大规模智算中心（Hyperscale AIDC Data Center NOC：Schneider EcoStruxure / Vertiv / Siemens Desigo CC / PagerDuty 模式）液冷机柜（CDU）漏液应急、高压配电倒闸（HV Switching LOTO）双人声纹复诵与现场运维免提语音架构（`OSHA 1910.147 / NFPA 70E` 挂牌上锁与现场/NOC 双人活体声纹唱票复诵 `0%` 单人违章跳步硬锁、`120kW` GB200 液冷二次侧压差突变 `11.4秒` 电磁阀隔离与 Slurm 算力节点自动排空门禁、`VESDA` 极早期火警与 `FM-200` 气体灭火倒计时 `0ms` 骨传导防窒息撤离抢占）方案**：[中文](./hyperscale-aidc-datacenter-noc-liquid-cooling-cdu-loto-hv-switching-voice-selection-faq.md) | [EN](./hyperscale-aidc-datacenter-noc-liquid-cooling-cdu-loto-hv-switching-voice-selection-faq.en.md)
 386. **顶级艺术品、古董珠宝拍卖行（Fine Art & Luxury Auction House：苏富比 Sotheby's / 佳士得 Christie's / 富艺斯 Phillips / 中国嘉德模式）电话委托竞投席（Telephone Bidding Desk）、号牌授信上限（Paddle Limit）与反洗钱（AML/KYC 5AMLD）实时语音架构（欧盟 `5AMLD` 最终受益人 `UBO` 声纹与含阶梯买方佣金 `Buyer's Premium` 全口径授信上限 `$0` 违约硬锁、拍卖台 `Clerkbook` `240ms` 跨语种 `2-5-8` 阶梯报盘与“万/亿 vs Million”零错位门禁、`Fair Warning` `<100ms` 声学 VAD 讲台 `HOLD GAVEL` 缓槌灯与重器 `0ms` 资深专家接管）方案**：[中文](./fine-art-luxury-auction-telephone-bidding-desk-paddle-limit-aml-kyc-voice-selection-faq.md) | [EN](./fine-art-luxury-auction-telephone-bidding-desk-paddle-limit-aml-kyc-voice-selection-faq.en.md)
+387. **城市轨道交通、地铁控制中心（Urban Rail & Metro OCC Dispatch：港铁 MTR / 伦敦地铁 TfL / 北京上海地铁 / Siemens Mobility CBTC & Thales SelTrac 模式）站台屏蔽门（PSD）防夹互锁、大客流踩踏预警广播（PA/PIS）与行车调度复诵语音架构（`EN 50126` 屏蔽门间隙 3D 激光雷达 `Gap LiDAR` 与就地按钮 `LCB` 闭锁及调度四要素双人声纹复诵 `0%` 拖行硬锁、`Fruin F级` `>=4.5人/m²` 零恐慌词汇分区分向广播与闸机限流门禁、GoA4 车厢 12 路并发 `PEI` `1.1秒` 急救置顶与 `1500V` 急停 `0ms` 扣车抢占）方案**：[中文](./urban-rail-metro-occ-dispatch-psd-interlock-crowd-crush-papis-voice-selection-faq.md) | [EN](./urban-rail-metro-occ-dispatch-psd-interlock-crowd-crush-papis-voice-selection-faq.en.md)
