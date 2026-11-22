@@ -10645,6 +10645,37 @@ export function evaluateAiSalesMedrepRoleplayCoachingVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseSimultaneousInterpBoardroomEvaluation {
+  policyCode: "ENTERPRISE-SIMULTANEOUS-INTERP-01";
+  simultaneousAudioAndBoardMinutesAuthorized: boolean;
+  sovNegationFlipOrMisattributedActionItemBlocked: boolean;
+  privilegedSessionCloudPurgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Multinational Simultaneous Interpretation & Boardroom Minutes (Azure Live Interpreter / Teams / Dante Array) SOV Wait-k Polarity & Glossary Hard Lock, DER<=2.1% Action-Item Gate & 0ms Privileged M&A Purge Guard (`ENTERPRISE-SIMULTANEOUS-INTERP-01`).
+ */
+export function evaluateEnterpriseSimultaneousInterpBoardroomGuard(input: {
+  sovClausePolarityAndFinancialGlossaryVerified: boolean;
+  speakerDiarizationAndActionItemConfirmed: boolean;
+  privilegedExecutiveSessionOrMnALockPreemption: boolean;
+}): EnterpriseSimultaneousInterpBoardroomEvaluation {
+  return {
+    policyCode: "ENTERPRISE-SIMULTANEOUS-INTERP-01",
+    simultaneousAudioAndBoardMinutesAuthorized:
+      input.sovClausePolarityAndFinancialGlossaryVerified &&
+      input.speakerDiarizationAndActionItemConfirmed &&
+      !input.privilegedExecutiveSessionOrMnALockPreemption,
+    sovNegationFlipOrMisattributedActionItemBlocked:
+      !input.sovClausePolarityAndFinancialGlossaryVerified ||
+      !input.speakerDiarizationAndActionItemConfirmed ||
+      input.privilegedExecutiveSessionOrMnALockPreemption,
+    privilegedSessionCloudPurgeTriggered:
+      input.privilegedExecutiveSessionOrMnALockPreemption,
+  };
+}
+
+
 
 
 
