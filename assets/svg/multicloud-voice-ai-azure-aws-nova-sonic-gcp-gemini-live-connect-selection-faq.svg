@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad404" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad404" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0078D4"/>
+      <stop offset="35%" stop-color="#FF9900"/>
+      <stop offset="70%" stop-color="#4285F4"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #38BDF8; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad404)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad404)"/>
+  <text x="52" y="52" class="title">2026 Multi-Cloud Voice AI Stack Comparison: Azure vs. AWS Nova Sonic vs. GCP Gemini Live vs. Best-of-Breed</text>
+  <text x="52" y="76" class="subtitle">Regional Data-Residency Lock · PTU vs. PayGo TCO Inflection &amp; MCP Tool Portability · 0ms Cross-Cloud Active-Active Failover</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#38BDF8"/>
+  <text x="1002" y="59" class="badge">MULTICLOUD-VOICE-STACK-2026-01</text>
+
+  <!-- Left Column: The 4 Cloud & Best-of-Breed Stacks -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Four Enterprise Voice Cloud Stacks (2026)</text>
+  <text x="48" y="164" class="card-sub">Hyperscaler Native Ecosystems vs. Modular Best-of-Breed</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#0078D4" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Stack 1: Microsoft Azure (Voice Live + ACS)</text>
+  <text x="64" y="224" class="body">• GPT-Realtime + Azure AI Speech (140+ locales, CNV)</text>
+  <text x="64" y="242" class="body">• Native Teams Phone, Entra ID &amp; Dynamics 365 CCaaS</text>
+  <text x="64" y="260" class="mono">E2E_Latency = 340ms (S2S) / 430ms (CNV) | PTU_SLA</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#FF9900" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Stack 2: AWS (Nova Sonic + Amazon Connect)</text>
+  <text x="64" y="340" class="body">• Bedrock Nova Sonic bidirectional S2S + Transcribe/Polly</text>
+  <text x="64" y="358" class="body">• Tight integration with Amazon Connect flows &amp; Lambda</text>
+  <text x="64" y="376" class="mono">E2E_Latency = 370ms (Nova Sonic) | Connect_Native</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#4285F4" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Stack 3: Google Cloud (Gemini Live + Chirp 3)</text>
+  <text x="64" y="462" class="body">• Vertex AI Gemini 2.5/3.0 Live multimodal audio+video</text>
+  <text x="64" y="480" class="body">• Chirp 3 USM speech + Google CCAI &amp; Android ecosystem</text>
+  <text x="64" y="498" class="mono">E2E_Latency = 350ms | Multimodal_Video_1M_Context</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Stack 4: Best-of-Breed (LiveKit + Deepgram + 11Labs)</text>
+  <text x="64" y="584" class="body">• Deepgram Nova-3 STT + Multi-LLM + ElevenLabs/Cartesia</text>
+  <text x="64" y="602" class="body">• Cloud-agnostic AKS/EKS deployment with zero lock-in</text>
+  <text x="64" y="620" class="mono">E2E_Latency = 390ms | Multi_Cloud_Portable = 100%</text>
+
+  <!-- Center Column: 3-Layer Multi-Cloud Governance & Failover Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Multi-Cloud Routing &amp; DR Gate</text>
+  <text x="456" y="164" class="card-sub">Data Residency Lock · MCP Schema Adapter · 0ms Failover</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: Regional Data-Residency &amp; BAA/PCI Lock</text>
+  <text x="472" y="224" class="body">• Enforces in-region audio termination (e.g., EU Frankfurt</text>
+  <text x="472" y="242" class="body">  only for GDPR; US Gov/HIPAA regions for PHI)</text>
+  <text x="472" y="260" class="body">• Blocks cross-border failover to non-compliant regions</text>
+  <text x="472" y="280" class="mono">Cross_Region_Sovereignty_Violation = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">Zero_Data_Retention_Abuse_Log_OptOut = 100% Verified</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: Unified MCP Tool &amp; PTU Burst Gate</text>
+  <text x="472" y="374" class="body">• Normalizes tool schemas across Azure OpenAI, Bedrock</text>
+  <text x="472" y="392" class="body">  Nova Sonic, and Vertex Gemini via unified MCP adapter</text>
+  <text x="472" y="410" class="body">• Routes baseline traffic to PTU/Provisioned; bursts PayGo</text>
+  <text x="472" y="430" class="mono">Cross_Cloud_Tool_Schema_Portability = 99.8%</text>
+  <text x="472" y="448" class="mono">PTU_Plus_Spillover_Cost_Savings = -34% vs Pure PayGo</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Cross-Cloud Active-Active Failover</text>
+  <text x="472" y="524" class="body">• Detects primary cloud regional outage, HTTP 429/503</text>
+  <text x="472" y="542" class="body">  burst throttling, or TTFT &gt; 850ms degradation</text>
+  <text x="472" y="560" class="body">• Fails over mid-call to secondary cloud (e.g. Azure -&gt;</text>
+  <text x="472" y="578" class="body">  AWS/Deepgram) in 0ms while preserving Redis dialog state</text>
+  <text x="472" y="600" class="mono">if (primaryCloudOutageOrQuota429) -&gt; 0ms Secondary_Cloud</text>
+  <text x="472" y="618" class="mono">Multi_Cloud_Composite_Availability = 99.995% SLA</text>
+
+  <!-- Right Column: TCO Comparison & Architect Recommendations -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Architect Selection &amp; 1M-Minute TCO</text>
+  <text x="892" y="164" class="card-sub">Ecosystem Fit · Latency Budget · Multi-Cloud DR</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Ecosystem-First Selection Rule</text>
+  <text x="908" y="224" class="body">• Microsoft 365 / Teams / Entra Shop -&gt; Azure Voice Live</text>
+  <text x="908" y="242" class="body">• Existing Amazon Connect Call Center -&gt; AWS Nova Sonic</text>
+  <text x="908" y="260" class="body">• Heavy Multimodal Video / Workspace -&gt; GCP Gemini Live</text>
+  <text x="908" y="282" class="mono">Integration_Time_Savings = -60% When Aligned to Anchor</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Cross-Cloud Disaster Recovery (DR) Pattern</text>
+  <text x="908" y="366" class="body">• Keep SIP/WebRTC media edge neutral (LiveKit / ACS / SBC)</text>
+  <text x="908" y="384" class="body">• Primary: Azure OpenAI + Azure Speech (In-Region PTU)</text>
+  <text x="908" y="402" class="body">• Secondary DR: AWS Bedrock / Deepgram hot-standby</text>
+  <text x="908" y="424" class="mono">Mid_Call_Cloud_Failover_Drop_Rate = 0.0%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (1M Minutes)</text>
+  <text x="908" y="520" class="body">• Azure Cascaded/Hybrid (PTU): $46,000 / 1M min</text>
+  <text x="908" y="538" class="body">• AWS Nova Sonic + Connect: $49,000 / 1M min</text>
+  <text x="908" y="556" class="body">• GCP Gemini Live + CCAI: $51,000 / 1M min</text>
+  <text x="908" y="578" class="mono">Best_Of_Breed (Deepgram+11Labs): $58,000 / 1M min</text>
+  <text x="908" y="596" class="mono">Multi_Cloud_DR_Availability = 99.995% | Lock_In = 0%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateMulticloudVoiceStack2026SelectionGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — 2026 Multi-Cloud Enterprise Voice AI Stack Selection</text>
+  <text x="52" y="718" class="body">Anchor on your primary cloud CCaaS/identity ecosystem for 85% of traffic, abstract tools via MCP, and maintain a secondary cloud hot-standby for 99.995% SLA.</text>
+</svg>

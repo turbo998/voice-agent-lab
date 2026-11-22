@@ -10915,6 +10915,37 @@ export function evaluateInsuranceFnolMultimodalClaimsVoiceGuard(input: {
   };
 }
 
+export interface MulticloudVoiceStack2026SelectionEvaluation {
+  policyCode: "MULTICLOUD-VOICE-STACK-2026-01";
+  primaryCloudPtuAndMcpToolAuthorized: boolean;
+  crossRegionSovereigntyOrVendorLockBlocked: boolean;
+  secondaryCloudHotStandbyFailoverTriggered: boolean;
+}
+
+/**
+ * Deterministic 2026 Multi-Cloud Voice AI Stack (Azure Voice Live vs. AWS Nova Sonic vs. GCP Gemini Live vs. Best-of-Breed) Regional Data-Residency Lock, MCP/PTU Gate & 0ms Cross-Cloud Failover Guard (`MULTICLOUD-VOICE-STACK-2026-01`).
+ */
+export function evaluateMulticloudVoiceStack2026SelectionGuard(input: {
+  regionalDataResidencyAndZeroRetentionVerified: boolean;
+  mcpToolSchemaNormalizedAndPtuConfigured: boolean;
+  primaryCloudTimeoutOrQuota429Preemption: boolean;
+}): MulticloudVoiceStack2026SelectionEvaluation {
+  return {
+    policyCode: "MULTICLOUD-VOICE-STACK-2026-01",
+    primaryCloudPtuAndMcpToolAuthorized:
+      input.regionalDataResidencyAndZeroRetentionVerified &&
+      input.mcpToolSchemaNormalizedAndPtuConfigured &&
+      !input.primaryCloudTimeoutOrQuota429Preemption,
+    crossRegionSovereigntyOrVendorLockBlocked:
+      !input.regionalDataResidencyAndZeroRetentionVerified ||
+      !input.mcpToolSchemaNormalizedAndPtuConfigured ||
+      input.primaryCloudTimeoutOrQuota429Preemption,
+    secondaryCloudHotStandbyFailoverTriggered:
+      input.primaryCloudTimeoutOrQuota429Preemption,
+  };
+}
+
+
 
 
 
