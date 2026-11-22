@@ -9895,6 +9895,37 @@ export function evaluateOutboundStirShakenCallerReputationGuard(input: {
   };
 }
 
+export interface RealtimeVoiceFoundationModel2026SelectionEvaluation {
+  policyCode: "VOICE-FOUNDATION-MODEL-2026-01";
+  hybridVoiceSessionAndTurnAuthorized: boolean;
+  unprunedAudioCostOrStochasticLegalReadoutBlocked: boolean;
+  deterministicVerifierOrMultiCloudHotSwapBridged: boolean;
+}
+
+/**
+ * Deterministic 2026 Realtime Voice Foundation Models vs. Cascaded Hybrid Selection, N-3 Sliding Audio Context Pruning & 0ms Verbatim SSML / Multi-Cloud Failover Guard (`VOICE-FOUNDATION-MODEL-2026-01`).
+ */
+export function evaluateRealtimeVoiceFoundationModel2026SelectionGuard(input: {
+  customLexiconAndRegulatedVerbatimSsmlTrackLocked: boolean;
+  slidingThreeTurnAudioPruningAndTieredRoutingActive: boolean;
+  deterministicMathVerifierOrMultiCloudFailoverPreemption: boolean;
+}): RealtimeVoiceFoundationModel2026SelectionEvaluation {
+  return {
+    policyCode: "VOICE-FOUNDATION-MODEL-2026-01",
+    hybridVoiceSessionAndTurnAuthorized:
+      input.customLexiconAndRegulatedVerbatimSsmlTrackLocked &&
+      input.slidingThreeTurnAudioPruningAndTieredRoutingActive &&
+      !input.deterministicMathVerifierOrMultiCloudFailoverPreemption,
+    unprunedAudioCostOrStochasticLegalReadoutBlocked:
+      !input.customLexiconAndRegulatedVerbatimSsmlTrackLocked ||
+      !input.slidingThreeTurnAudioPruningAndTieredRoutingActive ||
+      input.deterministicMathVerifierOrMultiCloudFailoverPreemption,
+    deterministicVerifierOrMultiCloudHotSwapBridged:
+      input.deterministicMathVerifierOrMultiCloudFailoverPreemption,
+  };
+}
+
+
 
 
 
