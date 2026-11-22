@@ -10495,6 +10495,37 @@ export function evaluatePublicProcurementSealedBidEvalVoiceGuard(input: {
   };
 }
 
+export interface GlobalMobilityEorVisaTaxVoiceEvaluation {
+  policyCode: "GLOBAL-MOBILITY-EOR-VISA-01";
+  wfaTravelAndEorOnboardingAuthorized: boolean;
+  outOfMsaVisaViolationOrPeTaxRiskBlocked: boolean;
+  borderCrisisImmigrationCounselBridged: boolean;
+}
+
+/**
+ * Deterministic Global Mobility, EOR & Immigration (Deel / Rippling / Fragomen / Workday) H-1B LCA MSA & Anti-UPL Hard Lock, OECD 183-Day/PE Tax Gate & 0ms Border-Crisis Counsel Guard (`GLOBAL-MOBILITY-EOR-VISA-01`).
+ */
+export function evaluateGlobalMobilityEorVisaTaxVoiceGuard(input: {
+  visaWorkRightAndH1bLcaMsaBoundaryVerified: boolean;
+  oecd183DayAndPermanentEstablishmentCleared: boolean;
+  cbpSecondaryOrVisaRefusalOrI94CrisisPreemption: boolean;
+}): GlobalMobilityEorVisaTaxVoiceEvaluation {
+  return {
+    policyCode: "GLOBAL-MOBILITY-EOR-VISA-01",
+    wfaTravelAndEorOnboardingAuthorized:
+      input.visaWorkRightAndH1bLcaMsaBoundaryVerified &&
+      input.oecd183DayAndPermanentEstablishmentCleared &&
+      !input.cbpSecondaryOrVisaRefusalOrI94CrisisPreemption,
+    outOfMsaVisaViolationOrPeTaxRiskBlocked:
+      !input.visaWorkRightAndH1bLcaMsaBoundaryVerified ||
+      !input.oecd183DayAndPermanentEstablishmentCleared ||
+      input.cbpSecondaryOrVisaRefusalOrI94CrisisPreemption,
+    borderCrisisImmigrationCounselBridged:
+      input.cbpSecondaryOrVisaRefusalOrI94CrisisPreemption,
+  };
+}
+
+
 
 
 
