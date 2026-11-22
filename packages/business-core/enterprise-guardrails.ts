@@ -11485,6 +11485,37 @@ export function evaluatePropertyManagementYardiFairHousingVoiceGuard(input: {
   };
 }
 
+export interface HigherEdUniversityAdmissionsFerpaVoiceEvaluation {
+  policyCode: "HIGHER-ED-ADMISSIONS-FERPA-FAFSA-01";
+  studentRecordAndScheduleActionAuthorized: boolean;
+  unconsentedFerpaOrUnder12CreditDropBlocked: boolean;
+  capsCounselingAndTitleIxConfidentialBridged: boolean;
+}
+
+/**
+ * Deterministic Higher Education One-Stop (Ellucian Banner / Workday Student / Slate) FERPA Parent-Proxy & Title IV Truth Lock, >=12-Credit Full-Time Aid Gate & 0ms CAPS/Title IX Guard (`HIGHER-ED-ADMISSIONS-FERPA-FAFSA-01`).
+ */
+export function evaluateHigherEdUniversityAdmissionsFerpaVoiceGuard(input: {
+  ferpaProxyVerifiedAndZeroTitleIvMisrepresentation: boolean;
+  fullTimeCreditAidProtectedAndHoldDiagnosed: boolean;
+  studentCrisisTitleIxOrCampusSafetyPreemption: boolean;
+}): HigherEdUniversityAdmissionsFerpaVoiceEvaluation {
+  return {
+    policyCode: "HIGHER-ED-ADMISSIONS-FERPA-FAFSA-01",
+    studentRecordAndScheduleActionAuthorized:
+      input.ferpaProxyVerifiedAndZeroTitleIvMisrepresentation &&
+      input.fullTimeCreditAidProtectedAndHoldDiagnosed &&
+      !input.studentCrisisTitleIxOrCampusSafetyPreemption,
+    unconsentedFerpaOrUnder12CreditDropBlocked:
+      !input.ferpaProxyVerifiedAndZeroTitleIvMisrepresentation ||
+      !input.fullTimeCreditAidProtectedAndHoldDiagnosed ||
+      input.studentCrisisTitleIxOrCampusSafetyPreemption,
+    capsCounselingAndTitleIxConfidentialBridged:
+      input.studentCrisisTitleIxOrCampusSafetyPreemption,
+  };
+}
+
+
 
 
 

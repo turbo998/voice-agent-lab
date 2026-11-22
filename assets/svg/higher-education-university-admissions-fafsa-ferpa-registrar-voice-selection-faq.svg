@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad423" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad423" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #60A5FA; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad423)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad423)"/>
+  <text x="52" y="52" class="title">Higher Education Admissions, Financial Aid (FAFSA) &amp; Registrar (FERPA) Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">FERPA Parent-Waiver &amp; Title IV Anti-Misrepresentation Lock (0% Breaches) · -36.4% Summer Melt · 0ms Title IX / Crisis Bridge</text>
+  <rect x="972" y="38" width="260" height="32" rx="16" fill="#3B82F6"/>
+  <text x="988" y="59" class="badge">HIGHER-ED-ADMISSIONS-FERPA-FAFSA-01</text>
+
+  <!-- Left Column: Student/Parent Ingress & SIS/CRM Core -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Student &amp; Parent Ingress + SIS Bus</text>
+  <text x="48" y="164" class="card-sub">Ellucian Banner · Workday Student · PeopleSoft · Slate CRM</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">One-Stop Bursar, Financial Aid &amp; Registrar Line</text>
+  <text x="64" y="224" class="body">• Handles August Fall-rush 10x call spike in 20+ languages</text>
+  <text x="64" y="242" class="body">• Checks registration holds (immunization, bursar, advising)</text>
+  <text x="64" y="260" class="mono">Student_ID = "U90812 | FERPA_Parent_Proxy = NOT_SIGNED"</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">FAFSA / Title IV Aid &amp; Verification Engine</text>
+  <text x="64" y="340" class="body">• Tracks ISIR status, Pell Grant, Direct Loans &amp; work-study</text>
+  <text x="64" y="358" class="body">• Walks families through IRS DRT / V1 verification items</text>
+  <text x="64" y="376" class="mono">Aid_Hold = "Missing_Signed_W2_Schedule_C | Due_In = 5d"</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Anti-Summer-Melt Admitted Student Outreach</text>
+  <text x="64" y="462" class="body">• Proactive June/July check-ins for deposited freshmen</text>
+  <text x="64" y="480" class="body">• Unblocks housing deposit, orientation &amp; Nelnet payment plan</text>
+  <text x="64" y="498" class="mono">Summer_Melt_Attrition_Reduction = -36.4% Retained</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">FERPA (20 U.S.C. 1232g) &amp; ED Title IV Rules</text>
+  <text x="64" y="584" class="body">• Rights transfer to student at age 18 or matriculation</text>
+  <text x="64" y="602" class="body">• 34 CFR 668.71 ban on unverified job/salary claims</text>
+  <text x="64" y="620" class="mono">Compliance = FERPA_And_Higher_Education_Act_Title_IV</text>
+
+  <!-- Center Column: 3-Layer Deterministic Higher-Ed Guardrail -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic FERPA, Title IV &amp; Crisis Gate</text>
+  <text x="456" y="164" class="card-sub">Zero FERPA Leaks · Zero Salary Hype · 0ms Title IX / 988</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: FERPA Parent Firewall &amp; Title IV Truth Lock</text>
+  <text x="472" y="224" class="body">• Blocks disclosing grades, GPA, schedule, or bill balance</text>
+  <text x="472" y="242" class="body">  to parents without active Banner `FERPA Proxy PIN`</text>
+  <text x="472" y="260" class="body">• Strips unverified post-grad salary / job guarantees</text>
+  <text x="472" y="280" class="mono">Unconsented_Parent_FERPA_Disclosure_Rate = 0.0%</text>
+  <text x="472" y="298" class="mono">Title_IV_Misrepresentation_Violation_Rate = 0.0%</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: Hold-Clearance &amp; Census-Drop Deadline Gate</text>
+  <text x="472" y="374" class="body">• Checks SAP (Satisfactory Academic Progress) &amp; credit</text>
+  <text x="472" y="392" class="body">  load before course drop (warns if dropping &lt;12 credits</text>
+  <text x="472" y="410" class="body">  triggers Pell Grant / F-1 visa loss)</text>
+  <text x="472" y="430" class="mono">Accidental_Full_Time_Aid_Loss_Prevented = 100%</text>
+  <text x="472" y="448" class="mono">Fall_Rush_Financial_Aid_Deflection = 71.8%</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Title IX, Campus Safety &amp; Counseling Bridge</text>
+  <text x="472" y="524" class="body">• Detects student mental-health distress, Title IX</text>
+  <text x="472" y="542" class="body">  assault/stalking report, or campus safety threat</text>
+  <text x="472" y="560" class="body">• Purges general SIS logs in 0ms; bridges 24/7 Campus</text>
+  <text x="472" y="578" class="body">  CAPS Counselor, Title IX Advocate or Campus Police</text>
+  <text x="472" y="600" class="mono">if (studentCrisisTitleIxOrCampusSafety) -&gt; 0ms CAPS_Desk</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 13ms | One_Stop_CSAT = 4.84 / 5.0</text>
+
+  <!-- Right Column: Enrollment Yield & University ROI -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Tuition Retention &amp; Enrollment ROI</text>
+  <text x="892" y="164" class="card-sub">25,000-Student University One-Stop Benchmark</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Recapturing "Summer Melt" Tuition Revenue</text>
+  <text x="908" y="224" class="body">• 10%-15% of admitted students melt over summer due to</text>
+  <text x="908" y="242" class="body">  confusing FAFSA verification &amp; bursar holds</text>
+  <text x="908" y="260" class="body">• Guided voice unblocking retains +142 freshmen/cohort</text>
+  <text x="908" y="282" class="mono">Retained_Net_Tuition_Revenue = +$3.12M / Year</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Eliminating the 90-Minute August Financial Aid Hold</text>
+  <text x="908" y="366" class="body">• Resolves 71.8% of "Why hasn't my Pell Grant/Loan</text>
+  <text x="908" y="384" class="body">  disbursed?" calls by checking MPN &amp; entrance counseling</text>
+  <text x="908" y="402" class="body">• Sends 1-tap student-aid.gov or Banner proxy link</text>
+  <text x="908" y="424" class="mono">August_Peak_Hold_Time = 8 Seconds (vs 92m Legacy)</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Student/Parent Calls)</text>
+  <text x="908" y="520" class="body">• Manual One-Stop Student Desk: $142,000 / 10k calls</text>
+  <text x="908" y="538" class="body">• Banner/Workday FERPA Voice AI: $940 / 10k calls (Rec)</text>
+  <text x="908" y="556" class="body">• Unguarded Campus Bot: $1,650 + FERPA/Title IV risk</text>
+  <text x="908" y="578" class="mono">Net_Tuition_And_Ops_Benefit = +$454,000 / 10k Calls</text>
+  <text x="908" y="596" class="mono">FERPA_Breaches = 0 | Title_IV_Audit_Pass = 100%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateHigherEdUniversityAdmissionsFerpaVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Higher Education Admissions, Financial Aid &amp; Registrar Voice AI</text>
+  <text x="52" y="718" class="body">Enforce FERPA parent-proxy waivers in code, warn students before dropping below 12 full-time credits, and bridge CAPS/Title IX in 0ms.</text>
+</svg>
