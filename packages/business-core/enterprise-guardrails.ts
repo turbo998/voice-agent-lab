@@ -10465,6 +10465,37 @@ export function evaluateHomeHospicePalliativeComfortKitVoiceGuard(input: {
   };
 }
 
+export interface PublicProcurementSealedBidEvalVoiceEvaluation {
+  policyCode: "PUBLIC-PROCUREMENT-BID-EVAL-01";
+  blindTechnicalQueryAndScoreCommitAuthorized: boolean;
+  vendorIdentityLeakOrUncitedDisqualificationBlocked: boolean;
+  boothAudioMutedAndInspectorGeneralAlerted: boolean;
+}
+
+/**
+ * Deterministic Public Procurement & Sealed-Bid Evaluation Room (FAR Part 15 / EU 2014/24 / Double-Blind) Identity & Two-Envelope Hard Lock, Star-Clause Dual-Citation Gate & 0ms Anti-Steering IG Guard (`PUBLIC-PROCUREMENT-BID-EVAL-01`).
+ */
+export function evaluatePublicProcurementSealedBidEvalVoiceGuard(input: {
+  doubleBlindIdentityMaskedAndTwoEnvelopeIsolated: boolean;
+  mandatoryStarClauseAndBidPageCitationVerified: boolean;
+  scoreSteeringOrBidRiggingDetectedPreemption: boolean;
+}): PublicProcurementSealedBidEvalVoiceEvaluation {
+  return {
+    policyCode: "PUBLIC-PROCUREMENT-BID-EVAL-01",
+    blindTechnicalQueryAndScoreCommitAuthorized:
+      input.doubleBlindIdentityMaskedAndTwoEnvelopeIsolated &&
+      input.mandatoryStarClauseAndBidPageCitationVerified &&
+      !input.scoreSteeringOrBidRiggingDetectedPreemption,
+    vendorIdentityLeakOrUncitedDisqualificationBlocked:
+      !input.doubleBlindIdentityMaskedAndTwoEnvelopeIsolated ||
+      !input.mandatoryStarClauseAndBidPageCitationVerified ||
+      input.scoreSteeringOrBidRiggingDetectedPreemption,
+    boothAudioMutedAndInspectorGeneralAlerted:
+      input.scoreSteeringOrBidRiggingDetectedPreemption,
+  };
+}
+
+
 
 
 

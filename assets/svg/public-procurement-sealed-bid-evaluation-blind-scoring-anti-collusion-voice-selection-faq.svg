@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad389" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="accentGrad389" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #60A5FA; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad389)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad389)"/>
+  <text x="52" y="52" class="title">Public Procurement &amp; Sealed-Bid Evaluation Double-Blind Scoring &amp; Anti-Collusion Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">FAR Part 15 / EU 2014/24 / Double-Blind Identity &amp; Two-Envelope Lock · Star-Clause Citation Gate · 0ms Steering/Collusion IG Alert</text>
+  <rect x="1000" y="38" width="232" height="32" rx="16" fill="#3B82F6"/>
+  <text x="1016" y="59" class="badge">PUBLIC-PROCUREMENT-BID-EVAL-01</text>
+
+  <!-- Left Column: Isolated Evaluation Booths & Bid Vault -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Isolated Evaluation Cabins &amp; Two-Envelope Vault</text>
+  <text x="48" y="164" class="card-sub">Remote Multi-Center Bid Evaluation · SAP Ariba / Jaggaer</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Double-Blind ("双盲") Expert Audio Cabins</text>
+  <text x="64" y="224" class="body">• Isolated single-expert booths across distributed cities</text>
+  <text x="64" y="242" class="body">• Real-time voice pitch/timbre anonymization between peers</text>
+  <text x="64" y="260" class="mono">Panelist_Token = "EXPERT-03" | Vendor = "BIDDER-ALPHA"</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Two-Envelope (Technical vs Price) Cryptographic Vault</text>
+  <text x="64" y="340" class="body">• Envelope 1 (Technical) unlocked; Envelope 2 (Price) HSM-locked</text>
+  <text x="64" y="358" class="body">• Redacts vendor brand names, logos, and case-study client IDs</text>
+  <text x="64" y="376" class="mono">Price_Envelope_State = HSM_Sealed_Until_Tech_Signoff</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">RFP Mandatory Star-Clause (★) &amp; Rubric Matrix</text>
+  <text x="64" y="462" class="body">• Substantive responsiveness &amp; disqualification criteria (`★`)</text>
+  <text x="64" y="480" class="body">• Objective technical parameter comparison across anonymized bids</text>
+  <text x="64" y="498" class="mono">Rubric_Item_4_2 = "ISO27001 + P99 &lt;= 50ms Required"</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Bid-Clarification (Q&amp;A) Anonymized Relay</text>
+  <text x="64" y="584" class="body">• Converts expert clarification query to neutral text/TTS</text>
+  <text x="64" y="602" class="body">• Strips vendor identity before returning bidder response</text>
+  <text x="64" y="620" class="mono">Clarification_Channel = Zero_Direct_Voice_Contact</text>
+
+  <!-- Center Column: 3-Layer Deterministic Procurement Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Double-Blind &amp; Anti-Steering Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Vendor Leak · Zero Price Peek · 0ms Steering Lock</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: Double-Blind &amp; Two-Envelope Hard Lock</text>
+  <text x="472" y="224" class="body">• Blocks any query attempting to infer Bidder-Alpha's real name</text>
+  <text x="472" y="242" class="body">• Denies access to commercial pricing during Technical Phase</text>
+  <text x="472" y="260" class="body">• Masks unique patent numbers or trademarked product names</text>
+  <text x="472" y="280" class="mono">Vendor_Identity_Or_Price_Leak_Rate = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">Two_Envelope_Isolation = 100% Enforced</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: Star-Clause Citation &amp; Independent Score Gate</text>
+  <text x="472" y="374" class="body">• Requires exact RFP section + bid page # for any `★` rejection</text>
+  <text x="472" y="392" class="body">• Flags extreme score outliers (&gt;2.5 SD from objective spec)</text>
+  <text x="472" y="410" class="body">• Prohibits AI from suggesting subjective scores to experts</text>
+  <text x="472" y="430" class="mono">GAO_Bid_Protest_Audit_Defensibility = 99.6%</text>
+  <text x="472" y="448" class="mono">Unsubstantiated_Disqualification = 0.0%</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Score-Steering &amp; Bid-Rigging IG Alert</text>
+  <text x="472" y="524" class="body">• Detects coercive expert speech ("Give Bidder-B top marks",</text>
+  <text x="472" y="542" class="body">  "Fail Bidder-A so B wins") or conflict-of-interest admission</text>
+  <text x="472" y="560" class="body">• Preempts audio bus in 0ms; mutes inter-booth channel &amp; alerts</text>
+  <text x="472" y="578" class="body">  Procurement Integrity Officer / Inspector General (IG)</text>
+  <text x="472" y="600" class="mono">if (scoreSteeringOrBidRiggingDetected) -&gt; 0ms IG_Lock</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 29ms | Booth_Isolation_Mute = 0ms</text>
+
+  <!-- Right Column: Auditable Evaluation & KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Bid-Protest Proof &amp; Integrity Supervision</text>
+  <text x="892" y="164" class="card-sub">WORM Audio/Transcript · Clause-Page Binding · IG Console</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Evidence-Backed Evaluation Sheet Generation</text>
+  <text x="908" y="224" class="body">• Binds every score justification to RFP clause &amp; bid page</text>
+  <text x="908" y="242" class="body">• Unlocks Envelope 2 (Price) only after all tech scores signed</text>
+  <text x="908" y="260" class="body">• Generates GAO / EU Remedies Directive compliant dossier</text>
+  <text x="908" y="282" class="mono">Evaluation_Cycle_Speed = 3.1x Faster Clause Lookup</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Inspector General (IG) &amp; Supervision Takeover</text>
+  <text x="908" y="366" class="body">• Instant freeze of tainted evaluation session upon steering</text>
+  <text x="908" y="384" class="body">• Automated expert recusal &amp; random standby expert draw</text>
+  <text x="908" y="402" class="body">• Cryptographic WORM sealing of audio + screen + bid hashes</text>
+  <text x="908" y="424" class="mono">Unlawful_Score_Steering_Success = 0.0%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Eval Queries)</text>
+  <text x="908" y="520" class="body">• Cascaded Blind-RAG+Gate: $760 / 10k queries (100% blind)</text>
+  <text x="908" y="538" class="body">• Hybrid Clause-Verified: $1,190 / 10k queries (Recommended)</text>
+  <text x="908" y="556" class="body">• Unfiltered E2E Voice: $2,100 + bid-protest annulment risk</text>
+  <text x="908" y="578" class="mono">Bid_Protest_Overturn_Rate = 0.0% (100% Clause Cited)</text>
+  <text x="908" y="596" class="mono">Vendor_Identity_Leaks = 0 | Steering_Blocked = 100%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluatePublicProcurementSealedBidEvalVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Public Procurement &amp; Sealed-Bid Evaluation Voice Copilot</text>
+  <text x="52" y="718" class="body">Never allow a bid-evaluation voice assistant to reveal bidder identities, expose Envelope-2 pricing during technical review, or permit inter-expert score steering.</text>
+</svg>
