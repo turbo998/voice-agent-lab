@@ -10015,6 +10015,37 @@ export function evaluateSmartPortContainerTerminalTosVoiceGuard(input: {
   };
 }
 
+export interface SolarStorageVppStormReserveVoiceEvaluation {
+  policyCode: "SOLAR-STORAGE-VPP-VOICE-01";
+  vppDispatchAndEnergyActionAuthorized: boolean;
+  stormDrainOrHighVoltageDiyBlocked: boolean;
+  bmsThermalOrArcFaultRapidShutdownBridged: boolean;
+}
+
+/**
+ * Deterministic Residential Solar, Home Battery & Virtual Power Plant (VPP) Storm-Watch/Medical SOC Floor Lock, IEEE 1547 Load-Shedding Gate & 0ms NEC 690.12 Rapid-Shutdown Guard (`SOLAR-STORAGE-VPP-VOICE-01`).
+ */
+export function evaluateSolarStorageVppStormReserveVoiceGuard(input: {
+  stormWatchAndMedicalBaselineSocFloorLocked: boolean;
+  antiIslandingVerifiedAndLoadSheddingRuntimeCalculated: boolean;
+  bmsThermalRunawayOrDcArcFaultRapidShutdownPreemption: boolean;
+}): SolarStorageVppStormReserveVoiceEvaluation {
+  return {
+    policyCode: "SOLAR-STORAGE-VPP-VOICE-01",
+    vppDispatchAndEnergyActionAuthorized:
+      input.stormWatchAndMedicalBaselineSocFloorLocked &&
+      input.antiIslandingVerifiedAndLoadSheddingRuntimeCalculated &&
+      !input.bmsThermalRunawayOrDcArcFaultRapidShutdownPreemption,
+    stormDrainOrHighVoltageDiyBlocked:
+      !input.stormWatchAndMedicalBaselineSocFloorLocked ||
+      !input.antiIslandingVerifiedAndLoadSheddingRuntimeCalculated ||
+      input.bmsThermalRunawayOrDcArcFaultRapidShutdownPreemption,
+    bmsThermalOrArcFaultRapidShutdownBridged:
+      input.bmsThermalRunawayOrDcArcFaultRapidShutdownPreemption,
+  };
+}
+
+
 
 
 
