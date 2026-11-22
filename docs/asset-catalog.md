@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（382 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（383 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -423,3 +423,4 @@
 380. **血液中心、单采血浆站与器官移植网络（AABB / ISBT 128 / UNOS DonorNet / COTRS / 红十字血液中心模式）稀有血型应急征召、献血者健康延期筛查（Donor Deferral）、`ISBT 128` 交叉配血锁与器官冷缺血（Cold Ischemia Time）语音调度架构（`ISBT 128` 13位条码模37校验与双医护 `ABO/Rh/HLA` 复诵及供受双盲匿名硬锁、`FDA/AABB` 锁定 `SSML` 问卷与异维A酸/阿司匹林洗脱期计算压降 `64.2%` 现场淘汰门禁、凌晨供体器官冷缺血并发强呼省 `44分钟 CIT` 与献血后高热 `0ms` 冻结在库血袋）方案**：[中文](./blood-center-plasma-organ-transplant-unos-crossmatch-cold-ischemia-voice-selection-faq.md) | [EN](./blood-center-plasma-organ-transplant-unos-crossmatch-cold-ischemia-voice-selection-faq.en.md)
 381. **企业级 SaaS 客户成功（Customer Success / Gainsight / Stripe Billing / Zuora 模式）中长尾客户年度续费、席位弹性缩容（Right-Sizing）、`FTC Click-to-Cancel` 合规挽留（Save Desk）与高净值 ARR 预警语音架构（`FTC Click-to-Cancel` 最多 1 次挽留硬上限与 `<=20%` 折扣及 365 天防刷冷却锁、基于 `Gainsight` 真实活跃遥测推荐“裁减闲置席位/暂停/只读归档”挽回 `38.6%` 退订门禁、`ARR >= $50,000` 大客户或安全宕机退订 `0ms` 拦截销户并直通专属 CSM 与 VP）方案**：[中文](./saas-customer-success-renewal-usage-rightsizing-ftc-save-desk-voice-selection-faq.md) | [EN](./saas-customer-success-renewal-usage-rightsizing-ftc-save-desk-voice-selection-faq.en.md)
 382. **互动游戏实时语音 NPC、电竞小队语音反毒化审查与儿童 AI 陪伴玩具（Inworld / Convai / 腾讯/网易/米哈游与儿童陪伴硬件模式）85/15 战术语音缓存、防刷金币越狱锁与 `COPPA` 未成年人保护架构（`<13岁` 未成年人 `50ms` 零声纹留存与游戏服务端经济/背包物理只读防刷金币硬锁、85% 战斗战术呼叫走本地 `15ms Opus` 预烘焙缓存省 `81.4%` 算力与角色世界观防破壁门禁、结合比赛遥测区分战术黑话与诱拐未成年人 `0ms` 硬件闭麦并降 `88%` 误封）方案**：[中文](./interactive-gaming-realtime-voice-npc-moderation-coppa-minor-safety-selection-faq.md) | [EN](./interactive-gaming-realtime-voice-npc-moderation-coppa-minor-safety-selection-faq.en.md)
+383. **国际报关行、进出口贸易合规与海关商品归类（Customs Brokerage, HTS/HS Code Classification & Export Control：SAP GTS / Descartes / CBP ACE / 中国海关单一窗口模式）反低报逃税硬锁、两用物项出口管制（BIS / OFAC）与清关语音工作台架构（`WCO GRI 1–6` 与 `CBP CROSS` 判例锚定、严禁逃税改码低报货值及持牌报关师 `LCB` 终审签章硬锁、装船前 `T-48h ISF 10+2` 外呼补齐工厂 `MID` 免 `$5,000` 罚金与 `BIS ECCN / OFAC 50%` 股权筛查门禁、海关 `Form 28/29` 质询与制裁命中 `0ms` 锁单转合规官）方案**：[中文](./customs-brokerage-hts-tariff-classification-export-control-bis-ofac-voice-selection-faq.md) | [EN](./customs-brokerage-hts-tariff-classification-export-control-bis-ofac-voice-selection-faq.en.md)

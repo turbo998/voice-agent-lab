@@ -10285,6 +10285,37 @@ export function evaluateInteractiveGamingVoiceNpcCoppaSafetyGuard(input: {
   };
 }
 
+export interface CustomsBrokerageHtsExportControlVoiceEvaluation {
+  policyCode: "CUSTOMS-HTS-EXPORT-CONTROL-01";
+  entryDraftAndIsfFilingAuthorized: boolean;
+  dutyEvasionOrUnlicensedExportBlocked: boolean;
+  cbpHoldOrSanctionComplianceBridged: boolean;
+}
+
+/**
+ * Deterministic Customs Brokerage & Trade Compliance WCO GRI / CBP CROSS HTS Lock, BIS ECCN / OFAC 50%-Rule / ISF 10+2 Gate & 0ms CBP Form 28 Hold Guard (`CUSTOMS-HTS-EXPORT-CONTROL-01`).
+ */
+export function evaluateCustomsBrokerageHtsExportControlVoiceGuard(input: {
+  griCrossRulingGroundedAndZeroDutyEvasionWithLcbSignoff: boolean;
+  bisEccnOfacScreenedAndIsf10Plus2FiledOnTime: boolean;
+  cbpForm28HoldOrSanctionedEntityHitPreemption: boolean;
+}): CustomsBrokerageHtsExportControlVoiceEvaluation {
+  return {
+    policyCode: "CUSTOMS-HTS-EXPORT-CONTROL-01",
+    entryDraftAndIsfFilingAuthorized:
+      input.griCrossRulingGroundedAndZeroDutyEvasionWithLcbSignoff &&
+      input.bisEccnOfacScreenedAndIsf10Plus2FiledOnTime &&
+      !input.cbpForm28HoldOrSanctionedEntityHitPreemption,
+    dutyEvasionOrUnlicensedExportBlocked:
+      !input.griCrossRulingGroundedAndZeroDutyEvasionWithLcbSignoff ||
+      !input.bisEccnOfacScreenedAndIsf10Plus2FiledOnTime ||
+      input.cbpForm28HoldOrSanctionedEntityHitPreemption,
+    cbpHoldOrSanctionComplianceBridged:
+      input.cbpForm28HoldOrSanctionedEntityHitPreemption,
+  };
+}
+
+
 
 
 
