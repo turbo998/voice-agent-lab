@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad425" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad425" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #FBBF24; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad425)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad425)"/>
+  <text x="52" y="52" class="title">Last-Mile Parcel &amp; Express Delivery (UPS / FedEx / DHL / SF Express) Pre-Arrival &amp; Driver Voice AI</text>
+  <text x="52" y="76" class="subtitle">AXB Virtual Phone Privacy &amp; High-Value OTP Lock (0% Fake POD) · T-30m Locker/Door Routing (-61.4% Failed Drops) · 0ms Crash/Cold-Chain</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#F59E0B"/>
+  <text x="1002" y="59" class="badge">LOGISTICS-LAST-MILE-DELIVERY-01</text>
+
+  <!-- Left Column: Recipient Pre-Call, Driver PDA & Locker Bus -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Pre-Arrival Call &amp; Courier PDA Core</text>
+  <text x="48" y="164" class="card-sub">UPS ORION / FedEx / DHL / SF Express · HiveBox Smart Locker</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">T-30m Automated Delivery-Preference Call</text>
+  <text x="64" y="224" class="body">• Calls recipient before courier enters neighborhood</text>
+  <text x="64" y="242" class="body">• Captures "Deliver to Door", "Smart Locker" or "Reschedule"</text>
+  <text x="64" y="260" class="mono">AWB_#SF9018 = "Door_Delivery_Confirmed | Gate = #1204"</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">High-Value / Cold-Chain OTP &amp; Locker Slot</text>
+  <text x="64" y="340" class="body">• Reserves smart-locker compartment (`Cell_B14`) in advance</text>
+  <text x="64" y="358" class="body">• Enforces 6-digit OTP for iPhone/Passport/Insulin handoff</text>
+  <text x="64" y="376" class="mono">Declared_Value = $1,299 (Direct_OTP_Required = True)</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Courier Bluetooth Headset Hands-Free Copilot</text>
+  <text x="64" y="462" class="body">• Reads recipient notes &amp; re-sequences stop order on the fly</text>
+  <text x="64" y="480" class="body">• Dials recipients via ephemeral AXB masked virtual number</text>
+  <text x="64" y="498" class="mono">AXB_Masked_Session = "+86-95013-xxxx-8821 (TTL=24h)"</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Postal &amp; Express Delivery Regulations</text>
+  <text x="64" y="584" class="body">• Strict ban on unconsented locker drop (2024 Express Rule)</text>
+  <text x="64" y="602" class="body">• GDPR / PIPL waybill phone &amp; address privacy protection</text>
+  <text x="64" y="620" class="mono">Compliance = Express_Delivery_Consent_And_PIPL_AXB</text>
+
+  <!-- Center Column: 3-Layer Deterministic Last-Mile Guardrail -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Consent, OTP &amp; Safety Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Unconsented Locker Drop · Zero Fake POD · 0ms Safety</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: AXB Privacy, Locker Consent &amp; OTP Hard Lock</text>
+  <text x="472" y="224" class="body">• Blocks unconsented smart-locker drop &amp; blocks closing</text>
+  <text x="472" y="242" class="body">  high-value/Rx POD without verified 6-digit recipient OTP</text>
+  <text x="472" y="260" class="body">• Masks real phone numbers via ephemeral AXB relay</text>
+  <text x="472" y="280" class="mono">Unconsented_Locker_Penalty_And_Fake_POD_Rate = 0.0%</text>
+  <text x="472" y="298" class="mono">Waybill_Real_Phone_Number_Leakage = 0.0%</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: T-30m Route Re-Sequencing &amp; Locker Pre-Hold</text>
+  <text x="472" y="374" class="body">• Skips stops where recipient requests evening redelivery</text>
+  <text x="472" y="392" class="body">  before courier climbs 6 flights of stairs</text>
+  <text x="472" y="410" class="body">• Atomically locks HiveBox/Amazon Locker cell for 45 mins</text>
+  <text x="472" y="430" class="mono">Failed_First_Attempt_Delivery_Reduction = -61.4%</text>
+  <text x="472" y="448" class="mono">Courier_Daily_Dialing_Time_Saved = -48 Minutes / Day</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Road Crash, Cold-Chain &amp; Hazmat Preempt</text>
+  <text x="472" y="524" class="body">• Detects courier road collision, aggressive dog/assault</text>
+  <text x="472" y="542" class="body">  threat, or biologics/fresh cold-chain temp breach (&gt;8°C)</text>
+  <text x="472" y="560" class="body">• Dispatches rescue courier for cold-chain handoff in 0ms</text>
+  <text x="472" y="578" class="body">  &amp; bridges Hub Safety Supervisor immediately</text>
+  <text x="472" y="600" class="mono">if (courierCrashColdChainExcursionOrHazard) -&gt; 0ms Hub</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 11ms | Cold_Chain_Save = 99.3%</text>
+
+  <!-- Right Column: Last-Mile Efficiency & Cost per Parcel ROI -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Cost-Per-Drop &amp; Courier Productivity ROI</text>
+  <text x="892" y="164" class="card-sub">+28 Stops/Courier/Day · Zero Regulatory Fines</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Eliminating the $4.80 Failed Second-Delivery Cost</text>
+  <text x="908" y="224" class="body">• 14% of residential signature parcels fail on Attempt #1</text>
+  <text x="908" y="242" class="body">  because the recipient is at work; T-30m voice pre-call</text>
+  <text x="908" y="260" class="body">  reroutes to an approved locker or neighbor before arrival</text>
+  <text x="908" y="282" class="mono">First_Attempt_Delivery_Success = 96.8% (vs 86.0%)</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Zero Riding-While-Dialing Safety Accidents</text>
+  <text x="908" y="366" class="body">• Couriers no longer dial 180 phone numbers manually</text>
+  <text x="908" y="384" class="body">  while driving vans or e-bikes; AI batches pre-calls &amp;</text>
+  <text x="908" y="402" class="body">  plays 3-word badge tags ("#302: Leave at Locker")</text>
+  <text x="908" y="424" class="mono">Stops_Completed_Per_Courier_Shift = +18% Lift</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (100k Parcel Drops)</text>
+  <text x="908" y="520" class="body">• Manual Courier Dialing + Redeliveries: $68,500 / 100k</text>
+  <text x="908" y="538" class="body">• Pre-Call + OTP/AXB Guarded Voice: $21,200 / 100k (Rec)</text>
+  <text x="908" y="556" class="body">• Silent SMS Only: $54,000 (ignored by 62% of recipients)</text>
+  <text x="908" y="578" class="mono">Net_Last_Mile_Savings_Per_100k_Parcels = -$47,300</text>
+  <text x="908" y="596" class="mono">Unconsented_Locker_Fines = $0 | High_Val_Theft = 0%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateLogisticsLastMileParcelDeliveryVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Last-Mile Parcel &amp; Express Delivery Voice AI</text>
+  <text x="52" y="718" class="body">Automate T-30m delivery-preference calls with AXB phone masking, enforce 6-digit OTPs on high-value drops, and reserve locker slots atomically.</text>
+</svg>

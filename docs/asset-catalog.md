@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（424 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（425 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -465,3 +465,4 @@
 422. **商业地产、长租公寓与物业管理（Property Management & Multifamily Leasing：Yardi Voyager / RealPage / AppFolio / 万科万物云模式）7×24h 租客看房预约、公平住房法（Fair Housing Act）反歧视硬锁与爆管断暖应急抢修语音架构（`HUD Fair Housing Act` 受保护特征中立回答与导盲犬/ESA 自动免宠物费及 `SmartRent` 自助看房门锁证件活体核身 `0%` 违规硬锁、晚间周末秒接看房电话将预约转化率从 `21%` 提至 `58.2%` 并以 `60秒` GFCI/处理器复位分流 `39.2%` 日常小修、半夜爆管淹水 `0ms` 远程关闭房间物联网总水阀并直通工程主管）方案**：[中文](./commercial-property-real-estate-leasing-yardi-appfolio-fair-housing-voice-selection-faq.md) | [EN](./commercial-property-real-estate-leasing-yardi-appfolio-fair-housing-voice-selection-faq.en.md)
 423. **高等教育、大学招生与教务资助中心（Higher Education Admissions, Financial Aid & Registrar：Ellucian Banner / Workday Student / Slate CRM 模式）学生隐私法（FERPA）硬锁、助学金（FAFSA）核验、选课学分保护与防新生流失（Summer Melt）语音架构（联邦 `FERPA` 拦截未签代理豁免的家长越权查分查账与 `Title IV` 禁夸大毕业起薪 `0%` 违规硬锁、退课前校验 `>=12学分` 全日制底线 `100%` 防止误丢 `Pell Grant` 助学金/F-1签证并削减 `36.4%` 暑期新生流失挽回 `+$312万/年` 学费、学生心理危机与 `Title IX` 举报 `0ms` 零教务日志直通 `CAPS`）方案**：[中文](./higher-education-university-admissions-fafsa-ferpa-registrar-voice-selection-faq.md) | [EN](./higher-education-university-admissions-fafsa-ferpa-registrar-voice-selection-faq.en.md)
 424. **企业级实时语音 AI 安全总纲：反深度伪造声音克隆（Anti-Deepfake PAD）、PCI-DSS v4.0 边缘按键掩码（DTMF Clamping）与 OWASP Agentic 防越权防火墙（`ISO/IEC 30107-3` `<80ms` 声码器相位活体探针拦截 `99.7%` 3秒零样本 AI 克隆音与工具 Schema 物理剥离 `user_id` 强制绑定服务端 `JWT` 实现 `0%` IDOR 越权硬锁、边缘 `SBC` 物理拦截 16位卡号与 `CVV` 直传支付 `HSM` 使 ASR/LLM/录音桶 `100%` 豁免 `PCI-DSS` 审计年省 `$24万`、声学越狱与盗打 `0ms` 吊销令牌转 SOC）方案**：[中文](./enterprise-voice-security-deepfake-biometrics-pci-dss-zero-trust-selection-faq.md) | [EN](./enterprise-voice-security-deepfake-biometrics-pci-dss-zero-trust-selection-faq.en.md)
+425. **快递物流、同城即时配送与末端派件（Last-Mile Parcel & Express Delivery：顺丰 SF Express / UPS / FedEx / DHL / 京东物流模式）派前智能电联（上门 vs 快递柜同意锁）、虚拟隐私小号（AXB）与高值件签收码（OTP）硬锁语音架构（`AXB` 虚拟号隐私脱敏与未获收件人明确同意物理锁死巴枪“入柜”按钮免擅投罚款及高值件 `6位OTP` 当面签收 `0%` 冒领硬锁、派前 `T-30m` 批量电联提前 `45分钟` 原子预占丰巢格口将首次派送成功率提至 `96.8%` 并为小哥日省 `48分钟` 拨号时间、小哥碰撞与冷链超温 `0ms` 调度邻近骑手接力）方案**：[中文](./logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.md) | [EN](./logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.en.md)

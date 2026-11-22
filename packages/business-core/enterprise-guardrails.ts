@@ -11545,6 +11545,37 @@ export function evaluateEnterpriseVoiceSecurityDeepfakePciGuard(input: {
   };
 }
 
+export interface LogisticsLastMileParcelDeliveryVoiceEvaluation {
+  policyCode: "LOGISTICS-LAST-MILE-DELIVERY-01";
+  parcelDropAndLockerDepositAuthorized: boolean;
+  unconsentedLockerOrMissingOtpOrPhoneLeakBlocked: boolean;
+  rescueCourierColdChainAndHubSafetyBridged: boolean;
+}
+
+/**
+ * Deterministic Last-Mile Parcel & Express Delivery (UPS / FedEx / DHL / SF Express) AXB Virtual Phone Masking, Locker-Consent & High-Value 6-Digit OTP Lock, T-30m Route/Locker Gate & 0ms Crash/Cold-Chain Guard (`LOGISTICS-LAST-MILE-DELIVERY-01`).
+ */
+export function evaluateLogisticsLastMileParcelDeliveryVoiceGuard(input: {
+  axbPhoneMaskedAndLockerConsentOrOtpVerified: boolean;
+  preArrivalRouteSyncedAndLockerCellReserved: boolean;
+  courierCrashColdChainExcursionOrHazardPreemption: boolean;
+}): LogisticsLastMileParcelDeliveryVoiceEvaluation {
+  return {
+    policyCode: "LOGISTICS-LAST-MILE-DELIVERY-01",
+    parcelDropAndLockerDepositAuthorized:
+      input.axbPhoneMaskedAndLockerConsentOrOtpVerified &&
+      input.preArrivalRouteSyncedAndLockerCellReserved &&
+      !input.courierCrashColdChainExcursionOrHazardPreemption,
+    unconsentedLockerOrMissingOtpOrPhoneLeakBlocked:
+      !input.axbPhoneMaskedAndLockerConsentOrOtpVerified ||
+      !input.preArrivalRouteSyncedAndLockerCellReserved ||
+      input.courierCrashColdChainExcursionOrHazardPreemption,
+    rescueCourierColdChainAndHubSafetyBridged:
+      input.courierCrashColdChainExcursionOrHazardPreemption,
+  };
+}
+
+
 
 
 
