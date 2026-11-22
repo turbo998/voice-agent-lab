@@ -10045,6 +10045,37 @@ export function evaluateSolarStorageVppStormReserveVoiceGuard(input: {
   };
 }
 
+export interface ChildcareK12CustodyPickupBusVoiceEvaluation {
+  policyCode: "CHILDCARE-K12-CUSTODY-VOICE-01";
+  pickupAndBusSignoffAuthorized: boolean;
+  custodyBreachOrBusChildLeftBehindBlocked: boolean;
+  anaphylaxisEpiPenOrCampusLockdownBridged: boolean;
+}
+
+/**
+ * Deterministic Childcare, Early Education & K-12 Court-Custody / Zero-Verbal-Pickup Lock, School-Bus Empty-Seat Sweep Gate & 0ms EpiPen / Campus Lockdown Guard (`CHILDCARE-K12-CUSTODY-VOICE-01`).
+ */
+export function evaluateChildcareK12CustodyPickupBusVoiceGuard(input: {
+  courtCustodyOrderRespectedAndZeroVerbalPickupAddition: boolean;
+  busBoardingCountZeroedAndRearSweepButtonVerified: boolean;
+  anaphylaxisEpiPenOrCampusLockdownEmergencyPreemption: boolean;
+}): ChildcareK12CustodyPickupBusVoiceEvaluation {
+  return {
+    policyCode: "CHILDCARE-K12-CUSTODY-VOICE-01",
+    pickupAndBusSignoffAuthorized:
+      input.courtCustodyOrderRespectedAndZeroVerbalPickupAddition &&
+      input.busBoardingCountZeroedAndRearSweepButtonVerified &&
+      !input.anaphylaxisEpiPenOrCampusLockdownEmergencyPreemption,
+    custodyBreachOrBusChildLeftBehindBlocked:
+      !input.courtCustodyOrderRespectedAndZeroVerbalPickupAddition ||
+      !input.busBoardingCountZeroedAndRearSweepButtonVerified ||
+      input.anaphylaxisEpiPenOrCampusLockdownEmergencyPreemption,
+    anaphylaxisEpiPenOrCampusLockdownBridged:
+      input.anaphylaxisEpiPenOrCampusLockdownEmergencyPreemption,
+  };
+}
+
+
 
 
 
