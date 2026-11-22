@@ -11575,6 +11575,37 @@ export function evaluateLogisticsLastMileParcelDeliveryVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseVoiceFinopsPtuTcoEvaluation {
+  policyCode: "VOICE-FINOPS-PTU-TCO-2026-01";
+  turnExecutionAndPtuRoutingAuthorized: boolean;
+  unprunedAudioBloatOrCacheBustingBlocked: boolean;
+  zombieCallCutOrPaygoSpilloverTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI FinOps (Azure OpenAI PTU vs. PAYGO) 3-Turn Sliding Audio-to-Text Compaction & Prefix-Cache Lock, 72% SLM & PTU Spillover Gate & 0ms 18s Zombie-Call Circuit Breaker (`VOICE-FINOPS-PTU-TCO-2026-01`).
+ */
+export function evaluateEnterpriseVoiceFinopsPtuTcoGuard(input: {
+  threeTurnAudioPrunedAndPrefixCacheLocked: boolean;
+  slmTieredRoutedAndPtuSpilloverActive: boolean;
+  zombieSilenceBotLoopOrBudgetCapBreachPreemption: boolean;
+}): EnterpriseVoiceFinopsPtuTcoEvaluation {
+  return {
+    policyCode: "VOICE-FINOPS-PTU-TCO-2026-01",
+    turnExecutionAndPtuRoutingAuthorized:
+      input.threeTurnAudioPrunedAndPrefixCacheLocked &&
+      input.slmTieredRoutedAndPtuSpilloverActive &&
+      !input.zombieSilenceBotLoopOrBudgetCapBreachPreemption,
+    unprunedAudioBloatOrCacheBustingBlocked:
+      !input.threeTurnAudioPrunedAndPrefixCacheLocked ||
+      !input.slmTieredRoutedAndPtuSpilloverActive ||
+      input.zombieSilenceBotLoopOrBudgetCapBreachPreemption,
+    zombieCallCutOrPaygoSpilloverTriggered:
+      input.zombieSilenceBotLoopOrBudgetCapBreachPreemption,
+  };
+}
+
+
 
 
 

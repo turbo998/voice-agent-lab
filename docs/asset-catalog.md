@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（425 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（426 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -466,3 +466,4 @@
 423. **高等教育、大学招生与教务资助中心（Higher Education Admissions, Financial Aid & Registrar：Ellucian Banner / Workday Student / Slate CRM 模式）学生隐私法（FERPA）硬锁、助学金（FAFSA）核验、选课学分保护与防新生流失（Summer Melt）语音架构（联邦 `FERPA` 拦截未签代理豁免的家长越权查分查账与 `Title IV` 禁夸大毕业起薪 `0%` 违规硬锁、退课前校验 `>=12学分` 全日制底线 `100%` 防止误丢 `Pell Grant` 助学金/F-1签证并削减 `36.4%` 暑期新生流失挽回 `+$312万/年` 学费、学生心理危机与 `Title IX` 举报 `0ms` 零教务日志直通 `CAPS`）方案**：[中文](./higher-education-university-admissions-fafsa-ferpa-registrar-voice-selection-faq.md) | [EN](./higher-education-university-admissions-fafsa-ferpa-registrar-voice-selection-faq.en.md)
 424. **企业级实时语音 AI 安全总纲：反深度伪造声音克隆（Anti-Deepfake PAD）、PCI-DSS v4.0 边缘按键掩码（DTMF Clamping）与 OWASP Agentic 防越权防火墙（`ISO/IEC 30107-3` `<80ms` 声码器相位活体探针拦截 `99.7%` 3秒零样本 AI 克隆音与工具 Schema 物理剥离 `user_id` 强制绑定服务端 `JWT` 实现 `0%` IDOR 越权硬锁、边缘 `SBC` 物理拦截 16位卡号与 `CVV` 直传支付 `HSM` 使 ASR/LLM/录音桶 `100%` 豁免 `PCI-DSS` 审计年省 `$24万`、声学越狱与盗打 `0ms` 吊销令牌转 SOC）方案**：[中文](./enterprise-voice-security-deepfake-biometrics-pci-dss-zero-trust-selection-faq.md) | [EN](./enterprise-voice-security-deepfake-biometrics-pci-dss-zero-trust-selection-faq.en.md)
 425. **快递物流、同城即时配送与末端派件（Last-Mile Parcel & Express Delivery：顺丰 SF Express / UPS / FedEx / DHL / 京东物流模式）派前智能电联（上门 vs 快递柜同意锁）、虚拟隐私小号（AXB）与高值件签收码（OTP）硬锁语音架构（`AXB` 虚拟号隐私脱敏与未获收件人明确同意物理锁死巴枪“入柜”按钮免擅投罚款及高值件 `6位OTP` 当面签收 `0%` 冒领硬锁、派前 `T-30m` 批量电联提前 `45分钟` 原子预占丰巢格口将首次派送成功率提至 `96.8%` 并为小哥日省 `48分钟` 拨号时间、小哥碰撞与冷链超温 `0ms` 调度邻近骑手接力）方案**：[中文](./logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.md) | [EN](./logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.en.md)
+426. **企业级实时语音 AI 成本精算与容量规划（Voice AI FinOps：Azure OpenAI PTU vs. PAYGO 拐点、3 轮音频 Token 滑动压缩与大小模型分层路由降本 `64.2%` 选型指南）（`3轮` 滑动窗口自动将 `<=N-3` 轮原始音频蒸馏为紧凑文本消除 `$O(N^2)$` 二次方膨胀并冻结前缀达 `94.6%` 缓存命中率、`P65` 基荷采购 `PTU` 配合 `>=92%` 水位 `0ms` 溢出 `PAYGO` 及 `72%` 常规轮次卸载至 `SLM` 将全栈单价从 `$0.145/分` 压至 `$0.039/分` 年省 `$840万+`、`18秒` 空噪僵尸电话与 Bot 互聊 `0ms` 熔断）方案**：[中文](./enterprise-voice-finops-ptu-paygo-token-compaction-tco-calculator-selection-faq.md) | [EN](./enterprise-voice-finops-ptu-paygo-token-compaction-tco-calculator-selection-faq.en.md)
