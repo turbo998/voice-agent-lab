@@ -9835,6 +9835,37 @@ export function evaluateLuxuryRetailJewelryVicClientelingGuard(input: {
   };
 }
 
+export interface ShoppingMallAirportWayfindingLostFoundEvaluation {
+  policyCode: "MALL-AIRPORT-WAYFINDING-VOICE-01";
+  wayfindingAndLoyaltyActionAuthorized: boolean;
+  escalatorHazardOrFraudulentClaimBlocked: boolean;
+  silentCodeAdamOrParkingGateRescueBridged: boolean;
+}
+
+/**
+ * Deterministic Shopping Mall & Airport Commercial Complex Landmark-Anchored Step-Free Wayfinding, Blind Lost-and-Found / Receipt Hash Gate & 0ms Silent Code Adam Guard (`MALL-AIRPORT-WAYFINDING-VOICE-01`).
+ */
+export function evaluateShoppingMallAirportWayfindingLostFoundGuard(input: {
+  landmarkRelativeWayfindingAndStepFreeElevatorLocked: boolean;
+  lostItemBlindDetailVerifiedAndReceiptHashUnique: boolean;
+  missingChildSilentCodeAdamOrParkingGateEmergencyPreemption: boolean;
+}): ShoppingMallAirportWayfindingLostFoundEvaluation {
+  return {
+    policyCode: "MALL-AIRPORT-WAYFINDING-VOICE-01",
+    wayfindingAndLoyaltyActionAuthorized:
+      input.landmarkRelativeWayfindingAndStepFreeElevatorLocked &&
+      input.lostItemBlindDetailVerifiedAndReceiptHashUnique &&
+      !input.missingChildSilentCodeAdamOrParkingGateEmergencyPreemption,
+    escalatorHazardOrFraudulentClaimBlocked:
+      !input.landmarkRelativeWayfindingAndStepFreeElevatorLocked ||
+      !input.lostItemBlindDetailVerifiedAndReceiptHashUnique ||
+      input.missingChildSilentCodeAdamOrParkingGateEmergencyPreemption,
+    silentCodeAdamOrParkingGateRescueBridged:
+      input.missingChildSilentCodeAdamOrParkingGateEmergencyPreemption,
+  };
+}
+
+
 
 
 
