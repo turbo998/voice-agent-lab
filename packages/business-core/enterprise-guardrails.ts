@@ -10255,6 +10255,37 @@ export function evaluateSaasCustomerSuccessRenewalSaveVoiceGuard(input: {
   };
 }
 
+export interface InteractiveGamingVoiceNpcCoppaSafetyEvaluation {
+  policyCode: "GAMING-VOICE-NPC-COPPA-01";
+  npcDialogueAndSquadAudioAuthorized: boolean;
+  economyExploitOrCoppaVoiceprintLeakBlocked: boolean;
+  groomingSwattingMicMutedAndTrustSafetyBridged: boolean;
+}
+
+/**
+ * Deterministic Interactive Gaming Real-Time Voice NPC & Companion COPPA Zero-Voiceprint / Economy Firewall Lock, 85/15 Tactical Bark Cache Gate & 0ms Grooming/Swatting Mic-Mute Guard (`GAMING-VOICE-NPC-COPPA-01`).
+ */
+export function evaluateInteractiveGamingVoiceNpcCoppaSafetyGuard(input: {
+  coppaMinorZeroVoiceprintAndEconomyWriteIsolated: boolean;
+  tacticalBarkCache85PctAndInCharacterLoreLocked: boolean;
+  childGroomingSwattingOrHateSpeechMicMutePreemption: boolean;
+}): InteractiveGamingVoiceNpcCoppaSafetyEvaluation {
+  return {
+    policyCode: "GAMING-VOICE-NPC-COPPA-01",
+    npcDialogueAndSquadAudioAuthorized:
+      input.coppaMinorZeroVoiceprintAndEconomyWriteIsolated &&
+      input.tacticalBarkCache85PctAndInCharacterLoreLocked &&
+      !input.childGroomingSwattingOrHateSpeechMicMutePreemption,
+    economyExploitOrCoppaVoiceprintLeakBlocked:
+      !input.coppaMinorZeroVoiceprintAndEconomyWriteIsolated ||
+      !input.tacticalBarkCache85PctAndInCharacterLoreLocked ||
+      input.childGroomingSwattingOrHateSpeechMicMutePreemption,
+    groomingSwattingMicMutedAndTrustSafetyBridged:
+      input.childGroomingSwattingOrHateSpeechMicMutePreemption,
+  };
+}
+
+
 
 
 
