@@ -9865,6 +9865,37 @@ export function evaluateShoppingMallAirportWayfindingLostFoundGuard(input: {
   };
 }
 
+export interface OutboundStirShakenCallerReputationEvaluation {
+  policyCode: "OUTBOUND-STIR-SHAKEN-REPUTATION-01";
+  outboundDialAndGreetingAuthorized: boolean;
+  spamLabelRiskOrTelemarketerPauseBlocked: boolean;
+  didQuarantineRemediationOrGlobalDncBridged: boolean;
+}
+
+/**
+ * Deterministic Outbound Voice STIR/SHAKEN Level-A Attestation, Anti-Snowshoeing Velocity Lock, <380ms Speculative AMD & 0ms Spam/DNC Guard (`OUTBOUND-STIR-SHAKEN-REPUTATION-01`).
+ */
+export function evaluateOutboundStirShakenCallerReputationGuard(input: {
+  stirShakenLevelAAndAntiSnowshoeVelocityLocked: boolean;
+  speculativeAmdSub380msAndVoicemailBeepSynced: boolean;
+  carrierSpamFlagQuarantineOrVerbalDncOptOutPreemption: boolean;
+}): OutboundStirShakenCallerReputationEvaluation {
+  return {
+    policyCode: "OUTBOUND-STIR-SHAKEN-REPUTATION-01",
+    outboundDialAndGreetingAuthorized:
+      input.stirShakenLevelAAndAntiSnowshoeVelocityLocked &&
+      input.speculativeAmdSub380msAndVoicemailBeepSynced &&
+      !input.carrierSpamFlagQuarantineOrVerbalDncOptOutPreemption,
+    spamLabelRiskOrTelemarketerPauseBlocked:
+      !input.stirShakenLevelAAndAntiSnowshoeVelocityLocked ||
+      !input.speculativeAmdSub380msAndVoicemailBeepSynced ||
+      input.carrierSpamFlagQuarantineOrVerbalDncOptOutPreemption,
+    didQuarantineRemediationOrGlobalDncBridged:
+      input.carrierSpamFlagQuarantineOrVerbalDncOptOutPreemption,
+  };
+}
+
+
 
 
 
