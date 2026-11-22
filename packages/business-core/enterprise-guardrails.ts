@@ -11425,6 +11425,37 @@ export function evaluateEnterpriseVoiceRagKnowledgeCitationGuard(input: {
   };
 }
 
+export interface UtilityElectricGasAmiOutageVoiceEvaluation {
+  policyCode: "UTILITY-GRID-AMI-OUTAGE-VOICE-01";
+  reconnectAndPaymentPlanAndBillExplainAuthorized: boolean;
+  moratoriumViolationOrFalseTruckRollOrLiveStoveBlocked: boolean;
+  gasLeakEvacAndEmergencyLineCrewBridged: boolean;
+}
+
+/**
+ * Deterministic Electric, Gas & Water Utility (SAP IS-U / Oracle CC&B / ADMS / Itron AMI) PUC Weather/Medical Shutoff Moratorium & Stove-Off Reconnect Lock, 200ms AMI Meter Ping Gate & 0ms Gas-Odor Evacuation Guard (`UTILITY-GRID-AMI-OUTAGE-VOICE-01`).
+ */
+export function evaluateUtilityElectricGasAmiOutageVoiceGuard(input: {
+  shutoffMoratoriumRespectedAndAppliancesOffConfirmed: boolean;
+  amiMeterPingAndIntervalBillDisaggregated: boolean;
+  gasOdorDownedLiveWireOrCoAlarmPreemption: boolean;
+}): UtilityElectricGasAmiOutageVoiceEvaluation {
+  return {
+    policyCode: "UTILITY-GRID-AMI-OUTAGE-VOICE-01",
+    reconnectAndPaymentPlanAndBillExplainAuthorized:
+      input.shutoffMoratoriumRespectedAndAppliancesOffConfirmed &&
+      input.amiMeterPingAndIntervalBillDisaggregated &&
+      !input.gasOdorDownedLiveWireOrCoAlarmPreemption,
+    moratoriumViolationOrFalseTruckRollOrLiveStoveBlocked:
+      !input.shutoffMoratoriumRespectedAndAppliancesOffConfirmed ||
+      !input.amiMeterPingAndIntervalBillDisaggregated ||
+      input.gasOdorDownedLiveWireOrCoAlarmPreemption,
+    gasLeakEvacAndEmergencyLineCrewBridged:
+      input.gasOdorDownedLiveWireOrCoAlarmPreemption,
+  };
+}
+
+
 
 
 
