@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（365 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（366 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -406,3 +406,4 @@
 363. **商业印刷、包装供应链与标签快印（Esko WebCenter / ePS Pace / 医药与食品包装印刷模式）24/7 印前校稿、签样哈希硬锁（Proof `SHA-256`）与错印 `0ms` 停机拦截语音架构（未匹配客户电签 `PDF Proof SHA-256` 哈希与最新版本号严禁口头改字开机硬锁杜绝 `$80k+` 印废、印前 `3mm` 出血/刀模/`GS1` 条码自动预检催办提速 `61%` 门禁、食品过敏原漏印与医药标签 `21 CFR 211.122` 混版 `0ms` `JDF` 急停机台并锁死 WMS 发货托盘）方案**：[中文](./packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.md) | [EN](./packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.en.md)
 364. **企业实时语音 AI 多模态屏幕共享与协同操作（Voice + Live Screen-Sharing Co-Pilot：客户端 DOM 密码打码、事件驱动关键帧抽帧与防视觉提示词注入）架构（浏览器本地 Canvas 上传前 100% 涂黑密码/卡号/密钥 DOM 区域硬锁、仅在 DOM 变动或指代词触发时按需上传 `<75KB Set-of-Mark` 帧削减 `88.5%` 视觉 Token 门禁、画面内间接视觉提示词注入 `OWASP ASI01` 熔断与高危按钮严禁代点强制真人点击）方案**：[中文](./enterprise-voice-multimodal-screen-sharing-dom-redaction-copilot-selection-faq.md) | [EN](./enterprise-voice-multimodal-screen-sharing-dom-redaction-copilot-selection-faq.en.md)
 365. **企业级智能联络中心“AI 一线分流 + 坐席实时辅助（Real-Time Agent Assist）+ 3秒话后小结（Auto-ACW）”全栈选型与 ROI 架构（Microsoft D365 Contact Center vs. Amazon Connect Q vs. Genesys Copilot vs. 自建双声道 STT + SLM：`Ch0/Ch1` 双声道物理分轨 `0%` 自回声弹窗与振铃前 `<250ms` 4 槽位交接卡硬锁、`<320ms` `<=25字` 三要点微卡片 + 一键执行按钮与 3 秒原话时间戳锚定小结压降 `89.4%` ACW 门禁、通话中漏读条款 `0ms` 红条补救并省 `85.2%` 席位税）方案**：[中文](./contact-center-tier1-deflection-realtime-agent-assist-auto-acw-roi-selection-faq.md) | [EN](./contact-center-tier1-deflection-realtime-agent-assist-auto-acw-roi-selection-faq.en.md)
+366. **医药临床试验患者招募（eRecruitment）、电子患者报告结局（ePRO / eCOA）24/7 语音随访与严重不良事件（SAE）合规架构（Medidata Rave / Veeva Vault Clinical / Clario / FDA 21 CFR Part 11 模式：经认证 `eCOA` 量表 `SHA-256` 锁定 `SSML` 逐字播报 `0%` 改写与防破盲硬锁、`21 CFR Part 11 ALCOA+` 受试者本人声纹防家属代答与每日日记依从性提至 `94.6%` 门禁、`CTCAE Grade 3+` 严重不良事件 `0ms` 生成 24h `E2B(R3)` 并直连主研医师 `PI`）方案**：[中文](./clinical-trial-patient-erecruitment-ecoa-epro-sae-21cfr11-voice-selection-faq.md) | [EN](./clinical-trial-patient-erecruitment-ecoa-epro-sae-21cfr11-voice-selection-faq.en.md)

@@ -9775,6 +9775,37 @@ export function evaluateContactCenterTier1AgentAssistAutoAcwGuard(input: {
   };
 }
 
+export interface ClinicalTrialErecruitmentEcoaSaeVoiceEvaluation {
+  policyCode: "CLINICAL-TRIAL-ECOA-SAE-VOICE-01";
+  ecoaRecordAndEnrollmentAuthorized: boolean;
+  scaleParaphraseOrCaregiverProxyBlocked: boolean;
+  sae24hReportAndPrincipalInvestigatorBridged: boolean;
+}
+
+/**
+ * Deterministic Clinical Trial eRecruitment, Validated eCOA Verbatim Locked-SSML Readout, 21 CFR Part 11 ALCOA+ Identity Gate & 0ms SAE Principal Investigator Guard (`CLINICAL-TRIAL-ECOA-SAE-VOICE-01`).
+ */
+export function evaluateClinicalTrialErecruitmentEcoaSaeVoiceGuard(input: {
+  validatedEcoaScaleVerbatimLockedSsmlAndZeroUnblinding: boolean;
+  participantIdentityVerifiedAnd21CfrPart11AlcoaLogged: boolean;
+  seriousAdverseEventGrade3OrOverdosePiPreemption: boolean;
+}): ClinicalTrialErecruitmentEcoaSaeVoiceEvaluation {
+  return {
+    policyCode: "CLINICAL-TRIAL-ECOA-SAE-VOICE-01",
+    ecoaRecordAndEnrollmentAuthorized:
+      input.validatedEcoaScaleVerbatimLockedSsmlAndZeroUnblinding &&
+      input.participantIdentityVerifiedAnd21CfrPart11AlcoaLogged &&
+      !input.seriousAdverseEventGrade3OrOverdosePiPreemption,
+    scaleParaphraseOrCaregiverProxyBlocked:
+      !input.validatedEcoaScaleVerbatimLockedSsmlAndZeroUnblinding ||
+      !input.participantIdentityVerifiedAnd21CfrPart11AlcoaLogged ||
+      input.seriousAdverseEventGrade3OrOverdosePiPreemption,
+    sae24hReportAndPrincipalInvestigatorBridged:
+      input.seriousAdverseEventGrade3OrOverdosePiPreemption,
+  };
+}
+
+
 
 
 
