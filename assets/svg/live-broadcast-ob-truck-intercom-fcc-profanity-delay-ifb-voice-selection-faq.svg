@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad402" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad402" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #F87171; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad402)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad402)"/>
+  <text x="52" y="52" class="title">Live Broadcast OB Truck Intercom, 7s FCC Safety Delay &amp; Host IFB Whisper Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">7-Second Broadcast Delay Buffer Dump Lock (0% On-Air Breach) · Pause-Aware Host IFB Whisper · 0ms EAS / Master-Control Override</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#EF4444"/>
+  <text x="1000" y="59" class="badge">BROADCAST-OB-TRUCK-FCC-VOICE-01</text>
+
+  <!-- Left Column: OB Truck Matrix Intercom & Program Feeds -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. OB Truck Matrix Intercom &amp; Live Feeds</text>
+  <text x="48" y="164" class="card-sub">RTS ODIN / Clear-Com Eclipse · SMPTE ST 2110-30 / AES67</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Live On-Air Program &amp; Field Crowd Mics</text>
+  <text x="64" y="224" class="body">• Play-by-play commentators + parabolic sideline mics</text>
+  <text x="64" y="242" class="body">• Feeds 7.0s hardware broadcast delay buffer (Eventide)</text>
+  <text x="64" y="260" class="mono">Delay_Buffer_Headroom = 7,000ms_Pre_Transmitter</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Anchor IFB (Interruptible Foldback) Bus</text>
+  <text x="64" y="340" class="body">• Mix-Minus earpiece worn by live anchor / commentator</text>
+  <text x="64" y="358" class="body">• Real-time VAD tracks anchor's active speaking state</text>
+  <text x="64" y="376" class="mono">Anchor_Mic_State = Speaking_On_Air | Pause_Window</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">EVS Replay, Sports Data &amp; Teleprompter Bus</text>
+  <text x="64" y="462" class="body">• Sportradar / Opta / Hawkeye live telemetry &amp; EVS clip ID</text>
+  <text x="64" y="480" class="body">• MOS protocol link to Ross Inception / ENPS prompter</text>
+  <text x="64" y="498" class="mono">Live_Stat_Trigger = "Player_23_Career_High_42_Pts"</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">FCC Part 79 / CEA-708 Closed-Caption Encoder</text>
+  <text x="64" y="584" class="body">• Evertz / EEG Lexi HD-SDI closed-caption inserter</text>
+  <text x="64" y="602" class="body">• Custom roster dictionary for athlete/diplomat names</text>
+  <text x="64" y="620" class="mono">Caption_NER_Accuracy = 99.6% (FCC Quality Compliant)</text>
+
+  <!-- Center Column: 3-Layer Deterministic Broadcast Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic 7s Delay &amp; IFB Whisper Gate</text>
+  <text x="456" y="164" class="card-sub">Zero On-Air Violation · Zero Anchor Talk-Over · 0ms EAS</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: 7-Second Delay Buffer Safety Dump Lock</text>
+  <text x="472" y="224" class="body">• Scans pre-air buffer at T-6.5s for FCC 18 USC 1464</text>
+  <text x="472" y="242" class="body">  profanity, doxxed PII, or broadcast safety redlines</text>
+  <text x="472" y="260" class="body">• FiresGPI dump/mute relay at T-5.8s before RF uplink</text>
+  <text x="472" y="280" class="mono">On_Air_Broadcast_Violation_Leak = 0.0% (Hard Dumped)</text>
+  <text x="472" y="298" class="mono">Pre_Transmitter_Intercept_Margin = 5,800ms</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: Pause-Synchronized IFB Whisper Gate</text>
+  <text x="472" y="374" class="body">• Blocks AI stat whispers while anchor's Tally light is ON</text>
+  <text x="472" y="392" class="body">  and voice is active (prevents auditory speech jamming)</text>
+  <text x="472" y="410" class="body">• Whispers &lt;3-word cue in pause or pushes to prompter</text>
+  <text x="472" y="430" class="mono">Anchor_On_Air_Stumble_From_IFB = 0.0%</text>
+  <text x="472" y="448" class="mono">Live_Stat_And_Replay_Cue_Speed = 1.4s (vs 18s Manual)</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms FEMA EAS &amp; Dead-Air Master Preemption</text>
+  <text x="472" y="524" class="body">• Detects National EAS / Tsunami / Amber alert trigger</text>
+  <text x="472" y="542" class="body">  or &gt;3.0s unscheduled program dead-air / exciter trip</text>
+  <text x="472" y="560" class="body">• Switches master router to emergency slate/EAS in 0ms</text>
+  <text x="472" y="578" class="body">  &amp; bridges Technical Director (TD) + Master Control</text>
+  <text x="472" y="600" class="mono">if (easAlertOrMasterDeadAirFault) -&gt; 0ms Master_Switch</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 19ms | EAS_Cutover_Delay = 0ms</text>
+
+  <!-- Right Column: Master Control Output & Broadcast KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Master Control &amp; Accessibility Output</text>
+  <text x="892" y="164" class="card-sub">GPI Delay Dump · CEA-708 SAP · EVS Clip Tagging</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Automated EVS Highlight &amp; SAP Secondary Audio</text>
+  <text x="908" y="224" class="body">• Voice-tags EVS replay angles ("Clip 114B Goal Angle")</text>
+  <text x="908" y="242" class="body">• Generates Secondary Audio Program (SAP) Spanish/EN</text>
+  <text x="908" y="260" class="body">  and FCC Audio Description (AD) for blind viewers</text>
+  <text x="908" y="282" class="mono">CEA708_Caption_Display_Latency = 1.6s</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">OB Truck Producer &amp; TD Intercom Matrix</text>
+  <text x="908" y="366" class="body">• Isolates 64 party-line intercom channels on RTS ODIN</text>
+  <text x="908" y="384" class="body">• Prevents internal truck talkback from leaking to air</text>
+  <text x="908" y="402" class="body">• Logs FCC compliance check-sheet &amp; EAS test timestamps</text>
+  <text x="908" y="424" class="mono">Talkback_To_Program_Bus_Leak = 0.0%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (1,000 Live Broadcasts)</text>
+  <text x="908" y="520" class="body">• Manual Delay Button + Steno: $1,850,000 / 1k shows</text>
+  <text x="908" y="538" class="body">• Hybrid 7s-Gate + IFB Copilot: $14,800 / 1k shows (Rec)</text>
+  <text x="908" y="556" class="body">• Unfiltered Live Caption/IFB: $9,200 + $490k FCC fine risk</text>
+  <text x="908" y="578" class="mono">Avoided_FCC_Indecency_Penalty = $490,000 / Incident</text>
+  <text x="908" y="596" class="mono">Sideline_Curse_Catch = 100% | IFB_Collisions = 0%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateLiveBroadcastObTruckFccIfbVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Live Broadcast OB Truck Intercom &amp; Safety Delay Voice Copilot</text>
+  <text x="52" y="718" class="body">Wire safety redline detection into the 7-second hardware delay buffer via GPI relay, and gate anchor IFB audio cues strictly on Tally/speech pause state.</text>
+</svg>

@@ -10855,6 +10855,37 @@ export function evaluateFuneralMortuaryCrematoriumFtcVoiceGuard(input: {
   };
 }
 
+export interface LiveBroadcastObTruckFccIfbVoiceEvaluation {
+  policyCode: "BROADCAST-OB-TRUCK-FCC-VOICE-01";
+  programUplinkAndIfbCueAuthorized: boolean;
+  onAirProfanityOrAnchorTalkOverBlocked: boolean;
+  easMasterCutoverAndTdBridged: boolean;
+}
+
+/**
+ * Deterministic Live Broadcast OB Truck & Studio Intercom (RTS ODIN / Clear-Com / Eventide 7s Delay) Split-Stem FCC Safety Dump Lock, Pause-Gated IFB Whisper Gate & 0ms EAS/Dead-Air Guard (`BROADCAST-OB-TRUCK-FCC-VOICE-01`).
+ */
+export function evaluateLiveBroadcastObTruckFccIfbVoiceGuard(input: {
+  sevenSecondDelayBufferCleanAndTalkbackIsolated: boolean;
+  anchorInSilenceWindowOrRoutedToTeleprompter: boolean;
+  easEmergencyAlertOrMasterDeadAirPreemption: boolean;
+}): LiveBroadcastObTruckFccIfbVoiceEvaluation {
+  return {
+    policyCode: "BROADCAST-OB-TRUCK-FCC-VOICE-01",
+    programUplinkAndIfbCueAuthorized:
+      input.sevenSecondDelayBufferCleanAndTalkbackIsolated &&
+      input.anchorInSilenceWindowOrRoutedToTeleprompter &&
+      !input.easEmergencyAlertOrMasterDeadAirPreemption,
+    onAirProfanityOrAnchorTalkOverBlocked:
+      !input.sevenSecondDelayBufferCleanAndTalkbackIsolated ||
+      !input.anchorInSilenceWindowOrRoutedToTeleprompter ||
+      input.easEmergencyAlertOrMasterDeadAirPreemption,
+    easMasterCutoverAndTdBridged:
+      input.easEmergencyAlertOrMasterDeadAirPreemption,
+  };
+}
+
+
 
 
 
