@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（416 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（417 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -457,3 +457,4 @@
 414. **大型企业 HR 共享服务中心（HR Shared Services / Employee Concierge：Workday HCM / SAP SuccessFactors / ADP / ServiceNow HRSD 模式）年度福利选定（Open Enrollment）、带薪产假/病假（FMLA）精算、防工资卡篡改硬锁与职场申诉保密语音架构（语音禁改发薪银行卡强制 `Verified ID` 活体+旧卡 `48h` 冷静期 `0%` 工资劫持及 `HIPAA/ADA` 病假诊断对部门主管物理脱敏硬锁、`2.4分钟` 算清全家 `HDHP+HSA vs PPO` 净省 `$1,560` 分流 `74.2%` 福利工单、职场骚扰/打击报复举报与 `EAP` 危机 `0ms` 停止常规日志写入独立合规库）方案**：[中文](./enterprise-hr-workday-benefits-open-enrollment-fmla-payroll-voice-selection-faq.md) | [EN](./enterprise-hr-workday-benefits-open-enrollment-fmla-payroll-voice-selection-faq.en.md)
 415. **电信运营商与千兆光纤宽带客服（Telecom & Fiber ISP：Verizon / T-Mobile / AT&T / 中国移动/电信 OSS/BSS 模式）光猫远程自愈（TR-069/USP）、eSIM 换机写卡、防 SIM 卡劫持（FCC CPNI）硬锁与携号转网挽留语音架构（`FCC CPNI` 防 SIM 卡劫持严禁口头 KBA 补换卡强制 `Passkey/3D活体`+原卡 `24h` 预警 `0%` 盗号硬锁、振铃前读取 `OLT` 光衰并在通话中下发 `TR-069` `45秒` 远程切换拥塞信道自愈 `69.5%` 宽带故障砍掉 `48.4%` 无效上门省 `$23.3万/万通`、`E911` 失联与医疗维生宽带断网 `0ms` 下发 5G 灾备并直通 NOC）方案**：[中文](./telecom-isp-fiber-outage-esim-sim-swap-fraud-retention-voice-selection-faq.md) | [EN](./telecom-isp-fiber-outage-esim-sim-swap-fraud-retention-voice-selection-faq.en.md)
 416. **2026 主流企业级云联络中心（CCaaS）与实时语音 AI 横向选型指南：Genesys Cloud CX vs. Amazon Connect vs. NICE CXone vs. Microsoft Dynamics 365 Contact Center vs. Five9（前门 `BYOC SBC` 直接终结 `65%` AI 自助通话免除 `$0.025/分钟` 平台媒体分流附加税降本 `46.2%` 年省 `$137.5万`、转人工 `<150ms` 注入 `CTI` 随路上下文与已核身标识实现 `0%` 重复核身并缩减坐席 `AHT 85秒`、目标队列 `EWT > 180秒` `0ms` 拦截盲转死队列并切换虚拟排队原位回拨）方案**：[中文](./ccaas-genesys-amazon-connect-nice-cxone-dynamics365-voice-ai-migration-selection-faq.md) | [EN](./ccaas-genesys-amazon-connect-nice-cxone-dynamics365-voice-ai-migration-selection-faq.en.md)
+417. **商业对公银行、集团司库与财资管理（Commercial Banking & Corporate Treasury：J.P. Morgan Access / 花旗 CitiDirect / 招行企业网银 / Kyriba 模式）大额电汇（Fedwire / SWIFT）防 BEC 诈骗双人回拨、支票 Positive Pay 异常止付与跨境汇款追踪语音架构（`UCC Article 4A` 强制单向主叫《预留印鉴卡》第二签字人+`<80ms` 反 AI 克隆声纹+`FIDO2` 联签实现 `$0` BEC 诈骗并将放行耗时从 `2.5小时` 缩至 `3.2分钟`、支票 `Positive Pay` `11:00 AM` 截单前梯次追呼达 `99.4%` 准时率与 `SWIFT gpi UETR` 查账分流 `78.4%`、涉诈电汇 `0ms` 触发 `camt.056` 止付召回）方案**：[中文](./commercial-banking-treasury-ach-wire-verification-positive-pay-voice-selection-faq.md) | [EN](./commercial-banking-treasury-ach-wire-verification-positive-pay-voice-selection-faq.en.md)

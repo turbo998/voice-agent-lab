@@ -11305,6 +11305,37 @@ export function evaluateCcaasPlatformVoiceAiMigrationGuard(input: {
   };
 }
 
+export interface CommercialBankingTreasuryWireVoiceEvaluation {
+  policyCode: "COMMERCIAL-TREASURY-WIRE-POSPAY-01";
+  wireReleaseAndPositivePayDecisionAuthorized: boolean;
+  unverifiedDirectoryOrSingleSignerOrDeepfakeBlocked: boolean;
+  camt056WireRecallAndFraudDeskBridged: boolean;
+}
+
+/**
+ * Deterministic Commercial Banking & Corporate Treasury (J.P. Morgan Access / CitiDirect / Kyriba) UCC Article 4A Master-Card Outbound Callback & Anti-Deepfake Lock, 11AM Positive Pay Cutoff Gate & 0ms SWIFT camt.056 Recall Guard (`COMMERCIAL-TREASURY-WIRE-POSPAY-01`).
+ */
+export function evaluateCommercialBankingTreasuryWireVoiceGuard(input: {
+  masterSignatureCardCallbackAndDualControlVerified: boolean;
+  positivePayCutoffOrSwiftUetrMatched: boolean;
+  becWireRecallEmergencyOrOfacHitPreemption: boolean;
+}): CommercialBankingTreasuryWireVoiceEvaluation {
+  return {
+    policyCode: "COMMERCIAL-TREASURY-WIRE-POSPAY-01",
+    wireReleaseAndPositivePayDecisionAuthorized:
+      input.masterSignatureCardCallbackAndDualControlVerified &&
+      input.positivePayCutoffOrSwiftUetrMatched &&
+      !input.becWireRecallEmergencyOrOfacHitPreemption,
+    unverifiedDirectoryOrSingleSignerOrDeepfakeBlocked:
+      !input.masterSignatureCardCallbackAndDualControlVerified ||
+      !input.positivePayCutoffOrSwiftUetrMatched ||
+      input.becWireRecallEmergencyOrOfacHitPreemption,
+    camt056WireRecallAndFraudDeskBridged:
+      input.becWireRecallEmergencyOrOfacHitPreemption,
+  };
+}
+
+
 
 
 

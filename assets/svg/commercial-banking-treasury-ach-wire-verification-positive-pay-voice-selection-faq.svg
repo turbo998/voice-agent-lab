@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad417" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad417" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #FBBF24; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad417)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad417)"/>
+  <text x="52" y="52" class="title">Commercial Banking &amp; Corporate Treasury Wire Verification (UCC 4A), Positive Pay &amp; SWIFT gpi Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">Master-Card Outbound Callback &amp; Anti-Deepfake Lock ($0 BEC Loss) · 11AM Positive Pay Cutoff Gate (99.4% On-Time) · 0ms CAMT.056 Recall</text>
+  <rect x="976" y="38" width="256" height="32" rx="16" fill="#F59E0B"/>
+  <text x="992" y="59" class="badge">COMMERCIAL-TREASURY-WIRE-POSPAY-01</text>
+
+  <!-- Left Column: Corporate Treasury Desk & Payment Rails -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Corporate Treasury &amp; Payment Rails</text>
+  <text x="48" y="164" class="card-sub">J.P. Morgan Access / CitiDirect / Kyriba · Fedwire &amp; SWIFT</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Out-of-Band Fedwire / SWIFT Wire Callback</text>
+  <text x="64" y="224" class="body">• Triggers when CFO/Controller submits new beneficiary wire</text>
+  <text x="64" y="242" class="body">• Dials ONLY Master Signature Card directory number</text>
+  <text x="64" y="260" class="mono">Wire_Amt = $1,450,000 | New_Beneficiary = True (Tier-A)</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Check &amp; ACH Positive Pay Exception Engine</text>
+  <text x="64" y="340" class="body">• Flags payee name / amount mismatch vs issue file</text>
+  <text x="64" y="358" class="body">• Must secure "Pay" or "Return" decision before 11:00 AM</text>
+  <text x="64" y="376" class="mono">Exception_Check = #40912 ($84,200) | Cutoff_Left = 42m</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">SWIFT gpi UETR &amp; Letter of Credit (L/C) Tracker</text>
+  <text x="64" y="462" class="body">• Tracks 36-char UETR across correspondent Nostro/Vostro</text>
+  <text x="64" y="480" class="body">• Reports exact SHA/OUR deduct fees &amp; MT103/ISO 20022</text>
+  <text x="64" y="498" class="mono">SWIFT_gpi_Status = "Credited_At_Beneficiary_Bank_14:08Z"</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">UCC Article 4A &amp; Deepfake Acoustic Shield</text>
+  <text x="64" y="584" class="body">• Commercially reasonable security procedure enforcement</text>
+  <text x="64" y="602" class="body">• Real-time synthetic CFO voice clone detection (&lt;80ms)</text>
+  <text x="64" y="620" class="mono">Compliance = UCC_Article_4A_202_And_ISO_20022</text>
+
+  <!-- Center Column: 3-Layer Deterministic Treasury Guardrail Engine -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Anti-BEC, Positive Pay &amp; Recall Gate</text>
+  <text x="456" y="164" class="card-sub">Zero BEC Wire Fraud · 99.4% Cutoff Hit · 0ms CAMT.056 Recall</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: UCC 4A Master-Directory &amp; Anti-Deepfake Lock</text>
+  <text x="472" y="224" class="body">• Never dials phone numbers on wire instructions/emails;</text>
+  <text x="472" y="242" class="body">  enforces dual-control (Initiator != Approver) + FIDO2</text>
+  <text x="472" y="260" class="body">  hardware token + live acoustic deepfake liveness check</text>
+  <text x="472" y="280" class="mono">BEC_And_CFO_Deepfake_Wire_Loss = $0.00 (0.0% Breach)</text>
+  <text x="472" y="298" class="mono">Dual_Control_Separation_Of_Duties = 100% Enforced</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: 11:00 AM Positive Pay Cutoff &amp; UETR Gate</text>
+  <text x="472" y="374" class="body">• Escalates unreviewed Positive Pay checks across backup</text>
+  <text x="472" y="392" class="body">  treasury signers at T-45m before default return cutoff</text>
+  <text x="472" y="410" class="body">• Pushes check image &amp; payee OCR diff to mobile token app</text>
+  <text x="472" y="430" class="mono">Positive_Pay_Before_Cutoff_Resolution = 99.4%</text>
+  <text x="472" y="448" class="mono">Wrongful_Supplier_Check_Dishonor = -91% Reduction</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Fraud Wire Recall (CAMT.056) &amp; OFAC Bridge</text>
+  <text x="472" y="524" class="body">• Detects corporate report of fraudulent wire ("Stop that</text>
+  <text x="472" y="542" class="body">  wire, vendor email was hacked!"), OFAC hit or overdraft</text>
+  <text x="472" y="560" class="body">• Fires SWIFT `camt.056` recall &amp; Fedwire freeze in 0ms;</text>
+  <text x="472" y="578" class="body">  bridges Commercial Fraud Recovery Desk immediately</text>
+  <text x="472" y="600" class="mono">if (becWireRecallEmergencyOrOfacHit) -&gt; 0ms CAMT.056</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 15ms | Wire_Release_Cycle = 3.2m</text>
+
+  <!-- Right Column: Commercial Banking Ops & Treasury ROI -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Treasury Operations &amp; Fraud Prevention ROI</text>
+  <text x="892" y="164" class="card-sub">ISO 20022 · Fedwire Cutoff · Commercial RM Copilot</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">3.2-Minute Out-of-Band Wire Verification</text>
+  <text x="908" y="224" class="body">• Cuts wire callback wait time from 2.5 hours to 3.2 mins</text>
+  <text x="908" y="242" class="body">• Eliminates missed 5:00 PM ET Fedwire settlement cutoffs</text>
+  <text x="908" y="260" class="body">• Logs UCC 4A cryptographic + voiceprint audit proof</text>
+  <text x="908" y="282" class="mono">Same_Day_Fedwire_Cutoff_Hit_Rate = 99.8%</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Instant SWIFT gpi &amp; ISO 20022 Self-Service</text>
+  <text x="908" y="366" class="body">• Deflects 78% of corporate "Where is my wire / MT103?"</text>
+  <text x="908" y="384" class="body">  calls by reading live gpi hop timestamps &amp; FX rates</text>
+  <text x="908" y="402" class="body">• Frees commercial service officers for complex credit</text>
+  <text x="908" y="424" class="mono">SWIFT_gpi_Inquiry_Deflection = 78.4%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Treasury Calls)</text>
+  <text x="908" y="520" class="body">• Manual Treasury Callback Desk: $290,000 / 10k calls</text>
+  <text x="908" y="538" class="body">• UCC 4A + SWIFT gpi Voice AI: $1,280 / 10k calls (Rec)</text>
+  <text x="908" y="556" class="body">• Unguarded Voice Bot: $2,100 + $1.4M BEC liability</text>
+  <text x="908" y="578" class="mono">Prevented_BEC_And_Check_Fraud = $3.8M / 10k Calls</text>
+  <text x="908" y="596" class="mono">UCC_4A_Compliance = 100% | Deepfake_Blocks = 100%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateCommercialBankingTreasuryWireVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Commercial Banking &amp; Corporate Treasury Voice AI</text>
+  <text x="52" y="718" class="body">Enforce UCC 4A out-of-band callbacks exclusively to Master Signature Card phones with FIDO2 + anti-deepfake liveness.</text>
+</svg>
