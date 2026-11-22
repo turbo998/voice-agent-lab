@@ -10105,6 +10105,37 @@ export function evaluateAirlineCrewSchedulingFar117VoiceGuard(input: {
   };
 }
 
+export interface SeniorLivingMemoryCareWanderFallVoiceEvaluation {
+  policyCode: "SENIOR-LIVING-MEMORY-CARE-01";
+  residentCareAndConciergeAuthorized: boolean;
+  doubleDoseToxicityOrDementiaArgueBlocked: boolean;
+  bathroomFallAnticoagulantOrWanderBridged: boolean;
+}
+
+/**
+ * Deterministic Senior Living, Assisted Care & Memory-Care (PointClickCare eMAR) Anti-Double-Dosing Lock, Presbycusis EQ / Dementia Validation Gate & 0ms Radar Fall / WanderGuard Guard (`SENIOR-LIVING-MEMORY-CARE-01`).
+ */
+export function evaluateSeniorLivingMemoryCareWanderFallVoiceGuard(input: {
+  emarMedicationTimestampCheckedAndDnrPolstIndexed: boolean;
+  presbycusisAcousticEqAndDementiaValidationActive: boolean;
+  bathroomRadarFallOrWanderGuardElopementPreemption: boolean;
+}): SeniorLivingMemoryCareWanderFallVoiceEvaluation {
+  return {
+    policyCode: "SENIOR-LIVING-MEMORY-CARE-01",
+    residentCareAndConciergeAuthorized:
+      input.emarMedicationTimestampCheckedAndDnrPolstIndexed &&
+      input.presbycusisAcousticEqAndDementiaValidationActive &&
+      !input.bathroomRadarFallOrWanderGuardElopementPreemption,
+    doubleDoseToxicityOrDementiaArgueBlocked:
+      !input.emarMedicationTimestampCheckedAndDnrPolstIndexed ||
+      !input.presbycusisAcousticEqAndDementiaValidationActive ||
+      input.bathroomRadarFallOrWanderGuardElopementPreemption,
+    bathroomFallAnticoagulantOrWanderBridged:
+      input.bathroomRadarFallOrWanderGuardElopementPreemption,
+  };
+}
+
+
 
 
 
