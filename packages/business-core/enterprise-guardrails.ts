@@ -10765,6 +10765,37 @@ export function evaluateLivestockDairyAntibioticWithdrawalVoiceGuard(input: {
   };
 }
 
+export interface HybridDualTrackS2sCascadedRouterEvaluation {
+  policyCode: "HYBRID-DUAL-TRACK-ROUTER-01";
+  turnTrackRoutingAndAudioEmissionAuthorized: boolean;
+  uninspectedRegulatedS2sOrTimbreMismatchBlocked: boolean;
+  audioTokenCompactionOrCascadeFallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic Hybrid Dual-Track Dynamic Router (Native Speech-to-Speech vs. Cascaded STT+LLM+TTS) Regulated-Turn Mandatory Cascade Lock, Unified Voice Timbre Gate & 0ms Audio-Token Pruning Guard (`HYBRID-DUAL-TRACK-ROUTER-01`).
+ */
+export function evaluateHybridDualTrackS2sCascadedRouterGuard(input: {
+  regulatedTurnRoutedToDeterministicCascade: boolean;
+  unifiedVoiceTimbreAndContextSynced: boolean;
+  s2sAudioTokenRunawayOrNoisyLinePreemption: boolean;
+}): HybridDualTrackS2sCascadedRouterEvaluation {
+  return {
+    policyCode: "HYBRID-DUAL-TRACK-ROUTER-01",
+    turnTrackRoutingAndAudioEmissionAuthorized:
+      input.regulatedTurnRoutedToDeterministicCascade &&
+      input.unifiedVoiceTimbreAndContextSynced &&
+      !input.s2sAudioTokenRunawayOrNoisyLinePreemption,
+    uninspectedRegulatedS2sOrTimbreMismatchBlocked:
+      !input.regulatedTurnRoutedToDeterministicCascade ||
+      !input.unifiedVoiceTimbreAndContextSynced ||
+      input.s2sAudioTokenRunawayOrNoisyLinePreemption,
+    audioTokenCompactionOrCascadeFallbackTriggered:
+      input.s2sAudioTokenRunawayOrNoisyLinePreemption,
+  };
+}
+
+
 
 
 
