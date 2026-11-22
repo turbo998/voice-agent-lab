@@ -10375,6 +10375,37 @@ export function evaluateHyperscaleAidcDatacenterNocLotoVoiceGuard(input: {
   };
 }
 
+export interface FineArtAuctionTelephoneBiddingAmlVoiceEvaluation {
+  policyCode: "FINE-ART-AUCTION-BID-VOICE-01";
+  podiumBidSignalAndClerkbookCommitAuthorized: boolean;
+  unfundedOverCeilingOrOffIncrementBidBlocked: boolean;
+  holdGavelAndSeniorSpecialistBridged: boolean;
+}
+
+/**
+ * Deterministic Fine Art & Luxury Auction House (Sotheby's / Christie's / Phillips) 5AMLD UBO & All-In Paddle Credit Ceiling Hard Lock, Sub-280ms 2-5-8 Increment Gate & 0ms Trophy-Lot/Split-Bid Specialist Guard (`FINE-ART-AUCTION-BID-VOICE-01`).
+ */
+export function evaluateFineArtAuctionTelephoneBiddingAmlVoiceGuard(input: {
+  amlUboVerifiedAndAllInExposureWithinPaddleCeiling: boolean;
+  validRostrumIncrementAndCurrencyReadbackVerified: boolean;
+  trophyLotOrSplitBidOrCeilingBreachPreemption: boolean;
+}): FineArtAuctionTelephoneBiddingAmlVoiceEvaluation {
+  return {
+    policyCode: "FINE-ART-AUCTION-BID-VOICE-01",
+    podiumBidSignalAndClerkbookCommitAuthorized:
+      input.amlUboVerifiedAndAllInExposureWithinPaddleCeiling &&
+      input.validRostrumIncrementAndCurrencyReadbackVerified &&
+      !input.trophyLotOrSplitBidOrCeilingBreachPreemption,
+    unfundedOverCeilingOrOffIncrementBidBlocked:
+      !input.amlUboVerifiedAndAllInExposureWithinPaddleCeiling ||
+      !input.validRostrumIncrementAndCurrencyReadbackVerified ||
+      input.trophyLotOrSplitBidOrCeilingBreachPreemption,
+    holdGavelAndSeniorSpecialistBridged:
+      input.trophyLotOrSplitBidOrCeilingBreachPreemption,
+  };
+}
+
+
 
 
 

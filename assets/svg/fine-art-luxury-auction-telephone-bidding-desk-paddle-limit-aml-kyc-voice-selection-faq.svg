@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad386" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#17172B"/>
+      <stop offset="100%" stop-color="#2E1065"/>
+    </linearGradient>
+    <linearGradient id="accentGrad386" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #FBBF24; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad386)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad386)"/>
+  <text x="52" y="52" class="title">Fine Art &amp; Luxury Auction Telephone Bidding Desk, Paddle Ceiling &amp; AML/KYC Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">5AMLD UBO &amp; Paddle Limit Hard Lock (0% Unfunded Bids) · Sub-280ms Rostrum Increment Sync · 0ms Trophy-Lot &amp; Split-Bid Specialist Bridge</text>
+  <rect x="1010" y="38" width="222" height="32" rx="16" fill="#F59E0B"/>
+  <text x="1030" y="59" class="badge">FINE-ART-AUCTION-BID-VOICE-01</text>
+
+  <!-- Left Column: Global Collector Line & Rostrum Feed -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Global Telephone Bidding &amp; Rostrum Bus</text>
+  <text x="48" y="164" class="card-sub">Sotheby's / Christie's / Phillips / Guardian Evening Sale</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Multilingual Collector Telephone Line</text>
+  <text x="64" y="224" class="body">• EN / Mandarin / Cantonese / French / Arabic / Japanese</text>
+  <text x="64" y="242" class="body">• Pre-lot 3-lot-ahead outbound wake-up &amp; voiceprint check</text>
+  <text x="64" y="260" class="mono">Paddle_ID_Token = "PADDLE-809" (Anonymized on Floor)</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#EC4899" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Live Rostrum &amp; Bid-Clerk Clerkbook Feed</text>
+  <text x="64" y="340" class="body">• Sub-50ms WebSocket stream from auctioneer podium clerk</text>
+  <text x="64" y="358" class="body">• Real-time hammer price, 2-5-8 increment ladder &amp; FX board</text>
+  <text x="64" y="376" class="mono">Current_Ask = $4,500,000 | Next_Step = $4,800,000</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">5AMLD / FinCEN Art-Market AML &amp; Escrow</text>
+  <text x="64" y="462" class="body">• Verified Ultimate Beneficial Owner (UBO) &amp; bank letter</text>
+  <text x="64" y="480" class="body">• Escrow deposit ratio &amp; aggregate evening paddle ceiling</text>
+  <text x="64" y="498" class="mono">Max_Paddle_Exposure = $10,000,000 (Hard Cap)</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Lot Symbols &amp; Buyer's Premium Calculator</text>
+  <text x="64" y="584" class="body">• Guaranteed lot (º/♦), Artist Resale Right (ARR) &amp; VAT</text>
+  <text x="64" y="602" class="body">• Real-time Hammer + Tiered Buyer's Premium total readback</text>
+  <text x="64" y="620" class="mono">All_In_Price = Hammer + 26%_to_13.9%_Premium</text>
+
+  <!-- Center Column: 3-Layer Deterministic Auction Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Rostrum &amp; AML Bidding Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Unfunded Bids · Sub-280ms Increment Readback</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: 5AMLD UBO &amp; Paddle Ceiling Hard Lock</text>
+  <text x="472" y="224" class="body">• Checks (Active Won Lots + New Bid + Premium) &lt;= Ceiling</text>
+  <text x="472" y="242" class="body">• Blocks unverified third-party agent or shell-company proxy</text>
+  <text x="472" y="260" class="body">• Enforces CITES ivory/rosewood &amp; cultural export checks</text>
+  <text x="472" y="280" class="mono">Unfunded_Default_Bid_Rate = 0.0% (Hard Blocked)</text>
+  <text x="472" y="298" class="mono">AML_Third_Party_Bypass = 0.0% (5AMLD Compliant)</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: Sub-280ms 2-5-8 Increment &amp; FX Gate</text>
+  <text x="472" y="374" class="body">• Translates auctioneer chant into bidder's native language</text>
+  <text x="472" y="392" class="body">• Enforces exact Lot # + Hammer + All-In FX readback</text>
+  <text x="472" y="410" class="body">• Rejects off-increment bids unless auctioneer opens split</text>
+  <text x="472" y="430" class="mono">Bid_Relay_Latency = 240ms (Zero Missed Gavel)</text>
+  <text x="472" y="448" class="mono">Unit_Magnitude_Misread (Wan/Million) = 0.0%</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#EC4899" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Trophy-Lot &amp; Split-Bid Specialist Bridge</text>
+  <text x="472" y="524" class="body">• Detects trophy lot (&gt;=$5M), irrevocable bid conflict,</text>
+  <text x="472" y="542" class="body">  "Fair Warning" final gavel call or ceiling-increase request</text>
+  <text x="472" y="560" class="body">• Preempts AI in 0ms; unmutes Senior Specialist on phone</text>
+  <text x="472" y="578" class="body">  bank &amp; flashes "HOLD GAVEL — PADDLE 809 ON LINE" to podium</text>
+  <text x="472" y="600" class="mono">if (trophyLotOrSplitBidOrCeilingBreach) -&gt; 0ms Specialist</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 38ms | Rostrum_Hold_Signal = 0ms</text>
+
+  <!-- Right Column: Auction Podium Execution & KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Podium Clerkbook &amp; Post-Hammer Audit</text>
+  <text x="892" y="164" class="card-sub">Paddle Raise Signal · Specialist Desk · WORM Binding</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Authenticated Bid-Clerk Paddle Signal</text>
+  <text x="908" y="224" class="body">• Lights up Telephone Desk indicator on auctioneer screen</text>
+  <text x="908" y="242" class="body">• Binds collector voice confirmation hash to Clerkbook</text>
+  <text x="908" y="260" class="body">• Automatically updates remaining multi-lot credit headroom</text>
+  <text x="908" y="282" class="mono">Valid_Bid_Capture_Before_Gavel = 99.8%</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#EC4899" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Senior Specialist &amp; Credit-Officer Bridge</text>
+  <text x="908" y="366" class="body">• Instant whisper-to-active takeover by Department Head</text>
+  <text x="908" y="384" class="body">• Live CFO credit-limit override for verified UHNW collectors</text>
+  <text x="908" y="402" class="body">• Preserves anonymous Paddle ID on public livestream</text>
+  <text x="908" y="424" class="mono">Collector_Identity_Leak_On_Floor = 0.0%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Lot Calls)</text>
+  <text x="908" y="520" class="body">• Cascaded Clerkbook+AML: $960 / 10k calls (100% AML safe)</text>
+  <text x="908" y="538" class="body">• Hybrid Rostrum-Sync: $1,460 / 10k calls (Recommended)</text>
+  <text x="908" y="556" class="body">• Unfiltered E2E Voice: $2,550 + unfunded default risk</text>
+  <text x="908" y="578" class="mono">Simultaneous_Phone_Capacity = 5x Day-Sale Scaling</text>
+  <text x="908" y="596" class="mono">Bid_Latency = 240ms | Unfunded_Default = $0</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateFineArtAuctionTelephoneBiddingAmlVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Fine Art &amp; Luxury Auction Telephone Bidding Voice Copilot</text>
+  <text x="52" y="718" class="body">Never relay a telephone bid to the auctioneer's podium without deterministic 5AMLD UBO verification, real-time paddle credit-ceiling checks, and exact 2-5-8 increment readback.</text>
+</svg>
