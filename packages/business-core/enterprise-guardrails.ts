@@ -10585,6 +10585,37 @@ export function evaluateEnterpriseTtsVoiceCloningAvatarSelectionGuard(input: {
   };
 }
 
+export interface RealtimeVoiceBargeInFillerHandoffEvaluation {
+  policyCode: "VOICE-BARGE-IN-FILLER-HANDOFF-01";
+  turnResponseAndToolMutationAuthorized: boolean;
+  falseBackchannelCutoffOrPreToolHallucinationBlocked: boolean;
+  contextPacketWarmHandoffBridged: boolean;
+}
+
+/**
+ * Deterministic End-to-End Real-Time Voice Orchestration (WebRTC / SIP) Backchannel vs. Barge-In Spoken-Offset Fence, T+650ms Async Filler Gate & 0ms Zero-Repeat Warm Handoff Guard (`VOICE-BARGE-IN-FILLER-HANDOFF-01`).
+ */
+export function evaluateRealtimeVoiceBargeInFillerHandoffGuard(input: {
+  semanticBargeInAndSpokenWordOffsetSynced: boolean;
+  asyncFillerPlayedWithoutPreToolHallucination: boolean;
+  specialistSubAgentOrHumanWarmHandoffPreemption: boolean;
+}): RealtimeVoiceBargeInFillerHandoffEvaluation {
+  return {
+    policyCode: "VOICE-BARGE-IN-FILLER-HANDOFF-01",
+    turnResponseAndToolMutationAuthorized:
+      input.semanticBargeInAndSpokenWordOffsetSynced &&
+      input.asyncFillerPlayedWithoutPreToolHallucination &&
+      !input.specialistSubAgentOrHumanWarmHandoffPreemption,
+    falseBackchannelCutoffOrPreToolHallucinationBlocked:
+      !input.semanticBargeInAndSpokenWordOffsetSynced ||
+      !input.asyncFillerPlayedWithoutPreToolHallucination ||
+      input.specialistSubAgentOrHumanWarmHandoffPreemption,
+    contextPacketWarmHandoffBridged:
+      input.specialistSubAgentOrHumanWarmHandoffPreemption,
+  };
+}
+
+
 
 
 

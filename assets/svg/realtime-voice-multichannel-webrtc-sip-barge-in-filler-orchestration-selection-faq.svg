@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad393" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="accentGrad393" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #38BDF8; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad393)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad393)"/>
+  <text x="52" y="52" class="title">End-to-End Real-Time Voice Architecture: Multi-Channel Ingress, Semantic Barge-In, Async Filler &amp; Handoff</text>
+  <text x="52" y="76" class="subtitle">Backchannel vs. Barge-In Classifier · T+650ms Async API Filler (-78% Dead-Air Hangup) · Zero-Repeat Multi-Agent &amp; Human Warm Handoff</text>
+  <rect x="988" y="38" width="244" height="32" rx="16" fill="#06B6D4"/>
+  <text x="1004" y="59" class="badge">VOICE-BARGE-IN-FILLER-HANDOFF-01</text>
+
+  <!-- Left Column: Multi-Channel Ingress & Audio Normalization -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Omnichannel Audio Ingress &amp; VAD Edge</text>
+  <text x="48" y="164" class="card-sub">Browser WebRTC · Mobile App · PSTN SIP · Smart Hardware</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Web &amp; Mobile App Ingress (WebRTC Opus)</text>
+  <text x="64" y="224" class="body">• 24kHz/48kHz full-band audio + hardware AEC &amp; NS</text>
+  <text x="64" y="242" class="body">• Out-of-band DataChannel for UI cards &amp; state sync</text>
+  <text x="64" y="260" class="mono">Transport = WebRTC_UDP_Opus (Jitter &lt; 25ms)</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">PSTN Telephone Line Ingress (SIP / ACS / Twilio)</text>
+  <text x="64" y="340" class="body">• 8kHz/16kHz PCM + RFC 2833 DTMF keypad hybrid input</text>
+  <text x="64" y="358" class="body">• Telephony acoustic echo &amp; background TV noise filter</text>
+  <text x="64" y="376" class="mono">Hybrid_Input = Voice_Stream + DTMF_Pin_Capture</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Semantic Turn &amp; Backchannel Classifier</text>
+  <text x="64" y="462" class="body">• Distinguishes "uh-huh / 嗯" (keep speaking) vs "Wait!"</text>
+  <text x="64" y="480" class="body">• Holds turn open during mid-number pauses ("6222... 88")</text>
+  <text x="64" y="498" class="mono">False_BargeIn_Cutoff_Reduction = -86%</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Slow Backend Enterprise Systems (2s - 6s)</text>
+  <text x="64" y="584" class="body">• Legacy SAP ERP, Mainframe Core Banking &amp; Deep RAG</text>
+  <text x="64" y="602" class="body">• Requires async non-blocking tool execution with fillers</text>
+  <text x="64" y="620" class="mono">Backend_API_Latency = 1,800ms to 5,200ms</text>
+
+  <!-- Center Column: 3-Layer Orchestration & State Machine -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#06B6D4" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Barge-In, Filler &amp; Handoff Gate</text>
+  <text x="456" y="164" class="card-sub">Epoch Fencing · T+650ms Async Filler · Context Packet</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: Semantic Barge-In &amp; Turn-Epoch Fence</text>
+  <text x="472" y="224" class="body">• Ignores &lt;250ms backchannel acknowledgments ("嗯/OK")</text>
+  <text x="472" y="242" class="body">• On true barge-in: flushes TTS in &lt;35ms, increments</text>
+  <text x="472" y="260" class="body">  `Turn_Epoch_ID` &amp; aborts superseded in-flight writes</text>
+  <text x="472" y="280" class="mono">Stale_API_Mutation_Commit = 0.0% (Hard Blocked)</text>
+  <text x="472" y="298" class="mono">Truncated_Context_Sync = Exact_Spoken_Word_Offset</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: T+650ms Tiered Async Filler Engine</text>
+  <text x="472" y="374" class="body">• If tool/RAG takes &gt;650ms, plays cached contextual filler:</text>
+  <text x="472" y="392" class="body">  "请稍等，我帮您查一下订单状态..." + subtle typing earcon</text>
+  <text x="472" y="410" class="body">• Blocks LLM from fabricating tool output before API returns</text>
+  <text x="472" y="430" class="mono">Premature_Dead_Air_Hangup_Rate = -78% Reduction</text>
+  <text x="472" y="448" class="mono">Pre_Tool_Hallucinated_Answer_Rate = 0.0%</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Multi-Agent &amp; Human Warm Handoff</text>
+  <text x="472" y="524" class="body">• Serializes `Session_Context_Packet` (Auth Token, Slots,</text>
+  <text x="472" y="542" class="body">  Tool Results, Sentiment &amp; 3-Bullet Summary) on transfer</text>
+  <text x="472" y="560" class="body">• Sub-agent or human rep greets caller with full context</text>
+  <text x="472" y="578" class="body">  without ever re-asking identity or issue description</text>
+  <text x="472" y="600" class="mono">if (specialistSubAgentOrHumanHandoff) -&gt; 0ms Context_Sync</text>
+  <text x="472" y="618" class="mono">Repeat_Verification_Rate = 0.0% | CSAT_Lift = +31 pts</text>
+
+  <!-- Right Column: Multi-Agent Topology & Compliance Recording -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Multi-Agent Graph &amp; Compliance QA</text>
+  <text x="892" y="164" class="card-sub">Supervisor Router · Specialist Agents · Dual-Track Recording</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Stateful Multi-Agent Handoff Topology</text>
+  <text x="908" y="224" class="body">• Triage Router -&gt; Billing Agent -&gt; Tech Support Agent</text>
+  <text x="908" y="242" class="body">• Scoped tool permissions per specialist agent node</text>
+  <text x="908" y="260" class="body">• Shared voice persona or explicit role-switch announcement</text>
+  <text x="908" y="282" class="mono">Sub_Agent_Switch_Latency = 45ms (Zero Audio Drop)</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Stereo Compliance Recording &amp; Auto-QA</text>
+  <text x="908" y="366" class="body">• Left Channel = Caller; Right Channel = AI / Human Rep</text>
+  <text x="908" y="384" class="body">• Real-time PCI DTMF/audio pause &amp; PII token redaction</text>
+  <text x="908" y="402" class="body">• 100% automated post-call rubric scoring &amp; CRM writeback</text>
+  <text x="908" y="424" class="mono">Compliance_QA_Coverage = 100% (vs 2% Manual Sample)</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Omnichannel Calls)</text>
+  <text x="908" y="520" class="body">• Naive Blocking Pipeline: 24% hangup on 4s ERP calls</text>
+  <text x="908" y="538" class="body">• Orchestrated Filler+Handoff: $1,120 / 10k calls (Rec)</text>
+  <text x="908" y="556" class="body">• Perceived Response Latency: 420ms (even on 4s API!)</text>
+  <text x="908" y="578" class="mono">Caller_Hangup_During_API_Wait = 3.1% (vs 14.2%)</text>
+  <text x="908" y="596" class="mono">False_Backchannel_Interrupts = 0.8% | Repeat_Ask = 0%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateRealtimeVoiceBargeInFillerHandoffGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — End-to-End Real-Time Voice Orchestration &amp; State Management</text>
+  <text x="52" y="718" class="body">Great voice UX comes from state orchestration: filter backchannels from real barge-ins, mask slow APIs with T+650ms fillers, and pass structured context on handoff.</text>
+</svg>
