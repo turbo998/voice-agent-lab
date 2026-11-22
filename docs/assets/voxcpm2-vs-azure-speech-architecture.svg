@@ -1,0 +1,386 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1080" width="1600" height="1080" role="img" aria-labelledby="vox-arch-title vox-arch-desc">
+  <title id="vox-arch-title">VoxCPM2 (2B) vs. Microsoft Azure AI Speech — Hybrid Enterprise Architecture &amp; 48 kHz Acoustic Benchmark</title>
+  <desc id="vox-arch-desc">Senior AI Solution Architect reference diagram comparing OpenBMB VoxCPM2 continuous-latent diffusion-autoregressive architecture (AudioVAE V2 16kHz-to-48kHz, FSQ + RALM + LocDiT), empirical 1024-pt Hann Welch PSD measurements across 11 official WAVs, quantization SDR ablation, TTFA latency, monthly TCO crossover, and the Azure AI Speech + Self-Hosted GPU Hybrid Speech Router.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070D19"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#0B1325"/>
+    </linearGradient>
+    <linearGradient id="headerLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0078D4"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="azSpeechGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0078D4"/>
+      <stop offset="100%" stop-color="#5EA0EF"/>
+    </linearGradient>
+    <linearGradient id="foundryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0EA5E9"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="voxBarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <linearGradient id="psdFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.02"/>
+    </linearGradient>
+    <marker id="arrowSlate" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748B"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="arrowEmerald" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34D399"/>
+    </marker>
+    <style>
+      .t-sans { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; }
+      .t-mono { font-family: 'Cascadia Code', Consolas, 'SFMono-Regular', monospace; }
+      .panel { fill: #0F172A; stroke: #1E293B; stroke-width: 1.5; rx: 14; }
+      .subbox { fill: #152035; stroke: #334155; stroke-width: 1.2; rx: 9; }
+      .codebox { fill: #090F1D; stroke: #1E293B; stroke-width: 1.2; rx: 8; }
+      .sec-kicker { font-size: 10.5px; font-weight: 700; letter-spacing: 1px; fill: #38BDF8; }
+      .sec-title { font-size: 15.5px; font-weight: 700; fill: #F8FAFC; }
+      .b-title { font-size: 12.5px; font-weight: 700; fill: #F1F5F9; }
+      .b-sub { font-size: 11px; fill: #CBD5E1; }
+      .b-muted { font-size: 10.5px; fill: #94A3B8; }
+    </style>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1600" height="1080" fill="url(#bgGrad)"/>
+  <rect x="28" y="18" width="1544" height="3.5" rx="2" fill="url(#headerLine)"/>
+
+  <!-- ==================== HEADER BANNER ==================== -->
+  <rect x="28" y="30" width="1544" height="94" class="panel"/>
+
+  <!-- Official Microsoft 4-Square Logo + Official Azure AI Speech Service Vector Icon -->
+  <g transform="translate(46, 49)">
+    <!-- Microsoft Official Four-Color Mark -->
+    <rect x="0" y="0" width="56" height="56" rx="11" fill="#132038" stroke="#284166"/>
+    <rect x="12" y="12" width="14" height="14" fill="#F25022"/>
+    <rect x="30" y="12" width="14" height="14" fill="#7FBA00"/>
+    <rect x="12" y="30" width="14" height="14" fill="#00A4EF"/>
+    <rect x="30" y="30" width="14" height="14" fill="#FFB900"/>
+  </g>
+  <g transform="translate(112, 49)">
+    <!-- Official Azure AI Speech Service Icon Geometry (Speech Bubble + Equalizer Wave Bars) -->
+    <rect x="0" y="0" width="56" height="56" rx="11" fill="#132038" stroke="#0284C7"/>
+    <path d="M11 13 C11 10.2 13.2 8 16 8 L40 8 C42.8 8 45 10.2 45 13 L45 34 C45 36.8 42.8 39 40 39 L24 39 L15 47 L15 39 C12.8 39 11 37.2 11 35 Z" fill="url(#azSpeechGrad)"/>
+    <rect x="18" y="21" width="3.2" height="6" rx="1.5" fill="#FFFFFF"/>
+    <rect x="23.5" y="16" width="3.2" height="16" rx="1.5" fill="#FFFFFF"/>
+    <rect x="29" y="13.5" width="3.2" height="21" rx="1.5" fill="#E0F2FE"/>
+    <rect x="34.5" y="18" width="3.2" height="12" rx="1.5" fill="#FFFFFF"/>
+  </g>
+
+  <text x="184" y="53" class="t-sans sec-kicker">ENTERPRISE SPEECH ARCHITECTURE &amp; ACOUSTIC DSP BENCHMARK · ARXIV:2606.06928</text>
+  <text x="184" y="79" class="t-sans" font-size="22" font-weight="800" fill="#F8FAFC">OpenBMB VoxCPM2 (2B) vs. Microsoft Azure AI Speech — Technical Audit &amp; Hybrid Routing Blueprint</text>
+  <text x="184" y="103" class="t-sans" font-size="12.5" fill="#94A3B8">Code-Verified Source Trace (voxcpm2.py) · 11-WAV 1024-pt Hann Welch PSD · Quantization SDR Ablation · Production Control/Data Plane</text>
+
+  <!-- Right Header KPI Pills -->
+  <g transform="translate(1152, 44)">
+    <rect x="0" y="0" width="130" height="66" class="subbox" stroke="#0284C7"/>
+    <text x="65" y="21" text-anchor="middle" class="t-mono" font-size="10" fill="#94A3B8">48kHz EFF. BW</text>
+    <text x="65" y="43" text-anchor="middle" class="t-mono" font-size="18" font-weight="700" fill="#38BDF8">17,672 Hz</text>
+    <text x="65" y="58" text-anchor="middle" class="t-sans" font-size="9.5" fill="#7DD3FC">-47.64 dB (16-24k)</text>
+
+    <rect x="138" y="0" width="130" height="66" class="subbox" stroke="#10B981"/>
+    <text x="203" y="21" text-anchor="middle" class="t-mono" font-size="10" fill="#94A3B8">SEED-TTS ZH / SIM</text>
+    <text x="203" y="43" text-anchor="middle" class="t-mono" font-size="18" font-weight="700" fill="#34D399">0.97% / 79.5</text>
+    <text x="203" y="58" text-anchor="middle" class="t-sans" font-size="9.5" fill="#6EE7B7">Hard CER: 8.13%</text>
+
+    <rect x="276" y="0" width="130" height="66" class="subbox" stroke="#8B5CF6"/>
+    <text x="341" y="21" text-anchor="middle" class="t-mono" font-size="10" fill="#94A3B8">RTX 4090 SERVING</text>
+    <text x="341" y="43" text-anchor="middle" class="t-mono" font-size="18" font-weight="700" fill="#C4B5FD">RTF 0.13</text>
+    <text x="341" y="58" text-anchor="middle" class="t-sans" font-size="9.5" fill="#DDD6FE">~135ms TTFA · 8GB</text>
+  </g>
+
+  <!-- ==================== ROW 1 LEFT: VOXCPM2 4-PHASE ARCHITECTURE ==================== -->
+  <rect x="28" y="138" width="936" height="278" class="panel"/>
+  <text x="48" y="162" class="t-sans sec-kicker">SECTION 1 · CONTINUOUS-LATENT DIFFUSION-AUTOREGRESSIVE PIPELINE (OPENBMB/VOXCPM · VOXCPM2.PY)</text>
+  <text x="48" y="184" class="t-sans sec-title">Asymmetric AudioVAE V2 (16 kHz Encode -&gt; 48 kHz Decode) + Semi-Discrete FSQ + Continuous Residual Bypass</text>
+
+  <!-- Phase 1 -->
+  <rect x="48" y="200" width="204" height="156" class="subbox" stroke="#0EA5E9"/>
+  <rect x="60" y="211" width="92" height="18" rx="4" fill="#0C4A6E"/>
+  <text x="106" y="224" text-anchor="middle" class="t-mono" font-size="10" font-weight="700" fill="#38BDF8">PHASE 1 · ENCODE</text>
+  <text x="60" y="246" class="t-sans b-title">AudioVAE V2 Encoder</text>
+  <text x="60" y="265" class="t-sans b-sub">• Input resampled to 16 kHz</text>
+  <text x="60" y="282" class="t-sans b-sub">• Strides [2,5,8,8] = hop 640</text>
+  <text x="60" y="299" class="t-sans b-sub">• 25 Hz latent z (dim = 64)</text>
+  <text x="60" y="316" class="t-sans b-sub">• Patch P=4 -&gt; 6.25 Hz (160ms)</text>
+  <rect x="60" y="326" width="180" height="20" rx="4" fill="#090F1D"/>
+  <text x="150" y="340" text-anchor="middle" class="t-mono" font-size="9.5" fill="#7DD3FC">LocEnc: 4-Layer Transformer</text>
+
+  <line x1="252" y1="278" x2="268" y2="278" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+
+  <!-- Phase 2 -->
+  <rect x="272" y="200" width="214" height="156" class="subbox" stroke="#6366F1"/>
+  <rect x="284" y="211" width="102" height="18" rx="4" fill="#312E81"/>
+  <text x="335" y="224" text-anchor="middle" class="t-mono" font-size="10" font-weight="700" fill="#A5B4FC">PHASE 2 · SEMANTIC</text>
+  <text x="284" y="246" class="t-sans b-title">MiniCPM-4 TSLM (28L)</text>
+  <text x="284" y="265" class="t-sans b-sub">• Isolated ref slot [103,ref,104]</text>
+  <text x="284" y="282" class="t-sans b-sub">• Zero ref transcript required</text>
+  <text x="284" y="299" class="t-sans b-sub">• Text style prompt prefix</text>
+  <text x="284" y="316" class="t-sans b-sub">• ScalarQuantizationLayer</text>
+  <rect x="284" y="326" width="190" height="20" rx="4" fill="#090F1D"/>
+  <text x="379" y="340" text-anchor="middle" class="t-mono" font-size="9.5" fill="#C7D2FE">FSQ: round(tanh(x)*9)/9 (d=512)</text>
+
+  <line x1="486" y1="278" x2="502" y2="278" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+
+  <!-- Phase 3 -->
+  <rect x="506" y="200" width="212" height="156" class="subbox" stroke="#10B981"/>
+  <rect x="518" y="211" width="106" height="18" rx="4" fill="#064E3B"/>
+  <text x="571" y="224" text-anchor="middle" class="t-mono" font-size="10" font-weight="700" fill="#34D399">PHASE 3 · RESIDUAL</text>
+  <text x="518" y="246" class="t-sans b-title">RALM (8L) + LocDiT (4L)</text>
+  <text x="518" y="265" class="t-sans b-sub">• Concat-Proj W_fuse[h_FSQ || E]</text>
+  <text x="518" y="282" class="t-sans b-sub">• Preserves breath &amp; whisper</text>
+  <text x="518" y="299" class="t-sans b-sub">• 3-token prefix [sem, res, t]</text>
+  <text x="518" y="316" class="t-sans b-sub">• 10-step Euler ODE (CFG = 2.0)</text>
+  <rect x="518" y="326" width="188" height="20" rx="4" fill="#090F1D"/>
+  <text x="612" y="340" text-anchor="middle" class="t-mono" font-size="9.5" fill="#6EE7B7">Zero Discrete Codebook Lookup</text>
+
+  <line x1="718" y1="278" x2="734" y2="278" stroke="#34D399" stroke-width="1.8" marker-end="url(#arrowEmerald)"/>
+
+  <!-- Phase 4 -->
+  <rect x="738" y="200" width="206" height="156" class="subbox" stroke="#F59E0B"/>
+  <rect x="750" y="211" width="110" height="18" rx="4" fill="#78350F"/>
+  <text x="805" y="224" text-anchor="middle" class="t-mono" font-size="10" font-weight="700" fill="#FCD34D">PHASE 4 · 48kHz OUT</text>
+  <text x="750" y="246" class="t-sans b-title">StreamingVAEDecoder</text>
+  <text x="750" y="265" class="t-sans b-sub">• Causal Conv Ring Buffer</text>
+  <text x="750" y="282" class="t-sans b-sub">• Upsample [8,6,5,2,2,2] = 1920</text>
+  <text x="750" y="299" class="t-sans b-sub">• 3x asymmetric super-res</text>
+  <text x="750" y="316" class="t-sans b-sub">• 7,680 samples / 160ms patch</text>
+  <rect x="750" y="326" width="182" height="20" rx="4" fill="#090F1D"/>
+  <text x="841" y="340" text-anchor="middle" class="t-mono" font-size="9.5" fill="#FDE68A">Duration = N x 0.160s Exact</text>
+
+  <!-- Continuous Skip Arrow underneath -->
+  <path d="M 150 356 L 150 382 L 612 382 L 612 358" fill="none" stroke="#34D399" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrowEmerald)"/>
+  <rect x="268" y="370" width="380" height="22" rx="4" fill="#090F1D" stroke="#065F46"/>
+  <text x="458" y="385" text-anchor="middle" class="t-mono" font-size="10" fill="#34D399">Continuous Latent Bypass E_&lt;i (bypasses FSQ bottleneck, +34.76 dB SDR)</text>
+
+  <!-- ==================== ROW 1 RIGHT: 1024-PT HANN WELCH PSD SPECTRUM ==================== -->
+  <rect x="980" y="138" width="592" height="278" class="panel"/>
+  <text x="1000" y="162" class="t-sans sec-kicker">SECTION 2 · EMPIRICAL 1024-PT HANN WELCH PSD (11 OFFICIAL WAVS)</text>
+  <text x="1000" y="184" class="t-sans sec-title">Generative 16 -&gt; 48 kHz Super-Resolution vs. 24 kHz Input &amp; v1.5</text>
+
+  <!-- Plot Area -->
+  <rect x="1032" y="202" width="516" height="162" fill="#090F1D" stroke="#1E293B" rx="6"/>
+  <!-- Horizontal dB Gridlines (0, -30, -60, -90 dB) -->
+  <line x1="1032" y1="222" x2="1548" y2="222" stroke="#1E293B" stroke-dasharray="3,3"/>
+  <line x1="1032" y1="265" x2="1548" y2="265" stroke="#1E293B" stroke-dasharray="3,3"/>
+  <line x1="1032" y1="308" x2="1548" y2="308" stroke="#1E293B" stroke-dasharray="3,3"/>
+  <line x1="1032" y1="350" x2="1548" y2="350" stroke="#1E293B" stroke-dasharray="3,3"/>
+  <text x="1026" y="226" text-anchor="end" class="t-mono" font-size="9.5" fill="#64748B">0 dB</text>
+  <text x="1026" y="269" text-anchor="end" class="t-mono" font-size="9.5" fill="#64748B">-30</text>
+  <text x="1026" y="312" text-anchor="end" class="t-mono" font-size="9.5" fill="#64748B">-60</text>
+  <text x="1026" y="354" text-anchor="end" class="t-mono" font-size="9.5" fill="#64748B">-90</text>
+
+  <!-- Vertical Frequency Gridlines (4k, 8k, 12k, 16k, 20k, 24k) -->
+  <line x1="1118" y1="202" x2="1118" y2="364" stroke="#1E293B"/>
+  <line x1="1204" y1="202" x2="1204" y2="364" stroke="#1E293B"/>
+  <line x1="1290" y1="202" x2="1290" y2="364" stroke="#F59E0B" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <line x1="1376" y1="202" x2="1376" y2="364" stroke="#1E293B"/>
+  <line x1="1462" y1="202" x2="1462" y2="364" stroke="#1E293B"/>
+
+  <text x="1036" y="378" class="t-mono" font-size="9.5" fill="#94A3B8">0k</text>
+  <text x="1118" y="378" text-anchor="middle" class="t-mono" font-size="9.5" fill="#94A3B8">4k</text>
+  <text x="1204" y="378" text-anchor="middle" class="t-mono" font-size="9.5" fill="#94A3B8">8k</text>
+  <text x="1290" y="378" text-anchor="middle" class="t-mono" font-size="9.5" fill="#FBBF24">12k Nyq</text>
+  <text x="1376" y="378" text-anchor="middle" class="t-mono" font-size="9.5" fill="#38BDF8">16k</text>
+  <text x="1462" y="378" text-anchor="middle" class="t-mono" font-size="9.5" fill="#38BDF8">20k</text>
+  <text x="1540" y="378" text-anchor="end" class="t-mono" font-size="9.5" fill="#38BDF8">24kHz</text>
+
+  <!-- Super-wideband highlight zone 12k-24k -->
+  <rect x="1290" y="203" width="257" height="160" fill="#0EA5E9" fill-opacity="0.06"/>
+  <text x="1418" y="218" text-anchor="middle" class="t-mono" font-size="9.5" font-weight="700" fill="#38BDF8">Generative Air Band (12-24kHz)</text>
+
+  <!-- VoxCPM 1.5 (44.1kHz, f_eff=10,034Hz, drops to -73dB at 12-16k & -92dB at 16-20k) -->
+  <polyline points="1075,231 1161,249 1247,253 1333,326 1419,353 1505,361" fill="none" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- style_prompt1.wav (24kHz input, Nyquist=12kHz, f_eff=11,625Hz: -5.78, -19.86, -26.31, -81.72) -->
+  <polyline points="1075,230 1161,250 1247,260 1290,342" fill="none" stroke="#F59E0B" stroke-width="2.2"/>
+
+  <!-- style_result1_1.wav (48kHz VoxCPM2 output, f_eff=17,672Hz: -4.32, -21.95, -26.67, -34.09, -47.65, -76.55) -->
+  <polygon points="1075,228 1161,253 1247,260 1333,271 1419,290 1505,331 1505,363 1075,363" fill="url(#psdFill)"/>
+  <polyline points="1075,228 1161,253 1247,260 1333,271 1419,290 1505,331" fill="none" stroke="#38BDF8" stroke-width="2.8"/>
+  <circle cx="1333" cy="271" r="4" fill="#38BDF8"/>
+  <circle cx="1419" cy="290" r="4" fill="#38BDF8"/>
+  <text x="1419" y="282" text-anchor="middle" class="t-mono" font-size="9.5" font-weight="700" fill="#7DD3FC">-47.64 dB</text>
+
+  <!-- Legend -->
+  <line x1="1004" y1="399" x2="1026" y2="399" stroke="#38BDF8" stroke-width="2.8"/>
+  <text x="1032" y="403" class="t-sans" font-size="10.5" fill="#E2E8F0">VoxCPM2 48kHz (f_eff 17.67kHz)</text>
+  <line x1="1216" y1="399" x2="1238" y2="399" stroke="#F59E0B" stroke-width="2.2"/>
+  <text x="1244" y="403" class="t-sans" font-size="10.5" fill="#FDE68A">24kHz Ref Prompt (11.63kHz)</text>
+  <line x1="1414" y1="399" x2="1436" y2="399" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="1442" y="403" class="t-sans" font-size="10.5" fill="#94A3B8">VoxCPM 1.5 (10.03kHz)</text>
+
+  <!-- ==================== ROW 2 LEFT: HYBRID SPEECH ROUTER (CONTROL / DATA PLANE) ==================== -->
+  <rect x="28" y="432" width="936" height="346" class="panel"/>
+  <text x="48" y="456" class="t-sans sec-kicker">SECTION 3 · ENTERPRISE CONTROL PLANE &amp; HYBRID SPEECH DATA PLANE ARCHITECTURE</text>
+  <text x="48" y="478" class="t-sans sec-title">Policy-Driven Workload Routing: Azure AI Speech (SLA &amp; Compliance) + VoxCPM2 Self-Hosted GPU Pool</text>
+
+  <!-- Control Plane Box -->
+  <rect x="48" y="494" width="896" height="68" class="subbox" stroke="#6366F1"/>
+  <rect x="62" y="505" width="136" height="19" rx="4" fill="#312E81"/>
+  <text x="130" y="518" text-anchor="middle" class="t-mono" font-size="10" font-weight="700" fill="#A5B4FC">CONTROL PLANE</text>
+  <text x="210" y="519" class="t-sans b-title">Unified Speech Governance, Identity &amp; Anti-Spoofing Gate</text>
+  <text x="62" y="544" class="t-sans b-sub">1) Entra ID RBAC &amp; Managed Identity   ·   2) Recorded Liveness Consent Hash   ·   3) Azure Content Safety Guard   ·   4) C2PA / Invisible Audio Watermark   ·   5) 300ms Timeout Failover</text>
+
+  <!-- Router Split Connectors -->
+  <line x1="275" y1="562" x2="275" y2="582" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+  <line x1="715" y1="562" x2="715" y2="582" stroke="#34D399" stroke-width="1.8" marker-end="url(#arrowEmerald)"/>
+
+  <!-- Data Plane Lane A: Microsoft Azure AI Speech -->
+  <rect x="48" y="586" width="436" height="174" class="subbox" stroke="#0078D4"/>
+  <!-- Mini Official Azure Speech Icon -->
+  <g transform="translate(62, 598)">
+    <path d="M2 4 C2 1.8 3.8 0 6 0 L22 0 C24.2 0 26 1.8 26 4 L26 18 C26 20.2 24.2 22 22 22 L11 22 L5 27 L5 22 C3.3 22 2 20.7 2 19 Z" fill="url(#azSpeechGrad)"/>
+    <rect x="7.5" y="9" width="2.2" height="5" rx="1" fill="#FFF"/>
+    <rect x="11.5" y="5.5" width="2.2" height="11" rx="1" fill="#FFF"/>
+    <rect x="15.5" y="4" width="2.2" height="14" rx="1" fill="#E0F2FE"/>
+    <rect x="19.5" y="7.5" width="2.2" height="8" rx="1" fill="#FFF"/>
+  </g>
+  <text x="98" y="611" class="t-mono" font-size="10" font-weight="700" fill="#60A5FA">DATA PLANE LANE A · REAL-TIME &amp; REGULATED CLOUD / CONTAINER</text>
+  <text x="98" y="628" class="t-sans b-title">Microsoft Azure AI Speech (DragonHD / CNV / Containers)</text>
+  <text x="64" y="651" class="t-sans b-sub">• Regulated Contact Center IVR, Banking Dual-Recording &amp; Healthcare</text>
+  <text x="64" y="669" class="t-sans b-sub">• W3C SSML (&lt;phoneme&gt;, &lt;say-as&gt;, &lt;mstts:viseme&gt;) + WordBoundary</text>
+  <text x="64" y="687" class="t-sans b-sub">• 140+ Locales (incl. Zero-Shot Gaps: Arabic, Hindi, Czech, Hebrew)</text>
+  <text x="64" y="705" class="t-sans b-sub">• Air-Gapped Disconnected Docker Containers + 99.9% Enterprise SLA</text>
+  <rect x="64" y="720" width="404" height="26" rx="5" fill="#090F1D"/>
+  <text x="266" y="737" text-anchor="middle" class="t-mono" font-size="10.5" fill="#7DD3FC">TTFA ~155-260ms · Zero Idle GPU Tax (&lt;15M chars/mo)</text>
+
+  <!-- Data Plane Lane B: Self-Hosted VoxCPM2 on AKS / Foundry GPU -->
+  <rect x="504" y="586" width="440" height="174" class="subbox" stroke="#10B981"/>
+  <!-- GPU / Open-Weight Compute Node Vector Icon -->
+  <g transform="translate(518, 598)">
+    <rect x="2" y="2" width="24" height="22" rx="4" fill="url(#foundryGrad)"/>
+    <rect x="7" y="7" width="14" height="12" rx="2" fill="#090F1D"/>
+    <circle cx="11" cy="13" r="2" fill="#34D399"/>
+    <circle cx="17" cy="13" r="2" fill="#38BDF8"/>
+  </g>
+  <text x="554" y="611" class="t-mono" font-size="10" font-weight="700" fill="#34D399">DATA PLANE LANE B · HIGH-VOLUME STUDIO &amp; DIALECT GPU POOL</text>
+  <text x="554" y="628" class="t-sans b-title">Self-Hosted VoxCPM2 (2B · Apache-2.0) + vLLM-Omni on AKS</text>
+  <text x="520" y="651" class="t-sans b-sub">• Batch 48kHz Audiobooks, Podcasts, Game NPCs &amp; Short-Drama Dubbing</text>
+  <text x="520" y="669" class="t-sans b-sub">• Text-Prompted Voice Design + Whisper/Emotional Zero-Shot Cloning</text>
+  <text x="520" y="687" class="t-sans b-sub">• 9 Chinese Dialects (Yue, Minnan, Sichuan, Dongbei) + SEA (km/lo/my)</text>
+  <text x="520" y="705" class="t-sans b-sub">• Offline Queue enables retry_badcase=True for &lt;1% Mandarin CER</text>
+  <rect x="520" y="720" width="408" height="26" rx="5" fill="#090F1D"/>
+  <text x="724" y="737" text-anchor="middle" class="t-mono" font-size="10.5" fill="#6EE7B7">Nano-vLLM / vLLM-Omni RTF 0.13 · 70-86% Lower TCO (&gt;50M chars/mo)</text>
+
+  <!-- ==================== ROW 2 RIGHT: QUANTIZATION ABLATION & BENCHMARKS ==================== -->
+  <rect x="980" y="432" width="592" height="346" class="panel"/>
+  <text x="1000" y="456" class="t-sans sec-kicker">SECTION 4 · QUANTIZATION SDR ABLATION &amp; MULTILINGUAL SCORECARD</text>
+  <text x="1000" y="478" class="t-sans sec-title">Why Continuous Residual Preserves Unvoiced Breath &amp; Whisper</text>
+
+  <!-- SDR Comparison Bars (style_result1_1.wav) -->
+  <rect x="1000" y="494" width="552" height="122" class="codebox"/>
+  <text x="1016" y="514" class="t-mono" font-size="10.5" font-weight="700" fill="#CBD5E1">Measured SDR Ablation on style_result1_1.wav (98 Voiced / 35 Breath Frames)</text>
+
+  <text x="1016" y="538" class="t-sans" font-size="11" fill="#94A3B8">Discrete-Only (Voiced)</text>
+  <rect x="1186" y="527" width="128" height="13" rx="3" fill="#64748B"/>
+  <text x="1322" y="538" class="t-mono" font-size="10.5" fill="#CBD5E1">23.25 dB</text>
+
+  <text x="1016" y="559" class="t-sans" font-size="11" fill="#FCA5A5">Discrete-Only (Breath)</text>
+  <rect x="1186" y="548" width="89" height="13" rx="3" fill="#EF4444"/>
+  <text x="1283" y="559" class="t-mono" font-size="10.5" fill="#FCA5A5">16.12 dB (-7.13 dB whisper drop)</text>
+
+  <text x="1016" y="580" class="t-sans" font-size="11" fill="#7DD3FC">FSQ + Cont. (Voiced)</text>
+  <rect x="1186" y="569" width="300" height="13" rx="3" fill="url(#voxBarGrad)"/>
+  <text x="1494" y="580" class="t-mono" font-size="10.5" font-weight="700" fill="#38BDF8">57.97 dB</text>
+
+  <text x="1016" y="601" class="t-sans" font-size="11" fill="#6EE7B7">FSQ + Cont. (Breath)</text>
+  <rect x="1186" y="590" width="264" height="13" rx="3" fill="url(#emeraldGrad)"/>
+  <text x="1458" y="601" class="t-mono" font-size="10.5" font-weight="700" fill="#34D399">50.88 dB (+34.76 dB)</text>
+
+  <!-- Reported Benchmark Summary Grid -->
+  <rect x="1000" y="628" width="270" height="132" class="subbox"/>
+  <text x="1016" y="649" class="t-mono" font-size="10" font-weight="700" fill="#38BDF8">VERIFIED STRENGTHS (ARXIV:2606.06928)</text>
+  <text x="1016" y="670" class="t-sans b-sub">• Seed-TTS: 0.97% ZH CER / 1.84% EN WER</text>
+  <text x="1016" y="688" class="t-sans b-sub">• InstructTTSEval-EN: 84.2 / 83.2 / 71.4 (#1)</text>
+  <text x="1016" y="706" class="t-sans b-sub">• MLS-24 Similarity: Top-1 on 22/24 langs</text>
+  <text x="1016" y="724" class="t-sans b-sub">• SEA Low-Resource: km 2.05%, my 1.42%</text>
+  <text x="1016" y="744" class="t-mono" font-size="10" fill="#34D399">Subjective S-MOS: 4.74 · I-MOS: 4.50</text>
+
+  <rect x="1282" y="628" width="270" height="132" class="subbox" stroke="#7F1D1D"/>
+  <text x="1298" y="649" class="t-mono" font-size="10" font-weight="700" fill="#FCA5A5">KNOWN BOUNDARIES &amp; HARD LIMITS</text>
+  <text x="1298" y="670" class="t-sans b-sub">• Seed-TTS Hard ZH CER: 8.13% (vs 6.08%)</text>
+  <text x="1298" y="688" class="t-sans b-sub">• streaming=True disables retry_badcase</text>
+  <text x="1298" y="706" class="t-sans b-sub">• MLS-Test WER: ar 13.05%, hi 19.70%</text>
+  <text x="1298" y="724" class="t-sans b-sub">• Fixed 160ms patch: no ms-exact lip sync</text>
+  <text x="1298" y="744" class="t-mono" font-size="10" fill="#FBBF24">Route strict SLA &amp; ar/hi to Azure Speech</text>
+
+  <!-- ==================== ROW 3: LATENCY & MONTHLY TCO CROSSOVER ==================== -->
+  <rect x="28" y="794" width="1544" height="258" class="panel"/>
+  <text x="48" y="818" class="t-sans sec-kicker">SECTION 5 · STREAMING TTFA LATENCY SPECTRUM &amp; MONTHLY TCO BREAK-EVEN ECONOMICS</text>
+  <text x="48" y="840" class="t-sans sec-title">Latency vs. TCO Decision Boundary: Cloud Pay-As-You-Go (&lt;15M chars/mo) vs. Self-Hosted GPU (&gt;15M chars/mo)</text>
+
+  <!-- Left Half: TTFA Latency Bars -->
+  <rect x="48" y="856" width="736" height="178" class="codebox"/>
+  <text x="66" y="878" class="t-mono" font-size="10.5" font-weight="700" fill="#CBD5E1">Time-To-First-Audio (TTFA) Comparison Across Production Serving Paths</text>
+
+  <text x="66" y="904" class="t-sans b-sub">Cartesia Sonic 3.6 (SSM)</text>
+  <rect x="276" y="892" width="58" height="14" rx="3" fill="#94A3B8"/>
+  <text x="342" y="904" class="t-mono" font-size="10.5" fill="#E2E8F0">~55 ms (Ultra-low duplex)</text>
+
+  <text x="66" y="930" class="t-sans b-sub">VoxCPM2 + vLLM-Omni (RTX 4090)</text>
+  <rect x="276" y="918" width="142" height="14" rx="3" fill="url(#emeraldGrad)"/>
+  <text x="426" y="930" class="t-mono" font-size="10.5" font-weight="700" fill="#34D399">~135 ms (RTF 0.13 · 160ms patch)</text>
+
+  <text x="66" y="956" class="t-sans b-sub">Azure AI Speech Neural / Flash</text>
+  <rect x="276" y="944" width="175" height="14" rx="3" fill="url(#voxBarGrad)"/>
+  <text x="459" y="956" class="t-mono" font-size="10.5" font-weight="700" fill="#38BDF8">~155-180 ms (99.9% SLA + SSML)</text>
+
+  <text x="66" y="982" class="t-sans b-sub">VoxCPM2 Native PyTorch (4090)</text>
+  <rect x="276" y="970" width="236" height="14" rx="3" fill="#6366F1"/>
+  <text x="520" y="982" class="t-mono" font-size="10.5" fill="#C7D2FE">~225 ms (RTF 0.30 · ~8 GB VRAM)</text>
+
+  <text x="66" y="1008" class="t-sans b-sub">Azure DragonHDOmni / MiniMax HD</text>
+  <rect x="276" y="996" width="310" height="14" rx="3" fill="#0284C7"/>
+  <text x="594" y="1008" class="t-mono" font-size="10.5" fill="#93C5FD">~260-400 ms (Expressive HD)</text>
+
+  <!-- Right Half: Monthly TCO Table -->
+  <rect x="804" y="856" width="748" height="178" class="codebox"/>
+  <text x="824" y="878" class="t-mono" font-size="10.5" font-weight="700" fill="#CBD5E1">Monthly Synthesis Cost by Volume Tier (USD/mo · Includes Cloud A10G 24GB Dedicated Node)</text>
+  <line x1="820" y1="888" x2="1532" y2="888" stroke="#1E293B"/>
+
+  <text x="824" y="908" class="t-mono" font-size="10.5" font-weight="700" fill="#94A3B8">VOLUME TIER</text>
+  <text x="990" y="908" class="t-mono" font-size="10.5" font-weight="700" fill="#38BDF8">AZURE NEURAL</text>
+  <text x="1130" y="908" class="t-mono" font-size="10.5" font-weight="700" fill="#60A5FA">AZURE HD</text>
+  <text x="1265" y="908" class="t-mono" font-size="10.5" font-weight="700" fill="#FBBF24">ELEVENLABS</text>
+  <text x="1405" y="908" class="t-mono" font-size="10.5" font-weight="700" fill="#34D399">VOXCPM2 (GPU)</text>
+
+  <text x="824" y="935" class="t-sans b-sub">2M chars/mo (~46h)</text>
+  <text x="990" y="935" class="t-mono" font-size="11" font-weight="700" fill="#38BDF8">$30 (Optimal)</text>
+  <text x="1130" y="935" class="t-mono" font-size="11" fill="#CBD5E1">$60</text>
+  <text x="1265" y="935" class="t-mono" font-size="11" fill="#CBD5E1">$220</text>
+  <text x="1405" y="935" class="t-mono" font-size="11" fill="#94A3B8">$450 (Idle GPU)</text>
+
+  <text x="824" y="962" class="t-sans b-sub">15M chars/mo (~350h)</text>
+  <text x="990" y="962" class="t-mono" font-size="11" fill="#CBD5E1">$225</text>
+  <text x="1130" y="962" class="t-mono" font-size="11" fill="#60A5FA">$450 (Break-even)</text>
+  <text x="1265" y="962" class="t-mono" font-size="11" fill="#CBD5E1">$1,350</text>
+  <text x="1405" y="962" class="t-mono" font-size="11" font-weight="700" fill="#34D399">$450 (Break-even)</text>
+
+  <text x="824" y="989" class="t-sans b-sub">50M chars/mo (~1,150h)</text>
+  <text x="990" y="989" class="t-mono" font-size="11" fill="#CBD5E1">$750</text>
+  <text x="1130" y="989" class="t-mono" font-size="11" fill="#CBD5E1">$1,500</text>
+  <text x="1265" y="989" class="t-mono" font-size="11" fill="#FCA5A5">$3,250</text>
+  <text x="1405" y="989" class="t-mono" font-size="11" font-weight="700" fill="#34D399">$450 (-70% vs HD)</text>
+
+  <text x="824" y="1016" class="t-sans b-sub">200M chars/mo (~4,600h)</text>
+  <text x="990" y="1016" class="t-mono" font-size="11" fill="#CBD5E1">$3,000</text>
+  <text x="1130" y="1016" class="t-mono" font-size="11" fill="#CBD5E1">$6,000</text>
+  <text x="1265" y="1016" class="t-mono" font-size="11" fill="#FCA5A5">$11,000+</text>
+  <text x="1405" y="1016" class="t-mono" font-size="11" font-weight="700" fill="#34D399">$900 (2x A10G HA)</text>
+</svg>

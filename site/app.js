@@ -37,6 +37,12 @@ const UI_TEXT = {
     matrixTitle: "📊 四大主流 AI Voice 技术栈实测对比表（含评测基准与成本）",
     btnVoiceCards: "查看实时语音 7-Card 评测报告 ↗",
     btnDiarCards: "查看说话人分离 7-Card 评测报告 ↗",
+    btnVoxCards: "查看 VoxCPM2 vs. Azure Speech 7-Card 报告 ↗",
+    btnVoxWorkbench: "打开混合路由与 TCO 精算工作台 ↗",
+    btnVoxGuide: "阅读中英双语架构选型指南 ↗",
+    voxSpotTitle: "清华 OpenBMB VoxCPM2 (2B) vs. Microsoft Azure AI Speech 声学基准与混合路由工作台",
+    voxSpotDesc:
+      "基于 11 组官方 48 kHz 样音的零依赖 1024-pt Hann Welch 频谱实测（90.9% 超宽带高频激活、耳语零样本克隆保持、FP16/INT12/INT8 量化消融），结合 arXiv:2606.06928 与 Azure AI Speech 99.9% SLA 合规边界，提供交互式混合路由模拟器与月度 TCO / GPU 容量精算。",
     protoPill: "RAPID PROTOTYPING · 真实可运行原型展示",
     protoTitle: "二、快速原型展示：不看空洞概念，直接看实测录像与可跑代码",
     protoDesc:
@@ -114,6 +120,12 @@ const UI_TEXT = {
     matrixTitle: "📊 四大主流 AI Voice 技術棧實測對比表（含評測基準與成本）",
     btnVoiceCards: "查看即時語音 7-Card 評測報告 ↗",
     btnDiarCards: "查看說話人分離 7-Card 評測報告 ↗",
+    btnVoxCards: "查看 VoxCPM2 vs. Azure Speech 7-Card 報告 ↗",
+    btnVoxWorkbench: "打開混合路由與 TCO 精算工作台 ↗",
+    btnVoxGuide: "閱讀中英雙語架構選型指南 ↗",
+    voxSpotTitle: "清華 OpenBMB VoxCPM2 (2B) vs. Microsoft Azure AI Speech 聲學基準與混合路由工作台",
+    voxSpotDesc:
+      "基於 11 組官方 48 kHz 樣音的零依賴 1024-pt Hann Welch 頻譜實測（90.9% 超寬頻高頻激活、耳語零樣本克隆保持、FP16/INT12/INT8 量化消融），結合 arXiv:2606.06928 與 Azure AI Speech 99.9% SLA 合規邊界，提供互動式混合路由模擬器與月度 TCO / GPU 容量精算。",
     protoPill: "RAPID PROTOTYPING · 真實可運行原型展示",
     protoTitle: "二、快速原型展示：不看空洞概念，直接看實測錄影與可跑程式碼",
     protoDesc:
@@ -191,6 +203,12 @@ const UI_TEXT = {
     matrixTitle: "📊 Side-by-Side AI Voice Stack Comparison & Benchmark Matrix",
     btnVoiceCards: "Realtime Voice 7-Card Benchmark ↗",
     btnDiarCards: "Diarization 7-Card Benchmark ↗",
+    btnVoxCards: "VoxCPM2 vs. Azure Speech 7-Card Deck ↗",
+    btnVoxWorkbench: "Open Hybrid Router & TCO Workbench ↗",
+    btnVoxGuide: "Read Bilingual Selection Guide ↗",
+    voxSpotTitle: "Tsinghua OpenBMB VoxCPM2 (2B) vs. Microsoft Azure AI Speech Benchmark & Hybrid Routing Workbench",
+    voxSpotDesc:
+      "Zero-dependency 1024-pt Hann Welch PSD measurements across 11 official 48 kHz WAVs (90.9% super-wideband activation, zero-shot whisper cloning retention, FP16/INT12/INT8 quantization SDR ablation), paired with arXiv:2606.06928 metrics, Azure AI Speech 99.9% SLA compliance gates, and interactive monthly TCO / GPU pool sizing.",
     protoPill: "RAPID PROTOTYPING · VERIFIED RUNNABLE SHOWCASES",
     protoTitle: "2. Rapid Prototype Showcase: Real Video Capture & 5-Minute Local Setup",
     protoDesc:
@@ -2055,11 +2073,18 @@ async function handleSizeExchangeMcp(orderId, newSize, session) {
 const RESOURCES_DATA = {
   "zh-CN": [
     {
-      badge: "426 Bilingual SA Guides",
-      title: "426 篇企业级实时语音与多模态架构选型指南（中英双语）",
-      desc: "系统覆盖级联 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大云联络中心横评、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/保险核保/医疗/零售/航旅/车载/政务12345/AI面试官/线下陪访/跨境物流/智慧教育/电信宽带/新能源VPP/快消B2B/智慧商场行业方案。",
+      badge: "427 Bilingual SA Guides",
+      title: "427 篇企业级实时语音与多模态架构选型指南（中英双语）",
+      desc: "系统覆盖级联 vs 原生 S2S、VoxCPM2 vs Azure Speech 混合路由、D365/Connect/Genesys/Google/Sierra 五大云联络中心横评、LiveKit/Pipecat/ACS 编排、PBX/CCaaS 集成、全双工打断与回声抑制、说话人分离、Voice RAG、PTU 容量精算、PCI/SIPREC 合规及金融/保险核保/医疗/零售/航旅/车载/政务12345/AI面试官/线下陪访/跨境物流/智慧教育/电信宽带/新能源VPP/快消B2B/智慧商场行业方案。",
       btnText: "浏览完整架构师资产目录 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
+    },
+    {
+      badge: "48 kHz Benchmark + Workbench",
+      title: "VoxCPM2 (2B) vs. Azure AI Speech 7-Card 评测与混合路由 TCO 工作台",
+      desc: "11 组官方 48 kHz 样音 1024-pt Welch 频谱与量化实测、双层 CFG 源码核查、7-Card 4:5 标准视觉评测卡片及交互式企业合规路由与月度 TCO 精算台。",
+      btnText: "打开交互式 TCO 工作台 ↗",
+      url: "./voxcpm2-workbench.html"
     },
     {
       badge: "Flagship Case Study",
@@ -2091,19 +2116,26 @@ const RESOURCES_DATA = {
     },
     {
       badge: "7-Card Visual Reports",
-      title: "双份 4:5 标准评测报告与 16:9 高管演示讲义",
-      desc: "包含《实时语音与多模型路由 7-Card 评测报告》、《Azure Speech 说话人分离与双声道分轨 7-Card 报告》以及《12 页 16:9 架构师演示幻灯片》。",
+      title: "三份 4:5 标准评测报告与 16:9 高管演示讲义",
+      desc: "包含《实时语音与多模型路由 7-Card 评测报告》、《Azure Speech 说话人分离 7-Card 报告》、《VoxCPM2 vs. Azure Speech 48kHz 声学基准 7-Card 报告》以及《12 页 16:9 架构师演示幻灯片》。",
       btnText: "打开 16:9 架构讲义 ↗",
       url: "./deck.html"
     }
   ],
   "zh-TW": [
     {
-      badge: "426 Bilingual SA Guides",
-      title: "426 篇企業級即時語音與多模態架構選型指南（中英雙語）",
-      desc: "系統覆蓋級聯 vs 原生 S2S、D365/Connect/Genesys/Google/Sierra 五大雲聯絡中心橫評、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/保險核保/醫療/零售/航旅/車載/政務12345/AI面試官/線下陪訪/跨境物流/智慧教育/電信寬頻/新能源VPP/快消B2B/智慧商場行業方案。",
+      badge: "427 Bilingual SA Guides",
+      title: "427 篇企業級即時語音與多模態架構選型指南（中英雙語）",
+      desc: "系統覆蓋級聯 vs 原生 S2S、VoxCPM2 vs Azure Speech 混合路由、D365/Connect/Genesys/Google/Sierra 五大雲聯絡中心橫評、LiveKit/Pipecat/ACS 編排、PBX/CCaaS 整合、全雙工打斷與回聲抑制、說話人分離、Voice RAG、PTU 容量精算、PCI/SIPREC 合規及金融/保險核保/醫療/零售/航旅/車載/政務12345/AI面試官/線下陪訪/跨境物流/智慧教育/電信寬頻/新能源VPP/快消B2B/智慧商場行業方案。",
       btnText: "瀏覽完整架構師資產目錄 ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.md"
+    },
+    {
+      badge: "48 kHz Benchmark + Workbench",
+      title: "VoxCPM2 (2B) vs. Azure AI Speech 7-Card 評測與混合路由 TCO 工作台",
+      desc: "11 組官方 48 kHz 樣音 1024-pt Welch 頻譜與量化實測、雙層 CFG 原始碼核查、7-Card 4:5 標準視覺評測卡片及互動式企業合規路由與月度 TCO 精算台。",
+      btnText: "打開互動式 TCO 工作台 ↗",
+      url: "./voxcpm2-workbench.html"
     },
     {
       badge: "Flagship Case Study",
@@ -2135,19 +2167,26 @@ const RESOURCES_DATA = {
     },
     {
       badge: "7-Card Visual Reports",
-      title: "雙份 4:5 標準評測報告與 16:9 高管演示講義",
-      desc: "包含《即時語音與多模型路由 7-Card 評測報告》、《Azure Speech 說話人分離與雙聲道分軌 7-Card 報告》以及《12 頁 16:9 架構師演示投影片》。",
+      title: "三份 4:5 標準評測報告與 16:9 高管演示講義",
+      desc: "包含《即時語音與多模型路由 7-Card 評測報告》、《Azure Speech 說話人分離 7-Card 報告》、《VoxCPM2 vs. Azure Speech 48kHz 聲學基準 7-Card 報告》以及《12 頁 16:9 架構師演示投影片》。",
       btnText: "打開 16:9 架構講義 ↗",
       url: "./deck.html"
     }
   ],
   en: [
     {
-      badge: "426 Bilingual SA Guides",
-      title: "426 Enterprise Voice & Multimodal AI Architecture Selection Guides",
-      desc: "Decision-ready guides covering Cascaded vs. Native S2S, D365/Amazon Connect/Genesys/Google CES/Sierra CCaaS head-to-head, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Insurance/Healthcare/Retail/Travel/Auto/Gov-311/HR-Interviewer/Field-Advisor/Cross-Border-Logistics/Education/Telecom-ISP/Energy-VPP/FMCG-B2B/Smart-Mall playbooks.",
+      badge: "427 Bilingual SA Guides",
+      title: "427 Enterprise Voice & Multimodal AI Architecture Selection Guides",
+      desc: "Decision-ready guides covering Cascaded vs. Native S2S, VoxCPM2 vs. Azure Speech hybrid routing, D365/Amazon Connect/Genesys/Google CES/Sierra CCaaS head-to-head, LiveKit/Pipecat/ACS orchestration, PBX/CCaaS integration, full-duplex barge-in & AEC, speaker diarization, Voice RAG, PTU FinOps, PCI/SIPREC compliance, and BFSI/Insurance/Healthcare/Retail/Travel/Auto/Gov-311/HR-Interviewer/Field-Advisor/Cross-Border-Logistics/Education/Telecom-ISP/Energy-VPP/FMCG-B2B/Smart-Mall playbooks.",
       btnText: "Browse Full Asset Catalog ↗",
       url: "https://github.com/turbo998/voice-agent-lab/blob/main/docs/asset-catalog.en.md"
+    },
+    {
+      badge: "48 kHz Benchmark + Workbench",
+      title: "VoxCPM2 (2B) vs. Azure AI Speech 7-Card Deck & Hybrid Router TCO Workbench",
+      desc: "Empirical 1024-pt Welch PSD & quantization SDR measurements on 11 official 48 kHz WAVs, source-level dual-CFG audit, strict 7-Card 4:5 visual decks, and interactive TCO/GPU sizing.",
+      btnText: "Open Interactive TCO Workbench ↗",
+      url: "./voxcpm2-workbench.html"
     },
     {
       badge: "Flagship Case Study",
@@ -2179,8 +2218,8 @@ const RESOURCES_DATA = {
     },
     {
       badge: "7-Card Visual Reports",
-      title: "7-Card Benchmark Decks & 16:9 Executive Slides",
-      desc: "Includes the Realtime Voice & Router 7-Card Benchmark Deck, the Azure Speech Diarization PoC 7-Card Report, and the 12-Slide 16:9 Executive Presales Deck.",
+      title: "3x 7-Card Benchmark Decks & 16:9 Executive Slides",
+      desc: "Includes the Realtime Voice & Router 7-Card Deck, the Azure Speech Diarization PoC 7-Card Report, the VoxCPM2 vs. Azure Speech 48kHz Acoustic 7-Card Deck, and the 12-Slide 16:9 Executive Presales Deck.",
       btnText: "Open 16:9 Slide Deck ↗",
       url: "./deck.html"
     }
@@ -2578,6 +2617,19 @@ function renderStaticText() {
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.getAttribute("data-lang") === currentLang);
   });
+
+  const voxCardsHref = currentLang === "en" ? "./voxcpm2-benchmark-cards.html" : "./voxcpm2-benchmark-cards.zh-CN.html";
+  const voxTopEl = document.getElementById("voxCardsTopLink");
+  const voxSpotEl = document.getElementById("voxCardsSpotLink");
+  const voxGuideEl = document.getElementById("voxGuideSpotLink");
+  if (voxTopEl) voxTopEl.href = voxCardsHref;
+  if (voxSpotEl) voxSpotEl.href = voxCardsHref;
+  if (voxGuideEl) {
+    voxGuideEl.href =
+      currentLang === "en"
+        ? "https://github.com/turbo998/voice-agent-lab/blob/main/docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md"
+        : "https://github.com/turbo998/voice-agent-lab/blob/main/docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md";
+  }
 }
 
 function renderStackMatcher() {

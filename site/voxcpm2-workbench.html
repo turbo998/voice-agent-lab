@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:;" />
+  <title>VoxCPM2 vs. Azure AI Speech · Hybrid Speech Router &amp; TCO Workbench</title>
+  <style>
+    :root {
+      --bg-canvas: #070D19;
+      --bg-surface: #0F172A;
+      --bg-elevated: #162036;
+      --bg-card-alt: #1E293B;
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --border-strong: rgba(96, 165, 250, 0.42);
+      --text-primary: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #94A3B8;
+      --azure-blue: #0078D4;
+      --azure-cyan: #38BDF8;
+      --vox-teal: #10B981;
+      --amber: #F59E0B;
+      --rose: #F43F5E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at 15% 0%, #0F2547 0%, var(--bg-canvas) 48%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.55;
+      padding: 18px 22px 64px;
+    }
+    .shell {
+      width: 100%;
+      max-width: 2440px;
+      margin: 0 auto;
+    }
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 20px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      background: rgba(0, 120, 212, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      font-size: 12px;
+      font-weight: 700;
+      color: #E0F2FE;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .link-pill, .lang-btn {
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 7px 13px;
+      border-radius: 9px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .link-pill:hover, .lang-btn:hover {
+      border-color: var(--azure-cyan);
+      color: #FFFFFF;
+    }
+    .lang-btn.active {
+      background: var(--azure-blue);
+      border-color: var(--azure-cyan);
+      color: #FFFFFF;
+    }
+    .hero {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(22, 32, 54, 0.92));
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 26px 30px;
+      margin-bottom: 22px;
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .eyebrow {
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--azure-cyan);
+      margin-bottom: 8px;
+    }
+    .hero h1 {
+      font-size: clamp(22px, 2vw, 32px);
+      line-height: 1.25;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      max-width: 980px;
+    }
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .kpi-card {
+      background: rgba(7, 13, 25, 0.68);
+      border: 1px solid var(--border-subtle);
+      border-radius: 13px;
+      padding: 13px 15px;
+    }
+    .kpi-card .k-val {
+      font-size: 22px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+    .kpi-card .k-lbl {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .widescreen-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+    @media (min-width: 1500px) {
+      .widescreen-grid {
+        grid-template-columns: 1.08fr 0.92fr;
+      }
+    }
+    @media (min-width: 2150px) {
+      .kpi-strip {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .panel-full {
+      grid-column: 1 / -1;
+    }
+    .panel-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .panel-hdr h2 {
+      font-size: 17.5px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+    .panel-hdr p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: rgba(56, 189, 248, 0.12);
+      color: #BAE6FD;
+      white-space: nowrap;
+    }
+    .router-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 18px;
+    }
+    .control-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+    .ctrl-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 11px;
+      padding: 10px 13px;
+    }
+    .ctrl-box label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .ctrl-box select, .ctrl-box input[type="range"] {
+      width: 100%;
+      margin-top: 7px;
+      background: #0B1324;
+      color: #F8FAFC;
+      border: 1px solid #334155;
+      border-radius: 7px;
+      padding: 7px 9px;
+      font-size: 12.5px;
+    }
+    .decision-out {
+      background: #09101F;
+      border: 1.5px solid var(--border-strong);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+    .route-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 13px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .route-vox { background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.5); color: #6EE7B7; }
+    .route-azure { background: rgba(0, 120, 212, 0.2); border: 1px solid rgba(56, 189, 248, 0.55); color: #7DD3FC; }
+    .route-ssm { background: rgba(245, 158, 11, 0.16); border: 1px solid rgba(245, 158, 11, 0.5); color: #FCD34D; }
+    .guardrail-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12.2px;
+      color: var(--text-secondary);
+    }
+    .guardrail-list li::before {
+      content: "▸ ";
+      color: var(--azure-cyan);
+      font-weight: 800;
+    }
+    .policy-pre {
+      background: #050913;
+      border: 1px solid #1E293B;
+      border-radius: 9px;
+      padding: 10px 12px;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 11px;
+      color: #93C5FD;
+      overflow-x: auto;
+    }
+    .tco-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-top: 4px;
+    }
+    .tco-row {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 9px 12px;
+    }
+    .tco-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .tco-track {
+      height: 11px;
+      background: #0B1324;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .tco-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+    .svg-wrap {
+      width: 100%;
+      background: #09101F;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px;
+      overflow-x: auto;
+    }
+    .wav-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .wav-btn {
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .wav-btn.active, .wav-btn:hover {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--vox-teal);
+      color: #FFFFFF;
+    }
+    .spec-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 10px;
+    }
+    .spec-stat {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .spec-stat span { display: block; font-size: 11px; color: var(--text-muted); }
+    .spec-stat strong { font-size: 15px; color: #FFFFFF; }
+    @media (max-width: 1024px) {
+      .hero, .router-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand-row">
+        <span class="brand-badge">
+          <!-- Official Microsoft 4-Square Emblem -->
+          <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true">
+            <rect x="0" y="0" width="9" height="9" fill="#F25022" />
+            <rect x="11" y="0" width="9" height="9" fill="#7FBA00" />
+            <rect x="0" y="11" width="9" height="9" fill="#00A4EF" />
+            <rect x="11" y="11" width="9" height="9" fill="#FFB900" />
+          </svg>
+          <!-- Official Azure AI Speech Waveform Crest -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="22" height="22" rx="5" fill="#0078D4" />
+            <rect x="5" y="10" width="2.2" height="4" rx="1.1" fill="#FFFFFF" />
+            <rect x="8.8" y="6.5" width="2.2" height="11" rx="1.1" fill="#E0F2FE" />
+            <rect x="12.6" y="4.5" width="2.2" height="15" rx="1.1" fill="#FFFFFF" />
+            <rect x="16.4" y="8.5" width="2.2" height="7" rx="1.1" fill="#BAE6FD" />
+          </svg>
+          <span>AI Solution Architect · Speech &amp; TTS Decision Workbench</span>
+        </span>
+      </div>
+      <div class="nav-actions">
+        <a class="link-pill" href="./index.html" data-i18n="nav_portal">返回售前门户</a>
+        <a class="link-pill" href="./voxcpm2-benchmark-cards.zh-CN.html" data-i18n="nav_cards_zh">7-Card 报告 (中文)</a>
+        <a class="link-pill" href="./voxcpm2-benchmark-cards.html">7-Card Deck (EN)</a>
+        <button class="lang-btn active" id="btn-zh" type="button">简体中文</button>
+        <button class="lang-btn" id="btn-en" type="button">English</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow" data-i18n="hero_eyebrow">OPENBMB VOXCPM2 (2B) VS. MICROSOFT AZURE AI SPEECH · HYBRID ROUTER</div>
+        <h1 data-i18n="hero_title">企业级混合语音合成路由与 TCO 容量测算工作台</h1>
+        <p data-i18n="hero_desc">
+          基于 11 条官方 48 kHz 无损音频的 1024 点 Hann Welch 频谱实测、voxcpm2.py 源码复核与 arXiv:2606.06928 基准数据构建。支持架构师交互式验证控制面分流策略、GPU 推理池盈亏平衡点以及真实频谱能量曲线。
+        </p>
+      </div>
+      <div class="kpi-strip">
+        <div class="kpi-card">
+          <div class="k-val">+44.44 dB</div>
+          <div class="k-lbl" data-i18n="kpi_1">16–24 kHz 超高频增益 (vs v1.5)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="k-val">+34.76 dB</div>
+          <div class="k-lbl" data-i18n="kpi_2">耳语帧连续残差 SDR 提升</div>
+        </div>
+        <div class="kpi-card">
+          <div class="k-val">~135 ms</div>
+          <div class="k-lbl" data-i18n="kpi_3">vLLM-Omni 首包时延 (RTF 0.13)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="k-val">25M / Mo</div>
+          <div class="k-lbl" data-i18n="kpi_4">自建 GPU vs Azure 成本拐点</div>
+        </div>
+      </div>
+    </section>
+
+    <main class="widescreen-grid">
+      <!-- PANEL 1: BESPOKE HYBRID ROUTER ARCHITECTURE SVG -->
+      <section class="panel panel-full">
+        <div class="panel-hdr">
+          <div>
+            <h2 data-i18n="arch_title">混合语音路由控制面与数据面拓扑（随下方策略实时高亮）</h2>
+            <p data-i18n="arch_sub">结合自建 OpenBMB VoxCPM2（Apache-2.0，vLLM-Omni）与托管 Microsoft Azure AI Speech（SSML / Viseme / 99.9% SLA）的双轨生产参考架构。</p>
+          </div>
+          <span class="tag" id="active-lane-badge">Active Primary: VoxCPM2 Pool</span>
+        </div>
+        <div class="svg-wrap">
+          <svg viewBox="0 0 1440 340" width="100%" height="auto" role="img" aria-label="Hybrid Speech Router Architecture">
+            <defs>
+              <marker id="arr-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0,1 L9,5 L0,9 z" fill="#38BDF8" />
+              </marker>
+              <marker id="arr-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0,1 L9,5 L0,9 z" fill="#10B981" />
+              </marker>
+            </defs>
+            <!-- Control Plane Ingress -->
+            <rect x="20" y="95" width="250" height="150" rx="14" fill="#111C33" stroke="#38BDF8" stroke-width="1.8" />
+            <text x="40" y="128" fill="#38BDF8" font-size="11" font-weight="800">INGRESS &amp; GOVERNANCE</text>
+            <text x="40" y="154" fill="#F8FAFC" font-size="15" font-weight="800">Enterprise Speech Gateway</text>
+            <text x="40" y="178" fill="#94A3B8" font-size="11.5">1. Dynamic Voice Consent Check</text>
+            <text x="40" y="198" fill="#94A3B8" font-size="11.5">2. SSML / Viseme / Latency Inspector</text>
+            <text x="40" y="218" fill="#94A3B8" font-size="11.5">3. Script Coverage Classifier</text>
+
+            <!-- Policy Router Diamond/Box -->
+            <rect x="330" y="110" width="215" height="120" rx="14" fill="#162544" stroke="#60A5FA" stroke-width="2" />
+            <text x="352" y="144" fill="#BAE6FD" font-size="11" font-weight="800">CONTROL PLANE</text>
+            <text x="352" y="170" fill="#FFFFFF" font-size="15" font-weight="800">Hybrid Policy Router</text>
+            <text x="352" y="194" fill="#CBD5E1" font-size="11.5">Deterministic SLA vs. Creative</text>
+            <text x="352" y="212" fill="#CBD5E1" font-size="11.5">48kHz Cost/Timbre Optimizer</text>
+
+            <line x1="270" y1="170" x2="326" y2="170" stroke="#38BDF8" stroke-width="2.2" marker-end="url(#arr-cyan)" />
+
+            <!-- Lane A: Azure AI Speech -->
+            <g id="svg-lane-azure">
+              <rect id="rect-lane-azure" x="635" y="22" width="490" height="132" rx="14" fill="#0E223D" stroke="#0078D4" stroke-width="2.2" />
+              <!-- Official Azure AI Speech Icon -->
+              <rect x="655" y="42" width="32" height="32" rx="7" fill="#0078D4" />
+              <rect x="662" y="54" width="3" height="8" rx="1.5" fill="#FFFFFF" />
+              <rect x="667.5" y="49" width="3" height="18" rx="1.5" fill="#E0F2FE" />
+              <rect x="673" y="46" width="3" height="24" rx="1.5" fill="#FFFFFF" />
+              <rect x="678.5" y="52" width="3" height="12" rx="1.5" fill="#BAE6FD" />
+              <text x="698" y="56" fill="#7DD3FC" font-size="11" font-weight="800">MANAGED CLOUD / DISCONNECTED CONTAINER LANE</text>
+              <text x="698" y="76" fill="#FFFFFF" font-size="15.5" font-weight="800">Microsoft Azure AI Speech (DragonHDOmni &amp; Neural)</text>
+              <text x="655" y="104" fill="#CBD5E1" font-size="12">&#8226; W3C SSML &lt;say-as&gt; / &lt;phoneme&gt; / Custom Lexicon · 99.9% Enterprise SLA</text>
+              <text x="655" y="124" fill="#CBD5E1" font-size="12">&#8226; Native 0.1ms Viseme Blendshapes · 140+ Locales (AR/HI/Yue) · Built-in Watermark</text>
+              <text x="655" y="142" fill="#93C5FD" font-size="11.5">PayGo: $15 / 1M (Standard) · $30 / 1M (DragonHDOmni 48kHz) · TTFA ~180–260 ms</text>
+            </g>
+
+            <!-- Lane B: Self-Hosted OpenBMB VoxCPM2 -->
+            <g id="svg-lane-vox">
+              <rect id="rect-lane-vox" x="635" y="184" width="490" height="136" rx="14" fill="#0B2926" stroke="#10B981" stroke-width="2.6" />
+              <rect x="655" y="204" width="32" height="32" rx="7" fill="#059669" />
+              <text x="662" y="225" fill="#FFFFFF" font-size="13" font-weight="900">V2</text>
+              <text x="698" y="218" fill="#6EE7B7" font-size="11" font-weight="800">SELF-HOSTED VPC GPU POOL (APACHE-2.0)</text>
+              <text x="698" y="238" fill="#FFFFFF" font-size="15.5" font-weight="800">OpenBMB VoxCPM2 (2B) + vLLM-Omni + Guardrails</text>
+              <text x="655" y="264" fill="#CBD5E1" font-size="12">&#8226; 16kHz-&gt;48kHz AudioVAE V2 (+44.4dB air) · FSQ+CFM (+34.8dB whisper SDR)</text>
+              <text x="655" y="284" fill="#CBD5E1" font-size="12">&#8226; Decoupled [103..104] Cloning (#1 SIM in 22/24 langs) · SEA Scripts &lt;2.1% WER</text>
+              <text x="655" y="304" fill="#6EE7B7" font-size="11.5">Pool Cost: ~$450/mo (1x L40S/4090) · TTFA ~135 ms · + Watchdog + AudioSeal</text>
+            </g>
+
+            <!-- Connectors -->
+            <path d="M545,148 C585,148 590,88 630,88" fill="none" stroke="#38BDF8" stroke-width="2.2" marker-end="url(#arr-cyan)" />
+            <path d="M545,192 C585,192 590,252 630,252" fill="none" stroke="#10B981" stroke-width="2.4" marker-end="url(#arr-green)" />
+            <!-- Failover arrow from VoxCPM2 Watchdog up to Azure -->
+            <path d="M1125,252 C1168,252 1168,88 1130,88" fill="none" stroke="#F59E0B" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arr-cyan)" />
+            <text x="1175" y="174" fill="#FCD34D" font-size="11" font-weight="700">Streaming Watchdog</text>
+            <text x="1175" y="190" fill="#94A3B8" font-size="10.5">Auto-Failover on Loop</text>
+
+            <!-- Output Egress -->
+            <rect x="1285" y="110" width="135" height="120" rx="14" fill="#111C33" stroke="#64748B" stroke-width="1.6" />
+            <text x="1302" y="152" fill="#FFFFFF" font-size="13.5" font-weight="800">48 kHz Audio</text>
+            <text x="1302" y="174" fill="#94A3B8" font-size="11">+ Watermark</text>
+            <text x="1302" y="194" fill="#94A3B8" font-size="11">+ Audit Trace</text>
+            <line x1="1125" y1="70" x2="1280" y2="145" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#arr-cyan)" />
+            <line x1="1125" y1="270" x2="1280" y2="195" stroke="#10B981" stroke-width="1.8" marker-end="url(#arr-green)" />
+          </svg>
+        </div>
+      </section>
+
+      <!-- PANEL 2: HYBRID ROUTER POLICY SIMULATOR -->
+      <section class="panel">
+        <div class="panel-hdr">
+          <div>
+            <h2 data-i18n="sim_title">1. 混合语音路由决策模拟器</h2>
+            <p data-i18n="sim_sub">勾选真实业务约束，自动推导最优主通道、降级通道与必选安全护栏。</p>
+          </div>
+          <span class="tag">voxcpm2.py + Azure SLA</span>
+        </div>
+
+        <div class="router-layout">
+          <div class="control-stack">
+            <div class="ctrl-box">
+              <label>
+                <span data-i18n="chk_ssml">需要确定性 SSML（金额/日期/药名词典）或 99.9% SLA</span>
+                <input type="checkbox" id="f-ssml" />
+              </label>
+            </div>
+            <div class="ctrl-box">
+              <label>
+                <span data-i18n="chk_viseme">需要 0.1ms 3D 数字人 Viseme 口型或亚 160ms 帧锁对口型</span>
+                <input type="checkbox" id="f-viseme" />
+              </label>
+            </div>
+            <div class="ctrl-box">
+              <label>
+                <span data-i18n="chk_airgap">严禁声纹出网（私有化 VPC / 纯内网主权合规）</span>
+                <input type="checkbox" id="f-airgap" />
+              </label>
+            </div>
+            <div class="ctrl-box">
+              <label for="f-latency" data-i18n="lbl_latency">端到端首包时延预算（TTFA）</label>
+              <select id="f-latency">
+                <option value="interactive" selected data-i18n="lat_opt_2">120–250 ms 常规交互 Agent / 流式播报</option>
+                <option value="ultra" data-i18n="lat_opt_1">&lt; 80 ms 极低时延全双工电话打断</option>
+                <option value="batch" data-i18n="lat_opt_3">离线批处理母带（有声书 / 播客 / 游戏配音）</option>
+              </select>
+            </div>
+            <div class="ctrl-box">
+              <label for="f-lang" data-i18n="lbl_lang">目标语种与微调状态</label>
+              <select id="f-lang">
+                <option value="core" selected data-i18n="lang_opt_1">普通话 / 英语 / 欧洲主流语种（22/24 克隆第一）</option>
+                <option value="sea" data-i18n="lang_opt_2">东南亚语种（缅语 1.42% / 老挝 1.90% / 柬埔寨 2.05%）</option>
+                <option value="longtail" data-i18n="lang_opt_3">零样本阿拉伯语 / 印地语 / 粤语（未做 LoRA 微调）</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="decision-out">
+            <div class="route-banner route-vox" id="route-banner">
+              <span id="route-primary">Primary: OpenBMB VoxCPM2 (vLLM-Omni)</span>
+              <span id="route-ttfa">~135 ms TTFA</span>
+            </div>
+            <ul class="guardrail-list" id="route-reasons"></ul>
+            <pre class="policy-pre" id="route-json"></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANEL 3: MONTHLY TCO & GPU CAPACITY SIZER -->
+      <section class="panel">
+        <div class="panel-hdr">
+          <div>
+            <h2 data-i18n="tco_title">2. 企业月度 TCO 与 GPU 容量测算仪</h2>
+            <p data-i18n="tco_sub">对比混合路由、纯自建 VoxCPM2 推理池、Azure 标准/HD 与 ElevenLabs 的月度总拥有成本。</p>
+          </div>
+          <span class="tag" id="tco-saving-badge">Saves 54% vs. Azure HD</span>
+        </div>
+
+        <div class="control-stack">
+          <div class="ctrl-box">
+            <label>
+              <span data-i18n="lbl_vol">月度合成字符总量（百万字符 / 月）</span>
+              <strong id="val-vol">50M chars (~2,750 hrs)</strong>
+            </label>
+            <input type="range" id="s-vol" min="1" max="250" step="1" value="50" />
+          </div>
+          <div class="ctrl-box">
+            <label>
+              <span data-i18n="lbl_split">混合路由中保留给 Azure AI Speech 的强监管流量占比</span>
+              <strong id="val-split">25% Azure / 75% VoxCPM2</strong>
+            </label>
+            <input type="range" id="s-split" min="0" max="100" step="5" value="25" />
+          </div>
+          <div class="ctrl-box">
+            <label>
+              <span data-i18n="lbl_util">自建 GPU 池日均有效利用率（含波峰冗余）</span>
+              <strong id="val-util">30% Utilization · 1x L40S/4090</strong>
+            </label>
+            <input type="range" id="s-util" min="15" max="65" step="5" value="30" />
+          </div>
+        </div>
+
+        <div class="tco-bars" id="tco-bars"></div>
+      </section>
+
+      <!-- PANEL 4: EMPIRICAL 11-WAV 1024-PT WELCH PSD SPECTRUM EXPLORER -->
+      <section class="panel panel-full">
+        <div class="panel-hdr">
+          <div>
+            <h2 data-i18n="spec_title">3. 官方 11 条无损 WAV 实测 1024 点 Hann Welch 功率谱密度（PSD）探针</h2>
+            <p data-i18n="spec_sub">所有坐标 100% 取自 experiments/voxcpm2-acoustic-benchmark/voxcpm2_acoustic_benchmark_results.json 实测结果，虚线对比 VoxCPM1.5（16kHz，-92.08 dB）与 24kHz 参考音频。</p>
+          </div>
+          <span class="tag">Provenance: measured (1024-pt FFT)</span>
+        </div>
+
+        <div class="wav-selector" id="wav-buttons"></div>
+
+        <div class="spec-metrics" id="spec-metrics"></div>
+
+        <div class="svg-wrap" id="psd-chart-wrap"></div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const FREQS_24 = [200.0, 246.3, 303.3, 373.4, 459.9, 566.3, 697.3, 858.7, 1057.4, 1302.0, 1603.3, 1974.3, 2431.2, 2993.8, 3686.5, 4539.6, 5590.1, 6883.6, 8476.5, 10437.9, 12853.3, 15827.5, 19490.0, 24000.0];
+    const SEALED_WAVS = [
+      { file: "style_result1_1.wav", role: "Controllable Style Output #1 (48kHz)", sr: 48000, dur: 2.88, patches: 18, rem: 0.0, psd16_24: -47.64, bw52: 17672.0, sdrGain: "+34.76 dB (Whisper SDR)", db: [3.76, 5.65, 6.39, 3.73, -13.0, -13.87, -6.95, -9.05, -0.27, -8.26, -8.11, -13.54, -6.18, -11.69, -21.51, -13.89, -17.49, -20.48, -26.26, -27.1, -32.21, -44.26, -51.03, -76.32] },
+      { file: "style_result1_2.wav", role: "Controllable Style Output #2 (48kHz)", sr: 48000, dur: 4.32, patches: 27, rem: 0.0, psd16_24: -48.96, bw52: 17391.0, sdrGain: "Exact 27 x 0.16s Patches", db: [1.21, 4.61, 6.52, 5.11, -2.84, -5.18, 0.55, -6.92, -5.03, -9.16, -6.75, -17.86, -16.43, -29.62, -27.31, -18.54, -22.86, -22.09, -31.52, -30.55, -36.73, -44.45, -53.42, -84.07] },
+      { file: "vd_emotion_grief.wav", role: "Voice Design Grief Emotion (48kHz)", sr: 48000, dur: 7.36, patches: 46, rem: 0.0, psd16_24: -51.93, bw52: 17578.0, sdrGain: "Exact 46 x 0.16s Patches", db: [-10.28, -1.49, 3.34, 5.7, 1.08, -1.62, 3.72, -0.61, -1.11, -9.3, -10.35, -9.98, -17.12, -21.27, -13.05, -19.68, -17.17, -20.93, -22.47, -29.2, -32.28, -44.5, -56.11, -67.64] },
+      { file: "vd_acoustic_asmr.wav", role: "Voice Design ASMR Whisper (48kHz)", sr: 48000, dur: 12.64, patches: 79, rem: 0.0, psd16_24: -57.01, bw52: 14859.0, sdrGain: "+34.76 dB (ASMR Breath)", db: [10.49, 8.83, 0.15, -10.51, -13.11, -11.57, -10.67, -15.84, -13.41, -18.66, -16.84, -15.2, -19.42, -21.47, -24.55, -27.14, -25.87, -26.34, -20.28, -27.54, -33.09, -47.76, -63.38, -80.55] },
+      { file: "zh_cn.wav", role: "Standard Mandarin Synthesis (48kHz)", sr: 48000, dur: 12.00, patches: 75, rem: 0.0, psd16_24: -59.43, bw52: 14250.0, sdrGain: "0.97% Seed-ZH CER", db: [5.53, 4.0, 2.98, 2.71, 0.32, 0.76, -0.44, -6.36, -9.31, -9.68, -12.47, -16.69, -14.32, -23.5, -27.53, -25.29, -23.25, -37.43, -29.11, -34.99, -44.72, -51.65, -62.13, -88.75] },
+      { file: "ref_speaker.wav", role: "48kHz Studio Speaker Output", sr: 48000, dur: 12.80, patches: 80, rem: 0.0, psd16_24: -60.61, bw52: 17250.0, sdrGain: "74.34 dB Dynamic Range", db: [-22.93, -15.61, -11.89, -10.34, -11.71, -13.48, -7.54, -3.84, -3.45, -6.54, -8.31, -10.23, -18.04, -19.61, -22.88, -30.68, -27.62, -26.24, -34.93, -37.86, -41.54, -52.27, -66.86, -94.45] },
+      { file: "minnan.wav", role: "Minnan Dialect Synthesis (48kHz)", sr: 48000, dur: 25.60, patches: 160, rem: 0.0, psd16_24: -66.39, bw52: 16172.0, sdrGain: "Exact 160 x 0.16s Patches", db: [-8.6, -7.05, -6.48, -7.52, -6.31, -9.46, -6.47, -8.55, -9.86, -16.29, -17.85, -23.53, -22.91, -22.7, -17.38, -24.23, -23.92, -36.03, -34.7, -36.92, -44.72, -60.58, -76.61, -91.68] },
+      { file: "dongbei.wav", role: "Northeast Mandarin Dialect (48kHz)", sr: 48000, dur: 9.12, patches: 57, rem: 0.0, psd16_24: -70.80, bw52: 15000.0, sdrGain: "+34.75 dB (Breath SDR)", db: [-7.92, -7.87, -9.5, -6.3, -7.07, -15.7, -14.08, -17.76, -26.47, -24.97, -26.15, -27.4, -27.28, -39.33, -26.48, -38.26, -28.56, -31.38, -42.76, -44.29, -55.24, -62.03, -76.29, -93.89] },
+      { file: "yue.wav", role: "Cantonese Dialect Sample (48kHz)", sr: 48000, dur: 20.64, patches: 129, rem: 0.0, psd16_24: -83.01, bw52: 16078.0, sdrGain: "Exact 129 x 0.16s Patches", db: [-25.65, -24.49, -24.91, -26.33, -19.6, -18.49, -21.3, -20.58, -27.44, -25.81, -38.08, -35.72, -38.2, -46.67, -43.49, -55.55, -53.02, -57.89, -47.36, -57.46, -62.34, -75.87, -88.09, -96.02] },
+      { file: "style_prompt1.wav", role: "Input Reference Prompt (24kHz Nyquist=12kHz)", sr: 24000, dur: 6.538, patches: 40.86, rem: 0.138, psd16_24: null, bw52: 11625.0, sdrGain: "Non-160ms Natural Recording", db: [3.33, 5.29, 3.0, 3.32, 0.86, -7.21, -6.45, -3.29, -7.64, -9.79, -8.04, -22.45, -12.39, -20.63, -20.84, -19.03, -25.73, -22.04, -24.44, -27.21, null, null, null, null] },
+      { file: "voxcpm_example.wav", role: "VoxCPM1.5 Legacy Baseline (44.1kHz, 8kHz Cutoff)", sr: 44100, dur: 8.158, patches: 50.99, rem: 0.158, psd16_24: -92.08, bw52: 10034.0, sdrGain: "v1.5 8kHz Brick-Wall Cliff", db: [-0.14, -1.94, -2.88, -5.57, -7.9, -9.68, -12.8, -16.56, -14.07, -16.33, -20.41, -18.99, -17.88, -20.57, -20.88, -20.81, -15.04, -16.67, -18.03, -62.67, -82.7, -90.54, -92.16, null] }
+    ];
+
+    const I18N = {
+      zh: {
+        nav_portal: "返回售前门户",
+        nav_cards_zh: "7-Card 报告 (中文)",
+        hero_eyebrow: "OPENBMB VOXCPM2 (2B) VS. MICROSOFT AZURE AI SPEECH · 混合语音路由工作台",
+        hero_title: "企业级混合语音合成路由与 TCO 容量测算工作台",
+        hero_desc: "基于 11 条官方 48 kHz 无损音频的 1024 点 Hann Welch 频谱实测、voxcpm2.py 源码复核与 arXiv:2606.06928 基准数据构建。支持架构师交互式验证控制面分流策略、GPU 推理池盈亏平衡点以及真实频谱能量曲线。",
+        kpi_1: "16–24 kHz 超高频增益 (vs v1.5)",
+        kpi_2: "耳语帧连续残差 SDR 提升",
+        kpi_3: "vLLM-Omni 首包时延 (RTF 0.13)",
+        kpi_4: "自建 GPU vs Azure 成本拐点",
+        arch_title: "混合语音路由控制面与数据面拓扑（随下方策略实时高亮）",
+        arch_sub: "结合自建 OpenBMB VoxCPM2（Apache-2.0，vLLM-Omni）与托管 Microsoft Azure AI Speech（SSML / Viseme / 99.9% SLA）的双轨生产参考架构。",
+        sim_title: "1. 混合语音路由决策模拟器",
+        sim_sub: "勾选真实业务约束，自动推导最优主通道、降级通道与必选安全护栏。",
+        chk_ssml: "需要确定性 SSML（金额/日期/药名词典）或 99.9% SLA",
+        chk_viseme: "需要 0.1ms 3D 数字人 Viseme 口型或亚 160ms 帧锁对口型",
+        chk_airgap: "严禁声纹出网（私有化 VPC / 纯内网主权合规）",
+        lbl_latency: "端到端首包时延预算（TTFA）",
+        lat_opt_1: "< 80 ms 极低时延全双工电话打断",
+        lat_opt_2: "120–250 ms 常规交互 Agent / 流式播报",
+        lat_opt_3: "离线批处理母带（有声书 / 播客 / 游戏配音）",
+        lbl_lang: "目标语种与微调状态",
+        lang_opt_1: "普通话 / 英语 / 欧洲主流语种（22/24 克隆第一）",
+        lang_opt_2: "东南亚语种（缅语 1.42% / 老挝 1.90% / 柬埔寨 2.05%）",
+        lang_opt_3: "零样本阿拉伯语 / 印地语 / 粤语（未做 LoRA 微调）",
+        tco_title: "2. 企业月度 TCO 与 GPU 容量测算仪",
+        tco_sub: "对比混合路由、纯自建 VoxCPM2 推理池、Azure 标准/HD 与 ElevenLabs 的月度总拥有成本。",
+        lbl_vol: "月度合成字符总量（百万字符 / 月）",
+        lbl_split: "混合路由中保留给 Azure AI Speech 的强监管流量占比",
+        lbl_util: "自建 GPU 池日均有效利用率（含波峰冗余）",
+        spec_title: "3. 官方 11 条无损 WAV 实测 1024 点 Hann Welch 功率谱密度（PSD）探针",
+        spec_sub: "所有坐标 100% 取自 experiments/voxcpm2-acoustic-benchmark/voxcpm2_acoustic_benchmark_results.json 实测结果，虚线对比 VoxCPM1.5（16kHz）与 24kHz 参考干声。"
+      },
+      en: {
+        nav_portal: "Back to Presales Portal",
+        nav_cards_zh: "7-Card Deck (zh-CN)",
+        hero_eyebrow: "OPENBMB VOXCPM2 (2B) VS. MICROSOFT AZURE AI SPEECH · HYBRID ROUTER",
+        hero_title: "Enterprise Hybrid Speech Routing & TCO Capacity Workbench",
+        hero_desc: "Built on 1024-pt Hann Welch spectral measurements across 11 official 48 kHz WAVs, voxcpm2.py line-level audits, and arXiv:2606.06928 benchmarks. Simulate control-plane routing policies, GPU break-even thresholds, and measured PSD curves.",
+        kpi_1: "16–24 kHz Super-Wideband Gain (vs v1.5)",
+        kpi_2: "Whisper Continuous Residual SDR Gain",
+        kpi_3: "vLLM-Omni Streaming TTFA (RTF 0.13)",
+        kpi_4: "Self-Hosted GPU Break-Even Volume",
+        arch_title: "Hybrid Speech Router Control-Plane & Data-Plane Topology",
+        arch_sub: "Dual-lane enterprise blueprint pairing self-hosted OpenBMB VoxCPM2 (Apache-2.0, vLLM-Omni) with Microsoft Azure AI Speech (SSML / Viseme / 99.9% SLA).",
+        sim_title: "1. Hybrid Speech Routing Policy Simulator",
+        sim_sub: "Toggle architectural constraints to derive primary lane, failover target, and mandatory safety guardrails.",
+        chk_ssml: "Requires deterministic SSML (<say-as>, <phoneme>, lexicon) or 99.9% SLA",
+        chk_viseme: "Requires 0.1ms 3D Avatar Viseme blendshapes or sub-160ms dubbing frame lock",
+        chk_airgap: "Strict air-gapped timbre sovereignty (zero public cloud egress)",
+        lbl_latency: "Target First-Audio Latency Budget (TTFA)",
+        lat_opt_1: "< 80 ms Sub-100ms Full-Duplex Telephony Barge-In",
+        lat_opt_2: "120–250 ms Interactive Voice Agent / Streaming",
+        lat_opt_3: "Async Studio Batch (Audiobooks / Podcasts / Game NPCs)",
+        lbl_lang: "Target Language & Fine-Tuning Profile",
+        lang_opt_1: "Mandarin / English / Major EU (#1 Zero-Shot SIM in 22/24 langs)",
+        lang_opt_2: "SEA Scripts (Burmese 1.42% / Lao 1.90% / Khmer 2.05% WER)",
+        lang_opt_3: "Zero-Shot Arabic / Hindi / Cantonese (Without LoRA SFT)",
+        tco_title: "2. Enterprise Monthly TCO & GPU Pool Sizer",
+        tco_sub: "Compare monthly TCO across Hybrid Router, pure VoxCPM2 GPU pool, Azure Standard/DragonHDOmni, and ElevenLabs.",
+        lbl_vol: "Monthly Synthesized Character Volume (Millions / Month)",
+        lbl_split: "Regulated Traffic Routed to Azure AI Speech (%)",
+        lbl_util: "Sustained Self-Hosted GPU Utilization (%)",
+        spec_title: "3. Empirical 11-WAV 1024-pt Hann Welch PSD Spectrum Explorer",
+        spec_sub: "100% of curve coordinates come directly from sealed experiments/voxcpm2-acoustic-benchmark/voxcpm2_acoustic_benchmark_results.json, overlaid against VoxCPM1.5 (16kHz) and 24kHz reference."
+      }
+    };
+
+    let currentLang = new URLSearchParams(window.location.search).get("lang") === "en" ? "en" : "zh";
+    let selectedWavIdx = 0;
+
+    function applyLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+      document.getElementById("btn-zh").classList.toggle("active", lang === "zh");
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (I18N[lang][key]) el.textContent = I18N[lang][key];
+      });
+      updateRouter();
+      updateTco();
+      renderSpectrum();
+    }
+
+    function updateRouter() {
+      const ssml = document.getElementById("f-ssml").checked;
+      const viseme = document.getElementById("f-viseme").checked;
+      const airgap = document.getElementById("f-airgap").checked;
+      const latency = document.getElementById("f-latency").value;
+      const lang = document.getElementById("f-lang").value;
+
+      const banner = document.getElementById("route-banner");
+      const primaryEl = document.getElementById("route-primary");
+      const ttfaEl = document.getElementById("route-ttfa");
+      const reasonsEl = document.getElementById("route-reasons");
+      const jsonEl = document.getElementById("route-json");
+      const badgeEl = document.getElementById("active-lane-badge");
+      const rectAz = document.getElementById("rect-lane-azure");
+      const rectVox = document.getElementById("rect-lane-vox");
+
+      let primary = "voxcpm2-vllm-omni";
+      let fallback = "azure-dragonhd-omni";
+      let ttfa = "~135 ms TTFA";
+      let cssClass = "route-banner route-vox";
+      const reasons = [];
+
+      if (ssml || viseme) {
+        primary = airgap ? "azure-speech-disconnected-container" : "azure-ai-speech-dragonhd-omni";
+        fallback = "azure-standard-neural";
+        ttfa = viseme ? "0.1 ms Viseme Sync" : "~180–260 ms TTFA";
+        cssClass = "route-banner route-azure";
+        if (ssml) reasons.push(currentLang === "zh" ? "命中确定性 W3C SSML / 发音词典门禁：VoxCPM2 纯端到端架构不支持 <say-as> 与 <phoneme> 标签。" : "Deterministic W3C SSML / lexicon required: VoxCPM2 end-to-end AR-diffusion has no <say-as> or <phoneme> parser.");
+        if (viseme) reasons.push(currentLang === "zh" ? "命中 3D 口型与帧级对齐门禁：VoxCPM2 输出锁定为 N×160ms Patch 且无原生 Viseme Blendshape 流。" : "Viseme / frame-lock required: VoxCPM2 quantizes duration to N x 160ms patches and emits no Viseme stream.");
+        if (airgap) reasons.push(currentLang === "zh" ? "启用内网主权约束：建议部署 Azure AI Speech 断网容器（Disconnected Container）。" : "Air-gapped sovereignty active: deploy Azure AI Speech Disconnected Container inside customer enclave.");
+      } else if (latency === "ultra" && !airgap) {
+        primary = "cartesia-sonic-3.6-or-elevenlabs-flash";
+        fallback = "azure-standard-neural";
+        ttfa = "~55–75 ms TTFA";
+        cssClass = "route-banner route-ssm";
+        reasons.push(currentLang === "zh" ? "亚 80ms 电话打断预算：VoxCPM2 6.25Hz 首块（160ms 音频窗）在 RTX 4090 上约 ~135ms，建议采用 SSM 超低时延引擎。" : "Sub-80ms barge-in budget: VoxCPM2 160ms patch step yields ~135ms TTFA; route to Cartesia Sonic 3.6 (~55ms) or ElevenLabs Flash (~75ms).");
+      } else if (lang === "longtail" && !airgap) {
+        primary = "azure-ai-speech-multilingual";
+        fallback = "voxcpm2-lora-sft-pipeline";
+        ttfa = "~180 ms TTFA";
+        cssClass = "route-banner route-azure";
+        reasons.push(currentLang === "zh" ? "未微调长尾语种拦截：VoxCPM2 零样本阿语 (13.05%)、印地语 (19.70%)、MLS 粤语 (38.58%) 错率偏高，自动切流至 Azure 原生发音人。" : "Zero-shot long-tail guard: VoxCPM2 zero-shot AR (13.05%), HI (19.70%), and MLS Yue (38.58%) require LoRA SFT; routing to Azure native locales.");
+      } else {
+        primary = latency === "batch" ? "voxcpm2-batch-retry-enabled" : "voxcpm2-vllm-omni-streaming";
+        fallback = airgap ? "local-piper-or-azure-container" : "azure-dragonhd-omni";
+        ttfa = latency === "batch" ? "0.13 RTF (48 kHz)" : "~135 ms TTFA";
+        cssClass = "route-banner route-vox";
+        reasons.push(currentLang === "zh" ? "命中高表现力 48kHz 甜点区：AudioVAE V2 提供 +44.44 dB 超高频空气感，独立槽位 [103..104] 阻断参考语速泄漏。" : "Optimal 48kHz expressive zone: AudioVAE V2 delivers +44.44 dB super-wideband air and isolated [103..104] timbre control.");
+        if (lang === "sea") reasons.push(currentLang === "zh" ? "东南亚小语种优势：缅语 1.42% / 老挝 1.90% / 柬埔寨 2.05% WER，远优于同级开源多语模型。" : "SEA low-resource advantage: Burmese 1.42% / Lao 1.90% / Khmer 2.05% WER.");
+        if (latency !== "batch") reasons.push(currentLang === "zh" ? "必选流式护栏：voxcpm2.py:667 在 streaming=True 时强制关闭 retry_badcase，网关已自动注入时长上限与 ASR 熔断。" : "Mandatory streaming guardrail: voxcpm2.py:667 disables retry_badcase when streaming=True; attach duration + ASR circuit breaker.");
+        reasons.push(currentLang === "zh" ? "必选防伪护栏：外挂动态随机挑战句声纹核身 + AudioSeal/WavMark 暗水印。" : "Mandatory anti-spoofing gate: enforce live challenge-response consent + AudioSeal/WavMark watermarking.");
+      }
+
+      banner.className = cssClass;
+      primaryEl.textContent = "Primary: " + primary;
+      ttfaEl.textContent = ttfa;
+      badgeEl.textContent = "Active Primary: " + primary;
+
+      const isAzurePrimary = primary.indexOf("azure") === 0;
+      rectAz.setAttribute("stroke-width", isAzurePrimary ? "3.4" : "1.8");
+      rectAz.setAttribute("opacity", isAzurePrimary ? "1" : "0.78");
+      rectVox.setAttribute("stroke-width", !isAzurePrimary ? "3.4" : "1.8");
+      rectVox.setAttribute("opacity", !isAzurePrimary ? "1" : "0.78");
+
+      reasonsEl.replaceChildren();
+      reasons.forEach((r) => {
+        const li = document.createElement("li");
+        li.textContent = r;
+        reasonsEl.appendChild(li);
+      });
+
+      jsonEl.textContent = JSON.stringify({
+        primary_engine: primary,
+        failover_engine: fallback,
+        streaming_watchdog: latency !== "batch" && primary.indexOf("voxcpm2") === 0,
+        acoustic_watermark: primary.indexOf("voxcpm2") === 0 ? "AudioSeal-48kHz-required" : "native-provider-watermark",
+        sample_rate_hz: 48000
+      }, null, 2);
+    }
+
+    function updateTco() {
+      const volM = Number(document.getElementById("s-vol").value);
+      const azPct = Number(document.getElementById("s-split").value) / 100;
+      const utilPct = Number(document.getElementById("s-util").value) / 100;
+
+      const totalHours = Math.round(volM * 55);
+      const voxHours = totalHours * (1 - azPct);
+      // 1x RTX 4090 / L40S at RTF 0.13 produces (730 hrs / 0.13) * utilPct hours/month
+      const capPerGpuHours = (730 / 0.13) * utilPct;
+      const voxGpus = voxHours <= 0 ? 0 : Math.max(1, Math.ceil(voxHours / capPerGpuHours));
+      const pureVoxGpus = Math.max(1, Math.ceil(totalHours / capPerGpuHours));
+
+      const gpuUnitUsd = 450;
+      const azStdPure = Math.max(0, volM - 0.5) * 15;
+      const azHdPure = volM * 30;
+      const elevenPure = volM * 65;
+      const voxPure = pureVoxGpus * gpuUnitUsd;
+      const hybridCost = (voxGpus * gpuUnitUsd) + (volM * azPct * 30);
+
+      document.getElementById("val-vol").textContent = volM + "M chars (~" + totalHours.toLocaleString() + " hrs)";
+      document.getElementById("val-split").textContent = Math.round(azPct * 100) + "% Azure HD / " + Math.round((1 - azPct) * 100) + "% VoxCPM2";
+      document.getElementById("val-util").textContent = Math.round(utilPct * 100) + "% Util · " + (voxGpus || 0) + "x GPU ($" + (voxGpus * gpuUnitUsd) + "/mo)";
+
+      const diffPct = azHdPure > 0 ? Math.round(((azHdPure - hybridCost) / azHdPure) * 100) : 0;
+      document.getElementById("tco-saving-badge").textContent = diffPct >= 0
+        ? ("Hybrid saves " + diffPct + "% vs. Pure Azure HD")
+        : ("Low volume: Pure Azure PayGo saves $" + Math.round(hybridCost - azHdPure) + "/mo");
+
+      const rows = [
+        { name: currentLang === "zh" ? "推荐混合路由 (VoxCPM2 GPU + Azure HD)" : "Recommended Hybrid Router (VoxCPM2 + Azure HD)", usd: hybridCost, color: "#10B981" },
+        { name: currentLang === "zh" ? "纯自建 OpenBMB VoxCPM2 推理池" : "Pure Self-Hosted VoxCPM2 Pool", usd: voxPure, color: "#34D399" },
+        { name: currentLang === "zh" ? "纯 Azure AI Speech 标准神经语音 ($15/1M)" : "Pure Azure Standard Neural ($15/1M)", usd: azStdPure, color: "#38BDF8" },
+        { name: currentLang === "zh" ? "纯 Azure DragonHDOmni 超拟真 48kHz ($30/1M)" : "Pure Azure DragonHDOmni 48kHz ($30/1M)", usd: azHdPure, color: "#0078D4" },
+        { name: currentLang === "zh" ? "纯 ElevenLabs 商业 API (~$65/1M)" : "Pure ElevenLabs Commercial API (~$65/1M)", usd: elevenPure, color: "#64748B" }
+      ];
+      const maxUsd = Math.max(...rows.map((r) => r.usd), 1);
+      const wrap = document.getElementById("tco-bars");
+      wrap.replaceChildren();
+      rows.forEach((r) => {
+        const div = document.createElement("div");
+        div.className = "tco-row";
+        const meta = document.createElement("div");
+        meta.className = "tco-meta";
+        const s1 = document.createElement("span");
+        s1.textContent = r.name;
+        const s2 = document.createElement("span");
+        s2.textContent = "$" + Math.round(r.usd).toLocaleString() + " / mo";
+        meta.append(s1, s2);
+        const track = document.createElement("div");
+        track.className = "tco-track";
+        const fill = document.createElement("div");
+        fill.className = "tco-fill";
+        fill.style.width = Math.max(2, (r.usd / maxUsd) * 100).toFixed(1) + "%";
+        fill.style.background = r.color;
+        track.appendChild(fill);
+        div.append(meta, track);
+        wrap.appendChild(div);
+      });
+    }
+
+    function renderWavButtons() {
+      const wrap = document.getElementById("wav-buttons");
+      wrap.replaceChildren();
+      SEALED_WAVS.forEach((w, idx) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "wav-btn" + (idx === selectedWavIdx ? " active" : "");
+        b.textContent = w.file + " (" + (w.sr / 1000) + "kHz)";
+        b.addEventListener("click", () => {
+          selectedWavIdx = idx;
+          renderWavButtons();
+          renderSpectrum();
+        });
+        wrap.appendChild(b);
+      });
+    }
+
+    function renderSpectrum() {
+      const w = SEALED_WAVS[selectedWavIdx];
+      const v15 = SEALED_WAVS[SEALED_WAVS.length - 1];
+      const ref24 = SEALED_WAVS[SEALED_WAVS.length - 2];
+
+      const metricsWrap = document.getElementById("spec-metrics");
+      metricsWrap.replaceChildren();
+      const cards = [
+        [currentLang === "zh" ? "当前样本角色" : "Sample Role", w.role],
+        [currentLang === "zh" ? "采样率 / 时长" : "Sample Rate / Duration", w.sr.toLocaleString() + " Hz · " + w.dur.toFixed(3) + " s"],
+        [currentLang === "zh" ? "0.16s Patch 步数检验" : "0.16s Patch Grid Check", w.patches + " patches (rem " + w.rem.toFixed(3) + "s)"],
+        [currentLang === "zh" ? "16–24 kHz 平均 PSD" : "16–24 kHz Mean PSD", w.psd16_24 === null ? "N/A (Nyquist 12kHz)" : (w.psd16_24.toFixed(2) + " dB")],
+        [currentLang === "zh" ? "-52 dB 有效带宽 f_eff" : "-52 dB Effective BW", w.bw52.toFixed(0) + " Hz"],
+        [currentLang === "zh" ? "量化 / 架构特征" : "Quantization / Trait", w.sdrGain]
+      ];
+      cards.forEach(([k, v]) => {
+        const d = document.createElement("div");
+        d.className = "spec-stat";
+        const sp = document.createElement("span");
+        sp.textContent = k;
+        const st = document.createElement("strong");
+        st.textContent = v;
+        d.append(sp, st);
+        metricsWrap.appendChild(d);
+      });
+
+      // Render pure SVG log-frequency chart (200 Hz -> 24,000 Hz, -98 dB -> +12 dB)
+      const W = 1360, H = 290, padL = 64, padR = 28, padT = 24, padB = 42;
+      const xOf = (f) => {
+        const minL = Math.log10(200), maxL = Math.log10(24000);
+        return padL + ((Math.log10(Math.max(200, f)) - minL) / (maxL - minL)) * (W - padL - padR);
+      };
+      const yOf = (db) => {
+        const clamped = Math.max(-98, Math.min(12, db));
+        return padT + ((12 - clamped) / 110) * (H - padT - padB);
+      };
+      const pathFor = (item) => {
+        const pts = [];
+        FREQS_24.forEach((f, i) => {
+          if (item.db[i] !== null && item.db[i] !== undefined) {
+            pts.push((pts.length === 0 ? "M" : "L") + xOf(f).toFixed(1) + "," + yOf(item.db[i]).toFixed(1));
+          }
+        });
+        return pts.join(" ");
+      };
+
+      const ticksF = [250, 500, 1000, 2000, 4000, 8000, 12000, 16000, 24000];
+      const ticksDb = [10, -10, -30, -52, -75, -95];
+
+      let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="auto" role="img" aria-label="1024-pt Welch PSD Curve">`;
+      // Highlight 16-24kHz super-wideband air zone
+      const x16 = xOf(16000), x24 = xOf(24000);
+      svg += `<rect x="${x16.toFixed(1)}" y="${padT}" width="${(x24 - x16).toFixed(1)}" height="${H - padT - padB}" fill="rgba(16,185,129,0.08)" />`;
+      svg += `<text x="${(x16 + 8).toFixed(1)}" y="${padT + 16}" fill="#6EE7B7" font-size="10.5" font-weight="700">16-24 kHz Super-Wideband Air</text>`;
+
+      ticksDb.forEach((db) => {
+        const y = yOf(db).toFixed(1);
+        const stroke = db === -52 ? "rgba(245,158,11,0.55)" : "rgba(148,163,184,0.16)";
+        svg += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="${stroke}" stroke-dasharray="${db === -52 ? "5,4" : "none"}" />`;
+        svg += `<text x="${padL - 8}" y="${Number(y) + 4}" text-anchor="end" fill="#94A3B8" font-size="11">${db} dB</text>`;
+      });
+      ticksF.forEach((f) => {
+        const x = xOf(f).toFixed(1);
+        svg += `<line x1="${x}" y1="${padT}" x2="${x}" y2="${H - padB}" stroke="rgba(148,163,184,0.14)" />`;
+        svg += `<text x="${x}" y="${H - 14}" text-anchor="middle" fill="#94A3B8" font-size="11">${f >= 1000 ? (f / 1000) + "kHz" : f + "Hz"}</text>`;
+      });
+
+      // Baseline curves
+      svg += `<path d="${pathFor(v15)}" fill="none" stroke="#64748B" stroke-width="2" stroke-dasharray="5,4" />`;
+      svg += `<path d="${pathFor(ref24)}" fill="none" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,3" />`;
+      // Active WAV curve
+      svg += `<path d="${pathFor(w)}" fill="none" stroke="#10B981" stroke-width="3.2" />`;
+
+      // Legend
+      svg += `<rect x="${padL + 12}" y="${H - padB - 32}" width="540" height="24" rx="6" fill="rgba(7,13,25,0.84)" />`;
+      svg += `<text x="${padL + 22}" y="${H - padB - 16}" fill="#10B981" font-size="11" font-weight="700">━ Selected: ${w.file}</text>`;
+      svg += `<text x="${padL + 225}" y="${H - padB - 16}" fill="#38BDF8" font-size="11">┄ style_prompt1 (24kHz Ref)</text>`;
+      svg += `<text x="${padL + 405}" y="${H - padB - 16}" fill="#94A3B8" font-size="11">-- voxcpm_example (v1.5 16kHz)</text>`;
+      svg += `</svg>`;
+
+      document.getElementById("psd-chart-wrap").innerHTML = svg;
+    }
+
+    ["f-ssml", "f-viseme", "f-airgap", "f-latency", "f-lang"].forEach((id) => {
+      document.getElementById(id).addEventListener("change", updateRouter);
+    });
+    ["s-vol", "s-split", "s-util"].forEach((id) => {
+      document.getElementById(id).addEventListener("input", updateTco);
+    });
+    document.getElementById("btn-zh").addEventListener("click", () => applyLang("zh"));
+    document.getElementById("btn-en").addEventListener("click", () => applyLang("en"));
+
+    renderWavButtons();
+    applyLang(currentLang);
+  </script>
+</body>
+</html>

@@ -16,6 +16,8 @@
 | **16:9 架构师高管汇报胶片** | [`site/deck.html`](../site/deck.html) | 12 页客户 CXO / 架构评审标准演示幻灯片 |
 | **实时语音智能体 7-Card 评测报告** | [`site/benchmark-cards.html`](../site/benchmark-cards.html) | 4:5 视觉卡片：端到端延迟、打断控制、鲁棒性与适用边界 |
 | **说话人分离（Diarization）7-Card 评测报告** | [`site/diarization-benchmark-cards.html`](../site/diarization-benchmark-cards.html) | Azure AI Speech 多说话人角色分离实测对比（修复前后指标闭环） |
+| **VoxCPM2 vs. Azure Speech 7-Card 评测报告** | [`site/voxcpm2-benchmark-cards.zh-CN.html`](../site/voxcpm2-benchmark-cards.zh-CN.html) · [EN](../site/voxcpm2-benchmark-cards.html) | 4:5 视觉卡片：48kHz Welch 频谱实测、耳语零样本克隆、量化鲁棒性与企业选型边界 |
+| **VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | [`site/voxcpm2-workbench.html`](../site/voxcpm2-workbench.html) | 交互式企业语音合规路由模拟器、月度 TCO / GPU 容量精算与 11 组样音频谱查看器 |
 | **出海智能硬件 6 语种语音客服案例研究** | [`site/case-study.html`](../site/case-study.html) · [中文版](./smart-hardware-global-voice-cs-case-study.zh-CN.md) · [EN](./smart-hardware-global-voice-cs-case-study.md) | 25 万 → 75 万台智能戒指全球多语种 AI 语音客服架构与 ROI 复盘 |
 
 ---
@@ -29,12 +31,13 @@
 | **竞品对比 Battlecards** | [`competitive-analysis.md`](./competitive-analysis.md) | [`competitive-analysis.en.md`](./competitive-analysis.en.md) | Azure Voice Live 对标 Sierra、Retell/Vapi、ElevenLabs、Nova Sonic 攻防策略 |
 | **售前打单与两周 POC 手册** | [`presales-playbook.md`](./presales-playbook.md) | [`presales-playbook.en.md`](./presales-playbook.en.md) | 五维需求问卷、15 分钟现场演示剧本、两周 POC 里程碑与验收探针 |
 | **Azure Speech 说话人分离 PoC** | [`azure-speech-diarization-poc.md`](./azure-speech-diarization-poc.md) | [`azure-speech-diarization-poc.en.md`](./azure-speech-diarization-poc.en.md) | 配套 [`experiments/azure-speech-diarization-poc/`](../experiments/azure-speech-diarization-poc/) 可复现评测代码与 Bicep |
+| **VoxCPM2 vs. Azure Speech 声学基准 PoC** | [`voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md`](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) | [`voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md`](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) | 配套 [`experiments/voxcpm2-acoustic-benchmark/`](../experiments/voxcpm2-acoustic-benchmark/) 零依赖 1024-pt FFT 复现套件与[架构图](./assets/voxcpm2-vs-azure-speech-architecture.svg) |
 | **GPT-Live 全双工语音演示手册** | [`gpt-live-partner-demo-handbook.md`](./gpt-live-partner-demo-handbook.md) | [`gpt-live-partner-demo-handbook.en.md`](./gpt-live-partner-demo-handbook.en.md) | 配套 [`experiments/gpt-live/`](../experiments/gpt-live/) 实时语音对话 Web 应用原型 |
 | **24 项基准评测与本地容器指南** | [`voice-agent-evaluation-rubric.md`](./voice-agent-evaluation-rubric.md) | [`speech-container-guide.md`](./speech-container-guide.md) | 语音智能体红队评测规范与 Azure Speech 本地边缘容器部署指南 |
 
 ---
 
-## 三、架构师核心选型指南（426 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（427 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -467,3 +470,4 @@
 424. **企业级实时语音 AI 安全总纲：反深度伪造声音克隆（Anti-Deepfake PAD）、PCI-DSS v4.0 边缘按键掩码（DTMF Clamping）与 OWASP Agentic 防越权防火墙（`ISO/IEC 30107-3` `<80ms` 声码器相位活体探针拦截 `99.7%` 3秒零样本 AI 克隆音与工具 Schema 物理剥离 `user_id` 强制绑定服务端 `JWT` 实现 `0%` IDOR 越权硬锁、边缘 `SBC` 物理拦截 16位卡号与 `CVV` 直传支付 `HSM` 使 ASR/LLM/录音桶 `100%` 豁免 `PCI-DSS` 审计年省 `$24万`、声学越狱与盗打 `0ms` 吊销令牌转 SOC）方案**：[中文](./enterprise-voice-security-deepfake-biometrics-pci-dss-zero-trust-selection-faq.md) | [EN](./enterprise-voice-security-deepfake-biometrics-pci-dss-zero-trust-selection-faq.en.md)
 425. **快递物流、同城即时配送与末端派件（Last-Mile Parcel & Express Delivery：顺丰 SF Express / UPS / FedEx / DHL / 京东物流模式）派前智能电联（上门 vs 快递柜同意锁）、虚拟隐私小号（AXB）与高值件签收码（OTP）硬锁语音架构（`AXB` 虚拟号隐私脱敏与未获收件人明确同意物理锁死巴枪“入柜”按钮免擅投罚款及高值件 `6位OTP` 当面签收 `0%` 冒领硬锁、派前 `T-30m` 批量电联提前 `45分钟` 原子预占丰巢格口将首次派送成功率提至 `96.8%` 并为小哥日省 `48分钟` 拨号时间、小哥碰撞与冷链超温 `0ms` 调度邻近骑手接力）方案**：[中文](./logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.md) | [EN](./logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.en.md)
 426. **企业级实时语音 AI 成本精算与容量规划（Voice AI FinOps：Azure OpenAI PTU vs. PAYGO 拐点、3 轮音频 Token 滑动压缩与大小模型分层路由降本 `64.2%` 选型指南）（`3轮` 滑动窗口自动将 `<=N-3` 轮原始音频蒸馏为紧凑文本消除 `$O(N^2)$` 二次方膨胀并冻结前缀达 `94.6%` 缓存命中率、`P65` 基荷采购 `PTU` 配合 `>=92%` 水位 `0ms` 溢出 `PAYGO` 及 `72%` 常规轮次卸载至 `SLM` 将全栈单价从 `$0.145/分` 压至 `$0.039/分` 年省 `$840万+`、`18秒` 空噪僵尸电话与 Bot 互聊 `0ms` 熔断）方案**：[中文](./enterprise-voice-finops-ptu-paygo-token-compaction-tco-calculator-selection-faq.md) | [EN](./enterprise-voice-finops-ptu-paygo-token-compaction-tco-calculator-selection-faq.en.md)
+427. **清华 OpenBMB VoxCPM2（2B 扩散自回归连续语音模型）vs. Microsoft Azure AI Speech 与 2026 主流 TTS 横向基准评测与企业选型架构（`16kHz→48kHz` 非对称 `AudioVAE v2` 与 `LocDiT` 双重 `CFG` 源码核查、11 段官方样音 `1024-pt` Welch 频谱 `90.9%` 超宽带激活与耳语零样本克隆保持、合规披露/PCI/SLA `99.9%` 锁定 Azure AI Speech + 离线高表现力批量合成降本 `81%` 混合路由）方案**：[中文](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) | [EN](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md)

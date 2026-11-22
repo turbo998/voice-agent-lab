@@ -15,7 +15,8 @@
 | :--- | :--- | :--- |
 | **🌐 交互式架构与售前门户** | 架构栈匹配器、TCO/ROI 精算器、8 项企业生产护栏交互沙盒与中/繁/英切换 | [在线门户 ↗](https://turbo998.github.io/voice-agent-lab/) · [`site/index.html`](./site/index.html) |
 | **📽️ 16:9 架构师高管汇报讲义** | 12 页零外部依赖 HTML 演示幻灯片，支持客户高层汇报与架构选型工作坊 | [`site/deck.html`](./site/deck.html) |
-| **📊 7-Card 4:5 标准评测报告（双份）** | 《实时语音与多模型路由 7-Card 报告》与《Azure Speech 说话人分离实证 7-Card 报告》 | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) |
+| **📊 7-Card 4:5 标准评测报告（三份）** | 《实时语音路由 7-Card》、《Azure Speech 说话人分离 7-Card》与《VoxCPM2 vs. Azure Speech 48kHz 声学实测 7-Card》 | [`benchmark-cards.html`](./site/benchmark-cards.html) · [`diarization-cards.html`](./site/diarization-benchmark-cards.html) · [`voxcpm2-cards.zh-CN.html`](./site/voxcpm2-benchmark-cards.zh-CN.html) · [`voxcpm2-cards.html`](./site/voxcpm2-benchmark-cards.html) |
+| **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
 | **🧭 122 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 122 篇选型指南](#-二122-篇企业级语音架构选型指南中英双语) |
@@ -57,6 +58,7 @@ flowchart LR
 | **主流语音平台竞品对比 (Battlecards)** | Azure Voice Live 对标 Sierra、Retell/Vapi、ElevenLabs 与 Nova Sonic 选型攻防 | [中文](./docs/competitive-analysis.md) | [EN](./docs/competitive-analysis.en.md) |
 | **售前打单与两周 PoC 交付手册** | 五维需求发现问卷、15 分钟现场演示剧本、两周 PoC 里程碑与验收探针 | [中文](./docs/presales-playbook.md) | [EN](./docs/presales-playbook.en.md) |
 | **Azure Speech 说话人分离实证 PoC** | 多说话人角色分离与双声道分轨实测报告及 [`experiments/azure-speech-diarization-poc/`](./experiments/azure-speech-diarization-poc/) 复现工程 | [中文](./docs/azure-speech-diarization-poc.md) | [EN](./docs/azure-speech-diarization-poc.en.md) |
+| **清华 OpenBMB VoxCPM2 vs. Azure Speech 声学基准与选型** | 11 组 48kHz 样音 `1024-pt` Welch 频谱与量化实测（[`experiments/voxcpm2-acoustic-benchmark/`](./experiments/voxcpm2-acoustic-benchmark/)）、双层 CFG 源码核查与混合路由 TCO | [中文](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) | [EN](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **GPT-Live 全双工语音原型手册** | 实时双向语音 Web 原型（[`experiments/gpt-live/`](./experiments/gpt-live/)）部署与合作伙伴演示指南 | [中文](./docs/gpt-live-partner-demo-handbook.md) | [EN](./docs/gpt-live-partner-demo-handbook.en.md) |
 | **出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台智能硬件多语种语音客服架构演进、多模型路由与成本复盘 | [中文](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) | [EN](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **评测红队规范与边缘语音容器指南** | 24 项语音红队评测规范、Azure Speech 本地边缘容器部署与完整资产索引 | [评测规范](./docs/voice-agent-evaluation-rubric.md) | [容器指南](./docs/speech-container-guide.md) |
@@ -498,6 +500,7 @@ flowchart LR
 424. **企业级实时语音 AI 安全总纲：反深度伪造声音克隆（Anti-Deepfake PAD）、PCI-DSS v4.0 边缘按键掩码（DTMF Clamping）与 OWASP Agentic 防越权防火墙（`ISO/IEC 30107-3` `<80ms` 声码器相位活体探针拦截 `99.7%` 3秒零样本 AI 克隆音与工具 Schema 物理剥离 `user_id` 强制绑定服务端 `JWT` 实现 `0%` IDOR 越权硬锁、边缘 `SBC` 物理拦截 16位卡号与 `CVV` 直传支付 `HSM` 使 ASR/LLM/录音桶 `100%` 豁免 `PCI-DSS` 审计年省 `$24万`、声学越狱与盗打 `0ms` 吊销令牌转 SOC）方案**：[中文](./docs/enterprise-voice-security-deepfake-biometrics-pci-dss-zero-trust-selection-faq.md) | [EN](./docs/enterprise-voice-security-deepfake-biometrics-pci-dss-zero-trust-selection-faq.en.md)
 425. **快递物流、同城即时配送与末端派件（Last-Mile Parcel & Express Delivery：顺丰 SF Express / UPS / FedEx / DHL / 京东物流模式）派前智能电联（上门 vs 快递柜同意锁）、虚拟隐私小号（AXB）与高值件签收码（OTP）硬锁语音架构（`AXB` 虚拟号隐私脱敏与未获收件人明确同意物理锁死巴枪“入柜”按钮免擅投罚款及高值件 `6位OTP` 当面签收 `0%` 冒领硬锁、派前 `T-30m` 批量电联提前 `45分钟` 原子预占丰巢格口将首次派送成功率提至 `96.8%` 并为小哥日省 `48分钟` 拨号时间、小哥碰撞与冷链超温 `0ms` 调度邻近骑手接力）方案**：[中文](./docs/logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.md) | [EN](./docs/logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.en.md)
 426. **企业级实时语音 AI 成本精算与容量规划（Voice AI FinOps：Azure OpenAI PTU vs. PAYGO 拐点、3 轮音频 Token 滑动压缩与大小模型分层路由降本 `64.2%` 选型指南）（`3轮` 滑动窗口自动将 `<=N-3` 轮原始音频蒸馏为紧凑文本消除 `$O(N^2)$` 二次方膨胀并冻结前缀达 `94.6%` 缓存命中率、`P65` 基荷采购 `PTU` 配合 `>=92%` 水位 `0ms` 溢出 `PAYGO` 及 `72%` 常规轮次卸载至 `SLM` 将全栈单价从 `$0.145/分` 压至 `$0.039/分` 年省 `$840万+`、`18秒` 空噪僵尸电话与 Bot 互聊 `0ms` 熔断）方案**：[中文](./docs/enterprise-voice-finops-ptu-paygo-token-compaction-tco-calculator-selection-faq.md) | [EN](./docs/enterprise-voice-finops-ptu-paygo-token-compaction-tco-calculator-selection-faq.en.md)
+427. **清华 OpenBMB VoxCPM2（2B 扩散自回归连续语音模型）vs. Microsoft Azure AI Speech 与 2026 主流 TTS 横向基准评测与企业选型架构（`16kHz→48kHz` 非对称 `AudioVAE v2` 与 `LocDiT` 双重 `CFG` 源码核查、11 段官方样音 `1024-pt` Welch 频谱 `90.9%` 超宽带激活与耳语零样本克隆保持、合规披露/PCI/SLA `99.9%` 锁定 Azure AI Speech + 离线高表现力批量合成降本 `81%` 混合路由）方案**：[中文](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) | [EN](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md)
 
 ---
 
@@ -510,10 +513,12 @@ voice-agent-lab/
 │   ├── deck.html                         # 12 页 16:9 架构师高管演示幻灯片
 │   ├── benchmark-cards.html              # 实时语音与多模型路由 7-Card 4:5 视觉评测报告
 │   ├── diarization-benchmark-cards.html  # Azure Speech 说话人分离 7-Card 实测报告
+│   ├── voxcpm2-benchmark-cards*.html     # VoxCPM2 vs. Azure Speech 48kHz 声学基准 7-Card 报告（中/英）
+│   ├── voxcpm2-workbench.html            # VoxCPM2 vs. Azure Speech 混合路由、TCO 与频谱交互工作台
 │   └── case-study.html                   # 智能硬件出海 6 语种 AI 语音客服深度案例
-├── docs/                                 # 中英双语核心架构白皮书、资产目录与 100 篇企业级选型指南
+├── docs/                                 # 中英双语核心架构白皮书、资产目录与 365 篇企业级选型指南
 ├── assets/svg/                           # 配套架构全景与专题可视化信息图 (SVG)
-├── experiments/                          # 可复现工程原型（Azure Speech 说话人分离 PoC & GPT-Live 原型）
+├── experiments/                          # 可复现工程原型（Azure Speech 说话人分离、VoxCPM2 声学基准 & GPT-Live）
 ├── packages/                             # 零外部依赖确定性生产护栏 TypeScript 模块
 │   ├── duplex-core/                      # 全双工轮次纪元栅栏与慢速 API 零冷场垫音状态机
 │   └── business-core/                    # 高危槽位复述确认、热转接摘要打包与财富双录合规门控
